@@ -1,24 +1,23 @@
 ---
-title: "Zestaw Java SDK: operacje systemu plików w usłudze Azure Data Lake Store | Microsoft Docs"
-description: "Użyj zestawu Java SDK usługi Azure Data Lake Store w celu wykonania takich operacji systemu plików w usłudze Data Lake Store, jak tworzenie folderów itp."
+title: 'Zestaw Java SDK: operacje systemu plików w usłudze Azure Data Lake Store | Microsoft Docs'
+description: Użyj zestawu Java SDK usługi Azure Data Lake Store w celu wykonania takich operacji systemu plików w usłudze Data Lake Store, jak tworzenie folderów itp.
 services: data-lake-store
-documentationcenter: 
+documentationcenter: ''
 author: nitinme
 manager: jhubbard
 editor: cgronlun
 ms.assetid: d10e09db-5232-4e84-bb50-52efc2c21887
 ms.service: data-lake-store
 ms.devlang: na
-ms.topic: get-started-article
-ms.tgt_pltfrm: na
-ms.workload: big-data
-ms.date: 01/09/2018
+ms.topic: conceptual
+ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: fdae36c3cbdda16f9392a113502c7c6c62b25534
-ms.sourcegitcommit: 9292e15fc80cc9df3e62731bafdcb0bb98c256e1
-ms.translationtype: HT
+ms.openlocfilehash: 8f2dd4d001ae7322a351844146925c23b90f0916
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/10/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35649868"
 ---
 # <a name="filesystem-operations-on-data-lake-store-using-java-sdk"></a>Operacje systemu plików w usłudze Data Lake Store przy użyciu zestawu Java SDK
 > [!div class="op_single_selector"]
@@ -209,7 +208,7 @@ Poniższy fragment kodu rekursywnie usuwa określone pliki i foldery na koncie u
 1. Aby przeprowadzić uruchomienie z poziomu środowiska IDE, znajdź i naciśnij przycisk **Run** (Uruchom). Aby przeprowadzić uruchomienie z poziomu programu Maven, użyj polecenia [exec:exec](http://www.mojohaus.org/exec-maven-plugin/exec-mojo.html).
 2. Aby wygenerować autonomiczny plik JAR, który można uruchomić z poziomu wiersza polecenia, skompiluj plik JAR zawierający wszystkie zależności, używając [wtyczki zestawu Maven](http://maven.apache.org/plugins/maven-assembly-plugin/usage.html). Przykład znajduje się w pliku pom.xml w [przykładowym kodzie źródłowym w serwisie GitHub](https://github.com/Azure-Samples/data-lake-store-java-upload-download-get-started/blob/master/pom.xml).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Zapoznawanie się z dokumentacją JavaDoc dotyczącą zestawu SDK Java](https://azure.github.io/azure-data-lake-store-java/javadoc/)
 * [Zabezpieczanie danych w usłudze Data Lake Store](data-lake-store-secure-data.md)
 

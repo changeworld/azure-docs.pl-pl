@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: bb2dc0d5500778372de674c749b44267fb512a2e
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 406d5965c02ceddc617c8729bad95ac7819af30e
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701157"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722065"
 ---
 # <a name="azure-marketplace-items-available-for-azure-stack"></a>Azure Marketplace dostępnych elementów dla usługi Azure Stack
 
@@ -101,6 +101,7 @@ Microsoft Azure Stack obsługuje następujące maszyny wirtualne w portalu Azure
 
 |  | Nazwa elementu | Opis | Wydawca |
 | --- | --- | --- | --- |
+| ![VEOS arista routera](media/azure-stack-marketplace-azure-items/arista.png) | [VEOS arista routera](https://azuremarketplace.microsoft.com/marketplace/apps/arista-networks.veos-router) | Arista vEOS Router jest wielu chmur, zaawansowanych funkcji i wielu funkcji hypervisor wirtualnego routera, który korzysta z możliwości przedsiębiorstw i dostawców w chmurze do tworzenia spójnego, bardzo bezpieczne i skalowalne hybrydowe sieci. | Arista Networks |
 | ![AbanteCart](media/azure-stack-marketplace-azure-items/abantecart.png) | [AbanteCart](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.abantecart) | Koszyk handlu elektronicznego typu open source. | Bitnami |
 | ![ActiveMQ](media/azure-stack-marketplace-azure-items/activemq.png) | [ActiveMQ](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.activemq) | Brokera komunikatów typu open source w języku Java. | Bitnami |
 | ![Akeneo](media/azure-stack-marketplace-azure-items/akeneo.png) | [Akeneo](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.akeneo) | Zaawansowane usługi PIM zaprojektowane w celu uproszczenia procesów zarządzania. | Bitnami |
@@ -156,6 +157,7 @@ Microsoft Azure Stack obsługuje następujące maszyny wirtualne w portalu Azure
 | ![Memcached wielu wystąpień](media/azure-stack-marketplace-azure-items/memcached.png) | [Memcached wielu wystąpień](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.memcached-multipleinstances) | Memcached to system buforowania obiektów pamięci o wysokiej wydajności, rozproszonych. To rozwiązanie obsługuje wiele węzłów Memcached do tworzenia wysokiej wydajności, odporne na niepowodzenia rozproszonej pamięci podręcznej dla aplikacji. **Ten szablon rozwiązania wymaga również Debian 8 i niestandardowego skryptu dla systemu Linux w wersji 2.0 rozszerzenia.** | Bitnami |
 | ![MODX](media/azure-stack-marketplace-azure-items/modx.png) | [MODX](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.modx) | Intuicyjne Web CMS. | Bitnami |
 | ![MongoDB](media/azure-stack-marketplace-azure-items/mongodb.png) | [MongoDB](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.mongodb) | O wysokiej wydajności typu open-source baza danych NoSQL napisanego w języku C++. | Bitnami |
+| ![Bazy danych MongoDB przy użyciu replikacji](media/azure-stack-marketplace-azure-items/mongodb.png) | [Bazy danych MongoDB przy użyciu replikacji](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.production-mongodb) | O wysokiej wydajności typu open-source baza danych NoSQL napisanego w języku C++. **Ten szablon rozwiązania wymaga usługi Azure Stack w wersji 1807 lub nowszej i wymaga także Debian 8 i niestandardowego skryptu dla systemu Linux w wersji 2.0 rozszerzenia.** | Bitnami |
 | ![Moodle](media/azure-stack-marketplace-azure-items/moodle.png) | [Program Moodle](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.moodle) | Skuteczne CMS opracowane dla szkolenia online. | Bitnami |
 | ![Multicraft](media/azure-stack-marketplace-azure-items/multicraft.png) | [Multicraft](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.multicraft) | Serwer Minecraft hostingu rozwiązanie i kontrolki w panelu. | Bitnami |
 | ![MyBB](media/azure-stack-marketplace-azure-items/mybb.png) | [MyBB](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.mybb) | Bezpłatne i typu open-source Software Forum. | Bitnami |
@@ -194,6 +196,7 @@ Microsoft Azure Stack obsługuje następujące maszyny wirtualne w portalu Azure
 | ![Klaster oprogramowania RabbitMQ](media/azure-stack-marketplace-azure-items/rabbitmq.png) | [Klaster oprogramowania RabbitMQ](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.rabbitmq-cluster) | RabbitMQ jest brokera obsługi komunikatów, zapewniająca wspólną platformę do wysyłania i odbierania wiadomości i wiadomości w bezpiecznym miejscu na żywo do momentu otrzymania przez aplikacje. To rozwiązanie wymaga wielu maszyn wirtualnych, aby aprowizować wiele węzłów w klastrze oprogramowania RabbitMQ w celu utworzenia pojedynczego brokera logiczne. **Ten szablon rozwiązania wymaga również Debian 8 i niestandardowego skryptu dla systemu Linux w wersji 2.0 rozszerzenia.** | Bitnami |
 | ![Odp: kreska](media/azure-stack-marketplace-azure-items/redash.png) | [Odp: kreska](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redash) | Wizualizacja danych typu open source i platforma współpracy. | Bitnami |
 | ![Redis](media/azure-stack-marketplace-azure-items/redis.png) | [Redis](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redis) | Zaawansowane parach klucz wartość typu open source. | Bitnami |
+| ![Redis wysokiej dostępności](media/azure-stack-marketplace-azure-items/redis.png) | [Redis wysokiej dostępności](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.production-redis) | Zaawansowane parach klucz wartość typu open source. **Ten szablon rozwiązania wymaga usługi Azure Stack w wersji 1807 lub nowszej i wymaga także Debian 8 i niestandardowego skryptu dla systemu Linux w wersji 2.0 rozszerzenia.** | Bitnami |
 | ![Redmine](media/azure-stack-marketplace-azure-items/redmine.png) | [Redmine](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redmine) | Aplikacja sieci web do zarządzania zaawansowanych projektów | Bitnami |
 | ![Redmine+Agile](media/azure-stack-marketplace-azure-items/redmineagile.png) | [Redmine+Agile](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.redmineplusagile) | Aplikacja do zarządzania projektami we wstępnie skonfigurowanym za pomocą wtyczki Agile. | Bitnami |
 | ![Społeczność serwera raportowania](media/azure-stack-marketplace-azure-items/reportserver.png) | [Społeczność serwera raportowania](https://azuremarketplace.microsoft.com/marketplace/apps/bitnami.reportserver) | Platforma analiz biznesowych typu open source. | Bitnami |

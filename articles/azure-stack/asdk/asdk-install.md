@@ -1,6 +1,6 @@
 ---
-title: Zainstaluj zestaw Azure stosu Development Kit (ASDK) | Dokumentacja firmy Microsoft
-description: Opisuje sposób instalowania Azure stosu Development Kit (ASDK).
+title: Zainstaluj zestaw Azure Stack Development Kit (ASDK) | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób instalowania usługi Azure Stack Development Kit (ASDK).
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,84 +12,84 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/22/2018
+ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 74a81901c8ad38a84357a9f3c2e1d948aa81e8bc
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 2bdda273a32167f70633096d463be59884eca033
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084335"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718229"
 ---
-# <a name="install-the-azure-stack-development-kit-asdk"></a>Zainstaluj zestaw Azure stosu Development Kit (ASDK)
-Po [Przygotowywanie komputera hosta ASDK](asdk-prepare-host.md), ASDK można wdrożyć w obrazie CloudBuilder.vhdx, wykonując następujące kroki w tym artykule.
+# <a name="install-the-azure-stack-development-kit-asdk"></a>Zainstaluj zestaw Azure Stack Development Kit (ASDK)
+Po [Przygotowywanie komputera hosta ASDK](asdk-prepare-host.md), ASDK można wdrożyć w obrazie CloudBuilder.vhdx wykonując następujące kroki w tym artykule.
 
 ## <a name="install-the-asdk"></a>Zainstaluj ASDK
-Kroki opisane w tym artykule opisano sposób wdrażania ASDK przy użyciu graficznego interfejsu użytkownika (GUI) udostępniane przez pobieranie i uruchamianie **asdk installer.ps1** skrypt programu PowerShell.
+Kroki opisane w tym artykule pokazano, jak wdrożyć ASDK przy użyciu graficznego interfejsu użytkownika (GUI) dostarczonych przez pobranie i uruchomienie **asdk installer.ps1** skrypt programu PowerShell.
 
 > [!NOTE]
-> Instalator interfejsu użytkownika dla zestawu SDK usługi Azure stosu jest powierzając jej ich konserwację Otwórz skryptu na podstawie WCF i programu PowerShell.
+> Interfejs użytkownika Instalatora programu Azure Stack Development Kit jest skrypt open source, na podstawie usługi WCF i programu PowerShell.
 
 
-1. Po uruchomieniu pomyślnie komputera hosta w obrazie CloudBuilder.vhdx, logowanie przy użyciu poświadczeń administratora określone podczas możesz [przygotowane na komputerze deweloperskim zestaw hosta](asdk-prepare-host.md) ASDK instalacji. Powinna być taka sama jak poświadczenia administratora lokalnego hosta development kit.
-2. Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i uruchom  **&lt;litera dysku > \AzureStack_Installer\asdk-installer.ps1** skryptu (która może być teraz na innym dysku niż C:\ w obrazie CloudBuilder.vhdx). Kliknij pozycję **Zainstaluj**.
+1. Po uruchomieniu pomyślnie komputera hosta do obrazu CloudBuilder.vhdx, zaloguj się przy użyciu poświadczeń administratora określony, gdy użytkownik [przygotowanym komputerze-hoście development kit](asdk-prepare-host.md) ASDK instalacji. Powinna to być taka sama jak poświadczenia administratora lokalnego development kit hosta.
+2. Otwórz konsolę programu PowerShell z podwyższonym poziomem uprawnień i uruchom  **&lt;litera dysku > \AzureStack_Installer\asdk-installer.ps1** skryptu (która może znajdować się na innym dysku niż C:\ na obrazie CloudBuilder.vhdx). Kliknij pozycję **Zainstaluj**.
 
     ![](media/asdk-install/1.PNG) 
 
-3. W dostawcy tożsamości **typu** listy rozwijanej wybierz pozycję **chmury Azure** lub **usług AD FS**. W obszarze **hasło administratora lokalnego** wpisz hasło administratora lokalnego (która musi odpowiadać bieżące hasło administratora lokalnego skonfigurowany) **hasło** , a następnie kliknij przycisk  **Następny**.
-    - **Chmury Azure**: umożliwia skonfigurowanie usługi Azure Active Directory (Azure AD) jako dostawcy tożsamości. Aby użyć tej opcji, należy połączenie internetowe, pełna nazwa usługi Azure AD directory dzierżawy w formie *domainname*. onmicrosoft.com lub usługi Azure AD zweryfikować niestandardowej nazwy domeny i poświadczenia administratora globalnego dla określonego katalog. 
-    - **Usługi AD FS**: Usługa katalogowa sygnatury domyślny jest używany jako dostawca tożsamości. Zaloguj się przy użyciu domyślnego konta jest azurestackadmin@azurestack.local, i hasło używane jest dostarczana jako część instalacji.
+3. W dostawcy tożsamości **typu** listy rozwijanej wybierz pozycję **w chmurze platformy Azure** lub **usług AD FS**. W obszarze **hasło administratora lokalnego** wpisz hasło administratora lokalnego (który musi być zgodna bieżące hasło administratora lokalnego skonfigurowanego) **hasło** , a następnie kliknij przycisk  **Następny**.
+    - **Chmura azure**: umożliwia skonfigurowanie usługi Azure Active Directory (Azure AD) jako dostawcy tożsamości. Aby użyć tej opcji, konieczne jest połączenie internetowe, pełna nazwa usługi Azure AD directory dzierżawy w formie *nazwa_domeny*. onmicrosoft.com lub usługi Azure AD zweryfikować niestandardowej nazwy domeny i poświadczenia administratora globalnego dla określonego katalog. Po wdrożeniu uprawnienia administratora globalnego usługi Azure Active Directory nie jest wymagana. Jednak niektóre operacje mogą wymagać poświadczenia administratora globalnego. Na przykład skryptu Instalatora dostawcy zasobów lub nową funkcję wymagające uprawnienia przyznawane. Możesz tymczasowo ponownie przywrócić uprawnienia administratora globalnego dla konta lub użyj konta oddzielne administratora globalnego, który jest właścicielem *domyślne subskrypcję dostawcy*.
+    - **Usługi AD FS**: Usługa katalogowa sygnatury domyślny jest używany jako dostawcy tożsamości. Domyślne konto do zalogowania to azurestackadmin@azurestack.local, a hasło do użycia jest dostarczana jako część instalacji.
 
     ![](media/asdk-install/2.PNG) 
     
     > [!NOTE]
-    > Aby uzyskać najlepsze wyniki nawet jeśli ma być używany w środowisku bez połączenia stosu Azure za pomocą usług AD FS jako dostawca tożsamości, najlepiej zainstalować ASDK podczas połączenia z Internetem. W ten sposób można aktywować wersję ewaluacyjną systemu Windows Server 2016 dołączone do rozwoju Instalacja zestawu w czasie wdrażania.
+    > Aby uzyskać najlepsze wyniki nawet, jeśli chcesz użyć środowiska bez połączenia usługi Azure Stack jako dostawcy tożsamości za pomocą usług AD FS jest najlepiej zainstalować ASDK po nawiązaniu połączenia z Internetem. W ten sposób można aktywować wersję ewaluacyjną systemu Windows Server 2016, które są dołączone do rozwoju Instalacja zestawu w czasie wdrażania.
 4. Wybierz kartę sieciową do użycia dla zestawu SDK, a następnie kliknij przycisk **dalej**.
 
     ![](media/asdk-install/3.PNG)
 
-5. Wybierz DHCP lub konfiguracji statycznej sieci dla maszyny wirtualnej BGPNAT01.
+5. Wybierz pozycję DHCP lub konfiguracji statycznej sieci dla maszyny wirtualnej BGPNAT01.
     > [!TIP]
-    > Maszyna wirtualna BGPNAT01 jest router brzegowy, który zapewnia możliwości translatora adresów Sieciowych i sieci VPN Azure stosu.
+    > Maszyna wirtualna BGPNAT01 jest routera brzegowego, która udostępnia funkcje translatora adresów Sieciowych i sieci VPN dla usługi Azure Stack.
 
-    - **DHCP** (domyślnie): maszyny wirtualnej pobiera konfigurację sieci IP od serwera DHCP.
-    - **Statyczne**: tej opcji należy używać tylko wtedy, gdy DHCP nie można przypisać prawidłowy adres IP dla stosu Azure na dostęp do Internetu. **Należy określić statyczny adres IP o długości maska podsieci w formacie CIDR (na przykład 10.0.0.5/24)**.
-    - Wpisz w prawidłowy **czasu adres IP serwera** adres. Wymaganego pola ustawia czas server używanego przez zestaw deweloperski. Ten parametr musi być dostarczona jako adres IP serwera czas ważności. Nazwy serwerów nie są obsługiwane.
+    - **DHCP** (ustawienie domyślne): maszyna wirtualna pobiera konfigurację sieci IP od serwera DHCP.
+    - **Statyczne**: tej opcji należy używać tylko wtedy, gdy DHCP nie może przypisać prawidłowy adres IP dla usługi Azure Stack uzyskać dostęp do Internetu. **Należy określić statyczny adres IP o długości maska podsieci w formacie CIDR (na przykład 10.0.0.5/24)**.
+    - Wpisz prawidłową **czas adres IP serwera** adresu. To wymagane pole zestawy serwer czasu, który będzie używany przez zestaw development kit. Ten parametr musi zostać podana jako adres IP serwera prawidłową godzinę. Nazwy serwerów nie są obsługiwane.
 
       > [!TIP]
-      > Aby znaleźć adres IP serwera czasu, odwiedź stronę [pool.ntp.org](http://pool.ntp.org) lub polecenie ping time.windows.com. 
+      > Serwer czasu adres IP można znaleźć [pool.ntp.org](http://pool.ntp.org) lub wysłać polecenie ping time.windows.com. 
 
     - **Opcjonalnie**, ustaw następujące wartości:
-        - **Identyfikator sieci VLAN**: Określa identyfikator sieci VLAN. Tej opcji należy używać tylko wtedy, gdy host i AzS BGPNAT01 należy skonfigurować identyfikator sieci VLAN umożliwiający dostęp do sieci fizycznej (i Internetu). 
-        - **Usługa przesyłania dalej DNS**: serwer DNS jest tworzony jako część wdrożenia stosu Azure. Aby umożliwić komputerom wewnątrz rozwiązania do rozpoznawania nazw poza sygnatury, podaj istniejącej infrastruktury serwera DNS. Serwer DNS w sygnatury przekazuje żądania rozpoznania nieznanej nazwy do tego serwera.
+        - **Identyfikator sieci VLAN**: Określa identyfikator sieci VLAN. Tej opcji należy używać tylko wtedy, gdy host i AzS-BGPNAT01, należy skonfigurować identyfikator sieci VLAN do uzyskania dostępu do sieci fizycznej (i Internetu). 
+        - **Usługa przesyłania dalej DNS**: serwer DNS jest tworzona jako część wdrożenia usługi Azure Stack. Aby zezwolić komputerom wewnątrz rozwiązania do rozpoznawania nazw poza sygnatury, podaj istniejącej infrastruktury serwera DNS. Serwer DNS w sygnatury przekazuje żądania rozpoznania nieznanej nazwy do tego serwera.
 
     ![](media/asdk-install/4.PNG)
 
-6. Na **Weryfikowanie właściwości karty interfejsu sieciowego** strony, zostanie wyświetlony pasek postępu. Po zakończeniu weryfikacji kliknij **dalej**.
+6. Na **Weryfikowanie właściwości karty interfejsu sieciowego** stronie zostanie wyświetlony pasek postępu. Po zakończeniu weryfikacji kliknij przycisk **dalej**.
 
     ![](media/asdk-install/5.PNG)
 
-9. Na **Podsumowanie** kliknij przycisk **Wdróż** do rozpoczęcia instalacji ASDK na komputerze hosta development kit.
+9. Na **Podsumowanie** kliknij **Wdróż** aby rozpocząć instalację ASDK na komputerze-hoście development kit.
 
     ![](media/asdk-install/6.PNG)
 
     > [!TIP]
-    > W tym miejscu można także skopiować ustawienia poleceń programu PowerShell, które będą używane do zainstalowania z zestawem deweloperskim. Jest to przydatne, jeśli kiedykolwiek zajdzie potrzeba [ponownie wdrożyć ASDK na komputerze hosta przy użyciu programu PowerShell](asdk-deploy-powershell.md).
+    > W tym miejscu możesz również skopiować Instalator poleceń programu PowerShell, które będą używane do zainstalowania deweloperski. Jest to przydatne, jeśli kiedykolwiek zajdzie potrzeba [ponownie wdrożyć ASDK na komputerze-hoście przy użyciu programu PowerShell](asdk-deploy-powershell.md).
 
-10. Jeśli przeprowadzasz wdrożenie usługi Azure AD zostanie wyświetlony monit o wprowadzenie poświadczeń konta administratora globalnego usługi Azure AD za kilka minut po uruchomieniu Instalatora.
+10. Jeśli przeprowadzasz wdrożenie usługi Azure AD zostanie wyświetlony monit o podanie poświadczeń konta administratora globalnego usługi Azure AD za kilka minut, po uruchomieniu Instalatora.
 
     ![](media/asdk-install/7.PNG)
 
-11. Proces wdrażania potrwa kilka godzin, w tym czasie komputer zostanie automatycznie ponownie uruchomiony jeden raz. Jeśli chcesz monitorować postęp wdrażania, zaloguj się jako azurestack\AzureStackAdmin po ponownym uruchomieniu hosta zestawu programowanie. Gdy wdrożenie zakończy się powodzeniem, konsoli programu PowerShell Wyświetla: **COMPLETE: Akcja "Wdrożenie"**. 
+11. Proces wdrażania potrwa kilka godzin, podczas których komputer-host zostanie automatycznie ponownie uruchomiony jeden raz. Jeśli chcesz monitorować postęp wdrażania, zaloguj się jako azurestack\AzureStackAdmin po ponownym uruchomieniu hosta kit rozwoju. Po pomyślnym zakończeniu wdrożenia konsoli programu PowerShell Wyświetla: **ZAKOŃCZONE: Akcja "Wdrożenie"**. 
     > [!IMPORTANT]
-    > Jeśli zarejestrujesz się jako administrator lokalny po komputer jest przyłączony do domeny, nie będzie wyświetlany jest postęp wdrażania. Ponownie uruchom wdrożenie, nie zamiast tego zaloguj się jako azurestack\AzureStackAdmin można sprawdzić, czy jest uruchomiona.
+    > Jeśli rejestrujesz się jako administrator lokalny po komputer jest przyłączony do domeny, nie będzie wyświetlany postęp wdrożenia. Ponownie uruchom wdrożenie, nie zamiast tego zaloguj się jako azurestack\AzureStackAdmin można sprawdzić, czy jest uruchomiona.
 
     ![](media/asdk-install/8.PNG)
 
-Gratulacje, po zainstalowaniu pomyślnie ASDK!
+Gratulacje, pomyślnie zainstalowanych ASDK!
 
-Jeśli wdrożenie nie powiedzie się z jakiegoś powodu, możesz [ponownie wdrożyć](asdk-redeploy.md) od podstaw lub użyj programu PowerShell następujących poleceń, z tego samego okna programu PowerShell z podwyższonym poziomem uprawnień, uruchom ponownie wdrażanie w ostatnim kroku powiodło się:
+Jeśli wdrożenie nie powiedzie się z jakiegoś powodu, możesz to zrobić [ponownie wdrożyć](asdk-redeploy.md) od podstaw lub użyj następujące polecenia programu PowerShell, w tym samym oknie programu PowerShell z podwyższonym poziomem uprawnień, aby ponownie uruchomić wdrożenia w ostatnim kroku pomyślnie:
 
   ```powershell
   cd C:\CloudDeployment\Setup
@@ -97,4 +97,4 @@ Jeśli wdrożenie nie powiedzie się z jakiegoś powodu, możesz [ponownie wdro�
   ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Konfiguracja wdrożenia POST](asdk-post-deploy.md)
+[Po wdrożeniu](asdk-post-deploy.md)

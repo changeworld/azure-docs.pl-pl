@@ -8,20 +8,20 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: dobett
-ms.openlocfilehash: 710de8021abfa5b1fc17491af6b8b9f2bdd3a19f
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: b57a448459101150363d595910cefcde991f1f92
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42919041"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721819"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Zrozumienia i użycia, zestawami SDK Azure IoT Hub
 
 Istnieją dwie kategorie software development Kit (SDK) do pracy z usługą IoT Hub:
 
-* **Zestawy SDK urządzeń** umożliwiają tworzenie aplikacji uruchamianych na urządzeniach IoT. Te aplikacje wysyłanie danych telemetrycznych do Centrum IoT i opcjonalnie odbierać komunikaty, zadania, metody lub aktualizacji bliźniaczej reprezentacji z Centrum IoT hub.
+* **Zestawy SDK urządzeń** umożliwiają tworzenie aplikacji uruchamianych na urządzeniach IoT przy użyciu klienta modułu lub klienta urządzenia. Te aplikacje wysyłanie danych telemetrycznych do Centrum IoT i opcjonalnie odbierać komunikaty, zadania, metody lub aktualizacji bliźniaczej reprezentacji z Centrum IoT hub.  Umożliwia także klienta modułu do tworzenia [modułów](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules) dla [środowisko uruchomieniowe usługi Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/about-iot-edge).
 
-* **Zestawy SDK usług** umożliwiają zarządzanie Centrum IoT i opcjonalnie wysyłanie komunikatów, planowania zadań, wywoływanie metod bezpośrednich lub wysyłać aktualizacje żądanej właściwości urządzeń IoT.
+* **Zestawy SDK usług** umożliwiają zarządzanie Centrum IoT i opcjonalnie wysyłanie komunikatów, planowania zadań, wywoływanie metod bezpośrednich lub wysyłania aktualizacji żądaną właściwość do Twojego urządzenia IoT lub modułów.
 
 Dowiedz się więcej o korzyściach związanych z tworzeniem, za pomocą usługi Azure IoT SDKs [tutaj][lnk-benefits-blog].
 
@@ -35,21 +35,25 @@ Usługa Azure IoT Hub device zestawu SDK dla platformy .NET:
 * Zainstaluj z [Nuget][lnk-nuget-csharp-device]
 * [Kod źródłowy][lnk-dotnet-sdk]
 * [Dokumentacja interfejsu API][lnk-dotnet-ref]
+* [Odwołanie do modułu] [https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.moduleclient?view=azure-dotnet]
 
 Usługa Azure IoT Hub device zestawu SDK dla języka C: napisane w ANSI C (C99) do przenoszenia i zgodności dla wielu platform
 * Zainstaluj z [polecenia apt-get, MBED, środowisku IDE Arduino lub Nuget][lnk-c-package]
 * [Kod źródłowy][lnk-c-sdk]
 * [Dokumentacja interfejsu API][lnk-c-ref]
+* [Odwołanie do modułu] [https://github.com/Azure/azure-iot-sdk-c/blob/master/iothub_client/inc/iothub_module_client.h]
 
 Usługa Azure IoT Hub device zestawu SDK dla języka Java: 
 * Dodaj do [Maven] [ lnk-maven-device] projektu
 * [Kod źródłowy][lnk-java-sdk]
 * [Dokumentacja interfejsu API][lnk-java-ref]
+* [Odwołanie do modułu] [https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device._module_client?view=azure-java-stable]
 
 Usługa Azure IoT Hub device zestawu SDK dla środowiska Node.js: 
 * Zainstaluj z [npm][lnk-npm-device]
 * [Kod źródłowy][lnk-node-sdk]
 * [Dokumentacja interfejsu API][lnk-node-ref]
+* [Odwołanie do modułu] [https://docs.microsoft.com/javascript/api/azure-iot-device/moduleclient?view=azure-node-latest]
 
 Usługa Azure IoT Hub device zestawu SDK dla języka Python: 
 * Zainstaluj z [pip][lnk-pip-device]

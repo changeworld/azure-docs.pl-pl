@@ -3,7 +3,7 @@ title: Informacje o wyrażenie zgody aplikacji usługi Azure AD, wystąpi | Doku
 description: Dowiedz się więcej na temat usługi Azure AD zgody środowiska, aby zobaczyć, jak można ją podczas zarządzania i programowania aplikacji w usłudze Azure AD
 services: active-directory
 documentationcenter: ''
-author: Zawad
+author: CelesteDG
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
@@ -12,14 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/16/2017
-ms.author: Zawad
-ms.openlocfilehash: 894428b2cb3e7d867615c38160bbb4266fede032
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.date: 09/11/2018
+ms.author: celested
+ms.reviewer: zawad
+ms.openlocfilehash: ccf90084e87d35e4e62f6838f85c45013e9579ac
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381596"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717322"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Opis usługi Azure AD aplikacji zgody środowisk
 

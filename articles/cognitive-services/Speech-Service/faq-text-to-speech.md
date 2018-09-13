@@ -9,12 +9,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 4e08abedf9b60f229865bf935d50443782bd928c
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 330acf3e1258951f0129a1ba47f03c5140c30adf
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024469"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719056"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Zamiana tekstu na mowę — często zadawane pytania
 
@@ -55,6 +55,10 @@ Firma Microsoft oferuje dodatkowe usługi, które ułatwiają przygotowanie skry
 **P: czy mogę Pobierz swój model i uruchomić go lokalnie?**
 
 **A**: modeli nie mogą być pobierane i wykonywany lokalnie.
+
+**P: czy Moje żądania są ograniczane?**
+
+**A**: interfejs API REST limity żądań do 25 na 5 sekund. Szczegółowe informacje można znaleźć w naszych stron [zamiany tekstu na mowę](text-to-speech.md). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

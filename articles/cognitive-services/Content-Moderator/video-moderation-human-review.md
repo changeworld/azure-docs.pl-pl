@@ -1,6 +1,6 @@
 ---
-title: Azure moderatora zawartości - łagodzenia wideo | Dokumentacja firmy Microsoft
-description: Średnie nieodpowiedniej zawartości za pomocą wspierana maszyny łagodzenia wideo i narzędzia człowieka przeglądu
+title: Usługa Azure Content Moderator — Moderowanie wideo | Dokumentacja firmy Microsoft
+description: Użyj wspomagane maszynowo Moderowanie filmów wideo oraz narzędziom do przeglądu przez ludzi do umiarkowanego nieodpowiednią zawartość
 services: cognitive-services
 author: sanjeev3
 manager: mikemcca
@@ -9,30 +9,30 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 01/20/2018
 ms.author: sajagtap
-ms.openlocfilehash: fb26c9af55381c80a3f520b1a0068d8f72c91061
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d9c01d4c2590535a4106e8e4ee79a12bdc60d956
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "35346972"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714500"
 ---
 # <a name="video-moderation"></a>Moderowanie filmów wideo
 
-Użyj zawartości moderatora maszyny przy pomocy [wideo łagodzenia](video-moderation-api.md) i [narzędzie przeglądu człowieka](Review-Tool-User-Guide/human-in-the-loop.md) umiarkowane wideo i zapisy dla dorosłych (jawne) i luksusowych zawartości (sugerującą), aby uzyskać najlepsze wyniki dla firmy.
+Użyj Content Moderator wspomagane maszynowo [Moderowanie filmów wideo](video-moderation-api.md) i [narzędzie do przeglądu przez ludzi](Review-Tool-User-Guide/human-in-the-loop.md) umiarkowane filmów wideo i transkrypcje dla dorosłych (jawne) i erotycznej zawartości (dwuznaczne), aby uzyskać najlepsze wyniki dla Twojej firmy.
 
-## <a name="video-trained-classifier"></a>Klasyfikator uczony wideo
+## <a name="video-trained-classifier-preview"></a>Klasyfikator skonfigurowanych pod kątem wideo (wersja zapoznawcza)
 
-Asystowane maszyny wideo klasyfikacji albo odbywa się z modeli uczenia obrazu lub wideo przeszkolone modeli. W przeciwieństwie do uczenia obrazu wideo klasyfikatory firmy Microsoft dla dorosłych i luksusowych klasyfikatora wideo jest uczony z wideo. Ta metoda powoduje lepszą jakość dopasowania.
+Wspomagane maszynowo klasyfikacji wideo albo odbywa się przy użyciu modeli skonfigurowanych pod kątem obrazów lub wideo, przeszkolone modele. W odróżnieniu od skonfigurowanych pod kątem obrazu wideo klasyfikatorów firmy Microsoft dla dorosłych klasyfikatora wideo jest uczony z filmów wideo. Ta metoda powoduje lepszą jakość dopasowania.
 
-## <a name="shot-detection"></a>Zrzut wykrywania
+## <a name="shot-detection"></a>Wykrywanie ujęć
 
-Wyprowadzanie szczegóły klasyfikacji, dodatkowe analizy wideo ułatwiające większą elastyczność podczas analizowania plików wideo. Zamiast Generowanie tylko ramki, usługi łagodzenia wideo Microsoft informacje zrzut poziomie zbyt. Masz teraz opcję, aby analizować filmy wideo zrzut poziomie i ramki.
+Podczas wyprowadzania szczegóły klasyfikacji, dodatkowe analizy wideo pomaga większą elastyczność w analizę filmów wideo. Zamiast podawania tylko ramki, usługa moderowania klipów wideo firmy Microsoft zapewnia informacje na poziomie zrzut zbyt. Masz teraz możliwość analizować filmy wideo na poziomie strzał i ramki.
  
-## <a name="key-frame-detection"></a>Wykrywanie klatki
+## <a name="key-frame-detection"></a>Wykrywanie ramki kluczowe
 
-Zamiast Generowanie ramki w regularnych odstępach czasu, usługa wideo łagodzenia identyfikuje i wyprowadza tylko potencjalnie zakończone ramki (pomyślne). Ta funkcja umożliwia generowanie wydajne ramki do analizy dla dorosłych i luksusowych poziom ramki.
+Zamiast podawania ramki w regularnych odstępach czasu, usługa moderowania klipów wideo identyfikuje i wyświetla tylko potencjalnie zakończone ramek (dobra). Ta funkcja umożliwia generowanie wydajne ramki dla ramki poziom analizy dla dorosłych.
 
-Następujące wyodrębniania przedstawia częściowej odpowiedzi z potencjalnych zrzuty, klatek kluczowych i wyniki dla dorosłych i luksusowych:
+Następujące wyodrębniania pokazuje to częściowa odpowiedź z potencjalnymi zrzuty, klatek kluczowych i wyniki dla dorosłych:
 
     "fragments": [
     {
@@ -74,36 +74,36 @@ Następujące wyodrębniania przedstawia częściowej odpowiedzi z potencjalnych
       ]
 
 
-## <a name="visualization-for-human-reviews"></a>Wizualizacja dla człowieka przeglądów
+## <a name="visualization-for-human-reviews"></a>Wizualizacja umożliwiającymi ludziom dokonywanie
 
-Aby uzyskać więcej nuanced przypadków, firmach potrzebuje rozwiązania przeglądu człowieka podczas odtwarzania wideo, jego ramki i tagi maszyna przypisana. Moderatorów ludzi, klipów wideo i ramki pełną wyświetlania szczegółowych danych, zmień tagów i przesłać swoje decyzje.
+Aby uzyskać więcej złożonych przypadkach firma potrzebuje rozwiązania przeglądu przez ludzi renderowania wideo, jego ramki i tagi przypisane do maszyny. Moderatorzy ludzi, przeglądanie filmów wideo i ramki uzyskać pełen wgląd w szczegółowe dane, zmienianie tagów i prześlij swoje decyzje.
 
-![Widok domyślny narzędzie wideo przeglądu](images/video-review-default-view.png)
+![Widok domyślny narzędzie do przeglądu wideo](images/video-review-default-view.png)
 
-## <a name="player-view-for-video-level-review"></a>Widok Player do przeglądu poziomu wideo
+## <a name="player-view-for-video-level-review"></a>Widok Player do przeglądu poziomie filmu wideo
 
-Decyzje binarne poziom wideo są możliwe z widokiem odtwarzacza wideo, pokazujący potencjalnych dla dorosłych i luksusowych ramki. Recenzenci człowieka Przejdź wideo z różnymi opcjami szybkości w celu zbadania w tle. One potwierdzić swoje decyzje przełączając tagi.
+Wideo na poziomie binarnym decyzji możliwego widokiem odtwarzacz wideo, który pokazuje potencjalne ramki dla dorosłych. Recenzenci ludzi Przejdź wideo z różnymi opcjami prędkości, aby sprawdzić w tle. Potwierdzeniu swoje decyzje, przełączając tagów.
 
-![Przejrzyj wideo narzędzia player widoku](images/video-review-player-view.PNG)
+![Widok player narzędzia przeglądu wideo](images/video-review-player-view.PNG)
 
-## <a name="frames-view-for-detailed-reviews"></a>Widok ramki szczegółowe przeglądów
+## <a name="frames-view-for-detailed-reviews"></a>Widok ramek, aby uzyskać szczegółowe
 
-Szczegółowy przegląd wideo do analizy przez klatka jest możliwe z widokiem na podstawie ramki. Człowieka recenzentów Przejrzyj i wybierz jedną lub więcej ramek i Przełącz znaczniki, aby potwierdzić swoje decyzje. Opcjonalne, następnym krokiem jest redakcyjne ramki obraźliwe lub zawartości.
+Szczegółowy przegląd wideo dla analizy klatka po klatce, jest możliwe przy użyciu widoku opartych na klatkach. Recenzenci ludzi Przejrzyj i wybierz jedną lub więcej ramek i Przełącz znaczniki, aby potwierdzić swoje decyzje. Opcjonalnie, następnym krokiem jest redakcyjne ramek obraźliwe lub zawartości.
 
-![Przejrzyj wideo narzędzia ramki widoku](images/video-review-frames-view-apply-tags.PNG)
+![Widok ramek narzędzia przeglądu wideo](images/video-review-frames-view-apply-tags.PNG)
 
-## <a name="transcript-moderation"></a>Wykaz łagodzenia
+## <a name="transcript-moderation"></a>Moderowanie transkrypcji
 
-Filmy wideo zwykle mają głosu wymagający łagodzenia również obraźliwe rozpoznawania mowy. Korzystasz z usługi Azure Media indeksatora konwersji mowy na tekst i przesłać wykaz dla łagodzenia tekstu w narzędziu przeglądu za pomocą interfejsu API przeglądu moderatora zawartości.
+Filmy wideo, zwykle dokonują głosowych za pośrednictwem, których potrzebuje Moderowanie także obraźliwe rozpoznawania mowy. Usługa Azure Media Indexer umożliwia konwertowanie mowy na tekst i użyj interfejsu API pakietu Content Moderator przeglądu, aby przesłać transkrypcji na potrzeby moderowania tekstu w obrębie narzędzie do przeglądu.
 
-![Wyświetl wykaz narzędzia przeglądu wideo](images/video-review-transcript-view.png)
+![Widok transkrypcji narzędzia przeglądu wideo](images/video-review-transcript-view.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Rozpoczynanie pracy z [szybkiego startu wideo łagodzenia](video-moderation-api.md). 
+Rozpoczynanie pracy z usługą [Moderowanie filmów wideo przewodnika Szybki Start](video-moderation-api.md). 
 
-Dowiedz się, jak Generowanie [przegląda wideo](video-reviews-quickstart-dotnet.md) dla człowieka recenzentów z moderowane dane wyjściowe.
+Dowiedz się, jak wygenerować [przeglądy wideo](video-reviews-quickstart-dotnet.md) dla człowieka recenzentów z moderowanych danych wyjściowych.
 
-Dodaj [przegląda wideo wykaz](video-transcript-reviews-quickstart-dotnet.md) do swoje recenzje wideo.
+Dodaj [przeglądy transkrypcji wideo](video-transcript-reviews-quickstart-dotnet.md) do Twojego wideo przeglądów.
 
-Zapoznaj się z szczegółowy samouczek dotyczący tworzenia [ukończyć rozwiązania wideo łagodzenia](video-transcript-moderation-review-tutorial-dotnet.md). 
+Zapoznaj się z szczegółowy samouczek dotyczący sposobu tworzenia [kompletne rozwiązanie Moderowanie filmów wideo](video-transcript-moderation-review-tutorial-dotnet.md). 

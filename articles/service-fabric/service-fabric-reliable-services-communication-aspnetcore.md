@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: required
 ms.date: 08/29/2018
 ms.author: vturecek
-ms.openlocfilehash: afd682625d7bb74f9a4b726a534508b805562e7f
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 384d0fa32b64706c9d9d9baa0e2e0bbb2ac3c522
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701538"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719600"
 ---
 # <a name="aspnet-core-in-service-fabric-reliable-services"></a>Platforma ASP.NET Core usług usługi Service Fabric Reliable Services
 
@@ -54,12 +54,12 @@ Zazwyczaj własne aplikacje platformy ASP.NET Core tworzenie hostem sieci Web w 
 
 Jednak punkt wejścia aplikacji nie jest właściwym miejscem do tworzenia hostem sieci Web w usługi Reliable Service, ponieważ punkt wejścia aplikacji tylko służy do rejestrowania typ usługi ze środowiskiem uruchomieniowym usługi Service Fabric, dzięki czemu może utworzyć wystąpienia typu usługi. Hostem sieci Web powinny być tworzone w usłudze Reliable Service sam. W ramach procesu hosta usługi wystąpień usługi i/lub repliki można przejść przez wiele cykle życia. 
 
-Wystąpienie usługi Reliable Service jest reprezentowany przez pochodząca od klasy usługi `StatelessService` lub `StatefulService`. Stos komunikacji usługi znajduje się w `ICommunicationListener` implementacji w klasie usługi. `Microsoft.ServiceFabric.Services.AspNetCore.*` Pakiety NuGet zawiera implementacje `ICommunicationListener` , uruchom i zarządzanie hostem sieci Web platformy ASP.NET Core w usłudze Kestrel lub słowa kluczowego HttpSys w niezawodnej usługi.
+Wystąpienie usługi Reliable Service jest reprezentowany przez pochodząca od klasy usługi `StatelessService` lub `StatefulService`. Stos komunikacji usługi znajduje się w `ICommunicationListener` implementacji w klasie usługi. `Microsoft.ServiceFabric.AspNetCore.*` Pakiety NuGet zawiera implementacje `ICommunicationListener` , uruchom i zarządzanie hostem sieci Web platformy ASP.NET Core w usłudze Kestrel lub słowa kluczowego HttpSys w niezawodnej usługi.
 
 ![Hostingu platformy ASP.NET Core w usłudze Reliable Service][1]
 
 ## <a name="aspnet-core-icommunicationlisteners"></a>ICommunicationListeners platformy ASP.NET Core
-`ICommunicationListener` Implementacje dla słowa kluczowego HttpSys w usługach Kestrel i `Microsoft.ServiceFabric.Services.AspNetCore.*` pakiety NuGet podobnych wzorców użycia, ale także wykonać nieco różne akcje specyficzne dla każdego serwera sieci web. 
+`ICommunicationListener` Implementacje dla słowa kluczowego HttpSys w usługach Kestrel i `Microsoft.ServiceFabric.AspNetCore.*` pakiety NuGet podobnych wzorców użycia, ale także wykonać nieco różne akcje specyficzne dla każdego serwera sieci web. 
 
 Zarówno odbiorników komunikacji zapewniają konstruktora, który przyjmuje następujące argumenty:
  - **`ServiceContext serviceContext`**`ServiceContext` Obiektu, który zawiera informacje dotyczące uruchomionej usługi.
@@ -67,7 +67,7 @@ Zarówno odbiorników komunikacji zapewniają konstruktora, który przyjmuje nas
  - **`Func<string, AspNetCoreCommunicationListener, IWebHost> build`**: Wyrażenie lambda, który implementuje, w którym możesz utworzyć i zwracają `IWebHost`. Dzięki temu można skonfigurować `IWebHost` sposób zwykle w aplikacji ASP.NET Core. Wyrażenie lambda zawiera, używać adresu URL, który jest generowany dla opcje można w zależności od integracji usługi Service Fabric i `Endpoint` konfiguracji należy podać. Adres URL następnie można zmodyfikować lub używany jako — jest uruchomienie serwera sieci web.
 
 ## <a name="service-fabric-integration-middleware"></a>Oprogramowania pośredniczącego integracji usługi Service Fabric
-`Microsoft.ServiceFabric.Services.AspNetCore` Obejmuje pakiet NuGet `UseServiceFabricIntegration` metody rozszerzenia `IWebHostBuilder` , dodaje oprogramowanie pośredniczące obsługujących usługi Service Fabric. To oprogramowanie pośredniczące konfiguruje Kestrel lub słowa kluczowego HttpSys `ICommunicationListener` zarejestrować adres URL, unikatowa usługa, za pomocą usługi nazewnictwa Service Fabric i następnie weryfikuje żądań klientów, aby upewnić się, klienci nawiązywania odpowiednią usługę. Jest to konieczne w środowisku hosta udostępnione takich jak Usługa Service Fabric, gdzie wielu aplikacji sieci web można uruchamiać na takie same fizyczne lub maszyny wirtualnej, ale nie używaj nazw hostów unikatowy, aby uniemożliwić klientom przez pomyłkę połączenia z usługą problem. Ten scenariusz jest opisany bardziej szczegółowo w następnej sekcji.
+`Microsoft.ServiceFabric.AspNetCore` Obejmuje pakiet NuGet `UseServiceFabricIntegration` metody rozszerzenia `IWebHostBuilder` , dodaje oprogramowanie pośredniczące obsługujących usługi Service Fabric. To oprogramowanie pośredniczące konfiguruje Kestrel lub słowa kluczowego HttpSys `ICommunicationListener` zarejestrować adres URL, unikatowa usługa, za pomocą usługi nazewnictwa Service Fabric i następnie weryfikuje żądań klientów, aby upewnić się, klienci nawiązywania odpowiednią usługę. Jest to konieczne w środowisku hosta udostępnione takich jak Usługa Service Fabric, gdzie wielu aplikacji sieci web można uruchamiać na takie same fizyczne lub maszyny wirtualnej, ale nie używaj nazw hostów unikatowy, aby uniemożliwić klientom przez pomyłkę połączenia z usługą problem. Ten scenariusz jest opisany bardziej szczegółowo w następnej sekcji.
 
 ### <a name="a-case-of-mistaken-identity"></a>Przypadek omyłkowe tożsamości
 Repliki usługi, niezależnie od tego protokołu, nasłuchiwać IP:port unikatową kombinację. Po rozpoczęciu repliki service nasłuchiwania w punkcie końcowym IP:port zgłasza ten adres punktu końcowego do usługi Service Fabric Naming gdzie mogą być odnajdowane przez klientów lub innych usług. Użycie porty dynamicznie przypisany do aplikacji, usług repliki usługi przypadkowo może używać tego samego punktu końcowego IP:port innej usługi, która była wcześniej w tej samej fizyczne lub maszyny wirtualnej. Może to spowodować klientowi mistakely nawiązać połączenie z usługą problem. Może się to zdarzyć, jeśli ma miejsce następująca sekwencja zdarzeń:

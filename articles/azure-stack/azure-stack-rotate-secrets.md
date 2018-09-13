@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: dacfa738a99eb2d580d825957d09b2b1a3111e93
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: b0fe9acc187aab87e8ee0528cf998e2ef923f897
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051397"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722014"
 ---
 # <a name="rotate-secrets-in-azure-stack"></a>Obróć klucze tajne w usłudze Azure Stack
 
@@ -110,6 +110,8 @@ Aby obrócić zewnętrznych wewnętrzny klucz tajny:
     Bezpieczny ciąg hasła używane dla wszystkich utworzony plik certyfikatu pfx.
 4. Zaczekaj, aż Obróć klucze tajne.  
 Po pomyślnym ukończeniu rotacji wpisu tajnego, zostanie wyświetlona konsola **ogólny stan akcji: Sukces**. 
+    > [!note]  
+    > Jeśli wpisu tajnego obrotu zakończy się niepowodzeniem, postępuj zgodnie z instrukcjami w komunikacie o błędzie i ponownie uruchom start-secretrotation z **-Uruchom ponownie** parametru. Się z pomocą techniczną, jeśli wystąpią powtórzone błędy klucza tajnego obrotu. 
 5. Po pomyślnym zakończeniu obrotu wpisu tajnego usunąć certyfikaty z udziału utworzonego w kroku wstępnego i zapisanie ich w bezpiecznej lokalizacji kopii zapasowej. 
 
 ## <a name="walkthrough-of-secret-rotation"></a>Przewodnik dotyczący rotacji wpisu tajnego
@@ -136,6 +138,10 @@ Aby obrócić tylko usługi Azure Stack wewnętrznego wpisów tajnych:
 
 1. Tworzenie sesji programu PowerShell przy użyciu [uprzywilejowanych punktu końcowego](https://docs.microsoft.com/azure/azure-stack/azure-stack-privileged-endpoint).
 2. W sesji uprzywilejowanych punktu końcowego Uruchom **Start SecretRotation** bez argumentów.
+3. Zaczekaj, aż Obróć klucze tajne.  
+Po pomyślnym ukończeniu rotacji wpisu tajnego, zostanie wyświetlona konsola **ogólny stan akcji: Sukces**. 
+    > [!note]  
+    > W przypadku niepowodzenia wpisu tajnego obrotu postępuj zgodnie z instrukcjami w komunikacie o błędzie i ponownie uruchom start-secretrotation z **-Uruchom ponownie** parametru. Się z pomocą techniczną, jeśli wystąpią powtórzone błędy klucza tajnego obrotu. 
 
 ## <a name="start-secretrotation-reference"></a>Odwołanie do rozpoczęcia SecretRotation
 

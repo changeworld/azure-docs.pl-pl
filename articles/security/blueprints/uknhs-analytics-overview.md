@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 06/15/2018
 ms.author: jomolesk
-ms.openlocfilehash: 8885eba0d69c869ad5d298094b835f0351d8d94d
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: d05be48da296b0d088e38b4c7474103b02e6d5cd
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37342987"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721079"
 ---
 # <a name="azure-security-and-compliance-blueprint-data-analytics-for-uk-nhs"></a>Zabezpieczenia platformy Azure i zgodności planu: Analiza danych dla NHS Zjednoczone Królestwo
 
@@ -29,7 +29,7 @@ To rozwiązanie zapewnia platforma analityczna, na którym klienci mogą tworzy�
 
 Platforma Azure oferuje szereg usług raportowania i analizy dla klienta; Jednak to rozwiązanie łączy w sobie usług Azure Analysis Services w połączeniu z usługi Azure SQL Database, aby szybko przeglądać dane i że dostarczymy wyniki szybciej za pośrednictwem inteligentniejsze modelowania danych klienta. Usługi analiz platformy Azure jest formą uczenia maszynowego przeznaczone do zwiększenia szybkości zapytań o nowe relacje między zestawami danych odnajdywania. Po danych ma przeszkoleni za pośrednictwem kilku funkcji statystycznych, maksymalnie 7 zapytania dodatkowych pul (8 całkowity, łącznie z serwerem klienta) mogą być synchronizowane z tych samych modeli tabelarycznych rozłożyć obciążenie zapytań i zmniejszyć czas reakcji.
 
-Rozszerzone analiza i raportowanie Azure SQL Database można skonfigurować na indeksach magazynu kolumn. Usługi analizy platformy Azure i Azure SQL Database można skalować w górę i w dół lub całkowicie wyłączony w odpowiedzi do użycia przez klientów. Cały ruch SQL jest szyfrowany przy użyciu protokołu SSL przez dołączenie certyfikaty z podpisem własnym. Najlepszym rozwiązaniem jest Azure zaleca się korzystanie z zaufanego urzędu certyfikacji w celu uzyskania zwiększonych zabezpieczeń.
+Ulepszoną analizę i raportowanie baz danych Azure SQL Database można skonfigurować na indeksach magazynu kolumn. Bazy danych Azure SQL i usługi analizy platformy Azure można skalować w górę i w dół lub całkowicie wyłączony w odpowiedzi do użycia przez klientów. Cały ruch SQL jest szyfrowany przy użyciu protokołu SSL przez dołączenie certyfikaty z podpisem własnym. Najlepszym rozwiązaniem jest Azure zaleca się korzystanie z zaufanego urzędu certyfikacji w celu uzyskania zwiększonych zabezpieczeń.
 
 Gdy dane są przekazywane do usługi Azure SQL Database i skonfigurowanych pod kątem usługi Azure Analysis Services, jest rozłożona się przez użytkownika operacyjną i administratora SQL/danych w usłudze Power BI. Usługa Power BI wyświetla dane intuicyjnie i zbiera informacje o różnych wiele zestawów danych, aby narysować bardziej szczegółowe analizy dotyczące. Jego wysoki stopień zdolności adaptacyjnych i Łatwa integracja z usługą Azure SQL Database gwarantuje, czy klienci mogą skonfigurować go do obsługi szerokiej gamy scenariuszy zgodnie z wymogami swoich potrzeb biznesowych.
 

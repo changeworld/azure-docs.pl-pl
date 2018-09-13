@@ -10,13 +10,13 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: mireks
-ms.reviewer: carlrab
-ms.openlocfilehash: a648071d4d98f500e70557b330d5c79dba747a1f
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.reviewer: vanto
+ms.openlocfilehash: d123cb2d272f1c360d12e9d71eec6dc5ca508ebd
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43345212"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718750"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>Konfigurowanie i zarządzanie nimi w usłudze Azure Active Directory uwierzytelnianie przy użyciu bazy danych SQL Database, wystąpienia zarządzanego lub SQL Data Warehouse
 
@@ -189,9 +189,9 @@ Poniższy przykład usuwa administrator usługi Azure AD:
 Remove-AzureRmSqlServerActiveDirectoryAdministrator -ResourceGroupName "Group-23" -ServerName "demo_server"
 ```
 
-Administrator usługi Azure Active Directory można również udostępniać za pomocą interfejsów API REST. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API REST zarządzania usługi i operacji na operacje bazy danych SQL Azure dla baz danych SQL Azure](https://msdn.microsoft.com/library/azure/dn505719.aspx)
+Administrator usługi Azure Active Directory można również udostępniać za pomocą interfejsów API REST. Aby uzyskać więcej informacji, zobacz [dokumentacja interfejsu API REST zarządzania usługi i operacji na operacje bazy danych SQL Azure dla usługi Azure SQL Database](https://msdn.microsoft.com/library/azure/dn505719.aspx)
 
-### <a name="cli"></a>Interfejs CLI  
+### <a name="cli"></a>Interfejs wiersza polecenia  
 Można również udostępniać administratora usługi Azure AD, wywołując następujących poleceń interfejsu wiersza polecenia:
 | Polecenie | Opis |
 | --- | --- |

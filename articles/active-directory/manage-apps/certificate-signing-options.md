@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/07/2017
+ms.date: 09/11/2018
 ms.author: barbkess
 ms.reviewer: jeedes
 ms.custom: aaddev
-ms.openlocfilehash: c7f2892586dd78f3e4b102deb8c51b9979ed07e2
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: e7488abb3e82f90f63fa338b84a6516202e504ec
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348178"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714534"
 ---
 # <a name="advanced-certificate-signing-options-in-the-saml-token-for-gallery-apps-in-azure-active-directory"></a>Zaawansowane opcje w tokenie SAML dla aplikacji z galerii usługi Azure Active Directory podpisywania certyfikatu
 Już dzisiaj usługi Azure Active Directory (Azure AD) obsługuje tysiące wstępnie zintegrowanych aplikacji w galerii aplikacji usługi Azure Active Directory. Liczba ta obejmuje więcej niż 500 aplikacje, które obsługuje logowanie jednokrotne przy użyciu protokołu SAML 2.0. Jeśli użytkownik uwierzytelnia się do aplikacji za pomocą usługi Azure AD przy użyciu protokołu SAML, usługi Azure AD wysyła token do aplikacji (za pośrednictwem metody POST protokołu HTTP). Następnie aplikacja sprawdza poprawność i używa tokenu logowania użytkownika zamiast monitowania o nazwę użytkownika i hasło. Te tokeny SAML są podpisane za pomocą unikatowy certyfikat, który jest generowany w usłudze Azure AD i określonych standardowych algorytmów.
@@ -35,7 +35,7 @@ Usługa Azure AD obsługuje zaawansowane ustawienia podpisywania certyfikatów. 
 
 Po zaznaczeniu tego pola wyboru, możesz skonfigurować opcje podpisywania certyfikatu i certyfikatu algorytm podpisywania.
 
-## <a name="certificate-signing-options"></a>Opcje podpisywania certyfikatu
+## <a name="certificate-signing-options"></a>Opcje podpisywania certyfikatów
 
 Usługa Azure AD obsługuje trzy opcje certyfikatów do podpisywania:
 
@@ -45,7 +45,7 @@ Usługa Azure AD obsługuje trzy opcje certyfikatów do podpisywania:
 
 * **Zaloguj się odpowiedź i potwierdzenie SAML**. Jeśli ta opcja jest zaznaczona, usługi Azure AD jako dostawcy tożsamości loguje całą tokenu SAML X509 certyfikatu aplikacji. Ponadto, używa algorytmu podpisywania, który wybrano w **algorytmu podpisywania** listy rozwijanej.
 
-    ![Opcje podpisywania certyfikatu](./media/certificate-signing-options/saml-signing-options.png)
+    ![Opcje podpisywania certyfikatów](./media/certificate-signing-options/saml-signing-options.png)
 
 ## <a name="certificate-signing-algorithms"></a>Algorytmy podpisywania certyfikatu
 
@@ -60,7 +60,6 @@ Usługa Azure AD obsługuje dwa algorytmy podpisywania do podpisywania SAML odpo
     ![SHA-1 certyfikatu algorytm podpisywania](./media/certificate-signing-options/saml-signing-algo-sha1.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](../active-directory-apps-index.md)
 * [Konfigurowanie logowania jednokrotnego do aplikacji, które nie znajdują się w galerii aplikacji usługi Azure Active Directory](configure-federated-single-sign-on-non-gallery-applications.md)
 * [Rozwiązywanie problemów z opartej na SAML logowania jednokrotnego](../develop/howto-v1-debug-saml-sso-issues.md)
 

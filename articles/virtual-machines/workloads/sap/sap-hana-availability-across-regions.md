@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/11/2018
+ms.date: 09/12/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c12a8d342e2fec41cb2318ac7abfe1d3fce31cef
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: ae03e1498d948e7d044561c3e6bea8c343d7b165
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391695"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44713973"
 ---
 # <a name="sap-hana-availability-across-azure-regions"></a>Dostępność platformy SAP HANA w regionach platformy Azure
 
@@ -46,7 +46,7 @@ Jeśli używasz scenariusza udostępniania docelowym odzyskiwania po awarii w sy
 - Istnieją dwa [tryby działania](https://help.sap.com/viewer/6b94445c94ae495c83a19646e7c3fd56/2.0.02/en-US/627bd11e86c84ec2b9fcdf585d24011c.html) delta_datashipping i logreplay, które są dostępne dla takich scenariuszy
 - Oba tryby działania mają wymagania dotyczące pamięci różnych bez wstępnego ładowania danych
 - Delta_datashipping może wymagać znacznie mniej pamięci bez opcji wstępnego ładowania, niż może wymagać logreplay. Zobacz rozdział 4.3 dokumentu SAP [jak do wykonania replikacji systemu dla oprogramowania SAP HANA](https://archive.sap.com/kmuuid2/9049e009-b717-3110-ccbd-e14c277d84a3/How%20to%20Perform%20System%20Replication%20for%20SAP%20HANA.pdf)
-- Wymagania pamięci logreplay tryb działania bez preload nie jest jednoznaczny i zależy od załadować struktury magazynu kolumn
+- Wymagania pamięci logreplay tryb działania bez preload nie jest jednoznaczny i zależy od załadować struktury magazynu kolumn. W skrajnych przypadkach mogą wymagać 50% pamięci głównej wystąpienia. Pamięć logreplay tryb działania jest niezależne na tego, czy została wybrana opcja danych wstępnie skonfigurowana.
 
 
 ![Diagram przedstawiający dwóch maszyn wirtualnych za pośrednictwem dwóch regionach](./media/sap-hana-availability-two-region/two_vm_HSR_async_2regions_nopreload.PNG)

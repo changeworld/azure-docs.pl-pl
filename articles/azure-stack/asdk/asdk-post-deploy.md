@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/11/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 24f237a04d19d03ab7357db6fb9c7ab60036f3d2
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 4eadbe38eede505a3339d4b6090d0a34c12a5fc2
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44390997"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721963"
 ---
 # <a name="post-asdk-installation-configuration-tasks"></a>Instalacja ASDK zadania po konfiguracji
 
@@ -162,6 +162,11 @@ Set-ADDefaultDomainPasswordPolicy -MaxPasswordAge 180.00:00:00 -Identity azurest
 
 ![Konsola zarządzania zasadami grupy](media/asdk-post-deploy/gpmc.png)
 
+## <a name="enable-multi-tenancy"></a>Włączanie wielodostępu
+W przypadku wdrożeń za pomocą usługi Azure AD, musisz [Włączanie wielodostępu](.\.\azure-stack-enable-multitenancy.md#enable-multi-tenancy) ASDK instalacji.
+
+> [!NOTE]
+> W przypadku używania konta administratora lub użytkownika z domen innych niż ta, używane do rejestrowania usługi Azure Stack zalogować się do portalu Azure Stack nazwy domeny używane do rejestrowania usługi Azure Stack musi być przypisany do portalu adresu url. Na przykład, jeśli usługi Azure Stack został zarejestrowany za pomocą fabrikam.onmicrosoft.com i konto użytkownika, logowanie jest admin@contoso.com, adres URL na potrzeby zaloguj się do portalu użytkownika: https://portal.local.azurestack.external/fabrikam.onmicrosoft.com.
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Zarejestruj ASDK z platformą Azure](asdk-register.md)

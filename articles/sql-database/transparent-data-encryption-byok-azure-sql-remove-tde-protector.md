@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: rebeccaz
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: feb187101ec02d6e765d6b025f518dc416f55b8b
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: cc52b9ee290ca362c51f7a30cc09056e66df3c55
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "40043845"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719821"
 ---
 # <a name="remove-a-transparent-data-encryption-tde-protector-using-powershell"></a>Usuwanie ochrony przezroczystego szyfrowania danych (TDE), przy użyciu programu PowerShell
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -40,8 +40,8 @@ Jeśli klucz nigdy nie podejrzewa się być narażone na ataki, takie, że usłu
 Należy pamiętać, kwotę ochrony TDE zostanie usunięty z usługi Key Vault **wszystkie połączenia z szyfrowanymi bazami danych na tym serwerze są blokowane, a tymi bazami danych przejdą w tryb offline oraz są porzucane w ciągu 24 godzin**. Stare kopie zapasowe szyfrowane za pomocą których bezpieczeństwo zostało naruszone klucza nie są już dostępne.
 
 Ten poradnik przechodzi przez dwie metody w zależności od żądanego wyniku po reagowania na zdarzenia:
-- Aby zachować baz danych SQL Azure / Data Warehouses **dostępne**
-- Zapewnienie Azure SQL Database / Data Warehouses **niedostępny**
+- Baz danych Azure SQL / Data Warehouses **dostępne**
+- Zapewnienie baz danych Azure SQL / Data Warehouses **niedostępny**
 
 ## <a name="to-keep-the-encrypted-resources-accessible"></a>Aby zachować dostępne zaszyfrowanych zasobów
 1. Tworzenie [nowy klucz w usłudze Key Vault](https://docs.microsoft.com/powershell/module/azurerm.keyvault/add-azurekeyvaultkey?view=azurermps-4.1.0). Upewnij się, że ten nowy klucz jest tworzony w osobnym magazynie kluczy z mogą mieć złamane zabezpieczenia ochrony TDE, ponieważ Kontrola dostępu jest inicjowana na poziomie magazynu. 

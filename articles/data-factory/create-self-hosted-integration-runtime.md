@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 7948b54bd6402cf238c5709d270087746ed4fa95
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 7cd5fc965a57052323d4b916f0f2b7dbc0feb7b3
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380373"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715418"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak utworzyć i skonfigurować własne środowisko IR
 Integration Runtime (IR) to infrastruktura obliczeniowa używana przez usługę Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration Runtime](concepts-integration-runtime.md).
@@ -57,7 +57,7 @@ Poniżej przedstawiono przepływ danych wysokiego poziomu dla podsumowania kroki
 
 ## <a name="considerations-for-using-self-hosted-ir"></a>Zagadnienia dotyczące korzystania z własne środowisko IR
 
-- Pojedynczy własnego środowiska integration runtime może służyć do wielu źródeł danych w środowisku lokalnym. Jednak **pojedynczego własnego środowiska integration runtime jest powiązana z tylko jedną usługę Azure data factory** i nie mogą być udostępniane innym fabryki danych.
+- Pojedynczy własnego środowiska integration runtime może służyć do wielu źródeł danych w środowisku lokalnym. A **pojedynczego własnego środowiska integration runtime można** można udostępniać innym fabryki danych w ramach tej samej dzierżawie usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [udostępnianie własnego środowiska integration runtime](#sharing-the-self-hosted-integration-runtime-ir-with-multiple-data-factories).
 - Może mieć **tylko jedno wystąpienie własnego środowiska integration runtime** zainstalowane na jednym komputerze. Załóżmy, że masz dwa fabryki danych, które chcą korzystać z lokalnych źródeł danych, musisz zainstalować własnego środowiska integration runtime na komputerach z dwiema lokalnymi. Innymi słowy własne środowisko integration runtime jest powiązany z fabryki danych z konkretnych
 - **Własnego środowiska integration runtime nie musi znajdować się na tym samym komputerze co źródło danych**. Jednak bliżej źródła danych o może być samodzielnie hostowane środowisko IR skraca czas dla własnego środowiska integration runtime do połączenia ze źródłem danych. Zaleca się zainstalowanie własnego środowiska integration runtime na maszynie, która jest inna niż wersja tego źródła danych lokalnych hostów. W przypadku Self-Hosted integration runtime i źródła danych na różnych maszynach, własne środowisko integration runtime nie konkurują o zasoby ze źródłem danych.
 - Może mieć **wielu środowisk Self-Hosted integration Runtime na różnych maszynach, na nawiązywanie połączeń z tego samego źródła danych w środowisku lokalnym**. Na przykład masz dwa własnego środowiska integration runtime obsługuje dwa fabryki danych, ale tego samego źródła danych lokalnych jest zarejestrowana przy użyciu fabryk danych.

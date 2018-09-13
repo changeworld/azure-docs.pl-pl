@@ -1,42 +1,43 @@
 ---
-title: Wstępnie zdefiniowane wyodrębniania danych, języka naturalnego, obrazu przetwarzania umiejętności (Azure Search) | Dokumentacja firmy Microsoft
-description: Wyodrębniania danych, języka naturalnego przetwarzania kognitywnych umiejętności obrazu dodać semantykę i struktura do nieprzetworzonej zawartości w potoku działanie usługi Azure.
+title: Wstępnie zdefiniowane wyodrębnianie danych, języka naturalnego, obrazów, przetwarzania umiejętności (Azure Search) | Dokumentacja firmy Microsoft
+description: Wyodrębnianie danych, języka naturalnego, obrazów, przetwarzania umiejętności poznawcze Dodaj semantyki i struktury do nieprzetworzonej zawartości w potoku usługi wyszukiwanie Azure.
 manager: pablocas
 author: luiscabrer
+services: search
 ms.service: search
 ms.devlang: NA
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 870cf9629c7af8faee0ce5709199b64910b27ffb
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: cf02946c772ce2dfd04fcd0ae478a560d095c092
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790958"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35938654"
 ---
-# <a name="predefined-skills-for-content-enrichment-azure-search"></a>Umiejętności wstępnie zdefiniowanych dla zawartości wzbogacenia (Azure Search)
+# <a name="predefined-skills-for-content-enrichment-azure-search"></a>Wstępnie zdefiniowane umiejętności wzbogacania zawartości (Azure Search)
 
-W tym artykule opisano kognitywnych umiejętności wyposażone kognitywnych wyszukiwania. A *kognitywnych umiejętności* jest operacją przekształca zawartość w określony sposób. Często jest składnikiem, który wyodrębnia dane lub wnioskuje struktury i w związku z tym wspomaga wiedzę na temat naszych danych wejściowych. Dane wyjściowe są prawie zawsze tekstowych. A *skillset* zbiór umiejętności definiujące wzbogacenia potoku. 
+W tym artykule poznasz umiejętności poznawcze dostarczane z usługą Azure Search. A *cognitive umiejętności* jest operacją, która przekształca zawartość w jakiś sposób. Często jest składnikiem, który wyodrębnia dane lub wnioskuje struktury, a w związku z tym rozszerzają zrozumienie danych wejściowych. Prawie zawsze wynikiem jest oparte na tekście. A *zestawu umiejętności* to zbiór umiejętności, które definiują wzbogacony potok. 
 
 ## <a name="predefined-skills"></a>Wstępnie zdefiniowane umiejętności
 
-Kilka umiejętności są elastyczne, w jakie ich typów lub utworzyć. Ogólnie rzecz biorąc większość umiejętności są oparte na wstępnie przeszkolone modeli, co oznacza, że nie nauczenia modelu, używając danych szkoleniowych. Aby uzyskać wskazówki na temat tworzenia niestandardowych umiejętności, zobacz [sposób definiowania niestandardowego interfejsu](cognitive-search-custom-skill-interface.md) i [przykład: Tworzenie niestandardowego umiejętności](cognitive-search-create-custom-skill-example.md). Poniższa tabela wylicza oraz opis umiejętności obsługiwane przez firmę Microsoft. 
+Kilka umiejętności są elastyczne, w jaki ich tworzą lub wykorzystują. Ogólnie rzecz biorąc większość umiejętności są oparte na wstępnie szkolone modele, co oznacza, że nie uczenie modelu przy użyciu danych szkoleniowych. Aby uzyskać wskazówki na temat tworzenia niestandardowych umiejętności, zobacz [jak zdefiniować niestandardowy interfejs](cognitive-search-custom-skill-interface.md) i [przykład: Tworzenie niestandardowego umiejętności](cognitive-search-create-custom-skill-example.md). Poniższa tabela wylicza i opisuje umiejętności, obsługiwane przez firmę Microsoft. 
 
 | Umiejętności | Opis |
 |-------|-------------|
-| [Microsoft.Skills.Text.KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | Ta umiejętności wykorzystuje pretrained model wykryć ważne fraz na podstawie terminu umieszczania, językowe reguł, bliskości inne postanowienia i jak nietypowe termin znajduje się w danych źródłowych. |
-| [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | Ta jest używana umiejętności pretrained model do wykrywania języka, w którym jest używana (jeden identyfikator języka dla dokumentu). W przypadku używania wielu języków w tym samym segmentach tekst dane wyjściowe są LCID głównie używane języka.|
-| [Microsoft.Skills.Text.MergerSkill](cognitive-search-skill-textmerger.md) | Konsoliduje tekstu z kolekcji pól w jedno pole.  |
-| [Microsoft.Skills.Text.NamedEntityRecognitionSkill](cognitive-search-skill-named-entity-recognition.md) | Ten umiejętności wykorzystuje pretrained model ustanowienie jednostki dla ustalony zbiór kategorii: osób, lokalizacji, w organizacji. |
-| [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)  | Ta umiejętności wykorzystuje pretrained model wyniki na podstawie rekordu na podstawie dodatnie lub ujemne wskaźniki nastrojów klientów. Wynik jest od 0 do 1. Neutralne wyniki występują zarówno w przypadku wartości null, jeśli nie można wykryć wskaźniki nastrojów klientów i tekstu który jest uznawane za neutralne.  |
-| [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md) | Dzieli tekst na stron, dzięki czemu można wzbogacić lub przyrostowo rozszerzyć zawartości. |
-| [Microsoft.Skills.Vision.ImageAnalysisSkill](cognitive-search-skill-image-analysis.md) | Ta umiejętności używa nieobsługiwanego algorytmu wykrywania obrazu do identyfikacji zawartości obrazu oraz do generowania tekst opisu. |
-| [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md) | OCR. |
-| [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md) | Dane wyjściowe mapy do typu złożonego (wieloczęściowych typu danych, która może służyć do pełna nazwa, adres wiele wierszy lub kombinacji nazwisko i osobistego identyfikatora.) |
+| [Microsoft.Skills.Text.KeyPhraseSkill](cognitive-search-skill-keyphrases.md) | To umiejętności korzysta z modelu pretrained wykrywania ważne fraz na podstawie położenia termin, zasady językowe, bliskość inne postanowienia i jak nietypowe termin mieści się w danych źródłowych. |
+| [Microsoft.Skills.Text.LanguageDetectionSkill](cognitive-search-skill-language-detection.md)  | Ta używana umiejętności pretrained model, aby wykryć język, który jest używany (jeden język identyfikator dla dokumentu). Gdy używanych jest wiele języków, w tym samym segmentach tekstu, wynikiem jest LCID głównie używane języka.|
+| [Microsoft.Skills.Text.MergerSkill](cognitive-search-skill-textmerger.md) | Konsoliduje tekst z kolekcji pól do pojedynczego pola.  |
+| [Microsoft.Skills.Text.NamedEntityRecognitionSkill](cognitive-search-skill-named-entity-recognition.md) | To umiejętności korzysta z modelu pretrained nawiązać jednostki dla stały zestaw kategorii: osób, lokalizacji, w organizacji. |
+| [Microsoft.Skills.Text.SentimentSkill](cognitive-search-skill-sentiment.md)  | To umiejętności wykorzystuje pretrained model ocena tonacji dodatnie lub ujemne na podstawie rekordu na podstawie. Wynik jest od 0 do 1. Neutralne wyniki występować zarówno w przypadku wartości null nie można wykryć opinii, gdy tekst, są uznawane za neutralne.  |
+| [Microsoft.Skills.Text.SplitSkill](cognitive-search-skill-textsplit.md) | Dzieli tekst na stronach, tak, aby można wzbogacić lub rozszerzyć zawartości przyrostowo. |
+| [Microsoft.Skills.Vision.ImageAnalysisSkill](cognitive-search-skill-image-analysis.md) | To umiejętności używa algorytmu wykrywania obrazu do identyfikacji zawartości obrazu i generowania opis tekstowy. |
+| [Microsoft.Skills.Vision.OcrSkill](cognitive-search-skill-ocr.md) | Optyczne rozpoznawanie znaków. |
+| [Microsoft.Skills.Util.ShaperSkill](cognitive-search-skill-shaper.md) | Dane wyjściowe mapy typu złożonego (wieloczęściowy typu danych, która może służyć do Podaj pełną nazwę, adres wielowierszowego pola lub kombinację nazwisko i identyfikator osobisty.) |
 
 ## <a name="see-also"></a>Zobacz także
 
-+ [Sposób definiowania skillset](cognitive-search-defining-skillset.md)
-+ [Definicja interfejsu umiejętności niestandardowych](cognitive-search-custom-skill-interface.md)
-+ [Samouczek: Wzbogacone indeksowanie z kognitywnych wyszukiwania](cognitive-search-tutorial-blob.md)
++ [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)
++ [Niestandardowa definicja interfejsu umiejętności](cognitive-search-custom-skill-interface.md)
++ [Samouczek: Wzbogacone indeksowanie za pomocą wyszukiwania kognitywnego](cognitive-search-tutorial-blob.md)

@@ -1,6 +1,6 @@
 ---
-title: Klucz frazy wyodrębniania kognitywnych wyszukiwania umiejętności (Azure Search) | Dokumentacja firmy Microsoft
-description: Oblicza niestrukturalnych tekstu, a dla każdego rekordu, zwraca listę kluczy fraz w potoku wzbogacenia usługi Azure Search.
+title: Kluczowe frazy wyodrębniania wyszukiwania kognitywnego umiejętności (Azure Search) | Dokumentacja firmy Microsoft
+description: Ocenia tekstu bez struktury i dla każdego rekordu zwraca listę kluczowych fraz w usłudze Azure Search wzbogacony potok.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,40 +10,40 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: a12efaa020e626e4a10a0708c9b84d8fe125588c
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: b1da16269a1cbe83c6c0c625aba13026b6a462d6
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33791035"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35942584"
 ---
-#   <a name="key-phrase-extraction-cognitive-skill"></a>Umiejętności kognitywnych wyodrębniania frazy klucza
+#   <a name="key-phrase-extraction-cognitive-skill"></a>Klucz frazy umiejętności cognitive
 
-**Wyodrębniania frazy klucza** umiejętności ocenia niestrukturalnych tekstu, a następnie dla każdego rekordu, zwraca listę kluczy fraz.
+**Klucz frazy** umiejętności ocenia tekstu bez struktury, a następnie dla każdego rekordu zwraca listę fraz kluczowych.
 
-Ta funkcja jest przydatna, jeśli chcesz szybko zidentyfikować głównych punktach wystąpienia w rekordzie. Na przykład dany tekst wejściowy "żywności został wyborna i wystąpiły cudowne personelu", usługa zwraca "żywności" i "cudowne pracownicy".
+Ta możliwość jest przydatna, jeśli chcesz szybko identyfikować jego główne punkty najważniejsze w rekordzie. Na przykład dany tekst wejściowy "żywności został wyborna i wystąpiły personelu wspaniała", usługa zwraca "jedzenie" i "personel wspaniała".
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.KeyPhraseExtractionSkill 
 
 ## <a name="data-limits"></a>Limity danych
-Maksymalny rozmiar rekordu powinna być 50 000 znaków mierzony przez `String.Length`. Jeśli chcesz podzielić danych przed wysłaniem ich do wyodrębniania frazy klucza, należy rozważyć użycie [umiejętności podziału tekstu](cognitive-search-skill-textsplit.md).
+Maksymalny rozmiar rekord powinien być 50 000 znaków, gdyż jest mierzone przez `String.Length`. Jeśli zachodzi potrzeba Podziel swoje dane przed wysłaniem ich do wyodrębnianie kluczowych fraz, rozważ użycie [umiejętności dzielenie tekstu](cognitive-search-skill-textsplit.md).
 
 ## <a name="skill-parameters"></a>Parametry kwalifikacji
 
-Parametry jest rozróżniana wielkość liter.
+Parametrów jest rozróżniana wielkość liter.
 | Dane wejściowe                | Opis |
 |---------------------|-------------|
-| defaultLanguageCode | (Opcjonalnie) Kod języka stosowane do dokumentów, które nie określają jawnie języka.  Jeśli domyślny kod języka nie jest określony, angielski (en) będzie używany jako domyślny kod języka. <br/> Zobacz [pełną listę obsługiwanych języków](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages). |
-| maxKeyPhraseCount   | (Opcjonalnie) Maksymalna liczba kluczy fraz do produkcji. |
+| defaultLanguageCode | (Opcjonalnie) Kod języka stosowane do dokumentów, które jawnie określać języka.  Jeśli kod języka domyślnego nie jest określony, angielskie (en) będzie służyć jako kod języka domyślnego. <br/> Zobacz [pełną listę obsługiwanych języków](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages). |
+| maxKeyPhraseCount   | (Opcjonalnie) Maksymalna liczba frazy kluczowe do produkcji. |
 
 ## <a name="skill-inputs"></a>Dane wejściowe umiejętności
 | Dane wejściowe     | Opis |
 |--------------------|-------------|
-| Tekst | Tekst, który ma zostać przeanalizowany.|
-| atrybutu languageCode  |  Ciąg wskazujący język rekordy. Jeśli ten parametr nie jest określony, domyślny kod języka będzie używany do analizowania rekordy. <br/>Zobacz [pełną listę obsługiwanych języków](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)|
+| tekst | Tekst do analizy.|
+| languageCode  |  Ciąg wskazujący język rekordów. Jeśli nie określono tego parametru, kod języka domyślnego będzie służyć do analizowania rekordów. <br/>Zobacz [pełną listę obsługiwanych języków](https://docs.microsoft.com/azure/cognitive-services/text-analytics/text-analytics-supported-languages)|
 
-##  <a name="sample-definition"></a>Przykład definicji
+##  <a name="sample-definition"></a>Przykładowa definicja
 
 ```json
  {
@@ -110,11 +110,11 @@ Parametry jest rozróżniana wielkość liter.
 
 
 ## <a name="errors-and-warnings"></a>Błędy i ostrzeżenia
-Jeśli podasz nieobsługiwany język kodu zostanie wygenerowany błąd i nie są wyodrębniane fraz klucza.
-Jeśli tekst jest pusta, zostanie utworzony ostrzeżenie.
-Jeśli tekst jest większy niż 50 000 znaków, będzie można analizować tylko pierwsze 50 000 znaków i zostanie wygenerowane ostrzeżenie.
+Jeśli podasz kod nieobsługiwany język, zostanie wygenerowany błąd i frazy kluczowe nie zostały wyodrębnione.
+Jeśli tekst jest pusta, zostaną wygenerowane ostrzeżenie.
+Jeśli tekst jest większe niż 50 000 znaków, tylko pierwsze 50 000 znaków zostanie przeanalizowany i pojawi się ostrzeżenie.
 
 ## <a name="see-also"></a>Zobacz także
 
 + [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md)
-+ [Sposób definiowania skillset](cognitive-search-defining-skillset.md)
++ [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)

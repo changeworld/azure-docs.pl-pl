@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/14/2018
 ms.author: kgremban
-ms.openlocfilehash: 068e9a3379bd2762455aade1761592fa70a09a20
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 3c12e98137f44ac094adaae282b5d56d30061e60
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144382"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719855"
 ---
 # <a name="react-to-iot-hub-events-by-using-event-grid-to-trigger-actions"></a>Reagowanie na zdarzenia IoT Hub przy użyciu usługi Event Grid do wyzwalania akcji
 
@@ -34,12 +34,11 @@ Usługa IoT Hub publikuje następujące typy zdarzeń:
 | Typ zdarzenia | Opis |
 | ---------- | ----------- |
 | Microsoft.Devices.DeviceCreated | Opublikowane po zarejestrowaniu urządzenia do usługi IoT hub. |
-| Microsoft.Devices.DeviceDeleted | Opublikowana, gdy urządzenie zostanie usunięty z usługi IoT hub. | 
-| Microsoft.Devices.DeviceConnected | Gdy urządzenie jest podłączone do usługi IoT hub opublikowany. | 
-| Microsoft.Devices.DeviceDisconnected | Gdy urządzenie jest odłączony od usługi IoT hub opublikowany. | 
-Pamiętaj, że urządzenie połączone, a urządzenie jest odłączone zdarzeń zostanie wkrótce włączona w regionach Kanada Wschodnia oraz wschodnie stany USA.
+| Microsoft.Devices.DeviceDeleted | Opublikowana, gdy urządzenie zostanie usunięty z usługi IoT hub. |
+| Microsoft.Devices.DeviceConnected | Gdy urządzenie jest podłączone do usługi IoT hub opublikowany. |
+| Microsoft.Devices.DeviceDisconnected | Gdy urządzenie jest odłączony od usługi IoT hub opublikowany. |
 
-Umożliwia skonfigurowanie zdarzeń do publikowania z każdej usługi IoT hub w portalu Azure lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać przykład, wypróbuj samouczek [wysyłanie wiadomości e-mail powiadomień o zdarzeniach usługi Azure IoT Hub przy użyciu aplikacji logiki](../event-grid/publish-iot-hub-events-to-logic-apps.md). 
+Umożliwia skonfigurowanie zdarzeń do publikowania z każdej usługi IoT hub w portalu Azure lub interfejsu wiersza polecenia platformy Azure. Aby uzyskać przykład, wypróbuj samouczek [wysyłanie wiadomości e-mail powiadomień o zdarzeniach usługi Azure IoT Hub przy użyciu aplikacji logiki](../event-grid/publish-iot-hub-events-to-logic-apps.md).
 
 ## <a name="event-schema"></a>Schemat zdarzeń
 
@@ -146,7 +145,7 @@ Aplikacje obsługujące zdarzeń usługi IoT Hub, należy wykonać następujące
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Wypróbuj samouczek zdarzeń usługi IoT Hub](../event-grid/publish-iot-hub-events-to-logic-apps.md)
-* [Dowiedz się, jak zamówić urządzenie podłączone i odłączone zdarzenia](../iot-hub/iot-hub-how-to-order-connection-state-events.md)
+* [Dowiedz się, jak porządkować zdarzenia podłączania i odłączania urządzeń](../iot-hub/iot-hub-how-to-order-connection-state-events.md)
 * [Dowiedz się więcej na temat usługi Event Grid][lnk-eg-overview]
 * [Porównaj różnice między routingu zdarzeń usługi IoT Hub i komunikaty][lnk-eg-compare]
 

@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.component: user-help
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 05/11/18
+ms.date: 09/11/2018
 ms.author: lizross
 ms.reviewer: asteen
-ms.openlocfilehash: 2e74e45761a2f21c522f80d453da48948e17de58
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 1caf69ee822ec11e8797ca23c9c163d36344edc7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347754"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719991"
 ---
 # <a name="what-is-the-myapps-portal"></a>Co to jest MyApps portal?
 
@@ -200,7 +200,7 @@ Na przykład jeśli aplikacja jest skonfigurowana do uwierzytelniania użytkowni
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby wyświetlić listę wszystkich tematów, które są powiązane z zarządzaniem aplikacjami, zobacz [indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](../active-directory-apps-index.md).
+- Aby dowiedzieć się o zarządzanie aplikacjami, zobacz [zarządzania aplikacjami w usłudze Azure Active Directory](../manage-apps/what-is-application-management.md).
  
 - Aby dowiedzieć się, jak zintegrować aplikację SaaS z usługą Azure AD, zobacz [listę samouczków dotyczących integrowania aplikacji SaaS](../saas-apps/tutorial-list.md).
  

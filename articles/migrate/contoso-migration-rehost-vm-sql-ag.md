@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: raynew
-ms.openlocfilehash: 9a9bcc25a0ab6c50ebce394a43edd7bfcd764bed
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 7c96f362793ca2697eb2c92c07ff38d2fe6caad2
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304717"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716880"
 ---
 # <a name="contoso-migration-rehost-an-on-premises-app-on-azure-vms-and-sql-server-alwayson-availability-group"></a>Migracja Contoso: ponowne hostowanie aplikacji w środowisku lokalnym, na maszynach wirtualnych platformy Azure i grupy dostępności AlwaysOn programu SQL Server
 
@@ -107,7 +107,7 @@ Contoso ocenia swoich konstrukcjach proponowanych przez zestawiania listę zalet
 **Zagadnienia** | **Szczegóły**
 --- | ---
 **Specjaliści** | WEBVM zostaną przeniesione na platformę Azure bez konieczności wprowadzania zmian, tworzenie prostego migracji.<br/><br/> Warstwy programu SQL Server zostanie uruchomiony program SQL Server 2017 i systemem Windows Server 2016. Powoduje to wycofanie ich bieżącego systemu operacyjnego Windows Server 2008 R2 oraz uruchamianie programu SQL Server 2017 obsługuje wymagania techniczne i cele firmy Contoso. IT zapewnia 100% zgodności podczas przenoszenia od programu SQL Server 2008 R2.<br/><br/> Contoso mogą korzystać z inwestycji w pakiet Software Assurance, za pomocą korzyści użycia hybrydowego platformy Azure.<br/><br/> O wysokiej dostępności wdrożenia serwera SQL w przeglądzie zapewnia odporność na uszkodzenia, tak aby warstwy danych aplikacji jest już pojedynczym punktem krytycznym przejścia w tryb failover.
-**Wady** | WEBVM jest uruchomiony system Windows Server 2008 R2. System operacyjny jest obsługiwany przez platformę Azure dla określonych ról (lipca 2018 r.). [Dowiedz się więcej](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).<br/><br/> Warstwa sieci web aplikacji pozostanie pojedynczy punkt przejścia w tryb failover.</br><br/> Contoso należy kontynuować obsługi warstwa sieci web jako Maszynę wirtualną platformy Azure, zamiast przenosić do zarządzanej usługi, takie jak usługa Azure App Service.<br/><br/> Za pomocą wybranego rozwiązania musisz kontynuować zarządzanie dwie maszyny wirtualne programu SQL Server, zamiast przechodzenia do zarządzanej platformy, takich jak wystąpienia zarządzanego Azure SQL firmy Contoso. Ponadto z pakietem Software Assurance Contoso można wymienić swoich istniejących licencji do korzystania z taryf rabatowych na wystąpieniu zarządzanym usługi SQL Azure.
+**Wady** | WEBVM jest uruchomiony system Windows Server 2008 R2. System operacyjny jest obsługiwany przez platformę Azure dla określonych ról (lipca 2018 r.). [Dowiedz się więcej](https://support.microsoft.com/help/2721672/microsoft-server-software-support-for-microsoft-azure-virtual-machines).<br/><br/> Warstwa sieci web aplikacji pozostanie pojedynczy punkt przejścia w tryb failover.</br><br/> Contoso należy kontynuować obsługi warstwa sieci web jako Maszynę wirtualną platformy Azure, zamiast przenosić do zarządzanej usługi, takie jak usługa Azure App Service.<br/><br/> Za pomocą wybranego rozwiązania Contoso należy kontynuować zarządzanie dwie maszyny wirtualne programu SQL Server, zamiast przechodzenia do zarządzanej platformy, takich jak wystąpienia zarządzanego Azure SQL Database. Ponadto z pakietem Software Assurance Contoso można wymienić swoich istniejących licencji do korzystania z taryf rabatowych na wystąpieniu zarządzanym bazy danych SQL Azure.
 
 
 ### <a name="azure-services"></a>Usługi platformy Azure

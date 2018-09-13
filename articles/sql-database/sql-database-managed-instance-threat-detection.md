@@ -1,5 +1,5 @@
 ---
-title: Wykrywanie - zagrożeń baza danych Azure SQL zarządzane wystąpienia | Dokumentacja firmy Microsoft
+title: Wykrywanie zagrożeń — wystąpienie zarządzane usługi Azure SQL Database | Dokumentacja firmy Microsoft
 description: Wykrywanie zagrożeń wykrywa nietypowe działania bazy danych wskazują możliwe zagrożenia bezpieczeństwa w bazie danych.
 services: sql-database
 author: rmatchoro
@@ -9,70 +9,70 @@ ms.custom: security, managed instance
 ms.topic: conceptual
 ms.date: 03/07/2018
 ms.author: ronmat
-ms.reviewer: carlrab
-ms.openlocfilehash: 14ef907717045e2e0cf297694d92468a65e57e4d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: vanto
+ms.openlocfilehash: 76033438ad785412aa97358d80b5e4fdbf4c2bfb
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34650081"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716999"
 ---
-# <a name="azure-sql-database-managed-instance-threat-detection"></a>Wykrywanie zagrożeń wystąpienia zarządzane baza danych Azure SQL
+# <a name="azure-sql-database-managed-instance-threat-detection"></a>Usługa Azure SQL Database Managed wykrywania zagrożeń wystąpienia
 
-SQL wykrywanie zagrożeń wykrywa nietypowych działań wskazujący nietypowe i potencjalnie szkodliwe próbuje uzyskać dostęp lub wykorzystać baz danych w usłudze Azure wystąpienia bazy danych SQL zarządzane (wersja zapoznawcza).
+Funkcja wykrywania zagrożeń SQL wykrywa nietypowe działania wskazujące na nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania baz danych w bazie danych wystąpienia zarządzanego Azure SQL (wersja zapoznawcza).
 
 ## <a name="overview"></a>Przegląd
 
-Wykrywanie zagrożeń wykrywa nietypowe działania bazy danych wskazują potencjalne zagrożenia bezpieczeństwa zarządzane wystąpienia. Wykrywanie zagrożeń jest teraz zarządzane wystąpienia w wersji zapoznawczej.
+Wykrywanie zagrożeń wykrywa nietypowe działania bazy danych wskazują możliwe zagrożenia bezpieczeństwa do wystąpienia zarządzanego. Wykrywanie zagrożeń jest teraz dostępna w wersji zapoznawczej dla wystąpienia zarządzanego.
 
-Wykrywanie zagrożeń udostępnia nową warstwę zabezpieczeń, co umożliwia klientom wykrywanie i odpowiadanie na potencjalne zagrożenia w miarę ich występowania, podając alerty zabezpieczeń na nietypowe działania bazy danych. Wykrywanie zagrożeń upraszcza potencjalne zagrożenia do wystąpienia zarządzane bez konieczności ekspertów zabezpieczeń lub zarządzać zabezpieczeniami zaawansowanymi, monitorowanie systemów. Środowisko pełnego postępowania zaleca się włączania Azure zarządzane wystąpienia inspekcji, która zapisuje zdarzenia bazy danych inspekcji logowania na koncie magazynu Azure. 
+Funkcja wykrywania zagrożeń stanowi nową warstwę zabezpieczeń, która umożliwia klientom wykrywanie i odpowiadanie na potencjalne zagrożenia w miarę ich występowania, zapewniając alerty zabezpieczeń na nietypowe działania bazy danych. Wykrywanie zagrożeń upraszcza reagowanie na potencjalne zagrożenia dla wystąpienia zarządzanego bez konieczności dysponowania eksperta zabezpieczeń lub zarządzania zaawansowanymi systemami monitorowania bezpieczeństwa. Badanie pełne środowisko pracy zalecane jest włączanie Azure zarządzane wystąpienia inspekcji, która zapisuje zdarzenia bazy danych inspekcji logowania na koncie magazynu platformy Azure. 
 
-Wykrywanie zagrożeń SQL integruje alerty z [Centrum zabezpieczeń Azure](https://azure.microsoft.com/services/security-center/), i jest on rozliczany każdego chronionego wystąpienia zarządzanych w tej samej cenie warstwy standardowa Centrum zabezpieczeń Azure, w $15 węzła/miesięcznie, gdzie każdy chronione wystąpienia zarządzane jest liczone jako jeden węzeł.  
+Funkcja wykrywania zagrożeń SQL integruje alerty z usługą [usługi Azure Security Center](https://azure.microsoft.com/services/security-center/), a opłaty za każde chronione wystąpienie zarządzane są naliczane w tej samej cenie, co Azure Security Center w warstwie standardowa na 15 USD/węzeł/miesiąc, gdzie każdego chronionego wystąpienia zarządzanego jest liczony jako jeden węzeł.  
 
-## <a name="set-up-threat-detection-for-your-managed-instance-in-the-azure-portal"></a>Skonfiguruj wykrywanie zagrożeń dla swojego wystąpienia zarządzane w portalu Azure
-1. Uruchamianie portalu Azure pod adresem [ https://portal.azure.com ](https://portal.azure.com).
-2. Przejdź do strony konfiguracji wystąpienia zarządzane mają być chronione. W **ustawienia** wybierz pozycję **wykrywanie zagrożeń**. 
-3. Na stronie Konfiguracja wykrywanie zagrożeń 
+## <a name="set-up-threat-detection-for-your-managed-instance-in-the-azure-portal"></a>Konfigurowanie wykrywania zagrożeń wystąpienia zarządzanego w witrynie Azure portal
+1. Uruchamianie witryny Azure portal pod [ https://portal.azure.com ](https://portal.azure.com).
+2. Przejdź do strony konfiguracji wystąpienia zarządzanego, który chcesz chronić. W **ustawienia** wybierz opcję **wykrywania zagrożeń**. 
+3. Na stronie konfiguracji wykrywania zagrożeń 
    - Włącz **ON** wykrywanie zagrożeń.
-   - Skonfiguruj **lista wiadomości e-mail** otrzymywać alerty zabezpieczeń po wykryciu nietypowe działania bazy danych.
-   - Wybierz **konto magazynu Azure** gdzie nietypowych zagrożeń rekordów inspekcji są zapisywane. 
-4.  Kliknij przycisk **zapisać** zapisać zasady wykrywania zagrożeń nowe lub zaktualizowane.
+   - Konfigurowanie **listę adresów e-mail** otrzymywać alerty zabezpieczeń po wykryciu nietypowych działań bazy danych.
+   - Wybierz **konta usługi Azure storage** gdzie nietypowe zagrożeń rekordów inspekcji są zapisywane. 
+4.  Kliknij przycisk **Zapisz** można zapisać zasad wykrywania nowych lub zaktualizowanych przed zagrożeniami.
 
    ![Wykrywanie zagrożeń](./media/sql-database-managed-instance-threat-detection/threat-detection.png)
 
-## <a name="explore-anomalous-managed-instance-activities-upon-detection-of-a-suspicious-event"></a>Eksploruj nietypowych działań wystąpienia zarządzane w przypadku wykrycia podejrzanych zdarzeń
+## <a name="explore-anomalous-managed-instance-activities-upon-detection-of-a-suspicious-event"></a>Zapoznaj się z nietypowych działań wystąpienie zarządzane po wykryciu podejrzanego zdarzenia
 
-1. Otrzymasz wiadomość e-mail z powiadomieniem po wykryciu nietypowe działania bazy danych. 
+1. Otrzymasz wiadomość e-mail z powiadomieniem po wykryciu nietypowych działań bazy danych. 
 
-   Wiadomości e-mail zawiera informacje dotyczące zdarzeń podejrzane zabezpieczeń, w tym charakter nietypowych działań, nazwa bazy danych, nazwę serwera i czas trwania zdarzenia. Ponadto zawiera informacje na temat przyczyny i zalecane akcje do sprawdzania i ograniczyć potencjalne zagrożenie dla wystąpienia zarządzane.
+   Wiadomość e-mail zawiera informacje o podejrzanych zdarzeniach dotyczących zabezpieczeń tym o naturze nietypowych działań, nazwę bazy danych, nazwę serwera i czas zdarzenia. Ponadto zawiera informacje o możliwych przyczynach i rekomendowanych działań umożliwiających sprawdzenie i ograniczenie potencjalnych zagrożeń dla wystąpienia zarządzanego.
 
-   ![wykrywanie zagrożeń — wiadomości e-mail](./media/sql-database-managed-instance-threat-detection/threat-detection-email.png)
+   ![wykrywanie zagrożeń — wiadomość e-mail](./media/sql-database-managed-instance-threat-detection/threat-detection-email.png)
 
-2. Kliknij przycisk **przeglądania ostatnich alertów SQL** link w wiadomości e-mail do uruchomienia portalu Azure i pokazać na stronie alerty Centrum zabezpieczeń Azure, które zawiera omówienie active zagrożeń SQL wykryte w bazie danych wystąpienia zarządzane.
+2. Kliknij przycisk **przeglądania ostatnich alertów SQL** linku w wiadomości e-mail do uruchomienia witryny Azure portal i wyświetlenie strony alerty Centrum zabezpieczeń Azure, który zawiera omówienie active wykryto zagrożeń SQL na wystąpieniu zarządzanym bazy danych.
 
-   ![aktywne zagrożeń](./media/sql-database-managed-instance-threat-detection/active-threats.png)
+   ![aktywne zagrożenia](./media/sql-database-managed-instance-threat-detection/active-threats.png)
 
-3. Kliknij określony alert, aby uzyskać dodatkowe szczegóły i akcje badanie tego zagrożenia i korygowania przyszłych zagrożeń.
+3. Kliknij określony alert, aby uzyskać dodatkowe informacje i akcje dla tego typu zagrożenia badanie i korygowanie przez przyszłymi zagrożeniami.
 
-   Na przykład iniekcja kodu SQL jest jednym z typowych problemów zabezpieczeń aplikacji sieci Web w Internecie. Iniekcja kodu SQL służy do przeprowadzania ataków opartych na danych aplikacji. Osoby atakujące wykorzystać luki w zabezpieczeniach aplikacji do dodania złośliwego instrukcje SQL do pola wejścia aplikacji, naruszenia lub modyfikowanie danych w bazie danych. Dla alertów iniekcja kodu SQL szczegóły alertu zawierają narażone instrukcji SQL, która została wykorzystana.
+   Na przykład wstrzykiwanie kodu SQL jest jednym z typowych problemów zabezpieczeń aplikacji sieci Web w Internecie. Wstrzyknięcie kodu SQL jest używany do atakowania aplikacji opartych na danych. Osoby atakujące wykorzystują luki w zabezpieczeniach aplikacji iniekcję złośliwych instrukcji SQL do pól wejścia aplikacji, co umożliwia naruszenie lub zmodyfikowanie danych w bazie danych. Dla alertów wstrzyknięcie kodu SQL szczegóły alertu zawierają narażone instrukcji SQL, które zostało wykorzystane.
 
-   ![iniekcja kodu SQL](./media/sql-database-managed-instance-threat-detection/sql-injection.png)
+   ![wstrzyknięcie kodu SQL](./media/sql-database-managed-instance-threat-detection/sql-injection.png)
 
-## <a name="managed-instance-threat-detection-alerts"></a>Zarządzane alertów wykrywania zagrożeń wystąpienia 
+## <a name="managed-instance-threat-detection-alerts"></a>Zarządzane alerty wykrywania zagrożeń wystąpienia 
 
-Wykrywanie zagrożeń dla wystąpienia zarządzane wykrywa nietypowe działania, które wskazują nietypowe i potencjalnie szkodliwe próby dostępu lub wykorzystać baz danych i mogą wyzwalać następujące alerty:
+Wykrywanie zagrożeń dla wystąpienia zarządzanego wykrywa nietypowe działania wskazujące na nietypowe i potencjalnie szkodliwe próby uzyskania dostępu lub wykorzystania baz danych i może wywołać następujące alerty:
 - **Podatność na iniekcję SQL**: Ten alert jest wyzwalany, gdy aplikacja generuje błędną instrukcję SQL w bazie danych. Może to wskazywać lukę w zabezpieczeniach umożliwiającą ataki przez iniekcję SQL. Istnieją dwie możliwe przyczyny generowania błędnej instrukcji:
  - Usterka w kodzie aplikacji powoduje utworzenie błędnej instrukcji SQL
  - Kod aplikacji lub procedury składowane nie oczyszczają danych wejściowych użytkownika podczas tworzenia błędnej instrukcji SQL, co można wykorzystać do iniekcji SQL
-- **Potencjalna iniekcja SQL**: Ten alert jest wyzwalany w przypadku aktywnego wykorzystania zidentyfikowanej luki umożliwiającej iniekcję SQL w aplikacji. Oznacza to, czy osoba atakująca podejmuje próbę wprowadzenia złośliwego instrukcji SQL przy użyciu kodu usterce aplikacji lub procedur składowanych.
-- **Dostęp z nietypowych lokalizacji**: ten alert jest wyzwalany, gdy zmiany w wzorca dostępu do wystąpienia zarządzane, gdy ktoś zalogował się na do wystąpienia zarządzane z nietypowych lokalizacji geograficznych. W niektórych przypadkach alert wykrywa uzasadnionych akcji (Nowa aplikacja lub dewelopera operacji konserwacji). W pozostałych przypadkach alert wykryje złośliwe działania (byłych pracowników, atakujący zewnętrznych itd.).
-- **Dostęp z centrum danych Azure nietypowe**: ten alert jest wyzwalane, gdy nastąpiła zmiana we wzorcu dostępu do wystąpienia zarządzane, gdy ktoś zalogował się na do wystąpienia zarządzane z centrum danych Azure, która nie była widoczna podczas uzyskiwania dostępu do tego zarządzane Wystąpienie w ostatnim okresie. W niektórych przypadkach alert wykrywa uzasadnionych akcji (nowej aplikacji platformy Azure, usługa Power BI, Edytor zapytań SQL Azure i tak dalej). W innych przypadkach ten alert wykrywa złośliwe działanie z zasobu/usługi platformy Azure (były pracownik, zewnętrzna osoba atakująca).
-- **Dostęp z nieznanym podmiotu**: ten alert jest wyzwalany, gdy zmiany w wzorca dostępu do serwera zarządzanego wystąpienia, gdy ktoś zalogował się na do wystąpienia zarządzane przy użyciu nietypowe podmiot zabezpieczeń (użytkownika SQL). W niektórych przypadkach alert wykrywa uzasadnionych akcji (operacji konserwacji nowe Deweloper aplikacji). W innych przypadkach ten alert wykrywa złośliwe działanie (były pracownik, zewnętrzna osoba atakująca).
+- **Potencjalna iniekcja SQL**: Ten alert jest wyzwalany w przypadku aktywnego wykorzystania zidentyfikowanej luki umożliwiającej iniekcję SQL w aplikacji. Oznacza to, że osoba atakująca próbuje wstrzyknąć złośliwe instrukcje SQL przy użyciu podatnego kodu aplikacji lub procedur składowanych.
+- **Dostęp z nietypowej lokalizacji**: ten alert jest wyzwalany, gdy występuje w przypadku zmiany wzorca dostępu do wystąpienia zarządzanego, gdy ktoś zalogował się do wystąpienia zarządzanego z nietypowej lokalizacji geograficznej. W niektórych przypadkach ten alert wykrywa prawidłowe działanie (Nowa aplikacja lub operacji konserwacji dewelopera). W innych przypadkach ten alert wykrywa złośliwe działanie (były pracownik, zewnętrzna osoba atakująca i tak dalej).
+- **Dostęp z centrum danych platformy Azure nietypowe**: ten alert jest wyzwalany, gdy występuje w przypadku zmiany wzorca dostępu do wystąpienia zarządzanego, gdy ktoś zalogował się do wystąpienia zarządzanego z centrum danych platformy Azure, które nie występowało uzyskiwania dostępu do tego zarządzanego Wystąpienie w ostatnim czasie. W niektórych przypadkach ten alert wykrywa prawidłowe działanie (Nowa aplikacja w Azure, usługa Power BI, Edytor zapytań SQL Azure i tak dalej). W innych przypadkach ten alert wykrywa złośliwe działanie z zasobu/usługi platformy Azure (były pracownik, zewnętrzna osoba atakująca).
+- **Dostęp z nieznanego podmiotu zabezpieczeń**: ten alert jest wyzwalany, gdy występuje w przypadku zmiany wzorca dostępu do serwera wystąpienia zarządzanego, gdy ktoś zalogował się do wystąpienia zarządzanego za pomocą nietypowego podmiotu zabezpieczeń (użytkownika SQL). W niektórych przypadkach ten alert wykrywa prawidłowe działanie (działanie konserwacji nowemu deweloperowi aplikacji). W innych przypadkach ten alert wykrywa złośliwe działanie (były pracownik, zewnętrzna osoba atakująca).
 - **Dostęp z potencjalnie szkodliwej aplikacji**: Ten alert jest wyzwalany, gdy potencjalnie szkodliwa aplikacja jest używana w celu uzyskania dostępu do bazy danych. W niektórych przypadkach ten alert wykrywa przeprowadzany test penetracji. W innych przypadkach ten alert wykrywa atak przy użyciu typowych narzędzi ataku.
-- **Atak siłowy na poświadczenia SQL**: Ten alert jest wyzwalany w przypadku nietypowo dużej liczby nieudanych prób logowania przy użyciu różnych poświadczeń. W niektórych przypadkach ten alert wykrywa przeprowadzany test penetracji. W pozostałych przypadkach alert wykrywa ataków siłowych.
+- **Atak siłowy na poświadczenia SQL**: Ten alert jest wyzwalany w przypadku nietypowo dużej liczby nieudanych prób logowania przy użyciu różnych poświadczeń. W niektórych przypadkach ten alert wykrywa przeprowadzany test penetracji. W innych przypadkach ten alert wykrywa atak siłowy.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Więcej informacji na temat wystąpienia zarządzane, zobacz [co to jest wystąpieniem zarządzane](sql-database-managed-instance.md)
-- Dowiedz się więcej o [zarządzane wystąpienia inspekcji](https://go.microsoft.com/fwlink/?linkid=869430) 
-- Dowiedz się więcej o [Centrum zabezpieczeń Azure](https://docs.microsoft.com/azure/security-center/security-center-intro)
+- Dowiedz się więcej o wystąpieniu zarządzanym, zobacz [co to jest wystąpienie zarządzane](sql-database-managed-instance.md)
+- Dowiedz się więcej o [inspekcji wystąpienia zarządzanego](https://go.microsoft.com/fwlink/?linkid=869430) 
+- Dowiedz się więcej o [usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro)

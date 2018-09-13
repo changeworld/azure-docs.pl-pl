@@ -1,6 +1,6 @@
 ---
-title: Analiza zagrożeń w usłudze Azure Security Center | Microsoft Docs
-description: Dowiedz się, jak wykrywać potencjalne zagrożenia na maszynach wirtualnych i komputerach przy użyciu funkcji analizy zagrożeń w usłudze Azure Security Center.
+title: Zagrożeń analizy i Mapa alertów zabezpieczeń w usłudze Azure Security Center | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak na potrzeby zabezpieczeń alertu mapy i zagrożeniami funkcji analizy w usłudze Azure Security Center wykrywać potencjalne zagrożenia na maszynach wirtualnych i komputerów.
 services: security-center
 documentationcenter: na
 author: rkarlin
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/3/2018
 ms.author: rkarlin
-ms.openlocfilehash: a3988575074708a46138b5e550bfc0014ca3bd15
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: d82d52e05d85fbd5197f84f032a55dd9c74f9d1f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44293936"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714432"
 ---
-# <a name="security-alerts-map-azure-security-center"></a>Alerty zabezpieczeń mapy usługi Azure Security Center
+# <a name="security-alerts-map-and-threat-intelligence"></a>Analizy zagrożeń i Mapa alertów zabezpieczeń
 Ten artykuł ułatwia korzystanie Mapa alertów zabezpieczeń usługi Azure Security Center i Mapa analizy zagrożeń na podstawie zdarzeń zabezpieczeń do rozwiązania problemów związanych z zabezpieczeniami.
 
 ## <a name="how-the-security-alerts-map-works"></a>Sposób mapowania alerty zabezpieczeń działania
@@ -49,7 +49,8 @@ Aby wyświetlić bieżące zagrożenia w swoim środowisku, otwórz mapę alerty
 Mapa alertów zabezpieczeń jest na podstawie alertów. Te alerty są oparte na działania dla sieci, w której został skojarzony z adresu IP, która została pomyślnie rozpoznana, czy adres IP jest znane ryzykownego adresu IP (na przykład znanych cryptominer) lub adres IP, który nie jest rozpoznawany komunikacji wcześniej jako ryzykowne. Mapy zawiera alertów w subskrypcjach, wszystkie wcześniej wybrane na platformie Azure. 
 
 Alerty na mapie są wyświetlane według lokalizacji geograficznej, gdzie one są wykrywane jako pochodzące z komputera i są one kolorami według ważności. 
- 
+    ![Informacje dotyczące analizy zagrożeń](./media/security-center-threat-intel/security-center-alert-map.png)
+
 ## <a name="viewing-the-event-based-threat-intelligence-dashboard"></a>Wyświetlanie pulpitu nawigacyjnego oparty na zdarzeniach analizy zagrożeń
 Aby wyświetlić Mapa analizy zagrożeń na podstawie zdarzeń zabezpieczeń nieprzetworzone, można wykonać tę procedurę. Ta mapa wyświetla tylko te zdarzenia, które obejmują adres IP, który jest uważany za zagrożenie, na przykład adres IP znanego botnetu.
 

@@ -1,6 +1,6 @@
 ---
-title: Uruchom partii zadań Azure obciążeń na maszynach wirtualnych, ekonomiczne niskiego priorytetu | Dokumentacja firmy Microsoft
-description: Informacje o sposobie obsługi administracyjnej maszyn wirtualnych niskiego priorytetu będzie zmniejszenie kosztów obciążeń partii zadań Azure.
+title: Uruchamianie obciążeń usługi Azure Batch na ekonomiczne maszyny wirtualne o niskim priorytecie | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak inicjować obsługę maszyn wirtualnych o niskim priorytecie, aby zmniejszyć koszt obciążeń usługi Azure Batch.
 services: batch
 author: mscurrell
 manager: jeconnoc
@@ -11,73 +11,73 @@ ms.topic: article
 ms.workload: na
 ms.date: 03/19/2018
 ms.author: markscu
-ms.openlocfilehash: 954616e8fbf9e3c3be35fc219d15e3fb36260e1f
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d42cef944c3b971804ef1417a3877bf919784a02
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34608920"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35942603"
 ---
-# <a name="use-low-priority-vms-with-batch"></a>Niskiego priorytetu maszyn wirtualnych za pomocą usługi partia zadań
+# <a name="use-low-priority-vms-with-batch"></a>Używanie maszyn wirtualnych o niskim priorytecie z usługą Batch
 
-Partia zadań Azure oferuje niskiego priorytetu maszyn wirtualnych (VM) będzie zmniejszenie kosztów obciążeń partii. Maszyny wirtualne o niskim priorytecie należy nowych typów partii obciążeń możliwe przez włączenie dużej ilości mocy do zastosowania w przypadku bardzo niskich kosztów obliczeniowej.
+Usługa Azure Batch oferuje maszyny wirtualne o niskim priorytecie (VM), aby zmniejszyć koszt obciążeń usługi Batch. Maszyny wirtualne o niskim priorytecie należy nowych typów obciążeń, możliwe, należy włączyć dużą ilość obliczeniowa służący do bardzo niskich kosztów usługi Batch.
  
-Maszyny wirtualne niskiego priorytetu korzystać z nadwyżki zdolności produkcyjnych na platformie Azure. Po określeniu niskiego priorytetu maszyny wirtualne w Twojej puli partii zadań Azure można użyć tego nadwyżka, jeśli jest dostępna.
+Maszyny wirtualne o niskim priorytecie zalet nadwyżki zdolności produkcyjnych na platformie Azure. Po określeniu maszyny wirtualne o niskim priorytecie w pulach usługi Azure Batch można używać tego nadwyżka, jeśli jest dostępna.
  
-Rozwiązanie dla przy użyciu niskiego priorytetu maszyny wirtualne nie mogą nie być dostępne do alokacji tych maszyn wirtualnych lub może być wywłaszczony w dowolnym momencie, w zależności od dostępnej pojemności. Z tego powodu niskiego priorytetu maszyny wirtualne są najbardziej odpowiednie dla pewnych typów obciążeń. Użyj maszyn wirtualnych niskiego priorytetu partii i przetwarzania asynchronicznego obciążeń, których czas ukończenia zadania są elastyczne i praca będzie rozmieszczona na wiele maszyn wirtualnych.
+Kompromisem za ułatwienie przy użyciu maszyn wirtualnych o niskim priorytecie jest, że te maszyny wirtualne mogą być niedostępne do alokacji lub mogą być przerywane, w dowolnym momencie, w zależności od dostępnej pojemności. Z tego powodu maszyny wirtualne o niskim priorytecie są najbardziej odpowiednie dla niektórych rodzajów obciążeń. Dla usługi batch i obciążeń przetwarzania asynchronicznego, których czas ukończenia zadania jest elastyczny i praca jest rozłożona na wiele maszyn wirtualnych, należy użyć maszyn wirtualnych o niskim priorytecie.
  
-Maszyny wirtualne niskiego priorytetu oferowanych w znacznie obniżonej cenie w porównaniu z dedykowanych maszyn wirtualnych. Aby uzyskać szczegółowe informacje o cenach, zobacz [cennik partii](https://azure.microsoft.com/pricing/details/batch/).
+Maszyny wirtualne o niskim priorytecie są oferowane w znacznie obniżonej cenie w porównaniu z dedykowanych maszyn wirtualnych. Aby uzyskać szczegółowe informacje o cenach, zobacz [ceny usługi Batch](https://azure.microsoft.com/pricing/details/batch/).
 
 ## <a name="use-cases-for-low-priority-vms"></a>Przypadki użycia dla maszyn wirtualnych o niskim priorytecie
 
-Podane właściwości niskiego priorytetu maszyny wirtualne, jakie obciążenia może i nie można ich używać? Ogólnie rzecz biorąc obciążeń przetwarzania wsadowego są świetnie sprawdza się, ponieważ zadania są podzielone na wiele zadań równoległych lub ma wiele zadań, które skalowana w poziomie i rozproszone na wielu maszyn wirtualnych.
+Biorąc pod uwagę charakterystyki maszyny wirtualne o niskim priorytecie, jakie obciążeń i nie można ich używać? Ogólnie rzecz biorąc obciążeń przetwarzania wsadowego są dobrym rozwiązaniem, ponieważ zadania są dzielone na wiele zadań równoległych lub istnieje wiele zadań, które są skalowane do wewnątrz i rozproszone między wiele maszyn wirtualnych.
 
--   Aby zapewnić maksymalne użycie nadwyżki pojemności na platformie Azure, odpowiedniego zadania można skalować w poziomie.
+-   Aby zmaksymalizować wykorzystanie nadwyżki zdolności produkcyjnych na platformie Azure, odpowiedniego zadania można skalować w poziomie.
 
--   Czasami maszyny wirtualne mogą być niedostępne lub są zastępowane, które powoduje zmniejszenie wydajności dla zadań i może prowadzić do przerwania zadań i powtórki. W związku z tym należy elastycznych w czasie, które można wykonać, aby uruchomić zadania.
+-   Czasami maszyny wirtualne mogą być niedostępne lub są przerywane, które powoduje zmniejszenie wydajności dla zadań i może prowadzić do przerwania zadań i powtórkami. W związku z tym należy elastyczne w czasie, które można wykonać, aby uruchomić zadania.
 
--   Zadania z zadaniami dłużej może to mieć wpływ na więcej przerwania. Jeśli długotrwałych zadań implementować tworzenie punktów kontrolnych do zapisania postępu, ponieważ są one wykonywane, zostanie zmniejszona wpływ przerwania. Zadania związane z krótszy czas wykonywania zazwyczaj najlepiej o niskim priorytecie maszyn wirtualnych, ponieważ wpływ przerwania jest znacznie mniej.
+-   Zadania z zadaniami dłużej może wpływać na bardziej przerwania. Jeśli długotrwałych zadań implementować punkty kontrolne, aby zapisać postęp, jak są wykonywane, zostanie zmniejszona wpływu na przerwania. Zadania związane z krótsze czasy wykonania zwykle by najlepiej pracować z maszyn wirtualnych o niskim priorytecie, ponieważ wpływu na przerwania jest znacznie mniej.
 
--   Długotrwałych zadań MPI, wykorzystujące wiele maszyn wirtualnych nie są dobrze nadają się do użycia VMs niskiego priorytetu, ponieważ jedna przeniesiona maszyna wirtualna może prowadzić do całego zadania o ponowne uruchomienie.
+-   Długotrwałych zadań MPI, które korzystają z wielu maszyn wirtualnych nie są dobrze nadaje się do użycia w przypadku maszyn wirtualnych o niskim priorytecie, ponieważ jedną maszynę Wirtualną, które są przerywane może prowadzić do całego zadania o ponowne uruchomienie.
 
-Przykładowe przypadki użycia przetwarzania wsadowego dobrze nadaje się do użycia niskiego priorytetu maszyny wirtualne to:
+Przykładowe przypadki użycia przetwarzania wsadowego dobrze nadaje się do użycia maszyn wirtualnych o niskim priorytecie są:
 
--   **Projektowanie i testowanie**: W szczególności, jeśli są tworzone na dużą skalę rozwiązania, znaczne oszczędności mogą być realizowana. Wszystkie typy testowania można korzystać, ale testów obciążenia na dużą skalę i testowania regresji są doskonałe używa.
+-   **Projektowanie i testowanie**: W szczególności jeśli opracowywane są rozwiązaniach wielkoskalowych znaczne oszczędności można uzyskać. Wszystkie rodzaje testów mogą korzystać, ale testowania obciążenia na dużą skalę i testowaniu metodą regresji są doskonałe używa.
 
--   **Uzupełniające pojemności na żądanie**: niskiego priorytetu maszyn wirtualnych może służyć do uzupełnienia regular dedykowanych maszyn wirtualnych — Jeśli jest dostępny, zadania można skalować i z tego powodu ukończyć przyspieszają obniżenia kosztów; Jeśli nie jest dostępny, linia bazowa dedykowanych maszyn wirtualnych jest nadal dostępny .
+-   **Uzupełniające pojemności na żądanie**: maszyny wirtualne o niskim priorytecie może służyć jako uzupełnienie zwykłe dedykowanych maszyn wirtualnych — jeśli są dostępne, skalowanie i w związku z tym należy wykonać dzięki szybszemu niższy koszt zadania; gdy nie jest dostępny, pozostanie linii bazowej dedykowanych maszyn wirtualnych .
 
--   **Czas wykonania zadania elastyczne**: w przypadku elastyczność w zadaniach czasu trzeba wykonać, a następnie potencjalnych porzucania pojemności może następować; z uwzględnieniem maszyn wirtualnych niskiego priorytetu zadania często uruchamiać szybsze i tańsze.
+-   **Czas wykonywania zadania elastyczne**: w przypadku elastyczność w zadaniach czasu musi zostać zakończony, a następnie potencjalne przerwy w pojemności może być tolerowana; jednak dodając maszyny wirtualne o niskim priorytecie zadania często wykonywane szybciej i niższym kosztem.
 
-Pule partii może być skonfigurowana do używania niskiego priorytetu maszyny wirtualne na kilka sposobów, w zależności od elastyczność w czasie wykonywania zadania:
+Można skonfigurować pule usługi Batch w celu użycia maszyn wirtualnych o niskim priorytecie na kilka sposobów, w zależności od elastyczność w momencie wykonywania zadania:
 
--   Można jedynie niskiego priorytetu maszyny wirtualne w puli. W takim przypadku partii odzyskuje wszelkie preempted pojemności, jeśli jest dostępna. Ta konfiguracja jest najtańszej sposobem wykonania zadania, które są używane tylko niskiego priorytetu maszyny wirtualne.
+-   Maszyny wirtualne o niskim priorytecie może służyć wyłącznie w puli. W tym przypadku usługi Batch odzyskuje wszystkie preempted pojemności, jeśli jest dostępna. Ta konfiguracja jest najtańszy sposób wykonania zadania, maszyn wirtualnych tylko o niskim priorytecie są używane.
 
--   Maszyny wirtualne niskiego priorytetu może służyć w połączeniu z linii bazowej stałym dedykowanych maszyn wirtualnych. Stała liczba dedykowanych maszyn wirtualnych zapewnia, że jest zawsze niektórych wydajności, aby zachować postęp zadania.
+-   Maszyny wirtualne o niskim priorytecie może służyć w połączeniu z stały punktu odniesienia dedykowanych maszyn wirtualnych. Stała liczba dedykowanych maszyn wirtualnych zapewnia, że zawsze jest niektóre pojemność, aby zachować postępu zadania.
 
--   Może istnieć dynamiczne mieszanego dedykowanej i niskiego priorytetu maszyn wirtualnych, tak, aby tańsze niskiego priorytetu maszyny wirtualnej wyłącznie są używane, jeśli jest dostępny, ale dedykowanych maszyn wirtualnych cenach full są skalowane w górę na żądanie. Ta konfiguracja zapewnia minimalna ilość zdolności do prowadzenia postępu zadania.
+-   Może być dynamiczny kombinacji maszyny wirtualne dedykowane i o niskim priorytecie, tak, aby tańsze o niskim priorytecie maszyny wirtualne są używane wyłącznie, gdy jest to dostępne, ale ceny pełnej dedykowanych maszyn wirtualnych są skalowane w górę gdy jest to wymagane. Ta konfiguracja zapewnia minimalną ilość miejsca, do prowadzenia zadań postępu.
 
-## <a name="batch-support-for-low-priority-vms"></a>Obsługa partii dla maszyn wirtualnych o niskim priorytecie
+## <a name="batch-support-for-low-priority-vms"></a>Obsługa usługi Batch dla maszyn wirtualnych o niskim priorytecie
 
-Partia zadań Azure oferuje kilka możliwości, które ułatwiają korzystanie i korzystają z maszyn wirtualnych o niskim priorytecie:
+Usługa Azure Batch oferuje kilka możliwości, które ułatwiają używanie i korzystać z maszyn wirtualnych o niskim priorytecie:
 
--   Pule partii może zawierać zarówno dedykowanych maszyn wirtualnych, jak i niskiego priorytetu maszyn wirtualnych. Podczas tworzenia puli lub zmienić w dowolnym momencie dla istniejącej puli, przy użyciu operacji zmiany rozmiaru jawne lub automatyczne skalowanie można określić liczbę każdego typu maszyny wirtualnej. Przesyłanie zadań i zadań może pozostać bez zmian, niezależnie od tego, typy maszyn wirtualnych w puli. Można również skonfigurować pulę całkowicie maszyn wirtualnych niskiego priorytetu uruchomienie zadania jako tanio, jak to możliwe, ale pokrętła zapasowej dedykowanych maszyn wirtualnych, jeśli pojemność spadnie poniżej minimalnej, aby zachować zadania uruchomione.
+-   Pule usługi Batch może zawierać zarówno dedykowanych maszyn wirtualnych, jak i maszyny wirtualne o niskim priorytecie. Po utworzeniu puli lub zmienić w dowolnym momencie do istniejącej puli, za pomocą operacji jawne zmiany rozmiaru lub skalowanie automatyczne można określić liczbę każdego typu maszyny Wirtualnej. Przesyłanie zadań i zadań może pozostać bez zmian, niezależnie od tego, typy maszyn wirtualnych w puli. Można również skonfigurować pulę, aby całkowicie używać do uruchamiania zadań jako niedrogo, jak to możliwe, ale uruchamiania dedykowanych maszyn wirtualnych, gdy wydajność spada poniżej minimalny próg, aby zachować zadania uruchomione maszyny wirtualne o niskim priorytecie.
 
--   Pule partii automatycznie wyszukiwać docelowej liczby maszyn wirtualnych o niskim priorytecie. Jeśli maszyny wirtualne są zastępowane, partii podejmuje próbę Zastąp utracone pojemności i zwracany do obiektu docelowego.
+-   Pule usługi Batch automatycznie wyszukać docelowa liczba maszyn wirtualnych o niskim priorytecie. Jeśli maszyny wirtualne są przerywane, Batch podejmuje próbę zastąpić utraconą wydajność i powrócić do obiektu docelowego.
 
--   Przerwanie zadania wsadowego wykrywa i automatycznie requeues zadania, aby uruchomić ponownie.
+-   Przerwanie zadania usługi Batch wykrywa i automatycznie requeues zadania, aby ponownie uruchomić.
 
--   Maszyny wirtualne o niskim priorytecie ma przydział oddzielnych vCPU, która różni się od dla dedykowanych maszyn wirtualnych. 
-    Limit przydziału maszyn wirtualnych o niskim priorytecie jest większy niż limit przydziału dla dedykowanych maszyn wirtualnych, ponieważ koszt niskiego priorytetu maszyny wirtualne. Aby uzyskać więcej informacji, zobacz [partii usługi przydziały i limity](batch-quota-limit.md#resource-quotas).    
+-   Maszyny wirtualne o niskim priorytecie mają przydział oddzielne procesora wirtualnego vCPU, który różni się od tego dla dedykowanych maszyn wirtualnych. 
+    Limit przydziału dla maszyn wirtualnych o niskim priorytecie jest wyższa niż limit przydziału dla dedykowanych maszyn wirtualnych, ponieważ maszyny wirtualne o niskim priorytecie koszt mniej. Aby uzyskać więcej informacji, zobacz [Batch przydziałach i limitach usługi](batch-quota-limit.md#resource-quotas).    
 
 > [!NOTE]
-> Niskiego priorytetu maszyny wirtualne nie są obsługiwane dla kont usługi partia zadań utworzonych w [tryb subskrypcji użytkownika](batch-api-basics.md#account).
+> Maszyny wirtualne o niskim priorytecie nie są obecnie obsługiwane dla kont usługi Batch utworzonych w [trybu subskrypcji użytkownika](batch-api-basics.md#account).
 >
 
 ## <a name="create-and-update-pools"></a>Tworzenie i aktualizowanie pul
 
-Pula usługi partia zadań może zawierać dedykowanych i niskiego priorytetu maszyny wirtualne (zwaną także jako węzły obliczeniowe). Można ustawić docelowy liczba węzłów obliczeniowych dla dedykowanych i niskiego priorytetu maszyn wirtualnych. Docelowy liczba węzłów określa liczbę maszyn wirtualnych mają w puli.
+Puli usługi Batch mogą zawierać zarówno w przypadku dedykowanego, jak i o niskim priorytecie maszyn wirtualnych (nazywane także jako węzły obliczeniowe). Docelowa liczba węzłów obliczeniowych można ustawić dla maszyn wirtualnych zarówno w przypadku dedykowanego, jak i o niskim priorytecie. Docelowa liczba węzłów określa liczbę maszyn wirtualnych, które mają w puli.
 
-Na przykład aby utworzyć pulę przy użyciu usługi w chmurze Azure maszyn wirtualnych z elementem docelowym 5 dedykowanych maszyn wirtualnych i 20 niskiego priorytetu maszyn wirtualnych:
+Na przykład aby utworzyć pulę przy użyciu maszyn wirtualnych usługi w chmurze platformy Azure z obiektem docelowym 5 dedykowanych maszyn wirtualnych i 20 maszyn wirtualnych o niskim priorytecie:
 
 ```csharp
 CloudPool pool = batchClient.PoolOperations.CreatePool(
@@ -85,11 +85,11 @@ CloudPool pool = batchClient.PoolOperations.CreatePool(
     targetDedicatedComputeNodes: 5,
     targetLowPriorityComputeNodes: 20,
     virtualMachineSize: "Standard_D2_v2",
-    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4") // WS 2012 R2
+    cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5") // WS 2016
 );
 ```
 
-Aby utworzyć pulę przy użyciu maszyn wirtualnych platformy Azure (w tym przypadku maszyn wirtualnych systemu Linux) z docelowym 5 dedykowanych maszyn wirtualnych i 20 niskiego priorytetu maszyn wirtualnych:
+Aby utworzyć pulę przy użyciu maszyn wirtualnych platformy Azure (w tym przypadku maszyn wirtualnych systemu Linux) z obiektem docelowym 5 w wersji dedykowanej maszyn wirtualnych i 20 maszyn wirtualnych o niskim priorytecie:
 
 ```csharp
 ImageReference imageRef = new ImageReference(
@@ -110,72 +110,72 @@ pool = batchClient.PoolOperations.CreatePool(
     virtualMachineConfiguration: virtualMachineConfiguration);
 ```
 
-Bieżąca liczba węzłów można uzyskać dedykowane i niskiego priorytetu maszyn wirtualnych:
+Bieżąca liczba węzłów można uzyskać dla dedykowanych i o niskim priorytecie maszyn wirtualnych:
 
 ```csharp
 int? numDedicated = pool1.CurrentDedicatedComputeNodes;
 int? numLowPri = pool1.CurrentLowPriorityComputeNodes;
 ```
 
-Węzły puli mają właściwości, aby wskazać, czy węzeł jest dedykowanej lub niskiego priorytetu maszyny Wirtualnej:
+Węzły puli mają właściwości, aby wskazać, czy węzeł dedykowanych lub o niskim priorytecie maszyny Wirtualnej:
 
 ```csharp
 bool? isNodeDedicated = poolNode.IsDedicated;
 ```
 
-Jeśli co najmniej jeden węzeł w puli są zastępowane, operację listy węzłów w puli nadal zwraca tych węzłów. Bieżąca liczba węzłów niskiego priorytetu pozostaje bez zmian, ale te węzły mają ich stan ustawioną **przeniesione** stanu. Partii próbuje odnaleźć zastąpienia maszyn wirtualnych, a w razie powodzenia węzły przejść przez **tworzenie** , a następnie **uruchamianie** stanów, zanim staną się dostępne do wykonania zadania, podobnie jak nowe węzły.
+Gdy jeden lub więcej węzłów w puli są przerywane, operacja wygenerowania listy węzłów w puli nadal zwraca tych węzłów. Bieżąca liczba węzłów o niskim priorytecie nie jest zmieniany, ale te węzły mają ich stan ustawiony na **przeniesione** stanu. Próbuje znaleźć zastępczy maszyny wirtualne partii, a w przypadku powodzenia węzły przechodzą przez **tworzenie** i następnie **od** państw, zanim staje się dostępna do wykonania zadania podrzędnego, podobnie jak w przypadku nowych węzłów.
 
-## <a name="scale-a-pool-containing-low-priority-vms"></a>Skalowanie pulę zawierającą maszyn wirtualnych o niskim priorytecie
+## <a name="scale-a-pool-containing-low-priority-vms"></a>Skalowanie puli zawierających maszyny wirtualne o niskim priorytecie
 
-Przy użyciu pul wyłącznie składające się z dedykowanych maszyn wirtualnych, jest możliwość skalowania zawierających maszyny wirtualne o niskim priorytecie przez wywołanie metody zmiany rozmiaru lub przy użyciu automatycznego skalowania puli.
+Dzięki pulom wyłącznie składający się z dedykowanych maszyn wirtualnych, jest to możliwe przeskalować pulę zawierającą maszyny wirtualne o niskim priorytecie, przez wywołanie metody zmiany rozmiaru lub przy użyciu skalowania automatycznego.
 
-Drugi parametr opcjonalny, który aktualizuje wartość przyjmuje operacji zmiany rozmiaru puli **targetLowPriorityNodes**:
+Operacji zmiany rozmiaru puli zajmuje drugi opcjonalnym parametrem, który aktualizuje wartość **targetLowPriorityNodes**:
 
 ```csharp
 pool.Resize(targetDedicatedComputeNodes: 0, targetLowPriorityComputeNodes: 25);
 ```
 
-Formuła automatycznego skalowania puli obsługuje niskiego priorytetu maszyn wirtualnych w następujący sposób:
+Formuła automatycznego skalowania puli obsługuje maszyny wirtualne o niskim priorytecie w następujący sposób:
 
--   Można pobrać lub ustawić wartość zmiennej zdefiniowanej przez usługę **$TargetLowPriorityNodes**.
+-   Można pobrać lub ustawić wartość zmiennej zdefiniowane przez usługę **$TargetLowPriorityNodes**.
 
--   Można uzyskać wartości zmiennej zdefiniowanej przez usługę **$CurrentLowPriorityNodes**.
+-   Można uzyskać wartości zmiennej zdefiniowane przez usługę **$CurrentLowPriorityNodes**.
 
--   Można uzyskać wartości zmiennej zdefiniowanej przez usługę **$PreemptedNodeCount**. 
-    Ta zmienna zwraca liczbę węzłów w stanie preempted i umożliwia skalowanie w górę lub w dół Liczba dedykowanych węzłów, w zależności od liczby węzłów wywłaszczone, które są niedostępne.
+-   Można uzyskać wartości zmiennej zdefiniowane przez usługę **$PreemptedNodeCount**. 
+    Ta zmienna zwraca liczbę węzłów w stanie preempted i pozwala na skalowanie w górę lub w dół liczbę dedykowanych węzłów, w zależności od liczby węzłów przerywane, które są niedostępne.
 
-## <a name="jobs-and-tasks"></a>Zadań i zadań
+## <a name="jobs-and-tasks"></a>Zadania i podzadania
 
-Zadań i zadań wymaga niewiele dodatkowej konfiguracji dla węzłów niskiego priorytetu; obsługiwane jest tylko wygląda następująco:
+Zadania i podzadania wymaga nieco dodatkowej konfiguracji węzłów o niskim priorytecie; obsługują tylko jest następująca:
 
 -   Właściwość JobManagerTask zadania ma nową właściwość **AllowLowPriorityNode**. 
-    Jeśli ta właściwość ma wartość true, można zaplanować zadanie Menedżer zadania w węźle dedykowanej lub niskim priorytecie. Jeśli ta właściwość ma wartość false, zadanie Menedżer zadania jest zaplanowane tylko dedykowane węzła.
+    Gdy ta właściwość ma wartość true, można zaplanować zadanie podrzędne Menedżera zadań w węźle dedykowanych lub o niskim priorytecie. Jeśli ta właściwość ma wartość false, zadanie podrzędne Menedżera zadań jest zaplanowane tylko dedykowanych węzłów.
 
--   [Zmiennej środowiskowej](batch-compute-node-environment-variables.md) jest dostępna w aplikacji zadań, dzięki czemu można określić, czy jest uruchomiona w węźle niskiego priorytetu lub dedykowanych. Zmienna środowiskowa jest AZ_BATCH_NODE_IS_DEDICATED.
+-   [Zmiennej środowiskowej](batch-compute-node-environment-variables.md) jest dostępna dla aplikacji zadania podrzędnego, dzięki czemu można określić, czy jest uruchomiona w węźle o niskim priorytecie i dedykowanych. Zmienna środowiskowa jest AZ_BATCH_NODE_IS_DEDICATED.
 
 ## <a name="handling-preemption"></a>Obsługa wywłaszczania
 
-Maszyny wirtualne od czasu do czasu może być wywłaszczony; w przypadku wywłaszczanie partii wykonuje następujące czynności:
+Maszyny wirtualne mogą być wypierane; w przypadku wywłaszczania Batch wykonuje następujące czynności:
 
--   Preempted maszyny wirtualne mają ich stan aktualizacji do **przeniesione**.
--   Jeśli zadania zostały uruchomione na maszynach wirtualnych węzła wywłaszczone, te zadania są umieszczony w kolejce i uruchom ponownie.
--   Maszyna wirtualna jest skutecznie usunięta, co prowadziło do utraty wszystkich danych przechowywanych lokalnie na maszynie Wirtualnej.
--   Pula stale próbuje nawiązać połączenie docelowej liczba dostępnych węzłów niskiego priorytetu. Po znalezieniu pojemności zastępczy Zachowaj ich identyfikatory węzłów, ale są ponownie inicjowane, pośrednictwa **tworzenie** i **uruchamianie** stwierdza, zanim staną się dostępne do planowania zadań.
--   Wywłaszczanie liczniki są dostępne jako metrykę w portalu Azure.
+-   Preempted maszyny wirtualne mają stanu, który został zaktualizowany do **przeniesione**.
+-   Jeśli zadania zostały uruchomione na maszynach wirtualnych przeniesiona węzeł, te zadania są ponownie umieszczone w kolejce i uruchom ponownie.
+-   Maszyna wirtualna jest skutecznie usunięta, co prowadzi do utraty wszystkich danych przechowywanych lokalnie na maszynie Wirtualnej.
+-   Pula stale próbuje nawiązać połączenie docelowej liczby dostępnych węzłów o niskim priorytecie. W przypadku odnalezienia pojemności zastąpienie węzły Zachowaj ich identyfikatorów, ale są ponownie inicjowane, przeprowadzając **tworzenie** i **od** państw, zanim staną się dostępne w przypadku planowania zadań.
+-   Wywłaszczanie liczniki są dostępne jako metryki w witrynie Azure portal.
 
 ## <a name="metrics"></a>Metryki
 
-Dostępne są nowe metryki [portalu Azure](https://portal.azure.com) dla węzłów o niskim priorytecie. Te metryki są:
+Nowe metryki są dostępne w [witryny Azure portal](https://portal.azure.com) dla węzłów o niskim priorytecie. Te metryki są:
 
 - Liczba węzłów o niskim priorytecie
-- Liczby rdzeni o niskim priorytecie 
-- Wywłaszczone liczba węzłów
+- Liczba rdzeni o niskim priorytecie 
+- Przerywane liczba węzłów
 
-Aby wyświetlić metryki w portalu Azure:
+Aby wyświetlić metryki w witrynie Azure portal:
 
-1. Przejdź do konta partii zadań w portalu i wyświetlenia ustawień konta usługi partia zadań.
+1. Przejdź do swojego konta usługi Batch w portalu i wyświetlanie ustawień dla konta usługi Batch.
 2. Wybierz **metryki** z **monitorowanie** sekcji.
-3. Wybrać metryki chcesz z **dostępne metryki** listy.
+3. Wybierz metryki użytkowników z **dostępne metryki** listy.
 
 ![Metryki dla węzłów o niskim priorytecie](media/batch-low-pri-vms/low-pri-metrics.png)
 

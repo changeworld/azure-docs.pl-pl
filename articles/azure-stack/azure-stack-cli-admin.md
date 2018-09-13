@@ -1,6 +1,6 @@
 ---
-title: Włącz wiersza polecenia platformy Azure dla użytkowników stosu Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać do zarządzania i wdrażania zasobów na stosie Azure międzyplatformowego interfejsu wiersza polecenia (CLI)
+title: Włączanie interfejsu wiersza polecenia platformy Azure dla użytkowników usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wdrażać zasoby w usłudze Azure Stack i zarządzać nimi za pomocą międzyplatformowego interfejsu wiersza polecenia (CLI)
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,30 +12,30 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/06/2018
+ms.date: 06/11/2018
 ms.author: mabrigg
-ms.openlocfilehash: d0103d211608514848da7d789d32d37d8385f33f
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 09c551ea7196ae20a60a5dd34c1cda889ff5df46
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247860"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35648980"
 ---
-# <a name="enable-azure-cli-for-azure-stack-users"></a>Włącz wiersza polecenia platformy Azure dla użytkowników usługi Azure stosu
+# <a name="enable-azure-cli-for-azure-stack-users"></a>Włączanie interfejsu wiersza polecenia platformy Azure dla użytkowników usługi Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Nie ma żadnych zadań specyficznych dla operatora stosu Azure, które można wykonywać przy użyciu wiersza polecenia platformy Azure. Jednak przed użytkownicy mogą zarządzać zasobami za pośrednictwem interfejsu wiersza polecenia, Operatorzy stosu Azure podać je z następujących czynności:
+Certyfikat główny urzędu certyfikacji można udostępnić użytkownikom usługi Azure Stack pozwala używać wiersza polecenia platformy Azure na swoich komputerach deweloperskich. Użytkownicy muszą certyfikatów do zarządzania zasobami za pomocą interfejsu wiersza polecenia.
 
-* **Certyfikat główny urzędu certyfikacji stosu Azure** jest wymagany, jeśli użytkownicy korzystają z interfejsu wiersza polecenia na stacji roboczej poza Azure stosu Development Kit.  
+* **Certyfikat główny urzędu certyfikacji usługi Azure Stack** jest wymagany, jeśli użytkownicy korzystają z interfejsu wiersza polecenia na stacji roboczej poza Azure Stack Development Kit.  
 
-* **Punkt końcowy maszyny wirtualnej aliasy** zapewnia aliasu, takich jak "UbuntuLTS" lub "Win2012Datacenter", który odwołuje się do wydawcy obrazu, oferty, jednostki SKU i wersji jako pojedynczy parametr podczas wdrażania maszyn wirtualnych.  
+* **Punkt końcowy aliasy maszyny wirtualnej** zawiera alias, takich jak "UbuntuLTS" lub "Win2012Datacenter", który odwołuje się do wydawcy obrazu, oferty, jednostki SKU i wersji jako pojedynczy parametr podczas wdrażania maszyn wirtualnych.  
 
-W poniższych sekcjach opisano, jak uzyskać te wartości.
+W następujących sekcjach opisano sposób uzyskiwania tych wartości.
 
-## <a name="export-the-azure-stack-ca-root-certificate"></a>Wyeksportuj certyfikat główny urzędu certyfikacji Azure stosu
+## <a name="export-the-azure-stack-ca-root-certificate"></a>Wyeksportuj certyfikat głównego urzędu certyfikacji usługi Azure Stack
 
-Certyfikat główny urzędu certyfikacji stosu Azure jest dostępna w zestawie i na maszynie wirtualnej dzierżawy, która działa w środowisku development kit. Aby wyeksportować certyfikat główny stos Azure w formacie PEM, zaloguj się do swojego zestawu rozwoju lub maszyna wirtualna dzierżawcy i uruchom następujący skrypt:
+Certyfikat główny urzędu certyfikacji usługi Azure Stack można znaleźć w zestawie deweloperskim i na maszynie wirtualnej dzierżawy, który jest uruchomiony w środowisku deweloperskim zestaw. Aby wyeksportować certyfikat główny usługi Azure Stack w formacie PEM, zaloguj się do zestawu SDK usługi lub maszyny wirtualnej dzierżawcy, a następnie uruchom następujący skrypt:
 
 ```powershell
 $label = "AzureStackSelfSignedRootCert"
@@ -56,19 +56,19 @@ certutil -encode root.cer root.pem
 
 ## <a name="set-up-the-virtual-machine-aliases-endpoint"></a>Konfigurowanie punktu końcowego aliasy maszyny wirtualnej
 
-Operatory stosu Azure należy skonfigurować publicznie punktu końcowego, który znajduje się plik alias maszyny wirtualnej. Plik aliasu maszyny wirtualnej jest pliku JSON, który zawiera nazwę pospolitą dla obrazu. Następnie określono tej nazwy, po wdrożeniu maszyny Wirtualnej jako parametr wiersza polecenia platformy Azure.  
+Operatorzy usługi Azure Stack, należy skonfigurować publicznie dostępnym punkcie końcowym hostujący plik alias maszyny wirtualnej. Plik alias maszyny wirtualnej znajduje się plik w formacie JSON, który zawiera nazwę pospolitą obrazu. Następnie określono tej nazwy, podczas wdrażania maszyny Wirtualnej jako parametr wiersza polecenia platformy Azure.  
 
-Przed dodaniem wpisu do pliku aliasu, upewnij się, że możesz [pobrać obrazów w witrynie Azure Marketplace](azure-stack-download-azure-marketplace-item.md), lub mieć [opublikowane niestandardowego obrazu](azure-stack-add-vm-image.md). W przypadku publikowania niestandardowego obrazu, zwróć uwagę na wydawcy, oferty, jednostki SKU i wersji informacji, które zostały określone podczas publikowania. Jeśli jest obrazu z witryny marketplace, można wyświetlić informacje przy użyciu ```Get-AzureVMImage``` polecenia cmdlet.  
+Przed dodaniem wpis do pliku aliasu, upewnij się, że możesz [pobieranie obrazów w portalu Azure Marketplace](azure-stack-download-azure-marketplace-item.md), lub [opublikowane swój własny obraz niestandardowy](azure-stack-add-vm-image.md). Jeśli publikujesz niestandardowego obrazu, zanotuj informacje o wydawcy, oferty, jednostki SKU i wersji, które zostały określone podczas publikowania. Jeśli jest to obraz z witryny marketplace, można wyświetlić informacje przy użyciu ```Get-AzureVMImage``` polecenia cmdlet.  
 
-A [przykładowy plik alias](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) z obrazem wspólnej wiele aliasów jest dostępna. Można użyć który jako punktu wyjścia. Hostowanie tego pliku w miejscu, gdzie klienci interfejsu wiersza polecenia można uzyskać do niej dostęp. Jednym ze sposobów jest przechowywać plik w koncie magazynu obiektów blob i udostępniać adres URL użytkownikom:
+A [przykładowy plik alias](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) za pomocą wielu typowych obrazu aliasów jest dostępna. Używając, jako punktu wyjścia. Hostowanie tego pliku w miejscu, gdzie klienci interfejsu wiersza polecenia można uzyskiwać dostęp go niego. Jednym ze sposobów jest do hostowania plików na koncie usługi blob storage, a następnie Udostępnij adres URL z użytkownikami:
 
 1. Pobierz [przykładowy plik](https://raw.githubusercontent.com/Azure/azure-rest-api-specs/master/arm-compute/quickstart-templates/aliases.json) z usługi GitHub.
-2. Utwórz nowe konto magazynu Azure stosu. Po zakończeniu tej operacji należy utworzyć nowy kontener obiektów blob. Ustawienie zasad dostępu do "public".  
-3. Przekaż plik JSON do nowego kontenera. Po zakończeniu tej operacji można wyświetlić adres URL obiektu blob wybieraniu nazwy obiektów blob, a następnie wybierając adres URL z właściwości obiektu blob.
+2. Utwórz nowe konto magazynu w usłudze Azure Stack. Gdy zostanie to zrobione, należy utworzyć nowy kontener obiektów blob. Ustawienie zasad dostępu do "publicznej".  
+3. Przekaż plik JSON do nowego kontenera. Gdy zostanie to zrobione, możesz wyświetlić adres URL obiektu blob przy wybieraniu nazwy obiektu blob, a następnie wybierając adres URL z właściwości obiektu blob.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Wdrażanie szablonów z wiersza polecenia platformy Azure](azure-stack-deploy-template-command-line.md)
+- [Wdrażanie szablonów za pomocą wiersza polecenia platformy Azure](azure-stack-deploy-template-command-line.md)
 
 - [Łączenie się z programem PowerShell](azure-stack-connect-powershell.md)
 

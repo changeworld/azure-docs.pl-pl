@@ -1,6 +1,6 @@
 ---
-title: Skonfiguruj długoterminowego przechowywania kopii zapasowych — baza danych SQL Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak do przechowywania automatycznych kopii zapasowych w magazynie usług odzyskiwania Azure i przywrócić z magazynu usług odzyskiwania Azure
+title: Konfigurowanie długoterminowego przechowywania kopii zapasowych — usługi Azure SQL Database | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak do przechowywania automatycznych kopii zapasowych w magazynie usługi Azure Recovery Services i przywracania z magazynu usługi Azure Recovery Services
 services: sql-database
 author: anosov1960
 manager: craigg
@@ -10,30 +10,30 @@ ms.topic: conceptual
 ms.date: 05/08/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: feefe68fbe6681ee4b450503606ac8c4f25d5a39
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: c908e73a225f90227f09a8bb806a62c690de7632
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130264"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718852"
 ---
-# <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention-using-azure-recovery-services-vault"></a>Konfigurowanie i Przywróć z bazy danych SQL Azure długoterminowego przechowywania kopii zapasowych za pomocą magazynu usług odzyskiwania Azure
+# <a name="configure-and-restore-from-azure-sql-database-long-term-backup-retention-using-azure-recovery-services-vault"></a>Konfigurowanie i przywracanie usługi Azure SQL Database długoterminowym przechowywaniu kopii zapasowych przy użyciu magazynu usługi Azure Recovery Services
 
-Można skonfigurować magazyn usług odzyskiwania Azure do przechowywania kopii zapasowych bazy danych Azure SQL, a następnie odzyskać bazę danych za pomocą kopii zapasowej przechowywane w magazynie przy użyciu portalu Azure lub programu PowerShell.
+Można skonfigurować magazyn usługi Azure Recovery Services, aby przechowywać kopie zapasowe bazy danych Azure SQL, a następnie Odzyskaj bazę danych przy użyciu kopii zapasowych przechowywane w magazynie przy użyciu witryny Azure portal lub programu PowerShell.
 
 > [!NOTE]
-> W ramach początkowa wersja Preview długoterminowego przechowywania kopii zapasowych w października 2016 kopie zapasowe są przechowywane w magazynie usług odzyskiwania usług Azure. Ta aktualizacja usuwa to zależność, ale dla zgodności z poprzednimi wersjami oryginalnego interfejsu API jest obsługiwane do 31 maja 2018. Jeśli potrzebujesz wchodzić w interakcje z kopii zapasowych w magazynie Azure Services Recovery, zobacz [długoterminowego przechowywania kopii zapasowych za pomocą usługi Azure Recovery Services vault](sql-database-long-term-backup-retention-configure-vault.md). 
+> W ramach wstępną wersję zapoznawczą długoterminowego przechowywania kopii zapasowych w październiku 2016 r kopie zapasowe są przechowywane w magazynie usług odzyskiwania Azure Services. Ta aktualizacja usuwa tę zależność, ale zgodności z poprzednimi wersjami oryginalny interfejs API jest obsługiwane do 31 maja 2018 r. Jeśli zajdzie potrzeba interakcji z kopii zapasowych w magazynie usługi Azure Recovery Services, zobacz [długoterminowego przechowywania kopii zapasowych przy użyciu magazynu usług odzyskiwania Azure Services](sql-database-long-term-backup-retention-configure-vault.md). 
 
 
 ## <a name="azure-portal"></a>Azure Portal
 
-Poniższe sekcje pokazują, jak skonfigurować magazyn usług odzyskiwania Azure, wyświetlanie kopii zapasowych w magazynie i przywrócenie z magazynem za pomocą portalu Azure.
+Poniższe sekcje pokazują, jak skonfigurować magazyn usługi Azure Recovery Services, wyświetlanie kopii zapasowych w magazynie i przywracania z magazynu za pomocą witryny Azure portal.
 
-### <a name="configure-the-vault-register-the-server-and-select-databases"></a>Konfigurowanie magazynu, zarejestrować serwer i wybierz baz danych
+### <a name="configure-the-vault-register-the-server-and-select-databases"></a>Konfigurowanie magazynu, zarejestrować serwer, a następnie wybierz bazy danych
 
-Skonfiguruj Magazyn usług odzyskiwania Azure do [przechowywania automatycznych kopii zapasowych](sql-database-long-term-retention.md) przez okres dłuższy niż okres przechowywania warstwę usług. 
+Skonfiguruj magazyn usługi Azure Recovery Services do [przechowywania automatycznych kopii zapasowych](sql-database-long-term-retention.md) przez okres dłuższy niż okres przechowywania w warstwie usługi. 
 
-1. Otwórz **programu SQL Server** strony serwera.
+1. Otwórz **programu SQL Server** strony dla serwera.
 
    ![Strona serwera SQL](./media/sql-database-get-started-portal/sql-server-blade.png)
 
@@ -41,27 +41,27 @@ Skonfiguruj Magazyn usług odzyskiwania Azure do [przechowywania automatycznych 
 
    ![link długoterminowego przechowywania kopii zapasowych](./media/sql-database-get-started-backup-recovery/long-term-backup-retention-link.png)
 
-3. Na **długoterminowego przechowywania kopii zapasowych** serwera Przejrzyj i zaakceptuj warunki podglądu (chyba że użytkownik jeszcze - lub ta funkcja nie jest już w wersji zapoznawczej).
+3. Na **długoterminowego przechowywania kopii zapasowych** strony dla serwera, przejrzyj i zaakceptuj warunki dotyczące wersji zapoznawczej (chyba że ma już zrobione — lub ta funkcja nie jest już dostępna w wersji zapoznawczej).
 
    ![akceptowanie warunków wersji zapoznawczej](./media/sql-database-get-started-backup-recovery/accept-the-preview-terms.png)
 
-4. Aby skonfigurować długoterminowego przechowywania kopii zapasowych, wybierz tę bazę danych w siatce, a następnie kliknij przycisk **Konfiguruj** na pasku narzędzi.
+4. Aby skonfigurować długoterminowe przechowywanie kopii zapasowych, wybierz tę bazę danych w siatce, a następnie kliknij przycisk **Konfiguruj** na pasku narzędzi.
 
    ![wybieranie bazy danych do długoterminowego przechowywania kopii zapasowych](./media/sql-database-get-started-backup-recovery/select-database-for-long-term-backup-retention.png)
 
-5. Na **Konfiguruj** kliknij przycisk **Skonfiguruj wymagane ustawienia** w obszarze **magazyn usług odzyskiwania**.
+5. Na **Konfiguruj** kliknij **Skonfiguruj wymagane ustawienia** w obszarze **magazyn usługi odzyskiwania**.
 
    ![konfigurowanie linku do magazynu](./media/sql-database-get-started-backup-recovery/configure-vault-link.png)
 
-6. Na **magazyn usług odzyskiwania** wybierz istniejącego magazynu, jeśli istnieje. W przeciwnym razie, jeśli nie można odnaleźć magazynu usługi Recovery Services powiązanego z subskrypcją, kliknij, aby zakończyć przepływ i utworzyć magazyn usługi Recovery Services.
+6. Na **magazyn usługi Recovery services** wybierz istniejący magazyn, jeśli istnieje. W przeciwnym razie, jeśli nie można odnaleźć magazynu usługi Recovery Services powiązanego z subskrypcją, kliknij, aby zakończyć przepływ i utworzyć magazyn usługi Recovery Services.
 
-   ![Utwórz łącze do magazynu](./media/sql-database-get-started-backup-recovery/create-new-vault-link.png)
+   ![Tworzenie linku do magazynu](./media/sql-database-get-started-backup-recovery/create-new-vault-link.png)
 
-7. Na **Magazyny usług odzyskiwania** kliknij przycisk **Dodaj**.
+7. Na **Magazyny usługi Recovery Services** kliknij **Dodaj**.
 
    ![Dodawanie linku do magazynu](./media/sql-database-get-started-backup-recovery/add-new-vault-link.png)
    
-8. Na **magazyn usług odzyskiwania** Podaj prawidłową nazwę magazynu usług odzyskiwania.
+8. Na **magazyn usługi Recovery Services** Podaj prawidłową nazwę magazynu usługi Recovery Services.
 
    ![nazwa nowego magazynu](./media/sql-database-get-started-backup-recovery/new-vault-name.png)
 
@@ -73,20 +73,20 @@ Skonfiguruj Magazyn usług odzyskiwania Azure do [przechowywania automatycznych 
    > Magazyn musi znajdować się w tym samym regionie co serwer logiczny Azure SQL i musi używać tej samej grupy zasobów co serwer logiczny.
    >
 
-10. Po utworzeniu nowego magazynu, należy wykonać czynności niezbędnych do zwrócenia do **magazyn usług odzyskiwania** strony.
+10. Po utworzeniu nowego magazynu wykonaj niezbędne kroki, aby powrócić do **magazyn usługi Recovery services** strony.
 
-11. Na **magazyn usług odzyskiwania** strony, kliknij magazyn, a następnie kliknij przycisk **wybierz**.
+11. Na **magazyn usługi Recovery services** stronie, kliknij magazyn, a następnie kliknij przycisk **wybierz**.
 
    ![wybieranie istniejącego magazynu](./media/sql-database-get-started-backup-recovery/select-existing-vault.png)
 
-12. Na **Konfiguruj** , podaj prawidłową nazwę dla nowej zasady przechowywania, zmodyfikować domyślne zasady przechowywania, zależnie od potrzeb, a następnie kliknij przycisk **OK**.
+12. Na **Konfiguruj** strony, podaj prawidłową nazwę nowych zasad przechowywania, zmodyfikuj domyślne zasady przechowywania, zgodnie z potrzebami, a następnie kliknij przycisk **OK**.
 
    ![definiowanie zasad przechowywania](./media/sql-database-get-started-backup-recovery/define-retention-policy.png)
    
    >[!NOTE]
    >Nazwy zasad przechowywania nie zezwalaj na niektórych znaków, łącznie ze spacjami.
 
-13. Na **długoterminowego przechowywania kopii zapasowych** stron dla bazy danych, kliknij przycisk **zapisać** , a następnie kliknij przycisk **OK** do stosowania zasad długoterminowego przechowywania kopii zapasowych do wszystkich wybranych baz danych.
+13. Na **długoterminowego przechowywania kopii zapasowych** stronie bazy danych, kliknij przycisk **Zapisz** a następnie kliknij przycisk **OK** Aby zastosować zasady długoterminowego przechowywania kopii zapasowych do wszystkich wybranych baz danych.
 
    ![definiowanie zasad przechowywania](./media/sql-database-get-started-backup-recovery/save-retention-policy.png)
 
@@ -98,15 +98,15 @@ Skonfiguruj Magazyn usług odzyskiwania Azure do [przechowywania automatycznych 
 > Skonfigurowane kopie zapasowe zostaną wyświetlone w magazynie w ciągu następnych siedmiu dni. Pracę z tym samouczkiem można kontynuować po wyświetleniu kopii zapasowych w magazynie.
 >
 
-### <a name="view-backups-in-long-term-retention-using-azure-portal"></a>Wyświetl kopie zapasowe w przechowywania długoterminowego za pomocą portalu Azure
+### <a name="view-backups-in-long-term-retention-using-azure-portal"></a>Wyświetlanie kopii zapasowych podlegających długoterminowemu przechowywaniu przy użyciu witryny Azure portal
 
-Wyświetl informacje o kopii zapasowych bazy danych w [długoterminowego przechowywania kopii zapasowych](sql-database-long-term-retention.md). 
+Wyświetlanie informacji o kopie zapasowe bazy danych w [długoterminowego przechowywania kopii zapasowych](sql-database-long-term-retention.md). 
 
-1. W portalu Azure Otwórz magazyn usług odzyskiwania Azure na kopie zapasowe bazy danych (Przejdź do **wszystkie zasoby** i wybierz ją z listy zasobów dla Twojej subskrypcji) do wyświetlania ilości miejsca używanego przez kopie zapasowe bazy danych w Magazyn.
+1. W witrynie Azure portal Otwórz magazynu usług odzyskiwania Azure na kopie zapasowe bazy danych (Przejdź do **wszystkie zasoby** i wybierz ją z listy zasobów dla subskrypcji) aby wyświetlić ilość miejsca używanego przez kopie zapasowe bazy danych w Magazyn.
 
    ![wyświetlanie magazynu usługi recovery services z kopiami zapasowymi](./media/sql-database-get-started-backup-recovery/view-recovery-services-vault-with-data.png)
 
-2. Otwórz **bazy danych SQL** stron dla bazy danych.
+2. Otwórz **bazy danych SQL** strona bazy danych.
 
    ![Nowa strona bazy danych przykładowych](./media/sql-database-get-started-portal/new-sample-db-blade.png)
 
@@ -114,17 +114,17 @@ Wyświetl informacje o kopii zapasowych bazy danych w [długoterminowego przecho
 
    ![pasek narzędzi przywracania](./media/sql-database-get-started-backup-recovery/restore-toolbar.png)
 
-4. Na stronie przywracania kliknij **długoterminowej**.
+4. Na stronie przywracania kliknij **długoterminowe**.
 
 5. W obszarze kopii zapasowych magazynu platformy Azure kliknij pozycję **Wybierz kopię zapasową**, aby wyświetlić dostępne kopie zapasowych bazy danych podlegające długoterminowemu przechowywaniu kopii zapasowych.
 
    ![kopie zapasowe w magazynie](./media/sql-database-get-started-backup-recovery/view-backups-in-vault.png)
 
-### <a name="restore-a-database-from-a-backup-in-long-term-backup-retention-using-the-azure-portal"></a>Przywracanie bazy danych z kopii zapasowej w długoterminowego przechowywania kopii zapasowych przy użyciu portalu Azure
+### <a name="restore-a-database-from-a-backup-in-long-term-backup-retention-using-the-azure-portal"></a>Przywracanie bazy danych z kopii zapasowych podlegających długoterminowemu przechowywaniu kopii zapasowych przy użyciu witryny Azure portal
 
-Możesz przywrócić bazę danych nową bazę danych z kopii zapasowej w magazynie usług odzyskiwania Azure.
+Przywróceniu bazy danych do nowej bazy danych z kopii zapasowej w magazynie usługi Azure Recovery Services.
 
-1. Na **kopii zapasowych magazynu Azure** kliknij opcję tworzenia kopii zapasowej do przywrócenia, a następnie kliknij przycisk **wybierz**.
+1. Na **kopii zapasowych w magazynie Azure** kliknij kopię zapasową do przywrócenia, a następnie kliknij przycisk **wybierz**.
 
    ![wybieranie kopii zapasowej w magazynie](./media/sql-database-get-started-backup-recovery/select-backup-in-vault.png)
 
@@ -138,7 +138,7 @@ Możesz przywrócić bazę danych nową bazę danych z kopii zapasowej w magazyn
 
    ![postęp zadania przywracania z magazynu](./media/sql-database-get-started-backup-recovery/restore-job-progress-long-term.png)
 
-5. Po zakończeniu zadania przywracania, otwórz **baz danych SQL** strony w celu wyświetlenia nowo przywróconej bazy danych.
+5. Po zakończeniu zadania przywracania Otwórz **baz danych SQL** strony, aby wyświetlić nowo przywróconą bazę danych.
 
    ![baza danych przywrócona z magazynu](./media/sql-database-get-started-backup-recovery/restored-database-from-vault.png)
 
@@ -148,11 +148,11 @@ Możesz przywrócić bazę danych nową bazę danych z kopii zapasowej w magazyn
 
 ## <a name="powershell"></a>PowerShell
 
-Poniższe sekcje pokazują, jak skonfigurować magazyn usług odzyskiwania Azure, wyświetlanie kopii zapasowych w magazynie i przywracania z magazynu przy użyciu programu PowerShell.
+Poniższe sekcje pokazują, jak skonfigurować magazyn usługi Azure Recovery Services, wyświetlanie kopii zapasowych w magazynie i przywracania z magazynu przy użyciu programu PowerShell.
 
 ### <a name="create-a-recovery-services-vault"></a>Tworzenie magazynu usługi Recovery Services
 
-Użyj [AzureRmRecoveryServicesVault nowy](/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault) utworzyć magazyn usług odzyskiwania.
+Użyj [New-AzureRmRecoveryServicesVault](/powershell/module/azurerm.recoveryservices/new-azurermrecoveryservicesvault) do utworzenia magazynu usługi recovery services.
 
 > [!IMPORTANT]
 > Magazyn musi znajdować się w tym samym regionie co serwer logiczny Azure SQL i musi używać tej samej grupy zasobów co serwer logiczny.
@@ -169,9 +169,9 @@ $vault = New-AzureRmRecoveryServicesVault -Name $recoveryServiceVaultName -Resou
 Set-AzureRmRecoveryServicesBackupProperties -BackupStorageRedundancy LocallyRedundant -Vault $vault
 ```
 
-### <a name="set-your-server-to-use-the-recovery-vault-for-its-long-term-retention-backups"></a>Ustawienia programu server używane w magazynie odzyskiwania dla jego długoterminowego przechowywania kopii zapasowych
+### <a name="set-your-server-to-use-the-recovery-vault-for-its-long-term-retention-backups"></a>Skonfiguruj serwer na potrzeby magazynu usługi recovery jego długoterminowego przechowywania kopii zapasowych
 
-Użyj [AzureRmSqlServerBackupLongTermRetentionVault zestaw](/powershell/module/azurerm.sql/set-azurermsqlserverbackuplongtermretentionvault) polecenia cmdlet, aby skojarzyć magazyn usług odzyskiwania wcześniej utworzonej z określonym serwerem Azure SQL.
+Użyj [Set-AzureRmSqlServerBackupLongTermRetentionVault](/powershell/module/azurerm.sql/set-azurermsqlserverbackuplongtermretentionvault) polecenia cmdlet, aby skojarzyć magazyn usług odzyskiwania utworzone wcześniej z określonym serwerem Azure SQL.
 
 ```PowerShell
 # Set your server to use the vault to for long-term backup retention 
@@ -181,10 +181,10 @@ Set-AzureRmSqlServerBackupLongTermRetentionVault -ResourceGroupName $resourceGro
 
 ### <a name="create-a-retention-policy"></a>Tworzenie zasad przechowywania
 
-Zasady przechowywania określają czas przechowywania kopii zapasowej bazy danych. Użyj [Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/resourcemanager/azurerm.recoveryservices.backup/v2.3.0/get-azurermrecoveryservicesbackupretentionpolicyobject) polecenia cmdlet, aby uzyskać domyślne zasady przechowywania do użycia jako szablon do tworzenia zasad. W tym szablonie okres przechowywania ustawiono przez 2 lata. Następnie uruchom [AzureRmRecoveryServicesBackupProtectionPolicy nowy](/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy) na koniec Utwórz zasady. 
+Zasady przechowywania określają czas przechowywania kopii zapasowej bazy danych. Użyj [Get-AzureRmRecoveryServicesBackupRetentionPolicyObject](https://docs.microsoft.com/powershell/module/azurerm.recoveryservices.backup/get-azurermrecoveryservicesbackupretentionpolicyobject) polecenia cmdlet, aby uzyskać domyślne zasady przechowywania do użycia jako szablon do tworzenia zasad. W tym szablonie okres przechowywania ustawiono przez 2 lata. Następnie uruchom [New AzureRmRecoveryServicesBackupProtectionPolicy](/powershell/module/azurerm.recoveryservices.backup/new-azurermrecoveryservicesbackupprotectionpolicy) Aby utworzyć zasady. 
 
 > [!NOTE]
-> Niektóre polecenia cmdlet wymaga kontekstu magazynem przed uruchomieniem ([AzureRmRecoveryServicesVaultContext zestaw](/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)), zobacz tego polecenia cmdlet w kilku pokrewnych fragmentów. Ustaw kontekst, ponieważ zasady jest częścią magazynu. Można utworzyć wiele zasad przechowywania dla każdego magazynu, a następnie zastosować żądane zasady do określonych baz danych. 
+> Niektóre polecenia cmdlet wymagają, aby ustawić kontekst magazynu, przed uruchomieniem ([Set-AzureRmRecoveryServicesVaultContext](/powershell/module/azurerm.recoveryservices/set-azurermrecoveryservicesvaultcontext)), to polecenie cmdlet w kilku powiązanych fragmentach kodu. Ustaw kontekst, ponieważ zasady są częścią magazynu. Można utworzyć wiele zasad przechowywania dla każdego magazynu, a następnie zastosować żądane zasady do określonych baz danych. 
 
 
 ```PowerShell
@@ -206,7 +206,7 @@ $policy
 
 ### <a name="configure-a-database-to-use-the-previously-defined-retention-policy"></a>Konfigurowanie bazy danych do korzystania z wcześniej zdefiniowanej zasady przechowywania
 
-Użyj [AzureRmSqlDatabaseBackupLongTermRetentionPolicy zestaw](/powershell/module/azurerm.sql/set-azurermsqldatabasebackuplongtermretentionpolicy) polecenia cmdlet, aby zastosować nowe zasady do określonej bazy danych.
+Użyj [Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy](/powershell/module/azurerm.sql/set-azurermsqldatabasebackuplongtermretentionpolicy) polecenia cmdlet, aby zastosować nowe zasady z określoną bazą danych.
 
 ```PowerShell
 # Enable long-term retention for a specific SQL database
@@ -216,7 +216,7 @@ Set-AzureRmSqlDatabaseBackupLongTermRetentionPolicy -ResourceGroupName $resource
 
 ### <a name="view-backup-info-and-backups-in-long-term-retention"></a>Wyświetlanie informacji o kopiach zapasowych i kopii zapasowych podlegających długoterminowemu przechowywaniu
 
-Wyświetl informacje o kopii zapasowych bazy danych w [długoterminowego przechowywania kopii zapasowych](sql-database-long-term-retention.md). 
+Wyświetlanie informacji o kopie zapasowe bazy danych w [długoterminowego przechowywania kopii zapasowych](sql-database-long-term-retention.md). 
 
 Aby wyświetlić informacje o kopii zapasowej, użyj następujących poleceń cmdlet:
 
@@ -247,7 +247,7 @@ $availableBackups
 
 ### <a name="restore-a-database-from-a-backup-in-long-term-backup-retention"></a>Przywracanie bazy danych z kopii zapasowej podlegającej długoterminowemu przechowywaniu kopii zapasowych
 
-Przywracanie z długoterminowego przechowywania kopii zapasowych używa [Restore-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) polecenia cmdlet.
+Przywracania z długoterminowym przechowywaniem kopii zapasowych używa [Restore-AzureRmSqlDatabase](/powershell/module/azurerm.sql/restore-azurermsqldatabase) polecenia cmdlet.
 
 ```PowerShell
 # Restore the most recent backup: $availableBackups[0]
@@ -264,11 +264,11 @@ $restoredDb
 
 
 > [!NOTE]
-> W tym miejscu możesz nawiązać przywróconej bazy danych przy użyciu programu SQL Server Management Studio do wykonywania wymaganych zadań, np. wyodrębnienie bit danych z przywróconej bazy danych ma zostać skopiowany do istniejącej bazy danych lub usuń istniejącą bazę danych i zmienić nazwę przywróconej Baza danych do nazwy istniejącej bazy danych. Zobacz [punktu w czasie przywracania](sql-database-recovery-using-backups.md#point-in-time-restore).
+> W tym miejscu możesz nawiązać przywróconej bazy danych przy użyciu programu SQL Server Management Studio, aby wykonać niezbędne zadania, np. w przypadku wyodrębnienie bitu danych z przywróconej bazy danych do skopiowania do istniejącej bazy danych lub usuń istniejącą bazę danych i zmiana nazwy przywróconej bazy danych do istniejącej nazwy bazy danych. Zobacz [punktu w czasie przywracania](sql-database-recovery-using-backups.md#point-in-time-restore).
 
-## <a name="how-to-cleanup-backups-in-recovery-services-vault"></a>Jak oczyszczania tworzenia kopii zapasowych w magazynie usług odzyskiwania
+## <a name="how-to-cleanup-backups-in-recovery-services-vault"></a>Jak oczyszczania tworzenia kopii zapasowych w magazynie usługi Recovery Services
 
-Począwszy od 1 lipca 2018 API V1 od lewej do prawej jest przestarzała i wszystkie do istniejących kopii zapasowych w magazynach usługi odzyskiwania zostały poddane migracji do kontenery magazynu od lewej do prawej, które są zarządzane przez usługę SQL Database. Aby upewnić się, możesz nie są naliczane oryginalnej kopii zapasowych, ich zostały usunięte z magazynów po migracji. Jednak umieszczenie blokady w magazynie kopii zapasowych będzie nadal istnieje. Aby uniknąć niepotrzebnych opłat, można ręcznie usunąć starych kopii zapasowych z magazynu usług odzyskiwania przy użyciu następującego skryptu. 
+Począwszy od 1 lipca 2018 interfejsu API w wersji 1 od lewej do prawej jest przestarzała i wszystkie istniejące kopie zapasowe w magazynach usługi Recovery zostały zmigrowane do kontenerów magazynów od lewej do prawej, które są zarządzane przez usługę SQL Database. Aby upewnić się, że już nie jest naliczana za oryginalnej kopii zapasowych, ich zostały usunięte z magazynów po migracji. Jednak jeśli blokady są umieszczane w magazynie usługi tworzenia kopii zapasowych będą nadal istnieje. Aby uniknąć niepotrzebnych opłat, można ręcznie usunąć stare kopie zapasowe z magazynu usługi Recovery za pomocą poniższego skryptu. 
 
 ```PowerShell
 <#

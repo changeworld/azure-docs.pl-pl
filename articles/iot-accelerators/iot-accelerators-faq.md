@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
-ms.openlocfilehash: c5621d5e16e31104ee28cc521386a5c0ca290a8b
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 66494ca6bd9b4d8276469e85f4c6bb435ae245f7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187703"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716404"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Często zadawane pytania dotyczące akceleratorów rozwiązań IoT
 
@@ -73,10 +73,6 @@ Dwa. Można utworzyć tylko dwa wewnętrzne transakcje poziom 1 map Bing za plan
 > Platforma Microsoft Azure dla programu DreamSpark jest teraz nazywany Microsoft Imagine dla studentów.
 
 Obecnie nie można utworzyć za pomocą akceleratora rozwiązań [Microsoft Azure dla programu DreamSpark](https://azure.microsoft.com/pricing/member-offers/imagine/) konta. Jednakże, możesz utworzyć [konto bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/free/) w zaledwie kilka minut umożliwiająca tworzenie akcelerator rozwiązań.
-
-### <a name="can-i-create-a-solution-accelerator-if-i-have-cloud-solution-provider-csp-subscription"></a>Akcelerator rozwiązań można utworzyć, jeśli mam obecnie subskrypcję Cloud Solution Provider (CSP)?
-
-Obecnie nie można utworzyć akcelerator rozwiązań dzięki subskrypcji programu Cloud Solution Provider (CSP). Jednakże, możesz utworzyć [konto bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/free/) w zaledwie kilka minut umożliwiająca tworzenie akcelerator rozwiązań.
 
 ### <a name="how-do-i-delete-an-aad-tenant"></a>Jak usunąć dzierżawę usługi AAD?
 

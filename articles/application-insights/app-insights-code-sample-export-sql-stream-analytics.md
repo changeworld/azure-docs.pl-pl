@@ -1,6 +1,6 @@
 ---
 title: Eksportowanie do bazy danych SQL z usługi Azure Application Insights | Dokumentacja firmy Microsoft
-description: Stale eksportować dane usługi Application Insights do bazy danych SQL za pomocą usługi Stream Analytics.
+description: Ciągły Eksport danych usługi Application Insights do bazy danych SQL przy użyciu usługi Stream Analytics.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -11,92 +11,92 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 03/06/2015
+ms.date: 09/11/2017
 ms.author: mbullwin
-ms.openlocfilehash: 7d4bf0c5beeba22569e0000b28b007fb5b0ff68f
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 70086cdff3ed313d2b6851139ca8c8a937426aab
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35294180"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716795"
 ---
-# <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Wskazówki: Eksportowanie do bazy danych SQL z usługi Application Insights przy użyciu usługi analiza strumienia
-W tym artykule pokazano, jak przenieść dane telemetryczne z [Azure Application Insights] [ start] do bazy danych Azure SQL za pomocą [eksportu ciągłego] [ export] i [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
+# <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Przewodnik: Eksportowanie do bazy danych SQL z usługi Application Insights przy użyciu usługi Stream Analytics
+W tym artykule pokazano, jak przenieść dane telemetryczne z [usługi Azure Application Insights] [ start] do usługi Azure SQL database przy użyciu [eksportu ciągłego] [ export] i [usługi Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/). 
 
-Eksport ciągły przenosi dane telemetryczne do usługi Azure Storage w formacie JSON. Firma Microsoft będzie analizować obiektów JSON przy użyciu usługi Azure Stream Analytics i utworzyć wiersze w tabeli bazy danych.
+Eksport ciągły przenosi dane telemetryczne do usługi Azure Storage w formacie JSON. Firma Microsoft będzie analizowanie obiektów JSON za pomocą usługi Azure Stream Analytics i utworzyć wiersze w tabeli bazy danych.
 
-(Więcej ogólnie rzecz biorąc, eksportu ciągłego jest właśnie własnej analizy telemetrii aplikacji wysyłania do usługi Application Insights. Można dostosować ten przykładowy kod, aby wykonać inne czynności z wyeksportowane dane telemetryczne, takich jak agregacji danych.)
+(Ogólnie rzecz biorąc, Eksport ciągły jest to sposób na wykonywanie analizy telemetrii aplikacji wysyłanie do usługi Application Insights. Można dostosować ten przykładowy kod, aby wykonać inne czynności przy użyciu wyeksportowanego telemetrii, takie jak agregacja danych.)
 
-Zaczniemy od założenia już masz aplikację, którą chcesz monitorować.
+Rozpoczniemy pracę przy założeniu, że masz już aplikację, którą chcesz monitorować.
 
-W tym przykładzie użyjemy danych widoku strony, ale tego samego wzorca można z łatwością rozszerzyć na inne typy danych, takich jak niestandardowe zdarzenia i wyjątki. 
+W tym przykładzie użyjemy dane wyświetleń strony, ale tego samego wzorca można z łatwością rozszerzyć na inne typy danych, takie jak zdarzenia niestandardowe i wyjątki. 
 
-## <a name="add-application-insights-to-your-application"></a>Dodawanie usługi Application Insights do aplikacji
+## <a name="add-application-insights-to-your-application"></a>Dodaj usługę Application Insights do aplikacji
 Aby rozpocząć:
 
-1. [Skonfiguruj usługę Application Insights dla stron sieci web](app-insights-javascript.md). 
+1. [Konfigurowanie usługi Application Insights dla stron sieci web](app-insights-javascript.md). 
    
-    (W tym przykładzie firma Microsoft będzie skupić się na przetwarzanie danych widoku strony z przeglądarki klienta, ale można również skonfigurować usługi Application Insights dla po stronie serwera z [Java](app-insights-java-get-started.md) lub [ASP.NET](app-insights-asp-net.md) żądania aplikacji i procesów, zależności i inne dane telemetryczne serwera.)
-2. Publikowanie aplikacji i obserwować dane telemetryczne w zasobu usługi Application Insights.
+    (W tym przykładzie skupimy się na przetwarzaniu dane dotyczące wyświetleń stron w przeglądarkach klientów, ale można też skonfigurować usługę Application Insights po stronie serwera usługi [Java](app-insights-java-get-started.md) lub [ASP.NET](app-insights-asp-net.md) żądania aplikacji i procesów zależności i inne dane telemetryczne serwera).
+2. Opublikuj swoją aplikację i obejrzyj dane telemetryczne, które pojawiają się w zasobie usługi Application Insights.
 
 ## <a name="create-storage-in-azure"></a>Tworzenie magazynu na platformie Azure
-Eksport ciągły zawsze generuje dane do konta usługi Azure Storage, należy najpierw utworzyć magazyn.
+Eksport ciągły zawsze wysyła dane do konta usługi Azure Storage, dlatego musisz najpierw utworzyć magazynu.
 
-1. Utwórz konto magazynu w ramach subskrypcji w [portalu Azure][portal].
+1. Tworzenie konta magazynu w ramach subskrypcji w [witryny Azure portal][portal].
    
-    ![W portalu Azure wybierz nowy, danych, magazynu. Zaznacz klasycznym, wybierz polecenie Utwórz. Podaj nazwę magazynu.](./media/app-insights-code-sample-export-sql-stream-analytics/040-store.png)
+    ![W witrynie Azure portal wybierz pozycję Nowy, danych, magazynu. Wybierz model klasyczny, wybierz pozycję Utwórz. Podaj nazwę magazynu.](./media/app-insights-code-sample-export-sql-stream-analytics/040-store.png)
 2. Tworzenie kontenera
    
     ![W nowym magazynie wybierz kontenery, kliknij Kafelek kontenerów, a następnie dodaj](./media/app-insights-code-sample-export-sql-stream-analytics/050-container.png)
-3. Skopiuj klucz dostępu do magazynu
+3. Kopiowanie klucza dostępu do magazynu
    
-    Należy ją szybko, aby skonfigurować dane wejściowe usługi analiza strumienia.
+    Będzie potrzebny wkrótce, aby skonfigurować dane wejściowe do usługi stream analytics.
    
-    ![W magazynie Otwórz ustawienia kluczy i wykonać kopię podstawowego klucza dostępu](./media/app-insights-code-sample-export-sql-stream-analytics/21-storage-key.png)
+    ![W magazynie Otwórz okno Ustawienia i klucze i utwórz jego kopię podstawowego klucza dostępu](./media/app-insights-code-sample-export-sql-stream-analytics/21-storage-key.png)
 
-## <a name="start-continuous-export-to-azure-storage"></a>Rozpocząć eksport ciągły w celu magazynu Azure
-1. W portalu Azure przejdź do zasobu usługi Application Insights, utworzone dla aplikacji.
+## <a name="start-continuous-export-to-azure-storage"></a>Rozpocząć eksport ciągły w usłudze Azure storage
+1. W witrynie Azure portal przejdź do zasobu usługi Application Insights, utworzonej aplikacji.
    
-    ![Kliknij przycisk Przeglądaj, usługi Application Insights aplikacji](./media/app-insights-code-sample-export-sql-stream-analytics/060-browse.png)
+    ![Wybierz kolejno opcje Przeglądaj, Application Insights aplikacji](./media/app-insights-code-sample-export-sql-stream-analytics/060-browse.png)
 2. Utwórz eksport ciągły.
    
-    ![Wybierz ustawienia, Eksport ciągły](./media/app-insights-code-sample-export-sql-stream-analytics/070-export.png)
+    ![Wybierz pozycję Dodaj ustawienia eksportu ciągłego](./media/app-insights-code-sample-export-sql-stream-analytics/070-export.png)
 
-    Wybierz utworzone wcześniej konto magazynu:
+    Wybierz konto magazynu, która została utworzona wcześniej:
 
-    ![Skonfiguruj docelowego eksportu](./media/app-insights-code-sample-export-sql-stream-analytics/080-add.png)
+    ![Ustaw miejsce docelowe eksportu](./media/app-insights-code-sample-export-sql-stream-analytics/080-add.png)
 
-    Ustaw typy zdarzeń, które chcesz wyświetlić:
+    Ustaw typy zdarzeń, które mają być wyświetlane:
 
     ![Wybierz typy zdarzeń](./media/app-insights-code-sample-export-sql-stream-analytics/085-types.png)
 
 
-1. Let niektóre dane gromadzone. Zaczekaj i innym użytkownikom za pomocą aplikacji przez pewien czas. Dane telemetryczne wejdzie i zobaczysz statystyczne wykresów w [Eksploratora metryk](app-insights-metrics-explorer.md) i zdarzeń z [diagnostycznych wyszukiwania](app-insights-diagnostic-search.md). 
+1. Pozwól, niektóre dane są gromadzone. Zaczekaj i umożliwianie użytkownikom korzystania z aplikacji przez jakiś czas. Dane telemetryczne pojawią się, a zobaczysz statystyczne wykresów w [Eksplorator metryk](app-insights-metrics-explorer.md) i zdarzeń z [wyszukiwaniu diagnostycznym](app-insights-diagnostic-search.md). 
    
-    A także będzie eksportować dane do usługi magazynu. 
-2. Sprawdź wyeksportowane dane, albo w portalu — wybierz **Przeglądaj**, wybierz konto magazynu, a następnie **kontenery** — lub w programie Visual Studio. W programie Visual Studio, wybierz **wyświetlić / w chmurze Explorer**i otwórz Azure / magazynu. (Jeśli nie masz tej opcji menu, należy zainstalować zestaw Azure SDK: Otwórz okno dialogowe nowego projektu i Otwórz program Visual C# / w chmurze / Get Microsoft Azure SDK dla platformy .NET.)
+    A także dane zostaną wyeksportowane do usługi storage. 
+2. Zbadaj wyeksportowane dane, zarówno w portalu — wybieranie **Przeglądaj**, wybierz konto magazynu, a następnie **kontenery** — lub w programie Visual Studio. W programie Visual Studio, wybierz **wyświetlić / w chmurze Explorer**, a następnie otwórz Azure / Storage. (Jeśli nie masz tej opcji menu, należy zainstalować zestaw Azure SDK: otwarcie okna dialogowego Nowy projekt i Otwórz program Visual C# / w chmurze / uzyskiwanie Microsoft Azure SDK dla platformy .NET.)
    
     ![W programie Visual Studio Otwórz przeglądarkę serwera, Azure, Magazyn](./media/app-insights-code-sample-export-sql-stream-analytics/087-explorer.png)
    
     Zanotuj części wspólnej nazwy ścieżki, która jest pochodną klucz nazwy i instrumentacji aplikacji. 
 
-Zdarzenia są zapisywane do obiektu blob pliki w formacie JSON. Każdy plik może zawierać co najmniej jednego zdarzenia. Dlatego chcemy odczytuje dane zdarzenia i filtrować polami, którą chcemy udostępnić. Wszystkie rodzaje czynności, które firma Microsoft może wykonywać z danymi, ale naszego planu dzisiaj jest użycie usługi analiza strumienia może przenieść dane do bazy danych SQL. Która ułatwi późniejszą do uruchomienia partii zapytań interesujące.
+Zdarzenia są zapisywane do obiektu blob, pliki w formacie JSON. Każdy plik może zawierać jedno lub więcej zdarzeń. Dlatego chcielibyśmy odczytuje dane zdarzenia i filtrowanie pól, które chcemy. Istnieją wszelkiego rodzaju czynności, które firma Microsoft może wykonać przy użyciu danych, ale naszego planu jest już dziś przenoszenia danych do usługi SQL database za pomocą usługi Stream Analytics. Który uczyni go łatwo uruchomić wiele ciekawych zapytania.
 
-## <a name="create-an-azure-sql-database"></a>Utwórz bazę danych Azure SQL
-Ponownie uruchamianie z subskrypcją w [portalu Azure][portal], utworzyć bazę danych (i nowy serwer, chyba że zostały już został) której będzie zapisywać dane.
+## <a name="create-an-azure-sql-database"></a>Utwórz bazę danych Azure SQL Database
+Jeszcze raz od Twojej subskrypcji w [witryny Azure portal][portal], utworzyć bazę danych (i nowego serwera, chyba, że już masz jedną), do której będziesz zapisywać dane.
 
-![Nowe dane, SQL](./media/app-insights-code-sample-export-sql-stream-analytics/090-sql.png)
+![Nowe danych, SQL](./media/app-insights-code-sample-export-sql-stream-analytics/090-sql.png)
 
-Upewnij się, że serwer bazy danych zezwala na dostęp do usług platformy Azure:
+Upewnij się, że serwer bazy danych umożliwia dostęp do usług platformy Azure:
 
 ![Przeglądaj, serwery, z serwerem, ustawienia zapory, Zezwalaj na dostęp do platformy Azure](./media/app-insights-code-sample-export-sql-stream-analytics/100-sqlaccess.png)
 
-## <a name="create-a-table-in-azure-sql-db"></a>Utwórz tabelę w bazie danych SQL Azure
-Połączenia z bazą danych utworzony w poprzedniej sekcji z narzędzia do zarządzania preferowany. W ramach tego przewodnika użyjemy [narzędzia do zarządzania serwerem SQL](https://msdn.microsoft.com/ms174173.aspx) (SSMS).
+## <a name="create-a-table-in-azure-sql-db"></a>Tworzenie tabeli w usłudze Azure SQL DB
+Połączenia z bazą danych, utworzony w poprzedniej sekcji z narzędziem preferowane. W tym przewodniku użyjemy [narzędzi zarządzania serwerem SQL](https://msdn.microsoft.com/ms174173.aspx) (SSMS).
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/31-sql-table.png)
 
-Utwórz nowe zapytanie i wykonaj T-SQL:
+Utwórz nowe zapytanie i wykonać języka T-SQL:
 
 ```SQL
 
@@ -138,54 +138,54 @@ CREATE CLUSTERED INDEX [pvTblIdx] ON [dbo].[PageViewsTable]
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/34-create-table.png)
 
-W tym przykładzie użyto dane wyświetleń strony. Aby wyświetlić dostępne dane, sprawdź dane wyjściowe JSON, a następnie zobacz [wyeksportować modelu danych](app-insights-export-data-model.md).
+W tym przykładzie używamy danych z wyświetleń stron. Aby wyświetlić dostępne dane, zbadaj dane wyjściowe JSON i zobacz [eksportowanie modelu danych](app-insights-export-data-model.md).
 
-## <a name="create-an-azure-stream-analytics-instance"></a>Utwórz wystąpienie usługi Azure Stream Analytics
-Z [portalu Azure](https://portal.azure.com/), wybierz usługę Azure Stream Analytics i utworzyć nowe zadanie usługi Stream Analytics:
+## <a name="create-an-azure-stream-analytics-instance"></a>Tworzenie wystąpienia usługi Azure Stream Analytics
+Z [witryny Azure portal](https://portal.azure.com/), wybierz usługę Azure Stream Analytics i utworzyć nowe zadanie usługi Stream Analytics:
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/SA001.png)
+![Stream analytics ustawienia](./media/app-insights-code-sample-export-sql-stream-analytics/SA001.png)
 
 ![](./media/app-insights-code-sample-export-sql-stream-analytics/SA002.png)
 
-Po utworzeniu nowego zadania, wybierz **przejdź do zasobu**.
+Gdy zostanie utworzone nowe zadanie, wybierz pozycję **przejdź do zasobu**.
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/SA003.png)
+![Stream analytics ustawienia](./media/app-insights-code-sample-export-sql-stream-analytics/SA003.png)
 
 #### <a name="add-a-new-input"></a>Dodaj nowe dane wejściowe
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/SA004.png)
+![Stream analytics ustawienia](./media/app-insights-code-sample-export-sql-stream-analytics/SA004.png)
 
 Ustaw, aby pobrać dane wejściowe z obiektu blob z eksportu ciągłego:
 
-![](./media/app-insights-code-sample-export-sql-stream-analytics/SA005.png)
+![Stream analytics ustawienia](./media/app-insights-code-sample-export-sql-stream-analytics/SA0005.png)
 
-Teraz musisz podstawowy klucz dostępu z konta magazynu, który wcześniej zapisany. Ustaw jako klucz konta magazynu.
+Teraz będzie potrzebna podstawowy klucz dostępu z Twojego konta magazynu, możesz zauważyć, wcześniej. Ustaw jako klucz konta magazynu.
 
 #### <a name="set-path-prefix-pattern"></a>Wzorzec prefiksu ścieżki zestawu
 
-**Pamiętaj ustawienie formatu RRRR-MM-DD (Łączniki).**
+**Pamiętaj ustawić Format daty RRRR-MM-DD (z kreskami).**
 
-Wzorzec prefiksu ścieżki Określa sposób odnajdowania usługi Stream Analytics plików wejściowych w magazynie. Należy ustawić odpowiadają jak eksportu ciągłego przechowuje dane. Ustaw go następująco:
+Wzorzec prefiksu ścieżki Określa, jak usługi Stream Analytics znajduje pliki wejściowe w magazynie. Musisz ustawić jego odpowiadają jak eksportu ciągłego przechowuje dane. Ustaw ją następująco:
 
     webapplication27_12345678123412341234123456789abcdef0/PageViews/{date}/{time}
 
 W tym przykładzie:
 
-* `webapplication27` jest to nazwa zasobu usługi Application Insights **w przypadku małych**. 
+* `webapplication27` to nazwa zasobu usługi Application Insights **w małych liter**. 
 * `1234...` jest to klucz Instrumentacji zasobu usługi Application Insights **z kreskami usunięte**. 
-* `PageViews` to typ danych, którą chcemy udostępnić analizować. Dostępne typy są zależne od filtr ustawionych w eksportu ciągłego. Sprawdź wyeksportowane dane na temat dostępnych typów oraz temat [wyeksportować modelu danych](app-insights-export-data-model.md).
-* `/{date}/{time}` wzorzec są zapisywane jako literału.
+* `PageViews` jest to typ danych, które chcemy przeanalizować. Dostępne typy są zależne od filtr, który zostało ustawiony w eksportu ciągłego. Sprawdź wyeksportowane dane, aby zobaczyć dostępne typy, a [eksportowanie modelu danych](app-insights-export-data-model.md).
+* `/{date}/{time}` wzorzec jest zapisywany bezpośrednio.
 
-Aby uzyskać nazwę i iKey zasobu usługi Application Insights, otwórz Essentials na stronie Przegląd, lub Otwórz ustawienia.
+Aby uzyskać nazwę i klucz Instrumentacji zasobu usługi Application Insights, Otwórz program Essentials na stronie Przegląd lub Otwórz okno Ustawienia.
 
 > [!TIP]
-> Funkcja próbki do sprawdzenia poprawnie ustawiona ścieżka wejściowa. Jeśli działanie nie powiodło się: Sprawdź, czy dane w magazynie dla wybrano zakresu czasu próbki. Dokonaj edycji definicji wejściowego i sprawdź ustawić konto magazynu, ścieżkę prefiks i Data formacie poprawnie.
+> Użyj wyświetlany kod przykładowej funkcji, aby sprawdzić, poprawnie ustawiona ścieżka wejściowa. Jeśli zakończy się niepowodzeniem: Sprawdź, czy dane w magazynie dla zakresu czasu przykład została wybrana opcja. Edytuj definicję danych wejściowych i sprawdź Ustaw konto magazynu, prefiks ścieżki i Data formacie poprawnie.
 > 
 > 
-## <a name="set-query"></a>Zapytanie zestawu
+## <a name="set-query"></a>Ustaw zapytanie
 Otwórz sekcję zapytania:
 
-Zastąp domyślne zapytanie z:
+Zastąp domyślne zapytanie za pomocą:
 
 ```SQL
 
@@ -223,35 +223,35 @@ Zastąp domyślne zapytanie z:
 
 ```
 
-Zwróć uwagę, że pierwsze kilka właściwości są specyficzne dla danych widoku strony. Eksporty inne typy telemetrii ma inne właściwości. Zobacz [szczegółowe odwołania do modelu danych dla typów właściwości i wartości.](app-insights-export-data-model.md)
+Należy zauważyć, że kilka pierwszych właściwości są specyficzne dla dane dotyczące wyświetleń stron. Eksporty innych typów danych telemetrycznych ma inne właściwości. Zobacz [szczegółowe dokumentacja dotycząca modeli obiektów dla typów właściwości i wartości.](app-insights-export-data-model.md)
 
 ## <a name="set-up-output-to-database"></a>Konfigurowanie danych wyjściowych do bazy danych
 Wybierz SQL jako dane wyjściowe.
 
-![Analiza strumienia wybierz dane wyjściowe](./media/app-insights-code-sample-export-sql-stream-analytics/SA006.png)
+![W usłudze stream analytics wybierz dane wyjściowe](./media/app-insights-code-sample-export-sql-stream-analytics/SA006.png)
 
 Określ bazę danych SQL.
 
-![Uzupełnij informacje dotyczące bazy danych](./media/app-insights-code-sample-export-sql-stream-analytics/SA007.png)
+![Wypełnij szczegóły bazy danych](./media/app-insights-code-sample-export-sql-stream-analytics/SA007.png)
 
-Zamknij kreatora i zaczekaj na powiadomienie, które skonfigurowano dane wyjściowe.
+Zamknij kreatora i poczekaj, aż powiadomienie, które skonfigurowano dane wyjściowe.
 
 ## <a name="start-processing"></a>Rozpocznij przetwarzanie
-Uruchom zadanie na pasku akcji:
+Uruchamianie zadania na pasku akcji:
 
-![W module analiz strumienia kliknij przycisk Start](./media/app-insights-code-sample-export-sql-stream-analytics/SA008.png)
+![W usłudze stream analytics kliknij przycisk Start](./media/app-insights-code-sample-export-sql-stream-analytics/SA008.png)
 
-Można wybrać, czy można uruchomić przetwarzania danych, zaczynając od teraz, lub do uruchomienia z wcześniejszych danych. Drugie polecenie jest przydatne, jeśli masz już uruchomione na chwilę eksportu ciągłego.
+Możesz wybrać, czy do rozpoczęcia przetwarzania danych, zaczynając od teraz lub zaczynać starszych danych. Drugim jest przydatne, jeśli masz już uruchomione od pewnego czasu eksportu ciągłego.
 
-Po kilku minutach Przejdź wstecz do narzędzia do zarządzania serwerem SQL i obserwować dane przepływające w. Na przykład użyć zapytania następująco:
+Po kilku minutach wróć do narzędzi zarządzania serwerem SQL i obejrzyj dane przepływające w. Na przykład użyć zapytania następująco:
 
     SELECT TOP 100 *
     FROM [dbo].[PageViewsTable]
 
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
-* [Eksportowanie do usługi Power BI przy użyciu usługi analiza strumienia](app-insights-export-power-bi.md)
-* [Szczegółowe dane modelu odwołania dla typów właściwości i wartości.](app-insights-export-data-model.md)
+* [Eksportowanie do usługi Power BI przy użyciu usługi Stream Analytics](app-insights-export-power-bi.md)
+* [Szczegółowe dane modelu odwołań dla typów właściwości i wartości.](app-insights-export-data-model.md)
 * [Eksport ciągły w usłudze Application Insights](app-insights-export-telemetry.md)
 * [Application Insights](https://azure.microsoft.com/services/application-insights/)
 

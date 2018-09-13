@@ -1,6 +1,6 @@
 ---
-title: Inteligentne wykrywania - anomalii awarii, w usłudze Application Insights | Dokumentacja firmy Microsoft
-description: Powiadamia o nietypowych zmian liczba nieudanych żądań do aplikacji sieci web i zawiera diagnostyczne analizy. Konfiguracja nie jest potrzebna.
+title: Wykrywanie inteligentne — anomalie, w usłudze Application Insights | Dokumentacja firmy Microsoft
+description: Ostrzega o nietypowej zmiany kursów żądania zakończone niepowodzeniem w aplikacji sieci web i umożliwia analizowanie diagnostycznych. Konfiguracja nie jest potrzebna.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -10,144 +10,146 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/09/2017
-ms.author: mbullwin; yossiy
-ms.openlocfilehash: 29ae81551d4bd4be4123c8e7780b8b5ecc259f09
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: yossiy
+ms.author: mbullwin
+ms.openlocfilehash: 1987ebf76f06cb60e8ce1fb5c8215b6520d44d52
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35649333"
 ---
-# <a name="smart-detection---failure-anomalies"></a>Inteligentne wykrywanie — błąd anomalii
-[Usługa Application Insights](app-insights-overview.md) automatycznie powiadamia użytkownika, w czasie rzeczywistym near czy Twoja aplikacja sieci web napotyka nietypowym wzroście współczynnika żądań zakończonych niepowodzeniem. Ta funkcja wykrywa nietypowe wzrost częstotliwość wykonywania żądań HTTP lub wywołania zależności, które ma być zgłaszane nie powiodło się. Dla żądania żądań zakończonych niepowodzeniem są zwykle z kodami odpowiedź 400 lub nowszej. Aby ułatwić klasyfikowanie i diagnozowanie problemu, analizy właściwości błędy i powiązane dane telemetryczne znajduje się w powiadomienia. Dostępne są także łącza do portalu usługi Application Insights w celu przeprowadzenia dalszej diagnostyki. Funkcja musi żadnych konfiguracji ani konfiguracji, jakiej używa do prognozowania współczynnik awaryjności normalne algorytmów uczenia maszynowego.
+# <a name="smart-detection---failure-anomalies"></a>Wykrywanie inteligentne — anomalie w zakresie błędów
+[Usługa Application Insights](app-insights-overview.md) automatycznie powiadamia, w czasie zbliżonym do rzeczywistego Jeśli nietypowy wzrost liczba nieudanych żądań aplikacji sieci web. Wykrywa nietypowy wzrost żądań HTTP lub wywołania zależności, które ma być zgłaszane nie powiodło się. Dla żądań żądań zakończonych niepowodzeniem są zwykle te kody odpowiedź 400 lub nowszej. Ułatwiające klasyfikowanie i diagnozowanie problemu, analizy właściwości błędów i powiązane dane telemetryczne jest podawany jako powiadomienia. Dostępne są także łącza do portalu usługi Application Insights w celu przeprowadzenia dalszej diagnostyki. Funkcja musi mieć nie konfiguracji ani konfiguracji, ponieważ używa ona algorytmów uczenia maszynowego do przewidywania zwykły współczynnik błędów.
 
-Ta funkcja działa w przypadku języka Java i ASP.NET aplikacji sieci web hostowanych w chmurze lub na własnych serwerach. Działa także dla wszystkich aplikacji, który generuje dane telemetryczne żądania lub zależności — na przykład jeśli masz roli procesu roboczego, który wywołuje [TrackRequest()](app-insights-api-custom-events-metrics.md#trackrequest) lub [TrackDependency()](app-insights-api-custom-events-metrics.md#trackdependency).
+Ta funkcja działa w przypadku platformy ASP.NET oraz Java aplikacji sieci web hostowanych w chmurze lub na własnych serwerach. Działa także dla dowolnej aplikacji, która generuje dane telemetryczne żądania lub zależność — na przykład w przypadku roli procesu roboczego, który wywołuje [TrackRequest()](app-insights-api-custom-events-metrics.md#trackrequest) lub [TrackDependency()](app-insights-api-custom-events-metrics.md#trackdependency).
 
-Po skonfigurowaniu [usługi Application Insights dla projektu](app-insights-overview.md), i pod warunkiem aplikacja generuje określoną minimalną ilość danych telemetrycznych, Inteligentne wykrywanie anomalii awarii przejście 24 godziny, aby dowiedzieć się normalne zachowanie aplikacji, zanim zostanie włączone i wysyłać alerty.
+Po skonfigurowaniu [usługi Application Insights w projekcie](app-insights-overview.md), a podana aplikacja generuje określony minimalny telemetrii, Inteligentne wykrywanie anomalie trwa 24 godziny, aby dowiedzieć się więcej normalnego zachowania aplikacji, zanim zostanie włączone i wysyłanie alertów.
 
-Oto przykładowy alert.
+Poniżej przedstawiono przykładowy alert.
 
-![Alert wykrycia inteligentne przykład przedstawiający analizy klastra wokół awarii](./media/app-insights-proactive-failure-diagnostics/013.png)
+![Przykładowy alert wykrywania inteligentnego, przedstawiający klaster analizy dotyczące awarii](./media/app-insights-proactive-failure-diagnostics/013.png)
 
 > [!NOTE]
-> Domyślnie otrzymasz krótszą poczty format od tego przykładu. Ale możesz [przełączyć się do tego formatu szczegółowego](#configure-alerts).
+> Domyślnie otrzymujesz krótszy poczty format niż w tym przykładzie. Ale możesz [przełączyć się do tego formatu szczegółowego](#configure-alerts).
 >
 >
 
-Należy zauważyć, że informuje o tym:
+Zwróć uwagę, że informuje:
 
-* Współczynnik awaryjności w porównaniu do aplikacji normalne zachowanie.
-* Ilu użytkowników dotyczy — aby wiedzieć, ile martwić się.
-* Wzorzec charakterystyczny skojarzone z błędami. W tym przykładzie brak określonej odpowiedzi kod, Nazwa żądania (operacji) i wersji aplikacji. Który natychmiast wskazano, gdzie rozpocząć wyszukiwanie w kodzie. Może to być innych możliwości konkretny system operacyjny klienta lub dotyczących przeglądarki.
-* Wyjątek, ślady dziennika i błąd zależności (baz danych lub innych składników zewnętrznych) który wydaje się być skojarzone z błędami scharakteryzowany.
-* Łącza bezpośrednio do odpowiednich wyszukiwań na telemetrii w usłudze Application Insights.
+* Współczynnik błędów w porównaniu do zachowania normalna aplikacja.
+* Ilu użytkowników dotyczy problem — aby wiedzieć, ile się martwić.
+* Wzorzec cech skojarzone z błędami. W tym przykładzie ma kod odpowiedzi określonego, Nazwa żądania (operacji) i wersji aplikacji. Które natychmiast informuje, gdzie rozpocząć wyszukiwanie w kodzie. Inne możliwości może być określonym systemem operacyjnym przeglądarkę lub klienta.
+* Wyjątek, danych dziennika śledzenia i błąd zależności (baz danych lub innymi składnikami zewnętrznymi), wydaje się skojarzona z błędami scharakteryzowany.
+* Łącza do odpowiednich wyszukiwania na telemetrii w usłudze Application Insights.
 
-## <a name="benefits-of-smart-detection"></a>Zalety inteligentne wykrywania
-Zwykłe [metryki alerty](app-insights-alerts.md) informujące o tym, być może wystąpił problem. Ale inteligentne wykrywanie uruchamiania diagnostyki pracy związanej z, wykonywania partii analizy, w przeciwnym razie trzeba zrobić samodzielnie. Uzyskanie wyników starannie opakowane, pomaga szybko uzyskać dostęp do katalogu głównego problemu.
+## <a name="benefits-of-smart-detection"></a>Zalety wykrywania inteligentnego
+Zwykłe [alertów dotyczących metryk](app-insights-alerts.md) informujące o tym, być może wystąpił problem. Jednak wykrywanie inteligentne uruchamia diagnostykę dla Ciebie wykonywanie partii analizy, w przeciwnym razie byłoby trzeba zrobić samodzielnie. Uzyskanie wyników starannego zapakowane, pomaga szybko głównego problemu.
 
 ## <a name="how-it-works"></a>Jak to działa
-Inteligentne wykrywanie monitoruje telemetrii odebranych z aplikacji, a w szczególności awariami. Ta zasada oblicza liczbę żądań dla którego `Successful request` właściwość ma wartość false, a liczba zależności wywołań, dla którego `Successful call` właściwość ma wartość false. Dla żądania, domyślnie `Successful request == (resultCode < 400)` (o ile nie zostały zapisane niestandardowy kod [filtru](app-insights-api-filtering-sampling.md#filtering) lub wygenerować własny [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest) wywołania). 
+Wykrywanie inteligentne monitoruje telemetrii odebrane z aplikacji, a w szczególności współczynniki błędów. Ta reguła zlicza liczbę żądań, dla którego `Successful request` właściwość ma wartość false, a liczba zależności wywołań, dla którego `Successful call` właściwość ma wartość false. W przypadku żądań domyślnie `Successful request == (resultCode < 400)` (chyba że zostały napisane kod niestandardowy do [filtru](app-insights-api-filtering-sampling.md#filtering) lub wygenerowanie własnego [TrackRequest](app-insights-api-custom-events-metrics.md#trackrequest) wywołania). 
 
-Wydajność aplikacji ma typowy wzorzec zachowania. Niektóre żądania lub wywołania zależności będą bardziej podatne na błędy niż inne; i ogólną współczynnik awaryjności może do góry w miarę wzrostu obciążenia. Wykrywanie inteligentne używa machine learning można znaleźć tych nieprawidłowości.
+Wydajność aplikacji jest typowy wzorzec zachowania. Niektóre żądania lub wywołania zależności będą bardziej podatne na niepowodzenia niż inne osoby; i ogólny współczynnik błędów może przejść w wraz ze wzrostem obciążenia. Wykrywanie inteligentne korzysta z uczenia maszynowego w celu znalezienia tych nieprawidłowości.
 
-Jako dane telemetryczne wejścia usługi Application Insights z aplikacji sieci web, Inteligentne wykrywanie porównuje bieżące zachowanie wzorami występuje w ciągu ostatnich kilku dni. Jeżeli w porównaniu z poprzednim wydajności jest nietypowy wzrost częstość niepowodzeń, analiza zostanie wywołany.
+Jak telemetria pochodzi do usługi Application Insights z aplikacji sieci web, Inteligentne wykrywanie porównuje bieżące zachowanie wzorami zaobserwowane w ciągu ostatnich kilku dni. W przypadku nietypowym wzroście wskaźnika niepowodzeń stwierdzamy w porównaniu z poprzednim wydajności, analiza zostanie wywołany.
 
-Po wyzwoleniu analizy usługi dokonuje analizy klastra nieudanych żądań, w celu zidentyfikowania wzorców wartości charakteryzujące niepowodzenia. W powyższym przykładzie analizy wykrył, że większość awarii nastąpi kod wyniku określone, Nazwa żądania, adres URL serwera hosta i wystąpienia roli. Z kolei analizy wykrył, że właściwości systemu operacyjnego klienta jest rozproszone na wielu wartości, a więc nie ma na liście.
+Po wyzwoleniu analiza usługi wykonuje analizy klastra na żądanie nie powiodło się, spróbuj zidentyfikować wzorzec wartości, które charakteryzuje się błędy. W powyższym przykładzie analizy wykrył, że większość awarii są o kod wyniku określone, Nazwa żądania, host adresu URL serwera i wystąpienia roli. Z drugiej strony Analiza wykrył, że właściwości systemu operacyjnego klienta jest rozdystrybuowany na wiele wartości, a więc nie ma na liście.
 
-Gdy usługi są instrumentowane przy użyciu tych wywołań telemetrii, analizator szuka wyjątek i błąd zależności, które są skojarzone z żądań w klastrze, który zidentyfikował, wraz z przykładem wszystkie dzienniki śledzenia skojarzone z żądaniami.
+Gdy usługa jest wyposażone w tych wywołań telemetrii, analizator szuka wyjątków i błędów zależności, które są skojarzone z żądaniami w klastrze, który zidentyfikowała, wraz z przykładem żadnych dzienników śledzenia skojarzony z tymi żądaniami.
 
-Wynikowa analizy zostanie do Ciebie wysłana jako alertu, chyba że skonfigurowano go nie.
+Wynikowe analizy do Ciebie wysłana jako alert, jeśli nie skonfigurowano jej nie.
 
-Podobnie jak [alerty ręcznie ustawić](app-insights-alerts.md), można sprawdzić stan alertu i skonfiguruj ją w bloku alerty zasobu usługi Application Insights. Jednak w przeciwieństwie do innych alertów, nie jest konieczne konfigurowanie wykrywania inteligentne. Jeśli chcesz, możesz ją wyłączyć lub zmienić jego docelowych adresów e-mail.
+Podobnie jak [alerty, możesz ręcznie ustawić](app-insights-alerts.md), można sprawdzić stan alertu i skonfigurowanie go w bloku alertów zasobu usługi Application Insights. Jednak w przeciwieństwie do innych alertów, nie trzeba Konfigurowanie wykrywania inteligentnego. Jeśli chcesz, możesz go wyłączyć, lub zmienić jego docelowych adresów e-mail.
 
 ## <a name="configure-alerts"></a>Konfigurowanie alertów
-Można wyłączyć inteligentne wykrywanie, zmieniać adresatów poczty e-mail, tworzenia elementu webhook lub zgadzaj się na bardziej szczegółowe komunikaty alertów.
+Możesz wyłączyć wykrywanie inteligentne, zmieniać adresatów wiadomości e-mail, utworzyć element webhook lub zgadzaj się na bardziej szczegółowe komunikaty alertów.
 
-Otwórz stronę alerty. Błąd anomalii znajduje się wraz z żadnych alertów, należy ręcznie ustawić, które można zobaczyć, czy aktualnie jest w stanie alertu.
+Otwórz na stronie alertów. Anomalie w zakresie błędów jest dołączany wraz z żadnych alertów, które możesz ręcznie ustawić i zobaczyć, czy jest ona obecnie w stanie alertu.
 
-![Na stronie przeglądu kliknij Kafelek alerty. Lub na każdej stronie metryki, kliknij przycisk alertów.](./media/app-insights-proactive-failure-diagnostics/021.png)
+![Na stronie Przegląd kliknij Kafelek alerty. Lub na dowolnej stronie metryki, kliknij przycisk alertów.](./media/app-insights-proactive-failure-diagnostics/021.png)
 
 Kliknij alert, aby go skonfigurować.
 
 ![Konfigurowanie](./media/app-insights-proactive-failure-diagnostics/032.png)
 
-Powiadomienie, że można wyłączyć inteligentne wykrywanie, ale nie można go usunąć (lub utwórz inny).
+Zwróć uwagę, że można wyłączyć wykrywanie inteligentne, ale nie można go usunąć (lub utwórz inny).
 
 #### <a name="detailed-alerts"></a>Szczegółowe alertów
-Wybranie opcji "Pobierz bardziej szczegółową diagnostykę" wiadomości e-mail będzie zawierać więcej informacji diagnostycznych. Czasami można zdiagnozować problem tylko na podstawie danych w wiadomości e-mail.
+Jeśli wybierzesz "Pobierz bardziej szczegółowe dane diagnostyczne" wiadomości e-mail będzie zawierać więcej informacji diagnostycznych. Czasami można zdiagnozować problem tylko na podstawie danych w wiadomości e-mail.
 
-Istnieje bardzo małe ryzyko, że alert bardziej szczegółowe mogą zawierać poufne informacje, ponieważ zawiera on wyjątek i śledzenia wiadomości. Jednak to się tylko stanie, jeśli kod umożliwia poufne informacje w tych komunikatach.
+Istnieje bardzo małe ryzyko, że alert bardziej szczegółowe mogą zawierać poufne informacje, ponieważ zawiera ona komunikaty wyjątków i śledzenia. Jednak to będzie może mieć miejsce tylko jeśli Twój kod może pozwolić poufnych informacji do wiadomości.
 
-## <a name="triaging-and-diagnosing-an-alert"></a>Klasyfikowane i diagnozowania alertu
-Alert wskazuje, że wykryto nietypowy wzrost częstości nieudanych żądań. Istnieje prawdopodobieństwo, że istnieje problem związany z aplikacji lub z jego środowiska.
+## <a name="triaging-and-diagnosing-an-alert"></a>Sklasyfikowaniu i zdiagnozowaniu alertu
+Alert oznacza, że wykryto nietypowy wzrost liczby żądań zakończonych niepowodzeniem. Istnieje prawdopodobieństwo, że występuje problem związany z aplikacji lub jego środowiska.
 
-Z odsetek żądań i liczbę użytkowników, których dotyczy problem można zdecydować, jak pilnych jest problem. W powyższym przykładzie współczynnik awaryjności 22,5% porównuje normalną szybkość % 1, wskazuje, czy zły coś. Z drugiej strony użytkownicy tylko 11 zostały zainfekowane. Gdyby aplikacji, będzie można ocenić, jak poważny to.
+Z Procent żądań i liczbę użytkowników, których dotyczy problem można zdecydować, jak pilne jest problem. W powyższym przykładzie współczynnik awaryjności 22,5% wypada na tle normalna liczba % 1, wskazuje, czy zły coś. Z drugiej strony liczba objętych użytkowników tylko 11. W przypadku aplikacji, będzie można ocenić, jak poważny to.
 
-W wielu przypadkach można zdiagnozować problem szybko z nazwy żądania, wyjątków, zależności błędu i śledzenia danych udostępnionych.
+W wielu przypadkach można zdiagnozować problem, szybko z wyjątek, Nazwa żądania, zależności awarii i śledzenie danych udostępnionych.
 
-Brak niektórych innych operacji. Na przykład współczynnik awaryjności zależności, w tym przykładzie jest taka sama jak częstotliwość, z wyjątkiem (89.3%). Sugeruje to, że wyjątek wynika bezpośrednio z awarią zależności — umożliwiając Wyczyść informacje o tym, gdzie rozpocząć wyszukiwanie w kodzie.
+Istnieje kilka innych wskazówek. Na przykład współczynnik błędów zależności, w tym przykładzie jest taka sama jak częstotliwość występowania wyjątków (89.3%). Sugeruje to, że wyjątek pojawia się bezpośrednio z błędów zależności — umożliwiając dalsze gdzie rozpocząć wyszukiwanie informacji zawartych w kodzie.
 
-Aby zbadać dokładnie, linki w każdej sekcji spowoduje przejście do prostych [stronę wyszukiwania](app-insights-diagnostic-search.md) filtrowane do odpowiednich żądań, wyjątków, zależności lub śledzenia. Alternatywnie możesz otworzyć [portalu Azure](https://portal.azure.com), przejdź do zasobu usługi Application Insights dla aplikacji i otwarcie bloku błędów.
+Aby zbadać dokładnie należy łącza w każdej sekcji spowoduje przejście bezpośrednio do [strony wyszukiwania](app-insights-diagnostic-search.md) filtrowana w celu odpowiednich żądań, wyjątków, zależności lub śledzenia. Alternatywnie możesz otworzyć [witryny Azure portal](https://portal.azure.com), przejdź do zasobu usługi Application Insights dla aplikacji i otwórz blok błędów.
 
-W tym przykładzie klikając łącze "Wyświetl szczegóły błędów zależności" spowoduje otwarcie bloku wyszukiwania usługi Application Insights. Zawiera instrukcję SQL, która zawiera przykład główna przyczyna: zostały podane na pola wymagane wartości null, a nie przeszedł sprawdzania poprawności podczas zapisywania operacji.
+W tym przykładzie kliknięcie linku "Wyświetl szczegóły błędów zależności" spowoduje otwarcie bloku wyszukiwania usługi Application Insights. Pokazuje instrukcję SQL, która zawiera przykład głównej przyczyny: wartości null zostały podane w obowiązkowe i nie przeszedł pomyślnie weryfikacji podczas zapisywania operacji.
 
 ![Wyszukiwanie diagnostyczne](./media/app-insights-proactive-failure-diagnostics/051.png)
 
-## <a name="review-recent-alerts"></a>Ostatnie alerty można przeglądać
+## <a name="review-recent-alerts"></a>Najnowsze alerty możesz przejrzeć
 
-Kliknij przycisk **inteligentne wykrywanie** Aby uzyskać dostęp do najnowszych alertu:
+Kliknij przycisk **wykrywania inteligentnego** można uzyskać dostęp do najnowszych alertów:
 
 ![Podsumowanie alertów](./media/app-insights-proactive-failure-diagnostics/070.png)
 
 
 ## <a name="whats-the-difference-"></a>Jaka jest różnica...
-Inteligentne wykrywanie anomalii awarii uzupełnia inne podobne ale różne funkcje usługi Application Insights.
+Inteligentne wykrywanie anomalie uzupełniają inne podobne ale różne funkcje usługi Application Insights.
 
-* [Alerty metryki](app-insights-alerts.md) są ustawiane przez Ciebie i monitorować szeroką gamę metryk, takich jak miejsce zajmowane przez procesor CPU, żądań, czasy ładowania stron i tak dalej. Można używać ich, aby ostrzec użytkownika, na przykład, jeśli trzeba dodać więcej zasobów. Z kolei inteligentne wykrywanie anomalii awarii obejmuje niewielki zakres metryki krytycznych (obecnie tylko nieudanych żądań szybkości), przeznaczone do powiadomienia, że można w sposób czasu rzeczywistego, gdy aplikacja sieci web nie powiodło się w pobliżu żądania szybkość zwiększa się znacznie w porównaniu do aplikacji sieci web normalne zachowanie.
+* [Alerty metryki](app-insights-alerts.md) są ustawiane przez Ciebie i monitorować szeroką gamę metryk, takich jak zajętość procesora CPU, żądań, czasy ładowania stron i tak dalej. Można je ostrzega użytkownika, na przykład, jeśli potrzebujesz dodać więcej zasobów. Z drugiej strony inteligentne wykrywanie anomalie obejmuje niewielki zakres krytyczne metryki (obecnie tylko żądań zakończonych), zaprojektowane, aby otrzymywać powiadomienia, możesz w czasie rzeczywistym w sposób po aplikacji sieci web nie powiodło się żądanie kurs zwiększa się znacznie w porównaniu do aplikacji sieci web normalne zachowanie.
 
-    Inteligentne wykrywanie automatycznie dostosowuje progu w odpowiedzi na warunki panujące.
+    Wykrywanie inteligentne automatycznie dostosowuje przekroczyła wartość progową w odpowiedzi na warunki panujące.
 
-    Inteligentne wykrywanie uruchamia pracy związanej z diagnostyki.
-* [Inteligentne wykrywanie anomalii wydajności](app-insights-proactive-performance-diagnostics.md) również używa komputera analizy nietypowe wzorce w Twoje metryki odnajdywania, a nie przez użytkownika jest wymagana konfiguracja. Ale w przeciwieństwie do inteligentnego wykrywania anomalii awarii, inteligentne wykrywania anomalii wydajności ma na celu znaleźć segmentów sieci kolektora użycia, które mogą być udostępniane nieprawidłowo — na przykład określonych stron na określony typ przeglądarki. Analiza jest przeprowadzana codziennie, a jeśli dowolny wynik zostanie znaleziony, które mogą być znacznie mniej pilne niż alert. Z kolei analizy w celu wykrycia nieprawidłowości awarii jest wykonywane stale na przychodzące dane telemetryczne, a otrzymasz powiadomienie w ciągu minut Jeśli awariami serwera jest większa, niż oczekiwano.
+    Wykrywanie inteligentne uruchamia diagnostykę dla Ciebie.
+* [Inteligentne wykrywanie anomalii wydajności](app-insights-proactive-performance-diagnostics.md) również używa usługi machine analizy w celu Znajdź nietypowe wzorce metryk i nie jest wymagana żadna konfiguracja przez użytkownika. Jednak w przeciwieństwie do inteligentnego wykrywania anomalie, inteligentnego wykrywania anomalii wydajności ma na celu znaleźć segmentów usługi kolektora użycia, które może być nieprawidłowo w inny sposób udostępniane — na przykład określonych stron na określony typ przeglądarki. Analiza jest wykonywana raz dziennie, a jeśli dowolny wynik zostanie znaleziony, to może być znacznie mniej pilne niż alertu. Z drugiej strony Analiza anomalie odbywa się stale na przychodzących danych telemetrycznych i Powiadomimy Cię w ciągu kilku minut w przypadku serwera awariami większy, niż oczekiwano.
 
-## <a name="if-you-receive-a-smart-detection-alert"></a>Jeśli zostanie wyświetlony alert inteligentne wykrywania
-*Dlaczego otrzymali ten alert?*
+## <a name="if-you-receive-a-smart-detection-alert"></a>Jeśli zostanie wyświetlony alert wykrywania inteligentnego
+*Dlaczego odebrały ten alert?*
 
-* Wykryliśmy nietypowym wzroście współczynnika żądań zakończonych niepowodzeniem w porównaniu do normalnej linii bazowej poprzedniego okresu. Po analizie błędów i skojarzone dane telemetryczne naszym zdaniem, że istnieje problem, który powinien wyglądać w.
+* Wykryliśmy nietypowy wzrost współczynnik żądań zakończonych niepowodzeniem w porównaniu do linii bazowej normalne kropki. Po przeprowadzeniu analizy błędów i skojarzone dane telemetryczne uważamy, że występuje problem, który powinien wyglądać w.
 
-*Powiadomienie oznacza, że problem występuje ostatecznie?*
+*Powiadomienia oznacza, że problem występuje zdecydowanie?*
 
-* Spróbujemy alert po wystąpieniu przerw w działaniu aplikacji lub pogorszenia się, ale tylko wtedy można pełni zrozumieć semantykę i wpływa na aplikację lub użytkowników.
+* Podejmowane są próby alert po wystąpieniu przerwy w działaniu aplikacji lub spadek jakości, ale tylko w pełni wyjaśnić, semantyka i ich wpływie na aplikację lub użytkowników.
 
-*Tak guys przeglądania danych?*
+*Dlatego guys przyjrzymy się moje dane?*
 
-* Nie. Usługa jest całkowicie automatyczne. Tylko otrzymasz powiadomień. Twoje dane są [prywatnej](app-insights-data-retention-privacy.md).
+* Nie. Usługa jest całkowicie automatyczne. Tylko otrzymasz powiadomienia. Twoje dane są [prywatnej](app-insights-data-retention-privacy.md).
 
-*Czy mają subskrybować ten alert?*
+*Trzeba subskrybować ten alert?*
 
-* Nie. Każda aplikacja, że wysyła żądanie telemetrii ma inteligentne wykrywanie reguły alertów.
+* Nie. Każda aplikacja wysyła dane telemetryczne dotyczące żądań ma reguły alertów wykrywania inteligentnego.
 
-*Można anulować subskrypcję lub otrzymywać powiadomień, zamiast tego wysyłane do moich współpracowników?*
+*Czy mogę anulować subskrypcję lub Otrzymuj powiadomienia, zamiast tego wysyłane do moich współpracowników?*
 
-* Reguły w alertów, kliknij Tak, reguły wykrywania inteligentne, aby go skonfigurować. Wyłącz alert lub zmieniać adresatów alertu.
+* Tak, reguły w alertów kliknij regułę wykrywania inteligentnego ją skonfigurować. Wyłączanie alertu lub zmieniać adresatów alertu.
 
-*Utratą wiadomości e-mail. Gdzie można znaleźć powiadomienia w portalu?*
+*Czy mogę utracone wiadomości e-mail. Gdzie znaleźć powiadomienia w portalu*
 
-* W dziennikach działania. Na platformie Azure Otwórz zasobu usługi Application Insights dla aplikacji, a następnie wybierz Dzienniki aktywności.
+* W dziennikach aktywności. Na platformie Azure otwórz zasób usługi Application Insights dla aplikacji, a następnie wybierz pozycję Dzienniki aktywności.
 
-*Niektóre alerty są o znanych problemach, a nie chcę do ich odbierania.*
+*Niektóre alerty są o znanych problemach, a nie chcę je odebrać.*
 
-* Mamy pomijania alertów w naszej listy prac.
+* Mamy pomijania alertów na naszej liście prac.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Te narzędzia diagnostyczne pomóc sprawdzić dane telemetryczne z aplikacji:
+Te narzędzia diagnostyczne ułatwiają sprawdzanie danych telemetrycznych z Twojej aplikacji:
 
 * [Eksplorator metryk](app-insights-metrics-explorer.md)
 * [Eksplorator wyszukiwania](app-insights-diagnostic-search.md)
-* [Analiza - język zaawansowanych zapytań](app-insights-analytics-tour.md)
+* [Analiza — zaawansowany język zapytań](app-insights-analytics-tour.md)
 
-Inteligentne wykryć są całkowicie automatyczne. A może chcesz skonfigurować niektóre alerty więcej?
+Wykrywanie inteligentne są całkowicie automatyczny. A może chcesz skonfigurować niektóre alerty więcej?
 
-* [Ręcznie skonfigurowanej metryki alertów](app-insights-alerts.md)
-* [Dostępność testy sieci web](app-insights-monitor-web-app-availability.md)
+* [Ręcznie skonfigurowane alertów dotyczących metryk](app-insights-alerts.md)
+* [Testy sieci web dostępności](app-insights-monitor-web-app-availability.md)

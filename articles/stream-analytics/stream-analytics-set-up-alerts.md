@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie monitorowania alertów dla zadania usługi analiza strumienia Azure
-description: W tym artykule opisano, jak skonfigurować monitorowanie i alerty dla zadania usługi analiza strumienia Azure za pomocą portalu Azure.
+title: Konfigurowanie monitorowania alertów dotyczących zadań usługi Azure Stream Analytics
+description: W tym artykule opisano jak skonfigurować monitorowanie i alerty dla zadań usługi Azure Stream Analytics za pomocą witryny Azure portal.
 services: stream-analytics
 author: jseb225
 ms.author: jeanb
@@ -9,38 +9,38 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 06/26/2017
-ms.openlocfilehash: fb69f1b52e5b17dd6794c896969c29003a929c9b
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 4c676ab3039a02a4fda27ab00312133e5de8077a
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31412114"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35943462"
 ---
-# <a name="tutorial-set-up-alerts-for-azure-stream-analytics-jobs"></a>Samouczek: Ustawianie alertów dla zadania usługi analiza strumienia Azure
-Alerty można skonfigurować do wyzwolenia alertu, gdy metryki osiągnie warunek, który określisz. Na przykład skonfigurować alert dla warunku podobne do poniższych:
+# <a name="set-up-alerts-for-azure-stream-analytics-jobs"></a>Konfigurowanie alertów dotyczących zadań usługi Azure Stream Analytics
+Alerty można skonfigurować, aby wyzwolić alert, gdy Metryka osiągnie warunek, który określisz. Na przykład skonfigurować alert dla warunku, jak pokazano poniżej:
 
 `If there are zero input events in the last 5 minutes, send email notification to sa-admin@example.com`
 
-Reguły można skonfigurować na metryki za pośrednictwem portalu lub można skonfigurować [programowo](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a) na dane dzienników operacji.
+Zasady można skonfigurować pod kątem dotyczące metryk za pośrednictwem portalu lub mogą zostać skonfigurowane [programowo](https://code.msdn.microsoft.com/windowsazure/Receive-Email-Notifications-199e2c9a) danych dzienników operacji.
 
-## <a name="set-up-alerts-in-the-azure-portal"></a>Konfigurowanie alertów w portalu Azure
-1. W portalu Azure Otwórz zadanie usługi Stream Analytics, aby utworzyć alertu dotyczącego. 
+## <a name="set-up-alerts-in-the-azure-portal"></a>Konfigurowanie alertów w witrynie Azure portal
+1. W witrynie Azure portal Otwórz zadanie usługi Stream Analytics ma zostać utworzony alert w przypadku. 
 
-2. W **zadania** bloku, kliknij przycisk **monitorowanie** sekcji.  
+2. W **zadania** bloku kliknij **monitorowanie** sekcji.  
 
-3. W **Metryka** bloku, kliknij przycisk **Dodaj alert** polecenia.
+3. W **metryki** bloku kliknij **Dodaj alert dotyczący** polecenia.
 
-      ![Instalacja portalu usługi Azure](./media/stream-analytics-set-up-alerts/06-stream-analytics-set-up-alerts.png)  
+      ![Konfiguracja usługi Azure portal](./media/stream-analytics-set-up-alerts/06-stream-analytics-set-up-alerts.png)  
 
 4. Wprowadź nazwę i opis.
 
-5. Selektory umożliwia definiowanie warunku, pod którą zostanie wysłany alert.
+5. Selektorów należy używać do definiowania warunków, w ramach której zostanie wysłany alert.
 
 6. Podaj informacje o gdzie alertu.
 
-      ![Konfigurowanie alertu dla zadania usługi analiza strumienia Azure](./media/stream-analytics-set-up-alerts/stream-analytics-add-alert.png)  
+      ![Konfigurowanie alertu dla zadania usługi Azure Stream Analytics](./media/stream-analytics-set-up-alerts/stream-analytics-add-alert.png)  
 
-Aby uzyskać więcej szczegółów na temat konfigurowania alertów w portalu Azure, zobacz [otrzymywać powiadomienia o alertach](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).  
+Aby uzyskać więcej informacji na temat konfigurowania alertów w witrynie Azure portal, zobacz [otrzymywanie powiadomień o alertach](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).  
 
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy

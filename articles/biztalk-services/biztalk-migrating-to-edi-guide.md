@@ -10,12 +10,12 @@ ms.topic: article
 ms.date: 07/31/2018
 ms.reviewer: jonfan, LADocs
 ms.suite: integration
-ms.openlocfilehash: 4ce65f1b5dd22da031ebf6730b5efad2d04f91a0
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 001dc4d5057767191003697c5fb819e53a8658f2
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39365591"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719940"
 ---
 # <a name="migrate-biztalk-server-edi-solutions-to-biztalk-services-technical-guide"></a>Migrowanie rozwiązań EDI serwera BizTalk Server do usługi BizTalk Services: Podręcznik techniczny
 
@@ -55,7 +55,7 @@ Podstawowe różnice i podobieństwa EDI przepływu rozwiązania w programie Biz
   
     W usłudze BizTalk Services po otrzymaniu EDI Mostek przetwarzania komunikatów EDI, kieruje wiadomości procesu zewnętrznego. Proces zewnętrzny, może być uruchomiony na Microsoft Azure lub lokalnie. Proces zewnętrzny powinien kierować wiadomości do mostka wysyłania EDI; Mostek wysyłania nie ściąga natury wiadomości. Po przetworzeniu komunikatu, Most wysyłania EDI trasy wiadomości z partnerem handlowym.
 
-Usługa BizTalk Services oferuje możliwość konfiguracji łatwy w użyciu szybkie tworzenie i wdrażanie umowę B2B, między partnerami handlowymi, bez konfigurowania żadnych Microsoft Azure Compute wystąpienia (role sieć Web lub proces roboczy), wszelkie Microsoft Azure SQL Database lub dowolnego Kont usługi Microsoft Azure storage. Wiązanie w przepływach pracy lub inne procesy przetwarzania usługi wymaga bardziej złożonych scenariuszy "wokół krawędzi" Umowy partnerów handlowych, oznacza to, że przed lub po zakończeniu przetwarzania Mostek handlowymi EDI umowę partnera. Poniższa sekwencja zdarzeń szczegółowo, występują w trakcie przetwarzania komunikatów EDI w usłudze BizTalk Services.
+Usługa BizTalk Services oferuje możliwość konfiguracji łatwy w użyciu szybkie tworzenie i wdrażanie umowę B2B między partnerami handlowymi bez konieczności konfigurowania żadnych wystąpień obliczeniowych Azure firmy Microsoft (role sieć Web lub proces roboczy), wszystkie bazy danych SQL Azure firmy Microsoft lub dowolnego Kont usługi Microsoft Azure storage. Wiązanie w przepływach pracy lub inne procesy przetwarzania usługi wymaga bardziej złożonych scenariuszy "wokół krawędzi" Umowy partnerów handlowych, oznacza to, że przed lub po zakończeniu przetwarzania Mostek handlowymi EDI umowę partnera. Poniższa sekwencja zdarzeń szczegółowo, występują w trakcie przetwarzania komunikatów EDI w usłudze BizTalk Services.
 
 1. Z obrotu partner, firma Fabrikam odebraniu komunikatu EDI.  Do odbierania komunikatów EDI z partnerami handlowymi, usługi BizTalk Services obsługuje protokoły transportu, takie jak FTP, SFTP, AS2 i HTTP/s
 2. Handlowym przetwarzania po stronie odbierającej umowę partnera dezasembluje komunikatów EDI w formacie XML.  Dezasemblowany komunikatów EDI (w formacie XML) można kierować do punktów końcowych usługi Service Bus, takie jak punkt końcowy usługi Service Bus Relay, tematu usługi Service Bus, kolejki usługi Service Bus lub Most usługi BizTalk Services.

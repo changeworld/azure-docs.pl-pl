@@ -1,46 +1,46 @@
 ---
-title: Usługa Azure Machine Learning Model zarządzania instalacja i Konfiguracja | Dokumentacja firmy Microsoft
-description: W tym dokumencie opisano kroki i pojęcia związane z w instalowaniu i konfigurowaniu modelu zarządzania w usłudze Azure Machine Learning.
+title: Usługi Azure Machine Learning Model zarządzania instalacja i Konfiguracja | Dokumentacja firmy Microsoft
+description: W tym dokumencie opisano kroki i pojęcia zaangażowane w instalowaniu i konfigurowaniu Zarządzanie modelami w usłudze Azure Machine Learning.
 services: machine-learning
 author: raymondlaghaeian
 ms.author: raymondl
 manager: hjerez
 ms.reviewer: jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 08/29/2017
-ms.openlocfilehash: 6802d1dfc360a48d8085ff07a8d4488ee1751e33
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 883e3d2c5945a38c8fbca5c9f0f5e8a1e4093be1
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832105"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35649867"
 ---
 # <a name="model-management-setup"></a>Model konfiguracji zarządzania
 
 ## <a name="overview"></a>Przegląd
-Ten dokument stanowi wprowadzenie do wdrażania i zarządzania nimi komputerze uczenia modele jako usługi sieci web przy użyciu zarządzania modelu uczenia Maszynowego Azure. 
+Ten dokument ułatwia rozpoczęcie pracy z używaniem Zarządzanie modelami w usłudze Azure ML na potrzeby wdrażania i zarządzania nimi modeli jako usług sieci web usługi machine learning. 
 
-Za pomocą zarządzania modelu uczenia Maszynowego Azure można efektywnego wdrożenia i zarządzania nimi modeli uczenia maszynowego, które są tworzone przy użyciu wielu platform, na przykład SparkML, Keras, TensorFlow, kognitywnych zestaw narzędzi firmy Microsoft lub Python. 
+Za pomocą zarządzania modelami w usłudze Azure ML, mogą efektywnie wdrażanie i zarządzanie modeli uczenia maszynowego, które zostały utworzone przy użyciu wielu struktur, w tym SparkML, Keras, TensorFlow, Microsoft Cognitive Toolkit lub Python. 
 
-Do końca tego dokumentu powinien mieć możliwość środowiska zarządzania modelu skonfigurowane i gotowe do wdrożenia z modeli uczenia maszynowego.
+Do końca tego dokumentu powinny mieć możliwość środowiska zarządzania modelami, skonfigurowane i gotowe do wdrażania modeli uczenia maszynowego.
 
 ## <a name="what-you-need-to-get-started"></a>Wymagane do rozpoczęcia pracy
-Aby uzyskać wykorzystanie tego przewodnika, właściciela do subskrypcji platformy Azure, którą można wdrożyć do modeli do powinna mieć.
-Interfejsu wiersza polecenia jest wstępnie zainstalowane na Azure Machine Learning Workbench i na [Azure DSVMs](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-virtual-machine-overview).
+Aby maksymalnie wykorzystać możliwości tego przewodnika, należy mieć dostęp właściciela do subskrypcji platformy Azure, którą można wdrożyć swoje modele, aby.
+Interfejs wiersza polecenia jest wstępnie zainstalowany w aplikacji Azure Machine Learning Workbench i w [maszyny Azure](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-virtual-machine-overview).
 
 ## <a name="using-the-cli"></a>Przy użyciu interfejsu wiersza polecenia
-Aby używać interfejsów wiersza polecenia (CLIs) z Workbench, kliknij przycisk **pliku** -] **Otwórz interfejs wiersza polecenia**. 
+Aby używać interfejsów wiersza polecenia (interfejsów wiersza polecenia) z aplikacji Workbench, kliknij przycisk **pliku** -] **Otwórz interfejs wiersza polecenia**. 
 
-W danych nauki maszyny wirtualnej, Połącz i Otwórz okno wiersza polecenia. Typ `az ml -h` Aby wyświetlić opcje. Aby uzyskać więcej informacji o poleceniach, Użyj flagi — Pomoc.
+Na maszyny wirtualnej analizy danych, łączenie i Otwórz okno wiersza polecenia. Typ `az ml -h` Aby wyświetlić opcje. Aby uzyskać więcej informacji na temat poleceń, Użyj flagi help.
 
-W innych systemach trzeba zainstalować CLIs.
+W innych systemach trzeba zainstalować interfejsów wiersza polecenia.
 
-### <a name="installing-or-updating-on-windows"></a>Instalowanie (lub aktualizowania) w systemie Windows
+### <a name="installing-or-updating-on-windows"></a>Instalowanie (lub aktualizowanie) na Windows
 
-Zainstaluj środowisko Python z https://www.python.org/. Upewnij się, że wybrano opcję zainstalowania pip.
+Zainstaluj język Python z https://www.python.org/. Upewnij się, że wybrano SE nainstalovat pip.
 
 Otwórz wiersz polecenia przy użyciu Uruchom jako Administrator i uruchom następujące polecenia:
 
@@ -50,7 +50,7 @@ pip install azure-cli-ml
 ```
  
 >[!NOTE]
->Jeśli masz starszą wersję, odinstaluj go najpierw za pomocą następującego polecenia:
+>Jeśli masz wcześniejszą wersję, odinstaluj go najpierw za pomocą następującego polecenia:
 >
 
 ```cmd
@@ -58,7 +58,7 @@ pip uninstall azure-cli-ml
 ```
 
 ### <a name="installing-or-updating-on-linux"></a>Instalowanie (lub aktualizowania) w systemie Linux
-Uruchom następujące polecenie w wierszu polecenia, a następnie postępuj zgodnie z monitami:
+Uruchom następujące polecenie w wierszu polecenia, a następnie postępuj zgodnie z instrukcjami:
 
 ```bash
 sudo -i
@@ -73,20 +73,20 @@ sudo /opt/microsoft/azureml/initial_setup.sh
 ```
 
 >[!NOTE]
->Wyloguj się i zaloguj się ponownie w sesji SSH, aby zmiany zaczęły obowiązywać.
->Poprzednie polecenia umożliwia zaktualizowanie starszej wersji CLIs na DSVM.
+>Wyloguj się i zaloguj się ponownie do swojej sesji SSH, aby zmiany zaczęły obowiązywać.
+>Poprzednie polecenia można użyć, aby zaktualizować starszą wersję interfejsów wiersza polecenia na maszyny DSVM.
 >
 
-## <a name="deploying-your-model"></a>Model wdrażania
-CLIs umożliwia wdrażanie modeli jako usługi sieci web. Usługi sieci web można wdrożyć lokalnie lub w klastrze.
+## <a name="deploying-your-model"></a>Wdrażanie modelu
+Interfejsów wiersza polecenia umożliwia wdrażanie modeli jako usług sieci web. Usługi sieci web można wdrażać lokalnie lub w klastrze.
 
-Uruchom program z lokalnego wdrożenia, zweryfikuj, czy model i kod działają, następnie wdrożyć do klastra w środowisku produkcyjnym skali.
+Uruchom program z lokalnym wdrożeniem, zweryfikuj, że model i kod pracować, to wdrożenie w klastrze skalowania w środowisku produkcyjnym.
 
-Aby rozpocząć, należy skonfigurować środowisko wdrażania. Konfigurowanie środowiska jest zadanie w czasie. Po zakończeniu instalacji można ponownie użyć środowiska w przypadku kolejnych wdrożeń. Zobacz sekcję poniżej, aby uzyskać więcej szczegółów.
+Aby rozpocząć, musisz skonfigurować swoje środowisko wdrażania. Konfiguracja środowiska jest zadanie w czasie. Po zakończeniu instalacji można użyć ponownie środowisko w przypadku kolejnych wdrożeń. Zobacz następujące sekcji, aby uzyskać więcej szczegółów.
 
 Po zakończeniu instalacji środowiska:
-- Zostanie wyświetlony monit logowanie do platformy Azure. Do logowania, użyj przeglądarki sieci web, aby otworzyć stronę https://aka.ms/devicelogin i wprowadź kod podany w celu uwierzytelnienia.
-- W procesie uwierzytelniania zostanie wyświetlony monit o konta do uwierzytelniania. Ważne: Należy wybrać konto, które ma ważnej subskrypcji platformy Azure i wystarczających uprawnień do utworzenia zasobów na koncie. - zobaczy podczas logowania zostanie zakończone, informacji o subskrypcji i zostanie wyświetlony monit, czy chcesz kontynuować z wybrane konto.
+- Monit o logowanie do platformy Azure. Aby się zarejestrować, należy użyć przeglądarki sieci web o otwarcie strony https://aka.ms/devicelogin i wprowadzenie udostępnionego kodu do uwierzytelniania.
+- Podczas procesu uwierzytelniania zostanie wyświetlony monit o konta do uwierzytelniania za pomocą. Ważne: Wybierz prawidłową subskrypcję platformy Azure i wystarczające uprawnienia do tworzenia zasobów na koncie. konto — gdy logowanie zostanie zakończone, zobaczy informacji o subskrypcji i zostanie wyświetlony monit, czy chcesz kontynuować wybrane konto.
 
 ### <a name="environment-setup"></a>Konfigurowanie środowiska
 Aby rozpocząć proces instalacji, należy zarejestrować dostawcę środowiska, wprowadzając następujące polecenie:
@@ -95,47 +95,47 @@ Aby rozpocząć proces instalacji, należy zarejestrować dostawcę środowiska,
 az provider register -n Microsoft.MachineLearningCompute
 ```
 
-#### <a name="local-deployment"></a>Wdrożenia lokalnego
-Aby wdrożyć i przetestować usługi sieci web na komputerze lokalnym, należy skonfigurować środowisko lokalne za pomocą następującego polecenia:
+#### <a name="local-deployment"></a>Wdrożenie lokalne
+Aby wdrożyć i przetestować usługę sieci web na komputerze lokalnym, należy skonfigurować środowisku lokalnym za pomocą następującego polecenia:
 
 ```azurecli
 az ml env setup -l [location of Azure Region, e.g. eastus2] -n [your environment name] [-g [existing resource group]]
 ```
 >[!NOTE] 
->Wdrożenie usługi lokalnej sieci web wymaga użytkownika do zainstalowania platformy Docker na komputerze lokalnym. 
+>Wymaga lokalnego wdrożenia usługi internetowej usługi zainstalować platformę Docker na komputerze lokalnym. 
 >
 
-Polecenie Ustawienia lokalnego środowiska tworzy następujące zasoby w Twojej subskrypcji:
+Polecenie Ustawienia lokalnego środowiska umożliwia utworzenie następujących zasobów w ramach subskrypcji:
 - Grupa zasobów (Jeśli nie zostanie podana)
 - Konto magazynu
-- Rejestru kontenera platformy Azure (ACR)
+- Rejestr Azure Container Registry (ACR)
 - Application Insights
 
-Po pomyślnym zakończeniu instalacji, należy ustawić środowiska do użycia przy użyciu następującego polecenia:
+Gdy Instalator zakończy się pomyślnie, należy ustawić środowisko ma być używany, używając następującego polecenia:
 
 ```azurecli
 az ml env set -n [environment name] -g [resource group]
 ```
 
-#### <a name="cluster-deployment"></a>Wdrożenie klastra
-Użyj wdrożenia klastra dla scenariuszy wysokiej skali w środowisku produkcyjnym. Konfiguruje klaster usług ACS z Kubernetes jako orchestrator. Aby obsłużyć większą przepływność dla wywołania usługi sieci web, może być skalowana klastrem usługi ACS.
+#### <a name="cluster-deployment"></a>Wdrażanie klastra
+Użyj wdrożenia klastra na potrzeby scenariuszy produkcyjnych w dużej skali. Konfiguruje klaster usługi ACS z rozwiązaniem Kubernetes jako orkiestrator. Klastra ACS może być skalowana w celu obsługi większej przepływności dla wywołania usługi sieci web.
 
-Aby wdrożyć usługi sieci web w środowisku produkcyjnym, należy najpierw skonfigurować ze środowiskiem za pomocą następującego polecenia:
+Aby wdrożyć usługę sieci web w środowisku produkcyjnym, należy najpierw skonfigurować środowisko, używając następującego polecenia:
 
 ```azurecli
 az ml env setup -c --name [your environment name] --location [Azure region e.g. eastus2] [-g [resource group]]
 ```
 
-Polecenie Ustawienia środowiska klastra tworzy następujące zasoby w Twojej subskrypcji:
+Polecenie instalacji środowiska klastra umożliwia utworzenie następujących zasobów w ramach subskrypcji:
 - Grupa zasobów (Jeśli nie zostanie podana)
 - Konto magazynu
-- Rejestru kontenera platformy Azure (ACR)
-- Wdrożenie Kubernetes w klastrze usługi kontenera platformy Azure (ACS)
+- Rejestr Azure Container Registry (ACR)
+- Wdrożenie rozwiązania Kubernetes w klastrze usługi Azure Container Service (ACS)
 - Application Insights
 
-Grupy zasobów konta magazynu i ACR są tworzone szybko. Wdrażanie usług ACS może zająć maksymalnie 20 minut. 
+Szybko są tworzone grupy zasobów, konto magazynu oraz usługi ACR. Wdrażanie usług ACS może potrwać do 20 minut. 
 
-Po zakończeniu instalacji należy ustawić w środowisku można użyć dla tego wdrożenia. Użyj następującego polecenia:
+Po zakończeniu instalacji należy ustawić środowisko, które ma być używany dla tego wdrożenia. Użyj następującego polecenia:
 
 ```azurecli
 az ml env set -n [environment name] -g [resource group]
@@ -146,10 +146,10 @@ az ml env set -n [environment name] -g [resource group]
 >
 
 >[!NOTE] 
->Aby utworzyć punkt końcowy HTTPS, Określ certyfikat SSL, podczas tworzenia klastra przy użyciu nazwa certyfikatu i--cert pem opcje az ml env Instalatora. To ustawienie klaster do obsługi żądań HTTPS, zabezpieczone przy użyciu podanego certyfikatu. Po zakończeniu instalacji należy utworzyć rekord CNAME DNS, który wskazuje nazwę FQDN klastra.
+>Aby utworzyć punkt końcowy HTTPS, Określ certyfikat SSL, podczas tworzenia klastra przy użyciu nazwa certyfikatu i--pem certyfikatu opcje az ml env Instalatora. Spowoduje to utworzenie klastra do obsługi żądań przy użyciu protokołu https, zabezpieczone przy użyciu podanych certyfikatów. Po zakończeniu instalacji należy utworzyć rekord CNAME DNS, który wskazuje nazwę FQDN klastra.
 
 ### <a name="create-an-account"></a>Utwórz konto
-Konto jest wymagane do wdrażania modeli. Należy wykonać to jeden raz dla każdego konta, a można ponownie użyć tego samego konta w przypadku wielu wdrożeń.
+Konto usługi jest wymagane na potrzeby wdrażania modeli. Należy zrobić to raz dla danego konta i ponownie używać tego samego konta w wielu wdrożeniach.
 
 Aby utworzyć nowe konto, użyj następującego polecenia:
 
@@ -162,7 +162,7 @@ Aby użyć istniejącego konta, użyj następującego polecenia:
 az ml account modelmanagement set -n [your account name] -g [resource group it was created in]
 ```
 
-### <a name="deploy-your-model"></a>Wdróż model
+### <a name="deploy-your-model"></a>Wdrażanie modelu
 Teraz można przystąpić do wdrażania modelu zapisane w postaci usługi sieci web. 
 
 ```azurecli
@@ -170,4 +170,4 @@ az ml service create realtime --model-file [model file/folder path] -f [scoring 
 ```
 
 ### <a name="next-steps"></a>Następne kroki
-Wypróbuj jedną z wielu próbek w galerii.
+Wypróbuj jedną z wielu przykładów w galerii.

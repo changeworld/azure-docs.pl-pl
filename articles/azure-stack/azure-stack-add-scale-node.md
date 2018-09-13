@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/20/2018
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: thoroet
-ms.openlocfilehash: 02602243bcb4e426ebf4984e387da8e8c148232e
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 0899b1784c796e5f6265dda842ca8955615a1584
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42055855"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718104"
 ---
 # <a name="add-additional-scale-unit-nodes-in-azure-stack"></a>Dodaj węzły jednostki rozbudowywać w usłudze Azure Stack
 
@@ -64,7 +64,7 @@ Portal administracyjny lub programu PowerShell służy do dodawania nowych węz�
 ### <a name="use-the-admin-portal"></a>Korzystać z portalu administratora
 
 1. Zaloguj się do portalu administracyjnego usługi Azure Stack jako operatorów usługi Azure Stack.
-2. Przejdź do **nowe** > **pojemności** > **węzła jednostki skalowania**.
+2. Przejdź do **+ Utwórz zasób** > **pojemności** > **węzła jednostki skalowania**.
    ![Węzeł jednostki skalowania](media/azure-stack-add-scale-node/select-node1.png)
 3. Na **Dodaj węzeł** okienku wybierz *Region*, a następnie wybierz pozycję *jednostki skalowania* chcesz dodać węzeł do. Również określić *adres IP kontrolera BMC* dla węzła jednostki skalowania, przystępując do dodawania. W danym momencie można dodawać tylko jeden węzeł.
    ![Dodawanie szczegółów węzłów](media/azure-stack-add-scale-node/select-node2.png)

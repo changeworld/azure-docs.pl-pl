@@ -3,23 +3,22 @@ title: Zrozumienie kontroli zabezpieczeń usługi Azure Stack | Dokumentacja fir
 description: Jako administrator usługi Dowiedz się więcej o kontroli bezpieczeństwa do usługi Azure Stack
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: PatAltimore
 manager: femila
 editor: ''
-ms.assetid: cccac19a-e1bf-4e36-8ac8-2228e8487646
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
-ms.author: mabrigg
-ms.openlocfilehash: a3bd314a1df3c45c76b2e3a5acb31c1474d0fdf5
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.date: 09/12/2018
+ms.author: patricka
+ms.openlocfilehash: 048a2e8204b3b8776b5a7e0e425dbc5fdf3d504c
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39008832"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719022"
 ---
 # <a name="azure-stack-infrastructure-security-posture"></a>Poziom zabezpieczeń infrastruktury w usłudze Azure Stack
 
@@ -76,7 +75,7 @@ Administracja w usłudze Azure Stack jest kontrolowany przy użyciu trzech punkt
 2. Usługa Azure Resource Manager udostępnia wszystkie operacje zarządzania z portalu administratora, interfejs API RST, używane przez program PowerShell i wiersza polecenia platformy Azure. 
 3. Dla określonych operacji niskiego poziomu, na przykład data center integration lub obsługi scenariuszy, usługi Azure Stack uwidacznia punkt końcowy programu PowerShell, nazywane [uprzywilejowanych punktu końcowego](azure-stack-privileged-endpoint.md). Ten punkt końcowy ujawnia tylko zestaw dozwolonych poleceń cmdlet i intensywnie podlega inspekcji.
 
-## <a name="network-controls"></a>Formanty sieciowe
+## <a name="network-controls"></a>Kontrolki sieci
 Infrastruktura usługi Azure Stack jest dostarczany za pomocą różnych warstw List(ACL) kontroli dostępu do sieci. Listy ACL zapobiegać nieautoryzowanemu dostępowi do składników infrastruktury i ograniczyć komunikacji infrastruktury do ścieżek, które są wymagane do jego funkcjonowania. 
 
 Listy ACL sieci są wymuszane w trzech warstwach:
@@ -87,3 +86,5 @@ Listy ACL sieci są wymuszane w trzech warstwach:
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Dowiedz się, jak wymienić klucze tajne w usłudze Azure Stack](azure-stack-rotate-secrets.md)
+- [PCI-DSS i CSA-CCM dokumentów dla usługi Azure Stack](https://servicetrust.microsoft.com/ViewPage/TrustDocuments)
+- [Departament Obrony i NIST dokumentów dla usługi Azure Stack](https://servicetrust.microsoft.com/ViewPage/Blueprint)

@@ -10,16 +10,16 @@ ms.author: xiwu
 ms.reviewer: douglasl
 manager: craigg
 ms.custom: data-sync
-ms.openlocfilehash: eca5e308399b9fb694a8e5060d72c12790a8f78d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6859784dcb3b3905459e83cfcb7812d7f23ac630
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434962"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721861"
 ---
 # <a name="automate-the-replication-of-schema-changes-in-azure-sql-data-sync"></a>Automatyzowanie replikacji zmian schematu w usłudze Azure SQL Data Sync
 
-SQL Data Sync pozwala użytkownikom na synchronizowanie danych między bazami danych SQL Azure i dla lokalnego programu SQL Server w jednym kierunku lub w obu kierunkach. Jednym z bieżących ograniczeń SQL Data Sync jest brak obsługi replikacji zmian schematu. Za każdym razem, gdy zmienił się schemat tabeli, należy zastosować zmiany ręcznie dla wszystkich punktów końcowych, w tym Centrum i wszystkie elementy członkowskie, a następnie zaktualizować schematu synchronizacji.
+SQL Data Sync pozwala użytkownikom na synchronizowanie danych między bazami danych Azure SQL i dla lokalnego programu SQL Server w jednym kierunku lub w obu kierunkach. Jednym z bieżących ograniczeń SQL Data Sync jest brak obsługi replikacji zmian schematu. Za każdym razem, gdy zmienił się schemat tabeli, należy zastosować zmiany ręcznie dla wszystkich punktów końcowych, w tym Centrum i wszystkie elementy członkowskie, a następnie zaktualizować schematu synchronizacji.
 
 W tym artykule przedstawiono rozwiązanie automatycznie replikować zmiany schematu do wszystkich punktów końcowych SQL Data Sync.
 1. To rozwiązanie używa wyzwalacz DDL do śledzenia zmian schematu.

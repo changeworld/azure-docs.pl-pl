@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/06/2018
+ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 477bd6047da639dcf21592a7ec0c1b80844e031e
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 5b8ae1d5d3f28c50cbbaedf65c5589fce98d3c68
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43337738"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715911"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania za pomocą konta Google przy użyciu usługi Azure Active Directory B2C
 
@@ -25,25 +25,21 @@ Aby użyć konta Google jako dostawcy tożsamości w usłudze Azure Active Direc
 
 1. Zaloguj się do [konsoli deweloperów Google](https://console.developers.google.com/) przy użyciu poświadczeń konta Google.
 2. Wybierz **Tworzenie projektu**, a następnie kliknij przycisk **Utwórz**. Jeśli utworzono projekty przed wybierz listę projektów, a następnie wybierz **nowy projekt**.
-3. Wprowadź **Nazwa projektu**, a następnie kliknij przycisk **Utwórz**.
+3. Wprowadź **Nazwa projektu**, kliknij przycisk **Utwórz**, a następnie upewnij się, czy przy użyciu nowego projektu.
 3. Wybierz **poświadczenia** w menu po lewej stronie, a następnie wybierz **Utwórz poświadczenia** > **identyfikator klienta Oauth**.
 4. Wybierz **ekranie wyrażania zgody Konfiguruj**.
 5. Wybierz lub Określ prawidłową **adres E-mail**, podaj **nazwa produktu pokazywana użytkownikom**i kliknij przycisk **Zapisz**.
 6. W obszarze **typ aplikacji**, wybierz opcję **aplikacji sieci Web**.
-7. Wprowadź **nazwa** dla aplikacji, wprowadź `https://{tenant}.b2clogin.com` w **JavaScript autoryzowanych źródeł**, i `https://{tenant}.b2clogin.com/te/{tenant}.onmicrosoft.com/oauth2/authresp` w **identyfikatory URI przekierowania autoryzowanych**. Zastąp **{dzierżawa}** nazwą dzierżawy (na przykład contosob2c).
+7. Wprowadź **nazwa** dla aplikacji, wprowadź `https://your-tenant-name.b2clogin.com` w **JavaScript autoryzowanych źródeł**, i `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` w **identyfikatory URI przekierowania autoryzowanych**. Zastąp `your-tenant-name` nazwą Twojej dzierżawy. Należy używać małych liter, podczas wprowadzania nazwa dzierżawy, nawet jeśli dzierżawa jest zdefiniowana z wielkich liter w usłudze Azure AD B2C.
 8. Kliknij pozycję **Utwórz**.
 9. Skopiuj wartości z **identyfikator klienta** i **klucz tajny klienta**. Konieczne będzie, obie z nich, aby skonfigurować Google jako dostawcy tożsamości w dzierżawie. **Klucz tajny klienta** jest ważnym poświadczeniem zabezpieczeń.
 
 ## <a name="configure-a-google-account-as-an-identity-provider"></a>Skonfiguruj konto Google jako dostawcy tożsamości
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
-2. Upewnij się, że używasz katalogu, który zawiera Twoją dzierżawę usługi Azure AD B2C, przełączając się na niego w prawym górnym rogu witryny Azure Portal. Wybierz informacje o subskrypcji, a następnie wybierz pozycję **Przełącz katalog**. 
+2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.  
 
-    ![Przełączanie się do swojej dzierżawy usługi Azure AD B2C](./media/active-directory-b2c-setup-fb-app/switch-directories.png)
-
-    Wybierz katalog zawierający Twoją dzierżawę.
-
-    ![Wybieranie katalogu](./media/active-directory-b2c-setup-fb-app/select-directory.png)
+    ![Przełączanie się do swojej dzierżawy usługi Azure AD B2C](./media/active-directory-b2c-setup-goog-app/switch-directories.png)
 
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Wybierz **dostawców tożsamości**, a następnie wybierz pozycję **Dodaj**.

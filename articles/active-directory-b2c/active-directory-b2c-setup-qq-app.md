@@ -7,15 +7,15 @@ manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 07/09/2018
+ms.date: 09/11/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 11bb5bf132103bed9e154a12c0e628177ca6a57a
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 7abe86d49ec62460f4bfe039cbd935efe21caba8
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344928"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716336"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-qq-account-using-azure-active-directory-b2c"></a>Konfigurowanie rejestracji i logowania za pomocą konta q przy użyciu usługi Azure Active Directory B2C
 
@@ -40,7 +40,7 @@ Aby użyć konta q jako dostawcy tożsamości w usłudze Azure Active Directory 
 1. Przejdź do obszaru [https://connect.qq.com/index.html](https://connect.qq.com/index.html) (Ustawienia — Integracje i usługi).
 2. Wybierz**应用管理**(Zarządzanie aplikacjami).
 5. Wybierz**创建应用**(Tworzenie aplikacji) i wprowadź wymagane informacje.
-7. Wprowadź `https://{tenant_name}.b2clogin.com/te/{tenant_name}.onmicrosoft.com/oauth2/authresp` w**授权回调域**(adres URL wywołania zwrotnego). Na przykład jeśli Twoja `tenant_name` jest contoso, Ustaw adres URL jako `https://contoso.b2clogin.com/te/contoso.onmicrosoft.com/oauth2/authresp`.
+7. Wprowadź `https://your-tenant-name.b2clogin.com/your-tenant-name}.onmicrosoft.com/oauth2/authresp` w**授权回调域**(adres URL wywołania zwrotnego). Na przykład jeśli Twoja `tenant_name` jest contoso, Ustaw adres URL jako `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp`.
 8. Wybierz**创建应用**(Tworzenie aplikacji).
 9. Na stronie Potwierdzenie wybierz**应用管理**(app management), aby wrócić do strony zarządzania aplikacji.
 10. Wybierz**查看**(Wyświetl) obok utworzonej aplikacji.
@@ -50,13 +50,9 @@ Aby użyć konta q jako dostawcy tożsamości w usłudze Azure Active Directory 
 ## <a name="configure-qq-as-an-identity-provider"></a>Konfigurowanie q jako dostawcy tożsamości
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
-2. Upewnij się, że używasz katalogu, który zawiera Twoją dzierżawę usługi Azure AD B2C, przełączając się na niego w prawym górnym rogu witryny Azure Portal. Wybierz informacje o subskrypcji, a następnie wybierz pozycję **Przełącz katalog**. 
+2. Pamiętaj, że używasz katalogu, który zawiera dzierżawy usługi Azure AD B2C, klikając **filtr katalogów i subskrypcji** w górnym menu i wybierając katalog, który zawiera Twojej dzierżawy.  
 
     ![Przełączanie się do swojej dzierżawy usługi Azure AD B2C](./media/active-directory-b2c-setup-qq-app/switch-directories.png)
-
-    Wybierz katalog zawierający Twoją dzierżawę.
-
-    ![Wybieranie katalogu](./media/active-directory-b2c-setup-qq-app/select-directory.png)
 
 3. Wybierz pozycję **Wszystkie usługi** w lewym górnym rogu witryny Azure Portal, a następnie wyszukaj i wybierz usługę **Azure AD B2C**.
 4. Wybierz **dostawców tożsamości**, a następnie wybierz pozycję **Dodaj**.

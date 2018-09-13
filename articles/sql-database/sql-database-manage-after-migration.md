@@ -12,12 +12,12 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: data-movement
-ms.openlocfilehash: 133cba72a93d692851043f1c66d6a4a38e18b324
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d82cc3ee1074e326c9e4dee7fd65e338cb95e19f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379469"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722235"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nowe DBA w chmurze — zarządzania bazą danych w usłudze Azure SQL Database
 

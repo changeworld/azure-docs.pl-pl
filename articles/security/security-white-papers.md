@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 9/10/2018
 ms.author: tomsh
-ms.openlocfilehash: b6953cc45305cf0812b185187c01149f0345756d
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 9ecdc0b7d2d21962dbfc7c14e9fff3fd969dd018
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346071"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721096"
 ---
 # <a name="azure-security-white-papers"></a>Usługa Azure Security oficjalne dokumenty
 | | |

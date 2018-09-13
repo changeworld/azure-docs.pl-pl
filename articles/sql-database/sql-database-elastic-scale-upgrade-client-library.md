@@ -1,6 +1,6 @@
 ---
-title: Uaktualnij do najnowszej biblioteki klienta elastycznej bazy danych | Dokumentacja firmy Microsoft
-description: Użycie narzędzia Nuget do uaktualnienia elastycznej bazy danych klienta biblioteki.
+title: Uaktualnianie do najnowszej Biblioteka kliencka elastic database | Dokumentacja firmy Microsoft
+description: Należy użyć Nuget, aby biblioteka kliencka uaktualnienia elastic database.
 services: sql-database
 manager: craigg
 author: stevestein
@@ -9,48 +9,48 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: sstein
-ms.openlocfilehash: 56500a21822f7c7122a20cb676b9ad307de49c87
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: c91650000400d3564a6d42aecdfb0974c4a64022
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647014"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715928"
 ---
-# <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Uaktualnij aplikację do korzystania z najnowszych biblioteki klienta elastycznej bazy danych
-Nowe wersje [biblioteki klienta elastycznej bazy danych](sql-database-elastic-database-client-library.md) są dostępne za pośrednictwem NuGetand interfejsu Menedżera NuGetPackage w programie Visual Studio. Uaktualnień obsługę nowych funkcji biblioteki klienta oraz zawierać poprawki błędów.
+# <a name="upgrade-an-app-to-use-the-latest-elastic-database-client-library"></a>Uaktualnianie aplikacji przy użyciu najnowszych Biblioteka kliencka elastic database
+Nowe wersje [Biblioteka kliencka Elastic Database](sql-database-elastic-database-client-library.md) są dostępne za pośrednictwem NuGetand interfejsu Menedżera NuGetPackage w programie Visual Studio. Uaktualnienia zawiera poprawki błędów i obsługa nowych funkcji z biblioteki klienta.
 
 **Aby uzyskać najnowszą wersję:** przejdź do [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/).
 
-Odbuduj aplikacji przy użyciu nowej biblioteki, a także zmienić istniejące metadanych Menedżera Map niezależnego fragmentu przechowywane w bazach danych SQL Azure do obsługi nowych funkcji.
+Ponowne kompilowanie aplikacji za pomocą nowej biblioteki, a także zmienić swoje istniejące metadane menedżera mapowań fragmentów przechowywanych w bazach danych Azure SQL do obsługi nowych funkcji.
 
-Te kroki są wykonywane w kolejności gwarantuje, że starsze wersje biblioteki klienta nie są już dostępne w danym środowisku po zaktualizowaniu obiektów metadanych, co oznacza, że po uaktualnieniu nie można utworzyć obiektów stara wersja metadanych.   
+Te kroki są wykonywane w kolejności zapewnia, że starsze wersje biblioteki klienta usługi nie są już obecne w danym środowisku podczas aktualizacji metadanych obiektów, co oznacza, że obiekty metadanych stara wersja nie zostaną utworzone po uaktualnieniu.   
 
-## <a name="upgrade-steps"></a>Kroki uaktualniania
-**1. Uaktualnienie aplikacji.** W programie Visual Studio Pobierz i odwołać się do wszystkich projektów programowanie korzystające z biblioteki; najnowszą wersję klienta w bibliotece następnie ponownie skompilować i wdrożyć. 
+## <a name="upgrade-steps"></a>Procedura uaktualniania
+**1. Uaktualnienie aplikacji.** W programie Visual Studio Pobierz i odwoływać się do najnowszej wersji biblioteki klienta do wszystkich swoich projektach deweloperskich, korzystające z biblioteki; następnie należy ponownie skompilować i wdrożyć. 
 
 * W rozwiązaniu programu Visual Studio wybierz **narzędzia** --> **Menedżera pakietów NuGet** -->  **Zarządzaj pakietami NuGet dla rozwiązania**. 
-* (Visual Studio 2013) W lewym panelu, wybierz **aktualizacje**, a następnie wybierz **aktualizacji** przycisk pakietu **SQL bazy danych elastyczne skalowanie biblioteki klienta usługi Azure** wyświetlany w oknie.
-* (Visual Studio 2015) Wartość w polu filtru **uaktualnienia dostępne**. Wybierz pakiet aktualizacji, a następnie kliknij przycisk **aktualizacji** przycisku.
-* (Visual Studio 2017) W górnej części okna dialogowego, wybierz **aktualizacje**. Wybierz pakiet aktualizacji, a następnie kliknij przycisk **aktualizacji** przycisku.
+* (Visual Studio 2013) W panelu po lewej stronie wybierz **aktualizacje**, a następnie wybierz pozycję **aktualizacji** przycisk na pakiet **Azure SQL Database elastycznej biblioteki klienckiej skalowania** wyświetlany w oknie.
+* (Visual Studio 2015) Ustaw pole filtru **dostępną aktualizację**. Wybierz pakiet aktualizacji, a następnie kliknij przycisk **aktualizacji** przycisku.
+* (Visual Studio 2017) W górnej części okna dialogowego wybierz **aktualizacje**. Wybierz pakiet aktualizacji, a następnie kliknij przycisk **aktualizacji** przycisku.
 * Tworzenie i wdrażanie. 
 
-**2. Uaktualnij skryptów.** Jeśli używasz **PowerShell** skryptów służących do zarządzania odłamków, [pobrać nową wersję biblioteki](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) i skopiować go do katalogu, z którego wykonywanie skryptów. 
+**2. Uaktualnij skryptów.** Jeśli używasz **PowerShell** skrypty do zarządzania fragmentami, [Pobierz nową wersję biblioteki](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/) i skopiować go do katalogu, w którym uruchamiany jest skrypt. 
 
-**3. Uaktualnij usługę podziału scalania.** Jeśli za pomocą narzędzia scalania podziału elastycznej bazy danych można zreorganizować danych podzielonej [pobrać i zainstalować najnowszą wersję narzędzia](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/). Szczegółowe kroki uaktualniania można znaleźć usługi [tutaj](sql-database-elastic-scale-overview-split-and-merge.md). 
+**3. Uaktualnij usługi dzielenia i scalania.** Jeśli używasz narzędzia do dzielenia i scalania elastycznej bazy danych do reorganizowanie danych podzielonych na fragmenty [pobrać i zainstalować najnowszą wersję narzędzia](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/). Szczegółowe kroki uaktualnienia można znaleźć usługi [tutaj](sql-database-elastic-scale-overview-split-and-merge.md). 
 
-**4. Uaktualnienie bazy danych Menedżera Map niezależnego fragmentu**. Uaktualnij metadanych Obsługa map niezależnego fragmentu w bazie danych SQL Azure.  Istnieją dwa sposoby, można to zrobić, za pomocą programu PowerShell lub C#. Poniżej przedstawiono obie opcje.
+**4. Uaktualnianie bazy danych Menedżera mapowań fragmentów**. Uaktualnij metadanych, obsługa map fragmentów w usłudze Azure SQL Database.  Istnieją dwa sposoby, można to zrobić, za pomocą programu PowerShell lub C#. Poniżej przedstawiono obie opcje.
 
-***Opcja 1: Metadane aktualizacji przy użyciu programu PowerShell***
+***Opcja 1: Uaktualnij metadanych przy użyciu programu PowerShell***
 
-1. Pobierz najnowsze narzędzia wiersza polecenia programu NuGet z [tutaj](http://nuget.org/nuget.exe) i zapisać w folderze. 
+1. Pobierz najnowsze narzędzia wiersza polecenia dla NuGet z [tutaj](http://nuget.org/nuget.exe) i Zapisz w folderze. 
 2. Otwórz wiersz polecenia, przejdź do folderu i wydać polecenie: `nuget install Microsoft.Azure.SqlDatabase.ElasticScale.Client`
-3. Przejdź do podfolderu zawierający nową wersję klienta biblioteki DLL, po prostu pobrany, na przykład: `cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
-4. Pobierz skryptlet uaktualnienia klienta elastycznej bazy danych z [Centrum skryptów](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9)i zapisz go do folderu zawierającego plik DLL.
+3. Przejdź do podfolderu, zawierający nową wersję klienta biblioteki DLL, po prostu pobrany, na przykład: `cd .\Microsoft.Azure.SqlDatabase.ElasticScale.Client.1.0.0\lib\net45`
+4. Pobierz scriptlet uaktualnienia klienta elastycznej bazy danych z [Centrum skryptów](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-Elastic-6442e6a9)i zapisz go do folderu zawierającego bibliotekę DLL.
 5. Z tego folderu Uruchom ".\upgrade.ps1 programu PowerShell" w wierszu polecenia, a następnie postępuj zgodnie z monitami.
 
-***Opcja 2: Uaktualnienie metadanych za pomocą języka C#***
+***Opcja 2: Uaktualnienie metadanych przy użyciu języka C#***
 
-Można również utworzyć aplikację programu Visual Studio, która otwiera ShardMapManager Twojego, przechodzi przez wszystkie odłamków i przeprowadza uaktualnienie metadanych przez wywołanie metody [UpgradeLocalStore](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore.aspx) i [UpgradeGlobalStore](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore.aspx) jak w poniższym przykładzie: 
+Alternatywnie, tworzenie aplikacji programu Visual Studio otwiera ShardMapManager użytkownika, który wykonuje iterację na wszystkich fragmentów i wykonuje Uaktualnianie metadanych przez wywołanie metody [UpgradeLocalStore](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradelocalstore.aspx) i [UpgradeGlobalStore ](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.upgradeglobalstore.aspx) jak w poniższym przykładzie: 
 
     ShardMapManager smm =
        ShardMapManagerFactory.GetSqlShardMapManager
@@ -63,12 +63,12 @@ Można również utworzyć aplikację programu Visual Studio, która otwiera Sha
        smm.UpgradeLocalStore(loc); 
     } 
 
-Techniki metadane uaktualnienia można zastosować wiele razy bez problemów. Na przykład jeśli starsza wersja klienta tworzy przypadkowo niezależnych po zaktualizowaniu już, można uruchomić uaktualnienia ponownie we wszystkich fragmentów, aby upewnić się, że znajduje się w całej infrastrukturze najnowsze wersja metadanych. 
+Techniki metadane uaktualnienia można stosować wiele razy bez szkody. Na przykład jeśli starsza wersja klienta przypadkowo tworzy fragment, po dokonaniu aktualizacji, możesz uruchomić uaktualnianie ponownie między wszystkimi fragmentami, aby upewnić się, że najnowsza wersja metadanych jest obecny w całej infrastrukturze. 
 
-**Uwaga:** nowych wersji biblioteki klienta opublikowana do daty nadal działać we wcześniejszych wersjach metadanych Menedżera Map niezależnego fragmentu bazy danych SQL Azure i na odwrót.   Jednak aby skorzystać z niektórych nowych funkcji w najnowszego klienta, metadane musi zostać uaktualniony.   Należy pamiętać, że metadane uaktualnienia nie wpłynie na wszystkie dane użytkownika lub dane specyficzne dla aplikacji, tylko obiekty tworzone i używane przez Menedżera Map niezależnego fragmentu.  I aplikacje w dalszym ciągu działać przez sekwencji uaktualniania opisany powyżej. 
+**Uwaga:** nowych wersji biblioteki klienta opublikowana do chwili kontynuować pracę z wcześniejszych wersji metadanych Menedżera mapowań fragmentów w usłudze Azure SQL DB i na odwrót.   Jednak aby móc korzystać z niektórych nowych funkcji w najnowszego klienta, metadanych musi zostać uaktualniony.   Należy pamiętać, że metadane uaktualnienia nie wpłynie na wszystkie dane użytkownika lub dane specyficzne dla aplikacji, tylko obiekty tworzone i używane przez Menedżera mapowań fragmentów.  I aplikacje w dalszym ciągu działać przy użyciu sekwencji uaktualniania opisany powyżej. 
 
 ## <a name="elastic-database-client-version-history"></a>Historia wersji klienta elastycznej bazy danych
-Historia wersji, aby uzyskać [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)
+Aby uzyskać historii wersji, przejdź do [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/)
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

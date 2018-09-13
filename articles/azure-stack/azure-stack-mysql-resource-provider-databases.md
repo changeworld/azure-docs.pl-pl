@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 09/12/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: 77dca29b0c60726f0a072dd662aba0d12730502a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 650fead700afcc1f6d1d18c7356324074fb9365b
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413692"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716455"
 ---
 # <a name="create-mysql-databases"></a>Tworzenie bazy danych MySQL
 
@@ -28,7 +28,7 @@ Można tworzyć i zarządzać samoobsługowego baz danych w aplikacji portal uż
 ## <a name="test-your-deployment-by-creating-a-mysql-database"></a>Przetestować wdrożenie, tworząc bazę danych MySQL
 
 1. Zaloguj się do aplikacji portal użytkowników usługi Azure Stack.
-2. Wybierz **+ nowe** > **dane + magazyn** > **bazy danych MySQL** > **Dodaj**.
+2. Wybierz **+ Utwórz zasób** > **dane + magazyn** > **bazy danych MySQL** > **Dodaj**.
 3. W obszarze **tworzenie bazy danych MySQL**, wprowadź nazwę bazy danych i skonfiguruj inne ustawienia zgodnie z wymaganiami dla danego środowiska.
 
     ![Utwórz test bazy danych MySQL](./media/azure-stack-mysql-rp-deploy/mysql-create-db.png)

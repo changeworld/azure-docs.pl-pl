@@ -1,81 +1,81 @@
 ---
-title: Kreator Azure Machine Learning źródła danych Azure | Dokumentacja firmy Microsoft
-description: Wyjaśniono AML środowiska roboczego Kreatora źródła danych
+title: Kreator usługi Azure Machine Learning źródła danych platformy Azure | Dokumentacja firmy Microsoft
+description: Wyjaśnia, w Kreatorze źródła danych z aplikacji workbench AML
 services: machine-learning
 author: cforbe
 ms.author: cforbe
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: dcf064817f2ad9855cfeef8fec6775d32ee992ec
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: c74229504a43179673cc99ccff321b65e3f6ed4f
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831143"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35650299"
 ---
 # <a name="data-source-wizard"></a>Kreator źródła danych #
 
-Kreator źródła danych jest szybki i łatwy sposób dostosowania zestawu danych do usługi Azure ML Workbench bez kodu. To, gdzie można również wybrać strategię przykładowe typy danych i zestaw danych dla każdej kolumny. 
+W Kreatorze źródła danych jest szybki i łatwy sposób wprowadzenia zestawu danych w aplikacji Azure ML Workbench, bez konieczności pisania kodu. To, gdzie możesz również wybrać strategię Przykładowy zestaw danych i typy danych dla każdej kolumny. 
 
-## <a name="step-1-trigger-the-data-source-wizard"></a>Krok 1: Wyzwolenia Kreatora źródła danych ## 
+## <a name="step-1-trigger-the-data-source-wizard"></a>Krok 1: Wyzwalacza w Kreatorze źródła danych ## 
 
 Aby przenieść dane do projektu przy użyciu Kreatora źródła danych. Wybierz **+** znajdujący się obok pola wyszukiwania w widoku danych i wybierz polecenie Dodaj źródło danych. 
 
 ![Dodawanie źródła danych](media/data-source-wizard/add-data-source.png)
 
 ## <a name="step-2-select-where-data-is-stored"></a>Krok 2: Wybierz, w którym są przechowywane dane ##
-Najpierw określ, jak dane są obecnie w. Może być przechowywany w pliku prostego lub katalog, plik parquet, pliku programu Excel lub bazy danych. Aby uzyskać więcej informacji, zobacz [obsługiwanych źródeł danych](data-prep-appendix2-supported-data-sources.md).
+Najpierw określ, jak Twoje dane są obecnie w. Mogą być przechowywane w pliku prostego lub katalogu, pliku parquet, pliku programu Excel lub bazy danych. Aby uzyskać więcej informacji, zobacz [obsługiwanych źródeł danych](data-prep-appendix2-supported-data-sources.md).
 
 ![Krok 1](media/data-source-wizard/step1.png)
 
 ## <a name="step-3-select-data-file"></a>Krok 3: Wybierz plik danych ##
-Dla pliku/katalogu Określ ścieżkę do pliku. Wybierz z listy rozwijanej lokalizacji danych — ścieżka do pliku lokalnego i magazynu obiektów Blob Azure. 
+Dla pliku lub katalogu Określ ścieżkę pliku. Wybierz z listy rozwijanej lokalizacji danych — może to być ścieżka do pliku lokalnego lub usługi Azure Blob Storage. 
 
-Określ ścieżkę, wpisując w lub klikając **Przeglądaj...** Aby wyszukać. Można przeglądać w poszukiwaniu katalogu lub co najmniej jeden plik.
+Wpisz ścieżkę, wpisując ją lub klikając **Przeglądaj...** przycisk, aby przejść do niego. Można przeglądać w poszukiwaniu katalogu lub jeden lub więcej plików.
 
-Kliknij przycisk **Zakończ** zaakceptuj wartości domyślne dla pozostałych kroków lub następnie przejść do następnego kroku.
+Kliknij przycisk **Zakończ** Zaakceptuj ustawienia domyślne dla pozostałych kroków lub następnie przejść do następnego kroku.
 
 
 ![Krok 4](media/data-source-wizard/step2.png)
 
-## <a name="step-4-choose-file-parameters"></a>Krok 4: Wybierz plik parametrów ##
+## <a name="step-4-choose-file-parameters"></a>Krok 4: Wybór parametrów w pliku ##
 
-Kreator źródła danych automatycznie wykrywa plik typu, separatory i kodowania. Będą również wyświetlane przykład wygląd danych. Można również zmienić dowolne z tych parametrów ręcznie. 
+W Kreatorze źródła danych może automatycznie wykrywać pliku typu, separatory i kodowania. Spowoduje to pokazanie również przykładowy wygląd danych. Można również zmienić dowolne z tych parametrów ręcznie. 
 
 ![Krok 5](media/data-source-wizard/step3.png)
 
-## <a name="step-5-set-data-types-for-columns"></a>Krok 5: Ustaw typy danych kolumn ##
+## <a name="step-5-set-data-types-for-columns"></a>Krok 5: Ustawianie typu danych dla kolumn ##
 
-Kreator źródła danych automatycznie wykrywa typy danych kolumn w zestawie danych. Chybień buforu, jednego, czy ma zostać wymuszone typu danych, należy ręcznie zmienić typ danych. **Przykładowe dane wyjściowe** kolumna zawiera przykłady wygląd danych.
+W Kreatorze źródła danych automatycznie wykrywa typy danych kolumn typizowanego zestawu danych. Chybień on jeden lub chcesz wymusić typ danych, typ danych można zmienić ręcznie. **Przykładowe dane wyjściowe** kolumna zawiera przykłady wyglądać dane.
 
-Dla kolumny, które wnioskuje przygotowanie bazy danych, aby zawierała daty może pojawić się prośba wybierz kolejność miesiąc i dzień w formacie daty. Na przykład może reprezentować 2 stycznia 1/2/2013 (w tym celu wybierz *dzień-miesiąc*) lub 1 lutego (wybierz *miesiąc, dzień*).
+Dla kolumn, które wnioskuje przygotowywanie danych, aby zawierała daty może być prośba o wybierz kolejność miesiąc i dzień w formacie daty. Na przykład, może reprezentować 2 stycznia 2013-1/2 (w tym celu wybierz *dnia miesiąca*) lub 1 lutego (wybierz *dnia miesiąca*).
 
 ![Krok 6](media/data-source-wizard/step4.png)
 
-## <a name="step-6-choose-sampling-strategy-for-data"></a>Krok 6: Wybierz strategię pobierania próbek danych ##
+## <a name="step-6-choose-sampling-strategy-for-data"></a>Krok 6: Wybierz strategię próbkowanie danych ##
 
-Można określić co najmniej jeden strategie dla zestawu danych i wybierz jedną jako aktywnej strategii. Wartość domyślna to załadować 10000 pierwszych wierszy. W tym przykładzie można edytować, klikając **Edytuj** przycisku w pasku narzędzi lub Dodaj nowe strategii przez kliknięcie + nowy. Strategie, które są aktualnie obsługują
+Można określić co najmniej jeden strategii próbkowania dla zestawu danych i wybierz jedną z nich jako aktywnej strategii. Wartość domyślna to załadować wierszy Top 10000. W tym przykładzie można edytować, klikając **Edytuj** przycisk na pasku narzędzi lub dodawania nowej strategii przez kliknięcie + nowy. Strategie, które są aktualnie obsługuje są
 
--     Górny liczbę wierszy
+-     Liczbę pierwszych wierszy
 -     Liczba wierszy
--     Losowe odsetek wierszy
--     Całego pliku
+-     Losowe procent wierszy
+-     Cały plik
 
-Można określić dowolną liczbę strategie, ale jest tylko jeden, który może być ustawiona jako aktywna podczas przygotowywania danych. Można ustawić jako aktywna, wybierając strategii każdej strategii i kliknij przycisk Ustaw jako aktywny w pasku narzędzi.
+Można określić dowolną liczbę strategie, ale jest tylko jedna, która może być ustawiona jako aktywna podczas przygotowywania danych. Można ustawić każdej strategii jako aktywna przez wybranie strategii i kliknąć pozycję Ustaw jako aktywny, na pasku narzędzi.
 
-W zależności od tego, gdzie dane pochodzą z kilka strategii próbki może nie być obsługiwana. Aby uzyskać więcej informacji na temat pobierania próbek przyjrzeć się sekcji próbkowania [tego dokumentu](data-prep-user-guide.md) 
+W zależności od tego, skąd pochodzą dane kilka przykładowych strategii mogą nie być obsługiwane. Aby uzyskać więcej informacji na temat próbkowania, Przyjrzyj się z sekcją próbkowania w [tego dokumentu](data-prep-user-guide.md) 
 
 ![Krok 6](media/data-source-wizard/step5.png)
 
 ## <a name="step-7-path-column-handling"></a>Krok 7: Obsługa kolumny ścieżki ##
 
-Ścieżka pliku zawiera ważne dane, można dołączyć go jako pierwsza kolumna w zestawie danych. Ta opcja może być przydatne, jeśli są przywracanie w wielu plikach. W przeciwnym razie można nie ma.
+Ścieżka pliku zawiera ważne dane, można dołączyć ją jako pierwszej kolumny w zestawie danych. Ta opcja może być przydatny, jeśli także w wielu plikach. W przeciwnym razie można dołączaj go.
 
 ![Krok 7](media/data-source-wizard/step6.png)
 
-Po kliknięciu przycisku Zakończ, nowe źródło danych zostanie dodany do projektu. Możesz go znaleźć w ramach grupy źródeł danych w widoku danych lub jako plik dsource w **widoku pliku**.
+Po kliknięciu przycisku Zakończ, nowe źródło danych zostanie dodany do projektu. Możesz go znaleźć w ramach grupy źródeł danych w widoku danych lub jako plik dsource w **widok pliku**.

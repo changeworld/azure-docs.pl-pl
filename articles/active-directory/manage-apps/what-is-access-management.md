@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/16/2017
 ms.author: barbkess
-ms.openlocfilehash: d39df136c6c81e380ccbe7fa2c050d906dc4c182
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: cec1b3089403966cbf738b372a4380bdacf264b7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39367049"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718290"
 ---
 # <a name="managing-access-to-apps"></a>Zarządzanie dostępem do aplikacji
 Ciągły dostęp do zarządzania, użycie oceny i raportowania nadal żądanie po aplikacji jest zintegrowany system obsługi tożsamości organizacji. W wielu przypadkach administratorzy IT lub pomocą techniczną wymagać trwającą aktywną rolę w zarządzaniu dostępem do aplikacji. Czasami przydziału jest wykonywane przez zespół IT ogólne lub działów. Często decyzja przydziału jest przeznaczona do należy delegować domenę do osoba podejmująca decyzje biznesowe, wymaganie zatwierdzenia przed IT sprawia, że przypisanie.  Innym organizacjom inwestowanie w integracji z istniejących automatycznych tożsamościami i dostępem system zarządzania, takich jak kontrola dostępu oparta na rolach (RBAC) lub atrybutu-Based Access Control (ABAC). Integracji i programowania reguły zwykle wyspecjalizowanych i drogich. Monitorowania i raportowania w obu podejścia do zarządzania jest inwestycji oddzielne kosztownych i złożonych.
@@ -54,7 +54,5 @@ W tym przypadku wszystkich przypisanych użytkowników będzie automatycznie apr
 Administratorzy mogą stosować [dostępu warunkowego usługi Azure AD](../active-directory-conditional-access-azure-portal.md) można ustawić zasady dostępu dla określonych ról. Zasady te mogą obejmować, czy dostęp jest dozwolony w środowisku firmowym i nawet Multi-Factor Authentication urządzenie wymagania lub uzyskanie dostępu w różnych przypadkach poza.
 
 ## <a name="next-steps"></a>Kolejne kroki
-
-* [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](../active-directory-apps-index.md)
 * [Ochrona aplikacji przy użyciu dostępu warunkowego](../active-directory-conditional-access-azure-portal.md)
 * [Zarządzanie grupami samoobsługi/SSAA](../users-groups-roles/groups-self-service-management.md)

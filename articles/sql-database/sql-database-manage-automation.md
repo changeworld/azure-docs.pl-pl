@@ -1,5 +1,5 @@
 ---
-title: Zarządzanie bazami danych SQL Azure przy użyciu usługi Azure Automation | Dokumentacja firmy Microsoft
+title: Zarządzanie bazami danych Azure SQL przy użyciu usługi Azure Automation | Dokumentacja firmy Microsoft
 description: Naucz się, jak używać usługi Azure Automation do zarządzania bazami danych Azure SQL na dużą skalę.
 services: sql-database, automation
 author: CarlRabeler
@@ -9,14 +9,14 @@ ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: c68a493f439b5bc54cb04162de88ef31058d25f3
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 43476cfcae2035c3b8e94b4a5e264a0c8ff424e0
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42058457"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715452"
 ---
-# <a name="managing-azure-sql-databases-using-azure-automation"></a>Zarządzanie bazami danych SQL Azure przy użyciu usługi Azure Automation
+# <a name="managing-azure-sql-databases-using-azure-automation"></a>Zarządzanie bazami danych Azure SQL przy użyciu usługi Azure Automation
 Ten przewodnik Wprowadzenie do usługi Azure Automation i jak może służyć do uproszczenia zarządzania bazy danych Azure SQL.
 
 ## <a name="what-is-azure-automation"></a>Co to jest Azure Automation?
@@ -31,7 +31,7 @@ Usługa Azure SQL Database można zarządzać w usłudze Azure Automation za pom
 
 Usługa Azure Automation ma również możliwość komunikacji z serwerami SQL bezpośrednio przez wydanie polecenia SQL przy użyciu programu PowerShell.
 
-[Galerii elementów runbook usługi Azure Automation](https://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/) zawiera szereg produktu zespół i społeczności elementy runbook, aby rozpocząć automatyzację zarządzania bazami danych SQL Azure, innych usług platformy Azure i systemami firm 3. Galeria elementów runbook obejmują:
+[Galerii elementów runbook usługi Azure Automation](https://azure.microsoft.com/blog/2014/10/07/introducing-the-azure-automation-runbook-gallery/) zawiera szereg produktu zespół i społeczności elementy runbook, aby rozpocząć automatyzację zarządzania bazami danych Azure SQL, innych usług platformy Azure i systemami firm 3. Galeria elementów runbook obejmują:
 
 * [Uruchamiać zapytania SQL względem bazy danych programu SQL Server](https://gallery.technet.microsoft.com/scriptcenter/How-to-use-a-SQL-Command-be77f9d2)
 * [Skalowanie w pionie (górę lub w dół) usługi Azure SQL Database zgodnie z harmonogramem](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-Database-e957354f)

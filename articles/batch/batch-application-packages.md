@@ -1,6 +1,6 @@
 ---
-title: Instalowanie pakietów aplikacji w węzłach obliczeniowych - partii zadań Azure | Dokumentacja firmy Microsoft
-description: Użyj funkcji pakiety aplikacji partii zadań Azure ułatwia zarządzanie wiele aplikacji i wersji do instalacji na partii węzły obliczeniowe.
+title: Instalowanie pakietów aplikacji w węzłach obliczeniowych — usługi Azure Batch | Dokumentacja firmy Microsoft
+description: Użyj funkcji pakietów aplikacji usługi Azure Batch w prosty sposób zarządzać wielu aplikacji i wersji do instalacji w usłudze Batch węzłów obliczeniowych.
 services: batch
 documentationcenter: .net
 author: dlepow
@@ -12,191 +12,191 @@ ms.devlang: multiple
 ms.topic: article
 ms.tgt_pltfrm: ''
 ms.workload: big-compute
-ms.date: 04/06/2018
+ms.date: 06/15/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f982e859892965379b7ffb08e15dd1cf51b9801f
-ms.sourcegitcommit: 1362e3d6961bdeaebed7fb342c7b0b34f6f6417a
+ms.openlocfilehash: 333161042e968b4baf4b962869d688fd0b696b24
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/18/2018
-ms.locfileid: "31515683"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35938432"
 ---
-# <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Wdrażanie aplikacji do wyliczenia węzłów za pomocą pakietów aplikacji partii
+# <a name="deploy-applications-to-compute-nodes-with-batch-application-packages"></a>Wdrażanie aplikacji do węzłów za pomocą pakietów aplikacji usługi Batch obliczeniowych
 
-Funkcja pakiety aplikacji partii zadań Azure umożliwia łatwe zarządzanie aplikacjami zadań i ich wdrożenia węzłów obliczeniowych w puli. Pakiety aplikacji możesz przekazać i zarządzanie wieloma wersjami aplikacji, których uruchamianie zadań, łącznie z ich pliki pomocnicze. Można następnie automatycznie wdrożyć co najmniej jeden z tych aplikacji, do węzłów obliczeniowych w puli.
+Funkcja pakietów aplikacji usługi Azure Batch umożliwia łatwe zarządzanie aplikacjami zadań i wdrażanie ich w węzłach obliczeniowych w puli. Za pomocą pakietów aplikacji można przekazać i zarządzanie wielu wersji aplikacji, które są uruchamiane przez podzadania, łącznie z ich pliki pomocnicze. Można następnie automatycznie wdrożyć co najmniej jeden z tych aplikacji w węzłach obliczeniowych w puli.
 
-W tym artykule Dowiedz się jak przekazywać oraz zarządzać nimi pakietów aplikacji w portalu Azure. Następnie dowiesz się, jak do zainstalowania go na węzłach obliczeń puli z [partiami platformy .NET] [ api_net] biblioteki.
+W tym artykule dowiesz się, jak przekazywać i zarządzanie pakietami aplikacji w witrynie Azure portal. Następnie dowiesz się, jak mają być instalowane w węzłach obliczeniowych w puli za pomocą [platformy .NET usługi Batch] [ api_net] biblioteki.
 
 > [!NOTE]
 > 
 > Pakiety aplikacji są obsługiwane we wszystkich pulach usługi Batch utworzonych po 5 lipca 2017 r. W pulach usługi Batch utworzonych między 10 marca 2016 r. a 5 lipca 2017 r. są one obsługiwane tylko w przypadku, gdy pula została utworzona za pomocą konfiguracji usługi w chmurze. Pule usługi Batch utworzone przed 10 marca 2016 r. nie obsługują pakietów aplikacji.
 >
-> Interfejsy API umożliwiające tworzenie i zarządzanie pakiety aplikacji są częścią [zarządzania partiami platformy .NET] [ api_net_mgmt] biblioteki. Interfejsy API do instalowania pakietów aplikacji w węźle obliczeń są częścią [partiami platformy .NET] [ api_net] biblioteki. Porównywanie funkcje są dostępne interfejsy API partii dla innych języków. 
+> Interfejsy API do tworzenia i zarządzania pakiety aplikacji są częścią [Batch Management .NET] [ api_net_mgmt] biblioteki. Instalowanie pakietów aplikacji w węźle obliczeniowym interfejsy API są częścią [platformy .NET usługi Batch] [ api_net] biblioteki. Porównywalne funkcje są uwzględnione w dostępnych interfejsów API usługi Batch dla innych języków. 
 >
-> Funkcja pakietów aplikacji, które są opisane w tym miejscu zastępuje funkcję partii aplikacje dostępne w poprzednich wersjach usługi.
+> Funkcja pakietów aplikacji, które są opisane w tym miejscu zastępuje funkcję aplikacji usługi Batch dostępnych w poprzednich wersjach usługi.
 > 
 > 
 
-## <a name="application-package-requirements"></a>Wymagania dotyczące pakietu aplikacji
-Aby użyć pakietów aplikacji, musisz [połączyć konto usługi Azure Storage](#link-a-storage-account) do konta partii zadań.
+## <a name="application-package-requirements"></a>Wymagań dotyczących pakietu aplikacji
+Aby użyć pakietów aplikacji, musisz [Łączenie konta usługi Azure Storage](#link-a-storage-account) z kontem usługi Batch.
 
 ## <a name="about-applications-and-application-packages"></a>Aplikacje i pakiety aplikacji — informacje
-W partii zadań Azure *aplikacji* odwołuje się do zestawu określonej wersji plików binarnych, które mogą być automatycznie pobrane do węzłów obliczeniowych w puli. *Pakiet aplikacji* odwołuje się do *określonego zestawu* tych danych binarnych i reprezentuje danego *wersji* aplikacji.
+W ramach usługi Azure Batch *aplikacji* odwołuje się do zestawu określonej wersji plików binarnych, które można automatycznie pobrać do węzłów obliczeniowych w puli. *Pakiet aplikacji* odwołuje się do *określony zestaw* tych danych binarnych i reprezentuje danego *wersji* aplikacji.
 
 ![Diagramu wysokiego poziomu aplikacji i pakietów aplikacji][1]
 
 ### <a name="applications"></a>Aplikacje
-Aplikacja w partii zawiera jeden lub więcej aplikacji, pakietów i opcje konfiguracji dla aplikacji. Na przykład aplikacji można określić domyślnej wersji pakietu aplikacji do zainstalowania na węzłów obliczeniowych oraz czy jej pakietów można zaktualizować lub usunąć.
+Aplikacja w usłudze Batch zawiera jeden lub więcej aplikacji, pakietów i określa opcje konfiguracji dla aplikacji. Na przykład aplikacji można określić wersji pakietu aplikacji domyślnej do zainstalowania w węzłach obliczeniowych i czy jego pakietów mogą zostać zaktualizowane lub usunięte.
 
 ### <a name="application-packages"></a>Pakiety aplikacji
-Pakiet aplikacji jest plik zip, który zawiera pliki binarne aplikacji i plików pomocniczych, które są wymagane dla zadań do uruchomienia aplikacji. Każdy pakiet aplikacji reprezentuje określoną wersję aplikacji.
+Pakiet aplikacji jest plik zip, który zawiera pliki binarne aplikacji i plików pomocniczych, które są wymagane dla zadań podrzędnych do uruchomienia aplikacji. Każdy pakiet aplikacji reprezentuje określoną wersję aplikacji.
 
-Można określić pakietów aplikacji na poziomach puli i zadań. Podczas tworzenia puli lub zadania można określić co najmniej jeden z tych pakietów i (opcjonalnie) wersja.
+Można określić pakiety aplikacji na poziomie puli i zadania podrzędnego. Podczas tworzenia puli lub zadań można określić co najmniej jeden z tych pakietów oraz (opcjonalnie) wersji.
 
-* **Pakiety aplikacji w puli** są wdrażane na *co* węzła w puli. Gdy węzeł dołącza pulę i gdy jest ponownego rozruchu lub odtworzenia z obrazu wdrożenia aplikacji.
+* **Pakiety aplikacji w puli** są wdrażane *co* węźle w puli. Aplikacje są wdrażane, gdy węzeł dołącza puli, a gdy zostanie ponownie uruchomiony lub odtworzony z obrazu.
   
-    Pakiety aplikacji w puli są odpowiednie, wszystkie węzły w puli wykonywania zadania. Podczas tworzenia puli, można dodać lub zaktualizować pakiety istniejącej puli, można określić co najmniej jednego pakietu aplikacji. Aktualizuj istniejącą pulę aplikacji pakietów, należy ponownie uruchomić jego węzły do zainstalowania nowego pakietu.
-* **Zadanie pakietów aplikacji** są wdrażane tylko w węźle obliczeń, zaplanowane zadanie, wystarczy, przed uruchomieniem zadania wiersza polecenia. Jeśli podany pakiet aplikacji i wersji jest już w węźle, nie jest wdrożone i jest używany istniejący pakiet.
+    Pakietów aplikacji puli są odpowiednie w przypadku, gdy wszystkich węzłów w puli wymaga wykonania zadania. Podczas tworzenia puli, można dodać lub zaktualizować pakiety istniejącej puli, można określić co najmniej jeden pakiet aplikacji. Jeśli zaktualizujesz istniejącej puli, pakiety aplikacji, należy ponownie uruchomić jego węzły, aby zainstalować nowy pakiet.
+* **Pakiety aplikacji zadania** są wdrażane tylko w węźle obliczeniowym, zaplanowane do uruchomienia zadania, po prostu, przed uruchomieniem wiersza polecenia zadania podrzędnego. Jeśli podany pakiet aplikacji i wersji jest już w węźle, go ponownie nie jest wdrażana i jest używany istniejący pakiet.
   
-    Pakiety aplikacji zadań są przydatne w środowisku udostępnionych puli, której różne zadania są uruchamiane w jednej puli i puli nie zostanie usunięta po zakończeniu zadania. Jeśli liczba zadań podrzędnych w zadaniu jest mniejsza niż liczba węzłów w puli, pakiety aplikacji zadania podrzędnego mogą minimalizować ilość transferowanych danych, ponieważ aplikacja jest wdrażana tylko dla węzłów, w których odbywa się uruchamianie zadań podrzędnych.
+    Pakiety aplikacji zadania podrzędnego są przydatne w środowiskach z udostępnioną pulą, gdzie różne zadania są uruchamiane w jednej puli, a pula nie zostanie usunięta, gdy zadanie jest zakończone. Jeśli liczba zadań podrzędnych w zadaniu jest mniejsza niż liczba węzłów w puli, pakiety aplikacji zadania podrzędnego mogą minimalizować ilość transferowanych danych, ponieważ aplikacja jest wdrażana tylko dla węzłów, w których odbywa się uruchamianie zadań podrzędnych.
   
-    Inne scenariusze, które mogą korzystać z zadań pakiety aplikacji są zadań uruchamianych dużej aplikacji, ale tylko kilka zadań. Na przykład przetwarzania wstępnego etap lub zadanie scalania, gdzie aplikacja przetwarzanie wstępne lub merge jest ogromnych, może korzystać z zadań pakietów aplikacji.
+    Inne scenariusze, które mogą korzystać z pakiety aplikacji zadania podrzędnego są zadań uruchamianych dużych aplikacji, ale tylko kilka zadań. Na przykład etapie przetwarzania wstępnego lub zadanie scalania, gdy aplikacja wstępnego przetwarzania lub scalania jest niewielkich, mogą korzystać z pakiety aplikacji zadania podrzędnego.
 
 > [!IMPORTANT]
-> Istnieją ograniczenia liczby aplikacji i pakietów aplikacji w ramach konta usługi partia zadań i aplikacji maksymalny rozmiar pakietu. Zobacz [przydziały i limity dla usługi partia zadań Azure](batch-quota-limit.md) szczegółowe informacje o tych ograniczeniach.
+> Istnieją ograniczenia liczby aplikacji i pakietów aplikacji w ramach konta usługi Batch, a na aplikację maksymalny rozmiar pakietu. Zobacz [przydziały i limity dla usługi Azure Batch](batch-quota-limit.md) szczegółowe informacje na temat tych ograniczeń.
 > 
 > 
 
-### <a name="benefits-of-application-packages"></a>Korzyści wynikające z pakietów aplikacji
-Pakiety aplikacji można uprościć kod w rozwiązaniu partii i zmniejszyć nakład pracy potrzebny do zarządzania aplikacjami, które uruchamiania zadań.
+### <a name="benefits-of-application-packages"></a>Korzyści z pakietu aplikacji
+Pakiety aplikacji można uproszczenie kodu w rozwiązaniu usługi Batch i zmniejszyć nakład pracy potrzebny do zarządzania aplikacjami, uruchamianych przez podzadania.
 
-Z pakietów aplikacji zadanie uruchamiania przez pulę nie trzeba określać długą listę plików poszczególnych zasobów można zainstalować na węzłach. Nie trzeba ręcznie Zarządzanie wieloma wersjami plików aplikacji w usłudze Azure Storage lub na węzły. I nie trzeba martwić generowania [adresy URL SAS](../storage/common/storage-dotnet-shared-access-signature-part-1.md) zapewniające dostęp do plików na Twoim koncie magazynu. Wsadowe działa w tle z usługą Azure Storage do przechowywania pakietów aplikacji i wdrożenia ich na węzłach obliczeniowych.
+Za pomocą pakietów aplikacji zadania podrzędnego uruchamiania w puli nie musi określić długą listę plików pojedynczego zasobu do zainstalowania w węzłach. Nie trzeba ręcznie zarządzać wielu wersji plików aplikacji w usłudze Azure Storage oraz węzłów. I nie musisz martwić się o generowania [adresów URL sygnatury dostępu Współdzielonego](../storage/common/storage-dotnet-shared-access-signature-part-1.md) zapewnienie dostępu do plików na koncie magazynu. Batch działają w tle z usługi Azure Storage do przechowywania pakietów aplikacji i wdrażania ich w węzłach obliczeniowych.
 
 > [!NOTE] 
-> Całkowity rozmiar zadania podrzędnego uruchamiania musi wynosić 32 768 znaków, w tym pliki zasobów lub zmienne środowiskowe, lub być mniejszy. Jeśli zadanie start przekracza ten limit, za pomocą pakietów aplikacji jest inną opcją. Można również utworzyć archiwum zip zawierającym pliki zasobów, przekaż go jako obiekt blob do magazynu Azure i Rozpakuj go z poziomu wiersza polecenia zadania uruchamiania. 
+> Całkowity rozmiar zadania podrzędnego uruchamiania musi wynosić 32 768 znaków, w tym pliki zasobów lub zmienne środowiskowe, lub być mniejszy. Jeśli zadanie podrzędne uruchamiania przekracza ten limit, następnie za pomocą pakietów aplikacji jest inną opcją. Można również utworzyć skompresowane archiwum zawierające pliki zasobów, przekaż go jako obiekt blob do usługi Azure Storage i Rozpakuj go z wiersza polecenia zadania podrzędnego uruchamiania. 
 >
 >
 
 ## <a name="upload-and-manage-applications"></a>Przekazywanie aplikacji i zarządzanie nimi
-Można użyć [portalu Azure] [ portal] lub interfejsów API zarządzania partii w zakresie zarządzania pakietami aplikacji w ramach konta usługi partia zadań. W kolejnych sekcjach kilka możemy najpierw pokazują, jak połączyć konto magazynu, a następnie omówiono Dodawanie aplikacji i pakietów i zarządzania nimi przy użyciu portalu.
+Możesz użyć [witryny Azure portal] [ portal] lub interfejsów API zarządzania usługi Batch w zakresie zarządzania pakietami aplikacji na koncie usługi Batch. W kolejnych sekcjach najpierw przedstawiono, jak połączyć konto usługi Storage, a następnie omówiono Dodawanie aplikacji i pakietów oraz zarządzania nimi za pomocą portalu.
 
-### <a name="link-a-storage-account"></a>Połącz konto magazynu
-Aby użyć pakietów aplikacji, należy najpierw połączyć [konta magazynu Azure](batch-api-basics.md#azure-storage-account) do konta partii zadań. Jeśli nie skonfigurowano jeszcze konta magazynu, portalu Azure wyświetli ostrzeżenie, po raz pierwszy kliknij **aplikacji** na koncie usługi partia zadań.
+### <a name="link-a-storage-account"></a>Połączyć konto usługi Storage
+Aby użyć pakietów aplikacji, musisz najpierw połączyć [konta usługi Azure Storage](batch-api-basics.md#azure-storage-account) z kontem usługi Batch. Jeśli nie skonfigurowano jeszcze konta magazynu, witryny Azure portal wyświetla ostrzeżenie po raz pierwszy kliknij **aplikacji** na koncie usługi Batch.
 
 
 
-![Ostrzeżenie "Nie skonfigurowano konta magazynu" w portalu Azure][9]
+![Ostrzeżenie "Nie skonfigurowano konta magazynu" w witrynie Azure portal][9]
 
-Usługa partia zadań używa skojarzone konto magazynu do przechowywania pakietów aplikacji. Po połączeniu dwóch kont usługi partia zadań można automatycznie wdrażać pakietów przechowywanych w ramach połączonego konta magazynu do węzłów obliczeniowych. Aby połączyć konto magazynu do konta partii zadań, kliknij **konta magazynu** na **ostrzeżenie** okna, a następnie kliknij przycisk **konta magazynu** ponownie.
+Usługa Batch używa skojarzone konto magazynu do przechowywania pakietów aplikacji. Po połączeniu dwóch kont usługi Batch można automatycznie wdrażać pakiety, przechowywane w połączonym koncie usługi Storage do węzłów obliczeniowych. Aby połączyć konto usługi Storage z kontem usługi Batch, kliknij **konta magazynu** na **ostrzeżenie** okna, a następnie kliknij przycisk **konta magazynu** ponownie.
 
-![Wybierz bloku konto magazynu w portalu Azure][10]
+![Wybierz blok konto magazynu w witrynie Azure portal][10]
 
-Zaleca się utworzenie konta magazynu *w szczególności* do użytku z kontem usługi partia zadań i zaznacz je tutaj. Po utworzeniu konta magazynu można następnie połączyć go do konta partii zadań za pomocą **konta magazynu** okna.
+Zaleca się utworzenie konta magazynu *specjalnie* do użytku z kontem usługi Batch i wybierz go tutaj. Po utworzeniu konta magazynu można następnie połączyć go z kontem usługi Batch za pomocą **konta magazynu** okna.
 
 > [!NOTE] 
-> Obecnie nie można użyć pakietów aplikacji z kontem magazynu Azure, które skonfigurowano [reguły zapory](../storage/common/storage-network-security.md).
+> Obecnie nie można użyć pakietów aplikacji za pomocą konta usługi Azure Storage, który jest skonfigurowany z [reguły zapory](../storage/common/storage-network-security.md).
 > 
 
-Usługa partia zadań używa usługi Azure Storage do przechowywania pakietów aplikacji jako blokowych obiektów blob. Jesteś [rozliczany jako normalne] [ storage_pricing] dla bloku danych obiektów blob. Należy wziąć pod uwagę rozmiar i liczbę pakietów aplikacji, a okresowe usuwanie przestarzałych pakietów, aby zminimalizować koszty.
+Usługa Batch używa usługi Azure Storage do przechowywania pakietów aplikacji jako blokowe obiekty BLOB. Jesteś [rozliczane jako normalny] [ storage_pricing] dla blokowych obiektów blob danych, a rozmiar każdego pakietu nie może przekraczać [bloku maksymalny rozmiar obiektu blob](../storage/common/storage-scalability-targets.md#azure-blob-storage-scale-targets). Należy wziąć pod uwagę rozmiar i liczba pakietów do aplikacji i umożliwia okresowe usuwanie przestarzałych pakietów, aby zminimalizować koszty.
 > 
 > 
 
 ### <a name="view-current-applications"></a>Wyświetl bieżące aplikacje
-Aby wyświetlić aplikacje w ramach konta usługi partia zadań, kliknij przycisk **aplikacji** elementu menu w menu po lewej stronie podczas przeglądania sieci **konto usługi partia zadań**.
+Aby wyświetlić aplikacje na koncie usługi Batch, kliknij **aplikacje** element menu w menu po lewej stronie podczas przeglądania sieci **konto usługi Batch**.
 
 ![Kafelek aplikacji][2]
 
-Wybranie tej opcji menu otwiera **aplikacji** okno:
+Wybranie tej opcji menu otwiera **aplikacje** okna:
 
-![Lista aplikacji][3]
+![Wyświetlanie listy aplikacji][3]
 
-To okno wyświetla identyfikator każdej aplikacji w Twoje konto oraz następujące właściwości:
+To okno wyświetla identyfikator każdej aplikacji w koncie oraz następujące właściwości:
 
-* **Pakiety**: numer wersji skojarzonych z tą aplikacją.
-* **Wersja domyślna**: wersja aplikacji zainstalowane, jeśli nie wskazują wersji po określeniu dla puli aplikacji. To ustawienie jest opcjonalne.
-* **Zezwalaj na aktualizacje**: wartość, która określa, czy pakiet aktualizacji, usuwanie i dodatki są dozwolone. Jeśli ta wartość jest równa **nr**, pakiet aktualizacji i usunięć są wyłączone dla aplikacji. Można dodawać tylko nowe wersje pakietu aplikacji. Wartość domyślna to **Tak**.
+* **Pakiety**: numer wersji skojarzonej z tą aplikacją.
+* **Domyślna wersja**: wersja aplikacji zainstalowane, jeśli nie wskazują wersji po określeniu aplikacji dla puli. To ustawienie jest opcjonalne.
+* **Zezwalaj na aktualizacje**: wartość, która określa, czy pakiet aktualizacji, usuwania i dodatki są dozwolone. Jeśli jest ono ustawione na **nie**, pakiet aktualizacji i usuwania są wyłączone dla aplikacji. Można dodawać tylko nowe wersje pakietu aplikacji. Wartość domyślna to **Tak**.
 
 ### <a name="view-application-details"></a>Wyświetlanie szczegółów aplikacji
-Aby wyświetlić szczegóły dotyczące aplikacji, wybierz aplikację w **aplikacji** okna.
+Aby wyświetlić szczegółowe informacje dotyczące aplikacji, wybierz aplikację w **aplikacje** okna.
 
 ![Szczegóły aplikacji][4]
 
-Informacje dotyczące aplikacji można skonfigurować następujące ustawienia dla aplikacji.
+W szczegółach aplikacji można skonfigurować następujące ustawienia dla aplikacji.
 
-* **Zezwalaj na aktualizacje**: Określ, czy można zaktualizować lub usunąć jego pakietów aplikacji. Zobacz "Aktualizowanie lub usuwanie pakietu aplikacji" w dalszej części tego artykułu.
-* **Wersja domyślna**: Określ pakiet aplikacji domyślnej, aby wdrożyć węzły obliczeniowe.
-* **Nazwa wyświetlana**: Określ przyjazną nazwę, która rozwiązania partii można użyć, gdy jest on Wyświetla informacje o aplikacji, na przykład w Interfejsie użytkownika usługi, które zapewniają klientom za pośrednictwem usługi partia zadań.
+* **Zezwalaj na aktualizacje**: Określ, czy jego pakiety aplikacji mogą zostać zaktualizowane lub usunięte. Zobacz "Aktualizowanie lub usuwanie pakietu aplikacji" w dalszej części tego artykułu.
+* **Domyślna wersja**: Określ domyślny pakiet aplikacji do wdrożenia w węzłach obliczeniowych.
+* **Nazwa wyświetlana**: Określ przyjazną nazwę, która rozwiązania usługi Batch można użyć, gdy na przykład wyświetla informacje o aplikacji, w Interfejsie użytkownika usługi, która zapewnia klientom za pomocą usługi Batch.
 
 ### <a name="add-a-new-application"></a>Dodaj nową aplikację
-Aby utworzyć nową aplikację, należy dodać pakiet aplikacji i określ aplikacji nowy, unikatowy identyfikator. Pierwszy pakiet aplikacji, który możesz dodać nowy identyfikator aplikacji tworzy nową aplikację.
+Aby utworzyć nową aplikację, Dodawanie pakietu aplikacji i podaj identyfikator nowych, unikatowych aplikacji. Pierwszy pakiet aplikacji, który możesz dodać nowy identyfikator aplikacji jest także utworzenie nowej aplikacji.
 
 Kliknij pozycję **Aplikacje** > **Dodaj**.
 
-![Nowy blok aplikacji w portalu Azure][5]
+![Nowy blok aplikacji w witrynie Azure portal][5]
 
-**Nowej aplikacji** okna zawiera następujące pola, aby określić ustawienia nowej aplikacji i pakietu aplikacji.
+**Nową aplikację** okno zawiera następujące pola, aby określić ustawienia nowej aplikacji i pakietów aplikacji.
 
 **Identyfikator aplikacji**
 
-To pole określa identyfikator nowej aplikacji, która podlega standardowych reguł sprawdzania poprawności identyfikator partii Azure. Dostępne są następujące reguły zapewniające identyfikator aplikacji:
+To pole określa identyfikator nową aplikację, która podlega standardowych reguł sprawdzania poprawności Identyfikatora partii Azure. Dostępne są następujące reguły zapewniające identyfikator aplikacji:
 
-* W węzłach Windows identyfikator może zawierać dowolną kombinację znaków alfanumerycznych, łączniki i podkreślenia. W węzłach Linux są dozwolone tylko znaki alfanumeryczne oraz znaki podkreślenia.
+* W węzłach Windows identyfikator może zawierać dowolną kombinację znaków alfanumerycznych, łączniki i podkreślenia. W węzłach systemu Linux dozwolone są tylko znaki alfanumeryczne i znaki podkreślenia.
 * Nie może zawierać więcej niż 64 znaki.
-* Musi być unikatowa w ramach konta usługi partia zadań.
-* Jest zachowywanie i bez uwzględniania wielkości liter.
+* Musi być unikatowa w ramach konta usługi Batch.
+* Jest zachowywanie oraz bez uwzględniania wielkości liter.
 
 **Wersja**
 
-To pole określa wersję pakietu aplikacji, które przekazujesz. Ciągi wersji obowiązują następujące reguły sprawdzania poprawności:
+To pole określa numer wersji pakietu aplikacji, które przekazujesz. Ciągi wersji jest zależna od następujących reguł sprawdzania poprawności:
 
-* W węzłach Windows ciąg wersji może zawierać dowolną kombinację znaków alfanumerycznych, łączniki, podkreślenia i kropki. W węzłach Linux ciąg wersji może zawierać tylko znaki alfanumeryczne oraz znaki podkreślenia.
+* W węzłach Windows ciąg wersji może zawierać dowolną kombinację znaków alfanumerycznych, łączniki, podkreślenia i okresów. W przypadku węzłów systemu Linux ciąg wersji może zawierać tylko znaki alfanumeryczne i znaki podkreślenia.
 * Nie może zawierać więcej niż 64 znaki.
-* Musi być unikatowa w ramach aplikacji.
-* To zachowanie w przypadku i bez uwzględniania wielkości liter.
+* Musi być unikatowa w obrębie aplikacji.
+* To zachowywanie oraz bez uwzględniania wielkości liter.
 
 **Pakiet aplikacji**
 
-To pole określa plik zip, który zawiera pliki binarne aplikacji i plików pomocniczych, które są wymagane do wykonania aplikacji. Kliknij przycisk **wybierz plik** pola lub ikonę folderu Wyszukaj i wybierz plik zip, który zawiera pliki aplikacji.
+To pole określa plik zip, który zawiera pliki binarne aplikacji i plików pomocniczych, które są wymagane do wykonania aplikacji. Kliknij przycisk **wybierz plik** pola lub ikonę folderu, wyszukaj i wybierz plik zip, który zawiera pliki aplikacji.
 
-Po wybraniu pliku, kliknij przycisk **OK** można rozpocząć przekazywania do magazynu Azure. Po zakończeniu operacji przekazywania, w portalu zostaną wyświetlone powiadomienie. W zależności od rozmiaru pliku, czy przekazujesz i szybkość połączenia sieciowego ta operacja może potrwać pewien czas.
+Po wybraniu pliku kliknij **OK** aby rozpocząć przekazywanie do usługi Azure Storage. Po zakończeniu operacji przekazywania portalu wyświetli powiadomienie. W zależności od rozmiaru pliku który podczas przekazywania i szybkość połączenia sieciowego ta operacja może trochę potrwać.
 
 > [!WARNING]
-> Nie zamykaj **nowej aplikacji** okna przed zakończeniem operacji przesyłania. Dzięki temu zatrzymaniu procesu przekazywania.
+> Nie zamykaj **nową aplikację** okno przed zakończeniem operacji przekazywania. Ten sposób powoduje zatrzymanie procesu przekazywania.
 > 
 > 
 
 ### <a name="add-a-new-application-package"></a>Dodaj nowy pakiet aplikacji
-Aby dodać wersję pakietu aplikacji dla istniejącej aplikacji, wybierz aplikację w **aplikacji** systemu windows, a następnie kliknij przycisk **pakiety** > **Dodaj**.
+Aby dodać wersję pakietu aplikacji dla istniejącej aplikacji, wybierz aplikację w **aplikacje** systemu windows, a następnie kliknij przycisk **pakietów** > **Dodaj**.
 
-![Dodawanie bloku pakietu aplikacji w portalu Azure][8]
+![Dodawanie bloku pakietu aplikacji w witrynie Azure portal][8]
 
-Jak widać, pól zgodnie z regułami **nowej aplikacji** okna, ale **identyfikator aplikacji** pole jest wyłączone. Tak samo jak dla nowej aplikacji, określ **wersji** nowego pakietu, przejdź do Twojej **pakiet aplikacji** zip pliku, a następnie kliknij przycisk **OK** do przekazania pakietu.
+Jak widać, pola odpowiadają **nową aplikację** okna, ale **identyfikator aplikacji** pole jest wyłączone. Tak jak w nowej aplikacji określ **wersji** dla Twojego nowego pakietu, przejdź do usługi **pakiet aplikacji** zip pliku, a następnie kliknij przycisk **OK** do przekazania pakietu.
 
 ### <a name="update-or-delete-an-application-package"></a>Aktualizowanie lub usuwanie pakietu aplikacji
-Aby zaktualizować lub usunąć istniejący pakiet aplikacji, Otwórz szczegóły aplikacji, kliknij przycisk **pakiety**, kliknij przycisk **wielokropka** w wierszu, który chcesz zmodyfikować, a następnie wybierz pakiet aplikacji Akcja, którą chcesz wykonać.
+Aby zaktualizować lub usunąć istniejący pakiet aplikacji, Otwórz szczegóły dla aplikacji, kliknij przycisk **pakietów**, kliknij przycisk **wielokropka** w wierszu pakiet aplikacji, którą chcesz zmodyfikować, a następnie wybierz pozycję Akcja, którą chcesz wykonać.
 
-![Aktualizowanie lub usuwanie pakietu w portalu Azure][7]
+![Aktualizowanie lub usuwanie pakietu w witrynie Azure portal][7]
 
 **Aktualizacja**
 
-Po kliknięciu **aktualizacji**, **pakiet aktualizacji** systemu windows jest wyświetlana. To okno jest podobny do **nowy pakiet aplikacji** okna, jednak tylko pole wyboru pakietu jest włączona, co pozwoli określić nowy plik ZIP i przekazać.
+Po kliknięciu **aktualizacji**, **pakiet aktualizacji** systemu windows jest wyświetlana. Jest to podobne do **nowy pakiet aplikacji** okna, jednak tylko pola wyboru pakietów jest włączone, dzięki czemu można określić nowy plik ZIP do przekazania.
 
-![Blok pakietu aktualizacji w portalu Azure][11]
+![Bloku pakietu aktualizacji w witrynie Azure portal][11]
 
 **Usuwanie**
 
-Po kliknięciu **usunąć**, zostanie wyświetlona prośba o potwierdzenie usunięcia wersji pakietu i partii usuwa pakiet z usługi Magazyn Azure. Jeśli usuniesz domyślnej wersji aplikacji, **wersja domyślna** ustawienie zostanie usunięte z aplikacji.
+Po kliknięciu **Usuń**, zostanie wyświetlona prośba o potwierdzenie usunięcia wersja pakietu i Batch usuwa pakiet z usługi Azure Storage. Jeśli usuniesz domyślną wersję aplikacji, **domyślną wersję** ustawienie zostanie usunięte z aplikacji.
 
 ![Usuwanie aplikacji ][12]
 
-## <a name="install-applications-on-compute-nodes"></a>Instalowanie aplikacji na węzły obliczeniowe
-Teraz, kiedy znasz już jak zarządzać pakietami aplikacji z portalu Azure, można omówiono sposób wdrożenia ich na węzłach obliczeniowych i uruchom je z zadań wsadowych.
+## <a name="install-applications-on-compute-nodes"></a>Instalowanie aplikacji w węzłach obliczeniowych
+Teraz, gdy wyjaśniono sposób zarządzania pakietami aplikacji w witrynie Azure portal, można omawiać sposób wdrażania ich do węzłów obliczeniowych i uruchamiaj je za pomocą zadania podrzędne usługi Batch.
 
-### <a name="install-pool-application-packages"></a>Zainstaluj pakiety aplikacji w puli
-Aby zainstalować pakiet aplikacji we wszystkich węzłach obliczeń w puli, należy określić co najmniej jeden pakiet aplikacji *odwołania* puli. Pakiety aplikacji, które określają dla puli są instalowane w każdym węźle obliczeń, w tym węźle sprzężenia puli oraz w przypadku węzła jest ponownego rozruchu lub odtworzenia z obrazu.
+### <a name="install-pool-application-packages"></a>Instalowanie pakietów aplikacji puli
+Aby zainstalować pakiet aplikacji na wszystkich węzłach obliczeniowych w puli, należy określić co najmniej jeden pakiet aplikacji *odwołania* dla puli. Pakiety aplikacji, które określisz dla puli są instalowane na każdym węźle obliczeniowym, gdy węzeł dołącza do puli i w przypadku, gdy węzeł jest ponownie uruchamiany lub odtwarzany z obrazu.
 
-W partiami platformy .NET, należy określić jedną lub więcej [CloudPool][net_cloudpool].[ ApplicationPackageReferences] [ net_cloudpool_pkgref] podczas tworzenia nowej puli lub dla istniejącej puli. [ApplicationPackageReference] [ net_pkgref] klasa określa węzły obliczeniowe identyfikator i wersję aplikacji do zainstalowania w puli.
+Na platformie .NET usługi Batch, należy określić co najmniej jedną [CloudPool][net_cloudpool].[ ApplicationPackageReferences] [ net_cloudpool_pkgref] podczas tworzenia nowej puli lub do istniejącej puli. [ApplicationPackageReference] [ net_pkgref] klasa określa identyfikator aplikacji i wersji, aby zainstalować w ramach puli węzłów obliczeniowych.
 
 ```csharp
 // Create the unbound CloudPool
@@ -204,8 +204,8 @@ CloudPool myCloudPool =
     batchClient.PoolOperations.CreatePool(
         poolId: "myPool",
         targetDedicatedComputeNodes: 1,
-        virtualMachineSize: "small",
-        cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "4"));
+        virtualMachineSize: "standard_d1_v2",
+        cloudServiceConfiguration: new CloudServiceConfiguration(osFamily: "5"));
 
 // Specify the application and version to install on the compute nodes
 myCloudPool.ApplicationPackageReferences = new List<ApplicationPackageReference>
@@ -221,14 +221,14 @@ await myCloudPool.CommitAsync();
 ```
 
 > [!IMPORTANT]
-> Jeśli wdrożenie pakietu aplikacji nie powiedzie się z jakiegokolwiek powodu, usługa partia zadań oznacza węzeł [bezużyteczne][net_nodestate], i zadania nie są zaplanowane do uruchomienia w tym węźle. W takim przypadku należy **ponowne uruchomienie** węzeł, aby ponownie zainicjować wdrożenia pakietu. Ponowne uruchomienie węzła umożliwia również w węźle ponownie harmonogramy zadań.
+> Jeśli wdrożenie pakietu aplikacji nie powiedzie się z jakiegokolwiek powodu, usługa partia zadań oznacza węzeł [bezużyteczne][net_nodestate], oraz zadania nie są zaplanowane do wykonania, w tym węźle. W takim przypadku należy **ponowne uruchomienie** węzeł, aby ponownie zainicjować wdrożenia pakietu. Ponowne uruchomienie węzła umożliwia również planowanie zadań, ponownie w węźle.
 > 
 > 
 
-### <a name="install-task-application-packages"></a>Zainstaluj pakiety aplikacji zadań
-Podobnie do puli, należy określić pakiet aplikacji *odwołania* zadania. Gdy zadanie jest zaplanowane do uruchomienia w węźle, pakiet jest pobrane i wyodrębnione tuż przed wykonaniem zadania wiersza polecenia. Jeśli określonego pakietu i wersja jest już zainstalowany w węźle, pakiet nie jest pobierana i jest używany istniejący pakiet.
+### <a name="install-task-application-packages"></a>Zainstaluj pakiety aplikacji zadania podrzędnego
+Podobnie jak w puli, należy określić pakiet aplikacji *odwołania* dla zadania. Gdy zadanie jest zaplanowane do uruchomienia w węźle, pakiet jest pobrane i wyodrębnione przed wykonaniem wiersza polecenia zadania podrzędnego. Jeśli określonego pakietu lub wersja jest już zainstalowany w węźle, pakiet nie został pobrany i jest używany istniejący pakiet.
 
-Aby zainstalować pakiet aplikacji zadań, należy skonfigurować zadania [CloudTask][net_cloudtask].[ ApplicationPackageReferences] [ net_cloudtask_pkgref] właściwości:
+Aby zainstalować pakiet aplikacji zadanie, należy skonfigurować zadania podrzędnego [CloudTask][net_cloudtask].[ ApplicationPackageReferences] [ net_cloudtask_pkgref] właściwości:
 
 ```csharp
 CloudTask task =
@@ -246,44 +246,44 @@ task.ApplicationPackageReferences = new List<ApplicationPackageReference>
 };
 ```
 
-## <a name="execute-the-installed-applications"></a>Wykonanie zainstalowanych aplikacji
-Pakiety, które zostały określone dla puli lub zadania są pobrane i wyodrębnione do katalogu o nazwie w `AZ_BATCH_ROOT_DIR` węzła. Partii tworzy również zmienną środowiskową, który zawiera ścieżkę do katalogu o nazwie. Wiersze poleceń z zadań Użyj tej zmiennej środowiskowej podczas odwoływania się do aplikacji w węźle. 
+## <a name="execute-the-installed-applications"></a>Wykonaj zainstalowanych aplikacji
+Pakiety, które zostały określone dla puli lub zadania są pobierane i wyodrębnione do katalogu o nazwie w ramach `AZ_BATCH_ROOT_DIR` węzła. Usługa Batch również tworzy zmienną środowiskową, która zawiera ścieżkę do katalogu o nazwie. Twoje wiersze poleceń podzadań Użyj tej zmiennej środowiskowej podczas odwoływania się do aplikacji w węźle. 
 
-W węzłach Windows zmienna jest w następującym formacie:
+W węzłach Windows zmiennej znajduje się w następującym formacie:
 
 ```
 Windows:
 AZ_BATCH_APP_PACKAGE_APPLICATIONID#version
 ```
 
-W węzłach Linux format różni się nieznacznie. Kropki (.), łączniki (-) i znaki numeru (#) są jako spłaszczone do podkreślenia w zmiennej środowiskowej. Zauważ również, czy zostaną zachowane w przypadku Identyfikatora aplikacji. Na przykład:
+W węzłach systemu Linux format jest nieco inne. Kropki (.), łączniki (-) i znaki numeru (#) są spłaszczone do podkreślenia w zmiennej środowiskowej. Należy również zauważyć, że jest zachowywany w przypadku Identyfikatora aplikacji. Na przykład:
 
 ```
 Linux:
 AZ_BATCH_APP_PACKAGE_applicationid_version
 ```
 
-`APPLICATIONID` i `version` to wartości, które odpowiadają wersji aplikacji i pakietów zostały określone dla wdrożenia. Na przykład, jeśli określono tej wersji 2.7 aplikacji *mieszarce* należy zainstalować na węzłach systemu Windows, Twoje wiersze polecenia zadań użyje tej zmiennej środowiskowej dostęp do swoich plików:
+`APPLICATIONID` i `version` są wartościami, które odnoszą się do aplikacji oraz wersją pakietu został określony dla wdrożenia. Na przykład, jeśli określono tę wersję 2.7 aplikacji *blender* powinny być instalowane w węzłach Windows swoje wiersze poleceń podzadań użyje tej zmiennej środowiskowej na dostęp do swoich plików:
 
 ```
 Windows:
 AZ_BATCH_APP_PACKAGE_BLENDER#2.7
 ```
 
-W węzłach Linux Określ zmienną środowiskową w tym formacie. Spłaszczanie kropki (.), łączniki (-) i podkreślenia numer znaki (#) i zachowanie w przypadku Identyfikatora aplikacji:
+W węzłach systemu Linux należy określić zmienną środowiskową w tym formacie. Spłaszczanie kropki (.), łączniki (-) i liczba znaki (#) i podkreślenia oraz zachowanie wielkości liter identyfikatora aplikacji:
 
 ```
 Linux:
 AZ_BATCH_APP_PACKAGE_blender_2_7
 ``` 
 
-Podczas przekazywania pakietu aplikacji, można określić domyślnej wersji do wdrożenia węzłów obliczeniowych. Jeśli określono domyślnej wersji aplikacji, sufiks wersji można pominąć w przypadku odwołania do aplikacji. Można określić domyślnej wersji aplikacji w portalu Azure w **aplikacji** okna, jak pokazano w [przekazywanie aplikacji i zarządzanie nimi](#upload-and-manage-applications).
+Podczas przekazywania pakietu aplikacji można określić domyślną wersję, aby wdrożyć węzły obliczeniowe. Jeśli wybrano domyślną wersję aplikacji, można pominąć sufiks wersji w przypadku odwołania do aplikacji. Możesz określić domyślną wersję aplikacji w witrynie Azure portal w **aplikacje** okna, jak pokazano na [przekazywanie aplikacji i zarządzanie nimi](#upload-and-manage-applications).
 
-Na przykład jeśli ustawisz "2.7", jako wersja domyślna dla aplikacji *mieszarce*i zadania odwołują się następujące zmiennej środowiskowej, a następnie węzły Windows wykona wersji 2.7:
+Na przykład jeśli ustawisz "2.7" jako domyślną wersję aplikacji *blender*, zadania, odwołanie następującą zmienną środowiskową, a następnie węzły Windows będą wykonywane w wersji 2.7:
 
 `AZ_BATCH_APP_PACKAGE_BLENDER`
 
-Poniższy fragment kodu przedstawia przykład wiersz polecenia zadania, który uruchamia domyślnej wersji *mieszarce* aplikacji:
+Poniższy fragment kodu przedstawia przykładowy wiersz polecenia zadania, który uruchamia domyślną wersją *blender* aplikacji:
 
 ```csharp
 string taskId = "blendertask01";
@@ -293,18 +293,18 @@ CloudTask blenderTask = new CloudTask(taskId, commandLine);
 ```
 
 > [!TIP]
-> Zobacz [ustawienia środowiska dla zadań](batch-api-basics.md#environment-settings-for-tasks) w [Przegląd funkcji partii](batch-api-basics.md) Aby uzyskać więcej informacji na temat ustawień środowiska węzła obliczeń.
+> Zobacz [ustawienia środowiska dla podzadań](batch-api-basics.md#environment-settings-for-tasks) w [omówienie funkcji usługi Batch](batch-api-basics.md) Aby uzyskać więcej informacji na temat ustawień środowiska węzła obliczeniowego.
 > 
 > 
 
 ## <a name="update-a-pools-application-packages"></a>Aktualizowanie pakietów aplikacji puli
-Jeśli skonfigurowano już istniejącą pulę z pakietem aplikacji, można określić nowy pakiet dla tej puli. Jeśli określisz nowe odwołanie pakietu dla puli, następujących warunków:
+Jeśli już skonfigurowano istniejącej puli przy użyciu pakietu aplikacji, można określić nowy pakiet dla puli. Jeśli określisz nowe odwołanie do pakietu dla puli, mają zastosowanie następujące wymagania:
 
-* Usługa partia zadań instaluje nowo określonego pakietu na wszystkie nowe węzły, które Dołącz do puli oraz na istniejący węzeł, który jest ponownego rozruchu lub odtworzenia z obrazu.
-* Obliczeń węzłów, które są już w puli, gdy aktualizacja odwołania do pakietu nie są instalowane automatycznie nowy pakiet aplikacji. Obliczeniowe te węzły muszą być ponowny rozruch lub odtworzyć z obrazu do odbierania nowego pakietu.
-* Po wdrożeniu nowego pakietu, zmienne środowiskowe utworzony odzwierciedlają nowego odwołania do pakietu aplikacji.
+* Usługa Batch instaluje nowo określonego pakietu na wszystkich nowych węzłów, które są przyłączone do puli, a na istniejący węzeł, który jest ponownie uruchamiany lub odtwarzany z obrazu.
+* Obliczeniowe węzły, które znajdują się już w puli, podczas aktualizacji odwołania do pakietu nie instalują automatycznie nowy pakiet aplikacji. Te obliczenia węzłów musi być uruchomiona ponownie lub odtworzony z obrazu, aby otrzymać nowy pakiet.
+* Po wdrożeniu nowego pakietu zmienne środowiskowe utworzony odzwierciedlają nowe odwołania do pakietu aplikacji.
 
-W tym przykładzie istniejącej puli ma wersji 2.7 *mieszarce* aplikacji skonfigurowany jako jeden z jego [CloudPool][net_cloudpool].[ ApplicationPackageReferences][net_cloudpool_pkgref]. Aby zaktualizować węzłów w puli z wersją 2.76b, określić nową [ApplicationPackageReference] [ net_pkgref] z nową wersję oraz zatwierdzić zmiany.
+W tym przykładzie istniejącej puli jest wersja 2.7 *blender* aplikacji skonfigurowany jako jeden z jego [CloudPool][net_cloudpool].[ ApplicationPackageReferences][net_cloudpool_pkgref]. Aby zaktualizować węzłów w puli za pomocą wersji 2.76b, określić nową [ApplicationPackageReference] [ net_pkgref] przy użyciu nowej wersji oraz zatwierdzić zmiany.
 
 ```csharp
 string newVersion = "2.76b";
@@ -318,10 +318,10 @@ boundPool.ApplicationPackageReferences = new List<ApplicationPackageReference>
 await boundPool.CommitAsync();
 ```
 
-Teraz, nowa wersja została skonfigurowana, usługa partia zadań powoduje zainstalowanie wersji 2.76b do dowolnego *nowe* węzła, w której jest przyłączany puli. Aby zainstalować 2.76b w węzłach, które są *już* w puli, ponownego uruchamiania lub je odtworzyć. Należy zwrócić uwagę zachowanie pliki z poprzedniego wdrożenia pakietu po ponownym rozruchu węzłów.
+Teraz, gdy nowa wersja została skonfigurowana, usługa Batch instaluje wersję 2.76b do dowolnego *nowe* węzeł, który dołącza do puli. Aby zainstalować 2.76b na węzłach, które są *już* w puli, ponownego uruchamiania lub odtworzyć je. Należy pamiętać, zachowanie plików z poprzedniego wdrożenia pakietu po ponownym rozruchu węzłów.
 
-## <a name="list-the-applications-in-a-batch-account"></a>Wyświetl listę aplikacji w ramach konta usługi partia zadań
-Można wyświetlić listę aplikacji i ich pakietów w ramach konta usługi partia zadań, za pomocą [ApplicationOperations][net_appops].[ ListApplicationSummaries] [ net_appops_listappsummaries] metody.
+## <a name="list-the-applications-in-a-batch-account"></a>Wyświetlanie listy aplikacji na koncie usługi Batch
+Możesz wyświetlić listę aplikacji i ich pakiety na koncie usługi Batch za pomocą [ApplicationOperations][net_appops].[ ListApplicationSummaries] [ net_appops_listappsummaries] metody.
 
 ```csharp
 // List the applications and their application packages in the Batch account.
@@ -337,12 +337,12 @@ foreach (ApplicationSummary app in applications)
 }
 ```
 
-## <a name="wrap-up"></a>Dobiega końca
-Z pakietów aplikacji możesz pomóc klientom Wybierz aplikacje do ich zadań i określić dokładną wersję do użycia podczas przetwarzania zadania z usługą przetwarzania wsadowego. Można również określić przez klientów do przekazywania i śledzenie własnych aplikacji w usłudze.
+## <a name="wrap-up"></a>Podsumowanie
+Za pomocą pakietów aplikacji możesz pomóc klientom Wybierz aplikacje do swoich zadań i określić dokładną wersję do użycia podczas przetwarzania zadania przy użyciu usługi wykorzystujących usługę Batch. Można również udostępniać możliwości dla klientów do przekazywania i śledzić własne aplikacje w usłudze.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Interfejsu API REST partii] [ api_rest] obsługuje również do pracy z pakietami aplikacji. Na przykład, zobacz [applicationPackageReferences] [ rest_add_pool_with_packages] element [Dodaj pulę, aby konto] [ rest_add_pool] informacji o sposobie określania pakiety do zainstalowania przy użyciu interfejsu API REST. Zobacz [aplikacji] [ rest_applications] szczegółowe informacje na temat sposobu uzyskiwania informacji o aplikacji przy użyciu interfejsu API REST partii.
-* Dowiedz się, jak programowo [Zarządzanie kontami partii zadań Azure i przydziały zarządzania partiami platformy .NET](batch-management-dotnet.md). [Zarządzania partiami platformy .NET] [ api_net_mgmt] biblioteki można włączyć funkcji Tworzenie i usuwanie konta wsadowego aplikacji lub usługi.
+* [Interfejsu API REST usługi Batch] [ api_rest] oferuje również obsługę do pracy za pomocą pakietów aplikacji. Na przykład zobacz [applicationPackageReferences] [ rest_add_pool_with_packages] element [Dodawanie puli do konta] [ rest_add_pool] informacji o sposobie określania pakiety do zainstalowania przy użyciu interfejsu API REST. Zobacz [aplikacje] [ rest_applications] szczegółowe informacje na temat sposobu uzyskiwania informacji o aplikacji przy użyciu interfejsu API REST usługi Batch.
+* Dowiedz się, jak programowo [Zarządzanie kontami usługi Azure Batch i przydziałów za pomocą usługi Batch Management .NET](batch-management-dotnet.md). [Batch Management .NET] [ api_net_mgmt] biblioteki można włączyć funkcji tworzenia i usuwania konta dla aplikacji usługi Batch lub usługi.
 
 [api_net]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/client?view=azure-dotnet
 [api_net_mgmt]: https://docs.microsoft.com/dotnet/api/overview/azure/batch/management?view=azure-dotnet
@@ -363,14 +363,14 @@ Z pakietów aplikacji możesz pomóc klientom Wybierz aplikacje do ich zadań i 
 [rest_add_pool]: https://msdn.microsoft.com/library/azure/dn820174.aspx
 [rest_add_pool_with_packages]: https://msdn.microsoft.com/library/azure/dn820174.aspx#bk_apkgreference
 
-[1]: ./media/batch-application-packages/app_pkg_01.png "Diagram ogólny pakietów aplikacji"
-[2]: ./media/batch-application-packages/app_pkg_02.png "Kafelka aplikacji w portalu Azure"
-[3]: ./media/batch-application-packages/app_pkg_03.png "Blok aplikacje w portalu Azure"
-[4]: ./media/batch-application-packages/app_pkg_04.png "Blok szczegółów aplikacji w portalu Azure"
-[5]: ./media/batch-application-packages/app_pkg_05.png "Nowy blok aplikacji w portalu Azure"
-[7]: ./media/batch-application-packages/app_pkg_07.png "Aktualizowanie lub usuwanie pakietów listy rozwijanej w portalu Azure"
-[8]: ./media/batch-application-packages/app_pkg_08.png "Nowy blok pakietu aplikacji w portalu Azure"
+[1]: ./media/batch-application-packages/app_pkg_01.png "Diagram ogólny pakiety aplikacji"
+[2]: ./media/batch-application-packages/app_pkg_02.png "Kafelek aplikacji w witrynie Azure portal"
+[3]: ./media/batch-application-packages/app_pkg_03.png "Bloku aplikacje w witrynie Azure portal"
+[4]: ./media/batch-application-packages/app_pkg_04.png "Bloku szczegółów aplikacji w witrynie Azure portal"
+[5]: ./media/batch-application-packages/app_pkg_05.png "Nowy blok aplikacji w witrynie Azure portal"
+[7]: ./media/batch-application-packages/app_pkg_07.png "Aktualizowanie lub usuwanie pakietów listy rozwijanej w witrynie Azure portal"
+[8]: ./media/batch-application-packages/app_pkg_08.png "Nowy blok pakietu aplikacji w witrynie Azure portal"
 [9]: ./media/batch-application-packages/app_pkg_09.png "Alert nie połączonego konta magazynu"
-[10]: ./media/batch-application-packages/app_pkg_10.png "Wybierz bloku konto magazynu w portalu Azure"
-[11]: ./media/batch-application-packages/app_pkg_11.png "Blok pakietu aktualizacji w portalu Azure"
-[12]: ./media/batch-application-packages/app_pkg_12.png "Usuń okno dialogowe potwierdzenia pakiet w portalu Azure"
+[10]: ./media/batch-application-packages/app_pkg_10.png "Wybierz blok konto magazynu w witrynie Azure portal"
+[11]: ./media/batch-application-packages/app_pkg_11.png "Bloku pakietu aktualizacji w witrynie Azure portal"
+[12]: ./media/batch-application-packages/app_pkg_12.png "Usuwanie w witrynie Azure portal, okno dialogowe potwierdzenia pakietu"

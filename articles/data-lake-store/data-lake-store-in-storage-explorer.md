@@ -8,19 +8,18 @@ author: jejiang
 manager: DJ
 editor: Jenny Jiang
 ms.assetid: ''
-ms.service: Data Lake Store
+ms.service: data-lake-store
 ms.custom: Azure Data Lake Store
-ms.workload: ''
-ms.tgt_pltfrm: na
 ms.devlang: dotnet
-ms.topic: hero-article
+ms.topic: article
 ms.date: 02/05/2018
 ms.author: jejiang
-ms.openlocfilehash: 396452faf36bc43a185fd6492f952b7bfd9511cc
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
-ms.translationtype: HT
+ms.openlocfilehash: f44518bd6167bc1da207e3c301eabefc014a5749
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35649976"
 ---
 # <a name="manage-azure-data-lake-store-resources-by-using-storage-explorer"></a>Zarządzanie zasobami usługi Azure Data Lake Store przy użyciu Eksploratora usługi Azure Storage
 
@@ -195,7 +194,7 @@ Jeśli masz adres URL, możesz wprowadzić go do ścieżki adresu w Eksploratorz
 ![Link bezpośredni w Eksploratorze plików](./media/data-lake-store-in-storage-explorer/storageexplorer-adls-deep-link.png)
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Zobacz [najnowsze informacje o wersji i wideo dotyczące Eksploratora usługi Storage](http://www.storageexplorer.com).
 * Dowiedz się, jak [zarządzać usługą Azure Cosmos DB w Eksploratorze usługi Azure Storage](https://docs.microsoft.com/azure/cosmos-db/storage-explorer).
 * [Wprowadzenie do Eksploratora usługi Storage](https://docs.microsoft.com/azure/vs-azure-tools-storage-manage-with-storage-explorer).

@@ -6,17 +6,17 @@ ms.service: azure-dev-spaces
 ms.component: azds-kubernetes
 author: ghogen
 ms.author: ghogen
-ms.date: 05/11/2018
+ms.date: 09/11/2018
 ms.topic: article
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: douge
-ms.openlocfilehash: b66e43c0f40f184bfb2c62327f5742346ff8b187
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: c6ca3003c1338f3e057c76d9e04d8b0cbd2210c7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841613"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721198"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -26,9 +26,13 @@ Ten przewodnik zawiera informacje o typowych problemów, które mogą mieć w pr
 
 Aby bardziej efektywnie rozwiązać problemy, może pomóc tworzyć bardziej szczegółowych dzienników do przeglądu.
 
-Rozszerzenie programu Visual Studio, można to zrobić, ustawiając `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` zmiennej środowiskowej 1. Pamiętaj ponownie uruchomić program Visual Studio dla zmiennej środowiskowej zaczęły obowiązywać. Po włączeniu szczegółowe dzienniki będą zapisywane w swojej `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` katalogu.
+Rozszerzenie programu Visual Studio można ustawić `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` zmiennej środowiskowej 1. Pamiętaj ponownie uruchomić program Visual Studio dla zmiennej środowiskowej zaczęły obowiązywać. Po włączeniu szczegółowe dzienniki będą zapisywane w swojej `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` katalogu.
 
 W interfejsie wiersza polecenia, użytkownik może zapewniać dane wyjściowe informacji podczas wykonywania polecenia przy użyciu `--verbose` przełącznika.
+
+## <a name="debugging-services-with-multiple-instances"></a>Debugowanie usług z wieloma wystąpieniami
+
+W tej chwili usługi Azure Dev miejsca do magazynowania obsługuje debugowanie tylko w pojedynczym wystąpieniu (pod). Plik azds.yaml zawiera ustawienie, replicaCount, która wskazuje liczbę wystąpień, które będą uruchamiane dla Twojej usługi. Jeśli zmienisz replicaCount skonfigurować aplikację do uruchamiania wielu wystąpień dla danej usługi, zachowanie debuger może nie być zgodnie z oczekiwaniami.
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>Błąd "Nie można utworzyć kontroler Azure Dev miejsca do magazynowania"
 
@@ -67,14 +71,14 @@ Korzystając z _azds.exe_, użyj--verbose opcji wiersza polecenia i użyj opcji 
 
 W programie Visual Studio:
 
-1. Otwórz **Narzędzia > Opcje** i w obszarze **projekty i rozwiązania**, wybierz i **kompilowanie i uruchamianie**.
+1. Otwórz **Narzędzia > Opcje** i w obszarze **projekty i rozwiązania**, wybierz **kompilowanie i uruchamianie**.
 2. Zmień ustawienia **poziom szczegółowości danych wyjściowych kompilacji projektu programu MSBuild** do **szczegółowe** lub **diagnostycznych**.
 
     ![Zrzut ekranu opcji narzędzi okna dialogowego](media/common/VerbositySetting.PNG)
     
 ## <a name="dns-name-resolution-fails-for-a-public-url-associated-with-a-dev-spaces-service"></a>Rozpoznawanie nazw DNS nie powiedzie się publiczny adres URL skojarzony z usługą Dev miejsca do magazynowania
 
-Gdy tak się stanie, może zostać wyświetlony "Nie można wyświetlić strony" lub "tej witryny nie można nawiązać połączenia" Błąd w przeglądarce sieci web podczas próby połączenia z publiczny adres URL skojarzony z usługą Dev miejsca do magazynowania.
+Podczas rozpoznawania nazw DNS zakończy się niepowodzeniem, może zostać wyświetlony "Nie można wyświetlić strony" lub "tej witryny nie można nawiązać połączenia" Błąd w przeglądarce sieci web podczas próby połączenia z publiczny adres URL skojarzony z usługą Dev miejsca do magazynowania.
 
 ### <a name="try"></a>Wypróbuj:
 
@@ -84,7 +88,7 @@ Służy następujące polecenie, aby wyświetlić listę wszystkich adresów URL
 azds list-uris
 ```
 
-Jeśli adres URL znajduje się w *oczekujące* stanu, oznacza to, czy Dev miejsca do magazynowania nadal oczekuje na rejestrację DNS do wykonania. Czasami zajmuje kilka minut tak się stało. Miejsca do magazynowania dev otwiera również tunel localhost dla każdej usługi, którego można użyć podczas oczekiwania na rejestrację serwera DNS.
+Jeśli adres URL znajduje się w *oczekujące* stanu, oznacza to, czy Dev miejsca do magazynowania nadal oczekuje na rejestrację DNS do wykonania. Czasami zajmuje kilka minut, zanim rejestracji w celu ukończenia. Miejsca do magazynowania dev otwiera również tunel localhost dla każdej usługi, którego można użyć podczas oczekiwania na rejestrację serwera DNS.
 
 Jeśli adres URL pozostaje w *oczekujące* stanu na więcej niż 5 minut, może to oznaczać problem z zewnętrznego zasobnika DNS, który tworzy publiczny punkt końcowy i/lub zasobnika kontrolera ruch przychodzący serwera nginx, który uzyskuje publiczny punkt końcowy. Można użyć następujących poleceń, można usunąć tych zasobników. Zostaną one zostać odtworzone automatycznie.
 
@@ -121,7 +125,7 @@ Usługa Azure Dev do magazynowania zapewnia macierzystą obsługę języka C# i 
 Można nadal używać usługi Azure Dev miejsca do magazynowania przy użyciu kodu napisanego w innych językach, ale musisz utworzyć plik Dockerfile, samodzielnie przed uruchomieniem polecenia *azds się* po raz pierwszy.
 
 ### <a name="try"></a>Wypróbuj:
-Jeśli aplikacji został napisany w języku, że usługi Azure Dev miejsca do magazynowania nie obsługuje natywnie, należy podać odpowiednie Dockerfile, aby utworzyć obraz kontenera uruchomienia kodu. Środowisko docker zawiera [listę najlepsze rozwiązania dotyczące zapisywania plików Dockerfile](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) , a także [odwołanie do pliku Dockerfile](https://docs.docker.com/engine/reference/builder/) to zrobić, może pomóc.
+Jeśli aplikacji został napisany w języku, że usługi Azure Dev miejsca do magazynowania nie obsługuje natywnie, należy podać odpowiednie Dockerfile, aby utworzyć obraz kontenera uruchomienia kodu. Środowisko docker zawiera [listę najlepsze rozwiązania dotyczące zapisywania plików Dockerfile](https://docs.docker.com/develop/develop-images/dockerfile_best-practices/) , a także [odwołanie do pliku Dockerfile](https://docs.docker.com/engine/reference/builder/) napisać plik Dockerfile, który odpowiada Twoim potrzebom, może pomóc.
 
 Po utworzeniu odpowiedni plik Dockerfile w miejscu, możesz kontynuować uruchamianie *azds się* do uruchamiania aplikacji w usłudze Azure Dev spacjach.
 
@@ -152,7 +156,7 @@ Należy uruchomić `azds up` z katalogu głównego kodu chcesz uruchomić, a nas
 1. Jeśli nie masz _azds.yaml_ pliku w folderze kodu uruchamiania `azds prep` wygenerować zasoby platformy Docker, Kubernetes i usługi Azure Dev miejsca do magazynowania.
 
 ## <a name="error-the-pipe-program-azds-exited-unexpectedly-with-code-126"></a>Błąd: "programu potoku"azds"nieoczekiwanie zakończył działanie z kodem 126."
-Uruchamianie debugera programu VS Code czasami może spowodować błąd. Jest to znany problem.
+Uruchamianie debugera programu VS Code czasami może spowodować błąd.
 
 ### <a name="try"></a>Wypróbuj:
 1. Zamknij i otwórz ponownie program VS Code.
@@ -162,7 +166,7 @@ Uruchamianie debugera programu VS Code czasami może spowodować błąd. Jest to
 Uruchamianie debugera programu VS Code zgłasza błąd: `Failed to find debugger extension for type:coreclr.`
 
 ### <a name="reason"></a>Przyczyna
-Nie masz rozszerzenia kodu programu VS dla języka C# zainstalowane na komputerze deweloperskim, który zawiera obsługę debugowania dla.Net Core (CoreCLR).
+Nie masz rozszerzenia kodu programu VS dla języka C# zainstalowane na komputerze deweloperskim. Rozszerzenie języka C# zawiera obsługę debugowania dla.Net Core (CoreCLR).
 
 ### <a name="try"></a>Wypróbuj:
 Zainstaluj [rozszerzenia kodu programu VS dla języka C#](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp).

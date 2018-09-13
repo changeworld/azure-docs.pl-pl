@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/05/2018
 ms.author: sngun
-ms.openlocfilehash: 2f18840802a39f03659792a4d5b33ad3a73c5961
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 85d8eb555d96b1c50da0ed00ae1f06c3eec1a5ba
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051446"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722215"
 ---
 # <a name="azure-cosmos-db-faq"></a>Azure Cosmos DB — często zadawane pytania
 ## <a name="azure-cosmos-db-fundamentals"></a>Podstawy usługi Azure Cosmos DB
@@ -118,6 +118,10 @@ Kontener i aprowizacji poziomu przepływności bazy danych to osobne oferty i pr
 
 Obecnie można utworzyć kolekcję przy przepływności klucza partycji przy użyciu [CreatePartitionedCollection](https://github.com/Azure/azure-documentdb-dotnet/blob/master/samples/code-samples/CollectionManagement/Program.cs#L118) metody .net SDK lub przy użyciu [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/cosmosdb/collection?view=azure-cli-latest#az-cosmosdb-collection-create). Tworzenie stałej kolekcji za pomocą witryny Azure portal nie jest obecnie obsługiwane.  
 
+### <a name="does-azure-cosmosdb-support-time-series-analysis"></a>Usługa Azure cosmos DB obsługuje analiza serii czasu? 
+Tak, Azure cosmos DB obsługuje analizy serii czasowych, poniżej przedstawiono przykład, który [wzorzec serii czasu](https://github.com/Azure/azure-cosmosdb-dotnet/tree/master/samples/Patterns). W tym przykładzie pokazano, jak używać zmiany źródła danych, aby tworzyć zagregowane dane szeregów czasowych. Można rozszerzyć to podejście, przy użyciu przesyłania strumieniowego platformy spark lub innego przetwarzający dane strumienia.
+
+
 ## <a name="sql-api"></a>Interfejs API SQL
 
 ### <a name="how-do-i-start-developing-against-the-sql-api"></a>Jak rozpocząć tworzenie przy użyciu interfejsu API SQL
@@ -208,6 +212,10 @@ Oprócz typowe kody błędów bazy danych MongoDB API bazy danych MongoDB ma sw�
 |---------------------|-------|--------------|-----------|
 | TooManyRequests     | 16500 | Całkowita liczba jednostek żądań używane przekroczył wskaźnik aprowizowane jednostki żądań dla kolekcji i zostały ograniczone. | Należy rozważyć skalowanie przepływności przypisanych do kontenera lub zestaw kontenerów na platformie Azure portal lub Trwa ponawianie próby ponownie. |
 | ExceededMemoryLimit | 16501 | Jako usługa dla wielu dzierżawców operacji został przekroczony przydział pamięci klienta. | Zmniejsz zakres operacji przy użyciu bardziej restrykcyjnych kryteria zapytania lub skontaktuj się z działem pomocy technicznej firmy [witryny Azure portal](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade). <br><br>Przykład:  *&nbsp; &nbsp; &nbsp; &nbsp;db.getCollection('users').aggregate ([<br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$match: {name: "Andy"}}, <br> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;{$sort: {wiek: -1} }<br>&nbsp;&nbsp;&nbsp;&nbsp;])*) |
+
+### <a name="is-the-simba-driver-for-mongodb-supported-for-use-with-azure-cosmosdb-mongodb-api"></a>Czy sterownik firmą Simba dla bazy danych MongoDB obsługiwane do użytku z interfejsu API MongoDB usługi Azure cosmos DB?
+Tak, za pomocą sterownika Mongo ODBC firmy firmą Simba interfejsu API MongoDB usługi Azure cosmos DB
+
 
 ## <a id="table"></a>Interfejs API tabel
 
@@ -458,7 +466,7 @@ Usługa Azure Cosmos DB wykorzystuje [partycjonowanie poziome](partition-data.md
 
 ### <a name="how-can-i-protect-against-injection-attacks-using-gremlin-drivers"></a>Jak chronić przed atakami polegającymi na iniekcji przy użyciu języka Gremlin sterowniki? 
 
-Najbardziej natywnych sterowniki Tinkerpop języku Gremlin umożliwiają opcję, aby zapewnić słownik parametrów w celu wykonywania zapytań. Jest to przykład jak to zrobić [Gremlin.Net]() i [Gremlin Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
+Najbardziej natywnych sterowniki Tinkerpop języku Gremlin umożliwiają opcję, aby zapewnić słownik parametrów w celu wykonywania zapytań. Jest to przykład jak to zrobić [Gremlin.Net]((http://tinkerpop.apache.org/docs/3.2.7/reference/#gremlin-DotNet)) i [Gremlin Javascript](https://github.com/Azure-Samples/azure-cosmos-db-graph-nodejs-getting-started/blob/master/app.js).
 
 ### <a name="why-am-i-getting-the-gremlin-query-compilation-error-unable-to-find-any-method-error"></a>Dlaczego otrzymuję "Błąd kompilacji zapytania języka Gremlin: nie można odnaleźć dowolną metodę" Błąd?
 

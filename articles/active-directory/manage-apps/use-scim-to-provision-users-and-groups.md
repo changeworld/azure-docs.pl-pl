@@ -16,12 +16,12 @@ ms.date: 12/12/2017
 ms.author: barbkess
 ms.reviewer: asmalser
 ms.custom: aaddev;it-pro;seohack1
-ms.openlocfilehash: 4247ef1ffd1b8d5c5ec393e3ebff20c3e04e32b3
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: d99996bb4177a11342f0897d2cf69f82a5b81bf7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347702"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721232"
 ---
 # <a name="using-system-for-cross-domain-identity-management-scim-to-automatically-provision-users-and-groups-from-azure-active-directory-to-applications"></a>Przy użyciu systemu dla Standard międzydomenowe zarządzania tożsamościami (SCIM), aby automatycznie aprowizować użytkowników i grup z usługi Azure Active Directory do aplikacji
 
@@ -242,7 +242,7 @@ Ta usługa musi mieć HTTP adres i serwerem uwierzytelniania certyfikat których
 * CNNIC
 * Comodo
 * CyberTrust
-* DigiCert
+* Firmy DigiCert
 * GeoTrust
 * GlobalSign
 * Go Daddy
@@ -352,7 +352,7 @@ Grupy zasobów są identyfikowane przez identyfikator schematu http://schemas.mi
 ### <a name="table-1-default-user-attribute-mapping"></a>Tabela 1: Domyślne mapowanie atrybutu użytkownika
 | Użytkownika usługi Azure Active Directory | "urn: ietf:params:scim:schemas:extension:enterprise:2.0:User" |
 | --- | --- |
-| IsSoftDeleted |aktywne |
+| IsSoftDeleted |aktywny |
 | displayName |displayName |
 | Facsimile-TelephoneNumber |wartość phoneNumbers [typ eq "faksu"] |
 | givenName |name.givenName |
@@ -371,7 +371,7 @@ Grupy zasobów są identyfikowane przez identyfikator schematu http://schemas.mi
 | user-PrincipalName |userName |
 
 ### <a name="table-2-default-group-attribute-mapping"></a>Tabela 2: Domyślne mapowanie atrybutów grupy
-| Grupa usługi Azure Active Directory | http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group |
+| Grupy usługi Azure Active Directory | http://schemas.microsoft.com/2006/11/ResourceManagement/ADSCIM/Group |
 | --- | --- |
 | displayName |externalId |
 | poczta |wiadomości e-mail [typ eq "Praca"] .value |
@@ -691,7 +691,6 @@ Poniższa ilustracja przedstawia komunikaty które wysyła AcD platformy Azure z
 *Rysunek 6: Grupa aprowizację i anulowanie obsługi sekwencji*
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
-* [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](../active-directory-apps-index.md)
 * [Automatyzowanie użytkownika aprowizacji/Deprovisioning do aplikacji SaaS](user-provisioning.md)
 * [Dostosowywanie mapowań atrybutów dla aprowizacji użytkowników](customize-application-attributes.md)
 * [Pisanie wyrażeń do mapowania atrybutów](functions-for-customizing-application-data.md)

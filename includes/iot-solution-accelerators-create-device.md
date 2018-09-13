@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: dobett
 ms.custom: include file
-ms.openlocfilehash: c6e57d5094f455983b8b474b6930f628d654e457
-ms.sourcegitcommit: e45b2aa85063d33853560ec4bc867f230c1c18ce
+ms.openlocfilehash: 9196648d7e3d2ea717b1a61cbca959805649ed2f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43371219"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44754426"
 ---
 W przypadku pierwszego scenariusza, należy dodać, istniejącej nowy typ danych telemetrycznych do firmy Contoso **Chłodnica** typu urządzenia.
 
@@ -21,7 +21,7 @@ W drugim scenariuszu firma Contoso chce przetestować nowe urządzenie inteligen
 
 *Właściwości*
 
-| Nazwa                     | Wartości                      |
+| Name (Nazwa)                     | Wartości                      |
 | ------------------------ | --------------------------- |
 | Kolor                    | White, Red, Blue            |
 | Jasność               | 0 do 100                    |
@@ -31,7 +31,7 @@ W drugim scenariuszu firma Contoso chce przetestować nowe urządzenie inteligen
 
 W poniższej tabeli przedstawiono dane ikonę żarówki raportów w chmurze jako strumień danych:
 
-| Nazwa   | Wartości      |
+| Name (Nazwa)   | Wartości      |
 | ------ | ----------- |
 | Stan | "włączone" "wyłączone" |
 | Temperatura | Stopnie F |
@@ -44,7 +44,7 @@ W poniższej tabeli przedstawiono dane ikonę żarówki raportów w chmurze jako
 
 W poniższej tabeli przedstawiono akcje, które obsługuje nowe urządzenie:
 
-| Nazwa        |
+| Name (Nazwa)        |
 | ----------- |
 | Przełącz się   |
 | Wyłącz  |
@@ -53,7 +53,7 @@ W poniższej tabeli przedstawiono akcje, które obsługuje nowe urządzenie:
 
 W poniższej tabeli przedstawiono początkowy stan urządzenia:
 
-| Nazwa                     | Wartości |
+| Name (Nazwa)                     | Wartości |
 | ------------------------ | -------|
 | Kolor początkowy            | Biały  |
 | Jasność początkowej       | 75     |
@@ -73,6 +73,7 @@ Aby wykonać instrukcje opisane w tym przewodniku, należy:
 
 * Program Visual Studio Code. Możesz [pobierania programu Visual Studio Code dla komputerów Mac, Linux i Windows](https://code.visualstudio.com/download).
 * .NET core. Możesz pobrać [platformy .NET Core dla systemów Mac, Linux i Windows](https://www.microsoft.com/net/download).
+* [Środowisko C# dla programu Visual Studio Code](https://marketplace.visualstudio.com/items?itemName=ms-vscode.csharp)
 * Narzędzia postman. Możesz pobrać [Postman dla komputerów Mac, Windows lub Linux](https://www.getpostman.com/apps).
 * [Wdrożone do subskrypcji platformy Azure w Centrum IoT hub](../articles/iot-hub/iot-hub-create-through-portal.md). Będą potrzebne parametry połączenia Centrum IoT, wykonanie czynności opisanych w tym przewodniku. Parametry połączenia można uzyskać w witrynie Azure portal.
 * Bazy danych Cosmos DB, za pomocą interfejsu API SQL, który jest skonfigurowany dla [wysoki poziom spójności](../articles/cosmos-db/manage-account.md). Będą potrzebne parametry połączenia bazy danych Cosmos DB, wykonanie czynności opisanych w tym przewodniku. Parametry połączenia można uzyskać w witrynie Azure portal.
@@ -89,13 +90,11 @@ Instrukcje w tym artykule przyjęto założenie, że używasz Windows. Jeśli u�
 
 ### <a name="download-the-microservices"></a>Pobierz mikrousług
 
-Pobierz i Rozpakuj [mikrousług adapter magazynu](https://github.com/Azure/pcs-storage-adapter-dotnet/archive/master.zip) z usługi GitHub do odpowiedniej lokalizacji na komputerze lokalnym.
-
-Pobierz i Rozpakuj [mikrousług symulacji urządzenia](https://github.com/Azure/device-simulation-dotnet/archive/master.zip) z usługi GitHub do odpowiedniej lokalizacji na komputerze lokalnym.
+Pobierz i Rozpakuj [zdalne monitorowanie mikrousług](https://github.com/Azure/remote-monitoring-services-dotnet/archive/master.zip) z usługi GitHub do odpowiedniej lokalizacji na komputerze lokalnym.
 
 ### <a name="run-the-storage-adapter-microservice"></a>Uruchamianie mikrousług adapter magazynu
 
-Otwórz **komputerów z systemem magazynu — karta dotnet-master** folderu w programie Visual Studio Code. Kliknij dowolny **przywrócić** przycisków, aby poprawić nierozwiązane zależności.
+Otwórz **remote-monitoring-services-dotnet-master\storage-adapter** folderu w programie Visual Studio Code. Kliknij dowolny **przywrócić** przycisków, aby poprawić nierozwiązane zależności.
 
 Otwórz **.vscode/launch.json** pliku i parametry połączenia usługi Cosmos DB, aby przypisać **PCS_STORAGEADAPTER_DOCUMENTDB_CONNSTRING** zmiennej środowiskowej.
 
@@ -115,7 +114,7 @@ W tej sekcji dodasz nowy **temperatura wewnętrzna** typu telemetrii do istniej�
 
 1. Skopiuj następujące pliki do nowego folderu z pobranych kopii mikrousług symulacji urządzenia:
 
-    | Źródło | Cel |
+    | Element źródłowy | Element docelowy |
     | ------ | ----------- |
     | Services\Data\devicemodels\chiller-01.JSON | C:\temp\devicemodels\chiller-01.JSON |
     | Services\Data\devicemodels\scripts\chiller-01-State.js | C:\temp\devicemodels\scripts\chiller-01-State.js |
@@ -420,7 +419,7 @@ W tej sekcji możesz przetestować typów urządzeń, utworzony w poprzednich se
 
 ### <a name="run-the-device-simulation-microservice"></a>Uruchamianie mikrousług symulacji urządzenia
 
-Otwórz **urządzeń symulacji dotnet-master** folder został pobrany z usługi GitHub w nowym wystąpieniu programu Visual Studio Code. Kliknij dowolny **przywrócić** przycisków, aby poprawić nierozwiązane zależności.
+Otwórz **remote-monitoring-services-dotnet-master\device-simulation** folder został pobrany z usługi GitHub w nowym wystąpieniu programu Visual Studio Code. Kliknij dowolny **przywrócić** przycisków, aby poprawić nierozwiązane zależności.
 
 Otwórz **.vscode/launch.json** plików i przypisz do parametrów połączenia usługi IoT Hub **PCS_IOTHUB_CONNSTRING** zmiennej środowiskowej.
 

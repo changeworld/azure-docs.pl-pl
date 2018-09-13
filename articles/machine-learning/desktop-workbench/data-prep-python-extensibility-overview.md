@@ -1,38 +1,38 @@
 ---
-title: Rozszerzalność języka Python za pomocą usługi Azure Machine Learning danych przygotowania | Dokumentacja firmy Microsoft
-description: Ten dokument zawiera omówienie i szczegółowe przykłady rozszerzyć funkcjonalność Przygotowanie danych za pomocą kodu języka Python
+title: Rozszerzalność języka Python za pomocą usługi Azure Machine Learning danych przygotowań | Dokumentacja firmy Microsoft
+description: Ten dokument zawiera omówienie i niektóre szczegółowe przykłady sposobu użycia kodu w języku Python, aby rozszerzyć funkcje operacji przygotowania danych
 services: machine-learning
 author: euangMS
 ms.author: euang
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 05/09/2018
-ms.openlocfilehash: e91d3e4bfb1cba6f45b0106b3fabe5bef7e0e079
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: a713f5fcde31e0e25de080a65b71209011ef551d
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831428"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35649598"
 ---
-# <a name="data-preparations-python-extensions"></a>Rozszerzenia języka Python przygotowań danych
-Sposób wypełniania funkcji luki pomiędzy wbudowane funkcje usługi Azure Machine Learning danych przygotowania zawiera rozszerzalności na różnych poziomach. W tym dokumencie możemy konspektu rozszerzalność dzięki skrypt w języku Python. 
+# <a name="data-preparations-python-extensions"></a>Rozszerzenia języka Python przygotowywanie danych
+Jako sposób wypełnianie luki między wbudowane funkcje usługi Azure Machine Learning danych przygotowań obejmuje rozszerzalności na różnych poziomach. W tym dokumencie możemy konturu rozszerzalności za pośrednictwem skryptu języka Python. 
 
 ## <a name="custom-code-steps"></a>Kroki kod niestandardowy 
-Przygotowań danych ma następujące kroki niestandardowe, w którym użytkownicy mogą zapisywać kodu:
+Przygotowywanie danych składa się z następujących kroków niestandardowych, gdzie użytkownicy mogą wpisać kod:
 
 * Dodaj kolumnę
 * Filtr zaawansowany
-* Przekształć przepływu danych
-* Przekształć partycji
+* Przekształcanie przepływu danych
+* Przekształcanie partycji
 
-## <a name="code-block-types"></a>Typy blok kodu 
-Dla każdej z tych kroków firma Microsoft obsługuje dwa typy bloku kodu. Po pierwsze firma Microsoft obsługuje wyrażenia języka Python systemu od zera, która zostanie wykonana, ponieważ jest. Po drugie firma Microsoft obsługuje moduł Python, gdzie nazywamy konkretną funkcję za pomocą znanych podpisu kodu, który podasz.
+## <a name="code-block-types"></a>Typów bloków kodu 
+Dla każdej z tych kroków firma Microsoft obsługuje dwa typy bloku kodu. Po pierwsze firma Microsoft obsługuje bez wyrażenia języka Python, który jest wykonywany, ponieważ jest. Po drugie firma Microsoft obsługuje moduł języka Python, którego wywołuje określoną funkcję za pomocą znanych podpisu w kodzie, który podasz.
 
-Na przykład można dodać nowej kolumny, która oblicza dziennika innej kolumny w dwóch sposobów:
+Na przykład można dodać nową kolumnę, która oblicza dziennika innej kolumny w dwóch poniższych sposobów:
 
 Wyrażenie 
 
@@ -48,12 +48,12 @@ def newvalue(row):
 ```
 
 
-Przekształcenie Add Column w trybie modułu oczekuje można znaleźć funkcji o nazwie `newvalue` akceptuje zmienną wiersza i zwraca wartość w kolumnie. Ten moduł może zawierać żadnych ilość kodu języka Python z innych funkcji, Importy, itp.
+Przekształcanie Add Column w trybie modułu spodziewa się znaleźć funkcji o nazwie `newvalue` , zmienna wiersza akceptuje i zwraca wartość kolumny. Ten moduł może zawierać żadnych ilość kodu Python za pomocą innych funkcji, importuje, itp.
 
-W poniższych sekcjach omówiono szczegóły każdego punktu rozszerzenia. 
+Szczegółowe informacje o poszczególnych punktów rozszerzenia zostały omówione w poniższych sekcjach. 
 
 ## <a name="imports"></a>Importy 
-Użycie wyrażenia typu bloku, nadal możesz dodać **zaimportować** instrukcje w kodzie. Wszystkie muszą być zgrupowane w górnym wierszach kodu.
+Jeśli używasz typu blok wyrażenia, można dodać **zaimportować** instrukcji w kodzie. Wszystkie one muszą być zgrupowane w górnym wierszach kodu.
 
 Popraw 
 
@@ -73,10 +73,10 @@ import numpy
 ```
  
  
-Jeśli używasz modułu typ bloku, można wykonać wszystkich zwykłe Python zasady przy użyciu **zaimportować** instrukcji. 
+Jeśli używasz modułu typ bloku, możesz wykonać wszystkie zwykłe Python zasady przy użyciu **zaimportować** instrukcji. 
 
-## <a name="default-imports"></a>Importy domyślne
-Następujące instrukcje importu, są zawsze dołączone i można go użyć w kodzie. Nie trzeba ponownie zaimportować je. 
+## <a name="default-imports"></a>Domyślne importowanie
+Następujące instrukcje importu zawsze są dołączone i można używać w kodzie. Nie trzeba ponownie zaimportować je. 
 
 ```python
 import math  
@@ -89,13 +89,13 @@ import scipy as sp
 ```
   
 
-## <a name="install-new-packages"></a>Zainstaluj nowe pakiety
-Aby użyć pakietu, który nie jest instalowany domyślnie, należy najpierw zainstalować go w środowiskach, które używa przygotowania danych. Musi odbywać się zarówno na komputerze lokalnym, jak i obiektów docelowych obliczeniowe, które ma zostać uruchomione tej instalacji.
+## <a name="install-new-packages"></a>Instalowanie nowych pakietów
+Aby korzystać z pakietu, który nie jest instalowane domyślnie, należy najpierw go zainstalować w środowiskach, przygotowywanie danych używane przez. Ta instalacja musi odbywać się zarówno na komputerze lokalnym, jak i na dowolnej obliczeniowych elementów docelowych, które chcesz uruchomić na.
 
-Aby zainstalować pakiety w celu obliczeń, należy zmodyfikować plik conda_dependencies.yml znajdujące się w folderze aml_config w katalogu głównym projektu.
+Aby zainstalować pakiety w obliczeniowego elementu docelowego, musisz zmodyfikować plik conda_dependencies.yml znajdujący się w folderze aml_config w katalogu głównym projektu.
 
 ### <a name="windows"></a>Windows 
-Aby znaleźć lokalizację w systemie Windows, Znajdź instalacji specyficzny dla aplikacji, Python i jego katalogu skryptów. Domyślna lokalizacja to:  
+Aby znaleźć lokalizację w Windows, Znajdź instalacji specyficzny dla aplikacji języka Python i jego katalogu skryptów. Domyślna lokalizacja to:  
 
 `C:\Users\<user>\AppData\Local\AmlWorkbench\Python\Scripts` 
 
@@ -108,7 +108,7 @@ lub
 `pip install <libraryname> `
 
 ### <a name="mac"></a>Mac 
-Aby znaleźć lokalizację na komputerze Mac, Znajdź instalacji specyficzny dla aplikacji, Python i jego katalogu skryptów. Domyślna lokalizacja to: 
+Aby znaleźć lokalizacji na komputerze Mac, znaleźć instalacji specyficzny dla aplikacji języka Python i jego katalogu skryptów. Domyślna lokalizacja to: 
 
 `/Users/<user>/Library/Caches/AmlWorkbench/Python/bin` 
 
@@ -121,7 +121,7 @@ lub
 `./pip install <libraryname>`
 
 ## <a name="use-custom-modules"></a>Użyj niestandardowych modułów
-W transformacji przepływu danych (skrypt) wpisz następujący kod języka Python
+W Przekształć przepływ danych (skrypt) należy napisać następujący kod języka Python
 
 ```python
 import sys
@@ -131,7 +131,7 @@ from UserModule import ExtensionFunction1
 df = ExtensionFunction1(df)
 ```
 
-Dodaj kolumny (skrypt), należy ustawić typ bloku kodu = moduł i wpisz następujący kod Python
+Dodawanie kolumny (skrypt), należy ustawić typ bloku kodu = modułu i Zapisz poniższy kod języka Python
 
 ```python 
 import sys
@@ -142,11 +142,11 @@ from UserModule import ExtensionFunction2
 def newvalue(row):
     return ExtensionFunction2(row)
 ```
-Do wykonywania różnych kontekstach (lokalny, Docker, Spark) wskaż ścieżkę bezwzględną we właściwym miejscu. Można użyć "os.getcwd() + relativePath", aby go zlokalizować.
+Do wykonywania różnych kontekstach (lokalny, Docker, platformy Spark), punktu ścieżki bezwzględnej we właściwym miejscu. Można go znaleźć za pomocą "os.getcwd() + relativePath".
 
 
-## <a name="column-data"></a>Kolumny danych 
-Kolumny danych jest możliwy z wiersza przy użyciu kropkowego lub notacji klucz wartość. Nie można uzyskać dostępu do nazw kolumn, które zawierają spacje lub znaki specjalne za pomocą kropkowego. `row` Zmiennej zawsze powinien być zdefiniowany w obu trybach rozszerzenia języka Python (modułu i wyrażenie). 
+## <a name="column-data"></a>Dane w kolumnie 
+Kolumna danych jest możliwy z wiersza przy użyciu notacji z kropką lub notacji pary klucz wartość. Nie można uzyskać dostępu do nazw kolumn, które zawierają spacje lub znaki specjalne przy użyciu notacji z kropką. `row` Zmiennej powinny być zawsze definiowane w obu trybach rozszerzenia języka Python (moduł i wyrażenia). 
 
 Przykłady 
 
@@ -157,10 +157,10 @@ Przykłady
 
 ## <a name="add-column"></a>Dodaj kolumnę 
 ### <a name="purpose"></a>Przeznaczenie
-Punkt rozszerzenia Add Column umożliwia zapisanie Python do obliczenia nowej kolumny. Kod zostanie zapisany ma dostęp do pełnego wiersza. Musi zwracać wartość nowej kolumny, dla każdego wiersza. 
+Dodaj kolumnę punktu rozszerzenia umożliwia zapisanie języka Python, aby obliczyć nową kolumnę. Utworzony kod ma dostęp do pełnego wiersza. Musi ona zwrócona nowa wartość kolumny dla każdego wiersza. 
 
 ### <a name="how-to-use"></a>Jak stosować
-Aby dodać ten punkt rozszerzenia, należy za pomocą bloku Dodawanie kolumny (skrypt). Jest ona dostępna na najwyższym poziomie **przekształcenia** menu, jak również na **kolumny** menu kontekstowego. 
+Można dodać tego punktu rozszerzenia za pomocą bloku Dodaj kolumnę (skrypt). Jest ona dostępna na najwyższym poziomie **przekształcenia** menu, a także jak na **kolumny** menu kontekstowego. 
 
 ### <a name="syntax"></a>Składnia
 Wyrażenie
@@ -179,10 +179,10 @@ def newvalue(row):
 
 ## <a name="advanced-filter"></a>Filtr zaawansowany
 ### <a name="purpose"></a>Przeznaczenie 
-Punkt rozszerzenia filtr zaawansowany umożliwia zapisanie filtru niestandardowego. Masz dostęp do całego wiersza i kod musi zwracać wartość True (Dołącz wiersz) lub False (wykluczyć wiersza). 
+Zaawansowany filtr punktu rozszerzenia umożliwia zapisanie niestandardowego filtru. Masz dostęp do całego wiersza, a kod musi zwracać wartość True (Dołącz wiersz), lub wartość FAŁSZ (Wyklucz wiersz). 
 
 ### <a name="how-to-use"></a>Jak stosować
-Aby dodać ten punkt rozszerzenia, należy za pomocą bloku zaawansowane filtru (skrypt). Jest ona dostępna na najwyższym poziomie **przekształcenia** menu. 
+Można dodać tego punktu rozszerzenia za pomocą bloku filtr zaawansowany (skrypt). Jest ona dostępna na najwyższym poziomie **przekształcenia** menu. 
 
 ### <a name="syntax"></a>Składnia
 
@@ -200,17 +200,17 @@ def includerow(row):
 ```
  
 
-## <a name="transform-dataflow"></a>Przekształć przepływu danych
+## <a name="transform-dataflow"></a>Przekształcanie przepływu danych
 ### <a name="purpose"></a>Przeznaczenie 
-Punkt rozszerzenia przekształcenie przepływu danych umożliwia całkowicie przekształcenie przepływu danych. Masz dostęp do dataframe Pandas, która zawiera wszystkich kolumn i wierszy w przypadku przetwarzania. Kod musi zwracać dataframe Pandas, przy użyciu nowych danych. 
+Punkt rozszerzenia Przekształć przepływ danych pozwala w całkowicie Przekształcanie przepływu danych. Masz dostęp do biblioteki Pandas ramkę danych zawierającą wszystkie kolumny i wiersze, które są przetwarzania. Kod musi zwracać Pandas ramkę danych przy użyciu nowych danych. 
 
 >[!NOTE]
->W języku Python wszystkie dane do załadowania do pamięci jest Pandas dataframe Jeśli to rozszerzenie jest używane. 
+>W języku Python wszystkie dane, które ma być załadowany do pamięci jest w Pandas dataframe użycie tego rozszerzenia. 
 >
->W łączniku Spark wszystkie dane są zbierane na węźle pojedynczego procesu roboczego. Jeśli dane są bardzo duże, pracownik może zabraknąć pamięci. Ostrożnie korzystaj z go.
+>Platformy Spark wszystkie dane są zbierane na węźle pojedynczego procesu roboczego. Jeśli dane są bardzo duże, proces roboczy może zabraknąć pamięci. Użyj dokładnie.
 
 ### <a name="how-to-use"></a>Jak stosować 
-Aby dodać ten punkt rozszerzenia, należy za pomocą bloku przepływu danych przekształcania (skrypt). Jest ona dostępna na najwyższym poziomie **przekształcenia** menu. 
+Można dodać tego punktu rozszerzenia za pomocą bloku Przekształć przepływ danych (skrypt). Jest ona dostępna na najwyższym poziomie **przekształcenia** menu. 
 ### <a name="syntax"></a>Składnia 
 
 Wyrażenie
@@ -231,16 +231,16 @@ def transform(df):
 ```
   
 
-## <a name="transform-partition"></a>Przekształć partycji  
+## <a name="transform-partition"></a>Przekształcanie partycji  
 ### <a name="purpose"></a>Przeznaczenie 
-Punkt rozszerzenia przekształcenie partycji umożliwia przekształcanie partycji przepływu danych. Masz dostęp do dataframe Pandas, który zawiera wszystkich kolumn i wierszy dla tej partycji. Kod musi zwracać dataframe Pandas, przy użyciu nowych danych. 
+Punkt rozszerzenia Przekształcanie partycji umożliwia przekształcanie przepływu danych partycji. Masz dostęp do biblioteki Pandas ramkę danych zawierającą wszystkie kolumny i wiersze dla tej partycji. Kod musi zwracać Pandas ramkę danych przy użyciu nowych danych. 
 
 >[!NOTE]
->W języku Python mogą wystąpić z jednej partycji lub wiele partycji, w zależności od rozmiaru danych. W łączniku Spark z którymi pracujesz dataframe, w której przechowywane są dane dla partycji w węźle danego pracownika. W obu przypadkach nie założono, że masz dostęp do całego zestawu danych. 
+>W języku Python mogą wystąpić z jednej partycji lub wiele partycji, w zależności od rozmiaru danych. Platformy Spark pracujemy z użyciem ramkę danych, która przechowuje dane dla partycji w węźle danego pracownika. W obu przypadkach nie można zakładać, że masz dostęp do całego zestawu danych. 
 
 
 ### <a name="how-to-use"></a>Jak stosować
-Aby dodać ten punkt rozszerzenia, należy za pomocą bloku przekształcenie partycji (skrypt). Jest ona dostępna na najwyższym poziomie **przekształcenia** menu. 
+Można dodać tego punktu rozszerzenia za pomocą bloku Przekształcanie partycji (skrypt). Jest ona dostępna na najwyższym poziomie **przekształcenia** menu. 
 
 ### <a name="syntax"></a>Składnia 
 
@@ -266,9 +266,9 @@ def transform(df, index):
 
 ## <a name="datapreperror"></a>DataPrepError  
 ### <a name="error-values"></a>Wartości błędów  
-W danych przygotowania istnieje pojęcie wartości błędów. 
+W przygotowywanie danych istnieje pojęcie wartości błędów. 
 
-Istnieje możliwość wystąpienia wartości błędów w kodzie języka Python niestandardowym. Są one wystąpień klasy Python o nazwie `DataPrepError`. Ta klasa jest zawijana wyjątek języka Python i ma kilka właściwości. Właściwości zawierają informacje dotyczące błędu, który wystąpił podczas przetwarzania oryginalnej wartości, a także oryginalnej wartości. 
+Istnieje możliwość wystąpienia wartości błędów w kodzie niestandardowym języka Python. Są one wystąpień klasy języka Python o nazwie `DataPrepError`. Ta klasa jest zawijany wyjątek języka Python i ma kilka właściwości. Właściwości zawierają informacje dotyczące błędu, który wystąpił podczas przetwarzania oryginalnej wartości, a także oryginalną wartość. 
 
 
 ### <a name="datapreperror-class-definition"></a>Definicja klasy DataPrepError
@@ -277,7 +277,7 @@ class DataPrepError(Exception):
     def __bool__(self): 
         return False 
 ``` 
-Tworzenie DataPrepError w ramach Python przygotowań danych zwykle wygląda następująco: 
+Tworzenie DataPrepError w ramach przygotowań danych w języku Python ogólnie wygląda następująco: 
 ```python 
 DataPrepError({ 
    'message':'Cannot convert to numeric value', 
@@ -287,7 +287,7 @@ DataPrepError({
 }) 
 ``` 
 #### <a name="how-to-use"></a>Jak stosować 
-Możliwe jest uruchomienie Python punkcie rozszerzenia do generowania DataPrepErrors jako wartości zwracane przy użyciu poprzedniej metody tworzenia. Jest znacznie bardziej prawdopodobne, że DataPrepErrors wystąpią podczas przetwarzania danych w punkcie rozszerzenia. W tym momencie niestandardowy kod języka Python musi obsługiwać DataPrepError jako prawidłowy typ danych.
+Możliwe jest uruchomienie języka Python w punkcie rozszerzenia do generowania DataPrepErrors jako wartości zwracane przy użyciu poprzedniej metody tworzenia. Jest znacznie bardziej prawdopodobne, że DataPrepErrors zostaną napotkane podczas przetwarzania danych w punkcie rozszerzenia. W tym momencie niestandardowy kod Python musi obsługiwać DataPrepError jako prawidłowego typu danych.
 
 #### <a name="syntax"></a>Składnia 
 Wyrażenie 

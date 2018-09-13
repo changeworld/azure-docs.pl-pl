@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/12/2018
 ms.author: anwestg
-ms.openlocfilehash: 9e868788d0cf3b3c0f2f30095388046f64ced71c
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: ae742bbe1e5b751a8a8cabf378afd049728c3b8a
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378544"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717509"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Dodaj dostawcę zasobów usługi App Service do usługi Azure Stack
 
@@ -228,7 +228,7 @@ Po wdrażanie i rejestrowanie dostawcy zasobów usługi App Service, go przetest
 
 Aby utworzyć test aplikacji sieci web, wykonaj następujące kroki:
 
-1. W portalu dzierżawcy usługi Azure Stack, wybierz **New** > **sieci Web i mobilność** > **aplikacji sieci Web**.
+1. W aplikacji portal użytkowników usługi Azure Stack, wybierz **+ Utwórz zasób** > **sieci Web i mobilność** > **aplikacji sieci Web**.
 
 2. W obszarze **aplikacji sieci Web**, wprowadź nazwę w **aplikacji sieci Web**.
 

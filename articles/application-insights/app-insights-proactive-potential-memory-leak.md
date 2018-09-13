@@ -1,8 +1,8 @@
 ---
-title: "Inteligentne wykrywania - potencjalny wyciek pamięci wykryta przez usługę Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Monitorowanie aplikacji za pomocą usługi Azure Application Insights dla potencjalnych przecieki pamięci."
+title: Inteligentne wykrywanie — Potencjalny przeciek pamięci, wykrytych przez usługę Azure Application Insights | Dokumentacja firmy Microsoft
+description: Monitoruj aplikacje za pomocą usługi Azure Application Insights dla potencjalnych przeciekach pamięci.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
@@ -10,31 +10,30 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: mbullwin
-ms.openlocfilehash: e98caaa387418d746905990436b69925a591b260
-ms.sourcegitcommit: 48fce90a4ec357d2fb89183141610789003993d2
+ms.openlocfilehash: 25d26db3cd11fff7f7e9ba472247a920ecddea33
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/12/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35649670"
 ---
-# <a name="memory-leak-detection-preview"></a>Wykrywanie przecieków pamięci (wersja zapoznawcza)
+# <a name="memory-leak-detection-preview"></a>Wykrywania przecieków pamięci (wersja zapoznawcza)
 
-Usługi Application Insights automatycznie analizuje zmniejszenie zużycia pamięci każdego procesu w aplikacji i może zostać wyświetlone ostrzeżenie o potencjalnych przecieki pamięci lub zużycie pamięci.
+Usługa Application Insights automatycznie analizuje zmniejszenie zużycia pamięci każdego procesu w aplikacji i może zostać wyświetlone ostrzeżenie o potencjalnych przeciekach pamięci lub użycie większej ilości pamięci.
 
-Ta funkcja wymaga specjalnych ustawień, inne niż [Konfigurowanie liczników wydajności](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) dla aplikacji. Jest aktywna, kiedy aplikacja generuje telemetrii liczniki wydajności za mało pamięci (na przykład Bajty prywatne).
+Ta funkcja wymaga nie specjalne ustawienia innego niż [Konfigurowanie liczników wydajności](https://docs.microsoft.com/azure/application-insights/app-insights-performance-counters) dla aplikacji. Może to być aktywny, gdy aplikacja generuje wystarczającej ilości pamięci telemetrii liczników wydajności (na przykład Bajty prywatne).
 
+## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Gdy otrzyma ten typ powiadomienia wykrywania inteligentnego
+Typowe powiadomienia będą zgodne z spójne wzrost użycia pamięci przez dłuższy czas, w jeden lub więcej procesów i/lub co najmniej jednej maszyny, które są częścią Twojej aplikacji. Algorytmów uczenia maszynowego są używane do wykrywania użycia większej ilości pamięci, który pasuje do wzorca przeciek pamięci.
 
-## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Gdy otrzyma ten typ powiadomienia inteligentne wykrywanie?
-Typowy powiadomienie będzie śledzić spójne wzrost zużycia pamięci przez dłuższy czas (w ciągu kilku godzin) w co najmniej jednego procesu i/lub co najmniej jednej maszyny, które są częścią aplikacji.
-Algorytmów uczenia maszynowego są używane do wykrywania zużycia pamięci, która jest zgodna z wzorcem przeciek pamięci, w przeciwieństwie do zużycia pamięci z powodu naturalnie zwiększenie użycia aplikacji.
+## <a name="does-my-app-really-have-a-problem"></a>Czy Moja aplikacja ma naprawdę problem?
+Nie, powiadomienia nie oznacza, że Twoja aplikacja ma zdecydowanie problem. Mimo że wzorce przeciek pamięci zazwyczaj wskazują problem aplikacji, te wzorce może być typową dla procesu określonego lub może mieć uzasadnienie biznesowe naturalnych i można zignorować.
 
-## <a name="does-my-app-definitely-have-a-problem"></a>Aplikacja my uwielbiamy ma problem?
-Nie, powiadomienia nie oznacza, że aplikacja ma ostatecznie problem. Mimo że wzorce przeciek pamięci zazwyczaj wskazują problem aplikacji, te wzorce może mieć typowe dla określonego procesu, lub mogą mieć naturalne biznesowego wyjaśnienia i można zignorować.
-
-## <a name="how-do-i-fix-it"></a>Jak rozwiązać ten problem?
+## <a name="how-do-i-fix-it"></a>Jak go naprawić?
 Powiadomienia obejmują informacje diagnostyczne do obsługi w procesie diagnostyczne analizy:
-1. **Klasyfikacji.** Powiadomienie zawiera można zwiększyć ilość pamięci (w GB), a zakres czasu, w którym wzrosło pamięć. Może to ułatwić można przypisać priorytet problemu.
-2. **Zakres.** Liczbę maszyn wystawiane wzorzec przeciek pamięci? Jak wiele wyjątków wyzwolone podczas potencjalny wyciek pamięci? Te informacje można uzyskać powiadomienia.
-3. **Diagnozowanie.** Wykrywanie zawiera wzorzec przeciek pamięci, przedstawiający zużycie pamięci procesu w czasie. Umożliwia także powiązane elementy i raporty łączenie się dodatkowe informacje ułatwiające dalsze zdiagnozować problem.
+1. **Klasyfikacja.** Powiadomienie zawiera informację, można zwiększyć ilość pamięci, (w GB) i zakres czasu, w którym wzrosła pamięci. Może to pomóc Ci przypisać priorytet problemu.
+2. **Zakres.** Ile maszyn uwidocznione wzorzec przeciek pamięci? Jak wiele wyjątków zostały wyzwolone Potencjalny przeciek pamięci? Te informacje można uzyskać z powiadomienia.
+3. **Diagnozowanie.** Wykrywanie zawiera wzorzec przeciek pamięci, przedstawiający zużycie pamięci procesu wraz z upływem czasu. Umożliwia także elementy pokrewne i raporty dodatkowe informacje ułatwiające dalsze łączenie zdiagnozowania problemu.

@@ -1,12 +1,10 @@
 ---
-title: Dodatek programu Excel do usługi Machine Learning Web | Dokumentacja firmy Microsoft
-description: Jak używać usługi Azure Machine Learning w sieci Web bezpośrednio w programie Excel bez pisania żadnego kodu.
+title: Dodatek programu Excel dla usług Machine Learning w sieci Web | Dokumentacja firmy Microsoft
+description: Jak używać usługi Azure Machine Learning w sieci Web bezpośrednio w programie Excel, bez konieczności pisania jakiegokolwiek kodu.
 services: machine-learning
 documentationcenter: ''
-author: YasinMSFT
-ms.author: yahajiza
-manager: hjerez
-editor: cgronlun
+author: marthalc
+ms.author: marthalc
 ms.assetid: 9618079d-502f-4974-a3e2-8f924042a23f
 ms.service: machine-learning
 ms.component: studio
@@ -15,75 +13,79 @@ ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: data-services
 ms.date: 2/1/2018
-ms.openlocfilehash: 68e2f72dfd8cc58d42263f4b6378d89304aaaa4d
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
-ms.translationtype: HT
+ms.openlocfilehash: 8fade171095ff6a9f4c10925089452d8925e11fe
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834196"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35938875"
 ---
-# <a name="excel-add-in-for-azure-machine-learning-web-services"></a>Dodatki programu Excel do usług sieci Web Azure Machine Learning
+# <a name="excel-add-in-for-azure-machine-learning-studio-web-services"></a>Dodatek programu Excel dla usług sieci web Azure Machine Learning Studio
 Excel ułatwia wywołują usługi sieci web bezpośrednio, bez konieczności pisania kodu.
 
-## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>Kroki, aby przy użyciu usługi sieci web istniejące w skoroszycie
+## <a name="steps-to-use-an-existing-web-service-in-the-workbook"></a>Kroki, aby użyć usługi sieci web istniejące w skoroszycie
 
-1. Otwórz [przykładowy plik programu Excel](http://aka.ms/amlexcel-sample-2), który zawiera dane dotyczące osób na Titanic dodatek programu Excel i.
-2. Wybierz usługę sieci web, klikając go-"Titanic predykcyjne renty (przykład dodatku Excel) [Wynik]" w tym przykładzie.
+1. Otwórz [przykładowy plik programu Excel](http://aka.ms/amlexcel-sample-2), który zawiera dodatek programu Excel i danych dotyczących osób na Titanica. 
+ 
+> [!NOTE]
+> Zobaczysz, że na liście usług sieci Web związane z nim do pliku i u dołu pola wyboru "Automatycznie — przewidywanie". Po włączeniu automatycznego — przewidywanie przewidywań **wszystkie** usługi będzie za każdym, gdy zaktualizowano nastąpiła zmiana w danych wejściowych. Jeśli nie jest zaznaczone trzeba będzie kliknąć "Przewidzieć All" w przypadku odświeżania. Umożliwiające automatyczne — przewidywanie na usługę poziomu przejdź do kroku 6.
+
+2. Wybierz usługę sieci web, klikając go — "Titanic renty predykcyjne (przykład dodatku Excel) [Wynik]" w tym przykładzie.
    
     ![Wybierz usługę sieci Web][01]
-3. Powoduje to przejście do **Predict** sekcji.  Ten skoroszyt zawiera już dane przykładowe, ale dla pustego skoroszytu można zaznaczyć komórkę w programie Excel i kliknij przycisk **użyj przykładowych danych**.
-4. Wybierz dane z nagłówkami i kliknij ikonę zakres danych wejściowych.  Upewnij się, że zaznaczono pole "Moje dane mają nagłówki".
-5. W obszarze **dane wyjściowe**, wprowadź numer komórki, w której mają danych wyjściowych w postaci, na przykład "H1" w tym miejscu.
-6. Kliknij przycisk **prognozowania**.
+3. Spowoduje to przejście do **Predict** sekcji.  Ten skoroszyt zawiera już dane przykładowe, ale dla pustego skoroszytu można zaznaczyć komórkę w programie Excel i kliknij przycisk **użyj przykładowych danych**.
+4. Wybierz dane z nagłówkami, a następnie kliknij ikonę zakres danych wejściowych.  Upewnij się, że zaznaczono pole "Moje dane mają nagłówki".
+5. W obszarze **dane wyjściowe**, wprowadź liczby komórek, w której mają być, na przykład "H1" w tym miejscu danych wyjściowych.
+6. Kliknij przycisk **przewidzieć**. Jeśli zaznaczysz pole wyboru "automatycznie predict" wszelkie zmiany w wybranych obszarach (te określone jako dane wejściowe) spowoduje wyzwolenie żądanie i aktualizacji komórek danych wyjściowych, bez konieczności naciśnięcia przycisku predict.
    
     ![Przewidywanie sekcji][02]
 
-Wdrażanie usługi sieci web, lub użyj istniejącej usługi sieci Web. Aby uzyskać więcej informacji na temat wdrażania usługi sieci web, zobacz [wskazówki krok 5: Wdrażanie usługi sieci Web Azure Machine Learning](walkthrough-5-publish-web-service.md).
+Wdrażanie usługi sieci web, lub użyj istniejącej usługi sieci Web. Aby uzyskać więcej informacji na temat wdrażania usługi sieci web, zobacz [wskazówki krok 5: Wdrażanie usługi Azure Machine Learning w sieci Web](walkthrough-5-publish-web-service.md).
 
-Pobierz klucz interfejsu API usługi sieci web. Miejsce można wykonać tej akcji zależy czy opublikowane usługi sieci web klasycznego uczenia maszynowego usługi sieci web uczenie maszynowe nowe.
+Uzyskaj klucz interfejsu API dla usługi sieci web. W przypadku, gdy wykonujesz tej akcji jest zależna od tego, czy opublikowana klasycznego uczenia maszynowego usługi sieci web usługi sieci web nowej usługi Machine Learning.
 
-**Użyj usługi sieci web klasycznego** 
+**Użyj klasycznej usługi sieci web** 
 
 1. W usłudze Machine Learning Studio, kliknij przycisk **usług sieci WEB** sekcji w okienku po lewej stronie, a następnie wybierz usługę sieci web.
    
     ![Wybierz Studio usługi sieci Web][04]
 2. Skopiuj klucz interfejsu API usługi sieci web.
    
-    ![Klucz interfejsu API Studio][05]
-3. Na **pulpitu NAWIGACYJNEGO** usługi sieci web, kliknij pozycję **żądanie/odpowiedź** łącza.
-4. Wyszukaj **przez identyfikator URI żądania** sekcji.  Skopiuj i Zapisz adres URL.
+    ![Klucz interfejsu API programu Studio][05]
+3. Na **pulpit NAWIGACYJNY** usługi sieci web kliknij pozycję **ŻĄDAŃ/odpowiedzi** łącza.
+4. Wyszukaj **żądanie identyfikatora URI** sekcji.  Skopiuj i Zapisz adres URL.
 
 > [!NOTE]
-> Obecnie istnieje możliwość logowania się do [usługi sieci Web systemu Azure Machine Learning](https://services.azureml.net) portalu, aby uzyskać klucz interfejsu API usługi sieci web uczenie maszynowe klasycznego.
+> Teraz jest możliwa do logowania się do [usług sieci Web Azure Machine Learning](https://services.azureml.net) portalu, aby uzyskać klucz interfejsu API usługi sieci web klasycznej usługi Machine Learning.
 > 
 > 
 
 **Użyj nowej usługi sieci web**
 
-1. W [usługi sieci Web systemu Azure Machine Learning](https://services.azureml.net) portalu, kliknij przycisk **usług sieci Web**, wybierz opcję usługi sieci web. 
-2. Kliknij przycisk **korzystać**.
-3. Wyszukaj **zużycie podstawowe informacje o** sekcji. Skopiuj i Zapisz **klucza podstawowego** i **żądań i odpowiedzi** adresu URL.
+1. W [usług sieci Web Azure Machine Learning](https://services.azureml.net) portalu, kliknij przycisk **usług sieci Web**, następnie wybierz usługę sieci web. 
+2. Kliknij przycisk **używanie**.
+3. Wyszukaj **informacje podstawowe użycie** sekcji. Skopiuj i Zapisz **klucza podstawowego** i **odpowiedź na żądanie** adresu URL.
 
 ## <a name="steps-to-add-a-new-web-service"></a>Kroki, aby dodać nową usługę sieci web
 
-1. Wdrażanie usługi sieci web, lub użyj istniejącej usługi sieci Web. Aby uzyskać więcej informacji na temat wdrażania usługi sieci web, zobacz [wskazówki krok 5: Wdrażanie usługi sieci Web Azure Machine Learning](walkthrough-5-publish-web-service.md).
-2. Kliknij przycisk **korzystać**.
-3. Wyszukaj **zużycie podstawowe informacje o** sekcji. Skopiuj i Zapisz **klucza podstawowego** i **żądań i odpowiedzi** adresu URL.
-4. W programie Excel, przejdź do **usług sieci Web** sekcji (jeśli jest **Predict** kliknij strzałkę Wstecz, aby przejść do listy usług sieci web).
+1. Wdrażanie usługi sieci web, lub użyj istniejącej usługi sieci Web. Aby uzyskać więcej informacji na temat wdrażania usługi sieci web, zobacz [wskazówki krok 5: Wdrażanie usługi Azure Machine Learning w sieci Web](walkthrough-5-publish-web-service.md).
+2. Kliknij przycisk **używanie**.
+3. Wyszukaj **informacje podstawowe użycie** sekcji. Skopiuj i Zapisz **klucza podstawowego** i **odpowiedź na żądanie** adresu URL.
+4. W programie Excel, przejdź do **usług sieci Web** sekcji (jeśli znajdują się w **Predict** kliknij strzałkę Wstecz, aby przejść do listy usług sieci web).
    
     ![Przejdź do wybór usługi sieci Web][03]
 5. Kliknij przycisk **Dodaj usługę sieci Web**.
-6. Wklej adres URL do programu Excel z etykietą pola tekstowego dodatku **adres URL**.
-7. Wklej klucz interfejsu API/podstawowy w pole tekstowe z etykietą **klucz interfejsu API**.
+6. Wklej adres URL do programu Excel z etykietą w polu tekstowym w dodatku **adresu URL**.
+7. Wklej klucz interfejsu API/podstawowe pole tekstowe **klucz interfejsu API**.
 8. Kliknij pozycję **Add** (Dodaj).
    
-    ![Adres URL i klucz API usługi sieci Web klasycznego.][06]
-9. Aby korzystać z usługi sieci web, postępuj zgodnie z instrukcjami poprzedniego, "Czynności w celu istniejące sieci web usługi".
+    ![Adres URL i klucz API klasyczne usługi sieci Web.][06]
+9. Aby użyć usługi sieci web, wykonaj czynności podane poprzedniej, "Kroki, aby użyć sieci web istniejące usługi".
 
 ## <a name="sharing-your-workbook"></a>Udostępnianie skoroszytu
-Czy zapisać skoroszyt, klucz interfejsu API/podstawowych usług sieci web, które zostały dodane również jest zapisywane. Oznacza to, że skoroszyt powinien udostępniać tylko dla osób zaufanych.
+Po zapisaniu skoroszytu, klucz interfejsu API/podstawowej dla usług sieci web, które zostały dodane również jest zapisywany. Oznacza to, że skoroszyt powinien udostępniać tylko dla osób, którym ufasz.
 
-Wszelkie pytania z poniższej sekcji komentarza lub na naszych [forum](http://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409).
+Zadawaj pytania w poniższej sekcji komentarza lub na naszej [forum](http://go.microsoft.com/fwlink/?LinkID=403669&clcid=0x409).
 
 [01]: ./media/excel-add-in-for-web-services/image1.png
 [02]: ./media/excel-add-in-for-web-services/image2.png

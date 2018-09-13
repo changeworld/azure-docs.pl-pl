@@ -1,57 +1,60 @@
 ---
-title: Zdalne monitorowanie rozwiązania architektury opcji - Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano architektury i technicznej wybory dokonane monitorowania zdalnego
+title: Zdalne monitorowanie rozwiązań wyborów związanych z architekturą — Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano architektury i technicznej wybory dokonane zdalnego monitorowania
 author: timlaverty
 manager: camerons
 ms.author: timlav
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 04/30/2018
+ms.date: 09/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 6c4bf0e4bf0a6c1a791cf762ec9bb44ed5c0b1bd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 709886e77819adca961a44f65fe6402dd7d20d53
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34627692"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716303"
 ---
-# <a name="remote-monitoring-architectural-choices"></a>Zdalne monitorowanie architektury wyborów.
+# <a name="remote-monitoring-architectural-choices"></a>Zdalne monitorowanie wyborów związanych z architekturą
 
-Akcelerator rozwiązań zdalnego monitorowania Azure IoT jest open source, licencją MIT, akcelerator rozwiązań, przedstawiający typowych scenariuszy IoT, takich jak łączność urządzeń, zarządzanie urządzeniami i przetwarzania strumienia, więc klienci można przyspieszyć ich rozwoju proces.  To rozwiązanie monitorowanie zdalnego następuje zalecane architektura referencyjna Azure IoT opublikowane [tutaj](https://aka.ms/iotrefarchitecture).  
+Akcelerator rozwiązań Azure IoT zdalnego monitorowania jest typu open source, licencji MIT, akcelerator rozwiązań, które wprowadza typowych scenariuszy IoT, takich jak łączność urządzeń, zarządzanie urządzeniami i przetwarzania strumienia, dzięki czemu klienci mogą przyspieszyć ich rozwoju proces.  Rozwiązanie monitorowania zdalnego następuje zalecana architektura referencyjna IoT platformy Azure, opublikowane [tutaj](https://aka.ms/iotrefarchitecture).  
 
-W tym artykule opisano architektury i technicznej wyborów dokonanych w każdym podsystemów dla rozwiązania Monitorowanie zdalne i omówiono traktowane jako alternatywy.  Należy pamiętać, że techniczne wyborów dokonanych w rozwiązaniu Monitorowanie zdalne nie są jedynym sposobem wykonania zdalnego monitorowania rozwiązania IoT.  Implementacja techniczna jest linii bazowej do tworzenia aplikacji powiodło się i powinien zostać zmodyfikowany do umiejętności, obsługi i potrzeb pionowy aplikacji do wdrożenia rozwiązania klienta.
+W tym artykule opisano opcje architektury i technicznej wprowadzone w poszczególnych podsystemów rozwiązania do monitorowania zdalnego i omówiono rozważane alternatywy.  Należy zauważyć, że techniczne wybory dokonane w rozwiązania do zdalnego monitorowania nie są jedynym sposobem, aby zaimplementować rozwiązanie IoT monitorowania zdalnego.  Implementacja techniczna jest punkt odniesienia dla tworzenia zakończonym powodzeniem i powinny być modyfikowane w celu dopasowania umiejętności, doświadczenie i pionowy aplikacji informacji dotyczących wdrażania rozwiązania klienta.
 
-## <a name="architectural-choices"></a>Opcje architektury
+## <a name="architectural-choices"></a>Wybory dotyczące architektury
 
-### <a name="microservices-serverless-and-cloud-native"></a>Mikrousług niekorzystającą i w chmurze natywnego
+### <a name="microservices-serverless-and-cloud-native"></a>Mikrousługi, bez użycia serwera, a natywna usługa w chmurze
 
-Architektura zalecamy IoT aplikacje są chmury natywnego, mikrousługi, a pliki na podstawie.  Różne podsystemy aplikacji IoT powinny zostać skompilowane jako odrębny usług, które są możliwe niezależnie i można skalować niezależnie.  Te atrybuty Włącz większa Skala większą elastyczność podczas aktualizowania poszczególnych podsystemów i zapewniają elastyczność wyboru odpowiednich technologii na podstawie na podsystemu.  Mikrousług można stosować wiele technologii. Na przykład przy użyciu technologii, kontenera Docker niekorzystającą technologii, takich jak usługi Azure Functions lub hosting mikrousług w usługach PaaS, takie jak usługi aplikacji Azure.
+Architektura zaleca się dla aplikacji IoT są chmury natywnego, mikrousługi, i bez użycia serwera na podstawie.  Różne podsystemy aplikacji IoT, powinny zostać skompilowane jako osobne usługi, które są niezależnie do wdrożenia i można skalować niezależnie.  Te atrybuty Włącz lepsze skalowanie i zapewnia większą elastyczność w aktualizacji poszczególnych podsystemów i zapewnia elastyczność wyboru odpowiedniej technologii na podstawie poszczególnych podsystemu.  Mikrousługi można zaimplementować przy użyciu wielu technologii. Na przykład przy użyciu technologii kontenerów, takich jak platforma Docker, za pomocą technologii bezserwerowej, takich jak Azure Functions, ani nie hostują mikrousług na usługach PaaS, takich jak usługi Azure App Services.
 
-## <a name="core-subsystem-technology-choices"></a>Wybór technologii podsystemu Core
+## <a name="core-subsystem-technology-choices"></a>Wybór technologi podsystemu Core
 
-W tej sekcji szczegółowo technologii wybory dokonane rozwiązanie monitorowania zdalnego dla każdego podsystemów core.
+W tej sekcji przedstawiono Wybór technologii wprowadzonych w rozwiązaniu do zdalnego monitorowania dla poszczególnych podsystemów core.
 
 ![Core Diagram](./media/iot-accelerators-remote-monitoring-architectural-choices/subsystem.png) 
 
 ### <a name="cloud-gateway"></a>Brama chmury
-Centrum IoT Azure jest używany jako brama chmury rozwiązanie monitorowania zdalnego.  Centrum IoT zapewnia bezpieczny, dwukierunkową komunikację z urządzeniami. Dowiedz się więcej na temat Centrum IoT [tutaj](https://azure.microsoft.com/services/iot-hub/). Łączność urządzenia IoT są używane oprogramowanie .NET Core i zestawy SDK Centrum IoT Java.  Zestawy SDK oferować otoki wokół interfejsu API REST Centrum IoT i obsługi scenariuszy, takich jak ponownych prób.
+Usługi Azure IoT Hub jest używany jako brama chmury rozwiązanie monitorowania zdalnego.  Usługi IoT Hub udostępnia bezpiecznej, dwukierunkowej komunikacji z urządzeniami. Dowiedz się więcej o usłudze IoT Hub [tutaj](https://azure.microsoft.com/services/iot-hub/). Łączność urządzeń IoT .NET Core i Java IoT Hub SDKs są używane.  Zestawy SDK oferują otok wokół interfejsu API REST Centrum IoT i obsługiwać scenariusze, takie jak ponownych prób.
 
 ### <a name="stream-processing"></a>Przetwarzanie strumienia
-Dla strumienia przetwarzania rozwiązanie monitorowania zdalnego używa usługi Azure Stream Analytics przetwarzanie złożonych reguł.  Klienci pożądane reguły prostszy mamy także niestandardowych mikrousługi z obsługą przetwarzanie reguł proste, chociaż ta konfiguracja nie jest częścią poza wdrożenia pole. Architektura referencyjna zaleca się korzystanie z usługi Azure Functions dla usługi Azure Stream Analytics (ASA) i przetwarzania Prosta reguła przetwarzania złożonych reguł.  
+Dla strumienia przetwarzania rozwiązania do zdalnego monitorowania korzysta z usługi Azure Stream Analytics do przetwarzania reguł złożonych.  Dla klientów chcących reguły prostsze mamy też niestandardowe mikrousług z pomocą techniczną w celu przetwarzania proste zasady, chociaż tej konfiguracji nie jest częścią poza wdrożenia pole. Architektura referencyjna zaleca się użycie usługi Azure Functions dla usługi Azure Stream Analytics (ASA) i prosta reguła przetwarzania przetwarzanie złożonych reguł.  
 
 ### <a name="storage"></a>Magazyn
-Dla magazynu bazy danych Azure rozwiązania Cosmos jest używany dla wszystkich potrzeb dotyczących magazynowania: chłodni, magazynu ciepłego magazynu zasad i alarmy. Trwa obecnie przeniesienie do magazynu obiektów blob platformy Azure, zgodnie z zaleceniami architektura referencyjna struktury.  Azure DB rozwiązania Cosmos jest rozwiązanie zalecane magazynu ciepłego ogólnego przeznaczenia aplikacji IoT, chociaż rozwiązań, takich jak Azure Insights serie czasu i usługi Azure Data Lake są odpowiednie dla wielu zastosowań.
+W przypadku usługi storage akceleratora rozwiązania monitorowania zdalnego używa usługi Azure Time Series Insights i Azure Cosmos DB. Usługa Azure Time Series Insights są przechowywane komunikaty przechodzącego przez usługę IoT Hub z połączonych urządzeń. Akcelerator rozwiązań używa usługi Azure Cosmos DB na potrzeby wszystkie magazyny takie jak zimnego magazynu, definicje zasad, alarmy i ustawień konfiguracji. Usługa Azure Cosmos DB jest rozwiązanie zalecane magazynu ciepłego ogólnego przeznaczenia dla aplikacji IoT, chociaż rozwiązań, takich jak Azure Time Series Insights i Azure Data Lake są odpowiednie dla wielu przypadków użycia. Za pomocą usługi Azure Time Series Insights można uzyskać lepszy wgląd w dane szeregów czasowych czujników, wykrywania trendów i anomalii, co pozwala na przeprowadzanie analiz głównych przyczyn i unikanie kosztownych przestojów. 
+
+> [!NOTE]
+> Azure Time Series Insights dla akceleratora rozwiązania monitorowania zdalnego jest obecnie dostępna w wersji zapoznawczej i jest dostępna tylko w [Wybierz regiony](https://azure.microsoft.com/global-infrastructure/services/). Jeśli wdrożono akceleratora rozwiązania monitorowania zdalnego spoza tych regionów, Cosmos DB to domyślna opcja magazynowania.
 
 ### <a name="business-integration"></a>Integracja biznesowa
-Integracja biznesowych w rozwiązaniu monitorowania zdalnego jest ograniczona do generowania alarmów, które są umieszczane w magazynie ciepłych. Więcej firm integracji można wykonać dzięki zintegrowaniu rozwiązania w usłudze Azure Logic Apps.
+Integracja biznesowa w rozwiązaniu do zdalnego monitorowania jest ograniczona do generowania alarmy, które są umieszczane w magazynie bez wyłączania zasilania. Dodatkowo można wykonać integracji firmy dzięki integracji rozwiązania z usługą Azure Logic Apps.
 
 ### <a name="user-interface"></a>Interfejs użytkownika
-Witryna sieci web interfejsu użytkownika został skompilowany za JavaScript React.  Platformy react zawiera często używane branży Platforma interfejsu użytkownika sieci web i jest podobny do innych popularnych platform, takich jak kątową.  
+Internetowy interfejs użytkownika jest tworzony przy użyciu języka JavaScript React.  React to platforma interfejsu użytkownika sieci web branży powszechnie używane i jest podobne do innych popularnych platform, takich jak Angular.  
 
-### <a name="runtime-and-orchestration"></a>Środowisko wykonawcze i aranżacji
-Środowisko uruchomieniowe aplikacji wybrane dla podsystemu implementacja rozwiązanie monitorowania zdalnego jest kontenery Docker z Kubernetes orchestrator do skalowania w poziomie.  Taka architektura umożliwia dla definicji poszczególnych skalowania dla podsystemu wiąże się jednak DevOps kosztów w aktualizowanie maszyn wirtualnych i kontenery z punktu widzenia zabezpieczeń.  Alternatywy dla Docker i Kubernetes obejmują hosting mikrousług w usługach PaaS (na przykład usługi Azure App Service) lub przy użyciu usługi Service Fabric, DCOS, Swarm, itd. jako orchestrator.
+### <a name="runtime-and-orchestration"></a>Środowisko uruchomieniowe i aranżacji
+Środowisko uruchomieniowe aplikacji wybrane dla implementacji podsystemu w rozwiązaniu do zdalnego monitorowania jest kontenerów platformy Docker przy użyciu rozwiązania Kubernetes jako orkiestrator dla skalowania w poziomie.  Ta architektura umożliwia skalowanie poszczególnych definicji na podsystemie jednak wiąże się koszty operacji deweloperskich w aktualizowanie maszyny wirtualne i kontenery z punktu widzenia zabezpieczeń.  Alternatywy dla platformy Docker i Kubernetes obejmują hostingu mikrousług na usługach PaaS (na przykład usługi Azure App Service) lub za pomocą usługi Service Fabric, DCOS, Swarm itd. jako orkiestrator.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Wdrażanie rozwiązania do monitorowania zdalnego [tutaj](https://www.azureiotsolutions.com/).
-* Eksploruj kod GitHub w [C#](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) i [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/).  
+* Wdrażanie rozwiązania do zdalnego monitorowania [tutaj](https://www.azureiotsolutions.com/).
+* Zapoznaj się z kodu GitHub w [C#](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/) i [Java](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java/).  
 * Dowiedz się więcej o architektura referencyjna IoT [tutaj](https://aka.ms/iotrefarchitecture).

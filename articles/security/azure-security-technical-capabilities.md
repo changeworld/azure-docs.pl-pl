@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/01/2017
 ms.author: TomSh
-ms.openlocfilehash: 6643db7b732cc5b01ce7602eb3d679c130c46720
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: eab55f6e2bf909ccdbdb30a8ced34dbc58d3954a
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972200"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721334"
 ---
 # <a name="azure-security-technical-capabilities"></a>Możliwości techniczne zabezpieczeń platformy Azure
 
@@ -43,7 +43,7 @@ Platforma Microsoft Azure możesz wykonywać następujące czynności:
 
 ## <a name="scope"></a>Zakres
 
-Centralny punkt tego dokumentu dotyczy funkcji zabezpieczeń i funkcji pomocniczych składników podstawowych Microsoft Azure, a mianowicie [usługi Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-introduction), [baz danych SQL Azure Microsoft](https://docs.microsoft.com/azure/sql-database/), [ Model maszyn wirtualnych Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/)oraz narzędzia, jak i zarządzania wszystkimi infrastruktury. Ten oficjalny dokument dotyczący skupić się na Microsoft Azure techniczne możliwości są dostępne jako klienci do wypełnienia ich rolę w zapewnieniu ochrony bezpieczeństwa i ochrony prywatności ich danych.
+Centralny punkt tego dokumentu dotyczy funkcji zabezpieczeń i funkcji pomocniczych składników podstawowych Microsoft Azure, a mianowicie [usługi Microsoft Azure Storage](https://docs.microsoft.com/azure/storage/storage-introduction), [Microsoft Azure SQL Database](https://docs.microsoft.com/azure/sql-database/), [ Model maszyn wirtualnych Microsoft Azure](https://docs.microsoft.com/azure/virtual-machines/)oraz narzędzia, jak i zarządzania wszystkimi infrastruktury. Ten oficjalny dokument dotyczący skupić się na Microsoft Azure techniczne możliwości są dostępne jako klienci do wypełnienia ich rolę w zapewnieniu ochrony bezpieczeństwa i ochrony prywatności ich danych.
 
 Informacje o tym modelu odpowiedzialności znaczenie ma zasadnicze znaczenie dla klientów, którzy są przenoszone do chmury. Dostawcy usług chmurowych oferują znaczące korzyści dla zabezpieczeń i zgodności, ale te korzyści zwalnia klienta z ochrony swoich użytkowników, aplikacji i ofert usług.
 
@@ -63,7 +63,7 @@ Azure pomaga w ochronie firmy i informacje osobiste, umożliwiając zarządzanie
 
 ### <a name="azure-active-directory"></a>Usługa Azure Active Directory
 
-Pomocy firmy Microsoft tożsamości i dostępu do zarządzania rozwiązaniami IT ochrona dostępu do aplikacji i zasobów w firmowym centrum danych i w chmurze, umożliwiając dodatkowe poziomy sprawdzania poprawności, takich jak uwierzytelnianie wieloskładnikowe i dostępu warunkowego zasady. Monitorowania podejrzanych działań przy użyciu zaawansowanych zabezpieczeń, raportowanie, inspekcje i alerty, że pomaga jej uniknąć potencjalnych problemów z zabezpieczeniami. [Usługa Azure Active Directory — wersja Premium](https://docs.microsoft.com/azure/active-directory/active-directory-editions) udostępnia logowanie jednokrotne do tysięcy cloud apps (SaaS) i uzyskać dostęp do aplikacji sieci web można uruchamiać lokalnie.
+Pomocy firmy Microsoft tożsamości i dostępu do zarządzania rozwiązaniami IT ochrona dostępu do aplikacji i zasobów w firmowym centrum danych i w chmurze, umożliwiając dodatkowe poziomy sprawdzania poprawności, takich jak uwierzytelnianie wieloskładnikowe i dostępu warunkowego zasady. Monitorowanie podejrzanej aktywności przy użyciu zaawansowanych raportów zabezpieczeń, inspekcji i alertów umożliwia rozwiązywanie potencjalnych problemów z zabezpieczeniami. [Usługa Azure Active Directory — wersja Premium](https://docs.microsoft.com/azure/active-directory/active-directory-editions) udostępnia logowanie jednokrotne do tysięcy cloud apps (SaaS) i uzyskać dostęp do aplikacji sieci web można uruchamiać lokalnie.
 
 Zabezpieczeń zapewnianych przez usługi Azure Active Directory (Azure AD) mogą być następujące:
 

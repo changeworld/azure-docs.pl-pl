@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 09/12/2018
 ms.author: raynew
 ms.custom: MVC
-ms.openlocfilehash: fb820d124fd9b5e882cad538ad436532d7865fbc
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: f1899817ee2d0efec4ab561a64f24e49cb173c29
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921542"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720773"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Przygotowywanie lokalnych serwerów funkcji Hyper-V do odzyskiwania po awarii na platformie Azure
 
@@ -60,13 +60,15 @@ Przygotowywanie programu VMM do mapowania sieci w następujący sposób:
 ## <a name="verify-internet-access"></a>Sprawdź dostęp do Internetu
 
 1. Na potrzeby tego samouczka najprostsza konfiguracja jest dla hostów funkcji Hyper-V i serwer VMM ma bezpośredni dostęp do Internetu bez użycia serwera proxy. 
-2. Upewnij się, że który jest hostem funkcji Hyper-V i serwer programu VMM, jeśli jest to istotne, mogą uzyskiwać dostęp do tych adresów URL: 
-
-    [!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
-    
+2. Należy upewnić się, który jest hostem funkcji Hyper-V i serwer programu VMM, jeśli jest to istotne, mają dostęp do wymaganych poniższych adresów URL.   
 3. Jeśli jest kontrolowanie dostępu przy użyciu adresu IP, wykonaj następujące czynności:
     - Reguły zapory oparte na adresie IP mogą łączyć się z [zakresów adresów IP centrum danych Azure](https://www.microsoft.com/download/confirmation.aspx?id=41653)oraz portu HTTPS (443).
     - Zezwalaj na zakresy adresów IP dla regionu platformy Azure Twojej subskrypcji.
+    
+### <a name="required-urls"></a>Wymagane adresy URL
+
+
+[!INCLUDE [site-recovery-URLS](../../includes/site-recovery-URLS.md)]
 
 
 ## <a name="prepare-to-connect-to-azure-vms-after-failover"></a>Przygotowanie do połączenia z maszynami wirtualnymi Azure po przejściu do trybu failover

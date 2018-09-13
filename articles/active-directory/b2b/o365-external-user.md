@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 7e0a65e4a5807cb9a6b39feecfd2d5b2643ea4a9
-ms.sourcegitcommit: 7ad9db3d5f5fd35cfaa9f0735e8c0187b9c32ab1
+ms.openlocfilehash: 1ab7518ff5a9524dbfe1b258a51b7ad0ef5c9765
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39331016"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716778"
 ---
 # <a name="office-365-external-sharing-and-azure-active-directory-b2b-collaboration"></a>Udostępnianie zewnętrzne w usłudze Office 365 i współpracy B2B usługi Azure Active Directory
 
@@ -38,9 +38,14 @@ Aby Zarządzanie udostępnianiem zewnętrznym w usłudze OneDrive/SharePoint Onl
 
 ![Usługi OneDrive/SharePoint Online zewnętrznego udostępniania ustawienie](media/o365-external-user/odsp-sharing-setting.png)
 
+Po włączeniu udostępniania zewnętrznego możliwość wyszukiwania dla istniejących użytkowników-gości w Selektor osób programu SharePoint Online (SPO) jest domyślnie, aby dopasować starsze zachowanie WYŁĄCZONY.
+
+Aby włączyć tę funkcję, należy za pomocą ustawienia "ShowPeoplePickerSuggestionsForGuestUsers" na poziomie kolekcji dzierżawy i witryny. Można ustawić funkcję przy użyciu Set-SPOTenant i SPOSite zestaw poleceń cmdlet, które pozwalają członkom wyszukiwanie wszystkich istniejących użytkowników-gości w katalogu. Zmiany w zakresie dzierżawy nie wpływają na już aprowizowanych witryn SPO.
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Czym jest współpraca B2B w usłudze Azure AD?](what-is-b2b.md)
 * [Dodawanie użytkownika współpracy B2B do roli](add-guest-to-role.md)
 * [Delegowanie zaproszeń współpracy B2B](delegate-invitations.md)
 * [Grupy dynamiczne i współpracy B2B](use-dynamic-groups.md)
+* [Rozwiązywanie problemów z współpracy B2B usługi Azure Active Directory](troubleshoot.md)

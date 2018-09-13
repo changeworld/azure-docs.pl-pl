@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 01/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: 36e63d26bf7ada2d23fa3cd9fddbb5ba90494527
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 01ef5fd70b1c919c5aa2a7afbb6e46558a80b1f3
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126026"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717340"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>Dostosowywanie akceleratora rozwiązań zdalnego monitorowania
 
@@ -454,8 +454,8 @@ See the [Connect an external visualization tool](https://github.com/Azure/azure-
 
 Dodatkowo zmodyfikować Warstwa prezentacji i wizualizacje w rozwiązaniu monitorowania zdalnego, należy edytować kod. Odpowiednich repozytoriów GitHub są następujące:
 
-* [Mikrousługi konfiguracji dla rozwiązań IoT platformy Azure (.NET)](https://github.com/Azure/pcs-ui-config-dotnet/)
-* [Mikrousługi konfiguracji dla rozwiązań IoT platformy Azure (Java)](https://github.com/Azure/pcs-ui-config-java/)
+* [Mikrousługi konfiguracji dla rozwiązań IoT platformy Azure (.NET)](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/config)
+* [Mikrousługi konfiguracji dla rozwiązań IoT platformy Azure (Java)](https://github.com/Azure/remote-monitoring-services-java/tree/master/config)
 * [Zdalne usługi Azure IoT komputerów monitorowanie internetowego interfejsu użytkownika](https://github.com/Azure/pcs-remote-monitoring-webui)
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -1,6 +1,6 @@
 ---
-title: Zabezpieczanie Internetu rzeczy (IoT) na platformie Azure | Dokumentacja firmy Microsoft
-description: " Azure Internetu rzeczy (IoT) usług oferuje szeroką gamę możliwości. Ten artykuł pomaga zrozumieć, jak zabezpieczyć Twojego rozwiązania IoT na platformie Azure. "
+title: Zabezpieczanie Internet of Things (IoT) na platformie Azure | Dokumentacja firmy Microsoft
+description: " Internetu rzeczy (IoT), usług platformy Azure oferują szeroką gamę możliwości. Ten artykuł pomoże Ci zrozumieć, jak zabezpieczyć swoje rozwiązania IoT na platformie Azure. "
 services: security
 documentationcenter: na
 author: TomShinder
@@ -14,15 +14,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: d5c1cb22fdfe59bd8409f9595b2fa4c3a0df771e
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 41e422d0808cafb45b182c5f0a6bb7176a35516f
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34641241"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35758624"
 ---
-# <a name="internet-of-things-security-overview"></a>Przegląd zabezpieczeń Internetu rzeczy
-Azure Internetu rzeczy (IoT) usług oferuje szeroką gamę możliwości. Są to usługi klasy korporacyjnej, które pozwalają wykonywać następujące operacje:
+# <a name="internet-of-things-security-overview"></a>Omówienie zabezpieczeń Internet of Things
+Internetu rzeczy (IoT), usług platformy Azure oferują szeroką gamę możliwości. Są to usługi klasy korporacyjnej, które pozwalają wykonywać następujące operacje:
 
 * Zbieranie danych z urządzeń
 * Analizowanie strumieni danych w ruchu
@@ -30,41 +30,41 @@ Azure Internetu rzeczy (IoT) usług oferuje szeroką gamę możliwości. Są to 
 * Wizualizowanie danych w czasie rzeczywistym i danych historycznych
 * Integrowanie z systemami zaplecza biura
 
-Aby dostarczyć te możliwości, pakiet akceleratorów rozwiązania Azure IoT jednocześnie wiele usług platformy Azure z rozszerzeniami niestandardowymi jako wstępnie skonfigurowanych rozwiązań. Te wstępnie skonfigurowane rozwiązania stanowią podstawowe implementacje typowych wzorców rozwiązań IoT i pomagają skrócić czas dostarczania własnych rozwiązań IoT. Przy użyciu IoT software development kit, można dostosować i rozszerzyć tych rozwiązań, aby spełniały określone wymagania. Można ich także użyć jako przykładów lub szablonów podczas tworzenia nowych rozwiązań IoT.
+Do udostępniania tych możliwości, pakietu akceleratorów rozwiązań Azure IoT ze sobą wiele usług platformy Azure z rozszerzeniami niestandardowymi jako wstępnie skonfigurowanych rozwiązań. Te wstępnie skonfigurowane rozwiązania stanowią podstawowe implementacje typowych wzorców rozwiązań IoT i pomagają skrócić czas dostarczania własnych rozwiązań IoT. Za pomocą zestawów SDK IoT, można dostosować i rozszerzyć pod kątem własnych wymagań tych rozwiązań. Można ich także użyć jako przykładów lub szablonów podczas tworzenia nowych rozwiązań IoT.
 
-Akceleratory rozwiązania Azure IoT to wydajne rozwiązania do potrzeb IoT. Warto jednak znaczenie upmost czy Twojego rozwiązania IoT zostały zaprojektowane z myślą od początku o bezpieczeństwie. Z powodu wielość urządzenia IoT wszystkie zdarzenia zabezpieczeń może szybko stać się powszechnie zdarzeń z znaczący wpływ.
+Akceleratory rozwiązań IoT platformy Azure są zaawansowane rozwiązania dotyczące aplikacji potrzebom IoT. Będzie jednak znaczenie upmost że rozwiązań IoT zostały zaprojektowane z myślą o bezpieczeństwie od samego początku. Ze względu na znaczne zmniejszenie liczby urządzeń IoT wszystkimi zdarzeniami zabezpieczeń może szybko stać się powszechne zdarzeń za pomocą poważne konsekwencje.
 
-Aby ułatwić zrozumienie, jak zabezpieczyć Twojego rozwiązania IoT, zostały następujące informacje.
+Aby pomóc Ci zrozumieć, jak zabezpieczyć swoje rozwiązania IoT, mamy następujące informacje.
 
 ## <a name="security-architecture"></a>Architektura zabezpieczeń
-Podczas projektowania systemu, ważne jest zrozumienie potencjalnych zagrożeń dla tego systemu, a Dodaj odpowiednie zabezpieczenia w związku z tym system został zaprojektowany i zaprojektowana. Należy zaprojektować produktu od początku z myślą o bezpieczeństwie, ponieważ Opis ułatwia sposób atakujący może być w stanie naruszyć bezpieczeństwo systemu, upewnij się, że odpowiednie środki zaradcze są stosowane od początku.
+Podczas projektowania systemu, ważne jest zrozumienie potencjalnych zagrożeń dla tego systemu i dodanie odpowiednich mechanizmów obronnych w związku z tym, ponieważ system został zaprojektowany i zaprojektowana. Należy zaprojektować produktu od samego początku z myślą o bezpieczeństwie, ponieważ zrozumienie, jak atakujący może być w stanie naruszyć bezpieczeństwo systemu, pomaga upewnić się, że odpowiednie środki zaradcze są stosowane od samego początku.
 
-Informacje na temat architektury IoT zabezpieczeń, odczytując [Internet rzeczy Architektura zabezpieczeń](../iot-accelerators/iot-security-architecture.md).
+Informacje na temat architektury zabezpieczeń IoT, czytając [Internet rzeczy architekturę zabezpieczeń](/azure/iot-fundamentals/iot-security-architecture).
 
-W tym artykule omówiono następujące zagadnienia:
+W tym artykule omówiono następujące tematy:
 
-* [Rozpoczyna się modelu zagrożeń zabezpieczeń](../iot-accelerators/iot-security-architecture.md#security-starts-with-a-threat-model)
-* [Zabezpieczenia w IoT](../iot-accelerators/iot-security-architecture.md#security-in-iot)
-* [Modelowanie architektury Azure IoT odwołanie zagrożeń](../iot-accelerators/iot-security-architecture.md#threat-modeling-the-azure-iot-reference-architecture)
+* [Rozpoczyna się Model zagrożeń bezpieczeństwa](/azure/iot-fundamentals/iot-security-architecture#security-starts-with-a-threat-model)
+* [Zabezpieczenia w IoT](/azure/iot-fundamentals/iot-security-architecture#security-in-iot)
+* [Architektura referencyjna IoT platformy Azure do modelowania zagrożeń](/azure/iot-fundamentals/iot-security-architecture#threat-modeling-the-azure-iot-reference-architecture)
 
 ## <a name="security-from-the-ground-up"></a>Zabezpieczenia od podstaw
-IoT stanowi wyjątkowe wyzwanie zabezpieczeń, prywatności i zgodności dla firm na całym świecie. W przeciwieństwie do tradycyjnych przez technologii gdzie te problemy koncentrują się wokół oprogramowania i jak jest implementowane IoT dotyczy, co się stanie po zbieżne ataków i względem fizycznych. Ochrona rozwiązania IoT wymaga zapewnienia bezpiecznego inicjowania obsługi urządzeń i bezpieczna łączność między tymi urządzeniami i chmurą i ochronę danych w chmurze podczas przetwarzania i przechowywania. Praca z takich funkcji, są jednak ograniczone zasobów urządzeń, rozmieszczenie geograficzne wdrożeń i wiele urządzeń w ramach rozwiązania.
+IoT stwarza wyzwania zabezpieczeń, ochrony prywatności i zgodności dla firm na całym świecie. W przeciwieństwie do tradycyjnych cybernetycznymi technologii gdzie tych problemów koncentrują się wokół oprogramowania oraz sposób implementacji IoT dotyczy, co się stanie po zbiegają się tym i cech fizycznych. Ochrona rozwiązań IoT wymaga zapewnienia bezpieczne Inicjowanie obsługi urządzeń, bezpieczną łączność między tymi urządzeniami i chmurą i ochronę danych w chmurze podczas przetwarzania i przechowywania. Działa z takich funkcji, są jednak ograniczonych zasobach urządzeń, rozkład geograficzny wdrożeń i wiele urządzeń w ramach rozwiązania.
 
-Znajdują się informacje dotyczące obsługi zabezpieczeń w następujących obszarach odczytując [zabezpieczeń Internetu rzeczy od podstaw](../iot-accelerators/securing-iot-ground-up.md).
+Możesz dowiedzieć się, jak obsługiwać zabezpieczeń w tych obszarach, czytając [zabezpieczeń Internetu rzeczy od podstaw](/azure/iot-fundamentals/iot-security-ground-up).
 
 W tym artykule omówiono następujące tematy:
 
-* [Bezpiecznej infrastruktury od podstaw](../iot-accelerators/securing-iot-ground-up.md#secure-infrastructure-from-the-ground-up)
-* [Microsoft Azure — bezpiecznej infrastruktury IoT dla biznesu](../iot-accelerators/securing-iot-ground-up.md#microsoft-azure---secure-iot-infrastructure-for-your-business)
+* [Bezpieczną infrastrukturę od podstaw](/azure/iot-fundamentals/iot-security-ground-up#secure-infrastructure-from-the-ground-up)
+* [Microsoft Azure — bezpiecznej infrastruktury IoT dla swojej firmy](/azure/iot-fundamentals/iot-security-ground-up#microsoft-azure---secure-iot-infrastructure-for-your-business)
 
 ## <a name="best-practices"></a>Najlepsze rozwiązania
-Zabezpieczanie infrastruktury IoT wymaga rygorystyczne strategii zabezpieczeń zabezpieczeń. Z Zabezpieczanie danych w chmurze, ochrony integralności danych przesyłanych za pośrednictwem publicznego Internetu do bezpiecznego inicjowania obsługi urządzeń, każda warstwa kompilacje gwarancję zabezpieczeń w całej infrastruktury.
+Zabezpieczanie infrastruktury IoT wymaga rygorystyczne strategii zabezpieczeń w głębi. Z zabezpieczania danych w chmurze, ochrona integralności danych przesyłanych za pośrednictwem publicznej sieci internet, aby bezpiecznie inicjowania obsługi urządzeń, każda warstwa kompilacje większa kontrola zabezpieczeń w całej infrastruktury.
 
-Informacje na temat zabezpieczeń Internetu rzeczy najlepsze rozwiązania w zakresie odczytując [najlepszych rozwiązań dotyczących zabezpieczeń Internetu rzeczy](../iot-accelerators/iot-security-best-practices.md).
+Informacje na temat zabezpieczeń Internet of Things najlepszych rozwiązań, czytając [najlepszych rozwiązań dotyczących zabezpieczeń Internet of Things](/azure/iot-fundamentals/iot-security-best-practices).
 
 W tym artykule omówiono następujące tematy:
 
-* [Producenta sprzętu IoT/integrator](../iot-accelerators/iot-security-best-practices.md#iot-hardware-manufacturerintegrator)
-* [Deweloper rozwiązania IoT](../iot-accelerators/iot-security-best-practices.md#iot-solution-developer)
-* [Narzędzie wdrażania rozwiązania IoT](../iot-accelerators/iot-security-best-practices.md#iot-solution-deployer)
-* [Operator rozwiązania IoT](../iot-accelerators/iot-security-best-practices.md#iot-solution-operator)
+* [IoT, producent sprzętu/integrator](/azure/iot-fundamentals/iot-security-best-practices#iot-hardware-manufacturerintegrator)
+* [Dla deweloperów rozwiązań IoT](/azure/iot-fundamentals/iot-security-best-practices#iot-solution-developer)
+* [Narzędzie wdrażania rozwiązania IoT](/azure/iot-fundamentals/iot-security-best-practices#iot-solution-deployer)
+* [Operator rozwiązania IoT](/azure/iot-fundamentals/iot-security-best-practices#iot-solution-operator)

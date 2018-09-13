@@ -11,16 +11,16 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: 41870f4f3cf4a0aba461021b4787e1ba004e5ead
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: eef84e8c5fb67faef99beec934f29e55365ce811
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095117"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715962"
 ---
 # <a name="azure-functions-http-and-webhook-bindings"></a>Usługa Azure powiązania funkcje protokołu HTTP i elementów webhook
 
-W tym artykule wyjaśniono, jak pracować z powiązania protokołu HTTP w usłudze Azure Functions. Wyzwalacze HTTP obsługuje w usłudze Azure Functions i powiązania danych wyjściowych.
+W tym artykule wyjaśniono, jak pracować z wyzwalaczami HTTP i powiązania danych wyjściowych w usłudze Azure Functions. Wyzwalacze HTTP obsługuje w usłudze Azure Functions i powiązania danych wyjściowych.
 
 Wyzwalacz HTTP można dostosować tak, aby odpowiedzieć na [elementów webhook](https://en.wikipedia.org/wiki/Webhook). Wyzwalacza elementu webhook akceptuje ładunek JSON i sprawdza poprawność kodu JSON. Istnieją specjalne wersje wyzwalacza elementu webhook, które ułatwiają Obsługa elementów webhook z niektórych dostawców, takich jak GitHub i Slack.
 
@@ -276,7 +276,7 @@ module.exports = function(context, req) {
 
 ### <a name="trigger---java-example"></a>Wyzwalacz - przykładzie w języku Java
 
-W poniższym przykładzie pokazano powiązanie wyzwalacza w *function.json* pliku i [funkcja Java](functions-reference-java.md) powiązania, który używa. Funkcja zwraca odpowiedź HTTP status kod 200 z treść arequest prefiksy wyzwalająca treści żądania za pomocą "Witaj," pozdrowienia.
+W poniższym przykładzie pokazano powiązanie wyzwalacza w *function.json* pliku i [funkcja Java](functions-reference-java.md) powiązania, który używa. Funkcja zwraca odpowiedź HTTP status kod 200 z treści żądania, które prefiksy wyzwalająca treści żądania za pomocą "Witaj," pozdrowienia.
 
 
 Oto *function.json* pliku:
@@ -504,7 +504,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 ## <a name="trigger---usage"></a>Wyzwalacz — użycie
 
-Dla funkcji języka C# i F #, można zadeklarować rodzaj wyzwalacza danych wejściowych w celu być `HttpRequestMessage` lub typu niestandardowego. Jeśli wybierzesz `HttpRequestMessage`, uzyskujesz pełen dostęp do obiektu żądania. Dla typu niestandardowego funkcje próbuje przeanalizować treść żądania JSON, aby ustawić właściwości obiektu. 
+Dla funkcji języka C# i F #, można zadeklarować rodzaj wyzwalacza danych wejściowych w celu być `HttpRequestMessage` lub typu niestandardowego. Jeśli wybierzesz `HttpRequestMessage`, uzyskujesz pełen dostęp do obiektu żądania. Dla typu niestandardowego środowiska uruchomieniowego próbuje przeanalizować treść żądania JSON, aby ustawić właściwości obiektu.
 
 W przypadku funkcji JavaScript środowisko uruchomieniowe usługi Functions zapewnia treści żądania, a nie obiekt żądania. Aby uzyskać więcej informacji, zobacz [przykładowy wyzwalacz JavaScript](#trigger---javascript-example).
 
@@ -603,47 +603,70 @@ Domyślnie wszystkie trasy funkcji mają prefiks *api*. Można również dostoso
 
 ### <a name="authorization-keys"></a>Klucze autoryzacji
 
-Wyzwalaczy HTTP umożliwiają używanie kluczy w celu zwiększenia poziomu bezpieczeństwa. Standardowa wyzwalacz HTTP służy je jako klucza interfejsu API wymaga klucza być obecne w żądaniu. Elementy Webhook umożliwiają autoryzacji żądania na różne sposoby w zależności od dostawca obsługuje kluczy.
+Functions umożliwia utrudnić dostęp do funkcji punktów końcowych HTTP podczas programowania za pomocą klawiszy.  Standardowa wyzwalacza HTTP może wymagać klucza interfejsu API być obecne w żądaniu. Elementy Webhook może autoryzować żądania na różne sposoby w zależności od dostawca obsługuje za pomocą klawiszy.
 
-> [!NOTE]
-> Podczas uruchamiania funkcji lokalnie, autoryzacja jest wyłączony, niezależnie od tego `authLevel` w `function.json`. Jak opublikować do usługi Azure Functions `authLevel` zaczyna obowiązywać natychmiast.
-
-Klucze są przechowywane jako część aplikacji funkcji na platformie Azure i są szyfrowane w stanie spoczynku. Aby wyświetlić klucze, Utwórz nowe, lub Przywróć klucze do nowych wartości, przejdź do jednej z funkcji w portalu i wybierz pozycję "Manage". 
+> [!IMPORTANT]
+> Gdy kluczy może pomóc zaciemniania punktów końcowych HTTP podczas tworzenia, nie są one przeznaczone jako sposobu zabezpieczenia wyzwalacza HTTP w środowisku produkcyjnym. Aby dowiedzieć się więcej, zobacz [bezpieczny punkt końcowy HTTP w środowisku produkcyjnym](#secure-an-http-endpoint-in-production).
 
 Istnieją dwa typy kluczy:
 
-- **Klucze hosta**: te klucze są współużytkowane przez wszystkie funkcje w obrębie aplikacji funkcji. Gdy jest używana jako klucz interfejsu API, te umożliwiają dostęp do dowolnej funkcji, w ramach aplikacji funkcji.
-- **Klawisze funkcyjne**: klucze te mają zastosowanie tylko do określonych funkcji, w których są zdefiniowane. Gdy jest używana jako klucz interfejsu API, te tylko zezwolić na dostęp do tej funkcji.
+* **Klucze hosta**: te klucze są współużytkowane przez wszystkie funkcje w obrębie aplikacji funkcji. Gdy jest używana jako klucz interfejsu API, te umożliwiają dostęp do dowolnej funkcji, w ramach aplikacji funkcji.
+* **Klawisze funkcyjne**: klucze te mają zastosowanie tylko do określonych funkcji, w których są zdefiniowane. Gdy jest używana jako klucz interfejsu API, te tylko zezwolić na dostęp do tej funkcji.
 
 Każdy klucz nosi nazwę odniesienia i na poziomie funkcji i host ma domyślny klucz (o nazwie "domyślna"). Klawisze funkcyjne mają pierwszeństwo przed klucze hosta. Po zdefiniowaniu dwa klucze o takiej samej nazwie klucz funkcji zawsze jest używany.
 
-**Klucz główny** jest domyślny klucz hosta o nazwie "_stronę", która jest zdefiniowana dla każdej aplikacji funkcji. Nie można odwołać ten klucz. Zapewnia dostęp administracyjny do interfejsów API środowiska uruchomieniowego. Za pomocą `"authLevel": "admin"` w powiązaniu JSON wymaga tego klucza, które będą widoczne w żądaniu; inny klawisz, powoduje błąd autoryzacji.
+Każda aplikacja funkcji ma również specjalny **klucz główny**. Ten klucz jest kluczem hosta o nazwie `_master`, który zapewnia dostęp administracyjny do interfejsów API środowiska uruchomieniowego. Nie można odwołać ten klucz. Po ustawieniu zezwolenia na poziomie `admin`, żądania muszą używać klucza głównego; inny klawisz, powoduje błąd autoryzacji.
 
-> [!IMPORTANT]  
-> Ze względu na podwyższonym poziomem uprawnień przyznanych przez klucz główny nie należy udostępniać tego klucza osobom trzecim lub rozpowszechnienie go w aplikacji klienta natywnego. Należy zachować ostrożność przy wyborze poziom dostępu administratora.
+> [!CAUTION]  
+> Ze względu na podwyższonym poziomem uprawnień w aplikacji funkcji przyznane przy użyciu klucza głównego nie należy udostępniać tego klucza osobom trzecim lub rozpowszechnienie go w aplikacji klienta natywnego. Należy zachować ostrożność przy wyborze poziom dostępu administratora.
+
+### <a name="obtaining-keys"></a>Uzyskiwanie kluczy
+
+Klucze są przechowywane jako część aplikacji funkcji na platformie Azure i są szyfrowane w stanie spoczynku. Aby wyświetlić klucze, tworzenie nowych, lub Przywróć klucze do nowych wartości, przejdź do jednej z funkcji wyzwalanej przez HTTP na [witryny Azure portal](https://portal.azure.com) i wybierz **Zarządzaj**.
+
+![Zarządzanie kluczami funkcji w portalu.](./media/functions-bindings-http-webhook/manage-function-keys.png)
+
+Nie ma żadnych obsługiwanych interfejsów API programowego uzyskiwania klawiszy funkcyjnych.
 
 ### <a name="api-key-authorization"></a>Autoryzacji klucza interfejsu API
 
-Domyślnie wyzwalacz HTTP wymaga klucza interfejsu API w żądaniu HTTP. Dlatego żądania HTTP zazwyczaj wygląda następująco:
+Większość szablonów wyzwalacza HTTP wymaga klucza interfejsu API w żądaniu. Dlatego żądania HTTP zazwyczaj wygląda następującego adresu URL:
 
     https://<yourapp>.azurewebsites.net/api/<function>?code=<ApiKey>
 
-Klucz mogły zostać uwzględnione w zmiennej ciągu zapytania o nazwie `code`, tak jak powyżej, lub może on być uwzględniony w `x-functions-key` nagłówka HTTP. Wartość klucza może być dowolny klawisz funkcji zdefiniowanych dla funkcji lub dowolny klawisz hosta.
+Klucz mogły zostać uwzględnione w zmiennej ciągu zapytania o nazwie `code`, tak jak powyżej. Również mogły zostać uwzględnione w `x-functions-key` nagłówka HTTP. Wartość klucza może być dowolny klawisz funkcji zdefiniowanych dla funkcji lub dowolny klawisz hosta.
 
 Możesz zezwolić na anonimowe żądania, które nie wymagają kluczy. Może również wymagać, że można użyć klucza głównego. Możesz zmienić domyślny poziom autoryzacji przy użyciu `authLevel` właściwość w powiązaniu JSON. Aby uzyskać więcej informacji, zobacz [wyzwalacza — Konfiguracja](#trigger---configuration).
 
+> [!NOTE]
+> Podczas uruchamiania funkcji lokalnie, autoryzacja jest wyłączony, bez względu na ustawienie poziomie określonej uwierzytelniania. Po opublikowaniu na platformie Azure, `authLevel` wymuszane jest ustawienie w wyzwalacza.
+
 ### <a name="keys-and-webhooks"></a>Klucze i elementy webhook
 
-Autoryzacji elementu Webhook jest obsługiwany przez element webhook składnika odbiorcy, część wyzwalacza HTTP i mechanizm różni się w zależności od typu elementu webhook. Każdy mechanizm jest, ale opierają się na kluczu. Domyślnie jest używany klucz funkcji o nazwie "domyślna". Aby użyć innego klucza, należy skonfigurować dostawcę elementu webhook, aby wysłać nazwę klucza z żądaniem w jednym z następujących sposobów:
+Autoryzacji elementu Webhook jest obsługiwany przez element webhook składnika odbiorcy, część wyzwalacza HTTP i mechanizm różni się w zależności od typu elementu webhook. Każdy mechanizm polegają na klucz. Domyślnie jest używany klucz funkcji o nazwie "domyślna". Aby użyć innego klucza, należy skonfigurować dostawcę elementu webhook, aby wysłać nazwę klucza z żądaniem w jednym z następujących sposobów:
 
-- **Ciąg zapytania**: dostawca przekazuje nazwę klucza w `clientid` zapytania parametr ciągu, takich jak `https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>`.
-- **Nagłówek żądania**: dostawca przekazuje nazwę klucza w `x-functions-clientid` nagłówka.
+* **Ciąg zapytania**: dostawca przekazuje nazwę klucza w `clientid` zapytania parametr ciągu, takich jak `https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>`.
+* **Nagłówek żądania**: dostawca przekazuje nazwę klucza w `x-functions-clientid` nagłówka.
+
+Na przykład element webhook zabezpieczone za pomocą klucza zobacz [Tworzenie funkcji wyzwalanej przez element webhook GitHub](functions-create-github-webhook-triggered-function.md).
+
+### <a name="secure-an-http-endpoint-in-production"></a>Bezpieczny punkt końcowy HTTP w środowisku produkcyjnym
+
+Aby zabezpieczyć pełni funkcję punktów końcowych w środowisku produkcyjnym, należy rozważyć zaimplementowanie jednego z następujących opcji funkcji zabezpieczenia na poziomie aplikacji:
+
+* Włącz autoryzację/uwierzytelniania usługi App Service dla aplikacji funkcji. Platforma usługi App Service umożliwia korzystanie z usługi Azure Active Directory (AAD), uwierzytelnianie jednostki usługi i zaufanych innych dostawców tożsamości do uwierzytelniania użytkowników. Ta funkcja jest włączona tylko uwierzytelnieni użytkownicy mają dostęp do aplikacji funkcji. Aby dowiedzieć się więcej, zobacz [skonfiguruj aplikację usługi App Service, aby używała logowania do usługi Azure Active Directory](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md).
+
+* Użyj usługi Azure API Management (APIM), aby uwierzytelnić żądania. APIM oferuje różnorodne opcje zabezpieczeń interfejsu API dla żądań przychodzących. Aby dowiedzieć się więcej, zobacz [zasady uwierzytelniania usługi API Management](../api-management/api-management-authentication-policies.md). Za pomocą usługi APIM w miejscu można skonfigurować aplikację funkcji w celu umożliwienia akceptowania żądań tylko adres PI swojego wystąpienia usługi APIM. Aby dowiedzieć się więcej, zobacz [ograniczenia adresów IP](ip-addresses.md#ip-address-restrictions).
+
+* Wdróż aplikację funkcji do usługi Azure App Service Environment (ASE). Środowisko ASE zawiera dedykowane Środowisko hostingu, w której chcesz uruchamiać swoje funkcje. Środowisko ASE można konfigurować pojedynczą bramą frontonu, która służy do uwierzytelniania wszystkich żądań przychodzących. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zapory aplikacji sieci Web (WAF) dla środowiska App Service Environment](../app-service/environment/app-service-app-service-environment-web-application-firewall.md).
+
+Korzystając z jednej z następujących metod zabezpieczeń na poziomie aplikacji funkcji, należy skonfigurować uwierzytelnianie funkcji wyzwalanej przez HTTP poziom `anonymous`.
 
 ## <a name="trigger---limits"></a>Wyzwalacz — limity
 
-Długość żądania HTTP jest ograniczona do 100MB (w bajtach 104,857,600), a maksymalna długość adresu URL to 4KB (4096 bajtów). Te limity są określone przez `httpRuntime` elementu w środowisku uruchomieniowym [pliku Web.config](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config).
+Długość żądania HTTP jest ograniczona do 100 MB (w bajtach 104,857,600), a maksymalna długość adresu URL to 4 KB (4096 bajtów). Te limity są określone przez `httpRuntime` elementu w środowisku uruchomieniowym [pliku Web.config](https://github.com/Azure/azure-webjobs-sdk-script/blob/v1.x/src/WebJobs.Script.WebHost/Web.config).
 
-Jeśli funkcję, która używa wyzwalacza HTTP nie zakończyła się w ciągu około 2,5 minut, limit czasu bramy będzie i zwróci błąd HTTP 502. Funkcja będzie nadal działać, ale nie będzie można zwrócić odpowiedź HTTP. W przypadku długo działających funkcji zaleca się, postępuj zgodnie z wzorców asynchronicznych i zwrócenie lokalizacji, w którym można zbadać poleceniem ping stan żądania. Aby uzyskać informacje o ile można uruchomić funkcję, zobacz [skalowanie i hosting - plan zużycie](functions-scale.md#consumption-plan). 
+Jeśli funkcja, która korzysta z wyzwalacza HTTP nie zakończyła się w ciągu około 2,5 minut, limit czasu bramy i zwróci błąd HTTP 502. Funkcja będzie nadal działać, ale nie będzie można zwrócić odpowiedź HTTP. W przypadku długo działających funkcji zaleca się, postępuj zgodnie z wzorców asynchronicznych i zwrócenie lokalizacji, w którym można zbadać poleceniem ping stan żądania. Aby uzyskać informacje o ile można uruchomić funkcję, zobacz [skalowanie i hosting - plan zużycie](functions-scale.md#consumption-plan). 
 
 ## <a name="trigger---hostjson-properties"></a>Wyzwalacz — właściwości host.json
 
@@ -657,7 +680,7 @@ Użyj protokołu HTTP powiązania danych wyjściowych usługi na odpowiedź do n
 
 ## <a name="output---configuration"></a>Dane wyjściowe — Konfiguracja
 
-W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku. Dla klasy języka C# istnieje biblioteki jest właściwości atrybutów, które odpowiadają one *function.json* właściwości. 
+W poniższej tabeli opisano właściwości konfiguracji powiązania, które można ustawić w *function.json* pliku. Dla, bibliotek klas języka C# nie ma żadnych właściwości atrybutów, które odnoszą się do tych *function.json* właściwości. 
 
 |Właściwość  |Opis  |
 |---------|---------|

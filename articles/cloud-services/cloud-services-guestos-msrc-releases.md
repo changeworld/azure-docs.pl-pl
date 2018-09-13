@@ -3,7 +3,7 @@ title: Lista aktualizacji zastosowanych do systemu operacyjnego gościa platform
 description: Lista aktualizacji zastosowanych do wersji systemu operacyjnego gościa
 services: cloud-services
 documentationcenter: na
-author: raiye
+author: RichardScheel
 manager: timlt
 editor: ''
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
@@ -12,17 +12,40 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/3/2018
-ms.author: raiye
-ms.openlocfilehash: aa7ee049177fccbcca7d648ca749eb9fb35a0f53
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.date: 9/12/2018
+ms.author: RichardScheel
+ms.openlocfilehash: 4ef49fe978db5c9b04bf9c8271e192fa60433d4b
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522309"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722303"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa platformy Azure
 Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Security Response Center (MSRC) stosowane do systemu operacyjnego gościa platformy Azure. Wyszukaj w tym artykule, aby określić, jeśli dana aktualizacja ma zastosowanie do systemu operacyjnego gościa, którego używasz. Aktualizacje zawsze przenoszone w konkretnym [rodziny] [ family-explain] były one wprowadzone w.
+
+## <a name="august-guest-os"></a>System operacyjny gościa sierpnia
+| Kategoria produktów | Artykułem nadrzędnym KB | Opis luki w zabezpieczeniach | System operacyjny gościa | Wprowadzona data |
+| --- | --- | --- | --- | --- |
+| ReL 18-08 | [4343887] | Zabezpieczenia systemu Windows 10 | 5.22 | 14 sierpnia 2018 r. |
+| ReL 18-08 | [4343899] | Tylko zabezpieczeń Windows | 2.77 | 14 sierpnia 2018 r. |
+| ReL 18-08 | [4343896] | Tylko zabezpieczeń Windows | 3.64 | 14 sierpnia 2018 r. |
+| ReL 18-08 | [4343888] | Tylko zabezpieczeń Windows | 4.57 | 14 sierpnia 2018 r. |
+| ReL 18-08 | [4344177], [4344173] | .NET 3.5, 4.5 zabezpieczeń | 2.77 | 14 sierpnia 2018 r. |
+| ReL 18-08 | [4344175], [4344172] | .NET 3.5, zabezpieczenia 4.x | 3.64 | 14 sierpnia 2018 r. |
+| ReL 18-08 | [4344178], [4344171] | .NET 3.5, zabezpieczenia 4.x | 4.57 | 14 sierpnia 2018 r. |
+| ReL 18-08 | [4346742], [4346739] | Program .NET 3.5 wersji OOB 4.x | 3.64 | 30 lipca 2018 r. |
+| ReL 18-08 | [4346745], [4346408] | Program .NET 3.5 wersji OOB 4.x | 4.57 | 30 lipca 2018 r. |
+| ReL 18-08 | [4343902] | Flash | 3.64, 4.57, 5.22 | 14 sierpnia 2018 r. |
+| ReL 18-08 | [4343205] | Internet Explorer | 2.77, 3.64, 4.57 | 14 sierpnia 2018 r. |
+| ND | [4338818] |Pakiet zbiorczy lipca niezwiązane z zabezpieczeniami |2.77 | 10 lipca 2018 r. |
+| ND | [4019990] |Aktualizuj kompilator D3D dla platformy .NET |2.77 | 10 lipca 2018 r. |
+| ND | [4338830] |Pakiet zbiorczy lipca niezwiązane z zabezpieczeniami |3.64 | 10 lipca 2018 r. |
+| ND | [4338421] |Pakiet zbiorczy lipca niezwiązane z zabezpieczeniami platformy .NET 3.5 |3.64 | 10 lipca 2018 r. |
+| ND | [4338416] |X rollup lipca niezwiązane z zabezpieczeniami .NET 4 |3.64 | 10 lipca 2018 r. |
+| ND | [4338815] |Pakiet zbiorczy lipca niezwiązane z zabezpieczeniami |4.57 | 10 lipca 2018 r. |
+| ND | [4338424] |Pakiet zbiorczy lipca niezwiązane z zabezpieczeniami platformy .NET 3.5 |3.64 | 10 lipca 2018 r. |
+| ND | [4338415] |X rollup lipca niezwiązane z zabezpieczeniami .NET 4 |3.64 | 10 lipca 2018 r. |
 
 
 ## <a name="july-guest-os"></a>System operacyjny gościa lipca
@@ -696,6 +719,31 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 | ND |[2896881] |Długi czas logowania, kiedy używasz polecenia AddPrinterConnection VBScript mapować drukarki dla użytkowników podczas procesu logowania w Windows |4.15, 3.22, 2.34 |2015 r. 13 stycznia |
 
 
+[4343887]: http://support.microsoft.com/kb/4343887
+[4343899]: http://support.microsoft.com/kb/4343899
+[4343896]: http://support.microsoft.com/kb/4343896
+[4343888]: http://support.microsoft.com/kb/4343888
+[4344177]: http://support.microsoft.com/kb/4344177
+[4344173]: http://support.microsoft.com/kb/4344173
+[4344175]: http://support.microsoft.com/kb/4344175
+[4344172]: http://support.microsoft.com/kb/4344172
+[4344178]: http://support.microsoft.com/kb/4344178
+[4344171]: http://support.microsoft.com/kb/4344171
+[4346742]: http://support.microsoft.com/kb/4346742
+[4346739]: http://support.microsoft.com/kb/4346739
+[4346745]: http://support.microsoft.com/kb/4346745
+[4346408]: http://support.microsoft.com/kb/4346408
+[4343902]: http://support.microsoft.com/kb/4343902
+[4343205]: http://support.microsoft.com/kb/4343205
+[4338818]: http://support.microsoft.com/kb/4338818
+[4019990]: http://support.microsoft.com/kb/4019990
+[4338830]: http://support.microsoft.com/kb/4338830
+[4338421]: http://support.microsoft.com/kb/4338421
+[4338416]: http://support.microsoft.com/kb/4338416
+[4338815]: http://support.microsoft.com/kb/4338815
+[4338424]: http://support.microsoft.com/kb/4338424
+[4338415]: http://support.microsoft.com/kb/4338415
+
 
 [4338814]: http://support.microsoft.com/kb/4338814
 [4338823]: http://support.microsoft.com/kb/4338823
@@ -1303,7 +1351,6 @@ Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Securi
 [3057839]:http://support.microsoft.com/kb/3057839
 [3062577]:http://support.microsoft.com/kb/3062577
 [3063858]:http://support.microsoft.com/kb/3063858
-
 
 
 [archive]: https://msdn.microsoft.com/library/azure/dn391773.aspx

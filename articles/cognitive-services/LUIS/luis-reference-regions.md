@@ -1,6 +1,6 @@
 ---
-title: Language Understanding (LUIS) regionów i punkty końcowe — platforma Azure — Cognitive Service LUIS | Dokumentacja firmy Microsoft
-titleSuffix: Azure
+title: Publikowanie regionów i punkty końcowe — usługi LUIS
+titleSuffix: Azure Cognitive Services
 description: Region, w którym możesz opublikować aplikację usługi LUIS odnosi się do regionu lub lokalizacji w witrynie Azure portal podczas tworzenia klucza punktu końcowego usługi LUIS platformy Azure. Po opublikowaniu aplikacji LUIS automatycznie generuje adres URL punktu końcowego dla regionu skojarzonego z kluczem. Aby opublikować więcej niż jeden region z aplikacją usługi LUIS, potrzebujesz co najmniej jeden klucz dla regionu.
 services: cognitive-services
 author: diberry
@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 08/23/2018
+ms.date: 09/11/2018
 ms.author: diberry
-ms.openlocfilehash: 7812ce37cb22c8774c785f5f645b8fef90b02a3e
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 48e1e19d2d425fe123e5a0c369ecebf623b74eb2
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42815507"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721316"
 ---
 # <a name="regions-and-keys"></a>Regiony i klucze
 
@@ -30,6 +30,11 @@ Istnieją trzy usługi LUIS witryn sieci Web, na podstawie regionu. Należy twor
 |[AU.Luis.AI][au.luis.ai]|Australia|
 |[EU.Luis.AI][eu.luis.ai]|Europa|
 
+## <a name="regions-and-azure-resources"></a>Regiony i zasobów platformy Azure
+Aplikacja została opublikowana do wszystkich regionów skojarzonych z zasobami usługi LUIS dodane w portalu usługi LUIS. Na przykład aplikacja utworzona na [www.luis.ai][www.luis.ai], jeśli utworzysz zasób usługi LUIS w **westus** i dodać go do aplikacji jako zasób, aplikacja zostanie opublikowana w danym regionie. 
+
+## <a name="public-apps"></a>Publicznych aplikacji
+Opublikowaniu publicznych aplikacji we wszystkich regionach, aby użytkownik z kluczem zależności od regionu zasobu usługi LUIS dostęp do aplikacji w niezależnie od regionu jest skojarzony z kluczem ich zasobów.
 
 ## <a name="publishing-regions"></a>Publikowanie regionów
 

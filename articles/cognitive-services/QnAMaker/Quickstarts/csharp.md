@@ -3,19 +3,19 @@ title: 'Szybki Start: C# dla usługi QnA Maker API (V4)'
 titleSuffix: Azure Cognitive Services
 description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu interfejsu API tekstu usługi Translator firmy Microsoft w usługach Microsoft Cognitive Services na platformie Azure.
 services: cognitive-services
-author: nitinme
+author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.technology: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: v-jaswel
-ms.openlocfilehash: 3c0248b08dbaa1d81843474fcc65590c719e8170
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.date: 09/12/2018
+ms.author: diberry
+ms.openlocfilehash: eba6b82d9378d3dd9713a8d17284b5ceac0d1cde
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348314"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717781"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-c"></a>Przewodnik Szybki start dotyczący usługi QnA Maker API w języku C# dla firmy Microsoft 
 <a name="HOLTop"></a>

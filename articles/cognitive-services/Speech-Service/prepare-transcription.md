@@ -1,6 +1,6 @@
 ---
-title: Tekst wskazówki dotyczące szkolenie
-description: Dowiedz się, jak przygotować tekstu, aby dostosować akustyczne i modeli językowych i czcionki głosowe do usługi rozpoznawania mowy.
+title: Tekst wskazówki dotyczące szkolenia usługi mowy
+description: Dowiedz się, jak przygotować tekstu do dostosowania akustyczne i modeli językowych i czcionki głosowe usługi mowy.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: PanosPeriorellis
@@ -9,42 +9,42 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/01/2018
 ms.author: panosper
-ms.openlocfilehash: db324b6c5444955debdc6a3e09906a0de47ff819
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: f9cb205b5111e981ee70adca715139402c9e31a4
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "41987985"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721824"
 ---
-# <a name="transcription-guidelines-for-using-speech-service"></a>Tekst wskazówki dotyczące używania usługi mowy
+# <a name="transcription-guidelines-for-using-the-speech-service"></a>Tekst wskazówki dotyczące używania usługi mowy
 
-Aby dostosować **zamiana mowy na tekst** lub **zamiany tekstu na mowę**, musisz podać tekst i mowy. Każdy wiersz w tekście odnosi się do pojedynczego wypowiedź. Tekst powinien dokładnie mowy tak jak to możliwe. Tekst jest nazywany *transkrypcji*, i należy ją utworzyć w określonym formacie.
+Aby dostosować **zamiana mowy na tekst** lub **zamiany tekstu na mowę**, musisz podać tekst i mowy. Każdy wiersz w tekście odnosi się do pojedynczego wypowiedź. Tekst powinien odpowiadać mowy w możliwie najlepszy sposób. Tekst jest nazywany *transkrypcji*, i należy ją utworzyć w określonym formacie.
 
 Usługa rozpoznawania mowy normalizuje dane wejściowe zapewnienie spójnego tekstu. 
 
 W tym artykule opisano oba rodzaje normalizations. Wytyczne się nieco różnić dla różnych języków.
 
-## <a name="us-english-en-us"></a>Angielski (US) (en US)
+## <a name="us-english-en-us"></a>Angielski (US) (en-us)
 
 Tekst dane powinny zostać zapisane wypowiedź jeden na wiersz, w postaci zwykłego tekstu, przy użyciu zestawu znaków ASCII.
 
-Unikaj stosowania rozszerzonych (Latin-1) i znaków interpunkcyjnych Unicode. Te znaki mogą być uwzględniane przypadkowo podczas przygotowywania danych w edytorze tekstu lub oskrobaniu danych ze stron sieci web. Zastąp te znaki odpowiednie podstawienia ASCII. Na przykład:
+Unikaj stosowania rozszerzonych (Latin-1) i znaków interpunkcyjnych Unicode. Te znaki mogą być uwzględnione przypadkowo podczas przygotowywania danych w edytorze tekstu lub scrape danych na stronach sieci Web. Zastąp znaki odpowiednie podstawienia ASCII. Na przykład:
 
 | Znaki, aby uniknąć | Podstawienia |
 |----- | ----- |
-| "Hello world" (Otwórz i Zamknij cudzysłów) | "Hello world" (podwójne cudzysłowy) |
+| "Hello world" (Otwieranie i zamykanie podwójnego cudzysłowu) | "Hello world" (podwójny cudzysłów) |
 | John's dnia (prawy pojedynczy cudzysłów) | John's dnia (apostrof) |
 | było to dobrym — nie było wspaniałe! (pauza) | dobre — został nie, ale jest to doskonały! (Łączniki) |
 
 ### <a name="text-normalization-rules-for-english"></a>Tekst reguł normalizacji w języku angielskim
 
-Usługa rozpoznawania mowy wykonuje następujące reguły normalizacji.
+Usługa rozpoznawania mowy wykonuje następujące reguły normalizacji:
 
-*   Wielkości liter na małe cały tekst
-*   Usunięcie wszystkich znaków interpunkcyjnych z wyjątkiem apostrofy wewnętrznego programu word
-*   Rozszerzanie liczb do mówionej formy, w tym dolarach
+* Przy użyciu małych liter dla całego tekstu
+* Usunięcie wszystkich znaków interpunkcyjnych z wyjątkiem apostrofy wewnętrznego programu word
+* Rozszerzanie liczb do mówionej formy, w tym dolarach
 
-Poniżej przedstawiono kilka przykładów
+Oto kilka przykładów:
 
 | Oryginalny tekst | Po normalizacji |
 |----- | ----- |
@@ -57,13 +57,13 @@ Poniżej przedstawiono kilka przykładów
 | Pi jest około 3,14 | pi jest około trzy punktu 1 4 |
 | To kosztuje $3,14 | to kosztuje trzech czternastu |
 
-Mają zastosowanie następujące normalizacji do Twojego tekstu transkrypcji.
+Stosuje się następujące normalizacji do Twojej zapisy tekstu:
 
-*   Skróty powinny być zapisany w słowach
-*   Niestandardowe ciągi numeryczne (na przykład niektóre daty lub formularzy księgowości) zapisywane w słowach
-*   Wyrazy z znaki spoza alfabetu lub mieszane znaki alfanumeryczne powinny transkrybowanego, jak wymawiane
-*   Pozostaw skróty wymawiany wyrazów bez zmian. Na przykład radarowy laserowych, pamięci RAM, NATO.
-*   Napisz skróty wymawiany oddzielne litery, za pomocą litery rozdzielone spacjami. Na przykład, IBM, procesora CPU, FBI, do ustalenia, NaN. 
+* Skróty powinny być zapisany w słowach.
+* Niestandardowe ciągi numeryczne (na przykład niektóre daty lub formularzy księgowości) powinien napisanych w słowach.
+* Wyrazy z znaki spoza alfabetu lub mieszane znaki alfanumeryczne powinny transkrybowanego, jak wymowa.
+* Pozostaw skróty, które są wymawiane jako słowa w charakterze (na przykład "radarowy", "laserowa," "RAM" lub "NATO").
+* Zapis litery skrótów, które są wymawiane jako osobne, za pomocą litery rozdzielone spacjami (na przykład "IBM," "CPU", "FBI", "Do ustalenia" lub "NaN"). 
 
 Oto kilka przykładów:
 
@@ -80,27 +80,27 @@ Oto kilka przykładów:
 | Odtwórz OU812 przez Van Halen | Odtwórz U O 2 1 8 przez Van Halen |
 | UTF-8 z BOM | U T F 8 z BOM |
 
-## <a name="chinese-zh-cn"></a>Chiński (zh-CN)
+## <a name="chinese-zh-cn"></a>Chiński (zh-cn)
 
-Dane przekazywane do Custom Speech Service należy używać kodowania UTF-8 za pomocą znacznika kolejności bajtów. Wypowiedź jeden na wiersz można zapisać pliku.
+Dane tekstowe, który jest przekazywany do Custom Speech Service należy używać kodowania UTF-8 za pomocą znacznika kolejności bajtów. Wypowiedź jeden na wiersz można zapisać pliku.
 
-Unikaj stosowania znaków interpunkcyjnych połowę szerokości. Te znaki mogą być uwzględniane przypadkowo podczas przygotowywania danych w edytorze tekstu lub oskrobaniu danych ze stron sieci web. Zastąp je odpowiednie podstawienia pełnej szerokości. Na przykład:
+Unikaj stosowania znaków interpunkcyjnych połowę szerokości. Te znaki mogą być uwzględnione przypadkowo podczas przygotowywania danych w edytorze tekstu lub scrape danych na stronach sieci Web. Zastąp je odpowiednie podstawienia pełnej szerokości. Na przykład:
 
 | Znaki, aby uniknąć | Podstawienia |
 |----- | ----- |
-| "你好" (otwierających i zamykających podwójne cudzysłowy) | "你好" (cudzysłów) |
+| "你好" (Otwieranie i zamykanie podwójnego cudzysłowu) | "你好" (cudzysłów) |
 | 需要什么帮助? (znak zapytania) | 需要什么帮助? |
 
 ### <a name="text-normalization-rules-for-chinese"></a>Tekst reguł normalizacji chiński
 
-Usługa rozpoznawania mowy wykonuje następujące reguły normalizacji.
+Usługa rozpoznawania mowy wykonuje następujące reguły normalizacji:
 
-*   Usuwanie wszystkie znaki interpunkcyjne
-*   Rozszerzanie liczb do mówionej formy
-*   Konwertowanie liter połowę szerokości znaków o pełnej szerokości
-*   Wielkości liter górnego wszystkie wyrazy w języku angielskim
+* Usuwanie wszystkie znaki interpunkcyjne
+* Rozszerzanie liczb do mówionej formy
+* Konwertowanie liter połowę szerokości znaków o pełnej szerokości
+* Przy użyciu wielkich liter dla wszystkie wyrazy w języku angielskim
 
-Oto kilka przykładów.
+Oto kilka przykładów:
 
 | Oryginalny tekst | Po normalizacji |
 |----- | ----- |
@@ -112,12 +112,12 @@ Oto kilka przykładów.
 | 下午5:00的航班 | 下午 五点 的 航班 |
 | 我今年21岁 | 我 今年 二十 一 岁 |
 
-Dotyczy następujących normalizacji tekstu przed jego zaimportowaniem.
+Przed zaimportowaniem tekstu, należy stosować następujące normalizacji do niej:
 
-*   Skróty powinny zapisywane w słowach (jak mówionej formy)
-*   Zapisać ciągów liczbowych w programie mówionej formy.
+* Skróty powinny napisanych w słowach (jak mówionej formy).
+* Zapisać ciągów liczbowych w programie mówionej formy.
 
-Oto kilka przykładów.
+Oto kilka przykładów:
 
 | Oryginalny tekst | Po normalizacji |
 |----- | ----- |
@@ -129,19 +129,19 @@ Oto kilka przykładów.
 Przekazane dane tekstowe **zamiana mowy na tekst** usługi należy użyć kodowania UTF-8 za pomocą znacznika kolejności bajtów. Wypowiedź jeden na wiersz można zapisać pliku.
 
 > [!NOTE]
-> Te przykłady użycia niemiecki. Jednak te wytyczne dotyczą wszystkich języków, które nie są angielskie US lub chińskim.
+> W poniższych przykładach używane jest niemiecki. Jednak wytycznych dla wszystkich języków, które nie są US English lub chińskich.
 
 ### <a name="text-normalization-rules-for-german"></a>Tekst reguł normalizacji dla języka niemieckiego
 
-Usługa rozpoznawania mowy wykonuje następujące reguły normalizacji.
+Usługa rozpoznawania mowy wykonuje następujące reguły normalizacji:
 
-*   Wielkości liter na małe cały tekst
-*   Usunięcie wszystkich znaków interpunkcyjnych, w tym różne rodzaje cudzysłowów ("test", "test", "test" lub "test" jest ok)
-*   Odrzucanie wierszy przy użyciu znaków specjalnych z są zestaw ¤ §... ą © ¬­ ª® ° granicach ² m x ÿ Ø¬¬
-*   Rozszerzanie liczb do formularza programu word, w tym Dolar lub euro kwot
-*   Umlaut są akceptowane tylko w przypadku, o, u; inne zostaną zastąpione przez "th" lub odrzucone
+* Przy użyciu małych liter dla całego tekstu
+* Usuwanie wszystkie znaki interpunkcyjne, w tym różne rodzaje cudzysłowów ("test", "test", "test" i "test" są dozwolone)
+* Odrzucanie wierszy przy użyciu znaków specjalnych z są zestaw ¤ §... ą © ¬­ ª® ° granicach ² m x ÿ Ø¬¬
+* Rozszerzanie liczb do formularza programu word, w tym Dolar lub Euro kwoty
+* Akceptowanie umlaut tylko w przypadku, o, a; inne zostaną zastąpione przez "th" lub odrzucone
 
-Poniżej przedstawiono kilka przykładów
+Oto kilka przykładów:
 
 | Oryginalny tekst | Po normalizacji |
 |----- | ----- |
@@ -149,25 +149,25 @@ Poniżej przedstawiono kilka przykładów
 | ¡Eine Frage! | eine frage |
 | szwajcarski WIR, haben | haben szwajcarski WIR |
 
-Dotyczy następujących normalizacji tekstu przed jego zaimportowaniem.
+Przed zaimportowaniem tekstu, należy stosować następujące normalizacji do niej:
 
-*   Punkt dziesiętny powinien być ","i nie"."
-*   Separator godziny między godzinach i minutach powinien być ":"i nie".": 12:00 Uhr
-*   Skróty, takie jak "ca". nie są zastępowane. Zaleca się, że używasz pełnej postaci.
-*   Cztery główne operatory matematyczne są usuwane: +, -, \*, /. Firma Microsoft zaleca zamianę literału formularza: plusa/minusa nieprawidłowo, geteilt.
-*   Operatory porównania (<>, =) — dotyczy gleich, kleiner als, grösser als
-*   Użyj jako ułamki, takie jak 3/4 w postaci programu word (na przykład "viertel drei" zamiast ¾)
-*   Zamień symbol — możliwość ciągłego dostosowywania formularza słowo "Euro"
+* Separatorów dziesiętnych powinien być ","i nie".".
+* Separatory czas między godzinach i minutach powinien być ":"i nie"." (na przykład, 12:00 Uhr).
+* Skróty, takie jak "ca". nie są zastępowane. Zaleca się, że używasz pełnej postaci.
+* Cztery główne operatory matematyczne (+, -, \*, i /) są usuwane. Firma Microsoft zaleca zamianę literału formularza: "znak plus," "ujemny," "nieprawidłowo" i "geteilt."
+* Ta sama zasada dotyczy operatory porównania (=, <, a >). Firma Microsoft zaleca, zastępując "gleich", "kleiner als," i "grösser als."
+* Użyj jako ułamki, takie jak 3/4 w postaci programu word (na przykład "drei viertel" zamiast ¾).
+* Zamień symbol — możliwość ciągłego dostosowywania formularza słowo "Euro."
 
-Oto kilka przykładów.
+Oto kilka przykładów:
 
 | Oryginalny tekst | Po jego normalizacji | Po normalizacji systemu
 |--------  | ----- | -------- |
-| ES ISTA 12.23Uhr | 12:23Uhr ISTA ES | ES ISTA zwölf uhr drei i zwanzig uhr |
+| ES ISTA 12.23 Uhr | ES ISTA 12:23 Uhr | ES ISTA zwölf uhr drei i zwanzig uhr |
 | {12.45} | {12,45} | zwölf komma vier fünf ||
 | 2 + 3 – 4 | 2 i 3 minus 4 | zwei oraz drei minus vier|
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
+- [Pobierz wersję próbną subskrypcji usługa rozpoznawania mowy](https://azure.microsoft.com/try/cognitive-services/)
 - [Rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)

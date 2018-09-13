@@ -1,6 +1,6 @@
 ---
-title: Narzędzia i PaaS usług Azure stosu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozpocząć pracę z usługami PaaS w stosie Azure.
+title: Narzędzia i usługi PaaS do usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak rozpocząć pracę z usługami PaaS w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -12,26 +12,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 7/10/2017
+ms.date: 6/15/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 878bbbfe8fafce8c5d7c18bd0ac6f848e4513e03
-ms.sourcegitcommit: d87b039e13a5f8df1ee9d82a727e6bc04715c341
+ms.openlocfilehash: b4294f7b6c1c14a4091a46b65a3830bcf094296f
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/21/2018
-ms.locfileid: "29385351"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35953956"
 ---
-# <a name="paas-services-for-azure-stack"></a>PaaS usług Azure stosu
+# <a name="paas-services-for-azure-stack"></a>Usługi PaaS do usługi Azure Stack
 
-Można wdrożyć [platforma jako usługa](https://azure.microsoft.com/overview/what-is-paas/) usługi (PaaS) dla stosu Azure firmy Microsoft i innych dostawców 3. Jeśli chcesz otrzymywać powiadomienia o nowych usług, wykonaj #AzureStack w serwisie Twitter.
+Możesz wdrożyć [platforma jako usługa](https://azure.microsoft.com/overview/what-is-paas/) usługi (PaaS) dla usługi Azure Stack od firmy Microsoft i innych dostawców 3. Jeśli chcesz otrzymywać powiadomienia o nowych usługach, postępuj zgodnie z #AzureStack w serwisie Twitter.
 
 [Add an App Service resource provider to Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-app-service-overview) (Dodawanie dostawcy zasobów usługi App Service do usługi Azure Stack)
 
-[Dodawanie dostawcy zasobów programu SQL Server do stosu Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-sql-resource-provider-deploy)
+[Dodaj dostawcę zasobów programu SQL Server do usługi Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-sql-resource-provider-deploy)
 
-[Dodawanie dostawcy zasobów serwer MySQL Azure stosu](https://docs.microsoft.com/azure/azure-stack/azure-stack-mysql-resource-provider-deploy)
-
-
-
-
+[Dodaj dostawcę zasobów programu MySQL Server do usługi Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-mysql-resource-provider-deploy)

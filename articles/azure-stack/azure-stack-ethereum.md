@@ -5,17 +5,17 @@ services: azure-stack
 keywords: ''
 author: PatAltimore
 ms.author: patricka
-ms.date: 07/03/2018
+ms.date: 09/12/2018
 ms.topic: article
 ms.service: azure-stack
 ms.reviewer: coborn
 manager: femila
-ms.openlocfilehash: d3c89e2028986e05d5d3957c9805d22f07a840b3
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: b4c8ff113ff76586cc4a91adfe568b07327a2d94
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298118"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721988"
 ---
 # <a name="azure-stack-ethereum-blockchain-solution-templates"></a>Szablony rozwiązań łańcucha bloków w usłudze Azure Ethereum stosu
 
@@ -50,7 +50,7 @@ Szablon można wdrożyć konsorcjum Ethereum lidera i element członkowski sprz�
 Szablon lidera konsorcjum konfiguruje zużycie pierwszego elementu członkowskiego w sieci. 
 
 1. Pobierz [lidera szablon z serwisu GitHub](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/ConsortiumLeader/mainTemplate.json)
-2. W portalu usługi Azure Stack Administracja wybierz **nowy > wdrożenie szablonu** do wdrożenia szablonu niestandardowego.
+2. W portalu usługi Azure Stack Administracja wybierz **+ Utwórz zasób > wdrożenie szablonu** do wdrożenia szablonu niestandardowego.
 3. Wybierz **Edytuj szablon** edytować nowy szablon niestandardowy.
 4. W okienku edytowania, po prawej stronie skopiuj i Wklej lidera szablon JSON został wcześniej pobrany.
     
@@ -105,7 +105,7 @@ Aby zweryfikować wdrożenie liderów, Przeglądaj liderów administratora witry
 ### <a name="joining-consortium-member-deployment"></a>Dołączenie do wdrożenia elementu członkowskiego konsorcjum
 
 1. Pobierz [konsorcjum składowej szablonu z serwisu GitHub](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/JoiningMember/mainTemplate.json)
-2. W portalu usługi Azure Stack Administracja wybierz **nowy > wdrożenie szablonu** do wdrożenia szablonu niestandardowego.
+2. W portalu usługi Azure Stack Administracja wybierz **+ Utwórz zasób > wdrożenie szablonu** do wdrożenia szablonu niestandardowego.
 3. Wybierz **Edytuj szablon** edytować nowy szablon niestandardowy.
 4. W okienku edytowania, po prawej stronie skopiuj i Wklej lidera szablon JSON został wcześniej pobrany.
 5. Wybierz pozycję **Zapisz**.
@@ -157,7 +157,7 @@ Jak pokazano na ilustracji, jest w stanie węzłów członka **nieuruchomiona**.
 Ten szablon tworzy połączenie z liderem do zdalnego elementu członkowskiego. 
 
 1. Pobierz [połączyć elementu członkowskiego i lider szablonu z serwisu GitHub](https://raw.githubusercontent.com/Azure/AzureStack-QuickStart-Templates/master/ethereum-consortium-blockchain/marketplace/Connection/mainTemplate.json)
-2. W portalu usługi Azure Stack Administracja wybierz **nowy > wdrożenie szablonu** do wdrożenia szablonu niestandardowego.
+2. W portalu usługi Azure Stack Administracja wybierz **+ Utwórz zasób > wdrożenie szablonu** do wdrożenia szablonu niestandardowego.
 3. Wybierz **Edytuj szablon** edytować nowy szablon niestandardowy.
 4. W okienku edytowania, po prawej stronie skopiuj i Wklej lidera szablon JSON został wcześniej pobrany.
     

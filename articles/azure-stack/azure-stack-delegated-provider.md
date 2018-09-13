@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: alfredop
-ms.openlocfilehash: b58118a3ed4fba5017e0eb630d822ec59f04aa16
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d3e3bcc9f637ed0a93091c0b0b8797d667459f11
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024780"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716197"
 ---
 # <a name="delegate-offers-in-azure-stack"></a>Delegowanie ofert w usłudze Azure Stack
 
@@ -113,7 +113,7 @@ Następnym krokiem jest, aby utworzyć plan i ofertę, które zamierzasz przekaz
 
 Zaloguj się do portalu użytkownika jako dostawca delegowanego, a następnie utwórz nową ofertę za pomocą delegowaną ofertę jako szablon.
 
-1. Wybierz **nowe** > **dzierżawy oferty i plany** > **oferują**.
+1. Wybierz **+ Utwórz zasób** > **dzierżawy oferty i plany** > **oferują**.
 
     ![Utwórz nową ofertę](media/azure-stack-delegated-provider/image5.png)
 

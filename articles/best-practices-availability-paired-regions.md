@@ -6,12 +6,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: 6eb28ad918f9d95c26d91c05d8ee9556ef768bd3
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: c500a1ecc817e4d95e39ca0ac985e1d90ffc8a78
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43125856"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721267"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Business ciągłości działania i odzyskiwania po awarii (BCDR): regiony sparowane platformy Azure
 
@@ -73,7 +73,7 @@ Określone na rysunku 2.
 
 ![Magazyn](./media/best-practices-availability-paired-regions/2Green.png) **usługi Azure Storage** -magazyn geograficznie nadmiarowy (GRS) jest domyślnie skonfigurowana podczas tworzenia konta usługi Azure Storage. W przypadku magazynu GRS dane są automatycznie replikowane trzy razy w regionie podstawowym i trzy razy w sparowanym regionie. Aby uzyskać więcej informacji, zobacz [Opcje nadmiarowości magazynu Azure](storage/common/storage-redundancy.md).
 
-![Usługi Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **baz danych SQL Azure** — za pomocą usługi Azure SQL standardowej replikacji geograficznej, można skonfigurować Replikacja asynchroniczna transakcje w sparowanym regionie. Dzięki premium replikacji geograficznej można skonfigurować replikacji w dowolnym regionie na świecie; jednak zalecamy wdrażania tych zasobów w sparowanym regionie, w przypadku większości scenariuszy odzyskiwania po awarii. Aby uzyskać więcej informacji, zobacz [replikacja geograficzna w usłudze Azure SQL Database](sql-database/sql-database-geo-replication-overview.md).
+![Usługi Azure SQL](./media/best-practices-availability-paired-regions/3Green.png) **usługi Azure SQL Database** — za pomocą usługi Azure SQL bazy danych replikacji geograficznej, można skonfigurować Replikacja asynchroniczna transakcje w dowolnym regionie na świecie; jednak zaleca się wdrażanie tych zasobów sparowanym regionie, w przypadku większości scenariuszy odzyskiwania po awarii. Aby uzyskać więcej informacji, zobacz [replikacja geograficzna w usłudze Azure SQL Database](sql-database/sql-database-geo-replication-overview.md).
 
 ![Menedżer zasobów](./media/best-practices-availability-paired-regions/4Green.png) **usługi Azure Resource Manager** — usługa Resource Manager zapewnia natury izolacji logicznej składników zarządzania usługi między regionami. Oznacza to, że błędy logiczne w jednym regionie są mniej prawdopodobne wpłynąć na inny.
 

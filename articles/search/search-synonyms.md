@@ -1,51 +1,52 @@
 ---
 pageTitle: Synonyms in Azure Search | Microsoft Docs
-description: Użyj synonimy, aby rozszerzyć zakres wyszukiwania
+description: Używać synonimów, aby rozszerzyć zakres zapytania wyszukiwania
 authors: mhko
+services: search
 ms.service: search
 ms.devlang: rest-api
 ms.topic: conceptual
 ms.date: 04/20/2018
 manager: jlembicz
 ms.author: nateko
-ms.openlocfilehash: 03e45aae37a0c0474dbd9cc5dd5e3fddd347bd62
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 579d92f41e41cdb38d4a1eb0bb6e56ce4d4b2a45
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32186912"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35940466"
 ---
 # <a name="synonyms-in-azure-search"></a>Synonimy w usłudze Azure Search
 
-Synonimy w wyszukiwarkach skojarzyć równoważnego niejawnie rozszerzające zakres kwerendy, bez konieczności podawania faktycznie termin użytkownika. Na przykład mając skojarzenia "dog" i synonim termin "canine" i "puppy" dokumenty zawierające "kot", "pies" lub "puppy" zostaną objęte zakresem zapytania.
+Synonimy w wyszukiwarkach kojarzą równoważne wyrażenia, które niejawnie rozszerzyć zakres kwerendy, bez użytkownika konieczności faktycznego termin. Na przykład biorąc pod uwagę skojarzenia "dog" i synonim termin "canine" i "puppy" dokumenty zawierające "dog", "pies" lub "puppy" będzie wchodzą w zakres kwerendy.
 
-W usłudze Azure Search rozszerzenia synonim odbywa się na etapie zapytania. Synonim mapy można dodać do usługi za pomocą nie przerywania istniejące operacje. Możesz dodać **synonymMaps** właściwości do definicji pola bez konieczności odbudowanie indeksu.
+W usłudze Azure Search rozszerzenia synonim odbywa się w czasie wykonywania zapytania. Można dodać mapy synonimów do usługi za pomocą nie przerw w działaniu na istniejące operacje. Możesz dodać **synonymMaps** właściwości definicji pola, bez konieczności ponownego kompilowania indeksu.
 
 ## <a name="feature-availability"></a>Dostępność funkcji
 
-Funkcja synonimów jest obsługiwana przez najnowszą wersją interfejsu api (interfejs api-version = 2017-11-11). Obecnie witryna Azure Portal nie jest obsługiwana.
+Funkcja synonimów jest obsługiwana w najnowszej wersji interfejsu api (interfejs api-version = 2017-11-11). Obecnie witryna Azure Portal nie jest obsługiwana.
 
-## <a name="how-to-use-synonyms-in-azure-search"></a>Jak używać synonimy w usłudze Azure search
+## <a name="how-to-use-synonyms-in-azure-search"></a>Jak używać synonimów w usłudze Azure search
 
-W usłudze Azure Search synonim pomocy technicznej jest oparta na mapy synonim, definiujących i przekazać do usługi. Mapy te stanowią niezależnym zasobem (jak indeksy lub źródeł danych) i mogą być używane przez wszystkie pola można wyszukiwać w indeksu w swojej usłudze wyszukiwania.
+W usłudze Azure Search Obsługa synonimów jest oparty na map synonimów, definiujących i Przekaż do usługi. Mapy te stanowią niezależnym zasobem (takich jak indeksy i źródłami danych) i może służyć w dowolnym polu możliwym do przeszukania w dowolnym indeksie w usłudze wyszukiwania.
 
-Synonim map i indeksów są przechowywane niezależnie od siebie. Po zdefiniowaniu mapy synonim i przekaż go do usługi, mogą włączyć funkcję synonim dla pola, dodając nową właściwość o nazwie **synonymMaps** w definicji pola. Tworzenie, aktualizowanie i usuwanie mapy synonim zawsze jest operacją całego dokumentu, co oznacza, że użytkownik nie może utworzyć, aktualizować lub usuwać części mapy synonim przyrostowo. Aktualizowanie nawet pojedynczy wpis wymaga ponowne załadowanie.
+Mapy synonimów i indeksy są obsługiwane niezależnie. Po zdefiniowaniu mapy synonimów i przekaż go do usługi, można włączyć funkcję synonimów w polu, dodając nową właściwość o nazwie **synonymMaps** w definicji pola. Tworzenie, aktualizowanie i usuwanie mapy synonimów jest zawsze operacji na dokumencie całości, co oznacza, że możesz nie utworzenia, aktualizacji lub usunięcia części mapy synonimów przyrostowo. Aktualizowanie nawet pojedynczy wpis wymaga załadowanie.
 
-Dołączanie do aplikacji wyszukiwania synonimy jest procesem dwuetapowym:
+Włączenie synonimów aplikacji wyszukiwania jest procesem dwuetapowym:
 
-1.  Dodaj mapowanie synonim z usługą wyszukiwania przy użyciu interfejsów API poniżej.  
+1.  Dodaj mapę synonimów do usługi wyszukiwania za pomocą interfejsów API poniżej.  
 
-2.  Skonfiguruj wyszukiwanie pole, aby użyć mapy synonim w definicji indeksu.
+2.  Skonfiguruj polu możliwym do przeszukania, aby używać mapy synonimów w definicji indeksu.
 
 ### <a name="synonymmaps-resource-apis"></a>Interfejsy API SynonymMaps zasobów
 
-#### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>Dodać lub zaktualizować synonimu mapy w ramach usługi, za pomocą POST i PUT.
+#### <a name="add-or-update-a-synonym-map-under-your-service-using-post-or-put"></a>Dodać lub zaktualizować mapę synonimów w ramach usługi, za pomocą POST lub PUT.
 
-Synonim mapy są przekazywane do usługi za pośrednictwem POST i PUT. Każda reguła muszą być rozdzielane przy znaku nowego wiersza ("\n"). Można określić maksymalnie 5000 zasad na mapie synonim w bezpłatnej usługi i 10 000 reguł w innych jednostki SKU. Każda reguła może mieć maksymalnie 20 rozszerzenia.
+Mapy synonimów są przekazywane do usługi za pośrednictwem POST lub PUT. Każda reguła muszą być rozdzielone znak nowego wiersza (\n). Można zdefiniować maksymalnie 5000 reguł na mapie synonimów w to bezpłatna usługa i 10 000 reguł w innych jednostkach SKU. Każda reguła może mieć maksymalnie 20 rozszerzenia.
 
-Synonim mapy musi być w formacie Apache Solr, który znajduje się poniżej. Jeśli masz istniejący słownik synonim w innym formacie i chcesz używać go bezpośrednio, prosimy o kontakt na [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+Mapy synonimów musi być w formacie Apache Solr, co zostało wyjaśnione poniżej. Jeśli masz istniejący słownik synonimów w innym formacie i chcesz używać go bezpośrednio, Daj nam znać na [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 
-Można utworzyć nowej mapy synonim przy użyciu metody POST protokołu HTTP, jak w poniższym przykładzie:
+Można utworzyć nowej mapy synonimów używanie żądania POST protokołu HTTP, jak w poniższym przykładzie:
 
     POST https://[servicename].search.windows.net/synonymmaps?api-version=2017-11-11
     api-key: [admin key]
@@ -58,7 +59,7 @@ Można utworzyć nowej mapy synonim przy użyciu metody POST protokołu HTTP, ja
           Washington, Wash., WA => WA\n"
     }
 
-Alternatywnie można użyć PUT i określ nazwę mapy synonim w identyfikatorze URI. Mapa synonim nie istnieje, zostanie utworzona.
+Alternatywnie można użyć PUT i określ nazwę mapy synonimów w identyfikatorze URI. Mapy synonimów nie istnieje, zostanie utworzony.
 
     PUT https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
     api-key: [admin key]
@@ -72,36 +73,36 @@ Alternatywnie można użyć PUT i określ nazwę mapy synonim w identyfikatorze 
 
 ##### <a name="apache-solr-synonym-format"></a>Format synonim Apache Solr
 
-Solr format obsługuje synonim równoważne i jawnego mapowania. Reguły mapowania stosować się do synonimu specyfikacja filtru typu open source Apache Solr, w tym dokumencie opisano: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Poniżej znajduje się przykładowa reguła synonimy równoważne.
+Solr format obsługuje mapowań synonimów swoimi odpowiednikami i jawne. Reguły mapowania stosować się do synonimu specyfikacja filtru "open source" Apache Solr, opisane w tym dokumencie: [SynonymFilter](https://cwiki.apache.org/confluence/display/solr/Filter+Descriptions#FilterDescriptions-SynonymFilter). Poniżej znajduje się przykładowa reguła równoważne synonimów.
 ```
 USA, United States, United States of America
 ```
 
-Z regułą powyżej zapytania wyszukiwania rozwinie "USA" do "USA" lub "Stany Zjednoczone" lub "Stany Zjednoczone".
+Z regułą powyżej zapytania wyszukiwania rozwinie "USA", "USA" lub "United States" lub "USA".
 
-Jawne mapowanie jest oznaczona za pomocą strzałki "= >". Gdy jest określony, sekwencji termin zapytania wyszukiwania, która jest zgodna z lewej strony "= >" zostanie zamieniony alternatyw po prawej stronie. Biorąc pod uwagę poniższe reguły, wyszukaj zapytania "W stanie Waszyngton", "Wash." lub "WA" będą wszystkie ponownego napisania do "WA". Jawne mapowanie tylko stosuje w kierunku określony i nie Przeredaguj zapytanie "WA" do "W stanie Waszyngton" w tym przypadku.
+Strzałka jest oznaczona jawnego mapowania "= >". Jeśli zostanie określony, sekwencja termin zapytanie wyszukiwania, który odpowiada po lewej stronie "= >" zostanie zamieniony alternatywy po prawej stronie. Biorąc pod uwagę poniższe reguły, wyszukiwanie zapytania "Waszyngton", "Wash." lub "WA" będą wszystkie zostać przepisane, aby "WA". Jawnego mapowania tylko stosuje się w określonym kierunku i nie ponownie napisz zapytanie "WA" do "Waszyngton" w tym przypadku.
 ```
 Washington, Wash., WA => WA
 ```
 
-#### <a name="list-synonym-maps-under-your-service"></a>Synonim listy mapy w ramach usługi.
+#### <a name="list-synonym-maps-under-your-service"></a>Mapy synonimów listy w ramach usługi.
 
     GET https://[servicename].search.windows.net/synonymmaps?api-version=2017-11-11
     api-key: [admin key]
 
-#### <a name="get-a-synonym-map-under-your-service"></a>Uzyskać synonim mapy w ramach usługi.
+#### <a name="get-a-synonym-map-under-your-service"></a>Pobierz mapę synonimów w ramach usługi.
 
     GET https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
     api-key: [admin key]
 
-#### <a name="delete-a-synonyms-map-under-your-service"></a>Usuń synonimy mapy w ramach usługi.
+#### <a name="delete-a-synonyms-map-under-your-service"></a>Usuń mapę synonimów w ramach usługi.
 
     DELETE https://[servicename].search.windows.net/synonymmaps/mysynonymmap?api-version=2017-11-11
     api-key: [admin key]
 
-### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>Skonfiguruj wyszukiwanie pole, aby użyć mapy synonim w definicji indeksu.
+### <a name="configure-a-searchable-field-to-use-the-synonym-map-in-the-index-definition"></a>Skonfiguruj polu możliwym do przeszukania, aby używać mapy synonimów w definicji indeksu.
 
-Nowe właściwości pola **synonymMaps** może służyć do określenia mapę synonim do użycia dla pola wyszukiwania. Synonim mapy zasobów poziomu usługi i mogą odwoływać się do dowolnego pola indeksu w usłudze.
+Nowe właściwości pola **synonymMaps** może służyć do określania mapę synonimów do użytku w polu możliwym do przeszukania. Mapy synonimów są zasoby na poziomie usługi i mogą być przywoływane przez dowolne pole indeksu w usłudze.
 
     POST https://[servicename].search.windows.net/indexes?api-version=2017-11-11
     api-key: [admin key]
@@ -135,29 +136,29 @@ Nowe właściwości pola **synonymMaps** może służyć do określenia mapę sy
        ]
     }
 
-**synonymMaps** można określić w przypadku pól z możliwością wyszukiwania typu "Z typem Edm.String" lub "Collection(Edm.String)".
+**synonymMaps** można określić dla pola z możliwością wyszukiwania typu "Edm.String" lub "Collection(Edm.String)".
 
 > [!NOTE]
-> Może mieć tylko jeden synonim mapy jednym polu. Jeśli chcesz użyć wielu map synonim, prosimy o kontakt na [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
+> Może mieć tylko jeden synonim mapowanie jednego pola. Jeśli chcesz użyć wiele map synonimów, Daj nam znać na [UserVoice](https://feedback.azure.com/forums/263029-azure-search).
 
 ## <a name="impact-of-synonyms-on-other-search-features"></a>Wpływ synonimy dla innych funkcji wyszukiwania
 
-Funkcja synonimy ponownie zapisuje oryginalne zapytanie z synonimy za pomocą operatora OR. Z tego powodu wyróżnianie trafień i oceniania profile traktować oryginalny termin i synonimy jako równoważne.
+Funkcję synonimów ponownie zapisuje oryginalnego zapytania z synonimy za pomocą operatora OR. Z tego powodu wyróżnianie trafień i profile oceniania traktować oryginalnego terminów i synonimy jako równoważne.
 
-Funkcja synonim dotyczy kwerendy wyszukiwania i nie ma zastosowania do filtrów lub zestawów reguł. Podobnie sugestie dotyczą tylko oryginalny termin; synonim dopasowań nie są wyświetlane w odpowiedzi.
+Funkcja synonimów dotyczy zapytań wyszukiwania tworzonych i nie ma zastosowania do filtrów lub zestawów reguł. Podobnie sugestie dotyczą tylko oryginalny warunek; synonim dopasowania nie są wyświetlane w odpowiedzi.
 
-Synonim rozszerzenia nie dotyczą terminy wyszukiwania symboli wieloznacznych; Prefiks rozmytego oraz postanowienia wyrażenia regularnego nie są rozwinięte.
+Synonim rozszerzenia nie dotyczą terminy wyszukiwania symboli wieloznacznych; Prefiks rozmyte oraz postanowienia wyrażenie regularne nie są rozwinięte.
 
-## <a name="tips-for-building-a-synonym-map"></a>Wskazówki dotyczące tworzenia mapy synonim
+## <a name="tips-for-building-a-synonym-map"></a>Porady dotyczące tworzenia mapy synonimów
 
-- Mapa synonim zwięzły, dobrze zaprojektowanego jest bardziej efektywne niż pełny wykaz możliwe dopasowania. Bardzo dużych lub złożonych słowniki trwać dłużej, analizy i wpływać na opóźnienie zapytania, jeśli zapytanie rozwijany do wielu synonimy. Zamiast warunki mogą być używane dopasowanie, możesz uzyskać rzeczywiste warunki za pośrednictwem [raport analizy ruchu wyszukiwania](search-traffic-analytics.md).
+- Mapę synonimów zwięzły, skierowany do dobrze zaprojektowane jest bardziej wydajne niż to pełna lista możliwych dopasowań. Zbyt duże lub zbyt złożone słowników dłużej do analizy i mają wpływ na opóźnienie zapytań, jeśli zapytanie jest rozszerzany, aby wiele synonimów. Zamiast odgadnięcia warunki mogą być używane, można uzyskać rzeczywistych warunków za pośrednictwem [raport analizy ruchu wyszukiwania](search-traffic-analytics.md).
 
-- Jak wykonywać zarówno wersja wstępna i sprawdzania poprawności, Włącz, a następnie użycie tego raportu, aby precyzyjnie określić warunki, które będą korzystać z dopasowanie synonim i następnie kontynuuj używać go jako że mapy synonim jest tworzenie lepsze wyniki sprawdzania poprawności. W raporcie wstępnie zdefiniowanych Kafelki "najbardziej typowe zapytania wyszukiwania" i "Zero wynik zapytania wyszukiwania" zapewni niezbędne informacje.
+- Jak wykonywać zarówno wersja wstępna, jak i sprawdzania poprawności, Włącz, a następnie użycie tego raportu można określić dokładne warunki, które będą korzystać z dopasowania synonimów i następnie w dalszym ciągu używać go jako weryfikacji, czy mapę synonimów jest tworzenie lepszych wyników. Wstępnie zdefiniowanego raportu Kafelki "najczęściej występujące zapytania wyszukiwania" i "zapytania wyszukiwania z zerowym wynikiem" zapewni niezbędne informacje.
 
-- Można utworzyć wielu map synonim aplikacji wyszukiwania (np. według języka, jeśli aplikacja obsługuje wielu języków bazy klientów). Obecnie pola można używać tylko jeden z nich. W dowolnym momencie możesz zaktualizować właściwość synonymMaps pola.
+- Możesz utworzyć wiele map synonimów aplikacji wyszukiwania (na przykład za pomocą języka, jeśli aplikacja obsługuje wielu języków bazy klientów). Obecnie pole można używać tylko jednego z nich. Właściwość synonymMaps pola może aktualizować w dowolnym momencie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Jeśli masz istniejący indeks w środowisku projektowym (z systemem innym niż środowisko produkcyjne), wypróbuj słownika mała, aby zobaczyć, jak dodanie synonimy zmienia środowiska wyszukiwania, włączając wpływ na oceniania profile, wyróżnianie trafień i sugestie.
+- Jeśli masz istniejący indeks w środowisku deweloperskim (nie produkcyjnych) eksperymentować z małych słownika, aby zobaczyć, jak dodanie synonimów zmienia funkcję wyszukiwania, w tym wpływu na profile oceniania, wyróżnianie trafień i sugestie.
 
-- [Włącz analizy ruchu wyszukiwania](search-traffic-analytics.md) i użyj wstępnie zdefiniowanego raportu usługi Power BI, aby dowiedzieć się, których terminy są używane najczęściej, oraz te, które zwracają zera dokumenty. Dzięki te szczegółowe informacje, sprawdź, czy słownika do uwzględnienia synonimy nieproduktywne zapytań, które powinny być rozpoznawania do dokumentów w indeksie.
+- [Włącz analiza ruchu wyszukiwania](search-traffic-analytics.md) użyć wstępnie zdefiniowanego raportu usługi Power BI, aby dowiedzieć się, których terminy są używane najczęściej i te, które zwracają zero dokumenty. Korzystając z wglądów, sprawdź, czy słownik obejmujący synonimy nieproduktywne zapytań, które powinny rozpoznawania dokumentów w indeksie.

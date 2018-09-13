@@ -12,14 +12,14 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/12/2018
 ms.author: anwestg
-ms.openlocfilehash: 9e36e470c3516c55089ce1e44540b6b1eacbb6b2
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 4b6ad2e237d73d5d8ca414bffc3a679ee552105f
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42060255"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718733"
 ---
 # <a name="add-an-app-service-resource-provider-to-a-disconnected-azure-stack-environment-secured-by-ad-fs"></a>Dodaj dostawcę zasobów usługi App Service do odłączonego środowiska usługi Azure Stack, zabezpieczone przez usługi AD FS
 
@@ -226,7 +226,7 @@ Możesz *musi* mają subskrypcję dzierżawy, aby utworzyć aplikacje, które u�
 >
 Począwszy od trzeciego technical preview do utworzenia sieci web, interfejsów API i Azure Functions aplikacje, należy użyć portalu dzierżawcy i masz subskrypcję dzierżawy.
 
-1. W portalu dzierżawcy usługi Azure Stack, kliknij przycisk **New** > **sieci Web i mobilność** > **aplikacji sieci Web**.
+1. W portalu dzierżawcy usługi Azure Stack, kliknij przycisk **+ Utwórz zasób** > **sieci Web i mobilność** > **aplikacji sieci Web**.
 
 2. Na **aplikacji sieci Web** bloku, wpisz nazwę w **aplikacji sieci Web** pole.
 

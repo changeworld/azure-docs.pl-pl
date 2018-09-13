@@ -1,131 +1,131 @@
 ---
-title: Wprowadzenie do przygotowania danych do usługi Azure Machine Learning | Dokumentacja firmy Microsoft
-description: Jest to pobierania przewodnika dla sekcji przygotowanie bazy danych AML workbench
+title: Wprowadzenie do przygotowywania danych do usługi Azure Machine Learning | Dokumentacja firmy Microsoft
+description: Jest to przewodnik Wprowadzenie dla sekcji przygotowywania danych aplikacji workbench AML
 services: machine-learning
 author: cforbe
 ms.author: cforbe
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: 6bfa02bc098cdc8a9f37d238761dd44202e57ae6
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: ffff3d274e093e9ce4aa32dee7b033bd1ed288bc
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831221"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35649741"
 ---
 # <a name="getting-started-with-data-preparation"></a>Wprowadzenie do przygotowywania danych
 
-Zapraszamy danych przygotowanie Podręcznik Wprowadzenie. 
+Zapraszamy do danych przygotowania przewodnik Wprowadzenie dla. 
 
-Przygotowanie danych udostępnia zestaw narzędzi do eksplorowania wydajnie, opis i rozwiązywania problemów w danych. Umożliwia ona wykorzystują dane w wielu formularzach i przekształcania danych oczyszczony dane, które lepiej jest przeznaczone do użycia podrzędne.
+Przygotowywanie danych zawiera zestaw funkcji wspomagających efektywnie Eksplorowanie, wykrywania i rozwiązywania problemów w danych. Umożliwia korzystanie z rejestrowanych danych w wielu formularzach i przekształcający te dane oczyszczonych dane, które jest lepiej dopasowane do użycia podrzędnego.
 
-Przygotowanie danych jest instalowany jako część środowiska Azure Machine Learning Workbench.  Użyj Przygotowanie danych lokalnie lub wdrożyć klastra docelowego i w chmurze jako środowisku środowiska uruchomieniowego lub wykonywania.
+Przygotowywanie danych jest instalowany jako część środowisko Azure Machine Learning Workbench.  Użyj operacji przygotowania danych lokalnie lub wdrożenie w klastrze docelowym i w chmurze jako środowisko wykonywania lub wykonywanie.
 
-Środowisko uruchomieniowe czasu projektowania używa języka Python dla rozszerzeń i zależy od różnych bibliotek języka Python, takie jak Pandas. Zgodnie z innymi składnikami Workbench uczenie Maszynowe Azure nie jest konieczne do zainstalowania języka Python, jest instalowana automatycznie. Jednak jeśli musisz zainstalować dodatkowe biblioteki te biblioteki muszą być zainstalowane w katalogu usługi Azure ML Workbench Python nie zwykle katalogu języka Python. Więcej informacji na temat sposobu instalowania pakietów można znaleźć [tutaj](data-prep-python-extensibility-overview.md).
+Środowiska uruchomieniowego w czasie projektowania używa języka Python dla rozszerzalności i zależy od różnych bibliotek języka Python, takich jak Pandas. Zgodnie z innymi składnikami aplikacji Azure ML Workbench nie ma potrzeby instalowania języka Python, jest instalowana automatycznie. Jednakże jeśli musisz zainstalować dodatkowe biblioteki tych bibliotek muszą być zainstalowane w katalogu usługi Azure ML Workbench w języku Python nie zwykle katalogu języka Python. Można znaleźć szczegółowe informacje na temat sposobu instalowania pakietów [tutaj](data-prep-python-extensibility-overview.md).
 
-Projekt jest wymagana przed użyciem przygotowanie bazy danych, po utworzeniu projektu można przygotować danych. 
+Projekt jest wymagane przed użyciem przygotowywanie danych, po utworzeniu projektu może przygotowywania danych. 
 
-Przejdź do sekcji danych projektu, wybierając ikonę danych ![ikona źródła danych](media/data-prep-getting-started/data-source-icon.png) po lewej stronie ekranu.  Kliknij przycisk "+" ponownie **Dodaj źródło danych**. Należy uruchomić Kreatora źródła danych i dodaje **źródła danych** (.dsource) pliku do projektu po ukończeniu kreatora. Domyślnie widok danych jest siatki. Powyżej siatki jest również można wybrać metryki widoku. W widoku metryki przedstawiono podsumowanie statystyk.  Po przejrzeniu podsumowania statystyk, kliknij **Prepare** w górnej części ekranu. [Więcej informacji na temat Kreatora źródła danych](data-source-wizard.md) 
+Przejdź do sekcji danych projektu, wybierając ikonę danych ![ikona źródła danych](media/data-prep-getting-started/data-source-icon.png) po lewej stronie ekranu.  Kliknij przycisk "+" ponownie do **Dodaj źródło danych**. Należy uruchomić Kreatora źródła danych i dodaje **źródła danych** (.dsource) pliku do projektu po zakończeniu pracy kreatora. Domyślnie widok danych jest siatki. Powyżej siatki istnieje również możliwość wybierz widok metryk. W widoku metryki są wyświetlane statystyki podsumowujące.  Po przejrzeniu statystyki podsumowujące kliknij **przygotowanie** w górnej części ekranu. [Więcej informacji na temat Kreatora źródła danych](data-source-wizard.md) 
 
-## <a name="building-blocks-of-data-preparation"></a>Bloki konstrukcyjne Przygotowanie danych ##
+## <a name="building-blocks-of-data-preparation"></a>Bloki konstrukcyjne przygotowywania danych ##
 ### <a name="the-package"></a>Pakiet ###
 
-Pakiet jest podstawowym kontenera do pracy. Pakiet jest artefaktu, który jest zapisywana i ładowanych z dysku. Podczas pracy w kliencie, pakiet jest stale automatycznie zapisany w tle. 
+Pakiet jest podstawowym kontenerem na potrzeby swoją pracę. Pakiet jest artefakt, który jest zapisywana i załadowany z dysku. Podczas pracy w klienta, pakiet jest stale automatycznie zapisany w tle. 
 
-Wynik/pakietu można zbadane, Python lub za pomocą notesu Jupyter.
+W języku Python lub za pomocą notesu programu Jupyter, można eksplorować tylko wyjściowe/pakietu.
 
-Pakiet może być wykonywane przez wiele środowisk uruchomieniowych w tym lokalne Python, Spark (w tym w Docker) i usługi HDInsight.
+Pakiet można wykonywać na wielu modułów wykonawczych, takich jak lokalne języka Python, Spark (w tym Docker) i HDInsight.
 
-Pakiet zawiera co najmniej jeden przepływy danych, które są kroki i transformacji zastosowanych do danych.
+Pakiet zawiera jeden lub więcej przepływów danych, które są kroki i transformacji zastosowanych do danych.
 
-Pakiet może używać inny pakiet jako źródła danych (określone jako odwołanie przepływu danych).
+Pakiet może używać inny pakiet jako źródła danych (określone jako przepływ danych odwołania).
 
-### <a name="the-dataflow"></a>Biblioteka przepływu danych ###
-Biblioteka przepływu danych ma źródło i przekształca opcjonalne, które są ustawione za pośrednictwem serii kroków i opcjonalnie miejsc docelowych. Ponowne kliknięcie krok wykonuje wszystkich źródeł i transformacje przed, w tym kroku wybrane.  Przekształcone dane za pośrednictwem tego kroku jest wyświetlany w siatce. Kroki można dodać, przenieść i usuwane w ramach przepływu danych za pośrednictwem listy kroku.
+### <a name="the-dataflow"></a>Przepływ danych ###
+Przepływ danych zawiera źródło i opcjonalnie przekształca, które są rozmieszczone przez szereg czynności i opcjonalnie miejsc docelowych. Ponowne kliknięcie kroku wykonuje wszystkich źródeł i przed przekształceń, łącznie z zaznaczonym krokiem.  Przekształcone dane za pośrednictwem tego kroku jest wyświetlany w obrębie siatki. Kroki mogą być dodawane, przeniesione lub usunięte w ramach przepływu za pośrednictwem listy kroku.
 
-Na liście krok po prawej stronie klienta można otworzyć i zamknięte w celu zapewnienia więcej miejsca na ekranie.
+Na liście kroku po prawej stronie klienta, można go otworzyć i zamknięte w celu zapewnienia więcej miejsca na ekranie.
 
-Przepływy danych wielu może istnieć w interfejsie użytkownika w czasie, każdego przepływu danych jest reprezentowany jako karty w interfejsie użytkownika.
+Wiele przepływów danych może znajdować się w Interfejsie użytkownika w czasie, każdy przepływ danych jest przedstawiana jako kartę w interfejsie użytkownika.
 
 ### <a name="the-source"></a>Źródło
-Gdy dane pochodzą z i format jest jest źródło. Pakiet przygotowanie bazy danych zawsze źródeł danych z innego Flow(Data Source) danych. Jest to odwołanie przepływu danych, który zawiera informacje. Każde źródło ma środowisko innego użytkownika, aby umożliwić jego skonfigurowanie. Źródło tworzy "prostokątna" / tabelaryczny widok danych. Jeśli źródło danych ma pierwotnie "bez wyrównania do prawej", następnie struktury są znormalizowane jako "prostokątna". [Dodatek 2 zawiera bieżącą listę obsługiwanych źródeł](data-prep-appendix2-supported-data-sources.md).
+Gdy dane pochodzą z i format jest jest źródło. Pakiet przygotowania bazy danych zawsze źródeł danych z innego Flow(Data Source) danych. Jest to odwołanie przepływu danych, który zawiera informacje. Każde źródło ma doświadczenie innego użytkownika, aby zezwalała na można skonfigurować. Źródło tworzy "prostokątna" / tabelaryczny widok danych. Jeśli źródło danych ma pierwotnie "bez wyrównania do prawej", następnie struktury jest znormalizować jako "prostokątna". [Dodatek 2 zawiera bieżącą listę obsługiwanych źródeł](data-prep-appendix2-supported-data-sources.md).
 
 ### <a name="the-transform"></a>Przekształcenia ###
-Transformacje wykorzystują dane w danym formacie, wykonać pewne operacje na danych (np. zmiana typu danych) i następnie wyprodukować danych do nowego formatu. Przekształcanie poszczególnych ma własnego interfejsu użytkownika i behavior(s). Tworzenie łańcuchów kilka przekształceń ze sobą za pomocą kroków przepływu danych jest podstawową funkcjonalność Przygotowanie danych. [Dodatek 3 zawiera bieżącą listę obsługiwanych transformacje](data-prep-appendix3-supported-transforms.md).
+Przekształcenia wykorzystywania danych w danym formacie, wykonać pewne operacje na danych (np. zmiana typu danych) i następnie generują dane do nowego formatu. Każdy przekształcenia ma swój własny interfejs użytkownika i behavior(s). Łączenie łańcuchowe wielu przekształceń za pośrednictwem czynności w przepływie danych stanowi podstawę funkcji przygotowywania danych. [Dodatku 3 zawiera bieżącą listę obsługiwane przekształcenia](data-prep-appendix3-supported-transforms.md).
 
 ### <a name="the-inspector"></a>Inspektor ###
 
-Inspektorzy są wizualizacje danych i są dostępne do lepszego zrozumienia danych.  Opis danych i danych jakości wystawia ułatwia podjęcie decyzji, należy podjąć odpowiednie działania, które (transformacji). Niektóre inspektorzy obsługuje akcje, które generowania przekształceń. Na przykład inspektora liczba wartości umożliwia wybierz wartość, a następnie zastosować filtr, aby dołączyć tę wartość lub do wykluczenia z tej wartości. Inspektorzy oferuje również kontekstu transformacji. Na przykład wybranie co najmniej jedną kolumnę zmienia przekształcenia to możliwe, które mogą być stosowane.
+Inspektorzy są wizualizacje danych i są dostępne do lepszego zrozumienia dane.  Informacje o danych i danych jakości problemów ułatwia podjęcie decyzji, powinny zostać podjęte akcje, które (przekształcenia). Niektóre inspektorzy obsługuje akcje, które generują przekształcenia. Na przykład Inspektor liczba wartości umożliwia wybierz wartość, a następnie zastosować filtr, aby uwzględnić tę wartość, lub do wykluczenia z tej wartości. Inspektorzy oferuje również kontekst transformacji. Na przykład wybranie co najmniej jedna kolumna zmienia możliwe przekształceń, które mogą być stosowane.
 
-Kolumna może mieć wielu inspektorzy w dowolnym momencie w czasie (na przykład statystyk kolumny i Histogram). Można także wystąpień inspektora w wielu kolumnach. Na przykład wszystkie kolumny liczbowe może mieć histogramów w tym samym czasie.
+Kolumna może mieć wiele inspektorzy w dowolnym momencie w czasie (na przykład statystyki kolumny i Histogram). Można również istnieć wystąpień Inspektor w wielu kolumnach. Na przykład wszystkie kolumny liczbowe może mieć histogramów w tym samym czasie.
 
-Inspektorzy są wyświetlane w profilowania również w dolnej części ekranu.  Zmaksymalizuj inspektorzy większe w obszarze zawartości głównej je wyświetlić. Siatki danych należy traktować jako inspektora domyślne. Wszelkie Inspektora można rozszerzyć do głównego obszaru zawartości. Inspektorzy w obszarze zawartości głównej zminimalizować do profilowania również. Dostosowywanie inspektora, klikając ikonę ołówka w kontroler. Inspektorzy zmiany kolejności w również przy użyciu przeciągnij i upuść.
+Inspektorzy są wyświetlane w profilowania dobrze w dolnej części ekranu.  Maksymalizuj inspektorzy widoczne większe w obrębie głównego obszaru zawartości. Siatka danych należy traktować jako inspektor domyślne. Wszelkie Inspector można rozszerzyć do głównego obszaru zawartości. Inspektorzy w obrębie głównego obszaru zawartości zminimalizowanie programu do profilowania dobrze. Inspektor można dostosować, klikając ikonę ołówka w panelu Inspektor. Inspektorzy zmiany kolejności w obrębie również za pomocą przeciąganie i upuszczanie.
 
-Niektóre inspektorzy obsługuje tryb "Halo". Ten tryb zawiera wartość lub stan sprzed zastosowania ostatniego transformacji. Stara wartość jest wyświetlane w kolorze szarym z bieżącą wartością na pierwszym planie i pokazuje wpływ transformacji. [Dodatek 4 zawiera bieżącą listę obsługiwanych inspektorzy](data-prep-appendix4-supported-inspectors.md).
+Niektóre inspektorzy obsługuje tryb "Halo". W tym trybie pokazuje wartość lub stan sprzed zastosowania ostatniego transformacji. Stara wartość jest wyświetlana w kolorze szarym z bieżącą wartością na pierwszym planie i pokazuje wpływ transformacji. [Dodatek 4 zawiera bieżącą listę obsługiwani inspektorzy](data-prep-appendix4-supported-inspectors.md).
 
 ### <a name="the-destination"></a>Miejsce docelowe
- Miejsce docelowe jest gdzie możesz zapisu/Eksportuj dane do po przygotowaniu w przepływu danych. Danego przepływu danych może mieć wielu miejsc docelowych. Każdej lokalizacji docelowej ma środowisko innego użytkownika, aby umożliwić jego skonfigurowanie. Miejsce docelowe zużywa dane w formacie "prostokątna" / tabelarycznych i zapisuje do określonej lokalizacji w danym formacie. [Dodatek 5 zawiera bieżącą listę obsługiwanych miejsc docelowych](data-prep-appendix5-supported-destinations.md).
+ Miejsce docelowe jest gdzie możesz zapisu/export dane po przygotowaniu w przepływu danych. Dany przepływ danych może mieć wielu miejsc docelowych. Każdej lokalizacji docelowej zawiera środowisko innego użytkownika, aby zezwalała na można skonfigurować. Miejsce docelowe wykorzystuje dane w formacie "prostokątna" / tabelarycznym i zapisuje miejsce w danym formacie. [Dodatek 5 zawiera bieżącą listę obsługiwanych lokalizacji docelowych](data-prep-appendix5-supported-destinations.md).
 
-### <a name="using-data-preparation"></a>Przy użyciu Przygotowanie danych ###
-Przygotowanie danych zakłada podstawowe pięciu krokach metodologii/podejście do przygotowania danych.
+### <a name="using-data-preparation"></a>Za pomocą operacji przygotowania danych ###
+Przygotowywanie danych zakłada podstawowe pięciu krokach metodologii/podejście do przygotowywania danych.
 
-#### <a name="step-1-ingestion"></a>Krok 1: wprowadzanie ####
-Importowanie danych w celu przygotowania danych przy użyciu **Dodaj źródło danych** opcji w widoku projektu.  Wszystkie początkowej wprowadzanie danych jest obsługiwana za pomocą Kreatora źródła danych.
+#### <a name="step-1-ingestion"></a>Krok 1: pozyskiwanie ####
+Importowanie danych w celu przygotowania danych przy użyciu **Dodaj źródło danych** opcji w widoku projektu.  Wszystkie początkowej pozyskiwania danych odbywa się za pomocą Kreatora źródła danych.
 
-#### <a name="step-2-understandprofile-the-data"></a>Krok 2: Zrozumienie/profilu danych ####
+#### <a name="step-2-understandprofile-the-data"></a>Krok 2: Omówienie/profilu danych ####
 
-Najpierw sprawdź pasek jakości danych na początku każdej kolumny. Zielony oznacza wierszy, które mają wartości. Szary reprezentuje wiersze, dla których brakuje wartości null, itp. Czerwony oznacza wartości błędów. Umieść kursor nad paskiem uzyskanie etykietka narzędzia, która dokładnie numery wierszy w każdej z trzech zasobników. Używa danych jakości paska skali logarytmicznej zawsze Sprawdź wartości rzeczywistych można uzyskać pewne pojęcie nierównej ilość danych brakuje.
+Po pierwsze Spójrz na pasku jakości danych, u góry każdej kolumny. Zielony reprezentuje wiersze, które mają wartości. Szary reprezentuje wiersze, dla których brakuje wartości ma wartość null, itp. Kolor czerwony oznacza wartości błędów. Umieść kursor nad paskiem można pobrać etykietki narzędzia dokładnie numery wierszy we wszystkich trzech zasobników. Używa pasku jakości danych skali logarytmicznej więc zawsze sprawdzić wartości rzeczywistych można uzyskać przybliżoną działania woluminu brakujące dane.
 
-![kolumny](media/data-prep-getting-started/columns.png)
+![Kolumny](media/data-prep-getting-started/columns.png)
 
-Następnie użyj kombinacji innych inspektorzy plus siatki, aby lepiej zrozumieć właściwości danych.  Uruchom formułowania hipotez informacje o przygotowaniu danych wymagane do dalszej analizy. Większość inspektorzy działają w jednej kolumnie lub mniejszą liczbą kolumn.  
+Następnie użyj kombinacji innych inspektorzy oraz siatki, aby lepiej zrozumieć właściwości danych.  Rozpocznij formułowania hipotezy o przygotowywaniu danych wymagane w celu dalszej analizy. Większość inspektorzy działać względem pojedynczej kolumny lub niewielkiej liczby kolumn.  
 
-Istnieje prawdopodobieństwo, że kilka inspektorzy kilku kolumn są potrzebne do zrozumienia danych. Możesz przewijać różnych inspektorzy w profilowania również. W magazynie można również przenosić inspektorzy nagłówek listy, aby można było je wyświetlać w obszarze od razu widoczne.
+Istnieje prawdopodobieństwo, że kilka inspektorzy kilku kolumn są potrzebne zrozumieć dane. Możesz przewijać różnych inspektorzy w profilowania dobrze. W ramach dobrze można również przenieść inspektorzy porównanie listy, aby można było je wyświetlić w obszarze od razu widoczne.
 
 ![Inspektorzy](media/data-prep-getting-started/inspectors.PNG)
 
-Inspektorzy różnych są dostępne dla ciągłej vs podzielone na kategorie zmienne/kolumny. Menu inspektora włącza i wyłącza opcje w zależności od typu zmienne/kolumn, których masz.
+Inspektorzy różnych są dostarczane dla ciągłej vs podzielone na kategorie zmienne/kolumny. Menu inspektora włącza i wyłącza opcje, w zależności od typu zmienne/kolumny, które masz.
 
-Podczas pracy z szeroką zestawów danych, który ma wiele kolumn, zalecane jest podejście pragmatyczne pracy z podzestawy. Ta metoda obejmuje koncentrujących się na niewielkiej liczby kolumn (na przykład 5 – 10), ich przygotowywanie i następnie pracuje nad pozostałych kolumnach. Inspektor siatki obsługuje partycjonowanie pionowe kolumn i, jeśli masz więcej niż 300 kolumny, a następnie trzeba "page" za pośrednictwem ich.
+Podczas pracy z szerokiego zestawów danych, które mają wiele kolumn, zalecane jest pragmatyczne podejście pracy z podzbiorów. Ta metoda obejmuje koncentrujących się na niewielką liczbę kolumn (na przykład 5 – 10), ich przygotowywanie i następnie pracy za pomocą pozostałych kolumnach. Inspektor siatki obsługuje partycjonowanie pionowe kolumn i dlatego jeśli masz więcej niż 300 kolumny, musisz "page" przetwarza je.
  
 
-#### <a name="step-3-transform-the-data"></a>Krok 3: Przekształcania danych ####
-Transformacje zmiany danych i umożliwia wykonanie danych do obsługi bieżącego hipoteza pracy. Przekształceń są wyświetlane jako czynności na liście krok po prawej stronie. Istnieje możliwość "czas podróży" za pośrednictwem listy krok, klikając w żadnym punkcie dowolnego na liście kroku.
+#### <a name="step-3-transform-the-data"></a>Krok 3: Przekształcanie danych ####
+Przekształcenia zmiany danych i umożliwi wykonanie dane w celu obsługi bieżącego hipotezę pracy. Transformacje są traktowane jako czynności na liście kroku po prawej stronie. Istnieje możliwość "czas podróży" za pośrednictwem listy kroku, klikając na dowolnym dowolnego punktu na liście kroku.
 
-Zielona ikona na lewo od danego kroku wskazuje, że ma i wykonania przekształcenia odzwierciedla dane. Pionowy pasek po lewej kroku wskazuje bieżący stan danych w inspektorzy.
+Zieloną ikonę po lewej stronie w danym kroku wskazuje, że jego wykonaniu i danych odzwierciedla wykonania przekształcenia. Pionowy pasek po lewej stronie kroku wskazuje bieżący stan danych w inspektorzy.
 
 ![kroki](media/data-prep-getting-started/steps.PNG)
 
-Spróbuj poprowadzić małych częstych zmian do danych i do sprawdzania poprawności (krok 4) po każdej zmianie jako hipotezę rozwoju środowisko.
+Spróbuj dokonać małych częste zmiany danych, a do sprawdzania poprawności (krok 4) po każdej zmianie w miarę rozwoju hipotezę.
 
-#### <a name="step-4-verify-the-impact-of-the-transformation"></a>Krok 4: Sprawdzić ich oddziaływanie transformacji. 
-Zdecyduj, czy hipoteza była poprawna. Jeśli są poprawne, opracowywanie hipoteza dalej i powtórz kroki 2 – 3 nowego. Jeśli jest nieprawidłowy, następnie Cofnij ostatniego przetworzenia opracowanie nowych hipoteza i powtórz kroki od 2 do 3.
+#### <a name="step-4-verify-the-impact-of-the-transformation"></a>Krok 4: Weryfikacja wpływu transformacji. 
+Zdecyduj, jeśli hipoteza była poprawna. Jeśli jest to poprawne, twórz dalej hipotezę i powtórz kroki 2 – 3 nowego. Niepoprawne, następnie cofanie przekształcania ostatniego i opracowywanie nowych hipotezę i powtórz kroki 2 – 3.
 
-Podstawowy można określić, jeśli przekształcenie miało wpływ prawo jest Użyj inspektorzy. Użyj istniejącego. Użyj inspektorzy z Halo efekt włączona lub uruchamianie wielu inspektorzy do wyświetlania danych w podane punkty w czasie.
+Jest podstawowym sposobem ustalenia, jeśli przekształcenie miało wpływ odpowiednie do użycia inspektorzy. Użyj istniejącej. Inspektorzy korzystanie z Halo efekt włączone lub uruchomienia inspektorami wielu do wyświetlania danych w danej punkty w czasie.
 
-![Inspektor Halo](media/data-prep-getting-started/halo1.PNG) ![Inspektor Halo](media/data-prep-getting-started/halo2.PNG)
+![Inspektor obwódki](media/data-prep-getting-started/halo1.PNG) ![Inspektor obwódki](media/data-prep-getting-started/halo2.PNG)
 
-Aby cofnąć transformację, przejdź na liście kroki po prawej stronie interfejsu użytkownika. (Panelu listę kroków może być konieczne zostać zdjęte ze stosu wstecz wychodzących. Aby go otworzyć, kliknij przycisk wskazanie ostrokątny po lewej stronie). W panelu wybierz przekształcania, które zostało wykonane, które chcesz wycofać. Wybierz z listy rozwijanej po prawej stronie bloku interfejsu użytkownika. Wybierz opcję **Edytuj** do wprowadzania zmian lub **usunąć** do usunięcia z listy kroków i przepływu danych transformacji.
+Aby cofnąć przekształcenie, przejdź na liście kroków po prawej stronie interfejsu użytkownika. (Panelu listę kroków może być konieczne zostać zdjęte ze stosu powrotem. Aby go otworzyć, kliknij przycisk wskazuje ostrokątny po lewej stronie). W panelu wybierz przekształcania, wykonywanego chcesz cofnąć. Wybierz listę rozwijaną po prawej stronie bloku interfejsu użytkownika. Wybierz opcję **Edytuj** zmian lub **Usuń** Usuwanie przekształcenia listę kroków i przepływu danych.
 
 #### <a name="step-5-output"></a>Krok 5: dane wyjściowe 
-Po zakończeniu przygotowania danych, może zapisać przepływu danych wyjściowych. Biblioteka przepływu danych może mieć wielu wyjść. Z menu transformacje można wybrać wyjściowy, który ma zestaw danych do zapisania jako. Można również wybrać miejsce docelowe danych wyjściowych. 
+Po zakończeniu Twojej przygotowywania danych, można napisać przepływu danych do pliku wyjściowego. Przepływ danych może mieć wiele wyjść. Z menu przekształcenia można wybrać, wyjściowy, który chcesz, aby zestaw danych do zapisania jako. Możesz również wybrać miejsce docelowe danych wyjściowych. 
 
-## <a name="list-of-appendices"></a>Lista dodatki 
+## <a name="list-of-appendices"></a>Lista załączników 
 [Dodatek 2 - obsługiwanych źródeł danych](data-prep-appendix2-supported-data-sources.md)  
-[Przekształca dodatku 3 - obsługiwane](data-prep-appendix3-supported-transforms.md)  
-[Inspektorzy obsługiwany dodatek 4.](data-prep-appendix4-supported-inspectors.md)  
-[Dodatek 5 - obsługiwane miejsc docelowych](data-prep-appendix5-supported-destinations.md)  
+[Dodatku 3 - obsługiwane przekształcenia](data-prep-appendix3-supported-transforms.md)  
+[Dodatek 4 - obsługiwani inspektorzy](data-prep-appendix4-supported-inspectors.md)  
+[Dodatek 5 - obsługiwane miejsca docelowe](data-prep-appendix5-supported-destinations.md)  
 [Dodatek 6 - przykładowe wyrażenia filtru w języku Python](data-prep-appendix6-sample-filter-expressions-python.md)  
-[Dodatek 7 - przykładowe przekształcenie wyrażeń przepływu danych w języku Python](data-prep-appendix7-sample-transform-data-flow-python.md)  
+[Dodatek 7 — przykładowe Przekształcanie przepływu danych wyrażenia w języku Python](data-prep-appendix7-sample-transform-data-flow-python.md)  
 [Dodatek 8 - źródła danych przykładowych w języku Python](data-prep-appendix8-sample-source-connections-python.md)  
-[Dodatek 9 — przykładowy docelowy połączenia w języku Python](data-prep-appendix9-sample-destination-connections-python.md)  
-[Dodatek 10 - kolumny próbki przekształca w języku Python](data-prep-appendix10-sample-custom-column-transforms-python.md)  
+[Dodatek 9 - przykładowe połączenia miejsc docelowych w języku Python](data-prep-appendix9-sample-destination-connections-python.md)  
+[Dodatek 10 - kolumny przykładowe transformacje w języku Python](data-prep-appendix10-sample-custom-column-transforms-python.md)  
 
 ## <a name="see-also"></a>Zobacz też
 
-[Zaawansowane danych przygotowania samouczka](tutorial-bikeshare-dataprep.md)
+[Samouczek przygotowywania danych zaawansowane](tutorial-bikeshare-dataprep.md)

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 48e64f0cc65ade870425f73989209e8bef8ec8d5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4c33466af6e57264e02a7d5c298f7f1f9fbf4ed8
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38630290"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717305"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Ustawia Omówienie automatycznego skalowania przy użyciu skali maszyny wirtualnej platformy Azure
 Zestaw skalowania maszyn wirtualnych platformy Azure może automatycznie zwiększyć lub zmniejszyć liczbę wystąpień maszyn wirtualnych, na których działa Twoja aplikacja. To zachowanie automatycznych i elastycznych zmniejsza koszty zarządzania do monitorowania i optymalizowania wydajności aplikacji. Możesz utworzyć zasady, które określają akceptowalny poziom wydajności dla pozytywnych komfort. Po spełnieniu tych zdefiniowanych progów, reguły skalowania automatycznego podjąć działania w celu dostosowania pojemność zestawu skalowania. Można także zaplanować zdarzeń, aby automatycznie zwiększać lub zmniejszyć pojemność zestawu skalowania o stałej razy. Ten artykuł zawiera omówienie metryk wydajności, które są dostępne i jakie akcje skalowania automatycznego można wykonywać.
@@ -90,7 +90,7 @@ Reguły skalowania automatycznego następnie są wyzwalane, gdy metryki są por�
 
 | Operator                 |
 |--------------------------|
-| Więcej niż             |
+| Większe niż             |
 | Większe niż lub równe |
 | Mniej niż                |
 | Mniejsze niż lub równe    |
@@ -106,7 +106,7 @@ Gdy wyzwolenie reguły skalowania automatycznego, zestaw skalowania może automa
 | Zwiększ liczbę o   | Stałej liczby wystąpień maszyn wirtualnych do utworzenia. To przydatne w zestawach skalowania z mniejszej liczby maszyn wirtualnych.                                           |
 | Zwiększ wartość procentową o | Na podstawie wzrostu liczby wystąpień maszyn wirtualnych. Dobre dla większych Ustawia, gdzie stały wzrost może nie znacznie poprawić wydajność. |
 | Zwiększ liczbę do   | Utworzyć wiele wystąpień maszyn wirtualnych są wymagane do uzyskania żądanej maksymalnej wysokości.                                                            |
-| Zmniejsz liczbę do   | Stałej liczby wystąpień maszyn wirtualnych do usunięcia. To przydatne w zestawach skalowania z mniejszej liczby maszyn wirtualnych.                                           |
+| Zmniejsz liczbę o   | Stałej liczby wystąpień maszyn wirtualnych do usunięcia. To przydatne w zestawach skalowania z mniejszej liczby maszyn wirtualnych.                                           |
 | Zmniejsz wartość procentową o | Na podstawie spadku wystąpień maszyn wirtualnych. Dobre dla większych Ustawia, gdzie stały wzrost nie mogą znacznie obniżyć koszty i użycia zasobów. |
 | Zmniejsz liczbę do   | Usunąć, ponieważ wiele wystąpień maszyn wirtualnych są wymagane do uzyskania wymaganej ilości minimalnej.                                                            |
 

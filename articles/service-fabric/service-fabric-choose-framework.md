@@ -1,6 +1,6 @@
 ---
-title: Omówienie modelu programowania sieci szkieletowej usług | Dokumentacja firmy Microsoft
-description: 'Sieć szkieletowa usług oferuje dwie struktury umożliwiający tworzenie usług: framework aktora i w ramach usługi. Oferują one kompromisy różne prostoty i kontroli.'
+title: Omówienie modelu programowania usługi Service Fabric | Dokumentacja firmy Microsoft
+description: 'Usługa Service Fabric oferuje dwie struktury do tworzenia usług: Struktura aktora i w ramach usługi. Oferują one różne wad i zalet prostota i kontrola.'
 services: service-fabric
 documentationcenter: .net
 author: vturecek
@@ -14,58 +14,58 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: a03bb3c74d9c776b893b11c3dec8788fe9ac598c
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f37e1ed2c7dd720e4a77076c8587fdf540b29ca5
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34205976"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44713956"
 ---
-# <a name="service-fabric-programming-model-overview"></a>Omówienie modelu programowania sieci szkieletowej usług
-Sieć szkieletowa usług oferuje wiele sposobów, aby zapisać i zarządzania usługami. Usługi mogą być w pełni korzystać z funkcji platformy i struktury aplikacji przy użyciu interfejsów API usługi sieci szkieletowej. Można także skompilowany program wykonywalny napisane w dowolnym języku lub kodu uruchamianego w kontenerze hostowanych w klastrze usługi sieć szkieletowa usług.
+# <a name="service-fabric-programming-model-overview"></a>Omówienie modelu programowania usługi Service Fabric
+Usługa Service Fabric oferuje wiele sposobów, aby zapisać i zarządzania usługami. Usługi można używać interfejsów API usługi Service Fabric w pełni wykorzystać funkcje platformy i struktury aplikacji. Usługi mogą być także skompilowany program wykonywalny napisane w dowolnym języku lub kodu uruchamianego w kontenerze hostowanych w klastrze usługi Service Fabric.
 
 ## <a name="guest-executables"></a>Pliki wykonywalne gościa
-A [pliku wykonywalnego gościa](service-fabric-guest-executables-introduction.md) jest istniejące, dowolnego pliku wykonywalnego (zapisany w dowolnym języku) może zostać uruchomiony jako usługa w aplikacji. Pliki wykonywalne gościa należy wywoływać bezpośrednio interfejsy API zestawu SDK sieci szkieletowej usług. Jednak one nadal korzystać z funkcji oferuje platformie, takich jak usługi odnajdywania, niestandardowe kondycji i obciążenia raportowania przez wywoływanie interfejsów API REST udostępnianych przez usługi sieć szkieletowa usług. Mają one również pełny cykl życia pomocy technicznej.
+A [pliku wykonywalnego gościa](service-fabric-guest-executables-introduction.md) jest istniejące, dowolnego pliku wykonywalnego (napisane w dowolnym języku), można uruchomić jako usługę w aplikacji. Pliki wykonywalne gościa należy wywoływać bezpośrednio interfejsów API zestawu SDK usługi Service Fabric. Jednak mogą nadal korzystać z funkcji, które oferuje platforma, takich jak usługi odnajdywania, niestandardowe kondycji i obciążenia raportowania przez wywołanie interfejsów API REST udostępniane przez usługę Service Fabric. Mają one również obsługę cyklu życia pełnej aplikacji.
 
 Wprowadzenie do plików wykonywalnych gościa przez wdrożenie pierwszego [aplikacja wykonywalna gościa](service-fabric-deploy-existing-app.md).
 
 ## <a name="containers"></a>Containers
-Domyślnie usługi sieć szkieletowa wdraża i aktywuje usługi jako procesów. Sieć szkieletowa usług można także wdrożyć usług w [kontenery](service-fabric-containers-overview.md). Sieć szkieletowa usług obsługuje wdrażanie kontenery systemu Linux i kontenery systemu Windows w systemie Windows Server 2016. Kontener obrazów można ściągnąć z dowolnym repozytorium kontenera i wdrożone na maszynie. Istniejące aplikacje można wdrożyć jako gość pliki wykonywalne, sieć szkieletowa usług bezstanowych i stanowych niezawodne usługi lub Reliable Actors w kontenerach i usług w kontenerach w tej samej aplikacji i usług w procesach, które można łączyć.
+Domyślnie Usługa Service Fabric wdraża i aktywuje usługi jako procesów. Usługa Service Fabric można także wdrożyć usługi w [kontenery](service-fabric-containers-overview.md). Usługa Service Fabric obsługuje wdrażanie kontenerów systemu Linux i kontenerów Windows w systemie Windows Server 2016. Obrazy kontenerów można pobierane z dowolnym repozytorium kontenerów i wdrożone na maszynie. Istniejące aplikacje można wdrożyć jako plików wykonywalnych gościa usługi Service Fabric bezstanowych lub stanowych usług Reliable services i Reliable Actors w kontenerach, a można łączyć usługi w procesach i usługi w kontenerach w tej samej aplikacji.
 
-[Dowiedz się więcej o containerizing usług w systemie Windows lub Linux](service-fabric-deploy-container.md)
+[Dowiedz się więcej o konteneryzowania usługi Windows lub Linux](service-fabric-deploy-container.md)
 
 ## <a name="reliable-services"></a>Reliable Services
-Niezawodne usługi to platforma lekki do pisania usług, które integrują się z platformy sieć szkieletowa usług i korzystać z pełnego zestawu funkcji platformy. Niezawodne usługi zapewniają minimalny zestaw interfejsów API zezwalające na środowisko uruchomieniowe usługi sieć szkieletowa usług do zarządzania cyklem życia usługi i korzystający z usług do interakcji z środowiska uruchomieniowego. Struktura aplikacji jest minimalny, umożliwiając pełną kontrolę nad opcje projektowania i implementacji i może służyć do hostowania wszelkie inne struktury aplikacji, takich jak ASP.NET Core.
+Usług Reliable Services to architektura lekki dotyczące pisania usługi, które integrują się z platformy usługi Service Fabric oraz korzystać z pełnego zestawu funkcji platformy. Usług Reliable Services zapewniają minimalny zestaw interfejsy API umożliwiające zarządzanie cyklem życia Twoich usług środowiska uruchomieniowego usługi Service Fabric i umożliwiające wchodzić w interakcje ze środowiskiem uruchomieniowym usług. Struktura aplikacji jest minimalny, co daje pełną kontrolę nad opcje projektowania i implementacji i mogą być używane do obsługi żadnych innych strukturę aplikacji, takich jak ASP.NET Core.
 
-Niezawodne usługi może być bezstanowych, podobny do większości platform usługi, takich jak serwery sieci web, w których każde wystąpienie usługi jest tworzony taki sam, a w zewnętrznych rozwiązania, takie jak bazy danych platformy Azure lub magazynu tabel platformy Azure jest trwały stan.
+Usług Reliable Services może być bezstanowe, podobny do większości platform usług, takich jak serwery sieci web, w których każde wystąpienie usługi jest tworzona w taki sam i stanu są utrwalane w rozwiązaniu zewnętrznych, takich jak baza danych Azure lub usługi Azure Table Storage.
 
-Niezawodne usługi można też stanowe, wyłącznie dla sieci szkieletowej usług, których stan jest trwały bezpośrednio w usłudze przy użyciu niezawodnych kolekcji. Stanu wprowadzone wysokiej dostępności przy użyciu replikacji i dystrybuowane za pośrednictwem partycje, wszystkie zarządzane automatycznie przez sieć szkieletowa usług.
+Usług Reliable Services można też stanowy wzajemnie się do usługi Service Fabric, których stan jest trwały bezpośrednio w usłudze, używając elementów Reliable Collections. Stan jest wykonywane o wysokiej dostępności dzięki replikacji i dystrybuowane za pośrednictwem partycjonowanie, wszystkie zarządzane automatycznie przez usługę Service Fabric.
 
-[Dowiedz się więcej o usługach Reliable Services](service-fabric-reliable-services-introduction.md) lub Rozpoczynanie pracy przez [pisanie pierwszej usługi niezawodnego](service-fabric-reliable-services-quick-start.md).
+[Dowiedz się więcej na temat usług Reliable Services](service-fabric-reliable-services-introduction.md) lub zacznij od [pisania pierwszej usługi Reliable](service-fabric-reliable-services-quick-start.md).
 
 ## <a name="aspnet-core"></a>ASP.NET Core
-Platformy ASP.NET Core to nowa open source i międzyplatformowa struktura do tworzenia nowoczesnych aplikacji działających w chmurze podłączonej do Internetu, takich jak aplikacje sieci web, aplikacji IoT i przenośnych zapleczy. Sieć szkieletowa usług integruje się z platformy ASP.NET Core tak zarówno bezstanowe i stanowe platformy ASP.NET Core mogą pisać aplikacje, które wykorzystać kolekcje niezawodnych i usługi sieć szkieletowa aranżacji zaawansowane możliwości.
+ASP.NET Core to nowe środowisko typu open source i dla wielu platform do tworzenia nowoczesnych aplikacji działających w chmurze podłączonej do Internetu, takich jak aplikacje sieci web, aplikacji IoT i zapleczy aplikacji mobilnych. Usługi Service Fabric jest zintegrowany z platformy ASP.NET Core, więc stanowe i bezstanowe platformy ASP.NET Core mogą pisać aplikacje, które korzystać z elementów Reliable Collections i możliwości organizowania zaawansowane usługi Service Fabric.
 
-[Dowiedz się więcej na temat platformy ASP.NET Core w sieci szkieletowej usług](service-fabric-reliable-services-communication-aspnetcore.md) lub Rozpoczynanie pracy przez [pisanie pierwszej aplikacji platformy ASP.NET Core Service Fabric](service-fabric-reliable-services-communication-aspnetcore.md).
+[Dowiedz się więcej na temat platformy ASP.NET Core w usłudze Service Fabric](service-fabric-reliable-services-communication-aspnetcore.md) lub zacznij od [pisania pierwszej aplikacji ASP.NET Core usługi Service Fabric](service-fabric-tutorial-create-dotnet-app.md).
 
 ## <a name="reliable-actors"></a>Reliable Actors
-Wbudowane niezawodne usługi, framework niezawodnego aktora jest struktury aplikacji, która implementuje wzorca aktora wirtualnego, oparte na wzorcu aktora. Platforma niezawodnego aktora korzysta niezależne jednostki zasobów obliczeniowych i stan z jednowątkowego wykonywania o nazwie złośliwych użytkowników. Framework niezawodnego aktora zapewnia komunikacji wbudowanej złośliwych użytkowników i wstępnie ustawiony stan stanu trwałego i skalowalnego w poziomie konfiguracji.
+Zbudowana na podstawie usług Reliable Services, framework Reliable Actor to platforma aplikacji, która implementuje wzorzec wirtualnego aktora, oparte na wzorcu projektowym aktora. Framework Reliable Actor używa niezależnych zespołów mocy obliczeniowej i stan z jednowątkowe wykonywania o nazwie aktorów. Framework Reliable Actor zapewnia komunikacji wbudowanej aktorów i wstępnie ustawionych stan konfiguracji trwałości i skalowalnego w poziomie.
 
-Ponieważ struktury aplikacji w oparciu niezawodne usługi Reliable Actors, jego jest w pełni zintegrowana z platformy sieć szkieletowa usług i korzyści wynikające z pełnym zestawem funkcji oferowanych przez platformę.
+Ponieważ elementów Reliable Actors to struktura aplikacji oparta na usług Reliable Services, jest w pełni zintegrowany z platformy usługi Service Fabric i korzysta z pełnego zestawu funkcji oferowanych przez platformę.
 
-[Dowiedz się więcej o Reliable Actors](service-fabric-reliable-actors-introduction.md) lub Rozpoczynanie pracy przez [pisanie pierwszej usługi niezawodnego aktora](service-fabric-reliable-actors-get-started.md)
+[Dowiedz się więcej o usłudze Reliable Actors](service-fabric-reliable-actors-introduction.md) lub zacznij od [pisania pierwszej usługi Reliable Actor](service-fabric-reliable-actors-get-started.md)
 
 
 [Tworzenie usługi frontonu przy użyciu platformy ASP.NET Core](service-fabric-reliable-services-communication-aspnetcore.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Omówienie sieci szkieletowej usług i kontenerów](service-fabric-containers-overview.md)
+[Omówienie usługi Service Fabric i kontenery](service-fabric-containers-overview.md)
 
-[Niezawodne usługi — omówienie](service-fabric-reliable-services-introduction.md)
+[Omówienie usług Reliable Services](service-fabric-reliable-services-introduction.md)
 
-[Niezawodne podmiotów — omówienie](service-fabric-reliable-actors-introduction.md)
+[Omówienie elementów Reliable Actors](service-fabric-reliable-actors-introduction.md)
 
-[Sieć szkieletowa usług i ASP.NET Core ](service-fabric-reliable-services-communication-aspnetcore.md)
+[Usługa Service Fabric i programu ASP.NET Core ](service-fabric-reliable-services-communication-aspnetcore.md)
 
 
 

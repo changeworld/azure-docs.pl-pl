@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/12/2018
 ms.author: mabrigg
-ms.openlocfilehash: cea59d061dadfa3e10330cbce7b6005a286524cc
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 975c5c2c5f0da7a6db946c6d1032b485947134d2
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024170"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717710"
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>Korzystanie z portalu administratora w usłudze Azure Stack
 
@@ -70,7 +70,7 @@ Portale administratora i użytkownika są wspierane przez osobnych wystąpień u
 
 ### <a name="customize-the-dashboard"></a>Dostosowywanie pulpitu nawigacyjnego
 
-Pulpit nawigacyjny zawiera zestaw domyślnych kafelków. Możesz wybrać **Edytuj pulpit nawigacyjny** zmodyfikować domyślny pulpit nawigacyjny, lub wybierz **nowy pulpit nawigacyjny** można dodać niestandardowy pulpit nawigacyjny. Możesz łatwo dodać Kafelki do pulpitu nawigacyjnego. Na przykład, możesz wybrać **New**, kliknij prawym przyciskiem myszy **oferty i plany**, a następnie wybierz pozycję **Przypnij do pulpitu nawigacyjnego**.
+Pulpit nawigacyjny zawiera zestaw domyślnych kafelków. Możesz wybrać **Edytuj pulpit nawigacyjny** zmodyfikować domyślny pulpit nawigacyjny, lub wybierz **nowy pulpit nawigacyjny** można dodać niestandardowy pulpit nawigacyjny. Możesz łatwo dodać Kafelki do pulpitu nawigacyjnego. Na przykład, możesz wybrać **+ Utwórz zasób**, kliknij prawym przyciskiem myszy **oferty i plany**, a następnie wybierz pozycję **Przypnij do pulpitu nawigacyjnego**.
 
 ### <a name="quick-access-to-online-documentation"></a>Szybki dostęp do dokumentacji online
 

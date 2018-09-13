@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
 ms.topic: conceptual
-ms.date: 09/12/2017
+ms.date: 09/11/2018
 ms.author: lizross
 ms.custom: it-pro
-ms.openlocfilehash: bdc8754253ce2567d957b4d6240fe52242aea2ea
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: d84c3b556f27366c249382a37e0a8227726110cf
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37450012"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714688"
 ---
 # <a name="managing-owners-for-a-group"></a>Zarządzanie właścicielami grupy
 Gdy właściciel zasobu ma przypisany dostęp do tego zasobu do grupy usługi Azure AD, członkostwo w grupie jest zarządzana przez właściciela grupy. Właściciel zasobu przekazuje skutecznie uprawnienia do przypisywania użytkowników do zasobów do właściciela grupy.
@@ -42,6 +42,6 @@ Te artykuły zawierają dodatkowe informacje o usłudze Azure Active Directory.
 
 * [Zarządzanie dostępem do zasobów za pomocą grup usługi Azure Active Directory](active-directory-manage-groups.md)
 * [Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy](../users-groups-roles/groups-settings-cmdlets.md)
-* [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](../active-directory-apps-index.md)
+* [Zarządzanie aplikacjami w usłudze Azure Active Directory](../manage-apps/what-is-application-management.md)
 * [Co to jest usługa Azure Active Directory?](active-directory-whatis.md)
 * [Integrowanie tożsamości lokalnych z usługą Azure Active Directory](../connect/active-directory-aadconnect.md)

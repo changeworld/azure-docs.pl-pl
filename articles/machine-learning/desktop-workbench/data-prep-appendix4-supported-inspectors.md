@@ -1,36 +1,36 @@
 ---
-title: Obsługiwane inspektorzy dostępna w programie Azure Machine Learning danych przygotowanie | Dokumentacja firmy Microsoft
-description: Ten dokument zawiera pełną listę inspektorzy dostępne w celu przygotowania danych usługi Azure Machine Learning
+title: Obsługiwane inspektorzy dostępne usługi Azure Machine Learning danych przygotowanie | Dokumentacja firmy Microsoft
+description: Ten dokument zawiera listę wszystkich inspektorzy dostępne podczas przygotowywania danych usługi Azure Machine Learning
 services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: ca9b46335105e62b023e7db16e0ead4061fbfd00
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: ef5f6f3dc7ae0c555b2afe000b54c443313800f1
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830718"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35649351"
 ---
-# <a name="supported-inspectors-for-the-azure-machine-learning-data-preparation-preview"></a>Obsługiwane inspektorzy dla usługi Azure Machine Learning przygotowywania danych z wersji zapoznawczej
-W tym dokumencie przedstawiono zbiór inspektorzy, które są dostępne w tej wersji zapoznawczej.
+# <a name="supported-inspectors-for-the-azure-machine-learning-data-preparation-preview"></a>Obsługiwane inspektorzy dla usługi Azure Machine Learning przygotowywania danych w wersji zapoznawczej
+W tym dokumencie przedstawiono zestaw inspektorzy, które są dostępne w tej wersji zapoznawczej.
 
 ## <a name="the-halo-effect"></a>Efekt obwódki 
-Niektóre inspektorzy obsługuje otoczek. W tym celu używa dwóch różnych kolorów, aby natychmiast wyświetlić zmianę wizualnie transformacji. Kolor szary reprezentuje wartość przed najnowsze transformacji i niebieski pokazuje bieżącą wartość. W tym celu może być włączony i wyłączone w opcji.
+Niektóre inspektorzy obsługuje obwódkę. Ten efekt używa dwóch różnych kolorów, aby natychmiast wyświetlić zmiany wizualne z transformacji. Kolor szary reprezentuje wartość przed Przekształcanie najnowsze i niebieski pokazuje bieżącą wartość. Ten efekt można włączyć i wyłączyć w opcjach.
 
-## <a name="graphical-filtering"></a>Filtrowanie graficznego 
-Filtrowanie danych za pomocą Inspektora edytorem niektóre inspektorzy obsługiwane. Za pomocą Inspektora edytorem obejmuje zaznaczając elementy graficzne, a następnie za pomocą narzędzi w prawej górnej części okna inspektora do filtrowania przychodzący lub wychodzący wybranych wartości. 
+## <a name="graphical-filtering"></a>Filtrowanie graficzne 
+Niektóre inspektorów obsługuje filtrowanie danych przy użyciu Inspektora jako edytora. Inspektor jako edytor, którego obejmuje wybierania elementów graficznych, a następnie przy użyciu narzędzi w prawej górnej części okna inspektora do filtrowania wewnątrz lub na zewnątrz wybranych wartości. 
 
-## <a name="column-statistics"></a>Statystyk kolumny
-Dla kolumny liczbowe Ten inspektor zawiera szereg różnych statystyki dotyczące kolumny. Statystyka zawiera następujące pomiary: 
+## <a name="column-statistics"></a>Statystyki kolumn
+W przypadku kolumny liczbowe Ten inspektor zapewnia szereg różnych statystyki dotyczące kolumny. Statystyka zawiera następujące pomiary: 
 - Minimalne
 - Niższe kwartyl
 - Mediana
@@ -44,44 +44,44 @@ Dla kolumny liczbowe Ten inspektor zawiera szereg różnych statystyki dotycząc
 - Brak
 
 ## <a name="histogram"></a>Histogram 
-Oblicza i wyświetla histogram pojedynczej kolumny liczbowe. Domyślna liczba zasobników jest obliczana przy użyciu reguły Scotta. Jednak można zastąpić reguły za pomocą opcji.
+Oblicza i wyświetla histogram pojedynczej kolumny liczbowej. Domyślna liczba przedziałów jest obliczana przy użyciu reguły Scotta. Jednak reguły można zastąpić za pomocą opcji.
 
-Ten inspektor obsługuje otoczek.
+To narzędzie Inspector obsługuje obwódkę.
 
 
 ### <a name="options"></a>Opcje
-- Minimalna liczba zasobników (ma zastosowanie, nawet gdy bucketing domyślny jest zaznaczone)
-- Domyślna liczba zasobników (Scotta reguła) 
-- Pokaż halo
-- Nakładka kreślenia gęstość jądra (Gaussa jądra) 
+- Minimalna liczba przedziałów (ma zastosowanie, nawet gdy obsługą zasobników domyślny jest zaznaczone)
+- Domyślna liczba zasobników (reguła Scotta) 
+- Pokaż obwódkę
+- Nakładka wykres gęstość jądra (Gaussa jądra) 
 - Użyj skali logarytmicznej
 
 
 ### <a name="actions"></a>Akcje
-Ten inspektor obsługuje filtrowanie za pośrednictwem pakiety, które mogą obejmować zasobników pojedynczego lub wielokrotnego wyboru. Zastosuj filtry, jak opisano wcześniej.
+To narzędzie inspector obsługuje filtrowanie za pomocą zasobników, które mogą obejmować zasobników pojedynczego lub wielokrotnego wyboru. Zastosuj filtry, jak opisano wcześniej.
 
 ## <a name="value-counts"></a>Wartość liczby
-Ten inspektor przedstawia częstotliwość tabeli wartości dla aktualnie wybranej kolumny. Górny sześciu wartości są wyświetlane domyślne. Można jednak zmienić limit na dowolną liczbę. Można również ustawić widok, aby liczba od dołu zamiast podklauzuli top. Ten inspektor obsługuje otoczek.
+Ten inspektor przedstawia tabelę częstotliwość wartości dla kolumny, która jest aktualnie wybrany. Największe wartości sześciu jest domyślnym wyświetlaniem. Można jednak zmienić limit na dowolną liczbę. Można również ustawić wyświetlany obraz do potrzeb są liczone od dołu zamiast u góry. To narzędzie inspector obsługuje obwódkę.
 
 ### <a name="options"></a>Opcje 
-- Liczba wartości górnej
+- Liczba górny — wartości
 - Malejąco
-- Zawierają wartości null/błędów
-- Pokaż halo
+- Zawierają wartości null/błąd
+- Pokaż obwódkę
 - Użyj skali logarytmicznej
 
 
 ### <a name="actions"></a>Akcje 
-Ten inspektor obsługuje filtrowanie za pośrednictwem paski, które mogą obejmować paski pojedynczego lub wielokrotnego wyboru. Zastosuj filtry, jak opisano wcześniej.
+To narzędzie inspector obsługuje filtrowanie za pomocą pasków, które mogą obejmować paski pojedynczego lub wielokrotnego wyboru. Zastosuj filtry, jak opisano wcześniej.
 
 ## <a name="box-plot"></a>Wykres skrzynkowy 
-Pole kreślenia wąsami kolumny liczbowej.
+Wykres whisker pole kolumny liczbowej.
 
 ### <a name="options"></a>Opcje 
 - Grupuj według kolumny
 
 ## <a name="scatter-plot"></a>Wykres punktowy
-Wykres punktowy dla dwóch kolumn liczbowych. Dane są próbkowane w dół ze względu na wydajność. Rozmiar próbki mogą zostać zastąpione w opcjach.
+Wykres punktowy dla dwóch kolumn liczbowych. Dane są próbkowana w dół ze względu na wydajność. Rozmiar próbki mogą zostać zastąpione w opcjach.
 
 ### <a name="options"></a>Opcje  
 - Kolumna osi x
@@ -91,44 +91,44 @@ Wykres punktowy dla dwóch kolumn liczbowych. Dane są próbkowane w dół ze wz
 
 
 ## <a name="time-series"></a>Szeregów czasowych
-Wykres liniowy z funkcją rozpoznawanie czasu na osi x.
+Wykres liniowy, przy użyciu rozpoznawania godziny na osi x.
 
 ### <a name="options"></a>Opcje
-- Data kolumny
+- Kolumna dat
 - Kolumny liczbowej
 - Rozmiar próbki
 
 
 ### <a name="actions"></a>Akcje
-Ten inspektor obsługuje filtrowanie przy użyciu metody select kliknij i przeciągnij, aby wybrać zakres na wykresie. Po zakończeniu wyboru Zastosuj filtry, jak opisano wcześniej.
+To narzędzie inspector obsługuje filtrowanie za pomocą metody wybierz kliknij i przeciągnij, aby wybrać zakres na wykresie. Po zakończeniu wyboru Zastosuj filtry, jak opisano wcześniej.
 
 
 ## <a name="map"></a>Mapa 
-Mapa punktów, które są kreślone, przy założeniu, że zostały określone współrzędne geograficzne. Najpierw należy wybrać szerokości geograficznej.
+Mapa punkty, które są oznaczane na wykresach, przy założeniu, że długość i szerokość geograficzną, które zostały określone. Najpierw należy wybrać szerokości geograficznej.
 
 ### <a name="options"></a>Opcje
 - Szerokość kolumny
-- Długość geograficzna kolumny
+- Kolumna szerokości geograficznej
 - Klastrowanie w
 - Grupuj według kolumny
 
 
 ### <a name="actions"></a>Akcje
-Ten inspektor obsługuje filtrowanie za pośrednictwem wyboru punktu na mapie. Naciśnij klawisz **Ctrl** klucza, a następnie kliknij i przeciągnij za pomocą myszy do utworzenia kwadrat wokół punktów. Następnie Zastosuj filtry, jak opisano wcześniej.
+To narzędzie inspector obsługuje filtrowanie za pośrednictwem punktu zaznaczenia na mapie. Naciśnij klawisz **Ctrl** klucz, a następnie kliknij i przeciągnij myszą w celu utworzenia kwadrat wokół punktów. Następnie Zastosuj filtry, jak opisano wcześniej.
 
-Można szybko rozmiar mapę, aby pokazać tylko te punkty możliwe przez naciśnięcie przycisku **E** po lewej stronie mapy.
+Rozmiar można szybko mapę, aby pokazać tylko możliwych punktów, naciskając klawisz **E** po lewej stronie mapy.
 
 
-## <a name="pattern-frequency"></a>Częstotliwość wzorca 
+## <a name="pattern-frequency"></a>Częstotliwość wzorzec 
 
-Ten inspektor pokazuje listę wzorców w zaznaczonej kolumnie ciągu. Wzorce są przedstawiane za pomocą składni wyrażenia regularnego. Kursor myszy na wzorcu przedstawiono przykładowe wartości reprezentowany przez ten wzorzec. Wraz z wzorców wyświetlane są również przybliżonej ubezpieczenia w postaci wartości procentowej.
+To narzędzie inspector to lista wzorców w zaznaczonej kolumnie ciągu. Wzorce są reprezentowane za pomocą wyrażeń regularnych, takie jak składnia. Przenosząc kursor myszy na wzorcu przedstawiono przykładowe wartości, reprezentowane przez ten wzorzec. Wraz z wzorców jest również wyświetlany przybliżony ubezpieczenia w postaci wartości procentowej.
 
-![Obraz inspektora wzorca](media/data-prep-appendix4-supported-inspectors/PatternInspectorProductNumber.png)
+![Obraz inspektora wzorzec](media/data-prep-appendix4-supported-inspectors/PatternInspectorProductNumber.png)
 
 ### <a name="options"></a>Opcje
-- Liczba wartości górnej
+- Liczba górny — wartości
 - Malejąco
-- Pokaż halo
+- Pokaż obwódkę
 
 ### <a name="actions"></a>Akcje
-Ten inspektor obsługuje filtrowanie na podstawie wzorców wyświetlane. Naciśnij klawisz **Ctrl** klucza, a następnie wybierz wypełniony paski inspektora wzorca. Następnie Zastosuj filtry, jak opisano wcześniej. W wyniku acion użytkownik zostanie dodany do kroku filtru zaawansowanego. Możesz wyświetlić i zmodyfikować wygenerowanego kodu Python za pomocą opcji edycji filtru zaawansowanego etapu.
+To narzędzie inspector obsługuje filtrowanie na podstawie wzorców wyświetlane. Naciśnij klawisz **Ctrl** klucza, a następnie wybierz wypełnionymi paskami w Inspektorze wzorca. Następnie Zastosuj filtry, jak opisano wcześniej. W wyniku acion użytkownika zostanie dodany do kroku filtru zaawansowanego. Można wyświetlić i zmodyfikować wygenerowany kod języka Python za pomocą wywołania opcji Edytuj krok filtru zaawansowanego.

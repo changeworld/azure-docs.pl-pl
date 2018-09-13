@@ -8,12 +8,12 @@ ms.service: security
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: meladie
-ms.openlocfilehash: 9ee5bf94b13b671dc6be89ce07c37d28d24650db
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: fbab6d1f35aeb2d81581b39b19a6ea93214f3486
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37908105"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719549"
 ---
 # <a name="azure-security-and-compliance-blueprint-analytics-for-pci-dss"></a>Zabezpieczenia platformy Azure i zgodności planu: analiza PCI DSS
 
@@ -31,7 +31,7 @@ Tych samych zabezpieczeń platformy Azure i zgodności planu zapewnia platforma 
 
 Platforma Azure oferuje szereg usług raportowania i analizy dla klientów. To rozwiązanie obejmuje usługi Azure Machine Learning w połączeniu z usługi Azure SQL Database, aby szybko przeglądać dane i dostarczać wyniki szybciej przy użyciu modelowania pozwalają na sprawną. Usługa Azure Machine Learning zwiększa szybkość zapytania odnajdywania nowe relacje między zestawami danych. Po danych ma przeszkoleni za pośrednictwem kilku funkcji statystycznych, maksymalnie 7 zapytania dodatkowych pul (8 całkowity, łącznie z serwerem klienta) mogą być synchronizowane z tych samych modeli tabelarycznych rozkładu obciążeń związanych z zapytaniami i zmniejszyć czas reakcji.
 
-Rozszerzone analiza i raportowanie Azure SQL Database można skonfigurować na indeksach magazynu kolumn. Usługi Azure Machine Learning i Azure SQL Database można skalować w górę i w dół lub całkowicie wyłączony w odpowiedzi do użycia przez klientów. Cały ruch SQL jest szyfrowany przy użyciu protokołu SSL przez dołączenie certyfikaty z podpisem własnym. Najlepszym rozwiązaniem jest Azure zaleca się korzystanie z zaufanego urzędu certyfikacji w celu uzyskania zwiększonych zabezpieczeń.
+Ulepszoną analizę i raportowanie baz danych Azure SQL Database można skonfigurować na indeksach magazynu kolumn. Zarówno usługi Azure Machine Learning i Azure SQL bazy danych można skalować w górę i w dół lub całkowicie wyłączony w odpowiedzi do użycia przez klientów. Cały ruch SQL jest szyfrowany przy użyciu protokołu SSL przez dołączenie certyfikaty z podpisem własnym. Najlepszym rozwiązaniem jest Azure zaleca się korzystanie z zaufanego urzędu certyfikacji w celu uzyskania zwiększonych zabezpieczeń.
 
 Gdy dane są przekazywane do usługi Azure SQL Database i odpowiednio przeszkoleni przez usługi Azure Machine Learning, jest rozłożona się przez użytkownika operacyjną i administratora SQL/danych dzięki usłudze Power BI. Usługa Power BI wyświetla dane intuicyjnie i zbiera informacje o różnych wiele zestawów danych, aby narysować bardziej szczegółowe analizy dotyczące. Jego wysoki stopień zdolności adaptacyjnych i Łatwa integracja z usługą Azure SQL Database gwarantuje, czy klienci mogą skonfigurować go do obsługi szerokiej gamy scenariuszy zgodnie z wymogami swoich potrzeb biznesowych.
 

@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.date: 07/09/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: afc53fc1abce74b247ec2e25bc3e4845bc870860
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 9e743dc2d5b6c2305bf071fecec58fcf13d5c92e
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380203"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717730"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Przezroczyste szyfrowanie danych dla bazy danych SQL i magazynu danych
 
-Przezroczyste szyfrowanie danych (TDE) ułatwia ochronę przed złośliwymi działaniami usługi Azure SQL Database i Azure Data Warehouse. Wykonuje w czasie rzeczywistym szyfrowanie i odszyfrowywanie bazy danych, skojarzonych kopii zapasowych i plików dziennika transakcji w stanie spoczynku bez konieczności wprowadzania zmian do aplikacji. Domyślnie funkcja TDE jest włączona dla wszystkich nowo wdrożonym Azure baz danych SQL. Funkcja TDE nie może być używane do szyfrowania logicznej **wzorca** bazy danych w bazie danych SQL.  **Wzorca** baza danych zawiera obiekty, które są wymagane do wykonywania operacji TDE w bazach danych użytkownika.
+Przezroczyste szyfrowanie danych (TDE) ułatwia ochronę przed złośliwymi działaniami usługi Azure SQL Database i Azure Data Warehouse. Wykonuje w czasie rzeczywistym szyfrowanie i odszyfrowywanie bazy danych, skojarzonych kopii zapasowych i plików dziennika transakcji w stanie spoczynku bez konieczności wprowadzania zmian do aplikacji. Domyślnie funkcja TDE jest włączona dla wszystkich nowo wdrożonym baz danych Azure SQL. Funkcja TDE nie może być używane do szyfrowania logicznej **wzorca** bazy danych w bazie danych SQL.  **Wzorca** baza danych zawiera obiekty, które są wymagane do wykonywania operacji TDE w bazach danych użytkownika.
 
 Funkcja TDE będzie musiał zostać włączona ręcznie dla starszych baz danych lub usługi Azure SQL Data Warehouse.  
 

@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 097eba4f5bcbb74d4158cc8d4135255d31e03ebd
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 4e1456064e35b55871638e9eeb34859194cb869b
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027014"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714908"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>Omówienie akceleratora rozwiązań do zdalnego monitorowania
 
@@ -50,7 +50,7 @@ Można udostępnić fizyczne urządzenia z poziomu pulpitu nawigacyjnego w porta
 
 ### <a name="device-simulation-microservice"></a>Mikrousługi symulacji urządzenia
 
-Rozwiązanie obejmuje [mikrousług symulacji urządzenia](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/device-simulation) to pozwala zarządzać pulę symulowane urządzenia z poziomu pulpitu nawigacyjnego rozwiązania w celu przetestowania przepływu end-to-end w rozwiązaniu. Symulowane urządzenia:
+Rozwiązanie obejmuje [mikrousług symulacji urządzenia](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/device-simulation) , pozwala na zarządzanie pulę symulowane urządzenia z portalu rozwiązania w celu przetestowania przepływu end-to-end w rozwiązaniu. Symulowane urządzenia:
 
 * Generowania danych telemetrycznych z urządzenia do chmury.
 * Odpowiadanie na wywołania metody chmury do urządzenia z usługi IoT Hub.
@@ -87,9 +87,9 @@ Ta usługa jest również uruchamiane usługi IoT Hub zapytania, aby pobrać urz
 
 Mikrousługi udostępnia punkt końcowy usługi RESTful do zarządzania urządzeniami i bliźniacze reprezentacje urządzeń, wywoływanie metod i uruchamianie zapytań usługi IoT Hub.
 
-### <a name="telemetry-microservice"></a>Mikrousługi telemetrii
+### <a name="device-telemetry-microservice"></a>Mikrousługi telemetrii urządzenia
 
-[Mikrousług telemetrii](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/device-telemetry) udostępnia punkt końcowy usługi RESTful dostępu do danych telemetrycznych z urządzenia, wykonywanie operacji CRUD na reguły i odczytu/zapisu dla definicje alarmowego odczytu z magazynu.
+[Mikrousług telemetrii urządzenia](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/device-telemetry) udostępnia punkt końcowy usługi RESTful dostęp do odczytu do danych telemetrycznych z urządzenia, przechowywane w usłudze Time Series Insights. Punktem końcowym RESTful umożliwia również wykonywanie operacji CRUD na zasady oraz odczytu i zapisu, aby uzyskać definicje alarmowego z magazynu.
 
 ### <a name="storage-adapter-microservice"></a>Mikrousługi adapter magazynu
 
@@ -99,21 +99,27 @@ Wartości są uporządkowane w kolekcjach. Można pracować na osobne wartości 
 
 Usługa zapewnia punkt końcowy usługi RESTful dla operacji CRUD na parach klucz wartość. Wartości
 
-### <a name="cosmos-db"></a>Cosmos DB
+### <a name="azure-cosmos-db"></a>Azure Cosmos DB
 
-Standardowe wdrożenie akcelerator rozwiązań używa [usługi Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) jako jego Usługa magazynu głównego.
+Użyj wdrożenia akcelerator rozwiązań [usługi Azure Cosmos DB](https://docs.microsoft.com/azure/cosmos-db/) do przechowywania reguł, alarmy, ustawienia konfiguracji i wszystkie inne zimnego magazynu.
 
 ### <a name="azure-stream-analytics-manager-microservice"></a>Mikrousługi Menedżera usługi Azure Stream Analytics
 
 [Mikrousług Menedżer usłudze Azure Stream Analytics](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/asa-manager) zarządza zadaniami na platformie Azure Stream Analytics (ASA), wraz z ustawieniem ich konfiguracji, uruchamianie i zatrzymywanie je oraz monitorowanie ich stanu.
 
-Zadanie ASA jest obsługiwana przez dwa zestawy danych referencyjnych. Jeden zestaw danych określa reguły i definiuje jedną grup urządzeń. Dane referencyjne reguły jest generowany na podstawie informacji o zarządzanych przez mikrousług telemetrii. Mikrousługi Menedżer usłudze Azure Stream Analytics przekształca dane telemetryczne reguły w logikę przetwarzania strumieni.
+Zadanie ASA jest obsługiwana przez dwa zestawy danych referencyjnych. Jeden zestaw danych określa reguły i definiuje jedną grup urządzeń. Dane referencyjne reguły jest generowany na podstawie informacji o zarządzanych przez mikrousług telemetrii urządzenia. Mikrousługi Menedżer usłudze Azure Stream Analytics przekształca dane telemetryczne reguły w logikę przetwarzania strumieni.
 
 Dane referencyjne grup urządzeń jest używany do identyfikowania grupy reguł do zastosowania do wiadomości przychodzących danych telemetrycznych. Grupy urządzeń są zarządzane przez mikrousług konfiguracji i używać zapytań bliźniaczych reprezentacji urządzeń w usłudze Azure IoT Hub.
+
+Zadania usługi ASA dostarczać dane telemetryczne z podłączonych urządzeń do usługi Time Series Insights magazynu i analizy.
 
 ### <a name="azure-stream-analytics"></a>Usługa Azure Stream Analytics
 
 [Usługa Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/) to aparat przetwarzania zdarzeń, który można badać duże ilości danych przesyłanych strumieniowo z urządzeń.
+
+### <a name="azure-time-series-insights"></a>Azure Time Series Insights
+
+[Usługa Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/) magazynów danych telemetrycznych z urządzeń połączonych z usługą akcelerator rozwiązań. Umożliwia ona także wizualizowanie i wykonywania zapytań względem danych telemetrycznych z urządzenia w rozwiązaniu internetowym interfejsie użytkownika.
 
 ### <a name="configuration-microservice"></a>Mikrousługi konfiguracji
 
@@ -125,7 +131,7 @@ Dane referencyjne grup urządzeń jest używany do identyfikowania grupy reguł 
 
 ### <a name="azure-active-directory"></a>Usługa Azure Active Directory
 
-Standardowe wdrożenie akcelerator rozwiązań używa [usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) jako dostawcy OpenID Connect. Usługa Azure Active Directory są przechowywane informacje o użytkowniku i zapewnia, że certyfikaty do weryfikacji tokenów JWT token sygnatury. 
+Użyj wdrożenia akcelerator rozwiązań [usługi Azure Active Directory](https://docs.microsoft.com/azure/active-directory/) jako dostawcy OpenID Connect. Usługa Azure Active Directory są przechowywane informacje o użytkowniku i zapewnia, że certyfikaty do weryfikacji tokenów JWT token sygnatury.
 
 ## <a name="presentation"></a>Prezentacja
 
@@ -142,13 +148,15 @@ Interfejs użytkownika przedstawia wszystkie funkcje akcelerator rozwiązań i k
 * Mikrousługi uwierzytelniania i autoryzacji, aby chronić dane użytkownika.
 * Mikrousługi Menedżera usługi IoT Hub do listy i zarządzanie urządzeniami IoT.
 
+Interfejs użytkownika jest zintegrowany z Eksploratora usługi Azure Time Series Insights umożliwiające wykonywanie zapytań i analizy danych telemetrycznych z urządzenia.
+
 Mikrousługi konfiguracji umożliwia interfejsu użytkownika do przechowywania i pobierania ustawień konfiguracji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 Jeśli chcesz, zapoznaj się z dokumentacją źródłowych kodu i dla deweloperów, Rozpocznij od jednego z dwóch repozytoriów GitHub:
 
-* [Akcelerator rozwiązań do monitorowania zdalnego za pomocą usługi Azure IoT (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/).
+* [Akcelerator rozwiązań do monitorowania zdalnego za pomocą usługi Azure IoT (.NET)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet).
 * [Akcelerator rozwiązań do zdalnego monitorowania za pomocą usługi Azure IoT (Java)](https://github.com/Azure/azure-iot-pcs-remote-monitoring-java).
 
 Szczegółowe diagramów architektury rozwiązania:

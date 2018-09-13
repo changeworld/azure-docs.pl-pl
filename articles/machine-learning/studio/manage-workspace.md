@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie obszaru roboczego usługi Machine Learning | Dokumentacja firmy Microsoft
-description: Zarządzanie dostępem do usługi Azure Machine Learning obszary robocze oraz wdrażania i zarządzania nimi usług sieci web interfejsu API uczenia Maszynowego
+title: Zarządzanie obszarem roboczym usługi Machine Learning | Dokumentacja firmy Microsoft
+description: Zarządzanie dostępem do obszarów roboczych usługi Azure Machine Learning, wdrażanie i zarządzanie usługami sieci web interfejsu API uczenia Maszynowego
 services: machine-learning
 documentationcenter: ''
 author: heatherbshapiro
@@ -15,43 +15,43 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 02/27/2017
-ms.openlocfilehash: 8c8e65d5fd7efd1f9212b76e1a72b91a0ea07272
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 6e1febfff211dd92f8990d1880562e64382de5f0
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34835070"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35649267"
 ---
 # <a name="manage-an-azure-machine-learning-workspace"></a>Zarządzanie obszarem roboczym usługi Azure Machine Learning
 
 > [!NOTE]
-> Informacje na temat zarządzania usługami sieci Web w portalu usługi sieci Web usługi Machine Learning, zobacz [zarządzania usługi sieci Web przy użyciu portalu usługi sieci Web systemu Azure Machine Learning](manage-new-webservice.md).
+> Aby uzyskać informacje o zarządzaniu usługami sieci Web w portalu usług sieci Web Machine Learning, zobacz [Zarządzanie usługą sieci Web przy użyciu portalu usług sieci Web Azure Machine Learning](manage-new-webservice.md).
 > 
 > 
 
-Możesz zarządzać obszarów roboczych uczenia maszynowego w portalu Azure.
+Możesz zarządzać obszarami roboczymi usługi Machine Learning, w witrynie Azure portal.
 
 [!INCLUDE [machine-learning-free-trial](../../../includes/machine-learning-free-trial.md)]
 
 ## <a name="use-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
-Aby zarządzać obszaru roboczego w portalu Azure:
+Aby zarządzanie obszarem roboczym w witrynie Azure portal:
 
-1. Zaloguj się do [portalu Azure](https://portal.azure.com/) przy użyciu konta administratora subskrypcji platformy Azure.
-2. W polu wyszukiwania w górnej części strony wprowadź "komputera learning obszary robocze", a następnie wybierz **obszarów roboczych Machine Learning**.
-3. Kliknij obszar roboczy, którą chcesz zarządzać.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu konta administratora subskrypcji platformy Azure.
+2. W polu wyszukiwania w górnej części strony, wprowadź "maszyna obszarów roboczych uczenia", a następnie wybierz pozycję **Machine Learning w obszarach roboczych**.
+3. Kliknij obszar roboczy, który chcesz zarządzać.
 
-Oprócz informacji o zarządzaniu standardowych zasobów i dostępne opcje można:
+Oprócz informacji o zarządzaniu standardowych zasobów i dostępnych opcji możesz wykonywać następujące czynności:
 
-- Widok **właściwości** — ta strona zawiera informacje dotyczące obszaru roboczego i zasobów, a można zmienić ten obszar roboczy jest połączony z grupą subskrypcji i zasobu.
-- **Ponownej synchronizacji magazynu kluczy** -obszar roboczy obsługuje kluczy do konta magazynu. Jeśli zmienia się na koncie magazynu kluczy, a następnie kliknięcie **ponownej synchronizacji kluczy** zsynchronizować klucze z obszaru roboczego.
+- Widok **właściwości** — ta strona wyświetla informacje o obszarze roboczym i zasobów, i możesz zmienić subskrypcję i grupę zasobów, ten obszar roboczy jest połączony z.
+- **Ponownie Synchronizuj klucze magazynu** — obszar roboczy przechowuje klucze do konta magazynu. Jeśli zmieni się na koncie magazynu kluczy, a następnie kliknięcie **ponowna synchronizacja kluczy** do zsynchronizowania kluczy z obszaru roboczego.
 
-Aby zarządzać usługami sieci web skojarzony z tym obszarem roboczym, należy korzystać z portalu usługi sieci Web usługi Machine Learning. Zobacz [zarządzania usługi sieci Web przy użyciu portalu usługi sieci Web systemu Azure Machine Learning](manage-new-webservice.md) pełne informacje.
+Aby zarządzać usługami sieci web skojarzony z tym obszarem roboczym, użyj portalu usług sieci Web Machine Learning. Zobacz [Zarządzanie usługą sieci Web przy użyciu portalu usług sieci Web Azure Machine Learning](manage-new-webservice.md) pełne informacje.
 
 > [!NOTE]
-> Aby wdrożyć lub zarządzać nowych usług sieci web musi mieć przypisaną rolę współautora lub administrator w subskrypcji, w której wdrażana jest usługa sieci web. Jeśli musisz poprosić innego użytkownika do obszaru roboczego uczenia maszynowego, należy je przypisać do roli współautora lub administratora dla subskrypcji przed wdrożeniem lub zarządzania usługami sieci web. 
+> Do wdrażania i zarządzania nią nowych usług sieci web musi mieć przypisaną rolę współautorem lub administratorem subskrypcji, w której wdrażana jest usługa sieci web. Jeśli użytkownik Zaproś innego użytkownika do obszaru roboczego usługi machine learning, należy przypisać je do roli administratora lub współautora w subskrypcji, przed wdrożeniem lub zarządzać usługami sieci web. 
 > 
->Aby uzyskać więcej informacji o ustawianiu uprawnień dostępu, zobacz [Wyświetl przypisania dostępu dla użytkowników i grup w portalu Azure](../../role-based-access-control/role-assignments-users.md).
+>Aby uzyskać więcej informacji o ustawianiu uprawnień dostępu, zobacz [zarządzanie dostępem przy użyciu RBAC i witryny Azure portal](../../role-based-access-control/role-assignments-portal.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [wdrażanie uczenie maszynowe Azure Resource Manager szablony](deploy-with-resource-manager-template.md). 
+* Dowiedz się więcej o [wdrażanie uczenie maszynowe przy użyciu szablonów usługi Azure Resource Manager](deploy-with-resource-manager-template.md). 

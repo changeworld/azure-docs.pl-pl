@@ -8,14 +8,14 @@ manager: jeconnoc
 ms.service: azure-functions
 ms.custom: vs-azure
 ms.topic: conceptual
-ms.date: 05/23/2018
+ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 39745991f7ab3b181f892bbaa59283d92737ecf3
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 63213e38dab5ef2edd5150fe0adb620fecb2041c
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093877"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714449"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Tworzenie funkcji platformy Azure przy użyciu programu Visual Studio  
 
@@ -96,7 +96,7 @@ Aby ustawić parametry połączenia konta magazynu:
 
 3. Powtórz poprzedni krok, aby dodać unikatowe klucze do **wartości** tablicy dla innych połączeń wymaganych funkcji.
 
-## <a name="create-a-function"></a>Tworzenie funkcji
+## <a name="add-a-function-to-your-project"></a>Dodawanie funkcji do projektu
 
 W przypadku funkcji wstępnie skompilowanym powiązania używane przez funkcję są definiowane przez zastosowanie atrybutów w kodzie. Jeśli narzędzia usługi Azure Functions umożliwia tworzenie funkcji na podstawie dostarczonych szablonów, te atrybuty są stosowane dla Ciebie. 
 

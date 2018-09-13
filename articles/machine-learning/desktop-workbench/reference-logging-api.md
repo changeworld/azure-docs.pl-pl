@@ -1,5 +1,5 @@
 ---
-title: Azure ML rejestrowania dokumentacja interfejsu API | Dokumentacja firmy Microsoft
+title: Dokumentacja usługi Azure ML API rejestrowania | Dokumentacja firmy Microsoft
 description: Rejestrowanie dokumentacja interfejsu API.
 services: machine-learning
 author: akshaya-a
@@ -7,22 +7,22 @@ ms.author: akannava
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/25/2017
-ms.openlocfilehash: b9ea51139fded3d55f0a73024163b7fa943c0ebb
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 101c47f4916ca3fab56800eaf012c55150769302
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834696"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35650113"
 ---
-# <a name="logging-api-reference"></a>Rejestrowanie dokumentacja interfejsu API
+# <a name="logging-api-reference"></a>Dokumentacja interfejsu API rejestrowania
 
-Biblioteka rejestrowania usługi Azure ML pozwala programowi na Emituj metryki i pliki, które są śledzone przez usługę historii w celu późniejszej analizy. Obecnie kilka typy podstawowe metryki i pliki są obsługiwane i zestawu obsługiwanych typów wzrośnie przy przyszłych wydaniach pakiet języka Python.
+Biblioteki rejestrowania usługi Azure ML pozwala programowi na tworzyć metryki i pliki, które są śledzone przez usługę historii do późniejszej analizy. Obecnie kilka typów podstawowych metryk oraz plików są obsługiwane i zestawu obsługiwanych typów będzie rosnąć przy przyszłych wydaniach pakiet języka Python.
 
-## <a name="uploading-metrics"></a>Przekazywanie metryk
+## <a name="uploading-metrics"></a>Przekazywanie metryki
 
 ```python
 # import logging API package
@@ -41,7 +41,7 @@ logger.log("simple string value", "this is a string metric")
 logger.log("chart data points", [1, 3, 5, 10, 6, 4])
 ```
 
-Domyślnie wszystkie metryki są przesyłane asynchronicznie, tak aby przesyłania nie utrudniać wykonywania programu. Gdy wiele metryk są wysyłane w przypadku krawędzi mogą powodować problemy porządkowania. Przykładem tego może być dwa metryki rejestrowane w tym samym czasie, ale powodu użytkownika wolisz dokładne porządkowanie zachowane. Inny zdarza się, gdy Metryka musi być śledzone przed systemem kodu, który jest znana powiodą fast. W obu przypadkach rozwiązanie to _oczekiwania_ dopóki metryka jest w pełni rejestrowana przed kontynuowaniem:
+Domyślnie wszystkie metryki są przesyłane asynchronicznie, tak, aby przesyłania nie utrudniać wykonywania programu. Może to spowodować szeregowania problemy, gdy wiele metryk są wysyłane w przypadki brzegowe. Na przykład będzie dwie metryki rejestrowane, w tym samym czasie, ale w przypadku niektórych powodów, dla którego użytkownik wolisz dokładnie porządkowanie zachowane. Innym przypadkiem jest gdy Metryka musi być śledzona, przed uruchomieniem kodu, które jest znana potencjalnie awaria następuje szybko. W obu przypadkach rozwiązaniem jest _oczekiwania_ aż metryka jest w całości przed kontynuowaniem:
 
 ```python
 # blocking call
@@ -51,7 +51,7 @@ logger.log("my metric 2", 2).wait()
 
 ## <a name="consuming-metrics"></a>Korzystanie z metryk
 
-Metryki są przechowywane przez usługę historii i powiązane Uruchom wytworzonego je. Zarówno karcie Historia uruchamiania, jak i poniższego polecenia interfejsu wiersza polecenia można pobrać je (i artefakty poniżej), po zakończeniu uruchom.
+Metryki są przechowywane w usłudze historii i powiązane z przebiegu, który je. Karta Historia uruchamiania i poniższego polecenia interfejsu wiersza polecenia umożliwiają pobrać je (i artefakty poniżej), po zakończeniu przebiegu.
 
 ```azurecli
 # show the last run
@@ -66,7 +66,7 @@ $ az ml history info -r <runid>
 
 ## <a name="artifacts-files"></a>Artefakty (pliki)
 
-Oprócz metryki uczenie maszynowe Azure umożliwia użytkownikowi także pliki. Domyślnie wszystkie pliki w zapisywane `outputs` folderu względem katalogu roboczego programu (folder projektu w kontekście obliczeniowe) są przekazywane do usługi historii i śledzenia w celu późniejszej analizy. Zastrzeżenie: jest to, czy rozmiar pliku musi być mniejsza niż 512 MB.
+Oprócz metryk usługi Azure ml umożliwia użytkownikowi również pliki śledzenia. Domyślnie, wszystkie pliki zapisane w `outputs` folderu względem katalogu roboczego programu (folder projektu w kontekście obliczeniowym) są przekazywane do usługi historii i śledzone do późniejszej analizy. Zastrzeżenie: to, że rozmiar poszczególnych plików musi być mniejszy niż 512 MB.
 
 
 ```Python
@@ -74,9 +74,9 @@ Oprócz metryki uczenie maszynowe Azure umożliwia użytkownikowi także pliki. 
 logger.upload("artifact/path", "This should be the contents of artifact/path in the service")
 ```
 
-## <a name="consuming-artifacts"></a>Wykorzystywanie artefaktów
+## <a name="consuming-artifacts"></a>Korzystanie z artefaktów
 
-Aby wydrukować zawartość artefaktu, który został uwzględniony w śledzeniu, użytkownika służy karcie Historia Uruchom danego Uruchom, aby **Pobierz** lub **Podnieś poziom** artefaktu, lub użyj poniżej polecenia interfejsu wiersza polecenia, aby osiągnąć ten sam efekt.
+Aby wydrukować zawartość artefaktów, które były śledzone, użytkownika można użyć na karcie Historia uruchamiania dla danego uruchomienia do **Pobierz** lub **Podwyższ poziom** artefaktu lub użyj poniższych poleceń interfejsu wiersza polecenia, aby osiągnąć ten sam efekt.
 
 ```azurecli
 # show all artifacts generated by a run
@@ -86,5 +86,5 @@ $ az ml history info -r <runid> -a <artifact/path>
 $ az ml history promote -r <runid> -ap <artifact/prefix> -n <name of asset to create>
 ```
 ## <a name="next-steps"></a>Kolejne kroki
-- Zapoznaj się z artykułem [klasyfikowania iris tutoria, część 2](tutorial-classifying-iris-part-2.md) wyświetlić interfejs API rejestrowania akcji.
-- Przegląd [sposobu użycia Uruchom historii i metryki modelu w konsoli usługi Azure Machine Learning Workbench](how-to-use-run-history-model-metrics.md) zrozumienie lepszy sposób rejestrowania interfejsów API można używać w historii uruchamiania.
+- Przeprowadzenie [klasyfikowania tutoria irysów, część 2](tutorial-classifying-iris-part-2.md) się interfejs API rejestrowania akcji.
+- Przegląd [sposobu użycia historii uruchamiania i metryk modelu w aplikacji Azure Machine Learning Workbench](how-to-use-run-history-model-metrics.md) zrozumienie lepszy sposób rejestrowania interfejsów API można używać w historii uruchamiania.

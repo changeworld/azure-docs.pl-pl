@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie bazami danych w chmurze skalowalnych w poziomie | Dokumentacja firmy Microsoft
-description: Użyj usługi zadania elastycznej bazy danych do uruchomienia skryptu przez grupę baz danych.
+title: Zarządzanie bazami danych w chmurze skalowanych w poziomie | Dokumentacja firmy Microsoft
+description: Usługa zadań elastycznych baz danych do uruchomienia skryptu dla grupy baz danych.
 metakeywords: azure sql database elastic databases
 services: sql-database
 manager: craigg
@@ -8,130 +8,135 @@ author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 06/14/2018
 ms.author: sstein
-ms.openlocfilehash: 5e2c233ec631f6a3e57d2203a9678b42f909a885
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
-ms.translationtype: HT
+ms.openlocfilehash: 3fc9ab0505fda84464ead01b4937756707993cf0
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646089"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35649148"
 ---
-# <a name="managing-scaled-out-cloud-databases"></a>Zarządzanie bazami danych w chmurze skalowalnych w poziomie
-Aby zarządzać bazy danych podzielonej skalowalnych w poziomie, **zadania elastycznej bazy danych** funkcji (wersja zapoznawcza) umożliwia niezawodnie wykonać skryptu języka Transact-SQL (T-SQL) między grupą baz danych, w tym:
+# <a name="managing-scaled-out-cloud-databases"></a>Zarządzanie bazami danych w chmurze skalowanych w poziomie
 
-* niestandardowy zbiór baz danych (co omówiono poniżej)
+[!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
+
+**Zadania elastic Database** jest hostowana przez klienta usługa w chmurze umożliwiający wykonywanie zapytań ad-hoc i zaplanowane zadania administracyjne, które są nazywane **zadań**. Za pomocą zadań można łatwo i niezawodne zarządzanie dużymi grupami baz danych SQL platformy Azure dzięki uruchamianiu skryptów języka Transact-SQL, aby wykonywać operacje administracyjne. 
+
+Do zarządzania bazami danych podzielonych na fragmenty skalowanych w poziomie, **zadania Elastic Database** funkcji (wersja zapoznawcza) umożliwia niezawodne wykonywanie skryptów języka Transact-SQL (T-SQL) w grupie baz danych, w tym:
+
+* niestandardowy zbiór baz danych (opisana poniżej)
 * wszystkie bazy danych w [puli elastycznej](sql-database-elastic-pool.md)
-* zestaw niezależnego fragmentu (utworzone za pomocą [biblioteki klienta elastycznej bazy danych](sql-database-elastic-database-client-library.md)). 
+* zestaw fragmentów (utworzone za pomocą [Biblioteka kliencka Elastic Database](sql-database-elastic-database-client-library.md)). 
 
 ## <a name="documentation"></a>Dokumentacja
-* [Zainstaluj składniki zadania elastycznej bazy danych](sql-database-elastic-jobs-service-installation.md). 
-* [Rozpoczynanie pracy z zadaniami elastycznej bazy danych](sql-database-elastic-jobs-getting-started.md).
-* [Utwórz zadania i zarządzać nimi za pomocą programu PowerShell](sql-database-elastic-jobs-powershell.md).
-* [Tworzenie i zarządzanie nimi skalowanej baz danych SQL Azure](sql-database-elastic-jobs-getting-started.md)
+* [Zainstaluj składniki zadania Elastic Database](sql-database-elastic-jobs-service-installation.md). 
+* [Wprowadzenie do zadań elastycznych baz danych](sql-database-elastic-jobs-getting-started.md).
+* [Tworzenie zadań i zarządzanie nimi przy użyciu programu PowerShell](sql-database-elastic-jobs-powershell.md).
+* [Tworzenie i zarządzanie nimi skalowanych w poziomie bazy danych SQL Azure](sql-database-elastic-jobs-getting-started.md)
 
-**Zadania elastyczne bazy danych** jest obecnie obsługiwana w środowisku klienta Azure usługi chmury, która umożliwia wykonanie ad hoc i zaplanowanych zadań administracyjnych, które są nazywane **zadania**. Z zadaniami można łatwo i niezawodny sposób zarządzać grupami dużych baz danych SQL Azure, uruchamiając skrypty języka Transact-SQL do wykonania operacji administracyjnych. 
+
 
 ![Usługa zadań elastycznej bazy danych][1]
 
-## <a name="why-use-jobs"></a>Dlaczego warto używać zadania?
+## <a name="why-use-jobs"></a>Dlaczego warto używać zadań?
 **Zarządzanie**
 
-Łatwe zmiany schematu, Zarządzanie poświadczeniami, aktualizacje danych odwołania, zbierania danych wydajności lub gromadzenia danych telemetrii dzierżawy (klienta).
+Łatwe zmiany schematu, Zarządzanie poświadczeniami, aktualizacje danych referencyjnych, zbierania danych o wydajności lub zbieranie danych telemetrycznych dzierżaw (klientów).
 
 **Raporty**
 
-Agregowanie danych z kolekcji baz danych SQL Azure do tabeli pojedynczego miejsca docelowego.
+Zagregowane dane z kolekcji baz danych SQL Azure do tabeli w jednym miejscu.
 
-**Zmniejszenie nakładów pracy**
+**Zmniejszyć obciążenie**
 
-Zazwyczaj należy nawiązać każdej bazy danych niezależnie w celu uruchamiania instrukcji języka Transact-SQL lub innych zadań administracyjnych. Zadanie obsługuje zadanie logowanie do każdej bazy danych w grupie docelowej. Można również zdefiniować, obsługa i utrwalić skrypty języka Transact-SQL do wykonania między grupą baz danych SQL Azure.
+Zazwyczaj należy niezależnie nawiązywać połączenie z każdą bazą danych w celu uruchamiania instrukcji języka Transact-SQL lub wykonywania innych zadań administracyjnych. Zadanie obsługuje logowanie do każdej bazy danych w grupie docelowej. Możesz również zdefiniować, obsługa i utrwalić skryptów języka Transact-SQL do wykonania w grupie baz danych SQL Azure.
 
 **Ewidencjonowanie aktywności**
 
-Zadania uruchamiania skryptu i rejestrowanie stanu wykonywania dla każdej bazy danych. Umożliwia również wyświetlenie automatyczny, gdy występują błędy.
+Zadania uruchamiania skryptu i rejestrować stan wykonania dla każdej bazy danych. Zapewniają również automatyczne ponawianie próby w przypadku wystąpienia błędów.
 
 **Elastyczność**
 
-Zdefiniuj niestandardowe grupy baz danych SQL Azure oraz określić harmonogramy uruchamiania zadania.
+Zdefiniuj niestandardowe grupy baz danych SQL Azure, a następnie zdefiniować harmonogramy uruchamiania zadania.
 
 > [!NOTE]
-> W portalu Azure ograniczonego zestawu funkcji ograniczone do puli elastycznej SQL Azure jest dostępna. Dostęp do pełnego zestawu funkcji bieżącego przy użyciu interfejsów API środowiska PowerShell.
+> W witrynie Azure portal zmniejszenie zbiór funkcji do maksymalnie pule elastyczne SQL Azure jest dostępna. Dostęp do pełnego zestawu funkcji bieżącego przy użyciu interfejsów API środowiska PowerShell.
 > 
 > 
 
 ## <a name="applications"></a>Aplikacje
 * Wykonywanie zadań administracyjnych, takich jak wdrażanie nowego schematu.
-* Zaktualizuj informacje produktu danych wspólnych dla wszystkich baz danych. Lub aktualizacji automatycznych harmonogramy każdy dzień tygodnia po godzinach.
-* Odbuduj indeksy w celu zwiększenia wydajności zapytania. Ponowne tworzenie można skonfigurować do uruchamiania wszystkich kolekcji baz danych cyklicznie, takich jak poza godzinami szczytu.
-* Zbieranie wyników zapytania z zestawu baz danych do centralnej tabeli na podstawie bieżącego. Stale wykonać kwerendy wydajności i skonfigurowane do wyzwalania dodatkowe zadania do wykonania.
-* Wykonanie dłużej uruchomione zapytania przetwarzania danych w dużych zestawach baz danych, na przykład kolekcja telemetrii klienta. Wyniki są zbierane w tabeli docelowej jednego do dalszej analizy.
+* Zaktualizuj odwołanie do danych — informacje o produkcie wspólne dla wszystkich baz danych. Lub harmonogramy automatycznych aktualizacji każdy dzień powszedni po godzinach.
+* Odbudowywanie indeksów w celu zwiększenia wydajności zapytań. Ponowne tworzenie można skonfigurować do wykonania w kolekcji baz danych cyklicznie, takie jak poza godzinami szczytu.
+* Zbieranie na bieżąco wyników zapytań z zestawu baz danych w centralnej tabeli. Zapytania dotyczące wydajności mogą być nieprzerwanie wykonywane i skonfigurowane do wyzwalania dodatkowych zadań do wykonania.
+* Wykonywanie dłużej działających zapytań dotyczących przetwarzania danych w ramach dużego zestawu baz danych, na przykład w celu zbierania telemetrii klienta. Wyniki są zbierane w pojedynczej tabeli docelowej na potrzeby dalszej analizy.
 
-## <a name="elastic-database-jobs-end-to-end"></a>Zadania elastyczne bazy danych: end-to-end
-1. Zainstaluj **zadania elastycznej bazy danych** składników. Aby uzyskać więcej informacji, zobacz [zadania instalowania elastycznej bazy danych](sql-database-elastic-jobs-service-installation.md). W przypadku niepowodzenia instalacji, zobacz [odinstalowywania](sql-database-elastic-jobs-uninstall.md).
-2. Użyj interfejsów API środowiska PowerShell dla dostępu więcej funkcji, na przykład tworzenie kolekcji niestandardowy bazy danych, dodawanie harmonogramów i/lub zbierania zestawów wyników. Korzystanie z portalu prostą instalację i tworzenia/monitorowanie zadań ograniczone do wykonania przed **puli elastycznej**. 
-3. Utwórz zaszyfrowane poświadczenia do wykonywania zadań i [dodać użytkownika (lub roli) do każdej bazy danych w grupie](sql-database-security-overview.md).
-4. Utwórz idempotentności skryptu T-SQL, który można uruchomić dla każdej bazy danych w grupie. 
-5. Wykonaj następujące kroki, aby tworzyć zadania przy użyciu portalu Azure: [Tworzenie zadania i zarządzać nimi elastycznej bazy danych](sql-database-elastic-jobs-create-and-manage.md). 
-6. Lub użyć skryptów środowiska PowerShell: [Utwórz zadania elastycznej bazy danych SQL Database, przy użyciu programu PowerShell (wersja zapoznawcza) i zarządzać nimi](sql-database-elastic-jobs-powershell.md).
+## <a name="elastic-database-jobs-end-to-end"></a>Zadania elastic Database: end-to-end
+1. Zainstaluj **zadania Elastic Database** składników. Aby uzyskać więcej informacji, zobacz [zadania instalowania Elastic Database](sql-database-elastic-jobs-service-installation.md). W przypadku niepowodzenia instalacji, zobacz [odinstalowywania](sql-database-elastic-jobs-uninstall.md).
+2. Dostęp więcej funkcji, na przykład tworzenia niestandardowej bazy danych kolekcji, dodawania harmonogramów i/lub zbieranie zestawów wyników przy użyciu interfejsów API programu PowerShell. Korzystanie z portalu prostą instalację i tworzenia/monitorowania zadań ograniczone do wykonywania względem **puli elastycznej**. 
+3. Utwórz zaszyfrowane poświadczenia do wykonywania zadań i [Dodaj użytkownika (lub rolach) do każdej bazy danych w grupie](sql-database-security-overview.md).
+4. Utwórz idempotentne skryptu T-SQL, które mogą być uruchamiane względem każdej bazy danych w grupie. 
+5. Wykonaj następujące kroki, aby tworzyć zadania w witrynie Azure portal: [tworzenie i zarządzanie nimi zadania Elastic Database](sql-database-elastic-jobs-create-and-manage.md). 
+6. Lub za pomocą skryptów programu PowerShell: [tworzenie zadań elastycznych baz danych SQL Database przy użyciu programu PowerShell (wersja zapoznawcza) i zarządzanie nimi](sql-database-elastic-jobs-powershell.md).
 
-## <a name="idempotent-scripts"></a>Skrypty idempotentności
-Skrypty musi być [idempotentności](https://en.wikipedia.org/wiki/Idempotence). W proste warunki "idempotentności" oznacza, że jeśli skrypt zakończy się pomyślnie i jest uruchamiany ponownie, wystąpi ten sam rezultat. Skrypt może zakończyć się niepowodzeniem z powodu przejściowe problemy z siecią. W takim przypadku zadania automatycznie ponowi próbę uruchomienia skryptu wstępnie zdefiniowane kilka razy przed desisting. Skrypt idempotentności ma ten sam rezultat nawet wtedy, gdy pomyślnym uruchomieniu dwa razy. 
+## <a name="idempotent-scripts"></a>Skrypty idempotentne
+Skrypty muszą być [idempotentne](https://en.wikipedia.org/wiki/Idempotence). W prostych słowach "idempotentne" oznacza, że jeśli skrypt zakończy się powodzeniem po ponownym uruchomieniu, występuje ten sam wynik. Skrypt może zakończyć się niepowodzeniem z powodu przejściowych problemów z siecią. W takim przypadku zadanie automatycznie ponowi próbę uruchomienia skryptu wstępnie zdefiniowaną liczbę razy przed zaniechaniem. Skrypt idempotentne ma ten sam wynik, nawet wtedy, gdy została pomyślnie uruchomiona dwukrotnie. 
 
-To proste działanie do sprawdzania istnienia obiektu przed utworzeniem jej.  
+Prostym sposobem jest sprawdzenie istnienia obiektu przed jego utworzeniem.  
 
     IF NOT EXIST (some_object)
     -- Create the object 
     -- If it exists, drop the object before recreating it.
 
-Podobnie skryptu musi być w stanie pomyślnie wykonać przez logicznie testowanie pod kątem i przeciwdziałanie wszystkie problemy znalezione.
+Podobnie musi być możliwe pomyślne wykonanie skryptu przez logiczne testowanie wszystkich znalezionych warunków i reagowanie na nie.
 
-## <a name="failures-and-logs"></a>Awarie i dzienniki
-Jeśli skrypt nie powiedzie się po wielu próbach, zadanie rejestruje błąd i kontynuuje. Po zakończeniu zadania (to znaczy do uruchomienia wszystkich baz danych w grupie), można sprawdzić jego lista nieudanych prób. Dzienniki zawierają szczegółowe informacje debugowania uszkodzone skryptów. 
+## <a name="failures-and-logs"></a>Błędy i dzienniki
+Jeśli skrypt zakończy się niepowodzeniem po wielu próbach, zadanie rejestruje błąd i kontynuuje. Po zakończeniu zadania (to znaczy wykonywania względem wszystkich baz danych w grupie), możesz sprawdzić swoją listę nieudanych prób. Dzienniki zawierają szczegółowe informacje debugowania uszkodzone skrypty. 
 
-## <a name="group-types-and-creation"></a>Typy grupy i utworzenia
+## <a name="group-types-and-creation"></a>Grupy typów i tworzenie
 Istnieją dwa rodzaje grup: 
 
-1. Ustawia niezależnego fragmentu
+1. Ustawia fragmentów
 2. Grupy niestandardowe
 
-Identyfikator niezależnego fragmentu zestaw grup są tworzone przy użyciu [narzędzi elastycznej bazy danych](sql-database-elastic-scale-introduction.md). Podczas tworzenia grupy zestaw niezależnego fragmentu bazy danych są dodawane lub automatycznie usunięte z grupy. Na przykład nowy identyfikator niezależnego fragmentu zostanie automatycznie w grupie po dodaniu go do mapy niezależnego fragmentu. Zadania mogą być następnie uruchamiane na grupie.
+Fragment zestawu grup są tworzone przy użyciu [narzędzi elastycznej bazy danych](sql-database-elastic-scale-introduction.md). Podczas tworzenia grupy zestaw fragmentu bazy danych są dodawane lub automatycznie usunięte z grupy. Na przykład nowych fragmentów będzie automatycznie w grupie po dodaniu do mapy fragmentów. Następnie można uruchomić zadania względem grupy.
 
-Niestandardowe grupy z drugiej strony, sztywno zdefiniowano. Należy jawnie dodać lub usunąć baz danych z niestandardowych grup. Jeśli bazy danych w grupie zostało porzucone, zadanie będzie podejmować próby Uruchom skrypt w bazie danych, co spowoduje niepowodzenie ostatecznego. Grup utworzonych za pomocą portalu Azure, obecnie są grup niestandardowych. 
+Niestandardowe grupy z drugiej strony, sztywno zdefiniowano. Należy jawnie dodać lub usunąć bazy danych z grup niestandardowych. Jeśli bazy danych w grupie zostało porzucone, zadanie będzie podejmować próby Uruchom skrypt w bazie danych, co w przypadku wystąpienia awarii. Grupy utworzone w witrynie Azure portal aktualnie są niestandardowe grupy. 
 
-## <a name="components-and-pricing"></a>Składniki i cen
-Następujące składniki współpracują, aby utworzyć usługi w chmurze Azure, który umożliwia wykonanie ad hoc zadań administracyjnych. Składniki zostaną zainstalowane i skonfigurowane automatycznie podczas instalacji, w ramach subskrypcji. Usługi można zidentyfikować wszystkie mają taką samą nazwę wygenerowany automatycznie. Nazwa jest unikatowa i składa się z prefiksu "edj" następują znaki losowo generowany 21.
+## <a name="components-and-pricing"></a>Składniki i ceny
+Następujące składniki współpracują ze sobą, aby utworzyć to usługa w chmurze platformy Azure, która umożliwia wykonywanie zapytań ad-hoc zadań administracyjnych. Składniki są instalowane i konfigurowane automatycznie podczas instalacji, w ramach subskrypcji. Usługi można zidentyfikować, ponieważ wszystkie one mają taką samą nazwę wygenerowany automatycznie. Nazwa jest unikatowa i składa się z prefiksu "edj" następują znaki losowo generowany 21.
 
-* **Usługa w chmurze Azure**: zadania elastycznej bazy danych (wersja zapoznawcza) jest dostarczany jako usługa w chmurze Azure obsługiwany przez klienta do wykonania wykonywania żądane zadania. Z portalu wdrożyć i usługi hostowanej w subskrypcji platformy Microsoft Azure. Wartość domyślna wdrożona usługa działa z co najmniej dwie role proces roboczy wysokiej dostępności. Domyślny rozmiar każdej roli proces roboczy (ElasticDatabaseJobWorker) działa na wystąpienie A0. O cenach, zobacz [cennik usługi w chmurze](https://azure.microsoft.com/pricing/details/cloud-services/). 
-* **Baza danych SQL Azure**: usługa korzysta z bazy danych SQL Azure, znany jako **bazy danych kontroli** do przechowywania wszystkich metadanych zadania. Warstwy usług domyślne to S0. O cenach, zobacz [cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
-* **Usługa Azure Service Bus**: Azure Service Bus jest koordynacji pracy w ramach usługi w chmurze Azure. Zobacz [usługi magistrali cennik](https://azure.microsoft.com/pricing/details/service-bus/).
-* **Magazyn Azure**: konta usługi Magazyn Azure jest używana do przechowywania, dane wyjściowe diagnostyki rejestrowania w przypadku, gdy problem wymaga dalszych debugowania (zobacz [Włączanie diagnostyki w usług Azure Cloud Services i maszyn wirtualnych](../cloud-services/cloud-services-dotnet-diagnostics.md)). O cenach, zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
+* **Usługa w chmurze Azure**: zadania elastic database (wersja zapoznawcza) są dostarczane jako usługa w chmurze platformy Azure obsługiwane przez klienta do wykonywania żądanych zadań do wykonania. Z poziomu portalu usługa jest wdrożona i hostowanych w ramach subskrypcji Microsoft Azure. Wartość domyślna wdrożona usługa działa z co najmniej dwie role procesów roboczych w celu zapewnienia wysokiej dostępności. Domyślny rozmiar każdej roli proces roboczy (ElasticDatabaseJobWorker) uruchomionej na wystąpieniu A0. Aby poznać ceny, zobacz [cennika usług Cloud services](https://azure.microsoft.com/pricing/details/cloud-services/). 
+* **Usługa Azure SQL Database**: usługa korzysta z usługi Azure SQL Database, znana jako **bazy danych kontroli** do przechowywania wszystkich metadanych zadania. Domyślna Warstwa usługi to S0. Aby poznać ceny, zobacz [cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
+* **Usługa Azure Service Bus**: Azure Service Bus to do koordynowania prac w ramach usługi w chmurze Azure. Zobacz [cennik usługi Service Bus](https://azure.microsoft.com/pricing/details/service-bus/).
+* **Usługa Azure Storage**: konto usługi Azure Storage jest używane do przechowywania, rejestrowanie diagnostyczne dane wyjściowe, w przypadku, gdy problem wymaga dalszego debugowania (zobacz [Włączanie diagnostyki w usługach Azure Cloud Services i Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md)). Aby poznać ceny, zobacz [cennik usługi Azure Storage](https://azure.microsoft.com/pricing/details/storage/).
 
-## <a name="how-elastic-database-jobs-work"></a>Jak działają zadania elastycznej bazy danych
-1. Baza danych SQL Azure jest wyznaczony **bazy danych kontroli** który przechowuje wszystkie dane meta dane i stan.
-2. Jest dostęp do bazy danych kontroli **zadania usługi** do uruchomienia i śledzenia zadań do wykonania.
-3. Dwa różne role komunikują się z bazą danych sterowania: 
-   * Kontroler: Określa zadania, które wymagają zadania do wykonania żądanej zadań i zadań zakończonych niepowodzeniem prób przez utworzenie nowego zadania.
-   * Wykonywanie zadań dla zadania: Wykonuje zadania.
+## <a name="how-elastic-database-jobs-work"></a>Jak działają zadania elastycznych baz danych
+1. Usługi Azure SQL Database jest wyznaczony **bazy danych kontroli** która przechowuje wszystkie metadane i dane dotyczące stanu.
+2. Dostępu do bazy danych kontroli przez **usługa zadań** można uruchomić i śledzić zadania do wykonania.
+3. Dwie różne role komunikują się z bazą danych sterowania: 
+   * Kontroler: Określa zadania, które wymagają zadania do wykonania żądanego zadania i zadań zakończonych niepowodzeniem prób przez utworzenie nowego zadania.
+   * Wykonania zadania: Wykonuje zadania.
 
 ### <a name="job-task-types"></a>Typy zadań zadania
-Istnieje wiele typów zadania, wykonujących wykonywanie zadań:
+Istnieje wiele typów zadań, wykonujących wykonywanie zadań:
 
-* ShardMapRefresh: Mapy niezależnego fragmentu, aby określić wszystkie bazy danych używane jako niezależne odpytuje
-* ScriptSplit: Zostaje skrypt między "Przejdź" instrukcji w partii
-* ExpandJob: Tworzy podrzędnych zadania dla każdej bazy danych z zadania przeznaczonego dla grupy baz danych
-* ScriptExecution: Skrypt dla określonej bazy danych przy użyciu określonych poświadczeń wykonuje
-* Dacpac: Dotyczy określonej bazy danych przy użyciu danego poświadczenia DACPAC
+* ShardMapRefresh: Wykonuje kwerendę mapowania fragmentów w celu ustalenia wszystkich baz danych używanych jako fragmenty
+* ScriptSplit: Dzieli skryptu w instrukcji "Przejdź" w partie
+* ExpandJob: Tworzy podrzędne zadania dla każdej bazy danych od zadania, który jest przeznaczony dla grupy baz danych
+* ScriptExecution: Jest wykonywany skrypt dla konkretnej bazy danych przy użyciu określonych poświadczeń
+* Plik Dacpac: Dotyczy określonej bazy danych przy użyciu poświadczeń określonego pliku DACPAC
 
-## <a name="end-to-end-job-execution-work-flow"></a>Zadanie end-to-end wykonywania z przepływu pracy
-1. Za pomocą portalu lub interfejs API środowiska PowerShell, zadania są wstawiane do **bazy danych kontroli**. Zadanie żąda wykonania skryptu języka Transact-SQL w odniesieniu do grupy baz danych przy użyciu określonych poświadczeń.
-2. Kontroler identyfikuje nowe zadanie. Zadania są tworzone i wykonać, aby podzielić skryptu i do odświeżania bazy danych grupy. Ponadto nowe zadanie jest tworzone i wykonywany w celu rozwiń zadanie i utworzyć nowy element podrzędny określoną każdego zadania podrzędne do uruchomienia skryptu języka Transact-SQL w poszczególnych bazy danych w grupie zadań.
-3. Kontroler identyfikuje zadania podrzędne utworzony. Dla każdego zadania kontrolera tworzy i uruchamia zadanie, można wykonać skryptu w bazie danych. 
-4. Po zakończeniu wszystkich zadań zadania, kontrolera aktualizacje stanu ukończenia zadania. 
-   W dowolnym momencie podczas wykonywania zadania interfejs API środowiska PowerShell pozwala wyświetlać bieżący stan wykonywania zadania. Wszystkie godziny zwracana przez interfejsy API programu PowerShell są reprezentowane w formacie UTC. W razie potrzeby można zatrzymać zadania można zainicjować żądanie anulowania. 
+## <a name="end-to-end-job-execution-work-flow"></a>End-to-end zadania wykonywania z przepływu pracy
+1. Za pomocą portalu lub interfejsu API programu PowerShell, zadanie jest wstawiany do **bazy danych kontroli**. Wykonywanie żądania zadania skryptu języka Transact-SQL, względem grupy baz danych przy użyciu określonych poświadczeń.
+2. Kontroler identyfikuje nowe zadanie. Zadania podrzędne są tworzone i wykonywane dzielenie skrypt i Odśwież grupę baz danych. Ponadto nowe zadanie jest tworzony i wykonywane w celu rozwiń zadanie i utworzyć nowy element podrzędny zadania, w którym określono każde zadanie podrzędne do uruchomienia skryptu języka Transact-SQL w odniesieniu poszczególnych baz danych w grupie.
+3. Kontroler identyfikuje zadań podrzędnych utworzony. Dla każdego zadania kontrolera tworzy i uruchamia zadanie, można wykonać skryptu na bazie danych. 
+4. Po zakończeniu wszystkich zadań, kontroler aktualizacji zadania do stanu ukończenia. 
+   W dowolnym momencie podczas wykonywania zadania interfejs API środowiska PowerShell może służyć do wyświetlania bieżącego stanu wykonywania zadania. Cały czas zwracana przez interfejsy API programu PowerShell są reprezentowane w formacie UTC. Jeśli to konieczne, można zainicjować na żądanie anulowania także zatrzymać zadanie. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Zainstaluj składniki](sql-database-elastic-jobs-service-installation.md), następnie [Utwórz i Dodaj dziennika w każdej bazie danych w grupie baz danych](sql-database-manage-logins.md). Aby jeszcze lepiej zrozumieć Tworzenie zadania i zarządzanie nimi, zobacz [tworzenie i zarządzanie nimi zadania elastycznej bazy danych](sql-database-elastic-jobs-create-and-manage.md). Zobacz też [wprowadzenie zadania elastycznej bazy danych](sql-database-elastic-jobs-getting-started.md).
+[Zainstaluj składniki](sql-database-elastic-jobs-service-installation.md), następnie [tworzenie i dodawanie logowania do każdej bazy danych w grupie baz danych](sql-database-manage-logins.md). Aby jeszcze lepiej zrozumieć zadania, tworzenie i zarządzanie nimi, zobacz [tworzenie i zarządzanie nimi zadania elastic database](sql-database-elastic-jobs-create-and-manage.md). Zobacz też [wprowadzenie do zadań elastycznych baz danych](sql-database-elastic-jobs-getting-started.md).
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

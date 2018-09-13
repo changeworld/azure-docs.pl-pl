@@ -1,58 +1,58 @@
 ---
-title: Jak skonfigurować usługi Azure Machine Learning Workbench do pracy z IDE?  | Microsoft Docs
-description: Przewodnik konfigurowania usługi Azure Machine Learning Workbench pracę ze środowiskiem IDE.
+title: Jak skonfigurować program Azure Machine Learning Workbench do pracy ze środowiskiem IDE?  | Microsoft Docs
+description: Przewodnik konfigurowania usługi Azure Machine Learning Workbench do pracy z używanego środowiska IDE.
 services: machine-learning
 author: svankam
 ms.author: svankam
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 1b43671b40e3244690371669fb60796f75174df0
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 18692fe631a7e1349ead6bc68a87934e6d030913
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834910"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35649255"
 ---
-# <a name="how-to-configure-azure-machine-learning-workbench-to-work-with-an-ide"></a>Konfigurowanie usługi Azure Machine Learning Workbench do pracy z IDE 
+# <a name="how-to-configure-azure-machine-learning-workbench-to-work-with-an-ide"></a>Jak skonfigurować program Azure Machine Learning Workbench do pracy ze środowiskiem IDE 
 
-Azure Machine Learning Workbench można skonfigurować do pracy z popularnych IDEs języka Python (zintegrowane środowisko programistyczne). Umożliwia sprawne dane środowisko programistyczne nauki przechodzenia między Przygotowanie danych, tworzenia kodu, uruchom śledzenie i operationalization. Obecnie są obsługiwane IDEs:
+Usługa Azure Machine Learning Workbench można skonfigurować do pracy z popularnymi środowiskami IDE języka Python (zintegrowane środowisko programistyczne). Dzięki temu w środowisku projektowym do nauki o danych smooth przenoszenia między przygotowywania danych, tworzenie kodu, śledzenie wykonywania i operacjonalizacji. Obecnie są obsługiwane środowiskami IDE:
 - Microsoft Visual Studio Code 
-- JetBrain PyCharm 
+- Platformy JetBrain PyCharm 
 
-## <a name="configure-workbench"></a>Konfigurowanie środowiska roboczego
-1. Polecenie **pliku** menu w górnym lewym rogu aplikacji. 
-2. Wybierz **Konfigurowanie projektu IDE** opcję z funkcją wysuwania 
-3. Wpisz w `VS Code` lub `PyCharm` w **nazwa** pola (nazwa to dowolne)
-4. Wprowadź lokalizację do środowiska IDE pliku wykonywalnego (wraz z nazwą pliku wykonywalnego i rozszerzenie) w **ścieżka wykonywania**
+## <a name="configure-workbench"></a>Konfigurowanie aplikacji workbench
+1. Kliknij pozycję **pliku** menu w górnym lewym rogu aplikacji. 
+2. Wybierz **Konfigurowanie IDE projektu** opcję z menu wysuwane 
+3. Wpisz `VS Code` lub `PyCharm` w **nazwa** pole (dowolne jest nazwa)
+4. Wprowadź lokalizację do IDE pliku wykonywalnego (Ukończono z nazwą pliku wykonywalnego i rozszerzenia) w **ścieżki wykonywania**
 
-### <a name="default-install-path-for-visual-studio-code"></a>Domyślnej ścieżki instalacji programu Visual Studio Code  
+### <a name="default-install-path-for-visual-studio-code"></a>Domyślna ścieżka instalacji programu Visual Studio Code  
 
-* 32-bitowego systemu Windows `C:\Program Files (x86)\Microsoft VS Code\Code.exe`
-* 64-bitowego systemu Windows `C:\Program Files\Microsoft VS Code\Code.exe`
-* System macOS — na przykład wybierz ścieżkę .app `/Applications/Visual Studio Code.app`, i aplikacja dołącza pozostałą część ścieżki dla Ciebie. Pełna ścieżka do pliku wykonywalnego, domyślnie jest `/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code`. Jeśli zostały wykonane `Shell Command: Install 'code' command in PATH` poleceń w kodzie VS, a następnie można także odwoływać skrypt kodzie VS `/usr/local/bin/code`
+* 32-bitowe — Windows `C:\Program Files (x86)\Microsoft VS Code\Code.exe`
+* Windows 64-bitowych `C:\Program Files\Microsoft VS Code\Code.exe`
+* macOS — na przykład wybierz ścieżkę .app `/Applications/Visual Studio Code.app`, a aplikacja dołącza pozostałą część ścieżki dla Ciebie. Pełna ścieżka do pliku wykonywalnego, który domyślnie jest `/Applications/Visual Studio Code.app/Contents/Resources/app/bin/code`. Jeśli został wykonany `Shell Command: Install 'code' command in PATH` polecenia w programie VS Code, a następnie możesz też przywołać skrypt programu VS Code `/usr/local/bin/code`
 
-### <a name="default-install-path-for-pycharm"></a>Domyślna ścieżka instalacji dla PyCharm 
+### <a name="default-install-path-for-pycharm"></a>Domyślne ścieżki instalacji dla platformy PyCharm 
 
-* 32-bitowego systemu Windows `C:\Program Files (x86)\JetBrains\PyCharm Community Edition 2017.2.1\bin\pycharm.exe`. 
+* Windows 32-bitowych `C:\Program Files (x86)\JetBrains\PyCharm Community Edition 2017.2.1\bin\pycharm.exe`. 
 * Windows 64-bit — `C:\Program Files\JetBrains\PyCharm Community Edition 2017.2.1\bin\pycharm64.exe`.
-* System macOS — wybierz ścieżkę .app, na przykład "/ Applications/PyCharm CE.app" i aplikacji dołącza pozostałą część ścieżki dla Ciebie. Pełna ścieżka do pliku wykonywalnego, domyślnie jest `/Applications/PyCharm CE.app/Contents/MacOS/pycharm`. Można również znaleźć PyCharm na bin folder `/usr/local/bin/charm`
+* macOS — wybierz ścieżkę .app, na przykład "/ Applications/CE.app platformy PyCharm", a aplikacja dołącza pozostałą część ścieżki dla Ciebie. Pełna ścieżka do pliku wykonywalnego, który domyślnie jest `/Applications/PyCharm CE.app/Contents/MacOS/pycharm`. Możesz również stwierdzić, platformy PyCharm na bin folder `/usr/local/bin/charm`
 
 ## <a name="open-project-in-ide"></a>Otwórz projekt w środowisku IDE 
-Po zakończeniu konfiguracji można otworzyć projektu usługi Azure Machine Learning, otwierając **pliku** menu w konsoli usługi Azure Machine Learning Workbench, następnie kliknij przycisk **Otwórz projekt (< IDE_Name >)**. Ta akcja powoduje otwarcie bieżącego aktywnego projektu w skonfigurowanym IDE. _Uwaga: Jeśli nie znajdujesz się w projekcie, **Otwórz projekt (< IDE_Name >)** zostanie wyłączone._
+Po zakończeniu konfiguracji można otworzyć projektu usługi Azure Machine Learning, otwierając **pliku** menu w aplikacji Azure Machine Learning Workbench, następnie kliknij przycisk **Otwórz projekt (< IDE_Name >)**. Ta akcja powoduje otwarcie bieżącego aktywnego projektu w IDE skonfigurowany. _Uwaga: Jeśli nie jesteś w projekcie, **Otwórz projekt (< IDE_Name >)** zostaną wyłączone._
 
-## <a name="configuring-the-integrated-terminal-in-visual-studio-code"></a>Konfigurowanie terminal zintegrowane w programie Visual Studio Code
+## <a name="configuring-the-integrated-terminal-in-visual-studio-code"></a>Konfigurowanie zintegrowany terminal programu Visual Studio Code
 
 ### <a name="windows"></a>Windows 
-Firma Microsoft ma zastąpić domyślną powłokę za cmd zamiast programu PowerShell. Po kliknięciu przycisku na **Otwórz projekt (< IDE_Name >)**, zostanie wyświetlony monit: 
+Firma Microsoft ma zastąpić domyślnej powłoki jako cmd, zamiast programu PowerShell. Po kliknięciu przycisku na **Otwórz projekt (< IDE_Name >)**, zostanie wyświetlony monit: 
 
-_Musisz zezwolić powłoki: `C:\windows\System32\cmd.exe` (zdefiniowany jako ustawienia obszaru roboczego) ma być uruchamiana w terminalu?_
+_Możesz umożliwić powłoki: `C:\windows\System32\cmd.exe` (zdefiniowane w ustawieniach obszaru roboczego) do uruchomienia w terminalu?_
 
-Odpowiedzi `yes` umożliwia konfigurowanie powłoki współpracuje z interfejsu wiersza polecenia Azure ML Workbench.
+Odpowiedź `yes` umożliwia konfigurowanie powłoki o bezproblemowej współpracy z interfejsu wiersza polecenia aplikacji Azure ML Workbench.
 
 ### <a name="mac"></a>Mac
-Aby uruchomić `az` polecenia przy użyciu w programie Visual Studio Code zintegrowane terminali dla komputerów Mac, należy ręcznie ustawić `PATH` się taką samą wartość jak `PATH` w projekcie `.vscode/settings.json` pliku w kluczu `terminal.integrated.env.osx`. Można to zrobić, uruchamiając następujące polecenie z poziomu terminala: `PATH=<PATH in .vscode/settings>`
+Aby uruchomić `az` polecenia przy użyciu programu Visual Studio Code w zintegrowany terminal na komputerze Mac, należy ręcznie ustawić `PATH` się taką samą wartość jak `PATH` w projekcie `.vscode/settings.json` pliku w kluczu `terminal.integrated.env.osx`. Możesz to zrobić, uruchamiając następujące polecenie w terminalu: `PATH=<PATH in .vscode/settings>`

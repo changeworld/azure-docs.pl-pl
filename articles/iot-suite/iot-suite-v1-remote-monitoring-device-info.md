@@ -1,5 +1,5 @@
 ---
-title: Urządzenie informacji metadanych w zdalnym rozwiązanie monitorowania | Dokumentacja firmy Microsoft
+title: Metadane informacji urządzeń w rozwiązaniu do monitorowania zdalnego | Dokumentacja firmy Microsoft
 description: Opis wstępnie skonfigurowanego rozwiązania Azure IoT do monitorowania zdalnego wraz z informacjami dotyczącymi architektury rozwiązania.
 services: ''
 suite: iot-suite
@@ -15,51 +15,51 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/02/2017
 ms.author: dobett
-ms.openlocfilehash: 80f03a4cef1d79e819c59ca68a786776a5c4edb7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 4efea316c05f566add3e175bc5bb18842225ede3
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34636100"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35758165"
 ---
-# <a name="device-information-metadata-in-the-remote-monitoring-preconfigured-solution"></a>Urządzenie informacji metadanych w zdalnym wstępnie skonfigurowane rozwiązanie monitorowania
+# <a name="device-information-metadata-in-the-remote-monitoring-preconfigured-solution"></a>Urządzenie informacji o metadanych w wstępnie skonfigurowanego rozwiązania do monitorowania zdalnego
 
-Pakiet IoT Azure zdalnego wstępnie skonfigurowane rozwiązanie monitorujące, przedstawiono podejście do zarządzania urządzeniami metadanych. W tym artykule przedstawiono podejście, które to rozwiązanie ma ułatwia zrozumienie:
+Azure IoT Suite ze wstępnie skonfigurowanym rozwiązaniem monitorowania zdalnego pokazuje podejście do zarządzania metadane urządzenia. W tym artykule przedstawiono podejście, które przyjmuje tego rozwiązania, aby umożliwić Ci zrozumienie:
 
-* Jakie urządzenia metadane przechowuje rozwiązania.
+* Metadane urządzenia, jakie rozwiązanie przechowuje.
 * Sposób rozwiązania zarządzania metadane urządzenia.
 
 ## <a name="context"></a>Kontekst
 
-Zdalne monitorowanie wstępnie skonfigurowane rozwiązanie używa [Centrum IoT Azure] [ lnk-iot-hub] umożliwiające urządzenia w celu wysyłania danych do chmury. Rozwiązania przechowuje informacje dotyczące urządzeń w trzech różnych miejscach:
+Zdalne monitorowanie wstępnie skonfigurowane rozwiązanie używa [usługi Azure IoT Hub] [ lnk-iot-hub] umożliwiające urządzeń w celu wysyłania danych do chmury. Rozwiązanie przechowuje informacje dotyczące urządzeń w trzech różnych miejscach:
 
 | Lokalizacja | Informacje przechowywane | Wdrażanie |
 | -------- | ------------------ | -------------- |
-| Tożsamość rejestru | Identyfikator urządzenia, klucze uwierzytelniania, włączony stan | Wbudowana w Centrum IoT |
-| Twins urządzenia | Metadane: właściwości zgłoszone, odpowiednie właściwości, znaczniki | Wbudowana w Centrum IoT |
-| Cosmos DB | Historię poleceń i — metoda | Niestandardowe dla rozwiązania |
+| Rejestr tożsamości | Identyfikator urządzenia i klucze uwierzytelniania, włączony stan | Wbudowana w usługę IoT Hub |
+| Bliźniacze reprezentacje urządzeń | Metadane: zgłaszanych właściwości, żądanych właściwości tagi | Wbudowana w usługę IoT Hub |
+| Cosmos DB | Historia polecenia i metody | Niestandardowe rozwiązania |
 
-Centrum IoT obejmuje [rejestrze tożsamości urządzeń] [ lnk-identity-registry] do zarządzania dostępem do Centrum IoT i używa [twins urządzenia] [ lnk-device-twin] do zarządzania urządzeniami metadanych. Istnieje również zdalnego monitorowania określonego rozwiązania *rejestru urządzenia* który przechowuje historię poleceń i metody. Używa zdalnego rozwiązanie monitorowania [DB rozwiązania Cosmos] [ lnk-docdb] bazy danych do zaimplementowania magazynu niestandardowego dla historii poleceń i metody.
+Usługa IoT Hub zawiera [rejestr tożsamości urządzeń] [ lnk-identity-registry] zarządzanie dostępem do usługi IoT hub i używa [bliźniaczych reprezentacji urządzeń] [ lnk-device-twin] do zarządzania metadanymi urządzenia. Istnieje również zdalnego monitorowania specyficznych dla rozwiązania *rejestru urządzeń* , przechowuje historię poleceń i metody. Korzysta z rozwiązania do monitorowania zdalnego [Cosmos DB] [ lnk-docdb] bazy danych, aby zaimplementować magazyn niestandardowy dla historii poleceń i metody.
 
 > [!NOTE]
-> Zdalnego wstępnie skonfigurowane rozwiązanie monitorowania zachowuje w rejestrze tożsamości urządzenia zsynchronizowane z informacjami w bazie danych DB rozwiązania Cosmos. Oba rozwiązania używają tego samego identyfikatora urządzenia do unikatowej identyfikacji każdego urządzenia połączone z Centrum IoT.
+> Wstępnie skonfigurowanego rozwiązania do monitorowania zdalnego przechowuje rejestr tożsamości urządzeń w synchronizacji z informacjami w bazie danych Cosmos DB. Obaj za pomocą takim samym identyfikatorem urządzenia identyfikują każdego urządzenia połączonego Centrum IoT hub.
 
 ## <a name="device-metadata"></a>Metadane urządzenia
 
-Centrum IoT przechowuje [dwie urządzenia] [ lnk-device-twin] dla poszczególnych urządzeń fizycznych i symulowane podłączonej do zdalnego rozwiązanie monitorowania. Rozwiązanie używa twins urządzenia do zarządzania metadane skojarzone z urządzeń. Dwie urządzenia jest dokumentu JSON obsługiwany przez Centrum IoT i rozwiązanie używa interfejsu API Centrum IoT na interakcję z twins urządzenia.
+Usługa IoT Hub utrzymuje [bliźniaczej reprezentacji urządzenia] [ lnk-device-twin] dla każdego symulowane i fizyczne urządzenia podłączone do rozwiązania do monitorowania zdalnego. Rozwiązania używa bliźniaczych reprezentacji urządzeń do zarządzania metadane skojarzone z urządzenia. Bliźniak urządzenia to dokument JSON przechowywane przez usługę IoT Hub, a rozwiązanie używa interfejsu API z Centrum IoT na interakcję z bliźniaczych reprezentacji urządzeń.
 
-Dwie urządzenia przechowuje trzy rodzaje metadanych:
+Trzy rodzaje metadane są przechowywane w bliźniaczej reprezentacji urządzenia:
 
-- *Zgłoszone właściwości* są wysyłane do Centrum IoT przez urządzenie. W zdalnym rozwiązanie monitorowania symulowanego urządzenia wysyłają właściwości zgłoszone podczas rozruchu, a w odpowiedzi na **zmienić stan urządzenia** polecenia i metod. Możesz wyświetlić właściwości zgłoszone w **listę urządzeń** i **szczegóły urządzenia** w portalu rozwiązania. Zgłoszony właściwości są tylko do odczytu.
-- *Żądany właściwości* są pobierane z Centrum IoT przez urządzenia. Jest odpowiedzialny za urządzeniu na żadnej konfiguracji niezbędne zmiany na urządzeniu. Należy również raportować zmiany do koncentratora jako właściwość zgłoszonego urządzenia. Można ustawić wartości właściwości żądaną za pośrednictwem portalu rozwiązania.
-- *Tagi* istnieje tylko w dwie urządzenia i nigdy nie są synchronizowane z urządzeniem. Można ustawić wartości tagów w portalu rozwiązania i ich używać, aby filtrować listę urządzeń. Rozwiązanie używa również tag do identyfikowania ikonę, aby wyświetlić urządzenia w portalu rozwiązania.
+- *Zgłaszane właściwości* są wysyłane do usługi IoT hub za pomocą urządzenia. W rozwiązaniu do monitorowania zdalnego, symulowane urządzenia wysyłają zgłaszane właściwości podczas rozruchu i w odpowiedzi na **zmiany stanu urządzenia** poleceniami i metodami. Możesz wyświetlić właściwości zgłaszanych w **listy urządzeń** i **szczegóły urządzenia** w portalu rozwiązania. Zgłaszane właściwości są tylko do odczytu.
+- *Żądane właściwości* są pobierane z usługi IoT hub za pomocą urządzeń. Jest odpowiedzialny za urządzenie, aby zwolnić wszelkie niezbędne zmianę konfiguracji na urządzeniu. Jest również odpowiedzialny za zgłoszenia tej zmiany z powrotem do Centrum jako zgłaszanej właściwości urządzenia. Można ustawić wartość żądanej właściwości, za pośrednictwem portalu rozwiązania.
+- *Tagi* istnieją tylko w bliźniaczej reprezentacji urządzenia i nigdy nie są synchronizowane z urządzeniem. Można ustawić wartości tagów w portalu rozwiązania i ich używać, aby filtrować listę urządzeń. Rozwiązanie używa również tag, aby zidentyfikować ikonę do wyświetlenia urządzenia w portalu rozwiązania.
 
-Przykład zgłosił, że właściwości z urządzeń symulowane obejmują producenta, numer modelu szerokości geograficznej i długości. Symulowanego urządzenia także wrócić do listy obsługiwanych metod jako właściwość zgłoszony.
+Przykład zgłosił, że właściwości symulowane urządzenia obejmują producenta, numer modelu, szerokości i długości geograficznej. Symulowane urządzenia również zwracać listę obsługiwanych metod jako zgłaszanej właściwości.
 
 > [!NOTE]
-> W kodzie na symulowanym urządzeniu są używane wyłącznie żądane właściwości **Desired.Config.TemperatureMeanValue** i **Desired.Config.TelemetryInterval** do aktualizowania zgłaszanych właściwości wysyłanych z powrotem do usługi IoT Hub. Wszystkie inne żądanej właściwości żądania zmiany są ignorowane.
+> W kodzie na symulowanym urządzeniu są używane wyłącznie żądane właściwości **Desired.Config.TemperatureMeanValue** i **Desired.Config.TelemetryInterval** do aktualizowania zgłaszanych właściwości wysyłanych z powrotem do usługi IoT Hub. Wszystkie inne żądania zmiany żądanych właściwości są ignorowane.
 
-Dokument JSON metadanych informacji urządzenia w bazie danych DB rozwiązania Cosmos rejestru urządzenia ma następującą strukturę:
+Urządzenie informacje metadanych dokumentem JSON przechowywane w bazie danych Cosmos DB w rejestrze urządzeń ma następującą strukturę:
 
 ```json
 {
@@ -81,40 +81,40 @@ Dokument JSON metadanych informacji urządzenia w bazie danych DB rozwiązania C
 ```
 
 > [!NOTE]
-> Informacje o urządzeniu mogą obejmować metadanych opisujących dane telemetryczne, które urządzenie wysyła do Centrum IoT. Rozwiązanie monitorowania zdalnego wykorzystuje te metadane telemetrii, aby dostosować sposób wyświetlania pulpitu nawigacyjnego [dynamiczne telemetrii][lnk-dynamic-telemetry].
+> Informacje o urządzeniu mogą również zawierać metadane opisują dane telemetryczne, które urządzenie wysyła do usługi IoT Hub. Rozwiązania do monitorowania zdalnego wykorzystuje te metadane telemetrii, aby dostosować sposób wyświetlania pulpitu nawigacyjnego [telemetrii dynamicznej][lnk-dynamic-telemetry].
 
 ## <a name="lifecycle"></a>Cykl życia
 
-Po utworzeniu urządzenia w portalu rozwiązania, rozwiązanie tworzy wpis w bazie danych DB rozwiązania Cosmos do przechowywania historii poleceń i metody. W tym momencie rozwiązanie również tworzy wpis dla urządzenia w rejestrze tożsamości urządzeń, który generuje klucze, używanych przez urządzenia do uwierzytelniania za pomocą Centrum IoT. Tworzy dwie urządzenia.
+Po utworzeniu urządzenia w portalu rozwiązania, rozwiązanie tworzy wpis w bazie danych Cosmos DB do przechowywania historii poleceń i metody. W tym momencie rozwiązanie tworzy wpis dla urządzenia w rejestrze tożsamości urządzeń, które generuje klucze, który jest używany do uwierzytelniania za pomocą usługi IoT Hub. Tworzy również w bliźniaczej reprezentacji urządzenia.
 
-Gdy urządzenie łączy się najpierw do rozwiązania, wysyła zgłoszone właściwości oraz komunikat z informacjami urządzenia. Wartości właściwości zgłoszone są automatycznie zapisywane w dwie urządzenia. Zgłoszony właściwości obejmują producenta urządzenia, numer modelu, numer seryjny i listę obsługiwanych metod. Komunikat z informacjami urządzenia zawiera listę poleceń, które obsługuje urządzenie tym informacje o żadnych parametrów polecenia. Po rozwiązaniu odbiera ten komunikat, aktualizuje informacje o urządzeniu w bazie danych DB rozwiązania Cosmos.
+Przy pierwszym połączeniu urządzenia z rozwiązaniem, wysyła zgłaszane właściwości oraz komunikat z informacjami o urządzeniu. Wartości zgłaszanych właściwości są automatycznie zapisywane w bliźniaczej reprezentacji urządzenia. Zgłaszane właściwości obejmują producent urządzenia, numer modelu, numer seryjny i Lista obsługiwanych metod. Komunikat z informacjami o urządzeniu obejmują listę poleceń obsługiwanych przez urządzenie w tym informacje o parametrach dowolnego polecenia. Gdy rozwiązanie odbiera ten komunikat, aktualizuje informacje o urządzeniu w bazie danych Cosmos DB.
 
-### <a name="view-and-edit-device-information-in-the-solution-portal"></a>Umożliwia wyświetlanie i edytowanie informacji o urządzeniu w portalu rozwiązania
+### <a name="view-and-edit-device-information-in-the-solution-portal"></a>Wyświetlanie i edytowanie informacji o urządzeniu w portalu rozwiązania
 
-Lista urządzeń w portalu rozwiązania następujące właściwości urządzenia jako kolumny domyślnie wyświetla: **stan**, **DeviceId**, **producenta**, **modelu Numer**, **numer seryjny**, **oprogramowania układowego**, **platformy**, **procesora**, i  **Zainstalowana pamięć RAM**. Kolumny można dostosować, klikając **Edytor kolumn**. Właściwości urządzenia **szerokości geograficznej** i **geograficzne** dysków lokalizacji mapy Bing na pulpicie nawigacyjnym.
+Lista urządzeń w portalu rozwiązania następujące właściwości urządzenia jako kolumny domyślnie wyświetla: **stan**, **DeviceId**, **producenta**, **modelu Liczba**, **numer seryjny**, **oprogramowania układowego**, **platformy**, **procesora**, i  **Zainstalowana pamięć RAM**. Kolumny można dostosować, klikając **Edytor kolumn**. Właściwości urządzenia **Latitude** i **długości geograficznej** dysku lokalizacji na mapie Bing na pulpicie nawigacyjnym.
 
 ![Edytor kolumn na liście urządzeń][img-device-list]
 
-W **szczegóły urządzenia** okienku w portalu rozwiązania można edytować żądanego właściwości i tagi (zgłosić właściwości są tylko do odczytu).
+W **szczegóły urządzenia** okienku w portalu rozwiązania możesz edytować żądane właściwości i tagów (zgłaszane właściwości są tylko do odczytu).
 
-![W okienku szczegółów urządzenia][img-device-edit]
+![Okienko szczegółów urządzenia][img-device-edit]
 
-Portal rozwiązanie umożliwia usunięcie urządzenia z rozwiązania. Po usunięciu urządzenia rozwiązania spowoduje usunięcie tego wpisu z rejestru tożsamości, a następnie usuwa dwie urządzenia. Rozwiązania spowoduje również usunięcie informacji związanych z urządzenia z bazy danych DB rozwiązania Cosmos. Aby móc usunąć urządzenie, należy ją wyłączyć.
+Aby usunąć urządzenie z rozwiązania, można użyć portalu rozwiązania. Po usunięciu urządzenia rozwiązania spowoduje usunięcie tego wpisu w rejestrze tożsamości, a następnie usuwa bliźniaczej reprezentacji urządzenia. To rozwiązanie spowoduje również usunięcie informacji związanych z urządzeniem z bazy danych Cosmos DB. Zanim będzie można usunąć urządzenia, należy ją wyłączyć.
 
 ![Usuwanie urządzenia][img-device-remove]
 
-## <a name="device-information-message-processing"></a>Przetwarzanie komunikatów informacji urządzenia
+## <a name="device-information-message-processing"></a>Przetwarzanie komunikatów informacje o urządzeniu
 
-Komunikaty informacyjne urządzenia wysyłane przez urządzenie różnią się od komunikatów telemetrii. Komunikaty informacyjne urządzenia obejmują poleceń, które urządzenia mogą odpowiadać na, a cała historia polecenia. Centrum IoT, sama nie ma informacji o metadanych komunikat z informacjami urządzenia i przetwarza wiadomość w taki sam sposób przetwarza komunikat dowolnego urządzenia do chmury. W zdalnym rozwiązanie monitorowania [Azure Stream Analytics] [ lnk-stream-analytics] zadania (ASA) odczytuje komunikaty z Centrum IoT. **DeviceInfo** filtry dla wiadomości, które zawierają zadania stream analytics **"ObjectType": "DeviceInfo"** i przekazuje je do **EventProcessorHost** wystąpienie hosta który wykonuje zadanie sieci web. Logikę w **EventProcessorHost** wystąpienie używa Identyfikatora urządzenia można znaleźć rekordu rozwiązania Cosmos bazy danych dla określonego urządzenia i zaktualizować rekord.
+Komunikaty z informacjami o urządzeniu wysyłana przez urządzenie różnią się od komunikaty telemetryczne. Komunikaty z informacjami o urządzeniu obejmują poleceń, które może odpowiedzieć urządzenie i Historia poleceń. Usługa IoT Hub, sama nie ma informacji o metadanych zawartych w komunikat z informacjami o urządzeniu i przetwarza wiadomość w taki sam sposób, jak są przetwarzane wszystkie komunikaty z urządzenia do chmury. W rozwiązaniu do monitorowania zdalnego [usługi Azure Stream Analytics] [ lnk-stream-analytics] zadania (ASA) odczytuje komunikaty z usługi IoT Hub. **DeviceInfo** filtrów dla komunikatów, które zawierają zadania usługi stream analytics **"ObjectType": "DeviceInfo"** i przekazuje je do **EventProcessorHost** wystąpienie hosta która działa w zadaniu sieci web. Logika **EventProcessorHost** wystąpienia używa Identyfikatora urządzenia, aby odnaleźć rekordu usługi Cosmos DB dla określonego urządzenia i zaktualizuj rekord.
 
 > [!NOTE]
-> Komunikat z informacjami urządzenia jest standardowy komunikat urządzenia do chmury. Rozwiązanie rozróżnia komunikaty informacyjne urządzenia i dane telemetryczne wiadomości przy użyciu ASA zapytań.
+> Komunikat z informacjami o urządzeniu jest standardową wiadomość urządzenia do chmury. Rozwiązanie rozróżnia komunikaty z informacjami o urządzeniu i komunikaty telemetryczne przy użyciu zapytań ASA.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po zakończeniu learning, jak można dostosować wstępnie skonfigurowanych rozwiązań można eksplorować niektóre inne funkcje i możliwości rozwiązań wstępnie pakiet IoT:
+Po zakończeniu nauki, w jaki sposób dostosować wstępnie skonfigurowane rozwiązania, możesz zapoznać się z niektóre inne funkcje i możliwości IoT wstępnie skonfigurowanych rozwiązań pakietu:
 
-* [Omówienie rozwiązania konserwacji predykcyjnej wstępnie][lnk-predictive-overview]
+* [Omówienie rozwiązania do konserwacji predykcyjnej, wstępnie skonfigurowane][lnk-predictive-overview]
 * [Często zadawane pytania dotyczące Pakietu IoT][lnk-faq]
 * [Zabezpieczenia IoT od podstaw][lnk-security-groundup]
 
@@ -132,4 +132,4 @@ Po zakończeniu learning, jak można dostosować wstępnie skonfigurowanych rozw
 
 [lnk-predictive-overview]:../iot-accelerators/iot-accelerators-predictive-overview.md
 [lnk-faq]: iot-suite-v1-faq.md
-[lnk-security-groundup]:../iot-accelerators/securing-iot-ground-up.md
+[lnk-security-groundup]:/azure/iot-fundamentals/iot-security-ground-up

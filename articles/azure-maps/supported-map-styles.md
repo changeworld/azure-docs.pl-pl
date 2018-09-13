@@ -4,17 +4,16 @@ description: Obsługiwane przez usługi Azure Maps style mapy
 author: walsehgal
 ms.author: v-musehg
 ms.date: 08/28/2018
-ms.topic: concepts
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc
-ms.openlocfilehash: 04c8f43e3b484ceeb942ae13ea95baf7f0215b53
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 8f0910e9040c962bae30a33b91a93e71e692dfdb
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43344839"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44713446"
 ---
 # <a name="azure-maps-supported-map-styles"></a>Usługi Azure Maps obsługiwane style mapy
 Usługi Azure maps obsługuje cztery style różnych wbudowanych mapy. Poniżej przedstawiono style wraz z opisami.

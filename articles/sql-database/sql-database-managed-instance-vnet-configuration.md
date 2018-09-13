@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 08/21/2018
+ms.date: 09/12/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 748489785241c0eab6022e3585164974f330d6f9
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 1ec4a6033fad643c75cdf9f7ebc5cdb1f4bab9c3
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049677"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717152"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Konfigurowanie sieci wirtualnej dla wystąpienie zarządzane usługi Azure SQL Database
 
@@ -38,31 +38,31 @@ Zaplanuj, jak wdrożyć wystąpienie zarządzane w sieci wirtualnej przy użyciu
 
 ## <a name="requirements"></a>Wymagania
 
-Tworzenie wystąpienia zarządzanego należy przeznaczyć podsieci w sieci wirtualnej, który spełnia następujące wymagania:
-- **W wersji dedykowanej podsieci**: podsieci nie może zawierać innych usług cloud, powiązany i nie może być podsieć bramy. Nie można utworzyć wystąpienie zarządzane usługi w podsieci, która zawiera zasobów innych niż wystąpienia zarządzanego lub dodanie innych zasobów w obrębie podsieci później.
-- **Brak sieciowej grupy zabezpieczeń**: podsieci nie może mieć skojarzonych z nią sieciową grupę zabezpieczeń. 
-- **Tabela jest określoną trasę**: podsieć musi mieć użytkownika tabeli (UDR) za pomocą internetowej następnego przeskoku 0.0.0.0/0 jako tylko trasy do niej przypisany. Aby uzyskać więcej informacji, zobacz [Tworzenie tabeli tras wymagane i skojarz go](#create-the-required-route-table-and-associate-it)
-3. **Opcjonalne niestandardowe DNS**: Jeśli niestandardowe DNS jest określona w sieci wirtualnej, należy dodać adres IP platformy Azure rekursywnego rozpoznawania nazw (na przykład 168.63.129.16) do listy. Aby uzyskać więcej informacji, zobacz [Konfigurowanie niestandardowych serwerów DNS](sql-database-managed-instance-custom-dns.md).
-4. **Brak punktów końcowych usługi**: podsieci nie może mieć powiązany punktu końcowego usługi. Upewnij się, że opcji punktów końcowych usługi jest wyłączona podczas tworzenia sieci wirtualnej.
-5. **Wystarczającą liczbą adresów IP**: podsieć musi mieć absolutnego minimum 16 adresów IP (zalecane są co najmniej 32 adresów IP). Aby uzyskać więcej informacji, zobacz [określi rozmiar podsieci wystąpienia zarządzanego](#determine-the-size-of-subnet-for-managed-instances)
+Aby utworzyć wystąpienie zarządzane, należy utworzyć dedykowaną podsieć (podsieci wystąpienia zarządzanego) wewnątrz sieci wirtualnej, która spełnia następujące wymagania:
+- **W wersji dedykowanej podsieci**: podsieci wystąpienia zarządzanego nie może zawierać wszystkie inne usługi w chmurze skojarzone z nim, a nie może być podsieć bramy. Nie można utworzyć wystąpienie zarządzane w podsieci, która zawiera zasoby innych niż wystąpienia zarządzanego, a nie można później dodać innych zasobów w podsieci.
+- **Niezgodne grupy zabezpieczeń sieci (NSG)**: sieciowej grupy zabezpieczeń, które są skojarzone z podsieci wystąpienia zarządzanego musi zawierać reguły pokazano w poniższych tabelach (reguł zabezpieczeń ruchu przychodzącego obowiązkowe i reguły zabezpieczeń dla ruchu wychodzącego obowiązkowe) przed jakiekolwiek inne reguły. Sieciowa grupa zabezpieczeń można użyć w pełni kontrolować dostęp do endpoint danych wystąpienia zarządzanego, filtrując ruch na porcie 1433. 
+- **Tabeli zgodnych tras zdefiniowanych przez użytkownika (UDR)**: podsieci wystąpienia zarządzanego musi mieć tabelę tras użytkownika za pomocą **internetowej następnego przeskoku 0.0.0.0/0** jako obowiązkowe trasy zdefiniowanej przez użytkownika do niej przypisany. Ponadto możesz dodać trasy zdefiniowanej przez użytkownika tego kieruje ruch z zakresów IP prywatnych w środowisku lokalnym jako miejsce docelowe za pośrednictwem bramy sieci wirtualnej lub sieci wirtualne urządzenie sieciowe. 
+- **Opcjonalne niestandardowe DNS**: Jeżeli niestandardowe DNS jest określony w thevirtual sieciowy, adres IP platformy Azure cyklicznego programu rozpoznawania nazw (na przykład 168.63.129.16) musi być dodana do listy. Aby uzyskać więcej informacji, zobacz [Konfigurowanie niestandardowych serwerów DNS](sql-database-managed-instance-custom-dns.md). Niestandardowego serwera DNS musi być w stanie rozpoznać nazwy hostów w następujących domen i poddomen ich: *microsoft.com*, *windows.net*, *windows.com*, *msocsp.com*, *digicert.com*, *live.com*, *microsoftonline.com*, i *microsoftonline-p.com*. 
+- **Brak punktów końcowych usługi**: podsieci wystąpienia zarządzanego nie może mieć powiązany punktu końcowego usługi. Upewnij się, że opcji punktów końcowych usługi jest wyłączona podczas tworzenia sieci wirtualnej.
+- **Wystarczającą liczbą adresów IP**: podsieci wystąpienia zarządzanego jest posiadanie absolutnego minimum 16 adresów IP (zalecane są co najmniej 32 adresów IP). Aby uzyskać więcej informacji, zobacz [określi rozmiar podsieci wystąpienia zarządzanego](#determine-the-size-of-subnet-for-managed-instances)
 
 > [!IMPORTANT]
-> Nie można wdrożyć nowe wystąpienie zarządzane, jeśli podsieci docelowej nie jest zgodny z wszystkich poprzednich wymagań. Docelowej sieci wirtualnej i podsieci muszą być przechowywane zgodnie z wymaganiami te wystąpienia zarządzanego (przed i po wdrożeniu), zgodnie z naruszeniem może spowodować wystąpienie wejść w stan uszkodzony i staną się niedostępne. Odzyskiwanie z, że stan wymaga utworzenia nowego wystąpienia w sieci wirtualnej przy użyciu zgodnymi zasadami sieci, ponownie Utwórz dane na poziomie wystąpienia i przywrócenia baz danych. Wprowadza znaczących przestojów w działaniu aplikacji.
+> Nie można wdrożyć nowe wystąpienie zarządzane, jeśli podsieci docelowej nie jest zgodny ze wszystkimi te wymagania. Podczas tworzenia wystąpienia zarządzanego *sieciowe przeznaczenie zasady* została zastosowana w tej podsieci, aby uniemożliwić niezgodnych zmian do konfiguracji sieci. Po usunięciu ostatniego wystąpienia z podsieci, *sieciowe przeznaczenie zasady* zostanie także usunięta
 
-Dzięki wprowadzeniu _sieciowe przeznaczenie zasady_, można dodać sieciowej grupy zabezpieczeń (NSG) w podsieci wystąpienia zarządzanego, po utworzeniu wystąpienia zarządzanego.
-
-Sieciowa grupa zabezpieczeń umożliwia teraz zawężenie zakresu adresów IP, z których aplikacji użytkownicy mogli zapytań i zarządzania danymi przez filtrowanie ruchu sieciowego, który prowadzi do portu 1433. 
-
-> [!IMPORTANT]
-> Podczas konfigurowania reguły sieciowej grupy zabezpieczeń, które będą ograniczenia dostępu do portu 1433, należy wstawić najwyższy priorytet reguły dla ruchu przychodzącego są wyświetlane w poniższej tabeli. W przeciwnym razie zasady intencji sieci blokuje zmianę jako zgodne.
+### <a name="mandatory-inbound-security-rules"></a>Reguły zabezpieczeń ruchu przychodzącego obowiązkowe 
 
 | NAZWA       |PORT                        |PROTOKÓŁ|Źródło           |MIEJSCE DOCELOWE|AKCJA|
 |------------|----------------------------|--------|-----------------|-----------|------|
-|zarządzanie  |9000, 9003, 1438 1440, 1452|Dowolne     |Dowolne              |Dowolne        |Zezwalaj |
+|zarządzanie  |9000, 9003, 1438 1440, 1452|TCP     |Dowolne              |Dowolne        |Zezwalaj |
 |mi_subnet   |Dowolne                         |Dowolne     |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO        |Dowolne        |Zezwalaj |
 |health_probe|Dowolne                         |Dowolne     |AzureLoadBalancer|Dowolne        |Zezwalaj |
 
-Proces routingu została również ulepszona, aby oprócz 0.0.0.0/0 typu następnego przeskoku trasy z Internetu, można teraz dodać trasę zdefiniowaną przez użytkownika, aby przekierować ruch do lokalnych zakresów IP prywatnych za pośrednictwem bramy sieci wirtualnej lub sieci wirtualne urządzenie sieciowe.
+### <a name="mandatory-outbound-security-rules"></a>Reguły zabezpieczeń dla ruchu wychodzącego obowiązkowe 
+
+| NAZWA       |PORT          |PROTOKÓŁ|Źródło           |MIEJSCE DOCELOWE|AKCJA|
+|------------|--------------|--------|-----------------|-----------|------|
+|zarządzanie  |80, 443, 12000|TCP     |Dowolne              |Dowolne        |Zezwalaj |
+|mi_subnet   |Dowolne           |Dowolne     |Dowolne              |PODSIECI WYSTĄPIENIA ZARZĄDZANEGO  |Zezwalaj |
 
 ##  <a name="determine-the-size-of-subnet-for-managed-instances"></a>Określ rozmiar podsieci wystąpienia zarządzanego
 

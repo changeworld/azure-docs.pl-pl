@@ -1,160 +1,160 @@
 ---
-title: Głębokie learning konserwacji predykcyjnej rzeczywistych scenariuszach - Azure | Dokumentacja firmy Microsoft
-description: Informacje o replikacji samouczek dotyczący uczenia głębokie dla konserwacji predykcyjnej z usługi Azure Machine Learning Workbench.
+title: Uczeniem głębokim na potrzeby scenariuszy w rzeczywistych warunkach konserwacji predykcyjnej — Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak replikować samouczek dotyczący uczenia głębokiego, pod kątem konserwacji predykcyjnej przy użyciu usługi Azure Machine Learning Workbench.
 services: machine-learning
 author: ehrlinger
 ms.author: jehrling
 manager: ireiter
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.devlang: ''
 ms.topic: article
 ms.date: 11/22/2017
-ms.openlocfilehash: 26b061c6bd6ff3ec9d1edbb7d99053d17db9b773
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 83e1f14db317f59ab2063a9d020adbdb6fe78e5f
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832605"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35650455"
 ---
-# <a name="deep-learning-for-predictive-maintenance-real-world-scenarios"></a>Głębokie learning konserwacji predykcyjnej rzeczywistych scenariuszy
+# <a name="deep-learning-for-predictive-maintenance-real-world-scenarios"></a>Uczenie głębokie dla konserwacji predykcyjnej scenariuszy w rzeczywistych warunkach
 
-Głębokie learning jest jednym z najpopularniejszych trendów w uczeniu maszynowym i nie ma aplikacji do wielu obszarach, takich jak:
-- Driverless samochodów i robotics.
+Uczenie głębokie jest jednym z najbardziej popularnych trendy w usłudze machine learning i aplikacjami do wielu obszarów, takich jak:
+- Samochody korzystania i związane z robotyką.
 - Rozpoznawanie mowy i obrazu.
-- prognozy finansowe.
+- Prognozowanie finansowego.
 
-Znane również jako sieci neuronowej głębokość (DNN), te metody są inspirowana przez poszczególne grupy neuronów, znajdujące się w ramach inteligencji (biologicznych sieci neuronowej).
+Znane również jako głębokich sieciach neuronowych (DNN), te metody są zainspirować poszczególne grupy neuronów, które znajdują się w mózg (biologicznych sieci neuronowych).
 
-Niezaplanowane przestoje sprzętu mogą mieć niekorzystny wpływ na każdą firmę. Warto zachować urządzeń pola do zmaksymalizowania wykorzystania i wydajności i zminimalizować kosztowne, nieplanowanych przestojów. Wczesne identyfikację problemów mogą pomóc przydzielić zasoby obsługi ograniczony w sposób ekonomiczny i zwiększyć jakość i procesy łańcucha dostaw. 
+Niezaplanowane przestoje sprzętu mogą mieć niekorzystny wpływ na każdą firmę. Warto zachować sprzętu pola do zmaksymalizowania użycia i wydajności i minimalizowanie kosztownych i nieplanowanych przestojów. Wczesnej identyfikacji problemów może pomóc przydzielić zasoby ograniczone konserwacji w ekonomiczny sposób i poprawić jakość i procesy łańcucha dostaw. 
 
-Strategii konserwacji predykcyjnej (PM) używa machine learning metod, aby określić stan urządzenia preemptively przeprowadzania konserwacji w celu uniknięcia wydajność niekorzystny maszyny. W PM dane są zbierane wraz z upływem czasu, aby monitorować stan maszyny, a następnie analizować je w celu znaleźć wzorców do prognozowania błędów. [Długie krótki okres pamięci (LSTM)](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) sieci są atrakcyjny dla tego ustawienia, ponieważ służą one do poznania sekwencji danych.
+Strategia konserwacji zapobiegawczej (PM) używa machine learning metody, aby określić warunek sprzętu prewencyjnego wykonywanie konserwacji, aby uniknąć wydajność niekorzystny maszyny. W PM dane są zbierane wraz z upływem czasu, aby monitorować stan maszyny, a następnie analizowane w celu znalezienia wzorców przewiduje awarie. [Długie krótki okres pamięci (LSTM)](http://colah.github.io/posts/2015-08-Understanding-LSTMs/) sieci są atrakcyjną w przypadku tego ustawienia, ponieważ służą one do ucz się od sekwencji danych.
 
-### <a name="cortana-intelligence-gallery-github-repository"></a>Repozytorium Cortana Intelligence Gallery GitHub
+### <a name="cortana-intelligence-gallery-github-repository"></a>Cortana Intelligence Gallery GitHub repozytorium
 
-Cortana Intelligence Gallery samouczek PM jest publicznego repozytorium GitHub ([https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance)) gdzie zgłaszania problemów i utworzyć udziały.
+Cortana Intelligence Gallery samouczek PM jest publicznego repozytorium GitHub ([https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance)) gdzie zgłosić problemy i swojego wkładu.
 
 
 ## <a name="use-case-overview"></a>Omówienie przypadków użycia
 
-W tym samouczku użyto przykładu zdarzenia Uruchom — błąd aparatu symulowane powietrznego aby zademonstrować konserwacji predykcyjnej modelowania procesu. Scenariusz jest opisany w [konserwacji predykcyjnej](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3).
+W tym samouczku używa tego przykładu zdarzenia niepowodzeniem przebiegu silnika samolotu symulowane, aby zademonstrować konserwacji predykcyjnej procesu modelowania. Scenariusz jest opisany w [konserwacji predykcyjnej](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Template-3).
 
-Głównych założeń, w tym ustawieniu jest aparatem stopniowo ze spadkiem swojego okresu istnienia. Degradacji można wykryć w aparat czujnik pomiarów. PM próbuje modelowania relacji między zmiany w wartościach tych czujników i historycznych błędów. Model można następnie prognozowania, aparatu i kiedy może zakończyć się niepowodzeniem w przyszłości, na podstawie bieżącego stanu czujnik pomiarów.
+Główne założeń, w tym ustawieniu jest aparat stopniowo negatywny wpływ na dostępność przez cały okres ich istnienia. Obniżenia wydajności może zostać wykryte w pomiarów czujników silnika. PM próbuje modelowania relacji między zmiany w tych wartości z czujników i historycznych błędów. Model następnie potrafimy przewidzieć, że aparatu i kiedy może zakończyć się niepowodzeniem w przyszłości na podstawie bieżącego stanu pomiarów czujnika.
 
-Ten scenariusz tworzy sieć LSTM do prognozowania pozostałych użytkowania (RUL) aparatów powietrznego przy użyciu wartości czujnik historycznych. Scenariusz używa [Keras](https://keras.io/) biblioteki z [Tensorflow](https://www.tensorflow.org/) głębokie learning framework jako aparat obliczeń. Scenariusz przygotowuje LSTM z jednego zestawu aparaty i analiz sieci na podstawie zestawu niewidocznym aparatu.
+Ten scenariusz tworzy sieci LSTM w celu przewidywania pozostałego okresu eksploatacji (RUL) silników samolotów przy użyciu wartości z czujników historycznych. W scenariuszu [Keras](https://keras.io/) biblioteki z [Tensorflow](https://www.tensorflow.org/) platforma do uczenia głębokiego jako aparatu obliczeniowego. Scenariusz szkolenie modeli LSTM z jednego zestawu aparatów i testów w zestawie niewidzianych aparatu sieci.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-- [Konta Azure](https://azure.microsoft.com/free/) (bezpłatnych wersji próbnych są dostępne).
-- Azure Machine Learning Workbench z utworzono obszar roboczy.
-- Dla modelu operationalization: Azure Machine Learning Operationalization ze środowiska lokalnego wdrożenia, konfigurowanie i [konta Azure Machine Learning Model zarządzania](model-management-overview.md).
+- [Konta platformy Azure](https://azure.microsoft.com/free/) (bezpłatne wersje próbne są dostępne).
+- Usługa Azure Machine Learning Workbench, za pomocą obszaru roboczego tworzone.
+- Model operacjonalizacji: platformy Azure Machine Learning Operacjonalizacji ze środowiska lokalnego wdrażania, konfigurowania i [konto Zarządzanie modelami w usłudze Azure Machine Learning](model-management-overview.md).
 
-## <a name="create-a-new-workbench-project"></a>Utwórz nowy projekt Workbench
+## <a name="create-a-new-workbench-project"></a>Utwórz nowy projekt aplikacji Workbench
 
-Utwórz nowy projekt, korzystając z tego przykładu jako szablon:
+Utwórz nowy projekt za pomocą tego przykładu jako szablonu:
 
 1. Otwórz aplikację Machine Learning Workbench.
-2. Na **projekty** wybierz pozycję **+**, a następnie wybierz **nowy projekt**.
-3. W **Utwórz nowy projekt** okienku, wprowadź informacje dotyczące nowego projektu.
-4. W **szablony projektów wyszukiwania** polu wyszukiwania wpisz "Konserwacji predykcyjnej", wybierz **głębokie Learning w scenariuszu konserwacji predykcyjnej** szablonu.
+2. Na **projektów** wybierz opcję **+**, a następnie wybierz pozycję **nowy projekt**.
+3. W **Utwórz nowy projekt** okienku, wprowadź informacje dla nowego projektu.
+4. W **Wyszukaj szablony projektów** polu wyszukiwania wpisz "Konserwacja zapobiegawcza" i wybierz **uczeniem głębokim na potrzeby scenariuszu konserwacji predykcyjnej** szablonu.
 5. Wybierz pozycję **Utwórz**.
 
-## <a name="prepare-the-notebook-server-computation-target"></a>Przygotowanie docelowy obliczeniowym serwera notesu
+## <a name="prepare-the-notebook-server-computation-target"></a>Przygotowywanie celu obliczeń serwer notesu
 
-Uruchamianie na komputerze lokalnym, z Machine Learning Workbench **pliku** menu, wybierz opcję **Otwórz okno wiersza polecenia** lub **Otwórz interfejs wiersza polecenia programu PowerShell**. Interfejs interfejsu wiersza polecenia umożliwia dostęp do usług platformy Azure przy użyciu `az` poleceń. Po pierwsze Zaloguj się do konta platformy Azure przy użyciu polecenia:
+Aby uruchomić na komputerze lokalnym z Machine Learning Workbench **pliku** menu, wybierz opcję **Otwórz wiersz polecenia** lub **Otwórz interfejs wiersza polecenia PowerShell**. Interfejs wiersza polecenia umożliwia dostęp do usług platformy Azure przy użyciu `az` poleceń. Najpierw zaloguj się do konta platformy Azure przy użyciu polecenia:
 
 ```
 az login
 ``` 
 
-To polecenie dostarcza klucz uwierzytelniania do użycia z https:\\aka.ms\devicelogin adresu URL. Interfejsu wiersza polecenia oczekuje, aż operację logowania za pomocą urządzenia zwraca i udostępnia pewne informacje o połączeniu. Dalej, jeśli masz lokalnym [Docker](https://www.docker.com/get-docker) instalacji, przygotować środowisko lokalnym przy użyciu polecenia:
+To polecenie dostarcza klucz uwierzytelniania, który będzie używany przy użyciu protokołu https:\\aka.ms\devicelogin adresu URL. Interfejs wiersza polecenia czeka, aż urządzenie operacji logowania zwraca i udostępnia pewne informacje o połączeniu. Dalej, jeśli masz lokalnego [Docker](https://www.docker.com/get-docker) instalacji przygotować środowisko obliczeniowe lokalnego przy użyciu polecenia:
 
 ```
 az ml experiment prepare --target docker --run-configuration docker
 ```
 
-Zaleca się uruchamiania na [danych nauki maszyny wirtualnej (DSVM) dla systemu Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) wymagania dotyczące pamięci i dysku. Po skonfigurowaniu DSVM przygotować środowisko Docker zdalnego za pomocą następujących dwóch poleceń:
+Zaleca się uruchamiania na [Data Science Virtual Machine (dsvm dystrybucji) dla systemu Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) dla wymagania dotyczące pamięci i dysku. Po skonfigurowaniu maszyny DSVM przygotować zdalnym środowisku platformy Docker przy użyciu dwóch następujących poleceń:
 
 ```
 az ml computetarget attach remotedocker --name [Connection_Name] --address [VM_IP_Address] --username [VM_Username] --password [VM_UserPassword]
 ```
 
-Po nawiązaniu połączenia zdalnego kontenera Docker przygotowanie środowiska obliczeniowego DSVM Docker przy użyciu polecenia: 
+Po nawiązaniu zdalnym kontenerze platformy Docker, należy przygotować środowisko obliczeniowe DSVM platformy Docker przy użyciu polecenia: 
 
 ```
 az ml experiment prepare --target [Connection_Name] --run-configuration [Connection_Name]
 ```
 
-Środowiska obliczeniowe Docker przygotowany, otwórz serwera notesu Jupyter z Machine Learning Workbench **notesów** karcie lub uruchamiania serwera opartego na przeglądarce przy użyciu polecenia: 
+Przygotowanie środowiska obliczeniowego platformy Docker, Otwórz serwer notesu Jupyter z Machine Learning Workbench **notesów** tab lub uruchomić serwer oparty na przeglądarce, za pomocą polecenia: 
 
 ```
 az ml notebook start
 ```
 
-Przykład notesów są przechowywane w katalogu kodu. Notebooki są skonfigurowane do uruchamiają się po kolei, uruchomienie na pierwszy notesu (Code\1_data_ingestion.ipynb). Po otwarciu każdego notesu monit wybierz jądro obliczeniowe. Wybierz jądra _Template [Connection_Name] [Project_Name] do wykonania na DSVM wcześniej skonfigurowany.
+Notesy przykład są przechowywane w katalogu kodu. Notesów są konfigurowane do uruchamiania po kolei, począwszy od pierwszego notesu (Code\1_data_ingestion.ipynb). Po otwarciu poszczególnych Notes, zostanie wyświetlony monit wybierz jądrem obliczeniowym. Wybierz jądra szablonu _maszyny [Connection_Name] [nazwa_projektu] do wykonania na wcześniej skonfigurowane maszyny DSVM.
 
-## <a name="data-description"></a>Opis elementu danych
+## <a name="data-description"></a>Opis danych
 
-Szablon używa trzech zestawów danych jako dane wejściowe w plikach PM_train.txt, PM_test.txt i PM_truth.txt. 
+Szablon używa trzech zestawów danych jako dane wejściowe w plikach PM_train.txt PM_test.txt i PM_truth.txt. 
 
-- **Dane pociągu**: powietrznego aparat danych uruchom do awarii. Dane pociągu (PM_train.txt) składa się z wieloma szeregów czasowych wielu zmiennych z *cykl* jako jednostki czasu. Obejmuje on 21 odczyty czujników dla każdego cyklu. 
+- **Szkolenie danych**: samolotu aparatu danych niepowodzeniem przebiegu. Dane train (PM_train.txt) składa się z wieloma szeregów czasowych wielu zmiennych z *cyklu* jako jednostki czasu. Obejmuje ona 21 odczyty czujników, dla każdego cyklu. 
 
-    - Każdy szeregu czasowego jest generowany na podstawie inny aparat tego samego typu. Każdy aparat rozpoczyna się od różnych stopni początkowej zużycia i różnice unikatowy produkcyjnym. Te informacje są nieznane dla użytkownika. 
+    - Każdy szereg czasowy jest generowany na podstawie inny aparat tego samego typu. Każdy silnik rozpoczyna się od różne stopnie początkowej zużycia i różnice w produkcji unikatowy. Ta informacja jest nieznany dla użytkownika. 
 
-    - W tym symulowane danych aparat przyjęto, że działają normalnie na początku każdego szeregów czasowych. Rozpoczyna się zmniejszyć w pewnym momencie podczas serii cykli operacyjnych. Degradacji postępu i rozwoju wielkości. 
+    - W tym symulowane dane aparat jest zakłada się, że normalnego działania na początku każdego szeregów czasowych. Uruchamia się zmniejszyć w pewnym momencie podczas serii cykli operacyjnych. Obniżenia wydajności w miarę i rozwoju w wielkości. 
 
-    - Po osiągnięciu progu wstępnie zdefiniowanych przez aparat są uważane za niebezpieczne dla dalszego działania. Ostatniego cyklu każdego szeregu czasowego jest punktem awarii tego aparatu.
+    - Po osiągnięciu wstępnie zdefiniowany próg aparat są uważane za niebezpieczne dalszych operacji. Każdy szereg czasowy ostatniego cyklu jest punktem awarii silnika.
 
-- **Dane testowe**: powietrznego aparat dane operacyjne bez rejestrowane zdarzenia błędów. Dane testowe (PM_test.txt) ma ten sam schemat danych jako dane szkoleniowe. Jedyną różnicą jest to, że dane nie wskazuje po wystąpieniu błędu (jest ostatnim okresie *nie* reprezentuje punkt awarii). Nie wiadomo, ile więcej cykli ten aparat może trwać przed jej nie powiedzie się.
+- **Dane testowe**: samolotu aparatu dane operacyjne bez zdarzenia błędów rejestrowane. Dane testu (PM_test.txt) mają ten sam schemat danych jako dane szkoleniowe. Jedyną różnicą jest to, że dane nie wskazuje, kiedy wystąpi błąd (jest w ostatnim okresie *nie* reprezentuje punkt awarii). Nie wiadomo, jak wiele więcej cykli może trwać ten aparat, zanim zakończy się niepowodzeniem.
 
-- **Dane prawdy**: informacje o pozostałych true cykli dla każdego aparatu danych testowych. Dane prawdy podstaw zawiera liczby cykli pracy pozostałej dla aparatów danych testowych.
+- **Dane w rzeczywistości**: informacje o pozostałych true cykli każdy silnik w danych testowych. Podstaw danych prawdziwych danych zawiera liczbę pozostałych cykle pracy silników danych testowych.
 
-## <a name="scenario-structure"></a>Scenariusz — struktura
+## <a name="scenario-structure"></a>Struktura scenariusza
 
-Przepływ pracy scenariusza jest podzielone na trzy kroki, a każdy krok jest wykonywany w notesu Jupyter. Każdy notesu tworzy artefaktów danych, które są trwałe lokalnie do użycia w notesach.
+Przepływ pracy scenariusza jest podzielone na trzy kroki, a każdy krok jest wykonywany w notesie Jupyter. Każdy notesu tworzy artefaktów danych, które są zachowywane lokalnie do użycia w notesach.
 
-### <a name="task-1-data-ingestion-and-preparation"></a>Zadanie 1: Wprowadzanie danych i przygotowanie
+### <a name="task-1-data-ingestion-and-preparation"></a>Zadanie 1: Wprowadzanie i przygotowywanie danych
 
-Notesu Jupyter wprowadzanie danych w Code/1_data_ingestion_and_preparation.ipnyb ładuje trzy zestawy danych wejściowych do formatu Pandas DataFrame. Następnie notesu przygotowuje dane do modelowania i jest niektórych wizualizację wstępnych danych. Zestawy danych są przechowywane lokalnie w kontekście obliczeń do użycia w notesu Jupyter tworzenia modelu.
+Notes Jupyter pozyskiwania danych w Code/1_data_ingestion_and_preparation.ipnyb ładuje trzech danych wejściowych zestawów danych do formatu Pandas DataFrame. Notes następnie przygotowuje dane do modelowania i jest kilka wizualizacji danych wstępnego. Zestawy danych są przechowywane lokalnie do kontekstu obliczeniowego do użytku w notesie Jupyter tworzenia modelu.
 
-### <a name="task-2-model-building-and-evaluation"></a>Zadanie 2: Konstruowania modelu i ocena
+### <a name="task-2-model-building-and-evaluation"></a>Zadanie 2: Tworzenie modelu i ocena
 
-Notesu Jupyter tworzenia modelu w Code/2_model_building_and_evaluation.ipnyb odczytuje pociągu i testowania zestawów danych z dysku i tworzy sieć LSTM szkoleniowy zestaw danych. W przypadku testowego zestawu danych mierzona jest wydajność modelu. Modelu wynikowego są serializowane i przechowywane w kontekście lokalnym do użycia w zadaniu operationalization.
+Notes Jupyter Tworzenie modelu w Code/2_model_building_and_evaluation.ipnyb odczytuje szkolenie i testowanie zestawów danych z dysku i kompilacje sieci LSTM dla zestawu danych szkoleniowych. Wydajności modelu jest mierzony w zestawie danych testowych. Modelu wynikowego jest serializowany i przechowywane w lokalnym kontekście obliczeniowym do użycia w ramach zadania operacjonalizacji.
 
-### <a name="task-3-operationalization"></a>Zadanie 3: Operationalization
+### <a name="task-3-operationalization"></a>Zadanie 3: Operacjonalizacja
 
-Operationalization notesu Jupyter w Code/3_operationalization.ipnyb korzysta z przechowywanych modelu Tworzenie funkcji i schematu wywoływania modelu usługi hostowanej platformy Azure w sieci web. Notesu testów funkcje i następnie kompresuje zasoby do pliku LSTM_o16n.zip. Plik jest ładowany do Twojej kontenera magazynu systemu Azure dla wdrożenia.
+Notes Jupyter Operacjonalizacji w Code/3_operationalization.ipnyb używa modelu przechowywanych do tworzenia funkcji i schematu do wywoływania modelu w usłudze internetowej hostowanej na platformie Azure. Notes testuje funkcji i do pliku LSTM_o16n.zip kompresuje zasoby. Plik jest ładowany do kontenera usługi Azure storage dla wdrożenia.
 
-Plik wdrożenia LSTM_o16n.zip zawiera następujące artefakty:
+Plik wdrożenia LSTM_o16n.zip zawiera następujących artefaktów:
 
-- **webservices_conda.yaml**: definiuje pakietów języka Python, które są wymagane do uruchomienia LSTM modelu w celu wdrożenia.  
+- **webservices_conda.yaml**: definiuje pakiety języka Python, które są wymagane do uruchomienia modelu LSTM w celu wdrożenia.  
 - **service_schema.JSON**: definiuje schemat danych, który jest oczekiwany przez LSTM model.   
-- **lstmscore.PY**: definiuje funkcje, których cel wdrożenia jest uruchomiona do oceny nowych danych.    
-- **modellstm.JSON**: definiuje architekturę LSTM. Funkcje lstmscore.py odczytać architektury i wagi zainicjować modelu.
-- **modellstm.H5**: definiuje wag na poziomie modelu.
+- **lstmscore.PY**: Określa funkcje, których cel wdrożenia jest uruchomiona ocena nowych danych.    
+- **modellstm.JSON**: definiuje architekturę LSTM. Funkcje lstmscore.py odczytu architektury i wagi zainicjować modelu.
+- **modellstm.H5**: definiuje wagi modelu.
 - **test_service.PY**: skrypt testu, który wywołuje punkt końcowy wdrożenia z testem rekordów danych. 
-- **PM_test_files.pkl**: skrypt test_service.py odczytuje dane historyczne aparatu z pliku PM_test_files.pkl i wysyła usługi sieci web wystarczającej liczby cykli LSTM do zwrócenia prawdopodobieństwo błędu aparatu.
+- **PM_test_files.pkl**: skrypt test_service.py odczytuje dane historyczne z pliku PM_test_files.pkl i wysyła wystarczającej liczby cykli LSTM do zwrócenia prawdopodobieństwo awarii aparatu usługi sieci web.
 
-Notesu testy funkcji za pomocą definicji modelu, przed jego pakietów zasobów operationalization dla wdrożenia. Instrukcje dotyczące konfigurowania i testowania usługi sieci web znajdują się na końcu Code/3_operationalization.ipnyb notesu.
+Notes testów funkcji przy użyciu definicji modelu przed jego pakietów zasobów operacjonalizacji oprogramowania dla wdrożenia. Instrukcje dotyczące konfigurowania i testowania usługi sieci web są umieszczane na końcu notesu Code/3_operationalization.ipnyb.
 
 ## <a name="conclusion"></a>Podsumowanie
 
-Ten samouczek zawiera Prosty scenariusz korzystającą z czujnika wartości w celu tworzenia prognoz. Bardziej zaawansowanych scenariuszy konserwacji predykcyjnej, takich jak [predykcyjnej konserwacji modelowania przewodnik R notesu](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) można używać wielu źródeł danych, takich jak rekordy historyczne konserwacji, dzienniki błędów i funkcje maszyny. Dodatkowych źródeł danych może wymagać różnych procesów do użycia z learning bezpośrednich.
+Ten samouczek zawiera Prosty scenariusz, który korzysta z wartości z czujników w celu prognozowania. Bardziej zaawansowanych scenariuszy konserwacji predykcyjnej, takich jak [predykcyjne obsługi modelowania przewodnik R notesu](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-R-Notebook-1) można używać wielu źródeł danych, takich jak rekordy historyczne konserwacji, dzienniki błędów i funkcje maszyny. Dodatkowe źródła danych może wymagać różnych procesów za pomocą uczenia głębokiego.
 
 
 ## <a name="references"></a>Dokumentacja
 
-Przykłady innych konserwacji predykcyjnej przypadki użycia dla różnych platform zapewniają następujące informacje:
+Następujące odwołania zawierają przykłady innych konserwacji predykcyjnej przypadki użycia dla różnych platform:
 
 * [Szablon rozwiązania konserwacji predykcyjnej](https://docs.microsoft.com/azure/machine-learning/cortana-analytics-playbook-predictive-maintenance)
 * [Podręcznik modelowania konserwacji predykcyjnej](https://gallery.cortanaintelligence.com/Collection/Predictive-Maintenance-Modelling-Guide-1)
-* [Predykcyjnej konserwacji modelowania przewodnik przy użyciu usług R SQL](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-Modeling-Guide-using-SQL-R-Services-1)
-* [Konserwacji predykcyjnej notesu Python Podręcznik modelowania](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-Python-Notebook-1)
-* [Konserwacji predykcyjnej przy użyciu PySpark](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-using-PySpark)
-* [Konserwacji predykcyjnej rzeczywistych scenariuszy](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-predictive-maintenance)
+* [Predykcyjne obsługi modelowania przewodnik przy użyciu usługi języka R programu SQL](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-Modeling-Guide-using-SQL-R-Services-1)
+* [Konserwacja zapobiegawcza modelowania Notes Python przewodnik](https://gallery.cortanaintelligence.com/Notebook/Predictive-Maintenance-Modelling-Guide-Python-Notebook-1)
+* [Konserwacja zapobiegawcza za pomocą PySpark](https://gallery.cortanaintelligence.com/Tutorial/Predictive-Maintenance-using-PySpark)
+* [Konserwacja zapobiegawcza scenariuszy w rzeczywistych warunkach](https://docs.microsoft.com/azure/machine-learning/desktop-workbench/scenario-predictive-maintenance)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Inne przykładowe scenariusze są dostępne w Machine Learning Workbench, który zademonstrować dodatkowe funkcje produktu. 
+Inne przykładowe scenariusze są dostępne w aplikacji Machine Learning Workbench zademonstrować dodatkowe funkcje produktu. 

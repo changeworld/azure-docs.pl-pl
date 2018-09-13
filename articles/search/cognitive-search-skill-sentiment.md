@@ -1,11 +1,9 @@
 ---
-title: Wskaźniki nastrojów klientów kognitywnych wyszukiwania umiejętności (Azure Search) | Dokumentacja firmy Microsoft
-description: Wyodrębnij wskaźniki nastrojów klientów z tekstu w potoku wzbogacenia usługi Azure Search.
+title: Umiejętności wyszukiwania kognitywnego tonacji (Azure Search) | Dokumentacja firmy Microsoft
+description: Wyodrębnij wskaźniki nastrojów klientów z tekstu w usłudze Azure Search wzbogacony potok.
 services: search
 manager: pablocas
 author: luiscabrer
-documentationcenter: ''
-ms.assetid: ''
 ms.service: search
 ms.devlang: NA
 ms.workload: search
@@ -13,47 +11,47 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 1ddbba5b881cd05a997cd24a9396d5b722376e6f
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: f6a0214ce9bc1cdf6aefbd9cde86e72b7cf7b0f2
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33791000"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35938429"
 ---
-#   <a name="sentiment-cognitive-skill"></a>Umiejętności kognitywnych wskaźniki nastrojów klientów
+#   <a name="sentiment-cognitive-skill"></a>Umiejętności cognitive tonacji
 
-**Wskaźniki nastrojów klientów** umiejętności ocenia niestrukturalnych tekstu wzdłuż począwszy dodatnie i ujemne, a dla każdego rekordu, zwraca wynik numerycznych od 0 do 1. Wyniki zbliżone do wartości 1 wskazują na pozytywną tonację, a wyniki zbliżone do wartości 0 wskazują na negatywną tonację.
+**Tonacji** umiejętności ocenia tekstu bez struktury, wzdłuż począwszy dodatnie i ujemne, a dla każdego rekordu, zwraca wynik liczbowy z zakresu od 0 do 1. Wyniki zbliżone do wartości 1 wskazują na pozytywną tonację, a wyniki zbliżone do wartości 0 wskazują na negatywną tonację.
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.SentimentSkill
 
 ## <a name="data-limits"></a>Limity danych
-Maksymalny rozmiar rekordu powinna być 5000 znaków mierzony przez `String.Length`. Jeśli chcesz podzielić danych przed wysłaniem ich do analizatora wskaźniki nastrojów klientów, użyj [umiejętności podziału tekstu](cognitive-search-skill-textsplit.md).
+Maksymalny rozmiar rekord powinien być 5000 znaków, gdyż jest mierzone przez `String.Length`. Jeśli chcesz podzielić dane przed wysłaniem ich do analizatora tonacji, użyj [umiejętności dzielenie tekstu](cognitive-search-skill-textsplit.md).
 
 
 ## <a name="skill-parameters"></a>Parametry kwalifikacji
 
-Parametry jest rozróżniana wielkość liter.
+Parametrów jest rozróżniana wielkość liter.
 
 | Nazwa parametru |                      |
 |----------------|----------------------|
-| defaultLanguageCode | (opcjonalnie) Kod języka stosowane do dokumentów, które nie określają jawnie języka. <br/> Zobacz [pełną listę obsługiwanych języków](../cognitive-services/text-analytics/text-analytics-supported-languages.md) |
+| defaultLanguageCode | (opcjonalnie) Kod języka stosowane do dokumentów, które jawnie określać języka. <br/> Zobacz [pełną listę obsługiwanych języków](../cognitive-services/text-analytics/text-analytics-supported-languages.md) |
 
 ## <a name="skill-inputs"></a>Dane wejściowe umiejętności 
 
 | Wprowadź nazwę | Opis |
 |--------------------|-------------|
-| Tekst | Tekst, który ma zostać przeanalizowany.|
-| atrybutu languageCode  |  (Opcjonalnie) Ciąg wskazujący język rekordy. Jeśli ten parametr nie jest określony, wartością domyślną jest "en". <br/>Zobacz [pełną listę obsługiwanych języków](../cognitive-services/text-analytics/text-analytics-supported-languages.md).|
+| tekst | Tekst do analizy.|
+| languageCode  |  (Opcjonalnie) Ciąg wskazujący język rekordów. Jeśli ten parametr nie jest określony, wartością domyślną jest "en". <br/>Zobacz [pełną listę obsługiwanych języków](../cognitive-services/text-analytics/text-analytics-supported-languages.md).|
 
 ## <a name="skill-outputs"></a>Dane wyjściowe umiejętności
 
 | Nazwa wyjściowego | Opis |
 |--------------------|-------------|
-| Wynik | Wartość z zakresu od 0 do 1, który reprezentuje wskaźniki nastrojów klientów przeanalizowane tekstu. Wartości bliski 0 ma ujemną wskaźniki nastrojów klientów, bliski 0,5 neutralne wskaźniki nastrojów klientów, i wartości bliski 1 mieć dodatnią wskaźniki nastrojów klientów.|
+| wynik | Wartość z zakresu od 0 do 1, która przedstawia opinie o tekście przeanalizowany. Wartości zbliżone do wartości 0 ma negatywną tonację, blisko 0,5 neutralne tonacji, i wartości zbliżone do wartości 1 mieć pozytywną tonację.|
 
 
-##  <a name="sample-definition"></a>Przykład definicji
+##  <a name="sample-definition"></a>Przykładowa definicja
 
 ```json
 {
@@ -110,12 +108,12 @@ Parametry jest rozróżniana wielkość liter.
 ```
 
 ## <a name="notes"></a>Uwagi
-W przypadku braku wynik wskaźniki nastrojów klientów nie są zwracane dla tych rekordów.
+W przypadku braku wyniku tonacji nie jest zwracana dla tych rekordów.
 
 ## <a name="error-cases"></a>W przypadku wystąpienia błędów
-Jeśli język nie jest obsługiwana, zostanie wygenerowany błąd i zwracany jest wynik nie wskaźniki nastrojów klientów.
+Jeśli język nie jest obsługiwana, zostanie wygenerowany błąd i zwracany jest nie wyniku tonacji.
 
 ## <a name="see-also"></a>Zobacz także
 
 + [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md)
-+ [Sposób definiowania skillset](cognitive-search-defining-skillset.md)
++ [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)

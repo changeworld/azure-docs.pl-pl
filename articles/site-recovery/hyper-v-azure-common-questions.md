@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.date: 08/15/2018
+ms.date: 09/12/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 42e8f8bd3f921686c3ba13f4c752d52e3067fbbe
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 16c4ab4601dbe57e014bfcb06ff9b35d02c60cfa
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40177665"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721912"
 ---
 # <a name="common-questions---hyper-v-to-azure-replication"></a>Często zadawane pytania — funkcji Hyper-V replikacja usługi Azure
 
@@ -64,7 +64,7 @@ Tak, zarówno szyfrowanie przesyłanych w i [szyfrowania na platformie Azure](ht
 
 ### <a name="what-do-i-need-on-premises"></a>Co zrobić, należy w środowisku lokalnym?
 
-Potrzebujesz co najmniej jedna maszyna wirtualna uruchomiona na autonomicznego lub klastra hostów funkcji Hyper-V. Można również replikować maszyny wirtualne uruchomione na hostach zarządzanych przez System Center Virtual Machine Manager (VMM). Można również replikować maszyny wirtualne uruchomione na hostach zarządzanych przez System Center Virtual Machine Manager (VMM).
+Potrzebujesz co najmniej jedna maszyna wirtualna uruchomiona na autonomicznego lub klastra hostów funkcji Hyper-V. Można również replikować maszyny wirtualne uruchomione na hostach zarządzanych przez System Center Virtual Machine Manager (VMM).
     - Jeśli nie używasz programu VMM podczas wdrażania usługi Site Recovery, zbieranie hostów funkcji Hyper-V i klastrów w lokacji funkcji Hyper-V. Agenci Site Recovery (agent dostawcy usługi Azure Site Recovery i Recovery Services) na każdym hoście funkcji Hyper-V.
     - Jeśli hosty funkcji Hyper-V znajdują się w chmurze programu VMM, możesz organizować replikacji w programie VMM. Możesz zainstalować dostawcę usługi Site Recovery na serwerze VMM oraz agenta usług Recovery Services na każdym hoście funkcji Hyper-V. Mapowania sieci logiczne i maszyn wirtualnych program VMM i sieci wirtualnych platformy Azure.
     - 
@@ -166,11 +166,6 @@ Usługa Site Recovery wymaga dostępu do hostów funkcji Hyper-V można replikow
 ### <a name="what-does-site-recovery-install-on-hyper-v-vms"></a>Co to usługa Site Recovery Zainstaluj na maszynach wirtualnych funkcji Hyper-V?
 
 Usługa Site Recovery jawnie niczego nie instaluje na maszynach wirtualnych funkcji Hyper-V włączona replikacja.
-- Podczas replikacji maszyn wirtualnych komunikują się z usługą Site Recovery w następujący sposób:
-    - Maszyny wirtualne komunikują się z serwerem konfiguracji na porcie HTTPS 443 na potrzeby zarządzania replikacją.
-    - Maszyny wirtualne wysyłać dane replikacji do serwera przetwarzania na porcie HTTPS 9443 (można modyfikować).
-    - Jeśli włączono spójność wielu maszyn wirtualnych, maszyny wirtualne komunikują się ze sobą za pośrednictwem portu 20004.
-
 
 
 
@@ -211,7 +206,7 @@ Gdy infrastruktury lokalnej będzie uruchomione ponownie, możesz można wykona�
 5. Po obciążeń przywrócono po awarii, możesz włączyć replikacji odwrotnej, tak, aby replikować do platformy Azure ponownie lokalnych maszyn wirtualnych.
 
 ### <a name="can-i-fail-back-to-a-different-location"></a>Może nie do innej lokalizacji?
-Tak, jeśli Failover na platformie Azure można powrotu po awarii do innej lokalizacji Jeśli oryginalny jest niedostępna. [Dowiedz się więcej](concepts-types-of-failback.md#alternate-location-recovery-alr).
+Tak, jeśli Failover na platformie Azure można powrotu po awarii do innej lokalizacji Jeśli oryginalny jest niedostępna. [Dowiedz się więcej](hyper-v-azure-failback.md#failback-to-an-alternate-location-in-hyper-v-environment).
 
 
 

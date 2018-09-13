@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 08/17/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 5fcdf02fe75905fb3e492671ba44adb65dfd0da7
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: a4bf21f972da1aa92d6f127e8cbabb89a9c31489
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42055909"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719957"
 ---
 # <a name="azure-sql-database-purchasing-models-and-resources"></a>Usługa Azure SQL Database zakupu modeli i zasoby 
 
@@ -61,7 +61,7 @@ Dla pojedynczej bazy danych Azure SQL na określonym poziomie wydajności w rama
 
 ![obwiedni](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-Liczba jednostek Dtu są najbardziej przydatne do zrozumienia względna ilość zasobów między warstwy usługi i baz danych SQL Azure na różne poziomy wydajności. Na przykład podwojenie liczby jednostek Dtu przez zwiększenie poziomu wydajności bazy danych odpowiada dwukrotnemu zwiększeniu zestawu zasobów dostępnych dla tej bazy danych. Na przykład baza danych Premium P11 z 1750 jednostkami DTU zapewnia 350 razy więcej mocy obliczeniowej DTU niż podstawowa baza danych z 5 jednostkami DTU.  
+Liczba jednostek Dtu są najbardziej przydatne do zrozumienia względna ilość zasobów między bazami danych Azure SQL na różne poziomy wydajności i warstwy usług. Na przykład podwojenie liczby jednostek Dtu przez zwiększenie poziomu wydajności bazy danych odpowiada dwukrotnemu zwiększeniu zestawu zasobów dostępnych dla tej bazy danych. Na przykład baza danych Premium P11 z 1750 jednostkami DTU zapewnia 350 razy więcej mocy obliczeniowej DTU niż podstawowa baza danych z 5 jednostkami DTU.  
 
 Aby uzyskać lepszy wgląd w użycie zasobów (DTU), obciążenia, należy użyć [usługi Azure SQL Database Query Performance Insight](sql-database-query-performance.md) do:
 

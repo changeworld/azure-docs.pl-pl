@@ -1,6 +1,6 @@
 ---
-title: Azure elementu interfejsu użytkownika InfoBox | Dokumentacja firmy Microsoft
-description: Opis elementu Microsoft.Common.TextBlock interfejsu użytkownika do portalu Azure.
+title: Usługa Azure elementu interfejsu użytkownika w pole informacyjne | Dokumentacja firmy Microsoft
+description: Opis elementu Microsoft.Common.TextBlock interfejsu użytkownika dla witryny Azure portal.
 services: managed-applications
 documentationcenter: na
 author: tfitzmac
@@ -11,17 +11,21 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/30/2018
+ms.date: 06/15/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9507280bf5df1e63c81f0b2488b9676784c69812
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
+ms.openlocfilehash: abd1329f2ebac90bf846dfd5fc5b307ddb5e52bd
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260878"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35942618"
 ---
 # <a name="microsoftcommoninfobox-ui-element"></a>Element Microsoft.Common.InfoBox interfejsu użytkownika
-Formant, który dodaje pole informacje.
+Formant, który dodaje pole informacyjne. Pole zawiera tekst ważne lub ostrzeżenia, które pomagają użytkownikom zrozumienie wartości, które zwracają się. Można go także połączyć z identyfikatora URI, aby uzyskać więcej informacji.
+
+## <a name="ui-sample"></a>Przykład interfejsu użytkownika
+![Microsoft.Common.InfoBox](./media/managed-application-elements/microsoft.common.infobox.png)
+
 
 ## <a name="schema"></a>Schemat
 ```json
@@ -39,7 +43,7 @@ Formant, który dodaje pole informacje.
 
 ## <a name="remarks"></a>Uwagi
 
-* Dla `icon`, użyj **Brak**, **informacji**, **ostrzeżenie**, lub **błąd**.
+* Dla `icon`, użyj **Brak**, **informacje**, **ostrzeżenie**, lub **błąd**.
 * `uri` Właściwość jest opcjonalna.
 
 ## <a name="sample-output"></a>Przykładowe dane wyjściowe
@@ -49,5 +53,5 @@ Formant, który dodaje pole informacje.
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby obejrzeć wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie CreateUiDefinition](create-uidefinition-overview.md).
-* Opis właściwości wspólnych elementów interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).
+* Wprowadzenie do tworzenia definicji interfejsu użytkownika, zobacz [wprowadzenie do zasobu CreateUiDefinition](create-uidefinition-overview.md).
+* Aby uzyskać opis wspólne właściwości w elementach interfejsu użytkownika, zobacz [elementy CreateUiDefinition](create-uidefinition-elements.md).

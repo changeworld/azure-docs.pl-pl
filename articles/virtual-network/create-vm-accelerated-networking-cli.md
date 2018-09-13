@@ -1,6 +1,6 @@
 ---
 title: Tworzenie maszyn wirtualnych dzięki przyspieszonej sieci | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć maszynę wirtualną z systemem Linux z przyspieszonej sieci.
+description: Dowiedz się, jak utworzyć maszynę wirtualną z systemem Linux przy użyciu Accelerated Networking włączone.
 services: virtual-network
 documentationcenter: na
 author: gsilva5
@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 01/02/2018
 ms.author: gsilva
 ms.custom: ''
-ms.openlocfilehash: 9ea843df4cf437b97f7fe1d62636a51f8201376e
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 5863160632e544ca542debcf74971e90ea452939
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414576"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716676"
 ---
 # <a name="create-a-linux-virtual-machine-with-accelerated-networking"></a>Utwórz maszynę wirtualną systemu Linux z przyspieszonej sieci
 

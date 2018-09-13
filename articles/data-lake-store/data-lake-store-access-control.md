@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 114413d65bb8b1d70bad21badb9508c5f942845c
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 72bc0408ed1eba2d959d246a55677ee9964ef106
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391117"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718818"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Kontrola dostępu w usłudze Azure Data Lake magazynu Gen1
 
@@ -69,10 +69,10 @@ Skrót **RWX** służy do wskazywania uprawnień do **odczytu, zapisu i wykonani
 
 | Forma liczbowa | Forma krótka |      Co to oznacza     |
 |--------------|------------|------------------------|
-| 7            | RWX        | Odczyt (R) + zapis (W) + wykonanie (X) |
-| 5            | R-X        | Odczyt (R) + wykonanie (X)         |
-| 4            | R--        | Odczyt                   |
-| 0            | ---        | Brak uprawnień         |
+| 7            | `RWX`        | Odczyt (R) + zapis (W) + wykonanie (X) |
+| 5            | `R-X`        | Odczyt (R) + wykonanie (X)         |
+| 4            | `R--`        | Odczyt                   |
+| 0            | `---`        | Brak uprawnień         |
 
 
 ### <a name="permissions-do-not-inherit"></a>Uprawnienia nie są dziedziczone
@@ -85,13 +85,13 @@ Poniżej przedstawiono kilka typowych scenariuszy, które pomagają zrozumieć, 
 
 |    Operacja             |    /    | Seattle / | Portland / | Data.txt     |
 |--------------------------|---------|----------|-----------|--------------|
-| Przeczytaj Data.txt            |   --X   |   --X    |  --X      | R--          |
-| Dołącz do Data.txt       |   --X   |   --X    |  --X      | RW-          |
-| Usuń Data.txt          |   --X   |   --X    |  -WX      | ---          |
-| Utwórz Data.txt          |   --X   |   --X    |  -WX      | ---          |
-| Lista /                   |   R-X   |   ---    |  ---      | ---          |
-| Lista /Seattle/           |   --X   |   R-X    |  ---      | ---          |
-| Lista /Seattle/Portland /  |   --X   |   --X    |  R-X      | ---          |
+| Przeczytaj Data.txt            |   `--X`   |   `--X`    |  `--X`      | `R--`          |
+| Dołącz do Data.txt       |   `--X`   |   `--X`    |  `--X`      | `RW-`          |
+| Usuń Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Utwórz Data.txt          |   `--X`   |   `--X`    |  `-WX`      | `---`          |
+| Lista /                   |   `R-X`   |   `---`    |  `---`      | `---`          |
+| Lista /Seattle/           |   `--X`   |   `R-X`    |  `---`      | `---`          |
+| Lista /Seattle/Portland /  |   `--X`   |   `--X`    |  `R-X`      | `---`          |
 
 
 > [!NOTE]
@@ -99,25 +99,6 @@ Poniżej przedstawiono kilka typowych scenariuszy, które pomagają zrozumieć, 
 >
 >
 
-### <a name="permissions-needed-to-enumerate-a-folder"></a>Uprawnienia wymagane do wyliczenia folderu
-
-![Data Lake Storage Gen1 listy kontroli dostępu](./media/data-lake-store-access-control/data-lake-store-acls-6.png)
-
-* W przypadku folderu do wyliczenia wywołujący musi mieć uprawnienia do **odczytu i wykonania**.
-* W przypadku wszystkich folderów nadrzędnych wywołujący musi mieć uprawnienia do **wykonania**.
-
-
-Z **Eksplorator danych** kliknij blok konta Data Lake Storage Gen1 **dostępu** aby zobaczyć listy ACL dla pliku lub folderu wyświetlanego w Eksploratorze danych. Kliknij przycisk **dostępu** aby zobaczyć listy ACL dla **katalogu** folderze **mydatastorage** konta.
-
-![Data Lake Storage Gen1 listy kontroli dostępu](./media/data-lake-store-access-control/data-lake-store-show-acls-1.png)
-
-W tym bloku najwyższa sekcja wyświetla uprawnienia właściciela. (Na zrzucie ekranu właścicielem jest Bob). Następnie są wyświetlane przypisane listy ACL dostępu. 
-
-![Data Lake Storage Gen1 listy kontroli dostępu](./media/data-lake-store-access-control/data-lake-store-show-acls-simple-view.png)
-
-Kliknij pozycję **Widok zaawansowany**, aby wyświetlić bardziej zaawansowany widok, w którym występują domyślne listy kontroli dostępu, maski i opis administratora.  Ten blok udostępnia również sposób rekursywnego ustawiania list ACL dostępu dla programu Access i domyślnych dla podrzędnych plików i folderów na podstawie uprawnień bieżącego folderu.
-
-![Data Lake Storage Gen1 listy kontroli dostępu](./media/data-lake-store-access-control/data-lake-store-show-acls-advance-view.png)
 
 ## <a name="the-super-user"></a>Administrator
 
@@ -127,13 +108,8 @@ Administrator ma najwięcej uprawnień spośród wszystkich użytkowników w ram
 * może zmieniać uprawnienia do dowolnego pliku lub folderu;
 * może zmieniać właściciela lub grupę będącą właścicielem dla dowolnego pliku lub folderu.
 
-Na platformie Azure konta Data Lake Storage Gen1 ma kilka ról platformy Azure, w tym:
+Wszyscy użytkownicy, które są częścią **właścicieli** roli konta Data Lake Storage Gen1 są automatycznie administrator.
 
-* Właściciele
-* Współautorzy
-* Czytelnicy
-
-Wszyscy w **właścicieli** roli konta Data Lake Storage Gen1 jest automatycznie administratorami dla tego konta. Aby dowiedzieć się więcej, zobacz [Kontrola dostępu oparta na rolach](../role-based-access-control/role-assignments-portal.md).
 Jeśli chcesz utworzyć niestandardową rolę kontroli dostępu opartej na rolach (RBAC) z uprawnieniami administratora, musi ona mieć następujące uprawnienia:
 - Microsoft.DataLakeStore/accounts/Superuser/action
 - Microsoft.Authorization/roleAssignments/write
@@ -153,11 +129,16 @@ Użytkownik, który utworzył element, jest automatycznie właścicielem element
 
 ## <a name="the-owning-group"></a>Grupa będąca właścicielem
 
+**Tło**
+
 Na listach ACL w modelu POSIX każdy użytkownik jest skojarzony z „grupą główną”. Przykładowo użytkownik „Alicja” może należeć do grupy „Finanse”. Alicja może również należeć do wielu grup, ale jedna grupa jest zawsze wyznaczona jako jej grupa główna. W modelu POSIX, gdy Alicja tworzy plik, na grupę będącą właścicielem tego pliku zostaje ustawiona jej grupa główna. W tym przypadku jest to grupa „Finanse”. Grupa będąca właścicielem w przeciwnym razie działa podobnie do przypisanych uprawnień dla innych użytkowników/grup.
 
-Assiging grupa będąca właścicielem dla nowego pliku lub folderu:
+**Assiging grupa będąca właścicielem dla nowego pliku lub folderu**
+
 * **Przypadek 1**: folder główny „/”. Ten folder jest tworzony po utworzeniu konta Data Lake Storage Gen1. W takim przypadku grupa będąca właścicielem jest ustawiana na użytkownika, który utworzył konto.
 * **Przypadek 2** (każdy inny przypadek): gdy tworzony jest nowy element, grupa będąca właścicielem jest kopiowana z folderu nadrzędnego.
+
+**Zmiana grupy będącej właścicielem**
 
 Grupę będącą właścicielem może zmienić:
 * każdy administrator;
@@ -179,30 +160,32 @@ def access_check( user, desired_perms, path ) :
   # path is the file or folder
   # Note: the "sticky bit" is not illustrated in this algorithm
   
-# Handle super users
-    if (is_superuser(user)) :
-      return True
+# Handle super users.
+  if (is_superuser(user)) :
+    return True
 
-  # Handle the owning user. Note that mask is not used.
-    if (is_owning_user(path, user))
-      perms = get_perms_for_owning_user(path)
-      return ( (desired_perms & perms) == desired_perms )
+  # Handle the owning user. Note that mask IS NOT used.
+  entry = get_acl_entry( path, OWNER )
+  if (user == entry.identity)
+      return ( (desired_perms & e.permissions) == desired_perms )
 
-  # Handle the named user. Note that mask is used.
-  if (user in get_named_users( path )) :
-      perms = get_perms_for_named_user(path, user)
-      mask = get_mask( path )
-      return ( (desired_perms & perms & mask ) == desired_perms)
+  # Handle the named users. Note that mask IS used.
+  entries = get_acl_entries( path, NAMED_USERS )
+  for entry in entries:
+      if (user == entry.identity ) :
+          mask = get_mask( path )
+          return ( (desired_perms & entry.permmissions & mask) == desired_perms)
 
   # Handle groups (named groups and owning group)
-  belongs_to_groups = [g for g in get_groups(path) if is_member_of(user, g) ]
-  if (len(belongs_to_groups)>0) :
-    group_perms = [get_perms_for_group(path,g) for g in belongs_to_groups]
-    perms = 0
-    for p in group_perms : perms = perms | p # bitwise OR all the perms together
-    mask = get_mask( path )
-    return ( (desired_perms & perms & mask ) == desired_perms)
-
+  member_count = 0
+  perms = 0
+  for g in get_groups(path) :
+    if (user_is_member_of_group(user, g)) :
+      member_count += 1
+      perms | =  get_perms_for_group(path,g)
+  if (member_count>0) :
+    return ((desired_perms & perms & mask ) == desired_perms)
+ 
   # Handle other
   perms = get_perms_for_other(path)
   mask = get_mask( path )
@@ -218,7 +201,7 @@ Jak pokazano w algorytmu kontroli dostępu, maski ogranicza dostęp do **użytko
 >
 >
 
-#### <a name="the-sticky-bit"></a>Atrybut sticky bit
+### <a name="the-sticky-bit"></a>Atrybut sticky bit
 
 Sticky bit jest bardziej zaawansowaną funkcją systemu plików POSIX. W kontekście usługi Data Lake Storage Gen1 jest mało prawdopodobne, że działania atrybutu sticky bit będzie potrzebny. Podsumowując Jeśli atrybut sticky bit jest włączona na folder, element podrzędny tylko można usunąć lub zmieniona przez użytkownika będącego właścicielem elementu podrzędnego.
 
@@ -239,9 +222,9 @@ Maska umask dla usługi Azure Data Lake Storage Gen1 stałą wartość, która j
 
 | Maska umask składnika     | Forma liczbowa | Forma krótka | Znaczenie |
 |---------------------|--------------|------------|---------|
-| umask.owning_user   |    0         |   ---      | Dla użytkownika będącego właścicielem, skopiuj nadrzędnego domyślnej listy ACL do listy ACL dostępu elementu podrzędnego | 
-| umask.owning_group  |    0         |   ---      | Dla grupy będącej właścicielem, skopiuj nadrzędnego domyślnej listy ACL do listy ACL dostępu elementu podrzędnego | 
-| umask.Other         |    7         |   RWX      | Dla pozostałych Usuń wszystkie uprawnienia dla listy ACL dostępu elementu podrzędnego |
+| umask.owning_user   |    0         |   `---`      | Dla użytkownika będącego właścicielem, skopiuj nadrzędnego domyślnej listy ACL do listy ACL dostępu elementu podrzędnego | 
+| umask.owning_group  |    0         |   `---`      | Dla grupy będącej właścicielem, skopiuj nadrzędnego domyślnej listy ACL do listy ACL dostępu elementu podrzędnego | 
+| umask.Other         |    7         |   `RWX`      | Dla pozostałych Usuń wszystkie uprawnienia dla listy ACL dostępu elementu podrzędnego |
 
 Wartość maski umask, używane przez usługi Azure Data Lake Storage Gen1 skutecznie oznacza, że wartość dla innych nigdy nie są przesyłane domyślnie na nowe elementy podrzędne — niezależnie od tego, co wskazuje domyślną listę ACL. 
 

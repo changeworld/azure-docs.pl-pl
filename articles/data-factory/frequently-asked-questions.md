@@ -1,6 +1,6 @@
 ---
-title: 'Fabryka danych Azure: Często zadawane pytania | Dokumentacja firmy Microsoft'
-description: Odpowiedzi na często zadawane pytania dotyczące usługi fabryka danych Azure.
+title: 'Usługa Azure Data Factory: Często zadawane pytania | Dokumentacja firmy Microsoft'
+description: Odpowiedzi na często zadawane pytania dotyczące usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: sharonlo101
@@ -13,131 +13,131 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: ebe8745db06113d0508d86554bf031a4235c8e44
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 37c2c96ad14741fba2733765640f8d6d9ef3fee2
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37045953"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716429"
 ---
-# <a name="azure-data-factory-faq"></a>Fabryki danych Azure — często zadawane pytania
-Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi fabryka danych Azure.  
+# <a name="azure-data-factory-faq"></a>Fabrykę danych platformy Azure — często zadawane pytania
+Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Data Factory.  
 
 ## <a name="what-is-azure-data-factory"></a>Czym jest usługa Azure Data Factory? 
-Fabryka danych jest usługą pełni zarządzana, oparte na chmurze, integracja danych, która automatyzuje przepływu i przekształcania danych. Podobnie jak fabryka, która uruchamia urządzeń do przekształcania materiałów gotowych fabryki danych Azure organizuje istniejących usług, które zbierać dane i przetransformować je w informacji gotowe do użycia. 
+Data Factory to usługa w pełni zarządzane, oparte na chmurze, integracji danych, która automatyzuje operacje przenoszenia i przekształcania danych. Podobnie jak fabryki, sprzęt, przekształcić surowców w gotowe towary usługi Azure Data Factory organizuje istniejące usługi, które są zbierane są oryginalne dane są następnie przekształcane w gotowe do użycia informacje. 
 
-Przy użyciu fabryki danych Azure, można utworzyć danymi przepływy pracy w celu przenoszenia danych między lokalnymi i w chmurze magazynów danych. Może przetwarzać i przekształcanie danych za pomocą obliczeniowe usług, takich jak środowiska uruchomieniowego integracji Azure HDInsight, Azure Data Lake Analytics i SQL Server Integration Services (SSIS). 
+Za pomocą usługi Azure Data Factory, można utworzyć opartych na danych przepływy pracy służące do przenoszenia danych między lokalizacją lokalną i chmurą magazynów danych. Może przetwarzać i przekształcać dane za pomocą obliczeń usług, takich jak Azure HDInsight, Azure Data Lake Analytics i SQL Server Integration Services (SSIS) środowiska integration runtime. 
 
-Usługi w chmurze systemem Azure albo we własnym środowisku siebie obliczeń, takich jak SSIS, SQL Server lub Oracle przy użyciu fabryki danych można wykonać przetwarzania danych. Po utworzeniu potok, który wykonuje akcję, które są potrzebne, można zaplanować do uruchomienia okresowo (na przykład co godzinę, codziennie lub co tydzień), tworzenia okna harmonogramu lub wyzwalacza potoku z wystąpienia zdarzenia. Aby uzyskać więcej informacji, zobacz [Wprowadzenie do usługi Azure Data Factory](introduction.md).
+Usługa Data Factory można wykonać przetwarzanie danych w usłudze w chmurze oparte na platformie Azure lub we własnym środowisku Self-Hosted obliczeniowych, takich jak SSIS, programu SQL Server lub Oracle. Po utworzeniu potoku, który wykonuje akcję, które są potrzebne, można zaplanować go do wykonywania okresowo (na przykład co godzinę, codziennie lub co tydzień), tworzenia okna harmonogramu lub wyzwalacz potoku z wystąpienia zdarzenia. Aby uzyskać więcej informacji, zobacz [Wprowadzenie do usługi Azure Data Factory](introduction.md).
 
-### <a name="control-flows-and-scale"></a>Przepływami sterowania i skali 
-Do obsługi integracji różnych przepływów i wzorce w magazynie danych nowoczesnych, fabryki danych umożliwia modelowanie potoku elastyczne danych, zawierającą Pełna kontrola przepływu programowania wzorcami tym wykonanie warunkowe gałęzie w potokach danych i jawnie przekazania parametrów w obrębie przepływy oraz. Przepływ sterowania obejmuje również Przekształcanie danych za pośrednictwem działania wysyłania do wykonania zewnętrznego aparaty i możliwości przepływu danych, w tym przenoszenie danych na dużą skalę, za pomocą działania kopiowania.
+### <a name="control-flows-and-scale"></a>Przepływów sterowania i skali 
+Do obsługi różnych przepływów i wzorców integracji w nowoczesnym magazynie danych, Data Factory umożliwia modelowanie potoku danych elastyczne, obejmującą przepływ Pełna kontrola programowania paradygmatów, w tym wykonywanie warunkowe rozgałęzianie w potokach danych, a jawne przekazywanie parametrów wewnątrz i pomiędzy tymi przepływami. Przepływ sterowania obejmuje także przekształcać dane za pośrednictwem wysyłanie działania do wykonania zewnętrznego aparatów i możliwości przepływu danych, w tym przenoszenie danych na dużą skalę za pomocą działania kopiowania.
 
-Fabryka danych udostępnia swobody modelu każdy styl przepływu, który wymaga integracji danych i mogą być wysyłane na żądanie lub wielokrotnie zgodnie z harmonogramem. Ten model umożliwia kilka typowych przepływów są:   
+Data Factory oferuje utworzyć dowolny styl przepływu, który jest wymagany przez integrację danych i mogą być wysyłane na żądanie lub wielokrotnie zgodnie z harmonogramem. Przedstawiono kilka typowych przepływów, które ten model umożliwia:   
 
-- Przepływami sterowania:
-    - Łańcuch działań w sekwencji w potoku.
+- Przepływów sterowania:
+    - Łańcuch działań w Sekwencje w ramach potoku.
     - Gałąź działania w potoku.
     - Parametry
-        - Zdefiniuj parametry na poziomie potoku i przekazywać argumenty podczas wywołania potoku na żądanie lub wyzwalacza.
+        - Definiowanie parametrów na poziomie potoku, a następnie przekazać argumenty, podczas gdy wywołujesz potoku na żądanie lub przy użyciu wyzwalacza.
         - Działania mogą wykorzystywać argumenty przekazywane do potoku.
     - Przekazywanie stanów niestandardowych
         - Dane wyjściowe działania, w tym jego stan, mogą być wykorzystywane przez kolejne działania w potoku.
     - Tworzenie pętli kontenerów
         - Dla każdego 
-- Na podstawie wyzwalania przepływów:
-    - Potoki mogą być wyzwalane na żądanie lub według czasu zegara tablicy.
-- Przepływy zmian:
-    - Parametry i zdefiniuj z górnego różnicowych kopii podczas przenoszenia wymiaru lub odwołanie do tabel z relacyjnego magazynu lokalnie lub w chmurze, aby załadować dane do jeziora. 
+- Przepływy na podstawie wyzwalaczy:
+    - Potoki mogą być wywoływane na żądanie lub według czasu zgodnie z zegarem.
+- Przepływy delta:
+    - Korzystanie z parametrów i zdefiniować swoje górnego dla kopii delta podczas przenoszenia tabel wymiarów i referencyjnych z magazynu relacyjnego, lokalnie lub w chmurze, aby załadować dane do usługi Data lake. 
 
-Aby uzyskać więcej informacji, zobacz [samouczek: sterowanie przepływem](tutorial-control-flow.md).
+Aby uzyskać więcej informacji, zobacz [samouczek: kontrole przepływu](tutorial-control-flow.md).
 
-### <a name="transform-your-data-at-scale-with-code-free-pipelines"></a>Przekształcanie danych na dużą skalę korzystających z potoków wolnego kodu
-Nowe środowisko narzędzi przeglądarki zapewnia potoku kodu bez tworzenia i wdrażania przy użyciu nowoczesnych, interaktywnych opartych na sieci web środowiska.
+### <a name="transform-your-data-at-scale-with-code-free-pipelines"></a>Przekształcanie danych w dużej skali z potokami bezpłatne kodu
+Nowe środowisko oparte na przeglądarce narzędzi zapewnia niekorzystające z kodu potoku tworzenia i wdrażania za pomocą nowoczesnych, interaktywnych środowiska opartego na sieci web.
 
-W przypadku danych wizualnych projektantów i inżynierów danych interfejsu użytkownika sieci Web ADF jest środowisku projektowania niekorzystające z kodu, który będzie używany do tworzenia potoki. Jest w pełni zintegrowana z programu Visual Studio Git Online, a zapewnia integrację dla elementu konfiguracji/CD i iteracyjnych programowanie za pomocą opcji debugowania.
+Dla deweloperów danych wizualnych i inżynierom danych interfejs użytkownika sieci Web usługi ADF jest środowisko niekorzystające z kodu projektu, który będzie używany do tworzenia potoków. Jego jest w pełni zintegrowana z Git usługi Visual Studio Online i zapewnia integracji na potrzeby ciągłej integracji/ciągłego Dostarczania i iteracyjne projektowanie za pomocą opcji debugowania.
 
-### <a name="rich-cross-platform-sdks-for-advanced-users"></a>Sformatowany cross platform SDK dla użytkowników zaawansowanych
-Jeśli jesteś użytkownikiem zaawansowanym i wyszukiwanie interfejs programistyczny, ADF V2 oferuje bogaty zestaw SDK, które można wykorzystać do tworzenia, zarządzania, monitorowania potoki przy użyciu Twoje ulubione IDE
+### <a name="rich-cross-platform-sdks-for-advanced-users"></a>Zaawansowane obejmujące wiele zestawów SDK platformy dla zaawansowanych użytkowników
+Jeśli jesteś użytkownikiem zaawansowanym i szukasz interfejsu programowego, ADF w wersji 2 oferuje bogaty zestaw SDK, które mogą być wykorzystywane do tworzenia, zarządzania, monitorowania potoków przy użyciu ulubionego środowiska IDE
 1.  Zestaw SDK dla języka Python
 2.  Interfejs wiersza polecenia programu PowerShell
-3.  C# SDK użytkowników można też skorzystać udokumentowane interfejsów API REST do interfejsu z fabryki danych AZURE w wersji 2
+3.  Użytkownicy zestawu SDK języka C# można również korzystać z udokumentowanych interfejsów API REST do interfejsu z ADF w wersji 2
 
-### <a name="iterative-development-and-debugging-using-visual-tools"></a>Iteracyjne projektowanie i debugowanie przy użyciu narzędzia visual
-Azure Data Factory (ADF) narzędzia visual umożliwiają wykonywanie iteracyjne projektowanie i debugowanie. Można tworzyć z potoków i przetestować działa przy użyciu funkcji w debugowania na kanwie potoku bez pisania pojedynczy wiersz kodu. W oknie dane wyjściowe z procesu roboczego można wyświetlić wyniki z testów. Po pomyślnym testu, można dodać więcej działań do potoku sieci i Kontynuuj debugowanie w sposób iteracji. Można również anulować Twojej uruchomień testów, gdy są w toku. Nie należy opublikować zmiany usługi fabryka danych przed kliknięciem przycisku debugowania. Jest to przydatne w scenariuszach, w którym ma zostać upewnij się, że nowe pracy dodatków lub zmian zgodnie z oczekiwaniami przed zaktualizowaniem przepływy pracy fabryki danych w deweloperów, testów lub środowiska produkcyjnego. 
+### <a name="iterative-development-and-debugging-using-visual-tools"></a>Debugowanie za pomocą narzędzi wizualnych i programowanie iteracyjne
+Narzędzia visual Data Factory (ADF) platformy Azure umożliwiają wykonywanie debugowanie i programowanie iteracyjne. Można tworzyć potoki i przetestować przebiegów przy użyciu funkcji debugowania na kanwie potoku bez konieczności pisania nawet jednego wiersza kodu. Można wyświetlić wyniki przebiegów testowych w oknie danych wyjściowych w kanwie potoku. Po pomyślnym przebiegu testowego, można dodać więcej działań do potoku i Kontynuuj debugowanie w sposób iteracyjny. Możesz również anulować przebiegów testowych, gdy są one w toku. Nie należy opublikować zmiany Usługa data factory, przed kliknięciem przycisku debugowania. Jest to przydatne w scenariuszach, gdzie chcesz aby upewnić się, że nowa praca dodatki lub zmiany zgodnie z oczekiwaniami, przed uaktualnieniem przepływy pracy fabryki danych w dev, test lub produktu środowisk. 
 
 ### <a name="deploy-ssis-packages-to-azure"></a>Wdrażanie pakietów usług SSIS na platformie Azure 
-Jeśli chcesz przenieść obciążeń SSIS, można utworzyć fabryki danych i udostępnić środowiska uruchomieniowego integracji usług SSIS Azure. Środowisko wykonawcze integracji usług SSIS Azure jest pełni zarządzany klaster maszyn wirtualnych platformy Azure (węzłów), które są przeznaczone wyłącznie do uruchamiania pakietów SSIS w chmurze. Aby uzyskać instrukcje, zobacz [pakietów SSIS wdrażanie na platformie Azure](tutorial-create-azure-ssis-runtime-portal.md) samouczka. 
+Jeśli chcesz przenieść obciążenia SSIS, możesz utworzyć fabrykę danych i aprowizowanie środowiska Azure-SSIS integration runtime. Środowisko Azure-SSIS integration runtime jest w pełni zarządzany klaster maszyn wirtualnych platformy Azure (węzłów), których przeznaczeniem uruchamianie pakietów SSIS w chmurze. Aby uzyskać instrukcje krok po kroku, zobacz [wdrażanie pakietów usług SSIS na platformie Azure](tutorial-create-azure-ssis-runtime-portal.md) samouczka. 
  
 ### <a name="sdks"></a>Zestawy SDK
-Jeśli jesteś użytkownikiem zaawansowanym i wyszukiwanie interfejs programistyczny, ADF zapewnia bogaty zestaw SDK, które służy do tworzenia, zarządzania i monitorowania potoki przy użyciu Twoje ulubione IDE. Obsługa języka obejmuje .NET, programu PowerShell, Python i REST.
+Jeśli jesteś użytkownikiem zaawansowanym i szukasz interfejsu programowego, ADF zawiera bogaty zestaw SDK, które umożliwia tworzenie, zarządzania i monitorowania potoków przy użyciu ulubionego środowiska IDE. Obsługa języków obejmuje .NET, PowerShell, Python i REST.
 
 ### <a name="monitoring"></a>Monitorowanie
-Można monitorować z fabryki danych za pomocą programu PowerShell, zestawu SDK lub Visual narzędzia monitorowania w interfejsie użytkownika przeglądarki. Można monitorować i zarządzać nimi na żądanie, wyzwalania na podstawie i zegara zmiennych przepływów niestandardowych w sposób wydajny i efektywny. Aby uzyskać szczegółowe komunikaty o błędach i debugowania problemów z jednego okienka szkła bez kontekstu przełączanie lub i z powrotem nawigowanie między ekranami Anuluj istniejących zadań, zobacz awarie jeden rzut oka, przejść do szczegółów. 
+Można monitorować fabryk danych przy użyciu programu PowerShell, zestawu SDK lub wizualne narzędzia monitorowania w interfejsie użytkownika przeglądarki. Można monitorować i zarządzać na żądanie, na podstawie wyzwalacza i zegar oparte na niestandardowych przepływów w sposób wydajny i skuteczne. Anuluj istniejących zadań, zobacz awarie na pierwszy rzut oka przejść do szczegółów, aby uzyskać szczegółowe komunikaty o błędach i debugować problemy z jedną taflę szkła bez kontekstu przełączanie lub przechodząc do i z powrotem między ekranami. 
 
-### <a name="new-features-for-ssis-in-adf"></a>Nowe funkcje usług SSIS w ADF
-Od początkowej wersji publicznej wersji zapoznawczej w 2017 fabryki danych została dodana do usług SSIS, następujące funkcje:
+### <a name="new-features-for-ssis-in-adf"></a>Nowe funkcje dla usług SSIS w usłudze ADF
+Od czasu początkowej wersji publicznej wersji zapoznawczej w 2017 usługi Data Factory dodano następujące funkcje usług SSIS:
 
--   Obsługuje trzy więcej konfiguracje/wariantów z Azure bazy danych (bazy danych SQL) do katalogu usług SSIS hosta projektów/pakietów (SSISDB):
--   Bazy danych SQL Azure z punktów końcowych usługi sieci wirtualnej
--   Zarządzane wystąpienia (MI)
+-   Obsługa trzy więcej konfiguracje/wariantów z bazy danych (bazy danych SQL Azure) do katalogu usług SSIS hosta projektów/pakietów (SSISDB):
+-   Usługa Azure SQL DB za pomocą punktów końcowych usługi sieci wirtualnej
+-   Wystąpienie zarządzane (MI)
 -   Pula elastyczna
--   Obsługa Menedżera zasobów sieci wirtualnej platformy Azure (VNet) u góry klasycznych sieci wirtualnej, które zostaną wycofane w przyszłości — dzięki temu można wstrzyknąć/sprzężenia sieci Azure SSIS integracji środowiska uruchomieniowego (IR) do sieci wirtualnej, skonfigurowanego dla bazy danych SQL Azure z punktów końcowych usługi sieci wirtualnej/MI / lokalnego dostępu do danych, zobacz: https://docs.microsoft.com/en-us/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network 
--   Obsługa uwierzytelniania usługi Azure Active Directory (AAD) u góry uwierzytelniania SQL, aby nawiązać połączenie z bazy danych SSISDB — to pozwala używać uwierzytelniania w usłudze AAD z ADF zarządzane usługi tożsamości (MSI)
--   Obsługa dostarczają własnej licencji programu SQL Server lokalnego, aby uzyskać znaczne oszczędności z opcji Azure korzyści hybrydowych (AHB)
--   Obsługa Enterprise Edition z Azure SSIS IR umożliwiające korzystanie z funkcji Zaawansowane/premium, instalacja niestandardowa, aby zainstalować dodatkowe składniki/rozszerzenia i 3 ekosystem firm, zobacz: https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/ 
--   Lepsza integracja usług SSIS w ADF umożliwiający wywołać/wyzwalacza najwyższej jakości wykonanie pakietu usług SSIS działań w potokach ADF i zaplanować ich za pomocą narzędzia SSMS, zobacz: https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/ 
+-   Obsługa usługi Azure Resource Manager Virtual Network (VNet) na podstawie klasycznej sieci wirtualnej, które staną się przestarzałe w przyszłości — dzięki temu można wstawić/join Twojego środowiska Azure-SSIS Integration Runtime (IR) do sieci wirtualnej, która jest skonfigurowany dla usługi Azure SQL DB przy użyciu usługi sieci wirtualnej punkty końcowe/MI / w środowisku lokalnym dostępu do danych, zobacz: https://docs.microsoft.com/en-us/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network 
+-   Obsługa uwierzytelniania usługi Azure Active Directory (AAD) na podstawie uwierzytelniania SQL, aby nawiązać połączenie z bazy danych SSISDB — dzięki temu można korzystać z uwierzytelniania usługi AAD za pomocą usługi ADF tożsamość usługi zarządzanej (MSI)
+-   Obsługa użycie własnej licencji programu SQL Server w środowisku lokalnym, aby uzyskać znaczne oszczędności z poziomu opcji korzyść użycia hybrydowego platformy Azure (AHB)
+-   Obsługa Enterprise Edition z Azure-SSIS IR, która umożliwia korzystanie z funkcji Zaawansowane/premium, niestandardowego Instalatora w celu zainstalowania dodatkowych składników/rozszerzeń i 3 ekosystem firm, zobacz: https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/ 
+-   Lepsza integracja usług SSIS w usłudze ADF, który umożliwia wywoływanie/wyzwalacza najwyższej jakości działania wykonywania pakietów SSIS w potokach ADF i planować je za pomocą programu SSMS, zobacz: https://blogs.msdn.microsoft.com/ssis/2018/05/23/modernize-and-extend-your-etlelt-workflows-with-ssis-activities-in-adf-pipelines/ 
 
 
-## <a name="what-is-integration-runtime"></a>Co to jest środowiska uruchomieniowego integracji?
-Integracja środowiska uruchomieniowego jest używany przez fabryki danych Azure zapewniają następujące możliwości integracji danych w różnych środowiskach sieci infrastruktury obliczeniowej:
+## <a name="what-is-integration-runtime"></a>Co to jest środowisko integration runtime?
+Środowisko IR to infrastruktura obliczeniowa, która jest używany przez usługi Azure Data Factory w celu zapewnienia następujących możliwości integracji danych w różnych środowiskach sieciowych:
 
-- **Przenoszenie danych**: dla przepływu danych środowiska uruchomieniowego integracji przenosi dane między magazynami danych źródłowych i docelowych, zapewniając obsługę dla łączników, Konwersja formatu, mapowania kolumn i wydajności i transfer danych skalowalnych.
-- **Wysłanie działania**: dla transformacji, integrację środowiska uruchomieniowego oferować natywnie wykonanie pakietów SSIS.
-- **Wykonanie pakietów SSIS**: natywnie wykonuje pakietów SSIS w środowisku zarządzanym obliczeń platformy Azure. Ponadto środowisko IR obsługuje wysyłanie i monitorowanie działań przekształcania uruchamianych w różnych usługach obliczeniowych, takich jak Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server i nie tylko.
+- **Przenoszenie danych**: w przypadku przenoszenia danych środowisko IR przenosi dane między magazynami danych źródłowych i docelowych, oferuje obsługę wbudowanych łączników, konwersji formatów, mapowania kolumn oraz wydajnego i skalowalnego transferu danych.
+- **Wysyłanie działania**: w przypadku przekształcania IR umożliwia natywne wykonywanie pakietów usług SSIS.
+- **Wykonywanie pakietów usług SSIS**: natywnie uruchamia pakiety usług SSIS w środowisku zarządzanym obliczeniowych platformy Azure. Ponadto środowisko IR obsługuje wysyłanie i monitorowanie działań przekształcania uruchamianych w różnych usługach obliczeniowych, takich jak Azure HDInsight, Azure Machine Learning, Azure SQL Database, SQL Server i nie tylko.
 
-Jeden lub wiele wystąpień środowiska uruchomieniowego integracji można wdrożyć jako wymagane do przeniesienia i przekształcania danych. Integracja środowiska uruchomieniowego można uruchomić w sieci publicznej platformy Azure lub w sieci prywatnej (lokalnej, sieci wirtualnej platformy Azure lub usług Amazon Web Services wirtualnego chmury prywatnej [VPC]). 
+Można wdrożyć co najmniej jedno wystąpienie środowiska IR na potrzeby przenoszenia i przekształcania danych. Środowisko Integration runtime można uruchomić w sieci publicznej platformy Azure lub w sieci prywatnej (lokalnej, sieci wirtualnej platformy Azure lub usług Amazon Web Services wirtualnej chmury prywatnej [VPC]). 
 
 Aby uzyskać więcej informacji, zobacz [Infrastruktura Integration Runtime w usłudze Azure Data Factory](concepts-integration-runtime.md).
 
-## <a name="what-is-the-limit-on-the-number-of-integration-runtimes"></a>Co to jest limit liczby środowisk uruchomieniowych integracji?
-Nie ma żadnego twardych limitu liczby wystąpień środowiska uruchomieniowego integracji, które mogą mieć w fabryce danych. Istnieje jednak limit liczby rdzeni maszyny Wirtualnej, które środowiska uruchomieniowego integracji można użyć dla subskrypcji wykonywanie pakietów SSIS. Aby uzyskać więcej informacji, zobacz [ogranicza fabryki danych](../azure-subscription-service-limits.md#data-factory-limits).
+## <a name="what-is-the-limit-on-the-number-of-integration-runtimes"></a>Co to jest limit liczby środowisk integration Runtime?
+Istnieje nie stałego limitu liczby wystąpień środowiska uruchomieniowego integracji, jaką może mieć w usłudze data factory. Istnieje jednak limit liczby rdzeni maszyn wirtualnych, które środowiska integration runtime można użyć na subskrypcję na wykonanie pakietu SSIS. Aby uzyskać więcej informacji, zobacz [limity usługi Data Factory](../azure-subscription-service-limits.md#data-factory-limits).
 
-## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Co to są najwyższego poziomu pojęcia związane z fabryki danych Azure?
-Subskrypcja platformy Azure może zawierać jedno lub więcej wystąpień usługi Azure Data Factory (lub fabryk danych). Fabryka danych Azure zawiera cztery najważniejsze składniki, które współpracują ze sobą jako platformy, na którym można utworzyć, opartych na danych z przepływów pracy czynności, aby przenieść i przekształcanie danych.
+## <a name="what-are-the-top-level-concepts-of-azure-data-factory"></a>Co to są koncepcje najwyższego poziomu usługi Azure Data Factory?
+Subskrypcja platformy Azure może zawierać jedno lub więcej wystąpień usługi Azure Data Factory (lub fabryk danych). Usługa Azure Data Factory zawiera czterech kluczowych składników, które współpracują ze sobą jako platformę, na którym można utworzyć, oparte na danych przepływy pracy, za pomocą kroki w celu przenoszenia i przekształcania danych.
 
 ### <a name="pipelines"></a>Potoki
-Fabryka danych może obejmować jeden lub wiele potoków. Potok to logiczne grupowanie działań do wykonania jednostkę pracy. które umożliwiają wykonanie zadania. Na przykład potoku może zawierać grupy działań, które pozyskiwania danych z obiektów blob platformy Azure, a następnie uruchom zapytania programu Hive w klastrze usługi HDInsight do partycjonowania danych. Korzyścią jest to, że można użyć potoku do zarządzania działania zgodnie z ustaleniami nie trzeba zarządzać każde działanie oddzielnie. Użytkownik może łańcuch działań w potoku do ich działania sekwencyjnie, lub nie działać je niezależnie, równolegle.
+Fabryka danych może obejmować jeden lub wiele potoków. Potok to logiczna grupa działań, które wykonują pracę. które umożliwiają wykonanie zadania. Na przykład potok może zawierać grupę działań, które pozyskiwać dane z obiektu blob platformy Azure, a następnie uruchomić zapytanie programu Hive w klastrze usługi HDInsight w celu podzielenia danych. Korzyścią jest to, że umożliwia potokowi zarządzania działaniami jako zestawem zamiast konieczności zarządzania każde działanie oddzielnie. Możesz łączyć ze sobą działania w potoku w celu ich sekwencyjny lub działać je niezależnie, równolegle.
 
 ### <a name="activity"></a>Działanie
-Działania reprezentują krok przetwarzania w potoku. Na przykład można użyć *kopiowania* działanie, aby skopiować dane z jednym magazynie danych do innego magazynu danych. Podobnie można użyć działania Hive, uruchamianego zapytań programu Hive w klastrze Azure HDInsight do transformacji lub analizowania danych. Usługa Data Factory obsługuje trzy typy działań: działania przenoszenia danych, działania przekształcania danych i działania sterowania.
+Działania reprezentują krok przetwarzania w potoku. Na przykład, można użyć *kopiowania* działanie w celu kopiowania danych z jednego magazynu danych do innego magazynu danych. Podobnie można użyć działania programu Hive, które uruchomi zapytanie programu Hive w klastrze usługi Azure HDInsight, aby przekształcić lub przeanalizować dane. Usługa Data Factory obsługuje trzy typy działań: działania przenoszenia danych, działania przekształcania danych i działania sterowania.
 
 ### <a name="datasets"></a>Zestawy danych
 Zestawy danych reprezentują struktury w magazynach danych. Struktury te po prostu wskazują na dane, które mają być używane w działaniach jako dane wejściowe lub wyjściowe. 
 
 ### <a name="linked-services"></a>Połączone usługi
-Połączone usługi działają podobnie do parametrów połączenia, umożliwiając definiowanie informacji wymaganych przez usługę Data Factory do nawiązywania połączeń z zasobami zewnętrznymi. Należy traktować go w ten sposób: połączonej usługi definiuje połączenie ze źródłem danych i struktury danych reprezentuje zestaw danych. Na przykład połączoną usługą magazynu Azure określa parametry połączenia, aby nawiązać połączenie z kontem magazynu platformy Azure. I zestawu danych obiektów Blob platformy Azure określa folder, który zawiera dane i kontener obiektów blob.
+Połączone usługi działają podobnie do parametrów połączenia, umożliwiając definiowanie informacji wymaganych przez usługę Data Factory do nawiązywania połączeń z zasobami zewnętrznymi. Mechanizm działa w ten sposób: połączona usługa zawiera definicję połączenia ze źródłem danych i zestaw danych reprezentuje strukturę danych. Na przykład połączona usługa Azure Storage określa parametry połączenia, aby nawiązać połączenie z kontem usługi Azure Storage. I zestaw danych obiektów Blob platformy Azure Określa kontener obiektów blob oraz folder, który zawiera dane.
 
-Połączone usługi ma dwa cele w fabryce danych:
+Połączone usługi mają dwa cele w usłudze Data Factory:
 
-- Do reprezentowania *magazynu danych* obejmuje, ale nie jest ograniczona do lokalnego wystąpienia programu SQL Server, wystąpienie bazy danych Oracle, udziału plików lub konta magazynu obiektów Blob platformy Azure. Aby uzyskać listę obsługiwanych magazynów w temacie [działanie kopiowania w fabryce danych Azure](copy-activity-overview.md).
-- Reprezentowanie *zasobu obliczeniowego*, który może hostować wykonywanie działania. Na przykład działanie HDInsight Hive jest uruchomione w klastrze usługi HDInsight Hadoop. Listę działań transformacji i środowisk obliczeniowych obsługiwane, zobacz [Przekształć dane w fabryce danych Azure](transform-data.md).
+- Do reprezentowania *magazynu danych* obejmują, ale nie jest ograniczona do wystąpienia programu SQL Server w środowisku lokalnym, wystąpienie bazy danych Oracle, udziału plików lub konta usługi Azure Blob storage. Aby uzyskać listę obsługiwanych magazynów danych, zobacz [działania kopiowania w usłudze Azure Data Factory](copy-activity-overview.md).
+- Reprezentowanie *zasobu obliczeniowego*, który może hostować wykonywanie działania. Na przykład działanie HDInsight Hive jest uruchamiany w klastrze usługi HDInsight Hadoop. Aby uzyskać listę działań przekształcania i obsługiwanych obliczeń środowisk, zobacz [Przekształcanie danych w usłudze Azure Data Factory](transform-data.md).
 
 ### <a name="triggers"></a>Wyzwalacze
-Wyzwalacze reprezentują jednostki przetwarzania, która określa, kiedy zostało rozpoczęte wykonywania potoku. Istnieją różne typy wyzwalaczy dla różnych typów zdarzeń. 
+Wyzwalacze reprezentują jednostki przetwarzania, które określają, kiedy rozpoczęła wykonywanie potoku. Istnieją różne typy wyzwalaczy dla różnych typów zdarzeń. 
 
 ### <a name="pipeline-runs"></a>Uruchomienia potoków
-Uruchom potoku jest wystąpienie wykonywania potoku. Zazwyczaj wystąpienia potoku, uruchamiając przekazywanie argumentów do parametrów, które są zdefiniowane w potoku. Można przekazać argumenty ręcznie lub w ramach definicji wyzwalacza.
+Uruchomienia potoku to wystąpienie wykonania potoku. Zazwyczaj tworzenia wystąpienia potoku przez przekazanie argumentów do parametrów, które są definiowane w potoku. Argumenty można przekazać ręcznie lub w ramach definicji wyzwalacza.
 
 ### <a name="parameters"></a>Parametry
-Parametry są pary klucz wartość w trybie tylko do odczytu konfiguracji. Zdefiniuj parametry w potoku i przekazać argumenty zdefiniowanych parametrów podczas wykonywania z kontekstu wykonywania. Kontekst wykonywania jest tworzony przez wyzwalacz lub potok, który można wykonywać ręcznie. Działania w ramach potoku wykorzystują wartości parametrów.
+Parametry to pary klucz wartość w konfiguracji tylko do odczytu. Definiowanie parametrów w potoku i przekazać argumenty dla zdefiniowanych parametrów w trakcie wykonania z kontekstu uruchomienia. Kontekst wykonywania jest tworzony przez wyzwalacz lub potok, który można wykonać ręcznie. Działania w ramach potoku wykorzystują wartości parametrów.
 
-Zestaw danych jest jednoznacznie parametr i jednostką, której można użyć ponownie lub referencyjnego. Działania może odwoływać się zestawów danych i może używać właściwości, które są zdefiniowane w definicji zestawu danych.
+Zestaw danych to silnie typizowany parametr oraz jednostki, do której można ponownie użyć lub odwołania. Działanie może odwoływać się zestawów danych i może zużyć właściwości, które są zdefiniowane w definicji zestawu danych.
 
-Połączona usługa jest również jednoznacznie parametr, który zawiera informacje o połączeniu do magazynu danych lub środowiska obliczeniowego. Istnieje również jednostką, której można użyć ponownie lub referencyjnego.
+Połączona usługa to również silnie typizowany parametr zawierający informacje o połączeniu z magazynu danych lub środowiskiem obliczeniowym. Jest również jednostki, do której można ponownie użyć lub odwołania.
 
-### <a name="control-flows"></a>Przepływu sterowania
-Przepływami sterowania organizowania potoku działań, które obejmują tworzenie łańcuchów działań w sekwencji, rozgałęzianie, parametrów zdefiniowanych przez użytkownika na poziomie potoku i argumentów, które przekazujesz podczas wywołania potoku na żądanie lub wyzwalacza. Przepływami sterowania także stan niestandardowe przekazywanie i zapętlenia kontenery (Iteratory dla każdego).
+### <a name="control-flows"></a>Przepływów sterowania
+Przepływów sterowania organizowanie działań potoku, które obejmują tworzenie łańcuchów działań w sekwencję, rozgałęzienia, parametry są zdefiniowane na poziomie potoku oraz argumenty przekazywane podczas wywołania potoku na żądanie lub przy użyciu wyzwalacza. Przepływów sterowania także stanów niestandardowych przekazywanie i tworzenie pętli kontenerów (to znaczy Iteratory for-each).
 
 
 Aby uzyskać więcej informacji o pojęciach związanych z usługą Data Factory, zobacz następujące artykuły:
@@ -146,38 +146,38 @@ Aby uzyskać więcej informacji o pojęciach związanych z usługą Data Factory
 - [Potoki i działania](concepts-pipelines-activities.md)
 - [Integration Runtime (Produkt Integration Runtime)](concepts-integration-runtime.md)
 
-## <a name="what-is-the-pricing-model-for-data-factory"></a>Co to jest model cen dla fabryki danych?
-Aby uzyskać szczegóły cennika usługi fabryka danych Azure, zobacz [szczegóły cennika usługi fabryka danych](https://azure.microsoft.com/pricing/details/data-factory/).
+## <a name="what-is-the-pricing-model-for-data-factory"></a>Co to jest model cenowy dla usługi Data Factory?
+Aby uzyskać szczegóły cennika usługi Azure Data Factory, zobacz [szczegóły cennika usługi fabryka danych](https://azure.microsoft.com/pricing/details/data-factory/).
 
-## <a name="how-can-i-stay-up-to-date-with-information-about-data-factory"></a>Jak zapewnić aktualne informacje o fabryki danych?
-Aby uzyskać najbardziej aktualne informacje o usłudze fabryka danych Azure przejdź do następujących lokacji:
+## <a name="how-can-i-stay-up-to-date-with-information-about-data-factory"></a>Jak zapewnić aktualne informacje na temat usługi Data Factory?
+Aby uzyskać najbardziej aktualne informacje o usłudze Azure Data Factory przejdź do następujących lokacji:
 
 - [Blog](https://azure.microsoft.com/blog/tag/azure-data-factory/)
 - [Strona główna dokumentacji](/azure/data-factory)
 - [Strona główna produktu](https://azure.microsoft.com/services/data-factory/)
 
-## <a name="technical-deep-dive"></a>Nowości techniczne 
+## <a name="technical-deep-dive"></a>Techniczne 
 
-### <a name="how-can-i-schedule-a-pipeline"></a>Jak można zaplanować potoku? 
-Można zaplanować potoku można użyć wyzwalacza harmonogramu lub wyzwalacza okno czasu. Wyzwalacz wykorzystuje harmonogram kalendarza wall zegara i służy do planowania potoki okresowo lub za pomocą kalendarza na podstawie powtarzającego się wzorce (na przykład, co tydzień w poniedziałek godzinie 6 i czwartki o 21: 00). Aby uzyskać więcej informacji, zobacz [Wyzwalacze i wykonywanie potoku](concepts-pipeline-execution-triggers.md).
+### <a name="how-can-i-schedule-a-pipeline"></a>Jak można zaplanować potok? 
+Wyzwalacz harmonogramu lub zarówno wyzwalacz okna czasu służy do planowania potoku. Wyzwalacz korzysta z harmonogramem zegarowym kalendarza i służą do planowania potoków okresowo lub za pomocą powtarzającego się wzorców, na podstawie kalendarza (na przykład co tydzień w poniedziałek o godzinie 18: 00 i czwartki o godzinie 21: 00). Aby uzyskać więcej informacji, zobacz [Wyzwalacze i wykonywanie potoku](concepts-pipeline-execution-triggers.md).
 
-### <a name="can-i-pass-parameters-to-a-pipeline-run"></a>Aby uruchomić potoku można przekazywać parametrów?
-Parametry są tak, pojęcie najwyższej jakości, najwyższego poziomu w ADF. Można zdefiniować parametrów na poziomie potoku i przekazywać argumenty, jak wykonać potoku uruchamiane na żądanie lub przy użyciu wyzwalacza.  
+### <a name="can-i-pass-parameters-to-a-pipeline-run"></a>Parametry można przekazać do uruchomienia potoku?
+Tak, parametry są najwyższej jakości, najwyższego poziomu pojęcie w usłudze ADF. Można zdefiniować parametry na poziomie potoku i przekazać argumenty, podczas wykonywania potoku uruchamianej na żądanie lub przy użyciu wyzwalacza.  
 
-### <a name="can-i-define-default-values-for-the-pipeline-parameters"></a>Czy można zdefiniować wartości domyślne parametrów potoku? 
+### <a name="can-i-define-default-values-for-the-pipeline-parameters"></a>Można zdefiniować wartości domyślne dla parametrów potoku? 
 Tak. Wartości domyślne dla parametrów można zdefiniować w potokach. 
 
-### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>Działania w potoku można korzystać z argumentów, które są przekazywane do procesu, uruchom? 
-Tak. Każde działanie w potoku, jaką może wykorzystać wartość parametru, które zostały przekazane do potoku Uruchom z `@parameter` utworzenia. 
+### <a name="can-an-activity-in-a-pipeline-consume-arguments-that-are-passed-to-a-pipeline-run"></a>Działania w potoku, mogą wykorzystywać argumenty, które są przekazywane do uruchomienia potoku? 
+Tak. Każde działanie w potoku może zużywać wartość parametru, która jest przekazywane do potoku i uruchomić z `@parameter` konstruowania. 
 
 ### <a name="can-an-activity-output-property-be-consumed-in-another-activity"></a>Właściwości danych wyjściowych działania mogą być używane w innym działaniu? 
-Tak. Dane wyjściowe działania mogą być używane w następnych działań z `@activity` utworzenia.
+Tak. Wyjście działania mogą być używane w kolejnych działań z `@activity` konstruowania.
  
-### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Jak bezpiecznie Obsługa wartości zerowych w danych wyjściowych działania? 
-Można użyć `@coalesce` skonstruować w wyrażeniach można bezpiecznie obsłużyć wartości null. 
+### <a name="how-do-i-gracefully-handle-null-values-in-an-activity-output"></a>Jak bezpiecznie obsługiwać wartości null w danych wyjściowych działania? 
+Możesz użyć `@coalesce` konstruowania w wyrażeniach, które można bezpiecznie obsłużyć wartości null. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać instrukcje krok po kroku można utworzyć fabryki danych zobacz następujące samouczki:
+Aby uzyskać instrukcje krok po kroku utworzysz fabrykę danych zobacz następujące samouczki:
 
 - [Szybki Start: Tworzenie fabryki danych](quickstart-create-data-factory-dot-net.md)
 - [Samouczek: Kopiowanie danych w chmurze](tutorial-copy-data-dot-net.md)

@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 11/13/2017
+ms.date: 09/11/2018
 ms.author: curtand
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: c8d7f1f5b793fcb684e9896bb93213a23d489860
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 163972329161f90ad364b25e7e60e9e5a04324d5
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448547"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720008"
 ---
 # <a name="sharing-accounts-with-azure-ad"></a>Udostępnianie kont w usłudze Azure AD
 ## <a name="overview"></a>Przegląd
@@ -71,7 +71,7 @@ Aby korzystać z usługi Azure AD, aby udostępnić konto, należy:
 Można również ustawić konta udostępnionego bezpieczniejsze z usługi Multi-Factor Authentication (MFA) (Dowiedz się więcej o [zabezpieczanie aplikacji z usługą Azure AD](authentication/concept-mfa-whichversion.md)) i delegować możliwość zarządzania, kto ma dostęp do aplikacji przy użyciu [ Usługa Azure AD samoobsługi](users-groups-roles/groups-self-service-management.md) grupy zarządzania.
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
-* [Indeks artykułów dotyczących zarządzania aplikacjami w usłudze Azure Active Directory](active-directory-apps-index.md)
+* [Zarządzanie aplikacjami w usłudze Azure Active Directory](manage-apps/what-is-application-management.md)
 * [Ochrona aplikacji przy użyciu dostępu warunkowego](active-directory-conditional-access-azure-portal.md)
 * [Zarządzanie grupami samoobsługi/SSAA](users-groups-roles/groups-self-service-management.md)
 

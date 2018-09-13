@@ -1,57 +1,57 @@
 ---
-title: Włącz protokół SSL w klastrze usługi Azure Machine Learning obliczeniowe (MLC) | Dokumentacja firmy Microsoft
-description: Pobierz informacje o sposobie konfiguracji protokołu SSL dla oceniania wywołań w klastrze usługi Azure Machine Learning obliczeniowe (MLC)
+title: Włączanie protokołu SSL na klastrze usługi Azure Machine Learning obliczeń (MLC) | Dokumentacja firmy Microsoft
+description: Uzyskaj instrukcje dotyczące konfigurowania protokołu SSL do oceniania wywołań w klastrze usługi Azure Machine Learning obliczeń (MLC)
 services: machine-learning
 author: SerinaKaye
 ms.author: serinak
 manager: hjerez
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/24/2018
-ms.openlocfilehash: 14f8dd29b7d4185d01529631333de045ad23cdd0
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 982a6807ccaf393c3aea42f39f7e60bb7e0d3ac3
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831464"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35649153"
 ---
-# <a name="enable-ssl-on-an-azure-machine-learning-compute-mlc-cluster"></a>Włącz protokół SSL w klastrze usługi Azure Machine Learning obliczeniowe (MLC) 
+# <a name="enable-ssl-on-an-azure-machine-learning-compute-mlc-cluster"></a>Włączanie protokołu SSL na klastrze usługi Azure Machine Learning obliczeń (MLC) 
 
-Instrukcje te pozwalają skonfigurować protokół SSL dla oceniania wywołań w klastrze Machine Learning obliczeniowe (MLC). 
+Instrukcje te umożliwiają konfigurowanie protokołu SSL do oceniania wywołań w klastrze Machine Learning obliczeń (MLC). 
 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
-1. Zdecydować się na CNAME (nazwa DNS) do użycia w czasie rzeczywistym oceniania wywołania.
+1. Decyzję w sprawie CNAME (nazwa DNS) do użycia podczas nawiązywania połączeń oceniania w czasie rzeczywistym.
 
-2. Utwórz *bez hasła* certyfikat z tym CNAME.
+2. Tworzenie *bez hasła* certyfikat przy użyciu tego rekordu CNAME.
 
-3. Jeśli certyfikat nie jest już w formacie PEM, przekonwertuj go na PEM za pomocą narzędzi takich jak *openssl*.
+3. Jeśli certyfikat nie jest już w formacie PEM, przekonwertuj go na format PEM przy użyciu narzędzi takich jak *openssl*.
 
-Po zakończeniu wymagań wstępnych konieczne będzie dwa pliki:
+Będziesz mieć dwa pliki po ukończeniu wymagania wstępne:
 
-* Plik certyfikatu, na przykład `cert.pem`. Upewnij się, że plik ma łańcuch certyfikatów pełna.
+* Plik certyfikatu, na przykład `cert.pem`. Upewnij się, że plik ma łańcuch certyfikatów pełne.
 * Plik klucza, na przykład `key.pem`
 
 
 
 ## <a name="set-up-an-ssl-certificate-on-a-new-acs-cluster"></a>Konfigurowanie certyfikatu SSL w nowym klastrze ACS
 
-Przy użyciu Azure Machine Learning CLI, uruchom następujące polecenie z `-c` przełącznik, aby utworzyć klaster ACS dołączony certyfikat SSL:
+Za pomocą Machine Learning wiersza polecenia platformy Azure, uruchom następujące polecenie z `-c` przełącznik, aby utworzyć klaster usługi ACS za pomocą certyfikatu SSL dołączone:
 
 ```
 az ml env create -c -g <resource group name> -n <cluster name> --cert-cname <CNAME> --cert-pem <path to cert.pem file> --key-pem <path to key.pem file>
 ```
 
 
-## <a name="set-up-an-ssl-certificate-on-an-existing-acs-cluster"></a>Konfigurowanie certyfikatu SSL w istniejącym klastrze ACS
+## <a name="set-up-an-ssl-certificate-on-an-existing-acs-cluster"></a>Konfigurowanie certyfikatu SSL w istniejącym klastrze usługi ACS
 
-Jeśli ma być przeznaczona dla klastra, który został utworzony bez zastosowania protokołu SSL, można dodać certyfikatu przy użyciu poleceń cmdlet programu Azure PowerShell.
+Jeśli klaster, który został utworzony bez zastosowania protokołu SSL, można dodać certyfikatu przy użyciu poleceń cmdlet programu Azure PowerShell.
 
-Należy podać klucz i certyfikatu w formacie nieprzetworzonym PEM. Można je odczytać w zmiennych środowiska PowerShell:
+Musisz podać klucz i certyfikatu w formacie nieprzetworzonym PEM. Można je odczytać w zmiennych środowiska PowerShell:
 
 ```
 $keyValueInPemFormat = [IO.File]::ReadAllText('<path to key.pem file>')
@@ -63,17 +63,17 @@ Dodaj certyfikat do klastra:
 Set-AzureRmMlOpCluster -ResourceGroupName my-rg -Name my-cluster -SslStatus Enabled -SslCertificate $certValueInPemFormat -SslKey $keyValueInPemFormat -SslCName foo.mycompany.com
 ```
 
-## <a name="map-the-cname-and-the-ip-address"></a>Mapowanie CNAME i adres IP
+## <a name="map-the-cname-and-the-ip-address"></a>Mapuj rekord CNAME i adres IP
 
-Utwórz mapowania między CNAME wybrane w wymaganiach wstępnych i adres IP w czasie rzeczywistym frontonu (FE). Aby odnaleźć adres IP FE, uruchom poniższe polecenie. Dane wyjściowe zawiera pole o nazwie "publicIpAddress", który zawiera adres IP frontonu klastra w czasie rzeczywistym. Zapoznaj się z instrukcjami dostawcy usługi DNS, aby skonfigurować rekord z z nazwą FQDN używaną w CNAME publicznego adresu IP.
+Utwórz mapowanie między CNAME wybrane w wymaganiach wstępnych i adres IP w czasie rzeczywistym frontonu (FE). Aby odnaleźć adres IP FE, uruchom poniższe polecenie. Dane wyjściowe wyświetla pole o nazwie "publicIpAddress", który zawiera adres IP frontonu klastra w czasie rzeczywistym. Zapoznaj się z instrukcjami dostawcy usługi DNS, aby skonfigurować rekord z z nazwą FQDN używaną w CNAME publiczny adres IP.
 
 
 
 ## <a name="auto-detection-of-a-certificate"></a>Automatyczne wykrywanie certyfikatu 
 
-Podczas tworzenia usługi sieci web w czasie rzeczywistym za pomocą "`az ml service create realtime`" polecenia uczenia maszynowego Azure automatycznie wykrywa SSL na klastrze i automatycznie konfiguruje oceniania adresu URL przy użyciu wyznaczonej certyfikatu. 
+Podczas tworzenia usługi internetowej czasu rzeczywistego przy użyciu "`az ml service create realtime`" poleceń usługi Azure Machine Learning automatycznie wykryje, protokołu SSL na klastrze i automatycznie konfiguruje adres URL oceniania, przy użyciu wyznaczonej certyfikatu. 
 
-Aby wyświetlić stan certyfikatu, uruchom następujące polecenie. Zwróć uwagę, prefiksu "https" Usunięto identyfikator URI i CNAME w nazwie hosta. 
+Aby sprawdzić stan certyfikatu, uruchom następujące polecenie. Należy zauważyć prefiks "https" Usunięto identyfikator URI i rekord CNAME w nazwie hosta. 
 
 ``` 
 az ml service show realtime -n <service name>

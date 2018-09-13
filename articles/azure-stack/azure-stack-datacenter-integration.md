@@ -1,6 +1,6 @@
 ---
-title: Zagadnienia dotyczące integracji ogólne centrum danych Azure stosu zintegrowane systemy | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak planować teraz i przygotowania do integracji centrum danych z wieloma węzłami Azure stosu.
+title: Integracja datacenter ogólne informacje dotyczące usługi Azure Stack zintegrowane systemy | Dokumentacja firmy Microsoft
+description: Dowiedz się, co można zrobić, aby teraz zaplanowanie i przygotowanie się do integracji centrum danych z wieloma węzłami usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -12,194 +12,191 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/01/2018
+ms.date: 09/12/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
-ms.openlocfilehash: 0c43b66a9d6210ea951af3fae5eca8bc6d47c3d9
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 9e5a8cf59d4f1dc47495c5889f8ed4aae64f7ff7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261223"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720450"
 ---
-# <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Zagadnienia dotyczące integracji centrum danych Azure stosu zintegrowane systemy
-Jeśli interesuje Cię systemu Azure stosu zintegrowane, należy poznać niektóre z najważniejszych kwestii dotyczących planowania wdrożenia i jak system dopasowuje się do centrum danych. Ten artykuł zawiera omówienie te zagadnienia dotyczące ułatwiającym podejmowanie decyzji ważne infrastruktury systemu Azure stosu wieloma węzłami. Opis tych zagadnień pomaga podczas pracy z dostawcą sprzętu OEM zgodnie z wdrożeniem Azure stosu w centrum danych.  
+# <a name="datacenter-integration-considerations-for-azure-stack-integrated-systems"></a>Integracja z centrum danych informacje dotyczące usługi Azure Stack zintegrowane systemy
+Jeśli interesuje Cię to system zintegrowany z usługi Azure Stack, zapoznaj się niektóre z najważniejszych kwestii dotyczących planowania dotyczące wdrażania i jak system znajdzie się w centrum danych. Ten artykuł zawiera ogólne omówienie tych zagadnień, aby łatwiej podejmować decyzje dotyczące infrastruktury ważne w systemie Azure Stack wieloma węzłami. Zrozumienie tych zagadnień pomaga podczas pracy z dostawcą sprzętu OEM, zgodnie z ich wdrażanie usługi Azure Stack w swoim centrum danych.  
 
 > [!NOTE]
-> Azure systemów wielowęzłowego stosu zakupienia tylko autoryzowanym sprzętem dostawców. 
+> Systemy wielowęzłowego usługi Azure Stack można kupić tylko od dostawców autoryzowanym sprzętem. 
 
-Aby wdrożyć stosu Azure, konieczne jest zapewnienie informacje na temat planowania dostawcy rozwiązań, przed rozpoczęciem wdrażania ułatwić proces Przejdź szybkie i sprawne. Informacje wymagane zakresów w sieci, zabezpieczeń i informacje o tożsamości z wiele istotnych decyzji, które mogą wymagać wiedzy z wielu różnych obszarów i inne osoby podejmujące decyzje. W związku z tym może być konieczne ściągnąć osób z wielu zespoły w organizacji, aby upewnić się, że wszystkie wymagane informacje gotowe, przed rozpoczęciem wdrażania. Ułatwia komunikować się z dostawcą sprzętu podczas zbierania tych informacji, jak mogą pojawić się porady przydatne do tworzenia swoje decyzje dotyczące.
+Aby wdrożyć usługę Azure Stack, należy podać informacje dotyczące planowania do dostawcy rozwiązań, przed rozpoczęciem wdrażania ułatwić proces szybko i sprawnie. Informacje wymagane zakresów adresów w sieci, zabezpieczeń i informacje o tożsamościach z wielu ważnych decyzji, które mogą wymagać wiedzy z wielu różnych obszarów, jak i osób podejmujących decyzje. W związku z tym trzeba będzie ściągać osoby z wielu zespołów w organizacji, aby upewnić się, że masz wszystkie wymagane informacje, przed rozpoczęciem wdrażania. Może to pomóc na komunikowanie się z dostawcą sprzętu podczas zbierania tych informacji, o których skończona, gdyż może być przydatne do podejmowania decyzji usługi doradztwa.
 
-Podczas badania i zbieranie wymaganych informacji, może być konieczne dokonanie pewnych zmian w konfiguracji przed wdrożeniem w środowisku sieciowym. Mogą one obejmować rezerwacji przestrzeni adresów IP dla rozwiązania Azure stosu, konfigurowanie Twojego routery, przełączniki i zapór, aby przygotować się do łączność nowych przełączników rozwiązania Azure stosu. Upewnij się, że ma obszaru podmiotu ekspert wyrównany do pomóc w planowaniu.
+Podczas badania i zbierania wymaganych informacji, może być konieczne pewnych zmian konfiguracji przed wdrożeniem w środowisku sieciowym. Może to obejmować rezerwacji przestrzeni adresów IP dla rozwiązania usługi Azure Stack konfigurowanie Twojego routery, przełączniki i zapory, aby przygotować się do łączności do nowych przełączników rozwiązania usługi Azure Stack. Upewnij się, że masz obszar podmiotu eksperta wyrównane do pomagają w planowaniu.
 
-## <a name="capacity-planning-considerations"></a>Zagadnienia związane z planowaniem pojemności
-Podczas oceniania rozwiązania stosu Azure nabycia, opcje konfiguracji sprzętu muszą być wprowadzane które mają bezpośredni wpływ na ogólną pojemność ich rozwiązania Azure stosu. Obejmują one klasycznego wyboru procesora CPU, gęstość pamięci konfiguracji magazynu i skalowania rozwiązania ogólnej (np. liczba serwerów). W odróżnieniu od rozwiązanie wirtualizacji tradycyjnych proste operacje arytmetyczne ustalenia pojemności można używać tych składników nie ma zastosowania. Pierwszy dzieje się tak że stosu Azure została zaprojektowana do obsługi składników infrastruktury i zarządzania w ramach samego rozwiązania. Drugi przyczyna jest niektóre pojemności rozwiązania jest zarezerwowana wesprzeć odporności; Aktualizowanie oprogramowania rozwiązania w taki sposób, aby zminimalizować przerwy w świadczeniu obciążeń dzierżawców. 
+## <a name="capacity-planning-considerations"></a>Zagadnienia dotyczące planowania pojemności
+Podczas oceny usługi Azure Stack rozwiązanie służące do pozyskiwania, opcje konfiguracji sprzętu należy które mają bezpośredni wpływ na ogólną pojemność swoje rozwiązanie usługi Azure Stack. Obejmują one klasycznego opcje procesora CPU, pamięci gęstości, konfiguracji magazynu i ogólne rozwiązanie skali (np. liczby serwerów). W przeciwieństwie do rozwiązania tradycyjną wirtualizację proste operacje arytmetyczne na tych składników w celu ustalenia pojemności do wykorzystania nie ma zastosowania. Pierwszym powodem jest to, że usługi Azure Stack została zaprojektowana do obsługi składników infrastruktury ani zarządzania w obrębie samego rozwiązania. Drugi przyczyna jest część pojemności tego rozwiązania jest zarezerwowana w odniesieniu do odporności; Aktualizowanie oprogramowania rozwiązania w taki sposób, aby zminimalizować zakłócenia w działaniu obciążenia dzierżaw. 
 
-[Arkusz kalkulacyjny planowania pojemności stosu Azure](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) pomaga wprowadzeniu informacji decyzji odnoszących się do planowania pojemności na dwa sposoby: albo wybierając oferty sprzętu i próby dopasowania połączonych zasobów lub definiując obciążenia Azure stosu jest przeznaczony do uruchomienia, aby wyświetlić dostępne jednostki SKU, które obsługują tę sprzęt. Na koniec arkusz kalkulacyjny służy jako przewodnik dotyczący pomoc w podejmowaniu decyzji związanych z stosu Azure planowania i konfiguracji. 
+[Arkusz kalkulacyjny planowania pojemności usługi Azure Stack](https://aka.ms/azstackcapacityplanner) pomaga wprowadzeniu poinformowany decyzje w odniesieniu do planowania pojemności na dwa sposoby: albo wybierając ofertę sprzętu i próby dopasowania połączonych zasobów lub, definiując Obciążenie Azure Stack jest przeznaczony do uruchamiania do wyświetlenia sprzętu dostępnych jednostek SKU, które może obsługiwać go. Na koniec arkusza kalkulacyjnego jest przeznaczony jako wskazówki pomagające w podejmowaniu decyzji związanych z usługi Azure Stack planowania i konfiguracji. 
 
-Arkusz kalkulacyjny nie jest przeznaczony do obsługi zamiast własnych dochodzenia i analizy.  Firma Microsoft nie udziela żadnych oświadczeń ani żadnych gwarancji, lub domniemanych, w odniesieniu do informacji dostępnych w arkuszu kalkulacyjnym.
+Arkusz kalkulacyjny nie mają służyć jako substytut dla własnych analizy i analizy.  Firma Microsoft udziela się ani nie udziela gwarancji, jawnych ani dorozumianych, w związku z informacjami przedstawionymi w arkuszu kalkulacyjnym.
 
 
 
 ## <a name="management-considerations"></a>Zagadnienia dotyczące zarządzania
-Azure stos jest zapieczętowany system, gdzie infrastruktury jest zablokowana zarówno od uprawnień i sieciowych perspektywy. Listy kontroli dostępu do sieci (ACL) są stosowane do Zablokuj cały ruch przychodzący nieautoryzowanych i wszystkie zbędne komunikacji między składnikami infrastruktury. Utrudnia nieautoryzowanym użytkownikom dostęp do systemu.
+Usługa Azure Stack jest zapieczętowany systemu, gdy infrastruktura jest zablokowana zarówno z poziomu uprawnień i sieciowych perspektywy. Listy kontroli dostępu do sieci (ACL) są stosowane do blokowania całego ruchu przychodzącego do nieautoryzowanego i wszystkie zbędne komunikacji między składnikami infrastruktury. Utrudnia to nieautoryzowanym użytkownikom dostęp do tego systemu.
 
-Codzienne zarządzanie i operacje jest nie administratora nieograniczony dostęp do infrastruktury. Operatory stosu Azure muszą zarządzać systemu za pośrednictwem portalu administratora lub za pośrednictwem usługi Azure Resource Manager (za pośrednictwem programu PowerShell lub interfejsu API REST). Brak dostępu do systemu, narzędzia do zarządzania, takie jak Menedżer funkcji Hyper-V lub Menedżera klastra trybu Failover nie istnieje. Aby lepiej chronić systemu, oprogramowania innych firm (na przykład agenci) nie można zainstalować wewnątrz składników infrastruktury Azure stosu. Współdziałanie z zewnętrznego oprogramowania do zarządzania i zabezpieczeń odbywa się za pośrednictwem programu PowerShell lub interfejsu API REST.
+Bieżące zarządzanie i operacje jest bez dostępu administratora bez ograniczeń infrastruktury. Operatorzy usługi Azure Stack muszą zarządzać systemu za pośrednictwem portalu administratora lub za pośrednictwem usługi Azure Resource Manager (za pośrednictwem programu PowerShell lub interfejsu API REST). Brak dostępu do systemu narzędzia do zarządzania, takich jak Menedżer funkcji Hyper-V lub Menedżera klastra trybu Failover. Aby chronić system, nie można zainstalować oprogramowania innych firm (np. agentów), wewnątrz składniki infrastruktury usługi Azure Stack. Współdziałanie z zewnętrznego oprogramowania do zarządzania i zabezpieczeń występuje za pomocą programu PowerShell lub interfejsu API REST.
 
-Gdy wyższy poziom dostępu jest potrzebna do rozwiązywania problemów, które nie są rozpoznawane za pomocą kroków pośrednictwa alertu, należy skontaktować się z Microsoft Support. Za pomocą techniczną Brak metody zapewnienie tymczasowego pełne uprawnienia dostępu administratora systemu do bardziej zaawansowanych operacji. 
+Gdy wyższy poziom dostępu jest potrzebny do rozwiązywania problemów, które nie są rozpoznawane za pomocą alertów pośrednictwa kroki, należy skontaktować się z Microsoft Support. Dzięki obsłudze ma metodę, aby zapewnić tymczasowe pełne uprawnienia dostępu administratora do systemu, aby wykonywać bardziej zaawansowane operacje. 
 
 ## <a name="identity-considerations"></a>Zagadnienia dotyczące tożsamości
 
 ### <a name="choose-identity-provider"></a>Wybierz dostawcę tożsamości
-Należy wziąć pod uwagę dostawcy tożsamości, którego chcesz użyć dla wdrożenia stosu Azure, Azure AD lub AD FS. Nie można przełączyć dostawców tożsamości, po wdrożeniu bez ponownego wdrażania całego systemu. Jeśli nie ma konta usługi Azure AD i korzystania z konta dostarczonego przez dostawcę usługi w chmurze, a jeśli zdecydujesz się przełączyć dostawcy i użyj innej usługi Azure AD konto, w tym momencie, należy skontaktować się z dostawcą rozwiązań do ponownego wdrożenia rozwiązania f można także z kosztami.
+Należy wziąć pod uwagę którego dostawcy tożsamości, którego chcesz użyć dla wdrożenia usługi Azure Stack, Azure AD lub AD FS. Nie można przełączyć dostawców tożsamości, po wdrożeniu bez ponownego wdrażania pełnej wersji systemu. Jeśli nie jesteś właścicielem konta usługi Azure AD i korzystania z konta dostarczonego przez dostawcę usługi w chmurze, a jeśli zdecydujesz się przełączyć dostawcę i używać różnych usługi Azure AD konto, w tym momencie należy skontaktować się z dostawcą rozwiązań do ponownego wdrożenia rozwiązania f lub na koszt.
 
 
 
-Wybór dostawcy tożsamości nie ma wpływu na maszyny wirtualne dzierżawców, system obsługi tożsamości i kont, których używają, czy ich może dołączyć do domeny usługi Active Directory itp. To jest oddzielony.
+Wybranego dostawcy tożsamości nie ma żadnego wpływu na maszyny wirtualne dzierżawcy, system obsługi tożsamości i kont, których używają, czy mogły one dołączyć do domeny usługi Active Directory itp. Jest to oddzielne.
 
-Dowiedz się więcej na temat wybierania dostawcy tożsamości w [stosu Azure zintegrowanych systemów połączenia modeli artykułu](.\azure-stack-connection-models.md).
+Dowiedz się więcej na temat wybierania dostawcy tożsamości w [artykułu modeli połączenie zintegrowane systemy usługi Azure Stack](.\azure-stack-connection-models.md).
 
 ### <a name="ad-fs-and-graph-integration"></a>Integracja usług AD FS i wykres
-Jeśli wybierzesz do wdrożenia stosu Azure za pomocą usług AD FS jako dostawca tożsamości, można zintegrować wystąpienia usług AD FS na stosie Azure z istniejącym wystąpieniem usług AD FS za pomocą zaufania federacyjnego. Dzięki temu tożsamości w istniejącym lesie usługi Active Directory do uwierzytelniania z zasobami w stosie Azure.
+Jeśli zdecydujesz się wdrożyć usługę Azure Stack przy użyciu usług AD FS jako dostawcy tożsamości, możesz zintegrować wystąpienia usług AD FS w usłudze Azure Stack przy użyciu istniejącego wystąpienia usług AD FS za pomocą zaufania federacyjnego. Dzięki temu tożsamości w istniejącym lesie usługi Active Directory do uwierzytelniania przy użyciu zasobów w usłudze Azure Stack.
 
-Można również zintegrować usługę wykresu w stosie Azure z istniejącej usługi Active Directory. Pozwala na zarządzanie oparte na rolach kontroli dostępu (RBAC) w stosie Azure. Po oddelegowaniu dostęp do zasobu składnika Wykres wyszukuje konta użytkownika w istniejącym lesie usługi Active Directory przy użyciu protokołu LDAP.
+Usługa programu Graph w usłudze Azure Stack można również zintegrować z istniejącą usługą Active Directory. Pozwala na zarządzanie opartej na rolach kontrola dostępu (RBAC) w usłudze Azure Stack. Dostęp do zasobu jest delegowane, składnik programu Graph wyszukuje konta użytkownika w istniejącym lesie usługi Active Directory przy użyciu protokołu LDAP.
 
-Na poniższym diagramie przedstawiono zintegrowane przepływu ruchu usługi AD FS i Graph.
-![Diagram przedstawiający przepływ ruchu wykres i usług AD FS](media/azure-stack-datacenter-integration/ADFSIntegration.PNG)
+Na poniższym diagramie przedstawiono przepływ ruchu zintegrowanych usług AD FS i wykres.
+![Diagram przedstawiający przepływ ruchu usług AD FS i wykres](media/azure-stack-datacenter-integration/ADFSIntegration.PNG)
 
 ## <a name="licensing-model"></a>Model licencjonowania
-Należy określić model licencjonowania, który ma być używany. Dostępne opcje zależą od tego, czy wdrożyć stosu Azure połączony z Internetem:
-- Dla [połączone wdrożenia](azure-stack-connected-deployment.md), możesz wybrać płatności jako — użytkownik użycia lub na podstawie zdolności licencjonowania. Płatności — jako — możesz — użycie wymaga połączenia z platformą Azure raportowania użycia, następnie jest on rozliczany za pośrednictwem commerce platformy Azure. 
-- Licencjonowanie tylko na podstawie zdolności produkcyjnych jest obsługiwane, jeśli można [wdrażanie odłączony](azure-stack-disconnected-deployment.md) z Internetu. 
+Należy zdecydować, które modelu licencjonowania, którego chcesz użyć. Dostępne opcje zależą od tego, czy wdrożyć połączony z Internetem w usłudze Azure Stack:
+- Dla [połączone wdrożenia](azure-stack-connected-deployment.md), możesz wybrać płatność za użycie lub oparty na pojemności licencji. Płatność za użycie wymaga połączenia do platformy Azure do użycia raportów, które następnie będą rozliczane za pośrednictwem platformy Azure commerce. 
+- Licencjonowanie tylko na podstawie pojemności jest obsługiwany, jeśli możesz [wdrażanie odłączony](azure-stack-disconnected-deployment.md) z Internetu. 
 
-Aby uzyskać więcej informacji na temat modeli licencjonowania, zobacz [Microsoft Azure stosu pakowania i cenach](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf).
+Aby uzyskać więcej informacji na temat modeli licencjonowania, zobacz [Microsoft Azure Stack, pakowania i ceny](https://azure.microsoft.com/mediahandler/files/resourcefiles/5bc3f30c-cd57-4513-989e-056325eb95e1/Azure-Stack-packaging-and-pricing-datasheet.pdf).
 
 
 ## <a name="naming-decisions"></a>Decyzje dotyczące nazewnictwa
 
-Należy się zastanowić, jak chcesz zaplanować nazw Azure stosu, szczególnie nazwa regionu i nazwy domeny zewnętrznej. Zewnętrzne pełną nazwę domeny (FQDN) dla publicznych punktów końcowych wdrożenia stosu Azure jest kombinacją te dwie nazwy: &lt; *region*&gt;.&lt; *fqdn*&gt;. Na przykład *east.cloud.fabrikam.com*. W tym przykładzie portali stosu Azure będzie dostępna w następujących adresów URL:
+Należy zastanowić się, jak chcesz zaplanować przestrzeni nazw usługi Azure Stack, szczególnie nazwa regionu i nazwa domeny zewnętrznej. Zewnętrzne w pełni kwalifikowaną nazwę domeny (FQDN) wdrożenia usługi Azure Stack dla publicznych punktów końcowych jest kombinacja tych dwóch nazw: &lt; *region*&gt;.&lt; *fqdn*&gt;. Na przykład *east.cloud.fabrikam.com*. W tym przykładzie portali usługi Azure Stack będą dostępne w następujących adresów URL:
 
 - https://portal.east.cloud.fabrikam.com
 - https://adminportal.east.cloud.fabrikam.com
 
 > [!IMPORTANT]
-> Nazwa regionu wybrane do wdrożenia usługi Azure stos musi być unikatowa i będą wyświetlane w portalu adresów. 
+> Nazwa regionu, wybrany dla wdrożenia usługi Azure Stack musi być unikatowa i będą wyświetlane w portalu adresów. 
 
 W poniższej tabeli przedstawiono te decyzje nazewnictwa domeny.
 
 | Name (Nazwa) | Opis | 
 | -------- | ------------- | 
-|Nazwa regionu | Nazwa pierwszego regionu Azure stosu. Ta nazwa jest używana jako część nazwy FQDN dla publicznych wirtualne adresy IP (VIP) zarządzanych przez stos Azure. Zazwyczaj nazwa regionu powinien być identyfikator lokalizacji fizycznej, takie jak lokalizacja centrum danych. | 
-| Nazwy domen zewnętrznych | Nazwa strefy systemu nazw domen (DNS, Domain Name System) dla punktów końcowych z zewnątrz adresów VIP. Używany w nazwie FQDN dla te publiczne adresy VIP. | 
-| Nazwy prywatnych domeny (wewnętrzny) | Nazwa domeny (i wewnętrznej strefy DNS), utworzone na stosie Azure infrastruktury zarządzania. 
+|Nazwa regionu | Nazwa pierwszego regionu Azure Stack. Ta nazwa jest używana jako część nazwy FQDN dla publiczne wirtualne adresy IP (VIP), którymi zarządza usługa Azure Stack. Zazwyczaj nazwa regionu powinien być identyfikator lokalizacji fizycznej, takie jak lokalizacja centrum danych.<br><br>Nazwa regionu musi zawierać tylko litery i cyfry od 0 do 9. Znaki specjalne, takie jak "-" lub "#", itp., są dozwolone.| 
+| Nazwa domeny zewnętrznej | Nazwa strefy systemu nazw domen (DNS, Domain Name System) dla punktów końcowych z zewnątrz adresów VIP. Używane w pełni kwalifikowaną nazwę domeny dla tych publicznych adresów VIP. | 
+| Nazwy prywatnych domeny (wewnętrzny) | Nazwa domeny (i wewnętrznej strefy DNS), utworzone w usłudze Azure Stack dla zarządzania infrastrukturą. 
 | | |
 
 ## <a name="certificate-requirements"></a>Wymagania dotyczące certyfikatów
 
-Wdrożenia musisz podać certyfikatów Secure Sockets Layer (SSL) dla publicznych punktów końcowych. Na wysokim poziomie certyfikaty mają następujące wymagania:
+W przypadku wdrożenia należy udostępniania certyfikatów Secure Sockets Layer (SSL) dla publicznych punktów końcowych. Na wysokim poziomie certyfikaty mają następujące wymagania:
 
-- Można użyć certyfikatu jeden symbol wieloznaczny lub korzystanie z zestawu dedykowanych certyfikatów i użyć symboli wieloznacznych tylko dla punktów końcowych, takie jak magazyn i magazyn kluczy.
-- Certyfikaty mogą być wystawiane przez publiczny zaufanego urzędu certyfikacji (CA) lub urzędu certyfikacji zarządzany przez klienta.
+- Można użyć pojedynczego symbolu wieloznacznego certyfikat lub użyć zestawu dedykowanych certyfikatów i używać symboli wieloznacznych tylko dla punktów końcowych, takich jak storage i usługi Key Vault.
+- Certyfikaty mogą być wystawiane przez publiczny zaufanego urzędu certyfikacji (CA) lub urzędu certyfikacji przez klienta.
 
-Aby uzyskać więcej informacji o jakie infrastruktury kluczy publicznych Certyfikaty są wymagane do wdrożenia stosu Azure i sposobu ich uzyskania, zobacz, [wymagania dotyczące certyfikatów infrastruktury kluczy publicznych stosu Azure](azure-stack-pki-certs.md).  
+Aby uzyskać więcej informacji o jakie infrastruktury kluczy publicznych certyfikatów są wymagane do wdrożenia usługi Azure Stack i sposób ich uzyskania, znajduje się [wymagania dotyczące certyfikatów infrastruktury kluczy publicznych usługi Azure Stack](azure-stack-pki-certs.md).  
 
 
 > [!IMPORTANT]
-> Podane informacje o certyfikacie PKI powinien służyć jako ogólne wytyczne. Przed nabyciem wszystkie certyfikaty PKI dla stosu Azure należy skontaktować się z partnerem sprzętu OEM. Użytkownicy muszą podać szczegółowe wskazówki dotyczące certyfikatu i wymagań.
+> Podane informacje o certyfikacie PKI powinny służyć jako ogólne wskazówki. Przed nabyciem wszystkie certyfikaty PKI dla usługi Azure Stack, pracować z partnerem sprzętowe OEM. Zapewniają one co bardziej szczegółowe wskazówki dotyczące certyfikatów i wymagania.
 
 
-## <a name="time-synchronization"></a>Czas synchronizacji
-Musisz wybrać używanych do synchronizacji Azure stosu serwera o określonym czasie.  Symbolization czasu jest kluczowa stosu Azure i jej role infrastruktury, ponieważ jest używany do generowania biletów Kerberos, które są używane do uwierzytelniania wewnętrznego usługi ze sobą.
+## <a name="time-synchronization"></a>Synchronizacja czasu
+Musisz wybrać określony czas, serwera przy użyciu służy do synchronizacji usługi Azure Stack.  Symbolization czasu jest mają kluczowe znaczenie dla usługi Azure Stack i jego role infrastruktury, ponieważ jest używany do generowania bilety protokołu Kerberos, które są używane do uwierzytelniania wewnętrznych usług ze sobą.
 
-Należy określić adresu IP dla serwera synchronizacji czasu, mimo że większość składników w infrastrukturze może rozpoznać adresu URL, niektóre może obsługiwać tylko adresy IP. Jeśli jesteś są używania opcji wdrażania bez połączenia, należy określić czas server w sieci firmowej, którą można połączyć się, że od infrastruktury sieci w stosie usługi Azure.
+Należy określić, że adres IP dla serwera synchronizacji czasu, mimo że większość składników infrastruktury może rozpoznać adresu URL, niektóre może obsługiwać tylko adresy IP. Jeśli są przy użyciu opcji wdrażania rozłączona, należy określić serwer czasu w sieci firmowej, którego jesteś można połączyć się z siecią infrastruktury w usłudze Azure Stack.
 
-## <a name="connect-azure-stack-to-azure"></a>Azure stosu połączenia z platformą Azure
+## <a name="connect-azure-stack-to-azure"></a>Łączenie usługi Azure Stack z platformą Azure
 
-W scenariuszach chmur hybrydowych należy zaplanować, jak chcesz się połączyć stosu Azure na platformie Azure. Istnieją dwie metody obsługiwanych nawiązać sieci wirtualnych Azure stosu sieci wirtualnych na platformie Azure: 
-- **Lokacja lokacja**. Połączenie wirtualnej sieci prywatnej (VPN) za pośrednictwem protokołu IPsec (IKE v1 i IKE v2). Ten typ połączenia wymaga urządzenia VPN lub usługi Routing i dostęp zdalny (RRAS). Aby uzyskać więcej informacji na temat bram sieci VPN platformy Azure, zobacz [o bramy sieci VPN](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Komunikacja przez ten tunel jest zaszyfrowany i jest bezpieczne. Jednak przepustowość jest ograniczone przez maksymalną przepływność tunelu (100 – 200 MB/s).
-- **NAT ruchu wychodzącego**. Domyślnie wszystkie maszyny wirtualne Azure stosu będzie połączeniem do sieci zewnętrznej za pośrednictwem wychodzącego translatora adresów sieciowych. Każda sieć wirtualna, która jest tworzona w stosie usługi Azure pobiera publicznego adresu IP przypisane do niej. Czy maszyny wirtualnej bezpośrednio przypisano publiczny adres IP lub jest za modułem równoważenia obciążenia z publicznym adresem IP, jej wychodzący dostęp za pośrednictwem NAT ruchu wychodzącego przy użyciu adresu VIP sieci wirtualnej. To działanie jest tylko do komunikacji, który jest inicjowane przez maszynę wirtualną i przeznaczonych dla zewnętrznych sieci (w Internecie lub intranecie). Nie można nawiązać połączenia z maszyną wirtualną spoza.
+W przypadku scenariuszy chmury hybrydowej należy zaplanować, jak chcesz się połączyć usługę Azure Stack na platformie Azure. Istnieją dwie obsługiwane metody łączenia sieci wirtualnych w usłudze Azure Stack z sieciami wirtualnymi na platformie Azure: 
+- **Site-to-site**. Połączenie wirtualnej sieci prywatnej (VPN) za pośrednictwem protokołu IPsec (IKE v1 i IKE v2). Ten typ połączenia wymaga urządzenia sieci VPN lub usługi Routing i dostęp zdalny (RRAS). Aby uzyskać więcej informacji na temat bram sieci VPN na platformie Azure, zobacz [VPN Gateway — informacje](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-vpngateways). Komunikacja przez ten tunel jest zaszyfrowany i jest bezpieczna. Jednak przepustowość jest ograniczona przez maksymalną przepływność tuneli (100 – 200 MB/s).
+- **NAT dla ruchu wychodzącego**. Domyślnie wszystkie maszyny wirtualne w usłudze Azure Stack będą mieć łączność z sieciami zewnętrznymi za pośrednictwem z wychodzących reguł NAT. Każda sieć wirtualna, który jest tworzony w usłudze Azure Stack pobiera publiczny adres IP przypisany do niego. Czy maszyna wirtualna jest bezpośrednio przypisany publiczny adres IP lub jest za modułem równoważenia obciążenia z publicznym adresem IP, będzie miał dostęp ruchu wychodzącego za pośrednictwem NAT dla ruchu wychodzącego, korzystając z adresu VIP w sieci wirtualnej. Działa to tylko do komunikacji, który jest inicjowane przez maszynę wirtualną i skierowany do sieci zewnętrznej (internet lub intranet). Nie można nawiązać połączenia z maszyną wirtualną spoza.
 
-### <a name="hybrid-connectivity-options"></a>Opcje połączeń hybrydowych
+### <a name="hybrid-connectivity-options"></a>Opcjom łączności hybrydowej
 
-Połączenie hybrydowe z należy wziąć pod uwagę rodzaj wdrożenia, które chcesz zaoferować i którym zostanie wdrożony. Należy wziąć pod uwagę tego, czy należy do izolacji ruchu sieciowego dla poszczególnych dzierżawców i czy masz wdrożenia intranetu lub Internetu.
+Potrzeby łączności hybrydowej należy wziąć pod uwagę rodzaj wdrożenia mają być oferowane i którym zostanie wdrożony. Należy wziąć pod uwagę, czy trzeba izolować ruch sieciowy na dzierżawę i tego, czy będziesz mieć wdrożenia intranetu lub Internetu.
 
-- **Pojedynczej dzierżawy Azure stosu**. Wdrożenia usługi Azure stosu wygląda, co najmniej z punktu widzenia sieci, jak w przypadku jednego dzierżawcy. Może być się, że dzierżawy wiele subskrypcji, ale jak intranetową usługę, cały ruch przesyłany tej samej sieci. Ruch sieciowy z jedną subskrypcją przesyłane w tym samym połączenia sieciowego w postaci innej subskrypcji i nie muszą być izolowane za pośrednictwem tunelu zaszyfrowane.
+- **Pojedynczej dzierżawy usługi Azure Stack**. Wdrożenie usługi Azure Stack, które wydaje się, co najmniej z punktu widzenia sieci, tak jak w przypadku jednej dzierżawy. Może być dzierżawy wiele subskrypcji, ale jak intranetową usługę, cały ruch sieciowy przesyłany za pośrednictwem tej samej sieci. Ruch sieciowy z jedną subskrypcją sieciowy przesyłany za pośrednictwem tego samego połączenia sieciowego w postaci innej subskrypcji i nie muszą być izolowane przez szyfrowany tunel.
 
-- **Wielodostępne Azure stosu**. Wdrożenia stosu Azure, w której ruch każdej subskrypcji dzierżawcy, przeznaczony dla sieci, które są zewnętrzne względem stosu Azure musi być odizolowany od ruchu sieciowego innych dzierżawców.
+- **Usługi Azure Stack w wielodostępnym**. Wdrożenia usługi Azure Stack, gdzie ruch każdej subskrypcji dzierżawcy, który jest powiązany dla sieci, które są zewnętrzne w stosunku do usługi Azure Stack musi być odizolowany od ruchu sieciowego innych dzierżaw.
  
-- **Intranet wdrożenia**. Wdrożenia stosu Azure, która znajduje się w intranecie firmowym, zwykle w prywatnej przestrzeni adresów IP i co najmniej jeden zapory. Publiczne adresy IP nie są naprawdę publiczne, ponieważ nie można go skierować bezpośrednio za pośrednictwem publicznej sieci internet.
+- **Wdrażanie sieci intranet**. Wdrażanie usługi Azure Stack, który znajduje się w firmowej sieci intranet, zwykle na przestrzeń prywatnych adresów IP i za zaporami co najmniej jeden. Publiczne adresy IP nie są naprawdę publicznych, ponieważ nie może być kierowany bezpośrednio przez publiczny internet.
 
-- **Wdrożenie Internet**. Wdrożenia stosu Azure jest podłączony do publicznego Internetu i używa routingu internetowego publicznego adresu IP adresy dla publicznych zakresu adresów VIP. Wdrożenia można nadal znajdują się za zaporą, ale publicznego zakresu adresów VIP jest bezpośrednio dostępny z publicznego Internetu i Azure.
+- **Wdrożenie internetowe**. Wdrożenia usługi Azure Stack, który jest podłączony do publicznego Internetu i używa routingu internetowego publiczne adresy IP dla publicznej zakresu adresów VIP. Wdrożenie nadal może się znajdować się za zaporą, ale publiczny zakres adresów VIP jest bezpośrednio osiągalny z publicznego Internetu i platformy Azure.
  
-W poniższej tabeli przedstawiono scenariusze łączności hybrydowych, specjalistów, wad i przypadki użycia.
+Poniższa tabela zawiera podsumowanie hybrydowe scenariusze łączności, z informatykami, wadach i przypadkami użycia.
 
-| Scenariusz | Połączenie — metoda | Specjaliści | Wady | Nadaje się do |
+| Scenariusz | Metoda połączenia | Specjaliści | Wady | Dobre dla |
 | -- | -- | --| -- | --|
-| Pojedynczy dzierżawy Azure stosu, wdrożenie w sieci intranet | NAT ruchu wychodzącego | Lepszą przepustowość transferów szybsze. Prosta implementacja; nie wymaganych bram. | Ruch nie jest szyfrowany. Brak izolacji i szyfrowania poza stosem. | Gdzie są równie zaufane wszystkich dzierżaw wdrożeń w przedsiębiorstwie.<br><br>Przedsiębiorstw, które mają obwodu Azure ExpressRoute na platformie Azure. |
-| Wielodostępne Azure stosu, wdrożenie w sieci intranet | Sieci VPN typu lokacja lokacja | Ruch z sieci wirtualnej dzierżawcy do lokalizacji docelowej jest bezpieczna. | Przepustowość jest ograniczona przez tunel VPN lokacja lokacja.<br><br>Wymaga bramy sieci wirtualnej i urządzenia sieci VPN w sieci docelowej. | Musi być zabezpieczona przedsiębiorstwach, gdzie niektóre dzierżawy ruchu od pozostałych dzierżawców. |
-| Pojedynczy dzierżawy Azure stosu, internet wdrożenia | NAT ruchu wychodzącego | Lepszą przepustowość transferów szybsze. | Ruch nie jest szyfrowany. Brak izolacji i szyfrowania poza stosem. | Hosting scenariuszy, w którym dzierżawcy pobiera własnych wdrożenia stosu Azure i obwodu dedykowanego w środowisku Azure stosu. Na przykład ExpressRoute, jak i przełączania etykiety Multiprotocol (MPLS).
-| Wielodostępne Azure stosu, internet wdrożenia | Sieci VPN typu lokacja lokacja | Ruch z sieci wirtualnej dzierżawcy do lokalizacji docelowej jest bezpieczna. | Przepustowość jest ograniczona przez tunel VPN lokacja lokacja.<br><br>Wymaga bramy sieci wirtualnej i urządzenia sieci VPN w sieci docelowej. | Scenariuszach, w którym chce oferują chmury wielodostępne dostawcy hostingu, gdzie dzierżawcy nie ufa siebie i ruchu muszą być szyfrowane.
+| Pojedynczy dzierżawy usługi Azure Stack, wdrożenie w sieci intranet | NAT dla ruchu wychodzącego | Lepszą przepustowość na potrzeby szybszych transferów. Prosta implementacja; Brak bramy nie jest wymagane. | Ruch nie jest zaszyfrowany; Brak izolacji i szyfrowania poza stosem. | Gdzie są równie zaufanych wszystkich dzierżaw wdrożeń w przedsiębiorstwach.<br><br>Przedsiębiorstw, które mają obwodu usługi ExpressRoute systemu Azure do platformy Azure. |
+| Wielu dzierżaw usługi Azure Stack, wdrożenie w sieci intranet | Sieci VPN typu lokacja lokacja | Ruch z sieci wirtualnej dzierżawcy do lokalizacji docelowej jest bezpieczna. | Przepustowość jest ograniczona przez tunel sieci VPN typu lokacja lokacja.<br><br>Wymaga bramy sieci wirtualnej i urządzeniem sieci VPN w sieci docelowej. | Gdy niektóre ruch dzierżawców wdrożeń w przedsiębiorstwach musi zostać zabezpieczony z innych dzierżaw. |
+| Pojedynczy dzierżawy usługi Azure Stack, wdrożenia internetowego | NAT dla ruchu wychodzącego | Lepszą przepustowość na potrzeby szybszych transferów. | Ruch nie jest zaszyfrowany; Brak izolacji i szyfrowania poza stosem. | Hosting scenariuszy, w której dzierżawa pobiera własne wdrożenia usługi Azure Stack i obwodu dedykowanego środowiska usługi Azure Stack. Na przykład usługi ExpressRoute i przełączanie etykiety wieloprotokołowym (MPLS).
+| Wielu dzierżaw usługi Azure Stack, wdrożenia internetowego | Sieci VPN typu lokacja lokacja | Ruch z sieci wirtualnej dzierżawcy do lokalizacji docelowej jest bezpieczna. | Przepustowość jest ograniczona przez tunel sieci VPN typu lokacja lokacja.<br><br>Wymaga bramy sieci wirtualnej i urządzeniem sieci VPN w sieci docelowej. | Scenariuszach, w którym chce oferty z wielodostępnej chmury dostawcy hostingu, gdzie dzierżawcy nie ufa siebie nawzajem i ruch sieciowy musi być szyfrowana.
 |  |  |  |  |  |
 
 ### <a name="using-expressroute"></a>Przy użyciu usługi ExpressRoute
 
-Możesz połączyć stosu Azure na platformie Azure za pośrednictwem [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) dla pojedynczej dzierżawy w sieci intranet i scenariuszy z wieloma dzierżawcami. Będziesz potrzebować elastycznie obwodu ExpressRoute za pośrednictwem [dostawca połączenia](https://docs.microsoft.com/azure/expressroute/expressroute-locations).
+Możesz nawiązać połączenie usługi Azure Stack platformy Azure za pośrednictwem [ExpressRoute](https://docs.microsoft.com/azure/expressroute/expressroute-introduction) dla jednej dzierżawy w sieci intranet i scenariuszy z wieloma dzierżawami. Musisz mieć aprowizowane obwód usługi ExpressRoute za pośrednictwem [dostawcy łączności](https://docs.microsoft.com/azure/expressroute/expressroute-locations).
 
-Na poniższym diagramie przedstawiono ExpressRoute dla scenariusza pojedynczej dzierżawy (gdzie "Połączenie klienta" jest obwodu ExpressRoute).
+Na poniższym diagramie przedstawiono usługi ExpressRoute dla scenariusza pojedynczej dzierżawy (gdzie "Połączenie klienta" to obwód usługi ExpressRoute).
 
 ![Diagram przedstawiający pojedynczej dzierżawy usługi ExpressRoute scenariusza](media/azure-stack-datacenter-integration/ExpressRouteSingleTenant.PNG)
 
-Na poniższym diagramie przedstawiono ExpressRoute dla scenariusza wielodostępnej.
+Na poniższym diagramie przedstawiono usługi ExpressRoute dla scenariusza z wieloma dzierżawcami.
 
-![Diagram przedstawiający wielodostępne ExpressRoute scenariusza](media/azure-stack-datacenter-integration/ExpressRouteMultiTenant.PNG)
+![Diagram przedstawiający scenariusza usługi ExpressRoute z wieloma dzierżawcami](media/azure-stack-datacenter-integration/ExpressRouteMultiTenant.PNG)
 
-## <a name="external-monitoring"></a>Monitorowania zewnętrznych
-Aby uzyskać pojedynczego widoku wszystkie alerty z urządzeń i wdrożenia stosu Azure i integrowania alerty istniejących IT usługi przepływu pracy zarządzania dla biletów, można [integracji stosu Azure z zewnętrznego datacenter monitorowanie rozwiązań](azure-stack-integrate-monitor.md).
+## <a name="external-monitoring"></a>Monitorowanie zewnętrznych
+Można uzyskać pojedynczy widok wszystkich alertów z wdrożenia usługi Azure Stack i urządzeń oraz Integruj alerty do istniejących IT service management przepływów pracy dla tworzenia biletów, można [Zintegruj usługę Azure Stack przy użyciu zewnętrznego monitorowania rozwiązańCentrumdanych](azure-stack-integrate-monitor.md).
 
-Dołączone do rozwiązania Azure stosu, host cyklu życia sprzętu jest komputera znajdującego się poza stosu Azure, który uruchamia narzędzia do zarządzania dostarczonym przez producenta OEM dla sprzętu. Można użyć tych narzędzi lub innych rozwiązań, które bezpośrednio zintegrować z istniejącymi rozwiązaniami monitorowania w centrum danych.
+Dołączone do rozwiązania usługi Azure Stack, host cyklu życia sprzętu jest komputera znajdującego się poza systemem OEM narzędzia do zarządzania udostępnionych przez dostawcę sprzętu usługi Azure Stack. Można użyć tych narzędzi ani innych rozwiązań, które integrują się bezpośrednio z istniejącymi rozwiązaniami monitorowania w centrum danych.
 
 W poniższej tabeli przedstawiono listę dostępnych opcji.
 
-| Obszar | Rozwiązanie monitorowania zewnętrznych |
+| Obszar | Zewnętrzne rozwiązania do monitorowania |
 | -- | -- |
-| Azure stos oprogramowania | [Pakiet administracyjny stosu Azure dla programu Operations Manager](https://azure.microsoft.com/blog/management-pack-for-microsoft-azure-stack-now-available/)<br>[Wtyczka Nagios](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)<br>Wywołania API opartego na interfejsie REST | 
-| Serwery fizyczne (bmc za pomocą interfejsu IPMI) | Sprzęt OEM — pakiet administracyjny programu Operations Manager dostawcy<br>Rozwiązanie dostarczonym sprzętowe przez producenta OEM<br>Dostawca sprzętu wtyczek Nagios | Obsługiwany przez producentów OEM partnera — monitorowanie rozwiązania (włączone) | 
-| Urządzenia sieciowe (SNMP) | Odnajdywanie urządzeń sieciowych programu Operations Manager<br>Rozwiązanie dostarczonym sprzętowe przez producenta OEM<br>Wtyczka przełącznika Nagios |
+| Usługa Azure Stack oprogramowania | [Usługa Azure Stack pakiet administracyjny programu Operations Manager](https://azure.microsoft.com/blog/management-pack-for-microsoft-azure-stack-now-available/)<br>[Wtyczka Nagios](https://exchange.nagios.org/directory/Plugins/Cloud/Monitoring-AzureStack-Alerts/details)<br>Wywołania interfejsu API opartego na protokole REST | 
+| Serwery fizyczne (kontrolery bmc za pośrednictwem interfejsu IPMI) | Sprzęt OEM — pakiet administracyjny programu Operations Manager dostawcy<br>Rozwiązanie udostępnionych przez dostawcę sprzętu producenta OEM<br>Dostawca sprzętu Nagios wtyczek | Obsługiwany przez producentów OEM partnera — rozwiązanie (dołączony) do monitorowania | 
+| Urządzenia sieciowe (SNMP) | Odnajdywanie urządzeń sieciowych programu Operations Manager<br>Rozwiązanie udostępnionych przez dostawcę sprzętu producenta OEM<br>Nagios przełączanie wtyczki |
 | Monitorowanie kondycji subskrypcji dzierżawcy | [Pakiet administracyjny programu System Center dla systemu Windows Azure](https://www.microsoft.com/download/details.aspx?id=50013) | 
 |  |  | 
 
 Należy uwzględnić następujące wymagania:
-- Rozwiązanie, którego używasz, musi być bez wykorzystania agentów. Nie można zainstalować agentów innych firm wewnątrz składniki stosu Azure. 
+- Rozwiązania, którego używasz, musi być bez wykorzystania agentów. Nie można zainstalować agentów firm wewnątrz składników usługi Azure Stack. 
 - Jeśli chcesz użyć programu System Center Operations Manager, Operations Manager 2012 R2 lub Operations Manager 2016 jest wymagany.
 
 ## <a name="backup-and-disaster-recovery"></a>Kopia zapasowa i odzyskiwanie po awarii
 
-Planowanie tworzenia kopii zapasowej i odzyskiwanie po awarii obejmuje planowanie zarówno podstawowej stosu Azure infrastrukturą służącą do hostowania maszyn wirtualnych IaaS i PaaS usług i aplikacji dzierżawy i danych. Należy zaplanować je oddzielnie.
+Planowanie kopii zapasowych i odzyskiwania po awarii obejmuje planowanie zarówno podstawowej usługi Azure Stack infrastrukturą służącą do hostowania maszyn wirtualnych IaaS i PaaS, usług i aplikacji dzierżawy i danych. Należy zaplanować je oddzielnie.
 
 ### <a name="protect-infrastructure-components"></a>Ochrona składników infrastruktury
 
-Możesz [kopia zapasowa Azure stosu](azure-stack-backup-back-up-azure-stack.md) składników infrastruktury dla protokołu SMB udziału można określić:
+Możesz [wykonywanie kopii zapasowych usługi Azure Stack](azure-stack-backup-back-up-azure-stack.md) składników infrastruktury dla protokołu SMB, udostępnianie, należy określić:
 
-- Będziesz potrzebować zewnętrznych udziału plików SMB na istniejącym serwerze plików z systemem Windows lub urządzenia innych firm.
-- Należy używać tego samego udziału kopii zapasowych przełączników sieciowych i sprzętowych host cyklu życia. Dostawca sprzętu OEM pomoże zawierają wskazówki dotyczące tworzenia kopii zapasowej i przywracania tych składników, są one zewnętrznego stosu Azure. Możesz teraz odpowiada za uruchamianie tworzenia kopii zapasowej przepływy pracy na podstawie zalecenia producenta OEM.
+- Potrzebna będzie zewnętrznych udziału plików SMB na istniejącym serwerze plików z systemem Windows lub urządzeń innych firm.
+- Należy użyć tego samego udziału kopii zapasowej przełączników sieciowych i sprzętu hosta cyklu życia. Z dostawcą sprzętu OEM pomoże zapewnić wskazówki dotyczące tworzenia kopii zapasowych i przywracania te składniki są one zewnętrznego do usługi Azure Stack. Jesteś odpowiedzialny za działanie kopii zapasowej przepływów pracy, oparta na zaleceniach producenta OEM.
 
-Jeśli dojdzie do utraty danych w wyniku katastrofy, możesz użyć kopii zapasowej infrastruktury ponowne umieszczanie wdrożenia danych, takich jak wdrożenia danych wejściowych oraz identyfikatorów kont usług, a certyfikat główny urzędu certyfikacji, zasobów federacyjnych (w przypadku wdrożeń rozłączona), planów, oferty, Subskrypcje, przydziały RBAC roli zasad i przypisań i kluczy tajnych magazynu kluczy.
+Jeśli dojdzie do utraty danych krytycznego, można użyć kopii zapasowej infrastruktury do reseed wdrożenia danych, takich jak wdrożenia danych wejściowych oraz identyfikatorów kont usług, certyfikat główny urzędu certyfikacji, zasobów federacyjnych (w przypadku wdrożeń o odłączony), plany, oferty, Subskrypcje, limity przydziału, przypisania zasad i rolę RBAC i wpisy tajne usługi Key Vault.
  
-### <a name="protect-tenant-applications-on-iaas-virtual-machines"></a>Ochrona aplikacji dzierżawy w przypadku maszyn wirtualnych IaaS
+### <a name="protect-tenant-applications-on-iaas-virtual-machines"></a>Ochrona aplikacji dzierżawy na maszynach wirtualnych IaaS
 
-Azure stosu nie kopii dzierżawy aplikacji oraz danych. Należy zaplanować ochrony odzyskiwania kopii zapasowych i odzyskiwaniem po awarii do obiektu docelowego zewnętrznego stosu Azure. Ochrona dzierżawy jest czynnością oparte na dzierżawy. W przypadku maszyn wirtualnych IaaS dzierżawcy mogą używać technologii gościa do ochrony plików, folderów, stanu systemu oraz danych aplikacji. Jednak jako dostawcę enterprise lub usługi, może być konieczne stanowią rozwiązanie tworzenia kopii zapasowych i odzyskiwania w tym samym centrum danych lub zewnętrznie w chmurze.
+Usługa Azure Stack nie należy wykonywać kopii zapasowej dzierżawy aplikacji i danych. Należy zaplanować kopia zapasowa i odzyskiwanie po awarii ochrony na potrzeby odzyskiwania elementu docelowego zewnętrznego do usługi Azure Stack. Ochrona dzierżawy jest czynnością oparte na dzierżawę. W przypadku maszyn wirtualnych IaaS dzierżawcy mogą używać technologii gościa do ochrony plików, folderów, danych aplikacji i stanu systemu. Jednak jako dostawca usług lub enterprise można oferować rozwiązanie kopii zapasowych i odzyskiwania w jednym centrum danych lub zewnętrznie w chmurze.
 
-Do tworzenia kopii zapasowych maszyn wirtualnych systemu Linux lub Windows IaaS, należy użyć kopii zapasowej produkty z dostępu do systemu operacyjnego gościa do ochrony pliku, folderu, stan systemu operacyjnego i danych aplikacji. Kopia zapasowa Azure, System Center Data Center Protection Manager, można użyć lub obsługiwane produkty innych firm.
+Do tworzenia kopii zapasowych maszyn wirtualnych systemu Linux lub Windows IaaS, musisz podać kopii zapasowej produktów dzięki dostępowi do systemu operacyjnego gościa do ochrony pliku, folderu, stan systemu operacyjnego i danych aplikacji. Za pomocą usługi Azure Backup, System Center Data Center Protection Manager, lub obsługiwanych produktów innych firm.
 
-Replikowanie danych w dodatkowej lokalizacji i organizowania aplikacji w tryb failover w przypadku wystąpienia awarii, można użyć usługi Azure Site Recovery lub obsługiwanych produkty innych firm. (W początkowej wersji systemów zintegrowane usługi Azure Site Recovery nie obsługuje powrót po awarii. Jednak można osiągnąć powrotu po awarii w procesie ręcznego.) Ponadto aplikacje, które obsługują macierzysty replikacji (takich jak Microsoft SQL Server) może replikować danych do innej lokalizacji, w którym jest uruchomiona aplikacja.
-
-> [!IMPORTANT]
-> W początkowej wersji systemów zintegrowane firma Microsoft będzie obsługiwać technologii ochrony, które działają na poziomie gościa maszyny wirtualnej IaaS. Nie można zainstalować agentów na serwerach infrastruktury podstawowej.
+Do replikowania danych do lokalizacji dodatkowej i organizowanie aplikacji w tryb failover w przypadku poważnej awarii, można użyć usługi Azure Site Recovery lub obsługiwanych produktów innych firm. Ponadto aplikacje, które obsługują natywnych replikacji, takich jak Microsoft SQL Server, można replikować dane do innej lokalizacji, w którym aplikacja jest uruchomiona.
 
 ## <a name="learn-more"></a>Dowiedz się więcej
 
-- Informacje o przypadki użycia, zakupu partnerami i dostawcami sprzętu OEM, zobacz [stosu Azure](https://azure.microsoft.com/overview/azure-stack/) stronę produktu.
-- Informacji o plan i dostępności geograficznie stosu Azure zintegrowanych systemów, zobacz oficjalny dokument: [stosu Azure: rozszerzenie Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
+- Aby uzyskać informacji dotyczących przypadków użycia, zakupów, partnerami i dostawcami sprzętu OEM, zobacz [usługi Azure Stack](https://azure.microsoft.com/overview/azure-stack/) stronę produktu.
+- Uzyskać informacje na temat planu i udostępnienia georegionu dla usługi Azure Stack zintegrowanych systemów, zobacz oficjalny dokument: [usługi Azure Stack: stanowi rozszerzenie platformy Azure](https://azure.microsoft.com/resources/azure-stack-an-extension-of-azure/). 
 
-## <a name="next-steps"></a>Następne kroki
-[Modele połączenia wdrażania w usłudze Azure stosu](azure-stack-connection-models.md)
+## <a name="next-steps"></a>Kolejne kroki
+[Modele połączenia wdrażania w usłudze Azure Stack](azure-stack-connection-models.md)

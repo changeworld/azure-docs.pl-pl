@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: f3cf1232861239069894a8e5fa60c911053f038d
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 41d27b9a173cc019549f1dea0c66ffcaa51fbb10
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841985"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719447"
 ---
 # <a name="azure-stack-deployment-planning-considerations"></a>Zagadnienia dotyczące planowania wdrożenie usługi Azure Stack
 Przed wdrożeniem usługi Azure Stack Development Kit (ASDK), upewnij się, że komputer hosta zestaw deweloperski spełnia wymagania opisane w tym artykule.
@@ -93,6 +93,8 @@ Aby wdrożyć usługę Azure Stack przy użyciu konta usługi Azure AD, należy 
    | Konto Microsoft z ważną subskrypcją publicznej platformy Azure |Yes |
    | Konto służbowe z ważną subskrypcją platformy Azure (Chiny) |Yes |
    | Konto służbowe z prawidłową US Government subskrypcją platformy Azure |Yes |
+
+Po wdrożeniu uprawnienia administratora globalnego usługi Azure Active Directory nie jest wymagana. Jednak niektóre operacje mogą wymagać poświadczenia administratora globalnego. Na przykład skryptu Instalatora dostawcy zasobów lub nową funkcję wymagające uprawnienia przyznawane. Możesz tymczasowo ponownie przywrócić uprawnienia administratora globalnego dla konta lub użyj konta oddzielne administratora globalnego, który jest właścicielem *domyślne subskrypcję dostawcy*.
 
 ## <a name="network"></a>Sieć
 ### <a name="switch"></a>Przełącznik

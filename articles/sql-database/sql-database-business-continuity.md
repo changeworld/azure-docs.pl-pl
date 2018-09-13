@@ -12,12 +12,12 @@ ms.workload: On Demand
 ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: ce0684f9ab06b5362ccdf25aeaff15ea668ce96c
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: c653f1f5366e7dac43f51d5daf1f0b13d93674ce
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444152"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721994"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Omówienie zagadnień dotyczących ciągłości działalności biznesowej zapewnianej przez usługę Azure SQL Database
 
@@ -101,7 +101,7 @@ Ta funkcja jest używana do ochrony przed zakłóceniami działania firmy w przy
 * Ma wysoki współczynnik zmian danych i utrata zmian z okresu jednej godziny jest niedopuszczalna.
 * Dodatkowy koszt związany z aktywną replikacją geograficzną jest niższy niż potencjalna odpowiedzialność finansowa i powiązane straty biznesowe.
 
-Po wykonaniu działania czas potrzebny do odzyskania i ilość utraconych danych zależy od tego, jak zdecydujesz się używać tych funkcji ciągłości działania w aplikacji. W rzeczywistości można użyć kombinacji kopii zapasowych bazy danych i aktywnej replikacji geograficznej w zależności od wymagań aplikacji. Dyskusję na temat zagadnień dotyczących projektowania aplikacji na potrzeby autonomicznych baz danych i pul elastycznych za pomocą tych funkcji zapewniania ciągłości działalności biznesowej zawierają tematy [Design an application for cloud disaster recovery](sql-database-designing-cloud-solutions-for-disaster-recovery.md) (Projektowanie aplikacji pod kątem odzyskiwania po awarii w chmurze) i [Elastic Pool disaster recovery strategies](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md) (Strategie odzyskiwania po awarii dotyczące pul elastycznych).
+Po wykonaniu działania czas potrzebny do odzyskania i ilość utraconych danych zależy od tego, jak zdecydujesz się używać tych funkcji ciągłości działania w aplikacji. W rzeczywistości można użyć kombinacji kopii zapasowych bazy danych i aktywnej replikacji geograficznej w zależności od wymagań aplikacji. Omówienie zagadnień dotyczących projektowania aplikacji dla autonomicznych baz danych i pul elastycznych za pomocą tych funkcji ciągłości działania, zobacz [projektowania aplikacji do odzyskiwania po awarii w chmurze](sql-database-designing-cloud-solutions-for-disaster-recovery.md) i [elastyczne Strategie odzyskiwania po awarii w puli](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).
 
 Omówienie kroków, aby odzyskać za pomocą kopii zapasowych bazy danych lub aktywnej replikacji geograficznej można znaleźć w poniższych sekcjach. Aby uzyskać szczegółowy opis kroków, w tym planowanie wymagań, kroki po odzyskiwaniu i informacji o sposobie symulacji awarii, aby wykonać odzyskiwanie po awarii, zobacz [odzyskiwanie bazy danych SQL po awarii](sql-database-disaster-recovery.md).
 
@@ -142,4 +142,4 @@ Po odzyskaniu za pomocą dowolnego mechanizmu odzyskiwania należy wykonać nast
 Czasami aplikacja musi przełączone do trybu offline z powodu zaplanowanej konserwacji, takich jak uaktualnienie aplikacji. [Zarządzanie uaktualnieniami aplikacji](sql-database-manage-application-rolling-upgrade.md) w tym artykule opisano sposób użycia aktywnej replikacji geograficznej w celu umożliwienia przeprowadzania uaktualnienia równoległych aplikacji w chmurze skrócić czas przestoju podczas uaktualnień i zapewnić ścieżkę odzyskiwania w przypadku, gdyby coś poszło źle. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dyskusję na temat zagadnień dotyczących projektowania aplikacji na potrzeby autonomicznych baz danych i pul elastycznych zawierają tematy [Design an application for cloud disaster recovery](sql-database-designing-cloud-solutions-for-disaster-recovery.md) (Projektowanie aplikacji pod kątem odzyskiwania po awarii w chmurze) i [Elastic Pool disaster recovery strategies](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md) (Strategie odzyskiwania po awarii dotyczące pul elastycznych).
+Omówienie zagadnień dotyczących projektowania aplikacji dla autonomicznych baz danych i pul elastycznych, zobacz [projektowania aplikacji do odzyskiwania po awarii w chmurze](sql-database-designing-cloud-solutions-for-disaster-recovery.md) i [Strategie odzyskiwania po awarii w puli elastycznej](sql-database-disaster-recovery-strategies-for-applications-with-elastic-pool.md).

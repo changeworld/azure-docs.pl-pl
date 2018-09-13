@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: sujayt
-ms.openlocfilehash: 43955cd516e9779200b66608270797a66565f53b
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 105c1d97a812841e82a0c364ec7dda097c0dd399
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378469"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717373"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
 
@@ -38,7 +38,7 @@ Ten artykuł zawiera podsumowanie obsługiwanych konfiguracji i składników pod
 --- | --- | ---
 **Przenoszenie magazynu między grupami zasobów** | Nieobsługiwane<br/><br/> Magazyn usługi Recovery services nie można przenosić między grupami zasobów.
 **Przenoszenie zasobów obliczeniowych i magazynu/sieci między grupami zasobów** | Nieobsługiwane.<br/><br/> Jeśli po replikuje, przenieść Maszynę wirtualną lub skojarzone składniki, takie jak storage i sieci, należy wyłączyć replikację i ponownie włączyć replikację dla maszyny Wirtualnej.
-**Replikowanie maszyn wirtualnych platformy Azure z jednej subskrypcji do innej na potrzeby odzyskiwania po awarii** | Obsługiwane w ramach tej samej dzierżawie usługi Azure Active Directory dla maszyn wirtualnych "Modelu wdrażania usługi Resource manager". Nieobsługiwane w przypadku klasycznego modelu wdrażania maszyn wirtualnych.
+**Replikowanie maszyn wirtualnych platformy Azure z jednej subskrypcji do innej na potrzeby odzyskiwania po awarii** | Obsługiwane w ramach tej samej dzierżawie usługi Azure Active Directory. Nie jest obsługiwane dla klasycznych maszyn wirtualnych.
 **Migrowanie maszyn wirtualnych między regionami w ramach obsługiwanej klastrów geograficznych (wewnątrz i między subskrypcjami)** | Obsługiwane w ramach tej samej dzierżawie usługi Azure Active Directory dla maszyn wirtualnych "Modelu wdrażania usługi Resource manager". Nieobsługiwane w przypadku klasycznego modelu wdrażania maszyn wirtualnych.
 **Migrowanie maszyn wirtualnych w tym samym regionie** | Nieobsługiwane.
 
@@ -207,7 +207,7 @@ Uwierzytelnionego serwera Proxy | Nieobsługiwane | Jeśli maszyna wirtualna kor
 Sieć VPN między lokacjami, z lokalnych (z lub bez usługi ExpressRoute)| Obsługiwane | Upewnij się, że tras zdefiniowanych przez użytkownika i sieciowymi grupami zabezpieczeń są skonfigurowane w taki sposób, ruch odzyskiwania lokacji nie jest kierowany do sieci lokalnej. Zapoznaj się [dokument ze wskazówkami dotyczącymi sieci.](site-recovery-azure-to-azure-networking-guidance.md)  
 Połączenie między sieciami Wirtualnymi | Obsługiwane | Zapoznaj się [dokument ze wskazówkami dotyczącymi sieci.](site-recovery-azure-to-azure-networking-guidance.md)  
 Punkty końcowe usługi sieci wirtualnej | Obsługiwane | Usługa Azure zapór usługi Storage dla sieci wirtualnych nie są obsługiwane. Zezwalanie na dostęp do określonych sieci wirtualnej platformy Azure dla kont magazynu pamięci podręcznej używane do przechowywania replikowanych danych nie jest obsługiwane.
-Accelerated Networking | Nieobsługiwane | Mogą być replikowane maszyny Wirtualnej z przyspieszonej sieci włączona, ale przełączenie w tryb failover maszyny Wirtualnej nie będzie Accelerated Networking włączone. Przyspieszona sieć również zostaną wyłączone dla źródłowej maszyny Wirtualnej na powrót po awarii.
+Accelerated Networking | Obsługiwane | Przyspieszona sieć musi być włączona na źródłowej maszynie Wirtualnej. [Dowiedz się więcej](azure-vm-disaster-recovery-with-accelerated-networking.md).
 
 
 ## <a name="next-steps"></a>Kolejne kroki

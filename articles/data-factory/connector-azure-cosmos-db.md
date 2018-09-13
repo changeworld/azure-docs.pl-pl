@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/28/2018
+ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: 1afd64fbd7019164f0e1f5c850f2dcd8250cdbfc
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: eb290dffd7bdd86b9776d4f30b6fd09a2a952a46
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39600340"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720025"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure Cosmos DB przy użyciu usługi Azure Data Factory
 
@@ -34,10 +34,14 @@ Kopiowanie danych z usługi Azure Cosmos DB do dowolnego obsługiwanego magazynu
 
 W szczególności ten łącznik usługi Azure Cosmos DB obsługuje:
 
-- Usługa cosmos DB [interfejsu API SQL](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction).
+- Kopiowanie danych z/do usługi Cosmos DB [interfejsu API SQL](https://docs.microsoft.com/azure/cosmos-db/documentdb-introduction).
+- Zapisywanie do usługi Cosmos DB jako INSERT lub UPSERT.
 - Importowanie/eksportowanie dokumentów JSON jako — jest lub kopiowania danych z/do tabelaryczny zestaw danych np. bazy danych SQL, pliki CSV itp. Skopiuj dokumenty w formacie — jest do i z plików JSON lub innej kolekcji usługi Cosmos DB, zobacz [dokumentów JSON Import/Export](#importexport-json-documents).
 
 Data Factory integruje się z [usługi Cosmos DB zbiorcze wykonawca biblioteki](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) aby zapewnić najlepszą wydajność, zapisywanie do usługi Cosmos DB.
+
+>[!TIP]
+>Obejrzyj [ten film wideo](https://www.youtube.com/watch?v=5-SRNiC_qOU&t=760s) który przeprowadzi kopiowanie danych z usługi Azure Blob storage do usługi Cosmos DB i opisano zagadnienia dotyczące dane wprowadzane do usługi Cosmos DB ogólnie rzecz biorąc dostrajania wydajności oprogramowania.
 
 ## <a name="getting-started"></a>Wprowadzenie
 

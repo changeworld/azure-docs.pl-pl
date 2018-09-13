@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/09/2018
 ms.author: xiwu
 ms.reviewer: douglasl
-ms.openlocfilehash: ba1fdcf64592bdfe23195e781a21d7a2db693325
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: ab5d042517716ee2b155d99803f4058772622036
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42058822"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721453"
 ---
 # <a name="sync-data-across-multiple-cloud-and-on-premises-databases-with-sql-data-sync"></a>Synchronizowanie danych w wielu bazach danych w chmurze i lokalnych z usługą SQL Data Sync
 
@@ -47,9 +47,9 @@ Grupa synchronizacji ma następujące właściwości:
 
 ## <a name="when-to-use-data-sync"></a>Kiedy należy używać synchronizacji danych
 
-Synchronizacja danych jest przydatne w sytuacjach, w którym dane muszą być przechowywane aktualne między kilka baz danych SQL Azure lub baz danych programu SQL Server. Poniżej przedstawiono przypadków głównie do celów synchronizacji danych:
+Synchronizacja danych jest przydatne w sytuacjach, w którym dane muszą być przechowywane aktualne między kilka baz danych Azure SQL lub bazy danych programu SQL Server. Poniżej przedstawiono przypadków głównie do celów synchronizacji danych:
 
--   **Synchronizacja danych hybrydowych:** z opcją synchronizacji danych, można zachować dane synchronizowane między lokalnymi bazami danych i Azure SQL Database, aby umożliwić aplikacji hybrydowych. Ta funkcja może odwołać się do klientów, którzy rozważają przejście do chmury i chcesz umieścić niektóre z aplikacji na platformie Azure.
+-   **Synchronizacja danych hybrydowych:** z opcją synchronizacji danych, można zachować dane synchronizowane między lokalnymi bazami danych i baz danych Azure SQL, aby umożliwić aplikacji hybrydowych. Ta funkcja może odwołać się do klientów, którzy rozważają przejście do chmury i chcesz umieścić niektóre z aplikacji na platformie Azure.
 
 -   **Aplikacje rozproszone:** w wielu przypadkach jest korzystne różnych obciążeń w różnych bazach danych. Na przykład jeśli masz duży produkcyjnej bazy danych, ale trzeba będzie również uruchomić raportowania lub analizy obciążenia oparte na tych danych, warto drugi bazy danych to dodatkowe obciążenie. To podejście minimalizuje wpływu na obciążenia produkcyjne. Aby zachować te dwie bazy danych synchronizacji, można użyć synchronizacji danych.
 

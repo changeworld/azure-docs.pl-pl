@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
-ms.openlocfilehash: 956cb80ddbf96f23585dd52f3dc1013c7a665113
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: fccdc4ac40878060b94d495b8895e2a128c9477c
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886314"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44716115"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurowanie kontroli dostępu opartej na rolach w akceleratora rozwiązania monitorowania zdalnego
 
@@ -134,11 +134,11 @@ Poniżej opisano sposób dodawania roli do aplikacji w usłudze Azure Active Dir
 
 ### <a name="define-a-policy-for-the-new-role"></a>Zdefiniuj zasady dla nowej roli
 
-Po można dodać roli do aplikacji w witrynie Azure portal, musisz zdefiniować zasady w [roles.json](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/pcs-auth/Services/data/policies/roles.json) dla roli, która przyznaje uprawnienia wymagane do zarządzania urządzeniami.
+Po można dodać roli do aplikacji w witrynie Azure portal, musisz zdefiniować zasady w [roles.json](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/auth/Services/data/policies/roles.json) dla roli, która przyznaje uprawnienia wymagane do zarządzania urządzeniami.
 
-1. Klonuj [uwierzytelniania i autoryzacji w mikrousługach](https://github.com/Azure/pcs-auth-dotnet) repozytorium z repozytorium GitHub na maszynie lokalnej.
+1. Klonuj [zdalnego monitorowania Mikrousług](https://github.com/Azure/remote-monitoring-services-dotnet) repozytorium z repozytorium GitHub na maszynie lokalnej.
 
-1. Edytuj **Services/data/policies/roles.json** plik, aby dodać zasady dla **ManageDevices** roli, jak pokazano w poniższym fragmencie kodu. **Identyfikator** i **roli** wartości muszą być zgodne definicji roli w manifeście aplikacji z poprzedniej sekcji. Na liście dozwolonych akcji umożliwia kogoś w **ManageDevices** roli w celu tworzenia, aktualizacji i usuwania urządzeń podłączonych do rozwiązania:
+1. Edytuj **auth/Services/data/policies/roles.json** plik, aby dodać zasady dla **ManageDevices** roli, jak pokazano w poniższym fragmencie kodu. **Identyfikator** i **roli** wartości muszą być zgodne definicji roli w manifeście aplikacji z poprzedniej sekcji. Na liście dozwolonych akcji umożliwia kogoś w **ManageDevices** roli w celu tworzenia, aktualizacji i usuwania urządzeń podłączonych do rozwiązania:
 
     ```json
     {
@@ -184,7 +184,7 @@ Po można dodać roli do aplikacji w witrynie Azure portal, musisz zdefiniować 
 
 ### <a name="how-the-web-ui-enforces-permissions"></a>Jak interfejs użytkownika sieci web wymusza uprawnienia
 
-Korzysta z interfejsu użytkownika sieci web [uwierzytelniania i autoryzacji w mikrousługach](https://github.com/Azure/pcs-auth-dotnet) Aby określić, jakie czynności użytkownik będzie mógł take i kontrolki są widoczne w interfejsie użytkownika. Na przykład, jeśli rozwiązanie jest nazywany **contoso rm4**, interfejs użytkownika sieci web umożliwia pobranie listy dozwolonych akcji dla bieżącego użytkownika, wysyłając następujące żądanie:
+Korzysta z interfejsu użytkownika sieci web [uwierzytelniania i autoryzacji w mikrousługach](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/auth) Aby określić, jakie czynności użytkownik będzie mógł take i kontrolki są widoczne w interfejsie użytkownika. Na przykład, jeśli rozwiązanie jest nazywany **contoso rm4**, interfejs użytkownika sieci web umożliwia pobranie listy dozwolonych akcji dla bieżącego użytkownika, wysyłając następujące żądanie:
 
 ```http
 http://contoso-rm4.azurewebsites.net/v1/users/current
@@ -226,7 +226,7 @@ Aby uzyskać więcej informacji, zobacz [chronione składniki](https://github.co
 
 Mikrousługi także Sprawdź uprawnienia, aby zapewnić ochronę przed nieautoryzowanym żądań interfejsu API. Kiedy mikrousługi odbiera żądania interfejsu API, dekoduje i sprawdza poprawność tokenu JWT, aby uzyskać identyfikator użytkownika i uprawnienia skojarzone z rolą użytkownika.
 
-Poniższy fragment kodu z [DevicesController.cs](https://github.com/Azure/iothub-manager-dotnet/blob/master/WebService/v1/Controllers/DevicesController.cs) w pliku [mikrousług Menedżera IoTHub](https://github.com/Azure/iothub-manager-dotnet), pokazuje, jak są wymuszane uprawnienia:
+Poniższy fragment kodu z [DevicesController.cs](https://github.com/Azure/remote-monitoring-services-dotnet/blob/master/iothub-manager/WebService/v1/Controllers/DevicesController.cs) w pliku [mikrousług Menedżera IoTHub](https://github.com/Azure/remote-monitoring-services-dotnet/tree/master/iothub-manager), pokazuje, jak są wymuszane uprawnienia:
 
 ```csharp
 [HttpDelete("{id}")]

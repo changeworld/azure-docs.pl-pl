@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: ceaa61832212093ac52225fc34db1ed7f4571a18
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 8a4b29cf8f2a5a79c68bad3631a54449d3ada09a
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380302"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717866"
 ---
 # <a name="virtual-machine-serial-console-preview"></a>Konsola szeregowa maszyny wirtualnej (wersja zapoznawcza) 
 
@@ -172,7 +172,7 @@ Problem                           |   Środki zaradcze
 :---------------------------------|:--------------------------------------------|
 Naciśnięcie wprowadź po transparent połączenia nie są wyświetlane dziennika w wierszu polecenia | Zobacz tę stronę: [Hitting wprowadź, nic nie robi](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). Może to nastąpić, jeśli używasz niestandardowej maszyny Wirtualnej, urządzenia ze wzmocnionymi zabezpieczeniami lub konfiguracji programu GRUB, powodujący systemu Linux nie można prawidłowo nawiązać portu szeregowego.
 Odpowiedź "Dostęp zabroniony" napotkano podczas uzyskiwania dostępu do konta magazynu diagnostyki rozruchu dla tej maszyny Wirtualnej. | Upewnij się, że tej diagnostyki rozruchu zapory konta. Konto magazynu diagnostyki rozruchu dostępny jest niezbędne do konsoli szeregowej funkcjonowania.
-Tekst konsoli szeregowej trwa tylko część rozmiaru ekranu (często po nim za pomocą edytora tekstów) | Jest to znany problem z rozmiarem ekranu nieznany za pośrednictwem połączenia szeregowe. Firma Microsoft zaleca instaling xterm lub niektóre podobnej użyteczności, zapewniająca polecenia "Zmień rozmiar". Uruchamianie "rozmiar" Aby rozwiązać ten problem.
+Tekst konsoli szeregowej trwa tylko część rozmiaru ekranu (często po nim za pomocą edytora tekstów) | Negocjowanie o rozmiar okna nie obsługują konsoli szeregowej ([RFC 1073](https://www.ietf.org/rfc/rfc1073.txt)), co oznacza, że nie będzie brak sygnału SIGWINCH wysłanych do zaktualizowania rozmiaru ekranu i maszyna wirtualna będzie miała żadnej znajomości rozmiar usługi terminalowe. Firma Microsoft zaleca instaling xterm lub niektóre podobnej użyteczności, zapewniająca polecenia "Zmień rozmiar". Uruchamianie "rozmiar" Aby rozwiązać ten problem.
 
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania 

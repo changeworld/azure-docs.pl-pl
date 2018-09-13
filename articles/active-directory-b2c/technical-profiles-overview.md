@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 4dc88abda0f19896b8f1ed6465fe0fc39ac81b72
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: aad6aa788e9d7c7ca2c438bdeb63e77e91e4791a
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381608"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714480"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informacje o profilach techniczne w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -37,7 +37,6 @@ Profil techniczny umożliwia tego rodzaju scenariuszy:
 - [Dostawca typu restful](restful-technical-profile.md) — wywołania interfejsu API REST usług, takich jak sprawdzanie poprawności danych wejściowych użytkownika, Wzbogacanie danych użytkownika lub integrowanie ich z aplikacji — biznesowych.
 - [SAML2](saml-technical-profile.md) -Federacji za pomocą dowolnego dostawcy tożsamości protokołu SAML.
 - [Samodzielnie określonych](self-asserted-technical-profile.md) -interakcji z użytkownikiem. Na przykład zbieranie poświadczeń użytkownika do logowania, renderowania strony tworzenia konta lub resetowania hasła.
-- [Wystawca tokenu](jwt-issuer-technical-profile.md) -wystawianie tokenu dostępu.
 - **WsFed** -Federacji za pomocą dowolnego dostawcy tożsamości protokołu WsFed. 
 - **Zarządzanie sesjami** -obsługi różnych typów sesji. 
 - **Dostawca kontekstu podróży użytkownika**

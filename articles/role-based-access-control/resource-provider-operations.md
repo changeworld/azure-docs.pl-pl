@@ -13,12 +13,12 @@ ms.workload: identity
 ms.date: 09/06/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 7e66f9a0f22103c01e947c028a5c8355cb4d0e15
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: dc362dba62e8fd41b33e10368483577d8166f300
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095576"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722337"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów w usłudze Azure Resource Manager
 
@@ -414,7 +414,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Authorization/policySetDefinitions/write | Utwórz niestandardową definicję zestawu zasad. |
 > | Akcja | Microsoft.Authorization/providerOperations/read | Pobiera operacje dla wszystkich dostawców zasobów do użycia w definicjach ról. |
 > | Akcja | Microsoft.Authorization/roleAssignments/delete | Usuwa przypisanie roli w podanym zakresie. |
-> | Akcja | Microsoft.Authorization/roleAssignments/read | Uzyskaj informacje o przypisaniu roli. |
+> | Akcja | Microsoft.Authorization/roleAssignments/read | Pobiera informacje o przypisaniu roli. |
 > | Akcja | Microsoft.Authorization/roleAssignments/write | Tworzy przypisanie roli w podanym zakresie. |
 > | Akcja | Microsoft.Authorization/roleDefinitions/delete | Usuwa określoną niestandardową definicję roli. |
 > | Akcja | Microsoft.Authorization/roleDefinitions/read | Pobiera informacje o definicji roli. |
@@ -651,7 +651,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | --- | --- | --- |
 > | Akcja | Microsoft.BingMaps/mapApis/Delete | Operacja usuwania |
 > | Akcja | Microsoft.BingMaps/mapApis/listSecrets/action | Wyświetl klucze tajne |
-> | Akcja | Microsoft.BingMaps/mapApis/listSingleSignOnToken/action | Odczyt tokenu autoryzacji dla zasobu jednokrotnego |
+> | Akcja | Microsoft.BingMaps/mapApis/listSingleSignOnToken/action | Odczyt tokenu autoryzacji logowania jednokrotnego dla zasobu |
 > | Akcja | Microsoft.BingMaps/mapApis/Read | Operacja odczytu |
 > | Akcja | Microsoft.BingMaps/mapApis/regenerateKey/action | Generuje ponownie klucz |
 > | Akcja | Microsoft.BingMaps/mapApis/Write | Operacja zapisu |
@@ -679,32 +679,32 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja | Microsoft.Cache/checknameavailability/action | Sprawdza, czy nazwa jest dostępna do użycia z usługą Redis Cache |
-> | Akcja | Microsoft.Cache/locations/operationresults/read | Pobiera wynik długotrwałej uruchomiona operacja, dla której nagłówek "Location" został wcześniej zwrócony do klienta |
-> | Akcja | Microsoft.Cache/operations/read | Wyświetla listę operacji obsługiwanych przez dostawcę "Microsoft.Cache". |
+> | Akcja | Microsoft.Cache/checknameavailability/action | Sprawdza, czy nazwa jest dostępna do użycia z nową pamięcią podręczną Redis Cache |
+> | Akcja | Microsoft.Cache/locations/operationresults/read | Pobiera wynik długotrwałej operacji, dla której nagłówek „Location” został wcześniej zwrócony do klienta |
+> | Akcja | Microsoft.Cache/operations/read | Wyświetla listę operacji obsługiwanych przez dostawcę „Microsoft.Cache”. |
 > | Akcja | Microsoft.Cache/redis/delete | Usuń całą pamięć podręczną Redis |
-> | Akcja | Microsoft.Cache/redis/export/action | Wyeksportuj dane usługi Redis do obiektów blob magazynu prefiksem w określonym formacie |
-> | Akcja | Microsoft.Cache/redis/firewallRules/delete | Usuwanie reguły zapory IP pamięci podręcznej Redis |
-> | Akcja | Microsoft.Cache/redis/firewallRules/read | Pobierz reguły zapory IP pamięci podręcznej Redis |
-> | Akcja | Microsoft.Cache/redis/firewallRules/write | Edytuj reguły zapory IP pamięci podręcznej Redis |
+> | Akcja | Microsoft.Cache/redis/export/action | Wyeksportuj dane usługi Redis do określonych prefiksem obiektów blob magazynu w podanym formacie |
+> | Akcja | Microsoft.Cache/redis/firewallRules/delete | Usuń reguły zapory IP pamięci podręcznej Redis Cache |
+> | Akcja | Microsoft.Cache/redis/firewallRules/read | Pobierz reguły zapory IP pamięci podręcznej Redis Cache |
+> | Akcja | Microsoft.Cache/redis/firewallRules/write | Edytuj reguły zapory IP pamięci podręcznej Redis Cache |
 > | Akcja | Microsoft.Cache/redis/forceReboot/action | Wymuś ponowny rozruch wystąpienia pamięci podręcznej, nawet z utratą danych. |
 > | Akcja | Microsoft.Cache/redis/import/action | Zaimportuj dane w podanym formacie z wielu obiektów blob do usługi Redis |
-> | Akcja | Microsoft.Cache/redis/linkedservers/delete | Usuń podłączony serwer z pamięci podręcznej Redis |
-> | Akcja | Microsoft.Cache/redis/linkedservers/read | Pobierz połączone serwery skojarzona z pamięcią podręczną redis. |
-> | Akcja | Microsoft.Cache/redis/linkedservers/write | Dodaj połączony serwer do pamięci podręcznej Redis |
+> | Akcja | Microsoft.Cache/redis/linkedservers/delete | Usuń podłączony serwer z usługi Redis Cache |
+> | Akcja | Microsoft.Cache/redis/linkedservers/read | Pobierz połączone serwery skojarzona z usługą Redis Cache. |
+> | Akcja | Microsoft.Cache/redis/linkedservers/write | Dodaj połączony serwer do usługi Redis Cache |
 > | Akcja | Microsoft.Cache/redis/listKeys/action | Wyświetl wartości kluczy dostępu pamięci podręcznej Redis w portalu zarządzania |
 > | Akcja | Microsoft.Cache/redis/listUpgradeNotifications/read | Lista najnowszych powiadomień o uaktualnieniach dla dzierżawy pamięci podręcznej. |
 > | Akcja | Microsoft.Cache/redis/metricDefinitions/read | Pobiera dostępne metryki pamięci podręcznej Redis |
-> | Akcja | Microsoft.Cache/redis/patchSchedules/delete | Usuń harmonogram stosowania poprawek pamięci podręcznej Redis |
-> | Akcja | Microsoft.Cache/redis/patchSchedules/read | Pobiera harmonogram stosowania poprawek pamięci podręcznej Redis |
-> | Akcja | Microsoft.Cache/redis/patchSchedules/write | Modyfikuj harmonogram stosowania poprawek pamięci podręcznej Redis |
+> | Akcja | Microsoft.Cache/redis/patchSchedules/delete | Usuń harmonogram stosowania poprawek pamięci podręcznej Redis Cache |
+> | Akcja | Microsoft.Cache/redis/patchSchedules/read | Pobiera harmonogram stosowania poprawek pamięci podręcznej Redis Cache |
+> | Akcja | Microsoft.Cache/redis/patchSchedules/write | Modyfikuj harmonogram stosowania poprawek pamięci podręcznej Redis Cache |
 > | Akcja | Microsoft.Cache/redis/read | Wyświetl ustawienia i konfigurację pamięci podręcznej Redis w portalu zarządzania |
 > | Akcja | Microsoft.Cache/redis/regenerateKey/action | Zmień wartość kluczy dostępu pamięci podręcznej Redis w portalu zarządzania |
 > | Akcja | Microsoft.Cache/redis/start/action | Uruchom wystąpienie pamięci podręcznej. |
 > | Akcja | Microsoft.Cache/redis/stop/action | Zatrzymaj wystąpienie pamięci podręcznej. |
-> | Akcja | Microsoft.Cache/redis/write | Zmodyfikuj ustawienia pamięci podręcznej Redis i konfiguracji w portalu zarządzania |
-> | Akcja | Microsoft.Cache/register/action | Rejestruje dostawcę zasobów "Microsoft.Cache" z subskrypcji |
-> | Akcja | Microsoft.Cache/unregister/action | Wyrejestrowuje dostawcę zasobów "Microsoft.Cache" z subskrypcji |
+> | Akcja | Microsoft.Cache/redis/write | Zmodyfikuj ustawienia i konfigurację pamięci podręcznej Redis w portalu zarządzania |
+> | Akcja | Microsoft.Cache/register/action | Rejestruje dostawcę zasobów „Microsoft.Cache” z subskrypcją |
+> | Akcja | Microsoft.Cache/unregister/action | Wyrejestrowuje dostawcę zasobów „Microsoft.Cache” z subskrypcją |
 
 ## <a name="microsoftcapacity"></a>Microsoft.Capacity
 
@@ -839,44 +839,44 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ClassicCompute/domainNames/loadBalancedEndpointSets/operationStatuses/read | Odczytuje stan operacji dla zestawów punktów końcowych z równoważeniem obciążenia nazw domen. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/loadBalancedEndpointSets/read | Pobierz zestawy punktów końcowych ze zrównoważonym obciążeniem. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/loadBalancedEndpointSets/write | Dodaj zestaw punktów końcowych ze zrównoważonym obciążeniem. |
-> | Akcja | Microsoft.ClassicCompute/domainNames/operationstatuses/read | Pobierz stan operacji dla nazwy domeny. |
+> | Akcja | Microsoft.ClassicCompute/domainNames/operationstatuses/read | Pobierz stan operacji nazwy domeny. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/operationStatuses/read | Odczytuje stan operacji dla rozszerzeń nazw domen. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/read | Zwraca nazwy domen dla zasobów. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/serviceCertificates/delete | Usuwa używane certyfikaty usługi. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/serviceCertificates/operationStatuses/read | Odczytuje stan operacji dla certyfikatów usługi nazw domen. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/serviceCertificates/read | Zwraca używane certyfikaty usługi. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/serviceCertificates/write | Dodaje lub modyfikuje używane certyfikaty usługi. |
-> | Akcja | Microsoft.ClassicCompute/domainNames/slots/abortMigration/action | Przerywa migrację miejsce wdrożenia. |
-> | Akcja | Microsoft.ClassicCompute/domainNames/slots/commitMigration/action | Zatwierdza migrację miejsce wdrożenia. |
+> | Akcja | Microsoft.ClassicCompute/domainNames/slots/abortMigration/action | Przerywa migrację miejsca wdrożenia. |
+> | Akcja | Microsoft.ClassicCompute/domainNames/slots/commitMigration/action | Zatwierdza migrację miejsca wdrożenia. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/delete | Usuwa dane miejsce wdrożenia. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/operationStatuses/read | Odczytuje stan operacji dla gniazd nazw domen. |
-> | Akcja | Microsoft.ClassicCompute/domainNames/slots/prepareMigration/action | Przygotowuje migrację miejsce wdrożenia. |
+> | Akcja | Microsoft.ClassicCompute/domainNames/slots/prepareMigration/action | Przygotowuje migrację miejsca wdrożenia. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/read | Pokazuje miejsca wdrożenia. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/extensionReferences/delete | Usuwa odwołanie do rozszerzenia dla roli miejsca wdrożenia. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/extensionReferences/operationStatuses/read | Odczytuje stan operacji dla odwołań rozszerzenia ról w ramach gniazd nazw domen. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/extensionReferences/read | Zwraca odwołanie do rozszerzenia dla roli miejsca wdrożenia. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/extensionReferences/write | Dodaje lub modyfikuje odwołanie do rozszerzenia dla roli miejsca wdrożenia. |
-> | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/metricdefinitions/read | Pobierz metryki definicji roli dla nazwy domeny. |
-> | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/metrics/read | Pobierz metryki roli dla nazwy domeny. |
-> | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/operationstatuses/read | Pobierz stan operacji dla roli miejsca nazwy domeny. |
+> | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/metricdefinitions/read | Pobierz definicję metryki roli dla nazwy domeny. |
+> | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/metrics/read | Pobierz metrykę roli dla nazwy domeny. |
+> | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/operationstatuses/read | Pobierz stan operacji dla roli gniazda nazwy domeny. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/providers/Microsoft.Insights/diagnosticSettings/read | Pobiera ustawienia diagnostyczne. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/providers/Microsoft.Insights/diagnosticSettings/write | Dodaje lub modyfikuje ustawienia diagnostyczne. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/providers/Microsoft.Insights/metricDefinitions/read | Pobiera definicje metryk. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/read | Pobiera rolę dla miejsca wdrożenia. |
-> | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/roleInstances/downloadremotedesktopconnectionfile/action | Pobiera plik połączenia pulpitu zdalnego dla wystąpienia roli dla roli miejsca nazwy domeny. |
+> | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/roleInstances/downloadremotedesktopconnectionfile/action | Pobiera plik połączenia pulpitu zdalnego dla wystąpienia roli w ramach roli gniazda nazwy domeny. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/roleInstances/operationStatuses/read | Pobiera stan operacji dla wystąpienia roli w ramach roli gniazda nazwy domeny. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/roleInstances/read | Pobiera wystąpienie roli. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/roleInstances/rebuild/action | Ponownie kompiluje wystąpienie roli. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/roleInstances/reimage/action | Odtwarza z obrazu wystąpienie roli. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/roleInstances/restart/action | Uruchamia ponownie wystąpienia roli. |
-> | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/skus/read | Uzyskaj sku roli miejsca wdrożenia. |
+> | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/skus/read | Pobierz jednostkę SKU roli dla miejsca wdrożenia. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/roles/write | Dodaj rolę dla miejsca wdrożenia. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/start/action | Uruchamia miejsce wdrożenia. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/state/start/write | Zmienia stan miejsca wdrożenia na Zatrzymane. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/state/stop/write | Zmienia stan miejsca wdrożenia na Uruchomione. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/stop/action | Wstrzymuje miejsce wdrożenia. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/upgradeDomain/write | Uaktualnia domenę (z przeszukaniem). |
-> | Akcja | Microsoft.ClassicCompute/domainNames/slots/validateMigration/action | Weryfikuje migrację miejsce wdrożenia. |
+> | Akcja | Microsoft.ClassicCompute/domainNames/slots/validateMigration/action | Weryfikuje migrację miejsca wdrożenia. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/slots/write | Tworzy lub aktualizuje wdrożenie. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/swap/action | Zamienia miejsce przejściowe z miejscem produkcyjnym. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/write | Dodaje lub modyfikuje nazwy domen dla zasobów. |
@@ -895,7 +895,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ClassicCompute/virtualMachines/associatedNetworkSecurityGroups/write | Dodaje sieciową grupę zabezpieczeń skojarzoną z maszyną wirtualną. |
 > | Akcja | Microsoft.ClassicCompute/virtualMachines/asyncOperations/read | Pobiera dostępne operacje asynchroniczne |
 > | Akcja | Microsoft.ClassicCompute/virtualMachines/attachDisk/action | Dołącza dysk z danymi do maszyny wirtualnej. |
-> | Akcja | Microsoft.ClassicCompute/virtualMachines/capture/action | Przechwytywanie maszyny wirtualnej. |
+> | Akcja | Microsoft.ClassicCompute/virtualMachines/capture/action | Przechwyć maszynę wirtualną. |
 > | Akcja | Microsoft.ClassicCompute/virtualMachines/delete | Usuwa maszyny wirtualne. |
 > | Akcja | Microsoft.ClassicCompute/virtualMachines/detachDisk/action | Odłącza dysk z danymi od maszyny wirtualnej. |
 > | Akcja | Microsoft.ClassicCompute/virtualMachines/diagnosticsettings/read | Pobierz ustawienia diagnostyczne maszyny wirtualnej. |
@@ -928,13 +928,13 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > [!div class="mx-tdCol2BreakAll"]
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
-> | Akcja | Microsoft.ClassicNetwork/expressroutecrossconnections/operationstatuses/read | Uzyskaj expressroute między stan operacji dla połączenia. |
-> | Akcja | Microsoft.ClassicNetwork/expressroutecrossconnections/peerings/delete | Usuń expressroute między połączenia komunikacji równorzędnej. |
-> | Akcja | Microsoft.ClassicNetwork/expressroutecrossconnections/peerings/operationstatuses/read | Uzyskaj expressroute między stan operacji dla połączenia komunikacji równorzędnej. |
-> | Akcja | Microsoft.ClassicNetwork/expressroutecrossconnections/peerings/read | Uzyskaj expressroute między połączenia komunikacji równorzędnej. |
-> | Akcja | Microsoft.ClassicNetwork/expressroutecrossconnections/peerings/write | Dodaj expressroute między połączenia komunikacji równorzędnej. |
-> | Akcja | Microsoft.ClassicNetwork/expressroutecrossconnections/read | Pobierz express route wielu połączeń. |
-> | Akcja | Microsoft.ClassicNetwork/expressroutecrossconnections/write | Dodaj expressroute obejmujące wiele połączeń. |
+> | Akcja | Microsoft.ClassicNetwork/expressroutecrossconnections/operationstatuses/read | Pobierz stan operacji połączenia krzyżowego usługi Express Route |
+> | Akcja | Microsoft.ClassicNetwork/expressroutecrossconnections/peerings/delete | Usuń komunikację równorzędną połączenia krzyżowego usługi Express Route. |
+> | Akcja | Microsoft.ClassicNetwork/expressroutecrossconnections/peerings/operationstatuses/read | Pobierz stan operacji komunikacji równorzędnej połączenia krzyżowego usługi Express Route |
+> | Akcja | Microsoft.ClassicNetwork/expressroutecrossconnections/peerings/read | Pobierz komunikację równorzędną połączenia krzyżowego usługi Express Route. |
+> | Akcja | Microsoft.ClassicNetwork/expressroutecrossconnections/peerings/write | Dodaj komunikację równorzędną połączenia krzyżowego usługi Express Route. |
+> | Akcja | Microsoft.ClassicNetwork/expressroutecrossconnections/read | Pobierz połączenia krzyżowe usługi Express Route. |
+> | Akcja | Microsoft.ClassicNetwork/expressroutecrossconnections/write | Dodaj połączenia krzyżowe usługi Express Route. |
 > | Akcja | Microsoft.ClassicNetwork/gatewaySupportedDevices/read | Pobiera listę obsługiwanych urządzeń. |
 > | Akcja | Microsoft.ClassicNetwork/networkSecurityGroups/delete | Usuwa sieciową grupę zabezpieczeń. |
 > | Akcja | Microsoft.ClassicNetwork/networkSecurityGroups/operationStatuses/read | Odczytuje stan operacji dla grupy zabezpieczeń sieci. |
@@ -947,7 +947,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ClassicNetwork/networkSecurityGroups/securityRules/read | Pobiera regułę zabezpieczeń. |
 > | Akcja | Microsoft.ClassicNetwork/networkSecurityGroups/securityRules/write | Dodaje lub aktualizuje regułę zabezpieczeń. |
 > | Akcja | Microsoft.ClassicNetwork/networkSecurityGroups/write | Dodaje nową sieciową grupę zabezpieczeń. |
-> | Akcja | Microsoft.ClassicNetwork/operations/read | Pobierz operacje klasycznej sieci. |
+> | Akcja | Microsoft.ClassicNetwork/operations/read | Pobierz operacje sieci klasycznej. |
 > | Akcja | Microsoft.ClassicNetwork/quotas/read | Pobiera przydział dla subskrypcji. |
 > | Akcja | Microsoft.ClassicNetwork/register/action | Zarejestruj się w usłudze Classic Network |
 > | Akcja | Microsoft.ClassicNetwork/reservedIps/delete | Usuwa zastrzeżony adres IP. |
@@ -4455,7 +4455,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Sql/managedInstances/delete | Usuwa istniejącego wystąpienia zarządzanego. |
 > | Akcja | Microsoft.Sql/managedInstances/encryptionProtector/read | Zwraca listę funkcji ochrony szyfrowania serwera lub pobiera właściwości dla określonego serwera funkcja ochrony szyfrowania. |
 > | Akcja | Microsoft.Sql/managedInstances/encryptionProtector/write | Aktualizowanie właściwości dla określonego funkcja ochrony szyfrowania serwera. |
-> | Akcja | Microsoft.Sql/managedInstances/keys/delete | Usuwa istniejący klucz wystąpienia zarządzanego Azure SQL. |
+> | Akcja | Microsoft.Sql/managedInstances/keys/delete | Usuwa istniejący klucz wystąpienia zarządzanego Azure SQL Database. |
 > | Akcja | Microsoft.Sql/managedInstances/keys/read | Zwraca listę wystąpienia zarządzanego kluczy lub pobiera właściwości dla klucza określonego wystąpienia zarządzanego. |
 > | Akcja | Microsoft.Sql/managedInstances/keys/write | Tworzy klucz z określonymi parametrami lub aktualizuje właściwości bądź tagi dla klucza określonego wystąpienia zarządzanego. |
 > | Akcja | Microsoft.Sql/managedInstances/metricDefinitions/read | Pobierz definicje metryk wystąpienia zarządzanego |

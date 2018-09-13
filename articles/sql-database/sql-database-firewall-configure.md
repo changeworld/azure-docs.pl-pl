@@ -3,20 +3,20 @@ title: Reguły zapory usługi Azure SQL Database i Data Warehouse | Dokumentacja
 description: Dowiedz się, jak skonfigurować bazy danych SQL i zapory SQL Data Warehouse przy użyciu reguł zapory na poziomie serwera, aby zarządzać dostępem i konfigurowanie reguł zapory na poziomie bazy danych SQL Database.
 keywords: Zapora bazy danych serwera
 services: sql-database
-author: CarlRabeler
+author: VanMSFT
 manager: craigg
 ms.service: sql-database
 ms.prod_service: sql-database, sql-data-warehouse
 ms.custom: security
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.author: carlrab
-ms.openlocfilehash: 51b7a42e5b08c0fb40b3c9407d6da345db494214
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.author: vanto
+ms.openlocfilehash: 118911687326bfa938c7276337377e3d3cb66bf2
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057251"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715401"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-firewall-rules"></a>Reguły zapory usługi Azure SQL Database i SQL Data Warehouse 
 

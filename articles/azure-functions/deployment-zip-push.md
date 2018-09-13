@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/12/2018
 ms.author: glenga
-ms.openlocfilehash: d7396ddb94017048247050726f83b0302e946633
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 03cb9384beba1afcb97a765824e63e79ca34aa62
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347124"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717222"
 ---
 # <a name="zip-deployment-for-azure-functions"></a>Wdrażanie pliku ZIP dla usługi Azure Functions
 
@@ -89,9 +89,6 @@ Podczas korzystania z wiersza polecenia platformy Azure na komputerze lokalnym `
 ## <a name="run-functions-from-the-deployment-package"></a>Uruchamianie funkcji z pakietu wdrożenia
 
 Możesz również uruchamiać swoje funkcje bezpośrednio z pliku pakietu wdrażania. Ta metoda pominie krok wdrażania kopiowania plików z pakietu do `wwwroot` katalogu aplikacji funkcji. Zamiast tego pliku pakietu jest instalowane przez środowisko uruchomieniowe usługi Functions i zawartość `wwwroot` katalogu stają się tylko do odczytu.  
-
-> [!NOTE]
-> Możliwość uruchamiania aplikacji funkcji z pakietu wdrożenia jest w wersji zapoznawczej.
 
 Wdrożenie zip współpracuje z tej funkcji, które można włączyć, konfigurując dla ustawienia aplikacji funkcji `WEBSITE_RUN_FROM_PACKAGE` wartości `1`. Aby uzyskać więcej informacji, zobacz [uruchamiać swoje funkcje na podstawie pliku pakietu wdrażania](run-functions-from-deployment-package.md).
 

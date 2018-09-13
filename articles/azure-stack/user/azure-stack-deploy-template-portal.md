@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/12/2018
 ms.author: sethm
 ms.reviewer: ''
-ms.openlocfilehash: 931c3d8beb9f2ed12228c74f09f84bbdee1798b8
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: b2f4fbca2dcbdd537302746c7b6109e467ea31d7
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42061681"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720229"
 ---
 # <a name="deploy-templates-using-the-azure-stack-portal"></a>Wdrażanie szablonów przy użyciu portalu Azure Stack
 
@@ -30,7 +30,7 @@ Portal służy do wdrażania szablonów usługi Azure Resource Manager do usług
 
 ## <a name="to-deploy-a-template"></a>Aby wdrożyć szablon
 
-1. Zaloguj się do portalu, wybierz opcję **New**, a następnie wybierz pozycję **niestandardowe**.
+1. Zaloguj się do portalu, wybierz opcję **+ Utwórz zasób**, a następnie wybierz pozycję **niestandardowe**.
 2. Wybierz **wdrożenie szablonu**.
 3. Wybierz **Edytuj szablon**, a następnie wklej kod JSON szablonu do okna kodu. Wybierz pozycję **Zapisz**.
 4. Wybierz **Edytuj parametry**, podaj wartości parametrów, które są wyświetlane, a następnie wybierz **OK**.

@@ -1,6 +1,6 @@
 ---
-title: Odbieranie zdarzeń z siatki zdarzeń Azure do punktu końcowego HTTP
-description: Opisuje sposób weryfikacji punktu końcowego HTTP, a następnie odbierają i deserializować zdarzenia z usługi Azure Event siatki
+title: Odbieranie zdarzeń z usługi Azure Event Grid w punkcie końcowym HTTP
+description: Opisuje sposób weryfikacji punktu końcowego HTTP, a następnie odbierania i wykonać deserializacji zdarzenia z usługi Azure Event Grid
 services: event-grid
 author: banisadr
 manager: darosa
@@ -8,29 +8,29 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: babanisa
-ms.openlocfilehash: 3f55abf9be382a040d7b5d4111ec689929b36918
-ms.sourcegitcommit: 3017211a7d51efd6cd87e8210ee13d57585c7e3b
+ms.openlocfilehash: 1ff0cf9d2733d7ebb6e739ce44da6442ffc26c1c
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34823473"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35649856"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Odbieranie zdarzeń w punkcie końcowym HTTP
 
-W tym artykule opisano sposób [weryfikacji punktu końcowego HTTP](security-authentication.md#webhook-event-delivery) odbieranie zdarzeń z subskrypcji zdarzeń i otrzymywanie i deserializować zdarzenia. W tym artykule używa funkcji platformy Azure dla celów demonstracyjnych, jednak zastosować te same pojęcia niezależnie od tego, gdzie jest hostowana aplikacja.
+W tym artykule opisano sposób [weryfikacji punktu końcowego HTTP](security-authentication.md#webhook-event-delivery) odbieranie zdarzeń z subskrypcji zdarzeń odbierania i wykonać deserializacji zdarzenia. W tym artykule używa funkcji platformy Azure w celach demonstracyjnych, jednak zastosować te same pojęcia, niezależnie od tego, gdzie aplikacja jest obsługiwana.
 
 > [!NOTE]
-> Jest **silnie** zalecane używanie [wyzwalacz siatki zdarzeń](../azure-functions/functions-bindings-event-grid.md) podczas wyzwalania funkcji platformy Azure z siatki zdarzeń. Użycie ogólnego elementu WebHook wyzwalacza w tym miejscu jest demonstrative.
+> Jest **silnie** zaleca się używanie [wyzwalacza usługi Event Grid](../azure-functions/functions-bindings-event-grid.md) podczas wyzwalania funkcji platformy Azure przy użyciu usługi Event Grid. Użycie ogólnego elementu WebHook wyzwalacz w tym miejscu w celach pokazowych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Konieczne będzie aplikacji funkcji z [HTTP wyzwalane — funkcja](../azure-functions/functions-create-generic-webhook-triggered-function.md)
+* Konieczne będzie aplikacji funkcji przy użyciu [funkcji wyzwalanej przez HTTP](../azure-functions/functions-create-generic-webhook-triggered-function.md)
 
 ## <a name="add-dependencies"></a>Dodaj zależności
 
-Jeśli tworzysz .NET, [Dodawanie zależności](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) do funkcji dla `Microsoft.Azure.EventGrid` [pakietu Nuget](https://www.nuget.org/packages/Microsoft.Azure.EventGrid). Zestawy SDK dla innych języków są dostępne za pośrednictwem [publikowanie zestawów SDK](./sdk-overview.md#data-plane-sdks) odwołania. Te pakiety zawierać modeli dla typów natywnych zdarzeń, takich jak `EventGridEvent`, `StorageBlobCreatedEventData`, i `EventHubCaptureFileCreatedEventData`.
+Jeśli tworzysz na platformie .NET, [dodać zależność](../azure-functions/functions-reference-csharp.md#referencing-custom-assemblies) do funkcji dla `Microsoft.Azure.EventGrid` [pakietu Nuget](https://www.nuget.org/packages/Microsoft.Azure.EventGrid). Zestawy SDK dla innych języków są dostępne za pośrednictwem [publikowania zestawów SDK](./sdk-overview.md#data-plane-sdks) odwołania. Te pakiety zawierają modele dla typów macierzystych zdarzeń, takie jak `EventGridEvent`, `StorageBlobCreatedEventData`, i `EventHubCaptureFileCreatedEventData`.
 
-Kliknij łącze "Wyświetl pliki" w funkcji Azure (prawe okienko większości w portalu Azure functions), a następnie utwórz plik o nazwie pliku project.json. Dodaj następującą zawartość do `project.json` plik i zapisać go:
+Kliknij link "Wyświetl pliki" w funkcji platformy Azure (większość po prawej w portalu usługi Azure functions), a następnie utwórz plik o nazwie pliku project.json. Dodaj następującą zawartość do `project.json` plik i zapisz go:
 
  ```json
 {
@@ -44,15 +44,15 @@ Kliknij łącze "Wyświetl pliki" w funkcji Azure (prawe okienko większości w 
 }
 ```
 
-![Dodany pakiet NuGet](./media/receive-events/add-dependencies.png)
+![Dodano Pakiet NuGet](./media/receive-events/add-dependencies.png)
 
-## <a name="endpoint-validation"></a>Sprawdzanie poprawności punktu końcowego
+## <a name="endpoint-validation"></a>Weryfikacja punktu końcowego
 
-Pierwszą rzeczą, którą chcesz wykonać jest obsługa `Microsoft.EventGrid.SubscriptionValidationEvent` zdarzenia. Za każdym razem, gdy ktoś subskrybuje zdarzenia siatki zdarzeń wysyła zdarzenie sprawdzania poprawności do punktu końcowego z `validationCode` w ładunku danych. Punkt końcowy jest wymagany do echo tej w treści odpowiedzi na [okazać się punkt końcowy jest prawidłowy i należące do Ciebie](security-authentication.md#webhook-event-delivery). Jeśli używasz [wyzwalacz siatki zdarzeń](../azure-functions/functions-bindings-event-grid.md) zamiast elementu WebHook wyzwoleniu funkcja weryfikacji punktu końcowego jest już obsługiwane. Jeśli używasz usługi interfejsu API innych firm (takich jak [Zapier](https://zapier.com) lub [IFTTT](https://ifttt.com/)), nie można programowo wyświetlać kodu walidacji. Dla tych usług można ręcznie zweryfikować subskrypcji przy użyciu sprawdzania poprawności adresu URL, który są wysyłane w przypadku sprawdzania poprawności subskrypcji. Skopiuj ten adres URL w `validationUrl` właściwości i wysyłania GET żądania przy użyciu klienta REST lub przeglądarki sieci web.
+Pierwszą rzeczą, co chcesz zrobić to obsługi `Microsoft.EventGrid.SubscriptionValidationEvent` zdarzenia. Za każdym razem, gdy ktoś subskrybuje zdarzenie usługi Event Grid wysyła zdarzenie sprawdzania poprawności do punktu końcowego z `validationCode` w ładunku danych. Punkt końcowy jest wymagany do echo, w tym w treści odpowiedzi do [udowodnić, że punkt końcowy jest prawidłowy i należące do Ciebie](security-authentication.md#webhook-event-delivery). Jeśli używasz [wyzwalacza usługi Event Grid](../azure-functions/functions-bindings-event-grid.md) zamiast funkcji wyzwalanej przez element WebHook, weryfikacja punktu końcowego jest obsługiwane dla Ciebie. Jeśli używasz usługi interfejsu API innych firm (np. [Zapier](https://zapier.com) lub [IFTTT](https://ifttt.com/)), nie może być możliwość programowego echo kod sprawdzania poprawności. Dla tych usług można ręcznie zweryfikować subskrypcji przy użyciu sprawdzania poprawności adresu URL, który będzie wysyłany w subskrypcji zdarzeń sprawdzania poprawności. Skopiuj ten adres URL w `validationUrl` właściwości i Wyślij GET żądania za pomocą klienta REST lub przeglądarki sieci web.
 
-Weryfikowanie ręczne jest w wersji zapoznawczej. Aby jej użyć, musisz zainstalować [rozszerzenie usługi Event Grid](/cli/azure/azure-cli-extensions-list) dla [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-azure-cli). Instalację można wykonać za pomocą polecenia `az extension add --name eventgrid`. Jeśli korzystasz z interfejsu API REST, upewnij się, że używasz wersji `api-version=2018-05-01-preview`.
+Weryfikowanie ręczne jest w wersji zapoznawczej. Aby jej użyć, musisz zainstalować [rozszerzenie usługi Event Grid](/cli/azure/azure-cli-extensions-list) dla [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Instalację można wykonać za pomocą polecenia `az extension add --name eventgrid`. Jeśli korzystasz z interfejsu API REST, upewnij się, że używasz wersji `api-version=2018-05-01-preview`.
 
-Aby programowo wyświetlić kodu walidacji, należy użyć poniższego kodu (możesz również znaleźć powiązane przykłady w https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/tree/master/EventGridConsumer):
+Użyj poniższego kodu (możesz również znaleźć powiązane przykłady, aby programowo wyświetlić kod sprawdzania poprawności, https://github.com/Azure-Samples/event-grid-dotnet-publish-consume-events/tree/master/EventGridConsumer):
 
 ```csharp
 using System.Net;
@@ -114,9 +114,9 @@ module.exports = function (context, req) {
 };
 ```
 
-### <a name="test-validation-response"></a>Test weryfikacji odpowiedzi
+### <a name="test-validation-response"></a>Testowanie poprawności odpowiedzi
 
-Testowanie funkcji odpowiedzi weryfikacji wklejając zdarzenie próbkowania w polu testu dla funkcji:
+Testowanie funkcji odpowiedzi weryfikacji przez wklejenie zdarzenie próbkowania w polu testu dla tej funkcji:
 
 ```json
 [{
@@ -133,13 +133,13 @@ Testowanie funkcji odpowiedzi weryfikacji wklejając zdarzenie próbkowania w po
 }]
 ```
 
-Gdy klikniesz przycisk Uruchom, dane wyjściowe powinny być 200 OK i `{"ValidationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` w treści:
+Po kliknięciu przycisku Uruchom danych wyjściowych powinien być równy 200 OK i `{"ValidationResponse":"512d38b6-c7b8-40c8-89fe-f46f9e9622b6"}` w treści:
 
 ![Sprawdzanie poprawności odpowiedzi](./media/receive-events/validation-response.png)
 
-## <a name="handle-blob-storage-events"></a>Obsługa zdarzeń magazynu obiektów Blob
+## <a name="handle-blob-storage-events"></a>Obsługa zdarzeń usługi Blob storage
 
-Teraz załóżmy rozszerzenia funkcji obsługi `Microsoft.Storage.BlobCreated`:
+Teraz sklonujemy rozszerzenia funkcji obsługi `Microsoft.Storage.BlobCreated`:
 
 ```cs
 using System.Net;
@@ -215,9 +215,9 @@ module.exports = function (context, req) {
 
 ```
 
-### <a name="test-blob-created-event-handling"></a>Obsługi zdarzeń utworzony obiekt Blob testu
+### <a name="test-blob-created-event-handling"></a>Obsługa zdarzeń utworzony obiekt Blob testu
 
-Testowanie nowej funkcji funkcji poprzez umieszczenie [zdarzenia magazynu obiektów Blob](./event-schema-blob-storage.md#example-event) w polu testu i uruchomiona:
+Przetestuj nowe funkcje, funkcji, umieszczając [zdarzenia magazynu obiektów Blob](./event-schema-blob-storage.md#example-event) pole testu i uruchomiona:
 
 ```json
 [{
@@ -245,17 +245,17 @@ Testowanie nowej funkcji funkcji poprzez umieszczenie [zdarzenia magazynu obiekt
 }]
 ```
 
-Powinny pojawić się dane wyjściowe adresu URL obiektu blob w dzienniku funkcji:
+Powinny zostać wyświetlone dane wyjściowe adres URL obiektu blob w dzienniku funkcji:
 
-![Dziennik wyjścia](./media/receive-events/blob-event-response.png)
+![Dane wyjściowe dziennika](./media/receive-events/blob-event-response.png)
 
-Można również przeprowadzić test, tworząc konto magazynu obiektów Blob lub ogólnego przeznaczenia V2 konta magazynu (GPv2), [subskrypcji Dodawanie i zdarzenia](../storage/blobs/storage-blob-event-quickstart.md)i ustawienie punkt końcowy adres URL funkcji:
+Możesz również przetestować przez utworzenie konta usługi Blob storage lub ogólnego przeznaczenia w wersji 2 konta magazynu (GPv2), [dodawania i tą subskrypcją zdarzeń](../storage/blobs/storage-blob-event-quickstart.md)i ustawienie punktu końcowego adresu URL funkcji:
 
 ![Adres URL funkcji](./media/receive-events/function-url.png)
 
 ## <a name="handle-custom-events"></a>Obsługa zdarzeń niestandardowych
 
-Ponadto umożliwia raz rozszerzenia funkcji, dzięki czemu można również obsługiwać zdarzeń niestandardowych. Dodaj znacznik wyboru wydarzenia `Contoso.Items.ItemReceived`. Końcowe kod powinien wyglądać podobnie jak:
+Ponadto umożliwia raz rozszerzenia funkcji, dzięki czemu może również obsługiwać zdarzenia niestandardowe. Dodaj sprawdzanie wydarzenia `Contoso.Items.ItemReceived`. Końcowe kod powinien wyglądać podobnie jak:
 
 ```cs
 using System.Net;
@@ -359,7 +359,7 @@ module.exports = function (context, req) {
 
 ### <a name="test-custom-event-handling"></a>Obsługa zdarzeń niestandardowych testu
 
-Na koniec testu, że funkcja uszkodzonego teraz może obsłużyć danego typu zdarzenia niestandardowego:
+Na koniec testu, że rozszerzonych funkcji obsługuje teraz zdarzenia niestandardowego typu:
 
 ```json
 [{
@@ -377,10 +377,10 @@ Na koniec testu, że funkcja uszkodzonego teraz może obsłużyć danego typu zd
 }]
 ```
 
-Może także przetestować tę funkcję na żywo przez [wysyłania niestandardowych zdarzeń z CURL z portalu](./custom-event-quickstart-portal.md) lub [zamieszczając do niestandardowego tematu](./post-to-custom-topic.md) przy użyciu usługi lub aplikacji, która umożliwia OPUBLIKOWANIE punktu końcowego, takie jak [Postman](https://www.getpostman.com/). Tworzenie niestandardowego tematu i subskrypcji zdarzeń z punktem końcowym Ustaw jako adres URL funkcji.
+Możesz również przetestować tę funkcję na żywo przez [wysłanie zdarzenia niestandardowego za pomocą programu CURL z poziomu portalu](./custom-event-quickstart-portal.md) lub [wysłanie postu do tematu niestandardowego](./post-to-custom-topic.md) korzystającego z dowolnej usługi lub aplikacji, która może UMIESZCZAĆ do punktu końcowego, takie jak [Postman](https://www.getpostman.com/). Utwórz niestandardowe tematy i subskrypcje zdarzeń z punktem końcowym, ustawić jako adres URL funkcji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Eksploruj [administracyjny siatki zdarzeń platformy Azure i publikowanie zestawów SDK](./sdk-overview.md)
-* Dowiedz się, jak [post do niestandardowego tematu](./post-to-custom-topic.md)
-* Wypróbuj jedną z szczegółowe samouczki siatki zdarzeń i funkcje, takie jak [zmiana rozmiaru obrazów przekazany do magazynu obiektów Blob](resize-images-on-storage-blob-upload-event.md)
+* Zapoznaj się z [usługi Azure Event Grid Management i publikować zestawy SDK](./sdk-overview.md)
+* Dowiedz się, jak [wpis do tematu niestandardowego](./post-to-custom-topic.md)
+* Wypróbuj jedną z szczegółowe samouczki usługi Event Grid i funkcje, takie jak [zmiana rozmiaru obrazów przekazanych do magazynu obiektów Blob](resize-images-on-storage-blob-upload-event.md)

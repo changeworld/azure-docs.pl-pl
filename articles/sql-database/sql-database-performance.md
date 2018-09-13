@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: 8a458af27bd517be7c3ce0b5ad30c6d575d494c0
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 5d739787d5b268ddfcf5bb9e6494c3cba6b3cdc2
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522445"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718784"
 ---
 # <a name="monitor-and-improve-performance"></a>Monitorowania i poprawiania wydajności
 Usługa Azure SQL Database znajduje potencjalne problemy w bazie danych i zaleca akcje, które może poprawić wydajność przetwarzania obciążenia, zapewniając inteligentne akcje dostrajania i zalecenia.

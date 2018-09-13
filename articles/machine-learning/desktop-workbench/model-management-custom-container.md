@@ -1,33 +1,33 @@
 ---
-title: Dostosowanie obrazu kontener używany do wdrażania modeli uczenia Maszynowego Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób dostosowywania obrazu kontener dla modeli uczenia maszynowego Azure
+title: Dostosowanie obrazu kontenera, używany do wdrażania modeli uczenia Maszynowego platformy Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób dostosowywania obrazu kontenera na potrzeby modeli usługi Azure Machine Learning
 services: machine-learning
 author: tedway
 ms.author: tedway
 manager: mwinkle
 ms.reviewer: mldocs, raymondl
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 3/26/2018
-ms.openlocfilehash: 715b4c1f02622b015e4118ac38edd9fe6a051ed7
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 7879cf1891e071da1a0ad3ddfc30f90fc7be8ca5
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834713"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35649988"
 ---
-# <a name="customize-the-container-image-used-for-azure-ml-models"></a>Dostosowanie obrazu kontenera używana dla modeli uczenia Maszynowego Azure
+# <a name="customize-the-container-image-used-for-azure-ml-models"></a>Dostosowanie obrazu kontenera, używany dla modeli uczenia Maszynowego Azure
 
-W tym artykule opisano sposób dostosowywania obrazu kontener dla modeli uczenia maszynowego Azure.  Azure ML Workbench używa kontenerów machine learning modele wdrażania. Modele są wdrażane wraz z ich zależności i uczenie Maszynowe Azure tworzy obraz z modelu, zależności i skojarzone pliki.
+W tym artykule opisano sposób dostosowywania obrazu kontenera na potrzeby modeli usługi Azure Machine Learning.  Usługa Azure ML Workbench używa kontenerów do wdrażania modeli uczenia maszynowego. Modele są wdrażane wraz z ich zależnościami i uczenie Maszynowe Azure tworzy obraz z modelu, zależności i skojarzone pliki.
 
-## <a name="how-to-customize-the-docker-image"></a>Sposobu dostosowywania obrazu Docker
-Dostosowanie obrazu Docker, która wdraża uczenie Maszynowe Azure przy użyciu:
+## <a name="how-to-customize-the-docker-image"></a>Jak dostosować obraz platformy Docker
+Dostosowanie obrazu platformy Docker, wdrażającą uczenie Maszynowe Azure przy użyciu:
 
-1. A `dependencies.yml` plik: Zarządzanie zależności, które mogą zostać zainstalowane z [PyPi]( https://pypi.python.org/pypi), można użyć `conda_dependencies.yml` plik z projektu Workbench lub Utwórz swój własny. Jest to metoda zaleca się instalowanie zależności Python, które mogą zostać zainstalowane narzędzia pip.
+1. A `dependencies.yml` pliku: Zarządzanie zależnościami, które są możliwe do zainstalowania z [PyPi]( https://pypi.python.org/pypi), możesz użyć `conda_dependencies.yml` plik z projektu aplikacji Workbench, lub Utwórz swoje własne. To podejście zaleca się instalowania zależności języka Python, które są możliwe do zainstalowania narzędzia pip.
 
-   Przykład polecenia interfejsu wiersza polecenia:
+   Przykład interfejsu wiersza polecenia:
    ```azurecli
    az ml image create -n <my Image Name> --manifest-id <my Manifest ID> -c amlconfig\conda_dependencies.yml
    ```
@@ -45,20 +45,20 @@ Dostosowanie obrazu Docker, która wdraża uczenie Maszynowe Azure przy użyciu:
         - matplotlib
    ```
         
-2. Plik kroki Docker: przy użyciu tej opcji, możesz dostosować wdrożonego obrazu, instalując zależności, których nie można zainstalować z PyPi. 
+2. Docker kroki pliku: użycie tej opcji, możesz dostosować wdrożonym obrazie, instalując zależności, których nie można zainstalować z PyPi. 
 
-   Plik powinny obejmować kroki instalacji Docker, takich jak plik DockerFile. Poniższe polecenia są dozwolone w pliku: 
+   Plik powinien zawierać kroki instalacji platformy Docker, takich jak plik DockerFile. Następujące polecenia są dozwolone w pliku: 
 
     URUCHOM ENV, ARG, ETYKIETY, UDOSTĘPNIANIE
 
-   Przykład polecenia interfejsu wiersza polecenia:
+   Przykład interfejsu wiersza polecenia:
    ```azurecli
    az ml image create -n <my Image Name> --manifest-id <my Manifest ID> --docker-file <myDockerStepsFileName> 
    ```
 
-   Obraz, manifestu i usługi poleceniach flagi plik docker.
+   Obraz, Manifest i usługa poleceniach akceptowana jest wartość flagi pliku platformy docker.
 
-   Przykładowy plik kroki Docker:
+   Przykładowy plik kroki platformy Docker:
    ```docker
    # Install tools required to build the project
    RUN apt-get update && apt-get install -y git libxml2-dev
@@ -67,7 +67,7 @@ Dostosowanie obrazu Docker, która wdraża uczenie Maszynowe Azure przy użyciu:
    ```
 
 > [!NOTE]
-> Obraz podstawowy dla kontenerów uczenie Maszynowe Azure Ubuntu i nie można zmienić. Określ inny obraz podstawowy, zostaną zignorowane.
+> Obraz podstawowy dla kontenerów z usługi uczenie Maszynowe Azure jest Ubuntu i nie można jej zmienić. Jeśli określisz inny obraz podstawowy, zostaną zignorowane.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz, gdy został dostosowany obraz kontenera, można wdrożyć klaster do użytku na dużą skalę.  Aby uzyskać więcej informacji na temat konfigurowania klastra dla wdrożenia usługi sieci web, zobacz [konfiguracji zarządzania modelu](deployment-setup-configuration.md). 
+Teraz, gdy został dostosowany obraz kontenera, można wdrożyć klaster do użycia na dużą skalę.  Aby uzyskać więcej informacji na temat konfigurowania klastra dla wdrożenia usługi internetowej, zobacz [konfiguracji zarządzania w modelu](deployment-setup-configuration.md). 

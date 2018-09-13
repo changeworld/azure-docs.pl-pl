@@ -1,6 +1,6 @@
 ---
-title: Interfejsu wiersza polecenia 2.0 umożliwia tworzenie aplikacji usługi Azure AD i skonfigurować go, aby uzyskać dostępu do interfejsu API usługi Azure Media Services | Dokumentacja firmy Microsoft
-description: W tym temacie pokazano, jak używać do tworzenia aplikacji usługi Azure AD i skonfigurować go, aby uzyskać dostępu do interfejsu API usługi Azure Media Services 2.0 interfejsu wiersza polecenia.
+title: Użyj wiersza polecenia platformy Azure, aby utworzyć aplikację usługi Azure AD i skonfigurować go do dostępu do interfejsu API usługi Azure Media Services | Dokumentacja firmy Microsoft
+description: W tym temacie pokazano, jak utworzyć aplikację usługi Azure AD i skonfigurować go do dostępu do interfejsu API usługi Azure Media Services za pomocą wiersza polecenia platformy Azure.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -13,32 +13,32 @@ ms.devlang: na
 ms.topic: article
 ms.date: 06/17/2017
 ms.author: juliako
-ms.openlocfilehash: 7685be97213f0b298499d474c0a6a772ca608fb2
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: fcd0ea10bd39f9e7252e114e8d6401a4fe0ecadb
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33788179"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35929751"
 ---
-# <a name="use-cli-20-to-create-an-aad-app-and-configure-it-to-access-azure-media-services-api"></a>Użyj 2.0 interfejsu wiersza polecenia, aby utworzyć aplikację AAD i skonfigurować go, aby uzyskać dostępu do interfejsu API usługi Azure Media Services
+# <a name="use-azure-cli-to-create-an-aad-app-and-configure-it-to-access-azure-media-services-api"></a>Użyj wiersza polecenia platformy Azure, aby utworzyć aplikację usługi AAD i skonfigurować go do dostępu do interfejsu API usługi Azure Media Services
 
-W tym temacie przedstawiono sposób użycia 2.0 interfejsu wiersza polecenia, aby utworzyć aplikację usługi Azure Active Directory (Azure AD) i nazwy głównej usługi dostępu do zasobów usługi Azure Media Services. 
+W tym temacie dowiesz się, jak utworzyć aplikację usługi Azure Active Directory (Azure AD) i jednostki usługi dostęp do zasobów usługi Azure Media Services za pomocą wiersza polecenia platformy Azure. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Konto platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Bezpłatna wersja próbna systemu Azure](https://azure.microsoft.com/pricing/free-trial/). 
-- Konto usługi Media Services. Aby uzyskać więcej informacji, zobacz [utworzyć konto usługi Azure Media Services przy użyciu portalu Azure](media-services-portal-create-account.md).
+- Konto usługi Media Services. Aby uzyskać więcej informacji, zobacz [Tworzenie konta usługi Azure Media Services przy użyciu witryny Azure portal](media-services-portal-create-account.md).
 
-## <a name="use-the-azure-cloud-shell"></a>Użyj powłoki chmury Azure
+## <a name="use-the-azure-cloud-shell"></a>Użyj usługi Azure Cloud Shell
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Uruchom powłokę chmury w górnym okienku nawigacji portalu.
+2. Uruchomienie usługi Cloud Shell z okienka nawigacji górnej części portalu.
 
     ![Cloud Shell](./media/media-services-cli-create-and-configure-aad-app/media-services-cli-create-and-configure-aad-app01.png) 
 
-Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Cloud powłoki](../../cloud-shell/overview.md).
+Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Cloud Shell](../../cloud-shell/overview.md).
 
-## <a name="create-an-azure-ad-app-and-configure-access-to-the-media-account-with-cli-20"></a>Utwórz aplikację usługi Azure AD i konfigurowanie dostępu do konta usługi media 2.0 interfejsu wiersza polecenia
+## <a name="create-an-azure-ad-app-and-configure-access-to-the-media-account-with-azure-cli"></a>Tworzenie aplikacji usługi Azure AD i konfigurowanie dostępu do konta multimediów za pomocą wiersza polecenia platformy Azure
  
 ```azurecli
 az login
@@ -52,18 +52,18 @@ Na przykład:
 az role assignment create --assignee a3e068fa-f739-44e5-ba4d-ad57866e25a1 --role Contributor --scope /subscriptions/0b65e280-7917-4874-9fed-1307f2615ea2/resourceGroups/Default-AzureBatch-SouthCentralUS/providers/microsoft.media/mediaservices/sbbash
 ```
 
-W tym przykładzie **zakres** jest kontem usług ścieżka pełna zasobu multimediów. Jednak **zakres** może być dowolnym poziomie.
+W tym przykładzie **zakres** to ścieżka zasobu pełny dla nośnika konta usług. Jednak **zakres** może być na dowolnym poziomie.
 
 Może to być na przykład jeden z następujących poziomów:
  
 * **Subskrypcji** poziom.
 * **Grupy zasobów** poziom.
-* **Zasobów** poziom (na przykład konto nośnika).
+* **Zasobów** poziom (na przykład konto usługi Media).
 
-Aby uzyskać więcej informacji, zobacz [Tworzenie nazwy głównej usługi platformy Azure z 2.0 interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)
+Aby uzyskać więcej informacji, zobacz [Tworzenie jednostki usługi platformy Azure przy użyciu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli)
 
 Zobacz też [Manage Role-Based kontroli dostępu przy użyciu interfejsu wiersza polecenia platformy Azure](../../role-based-access-control/role-assignments-cli.md). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Rozpoczynanie pracy z [przekazywanie plików do konta](media-services-portal-upload-files.md).
+Rozpoczynanie pracy z usługą [przekazywania plików na koncie](media-services-portal-upload-files.md).

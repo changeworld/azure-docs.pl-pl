@@ -1,31 +1,31 @@
 ---
-title: Łączenie z Azure rozwiązania Cosmos bazy danych jako źródła danych w konsoli usługi Azure Machine Learning Workbench | Dokumentacja firmy Microsoft
-description: Ten dokument zawiera przykładowy na łączenie z bazy danych rozwiązania Cosmos Azure za pomocą usługi Azure Machine Learning Workbench
+title: Łączenie z usługą Azure Cosmos DB jako źródła danych w usłudze Azure Machine Learning Workbench | Dokumentacja firmy Microsoft
+description: Ten dokument zawiera przykład o tym, jak połączyć się z usługi Azure Cosmos DB za pomocą usługi Azure Machine Learning Workbench
 services: machine-learning
 author: cforbe
 ms.author: cforbe
 manager: mwinkle
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 09/11/2017
-ms.openlocfilehash: 20e23f41310b90c62eacb7279ea3da0eec376683
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 2d9562582a94b7c7aac5b972a7ef57b84eb9aa9e
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830694"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35650635"
 ---
-# <a name="connecting-to-azure-cosmos-db-as-a-data-source"></a>Łączenie z bazy danych rozwiązania Cosmos Azure jako źródła danych
-Ten artykuł zawiera python próbki umożliwia łączenie z bazą danych rozwiązania Cosmos w konsoli usługi Azure Machine Learning Workbench.
+# <a name="connecting-to-azure-cosmos-db-as-a-data-source"></a>Łączenie z usługą Azure Cosmos DB jako źródła danych
+Ten artykuł zawiera python próbki pozwala na łączenie z usługą Cosmos DB w aplikacji Azure Machine Learning Workbench.
 
-## <a name="load-azure-cosmos-db-data-into-data-preparation"></a>Ładowanie danych z bazy danych Azure rozwiązania Cosmos do przygotowywania danych
+## <a name="load-azure-cosmos-db-data-into-data-preparation"></a>Ładowanie danych do usługi Azure Cosmos DB do przygotowywania danych
 
-Utwórz nowy przepływ danych opartych na skryptach, a następnie użyj następującego skryptu do ładowania danych z bazy danych usługi Azure rozwiązania Cosmos. 
+Utwórz nowy przepływ danych opartych na skryptach, a następnie użyj następującego skryptu, aby załadować dane z usługi Azure Cosmos DB. 
 
 ```python
 import pydocumentdb
@@ -54,5 +54,5 @@ docs = client.ReadDocuments(coll['_self'])
 df = pd.DataFrame(list(docs))
 ```
 
-## <a name="other-data-source-connections"></a>Inne połączeń ze źródłem danych
-Inne przykłady można odczytać [przykład dodatkowe źródła danych połączenia](data-prep-appendix8-sample-source-connections-python.md)
+## <a name="other-data-source-connections"></a>Inne połączenia ze źródłami danych
+Inne przykłady można znaleźć [przykładzie dodatkowe źródła danych połączeń](data-prep-appendix8-sample-source-connections-python.md)

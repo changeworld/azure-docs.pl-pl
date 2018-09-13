@@ -1,6 +1,6 @@
 ---
 title: Analiza użycia za pomocą usługi Azure Application Insights | Dokumentacja firmy Microsoft
-description: Dowiedz się, użytkownicy i ich działania z aplikacją.
+description: Dowiedz się, użytkownicy i co robią z aplikacją.
 services: application-insights
 documentationcenter: ''
 author: mrbullwinkle
@@ -9,97 +9,98 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 10/10/2017
 ms.author: mbullwin
-ms.openlocfilehash: 79f4f77f08653c40591137268b87dc2feeb0acf6
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 1217083980355c69fa51d7a6983c71295684f5b1
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35649748"
 ---
 # <a name="usage-analysis-with-application-insights"></a>Analiza użycia za pomocą usługi Application Insights
 
-Funkcje sieci web lub aplikacji mobilnej są najbardziej popularnych? Czy użytkownicy osiągnąć cele związane z aplikacją? Czy one usunąć w szczególności, i zwracają później?  [Azure Application Insights](app-insights-overview.md) pomaga uzyskać zaawansowane wgląd w sposób użytkownicy korzystają z aplikacji. Za każdym razem, gdy aktualizacji aplikacji, można ocenić, jak działa dla użytkowników. Z tym wiedzy możesz wprowadzić decyzje dotyczące Twojej dalej programistycznych opartych na danych.
+Które funkcje aplikacji mobilnej lub sieci web, na których są najbardziej popularne? Czy użytkownicy osiągnąć cele związane z Twoją aplikacją? Czy rezygnują w szczególności punktach i są one później powrócić?  [Usługa Azure Application Insights](app-insights-overview.md) pomaga uzyskać pełen wgląd w jaki sposób użytkownicy używają Twojej aplikacji. Za każdym razem, gdy aktualizujesz aplikację, możesz ocenić, jak dobrze działa w przypadku użytkowników. Za pomocą tej wiedzy ułatwia decyzje dotyczące następnego cykle rozwojowe w oparciu o dane.
 
-## <a name="send-telemetry-from-your-app"></a>Wysłać dane telemetryczne z aplikacji
+## <a name="send-telemetry-from-your-app"></a>Wysyłanie danych telemetrycznych z Twojej aplikacji
 
-Najlepsze środowisko są uzyskiwane przez zainstalowanie usługi Application Insights, zarówno w kodzie serwera aplikacji, jak i na stronach sieci web. Składniki klienta i serwera aplikacji wysłać dane telemetryczne, wróć do portalu Azure do analizy.
+Aby uzyskiwać najlepsze wyniki są uzyskiwane przez zainstalowanie usługi Application Insights, zarówno w kodzie serwera aplikacji, jak i na stronach sieci web. Składniki klienta i serwera aplikacji wysyłają dane telemetryczne do portalu Azure w celu analizy.
 
-1. **Kod serwera:** zainstalować moduł odpowiednie dla Twojej [ASP.NET](app-insights-asp-net.md), [Azure](app-insights-azure.md), [Java](app-insights-java-get-started.md), [Node.js](app-insights-nodejs.md), lub [innych](app-insights-platforms.md) aplikacji.
+1. **Kod serwera:** zainstalować moduł odpowiednie dla Twojego [ASP.NET](app-insights-asp-net.md), [Azure](app-insights-azure.md), [Java](app-insights-java-get-started.md), [Node.js](app-insights-nodejs.md), lub [innych](app-insights-platforms.md) aplikacji.
 
-    * *Nie chcesz zainstalować kod serwera? Po prostu [tworzenie zasobów Azure Application Insights](app-insights-create-new-resource.md).*
+    * *Nie chcesz zainstalować kod serwera? Po prostu [Utwórz zasób usługi Azure Application Insights](app-insights-create-new-resource.md).*
 
-2. **Kod strony sieci Web:** Otwórz [portalu Azure](https://portal.azure.com), otwórz zasobu usługi Application Insights dla aplikacji, a następnie **wprowadzenie > Monitorowanie i diagnozowanie po stronie klienta**. 
+2. **Kodu strony sieci Web:** Otwórz [witryny Azure portal](https://portal.azure.com)otwórz zasób usługi Application Insights dla aplikacji, a następnie otwórz **wprowadzenie > Monitorowanie i diagnozowanie po stronie klienta**. 
 
-    ![Skopiuj skrypt do Nagłówek strony wzorcowej sieci web.](./media/app-insights-usage-overview/02-monitor-web-page.png)
+    ![Skopiuj skrypt do głowy wzorcowej strony sieci web.](./media/app-insights-usage-overview/02-monitor-web-page.png)
 
-3. **Kod aplikacji mobilnej:** Center zestawu SDK aplikacji umożliwia zbieranie zdarzeń z aplikacji, a następnie wysyła kopie tych zdarzeń do usługi Application Insights do analizy przez [czynności przedstawione w tym przewodniku](app-insights-mobile-center-quickstart.md).
+3. **Kod aplikacji mobilnej:** Użyj zestawu SDK Centrum aplikacji, aby zbierać zdarzenia z aplikacji, a następnie wysłać kopii tych zdarzeń do usługi Application Insights do analizy przez [wykonaj czynności przedstawione w tym przewodniku](app-insights-mobile-center-quickstart.md).
 
-4. **Pobierz dane telemetryczne:** uruchomić projekt w trybie debugowania na kilka minut, a następnie sprawdź wyniki w bloku omówienie w usłudze Application Insights.
+4. **Pobierz dane telemetryczne:** uruchamianie projektu w trybie debugowania przez kilka minut, a następnie sprawdź wyniki w bloku przeglądu w usłudze Application Insights.
 
-    Publikowanie aplikacji w celu monitorowania wydajności aplikacji i dowiedzieć się, co robią użytkownicy z aplikacją.
+    Opublikuj aplikację w celu monitorowania wydajności aplikacji i dowiedzieć się, co użytkownicy robią z aplikacją.
 
-## <a name="include-user-and-session-id-in-your-telemetry"></a>Uwzględnia Identyfikatora użytkownika i sesji w obrębie telemetrii
-Aby śledzić użytkowników w czasie, usługi Application Insights wymaga do ich identyfikowania. Narzędzie zdarzenia jest tylko narzędzie użycia, które nie wymagają Identyfikatora użytkownika lub identyfikator sesji.
+## <a name="include-user-and-session-id-in-your-telemetry"></a>Dodać użytkowników i sesji identyfikator telemetrii
+Aby śledzić użytkowników wraz z upływem czasu, usługa Application Insights wymaga sposób umożliwiający ich zidentyfikowanie. Narzędzie zdarzeń jest jedynym narzędziem użycia, które nie wymagają Identyfikatora użytkownika lub identyfikator sesji.
 
-Rozpocznij wysyłanie użytkownika i identyfikatory sesji przy użyciu [ten proces](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context).
+Rozpocznij wysyłanie użytkowników i identyfikatorów sesji przy użyciu [ten proces](https://docs.microsoft.com/azure/application-insights/app-insights-usage-send-user-context).
 
-## <a name="explore-usage-demographics-and-statistics"></a>Eksploruj demograficznych użycia oraz statystyki
-Dowiedz się, gdy użytkownicy korzystają z aplikacji, jakie stron one jest najbardziej zainteresowani, gdzie znajdują się użytkownicy, jakie przeglądarek i systemów operacyjnych korzystają. 
+## <a name="explore-usage-demographics-and-statistics"></a>Eksploruj dane demograficzne użycia i statystyk
+Dowiedz się, gdy użytkownicy używają Twojej aplikacji, które strony są najbardziej interesują, gdzie są Twoi użytkownicy, jakie przeglądarek i systemów operacyjnych używają. 
 
-Raporty użytkowników i sesji filtrować dane według stron lub zdarzeń niestandardowych, a segment je za pomocą właściwości, takie jak lokalizacja, środowisko i strony. Można także dodać własne filtry.
+Raporty użytkowników i sesji filtrowania danych, stron lub zdarzeń niestandardowych i podzielić je za pomocą właściwości, takie jak lokalizacja, środowiska i strony. Można również dodać własne filtry.
 
 ![Użytkownicy](./media/app-insights-usage-overview/users.png)  
 
-Szczegółowe informacje, z prawej strony punktu interesujących wzorców w zestawie danych.  
+Szczegółowe informacje po prawej stronie punktu interesujących wzorców w zestawie danych.  
 
-* **Użytkowników** raport liczby unikatowych użytkowników, które uzyskują dostęp do stron w ramach Twojej wybranych okresów. W przypadku aplikacji sieci web użytkownicy są liczone przy użyciu plików cookie. Jeśli ktoś uzyskuje dostęp do witryny za pomocą różnych przeglądarkach lub komputerów klienckich, lub czyści ich plików cookie, a następnie będzie można zliczane więcej niż raz.
-* **Sesji** raport zlicza sesje użytkowników, które uzyskują dostęp do witryny. Sesja jest okres aktywności przez użytkownika, został przerwany przez okres aktywności ponad pół godziny.
+* **Użytkowników** raport Zlicza liczby unikatowych użytkowników uzyskujących dostęp do stron sieci w ramach Twojej wybrany czas. W przypadku aplikacji sieci web użytkownicy są liczone za pomocą plików cookie. Jeśli ktoś uzyskuje dostęp do witryny przy użyciu innej przeglądarki lub komputerów klienckich lub czyści ich pliki cookie, następnie one będą zliczane więcej niż jeden raz.
+* **Sesje** raport zlicza liczbę sesji użytkowników, uzyskujących dostęp do witryny. Sesja jest okres aktywności przez użytkownika został przerwany przez okres bezczynności ponad pół godziny.
 
-[Więcej informacji na temat narzędzia użytkownikami, sesjami i zdarzenia](app-insights-usage-segmentation.md)  
+[Więcej informacji na temat narzędzia Użytkownicy, sesje i zdarzenia](app-insights-usage-segmentation.md)  
 
 ## <a name="page-views"></a>Wyświetlenia strony
 
-W bloku użycia kliknij za pośrednictwem kafelkiem wyświetleń strony, aby uzyskać podział najpopularniejszych stron:
+W bloku użycia kliknij Kafelek wyświetleń stron, aby uzyskać podział najpopularniejszych stron:
 
-![W bloku Przegląd kliknij wykres widoków strony](./media/app-insights-usage-overview/05-games.png)
+![Z poziomu bloku Przegląd kliknij wykres wyświetleń strony](./media/app-insights-usage-overview/05-games.png)
 
-W powyższym przykładzie jest gry witryny sieci web. Wykresy firma Microsoft może natychmiast zobacz:
+W powyższym przykładzie pochodzi z witryny sieci web gry. Z wykresów natychmiast widoczne:
 
-* Użycie nie ulepszona w zeszłym tygodniu. Może być powinniśmy pomyśleć o optymalizacji dla aparatów wyszukiwania?
-* Tenisa jest najbardziej popularnym strona gier. Ta funkcja pozwala skupić się na dalszych poprawek do tej strony.
-* Średnio odwiedzin strony tenisa około trzy razy w tygodniu. (Istnieją sesje około trzy razy więcej niż użytkowników.)
-* Większość użytkowników w witrynie w tygodniu pracy USA, a w godzinach pracy. Być może należy udostępniamy przycisk "szybkie Ukryj" na stronie sieci web.
-* [Adnotacje](app-insights-annotations.md) na wykresie Pokaż, gdy nowe wersje witryny sieci Web zostały wdrożone. Brak najnowszych wdrożeń ma zauważalnego wpływu na sposób użycia.
+* Obciążenie nie zostało ulepszone w ostatnim tygodniu. Firma Microsoft może pomyśleć o optymalizacji dla aparatów wyszukiwania?
+* Tenisa jest najbardziej popularnych strona gier. Skupmy się na dalsze ulepszenia do tej strony.
+* Średnio użytkowników stronę tenisa około trzy razy w tygodniu. (Ma sesji około trzy razy więcej niż użytkowników).
+* Większość użytkowników w witrynie tygodniu pracy Stanów Zjednoczonych i w godzinach pracy. Prawdopodobnie należy oferujemy przycisku "Ukryj szybkiego" na stronie sieci web.
+* [Adnotacje](app-insights-annotations.md) na wykresie pokazać, kiedy zostały wdrożone nowe wersje witryny sieci Web. Brak ostatnich wdrożeń ma zauważalnego wpływu na obciążenie.
 
-Co zrobić, jeśli chcesz zbadać ruch do witryny bardziej szczegółowo, takich jak dzielenie według właściwości niestandardowej, wysyłanych w jego dane telemetryczne wyświetleń strony witryny?
+Co zrobić, jeśli chcesz zbadać ruch do swojej witryny bardziej szczegółowo, takich jak dzielenie przez właściwość niestandardową, którą witryny wysyła w jej danych telemetrycznych widoku strony?
 
-1. Otwórz **zdarzenia** narzędzia w menu zasobu usługi Application Insights. To narzędzie umożliwia analizowanie, ile strony widoków i zdarzeń niestandardowych, które zostały wysłane z aplikacji, w oparciu o różne opcje filtrowania, cohorting i segmentacji.
-2. Na liście rozwijanej "Kto używane" Wybierz "Dowolny widok strony".
-3. Na liście rozwijanej "Podział według" Wybierz właściwość, według której będzie dzielony Twoje dane telemetryczne wyświetleń strony.
+1. Otwórz **zdarzenia** narzędzia w menu zasobów usługi Application Insights. To narzędzie umożliwia analizowanie, liczby wyświetleń stron i zdarzenia niestandardowe, które zostały wysłane z aplikacji, w oparciu o różne opcje filtrowania, cohorting i segmentacji.
+2. Na liście rozwijanej "Kto korzystał" Wybierz "Dowolny widok strony".
+3. Na liście rozwijanej "Podziel wg" Wybierz właściwości, według których mają być podziału danych telemetrycznych widoku strony.
 
-## <a name="retention---how-many-users-come-back"></a>Przechowywania - wróć ilu użytkowników?
+## <a name="retention---how-many-users-come-back"></a>Przechowywanie — ilu użytkowników możesz wrócić?
 
-Przechowywania pomaga zrozumieć, jak często użytkownicy powrócić do używać aplikacji w oparciu stado użytkowników, którzy wykonać akcję biznesowych w przedziale czasu. 
+Przechowywanie pomaga zrozumieć, jak często użytkownicy wraca do używania aplikacji w oparciu o kohorty użytkowników, którzy będą wykonywane niektóre akcje biznesowych w przedziale czasowym. 
 
-- Zrozumienie, jakie określone funkcje, że użytkownicy przejdzie ponownie więcej niż inne 
-- Na podstawie danych użytkownika rzeczywistych hipotez formularza 
-- Określić, czy przechowywania jest problem w programie 
+- Zrozumienie, jakie określonych funkcji spowodować, że użytkownicy są ponownie więcej niż inne 
+- Hipotezy formularza na podstawie rzeczywistego użytkownika danych 
+- Ustal, czy przechowywania jest problem z produktu 
 
 ![Przechowywanie](./media/app-insights-usage-overview/retention.png) 
 
-Formanty przechowywania u góry, umożliwiają definiowanie określonych zdarzeń i zakres czasu, aby obliczyć przechowywania. Wykres w środku zapewnia wizualną reprezentację ogólny procent przechowywania przez podany zakres czasu. Wykres w dolnej reprezentuje indywidualne przechowywania w danym okresie. Taki poziom szczegółowości pozwala zrozumieć, co robią użytkownicy i co może mieć wpływ na użytkowników zwracająca na bardziej szczegółowy poziom szczegółowości.  
+Formanty przechowywania na górze umożliwiają definiowanie określonych zdarzeń i zakres czasu, aby obliczyć przechowywania. Wykresu w środkowej części oferuje wizualną reprezentację ogólny procent przechowywania przez określony zakres czasu. Wykres u dołu reprezentuje poszczególne przechowywania w danym okresie czasu. Taki poziom szczegółowości pozwala zrozumieć, co robią użytkownicy i co może mieć wpływ na użytkowników zwracanych w bardziej szczegółowy poziom szczegółowości.  
 
-[Więcej informacji na temat narzędzia przechowywania](app-insights-usage-retention.md)
+[Więcej informacji na temat narzędzia przechowywanie](app-insights-usage-retention.md)
 
 ## <a name="custom-business-events"></a>Zdarzenia niestandardowe biznesowe
 
-Aby uzyskać przejrzysty użytkowników czy z aplikacją, jest przydatne do wstawiania wierszy kodu do dziennika zdarzeń niestandardowych. Zdarzenia te można śledzić żadnych czynności użytkownika szczegółowe akcje, takie jak kliknięcie określonego przycisków, aby bardziej znaczących zdarzenia biznesowe, takie jak dokonywania zakupu lub zastosowanie gier. 
+Aby zrozumieć co użytkownicy robią aplikacji, jest przydatne wstawić wiersze kodu do rejestrowania zdarzeń niestandardowych. Zdarzenia te można śledzić żadnych użytkownika szczegółowe akcje, takie jak kliknięcie określonego przycisków bardziej znaczące zdarzeń biznesowych, takich jak dokonaniem zakupu lub winning grę. 
 
-Chociaż w niektórych przypadkach wyświetleń strony może reprezentować przydatne zdarzeń, nie jest PRAWDA ogólnie. Użytkownik może otworzyć stronę produktu bez zakupu produktu. 
+Chociaż w niektórych przypadkach, wyświetleń stron może reprezentować przydatne zdarzeń, nie jest wartość true, ogólnie rzecz biorąc. Użytkownik może otworzyć stronę produktu bez kupowania produktu. 
 
-Zdarzenia firmy można wykresu postępu użytkowników za pośrednictwem witryny. Można sprawdzić ich preferencje dotyczące różnych opcjach i gdzie one usunąć out lub ma trudności. Z tej wiedzy można podejmowania świadomych decyzji o priorytetów w rozwoju listę prac.
+Ze zdarzeniami firmy mogą wykresu postępu użytkowników za pośrednictwem swojej witryny. Można sprawdzić swoje preferencje dotyczące różnych opcji i w przypadku, gdy ich porzucić out lub ma trudności. Za pomocą tej wiedzy ułatwia świadomych decyzji dotyczących priorytety w swojej zaległości rozwoju.
 
 Zdarzenia mogą być rejestrowane po stronie klienta aplikacji:
 
@@ -119,27 +120,27 @@ Lub po stronie serwera:
     tc.TrackEvent("CompletedPurchase");
 ```
 
-Wartości właściwości można dołączyć do tych zdarzeń, dzięki czemu można filtrować lub podzielić zdarzenia inspekcji w portalu. Ponadto standardowy zestaw właściwości jest dołączany do każdego zdarzenia, takie jak identyfikator użytkownika anonimowego, co pozwala na śledzenie sekwencję działań użytkownika.
+Wartości właściwości może dołączać do tych zdarzeń, tak, aby filtrować lub podzielić zdarzenia inspekcji w portalu. Ponadto program standardowy zestaw właściwości jest dołączany do każdego zdarzenia, takie jak identyfikator użytkownika anonimowego, co pozwala na śledzenie sekwencji działań użytkownika.
 
-Dowiedz się więcej o [zdarzeń niestandardowych](app-insights-api-custom-events-metrics.md#trackevent) i [właściwości](app-insights-api-custom-events-metrics.md#properties).
+Dowiedz się więcej o [zdarzenia niestandardowe](app-insights-api-custom-events-metrics.md#trackevent) i [właściwości](app-insights-api-custom-events-metrics.md#properties).
 
 ### <a name="slice-and-dice-events"></a>Zdarzenia metod selekcji i projekcji
 
-W menu Narzędzia użytkownikami, sesjami i zdarzenia możesz można kątami zdarzeń niestandardowych przez użytkownika, nazwę zdarzenia i właściwości.
+W narzędziach użytkownicy, sesje i zdarzenia użytkownik może kątami niestandardowe zdarzenia według użytkownika, Nazwa zdarzenia i właściwości.
 ![Użytkownicy](./media/app-insights-usage-overview/users.png)  
   
-## <a name="design-the-telemetry-with-the-app"></a>Projekt telemetrii w aplikacji
+## <a name="design-the-telemetry-with-the-app"></a>Projekt danych telemetrycznych z aplikacji
 
-Podczas projektowania każdej funkcji aplikacji, należy wziąć pod uwagę, jak zamierzasz oceny sukcesu jej z użytkownikami. Zdecyduj, jakie zdarzenia biznesowe, które trzeba zarejestrować i kod wywołuje śledzenia dla tych zdarzeń w swojej aplikacji od początku.
+Podczas projektowania każdej funkcji aplikacji, należy wziąć pod uwagę, jak ma być mierzony jej sukces z użytkownikami. Zdecyduj, jakie zdarzenia biznesowe, które trzeba zarejestrować i kodu, śledzenia wywołań dla tych zdarzeń w swojej aplikacji od samego początku.
 
 ## <a name="a--b-testing"></a>A | Testowanie B
-Jeśli nie wiesz, który wariant funkcji więcej powiedzie się, zwolnij ich wprowadzania każdego dostępne dla różnych użytkowników. Mierzony sukces każdego z nich, a następnie przesuń do ujednoliconego wersji.
+Jeśli nie wiesz, który wariant funkcji będzie łatwiejsza, zwolnij obu z nich, dzięki czemu każdy dostępne dla różnych użytkowników. Ma być mierzony sukces każdego z nich, a następnie przesuń do ujednoliconego wersji.
 
-Dla tej metody możesz dołączyć wartości różnych właściwości wszystkie dane telemetryczne wysyłany przez poszczególnych wersji aplikacji. Możesz to zrobić przez definiowanie właściwości w active TelemetryContext. Te właściwości domyślne są dodawane do każdej telemetrii komunikat, który wysyła aplikacji — nie tylko komunikaty niestandardowe, ale także standardowe telemetrii.
+Tej techniki wartości różnych właściwości dołączyć się do wszystkich danych telemetrycznych wysyłanych przez każdą wersję aplikacji. Możesz tworzyć, definiując właściwości w active TelemetryContext. Te właściwości domyślne są dodawane do każdego komunikaty telemetryczne wysyłający aplikacji — nie tylko komunikaty niestandardowe, ale także standardowa telemetria.
 
-W portalu usługi Application Insights filtrowania i podziału danych w wartości właściwości w taki sposób, aby porównać różne wersje.
+W portalu Application Insights filtrować i podzielić dane według wartości właściwości, tak aby porównywać różne wersje.
 
-Aby to zrobić, [Konfigurowanie inicjatora telemetrii](app-insights-api-filtering-sampling.md##add-properties-itelemetryinitializer):
+Aby to zrobić, [skonfigurować inicjator telemetrii](app-insights-api-filtering-sampling.md##add-properties-itelemetryinitializer):
 
 ```csharp
 
@@ -154,7 +155,7 @@ Aby to zrobić, [Konfigurowanie inicjatora telemetrii](app-insights-api-filterin
     }
 ```
 
-W inicjatorze aplikacji sieci web, takich jak Global.asax.cs:
+W inicjatorze aplikacji sieci web takich jak Global.asax.cs:
 
 ```csharp
 
@@ -166,7 +167,7 @@ W inicjatorze aplikacji sieci web, takich jak Global.asax.cs:
     }
 ```
 
-Wszystkie nowe TelemetryClients automatycznie dodają podaną wartość właściwości. Zdarzenia telemetrii poszczególnych można zastąpić wartości domyślne.
+Wszystkie nowe TelemetryClients automatyczne dodanie wartości właściwości, które określisz. Zdarzenia telemetrii mogą zastępować wartości domyślne.
 
 ## <a name="next-steps"></a>Kolejne kroki
    - [Użytkownicy, sesje, zdarzenia](app-insights-usage-segmentation.md)
@@ -174,4 +175,4 @@ Wszystkie nowe TelemetryClients automatycznie dodają podaną wartość właści
    - [Przechowywanie](app-insights-usage-retention.md)
    - [User Flows (Przepływy użytkowników)](app-insights-usage-flows.md)
    - [Skoroszyty](app-insights-usage-workbooks.md)
-   - [Dodaj kontekstu użytkownika](app-insights-usage-send-user-context.md)
+   - [Dodawanie kontekstu użytkownika](app-insights-usage-send-user-context.md)

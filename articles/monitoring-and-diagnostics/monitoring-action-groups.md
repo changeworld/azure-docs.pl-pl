@@ -5,15 +5,15 @@ author: dkamstra
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 06/1/2018
+ms.date: 09/12/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 441469e24de5324fb5bed40c75f9a6b26f85bcc5
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: 6163a099894a823614355f71a3e1af4a6a9026ec
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44325060"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717679"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Tworzenie grup i zarządzanie nimi akcji w witrynie Azure portal
 ## <a name="overview"></a>Przegląd ##
@@ -33,9 +33,9 @@ Aby uzyskać informacje na temat konfigurowania grup akcji przy użyciu szablon�
 1. W [portal](https://portal.azure.com), wybierz opcję **Monitor**. **Monitor** bloku konsoliduje wszystkie ustawienia monitorowania i danych w jednym widoku.
 
     ![Usługa "Monitor"](./media/monitoring-action-groups/home-monitor.png)
-1. W **ustawienia** zaznacz **grup akcji**.
+1. Wybierz **alerty** polecenie **Zarządzanie grupami działań**.
 
-    ![Na karcie "Grupy akcji"](./media/monitoring-action-groups/action-groups-blade.png)
+    ![Zarządzanie przycisk grupy akcji](./media/monitoring-action-groups/manage-action-groups.png)
 1. Wybierz **Dodaj grupę akcji**, a następnie wypełnij pola.
 
     ![Polecenie "Dodaj grupę akcji"](./media/monitoring-action-groups/add-action-group.png)
@@ -97,6 +97,17 @@ Aby uzyskać informacje na temat konfigurowania grup akcji przy użyciu szablon�
 <dt>Element Webhook</dt>
 <dd>Może mieć maksymalnie 10 Akcje elementu Webhook w grupy akcji
 <dd>Logika ponawiania próby — limit czasu dla odpowiedzi to 10 sekund. Wywołanie elementu webhook zostanie ponowiona maksymalnie 2 godziny po następujące kody stanu HTTP są zwracane: 408, 429, 503, 504 lub punkt końcowy HTTP nie odpowiada. Pierwszym ponowieniem próby odbywa się po 10 sekundach. Drugi i ostatniego ponownych prób odbywa się po 100 sekund.</dd>
+<dd>Zakresy adresów IP źródła
+<ul>
+    <li>13.106.57.181</li>
+    <li>13.106.54.3</li>
+    <li>13.106.54.19</li>
+    <li>13.106.38.142</li>
+    <li>13.106.38.148</li>
+    <li>13.106.57.196</li>
+</ul>
+Aby otrzymywać aktualizacje o zmianach na te adresy IP, zaleca się konfigurowania [alertów dotyczących kondycji usługi](./monitoring-service-notifications.md) który monitoruje informacyjny powiadomień dotyczących usługi grupy akcji.
+</dd>
 </dl>
 
 ## <a name="manage-your-action-groups"></a>Zarządzanie grupami działań ##

@@ -1,121 +1,121 @@
 ---
-title: Klasyfikacja satelitarnej obrazu | Dokumentacja firmy Microsoft
-description: Instrukcje w świecie rzeczywistym scenariuszu po klasyfikacji satelitarnej obrazu
+title: Klasyfikacja obrazów z powietrza | Dokumentacja firmy Microsoft
+description: Zawiera instrukcje dotyczące rzeczywistych scenariusza Klasyfikacja obrazów z powietrza
 author: mawah
 ms.author: mawah
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.topic: article
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 services: machine-learning
 ms.workload: data-services
 ms.date: 12/13/2017
-ms.openlocfilehash: d34f25fd75816f0ae840b3cbb2e0e88cbc2bfd91
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: eb788f56825166ccaa376d32b07371db0588edc8
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832411"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35938439"
 ---
-# <a name="aerial-image-classification"></a>Klasyfikacja satelitarnej obrazu
+# <a name="aerial-image-classification"></a>Klasyfikacja obrazów z powietrza
 
-W tym przykładzie pokazano, jak używać usługi Azure Machine Learning Workbench do koordynowania rozproszonej szkolenia i operationalization modele klasyfikacji obrazu. Używamy dwa podejścia do trenowania: i uściślenie przy użyciu sieci neuronowej głębokość [AI usługi partia zadań Azure](https://docs.microsoft.com/azure/batch-ai/) klastra procesora GPU i (ii) przy użyciu [uczenia maszynowego Microsoft platformy Apache Spark (MMLSpark)](https://github.com/Azure/mmlspark) pakietu obrazy featurize przy użyciu modeli CNTK pretrained i do uczenia klasyfikatory przy użyciu funkcji pochodnych. Następnie stosujemy przeszkolone modeli w sposób równoległy zestawów duży obraz w chmurze przy użyciu [Azure HDInsight Spark](https://azure.microsoft.com/services/hdinsight/apache-spark/) klastra, co pozwala firmie Microsoft w celu skalowania szybkości szkolenia i operationalization przez dodanie lub usunięcie węzłów procesu roboczego.
+W tym przykładzie pokazano, jak używać aplikacji Azure Machine Learning Workbench do koordynacji rozproszonego szkolenia i operacjonalizacji modeli klasyfikacji obrazów. Używamy dwa podejścia do szkolenia: (i) rafinacja sieci neuronowej za pomocą funkcji [usługi Azure Batch AI](https://docs.microsoft.com/azure/batch-ai/) klastrze procesorów GPU i (ii) przy użyciu [Microsoft Machine Learning dla platformy Apache Spark (MMLSpark)](https://github.com/Azure/mmlspark) pakietu cechowanie obrazów przy użyciu wstępnie przetrenowane modeli CNTK i uczyć klasyfikatory korzystanie z funkcji pochodnych. Firma Microsoft następnie zastosować wytrenowane modele w sposób równoległy ustawia duży obraz w chmurze za pomocą [usługi Azure HDInsight Spark](https://azure.microsoft.com/services/hdinsight/apache-spark/) klastra, pozwalając nam skalowanie szybkość szkolenia i operacjonalizacji przez dodawanie lub usuwanie węzłów procesu roboczego.
 
-W tym przykładzie wyróżniono dwa podejścia do transferu uczenia, które korzysta z pretrained modele, aby uniknąć kosztów szkolenia sieci neuronowej głębokość od początku. Zwykle ponownego trenowania sieci neuronowej głębokość wymaga obliczeniowej procesora GPU, ale może prowadzić do większej dokładności, gdy zestaw szkoleniowy jest wystarczająco duża. Uczenie prostego klasyfikatora na obrazach featurized nie wymaga obliczeniowej procesora GPU, jest z założenia szybka i skalowalna arbitralnie i pasuje do mniej parametrów. Ta metoda w związku z tym jest doskonałym rozwiązaniem, gdy kilka przykładów szkolenia są dostępne —, jak często w przypadku dla przypadków użycia niestandardowego. 
+W tym przykładzie wyróżniono transfer learning, która korzysta z wstępnie przetrenowane modele, aby uniknąć kosztów szkolenia głębokich sieciach neuronowych od podstaw na dwa sposoby. Ponowne trenowanie sieci neuronowej, zwykle wymaga obliczeniowej procesora GPU, ale może prowadzić do większej dokładności, gdy zestaw szkoleniowy jest wystarczająco duży. Szkolenia proste klasyfikatora na obrazach neural nie wymaga obliczeniowej procesora GPU, jest z natury szybkich i skalowalnych arbitralnie i dostosowane do potrzeb mniej parametrów. Ta metoda jest w związku z tym doskonałym wyborem, gdy kilka próbek szkoleniowych dostępnych — jak często w przypadku dla przypadków użycia niestandardowego. 
 
-Klastra Spark w tym przykładzie ma 40 węzłów procesu roboczego i koszty ~$40/hr działanie; zasoby klastra AI partii obejmują osiem GPU i kosztów ~$10/hr do działania. Kończenie pracy tego przewodnika trwa około trzech godzin. Gdy skończysz, postępuj zgodnie z instrukcjami czyszczenia do usunięcia zasobów, które zostały utworzone i Zatrzymaj naliczania opłat.
+Klaster Spark, używany w tym przykładzie ma 40 węzłami procesu roboczego i koszty ~$40/hr działanie; zasoby klastra usługi Batch AI obejmują ośmiu procesorów GPU i koszt ~$10/hr działanie. Ukończenie tego instruktażu trwa około trzy godziny. Gdy skończysz, postępuj zgodnie z instrukcjami oczyszczania, aby usunąć zasoby, które zostały utworzone oraz zatrzymanie naliczania opłat.
 
 ## <a name="link-to-the-gallery-github-repository"></a>Połącz z repozytorium GitHub galerii
 
-W tym scenariuszu rzeczywistych publicznego repozytorium GitHub zawiera wszystkich materiałów, w tym przykłady kodu, potrzebne w tym przykładzie:
+Publicznego repozytorium GitHub, w tym scenariuszu rzeczywistych zawiera wszystkie materiały, w tym przykłady kodu, potrzebne w tym przykładzie:
 
 [https://github.com/Azure/MachineLearningSamples-AerialImageClassification](https://github.com/Azure/MachineLearningSamples-AerialImageClassification)
 
 ## <a name="use-case-description"></a>Opis przypadków użycia
 
-W tym scenariuszu firma Microsoft uczenia modele uczenia maszyny do klasyfikowania typu pokazano satelitarnej obrazy x miernika 224 miernika 224 powierzchni ziemi. Modele klasyfikacji Użyj ziemi może służyć do śledzenia urbanizacji, wycinanie lasów, utratą podmokłych i innych głównych trendów środowiska przy użyciu okresowo zbierane satelitarnej obrazów. Firma Microsoft została przygotowana szkolenia i sprawdzania poprawności zestawy obrazu na podstawie z obrazami z USA National rolnictwa obrazów programu i ziemi korzystanie z etykiet opublikowane przez amerykański Baza danych obejmują ziemi National. Przykład obrazów w każdej klasie Użyj ziemi przedstawiono poniżej:
+W tym scenariuszu firma Microsoft szkolenie modeli uczenia maszynowego do klasyfikowania typu objętego powietrza obrazy x miernika 224 miernika 224 powierzchni ziemi. Modeli klasyfikacji Użyj ziemi może służyć do śledzenia urbanizacji, wycinanie lasów, utraty podmokłych i innych głównych trendów środowiska za pomocą okresowo pobrane zdjęcia lotnicze. Firma Microsoft została przygotowana szkolenia i sprawdzanie poprawności zestawów obrazu, oparte na obrazach ze Stanów Zjednoczonych Krajowe rolnictwa obrazach programu i ziemi korzystanie z etykiet, opublikowane przez amerykański Baza danych Cover National lądzie. Przykładowe obrazy w każdej klasie Użyj ziemi przedstawiono poniżej:
 
-![Przykład regiony dla każdego ziemi Użyj etykiety](media/scenario-aerial-image-classification/example-labels.PNG)
+![Przykład regionów dla każdego ziemi Zastosuj etykietę](media/scenario-aerial-image-classification/example-labels.PNG)
 
-Po szkolenia i sprawdzanie poprawności modelu klasyfikatora zostaną zastosowane go do obrazów satelitarnej spanning Województwo Middlesex, MA--Research nowej Anglii głównej z firmy Microsoft & Center Programowanie (NERD) — aby zademonstrować, jak te modele może służyć do badania tendencji zurbanizowane programowanie.
+Po szkolenia i sprawdzanie poprawności modelu klasyfikatora, firma Microsoft zastosuje je do obrazów powietrza obejmujące Middlesex hrabstwa, MA--głównej z badań firmy Microsoft w Anglii nowy & Centrum rozwoju (NERD) — aby zademonstrować, jak używać tych modeli studiowanie miejskie trendów rozwój.
 
-Aby wygenerować klasyfikatora obrazu przy użyciu transferu uczenia, analityków danych często utworzenia wielu modeli z zakresu metod i wybierz największą wydajność modelu. Azure Machine Learning Workbench można ułatwić danych służące koordynować szkolenia w środowiskach różnych obliczeń, śledzenie i porównać wydajność wielu modeli i dotyczą wybranego modelu dużych zestawów danych w chmurze.
+Aby wygenerować klasyfikatorów obrazów przy użyciu transferu uczenia, analityków, którzy często utworzenia wielu modeli przy użyciu szeregu metod i wybierz najbardziej wybieraniem najskuteczniejszego modelu. Usługa Azure Machine Learning Workbench można dane analityków koordynować szkolenia w środowiskach obliczeniowych w różnych, śledzenie i porównać wydajność różnych modeli i zastosować wybrany model do dużych zestawów danych w chmurze.
 
-## <a name="scenario-structure"></a>Scenariusz — struktura
+## <a name="scenario-structure"></a>Struktura scenariusza
 
-W tym przykładzie pretrained modele i dane obrazu są trzymane w koncie magazynu platformy Azure. Klaster usługi Azure HDInsight Spark odczytuje tych plików i tworzy model klasyfikacji obrazu przy użyciu MMLSpark. Trenowanego modelu i jego prognoz następnie są zapisywane na koncie magazynu, gdzie mogą być przeanalizowane i wizualizowane przez notesu Jupyter uruchomionej na komputerze lokalnym. Azure Machine Learning Workbench koordynuje zdalne wykonywanie skryptów w klastrze Spark. Pozwala również śledzić metryki dokładność dla wielu modeli uczenia przy użyciu różnych metod, co pozwala użytkownikowi na wybranie najbardziej wydajność modelu.
+W tym przykładzie dane obrazu i wstępnie przetrenowane modeli są trzymane w konto magazynu platformy Azure. Klaster usługi HDInsight Spark odczytuje te pliki i tworzy model klasyfikacji obrazów przy użyciu MMLSpark. Uczony model i jej prognozy są następnie zapisywane do konta magazynu, gdzie mogą być analizowane i wizualizowany w usłudze notesu programu Jupyter, uruchamiane lokalnie. Usługa Azure Machine Learning Workbench koordynuje zdalne wykonywanie skryptów w klastrze Spark. Pozwala również śledzić metryki dokładność dla wielu modeli uczony przy użyciu różnych metod, umożliwiając użytkownikowi wybranie najbardziej wybieraniem najskuteczniejszego modelu.
 
-![Schemat dla scenariusza rzeczywistych klasyfikacji satelitarnej obrazu](media/scenario-aerial-image-classification/scenario-schematic.PNG)
+![Schemat dla scenariusza rzeczywistych klasyfikacji obrazów z powietrza](media/scenario-aerial-image-classification/scenario-schematic.PNG)
 
-Te instrukcje krok po kroku najpierw omówiono tworzenie i przygotowania kontem magazynu platformy Azure i klastra Spark, w tym instalacji transfer i zależności w danych. Następnie opisują sposób uruchamiania zadań szkolenia i porównywać wynikowy modeli. Na koniec one pokazano, jak zastosować wybrany model do zestawu duży obraz w klastrze Spark i Przeanalizuj wyniki prognozowania lokalnie.
+Te instrukcje krok po kroku najpierw przeprowadzi Cię przez utworzenie i przygotowanie konta usługi Azure storage oraz klastra platformy Spark, w tym dane transferu i zależności instalacji. Następnie opisano sposób uruchamiania zadań szkoleniowych i porównywanie wydajności modeli wynikowe. Na koniec one ilustrują Zastosuj wybrany model do zestawu duży obraz w klastrze Spark i analizowanie wyników przewidywań lokalnie.
 
 
 ## <a name="set-up-the-execution-environment"></a>Konfigurowanie środowiska wykonawczego
 
-Poniższe instrukcje pomagają konfigurowania środowiska wykonawczego w tym przykładzie.
+Poniższe wskazówki ułatwiają skonfigurowanie środowiska wykonawczego, w tym przykładzie.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
-- [Konta Azure](https://azure.microsoft.com/free/) (bezpłatnych wersji próbnych są dostępne)
-    - Spowoduje utworzenie klastra Spark w usłudze HDInsight z 40 węzłów procesu roboczego (całkowita liczba rdzeni 168). Upewnij się, że konto użytkownika ma za mało dostępnych rdzeni, przeglądając "użycia + przydziały" kartę dla Twojej subskrypcji w portalu Azure.
-       - Jeśli masz mniej dostępne rdzenie może zmodyfikować szablon klastra HDInsight zmniejszyć liczbę procesów roboczych udostępnione. Odpowiednie instrukcje są wyświetlane w sekcji "Tworzenie klastra Spark w usłudze HDInsight".
-    - W tym przykładzie jest tworzony klaster szkolenia AI partii z dwóch NC6 (1 procesora GPU, 6 vCPU) maszyn wirtualnych. Upewnij się, że konto użytkownika ma za mało dostępnych rdzeni w regionie wschodnie stany USA, przeglądając "użycia + przydziały" kartę dla Twojej subskrypcji w portalu Azure.
+- [Konta platformy Azure](https://azure.microsoft.com/free/) (bezpłatne wersje próbne są dostępne)
+    - Utworzysz klaster usługi HDInsight Spark z 40 węzłami procesu roboczego (łączna liczba rdzeni 168). Upewnij się, że Twoje konto ma odpowiednią liczbą dostępnych rdzeni, przeglądając "użycie i przydziały" kartę dla Twojej subskrypcji w witrynie Azure portal.
+       - W przypadku mniejszej liczby rdzeni może zmodyfikować szablon klastra HDInsight, aby zmniejszyć liczbę procesów roboczych aprowizowane. Odpowiednie instrukcje są wyświetlane w sekcji "Tworzenie klastra HDInsight Spark".
+    - W tym przykładzie tworzony jest klaster usługi Batch AI Training przy użyciu dwóch NC6 (1 procesor GPU, 6 procesora wirtualnego vCPU) maszyn wirtualnych. Upewnij się, że Twoje konto ma odpowiednią liczbą dostępnych rdzeni w regionie wschodnie stany USA, przeglądając "użycie i przydziały" kartę dla Twojej subskrypcji w witrynie Azure portal.
 - [Środowisko robocze usługi Azure Machine Learning](../service/overview-what-is-azure-ml.md)
-    - Postępuj zgodnie z [zainstalować i utworzyć szybkiego startu](../service/quickstart-installation.md) zainstalować Azure Machine Learning Workbench i utworzyć eksperymentowania oraz konta zarządzania w modelu.
-- [Partii AI](https://github.com/Azure/BatchAI) Python SDK i Azure CLI 2.0
-    - Wypełnij następujące sekcje w [partii AI przepisami README](https://github.com/Azure/BatchAI/tree/master/recipes):
+    - Postępuj zgodnie z [Instalowanie i Tworzenie szybkiego startu](../service/quickstart-installation.md) na instalowanie aplikacji Azure Machine Learning Workbench i tworzenie eksperymentowania oraz konta zarządzania modelami.
+- [Z usługi Batch AI](https://github.com/Azure/BatchAI) Python SDK i platformą Azure, interfejsu wiersza polecenia
+    - Wykonaj następujące sekcje w [usługi Batch AI przepisy README](https://github.com/Azure/BatchAI/tree/master/recipes):
         - "Wymagania wstępne"
-        - "Utwórz i aplikacji usługi Azure Active Directory (AAD)"
-        - "Zarejestruj dostawców zasobów BatchAI" (w obszarze "Uruchom przepisami przy użyciu usługi Azure CLI 2.0")
-        - "Instalowanie klienta zarządzania partii zadań Azure AI"
-        - "Instalowanie Azure Python SDK"
-    - Rekord Identyfikatora klienta, klucz tajny i identyfikator dzierżawcy aplikacji usługi Azure Active Directory, które są kierowane do utworzenia. Te poświadczenia zostaną użyte w dalszej części tego samouczka.
-    - Opracowywania tego tekstu usługi Azure Machine Learning Workbench i AI usługi partia zadań Azure używają oddzielnych rozwidlenia 2.0 interfejsu wiersza polecenia platformy Azure. Dla jasności nazywamy Workbench wersji interfejsu CLI jako "infrastruktury CLI uruchamiana z usługi Azure Machine Learning Workbench" i (w tym partii AI) ogólne wersji "Azure CLI 2.0".
-- [Narzędzie AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy), narzędzie do koordynowania transferu plików między kontami magazynu Azure w warstwie bezpłatna
-    - Upewnij się, że folder zawierający plik wykonywalny AzCopy znajduje się w zmiennej środowiskowej PATH w systemie. (Dostępne są instrukcje na temat modyfikowania zmiennych środowiskowych [tutaj](https://support.microsoft.com/help/310519/how-to-manage-environment-variables-in-windows-xp).)
+        - "Utwórz i Pobierz aplikację usługi Azure Active Directory (AAD)"
+        - "Zarejestruj dostawców zasobów BatchAI" (w obszarze "przepisy wykonywania przy użyciu wiersza polecenia platformy Azure")
+        - "Zainstaluj klienta zarządzania w usłudze Azure Batch AI"
+        - "Zainstaluj zestaw Azure Python SDK"
+    - Rekord Identyfikatora klienta, klucz tajny i identyfikator dzierżawy aplikacji usługi Azure Active Directory, które są kierowane do utworzenia. Te poświadczenia zostaną użyte w dalszej części tego samouczka.
+    - Na chwilę obecną, Azure Machine Learning Workbench i usługi Azure Batch AI używają oddzielnych rozwidlenia interfejsu wiersza polecenia platformy Azure. W celu uściślenia nazywamy aplikacji Workbench wersję interfejsu wiersza polecenia jako "interfejs wiersza polecenia uruchamiane w usłudze Azure Machine Learning Workbench" i (w tym usługi Batch AI) ogólne wersji "Wiersza polecenia platformy Azure."
+- [Narzędzie AzCopy](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy), bezpłatne narzędzie do koordynowania transferu plików między kontami magazynu platformy Azure
+    - Upewnij się, że folder zawierający plik wykonywalny narzędzia AzCopy w zmiennej środowiskowej PATH systemu. (Instrukcje na temat modyfikowania zmiennych środowiskowych dostępnych [tutaj](https://support.microsoft.com/help/310519/how-to-manage-environment-variables-in-windows-xp).)
 - Klient SSH; Firma Microsoft zaleca [PuTTY](http://www.putty.org/).
 
-W tym przykładzie testowania na komputerach z systemem Windows 10; można go uruchomić z dowolnej maszyny systemu Windows, w tym maszyny wirtualne nauki danych Azure. 2.0 interfejsu wiersza polecenia platformy Azure został zainstalowany z Instalatora MSI zgodnie z [tych instrukcji](https://github.com/Azure/azure-sdk-for-python/wiki/Contributing-to-the-tests#getting-azure-credentials). Drobne zmiany mogą być wymagane (na przykład zmiany filepaths) podczas uruchamiania w tym przykładzie na macOS.
+W tym przykładzie został przetestowany na komputerze z systemem Windows 10; można go uruchomić z dowolnej maszyny Windows, w tym maszyn wirtualnych do nauki o danych platformy Azure. Interfejs wiersza polecenia platformy Azure został zainstalowany z pliku MSI zgodnie z opisem w [w instrukcjach](https://github.com/Azure/azure-sdk-for-python/wiki/Contributing-to-the-tests#getting-azure-credentials). Może wymagać drobnych zmian (na przykład zmiany filepaths) podczas uruchamiania tego przykładu w systemie macOS.
 
-### <a name="set-up-azure-resources"></a>Konfigurowanie zasobów Azure
+### <a name="set-up-azure-resources"></a>Konfigurowanie zasobów platformy Azure
 
-W tym przykładzie wymaga klastra Spark w usłudze HDInsight i konto magazynu Azure do odpowiednich plików hosta. Wykonaj te instrukcje, aby utworzyć tych zasobów w nowej grupy zasobów platformy Azure:
+W tym przykładzie wymaga klastra usługi HDInsight Spark i konto magazynu platformy Azure do odpowiednich plików hosta. Wykonaj te instrukcje, aby utworzyć te zasoby w nowej grupie zasobów platformy Azure:
 
-#### <a name="create-a-new-workbench-project"></a>Utwórz nowy projekt Workbench
+#### <a name="create-a-new-workbench-project"></a>Utwórz nowy projekt aplikacji Workbench
 
-Utwórz nowy projekt za pomocą tego przykładu jako szablon:
-1.  Otwórz Azure Machine Learning Workbench
-2.  Na **projekty** kliknij przycisk **+** podpisywania i wybierz **nowy projekt**
-3.  W **Utwórz nowy projekt** okienka, wypełnij informacje dla nowego projektu
-4.  W **szablony projektów wyszukiwania** pole wyszukiwania, wpisz "Satelitarnej Klasyfikacja obrazu" i wybierz szablon
+Utwórz nowy projekt za pomocą tego przykładu jako szablonu:
+1.  Otwieranie usługi Azure Machine Learning Workbench
+2.  Na **projektów** kliknij **+** zalogować się i wybrać **nowy projekt**
+3.  W **Utwórz nowy projekt** okienku, wprowadź informacje dla nowego projektu
+4.  W **Wyszukaj szablony projektów** polu wyszukiwania wpisz "Powietrza Klasyfikacja obrazów" i wybierz szablon
 5.  Kliknij przycisk **Utwórz**
  
 #### <a name="create-the-resource-group"></a>Tworzenie grupy zasobów
 
-1. Po załadowaniu projektu w konsoli usługi Azure Machine Learning Workbench, Otwórz interfejs wiersza polecenia (CLI), klikając plik -> Otwórz wiersz polecenia.
-    Użyj tej wersji interfejsu wiersza polecenia dla większości samouczka. (W przypadku, gdy wskazane, należy otworzyć inna wersja interfejsu wiersza polecenia, aby przygotować zasobów AI partii.)
+1. Po załadowaniu projektu w aplikacji Azure Machine Learning Workbench, Otwórz interfejs wiersza polecenia (CLI), klikając pozycję Plik -> Otwórz wiersz polecenia.
+    Użyj tej wersji interfejsu wiersza polecenia dla większości tego samouczka. (W przypadku, gdy wskazane, zostanie wyświetlony monit Otwórz inną wersję interfejsu wiersza polecenia, aby przygotować zasoby usługi Batch AI.)
 
-1. Przy użyciu interfejsu wiersza polecenia należy zalogować się za pomocą następującego polecenia do konta platformy Azure:
+1. Przy użyciu interfejsu wiersza polecenia logowania do konta platformy Azure, uruchamiając następujące polecenie:
 
     ```
     az login
     ```
 
-    Zostanie wyświetlona prośba o odwiedź adres URL i typ podanego kodu tymczasowej; Witryna sieci Web żądania poświadczeń konta platformy Azure.
+    Zostanie wyświetlony monit, odwiedź stronę adresu URL i typu w podanej tymczasowy kod; Witryna sieci Web żąda poświadczeń konta platformy Azure.
     
-1. Po zakończeniu logowania, wróć do interfejsu wiersza polecenia i uruchom następujące polecenie, aby określić, które subskrypcji platformy Azure są dostępne do konta platformy Azure:
+1. Gdy logowanie zostanie zakończone, wróć do interfejsu wiersza polecenia i uruchom następujące polecenie, aby określić, które subskrypcje platformy Azure są dostępne dla Twojego konta platformy Azure:
 
     ```
     az account list
     ```
 
-    To polecenie wyświetla listę wszystkich subskrypcji skojarzonych z Twoim kontem platformy Azure. Znaleźć Identyfikatora subskrypcji, którego chcesz użyć. Zapis identyfikator subskrypcji wskazana w poniższym poleceniu następnie ustaw aktywną subskrypcją, wykonując polecenie:
+    To polecenie wyświetla listę wszystkich subskrypcji skojarzonych z kontem platformy Azure. Znajdź identyfikator subskrypcji, którą chcesz użyć. Zapis Identyfikatora subskrypcji w przypadku, gdy wskazane w poniższym poleceniu następnie ustawić aktywną subskrypcję, wykonując polecenie:
 
     ```
     az account set --subscription [subscription ID]
     ```
 
-1. Azure zasoby utworzone w tym przykładzie są przechowywane razem w grupie zasobów platformy Azure. Wybierz nazwę grupy zasobów unikatowy i zapisuje je w przypadku, gdy wskazane, wykonujących zarówno poleceń, aby utworzyć grupy zasobów platformy Azure:
+1. Zasoby platformy Azure utworzone w tym przykładzie są przechowywane razem w grupie zasobów platformy Azure. Wybierz unikatową nazwą grupy zasobów, a następnie zapisać go w przypadku, gdy wskazane, a następnie wykonaj oba polecenia, aby utworzyć grupę zasobów platformy Azure:
 
     ```
     set AZURE_RESOURCE_GROUP=[resource group name]
@@ -124,33 +124,33 @@ Utwórz nowy projekt za pomocą tego przykładu jako szablon:
 
 #### <a name="create-the-storage-account"></a>Tworzenie konta magazynu
 
-Teraz utworzymy konta magazynu, że hosty projektu pliki, które muszą być dostępne przez HDInsight Spark.
+Teraz utworzymy konto magazynu, że hosty projektu pliki, które muszą być dostępne przez rozwiązanie HDInsight Spark.
 
-1. Wybierz nazwę konta magazynu unikatowy i zapisują wskazanych w następujących miejscach `set` polecenia, a następnie utwórz konto magazynu platformy Azure, wykonując oba polecenia:
+1. Wybierz unikatowej nazwy konta magazynu, a następnie zapisać go w przypadku, gdy wskazane w następującym `set` polecenia, a następnie utwórz konto magazynu platformy Azure, wykonując oba polecenia:
 
     ```
     set STORAGE_ACCOUNT_NAME=[storage account name]
     az storage account create --name %STORAGE_ACCOUNT_NAME% --resource-group %AZURE_RESOURCE_GROUP% --sku Standard_LRS
     ```
 
-1. Listy kluczy konta magazynu, uruchamiając następujące polecenie:
+1. Wyświetl klucze konta magazynu, uruchamiając następujące polecenie:
 
     ```
     az storage account keys list --resource-group %AZURE_RESOURCE_GROUP% --account-name %STORAGE_ACCOUNT_NAME%
     ```
 
-    Zarejestruj wartość `key1` jako klucza magazynu w następujące polecenie, a następnie uruchom polecenie do przechowywania wartości.
+    Zapisz wartość `key1` jako klucz magazynu w następującym poleceniu, a następnie uruchom polecenie do przechowywania wartości.
     ```
     set STORAGE_ACCOUNT_KEY=[storage account key]
     ```
-1. Tworzenie udziału plików o nazwie `baitshare` na koncie magazynu przy użyciu następującego polecenia:
+1. Utwórz udział plików o nazwie `baitshare` na koncie magazynu za pomocą następującego polecenia:
 
     ```
     az storage share create --account-name %STORAGE_ACCOUNT_NAME% --account-key %STORAGE_ACCOUNT_KEY% --name baitshare
     ```
-1. W w ulubionym edytorze tekstów, obciążenia `settings.cfg` plik z projektu usługi Azure Machine Learning Workbench podkatalogu "Code" i Wstaw nazwę konta magazynu i klucz wskazane. Zapisz i Zamknij `settings.cfg` pliku.
-1. Jeśli nie zostało to jeszcze zrobione, Pobierz i zainstaluj [AzCopy](http://aka.ms/downloadazcopy) narzędzia. Sprawdź, czy plik wykonywalny AzCopy jest na ścieżce systemowej, wpisując "AzCopy" i naciskając klawisz Enter, aby wyświetlić jego dokumentacji.
-1. Wydaj następujące polecenia, aby skopiować wszystkie dane przykładowe, pretrained modeli i skryptów uczenia modelu do odpowiedniej lokalizacji na koncie magazynu:
+1. W swoim ulubionym edytorze tekstów, załaduj `settings.cfg` plik z projektu aplikacji Azure Machine Learning Workbench podkatalogu "Code" i Wstaw nazwę konta magazynu i klucz, jak wskazano. Zapisz i Zamknij `settings.cfg` pliku.
+1. Jeśli jeszcze tego nie zrobiono, Pobierz i zainstaluj [AzCopy](http://aka.ms/downloadazcopy) narzędzia. Upewnij się, że plik wykonywalny narzędzia AzCopy na ścieżce systemowej, wpisując "Narzędzia AzCopy", a następnie naciskając klawisz Enter, aby wyświetlić jego dokumentacji.
+1. Uruchom następujące polecenia, aby skopiować wszystkie przykładowe dane, wstępnie przetrenowane modeli i skryptów szkolenia modelu do odpowiedniej lokalizacji w ramach konta magazynu:
 
     ```
     AzCopy /Source:https://mawahsparktutorial.blob.core.windows.net/test /SourceSAS:"?sv=2017-04-17&ss=bf&srt=sco&sp=rwl&se=2037-08-25T22:02:55Z&st=2017-08-25T14:02:55Z&spr=https,http&sig=yyO6fyanu9ilAeW7TpkgbAqeTnrPR%2BpP1eh9TcpIXWw%3D" /Dest:https://%STORAGE_ACCOUNT_NAME%.blob.core.windows.net/test /DestKey:%STORAGE_ACCOUNT_KEY% /S
@@ -161,15 +161,15 @@ Teraz utworzymy konta magazynu, że hosty projektu pliki, które muszą być dos
     AzCopy /Source:https://mawahsparktutorial.blob.core.windows.net/scripts /SourceSAS:"?sv=2017-04-17&ss=bf&srt=sco&sp=rwl&se=2037-08-25T22:02:55Z&st=2017-08-25T14:02:55Z&spr=https,http&sig=yyO6fyanu9ilAeW7TpkgbAqeTnrPR%2BpP1eh9TcpIXWw%3D" /Dest:https://%STORAGE_ACCOUNT_NAME%.file.core.windows.net/baitshare/scripts /DestKey:%STORAGE_ACCOUNT_KEY% /S
     ```
 
-    Oczekiwany transferu plików do zająć około jednej godziny. Podczas oczekiwania, możesz przejść do poniższej sekcji: Otwórz innego interfejsu wiersza polecenia za pomocą narzędzia Workbench i ponownie zdefiniować zmienne tymczasowe może być konieczne.
+    Oczekiwane transferu plików do zająć około jednej godziny. Podczas oczekiwania, możesz przejść do następnej sekcji: Otwórz inny interfejs wiersza polecenia przy użyciu aplikacji Workbench i ponownie definiować zmiennych tymczasowych może być konieczne.
 
-#### <a name="create-the-hdinsight-spark-cluster"></a>Tworzenie klastra Spark w usłudze HDInsight
+#### <a name="create-the-hdinsight-spark-cluster"></a>Tworzenie klastra HDInsight Spark
 
-Nasze zalecana metoda tworzenia klastra usługi HDInsight używa szablonu Menedżera zasobów klastra Spark w usłudze HDInsight zawarte w podfolderze "Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning" tego projektu.
+Nasze zalecaną metodą tworzenia klastra usługi HDInsight używa szablonu Menedżera zasobów klastra platformy HDInsight Spark uwzględnione w podfolderze "Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning" ten projekt.
 
-1. Szablon klastra Spark w usłudze HDInsight jest "template.json" plik w podfolderze "Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning" tego projektu. Domyślnie szablon tworzy klaster Spark z 40 węzłów procesu roboczego. Jeśli należy dostosować tę liczbę, otwórz szablon w w ulubionym edytorze tekstów i Zastąp wszystkie wystąpienia "40" numer węzła procesu roboczego wybranych przez użytkownika.
-    - Mogą wystąpić błędy braku pamięci później, jeśli jest mniejsza liczba węzłów procesu roboczego, którą wybierzesz. Zwalczania błędów pamięci, mogą uruchamiać skrypty szkolenia i operationalization w podzestawie dostępnych danych, zgodnie z opisem w dalszej części tego dokumentu.
-2. Wybierz unikatową nazwę i hasło dla usługi HDInsight klastra i zapisanie ich w przypadku, gdy wskazane następujące polecenie: następnie utworzyć klaster, wysyłając polecenia:
+1. Szablon klastra platformy HDInsight Spark jest plik "template.json" w podfolderze "Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning" ten projekt. Domyślnie szablon tworzy klaster Spark z 40 węzłami procesu roboczego. Jeśli musisz dostosować tę liczbę, otworzyć szablon w swoim ulubionym edytorze tekstów i Zamień wszystkie wystąpienia "40" numer węzła procesu roboczego wybranych przez użytkownika.
+    - Mogą wystąpić błędy braku pamięci później, jeśli liczba węzłów procesu roboczego, który wybierzesz jest mniejsza. Aby walczyć błędów pamięci, może uruchamiać skrypty szkolenia i operacjonalizacji dla podzbioru dostępnych danych, zgodnie z opisem w dalszej części tego dokumentu.
+2. Wybierz unikatową nazwę i hasło dla HDInsight klastra i zapisanie ich w przypadku, gdy wskazane w następującym poleceniu: następnie utworzyć klaster, wysyłając polecenia:
 
     ```
     set HDINSIGHT_CLUSTER_NAME=[HDInsight cluster name]
@@ -177,31 +177,31 @@ Nasze zalecana metoda tworzenia klastra usługi HDInsight używa szablonu Mened�
     az group deployment create --resource-group %AZURE_RESOURCE_GROUP% --name hdispark --template-file "Code\01_Data_Acquisition_and_Understanding\01_HDInsight_Spark_Provisioning\template.json" --parameters storageAccountName=%STORAGE_ACCOUNT_NAME%.blob.core.windows.net storageAccountKey=%STORAGE_ACCOUNT_KEY% clusterName=%HDINSIGHT_CLUSTER_NAME% clusterLoginPassword=%HDINSIGHT_CLUSTER_PASSWORD%
     ```
 
-Wdrażanie klastra może potrwać do 30 minut (w tym wykonywania akcji skryptu i udostępniania).
+Wdrożenie klastra może potrwać do 30 minut (w tym wykonanie akcji aprowizacji i skryptów).
 
-### <a name="set-up-batch-ai-resources"></a>Konfigurowanie zasobów partii AI
+### <a name="set-up-batch-ai-resources"></a>Konfigurowanie zasobów usługi Batch AI
 
-Podczas oczekiwania dla transferu plików konta magazynu i wdrożenie klastra Spark do wykonania, można przygotować klaster partii AI plików serwera plików NFS (Network) i procesora GPU. Otwórz okno wiersza polecenia Azure CLI 2.0 i uruchom następujące polecenie:
+Podczas oczekiwania na transfer plików konta magazynu i wdrażanie klastra platformy Spark do wykonania należy przygotować klaster usługi Batch AI sieci plików serwera NFS i procesora GPU. Otwórz wiersz polecenia z wiersza polecenia platformy Azure, a następnie uruchom następujące polecenie:
 
 ```
 az --version 
 ```
 
-Upewnij się, że `batchai` jest na liście zainstalowanych modułów. Jeśli nie używasz innego interfejsu wiersza polecenia (na przykład, jeden otworzyć za pomocą narzędzia Workbench).
+Upewnij się, że `batchai` jest na liście zainstalowanych modułów. Jeśli nie używasz innego interfejsu wiersza polecenia (na przykład, otwartego za pośrednictwem aplikacji Workbench).
 
-Następnie sprawdź rejestrację dostawcy zostało pomyślnie ukończone. (Rejestrację dostawcy wymaga do 15 minut i mogą być uruchomione, jeśli ostatnio wykonana [instrukcje dotyczące konfigurowania AI partii](https://github.com/Azure/BatchAI/tree/master/recipes).) Upewnij się, że zarówno "Microsoft.Batch" i "Microsoft.BatchAI" są wyświetlane ze stanem "Zarejestrowanej" w danych wyjściowych z następującego polecenia:
+Następnie sprawdź, czy rejestracja została ukończona pomyślnie. (Rejestracja trwa maksymalnie 15 minut i może być trwająca, jeśli niedawno ukończone [instrukcje dotyczące konfigurowania usługi Batch AI](https://github.com/Azure/BatchAI/tree/master/recipes).) Upewnij się, że "Microsoft.Batch" i "Microsoft.BatchAI" są wyświetlane ze stanem "Zarejestrowane" w danych wyjściowych następującego polecenia:
 
 ```
 az provider list --query "[].{Provider:namespace, Status:registrationState}" --out table
 ```
 
-Jeśli nie, uruchom następujące dostawcy polecenia rejestracji, a następnie zaczekaj ~ 15 minut do rejestracji w celu ukończenia.
+W przeciwnym razie uruchom następującego dostawcy polecenia rejestracji i poczekaj około 15 minut na rejestrację, aby zakończyć.
 ```
 az provider register --namespace Microsoft.Batch
 az provider register --namespace Microsoft.BatchAI
 ```
 
-Zmodyfikuj następujące polecenia, aby zastąpić wartości używanego wcześniej podczas tworzenia konta grupy i przechowywanie zasobów wyrażenia w nawiasach kwadratowych. Następnie należy zapisać wartości jako zmienne, wykonując polecenia:
+Zmodyfikuj następujące polecenia, aby zastąpić wartości, które została użyta wcześniej podczas tworzenia kont grupy i przechowywania zasobów wyrażenia w nawiasach kwadratowych. Następnie należy przechowywać wartości jako zmienne, wykonując polecenia:
 ```
 az account set --subscription [subscription ID]
 set AZURE_RESOURCE_GROUP=[resource group name]
@@ -211,46 +211,46 @@ az configure --defaults location=eastus
 az configure --defaults group=%AZURE_RESOURCE_GROUP%
 ```
 
-Zidentyfikuj folder zawierający projekt usługi Azure Machine Learning (na przykład `C:\Users\<your username>\AzureML\aerialimageclassification`). Zamień wartość w nawiasach kwadratowych filepath folderu (z nie końcowy ukośnik odwrotny) i uruchom polecenie:
+Zidentyfikować folder zawierający projekt usługi Azure Machine Learning (na przykład `C:\Users\<your username>\AzureML\aerialimageclassification`). Zamień wartości w nawiasach kwadratowych filepath folderu (z nie ukośnik odwrotny na końcu), a następnie uruchom polecenie:
 ```
 set PATH_TO_PROJECT=[The filepath of your project's root directory]
 ```
-Teraz można przystąpić do tworzenia partii AI zasoby potrzebne w tym samouczku.
+Teraz możesz przystąpić do tworzenia zasobów usługi Batch AI potrzebne w tym samouczku.
 
-#### <a name="prepare-the-batch-ai-network-file-server"></a>Przygotowywanie serwera plików wsadowych sieci AI
+#### <a name="prepare-the-batch-ai-network-file-server"></a>Przygotuj serwer plików sieci sztucznej Inteligencji usługi Batch
 
-Klaster AI partii uzyskuje dostęp do danych szkoleniowych na sieciowym serwerze plików. Dostęp do danych może być several-fold szybciej podczas uzyskiwania dostępu do plików z systemu plików NFS, a udział plików Azure lub usługi Azure Blob Storage.
+Klaster usługi Batch AI uzyskuje dostęp do danych szkoleniowych na serwerze plików z sieci. Dostęp do danych może być several-fold szybciej podczas uzyskiwania dostępu do plików z systemu plików NFS i udziału plików platformy Azure lub usługi Azure Blob Storage.
 
-1. Należy wydać następujące polecenie, aby utworzyć serwer plików sieciowych:
+1. Wykonaj następujące polecenie, aby utworzyć serwer plików sieciowych:
 
     ```
     az batchai file-server create -n landuseclassifier -u demoUser -p "Dem0Pa$$w0rd" --vm-size Standard_DS2_V2 --disk-count 1 --disk-size 1000 --storage-sku Premium_LRS
     ```
 
-1. Sprawdź stan inicjowania obsługi administracyjnej sieci serwera plików za pomocą następującego polecenia:
+1. Sprawdź stan inicjowania obsługi administracyjnej sieci serwera plików przy użyciu następującego polecenia:
 
     ```
     az batchai file-server list
     ```
 
-    "ProvisioningState" sieciowego serwera plików o nazwie "landuseclassifier" jest "powiodło się", jest gotowy do użycia. Oczekiwane inicjowania obsługi administracyjnej potrwać około pięciu minut.
-1. Znajdź adres IP Twojego systemu plików NFS w wyniku poprzedniego polecenia (właściwość "fileServerPublicIp" w obszarze "mountSettings"). Zapis IP adresów wskazana następujące polecenie, a następnie zapisać wartość, wykonując polecenie:
+    "ProvisioningState" sieciowego serwera plików o nazwie "landuseclassifier" to "Powodzenie", jest gotowy do użycia. Oczekiwać, że inicjowanie obsługi administracyjnej, aby zająć około pięciu minut.
+1. W danych wyjściowych poprzedniego polecenia (właściwość "fileServerPublicIp" w obszarze "mountSettings"), należy znaleźć adres IP Twojego systemu plików NFS. Zapis IP adresów w przypadku, gdy wskazane w następującym poleceniu, a następnie wartość przechowywana, wykonując polecenie:
 
     ```
     set AZURE_BATCH_AI_TRAINING_NFS_IP=[your NFS IP address]
     ```
 
-1. Za pomocą ulubionego narzędzia SSH (następujące przykładowe polecenia używa [PuTTY](http://www.putty.org/)), wykonanie tego projektu `prep_nfs.sh` skrypt na NFS przeniesienie obrazu szkolenia i sprawdzanie poprawności ustawia.
+1. Przy użyciu ulubionego narzędzia SSH (następujące przykładowe polecenie używa [PuTTY](http://www.putty.org/)), wykonaj ten projekt `prep_nfs.sh` skrypt systemu plików NFS transfer obrazu szkolenia i sprawdzanie poprawności ustawia istnieje.
 
     ```
     putty -ssh demoUser@%AZURE_BATCH_AI_TRAINING_NFS_IP% -pw Dem0Pa$$w0rd -m %PATH_TO_PROJECT%\Code\01_Data_Acquisition_and_Understanding\02_Batch_AI_Training_Provisioning\prep_nfs.sh
     ```
 
-    Nie trzeba się troszczyć Jeśli aktualizacje postępu pobierania i wyodrębniania danych w oknie powłoki tak szybko przewinąć są nieczytelne.
+    Nie trzeba się troszczyć, jeśli aktualizacje postępu pobierania i wyodrębniania danych w oknie powłoki tak szybko przewinąć czy nieczytelne.
 
-W razie potrzeby można potwierdzić, że transfer danych podjęła zgodnie z planem logowanie do serwera plików z ulubionego narzędzia SSH i sprawdzając `/mnt/data` zawartości katalogu. Użytkownik stwierdzi, że dwa foldery training_images i validation_images, każdy z nich zawiera z podfoldery o nazwach zgodnie z ziemi używanie kategorii.  Zestawy szkoleniowe i weryfikacja powinna zawierać ~ 44 k i obrazów k ~ 11, odpowiednio.
+Jeśli to konieczne, można potwierdzić, że transfer danych podjęła zgodnie z planem, logując się do serwera plików przy użyciu ulubionego narzędzia SSH i sprawdzanie `/mnt/data` zawartości katalogu. Powinien znajdować się dwa foldery training_images i validation_images, zawierających z podfolderach nazwanych zgodnie z ziemi korzystanie z kategorii.  Zestawy szkoleniowe i sprawdzania poprawności powinna zawierać ~ 44 k i obrazy k ~ 11, odpowiednio.
 
-#### <a name="create-a-batch-ai-cluster"></a>Tworzenie klastra partii AI
+#### <a name="create-a-batch-ai-cluster"></a>Utwórz klaster usługi Batch AI
 
 1. Tworzenia klastra, wykonując następujące polecenie:
 
@@ -258,25 +258,25 @@ W razie potrzeby można potwierdzić, że transfer danych podjęła zgodnie z pl
     az batchai cluster create -n landuseclassifier2 -u demoUser -p "Dem0Pa$$w0rd" --afs-name baitshare --nfs landuseclassifier --image UbuntuDSVM --vm-size STANDARD_NC6 --max 2 --min 2 --storage-account-name %STORAGE_ACCOUNT_NAME% 
     ```
 
-1. Użyj następującego polecenia w celu sprawdzenia, czy stanu do udostępniania klastra:
+1. Użyj następującego polecenia w celu sprawdzenia, czy stan jego aprowizacji klastra:
 
     ```
     az batchai cluster list
     ```
 
-    Stan alokacji dla klastra o nazwie "landuseclassifier" zmiany z rozmiaru do stała, jest możliwość przesyłania zadań. Jednak zadania są uruchamiane działać do chwili opuścić "przygotowywania" stan wszystkich maszyn wirtualnych w klastrze. Jeśli właściwości "errors" klastra nie jest zerowa, wystąpił błąd podczas tworzenia klastra i nie powinna być używana.
+    Gdy stan alokacji klastra o nazwie "landuseclassifier" zmiany rozmiaru do stała, istnieje możliwość przesyłania zadań. Jednak zadania są uruchamiane, dopóki wszystkie maszyny wirtualne w klastrze pozostało stanie "przygotowywania". Jeśli właściwość "błędy" w klastrze nie ma wartość null, wystąpił błąd podczas tworzenia klastra, a nie powinny być używane.
 
-#### <a name="record-batch-ai-training-credentials"></a>Poświadczenia szkolenia AI partii rekordów
+#### <a name="record-batch-ai-training-credentials"></a>Rekord poświadczenia usługi Batch AI Training
 
-Podczas oczekiwania alokacji klastra zakończyć, otwórz `settings.cfg` pliku z podkatalogu 'Code' tego projektu w wybranym w edytorze tekstu. Zaktualizuj następujące zmienne przy użyciu własnych poświadczeń:
-- `bait_subscription_id` (36 znaków identyfikator subskrypcji platformy Azure)
+Podczas oczekiwania dla alokacji klastra ukończyć Otwórz `settings.cfg` pliku z podkatalogu "Kod" ten projekt w wybranym w edytorze tekstu. Przy użyciu własnych poświadczeń, należy zaktualizować następujące zmienne:
+- `bait_subscription_id` (identyfikator subskrypcji platformy Azure 36-znakowy)
 - `bait_aad_client_id` (identyfikator aplikacji/klienta usługi Azure Active Directory wymienionych w sekcji "Wymagania wstępne")
 - `bait_aad_secret` (tajny aplikacji usługi Azure Active Directory wymienionych w sekcji "Wymagania wstępne")
 - `bait_aad_tenant` (identyfikator dzierżawy usługi Azure Active Directory wymienionych w sekcji "Wymagania wstępne")
-- `bait_region` (opracowywania tego tekstu jest jedyną opcją: eastus)
-- `bait_resource_group_name` (grupę zasobów, które wcześniej wybrano)
+- `bait_region` (na chwilę obecną, jedyną opcją jest: eastus)
+- `bait_resource_group_name` (Grupa zasobów, wybrana wcześniej)
 
-Po przypisaniu te wartości zmodyfikowanych wierszy pliku settings.cfg powinien przypominać następujący tekst:
+Po przypisaniu wartości te zmodyfikowane wiersze pliku settings.cfg powinien przypominać następujący tekst:
 
 ```
 [Settings]
@@ -295,31 +295,31 @@ Po przypisaniu te wartości zmodyfikowanych wierszy pliku settings.cfg powinien 
 
 Zapisz i Zamknij `settings.cfg`.
 
-Może teraz zamknąć okno interfejsu wiersza polecenia, w którym wykonywane polecenia tworzenia zasobu AI partii. Wszystkie dalszych kroków w tym samouczku Użyj interfejsu wiersza polecenia uruchamiane z usługi Azure Machine Learning Workbench.
+Możesz teraz zamknąć okna interfejsu wiersza polecenia, w których są wykonywane polecenia tworzenia zasobów usługi Batch AI. Wszystkich dalszych krokach w tym samouczku Użyj interfejsu wiersza polecenia, uruchomionego z aplikacji Azure Machine Learning Workbench.
 
-### <a name="prepare-the-azure-machine-learning-workbench-execution-environment"></a>Przygotowanie środowiska wykonawczego Azure Machine Learning Workbench
+### <a name="prepare-the-azure-machine-learning-workbench-execution-environment"></a>Przygotuj środowisko wykonywania aplikacji Azure Machine Learning Workbench
 
-#### <a name="register-the-hdinsight-cluster-as-an-azure-machine-learning-workbench-compute-target"></a>Zarejestruj jako obiekt docelowy obliczeniowych Azure Machine Learning Workbench klastra usługi HDInsight
+#### <a name="register-the-hdinsight-cluster-as-an-azure-machine-learning-workbench-compute-target"></a>Zarejestruj klastra HDInsight jako cel obliczenia Azure Machine Learning Workbench
 
-Po zakończeniu tworzenia klastra usługi HDInsight zarejestrować klastra jako element docelowy obliczeniowe dla projektu w następujący sposób:
+Po zakończeniu tworzenia klastra HDInsight zarejestrować klastra jako obliczeniowego elementu docelowego w projekcie w następujący sposób:
 
-1.  Wydać z usługi Azure Machine Learning interfejsu wiersza polecenia następujące polecenie:
+1.  Należy wydać następujące polecenie z usługi Azure Machine Learning interfejsu wiersza polecenia:
 
     ```
     az ml computetarget attach cluster --name myhdi --address %HDINSIGHT_CLUSTER_NAME%-ssh.azurehdinsight.net --username sshuser --password %HDINSIGHT_CLUSTER_PASSWORD%
     ```
 
-    To polecenie dodaje dwa pliki `myhdi.runconfig` i `myhdi.compute`, do projektu `aml_config` folderu.
+    To polecenie dodaje dwa pliki `myhdi.runconfig` i `myhdi.compute`, do swojego projektu `aml_config` folderu.
 
-1. Otwórz `myhdi.compute` plik w edytorze tekstu. Modyfikowanie `yarnDeployMode: cluster` wiersza, aby odczytać `yarnDeployMode: client`, Zapisz i zamknij plik.
-1. Uruchom następujące polecenie, aby przygotować swoje środowisko HDInsight do użycia:
+1. Otwórz `myhdi.compute` pliku w swoim ulubionym edytorze tekstów. Modyfikowanie `yarnDeployMode: cluster` wiersz, aby odczytać `yarnDeployMode: client`, a następnie zapisz i zamknij plik.
+1. Uruchom następujące polecenie, aby przygotować środowisko do użytku HDInsight:
    ```
    az ml experiment prepare -c myhdi
    ```
 
-#### <a name="install-local-dependencies"></a>Zainstaluj zależności lokalne
+#### <a name="install-local-dependencies"></a>Instalowanie zależności lokalne
 
-Otwórz interfejs wiersza polecenia z usługi Azure Machine Learning Workbench i zainstaluj zależności niezbędne do wykonania lokalnego, wykonując następujące polecenie:
+Otwórz interfejs wiersza polecenia z aplikacji Azure Machine Learning Workbench i zainstaluj zależności niezbędne do wykonania lokalnego, wykonując następujące polecenie:
 
 ```
 pip install matplotlib azure-storage==0.36.0 pillow scikit-learn azure-mgmt-batchai
@@ -327,83 +327,83 @@ pip install matplotlib azure-storage==0.36.0 pillow scikit-learn azure-mgmt-batc
 
 ## <a name="data-acquisition-and-understanding"></a>Pozyskiwanie danych i ich analiza
 
-W tym scenariuszu publicznie dostępnych obrazów satelitarnej danych z [National rolnictwa obrazów programu](https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/) rozdzielczością 1 miernika. Wygenerowano zestawy 224 pikseli x 224 pikseli pliki PNG przycięte z oryginalnych danych NAIP i posortowane według ziemi Użyj etykiet z [National bazy ziemi obejmują danych](https://www.mrlc.gov/nlcd2011.php). Obraz przykładowej z etykietą "Developed" jest wyświetlany w pełnym rozmiarze:
+W tym scenariuszu zdjęcia lotnicze publicznie dostępnych danych z [National rolnictwa obrazach programu](https://www.fsa.usda.gov/programs-and-services/aerial-photography/imagery-programs/naip-imagery/) rozdzielczością 1 miernika. Firma Microsoft ma wygenerowanych zestawów 224 pikseli x 224 pikseli pliki PNG przycięte z oryginalnych danych NAIP i posortowane zgodnie z ziemi Użyj etykiet z [National ziemi obejmują Database](https://www.mrlc.gov/nlcd2011.php). Przykładowy obraz z etykietą "Developed" jest wyświetlana w pełnym rozmiarze:
 
-![Na kafelku próbki rozwinięte ziemi](media/scenario-aerial-image-classification/sample-tile-developed.png)
+![Kafelek przykładowe opracowanych ziemi](media/scenario-aerial-image-classification/sample-tile-developed.png)
 
-Zestawy zrównoważonym klasy ~ 44 k i 11 k obrazy służą do uczenia modelu i sprawdzania poprawności, odpowiednio. Przedstawiony zestawu wdrażania modelu w obrazie k ~ 67 dzielenie na mniejsze strony Województwo Middlesex, MA--nowej Anglii badań i rozwoju (NERD) Centrum głównej z firmy Microsoft. Aby uzyskać więcej informacji na jak te zestawy obrazu zostały wykonane, zobacz [repozytorium git Embarrassingly równoległych klasyfikacji obrazu](https://github.com/Azure/Embarrassingly-Parallel-Image-Classification).
+Zestawy zrównoważoną pod względem klasy ~ 44 k i 11 k obrazy są używane do szkolenia modelu i sprawdzanie poprawności, odpowiednio. Pokażemy, wdrażanie modelu w obrazie k ~ 67 zestawu dzielenie na mniejsze strony Middlesex hrabstwa, MA — Centrum rozwoju (NERD) i badań nowej Anglii głównej z firmy Microsoft. Aby uzyskać więcej informacji na temat jak zostały zbudowane tych zestawów obrazu, zobacz [repozytorium git zaskakująco równoległe Klasyfikacja obrazów](https://github.com/Azure/Embarrassingly-Parallel-Image-Classification).
 
-![Lokalizacja Middlesex Województwo, Massachusetts](media/scenario-aerial-image-classification/middlesex-ma.png)
+![Lokalizacja Middlesex hrabstwa, Massachusetts](media/scenario-aerial-image-classification/middlesex-ma.png)
 
-Podczas instalacji ustawia satelitarnej obraz używany w tym przykładzie zostały przeniesione do utworzonego konta magazynu. Szkolenie, weryfikacji i obrazy operationalization są wszystkie pliki PNG z rozdzielczością jeden piksel za metr kwadratowy 224 pikseli x 224 pikseli. Obrazy szkolenia i sprawdzania poprawności ma zostały podzielone na podfoldery na podstawie ich ziemi Użyj etykiety. (Ziemi Użyj etykiet obrazów operationalization są nieznane i w wielu przypadkach niejednoznaczne; niektóre z tych obrazów zawierają wiele typów ziemi). Aby uzyskać więcej informacji na jak te zestawy obrazu zostały wykonane, zobacz [repozytorium git Embarrassingly równoległych klasyfikacji obrazu](https://github.com/Azure/Embarrassingly-Parallel-Image-Classification).
+Podczas instalacji zestawy obrazów z powietrza użytego w tym przykładzie zostały przeniesione do konta magazynu, który został utworzony. Szkolenia, weryfikacji i operacjonalizacji obrazy są wszystkie pliki PNG 224 pikseli x 224 pikseli przy rozdzielczości jeden piksel na metr kwadratowy. Szkolenia i sprawdzania poprawności obrazów mają został podzielony na podfoldery na podstawie ich etykiety Użyj ziemi. (Ziemi Użyj etykiet obrazów operacjonalizacji są nieznane i w wielu przypadkach niejednoznaczne; niektóre z tych obrazów zawierają wiele typów ziemi). Aby uzyskać więcej informacji na temat jak zostały zbudowane tych zestawów obrazu, zobacz [repozytorium git zaskakująco równoległe Klasyfikacja obrazów](https://github.com/Azure/Embarrassingly-Parallel-Image-Classification).
 
-Aby wyświetlić przykład obrazów w magazynie Azure konta (opcjonalnie):
+Aby wyświetlić przykład, że obrazy w usłudze Azure storage account (opcjonalnie):
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com).
-1. Wyszukaj nazwę konta magazynu na pasku wyszukiwania wzdłuż górnej części ekranu. Kliknij konto magazynu w wynikach wyszukiwania.
-2. Kliknij łącze "Blob" w okienku głównym na koncie magazynu.
-3. Polecenie kontenera o nazwie "pociągu." Należy wyświetlić listę katalogów o nazwie zgodnie z ziemi użycia.
-4. Kliknij dowolną z tych katalogów można załadować listy obrazów, które zawiera.
-5. Kliknij dowolny obraz i pobierz go, aby wyświetlić obraz.
-6. W razie potrzeby kliknij kontenery o nazwie "test" i "middlesexma2016", aby wyświetlić ich zawartość również.
+1. Wyszukaj nazwę konta magazynu, na pasku wyszukiwania u góry ekranu. Kliknij na swoim koncie magazynu w wynikach wyszukiwania.
+2. Kliknij link "Blob", w okienku głównym konta magazynu.
+3. Kliknij kontener o nazwie "train". Powinien zostać wyświetlony listę katalogów o nazwie zgodnej ze ziemi użycia.
+4. Kliknij dowolny z tych katalogów, aby załadować listę obrazów, które zawiera.
+5. Kliknij dowolny obraz, a następnie pobrać ją, aby wyświetlić obraz.
+6. Jeśli to konieczne, należy kliknąć kontenerów o nazwie "test" i "middlesexma2016", aby wyświetlić ich zawartość również.
 
 ## <a name="modeling"></a>Modelowanie
 
-### <a name="training-models-with-azure-batch-ai"></a>Modele uczenia AI usługi partia zadań Azure
+### <a name="training-models-with-azure-batch-ai"></a>Szkolenie modeli przy użyciu usługi Azure Batch AI
 
-`run_batch_ai.py` Skryptu w podfolderze "Code\02_Modeling" projektu Workbench służy do wysyłania zadania wsadowego AI szkolenia. To zadanie retrains klasyfikatora obrazu DNN wybierany przez użytkownika (AlexNet lub 18 ResNet pretrained na ImageNet). Głębokość ponownego trenowania można również określić: ponownego trenowania tylko ostatnią warstwą sieci może zmniejszyć overfitting kilka przykładów szkolenia dostępnych, podczas dostosowywania całej sieci (lub, w przypadku AlexNet, pełni połączonych warstwy) może prowadzić do większa modelu wydajność, gdy zestaw szkoleniowy jest wystarczająco duża.
+`run_batch_ai.py` Skryptu w podfolderze "Code\02_Modeling" Projekt aplikacji Workbench jest używany do wysyłania zadania usługa Batch AI Training. To zadanie retrains klasyfikatora obraz DNN wybierany przez użytkownika (AlexNet lub siecią ResNet 18, wstępnie przetrenowane na sieci ImageNet). Głębokość ponownego szkolenia można również określić: ponownego trenowania tylko ostatnia warstwa sieci może zmniejszyć overfitting, gdy kilka próbek szkoleniowych dostępnych, podczas dostosowywania całej sieci (lub dla AlexNet, w pełni połączone warstwy) może prowadzić do modelu większa wydajność, gdy zestaw szkoleniowy jest wystarczająco duży.
 
-Po zakończeniu zadania szkolenia, ten skrypt zapisuje modelu (wraz z plikiem mapowanie między modelu całkowitą w danych wyjściowych i etykiety ciąg opisujący) i prognozy do magazynu obiektów blob. Zadanie PRZYNĘTA plik dziennika jest analizowana wyodrębnić timecourse poprawy szybkości błąd za pośrednictwem epok szkolenia. Timecourse poprawy szybkości błąd jest rejestrowany AML Workbench Historia uruchomień funkcji w celu przeglądania ich później.
+Po zakończeniu zadania szkolenia ten skrypt zapisuje w magazynie obiektów blob modelu (wraz z pliku mapowania między modelu liczby całkowitej w danych wyjściowych i etykiety ciąg opisujący) i prognozy. Można wyodrębnić timecourse błąd stawki podwyższania za pośrednictwem epok szkolenia jest analizowany plik dziennika zadania PRZYNĘTY. Timecourse poprawy szybkości błąd jest rejestrowany wpis AML Workbench historii uruchamiania funkcji w celu przeglądania ich później.
 
-Wybierz nazwę uczonego modelu, typ modelu pretrained i ponownego trenowania głębokość. Zapis opcje wskazana w poniższym poleceniu zacznij ponownego trenowania, wykonując polecenie z usługi Azure ML interfejsu wiersza polecenia:
+Wybierz nazwę uczonego modelu, typ modelu, wstępnie przetrenowane i głębi ponownego trenowania. Zapis wybrane opcje w przypadku, gdy wskazane w następującym poleceniu zacznij ponownego trenowania, wykonując polecenie z usługi Azure ML interfejsu wiersza polecenia:
 
 ```
 az ml experiment submit -c local Code\02_Modeling\run_batch_ai.py --config_filename Code/settings.cfg --output_model_name [unique model name, alphanumeric characters only] --pretrained_model_type {alexnet,resnet18} --retraining_type {last_only,fully_connected,all} --num_epochs 10
 ```
 
-Oczekiwane uczenia maszynowego Azure Uruchom niezbędne do wykonania około pół godziny. Zaleca się uruchomienie kilku poleceń podobne (zróżnicowanie nazwę modelu danych wyjściowych, typ modelu pretrained i ponownego trenowania głębokość) tak, aby można było porównać wydajności modeli uczenia z różnych metod.
+Oczekiwać, że usługa Azure Machine Learning, uruchom, aby zająć około pół godziny, aby zakończyć. Firma Microsoft zaleca uruchomienie kilku poleceń podobne (zmieniającego się Nazwa wyjściowego w modelu, typ modelu, wstępnie przetrenowane i ponownego trenowania głębokość) tak, aby porównać wydajność modeli skonfigurowanych pod kątem przy użyciu różnych metod.
 
-### <a name="training-models-with-mmlspark"></a>Modele szkolenia MMLSpark
+### <a name="training-models-with-mmlspark"></a>Szkolenie modeli przy użyciu MMLSpark
 
-`run_mmlspark.py` Skryptu w podfolderze "Code\02_Modeling" projektu Workbench służy do uczenia [MMLSpark](https://github.com/Azure/mmlspark) modelu klasyfikacji obrazu. Skrypt featurizes pierwszy szkolenia zestawu obrazów przy użyciu klasyfikatora DNN pretrained obrazu w zestawie danych ImageNet (AlexNet lub ResNet warstwy 18). Skrypt używa następnie obrazy featurized do uczenia modelu MMLSpark (losowe lasu lub modelu Regresja logistyczna) do klasyfikowania obrazów. Zestaw testów obrazu jest następnie featurized i oceniane z trenowanego modelu. Dokładność prognoz modelu w zestawie testów jest obliczana i rejestrowany funkcji Historia uruchomień Azure Machine Learning Workbench. Na koniec trenowanego modelu MMLSpark i jego prognoz dla zestawu testu są zapisywane do magazynu obiektów blob.
+`run_mmlspark.py` Skryptu w podfolderze "Code\02_Modeling" Projekt aplikacji Workbench jest używane do trenowania [MMLSpark](https://github.com/Azure/mmlspark) modeli klasyfikacji obrazów. Featurizes pierwszy skrypt szkolenia zestawu obrazów przy użyciu klasyfikatora obrazu, który DNN wstępnie przetrenowane na danych sieci ImageNet (AlexNet lub siecią ResNet warstwy 18). Skrypt następnie używa neural obrazów do szkolenia modelu MMLSpark (losowe lasu lub model regresji logistycznej) do klasyfikowania obrazów. Zestaw obrazów testu jest następnie neural i oceniane za pomocą uczonego modelu. Dokładność modelu prognozy dla zestawu testów jest obliczana, a zalogowany do usługi Azure Machine Learning Workbench w historii uruchamiania funkcji. Na koniec uczonego modelu MMLSpark i jej prognozy w zestawie testów są zapisywane do magazynu obiektów blob.
 
-Wybierz nazwę modelu danych wyjściowych unikatowy trenowanego modelu, typ pretrained modelu i typu modelu MMLSpark. Zapis opcje wskazana w szablonie następujące polecenia zacznij ponownego trenowania, wykonując polecenie z usługi Azure ML interfejsu wiersza polecenia:
+Wybierz nazwę unikatową danych wyjściowych modelu uczonego modelu, typ wstępnie przetrenowane modelu i typu modelu MMLSpark. Zapis wybrane opcje w przypadku, gdy wskazane w szablonie następujące polecenia, następnie rozpocząć ponownego trenowania, wykonując polecenie z usługi Azure ML interfejsu wiersza polecenia:
 
 ```
 az ml experiment submit -c myhdi Code\02_Modeling\run_mmlspark.py --config_filename Code/settings.cfg --output_model_name [unique model name, alphanumeric characters only] --pretrained_model_type {alexnet,resnet18} --mmlspark_model_type {randomforest,logisticregression}
 ```
 
-Dodatkowe `--sample_frac` parametru może służyć do nauczenia i przetestowania modelu z podzbioru dostępnych danych. Przy użyciu ułamek małej przykładowej zmniejsza wymagania środowiska uruchomieniowego i pamięci kosztem dokładność trenowanego modelu. (Na przykład przebiegu o `--sample_frac 0.1` może potrwać około 20 minut.) Aby uzyskać więcej informacji na ten temat oraz innych parametrów, uruchom `python Code\02_Modeling\run_mmlspark.py -h`.
+Dodatkowe `--sample_frac` parametru może służyć do nauczenia i przetestowania modelu przy użyciu podzestawu danych o dostępności. Za pomocą ułamek małą próbkę zmniejsza wymagania środowiska uruchomieniowego i pamięci, kosztem dokładności uczonego modelu. (Na przykład Uruchom z `--sample_frac 0.1` powinien zająć około 20 minut.) Aby uzyskać więcej informacji na ten temat i inne parametry uruchamiania `python Code\02_Modeling\run_mmlspark.py -h`.
 
-Zaleca się uruchomić ten skrypt kilka razy z różnych parametrów wejściowych. Następnie można porównywać wydajności wynikowy modeli w funkcji Uruchom historii Azure Machine Learning Workbench.
+Zachęcamy użytkowników, aby uruchomić ten skrypt kilka razy z różnymi parametrami, danych wejściowych. Następnie można porównać wydajność wynikowy modeli w aplikacji Azure Machine Learning Workbench w historii uruchamiania funkcji.
 
-### <a name="comparing-model-performance-using-the-workbench-run-history-feature"></a>Porównanie wydajności modelu przy użyciu funkcji Workbench Uruchom historii
+### <a name="comparing-model-performance-using-the-workbench-run-history-feature"></a>Porównywanie wydajności modeli za pomocą funkcji historii uruchamiania w aplikacji Workbench
 
-Po wykonaniu dwóch lub więcej szkoleń uruchamia obu typów, przejdź do funkcji Uruchom historii w Workbench, klikając ikonę zegara na pasku menu po lewej stronie. Wybierz `run_mmlspark.py` z listy skryptów po lewej stronie. Okienko ładuje porównanie dokładność zestaw testów dla wszystkich działań. Aby wyświetlić więcej szczegółów, przewiń w dół i kliknij nazwę indywidualnego uruchomienia.
+Po wykonaniu dwóch lub więcej szkoleń uruchamia obu typów, przejdź do funkcji historii uruchamiania w aplikacji Workbench, klikając ikonę zegara, na pasku menu po lewej stronie. Wybierz `run_mmlspark.py` z listy skryptów po lewej stronie. Okienko ładuje, porównywanie dokładność zestawu testów dla wszystkich przebiegów. Aby wyświetlić więcej szczegółów, przewiń w dół i kliknij nazwę pojedyncze uruchomienie.
 
 ## <a name="deployment"></a>Wdrożenie
 
-Aby zastosować jedną przeszkolone modeli satelitarnej obrazy Ustawianie widoku kafelków Województwo Middlesex, agenta zarządzania przy użyciu zdalne wykonywanie kodu w usłudze HDInsight, Wstaw nazwę modelu odpowiednie do następującego polecenia i wykonaj go:
+Aby zastosować jedną wytrenowane modele powietrza obrazów fragmentacji Middlesex hrabstwa, MA na HDInsight przy użyciu zdalnego wykonania, Wstaw nazwę modelu odpowiednią do następującego polecenia, a następnie uruchomić go:
 
 ```
 az ml experiment submit -c myhdi Code\03_Deployment\batch_score_spark.py --config_filename Code/settings.cfg --output_model_name [trained model name chosen earlier]
 ```
 
-Dodatkowe `--sample_frac` parametru może służyć do operacjonalizacji modelu z podzbioru dostępnych danych. Przy użyciu ułamek małej przykładowej zmniejsza wymagania środowiska uruchomieniowego i pamięci kosztem kompletności prognozowania. Aby uzyskać więcej informacji na ten temat oraz innych parametrów, uruchom `python Code\03_Deployment\batch_score_spark -h`.
+Dodatkowe `--sample_frac` parametru może służyć do obsługi operacji modelu przy użyciu podzestawu danych o dostępności. Za pomocą ułamek małą próbkę zmniejsza wymagania środowiska uruchomieniowego i pamięci kosztem prognozowania informacje były kompletne. Aby uzyskać więcej informacji na ten temat i inne parametry uruchamiania `python Code\03_Deployment\batch_score_spark -h`.
 
-Ten skrypt zapisuje prognoz modelu do swojego konta magazynu. Prognozy mogą być zbadana, zgodnie z opisem w następnej sekcji.
+Ten skrypt zapisuje określane są przewidywania modelu do swojego konta magazynu. Prognozy są tym może sprawdzić, jak opisano w następnej sekcji.
 
 ## <a name="visualization"></a>Wizualizacja
 
-Notesu Jupyter "Model analizy prognozowania" w podfolderze "Code\04_Result_Analysis" projektu Workbench wizualizuje modelu prognozy. Obciążenia i uruchom notesu w następujący sposób:
-1. Otwórz projekt w Workbench i ikonę w folderze ("Files") wraz z menu po lewej stronie, aby załadować listy zawartości katalogu.
-2. Przejdź do podfolderu "Code\04_Result_Analysis" i kliknij na Notes o nazwie "Model analizy prognozowania". Powinien zostać wyświetlony renderowania podglądu, notesu.
-3. Kliknij przycisk "Start notesu Server" załadować notesu.
-4. W pierwszej komórki wprowadź nazwę modelu, którego wyniki chcesz przeanalizować wskazanych miejscach.
+"W modelu prognozowania, analizy" notesu programu Jupyter w podfolderze "Code\04_Result_Analysis" Projekt aplikacji Workbench wizualizuje modelu prognozy. Obciążenia, a następnie uruchom Notes w następujący sposób:
+1. Otwórz projekt w aplikacji Workbench, a następnie kliknij przycisk w folderze ikonę ("Files") wraz z menu po lewej stronie, aby załadować listy zawartości katalogu.
+2. Przejdź do podfolderu "Code\04_Result_Analysis" i kliknij Notes o nazwie "Model prognozowania analizy". Renderowanie w wersji zapoznawczej, notesu powinna być wyświetlana.
+3. Kliknij przycisk "Uruchom serwer notesu" załadować notesu.
+4. W pierwszej komórki wprowadź nazwę modelu, którego wyniki chcesz analizować symbol.
 5. Kliknij pozycję "komórki -> Uruchom wszystkie" do wykonania wszystkich komórek w notesie.
-6. Odczyt wraz notesu, aby dowiedzieć się więcej na temat analizy i wizualizacje, które stanowi.
+6. Przeczytaj, wraz z notesu, aby dowiedzieć się więcej na temat analizy i wizualizacje, które stanowi.
 
 ## <a name="cleanup"></a>Czyszczenie
-Po zakończeniu przykładzie, zaleca się usunąć wszystkie zasoby, które zostały utworzone, wykonując następujące polecenie z interfejsu wiersza polecenia platformy Azure:
+Po zakończeniu przykładu, zaleca się usunięcie wszystkich zasobów utworzonych za pomocą następującego polecenia z interfejsu wiersza polecenia platformy Azure:
 
   ```
   az group delete --name %AZURE_RESOURCE_GROUP%
@@ -411,19 +411,19 @@ Po zakończeniu przykładzie, zaleca się usunąć wszystkie zasoby, które zost
 
 ## <a name="references"></a>Dokumentacja
 
-- [Repozytorium Embarrassingly równoległych klasyfikacji obrazu](https://github.com/Azure/Embarrassingly-Parallel-Image-Classification)
-   - W tym artykule opisano budowa zestawu danych z bezpłatnych obrazów i etykiety
+- [Repozytorium zaskakująco równoległe Klasyfikacja obrazów](https://github.com/Azure/Embarrassingly-Parallel-Image-Classification)
+   - W tym artykule opisano zestaw danych konstrukcji od aplikacje dostępne bezpłatnie i etykiety
 - [MMLSpark](https://github.com/Azure/mmlspark) repozytorium GitHub
-   - Zawiera dodatkowe przykłady modelu uczenie i Ewaluacja z MMLSpark
+   - Zawiera dodatkowe przykłady szkolenia modeli oraz ocena o MMLSpark
 
 ## <a name="conclusions"></a>Wnioski
 
-Azure Machine Learning Workbench pomaga analityków danych, łatwe wdrażanie ich kodu dla zdalnego obliczeniowych elementów docelowych. W tym przykładzie kod lokalny szkolenia MMLSpark została wdrożona dla wykonania zdalnego w klastrze usługi HDInsight i lokalnego skryptu uruchomione zadania szkolenia w klastrze GPU AI usługi partia zadań Azure. Funkcja historii wykonywania Azure Machine Learning Workbench w śledzić wydajność wielu modeli i pomogły zidentyfikować najdokładniejszych modelu. Funkcja notesów Jupyter w Workbench pomogła wizualizacji prognoz naszych modeli w środowisku interaktywnych, graficznego.
+Usługa Azure Machine Learning Workbench pomaga analitykom łatwe wdrażanie swój kod w zdalnym obliczeniowych elementów docelowych. W tym przykładzie kod szkolenia MMLSpark lokalny został wdrożony w zakresie wykonywania zdalnego w klastrze usługi HDInsight, a lokalnego skryptu uruchomione zadania szkolenia w klastrze usługi Azure Batch AI GPU. Usługa Azure Machine Learning Workbench w historii uruchamiania funkcji śledzone wydajność wielu modeli i pomogło nam to identyfikowanie najdokładniejszych modelu. Funkcja notesów programu Jupyter w aplikacji Workbench pomogła, wizualizowanie naszych modeli prognoz w środowisku interakcyjnego, graficznego.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Umożliwiają lepsze zapoznanie się w tym przykładzie:
-- W funkcji Uruchom historii Azure Machine Learning Workbench kliknij symbole koło zębate, aby wybrać, które wykresów i metryki są wyświetlane.
-- Sprawdź przykładowe skrypty dla instrukcji wywoływania `run_logger`. Sprawdź, że rozumiesz, jak są rejestrowane wszystkie metryki.
-- Sprawdź przykładowe skrypty dla instrukcji wywoływania `blob_service`. Sprawdź, że rozumiesz, jak przeszkolone modeli i Prognozowanie są przechowywane i pobierane z chmury.
-- Przejrzyj zawartość kontenerów utworzone na Twoim koncie magazynu obiektów blob. Upewnij się, że rozumiesz, które skryptu lub polecenia jest odpowiedzialny za tworzenie każdej grupy plików.
-- Zmodyfikuj skrypt szkolenia w celu przeszkolenia innego typu modelu MMLSpark lub zmienić hyperparameters modelu. Użyj funkcji Historia uruchomień, aby ustalić, czy zmiany zwiększyć lub zmniejszyć dokładności modelu.
+Aby szczegółowe informacje w tym przykładzie:
+- W aplikacji Azure Machine Learning Workbench w historii uruchamiania funkcji kliknij przycisk symbole koła zębatego, aby wybrać, które wykresów i metryki są wyświetlane.
+- Sprawdź przykładowe skrypty do instrukcji podczas wywoływania `run_logger`. Upewnij się, że rozumiesz, jak jest rejestrowane wszystkie metryki.
+- Sprawdź przykładowe skrypty do instrukcji podczas wywoływania `blob_service`. Sprawdź, że rozumiesz sposób przeszkolone modele i prognozy są przechowywane i pobierane z chmury.
+- Zapoznaj się z zawartość kontenerów utworzone w ramach konta magazynu obiektów blob. Upewnij się, że rozumiesz, której skrypt lub polecenie jest odpowiedzialny za tworzenie każdej grupy plików.
+- Zmodyfikuj skrypt szkoleniowy, to w opracowywaniu innego typu modelu MMLSpark lub zmienić hiperparametrów modelu. Funkcja historii uruchamiania służy do określenia, czy zmiany zwiększanie lub zmniejszanie dokładności modelu.

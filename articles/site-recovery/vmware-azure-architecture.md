@@ -3,14 +3,14 @@ title: Architektura replikacji platformy Azure w usłudze Azure Site Recovery VM
 description: Ten artykuł zawiera omówienie składników i architektury używanych podczas replikowania lokalnych maszyn wirtualnych z programu VMware na platformę Azure za pomocą usługi Azure Site Recovery
 author: rayne-wiselman
 ms.service: site-recovery
-ms.date: 08/29/2018
+ms.date: 09/12/2018
 ms.author: raynew
-ms.openlocfilehash: 4a97c44226d875a08f81a6306fc9ddd4ee29c409
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 498c41324bfc85f6f91acc8000df4c34856cf428
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288145"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44715758"
 ---
 # <a name="vmware-to-azure-replication-architecture"></a>Architektura Azure replikacji VMware –
 
@@ -36,16 +36,23 @@ Poniższej tabeli i grafika przedstawia ogólny widok składniki używane na pot
 
 ## <a name="replication-process"></a>Proces replikacji
 
-1. Po włączeniu replikacji dla maszyny Wirtualnej, rozpocznie replikowanie zgodnie z zasadami replikacji. 
+1. Po włączeniu replikacji dla maszyny Wirtualnej, rozpoczyna się Replikacja początkowa do usługi Azure storage, za pomocą zasad określonej replikacji. Pamiętaj o następujących kwestiach:
+    - W przypadku maszyn wirtualnych VMware replikacja jest na poziomie bloku, w pobliżu ciągłe, przy użyciu agenta usługi mobilności, które są uruchomione na maszynie Wirtualnej.
+    - Są stosowane żadne ustawienia zasad replikacji:
+        - **Próg celu punktu odzyskiwania**. To ustawienie nie wpływa replikacji. Pomaga przy użyciu funkcji monitorowania. Zdarzenie jest zgłaszane, a opcjonalnie wysłana wiadomość e-mail, jeśli bieżący cel punktu odzyskiwania przekracza próg limitu, który określisz.
+        - **Czas przechowywania punktu odzyskiwania**. To ustawienie określa, jak daleko wstecz w czasie, który ma nastąpić przejście po wystąpieniu przerwy w działaniu. Maksymalny czas przechowywania w magazynie premium storage wynosi 24 godziny. W magazynie standard storage to 72 godziny. 
+        - **Migawki spójne z aplikacji**. Migawka spójności aplikacji może potrwać co 1 do 12 godzin, zależnie od potrzeb aplikacji. Migawki są migawki standardowych obiektów blob platformy Azure. Agenta mobilności uruchomionego na maszynie Wirtualnej żąda migawkę usługi VSS zgodnie z tego ustawienia i zakładki wskazujące punkt w czasie jako spójne na poziomie aplikacji w usłudze stream replikacji.
+
 2. Ruch są replikowane do usługi Azure storage publicznych punktów końcowych za pośrednictwem Internetu. Alternatywnie można użyć usługi Azure ExpressRoute za pomocą [publicznej komunikacji równorzędnej](../expressroute/expressroute-circuit-peerings.md#azure-public-peering). Replikowanie ruchu za pośrednictwem lokacja lokacja wirtualnej sieci prywatnej (VPN) z lokacji lokalnej do platformy Azure nie jest obsługiwane.
-3. Początkowa kopia danych maszyny Wirtualnej są replikowane do usługi Azure storage.
-4. Po zakończeniu replikacji początkowej rozpoczyna się replikacja zmian różnicowych do platformy Azure. Śledzone zmiany dla maszyny są przechowywane w pliku hrl.
-5. Komunikacja odbywa się w następujący sposób:
+3. Po zakończeniu replikacji początkowej rozpoczyna się replikacja zmian różnicowych do platformy Azure. Śledzone zmiany dla maszyny są wysyłane do serwera przetwarzania.
+4. Komunikacja odbywa się w następujący sposób:
 
     - Maszyny wirtualne komunikować się z lokalnym serwerem konfiguracji na porcie HTTPS 443 dla ruchu przychodzącego na potrzeby zarządzania replikacją.
     - Serwer konfiguracji organizuje replikację za pomocą platformy Azure za pośrednictwem portu HTTPS 443 dla ruchu wychodzącego.
     - Maszyny wirtualne wysyłają dane replikacji do serwera przetwarzania (uruchomionego na komputerze serwera konfiguracji) na porcie HTTPS 9443 dla ruchu przychodzącego. Ten port może być modyfikowany.
     - Serwer przetwarzania odbiera dane replikacji, optymalizuje je szyfruje i wysyła je do usługi Azure storage za pośrednictwem portu 443 wychodzących.
+
+
 
 
 **Z programu VMware na proces replikacji platformy Azure**
@@ -65,7 +72,7 @@ Po skonfigurowaniu replikacji i uruchamianie próbnego odzyskiwania po awarii (T
     * **Tymczasowy serwer przetwarzania na platformie Azure**: Aby zakończyć się niepowodzeniem, powrót po awarii z platformy Azure, należy skonfigurować Maszynę wirtualną platformy Azure do działania jako serwer przetwarzania do obsługi replikacji z platformy Azure. Po zakończeniu powrotu po awarii można usunąć tę maszynę wirtualną.
     * **Połączenie sieci VPN**: do powrotu po awarii, potrzebujesz połączenia sieci VPN (lub usługi ExpressRoute) z sieci platformy Azure do lokacji lokalnej.
     * **Osobny główny serwer docelowy**: Domyślnie główny serwer docelowy, który został zainstalowany na serwerze konfiguracji w lokalnych zasobów programu VMware maszyny Wirtualnej obsługuje powrót po awarii. Jeśli musisz zakończyć się niepowodzeniem ponownie dużych ilości ruchu należy skonfigurować oddzielny lokalny główny serwer docelowy do tego celu.
-    * **Zasady powrotu po awarii**: aby móc przeprowadzić ponowną replikację do lokacji lokalnej, należy utworzyć zasady powrotu po awarii. Zasada została automatycznie utworzona podczas tworzenia zasad replikacji ze środowiska lokalnego do platformy Azure.
+    * **Zasady powrotu po awarii**: aby móc przeprowadzić ponowną replikację do lokacji lokalnej, należy utworzyć zasady powrotu po awarii. Te zasady są tworzone podczas tworzenia zasad replikacji ze środowiska lokalnego do platformy Azure.
 4. Po składniki znajdują się w miejscu, powrót po awarii odbywa się w trzy czynności:
 
     - Etap 1: Ponowne włączanie ochrony maszyn wirtualnych platformy Azure, dzięki czemu mają być replikowane na platformie Azure do lokalnych maszyn wirtualnych VMware.

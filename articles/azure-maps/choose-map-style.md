@@ -4,17 +4,16 @@ description: Więcej informacji na temat usługi Azure Maps style powiązane fun
 author: walsehgal
 ms.author: v-musehg
 ms.date: 08/31/2018
-ms.topic: how-to-guides
+ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.custom: mvc
-ms.openlocfilehash: b95e3c325160d1c0b775320e25fdd40514b02b9f
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 160752cd0467ef307f7a45b1e0d703c7ddd5d773
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43666875"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720807"
 ---
 # <a name="choose-a-map-style-in-azure-maps"></a>Wybierz styl z mapy usługi Azure Maps
 Usługi Azure Maps ma cztery style różnych mapowań do wyboru. Aby uzyskać więcej informacji o stylach mapy, zobacz [obsługiwane style mapy w usługi Azure Maps](./supported-map-styles.md). W tym artykule pokazano, jak za pomocą funkcji stylu związane ustawienie stylu przy ładowaniu mapy, ustawienie nowego stylu i korzystanie z kontrolki selektor stylu.

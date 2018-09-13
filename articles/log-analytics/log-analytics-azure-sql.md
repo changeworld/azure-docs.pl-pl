@@ -15,22 +15,22 @@ ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
 ms.component: na
-ms.openlocfilehash: 82845f475857f9a911febd496e86eb2a60f69c25
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: b8d8acda4ff1dee0643227c3fa2375c634c1b4a4
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782247"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44717424"
 ---
-# <a name="monitor-azure-sql-databases-using-azure-sql-analytics-preview"></a>Monitor Azure SQL Database przy użyciu usługi Azure SQL Analytics (wersja zapoznawcza)
+# <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorowanie usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics (wersja zapoznawcza)
 
 ![Symbol usługi Azure SQL Analytics](./media/log-analytics-azure-sql/azure-sql-symbol.png)
 
-Usługa Azure SQL Analytics to w chmurze rozwiązanie do monitorowania wydajności bazy danych SQL Azure, pul elastycznych i wystąpienia zarządzane przez usługę na dużą skalę i w ramach wielu subskrypcji do monitorowania. Jego zbiera i wizualizuje ważne metryki wydajności bazy danych Azure SQL Database dzięki wbudowanym funkcjom analizy dla Rozwiązywanie problemów z wydajnością.
+Usługa Azure SQL Analytics to w chmurze rozwiązanie do monitorowania wydajności bazy danych Azure SQL, pul elastycznych i wystąpienia zarządzane przez usługę na dużą skalę i w ramach wielu subskrypcji do monitorowania. Jego zbiera i wizualizuje ważne metryki wydajności bazy danych Azure SQL Database dzięki wbudowanym funkcjom analizy dla Rozwiązywanie problemów z wydajnością.
 
 Za pomocą metryk, które są zbierane za pomocą rozwiązania, można utworzyć niestandardowe reguły monitorowania i alertów. To rozwiązanie pomaga zidentyfikować problemy w każdej warstwie stosu aplikacji. Aby przedstawić dane dotyczące wszystkich usługi Azure SQL bazy danych, pul elastycznych i baz danych w wystąpieniach zarządzanych w jeden obszar roboczy usługi Log Analytics używa metryki diagnostycznych platformy Azure wraz z widokami usługi Log Analytics. Usługa log Analytics pomaga gromadzić, korelować i wizualizować dane ze strukturą i bez struktury.
 
-Obecnie to rozwiązanie w wersji zapoznawczej obsługuje maksymalnie 200 000 baz danych SQL Azure i 5000 pule elastyczne SQL danego obszaru roboczego.
+Obecnie to rozwiązanie w wersji zapoznawczej obsługuje maksymalnie 200 000 baz danych Azure SQL i 5000 pule elastyczne SQL danego obszaru roboczego.
 
 Praktyczne omówienie na temat korzystania z rozwiązania Azure SQL Analytics i typowe scenariusze użycia Zobacz osadzone wideo:
 
@@ -39,7 +39,7 @@ Praktyczne omówienie na temat korzystania z rozwiązania Azure SQL Analytics i 
 
 ## <a name="connected-sources"></a>Połączone źródła
 
-Usługa Azure SQL Analytics to tylko monitorowanie rozwiązań pomocnicze przesyłanie strumieniowe dane diagnostyczne i telemetryczne do bazy danych SQL Azure, pul elastycznych i wystąpienia zarządzane przez usługę w chmurze. Zgodnie z agentów nie korzysta się z usługą Log Analytics, rozwiązanie nie obsługują monitorowanie maszyn wirtualnych lub lokalnych serwerach SQL, zobacz w poniższej tabeli zgodności.
+Usługa Azure SQL Analytics to tylko monitorowanie rozwiązań pomocnicze przesyłania strumieniowego dane diagnostyczne i telemetryczne dla baz danych Azure SQL, pul elastycznych i wystąpienia zarządzane przez usługę w chmurze. Zgodnie z agentów nie korzysta się z usługą Log Analytics, rozwiązanie nie obsługują monitorowanie maszyn wirtualnych lub lokalnych serwerach SQL, zobacz w poniższej tabeli zgodności.
 
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
@@ -62,9 +62,9 @@ Wykonaj poniższe kroki, aby dodać rozwiązania Azure SQL Analytics do swojego 
 5. W **Utwórz nowe rozwiązanie** obszaru, Utwórz nową lub wybierz istniejący obszar roboczy, który chcesz dodać do rozwiązania, a następnie kliknij przycisk **Utwórz**.  
     ![Dodaj do obszaru roboczego](./media/log-analytics-azure-sql/add-to-workspace.png)
 
-### <a name="configure-azure-sql-databases-and-elastic-pools-to-stream-diagnostics-telemetry"></a>Konfigurowanie bazy danych SQL Azure i pul elastycznych do strumienia dane diagnostyczne i telemetryczne
+### <a name="configure-azure-sql-databases-and-elastic-pools-to-stream-diagnostics-telemetry"></a>Konfigurowanie bazy danych Azure SQL i pule elastyczne umożliwiające dane diagnostyczne i telemetryczne strumienia
 
-Po utworzeniu rozwiązania Azure SQL Analytics w obszarze roboczym, aby monitorować wydajność bazy danych SQL Azure i/lub pul elastycznych, konieczne będzie **Skonfiguruj każdy** bazy danych SQL Azure i zasobów puli elastycznej mają do monitorowania, aby przesyłać strumieniowo jego dane diagnostyczne i telemetryczne do rozwiązania.
+Po utworzeniu rozwiązania Azure SQL Analytics w obszarze roboczym, aby monitorować wydajność bazy danych Azure SQL i/lub pul elastycznych, konieczne będzie **Skonfiguruj każdy** bazy danych SQL Azure i zasobów puli elastycznej mają do monitorowania, aby przesyłać strumieniowo jego dane diagnostyczne i telemetryczne do rozwiązania.
 
 - Włącz diagnostykę platformy Azure dla bazy danych Azure SQL i pul elastycznych i [ich konfigurowania pod kątem wysyłają dane do usługi Log Analytics](../sql-database/sql-database-metrics-diag-logging.md).
 
@@ -117,13 +117,13 @@ Usługa Azure SQL Database [Intelligent Insights](../sql-database/sql-database-i
 
 ![Azure SQL Analytics Insights](./media/log-analytics-azure-sql/azure-sql-sol-insights.png)
 
-### <a name="elastic-pool-and-database-reports"></a>Raporty elastycznej puli i bazy danych
+### <a name="elastic-pool-and-database-reports"></a>Elastycznej puli i bazy danych raportów
 
 Elastyczne pule i bazy danych ma swoje własne konkretne raporty pokazujące wszystkie dane, które są zbierane dla zasobu w określonym czasie.
 
 ![Usługa Azure SQL Database analizy](./media/log-analytics-azure-sql/azure-sql-sol-database.png)
 
-![Usługi Azure SQL Analytics elastycznej puli](./media/log-analytics-azure-sql/azure-sql-sol-pool.png)
+![Elastyczna Pula usługi Azure SQL](./media/log-analytics-azure-sql/azure-sql-sol-pool.png)
 
 ### <a name="query-reports"></a>Raporty zapytania
 
@@ -150,7 +150,7 @@ AzureMetrics
 > - Wymaganie wstępne konfigurowania ten alert jest tym monitorowane bazy danych strumienia metrykę diagnostyki (opcja "Wszystkich metryk") do rozwiązania.
 > - Zastąp cpu_percent wartość MetricName dtu_consumption_percent zamiast tego uzyskać wysoki wyników jednostek DTU.
 
-*Wysokie użycie procesora CPU na pule elastyczne usługi Azure SQL Database*
+*Wysokie użycie procesora CPU o pulach elastycznych usługi Azure SQL Database*
 
 ```
 AzureMetrics 

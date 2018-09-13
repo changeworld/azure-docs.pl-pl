@@ -9,12 +9,12 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: ronitr
-ms.openlocfilehash: 714fe94d295157f0d4d90139da98254f46794731
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: c4d9eb5f7105e0e1b16ad994d397885b9232a0ea
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42058797"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719532"
 ---
 # <a name="sql-database-dynamic-data-masking"></a>Baza danych SQL dynamiczne maskowanie danych
 
@@ -52,5 +52,5 @@ Aparat zaleceń DDM flag określonych pól z bazy danych jako potencjalnie poufn
 Zobacz [polecenia cmdlet usługi Azure SQL Database](https://docs.microsoft.com/powershell/module/azurerm.sql).
 
 ## <a name="set-up-dynamic-data-masking-for-your-database-using-rest-api"></a>Konfigurowanie dynamicznego maskowania danych dla bazy danych przy użyciu interfejsu API REST
-Zobacz [operacji dla baz danych Azure SQL Database](https://msdn.microsoft.com/library/dn505719.aspx).
+Zobacz [operacji dla usługi Azure SQL Database](https://msdn.microsoft.com/library/dn505719.aspx).
 

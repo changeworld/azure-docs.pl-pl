@@ -1,30 +1,30 @@
 ---
-title: Znajdź działa z dokładnością najlepszym i najniższego czas trwania w Azure Machine Learning Workbench | Dokumentacja firmy Microsoft
-description: Przypadek użycia end-to-end można znaleźć najlepsze dokładność za pośrednictwem interfejsu wiersza polecenia przy użyciu usługi Azure Machine Learning Workbench
+title: Znaleźć przebiegi z najlepszą dokładnością i najkrótszym czasem trwania w aplikacji Azure Machine Learning Workbench | Dokumentacja firmy Microsoft
+description: End-to-end przypadek użycia można znaleźć najlepszą dokładnością za pomocą interfejsu wiersza polecenia przy użyciu usługi Azure Machine Learning Workbench
 services: machine-learning
 author: totekp
 ms.author: kefzhou
 manager: akannava
 ms.reviewer: akannava, haining, mldocs, jmartens, jasonwhowell
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/29/2017
-ms.openlocfilehash: 077af8b5d3367dd2188cbd6e5d76aaf52512a1e8
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: d2fe951a97b18c95e647b45d799843a982100367
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34830803"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35941216"
 ---
-# <a name="find-runs-with-the-best-accuracy-and-lowest-duration"></a>Znajdź działa z dokładnością najlepszym i najniższego czas trwania
-Podana wielu uruchomień, jeden przypadek użycia jest znalezienie działa z najlepszym dokładności. Jednym z podejść jest użycie interfejsu wiersza polecenia (CLI) z [JMESPath](http://jmespath.org/) zapytania. Aby uzyskać więcej informacji o sposobie używania JMESPath w wiersza polecenia platformy Azure, zobacz [JMESPath Użyj zapytania z Azure CLI 2.0](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest). W poniższym przykładzie są tworzone cztery uruchamia dokładność wartości 0, 0,98, 1 lub 1. Uruchamia są filtrowane, jeśli są w zakresie `[MaxAccuracy-Threshold, MaxAccuracy]` gdzie `Threshold = .03`.
+# <a name="find-runs-with-the-best-accuracy-and-lowest-duration"></a>Znaleźć przebiegi z najlepszą dokładnością i najkrótszym czasem trwania
+Biorąc pod uwagę wiele przebiegów, jeden przypadek użycia jest znaleźć przebiegi z najlepszą dokładnością. Jedno z podejść jest użycie interfejsu wiersza polecenia (CLI) za pomocą [JMESPath](http://jmespath.org/) zapytania. Aby uzyskać więcej informacji o sposobie używania JMESPath w interfejsie wiersza polecenia platformy Azure, zobacz [z wiersza polecenia platformy Azure zapytań JMESPath użyj](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest). W poniższym przykładzie cztery uruchomienia są tworzone przy użyciu wartości dokładności 0 "," 0,98 "," 1 "i" 1. Przebiegi są odfiltrowywane, jeśli są one w zakresie `[MaxAccuracy-Threshold, MaxAccuracy]` gdzie `Threshold = .03`.
 
 ## <a name="sample-data"></a>Dane przykładowe
-Jeśli nie masz istniejących jest uruchamiany z `Accuracy` wartość następujące kroki Generowanie działa podczas wykonywania zapytań.
+Jeśli nie masz istniejącej jest uruchamiany z `Accuracy` wartość następujące kroki Generowanie przebiegi do wykonywania zapytań.
 
-Najpierw należy utworzyć plik Python w konsoli usługi Azure Machine Learning Workbench, nadaj jej nazwę `log_accuracy.py`i wklej poniższy kod:
+Najpierw utwórz plik w języku Python w usłudze Azure Machine Learning Workbench, nadaj jej nazwę `log_accuracy.py`i wklej następujący kod:
 ```python
 from azureml.logging import get_azureml_logger
 
@@ -38,7 +38,7 @@ if len(sys.argv) > 1:
 logger.log("Accuracy", accuracy_value)
 ```
 
-Następnie należy utworzyć plik `run.py`i wklej poniższy kod:
+Następnie należy utworzyć plik `run.py`i wklej następujący kod:
 ```python
 import os
 
@@ -47,20 +47,20 @@ for value in accuracy_values:
     os.system('az ml experiment submit -c local ./log_accuracy.py {}'.format(value))
 ```
 
-Na koniec Otwórz interfejs wiersza polecenia za pomocą narzędzia Workbench i uruchom polecenie `python run.py` przesłać cztery eksperymentów. Po zakończeniu działania skryptu, powinny pojawić się cztery więcej jest uruchamiany w `Run History` kartę.
+Wreszcie, Otwórz interfejs wiersza polecenia przy użyciu aplikacji Workbench i uruchom polecenie `python run.py` przesłać cztery eksperymentów. Po zakończeniu działania skryptu wyświetlony cztery więcej przebiegów w `Run History` kartę.
 
-## <a name="query-the-run-history"></a>Zapytanie Historia uruchomień
+## <a name="query-the-run-history"></a>Zapytanie historii uruchamiania
 Pierwsze polecenie znajduje się wartość maksymalna dokładność.
 ```powershell
 az ml history list --query '@[?Accuracy != null] | max_by(@, &Accuracy).Accuracy'
 ```
 
-Przy użyciu tej wartości maksymalnej dokładność `1` i wartość progową `0.03`, jest uruchamiana za pomocą drugiego polecenia filtruje `Accuracy` , a następnie sortuje uruchamia przez `duration` rosnącej.
+Przy użyciu tej wartości maksymalna dokładność `1` i wartość progową `0.03`, drugi filtry polecenia uruchamia się za pomocą `Accuracy` , a następnie sortuje działa przez `duration` rosnąco.
 ```powershell
 az ml history list --query '@[?Accuracy >= sum(`[1, -0.03]`)] | sort_by(@, &duration)'
 ```
 > [!NOTE]
-> Jeśli chcesz ściśle wyboru górna granica ma format zapytania ``@[?Accuracy >= sum(`[$max_accuracy_value, -$threshold]`) && Accuracy <= `$max_accuracy_value`]``
+> Jeśli chcesz ściśle wyboru górną granicę, ma format zapytania ``@[?Accuracy >= sum(`[$max_accuracy_value, -$threshold]`) && Accuracy <= `$max_accuracy_value`]``
 
 Jeśli używasz programu PowerShell, w poniższym kodzie użyto zmiennych lokalnych do przechowywania wartości progowej i maksymalna dokładność:
 ```powershell
@@ -71,4 +71,4 @@ az ml history list --query $find_runs_query
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji, zobacz [sposób użycia Historia uruchomień i metryki modelu w konsoli usługi Azure Machine Learning Workbench](how-to-use-run-history-model-metrics.md).    
+Aby uzyskać więcej informacji na temat rejestrowania, zobacz [sposób użycia historię uruchomień i metryk modelu w aplikacji Azure Machine Learning Workbench](how-to-use-run-history-model-metrics.md).    

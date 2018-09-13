@@ -1,7 +1,7 @@
 ---
-title: Tworzenie niestandardowe słowo aktywujące
-description: Tworzenie niestandardowe słowo aktywujące dla zestawu Speech Devices SDK.
-titleSuffix: Microsoft Cognitive Services
+title: Utwórz niestandardowe słowo aktywujące
+description: Dowiedz się, jak utworzyć niestandardowe słowo aktywujące dla zestawu Speech Devices SDK.
+titleSuffix: Azure Cognitive Services
 services: cognitive-services
 author: v-jerkin
 ms.service: cognitive-services
@@ -9,69 +9,69 @@ ms.technology: speech
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 615a901c70fff92141442699ea6e4b8fce1c9ace
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: e1a74828213b595e6955a750904de7a3c2a5a865
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39282577"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719090"
 ---
-# <a name="create-a-custom-wake-word-using-speech-service"></a>Utwórz niestandardowe słowo aktywujące przy użyciu usługi mowy
+# <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Utwórz niestandardowe słowo aktywujące przy użyciu usługi mowy
 
-Urządzenie jest zawsze nasłuchiwanie słowo aktywujące (lub frazy). Na przykład "Hey Cortana" to słowo aktywujące Asystenta Cortany. Gdy użytkownik odpowie słowo aktywujące, urządzenie zostanie uruchomione, wysyła wszystkie kolejne audio do chmury, dopóki użytkownik zatrzymuje wypowiedzi. Dostosowywanie usługi słowo aktywujące jest efektywnym sposobem rozróżnienia urządzenia i zwiększanie znakowanie.
+Urządzenie jest zawsze nasłuchiwanie słowo aktywujące (lub frazy). Na przykład "Hey Cortana" to słowo aktywujące Asystenta Cortany. Po użytkownik odpowie słowo aktywujące, urządzenie wysyła wszystkie kolejne audio w chmurze, dopóki użytkownik zatrzymuje mówić. Dostosowywanie usługi słowo aktywujące jest efektywnym sposobem rozróżnienia urządzenia i zwiększanie znakowanie.
 
 W tym artykule dowiesz się, jak utworzyć niestandardowe słowo aktywujące dla Twojego urządzenia.
 
-## <a name="choosing-an-effective-wake-word"></a>Wybieranie skuteczne słowo aktywujące
+## <a name="choose-an-effective-wake-word"></a>Wybierz obowiązujące słowo aktywujące
 
-Wybierając słowo aktywujące, weź pod uwagę poniższe wskazówki.
+W przypadku wybrania słowa wznawiania, należy wziąć pod uwagę następujące wytyczne:
 
 * Twoje słowo aktywujące powinny być słowa angielskiego lub frazy. Powinno zająć maksymalnie dwóch sekund powiedzieć.
 
-* Najlepiej słów sylab 4 – 7. Na przykład "Hey, komputer" jest słowem wznawiania dobre, gdy tylko "Hej," jest niska.
+* Najlepiej słów sylab 4 do 7. Na przykład "Hey, komputer" jest dobrym aktywujące. Po prostu "Hej," jest niska.
 
 * Wyrazy wznawiania należy stosować typowych reguł Wymowa w języku angielskim.
 
-* Typowe regułom angielskiej Wymowa słowem unikatowy, lub nawet wykonane można redukować liczbę fałszywych alarmów. Na przykład "computerama" może być dobrym aktywujące.
+* Unikatowy lub nawet gotowych słowa występującego typowych reguł Wymowa angielskie może zmniejszyć liczbę fałszywych alarmów. Na przykład "computerama" może być dobrym aktywujące.
 
-* Nie należy wybierać wspólnego programu word. Na przykład "jedzenie" i "Przejdź" to słowa, które ludzie mówią, często w zwykłych konwersacji. Może być fałszywe wyzwalaczy dla Twojego urządzenia.
+* Nie należy wybierać wspólnego programu word. Na przykład "jedzenie" i "Przejdź" to słowa, które ludzie mówią, często w zwykłych konwersacji. Mogą one false wyzwalaczy dla Twojego urządzenia.
 
-* Należy unikać używania aktywujące, mających wymowy alternatywne. Użytkownicy musi znać "prawo" Wymowa można pobrać swoje urządzenie. Na przykład "509" może występować jako "pięć 9 zero", "pięć AHA dziewięć", lub "pięć sto i dziewięć." "R.E.I." może być wymawiane jako "R E I" lub "Ray." "Live" może być wymawiane jako [līv] lub [liv].
+* Należy unikać używania aktywujące, która może zawierać alternatywne wymowy. Użytkownicy musi znać "prawo" Wymowa można pobrać swoje urządzenie. Na przykład "509" mogą występować w "pięć 9, zero" "pięć AHA dziewięć," lub "pięć sto i dziewięć." "R.E.I." mogą występować w "r-e-i" lub "ray." Może być wymawiane "Live", "/līv/" lub "/liv/".
 
-* Nie należy używać znaków specjalnych, symbole i cyfry. Na przykład "Go #" i "20 + koty" nie jest dobry wznawiania słów. Jednak "Przejdź do sharp" lub "dwadzieścia plus koty" może działać. Można nadal używać symboli w znakowanie i korzystać marketingowych i dokumentacji wzmocnienie Wymowa odpowiednie.
+* Nie należy używać znaków specjalnych, symbole i cyfry. Na przykład "Go #" i "20 + koty" nie jest dobry wznawiania słów. Jednak "Przejdź do sharp" lub "dwadzieścia plus koty" może działać. Można nadal stosować symbole w znakowanie i używać marketingowych i dokumentacji wzmocnienie Wymowa odpowiednie.
 
 > [!NOTE]
-> Wyrazem chronionym znakiem towarowym jako swojej słowo aktywujące, należy się upewnić, że możesz właścicielem znaku towarowego; w przeciwnym razie uzyskał pozwolenie od właściciela znaków towarowych z niego korzystać. Microsoft nie ponosi odpowiedzialność za wszelkie kwestie prawne, które mogą wystąpić z użyciem regionu wybranego słowo aktywujące.
+> Wyrazem chronionym znakiem towarowym jako swojej słowo aktywujące, należy się upewnić, że posiadasz znaku towarowego lub czy masz pozwolenie od właściciela tych znaków towarowych, można użyć słowa. Microsoft nie ponosi odpowiedzialność za kwestie prawne, które mogą wystąpić z użyciem regionu wybranego słowo aktywujące.
 
-## <a name="creating-your-wake-word"></a>Tworzenie usługi słowo aktywujące
+## <a name="create-your-wake-word"></a>Utwórz swoje słowo aktywujące
 
-Zanim użyjesz niestandardowe słowo aktywujące urządzeń z systemem, należy utworzyć przy użyciu usługi Microsoft niestandardowe Wake generowania programu Word. Po podaniu słowo wznawiania, tworzy usługi, plik, który można następnie wdrożyć swój zestaw deweloperski umożliwiające swoje słowo aktywujące na urządzeniu z systemem.
+Zanim użyjesz niestandardowe słowo aktywujące urządzeń z systemem słowo aktywujące należy utworzyć przy użyciu usługi Microsoft niestandardowe Wake generowania programu Word. Po podaniu słowo wznawiania, tworzy usługi, plik, który można wdrożyć na Twoje deweloperski umożliwiające swoje słowo aktywujące na urządzeniu z systemem.
 
-1. Przejdź do [portal usługi Custom Speech Service](https://cris.ai/).
+1. Przejdź do [portal usługi Custom Speech](https://cris.ai/).
 
 2. Utwórz nowe konto, za pomocą adresu e-mail, na którym odebrano zaproszenie dla usługi Azure Active Directory. 
 
     ![Utwórz nowe konto](media/speech-devices-sdk/wake-word-1.png)
  
-3.  Po zalogowaniu, wypełnij formularz, a następnie kliknij przycisk **Rozpocznij podróż.**
+3.  Po zalogowaniu, wypełnij formularz, a następnie wybierz **Start Moja podróż**.
 
-    ![zalogowali się pomyślnie](media/speech-devices-sdk/wake-word-3.png)
+    ![Zalogowano pomyślnie](media/speech-devices-sdk/wake-word-3.png)
  
-4. **Niestandardowe wznawiania w programie Word** strona nie jest dostępny publicznie, więc nie ma żadnego połączenia wykorzystującej istnieje. Kliknij przycisk lub zamiast tego Wklej to łącze: https://cris.ai/customkws.
+4. **Niestandardowe wznawiania w programie Word** strona nie jest dostępny publicznie, więc nie ma żadnego połączenia wykorzystującej istnieje. Wybierz lub Wklej to łącze zamiast: https://cris.ai/customkws.
 
-    ![ukrytą stronę](media/speech-devices-sdk/wake-word-4.png)
+    ![Strona niestandardowe wznawiania w programie Word jest ukryta](media/speech-devices-sdk/wake-word-4.png)
  
-6. Wpisz wyraz wznawiania, co pozwala następnie **przesyłania** go.
+6. Wpisz słowo aktywujące wybranych przez użytkownika, a następnie wybierz **przesłać słowo**.
 
     ![Wprowadź swoje słowo aktywujące](media/speech-devices-sdk/wake-word-5.png)
  
-7. Może upłynąć kilka minut, zanim pliki do wygenerowania. Okrąg rotowania powinien zostać wyświetlony na karcie w przeglądarce. Po chwili jest wyświetlany pasek informacji pytaniem, aby pobrać `.zip` pliku.
+7. Może upłynąć kilka minut, zanim pliki do wygenerowania. Powinien zostać wyświetlony rotowania okrąg w oknie przeglądarki. Po chwili informacji pasek jest wyświetlany, pytaniem, aby pobrać plik zip.
 
-    ![odbieranie pliku zip](media/speech-devices-sdk/wake-word-6.png)
+    ![Odbieranie pliku zip](media/speech-devices-sdk/wake-word-6.png)
 
-8. Zapisz `.zip` plik na swoim komputerze. Potrzebujesz tego pliku, aby wdrażać niestandardowe słowo aktywujące development kit, postępując zgodnie z instrukcjami w [wprowadzenie do zestawu Speech Devices SDK](speech-devices-sdk-qsg.md).
+8. Zapisz plik zip na komputer. Należy ten plik, aby wdrażać niestandardowe słowo aktywujące development Kit. Aby wdrożyć niestandardowe słowo aktywujące, postępuj zgodnie z instrukcjami [wprowadzenie do zestawu Speech Devices SDK](speech-devices-sdk-qsg.md).
 
-9. Możesz teraz **się wylogować.**
+9. Wybierz **się wylogować.**
 
 ## <a name="next-steps"></a>Kolejne kroki
 

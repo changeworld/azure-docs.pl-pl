@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie wydajności aplikacji sieci Web platformy Azure | Microsoft Docs
-description: Monitorowanie wydajności aplikacji dla aplikacji sieci Web platformy Azure. Udostępnianie wykresów czasu ładowania i odpowiedzi oraz informacji o zależnościach oraz ustawianie alertów dotyczących wydajności.
+title: Monitorowanie wydajności aplikacji internetowej platformy Azure | Microsoft Docs
+description: Monitorowanie wydajności aplikacji dla aplikacji internetowych platformy Azure. Udostępnianie wykresów czasu ładowania i odpowiedzi oraz informacji o zależnościach oraz ustawianie alertów dotyczących wydajności.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -10,35 +10,36 @@ ms.service: application-insights
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 05/05/2017
 ms.author: mbullwin
-ms.openlocfilehash: 9de6ca48db98d7691310199b90bf7414f07547fd
-ms.sourcegitcommit: d78bcecd983ca2a7473fff23371c8cfed0d89627
-ms.translationtype: HT
+ms.openlocfilehash: 0d9001834a33675dc4aab8d78282fb2987419ec3
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35649274"
 ---
-# <a name="monitor-azure-web-app-performance"></a>Monitorowanie wydajności aplikacji sieci Web platformy Azure
-W witrynie [Azure Portal](https://portal.azure.com) możesz skonfigurować monitorowanie wydajności [aplikacji sieci Web platformy Azure](../app-service/app-service-web-overview.md). [Usługa Azure Application Insights](app-insights-overview.md) umożliwia instrumentację aplikacji w celu wysyłania danych telemetrii do usługi Application Insights, gdzie są one przechowywane i analizowane. W usłudze tej można używać wykresów metryki i narzędzi wyszukiwania do ułatwiania diagnozowania problemów, zwiększania wydajności i oceny użycia.
+# <a name="monitor-azure-web-app-performance"></a>Monitorowanie wydajności aplikacji internetowej platformy Azure
+W witrynie [Azure Portal](https://portal.azure.com) możesz skonfigurować monitorowanie wydajności [aplikacji internetowych platformy Azure](../app-service/app-service-web-overview.md). [Usługa Azure Application Insights](app-insights-overview.md) umożliwia instrumentację aplikacji w celu wysyłania danych telemetrii do usługi Application Insights, gdzie są one przechowywane i analizowane. W usłudze tej można używać wykresów metryki i narzędzi wyszukiwania do ułatwiania diagnozowania problemów, zwiększania wydajności i oceny użycia.
 
 ## <a name="run-time-or-build-time"></a>W czasie wykonywania lub czasie kompilacji
 Możesz skonfigurować monitorowanie, instrumentując aplikację na jeden z dwóch sposobów:
 
-* **Czas wykonywania** — możesz wybrać rozszerzenie monitorowania wydajności, gdy aplikacja sieci Web już działa. Nie trzeba ponownie kompilować ani instalować aplikacji. Uzyskujesz standardowy zestaw pakietów, które monitorują czasy odpowiedzi, współczynniki sukcesu, wyjątki, zależności itd. 
+* **Czas wykonywania** — możesz wybrać rozszerzenie monitorowania wydajności, gdy aplikacja internetowa już działa. Nie trzeba ponownie kompilować ani instalować aplikacji. Uzyskujesz standardowy zestaw pakietów, które monitorują czasy odpowiedzi, współczynniki sukcesu, wyjątki, zależności itd. 
 * **Czas kompilacji** — możesz zainstalować pakiet w aplikacji podczas programowania. Ta opcja jest bardziej wszechstronna. Oprócz tych samych pakietów standardowych możesz napisać kod w celu dostosowania telemetrii lub wysłania własnych danych telemetrii. Możesz rejestrować określone działania lub zdarzenia zgodnie z semantyką domeny aplikacji. 
 
 ## <a name="run-time-instrumentation-with-application-insights"></a>Instrumentacja w czasie wykonywania za pomocą usługi Application Insights
-Jeśli już masz uruchomioną aplikację sieci Web na platformie Azure, otrzymujesz pewne informacje monitorowania: żądania i współczynniki błędów. Dodaj usługę Application Insights, aby uzyskać więcej informacji, na przykład czasy odpowiedzi, monitorowanie wywołań dla zależności, inteligentne wykrywanie i zaawansowany język zapytań usługi Log Analytics. 
+Jeśli już masz uruchomioną aplikację internetową na platformie Azure, otrzymujesz pewne informacje monitorowania: żądania i współczynniki błędów. Dodaj usługę Application Insights, aby uzyskać więcej informacji, na przykład czasy odpowiedzi, monitorowanie wywołań dla zależności, inteligentne wykrywanie i zaawansowany język zapytań usługi Log Analytics. 
 
-1. **Wybierz usługę Application Insights** w Panelu sterowania platformy Azure dla aplikacji sieci Web.
+1. **Wybierz usługę Application Insights** w Panelu sterowania platformy Azure dla aplikacji internetowej.
    
     ![W obszarze Monitorowanie wybierz pozycję Application Insights](./media/app-insights-azure-web-apps/05-extend.png)
    
    * Wybierz opcję tworzenia nowego zasobu, chyba że zasób usługi Application Insights dla tej aplikacji został już skonfigurowany inną drogą.
-2. **Zastosuj instrumentację aplikacji sieci Web** po zainstalowaniu usługi Application Insights. 
+2. **Zastosuj instrumentację aplikacji internetowej** po zainstalowaniu usługi Application Insights. 
    
-    ![Instrumentacja aplikacji sieci Web](./media/app-insights-azure-web-apps/restart-web-app-for-insights.png)
+    ![Instrumentacja aplikacji internetowej](./media/app-insights-azure-web-apps/restart-web-app-for-insights.png)
 
    **Włącz monitorowanie po stronie klienta** dla telemetrii widoku strony i użytkownika.
 
@@ -55,7 +56,7 @@ W razie potrzeby możesz później utworzyć aplikację za pomocą usługi Appli
 
 *Jak usunąć usługę Application Insights lub przełączyć się na wysyłanie do innego zasobu?*
 
-* Na platformie Azure otwórz blok sterowania aplikacji sieci Web i w obszarze Narzędzia programistyczne otwórz pozycję **Rozszerzenia**. Usuń rozszerzenie usługi Application Insights. Następnie w obszarze Monitorowanie wybierz pozycję Application Insights i utwórz lub wybierz żądany zasób.
+* Na platformie Azure otwórz blok sterowania aplikacji internetowej i w obszarze Narzędzia programistyczne otwórz pozycję **Rozszerzenia**. Usuń rozszerzenie usługi Application Insights. Następnie w obszarze Monitorowanie wybierz pozycję Application Insights i utwórz lub wybierz żądany zasób.
 
 ## <a name="build-the-app-with-application-insights"></a>Skompiluj aplikację za pomocą usługi Application Insights
 Usługa Application Insights może zapewnić bardziej szczegółową telemetrię dzięki instalacji zestawu SDK w Twojej aplikacji. W szczególności możesz gromadzić dzienniki śledzenia, [zapisywać niestandardową telemetrię](app-insights-api-custom-events-metrics.md) i uzyskiwać bardziej szczegółowe raporty o wyjątkach.
@@ -80,7 +81,7 @@ Usługa Application Insights może zapewnić bardziej szczegółową telemetrię
 * W programie Visual Studio kliknij prawym przyciskiem myszy projekt, wybierz pozycję **Konfiguruj usługę Application Insights**, a następnie wybierz żądany zasób. Uzyskasz opcję tworzenia nowego zasobu. Ponownie skompiluj i wdróż.
 
 ## <a name="explore-the-data"></a>Eksplorowanie danych
-1. W bloku usługi Application Insights panelu sterowania aplikacji sieci Web pojawi się obszar Metryki na żywo, który pokazuje żądania i błędy po upływie sekundy lub dwóch od chwili ich wystąpienia. Jest to bardzo przydatny widok w przypadku ponownego publikowania aplikacji — natychmiast zobaczysz wszelkie problemy.
+1. W bloku usługi Application Insights panelu sterowania aplikacji internetowej pojawi się obszar Metryki na żywo, który pokazuje żądania i błędy po upływie sekundy lub dwóch od chwili ich wystąpienia. Jest to bardzo przydatny widok w przypadku ponownego publikowania aplikacji — natychmiast zobaczysz wszelkie problemy.
 2. Kliknij elementy, aby przejść do pełnego zasobu usługi Application Insights.
 
     ![Kliknij elementy](./media/app-insights-azure-web-apps/view-in-application-insights.png)
@@ -111,7 +112,7 @@ Aby skorzystać z bardziej zaawansowanego wyszukiwania w ramach telemetrii, uży
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Uruchom profilera aplikacji na żywo](app-insights-profiler.md).
 * [Azure Functions](https://github.com/christopheranderson/azure-functions-app-insights-sample) — monitorowanie usługi Azure Functions za pomocą usługi Application Insights
 * [Włącz diagnostykę platformy Azure](app-insights-azure-diagnostics.md), która ma być wysyłana do usługi Application Insights.

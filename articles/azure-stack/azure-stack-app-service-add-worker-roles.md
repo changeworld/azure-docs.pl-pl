@@ -1,6 +1,6 @@
 ---
-title: Skalowanie w poziomie roli proces roboczy w usługach App - stosu Azure | Dokumentacja firmy Microsoft
-description: Szczegółowe wskazówki dotyczące skalowania usługi aplikacji Azure stosu
+title: Skalowanie ról proces roboczy w usługach App Services — Azure Stack | Dokumentacja firmy Microsoft
+description: Szczegółowe wskazówki dotyczące skalowania usługi Azure Stack App Services
 services: azure-stack
 documentationcenter: ''
 author: apwestgarth
@@ -12,41 +12,41 @@ ms.workload: app-service
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 06/08/2018
 ms.author: anwestg
 ms.reviewer: brenduns
-ms.openlocfilehash: 04a93bc841d553296dca7635151c14892970121c
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: abfc75e40e146b1cf7cb237f18a1ff08626e5be1
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34357796"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35940431"
 ---
-# <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>Usługi aplikacji Azure stosu: Dodaj więcej ról infrastruktury lub procesu roboczego
+# <a name="app-service-on-azure-stack-add-more-infrastructure-or-worker-roles"></a>Usługa App Service w usłudze Azure Stack: Dodawanie większej liczby ról infrastruktury lub proces roboczy
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*  
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*  
 
-Ten dokument zawiera instrukcje dotyczące sposobu skalowania usługi aplikacji Azure stosu ról infrastruktury i proces roboczy. Zawiera ona procedury służące do tworzenia ról dodatkowych procesów roboczych do obsługi aplikacji o dowolnym rozmiarze.
+Ten dokument zawiera instrukcje dotyczące sposobu skalowania usługi App Service w ramach ról infrastruktury i proces roboczy usługi Azure Stack. Zawiera ona procedurę tworzenia ról dodatkowych procesów roboczych do obsługi aplikacji o dowolnej wielkości.
 
 > [!NOTE]
-> Jeśli środowiska Azure stosu nie ma więcej niż 96 GB pamięci RAM, mogą mieć trudności dodanie dodatkowej pojemności.
+> Jeśli środowiska Azure Stack nie ma więcej niż 96 GB pamięci RAM, możesz mieć trudności, dodawanie dodatkowej pojemności.
 
-Usługi aplikacji Azure stosu, domyślnie obsługuje warstw bezpłatne i udostępniane procesu roboczego. Aby dodać inne warstw procesu roboczego, należy dodać jedną rolę procesu roboczego.
+Usługa App Service w usłudze Azure Stack domyślnie obsługuje warstwy bezpłatna i współdzielona procesu roboczego. Aby dodać inne warstwy procesu roboczego, należy dodać większej liczby ról procesów roboczych.
 
-Jeśli nie masz pewności, jaka została wdrożona przy użyciu domyślnego usługi aplikacji Azure stosu instalacji, możesz przejrzeć dodatkowe informacje w [usługi aplikacji — omówienie stosu Azure](azure-stack-app-service-overview.md).
+Jeśli nie masz pewności, co zostało wdrożone przy użyciu domyślnego usługi App Service w usłudze Azure Stack instalacji, możesz przejrzeć dodatkowe informacje w [usługi App Service w usłudze Azure Stack — omówienie](azure-stack-app-service-overview.md).
 
-Usługa aplikacji Azure na stosie Azure wdraża wszystkich ról przy użyciu zestawy skalowania maszyny wirtualnej i jako takie korzysta z możliwości skalowania danego obciążenia. W związku z tym wszystkie skalowania warstwy procesu roboczego odbywa się za pośrednictwem administratora aplikacji usługi.
+Usługa Azure App Service w usłudze Azure Stack wdraża wszystkich ról przy użyciu zestawów skalowania maszyn wirtualnych i jako takie korzysta z możliwości skalowania danego obciążenia. W związku z tym wszystkie skalowanie warstwy procesu roboczego odbywa się za pośrednictwem administratora usługi aplikacji
 
 > [!IMPORTANT]
-> Obecnie nie jest możliwe skalowanie zestawy skalowania maszyny wirtualnej w portalu określonej w informacjach o wersji stosu Azure, dlatego należy używać w przykładzie programu PowerShell do skalowania w poziomie.
+> Obecnie nie jest możliwe skalowanie zestawów skalowania maszyn wirtualnych w portalu jak określone w informacjach o wersji usługi Azure Stack, zatem skalowanie w poziomie za pomocą do przykładu programu PowerShell.
 >
 >
 
-## <a name="add-additional-workers-with-powershell"></a>Dodawanie dodatkowych pracowników przy użyciu programu PowerShell
+## <a name="add-additional-workers-with-powershell"></a>Dodawanie dodatkowych procesów roboczych przy użyciu programu PowerShell
 
-1. [Konfigurowanie środowiska Azure stosu administratora w programie PowerShell](azure-stack-powershell-configure-admin.md)
+1. [Konfigurowanie środowiska administratora usługi Azure Stack w programie PowerShell](azure-stack-powershell-configure-admin.md)
 
-2. W tym przykładzie umożliwiają skalowanie w poziomie zestaw skali:
+2. Ten przykład umożliwia skalowanie zestawu skalowania:
    ```powershell
    
     ##### Scale out the AppService Role instances ######
@@ -73,46 +73,46 @@ Usługa aplikacji Azure na stosie Azure wdraża wszystkich ról przy użyciu zes
    ```    
 
    > [!NOTE]
-   > Ten krok może zająć kilka godzin w zależności od typu roli i liczby wystąpień.
+   > Ten krok może zająć wiele godzin w zależności od tego, czy typ roli oraz liczbę wystąpień.
    >
    >
 
-3. Monitor stanu nowych wystąpień roli w administracji usługi aplikacji, aby sprawdzić stan wystąpienia roli poszczególnych kliknij typ roli na liście.
+3. Monitor stanu nowych wystąpień roli w administracji usługi aplikacji, aby sprawdzić stan wystąpienia poszczególnych ról kliknij typ roli na liście.
 
-## <a name="add-additional-workers-directly-within-the-app-service-resource-provider-admin"></a>Dodawanie dodatkowych pracowników bezpośrednio z poziomu administratora dostawcy zasobów usługi aplikacji.
+## <a name="add-additional-workers-directly-within-the-app-service-resource-provider-admin"></a>Dodawanie dodatkowych procesów roboczych bezpośrednio z poziomu administratora dostawcy zasobów usługi aplikacji
 
-1. Zaloguj się do portalu administracyjnego platformy Azure stosu jako administratora usługi.
+1. Zaloguj się do portalu administratora usługi Azure Stack jako administratora usługi.
 
-2. Przejdź do **usługi aplikacji**.
+2. Przejdź do **usług App Services**.
 
     ![](media/azure-stack-app-service-add-worker-roles/image01.png)
 
-3. Kliknij przycisk **ról**. W tym miejscu wyświetlić podział wszystkich ról usług aplikacji wdrożone.
+3. Kliknij przycisk **role**. W tym miejscu wyświetlona lista wszystkich ról usługi App Service wdrożone.
 
-4. Kliknij prawym przyciskiem myszy w wierszu typu, aby skalować, a następnie kliknij przycisk **ScaleSet**.
+4. Kliknij prawym przyciskiem myszy w wierszu Typ, który chcesz skalować, a następnie kliknij przycisk **zestawu skalowania**.
 
     ![](media/azure-stack-app-service-add-worker-roles/image02.png)
 
-5. Kliknij przycisk **skalowanie**, wybierz liczbę wystąpień chcesz skalować, a następnie kliknij przycisk **zapisać**.
+5. Kliknij przycisk **skalowanie**, wybierz liczbę wystąpień, które chcesz skalować, a następnie kliknij przycisk **Zapisz**.
 
     ![](media/azure-stack-app-service-add-worker-roles/image03.png)
 
-6. Usługi aplikacji Azure stosu będzie teraz Dodawanie dodatkowych maszyn wirtualnych, skonfigurować ich zainstalowania wymaganego oprogramowania i oznaczyć je jako gotowy, po zakończeniu tego procesu. Ten proces może potrwać około minuty 80.
+6. Usługi App Service w usłudze Azure Stack będą teraz dodawania dodatkowych maszyn wirtualnych, ich konfigurowania, zainstalowania wymaganego oprogramowania i oznacz je jako gotowy, po zakończeniu tego procesu. Ten proces może potrwać około 80 minut.
 
-7. Postęp gotowość nowe role można monitorować, wyświetlając pracowników w **ról** bloku.
+7. Możesz monitorować postęp gotowości nowych ról, wyświetlając pracowników w **role** bloku.
 
 ## <a name="result"></a>Wynik
 
-Po umieszczeniu ich w pełni wdrożone i gotowe, pracownicy stają się dostępne dla użytkowników wdrożyć swoje obciążeń na nich. Poniżej pokazano przykład wielu dostępne warstwy cenowe domyślnie. Jeśli nie ma żadnych dostępnych pracowników dla warstwy określonego procesu roboczego, może wybrać odpowiedniego warstwa cenowa jest niedostępna.
+Po umieszczeniu ich w pełni wdrożony i będzie gotowy, procesy robocze staną się dostępne dla użytkowników wdrożyć swoje obciążenia na nich. Poniżej przedstawiono przykład wielu warstw cenowych dostępne domyślnie. Jeśli nie ma żadnych dostępnych procesów roboczych dla warstwy procesów roboczych w szczególności, możliwość wyboru odpowiedniej warstwy cenowej jest niedostępny.
 
 ![](media/azure-stack-app-service-add-worker-roles/image04.png)
 
 >[!NOTE]
-> Do skalowania w poziomie zarządzania, role frontonu lub wydawcy dodać musi skalowania typu odpowiadającego roli. 
+> Aby skalować zarządzania, roli frontonu lub wydawcy Dodaj musi skalowanie w poziomie odpowiedni typ roli. 
 >
 >
 
-Do skalowania w poziomie zarządzania, frontonu lub role wydawcy, wykonaj te same czynności, wybierając typ odpowiednią rolę. Kontrolery nie są wdrażane jako zestawy skalowania i w związku z tym dwóch powinny zostać wdrożone w czasie instalacji dla wszystkich wdrożeń produkcyjnych.
+Aby skalować zarządzania, serwer sieci Web lub role wydawcy, te same czynności wybierania typu odpowiednią rolę. Kontrolery nie są wdrażane jako zestawy skalowania i w związku z tym dwa powinny być wdrażane w czasie instalacji dla wszystkich wdrożeń produkcyjnych.
 
 ### <a name="next-steps"></a>Kolejne kroki
 
