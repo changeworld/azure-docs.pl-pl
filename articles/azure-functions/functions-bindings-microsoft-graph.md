@@ -9,12 +9,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 12/20/2017
 ms.author: mahender
-ms.openlocfilehash: 128e7f693755e7baf752d546fddd786b07c0de78
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 3d6d4f2e3d89e1d8abf647b21e35fcdfec020b1d
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093740"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44722269"
 ---
 # <a name="microsoft-graph-bindings-for-azure-functions"></a>Powiązania programu Microsoft Graph dla usługi Azure Functions
 
@@ -520,7 +520,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 To powiązanie wymaga następujących uprawnień usługi Azure AD:
 |Zasób|Uprawnienie|
 |--------|--------|
-|Microsoft Graph|Miej pełny dostęp do plików użytkownika|
+|Microsoft Graph|Masz pełny dostęp do plików użytkownika|
 
 Powiązanie uwidacznia następujące typy funkcji platformy .NET:
 - [String []]
@@ -665,7 +665,7 @@ To powiązanie wymaga następujących uprawnień usługi Azure AD:
 
 Powiązanie uwidacznia następujące typy funkcji platformy .NET:
 - byte[]
-- Stream
+- Strumień
 - ciąg
 - Microsoft.Graph.DriveItem
 
@@ -737,6 +737,7 @@ public static async Task Run(HttpRequest req, TraceWriter log, Stream myOneDrive
         .FirstOrDefault(q => string.Compare(q.Key, "text", true) == 0)
         .Value;
     await myOneDriveFile.WriteAsync(Encoding.UTF8.GetBytes(data), 0, data.Length);
+    myOneDriveFile.Close();
     return;
 }
 ```
@@ -806,11 +807,11 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 To powiązanie wymaga następujących uprawnień usługi Azure AD:
 |Zasób|Uprawnienie|
 |--------|--------|
-|Microsoft Graph|Miej pełny dostęp do plików użytkownika|
+|Microsoft Graph|Masz pełny dostęp do plików użytkownika|
 
 Powiązanie uwidacznia następujące typy funkcji platformy .NET:
 - byte[]
-- Stream
+- Strumień
 - ciąg
 - Microsoft.Graph.DriveItem
 

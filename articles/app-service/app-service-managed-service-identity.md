@@ -1,6 +1,6 @@
 ---
-title: Zarządzane tożsamości usługi App Service i Azure Functions | Dokumentacja firmy Microsoft
-description: Koncepcyjny Przewodnik instalacji i odwołania do obsługi tożsamości usługi zarządzanej w usłudze Azure App Service i Azure Functions
+title: Zarządzanych tożsamości w usłudze App Service i Azure Functions | Dokumentacja firmy Microsoft
+description: Koncepcyjny Przewodnik instalacji i odwołania dla zarządzanych tożsamości w usłudze Azure App Service i Azure Functions
 services: app-service
 author: mattchenderson
 manager: cfowler
@@ -11,22 +11,22 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: mahender
-ms.openlocfilehash: c7a819f987de41ba7705d21bb6de95475cd3f9c8
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 5d058059f523d3567817cad8ac11e837fb4a0a49
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027190"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714255"
 ---
-# <a name="how-to-use-azure-managed-service-identity-in-app-service-and-azure-functions"></a>Jak używać usługi Azure tożsamości usługi zarządzanej w usłudze App Service i Azure Functions
+# <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Jak używać zarządzanych tożsamości dla usługi App Service i Azure Functions
 
 > [!NOTE] 
-> Usługa App Service w systemie Linux a Web App for Containers aktualnie nie obsługują tożsamości usługi zarządzanej.
+> Usługa App Service w systemie Linux a Web App for Containers nie obsługują obecnie zarządzanych tożsamości.
 
 > [!Important] 
-> Tożsamość usługi zarządzanej dla usługi App Service i Azure Functions nie będzie działać zgodnie z oczekiwaniami, jeśli aplikacja jest migrowana subskrypcji/dzierżawy. Aplikacja musi uzyskać nową tożsamość może odbywać się przez wyłączenie i ponowne włączenie tej funkcji. Zobacz [usuwanie tożsamości](#remove) poniżej. Zasoby podrzędne musisz również mieć zasady dostępu zaktualizowana w celu używania nowej tożsamości.
+> Tożsamości zarządzanej dla usługi App Service i Azure Functions nie będzie działać zgodnie z oczekiwaniami, jeśli aplikacja jest migrowana subskrypcji/dzierżawy. Aplikacja musi uzyskać nową tożsamość może odbywać się przez wyłączenie i ponowne włączenie tej funkcji. Zobacz [usuwanie tożsamości](#remove) poniżej. Zasoby podrzędne musisz również mieć zasady dostępu zaktualizowana w celu używania nowej tożsamości.
 
-W tym temacie dowiesz się, jak utworzyć tożsamość zarządzaną aplikację, dla aplikacji usługi App Service i Azure Functions i jak z niej korzystać, aby uzyskać dostęp do innych zasobów. Tożsamości usługi zarządzanej w usłudze Azure Active Directory umożliwia aplikacji łatwo uzyskiwać dostęp do innych zasobów chronionych przez usługi AAD, takich jak usługi Azure Key Vault. Tożsamość jest zarządzana przez platformę Azure i nie wymaga obsługi administracyjnej ani Obróć jakichkolwiek kluczy tajnych. Aby uzyskać więcej informacji o tożsamości usługi zarządzanej, zobacz [Przegląd tożsamości usługi zarządzanej](../active-directory/managed-identities-azure-resources/overview.md).
+W tym temacie dowiesz się, jak utworzyć tożsamość zarządzaną w aplikacjach usługi App Service i usługi Azure Functions i jak z niej korzystać, aby uzyskać dostęp do innych zasobów. Tożsamość zarządzaną w usłudze Azure Active Directory umożliwia aplikacji łatwo uzyskiwać dostęp do innych zasobów chronionych przez usługi AAD, takich jak usługi Azure Key Vault. Tożsamość jest zarządzana przez platformę Azure i nie wymaga obsługi administracyjnej ani Obróć jakichkolwiek kluczy tajnych. Aby uzyskać więcej informacji o zarządzanych tożsamości w usłudze AAD, zobacz [zarządzanych tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md).
 
 ## <a name="creating-an-app-with-an-identity"></a>Tworzenie aplikacji przy użyciu tożsamości
 
@@ -34,21 +34,21 @@ Tworzenie aplikacji przy użyciu tożsamości wymaga dodatkowych właściwości,
 
 ### <a name="using-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
-Aby skonfigurować tożsamości usługi zarządzanej w portalu, możesz najpierw utworzyć aplikację w zwykły i włączysz tę funkcję.
+Aby skonfigurować tożsamość zarządzaną w portalu, możesz najpierw utworzyć aplikację w zwykły i włączysz tę funkcję.
 
 1. Utwórz aplikację w portalu, tak jak zwykle. Przejdź do niego w portalu.
 
 2. Jeśli używasz aplikacji funkcji, przejdź do **funkcje platformy**. Dla innych typów aplikacji, przewiń w dół do **ustawienia** grupy w obszarze nawigacji po lewej stronie.
 
-3. Wybierz **tożsamości usługi zarządzanej**.
+3. Wybierz **tożsamości zarządzanej**.
 
 4. Przełącznik **rejestrowanie w usłudze Azure Active Directory** do **na**. Kliknij pozycję **Zapisz**.
 
-![Zarządzane tożsamości usługi w usłudze App Service](media/app-service-managed-service-identity/msi-blade.png)
+![Tożsamość zarządzaną w usłudze App Service](media/app-service-managed-service-identity/msi-blade.png)
 
 ### <a name="using-the-azure-cli"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure
 
-Aby skonfigurować tożsamość usługi zarządzanej, przy użyciu wiersza polecenia platformy Azure, musisz użyć `az webapp identity assign` polecenia w odniesieniu do istniejących aplikacji. Masz trzy opcje uruchamiania przykładów w tej sekcji:
+Aby skonfigurować tożsamość zarządzana przy użyciu wiersza polecenia platformy Azure, musisz użyć `az webapp identity assign` polecenia w odniesieniu do istniejących aplikacji. Masz trzy opcje uruchamiania przykładów w tej sekcji:
 
 - Użyj [usługi Azure Cloud Shell](../cloud-shell/overview.md) w witrynie Azure portal.
 - Użyj osadzonego usługi Azure Cloud Shell za pomocą "Try It" przycisk znajdujący się w prawym górnym rogu każdego bloku kodu poniżej.
@@ -151,13 +151,13 @@ Gdzie `<TENANTID>` i `<PRINCIPALID>` są zastępowane identyfikatorów GUID. Wł
 Aplikacja może używać swoją tożsamość, uzyskiwanie tokenów do innych zasobów chronionych za pomocą usługi AAD, takich jak usługi Azure Key Vault. Tokeny te reprezentują aplikacji dostęp do zasobów i nie są ustawiane określonego użytkownika aplikacji. 
 
 > [!IMPORTANT]
-> Może być konieczne skonfigurowanie zasób docelowy, aby zezwolić na dostęp z poziomu aplikacji. Na przykład jeśli w przypadku żądania tokenu służącego do usługi Key Vault, musisz upewnij się, że dodano zasady dostępu, które obejmują tożsamość swojej aplikacji. W przeciwnym razie wywołania do usługi Key Vault zostanie odrzucone, nawet jeśli zawierają one tokenu. Aby dowiedzieć się więcej o tym, jakie zasoby obsługują tokenów tożsamości usługi zarządzanej, zobacz [usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication).
+> Może być konieczne skonfigurowanie zasób docelowy, aby zezwolić na dostęp z poziomu aplikacji. Na przykład jeśli w przypadku żądania tokenu służącego do usługi Key Vault, musisz upewnij się, że dodano zasady dostępu, które obejmują tożsamość swojej aplikacji. W przeciwnym razie wywołania do usługi Key Vault zostanie odrzucone, nawet jeśli zawierają one tokenu. Aby dowiedzieć się więcej o tym, jakie zasoby obsługują tokenów usługi Azure Active Directory, zobacz [usługi systemu Azure to uwierzytelnianie pomocy technicznej usługi Azure AD](../active-directory/managed-identities-azure-resources/services-support-msi.md#azure-services-that-support-azure-ad-authentication).
 
 Brak prostego protokołu REST w celu uzyskania tokenu w usłudze App Service i Azure Functions. W przypadku aplikacji .NET biblioteki Microsoft.Azure.Services.AppAuthentication udostępnia abstrakcję za pośrednictwem protokołu i obsługuje środowisko rozwoju lokalnego.
 
 ### <a name="asal"></a>Korzystanie z biblioteki Microsoft.Azure.Services.AppAuthentication dla platformy .NET
 
-Dla aplikacji platformy .NET i funkcji najprostszy sposób pracy z tożsamości usługi zarządzanej jest za pośrednictwem pakietu Microsoft.Azure.Services.AppAuthentication. Ta biblioteka będzie można również do testowania kodu lokalnie na komputerze deweloperskim, przy użyciu konta użytkownika z programu Visual Studio [interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), lub zintegrowane uwierzytelnianie usługi Active Directory. Aby uzyskać więcej informacji na temat opcji lokalny rozwój za pomocą tej biblioteki, zobacz [Odwołanie Microsoft.Azure.Services.AppAuthentication]. W tej sekcji dowiesz się, jak rozpocząć pracę z biblioteką w kodzie.
+Dla aplikacji platformy .NET i funkcji najprostszy sposób pracy z tożsamości zarządzanej jest za pośrednictwem pakietu Microsoft.Azure.Services.AppAuthentication. Ta biblioteka będzie można również do testowania kodu lokalnie na komputerze deweloperskim, przy użyciu konta użytkownika z programu Visual Studio [interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), lub zintegrowane uwierzytelnianie usługi Active Directory. Aby uzyskać więcej informacji na temat opcji lokalny rozwój za pomocą tej biblioteki, zobacz [Odwołanie Microsoft.Azure.Services.AppAuthentication]. W tej sekcji dowiesz się, jak rozpocząć pracę z biblioteką w kodzie.
 
 1. Dodaj odwołania do [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) i [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) pakiety NuGet do aplikacji.
 
@@ -168,7 +168,7 @@ using Microsoft.Azure.Services.AppAuthentication;
 using Microsoft.Azure.KeyVault;
 // ...
 var azureServiceTokenProvider = new AzureServiceTokenProvider();
-string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://management.azure.com/");
+string accessToken = await azureServiceTokenProvider.GetAccessTokenAsync("https://vault.azure.net");
 // OR
 var kv = new KeyVaultClient(new KeyVaultClient.AuthenticationCallback(azureServiceTokenProvider.KeyVaultTokenCallback));
 ```
@@ -177,7 +177,7 @@ Aby dowiedzieć się więcej na temat Microsoft.Azure.Services.AppAuthentication
 
 ### <a name="using-the-rest-protocol"></a>Za pośrednictwem protokołu REST
 
-Aplikację przy użyciu tożsamości usługi zarządzanej ma dwie zmienne środowiskowe zdefiniowane:
+Aplikacji za pomocą tożsamości zarządzanej ma dwie zmienne środowiskowe zdefiniowane:
 - MSI_ENDPOINT
 - MSI_SECRET
 
@@ -205,7 +205,7 @@ Pomyślne odpowiedź 200 OK zawiera treść JSON z następującymi właściwośc
 Ta odpowiedź jest taka sama jak [odpowiedzi dla żądania tokenu dostępu do usługi AAD](../active-directory/develop/v1-oauth2-client-creds-grant-flow.md#service-to-service-access-token-response).
 
 > [!NOTE] 
-> Zmienne środowiskowe są konfigurowane podczas procesu pierwszego uruchomienia, więc po włączeniu tożsamości usługi zarządzanej aplikacji może być konieczne ponowne uruchomienie aplikacji lub ponownego wdrażania jego kod przed `MSI_ENDPOINT` i `MSI_SECRET` są dostępne w kodzie.
+> Zmienne środowiskowe są konfigurowane podczas procesu pierwszego uruchomienia, więc po włączeniu tożsamości zarządzanej aplikacji, może być konieczne ponowne uruchomienie aplikacji lub ponownego wdrażania jego kod przed `MSI_ENDPOINT` i `MSI_SECRET` są dostępne w kodzie.
 
 ### <a name="rest-protocol-examples"></a>Przykłady protokołu REST
 Przykładowe żądanie może wyglądać następująco:
@@ -276,11 +276,11 @@ Tożsamość można usunąć, wyłączając funkcję przy użyciu portalu, progr
 Usuwanie tożsamości w ten sposób spowoduje również usunięcie jednostki z usługi AAD. Tożsamości przypisanych przez system zostaną automatycznie usunięte z usługi AAD, gdy zasób aplikacji zostanie usunięty.
 
 > [!NOTE] 
-> Brak ustawienia aplikacji, można ustawić, WEBSITE_DISABLE_MSI, która po prostu wyłącza lokalną usługę tokenu. Jednak pozostawia tożsamości w miejscu i narzędzi w dalszym ciągu będzie MSI jako "włączone" lub "włączone". W rezultacie Użyj tego ustawienia nie jest zalecana.
+> Brak ustawienia aplikacji, można ustawić, WEBSITE_DISABLE_MSI, która po prostu wyłącza lokalną usługę tokenu. Jednak pozostawia tożsamości w miejscu i narzędzi w dalszym ciągu będzie tożsamości zarządzanej jako "włączone" lub "włączone". W rezultacie Użyj tego ustawienia nie jest zalecana.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Zabezpieczony dostęp do usługi SQL Database przy użyciu tożsamości usługi zarządzanej](app-service-web-tutorial-connect-msi.md)
+> [Dostęp do bazy danych SQL przy użyciu tożsamości zarządzanej](app-service-web-tutorial-connect-msi.md)
 
 [Odwołanie Microsoft.Azure.Services.AppAuthentication]: https://go.microsoft.com/fwlink/p/?linkid=862452
