@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/05/2018
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: 290b3daf73e323b3f5a7e1ef81299e72bf1c5f1d
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
-ms.translationtype: MT
+ms.openlocfilehash: ddb1fcd91ff0c0018bcab9988a5ab063b882cf36
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024804"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714671"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Pobieranie elementów portalu marketplace z platformy Azure do usługi Azure Stack
 
@@ -66,7 +66,7 @@ Wdrożenia usługi Azure Stack musi mieć połączenie z Internetem i musi być 
 
     Po ukończeniu pobierania, można wdrożyć nowy element marketplace jako operatora infrastruktury Azure Stack lub użytkownika.
 
-5. Aby wdrożyć pobrany element, wybierz **+ nowy**, a następnie Wyszukaj wśród kategorii dla nowego elementu portalu marketplace. Następnie wybierz element, aby rozpocząć proces wdrażania. Proces różni się dla elementów innego portalu marketplace. 
+5. Aby wdrożyć pobrany element, wybierz **+ Utwórz zasób**, a następnie Wyszukaj wśród kategorii dla nowego elementu portalu marketplace. Następnie wybierz element, aby rozpocząć proces wdrażania. Proces różni się dla elementów innego portalu marketplace. 
 
 ## <a name="disconnected-or-a-partially-connected-scenario"></a>Odłączony lub częściowo połączone scenariusza
 

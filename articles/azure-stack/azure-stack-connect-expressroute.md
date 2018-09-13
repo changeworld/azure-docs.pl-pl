@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/14/2018
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 878b7952938c7ec534bc09e27ee8b859c1aaeefb
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: db9f19154668fa33bb94e59a4da6735b1a6d3d49
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139621"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44720501"
 ---
 # <a name="connect-azure-stack-to-azure-using-azure-expressroute"></a>Łączenie usługi Azure Stack na platformie Azure przy użyciu usługi Azure ExpressRoute
 
@@ -98,7 +98,7 @@ Użyj poniższych procedur do tworzenia wymaganych zasobów sieciowych w usłudz
 #### <a name="create-the-virtual-network-and-vm-subnet"></a>Tworzenie sieci wirtualnej i podsieci maszyny wirtualnej
 
 1. Zaloguj się do portalu użytkowników przy użyciu konta użytkownika (dzierżawa).
-1. W portalu, wybierz **New**.
+1. W portalu, wybierz **+ Utwórz zasób**.
 
 1. W obszarze **portalu Azure Marketplace**, wybierz opcję **sieć**.
 
@@ -131,7 +131,7 @@ Użyj poniższych procedur do tworzenia wymaganych zasobów sieciowych w usłudz
 
 #### <a name="create-the-virtual-network-gateway"></a>Tworzenie bramy sieci wirtualnej
 
-1. W aplikacji portal użytkowników usługi Azure Stack, wybierz **New**.
+1. W aplikacji portal użytkowników usługi Azure Stack, wybierz **+ Utwórz zasób**.
 1. W obszarze **portalu Azure Marketplace**, wybierz opcję **sieć**.
 1. Wybierz pozycję **Brama sieci wirtualnej** z listy zasobów sieciowych.
 1. W **nazwa** wprowadź **GW1**.
@@ -146,7 +146,7 @@ Użyj poniższych procedur do tworzenia wymaganych zasobów sieciowych w usłudz
 
 Zasobu Brama sieci lokalnej Określa bramę zdalną po drugiej stronie połączenia sieci VPN. W tym przykładzie drugim końcu połączenia jest identyfikator sieci LAN routera usługi ExpressRoute. 1 dzierżawy, pokazane w *na rysunku 2*, adres zdalny jest 10.60.3.255.
 
-1. Zaloguj się do portalu użytkowników usługi Azure Stack, przy użyciu konta użytkownika, a następnie wybierz pozycję **New**.
+1. Zaloguj się do portalu użytkowników usługi Azure Stack, przy użyciu konta użytkownika, a następnie wybierz pozycję **+ Utwórz zasób**.
 1. W obszarze **portalu Azure Marketplace**, wybierz opcję **sieć**.
 1. Wybierz pozycję **brama sieci lokalnej** z listy zasobów.
 1. W **nazwa** wprowadź **ER-Router-GW**.
@@ -163,7 +163,7 @@ Zasobu Brama sieci lokalnej Określa bramę zdalną po drugiej stronie połącze
 
 #### <a name="create-the-connection"></a>Tworzenie połączenia
 
-1. W aplikacji portal użytkowników usługi Azure Stack, wybierz **New**.
+1. W aplikacji portal użytkowników usługi Azure Stack, wybierz **+ Utwórz zasób**.
 1. W obszarze **portalu Azure Marketplace**, wybierz opcję **sieć**.
 1. Wybierz pozycję **Połączenie** z listy zasobów.
 1. W obszarze **podstawy**, wybierz **lokacja lokacja (IPSec)** jako **typu połączenia**.
@@ -187,7 +187,7 @@ Po utworzeniu bramy sieci wirtualnej można uzyskać publicznego adresu IP bramy
 
 Aby sprawdzić ruch danych za pośrednictwem połączenia VPN, należy maszyn wirtualnych w celu wysyłania i odbierania danych w sieci wirtualnej usługi Azure Stack. Utwórz maszynę wirtualną, a następnie wdrożyć ją z podsiecią maszyny Wirtualnej dla sieci wirtualnej.
 
-1. W aplikacji portal użytkowników usługi Azure Stack, wybierz **New**.
+1. W aplikacji portal użytkowników usługi Azure Stack, wybierz **+ Utwórz zasób**.
 1. W obszarze **portalu Azure Marketplace**, wybierz opcję **obliczenia**.
 1. Z listy obrazów maszyn wirtualnych wybierz **systemu Windows Server 2016 Datacenter — wersja próbna** obrazu.
 

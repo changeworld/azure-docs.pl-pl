@@ -11,21 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 08/20/2018
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: efemmano
-ms.openlocfilehash: 66a89c3cb14dd642ae993cbf3c45885635f59759
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 7b26afa99e9ab14db83aee5c0487c1c405243962
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42139427"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44719770"
 ---
 # <a name="create-an-offer-in-azure-stack"></a>Tworzenie oferty w usłudze Azure Stack
 
 [Oferuje](azure-stack-key-features.md) grup co najmniej jeden plan, które dostawcy przedstawiają użytkownikom kupowanie lub subskrybować. W tym dokumencie pokazano, jak utworzyć ofertę, która obejmuje [planu, który został utworzony](azure-stack-create-plan.md). Ta oferta umożliwia subskrybentom Konfigurowanie maszyn wirtualnych.
 
-1. Zaloguj się do portalu administratora usługi Azure Stack (https://adminportal.local.azurestack.external) i wybierz **New** > **dzierżawy oferty i plany** > **oferują**.
+1. Zaloguj się do portalu administratora usługi Azure Stack (https://adminportal.local.azurestack.external) i wybierz **+ Utwórz zasób** > **dzierżawy oferty i plany** > **oferują**.
 
    ![Tworzenie oferty](media/azure-stack-create-offer/image01.png)
   

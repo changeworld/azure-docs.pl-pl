@@ -12,14 +12,14 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: overview
-ms.date: 08/15/2018
+ms.date: 09/12/2018
 ms.author: sethm
-ms.openlocfilehash: a8d211992f52c9719cad76f16133e23eba24d422
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 9f229caa76059db403ced5b74c7a35ec2f0b8e9d
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42139460"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721895"
 ---
 # <a name="key-considerations-using-services-or-building-apps-for-azure-stack"></a>Zagadnienia dotyczące klucza: przy użyciu usług lub tworzenia aplikacji dla usługi Azure Stack
 
@@ -33,7 +33,7 @@ Operator usługi Azure Stack zostanie wyświetlone powiadomienie, które usługi
 
 Azure zawartości technicznej przyjęto założenie, że aplikacje są opracowywane usługi platformy Azure, a nie usługi Azure Stack. Podczas tworzenia i wdrażania aplikacji do usługi Azure Stack, należy poznać niektóre podstawowe różnice:
 
-* Usługa Azure Stack oferuje podzestaw usług i funkcji, które są dostępne na platformie Azure.
+* Usługa Azure Stack zapewnia **podzbioru** usług i funkcji, które są dostępne na platformie Azure.
 * Twój dostawca firmą lub usługą, można wybrać usługi, które mają do zaoferowania. Dostępne opcje mogą obejmować niestandardowych usług lub aplikacji. Mogą one oferować we własnej dokumentacji dostosowane.
 * Należy użyć odpowiedniego Azure Stack punkty końcowe (na przykład adresy URL portalu adres i punktu końcowego usługi Azure Resource Manager).
 * Należy użyć wersji programu PowerShell i interfejsu API, które są obsługiwane przez usługę Azure Stack. Korzystanie z obsługiwanymi wersjami zapewnia, że Twoje aplikacje będą działać zarówno w usłudze Azure Stack i Azure.
@@ -75,11 +75,11 @@ Usługa Azure Stack obsługuje wersje programu Azure PowerShell i interfejsów A
 Aby upewnić się, że używasz poprawnej wersji programu Azure PowerShell, należy użyć [profilami wersji interfejsu API](azure-stack-version-profiles.md). Aby określić najnowszą profilu wersji interfejsu API, którego można używać, Dowiedz się, kompilacja jest używany w usłudze Azure Stack. Te informacje można uzyskać od administratora usługi Azure Stack.
 
 >[!NOTE]
- Jeśli używasz usługi Azure Stack Development Kit i mieć dostęp administracyjny, zobacz sekcję "Ustalić bieżącą wersję" [zarządzanie aktualizacjami](https://docs.microsoft.com/azure/azure-stack/azure-stack-updates#determine-the-current-version) ustalenie kompilacji usługi Azure Stack.
+ Jeśli używasz usługi Azure Stack Development Kit i mieć dostęp administracyjny, zobacz sekcję "Ustalić bieżącą wersję" [zarządzanie aktualizacjami](../azure-stack-updates.md#determine-the-current-version) ustalenie kompilacji usługi Azure Stack.
 
 Dla innych interfejsów API, uruchom następujące polecenie programu PowerShell służący do wypełniania wyjściowego przestrzenie nazw, typy zasobów i wersje interfejsu API, które są obsługiwane w ramach subskrypcji usługi Azure Stack. Uwaga może nadal być różnice na poziomie właściwości. (To polecenie mogło działać, musisz mieć już [zainstalowane](azure-stack-powershell-install.md) i [skonfigurowane](azure-stack-powershell-configure-user.md) programu PowerShell dla środowiska Azure Stack. Należy również masz subskrypcję oferty usługi Azure Stack.)
 
- ```powershell
+```powershell
 Get-AzureRmResourceProvider | Select ProviderNamespace -Expand ResourceTypes | Select * -Expand ApiVersions | `
 Select ProviderNamespace, ResourceTypeName, @{Name="ApiVersion"; Expression={$_}} 
 ```

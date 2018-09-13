@@ -6,16 +6,16 @@ author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: quickstart
-ms.date: 09/05/2018
+ms.date: 09/12/2018
 ms.author: mabrigg
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 7277aeb97409815e2e218da8f233cd836bccc72b
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: e4e3fdbdd3bc9eb982f993a9be60ba0812c68a9d
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022420"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44713748"
 ---
 # <a name="quickstart-create-a-windows-server-virtual-machine-with-the-azure-stack-portal"></a>Szybki Start: tworzenie maszyny wirtualnej programu Windows server za pomocą portalu usługi Azure Stack
 
@@ -36,7 +36,7 @@ Zaloguj się do portalu usługi Azure Stack. Adres portalu usługi Azure Stack j
 
 ## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 
-1. Kliknij przycisk **nowe** > **obliczenia** > **systemu Windows Server 2016 Datacenter — płatność za użycie** > **tworzenie**. Jeśli nie widzisz **systemu Windows Server 2016 Datacenter — płatność za użycie** zapisu, skontaktuj się z operatorem usługi Azure Stack. Poproś o dodanie go do portalu marketplace zgodnie z objaśnieniem w [Dodaj obraz maszyny Wirtualnej systemu Windows Server 2016 w witrynie Marketplace usługi Azure Stack](../azure-stack-add-default-image.md) artykułu.
+1. Kliknij przycisk **+ Utwórz zasób** > **obliczenia** > **systemu Windows Server 2016 Datacenter — płatność za użycie**  >   **Utwórz**. Jeśli nie widzisz **systemu Windows Server 2016 Datacenter — płatność za użycie** zapisu, skontaktuj się z operatorem usługi Azure Stack. Poproś o dodanie go do portalu marketplace zgodnie z objaśnieniem w [Dodaj obraz maszyny Wirtualnej systemu Windows Server 2016 w witrynie Marketplace usługi Azure Stack](../azure-stack-add-default-image.md) artykułu.
 
     ![Kroki, aby utworzyć maszynę wirtualną Windows w witrynie portal](media/azure-stack-quick-windows-portal/image01.png)
 2. W obszarze **podstawy**, wpisz **nazwa**, **nazwa_użytkownika**, i **hasło**. Wybierz **subskrypcji**. Tworzenie **grupy zasobów**, lub wybierz istniejący wybierz jedną, **lokalizacji**, a następnie kliknij przycisk **OK**.

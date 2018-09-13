@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 7/10/2017
+ms.date: 09/12/2018
 ms.author: brenduns
 ms.reviewer: scottnap
 ROBOTS: NOINDEX
-ms.openlocfilehash: 6225a12b50ebb7bf0a0cb9244153800ba734d93a
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: a219f44cb27bb6ebe4e17079ad487457ae8852f0
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39006907"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44718121"
 ---
 # <a name="create-a-site-to-site-vpn-connection-between-two-virtual-networks-in-different-azure-stack-development-kit-environments"></a>Tworzenie połączenia sieci VPN typu lokacja lokacja między dwiema sieciami wirtualnymi w różnych środowiskach Azure Stack Development Kit
 ## <a name="overview"></a>Przegląd
@@ -92,10 +92,7 @@ Administrator usługi można zalogować się jako dzierżawca Aby przetestować 
 
 ### <a name="create-the-virtual-network-and-vm-subnet"></a>Tworzenie sieci wirtualnej i podsieci maszyny wirtualnej
 1. Użyj konta dzierżawy do logowania do portalu użytkowników.
-2. W aplikacji portal użytkowników, wybierz **New**.
-
-    ![Utwórz nową sieć wirtualną](media/azure-stack-create-vpn-connection-one-node-tp2/image3.png)
-
+2. W aplikacji portal użytkowników, wybierz **+ Utwórz zasób**.
 3. Przejdź do **Marketplace**, a następnie wybierz pozycję **sieć**.
 4. Wybierz **sieć wirtualna**.
 5. Dla **nazwa**, **przestrzeń adresowa**, **Nazwa podsieci**, i **zakres adresów podsieci**, użyj wartości, które są wyświetlane we wcześniejszej części sieci Tabela konfiguracji.
@@ -118,7 +115,7 @@ Administrator usługi można zalogować się jako dzierżawca Aby przetestować 
 6. Wybierz **OK** utworzyć podsieć bramy.
 
 ### <a name="create-the-virtual-network-gateway"></a>Tworzenie bramy sieci wirtualnej
-1. W witrynie Azure portal wybierz **New**. 
+1. W witrynie Azure portal wybierz **+ Utwórz zasób**. 
 2. Przejdź do **Marketplace**, a następnie wybierz pozycję **sieć**.
 3. Wybierz z listy zasobów sieciowych, **bramy sieci wirtualnej**.
 4. W **nazwa**, wprowadź **GW1**.
@@ -140,7 +137,7 @@ Sposób myślenia o tym bardziej ogólnie jest zasobu Brama sieci lokalnej będz
 
 ### <a name="create-the-local-network-gateway-resource"></a>Tworzenie zasobu Brama sieci lokalnej
 1. Zaloguj się do maszyny fizycznej usługi Azure Stack dla środowiska POC1.
-2. W aplikacji portal użytkowników, wybierz **New**.
+2. W aplikacji portal użytkowników, wybierz **+ Utwórz zasób**.
 3. Przejdź do **Marketplace**, a następnie wybierz pozycję **sieć**.
 4. Z listy zasobów wybierz **bramy sieci lokalnej**.
 5. W **nazwa**, wprowadź **POC2-GW**.
@@ -149,7 +146,7 @@ Sposób myślenia o tym bardziej ogólnie jest zasobu Brama sieci lokalnej będz
 8. Upewnij się, że Twoje **subskrypcji**, **grupy zasobów**, i **lokalizacji** są poprawne, a następnie wybierz **Utwórz**.
 
 ### <a name="create-the-connection"></a>Tworzenie połączenia
-1. W aplikacji portal użytkowników, wybierz **New**.
+1. W aplikacji portal użytkowników, wybierz **+ Utwórz zasób**.
 2. Przejdź do **Marketplace**, a następnie wybierz pozycję **sieć**.
 3. Z listy zasobów wybierz **połączenia**.
 4. Na **podstawy** bloku ustawienia dla **typu połączenia**, wybierz opcję **lokacja lokacja (IPSec)**.
@@ -163,7 +160,7 @@ Sposób myślenia o tym bardziej ogólnie jest zasobu Brama sieci lokalnej będz
 ### <a name="create-a-vm"></a>Tworzenie maszyny wirtualnej
 Aby sprawdzić poprawność danych, przybliżone ilości tych danych za pośrednictwem połączenia sieci VPN, należy maszyny wirtualne do wysyłania i odbierania danych w każdej usłudze Azure Stack Development Kit. Teraz Utwórz maszynę wirtualną w środowisku POC1, a następnie w Twojej sieci wirtualnej, umieść je w podsieci maszyny Wirtualnej.
 
-1. W witrynie Azure portal wybierz **New**.
+1. W witrynie Azure portal wybierz **+ Utwórz zasób**.
 2. Przejdź do **Marketplace**, a następnie wybierz pozycję **obliczenia**.
 3. Z listy obrazów maszyn wirtualnych wybierz **systemu Windows Server 2016 Datacenter — wersja próbna** obrazu.
 4. Na **podstawy** bloku, w **nazwa**, wprowadź **VM01**.
@@ -185,7 +182,7 @@ Administrator usługi można zalogować się jako dzierżawca Aby przetestować 
 ### <a name="create-the-virtual-network-and-vm-subnet"></a>Tworzenie sieci wirtualnej i podsieci maszyny wirtualnej
 
 1. Zaloguj się przy użyciu konta dzierżawy.
-2. W aplikacji portal użytkowników, wybierz **New**.
+2. W aplikacji portal użytkowników, wybierz **+ Utwórz zasób**.
 3. Przejdź do **Marketplace**, a następnie wybierz pozycję **sieć**.
 4. Wybierz **sieć wirtualna**.
 5. Użyj informacji znajdujących się wcześniej w tabeli konfiguracji sieci, aby zidentyfikować wartości dla środowiska POC2 **nazwa**, **przestrzeń adresowa**, **Nazwa podsieci**i **Zakres adresów podsieci**.
@@ -205,7 +202,7 @@ Administrator usługi można zalogować się jako dzierżawca Aby przetestować 
 6. Wybierz **OK** utworzyć podsieć bramy.
 
 ### <a name="create-the-virtual-network-gateway"></a>Tworzenie bramy sieci wirtualnej
-1. W witrynie Azure portal wybierz **New**.  
+1. W witrynie Azure portal wybierz **+ Utwórz zasób**.  
 2. Przejdź do **Marketplace**, a następnie wybierz pozycję **sieć**.
 3. Wybierz z listy zasobów sieciowych, **bramy sieci wirtualnej**.
 4. W **nazwa**, wprowadź **GW2**.
@@ -218,7 +215,7 @@ Administrator usługi można zalogować się jako dzierżawca Aby przetestować 
 
 ### <a name="create-the-local-network-gateway-resource"></a>Tworzenie zasobu Brama sieci lokalnej
 
-1. W środowisku POC2 portalu użytkowników, wybierz **New**. 
+1. W środowisku POC2 portalu użytkowników, wybierz **+ Utwórz zasób**. 
 4. Przejdź do **Marketplace**, a następnie wybierz pozycję **sieć**.
 5. Z listy zasobów wybierz **bramy sieci lokalnej**.
 6. W **nazwa**, wprowadź **POC1-GW**.
@@ -227,7 +224,7 @@ Administrator usługi można zalogować się jako dzierżawca Aby przetestować 
 9. Upewnij się, że Twoje **subskrypcji**, **grupy zasobów**, i **lokalizacji** są poprawne, a następnie wybierz **Utwórz**.
 
 ## <a name="create-the-connection"></a>Tworzenie połączenia
-1. W aplikacji portal użytkowników, wybierz **New**. 
+1. W aplikacji portal użytkowników, wybierz **+ Utwórz zasób**. 
 2. Przejdź do **Marketplace**, a następnie wybierz pozycję **sieć**.
 3. Z listy zasobów wybierz **połączenia**.
 4. Na **podstawowe** bloku ustawienia dla **typu połączenia**, wybierz **lokacja lokacja (IPSec)**.
@@ -241,7 +238,7 @@ Administrator usługi można zalogować się jako dzierżawca Aby przetestować 
 ## <a name="create-a-virtual-machine"></a>Tworzenie maszyny wirtualnej
 Teraz Utwórz maszynę wirtualną w środowisku POC2 i umieść je w podsieci maszyny Wirtualnej w sieci wirtualnej.
 
-1. W witrynie Azure portal wybierz **New**.
+1. W witrynie Azure portal wybierz **+ Utwórz zasób**.
 2. Przejdź do **Marketplace**, a następnie wybierz pozycję **obliczenia**.
 3. Z listy obrazów maszyn wirtualnych wybierz **systemu Windows Server 2016 Datacenter — wersja próbna** obrazu.
 4. Na **podstawy** bloku dla **nazwa**, wprowadź **VM02**.

@@ -12,16 +12,16 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/05/2018
+ms.date: 09/11/2018
 ms.author: jeffgilb
 ms.reviewer: ''
 ms.custom: mvc
-ms.openlocfilehash: 09b9126125006fb70f5e2560f04b815b4a874405
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d106d9f79498678f08142f952e09c5125c6e5d6c
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44027303"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44721521"
 ---
 # <a name="tutorial-make-virtual-machines-available-to-your-azure-stack-users"></a>Samouczek: udostępnić maszyn wirtualnych dla użytkowników usługi Azure Stack
 
@@ -46,11 +46,11 @@ Aby dowiedzieć się więcej, zobacz [kluczowe funkcje i pojęcia w usłudze Azu
 
 Oferty są grupami co najmniej jeden plan, które dostawcy przedstawiają użytkownikom, aby zakupić lub subskrybować. Proces tworzenia oferty składa się z kilku kroków. Po pierwsze zostanie wyświetlony monit tworzenia tej oferty, a następnie planu, a na końcu przydziałów.
 
-1. [Zaloguj się w](azure-stack-connect-azure-stack.md) do portalu jako administrator chmury, a następnie wybierz pozycję **New** > **oferty i plany** > **oferują**.
+1. [Zaloguj się w](azure-stack-connect-azure-stack.md) do portalu jako administrator chmury, a następnie wybierz pozycję **+ Utwórz zasób** > **oferty i plany** > **oferują**.
 
    ![Nowa oferta](media/azure-stack-tutorial-tenant-vm/image01.png)
 
-1. W **nowa oferta**, wprowadź **nazwę wyświetlaną** i **Nazwa zasobu**, a następnie wybierz nową lub istniejącą **grupy zasobów**. Nazwa wyświetlana jest przyjazną nazwą oferty. Operator tylko chmura wyświetlana nazwa zasobu. Jest to nazwa używana przez administratorów do pracy z ofertą jako zasobem usługi Azure Resource Manager.
+1. W **nowa oferta**, wprowadź **nazwę wyświetlaną** i **Nazwa zasobu**, a następnie wybierz nową lub istniejącą **grupy zasobów**. Nazwa wyświetlana jest przyjazną nazwą oferty. Tylko operatorowi chmury wyświetlana nazwa zasobu, jest to nazwa używana przez administratorów do pracy z ofertą jako zasobem usługi Azure Resource Manager.
 
    ![Nazwa wyświetlana](media/azure-stack-tutorial-tenant-vm/image02.png)
 
@@ -58,7 +58,7 @@ Oferty są grupami co najmniej jeden plan, które dostawcy przedstawiają użytk
 
    ![Dodaj plan](media/azure-stack-tutorial-tenant-vm/image03.png)
 
-1. W **nowy Plan** sekcji, wypełnij **nazwę wyświetlaną** i **Nazwa zasobu**. Nazwa wyświetlana jest przyjazną nazwą planu, którą użytkownicy widzą. Operator tylko chmura wyświetlana nazwa zasobu. Jest to nazwa, która operatorom chmury używana do pracy z planem jako zasobem usługi Azure Resource Manager.
+1. W **nowy plan** sekcji, wypełnij **nazwę wyświetlaną** i **Nazwa zasobu**. Nazwa wyświetlana jest przyjazną nazwą planu, którą użytkownicy widzą. Operator tylko chmura zobaczyć nazwę zasobu, która jest nazwą, która operatorom chmury używana do pracy z planem jako zasobem usługi Azure Resource Manager.
 
    ![Nazwa wyświetlana planu](media/azure-stack-tutorial-tenant-vm/image04.png)
 
@@ -112,11 +112,11 @@ Teraz, po utworzeniu oferty, można ją przetestować. Należy logować się jak
    - Zintegrowany system, aby uzyskać adres URL zależności na region i nazwy domeny zewnętrznej przez operatora i będzie w formacie https://portal.&lt; *region*&gt;.&lt; *FQDN*&gt;.
    - Jeśli używasz usługi Azure Stack Development Kit portalu adres jest https://portal.local.azurestack.external.
 
-   ![Uzyskaj subskrypcję](media/azure-stack-subscribe-plan-provision-vm/image01.png)
+   ![Uzyskaj subskrypcję](media/azure-stack-tutorial-tenant-vm/image10.png)
 
    b. W **Uzyskaj subskrypcję**, wprowadź nazwę dla Twojej subskrypcji w **nazwę wyświetlaną** pola. Wybierz **oferują**, a następnie wybierz jedno z ofert w **wybierz ofertę** listy. Wybierz pozycję **Utwórz**.
 
-   ![Tworzenie oferty](media/azure-stack-subscribe-plan-provision-vm/image02.png)
+   ![Tworzenie oferty](media/azure-stack-tutorial-tenant-vm/image11.png)
 
    c. Do wyświetlania subskrypcji, wybierz **wszystkich usług**, a następnie w obszarze **ogólne** wybierz kategorię **subskrypcje**. Wybierz swojej nowej subskrypcji, aby wyświetlić usługi, które są częścią subskrypcji.
 
@@ -131,7 +131,7 @@ Teraz, po utworzeniu oferty, można ją przetestować. Należy logować się jak
       - Zintegrowany system, aby uzyskać adres URL zależności na region i nazwy domeny zewnętrznej przez operatora i będzie w formacie https://portal.&lt; *region*&gt;.&lt; *FQDN*&gt;.
    - Jeśli używasz usługi Azure Stack Development Kit portalu adres jest https://portal.local.azurestack.external.
 
-   b.  Na pulpicie nawigacyjnym wybierz **New** > **obliczenia** > **systemu Windows Server 2016 Datacenter — wersja próbna**, a następnie wybierz pozycję **Utwórz**.
+   b.  Na pulpicie nawigacyjnym wybierz **+ Utwórz zasób** > **obliczenia** > **systemu Windows Server 2016 Datacenter — wersja próbna**, a następnie wybierz pozycję **Tworzenie**.
 
    c. W **podstawy**, podaj następujące informacje:
       - Wprowadź **nazwy**
@@ -151,14 +151,11 @@ Teraz, po utworzeniu oferty, można ją przetestować. Należy logować się jak
 
    h. Wybierz **OK** w **ustawienia** można zapisać konfiguracji sieci.
 
-   ![Tworzenie sieci wirtualnej](media/azure-stack-provision-vm/image04.png)
-
-   i. W **Podsumowanie**, wybierz opcję **OK** do utworzenia maszyny wirtualnej.  
+      i. W **Podsumowanie**, wybierz opcję **OK** do utworzenia maszyny wirtualnej.  
 
    j. Aby wyświetlić nową maszynę wirtualną, wybierz **wszystkie zasoby**. Wyszukaj maszynę wirtualną, a następnie wybierz jego nazwę w wynikach wyszukiwania.
 
-   ![Wszystkie zasoby](media/azure-stack-provision-vm/image06.png)
-
+   
 ## <a name="next-steps"></a>Kolejne kroki
 
 W tym samouczku zawarto informacje na temat wykonywania następujących czynności:
