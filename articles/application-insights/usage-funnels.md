@@ -1,57 +1,58 @@
 ---
-title: "Lejki wgląd w aplikacji Azure"
-description: "Dowiedz się, jak można użyć Lejki, aby dowiedzieć się, jak klienci są interakcji z aplikacją."
+title: Usługi Azure Application Insights Lejki
+description: Dowiedz się, jak można użyć Lejki, aby dowiedzieć się, jak klienci wchodzą w interakcje z Twoją aplikacją.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/17/2017
 ms.author: mbullwin
-ms.openlocfilehash: bbb25af888f34737f6a61cf43890ff248c4cc4de
-ms.sourcegitcommit: cf42a5fc01e19c46d24b3206c09ba3b01348966f
+ms.openlocfilehash: 527f9d4a6086f92dcba8a342162b955431b8b315
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/29/2017
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644665"
 ---
-# <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Wykryj, jak klienci używają aplikacji z Lejki Insights aplikacji
+# <a name="discover-how-customers-are-using-your-application-with-application-insights-funnels"></a>Odkryj, jak klienci korzystają z aplikacji za pomocą Application Insights Lejki
 
-Zrozumienie obsługi klienta jest największe znaczenie dla Twojej firmy. Jeśli aplikacja obejmuje kilka etapów, musisz wiedzieć, jeśli większość klientów postępu są przez cały proces lub są one zakończenia procesu w pewnym momencie. Przejście przez kilka czynności w aplikacji sieci web nazywa się *lejka*. Użyj Azure Application Insights Lejki, aby uzyskać wgląd w użytkowników i monitorowanie kursy wymiany krok po kroku. 
+Omówienie obsługi klientów ma priorytetowe znaczenie dla Twojej firmy. Jeśli aplikacja obejmuje wiele etapów, musisz wiedzieć, czy postęp większość klientów przez cały proces, czy są one zakończenie procesu w pewnym momencie. Postęp przez szereg czynności w aplikacji sieci web jest znany jako *lejka*. Możesz używać usługi Azure Application Insights Lejki w celu uzyskania szczegółowych informacji o użytkowników i monitorowania współczynników konwersji krok po kroku. 
 
-## <a name="create-your-funnel"></a>Utwórz użytkownika lejka.
-Przed utworzeniem sieci lejka zdecydować się na pytanie, które chcesz odpowiedzieć. Na przykład można wiedzieć, ilu użytkowników jest wyświetlana strona główna profil klienta wyświetlania i tworzenia biletu. W tym przykładzie właściciele firmy Fabrikam Fiber zapoznać się odsetek klientów, którzy pomyślnie utworzyć bilet klienta.
+## <a name="create-your-funnel"></a>Utwórz lejku
+Przed utworzeniem lejku, należy podjąć decyzję w kwestii, które chcesz odpowiedzieć. Na przykład możesz chcieć wiedzieć, ile wyświetlania strony głównej wyświetlanie profilu klienta i tworzenia biletu. W tym przykładzie właściciele firmy Fabrikam Fiber chcieli wiedzieć odsetek klientów, którzy pomyślnie utworzyć zgłoszenie do klienta.
 
-Poniżej przedstawiono kroki, które podejmują tworzenia ich lejka.
+Poniżej przedstawiono kroki, które mogą wykonać w celu utworzenia ich lejka.
 
-1. W narzędziu Application Insights Lejki wybierz **nowy**.
-1. Z **zakres czasu** menu rozwijanego wybierz **ostatnich 90 dni temu**. Wybierz opcję **Moje Lejki** lub **udostępnionych Lejki**.
-1. Z **krok 1** listy rozwijanej wybierz **indeksu**. 
-1. Z **krok 2** listy, wybierz **klienta**.
-1. Z **kroku 3** listy, wybierz **Utwórz**.
-1. Dodaj nazwę do lejka, a następnie wybierz **zapisać**.
+1. W narzędziu Application Insights Lejki wybierz **New**.
+1. Z **zakres czasu** menu rozwijanego wybierz opcję **ostatnich 90 dni**. Wybierz opcję **Moje Lejki** lub **udostępnione Lejki**.
+1. Z **kroku 1** listy rozwijanej wybierz **indeksu**. 
+1. Z **kroku 2** listy wybierz **klienta**.
+1. Z **kroku 3** listy wybierz **Utwórz**.
+1. Dodawanie nazwy do lejka, a następnie wybierz pozycję **Zapisz**.
 
-Poniższy zrzut ekranu przedstawia przykład tego rodzaju danych narzędzie Lejki generuje. Właściciele Fabrikam można stwierdzić, że w ciągu ostatnich 90 dni, 54.3 odsetek klientów, którzy odwiedzona strona główna utworzone biletu klienta. Można również sprawdzić 2,700 klientom pochodzi ze strony głównej do indeksu. Może to wskazywać problem odświeżania.
+Poniższy zrzut ekranu przedstawia przykład tego rodzaju danych narzędzia Lejki generuje. Właściciele Fabrikam zobaczyć, że w ciągu ostatnich 90 dni, procent 54.3 swoich klientów, którzy odwiedzone strony głównej utworzyć zgłoszenie do klienta. Można również wyświetlić 2,700 klientom pochodzi ze strony głównej do indeksu. Może to wskazywać problem odświeżania.
 
 
-![Zrzut ekranu Lejki narzędzie z danymi](./media/app-insights-understand-usage-patterns/funnel1.png)
+![Zrzut ekranu Lejki narzędzia z danymi](./media/app-insights-understand-usage-patterns/funnel1.png)
 
 ### <a name="funnels-features"></a>Funkcje Lejki
-Poprzedni zrzut ekranu zawiera pięciu obszarów. Są to funkcje lejki. Poniżej opisano bardziej dotyczące każdego odpowiadający mu obszar na zrzucie ekranu:
-1. Jeśli jest próbkowany aplikacji, zostanie wyświetlony Baner próbkowania. Wybieranie transparentu powoduje otwarcie okienka kontekstu, wyjaśniający, jak wyłączyć próbkowania. 
-2. Możesz wyeksportować z lejka do [usługi Power BI](app-insights-export-power-bi.md).
-3. Zaznacz krok, aby zobaczyć więcej szczegółów po prawej stronie. 
-4. Wykres historyczny konwersji pokazuje kursy wymiany w ciągu ostatnich 90 dni. 
-5. Dowiedz się użytkownikom lepsze, uzyskując dostęp do narzędzia użytkowników. Możesz użyć filtrów w każdym kroku. 
+Poprzedni zrzut ekranu zawiera pięć obszarów. Są to funkcje lejki. Poniżej opisano bardziej każdy odpowiadający mu obszar na zrzucie ekranu:
+1. Jeśli w aplikacji są próbkowane tak, zostanie wyświetlony transparent pobierania próbek. Wybranie transparent Otwiera okienko kontekstu, wyjaśniające, jak wyłączyć próbkowania. 
+2. Możesz wyeksportować lejku tak, aby [usługi Power BI](app-insights-export-power-bi.md).
+3. Wybierz krok, aby zobaczyć więcej szczegółów po prawej stronie. 
+4. Na wykresie Konwersja danych historycznych przedstawiono współczynniki konwersji w ciągu ostatnich 90 dni. 
+5. Zrozumienie użytkownikom lepsze, uzyskując dostęp do narzędzia użytkowników. Filtry można użyć w każdym kroku. 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
   * [Przegląd wykorzystania](app-insights-usage-overview.md)
-  * [Użytkownikami, sesjami i zdarzenia](app-insights-usage-segmentation.md)
+  * [Użytkownicy, sesje i zdarzenia](app-insights-usage-segmentation.md)
   * [Przechowywanie](app-insights-usage-retention.md)
   * [Skoroszyty](app-insights-usage-workbooks.md)
-  * [Dodaj kontekstu użytkownika](app-insights-usage-send-user-context.md)
+  * [Dodawanie kontekstu użytkownika](app-insights-usage-send-user-context.md)
   * [Eksportowanie do usługi Power BI](app-insights-export-power-bi.md)
 

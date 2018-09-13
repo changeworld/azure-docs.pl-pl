@@ -1,39 +1,39 @@
 ---
-title: Dodaj do roli użytkownika współpracy usługi Azure Active Directory B2B | Dokumentacja firmy Microsoft
-description: Dodaj użytkownika gościa do roli w usłudze Azure Active Directory
+title: Dodaj użytkownika współpracy B2B usługi Azure Active Directory do roli | Dokumentacja firmy Microsoft
+description: Dodawanie użytkownika-gościa do roli w usłudze Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 05/08/2018
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 91abc2ef4d893c57816ca3b6552f19f07c2f588a
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: HT
+ms.openlocfilehash: 47615309d71ac6bf4352e30284f23fbbfdd6d4be
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260173"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644666"
 ---
-# <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Przyznawanie uprawnień użytkownikom w organizacji partnera w dzierżawie usługi Azure Active Directory
+# <a name="grant-permissions-to-users-from-partner-organizations-in-your-azure-active-directory-tenant"></a>Udzielić uprawnień dla użytkowników z organizacji partnerskich w dzierżawie usługi Azure Active Directory
 
-Azure użytkowników współpracy B2B usługi Active Directory (Azure AD) są dodawane jako goście w katalogu, a uprawnienia w katalogu są ograniczone przez domyślny. Firma może być konieczne niektórzy użytkownicy gościa do pełnienia ról wyższych uprawnień w Twojej organizacji. Do obsługi, zdefiniowanie ról wyższych uprawnień, goście mogą być dodawane do żadnej roli, które chcesz, w zależności od potrzeb organizacji.
+Użytkowników we współpracy w usłudze Azure Active Directory (Azure AD) B2B są dodawane jako użytkowników-gości do katalogu, a Gość uprawnienia w katalogu są ograniczone przez domyślny. Twojej firmy może wymagać, aby niektórych użytkowników-gości, aby wypełnić wyższych uprawnień ról w organizacji. Umożliwiają definiowanie ról na wyższym poziomie uprawnień użytkowników-gości można można dodać do ról użytkowników, w zależności od potrzeb organizacji.
 
-## <a name="default-role"></a>Domyślna rola
+## <a name="default-role"></a>Rola domyślna
 
-![Domyślna rola](./media/add-guest-to-role/default-role.png)
+![Rola domyślna](./media/add-guest-to-role/default-role.png)
 
 ## <a name="global-administrator-role"></a>Rola administratora globalnego
 
 ![Rola administratora globalnego](./media/add-guest-to-role/global-admin-role.png)
 
-## <a name="limited-administrator-role"></a>Rola administratora ograniczone
+## <a name="limited-administrator-role"></a>Ograniczony Administrator roli
 
-![Rola administratora ograniczone](./media/add-guest-to-role/limited-admin-role.png)
+![Rola Administrator z ograniczonymi uprawnieniami](./media/add-guest-to-role/limited-admin-role.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Czym jest współpraca B2B w usłudze Azure AD?](what-is-b2b.md)
-- [Właściwości użytkownika współpracy B2B](user-properties.md)
+- [Właściwości użytkowników współpracy B2B](user-properties.md)

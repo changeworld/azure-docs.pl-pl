@@ -1,6 +1,6 @@
 ---
-title: Szeregów czasowych żądanie energii prognozowania | Dokumentacja firmy Microsoft
-description: Jak stosować prognozy szeregu czasowego żądanie energii w konsoli usługi Azure Machine Learning Workbench uczenia maszynowego.
+title: Prognozowanie szeregów czasowych zapotrzebowania energii | Dokumentacja firmy Microsoft
+description: Jak zastosować uczenia maszynowego w celu prognozowania szeregów czasowych zapotrzebowania na energię w aplikacji Azure Machine Learning Workbench.
 services: machine-learning
 documentationcenter: ''
 author: anta
@@ -9,148 +9,148 @@ editor: anta
 ms.assetid: ''
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: anta
-ms.openlocfilehash: 19e62364599ec9f1d0571e6f6e35205b0bb93b4b
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 3f32c9048c4b2002e7672b46a4f39e86ffa7b98e
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832537"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35647616"
 ---
-# <a name="energy-demand-time-series-forecasting"></a>Szeregów czasowych żądanie energii prognozowania
+# <a name="energy-demand-time-series-forecasting"></a>Prognozowanie szeregów czasowych zapotrzebowania energii
 
 
-Prognozowanie serii czasu jest zadanie przewidywania przyszłych wartości w sekwencji uporządkowane czasu uwag. Jest to powszechny problem i współpracuje z aplikacjami, w wielu branżach. Na przykład konieczne przewidywania przyszłych produktów, sprzedaż, ich skutecznie organizowanie ich łańcuchami, aby spełnić wymagania firm handlowych. Podobnie firm dostarczania pakietu należy oszacować żądanie dla swoich usług, aby zaplanować wymagania pracowników i tras dostaw wcześniejsze. W wielu przypadkach może być istotne ryzyka finansowego prognoz niedokładne. W związku z tym prognozowania jest często krytyczne działalności.
+Prognozowanie serii czasu jest zadaniem prognozowania przyszłych wartości w uporządkowanej w czasie sekwencji uwag. Jest to powszechny problem i ma aplikacji w wielu branżach. Na przykład sprzedaży detalicznej, firmy muszą prognozować sprzedaż przyszłych produktów, dzięki czemu mogą efektywnie organizować ich łańcuchami dostaw w celu spełnienia określonych wymagań. Podobnie pakiet dostarczania firmy muszą oszacować popyt na swoje usługi, dzięki czemu można zaplanować wymagania pracowników i tras dostaw wcześniej. W wielu przypadkach ryzyka finansowego niedokładne prognoz mogą być znaczące. W związku z tym funkcja prognozowania jest często krytyczne działanie firmy.
 
-W tym przykładzie pokazano, jak prognozowania szeregu czas mogą być wykonywane za pośrednictwem stosowania technik learning maszyny. Zapoznasz się na każdym kroku modelowania procesu w tym:
-- Przygotowywanie danych do czyszczenia i formatowania danych;
-- Tworzenie funkcji dla modeli z danych serii raw czasu; uczenia maszynowego
-- Uczenie różne modele uczenia maszyny;
-- Ocena modele przez porównanie ich działania w zestawie danych przechowywane poza testu; a
-- Operacyjnych najlepsze modelu, udostępniając za pośrednictwem usługi sieci web do wygenerowania prognoz na żądanie.
+Niniejszy przykład pokazuje, jak prognozowanie serii czasu mogą być wykonywane przez zastosowanie techniki uczenia maszyny. Zapoznasz się na każdym kroku modelowania procesów w tym:
+- Przygotowywanie danych, aby wyczyścić i formatowania danych;
+- Tworzenie funkcji dla modeli na podstawie danych szeregów czasowych pierwotne; uczenia maszynowego
+- Szkolenie modeli uczenia maszynowego różnych;
+- Ocenianie modeli przez porównanie ich działania w zestawie danych przechowywanych poza testu; Ponadto
+- Operacjonalizacji najlepszy model, udostępniając je za pośrednictwem usługi internetowej, aby generować prognozy na żądanie.
 
-Azure Machine Learning Workbench ułatwia ten proces modelowania w każdym kroku: 
-- Pokazano, jak wprowadzić środowisko notesu Jupyter — dostępne bezpośrednio z za pomocą narzędzia Workbench — tworzenie łatwiejsze kodu języka Python. Proces tworzenia modelu można wyjaśnić innym dokładniej przy użyciu języka znaczników markdown adnotacje i wykresy. Te komputery przenośne można wyświetlać, edytować i wykonać bezpośrednio z poziomu Workbench.
-- Modele przeszkolone można utrwalenia i przekazać do magazynu obiektów blob. Dzięki temu naukowca danych, aby śledzić uczonego modelu obiektów i upewnij się, że są one zachowane i pobieranie, w razie potrzeby.
-- Metryki mogą być rejestrowane podczas wykonywania skryptu języka Python, włączanie naukowca danych rejestrować wyniki wydajności modelu.
-- Workbench tworzy tabele można dostosowywać zarejestrowane metryk, dzięki czemu naukowca danych można łatwo porównać metryki wydajności modelu. Wykresy są automatycznie wyświetlane, można łatwo zidentyfikować najbardziej modelu.
-- Na koniec pokazano, jak uczonego modelu można operationalized przez wdrożenie jej w czasie rzeczywistym usługi sieci web.
+Usługa Azure Machine Learning Workbench ułatwia proces modelowania, na każdym etapie: 
+- Przykład pokazuje, jak środowisko notesu programu Jupyter — pochodzących bezpośrednio za pośrednictwem aplikacji Workbench — ułatwia tworzenie kodu w języku Python łatwiejsze. Proces programowania modelu można wyjaśnić innym osobom korzystającym z wyraźniej adnotacji języka znaczników markdown i wykresy. Te notesy można wyświetlać, edytować i wykonywane bezpośrednio z aplikacji Workbench.
+- Uczone modele można trwały i przekazane do magazynu obiektów blob. Pomaga to analityk danych, aby śledzić uczonego modelu obiektów i upewnij się, że są one zachowane i pobieranie w razie potrzeby.
+- Metryki mogą być rejestrowane podczas wykonywania skryptu w języku Python, umożliwiając badacz danych rejestrować wyniki wydajności modelu.
+- Usługa workbench tworzy tabel można dostosowywać zarejestrowanych metryk, umożliwiając badacz danych łatwo porównać metryki wydajności modelu. Wykresy są automatycznie wyświetlane, dzięki czemu można łatwo zidentyfikować najlepiej działający model.
+- Na koniec przykład pokazuje, jak uczonego modelu może być przygotowany do działania przez wdrożenie jej w usłudze sieci web w czasie rzeczywistym.
 
 ## <a name="link-to-the-gallery-github-repository"></a>Połącz z repozytorium GitHub galerii
-W tym scenariuszu rzeczywistych publicznego repozytorium GitHub zawiera wszystkich materiałów, w tym przykłady kodu, potrzebne w tym przykładzie:
+Publicznego repozytorium GitHub, w tym scenariuszu rzeczywistych zawiera wszystkie materiały, w tym przykłady kodu, potrzebne w tym przykładzie:
 
 [https://github.com/Azure/MachineLearningSamples-EnergyDemandTimeSeriesForecasting](https://github.com/Azure/MachineLearningSamples-EnergyDemandTimeSeriesForecasting)
 
 
 ## <a name="use-case-overview"></a>Omówienie przypadków użycia
 
-W tym scenariuszu skupiono się na zapotrzebowania na energię prognozowania, której celem jest do przewidywania przyszłych obciążenia na siatce energii. Jest to operacja krytycznym dla firm z sektora energetycznego jak operatory należy obsługiwać poprawnie równowagi między energii zużytej na siatce i energii dostarczonych. Za dużo zasilania siatki może spowodować odpady energii lub błędów technicznych. Jednak jeśli podano za mało zasilania może prowadzić do blackouts, pozostawiając klientów bez zasilania. Zazwyczaj operatory siatki może zająć krótkoterminowej decyzje dotyczące zarządzania zasilania do siatki i należy równoważenia obciążenia. Dokładne krótkoterminowej Prognoza zapotrzebowania na energię w związku z tym jest niezbędne dla operatora podejmowanie tych decyzji bez obaw.
+Ten scenariusz koncentruje się na prognozowanie, której celem jest przewidzieć przyszłe obciążenie energetycznej zapotrzebowania na energię. Ponieważ operatory muszą poprawnie równowagę między zużycie na siatce energii i energii dostarczonych jej obsługa jest operacji biznesowych, dla firm w sektorze energetycznym. Za dużo energii dostarczone do siatki może spowodować marnotrawstwa energii lub błędów technicznych. Jednak jeśli nie dostarczono zbyt małej mocy może prowadzić do blackouts, pozostawiając klienci, którzy nie zasilania. Zazwyczaj operatory siatki może potrwać krótkoterminowej podjęte decyzje w kwestii zarządzania dostaw energii do siatki i pamiętać równoważenia obciążenia. Dokładne krótkoterminowej prognozy zapotrzebowania na energię w związku z tym ma zasadnicze znaczenie dla operatora, który podejmowanie tych decyzji bez obaw.
 
-Ten scenariusz zawiera szczegóły dotyczące konstrukcji zapotrzebowania na energię prognozowania rozwiązania do uczenia maszynowego. Rozwiązania jest uczony na publiczny zestawu danych za pomocą [Nowy Jork niezależnie od systemu — Operator (NYISO)](http://www3.dps.ny.gov/W/PSCWeb.nsf/All/298372E2CE4764E885257687006F39DF?OpenDocument), który działa siatki zasilania dla nowego Jorku stanu. Zestaw danych zawiera co godzinę zasilania żądanie danych dla nowego Jorku w okresie 5 lat. Dodatkowe zestawu danych zawierającego co godzinę pogodą w Nowym Jorku w tym samym czasie została pobrana z [darksky.net](https://darksky.net).
+W tym scenariuszu przedstawiono konstrukcji rozwiązanie do prognozowania zapotrzebowania na energię uczenia maszynowego. Rozwiązania zostały przeszkolone na publicznego zestawu danych z [operatora New York niezależnie od systemu (NYISO)](http://www3.dps.ny.gov/W/PSCWeb.nsf/All/298372E2CE4764E885257687006F39DF?OpenDocument), który działa siatki zasilania dla nowego Jorku stanu. Zestaw danych zawiera co godzinę power żądanie danych dla nowego Jorku przez okres pięciu lat. Zestaw dodatkowych danych zawierające co godzinę warunków pogodowych w Nowym Jorku, w tym samym okresie czasu została pobrana z [darksky.net](https://darksky.net).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- [Konta Azure](https://azure.microsoft.com/free/) (bezpłatnych wersji próbnych są dostępne).
-- Zainstalowana kopia programu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) następujące [Przewodnik Szybki start instalacji](../service/quickstart-installation.md) Aby zainstalować ten program i utworzyć obszaru roboczego.
-- W tym przykładzie przyjęto założenie, że uruchamiasz Workbench uczenie Maszynowe Azure w systemie Windows 10 z [aparatem platformy Docker](https://www.docker.com/) zainstalowane lokalnie. Jeśli używasz macOS instrukcje dotyczą przede wszystkim takie same.
-- Azure Machine Learning Operationalization instalowany z skonfigurować środowisko wdrożenia lokalnego oraz konta zarządzania modelu utworzona zgodnie z opisem w tym [przewodnik](./model-management-configuration.md).
-- W tym przykładzie wymaga aktualizacji instalacji Pandas do wersji 0.20.3 lub nowszej i instalacji matplotlib. Kliknij przycisk *Otwórz okno wiersza polecenia* z *pliku* menu Narzędzia Workbench i uruchom następujące polecenia, aby zainstalować te zależności:
+- [Konta platformy Azure](https://azure.microsoft.com/free/) (bezpłatne wersje próbne są dostępne).
+- Zainstalowana kopia programu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) następujące [przewodnika Szybki start dotyczącego instalacji](../service/quickstart-installation.md) zainstalować ten program i utworzyć obszar roboczy.
+- W tym przykładzie przyjęto założenie, że są uruchomione usługi Azure ML Workbench w systemie Windows 10 za pomocą [aparat platformy Docker](https://www.docker.com/) zainstalowane lokalnie. Jeśli używasz systemu macOS instrukcje są w dużym stopniu takie same.
+- Azure maszyny Learning operacjonalizacji oprogramowania zainstalowane przy użyciu środowiska lokalnego wdrażania, konfigurowania oraz konta zarządzania modelami utworzona zgodnie z opisem w tym [przewodnik](./model-management-configuration.md).
+- Ten przykładowy skrypt wymaga zaktualizowania instalacji Pandas do wersji 0.20.3 lub nowszej i zainstalować pakiet matplotlib. Kliknij przycisk *Otwórz wiersz polecenia* z *pliku* menu w aplikacji Workbench i uruchom następujące polecenia, aby zainstalować te zależności:
 
     ```
     conda install "pandas>=0.21.1"
     ```
     
-## <a name="create-a-new-workbench-project"></a>Utwórz nowy projekt Workbench
+## <a name="create-a-new-workbench-project"></a>Utwórz nowy projekt aplikacji Workbench
 
-Utwórz nowy projekt za pomocą tego przykładu jako szablon:
-1.  Otwórz Azure Machine Learning Workbench
-2.  Na **projekty** kliknij przycisk **+** podpisywania i wybierz **nowy projekt**
-3.  W **Utwórz nowy projekt** okienka, wypełnij informacje dla nowego projektu
-4.  W **szablony projektów wyszukiwania** pole wyszukiwania, wpisz "Energii żądanie czasu serii prognozowania" i wybierz szablon
+Utwórz nowy projekt za pomocą tego przykładu jako szablonu:
+1.  Otwieranie usługi Azure Machine Learning Workbench
+2.  Na **projektów** kliknij **+** zalogować się i wybrać **nowy projekt**
+3.  W **Utwórz nowy projekt** okienku, wprowadź informacje dla nowego projektu
+4.  W **Wyszukaj szablony projektów** polu wyszukiwania wpisz ciąg "Energii czas serii prognozowaniu popytu", wybierz szablon
 5.  Kliknij przycisk **Utwórz**
 
 
-## <a name="data-description"></a>Opis elementu danych
+## <a name="data-description"></a>Opis danych
 
-Dwa zestawy danych są dostarczane z tego przykładu i zostaną pobrane przy użyciu `1-data-preparation.ipynb` notesu: `nyc_demand.csv` i `nyc_weather.csv`.
+Dwa zestawy danych są dostarczane z tego przykładu i są pobierane przy użyciu `1-data-preparation.ipynb` Notes: `nyc_demand.csv` i `nyc_weather.csv`.
 
-**nyc_demand.csv** co godzinę zawiera wartości żądanie energii dla nowego Jorku lat 2012 2017. Danych ma następującą strukturę prosty:
+**nyc_demand.csv** co godzinę zawiera wartości żądanie energii dla nowego Jorku w latach 2012 – 2017. Dane mają następującą strukturę proste:
 
-| Znacznik czasu | żądanie |
+| Znacznik czasu: | żądanie |
 | --- | --- |
 | 2012-01-01 00:00:00 | 4937.5 |
 | 2012-01-01 01:00:00 | 4752.1 |
 | 2012-01-01 02:00:00 | 4542.6 |
 | 2012-01-01 03:00:00 | 4357.7 |
 
-Żądanie wartościami są megawatt godzin (MWh). Poniżej znajdują się wykres zapotrzebowania na energię w okresie 7-dniowe w lipcu 2017:
+Żądanie wartości należą do godziny megawatt (usługi MWh). Poniżej przedstawiono wykres zapotrzebowania na energię w okresie 7 dni w lipca 2017 r.:
 
 ![Zapotrzebowania na energię](./media/scenario-time-series-forecasting/energy_demand.png  "zapotrzebowania na energię")
 
-**nyc_weather.csv** co godzinę zawiera wartości pogody dla nowego Jorku całościowo 2012 2017:
+**nyc_weather.csv** co godzinę zawiera wartości pogody dla nowego Jorku, w latach 2012 – 2017:
 
-| Znacznik czasu | precip | Temp
+| Znacznik czasu: | precip | Temp
 | --- | --- | --- |
 | 2012-01-01 00:00:00 | 0.0 | 46.13 |
 | 2012-01-01 01:00:00 | 0.01 | 45.89 |
 | 2012-01-01 02:00:00 | 0.05 | 45.04 |
 | 2012-01-01 03:00:00 | 0.02 | 45.03 |
 
-*precip* jest miarą procent poziomu wytrącanie. *TEMP* wartości (temperatury) ma zostać przeskalowywany w ten sposób taki sposób, że wszystkie wartości mieszczą się w zakresie [0, 100].
+*precip* jest miarą procent poziomu opady. *TEMP* wartości (temperatury) ma zostać przeskalowywany w ten sposób taki sposób, że wszystkie wartości mieszczą się w zakresie [0, 100].
 
-## <a name="scenario-structure"></a>Scenariusz — struktura
+## <a name="scenario-structure"></a>Struktura scenariusza
 
-Gdy po raz pierwszy w konsoli usługi Azure Machine Learning Workbench możesz otworzyć ten projekt, przejdź do *pliki* w okienku po lewej stronie. Dostępne są następujące pliki kodu z tego przykładu:
-- `1-data-preparation.ipynb` — Ten notesu Jupyter pobiera i przetwarza dane, aby przygotować go do modelowania. Jest to pierwszy notesu zostanie uruchomiona.
-- `2-linear-regression.ipynb` — Ten notes przygotowuje model regresji liniowej na danych szkoleniowych.
-- `3-ridge.ipynb` -przygotowuje pierścieniem modelu regresji.
-- `4-ridge-poly2.ipynb` -przygotowuje modelu regresji pierścieniem wielomianu funkcji stopnia 2.
-- `5-mlp.ipynb` -przygotowuje perceptron wielowarstwową sieci neuronowej.
-- `6-dtree.ipynb` -przygotowuje modelu drzewa decyzyjnego.
-- `7-gbm.ipynb` -przygotowuje modelu gradientu boosted maszyny.
-- `8-evaluate-model.py` — Ten skrypt ładuje uczonego modelu i używa go do tworzenia prognoz na przechowywane poza testowego zestawu danych. Tworzy model metryki oceny, wydajność różne modele można porównać.
-- `9-forecast-output-exploration.ipynb` -wizualizacje prognoz generowane przez modeli uczenia maszynowego tworzy tego notesu.
-- `10-deploy-model.ipynb` — Ten notes pokazano, jak uczonego modelu prognozowania można operationalized w czasie rzeczywistym usługi sieci web.
-- `evaluate-all-models.py` — Ten skrypt ocenia nauczony wszystkich modeli. Zapewnia zamiast uruchamiania `8-evaluate-model.py` dla każdego uczony model pojedynczo.
+Gdy otworzysz ten projekt po raz pierwszy w aplikacji Azure Machine Learning Workbench, przejdź do *pliki* w okienku po lewej stronie. Następujące pliki kodu są dostarczane z tego przykładu:
+- `1-data-preparation.ipynb` — Ten notes Jupyter pobiera i przetwarza dane, aby przygotować go do modelowania. Jest to pierwsze notebooki, które będzie uruchamiane.
+- `2-linear-regression.ipynb` — Ten notes szkolenie modeli uczenia modelu regresji liniowej na danych szkoleniowych.
+- `3-ridge.ipynb` — szkolenie modeli ridge modelu regresji.
+- `4-ridge-poly2.ipynb` — szkolenie modeli modelu regresji ridge funkcji wielomianowej stopnia 2.
+- `5-mlp.ipynb` — szkolenie modeli sieci neuronowych perceptron wiele warstw.
+- `6-dtree.ipynb` — szkolenie modeli modelu drzewa decyzyjnego.
+- `7-gbm.ipynb` — szkolenie modeli modelu gradientu wzmocnione maszyny.
+- `8-evaluate-model.py` — Ten skrypt ładuje uczonego modelu i używa ich do prognozowania w zestawie danych przechowywanych poza testu. Tworzy metryk oceny modelu, dzięki czemu można porównać wydajność różnych modeli.
+- `9-forecast-output-exploration.ipynb` — Ten notes tworzy wizualizacje prognoz wygenerowanych przez modeli uczenia maszynowego.
+- `10-deploy-model.ipynb` — Ten notes pokazuje, jak uczonego modelu prognozowania można być przygotowany do działania w czasie rzeczywistym usługi sieci web.
+- `evaluate-all-models.py` — Ten skrypt oblicza wszystkie przeszkolone modele. Jego stanowi alternatywę dla uruchamiania `8-evaluate-model.py` dla każdego uczony model indywidualnie.
 
-### <a name="1-data-preparation-and-cleaning"></a>1. Przygotowanie danych i czyszczenia
+### <a name="1-data-preparation-and-cleaning"></a>1. Przygotowywanie danych i czyszczenia
 
-Uruchomienia przykładu, najpierw kliknij `1-data-preparation.ipynb` aby otworzyć notes w wersji zapoznawczej. Polecenie ***uruchamianie serwera notesu*** można uruchomić serwera notesu Jupyter i Python jądra na tym komputerze. Możesz uruchomić notesów ze środowiska roboczego lub można użyć przeglądarki, przechodząc do [ http://localhost:8888 ](http://localhost:8888). Zmiana jądra *lokalnego PROJECT_NAME*. Można to zrobić z *jądra* menu w notesie w obszarze *jądra zmiany*. Naciśnij klawisz ***shift + Enter*** do uruchomienia kodu w komórkach poszczególnych notesu, lub kliknij przycisk *Uruchom wszystkie* w *komórki* menu, aby uruchomić cały notes.
+Aby rozpocząć, działa aplikacja przykładowa, najpierw kliknij `1-data-preparation.ipynb` aby otworzyć notes w wersji zapoznawczej. Kliknij pozycję ***uruchom serwer*** można uruchomić serwer notesu Jupyter i jądra języka Python na swojej maszynie. Aplikację możesz uruchomić notesów z w obrębie aplikacji Workbench, lub można użyć przeglądarki, przechodząc do [ http://localhost:8888 ](http://localhost:8888). Zmiana jądro *lokalnego PROJECT_NAME*. Można to zrobić z *jądra* menu w notesie w obszarze *jądra zmiany*. Naciśnij klawisz ***shift + Enter*** do uruchomienia kodu w notesie poszczególnych komórkach lub kliknij przycisk *Uruchom wszystkie* w *komórki* menu, aby uruchomić cały notes.
 
-Notesu najpierw pobiera dane z kontenera magazynu obiektów blob hostowanej na platformie Azure. Dane są następnie przechowywane na tym komputerze w `AZUREML_NATIVE_SHARE_DIRECTORY`. Ta lokalizacja jest dostępna z dowolnego notesów lub skrypty uruchamiane z Workbench jest tak dobre miejsce do przechowywania danych i modele przeszkolone.
+Notes najpierw pobiera dane z kontenera magazynu obiektów blob, hostowanej na platformie Azure. Dane są następnie przechowywane na swojej maszynie w `AZUREML_NATIVE_SHARE_DIRECTORY`. Ta lokalizacja jest dostępna z dowolnej notesów lub skrypty, które można uruchomić z poziomu aplikacji Workbench jest tak dobre miejsce do przechowywania danych i przeszkolone modele.
 
-Po pobraniu danych notesu czyści dane przez wypełniania luk w szeregu czasowym i wypełnienie brakujących wartości przez interpolacji. Czyszczenie danych w serii. czas w ten sposób pozwala zwiększyć ilość danych, dostępna dla modeli uczenia.
+Po pobraniu danych Notes czyści dane przez wypełnianie luki w szeregach czasowych i wypełnienie brakujących wartości przez interpolacji. Czyszczenie danych szeregów czasowych w ten sposób pozwala zwiększyć ilość danych dostępnych do szkolenia modeli.
 
-Wprowadzono ulepszenia modelu są tworzone na podstawie oczyszczony danych pierwotnych. Te funkcje można podzielić na dwie grupy:
+Kilka funkcji modelu są tworzone na podstawie danych pierwotnych operacji czyszczenia. Te funkcje można podzielić na dwie grupy:
 
-- **Czas pracy funkcji** pochodne *sygnatury czasowej* zmiennej np. *miesiąca*, *dayofweek* i *godzinę*.
-- **Połączenie z otuliną funkcje** wartości czasu przesunięte żądanie lub temperatury wartości rzeczywistych. Funkcje te mają na celu przechwytywania warunkowego zależności między kolejnych okresów w modelu.
+- **Czas oparte na funkcji** są uzyskiwane z *sygnatura czasowa* zmiennej np. *miesiąca*, *dayofweek* i *godzinę*.
+- **Opóźnioną kopię funkcji** są wartości godziny, przesunięte na żądanie lub temperatury wartości rzeczywistych. Funkcje te mają na celu przechwytywania warunkowego zależności między kolejne okresy w modelu.
 
-Następnie można wynikowego zestawu funkcji danych, podczas tworzenia modeli prognozowania.
+Następnie można Wynikowy zestaw funkcji danych, podczas tworzenia modeli prognozowania.
 
-### <a name="2-model-development"></a>2. Projektowanie modelu
+### <a name="2-model-development"></a>2. Model programowania
 
-Pierwszym sposobem modelowania może być model regresji liniowej proste. `2-linear-regression.ipynb` Notesu pokazano, jak do uczenia modelu regresji liniowej prognozy dla zapotrzebowania na energię w przyszłości. W szczególności, model zostanie uczony do prognozowania zapotrzebowania na energię godzinę (*t + 1*) przed bieżącym przedziale czasu (*t*). Jednak ta rekursywnie modelu "jednoetapowy" można zastosować w czasie testu, aby wygenerować prognoz dla przyszłych okresów, *t + n*.
+Pierwszy metoda modelowania mogą być model regresji liniowej proste. `2-linear-regression.ipynb` Notesu pokazuje sposób trenowania modelu regresji liniowej prognozy dla zapotrzebowania na energię w przyszłości. W szczególności odbywać modelu do prognozowania zapotrzebowania na energię godzinę (*t + 1*) przed bieżącym przedziale czasu (*t*). Jednak można zastosować ten rekursywnie modelu "jednoetapowy" w czasie testu, aby generować prognozy dla przyszłych okresów, *t + n*.
 
-Do nauczenia modelu, predykcyjnej potoku jest tworzony, która obejmuje trzy odrębne czynności:
+Do nauczenia modelu, tworzona jest predykcyjnej potoku, który obejmuje trzy etapy:
 
-- **Przekształcenia danych**: wymagane formaty danych wejściowych zależy od algorytmu uczenia maszynowego. W takim przypadku model regresji liniowej wymaga podzielone na kategorie zmienne do zakodowania hot jeden.
-- **A krzyżowe sprawdzanie poprawności procedury**: często modelu uczenia maszynowego ma co najmniej jeden hyperparameters, które muszą być dopasowane poprzez eksperymenty. Krzyżowego sprawdzania poprawności można znaleźć optymalne zestaw wartości parametrów. Model jest często uczenia i oceniać je na różne złożeń zestawu danych. Najlepszych parametrów to osiągnąć najwyższą wydajność modelu podczas uśredniona złożeń krzyżowego sprawdzania poprawności. Ten proces jest co omówiono bardziej szczegółowo w `2-linear-regression.ipynb`.
-- **Uczenie modelu końcowego**: model jest uczony na cały zestaw danych przy użyciu najlepszych zestawu hyperparameters.
+- **Przekształcanie danych**: wymaganych formatach dla danych wejściowych może się różnić w zależności od algorytmu uczenia maszynowego. W tym przypadku uczenia modelu regresji liniowej wymaga podzielonych na kategorie zmienne do zakodowania hot jeden.
+- **A krzyżowe procedurze weryfikacji**: model uczenia maszynowego będzie często mają co najmniej jeden hiperparametrów, które muszą być dostosowane za pośrednictwem eksperymentów. Krzyżowego sprawdzania poprawności, można znaleźć optymalny zestaw zasobów wystąpień wartości parametrów. Model jest wielokrotnie przeszkolony i oceniać je na różnych złożeń zestawu danych. Najważniejsze parametry są pozwalających na osiągnięcie optymalnej wydajności modelu po WE złożeń krzyżowego sprawdzania poprawności. Ten proces opisano szczegółowo w `2-linear-regression.ipynb`.
+- **Szkolenie końcowego modelu**: model jest uczony dla całego zestawu danych za pomocą najlepszy zestaw hiperparametrów.
 
-Firma Microsoft zawiera szereg 6 różne modele notesów numerowane 2-7. Każdy notesu przygotowuje innego modelu i zapisuje go w `AZUREML_NATIVE_SHARE_DIRECTORY` lokalizacji. Gdy ma uczony wszystkich modeli utworzonych dla tego scenariusza, możemy ocenić i porównaj je jak opisano w następnej sekcji.
+Wprowadzono szereg 6 różnych modeli w notesy numerowane 2 – 7. Każdy notesu szkolenie modeli innego modelu i zapisuje go w `AZUREML_NATIVE_SHARE_DIRECTORY` lokalizacji. Gdy masz skonfigurowanych pod kątem wszystkich modeli opracowanych dla tego scenariusza, firma Microsoft Oceń i porównywanie ich, jak opisano w następnej sekcji.
 
 ### <a name="3-model-evaluation-and-comparison"></a>3. Porównanie i oceny modelu
 
-Możemy użyć uczonego modelu do zapewnienia prognoz dla przyszłych okresów. Najlepiej ocenić te modele przechowywane poza testowego zestawu danych. Wyniku obliczenia różne modele w tym samym zestawie danych niewidoczne, możemy dość porównania ich wydajności i zidentyfikować najlepsze modelu. W tym scenariuszu stosujemy rekursywnie uczonego modelu do prognozowania wielu kroków czasu w przyszłości. W szczególności firma Microsoft Generowanie prognoz przez 6 godzin, *t + 6* wcześniejsze bieżącej godziny *t*. Te przewidywania są oceniane pod względem rzeczywiste żądanie, dla każdego okresu.
+Możemy użyć uczonego modelu, aby prognoz dla przyszłych okresach. Najlepiej oceniać te modele w zestawie danych przechowywanych poza testu. Poprzez ocenę różne modele na tym samym zestawem danych z niewidocznym, firma Microsoft dość porównaj ich wydajność i Identyfikuj najlepszy model. W tym scenariuszu są stosowane cyklicznie uczonego modelu do prognozowania wielu kroków czas w przyszłości. W szczególności firma Microsoft Generowanie prognoz dla maksymalnie sześć godzin, *t + 6* przód od bieżącej godziny *t*. Te przewidywania są sprawdzane pod kątem rzeczywistego zapotrzebowania stwierdzamy w przypadku każdego przedziału czasu.
 
-Aby ocenić modelu, należy otworzyć `8-evaluate-model.py` skrypt z *pliki* okienka w Workbench. Sprawdź, czy *Konfiguracja Uruchom* ustawiono **lokalnego** , a następnie wpisz nazwę modelu do *argumenty* pola. Nazwa modelu musi być dokładnie *nazwa_modelu* zmienna jest ustawiona na początku notesu, w którym jest uczenia modelu. Na przykład wprowadź "linear_regression" do oceny modelu regresji liniowej przeszkolone. Alternatywnie, po ma przeprowadzono uczenia wszystkie modele, będziesz w stanie ocenić je wszystkie z jednego polecenia uruchamiając `evaluate-all-models.py`. Aby uruchomić ten skrypt, otwórz wiersz polecenia z Workbench i uruchom następujące polecenie:
+Aby ocenić modelu, należy otworzyć `8-evaluate-model.py` skryptu z *pliki* okienko w aplikacji Workbench. Sprawdź, czy *konfiguracji uruchomieniowej* jest ustawiona na **lokalnego** a następnie wpisz nazwę modelu do *argumenty* pola. Nazwa modelu musi być zgodna dokładnie *nazwa_modelu* ustawioną na początku Notes, w którym model jest uczony. Na przykład wprowadź "linear_regression" do oceny modelu uczonego regresji liniowej. Alternatywnie, po przeszkoleni wszystkie modele, będziesz w stanie ocenić je wszystkie za pomocą jednego polecenia, uruchamiając `evaluate-all-models.py`. Aby uruchomić ten skrypt, otwórz wiersz polecenia z aplikacji Workbench i wykonaj następujące polecenie:
 
 ```
 python evaluate-all-models.py
@@ -158,39 +158,39 @@ python evaluate-all-models.py
 `8-evaluate-model.py` Skrypt wykonuje następujące operacje:
 
 - Ładuje potoku uczonego modelu z dysku
-- Operacje przewidywania dla sprawia, że na zestawu danych testowych
-- Dzienniki je i oblicza model metryki wydajności
-- Operacje przewidywania dla zestawu danych do testu jest zapisywany `AZUREML_NATIVE_SHARE_DIRECTORY` nowsze inspekcji i analiza
-- Zapisuje potoku uczonego modelu do *generuje* folderu.
+- Wykonuje prognozy w zestawie danych testowych
+- Oblicza metryki wydajności modelu i rejestruje je
+- Zapisuje prognozy zestawu danych do testu `AZUREML_NATIVE_SHARE_DIRECTORY` nowsze inspekcji i analizy
+- Zapisuje potoku uczonego modelu w celu *generuje* folderu.
 
 > [!Note]
-> Zapisywanie modelu do *generuje* folderu automatycznie kopiuje obiekt modelu do konta magazynu obiektów Blob Azure skojarzonego z kontem eksperymenty. Oznacza to, że zawsze można pobrać obiektu zapisany model z obiektu blob, nawet jeśli zmiana maszyny lub obliczeniowe kontekstu.
+> Zapisywanie modelu, który ma *generuje* folderu automatycznie kopiuje obiekt modelu do konta usługi Azure Blob Storage skojarzonych z kontem eksperymentowania. Oznacza to, że zawsze będzie można pobrać obiektu modelu zapisane z magazynu obiektów blob, nawet jeśli zmiana maszyny lub kontekstu obliczeniowego.
 
-Przejdź do *Uruchom historii* okienko i kliknij pozycję `8-evaluate-model.py`. Zostaną wyświetlone wykresy zawierające kilka miar wydajności modelu:
+Przejdź do *historii uruchamiania* okienku i kliknij przycisk `8-evaluate-model.py`. Zostaną wyświetlone wykresy zawierające kilka metryki wydajności modelu:
 
-- **ME**: oznacza błąd prognozy. Mogą to być interpretowane jako średnia różnica prognozy.
-- **MPE**: [oznacza błąd procent](https://en.wikipedia.org/wiki/Mean_percentage_error) (ME wyrażone jako procent rzeczywiste żądanie)
-- **MSE**: [oznacza kwadratów błędów](https://en.wikipedia.org/wiki/Mean_squared_error)
-- **RMSE**: główny średniej kwadrat błędu (pierwiastek kwadratowy MSE)
-- **MAPE**: [oznacza błąd procent bezwzględne](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error)
+- **MNIE**: oznacza błąd prognozy. Może to być interpretowana jako średnia różnica prognozy.
+- **MPE**: [oznacza błąd procent](https://en.wikipedia.org/wiki/Mean_percentage_error) (ME wyrażone jako procent rzeczywistego zapotrzebowania)
+- **MSE**: [oznacza pierwiastek błędu](https://en.wikipedia.org/wiki/Mean_squared_error)
+- **RMSE**: średnia głównego kwadrat błędu (pierwiastek kwadratowy MSE)
+- **MAPE**: [oznaczają procent bezwzględny błąd](https://en.wikipedia.org/wiki/Mean_absolute_percentage_error)
 - **sMAPE**: [symetrycznego średni procent bezwzględny błąd](https://en.wikipedia.org/wiki/Symmetric_mean_absolute_percentage_error)
-- **MAPE_base**: MAPE linii bazowej prognozy, w którym Prognozowanie wartość ostatnich znanych żądanie.
-- **MdRAE**: względny błąd absolutny mediana. Stosunek środkowej prognozy błąd do linii bazowej prognozy błędu. Wartość mniejszą niż 1 oznacza, że prognozy działa lepiej niż linii bazowej.
+- **MAPE_base**: MAPE linii bazowej prognozy, w którym prognozowania jest równa wartości ostatniego znanego żądanie.
+- **MdRAE**: mediana względny błąd absolutny. Mediana stosunek prognozy błąd do linii bazowej prognozy błędu. Wartość mniejszą niż 1 oznacza, że prognozy działa lepiej niż linii bazowej.
 
-Wszystkie metryki powyżej odwoływać się do *t + 1* prognozy. Oprócz powyższych metryki, pojawi się także zestaw odpowiednich metryk ze *_horizon* sufiks. To metryka uśrednionej za wszystkich okresów w zakresie prognozy z okresu *t + 1* do okresu *t + 6*.
+Wszystkie powyższe metryki dotyczą *t + 1* prognozy. Oprócz powyższych metryki widoczne będzie także zestaw odpowiednich metryk z *_horizon* sufiks. Jest to metryka uśrednione z samych kropek w zakresie prognozy z okresu *t + 1* okresowi *t + 6*.
 
-Jeśli metryki nie są wyświetlane w obszarze wykresu, kliknij koło zębate symbol w prawym górnym rogu. Upewnij się, że jest zaznaczone modelu metryki wydajności, które planuje się. Metryki również będą wyświetlane w tabeli poniżej wykresy. Ponownie, ta tabela jest modyfikowalny kliknij koło zębate symbolu. Posortuj tabelę według metryki wydajności, aby zidentyfikować najlepsze modelu. Jeśli interesuje Cię w niewidoczny sposób prognozy wydajności różni się od okresu *t + 1* do *t + 6*, wybierz polecenie wpisu dla modelu w tabeli. Wyświetlanie MAPE wykresy, metryki MPE i MdRAE w okresie prognozy są wyświetlane w obszarze *wizualizacje*.
+Jeśli metryki nie są wyświetlane w obszarze wykresu, kliknij symbol koła zębatego w prawym górnym rogu. Upewnij się, że są zaznaczone metryki wydajności modelu, który Cię interesuje. Metryki pojawi się także w tabeli poniżej wykresów. Ponownie, ta tabela jest możliwe do dostosowania kliknij symbol koła zębatego. Posortuj tabelę według metryki wydajności, aby zidentyfikować najlepszy model. Jeśli interesuje Cię wyświetlenie, jak prognozy wydajności różni się od okresu *t + 1* do *t + 6*, kliknij wpis dla modelu w tabeli. Wyświetlanie MAPE wykresów metryki MPE i MdRAE w okresie prognozy zostaną wyświetlone w obszarze *wizualizacje*.
 
-Podczas obliczania modeli prognozowania, może być przydatne do wizualizacji danych wyjściowych prognoz. Dzięki temu naukowca danych, aby określić, czy prognozy tworzone jest wyświetlany realistyczne. Ułatwia również identyfikowanie problemów w prognozy, jeśli na przykład prognozy wykonuje nieprawidłowo w określonych okresach czasu. `9-forecast-output-exploration.ipynb` Notesu utworzy wizualizacje prognoz wygenerowany dla zestawu danych testowych.
+Podczas oceniania modeli prognozowania, może być bardzo przydatne do wizualizacji prognozy danych wyjściowych. Pomaga to analityk danych w celu ustalenia, czy prognozy, generowany jest wyświetlany realistyczne. Może również pomóc zidentyfikować problemy, które w prognozie, jeśli na przykład prognozy wykonuje się nieprawidłowo w określonych okresach czasu. `9-forecast-output-exploration.ipynb` Notesu będzie tworzyć wizualizacje prognoz wygenerowanych dla zestawu danych testowych.
 
 ### <a name="4-deployment"></a>4. Wdrożenie
 
-Najlepsze modelu można operationalized przez wdrożenie jej jako usługę sieci web w czasie rzeczywistym. Następnie można wywołać tej usługi sieci web do wygenerowania prognoz na żądanie, wraz ze wzrostem dostępności nowych danych. W tym scenariuszu nowej prognozy musi przewidywanie zapotrzebowania na energię w kolejnych godziny wygenerowania co godzinę. Aby wykonać to zadanie, usługi sieci web może być wdrożona, która pobiera tablicę funkcje dla godziny okres czasu jako dane wejściowe i zwraca przewidywane żądanie jako dane wyjściowe.
+Najlepszy model można przygotowany do działania, wdrażając go jako usługę internetową czasu rzeczywistego. Ta usługa sieci web można następnie wywołać można wygenerować prognoz na żądanie, ponieważ nowych danych staje się dostępna. W tym scenariuszu nowej prognozy musi być generowane co godzinę do prognozowania zapotrzebowania na energię w kolejnej godziny. Aby wykonać to zadanie, usługa sieci web może być wdrożona, który przyjmuje tablicę funkcji dla danej godziny okres czasu jako dane wejściowe i zwraca przewidywany popyt jako dane wyjściowe.
 
-W tym przykładzie usługi sieci web jest wdrażany na komputerze z systemem Windows 10. Upewnij się, zostały wykonane kroki wymagań wstępnych dla wdrożenia lokalnego wymienione w tym [Wprowadzenie — przewodnik](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/getting-started.md) dla Operationalization interfejsu wiersza polecenia. Po skonfigurowaniu lokalnego środowiska i konto zarządzania modelu `10-deploy-model.ipynb` notesu wdrożenie usługi sieci web.
+W tym przykładzie Usługa sieci web jest wdrażana na maszynę z systemem Windows 10. Upewnij się, zostały wykonane kroki wymagań wstępnych dla wdrożenia lokalnego, w tym [przewodnik wprowadzenie](https://github.com/Azure/Machine-Learning-Operationalization/blob/master/documentation/getting-started.md) Operacjonalizacji interfejsu wiersza polecenia. Po skonfigurowaniu lokalnego środowiska i konta zarządzania modelami, uruchom `10-deploy-model.ipynb` Notes, aby wdrożyć usługę sieci web.
 
 ## <a name="conclusion"></a>Podsumowanie
 
-Ten przykład demonstruje sposób tworzenia szeregów czasowych na trasie, funkcja prognozowania rozwiązania na potrzeby prognozowania zapotrzebowania na energię. Wiele zasad przedstawione w tym przykładzie można rozszerzyć do innych scenariuszy i branż prognozowania.
+W tym przykładzie przedstawiono sposób tworzenia end-to-end prognozowania szeregu czasowego rozwiązania na potrzeby prognozowania zapotrzebowania na energię. Wiele zasad, przedstawione w tym przykładzie można rozszerzyć do innych prognozowania branżach i scenariuszach.
 
-W tym scenariuszu pokazano, jak Azure Machine Learning Workbench może pomóc naukowca danych przy tworzeniu rzeczywistych rozwiązań z przydatnych funkcji, takich jak środowisko notesu Jupyter i funkcje rejestrowania metryki. Próbki również prowadzi do czytnika w sposób modelu mogą być operationalized i wdrażane za pomocą interfejsu wiersza polecenia Azure Machine Learning Operationalization. Po wdrożeniu interfejsu API usługi sieci web umożliwia deweloperom lub inżynierów danych integracji modelu prognozowania można używać do szerszego potoku danych.
+W tym scenariuszu pokazano, jak Azure Machine Learning Workbench może pomóc wydobywania danych w rzeczywistych tworzenia rozwiązań korzystających z przydatnych funkcji, takich jak środowisko notesu Jupyter i możliwości rejestrowania metryki. Przykład przeprowadzi również czytnik dotyczące modelu może być przygotowany do działania i wdrażane za pomocą interfejsu wiersza polecenia Azure Machine Learning Operacjonalizacji. Po wdrożeniu interfejsu API usługi sieci web umożliwia deweloperom lub inżynierom danych, do integracji modelu prognozowania można używać w szerszym potoku danych.

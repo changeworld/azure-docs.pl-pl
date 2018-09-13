@@ -1,8 +1,8 @@
 ---
-title: "Inteligentne wykrywania - nietypowy wzrost wielkości wyjątek w usłudze Azure Application Insights | Dokumentacja firmy Microsoft"
-description: "Monitorowanie wyjątków aplikacji z usługą Azure Application Insights dla nietypowe wzorce w woluminie wyjątku."
+title: Inteligentne wykrywanie - nietypowy wzrost woluminu wyjątków, w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+description: Monitorowanie wyjątków aplikacji za pomocą usługi Azure Application Insights nietypowe wzorce w wzrost liczby wyjątków.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.assetid: ea2a28ed-4cd9-4006-bd5a-d4c76f4ec20b
@@ -10,30 +10,31 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/08/2017
 ms.author: mbullwin
-ms.openlocfilehash: 8030f3331a03170bb265c417a57725544bdc7d3f
-ms.sourcegitcommit: 42ee5ea09d9684ed7a71e7974ceb141d525361c9
+ms.openlocfilehash: 898cc0935051f65cb0f2977c7d90e998ec32cdd3
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/09/2017
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35647717"
 ---
-# <a name="abnormal-rise-in-exception-volume-preview"></a>Nietypowy wzrost liczby wyjątków woluminu (wersja zapoznawcza)
+# <a name="abnormal-rise-in-exception-volume-preview"></a>Nietypowy wzrost liczby wyjątków (wersja zapoznawcza)
 
-Usługi Application Insights automatycznie analizuje wyjątki zgłaszane w aplikacji i może zostać wyświetlone ostrzeżenie o nietypowe wzorce w obrębie telemetrii wyjątku.
+Usługa Application Insights automatycznie analizuje wyjątków zgłoszonych w aplikacji i może zostać wyświetlone ostrzeżenie dotyczące niezwykłych wzorców w danych telemetrycznych wyjątku.
 
-Ta funkcja wymaga specjalnych ustawień, inne niż [konfigurowanie raportowania wyjątek](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-exceptions#set-up-exception-reporting) dla aplikacji. Jest aktywna, gdy aplikacja generuje wystarczającą ilość danych telemetrycznych wyjątku.
+Ta funkcja wymaga nie specjalne ustawienia innego niż [konfigurowanie raportowania wyjątek](https://docs.microsoft.com/azure/application-insights/app-insights-asp-net-exceptions#set-up-exception-reporting) dla aplikacji. Może to być aktywny, gdy aplikacja generuje wystarczającej ilości danych telemetrycznych wyjątku.
 
-## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Gdy otrzyma ten typ powiadomienia inteligentne wykrywanie?
-Ten typ powiadomienia mogą uzyskać Jeśli aplikacji w ciągu dnia, wykazuje nietypowy wzrost liczby wyjątków o określonym typie, w porównaniu do linii bazowej obliczonego z ostatnich siedmiu dni.
-Algorytmów uczenia maszynowego są używane do wykrywania wzrost liczby wyjątków, biorąc pod uwagę fizyczną wzrost korzystania z aplikacji.
+## <a name="when-would-i-get-this-type-of-smart-detection-notification"></a>Gdy otrzyma ten typ powiadomienia wykrywania inteligentnego
+Jeśli aplikacja jest wykazujących nietypowy wzrost liczby wyjątków o typie określonym w ciągu dnia, w porównaniu do linii bazowej obliczane w ciągu ostatnich siedmiu dni, możesz otrzymać ten typ powiadomienia.
+Algorytmów uczenia maszynowego, są używane do wykrywania wzrost liczby wyjątków, biorąc pod uwagę przyrost naturalny w użycie aplikacji.
 
-## <a name="does-my-app-definitely-have-a-problem"></a>Aplikacja my uwielbiamy ma problem?
-Nie, powiadomienia nie oznacza, że aplikacja ma ostatecznie problem. Mimo że nadmierną liczbę wyjątków zwykle wskazuje problem aplikacji, te wyjątki mogą być niegroźne i obsługiwane poprawnie przez aplikację.
+## <a name="does-my-app-definitely-have-a-problem"></a>Czy Moja aplikacja ma zdecydowanie problem?
+Nie, powiadomienia nie oznacza, że Twoja aplikacja ma zdecydowanie problem. Mimo że nadmierną liczbę wyjątków zwykle wskazuje problemów aplikacji, tych wyjątków może być nieszkodliwe i obsługiwane poprawnie przez aplikację.
 
-## <a name="how-do-i-fix-it"></a>Jak rozwiązać ten problem?
+## <a name="how-do-i-fix-it"></a>Jak go naprawić?
 Powiadomienia obejmują informacje diagnostyczne do obsługi w procesie diagnostyki:
-1. **Klasyfikacji.** Powiadomienie zawiera liczbę użytkowników lub dotyczy liczbę żądań. Może to ułatwić można przypisać priorytet problemu.
-2. **Zakres.** Problem wpływa na cały ruch lub tylko do niektórych operacji? Te informacje można uzyskać powiadomienia.
-3. **Diagnozowanie.** Wykrywanie zawiera informacje o metodzie, z którego został zgłoszony wyjątek, oraz typ wyjątku. Umożliwia także powiązane elementy i raporty łączenie się dodatkowe informacje ułatwiające dalsze zdiagnozować problem.
+1. **Klasyfikacja.** Powiadomienie zawiera informację, ilu użytkowników lub wpływają na liczbę żądań. Może to pomóc Ci przypisać priorytet problemu.
+2. **Zakres.** Ten problem wpływa na cały ruch lub tylko niektórych operacji? Te informacje można uzyskać z powiadomienia.
+3. **Diagnozowanie.** Wykrywanie zawiera informacje o metodzie, w którym wystąpił wyjątek, a także typ wyjątku. Umożliwia także elementy pokrewne i raporty dodatkowe informacje ułatwiające dalsze łączenie zdiagnozowania problemu.

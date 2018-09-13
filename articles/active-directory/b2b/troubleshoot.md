@@ -1,82 +1,82 @@
 ---
-title: Rozwiązywanie problemów z współpracy usługi Azure Active Directory B2B | Dokumentacja firmy Microsoft
-description: Środki zaradcze dla typowych problemów z współpracy usługi Azure Active Directory B2B
+title: Rozwiązywanie problemów z współpracy B2B usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Środki zaradcze dla typowych problemów przy użyciu funkcji współpracy B2B usługi Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 05/25/2017
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 4347b846b0ff91f606615abc2c94253c0ae70587
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: HT
+ms.openlocfilehash: ca339319a370fd56cf8493418ae311b39f8fa59e
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34267447"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35648376"
 ---
-# <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Rozwiązywanie problemów z współpracy usługi Azure Active Directory B2B
+# <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Rozwiązywanie problemów z współpracy B2B usługi Azure Active Directory
 
-Poniżej przedstawiono niektóre środki zaradcze dla typowych problemów z współpracy B2B usługi Azure Active Directory (Azure AD).
+Poniżej przedstawiono niektóre środki zaradcze dla typowych problemów przy użyciu funkcji współpracy B2B usługi Azure Active Directory (Azure AD).
 
 
-## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>Chcę dodano użytkownika zewnętrznego, ale nie ma ich w książce adresowej globalnych lub selektora osób
+## <a name="ive-added-an-external-user-but-do-not-see-them-in-my-global-address-book-or-in-the-people-picker"></a>Czy mogę dodano użytkownika zewnętrznego, ale nie ma ich w książce adresowej globalne lub selektora osób
 
-W przypadkach, gdy użytkownicy zewnętrzni nie zostały wypełnione na liście obiekt może potrwać kilka minut, aby replikować.
+W przypadkach, w którym użytkownicy zewnętrzni nie zostaną wypełnione na liście obiekt może potrwać kilka minut, aby replikować.
 
-## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>Użytkownik-Gość B2B nie pojawia się w selektorze użytkowników usługi SharePoint Online/OneDrive 
+## <a name="a-b2b-guest-user-is-not-showing-up-in-sharepoint-onlineonedrive-people-picker"></a>Użytkownik-Gość B2B nie są wyświetlane w Selektor osób programu SharePoint Online/OneDrive 
  
-Domyślnie, aby dopasować starsze zachowanie możliwość wyszukiwania istniejących użytkowników gościa w selektorze użytkowników programu SharePoint Online (SPO) ma wartość OFF.
+Możliwość wyszukiwania dla istniejących użytkowników-gości w Selektor osób programu SharePoint Online (SPO) został WYŁĄCZONY, aby dopasować starsze zachowanie domyślnie.
 
-Można włączyć tę funkcję za pomocą ustawienia "ShowPeoplePickerSuggestionsForGuestUsers" na poziomie kolekcji dzierżawy i witryny. Można ustawić funkcji za pośrednictwem poleceń cmdlet Set SPOTenant i Set-SPOSite, która zezwala na elementy członkowskie wyszukać wszystkich istniejących użytkowników gościa w katalogu. Zmiany w zakresie dzierżawy nie wpływają na lokacje SPO już zainicjowaną.
+Aby włączyć tę funkcję, należy za pomocą ustawienia "ShowPeoplePickerSuggestionsForGuestUsers" na poziomie kolekcji dzierżawy i witryny. Można ustawić funkcję przy użyciu Set-SPOTenant i SPOSite zestaw poleceń cmdlet, które pozwalają członkom wyszukiwanie wszystkich istniejących użytkowników-gości w katalogu. Zmiany w zakresie dzierżawy nie wpływają na już aprowizowanych witryn SPO.
 
-## <a name="invitations-have-been-disabled-for-directory"></a>Wyłączono zaproszeń do skorzystania z katalogu
+## <a name="invitations-have-been-disabled-for-directory"></a>Zaproszeń zostały wyłączone dla katalogu
 
-Jeśli zostanie wyświetlone powiadomienie, że nie masz uprawnień do zapraszania użytkowników, należy sprawdzić, czy Twoje konto użytkownika jest autoryzowany z zaproszeniem dla użytkowników zewnętrznych, w obszarze Ustawienia użytkownika:
+Jeśli zostanie wyświetlone powiadomienie, że nie masz uprawnień do zapraszania użytkowników, należy sprawdzić, czy Twoje konto użytkownika jest autoryzowany do zapraszania użytkowników zewnętrznych w obszarze Ustawienia użytkownika:
 
 ![](media/troubleshoot/external-user-settings.png)
 
-Jeśli niedawno zmieniono te ustawienia lub rolą Gość zapraszającej przypisana do użytkownika, mogą wystąpić opóźnienia 15 – 60 minut przed wprowadzeniem zmian.
+Jeśli zostały ostatnio zmodyfikowane tych ustawień lub przypisana rola osoba zapraszająca gości do użytkownika, może występować opóźnienie 15 – 60 minut aby zmiany zaczęły obowiązywać.
 
-## <a name="the-user-that-i-invited-is-receiving-an-error-during-redemption"></a>Użytkownik, który zaproszenie I otrzymuje wystąpił błąd podczas realizacji
+## <a name="the-user-that-i-invited-is-receiving-an-error-during-redemption"></a>Użytkownik, który mogę zaproszenie jest komunikat o błędzie podczas realizacji
 
 Typowe błędy:
 
-### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>Zaproszonej administrator nie zezwolił użytkowników EmailVerified utworzenie w swojej dzierżawy
+### <a name="invitees-admin-has-disallowed-emailverified-users-from-being-created-in-their-tenant"></a>Zaproszonej administrator nie zezwolił EmailVerified użytkowników z tworzona w ramach ich dzierżawy
 
-Gdy zapraszanie użytkowników, których organizacja korzysta z usługi Azure Active Directory, ale gdy konta określonego użytkownika nie istnieje (na przykład użytkownik nie istnieje w usłudze Azure AD w domenie contoso.com). Administrator domeny contoso.com może mieć zasady w miejscu uniemożliwia tworzone przez użytkowników. Użytkownik musi skontaktować się z ich administratora, aby określić, czy użytkownicy zewnętrzni są dozwolone. Użytkownika zewnętrznego administratora może być konieczne użytkownicy zweryfikować poczty E-mail w swojej domenie (zobacz [artykułu](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) na zezwolenie użytkownikom zweryfikować poczty E-mail).
+Podczas zapraszania użytkowników, których organizacja używa usługi Azure Active Directory, ale których nie istnieje konta określonego użytkownika (na przykład, użytkownik nie istnieje w domenie contoso.com w usłudze Azure AD). Administrator domeny contoso.com może mieć zasady w miejscu, uniemożliwiając tworzonych przez użytkowników. Użytkownik musi skontaktować się z ich administratora, aby określić, czy użytkownicy zewnętrzni mogą. Może być konieczne użytkownika zewnętrznego administratora umożliwiające użytkownikom zweryfikować poczty E-mail w ich domenie (zobacz ten [artykułu](/powershell/module/msonline/set-msolcompanysettings?view=azureadps-1.0) na co pozwala użytkownikom zweryfikować wiadomości E-mail).
 
 ![](media/troubleshoot/allow-email-verified-users.png)
 
-### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>Użytkownik zewnętrzny nie istnieje już w domenie federacyjnych
+### <a name="external-user-does-not-exist-already-in-a-federated-domain"></a>Użytkownik zewnętrzny nie istnieje już w domeny federacyjnej
 
-Jeśli używasz uwierzytelniania federacyjnego i użytkownik nie istnieje już w usłudze Azure Active Directory, nie mogą być zapraszani użytkownika.
+Jeśli używasz uwierzytelniania federacyjnego i użytkownik nie istnieje w usłudze Azure Active Directory, nie można zaprosić użytkownika.
 
-Aby rozwiązać ten problem, administrator użytkownika zewnętrznego należy zsynchronizować konta użytkownika do usługi Azure Active Directory.
+Aby rozwiązać ten problem, administrator użytkownika zewnętrznego należy zsynchronizować konta do usługi Azure Active Directory.
 
-## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Jak jest\#", która nie jest zwykle prawidłowym znakiem synchronizacji z usługą Azure AD?
+## <a name="how-does--which-is-not-normally-a-valid-character-sync-with-azure-ad"></a>Jak oznacza\#", który nie jest zazwyczaj prawidłowy znak synchronizacji z usługą Azure AD?
 
-"\#" jest zarezerwowany znak w UPN współpracy B2B usługi Azure AD lub użytkowników zewnętrznych, ponieważ konto zaproszonych user@contoso.com staje się user_contoso.com#EXT#@fabrikam.onmicrosoft.com. W związku z tym \# w UPN pochodzące z lokalnymi nie mogą logować się do portalu Azure. 
+"\#" to zastrzeżony znak w UPN dla użytkowników zewnętrznych lub współpracy B2B usługi Azure AD, ponieważ konto zaproszonego user@contoso.com staje się user_contoso.com#EXT#@fabrikam.onmicrosoft.com. W związku z tym \# w pochodzące z lokalnej nazwy UPN nie mogą logować się do witryny Azure portal. 
 
-## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Przy dodawaniu użytkowników zewnętrznych do grupy synchronizowane komunikat o błędzie
+## <a name="i-receive-an-error-when-adding-external-users-to-a-synchronized-group"></a>Otrzymuję komunikat o błędzie podczas dodawania użytkowników zewnętrznych do grupy zsynchronizowane
 
-Użytkownicy zewnętrzni mogą być dodawane tylko dla grup "Zabezpieczenia" lub "przypisane", a nie do grup, które są lokalne zarządzanego.
+Użytkownicy zewnętrzni można dodawać tylko w grupach "Zabezpieczenia" lub "przypisane", a nie grupy, które są zarządzanego w środowisku lokalnym.
 
-## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>Moje użytkownika zewnętrznego nie odebrał wiadomość e-mail, aby zrealizować
+## <a name="my-external-user-did-not-receive-an-email-to-redeem"></a>Moje użytkowników zewnętrznych nie otrzymał wiadomość e-mail, aby zrealizować
 
-Osoby zaproszonej skontaktować się z ich usługodawcy internetowego lub spamu filtru, aby upewnić się, czy następujący adres może: Invites@microsoft.com
+Osoby zaproszonej skontaktować się z ich usługodawcy internetowego lub spamu filtr, aby upewnić się, że następujący adres może: Invites@microsoft.com
 
-## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>I Zwróć uwagę, że niestandardowy komunikat nie można uzyskać dołączana do komunikatów zaproszenia w czasie
+## <a name="i-notice-that-the-custom-message-does-not-get-included-with-invitation-messages-at-times"></a>I Zwróć uwagę, że niestandardowy komunikat nie uzyska dołączone do wiadomości z zaproszeniem w czasie
 
-Do wykonania przepisów dotyczących prywatności, naszych interfejsów API, nie dołączaj niestandardowych komunikatów w wiadomości e-mail z zaproszeniem po:
+Aby zapewnić zgodność z przepisami dotyczącymi prywatności, nasze interfejsy API zawierają niestandardowych komunikatów w wiadomości e-mail z zaproszeniem po:
 
-- Zapraszającej nie ma adresu e-mail w dzierżawie zaproszenia
-- Jeśli podmiot zabezpieczeń appservice wysyła zaproszenia
+- Osoba zapraszająca nie ma adresu e-mail w zapraszający dzierżawca
+- Gdy z jednostki usługi App Service wysyła zaproszenia
 
-Ten scenariusz jest istotne dla Ciebie, można pominąć naszych wiadomość e-mail z zaproszeniem interfejsu API i wysłać go za pośrednictwem poczty e-mail mechanizmu wybranych przez użytkownika. Zapoznaj się w organizacji korzystania z pomocy prawnej się upewnić się, że każdej wiadomości e-mail, wysyłania, że ten sposób również spełnia przepisów dotyczących prywatności.
+Ten scenariusz jest dla Ciebie ważne, można pominąć wiadomości e-mail z zaproszeniem naszego interfejsu API i wyślij go za pośrednictwem mechanizmu e-mail wybranego. Zapoznaj się z Twojej organizacji doradcą prawnym, aby upewnić się, że dowolnych wiadomości e-mail, że wysyłane w ten sposób również są zgodne z przepisami dotyczącymi prywatności.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Uzyskaj pomoc dotyczącą współpracy B2B](get-support.md)
+- [Uzyskaj pomoc techniczną dla współpracy B2B](get-support.md)

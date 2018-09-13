@@ -1,48 +1,48 @@
 ---
-title: Udziel zarządzane lokalnie partnera kont dostępu do zasobów w chmurze jako użytkowników B2B usługi Azure AD | Dokumentacja firmy Microsoft
-description: Nadaj zarządzane lokalnie partnerami zewnętrznymi, dostęp do lokalnego i zasobów w chmurze przy użyciu tych samych poświadczeń przy współpracy B2B usługi Azure AD.
+title: Udziel lokalnie zarządzanych przez partnera kont dostępu do zasobów w chmurze jako użytkownicy usługi Azure AD B2B | Dokumentacja firmy Microsoft
+description: Zapewniają partnerom zewnętrznym zarządzane lokalnie, dostęp do lokalnego i zasobów w chmurze przy użyciu tych samych poświadczeń przy użyciu funkcji współpracy B2B usługi Azure AD.
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 04/24/2018
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 71d5ce8728d876740d6ef00b55ecdc9232a06f80
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: HT
+ms.openlocfilehash: 84d967dfc8ce09500aec2dfc7a10b4b42cadf4b1
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34267455"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35647829"
 ---
-# <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Udziel zarządzane lokalnie partnera kont dostępu do zasobów w chmurze przy użyciu współpracy B2B usługi Azure AD
+# <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Udzielanie lokalnie zarządzanych przez partnera kont dostępu do zasobów w chmurze przy użyciu współpracy B2B usługi Azure AD
 
-Przed Azure Active Directory (Azure AD) organizacje z lokalnych systemów tożsamości ma tradycyjnie zarządzanych partnera kont w ich katalogu lokalnego. W organizacji podczas przenoszenia aplikacji do usługi Azure AD ma zostać upewnij się, że partnerów dostęp do zasobów, które są im potrzebne. Nie należy go znaczenia, czy zasoby są lokalnie lub w chmurze. Ponadto chcesz użytkowników partnera, aby móc używać tych samych poświadczeń logowania zarówno lokalnie, jak i zasobów usługi Azure AD. 
+Przed Azure Active Directory (Azure AD) za pomocą lokalnych systemów tożsamości organizacjach konta partnera tradycyjnie zarządzanych w jego katalogu lokalnego. W organizacji po uruchomieniu przenoszenia aplikacji do usługi Azure AD chcesz upewnij się, że partnerów można uzyskiwać dostęp do zasobów, które są im potrzebne. Nie ma to znaczenie, czy zasoby są w środowisku lokalnym lub w chmurze. Ponadto należy użytkownikom partnera, aby można było używać tych samych poświadczeń logowania, zarówno lokalnych, jak i zasobów usługi Azure AD. 
 
-Po utworzeniu konta dla partnerów zewnętrznych, w katalogu lokalnego (na przykład możesz utworzyć konto przy użyciu nazwy logowania "wmoran" dla użytkownika zewnętrznego o nazwie Wendy Moran w domenie partners.contoso.com), mogą teraz synchronizować tych kont Chmura. W szczególności Azure AD Connect umożliwia synchronizowanie konta partnera w chmurze jako użytkowników B2B usługi Azure AD (to znaczy użytkownikom UserType = gościa). Dzięki temu partnera użytkownikom dostępu do zasobów w chmurze przy użyciu tych samych poświadczeń jako kont lokalnych, bez udzielania dostępu więcej niż jest to wymagane. 
+Jeśli tworzenie kont dla usługi partnerom zewnętrznym w Twoim katalogu w środowisku lokalnym (na przykład możesz utworzyć konto przy użyciu nazwy logowania "wmoran" dla użytkownika zewnętrznego o nazwie została Wendy w domenie partners.contoso.com), teraz możesz synchronizować tych kont do w chmurze. W szczególności program Azure AD Connect umożliwia synchronizowanie kont partnerów w chmurze jako użytkownicy usługi Azure AD B2B (oznacza to, że użytkownicy z wartością UserType = gościa). Dzięki temu partnera użytkownikom dostępu do zasobów w chmurze przy użyciu tych samych poświadczeń jako kont lokalnych bez udzielania im szerszy dostęp niż jest to wymagane. 
 
-## <a name="identify-unique-attributes-for-usertype"></a>Identyfikowanie unikatowych atrybutach UserType
+## <a name="identify-unique-attributes-for-usertype"></a>Identyfikowanie unikatowe atrybuty dla UserType
 
-Przed włączeniem synchronizacji atrybut UserType, najpierw należy zdecydować, jak pochodzi ten atrybut UserType z lokalnej usługi Active Directory. Innymi słowy jakich parametrów w danym środowisku lokalnych są unikatowe dla sieci zewnętrznych współpracowników? Określ parametr, który odróżnia tych zewnętrznych współpracowników od członków organizacji.
+Przed włączeniem synchronizacji atrybut UserType, najpierw należy zdecydować, jak utworzyć pochodne atrybut UserType z usługi Active Directory w środowisku lokalnym. Innymi słowy parametry w danym środowisku lokalnych są unikatowe dla Twojej zewnętrznych współpracowników? Określ parametr, który rozróżnia tych zewnętrznych współpracowników z członkami danej organizacji.
 
-Typowe są dwa podejścia dla tego celu:
+Są dwa podejścia typowych dla tego:
 
-- Należy określić atrybut usługi Active Directory nieużywane lokalnymi (na przykład extensionAttribute1) do użycia jako atrybutu źródłowego. 
-- Można również pochodzić atrybut UserType od innych właściwości. Na przykład chcesz synchronizować wszystkich użytkowników jako Gość, jeśli ich lokalne atrybut UserPrincipalName usługi Active Directory kończy się z domeną *@partners.contoso.com*.
+- Należy określić atrybut usługi Active Directory nieużywane w środowisku lokalnym (na przykład extensionAttribute1) do użycia jako atrybutu źródłowego. 
+- Alternatywnie dziedziczyć wartość atrybutu UserType inne właściwości. Na przykład chcesz synchronizować wszystkich użytkowników jako gościa, gdy jego atrybut UserPrincipalName usługi Active Directory w środowisku lokalnym, który kończy się z domeną *@partners.contoso.com*.
  
-Atrybut szczegółowe wymagania można znaleźć [Włącz synchronizację UserType](../connect/active-directory-aadconnectsync-change-the-configuration.md#enable-synchronization-of-usertype). 
+Atrybut szczegółowe wymaganiami, zobacz [Włącz synchronizację UserType](../connect/active-directory-aadconnectsync-change-the-configuration.md#enable-synchronization-of-usertype). 
 
-## <a name="configure-azure-ad-connect-to-sync-users-to-the-cloud"></a>Konfigurowanie usługi Azure AD Connect do synchronizacji użytkowników w chmurze
+## <a name="configure-azure-ad-connect-to-sync-users-to-the-cloud"></a>Skonfiguruj program Azure AD Connect, aby zsynchronizować użytkowników z chmurą
 
-Po zidentyfikowaniu unikatowy atrybut można skonfigurować usługi Azure AD Connect do synchronizowania tych użytkowników zdalnych do chmury jako użytkowników B2B usługi Azure AD (to znaczy użytkownikom UserType = gościa). Z punktu widzenia autoryzacji użytkownicy są nierozróżnialne od użytkowników B2B została utworzona za pośrednictwem procesu zaproszenia współpracy B2B usługi Azure AD.
+Po zidentyfikowaniu unikatowy atrybut, można skonfigurować program Azure AD Connect do synchronizowania tych użytkowników w chmurze jako użytkownicy usługi Azure AD B2B (oznacza to, że użytkownicy z wartością UserType = gościa). Z punktu widzenia autoryzacji Ci użytkownicy są nie do odróżnienia od użytkowników B2B utworzonymi za pomocą procesu zapraszania współpracy B2B usługi Azure AD.
 
 Aby uzyskać instrukcje dotyczące wdrażania, zobacz [Włącz synchronizację UserType](../connect/active-directory-aadconnectsync-change-the-configuration.md#enable-synchronization-of-usertype).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Azure współpracy B2B usługi Active Directory dla organizacji hybrydowego](hybrid-organizations.md)
-- [Użytkownicy GRANT B2B w usłudze Azure AD dostęp do aplikacji lokalnych](hybrid-cloud-to-on-premises.md)
-- Omówienie programu Azure AD Connect zobacz [integrację katalogów lokalnych z usługą Azure Active Directory](../connect/active-directory-aadconnect.md).
+- [Współpracy usługi Azure Active Directory B2B dla organizacji hybrydowych](hybrid-organizations.md)
+- [Użytkowników B2B przydział w usłudze Azure AD dostęp do aplikacji w środowisku lokalnym](hybrid-cloud-to-on-premises.md)
+- Omówienie programu Azure AD Connect, zobacz [integrowanie katalogów lokalnych z usługą Azure Active Directory](../connect/active-directory-aadconnect.md).
 

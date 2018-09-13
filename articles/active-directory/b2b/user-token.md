@@ -1,27 +1,27 @@
 ---
-title: Zrozumienie użytkownika tokenów w współpracy B2B usługi Azure AD | Dokumentacja firmy Microsoft
-description: Odwołania do tokenu użytkownika dla usługi Azure Active Directory B2B współpracy
+title: Zrozumienie tokeny użytkowników we współpracy B2B usługi Azure AD | Dokumentacja firmy Microsoft
+description: Odwołanie do tokenu użytkownika do współpracy B2B usługi Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 02/28/2018
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: efbadf877a38f1ab553e1c376e3084d00f606a31
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: HT
+ms.openlocfilehash: ff28943ba4f7b0eda5733783a14d1cc2f025f01b
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260227"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645017"
 ---
-# <a name="understand-user-tokens-in-azure-ad-b2b-collaboration"></a>Zrozumienie użytkownika tokenów w współpracy B2B usługi Azure AD
+# <a name="understand-user-tokens-in-azure-ad-b2b-collaboration"></a>Zrozumienie tokeny użytkowników we współpracy B2B usługi Azure AD
 
-Jeśli chcesz wiedzieć, jak wygląda token dla użytkownika współpracy B2B poniżej przedstawiono szczegóły tokenu elementu nośnego i tokenu zawartości gościa usługi Azure Active Directory (Azure AD) i Gość konta Microsoft w dzierżawie zasobów (dla identyfikatora dzierżawcy 04dcc6ab-388a-4559-b527-fbec656300ea). Aby wyświetlić zawartość tokenu Web JSON (JWT), użyj [ https://jwt.io/ ](https://jwt.io/) lub [ https://jwt.ms/ ](https://jwt.ms/).
+Jeśli chcesz dowiedzieć się, jak wygląda token dla użytkownika współpracy B2B, poniżej przedstawiono szczegóły tokenu elementu nośnego i tokenu zawartość dla gościa Azure Active Directory (Azure AD) i gościa konta Microsoft, w dzierżawie zasobów (Aby uzyskać identyfikator dzierżawy 04dcc6ab-388a-4559-b527-fbec656300ea). Aby wyświetlić zawartość tokenu Web JSON (JWT), użyj [ https://jwt.io/ ](https://jwt.io/) lub [ https://jwt.ms/ ](https://jwt.ms/).
 
-## <a name="azure-ad-guest-token"></a>Token Gość w usłudze Azure AD
+## <a name="azure-ad-guest-token"></a>Token gościa w usłudze Azure AD
 ```
 Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ilk0dWVLMm9hSU5RaVFiNVlFQlNZVnlEY3BBVSIsImtpZCI6Ilk0dWVLMm9hSU5RaVFiNVlFQlNZVnlEY3BBVSJ9.eyJhdWQiOiJodHRwczovL2dyYXBoLndpbmRvd3MubmV0LyIsImlzcyI6Imh0dHBzOi8vc3RzLndpbmRvd3MubmV0LzA0ZGNjNmFiLTM4OGEtNDU1OS1iNTI3LWZiZWM2NTYzMDBlYS8iLCJpYXQiOjE0ODQ4MDM5MTgsIm5iZiI6MTQ4NDgwMzkxOCwiZXhwIjoxNDg0ODA3ODE4LCJhY3IiOiIxIiwiYWlvIjoiQVFBQkFBRUFBQURSTllSUTNkaFJTcm0tNEstYWRwQ0pJNWNncGtYQ0VOTHdnN1Z1emhFQURIajNOOWNIMzhRWGFBakhrYUtPRFhneWJpcnVRYVhpa3RZZ3I2M0xMQTVTVDlEeXV2dEtQSUdlXzJpVFRhdjNqSkxuTlRSZ2JWRFpwckhSaEtZbWl5RWdBQSIsImFsdHNlY2lkIjoiNTo6MTAwMzAwMDA4MDFCQUZDNyIsImFtciI6WyJwd2QiLCJyc2EiXSwiYXBwaWQiOiJjNDRiNDA4My0zYmIwLTQ5YzEtYjQ3ZC05NzRlNTNjYmRmM2MiLCJhcHBpZGFjciI6IjIiLCJlX2V4cCI6MTA4MDAsImVtYWlsIjoicmFqZXNiQG1pY3Jvc29mdC5jb20iLCJpZHAiOiJodHRwczovL3N0cy53aW5kb3dzLm5ldC83MmY5ODhiZi04NmYxLTQxYWYtOTFhYi0yZDdjZDAxMWRiNDcvIiwiaW5fY29ycCI6InRydWUiLCJpcGFkZHIiOiIxNjcuMjIwLjEuMTk1IiwibmFtZSI6InJhamVzaCIsIm9pZCI6IjA1ODAyY2M1LTgxMWUtNDZiZC1iMWI2LTU5NDZlNjY4ODIyZiIsInBsYXRmIjoiMyIsInB1aWQiOiIxMDAzM0ZGRjlEOEY5OTUzIiwic2NwIjoidXNlcl9pbXBlcnNvbmF0aW9uIiwic3ViIjoiS1d3QnVCNk5ROU5UYmpoSUI1OHEwM2FlQVl6cEk2TWxiMkpncGk1aV9ITSIsInRpZCI6IjA0ZGNjNmFiLTM4OGEtNDU1OS1iNTI3LWZiZWM2NTYzMDBlYSIsInVuaXF1ZV9uYW1lIjoicmFqZXNiQG1pY3Jvc29mdC5jb20iLCJ2ZXIiOiIxLjAifQ.Vllr1hGXpBlpXDBKRHHYbMr_1_DwKNY3eCObBOfEaxJirwqujqCZodPrAkIOJlFYyhkILyHZQUi_D1w7XoPsd6U4GQlgOoFfzbye-P_NdRFabHMlv32gCgHz1xo11aPP453EiwwG5OHnWaHYLBpuqi3sNeKx06xbTFj07HmADDaR4aM0jwy031d6GkD0LdU-Xkazi5-h8parVRLOkkLZA0oxMFoxl_-VHr1hOzxCkbWgRoug4t97161i5tGil99CcpJ6NK8uQld7TveC40sjJ735Sksn-Uq_NZcJuXCEVsH0xK5evaeFBFSEqACXjKTvYkJWtAx8Kr8yWZAcEg0YMQ
 ```
@@ -34,6 +34,6 @@ Authorization: Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ilk0dWVLMm9hSU
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Czym jest współpraca B2B w usłudze Azure AD?](what-is-b2b.md)
-* [Właściwości użytkownika współpracy B2B](user-properties.md)
-* [Oświadczenia użytkowników współpracy B2B mapowania](claims-mapping.md)
+* [Właściwości użytkowników współpracy B2B](user-properties.md)
+* [Mapowanie oświadczeń użytkowników współpracy B2B](claims-mapping.md)
 

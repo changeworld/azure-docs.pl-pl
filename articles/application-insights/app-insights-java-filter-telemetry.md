@@ -1,41 +1,42 @@
 ---
-title: Filtruj Azure Application Insights telemetrii w aplikacji sieci web Java | Dokumentacja firmy Microsoft
-description: "Zmniejszenie ruchu telemetrii przez filtrowanie zdarzeń, które nie należy monitorować."
+title: Filtrowanie telemetrii usługi Azure Application Insights w aplikacji sieci web Java | Dokumentacja firmy Microsoft
+description: Zmniejszenia ruchu telemetrycznego przez filtrowanie zdarzeń, które nie jest potrzebny do monitorowania.
 services: application-insights
-documentationcenter: 
+documentationcenter: ''
 author: mrbullwinkle
 manager: carmonm
 ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/23/2016
 ms.author: mbullwin
-ms.openlocfilehash: f9e061c010667bc18ac54e6546cc25339e9c0e3e
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
+ms.openlocfilehash: 8ea431b3ab1836626fc6c7551f3bee24e4a3db86
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644718"
 ---
-# <a name="filter-telemetry-in-your-java-web-app"></a>Filtr telemetrii w aplikacji sieci web Java
+# <a name="filter-telemetry-in-your-java-web-app"></a>Filtrowanie danych telemetrycznych w aplikacji sieci web Java
 
-Filtry umożliwiają wybieranie telemetrii który Twojej [aplikacji sieci web Java wysyła do usługi Application Insights](app-insights-java-get-started.md). Brak niektórych filtrów poza pole, które można użyć, a można również napisać własny filtry niestandardowe.
+Filtry umożliwiają wybieranie danych telemetrycznych, Twoje [aplikacji sieci web Java wysyła do usługi Application Insights](app-insights-java-get-started.md). Istnieją niektóre filtry out-of--box, które są dostępne, a można również napisać własne niestandardowe filtry.
 
-Dostępne są następujące filtry poza pola:
+Dostępne są następujące filtry out-of--box:
 
 * Poziom ważności śledzenia
-* Określone adresy URL, słowa kluczowe lub kodów odpowiedzi
-* Krótkie czasy odpowiedzi — to znaczy żądania, do których aplikacji odpowiedzi szybko
-* Nazwy określonego zdarzenia
+* Określone adresy URL, słowa kluczowe lub kody odpowiedzi
+* Szybkie uzyskiwanie odpowiedzi z — czyli żądań, do których aplikacji wypełniona szybko
+* Nazwy określone zdarzenie
 
 > [!NOTE]
-> Filtry pochylanie metryki aplikacji. Na przykład można zdecydować, że, aby zdiagnozować powolne odpowiedzi, ustawisz filtr, aby odrzucić krótszych czasów reakcji. Jednak należy pamiętać, że czasy odpowiedzi średnia, zgłoszone przez usługę Application Insights będzie mniejsza niż szybkość true i liczba żądań, które będą mniejsze niż rzeczywista liczba.
-> W przypadku wątpliwości dotyczących użycia [próbkowania](app-insights-sampling.md) zamiast tego.
+> Filtry pochylanie metryki aplikacji. Na przykład można zdecydować, że, aby zdiagnozować powolne odpowiedzi, ustawisz filtr, aby odrzucić krótszych czasów reakcji. Jednak należy pamiętać, że średniego czasu odpowiedzi zgłoszony przez usługę Application Insights będzie mniejsza niż szybkość wartość true, a liczba żądań będzie mniejsza niż liczba rzeczywistych.
+> Jeśli jest to niepożądane, użyj [próbkowania](app-insights-sampling.md) zamiast tego.
 
 ## <a name="setting-filters"></a>Filtry
 
-W ApplicationInsights.xml, Dodaj `TelemetryProcessors` sekcji tak jak ten przykład:
+W ApplicationInsights.xml, Dodaj `TelemetryProcessors` sekcji podobną do przykładowej:
 
 
 ```XML
@@ -88,11 +89,11 @@ W ApplicationInsights.xml, Dodaj `TelemetryProcessors` sekcji tak jak ten przyk�
 
 
 
-[Sprawdź pełny zestaw wbudowanych procesorów](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
+[Zbadaj pełny zestaw wbudowanych procesorów](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
 
-## <a name="built-in-filters"></a>Filtry wbudowane
+## <a name="built-in-filters"></a>Wbudowane filtry
 
-### <a name="metric-telemetry-filter"></a>Filtr dane telemetryczne metryki
+### <a name="metric-telemetry-filter"></a>Filtra metryki danych Telemetrycznych
 
 ```XML
 
@@ -101,10 +102,10 @@ W ApplicationInsights.xml, Dodaj `TelemetryProcessors` sekcji tak jak ten przyk�
            </Processor>
 ```
 
-* `NotNeeded`-Rozdzielana przecinkami lista nazw metryki niestandardowe.
+* `NotNeeded` — Rozdzielana przecinkami lista nazw metryki niestandardowe.
 
 
-### <a name="page-view-telemetry-filter"></a>Filtr dane telemetryczne wyświetleń strony
+### <a name="page-view-telemetry-filter"></a>Filtr danych Telemetrycznych widoku strony
 
 ```XML
 
@@ -115,9 +116,9 @@ W ApplicationInsights.xml, Dodaj `TelemetryProcessors` sekcji tak jak ten przyk�
            </Processor>
 ```
 
-* `DurationThresholdInMS`— Czas trwania odnosi się do czas ładowania strony. Jeśli ta opcja jest ustawiona, nie są zgłaszane stron, które szybciej niż w tej chwili załadowane.
-* `NotNeededNames`-Rozdzielana przecinkami lista nazw strony.
-* `NotNeededUrls`— Fragmenty rozdzielana przecinkami lista adresów URL. Na przykład `"home"` odfiltrowuje wszystkie strony, które mają "Strona główna" w adresie URL.
+* `DurationThresholdInMS` -Czas trwania odnosi się do czas ładowania strony. Jeśli ta opcja jest ustawiona, stron, które są ładowane szybciej niż w tej chwili nie są zgłaszane.
+* `NotNeededNames` — Rozdzielana przecinkami lista nazw stron.
+* `NotNeededUrls` — Fragmenty rozdzielana przecinkami lista adresów URL. Na przykład `"home"` odfiltrowuje wszystkie strony, które mają "Strona główna" w adresie URL.
 
 
 ### <a name="request-telemetry-filter"></a>Żądanie Telemetrii filtru
@@ -136,9 +137,9 @@ W ApplicationInsights.xml, Dodaj `TelemetryProcessors` sekcji tak jak ten przyk�
 
 ### <a name="synthetic-source-filter"></a>Syntetyczne Filtr źródła
 
-Odfiltrowuje wszystkie dane telemetryczne, te wartości we właściwości SyntheticSource. Obejmują one żądań z robotów, przeszukiwarki i testów dostępności.
+Odfiltrowuje wszystkie dane telemetryczne, które wartości właściwości SyntheticSource. Obejmują one żądania od roboty i przeszukiwarki testów dostępności.
 
-Odfiltrować dane telemetryczne dla wszystkich żądań syntetycznych:
+Filtrowanie danych telemetrycznych dla wszystkich żądań syntetycznych:
 
 
 ```XML
@@ -146,7 +147,7 @@ Odfiltrować dane telemetryczne dla wszystkich żądań syntetycznych:
            <Processor type="SyntheticSourceFilter" />
 ```
 
-Odfiltrować dane telemetryczne dla konkretnych źródeł syntetycznych:
+Filtrowanie danych telemetrycznych dla określonych źródeł syntetycznych:
 
 
 ```XML
@@ -156,11 +157,11 @@ Odfiltrować dane telemetryczne dla konkretnych źródeł syntetycznych:
            </Processor>
 ```
 
-* `NotNeeded`-Rozdzielana przecinkami lista nazw syntetycznego źródła.
+* `NotNeeded` — Rozdzielana przecinkami lista nazw syntetycznego źródła.
 
 ### <a name="telemetry-event-filter"></a>Filtr zdarzeń telemetrii
 
-Filtruje zdarzenia niestandardowe (zarejestrowane przy użyciu [funkcji TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent)).
+Filtruje zdarzenia niestandardowe (rejestrowane przy użyciu [poleceń TrackEvent()](app-insights-api-custom-events-metrics.md#trackevent)).
 
 
 ```XML
@@ -171,12 +172,12 @@ Filtruje zdarzenia niestandardowe (zarejestrowane przy użyciu [funkcji TrackEve
 ```
 
 
-* `NotNeededNames`-Rozdzielana przecinkami lista nazw zdarzeń.
+* `NotNeededNames` — Rozdzielana przecinkami lista nazw zdarzeń.
 
 
-### <a name="trace-telemetry-filter"></a>Filtr dane telemetryczne śledzenia
+### <a name="trace-telemetry-filter"></a>Filtr Telemetrii śledzenia
 
-Filtry dziennika śledzenia (zarejestrowane przy użyciu [TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) lub [moduł zbierający framework rejestrowania](app-insights-java-trace-logs.md)).
+Ślady dzienników filtry (rejestrowane przy użyciu [metody TrackTrace()](app-insights-api-custom-events-metrics.md#tracktrace) lub [modułu zbierającego framework rejestrowania](app-insights-java-trace-logs.md)).
 
 ```XML
 
@@ -185,20 +186,20 @@ Filtry dziennika śledzenia (zarejestrowane przy użyciu [TrackTrace()](app-insi
            </Processor>
 ```
 
-* `FromSeverityLevel`Prawidłowe wartości to:
+* `FromSeverityLevel` Prawidłowe wartości to:
  *  WYŁĄCZONE — odfiltrować wszystkie ślady
  *  TRACE — bez filtrowania. poziom śledzenia jest równa
- *  Informacje o — filtr się poziom śledzenia
- *  OSTRZEGAJ - filtru śledzenia i informacji
- *  Błąd — filtr limit OSTRZEGAJ, INFO, śledzenia
- *  KRYTYCZNY - filtru limit wszystkie krytyczne
+ *  Informacje o — odfiltrowywanie poziom śledzenia
+ *  WARN — filtr śledzenia i informacji
+ *  Błąd — odfiltrowywanie OSTRZEGAJ, INFO, śledzenia
+ *  KRYTYCZNY - odfiltrowywanie wszystkich pól poza krytyczne
 
 
 ## <a name="custom-filters"></a>Filtry niestandardowe
 
-### <a name="1-code-your-filter"></a>1. Kod filtru
+### <a name="1-code-your-filter"></a>1. Kod z filtrem
 
-W kodzie, Utwórz klasę, która implementuje `TelemetryProcessor`:
+W kodzie, należy utworzyć klasę, która implementuje `TelemetryProcessor`:
 
 ```Java
 
@@ -258,8 +259,8 @@ W ApplicationInsights.xml:
 
 *Moje filtru nie działa.*
 
-* Sprawdź, czy podano prawidłowymi wartościami parametrów. Na przykład czas trwania powinny być liczbami całkowitymi. Nieprawidłowe wartości spowoduje, że filtr, który ma być ignorowane. Niestandardowy filtr zgłasza wyjątek konstruktora lub metody set, zostaną zignorowane.
+* Sprawdź, czy podane prawidłowymi wartościami parametrów. Na przykład czasy trwania powinny być liczbami całkowitymi. Nieprawidłowe wartości spowoduje, że filtr, które mają być ignorowane. Niestandardowy filtr zgłasza wyjątek z konstruktora lub metody set, zostaną zignorowane.
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-* [Próbkowanie](app-insights-sampling.md) — należy wziąć pod uwagę próbkowania jako alternatywę nie pochylanie Twoje metryki.
+* [Próbkowanie](app-insights-sampling.md) — należy wziąć pod uwagę próbkowania jako alternatywę, który nie pochylanie metryk.

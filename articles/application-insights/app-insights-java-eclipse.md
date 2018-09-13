@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do usługi Azure Application Insights z językiem Java w środowisku Eclipse | Dokumentacja firmy Microsoft
-description: Przy użyciu wtyczki Eclipse Dodaj wydajności i użycia monitorowania do witryny sieci Web Java z usługą Application Insights
+title: Rozpoczynanie pracy z usługą Azure Application Insights za pomocą języka Java w środowisku Eclipse | Dokumentacja firmy Microsoft
+description: Użyj wtyczki środowiska Eclipse, aby dodać monitorowanie wydajności i użycia do witryny sieci Web Java za pomocą usługi Application Insights
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -10,48 +10,48 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/12/2016
 ms.author: mbullwin
-ms.openlocfilehash: 8e8e63b053cb5bd504a41da9b537354a1dd42968
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: ebcfe02eb8d969af26f5121bda85e4610302e838
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34795564"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35647592"
 ---
-# <a name="get-started-with-application-insights-with-java-in-eclipse"></a>Wprowadzenie do usługi Application Insights z językiem Java w środowisku Eclipse
-Zestaw SDK usługi Application Insights wysyła dane telemetryczne z aplikacji sieci web w języku Java, dzięki czemu można analizować użycia i wydajności. Wtyczki dla usługi Application Insights Eclipse automatycznie instaluje zestaw SDK w projekcie, tak aby uzyskać poza telemetrii pola, a także interfejs API, który służy do zapisywania telemetria niestandardowa.   
+# <a name="get-started-with-application-insights-with-java-in-eclipse"></a>Rozpoczynanie pracy z usługą Application Insights za pomocą języka Java w środowisku Eclipse
+Zestaw SDK usługi Application Insights wysyła dane telemetryczne z aplikacji internetowej Java, dzięki czemu można analizować użycie i wydajność. Eclipse wtyczki dla usługi Application Insights automatycznie instaluje zestaw SDK w projekcie, dzięki czemu można uzyskiwać dostęp do najważniejszych danych telemetrycznych pole, a także interfejsu API, który umożliwia zapisywanie niestandardowych danych telemetrycznych.   
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Obecnie wtyczki sprawdza w przypadku Maven projektów i dynamicznych projekty sieci Web w programie Eclipse.
-([Dodaj usługę Application Insights na inne typy projektu języka Java][java].)
+Aktualnie wtyczki sprawdza w przypadku projektami Maven oraz dynamiczne projekty sieci Web w środowisku Eclipse.
+([Dodaj usługę Application Insights na inne typy projektów Java][java].)
 
 Będą potrzebne:
 
-* 1.7 środowiska JRE lub 1.8
+* Środowisko JRE w wersji 1.7 lub 1.8
 * Subskrypcja platformy [Microsoft Azure](https://azure.microsoft.com/).
-* [Zaćmienie-IDE for Java EE Developers](http://www.eclipse.org/downloads/), indygo lub nowszej.
-* System Windows 7 lub nowszym lub Windows Server 2008 lub nowszy
+* [Eclipse IDE for Java EE Developers](http://www.eclipse.org/downloads/), Indigo lub nowszej.
+* Windows 7 lub nowszym lub Windows Server 2008 lub nowszy
 
-Jeśli wolisz, spróbuj Spring framework [Konfigurowanie inicjatora rozruchu Spring aplikacji przewodnik usługi Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
+Jeśli wolisz używać struktury Spring, spróbuj znaleźć potrzebne informacje w [przewodniku dotyczącym konfiguracji aplikacji inicjatora Spring Boot w celu korzystania z usługi Application Insights](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
 
-## <a name="install-the-sdk-on-eclipse-one-time"></a>Zainstaluj zestaw SDK w środowisku Eclipse (jeden raz)
-Wystarczy wykonać to jeden raz dla poszczególnych komputerów. Ta czynność powoduje zainstalowanie zestawu narzędzi, które można następnie dodać zestawu SDK do każdego dynamiczny projekt sieci Web.
+## <a name="install-the-sdk-on-eclipse-one-time"></a>Zainstaluj zestaw SDK w środowisku Eclipse (raz)
+Wystarczy zrobić to raz dla każdego komputera. Ta czynność powoduje zainstalowanie narzędzi, który można następnie dodać zestaw SDK do każdego dynamicznego projektu sieci Web.
 
-1. W programie Eclipse kliknij przycisk Pomoc, instalowanie nowego oprogramowania.
+1. W środowisku Eclipse kliknij przycisk Pomoc, zainstaluj nowe oprogramowanie.
 
-    ![Pomoc, należy zainstalować nowe oprogramowanie](./media/app-insights-java-eclipse/0-plugin.png)
-2. Zestaw SDK jest http://dl.microsoft.com/eclipse, w obszarze zestawu narzędzi platformy Azure.
-3. Usuń zaznaczenie pola wyboru **skontaktuj się z wszystkich witryn aktualizacji...**
+    ![Pomoc, zainstaluj nowe oprogramowanie](./media/app-insights-java-eclipse/0-plugin.png)
+2. Zestaw SDK jest w http://dl.microsoft.com/eclipse, w ramach zestawu narzędzi platformy Azure.
+3. Usuń zaznaczenie pola wyboru **skontaktuj się z wszystkich witrynach aktualizacji...**
 
-    ![Dla zestawu SDK usługi Application Insights wyczyść skontaktuj się z wszystkich witryn aktualizacji](./media/app-insights-java-eclipse/1-plugin.png)
+    ![Dla usługi Application Insights SDK, wyczyść skontaktuj się z wszystkimi witrynami aktualizacji](./media/app-insights-java-eclipse/1-plugin.png)
 
 Wykonaj pozostałe kroki dla każdego projektu języka Java.
 
 ## <a name="create-an-application-insights-resource-in-azure"></a>Tworzenie zasobu usługi Application Insights na platformie Azure
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
-2. Utwórz nowy zasób usługi Application Insights. Jako typ aplikacji ustaw wartość Aplikacja sieci Web Java.  
+2. Utwórz nowy zasób usługi Application Insights. Jako typ aplikacji ustaw wartość Aplikacja internetowa Java.  
 
     ![Kliknij + i wybierz opcję Application Insights](./media/app-insights-java-eclipse/01-create.png)  
 
@@ -60,47 +60,47 @@ Wykonaj pozostałe kroki dla każdego projektu języka Java.
     ![W opisie nowego zasobu kliknij opcję Właściwości i skopiuj klucz instrumentacji](./media/app-insights-java-eclipse/03-key.png)  
 
 ## <a name="add-application-insights-to-your-project"></a>Dodaj usługę Application Insights do swojego projektu
-1. Dodawanie usługi Application Insights z menu kontekstowego projektu sieci web Java.
+1. Dodaj usługę Application Insights z menu kontekstowego projektu sieci web Java.
 
     ![W opisie nowego zasobu kliknij opcję Właściwości i skopiuj klucz instrumentacji](./media/app-insights-java-eclipse/02-context-menu.png)
-2. Wklej klucz Instrumentacji pochodzący z portalu Azure.
+2. Wklej klucz instrumentacji, która jest wyświetlana w witrynie Azure portal.
 
     ![W opisie nowego zasobu kliknij opcję Właściwości i skopiuj klucz instrumentacji](./media/app-insights-java-eclipse/03-ikey.png)
 
-Klucz jest wysyłany razem z każdy element telemetrii i informuje usługi Application Insights, aby go wyświetlić w zasobie.
+Klucz jest wysyłany wraz z każdym elementem telemetrii i informuje usługę Application Insights w celu wyświetlenia go w swoim zasobie.
 
-## <a name="run-the-application-and-see-metrics"></a>Uruchom aplikację i widzieć metryki
+## <a name="run-the-application-and-see-metrics"></a>Uruchom aplikację i zobaczyć metryki
 Uruchom aplikację.
 
-Wróć do zasobu usługi Application Insights w Microsoft Azure.
+Wróć do zasobu usługi Application Insights w systemie Microsoft Azure.
 
 W bloku przeglądu zostaną wyświetlone dane żądań HTTP. (Jeśli ich tam nie ma, odczekaj kilka sekund, a następnie kliknij przycisk Odśwież).
 
-![Odpowiedź serwera, liczby żądań i błędów ](./media/app-insights-java-eclipse/5-results.png)
+![Odpowiedź z serwera, liczby żądań i błędów ](./media/app-insights-java-eclipse/5-results.png)
 
 Klikaj elementy wykresów, aby wyświetlać bardziej szczegółowe metryki.
 
-![Liczba żądań według nazwy](./media/app-insights-java-eclipse/6-barchart.png)
+![Liczby żądań według nazwy](./media/app-insights-java-eclipse/6-barchart.png)
 
 [Dowiedz się więcej o metrykach.][metrics]
 
-Podczas przeglądania właściwości żądania, może uzyskać zdarzenia telemetrii skojarzonych z nim, takich jak żądania i wyjątków i.
+Podczas wyświetlania właściwości żądania, może uzyskać dostęp i zdarzenia telemetrii, skojarzone z nim, takie jak żądania i wyjątki.
 
 ![Wszystkie ślady dla tego żądania](./media/app-insights-java-eclipse/7-instance.png)
 
-## <a name="client-side-telemetry"></a>Dane telemetryczne po stronie klienta
+## <a name="client-side-telemetry"></a>Telemetria po stronie klienta
 W bloku Szybki Start kliknij przycisk Pobierz kod umożliwiający monitorowanie stron sieci web:
 
 ![W bloku przeglądu aplikacji wybierz kolejno opcje Szybki start, Pobierz kod umożliwiający monitorowanie stron sieci Web. Skopiuj skrypt.](./media/app-insights-java-eclipse/02-monitor-web-page.png)
 
-Wstawianie fragmentu kodu w nagłówku pliki HTML.
+Wstaw fragment kodu w nagłówku pliki HTML.
 
 #### <a name="view-client-side-data"></a>Wyświetlanie danych po stronie klienta
-Otwórz zaktualizowane stron sieci web i używać ich. Zaczekaj minutę lub dwie, a następnie wróć do usługi Application Insights i otwórz blok wykorzystanie. (Za pomocą bloku omówienie przewiń w dół i kliknij opcję użycia).
+Otwórz zaktualizowane stron sieci web i używać ich. Poczekaj minutę lub dwie, a następnie wróć do usługi Application Insights i otwórz blok użycia. (Z poziomu bloku Przegląd przewiń w dół i kliknij pozycję użycia).
 
-Strona widoku, użytkownika i sesji metryki pojawi się blok wykorzystanie:
+Strona widoku, użytkowników i sesji metryki pojawi się na blok użycia:
 
-![Sesje, użytkowników i wyświetleń strony](./media/app-insights-java-eclipse/appinsights-47usage-2.png)
+![Sesji, użytkowników i wyświetleń stron](./media/app-insights-java-eclipse/appinsights-47usage-2.png)
 
 [Dowiedz się więcej o konfigurowaniu telemetrii po stronie klienta.][usage]
 
@@ -126,16 +126,16 @@ Nieobsługiwane wyjątki są zbierane automatycznie:
 
 Istnieją dwie opcje zbierania danych o innych wyjątkach:
 
-* [Wstawianie wywołania do TrackException w kodzie](app-insights-api-custom-events-metrics.md#trackexception).
+* [Wstawianie wywołań metoda TrackException w kodzie](app-insights-api-custom-events-metrics.md#trackexception).
 * [Instalacja agenta Java na serwerze](app-insights-java-agent.md). Trzeba określić metody, które chcesz śledzić.
 
 ## <a name="monitor-method-calls-and-external-dependencies"></a>Monitorowanie wywołań metod i zależności zewnętrznych
 [Zainstaluj agenta programu Java](app-insights-java-agent.md) w celu rejestrowania określonych metod wewnętrznych i wywołań za pośrednictwem JDBC z danymi chronometrażu.
 
 ## <a name="performance-counters"></a>Liczniki wydajności
-W bloku Przegląd, przewiń w dół i kliknij przycisk **serwerów** kafelka. Zobaczysz zakresu liczników wydajności.
+W bloku Przegląd, przewiń w dół i kliknij przycisk **serwerów** kafelka. Zobaczysz zakres liczników wydajności.
 
-![Przewiń w dół kliknij Kafelek serwery](./media/app-insights-java-eclipse/11-perf-counters.png)
+![Przewiń w dół, kliknij Kafelek serwery](./media/app-insights-java-eclipse/11-perf-counters.png)
 
 ### <a name="customize-performance-counter-collection"></a>Dostosowywanie zbierania danych liczników wydajności
 Aby wyłączyć zbieranie standardowego zestawu liczników wydajności, dodaj następujący kod w węźle głównym pliku ApplicationInsights.xml:
@@ -196,7 +196,7 @@ Liczniki wydajności są widoczne jako metryki niestandardowe w [Eksploratorze m
 * [Zainstaluj program collectd z wtyczką Application Insights](app-insights-java-collectd.md), aby uzyskać szeroką gamę danych na temat systemu i sieci.
 
 ## <a name="availability-web-tests"></a>Testy dostępności sieci Web
-Usługa Application Insights może służyć do testowania witryny sieci Web w regularnych odstępach czasu, aby sprawdzić, czy witryna działa i odpowiada poprawnie. [Aby skonfigurować][availability], przewiń w dół do kliknięcia dostępności.
+Usługa Application Insights może służyć do testowania witryny sieci Web w regularnych odstępach czasu, aby sprawdzić, czy witryna działa i odpowiada poprawnie. [Aby skonfigurować][availability], przewiń w dół, kliknij opcję dostępność.
 
 ![Przewiń w dół, kliknij opcję Dostępność, a następnie opcję Dodaj test sieci Web](./media/app-insights-java-eclipse/31-config-web-test.png)
 
@@ -207,27 +207,27 @@ Uzyskasz wykresy czasów odpowiedzi oraz powiadomienia e-mail w razie wyłączen
 [Dowiedz się więcej o testach dostępności sieci Web.][availability]
 
 ## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
-Jeśli używasz Logback lub Log4J (1.2 lub 2.0) śledzenia, może mieć dzienników śledzenia automatycznie przesyłane do usługi Application Insights, gdzie można eksplorować i ich wyszukiwanie.
+Jeśli używasz, Logback lub Log4J (wersja 1.2 lub 2.0) do śledzenia, może mieć dzienników śledzenia automatycznie przesyłane do usługi Application Insights, gdzie możesz eksplorować i wyszukiwania na nich.
 
-[Dowiedz się więcej o dzienników diagnostycznych][javalogs]
+[Dowiedz się więcej na temat dzienników diagnostycznych][javalogs]
 
 ## <a name="custom-telemetry"></a>Telemetria niestandardowa
-Wstaw kilku wierszy kodu w aplikacji sieci web Java, aby dowiedzieć się, co robią użytkownicy z nim lub do diagnozowania problemów.
+Wstaw kilka wierszy kodu w aplikację sieci web Java, aby dowiedzieć się, jak użytkownicy korzystają z nim lub aby łatwiej diagnozować problemy.
 
-Możesz wstawić kod zarówno strony sieci web JavaScript i Java po stronie serwera.
+Wystarczy wstawić kod, zarówno w stronę sieci web języka JavaScript i Java po stronie serwera.
 
-[Dowiedz się więcej o telemetrii niestandardowej][track]
+[Dowiedz się więcej o niestandardowych danych telemetrycznych][track]
 
 ## <a name="next-steps"></a>Kolejne kroki
 #### <a name="detect-and-diagnose-issues"></a>Wykrywanie i diagnozowanie problemów
-* [Dodaj telemetrię usługi sieci web klienta] [ usage] do Pobierz dane telemetryczne wydajności klienta sieci web.
+* [Dodawanie telemetrii klienta sieci web] [ usage] można pobrać danych telemetrycznych wydajności z klienta sieci web.
 * [Konfigurowanie testów sieci Web][availability], aby upewnić się, że aplikacja stale działa i odpowiada.
 * [Wyszukiwanie zdarzeń i dzienników][diagnostic], aby łatwiej diagnozować problemy.
-* [Śledzenie narzędzia Log4J lub Logback][javalogs]
+* [Przechwytywanie danych śledzenia Log4J lub Logback][javalogs]
 
 #### <a name="track-usage"></a>Śledzenie użycia
-* [Dodaj telemetrię usługi sieci web klienta] [ usage] wyświetleń strony monitora i metryki użytkownika podstawowego.
-* [Śledzenie zdarzeń niestandardowych i metryki](app-insights-web-track-usage.md) Aby dowiedzieć się więcej o sposobie korzystania z aplikacji, zarówno na kliencie i serwerze.
+* [Dodawanie telemetrii klienta sieci web] [ usage] Aby monitorować wyświetlenia stron i metryki użytkowników podstawowych.
+* [Śledź niestandardowe zdarzenia i metryki](app-insights-web-track-usage.md) Aby dowiedzieć się więcej o sposobie korzystania z aplikacji, zarówno na kliencie i serwerze.
 
 <!--Link references-->
 

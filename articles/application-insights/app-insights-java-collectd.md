@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie wydajności aplikacji sieci web Java w systemie Linux - Azure | Dokumentacja firmy Microsoft
-description: Rozszerzone monitorowanie wydajności aplikacji witryny sieci Web Java z CollectD wtyczki dla usługi Application Insights.
+title: Monitorowanie wydajności aplikacji sieci web Java w systemie Linux — Azure | Dokumentacja firmy Microsoft
+description: Rozszerzone monitorowanie wydajności aplikacji witryny sieci Web Java za pomocą wtyczki zebrane dla usługi Application Insights.
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -10,40 +10,41 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: 56e30ff4ee7765cd0950293999d93a9cf1fe5d36
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 61260674639a351a01cfea9dd695ce32795aa8c0
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35648979"
 ---
-# <a name="collectd-linux-performance-metrics-in-application-insights"></a>collectd: metryki wydajności systemu Linux w usłudze Application Insights
+# <a name="collectd-linux-performance-metrics-in-application-insights"></a>zebrane: metryki wydajności systemu Linux w usłudze Application Insights
 
 
-Aby zapoznać się z metryki wydajności systemu Linux w [usługi Application Insights](app-insights-overview.md), zainstaluj [collectd](http://collectd.org/), wraz z jej usługi Application Insights wtyczki. To rozwiązanie open source zbiera dane statystyczne różnych systemów i sieci.
+Aby zapoznać się z metryk wydajności systemu Linux w [usługi Application Insights](app-insights-overview.md), zainstaluj [zebrane](http://collectd.org/), wraz z jej usługi Application Insights wtyczki. To rozwiązanie typu open-source zbiera różne statystyki systemu i sieciowych.
 
-Zazwyczaj będzie używać collectd, jeśli masz już [zinstrumentowane usługi sieci web Java z usługą Application Insights][java]. Udostępnia większej ilości danych, aby pomóc zwiększyć wydajność aplikacji lub diagnozowania problemów. 
+Zazwyczaj służy zebrane Jeśli masz już [Instrumentacji usługi sieci web Java za pomocą usługi Application Insights][java]. Oferuje on większej ilości danych, aby pomóc zwiększyć wydajność aplikacji lub diagnozować problemy. 
 
-![Wykresy próbki](./media/app-insights-java-collectd/sample.png)
+![Przykładowe wykresy](./media/app-insights-java-collectd/sample.png)
 
-## <a name="get-your-instrumentation-key"></a>Uzyskaj swój klucz Instrumentacji
-W [portalu Microsoft Azure](https://portal.azure.com), otwórz [usługi Application Insights](app-insights-overview.md) zasobów, w którym ma być wyświetlana data. (Lub [utworzyć nowy zasób](app-insights-create-new-resource.md).)
+## <a name="get-your-instrumentation-key"></a>Uzyskaj klucz Instrumentacji
+W [portalu Microsoft Azure](https://portal.azure.com), otwórz [usługi Application Insights](app-insights-overview.md) zasobów, w którym ma się pojawić się dane. (Lub [Utwórz nowy zasób](app-insights-create-new-resource.md).)
 
-Należy wykonać kopię klucza instrumentacji, która identyfikuje zasobu.
+Wykonaj kopię klucza instrumentacji, który identyfikuje zasób.
 
-![Przeglądaj wszystkie, otwórz zasobu, a następnie w Essentials listy rozwijanej, zaznacz i skopiuj klucz Instrumentacji](./media/app-insights-java-collectd/02-props.png)
+![Przeglądaj wszystko, otwórz zasób usługi w rozwijanej podstawy, a następnie wybierz, skopiuj klucz Instrumentacji](./media/app-insights-java-collectd/02-props.png)
 
-## <a name="install-collectd-and-the-plug-in"></a>Zainstaluj collectd i wtyczki
+## <a name="install-collectd-and-the-plug-in"></a>Zainstaluj zebrane i wtyczki
 Na komputerach serwerów Linux:
 
-1. Zainstaluj [collectd](http://collectd.org/) wersji 5.4.0 lub nowszej.
-2. Pobierz [usługi Application Insights collectd zapisywania wtyczki](https://aka.ms/aijavasdk). Zanotuj numer wersji.
-3. Kopiuj wtyczki JAR w `/usr/share/collectd/java`.
+1. Zainstaluj [zebrane](http://collectd.org/) wersji 5.4.0 lub nowszej.
+2. Pobierz [wtyczką składnik zapisywania usługi Application Insights zebrane](https://aka.ms/aijavasdk). Zanotuj numer wersji.
+3. Wtyczka JAR do kopiowania `/usr/share/collectd/java`.
 4. Edytuj `/etc/collectd/collectd.conf`:
    * Upewnij się, że [wtyczki Java](https://collectd.org/wiki/index.php/Plugin:Java) jest włączona.
-   * Zaktualizuj JVMArg dla java.class.path uwzględnienie następujących JAR. Numer wersji odpowiadające ten, który można pobrać aktualizacji:
+   * Zaktualizuj JVMArg dla java.class.path, aby uwzględnić Poniższy plik JAR. Numer wersji do dopasowania, które można pobrać aktualizacji:
    * `/usr/share/collectd/java/applicationinsights-collectd-1.0.5.jar`
    * Dodaj następujący fragment kodu przy użyciu klucza Instrumentacji z zasobu:
 
@@ -55,7 +56,7 @@ Na komputerach serwerów Linux:
      </Plugin>
 ```
 
-W tym miejscu jest częścią przykładowy plik konfiguracji:
+W tym miejscu znajduje się przykładowy plik konfiguracji:
 
 ```XML
 
@@ -88,49 +89,49 @@ W tym miejscu jest częścią przykładowy plik konfiguracji:
     ...
 ```
 
-Konfigurowanie innych [wtyczek collectd](https://collectd.org/wiki/index.php/Table_of_Plugins), które może zbierać różne dane z różnych źródeł.
+Konfigurowanie innych [wtyczek zebrane](https://collectd.org/wiki/index.php/Table_of_Plugins), który może zbierać różne dane z różnych źródeł.
 
-Uruchom ponownie collectd zgodnie z jego [ręczne](https://collectd.org/wiki/index.php/First_steps).
+Uruchom ponownie zebrane zgodnie z opisem w jego [ręczne](https://collectd.org/wiki/index.php/First_steps).
 
-## <a name="view-the-data-in-application-insights"></a>Wyświetl dane w usłudze Application Insights
-Zasób usługi Application Insights, otwórz [Eksploratora metryk i Dodaj wykresy][metrics], wybierając metryki, aby wyświetlić z kategorię niestandardową.
+## <a name="view-the-data-in-application-insights"></a>Wyświetlanie danych w usłudze Application Insights
+Otwórz zasób usługi Application Insights [Eksploratora metryk i dodać wykresy][metrics], wybierając metryki mają być wyświetlane z kategorię niestandardową.
 
 ![](./media/app-insights-java-collectd/result.png)
 
-Domyślnie metryki są agregowane na wszystkich komputerach hosta, z których zebrano metryki. Aby wyświetlić metryki na hoście, w bloku szczegóły wykresu, włączyć grupowanie, a następnie wybierz pozycję do grupowania CollectD hosta.
+Domyślnie metryki są agregowane dla wszystkich maszyn hosta, z których zostały pobrane metryki. Aby wyświetlić metryki na hoście, w bloku szczegóły wykresu, należy włączyć grupowanie, a następnie wybierz grupowanie według hosta zebrane.
 
-## <a name="to-exclude-upload-of-specific-statistics"></a>Aby wykluczyć przekazywania poszczególnych statystyk
-Domyślnie wtyczkę usługi Application Insights wysyła wszystkie dane zebrane przez wszystkie włączone collectd odczytu wtyczek. 
+## <a name="to-exclude-upload-of-specific-statistics"></a>Aby wyłączyć przekazywanie poszczególnych statystyk
+Domyślnie wtyczka usługi Application Insights wysyła wszystkie dane zebrane przez wszystkie włączone zebrane odczytu wtyczek. 
 
 Aby wykluczyć danych z konkretnych źródeł danych lub wtyczek:
 
 * Przeprowadź edycję pliku konfiguracji. 
-* W `<Plugin ApplicationInsightsWriter>`, Dodaj dyrektywy wiersze następująco:
+* W `<Plugin ApplicationInsightsWriter>`, Dodaj dyrektywę wiersze następująco:
 
-| Dyrektywy | Efekt |
+| — Dyrektywa | Efekt |
 | --- | --- |
 | `Exclude disk` |Wyklucz wszystkie dane zebrane przez `disk` wtyczki |
 | `Exclude disk:read,write` |Wyklucz źródła o nazwie `read` i `write` z `disk` wtyczki. |
 
-Oddzielne dyrektywy z nowym wierszem.
+Oddzielnych dyrektyw przy użyciu nowego wiersza.
 
 ## <a name="problems"></a>Problemy?
-*Nie widać danych w portalu*
+*Nie widzę danych w portalu*
 
-* Otwórz [wyszukiwania] [ diagnostic] aby zobaczyć, jeśli następować zdarzenia pierwotnych. Czasami dłużej wyświetlane w Eksploratorze metryk.
+* Otwórz [wyszukiwania] [ diagnostic] aby zobaczyć, jeśli nieuaktywnionego nieprzetworzonych zdarzeń. Czasami dłużej wyświetlane w Eksploratorze metryk.
 * Konieczne może być [Ustaw wyjątki zapory dla danych wychodzących](app-insights-ip-addresses.md)
-* Włącz śledzenie w wtyczkę usługi Application Insights. Dodaj następujący wiersz w `<Plugin ApplicationInsightsWriter>`:
+* Włącz śledzenie we wtyczce usługi Application Insights. Dodaj następujący wiersz w ramach `<Plugin ApplicationInsightsWriter>`:
   * `SDKLogger true`
-* Otwórz terminal i uruchom collectd w trybie informacji pełnej, aby wyświetlić jego to jest raportowanie problemów:
+* Otwórz terminal i uruchom zebrane w trybie informacji pełnej, aby zobaczyć wszelkie problemy, które są zgłaszane jest:
   * `sudo collectd -f`
 
 ## <a name="known-issue"></a>Znany problem
 
-Dodatek Application Insights zapisu jest niezgodna z niektórych wtyczek odczytu. Niektóre wtyczki czasami wysyłania "NaN", gdzie wtyczkę usługi Application Insights oczekuje liczba zmiennoprzecinkowa.
+Wtyczkę usługi Application Insights zapisu jest niezgodna z niektórych wtyczek odczytu. Niektóre wtyczki Wyślij czasami "NaN", gdzie wtyczką Application Insights oczekuje, że liczba zmiennoprzecinkowa.
 
-Objaw: Collectd dziennik zawiera informacje o błędach, które obejmują "AI:... SyntaxError: nieoczekiwany token N ".
+Objaw: Zebrane dziennik zawiera informacje o błędy, które zawierają "SI:... SyntaxError: nieoczekiwany token N ".
 
-Obejście problemu: Wykluczanie danych zbieranych przez dodatki zapisu problem. 
+Obejście: Wykluczanie danych zbieranych przez wtyczki zapisu problem. 
 
 <!--Link references-->
 

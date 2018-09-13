@@ -1,5 +1,5 @@
 ---
-title: Badanie i udostępniać dane użycia interakcyjne skoroszytów w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+title: Badanie i udostępniać dane dotyczące użycia interaktywne skoroszyty w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
 description: Analiza demograficznych użytkowników aplikacji sieci web.
 services: application-insights
 documentationcenter: ''
@@ -9,106 +9,108 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/12/2017
-ms.author: mbullwin; daviste
-ms.openlocfilehash: a871378b3e2cc0b34c925593c6f01952de3aa08e
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: daviste
+ms.author: mbullwin
+ms.openlocfilehash: 016a26acc153fba1c38d926fd5389d02755c2ff5
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35648968"
 ---
-# <a name="investigate-and-share-usage-data-with-interactive-workbooks-in-application-insights"></a>Badanie i udostępniać dane użycia interakcyjne skoroszytów w usłudze Application Insights
+# <a name="investigate-and-share-usage-data-with-interactive-workbooks-in-application-insights"></a>Badanie i udostępniać dane dotyczące użycia interaktywne skoroszyty w usłudze Application Insights
 
-Łączenie skoroszytów [Azure Application Insights](app-insights-overview.md) wizualizacje danych [zapytania analityczne](app-insights-analytics.md)i tekstu w dokumentach interaktywnego. Skoroszyty są edytowany przez innych członków zespołu dostęp do tego samego zasobu platformy Azure. Oznacza to, że zapytania i formanty używane do tworzenia skoroszytu, są dostępne dla innych osób odczytujących skoroszytu, dzięki czemu można je łatwo eksplorować, rozszerzać i sprawdź, czy błędy.
+Połącz skoroszyty [usługi Azure Application Insights](app-insights-overview.md) wizualizacje danych [zapytań analitycznych](app-insights-analytics.md)i tekstu w dokumentach interaktywne. Skoroszyty są edytowalne przez innych członków zespołu, dostęp do tego samego zasobu platformy Azure. Oznacza to, że zapytania i kontrolek używanych w celu utworzenia skoroszytu są dostępne dla innych osób odczytu skoroszytu, dzięki czemu można łatwo eksplorować, rozszerzanie i sprawdź, czy błędów.
 
 Skoroszyty są przydatne w scenariuszach, takich jak:
 
-* Eksplorowanie użycia aplikacji, jeśli nie wiesz wcześniej metryki zainteresowania: liczby użytkowników, stawki przechowywania, kursy wymiany itp. W przeciwieństwie do innych narzędzi analizy użycia w usłudze Application Insights skoroszytów umożliwiają łączenie wielu rodzajów wizualizacje i analiz nadawania doskonałe rozwiązanie dla tego rodzaju dowolnych eksploracji.
-* Do zespołu wyjaśniający, jak działa funkcja nowo wydanego, przez użytkownika przedstawiający Liczba interakcji klucza i innych metryk.
-* Udostępnianie wyników A / B eksperymentu w Twojej aplikacji za pomocą innych członków zespołu. Można wyjaśnić cele dotyczące eksperymentów z tekstem, a następnie Pokaż każdy pomiar użycia i zapytania Analytics używane do analizowania eksperymentu, wraz z wyczyść dokumentów wywołania do tego, czy wszystkie metryki został powyżej lub poniżej docelowe.
-* Raportowanie wpływ awarii na użycie aplikacji, połączenie danych, wyjaśnienie tekstu i omówienie kolejne kroki, aby uniknąć awarii w przyszłości.
+* Eksplorowanie użycia aplikacji, kiedy nie wiesz wcześniej istotne metryki: liczby użytkowników, danych, współczynniki konwersji itp. W przeciwieństwie do innych narzędzi analitycznych użycia w usłudze Application Insights skoroszyty pozwalają połączyć wiele rodzajów wizualizacji i analiz, dzięki czemu idealne narzędzie do tego rodzaju dowolnych eksploracji.
+* Do zespołu wyjaśniające, jak działa funkcja nowo wydanego, przedstawiający użytkownika Liczba interakcji kluczy i innych metryk.
+* Udostępnianie wyników, a / B eksperymentów w swojej aplikacji z innymi członkami zespołu. Można wyjaśnić cele eksperymentu z tekstem, a następnie Pokaż każdego metryki użycia i zapytania usługi Analytics używane do oceny eksperymentów, wraz z wyczyść wezwaniem dla tego, czy wszystkie metryki został powyżej lub poniżej docelowymi.
+* Raportowanie wpływ awarii na użycie aplikacji, łącząc dane, tekst wyjaśnienie i dyskusję na temat następnych kroków, aby uniknąć przerw w przyszłości.
 
 > [!NOTE]
-> Zasób usługi Application Insights musi zawierać wyświetleń strony lub zdarzeń niestandardowych w celu użycia skoroszytów. [Dowiedz się, jak skonfigurować aplikację do zbierania wyświetleń strony automatycznie z zestawu SDK usługi Application Insights JavaScript](app-insights-javascript.md).
+> Zasób usługi Application Insights musi zawierać wyświetleń stron lub zdarzeń niestandardowych, aby użyć skoroszytów. [Dowiedz się, jak skonfigurować aplikację do zbierania wyświetleń stron, które automatycznie za pomocą zestawu SDK języka JavaScript usługi Application Insights](app-insights-javascript.md).
 > 
 > 
 
-## <a name="editing-rearranging-cloning-and-deleting-workbook-sections"></a>Edytowanie, zmienianie rozmieszczenia klonowania i usuwanie sekcji skoroszytu
+## <a name="editing-rearranging-cloning-and-deleting-workbook-sections"></a>Edytowanie, rozmieszczanie, klonowanie i usuwanie sekcji skoroszytu
 
-Skoroszyt jest wprowadzonych sekcji: wizualizacje można edytować niezależnie użycia, wykresów, tabel, tekst i analiza wyników zapytania.
+Skoroszyt jest wprowadzonych w sekcjach: wizualizacje można edytować niezależnie użycia, wykresy, tabele, tekst lub wyniki zapytania usługi Analytics.
 
-Aby edytować zawartość sekcji skoroszytu, kliknij przycisk **Edytuj** przycisk w dół i w prawo w sekcji skoroszytu.
+Aby edytować zawartość sekcji skoroszytu, kliknij przycisk **Edytuj** przycisk poniżej, a po prawej stronie w sekcji skoroszytu.
 
-![Formanty edycji sekcji Application Insights skoroszytów](./media/app-insights-usage-workbooks/editing-controls.png)
+![Application Insights skoroszyty sekcji formanty edycji](./media/app-insights-usage-workbooks/editing-controls.png)
 
 1. Po zakończeniu edycji sekcji, kliknij **przeprowadzić edycję** w lewym dolnym rogu sekcji.
 
-2. Aby utworzyć kopię sekcji, kliknij przycisk **klonowania w tej sekcji** ikony. Tworzenie duplikatów sekcji to doskonały sposób w celu wykonania iteracji w zapytaniu bez utraty poprzedniej iteracji.
+2. Aby utworzyć duplikat sekcji, kliknij przycisk **Sklonuj tę sekcję** ikony. Tworzenie duplikatów sekcje to doskonały sposób iteracji w zapytaniu bez utraty poprzednich iteracji.
 
-3. Aby przenieść w górę sekcji w skoroszycie, kliknij przycisk **Przenieś w górę** lub **Przenieś w dół** ikony.
+3. Aby przenieść w górę do sekcji w skoroszycie, kliknij przycisk **Przenieś w górę** lub **Przenieś w dół** ikony.
 
 4. Aby trwale usunąć sekcję, kliknij przycisk **Usuń** ikony.
 
 ## <a name="adding-usage-data-visualization-sections"></a>Dodawanie sekcji wizualizacji danych użycia
 
-Skoroszyty oferuje cztery typy wizualizacji analizy użycia wbudowanych. Każdy odpowiedzi na typowe pytania dotyczące użycia aplikacji. Aby dodać tabel i wykresów innych niż te cztery sekcje, Dodaj Analytics query sekcje (patrz poniżej).
+Skoroszyty oferuje cztery typy wizualizacje analizy użycia wbudowanych. Każdej odpowiedzi na typowe pytania dotyczące użycia aplikacji. Aby dodać, tabel i wykresów innych niż te cztery sekcje, Dodaj sekcje zapytania usługi Analytics (patrz poniżej).
 
-Aby dodać użytkowników, sesji zdarzeń i przechowywania sekcji do skoroszytu, użyj **Dodaj użytkowników** lub innych odpowiedni przycisk w dolnej części skoroszytu lub u dołu dowolnej sekcji.
+Aby dodać użytkowników, sesje, zdarzenia lub przechowywania sekcji do skoroszytu, użyj **Add Users** lub inny odpowiedni przycisk w dolnej części skoroszytu lub u dołu dowolną sekcję.
 
-![Sekcja użytkownicy w skoroszytach](./media/app-insights-usage-workbooks/users-section.png)
+![Sekcja użytkownicy arkusza w skoroszycie](./media/app-insights-usage-workbooks/users-section.png)
 
-**Użytkownicy** sekcje odpowiedzi "ilu użytkowników wyświetli stronę niektórych lub używać niektórych funkcji Moja witryna"?
+**Użytkownicy** sekcje odpowiedzi "ilu użytkowników niektóre strony wyświetli lub używać niektórych funkcji Moja witryna"?
 
-**Sesje** sekcje odpowiedzi "ile sesji użytkownicy poświęcają wyświetlanie niektórych strony lub funkcji z mojej lokacji?"
+**Sesje** sekcje odpowiedzi "ile sesji użytkownicy spędzają wyświetlanie niektóre strony lub korzystanie z niektórych funkcji Moja witryna?"
 
-**Zdarzenia** sekcje odpowiedzi "ile razy użytkowników wyświetlania niektóre strony lub funkcja witryny sieci?"
+**Zdarzenia** sekcje odpowiedzi "ile razy użytkownikom wyświetlanie niektóre strony lub korzystać z niektórych funkcji Moja witryna?"
 
-Oferuje każdego z tych typów trzy sekcji tego samego zbioru kontrolek i wizualizacji:
+Każdy z tych typów trzy części oferuje ten sam zestawów formantów i wizualizacji:
 
-* [Więcej informacji na temat edytowania sekcje użytkownikami, sesjami i zdarzenia](app-insights-usage-segmentation.md)
-* Przełącz wykresu głównego, siatki histogram, automatyczne insights i przykładowej wizualizacji użytkowników przy użyciu **Pokaż wykres**, **Pokaż siatkę**, **Pokaż Insights**, i **przykładowych tych użytkowników** pola wyboru na początku każdej sekcji.
+* [Dowiedz się więcej o edytowaniu w sekcji użytkownicy, sesje i zdarzenia](app-insights-usage-segmentation.md)
+* Przełącz wykresu głównego, siatek histogram, automatyczne szczegółowych informacji i przykładowy użytkowników wizualizacji przy użyciu **Pokaż wykres**, **Pokaż siatkę**, **Insights Pokaż**i **Przykładowych użytkowników te** pól wyboru w górnej części każdej sekcji.
 
-![Przechowywania części skoroszytów](./media/app-insights-usage-workbooks/retention-section.png)
+![Sekcja przechowywania arkusza w skoroszycie](./media/app-insights-usage-workbooks/retention-section.png)
 
-**Przechowywania** sekcje odpowiedzi "Osób, które są wyświetlane niektóre strony lub używać niektórych funkcji w ciągu jednego dnia lub tygodnia, ile wrócił następnego dnia lub tygodnia?"
+**Przechowywanie** sekcje odpowiedzi "Osób, które niektóre strony wyświetli lub używać niektórych funkcji w ciągu jednego dnia lub tygodnia, ile wrócił następnego dnia lub tygodnia?"
 
-* [Dowiedz się więcej na temat edytowania sekcje przechowywania](app-insights-usage-retention.md)
-* Przełącz opcjonalne użycie ogólnej przechowywania wykresu **Pokaż ogólną przechowywania wykresu** wyboru w górnej części sekcji.
+* [Dowiedz się więcej o edytowaniu sekcje przechowywania](app-insights-usage-retention.md)
+* Przełącz do opcjonalne całkowity okres przechowywania wykresu przy użyciu **wykres całkowitego przechowywania Show** pole wyboru w górnej części tej sekcji.
 
-## <a name="adding-application-insights-analytics-sections"></a>Dodawanie sekcji Application Insights analityka
+## <a name="adding-application-insights-analytics-sections"></a>Dodawanie sekcji analizy usługi Application Insights
 
-![Analiza części skoroszytów](./media/app-insights-usage-workbooks/analytics-section.png)
+![Sekcja analizy arkusza w skoroszycie](./media/app-insights-usage-workbooks/analytics-section.png)
 
-Aby dodać sekcję zapytania analizy aplikacji wgląd do skoroszytu, użyj **dodać Analytics query** przycisk w dolnej części skoroszytu lub u dołu dowolnej sekcji.
+Aby dodać sekcję zapytania analizy usługi Application Insights do swojego skoroszytu, użyj **zapytania analizy Dodaj** przycisk w dolnej części skoroszytu lub u dołu dowolną sekcję.
 
-Analiza zapytania sekcje umożliwiają dodawanie zapytań o dowolnego przez dane usługi Application Insights do skoroszytów. Taka elastyczność oznacza, że sekcje zapytania Analytics powinna być Twoje przejdź do odpowiedzi na pytania dotyczące witryny innej niż cztery wymienione powyżej dla użytkowników, sesji zdarzeń i przechowywania, takich jak:
+Sekcje zapytania usługi Analytics pozwalają na dodawanie zapytań o dowolne danych usługi Application Insights do skoroszytów. Ta elastyczność oznacza, że sekcje zapytania usługi Analytics powinna być praktyczny na dla odpowiedzi na pytania dotyczące witryny innej niż czterech wymienionych powyżej dla użytkowników, sesje, zdarzenia i przechowywania, takich jak:
 
-* Jak wiele wyjątków throw witryny w okresie czasu jako spadek użycia?
-* Jaki był dystrybucji czas ładowania strony dla użytkowników, którzy przeglądają niektóre strony?
-* Ilu użytkowników wyświetlić niektórych zbiór stron w witrynie, ale nie innymi zestaw stron? Może to być przydatne zrozumieć, jeśli masz klastrów użytkowników, którzy korzystają z różnych podzbiory funkcji witryny (Użyj `join` operatora z `kind=leftanti` modyfikator w języku zapytań usługi Analiza dzienników).
+* Jak wiele wyjątków throw witryny w przedziale czasu jako spadek użycia?
+* Jaki był Rozkład czasów ładowania strony użytkownikom, którzy wyświetlają niektóre strony?
+* Ilu użytkowników wyświetlane niektóre zbiór stron w witrynie, ale nie inny zestaw stron? Może to być przydatne do zrozumienia, jeśli masz klastrów użytkowników, którzy korzystają z różnych podzbiory funkcji witryny sieci (Użyj `join` operator `kind=leftanti` modyfikator w języku zapytań usługi Log Analytics).
 
-Użyj [materiały referencyjne dotyczące języka zapytań usługi Analiza dzienników](https://docs.loganalytics.io/) Aby dowiedzieć się więcej o pisaniu zapytań.
+Użyj [dokumentacja języka zapytań usługi Log Analytics](https://docs.loganalytics.io/) Aby dowiedzieć się więcej na temat pisania zapytań.
 
-## <a name="adding-text-and-markdown-sections"></a>Dodawanie tekstu i sekcji języka znaczników Markdown
+## <a name="adding-text-and-markdown-sections"></a>Dodawanie tekstu i sekcje znaczników Markdown
 
-Dodawanie nagłówków, wyjaśnienia i komentarzami do skoroszytów pomaga przekształcić zestaw tabel i wykresów udostępniono. Sekcje tekstu w pomocy technicznej skoroszyty [składni języka Markdown](https://daringfireball.net/projects/markdown/) tekstu formatowania, takich jak nagłówki pogrubienie, kursywa i listy punktowane.
+Dodawanie nagłówków, wyjaśnień i komentarz do skoroszyty pomaga przekształcić zbiór tabel i wykresów narracji. Sekcje tekstu w pomocy technicznej skoroszyty [składnię języka znaczników Markdown](https://daringfireball.net/projects/markdown/) formatowania, takich jak nagłówki, pogrubienie, kursywa i list punktowanych tekstu.
 
-Aby dodać sekcję tekstu do skoroszytu, użyj **Dodawanie tekstu** przycisk w dolnej części skoroszytu lub u dołu dowolnej sekcji.
+Aby dodać sekcję tekstu do skoroszytu, należy użyć **Dodaj tekst** przycisk w dolnej części skoroszytu lub u dołu dowolną sekcję.
 
-## <a name="saving-and-sharing-workbooks-with-your-team"></a>Zapisywanie i udostępnianie skoroszytów z zespołem
+## <a name="saving-and-sharing-workbooks-with-your-team"></a>Zapisywanie i udostępnianie skoroszytów swojemu zespołowi
 
-Skoroszyty są zapisywane w ramach zasobu usługi Application Insights w **Moje raporty** sekcja, która jest prywatny, w przypadku lub **udostępnionych raportów** sekcji, który jest dostępny dla wszystkich użytkowników mających dostęp do zasobu usługi Application Insights. Aby wyświetlić wszystkie skoroszyty w zasobie, kliknij przycisk **Otwórz** na pasku akcji.
+Skoroszyty są zapisywane w ramach zasobu usługi Application Insights w **Moje raporty** sekcja, która jest prywatny, w przypadku lub **udostępnione raporty** sekcja, która jest dostępny dla wszystkich użytkowników z dostępem do Zasób usługi Application Insights. Aby wyświetlić wszystkie skoroszyty w zasobie, kliknij **Otwórz** przycisk na pasku akcji.
 
-Aby udostępnić skoroszytu, który jest aktualnie **Moje raporty**:
+Aby udostępnić skoroszytu, w którym znajduje się obecnie w **Moje raporty**:
 
 1. Kliknij przycisk **Otwórz** na pasku akcji
 2. Kliknij przycisk "..." obok skoroszytu, który chcesz udostępnić
 3. Kliknij przycisk **Przenieś do raportów udostępnionych**.
 
-Aby udostępnić skoroszyt z łączem lub za pośrednictwem poczty e-mail, kliknij przycisk **udostępnianie** na pasku akcji. Należy pamiętać, że adresaci łącza muszą mieć dostęp do tego zasobu w portalu Azure, aby wyświetlić skoroszytu. Aby dokonać edycji, odbiorców, muszą mieć co najmniej uprawnienia współautora dla zasobu.
+Aby udostępnić skoroszyt za pomocą łącza lub za pośrednictwem poczty e-mail, kliknij przycisk **udostępnianie** na pasku akcji. Należy pamiętać, że adresaci łącza muszą mieć dostęp do tego zasobu w witrynie Azure portal, aby wyświetlić skoroszyt. Aby dokonać edycji, adresaci muszą dysponować co najmniej uprawnienia współautora dla zasobu.
 
-Aby przypiąć łącze do skoroszytu do pulpitu nawigacyjnego platformy Azure:
+Aby przypiąć łącze do skoroszytu na pulpicie nawigacyjnym platformy Azure:
 
 1. Kliknij przycisk **Otwórz** na pasku akcji
 2. Kliknij przycisk "..." obok skoroszytu, który chcesz przypiąć
@@ -117,11 +119,11 @@ Aby przypiąć łącze do skoroszytu do pulpitu nawigacyjnego platformy Azure:
 ## <a name="next-steps"></a>Kolejne kroki
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Aby umożliwić korzystanie z użycia, Rozpocznij wysyłanie [zdarzeń niestandardowych](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) lub [wyświetlenia strony](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
-- Jeżeli już zdarzeń niestandardowych lub wyświetleń strony, Poznaj narzędzia użycia, aby dowiedzieć się, jak używać usługi przez użytkowników.
+- Aby umożliwić użycie środowiska, Rozpocznij wysyłanie [zdarzenia niestandardowe](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#trackevent) lub [wyświetlenia strony](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics#page-views).
+- Jeśli już wysyłać niestandardowe zdarzenia lub wyświetlenia stron, zapoznaj się z narzędzia obciążenia, aby dowiedzieć się, jak używać usługi przez użytkowników.
     - [Użytkownicy, sesje, zdarzenia](app-insights-usage-segmentation.md)
     - [Lejki](usage-funnels.md)
     - [Przechowywanie](app-insights-usage-retention.md)
     - [User Flows (Przepływy użytkowników)](app-insights-usage-flows.md)
-    - [Dodaj kontekstu użytkownika](app-insights-usage-send-user-context.md)
+    - [Dodawanie kontekstu użytkownika](app-insights-usage-send-user-context.md)
     

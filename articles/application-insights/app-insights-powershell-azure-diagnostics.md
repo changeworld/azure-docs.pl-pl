@@ -10,20 +10,21 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/17/2015
 ms.author: mbullwin
-ms.openlocfilehash: 1be5e07da1f8d9ba2db6bbe37c84fa242b830d35
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 5e3a577f8c4759dec2d85a431ae31b61b2d582e0
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35648884"
 ---
-# <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>Konfigurowanie usługi Application Insights dla aplikacji sieci Web platformy Azure przy użyciu programu PowerShell
+# <a name="using-powershell-to-set-up-application-insights-for-an-azure-web-app"></a>Konfigurowanie usługi Application Insights dla aplikacji internetowej platformy Azure przy użyciu programu PowerShell
 Platformę [Microsoft Azure](https://azure.com) można [skonfigurować do wysyłania danych usługi Azure Diagnostics](app-insights-azure-diagnostics.md) do usługi [Azure Application Insights](app-insights-overview.md). Dane diagnostyczne są związane z usługami Azure Cloud Services i maszynami wirtualnymi platformy Azure. Uzupełniają one dane telemetryczne wysyłane z poziomu aplikacji za pomocą zestawu SDK usługi Application Insights. W ramach automatyzowania procesu tworzenia nowych zasobów platformy Azure można skonfigurować diagnostykę przy użyciu programu PowerShell.
 
 ## <a name="azure-template"></a>Szablon Azure
-Jeśli aplikacja sieci Web działa na platformie Azure, a zasoby zostały utworzone przy użyciu szablonu usługi Azure Resource Manager, można skonfigurować usługę Application Insights, dodając następujący kod do węzła zasobów:
+Jeśli aplikacja internetowa działa na platformie Azure, a zasoby zostały utworzone przy użyciu szablonu usługi Azure Resource Manager, można skonfigurować usługę Application Insights, dodając następujący kod do węzła zasobów:
 
     {
       resources: [

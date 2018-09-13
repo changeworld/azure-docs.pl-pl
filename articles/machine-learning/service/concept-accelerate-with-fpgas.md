@@ -1,93 +1,93 @@
 ---
-title: Co to jest układu FPGA? Uczenie maszynowe Azure — projektu Brainwave —
-description: Dowiedz się, jak przyspieszanie modeli i sieci neuronowej głębokość z FPGAs.
+title: Co to jest FPGA? — Project Brainwave — usługi Azure Machine Learning
+description: Dowiedz się, jak przyspieszyć tworzenie modeli i głębokich sieciach neuronowych za pomocą układów FPGA.
 services: machine-learning
 ms.service: machine-learning
-ms.component: service
+ms.component: core
 ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
 ms.date: 05/31/2018
-ms.openlocfilehash: 5ed94c3b750c927ec48959c12388bd22de3d3df4
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 5c8efcbb5f2e9014c9edabfc2aee37c8c29ea0b4
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35261954"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644698"
 ---
-# <a name="what-is-fpga-and-project-brainwave"></a>Co to jest układu FPGA i Brainwave projektu?
+# <a name="what-is-fpga-and-project-brainwave"></a>Co to jest FPGA i Project Brainwave?
 
-Ten artykuł zawiera wprowadzenie do tablic programowalny bramy (układu FPGA) oraz jak układu FPGA jest zintegrowany z Azure machine learning zapewnienie AI w czasie rzeczywistym.
+Ten artykuł zawiera wprowadzenie do macierzy programowalny bramy (FPGA) i jak FPGA jest zintegrowana z usługą aplikacji Azure machine learning w celu zapewnienia sztucznej Inteligencji w czasie rzeczywistym.
 
-## <a name="fpgas-vs-cpu-gpu-and-asic"></a>FPGAs vs. Procesora GPU i ASIC
+## <a name="fpgas-vs-cpu-gpu-and-asic"></a>Vs układów FPGA. Procesor CPU, procesora GPU i ASIC
 
-FPGAs zawiera tablicę programowalny bloków i hierarchię reconfigurable połączeń umożliwiająca bloków do skonfigurowania na różne sposoby po produkcji.
+Układów FPGA zawiera tablicę bloki programowalny i hierarchię możliwych do ponownego skonfigurowania typu, dzięki czemu bloki, które należy skonfigurować na różne sposoby po produkcji.
 
-FPGAs zawierają kombinację programowania i porównanie wydajności na inne moduły:
+Układów FPGA zawierają kombinację programowania i wydajności porównanie z innymi mikroukładami:
 
-![Azure Machine Learning z układu FPGA porównania](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
+![Porównanie usług Azure Machine Learning FPGA](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
 
-- **Jednostek centralnych (CPU)** procesorów ogólnego przeznaczenia. Wydajność procesora CPU nie jest idealnym rozwiązaniem dla grafiki i wideo przetwarzania.
-- **Procesorów (GPU)** oferować przetwarzanie równoległe i popularnych nadają się do obliczenia AI. Równoległe przetwarzanie z wynikiem szybsze renderowanie obrazów niż procesorach GPU.
-- **Scalonych specyficzne dla aplikacji (ASIC)**, takich jak jednostki procesora TensorFlow firmy Google, są dostosowane obwodów. Te moduły zapewnić najwyższą wydajność, układy ASIC są sztywne.
-- **FPGAs**, takich jak zasoby dostępne w systemie Azure, zapewniają wydajność, możliwości wykorzystania ASIC, ale oferują elastyczność zostać skonfigurowane ponownie później.
+- **Jednostek centralnych (CPU)** procesorów ogólnego przeznaczenia. Wydajność procesora CPU nie jest idealny dla grafiki i przetwarzania plików wideo.
+- **Graficznych (GPU)** oferują możliwości równoległego przetwarzania i popularnych nadają się do obliczeń sztucznej Inteligencji. Równoległe, przetwarzanie z wynikiem szybsze renderowanie obrazu niż procesorów GPU.
+- **Scalonych specyficzne dla aplikacji (ASIC)**, takich jak Google TensorFlow procesora, jednostki są dostosowane obwodów. Te moduły zapewnić najwyższą wydajność, ASICs są sztywnymi.
+- **Układów FPGA**, takich jak te dostępne na platformie Azure, zapewniają wydajność blisko ASIC, ale oferują elastyczność ponownego później.
 
-FPGAs są teraz każdy nowy serwer Azure. Microsoft już używa FPGAs dla klasyfikacji, głębokie neuronowej oceny sieci (DNN) wyszukiwania usługi Bing i acceleration (SDN) sieci definiowanej przez oprogramowanie. Tych implementacji układu FPGA zmniejszenia opóźnienia podczas zwalniania procesorów CPU w przypadku innych zadań.
+Układów FPGA są teraz każdy nowy serwer platformy Azure. Firmy Microsoft używa już układów FPGA dla arizony neuronowej sieci (DNN) wersji ewaluacyjnej wyszukiwania Bing i oprogramowania zdefiniowane sieci (komputerowej SDN) przyspieszenia. Tych implementacji FPGA zmniejszyć opóźnienie podczas zwalniania procesorów CPU w przypadku innych zadań.
 
-## <a name="project-brainwave-on-azure"></a>Brainwave projektu na platformie Azure
+## <a name="project-brainwave-on-azure"></a>Project Brainwave na platformie Azure
 
-Brainwave projektu jest architektury, której celem jest oparta na urządzeniach układu FPGA firmy Intel i używać w celu przyspieszenia obliczeń AI w czasie rzeczywistym. Taka architektura ekonomiczny włączone układu FPGA przeszkolone sieci neuronowej może działać w możliwie jak najszybciej i mniejsze opóźnienia. Brainwave projektu można parallelize wstępnie przeszkolone DNNs między FPGAs do skalowania w poziomie usługi.
+Project Brainwave jest architekturą sprzętową, której celem jest oparty na urządzeniach FPGA firmy Intel i używane w celu przyspieszenia w czasie rzeczywistym obliczeń sztucznej Inteligencji. Dzięki tej architekturze ekonomiczne włączone FPGA przeszkolonych sieci neuronowych może działać w możliwie jak najszybciej i mniejsze opóźnienie. Project Brainwave zrównoleglić wstępnie przeszkolonych sieci różnych układów FPGA skalowania w poziomie usługi.
 
 - Wydajność
 
-    FPGAs umożliwiają uzyskanie małych opóźnieniach żądań inferencing w czasie rzeczywistym. Przetwarzanie wsadowe oznacza rozdzielanie żądanie na mniejsze części i stosowania ich do procesora, aby poprawić wykorzystanie sprzętu. Przetwarzanie wsadowe nie jest wydajne i może powodować opóźnienia. Brainwave nie wymaga przetwarzania wsadowego; w związku z tym opóźnienie jest 10 razy niższe w porównaniu do procesora CPU i procesora GPU.
+    Układów FPGA umożliwiają uzyskanie małych opóźnień dla żądań wnioskowania w czasie rzeczywistym. Przetwarzanie wsadowe oznacza podzielenie żądania na mniejsze kawałki i wprowadzając je do procesora, aby poprawić wykorzystanie sprzętu. Przetwarzanie wsadowe jest wydajny i może powodować opóźnienia. Brainwave nie wymaga dzielenia na partie; w związku z tym opóźnienie jest 10 razy niższa w porównaniu do GPU i CPU.
 
 - Elastyczność
 
-    FPGAs można skonfigurować dla różnych typów modeli uczenia maszyny. Tego rodzaju elastyczności ułatwia przyspiesza aplikacje na podstawie najbardziej optymalne dokładności wartości liczbowych i używanego modelu pamięci.
+    Układów FPGA można skonfigurować dla różnych typów modeli uczenia maszynowego. Ta elastyczność ułatwia przyspieszenie aplikacji na podstawie najbardziej optymalną precyzja wartości liczbowych i model pamięci używane.
 
-    Nowe techniki learning maszyny rozwijane są regularnie, a projekt sprzętu Brainwave projektu również zmieniających się szybko. Ponieważ FPGAs reconfigurable, istnieje możliwość Pozostań na bieżąco z wymaganiami zmieniających się szybko algorytmów AI.
+    Nowe techniki uczenia maszyny są opracowywane w regularnych odstępach czasu, a projekt sprzętu Project Brainwave również zmieniających się szybko. Ponieważ układów FPGA możliwych do ponownego skonfigurowania, jest to możliwe, aby być na bieżąco z wymaganiami gwałtownie zmieniającym algorytmów sztucznej Inteligencji.
 
 - Skalowanie
 
-    Microsoft Azure to na świecie największy chmury inwestycji w FPGAs. Możesz uruchomić Brainwave w infrastrukturze skali platformy Azure.
+    Platforma Microsoft Azure to na świecie największych chmury zwrot z inwestycji w układów FPGA. Możesz uruchomić Brainwave w infrastrukturze skalowania platformy Azure.
 
-Podgląd Brainwave projektu zintegrowany z usługi Azure Machine Learning jest obecnie dostępna. I ograniczona wersja zapoznawcza jest również dostępny do Przenieś Brainwave projektu do krawędzi, dzięki czemu możesz korzystać z prędkości obliczeniowych w własnych firmy i urządzeń.
+Podgląd Project Brainwave zintegrowana z usługą Azure Machine Learning jest obecnie dostępna. Ograniczona wersja zapoznawcza dostępna jest również i Project Brainwave na urządzeniach brzegowych można korzystać z zalet obliczeń prędkości we własnych firm i urządzeń.
 
-W bieżącej wersji zapoznawczej Brainwave jest ograniczona do wdrożenia TensorFlow i ResNet50 neuronowej sieci oparte na sprzęcie układu FPGA Intel dla obrazu klasyfikacji i rozpoznawania. Brak planów obsługi więcej Galeria modeli i innych platform.
+W bieżącej wersji zapoznawczej Brainwave jest ograniczona do wdrażania TensorFlow i na podstawie ResNet50 sieci neuronowych na sprzęcie FPGA firmy Intel, Klasyfikacja obrazów i rozpoznawania. Istnieją plany pomocy technicznej więcej modeli galerii i innych platform.
 
-Następujące scenariusze użycia układu FPGA w oparciu o architekturę Brainwave projektu:
+Następujące scenariusze użycia FPGA w architekturze Project Brainwave:
 
-- Automatyczne system optyczny inspekcji. Zobacz [AI w czasie rzeczywistym: Microsoft ogłasza podgląd projektu Brainwave](https://blogs.microsoft.com/ai/build-2018-project-brainwave/).
-- Mapowanie okładce ziemi. Zobacz [wykonać mapowania na terabajtów satelitarnej obrazy obejmują ziemi przy użyciu FPGAs dla bezpośrednich Learning wnioskowania](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/).
+- Zautomatyzowany system optyczne inspekcji. Zobacz [sztucznej Inteligencji w czasie rzeczywistym: Microsoft zapowiada Podgląd Project Brainwave](https://blogs.microsoft.com/ai/build-2018-project-brainwave/).
+- Mapowanie cover lądzie. Zobacz [jak wykonać Cover ziemi mapowanie pod kątem terabajtów obrazów z powietrza za pomocą układów FPGA do uczenia głębokiego wnioskowania](https://blogs.technet.microsoft.com/machinelearning/2018/05/29/how-to-use-fpgas-for-deep-learning-inference-to-perform-land-cover-mapping-on-terabytes-of-aerial-images/).
 
-## <a name="how-to-deploy-a-web-service-to-an-fpga"></a>Jak wdrożyć usługę sieci web do układu FPGA?
+## <a name="how-to-deploy-a-web-service-to-an-fpga"></a>Jak wdrożyć usługę sieci web FPGA?
 
-Ogólny przepływ dla tworzenia usługi rozpoznawania obrazu na platformie Azure przy użyciu ResNet50 jako featurizer wygląda następująco:
+Ogólny przepływ do tworzenia usługi rozpoznawania obrazów na platformie Azure przy użyciu ResNet50 featurized jest następująca:
 
-1. ResNet50 została już wdrożona w Brainwave. Kompilacji innych wykresy (dane wejściowe daty, klasyfikacji i tak dalej) z TensorFlow i zdefiniuj potoku (dane wejściowe -> featurize -> klasyfikowania) przy użyciu pliku json definicji usługi. Kompresuje definicji i wykresy do pliku zip i przekazać plik zip do magazynu obiektów Blob Azure.
-2. Zarejestruj modelu przy użyciu interfejsu API usługi Azure ML modelu administracyjnego z pliku zip w magazynie obiektów Blob.
-3. Wdrażanie usługi z zarejestrowanego modelu przy użyciu interfejsu API zarządzania modelu uczenia Maszynowego Azure.
+1. ResNet50 jest już wdrożony w Brainwave. Tworzenie innych wykresów (dane wejściowe daty, klasyfikacji i tak dalej) z TensorFlow i definiuje się potok (wejście -> cechowanie -> klasyfikowania) przy użyciu pliku json definicji usługi. Skompresuj wykresów i definicji do pliku zip i przekaż plik zip do usługi Azure Blob storage.
+2. Zarejestruj model przy użyciu interfejsu API zarządzania modelu uczenia Maszynowego Azure przy użyciu pliku zip w usłudze Blob storage.
+3. Wdrażanie usługi przy użyciu zarejestrowanego modelu przy użyciu interfejsu API zarządzania modelu uczenia Maszynowego Azure.
 
-Dowiedz się więcej o tym procesie, w artykule [wdrożyć ten model jako usługę sieci web na układu FPGA przy użyciu usługi Azure Machine Learning](how-to-deploy-fpga-web-service.md).
+Dowiedz się więcej na temat tego procesu w artykule [wdrożyć model jako usługę sieci web na FPGA za pomocą usługi Azure Machine Learning](how-to-deploy-fpga-web-service.md).
 
 
-## <a name="start-using-fpga"></a>Rozpoczynanie korzystania z układu FPGA
+## <a name="start-using-fpga"></a>Rozpoczynanie korzystania z FPGA
 
-Azure Machine Learning sprzętu przyspieszony modeli umożliwiają wdrażanie przeszkolone modeli DNN do FPGAs w chmurze Azure. Aby rozpocząć, zobacz:
+Azure modeli uczenia maszynowego sprzętu Accelerated umożliwiają wdrażanie przeszkolone modele DNN do układów FPGA w chmurze platformy Azure. Aby rozpocząć pracę, zobacz:
 
-- [Wdróż model jako usługę sieci web na układu FPGA](how-to-deploy-fpga-web-service.md)
-- [Microsoft Azure Machine Learning sprzętu przyspieszony modeli obsługiwane przez projekt Brainwave](https://github.com/azure/aml-real-time-ai).
+- [Wdrażanie modelu jako usługi sieci web na FPGA](how-to-deploy-fpga-web-service.md)
+- [Microsoft Azure Machine Learning sprzętu Accelerated modeli działającemu Project Brainwave](https://github.com/azure/aml-real-time-ai).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Wdróż model jako usługę sieci web na układu FPGA](how-to-deploy-fpga-web-service.md)
+[Wdrażanie modelu jako usługi sieci web na FPGA](how-to-deploy-fpga-web-service.md)
 
-[Informacje o sposobie instalowania układu FPGA zestawu SDK](reference-fpga-package-overview.md)
+[Dowiedz się, jak zainstalować zestaw SDK FPGA](reference-fpga-package-overview.md)
 
-[Sprzęt informatycznych: ML na dużą skalę na górze Azure + układu FPGA: 2018 kompilacji (klip wideo)](https://www.youtube.com/watch?v=BMgQAHIx2eY)
+[Sprzętu w Hiperskali: uczenie Maszynowe na dużą skalę na platformie Azure i FPGA: Build 2018 (wideo)](https://www.youtube.com/watch?v=BMgQAHIx2eY)
 
-[W firmie Microsoft w chmurze można skonfigurować na podstawie układu FPGA (klip wideo)](https://channel9.msdn.com/Events/Build/2017/B8063)
+[W firmie Microsoft na układach FPGA konfigurowalnej chmury (wideo)](https://channel9.msdn.com/Events/Build/2017/B8063)
 
-[Microsoft przedstawia Brainwave projektu dla AI w czasie rzeczywistym](https://www.microsoft.com/research/blog/microsoft-unveils-project-brainwave/)
+[Microsoft przedstawia Project Brainwave dla sztucznej Inteligencji w czasie rzeczywistym](https://www.microsoft.com/research/blog/microsoft-unveils-project-brainwave/)

@@ -1,6 +1,6 @@
 ---
-title: Application Insights dla aplikacji sieci web Java, które znajdują się już na żywo
-description: Rozpocznij monitorowanie aplikacji sieci web, która jest już uruchomiona na serwerze
+title: Usługa Application Insights dla aplikacji sieci web Java, które znajdują się już na żywo
+description: Rozpoczynanie monitorowania aplikacji internetowej, która jest już uruchomiona na serwerze
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -10,24 +10,24 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/10/2016
 ms.author: mbullwin
-ms.openlocfilehash: edefb6637dae2ff00144f0b7c07ad974430d096b
-ms.sourcegitcommit: 6116082991b98c8ee7a3ab0927cf588c3972eeaa
+ms.openlocfilehash: e0c2eca1e776f8dac34810dcbc306f5f2c7b9c8d
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "34794551"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35648890"
 ---
-# <a name="application-insights-for-java-web-apps-that-are-already-live"></a>Application Insights dla aplikacji sieci web Java, które znajdują się już na żywo
+# <a name="application-insights-for-java-web-apps-that-are-already-live"></a>Usługa Application Insights dla aplikacji sieci web Java, które znajdują się już na żywo
 
-Jeśli aplikacja sieci web, która jest już uruchomiona na serwerze J2EE, można rozpocząć monitorowanie za pomocą [usługi Application Insights](app-insights-overview.md) bez konieczności zmiany kodu lub ponownie skompilować projekt. Po wybraniu tej opcji możesz uzyskać informacje o żądaniach HTTP wysyłane do serwera, nieobsługiwanych wyjątków i liczniki wydajności.
+W przypadku aplikacji sieci web, która jest już uruchomiona na serwerze J2EE można rozpocząć monitorowanie z [usługi Application Insights](app-insights-overview.md) bez konieczności wprowadzania zmian w kodzie lub ponownie skompilować projekt. Po wybraniu tej opcji, możesz uzyskać informacje o żądaniach HTTP wysyłane do serwera, nieobsłużone wyjątki i liczniki wydajności.
 
 Potrzebna będzie subskrypcja platformy [Microsoft Azure](https://azure.com).
 
 > [!NOTE]
-> Procedury na tej stronie dodaje zestaw SDK do aplikacji sieci web w czasie wykonywania. Instrumentacja to środowisko uruchomieniowe jest przydatne, jeśli nie chcesz zaktualizować lub ponownie skompiluj kod źródłowy. Ale jeśli to możliwe, zalecamy [Dodaj zestaw SDK do kodu źródłowego](app-insights-java-get-started.md) zamiast tego. Zapewniającą więcej opcji przykład pisania kodu, aby śledzić aktywność użytkownika.
+> Procedury na tej stronie dodaje zestaw SDK do aplikacji sieci web w czasie wykonywania. Tego środowiska uruchomieniowego Instrumentacji jest przydatne, jeśli nie chcesz zaktualizować lub ponownie skompiluj kod źródłowy. Ale jeśli to możliwe, firma Microsoft zaleca [Dodaj zestaw SDK do kodu źródłowego](app-insights-java-get-started.md) zamiast tego. Który zapewnia więcej opcji takie jak zapisywanie kodu w celu śledzenia działań użytkownika.
 > 
 > 
 
@@ -35,22 +35,22 @@ Potrzebna będzie subskrypcja platformy [Microsoft Azure](https://azure.com).
 1. Zaloguj się do [portalu Microsoft Azure](https://portal.azure.com)
 2. Utwórz nowy zasób usługi Application Insights i Ustaw typ aplikacji do aplikacji sieci web Java.
    
-    ![Wypełnij nazwę, wybierz aplikację sieci Web Java i kliknij przycisk Utwórz](./media/app-insights-java-live/02-create.png)
+    ![Wypełnij nazwę, wybierz aplikację internetową Java i kliknij przycisk Utwórz](./media/app-insights-java-live/02-create.png)
 
     Zasób jest tworzony w ciągu kilku sekund.
 
-4. Otwórz nowy zasób i uzyskać jego klucza instrumentacji. Wkrótce będzie trzeba wkleić ten klucz do projektu kodu.
+4. Otwórz nowy zasób i pobrać jego klucza instrumentacji. Wkrótce będzie trzeba wkleić ten klucz do projektu kodu.
    
     ![W opisie nowego zasobu kliknij opcję Właściwości i skopiuj klucz instrumentacji](./media/app-insights-java-live/03-key.png)
 
 ## <a name="2-download-the-sdk"></a>2. Pobierz zestaw SDK
 1. Pobierz [Zestaw SDK usługi Application Insights dla środowiska Java](https://aka.ms/aijavasdk). 
-2. Na serwerze Wyodrębnij zawartość zestawu SDK do katalogu, z którego są załadowane dane binarne Twojego projektu. Jeśli używasz Tomcat ten katalog będzie zazwyczaj w obszarze `webapps/<your_app_name>/WEB-INF/lib`
+2. Na serwerze Wyodrębnij zawartość zestawu SDK do katalogu, z którego są ładowane pliki binarne projektu. Jeśli używasz serwera Tomcat ten katalog będzie się zazwyczaj w obszarze `webapps/<your_app_name>/WEB-INF/lib`
 
-Należy pamiętać, że trzeba Powtórz te czynności dla każdego wystąpienia serwera, a także dla każdej aplikacji.
+Uwaga: należy Powtórz tę czynność dla każdego wystąpienia serwera, a także dla każdej aplikacji.
 
 ## <a name="3-add-an-application-insights-xml-file"></a>3. Dodaj plik xml usługi Application Insights
-Utwórz ApplicationInsights.xml w folderze, w którym dodano zestawu SDK. Umieść w nim następujące XML.
+W tym folderze, w którym dodano zestaw SDK, należy utworzyć plik ApplicationInsights.xml. Umieść do niej następujący kod XML.
 
 Zastąp klucz instrumentacji kluczem pobranym z portalu Azure.
 
@@ -89,10 +89,10 @@ Zastąp klucz instrumentacji kluczem pobranym z portalu Azure.
 
 * Klucz instrumentacji jest wysyłany wraz z każdym elementem telemetrii i dzięki temu te elementy mogą być wyświetlane dla odpowiedniego zasobu usługi Application Insights.
 * Składnik żądań HTTP jest opcjonalny. Powoduje automatyczne wysyłanie telemetrii dotyczącej żądań i czasów odpowiedzi do portalu.
-* Korelacja zdarzeń jest dodatkiem do składnika żądań HTTP. Przypisuje identyfikator do każdego żądania odebranego przez serwer i dodaje go do każdego elementu telemetrii jako właściwość „Operation.Id”. Umożliwia korelowanie telemetrycznych skojarzonych z każdym żądaniem przez ustawienie filtru [diagnostycznych wyszukiwania](app-insights-diagnostic-search.md).
+* Korelacja zdarzeń jest dodatkiem do składnika żądań HTTP. Przypisuje identyfikator do każdego żądania odebranego przez serwer i dodaje go do każdego elementu telemetrii jako właściwość „Operation.Id”. Umożliwia korelowanie telemetrii skojarzonej z każdym żądaniem przez ustawienie filtru [wyszukiwaniu diagnostycznym](app-insights-diagnostic-search.md).
 
 ## <a name="4-add-an-http-filter"></a>4. Dodawanie filtru HTTP
-Zlokalizuj i Otwórz plik web.xml w projekcie i scal poniższy fragment kodu w węźle aplikacji sieci web, gdzie są skonfigurowane filtry aplikacji.
+Zlokalizuj i Otwórz plik web.xml w projekcie, a następnie scal poniższy fragment kodu w obszarze węzła web-app, w którym skonfigurowano filtry aplikacji.
 
 Aby uzyskać najbardziej dokładne wyniki, ten filtr powinien być mapowany przed wszystkimi innymi filtrami.
 
@@ -110,14 +110,14 @@ Aby uzyskać najbardziej dokładne wyniki, ten filtr powinien być mapowany prze
     </filter-mapping>
 ```
 
-## <a name="5-check-firewall-exceptions"></a>5. Sprawdź wyjątki zapory
-Konieczne może być [ustawić wyjątki, aby wysłać dane wychodzące](app-insights-ip-addresses.md).
+## <a name="5-check-firewall-exceptions"></a>5. Sprawdzanie wyjątków zapory
+Konieczne może być [ustawić wyjątki, aby wysyłać dane wychodzące](app-insights-ip-addresses.md).
 
-## <a name="6-restart-your-web-app"></a>6. Uruchom ponownie aplikację sieci web
+## <a name="6-restart-your-web-app"></a>6. Uruchom ponownie swoją aplikację sieci web
 ## <a name="7-view-your-telemetry-in-application-insights"></a>7. Wyświetlanie telemetrii w usłudze Application Insights
 Wróć do zasobu usługi Application Insights w witrynie [Microsoft Azure Portal](https://portal.azure.com).
 
-W bloku omówienie pojawi się dane telemetryczne dotyczące żądania HTTP. (Jeśli ich tam nie ma, odczekaj kilka sekund, a następnie kliknij przycisk Odśwież).
+Dane telemetryczne dotyczące żądań HTTP pojawią się w bloku przeglądu. (Jeśli ich tam nie ma, odczekaj kilka sekund, a następnie kliknij przycisk Odśwież).
 
 ![dane przykładowe](./media/app-insights-java-live/5-results.png)
 
@@ -125,15 +125,15 @@ Klikaj elementy wykresów, aby wyświetlać bardziej szczegółowe metryki.
 
 ![](./media/app-insights-java-live/6-barchart.png)
 
-Podczas przeglądania właściwości żądania, może uzyskać zdarzenia telemetrii skojarzonych z nim, takich jak żądania i wyjątków i.
+Podczas wyświetlania właściwości żądania, może uzyskać dostęp i zdarzenia telemetrii, skojarzone z nim, takie jak żądania i wyjątki.
 
 ![](./media/app-insights-java-live/7-instance.png)
 
 [Dowiedz się więcej o metrykach.](app-insights-metrics-explorer.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Dodaj telemetrię do stron sieci web](app-insights-javascript.md) wyświetleń strony monitora i metryki użytkownika.
-* [Ustawianie testów sieci web](app-insights-monitor-web-app-availability.md) aby upewnić się, aplikacja pozostaje na żywo i szybko reagowały.
-* [Śledzenie dziennika](app-insights-java-trace-logs.md)
-* [Wyszukiwanie zdarzeń i dzienniki](app-insights-diagnostic-search.md) do diagnozowania problemów.
-* [Skonfiguruj aplikację inicjatora Spring rozruchu](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)
+* [Dodaj telemetrię do stron sieci web](app-insights-javascript.md) Aby monitorować wyświetlenia stron i metryki użytkowników.
+* [Konfigurowanie testów sieci web](app-insights-monitor-web-app-availability.md) aby upewnić się, że aplikacja stale działa i odpowiada.
+* [Przechwytywanie danych śledzenia dziennika](app-insights-java-trace-logs.md)
+* [Wyszukiwanie zdarzeń i dzienników](app-insights-diagnostic-search.md) do diagnozowania problemów.
+* [Konfigurowanie aplikacji Spring Boot inicjatora](https://docs.microsoft.com/java/azure/spring-framework/configure-spring-boot-java-applicationinsights)

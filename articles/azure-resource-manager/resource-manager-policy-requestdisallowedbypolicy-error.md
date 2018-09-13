@@ -1,5 +1,5 @@
 ---
-title: Błąd RequestDisallowedByPolicy z zasadami zasobów platformy Azure | Dokumentacja firmy Microsoft
+title: Błąd RequestDisallowedByPolicy zasady zasobów platformy Azure | Dokumentacja firmy Microsoft
 description: W tym artykule opisano przyczyny tego błędu RequestDisallowedByPolicy.
 services: azure-resource-manager
 documentationcenter: ''
@@ -13,19 +13,20 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 03/09/2018
 ms.author: genli
-ms.openlocfilehash: 474400d92660b68fd7fef906216b8e37c6e8c94d
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: a9993942c20f2c33d944b74fb124a363d0663ced
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35647677"
 ---
-# <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Błąd RequestDisallowedByPolicy z zasadami zasobów platformy Azure
+# <a name="requestdisallowedbypolicy-error-with-azure-resource-policy"></a>Błąd RequestDisallowedByPolicy zasady zasobów platformy Azure
 
-W tym artykule opisano przyczyny tego błędu RequestDisallowedByPolicy, umożliwia także rozwiązania dla tego błędu.
+W tym artykule opisano przyczyny tego błędu RequestDisallowedByPolicy, również udostępnia rozwiązanie dla tego błędu.
 
 ## <a name="symptom"></a>Objaw
 
-Podczas wdrażania, może zostać wyświetlony **RequestDisallowedByPolicy** błąd, który uniemożliwia tworzenie zasobów. W poniższym przykładzie pokazano kod błędu:
+Podczas wdrażania, może pojawić się **RequestDisallowedByPolicy** błąd, który uniemożliwia tworzenie zasobów. Poniższy przykład pokazuje błąd:
 
 ```json
 {
@@ -38,11 +39,11 @@ Podczas wdrażania, może zostać wyświetlony **RequestDisallowedByPolicy** bł
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Aby uzyskać szczegółowe informacje dotyczące zasad zablokowane wdrożenia, użyj następujących metod:
+Aby uzyskać szczegółowe informacje o zasadach, które zablokowały wdrożenia, użyj następujących metod:
 
 ### <a name="powershell"></a>PowerShell
 
-W programie PowerShell, podaj identyfikator zasad jako `Id` parametr, aby pobrać szczegółowe informacje dotyczące zasad zablokowane wdrożenia.
+W programie PowerShell, podaj identyfikator zasad jako `Id` parametru, aby pobrać szczegóły dotyczące zasad, które zablokowały wdrożenia.
 
 ```PowerShell
 (Get-AzureRmPolicyDefinition -Id "/subscriptions/{guid}/providers/Microsoft.Authorization/policyDefinitions/regionPolicyDefinition").Properties.policyRule | ConvertTo-Json
@@ -50,7 +51,7 @@ W programie PowerShell, podaj identyfikator zasad jako `Id` parametr, aby pobra�
 
 ### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
-W programie Azure CLI 2.0 należy podać nazwę definicji zasad:
+W interfejsie wiersza polecenia platformy Azure należy podać nazwę definicji zasad:
 
 ```azurecli
 az policy definition show --name regionPolicyAssignment
@@ -58,10 +59,10 @@ az policy definition show --name regionPolicyAssignment
 
 ## <a name="solution"></a>Rozwiązanie
 
-Zabezpieczeń lub zgodności administratorami subskrypcji może przypisać zasady ograniczające, w jaki sposób są wdrażane zasoby. Na przykład subskrypcji może zasad, który uniemożliwia tworzenie trasy zdefiniowane przez użytkownika adresów sieciowych grup zabezpieczeń, publiczny adres IP lub tabel tras. Komunikat o błędzie w **objawy** sekcja zawiera nazwę zasady.
-Aby rozwiązać ten problem, przejrzyj zasady zasobów i określić, jak wdrożyć zasobów, które są zgodne z tymi zasadami.
+Pod kątem bezpieczeństwa ani zgodności administratorów subskrypcji może przypisywać zasady, które ograniczają sposób wdrożenia zasobów. Na przykład Twoja subskrypcja może mieć zasady, które uniemożliwiają tworzenie trasy zdefiniowane przez użytkownika adresów sieciowych grup zabezpieczeń, publiczny adres IP lub tabele tras. Komunikat o błędzie w **objawy** sekcja zawiera nazwę zasad.
+Aby rozwiązać ten problem, przejrzyj zasady zasobów i dowiedzieć się, jak wdrażać zasoby, które są zgodne z tymi zasadami.
 
 Aby uzyskać więcej informacji zobacz następujące artykuły:
 
-- [Co to jest Azure zasady?](../azure-policy/azure-policy-introduction.md)
-- [Tworzenie i zarządzanie zasadami, by wymuszał zgodność](../azure-policy/create-manage-policy.md)
+- [Co to jest usługa Azure Policy?](../azure-policy/azure-policy-introduction.md)
+- [Tworzenie zasad i zarządzanie nimi w celu wymuszania zgodności](../azure-policy/create-manage-policy.md)

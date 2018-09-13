@@ -1,116 +1,116 @@
 ---
-title: Zezwala lub blokuje zaproszeń do użytkowników B2B z określonym organizacjom — Azure Active Directory | Dokumentacja firmy Microsoft
-description: Pokazuje, jak administrator może użyć portalu Azure lub programu PowerShell można ustawić dostęp lub odmówić listy blokowana B2B użytkowników z niektórych domen.
+title: Zezwalaj na zaproszenia lub blokowanie ich dla użytkowników B2B z określonym organizacjom — usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Pokazuje, jak administrator może użyć witryny Azure portal lub programu PowerShell do ustawiania dostęp lub odmowa listy do zezwalania lub blokowania użytkowników B2B z niektórych domen.
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 04/19/2018
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 3b4b57dd2299c6278fe823f59a4f2c7d8721f712
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: HT
+ms.openlocfilehash: 271371515e881fda4fb81d844bf84689e29b1e6b
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34260062"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645006"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Akceptowanie lub blokowanie zaproszeń dla użytkowników B2B z określonych organizacji
 
-Listy dozwolonych lub listę odrzuconych służy do dozwolonych lub zablokowanych zaproszeń do użytkowników B2B z określonym organizacjom. Na przykład jeśli chcesz zablokować domen adresów e-mail osobistych, można skonfigurować listę odmowy, która zawiera domen, takich jak Gmail.com i Outlook.com. Lub, jeśli firma ma powiązanie z innych firm, takich jak Contoso.com, Fabrikam.com i Litware.com, i chcesz ograniczyć zaproszenia tylko tych organizacji, możesz dodać Contoso.com, Fabrikam.com i Litware.com do Twojej listy dozwolonych.
+Umożliwia listy dozwolonych lub listę odrzuconych dozwolonych lub zablokowanych zaproszeń do użytkowników B2B z określonym organizacjom. Na przykład jeśli chcesz zablokować domeny adresów e-mail osobiste, możesz skonfigurować liście odrzuconych, który zawiera domeny, takich jak Gmail.com i Outlook.com. Lub, jeśli firma ma współpracuje z innych firm, takich jak Contoso.com i Fabrikam.com, Litware.com i chcesz ograniczyć zaproszenia do tylko tych organizacji, możesz dodać Contoso.com i Fabrikam.com, Litware.com do Twojej listy dozwolonych.
   
-## <a name="important-considerations"></a>Ważne uwagi
+## <a name="important-considerations"></a>Istotne zagadnienia
 
-- Można utworzyć listy dozwolonych lub listę odrzuconych. Nie można skonfigurować obu typów list. Domyślnie, niezależnie od domeny nie są w na białej liście są na liście odmowy i na odwrót. 
-- Można utworzyć tylko jedne zasady dla organizacji. Można zaktualizować zasad, aby uwzględnić więcej domen, lub możesz usunąć zasadę, aby utworzyć nowy. 
-- Ta lista działa niezależnie od usługi OneDrive dla firm i SharePoint Online list dozwolonych/zablokowanych. Jeśli chcesz ograniczyć poszczególnych udostępniania plików w usłudze SharePoint Online, należy skonfigurować Zezwalaj lub Odmów listę dla usługi OneDrive dla firm i SharePoint Online. Aby uzyskać więcej informacji, zobacz [ograniczone domen w usłudze SharePoint Online i OneDrive dla firm do udostępniania](https://support.office.com/article/restricted-domains-sharing-in-sharepoint-online-and-onedrive-for-business-5d7589cd-0997-4a00-a2ba-2320ec49c4e9).
-- Ta lista nie dotyczą użytkowników zewnętrznych, które już zostały zrealizowane zaproszenia. Po skonfigurowaniu listy, listy zostaną wymuszone. Jeśli zaproszenie do użytkownika jest w stanie oczekiwania i musisz ustawić zasady, która blokuje ich domeny, użytkownika Aby zrealizować zaproszenia powiedzie się.
+- Można utworzyć listy dozwolonych lub listę odrzuconych. Nie można skonfigurować oba typy list. Domyślnie, niezależnie od domen nie znajdują się w dozwolonych są na liście odmowy i na odwrót. 
+- Można utworzyć tylko jeden zestaw zasad dla danej organizacji. Można zaktualizować zasad, aby uwzględnić więcej domen, lub możesz usunąć zasady Aby utworzyć nową. 
+- Ta lista działa niezależnie od usługi OneDrive dla firm i SharePoint Online list dozwolonych/zablokowanych. Jeśli chcesz ograniczyć poszczególnych udostępniania plików w usłudze SharePoint Online, należy skonfigurować dozwolonych lub Lista niedozwolonych aplikacji na potrzeby usługi OneDrive dla firm i SharePoint Online. Aby uzyskać więcej informacji, zobacz [domeny udostępnianie w usłudze SharePoint Online i OneDrive dla firm z ograniczeniami](https://support.office.com/article/restricted-domains-sharing-in-sharepoint-online-and-onedrive-for-business-5d7589cd-0997-4a00-a2ba-2320ec49c4e9).
+- Ta lista nie ma zastosowania dla użytkowników zewnętrznych, którzy już wykorzystana zaproszenia. Po skonfigurowaniu listy, listy będzie wymuszane. Zaproszenia do użytkownika jest w stanie oczekiwania i musisz ustawić zasady, która blokuje ich domeny, próba zrealizować zaproszenia użytkownika zakończy się niepowodzeniem.
 
-## <a name="set-the-allow-or-deny-list-policy-in-the-portal"></a>Ustawienie Zezwalaj lub Odmów listy zasad w portalu
+## <a name="set-the-allow-or-deny-list-policy-in-the-portal"></a>Ustaw Zezwalaj lub Odmów zasady listy w portalu
 
-Domyślnie **Zezwalaj zaproszeń do wysłania do dowolnej domeny (najbardziej z wartościami granicznymi)** ustawienie jest włączone. W takim przypadku można zaprosić użytkowników B2B w każdej organizacji.
+Domyślnie **Zezwalaj na zaproszenia do wysłania do wszystkich domen (najbardziej liberalne)** ustawienie jest włączone. W takim przypadku można zaprosić użytkowników B2B z każdej organizacji.
 
-### <a name="add-a-deny-list"></a>Dodaj listę Odmów
+### <a name="add-a-deny-list"></a>Dodaj listę odrzuconych
 
-Jest to najbardziej typowy scenariusz, których potrzebuje do pracy z niemal dowolnego organizację organizacji, ale chce zapobiec użytkownicy z określonych domen mają być zapraszani jako B2B użytkowników.
+Jest to najbardziej typowy scenariusz, których Twoja organizacja chce, aby pracować z prawie każdej organizacji, ale chce uniemożliwić użytkownikom z określonych domen może zaprosić jako użytkowników B2B.
 
 Aby dodać listę odrzuconych:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz **usługi Azure Active Directory** > **użytkowników** > **ustawienia użytkownika**.
-3. W obszarze **użytkowników zewnętrznych**, wybierz pozycję **Zarządzanie ustawieniami współpracy zewnętrznej**.
-4. W obszarze **ograniczenia współpracy**, wybierz pozycję **odmowy zaproszenia do określonych domen**.
-5. W obszarze **DOMEN**, wprowadź nazwę domeny, które chcesz zablokować. Dla wielu domen wprowadź każdej domeny w nowym wierszu. Na przykład:
+3. W obszarze **użytkowników zewnętrznych**, wybierz opcję **Zarządzaj ustawieniami współpracy zewnętrznej**.
+4. W obszarze **ograniczenia współpracy**, wybierz opcję **Odmawiaj zaproszeń do określonych domen**.
+5. W obszarze **domeny docelowe**, wprowadź nazwę domeny, które chcesz zablokować. W przypadku wielu domen należy wprowadzić każdej domeny w nowym wierszu. Na przykład:
 
-   ![Pokazuje opcję Odmów domenom dodany](./media/allow-deny-list/DenyListSettings.png)
+   ![Pokazuje opcję Odmów domenom dodano](./media/allow-deny-list/DenyListSettings.png)
  
-6. Gdy wszystko będzie gotowe, kliknij przycisk **zapisać**.
+6. Gdy wszystko będzie gotowe, kliknij przycisk **Zapisz**.
 
-Po ustawieniu zasad, Jeśli spróbujesz zaprosić użytkowników z zablokowanych domen, pojawi się komunikat z informacją, że domeny użytkownika jest obecnie zablokowany przez zasady zaproszenia.
+Po ustawieniu zasad, jeśli zostanie podjęta próba zaprosić użytkownika z zablokowanych domen, pojawi się komunikat z informacją, że domena użytkownika jest obecnie blokowana przez zasady zapraszania.
  
-### <a name="add-an-allow-list"></a>Dodaj do listy dozwolonych
+### <a name="add-an-allow-list"></a>Dodaj listę dozwolonych
 
-Jest to bardziej restrykcyjne konfiguracji, których można ustawić określonych domen na liście dozwolonych i ograniczyć zaproszeń do skorzystania z innymi organizacjami lub domeny, które nie są wymienione. 
+Jest to bardziej restrykcyjne konfiguracji, których można ustawić określone domeny na liście dozwolonych i ograniczyć zaproszenia do innych organizacji i domeny, które nie są wymienione. 
 
-Jeśli chcesz użyć listy dozwolonych, upewnij się, że poświęcić czas na pełni ocenę potrzeb firmy są. Po wybraniu tych zasad zbyt restrykcyjne, użytkownicy mogą wybrać wysyłać dokumenty za pośrednictwem poczty e-mail lub Znajdź inne-IT oficjalnie zaakceptowanych sposoby współpraca.
+Jeśli chcesz użyć listy dozwolonych, upewnij się, że poświęcać czasu na w pełni ocenę potrzeb firmy są. Jeśli ta zasada będzie zbyt restrykcyjne, użytkownicy mają możliwość wysyłać dokumenty za pośrednictwem poczty e-mail, lub znaleźć inne infrastruktury informatycznej oficjalnie sposoby współpracować.
 
 
-Aby dodać listy dozwolonych:
+Aby dodać listę dozwolonych:
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 2. Wybierz **usługi Azure Active Directory** > **użytkowników** > **ustawienia użytkownika**.
-3. W obszarze **użytkowników zewnętrznych**, wybierz pozycję **Zarządzanie ustawieniami współpracy zewnętrznej**.
-4. W obszarze **ograniczenia współpracy**, wybierz pozycję **Zezwalaj tylko na określonych domen zaproszeń (najbardziej restrykcyjne)**.
-5. W obszarze **DOMEN**, wprowadź nazwę domeny, które chcesz zezwolić. Dla wielu domen wprowadź każdej domeny w nowym wierszu. Na przykład:
+3. W obszarze **użytkowników zewnętrznych**, wybierz opcję **Zarządzaj ustawieniami współpracy zewnętrznej**.
+4. W obszarze **ograniczenia współpracy**, wybierz opcję **Zezwalaj na zaproszenia tylko do określonych domen (najbardziej restrykcyjne)**.
+5. W obszarze **domeny docelowe**, wprowadź nazwę domeny, które chcesz zezwolić. W przypadku wielu domen należy wprowadzić każdej domeny w nowym wierszu. Na przykład:
 
-   ![Pokazuje opcję Zezwalaj domenom dodany](./media/allow-deny-list/AllowListSettings.png)
+   ![Pokazuje opcję Zezwalaj domenom dodano](./media/allow-deny-list/AllowListSettings.png)
  
-6. Gdy wszystko będzie gotowe, kliknij przycisk **zapisać**.
+6. Gdy wszystko będzie gotowe, kliknij przycisk **Zapisz**.
 
-Po ustawieniu zasad, Jeśli spróbujesz zaprosić użytkowników z domeny, który nie znajduje się na liście dozwolonych, pojawi się komunikat z informacją, że domeny użytkownika jest obecnie zablokowany przez zasady zaproszenia.
+Po ustawieniu zasad, jeśli zostanie podjęta próba zaprosić użytkownika z domeny, który nie znajduje się na liście dozwolonych, pojawi się komunikat z informacją, że domena użytkownika jest obecnie blokowana przez zasady zapraszania.
 
-### <a name="switch-from-allow-to-deny-list-and-vice-versa"></a>Zezwalaj na przejście z odrzucanie listy i na odwrót 
+### <a name="switch-from-allow-to-deny-list-and-vice-versa"></a>Przejdź z umożliwiają Odmów listy i na odwrót 
 
-Po przełączeniu z jednej zasady do innych to spowoduje odrzucenie istniejącą konfigurację zasad. Upewnij się utworzyć kopię zapasową szczegółów konfiguracji przed wykonaniem tego przełącznika. 
+Po przełączeniu z jednej zasady do drugiego to odrzuca istniejącą konfigurację zasad. Upewnij się utworzyć kopię zapasową szczegółowe informacje o konfiguracji, przed wykonaniem switch. 
 
-## <a name="set-the-allow-or-deny-list-policy-using-powershell"></a>Ustawienie Zezwalaj lub Odmów zasady listy przy użyciu programu PowerShell
+## <a name="set-the-allow-or-deny-list-policy-using-powershell"></a>Ustaw Zezwalaj lub Odmów zasady listy przy użyciu programu PowerShell
 
 ### <a name="prerequisite"></a>Wymagania wstępne
 
-Aby ustawić Zezwalaj lub Odmów listy przy użyciu programu PowerShell, należy zainstalować wersję zapoznawczą usługi Azure Active Directory modułu dla środowiska Windows PowerShell. W szczególności zainstalować AzureADPreview wersji modułu 2.0.0.98 lub nowszym.
+Aby ustawić dozwolonych lub Lista niedozwolonych aplikacji przy użyciu programu PowerShell, należy zainstalować wersję zapoznawczą usługi Azure Active Directory modułu dla Windows PowerShell. W szczególności zainstalować AzureADPreview wersja modułu 2.0.0.98 lub nowszej.
 
 Aby sprawdzić wersję modułu (i czy jest zainstalowany):
  
 1. Otwórz program Windows PowerShell z podwyższonymi uprawnieniami użytkownika (Uruchom jako Administrator). 
-2. Uruchom następujące polecenie, jeśli masz wszystkie wersje usługi Azure Active Directory modułu dla Windows PowerShell zainstalowanej na komputerze:
+2. Uruchom następujące polecenie, aby zobaczyć, jeśli wszystkie wersje usługi Azure Active Directory modułu dla Windows PowerShell na komputerze zainstalowany:
 
    ````powershell  
    Get-Module -ListAvailable AzureAD*
    ````
 
-Jeśli moduł nie jest zainstalowany lub nie ma wymaganej wersji, wykonaj jedną z następujących czynności:
+Jeśli nie zainstalowano modułu, lub nie ma wymaganej wersji, wykonaj jedną z następujących czynności:
 
-- Jeśli żadne wyniki nie są zwracane, uruchom następujące polecenie, aby zainstalować najnowszą wersję modułu AzureADPreview:
+- Jeśli żadne wyniki nie zostaną zwrócone, uruchom następujące polecenie, aby zainstalować najnowszą wersję modułu AzureADPreview:
   
    ````powershell  
    Install-Module AzureADPreview
    ````
-- Jeśli tylko moduł AzureAD jest wyświetlana w wynikach, uruchom następujące polecenia, aby zainstalować moduł AzureADPreview: 
+- Jeśli tylko moduł usługi Azure AD jest wyświetlany w wynikach, uruchom następujące polecenia, aby zainstalować moduł AzureADPreview: 
 
    ````powershell 
    Uninstall-Module AzureAD 
    Install-Module AzureADPreview 
    ````
-- Jeśli tylko moduł AzureADPreview jest wyświetlana w wynikach, ale wersja jest mniejsza niż 2.0.0.98, uruchom następujące polecenia, aby zaktualizować go: 
+- Jeśli istnieją tylko w module AzureADPreview jest wyświetlana w wynikach, ale wersja jest mniejsza niż 2.0.0.98, uruchom następujące polecenia, aby zaktualizować go: 
 
    ````powershell 
    Uninstall-Module AzureADPreview 
    Install-Module AzureADPreview 
    ````
 
-- Jeśli zarówno AzureAD i AzureADPreview moduły są wyświetlane w wynikach, ale wersja modułu AzureADPreview jest mniejsza niż 2.0.0.98, uruchom następujące polecenia, aby zaktualizować go: 
+- Jeśli moduły usługi Azure AD i AzureADPreview są wyświetlane w wynikach, ale wersja AzureADPreview module jest mniejsza niż 2.0.0.98, uruchom następujące polecenia, aby zaktualizować go: 
 
    ````powershell 
    Uninstall-Module AzureAD 
@@ -118,9 +118,9 @@ Jeśli moduł nie jest zainstalowany lub nie ma wymaganej wersji, wykonaj jedną
    Install-Module AzureADPreview 
     ````
 
-### <a name="use-the-azureadpolicy-cmdlets-to-configure-the-policy"></a>Konfigurowanie zasad przy użyciu poleceń cmdlet AzureADPolicy
+### <a name="use-the-azureadpolicy-cmdlets-to-configure-the-policy"></a>Skonfiguruj zasady za pomocą poleceń cmdlet AzureADPolicy
 
-Aby utworzyć Zezwalaj lub Odmów listy, użyj [AzureADPolicy nowy](https://docs.microsoft.com/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview) polecenia cmdlet. Poniższy przykład pokazuje, jak ustawić listę Odmów, która blokuje domeny "live.com".
+Aby utworzyć dozwolonych lub Lista niedozwolonych aplikacji, użyj [New AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/new-azureadpolicy?view=azureadps-2.0-preview) polecenia cmdlet. Poniższy przykład pokazuje, jak ustawić listę odrzuconych które blokuje domeny "live.com".
 
 ````powershell 
 $policyValue = @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}")
@@ -128,19 +128,19 @@ $policyValue = @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomain
 New-AzureADPolicy -Definition $policyValue -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true 
 ````
 
-Poniżej pokazano, tym samym przykładzie, ale z wbudowanym definicji zasad.
+Poniżej pokazano w tym samym przykładzie, ale za pomocą wbudowanych definicji zasad.
 
 ````powershell  
 New-AzureADPolicy -Definition @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}") -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true 
 ````
 
-Aby ustawić Zezwalaj lub Odmów listy zasad, użyj [AzureADPolicy zestaw](https://docs.microsoft.com/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) polecenia cmdlet. Na przykład:
+Aby ustawić Zezwalaj lub Odmów listy zasad, należy użyć [AzureADPolicy zestaw](https://docs.microsoft.com/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) polecenia cmdlet. Na przykład:
 
 ````powershell   
 Set-AzureADPolicy -Definition $policyValue -Id $currentpolicy.Id 
 ````
 
-Aby pobrać zasady, użyj [Get-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) polecenia cmdlet. Na przykład:
+Aby pobrać zasady wymagane, należy użyć [Get AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) polecenia cmdlet. Na przykład:
 
 ````powershell
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy'} | select -First 1 
@@ -154,8 +154,8 @@ Remove-AzureADPolicy -Id $currentpolicy.Id
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Omówienie B2B usługi Azure AD, zobacz [co to jest współpraca B2B usługi Azure AD?](what-is-b2b.md)
-- Informacje dotyczące dostępu warunkowego i współpracy B2B, zobacz [dostępu warunkowego dla użytkowników współpracy B2B](conditional-access.md).
+- Omówienie usługi Azure AD B2B, zobacz [czym jest współpraca B2B w usłudze Azure AD?](what-is-b2b.md)
+- Aby uzyskać informacji na temat dostępu warunkowego i współpraca B2B, zobacz [dostęp warunkowy dla użytkowników współpracy B2B](conditional-access.md).
 
 
 

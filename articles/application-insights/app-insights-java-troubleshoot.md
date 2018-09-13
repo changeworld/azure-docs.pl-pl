@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z usługi Application Insights w projekcie sieci web Java
-description: Przewodnik rozwiązywania problemów — monitorowania na żywo aplikacji Java za pomocą usługi Application Insights.
+title: Rozwiązywanie problemów z usługi Application Insights w projekcie internetowym Java
+description: Przewodnik rozwiązywania problemów — monitorowanie aplikacji w języku Java na żywo z usługą Application Insights.
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -10,67 +10,68 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/02/2018
 ms.author: mbullwin
-ms.openlocfilehash: 6b3205603b91077ca2c3226dcb78589de37d15cf
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 26899ea62b8caa872b6c99b94976c87f84ba7176
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35648349"
 ---
 # <a name="troubleshooting-and-q-and-a-for-application-insights-for-java"></a>Rozwiązywanie problemów oraz pytania i odpowiedzi dotyczące usługi Application Insights dla języka Java
-Pytania lub problemy z [Azure Application Insights w języku Java][java]? Poniżej przedstawiono kilka wskazówek.
+Pytania lub problemy z [usługi Azure Application Insights w języku Java][java]? Poniżej przedstawiono kilka wskazówek.
 
 ## <a name="build-errors"></a>Błędy kompilacji
-**W środowisku Eclipse lub Intellij Idea, dodając zestaw SDK usługi Application Insights za pośrednictwem Maven i Gradle pojawiają się błędy weryfikacji kompilacji lub sumy kontrolnej.**
+**W środowisku Eclipse lub Intellij Idea, dodając zestaw SDK usługi Application Insights za pomocą narzędzia Maven lub Gradle pojawiają się błędy weryfikacji kompilacji lub sumy kontrolnej.**
 
-* Jeśli zależność <version> element jest używanie wzorca z symboli wieloznacznych (np. (Maven) `<version>[2.0,)</version>` lub (Gradle) `version:'2.0.+'`), spróbuj zamiast tego określić określonej wersji, takich jak `2.0.1`. Zobacz [informacje o wersji](https://github.com/Microsoft/ApplicationInsights-Java/releases) najnowszej wersji.
+* Jeśli zależność <version> element jest przy użyciu wzorca przy użyciu symboli wieloznacznych (np. (Maven) `<version>[2.0,)</version>` lub (Gradle) `version:'2.0.+'`), spróbuj określić określoną wersję zamiast tego, jak `2.0.1`. Zobacz [informacje o wersji](https://github.com/Microsoft/ApplicationInsights-Java/releases) dla najnowszej wersji.
 
 ## <a name="no-data"></a>Brak danych
-**I dodać usługi Application Insights i uruchomiono mojej aplikacji, ale nigdy nie przejrzane danych w portalu.**
+**Pomyślnie dodano usługę Application Insights i uruchomiono aplikację, ale nigdy nie przejrzane danych w portalu.**
 
-* Poczekaj kilka minut i kliknij przycisk Odśwież. Wykresy odświeżania się okresowo, ale można również odświeżyć ręcznie. Interwał odświeżania zależy od zakresu czasu wykresu.
-* Sprawdź, czy masz klucza Instrumentacji zdefiniowane w pliku ApplicationInsights.xml (w folderze zasobów w projekcie) lub skonfigurowany jako zmiennej środowiskowej.
-* Sprawdź, czy jest nie `<DisableTelemetry>true</DisableTelemetry>` węzła w pliku xml.
-* W zaporze może być konieczne otwarcie portów TCP 80 i 443 dla ruchu wychodzącego dc.services.visualstudio.com. Zobacz [pełnej listy wyjątków zapory](app-insights-ip-addresses.md)
-* Uruchom tablicy w Microsoft Azure, zobacz Mapowanie stanu usługi. W przypadku niektórych alertów oznaczeń, poczekaj, aż one zwrócono do OK, a następnie zamknij i otwórz ponownie z bloku aplikacji usługi Application Insights.
-* Włącz rejestrowanie dla okna konsoli IDE przez dodanie `<SDKLogger />` elementu w obszarze węzła głównego w pliku ApplicationInsights.xml (w folderze zasobów w projekcie) i sprawdź, czy wpisy poprzedzone znakiem AI: informacje/WARN/błąd wszelkie podejrzane dzienników.
-* Upewnij się, że właściwy plik ApplicationInsights.xml został pomyślnie załadowany przez zestawu Java SDK analizując komunikaty wyjściowe konsoli dla instrukcji "pliku konfiguracyjnego pomyślnie znaleziono".
-* Jeśli nie znaleziono pliku konfiguracji, sprawdź komunikaty, aby zobaczyć, których pliku konfiguracji są wyszukiwane i upewnij się, że ApplicationInsights.xml znajduje się w jednej z tych lokalizacji wyszukiwania. Jako zasadą można umieścić w pliku config niemal Application Insights SDK JARs. Na przykład: w Tomcat, oznacza to, czy folder klas INF/sieci WEB. Podczas tworzenia ApplicationInsights.xml można umieścić w folderze zasobów projektu sieci web.
-* Można również znaleźć w [GitHub wystawia strony](https://github.com/Microsoft/ApplicationInsights-Java/issues) pod kątem znanych problemów z zestawem SDK.
-* Upewnij się, aby używać tej samej wersji usługi Application Insights core, sieci web, agenta i rejestrowanie appenders, aby uniknąć problemów konflikt wersji.
+* Poczekaj chwilę, a następnie kliknij przycisk Odśwież. Odświeżanie samodzielnie okresowo wykresy, ale można również odświeżyć ręcznie. Interwał odświeżania, zależy od przedział czasu wykresu.
+* Sprawdź, czy klucz Instrumentacji zdefiniowane w pliku ApplicationInsights.xml (w folderze zasobów w projekcie) lub skonfigurować jako zmienną środowiskową.
+* Sprawdź, czy nie `<DisableTelemetry>true</DisableTelemetry>` węzła w pliku xml.
+* W zaporze może być otworzyć porty TCP 80 i 443 dla ruchu wychodzącego do witryny dc.services.visualstudio.com. Zobacz [pełnej listy wyjątków zapory](app-insights-ip-addresses.md)
+* W systemie Microsoft Azure, Rozpocznij tablicy, Przyjrzyj się mapa stanu usługi. W przypadku niektórych alertów oznaczeń, poczekaj na ich powrotu do OK i następnie zamknięcie i ponowne otwarcie bloku aplikacji usługi Application Insights.
+* Włącz rejestrowanie w oknie konsoli środowiska IDE, dodając `<SDKLogger />` elementu w węźle głównym w pliku ApplicationInsights.xml (w folderze zasobów w projekcie) i Wyszukaj wpisy poprzedzone znakiem sztucznej Inteligencji: INFO/WARN/błąd dla żadnych dzienników podejrzanych.
+* Upewnij się, że właściwy plik ApplicationInsights.xml został pomyślnie załadowany przez zestawu Java SDK, analizując komunikaty wyjściowe konsoli programu dla instrukcji "plik konfiguracji został odnalazł".
+* Jeśli plik konfiguracji nie zostanie znaleziony, sprawdzić komunikaty wyjściowe, aby zobaczyć, gdzie są wyszukiwane w pliku config i upewnij się, że plik ApplicationInsights.xml znajduje się w jednej z tych lokalizacji wyszukiwania. Jako ogólną regułę można przyjąć można umieścić w pliku config w pobliżu Application Insights SDK JARs. Na przykład: na serwerze Tomcat, oznaczałoby to folder w sieci WEB-INF/klas. Podczas programowania można umieścić plik ApplicationInsights.xml w folderze Zasoby projektu sieci web.
+* Można również znaleźć w [stronie problemów serwisu GitHub](https://github.com/Microsoft/ApplicationInsights-Java/issues) pod kątem znanych problemów z zestawem SDK.
+* Upewnij się, aby użyć tej samej wersji usługi Application Insights podstawowych, sieci web, agenta i rejestrowanie appenders Aby uniknąć jakichkolwiek problemów konflikt wersji.
 
 #### <a name="i-used-to-see-data-but-it-has-stopped"></a>Używany do wyświetlania danych, ale została zatrzymana
 * Sprawdź [blogu stan](http://blogs.msdn.com/b/applicationinsights-status/).
-* Czy osiągnięto limitu przydziału miesięcznego punktów danych? Otwórz ustawienia/przydziału i cennik, aby dowiedzieć się. Jeśli tak, możesz uaktualnić swój plan lub zapłacić za dodatkowe pojemności. Zobacz [cennik schemat](https://azure.microsoft.com/pricing/details/application-insights/).
-* Możesz ostatnio uaktualniono zestawu SDK? Upewnij się, że tylko słoików Unikatowy zestaw SDK znajdują się w katalogu projektu. Nie powinna być dwie różne wersje zestawu SDK jest obecny.
-* Szukasz na właściwy zasób AI? Sprawdź odpowiada iKey aplikacji do zasobu, gdzie są oczekiwane dane telemetryczne. Powinny one być takie same.
+* Możesz przekroczyć miesięczny limit punktów danych? Otwórz ustawienia/przydział i cennik. Jeśli tak, możesz uaktualnić swój plan lub płacić za dodatkową pojemność. Zobacz [ceny schemat](https://azure.microsoft.com/pricing/details/application-insights/).
+* Możesz ostatnio uaktualniono zestaw SDK? Upewnij się, że tylko plikach JAR unikatowy zestaw SDK znajdują się w katalogu projektu. Nie powinien być dwie różne wersje zestawu SDK jest obecny.
+* Sprawdzasz zasobu usługi AI poprawne? Można dopasować klucz instrumentacji aplikacji do zasobu, w którym są oczekiwane dane telemetryczne. Powinny one być takie same.
 
-#### <a name="i-dont-see-all-the-data-im-expecting"></a>Nie widzę wszystkich danych I czy oczekiwana
-* Otwórz użycia i szacowany koszt strony i sprawdź, czy [próbkowania](app-insights-sampling.md) jest używany w operacji. (transmisji 100% oznacza, że próbkowania nie jest w operacji). Usługa Application Insights można ustawić do akceptowania tylko część danych telemetrii, przychodzący z aplikacji. Dzięki temu można przechowywać w wykorzystaniu całego przydziału miesięcznego dane telemetryczne. 
-* Czy jest włączone próbkowania zestawu SDK? Jeśli tak, danych czy próbkowany szybkością określona dla wszystkich odpowiednich typów.
-* Czy uruchamiasz starszej wersji zestawu SDK Java Począwszy od wersji 2.0.1 zostały wprowadzone odporność na uszkodzenia mechanizm do obsługi sieci tymczasowymi i błędów wewnętrznej bazy danych, a także trwałości danych na dyskach lokalnych.
-* Czy pobieranie ograniczany z powodu nadmiernego telemetrii? Jeśli jest włączone rejestrowanie informacji, zostanie wyświetlony dziennik komunikatów "Aplikacji jest ograniczany". Nasze bieżący limit to 32 telemetrii k elementów na sekundę.
+#### <a name="i-dont-see-all-the-data-im-expecting"></a>Nie widzę wszystkich danych, których oczekiwano
+* Otwórz użycie i szacowane kosztu strony i sprawdź, czy [próbkowania](app-insights-sampling.md) jest używany w operacji. (transmisji 100% oznacza, że pobieranie próbek nie jest w operacji). Usługa Application Insights można ustawić do akceptowania tylko ułamka telemetrii, że nadejściu ze swojej aplikacji. Dzięki temu można zachować w ramach miesięcznego limitu przydziału telemetrii. 
+* Czy masz próbkowania SDK włączone? Jeśli tak, dane będą próbkowane tak, zgodnie ze stawką określoną dla wszystkich odpowiednich typów.
+* Czy używasz starszej wersji zestawu SDK języka Java Począwszy od wersji 2.0.1 wprowadziliśmy odporności na uszkodzenia mechanizm obsługi sieciowych okresowymi i błędy w wewnętrznej bazie danych, a także stan trwały danych na dyskach lokalnych.
+* To wprowadzenie ograniczona z powodu nadmiernego telemetrię? Jeśli włączysz rejestrowanie informacji dziennika zostanie wyświetlony komunikat "Aplikacja jest ograniczona". Nasze aktualne ograniczenie wynosi 32 KB danych telemetrycznych elementów na sekundę.
 
-### <a name="java-agent-cannot-capture-dependency-data"></a>Agenta Java nie przechwytywania danych zależności
-* Zostały skonfigurowane agenta Java wykonując [skonfigurować agenta Java](app-insights-java-agent.md) ?
-* Upewnij się, że zarówno jar agenta java, jak i plik AI Agent.xml są umieszczane w tym samym folderze.
-* Upewnij się, że zależności, które próbujesz automatyczne zbieranie jest obsługiwana dla kolekcji automatycznie. Aktualnie obsługiwany jest tylko MySQL, MsSQL, bazy danych Oracle i kolekcji zależności w pamięci podręcznej Redis.
-* Używasz JDK 1.7 lub 1.8? Obecnie nie obsługujemy zależności kolekcji w JDK 9.
+### <a name="java-agent-cannot-capture-dependency-data"></a>Agenta Java nie może przechwytywać dane zależności
+* Skonfigurowano usługę agenta Java wykonując [skonfigurować agenta Java](app-insights-java-agent.md) ?
+* Upewnij się, że zarówno jar agenta java, jak i plik Agent.xml sztucznej Inteligencji są umieszczane w tym samym folderze.
+* Upewnij się, że zależności, w którym próbujesz się do automatycznego zebrania jest obsługiwana przez automatyczne tworzenie kolekcji. Aktualnie obsługiwany jest tylko MySQL, MsSQL, Oracle DB i kolekcję zależności pamięci podręcznej Redis.
+* Czy używasz zestaw JDK 1.7 lub 1.8? Obecnie nie obsługujemy kolekcję zależności w zestaw JDK 9.
 
-## <a name="no-usage-data"></a>Dane użycia
-**Dane dotyczące żądań i czasy odpowiedzi, ale nie widoku strony, przeglądarki lub dane użytkownika są widoczne.**
+## <a name="no-usage-data"></a>Brak danych użycia
+**Czy mogę zobaczyć dane dotyczące żądań, czasy odpowiedzi, ale nie widok strony, przeglądarki lub dane użytkownika.**
 
-Pomyślnie tak skonfigurować aplikację, aby wysłać dane telemetryczne z serwera. Teraz z następnym krokiem jest [ustawić stron sieci web, aby wysłać dane telemetryczne z przeglądarki sieci web][usage].
+Pomyślnie ustawiono aplikacją wysyłającą dane telemetryczne z serwera. Po następnym krokiem jest [Konfigurowanie stron sieci web do wysyłania telemetrii za pomocą przeglądarki sieci web][usage].
 
-Alternatywnie Jeśli klient jest aplikacją w [telefonu lub innego urządzenia][platforms], może wysłać dane telemetryczne z tego miejsca. 
+Alternatywnie Jeśli Twój klient to aplikacja w [telefonu lub innego urządzenia][platforms], opisano wysyłanie danych telemetrycznych z tego miejsca. 
 
-Aby skonfigurować dane telemetryczne klienta i serwera, należy używać tego samego klucza instrumentacji. Dane będą wyświetlane w tym samym zasobu usługi Application Insights i będzie możliwe do korelowanie zdarzeń z klienta i serwera.
+Użyj tego samego klucza Instrumentacji do skonfigurowania klienta i serwera danych telemetrycznych. Dane będą wyświetlane w ten sam zasób usługi Application Insights i będzie można skorelować zdarzenia z klientem i serwerem.
 
 
 ## <a name="disabling-telemetry"></a>Wyłączanie telemetrii
-**Jak wyłączyć telemetrię kolekcji?**
+**Jak wyłączyć zbieranie danych telemetrycznych?**
 
 W kodzie:
 
@@ -82,30 +83,30 @@ W kodzie:
 
 **Or** 
 
-Zaktualizuj ApplicationInsights.xml (w folderze zasobów w projekcie). Dodaj następujący kod w węźle głównym:
+Zaktualizuj plik ApplicationInsights.xml (w folderze zasobów w projekcie). Dodaj następujący kod w węźle głównym:
 
 ```XML
 
     <DisableTelemetry>true</DisableTelemetry>
 ```
 
-Przy użyciu metody XML, należy ponownie uruchomić aplikację po zmianie wartości.
+Za pomocą metody XML, należy uruchomić ponownie aplikację po zmianie wartości.
 
-## <a name="changing-the-target"></a>Zmiana obiektu docelowego
-**Jak zmienić projektu wysyła dane do zasobów platformy Azure?**
+## <a name="changing-the-target"></a>Zmiana docelowej
+**Jak zmienić mój projekt wysyła dane do zasobów platformy Azure?**
 
 * [Pobierz klucz Instrumentacji nowego zasobu.][java]
-* Jeśli dodano usługę Application Insights do projektu przy użyciu zestawu narzędzi platformy Azure dla programu Eclipse, kliknij prawym przyciskiem myszy projektu sieci web, wybierz **Azure**, **Konfiguruj usługę Application Insights**i zmienić wartość klucza.
-* Jeśli klucz Instrumentacji zostały skonfigurowane jako zmienną środowiskową Zaktualizuj wartość zmiennej środowiskowej przy użyciu nowego iKey.
-* W przeciwnym razie zaktualizować klucza w ApplicationInsights.xml w folderze zasobów w projekcie.
+* Jeśli usługa Application Insights jest dodawany do projektu przy użyciu zestawu narzędzi platformy Azure dla środowiska Eclipse, kliknij prawym przyciskiem myszy projekt sieci web, wybierz opcję **Azure**, **Konfiguruj usługę Application Insights**i zmienić wartość klucza.
+* Jeśli klucz Instrumentacji ma skonfigurowany jako zmienną środowiskową przy użyciu nowego klucza iKey zaktualizuj wartości zmiennej środowiskowej.
+* W przeciwnym razie można zaktualizować klucza w plik ApplicationInsights.xml w folderze zasobów w projekcie.
 
-## <a name="debug-data-from-the-sdk"></a>Debugowanie danych z zestawu SDK
+## <a name="debug-data-from-the-sdk"></a>Dane debugowania z zestawu SDK
 
-**Jak można sprawdzić czynności zestawu SDK?**
+**Jak mogę sprawdzić działania zestawu SDK?**
 
-Aby uzyskać więcej informacji o tym, co się dzieje w interfejsie API, Dodaj `<SDKLogger/>` w węźle głównym ApplicationInsights.xml pliku konfiguracji.
+Aby uzyskać więcej informacji o tym, co się dzieje w interfejsie API, należy dodać `<SDKLogger/>` w węźle głównym pliku ApplicationInsights.xml konfiguracji.
 
-Można także skonfigurować rejestratora do wypełniania wyjściowego pliku:
+Można również poinstruować rejestratora do wypełniania wyjściowego pliku:
 
 ```XML
 
@@ -115,49 +116,49 @@ Można także skonfigurować rejestratora do wypełniania wyjściowego pliku:
     </SDKLogger>
 ```
 
-Pliki można znaleźć w `%temp%\javasdklogs` lub `java.io.tmpdir` w przypadku serwera Tomcat.
+Pliki można znaleźć w obszarze `%temp%\javasdklogs` lub `java.io.tmpdir` w przypadku serwera Tomcat.
 
 
-## <a name="the-azure-start-screen"></a>Ekranu startowego Azure
-**Wyświetlane [portalu Azure](https://portal.azure.com). Mapy Powiedz mi coś o mojej aplikacji?**
+## <a name="the-azure-start-screen"></a>Na ekranie startowym platformy Azure
+**Szukam w [witryny Azure portal](https://portal.azure.com). Mapa Powiedz mi coś o mojej aplikacji?**
 
-Nie, przedstawia prawidłowość serwerów platformy Azure na świecie.
+Nie, pokazuje kondycji serwerów platformy Azure na świecie.
 
-*Z tablicy Azure start (ekranu głównego) jak znaleźć dane o mojej aplikacji?*
+*Azure: start tablicy (główną) jak znaleźć dane o mojej aplikacji?*
 
-Wykonując [Konfigurowanie aplikacji dla usługi Application Insights][java], kliknij przycisk Przeglądaj, wybierz usługę Application Insights, a następnie wybierz zasób aplikacji utworzone dla aplikacji. Aby uzyskać szybciej w przyszłości, można przypiąć swoją aplikację w celu rozpoczęcia tablicy.
+Zakładając, że możesz [Konfigurowanie aplikacji dla usługi Application Insights][java], kliknij przycisk Przeglądaj, wybierz usługę Application Insights, a następnie wybierz zasób aplikacji została utworzona dla twojej aplikacji. Aby uzyskać istnieje szybciej w przyszłości możesz przypiąć swoją aplikację do tablicy rozpoczęcia.
 
 ## <a name="intranet-servers"></a>Intranetowych serwerów
-**W moim intranecie można monitorować serwer?**
+**Czy mogę monitorować serwer w moim intranecie?**
 
-Tak, pod warunkiem, że serwer może wysłać dane telemetryczne do portalu usługi Application Insights za pośrednictwem publicznej sieci internet. 
+Tak, pod warunkiem, że serwer może wysyłać telemetrię do portalu usługi Application Insights za pośrednictwem publicznej sieci internet. 
 
-W zaporze może być konieczne otwarcie portów TCP 80 i 443 dla ruchu wychodzącego dc.services.visualstudio.com i f5.services.visualstudio.com.
+W zaporze może być otworzyć porty TCP 80 i 443 dla ruchu wychodzącego do witryny dc.services.visualstudio.com i f5.services.visualstudio.com.
 
 ## <a name="data-retention"></a>Przechowywanie danych
-**Jak długo dane są przechowywane w portalu Czy jest bezpieczna?**
+**Jak długo dane są przechowywane w portalu? Czy jest ono bezpieczne?**
 
-Zobacz [przechowywanie danych i ochrona prywatności][data].
+Zobacz [retencji danych i prywatności][data].
 
-## <a name="debug-logging"></a>Funkcję rejestrowania debugowania
-Korzysta z usługi Application Insights `org.apache.http`. To jest przenoszony w słoików podstawowe usługi Application Insights w przestrzeni nazw `com.microsoft.applicationinsights.core.dependencies.http`. Dzięki temu usługi Application Insights do obsługi scenariuszy, w przypadku, gdy różne wersje tego samego `org.apache.http` istnieje w jeden podstawowy kod. 
+## <a name="debug-logging"></a>Rejestrowanie debugowania
+Usługa Application Insights używa `org.apache.http`. To jest przenoszony w plikach JAR z podstawowej usługi Application Insights w przestrzeni nazw `com.microsoft.applicationinsights.core.dependencies.http`. Dzięki temu usługa Application Insights do obsługi scenariuszy, w przypadku, gdy różne wersje tego samego `org.apache.http` istnieje w jednej bazy kodu. 
 
 >[!NOTE]
->Jeśli włączysz poziomu rejestrowania debugowania dla wszystkich obszarów nazw w aplikacji, będą honorowane przez wszystkie moduły wykonywanego w tym `org.apache.http` przemianowana `com.microsoft.applicationinsights.core.dependencies.http`. Usługa Application Insights nie będzie można zastosować filtrowanie dla tych wywołań, ponieważ wywołanie dziennika jest wykonywane przez biblioteki Apache. Poziom rejestrowania debugowania utworzyć znaczną ilość danych dziennika i nie jest zalecane dla wystąpień produkcyjnym.
+>Jeśli włączysz rejestrowanie na poziomie debugowania dla wszystkich przestrzeni nazw w aplikacji, będą uznawane przez wszystkie moduły wykonywanej w tym `org.apache.http` przemianowana `com.microsoft.applicationinsights.core.dependencies.http`. Usługa Application Insights nie będzie można zastosować filtrowanie dla tych wywołań, ponieważ wywołanie dziennika jest wykonywane przez bibliotekę Apache. Rejestrowanie debugowania na poziomie produkcji znaczne ilości danych dziennika i nie jest zalecane w przypadku wystąpienia w środowisku produkcyjnym.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-**Skonfigurować usługi Application Insights dla aplikacja Mój serwer Java. Co można zrobić?**
+**Dla mojej aplikacji serwera w języku Java I Konfigurowanie usługi Application Insights. Co jeszcze można zrobić?**
 
 * [Monitorowanie dostępności stron sieci web][availability]
-* [Monitorowanie użycia strony sieci web][usage]
-* [Śledzenie użycia i diagnozowanie problemów w aplikacji dla urządzeń][platforms]
+* [Monitorowanie użycia stron sieci web][usage]
+* [Śledzenie użycia i diagnozować problemy w aplikacji dla urządzeń][platforms]
 * [Napisz kod umożliwiający śledzenie użycia aplikacji][track]
-* [Przechwyć dzienników diagnostycznych][javalogs]
+* [Przechwytywanie dziennika diagnostycznego][javalogs]
 
 ## <a name="get-help"></a>Uzyskiwanie pomocy
 * [Stack Overflow](http://stackoverflow.com/questions/tagged/ms-application-insights)
-* [Plik problemu w witrynie GitHub](https://github.com/Microsoft/ApplicationInsights-Java/issues)
+* [Prześlij zgłoszenie w witrynie GitHub](https://github.com/Microsoft/ApplicationInsights-Java/issues)
 
 <!--Link references-->
 

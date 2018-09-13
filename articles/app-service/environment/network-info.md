@@ -1,6 +1,6 @@
 ---
-title: Zagadnienia dotyczące sieci ze środowiska usługi aplikacji Azure
-description: Wyjaśniono ASE ruchu sieciowego i ustawiania grup NSG i Udr z Twojej ASE
+title: Zagadnienia dotyczące sieci, za pomocą środowiska usługi Azure App Service
+description: Wyjaśnia, ruch sieciowy środowiska ASE i jak ustawić sieciowe grupy zabezpieczeń i tras zdefiniowanych przez użytkownika za pomocą środowiska ASE
 services: app-service
 documentationcenter: na
 author: ccompy
@@ -11,104 +11,107 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 03/20/2018
+ms.date: 05/29/2018
 ms.author: ccompy
-ms.openlocfilehash: d099163cdc34624afd8f01b8f1978c5ee902d1ff
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: ef2288e2f756db6529f1ec5f7b3a49067b2998aa
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35648914"
 ---
-# <a name="networking-considerations-for-an-app-service-environment"></a>Zagadnienia dotyczące sieci dla środowiska usługi aplikacji #
+# <a name="networking-considerations-for-an-app-service-environment"></a>Informacje dotyczące sieci środowiska App Service Environment #
 
 ## <a name="overview"></a>Przegląd ##
 
- Azure [środowiska usługi aplikacji] [ Intro] wdrożenie usługi Azure App Service w podsieci sieci wirtualnej platformy Azure (VNet). Istnieją dwa typy wdrażania dla środowiska usługi App Service (ASE):
+ Azure [środowiska App Service Environment] [ Intro] to wdrożenie usługi Azure App Service w podsieci sieci wirtualnej platformy Azure (VNet). Istnieją dwa typy wdrożenia dla środowiska usługi App Service (ASE):
 
-- **Zewnętrzne ASE**: udostępnia aplikacje hostowane ASE na internet dostępny adres IP. Aby uzyskać więcej informacji, zobacz [Tworzenie zewnętrznych ASE][MakeExternalASE].
-- **ILB ASE**: udostępnia aplikacje hostowane ASE na adres IP w sieci wirtualnej. Wewnętrzny punkt końcowy jest wewnętrzny moduł równoważenia obciążenia (ILB), dlatego jest określana mianem ASE ILB. Aby uzyskać więcej informacji, zobacz [tworzenie i używanie ASE ILB][MakeILBASE].
+- **Zewnętrzne środowisko ASE**: udostępnia aplikacje hostowane środowisko ASE na adres IP dostępne za pośrednictwem Internetu. Aby uzyskać więcej informacji, zobacz [Tworzenie zewnętrznego środowiska ASE][MakeExternalASE].
+- **Środowisko ASE z wewnętrznym modułem równoważenia obciążenia**: udostępnia aplikacje hostowane środowisko ASE na adres IP wewnątrz sieci wirtualnej. Wewnętrzny punkt końcowy jest wewnętrzny moduł równoważenia obciążenia (ILB), dlatego jest określana mianem środowisko ASE z wewnętrznym modułem równoważenia obciążenia. Aby uzyskać więcej informacji, zobacz [tworzenia i używania środowiska ASE z wewnętrznym modułem równoważenia obciążenia][MakeILBASE].
 
-Teraz są dwie wersje środowiska usługi aplikacji: ASEv1 i ASEv2. Aby uzyskać informacje na ASEv1, zobacz [wprowadzenie do środowiska usługi aplikacji v1][ASEv1Intro]. ASEv1 można wdrożyć w klasyczny lub Menedżera zasobów w sieci wirtualnej. ASEv2 mogą być wdrażane tylko w sieci wirtualnej Menedżera zasobów.
+Istnieją dwie wersje środowiska App Service Environment: ASEv1 i ASEv2. Aby uzyskać informacji na temat środowiska ASEv1, zobacz [wprowadzenie do środowiska App Service Environment v1][ASEv1Intro]. Środowiska ASEv1 można wdrożyć w klasycznej lub sieci wirtualnej usługi Resource Manager. ASEv2 można wdrożyć tylko w sieci wirtualnej usługi Resource Manager.
 
-Wywołania z ASE, które pobierana przez internet pozostaw sieci wirtualnej za pośrednictwem adresu VIP przypisanych do ASE. Publiczny adres IP z tego adresu VIP jest następnie źródłowy adres IP dla wszystkich wywołań z ASE pobierana przez internet. Jeśli do aplikacji w Twojej ASE wywołań do zasobów w sieci lub sieci VPN, źródłowy adres IP jest jednym z adresów IP w podsieci używane przez użytkownika ASE. Ponieważ ASE znajduje się w sieci wirtualnej, można także używać zasobów w sieci wirtualnej bez przeprowadzania dodatkowej konfiguracji. Jeśli sieć wirtualna jest podłączony do sieci lokalnej, aplikacji w Twojej ASE mają także dostęp do zasobów istnieje. Nie trzeba skonfigurować ASE lub aplikacji żadnych dalszych.
+Wywołania z ASE, które bardziej szczegółowo w Internecie należy pozostawić sieci wirtualnej przy użyciu adresu VIP przypisanych do środowiska ASE. Publiczny adres IP to adres VIP jest źródłowy adres IP dla wszystkich wywołań ze środowiska ASE, które bardziej szczegółowo w Internecie. Jeśli aplikacje w środowisku ASE wywołań do zasobów w sieci wirtualnej lub sieci VPN, źródłowy adres IP jest jeden z adresów IP w podsieci używana przez środowisko ASE. Ponieważ środowisko ASE znajduje się w sieci wirtualnej, można także przejść zasobów w ramach sieci wirtualnej bez przeprowadzania dodatkowej konfiguracji. Jeśli sieć wirtualna jest połączona z siecią lokalną, aplikacje w środowisku ASE również mieć dostęp do zasobów istnieje bez dodatkowej konfiguracji.
 
-![Zewnętrzne ASE][1] 
+![Zewnętrznego środowiska ASE][1] 
 
-Jeśli masz zewnętrznych ASE publicznego adresu VIP jest również punktu końcowego, który aplikacji ASE rozpoznać dla:
+W przypadku zewnętrznego środowiska ASE publicznych adresów VIP jest również punkt końcowy, który aplikacji środowiska ASE, rozwiązania dla:
 
 * HTTP/S. 
 * FTP/S. 
-* Wdrażanie sieci Web.
-* Debugowanie zdalne.
+* Wdrażanie w Internecie.
+* Zdalne debugowanie.
 
-![ILB ASE][2]
+![ŚRODOWISKO ASE Z WEWNĘTRZNYM MODUŁEM RÓWNOWAŻENIA OBCIĄŻENIA][2]
 
-Jeśli masz ASE ILB, adres IP ILB jest punkt końcowy dla protokołu HTTP/S, FTP/S, wdrożenie w sieci web i debugowanie zdalne.
+Jeśli masz środowisko ASE z wewnętrznym modułem równoważenia obciążenia, adres wewnętrznego modułu równoważenia obciążenia jest punkt końcowy dla protokołu HTTP/S, FTP/S, wdrażanie w Internecie i zdalne debugowanie.
 
-Porty dostępu normalne aplikacji są:
+Dostępne są następujące porty dostępu zwykła aplikacja:
 
 | Użycie | Z | Do |
 |----------|---------|-------------|
-|  HTTP/HTTPS  | Konfigurowane przez użytkownika |  80, 443 |
-|  FTP/FTPS    | Konfigurowane przez użytkownika |  21, 990, 10001-10020 |
-|  Visual Studio debugowanie zdalne  |  Konfigurowane przez użytkownika |  4016, 4018, 4020, 4022 |
+|  HTTP/HTTPS  | Użytkownika można konfigurować |  80, 443 |
+|  FTP/FTPS    | Użytkownika można konfigurować |  21, 990, 10001-10020 |
+|  Visual Studio zdalne debugowanie  |  Użytkownika można konfigurować |  4016, 4018, 4020, 4022 |
 
-Jest to wartość true, jeśli jesteś w elemencie ASE zewnętrznych lub w elemencie ASE ILB. Jeśli używasz zewnętrznego ASE naciśniesz tych portów na publiczny adres VIP. Jeśli jesteś w elemencie ASE ILB naciśniesz tych portów na ILB. Jeśli Zablokowanie portu 443, może być wpływ na niektóre funkcje widoczne w portalu. Aby uzyskać więcej informacji, zobacz [zależności Portal](#portaldep).
+Ta zasada obowiązuje, jeśli jesteś na zewnętrznym środowiskiem ASE lub w środowisku ASE z wewnętrznym modułem równoważenia obciążenia. Jeśli używasz zewnętrznego środowiska ASE, napotkasz tych portów na publicznych adresów VIP. Jeśli środowisko ASE z wewnętrznym modułem równoważenia obciążenia, napotkasz tych portów na wewnętrznego modułu równoważenia obciążenia. Jeśli port 443 jest zablokowanie, może to być wpływ na niektóre funkcje dostępne w portalu. Aby uzyskać więcej informacji, zobacz [zależności portalu](#portaldep).
 
-## <a name="ase-subnet-size"></a>Rozmiar podsieci ASE ##
+## <a name="ase-subnet-size"></a>Rozmiar podsieci środowiska ASE ##
 
-Nie można zmienić rozmiar podsieci, używany do obsługi ASE, po wdrożeniu ASE.  ASE używa adresu dla każdej infrastruktury roli oraz jak w przypadku każdego wystąpienia planu usługi aplikacji izolowanych.  Ponadto istnieją adresy 5 używany przez sieć platformy Azure dla każdej podsieci, która jest tworzona.  ASE z nie planów usługi aplikacji na wszystkich użyje 12 adresów przed utworzeniem aplikacji.  Jeśli jest ASE ILB następnie użyje 13 adresów przed utworzeniem aplikacji w tym ASE. Ponieważ skalowanie planów usługi aplikacji będą musiały dodatkowych adresów dla każdej fronton, który zostanie dodany.  Domyślnie co 15 całkowita liczba wystąpień planu dla usług aplikacji zostaną dodane serwery frontonu. 
+Nie można zmienić rozmiar podsieci używane do hostowania środowiska ASE, po wdrożeniu środowiska ASE.  Środowisko ASE używa adresu dla każdej infrastruktury roli oraz jak w przypadku każdego wystąpienia planu izolowanej usługi App Service.  Ponadto są 5 adresów używanych przez sieci platformy Azure dla każdej podsieci, który jest tworzony.  Środowisko ASE z żadnych planów usługi App Service w ogóle będzie używać 12 adresów przed przystąpieniem do tworzenia aplikacji.  Jeśli środowisko ASE z wewnętrznym modułem równoważenia obciążenia jest następnie zostanie użyty 13 adresów przed przystąpieniem do tworzenia aplikacji w tym środowisku ASE. Podczas skalowania środowiska ASE rolami infrastruktury zostaną dodane co wielokrotnością 15 i 20 wystąpień planu usługi App Service.
 
    > [!NOTE]
-   > Nic może być w tej podsieci, ale ASE. Należy wybrać przestrzeń adresową, która umożliwia rozwój w przyszłości. Nie można zmienić tego ustawienia później. Firma Microsoft zaleca rozmiar `/25` z adresami 128.
+   > W tej podsieci, ale środowisko ASE można nic innego. Pamiętaj wybrać przestrzeń adresów, który pozwala na przyszły rozwój. Nie można zmienić tego ustawienia później. Firma Microsoft zaleca rozmiar `/24` za pomocą 256 adresów.
 
-## <a name="ase-dependencies"></a>Zależności ASE ##
+Skalowanie w górę lub w dół, są dodawane nowe role odpowiedni rozmiar, a następnie obciążenia są migrowane z bieżącego rozmiaru do rozmiaru docelowego. Tylko wtedy, gdy aplikacje są migrowane są usuwane oryginalnych maszyn wirtualnych. Oznacza to, że jeśli masz środowisko ASE przy użyciu 100 wystąpień ASP istniała okres, w których należy podwoić liczbę maszyn wirtualnych.  To z tego powodu, które firma Microsoft zaleca korzystanie z "/ 24" Aby uwzględnić zmiany, które mogą być wymagane.  
 
-ASE zależność dostępu ruchu przychodzącego jest:
+## <a name="ase-dependencies"></a>Zależności środowiska ASE ##
 
-| Użycie | Z | Do |
-|-----|------|----|
-| Zarządzanie | Adresy zarządzania usługi aplikacji | Podsieci ASE: 454, 455 |
-|  Wewnętrznej komunikacji ASE | Podsieci ASE: wszystkie porty | Podsieci ASE: wszystkie porty
-|  Zezwalaj na usługi równoważenia obciążenia Azure dla ruchu przychodzącego | Moduł równoważenia obciążenia platformy Azure | Podsieci ASE: wszystkie porty
-|  Aplikacji przypisanych adresów IP | Adresy przypisywane aplikacji | Podsieci ASE: wszystkie porty
-
-Ruch przychodzący zawiera polecenia i kontroli ASE Oprócz monitorowania systemu. Źródło adresów IP dla tego rodzaju ruch, są wymienione w [dotyczy zarządzania ASE] [ ASEManagement] dokumentu. Konfiguracja zabezpieczeń sieci należy zezwolić na dostęp z wszystkich adresów IP w portach 454 i 455.
-
-W podsieci ASE istnieje wiele portów używanych do składnika wewnętrznej komunikacji, a można zmienić.  Wymaga to wszystkie porty w podsieci ASE mają być dostępne z podsieci ASE. 
-
-Do komunikacji między usługi równoważenia obciążenia Azure i podsieć ASE niezbędne porty, które muszą być otwarte są 454 i 455 16001. 16001 port jest używany dla keep alive ruchu między usługi równoważenia obciążenia i ASE. Jeśli używasz ASE ILB, można zablokować ruch do właśnie 454, 455, 16001 portów.  Jeśli używasz zewnętrznego ASE należy wziąć pod uwagę porty dostępu normalne aplikacji.  Jeśli używane są adresy aplikację przypisaną należy otworzyć go do wszystkich portów.  Gdy adres jest przypisany do określonej aplikacji, usługi równoważenia obciążenia będzie używać portów, które nie są znane z wyprzedzeniem do wysyłania ruchu HTTP i HTTPS do ASE.
-
-Jeśli używasz aplikacji przypisanych adresów IP, należy zezwolić na ruch z adresów IP przypisanych do aplikacji z podsiecią ASE.
-
-Dla ruchu wychodzącego dostępu ASE zależy od wielu systemami zewnętrznymi. Te zależności systemu są zdefiniowane z nazwami DNS i nie mapowania ustalony zbiór adresów IP. W związku z tym ASE wymaga wychodzący dostęp do wszystkich zewnętrznych adresów IP z podsieci ASE różnych portów. ASE charakteryzuje się następującymi zależnościami wychodzących:
+Środowisko ASE przychodzące dostępu, które zależności są:
 
 | Użycie | Z | Do |
 |-----|------|----|
-| Azure Storage | Podsieci ASE | TABLE.Core.Windows.NET, blob.core.windows.net, queue.core.windows.net, file.core.windows.net: 80, 443, 445 (445 jest potrzebna tylko dla ASEv1.) |
-| Azure SQL Database | Podsieci ASE | Database.Windows.NET: 1433, 11000 11999, 14000 14999 (Aby uzyskać więcej informacji, zobacz [użycia portu bazy danych SQL V12](../../sql-database/sql-database-develop-direct-route-ports-adonet-v12.md).)|
-| Zarządzania platformy Azure | Podsieci ASE | management.core.windows.net, management.azure.com: 443 
-| Weryfikacja certyfikatu SSL |  Podsieci ASE            |  ocsp.msocsp.com, mscrl.microsoft.com, crl.microsoft.com: 443
-| Usługa Azure Active Directory        | Podsieci ASE            |  Internet: 443
-| Zarządzanie usługami aplikacji        | Podsieci ASE            |  Internet: 443
-| System DNS platformy Azure                     | Podsieci ASE            |  Internet: 53
-| Wewnętrznej komunikacji ASE    | Podsieci ASE: wszystkie porty |  Podsieci ASE: wszystkie porty
+| Zarządzanie | Adresy zarządzania usługi aplikacji | Podsieci środowiska ASE: 454, 455 |
+|  Środowisko ASE wewnętrznej komunikacji | Podsieci środowiska ASE: wszystkie porty | Podsieci środowiska ASE: wszystkie porty
+|  Zezwalaj na moduł równoważenia obciążenia platformy Azure dla ruchu przychodzącego | Moduł równoważenia obciążenia platformy Azure | Podsieci środowiska ASE: wszystkie porty
+|  Przypisane adresy IP aplikacji | Przypisane adresy aplikacji | Podsieci środowiska ASE: wszystkie porty
 
-Jeśli ASE utracenia dostępu do tych zależności, przestanie działać. W takim przypadku wystarczająco długo ASE jest wstrzymana.
+Ruch przychodzący zarządzania zapewnia poleceń i kontroli środowiska ASE, oprócz systemu monitorowania. Adresy źródła dla tego ruchu są wymienione w [adresy zarządzania środowiska ASE] [ ASEManagement] dokumentu. Konfiguracja zabezpieczeń sieci musi zezwolić na dostęp ze wszystkich adresów IP na portach 454 i 455. Jeśli zablokujesz dostęp z tych adresów, Twoje środowisko ASE przestanie złej kondycji i następnie wstrzymane.
+
+W obrębie podsieci środowiska ASE ma wiele porty używane do wewnętrznych składników komunikacji i ich zmienić.  Wymaga to wszystkie porty w podsieci środowiska ASE, które mają być dostępne z podsieci środowiska ASE. 
+
+Do komunikacji między równoważenia obciążenia platformy Azure oraz podsieci środowiska ASE niezbędne porty, które muszą być otwarte są 454 i 455 16001. 16001 port jest używany keep alive ruchu między modułu równoważenia obciążenia i środowisko ASE. Jeśli używasz środowiska ASE z wewnętrznym modułem równoważenia obciążenia, a następnie zablokować ruch w dół, aby po prostu 454, 455, 16001 portów.  Jeśli używasz zewnętrznego środowiska ASE, należy wziąć pod uwagę porty dostępu normalna aplikacja.  Jeśli używasz aplikacji przypisane adresy należy otworzyć ją do wszystkich portów.  Po adres zostanie przypisany do określonej aplikacji, moduł równoważenia obciążenia będzie używać portów, które nie są znane z wyprzedzeniem do wysyłania ruchu HTTP i HTTPS do środowiska ASE.
+
+Jeśli używasz aplikacji przypisanych adresów IP, musisz zezwolić na ruch z adresów IP przypisanych do aplikacji w celu podsieci środowiska ASE.
+
+Na potrzeby dostępu wychodzącego środowisko ASE zależy od wielu systemów zewnętrznych. Te zależności systemu są zdefiniowane przy użyciu nazw DNS i nie mapowania stały zestaw adresów IP. W związku z tym środowisko ASE wymaga dostęp ruchu wychodzącego z podsieci środowiska ASE do wszystkich zewnętrznych adresów IP na różnych portów. Środowisko ASE ma następujące zależności ruchu wychodzącego:
+
+| Użycie | Z | Do |
+|-----|------|----|
+| Azure Storage | Podsieci środowiska ASE | TABLE.Core.Windows.NET blob.core.windows.net, queue.core.windows.net, file.core.windows.net: 80, 443, 445 (445 jest potrzebna tylko dla środowiska ASEv1.) |
+| Azure SQL Database | Podsieci środowiska ASE | Database.Windows.NET: 1433 |
+| Zarządzania platformy Azure | Podsieci środowiska ASE | Management.Core.Windows.NET, management.azure.com, admin.core.windows.net: 443 |
+| Weryfikacja certyfikatu SSL |  Podsieci środowiska ASE            |  ocsp.msocsp.com, mscrl.microsoft.com, crl.microsoft.com: 443 |
+| Usługa Azure Active Directory        | Podsieci środowiska ASE            |  Login.Windows.NET: 443 |
+| Zarządzanie App Service        | Podsieci środowiska ASE            |  gr-prod -<regionspecific>. cloudapp.net, .net az prod.metrics.nsatc: 443 |
+| System DNS platformy Azure                     | Podsieci środowiska ASE            |  Internet: 53 |
+| Środowisko ASE wewnętrznej komunikacji    | Podsieci środowiska ASE: wszystkie porty |  Podsieci środowiska ASE: wszystkie porty |
+
+Jeśli środowisko ASE utraci dostęp do tych zależności, przestanie działać. Jeśli tak się stanie wystarczająco długi, środowisko ASE jest zawieszone.
 
 ### <a name="customer-dns"></a>Klient DNS ###
 
-Jeśli sieć wirtualna jest skonfigurowana na serwerze DNS przez klienta, obciążeń dzierżawców go użyć. ASE nadal wymaga do komunikacji z usługą Azure DNS do celów zarządzania. 
+Jeśli sieć wirtualna jest skonfigurowany na serwerze DNS przez klienta, obciążenia dzierżaw go użyć. Środowisko ASE jest nadal wymaga do komunikacji z usługą Azure DNS do celów zarządzania. 
 
-Jeśli sieć wirtualna jest skonfigurowana z klienta DNS po drugiej stronie sieci VPN, serwer DNS musi być dostępny w podsieci, która zawiera ASE.
+Jeśli sieć wirtualna jest skonfigurowana z klientem DNS po drugiej stronie sieci VPN, serwer DNS musi być dostępny z poziomu podsieci zawierającej środowisko ASE.
 
 <a name="portaldep"></a>
 
 ## <a name="portal-dependencies"></a>Zależności portalu ##
 
-Oprócz ASE współzależności funkcjonalnych istnieje kilka dodatkowych elementów związanych z obsługi portalu. Niektóre z funkcji w portalu Azure są zależne od bezpośredni dostęp do _lokacji SCM_. Istnieją dwa adresy URL, dla każdej aplikacji w usłudze Azure App Service. Pierwszy adres URL jest dostęp do Twojej aplikacji. Drugi adres URL jest dostęp do witryny SCM, nazywane również _konsoli Kudu_. Funkcje korzystające z lokacji SCM obejmują:
+Oprócz zależności funkcjonalne środowisko ASE istnieje kilka dodatkowych elementów związane z środowisko pracy w portalu. Niektóre funkcje w witrynie Azure portal są zależne od bezpośredni dostęp do _witryny SCM_. Istnieją dwa adresy URL, dla każdej aplikacji w usłudze Azure App Service. Pierwszy adres URL jest dostęp do aplikacji. Drugi adres URL jest dostęp do witryny SCM, nazywana także _konsoli Kudu_. Funkcje, które używają witryny SCM:
 
--   Zadania sieci Web
+-   Zadania Web Job
 -   Funkcje
 -   Przesyłanie strumieniowe dzienników
 -   Kudu
@@ -116,89 +119,95 @@ Oprócz ASE współzależności funkcjonalnych istnieje kilka dodatkowych elemen
 -   Eksplorator procesów
 -   Konsola
 
-Gdy używasz ASE ILB lokacji SCM nie jest internet dostępne spoza sieci wirtualnej. Gdy aplikacja znajduje się na elemencie ASE ILB, niektóre funkcje nie będą działać z portalu.  
+Gdy używasz środowisko ASE z wewnętrznym modułem równoważenia obciążenia, witryny SCM jest internet dostępne spoza sieci wirtualnej. Gdy aplikacja jest hostowana na środowisko ASE z wewnętrznym modułem równoważenia obciążenia, niektóre funkcje nie będą działać z poziomu portalu.  
 
-Wiele z tych funkcji, które zależą od lokacji SCM są również dostępne bezpośrednio w konsoli programu Kudu. Można podłączyć do niego bezpośrednio, a nie za pomocą portalu. Jeśli aplikacja jest obsługiwana w elemencie ASE ILB, Użyj poświadczeń publikowania do logowania. Adres URL, aby uzyskać dostęp do witryny SCM aplikacji hostowanej w elemencie ASE ILB ma następujący format: 
+Wiele z tych funkcji, które zależą od witryny SCM są również dostępne bezpośrednio w konsoli programu Kudu. Można podłączyć do niego bezpośrednio, a nie przy użyciu portalu. Jeśli aplikacja jest hostowana w środowisku ASE z wewnętrznym modułem równoważenia obciążenia, należy używać poświadczeń publikowania do logowania. Adres URL, aby przejść do witryny SCM aplikacji hostowanej w środowisku ASE z wewnętrznym modułem równoważenia obciążenia ma następujący format: 
 
 ```
 <appname>.scm.<domain name the ILB ASE was created with> 
 ```
 
-Jeśli Twoje ASE ILB jest nazwą domeny *contoso.net* i Twoja nazwa aplikacji jest *testapp*, aplikacja zostanie osiągnięta w *testapp.contoso.net*. Witryna SCM, która łączy się z jego osiągnięciu w *testapp.scm.contoso.net*.
+Jeśli nazwa domeny środowiska ASE wewnętrznego modułu równoważenia obciążenia *"contoso.NET"* i Twoja nazwa aplikacji jest *testapp*, aplikacja zostanie osiągnięty w *testapp.contoso.net*. Witryny SCM, która łączy się z jej zostanie osiągnięty w *testapp.scm.contoso.net*.
 
-## <a name="functions-and-web-jobs"></a>Funkcje i zadania sieci Web ##
+## <a name="functions-and-web-jobs"></a>Funkcje i zadania Web Job ##
 
-Zarówno funkcje, jak i sieci Web zadania są zależne od lokacji SCM, ale można używać w portalu, nawet jeśli aplikacje będą w elemencie ASE ILB tak długo, jak przeglądarka może nawiązać połączenie lokacji SCM.  Jeśli używasz certyfikatu z podpisem własnym z Twojej ASE ILB, należy włączyć przeglądarkę, aby zaufać certyfikatowi.  Dla programu Internet Explorer i krawędzi, która oznacza, że certyfikat musi się znajdować w magazynie zaufania komputera.  Jeśli używasz programu Chrome, a następnie oznacza to, że wcześniej zaakceptowane certyfikatu w przeglądarce przez prawdopodobnie naciśnięcie lokacji scm bezpośrednio.  Najlepszym rozwiązaniem jest używanie komercyjnych certyfikatu, który znajduje się w łańcuchu przeglądarki zaufania.  
+Zarówno funkcje, jak i sieci Web zadań są zależne od witryny SCM, ale są obsługiwane do użytku w portalu, nawet jeśli Twoje aplikacje są w środowisku ASE wewnętrznego modułu równoważenia obciążenia, tak długo, jak przeglądarka może dotrzeć do witryny SCM.  Jeśli używasz certyfikatu z podpisem własnym za pomocą środowiska ASE wewnętrznego modułu równoważenia obciążenia, należy włączyć przeglądarkę, aby ufać temu certyfikatowi.  Dla programu Internet Explorer i Microsoft Edge, która oznacza, że certyfikat musi znajdować się w magazynie komputera zaufania.  Jeśli używasz przeglądarki Chrome, a następnie oznacza to, że wcześniej zaakceptowane certyfikatu w przeglądarce, prawdopodobnie bezpośrednio naciskając witryny scm.  Najlepszym rozwiązaniem jest Użyj komercyjnego certyfikatu obecnego w łańcuchu zaufania przeglądarki.  
 
-## <a name="ase-ip-addresses"></a>Adresy ASE IP ##
+## <a name="ase-ip-addresses"></a>Adresy IP środowiska ASE ##
 
-ASE ma kilka adresów IP, należy pamiętać o. Oto one:
+Środowisko ASE ma kilka adresów IP, pod uwagę. Oto one:
 
-- **Publiczny adres IP dla ruchu przychodzącego**: używany do ruchu aplikacji w elemencie ASE zewnętrznych i ruch związany z zarządzaniem w elemencie ASE zewnętrznych i ASE ILB.
-- **Wychodzące publicznego adresu IP**: używany jako adres IP "od" dla połączenia wychodzące z ASE pozostaw sieci wirtualnej, które nie są przesyłane w dół sieci VPN.
-- **Adres ILB IP**: Jeśli używasz ASE ILB.
-- **Adresy przypisane aplikacji opartych na protokole SSL**: tylko to możliwe z zewnętrznego ASE i opartych na protokole SSL jest skonfigurowany.
+- **Publiczny adres IP dla ruchu przychodzącego**: używany do ruchu aplikacji w zewnętrznym środowiskiem ASE i ruch związany z zarządzaniem w zewnętrznym środowiskiem ASE i środowisko ASE z wewnętrznym modułem równoważenia obciążenia.
+- **Wychodzące publiczny adres IP**: używany jako "od" adres IP dla połączeń wychodzących ze środowiska ASE, które należy pozostawić sieci wirtualnej, które nie są kierowane szczegółów sieci VPN.
+- **Adres IP wewnętrznego modułu równoważenia obciążenia**: Jeśli używasz środowiska ASE z wewnętrznym modułem równoważenia obciążenia.
+- **Aplikacja przypisana SSL opartego na protokole IP adresów**: tylko jest to możliwe za pomocą zewnętrznego środowiska ASE i w przypadku skonfigurowania SSL opartego na protokole IP.
 
-Te adresy IP są łatwo widoczna w ASEv2 w portalu Azure w interfejsie użytkownika ASE. Jeśli masz ASE ILB, znajduje się adres IP dla ILB.
+Te adresy IP są łatwo widoczna w ASEv2 w witrynie Azure portal z poziomu interfejsu użytkownika środowiska ASE. Jeśli masz środowisko ASE z wewnętrznym modułem równoważenia obciążenia, znajduje się adres IP dla wewnętrznego modułu równoważenia obciążenia.
+
+   > [!NOTE]
+   > Te adresy IP nie ulegnie zmianie, tak długo, jak środowisko ASE pozostaje uruchomiona.  Jeśli środowisko ASE staje się wstrzymane, a następnie przywrócić, adresy, używane przez środowisko ASE zostanie zmieniona. Normalne przyczynę wstrzymane środowisko ASE wewnętrznego jest możesz zablokować dostęp do funkcji zarządzania dla ruchu przychodzącego lub zablokować dostęp do zależności środowiska ASE. 
 
 ![Adresy IP][3]
 
-### <a name="app-assigned-ip-addresses"></a>Adresy IP przypisane aplikacji ###
+### <a name="app-assigned-ip-addresses"></a>Adresy IP przypisane do aplikacji ###
 
-Z zewnętrznego ASE adresów IP można przypisać do poszczególnych aplikacji. Nie możesz tego zrobić z ASE ILB. Aby uzyskać więcej informacji na temat konfigurowania aplikacji na adres IP, zobacz [Powiąż istniejący certyfikat SSL niestandardowych do aplikacji sieci web platformy Azure](../app-service-web-tutorial-custom-ssl.md).
+Za pomocą zewnętrznego środowiska ASE adresów IP można przypisać do poszczególnych aplikacji. Nie możesz tego zrobić za pomocą środowisko ASE z wewnętrznym modułem równoważenia obciążenia. Aby uzyskać więcej informacji na temat konfigurowania aplikacji, aby mieć swój własny adres IP, zobacz [powiązania istniejącego niestandardowego certyfikatu SSL w usłudze Azure web apps](../app-service-web-tutorial-custom-ssl.md).
 
-Gdy aplikacja ma własny adres opartych na protokole SSL, ASE rezerwuje dwa porty do mapowania na ten adres IP. Jest jeden port dla ruchu HTTP i jest innego portu dla protokołu HTTPS. Te porty są wyświetlane w interfejsie użytkownika ASE w sekcji adresów IP. Ruch musi mieć dostęp do tych portów z adresu VIP lub aplikacje są niedostępne. To wymaganie dotyczy pamiętać podczas konfigurowania grup zabezpieczeń sieci (NSG).
+Gdy aplikacja ma własny adres SSL opartego na protokole IP, środowisko ASE zastrzega sobie dwa porty do mapowania na ten adres IP. Jeden port jest dla ruchu HTTP i innych portów to dla protokołu HTTPS. Te porty są wyświetlane w interfejsie użytkownika środowiska ASE w sekcji adresów IP. Ruch musi być w stanie nawiązać połączenie z adresu VIP tych portów lub aplikacje są niedostępne. Ten wymóg jest pamiętać podczas konfigurowania sieciowych grup zabezpieczeń (NSG).
 
 ## <a name="network-security-groups"></a>Grupy zabezpieczeń sieci ##
 
-[Sieciowe grupy zabezpieczeń] [ NSGs] zapewniają możliwość kontrolowania dostępu do sieci w ramach sieci wirtualnej. Korzystając z portalu, istnieje reguła niejawna odmowa na najniższy priorytet odrzucanie wszystko. Możesz utworzyć są z reguły zezwalania.
+[Sieciowe grupy zabezpieczeń] [ NSGs] zapewniają możliwość kontrolowania dostępu do sieci w sieci wirtualnej. Korzystając z portalu, ma regułę Odmów niejawne pod najniższy priorytet, Odmów wszystkiego. Możesz tworzyć są z reguły zezwalania.
 
-W elemencie ASE nie masz dostępu do maszyn wirtualnych, używany do obsługi ASE samej siebie. Są one w ramach subskrypcji zarządzany przez firmę Microsoft. Jeśli chcesz ograniczyć dostęp do aplikacji w ASE, należy ustawić grup NSG podsieci ASE. W ten sposób należy zwrócić uwagę dokładne ASE zależności. Jeśli zablokujesz wszelkie zależności ASE przestanie działać.
+W przypadku środowiska ASE nie masz dostępu do maszyn wirtualnych, używane do hostowania środowiska ASE, sam. Są one w ramach subskrypcji zarządzanych przez firmę Microsoft. Jeśli chcesz ograniczyć dostęp do aplikacji w środowisku ASE, należy ustawić sieciowych grup zabezpieczeń w podsieci środowiska ASE. W ten sposób zapłaty uważnego zależności środowiska ASE. Jeśli zablokujesz jakieś zależności, środowisko ASE przestanie działać.
 
-Grupy NSG można skonfigurować za pomocą portalu Azure lub za pomocą programu PowerShell. Informacje w tym miejscu przedstawiono portalu Azure. Utwórz i Zarządzaj grup NSG w portalu jako zasób najwyższego poziomu w obszarze **sieci**.
+Sieciowe grupy zabezpieczeń można skonfigurować za pomocą witryny Azure portal lub za pośrednictwem programu PowerShell. W tym miejscu informacje przedstawia witryny Azure portal. Tworzenie i zarządzanie sieciowymi grupami zabezpieczeń w portalu jako zasobem najwyższego poziomu w ramach **sieć**.
 
-Gdy wymagania dla ruchu przychodzącego i wychodzącego są brane pod uwagę, grup NSG powinien wyglądać podobnie do grup NSG, w poniższym przykładzie. Zakres adresów sieci wirtualnej jest _192.168.250.0/23_, i podsieci, która jest ASE _192.168.251.128/25_.
+Gdy wymagania dotyczące ruchu przychodzącego i wychodzącego są brane pod uwagę, sieciowe grupy zabezpieczeń powinien wyglądać podobnie do sieciowych grup zabezpieczeń, w poniższym przykładzie. Zakres adresów sieci wirtualnej jest _192.168.250.0/23_, i podsieci, która znajduje się w środowisku ASE jest _192.168.251.128/25_.
 
-Pierwsze dwa wymagania dla ruchu przychodzącego ASE funkcji są wyświetlane na początku listy, w tym przykładzie. Włącz zarządzanie ASE, a Zezwalaj ASE do komunikowania się z nim samym. Inne pozycje są wszystkie konfigurowalne dzierżawy i można kontrolować dostępu do sieci dla aplikacji hostowanej ASE. 
+Pierwsze dwa wymagania dla ruchu przychodzącego dla środowiska ASE funkcji są wyświetlane u góry listy, w tym przykładzie. One włączyć zarządzanie środowiska ASE i umożliwić ASE do komunikowania się z samym sobą. Inne wpisy wszystkich dzierżawców można konfigurować i mogą kontrolować dostęp sieciowy do aplikacje hostowane w środowisku ASE. 
 
-![Reguły zabezpieczeń ruchu przychodzącego][4]
+![Reguły zabezpieczeń dla ruchu przychodzącego][4]
 
-Domyślna reguła umożliwia adresów IP w sieci wirtualnej do komunikowania się z podsiecią ASE. Inna reguła domyślna umożliwia usługi równoważenia obciążenia, znanej także jako publiczny adres VIP, do komunikowania się z ASE. Aby wyświetlić reguły domyślne, wybierz **domyślne zasady** obok **Dodaj** ikony. Umieszczenie Odmów, wszystkie inne reguły po pokazano reguły grupy NSG, uniemożliwia ruch między adres VIP i ASE. Aby zapobiec ruchu przychodzącego z wewnątrz sieci wirtualnej, należy dodać własne reguły zezwalającej na przychodzące. Używać źródła równa AzureLoadBalancer, których miejscem docelowym **żadnych** i zakres portów **\***. Ponieważ reguła grupa NSG jest stosowana do podsieci ASE, nie trzeba być specyficzne dla miejsca docelowego.
+Domyślna reguła umożliwia adresów IP w sieci wirtualnej na komunikowanie się z podsieci środowiska ASE. Inną regułę domyślną umożliwia równoważenia obciążenia, znany także jako publicznych adresów VIP do komunikowania się z ASE. Aby wyświetlić domyślne reguły, wybierz **domyślne reguły** obok **Dodaj** ikony. Jeśli umieścisz Odmów, wszystkie inne reguły po pokazano reguły sieciowej grupy zabezpieczeń, uniemożliwia ruchu między adres VIP i środowisko ASE. Aby zapobiec ruchu przychodzącego z wewnątrz sieci wirtualnej, należy dodać własne reguły w celu umożliwienia ruchu przychodzącego. Korzystanie ze źródła, które są równe AzureLoadBalancer z miejsca docelowego **wszelkie** i zakres portów **\***. Ponieważ reguła sieciowej grupy zabezpieczeń jest stosowana do podsieci środowiska ASE, trzeba należeć do określonego miejsca docelowego.
 
-Jeśli adres IP jest przypisany do aplikacji, upewnij się, że porty stale otwarte. Aby wyświetlić porty, wybierz **środowiska usługi aplikacji** > **adresów IP**.  
+Jeśli adres IP przypisany do aplikacji, upewnij się, że porty pozostawić otwarty. Aby zobaczyć porty, wybierz **środowiska App Service Environment** > **adresów IP**.  
 
-Wszystkie elementy, które są widoczne w następujące reguły wychodzące są potrzebne, z wyjątkiem ostatniego elementu. Umożliwiają one dostęp sieciowy do zależności ASE, które zostały wymienione w tym artykule. Jeśli zablokujesz ich z ASE przestanie działać. Ostatni element na liście umożliwia Twojej ASE do komunikowania się z innymi zasobami w sieci wirtualnej.
+Wszystkie elementy, które są wyświetlane w następujących reguł ruchu wychodzącego są potrzebne, z wyjątkiem ostatniego elementu. Umożliwiają one dostęp sieciowy do zależności środowiska ASE, które zostały podane wcześniej w tym artykule. Jeśli zablokujesz któryś z nich Twoje środowisko ASE przestanie działać. Ostatni element na liście umożliwia środowiska ASE do komunikowania się z innymi zasobami w sieci wirtualnej.
 
-![Zasady zabezpieczeń dla ruchu wychodzącego][5]
+![Reguły zabezpieczeń dla ruchu wychodzącego][5]
 
-Po zdefiniowaniu grup NSG, należy je przypisać do podsieci, która jest Twoje ASE na. Jeśli nie pamiętasz ASE sieci wirtualnej lub podsieci, można to sprawdzić na stronie portalu ASE. Aby przypisać grupie NSG do podsieci, przejdź do podsieci interfejsu użytkownika, a następnie wybierz grupy NSG.
+Po zdefiniowaniu sieciowych grup zabezpieczeń, należy je przypisać do podsieci, która znajduje się w środowisku ASE. Jeśli nie pamiętasz środowiska ASE w sieci wirtualnej lub podsieci, można go było wyświetlić na stronie portalu środowiska ASE. Aby przypisać sieciowej grupy zabezpieczeń do podsieci, przejdź do podsieci interfejsu użytkownika, a następnie wybierz sieciową grupę zabezpieczeń.
 
 ## <a name="routes"></a>Trasy ##
 
-Wymuszanie tunelowania jest w przypadku wartości trasy w sieci wirtualnej co ruchu wychodzącego nie przejść bezpośrednio do Internetu, ale innym miejscu, takich jak brama usługi ExpressRoute lub urządzenie wirtualne.  Jeśli musisz skonfigurować Twoje ASE w taki sposób, a następnie przeczytaj dokument na [Konfigurowanie środowiska usługi aplikacji przy użyciu tunelowania wymuszonego][forcedtunnel].  Ten dokument informują opcje dostępne do pracy z ExpressRoute, jak i wymuszanie tunelowania.
+Wymuszone tunelowanie ma miejsce podczas skonfigurować trasy w sieci wirtualnej, dzięki czemu ruch wychodzący nie przejdź bezpośrednio do Internetu, ale gdzie indziej, takie jak brama usługi ExpressRoute lub urządzenie wirtualne.  Jeśli chcesz skonfigurować środowisko ASE w taki sposób, a następnie odczytać dokument na [Konfigurowanie środowiska App Service Environment przy wymuszonego tunelowania][forcedtunnel].  W tym dokumencie poinformuje, dostępne opcje Aby pracować z usługi ExpressRoute i wymuszonym tunelowaniem.
 
-Po utworzeniu ASE w portalu również utworzymy zestaw tabel tras w tej podsieci, który jest tworzony przez ASE.  Te trasy po prostu, że na wysyłanie ruchu wychodzącego bezpośrednio do Internetu.  
-Aby ręcznie utworzyć tego samego tras, wykonaj następujące kroki:
+Po utworzeniu środowiska ASE w witrynie portal musimy również utworzyć zbiór tabel tras w podsieci, która jest tworzona przy użyciu środowiska ASE.  Te trasy po prostu, że na wysyłanie ruchu wychodzącego bezpośrednio do Internetu.  
+Aby ręcznie utworzyć ten sam tras, wykonaj następujące kroki:
 
-1. Przejdź do portalu Azure. Wybierz **sieci** > **tabel tras**.
+1. Przejdź do witryny Azure Portal. Wybierz **sieć** > **tabele tras**.
 
-2. Utwórz nową tabelę tras w tym samym regionie co sieci wirtualnej.
+2. Utwórz nową tabelę tras w tym samym regionie, co sieć wirtualna.
 
-3. W tabeli routingu interfejsu użytkownika, zaznacz **tras** > **Dodaj**.
+3. W ramach tabeli tras interfejsu użytkownika, zaznacz **trasy** > **Dodaj**.
 
-4. Ustaw **następnego przeskoku typu** do **Internet** i **prefiks adresu** do **0.0.0.0/0**. Wybierz pozycję **Zapisz**.
+4. Ustaw **typu następnego przeskoku** do **Internet** i **prefiksu adresu** do **0.0.0.0/0**. Wybierz pozycję **Zapisz**.
 
-    Zostanie wyświetlony ekran podobny do następującego:
+    Zostanie wyświetlony podobny do poniższego:
 
     ![Trasy funkcjonalności][6]
 
-5. Po utworzeniu nowej tabeli tras, przejdź do podsieci, która zawiera ASE użytkownika. Wybierz z tabeli tras z listy w portalu. Po zapisaniu zmian, należy następnie zobacz grupy NSG i oznaczane przy użyciu podsieci trasy.
+5. Po utworzeniu nowej tabeli tras, przejdź do podsieci, która zawiera środowiska ASE. Wybieranie tabeli tras z listy w portalu. Po zapisaniu zmian, następnie powinny sieciowe grupy zabezpieczeń i tras oznaczane przy użyciu podsieci.
 
-    ![Tras i grupy NSG][7]
+    ![Sieciowe grupy zabezpieczeń i trasy][7]
 
 ## <a name="service-endpoints"></a>Punkty końcowe usługi ##
 
 Punkty końcowe usługi pozwalają ograniczyć dostęp do usług wielodostępnych do zestawu sieci wirtualnych i podsieci platformy Azure. Więcej informacji na temat punktów końcowych usługi zawiera dokumentacja [punktów końcowych usługi sieci wirtualnej][serviceendpoints]. 
+
+   > [!NOTE]
+   > Punkty końcowe usługi z bazą danych SQL nie działają ze środowiskiem ASE w regionach dla instytucji rządowych Stanów Zjednoczonych. Te informacje są prawidłowe tylko w regionach świadczenia publicznej usługi Azure.
 
 Po włączeniu punktów końcowych usługi w zasobie niektóre trasy są utworzone z wyższym priorytetem niż wszystkie inne trasy. Jeśli używasz punktów końcowych usługi w środowisku ASE z wymuszonym tunelowaniem, ruch związany z zarządzaniem usługami Azure SQL i Azure Storage nie będzie tunelowany w sposób wymuszony. 
 

@@ -1,61 +1,61 @@
 ---
-title: Omówienie funkcji w wersji zapoznawczej usługi Azure Machine Learning | Dokumentacja firmy Microsoft
-description: Omówienie funkcji w wersji zapoznawczej usługi Azure Machine Learning, takich jak subskrypcje, kont, obszarów roboczych, projekty itd.
+title: Omówienie pojęć dotyczących usługi Azure Machine Learning w wersji zapoznawczej | Dokumentacja firmy Microsoft
+description: Omówienie pojęć dotyczących funkcje w wersji zapoznawczej usługi Azure Machine Learning, np. subskrypcji, kont, obszarów roboczych, projekty itd.
 services: machine-learning
 author: serinakaye
 ms.author: serinak
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: d448e1c464ed966cd9e742516adebe963acf13b7
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: f63b9c077e64b642adfd8c7eed5026563eb6319a
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832295"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644985"
 ---
-# <a name="azure-machine-learning---concepts"></a>Uczenie maszynowe Azure — pojęcia
+# <a name="azure-machine-learning---concepts"></a>Usługa Azure Machine Learning — pojęcia
 
-W tym artykule definiuje oraz opisano pojęcia, które trzeba znać do użycia usługi Azure Machine Learning. 
+W tym artykule definiuje i opisano pojęcia, które są potrzebne do używania usługi Azure Machine Learning. 
 
 ![Hierarchia pojęcia](media/overview-general-concepts/hierarchy.png)
 
-- **Subskrypcja:** subskrypcji platformy Azure przydziela dostęp do zasobów na platformie Azure. Ponieważ usługi Azure Machine Learning jest ściśle zintegrowana z obliczeń, magazynu i wielu innych zasobów platformy Azure i usług, Workbench wymaga, że każdy użytkownik ma dostęp do ważnej subskrypcji platformy Azure. Użytkownicy muszą mieć także wystarczających uprawnień w ramach danej subskrypcji do utworzenia zasobów.
+- **Subskrypcja:** subskrypcji platformy Azure daje dostęp do zasobów na platformie Azure. Ponieważ usługi Azure Machine Learning jest ściśle zintegrowana z obliczeń, magazynowania oraz wiele innych zasobów platformy Azure i usług, aplikacji Workbench wymaga, że każdy użytkownik ma dostęp do ważnej subskrypcji platformy Azure. Użytkownicy muszą również mieć wystarczających uprawnień w ramach tej subskrypcji do utworzenia zasobów.
 
 
-- **Konto eksperymenty:** eksperymenty konto jest zasobem platformy Azure wymagane przez uczenie Maszynowe Azure i rozliczeń pojazdów. Zawiera ona obszarów roboczych, które z kolei zawierają projekty. Można dodać wielu użytkowników, określany jako _licencje na stanowiska_, do konta eksperymenty. Aby można było używać usługi Azure ML Workbench do uruchomienia eksperymenty musi mieć dostęp do konta eksperymenty. 
+- **Konto eksperymentowania:** konta eksperymentowania jest zasobem platformy Azure wymaganych przez uczenie Maszynowe Azure i rozliczeń vehicle. Zawiera ona swoich obszarów roboczych, które z kolei zawierają projekty. Można dodawać wielu użytkowników, nazywane _stanowiska_, do konta eksperymentowania. Musi mieć dostęp do konta eksperymentowania, aby można było używać aplikacji Azure ML Workbench do uruchamiania eksperymentów. 
 
 
-- **Model konto zarządzania** konto zarządzania modelu jest również zasobem platformy Azure wymagane przez uczenie Maszynowe Azure do zarządzania modeli. Służy on do rejestracji modeli i manifestów, tworzenie usług sieci web konteneryzowanych i wdrażać je lokalnie lub w chmurze. Możliwe jest również inne rozliczeń mechanizm uczenie Maszynowe Azure.
+- **Konto zarządzania modelami** konta zarządzania modelami jest również zasobu platformy Azure wymaganych przez uczenie Maszynowe Azure do zarządzania modelami. Służy on do rejestrowania manifesty i modeli, tworzenie usług konteneryzowanych sieci web i wdrażać je lokalnie lub w chmurze. Jest to również inne pojazdu rozliczeniowego Azure ML.
 
 
-- **Obszar roboczy:** obszaru roboczego jest podstawowym składnikiem do udostępniania i współpracy w uczenie Maszynowe Azure. Projekty są pogrupowane w obszarze roboczym. Obszar roboczy można następnie udostępniać wielu użytkowników, które zostały dodane do konta eksperymenty.
+- **Obszar roboczy:** obszar roboczy jest podstawowym składnikiem udostępniania i współpracy w usłudze Azure ML. Projekty są zgrupowane w obszarze roboczym. Obszar roboczy następnie mogą być udostępniane wielu użytkowników, które zostały dodane do konta eksperymentowania.
 
 
-- **Projekt:** w usłudze Azure Machine Learning projektu jest kontenerem logicznym dla wszystkich wykonywanych zadań i rozwiązać problem. Jest on mapowany na jeden folder plików na dysku lokalnym i można do niego dodać dowolne pliki lub podfoldery. Projekt opcjonalnie może być skojarzony z repozytorium Git do kontroli źródła i współpracy.  
+- **Projekt:** w usłudze Azure Machine Learning projekt jest kontenerem logicznym dla wszystkich zadań wykonywanych w celu rozwiązania problemu. Jest on mapowany na jeden folder plików na dysku lokalnym i można do niego dodać dowolne pliki lub podfoldery. Projekt może być opcjonalnie skojarzony z repozytorium Git do kontroli źródła i współpracy.  
 
-- **Eksperymentu:** Azure ml eksperymentu jest jeden lub więcej plików kodu źródłowego, wykonanych z jeden punkt wejścia. Może on zawierać zadań, takich jak wprowadzanie danych, engineering funkcji, szkolenia modelu lub modelu oceny. Obecnie uczenie Maszynowe Azure obsługuje Python lub PySpark tylko eksperymentów.
-
-
-- **Model:** w usłudze Azure Machine Learning modeli odnosi się do produktu eksperymentu uczenia maszynowego. Są one przepisami która poprawnie zastosowane do danych, wygenerowane przewidywane wartości. Modele można wdrożyć testowym lub produkcyjnym środowisk i używane do oceniania nowych danych. Raz w środowisku produkcyjnym, modeli może być monitorowane pod kątem odejście danych dotyczących wydajności i i retrained zgodnie z wymaganiami. 
-
-- **Cel obliczeniowe:** cel obliczeniowego jest zasób obliczeniowy skonfigurowanego do wykonywania eksperymentów. Można go z komputera lokalnego (Windows lub macOS), w kontenerze Docker działającym na komputerze lokalnym lub maszynie wirtualnej systemu Linux na platformie Azure lub klastra Spark w usłudze HDInsight.
+- **Eksperymentu:** eksperymentu usługi uczenie Maszynowe Azure jest co najmniej jeden plik kodu źródłowy, które mogą być wykonywane z pojedynczego punktu wejścia. Może on zawierać zadania, takie jak pozyskiwanie danych, technicznego opracowywania funkcji, szkolenie modelu lub model oceny. Obecnie usługa uczenie Maszynowe Azure obsługuje język Python lub PySpark experiments tylko.
 
 
-- **Instalacja:** usługi eksperymenty definiuje Uruchom jako przez czas ich istnienia wykonywania eksperymentów w celu obliczeń. Uczenie Maszynowe Azure automatycznie przechwytuje informacje dotyczące każdego przebiegu i przedstawia całą historię danego doświadczenia w formularzu Historia uruchomień.
+- **Model:** w usłudze Azure Machine Learning, modele odwoływać się do wynikiem eksperymentu uczenia maszynowego. Są one przepisy, gdy poprawnie zastosowane do danych, należy wygenerować przewidywane wartości. Modele mogą być wdrażane testowym lub produkcyjnym środowisku i używane do oceniania nowych danych. Raz w środowisku produkcyjnym, modeli może być monitorowane pod kątem dryfu dane dotyczące wydajności i i retrained zgodnie z wymaganiami. 
 
-- **Środowisko:** w usłudze Azure Machine Learning środowisku oznacza określonego zasobów obliczeniowych, używany do wdrażania i zarządzania nimi modeli. Może być komputer lokalny, Maszynę wirtualną systemu Linux na platformie Azure lub klastrze Kubernetes uruchomionych w usłudze kontenera platformy Azure, w zależności od kontekstu i konfiguracji. Model jest obsługiwana w kontenerze Docker działającym w takich środowiskach i widoczne jako punkt końcowy interfejsu API REST.
-
-
-- **Model zarządzanego:** Model zarządzania umożliwia wdrażanie modeli jako usługi sieci web, zarządzanie różnymi wersjami modeli i monitorowanie ich wydajności i metryki. Modele zarządzane są rejestrowane przy użyciu konta Azure Machine Learning Model zarządzania.
-
-- **Manifesty:** system zarządzania modelu wdrażania modelu w środowisku produkcyjnym, zawiera manifest, która może obejmować modelu, zależności oceniania skryptu, przykładowych danych i schematu. Plik manifestu to przepisu używany do tworzenia obrazu kontenera Docker. Za pomocą modelu zarządzania można automatycznie wygenerować manifesty, utworzyć różne wersje i zarządzanie te manifesty. 
+- **Obliczeniowych elementów docelowych:** obliczeniowego elementu docelowego jest zasobu obliczeniowego, skonfigurowanego do wykonywania eksperymentów. Można go z komputera lokalnego (Windows lub macOS), w kontenerze platformy Docker działającym na komputerze lokalnym lub na maszynie wirtualnej systemu Linux na platformie Azure lub klastra usługi HDInsight Spark.
 
 
-- **Obrazy:** manifestów służy do generowania (i ponownie wygenerować) obrazy usługi Docker. Konteneryzowanych obrazy usługi Docker Utwórz elastyczności, aby uruchomić je w chmurze na maszynach lokalnych lub na urządzeniu IoT. Obrazy są niezależne i obejmują wszystkie zależności wymagane dla nowych danych z modelami oceniania. 
+- **Uruchom:** usługa eksperymentowanie w usłudze definiuje przebiegu, jak okres istnienia wykonywania eksperymentów w obliczeniowego elementu docelowego. Uczenie Maszynowe systemu Azure znajdują się informacje dotyczące każdego uruchomienia automatycznie i przedstawia całą historię określonego eksperymentu w formie historii uruchamiania.
 
-- **Usługi:** Model zarządzania umożliwia wdrażanie modeli jako usługi sieci web. Usługa sieci Web logiki i zależności są hermetyzowane w obrazie. Każda usługa sieci Web jest zestawem kontenerów, gotowy obraz do żądań obsługi do podanego adresu URL. Usługi sieci web będzie traktowany jako pojedynczego wdrożenia.
+- **Środowisko:** w usłudze Azure Machine Learning, środowisko oznacza określonego zasobów obliczeniowych, który służy do wdrażania modeli i zarządzania nimi. Może być komputer lokalny, Maszynę wirtualną systemu Linux na platformie Azure lub klastra Kubernetes uruchomionego w usłudze Azure Container Service, w zależności od kontekstu i konfiguracji. Model jest hostowana w kontenerze platformy Docker, działających w tych środowiskach i udostępniane jako punktu końcowego interfejsu API REST.
+
+
+- **Model zarządzany:** Zarządzanie modelami umożliwia wdrażanie modeli jako usług sieci web, zarządzanie różnymi wersjami modeli oraz monitorowanie ich wydajności i metryki. Modele zarządzane są rejestrowane przy użyciu konta Zarządzanie modelami w usłudze Azure Machine Learning.
+
+- **Manifesty:** system zarządzania modelami służy do wdrażania modelu w środowisku produkcyjnym, zawiera manifest, który może obejmować modelu, zależności, skrypt oceniania, przykładowe dane i schematu. Manifest jest przepisu, użyty do utworzenia obrazu kontenera platformy Docker. Za pomocą zarządzania modelami, możesz automatycznie wygenerować manifest, utworzyć różne wersje i zarządzać te manifesty. 
+
+
+- **Obrazy:** manifesty można użyć do wygenerowania (i ponowne wygenerowanie) obrazy platformy Docker. Konteneryzowane obrazów platformy Docker Utwórz elastyczność, aby uruchomić je w chmurze, na komputerach lokalnych lub na urządzeniu IoT. Obrazy są niezależne i zawierają wszystkie zależności wymagane do oceniania nowe dane przy użyciu modeli. 
+
+- **Services:** Zarządzanie modelami umożliwia wdrażanie modeli jako usług sieci web. Usługa sieci Web logiki i zależności są umieszczane na obrazie. Każda usługa sieci Web to zestaw kontenerów oparte na obraz wszystko gotowe do obsługi żądań dla danego adresu URL. Usługa internetowa jest liczona jako pojedyncze wdrożenie.

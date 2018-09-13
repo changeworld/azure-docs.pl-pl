@@ -1,30 +1,30 @@
 ---
-title: Użyj narzędzi AI Azure IoT Edge | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób użycia zestawu narzędzi AI Azure IoT Edge.
+title: Użyj zestaw narzędzi SI dla usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób używania zestaw narzędzi SI dla usługi Azure IoT Edge.
 services: machine-learning
 author: tedway
 ms.author: tedway
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 2/1/2018
-ms.openlocfilehash: b4d0d50f8fd90dfbe15b00246831da248cfff104
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: f5905f9f5e8524e4ae1d330c501d08d774955202
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34832554"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644657"
 ---
-# <a name="use-the-ai-toolkit-for-azure-iot-edge"></a>Użyj narzędzi AI Edge IoT Azure
+# <a name="use-the-ai-toolkit-for-azure-iot-edge"></a>Użyj zestaw narzędzi SI dla usługi Azure IoT Edge
 
-Przełącz zasilania sztucznego analizy, uczenie maszynowe i zaawansowane metody analizy krawędzi. Narzędzi AI Azure IoT Edge mogą wdrażać AI i machine learning, w którym mieszka Twoje dane. Operacjonalizować model jako kontener Docker z interfejsu API REST, a następnie Wypchnij modelu do urządzenia z Centrum IoT Azure. AI Toolkit Edge IoT Azure oferuje analizy, elastyczne obliczeniowej i mocy chmury do miejsca, z ograniczoną sporadyczne, lub brak łączności.
+Korzystaj z zaawansowanych możliwości sztucznej inteligencji, uczenia maszynowego i zaawansowanej analizy na urządzeniach brzegowych. Dzięki zestaw narzędzi SI dla usługi Azure IoT Edge możesz wdrożyć sztucznej Inteligencji i usługi machine learning, w których są przechowywane dane. Operacjonalizowanie modelu jako kontener platformy Docker przy użyciu interfejsu API REST, a następnie Wypchnij modelu na urządzeniu usługi edge, przy użyciu usługi Azure IoT Hub. Zestaw narzędzi SI dla usługi Azure IoT Edge zapewnia analizy i elastyczność wystąpień obliczeniowych, a moc chmury do miejsc za pomocą ograniczonego sporadycznie, lub brak łączności.
 
-Toolkit AI Edge IoT Azure to kolekcja skryptów, kodu i kontenerów do wdrożenia. Przykładami konserwacji predykcyjnej, klasyfikacji obrazu i przetwarzania mowy, a także niestandardowego modelu wdrażania przy użyciu usługi Azure Machine Learning i Centrum IoT Azure. Modele uwzględnionych w zestawie narzędzi programu może być używany jako-, ale wszystkie kod źródłowy i dane są dostępne dla deweloperów dostosować na podstawie swoich potrzeb.
+Zestaw narzędzi SI dla usługi Azure IoT Edge to kolekcja skryptów, kodu i możliwe do wdrożenia kontenerów. Przykłady obejmują konserwacja predykcyjna, Klasyfikacja obrazów i przetwarzanie mowy, a także wdrażanie modelu niestandardowego za pomocą usługi Azure Machine Learning i Azure IoT Hub. Modele dołączone do zestawu narzędzi może być używany jako —, ale wszystkie kod źródłowy i dane są dostępne dla deweloperów dostosować zależnie od ich potrzeb.
 
-Toolkit AI Azure IoT Edge publicznego repozytorium GitHub można znaleźć w folderze [aka.ms/AI-toolkit](http://aka.ms/AI-toolkit).
+Zestaw narzędzi SI dla usługi Azure IoT Edge publicznego repozytorium GitHub znajduje się w temacie [aka.ms / — zestaw narzędzi si](http://aka.ms/AI-toolkit).
 
 
 

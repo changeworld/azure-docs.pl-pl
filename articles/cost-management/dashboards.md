@@ -1,297 +1,300 @@
 ---
-title: Wyświetlić kluczowe metryki w pulpitach nawigacyjnych Azure kosztów zarządzania | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób wyświetlania kluczowych metryk za pomocą pulpitów nawigacyjnych w Azure kosztów zarządzania.
+title: Wyświetlaj kluczowe metryki w pulpitach nawigacyjnych w usłudze Azure Cost Management | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób wyświetlania kluczowych metryk za pomocą pulpitów nawigacyjnych w usłudze Azure Cost Management.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/05/2018
+ms.date: 06/12/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: b1dc2e2eca900ca0ae72329c3c373b2d24f1b2e0
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 4f51598dd2b026f1c3a4b0d763b1547a44eedc7b
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35304098"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644945"
 ---
-# <a name="view-key-cost-metrics-with-dashboards"></a>Klucz widoku koszt metryki za pomocą pulpitów nawigacyjnych
+# <a name="view-key-cost-metrics-with-dashboards"></a>Wyświetl klucz koszt metryki za pomocą pulpitów nawigacyjnych
 
-Pulpity nawigacyjne w Cloudyn zawierają ogólny widok raportów. Pulpity nawigacyjne umożliwiają wyświetlanie koszt kluczowe metryki w ramach jednego widoku. Zapewniają także, że trend firm wyróżnia podejmowanie decyzji biznesowych ważne.
+Pulpity nawigacyjne w rozwiązaniu Cloudyn przedstawia ogólny widok raportów. Pulpity nawigacyjne umożliwiają wyświetlanie kosztów kluczowe metryki w jednym widoku. Zapewniają także, że tendencje biznesowe zaznaczenie, aby pomóc Państwu jak najlepiej istotnych decyzji biznesowych.
 
-Pulpity nawigacyjne są również używane do tworzenia widoków dla osób z innej obowiązki w organizacji, która może obejmować:
+Pulpity nawigacyjne są również używane do tworzenia widoków dla osób z wadami różne obowiązki w Twojej organizacji, która może obejmować:
 
 - Kontroler finansowy
 - Właściciel aplikacji lub projektu
-- DevOps odtwarzania
-- Członkowie kadry kierowniczej
+- Inżynier ds. metodyki DevOps
+- Kierownicy
 
-Pulpity nawigacyjne składają się z elementów widget i każdego widgetu jest zasadniczo miniatur raportu. Kliknij element widget, aby otworzyć raport. Podczas dostosowywania raporty, Zapisz moje raporty i dodawanych do pulpitu nawigacyjnego.
+Pulpity nawigacyjne składają się z elementów widget, a każdy element widget jest zasadniczo Miniatura raportu. Kliknij element widget, aby otworzyć raport. Podczas dostosowywania raportów Zapisz moje raporty i są one dodawane do pulpitu nawigacyjnego.
 
-Pulpit nawigacyjny wersji różnią się dla użytkowników, zarządzania (MSP), Enterprise i Premium Cloudyn. Różnice są określane przez jednostki poziomy dostępu. Aby uzyskać więcej informacji na temat poziomów dostępu, zobacz [poziomy dostępu jednostki](tutorial-user-access.md#entity-access-levels).
+Pulpit nawigacyjny wersji różnią się dla użytkowników, Zarządzanie (MSP), Enterprise i Cloudyn — wersja Premium. Różnice są określane przez jednostki poziomów dostępu. Aby uzyskać więcej informacji na temat poziomów dostępu, zobacz [poziomów dostępu jednostki](tutorial-user-access.md#entity-access-levels).
 
-Dostępność pulpitu nawigacyjnego, zależy od typu konta dostawcy usługi chmury, który jest używany podczas wyświetlania pulpitów nawigacyjnych. Typ danych, dostępna i zebranych przez Cloudyn ma wpływ na raporty w pulpitach nawigacyjnych. Na przykład jeśli nie masz konta usług AWS nie można zobaczyć śledzenie S3 pulpitu nawigacyjnego. Podobnie jeśli nie zostało włączone usługi Azure Resource Manager dostęp do Cloudyn nie można zobaczyć informacje specyficzne dla platformy Azure w Optymalizator elementów widget pulpitu nawigacyjnego.
+Pulpit nawigacyjny dostępność zależy od rodzaju konta dostawcy usługi chmury, która jest używana podczas wyświetlania pulpitów nawigacyjnych. Typ danych dostępna i zebrane przez firmę Cloudyn ma wpływ na raporty w pulpitach nawigacyjnych. Na przykład jeśli nie masz konta usługi AWS następnie nie zobaczysz pulpit nawigacyjny śledzenia S3. Podobnie jeśli nie włączysz dostęp usługi Azure Resource Manager do rozwiązania Cloudyn nie można zobaczyć wszelkie informacje specyficzne dla platformy Azure w elementach widget pulpitu nawigacyjnego optymalizatora.
 
-Można użyć dowolnego z gotowego pulpity nawigacyjne, lub możesz utworzyć własne pulpit nawigacyjny z niestandardowych raportów. Jeśli znasz Cloudyn raportów, zobacz [raporty użycia kosztów zarządzania](use-reports.md).
+Możesz użyć dowolnej gotowej pulpitów nawigacyjnych lub można utworzyć własny pulpit nawigacyjny zawierający dostosowane raporty. Jeśli znasz raportach usługi Cloudyn, zobacz [raporty użycia Cost Management](use-reports.md).
 
-## <a name="create-a-custom-dashboard"></a>Utwórz niestandardowy pulpit nawigacyjny
+## <a name="create-a-custom-dashboard"></a>Tworzenie niestandardowego pulpitu nawigacyjnego
 
-Aby szybko rozpocząć pracę z niestandardowym pulpicie nawigacyjnym, można duplikować istniejącą za pomocą jego właściwości. Następnie możesz ją zmodyfikować, w zależności od potrzeb. Na pulpicie nawigacyjnym, którego chcesz skopiować, kliknij przycisk **Zapisz jako**. Można tylko zduplikować dostosowanych pulpitów nawigacyjnych — nie można zduplikować pulpity nawigacyjne, które są dołączone do Cloudyn.
+Aby szybko rozpocząć pracę z niestandardowego pulpitu nawigacyjnego można zduplikować istniejącą grupę, aby korzystać z jego właściwości. Następnie można zmodyfikować go do własnych potrzeb. Na pulpicie nawigacyjnym, które chcesz skopiować, kliknij **Zapisz jako**. Tylko można duplikować dostosowanych pulpitów nawigacyjnych — nie można zduplikować pulpity nawigacyjne, które są dołączone do rozwiązania Cloudyn.
 
-Aby utworzyć niestandardowy pulpit nawigacyjny:
+Aby utworzyć niestandardowego pulpitu nawigacyjnego:
 
-1. Na stronie głównej kliknij **Dodaj nowy +**. Zostanie wyświetlona strona Mój pulpit nawigacyjny.  
+1. Na stronie głównej kliknij **Dodaj nowe +**. Zostanie wyświetlona strona Mój pulpit nawigacyjny.  
     ![Mój pulpit nawigacyjny](./media/dashboards/my-dashboard.png)
-2. Kliknij przycisk **Dodaj nowy raport**. Zostanie wyświetlone okno Dodawanie raportu.
-3. Wybierz raport, który chcesz dodać do elementu widget pulpitu nawigacyjnego. Widżet jest dodawany do pulpitu nawigacyjnego.
-4. Powtórz poprzednie kroki, aż do pulpitu nawigacyjnego.
-5. Aby zmienić nazwę pulpitu nawigacyjnego, kliknij nazwę pulpitu nawigacyjnego strony głównej pulpitu nawigacyjnego i wpisz nową nazwę.
+2. Kliknij przycisk **Dodaj nowy raport**. Zostanie wyświetlone okno dodawania raportu.
+3. Wybierz raport, który chcesz dodać do elementu widget pulpitu nawigacyjnego. Widżet zostanie dodana do pulpitu nawigacyjnego.
+4. Powtórz te czynności, aż do pulpitu nawigacyjnego.
+5. Aby zmienić nazwę pulpitu nawigacyjnego, kliknij nazwę pulpitu nawigacyjnego na stronie głównej pulpitu nawigacyjnego, a następnie wpisz nową nazwę.
 
-## <a name="modify-a-custom-dashboard"></a>Modyfikowanie niestandardowy pulpit nawigacyjny
+## <a name="modify-a-custom-dashboard"></a>Modyfikowanie niestandardowego pulpitu nawigacyjnego
 
-Podobnie jak utworzenie niestandardowego pulpitu nawigacyjnego, nie można zmodyfikować dołączonego Cloudyn pulpitów nawigacyjnych. Aby zmodyfikować raport niestandardowy pulpit nawigacyjny:
+Takie jak utworzenie niestandardowego pulpitu nawigacyjnego, nie można zmodyfikować na pulpitach nawigacyjnych zawartych w rozwiązaniu cloudyn. Aby zmodyfikować raport niestandardowy pulpit nawigacyjny:
 
-1. Na pulpicie nawigacyjnym znaleźć raportu chcesz zmodyfikować, a następnie kliknij przycisk **Edytuj**. Zostanie wyświetlony raport.
-2. Wprowadź wymagane zmiany do raportu i kliknij przycisk **zapisać**. Raport zostanie zaktualizowana i zawiera zmiany.
+1. Na pulpicie nawigacyjnym znaleźć raport, aby zmodyfikować, a następnie kliknij przycisk **Edytuj**. Zostanie wyświetlony raport.
+2. Wprowadź wymagane zmiany w raporcie i kliknij przycisk **Zapisz**. Raport jest zaktualizowana i pojawią się wprowadzone zmiany.
 
-## <a name="share-a-custom-dashboard"></a>Udostępnianie niestandardowy pulpit nawigacyjny
+## <a name="share-a-custom-dashboard"></a>Udostępnianie niestandardowego pulpitu nawigacyjnego
 
-Niestandardowy pulpit nawigacyjny można udostępniać innym użytkownikom _publicznego_ lub _Moje jednostki_. Po udostępnieniu na wartość publiczne, wszyscy użytkownicy mogą wyświetlać pulpit nawigacyjny. Tylko użytkownicy z dostępem do bieżącego obiektu można wyświetlić pulpit nawigacyjny po udostępnieniu Moje jednostki. Te kroki, aby udostępnić niestandardowy pulpit nawigacyjny publicznego i Moje jednostki są podobne.
+Niestandardowy pulpit nawigacyjny można udostępnić innym użytkownikom _publicznych_ lub _Moje jednostki_. Po udostępnieniu na wartość publiczne, wszyscy użytkownicy mogą wyświetlać pulpit nawigacyjny. Tylko użytkownicy z dostępem do bieżącej jednostki można wyświetlić pulpit nawigacyjny po udostępnieniu do moich jednostki. Kroki, aby udostępnić niestandardowy pulpit nawigacyjny publicznego i Moje jednostki są podobne.
 
 Aby udostępnić niestandardowy pulpit nawigacyjny do publicznego:
 
 1. Na pulpicie nawigacyjnym kliknij **ustawienia pulpitu nawigacyjnego**. Zostanie wyświetlone okno Ustawienia pulpitu nawigacyjnego.  
     ![Opcje pulpitu nawigacyjnego](./media/dashboards/dashboard-options.png)
-2. W oknie dialogowym Ustawienia pulpitu nawigacyjnego kliknij symbol strzałki, a następnie kliknij przycisk **publicznego**. Zostanie wyświetlone okno dialogowe potwierdzenia publicznego pulpitu nawigacyjnego.
+2. W oknie Ustawienia pulpitu nawigacyjnego kliknij symbol koła strzałkę, a następnie kliknij przycisk **publicznych**. Zostanie wyświetlone okno dialogowe potwierdzenia publicznych pulpitu nawigacyjnego.
 3. Kliknij przycisk **tak**. Pulpit nawigacyjny jest teraz dostępne dla innych użytkowników.
 
-## <a name="delete-a-custom-dashboard-report"></a>Usunąć raport niestandardowy pulpit nawigacyjny
+## <a name="delete-a-custom-dashboard-report"></a>Usuwanie raportu niestandardowego pulpitu nawigacyjnego
 
-Możesz usunąć składnika raport niestandardowy z poziomu pulpitu nawigacyjnego. Usunięcie raportu z poziomu pulpitu nawigacyjnego nie powoduje usunięcia raportu na liście raportów. Zamiast tego raportu usunięcie go z pulpitu nawigacyjnego tylko.
+Na pulpicie nawigacyjnym, możesz usunąć składnik niestandardowy raport. Usuwanie raportu z poziomu pulpitu nawigacyjnego nie powoduje usunięcia raportu na liście raportów. Zamiast tego raportu usunięcie go z poziomu pulpitu nawigacyjnego tylko.
 
-Aby usunąć składnik pulpitu nawigacyjnego dla składnika pulpitu nawigacyjnego, kliknij przycisk **usunąć**. Kliknięcie przycisku **usunąć** natychmiast usuwa składnik pulpitu nawigacyjnego.
+Aby usunąć składnik pulpitu nawigacyjnego w składniku pulpitu nawigacyjnego, kliknij przycisk **Usuń**. Klikając **Usuń** natychmiast usuwa składnik pulpitu nawigacyjnego.
 
-## <a name="share-a-dashboard-enterprise"></a>Udostępnianie pulpitu nawigacyjnego (Enterprise)
+## <a name="share-a-dashboard-enterprise"></a>Udostępnianie pulpitu nawigacyjnego (dla wersji Enterprise)
 
-Możesz udostępnić niestandardowe pulpity nawigacyjne dla wszystkich użytkowników w organizacji lub z użytkownikami bieżącego obiektu. Udostępnianie pulpitu nawigacyjnego można daje szybki Widok ogólny kluczowego wskaźnika wydajności. Udostępnianie pulpitu nawigacyjnego, automatycznie replikuje pulpitu nawigacyjnego dla wszystkich Cloudyn jednostek/klientów. Zmiany do udostępnionego pulpitu nawigacyjnego są automatycznie aktualizowane.
+Możesz udostępnić niestandardowe pulpity nawigacyjne dla wszystkich użytkowników w Twojej organizacji lub użytkownikom bieżącego obiektu. Udostępnianie pulpitu nawigacyjnego umożliwiają osobom szybki przegląd wysokiego poziomu kluczowego wskaźnika wydajności. Po udostępnieniu pulpitu nawigacyjnego, automatycznie replikuje pulpitu nawigacyjnego do wszystkich Cloudyn jednostek/klientów. Zmiany do udostępnionego pulpitu nawigacyjnego są automatycznie aktualizowane.
 
-Aby udostępnić pulpit nawigacyjny wszystkich użytkowników, w tym podjednostek:
-
-1. Na stronie głównej pulpitu nawigacyjnego kliknij **Edytuj**.
-2. Kliknij przycisk **udziału** , a następnie wybierz **publicznego**.
-3. Zostanie wyświetlone okno potwierdzenia globalne publicznego pulpitu nawigacyjnego.
-4. Kliknij przycisk **tak** można ustawić jako globalny publicznego pulpit nawigacyjny pulpitu nawigacyjnego.
-
-Aby udostępnić pulpit nawigacyjny z wszystkich użytkowników bieżącego obiektu:
+Aby udostępnić pulpit nawigacyjny wszystkich użytkowników w tym podjednostek:
 
 1. Na stronie głównej pulpitu nawigacyjnego kliknij **Edytuj**.
+2. Kliknij przycisk **udziału** , a następnie wybierz **publicznych**.
+3. Zostanie wyświetlone okno potwierdzenia globalne publicznych pulpitu nawigacyjnego.
+4. Kliknij przycisk **tak** można ustawić pulpit nawigacyjny jako globalne publicznych pulpitu nawigacyjnego.
+
+Aby udostępnić pulpit nawigacyjny wszystkim użytkownikom bieżąca jednostka:
+
+1. Ze strony głównej pulpitu nawigacyjnego, kliknij przycisk **Edytuj**.
 2. Kliknij przycisk **udziału** , a następnie wybierz **Moje jednostki**.
-3. Kliknij przycisk **tak** można ustawić jako publiczny pulpit nawigacyjny pulpitu nawigacyjnego.
+3. Kliknij przycisk **tak** można ustawić pulpit nawigacyjny jako publiczny pulpitu nawigacyjnego.
 
-## <a name="duplicate-a-custom-dashboard"></a>Zduplikowana niestandardowy pulpit nawigacyjny
+## <a name="duplicate-a-custom-dashboard"></a>Duplikowanie niestandardowego pulpitu nawigacyjnego
 
-Podczas tworzenia nowego pulpitu nawigacyjnego, można użyć właściwości podobne z istniejącego pulpitu nawigacyjnego. Można duplikować pulpit nawigacyjny, aby utworzyć nowy.
+Podczas tworzenia nowego pulpitu nawigacyjnego, możesz chcieć użyć podobnych właściwości z istniejącego pulpitu nawigacyjnego. Można zduplikować pulpitu nawigacyjnego, aby utworzyć nową.
 
-Można tylko zduplikowane niestandardowych pulpitów nawigacyjnych. Nie można duplikować standardowe pulpitów nawigacyjnych.
+Tylko można duplikować niestandardowych pulpitów nawigacyjnych. Nie można duplikować standardowa pulpitów nawigacyjnych.
 
-Aby zduplikować (klonowania) niestandardowego pulpitu nawigacyjnego.
+Duplikowanie pulpitu nawigacyjnego (Klonuj) niestandardowego:
 
-1. Na pulpicie nawigacyjnym, które mają zostać zduplikowane, kliknij przycisk **Zapisz jako**. Otwiera nowy pulpit nawigacyjny z taką samą nazwę i numer.
-2. Zmień nazwę zduplikowanych pulpitu nawigacyjnego i dowolnie modyfikować.
-
-— Lub —
-
-1. W sekcji Ustawienia pulpitu nawigacyjnego kliknij **Zapisz jako** w wierszu pulpit nawigacyjny, który ma być zduplikowany.
-2. Otwiera zduplikowanych pulpitu nawigacyjnego.
-3. Zmień nazwę pulpitu nawigacyjnego i dowolnie modyfikować.
-
-## <a name="set-a-default-dashboard"></a>Ustaw domyślnego pulpitu nawigacyjnego
-
-Dowolnego pulpitu nawigacyjnego można ustawić jako domyślny. Ustawienie domyślne, ułatwia są wyświetlane jako karty lewej na liście Karta pulpitu nawigacyjnego. Wyświetla domyślnego pulpitu nawigacyjnego, kiedy Otwórz Cloudyn portal.
-
-- Chcesz ustawić jako domyślny, a następnie kliknij kartę Pulpit nawigacyjny **domyślne** po prawej stronie.
+1. Na pulpicie nawigacyjnym, którą chcesz zduplikować kliknij **Zapisz jako**. Nowy pulpit nawigacyjny zostanie otwarty z taką samą nazwę i numer.
+2. Zmień nazwę zduplikowanych pulpit nawigacyjny i zmodyfikuj go, jak chcesz.
 
 — Lub —
 
-1. Kliknij przycisk **ustawienia pulpitu nawigacyjnego** Aby wyświetlić listę dostępnych pulpitów nawigacyjnych i wybierz pulpit nawigacyjny, który chcesz ustawić jako domyślny.  
+1. W ustawieniach pulpitu nawigacyjnego kliknij **Zapisz jako** w wierszu, którą chcesz zduplikować pulpitu nawigacyjnego.
+2. Zduplikowane pulpit nawigacyjny zostanie otwarty.
+3. Zmienianie nazwy pulpitu nawigacyjnego i zmodyfikuj go, jak chcesz.
+
+## <a name="set-a-default-dashboard"></a>Ustaw domyślny pulpit nawigacyjny
+
+Można ustawić dowolny pulpit nawigacyjny jako domyślne. Ustawienie domyślne sprawia, że są wyświetlane jako karty skrajnie po lewej na liście karty Pulpit nawigacyjny. Wyświetla domyślny pulpit nawigacyjny, kiedy otworzyć Cloudyn portal.
+
+- Czy chcesz ustawić jako domyślne, a następnie kliknij kartę pulpitu nawigacyjnego **domyślne** po prawej stronie.
+
+— Lub —
+
+1. Kliknij przycisk **ustawienia pulpitu nawigacyjnego** zapoznać się z listą dostępnych pulpitów nawigacyjnych i wybierz pulpit nawigacyjny, który chcesz ustawić jako domyślny.  
     ![Opcje pulpitu nawigacyjnego](./media/dashboards/dashboard-options.png)
-2. Kliknij przycisk **domyślne** w wierszu pulpitu nawigacyjnego. Zostanie wyświetlone okno potwierdzenia domyślne pulpitu nawigacyjnego.
-3. Kliknij przycisk **Yes** (Tak). Pulpit nawigacyjny jest ustawioną wartość domyślną.
+2. Kliknij przycisk **domyślne** w wierszu pulpitu nawigacyjnego. Zostanie wyświetlone okno potwierdzenia domyślny pulpit nawigacyjny.
+3. Kliknij przycisk **Yes** (Tak). Pulpit nawigacyjny jest ustawiona jako domyślna.
 
 ## <a name="management-dashboard"></a>Pulpit nawigacyjny zarządzania
-Zarządzanie (lub pulpit nawigacyjny MSP dla użytkowników MSP) pulpit nawigacyjny zawiera najważniejsze funkcje typów głównego raportu.  
+Zarządzanie (lub MSP pulpitu nawigacyjnego, aby użytkownicy MSP) pulpit nawigacyjny zawiera najważniejsze typy głównego raportu.  
 ![Pulpit nawigacyjny zarządzania](./media/dashboards/management-dash.png)
 
-### <a name="cost-entity-summary-enterprise-only"></a>Podsumowanie kosztów jednostki (tylko wersja Enterprise)
-Tego elementu widget zawiera podsumowanie jednostki zarządzanej kosztów, w tym liczbę jednostek i liczby kont.
-- Kliknij przycisk elementu widget, aby otworzyć raport szczegóły przedsiębiorstwa.
+### <a name="cost-entity-summary-enterprise-only"></a>Podsumowanie jednostki kosztu (tylko wersja Enterprise)
+Ten element widget zawiera podsumowanie jednostki kosztu zarządzanych, w tym liczbę jednostek i liczbę kont.
+- Kliknij element widget, aby otworzyć raport Enterprise — szczegóły.
 
-### <a name="cost-over-time"></a>Koszt wraz z upływem czasu
-Tego elementu widget mogą pomóc w miejscu trendów kosztów. Zawiera opis koszt w ostatnim dniu oparte na tendencji w ciągu ostatnich 30 dni.
-- Kliknij element widget, aby otworzyć raport rzeczywisty koszt w miarę upływu czasu, aby wyświetlić i filtrować dodatkowe szczegóły.
+### <a name="cost-over-time"></a>Koszt w funkcji czasu
+Ten element widget może pomóc wykryć trendy związane z kosztami. Zawiera opis koszt w ciągu ostatniego dnia w oparciu trendów z ostatnich 30 dni.
+- Kliknij element widget, aby otworzyć raport rzeczywisty koszt względem czasu, aby wyświetlić i filtrowania dodatkowych szczegółów.
 
-### <a name="asset-controller"></a>Kontroler zasobów
-Tego elementu widget prezentuje liczba uruchomionych wystąpień z poprzedniego dnia powyżej trend użycie w ciągu ostatnich 30 dni.
-- Kliknij element widget, aby otworzyć pulpit nawigacyjny kontrolera zasobów.
+### <a name="asset-controller"></a>Kontroler aktywów
+Ten element widget wyróżnia liczby uruchomionych wystąpień z poprzedniego dnia, powyżej trendu użycia z ostatnich 30 dni.
+- Kliknij element widget, aby otworzyć pulpit nawigacyjny kontroler aktywów.
 
-### <a name="unused-ri-detector"></a>Wykrywacz RI nieużywane
-Tego elementu widget prezentuje liczbę Amazon EC2 zastrzeżenia nieużywane.
-- Kliknij przycisk elementu widget, aby otworzyć raport aktualnie nieużywane rezerwacji, możesz przeglądać nieużywane zastrzeżenia można modyfikować.
+### <a name="unused-ri-detector"></a>Czujnik nieużywanych Wystąpień RI
+Ten element widget wyróżnia liczba Amazon EC2 nieużywanych rezerwacji.
+- Kliknij element widget można otworzyć raportu obecnie nieużywane rezerwacje, w którym można zobaczyć nieużywane rezerwacje można modyfikować.
 
-### <a name="cost-by-service"></a>Koszt przez usługę
-Tego elementu widget prezentuje amortyzowanego koszty przez usługę w ciągu ostatnich 30 dni. Umieść kursor nad wykresu kołowego, aby zobaczyć koszty dla danej usługi.
-- Kliknij przycisk elementu widget, aby otworzyć raport Rzeczywiste analizy kosztów.
+### <a name="cost-by-service"></a>Koszt według usługi
+Ten element widget wyróżnia zamortyzowany koszt przez usługę w ciągu ostatnich 30 dni. Umieść kursor nad wykresu kołowego, aby zobaczyć koszty dla danej usługi.
+- Kliknij element widget, aby otworzyć raport analiza rzeczywistego kosztu.
 
 ### <a name="potential-savings"></a>Potencjalne oszczędności
-Tego elementu widget zawiera typ wystąpienia cennik zalecenia dotyczące Amazon EC2 i Amazon usług pulpitu zdalnego.
-- Kliknij przycisk Otwórz element widget raportu analizy oszczędności. Wyświetla listę według typów wystąpienia z potencjalne oszczędności kosztów.
+Ten element widget zawiera typ wystąpienia ceny zaleceniami dotyczącymi usług Amazon EC2 i Amazon RDS.
+- Kliknij przycisk Otwórz element widget raport analizy oszczędności. Wyświetla listę według typów wystąpień z potencjalne oszczędności kosztów.
 
-### <a name="compute-instances---daily-trend"></a>Obliczenia bazy danych wystąpienia - dzienne trendy
-Tego elementu widget Wyświetla aktywne wystąpienia według typu, w ciągu ostatnich 30 dni.
-- Kliknij element widget, aby otworzyć raport wystąpień w czasie, w którym można zobaczyć podział wszystkich wystąpień uruchomiony w ciągu ostatnich 30 dni.
+### <a name="compute-instances---daily-trend"></a>Wystąpienia obliczeniowe — Trend dzienny
+Ten element widget Wyświetla aktywne wystąpienia według typu, w ciągu ostatnich 30 dni.
+- Kliknij element widget, aby otworzyć raport wystąpień w czasie, w którym można zobaczyć podział wszystkich wystąpień w ciągu ostatnich 30 dni.
 
-### <a name="storage-by-department"></a>Magazyn według działów
-Tego elementu widget Wyświetla usługi Magazyn używany przez działów. Umieść kursor nad wykresu kołowego, aby zobaczyć wykorzystania magazynu według działów.
-- Kliknij przycisk elementu widget, aby otworzyć pulpit nawigacyjny S3 śledzenia.
+### <a name="storage-by-department"></a>Pamięć masowa według działu
+Ten element widget Wyświetla usługi storage używane według działów. Umieść kursor nad wykresu kołowego, aby zobaczyć zużycie miejsca w magazynie według działów.
+- Kliknij element widget, aby otworzyć pulpit nawigacyjny śledzenia S3.
 
-## <a name="cost-controller-dashboard"></a>Koszt kontrolera pulpitu nawigacyjnego
-Pulpit nawigacyjny kontrolera koszt zawiera najważniejsze funkcje alokacji wstępnie ustawionymi kosztów.  
-![Koszt kontrolera pulpitu nawigacyjnego](./media/dashboards/cost-controller-dashboard.png)
+## <a name="cost-controller-dashboard"></a>Koszt pulpit nawigacyjny kontrolera
+Pulpit nawigacyjny kontroler kosztów zawiera najważniejsze funkcje alokacji kosztów wstępnie ustalony.  
+![Koszt pulpit nawigacyjny kontrolera](./media/dashboards/cost-controller-dashboard.png)
 
-### <a name="cost-over-time"></a>Koszt wraz z upływem czasu
-Tego elementu widget pomaga Obserwuj trendy kosztów. Zawiera opis koszt w ostatnim dniu oparte na tendencji w ciągu ostatnich 30 dni.
-- Kliknij element widget, aby otworzyć raport rzeczywisty koszt w miarę upływu czasu, aby wyświetlić i filtrować dodatkowe szczegóły.
+### <a name="cost-over-time"></a>Koszt w funkcji czasu
+Ten element widget pomaga wykryć trendy związane z kosztami. Zawiera opis koszt w ciągu ostatniego dnia w oparciu trendów z ostatnich 30 dni.
+- Kliknij element widget, aby otworzyć raport rzeczywisty koszt względem czasu, aby wyświetlić i filtrowania dodatkowych szczegółów.
 
-### <a name="monthly-cost-trends"></a>Miesięczne trendów kosztów
-Tego elementu widget wyróżnia planowanego amortyzowanego wydatków, oraz rzeczywistymi wydatków od początku miesiąca.
-- Kliknij element widget, aby otworzyć raport bieżącego miesiąca przewidywane kosztów, co zapewnia podsumowania koszt miesięcy do daty.
+### <a name="monthly-cost-trends"></a>Miesięczny koszt trendów
+Ten element widget wyróżnia przewidywanych wydatków zamortyzowany i faktycznego wydatków od początku miesiąca.
+- Kliknij element widget, aby otworzyć raport przewidywany koszt dla bieżącego miesiąca, który zawiera podsumowanie kosztów od początku miesiąca.
 
-Ten raport przedstawia kosztów od początku miesiąca, kosztów poprzedniego miesiąca i kosztów bieżącego miesiąca, utworzyć projekcji. Bieżącego miesiąca szacowany koszt jest obliczany przez dodanie aktualne miesięczny koszt i projekcji. Projekcja jest na podstawie jej kosztu monitorowane w ciągu ostatnich 30 dni.
+Ten raport przedstawia kosztów od początku miesiąca, koszt poprzedniego miesiąca oraz bieżącego miesiąca, przewidywany koszt. Bieżący miesiąc przewidywany koszt jest obliczany przez dodanie aktualne miesięcznych kosztów i projekcji. Rzutowanie jest na podstawie jej kosztu monitorowane w ciągu ostatnich 30 dni.
 
-### <a name="12-month-planner"></a>Planowanie 12 miesięcy
-Tego elementu widget prezentuje koszty planowane w ciągu najbliższych 12 miesięcy i potencjalne oszczędności.
-- Kliknij element widget do otwarcia raportu rocznego planowany koszt.
+### <a name="12-month-planner"></a>Planista 12-miesięcznego
+Ten element widget wyróżnia koszty planowane w ciągu najbliższych 12 miesięcy i potencjalne oszczędności.
+- Kliknij element widget, aby otworzyć raport przewidywany koszt roczny.
 
-### <a name="cost-by-service"></a>Koszt przez usługę
-Tego elementu widget prezentuje amortyzowanego koszty przez usługę w ciągu ostatnich 30 dni.
+### <a name="cost-by-service"></a>Koszt według usługi
+Ten element widget wyróżnia zamortyzowany koszt przez usługę w ciągu ostatnich 30 dni.
 - Umieść kursor nad wykresu kołowego, aby zobaczyć koszty dla danej usługi.
-- Kliknij przycisk elementu widget, aby otworzyć raport Rzeczywiste analizy kosztów.
+- Kliknij element widget, aby otworzyć raport analiza rzeczywistego kosztu.
 
-### <a name="cost-by-account"></a>Koszt konta
-Tego elementu widget prezentuje amortyzowanego koszty według konta w ciągu ostatnich 30 dni.
-- Umieść kursor nad wykresu kołowego, aby zobaczyć koszty dla danego konta.
-- Kliknij przycisk elementu widget, aby otworzyć raport Rzeczywiste analizy kosztów.
+### <a name="cost-by-account"></a>Koszt według konta
+Ten element widget wyróżnia zamortyzowany koszt konta w ciągu ostatnich 30 dni.
+- Umieść kursor nad wykresu kołowego, aby zobaczyć koszty na jednym koncie.
+- Kliknij element widget, aby otworzyć raport analiza rzeczywistego kosztu.
 
-### <a name="cost-trend-by-day"></a>Trend kosztów wg dnia
-Tego elementu widget najważniejsze funkcje wydatków w ciągu ostatnich 30 dni.
+### <a name="cost-trend-by-day"></a>Trend kosztu wg dnia
+Ten element widget najważniejsze funkcje wydatki w ciągu ostatnich 30 dni.
 - Umieść kursor nad wykres słupkowy, aby zobaczyć koszty na dzień.
-- Kliknij element widget, aby otworzyć raport rzeczywisty koszt w miarę upływu czasu.
+- Kliknij element widget, aby otworzyć raport rzeczywisty koszt względem czasu.
 
-### <a name="cost-trend-by-month---last-6-months"></a>Trend kosztów według miesięcy - ostatnich 6 miesięcy
+### <a name="cost-trend-by-month---last-6-months"></a>Trend kosztu za miesiąc — ostatnie 6 miesięcy
 
-Tego elementu widget prezentuje spędzają ostatnich sześciu miesięcy.
+Ten element widget najważniejsze funkcje wydania w ciągu ostatnich sześciu miesięcy.
 - Umieść kursor nad wykres słupkowy, aby zobaczyć koszty miesięcznie.
-- Kliknij element widget, aby otworzyć raport rzeczywisty koszt w miarę upływu czasu.
+- Kliknij element widget, aby otworzyć raport rzeczywisty koszt względem czasu.
 
 ## <a name="asset-controller-dashboard"></a>Pulpit nawigacyjny kontrolera zasobów
 
-Ten pulpit nawigacyjny Wyświetla liczba uruchomionych wystąpień, dyski dostępnych i używanych dystrybucji typów wystąpień i Magazyn informacji.  
+Ten pulpit nawigacyjny Wyświetla liczbę uruchomionych wystąpień, dostępnych i używanych dysków, dystrybucję typów wystąpień i informacje dotyczące magazynu.  
 ![Pulpit nawigacyjny kontrolera zasobów](./media/dashboards/asset-controller-dashboard.png)
 
-### <a name="compute-instances"></a>Obliczenia bazy danych wystąpienia
-Tego elementu widget Wyświetla liczba uruchomionych wystąpień oparte na trendów użycia w ciągu ostatnich 30 dni.
+### <a name="compute-instances"></a>Wystąpienia obliczeniowe
+Ten element widget Wyświetla liczbę uruchomionych wystąpień, w oparciu o trendu użycia z ostatnich 30 dni.
 - Kliknij element widget, aby otworzyć raport wystąpień w czasie.
 
 ### <a name="disks"></a>Dyski
-Tego elementu widget prezentuje całkowitą liczbę i wielkość dysków, które są w użyciu i dostępne.
+Ten element widget wyróżnia łączną liczbą i liczby dysków, które są w użyciu i dostępne.
 - Kliknij element widget, aby otworzyć raport aktywnych dysków.
 
-### <a name="instance-type-distribution"></a>Wystąpienie typu dystrybucji
-Tego elementu widget prezentuje typy wystąpienia wykresu kołowego.
-- Kliknij element widget, aby otworzyć raport dystrybucji wystąpienia, który zawiera podział wystąpień active przez wybrany agregacji.
+### <a name="instance-type-distribution"></a>Rozkład typu wystąpienia
+Ten element widget prezentuje typy wystąpienia wykresu kołowego.
+- Kliknij element widget, aby otworzyć raport wystąpienia dystrybucji, który zawiera podział aktywnego wystąpienia według wybranej agregacji.
 
-### <a name="compute-instances---daily-trend"></a>Obliczenia bazy danych wystąpienia - dzienne trendy
-Tego elementu widget prezentuje wystąpienia obliczeniowe (dodatkowych zastrzeżone i na żądanie) dziennie w ciągu ostatnich 30 dni.
-- Umieść kursor nad wykres tak, aby wyświetlić liczbę wystąpień obliczeń, na typ na dzień.
+### <a name="compute-instances---daily-trend"></a>Wystąpienia obliczeniowe — Trend dzienny
+Ten element widget wyróżnia wystąpień obliczeniowych (narzędzia spot, zastrzeżone i na żądanie) dziennie w ciągu ostatnich 30 dni.
+- Umieść kursor nad wykresie, aby wyświetlić liczbę wystąpień obliczeniowych, na typ dziennie.
 - Kliknij element widget, aby otworzyć raport wystąpień w czasie.
 
-### <a name="all-buckets-s3"></a>Wszystkie pakiety (S3)
-Tego elementu widget wyróżnia całkowita ilość miejsca S3 i liczba przechowywanych obiektów.
-- Kliknij element widget do otwarcia pulpitu nawigacyjnego śledzenie S3. Pulpit nawigacyjny pomaga znaleźć, analizowanie i wyświetlić bieżące użycie pamięci masowej, a trendów.
+### <a name="all-buckets-s3"></a>Wszystkie przedziały (S3)
+Ten element widget wyróżnia całkowita ilość miejsca S3 i liczba przechowywanych obiektów.
+- Kliknij element widget, aby otworzyć pulpit nawigacyjny śledzenia S3. Pulpit nawigacyjny pomaga znaleźć, analizowania i wyświetlić swoje bieżące użycie magazynu oraz trendów.
 
 ### <a name="sql-db-instances-rds"></a>Wystąpienia bazy danych SQL (RDS)
-Tego elementu widget prezentuje liczba uruchomionych wystąpień Amazon RDS oparte na tendencji w ciągu ostatnich 30 dni.
-- Kliknij element widget, aby otworzyć raport RDS wystąpienia w miarę upływu czasu.
+Ten element widget wyróżnia liczby uruchomionych wystąpień Amazon usług pulpitu zdalnego w oparciu trendów z ostatnich 30 dni.
+- Kliknij element widget, aby otworzyć raport usług pulpitu zdalnego wystąpienia względem czasu.
 
 ## <a name="optimizer-dashboard"></a>Optymalizator pulpitu nawigacyjnego
-Ten pulpit nawigacyjny zawiera zalecenia redukcję zatrudnienia, nieużywanych zasobów i potencjalne oszczędności.  
+Ten pulpit nawigacyjny Wyświetla redukcję zatrudnienia zalecenia, nieużywane zasoby i potencjalne oszczędności.  
 ![Optymalizator pulpitu nawigacyjnego](./media/dashboards/optimizer-dashboard.png)
 
-### <a name="ri-calculator"></a>Kalkulator RI
-Tego elementu widget Wyświetla liczbę zalecenia dotyczące kupowania RI i zaznacza potencjalne roczne oszczędności.
-- Kliknij element widget, aby otworzyć program Kalkulator wystąpienia zastrzeżonych, gdzie można określić, kiedy należy używać na żądanie a zastrzeżone planów cenowych.
+### <a name="ri-calculator"></a>Kalkulator wystąpień Zarezerwowanych
+Ten element widget Wyświetla liczbę zalecenia zakupu wystąpień Zarezerwowanych i wyróżnienie potencjalne oszczędności roczne.
+- Kliknij element widget, aby otworzyć Kalkulator wystąpienia zarezerwowane, gdzie można określić, kiedy należy używać na żądanie a zastrzeżone planów cenowych.
 
 ### <a name="sizing"></a>Zmiana rozmiaru
-Tego elementu widget prezentuje zalecany rozmiar i potencjalne oszczędności, jeśli zaimplementowane.
-- Kliknij przycisk elementu widget, aby otworzyć raport EC2 obowiązującej koszt zmiany rozmiaru zalecenia.
+Ten element widget wyróżnia zalecanych rozmiarów i potencjalne oszczędności, jeśli zaimplementowana.
+- Kliknij element widget, aby otworzyć raport usługi EC2 Cost Effective Sizing zalecenia.
 
-### <a name="unused-ri-detector"></a>Wykrywacz RI nieużywane
-Tego elementu widget prezentuje liczbę Amazon EC2 zastrzeżenia nieużywane.
-- Kliknij element widget, aby otworzyć raport aktualnie nieużywane rezerwacji, możesz przeglądać nieużywane rezerwacji, które można modyfikować.
+### <a name="unused-ri-detector"></a>Czujnik nieużywanych Wystąpień RI
+Ten element widget wyróżnia liczba Amazon EC2 nieużywanych rezerwacji.
+- Kliknij element widget, aby otworzyć raport obecnie nieużywane rezerwacje, gdzie można przejrzeć nieużywanych rezerwacji, które można modyfikować.
 
 ###  <a name="available-disks"></a>Dostępne dyski
-Tego elementu widget prezentuje liczbę odłączyć dysków w danym wdrożeniu.
-- Kliknij element widget, aby otworzyć raport odłączyć dysków.
+Ten element widget prezentuje liczbę niedołączone dyski w danym wdrożeniu.
+- Kliknij element widget, aby otworzyć raport niedołączone dyski.
 
-### <a name="rds-ri-calculator"></a>Kalkulator RI usług pulpitu zdalnego
-Tego elementu widget prezentuje liczbę rezerwacji zalecenia dla swoich wystąpień Amazon usług pulpitu zdalnego i potencjalne oszczędności.
-- Kliknij element widget, aby otworzyć raport zalecenia kupowanie RI usług pulpitu zdalnego umożliwia wyświetlenie zalecenia Cloudyn do używania zastrzeżonych wystąpień zamiast wystąpienia na żądanie.
+### <a name="rds-ri-calculator"></a>Kalkulator wystąpień Zarezerwowanych usług pulpitu zdalnego
+Ten element widget prezentuje liczbę rezerwacji zaleceń dotyczących wystąpień Amazon usług pulpitu zdalnego i potencjalne oszczędności.
+- Kliknij element widget, aby otworzyć raport zalecenia zakupu wystąpień Zarezerwowanych usług pulpitu zdalnego, którym można zobaczyć zalecenia Cloudyn, aby korzystać z wystąpień zarezerwowanych zamiast wystąpienia na żądanie.
 
-### <a name="rds-sizing"></a>Zmiana rozmiaru usług pulpitu zdalnego
-Tego elementu widget pokazuje liczbę zaleceń zmiany rozmiaru i potencjalne oszczędności.
-- Kliknij element widget, aby otworzyć raport zalecenia dotyczące rozmiaru usług pulpitu zdalnego, którym są wyświetlane szczegółowe RDS Amazon zmiany rozmiaru zalecenia.
+### <a name="rds-sizing"></a>Ustalanie rozmiaru usług pulpitu zdalnego
+Ten element widget pokazuje liczbę zalecenia wymiarowania efektywnego i potencjalne oszczędności.
+- Kliknij element widget, aby otworzyć raport zalecenia wymiarowania efektywnego usług pulpitu zdalnego, którym są wyświetlane szczegółowe Amazon rozmiaru zalecenia dotyczące usług pulpitu zdalnego.
 
-Zalecenia dotyczące optymalizacji są oparte na danych użycia i wydajności monitorowane w ciągu ostatniego miesiąca.
+Zalecenia dotyczące optymalizacji są oparte na dane dotyczące użycia i wydajności, monitorowania w ciągu ostatniego miesiąca.
 
-## <a name="s3-tracker-dashboard"></a>Pulpit nawigacyjny S3 Tracker
-Śledzenie S3 pulpit nawigacyjny pomaga znaleźć, analizowanie i wyświetlić bieżące użycie pamięci masowej, a trendów.  
-![Pulpit nawigacyjny S3 Tracker](./media/dashboards/s3-tracker-dashboard.png)
+## <a name="s3-tracker-dashboard"></a>Pulpit nawigacyjny śledzenia S3
+Pulpit nawigacyjny śledzenia S3 pomaga znaleźć, analizowania i wyświetlić swoje bieżące użycie magazynu oraz trendów.  
+![Pulpit nawigacyjny śledzenia S3](./media/dashboards/s3-tracker-dashboard.png)
 
 ### <a name="all-buckets"></a>Wszystkie pakiety
-Tego elementu widget prezentuje łączny rozmiar wszystkich Twoje pakiety w GB i całkowita liczba obiektów w Twojej zasobników.
-- Kliknij przycisk elementu widget, aby otworzyć raport dystrybucji S3 rozmiar. Raport pomaga analizować rozmiar S3 zasobnik, folder najwyższego poziomu, klasa magazynu i stanu przechowywania wersji.
+Ten element widget wyróżnia łączny rozmiar wszystkich swoje zasobników w GB i całkowita liczba obiektów w swojej zasobników.
+- Kliknij przycisk widżet, aby otworzyć raport rozmiar dystrybucji S3. Raport pomaga analizować swoje S3 rozmiar zasobnika, folder najwyższego poziomu, klasę magazynu i stanu przechowywania wersji.
 
-### <a name="bucket-properties"></a>Zasobnik właściwości
-Tego elementu widget prezentuje łączna liczba zasobników magazynu.
-- Kliknij element widget, aby wyświetlić raport o właściwościach zasobnika S3.
+### <a name="bucket-properties"></a>Przedział właściwości
+Ten element widget wyróżnia całkowita liczba zasobników magazynu.
+- Kliknij element widget, aby wyświetlić raport o właściwościach przedział S3.
 
-### <a name="scan-status"></a>Skanowanie stanu
-Tego elementu widget prezentuje podczas ostatniego skanowania S3 została wykonana i podczas kolejnego zostanie uruchomiony.
+### <a name="scan-status"></a>Stan skanowania
+Ten element widget wyróżnia podczas ostatniego skanowania pod kątem S3 zostało to zrobione, i gdy rozpocznie się kolejny.
 - Kliknij element widget, aby otworzyć raport o stanie skanowania S3.
 
-### <a name="storage-by-bucket"></a>Magazyn w zasobniku
-Tego elementu widget prezentuje procent używanej każdej klasy magazynu zasobnika.
-- Kliknij przycisk elementu widget, aby otworzyć raport dystrybucji S3 rozmiar. Raport pomaga analizować rozmiar S3 zasobnik, folder najwyższego poziomu, klasa magazynu i stanu przechowywania wersji.
+### <a name="storage-by-bucket"></a>Pamięć masowa według przedziału
+Ten element widget prezentuje procent używanej przez klasę magazynu każdego przedziału.
+- Kliknij przycisk widżet, aby otworzyć raport rozmiar dystrybucji S3. Raport pomaga analizować swoje S3 rozmiar zasobnika, folder najwyższego poziomu, klasę magazynu i stanu przechowywania wersji.
 
-### <a name="number-of-objects-by-bucket"></a>Liczba obiektów przez zasobnik
-Tego elementu widget prezentuje liczbę obiektów na zasobnik rzeczywista liczba i procent. Umieść kursor nad zasobnik, aby wyświetlić wszystkich obiektów.
-- Kliknij element widget, aby otworzyć raport dystrybucji S3 rozmiaru (na podstawie skanowanie).
+### <a name="number-of-objects-by-bucket"></a>Liczba obiektów według przedziału
+Ten element widget prezentuje liczbę obiektów dla przedziału w rzeczywista liczba i procent. Umieść kursor nad przedziału, aby zobaczyć, całkowita liczba obiektów.
+- Kliknij element widget, aby otworzyć raport rozmiar dystrybucji S3 (skanowanie na podstawie).
 
-## <a name="cloud-comparison-dashboard"></a>Pulpit nawigacyjny porównania chmury
-Pulpit nawigacyjny Cloud porównawcza ułatwia porównanie kosztów od dostawców inną chmurę, na podstawie cennika, typ Procesora i rozmiar pamięci RAM.  
-![Pulpit nawigacyjny porównania chmury](./media/dashboards/cloud-comparison-dashboard.png)
+## <a name="cloud-comparison-dashboard"></a>Pulpit nawigacyjny rozwiązania cloud porównania
+Pulpit nawigacyjny porównania chmurze ułatwia porównanie kosztów od różnych dostawców w chmurze na podstawie ceny, typ Procesora i pamięci RAM.  
+![Pulpit nawigacyjny rozwiązania cloud porównania](./media/dashboards/cloud-comparison-dashboard.png)
 
-### <a name="ec2-cost-in-azure-by-instance-type"></a>EC2 Koszt na platformie Azure dzięki typu wystąpienia
-Tego elementu widget prezentuje użycia kursów na żądanie z ostatnich 30 dni. Go comares koszt z bieżącym EC2 Amazon koszt vs potencjalne koszty na platformie Azure.
+### <a name="ec2-cost-in-azure-by-instance-type"></a>Usługi EC2 Koszt na platformie Azure dzięki typu wystąpienia
+Ten element widget wyróżnia ostatnich 30 dni użytkowania kursów na żądanie. Porównuje koszty dzięki bieżącym vs koszt Amazon EC2 potencjalnych kosztów na platformie Azure.
 - Umieść kursor nad paski do porównania kosztów na typ wystąpienia.
-- Kliknij element widget otworzyć eksportowanie wdrożenia — raport analizy kosztów.
+- Kliknij element widget otworzyć przenoszenie wdrożenia Your — raport analizy kosztów.
 
-### <a name="ec2-cost-in-azure"></a>EC2 Koszt na platformie Azure
-Tego elementu widget Pokazuje bieżące koszty Amazon EC2 i porównuje je do platformy Azure. Porównanie opiera się w ciągu ostatnich 30 dni użycia kursów na żądanie.
-- Kliknij element widget otworzyć eksportowanie wdrożenia — raport analizy kosztów.
+### <a name="ec2-cost-in-azure"></a>Usługi EC2 Koszt na platformie Azure
+Ten element widget Pokazuje bieżące koszty Amazon EC2 i porównuje je na platformie Azure. Porównanie zależy od ostatnich 30 dni użytkowania kursów na żądanie.
+- Kliknij element widget otworzyć przenoszenie wdrożenia Your - raport analizy kosztów.
 
-### <a name="ec2azure-instance-type-mapping"></a>Mapowanie typu wystąpienia EC2/Azure
-Tego elementu widget prezentuje najlepsze mapowanie jednostki obliczeniowe elastycznej między Amazon EC2 i platformą Azure.
-- Kliknij przycisk elementu widget, aby otworzyć raport mapowanie typu wystąpienia.
+### <a name="ec2azure-instance-type-mapping"></a>Mapowanie typu wystąpienia usługi EC2/platformy Azure
+Ten element widget wyróżnia najlepsze mapowania jednostek obliczeniowych elastycznej między Amazon EC2 i platformą Azure.
+- Kliknij element widget, aby otworzyć raport mapowanie typu wystąpienia.
+
+## <a name="next-steps"></a>Kolejne kroki
+- Odczyt [raporty użycia Cost Management](use-reports.md) artykuł, aby dowiedzieć się więcej na temat raportów.

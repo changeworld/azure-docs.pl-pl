@@ -1,51 +1,51 @@
 ---
-title: Obsługiwane miejsca docelowe danych i dane wyjściowe dostępna w programie Przygotowanie danych usługi Azure Machine Learning | Dokumentacja firmy Microsoft
-description: Ten dokument zawiera pełną listę obsługiwanych lokalizacji docelowych i wyświetla dostępne w celu przygotowania danych usługi Azure Machine Learning
+title: Obsługiwane miejsca docelowe danych i danych wyjściowych udostępniono przygotowywania danych usługi Azure Machine Learning | Dokumentacja firmy Microsoft
+description: Ten dokument zawiera pełną listę obsługiwanych lokalizacji docelowych, a także generuje dostępne podczas przygotowywania danych usługi Azure Machine Learning
 services: machine-learning
 author: euangMS
 ms.author: euang
 manager: lanceo
 ms.reviewer: jmartens, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 4aee24150524c270084ae8ec22f09df94b6e9f36
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 123328010758eea6e7eadce29440e204f91dcef6
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831714"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644934"
 ---
-# <a name="supported-data-exports-for-this-preview"></a>Obsługiwane eksportuje dane dla tej wersji zapoznawczej 
-Istnieje możliwość eksportowania do kilku różnych formatach. Te formaty służy do przechowania wyników pośrednich przygotowywania danych przed integracji wyniki w pozostałej części przepływu pracy Machine Learning.
+# <a name="supported-data-exports-for-this-preview"></a>Obsługiwane eksportu danych dla tej wersji zapoznawczej 
+Istnieje możliwość wyeksportować do kilku różnych formatach. Te formaty służy do przechowywania wyników pośrednich przygotowywania danych, zanim włączysz wyniki w pozostałej części przepływu pracy usługi Machine Learning.
 
 ## <a name="types"></a>Typy 
 ### <a name="csv-file"></a>Plik CSV 
-Zapis pliku — wartości rozdzielanych do magazynu.
+Wpisywanie do pliku tekstowego przecinkami wartości rozdzielanych przecinkami w magazynie.
 
 #### <a name="options"></a>Opcje
-- Zakończenia wierszy
-- Zastąp wartości null z
-- Zastąp błędy 
+- Końce wierszy
+- Zastąp wartości null za pomocą
+- Zamień błędy 
 - Separator
 
 
 ### <a name="parquet"></a>Parquet 
-Zestaw danych do magazynu zapisu jako Parquet.
+Pisanie zestawu danych do magazynu jako Parquet.
 
-Parquet zgodnie z formatem mogą mieć różne formy w magazynie. W przypadku mniejszych zestawów danych jest czasami używana .parquet pojedynczego pliku. Różne biblioteki Python obsługują odczytywanie i zapisywanie w plikach .parquet pojedynczego. 
+Parquet, ponieważ format może mieć różną postać w magazynie. Dla mniejszych zestawów danych jest czasami używane .parquet pojedynczego pliku. Różnych bibliotek języka Python obsługuje Odczyt i zapis do pojedynczego .parquet plików. 
 
-Obecnie Azure Machine Learning Workbench korzysta z biblioteki PyArrow Python wypisywanie Parquet podczas lokalnego interakcyjnej. Oznacza to, że pojedynczy plik Parquet ma obecnie tylko format danych wyjściowych Parquet, który jest obsługiwany podczas lokalnego interakcyjnej.
+Obecnie usługa Azure Machine Learning Workbench opiera się na biblioteki PyArrow Python wypisywanie Parquet podczas użycia lokalnego interaktywne. Oznacza to, że pojedynczy plik Parquet jest obecnie tylko format danych wyjściowych Parquet, który jest obsługiwany podczas użycia lokalnego interaktywne.
 
-Azure Machine Learning Workbench podczas skalowania w poziomie działa (na Spark), opiera się na Parquet platforma Spark odczytywanie i zapisywanie możliwości. Platforma Spark domyślny format danych wyjściowych Parquet (obecnie jedyną obsługiwane) ma podobną strukturę DataSet Hive. Oznacza to, że folder zawiera wiele plików .parquet, z których każda mniejszych partycji większy zestaw danych. 
+Podczas skalowania w poziomie działa (na platformie Spark) Azure Machine Learning Workbench opiera się na Parquet platforma Spark odczytywanie i zapisywanie możliwości. Platforma Spark domyślny format danych wyjściowych Parquet (obecnie jedyną obsługiwane) jest strukturę podobną do zestawu danych programu Hive. Oznacza to, że folder zawiera wiele plików .parquet, z których każda mniejszych partycji większy zestaw danych. 
 
 #### <a name="caveats"></a>Ostrzeżenia 
-Parquet format jest stosunkowo małych i ma pewne niespójności implementacji w różne biblioteki. Na przykład Spark umieszcza ograniczenia, na których znaków są dozwolone w nazwach kolumny podczas zapisywania Parquet. PyArrow nie robi to. Nazwa kolumny nie może mieć następujące znaki: 
-- ,
+Parquet formatu jest stosunkowo młode i ma pewne niespójności wdrożenia w różnych bibliotek. Na przykład Spark umieszcza ograniczenia, na których znaki są prawidłowe w nazwach kolumn podczas zapisywania Parquet. PyArrow nie tego robić. Następujące znaki nie mogą być w nazwie kolumny: 
+- , 
 - ;
 - {}
 - ()
@@ -54,8 +54,8 @@ Parquet format jest stosunkowo małych i ma pewne niespójności implementacji w
 - =
 
 >[!NOTE]
->- Aby zapewnić zgodność z Spark, zapisać danych do Parquet, za każdym razem wystąpień tych znaków nazwy kolumn są zamieniane na i znaku podkreślenia (_).
->- Zapewnienie spójności przebiegów lokalnych i skalowalnego w poziomie, wszystkie dane zapisane za pomocą aplikacji, Python lub Spark, Parquet, nazwy kolumn został oczyszczony zgodności Spark. W celu zapewnienia oczekiwanej kolumny nazw podczas zapisywania Parquet znaków Spark, Usuń Nieprawidłowa wartość z kolumny przed ich zapisaniem.
+>- Aby zapewnić zgodność z platformą Spark, każdym razem, gdy można zapisać danych do Parquet, wystąpienia tych znaków w nazwach kolumn są zastępowane i znaku podkreślenia (_).
+>- W celu zapewnienia spójności we wszystkich przebiegach lokalnych i w poziomie, wszystkie dane zapisane Parquet, za pośrednictwem aplikacji języka Python i platformy Spark, nazwy kolumn został oczyszczony do zapewnienia zgodności platformy Spark. W celu zapewnienia oczekiwanej kolumny nazwy, podczas zapisywania znaków Parquet platformy Spark, Usuń nieprawidłowe ustawienie z kolumn przed ich wypisywanie.
 
 
 
@@ -64,5 +64,5 @@ Parquet format jest stosunkowo małych i ma pewne niespójności implementacji w
 Lokalny dysk twardy lub lokalizacji magazynu mapowanej sieci.
 
 ### <a name="azure-blob-storage"></a>Azure Blob Storage
-Magazyn obiektów Blob Azure wymaga subskrypcji platformy Azure.
+Usługa Azure Blob storage wymaga subskrypcji platformy Azure.
 

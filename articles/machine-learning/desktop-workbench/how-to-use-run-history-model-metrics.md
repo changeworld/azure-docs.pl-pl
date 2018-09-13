@@ -1,40 +1,40 @@
 ---
-title: Jak używać Uruchom historii i metryki modelu w systemie Azure uczenia maszynowego Workbench | Dokumentacja firmy Microsoft
-description: Przewodnik dla historii uruchamiania i metryki modelu funkcje usługi Azure Machine Learning Workbench za pomocą
+title: W jaki sposób używać przebiegu historii i metryk modelu na platformie Azure w usłudze Machine Learning Workbench | Dokumentacja firmy Microsoft
+description: Przewodnik dla przy użyciu funkcji Azure Machine Learning Workbench w historii uruchamiania i metryk modelu
 services: machine-learning
 author: rastala
 ms.author: roastala
 manager: haining
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
-ms.component: desktop-workbench
+ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: df29117235e890a9b20619744df6320f298a73b2
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 34fe72087a3de133d65ea4a4737ab5dba45242f4
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34831873"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645037"
 ---
-# <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>Sposób użycia Historia uruchomień i metryki modelu w konsoli usługi Azure Machine Learning Workbench
+# <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>Sposób użycia historię uruchomień i metryk modelu w aplikacji Azure Machine Learning Workbench
 
-Azure Machine Learning Workbench obsługuje eksperymenty analizy danych za pośrednictwem jego **Uruchom historii** i **metryki modelu** funkcji.
-**Historia uruchomień** umożliwia śledzenie danych wyjściowych komputera uczenia eksperymenty, a następnie umożliwia filtrowanie oraz porównanie ich wyników.
-**Model metryki** mogą być rejestrowane z dowolnego punktu skrypty, śledzenie, niezależnie od wartości są najważniejsze w eksperymentów analizy danych.
-W tym artykule opisano sposób wprowadzania efektywne korzystanie z tych funkcji, aby zwiększyć szybkość i jakość Twojej eksperymenty analizy danych.
+Usługa Azure Machine Learning Workbench obsługuje eksperymentowania do nauki o danych za pośrednictwem jego **historii uruchamiania** i **metryk modelu** funkcji.
+**Historia uruchamiania** udostępnia środki do śledzenia danych wyjściowych z eksperymentów uczenia maszynowego, a następnie umożliwia filtrowanie oraz porównanie ich wyników.
+**Model metryk** mogą być rejestrowane z dowolnego punktu w skryptach, śledzenie, niezależnie od wartości są dla Ciebie najważniejsze w eksperymenty analizy danych.
+W tym artykule opisano sposób efektywny używać tych funkcji, aby zwiększyć szybkość i jakość usługi eksperymentowanie do nauki o danych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Do wykonania kroków opisanych ten przewodnik, musisz:
-* [Utwórz i zainstaluj usługi Azure Machine Learning](../service/quickstart-installation.md)
+Do wykonania kroków w tym przewodniku, musisz:
+* [Tworzenie i instalowanie usługi Azure Machine Learning](../service/quickstart-installation.md)
 - [Tworzenie projektu](../service/quickstart-installation.md)
 
 
-## <a name="azure-ml-logging-api-overview"></a>Przegląd interfejsu API usługi Azure ML rejestrowania
-[Rejestrowania interfejsu API uczenia Maszynowego Azure](reference-logging-api.md) jest dostępny za pośrednictwem **azureml.logging** modułu w języku Python (który jest instalowany z Workbench uczenia Maszynowego Azure.) Po zaimportowaniu tego modułu, można użyć **get_azureml_logger** metody tworzenia wystąpienia **rejestratora** obiektu.
-Następnie należy użyć Rejestratora **dziennika** metodę, aby przechowywać pary klucz wartość utworzonego przez skrypty języka Python.
-Obecnie metryki model rejestrowania skalarnych i typów list są obsługiwane jak pokazano.
+## <a name="azure-ml-logging-api-overview"></a>Omówienie interfejsu API rejestrowania uczenie Maszynowe systemu Azure
+[Rejestrowanie interfejsu API uczenia Maszynowego Azure](reference-logging-api.md) jest dostępny za pośrednictwem **azureml.logging** modułu w języku Python, (który jest instalowany z aplikacji Azure ML Workbench.) Po zaimportowaniu tego modułu, można użyć **get_azureml_logger** metodę, aby utworzyć wystąpienie **rejestratora** obiektu.
+Następnie należy użyć Rejestratora **dziennika** metodę, aby przechowywać pary klucz/wartość utworzony przez skryptów w języku Python.
+Obecnie rejestrowanie metryki modelu skalarnych i typów list są obsługiwane jak pokazano.
 
 ```Python
 # create a logger instance in already set up environment 
@@ -48,29 +48,29 @@ logger.log("simple value", 7)
 # log list
 logger.log("all values", [5, 6, 7])
 ```
-Jest łatwe w użyciu rejestratora w projektach usługi Azure ML Workbench, a w tym artykule przedstawiono sposób zrobić.
+Można łatwo użyć rejestratora w projektach aplikacji Azure ML Workbench, a w tym artykule dowiesz się, jak to zrobić.
 
-## <a name="create-a-project-in-azure-ml-workbench"></a>Tworzenie projektu na Workbench uczenia Maszynowego Azure
-Jeśli nie masz już projekt, możesz utworzyć jedną z [Utwórz i zainstaluj szybkiego startu](../service/quickstart-installation.md) z **pulpit nawigacyjny projektu**, możesz otworzyć **iris_sklearn.py** skryptu () jak pokazano).
+## <a name="create-a-project-in-azure-ml-workbench"></a>Utwórz projekt w aplikacji Azure ML Workbench
+Jeśli nie masz jeszcze projektu, możesz utworzyć je z [tworzenie i instalowanie Szybki Start](../service/quickstart-installation.md) z **pulpit nawigacyjny projektu**, możesz otworzyć **iris_sklearn.py** skryptu () jak pokazano).
 
 ![Uzyskiwanie dostępu do skryptu z karty pliki](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-01b.png)
 
-Ten skrypt można użyć jako przewodnik dla implementacji oczekiwanego metryki modelu logowanie uczenie Maszynowe Azure.
+Ten skrypt można użyć jako wskazówki oczekiwanego implementacji modelu metryki rejestrowania w usłudze Azure ML.
 
-## <a name="parameterize-and-log-model-metrics-from-script"></a>Parametryzacja i dziennika modelu metryki ze skryptu
-W **iris_sklearn.py** skryptu oczekiwanego wzorca do zaimportowania i konstrukcja rejestratora w języku Python zmniejsza się w następujących wierszach kodu.
+## <a name="parameterize-and-log-model-metrics-from-script"></a>Parametryzacja i rejestrowanie metryki modelu ze skryptu
+W **iris_sklearn.py** skryptu, oczekiwany wzorzec do zaimportowania i konstrukcji rejestratora w języku Python można ograniczyć do następujących wierszy kodu.
 
 ```Python
 from azureml.logging import get_azureml_logger
 run_logger = get_azureml_logger()
 ```
 
-Po utworzeniu można wywołać **dziennika** metoda ze wszystkimi para nazwa/wartość.
+Po utworzeniu możesz wywołać **dziennika** metody z dowolnym pary nazwa/wartość.
 
-Po zakończeniu tworzenia często warto parametryzacja skryptów, dzięki czemu można przekazać wartości w za pomocą wiersza polecenia.
-Poniższy przykład przedstawia sposób akceptowania parametry wiersza polecenia (jeśli istnieją), przy użyciu standardowych bibliotek języka Python.
-Ten skrypt wymaga jednego parametru dla szybkości uregulowania (*reg*) używany do dopasowania modelu klasyfikacji w celu zwiększenia *dokładność* bez overfitting.
-Te zmienne są następnie rejestrowane jako *szybkość uregulowania* i *dokładność* , dzięki czemu można łatwo zidentyfikować modelu o optymalnych wyników.
+Po zakończeniu tworzenia jest często przydatne próby parametryzacji skryptów, tak aby wartości mogą być przekazywane za pośrednictwem wiersza polecenia.
+Poniższy przykład pokazuje, jak akceptuje parametry wiersza polecenia (jeśli istnieją), przy użyciu standardowych bibliotek języka Python.
+Ten skrypt przyjmuje jeden parametr dla współczynnika uregulowania (*reg*) używany do dopasowania model klasyfikacji w ramach działań zmierzających do zwiększenia *dokładność* bez overfitting.
+Te zmienne są następnie rejestrowane jako *współczynnika uregulowania* i *dokładność* , dzięki czemu można łatwo zidentyfikować modelu przy użyciu optymalnych wyników.
 
 ```Python
 # change regularization rate and you will likely get a different accuracy.
@@ -96,82 +96,82 @@ print ("Accuracy is {}".format(accuracy))
 run_logger.log("Accuracy", accuracy)
 ```
 
-Biorąc te kroki w skryptach włączyć je w celu udostępnienia optymalne wykorzystanie **Uruchom historii**.
+Wykonanie tych czynności w skryptach włączyć je w celu optymalnego wykorzystania **historii uruchamiania**.
 
-## <a name="launch-runs-from-project-dashboard"></a>Pulpit nawigacyjny projektu jest uruchamiane uruchamiania
-Wracając do **pulpit nawigacyjny projektu**, możesz uruchomić **śledzonych Uruchom** wybierając **iris_sklearn.py** skryptu i wprowadzając **uregulowania szybkości**  parametru w **argumenty** polu edycji.
+## <a name="launch-runs-from-project-dashboard"></a>Uruchamiania jest uruchamiane z poziomu pulpitu nawigacyjnego projektu
+Wracając do **pulpit nawigacyjny projektu**, możesz uruchomić **wykonywania śledzonego** , wybierając **iris_sklearn.py** skryptu i wprowadzając **współczynnika uregulowania**  parametru w **argumenty** pole edycji.
 
 ![wprowadzanie parametrów i uruchamianie przebiegów](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-05.png)
 
-Ponieważ uruchamianie przebiegów śledzonych nie blokuje Workbench uczenia Maszynowego Azure, można uruchomić kilka równolegle.
-Stan każdego śledzonego przebiegu jest widoczny w **panelu zadań** jak pokazano.
+Ponieważ uruchamianie przebiegów śledzonych nie są blokowane w aplikacji Azure ML Workbench, niektóre można uruchamiać równolegle.
+Stan każdego uruchomienia śledzonych jest widoczny w **panelu zadań** jak pokazano.
 
-![śledzenie jest uruchamiany w panelu zadań](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-06.png)
+![śledzenie jest uruchamiany w panelu zadania](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-06.png)
 
-Umożliwia to optymalne wykorzystanie zasobów bez konieczności uruchamiania kolei każdego zadania.
+Umożliwia to optymalne wykorzystanie zasobów bez konieczności każde zadanie do uruchomienia w seryjny.
 
-## <a name="view-results-in-run-history"></a>Wyświetl wyniki w historii wykonywania
-Postęp i wyniki przebiegów śledzonych są dostępne do analizy w usłudze Azure ML Workbench **Uruchom historii**.
-**Historia uruchomień** udostępnia trzy różne widoki:
+## <a name="view-results-in-run-history"></a>Wyświetl wyniki w historii uruchamiania
+Postęp i wyniki śledzonych przebiegi są dostępne do analizy w usłudze Azure ML Workbench **historii uruchamiania**.
+**Historia uruchamiania** udostępnia trzy różne widoki:
 - Pulpit nawigacyjny
 - Szczegóły
 - porównanie
 
-**Pulpitu nawigacyjnego** widok przedstawia dane przez wszystkie elementy z danego skryptu renderowane w formularzach zarówno graficznego i tabelarycznych.
-**Szczegóły** widoku są wyświetlane wszystkie dane zostały wygenerowane z określonego działania danego skryptu, między innymi zarejestrowane metryki i pliki wyjściowe (takie jak renderowane geograficzne.) **Porównanie** widok wyników przebiegów dwóch lub trzech być wyświetlane side-by-side, w także w tym rejestrowane metryki plików wyjściowych.
+**Pulpit nawigacyjny** widok przedstawia dane we wszystkich przebiegach aktualizacji wszystkich danego skryptu renderowane w formularzach zarówno graficzny, jak i tabelarycznym.
+**Szczegóły** widoku są wyświetlane wszystkie dane uzyskane z określonego przebiegu danego skryptu, łącznie z zarejestrowanych metryk i pliki wyjściowe (takie jak renderowania, które.) **Porównania** widok wyników dwa lub trzy uruchomienia, być wyświetlane side-by-side, w dotyczy to również zarejestrowanych metryk plików wyjściowych.
 
-Między osiem śledzone uruchomień **iris_sklearn.py**, wartości **szybkość uregulowania** parametru i **dokładność** wynik były rejestrowane ilustrujący sposób użycia Uruchom Widoki historii.
+W ośmiu śledzone uruchomień **iris_sklearn.py**, wartości **współczynnika uregulowania** parametru i **dokładność** wynik zostały zarejestrowane do ilustrują sposób korzystania z przebiegu Widoki historii.
 
-### <a name="run-history-dashboard"></a>Historia uruchomień pulpitu nawigacyjnego
-Wyniki wszystkich uruchomień osiem są widoczne w **uruchomienia pulpitu nawigacyjnego historii**.
-Jako **iris_sklearn.py** dzienniki *szybkość uregulowania* i *dokładność*, **uruchomienia pulpitu nawigacyjnego historii** Wyświetla wykresy te wartości przez domyślne.
+### <a name="run-history-dashboard"></a>Pulpit nawigacyjny historii uruchamiania
+Wyniki wszystkich przebiegów osiem są widoczne w **pulpit nawigacyjny historii uruchamiania**.
+Jako **iris_sklearn.py** dzienniki *współczynnika uregulowania* i *dokładność*, **pulpit nawigacyjny historii uruchamiania** Wyświetla wykresy dla tych wartości, Domyślnie.
 
-![Historia uruchomień pulpitu nawigacyjnego](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-07.png)
+![pulpit nawigacyjny historii uruchamiania](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-07.png)
 
-**Uruchomienia pulpitu nawigacyjnego historii** można dostosować tak, aby wartości zarejestrowane również występować w siatce.  Kliknięcie przycisku **dostosować** Wyświetla ikonę **dostosowanie widoku listy** dialogu, jak pokazano.
+**Pulpit nawigacyjny historii uruchamiania** można dostosować tak, aby rejestrowane wartości również są wyświetlane w siatce.  Klikając **dostosować** wyświetlona ikona **dostosowanie widoku listy** dialogu, jak pokazano.
 
-![Dostosowywanie Historia uruchomień pulpitu nawigacyjnego siatki](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-08.png)
+![Dostosowywanie siatki pulpit nawigacyjny historii uruchamiania](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-08.png)
 
-Wszelkie zarejestrowane podczas śledzonych uruchamia wartości są dostępne do wyświetlania i wybierając **szybkość uregulowania** i **dokładność** dodaje je do siatki.
+Rejestrowane podczas przebiegów śledzonych wartości są dostępne do wyświetlania i wybierania **współczynnika uregulowania** i **dokładność** dodaje je do siatki.
 
-![zarejestrowane wartości w siatce dostosowane](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-09.png)
+![zarejestrowane wartości w siatce niestandardowe](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-09.png)
 
-Jest łatwe do odnalezienia interesujące działa, ustawiając kursor nad punktów schematach organizacyjnych.  W takim przypadku Uruchom 7 zwróciło dobrą dokładność połączeniu z niskim czasu trwania.
+Jest to łatwe do znalezienia interesujących przebiegów, ustawiając kursor nad punktów na wykresach.  W takim przypadku Uruchom 7 zwróciło dobrą dokładność połączone za pomocą niski czasu trwania.
 
-![Znajdowanie interesujące Uruchom](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-10.png)
+![znajdowanie interesujących uruchamiania](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-10.png)
 
-Kliknięcie punktu skojarzone z Uruchom 7 dowolnego wykresu lub łącze do uruchamiania 7 w Wyświetla siatki **Uruchom szczegóły historii**.
+Kliknięcie punktu skojarzone z 7 uruchamianie w dowolnym wykresie lub link do uruchomienia 7 w Wyświetla siatkę **szczegóły historii przebiegu**.
 
-### <a name="run-history-details"></a>Szczegóły historii uruchomienia
-W tym widoku są wyświetlane pełnych wyników 7 Uruchom oraz wszelkie artefakty utworzonego przez uruchomienie 7.
+### <a name="run-history-details"></a>Szczegóły historii uruchamiania
+Z poziomu tego widoku pełnych wyników 7 uruchomienia oraz wszelkie artefakty produkowane przez uruchomienie 7 są wyświetlane.
 
-![Szczegóły historii uruchomienia](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-11.png)
+![Szczegóły historii uruchamiania](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-11.png)
 
-**Uruchom szczegóły historii** widoku oferuje także możliwość **Pobierz** wszystkie zapisywane pliki **. / generuje** folder (tych plików obsługiwanych przez usługi Azure ML Workbench Magazyn w chmurze Uruchom historii, który podlega innym artykule.)
+**Szczegóły historii przebiegu** widoku oferuje również możliwość **Pobierz** wszystkie pliki zapisane **. / wyjścia** folder (te pliki są wspierane przez usługi Azure ML Workbench Magazyn w chmurze dla historii uruchamiania, który podlega innym artykule.)
 
-Na koniec **Uruchom szczegóły historii** umożliwia przywracanie projektu stanu w czasie tego działania.
-Kliknięcie przycisku **przywrócić** przycisk wyświetla dialogu potwierdzenie, jak pokazano.
+Na koniec **szczegóły historii przebiegu** udostępnia środki do Przywróć swój projekt jego stan w czasie tego działania.
+Klikając **przywrócić** przycisk powoduje wyświetlenie dialogu potwierdzenie, jak pokazano.
 
-![Potwierdzenie przywracania Uruchom](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-13.png)
+![Upewnij się, przywracania, uruchom](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-13.png)
 
-W przypadku potwierdzenia, pliki mogą zostać zastąpione lub usunięte, więc ostrożnie korzystaj z tej funkcji.
+Jeśli potwierdzona, pliki zostaną zastąpione lub usunięte, więc ostrożne korzystanie z tej funkcji.
 
-### <a name="run-history-comparison"></a>Uruchom porównania historii
-Wybieranie dwóch lub trzech działa w **uruchomienia pulpitu nawigacyjnego historii** i klikając **porównania** oferuje możesz **Uruchom porównania historii** widoku.
-Alternatywnie, klikając przycisk **porównania** i wybierając polecenie do uruchomienia w ramach **Uruchom szczegóły historii** widok również oferuje możesz **Uruchom porównania historii** widoku.
-W obu przypadkach **Uruchom porównania historii** widoku umożliwia Zobacz wyniki zarejestrowane i artefakty dwóch lub trzech uruchomień obok siebie.
+### <a name="run-history-comparison"></a>Uruchom porównanie historii
+Wybierz dwa lub trzy działa w **pulpit nawigacyjny historii uruchamiania** i klikając **porównania** oferuje **Uruchom porównanie historii** widoku.
+Ewentualnie klikając **porównania** i wybierając polecenie Uruchom w ramach **szczegóły historii przebiegu** widok również oferuje **Uruchom porównanie historii** widoku.
+W obu przypadkach **Uruchom porównanie historii** widoku zapewnia to, aby zobaczyć wyniki rejestrowane i artefakty dwa lub trzy uruchomienia obok siebie.
 
-![Uruchom porównania historii](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-12.png)
+![Uruchom porównanie historii](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-12.png)
 
-Ten widok jest szczególnie przydatna w przypadku porównywania powierzchni, ale ogólnie rzecz biorąc, wszelkie właściwości uruchamia można porównać tutaj.
+Ten widok jest szczególnie przydatna podczas porównywania powierzchnie, ale ogólnie rzecz biorąc, dowolne właściwości uruchomienia można porównać w tym miejscu.
 
 ### <a name="command-line-interface"></a>Command Line Interface
-Azure Machine Learning Workbench umożliwia również dostęp do historii Uruchom za pomocą jego **interfejsu wiersza polecenia**.
-Aby uzyskać dostęp do **interfejsu wiersza polecenia**, kliknij przycisk **Otwórz okno wiersza polecenia** menu, jak pokazano.
+Usługa Azure Machine Learning Workbench umożliwia również dostęp do historii uruchamiania za pośrednictwem jego **interfejs wiersza polecenia**.
+Aby uzyskać dostęp do **interfejs wiersza polecenia**, kliknij przycisk **Otwórz wiersz polecenia** menu, jak pokazano.
 
-![Otwórz wiersz polecenia](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-14.png)
+![Otwórz okno wiersza polecenia](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-14.png)
 
-Dostępne dla historii uruchamiania polecenia są dostępne za pośrednictwem `az ml history`, przy pomocy online, które są dostępne przez dodanie `-h` flagi.
+Dostępne dla historii uruchamiania polecenia są dostępne za pośrednictwem `az ml history`, przy pomocy online, które są dostępne, dodając `-h` flagi.
 ```
 $ az ml history -h
 
@@ -186,8 +186,8 @@ Commands:
     list    : List runs.
     promote : Promote Artifacts.
 ```
-Polecenia te zapewniają te same funkcje i zwracać tych samych danych, wyświetlany **Uruchom widoków historii**.
-Na przykład wyniki ostatniego uruchomienia mogą być wyświetlane jako obiekt JSON.
+Te polecenia zapewnia te same funkcje i zwracają te same dane, które są wyświetlane **widoków historii uruchamiania**.
+Na przykład wyniki ostatniego przebiegu, mogą być wyświetlane jako obiekt JSON.
 ```
 $ az ml history last
 {
@@ -215,7 +215,7 @@ $ az ml history last
   "user_id": "e9fafe06-b0e4-4154-8374-aae34f9977b2"
 }
 ```
-Ponadto wszystkie elementy na liście można wyświetlane w formacie tabelarycznym.
+Ponadto listę wszystkich przebiegów mogą wyświetlane w formacie tabelarycznym.
 ```
 $ az ml history list -o table
   Accuracy    Regularization Rate  Duration        Run_id                  Script_name      Start_time_utc                    Status
@@ -230,10 +230,10 @@ $ az ml history list -o table
   0.641509              10         0:00:06.059082  IrisDemo_1504832109906  iris_sklearn.py  2017-09-08T00:55:14.739806+00:00  Completed
 
 ```
-**Interfejsu wiersza polecenia** jest alternatywnej ścieżki do potęgi Azure Machine Learning Workbench.
+**Interfejs wiersza polecenia** jest alternatywną ścieżkę pozwalającą na dostęp do możliwości usługi Azure Machine Learning Workbench.
 
 ## <a name="next-steps"></a>Następne kroki
-Te funkcje są dostępne ułatwić proces eksperymenty analizy danych.
-Mamy nadzieję, ich użyteczne wyszukiwanie i znacznie o wyrażenie opinii.
-Jest to po prostu naszych początkowej implementacji i mamy wiele ulepszeń planowane.
-Mamy nadzieję na stale dostarczeniem ich Azure Machine Learning Workbench. 
+Te funkcje są dostępne na potrzeby procesu eksperymentowania do nauki o danych.
+Mamy nadzieję, że znajdowanie musiały być przydatne i znacznie wdzięczni za Twoją opinię.
+Jest to po prostu Nasze wstępne wdrożenie, a następnie mamy wiele ulepszeń planowane.
+Chętnie ciągłe dostarczanie ich do usługi Azure Machine Learning Workbench. 

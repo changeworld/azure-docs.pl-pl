@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie wydajności aplikacji sieci web Java w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
-description: Rozszerzone wydajności monitorowania użycia witryny sieci Web Java z usługą Application Insights.
+title: Monitorowanie wydajności aplikacji sieci web w języku Java w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+description: Rozszerzone monitorowanie wydajności i użycia witryny sieci Web Java za pomocą usługi Application Insights.
 services: application-insights
 documentationcenter: java
 author: mrbullwinkle
@@ -10,44 +10,45 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/24/2016
 ms.author: mbullwin
-ms.openlocfilehash: 3a771da2a1ef0333d49e1d83530b3d3032a550d2
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 366e79e7a58f45f5a5eeb318d3dd08427fbec0b0
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35644950"
 ---
-# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitorowanie zależności, wyjątki zgłoszony i metody wykonywania razy w aplikacji sieci web Java
+# <a name="monitor-dependencies-caught-exceptions-and-method-execution-times-in-java-web-apps"></a>Monitoruj zależności, wyjątki przechwycony i czasy wykonania metody w aplikacji sieci web w języku Java
 
 
-Jeśli masz [instrumentacji aplikacji sieci web Java za pomocą usługi Application Insights][java], agenta programu Java można użyć, aby uzyskać bardziej szczegółowe bez wprowadzania żadnych zmian kodu:
+Jeśli masz [instrumentacji aplikacji sieci web Java za pomocą usługi Application Insights][java], agenta programu Java można użyć, aby uzyskać lepszy wgląd w dane, bez żadnych zmian w kodzie:
 
-* **Zależności:** dane dotyczące wywołania, które umożliwia aplikacji do innych składników, w tym:
-  * **Wywołania REST** wprowadzane za pośrednictwem HttpClient, OkHttp i RestTemplate (Spring) są przechwytywane.
-  * **Redis** wywołań za pomocą klienta Jedis są przechwytywane.
-  * **[Wywołania JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**  -polecenia MySQL, SQL Server i bazy danych Oracle automatycznie są przechwytywane. Dla programu MySQL Jeśli wywołanie trwa dłużej niż 10s, agenci będą raportować planu zapytania.
-* **Przechwycono wyjątkami:** informacji na temat wyjątki, które są obsługiwane w kodzie.
-* **Czas wykonania metody:** informacji na temat czas potrzebny do wykonywania określonych metod.
+* **Zależności:** dane dotyczące wywołań wykonywanych przez aplikację do innych składników, w tym:
+  * **Wywołania REST** wprowadzone za pośrednictwem HttpClient, OkHttp i RestTemplate (Spring) są przechwytywane.
+  * **Redis** wywołania za pośrednictwem klient Jedis są przechwytywane.
+  * **[Wywołania JDBC](http://docs.oracle.com/javase/7/docs/technotes/guides/jdbc/)**  — polecenia MySQL, SQL Server i Oracle DB automatycznie są przechwytywane. Jeśli wywołanie trwa dłużej niż 10s, agent programu MySQL, raporty planu zapytania.
+* **Przechwycono wyjątkami:** informacji o wyjątkach, które są obsługiwane w kodzie.
+* **Czas wykonania metody:** informacji na temat czas potrzebny do wykonania konkretnych metod.
 
-Aby użyć agenta programu Java, należy ją zainstalować na serwerze. Aplikacje sieci web musi być instrumentowane przy użyciu [zestaw SDK Java usługi Application Insights][java]. 
+Aby użyć agenta programu Java, zainstaluj na serwerze. Aplikacje sieci web musi być wyposażone w [zestawu SDK Java usługi Application Insights][java]. 
 
-## <a name="install-the-application-insights-agent-for-java"></a>Zainstaluj agenta usługi Application Insights dla języka Java
-1. Na komputerze z serwerem Java [Pobierz agenta](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest). Sprawdź, czy do pobrania tego samego verson agenta Java jako zestaw SDK Java usługi Application Insights pakietów rdzeni i sieci web.
-2. Edytowanie skryptu uruchamiania serwera aplikacji, a następnie dodaj poniższe JVM:
+## <a name="install-the-application-insights-agent-for-java"></a>Zainstaluj agenta usługi Application Insights dla środowiska Java
+1. Na maszynie z uruchomioną serwer Java [Pobierz agenta](https://github.com/Microsoft/ApplicationInsights-Java/releases/latest). Pamiętaj, aby pobrać ten sam verson agenta Java jako pakiety zestawu SDK Java usługi Application Insights core i sieć web.
+2. Edytuj skrypt uruchamiania serwera aplikacji, a następnie dodaj poniższe maszyny JVM:
    
     `javaagent:`*Pełna ścieżka do pliku JAR agenta*
    
-    Na przykład w Tomcat na komputerze z systemem Linux:
+    Na przykład na serwerze Tomcat na maszynie z systemem Linux:
    
     `export JAVA_OPTS="$JAVA_OPTS -javaagent:<full path to agent JAR file>"`
 3. Uruchom ponownie serwer aplikacji.
 
 ## <a name="configure-the-agent"></a>Konfigurowanie agenta
-Utwórz plik o nazwie `AI-Agent.xml` i umieścić go w tym samym folderze co plik JAR agenta.
+Utwórz plik o nazwie `AI-Agent.xml` i umieść go w tym samym folderze co plik JAR agenta.
 
-Ustaw zawartość pliku xml. Edytuj poniższy przykład można uwzględnić lub pominąć funkcje, które chcesz.
+Ustaw zawartość pliku xml. Zmodyfikuj poniższy przykład, aby uwzględnić lub pominąć funkcje, że chcesz.
 
 ```XML
 
@@ -86,19 +87,19 @@ Ustaw zawartość pliku xml. Edytuj poniższy przykład można uwzględnić lub 
 
 ```
 
-Należy włączyć wyjątek raporty i metody chronometrażu dla poszczególnych metod.
+Należy włączyć raporty wyjątek i metoda chronometrażu dla poszczególnych metod.
 
 Domyślnie `reportExecutionTime` ma wartość true i `reportCaughtExceptions` ma wartość false.
 
 ## <a name="view-the-data"></a>Wyświetlanie danych
-W zasobu usługi Application Insights zostanie wyświetlone zagregowane zdalnego zależności i metody wykonywania razy [w obszarze kafelka wydajności][metrics].
+W zasobie usługi Application Insights jest wyświetlana zagregowane zdalnego zależności i metoda czasy wykonania [w obszarze kafelka wydajności][metrics].
 
-Aby wyszukać poszczególne wystąpienia raporty zależności, wyjątków i metody, otwórz [wyszukiwania][diagnostic].
+Aby wyszukać poszczególne wystąpienia zależności, wyjątek i metoda raporty, należy otworzyć [wyszukiwania][diagnostic].
 
-[Diagnozowanie problemów z zależności — Dowiedz się więcej](app-insights-asp-net-dependencies.md#diagnosis).
+[Diagnozowanie problemów z zależnością — Dowiedz się więcej](app-insights-asp-net-dependencies.md#diagnosis).
 
 ## <a name="questions-problems"></a>Pytania? Problemy?
-* Brak danych? [Wyjątki zapory zestawu](app-insights-ip-addresses.md)
+* Brak danych? [Wyjątki zapory dla zestawu](app-insights-ip-addresses.md)
 * [Rozwiązywanie problemów z technologią Java](app-insights-java-troubleshoot.md)
 
 <!--Link references-->

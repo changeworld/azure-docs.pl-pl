@@ -1,6 +1,6 @@
 ---
-title: Zapytanie dla baz danych chmury z innym schematem | Dokumentacja firmy Microsoft
-description: jak skonfigurować zapytań między bazami danych za pośrednictwem partycji pionowej
+title: Zapytania w bazach danych w chmurze z różnymi schematami | Dokumentacja firmy Microsoft
+description: sposób konfigurowania wielu baz danych za pośrednictwem partycje pionowe
 services: sql-database
 manager: craigg
 author: MladjoA
@@ -9,35 +9,35 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: mlandzic
-ms.openlocfilehash: 6b4dd9017c336c2034bac81ba92d219b511a38a4
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 29f477a5f6c8583f6224cb216356606129fedb81
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645759"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35645026"
 ---
-# <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Zapytanie dla baz danych chmury z różnych schematach (wersja zapoznawcza)
-![Zapytanie między tabelami w różnych baz danych][1]
+# <a name="query-across-cloud-databases-with-different-schemas-preview"></a>Wykonywanie zapytań w bazach danych w chmurze z różnymi schematami (wersja zapoznawcza)
+![Wykonywanie zapytań względem tabel w różnych bazach danych][1]
 
-W pionie na partycje bazy danych używać różnych zestawów tabel na różnych baz danych. Oznacza to, że schemat jest różne na różnych baz danych. Na przykład wszystkie tabele spisu są na jedną bazę danych, gdy wszystkie tabele powiązane ewidencjonowania aktywności znajdują się w drugiej bazy danych. 
+Partycje pionowe bazy danych używać różnych zestawów tabel z różnymi bazami danych. Oznacza to, że schemat różni się w różnych bazach danych. Na przykład wszystkie tabele spisu znajdują się na jedną bazę danych podczas, gdy wszystkie tabele powiązane księgowości znajdują się w drugiej bazy danych. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Użytkownik musi mieć uprawnienie ALTER ANY zewnętrznego źródła danych. To uprawnienie jest dołączany uprawnienie ALTER DATABASE.
-* Aby odwołać się do źródła danych są potrzebne uprawnienia ALTER ANY zewnętrznego źródła danych.
+* Użytkownik musi mieć uprawnienie ALTER ANY zewnętrznego źródła danych. To uprawnienie jest dołączony do uprawnienie ALTER DATABASE.
+* Aby odwołać się do bazowego źródła danych są potrzebne uprawnienia ALTER ANY zewnętrznego źródła danych.
 
 ## <a name="overview"></a>Przegląd
 
 > [!NOTE]
-> W odróżnieniu od z partycjonowania poziomy tych instrukcji DDL nie zależą od Definiowanie warstwą danych z mapą niezależnego fragmentu za pomocą biblioteki klienta elastycznej bazy danych.
+> W odróżnieniu od z partycjami poziomymi, tych instrukcji DDL nie są zależne od definiowania warstwą danych za pomocą mapowania fragmentów w postaci za pomocą biblioteki klienckiej elastycznej bazy danych.
 >
 
 1. [TWORZENIE KLUCZA GŁÓWNEGO](https://msdn.microsoft.com/library/ms174382.aspx)
-2. [UTWÓRZ BAZĘ DANYCH O ZAKRESIE POŚWIADCZEŃ](https://msdn.microsoft.com/library/mt270260.aspx)
+2. [TWORZENIE BAZY DANYCH O OKREŚLONYM ZAKRESIE POŚWIADCZEŃ](https://msdn.microsoft.com/library/mt270260.aspx)
 3. [TWORZENIE ZEWNĘTRZNEGO ŹRÓDŁA DANYCH](https://msdn.microsoft.com/library/dn935022.aspx)
-4. [TWORZENIE TABELI ZEWNĘTRZNEJ](https://msdn.microsoft.com/library/dn935021.aspx) 
+4. [TWORZENIE ZEWNĘTRZNEJ TABELI](https://msdn.microsoft.com/library/dn935021.aspx) 
 
-## <a name="create-database-scoped-master-key-and-credentials"></a>Tworzenie klucza głównego bazy danych i poświadczeń
-Poświadczenie jest używany przez elastycznej zapytania do nawiązania połączenia zdalnego baz danych.  
+## <a name="create-database-scoped-master-key-and-credentials"></a>Utwórz klucz główny bazy danych i poświadczeń
+Poświadczenie jest używane przez zapytanie elastyczne, aby nawiązać połączenie zdalne bazy danych.  
 
     CREATE MASTER KEY ENCRYPTION BY PASSWORD = 'master_key_password';
     CREATE DATABASE SCOPED CREDENTIAL <credential_name>  WITH IDENTITY = '<username>',  
@@ -45,7 +45,7 @@ Poświadczenie jest używany przez elastycznej zapytania do nawiązania połącz
     [;]
 
 > [!NOTE]
-> Upewnij się, że `<username>` nie zawiera żadnych **"@servername"** sufiks. 
+> Upewnij się, że `<username>` nie zawiera żadnych **"\@servername"** sufiks. 
 >
 
 ## <a name="create-external-data-sources"></a>Tworzenie zewnętrznych źródeł danych
@@ -60,11 +60,11 @@ Składnia:
                 ) [;] 
 
 > [!IMPORTANT]
-> Parametr typu musi być ustawiony na **RDBMS**. 
+> Parametr typu musi być równa **RDBMS**. 
 >
 
 ### <a name="example"></a>Przykład
-Poniższy przykład przedstawia użycie instrukcji CREATE dla zewnętrznych źródeł danych. 
+Poniższy przykład ilustruje użycie instrukcji CREATE dla zewnętrznych źródeł danych. 
 
     CREATE EXTERNAL DATA SOURCE RemoteReferenceData 
     WITH 
@@ -112,28 +112,28 @@ Poniższy przykład pokazuje, jak pobrać listę tabel zewnętrznych z bieżące
     select * from sys.external_tables; 
 
 ### <a name="remarks"></a>Uwagi
-Elastyczne zapytania rozszerza istniejący składni tabeli zewnętrznej do definiowania tabel zewnętrznych, korzystających z zewnętrznych źródeł danych typu RDBMS. Definicja tabeli zewnętrznej dla partycjonowanie pionowe obejmuje następujące aspekty: 
+Elastyczne zapytanie rozszerza istniejący składni tabeli zewnętrznej do definiowania tabel zewnętrznych używających zewnętrznych źródeł danych typu RDBMS. Partycjonowanie pionowe definicji tabeli zewnętrznej obejmuje następujące aspekty: 
 
-* **Schemat**: tabeli zewnętrznej DDL definiuje schemat, który można użyć zapytań. Wybrany schemat w definicji tabeli zewnętrznej musi pasuje do schematu tabel w zdalnej bazy danych, gdzie są przechowywane dane. 
-* **Odwołanie do zdalnej bazy danych**: tabeli zewnętrznej DDL odwołuje się do zewnętrznego źródła danych. Zewnętrzne źródło danych określa nazwy serwera logicznego i bazy danych, zdalnego przechowywania danych rzeczywistych tabeli bazy danych. 
+* **Schemat**: tabeli zewnętrznej DDL definiuje schemat, który można użyć zapytań. Podany w definicji tabeli zewnętrznej schemat musi być zgodna schematu tabel w zdalnej bazy danych, gdzie są przechowywane rzeczywistych danych. 
+* **Odwołanie do zdalnej bazy danych**: tabeli zewnętrznej DDL odwołuje się do zewnętrznego źródła danych. Zewnętrzne źródło danych określa nazwę serwera logicznego i zdalnej bazy danych, której są przechowywane dane tabeli rzeczywista nazwa bazy danych. 
 
 Składnia służąca do tworzenia tabel zewnętrznych za pomocą zewnętrznego źródła danych, zgodnie z opisem w poprzedniej sekcji, jest następujący: 
 
-W klauzuli DATA_SOURCE definiuje zewnętrznego źródła danych (tj. zdalnej bazy danych w przypadku partycjonowanie pionowe) używany do tabeli zewnętrznej.  
+Klauzula DATA_SOURCE definiuje zewnętrznego źródła danych (czyli zdalnej bazy danych w przypadku partycjonowania pionowego) używany do tabeli zewnętrznej.  
 
-Klauzule SCHEMA_NAME i OBJECT_NAME zapewniają możliwość mapowania definicji tabeli zewnętrznej tabeli do innego schematu na zdalnej bazy danych lub tabeli o innej nazwie, odpowiednio. Jest to przydatne, jeśli chcesz zdefiniować tabelę zewnętrzną widoku wykazu lub DMV na zdalnej bazy danych — lub w innej sytuacji, gdy nazwa tabeli zdalnej jest już zajęta lokalnie.  
+Klauzule SCHEMA_NAME i OBJECT_NAME zapewniają możliwość mapowania definicji tabeli zewnętrznej tabeli do innego schematu na zdalnej bazy danych lub tabeli o innej nazwie, odpowiednio. Jest to przydatne, jeśli chcesz zdefiniować tabelę zewnętrzną do widoku wykazu lub widok DMV na zdalnej bazy danych — lub w innej sytuacji, gdy nazwa tabeli zdalnej jest już zajęta lokalnie.  
 
-Następująca instrukcja DDL porzuca istniejącej definicji tabeli zewnętrznej z katalogu lokalnego. Nie ma ona wpływu zdalnej bazy danych. 
+Poniższa instrukcja DDL odrzuca istniejącej definicji tabeli zewnętrznej z katalogu lokalnego. Nie ma wpływu na zdalnej bazy danych. 
 
     DROP EXTERNAL TABLE [ [ schema_name ] . | schema_name. ] table_name[;]  
 
-**Uprawnienia CREATE/DROP tabeli zewnętrznej**: potrzebne są uprawnienia ALTER ANY zewnętrznego źródła danych dla tabeli zewnętrznej DDL, który również jest wymagany do odwoływania się do źródła danych.  
+**Uprawnienia dla polecenia CREATE/DROP tabeli zewnętrznej**: uprawnieniami ALTER ANY zewnętrznego źródła danych są potrzebne w tabeli zewnętrznej DDL, który jest również wymagany do odwoływania się do bazowego źródła danych.  
 
 ## <a name="security-considerations"></a>Zagadnienia związane z zabezpieczeniami
-Użytkownicy z dostępem do tabeli zewnętrznej automatycznie uzyskują dostęp do tabel zdalnym w obszarze poświadczenia podane w definicji źródła danych zewnętrznych. Aby zapobiec niepożądanemu podniesienia uprawnień przy użyciu poświadczeń do zewnętrznego źródła danych należy starannie zarządzanie dostępem do tabeli zewnętrznej. Regularne SQL uprawnienia można PRZYDZIELIĆ lub ODWOŁAĆ dostęp do tabeli zewnętrznej, tak jakby był on zwykłą tabelę.  
+Użytkownicy z dostępem do tabeli zewnętrznej automatycznie uzyskać dostęp do podstawowych tabel zdalnych, w obszarze poświadczenia podane w definicji zewnętrznego źródła danych. Aby zapobiec niepożądanemu podniesienia uprawnień za pomocą poświadczeń z zewnętrznym źródłem danych, należy dokładnie zarządzać dostępem do tabeli zewnętrznej. Regularne uprawnienia SQL można udzielić lub ODWOŁAĆ dostęp do tabeli zewnętrznej po prostu tak, jakby była zwykłą tabelę.  
 
-## <a name="example-querying-vertically-partitioned-databases"></a>Przykład: zapytanie w pionie na partycje baz danych
-Następujące zapytanie wykonuje trzystopniowego sprzężenie dwóch tabel lokalnych dla zleceń i kolejność wierszy w tabeli zdalnej dla klientów. Jest to przykład przypadek użycia danych odwołania dla elastycznej zapytania: 
+## <a name="example-querying-vertically-partitioned-databases"></a>Przykład: wykonywanie zapytań w pionie na partycje bazy danych
+Następujące zapytanie wykonuje trzy kierunkową sprzężenie dwóch tabel lokalnych dla zamówienia i kolejności wierszy tabeli zdalnej dla klientów. Jest to przykład zapytania elastycznego w przypadku użycia danych odwołania: 
 
     SELECT      
      c_id as customer,
@@ -150,15 +150,15 @@ Następujące zapytanie wykonuje trzystopniowego sprzężenie dwóch tabel lokal
     WHERE c_id = 100
 
 
-## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>Przechowywana procedura zdalne wykonywanie kodu T-SQL: sp\_execute_remote
-Elastyczne zapytania wprowadza również procedury przechowywanej, która zapewnia bezpośredni dostęp do zdalnej bazy danych. Procedura składowana jest nazywany [sp\_wykonania \_zdalnego](https://msdn.microsoft.com/library/mt703714) i może służyć do wykonania zdalnego procedur składowanych lub kod T-SQL na ze zdalną bazą danych. Go przyjmuje następujące parametry: 
+## <a name="stored-procedure-for-remote-t-sql-execution-spexecuteremote"></a>Przechowywane procedury zdalne wykonywanie kodu T-SQL: sp\_execute_remote
+Elastyczne zapytanie wprowadza również procedury przechowywanej, która zapewnia bezpośredni dostęp do zdalnej bazy danych. Jest wywoływana procedura składowana [sp\_wykonania \_zdalnego](https://msdn.microsoft.com/library/mt703714) i może służyć do wykonywania procedur składowanych zdalnego lub kod T-SQL w zdalnej bazy danych. Jego przyjmuje następujące parametry: 
 
-* Nazwa źródła danych (nvarchar): Nazwa źródła danych zewnętrznych typu RDBMS. 
-* Zapytania (nvarchar): zapytania T-SQL do wykonania na ze zdalną bazą danych. 
-* Deklaracja parametru (nvarchar) - opcjonalne: ciąg zawierający definicje typów danych parametrów parametr zapytania (na przykład sp_executesql). 
+* Nazwa źródła danych (nvarchar): Nazwa zewnętrznego źródła danych typu RDBMS. 
+* Zapytania (nvarchar): zapytanie T-SQL do wykonania na bazie zdalnego. 
+* Deklaracja parametru (nvarchar) — opcjonalne: ciąg znaków z definicji typu danych dla parametrów używanych w parametrze zapytania (na przykład sp_executesql). 
 * Lista wartości parametrów - opcjonalne: rozdzielana przecinkami lista wartości parametrów (na przykład sp_executesql).
 
-PS\_wykonania\_zdalnego korzysta z zewnętrznym źródłem danych w parametrów wywołania do wykonania danej instrukcji T-SQL na ze zdalną bazą danych. Aby nawiązać połączenie ze zdalną bazą danych używa poświadczeń do zewnętrznego źródła danych.  
+PS\_wykonania\_zdalnego używa zewnętrzne źródło danych podane parametrów wywołania do wykonania danej instrukcji języka T-SQL w zdalnej bazy danych. Nawiązać połączenia ze zdalną bazą danych używa poświadczeń do zewnętrznego źródła danych.  
 
 Przykład: 
 
@@ -168,20 +168,20 @@ Przykład:
 
 
 
-## <a name="connectivity-for-tools"></a>Połączenie narzędzi
-Prawidłowe parametry połączenia SQL Server umożliwia połączenia narzędzi integracyjnych BI i danych do baz danych na serwerze bazy danych SQL, który ma elastycznej zapytania włączone i tabel zewnętrznych zdefiniowane. Upewnij się, czy program SQL Server jest obsługiwana jako źródło danych dla własnych narzędzi. Następnie zobacz kwerendy elastycznej bazy danych i jego tabele zewnętrzne, podobnie jak wszystkie inne bazy danych SQL Server, które można połączyć się z narzędziem. 
+## <a name="connectivity-for-tools"></a>Łączność dla narzędzi
+Zwykłe ciągi połączeń programu SQL Server służy do łączenia z narzędzi integracji danych i analizy Biznesowej dla baz danych na serwerze bazy danych SQL, który ma włączonego elastycznych zapytań i zdefiniowane tabele zewnętrzne. Upewnij się, że program SQL Server jest obsługiwany jako źródło danych dla swojego narzędzia. Następnie zapoznaj się z bazą danych zapytania elastycznego i jego tabele zewnętrzne, podobnie jak wszystkie inne bazy danych SQL Server, można połączyć się z narzędziem. 
 
 ## <a name="best-practices"></a>Najlepsze praktyki
-* Upewnij się, że elastycznej kwerendy bazy danych punktu końcowego ma dostęp do zdalnej bazy danych przez umożliwienie dostępu do usług platformy Azure w konfiguracji zapory bazy danych SQL. Upewnij się również, że poświadczenia podane w definicji źródła danych zewnętrznych może pomyślnie zalogować się do zdalnej bazy danych i ma uprawnienia dostępu do tabeli zdalnej.  
-* Zapytania elastycznej działa najlepiej dla zapytań gdzie na zdalnych baz danych można wykonać większość obliczenia. Zwykle uzyskać najlepszą wydajność zapytań z predykatu filtru selektywnego, które można oszacować na zdalnych baz danych lub sprzężenia, które mogą być wykonywane całkowicie na zdalnej bazy danych. Innymi wzorcami zapytań może być konieczne ładowania dużych ilości danych ze zdalną bazą danych i mogą działać nieprawidłowo. 
+* Upewnij się, że baza danych punktu końcowego elastyczne zapytanie ma dostęp do zdalnej bazy danych poprzez umożliwienie dostępu dla usług platformy Azure w konfiguracji zapory bazy danych SQL. Upewnij się również, że poświadczenia podane w definicji źródła danych zewnętrznych może pomyślnie zalogować się do zdalnej bazy danych i ma uprawnienia dostępu do tabeli zdalnej.  
+* Zapytanie elastyczne w usłudze sprawdza się najlepiej w zapytaniach gdzie większość obliczeń może odbywać się w zdalnych baz danych. Zazwyczaj można pobrać najlepszą wydajność zapytań za pomocą predykatów selektywne filtru, które mogą być obliczane na zdalne bazy danych lub sprzężenia, które mogą być wykonywane całkowicie w zdalnej bazy danych. Inne wzorce zapytań może wymagać obciążenia z dużymi ilościami danych ze zdalną bazą danych i może działać nieprawidłowo. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Omówienie elastycznej zapytania, zobacz [elastycznej zapytań — omówienie](sql-database-elastic-query-overview.md).
-* Samouczek partycjonowania pionowego, zobacz [wprowadzenie do korzystania z bazy danych między kwerendy (partycjonowanie pionowe)](sql-database-elastic-query-getting-started-vertical.md).
-* Samouczek poziomych partycji (dzielenia na fragmenty), zobacz [wprowadzenie elastycznej zapytania poziome partycjonowania (dzielenia na fragmenty)](sql-database-elastic-query-getting-started.md).
-* Dla zapytań dotyczących danych poziomie podzielonym na partycje i składnię i przykład, zobacz [zapytań w poziomie na partycje danych)](sql-database-elastic-query-horizontal-partitioning.md)
-* Zobacz [sp\_wykonania \_zdalnego](https://msdn.microsoft.com/library/mt703714) dla procedury składowanej, która wykonuje instrukcję Transact-SQL w jednym zdalnej bazy danych SQL Azure lub zestaw baz danych, służąc jako odłamków w poziomie schemat partycjonowania.
+* Omówienie zapytanie elastyczne, zobacz [omówienie zapytania elastycznego](sql-database-elastic-query-overview.md).
+* Pionowe samouczek partycjonowania, zobacz [rozpoczęcie pracy z bazami danych zapytań (partycje pionowe)](sql-database-elastic-query-getting-started-vertical.md).
+* Samouczek partycjonowania poziomego (fragmentowania), zobacz [wprowadzenie do zapytań elastycznych dla partycjonowania poziomego (fragmentowania)](sql-database-elastic-query-getting-started.md).
+* Aby uzyskać składnię i przykładowe zapytania dotyczące danych partycjonowanej w poziomie, zobacz [zapytań w poziomie partycjonowania danych)](sql-database-elastic-query-horizontal-partitioning.md)
+* Zobacz [sp\_wykonania \_zdalnego](https://msdn.microsoft.com/library/mt703714) dla procedury przechowywanej, która wykonuje instrukcję Transact-SQL na jednej zdalnej usługi Azure SQL Database lub zestawu baz danych, służąc jako fragmentów w poziomie schematu partycjonowania.
 
 
 <!--Image references-->

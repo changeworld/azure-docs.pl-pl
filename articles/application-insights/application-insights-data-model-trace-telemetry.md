@@ -1,6 +1,6 @@
 ---
-title: Model danych Telemetrii Insights aplikacji Azure — dane telemetryczne śledzenia | Dokumentacja firmy Microsoft
-description: Model danych usługi Insights aplikacji dla dane telemetryczne śledzenia
+title: Model danych aplikacji systemu Azure szczegółowe informacje Telemetrii — Telemetria śledzenia usługi | Dokumentacja firmy Microsoft
+description: Model danych szczegółowych informacji aplikacji dla telemetrii śledzenia
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -9,28 +9,30 @@ ms.service: application-insights
 ms.workload: TBD
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/25/2017
-ms.author: mbullwin; sergkanz
-ms.openlocfilehash: d93ed9f292b6c05d0a3fb3202567f4024f62e35e
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.reviewer: sergkanz
+ms.author: mbullwin
+ms.openlocfilehash: 2487df93baec80c0e4f7741aa7b052ac89459b3b
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35648787"
 ---
-# <a name="trace-telemetry-application-insights-data-model"></a>Dane telemetryczne śledzenia: model danych usługi Application Insights
+# <a name="trace-telemetry-application-insights-data-model"></a>Śledzenie danych telemetrycznych: model danych usługi Application Insights
 
-Dane telemetryczne śledzenia (w [usługi Application Insights](app-insights-overview.md)) reprezentuje `printf` styl instrukcji śledzenia, które są przeszukiwane tekstu. `Log4Net`, `NLog`, i inne wpisy w pliku tekstowym dziennika są przetłumaczyć wystąpień tego typu. Śledzenie nie ma pomiarów jako rozszerzalności.
+Śledzenie danych telemetrycznych (w [usługi Application Insights](app-insights-overview.md)) reprezentuje `printf` stylu instrukcji śledzenia, które są przeszukiwane tekstu. `Log4Net`, `NLog`, i innych wpisy w pliku tekstowym dziennika są tłumaczone na wystąpień tego typu. Śledzenie nie ma miar jako rozszerzalności.
 
 ## <a name="message"></a>Komunikat
 
 Komunikat śledzenia.
 
-Maksymalna długość: 32768 znaków
+Maksymalna długość: wynosić 32 768 znaków
 
 ## <a name="severity-level"></a>Poziom ważności
 
-Poziom ważności śledzenia. Wartość może być `Verbose`, `Information`, `Warning`, `Error`, `Critical`.
+Śledzenie poziomu ważności. Wartość może być `Verbose`, `Information`, `Warning`, `Error`, `Critical`.
 
 ## <a name="custom-properties"></a>Właściwości niestandardowe
 
@@ -38,8 +40,8 @@ Poziom ważności śledzenia. Wartość może być `Verbose`, `Information`, `Wa
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Eksploruj dzienniki śledzenia platformy .NET w usłudze Application Insights](app-insights-asp-net-trace-logs.md).
-- [Eksploruj dzienniki śledzenia w usłudze Application Insights Java](app-insights-java-trace-logs.md).
-- Zobacz [modelu danych](application-insights-data-model.md) dla modelu danych i typów usługi Application Insights.
-- [Zapisać dane telemetryczne śledzenia niestandardowych](app-insights-api-custom-events-metrics.md#tracktrace)
+- [Eksplorowanie dzienników śledzenia .NET w usłudze Application Insights](app-insights-asp-net-trace-logs.md).
+- [Zapoznaj się z języka Java, dzienniki śledzenia w usłudze Application Insights](app-insights-java-trace-logs.md).
+- Zobacz [modelu danych](application-insights-data-model.md) dla usługi Application Insights typów i danych modelu.
+- [Zapisywanie śledzenia niestandardowych danych telemetrycznych](app-insights-api-custom-events-metrics.md#tracktrace)
 - Zapoznaj się z [platform](app-insights-platforms.md) obsługiwane przez usługę Application Insights.

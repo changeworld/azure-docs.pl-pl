@@ -1,28 +1,28 @@
 ---
-title: Inspekcja i raportowania usługi Azure Active Directory B2B współpracy użytkownika | Dokumentacja firmy Microsoft
-description: Właściwości użytkownika gościa są konfigurowane w usłudze Azure Active Directory B2B współpracy
+title: Inspekcja i raportowanie użytkownik współpracy B2B usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Właściwości użytkownika gościa są konfigurowane we współpracy B2B usługi Azure Active Directory
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
 ms.topic: article
 ms.date: 04/12/2017
-ms.author: twooley
-author: twooley
+ms.author: mimart
+author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 64f15095bd260cd5f83e0e834607cd64bb3a47ee
-ms.sourcegitcommit: 96089449d17548263691d40e4f1e8f9557561197
-ms.translationtype: HT
+ms.openlocfilehash: 50f6a1ee7486918869342f032818d587c99f4cac
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/17/2018
-ms.locfileid: "34267435"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35647805"
 ---
-# <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Inspekcja i raportowania użytkownika współpracy B2B
-Z gości masz inspekcji funkcje podobne do elementu członkowskiego użytkownikom. Oto przykład zaproszenia i realizacji historii osoby zaproszonej Sam Oogle:
+# <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Inspekcja i raportowanie użytkownika współpracy B2B
+Użytkownicy-goście masz inspekcji funkcje podobne do użytkowników. Oto przykład zaproszenie i realizacji historii użytkownika osoby zaproszonej Sam Oogle:
 
 ![dziennik inspekcji](./media/auditing-and-reporting/audit-log.png)
 
-Użytkownik może przejść do każdego z tych zdarzeń, aby uzyskać szczegóły. Na przykład Przyjrzyjmy się szczegóły zatwierdzenia.
+Możesz od razu do każdego z tych zdarzeń, aby uzyskać szczegóły. Na przykład Przyjrzyjmy się szczegóły zatwierdzenia.
 
 ![Szczegóły działania](./media/auditing-and-reporting/activity-details.png)
 
@@ -30,5 +30,5 @@ Można również wyeksportować te dzienniki z usługi Azure AD i uzyskiwanie do
 
 ### <a name="next-steps"></a>Kolejne kroki
 
-- [Właściwości użytkownika współpracy B2B](user-properties.md)
+- [Właściwości użytkowników współpracy B2B](user-properties.md)
 
