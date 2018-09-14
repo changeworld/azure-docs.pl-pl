@@ -6,15 +6,15 @@ author: tamram
 ms.service: storage
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 07/15/2018
+ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: bca4b13ea2a003ea428351bcff44944630387e1b
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 395080409b06ef868b28550a21dc177e9dd28a05
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528014"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580535"
 ---
 # <a name="what-to-do-if-an-azure-storage-outage-occurs"></a>Co zrobić po wystąpieniu awarii usługi Azure Storage
 W firmie Microsoft pracujemy nad upewnij się, że nasze usługi są zawsze dostępne. Czasami wymusza poza naszym wpływ kontroli nam w sposób, aby spowodować przerwy w działaniu usługi nieplanowane w jednym lub kilku regionach. Aby obsługiwać te rzadko, firma Microsoft zapewnia następujące wskazówki wysokiego poziomu usługi Azure Storage.
@@ -43,17 +43,17 @@ Jeśli została wybrana opcja [dostęp do odczytu magazynu geograficznie nadmiar
 ## <a name="what-to-expect-if-a-storage-failover-occurs"></a>Czego można oczekiwać, jeśli do przechowywania pracy awaryjnej
 Jeśli została wybrana opcja [magazyn geograficznie nadmiarowy (GRS)](storage-redundancy-grs.md) lub [dostęp do odczytu magazynu geograficznie nadmiarowego (RA-GRS)](storage-redundancy-grs.md#read-access-geo-redundant-storage) (zalecane), usługi Azure Storage będą przechowywane dane trwałe w dwóch regionach (podstawowych i pomocniczych). W obu regionach usługi Azure Storage obsługuje stale wiele replik danych.
 
-W przypadku regionalnej awarii wpływa Twojego regionu podstawowego, spróbujemy najpierw przywrócić usługę, w tym regionie. W zależności od charakteru po awarii i jej wpływ na środowisko, w niektórych sytuacjach rzadko firma Microsoft może nie można przywrócić regionu podstawowego. W tym momencie kolejności wykonamy geograficznie trybu failover. Replikacja danych między regionami jest proces asynchroniczny, które może obejmować opóźnienie, więc istnieje możliwość, że zmiany, które nie zostały jeszcze zreplikowane do regionu pomocniczego, mogą zostać utracone. Można tworzyć zapytania ["Czas ostatniej synchronizacji" konta usługi storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/) Aby uzyskać szczegółowe informacje o stanie replikacji.
+W przypadku regionalnej awarii wpływa Twojego regionu podstawowego, firma Microsoft najpierw podejmie próbę przywrócenia usługi w danym regionie, aby zapewnić Najlepsza kombinacja tych RTO i RPO. W zależności od charakteru po awarii i jej wpływ na środowisko, w niektórych sytuacjach rzadko firma Microsoft może nie można przywrócić regionu podstawowego. W tym momencie kolejności wykonamy geograficznie trybu failover. Replikacja danych między regionami jest proces asynchroniczny, która obejmuje opóźnienie, więc istnieje możliwość, że zmiany, które nie zostały jeszcze zreplikowane do regionu pomocniczego, mogą zostać utracone. Można tworzyć zapytania ["Czas ostatniej synchronizacji" konta usługi storage](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/) Aby uzyskać szczegółowe informacje o stanie replikacji.
 
 Kilku kwestiach dotyczących środowiska pracy awaryjnej geo magazynu:
 
-* Magazyn geograficznie pracy w trybie failover będzie wyzwalany tylko przez zespół usługi Azure Storage — użytkownik nie jest wymagana żadna akcja klienta.
-* Istniejące punkty końcowe usługi magazynu, dla obiektów blob, tabel, kolejek i plików nie ulegną zmianie po włączeniu trybu failover; wpis DNS dostarczanego przez firmę Microsoft, należy zaktualizować, aby przełączyć się z regionu podstawowego do regionu pomocniczego.  Firma Microsoft przeprowadzi aktualizację, automatycznie jako część procesu pracy awaryjnej geo.
+* Magazyn geograficznie pracy w trybie failover będzie wyzwalany tylko przez zespół usługi Azure Storage — użytkownik nie jest wymagana żadna akcja klienta. Przełączenie w tryb failover jest wyzwalany, gdy zespół usługi Azure Storage wyczerpało wszystkie opcje przywracania danych w tym samym regionie, co zapewnia najlepsza kombinacja tych RTO i RPO.
+* Istniejące punkty końcowe usługi magazynu, dla obiektów blob, tabel, kolejek i plików nie ulegną zmianie po włączeniu trybu failover; wpis DNS dostarczanego przez firmę Microsoft, należy zaktualizować, aby przełączyć się z regionu podstawowego do regionu pomocniczego. Firma Microsoft przeprowadzi aktualizację, automatycznie jako część procesu pracy awaryjnej geo.
 * Przed, a podczas pracy awaryjnej geo nie masz dostęp do zapisu do swojego konta magazynu ze względu na wpływ po awarii, ale nadal można odczytywać z pomocniczym w przypadku konta magazynu została skonfigurowana jako RA-GRS.
 * Podczas pracy awaryjnej geo zostało ukończone i propagowane zmian systemu DNS, zostanie wznowione odczytu i zapisu do swojego konta magazynu; to wskazuje na przeznaczenie do pomocniczego punktu końcowego. 
 * Należy pamiętać, że będziesz mieć dostęp do zapisu Jeśli masz GRS lub RA-GRS skonfigurowany dla konta magazynu. 
 * Można tworzyć zapytania ["Ostatniej geograficznej czas pracy awaryjnej" konta magazynu](https://msdn.microsoft.com/library/azure/ee460802.aspx) Aby uzyskać więcej szczegółów.
-* Po włączeniu trybu failover konto magazynu będzie można w pełni funkcjonalne, ale w stanie "obniżonej sprawności", ponieważ faktycznie znajduje się w region autonomiczny z nie możliwości replikacji geograficznej. Aby zmniejszyć to zagrożenie, firma Microsoft będzie przywrócić oryginalny regionu podstawowego i wykonaj geo-powrotu po awarii do przywrócenia stanu pierwotnego. Jeśli oryginalna region podstawowy jest nieodwracalny, firma Microsoft będzie przydzielić innego regionu pomocniczego.
+* Po włączeniu trybu failover konto magazynu będzie można w pełni funkcjonalne, ale w stanie "obniżonej sprawności", ponieważ znajduje się w regionie autonomiczny z nie możliwości replikacji geograficznej. Aby zmniejszyć to zagrożenie, firma Microsoft będzie przywrócić oryginalny regionu podstawowego i wykonaj geo-powrotu po awarii do przywrócenia stanu pierwotnego. Jeśli oryginalna region podstawowy jest nieodwracalny, firma Microsoft będzie przydzielić innego regionu pomocniczego.
   Aby uzyskać szczegółowe informacje na temat infrastruktury replikacji geograficznej usługi Azure Storage, można znaleźć w artykule na blogu magazynu zespołu o [opcji nadmiarowości i RA-GRS](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/).
 
 ## <a name="best-practices-for-protecting-your-data"></a>Najlepsze rozwiązania w zakresie ochrony danych

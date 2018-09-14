@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/13/2018
 ms.author: ellacroi
-ms.openlocfilehash: a85cd5287f6947ec17dc19291a70d6dd081e1827
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: b64a35f6b7422b1e24812c1041305dab2ebad6c0
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035864"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578501"
 ---
 # <a name="determine-your-publishing-option"></a>Określić swoje opcja publikowania
 Opcja publikowania, wybranej oferty bezpośrednio dotyczy zarówno wymagania kwalifikacyjne, jak i portalu marketplace GTM korzyści. Co ważniejsze wybór publikowania opcja i typ oferty w portalu Cloud Partner definiuje interakcji użytkowników z oferty w portalu marketplace.
@@ -80,7 +80,7 @@ Zanim będzie można utworzyć oferty, musisz wybrać typ oferty. Typ oferty odp
 
 Typ jednej oferty można skonfigurować inaczej w portalu Cloud Partner, aby włączyć różne opcje publikowania, wywołania do akcji, inicjowanie obsługi administracyjnej ani ceny. Opcja publikowania i konfiguracji typu oferty również wyrównane do wymagania techniczne i oferty uprawnień. 
 
-Pamiętaj przejrzeć sklepie pamięci i stanowią wymagania kwalifikacyjne typu, w tym [przewodnikiem dla wydawców](https://docs.microsoft.com/en-us/azure/marketplace/marketplace-publishers-guide) i techniczne publikowania wymagania przed utworzeniem oferty.
+Pamiętaj przejrzeć sklepie pamięci i stanowią wymagania kwalifikacyjne typu, w tym [przewodnikiem dla wydawców](https://docs.microsoft.com/azure/marketplace/marketplace-publishers-guide) i techniczne publikowania wymagania przed utworzeniem oferty.
 
 ## <a name="next-steps"></a>Następne kroki
 

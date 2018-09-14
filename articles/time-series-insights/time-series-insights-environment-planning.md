@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: 2c06463d95467543a426079addf981aa42d53eb6
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: c98a90aa44166d6453612f9b73287966851df6ce
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39630640"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578161"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Planowanie środowiska usługi Azure Time Series Insights
 
@@ -101,11 +101,11 @@ Jako usługi Azure Time Series Insights zapewnia wysoką dostępność (HA) przy
 
 Usługa Time Series Insights nie ma wbudowanych firm odzyskiwania po awarii (BCDR).  Jednak klienci, którzy wymagają strategii BCDR, nadal można zaimplementować strategię odzyskiwania. Utwórz drugie środowisko usługi Time Series Insights w kopii zapasowej regionie platformy Azure i wysyłanie zdarzeń do tego środowiska pomocnicze ze źródła zdarzeń głównej, wykorzystując drugi dedykowanej grupy klientów i wskazówki dotyczące strategii BCDR tego źródła zdarzeń.  
 
-1.  Utwórz środowisko, w drugim regionie.  Więcej informacji na temat tworzenia środowiska usługi Time Series Insights [tutaj](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-get-started).
-2.  Utwórz drugi dedykowanej grupy klientów dla źródła zdarzeń i łączenie źródła zdarzeń do nowego środowiska.  Pamiętaj wyznaczyć grupy odbiorców drugi, dedykowanych.  Więcej informacji na ten temat można znaleźć, wykonując jedną [dokumentacja usługi IoT Hub](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) lub [dokumentacja Centrum zdarzeń](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-data-access).
+1.  Utwórz środowisko, w drugim regionie.  Więcej informacji na temat tworzenia środowiska usługi Time Series Insights [tutaj](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started).
+2.  Utwórz drugi dedykowanej grupy klientów dla źródła zdarzeń i łączenie źródła zdarzeń do nowego środowiska.  Pamiętaj wyznaczyć grupy odbiorców drugi, dedykowanych.  Więcej informacji na ten temat można znaleźć, wykonując jedną [dokumentacja usługi IoT Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) lub [dokumentacja Centrum zdarzeń](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access).
 3.  Gdyby Twojego regionu podstawowego przestaną działać w przypadku wystąpienia zdarzenia awarii, przeprowadź operacje tworzenia kopii zapasowej środowiska usługi Time Series Insights.  
 
-Aby dowiedzieć się więcej na temat zasad bcdr można wykorzystać usługi IoT Hub, odwiedź [tutaj](https://docs.microsoft.com/en-us/azure/iot-hub/iot-hub-ha-dr).  Aby dowiedzieć się więcej na temat zasad BCDR Centrum zdarzeń, head [tutaj](https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-geo-dr).  
+Aby dowiedzieć się więcej na temat zasad bcdr można wykorzystać usługi IoT Hub, odwiedź [tutaj](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr).  Aby dowiedzieć się więcej na temat zasad BCDR Centrum zdarzeń, head [tutaj](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr).  
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Jak dodać źródła zdarzeń Centrum zdarzeń](time-series-insights-how-to-add-an-event-source-eventhub.md)

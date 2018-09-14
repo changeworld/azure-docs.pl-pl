@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: shlo
-ms.openlocfilehash: 37c2c96ad14741fba2733765640f8d6d9ef3fee2
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 73bc8b6954470d11d6369bc733bb7c6f794ce892
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716429"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577136"
 ---
 # <a name="azure-data-factory-faq"></a>Fabrykę danych platformy Azure — często zadawane pytania
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi Azure Data Factory.  
@@ -82,7 +82,7 @@ Od czasu początkowej wersji publicznej wersji zapoznawczej w 2017 usługi Data 
 -   Usługa Azure SQL DB za pomocą punktów końcowych usługi sieci wirtualnej
 -   Wystąpienie zarządzane (MI)
 -   Pula elastyczna
--   Obsługa usługi Azure Resource Manager Virtual Network (VNet) na podstawie klasycznej sieci wirtualnej, które staną się przestarzałe w przyszłości — dzięki temu można wstawić/join Twojego środowiska Azure-SSIS Integration Runtime (IR) do sieci wirtualnej, która jest skonfigurowany dla usługi Azure SQL DB przy użyciu usługi sieci wirtualnej punkty końcowe/MI / w środowisku lokalnym dostępu do danych, zobacz: https://docs.microsoft.com/en-us/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network 
+-   Obsługa usługi Azure Resource Manager Virtual Network (VNet) na podstawie klasycznej sieci wirtualnej, które staną się przestarzałe w przyszłości — dzięki temu można wstawić/join Twojego środowiska Azure-SSIS Integration Runtime (IR) do sieci wirtualnej, która jest skonfigurowany dla usługi Azure SQL DB przy użyciu usługi sieci wirtualnej punkty końcowe/MI / w środowisku lokalnym dostępu do danych, zobacz: https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network 
 -   Obsługa uwierzytelniania usługi Azure Active Directory (AAD) na podstawie uwierzytelniania SQL, aby nawiązać połączenie z bazy danych SSISDB — dzięki temu można korzystać z uwierzytelniania usługi AAD za pomocą usługi ADF tożsamość usługi zarządzanej (MSI)
 -   Obsługa użycie własnej licencji programu SQL Server w środowisku lokalnym, aby uzyskać znaczne oszczędności z poziomu opcji korzyść użycia hybrydowego platformy Azure (AHB)
 -   Obsługa Enterprise Edition z Azure-SSIS IR, która umożliwia korzystanie z funkcji Zaawansowane/premium, niestandardowego Instalatora w celu zainstalowania dodatkowych składników/rozszerzeń i 3 ekosystem firm, zobacz: https://blogs.msdn.microsoft.com/ssis/2018/04/27/enterprise-edition-custom-setup-and-3rd-party-extensibility-for-ssis-in-adf/ 

@@ -9,12 +9,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 330acf3e1258951f0129a1ba47f03c5140c30adf
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 2068bcb796b660847d0ea9b1126e64a9003ca871
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719056"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576854"
 ---
 # <a name="text-to-speech-frequently-asked-questions"></a>Zamiana tekstu na mowę — często zadawane pytania
 
@@ -28,11 +28,11 @@ Jeśli nie możesz znaleźć odpowiedzi na pytania w tych często zadawanych PYT
 
 **Pyt.: gdzie rozpocząć, jeśli chcę korzystać z modelu standardowego głosu?**
 
-**A**: więcej niż 80 modeli standardowego głosu w ponad 45 języków są dostępne za pośrednictwem żądania HTTP. Najpierw pobierz [klucz subskrypcji](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/get-started). Aby wprowadzić wywołania REST do modeli głosowych predeployed, zobacz [interfejsu API REST](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
+**A**: więcej niż 80 modeli standardowego głosu w ponad 45 języków są dostępne za pośrednictwem żądania HTTP. Najpierw pobierz [klucz subskrypcji](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started). Aby wprowadzić wywołania REST do modeli głosowych predeployed, zobacz [interfejsu API REST](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#text-to-speech).
 
 **P: Chcę użyć dostosowany model głosowy, czy interfejsu API taka sama jak ta, która jest używana do standardowego głosów?**
 
-**A**: po utworzeniu i wdrożeniu modelu niestandardowego głosu uzyskasz unikatowych punktów końcowych dla modelu. Aby za pomocą głosu głosu w aplikacjach, należy określić punkt końcowy w żądaniach HTTP. Te same funkcje, które są dostępne w interfejsie API REST usługi zamiany tekstu na mowę, jest dostępna dla niestandardowego punktu końcowego. Dowiedz się, jak [tworzenia i używania niestandardowego punktu końcowego](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-endpoint).
+**A**: po utworzeniu i wdrożeniu modelu niestandardowego głosu uzyskasz unikatowych punktów końcowych dla modelu. Aby za pomocą głosu głosu w aplikacjach, należy określić punkt końcowy w żądaniach HTTP. Te same funkcje, które są dostępne w interfejsie API REST usługi zamiany tekstu na mowę, jest dostępna dla niestandardowego punktu końcowego. Dowiedz się, jak [tworzenia i używania niestandardowego punktu końcowego](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#create-and-use-a-custom-endpoint).
 
 **P: czy należy przygotować danych szkoleniowych do tworzenia modeli usługi custom voice na własną rękę?**
 
@@ -40,7 +40,7 @@ Jeśli nie możesz znaleźć odpowiedzi na pytania w tych często zadawanych PYT
 
 Kolekcja danych mowy jest wymagana do utworzenia dostosowany model głosowy. Ta kolekcja składa się z zestawu plików audio, nagrań mowy i tekst pliku transkrypcji każdy plik dźwiękowy. Wynik Twojego głosu cyfrowego rolę odgrywa jakość danych szkoleniowych. Aby uzyskać dobre głosu zamiany tekstu na mowę, jest ważne, czy nagrania są przekazywane w pokoju cichy przy użyciu mikrofonu stałego wysokiej jakości. Wolumin spójne wypowiedzi szybkości i wypowiedzi pomysłu, nawet and consistency in i ekspresyjny mannerisms mowy są niezbędne do tworzenia wspaniałych głosu cyfrowych. Zdecydowanie zaleca się zapisywania głosy w studio rejestrowania.
 
-Obecnie firma Microsoft nie zapewniają obsługę rejestrowania w trybie online ani nie ma żadnych zaleceń dotyczących studio rejestrowania. Format wymagań, zobacz [sposób przygotowania, nagrania i transkrypcje](https://docs.microsoft.com/en-us/azure/cognitive-services/speech-service/how-to-customize-voice-font#prepare-recordings-and-transcripts).
+Obecnie firma Microsoft nie zapewniają obsługę rejestrowania w trybie online ani nie ma żadnych zaleceń dotyczących studio rejestrowania. Format wymagań, zobacz [sposób przygotowania, nagrania i transkrypcje](https://docs.microsoft.com/azure/cognitive-services/speech-service/how-to-customize-voice-font#prepare-recordings-and-transcripts).
 
 **P: jakie skryptów należy używać do rejestrowania danych mowy do trenowania niestandardowych voice?**
 

@@ -1,6 +1,6 @@
 ---
-title: Obsługiwane języki w Bing API sprawdzania pisowni (Microsoft kognitywnych usług Azure) | Dokumentacja firmy Microsoft
-description: Lista ogólnie dostępna i języka w wersji zapoznawczej obsługuje operacjach API sprawdzania pisowni usługi Bing.
+title: Obsługiwane języki w API sprawdzania pisowni Bing (Microsoft Cognitive Services na platformie Azure) | Dokumentacja firmy Microsoft
+description: Lista jest ogólnie dostępna i języka w wersji zapoznawczej obsługi dla operacji interfejsu API sprawdzania pisowni Bing.
 services: cognitive-services
 author: noellelacharite
 manager: nolachar
@@ -9,18 +9,18 @@ ms.component: bing-spell-check
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.author: nolachar
-ms.openlocfilehash: 7cab8e0471151cd2ae7c2e31406f2460fdff6a0b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: a62980f563c8fad525696aca73f8c036382fa820
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37050390"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573794"
 ---
-# <a name="supported-language-list-and-status"></a>Listę obsługiwanych języków i stanu
+# <a name="supported-language-list-and-status"></a>Lista obsługiwanych języków i stan
 
-Te języki są obsługiwane przez API sprawdzania pisowni usługi Bing (tylko w `spell` tryb). 
+Te języki są obsługiwane przez API sprawdzania pisowni Bing (tylko w `spell` tryb). 
 
-Należy pamiętać, że do pracy z dowolnego innego języka niż `en-US`, `mkt` powinna być ustawiona i `Accept-Language` lub `setLang` powinien być ustawiony jako został opisany w [pisowni Sprawdź dokumentacja interfejsu API w wersji 7](https://docs.microsoft.com/en-us/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
+Należy pamiętać, że chcesz pracować w dowolnym innym języku niż `en-US`, `mkt` powinna być ustawiona i `Accept-Language` lub `setLang` powinna być ustawiona, ponieważ został opisany w [odwołanie do interfejsu API sprawdzania pisowni w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-spell-check-api-v7-reference)
 
 | Język    | Kod języka |
 |:----------- |:-------------:|
@@ -67,5 +67,5 @@ Należy pamiętać, że do pracy z dowolnego innego języka niż `en-US`, `mkt` 
 
 ## <a name="see-also"></a>Zobacz także
 
-- [Kognitywnych stronę dokumentacji usług](https://docs.microsoft.com/azure/cognitive-services/)
-- [Strona produktu usługi kognitywnych](https://azure.microsoft.com/services/cognitive-services/)
+- [Strona dokumentacji usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/)
+- [Strona produktu usług Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

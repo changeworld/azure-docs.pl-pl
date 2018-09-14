@@ -9,12 +9,12 @@ ms.custom: monitor & tune
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: carlrab
-ms.openlocfilehash: 43476cfcae2035c3b8e94b4a5e264a0c8ff424e0
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 0636a4daf06e4d476935773e65cd388f94d99986
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715452"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578264"
 ---
 # <a name="managing-azure-sql-databases-using-azure-automation"></a>Zarządzanie bazami danych Azure SQL przy użyciu usługi Azure Automation
 Ten przewodnik Wprowadzenie do usługi Azure Automation i jak może służyć do uproszczenia zarządzania bazy danych Azure SQL.
@@ -27,7 +27,7 @@ Usługa Azure Automation zapewnia aparat wykonywania przepływu pracy o wysokiej
 Niższe koszty operacyjne i Zwolnij część IT / pracownicy działu DevOps, aby skupić się na pracy, który dodaje firm wartość przez przeniesienie zadań zarządzania systemem chmury uruchamiana automatycznie przez usługę Azure Automation.
 
 ## <a name="how-can-azure-automation-help-manage-azure-sql-databases"></a>Jak usługi Azure Automation ułatwiają zarządzanie bazami danych Azure SQL?
-Usługa Azure SQL Database można zarządzać w usłudze Azure Automation za pomocą [poleceń cmdlet programu PowerShell usługi Azure SQL Database](https://docs.microsoft.com/en-us/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#sql) dostępnych w [narzędzia programu Azure PowerShell](/powershell/azure/overview). Usługa Azure Automation obejmuje tych poleceń cmdlet programu PowerShell usługi Azure SQL Database gotowych, tak, aby wykonywać wszystkie zadania zarządzania bazą danych SQL w ramach usługi. Można również skojarzyć tych poleceń cmdlet w usłudze Azure Automation za pomocą poleceń cmdlet dla innych usług platformy Azure do automatyzacji złożonych zadań obejmujących wiele usług platformy Azure i systemami firm 3.
+Usługa Azure SQL Database można zarządzać w usłudze Azure Automation za pomocą [poleceń cmdlet programu PowerShell usługi Azure SQL Database](https://docs.microsoft.com/powershell/module/servicemanagement/azure/?view=azuresmps-4.0.0#sql) dostępnych w [narzędzia programu Azure PowerShell](/powershell/azure/overview). Usługa Azure Automation obejmuje tych poleceń cmdlet programu PowerShell usługi Azure SQL Database gotowych, tak, aby wykonywać wszystkie zadania zarządzania bazą danych SQL w ramach usługi. Można również skojarzyć tych poleceń cmdlet w usłudze Azure Automation za pomocą poleceń cmdlet dla innych usług platformy Azure do automatyzacji złożonych zadań obejmujących wiele usług platformy Azure i systemami firm 3.
 
 Usługa Azure Automation ma również możliwość komunikacji z serwerami SQL bezpośrednio przez wydanie polecenia SQL przy użyciu programu PowerShell.
 

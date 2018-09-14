@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a499f609e517d880b3a942ac6dc3eb0dc10b69e7
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 93b0a7e382c27cab5f050166ec8fa89fc7cf6b96
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054952"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576106"
 ---
 # <a name="azure-logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji na platformie Azure
 
@@ -45,7 +45,7 @@ W poniższej tabeli wymieniono najważniejsze typów dzienników dostępnych na 
 |[Dzienniki aktywności](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|Zdarzenia płaszczyznę kontroli dla zasobów usługi Azure Resource Manager|   Zapewnia wgląd w operacje, które zostały wykonane na komputerze zasobów w ramach subskrypcji.|    REST API, [usługa Azure Monitor](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-activity-logs)|
 |[Dzienniki diagnostyczne platformy Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|Często dane dotyczące działania usługi Azure Resource Manager zasobów w subskrypcji|    Zawiera szczegółowe dane operacji wykonanych przez sam zasób.| Usługa Azure Monitor [Stream](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs)|
 |[Raportowanie usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-reporting-azure-portal)|Dzienniki i raporty | Raporty aktywności logowania użytkowników i informacji o aktywności systemu dotyczące użytkowników i grupy zarządzania.|[Interfejs API programu Graph](https://docs.microsoft.com/azure/active-directory/develop/active-directory-graph-api-quickstart)|
-|[Maszyny wirtualne i usługi w chmurze](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-quick-collect-azurevm)|Usługa Windows dziennik zdarzeń i dzienników Syslog systemu Linux|    Przechwytuje dane systemu i rejestrowania danych na maszynach wirtualnych i przesyła dane do wybranego konta magazynu.|   Windows (przy użyciu Windows Azure Diagnostics [[WAD](https://docs.microsoft.com/azure/azure-diagnostics)] magazynu) i Linux w usłudze Azure Monitor|
+|[Maszyny wirtualne i usługi w chmurze](https://docs.microsoft.com/azure/log-analytics/log-analytics-quick-collect-azurevm)|Usługa Windows dziennik zdarzeń i dzienników Syslog systemu Linux|  Przechwytuje dane systemu i rejestrowania danych na maszynach wirtualnych i przesyła dane do wybranego konta magazynu.|   Windows (przy użyciu Windows Azure Diagnostics [[WAD](https://docs.microsoft.com/azure/azure-diagnostics)] magazynu) i Linux w usłudze Azure Monitor|
 |[Analityka usługi Azure Storage](https://docs.microsoft.com/rest/api/storageservices/fileservices/storage-analytics)|Rejestrowanie magazynu dostarcza danych metryk dotyczących konta magazynu|Zapewnia wgląd w Śledzenie żądań, analizuje trendy użycia i diagnozowanie problemów z kontem usługi storage.|   Interfejs API REST lub [biblioteki klienckiej](https://msdn.microsoft.com/library/azure/mt347887.aspx)|
 |[Dzienniki przepływu sieciowych grup zabezpieczeń (NSG)](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview)|JSON format zawiera przepływy wychodzące i przychodzące na podstawie reguł|Wyświetla informacje o przychodzący i wychodzący ruch IP sieciowej grupy zabezpieczeń.|[Usługa Azure Network Watcher](https://docs.microsoft.com/azure/network-watcher/network-watcher-monitoring-overview)|
 |[Application insights](https://docs.microsoft.com/azure/application-insights/app-insights-overview)|Dzienniki, wyjątki i Diagnostyka niestandardowa|   Udostępnia usługi (APM) dla deweloperów sieci web na wielu platformach monitorowania wydajności aplikacji.| Interfejs API REST, [usługa Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)|

@@ -1,50 +1,72 @@
 ---
-title: Zarządzanie właściwościami grupy w usłudze Azure AD | Microsoft Docs
-description: Jak edytować właściwości i inne ustawienia konfiguracji dla grupy w usłudze Azure Active Directory
+title: Jak edytować informacje o grupie za pomocą usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Jak edytować informacje o grupie za pomocą usługi Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
-ms.topic: quickstart
-ms.date: 08/01/2017
+ms.topic: conceptual
+ms.date: 08/27/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 50d9443197df35ac032c87317966551da1612c41
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
-ms.translationtype: HT
+ms.openlocfilehash: 0bac740a5da9c1e57ea1755c58579463da4a883a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860436"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580446"
 ---
-# <a name="manage-the-settings-for-a-group-in-azure-active-directory"></a>Zarządzanie ustawieniami dla grupy w usłudze Azure Active Directory
-W tym artykule wyjaśniono, jak zmienić ustawienia dla grupy w usłudze Azure Active Directory (Azure AD).
+# <a name="how-to-edit-your-group-information-using-azure-active-directory"></a>Porady: edytowanie informacji o grupie za pomocą usługi Azure Active Directory
 
-## <a name="how-do-i-find-and-change-the-settings"></a>Jak mogę znaleźć i zmienić ustawienia?
-1. Zaloguj się w [centrum administracyjnym usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta, które jest administratorem globalnym katalogu.
-2. Wybierz pozycję **Wszystkie usługi**, w polu tekstowym wprowadź filtr **Użytkownicy i grupy**, a następnie naciśnij klawisz **Enter**.
+Za pomocą usługi Azure Active Directory, można edytować grupę ustawień, takich jak aktualizowanie jego nazwę, opis lub typ członkostwa.
 
-   ![Otwieranie bloku Użytkownicy i grupy](./media/active-directory-groups-settings-azure-portal/search-user-management.png)
-3. W bloku **Użytkownicy i grupy** wybierz pozycję **Wszystkie grupy**.
+## <a name="to-edit-your-group-settings"></a>Aby edytować ustawienia grupy
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta administratora globalnego dla katalogu.
 
-   ![Otwieranie bloku Wszystkie grupy](./media/active-directory-groups-settings-azure-portal/view-groups-blade.png)
-4. W bloku **Użytkownicy i grupy — Wszystkie grupy** wybierz grupę.
-5. W bloku **Grupa — *nazwa_grupy*** wybierz pozycję **Właściwości**.
+2. Wybierz **usługi Azure Active Directory**, a następnie wybierz pozycję **grup**.
 
-   ![Otwieranie bloku Właściwości](./media/active-directory-groups-settings-azure-portal/select-group-properties.png)
-6. Po zakończeniu modyfikowania właściwości grupy wybierz pozycję **Zapisz**.    
+    **Grupy — wszystkie grupy** zostanie wyświetlona strona pokazująca wszystkie aktywne grup.
 
-   ![Zapisywanie zmian właściwości](./media/active-directory-groups-settings-azure-portal/save-group-properties.png)
+3. Z **grupy — wszystkie grupy** wpisz, jaka nazwa grupy, jak to możliwe do **wyszukiwania** pole. Na potrzeby tego artykułu, firma Microsoft poszukiwaną **zasad zarządzania urządzeniami Przenośnymi - Zachodnia** grupy.
 
-## <a name="next-steps"></a>Następne kroki
+    Wyniki wyszukiwania są wyświetlane w obszarze **wyszukiwania** polu aktualizowanie pisania większej liczby znaków.
+
+    ![Wszystkie grupy zawierającej wyszukiwany tekst w polu wyszukiwania](media/active-directory-groups-settings-azure-portal/search-for-specific-group.png)
+
+4. Wybierz grupę **zasady zarządzania urządzeniami Przenośnymi — zachód**, a następnie wybierz pozycję **właściwości** z **Zarządzaj** obszaru.
+
+    ![Strona przeglądu grupy za pomocą numeru i elementy członkowskie i wyróżnioną opcją elementu członkowskiego](media/active-directory-groups-settings-azure-portal/group-overview-blade.png)
+
+5. Aktualizacja **ustawienia ogólne** informacje zgodnie z potrzebami, w tym:
+
+    ![Ustawienia właściwości dla grupy](media/active-directory-groups-settings-azure-portal/group-properties-settings.png)
+
+    - **Nazwa grupy.** Edytuj nazwę istniejącej grupy.
+    
+    - **Opis grupy.** Edytuj istniejący opis grupy.
+
+    - **Typ grupy.** Typ grupy nie można zmienić po jej utworzeniu. Aby zmienić **typ grupy**, należy usunąć grupę i Utwórz nową.
+    
+    - **Typ członkostwa.** Zmień typ członkostwa. Aby uzyskać więcej informacji na temat różnych typów dostępne członkostwa, zobacz [porady: utworzenie podstawowej grupy i dodawać członków przy użyciu portalu Azure Active Directory](active-directory-groups-create-azure-portal.md)
+    
+    - **Identyfikator obiektu.** Nie można zmienić Identyfikatora obiektu, ale możesz skopiować go do użycia w poleceniach programu PowerShell dla grupy. Aby uzyskać więcej informacji o używaniu poleceń cmdlet programu PowerShell, zobacz [poleceń cmdlet usługi Azure Active Directory, do konfigurowania ustawień grupy](../users-groups-roles/groups-settings-v2-cmdlets.md).
+
+## <a name="next-steps"></a>Kolejne kroki
 Te artykuły zawierają dodatkowe informacje o usłudze Azure Active Directory.
 
-* [Wyświetlanie istniejących grup](active-directory-groups-view-azure-portal.md)
-* [Tworzenie nowej grupy i dodawanie członków](active-directory-groups-create-azure-portal.md)
-* [Zarządzanie członkami grupy](active-directory-groups-members-azure-portal.md)
-* [Zarządzanie członkostwem w grupie](active-directory-groups-membership-azure-portal.md)
-* [Zarządzanie regułami dynamicznymi dla użytkowników w grupie](../users-groups-roles/groups-dynamic-membership.md)
+- [Wyświetlanie grup i elementów członkowskich](active-directory-groups-view-azure-portal.md)
+
+- [Utworzenie podstawowej grupy i dodawać członków](active-directory-groups-create-azure-portal.md)
+
+- [Jak dodać lub usunąć członków z grupy](active-directory-groups-members-azure-portal.md)
+
+- [Zarządzanie regułami dynamicznymi dla użytkowników w grupie](../users-groups-roles/groups-create-rule.md)
+
+- [Zarządzanie członkostwem w grupie](active-directory-groups-membership-azure-portal.md)
+
+- [Zarządzanie dostępem do zasobów przy użyciu grup](active-directory-manage-groups.md)
+
+- [Skojarzyć lub dodać subskrypcję platformy Azure do usługi Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)

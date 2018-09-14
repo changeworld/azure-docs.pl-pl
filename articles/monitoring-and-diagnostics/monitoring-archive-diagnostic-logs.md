@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 17b03ee9521ddf1980e27ee9a63d2ba74ea6e6b7
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 1686c283b0aa9f0713317b22e2ef2abd16e6b187
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39629688"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579916"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archiwizuj dzienniki diagnostyczne platformy Azure
 
@@ -105,7 +105,7 @@ Dodatkowe kategorie można dodawać do dzienników diagnostycznych, dodając sł
 
 ## <a name="archive-diagnostic-logs-via-the-rest-api"></a>Archiwizowanie dzienników diagnostycznych za pomocą interfejsu API REST
 
-[Zobacz ten dokument](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings) informacji, w jaki sposób można skonfigurować ustawienie diagnostyczne przy użyciu interfejsu API REST usługi Azure Monitor.
+[Zobacz ten dokument](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings) informacji, w jaki sposób można skonfigurować ustawienie diagnostyczne przy użyciu interfejsu API REST usługi Azure Monitor.
 
 ## <a name="schema-of-diagnostic-logs-in-the-storage-account"></a>Schemat dzienniki diagnostyczne na koncie magazynu
 

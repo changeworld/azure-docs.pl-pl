@@ -1,7 +1,7 @@
 ---
-title: Wybieranie pojemności dla danego wdrożenia Maker — strona główna - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
+title: Wybieranie pojemności dla danego wdrożenia usługi QnA Maker — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
 titleSuffix: Azure
-description: Przewodnik dotyczący Wybieranie pojemności dla danego wdrożenia Maker — strona główna
+description: Przewodnik dotyczący wybranie pojemności dla danego wdrożenia usługi QnA Maker
 services: cognitive-services
 author: nstulasi
 manager: sangitap
@@ -10,40 +10,40 @@ ms.component: QnAMaker
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: saneppal
-ms.openlocfilehash: b0219b9f7dbbee52406dab9d808134fa2e2a689d
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 71af374fbd08fe1f7568bc1ece2a65af2de3ad19
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348660"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573370"
 ---
-# <a name="choosing-capacity-for-your-qna-maker-deployment"></a>Wybieranie pojemności dla danego wdrożenia Maker — strona główna
+# <a name="choosing-capacity-for-your-qna-maker-deployment"></a>Wybieranie pojemności dla danego wdrożenia usługi QnA Maker
 
-Usługa Maker — strona główna ma zależność na trzy zasobów platformy Azure:
-1.  Usługi aplikacji (dla środowiska wykonawczego)
-2.  Wyszukiwanie Azure (na potrzeby przechowywania QnAs)
-3.  Insights aplikacji (opcjonalnie, do przechowywania chatlogs i dane telemetryczne)
+Usługa QnA Maker przyjmuje zależność dla trzech zasobów platformy Azure:
+1.  App Service (dla środowiska wykonawczego)
+2.  Usługa Azure Search (do przechowywania znacznie)
+3.  App Insights (opcjonalnie, do przechowywania chatlogs i telemetrii)
 
-Przed utworzeniem usługi Maker — strona główna, należy podjąć decyzję dotyczącą które warstw usług powyżej jest odpowiednie dla Ciebie. 
+Przed przystąpieniem do tworzenia usługi QnA Maker możesz zdecydować, której warstwy usług powyżej jest odpowiednia dla Ciebie. 
 
-Zazwyczaj są trzy parametry, które należy wziąć pod uwagę:
-1. **Przepływność należy z usługi**: wybierz odpowiednie [Plan aplikacji](https://azure.microsoft.com/en-in/pricing/details/app-service/plans/) usługi aplikacji na podstawie Twoich potrzeb. Możesz [skalowanie w górę](https://docs.microsoft.com/en-us/azure/app-service/web-sites-scale) lub w dół aplikacji. To powinien również wpływać wybór SKU wyszukiwanie Azure można znaleźć więcej szczegółów [tutaj](https://docs.microsoft.com/en-us/azure/search/search-sku-tier).
+Zwykle istnieją trzy parametry, które należy wziąć pod uwagę:
+1. **Przepływność należy z niej**: Wybierz odpowiedni [Plan usługi App](https://azure.microsoft.com/en-in/pricing/details/app-service/plans/) dla usługi App service zgodnie z potrzebami. Możesz [skalowanie w górę](https://docs.microsoft.com/azure/app-service/web-sites-scale) lub w dół aplikacji. To powinien również mieć wpływ na wybór jednostki SKU usługi Azure Search, zobacz więcej szczegółów [tutaj](https://docs.microsoft.com/azure/search/search-sku-tier).
 
-2. **Rozmiaru i liczby baz wiedzy**: Wybierz odpowiedni [Azure wyszukiwania SKU](https://azure.microsoft.com/en-in/pricing/details/search/) dla danego scenariusza. Możesz opublikować baz wiedzy N-1 w określonej warstwie, gdzie N to indeksy maksymalna dozwolona w warstwie. Sprawdź również maksymalnego rozmiaru i liczby dokumentów dozwolonych dla jednej warstwy.
+2. **Rozmiaru i liczby baz wiedzy**: wybierz odpowiednie [Azure wyszukiwanie jednostek SKU](https://azure.microsoft.com/en-in/pricing/details/search/) dla danego scenariusza. N-1, baz wiedzy można publikować w konkretnej warstwy, gdzie N to maksymalna liczba indeksów dozwolone w ramach warstwy. Sprawdź również maksymalnego rozmiaru i liczby dokumentów dozwolone na warstwę.
 
-3. **Liczba dokumentów jako źródła**: wolnego jednostki SKU Maker — strona główna usługa zarządzania ogranicza liczbę dokumentów można zarządzać za pomocą portalu i interfejsy API 3 (1 MB rozmiar każdego). Standardowy SKU ma nie limity liczby dokumentów, którymi można zarządzać. Zobacz szczegółowe [tutaj](https://aka.ms/qnamaker-pricing).
+3. **Liczba dokumentów jako źródła**: bezpłatna jednostka SKU usługi zarządzania usługi QnA Maker ogranicza liczbę dokumentów można zarządzać za pośrednictwem portalu i interfejsów API do 3 (1 MB rozmiar każdego). Standardowa jednostka SKU nie ma limitów liczby dokumentów, którymi można zarządzać. Zobacz więcej szczegółów [tutaj](https://aka.ms/qnamaker-pricing).
 
-W poniższej tabeli przedstawiono ogólne wskazówki.
+W poniższej tabeli przedstawiono niektóre wytyczne wysokiego poziomu.
 
-|                        | Zarządzanie Maker — strona główna | App Service | Azure Search | Ograniczenia                      |
+|                        | Usługa QnA Maker zarządzania | App Service | Azure Search | Ograniczenia                      |
 | ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
-| Eksperymentowanie        | Wolne jednostki SKU             | Warstwa Bezpłatna   | Warstwa Bezpłatna    | Publikowanie do 2 Kb/s, rozmiar 50 MB  |
-| Środowisko: tworzenie i testowanie   | Standardowy SKU         | Udostępniona      | Podstawowa        | Publikowanie do 4 Kb/s, rozmiar 2GB    |
-| Środowiska produkcyjnego | Standardowy SKU         | Podstawowa       | Standardowa (Standard)     | Publikowanie do 49 KB/s, rozmiaru 25 GB |
+| Eksperymentowanie        | Bezpłatna jednostka SKU             | Warstwa Bezpłatna   | Warstwa Bezpłatna    | Publikowanie do 2 artykułów bazy wiedzy, rozmiar 50 MB  |
+| Środowisko programistyczne/testowe   | Standardowy SKU         | Udostępniona      | Podstawowa        | Publikowanie do 4 Kb/s, rozmiar 2GB    |
+| Środowiska produkcyjnego | Standardowy SKU         | Podstawowa       | Standardowa (Standard)     | Publikowanie do 49 artykułów bazy wiedzy, rozmiar 25 GB |
 
-Do uaktualnienia stosu — strona główna Maker, zobacz [Uaktualnij usługę Maker — strona główna](../How-To/upgrade-qnamaker-service.md).
+Dla uaktualnienie stosie usługi QnA Maker, zobacz [uaktualnienia usługi QnA Maker](../How-To/upgrade-qnamaker-service.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Uaktualnij usługę Maker — strona główna](../How-To/upgrade-qnamaker-service.md)
+> [Uaktualnianie usługi QnA Maker](../How-To/upgrade-qnamaker-service.md)

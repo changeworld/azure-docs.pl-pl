@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: terrylan
-ms.openlocfilehash: 21ad417b9b3b8d0354333962c4e811d0eebba4e9
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: efab734cc7d6facf82f622b95c12a1a27e99c5f7
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159337"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575936"
 ---
 # <a name="security-management-in-azure"></a>Zarządzanie zabezpieczeniami na platformie Azure
 Subskrybenci platformy Azure mogą zarządzać środowiskami chmury przy użyciu wielu urządzeń, łącznie ze stacjami roboczymi do zarządzania, komputerami deweloperów, a nawet urządzeniami uprzywilejowanych użytkowników końcowych, którzy mają uprawnienia specyficzne dla zadania. W niektórych przypadkach funkcje administracyjne są wykonywane za pośrednictwem konsol sieci Web, takich jak [Azure Portal](https://azure.microsoft.com/features/azure-portal/). W innych przypadkach mogą istnieć bezpośrednie połączenia z platformą Azure z systemów lokalnych za pośrednictwem wirtualnych sieci prywatnych (VPN), usług terminalowych, protokołów aplikacji klienckich lub (programowo) interfejsu API zarządzania usługami Azure (SMAPI, Service Management API). Ponadto punkty końcowe klienta mogą być przyłączone do domeny lub odizolowane i niezarządzane (np. tablety lub smartfony).
@@ -225,7 +225,7 @@ Dostępne są następujące zasoby zawierające bardziej ogólne informacje doty
 
 * [Securing Privileged Access (Zabezpieczanie uprzywilejowanego dostępu)](https://technet.microsoft.com/library/mt631194.aspx) — szczegółowe informacje techniczne dotyczące projektowania i konfigurowania bezpiecznej administracyjnej stacji roboczej do zarządzania platformą Azure
 * [Microsoft Trust Center (Centrum zaufania Microsoft)](https://microsoft.com/en-us/trustcenter/cloudservices/azure) — dowiedz się więcej na temat funkcji platformy Azure umożliwiających ochronę sieci szkieletowej Azure i obciążeń uruchamianych na platformie Azure
-* [Microsoft Security Response Center (Centrum zabezpieczeń firmy Microsoft)](https://technet.microsoft.com/en-us/security/dn440717.aspx) — służące do zgłaszania luk w zabezpieczeniach oprogramowania firmy Microsoft, w tym problemów z platformą Azure — w tym celu można również korzystać z adresu e-mail [secure@microsoft.com](mailto:secure@microsoft.com)
+* [Microsoft Security Response Center (Centrum zabezpieczeń firmy Microsoft)](https://technet.microsoft.com/security/dn440717.aspx) — służące do zgłaszania luk w zabezpieczeniach oprogramowania firmy Microsoft, w tym problemów z platformą Azure — w tym celu można również korzystać z adresu e-mail [secure@microsoft.com](mailto:secure@microsoft.com)
 * [Blog zabezpieczeń platformy Azure](http://blogs.msdn.com/b/azuresecurity/) — aktualne informacje dotyczące najnowszych zabezpieczeń platformy Azure
 
 <!--Image references-->

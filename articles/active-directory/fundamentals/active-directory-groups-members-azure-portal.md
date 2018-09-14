@@ -1,56 +1,65 @@
 ---
-title: Zarządzanie członkami grupy w usłudze Azure AD | Microsoft Docs
-description: Jak dodać lub usunąć użytkowników i urządzenia z grupy w usłudze Azure Active Directory
+title: Jak dodać lub usunąć członków grupy za pomocą usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Jak dodać lub usunąć użytkowników i urządzeń z grupy przy użyciu usługi Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
-ms.topic: quickstart
-ms.date: 08/28/2017
+ms.topic: conceptual
+ms.date: 08/23/2018
 ms.author: lizross
 ms.custom: it-pro
 ms.reviewer: krbain
-ms.openlocfilehash: 947b0c11aba211530e3ae25d6617079bcaf2995f
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
-ms.translationtype: HT
+ms.openlocfilehash: f9244e1285396a2d5de40b596d47e311efa50b83
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37860495"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574237"
 ---
-# <a name="manage-group-membership-for-users-in-your-azure-active-directory-tenant"></a>Zarządzanie członkostwem w grupie dla użytkowników w dzierżawie usługi Azure Active Directory
-W tym artykule wyjaśniono, jak zarządzać członkami grupy w usłudze Azure Active Directory (Azure AD).
+# <a name="how-to-add-or-remove-group-members-using-azure-active-directory"></a>Porady: Dodawanie lub usuwanie członków grupy za pomocą usługi Azure Active Directory
+Za pomocą usługi Azure Active Directory, można nadal dodawać i usuwać członków grupy.
 
-## <a name="how-do-i-find-the-members-and-manage-them"></a>Jak mogę znaleźć członków i zarządzać nimi?
-1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com) przy użyciu konta, które jest administratorem globalnym katalogu.
-2. Wybierz pozycję **Wszystkie usługi**, w polu tekstowym wprowadź filtr **Użytkownicy i grupy**, a następnie naciśnij klawisz **Enter**.
+## <a name="to-add-group-members"></a>Aby dodać członków grupy
 
-   ![Otwieranie okna zarządzania użytkownikami](./media/active-directory-groups-members-azure-portal/search-user-management.png)
-3. W bloku **Użytkownicy i grupy** wybierz pozycję **Wszystkie grupy**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta administratora globalnego dla katalogu.
 
-   ![Otwieranie bloku grup](./media/active-directory-groups-members-azure-portal/view-groups-blade.png)
-4. W bloku **Użytkownicy i grupy — Wszystkie grupy** wybierz grupę.
-5. W bloku **Grupa — *nazwa_grupy*** wybierz pozycję **Członkowie**.
+2. Wybierz **usługi Azure Active Directory**, a następnie wybierz pozycję **grup**.
 
-   ![Otwieranie bloku Członkowie](./media/active-directory-groups-members-azure-portal/view-group-members.png)
-6. Aby dodać członków do grupy, w bloku **Grupy — Członkowie** wybierz pozycję **Dodaj członków**.
+3. Z **grupy — wszystkie grupy** strony, wyszukaj i wybierz grupę, którą chcesz dodać członków. W tym przypadku użyj naszego wcześniej utworzoną grupę **zasad zarządzania urządzeniami Przenośnymi - Zachodnia**.
 
-   ![Polecenie Dodaj członków](./media/active-directory-groups-members-azure-portal/add-group-members-command.png)
-7. W bloku **Członkowie** wybierz co najmniej jednego użytkownika lub urządzenie w celu dodania do grupy, a następnie kliknij przycisk **Wybierz** w dolnej części bloku, aby dodać te pozycje do grupy. Pole **Użytkownik** służy do filtrowania wyświetlanych danych na podstawie dopasowania wpisanej wartości do dowolnej części nazwy użytkownika lub urządzenia. W tym polu nie są akceptowane żadne symbole wieloznaczne.
-8. Aby usunąć członków z grupy, w bloku **Grupy — Członkowie** wybierz członka.
-9. W bloku ***nazwa_członka*** wybierz polecenie **Usuń** i potwierdź wybór po wyświetleniu monitu.
+    ![Strony grupy — wszystkie grupy, wyróżnioną nazwą grupy](media/active-directory-groups-members-azure-portal/group-all-groups-screen.png)
 
-   ![Polecenie usunięcia członków](./media/active-directory-groups-members-azure-portal/remove-group-members-command.png)
-10. Po zakończeniu modyfikowania członków grupy wybierz pozycję **Zapisz**.
+4. Z **zasady zarządzania urządzeniami Przenośnymi — omówienie zachodnie** wybierz opcję **członków** z **Zarządzaj** obszaru.
 
-## <a name="additional-information"></a>Dodatkowe informacje
-Te artykuły zawierają dodatkowe informacje o usłudze Azure Active Directory.
+    ![Zasady zarządzania urządzeniami Przenośnymi — strona przeglądu Zachodnia, z podświetloną opcją elementów członkowskich](media/active-directory-groups-members-azure-portal/group-overview-blade.png)
 
-* [Wyświetlanie istniejących grup](active-directory-groups-view-azure-portal.md)
-* [Tworzenie nowej grupy i dodawanie członków](active-directory-groups-create-azure-portal.md)
-* [Zarządzanie ustawieniami grupy](active-directory-groups-settings-azure-portal.md)
-* [Zarządzanie członkostwem w grupie](active-directory-groups-membership-azure-portal.md)
-* [Zarządzanie regułami dynamicznymi dla użytkowników w grupie](../users-groups-roles/groups-dynamic-membership.md)
+5. Wybierz **dodawać członków**, a następnie wyszukaj i wybierz poszczególne elementy członkowskie, aby dodać do grupy, a następnie wybierz **wybierz**.
+
+    Zostanie wyświetlony komunikat informujący, że elementy członkowskie zostały pomyślnie dodane.
+
+    ![Dodaj stronę elementów członkowskich z wyszukiwane pokazano elementu członkowskiego](media/active-directory-groups-members-azure-portal/update-members.png)
+
+6. Należy odświeżyć ekran, aby wyświetlić wszystkie nazwy elementów członkowskich, dodane do grupy.
+
+## <a name="to-remove-group-members"></a>Aby usunąć członków grupy
+
+1. Z **grupy — wszystkie grupy** strony, wyszukaj i wybierz grupę, którą chcesz usunąć członka z. Ponownie użyjemy, **zasad zarządzania urządzeniami Przenośnymi - Zachodnia**.
+
+2. Wybierz **członków** z **Zarządzaj** obszaru, wyszukaj i wybierz nazwę członka do usunięcia, a następnie wybierz pozycję **Usuń**.
+
+    ![Strona z informacjami o elementu członkowskiego, za pomocą opcji Usuń](media/active-directory-groups-members-azure-portal/remove-members-from-group.png)
+
+## <a name="next-steps"></a>Kolejne kroki
+
+- [Wyświetlanie grup i elementów członkowskich](active-directory-groups-view-azure-portal.md)
+
+- [Edytuj ustawienia grupy](active-directory-groups-settings-azure-portal.md)
+
+- [Zarządzanie dostępem do zasobów przy użyciu grup](active-directory-manage-groups.md)
+
+- [Zarządzanie regułami dynamicznymi dla użytkowników w grupie](../users-groups-roles/groups-create-rule.md)
+
+- [Skojarzyć lub dodać subskrypcję platformy Azure do usługi Azure Active Directory](active-directory-how-subscriptions-associated-directory.md)

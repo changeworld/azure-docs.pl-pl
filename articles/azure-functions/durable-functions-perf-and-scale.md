@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 04/25/2018
 ms.author: azfuncdf
-ms.openlocfilehash: 52582a6fe3f6c8ccc22c57268e20a94139be9e6f
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 669a436293ddf6f13760db5e6802aaae82ddd74b
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094862"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577517"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Wydajność i skalowanie do wewnątrz funkcje trwałe (usługi Azure Functions)
 
@@ -27,13 +27,13 @@ Zrozumienie zachowania skalowania, musisz zrozumieć niektóre szczegóły źró
 
 **Historii** tabela jest tabeli usługi Azure Storage, która zawiera historię zdarzeń dla wszystkich wystąpień aranżacji w ramach Centrum zadania. Nazwa ta tabela ma postać *TaskHubName*historii. Podczas uruchamiania wystąpienia nowe wiersze są dodawane do tej tabeli. Klucz partycji w tej tabeli jest tworzony na podstawie Identyfikatora wystąpienia aranżacji. Identyfikator wystąpienia jest losowa w większości przypadków, co zapewnia optymalne dystrybucji wewnętrznej partycji w usłudze Azure Storage.
 
-Gdy wystąpienie aranżacji musi zostać uruchomiony, odpowiednie wiersze w tabeli historii są ładowane do pamięci. Te *zdarzenia historii* następnie są odtwarzane w kodzie funkcji programu orchestrator uzyskanie dostępu do stanu wcześniej utworzono punkt kontrolny. Korzystanie z historii wykonywania, aby odbudować stanu w ten sposób mają wpływ [wzorzec określania źródła zdarzeń](https://docs.microsoft.com/en-us/azure/architecture/patterns/event-sourcing).
+Gdy wystąpienie aranżacji musi zostać uruchomiony, odpowiednie wiersze w tabeli historii są ładowane do pamięci. Te *zdarzenia historii* następnie są odtwarzane w kodzie funkcji programu orchestrator uzyskanie dostępu do stanu wcześniej utworzono punkt kontrolny. Korzystanie z historii wykonywania, aby odbudować stanu w ten sposób mają wpływ [wzorzec określania źródła zdarzeń](https://docs.microsoft.com/azure/architecture/patterns/event-sourcing).
 
 ## <a name="instances-table"></a>Tabela wystąpień
 
 **Wystąpień** tabela jest innej tabeli usługi Azure Storage, która zawiera stany wszystkich wystąpień aranżacji w ramach Centrum zadania. Podczas tworzenia wystąpienia nowe wiersze są dodawane do tej tabeli. Klucz partycji w tej tabeli jest identyfikator wystąpienia aranżacji i klucz wiersza to stała stały. Istnieje jeden wiersz dla każdego wystąpienia aranżacji.
 
-Ta tabela jest używana do spełnienia żądania zapytania wystąpienia z [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_) interfejsu API, jak również [zapytania stanie interfejsu API protokołu HTTP](https://docs.microsoft.com/en-us/azure/azure-functions/durable-functions-http-api#get-instance-status). Skoroszyt jest przechowywany ostatecznie spójny z zawartości **historii** tabeli wymienionych wcześniej. Użycie osobnej tabeli usługi Azure Storage skutecznie spełniać operacje zapytań wystąpienia w ten sposób mają wpływ [wzorzec polecenia i podział odpowiedzialności zapytania (CQRS)](https://docs.microsoft.com/en-us/azure/architecture/patterns/cqrs).
+Ta tabela jest używana do spełnienia żądania zapytania wystąpienia z [GetStatusAsync](https://azure.github.io/azure-functions-durable-extension/api/Microsoft.Azure.WebJobs.DurableOrchestrationClient.html#Microsoft_Azure_WebJobs_DurableOrchestrationClient_GetStatusAsync_System_String_) interfejsu API, jak również [zapytania stanie interfejsu API protokołu HTTP](https://docs.microsoft.com/azure/azure-functions/durable-functions-http-api#get-instance-status). Skoroszyt jest przechowywany ostatecznie spójny z zawartości **historii** tabeli wymienionych wcześniej. Użycie osobnej tabeli usługi Azure Storage skutecznie spełniać operacje zapytań wystąpienia w ten sposób mają wpływ [wzorzec polecenia i podział odpowiedzialności zapytania (CQRS)](https://docs.microsoft.com/azure/architecture/patterns/cqrs).
 
 ## <a name="internal-queue-triggers"></a>Wyzwalacze kolejki wewnętrznej
 

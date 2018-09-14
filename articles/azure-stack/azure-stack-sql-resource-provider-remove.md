@@ -1,6 +1,6 @@
 ---
-title: Usunięcie dostawcy zasobów SQL Azure stosu | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można usunąć dostawcę zasobów SQL z wdrożenia stosu Azure.
+title: Usuwanie dostawcy zasobu języka SQL w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak można usunąć dostawcy zasobów bazy danych SQL z wdrożenia usługi Azure Stack.
 services: azure-stack
 documentationCenter: ''
 author: jeffgilb
@@ -11,50 +11,51 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 06/27/2018
+ms.date: 09/13/2018
 ms.author: jeffgilb
 ms.reviewer: jeffgo
-ms.openlocfilehash: b73deebb10d0c81a06df9cd192eaa2ef28de744d
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 42d8a5a8073d2650b9e023305472f28d4f1c738f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37083044"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580103"
 ---
-# <a name="remove-the-sql-resource-provider"></a>Usuń dostawcę zasobów SQL
+# <a name="remove-the-sql-resource-provider"></a>Usuwanie dostawcy zasobów bazy danych SQL
 
-Przed usunięciem dostawcy zasobów SQL, należy usunąć wszystkie zależności dostawcy. Należy również kopię pakiet wdrożeniowy, który został użyty do zainstalowania dostawcy zasobów.
+Zanim usuniesz dostawcy zasobów bazy danych SQL, należy usunąć wszystkie zależności dostawcy. Należy także kopię pakiet wdrożeniowy, który został użyty do zainstalowania dostawcy zasobów.
 
-Istnieje kilka zadań oczyszczania zrobić przed uruchomieniem _DeploySqlProvider.ps1_ skryptu, aby usunąć dostawcę zasobów.
-Dzierżawcy są odpowiedzialne za następujące zadania oczyszczania:
+Istnieje kilka zadań oczyszczania zrobić przed uruchomieniem _DeploySqlProvider.ps1_ skrypt, aby usunąć dostawcę zasobów.
+Dzierżawcy jest odpowiedzialny za następujące zadania oczyszczania:
 
-* Usuń wszystkie ich bazy danych od dostawcy zasobów. (Usuwanie baz danych dzierżawy nie powoduje usunięcia danych.)
-* Wyrejestruj z przestrzeni nazw dostawcy zasobów.
+* Usuń wszystkie swoje bazy danych od dostawcy zasobów. (Usuwanie baz danych dzierżawy nie powoduje usunięcia danych.)
+* Aby wyrejestrować się z przestrzeni nazw dostawcy zasobów.
 
-Administrator jest odpowiedzialny za następujące zadania oczyszczania:
+Administrator jest odpowiedzialna za następujące zadania oczyszczania:
 
-* Usuwa serwerami hostingu od dostawcy zasobów SQL.
-* Usuwa wszystkie plany odwołujące się do dostawcy zasobów SQL.
-* Usuwa wszelkie przydziały, które są skojarzone z dostawcą zasobów SQL.
+* Usuwa serwerami hostingu z dostawcy zasobów bazy danych SQL.
+* Usuwa wszystkie plany odwołujące się do dostawcy zasobów bazy danych SQL.
+* Usuwa wykorzystani limitów przydziałów, które są skojarzone z dostawcy zasobów bazy danych SQL.
 
-## <a name="to-remove-the-sql-resource-provider"></a>Aby usunąć dostawcę zasobów SQL
+## <a name="to-remove-the-sql-resource-provider"></a>Aby usunąć dostawcy zasobów bazy danych SQL
 
 1. Sprawdź, czy po usunięciu wszystkich istniejących zasobów dostawcy zależności SQL.
 
    > [!NOTE]
-   > Odinstalowywanie dostawcy zasobów SQL będzie kontynuowana nawet wtedy, gdy zasoby zależne są aktualnie używa dostawcy zasobów.
+   > Odinstalowywanie dostawcy zasobów bazy danych SQL będzie kontynuowana nawet wtedy, gdy zasoby zależne obecnie używasz dostawcy zasobów.
   
-2. Uzyskaj kopię SQL dostawcy zasobów binarnych, a następnie uruchom samorozpakowujący się plik typu wyodrębnienie zawartości do katalogu tymczasowego.
+2. Pobierz kopię dostawcy zasobów bazy danych SQL binarnym, a następnie uruchom samodzielnej wyodrębniania, aby wyodrębnić zawartość do katalogu tymczasowego.
 
-3. Otwórz okno konsoli programu PowerShell nowych z podwyższonym poziomem uprawnień i przejdź do katalogu, w którym wyodrębniono pliki binarne dostawcy zasobów SQL.
+3. Otwórz okno konsoli programu PowerShell nowe z podwyższonym poziomem uprawnień i przejdź do katalogu, w którym zostały wyodrębnione pliki binarne dostawcy zasobów programu SQL.
 
 4. Uruchom skrypt DeploySqlProvider.ps1, korzystając z następujących parametrów:
 
-    * **Odinstaluj**. Usuwa dostawcy zasobów i wszystkie powiązane zasoby.
+    * **Odinstaluj**. Usuwa dostawcę zasobów i wszystkie powiązane zasoby.
     * **PrivilegedEndpoint**. Adres IP lub nazwa DNS uprzywilejowanych punktu końcowego.
-    * **CloudAdminCredential**. Poświadczenia dla administratora chmury niezbędnych do uzyskania dostępu uprzywilejowanego punktu końcowego.
-    * **AzCredential**. Poświadczenia dla konta administratora usługi Azure stosu. Użyj tych samych poświadczeń, które używane do wdrożenia usługi Azure stosu.
+    * **AzureEnvironment**. Środowisko platformy Azure używanych do wdrażania usługi Azure Stack. Wymagane tylko w przypadku wdrożeń usługi Azure AD.
+    * **CloudAdminCredential**. Poświadczenia dla administratora chmury, niezbędnych do uzyskania dostępu uprzywilejowanego punktu końcowego.
+    * **AzCredential**. Poświadczenia dla konta administratora usługi Azure Stack. Użyj tych samych poświadczeń, które były używane do wdrażania usługi Azure Stack.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Oferta usługi aplikacji jako PaaS](azure-stack-app-service-overview.md)
+[Oferowanie usług aplikacji jako usługi PaaS](azure-stack-app-service-overview.md)

@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: 9d4d7633428cd174a31214db2db6b6d9928230bd
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: dde8881fc446eef0dd6ca0735e5e23a5a19328fa
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627920"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578373"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Stream dzienniki diagnostyczne platformy Azure do Centrum zdarzeń
-**[Dzienniki diagnostyczne platformy Azure](monitoring-overview-of-diagnostic-logs.md) ** może być przesyłany strumieniowo w czasie zbliżonym do rzeczywistego do dowolnej aplikacji przy użyciu wbudowanych opcji "Eksportuj do usługi Event Hubs" w portalu lub przez włączenie identyfikator reguły autoryzacji Centrum zdarzeń w ustawieniu diagnostycznym za pośrednictwem platformy Azure Polecenia cmdlet programu PowerShell lub Azure CLI 2.0.
+**[Dzienniki diagnostyczne platformy Azure](monitoring-overview-of-diagnostic-logs.md)**  może być przesyłany strumieniowo w czasie zbliżonym do rzeczywistego do dowolnej aplikacji przy użyciu wbudowanych opcji "Eksportuj do usługi Event Hubs" w portalu lub przez włączenie identyfikator reguły autoryzacji Centrum zdarzeń w ustawieniu diagnostycznym za pośrednictwem platformy Azure Polecenia cmdlet programu PowerShell lub Azure CLI 2.0.
 
 ## <a name="what-you-can-do-with-diagnostics-logs-and-event-hubs"></a>Co można zrobić za pomocą dzienników diagnostyki i usługi Event Hubs
 Oto kilka sposobów, można na przykład możliwość przesyłania strumieniowego dla dzienników diagnostycznych:
@@ -41,7 +41,7 @@ Oto kilka sposobów, można na przykład możliwość przesyłania strumienioweg
 
 ## <a name="enable-streaming-of-diagnostic-logs"></a>Włączanie przesyłania strumieniowego dzienników diagnostycznych
 
-Aby umożliwić przesyłanie strumieniowe dzienników diagnostycznych programowo, w portalu lub przy użyciu [interfejsów API REST usługi Azure Monitor](https://docs.microsoft.com/en-us/rest/api/monitor/diagnosticsettings). W obu przypadkach można utworzyć ustawienie diagnostyczne, w którym należy określić przestrzeni nazw usługi Event Hubs i kategorie dzienników i metryk, które chcesz wysłać do przestrzeni nazw. Centrum zdarzeń jest tworzony w przestrzeni nazw dla każdej kategorii dziennika, w której zostanie włączone. Diagnostyka **kategoria dziennika** jest typem dziennika, który może zbierać zasobu.
+Aby umożliwić przesyłanie strumieniowe dzienników diagnostycznych programowo, w portalu lub przy użyciu [interfejsów API REST usługi Azure Monitor](https://docs.microsoft.com/rest/api/monitor/diagnosticsettings). W obu przypadkach można utworzyć ustawienie diagnostyczne, w którym należy określić przestrzeni nazw usługi Event Hubs i kategorie dzienników i metryk, które chcesz wysłać do przestrzeni nazw. Centrum zdarzeń jest tworzony w przestrzeni nazw dla każdej kategorii dziennika, w której zostanie włączone. Diagnostyka **kategoria dziennika** jest typem dziennika, który może zbierać zasobu.
 
 > [!WARNING]
 > Strumieniowe przesyłanie dzienników diagnostycznych z zasobów obliczeniowych (na przykład maszyny wirtualne lub usługi Service Fabric) i włączenie [wymaga innego zestawu kroków](../event-hubs/event-hubs-streaming-azure-diags-data.md).
@@ -93,7 +93,7 @@ Identyfikator reguły autoryzacji Centrum zdarzeń jest ciągiem o następujący
 
 ### <a name="via-azure-cli-20"></a>Za pomocą interfejsu wiersza polecenia platformy Azure 2.0
 
-Do przesyłania strumieniowego za pośrednictwem [interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/en-us/cli/azure/monitor?view=azure-cli-latest), możesz użyć [tworzenie az monitor diagnostic-settings](https://docs.microsoft.com/en-us/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) polecenia.
+Do przesyłania strumieniowego za pośrednictwem [interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest), możesz użyć [tworzenie az monitor diagnostic-settings](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) polecenia.
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \

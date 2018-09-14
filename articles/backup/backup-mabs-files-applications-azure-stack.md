@@ -8,12 +8,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 6/5/2018
 ms.author: adigan
-ms.openlocfilehash: a9eca3c3aeaa8d9d0d3d7728f8aebd63543cb604
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: acbd1bb98fd9a3eb24b7b3262c3fe9fe47200385
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39617119"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579208"
 ---
 # <a name="back-up-files-on-azure-stack"></a>Tworzenie kopii zapasowej plików w usłudze Azure Stack
 Usługi Azure Backup umożliwia ochronę (lub utworzyć kopię zapasową) plików i aplikacji w usłudze Azure Stack. Aby utworzyć kopię zapasową plików i aplikacji, zainstaluj serwer usługi Microsoft Azure Backup jako maszynę wirtualną działającą w usłudze Azure Stack. Można chronić pliki na każdym serwerze usługi Azure Stack w tej samej sieci wirtualnej. Po zainstalowaniu serwera usługi Azure Backup, Dodaj dysków platformy Azure w celu zwiększenia magazynu lokalnego, która jest dostępna dla krótkoterminowej kopii zapasowej danych. Usługa Azure Backup Server używa usługi Azure storage do długoterminowego przechowywania danych.
@@ -49,7 +49,7 @@ Aby skonfigurować usługi Azure Backup Server, aby chronić pliki na maszynach 
 
     ![Otwiera Kreatora nowej grupy ochrony](./media/backup-mabs-files-applications-azure-stack/5-select-group-members.png)
 
-    Firma Microsoft zaleca umieszczenie wszystkich danych, które współużytkują zasady ochrony, w grupie ochrony jeden. Aby uzyskać pełne informacje o planowaniu i wdrażaniu grupy ochrony, zobacz artykuł programu System Center DPM [wdrażanie grup ochrony](https://docs.microsoft.com/en-us/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
+    Firma Microsoft zaleca umieszczenie wszystkich danych, które współużytkują zasady ochrony, w grupie ochrony jeden. Aby uzyskać pełne informacje o planowaniu i wdrażaniu grupy ochrony, zobacz artykuł programu System Center DPM [wdrażanie grup ochrony](https://docs.microsoft.com/system-center/dpm/create-dpm-protection-groups?view=sc-dpm-1801).
 
 4. W **wybierz metodę ochrony danych** ekranu, wpisz nazwę grupy ochrony. Zaznacz pole wyboru **chcę krótkoterminową ochronę za pomocą:** i **chcę uzyskać ochronę online**. Kliknij przycisk **Dalej**.
 
@@ -135,5 +135,5 @@ Aby wyświetlić jednostki usługi Azure Backup Server w witrynie Azure Portal, 
 
 ## <a name="see-also"></a>Zobacz także
 Aby uzyskać informacje na temat korzystania z usługi Azure Backup Server do ochrony innych obciążeń, zobacz jeden z następujących artykułów:
-- [Tworzenie kopii zapasowych farmy programu SharePoint](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sharepoint-azure-stack)
-- [Tworzenie kopii zapasowych programu SQL server](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sql-azure-stack)
+- [Tworzenie kopii zapasowych farmy programu SharePoint](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
+- [Tworzenie kopii zapasowych programu SQL server](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)

@@ -9,12 +9,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: juliako
-ms.openlocfilehash: ac9d3f8fd10a3b65a2af2999b8c7ade7965de912
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 3cf5a32d95b028664f29b82b14e2294d58ae9925
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43664448"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580006"
 ---
 # <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksować wideo  
 
@@ -33,7 +33,7 @@ W artykule omówiono niektóre parametry, można ustawić w interfejsie API, zmi
 ## <a name="uploading-considerations"></a>Zagadnienia dotyczące przekazywania
     
 - Podczas przekazywania filmu wideo na podstawie adresu URL (preferowany) punktu końcowego musi zostać zabezpieczony za pomocą protokołu TLS 1.2 (lub nowszy)
-- Opcja tablicy bajtów jest ograniczony do 4GB i upłynie limit czasu po 30 min
+- Opcja tablicy bajtów jest ograniczona do 2GB i upłynie limit czasu po 30 min
 - Podany adres URL w `videoURL` param musi być zakodowany
 
 ## <a name="configurations-and-params"></a>Konfiguracje i parametry

@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/17/2018
-ms.openlocfilehash: 8b6c8220bd009505f683ce888558e612aebdc0b3
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6eb2452507c3adcb8532a0dd2e50ad701e35cd7f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048108"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579237"
 ---
 # <a name="schedule-u-sql-jobs-using-sql-server-integration-services-ssis"></a>Planowanie zadań U-SQL przy użyciu programu SQL Server Integration Services (SSIS)
 
@@ -63,7 +63,7 @@ W widoku Projekt pakietu SSIS, Dodaj **zadania systemowego Azure Data Lake Store
 ### <a name="configure-azure-data-lake-store-file-system-task"></a>Skonfiguruj zadania w systemie plików usługi Azure Data Lake Store
 
 1. Ustaw **operacji** do **CopyFromADLS**.
-2. Konfigurowanie **AzureDataLakeConnection**, Dowiedz się więcej o [usługi Azure Data Lake Store połączenia Manager](https://docs.microsoft.com/en-us/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager?view=sql-server-2017).
+2. Konfigurowanie **AzureDataLakeConnection**, Dowiedz się więcej o [usługi Azure Data Lake Store połączenia Manager](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-store-connection-manager?view=sql-server-2017).
 3. Ustaw **AzureDataLakeDirectory**. Wskaż folder przechowywania skryptów U-SQL. Użyj ścieżki względnej względną wobec folderu głównego konta usługi Azure Data Lake Store.
 4. Ustaw **docelowy** do folderu, który buforuje pobierane skrypty U-SQL. Ścieżka tego folderu będą obowiązywać w kontenerze pętli Foreach do przesłania zadania U-SQL. 
 
@@ -106,7 +106,7 @@ W widoku Projekt pakietu SSIS, Dodaj **zadania systemowego Azure Data Lake Store
 
 3. Ustaw **AzureDataLakeAnalyticsConnection** do konta usługi Azure Data Lake Analytics, które chcesz przesyłać zadania do. Dowiedz się więcej o [usługi Azure Data Lake Analytics połączenia Manager](https://docs.microsoft.com/sql/integration-services/connection-manager/azure-data-lake-analytics-connection-manager?view=sql-server-2017).
 
-4. Ustaw konfiguracje innych zadań. [Dowiedz się więcej](https://docs.microsoft.com/en-us/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017).
+4. Ustaw konfiguracje innych zadań. [Dowiedz się więcej](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017).
 
 5. Użyj **wyrażeń** aby dynamicznie ustawić nazwę zadania U-SQL:
 
@@ -119,7 +119,7 @@ W widoku Projekt pakietu SSIS, Dodaj **zadania systemowego Azure Data Lake Store
 
 Można użyć plików U-SQL w usłudze Azure Blob Storage za pomocą **zadania pobierania obiektów Blob Azure** w pakiety Azure Feature Pack. Takie podejście umożliwia korzystanie ze skryptów w chmurze.
 
-Kroki są podobne do [Scnario 2: pliki użycia języka U-SQL w usłudze Azure Data Lake Store](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Zmień zadanie System plików usługi Azure Data Lake Store na zadanie pobierania obiektów Blob platformy Azure. [Więcej informacji na temat zadań pobierania obiektów Blob Azure](https://docs.microsoft.com/en-us/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
+Kroki są podobne do [Scnario 2: pliki użycia języka U-SQL w usłudze Azure Data Lake Store](#scenario-2-use-u-sql-files-in-azure-data-lake-store). Zmień zadanie System plików usługi Azure Data Lake Store na zadanie pobierania obiektów Blob platformy Azure. [Więcej informacji na temat zadań pobierania obiektów Blob Azure](https://docs.microsoft.com/sql/integration-services/control-flow/azure-blob-download-task?view=sql-server-2017).
 
 Przepływ sterowania jest jak poniżej.
 
@@ -164,11 +164,11 @@ W niektórych przypadkach możesz chcieć dynamicznie ustawić wartość zmienne
 - Ustaw dane wejściowe i wyjściowe zmiennych ścieżek plików dynamicznie na podstawie, zgodnie z bieżącą datą i godziną.
 - Ustaw parametr dla procedur składowanych.
 
-[Dowiedz się więcej o sposobie ustawiania parametrów dla skryptu U-SQL](https://docs.microsoft.com/en-us/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017#parameter-mapping-page-configuration).
+[Dowiedz się więcej o sposobie ustawiania parametrów dla skryptu U-SQL](https://docs.microsoft.com/sql/integration-services/control-flow/azure-data-lake-analytics-task?view=sql-server-2017#parameter-mapping-page-configuration).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Uruchamianie pakietów SSIS na platformie Azure](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
 - [Usługa Azure Feature Pack dla usług Integration Services (SSIS)](https://docs.microsoft.com/sql/integration-services/azure-feature-pack-for-integration-services-ssis?view=sql-server-2017#scenario-managing-data-in-the-cloud)
-- [Planowanie zadań U-SQL przy użyciu usługi Azure Data Factory](https://docs.microsoft.com/en-us/azure/data-factory/transform-data-using-data-lake-analytics)
+- [Planowanie zadań U-SQL przy użyciu usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/transform-data-using-data-lake-analytics)
 

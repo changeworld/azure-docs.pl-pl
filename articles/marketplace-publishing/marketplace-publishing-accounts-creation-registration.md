@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/04/2017
 ms.author: hascipio
-ms.openlocfilehash: 642e4a2d11ef5a92f5ab46bc4872414966b04c0d
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 24dc50a6c78769877bdc07b9521a9d2e33837937
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715662"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579619"
 ---
 # <a name="create-a-microsoft-developer-account"></a>Utwórz konto Microsoft Developer
 W tym artykule przedstawiono tworzenie konta niezbędne i procesu rejestracji, aby stać się zatwierdzonych Microsoft Developer Portal Azure Marketplace.
@@ -38,7 +38,7 @@ Adres stanowiący nazwę użytkownika powinien należeć do domeny i kontrolowan
 Podczas tworzenia konta firmy, należy przestrzegać następujących wytycznych, jeśli więcej niż jedna osoba będzie potrzebował dostępu do konta zalogować się przy użyciu konta Microsoft, które otworzyć konto.
 
 > [!Important]
-> Ważne Aby umożliwić wielu użytkownikom dostęp do danych konta Centrum deweloperów, firma Microsoft zaleca używanie usługi Azure Active Directory do przypisywania ról dla poszczególnych użytkowników, którzy mogą uzyskać dostępu do konta poprzez zalogowanie za pomocą ich poszczególne poświadczenia usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Zarządzanie użytkownikami konta](https://msdn.microsoft.com/en-us/windows/uwp/publish/manage-account-users).
+> Ważne Aby umożliwić wielu użytkownikom dostęp do danych konta Centrum deweloperów, firma Microsoft zaleca używanie usługi Azure Active Directory do przypisywania ról dla poszczególnych użytkowników, którzy mogą uzyskać dostępu do konta poprzez zalogowanie za pomocą ich poszczególne poświadczenia usługi Azure AD. Aby uzyskać więcej informacji, zobacz [Zarządzanie użytkownikami konta](https://msdn.microsoft.com/windows/uwp/publish/manage-account-users).
 
 * Tworzenie konta Microsoft, przy użyciu adresu e-mail, który należy do domeny swojej firmy, ale nie do pojedynczej osoby — na przykład windowsapps@fabrikam.com.
 * Ograniczanie dostępu do tego konta Microsoft do najmniejszej możliwej liczby deweloperów.
@@ -50,7 +50,7 @@ Podczas tworzenia konta firmy, należy przestrzegać następujących wytycznych,
 
 Konto dewelopera powinni mieć dostęp przede wszystkim z zaufanych komputerów z systemem. Jest to istotne, ponieważ ma limitu liczby kody wygenerowane na jednym koncie na tydzień. Umożliwia ona także najbardziej bezproblemowe środowisko logowania.
 
-Aby uzyskać więcej informacji na temat wytycznych konta dewelopera dodatkowe i zabezpieczeń, kliknij [tutaj](https://msdn.microsoft.com/en-us/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
+Aby uzyskać więcej informacji na temat wytycznych konta dewelopera dodatkowe i zabezpieczeń, kliknij [tutaj](https://msdn.microsoft.com/windows/uwp/publish/opening-a-developer-account#additional-guidelines-for-company-accounts).
 
 ### <a name="instructions"></a>Instrukcje
 1. Otwórz nowy Incognito przeglądarki Chrome lub Internet Explorer przeglądanie InPrivate sesji przeglądania w celu zapewnienia, że nie zalogowano do istniejącego konta.

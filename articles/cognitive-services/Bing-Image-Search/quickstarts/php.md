@@ -1,197 +1,128 @@
 ---
-title: 'Szybki Start: Wysyłanie zapytania przy użyciu interfejsu API REST dla interfejsu API wyszukiwania obrazów Bing za pomocą języka PHP'
-description: W tym przewodniku Szybki Start możesz wysyłać zapytania wyszukiwania interfejsu API wyszukiwania Bing w celu uzyskania listy odpowiednie obrazy za pomocą języka PHP.
+title: 'Szybki Start: Wysyłania zapytania przy użyciu interfejsu API wyszukiwania obrazów Bing i języka PHP'
+titleSuffix: Azure Cognitive Services
+description: Ten przewodnik Szybki Start umożliwia wyszukiwanie i znajdowanie obrazów w sieci web za pomocą API wyszukiwania w Internecie Bing.
 services: cognitive-services
 documentationcenter: ''
-author: v-jerkin
+author: aahill
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-image-search
 ms.topic: article
-ms.date: 9/21/2017
-ms.author: v-jerkin
-ms.openlocfilehash: d91021c4bd5e0f78e518811f3794055b397c1a39
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.date: 9/07/2018
+ms.author: aahi
+ms.openlocfilehash: ebf8c0269e070c9047d730e58b8e2d3824124e1a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "41987603"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574202"
 ---
-# <a name="quickstart-send-search-queries-using-the-rest-api-and-php"></a>Szybki Start: Wysyłanie zapytania przy użyciu interfejsu API REST i PHP
+# <a name="quickstart-send-search-queries-using-the-bing-image-search-rest-api-and-php"></a>Szybki Start: Wysyłania zapytania przy użyciu interfejsu API REST wyszukiwania obrazów Bing i języka PHP
 
-Interfejs API wyszukiwania obrazów Bing udostępnia środowisko podobne do Bing.com/Images, umożliwiając Wysyłanie zapytania wyszukiwania użytkowników do usługi Bing i uzyskanie listy odpowiednie obrazy.
+Ten przewodnik Szybki Start umożliwia utworzenie pierwszego wywołania do interfejsu API wyszukiwania obrazów Bing i odbierać odpowiedź w formacie JSON. Prostą aplikację w tym artykule wysyła zapytanie wyszukiwania i wyświetli nieprzetworzone wyniki.
 
-Ten artykuł zawiera prostą aplikację konsolową, która wykonuje kwerendę interfejsu API wyszukiwania obrazów Bing i wyświetla zwrócone nieprzetworzone wyniki wyszukiwania, które są w formacie JSON. Gdy ta aplikacja jest napisany w języku PHP, interfejs API jest zgodny z dowolnego języka programowania, który może wysyłać żądania HTTP i Przeanalizuj dane JSON usługi sieci Web typu RESTful. 
+Gdy ta aplikacja jest napisany w języku PHP, interfejs API jest zgodny z dowolnego języka programowania, który może wysyłać żądania HTTP i Przeanalizuj dane JSON usługi sieci Web typu RESTful.
+
+Kod źródłowy dla tego przykładu jest dostępny [w serwisie GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/java/Search/BingImageSearchv7.java).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Potrzebujesz [PHP 5.6.x](http://php.net/downloads.php) do uruchamiania tego kodu.
+* [PHP 5.6.x lub nowszym](http://php.net/downloads.php).
 
 [!INCLUDE [cognitive-services-bing-image-search-signup-requirements](../../../../includes/cognitive-services-bing-image-search-signup-requirements.md)]
 
-## <a name="running-the-application"></a>Uruchamianie aplikacji
+## <a name="create-and-initialize-the-application"></a>Tworzenie i Inicjowanie aplikacji
 
 Aby uruchomić tę aplikację, wykonaj następujące kroki.
 
-1. Upewnij się, bezpiecznej obsługi protokołu HTTP jest włączone w swojej `php.ini` zgodnie z opisem w komentarz do kodu. W Windows, ten plik znajduje się w `C:\windows`.
+1. Upewnij się, bezpiecznej obsługi protokołu HTTP jest włączone w swojej `php.ini` pliku. W Windows, ten plik znajduje się w `C:\windows`.
 2. Utwórz nowy projekt języka PHP w Twoim ulubionym środowiskiem IDE lub edytora.
-3. Dodaj kod podany.
-4. Zastąp `accessKey` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
-5. Uruchom program.
+3. Definiowanie punktu końcowego interfejsu API, klucz subskrypcji i szukanego terminu.
 
-```php
-<?php
+    ```php
+    $endpoint = 'https://api.cognitive.microsoft.com/bing/v7.0/images/search';
+    // Replace the accessKey string value with your valid access key.
+    $accessKey = 'enter key here';
+    $term = 'tropical ocean';
+    ```
+## <a name="construct-and-perform-a-http-request"></a>Skonstruuj i wykonywać żądania HTTP
 
-// NOTE: Be sure to uncomment the following line in your php.ini file.
-// ;extension=php_openssl.dll
+1. Zmienne w ostatnim kroku umożliwia przygotowanie żądania HTTP do interfejsu API wyszukiwania obrazów.
 
-// **********************************************
-// *** Update or verify the following values. ***
-// **********************************************
-
-// Replace the accessKey string value with your valid access key.
-$accessKey = 'enter key here';
-
-// Verify the endpoint URI.  At this writing, only one endpoint is used for Bing
-// search APIs.  In the future, regional endpoints may be available.  If you
-// encounter unexpected authorization errors, double-check this value against
-// the endpoint for your Bing Search instance in your Azure dashboard.
-$endpoint = 'https://api.cognitive.microsoft.com/bing/v7.0/images/search';
-
-$term = 'puppies';
-
-function BingImageSearch ($url, $key, $query) {
-    // Prepare HTTP request
-    // NOTE: Use the key 'http' even if you are making an HTTPS request. See:
-    // http://php.net/manual/en/function.stream-context-create.php
+    ```php
     $headers = "Ocp-Apim-Subscription-Key: $key\r\n";
     $options = array ( 'http' => array (
-                           'header' => $headers,
-                           'method' => 'GET' ));
+                            'header' => $headers,
+                            'method' => 'GET' ));
+    ```
+2. Wykonaj żądania sieci web i Pobierz odpowiedź JSON.
 
-    // Perform the Web request and get the JSON response
+    ```php
     $context = stream_context_create($options);
     $result = file_get_contents($url . "?q=" . urlencode($query), false, $context);
+    ```
 
-    // Extract Bing HTTP headers
+## <a name="process-and-print-the-json"></a>Proces i drukarek za pomocą pliku JSON
+
+Proces i Drukuj zwrócona odpowiedź w formacie JSON.
+
+    ```php
     $headers = array();
-    foreach ($http_response_header as $k => $v) {
-        $h = explode(":", $v, 2);
-        if (isset($h[1]))
-            if (preg_match("/^BingAPIs-/", $h[0]) || preg_match("/^X-MSEdge-/", $h[0]))
-                $headers[trim($h[0])] = trim($h[1]);
-    }
+        foreach ($http_response_header as $k => $v) {
+            $h = explode(":", $v, 2);
+            if (isset($h[1]))
+                if (preg_match("/^BingAPIs-/", $h[0]) || preg_match("/^X-MSEdge-/", $h[0]))
+                    $headers[trim($h[0])] = trim($h[1]);
+        }
+        return array($headers, $result);
+    ```
 
-    return array($headers, $result);
-}
+## <a name="sample-json-response"></a>Przykładowa odpowiedź JSON
 
-if (strlen($accessKey) == 32) {
-
-    print "Searching images for: " . $term . "\n";
-    
-    list($headers, $json) = BingImageSearch($endpoint, $accessKey, $term);
-    
-    print "\nRelevant Headers:\n\n";
-    foreach ($headers as $k => $v) {
-        print $k . ": " . $v . "\n";
-    }
-    
-    print "\nJSON Response:\n\n";
-    echo json_encode(json_decode($json), JSON_PRETTY_PRINT);
-
-} else {
-
-    print("Invalid Bing Search API subscription key!\n");
-    print("Please paste yours into the source code.\n");
-
-}
-?>
-```
-
-## <a name="json-response"></a>Odpowiedź w formacie JSON
-
-Następuje przykładowej odpowiedzi. Aby ograniczyć długość za pomocą pliku JSON, tylko jeden wynik jest wyświetlany, a inne części odpowiedzi zostały obcięte. 
+Odpowiedzi z interfejsu API wyszukiwania obrazów Bing są zwracane w formacie JSON. Ta przykładowa odpowiedź została obcięta do Pokaż jeden wynik.
 
 ```json
 {
-  "_type": "Images",
-  "instrumentation": {},
-  "readLink": "https://api.cognitive.microsoft.com/api/v7/images/search?q=puppies",
-  "webSearchUrl": "https://www.bing.com/images/search?q=puppies&FORM=OIIARP",
-  "totalEstimatedMatches": 955,
-  "nextOffset": 1,
-  "value": [
+"_type":"Images",
+"instrumentation":{
+    "_type":"ResponseInstrumentation"
+},
+"readLink":"images\/search?q=tropical ocean",
+"webSearchUrl":"https:\/\/www.bing.com\/images\/search?q=tropical ocean&FORM=OIIARP",
+"totalEstimatedMatches":842,
+"nextOffset":47,
+"value":[
     {
-      "webSearchUrl": "https://www.bing.com/images/search?view=detailv...",
-      "name": "So cute - Puppies Wallpaper",
-      "thumbnailUrl": "https://tse3.mm.bing.net/th?id=OIP.jHrihoDNkXGS1t...",
-      "datePublished": "2014-02-01T21:55:00.0000000Z",
-      "contentUrl": "http://images4.contoso.com/image/photos/14700000/So-cute-puppies...",
-      "hostPageUrl": "http://www.contoso.com/clubs/puppies/images/14749028/...",
-      "contentSize": "394455 B",
-      "encodingFormat": "jpeg",
-      "hostPageDisplayUrl": "www.contoso.com/clubs/puppies/images/14749...",
-      "width": 1600,
-      "height": 1200,
-      "thumbnail": {
-        "width": 300,
-        "height": 225
-      },
-      "imageInsightsToken": "ccid_jHrihoDN*mid_F68CC526226E163FD1EA659747AD...",
-      "insightsMetadata": {
-        "recipeSourcesCount": 0
-      },
-      "imageId": "F68CC526226E163FD1EA659747ADCB8F9FA36",
-      "accentColor": "8D613E"
+        "webSearchUrl":"https:\/\/www.bing.com\/images\/search?view=detailv2&FORM=OIIRPO&q=tropical+ocean&id=8607ACDACB243BDEA7E1EF78127DA931E680E3A5&simid=608027248313960152",
+        "name":"My Life in the Ocean | The greatest WordPress.com site in ...",
+        "thumbnailUrl":"https:\/\/tse3.mm.bing.net\/th?id=OIP.fmwSKKmKpmZtJiBDps1kLAHaEo&pid=Api",
+        "datePublished":"2017-11-03T08:51:00.0000000Z",
+        "contentUrl":"https:\/\/mylifeintheocean.files.wordpress.com\/2012\/11\/tropical-ocean-wallpaper-1920x12003.jpg",
+        "hostPageUrl":"https:\/\/mylifeintheocean.wordpress.com\/",
+        "contentSize":"897388 B",
+        "encodingFormat":"jpeg",
+        "hostPageDisplayUrl":"https:\/\/mylifeintheocean.wordpress.com",
+        "width":1920,
+        "height":1200,
+        "thumbnail":{
+        "width":474,
+        "height":296
+        },
+        "imageInsightsToken":"ccid_fmwSKKmK*mid_8607ACDACB243BDEA7E1EF78127DA931E680E3A5*simid_608027248313960152*thid_OIP.fmwSKKmKpmZtJiBDps1kLAHaEo",
+        "insightsMetadata":{
+        "recipeSourcesCount":0,
+        "bestRepresentativeQuery":{
+            "text":"Tropical Beaches Desktop Wallpaper",
+            "displayText":"Tropical Beaches Desktop Wallpaper",
+            "webSearchUrl":"https:\/\/www.bing.com\/images\/search?q=Tropical+Beaches+Desktop+Wallpaper&id=8607ACDACB243BDEA7E1EF78127DA931E680E3A5&FORM=IDBQDM"
+        },
+        "pagesIncludingCount":115,
+        "availableSizesCount":44
+        },
+        "imageId":"8607ACDACB243BDEA7E1EF78127DA931E680E3A5",
+        "accentColor":"0050B2"
     }
-  ],
-  "queryExpansions": [
-    {
-      "text": "Shih Tzu Puppies",
-      "displayText": "Shih Tzu",
-      "webSearchUrl": "https://www.bing.com/images/search?q=Shih+Tzu+Puppies...",
-      "searchLink": "https://api.cognitive.microsoft.com/api/v7/images/search?q=Shih...",
-      "thumbnail": {
-        "thumbnailUrl": "https://tse2.mm.bing.net/th?q=Shih+Tzu+Puppies&pid=Api..."
-      }
-    }
-  ],
-  "pivotSuggestions": [
-    {
-      "pivot": "puppies",
-      "suggestions": [
-        {
-          "text": "Dog",
-          "displayText": "Dog",
-          "webSearchUrl": "https://www.bing.com/images/search?q=Dog&tq=%7b%22pq%...",
-          "searchLink": "https://api.cognitive.microsoft.com/api/v7/images/search?q=Dog...",
-          "thumbnail": {
-            "thumbnailUrl": "https://tse1.mm.bing.net/th?q=Dog&pid=Api&mkt=en-US..."
-          }
-        }
-      ]
-    }
-  ],
-  "similarTerms": [
-    {
-      "text": "cute",
-      "displayText": "cute",
-      "webSearchUrl": "https://www.bing.com/images/search?q=cute&FORM=...",
-      "thumbnail": {
-        "url": "https://tse2.mm.bing.net/th?q=cute&pid=Api&mkt=en-US..."
-      }
-    }
-  ],
-  "relatedSearches": [
-    {
-      "text": "Cute Puppies",
-      "displayText": "Cute Puppies",
-      "webSearchUrl": "https://www.bing.com/images/search?q=Cute+Puppies",
-      "searchLink": "https://api.cognitive.microsoft.com/api/v7/images/sear...",
-      "thumbnail": {
-        "thumbnailUrl": "https://tse4.mm.bing.net/th?q=Cute+Puppies&pid=..."
-      }
-    }
-  ]
 }
 ```
 
@@ -202,7 +133,8 @@ Następuje przykładowej odpowiedzi. Aby ograniczyć długość za pomocą pliku
 
 ## <a name="see-also"></a>Zobacz także 
 
-[Przegląd wyszukiwania obrazów Bing](../overview.md)  
-[Wypróbuj](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
-[Pobierz klucz bezpłatny dostęp próbny](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
-[Dokumentacja interfejsu API wyszukiwania obrazów Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)
+* [Co to jest wyszukiwanie obrazów Bing?](https://docs.microsoft.com/azure/cognitive-services/bing-image-search/overview)  
+* [Wypróbuj prezentację online dla interaktywne](https://azure.microsoft.com/services/cognitive-services/bing-image-search-api/)  
+* [Uzyskaj bezpłatne klucza dostępu usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/?api=bing-image-search-api)  
+* [Dokumentacja usługi Azure Cognitive Services](https://docs.microsoft.com/azure/cognitive-services)
+* [Dokumentacja interfejsu API wyszukiwania obrazów Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference)

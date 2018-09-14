@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 588a0686eda1966582b82a4673a8b6805453c94c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 6096833381db7ef0d2f011d517aaad4ae63ce4d6
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441446"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576871"
 ---
 # <a name="create-a-log-alert-with-a-resource-manager-template"></a>Tworzenie alertu dziennika za pomocą szablonu usługi Resource Manager
 W tym artykule pokazano, jak zarządzać [alerty dzienników](monitor-alerts-unified-log.md) programowo w dużej skali, na platformie Azure przy użyciu [szablonu usługi Azure Resource Manager](..//azure-resource-manager/resource-group-authoring-templates.md) za pośrednictwem [programu Azure Powershell](../azure-resource-manager/resource-group-template-deploy.md) i [Wiersza polecenia platformy azure](../azure-resource-manager/resource-group-template-deploy-cli.md). Obecnie usługi Azure Alerts obsługuje alerty dzienników dla zapytań z [usługi Azure Log Analytics](../log-analytics/log-analytics-tutorial-viewdata.md) i [usługi Azure Application Insights](../application-insights/app-insights-analytics-tour.md).
@@ -35,12 +35,12 @@ Log Analytics alertu interfejsu API REST jest zgodne ze specyfikacją REST i mo�
 Dowiedz się więcej o [tworzenie i zarządzanie nimi reguły alertów w usłudze Log Analytics przy użyciu interfejsu API REST](../log-analytics/log-analytics-api-alerts.md), w tym przykłady uzyskiwania dostępu do interfejsu API z poziomu programu Powershell.
 
 ## <a name="managing-log-alert-on-application-insights"></a>Zarządzanie alertu dziennika w usłudze Application Insights
-Alerty dzienników usługi Azure Application Insights zostały wprowadzone w ramach nowych alertów platformy Azure w ramach usługi Azure Monitor. Dlatego jest uruchamiana przy użyciu interfejsu API usługi Azure Monitor jako [zaplanowane reguł zapytań](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) grupy operacji REST.
+Alerty dzienników usługi Azure Application Insights zostały wprowadzone w ramach nowych alertów platformy Azure w ramach usługi Azure Monitor. Dlatego jest uruchamiana przy użyciu interfejsu API usługi Azure Monitor jako [zaplanowane reguł zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) grupy operacji REST.
 
 ### <a name="using-azure-resource-manager-template"></a>Przy użyciu szablonu usługi Resource Manager platformy Azure
-Alert dziennika dla zasobów usługi Application Insights ma typ `Microsoft.Insights/scheduledQueryRules/`. Aby uzyskać więcej informacji na temat tego typu zasobu, zobacz [usługi Azure Monitor — zaplanowane reguły dokumentację interfejsu API zapytań](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/).
+Alert dziennika dla zasobów usługi Application Insights ma typ `Microsoft.Insights/scheduledQueryRules/`. Aby uzyskać więcej informacji na temat tego typu zasobu, zobacz [usługi Azure Monitor — zaplanowane reguły dokumentację interfejsu API zapytań](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/).
 
-Poniżej przedstawiono strukturę dla [tworzenia reguł zapytań zaplanowane](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/createorupdate) na podstawie szablonu zasobów z zestawem danych przykładowych jako zmienne.
+Poniżej przedstawiono strukturę dla [tworzenia reguł zapytań zaplanowane](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/createorupdate) na podstawie szablonu zasobów z zestawem danych przykładowych jako zmienne.
 
 ```json
 {
@@ -113,7 +113,7 @@ Poniżej przedstawiono strukturę dla [tworzenia reguł zapytań zaplanowane](ht
 }
 ```
 > [!IMPORTANT]
-> Pole znacznika ukryte w Link do zasobu docelowego jest wymagane użycie [zaplanowane reguł zapytań ](https://docs.microsoft.com/en-us/rest/api/monitor/scheduledqueryrules/) szablonu połączenia lub zasobu interfejsu API. 
+> Pole znacznika ukryte w Link do zasobu docelowego jest wymagane użycie [zaplanowane reguł zapytań ](https://docs.microsoft.com/rest/api/monitor/scheduledqueryrules/) szablonu połączenia lub zasobu interfejsu API. 
 
 Przykładowy kod json powyżej, można zapisać jako (np.) sampleScheduledQueryRule.json na potrzeby tego przewodnika i można wdrożyć przy użyciu [usługi Azure Resource Manager w witrynie Azure portal](../azure-resource-manager/resource-group-template-deploy-portal.md#deploy-resources-from-custom-template).
 

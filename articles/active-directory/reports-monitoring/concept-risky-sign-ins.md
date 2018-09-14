@@ -14,12 +14,12 @@ ms.component: report-monitor
 ms.date: 11/14/2017
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: 4546734cd1b5bf2f4aaddc6477310128c9e62d51
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 3fab0648a2ad0e0a4c193d37875913dd27bf9af4
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42057288"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574284"
 ---
 # <a name="risky-sign-ins-report-in-the-azure-active-directory-portal"></a>Raport dotyczący ryzykownych logowań w portalu usługi Azure Active Directory
 
@@ -29,9 +29,9 @@ Usługa Azure AD wykrywa podejrzane akcje powiązane z kontami użytkowników. D
 
 Za pomocą wykrytych zdarzeń o podwyższonym ryzyku obliczane są:
 
-- **Ryzykowne logowania** — ryzykowne logowanie jest wskaźnikiem próby logowania, które mogło zostać wykonane przez osobę, która nie jest prawowitym właścicielem konta użytkownika. Aby uzyskać więcej informacji, zobacz [Ryzykowne logowania](../identity-protection/overview.md#risky-sign-ins). 
+- **Ryzykowne logowania** — ryzykowne logowanie jest wskaźnikiem próby logowania, które mogło zostać wykonane przez osobę, która nie jest prawowitym właścicielem konta użytkownika. Aby uzyskać więcej informacji, zobacz [sposobu konfigurowania zasad ryzyka logowania](../identity-protection/howto-sign-in-risk-policy.md). 
 
-- **Użytkownicy oflagowani w związku z ryzykiem** — ryzykowny użytkownik jest wskaźnikiem konta użytkownika, którego bezpieczeństwo mogło zostać naruszone. Aby uzyskać więcej informacji, zobacz [Użytkownicy oflagowani w związku z ryzykiem](../identity-protection/overview.md#users-flagged-for-risk).  
+- **Użytkownicy oflagowani w związku z ryzykiem** — ryzykowny użytkownik jest wskaźnikiem konta użytkownika, którego bezpieczeństwo mogło zostać naruszone. Aby uzyskać więcej informacji, zobacz [sposobu konfigurowania zasad ryzyka użytkownika](../identity-protection/howto-user-risk-policy.md).  
 
 W witrynie [Azure Portal](https://portal.azure.com) raporty dotyczące zabezpieczeń można znaleźć w bloku **Azure Active Directory** w sekcji **Zabezpieczenia**. 
 
@@ -73,7 +73,7 @@ Na podstawie badania ryzykownego logowania możesz przekazać usłudze Azure Act
 
 ![Ryzykowne logowania](./media/concept-risky-sign-ins/21.png)
 
-Aby uzyskać więcej informacji, zobacz [Ręczne zamykanie zdarzeń o podwyższonym ryzyku](../identity-protection/overview.md#closing-risk-events-manually).
+
 
 Ten raport oferuje opcję:
 
@@ -98,13 +98,13 @@ Raport dotyczący ryzykownych logowań w usłudze Azure Active Directory w wersj
 
 Po wybraniu zdarzenia o podwyższonym ryzyku jest dla niego wyświetlany szczegółowy widok raportu, który umożliwia wykonanie następujących czynności:
 
-- Skonfigurowanie [zasad podejmowania działań naprawczych dotyczących ryzyka związanego z użytkownikiem](../identity-protection/overview.md#user-risk-security-policy).  
+- Skonfigurowanie [zasad podejmowania działań naprawczych dotyczących ryzyka związanego z użytkownikiem](../identity-protection/howto-user-risk-policy.md).  
 
 - Przeglądanie i wykrywanie osi czasu dla zdarzenia o podwyższonym ryzyku.  
 
 - Przeglądanie listy użytkowników, dla których wykryto konkretne zdarzenie o podwyższonym ryzyku.
 
-- [Ręczne zamykanie zdarzeń o podwyższonym ryzyku](../identity-protection/overview.md#closing-risk-events-manually) lub ponowne aktywowanie ręcznie zamkniętych zdarzeń o podwyższonym ryzyku. 
+- Ręczne zamykanie zdarzeń o podwyższonym ryzyku. 
 
 
 ![Ryzykowne logowania](./media/concept-risky-sign-ins/457.png)
@@ -124,7 +124,7 @@ Po wybraniu użytkownika jest dla niego wyświetlany szczegółowy widok raportu
 
 
 Aby zbadać zdarzenie o podwyższonym ryzyku, wybierz je z listy.  
-Spowoduje to otwarcie bloku **Szczegóły** dla tego zdarzenia o podwyższonym ryzyku. W bloku **Szczegóły** jest opcja [ręcznego zamknięcia zdarzenia o podwyższonym ryzyku](../identity-protection/overview.md#closing-risk-events-manually) lub ponownego aktywowania ręcznie zamkniętego zdarzenia o podwyższonym ryzyku. 
+Spowoduje to otwarcie bloku **Szczegóły** dla tego zdarzenia o podwyższonym ryzyku. Na **szczegóły** bloku, masz opcję, aby ręcznie zamknąć zdarzenie o podwyższonym ryzyku lub ponownie uaktywnić zdarzenia ryzyka ręcznego zamknięte. 
 
 
 ![Ryzykowne logowania](./media/concept-risky-sign-ins/325.png)

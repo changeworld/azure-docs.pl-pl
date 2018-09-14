@@ -1,6 +1,6 @@
 ---
-title: Niestandardowe decyzji usługi przepływu pracy — kognitywnych usług Azure | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera omówienie Azure niestandardowe decyzji usługi przepływu pracy.
+title: Niestandardowe Decision Service przepływu pracy — Azure Cognitive Services | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie usługi Azure Custom Decision Service przepływu pracy.
 services: cognitive-services
 author: noellelacharite
 manager: nolachar
@@ -8,23 +8,23 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 06/04/2018
 ms.author: nolachar
-ms.openlocfilehash: 851d7f8cc47b455dbced26ff53d841ed0a5ff0db
-ms.sourcegitcommit: b7290b2cede85db346bb88fe3a5b3b316620808d
+ms.openlocfilehash: 32d5939e9adb4d98ae0c38a32ded0e0b6dec8256
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/05/2018
-ms.locfileid: "35356148"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580637"
 ---
-# <a name="custom-decision-service-workflow"></a>Niestandardowe decyzji usługi przepływu pracy
+# <a name="custom-decision-service-workflow"></a>Przepływ pracy w usłudze Custom Decision Service
 
-Firma Microsoft zaleca w następstwie tego wzorca podczas kompilowania aplikacji.
+Jednak zalecamy zastosowanie tego wzorca, podczas kompilowania aplikacji.
 
-![Niestandardowe decyzji usługi przepływu pracy](media/custom-decision-service-workflow.png)
+![Przepływ pracy w usłudze Custom Decision Service](media/custom-decision-service-workflow.png)
 
-Dodaj [parametry połączenia magazynu Azure](https://docs.microsoft.com/en-us/azure/storage/common/storage-configure-connection-string).
+Dodaj [parametry połączenia usługi Azure Storage](https://docs.microsoft.com/azure/storage/common/storage-configure-connection-string).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Rejestrowanie aplikacji](custom-decision-service-get-started-register.md) z usługą decyzji niestandardowe
+* [Zarejestruj swoją aplikację](custom-decision-service-get-started-register.md) za pomocą usługi Custom Decision Service
 * Wprowadzenie do optymalizacji [strony sieci Web](custom-decision-service-get-started-browser.md) lub [aplikacja na smartfona](custom-decision-service-get-started-app.md).
-* Zapoznaj się [dokumentacja interfejsu API](custom-decision-service-api-reference.md) Aby dowiedzieć się więcej o funkcjach podana.
+* Zapoznaj się z [dokumentacja interfejsu API](custom-decision-service-api-reference.md) Aby dowiedzieć się więcej o podanej funkcji.

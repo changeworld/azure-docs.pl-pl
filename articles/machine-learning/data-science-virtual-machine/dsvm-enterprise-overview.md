@@ -1,7 +1,7 @@
 ---
-title: Wprowadzenie do środowisk opartych na maszynach wirtualnych nauki danych zespołu - Azure | Dokumentacja firmy Microsoft
-description: Wzorce wdrażania maszyny Wirtualnej nauki danych w środowisku przedsiębiorstwa zespołu.
-keywords: bezpośrednie uczenia AI, narzędzia do analizy danych, maszyna wirtualna nauki danych, dane geograficzne analytics, proces nauki danych zespołu
+title: Wprowadzenie do środowiska zespołowe na podstawie maszyny wirtualnej do nauki o danych — Azure | Dokumentacja firmy Microsoft
+description: Wzorce dotyczące wdrażania maszyny Wirtualnej do nauki o danych w środowisku przedsiębiorstwa zespołu.
+keywords: głębokiego uczenia i sztucznej Inteligencji, narzędzia do analizy danych, maszyny wirtualnej do nauki o danych, geoprzestrzenna analiza, zespół danych dla celów naukowych
 services: machine-learning
 documentationcenter: ''
 author: gopitk
@@ -15,40 +15,40 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/08/2018
 ms.author: gokuma
-ms.openlocfilehash: 8486b0be1fb5e1385da3c7ad55f6410a1059df93
-ms.sourcegitcommit: 638599eb548e41f341c54e14b29480ab02655db1
+ms.openlocfilehash: ea8d53ee71e9272167a045e2ea1780828f974d30
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36309252"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573595"
 ---
-# <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Analizy na podstawie maszyny wirtualnej nauki zespołu danych i środowiska AI 
-[Maszyny wirtualnej nauki danych](overview.md) (DSVM) udostępnia bogate środowisko na platformie Azure przy użyciu oprogramowania wbudowane sztucznego analizy (AI) i analizy danych. 
+# <a name="data-science-virtual-machine-based-team-analytics-and-ai-environment"></a>Analiza zespołu na podstawie maszyny wirtualnej do nauki o danych i sztucznej Inteligencji środowiska 
+[Maszyny wirtualnej do nauki o danych](overview.md) (DSVM) zapewnia bogate środowisko na platformie Azure przy użyciu wbudowanych oprogramowania sztucznej inteligencji (AI) i analizy danych. 
 
-Tradycyjnie DSVM został użyty jako pulpitu poszczególnych analytics. Analityków danych poszczególnych zwiększyć wydajność, wykorzystując to pojęcie udostępnionego środowiska wbudowane analytics. Jak analytics duże zespoły zaplanować środowiskami analytics ich AI i analityków danych, jeden cyklicznego motywów to infrastruktura analytics udostępnionego dla rozwoju i eksperymenty. Ta infrastruktura odbywa się zgodnie z rozwiązaniami INFORMATYCZNYMI dla firm zasad, które ułatwiają również współpracy i spójność zespołów nauki/analizy danych. 
+Tradycyjnie maszyny DSVM został użyty jako pulpit analityczny indywidualnych. Analitycy danych poszczególnych zwiększyć wydajność, za pomocą udostępnionego Odkryliśmy ich środowiska analizy wbudowanych. Jak analizy duże zespoły planują środowisk analitycznych dla analityków danych i deweloperom sztucznej Inteligencji, jedną z motywy cyklicznego jest infrastruktury analitycznej udostępnionego, do tworzenia i eksperymentowania. Ta infrastruktura odbywa się zgodnie z IT przedsiębiorstwa zasady, które ułatwiają również współpracy i spójności między zespołami nauki i analizowanie danych. 
 
-Umożliwia również współużytkowanej infrastruktury IT na lepsze wykorzystanie środowiska analytics. Niektóre organizacje wywołać infrastruktury nauki/analiza danych zespołów "analytics piaskownicy." Umożliwia on analityków danych dostęp do różnych zasobów danych, aby szybko zrozumieć dane, uruchamiać eksperymenty, sprawdzanie poprawności hipotez i tworzenie modeli predykcyjnych bez wpływu na środowisko produkcyjne. 
+Umożliwia także współużytkowanej infrastruktury IT, aby lepiej wykorzystywać środowiska analizy. W niektórych organizacjach wywołania infrastruktury do analizy i analizowanie danych opartych na zespół "Analiza piaskownicy." Umożliwia on analitykom danych uzyskiwać dostęp do różnych zasobów danych, aby szybko zrozumieć dane, uruchamiaj eksperymenty, zweryfikować hipotezę i tworzyć modele predykcyjne, bez wywierania wpływu na środowisko produkcyjne. 
 
-Ponieważ DSVM działa na poziomie infrastruktury platformy Azure, Administratorzy IT mogą łatwo skonfigurować DSVM działać zgodnie z zasadami IT przedsiębiorstwa. DSVM oferuje pełną elastyczność we wdrażaniu różnych architektur udostępniania dostęp do zasobów firmowych danych w określony sposób. 
+Ponieważ maszyny DSVM działa na poziomie infrastruktury platformy Azure, Administratorzy IT mogą łatwo skonfigurować maszyny wirtualnej DSVM działanie zgodne z zasadami IT przedsiębiorstwa. Maszyny DSVM oferuje pełną elastyczność we wdrażaniu różnych architekturach udostępniania z dostępem do zasobów firmowych danych w sposób kontrolowany. 
 
-W tej sekcji omówiono niektóre wzorców i wskazówki, których można użyć do wdrożenia DSVM jako infrastruktury nauki danych zespołów. Bloków konstrukcyjnych dla tych wzorców pochodzą z infrastruktury platformy Azure jako usługa (IaaS), dlatego są one stosowane do dowolnego maszynach wirtualnych platformy Azure. Ta seria artykułów koncentruje się na stosowanie tych możliwości standardowych infrastruktury platformy Azure na maszynie wirtualnej analizy danych. 
+W tej sekcji omówiono niektóre wzorce i wskazówki, które umożliwia wdrożenie maszyny wirtualnej DSVM jako infrastruktury do nauki o danych zespołów. Bloki konstrukcyjne dla tych wzorców pochodzą z infrastruktury platformy Azure jako usługa (IaaS), więc odnoszą się do żadnych maszyn wirtualnych platformy Azure. Ta seria artykułów koncentruje się na stosowanie tych możliwości standardowa infrastruktury platformy Azure do maszyny Wirtualnej do nauki o danych. 
 
-Niektóre z klucza bloków konstrukcyjnych w środowisku przedsiębiorstwa zespołu analytics to:
+Niektóre z kluczowych bloki konstrukcyjne środowiska przedsiębiorstwa zespołu analytics to:
 
-* [Funkcję puli maszyn wirtualnych nauki danych](dsvm-pools.md)
-* [Typowe tożsamości i dostępu do obszaru roboczego z dowolnej DSVMs w puli](dsvm-common-identity.md)
-* [Bezpieczny dostęp do źródła danych](dsvm-secure-access-keys.md)
+* [Przez funkcję puli maszyn wirtualnych do nauki o danych](dsvm-pools.md)
+* [Typowe tożsamość i dostęp do obszaru roboczego z dowolnej maszyny w puli](dsvm-common-identity.md)
+* [Bezpieczny dostęp do źródeł danych](dsvm-secure-access-keys.md)
 
 
-Ta seria artykułów zawiera również wskazówki i wskaźniki dla każdego z powyższych elementów. Go nie obejmuje zagadnienia i wymagań w wdrażania DSVM w dużych przedsiębiorstwach konfiguracjach. Oto inne dokumentacji platformy Azure, używanego podczas implementowania DSVM wystąpień w przedsiębiorstwie: 
+Ta seria artykułów zawiera wskazówki i wskaźniki dla każdej z wymienionych elementów. Nie omówiono zagadnienia i wymagania podczas wdrażania maszyny wirtualnej DSVM w konfiguracjach dużych przedsiębiorstw. Poniżej przedstawiono inne dokumentacji platformy Azure, używanego podczas wdrażania wystąpień maszyny wirtualnej DSVM w przedsiębiorstwie: 
 
 * [Bezpieczeństwo sieci](https://docs.microsoft.com/azure/security/azure-network-security)
 * [Monitorowanie](https://docs.microsoft.com/azure/virtual-machines/windows/monitor) i [zarządzania](https://docs.microsoft.com/azure/virtual-machines/windows/maintenance-and-updates)
 * [Rejestrowanie i przeprowadzanie inspekcji](https://docs.microsoft.com/azure/security/azure-log-audit)
 * [Kontrola dostępu oparta na rolach](https://docs.microsoft.com/azure/role-based-access-control/overview)
-* [Ustawienie zasad i wymuszania](https://docs.microsoft.com/azure/azure-policy/azure-policy-introduction)
+* [Ustawienia zasad i wymuszania](https://docs.microsoft.com/azure/azure-policy/azure-policy-introduction)
 * [Oprogramowanie chroniące przed złośliwym kodem](https://docs.microsoft.com/azure/security/azure-security-antimalware)
 * [Szyfrowanie](https://docs.microsoft.com/azure/virtual-machines/windows/encrypt-disks)
-* [Dane odnajdywania i nadzór nad](https://docs.microsoft.com/azure/data-catalog/)
+* [Odnajdywanie danych i zarządzanie](https://docs.microsoft.com/azure/data-catalog/)
 
-[Centrum architektura Azure](https://docs.microsoft.com/en-us/azure/architecture/) zapewnia szczegółowe architekturę end-to-end i wzorce tworzenia oraz zarządzania nimi infrastruktury opartej na chmurze analytics. 
+[Centrum architektury platformy Azure](https://docs.microsoft.com/azure/architecture/) zapewnia szczegółowe architekturę end-to-end i wzorce do tworzenia i zarządzania infrastrukturą analizę opartą na chmurze. 

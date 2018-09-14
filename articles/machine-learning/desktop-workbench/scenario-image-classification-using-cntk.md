@@ -12,12 +12,12 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: 48c21638fe5756e6527288ed0fdc73dd9e331afd
-ms.sourcegitcommit: baed5a8884cb998138787a6ecfff46de07b8473d
+ms.openlocfilehash: 667636aac49d2622ba1a6b45d7c8af61b9609c55
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "35622217"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579203"
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Klasyfikacja obrazów przy użyciu usługi Azure Machine Learning Workbench
 
@@ -95,7 +95,7 @@ Te kroki wykonywane tworzy strukturę projektu, pokazano poniżej. Katalog proje
 
 ## <a name="data-description"></a>Opis danych
 
-Ten samouczek używa jako uruchomieniem przykładu górny treści zestawu danych tekstury odzieży składający się z maksymalnie 428 obrazów. Każdy obraz jest oznaczona jako jeden z trzech różne tekstury (leopard kropkowana, rozłożone,). Firma Microsoft przechowywane liczbę obrazów mały, aby w tym samouczku, które mogą być wykonywane szybko. Jednak kod jest dobrze przetestowanych i współpracuje z dziesiątkami tysięcy obrazów lub więcej. Wszystkie obrazy zostały pozyskany przy użyciu wyszukiwania obrazów Bing i ręcznie adnotację opisany w [część 3](#using-a-custom-dataset). Obraz, adresy URL z ich odpowiednich atrybutów są wymienione w */resources/fashionTextureUrls.tsv* pliku.
+Ten samouczek używa jako uruchomieniem przykładu górny treści zestawu danych tekstury odzieży składający się z maksymalnie 428 obrazów. Każdy obraz jest oznaczona jako jeden z trzech różne tekstury (leopard kropkowana, rozłożone,). Firma Microsoft przechowywane liczbę obrazów mały, aby w tym samouczku, które mogą być wykonywane szybko. Jednak kod jest dobrze przetestowanych i współpracuje z dziesiątkami tysięcy obrazów lub więcej. Wszystkie obrazy zostały ręcznie adnotację opisany w [część 3](#using-a-custom-dataset). Obraz, adresy URL z ich odpowiednich atrybutów są wymienione w */resources/fashionTextureUrls.tsv* pliku.
 
 Skrypt `0_downloadData.py` pobiera wszystkie obrazy do *DATA_DIR/obrazy/fashionTexture/* katalogu. Niektóre 428 adresy URL są prawdopodobnie uszkodzone. Nie jest problemem, a po prostu oznacza, że mamy nieco mniej obrazów celów szkoleniowych i testów. Wszystkie skrypty znajdujące się w tym przykładzie muszą być wykonywane lokalnie, a nie na przykład środowisku zdalnym platformy docker.
 
@@ -263,11 +263,11 @@ Najbardziej obiecujących naruszania ulepszeń należą:
 
 ## <a name="part-3---custom-dataset"></a>Część 3 — niestandardowy zestaw danych
 
-W części 1 i 2 Firma Microsoft przeszkolonych i obliczane model klasyfikacji obrazów przy użyciu obrazów tekstury odzieży podana treść górnej. Teraz pokazujemy, jak użyć niestandardowego zestawu danych wprowadzonych przez użytkownika. Lub, jeśli nie jest dostępny, w jaki sposób wygenerować i dodawać adnotacje do takiego zestawu danych za pomocą usługi Bing wyszukiwania obrazów.
+W części 1 i 2 Firma Microsoft przeszkolonych i obliczane model klasyfikacji obrazów przy użyciu obrazów tekstury odzieży podana treść górnej. Teraz pokazujemy, jak użyć niestandardowego zestawu danych wprowadzonych przez użytkownika. 
 
 ### <a name="using-a-custom-dataset"></a>Używanie niestandardowego zestawu danych
 
-Najpierw Przyjrzyjmy się jej przyjrzeć strukturę folderów dla odzieży danych tekstury. Uwaga jak wszystkie obrazy dla różnych atrybutów znajdują się w odpowiednich podfoldery *kropkowana*, * leopard, i *rozłożone* na *DATA_DIR/obrazy/fashionTexture/*. Pamiętaj również, jak nazwa folderu obrazu występuje także w `PARAMETERS.py` pliku:
+Najpierw Przyjrzyjmy się jej przyjrzeć strukturę folderów dla odzieży danych tekstury. Uwaga jak wszystkie obrazy dla różnych atrybutów znajdują się w odpowiednich podfoldery *kropkowana*, *leopard*, i *rozłożone* na *DATA_DIR/obrazy / fashionTexture /*. Pamiętaj również, jak nazwa folderu obrazu występuje także w `PARAMETERS.py` pliku:
 ```python
 datasetName = "fashionTexture"
 ```
@@ -280,14 +280,23 @@ Należy pamiętać, że dokładnie jeden atrybut można przypisać każdego obra
 
 ### <a name="image-scraping-and-annotation"></a>Obraz skrobanie i adnotacji
 
-Zbieranie wystarczająco dużą liczbę adnotacjami obrazów do szkolenia i testowania może być trudne. Jednym ze sposobów, aby rozwiązać ten problem jest scrape obrazów z Internetu. Na przykład poniżej przedstawiono wyniki wyszukiwania obrazów Bing dla zapytania *rozkładane koszulki*. Zgodnie z oczekiwaniami, większość obrazów w rzeczywistości są rozkładane koszulki. Kilka obrazów niepoprawne lub kolumna niejednoznaczna (na przykład kolumna 1, 1; wiersza lub kolumny 3, wiersz 2) można zidentyfikowane i łatwo usunąć:
+Zbieranie wystarczająco dużą liczbę adnotacjami obrazów do szkolenia i testowania może być trudne. Jednym ze sposobów, aby rozwiązać ten problem jest scrape obrazów z Internetu.
+
+> [!IMPORTANT] 
+> Dla obrazów, którego używasz upewnij się, że nie narusza prawa autorskie. 
+
+<!--
+For example, see below the Bing Image Search results for the query *t-shirt striped*. As expected, most images indeed are striped t-shirts. The few incorrect or ambiguous images (such as column 1, row 1; or column 3, row 2) can be identified and removed easily:
 <p align="center">
 <img src="media/scenario-image-classification-using-cntk/bing_search_striped.jpg" alt="alt text" width="600"/>
 </p>
+-->
 
 Aby wygenerować duże i zróżnicowany zestaw danych, należy używać wielu zapytań. Na przykład 7\*3 = 21 zapytania może zostać przekształcony automatycznie przy użyciu wszystkich kombinacjach elementów odzieży {bluzka hoodie, pulower, Sweter, koszulka, koszulki, kamizelka} i atrybutów {leopard rozłożone, kropkami,}. Pobieranie obrazów 50 pierwszych na zapytanie może doprowadzić do maksymalnie 21 * 50 = 1050 obrazów.
 
-Zamiast ręcznego pobierania obrazów z wyszukiwania obrazów Bing, a dużo łatwiej jest użyć zamiast tego [API wyszukiwania obrazów Bing Cognitive Services](https://www.microsoft.com/cognitive-services/bing-image-search-api) zwraca zestaw adresów URL obrazów danego ciągu zapytania.
+<!--
+Rather than manually downloading images from Bing Image Search, it is much easier to instead use the [Cognitive Services Bing Image Search API](https://www.microsoft.com/cognitive-services/bing-image-search-api) which returns a set of image URLs given a query string.
+-->
 
 Niektóre z pobranego obrazy są dokładne lub w pobliżu duplikaty (na przykład różnią się tylko artefakty rozwiązania lub jpg). Te duplikaty powinny zostać usunięte, tak aby podziału szkoleniowe i testowe nie zawierają tych samych obrazów. Usuwanie zduplikowanych obrazów można osiągnąć, stosując podejście oparte na wyznaczania wartości skrótu, co sprawdza się w dwóch krokach: (i) najpierw ciągu skrótu jest obliczana dla wszystkich obrazów; (ii) w drugim przebiegu za pośrednictwem obrazów tylko te obrazy są przechowywane w usłudze ciąg wyznaczania wartości skrótu, który nie jest jeszcze widoczny. Inne obrazy są odrzucane. Znaleźliśmy `dhash` podejście w ramach biblioteki Python `imagehash` i opisane w tym [blog](http://www.hackerfactor.com/blog/index.php?/archives/529-Kind-of-Like-That.html) do wykonania, za pomocą parametru `hash_size` równa 16. Jest OK niepoprawnie usunąć niektóre obrazy niepowieloną tak długo, jak większości rzeczywistych duplikaty do usunięcia.
 

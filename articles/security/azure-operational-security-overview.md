@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: tomsh
-ms.openlocfilehash: 361905b4c1e0c9e596cb7cf1cd5a730268d81bd0
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 706e946e61f7d5f48ce5071e90d724af717449d9
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413413"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575222"
 ---
 # <a name="azure-operational-security-overview"></a>Omówienie kwestii bezpieczeństwa działania platformy Azure
 [Azure operational security](https://docs.microsoft.com/azure/security/azure-operational-security) odwołuje się do usługi, formanty i funkcje dostępne dla użytkowników dotyczące ochrony danych, aplikacji i innych zasobów na platformie Microsoft Azure. To struktura, która zawiera wiedzy uzyskanej dzięki różnym możliwości, które są unikatowe dla firmy Microsoft. Te funkcje obejmują cykl projektowania zabezpieczeń (SDL) firmy Microsoft, program Microsoft Security Response Center oraz głębokiej świadomości krajobraz zagrożeń cyberbezpieczeństwa.
@@ -68,7 +68,7 @@ Usługa Azure AD zawiera również całą gamę [możliwości zarządzania tożs
 Za pomocą usługi Azure Active Directory wszystkie aplikacje, które publikują dla partnerów i klientów (firmy lub konsumenta) ma inną tożsamość i dostęp do możliwości zarządzania. Dzięki temu można znacznie zmniejszyć koszty operacyjne.
 
 ## <a name="azure-security-center"></a>Azure Security Center
-[Usługa Azure Security Center](https://docs.microsoft.com/en-us/azure/security-center/security-center-intro) pomaga zapobiegać zagrożeniom, wykrywać i odpowiadanie na nie dzięki lepszemu wglądowi w (i kontrolę nad) zabezpieczeń zasobów platformy Azure. Zapewnia zabezpieczenia zintegrowane monitorowanie i zarządzanie zasadami dla Twojej subskrypcji. Pomaga wykrywać zagrożenia, które mogłyby w przeciwnym razie pozostać niezauważone, a także współpracuje z szerokim ekosystemem rozwiązań zabezpieczających.
+[Usługa Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) pomaga zapobiegać zagrożeniom, wykrywać i odpowiadanie na nie dzięki lepszemu wglądowi w (i kontrolę nad) zabezpieczeń zasobów platformy Azure. Zapewnia zabezpieczenia zintegrowane monitorowanie i zarządzanie zasadami dla Twojej subskrypcji. Pomaga wykrywać zagrożenia, które mogłyby w przeciwnym razie pozostać niezauważone, a także współpracuje z szerokim ekosystemem rozwiązań zabezpieczających.
 
 [Chronić dane maszyny wirtualnej (VM)](https://docs.microsoft.com/azure/security-center/security-center-linux-virtual-machine) na platformie Azure, zapewniając wgląd w ustawienia zabezpieczeń maszyny wirtualnej i monitorując zagrożenia. Usługa Security Center może monitorować maszyny wirtualne pod kątem następujących elementów:
 

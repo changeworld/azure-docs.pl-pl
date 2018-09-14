@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/13/2018
 ms.author: jeffgilb
 ms.reviewer: wamota
 keywords: ''
-ms.openlocfilehash: 26ee1c8f02a0a4e5aa5048a7a02929c448106ffd
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 253598373512b1508482235be028b12163a85a9a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024962"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580688"
 ---
 # <a name="azure-stack-datacenter-integration---publish-endpoints"></a>Azure Stack — Integracja z centrum danych — publikowanie punktów końcowych
 
@@ -32,9 +32,8 @@ Zbiór infrastruktury adresów VIP jest wymagany dla publikacji usługi Azure St
 
 Nie są wyświetlane wewnętrznej infrastruktury adresów VIP, ponieważ nie są wymagane dla publikowania usługi Azure Stack.
 
-> [!NOTE]
+> [!Note]  
 > Użytkownik VIP są dynamiczne, zdefiniowane przez samych użytkowników z żadnej kontroli przez operatora infrastruktury Azure Stack.
-
 
 |Punkt końcowy (VIP)|Rekord hosta DNS|Protokół|Porty|
 |---------|---------|---------|---------|
@@ -66,6 +65,8 @@ Nie są wyświetlane wewnętrznej infrastruktury adresów VIP, ponieważ nie są
 
 Usługa Azure Stack obsługuje tylko serwery z przezroczystym serwerem proxy. W przypadku wdrożenia w przypadku, gdy pasm przezroczystym serwerem proxy, aby serwer proxy tradycyjnych musisz zezwolić na następujących portów i adresów URL dla komunikacji wychodzącej:
 
+> [!Note]  
+> Usługa Azure Stack nie obsługuje używania Express Route do uzyskania dostępu do usług platformy Azure, przedstawione w poniższej tabeli.
 
 |Przeznaczenie|Adres URL|Protokół|Porty|
 |---------|---------|---------|---------|

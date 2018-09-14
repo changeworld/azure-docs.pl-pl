@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z porady dotyczące wyszukiwania kognitywnych w usłudze Azure Search | Dokumentacja firmy Microsoft
-description: Wskazówki i rozwiązywanie problemów dotyczących konfigurowania kognitywnych wyszukiwanie potoki w usłudze Azure Search.
+title: Rozwiązywanie problemów z porady dotyczące wyszukiwania kognitywnego w usłudze Azure Search | Dokumentacja firmy Microsoft
+description: Porady i rozwiązywanie problemów dotyczących konfigurowania cognitive Wyszukaj potoki w usłudze Azure Search.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,36 +10,36 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 3c3f9a0d0dc40de6c62c21dab0f11a501829ef11
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3d0d468674a2284e9925c1410f2bb8bcbde8f73f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34640969"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575316"
 ---
-# <a name="troubleshooting-tips-for-cognitive-search"></a>Porady dotyczące rozwiązywania problemów kognitywnych wyszukiwania
+# <a name="troubleshooting-tips-for-cognitive-search"></a>Wskazówki dotyczące rozwiązywania problemów dla wyszukiwania kognitywnego
 
-Ten artykuł zawiera listę porady i wskazówki, które pozwalają na przenoszenie jako Rozpoczynanie pracy z możliwości kognitywnych wyszukiwania w usłudze Azure Search. 
+Ten artykuł zawiera listę porady i wskazówki, aby utrzymać przenoszenia, ponieważ wprowadzenie możliwości wyszukiwania kognitywnego w usłudze Azure Search. 
 
-Jeśli jeszcze tego nie zrobiono, krokowo [samouczek: Dowiedz się, jak wywoływać interfejsy API wyszukiwania kognitywnych](cognitive-search-quickstart-blob.md) praktyki stosowania wzbogacenia kognitywnych wyszukiwania ze źródłem danych obiektów blob.
+Jeśli jeszcze tego nie zrobiono, należy przejść przez [samouczek: Dowiedz się, jak wywołać wyszukiwania kognitywnego interfejsów API](cognitive-search-quickstart-blob.md) praktyki stosowania wzbogacenia wyszukiwania kognitywnego ze źródłem danych obiektów blob.
 
-## <a name="tip-1-start-with-a-small-dataset"></a>Porada 1: Rozpoczynać się od małej zestawu danych
-Najlepszy sposób, aby szybko znaleźć problemy jest przyspieszenie, w którym można rozwiązać problemy. Aby skrócić czas indeksowania najlepiej dzięki zmniejszeniu liczby dokumentów do indeksowania. 
+## <a name="tip-1-start-with-a-small-dataset"></a>Porada 1: Rozpoczynać się od małego zestawu danych
+Najlepszym sposobem na szybkie znajdowanie problemów jest zwiększyć szybkość, z jaką można rozwiązać problemy. Najlepszym sposobem, aby skrócić czas indeksowania jest zmniejszenie liczby dokumentów, które mają być indeksowane. 
 
-Rozpocznij od utworzenia źródła danych z tylko niewielki podzbiór dokumentów/rekordów. Przykład dokumentu powinny być dobrym reprezentację różnych dokumenty zostaną zindeksowane. 
+Rozpocznij od utworzenia źródła danych za pomocą tylko kilku dokumentów/rekordów. Przykład dokumentu powinny być dobrym reprezentacja różnych dokumentów, które będą indeksowane. 
 
-Uruchom przykładu dokumentu za pośrednictwem potoku end-to-end i sprawdź, czy wyniki odpowiadają Twoim potrzebom. Po zakończeniu wyniki można dodać więcej plików do źródła danych.
+Uruchom przykład dokumentu za pośrednictwem potoku end-to-end i sprawdź, czy wyniki spełniają Twoje potrzeby. Gdy jesteś zadowolony z wyników, możesz dodać więcej plików do źródła danych.
 
 ## <a name="tip-2-make-sure-your-data-source-credentials-are-correct"></a>Porada 2: Upewnij się, że Twoje poświadczenia źródła danych są poprawne
-Połączenie ze źródłem danych nie została sprawdzona, dopiero po określeniu indeksatorze, który korzysta z niego. Jeśli są wyświetlane błędy zauważyć, że indeksator nie można pobrać danych, upewnij się, że:
-- Ciąg połączenia jest poprawna. Specjalnie, podczas tworzenia tokeny sygnatury dostępu Współdzielonego, upewnij się użyć formatu oczekiwanego przez usługi Azure Search. Zobacz [sposobu określania poświadczeń sekcji](
-https://docs.microsoft.com/en-us/azure/search/search-howto-indexing-azure-blob-storage#how-to-specify-credentials) Aby dowiedzieć się więcej o różnych formatach obsługiwane.
-- Nazwę kontenera w indeksatorze jest poprawna.
+Połączenia ze źródłem danych nie zostanie zweryfikowana, dopóki nie można zdefiniować w indeksatorze, który korzysta z niego. Jeśli widzisz błędy wskazujące, że indeksator nie można pobrać danych, upewnij się, że:
+- Parametry połączenia usługi jest poprawny. Specjalnie, podczas tworzenia tokenów sygnatur dostępu Współdzielonego, upewnij się, że używasz formatu oczekiwanego przez usługę Azure Search. Zobacz [sposobu określania poświadczeń sekcji](
+https://docs.microsoft.com/azure/search/search-howto-indexing-azure-blob-storage#how-to-specify-credentials) Aby dowiedzieć się więcej o różnych formatach obsługiwane.
+- Twoja nazwa kontenera w indeksatorze jest poprawna.
 
-## <a name="tip-3-see-what-works-even-if-there-are-some-failures"></a>Porada 3: Zobacz, co działa, nawet jeśli istnieją pewne awarie
-Czasami małych błąd zatrzymuje indeksatora w jego ścieżki. To jest poprawnie, jeśli planujesz do rozwiązywania problemów z jeden po drugim. Jednak można zignorować określonego typu błędu, umożliwiając indeksatora kontynuować, tak aby były widoczne, jakie przepływy faktycznie pracy.
+## <a name="tip-3-see-what-works-even-if-there-are-some-failures"></a>Porada 3: Zobacz, co działa, nawet jeśli występują pewne awarie
+Czasami małych błąd zatrzymuje indeksatora w jego ścieżki. Jest dobrym rozwiązaniem, jeśli planujesz rozwiązywać problemy pojedynczo. Jednak warto Ignoruj określonego typu wystąpienia błędu, umożliwiając indeksatora kontynuować, dzięki czemu można zobaczyć, co przepływy faktycznie pracy.
 
-W takim przypadku można stwierdzić, indeksatora ignorowanie błędów. To zrobić przez ustawienie *maxFailedItems* i *maxFailedItemsPerBatch* -1 jako część definicji indeksatora.
+W takim przypadku można stwierdzić, indeksator, ignorowanie błędów. To zrobić, ustawiając *maxFailedItems* i *maxFailedItemsPerBatch* -1 jako część definicji indeksatora.
 
 ```
 {
@@ -51,16 +51,16 @@ W takim przypadku można stwierdzić, indeksatora ignorowanie błędów. To zrob
    }
 }
 ```
-## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>Porada 4: Patrzeć wzbogaconego dokumenty kulisy 
-Wzbogaconego dokumenty są struktury tymczasowych utworzonych podczas wzbogacenia, a następnie usuwane po zakończeniu przetwarzania.
+## <a name="tip-4-looking-at-enriched-documents-under-the-hood"></a>Porada 4: Patrząc wzbogaconego dokumenty kulisy 
+Wzbogaconego dokumenty są struktury tymczasowych utworzonych podczas wzbogacania, a następnie usuwane po zakończeniu przetwarzania.
 
 Aby przechwycić migawkę wzbogaconego dokumentu utworzoną podczas indeksowania, dodaj pole o nazwie ```enriched``` do indeksu. Indeksator automatycznie zrzuca do tego pola ciąg będący reprezentacją wszystkich wzbogaceń dokumentu.
 
 Pole ```enriched``` będzie zawierać ciąg, który jest logiczną reprezentacją wzbogaconego dokumentu w pamięci w formacie JSON.  Wartość pola jest jednak prawidłowym dokumentem w formacie JSON. Cudzysłowy są umieszczane w sekwencji ucieczki, więc musisz zastąpić ciąg `\"` znakiem `"`, aby wyświetlić dokument w postaci sformatowanego kodu JSON. 
 
-Pole wzbogaconego jest przeznaczony do debugowania, aby lepiej zrozumieć logicznej kształtu wyrażenia są oceniane pod względem zawartości. Nie należy uwzględniać w tym polu indeksowania celów.
+Pole wzbogaconego jest przeznaczona do debugowania, aby pomóc Ci zrozumieć układ logicznego wyrażenia są oceniane względem zawartości. Nie powinno zależeć od tego pola do indeksowania celów.
 
-Dodaj ```enriched``` pole jako część definicja indeksu na potrzeby debugowania:
+Dodaj ```enriched``` pola jako część definicji indeksu na potrzeby debugowania:
 
 #### <a name="request-body-syntax"></a>Składnia treści żądania
 ```json
@@ -81,31 +81,31 @@ Dodaj ```enriched``` pole jako część definicja indeksu na potrzeby debugowani
 
 ## <a name="tip-5-expected-content-fails-to-appear"></a>Porada 5: Oczekiwano zawartości nie są wyświetlane
 
-Brak zawartości może być porzucane podczas indeksowania dokumentów. Warstwami bezpłatnymi i podstawowe mają niski limity rozmiaru dokumentu. Każdego pliku, co przekracza limit zostanie usunięte podczas indeksowania. Możesz sprawdzić porzuconych dokumentów w portalu Azure. Na pulpicie nawigacyjnym usługi wyszukiwania kliknij dwukrotnie Kafelek indeksatorów. Przejrzyj stosunek indeksowane dokumenty powiodło się. Jeśli nie jest 100%, możesz kliknąć stosunek, aby uzyskać więcej szczegółów. 
+Brak zawartości może być wynikiem dokumentów porzucane podczas indeksowania. Warstwy bezpłatna i podstawowa mają niski limity rozmiaru dokumentu. Każdy plik przekracza limit zostanie usunięte podczas indeksowania. Możesz sprawdzić, czy porzuconych dokumentów w witrynie Azure portal. Na pulpicie nawigacyjnym usługi wyszukiwania kliknij dwukrotnie Kafelek indeksatorów. Przejrzyj współczynnik pomyślnie zindeksowanych dokumentów. Jeśli nie jest 100%, możesz kliknąć współczynnik, aby uzyskać więcej informacji. 
 
-Jeśli problem jest związany z rozmiar pliku, mogą pojawić następujący błąd: "< nazwa pliku > blob" ma rozmiar < plik-> Liczba bajtów, którego rozmiar przekracza maksymalny rozmiar wyodrębniania dokumentów dla Twojej bieżącej warstwy usług. " Aby uzyskać więcej informacji na granicach indeksatora, zobacz [usługi limity](search-limits-quotas-capacity.md).
+Jeśli problem jest związany z rozmiar pliku, możesz zobaczyć następujący błąd: "< nazwa pliku > blob" ma rozmiar < plik-> bajtów, co powoduje przekroczenie maksymalnego rozmiaru wyodrębniania dokumentu w bieżącej warstwie usługi. " Aby uzyskać więcej informacji na temat limitów indeksatora, zobacz [limitów usług](search-limits-quotas-capacity.md).
 
-Drugi Przyczyna zawartości, które nie są wyświetlane może być błędów pokrewnych mapowania wejścia/wyjścia. Na przykład nazwa docelowego danych wyjściowych jest "Osoby", ale nazwa pola indeksu jest małe "osoby". System może zwrócić 201 wiadomości Powodzenie całego procesu, więc uważasz, że indeksowania zakończyło się pomyślnie, gdy w rzeczywistości pole jest puste. 
+Drugi Przyczyna, dla zawartości, które nie są wyświetlane, może być błędy powiązane mapowania wejścia/wyjścia. Na przykład nazwa docelowego dane wyjściowe to "Ludzie", ale nazwa pola indeksu to małe "ludzie". System może zwrócić 201 komunikaty sukces dla całego potoku, dlatego uważasz, że indeksowanie zakończyło się pomyślnie, gdy w rzeczywistości pole jest puste. 
 
-## <a name="tip-6-extend-processing-beyond-maximum-run-time-24-hour-window"></a>Porada 6: Rozszerzenie przetwarzania poza maksymalny czas (okno 24-godzinnym) działania
+## <a name="tip-6-extend-processing-beyond-maximum-run-time-24-hour-window"></a>Porada 6: Rozszerzenie przetwarzania po przekroczeniu maksymalnego dozwolonego czasu (24-godzinnego przedziału) wykonywania
 
-Obraz analizy intensywnie praktyce w przypadkach, nawet proste, dlatego gdy obrazy są szczególnie dużych lub złożonych, czas przetwarzania może przekraczać maksymalny dozwolony czas. 
+Analiza obrazu jest intensywnie wymaga w przypadkach, nawet prostych, więc gdy obrazy są szczególnie duże lub zbyt złożone, czas przetwarzania może przekroczyć maksymalny dozwolony czas. 
 
-Maksymalny czas wykonywania jest zależna od warstwy: warstwy kilka minut na bezpłatna, 24-godzinnym indeksowania w warstwach rozliczeniowy. Jeśli przetwarzanie nie powiedzie się w 24-godzinnym przedziale czasu przetwarzania na żądanie, przełącz się do harmonogramu ma indeksatora odebrania przetwarzania miejsca, w którym. 
+Maksymalny czas wykonywania jest zależna od warstwy: kilka minut na bezpłatna warstwa indeksowania w warstwach płatnych 24-godzinnym. Jeśli przetwarzanie zakończy się niepowodzeniem do wykonania w okresie 24-godzinnym do przetworzenia na żądanie, przełącz się do harmonogramu, aby poczekać, aż indeksator przejmą przetwarzania tam, gdzie ją przerwaliśmy. 
 
-Dla zaplanowanych indeksatorów indeksowania wznawia zgodnie z harmonogramem w ostatnich znanych dobrej dokumentu. Za pomocą harmonogramu cyklicznego, indeksatora może współpracować sposób zaległości obrazu w serii godzin lub dni, dopóki wszystkie obrazy nie przetworzono są przetwarzane. Aby uzyskać więcej informacji o składni harmonogramu, zobacz [krok 3: Tworzenie usługi indeksatora](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer).
+Zaplanowane indeksatorów indeksowanie wznawia zgodnie z harmonogramem w ostatnich znanych dokumentu dobre. Za pomocą harmonogramu cyklicznego, indeksator może działać jego sposób za pomocą zaległości obraz ciągu kilku godzin lub dni, dopóki wszystkie obrazy nie przetworzono są przetwarzane. Aby uzyskać więcej informacji na temat Składnia harmonogramu, zobacz [krok 3: Utwórz wiadomość indeksatora](search-howto-indexing-azure-blob-storage.md#step-3-create-an-indexer).
 
-Oparte na portalu indeksowania (zgodnie z opisem w szybkiego startu), wybierając pozycję "uruchom raz" indeksatora opcję limity przetwarzania na 1 godzinę (`"maxRunTime": "PT1H"`). Można rozszerzyć okna przetwarzania na nieco dłużej.
+Oparte na portalu indeksowania (zgodnie z opisem w przewodniku Szybki Start), wybierając indeksatora "uruchom raz" opcji limitów przetwarzania do 1 godziny (`"maxRunTime": "PT1H"`). Można rozszerzyć okna przetwarzania coś o nim więcej.
 
 ## <a name="tip-7-increase-indexing-throughput"></a>Porada 7: Zwiększyć przepływność indeksowania
 
-Dla [równoległych indeksowania](search-howto-large-index.md), umieść dane w wielu kontenerów lub wielu wirtualnych folderów wewnątrz tego samego kontenera. Następnie utwórz wiele par źródła danych i indeksatora. Wszystkie indeksatory można użyć tego samego skillset i zapisu do tego samego indeksu wyszukiwania docelowego dzięki aplikacji wyszukiwania nie trzeba znać tej partycji.
+Dla [równoległe indeksowania](search-howto-large-index.md), umieść dane w wielu kontenerach lub wielu wirtualnych folderów, w tym samym kontenerze. Następnie utwórz wiele par źródło danych i indeksatora. Wszystkie indeksatory można użyć tego samego zestawu umiejętności i zapisu do tego samego docelowym indeksem wyszukiwania, więc aplikacji wyszukiwania nie musi wiedzieć, z tym partycjonowanie.
 Aby uzyskać więcej informacji, zobacz [indeksowania dużych zestawów danych](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets).
 
 ## <a name="see-also"></a>Zobacz także
-+ [Szybki Start: Tworzenie potoku kognitywnych wyszukiwania w portalu](cognitive-search-quickstart-blob.md)
-+ [Samouczek: Dowiedz się kognitywnych wyszukiwania interfejsów API REST](cognitive-search-tutorial-blob.md)
++ [Szybki Start: Tworzenie potoku usługa cognitive search w portalu](cognitive-search-quickstart-blob.md)
++ [Samouczek: Dowiedz się, usługa cognitive search interfejsów API REST](cognitive-search-tutorial-blob.md)
 + [Określanie poświadczeń źródła danych](search-howto-indexing-azure-blob-storage.md#how-to-specify-credentials)
 + [Indeksowanie dużych zestawów danych](search-howto-indexing-azure-blob-storage.md#indexing-large-datasets)
-+ [Sposób definiowania skillset](cognitive-search-defining-skillset.md)
++ [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)
 + [Sposób mapowania pól wzbogaconego do indeksu](cognitive-search-output-field-mapping.md)

@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: rajanaki
-ms.openlocfilehash: 81dbb61d696da84febc89563f946581315fdf527
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 9f0a299fb8221554a3b0c9a19a616d5ba7613a67
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921437"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574407"
 ---
 # <a name="automatic-update-of-the-mobility-service-in-azure-to-azure-replication"></a>Automatyczna aktualizacja usługi mobilności w replikacji Azure – Azure
 
@@ -79,8 +79,8 @@ W przypadku, gdy przycisk naprawy nie jest dostępny, zapoznaj się z komunikate
 
  - **Błąd**: konto Uruchom jako nie ma uprawnień do dostępu do zasobu usługi recovery services.
 
-    **Zalecana akcja**: Usuń i następnie [ponownie utwórz konto Uruchom jako](https://docs.microsoft.com/en-us/azure/automation/automation-create-runas-account) lub upewnij się, że aplikacja usługi Automation Uruchom jako dla konta usługi Azure Active Directory ma dostęp do zasobu usługi recovery services.
+    **Zalecana akcja**: Usuń i następnie [ponownie utwórz konto Uruchom jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account) lub upewnij się, że aplikacja usługi Automation Uruchom jako dla konta usługi Azure Active Directory ma dostęp do zasobu usługi recovery services.
 
 - **Błąd**: nie znaleziono konta Uruchom jako. Albo jeden z nich został usunięty lub nie został utworzony — aplikacja usługi Azure Active Directory, nazwa główna usługi, rola, zasób certyfikatu usługi Automation, zasób połączenia usługi Automation — lub odcisk palca nie jest taki sam dla certyfikatu i połączenia. 
 
-    **Zalecana akcja**: Usuń i [ponownie utwórz konto Uruchom jako](https://docs.microsoft.com/en-us/azure/automation/automation-create-runas-account).
+    **Zalecana akcja**: Usuń i [ponownie utwórz konto Uruchom jako](https://docs.microsoft.com/azure/automation/automation-create-runas-account).

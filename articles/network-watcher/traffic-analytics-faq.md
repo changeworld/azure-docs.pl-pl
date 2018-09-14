@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/08/2018
 ms.author: jdial
-ms.openlocfilehash: 9f7fb5009468dccae50190ee40a53d11040d0348
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: debefb329304235818b7b441122b90ae9a2834a9
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903751"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578314"
 ---
 # <a name="traffic-analytics-frequently-asked-questions"></a>Analiza ruchu — często zadawane pytania
 
@@ -58,7 +58,7 @@ Aby sprawdzić role przypisane do użytkownika w ramach subskrypcji:
 
 3. Aby wyświetlić listę wszystkich ról, które są przypisane do określonego użytkownika, należy użyć **polecenia Get-AzureRmRoleAssignment - SignInName [adres e-mail użytkownika] - IncludeClassicAdministrators**. 
 
-Jeśli nie widzisz żadnych danych wyjściowych, skontaktuj się z administratorem odpowiednią subskrypcję, aby uzyskać dostęp do poleceń. Aby uzyskać więcej informacji, zobacz [zarządzanie kontrolą dostępu opartej na rolach przy użyciu programu Azure PowerShell](https://docs.microsoft.com/en-us/azure/role-based-access-control/role-assignments-powershell).
+Jeśli nie widzisz żadnych danych wyjściowych, skontaktuj się z administratorem odpowiednią subskrypcję, aby uzyskać dostęp do poleceń. Aby uzyskać więcej informacji, zobacz [zarządzanie kontrolą dostępu opartej na rolach przy użyciu programu Azure PowerShell](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-powershell).
 
 
 ## <a name="in-which-azure-regions-are-traffic-analytics-available"></a>Platformie Azure, które regiony są analizy ruchu dostępne?
@@ -196,7 +196,7 @@ armclient post "https://management.azure.com/subscriptions/<NSG subscription id>
 
 Analiza ruchu jest mierzone. Zliczanie opiera się na przetwarzanie danych dziennika przepływu przez usługę i przechowywania, wynikowy rozszerzone dzienników w obszarze roboczym usługi Log Analytics. 
 
-Na przykład zgodnie [planu cenowego](https://azure.microsoft.com/en-us/pricing/details/network-watcher/), biorąc pod uwagę w regionie zachodnio-środkowe stany USA, jeśli dzienników przepływów danych przechowywanych na koncie magazynu, przetwarzane przez analizę ruchu wynosi 10 GB i rozszerzone dzienników pozyskanych w obszarze roboczym usługi Log Analytics jest 1 GB, a następnie odpowiednie opłaty są naliczane: 10 x 2.3$ + 1 x 2.76$ = 25.76$
+Na przykład zgodnie [planu cenowego](https://azure.microsoft.com/pricing/details/network-watcher/), biorąc pod uwagę w regionie zachodnio-środkowe stany USA, jeśli dzienników przepływów danych przechowywanych na koncie magazynu, przetwarzane przez analizę ruchu wynosi 10 GB i rozszerzone dzienników pozyskanych w obszarze roboczym usługi Log Analytics jest 1 GB, a następnie odpowiednie opłaty są naliczane: 10 x 2.3$ + 1 x 2.76$ = 25.76$
 
 ## <a name="how-can-i-navigate-by-using-the-keyboard-in-the-geo-map-view"></a>Jak można przejść za pomocą klawiatury w widoku mapy geograficznej?
 

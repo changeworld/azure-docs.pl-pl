@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 3eca9e416a18e7389a6ce45cccd3cc99707e9806
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: ffc2a9fb7b0ed516645c833f87c9ef5c95ca20ff
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070438"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580756"
 ---
 # <a name="register-in-dev-center"></a>Rejestrowanie w Centrum deweloperów  
 Aby sprawdzić, czy użytkownik nie jest zalogowany do konta osobistego przeglądarki, otwórz nowy Internet Explorer InPrivate lub Incognito przeglądarki Chrome sesji przeglądania.  
@@ -108,11 +108,11 @@ Jeśli masz problemy z rejestracją Centrum deweloperów, należy wykonać nast�
 > Wydawcy, którzy publikują w Transact typ oferty: maszyna wirtualna, aplikacje platformy Azure: szablony rozwiązań i aplikacje zarządzane.  
 
 *   **Dlaczego jest wymagane konto Centrum deweloperów?**
-> Konto Centrum deweloperów jest wymagane, aby umożliwić firmie Microsoft rozliczenia z klientami w imieniu wydawcy, aby uzyskać listę typów języka Transact. Konto Centrum deweloperów rejestracji umożliwia firmie Microsoft sprawdzić poprawność prawne, podatku i informacji bankowych dla Twojej firmy. Aby dowiedzieć się więcej, kliknij [tutaj.](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher#register-in-dev-center)
+> Konto Centrum deweloperów jest wymagane, aby umożliwić firmie Microsoft rozliczenia z klientami w imieniu wydawcy, aby uzyskać listę typów języka Transact. Konto Centrum deweloperów rejestracji umożliwia firmie Microsoft sprawdzić poprawność prawne, podatku i informacji bankowych dla Twojej firmy. Aby dowiedzieć się więcej, kliknij [tutaj.](https://docs.microsoft.com/azure/marketplace/become-publisher#register-in-dev-center)
 
 *   **Jak zacząć korzystać z rejestracji w Centrum deweloperów?**
 > Aby uniknąć duplikowania, sprawdź, czy Twoja firma nie ma jeszcze konta Centrum deweloperów, zarejestrowany. Użytkownik musi być podpisany za pomocą konta Microsoft, które chcesz skojarzyć z kontem dewelopera. Jeśli nie masz jeszcze konta Microsoft, możesz utworzyć nowe konto [tutaj.](https://signup.live.com/signup?contextid=AEB123C8F2B1DA7A&bk=1529968434&ru=https%3a%2f%2flogin.live.com%2flogin.srf%3fcontextid%3dAEB123C8F2B1DA7A%26mkt%3dEN-US%26lc%3d1033%26bk%3d1529968434&uiflavor=web&uaid=9987e727fedb459780d95c1b9e46c82c&mkt=EN-US&lc=1033&lic=1) (przykład: contoso_marketplace@live.com) mogą się zalogować, a następnie zarejestrować, przejdź do https://dev.windows.com/en-us/registration?accountProgram=Azure
-<br>Aby dowiedzieć się więcej na temat procesu rejestracji, kliknij [tutaj.](https://docs.microsoft.com/en-us/azure/marketplace/register-dev-center)</br>
+<br>Aby dowiedzieć się więcej na temat procesu rejestracji, kliknij [tutaj.](https://docs.microsoft.com/azure/marketplace/register-dev-center)</br>
 
 *   **Należy wybrać "Indywidualny" lub "Firmowe" typ konta?**
 > Aby opublikować ofertę transact w portalu Marketplace, należy wybrać konto firmy podczas rejestrowania dla danych konta Centrum deweloperów.
@@ -143,7 +143,7 @@ Jeśli masz problemy z rejestracją Centrum deweloperów, należy wykonać nast�
 > Przypisywanie nazwy tymczasowej firmy, skontaktuj się z działem pomocy technicznej związanej z [developer.microsoft.com/windows/support](https://developer.microsoft.com/windows/support) i zapewnić im firmowe dokumenty rejestracji.
 
 *   **Jak dodać Moje informacje podatkowe i informacje dotyczące wypłat?**
-> Nie można opublikować transact oferty nie kończą działania informacje podatkowe i bankowe w danych konta Centrum deweloperów.  Aby uzyskać więcej informacji na temat dodawania informacji o koncie, odwiedź stronę [jak bank Dodaj i informacje podatkowe.](https://docs.microsoft.com/en-us/azure/marketplace/register-dev-center#how-to-add-bank-and-tax-information)
+> Nie można opublikować transact oferty nie kończą działania informacje podatkowe i bankowe w danych konta Centrum deweloperów.  Aby uzyskać więcej informacji na temat dodawania informacji o koncie, odwiedź stronę [jak bank Dodaj i informacje podatkowe.](https://docs.microsoft.com/azure/marketplace/register-dev-center#how-to-add-bank-and-tax-information)
 
 *   **Czy można zmienić konto logowania Dev Center Microsoft?**
 > Nie. Po utworzeniu Centrum deweloperów nie można zmienić właściciela konta. Trzeba zacząć od nowa z zupełnie nowym konta Centrum deweloperów przy użyciu odpowiednie konto Microsoft.

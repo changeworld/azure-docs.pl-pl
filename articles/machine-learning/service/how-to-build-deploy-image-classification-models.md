@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: netahw
 author: nhaiby
 ms.date: 04/23/2018
-ms.openlocfilehash: 6b7f73573cb1465b89e54e30894b3549153e4acb
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 1188ff040c12fd431cfcef5eea982647df6b9a71
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37888436"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576395"
 ---
 # <a name="build-and-deploy-image-classification-models-with-azure-machine-learning"></a>Tworzenie i wdrażanie modeli klasyfikacji obrazów za pomocą usługi Azure Machine Learning
 
@@ -174,7 +174,7 @@ display(annotation_ui.ui)
 
 ## <a name="augment-images"></a>Rozszerzaj obrazów
 
-[ `augmentation` Modułu](https://docs.microsoft.com/en-us/python/api/cvtk.augmentation) zapewnia funkcje rozszerzyć obiekt dataset za pomocą wszystkie przekształcenia, które są opisane w [imgaug](https://github.com/aleju/imgaug) biblioteki. Przekształcenia do obrazu mogą być grupowane w jeden potok, w którym to przypadku wszystkie przekształcenia w potoku są stosowane jednocześnie każdego obrazu. 
+[ `augmentation` Modułu](https://docs.microsoft.com/python/api/cvtk.augmentation) zapewnia funkcje rozszerzyć obiekt dataset za pomocą wszystkie przekształcenia, które są opisane w [imgaug](https://github.com/aleju/imgaug) biblioteki. Przekształcenia do obrazu mogą być grupowane w jeden potok, w którym to przypadku wszystkie przekształcenia w potoku są stosowane jednocześnie każdego obrazu. 
 
 Jeśli chcesz zastosować kroki różnych rozszerzeniu oddzielnie lub w jakikolwiek inny sposób, można zdefiniować wiele potoków i przekazywać je do *augment_dataset* funkcji. Aby uzyskać więcej informacji i przykładów rozszerzeniu obrazu, zobacz [dokumentacji imgaug](https://github.com/aleju/imgaug).
 

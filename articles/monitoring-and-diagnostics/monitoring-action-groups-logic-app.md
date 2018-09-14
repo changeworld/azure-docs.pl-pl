@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dukek
 ms.component: alerts
-ms.openlocfilehash: 034e708b79bbdf15d7fa628f388402998f49c0d9
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 3c1bff98debf426fc02dbd4518c0bb798d7ba96d
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161510"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576025"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Porady: wyzwalanie złożone akcje przy użyciu alertów usługi Azure Monitor
 
@@ -129,7 +129,7 @@ Proces jest podobny, jeśli chcesz, aby aplikację logiki, aby wykonywać różn
 
 14. W górnej części **Projektant aplikacji logiki**, wybierz opcję **Zapisz** można zapisać aplikacji logiki.
 
-15. Otwórz istniejące grupy akcji i Dodaj akcję, aby odwoływać się do aplikacji logiki. Jeśli nie masz istniejącej grupy akcji, zobacz [tworzenie grup akcji w witrynie Azure portal i zarządzanie nimi](https://docs.microsoft.com/en-us/azure/monitoring-and-diagnostics/monitoring-action-groups) ją utworzyć. Należy pamiętać zapisać zmiany.
+15. Otwórz istniejące grupy akcji i Dodaj akcję, aby odwoływać się do aplikacji logiki. Jeśli nie masz istniejącej grupy akcji, zobacz [tworzenie grup akcji w witrynie Azure portal i zarządzanie nimi](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) ją utworzyć. Należy pamiętać zapisać zmiany.
 
     ![Zaktualizuj grupę akcji](media/monitoring-action-groups/update-action-group.png "zaktualizować grupy akcji")
 

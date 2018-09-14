@@ -1,6 +1,6 @@
 ---
-title: Obszar kadrowania Visual SDK wyszukiwania usługi Bing powoduje samouczek | Dokumentacja firmy Microsoft
-description: Jak używać Visual SDK wyszukiwania usługi Bing można uzyskać podobną do Przytnij obszaru załadowanego obrazu adresy URL obrazów.
+title: Zestaw SDK wyszukiwania wizualnego Bing obszaru kadrowania powoduje samouczek | Dokumentacja firmy Microsoft
+description: Jak uzyskać adresy URL obrazów podobnie jak przyciąć obszaru przekazanego obrazu za pomocą usługi Bing wyszukiwania zestawu SDK programu Visual.
 services: cognitive-services
 author: mikedodaro
 manager: ronakshah
@@ -9,63 +9,63 @@ ms.component: bing-visual-search
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: rosh
-ms.openlocfilehash: 9bc3c180f108025f442343d8c5356982a83826a6
-ms.sourcegitcommit: 0408c7d1b6dd7ffd376a2241936167cc95cfe10f
+ms.openlocfilehash: dd51ed7c710cc51a9fe0e63e55aa0d2c4ea24bee
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/26/2018
-ms.locfileid: "36958407"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574493"
 ---
-# <a name="tutorial-bing-visual-search-sdk-image-crop-area-and-results"></a>Samouczek: Obszar przycięcia obrazu Visual SDK wyszukiwania usługi Bing i wyniki
-Visual SDK wyszukiwania zawiera opcję Zaznacz obszar obrazu i znalezienie online obrazów, które są podobne do obszaru przycięcia większy obraz.  W tym przykładzie określa obszar kadrowania przedstawiający jedna osoba z obrazu, który zawiera kilka osób.  Kod wysyła obszaru przycięcia i adres URL obrazu większych i zwraca wyniki, które obejmują adresy URL wyszukiwania usługi Bing i adresy URL obrazów podobne znalezione w trybie online.
+# <a name="tutorial-bing-visual-search-sdk-image-crop-area-and-results"></a>Samouczek: Obszar przycinanie obrazu zestaw SDK wyszukiwania wizualnego Bing i wyniki
+Zestaw SDK programu Visual Search zawiera opcję, aby wybrać obszar obrazu i Znajdź online obrazy, które są podobne do obszaru przycięcia większy obraz.  W tym przykładzie określa obszar kadrowania przedstawiający jedna osoba z obrazu, który zawiera kilka osób.  Kod wysyła obszaru kadrowania i adres URL obrazu większych i zwraca wyniki, które zawierają adresy URL wyszukiwania Bing i adresów URL podobnych obrazów znalezione w trybie online.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne będzie [programu Visual Studio 2017](https://www.visualstudio.com/downloads/) aby otrzymać ten kod z systemem Windows. (Bezpłatna wersja Community będzie działać.)
+Konieczne będzie [programu Visual Studio 2017](https://www.visualstudio.com/downloads/) aby otrzymać ten kod w systemie Windows. (Można korzystać z bezpłatnej wersji Community Edition).
 
-Musi mieć [kognitywnych interfejsu API usług konta](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z interfejsy API wyszukiwania usługi Bing. [Bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca dla tego przewodnika Szybki Start. Należy klucz dostępu podany przy wywołaniu metody aktywacji bezpłatną wersję próbną lub może używać klucza płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
+Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) za pomocą interfejsów API wyszukiwania Bing. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca na potrzeby tego przewodnika Szybki Start. Wymagany jest klucz dostępu podany przy wywołaniu metody Aktywuj bezpłatną wersję próbną lub klucz płatnej subskrypcji może używać z pulpitu nawigacyjnego platformy Azure.
 
 ## <a name="application-dependencies"></a>Zależności aplikacji
-Aby skonfigurować aplikację konsoli przy użyciu zestawu SDK wyszukiwania usługi Bing sieci Web, przejdź do opcji zarządzania pakietami NuGet z Eksploratora rozwiązań w programie Visual Studio. Dodaj pakiet Microsoft.Azure.CognitiveServices.Search.VisualSearch.
+Aby skonfigurować aplikację konsoli przy użyciu zestawu SDK wyszukiwania w sieci Web Bing, przejdź do opcji Zarządzaj pakietami NuGet z poziomu Eksploratora rozwiązań w programie Visual Studio. Dodaj pakiet Microsoft.Azure.CognitiveServices.Search.VisualSearch.
 
-Instalowanie pakietu NuGet Web wyszukiwania SDK instaluje również zależności, w tym:
+Instalowanie pakietu NuGet zestawu SDK z wyszukiwania w sieci Web instaluje również zależności, w tym:
 
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
 * Newtonsoft.Json
 
 ## <a name="image-and-crop-area"></a>Obszar obrazu i przycięcia
-Na poniższej ilustracji przedstawiono kadry kierowniczej wyższych firmy Microsoft.  Za pomocą Visual SDK wyszukiwania, możemy przekazać przycięcia części obrazu i znaleźć inne obrazy i strony sieci Web, które zawierają jednostki w wybranym obszarze większy obraz.  W takim przypadku jednostka jest osoby.
+Na poniższej ilustracji przedstawiono szczebla zespół firmy Microsoft.  Przy użyciu zestawu SDK programu Visual Search, możemy przekazać obszar przycinanie obrazu i Znajdź inne obrazy i strony sieci Web, które zawierają jednostki w wybranym obszarze większy obraz.  W takim przypadku jednostki jest osobą.
 
-![Kadry kierowniczej wyższych firmy Microsoft](./media/MS_SrLeaders.jpg)
+![Zespół szczebla firmy Microsoft](./media/MS_SrLeaders.jpg)
 
 ## <a name="specify-the-crop-area-as-imageinfo-in-visualsearchrequest"></a>Określ obszar przycięcia jako ImageInfo w VisualSearchRequest
-W tym przykładzie użyto obszar przycięcia poprzedniego obrazu, który określa lewy górny i dolny prawy współrzędne według wartości procentowej całego obrazu.  Poniższy kod tworzy `ImageInfo` obiektu z obszaru przycięcia i obciążeń `ImageInfo` obiekt do `VisualSearchRequest`.  `ImageInfo` Obiektu zawiera również adres URL obrazu, w trybie online.
+W tym przykładzie użyto obszar przycięcia w poprzednim obrazie, który określa lewej górnej i zmniejszyć odpowiednie współrzędne według wartości procentowej całego obrazu.  Poniższy kod tworzy `ImageInfo` obiekt z obszaru kadrowania i obciążeniami `ImageInfo` do obiektu `VisualSearchRequest`.  `ImageInfo` Obiektu zawiera również adres URL obrazu w trybie online.
 
 ```
 CropArea CropArea = new CropArea(top: (float)0.01, bottom: (float)0.30, left: (float)0.01, right: (float)0.20);
-string imageURL = "https://docs.microsoft.com/en-us/azure/cognitive-services/bing-visual-search/media/ms_srleaders.jpg;
+string imageURL = "https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/media/ms_srleaders.jpg;
 ImageInfo imageInfo = new ImageInfo(cropArea: CropArea, url: imageURL);
 
 VisualSearchRequest visualSearchRequest = new VisualSearchRequest(imageInfo: imageInfo);
 ```
-## <a name="search-for-images-similar-to-crop-area"></a>Wyszukaj podobne do obszaru przycinania obrazów
-`VisualSearchRequest` Omówiono przycięcia obszaru obrazu i jego adres URL.  `VisualSearchMethodAsync` Metoda pobiera wyniki.
+## <a name="search-for-images-similar-to-crop-area"></a>Wyszukuj obrazy, podobne do obszaru przycinania
+`VisualSearchRequest` Zawiera przycięcia obszaru informacje dotyczące obrazu i jego adres URL.  `VisualSearchMethodAsync` Metoda pobiera wyniki.
 ```
 Console.WriteLine("\r\nSending visual search request with knowledgeRequest that contains URL and crop area");
 var visualSearchResults = client.Images.VisualSearchMethodAsync(knowledgeRequest: visualSearchRequest).Result; 
 
 ```
 
-## <a name="get-the-url-data-from-imagemoduleaction"></a>Pobierz dane adres URL z ImageModuleAction
-Visual wyniki wyszukiwania są `ImageTag` obiektów.  Każdy znacznik zawiera listę `ImageAction` obiektów.  Każdy `ImageAction` zawiera `Data` pola, które znajduje się lista wartości, które są zależne od typu akcji:
+## <a name="get-the-url-data-from-imagemoduleaction"></a>Pobieranie danych adresu URL z ImageModuleAction
+Wizualne wyniki wyszukiwania są `ImageTag` obiektów.  Każdy znacznik zawiera listę `ImageAction` obiektów.  Każdy `ImageAction` zawiera `Data` pola, które znajduje się lista wartości, które są zależne od typu akcji:
 
-Możesz uzyskać różne typy z następującym kodem:
+Różne typy można uzyskać z następującym kodem:
 ```
 Console.WriteLine("\r\n" + "ActionType: " + i.ActionType + " -> WebSearchUrl: " + i.WebSearchUrl);
 
 ```
-Kompletna aplikacja zwraca:
+Zwraca kompletnej aplikacji:
 
 * ActionType: PagesIncluding WebSearchURL:
 * ActionType: MoreSizes WebSearchURL:
@@ -76,12 +76,12 @@ Kompletna aplikacja zwraca:
 * ActionType: -> TopicResults WebSearchUrl: https://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=3QGtxPb3W9LemuHRxAlW4CW7XN4sPkUYCUynxAqI9zQ&v=1&r=https%3a%2f%2fwww.bing.com%2fdiscover%2fnadella%2bsatya&p=DevEx, 5382.1
 * ActionType: -> ImageResults WebSearchUrl: https://www.bing.com/cr?IG=E40D0E1A13404994ACB073504BC937A4&CID=03DCF882D7386A442137F49BD6596BEF&rd=1&h=l-WNHO89Kkw69AmIGe2MhlUp6MxR6YsJszgOuM5sVLs&v=1&r=https%3a%2f%2fwww.bing.com%2fimages%2fsearch%3fq%3dSatya%2bNadella&p=DevEx, 5384.1
 
-Jak pokazano w powyższej listy `Entity` `ActionType` zawiera zapytanie wyszukiwania usługi Bing, która zwraca informacje na temat rozpoznawalnych osoby, miejsca lub operacją.  `TopicResults` i `ImageResults` typy zawierać zapytania dotyczące powiązanych obrazy. Adresy URL na liście łącze do wyników wyszukiwania usługi Bing.
+Jak pokazano na powyższej liście `Entity` `ActionType` zawiera zapytanie wyszukiwania Bing, które zwraca informacje na temat rozpoznawalnych osoby, miejsca lub rzeczy.  `TopicResults` i `ImageResults` typy zawierać zapytania dotyczące powiązanych obrazów. Adresy URL łącza listy wyników wyszukiwania Bing.
 
 
-## <a name="pagesincluding-actiontype-urls-of-images-found-by-visual-search"></a>Adresy URL ActionType PagesIncluding znalezione przez wyszukiwanie Visual obrazów
+## <a name="pagesincluding-actiontype-urls-of-images-found-by-visual-search"></a>Adresy URL ActionType PagesIncluding obrazów znalezione przez wyszukiwanie wizualne
 
-Uzyskiwanie adresów URL rzeczywisty obraz wymaga rzutowanie odczytujący `ActionType` jako `ImageModuleAction`, który zawiera `Data` element z listy wartości.  Każda wartość jest adres URL obrazu.  Następujące rzutowania `PagesIncluding` typu akcji `ImageModuleAction` i odczytuje wartości.
+Adresy URL rzeczywisty obraz wymaga rzutowania, która odczytuje `ActionType` jako `ImageModuleAction`, który zawiera `Data` element z listy wartości.  Każda wartość jest adres URL obrazu.  Następujące rzutowania `PagesIncluding` typu akcji `ImageModuleAction` i odczytuje wartości.
 ```
     if (i.ActionType == "PagesIncluding")
     {
@@ -94,7 +94,7 @@ Uzyskiwanie adresów URL rzeczywisty obraz wymaga rzutowanie odczytujący `Actio
 
 ## <a name="complete-code"></a>Kompletny kod
 
-Poniższy kod działa w poprzednich przykładach. Wysyła obraz binarny w treści żądania post, wraz z obiektem cropArea i drukuje Bing wyszukiwania adresów URL dla każdego obiektu ActionType. Jeśli ActionType PagesIncluding, kod pobiera elementy ImageObject ImageObject danych.  Dane zawierają listę wartości, które są adresy URL obrazów na stronach sieci Web.  Skopiuj i Wklej wynikowy Visual wyszukiwania adresów URL do przeglądarki, aby wyświetlić wyniki. Skopiuj i Wklej elementy ContentUrl do przeglądarki, aby wyświetlić obrazy.
+Poniższy kod działa w poprzednich przykładach. Wysyła obrazu binarnego w treści żądania post, wraz z obiektem cropArea i drukuje Bing wyszukiwania adresów URL dla każdego obiektu ActionType. Jeśli ActionType PagesIncluding, ten kod pobiera elementy ImageObject ImageObject danych.  Dane zawierają listę wartości, które są adresami URL obrazów na stronach sieci Web.  Skopiuj i Wklej wynikowy Visual wyszukiwania adresów URL do przeglądarki do wyświetlenia wyników. Skopiuj i Wklej elementy ContentUrl do przeglądarki, aby wyświetlić obrazy.
 
 ```
 using System;
@@ -128,7 +128,7 @@ namespace VisualSearchFeatures
                 CropArea CropArea = new CropArea(top: (float)0.01, bottom: (float)0.30, left: (float)0.01, right: (float)0.20);
                 
                 // The ImageInfo struct specifies the crop area in the image and the URL of the larger image. 
-                string imageURL = "https://docs.microsoft.com/en-us/azure/cognitive-services/bing-visual-search/media/ms_srleaders.jpg";
+                string imageURL = "https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/media/ms_srleaders.jpg";
                 ImageInfo imageInfo = new ImageInfo(cropArea: CropArea, url: imageURL);
                 
                 VisualSearchRequest visualSearchRequest = new VisualSearchRequest(imageInfo: imageInfo);
@@ -182,4 +182,4 @@ namespace VisualSearchFeatures
 
 ```
 ## <a name="next-steps"></a>Kolejne kroki
-[Visual odpowiedzi wyszukiwania](https://docs.microsoft.com/en-us/azure/cognitive-services/bing-visual-search/overview#the-response)
+[Wizualne odpowiedzi wyszukiwania](https://docs.microsoft.com/azure/cognitive-services/bing-visual-search/overview#the-response)

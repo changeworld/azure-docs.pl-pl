@@ -1,6 +1,6 @@
 ---
-title: Informacje o wersji dla usług Azure BizTalk | Dokumentacja firmy Microsoft
-description: Wymieniono znane problemy dotyczące usług Azure BizTalk
+title: Informacje o wersji dla usługi Azure BizTalk Services | Dokumentacja firmy Microsoft
+description: Wymieniono znane problemy dotyczące usługi Azure BizTalk Services
 services: biztalk-services
 documentationcenter: ''
 author: msftman
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2016
 ms.author: deonhe
-ms.openlocfilehash: 5c05c7c4c0f8f0b3619b36390c8a0224a03c900a
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: db79ee85c19e5f3cdced9b894aca48de4d7d1c42
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063546"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576474"
 ---
 # <a name="release-notes-for-azure-biztalk-services"></a>Informacje o wersji dla usługi Azure BizTalk Services
 
@@ -27,101 +27,101 @@ ms.locfileid: "37063546"
 
 > [!INCLUDE [Use APIs to manage MABS](../../includes/biztalk-services-retirement-azure-classic-portal.md)]
 
-Informacje o wersji dla usługi Microsoft Azure BizTalk zawierają znane problemy występujące w tej wersji.
+Informacje o wersji programu Microsoft Azure BizTalk Services zawierają znane problemy w tej wersji.
 
-## <a name="whats-new-in-the-november-update-of-biztalk-services"></a>Nowości w aktualizacji z listopada usług BizTalk
-* Można włączyć szyfrowanie przechowywanych w portalu usługi BizTalk. Zobacz [włączyć szyfrowanie przechowywanych w portalu usługi BizTalk](https://msdn.microsoft.com/library/azure/dn874052.aspx).
+## <a name="whats-new-in-the-november-update-of-biztalk-services"></a>What's new in Listopadowa aktualizacja usługi BizTalk Services
+* Można włączyć szyfrowanie danych magazynowanych w portalu usługi BizTalk Services. Zobacz [włączyć szyfrowanie danych magazynowanych w portalu usługi BizTalk Services](https://msdn.microsoft.com/library/azure/dn874052.aspx).
 
 ## <a name="update-history"></a>Historia aktualizacji
 ### <a name="october-update"></a>Aktualizacja z października
 * Konta organizacyjne są obsługiwane:  
-  * **Scenariusz**: zarejestrowany wdrażania usługi BizTalk przy użyciu konta Microsoft (takich jak user@live.com). W tym scenariuszu tylko Account Microsoft użytkownicy mogą zarządzać za pomocą portalu usługi BizTalk Services usługi BizTalk. Nie można użyć konta organizacyjnego.  
-  * **Scenariusz**: zarejestrowanych w usłudze Azure Active Directory za pomocą konta organizacyjnego wdrożenia usługi BizTalk (takich jak user@fabrikam.com lub user@contoso.com). W tym scenariuszu tylko użytkownicy usługi Azure Active Directory w danej organizacji można zarządzać przy użyciu portalu usługi BizTalk Services usługi BizTalk. Nie można użyć konta Microsoft.  
-* Podczas tworzenia usługi BizTalk, są automatycznie rejestrowane w portalu usługi BizTalk.
-  * **Scenariusz**: możesz zalogować się do platformy Azure, Utwórz usługę BizTalk, a następnie wybierz **Zarządzaj** po raz pierwszy. Po otwarciu portalu usługi BizTalk Services usługi BizTalk automatycznie rejestruje i jest gotowy do wdrożeń.  
-    Zobacz [rejestrowanie i aktualizowanie wdrożenia usługi BizTalk na BizTalk usług Portal](https://msdn.microsoft.com/library/azure/hh689837.aspx).  
+  * **Scenariusz**: zarejestrowany wdrożenia usługi BizTalk, przy użyciu konta Microsoft (takich jak user@live.com). W tym scenariuszu tylko Account Microsoft użytkownicy mogą zarządzać usługi BizTalk przy użyciu portalu usługi BizTalk Services. Nie można użyć konta organizacji.  
+  * **Scenariusz**: zarejestrowany wdrażania usługi BizTalk przy użyciu konta organizacyjnego usługi Azure Active Directory (takich jak user@fabrikam.com lub user@contoso.com). W tym scenariuszu tylko użytkownicy usługi Azure Active Directory w ramach tej samej organizacji można zarządzać za pomocą portalu usługi BizTalk Services usługi BizTalk. Nie można używać konta Microsoft.  
+* Podczas tworzenia usługi BizTalk, są automatycznie rejestrowane w portalu usługi BizTalk Services.
+  * **Scenariusz**: Tworzenie usługi BizTalk zalogujesz się do platformy Azure, a następnie wybierz pozycję **Zarządzaj** po raz pierwszy. Po otwarciu portalu usługi BizTalk Services, usługa BizTalk automatycznie rejestruje i jest gotowa do wdrożenia.  
+    Zobacz [rejestrowanie i aktualizowanie wdrożenia usługi BizTalk w BizTalk Services Portal](https://msdn.microsoft.com/library/azure/hh689837.aspx).  
 
-### <a name="august-14-update"></a>Aktualizacja z sierpnia 14
-* Umowy oraz Mostek oddzielenie — umów z partnerami i mostków są całkowicie niezależna teraz w portalu usługi BizTalk. Możesz teraz utworzyć umowy i mostków oddzielnie, a w czasie wykonywania mostków rozpoznać na podstawie wartości w komunikacie EDI umowy. Zobacz [Tworzenie umów w usług Azure BizTalk](https://msdn.microsoft.com/library/azure/hh689908.aspx), [utworzyć mostek EDI przy użyciu portalu usługi BizTalk](https://msdn.microsoft.com/library/azure/dn793986.aspx), [utworzyć mostek AS2 przy użyciu portalu usługi BizTalk](https://msdn.microsoft.com/library/azure/dn793993.aspx)i [ Jak mostków usunąć umowy w czasie wykonywania](https://msdn.microsoft.com/library/azure/dn794001.aspx)  
+### <a name="august-14-update"></a>14 sierpnia aktualizacji
+* Umowy i Mostek oddzielenie — umowy z partnerami i mostków są całkowicie niezależni teraz w portalu usługi BizTalk Services. Możesz teraz tworzyć umowy i mostków osobno, a w czasie wykonywania mostków rozpoznać umowy, na podstawie wartości w komunikatów EDI. Zobacz [Tworzenie umów w usłudze Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689908.aspx), [utworzyć mostek EDI za pomocą portalu usługi BizTalk Services](https://msdn.microsoft.com/library/azure/dn793986.aspx), [utworzyć mostek AS2, za pomocą portalu usługi BizTalk Services](https://msdn.microsoft.com/library/azure/dn793993.aspx)i [ Jak mostków rozwiązać umowy w czasie wykonywania?](https://msdn.microsoft.com/library/azure/dn794001.aspx)  
 * Możliwość tworzenia szablonów dla umowy jest przerywane.  
-* Umowy po stronie wysyłania można teraz określić ogranicznik różne zestawy dla każdego schematu. Ta konfiguracja jest wybranym w ustawieniach protokołu umowy po stronie wysyłania. Aby uzyskać więcej informacji, zobacz [Utwórz moduł X12 umowy w usłudze Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689847.aspx) i [Tworzenie umów EDIFACT w usług Azure BizTalk](https://msdn.microsoft.com/library/azure/dn606267.aspx). Dwa nowe jednostki również są dodawane do interfejsu API OM modułu TPM do takiej obsługi. Zobacz [X12DelimiterOverrides](https://msdn.microsoft.com/library/azure/dn798749.aspx) i [EDIFACTDelimiterOverride](https://msdn.microsoft.com/library/azure/dn798748.aspx).  
-* Konstrukcje XSD, łącznie z typów pochodnych, są teraz obsługiwane. Zobacz [XSD standardowych użyj konstrukcji w map](https://msdn.microsoft.com/library/azure/dn793987.aspx) i [Użyj typów pochodnych w przykłady i scenariusze mapowania](https://msdn.microsoft.com/library/azure/dn793997.aspx).  
-* AS2 obsługuje nowych algorytmów Mikrofon do podpisywania wiadomości i nowych algorytmów szyfrowania. Zobacz [Tworzenie umów AS2 w usługach Azure BizTalk](https://msdn.microsoft.com/library/azure/hh689890.aspx).  
-  ## <a name="know-issues"></a>Znać problemów
+* Na stronie wysyłania umowy możesz teraz określić ogranicznik różne zestawy dla każdego schematu. Ta konfiguracja jest określona w ustawieniach protokołu umowy po stronie wysyłania. Aby uzyskać więcej informacji, zobacz [Utwórz wiadomość X12 umowy w usłudze Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689847.aspx) i [tworzenia umowy EDIFACT w usłudze Azure BizTalk Services](https://msdn.microsoft.com/library/azure/dn606267.aspx). Dwa nowe jednostki są również dodawane do interfejsu API TPM OM w tym samym celu. Zobacz [X12DelimiterOverrides](https://msdn.microsoft.com/library/azure/dn798749.aspx) i [EDIFACTDelimiterOverride](https://msdn.microsoft.com/library/azure/dn798748.aspx).  
+* Konstrukcje XSD, w tym typy pochodne są teraz obsługiwane. Zobacz [XSD standardowe użycie konstrukcji w swoich mapach](https://msdn.microsoft.com/library/azure/dn793987.aspx) i [typy pochodne użycia w scenariuszach mapowania i przykłady](https://msdn.microsoft.com/library/azure/dn793997.aspx).  
+* AS2 obsługuje nowych algorytmów kontroli integralności uprawnień do podpisywania wiadomości i nowych algorytmów szyfrowania. Zobacz [tworzenia umowy AS2 w usłudze Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689890.aspx).  
+  ## <a name="know-issues"></a>Znasz problemów
 
-### <a name="connectivity-issues-after-biztalk-services-portal-update"></a>Problemy z połączeniem po aktualizacji portalu usług BizTalk
-  Jeśli masz Portal usługi BizTalk otworzyć, gdy usługi BizTalk Services jest uaktualniany wycofanie zmian do usługi mogą stają przed problemy z łącznością z portalem usługi BizTalk.  
-  Jako obejście może ponownie uruchomić przeglądarkę, usunąć pamięci podręcznej przeglądarki lub uruchomić portalu w trybie prywatnym.  
+### <a name="connectivity-issues-after-biztalk-services-portal-update"></a>Problemy z łącznością po aktualizacji w portalu usługi BizTalk Services
+  W przypadku portalu usługi BizTalk Services otworzyć, gdy usługa BizTalk Services jest uaktualniany konieczne przywrócenie początkowej zmiany w usłudze może występować problemy z łącznością z portalu usługi BizTalk Services.  
+  Jako obejście może ponownie uruchomić przeglądarkę, usuń pamięć podręczną przeglądarki lub start portalu w trybie prywatnym.  
 
-### <a name="visual-studio-ide-cannot-locate-the-artifact-if-you-click-an-error-or-warning-in-a-biztalk-services-project"></a>Środowiska IDE programu Visual Studio nie może zlokalizować artefaktu, jeśli klikniesz przycisk błąd lub ostrzeżenie w projekcie usługi BizTalk Services
-Zainstaluj program Visual Studio 2012 Update 3 RC 1 do rozwiązania problemu.  
+### <a name="visual-studio-ide-cannot-locate-the-artifact-if-you-click-an-error-or-warning-in-a-biztalk-services-project"></a>Środowiska IDE programu Visual Studio nie może zlokalizować artefaktu, po kliknięciu błąd lub ostrzeżenie w projekcie usługi BizTalk Services
+Zainstaluj program Visual Studio 2012 Update 3 RC 1 pozwalające rozwiązać problem.  
 
-### <a name="custom-binding-project-reference"></a>Odwołanie do niestandardowego powiązania projektu
-Należy wziąć pod uwagę następujące sytuacje z usługi BizTalk Services projektu w rozwiązaniu Visual Studio:  
+### <a name="custom-binding-project-reference"></a>Odwołanie do projektu powiązania niestandardowego
+Należy wziąć pod uwagę następujące sytuacje, w projekcie usługi BizTalk Services w rozwiązaniu Visual Studio:  
 
-* W tym samym rozwiązaniu Visual Studio jest projektu usługi BizTalk Services oraz projekt niestandardowego powiązania. Projekt usługi BizTalk zawiera odwołanie do tego pliku projektu niestandardowego powiązania.
-* Projekt usługi BizTalk zawiera odwołanie do niestandardowego powiązania/zachowanie biblioteki DLL.
+* W tym samym rozwiązaniu Visual Studio ma projektu usługi BizTalk Services a projektem niestandardowego powiązania. Projekt usługi BizTalk zawiera odwołanie do tego pliku projektu niestandardowego powiązania.
+* Projekt usługi BizTalk ma odwołania do niestandardowego powiązania/zachowanie biblioteki DLL.
 
-"Tworzenia" rozwiązania w programie Visual Studio pomyślnie. Następnie "Odbudować" lub "Czysta" rozwiązania. Po tym, gdy odbudować lub wyczyścić ponownie, wystąpił następujący błąd:  
+Użytkownik "kompilacja" rozwiązania w programie Visual Studio pomyślnie. Następnie "Skompiluj ponownie" lub "Czysta" rozwiązania. Po tym gdy odbudować lub wyczyścić ponownie, wystąpi następujący błąd:  
   Nie można skopiować pliku <Path to DLL> do "bin\Debug\FileName.dll". Proces uzyskać dostępu do pliku "bin\Debug\FileName.dll", ponieważ jest on używany przez inny proces.  
 
 #### <a name="workaround"></a>Obejście
-* Jeśli [Visual Studio 2012 Update 3](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2012-update3-vs) jest zainstalowany, masz następujące dwie opcje:
+* Jeśli [Visual Studio 2012 Update 3](https://docs.microsoft.com/visualstudio/releasenotes/vs2012-update3-vs) jest zainstalowany, dostępne są następujące dwie opcje:
   
-  * Uruchom ponownie program Visual Studio lub
-  * Uruchom ponownie rozwiązanie. Następnie należy wykonać tylko kompilację w ramach rozwiązania.  
-* Jeśli [Visual Studio 2012 Update 3](https://docs.microsoft.com/en-us/visualstudio/releasenotes/vs2012-update3-vs) nie jest zainstalowany, Otwórz Menedżer zadań kliknij procesów, kliknij proces MSBuild.exe, a następnie kliknij przycisk Zakończ proces.  
+  * Uruchom ponownie program Visual Studio, lub
+  * Uruchom ponownie rozwiązanie. Następnie należy wykonać tylko kompilacji rozwiązania.  
+* Jeśli [Visual Studio 2012 Update 3](https://docs.microsoft.com/visualstudio/releasenotes/vs2012-update3-vs) nie jest zainstalowany, Otwórz Menedżer zadań kliknij procesy kartę, kliknij proces MSBuild.exe, a następnie kliknij przycisk Zakończ proces.  
 
-### <a name="routing-to-basichttprelay-endpoints-is-not-supported-from-bridges-and-biztalk-services-portal-if-non-printable-characters-are-promoted-as-http-headers"></a>Routing do punktów końcowych BasicHttpRelay nie jest obsługiwana w portalu usługi BizTalk i mostków czy znaki niedrukowalne są awansowane nagłówki HTTP
-Jeśli używasz niedrukowalne znaki jako część awansowanej właściwości wiadomości tych wiadomości nie kierowane do przekazywania miejsc docelowych, korzystające z wiązania BasicHttpRelay. Ponadto awansowanej właściwości dostępnych jako część śledzenia są zakodowane w adresie URL dla obiektów blob i cofanie zakodowanego dla miejsc docelowych.  
+### <a name="routing-to-basichttprelay-endpoints-is-not-supported-from-bridges-and-biztalk-services-portal-if-non-printable-characters-are-promoted-as-http-headers"></a>Routing do punktów końcowych BasicHttpRelay nie jest możliwe z mostków i portalu usługi BizTalk Services niedrukowalne znaki są przenoszone jako nagłówki HTTP
+Jeśli używasz niedrukowalne znaki jako część podwyższone właściwości wiadomości te komunikaty nie kierowane do przekazywania miejsc docelowych, korzystające z wiązania BasicHttpRelay. Ponadto podwyższone właściwości, są dostępne jako część śledzenia są zakodowane jako adres URL dla obiektów blob i usunięcie zakodowanym dla miejsc docelowych.  
 
-### <a name="mdn-is-sent-asynchronously-even-if-the-send-asynchronous-mdn-option-is-unchecked"></a>MDN są wysyłane asynchronicznie, nawet jeśli jest zaznaczona opcja MDN asynchronicznego wysyłania
-Rozważmy scenariusz, w tym — w przypadku wybrania **Wysyłanie asynchroniczne MDN** wyboru i wprowadź adres URL Wysyłanie asynchroniczne MDN, a następnie usuń zaznaczenie pola wyboru **Wysyłanie asynchroniczne MDN** wyboru ponownie, MDN jest nadal wysyłane do określony adres URL, nawet jeśli nie wybrano opcję, aby wysłać async MDNs.  
-Określony adres URL jako obejście, należy wyczyścić przed zaznaczenie pola wyboru **Wysyłanie asynchroniczne MDN** pole wyboru, a następnie wdrożyć umowy AS2.  
+### <a name="mdn-is-sent-asynchronously-even-if-the-send-asynchronous-mdn-option-is-unchecked"></a>Powiadomienia MDN są wysyłane asynchronicznie, nawet jeśli zaznaczono opcję wysyłania asynchronicznego powiadomienia MDN
+Należy wziąć pod uwagę w tym scenariuszu — jeśli zostanie wybrana **wysyłanie asynchronicznych powiadomień MDN** pole wyboru i określ adres URL dla wysłania asynchronicznego powiadomienia MDN i usuń zaznaczenie opcji **wysyłanie asynchronicznych powiadomień MDN** wyboru ponownie powiadomienia MDN jest nadal wysyłane do określony adres URL, nawet jeśli nie wybrano opcję, aby wysłać asynchronicznych komunikatów Mdn.  
+Jako obejście tego problemu, należy wyczyścić pod określony adres URL przed usuwając zaznaczenie pola wyboru **wysyłanie asynchronicznych powiadomień MDN** pole wyboru, a następnie wdrożyć umowy AS2.  
 
-### <a name="whitespace-characters-beyond-a-valid-interchange-cause-an-empty-message-to-be-sent-to-the-suspend-endpoint"></a>Odstęp poza prawidłową wymiany spowodować pusty komunikat do wysłania do punktu końcowego zawieszenia
-W przypadku białe znaki poza segment IEA dezasembler traktuje tego jako końca bieżącego wymiany i analizuje następny zestaw odstępy jako następny komunikat. Ponieważ to nie jest prawidłową wymiany, widoczny czy jeden komunikat pomyślne jest wysyłany do docelowego trasy i jeden pusty komunikat jest wysyłany Wstrzymaj punktu końcowego.  
+### <a name="whitespace-characters-beyond-a-valid-interchange-cause-an-empty-message-to-be-sent-to-the-suspend-endpoint"></a>Odstęp po przekroczeniu prawidłowe wymiany spowodować pustego komunikatu do wysłania do endpoint Wstrzymaj
+W przypadku spacji poza segment IEA dezasembler traktuje ją jako koniec bieżącego wymiany i analizuje następny zestaw białych znaków jako następny komunikat. Ponieważ nie jest prawidłową wymiany, może obserwować, że jeden pomyślne wiadomość jest wysyłana do lokalizacji docelowej tras i jeden pusty komunikat jest wysyłany punkt końcowy wstrzymania.  
 
-### <a name="tracking-in-biztalk-services-portal"></a>Śledzenie w portalu usługi BizTalk
-Zdarzenia śledzenia są przechwytywane do przetwarzania komunikatów EDI i wszelkie korelacji. W przypadku niepowodzenia komunikat poza etap protokołu śledzenia zostaną wyświetlone pomyślnym przeprowadzeniu. W takiej sytuacji można znaleźć w sekcji dziennika pod **szczegóły** kolumny w **śledzenia** szczegóły błędów.
-X12 odbierania i wysyłania ustawień ([Utwórz moduł X12 umowy w usłudze Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689847.aspx)) zawierają informacje o fazie protokołu.  
+### <a name="tracking-in-biztalk-services-portal"></a>Śledzenie w portalu usługi BizTalk Services
+Zdarzenia śledzenia są przechwytywane do przetwarzania komunikatów EDI i wszelka korelacja. Jeśli komunikat nie powiedzie się poza etapu protokołu, śledzenia zostaną wyświetlone jako pomyślne. W takiej sytuacji można znaleźć w sekcji dziennika, w obszarze **szczegóły** kolumny w **śledzenia** szczegóły błędów.
+X12 odbieranie i wysyłanie ustawień ([Utwórz wiadomość X12 umowy w usłudze Azure BizTalk Services](https://msdn.microsoft.com/library/azure/hh689847.aspx)) zawierają informacje dotyczące etapów protokołu.  
 
 ### <a name="update-agreement"></a>Aktualizowanie umowy
-Portal usługi BizTalk umożliwia modyfikowanie kwalifikator tożsamości, gdy Umowa jest skonfigurowany. Może to spowodować właściwości jest niezgodna. Na przykład istnieje umowa przy użyciu ZZ:1234567 i ZZ:7654321 kwalifikator. W ustawieniach profilu Portal usługi BizTalk możesz zmienić ZZ:1234567 jako 01:ChangedValue. Otwórz umowę i 01:ChangedValue jest wyświetlany zamiast ZZ:1234567.
-Aby zmodyfikować kwalifikator tożsamości, usunąć umowy, zaktualizuj **tożsamości** w profilu partnera, a następnie ponownie utwórz umowy.  
+Portalu usługi BizTalk Services umożliwia modyfikowanie kwalifikator tożsamości, w przypadku skonfigurowania umowę. Może to spowodować, że właściwości jest niezgodna. Na przykład istnieje umowa przy użyciu ZZ:1234567 i ZZ:7654321 kwalifikator. W ustawieniach profilu w portalu usługi BizTalk Services możesz zmienić ZZ:1234567 jako 01:ChangedValue. Otwórz umowę, a 01:ChangedValue będzie wyświetlany zamiast ZZ:1234567.
+Modyfikowanie kwalifikator tożsamości, usunąć umowy, aktualizowanie **tożsamości** w profilu partnera, a następnie ponownie utwórz umowy.  
 
-> AZURE. Ostrzeżenie zachowanie tej wpływa na X12 i AS2.  
+> AZURE. Ostrzeżenie to zachowanie ma wpływ X12 i AS2.  
 > 
 > 
 
 ### <a name="as2-attachments"></a>Załączniki AS2
-Załączniki wiadomości nie są obsługiwane w AS2 wysyłać ani odbierać. W szczególności załączników dyskretnie są ignorowane, a treść komunikatu jest przetwarzany jako zwykłe wiadomości AS2.  
+Załączniki dla pola AS2 komunikaty nie są obsługiwane w wysyłać ani odbierać. W szczególności załączniki dyskretnie są ignorowane i treść komunikatu jest przetwarzany jako regularne komunikatu AS2.  
 
-### <a name="resources-remembering-path"></a>Zasoby: Ścieżka zapamiętywanie
-Podczas dodawania **zasobów**, okno dialogowe nie może pamiętać ścieżki wcześniej służy do dodawania zasobów. Do zapamiętania wcześniej używane ścieżki, spróbuj dodać witryny sieci web portalu usługi BizTalk **Zaufane witryny** w programie Internet Explorer.  
+### <a name="resources-remembering-path"></a>Zasoby dotyczące oprogramowania: Zapamiętywać ścieżkę
+Podczas dodawania **zasobów**, okno dialogowe może pamiętasz ścieżki wcześniej można dodać zasobu. Do zapamiętania wcześniej używane ścieżki, spróbuj Dodawanie witryny sieci web portalu usługi BizTalk Services **Zaufane witryny** w programie Internet Explorer.  
 
-### <a name="if-you-rename-the-entity-name-of-a-bridge-and-close-the-project-without-saving-changes-opening-the-entity-again-results-in-an-error"></a>Możesz zmienić nazwę jednostki mostka, zamknij projekt bez zapisywania zmian ponownie otworzyć obiekt powoduje wystąpienie błędu
+### <a name="if-you-rename-the-entity-name-of-a-bridge-and-close-the-project-without-saving-changes-opening-the-entity-again-results-in-an-error"></a>Jeśli możesz zmienić nazwę jednostki bridge, zamknij projekt bez zapisywania zmian ponownie otworzyć jednostki powoduje błąd
 Rozważmy scenariusz, w następującej kolejności:  
 
-* Dodaj do projektu usługi BizTalk mostka (na przykład XML One-Way mostek)  
-* Zmień nazwę mostka przez określenie wartości dla właściwości Nazwa jednostki. Zmienia jego nazwę pliku .bridgeconfig skojarzone z podanej nazwy.  
-* Zamknij plik .bcs (zamykając kartę w programie Visual Studio) bez zapisywania zmian.  
+* Dodawanie Most (na przykład XML One-Way mostek) do projektu usługi BizTalk  
+* Zmień nazwę mostka, określając wartość dla właściwości Nazwa jednostki. To polecenie zmienia .bridgeconfig skojarzony plik przy użyciu podanej nazwy.  
+* Zamknij plik .bcs (przez zamknięcie karty w programie Visual Studio), bez zapisywania zmian.  
 * Otwórz plik .bcs ponownie z Eksploratora rozwiązań.  
-  Można zauważyć, że podczas .bridgeconfig skojarzony plik ma nowy podana nazwa, nazwa jednostki na powierzchni projektu jest nadal starej nazwy. Jeśli spróbujesz otwórz konfigurację mostka, klikając dwukrotnie składnika Mostek otrzymasz następujący błąd:  
-  `‘<old name>’ Entity’s associated file ‘<old name>.bridgeconfig’ does not exist` Aby uniknąć uruchomiona w tym scenariuszu, upewnij się, że po zmianie nazwy jednostki w projekcie usługi BizTalk zapisywania zmian.  
+  Można zauważyć, że chociaż .bridgeconfig skojarzony plik ma nową nazwę, który określiłeś, nazwa jednostki na powierzchni projektowej jest nadal stara nazwa. Jeśli podczas próby otwarcia do konfiguracji mostka przez dwukrotne kliknięcie składnika most, otrzymasz następujący błąd:  
+  `‘<old name>’ Entity’s associated file ‘<old name>.bridgeconfig’ does not exist` Aby uniknąć uruchomione w tym scenariuszu, upewnij się, że zapiszesz zmiany po zmianie nazwy jednostki w projekcie usługi BizTalk.  
   
-### <a name="biztalk-service-project-builds-successfully-even-if-an-artifact-has-been-excluded-from-a-visual-studio-project"></a>Projekt usługi BizTalk kompilacje pomyślnie, nawet jeśli artefakty został on wykluczony z projektu programu Visual Studio
-Rozważmy scenariusz, w którym możesz dodać artefaktu (na przykład plik XSD) do projektu usługi BizTalk, obejmują tego artefaktów w konfiguracji mostu (na przykład, określając go jako typ komunikatu żądania) i wyklucz go z projektu programu Visual Studio. W takim przypadku skompilowanie projektu nie będzie przekazywać wszelkie błędy tak długo, jak tylko usunięte artefakt znajduje się na dysku w tej samej lokalizacji, z którym został dołączony do projektu programu Visual Studio.
+### <a name="biztalk-service-project-builds-successfully-even-if-an-artifact-has-been-excluded-from-a-visual-studio-project"></a>Usługa BizTalk projekt jest kompilowany pomyślnie nawet wtedy, gdy artefakt został wykluczony z projektu programu Visual Studio
+Rozważmy scenariusz, w którym dodajesz artefaktu (na przykład plik XSD) do projektu usługi BizTalk, objęte tego artefaktu do konfiguracji mostka (na przykład, określając ją jako typ komunikatu żądania) i wykluczyć go z projektu programu Visual Studio. W takim przypadku skompilowanie projektu nie zapewni żadnych błędów tak długo, jak usunięto artefakt znajduje się na dysku w tej samej lokalizacji, z której został on uwzględniony w projekcie programu Visual Studio.
   
 ### <a name="the-biztalk-service-project-does-not-check-for-schema-availability-while-configuring-the-bridges"></a>Projekt usługi BizTalk nie sprawdza dostępność schematu podczas konfigurowania mostków
-W projekcie usługi BizTalk Jeśli schemat, który zostanie dodany do projektu importuje inny schemat projektu usługi BizTalk nie sprawdza, czy zaimportowanego schematu jest dodawane do projektu. Jeśli podczas próby skompilowania takiego projektu, nie są błędy kompilacji.
+W projekcie usługi BizTalk Jeśli schemat, który jest dodawany do projektu importuje inny schemat projektu usługi BizTalk nie sprawdza, czy zaimportowanego schematu jest dodawany do projektu. Jeśli zostanie podjęta próba utworzenia takiego projektu, nie uzyskasz żadnych błędów kompilacji.
   
-### <a name="the-response-message-for-a-xml-request-reply-bridge-is-always-of-charset-utf-8"></a>Komunikat odpowiedzi dla mostka "żądanie-odpowiedź" XML jest zawsze zestawu znaków UTF-8
-W tym wydaniu zestaw znaków komunikat odpowiedzi z mostka żądanie-odpowiedź XML ma zawsze wartość UTF-8.
+### <a name="the-response-message-for-a-xml-request-reply-bridge-is-always-of-charset-utf-8"></a>Komunikat odpowiedzi dla most "żądanie-odpowiedź" XML jest zawsze zestaw znaków UTF-8
+W tej wersji zestaw znaków komunikat odpowiedzi z mostka "żądanie-odpowiedź" XML jest zawsze ustawiony na UTF-8.
   
-### <a name="user-defined-datatypes"></a>Zdefiniowane przez użytkownika typów danych
-Karty BizTalk Adapter Pack w ramach funkcji usługi karty BizTalk mogą wykorzystywać zdefiniowanych przez użytkownika typów danych w operacjach karty.
-Używając zdefiniowanych przez użytkownika typów danych, należy skopiować pliki (.dll) na dysku: \Program Files\Microsoft Service\BAServiceRuntime\bin\ karty BizTalk lub do globalnej pamięci podręcznej zestawów (GAC) na serwerze obsługującym usługę BizTalk karty usługi. W przeciwnym razie następujący błąd może wystąpić na komputerze klienckim:  
+### <a name="user-defined-datatypes"></a>Typy zdefiniowane przez użytkownika danych
+Adapterów BizTalk Adapter Pack w ramach funkcji Usługa adaptera BizTalk mogą wykorzystywać zdefiniowanych przez użytkownika typy danych dla operacji karty.
+Korzystając z typów zdefiniowanych przez użytkownika danych, należy skopiować pliki (.dll), dysk: \Program Files\Microsoft Service\BAServiceRuntime\bin\ adaptera BizTalk lub do globalnej pamięci podręcznej zestawów (GAC) na serwerze hostującym usługę usługa adaptera BizTalk. W przeciwnym razie może wystąpić następujący błąd, na komputerze klienckim:  
 ```
 <s:Fault xmlns:s="http://schemas.xmlsoap.org/soap/envelope/">
 <faultcode>s:Client</faultcode>
@@ -135,92 +135,92 @@ Używając zdefiniowanych przez użytkownika typów danych, należy skopiować p
 ```  
   
 > [!IMPORTANT]
-> Zaleca GACUtil.exe umożliwia zainstalować plik w globalnej pamięci podręcznej zestawów. GACUtil.exe dokumentów, jak używać tego narzędzia i opcje wiersza polecenia programu Visual Studio.  
+> Zalecane jest, aby użyć programu GACUtil.exe można zainstalować plik w globalnej pamięci podręcznej zestawów. GACUtil.exe dokumentują sposób używania tego narzędzia i opcje wiersza polecenia programu Visual Studio.  
 > 
 > 
 
-### <a name="restarting-the-biztalk-adapter-service-web-site"></a>Ponowne uruchamianie witryny sieci Web usługi BizTalk karty
-Instalowanie **środowiska uruchomieniowego usługi karty BizTalk*** tworzy **Usługa karty BizTalk** witryny sieci web w usługach IIS, która zawiera **BAService** aplikacji. **BAService** aplikacji wewnętrznie używa powiązania przekazywania rozszerzyć zasięg lokalnego punktu końcowego usługi w chmurze. Do usługi hostowanej w sieci lokalnej odpowiedniego punktu końcowego przekazywania zostanie zarejestrowany na magistrali usług, tylko wtedy, gdy rozpoczyna się usługa lokalna.  
+### <a name="restarting-the-biztalk-adapter-service-web-site"></a>Ponowne uruchamianie witryny sieci Web uzyskiwania informacji na temat usługi adaptera BizTalk
+Instalowanie **środowiska uruchomieniowego usługi adaptera BizTalk*** tworzy **usługa adaptera BizTalk** witryny sieci web w usługach IIS, która zawiera **BAService** aplikacji. **BAService** aplikacja używa wewnętrznie powiązania przekazywania celu rozszerzenia zasięgu punktu końcowego usługi lokalnych do chmury. Dla usługi hostowanej w środowisku lokalnym odpowiedni punkt końcowy przekazywania zostanie zarejestrowana w usłudze Service Bus, tylko wtedy, gdy rozpoczyna się usługa lokalna.  
 
-Jeśli zatrzymać i uruchomić aplikację, nie jest honorowana konfigurację automatycznego uruchamiania aplikacji. W takim przypadku **BAService** jest zatrzymana, należy zawsze należy ponownie uruchomić **Usługa karty BizTalk** witryny sieci web zamiast tego. Się nie uruchomić lub zatrzymać **BAService** aplikacji.
+Jeśli zatrzymasz i uruchom aplikację konfiguracji do automatycznego uruchamiania aplikacji nie zostanie uznane. W takim przypadku **BAService** jest zatrzymana, należy zawsze ponownie uruchomić **usługa adaptera BizTalk** zamiast witryny sieci web. Nie uruchomić lub zatrzymać **BAService** aplikacji.
 
-### <a name="special-characters-should-not-be-used-for-address-and-entity-names-of-lob-components"></a>Nie należy używać znaków specjalnych nazw adres i jednostek biznesowych składników
-Dla nazwy adresu i jednostek biznesowych składników nie należy używać znaków specjalnych. Jeśli tak zrobisz, wystąpi błąd podczas wdrażania projektu usługi BizTalk. Dla niektórych znaków, takich jak '%', BizTalk karty usługi witryny sieci Web może przejść w stan zatrzymania i trzeba będzie uruchomić go ręcznie.
+### <a name="special-characters-should-not-be-used-for-address-and-entity-names-of-lob-components"></a>Nie należy używać znaków specjalnych nazw adres i jednostki BIZNESOWE składników
+Nie należy używać znaków specjalnych nazw adres i jednostki BIZNESOWE składników. Jeśli tak zrobisz, otrzymają komunikat o błędzie podczas wdrażania projektu usługi BizTalk. W przypadku niektórych znaków, takich jak "%", usługa adaptera BizTalk witryny sieci Web może przejść w stan zatrzymania i trzeba będzie uruchomić je ręcznie.
 
-### <a name="test-map-with-get-context-property"></a>Mapa testu z Get właściwości kontekstu
-Jeśli zawiera transformacji **Get właściwości kontekstu** operacji mapy **mapy testu** zakończy się niepowodzeniem. Tymczasowo zastąpić **Get właściwości kontekstu** mapy operację, podając ciąg połączenia mapy operację fikcyjny danymi. To wypełnić schemat docelowy i zezwala na test innych funkcji przekształcenia.
+### <a name="test-map-with-get-context-property"></a>Testowanie mapy za pomocą właściwości kontekstu Get
+Jeśli zawiera przekształcenia **pobieranie właściwości kontekstu** operacji mapy **mapy testu** zakończy się niepowodzeniem. Jako rozwiązanie tymczasowe, Zastąp **pobieranie właściwości kontekstu** mapy operację, podając ciągów łączenie mapy operacji zawierający fikcyjne dane. Spowoduje to wypełnić schemat docelowy i umożliwia testowanie innych funkcji przekształcenia.
 
-### <a name="test-map-property-does-not-display"></a>Właściwość mapy testu nie jest wyświetlana
-**Mapy testu** właściwości nie są wyświetlane w programie Visual Studio. Taka sytuacja może wystąpić, jeśli **właściwości** okna i **Eksploratora rozwiązań** okno nie jest zadokowany jednocześnie. Aby rozwiązać ten problem, dock **właściwości** i **Eksploratora rozwiązań** systemu windows.  
+### <a name="test-map-property-does-not-display"></a>Właściwości mapy testu nie są wyświetlane
+**Mapy testu** właściwości nie są wyświetlane w programie Visual Studio. Taka sytuacja może wystąpić, jeśli **właściwości** okna i **Eksploratora rozwiązań** okno nie są zadokowane, jednocześnie. Aby rozwiązać ten problem, zadokować **właściwości** i **Eksploratora rozwiązań** systemu windows.  
 
-### <a name="datetime-reformat-drop-down-is-grayed-out"></a>Ponowne formatowanie daty/godziny listy rozwijanej jest wyszarzony.
-Gdy operację mapy ponowne formatowanie daty/godziny zostanie dodany do powierzchni projektu i skonfigurowane, na liście rozwijanej Format może wygaszone. Może się to zdarzyć, jeśli komputer wyświetlana jest ustawiony **średni — 125%** lub **większe – 150%**. Aby rozwiązać, ustawić **mniejsze — 100% (ustawienie domyślne)** wykonując poniższe kroki:  
+### <a name="datetime-reformat-drop-down-is-grayed-out"></a>Ponowne formatowanie daty/godziny listy rozwijanej jest wyszarzona.
+Gdy operacją mapy formatowania daty i godziny zostaną dodane do powierzchni projektowej i skonfigurowane, mogą być wyszarzone Format listy rozwijanej. Może się to zdarzyć, jeśli komputer, wyświetlana jest ustawiony **średni — 125%** lub **większe — 150%**. Aby rozwiązać problem, Ustaw wyświetlanie **mniejsze – 100% (ustawienie domyślne)** wykonując poniższe kroki:  
 
 1. Otwórz **Panelu sterowania** i kliknij przycisk **wygląd i personalizacja**.
 2. Kliknij przycisk **wyświetlania**.
-3. Kliknij przycisk **mniejsze — 100% (ustawienie domyślne)** i kliknij przycisk **Zastosuj**.
+3. Kliknij przycisk **mniejsze – 100% (ustawienie domyślne)** i kliknij przycisk **Zastosuj**.
 
-**Format** listy rozwijanej teraz powinny działać zgodnie z oczekiwaniami.
+**Format** listy rozwijanej teraz powinien działać zgodnie z oczekiwaniami.
 
-### <a name="duplicate-agreements-in-the-biztalk-services-portal"></a>Zduplikowane umów w portalu usługi BizTalk
+### <a name="duplicate-agreements-in-the-biztalk-services-portal"></a>Zduplikowane umów w portalu usługi BizTalk Services
 Rozważmy następujący scenariusz:
 
-1. Tworzenie umowy z za pomocą API OM handlowymi zarządzania partnera.
-2. Otwórz umowę w dwóch różnych kartach zawierających portalu usługi BizTalk.
-3. Wdróż umowy z obu kart.
-4. W związku z tym zarówno umowy wdrożony co zduplikowane wpisy w portalu usługi BizTalk
+1. Tworzenie umowy z korzystania z handlem partnera zarządzania programu OM interfejsu API.
+2. Otwórz umowę w portalu usługi BizTalk Services w dwóch różnych kartach.
+3. Wdróż umowy na obu kartach.
+4. W rezultacie zarówno umowy wdrożony skutkuje zduplikowane wpisy w portalu usługi BizTalk Services
 
-**Obejście**. Otwórz dowolną zduplikowane umowy w portalu usługi BizTalk i wdrożyć.  
+**Obejście**. Otwórz dowolny zduplikowaną umów w portalu usługi BizTalk Services i cofnięcie wdrożenia.  
 
-### <a name="bridges-do-not-use-updated-certificate-even-after-a-certificate-has-been-updated-in-the-artifact-store"></a>Mostków nie należy używać zaktualizowany certyfikat, nawet po zaktualizowaniu certyfikatu w magazynie artefaktów
+### <a name="bridges-do-not-use-updated-certificate-even-after-a-certificate-has-been-updated-in-the-artifact-store"></a>Mostki nie należy używać zaktualizowany certyfikat, nawet po zakończeniu certyfikatu została zaktualizowana w magazynie artefaktu
 Należy rozważyć następujące scenariusze:  
 
-**Scenariusz 1: Przy użyciu na podstawie odcisku palca certyfikatów do zabezpieczenia transferu wiadomości z mostka dla punktu końcowego**  
-Rozważmy scenariusz, w których są używane certyfikaty oparte na odcisk palca w projekcie usługi BizTalk. Aktualizuj certyfikat w portalu usługi BizTalk o takiej samej nazwie, ale inny odcisk palca, ale nie zaktualizować projektu usługi BizTalk, w związku z tym. W takiej sytuacji mostka może kontynuować przetwarzanie wiadomości, ponieważ starsze dane certyfikatu może nadal być w pamięci podręcznej kanału. Po wykonaniu tej przetwarzanie komunikatu kończy się niepowodzeniem.  
+**Scenariusz 1: Przy użyciu certyfikatów na podstawie odcisku palca do zabezpieczenia transferu wiadomości z mostka punktu końcowego usługi**  
+Rozważmy scenariusz, w którym używasz certyfikaty oparte na odcisk palca w projekcie usługi BizTalk. Zaktualizuj certyfikat w portalu usługi BizTalk Services przy użyciu tej samej nazwie, ale inny odcisk palca, ale są uaktualniane w związku z tym projektu usługi BizTalk. W takiej sytuacji mostka mogą nadal być przetwarzania komunikatów, ponieważ starsze dane certyfikatu może nadal znajdować się w pamięci podręcznej kanału. Przetwarzanie komunikatów, kończy się niepowodzeniem.  
 
-**Obejście**: aktualizowanie certyfikatów w projekcie usługi BizTalk i wdrożenie projektu.  
+**Obejście**: zaktualizuj certyfikat w projekcie usługi BizTalk i ponownie wdrożyć projekt.  
 
-**Scenariusz 2: Za pomocą opartego na nazwie zachowań do identyfikowania certyfikatów do zabezpieczenia transferu wiadomości z mostka dla punktu końcowego**
+**Scenariusz 2: Za pomocą opartego na nazwie zachowania, aby zidentyfikować certyfikatów do zabezpieczenia transferu wiadomości z mostka punktu końcowego usługi**
 
-Rozważmy scenariusz, w których są używane na podstawie nazwy zachowania do identyfikowania certyfikaty w projekcie usługi BizTalk. Aktualizuj certyfikat w portalu usługi BizTalk, ale nie aktualizuj odpowiednio projektu usługi BizTalk. W takiej sytuacji mostka może kontynuować przetwarzanie wiadomości, ponieważ starsze dane certyfikatu może nadal być w pamięci podręcznej kanału. Po wykonaniu tej przetwarzanie komunikatu kończy się niepowodzeniem.  
+Rozważmy scenariusz, w którym używasz zachowania na podstawie nazwy do identyfikowania certyfikaty w projekcie usługi BizTalk. Aktualizuj certyfikat w portalu usługi BizTalk Services, ale są uaktualniane w związku z tym projektu usługi BizTalk. W takiej sytuacji mostka mogą nadal być przetwarzania komunikatów, ponieważ starsze dane certyfikatu może nadal znajdować się w pamięci podręcznej kanału. Przetwarzanie komunikatów, kończy się niepowodzeniem.  
 
-**Obejście**: aktualizowanie certyfikatów w projekcie usługi BizTalk i wdrożenie projektu.  
+**Obejście**: zaktualizuj certyfikat w projekcie usługi BizTalk i ponownie wdrożyć projekt.  
 
-### <a name="bridges-continue-to-process-messages-even-when-the-sql-database-is-offline"></a>Mostków dalsze przetwarzanie komunikatów, nawet wtedy, gdy baza danych SQL jest w trybie offline
-Mostków usługi BizTalk Services dalsze przetwarzanie wiadomości przez pewien czas, nawet jeśli Microsoft Azure bazy danych SQL (służący do przechowywania uruchomionych informacje, takie jak wdrożonej artefakty i potoki) jest w trybie offline. Jest to spowodowane usługi BizTalk Services korzysta z pamięci podręcznej artefakty i Mostek konfiguracji.
-Jeśli nie chcesz, aby mostków przetworzyć komunikaty, gdy baza danych SQL jest w trybie offline, umożliwia poleceń cmdlet programu PowerShell usługi BizTalk zatrzymać lub wstrzymać usługi BizTalk. Zobacz [przykład zarządzania usługi BizTalk Azure](http://go.microsoft.com/fwlink/p/?LinkID=329019) dla poleceń cmdlet programu Windows PowerShell do zarządzania operacjami.  
+### <a name="bridges-continue-to-process-messages-even-when-the-sql-database-is-offline"></a>Mostki w dalszym ciągu przetwarzać komunikatów, nawet wtedy, gdy baza danych SQL jest w trybie offline
+Mostków usługi BizTalk Services w dalszym ciągu przetwarzać komunikaty od pewnego czasu, nawet jeśli Microsoft Azure SQL Database (która przechowuje uruchomionej informacje, takie jak wdrożonej artefaktów i potoki), jest w trybie offline. Jest to spowodowane usługi BizTalk Services korzysta z pamięci podręcznej artefaktów i konfiguracji mostka.
+Jeśli użytkownik nie chce mostków przetwarzać komunikatów, gdy baza danych SQL jest w trybie offline, można użyć poleceń cmdlet programu PowerShell usługi BizTalk, aby zatrzymać lub wstrzymać usługi BizTalk. Zobacz [przykład zarządzania usługi BizTalk Azure](http://go.microsoft.com/fwlink/p/?LinkID=329019) dla poleceń cmdlet programu Windows PowerShell do zarządzania operacjami.  
 
-### <a name="reading-the-xml-message-within-a-bridges-custom-code-component-includes-an-extra-bom-character"></a>Odczytywanie wiadomości XML w składniku kod niestandardowy Mostek zawiera dodatkowy znak BOM
-Rozważmy scenariusz, gdzie chcesz odczytać komunikatu XML w Mostek niestandardowego kodu. Jeśli używasz System.Text.Encoding.UTF8.GetString(bytes) interfejsu API platformy .NET, nadmiarowe znaki BOM znajduje się w danych wyjściowych na początku komunikatu. Tak, jeśli nie chcesz, aby dane wyjściowe do uwzględnienia nadmiarowe znaki BOM, należy użyć ```System.IO.StreamReader().ReadToEnd()```.
+### <a name="reading-the-xml-message-within-a-bridges-custom-code-component-includes-an-extra-bom-character"></a>Odczytywanie wiadomości XML w składniku kod niestandardowy Mostek zawiera nadmiarowy znak BOM
+Rozważmy scenariusz, gdzie chcesz odczytać wiadomości XML w kodzie niestandardowym mostka. Jeśli używasz System.Text.Encoding.UTF8.GetString(bytes) interfejsu API .NET nadmiarowy znak BOM znajduje się w danych wyjściowych na początku komunikatu. Tak, jeśli chcesz, aby dane wyjściowe do uwzględnienia nadmiarowy znak BOM, należy użyć ```System.IO.StreamReader().ReadToEnd()```.
 
-### <a name="sending-messages-to-a-bridge-using-wcf-does-not-scale"></a>Nie obsługuje wysyłanie komunikatów do mostka przy użyciu programu WCF
-Komunikaty wysyłane do mostka przy użyciu usługi WCF nie działa. Zamiast tego należy używać HttpWebRequest, jeśli klient skalowalnych.
+### <a name="sending-messages-to-a-bridge-using-wcf-does-not-scale"></a>Wysyłanie komunikatów do mostka przy użyciu usługi WCF nie jest skalowany.
+Komunikaty wysyłane do mostka przy użyciu usługi WCF nie jest skalowany. Zamiast tego należy używać HttpWebRequest, jeśli klient skalowalne.
 
-### <a name="upgrade-token-provider-error-after-upgrading-from-biztalk-services-preview-to-general-availability-ga"></a>UAKTUALNIANIE: Błąd dostawcy tokenu po uaktualnieniu z wersji zapoznawczej usługi BizTalk do dostępności ogólne (GA)
-Brak EDI lub umowy AS2 z active partie. Po uaktualnieniu z wersji zapoznawczej usługi BizTalk do GA, mogą wystąpić następujące czynności:
+### <a name="upgrade-token-provider-error-after-upgrading-from-biztalk-services-preview-to-general-availability-ga"></a>UAKTUALNIENIE: Błąd dostawcy tokenu po uaktualnieniu z wersji zapoznawczej usługi BizTalk do ogólna dostępność (GA)
+Brak umowy AS2 lub EDI usługi za pomocą active partii. Po uaktualnieniu usługi BizTalk w wersji zapoznawczej wersji ogólnodostępnej mogą wystąpić następujące czynności:
 
-* Błąd: Dostawca tokenu nie była w stanie tokenu zabezpieczającego. Dostawca tokenu zwrócił komunikat: nie można rozpoznać nazwy zdalnej.
-* Zadania wsadowe zostały anulowane.
+* Błąd: Dostawcy tokenu, który mógł zapewnić tokenu zabezpieczającego. Dostawca tokenu zwrócił komunikat: nie można rozpoznać nazwy zdalnej.
+* Zadania podrzędne usługi Batch są anulowane.
 
-**Obejście**: po usługa BizTalk jest aktualizowane na ogólne dostępności (GA), należy ponownie wdrożyć umowy.  
+**Obejście**: po usługa BizTalk zostanie zaktualizowany do ogólna dostępność (GA), Wdróż ponownie umowy.  
 
-### <a name="upgrade-toolbox-shows-the-old-bridge-icons-after-upgrading-the-biztalk-services-sdk"></a>UAKTUALNIANIE: Przybornika pokazuje starego ikony Mostek po uaktualnieniu do wersji zestawu SDK usługi BizTalk
-Po uaktualnieniu starszej wersji SDK usługi BizTalk, która ma stare ikony reprezentujące mostków, przybornika w dalszym ciągu Pokaż ikony starego mostków. Jednak jeśli dodasz mostka na powierzchnię projektanta projektu usługi BizTalk powierzchni zawiera ikonę Nowy.  
+### <a name="upgrade-toolbox-shows-the-old-bridge-icons-after-upgrading-the-biztalk-services-sdk"></a>UAKTUALNIENIE: Przybornik zawiera stary ikony Mostek po uaktualnieniu z zestawem SDK usługi BizTalk
+Po uaktualnieniu wcześniejszej wersji zestawu SDK usługi BizTalk, która była starego ikon reprezentujących mostków, przybornika w dalszym ciągu wyświetlać stare ikony mostków. Jednak jeśli dodasz Most do powierzchni projektanta projektu usługi BizTalk powierzchni zawiera ikonę nowego elementu.  
 
-**Obejście**. Można obejść ten problem, usuwając pliki .tbd w <system drive>: \Users\<użytkownika > \AppData\Local\Microsoft\VisualStudio\11.0.  
+**Obejście**. Ten problem można obejść, usuwając pliki .tbd w obszarze <system drive>: \Users\<użytkownika > \AppData\Local\Microsoft\VisualStudio\11.0.  
 
-### <a name="upgrade-biztalk-portal-update-from-preview-to-ga-might-show-an-error-indicating-that-the-edi-capability-is-not-available"></a>UAKTUALNIANIE: Aktualizacja BizTalk portalu w wersji zapoznawczej GA mogą być wyświetlane komunikat o błędzie informujący, że możliwości EDI nie jest dostępna
-Jeśli użytkownik jest zalogowany do portalu usługi BizTalk, gdy usługi BizTalk Services jest uaktualniany z wersji zapoznawczej do GA, może uzyskać następujący błąd w portalu:  
+### <a name="upgrade-biztalk-portal-update-from-preview-to-ga-might-show-an-error-indicating-that-the-edi-capability-is-not-available"></a>UAKTUALNIENIE: Aktualizacja portalu usługi BizTalk w wersji zapoznawczej w wersji ogólnodostępnej może wyświetlać komunikat o błędzie informujący, że możliwości integracji EDI nie jest dostępna
+Jeśli użytkownik jest zalogowany do portalu usługi BizTalk Services, gdy usługa BizTalk Services jest uaktualniany z wersji zapoznawczej wersji ogólnodostępnej, być może występuje następujący błąd w portalu:  
 
-Ta funkcja nie jest dostępna w ramach tej wersji usług Microsoft Azure BizTalk. Użyj tych możliwości przełącznika do odpowiedniej wersji.  
+Ta funkcja nie jest dostępna w ramach tej wersji programu Microsoft Azure BizTalk Services. Aby użyć tych możliwości Przełącz się do odpowiedniego wydania.  
 
-**Rozdzielczość**: wylogowania z portalu, zamknij i Otwórz przeglądarkę, a następnie zaloguj się do portalu.  
+**Rozpoznawanie**: w przypadku wylogowania z portalu, zamknij i Otwórz przeglądarkę, a następnie zaloguj się do portalu.  
 
-### <a name="upgrade-new-tracking-data-does-not-show-up-after-biztalk-services-is-upgraded-to-ga"></a>UAKTUALNIANIE: Nowe dane śledzenia nie jest wyświetlany po uaktualnieniu do GA usługi BizTalk Services
-Przykładowa scenariusz, w którym masz Mostek XML wdrożone w wersji zapoznawczej usługi BizTalk subskrypcji. Wysyłanie komunikatów do mostka i odpowiednie dane śledzenia są dostępne w portalu usługi BizTalk. Teraz Jeśli bitów środowiska uruchomieniowego BizTalk usługi portalu i usługi BizTalk Services zostaną uaktualnione do GA i wysyła komunikat do tego samego punktu końcowego mostka wdrożonej wcześniej, dane śledzenia nie jest wyświetlany dla wiadomości wysyłanych po uaktualnieniu.  
+### <a name="upgrade-new-tracking-data-does-not-show-up-after-biztalk-services-is-upgraded-to-ga"></a>UAKTUALNIENIE: Nowe dane śledzenia nie są wyświetlane po uaktualnieniu do wersji ogólnie dostępnej usługi BizTalk Services
+Załóżmy scenariusz, w którym masz Mostek XML wdrożone w ramach subskrypcji usługi BizTalk w wersji zapoznawczej. Wysyłanie komunikatów do mostka, i odpowiednie dane śledzenia są dostępne w portalu usługi BizTalk Services. Teraz Jeśli bitów środowiska uruchomieniowego w portalu usługi BizTalk Services i BizTalk Services zostaną uaktualnione do wersji ogólnie dostępnej i wysłać wiadomość do tego samego punktu końcowego mostka wdrożonego wcześniej, dane śledzenia nie jest wyświetlany dla wiadomości wysyłanych po uaktualnieniu.  
 
 ### <a name="pipelines-versus-bridges"></a>Potoki i mostków
-W tym dokumencie termin "potoki" i "mostków" są używane zamiennie. Zasadniczo zarówno oznaczają to samo, który jest wdrożony na usługi BizTalk Services jednostki przetwarzania komunikatu.  
+W tym dokumencie termin "potoki" i "mostków" są używane zamiennie. Zasadniczo zarówno oznaczają to samo, który jest wdrożony w usłudze BizTalk Services jednostka przetwarzania wiadomości.  
 
 ### <a name="concepts"></a>Pojęcia
 [BizTalk Services](https://msdn.microsoft.com/library/azure/hh689864.aspx)   

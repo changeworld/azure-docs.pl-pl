@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/01/2018
 ms.author: hrushib
-ms.openlocfilehash: 8cfa0e2a5aa1d7f560fe84f4eda18349f5d1d8b4
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 4aeb37d656dcb5ebca1a48253c418186dfca0a7a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991364"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575425"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Opis okresowe konfiguracji kopii zapasowej w usłudze Azure Service Fabric
 
@@ -182,19 +182,19 @@ Zasady tworzenia kopii zapasowych można wyłączyć, gdy nie ma potrzeby tworze
 ## <a name="suspend--resume-backup"></a>Wstrzymania i wznowienia tworzenia kopii zapasowych
 Niektóre sytuacji mogą wymagać tymczasowe zawieszenie okresowe tworzenie kopii zapasowych danych. W takiej sytuacji, w zależności od zapotrzebowania, wstrzymywanie kopii zapasowej można używać interfejsu API _aplikacji_, _usługi_, lub _partycji_. Okresowe zawieszenia kopii zapasowej jest przechodnia poddrzewo hierarchii aplikacji od punktu, który jest stosowany. 
 
-* Kiedy zawieszenie jest stosowana na _aplikacji_ przy użyciu [wstrzymania aplikacji kopii zapasowej](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) interfejsu API, a następnie wszystkie usługi i partycji w ramach tej aplikacji, które są wstrzymane do okresowego wykonywania kopii zapasowych danych.
+* Kiedy zawieszenie jest stosowana na _aplikacji_ przy użyciu [wstrzymania aplikacji kopii zapasowej](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendapplicationbackup) interfejsu API, a następnie wszystkie usługi i partycji w ramach tej aplikacji, które są wstrzymane do okresowego wykonywania kopii zapasowych danych.
 
-* Kiedy zawieszenie jest stosowana na _usługi_ przy użyciu [wstrzymania usługi tworzenia kopii zapasowej](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-suspendservicebackup) interfejsu API, a następnie wszystkich partycji w ramach tej usługi są wstrzymywane do okresowego wykonywania kopii zapasowych danych.
+* Kiedy zawieszenie jest stosowana na _usługi_ przy użyciu [wstrzymania usługi tworzenia kopii zapasowej](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendservicebackup) interfejsu API, a następnie wszystkich partycji w ramach tej usługi są wstrzymywane do okresowego wykonywania kopii zapasowych danych.
 
-* Kiedy zawieszenie jest stosowana na _partycji_ przy użyciu [zawiesić kopii zapasowej z partycji](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) interfejsu API, a następnie ją wstrzymuje partycji w ramach tej usługi są wstrzymywane do okresowego wykonywania kopii zapasowych danych.
+* Kiedy zawieszenie jest stosowana na _partycji_ przy użyciu [zawiesić kopii zapasowej z partycji](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-suspendpartitionbackup) interfejsu API, a następnie ją wstrzymuje partycji w ramach tej usługi są wstrzymywane do okresowego wykonywania kopii zapasowych danych.
 
 Po potrzebę zawieszenia dane kopii zapasowej można przywrócić przy użyciu odpowiednich wznowienia tworzenia kopii zapasowej interfejsu API. Okresowe backup musi zostać wznowiony w samym _aplikacji_, _usługi_, lub _partycji_ gdzie zostało wstrzymane.
 
-* Jeśli zawieszenia została zastosowana na _aplikacji_, a następnie wznowić, przy użyciu [aplikacji Wznów tworzenie kopii zapasowej](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) interfejsu API. 
+* Jeśli zawieszenia została zastosowana na _aplikacji_, a następnie wznowić, przy użyciu [aplikacji Wznów tworzenie kopii zapasowej](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeapplicationbackup) interfejsu API. 
 
-* Jeśli zawieszenia została zastosowana w _usługi_, a następnie wznowić, przy użyciu [usługi Wznów tworzenie kopii zapasowej](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-resumeservicebackup) interfejsu API.
+* Jeśli zawieszenia została zastosowana w _usługi_, a następnie wznowić, przy użyciu [usługi Wznów tworzenie kopii zapasowej](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumeservicebackup) interfejsu API.
 
-* Jeśli zawieszenia została zastosowana na _partycji_, a następnie wznowić, przy użyciu [partycji Wznów tworzenie kopii zapasowej](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-resumepartitionbackup) interfejsu API.
+* Jeśli zawieszenia została zastosowana na _partycji_, a następnie wznowić, przy użyciu [partycji Wznów tworzenie kopii zapasowej](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-resumepartitionbackup) interfejsu API.
 
 ## <a name="auto-restore-on-data-loss"></a>Automatycznego przywracania na utratę danych
 Service partition może spowodować utratę danych z powodu nieoczekiwanych awarii. Na przykład dysk dla dwóch spośród trzech replik partycji (łącznie z repliką podstawową) pobiera uszkodzony lub wyczyszczone.
@@ -202,7 +202,7 @@ Service partition może spowodować utratę danych z powodu nieoczekiwanych awar
 Gdy Usługa Service Fabric wykrywa, czy partycja ma utratę danych, wywołuje ono `OnDataLossAsync` interfejs metody w partycji i oczekuje, że partycji, aby wykonać niezbędne czynności, aby wyjść z utratą danych. W takiej sytuacji efektywnych zasad tworzenia kopii zapasowej na partycji ma `AutoRestoreOnDataLoss` flaga jest ustawiona na `true` , a następnie przywracania pobiera wyzwolona automatycznie za pomocą najnowszych dostępnych kopii zapasowych dla tej partycji.
 
 ## <a name="get-backup-configuration"></a>Pobierz konfigurację kopii zapasowej
-Oddzielnych interfejsów API udostępnionych można pobrać informacji o konfiguracji kopii zapasowej w _aplikacji_, _usługi_, i _partycji_ zakresu. [Uzyskaj informacje o konfiguracji kopii zapasowej aplikacji](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo), [Get Info konfiguracji kopii zapasowej usługi](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo), i [Get Info konfiguracji kopii zapasowej partycji](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) są te interfejsy API odpowiednio. Przede wszystkim te interfejsy API zwracają odpowiednich zasad kopii zapasowych, zakres, jaką zasad tworzenia kopii zapasowej są szczegóły zawieszenia zastosowane i wykonywania kopii zapasowych. Poniżej przedstawiono krótki opis zwracane wyniki tych interfejsów API.
+Oddzielnych interfejsów API udostępnionych można pobrać informacji o konfiguracji kopii zapasowej w _aplikacji_, _usługi_, i _partycji_ zakresu. [Uzyskaj informacje o konfiguracji kopii zapasowej aplikacji](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackupconfigurationinfo), [Get Info konfiguracji kopii zapasowej usługi](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackupconfigurationinfo), i [Get Info konfiguracji kopii zapasowej partycji](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackupconfigurationinfo) są te interfejsy API odpowiednio. Przede wszystkim te interfejsy API zwracają odpowiednich zasad kopii zapasowych, zakres, jaką zasad tworzenia kopii zapasowej są szczegóły zawieszenia zastosowane i wykonywania kopii zapasowych. Poniżej przedstawiono krótki opis zwracane wyniki tych interfejsów API.
 
 - Informacje o konfiguracji kopii zapasowej aplikacji: szczegółowe zasady tworzenia kopii zapasowych stosowane w aplikacji i wszystkich zasad nadmiernie informacji usług i partycji należące do aplikacji. Zawiera on również informacje zawieszenie aplikacji i usług i dzieli na partycje.
 
@@ -218,11 +218,11 @@ Te interfejsy API obsługują również stronicowanie wyników, gdy _MaxResults_
 
 Poniżej przedstawiono krótki opis informacji o obsługiwanych wariantów.
 
-- [Pobieranie listy aplikacji narzędzia Kopia zapasowa](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): zwraca listę dostępnych dla każdej partycji należących do danej aplikacji usługi Service Fabric kopii zapasowych.
+- [Pobieranie listy aplikacji narzędzia Kopia zapasowa](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getapplicationbackuplist): zwraca listę dostępnych dla każdej partycji należących do danej aplikacji usługi Service Fabric kopii zapasowych.
 
-- [Pobieranie listy kopii zapasowej usługi](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getservicebackuplist): zwraca listę dostępnych dla każdej partycji należących do danej usługi Service Fabric kopii zapasowych.
+- [Pobieranie listy kopii zapasowej usługi](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getservicebackuplist): zwraca listę dostępnych dla każdej partycji należących do danej usługi Service Fabric kopii zapasowych.
  
-- [Pobieranie listy kopii zapasowej partycji](https://docs.microsoft.com/en-us/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): zwraca listę dostępnych dla określonej partycji kopii zapasowych.
+- [Pobieranie listy kopii zapasowej partycji](https://docs.microsoft.com/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): zwraca listę dostępnych dla określonej partycji kopii zapasowych.
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Dokumentacja interfejsu API REST przywracania kopii zapasowej](https://docs.microsoft.com/rest/api/servicefabric/sfclient-index-backuprestore)

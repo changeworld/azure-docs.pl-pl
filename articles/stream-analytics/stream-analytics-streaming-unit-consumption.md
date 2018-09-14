@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/12/2018
-ms.openlocfilehash: 482f0403cfd4bbd6587ba7e3e936cdac7f82b54a
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: b7abbd486e9c357a5bdba093214a3801f88c39ab
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39228049"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575902"
 ---
 # <a name="understand-and-adjust-streaming-units"></a>Opis i dostosowywanie jednostek przesyłania strumieniowego
 
@@ -46,7 +46,7 @@ Obliczanie przepływności oczekiwanego obciążenia. Przepływność jest mniej
 
 Wybór liczby SUs wymagane dla określonego zadania zależy od konfiguracji partycji dla danych wejściowych i zapytania, który jest zdefiniowany w ramach zadania. **Skalowania** strona pozwala na ustawienie odpowiedniej liczby usług SUs. Jest najlepszym rozwiązaniem, aby przydzielić SUs więcej niż jest to potrzebne. Aparat przetwarzania usługi Stream Analytics jest zoptymalizowana opóźnień i przepływności kosztem alokowanie dodatkowej pamięci.
 
-Ogólnie rzecz biorąc, najlepszym rozwiązaniem jest rozpoczęcie od 6 SUs dla zapytań, które nie używają **PARTITION BY**. Następnie określ miejsce sweet przy użyciu metody prób i błędów, w którym możesz zmodyfikować liczbę SUs po przekazać reprezentatywnej ilości danych i sprawdzić metryki użycia % SU. Maksymalna liczba jednostek przesyłania strumieniowego, które mogą być używane przez zadanie usługi Stream Analytics zależy od liczby kroków w zapytaniu, określony dla zadania i liczby partycji w każdym kroku. Dowiedz się więcej na temat limitów [tutaj](https://docs.microsoft.com/en-us/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job).
+Ogólnie rzecz biorąc, najlepszym rozwiązaniem jest rozpoczęcie od 6 SUs dla zapytań, które nie używają **PARTITION BY**. Następnie określ miejsce sweet przy użyciu metody prób i błędów, w którym możesz zmodyfikować liczbę SUs po przekazać reprezentatywnej ilości danych i sprawdzić metryki użycia % SU. Maksymalna liczba jednostek przesyłania strumieniowego, które mogą być używane przez zadanie usługi Stream Analytics zależy od liczby kroków w zapytaniu, określony dla zadania i liczby partycji w każdym kroku. Dowiedz się więcej na temat limitów [tutaj](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-parallelization#calculate-the-maximum-streaming-units-of-a-job).
 
 Aby uzyskać więcej informacji o wybieraniu odpowiedniej liczby usług SUs, zobacz tę stronę: [zadań skalowania usługi Azure Stream Analytics w celu zwiększenia przepływności](stream-analytics-scale-jobs.md)
 
@@ -85,7 +85,7 @@ Aby powodowane problemy spowodowane przez wysoką Kardynalność w poprzednim za
 
    ```sql
    SELECT count(*) 
-   FROM PARTITION BY PartitionId
+   FROM input PARTITION BY PartitionId
    GROUP BY PartitionId, clusterid, tumblingwindow (minutes, 5)
    ```
 

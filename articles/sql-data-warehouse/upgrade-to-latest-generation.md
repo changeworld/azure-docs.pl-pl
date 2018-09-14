@@ -10,12 +10,12 @@ ms.component: manage
 ms.date: 08/22/2018
 ms.author: kevin
 ms.reviewer: igorstan
-ms.openlocfilehash: b7765182a89e08a2b2b8fcdbdfed82c64893fc27
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 9b2c5fa38d0ad21a374d3e5acee8534aeb9c0384
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43306984"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45580552"
 ---
 # <a name="optimize-performance-by-upgrading-sql-data-warehouse"></a>Optymalizowanie wydajności przez zmianę warstwy dla usługi SQL Data Warehouse
 Uaktualnij usługi Azure SQL Data Warehouse do najnowszej generacji architektura sprzętu i magazynowania na platformie Azure.
@@ -34,7 +34,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 > [!NOTE]
-> Jeśli istniejący magazyn danych warstwy obliczeń Gen1 zoptymalizowane pod kątem nie jest dostępne w regionie, w których jest dostępna w warstwie obliczenia zoptymalizowane pod kątem Gen2, możesz to zrobić [geoprzywracanie](https://docs.microsoft.com/en-us/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region) za pomocą programu PowerShell obsługiwany region.
+> Jeśli istniejący magazyn danych warstwy obliczeń Gen1 zoptymalizowane pod kątem nie jest dostępne w regionie, w których jest dostępna w warstwie obliczenia zoptymalizowane pod kątem Gen2, możesz to zrobić [geoprzywracanie](https://docs.microsoft.com/azure/sql-data-warehouse/sql-data-warehouse-restore-database-powershell#restore-from-an-azure-geographical-region) za pomocą programu PowerShell obsługiwany region.
 > 
 >
 

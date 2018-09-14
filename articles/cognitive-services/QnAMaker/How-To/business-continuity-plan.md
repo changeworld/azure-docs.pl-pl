@@ -1,43 +1,43 @@
 ---
-title: Tworzenie planu continuty business usługi Maker — strona główna - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
-titleSuffix: Azure
-description: Tworzenie planu ciągłości biznesowej usługi Maker — strona główna
+title: Przygotowany plan ciągłości działania — QnA Maker
+titleSuffix: Azure Cognitive Services
+description: Głównym celem plan ciągłości prowadzenia działalności biznesowej jest utworzyć punkt końcowy odporne na błędy bazy wiedzy knowledge base i zapewni bez przestoju Bot lub aplikacji korzystania z nich.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/12/2018
 ms.author: saneppal
-ms.openlocfilehash: ca6e54b8a8ca8b38e8ef6b1a148f8b2c54bd43da
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c65ef07f3644004c6e453f6a19035115df9d5764
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348608"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573981"
 ---
-# <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>Tworzenie planu ciągłości biznesowej usługi Maker — strona główna
+# <a name="create-a-business-continuity-plan-for-your-qna-maker-service"></a>Utwórz plan ciągłości biznesowej usługi QnA Maker
 
-Głównym celem plan ciągłości prowadzenia działalności biznesowej jest utworzenie punktu końcowego elastyczne bazy wiedzy knowledge base, który nie czas przestoju Bot lub aplikacji, używające go.
+Głównym celem plan ciągłości prowadzenia działalności biznesowej jest utworzyć punkt końcowy odporne na błędy bazy wiedzy knowledge base i zapewni bez przestoju Bot lub aplikacji korzystania z nich.
 
-![Plan bcp Maker — strona główna](../media/qnamaker-how-to-bcp-plan/qnamaker-bcp-plan.png)
+![Usługa QnA Maker bcp planu](../media/qnamaker-how-to-bcp-plan/qnamaker-bcp-plan.png)
 
-Ogólne informacje o tym, jak powyżej jest następujący:
+Ogólne pomysł, jak powyżej jest następująca:
 
-1. Konfigurowanie dwóch równoległe [Maker — strona główna usług](../How-To/set-up-qnamaker-service-azure.md) w [Azure łączyć regionów](https://docs.microsoft.com/en-us/azure/best-practices-availability-paired-regions).
+1. Konfigurowanie dwóch równoległych [usługi QnA Maker](../How-To/set-up-qnamaker-service-azure.md) w [sparowanych regionów platformy Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).
 
-2. Synchronizowanie indeksów podstawowych i pomocniczych Azure search. Użyj przykładu github [tutaj](https://github.com/pchoudhari/QnAMakerBackupRestore) na temat sposobu wykonywania kopii zapasowej i przywracania Azure indeksów.
+2. Synchronizuj indeksy podstawowe i pomocnicze usługi Azure search. Użyj przykładu z serwisu github [tutaj](https://github.com/pchoudhari/QnAMakerBackupRestore) na temat sposobu wykonywania kopii zapasowej i przywracania indeksy platformy Azure.
 
-3. Utwórz kopię zapasową przy użyciu usługi Application Insights [Eksport ciągły](https://docs.microsoft.com/en-us/azure/application-insights/app-insights-export-telemetry).
+3. Tworzenie kopii zapasowej za pomocą usługi Application Insights [Eksport ciągły](https://docs.microsoft.com/azure/application-insights/app-insights-export-telemetry).
 
-4. Po stosy podstawowe i pomocnicze są skonfigurowane, użyj [Menedżera ruchu](https://docs.microsoft.com/en-us/azure/traffic-manager/) do skonfigurowania dwa punkty końcowe i metody routingu.
+4. Po zostało skonfigurowane stosy podstawowego i pomocniczego, użyj [usługi traffic manager](https://docs.microsoft.com/azure/traffic-manager/) można skonfigurować dwa punkty końcowe i skonfigurować metody routingu.
 
-5. Konieczne będzie utworzenie certyfikatu SSL dla punktu końcowego Menedżera ruchu. [Powiąż certyfikat SSL](https://docs.microsoft.com/en-us/azure/app-service/app-service-web-tutorial-custom-ssl) w usługach aplikacji.
+5. Czy musisz utworzyć certyfikat SSL dla punktu końcowego usługi traffic manager. [Wiązanie certyfikatu protokołu SSL](https://docs.microsoft.com/azure/app-service/app-service-web-tutorial-custom-ssl) w usługach App.
 
-6. Na koniec użyj punktu końcowego Menedżera ruchu w aplikacji lub Bot.
+6. Na koniec użyj punktu końcowego Menedżera ruchu w sieci Web lub aplikacji Botów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Wybierz pojemności dla danego wdrożenia Maker — strona główna](../Tutorials/choosing-capacity-qnamaker-deployment.md)
+> [Wybierz pojemność dla danego wdrożenia usługi QnA Maker](../Tutorials/choosing-capacity-qnamaker-deployment.md)

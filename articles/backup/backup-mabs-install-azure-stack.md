@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 6/5/2018
 ms.author: markgal
-ms.openlocfilehash: eda3e95c1bd8fb7eef97ee9db10c217c2885198f
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 5092a677bcbeac179e26fa0591b6a1cfbc3263d4
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38970887"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576701"
 ---
 # <a name="install-azure-backup-server-on-azure-stack"></a>Instalowanie składnika Azure Backup Server w usłudze Azure Stack
 
@@ -310,7 +310,7 @@ Usługa Azure Backup Server udostępnia kod za pomocą programu Data Protection 
 
 ## <a name="add-backup-storage"></a>Dodaj magazyn kopii zapasowych
 
-Pierwszy kopia zapasowa jest przechowywana w magazynie dołączonym do komputera serwera usługi Azure Backup. Aby uzyskać więcej informacji na temat dodawania dysków, zobacz [Dodaj Modern Backup storage](https://docs.microsoft.com/en-us/system-center/dpm/add-storage?view=sc-dpm-1801).
+Pierwszy kopia zapasowa jest przechowywana w magazynie dołączonym do komputera serwera usługi Azure Backup. Aby uzyskać więcej informacji na temat dodawania dysków, zobacz [Dodaj Modern Backup storage](https://docs.microsoft.com/system-center/dpm/add-storage?view=sc-dpm-1801).
 
 > [!NOTE]
 > Musisz dodać magazyn kopii zapasowych, nawet jeśli zamierzasz wysłać danych na platformie Azure. W ramach usługi Azure Backup Server architektury magazynu usług odzyskiwania przechowuje *drugi* kopię danych podczas Magazyn lokalny zawiera pierwszą (i obowiązkowa) kopii zapasowej.
@@ -327,11 +327,11 @@ Po sprawdzeniu stanu łączność platformy Azure i subskrypcji platformy Azure,
 
 | Stan łączności | Subskrypcja platformy Azure | Tworzenie kopii zapasowej na platformie Azure | Tworzenie kopii zapasowej dysku | Przywracanie z platformy Azure | Przywracanie z dysku |
 | --- | --- | --- | --- | --- | --- |
-| Połączono |Aktywne |Dopuszczeni |Dopuszczeni |Dopuszczeni |Dopuszczeni |
-| Połączono |Wygasły |Zatrzymano |Zatrzymano |Dopuszczeni |Dopuszczeni |
+| Połączono |Aktywne |Dozwolone |Dozwolone |Dozwolone |Dozwolone |
+| Połączono |Wygaśnięcie |Zatrzymano |Zatrzymano |Dozwolone |Dozwolone |
 | Połączono |Anulowanie aprowizacji |Zatrzymano |Zatrzymano |Punkty odzyskiwania zatrzymane, a usługa Azure usunięte |Zatrzymano |
-| Utraty łączności > 15 dni |Aktywne |Zatrzymano |Zatrzymano |Dopuszczeni |Dopuszczeni |
-| Utraty łączności > 15 dni |Wygasły |Zatrzymano |Zatrzymano |Dopuszczeni |Dopuszczeni |
+| Utraty łączności > 15 dni |Aktywne |Zatrzymano |Zatrzymano |Dozwolone |Dozwolone |
+| Utraty łączności > 15 dni |Wygaśnięcie |Zatrzymano |Zatrzymano |Dozwolone |Dozwolone |
 | Utraty łączności > 15 dni |Anulowanie aprowizacji |Zatrzymano |Zatrzymano |Punkty odzyskiwania zatrzymane, a usługa Azure usunięte |Zatrzymano |
 
 ### <a name="recovering-from-loss-of-connectivity"></a>Odzyskiwanie z utraty łączności
@@ -360,10 +360,10 @@ Może również dotyczyć [kopia zapasowa Azure związane z — często zadawane
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Artykuł [przygotowywanie środowiska dla programu DPM](https://docs.microsoft.com/en-us/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801), zawiera informacje dotyczące obsługiwanych konfiguracji serwera usługi Azure Backup.
+Artykuł [przygotowywanie środowiska dla programu DPM](https://docs.microsoft.com/system-center/dpm/prepare-environment-for-dpm?view=sc-dpm-1801), zawiera informacje dotyczące obsługiwanych konfiguracji serwera usługi Azure Backup.
 
 Można użyć następujące artykuły, aby lepiej zrozumieć ochronę obciążeń za pomocą serwera usługi Microsoft Azure Backup.
 
-- [Kopia zapasowa programu SQL Server](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sql-azure-stack)
-- [Kopia zapasowa programu SharePoint server](https://docs.microsoft.com/en-us/azure/backup/backup-mabs-sharepoint-azure-stack)
+- [Kopia zapasowa programu SQL Server](https://docs.microsoft.com/azure/backup/backup-mabs-sql-azure-stack)
+- [Kopia zapasowa programu SharePoint server](https://docs.microsoft.com/azure/backup/backup-mabs-sharepoint-azure-stack)
 - [Kopia zapasowa serwera alternatywnego](backup-azure-alternate-dpm-server.md)

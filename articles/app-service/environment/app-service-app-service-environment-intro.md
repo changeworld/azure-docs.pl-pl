@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do aplikacji usługi v1 środowiska
-description: Więcej informacji na temat funkcji v1 środowiska usługi aplikacji, która zawiera jednostki skalowania bezpieczne przyłączone do sieci wirtualnej, dedykowane do uruchamiania wszystkich aplikacji.
+title: Wprowadzenie do aplikacji App Service Environment w wersji 1
+description: Więcej informacji na temat funkcji v1 środowiska App Service Environment, która zawiera jednostki skalowania bezpieczne, przyłączone do sieci wirtualnej i dedykowane do uruchamiania wszystkich aplikacji.
 services: app-service
 documentationcenter: ''
 author: stefsch
@@ -14,73 +14,73 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/11/2017
 ms.author: ccompy
-ms.openlocfilehash: ca30818b015e95594d3b2c9861d98f24174c0aea
-ms.sourcegitcommit: 65b399eb756acde21e4da85862d92d98bf9eba86
+ms.openlocfilehash: a2efb3177a97aa362a269ab3a00239a0d391f026
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/22/2018
-ms.locfileid: "36318167"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574695"
 ---
-# <a name="introduction-to-app-service-environment-v1"></a>Wprowadzenie do aplikacji usługi v1 środowiska
+# <a name="introduction-to-app-service-environment-v1"></a>Wprowadzenie do aplikacji App Service Environment w wersji 1
 
 > [!NOTE]
-> Ten artykuł dotyczy v1 środowiska usługi aplikacji.  Istnieje nowsza wersja środowiska usługi aplikacji jest łatwiejsza w użyciu, który jest uruchamiany na bardziej zaawansowanych infrastruktury. Aby dowiedzieć się więcej o nowy początek wersji z [wprowadzenie do środowiska usługi aplikacji](intro.md).
+> Ten artykuł dotyczy środowiska App Service Environment w wersji 1.  Istnieje nowsza wersja usługi App Service Environment jest łatwiejszy w obsłudze, która działa na bardziej zaawansowanych infrastruktury. Aby dowiedzieć się więcej na temat nowej wersji rozpoczynać [wprowadzenie do usługi App Service Environment](intro.md).
 > 
 
 ## <a name="overview"></a>Przegląd
-Środowiska usługi aplikacji jest [Premium] [ PremiumTier] usługi opcji plan [usłudze Azure App Service](../app-service-web-overview.md) który udostępnia środowisko pełni izolowanym środowisku, aby bezpiecznie pracować z Aplikacje platformy Azure App Service na dużą skalę, w tym aplikacji Web Apps, Mobile Apps i aplikacji API Apps.  
+Środowisko usługi App Service jest [Premium] [ PremiumTier] opcji planu usługi [usługi Azure App Service](../app-service-web-overview.md) zapewniający pełni izolowane, dedykowane środowisko do bezpiecznego uruchamiania Aplikacje platformy Azure App Service w dużej skali, w tym aplikacji Web Apps, Mobile Apps oraz API Apps.  
 
-Środowiska usługi aplikacji to idealne rozwiązanie w przypadku obciążeń aplikacji wymagających:
+App Service Environment to idealne rozwiązanie w przypadku obciążeń aplikacji wymagających:
 
 * Bardzo dużej skali
 * Izolacja i bezpiecznego dostępu do sieci
 
-Klienci mogą tworzyć wiele środowisk usługi aplikacji w jednym regionie Azure, a także w wielu regionach platformy Azure.  Dzięki temu można idealne rozwiązanie w przypadku skalowania w poziomie warstwach aplikacji bez stanu, w związku z wysoką obciążeniami RPS środowiska usługi App Service.
+Klienci mogą tworzyć wiele środowisk App Service Environment w jednym regionie platformy Azure, a także w wielu regionach platformy Azure.  Dzięki temu środowisk usługi App Service idealne rozwiązanie w przypadku warstw aplikacji bez stanu w odniesieniu do wysokiej RPS obciążeń skalowanych w poziomie.
 
-Środowiska usługi aplikacji są izolowane do uruchamiania tylko jednego odbiorcy aplikacji i zawsze są wdrażane w sieci wirtualnej.  Klienci mają precyzyjną kontrolę nad zarówno aplikacji dla ruchu przychodzącego i wychodzącego ruchu sieciowego i aplikacji może nawiązywać bezpiecznych połączeń o dużej szybkości za pośrednictwem sieci wirtualnej do zasobów firmy lokalnie.
+Środowiska usługi App Service są izolowane w celu uruchamiania tylko jednego klienta aplikacji i są zawsze wdrażane w sieci wirtualnej.  Klienci mają precyzyjną kontrolę nad zarówno aplikacji dla ruchu przychodzącego i wychodzącego ruchu sieciowego i aplikacje mogą nawiązywać bezpieczne szybkie połączenia za pośrednictwem wirtualnych sieci lokalnych zasobów firmowych.
 
-Omówienie sposób środowiska usługi App Service włączyć wysoką skalę i zabezpieczania dostępu do sieci, zobacz [nowości AzureCon] [ AzureConDeepDive] na środowiska usługi App Service!
+Omówienie środowiska usługi App Service Włącz dużej skali oraz bezpieczny dostęp do sieci, zobacz [AzureCon Deep Dive] [ AzureConDeepDive] w środowiskach usługi App Service!
 
-Szczegółowo na poziomie odbierającej za pomocą wielu środowiska usługi App Service w artykule na temat sposobu instalacji [wpływ aplikacja rozproszona geograficznie][GeodistributedAppFootprint].
+Aby uzyskać szczegółowe na temat skalowania w poziomie, za pomocą wielu środowisk usługi App Service zobacz artykuł na temat sposobu instalacji [zasięgu aplikacji rozproszonej geograficznie][GeodistributedAppFootprint].
 
-Aby zobaczyć, jak pokazano nowości AzureCon architektury zabezpieczeń został skonfigurowany, zobacz artykuł na implementacji [warstwie Architektura zabezpieczeń](app-service-app-service-environment-layered-security.md) ze środowiska usługi App Service.
+Aby dowiedzieć się, jak skonfigurowano architekturę zabezpieczeń przedstawioną w tym filmie AzureCon Deep Dive, zobacz artykuł we wdrażaniu [warstwie architekturę zabezpieczeń](app-service-app-service-environment-layered-security.md) przy użyciu środowisk usługi App Service.
 
-Aplikacje działające w środowisku usługi aplikacji może mieć ich dostęp uzyskiwany za nadrzędnego urządzenia, takie jak zapory aplikacji sieci web (WAF).  Artykuł na temat [Konfigurowanie zapory aplikacji sieci Web dla środowiska usługi App Service](app-service-app-service-environment-web-application-firewall.md) obejmuje tego scenariusza. 
+Aplikacje działające w środowiskach usługi App Service może mieć dostęp uzyskiwany przez nadrzędne urządzenia, takich jak zapory aplikacji sieci web (WAF).  Artykuł dotyczący [Konfigurowanie zapory aplikacji sieci Web dla środowiska usługi App Service](app-service-app-service-environment-web-application-firewall.md) opisano w tym scenariuszu. 
 
 [!INCLUDE [app-service-web-to-api-and-mobile](../../../includes/app-service-web-to-api-and-mobile.md)]
 
 ## <a name="dedicated-compute-resources"></a>Zasoby obliczeniowe dedykowane
-Wszystkie zasoby obliczeniowe, w środowisku usługi aplikacji dedykowane wyłącznie jedną subskrypcją i środowiska usługi aplikacji można skonfigurować maksymalnie 50 (50) zasoby obliczeniowe do wyłącznego użytku przez jedną aplikację.
+Wszystkie zasoby obliczeniowe w środowisku usługi App Service są przeznaczone wyłącznie dla jednej subskrypcji, a środowisko App Service Environment można skonfigurować maksymalnie 50 (50) zasobów obliczeniowych do wyłącznego użytku przez jedną aplikację.
 
-Środowiska usługi aplikacji składa się z puli zasobów obliczeniowych frontonu, jak również pule zasobów obliczeniowych procesów roboczych jednej do trzech. 
+Środowisko usługi App Service składa się z puli zasobów obliczeniowych frontonu, jak również pule zasobów obliczeniowych procesów roboczych jednego do trzech. 
 
-Frontonu pula zawiera zasoby obliczeniowe odpowiedzialny za kończenia żądań SSL, jak również automatyczne równoważenie obciążenia żądań aplikacji w środowisku usługi aplikacji. 
+Pula frontonu zawiera zasoby obliczeniowe są odpowiedzialne za kończenia żądań SSL, jak również automatyczne równoważenie obciążenia żądań aplikacji w środowisku usługi App Service. 
 
-Każda pula procesu roboczego zawiera zasoby obliczeniowe przydzielone do [plany usługi App Service][AppServicePlan], które z kolei zawierają co najmniej jedną aplikację usługi Azure App Service.  Ponieważ może istnieć maksymalnie trzy pule procesów roboczych różnych w środowisku usługi aplikacji, należy wybrać zasoby obliczeniowe różnych dla każdej puli procesów roboczych.  
+Każdej puli procesów roboczych zawiera zasoby obliczeniowe przydzielone do [planów usługi App Service][AppServicePlan], który z kolei zawiera co najmniej jedną aplikację usługi Azure App Service.  Ponieważ w środowisku usługi App Service może być maksymalnie trzy pule innego procesu roboczego, masz swobodę wyboru różnych zasobów obliczeniowych dla każdej puli procesów roboczych.  
 
-Na przykład dzięki temu można utworzyć jeden puli procesów roboczych z słabszy zasoby obliczeniowe dla plany usługi App Service przeznaczonego dla rozwoju lub testowania aplikacji.  Puli procesów roboczych drugi (lub nawet trzeci) można użyć bardziej zaawansowanych zasoby obliczeniowe, przeznaczony dla plany usługi App Service uruchamianie aplikacji w środowisku produkcyjnym.
+Na przykład dzięki temu można utworzyć jedną pulę procesów roboczych przy użyciu mniej wydajnych zasoby obliczeniowe dla planów usługi App Service przeznaczonego dla projektowania lub testowania aplikacji.  Pula procesów roboczych drugi (lub nawet trzeci) użyć bardziej zaawansowanych zasobów obliczeniowych, przeznaczony dla planów usługi App Service uruchamianie aplikacji produkcyjnych.
 
-Aby uzyskać więcej szczegółowych informacji na temat ilości zasobów obliczeniowych dostępnych do pul frontonu i proces roboczy, zobacz [sposobu konfigurowania środowiska usługi aplikacji][HowToConfigureanAppServiceEnvironment].  
+Aby uzyskać szczegółowe informacje na temat ilości zasobów obliczeniowych dostępnych do pul frontonu i procesu roboczego, zobacz [jak skonfigurować środowisko App Service Environment][HowToConfigureanAppServiceEnvironment].  
 
-Aby uzyskać więcej informacji na temat rozmiarów zasobów obliczeniowych dostępnych obsługiwane w środowisku usługi aplikacji, zapoznaj się [App Service — ceny] [ AppServicePricing] strony i przejrzyj opcje dostępne dla środowiska usługi aplikacji Warstwa cenowa Premium.
+Aby uzyskać więcej informacji na temat rozmiarów zasobów obliczeniowych dostępnych obsługiwane w środowisku usługi App Service, należy się zapoznać [App Service — ceny] [ AppServicePricing] strony, a następnie przejrzyj opcje dostępne dla środowisk usługi App Service w Warstwy cenowej Premium.
 
 ## <a name="virtual-network-support"></a>Obsługa sieci wirtualnej
-Środowiska usługi aplikacji mogą być tworzone w **albo** sieci wirtualnej platformy Azure Resource Manager **lub** sieci wirtualnej wdrożenia klasycznego modelu ([więcej informacji o sieciach wirtualnych] [MoreInfoOnVirtualNetworks]).  Ponieważ środowisko usługi aplikacji istnieje zawsze w sieci wirtualnej, a dokładniej w podsieci sieci wirtualnej, można korzystać z funkcji zabezpieczeń sieci wirtualnych do kontrolowania komunikacji zarówno ruchu przychodzącego i wychodzącego.  
+Środowisko usługi App Service mogą być tworzone w **albo** z siecią wirtualną usługi Azure Resource Manager **lub** sieć wirtualną modelu wdrażania klasycznego ([więcej informacji o sieciach wirtualnych] [MoreInfoOnVirtualNetworks]).  Ponieważ środowisko App Service zawsze istnieje w sieci wirtualnej, a dokładniej w podsieci sieci wirtualnej, mogą korzystać z funkcji zabezpieczeń sieci wirtualnych do sterowania zarówno dla ruchu przychodzącego i wychodzącą komunikacją sieciową.  
 
-Środowiska usługi aplikacji może być albo internetowy, za pomocą publicznego adresu IP lub wewnętrzny ukierunkowane przy użyciu adresu Azure wewnętrznego modułu równoważenia obciążenia (ILB).
+Środowisko usługi App Service może być albo połączenie z Internetem za pomocą publicznego adresu IP lub wewnętrznym, połączonego z przy użyciu adresu wewnętrznego modułu równoważenia obciążenia (ILB) platformy Azure.
 
-Można użyć [sieciowej grupy zabezpieczeń] [ NetworkSecurityGroups] do ograniczenia komunikacji sieciowej dla ruchu przychodzącego do podsieci, w której znajduje się środowiska usługi aplikacji.  Dzięki temu można korzystać z aplikacji za nadrzędnego urządzeń i usług, takich jak zapory aplikacji sieci web i dostawców SaaS sieci.
+Możesz użyć [sieciowe grupy zabezpieczeń] [ NetworkSecurityGroups] do ograniczają komunikację sieciową przychodzącą do podsieci, w której znajduje się środowisko App Service.  Dzięki temu można uruchamiać aplikacje za urządzeniami i usługami, takie jak zapory aplikacji sieci web i dostawcy SaaS.
 
-Aplikacje często muszą również uzyskiwać dostęp do zasobów firmy, takich jak wewnętrzne bazy danych i usługi internetowe.  Typowym podejściem jest, aby udostępnić te punkty końcowe tylko ruchu w sieci wewnętrznej przepływu w ramach sieci wirtualnej platformy Azure.  Po środowiska usługi aplikacji jest dołączony do tej samej sieci wirtualnej co wewnętrzny usługi, aplikacje działające w środowisku może uzyskiwać do nich dostęp, łącznie z punktów końcowych osiągalne za pomocą [lokacja-lokacja] [ SiteToSite] i [Azure ExpressRoute] [ ExpressRoute] połączenia.
+Aplikacje często muszą również uzyskiwać dostęp do zasobów firmy, takich jak wewnętrzne bazy danych i usługi internetowe.  Typowym podejściem jest zapewnienie tych punktów końcowych dostępne tylko dla ruchu w sieci wewnętrznej przepływu w ramach sieci wirtualnej platformy Azure.  Po środowisko App Service jest przyłączony do tej samej sieci wirtualnej jako wewnętrzny usługi, aplikacje działające w środowisku można uzyskiwać do nich dostęp, nieosiągalny za pośrednictwem punktów końcowych w tym [Site-to-Site] [ SiteToSite] i [Usługi azure ExpressRoute] [ ExpressRoute] połączeń.
 
-Dla więcej szczegółowych informacji na temat środowiska usługi App Service z sieciami wirtualnymi i sieciami lokalnymi zapoznaj się następujące artykuły na [architektury sieci][NetworkArchitectureOverview], [kontrolowanie ruchu przychodzącego Ruch][ControllingInboundTraffic], i [bezpiecznego połączenia Zapleczy][SecurelyConnectingToBackends]. 
+Aby uzyskać więcej informacji na temat środowisk usługi App Service z sieciami wirtualnymi i sieciami lokalnymi konsultować się następujące artykuły w [architektury sieci][NetworkArchitectureOverview], [kontrolowanie ruchu przychodzącego Ruch][ControllingInboundTraffic], i [bezpieczne połączenie z Zapleczami][SecurelyConnectingToBackends]. 
 
 ## <a name="getting-started"></a>Wprowadzenie
-Wprowadzenie do środowiska usługi App Service, zobacz [jak do tworzenia środowiska usługi aplikacji][HowToCreateAnAppServiceEnvironment]
+Aby rozpocząć pracę przy użyciu środowisk usługi App Service, zobacz [jak do utworzyć środowisko App Service Environment][HowToCreateAnAppServiceEnvironment]
 
-Omówienie architektury sieci środowiska usługi aplikacji, zobacz [omówienie architektury sieci] [ NetworkArchitectureOverview] artykułu.
+Aby uzyskać omówienie architektury sieci środowiska App Service Environment, zobacz [omówienie architektury sieci] [ NetworkArchitectureOverview] artykułu.
 
-Aby uzyskać więcej informacji o używaniu środowiska usługi aplikacji z usługi ExpressRoute, zobacz następujący artykuł w [Express Route i środowiska usługi App Service][NetworkConfigDetailsForExpressRoute].
+Szczegółowe informacje na temat używania środowiska usługi App Service przy użyciu usługi ExpressRoute, zobacz następujący artykuł na [Expressroute i środowiska usługi App Service][NetworkConfigDetailsForExpressRoute].
 
 [!INCLUDE [app-service-web-try-app-service](../../../includes/app-service-web-try-app-service.md)]
 
@@ -93,7 +93,7 @@ Aby uzyskać więcej informacji o używaniu środowiska usługi aplikacji z usł
 [AzureConDeepDive]:  https://azure.microsoft.com/documentation/videos/azurecon-2015-deploying-highly-scalable-and-secure-web-and-mobile-apps/
 [GeodistributedAppFootprint]:  app-service-app-service-environment-geo-distributed-scale.md
 [NetworkSecurityGroups]: https://azure.microsoft.com/documentation/articles/virtual-networks-nsg/
-[SiteToSite]: https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-multi-site
+[SiteToSite]: https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site
 [ExpressRoute]: http://azure.microsoft.com/services/expressroute/
 [HowToConfigureanAppServiceEnvironment]:  app-service-web-configure-an-app-service-environment.md
 [ControllingInboundTraffic]:  app-service-app-service-environment-control-inbound-traffic.md

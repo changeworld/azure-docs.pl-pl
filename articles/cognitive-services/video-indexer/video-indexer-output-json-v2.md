@@ -7,14 +7,14 @@ author: juliako
 manager: cfowler
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 09/09/2018
 ms.author: juliako
-ms.openlocfilehash: 43cc02417fad8a2fa46bd309235951393cd55b8a
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 14e308f04450999fcec91a7882a22868c8c824ce
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41987581"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45579007"
 ---
 # <a name="examine-the-video-indexer-output-produced-by-v2-api"></a>Zbadanie danych wyjściowych indeksatora wideo utworzone przez interfejs API w wersji 2
 
@@ -23,7 +23,7 @@ ms.locfileid: "41987581"
 
 Gdy wywołujesz **uzyskać indeks wideo** interfejsu API i stan odpowiedzi jest OK, Uzyskaj szczegółowe dane wyjściowe JSON jako treść odpowiedzi. Zawartość JSON zawiera szczegółowe informacje o określonym informacjom o filmie wideo. Szczegółowe informacje zawierają wymiary, takie jak: zapisy ocrs, twarzy, tematy, bloki, itp. Wymiary są wystąpienia zakresy czasu, przedstawiających podczas każdego wymiaru pojawiły się w trakcie filmu wideo.  
 
-Można również wizualnie sprawdzić insights podsumowań wideo, naciskając klawisz **Odtwórz** przycisk film wideo, w portalu usługi Video Indexer. Aby uzyskać więcej informacji, zobacz [wyświetlanie i edytowanie informacji szczegółowych wideo](video-indexer-view-edit.md).
+Można również wizualnie sprawdzić insights podsumowań wideo, naciskając klawisz **Odtwórz** znajdujący się na film wideo na [Video Indexer](https://www.videoindexer.ai/) witryny sieci Web. Aby uzyskać więcej informacji, zobacz [wyświetlanie i edytowanie informacji szczegółowych wideo](video-indexer-view-edit.md).
 
 ![Insights](./media/video-indexer-output-json/video-indexer-summarized-insights.png)
 
@@ -82,7 +82,7 @@ W tej sekcji przedstawiono podsumowanie szczegółowych danych.
 |privacyMode|Podział usługi może mieć jedną z następujących trybów: **prywatnej**, **publicznych**. **Publiczne** — film wideo jest widoczny dla wszystkich użytkowników w swoje konto i każda osoba, która zawiera link do filmu wideo. **Prywatne** — film wideo jest widoczny dla wszystkich użytkowników na Twoim koncie.|
 |czas trwania|Zawiera jeden czas trwania, opisujący godzina wystąpienia w szczegółowe informacje. Czas trwania to w ciągu kilku sekund.|
 |thumbnailVideoId|Identyfikator wideo, z których pochodzi się miniaturę.
-|thumbnailId|Miniatura wideo identyfikatora. Aby uzyskać rzeczywiste miniatury wywołanie Get miniatury (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) i przekaż go thumbnailVideoId i thumbnailId.|
+|thumbnailId|Miniatura wideo identyfikatora. Aby uzyskać rzeczywiste miniatury, wywołanie Get miniatury (https://api-portal.videoindexer.ai/docs/services/operations/operations/Get-thumbnail) i przekaż go thumbnailVideoId i thumbnailId.|
 |twarzy|Może zawierać zero lub więcej twarzy. Aby uzyskać więcej informacji, zobacz [twarzy](#faces).|
 |słowa kluczowe|Może zawierać zero lub więcej słów kluczowych. Aby uzyskać więcej informacji, zobacz [słowa kluczowe](#keywords).|
 |opinie|Może zawierać zero lub więcej tonacji. Aby uzyskać więcej informacji, zobacz [tonacji](#sentiments).|
@@ -90,6 +90,8 @@ W tej sekcji przedstawiono podsumowanie szczegółowych danych.
 |etykiety| Może zawierać zero lub więcej etykiet. Aby uzyskać szczegółowe więcej informacji, zobacz [etykiety](#labels).|
 |marek| Może zawierać zero lub więcej marek. Aby uzyskać więcej informacji, zobacz [marek](#brands).|
 |statystyki | Aby uzyskać więcej informacji, zobacz [statystyki](#statistics).|
+|emocji| Może zawierać zero lub więcej emocji. Aby uzyskać więcej informacji, zobacz [emocji](#emotions).|
+|Tematy|Może zawierać zero lub więcej tematów. [Tematy](#topics) wymiaru.|
 
 ## <a name="videos"></a>wideo
 
@@ -112,7 +114,7 @@ W tej sekcji przedstawiono podsumowanie szczegółowych danych.
 |publishedUrlProxy|Adres url do przesyłania strumieniowego wideo z (dla urządzeń firmy Apple).|
 |viewToken|Token krótkotrwałe widoku służącą do strumieniowego przesyłania wideo.|
 |sourceLanguage|Język źródłowy klip wideo.|
-|Język|Rzeczywiste język wideo (tłumaczenia).|
+|język|Rzeczywiste język wideo (tłumaczenia).|
 |indexingPreset|Ustawienie wstępne, używane do indeksowania filmu wideo.|
 |streamingPreset|Ustawienie wstępne, używany do publikowania filmu wideo.|
 |linguisticModelId|Model CRI umożliwia także filmu wideo.|
@@ -152,7 +154,7 @@ Krój może mieć identyfikator, nazwę, miniatury, inne metadane i listę swoic
 |Wersja|Wersja kodu|
 |---|---|
 |sourceLanguage|Język źródłowy wideo (przy założeniu jeden język master). W formie [BCP 47](https://tools.ietf.org/html/bcp47) ciągu.|
-|Język|Język insights (tłumaczenia go z języka źródłowego). W formie [BCP 47](https://tools.ietf.org/html/bcp47) ciągu.|
+|język|Język insights (tłumaczenia go z języka źródłowego). W formie [BCP 47](https://tools.ietf.org/html/bcp47) ciągu.|
 |transkrypcji|[Transkrypcji](#transcript) wymiaru.|
 |optyczne rozpoznawanie znaków|[Optyczne rozpoznawanie znaków](#ocr) wymiaru.|
 |słowa kluczowe|[Słowa kluczowe](#keywords) wymiaru.|
@@ -165,6 +167,8 @@ Krój może mieć identyfikator, nazwę, miniatury, inne metadane i listę swoic
 |opinie|[Tonacji](#sentiments) wymiaru.|
 |visualContentModeration|[VisualContentModeration](#visualcontentmoderation) wymiaru.|
 |textualConentModeration|[TextualConentModeration](#textualconentmoderation) wymiaru.|
+|emocji| [Emocji](#emotions) wymiaru.|
+|Tematy|[Tematy](#topics) wymiaru.|
 
 Przykład:
 
@@ -200,7 +204,7 @@ wystąpienia|Lista zakresów czasu tego bloku.|
 |---|---|
 |id|Identyfikator wiersza.|
 |tekst|Transkrypcja sam.|
-|Język|Język transkrypcji. Przeznaczony do obsługi transkrypcji, w którym każdy wiersz może mieć inny język.|
+|język|Język transkrypcji. Przeznaczony do obsługi transkrypcji, w którym każdy wiersz może mieć inny język.|
 |wystąpienia|Lista zakresów czasu, w którym znajdowały się tego wiersza. Jeśli wystąpienie jest transkrypcji, będzie miał tylko 1 wystąpienia.|
 
 Przykład:
@@ -239,7 +243,7 @@ Przykład:
 |id|Identyfikator wiersza optyczne rozpoznawanie znaków|
 |tekst|Optyczne rozpoznawanie znaków tekstu.|
 |zaufania|Rozpoznawanie zaufania.|
-|Język|Język optyczne rozpoznawanie znaków.|
+|język|Język optyczne rozpoznawanie znaków.|
 |wystąpienia|Lista zakresów czasu, w którym znajdowały się tym optyczne rozpoznawanie znaków (OCR tego samego mogą pojawiać się wielokrotnie).|
 
 ```json
@@ -282,7 +286,7 @@ Przykład:
 |id|Identyfikator — słowo kluczowe.|
 |tekst|Tekst — słowo kluczowe.|
 |zaufania|Słowo kluczowe rozpoznawania zaufania.|
-|Język|Język — słowo kluczowe (w przypadku tłumaczonym).|
+|język|Język — słowo kluczowe (w przypadku tłumaczonym).|
 |wystąpienia|Lista zakresów czasu, w którym znajdowały się to słowo kluczowe (słowo kluczowe może pojawić się wiele razy).|
 
 ```json
@@ -320,7 +324,6 @@ Przykład:
     ]
 }
 ] 
-
 ```
 
 #### <a name="faces"></a>twarzy
@@ -374,7 +377,7 @@ Przykład:
 |---|---|
 |id|Identyfikator etykiety.|
 |name|Nazwa etykiety (na przykład "Computer", "TV").|
-|Język|Etykieta nazwy język (w przypadku przetłumaczona). NARZĘDZIE BCP 47|
+|język|Etykieta nazwy język (w przypadku przetłumaczona). NARZĘDZIE BCP 47|
 |wystąpienia|Lista zakresów czasu, w których pojawiły się tej etykiety (etykieta może wystąpić wiele razy). Każde wystąpienie ma pole zaufania. |
 
 
@@ -444,7 +447,7 @@ Przykład:
           "id": 0,
           "instances": [
             {
-          "thumbnailId": "00000000-0000-0000-0000-000000000000",
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",
               "start": "00: 00: 00.1670000",
               "end": "00: 00: 00.2000000"
             }
@@ -453,7 +456,7 @@ Przykład:
       ],
       "instances": [
         {
-       "thumbnailId": "00000000-0000-0000-0000-000000000000",   
+            "thumbnailId": "00000000-0000-0000-0000-000000000000",  
           "start": "00: 00: 00.2000000",
           "end": "00: 00: 05.0330000"
         }
@@ -466,7 +469,7 @@ Przykład:
           "id": 1,
           "instances": [
             {
-          "thumbnailId": "00000000-0000-0000-0000-000000000000",        
+                "thumbnailId": "00000000-0000-0000-0000-000000000000",      
               "start": "00: 00: 05.2670000",
               "end": "00: 00: 05.3000000"
             }
@@ -667,10 +670,144 @@ Filmy wideo, które znajdują się na zawierać treści dla dorosłych lub eroty
 |bannedWordsCount |Liczba zakazanych wyrazów.|
 |bannedWordsRatio |Stosunek od całkowitej liczby słów.|
 
+#### <a name="emotions"></a>emocji
+
+Usługa Video Indexer identyfikuje emocji oparte na mowę i dźwięk podpowiedzi. Może to być zidentyfikowany rozpoznawania emocji: przynosi radość do, smutek, gniew lub strach.
+
+|Name (Nazwa)|Opis|
+|---|---|
+|id|Identyfikator emocji.|
+|type|Obecnie rozpoznawania emocji, który został zidentyfikowany na podstawie rozpoznawania mowy i podpowiedzi audio. Może to być rozpoznawania emocji: przynosi radość do, smutek, gniew lub strach.|
+|wystąpienia|Lista zakresów czasu, w których pojawiły się tym emocji.|
+
+```json
+"emotions": [{
+    "id": 0,
+    "type": "Fear",
+    "instances": [{
+      "adjustedStart": "0:00:39.47",
+      "adjustedEnd": "0:00:45.56",
+      "start": "0:00:39.47",
+      "end": "0:00:45.56"
+    },
+    {
+      "adjustedStart": "0:07:19.57",
+      "adjustedEnd": "0:07:23.25",
+      "start": "0:07:19.57",
+      "end": "0:07:23.25"
+    }]
+  },
+  {
+    "id": 1,
+    "type": "Anger",
+    "instances": [{
+      "adjustedStart": "0:03:55.99",
+      "adjustedEnd": "0:04:05.06",
+      "start": "0:03:55.99",
+      "end": "0:04:05.06"
+    },
+    {
+      "adjustedStart": "0:04:56.5",
+      "adjustedEnd": "0:05:04.35",
+      "start": "0:04:56.5",
+      "end": "0:05:04.35"
+    }]
+  },
+  {
+    "id": 2,
+    "type": "Joy",
+    "instances": [{
+      "adjustedStart": "0:12:23.68",
+      "adjustedEnd": "0:12:34.76",
+      "start": "0:12:23.68",
+      "end": "0:12:34.76"
+    },
+    {
+      "adjustedStart": "0:12:46.73",
+      "adjustedEnd": "0:12:52.8",
+      "start": "0:12:46.73",
+      "end": "0:12:52.8"
+    },
+    {
+      "adjustedStart": "0:30:11.29",
+      "adjustedEnd": "0:30:16.43",
+      "start": "0:30:11.29",
+      "end": "0:30:16.43"
+    },
+    {
+      "adjustedStart": "0:41:37.23",
+      "adjustedEnd": "0:41:39.85",
+      "start": "0:41:37.23",
+      "end": "0:41:39.85"
+    }]
+  },
+  {
+    "id": 3,
+    "type": "Sad",
+    "instances": [{
+      "adjustedStart": "0:13:38.67",
+      "adjustedEnd": "0:13:41.3",
+      "start": "0:13:38.67",
+      "end": "0:13:41.3"
+    },
+    {
+      "adjustedStart": "0:28:08.88",
+      "adjustedEnd": "0:28:18.16",
+      "start": "0:28:08.88",
+      "end": "0:28:18.16"
+    }]
+  }
+],
+```
+
+#### <a name="topics"></a>Tematy
+
+Usługa Video Indexer sprawia, że wnioskowania główne tematy z transkrypcji. Jeśli to możliwe, poziom 1 [IPTC](https://iptc.org/standards/media-topics/) taksonomii jest dołączony. 
+
+|Name (Nazwa)|Opis|
+|---|---|
+|id|Identyfikator tematu.|
+|name|Nazwa tematu, na przykład: "Stacjonarnym".|
+|Identyfikator odwołania|Linki do stron nadrzędnych odzwierciedlający hierarchii tematów. Na przykład: "kondycji i dobro / medycyna i opiece zdrowotnej / stacjonarnym".|
+|zaufania|Współczynnik ufności z zakresu [0,1]. Nowszy jest większa pewność.|
+|język|Język używany w tym temacie.|
+|iptcName|Nośnik IPTC kodu nazwy, w przypadku wykrycia.|
+|wystąpienia |Obecnie usługa Video Indexer nie indeksowania tematu na przedziały czasu, więc całe wideo jest używany jako interwał.|
+
+```json
+"topics": [{
+    "id": 0,
+    "name": "INTERNATIONAL RELATIONS",
+    "referenceId": "POLITICS AND GOVERNMENT/FOREIGN POLICY/INTERNATIONAL RELATIONS",
+    "referenceType": "VideoIndexer",
+    "confidence": 1,
+    "language": "en-US",
+    "instances": [{
+        "adjustedStart": "0:00:00",
+        "adjustedEnd": "0:03:36.25",
+        "start": "0:00:00",
+        "end": "0:03:36.25"
+    }]
+}, {
+    "id": 1,
+    "name": "Politics and Government",
+    "referenceType": "VideoIndexer",
+    "iptcName": "Politics",
+    "confidence": 0.9041,
+    "language": "en-US",
+    "instances": [{
+        "adjustedStart": "0:00:00",
+        "adjustedEnd": "0:03:36.25",
+        "start": "0:00:00",
+        "end": "0:03:36.25"
+    }]
+}]
+. . .
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Interfejsu API indeksatora wideo](https://api-portal.videoindexer.ai)
+[Portal dla deweloperów usługa Video Indexer](https://api-portal.videoindexer.ai)
 
 Aby uzyskać informacje o sposobie osadzanie widżetów w aplikacji, zobacz [widżetów osadzić indeksatora wideo we własnych aplikacjach](video-indexer-embed-widgets.md). 
 

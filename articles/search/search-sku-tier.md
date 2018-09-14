@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 06/19/2018
 ms.author: heidist
-ms.openlocfilehash: f7cf471a69395cef0aef7d5dd2e3c77218bf97a3
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 140daf4903c64d734182545cd4dc58db60274852
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715284"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576124"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Wybierz warstwę cenową dla usługi Azure Search
 
@@ -104,7 +104,7 @@ Przy założeniu, że próbka miała wartość przedstawiciel i dziesięć proce
 
 Niektórzy klienci preferują rozpoczynać dedykowane zasoby, które można dopasować większy próbkowania i czasy przetwarzania, a następnie twórz realistyczne oszacowania ilości indeksu, rozmiar i woluminy zapytania podczas tworzenia. Początkowo usługa jest przygotowany na podstawie szacunku podjęcie, a następnie jak dojrzewa projektu tworzenia oprogramowania, zespoły zwykle wiedzą, czy istniejącej usługi jest powyżej lub poniżej pojemności dla obciążeń produkcyjnych przewidywany. 
 
-1. [Sprawdź limity usługi w każdej warstwie](https://docs.microsoft.com/en-us/azure/search/search-limits-quotas-capacity#index-limits) do określenia, czy niższych warstwach mogą obsługiwać ilość indeksów należy. Między **podstawowe**-**S1**- **S2** warstwy, limity indeksu są odpowiednio 15 – 50-200.
+1. [Sprawdź limity usługi w każdej warstwie](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity#index-limits) do określenia, czy niższych warstwach mogą obsługiwać ilość indeksów należy. Między **podstawowe**-**S1**- **S2** warstwy, limity indeksu są odpowiednio 15 – 50-200.
 
 1. [Tworzenie usługi w warstwie płatnej](search-create-service-portal.md):
 

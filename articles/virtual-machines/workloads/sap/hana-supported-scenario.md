@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 07/06/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 412872e607f62f710e013d88822cddc59255992e
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 0e9d57c224150454677a03462368038ed8c63edf
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859956"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576497"
 ---
 # <a name="supported-scenarios-for-hana-large-instances"></a>Obsługiwane scenariusze dla dużych wystąpień HANA
 W tym dokumencie opisano obsługiwane scenariusze wraz z ich szczegółami dotyczącymi architektury dla platformy HANA wystąpienia duże (HLI).
@@ -198,7 +198,7 @@ Następujące punkty instalacji są wstępnie skonfigurowane:
 
 ### <a name="key-considerations"></a>Najważniejsze zagadnienia
 - /usr/SAP/SID jest link symboliczny do /hana/shared/SID.
-- Dystrybucja rozmiar woluminu na podstawie rozmiaru bazy danych w pamięci. Zapoznaj się [omówienie i architektura](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) sekcji, aby dowiedzieć się więcej o rozmiarach z jakiej bazy danych w pamięci obsługujące multisid środowiska.
+- Dystrybucja rozmiar woluminu na podstawie rozmiaru bazy danych w pamięci. Zapoznaj się [omówienie i architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) sekcji, aby dowiedzieć się więcej o rozmiarach z jakiej bazy danych w pamięci obsługujące multisid środowiska.
 
 ## <a name="3-single-node-with-dr-normal"></a>3. Jeden węzeł za pomocą odzyskiwania po awarii (normalny)
  
@@ -235,9 +235,9 @@ Następujące punkty instalacji są wstępnie skonfigurowane:
 
 ### <a name="key-considerations"></a>Najważniejsze zagadnienia
 - /usr/SAP/SID jest link symboliczny do /hana/shared/SID.
-- Dla MCOS: Dystrybucji rozmiar woluminu jest na podstawie rozmiaru bazy danych w pamięci. Zapoznaj się [omówienie i architektura](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) sekcji, aby dowiedzieć się więcej o rozmiarach z jakiej bazy danych w pamięci obsługujące multisid środowiska.
+- Dla MCOS: Dystrybucji rozmiar woluminu jest na podstawie rozmiaru bazy danych w pamięci. Zapoznaj się [omówienie i architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) sekcji, aby dowiedzieć się więcej o rozmiarach z jakiej bazy danych w pamięci obsługujące multisid środowiska.
 - W przypadku odzyskiwania po awarii: woluminy i punkty instalacji są skonfigurowane (oznaczonych jako "Wymagane do instalacji oprogramowania HANA") w środowisku produkcyjnym instalację wystąpienie oprogramowania HANA w jednostce HLI odzyskiwania po awarii. 
-- W przypadku odzyskiwania po awarii: dane, logbackups i udostępnione woluminy (oznaczonych jako "Replikacji magazynu"), które są replikowane za pomocą migawki z witryny produkcyjnej. Te woluminy są instalowane tylko na czasie pracy awaryjnej. Aby uzyskać więcej informacji, przeczytaj dokument [procedurę trybu failover odzyskiwania po awarii](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) Aby uzyskać więcej informacji.
+- W przypadku odzyskiwania po awarii: dane, logbackups i udostępnione woluminy (oznaczonych jako "Replikacji magazynu"), które są replikowane za pomocą migawki z witryny produkcyjnej. Te woluminy są instalowane tylko na czasie pracy awaryjnej. Aby uzyskać więcej informacji, przeczytaj dokument [procedurę trybu failover odzyskiwania po awarii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) Aby uzyskać więcej informacji.
 - Rozruch wolumin **typ jednostki SKU I klasy** są replikowane do odzyskiwania po awarii węzła.
 
 
@@ -284,9 +284,9 @@ Następujące punkty instalacji są wstępnie skonfigurowane:
 
 ### <a name="key-considerations"></a>Najważniejsze zagadnienia
 - /usr/SAP/SID jest link symboliczny do /hana/shared/SID.
-- Dla MCOS: Dystrybucji rozmiar woluminu jest na podstawie rozmiaru bazy danych w pamięci. Zapoznaj się [omówienie i architektura](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) sekcji, aby dowiedzieć się więcej o rozmiarach z jakiej bazy danych w pamięci obsługujące multisid środowiska.
+- Dla MCOS: Dystrybucji rozmiar woluminu jest na podstawie rozmiaru bazy danych w pamięci. Zapoznaj się [omówienie i architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) sekcji, aby dowiedzieć się więcej o rozmiarach z jakiej bazy danych w pamięci obsługujące multisid środowiska.
 - W przypadku odzyskiwania po awarii: woluminy i punkty instalacji są skonfigurowane (oznaczonych jako "Wymagane do instalacji oprogramowania HANA") w środowisku produkcyjnym instalację wystąpienie oprogramowania HANA w jednostce HLI odzyskiwania po awarii. 
-- W przypadku odzyskiwania po awarii: dane, logbackups i udostępnione woluminy (oznaczonych jako "Replikacji magazynu"), które są replikowane za pomocą migawki z witryny produkcyjnej. Te woluminy są instalowane tylko na czasie pracy awaryjnej. Aby uzyskać więcej informacji, przeczytaj dokument [procedurę trybu failover odzyskiwania po awarii](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) Aby uzyskać więcej informacji. 
+- W przypadku odzyskiwania po awarii: dane, logbackups i udostępnione woluminy (oznaczonych jako "Replikacji magazynu"), które są replikowane za pomocą migawki z witryny produkcyjnej. Te woluminy są instalowane tylko na czasie pracy awaryjnej. Aby uzyskać więcej informacji, przeczytaj dokument [procedurę trybu failover odzyskiwania po awarii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) Aby uzyskać więcej informacji. 
 - W przypadku odzyskiwania po awarii: logbackups, danych, dzienników, udostępnione woluminy, aby uzyskać odpowiedzi na pytania (oznaczone jako "Instalacja wystąpienia odpowiedzi na pytania") są skonfigurowane podczas instalacji wystąpienia pytań i odpowiedzi.
 - Rozruch wolumin **typ jednostki SKU I klasy** są replikowane do odzyskiwania po awarii węzła.
 
@@ -335,7 +335,7 @@ Następujące punkty instalacji są wstępnie skonfigurowane:
 
 ### <a name="key-considerations"></a>Najważniejsze zagadnienia
 - /usr/SAP/SID jest link symboliczny do /hana/shared/SID.
-- Dla MCOS: Dystrybucji rozmiar woluminu jest na podstawie rozmiaru bazy danych w pamięci. Zapoznaj się [omówienie i architektura](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) sekcji, aby dowiedzieć się więcej o rozmiarach z jakiej bazy danych w pamięci obsługujące multisid środowiska.
+- Dla MCOS: Dystrybucji rozmiar woluminu jest na podstawie rozmiaru bazy danych w pamięci. Zapoznaj się [omówienie i architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) sekcji, aby dowiedzieć się więcej o rozmiarach z jakiej bazy danych w pamięci obsługujące multisid środowiska.
 - Pomocą metody STONITH: Interwencja została skonfigurowana do instalacji pomocą metody STONITH. Jednak użycie pomocą metody STONITH jest opcjonalne.
 
 
@@ -391,11 +391,11 @@ Następujące punkty instalacji są wstępnie skonfigurowane:
 
 ### <a name="key-considerations"></a>Najważniejsze zagadnienia
 - /usr/SAP/SID jest link symboliczny do /hana/shared/SID.
-- Dla MCOS: Dystrybucji rozmiar woluminu jest na podstawie rozmiaru bazy danych w pamięci. Zapoznaj się [omówienie i architektura](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-architecture) sekcji, aby dowiedzieć się więcej o rozmiarach z jakiej bazy danych w pamięci obsługujące multisid środowiska.
+- Dla MCOS: Dystrybucji rozmiar woluminu jest na podstawie rozmiaru bazy danych w pamięci. Zapoznaj się [omówienie i architektura](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-architecture) sekcji, aby dowiedzieć się więcej o rozmiarach z jakiej bazy danych w pamięci obsługujące multisid środowiska.
 - Pomocą metody STONITH: Interwencja została skonfigurowana do instalacji pomocą metody STONITH. Jednak użycie pomocą metody STONITH jest opcjonalne.
 - W przypadku odzyskiwania po awarii: **wymagane są dwa zestawy woluminów magazynu** podstawowego i pomocniczego węzła replikacji.
 - W przypadku odzyskiwania po awarii: woluminy i punkty instalacji są skonfigurowane (oznaczonych jako "Wymagane do instalacji oprogramowania HANA") w środowisku produkcyjnym instalację wystąpienie oprogramowania HANA w jednostce HLI odzyskiwania po awarii. 
-- W przypadku odzyskiwania po awarii: dane, logbackups i udostępnione woluminy (oznaczonych jako "Replikacji magazynu"), które są replikowane za pomocą migawki z witryny produkcyjnej. Te woluminy są instalowane tylko na czasie pracy awaryjnej. Aby uzyskać więcej informacji, przeczytaj dokument [procedurę trybu failover odzyskiwania po awarii](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) Aby uzyskać więcej informacji. 
+- W przypadku odzyskiwania po awarii: dane, logbackups i udostępnione woluminy (oznaczonych jako "Replikacji magazynu"), które są replikowane za pomocą migawki z witryny produkcyjnej. Te woluminy są instalowane tylko na czasie pracy awaryjnej. Aby uzyskać więcej informacji, przeczytaj dokument [procedurę trybu failover odzyskiwania po awarii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) Aby uzyskać więcej informacji. 
 - W przypadku odzyskiwania po awarii: logbackups, danych, dzienników, udostępnione woluminy, aby uzyskać odpowiedzi na pytania (oznaczone jako "Instalacja wystąpienia odpowiedzi na pytania") są skonfigurowane podczas instalacji wystąpienia pytań i odpowiedzi.
 - Rozruch wolumin **typ jednostki SKU I klasy** są replikowane do odzyskiwania po awarii węzła.
 
@@ -559,10 +559,10 @@ Następujące punkty instalacji są wstępnie skonfigurowane:
 ### <a name="key-considerations"></a>Najważniejsze zagadnienia
 - /usr/SAP/SID jest link symboliczny do /hana/shared/SID.
 -  W przypadku odzyskiwania po awarii: woluminy i punkty instalacji są skonfigurowane (oznaczonych jako "Wymagane do instalacji oprogramowania HANA") w środowisku produkcyjnym instalację wystąpienie oprogramowania HANA w jednostce HLI odzyskiwania po awarii. 
-- W przypadku odzyskiwania po awarii: dane, logbackups i udostępnione woluminy (oznaczonych jako "Replikacji magazynu"), które są replikowane za pomocą migawki z witryny produkcyjnej. Te woluminy są instalowane tylko na czasie pracy awaryjnej. Aby uzyskać więcej informacji, przeczytaj dokument [procedurę trybu failover odzyskiwania po awarii](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) Aby uzyskać więcej informacji. 
+- W przypadku odzyskiwania po awarii: dane, logbackups i udostępnione woluminy (oznaczonych jako "Replikacji magazynu"), które są replikowane za pomocą migawki z witryny produkcyjnej. Te woluminy są instalowane tylko na czasie pracy awaryjnej. Aby uzyskać więcej informacji, przeczytaj dokument [procedurę trybu failover odzyskiwania po awarii](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery#disaster-recovery-failover-procedure) Aby uzyskać więcej informacji. 
 - Rozruch wolumin **typ jednostki SKU I klasy** są replikowane do odzyskiwania po awarii węzła.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Zapoznaj się [infrastruktura i łączność](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity) dla HLI
-- Zapoznaj się [wysoką dostępność i odzyskiwanie awaryjne](https://docs.microsoft.com/en-us/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery) dla HLI
+- Zapoznaj się [infrastruktura i łączność](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-infrastructure-connectivity) dla HLI
+- Zapoznaj się [wysoką dostępność i odzyskiwanie awaryjne](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/hana-overview-high-availability-disaster-recovery) dla HLI

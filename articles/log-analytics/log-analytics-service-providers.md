@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: meirm
 ms.component: na
-ms.openlocfilehash: 7898af1a8d516fa74deef5614b5373f1dbd22f5a
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: ec35cece8da8eaaa89b11a35b0fc1e55d0cdfee8
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378606"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45573495"
 ---
 # <a name="log-analytics-for-service-providers"></a>Usługa log Analytics dla dostawców usług
 Usługa log Analytics może pomóc dostawcom usług zarządzanych (msp), dla dużych przedsiębiorstw, niezależnych dostawców oprogramowania (ISV) i dostawcy usług hostingowych zarządzanie i monitorowanie serwerów w klienta w środowisku lokalnym lub w infrastrukturze chmury. 
@@ -31,16 +31,16 @@ Dla partnerów i dostawców usług, które są dostępne w ramach programu [Clou
 
 ## <a name="architectures-for-service-providers"></a>Architektury dla dostawców usług
 
-Obszary robocze usługi log Analytics udostępnia metody administratorem, aby kontrolować przepływ i izolacji dzienników i tworzenie architektury dziennika, odnoszący się do swoich potrzeb biznesowych. [W tym artykule](https://docs.microsoft.com/en-us/azure/log-analytics/log-analytics-manage-access) opisano ogólne zagadnienia dotyczące Zarządzanie obszarem roboczym. Dostawcy usług mają dodatkowe zagadnienia.
+Obszary robocze usługi log Analytics udostępnia metody administratorem, aby kontrolować przepływ i izolacji dzienników i tworzenie architektury dziennika, odnoszący się do swoich potrzeb biznesowych. [W tym artykule](https://docs.microsoft.com/azure/log-analytics/log-analytics-manage-access) opisano ogólne zagadnienia dotyczące Zarządzanie obszarem roboczym. Dostawcy usług mają dodatkowe zagadnienia.
 
 Istnieją trzy możliwe architektury dla dostawców usług dotyczących obszarów roboczych usługi Log Analytics:
 
 ### <a name="1-distributed---logs-are-stored-in-workspaces-located-in-the-customers-tenant"></a>1. Rozproszone — dzienniki są przechowywane w obszarach roboczych znajdujących się w dzierżawie klienta 
 
-W ramach tej architektury obszar roboczy jest wdrażany w dzierżawie klienta, używany dla wszystkich dzienników z tego klienta. Administratorzy dostawcy usług mają dostęp do tego obszaru roboczego przy użyciu [użytkowników-gości usługi Azure Active Directory (B2B)](https://docs.microsoft.com/en-us/azure/active-directory/b2b/what-is-b2b). Administratorzy dostawcy usług musi przełączyć się do katalogu swoich klientów w witrynie Azure portal, aby mieć możliwość dostępu do tych obszarów roboczych.
+W ramach tej architektury obszar roboczy jest wdrażany w dzierżawie klienta, używany dla wszystkich dzienników z tego klienta. Administratorzy dostawcy usług mają dostęp do tego obszaru roboczego przy użyciu [użytkowników-gości usługi Azure Active Directory (B2B)](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b). Administratorzy dostawcy usług musi przełączyć się do katalogu swoich klientów w witrynie Azure portal, aby mieć możliwość dostępu do tych obszarów roboczych.
 
 Zalety tej architekturze są następujące:
-* Klient może zarządzać dostępem do dzienników przy użyciu ich własnych [dostępu opartej na rolach](https://docs.microsoft.com/en-us/azure/role-based-access-control/overview).
+* Klient może zarządzać dostępem do dzienników przy użyciu ich własnych [dostępu opartej na rolach](https://docs.microsoft.com/azure/role-based-access-control/overview).
 * Każdy klient może mieć różne ustawienia dla ich obszarze roboczym, takich jak przechowywanie i danych są takie same.
 * Izolację między klientów przepisów i zgodności.
 * Opłaty za każdy obszar roboczy zostanie wycofana do subskrypcji klienta.
@@ -74,7 +74,7 @@ Architektura trzeci łączyć się z dwóch opcji. Jest on oparty na pierwszym a
 
 Dostępne są dwie opcje do zaimplementowania centralnej lokalizacji w usłudze Log Analytics:
 
-1. Centralny obszar roboczy: dostawca usług można utworzyć obszaru roboczego w jego dzierżawie i użyć skryptu, który korzysta z [interfejsu API zapytań](https://dev.loganalytics.io/) z [interfejsu API zbierania danych](log-analytics-data-collector-api.md) do przenoszenia danych z różnych obszarów roboczych do tego centralnej lokalizacji. Inną opcją niż skryptu, jest użycie [usługi Azure Logic Apps](https://docs.microsoft.com/en-us/azure/logic-apps/logic-apps-overview).
+1. Centralny obszar roboczy: dostawca usług można utworzyć obszaru roboczego w jego dzierżawie i użyć skryptu, który korzysta z [interfejsu API zapytań](https://dev.loganalytics.io/) z [interfejsu API zbierania danych](log-analytics-data-collector-api.md) do przenoszenia danych z różnych obszarów roboczych do tego centralnej lokalizacji. Inną opcją niż skryptu, jest użycie [usługi Azure Logic Apps](https://docs.microsoft.com/azure/logic-apps/logic-apps-overview).
 
 2. Usługa Power BI jako centralnej lokalizacji: Usługa Power BI może działać jako centralnej lokalizacji, różne obszary robocze eksportowania danych do niego przy użyciu integrację między usługami Log Analytics i [usługi Power BI](log-analytics-powerbi.md). 
 

@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 03/9/2018
 ms.author: ellacroi
-ms.openlocfilehash: d89fef56a9fdab799170ed1ccd3261470d66bf95
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 104ef98aac3e34e30a86854a0d759cf11106b55b
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39414705"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575317"
 ---
 # <a name="azure-marketplace-consulting-services"></a>Usług doradczych dotyczących portalu Azure Marketplace
 Consulting Services w witrynie Azure Marketplace zapewnia partnerom firmy Microsoft cel połączenia klientów z usług pomocy technicznej i rozszerzać ich korzystanie z platformy Azure. Portal Azure Marketplace obsługuje listę ofert usługi doradcze od partnerów systemu Integrator (SI) firmy Microsoft. 
@@ -73,7 +73,7 @@ Aby uzyskać więcej informacji, zobacz [kompetencji za pośrednictwem sieci Mic
 Uruchamianie portalu Azure Marketplace usługi doradcze zaczną na żywo w określonym regionie geograficznym. Pierwsze uruchomienie będzie: Stanów Zjednoczonych, Kanadzie, Zjednoczonym Królestwie i Australii. Katalogi dla innych krajów zostanie umieszczona na żywo po kilku istotnych i atrakcyjne wybór ofert usług zostały przesłane przez partnerów i zatwierdzone przez firmę Microsoft.
 
 ## <a name="how-to-register-for-consulting-services-in-azure-marketplace"></a>Jak zarejestrować dla Consulting Services w witrynie Azure Marketplace
-Rozpocznij, rejestrując swoje usługi doradcze za pomocą [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/sell/signup). Wydawcy mogą odwoływać się do [zostać wydawcą w portalu Marketplace](https://docs.microsoft.com/en-us/azure/marketplace/become-publisher), aby uzyskać pełną listę wymagań dotyczących rejestracji. 
+Rozpocznij, rejestrując swoje usługi doradcze za pomocą [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/sell/signup). Wydawcy mogą odwoływać się do [zostać wydawcą w portalu Marketplace](https://docs.microsoft.com/azure/marketplace/become-publisher), aby uzyskać pełną listę wymagań dotyczących rejestracji. 
 
 **Jakie można oczekiwać po rejestracji** zespół organizujący dołączanie skontaktuje się z Tobą w 1 do 3 dni roboczych przy użyciu powitalnej wiadomości e-mail, który będzie zawierać informacje o logowaniu Cloud Partner Portal (CPP). [Portal dla partnerów w chmurze](https://cloudpartner.azure.com) jest portal listy oferty, gdzie wydawców przesyłać informacje i opinie. 
 
@@ -150,7 +150,7 @@ Podczas przeglądania oferują opisy i oferują podsumowania, zespół zostaną 
 |**Weryfikacja koncepcji**    |    Sposób działania, jakie zmiany inżynieryjnych, artefaktów technicznych lub innych artefaktów, które klient może spodziewać się jako wyniki asysty     | Optymalizuj swoją ofertę podsumowania z najważniejsze słowa kluczowe optymalizacji dla aparatów wyszukiwania        |
 |**Warsztaty**    |   Zawiera szczegółowe planu, codziennie, co tydzień lub co miesiąc, w zależności od wybranego czasu trwania oferty. Sposób działania celów nauki lub innych materiałów są z Twojej workshop     |   Optymalizuj swoją ofertę podsumowania z najważniejsze słowa kluczowe optymalizacji aparatu wyszukiwania      |
 
-W portalu Cloud Partner, można dodać formatowanie do Twojej listy przy użyciu [Markdown](https://docs.microsoft.com/en-us/contribute/how-to-write-use-markdown). Jest to język uproszczone projekt, który pomoże Dodawanie Polski do Twojej listy. 
+W portalu Cloud Partner, można dodać formatowanie do Twojej listy przy użyciu [Markdown](https://docs.microsoft.com/contribute/how-to-write-use-markdown). Jest to język uproszczone projekt, który pomoże Dodawanie Polski do Twojej listy. 
 
 **Informacje o przykład języka znaczników Markdown**
 *   Dodaj * na początku i końca bloku kopiowania — bez spacji, aby utworzyć Kursywa (np: *zawartości*)

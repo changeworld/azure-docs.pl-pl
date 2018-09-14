@@ -1,92 +1,92 @@
 ---
-title: Często zadawane pytania — kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
-titleSuffix: Azure
-description: Często zadawane pytania
+title: Często zadawane pytania — usługa QnA Maker
+titleSuffix: Azure Cognitive Services
+description: Lista często zadawane pytania dotyczące usługi QnA Maker
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
-ms.author: saneppal
-ms.openlocfilehash: a6bf32549715d0357771b3f3b0ff72f64788ec20
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.date: 09/12/2018
+ms.author: nstulasi
+ms.openlocfilehash: 0af93682c4a1be4de4d92e9c44e10586f740d8bf
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348672"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576684"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-## <a name="why-is-my-urlsfiles-is-not-extracting-question-answer-pairs"></a>Dlaczego jest Mój adresy URL / plików nie jest wyodrębniania pary odpowiedź na pytanie?
+## <a name="why-is-my-urlsfiles-is-not-extracting-question-answer-pairs"></a>Dlaczego jest Moje adresy URL / pliki nie wyodrębnia pary odpowiedź na pytanie?
 
-Istnieje możliwość, że Maker — strona główna nie może automatycznie — Wyodrębnij zawartość (— strona główna) pytań i odpowiedzi z prawidłowe adresy URL — często zadawane pytania. W takich przypadkach możesz wkleić zawartości — Strona główna w pliku txt i zobacz, czy narzędzie może obsługiwać go. Alternatywnie redakcyjna można dodać zawartości do bazy wiedzy.
+Istnieje możliwość, że usługa QnA Maker nie może automatycznie wyodrębnić część zawartości (pytań i odpowiedzi) pytań i odpowiedzi z prawidłowych adresów URL. W takich przypadkach możesz wkleić zawartość pytań i odpowiedzi w pliku txt i zobaczyć, jeśli to narzędzie umożliwia pobieranie go. Alternatywnie możesz przez jej tradycyjne zredagowanie dodać zawartość do bazy wiedzy.
 
 ## <a name="how-large-a-knowledge-base-can-i-create"></a>Jak duże bazy wiedzy można tworzyć?
 
-Rozmiar bazy wiedzy knowledge base, zależy od wyszukiwanie SKU Azure, które można wybrać podczas tworzenia usługi Maker — strona główna. Odczyt [tutaj](./Tutorials/choosing-capacity-qnamaker-deployment.md) więcej szczegółów.
+Wyszukiwanie jednostek SKU usługi Azure, które można wybrać podczas tworzenia usługi QnA Maker zależy od rozmiaru bazy wiedzy knowledge base. Odczyt [tutaj](./Tutorials/choosing-capacity-qnamaker-deployment.md) Aby uzyskać więcej informacji.
 
-## <a name="why-do-i-not-see-anything-in-the-drop-down-for-when-i-try-to-create-a-new-knowledge-base"></a>Dlaczego nie widzę żadnych czynności w listy rozwijanej dla podczas próby utworzenia nowej wiedzy?
+## <a name="why-do-i-not-see-anything-in-the-drop-down-for-when-i-try-to-create-a-new-knowledge-base"></a>Dlaczego nie widzę żadnego z listy rozwijanej dla elementów podczas próby utworzenia nowej bazy wiedzy?
 
-Nie utworzono jeszcze żadnych usług Maker — strona główna na platformie Azure. Odczyt [tutaj](./How-To/set-up-qnamaker-service-azure.md) , jak to zrobić.
+Nie utworzono jeszcze żadnych usługi QnA Maker na platformie Azure. Odczyt [tutaj](./How-To/set-up-qnamaker-service-azure.md) jak to zrobić.
 
-## <a name="how-do-i-share-a-knowledge-base-with-other"></a>Jak udostępnić bazę wiedzy z innymi?
+## <a name="how-do-i-share-a-knowledge-base-with-other"></a>Jak udostępnić wiedzy innym?
 
-Udostępnianie działa na poziomie usługi Maker — strona główna, tj. wszystkie baz wiedzy w usługach zostaną udostępnione. Odczyt [tutaj](./How-To/collaborate-knowledge-base.md) jak współpracować nad bazy wiedzy.
+Udostępnianie działa na poziomie usługi QnA Maker, czyli wszystkich baz wiedzy w usługach zostaną udostępnione. Odczyt [tutaj](./How-To/collaborate-knowledge-base.md) jak współpracować nad wiedzy.
 
-## <a name="how-can-i-change-the-default-message-when-no-good-match-is-found"></a>Jak można zmienić domyślną wiadomość, gdy nie dobrej znaleziono?
+## <a name="how-can-i-change-the-default-message-when-no-good-match-is-found"></a>Jak można zmienić domyślną wiadomość, gdy zostanie odnaleziona żadna zgodna dobre?
 
-Komunikat domyślny jest częścią ustawień w usłudze App service.
-- Przejdź do zasobu usługi aplikacji w portalu Azure
+Domyślny komunikat jest częścią ustawień w usłudze App service.
+- Przejdź do zasobu usługi aplikacji w witrynie Azure portal
 
 ![qnamaker appservice](./media/qnamaker-faq/qnamaker-resource-list-appservice.png)
-- Polecenie **ustawienia** opcji
+- Kliknij pozycję **ustawienia** opcji
 
-![Ustawienia appservice qnamaker](./media/qnamaker-faq/qnamaker-appservice-settings.png)
-- Zmień wartość **DefaultAnswer** ustawienie
-- Uruchom ponownie usługi aplikacji
+![Ustawienia usługi App Service interfejsu qnamaker](./media/qnamaker-faq/qnamaker-appservice-settings.png)
+- Zmień wartość właściwości **DefaultAnswer** ustawienie
+- Uruchom ponownie usługi App service
 
-![ponowne uruchomienie usługi aplikacji qnamaker](./media/qnamaker-faq/qnamaker-appservice-restart.png)
+![ponowne uruchomienie usługi App Service interfejsu qnamaker](./media/qnamaker-faq/qnamaker-appservice-restart.png)
 
-## <a name="why-is-my-sharepoint-link-not-getting-extracted"></a>Dlaczego jest Moje łącza programu SharePoint nie pobierania wyodrębnić?
+## <a name="why-is-my-sharepoint-link-not-getting-extracted"></a>Dlaczego jest Moje łącza programu SharePoint nie wprowadzenie wyodrębnić?
 
-Narzędzie analizuje tylko publiczne adresy URL i nie obsługuje źródeł danych uwierzytelniony w tej chwili. Alternatywnie można pobrać pliku i użyj opcji przekazywania pliku, aby wyodrębnić pytania i odpowiedzi.
+Narzędzie analizuje tylko publiczne adresy URL i nie obsługuje źródeł danych uwierzytelniony w tej chwili. Alternatywnie możesz pobrać plik i użyj opcji przekazywania pliku, aby wyodrębnić pytań i odpowiedzi.
 
 
-## <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>Aktualizacje, wprowadzone do mojej wiedzy nie są uwzględniane publikowania. Dlaczego?
+## <a name="the-updates-that-i-made-to-my-knowledge-base-are-not-reflected-on-publish-why-not"></a>Aktualizacje wprowadzone wiedzy nie są odzwierciedlane publikowanie. Dlaczego?
 
-Każdej operacji edycji w aktualizacji tabeli, testów lub ustawienia, musi zostać zapisany zanim będzie można go opublikować. Należy koniecznie kliknij przycisk Zapisz i uczenia przycisku po każdej operacji edycji.
+Każdej operacji edycji w aktualizacji tabeli, testów i ustawień, musi zostać zapisany zanim można go opublikować. Pamiętaj kliknij przycisk Zapisz, a następnie szkolenie przycisku po każdej operacji edycji.
 
-## <a name="when-should-i-refresh-my-endpoint-keys"></a>Podczas odświeżania klawisze punkt końcowy?
+## <a name="when-should-i-refresh-my-endpoint-keys"></a>Podczas odświeżania Moje klucze punktu końcowego?
 
-Należy odświeżyć klucze punktu końcowego, jeśli zachodzi podejrzenie, że zostały one złamane.
+Jeśli podejrzewasz, że zostały naruszone, należy odświeżyć klucze punktu końcowego.
 
-## <a name="does-the-knowledge-base-support-rich-data-or-multimedia"></a>Czy dane sformatowanego bazy wiedzy pomocy technicznej lub multimedia?
+## <a name="does-the-knowledge-base-support-rich-data-or-multimedia"></a>Czy baza wiedzy obsługuje dane sformatowane lub multimediów?
 
-Baza wiedzy obsługuje znaczniki markdown. Jednak automatycznego wyodrębniania z adresów URL ma ograniczone możliwości konwersji HTML do języka znaczników Markdown. Używanie języka znaczników Markdown w pełni funkcjonalnymi, możesz zmodyfikować zawartość bezpośrednio w tabeli, lub Przekaż bazy wiedzy o zaawansowanych zawartości.
+Baza wiedzy obsługuje znaczniki markdown. Jednak automatycznego wyodrębniania z adresów URL ma ograniczone możliwości konwersji HTML na znaczniki Markdown. Jeśli chcesz używać pełnych możliwości znaczników Markdown, możesz zmodyfikować zawartość bezpośrednio w tabeli lub przekazywanie wiedzy z zawartością sformatowaną.
 
 Multimedia, takich jak obrazy i klipy wideo, nie jest obsługiwana w tej chwili.
 
-## <a name="does-qna-maker-support-non-english-languages"></a>Maker — strona główna obsługuje języków innych niż angielskie?
+## <a name="does-qna-maker-support-non-english-languages"></a>Usługa QnA Maker obsługuje języki inne niż angielski?
 
-Dowiedz się więcej [obsługiwanych języków](./Overview/languages-supported.md).
+Zobacz więcej szczegółów na temat [obsługiwane języki](./Overview/languages-supported.md).
 
-Jeśli masz zawartości z wielu języków, należy utworzyć oddzielny usługi dla każdego języka.
+Jeśli masz zawartości z wielu języków, należy utworzyć osobną usługą dla każdego języka.
 
 ## <a name="do-i-need-to-use-bot-framework-in-order-to-use-qna-maker"></a>Czy do używania narzędzia QnA Maker potrzebna jest struktura botów?
 
-Nie, nie należy używać Bot Framework z Maker — strona główna. Jednak Maker — strona główna jest oferowany jako jeden z kilku szablonów w usłudze Bot platformy Azure. Usługa BOT umożliwia szybkie bot inteligentnego programowanie za pomocą programu Microsoft Bot Framework i działa na serwerze w środowisku bez.
+Nie, nie ma potrzeby platformy Bot Framework za pomocą usługi QnA Maker. Jednak narzędzie QnA Maker jest oferowana jako jeden z kilku szablonów w usłudze Azure Bot Service. Usługa BOT Service umożliwia szybkie tworzenie inteligentnych botów programowania za pomocą narzędzi Microsoft Bot Framework i działa na serwerze mniej środowiska.
 
-## <a name="how-can-i-create-a-bot-with-qna-maker"></a>Jak utworzyć robotów z Maker — strona główna
+## <a name="how-can-i-create-a-bot-with-qna-maker"></a>Jak utworzyć robota przy użyciu usługi QnA Maker?
 
-Postępuj zgodnie z instrukcjami [to](./Tutorials/create-qna-bot.md) dokumentacji, aby utworzyć użytkownika Bot z Azure Bot.
+Postępuj zgodnie z instrukcjami w [to](./Tutorials/create-qna-bot.md) dokumentacji do tworzenie Bota przy użyciu usługi Azure Bot.
 
 ## <a name="how-do-i-embed-the-qna-maker-service-in-my-website"></a>Jak osadzić usługę QnA Maker w witrynie internetowej?
 
-Wykonaj następujące kroki, aby osadzić usługę Maker — strona główna jako formant rozmów w sieci web w witrynie sieci Web:
+Wykonaj następujące kroki, aby osadzić usługę QnA Maker jako kontrolkę czatu internetowego w witrynie sieci Web:
 
-1. Utwórz użytkownika bot — często zadawane pytania zgodnie z instrukcjami [tutaj](./Tutorials/create-qna-bot.md).
-2. Włącz rozmów w sieci web, wykonując kroki [tutaj](https://docs.microsoft.com/en-us/azure/bot-service/bot-service-channel-connect-webchat)
+1. Utwórz bota — często zadawane pytania, postępując zgodnie z instrukcjami [tutaj](./Tutorials/create-qna-bot.md).
+2. Włącz rozmów w sieci web, wykonując kroki [tutaj](https://docs.microsoft.com/azure/bot-service/bot-service-channel-connect-webchat)
 
 

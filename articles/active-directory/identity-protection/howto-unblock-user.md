@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 01/15/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 1bfc70680ecef2ee4fe162f81aac71430c773740
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: c5f251f2de938d4441672c8aa1a6dbc6bd616155
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40005082"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575495"
 ---
 # <a name="azure-active-directory-identity-protection---how-to-unblock-users"></a>Usługa Azure Active Directory Identity Protection - sposób odblokowania użytkowników
 Za pomocą usługi Azure Active Directory Identity Protection można skonfigurować zasady, aby zablokować użytkowników, jeśli skonfigurowane warunki są spełnione. Zazwyczaj zablokowany użytkownik kontaktów pomocy technicznej w celu zostają odblokowane. W tym artykule opisano kroki należy wykonać, aby odblokować zablokowany użytkownik.
@@ -52,8 +52,8 @@ Aby odblokować podejrzane logowania, dostępne są następujące opcje:
 ## <a name="unblocking-accounts-at-risk"></a>Odblokowywanie konta narażone na ryzyko
 Aby odblokować konto, na ryzyko, dostępne są następujące opcje:
 
-1. **Resetuj hasło** — możesz zresetować hasła użytkownika. Aby uzyskać więcej informacji, zobacz [resetowania ręcznego bezpieczne hasło](overview.md#manual-secure-password-reset).
-2. **Odrzuć wszystkie zdarzenia o podwyższonym ryzyku** — bloki zasad ryzyka użytkownika przez użytkownika, jeśli użytkownik skonfigurowany ryzyka poziom blokuje dostęp został osiągnięty. Użytkownika można zmniejszyć jego poziom ryzyka przez ręczne zamknięcie zgłoszonych zdarzeń o podwyższonym ryzyku. Aby uzyskać więcej informacji, zobacz [Ręczne zamykanie zdarzeń o podwyższonym ryzyku](overview.md#closing-risk-events-manually).
+1. **Resetuj hasło** — możesz zresetować hasła użytkownika. 
+2. **Odrzuć wszystkie zdarzenia o podwyższonym ryzyku** — bloki zasad ryzyka użytkownika przez użytkownika, jeśli użytkownik skonfigurowany ryzyka poziom blokuje dostęp został osiągnięty. Użytkownika można zmniejszyć jego poziom ryzyka przez ręczne zamknięcie zgłoszonych zdarzeń o podwyższonym ryzyku. 
 3. **Wykluczone z zasad** — Jeśli uważasz, że bieżącą konfigurację zasad logowania jest przyczyną problemów pod kątem określonych użytkowników, można wykluczyć użytkowników z niego. Aby uzyskać więcej informacji, zobacz [usługi Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 4. **Wyłącz zasady** — Jeśli uważasz, że zasad konfiguracji powoduje problemy dla wszystkich użytkowników, można wyłączyć zasad. Aby uzyskać więcej informacji, zobacz [usługi Azure Active Directory Identity Protection](../active-directory-identityprotection.md).
 

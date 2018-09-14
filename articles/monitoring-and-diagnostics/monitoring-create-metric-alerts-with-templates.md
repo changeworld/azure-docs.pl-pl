@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 4/26/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 7289259214f90507c5b9cf527f19f0cf7026798c
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: be0ec31a05c0c1454e1af58b4a9c4ca959acbecf
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391457"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45577164"
 ---
 # <a name="create-a-metric-alert-with-a-resource-manager-template"></a>Tworzenie alertu metryki za pomocą szablonu usługi Resource Manager
 W tym artykule pokazano, jak za pomocą [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) skonfigurować [nowszych alertów metryk](monitoring-near-real-time-metric-alerts.md) w usłudze Azure Monitor. Szablony usługi Resource Manager umożliwiają programowe Konfigurowanie alertów w sposób spójny i odtworzenia w środowiskach. Nowszych alertów metryk są obecnie dostępne na [tego zestawu typów zasobów](monitoring-near-real-time-metric-alerts.md#metrics-and-dimensions-supported).
@@ -184,7 +184,7 @@ Zapisz poniższe dane json jako simplemetricalert.json na potrzeby ten przewodni
 }
 ```
 
-Opis schematu i właściwości dla reguły alertu [znajduje się tutaj](https://docs.microsoft.com/en-us/rest/api/monitor/metricalerts/createorupdate).
+Opis schematu i właściwości dla reguły alertu [znajduje się tutaj](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate).
 
 Można ustawić wartości dla parametrów, w wierszu polecenia lub przy użyciu pliku parametrów. Przykładowy plik parametrów znajduje się poniżej. 
 

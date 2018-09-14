@@ -1,27 +1,28 @@
 ---
-title: Limity usługi QnA Maker — usług Azure Cognitive Services | Dokumentacja firmy Microsoft
-description: Limity usługi QnA Maker
+title: Limity i granice — QnA Maker
+titleSuffix: Azure Cognitive Services
+description: Pełną listę limitów przez narzędzie QnA Maker.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: saneppal
-ms.openlocfilehash: 93471faab9aac94616c770cbee21fb0364f73639
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.date: 09/12/2018
+ms.author: nstulasi
+ms.openlocfilehash: da1de0c36033823bd8f615411eed183ffe9701b6
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39501891"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574552"
 ---
 # <a name="qna-maker-limits"></a>Limity usługi QnA Maker
 Pełną listę limitów przez narzędzie QnA Maker.
 
 ## <a name="knowledge-bases"></a>Bazy wiedzy
 
-* Maksymalna liczba baz wiedzy na podstawie [limity warstwy usługi Azure Search](https://docs.microsoft.com/en-us/azure/search/search-limits-quotas-capacity)
+* Maksymalna liczba baz wiedzy na podstawie [limity warstwy usługi Azure Search](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)
 
 |**Warstwy usługi Azure Search** | **Bezpłatna** | **Podstawowa** |**S1** | **S2**| **S3** |**WYSOKA GĘSTOŚĆ S3**|
 |---|---|---|---|---|---|----|
@@ -32,7 +33,7 @@ Pełną listę limitów przez narzędzie QnA Maker.
 * Maksymalna liczba łącz głębokiego, które mogą być przeszukiwane do wyodrębnienia znacznie ze stron HTML — często zadawane pytania: 20
 
 ## <a name="metadata-limits"></a>Limity metadanych
-* Maksymalna liczba pól metadanych w bazie wiedzy, na podstawie [limity warstwy usługi Azure Search](https://docs.microsoft.com/en-us/azure/search/search-limits-quotas-capacity)
+* Maksymalna liczba pól metadanych w bazie wiedzy, na podstawie [limity warstwy usługi Azure Search](https://docs.microsoft.com/azure/search/search-limits-quotas-capacity)
 
 |**Warstwy usługi Azure Search** | **Bezpłatna** | **Podstawowa** |**S1** | **S2**| **S3** |**WYSOKA GĘSTOŚĆ S3**|
 |---|---|---|---|---|---|----|
