@@ -10,12 +10,12 @@ ms.topic: overview
 ms.date: 04/08/2018
 ms.author: sngun
 ms.custom: mvc
-ms.openlocfilehash: 488ec66eb485761d484e305c298dfb9117745a42
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: b9c4c2595bb7d5347397bff95c90fbdc91902bcd
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145285"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696452"
 ---
 # <a name="welcome-to-azure-cosmos-db"></a>Azure Cosmos DB — Zapraszamy!
 
@@ -40,7 +40,7 @@ Jako globalnie dystrybuowana, wielomodelowa usługa bazy danych usługa Azure Co
         * [Interfejs API usługi SQL](sql-api-introduction.md): aparat bazy danych JSON bez schematu z zaawansowanymi możliwościami wysyłania zapytań SQL.
         * [Interfejs API usługi MongoDB](mongodb-introduction.md): wysoce skalowalna *baza danych MongoDB jako usługa* obsługiwana przez platformę Azure Cosmos DB. Zgodny z istniejącymi bibliotekami, sterownikami, narzędziami i aplikacjami MongoDB.
         * [Interfejs API rozwiązania Cassandra](cassandra-introduction.md): globalnie dystrybuowane rozwiązanie Cassandra jako usługa obsługiwane przez platformę Azure Cosmos DB. Zgodny z istniejącymi bibliotekami, sterownikami, narzędziami i aplikacjami [Apache Cassandra](https://cassandra.apache.org/).
-        * [Interfejs API programu Gremlin](graph-introduction.md): w pełni zarządzana, skalowalna w poziomie usługa bazy danych programu Graph, która ułatwia tworzenie i uruchamianie aplikacji działających z zestawami danych o wysokim stopniu połączenia, obsługującymi otwarte interfejsy API programu Graph (na podstawie [specyfikacji Apache TinkerPop](http://tinkerpop.apache.org/), Apache Gremlin).
+        * [Interfejs API języka Gremlin](graph-introduction.md): w pełni zarządzana, skalowalna w poziomie usługa bazy danych programu Graph, która ułatwia tworzenie i uruchamianie aplikacji działających z zestawami danych o wysokim stopniu połączenia i obsługującymi otwarte interfejsy API języka Gremlin (na podstawie [specyfikacji Apache TinkerPop](http://tinkerpop.apache.org/), Apache Gremlin).
         * [Interfejs API tabel](table-introduction.md): usługa bazy danych wartości klucza utworzona w celu zapewnienia funkcji premium (na przykład automatycznego indeksowania, gwarantowanego małego opóźnienia, globalnej dystrybucji) istniejącym aplikacjom usługi Azure Table Storage bez wprowadzania żadnych zmian w aplikacji.
         * Dodatkowe modele danych i interfejsy API będą dostępne wkrótce!
 

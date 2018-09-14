@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 07/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f6f3d9625e5469823a9c0c6eb6b549a6eaaeb0e9
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 1a7f91a0d15dd67d86f83485b4aad01a3bae37b3
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "41924817"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699073"
 ---
 # <a name="tutorial-stream-azure-ad-logs-to-an-azure-event-hub-preview"></a>Samouczek: przesyłanie strumieniowe dzienników usługi Azure AD do centrum zdarzeń platformy Azure (wersja zapoznawcza)
 
@@ -34,7 +34,7 @@ Aby używać tej funkcji, potrzebujesz następujących elementów:
 * Subskrypcja platformy Azure. Jeśli nie masz subskrypcji platformy Azure, możesz skorzystać z [bezpłatnej wersji próbnej](https://azure.microsoft.com/free/).
 * Dzierżawa usługi Azure AD.
 * Użytkownik będący *administratorem globalnym* lub *administratorem zabezpieczeń* dla tej dzierżawy usługi Azure AD.
-* Przestrzeń nazw usługi Event Hubs i centrum zdarzeń w ramach subskrypcji platformy Azure. Dowiedz się, jak [utworzyć centrum zdarzeń](https://docs.microsoft.com/azure/event-hubs/event-hubs-create.md).
+* Przestrzeń nazw usługi Event Hubs i centrum zdarzeń w ramach subskrypcji platformy Azure. Dowiedz się, jak [utworzyć centrum zdarzeń](https://docs.microsoft.com/azure/event-hubs/event-hubs-create).
 
 ## <a name="archive-logs-to-an-event-hub"></a>Archiwizowanie dzienników w centrum zdarzeń
 
@@ -87,6 +87,6 @@ Po wyświetleniu danych w centrum zdarzeń możesz uzyskać dostęp do danych i 
 ## <a name="next-steps"></a>Następne kroki
 
 * [Integrate Azure AD logs with Splunk by using Azure Monitor (Integrowanie dzienników usługi Azure AD z narzędziem Splunk przy użyciu usługi Azure Monitor)](tutorial-integrate-activity-logs-with-splunk.md)
-* [Install the Azure AD Sumo Logic App and view dashboards (Instalowanie aplikacji Sumo Logic usługi Azure AD i wyświetlanie pulpitów nawigacyjnych)](https://help.sumologic.com/Send-Data/Applications-and-Other-Data-Sources/Azure_Active_Directory/Install_the_Azure_Active_Directory_App_and_View_the_Dashboards)
+* [Integrate Azure AD logs with SumoLogic by using Azure Monitor (Integrowanie dzienników usługi Azure AD z narzędziem SumoLogic przy użyciu usługi Azure Monitor)](howto-integrate-activity-logs-with-sumologic.md)
 * [Interpret audit logs schema in Azure Monitor (Interpretowanie schematu dzienników inspekcji w usłudze Azure Monitor)](reference-azure-monitor-audit-log-schema.md)
 * [Interpret sign-in logs schema in Azure Monitor (Interpretowanie schematu dzienników logowania w usłudze Azure Monitor)](reference-azure-monitor-sign-ins-log-schema.md)

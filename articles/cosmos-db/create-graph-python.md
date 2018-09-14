@@ -1,6 +1,6 @@
 ---
-title: 'Szybki start: interfejs API programu Graph z językiem Python — Azure Cosmos DB | Microsoft Docs'
-description: W tym przewodniku Szybki start przedstawiono używanie interfejsu API programu Graph usługi Azure Cosmos DB do tworzenia aplikacji konsolowej przy użyciu witryny Azure Portal i języka Python
+title: 'Szybki start: interfejs API języka Gremlin i język Python — Azure Cosmos DB | Microsoft Docs'
+description: W tym przewodniku Szybki start przedstawiono użycie interfejsu API języka Gremlin usługi Azure Cosmos DB do utworzenia aplikacji konsolowej przy użyciu witryny Azure Portal i języka Python
 services: cosmos-db
 author: luisbosquez
 manager: kfile
@@ -11,16 +11,25 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 01/22/2018
 ms.author: lbosq
-ms.openlocfilehash: a29a27ec633f5f67bb8cac4b9a4823c5f0966f8e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: d01ee78c4e3fdf0eab694deaeed03e0f61989851
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38485465"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699451"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-python-and-the-azure-portal"></a>Azure Cosmos DB: tworzenie grafowej bazy danych przy użyciu języka Python i witryny Azure Portal
 
-W tym przewodniku Szybki start przedstawiono używanie języka Python i [interfejsu API programu Graph](graph-introduction.md) usługi Azure Cosmos DB do tworzenia aplikacji konsolowej przez sklonowanie przykładu z usługi GitHub. Ten przewodnik Szybki start przeprowadzi Cię również przez tworzenie konta usługi Azure Cosmos DB przy użyciu portalu internetowego platformy Azure.   
+> [!div class="op_single_selector"]
+> * [Konsola Gremlin](create-graph-gremlin-console.md)
+> * [.NET](create-graph-dotnet.md)
+> * [Java](create-graph-java.md)
+> * [Node.js](create-graph-nodejs.md)
+> * [Python](create-graph-python.md)
+> * [PHP](create-graph-php.md)
+>  
+
+W tym przewodniku Szybki start przedstawiono użycie języka Python i [interfejsu API języka Gremlin](graph-introduction.md) usługi Azure Cosmos DB do utworzenia aplikacji konsolowej przez sklonowanie przykładu z usługi GitHub. Ten przewodnik Szybki start przeprowadzi Cię również przez tworzenie konta usługi Azure Cosmos DB przy użyciu portalu internetowego platformy Azure.   
 
 Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu globalnego rozproszenia i możliwości skalowania w poziomie w usłudze Azure Cosmos DB można szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, tabel, par klucz/wartość i grafowe.  
 
@@ -34,7 +43,7 @@ Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firm
 Ponadto:
 * [Python](https://www.python.org/downloads/) — wersja 3.5 lub nowsza
 * [Menedżer pakietów pip](https://pip.pypa.io/en/stable/installing/)
-* [Git](http://git-scm.com/)
+* [Usługa Git](http://git-scm.com/)
 * [Sterownik języka Python dla języka Gremlin](https://github.com/apache/tinkerpop/tree/master/gremlin-python)
 
 ## <a name="create-a-database-account"></a>Tworzenie konta bazy danych
@@ -49,7 +58,7 @@ Przed utworzeniem bazy danych grafów musisz utworzyć konto bazy danych Gremlin
 
 ## <a name="clone-the-sample-application"></a>Klonowanie przykładowej aplikacji
 
-Teraz przejdźmy do pracy z kodem. Sklonujemy aplikację interfejsu API programu Graph z usługi GitHub, ustawimy parametry połączenia i uruchomimy ją. Zobaczysz, jak łatwo jest pracować programowo z danymi.  
+Teraz przejdźmy do pracy z kodem. Sklonujemy aplikację interfejsu API języka Gremlin z usługi GitHub, ustawimy parametry połączenia i uruchomimy ją. Zobaczysz, jak łatwo jest pracować programowo z danymi.  
 
 1. Otwórz wiersz polecenia, utwórz nowy folder o nazwie git-samples, a następnie zamknij wiersz polecenia.
 

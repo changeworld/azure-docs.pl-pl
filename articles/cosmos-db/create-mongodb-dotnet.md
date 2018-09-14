@@ -11,14 +11,23 @@ ms.devlang: dotnet
 ms.topic: quickstart
 ms.date: 05/22/2018
 ms.author: sclyon
-ms.openlocfilehash: a87b4c50beea21f9d7721b60ae691eeafaedfc05
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 7ab02cf2cc9a25a5c4c7aa6d782d37d932dc8369
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42022405"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701955"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-web-app-with-net-and-the-azure-portal"></a>Azure Cosmos DB: Tworzenie aplikacji internetowej interfejsu API usługi MongoDB za pomocą programu .NET i witryny Azure Portal
+
+> [!div class="op_single_selector"]
+> * [.NET](create-mongodb-dotnet.md)
+> * [Java](create-mongodb-java.md)
+> * [Node.js](create-mongodb-nodejs.md)
+> * [Python](create-mongodb-flask.md)
+> * [Xamarin](create-mongodb-xamarin.md)
+> * [Golang](create-mongodb-golang.md)
+>  
 
 Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki dystrybucji globalnej i możliwości skalowania poziomego w usłudze Azure Cosmos DB możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
 

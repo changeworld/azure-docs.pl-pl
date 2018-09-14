@@ -1,5 +1,5 @@
 ---
-title: Tworzenie aplikacji Node.js usługi Azure Cosmos DB za pomocą interfejsu API programu Graph | Microsoft Docs
+title: Tworzenie aplikacji Node.js usługi Azure Cosmos DB za pomocą interfejsu API języka Gremlin | Microsoft Docs
 description: Przykładowy kod Node.js, którego można używać do nawiązywania połączeń z usługą Azure Cosmos DB i wykonywania w niej zapytań
 services: cosmos-db
 author: luisbosquez
@@ -11,24 +11,33 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 01/08/2018
 ms.author: lbosq
-ms.openlocfilehash: 84c92b1c0b2977ca15b82a0884870d78d895a761
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 5f7e2a30ee4ea069e8c08187312f09e33a5a921a
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38543776"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43700038"
 ---
-# <a name="azure-cosmos-db-build-a-nodejs-application-by-using-graph-api"></a>Azure Cosmos DB: Tworzenie aplikacji Node.js za pomocą interfejsu API programu Graph
+# <a name="azure-cosmos-db-build-a-nodejs-application-by-using-gremlin-api"></a>Azure Cosmos DB: tworzenie aplikacji Node.js za pomocą interfejsu API języka Gremlin
 
-Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
+> [!div class="op_single_selector"]
+> * [Konsola Gremlin](create-graph-gremlin-console.md)
+> * [.NET](create-graph-dotnet.md)
+> * [Java](create-graph-java.md)
+> * [Node.js](create-graph-nodejs.md)
+> * [Python](create-graph-python.md)
+> * [PHP](create-graph-php.md)
+>  
 
-Ten przewodnik Szybki start przedstawia sposób tworzenia konta [interfejsu API programu Graph](graph-introduction.md) usługi Azure Cosmos DB, bazy danych i grafu przy użyciu witryny Azure Portal. Następnie przy użyciu sterownika open source [Node.js Gremlin](https://www.npmjs.com/package/gremlin) zostanie utworzona i uruchomiona aplikacja konsoli.
+Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki dystrybucji globalnej i możliwości skalowania poziomego w usłudze Azure Cosmos DB możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
+
+Ten przewodnik Szybki start przedstawia sposób tworzenia konta [interfejsu API języka Gremlin](graph-introduction.md) usługi Azure Cosmos DB, bazy danych i grafu przy użyciu witryny Azure Portal. Następnie przy użyciu sterownika open source [Node.js Gremlin](https://www.npmjs.com/package/gremlin) zostanie utworzona i uruchomiona aplikacja konsoli.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed uruchomieniem tego przykładu muszą być spełnione następujące wymagania wstępne:
 * [Node.js](https://nodejs.org/en/) w wersji 0.10.29 lub nowszej
-* [Git](http://git-scm.com/)
+* [Usługa Git](http://git-scm.com/)
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
@@ -42,7 +51,7 @@ Przed uruchomieniem tego przykładu muszą być spełnione następujące wymagan
 
 ## <a name="clone-the-sample-application"></a>Klonowanie przykładowej aplikacji
 
-Teraz sklonujemy aplikację interfejsu API programu Graph z repozytorium GitHub, ustawimy parametry połączenia i uruchomimy ją. Zobaczysz, jak łatwo jest pracować programowo z danymi. 
+Teraz sklonujemy aplikację interfejsu API języka Gremlin z repozytorium GitHub, ustawimy parametry połączenia i uruchomimy ją. Zobaczysz, jak łatwo jest pracować programowo z danymi. 
 
 1. Otwórz wiersz polecenia, utwórz nowy folder o nazwie git-samples, a następnie zamknij wiersz polecenia.
 
@@ -50,7 +59,7 @@ Teraz sklonujemy aplikację interfejsu API programu Graph z repozytorium GitHub,
     md "C:\git-samples"
     ```
 
-2. Otwórz okno terminala usługi Git, np. git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
+2. Otwórz okno terminalu usługi Git, na przykład git bash, i użyj polecenia `cd`, aby przejść do nowego folderu instalacji aplikacji przykładowej.
 
     ```bash
     cd "C:\git-samples"

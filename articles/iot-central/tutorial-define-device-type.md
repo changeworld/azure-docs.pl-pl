@@ -9,12 +9,12 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 manager: peterpr
-ms.openlocfilehash: 4c850cd98280940c53a07c70c9c478f9e20e2963
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a2601f55bbc7e99321689afdafcab3135b94bd5b
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41920347"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702548"
 ---
 # <a name="tutorial-define-a-new-device-type-in-your-azure-iot-central-application"></a>Samouczek: Definiowanie nowego typu urządzenia w aplikacji usługi Azure IoT Central
 
@@ -280,22 +280,22 @@ Ustawienia, właściwości, właściwości urządzenia oraz polecenia to różne
 
 ## <a name="use-properties--device-properties"></a>Korzystanie z właściwości/właściwości urządzenia
 
-*Właściwości* umożliwiają przechowywanie informacji o urządzeniu w aplikacji. W tej sekcji do szablonu urządzenia **Połączony klimatyzator** dodawane są właściwości urządzenia do przechowywania numeru seryjnego i wersji oprogramowania układowego. Należy pamiętać, że są to właściwości tylko do odczytu zgłaszane przez urządzenie — nie można przypisać do nich wartości. Właściwości, do których można przypisać wartości, obejmują lokalizację urządzenia, informacje o własności i datę/godzinę ostatniej usługi dla urządzenia.
+*Właściwości* umożliwiają przechowywanie informacji o urządzeniu w aplikacji. W tej sekcji do szablonu urządzenia **Połączony klimatyzator** są dodawane właściwości chmury na potrzeby przechowywania lokalizacji urządzenia i daty ostatniego serwisowania. Należy zauważyć, że obie właściwości to edytowalne właściwości urządzenia. Dostępne są także właściwości tylko do odczytu zgłaszane przez urządzenie, których nie można zmienić, takie jak numer seryjny urządzenia i wersja oprogramowania układowego.
  
 1. Przejdź do strony **Właściwości** szablonu urządzenia **Połączony klimatyzator**:
 
     ![Przygotowanie do dodania właściwości](./media/tutorial-define-device-type/deviceaddproperty.png)
 
-    Istnieje możliwość utworzenia właściwości urządzenia różnych typów, takich jak tekst lub liczby. Aby dodać właściwość numeru seryjnego do szablonu urządzenia, wybierz pozycję **Tekst**.
+    Istnieje możliwość utworzenia właściwości urządzenia różnych typów, takich jak tekst lub liczby. Aby dodać właściwość lokalizacji do szablonu urządzenia, wybierz pozycję **Lokalizacja**.
 
-2. Aby skonfigurować właściwość numeru seryjnego, skorzystaj z informacji w poniższej tabeli:
+2. Aby skonfigurować właściwość lokalizacji, skorzystaj z informacji w poniższej tabeli:
 
     | Pole                | Wartość                |
     | -------------------- | -------------------- |
-    | Nazwa wyświetlana         | Numer seryjny        |
-    | Nazwa pola           | serialNumber         |
-    | Wartość początkowa        | cac00001             |
-    | Opis          | Numer seryjny urządzenia |
+    | Nazwa wyświetlana         | Lokalizacja             |
+    | Nazwa pola           | location             |
+    | Wartość początkowa        | Seattle, WA          |
+    | Opis          | Lokalizacja urządzenia      |
 
     Pozostaw wartości domyślne w pozostałych polach.
 
@@ -303,16 +303,16 @@ Ustawienia, właściwości, właściwości urządzenia oraz polecenia to różne
 
     Wybierz pozycję **Zapisz**.
 
-3. Aby dodać wersję oprogramowania układowego do właściwości urządzenia dla szablonu urządzenia, wybierz pozycję **Tekst**.
+3. Aby dodać właściwość daty ostatniego serwisowania do szablonu urządzenia, wybierz pozycję **Data**.
 
-4. Aby skonfigurować właściwość wersji oprogramowania układowego dla urządzenia, skorzystaj z informacji w poniższej tabeli:
+4. Aby skonfigurować właściwość daty ostatniego serwisowania, skorzystaj z informacji w poniższej tabeli:
 
     | Pole                | Wartość                   |
     | -------------------- | ----------------------- |
-    | Nazwa wyświetlana         | Wersja oprogramowania układowego        |
-    | Nazwa pola           | firmwareVersion         |
-    | Wartość początkowa        | 0.1                     |
-    | Opis          | Wersja oprogramowania układowego urządzenia |
+    | Nazwa wyświetlana         | Data ostatniego serwisowania       |
+    | Nazwa pola           | serviceDate             |
+    | Wartość początkowa        | 2018-01-01                |
+    | Opis          | Ostatnio serwisowane           |
 
     ![Konfigurowanie właściwości urządzenia](./media/tutorial-define-device-type/configureproperties2.png)
 

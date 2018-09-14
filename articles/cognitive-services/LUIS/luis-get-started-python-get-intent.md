@@ -1,33 +1,36 @@
 ---
-title: Samouczek dotyczący wywoływania aplikacji Language Understanding (LUIS) przy użyciu języka Python | Microsoft Docs
-description: Z tego samouczka dowiesz się, jak wywołać aplikację LUIS przy użyciu języka Python.
+title: Przewodnik Szybki start dotyczący wywoływania aplikacji Language Understanding (LUIS) przy użyciu języka Python | Microsoft Docs
+description: Z tego przewodnika Szybki start dowiesz się, jak wywołać aplikację usługi LUIS przy użyciu języka Python.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: tutorial
-ms.date: 12/13/2017
-ms.author: v-geberr
-ms.openlocfilehash: 8671e81f6d8c18c17f34843d2c1b8460306daeb5
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.topic: quickstart
+ms.date: 06/27/2018
+ms.author: diberry
+ms.openlocfilehash: bc7ae912d762a98c34b9a1b2d6a82d5630c4794b
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264588"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "43771755"
 ---
-# <a name="tutorial-call-a-luis-endpoint-using-python"></a>Samouczek: wywoływanie punktu końcowego aplikacji LUIS przy użyciu języka Python
-Przekazuj wypowiedzi do punktu końcowego aplikacji LUIS i uzyskuj intencje oraz jednostki.
+# <a name="quickstart-call-a-luis-endpoint-using-python"></a>Szybki start: wywoływanie punktu końcowego aplikacji LUIS przy użyciu języka Python
+W tym przewodniku Szybki start przekażesz wypowiedzi do punktu końcowego aplikacji LUIS i uzyskasz intencje oraz jednostki.
 
 <!-- green checkmark -->
+<!--
 > [!div class="checklist"]
-> * Tworzenie subskrypcji usługi LUIS i kopiowanie wartości klucza do późniejszego użytku
-> * Wyświetlanie wyników punktu końcowego aplikacji LUIS w przeglądarce dla publicznej przykładowej aplikacji IoT
-> * Tworzenie aplikacji konsoli programu Visual Studio w języku C# w celu wykonywania wywołań HTTPS do punktu końcowego usługi LUIS
+> * Create LUIS subscription and copy key value for later use
+> * View LUIS endpoint results from browser to public sample IoT app
+> * Create Visual Studio C# console app to make HTTPS call to LUIS endpoint
+-->
 
-Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS][LUIS] w celu tworzenia aplikacji LUIS.
+Na potrzeby tego artykułu jest wymagane bezpłatne konto usługi [LUIS](luis-reference-regions.md#luis-website), które umożliwia utworzenie aplikacji usługi LUIS.
 
-## <a name="create-luis-subscription-key"></a>Tworzenie klucza subskrypcji usługi LUIS
+<a name="create-luis-subscription-key"></a>
+## <a name="create-luis-endpoint-key"></a>Tworzenie klucza punktu końcowego usługi LUIS
 Aby wykonywać wywołania przykładowej aplikacji LUIS używanej w tym przewodniku, potrzebny jest klucz interfejsu API usług Cognitive Services. 
 
 Aby uzyskać klucz interfejsu API, wykonaj następujące czynności: 
@@ -36,7 +39,7 @@ Aby uzyskać klucz interfejsu API, wykonaj następujące czynności:
 
 2. Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com. 
 
-3. Aby uzyskać klucz, postępuj zgodnie z instrukcjami w temacie [Tworzenie kluczy subskrypcji przy użyciu platformy Azure](./luis-how-to-azure-subscription.md).
+3. Aby uzyskać klucz, postępuj zgodnie z instrukcjami w temacie [Tworzenie kluczy punktu końcowego przy użyciu platformy Azure](./luis-how-to-azure-subscription.md).
 
 4. Wróć do witryny internetowej usługi [LUIS](luis-reference-regions.md) i zaloguj się przy użyciu konta platformy Azure. 
 
@@ -46,7 +49,7 @@ Aby uzyskać klucz interfejsu API, wykonaj następujące czynności:
 
 Aby zrozumieć, co zwraca aplikacja LUIS, możesz wkleić adres URL przykładowej aplikacji LUIS w oknie przeglądarki. Przykładowa aplikacja to aplikacja IoT, która wykrywa, czy użytkownik chce włączyć, czy wyłączyć światła.
 
-1. Punkt końcowy przykładowej aplikacji ma następujący format: `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=<YOUR_API_KEY>&verbose=false&q=turn%20on%20the%20bedroom%20light`. Skopiuj ten adres URL i zastąp wartość pola `subscription-key` swoim kluczem subskrypcji.
+1. Punkt końcowy przykładowej aplikacji ma następujący format: `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=<YOUR_API_KEY>&verbose=false&q=turn%20on%20the%20bedroom%20light`. Skopiuj ten adres URL i zastąp wartość pola `subscription-key` swoim kluczem punktu końcowego.
 2. Wklej adres URL w oknie przeglądarki, a następnie naciśnij klawisz Enter. W przeglądarce zostanie wyświetlony wynik w formacie JSON, który wskazuje, że usługa LUIS wykryła intencję `HomeAutomation.TurnOn` i jednostkę `HomeAutomation.Room` o wartości `bedroom`.
 
     ![Wynik w formacie JSON z informacją o wykryciu intencji TurnOn](./media/luis-get-started-node-get-intent/turn-on-bedroom.png)
@@ -59,25 +62,24 @@ Aby zrozumieć, co zwraca aplikacja LUIS, możesz wkleić adres URL przykładowe
 
 Aby uzyskać dostęp do tego samego wyniku, który został wyświetlony w oknie przeglądarki w poprzednim kroku, można użyć języka Python.
 
-1. Skopiuj jeden z następujących fragmentów kodu:
+1. Skopiuj jeden z następujących fragmentów kodu do pliku o nazwie `quickstart-call-endpoint.py`:
 
-   [!code-python[Console app code that calls a LUIS endpoint for Python 2.7](~/samples-luis/documentation-samples/endpoint-api-samples/python/quickstart-call-endpoint-2-7.py)]
+   [!code-python[Console app code that calls a LUIS endpoint for Python 2.7](~/samples-luis/documentation-samples/quickstarts/analyze-text/python/2.x/quickstart-call-endpoint-2-7.py)]
 
-   [!code-python[Console app code that calls a LUIS endpoint for Python 3.6](~/samples-luis/documentation-samples/endpoint-api-samples/python/quickstart-call-endpoint-3-6.py)]
+   [!code-python[Console app code that calls a LUIS endpoint for Python 3.6](~/samples-luis/documentation-samples/quickstarts/analyze-text/python/3.x/quickstart-call-endpoint-3-6.py)]
 
+2. Zastąp wartość pola `Ocp-Apim-Subscription-Key` swoim kluczem punktu końcowego usługi LUIS.
 
-2. Zastąp wartość pola `Ocp-Apim-Subscription-Key` swoim kluczem subskrypcji usługi LUIS.
+3. Zainstaluj zależności przy użyciu polecenia `pip install requests`.
 
-3. Uruchom skrypt. Wyświetli on ten sam wynik JSON, który został wyświetlony wcześniej w oknie przeglądarki.
+4. Uruchom skrypt przy użyciu polecenia `python ./quickstart-call-endpoint.py`. Wyświetli ona ten sam wynik JSON, który został wyświetlony wcześniej w oknie przeglądarki.
 <!-- 
 ![Console window displays JSON result from LUIS](./media/luis-get-started-python-get-intent/console-turn-on.png)
 -->
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Dwa zasoby utworzone w tym samouczku to klucz subskrypcji usługi LUIS i projekt w języku C#. Usuń klucz subskrypcji usługi LUIS z witryny Azure Portal. Zamknij projekt programu Visual Studio i usuń katalog z systemu plików. 
+Dwa zasoby utworzone w tym samouczku to klucz punktu końcowego usługi LUIS i projekt w języku C#. Usuń klucz punktu końcowego usługi LUIS z witryny Azure Portal. Zamknij projekt programu Visual Studio i usuń katalog z systemu plików. 
 
 ## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
 > [Dodawanie wypowiedzi](luis-get-started-python-add-utterance.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

@@ -17,12 +17,12 @@ ms.date: 07/17/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f2ebe6c7a70e4e574ea4953ca9ed01801190f80e
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 924269e16ab09cfd144955d3bd462cab7b37aaaf
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917139"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43381758"
 ---
 # <a name="deploying-active-directory-federation-services-in-azure"></a>Wdrażanie usług Active Directory Federation Services na platformie Azure
 Usługi AD FS udostępniają uproszczone, zabezpieczone funkcje federacji tożsamości i logowania jednokrotnego (SSO) w sieci Web. Federacja z usługą Azure AD lub O365 umożliwia użytkownikom uwierzytelnianie się przy użyciu poświadczeń lokalnych i uzyskiwanie dostępu do wszystkich zasobów w chmurze. Tym samym ważne staje się zapewnienie infrastruktury usług AD FS o wysokiej dostępności, która gwarantuje dostęp zarówno do zasobów lokalnych, jak i przechowywanych w chmurze. Wdrożenie usług AD FS na platformie Azure może pomóc w osiągnięciu wymaganej wysokiej dostępności w prosty sposób.
@@ -187,12 +187,14 @@ Wybierz nowo utworzony wewnętrzny moduł równoważenia obciążenia na panelu 
 
 **6.3. Konfigurowanie sondy**
 
-W panelu ustawień wewnętrznego modułu równoważenia obciążenia wybierz pozycję Sondy.
+W panelu ustawień wewnętrznego modułu równoważenia obciążenia wybierz pozycję Sondy kondycji.
 
 1. Kliknij pozycję Dodaj.
-2. Podaj szczegóły sondy a. **Nazwa**: nazwa sondy b. **Protokół**: TCP c. **Port**: 443 (HTTPS) d. **Interwał**: 5 (wartość domyślna) — odstęp czasu, z jakim wewnętrzny moduł równoważenia obciążenia będzie sondował maszyny w puli zaplecza e. **Limit progu złej kondycji**: 2 (wartość domyślna) — wartość progowa liczby kolejnych niepowodzeń sondowania, po których wewnętrzny moduł równoważenia obciążenia uzna, że maszyna w puli zaplecza nie odpowiada i zaprzestanie wysyłania ruchu do tej maszyny.
+2. Podaj szczegóły sondy a. **Nazwa**: nazwa sondy b. **Protokół**: HTTP c. **Port**: 80 (HTTP) d. **Ścieżka**: /adfs/probe e. **Interwał**: 5 (wartość domyślna) — odstęp czasu, z jakim wewnętrzny moduł równoważenia obciążenia będzie sondował maszyny w puli zaplecza f. **Limit progu złej kondycji**: 2 (wartość domyślna) — wartość progowa liczby kolejnych niepowodzeń sondowania, po których wewnętrzny moduł równoważenia obciążenia uzna, że maszyna w puli zaplecza nie odpowiada i zaprzestanie wysyłania ruchu do tej maszyny.
 
 ![Konfigurowanie sondy wewnętrznego modułu równoważenia obciążenia](./media/active-directory-aadconnect-azure-adfs/ilbdeployment4.png)
+
+Używamy punktu końcowego /adfs/probe, który został utworzony jawnie do kontroli kondycji w środowisku usług AD FS, gdzie nie można przeprowadzić pełnej kontroli ścieżki protokołu HTTPS.  Jest to znacznie lepsze rozwiązanie niż podstawowa kontrola portu 443, która nie odzwierciedla precyzyjnie stanu nowoczesnego wdrożenia usług AD FS.  Więcej informacji na ten temat można znaleźć pod adresem https://blogs.technet.microsoft.com/applicationproxyblog/2014/10/17/hardware-load-balancer-health-checks-and-web-application-proxy-ad-fs-2012-r2/.
 
 **6.4. Tworzenie reguł równoważenia obciążenia**
 

@@ -11,18 +11,27 @@ ms.devlang: java
 ms.topic: quickstart
 ms.date: 03/26/2018
 ms.author: lbosq
-ms.openlocfilehash: ac9d0291b38e7a8679e9c6e7707e13a90554b914
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0c174b6979e1601d992b0e19d216d1b7211e51d3
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38582522"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43701035"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-java-and-the-azure-portal"></a>Azure Cosmos DB: Tworzenie bazy danych grafów przy użyciu języka Java i witryny Azure Portal
 
+> [!div class="op_single_selector"]
+> * [Konsola Gremlin](create-graph-gremlin-console.md)
+> * [.NET](create-graph-dotnet.md)
+> * [Java](create-graph-java.md)
+> * [Node.js](create-graph-nodejs.md)
+> * [Python](create-graph-python.md)
+> * [PHP](create-graph-php.md)
+>  
+
 Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Usługa Azure Cosmos DB umożliwia szybkie tworzenie i wysyłanie zapytań do zarządzanych baz danych dokumentów, tabel i grafowych. 
 
-Ten przewodnik Szybki start tworzy prostą grafową bazę danych przy użyciu narzędzi witryny Azure Portal dla usługi Azure Cosmos DB. Ponadto ten przewodnik Szybki start pokazuje, jak szybko utworzyć aplikację konsolową Java przy użyciu bazy danych [interfejsu API programu Graph](graph-introduction.md), korzystając ze sterownika OSS [Apache TinkerPop](http://tinkerpop.apache.org/). Instrukcje podane w tym przewodniku Szybki start można wykonać w dowolnym systemie operacyjnym, w którym można uruchomić oprogramowanie Java. Ten przewodnik Szybki start pozwala zaznajomić się z tworzeniem i modyfikowaniem grafów przy użyciu interfejsu użytkownika lub programowo, zgodnie z preferencjami. 
+Ten przewodnik Szybki start tworzy prostą grafową bazę danych przy użyciu narzędzi witryny Azure Portal dla usługi Azure Cosmos DB. Ponadto ten przewodnik Szybki start pokazuje, jak szybko utworzyć aplikację konsolową Java przy użyciu bazy danych [interfejsu API języka Gremlin](graph-introduction.md), korzystając ze sterownika OSS [Apache TinkerPop](http://tinkerpop.apache.org/). Instrukcje podane w tym przewodniku Szybki start można wykonać w dowolnym systemie operacyjnym, w którym można uruchomić oprogramowanie Java. Ten przewodnik Szybki start pozwala zaznajomić się z tworzeniem i modyfikowaniem grafów przy użyciu interfejsu użytkownika lub programowo, zgodnie z preferencjami. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
@@ -34,7 +43,7 @@ Ponadto:
     * Upewnij się, że zmienna środowiskowa JAVA_HOME wskazuje folder, w którym zainstalowano zestaw JDK.
 * [Pobierz](http://maven.apache.org/download.cgi) i [zainstaluj](http://maven.apache.org/install.html) archiwum binarne [Maven](http://maven.apache.org/)
     * W systemie Ubuntu możesz uruchomić polecenie `apt-get install maven`, aby zainstalować narzędzie Maven.
-* [Git](https://www.git-scm.com/)
+* [Usługa Git](https://www.git-scm.com/)
     * W systemie Ubuntu możesz uruchomić polecenie `sudo apt-get install git`, aby zainstalować usługę Git.
 
 ## <a name="create-a-database-account"></a>Tworzenie konta bazy danych
@@ -49,7 +58,7 @@ Przed utworzeniem bazy danych grafów musisz utworzyć konto bazy danych Gremlin
 
 ## <a name="clone-the-sample-application"></a>Klonowanie przykładowej aplikacji
 
-Teraz przejdźmy do pracy z kodem. Sklonujemy aplikację interfejsu API programu Graph z usługi GitHub, ustawimy parametry połączenia i uruchomimy ją. Zobaczysz, jak łatwo jest pracować programowo z danymi.  
+Teraz przejdźmy do pracy z kodem. Sklonujemy aplikację interfejsu API języka Gremlin z usługi GitHub, ustawimy parametry połączenia i uruchomimy ją. Zobaczysz, jak łatwo jest pracować programowo z danymi.  
 
 1. Otwórz wiersz polecenia, utwórz nowy folder o nazwie git-samples, a następnie zamknij wiersz polecenia.
 

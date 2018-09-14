@@ -1,96 +1,55 @@
 ---
-title: Samouczek dotyczący dodawania wypowiedzi do aplikacji usługi LUIS przy użyciu języka Python | Microsoft Docs
-description: Z tego samouczka dowiesz się, jak wywołać aplikację LUIS przy użyciu języka Python.
+title: Szybki start — zmiana modelu i uczenie aplikacji LUIS przy użyciu języka Python — Azure Cognitive Services | Microsoft Docs
+description: W tym przewodniku Szybki start Node.js dodasz przykładowe wypowiedzi do aplikacji Home Automation i przeprowadzisz uczenie aplikacji. Przykładowe wypowiedzi to tekst z rozmowami użytkownika mapowany na intencje. Poprzez zapewnienie przykładowych wypowiedzi dla intencji możesz nauczyć aplikację LUIS, jakim intencjom odpowiada rodzaj tekstu podanego przez użytkownika.
 services: cognitive-services
-author: v-geberr
-manager: Kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: tutorial
-ms.date: 12/13/2017
-ms.author: v-geberr
-ms.openlocfilehash: 3e1ca2ea874b6b39ac8a1b1eaa94fe9ff1894ea3
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.topic: quickstart
+ms.date: 08/24/2018
+ms.author: diberry
+ms.openlocfilehash: acc57a33b24a31159eb6a8f063212899540f7f6b
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36264305"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43771853"
 ---
-# <a name="tutorial-add-utterances-to-app-using-python"></a>Samouczek: dodawanie wypowiedzi do aplikacji przy użyciu języka Python
-W tym samouczku pokazano, jak napisać program służący do dodawania wypowiedzi do intencji za pomocą interfejsów API tworzenia w języku Python.
+# <a name="quickstart-change-model-using-python"></a>Szybki start: zmiana modelu przy użyciu języka Python
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Tworzenie projektu konsolowego programu Visual Studio 
-> * Dodawanie metody służącej do wywoływania interfejsu API usługi LUIS w celu dodawania wypowiedzi i uczenia aplikacji
-> * Dodawanie pliku JSON z przykładowymi wypowiedziami do intencji BookFlight
-> * Uruchamianie konsoli i wyświetlanie stanu uczenia dla wypowiedzi
-
-Aby uzyskać więcej informacji, zobacz dokumentację techniczną dotyczącą interfejsów API [dodawania wypowiedzi do intencji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45), [uczenia](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) i [stanu uczenia](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46).
-
-Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS][LUIS] w celu tworzenia aplikacji LUIS.
+[!include[Quickstart introduction for change model](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
+[!include[Quickstart prerequisites for changing model](../../../includes/cognitive-services-luis-qs-change-model-prereq.md)]
 * Środowisko [Python 3.6](https://www.python.org/downloads/) lub nowsze.
-* **[Zalecane]** Program [Visual Studio Code](https://code.visualstudio.com/) dla funkcji IntelliSense i debugowania.
-* Twój **[klucz tworzenia](luis-concept-keys.md#authoring-key)** usługi LUIS. Możesz go znaleźć w obszarze Ustawienia konta w witrynie internetowej usługi [LUIS](luis-reference-regions.md).
-* Twój istniejący [**identyfikator aplikacji**](./luis-get-started-create-app.md) usługi LUIS. Identyfikator aplikacji jest wyświetlany na pulpicie nawigacyjnym aplikacji. Aplikacja usługi LUIS z intencjami i jednostkami użyta w pliku `utterances.json` musi istnieć przed uruchomieniem tego kodu w pliku `add-utterances.js`. Za pomocą kodu znajdującego się tym artykule nie są tworzone intencje ani jednostki. Służy on jedynie do dodawania wypowiedzi do istniejących intencji i jednostek. 
-* **Identyfikator wersji** w aplikacji, w której odbierane są wypowiedzi. Domyślny identyfikator to „0.1”.
-* Utwórz nowy plik o nazwie `add-utterances-3-6.py` w programie VSCode.
+* [Visual Studio Code](https://code.visualstudio.com/)
 
-> [!NOTE] 
-> Kompletny plik `add-utterances-3-6.py` jest dostępny w [**repozytorium Github** LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/authoring-api-samples/python).
+[!include[Code is available in LUIS-Samples Github repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
 
+## <a name="example-utterances-json-file"></a>Plik JSON z przykładowymi wypowiedziami
 
-## <a name="write-the-python-code"></a>Pisanie kodu w języku Python
+[!include[Quickstart explanation of example utterance JSON file](../../../includes/cognitive-services-luis-qs-change-model-json-ex-utt.md)]
 
-1. Skopiuj następujące fragmenty kodu:
+## <a name="create-quickstart-code"></a>Tworzenie kodu przewodnika Szybki start
 
-   [!code-python[Console app code that adds an utterance Python 3.6](~/samples-luis/documentation-samples/authoring-api-samples/python/add-utterances-3-6.py)]
+1. Skopiuj następujący fragment kodu do pliku o nazwie `add-utterances-3-6.py`:
 
-## <a name="specify-utterances-to-add"></a>Określanie wypowiedzi do dodania
-Utwórz plik `utterances.json` i edytuj go w celu określenia **tablicy wypowiedzi** do dodania do aplikacji usługi LUIS. Intencje i jednostki **muszą** znajdować się już w aplikacji LUIS.
+   [!code-python[Console app code that adds an utterance Python 3.6](~/samples-luis/documentation-samples/quickstarts/change-model/python/3.x/add-utterances-3-6.py)]
 
-> [!NOTE]
-> Aplikacja usługi LUIS z intencjami i jednostkami użyta w pliku `utterances.json` musi istnieć przed uruchomieniem tego kodu w pliku `add-utterances.js`. Za pomocą kodu znajdującego się tym artykule nie są tworzone intencje ani jednostki. Służy on jedynie do dodawania wypowiedzi do istniejących intencji i jednostek.
-
-Pole `text` zawiera tekst wypowiedzi. Pole `intentName` musi odpowiadać nazwie wypowiedzi w aplikacji LUIS. Pole `entityLabels` jest wymagane. Jeśli nie chcesz oznaczać jakichkolwiek jednostek, podaj pustą listę, co przedstawiono w poniższym przykładzie:
-
-Jeśli lista entityLabels nie jest pusta, elementy `startCharIndex` i `endCharIndex` muszą oznaczać jednostkę określoną w polu `entityName`. Oba indeksy to liczniki określane od zera, w związku z czym wartość 6 w górnym przykładzie odnosi się do litery „S” z ciągu Seattle, a nie do znaku spacji przed tą literą.
-
-```json
-[
-    {
-        "text": "go to Seattle",
-        "intentName": "BookFlight",
-        "entityLabels": [
-            {
-                "entityName": "Location::LocationTo",
-                "startCharIndex": 6,
-                "endCharIndex": 12
-            }
-        ]
-    },
-    {
-        "text": "book a flight",
-        "intentName": "BookFlight",
-        "entityLabels": []
-    }
-]
-```
-
-## <a name="add-an-utterance-from-the-command-line"></a>Dodawanie wypowiedzi z poziomu wiersza polecenia
-
+## <a name="run-code"></a>Uruchamianie kodu
 Uruchom aplikację z poziomu wiersza polecenia za pomocą języka Python 3.6.
+
+### <a name="add-utterances-from-the-command-line"></a>Dodawanie wypowiedzi z poziomu wiersza polecenia
 
 Wywołanie polecenia add-utterance bez żadnych argumentów powoduje dodanie wypowiedzi do aplikacji bez jej uczenia.
 
-````
+```CMD
 > python add-utterances-3-6.py
-````
+```
 
-Ten przykład umożliwia utworzenie pliku za pomocą pliku `results.json`, który zawiera wyniki wywołania interfejsu API dodawania wypowiedzi. Pole `response` jest w tym formacie na potrzeby dodanych wypowiedzi. Właściwość `hasError` ma wartość false, co oznacza, że wypowiedź została dodana.  
+Następująca odpowiedź zostanie zwrócona, gdy wypowiedzi zostaną dodane do modelu.  
 
 ```json
     "response": [
@@ -111,19 +70,8 @@ Ten przykład umożliwia utworzenie pliku za pomocą pliku `results.json`, któr
     ]
 ```
 
-## <a name="add-an-utterance-and-train-from-the-command-line"></a>Dodawanie wypowiedzi i uczenie z poziomu wiersza polecenia
-Wywołaj polecenie add-utterance z argumentem `-train`, aby wysłać żądanie uczenia, a następnie wysłać żądanie dotyczące stanu uczenia. Stan jest umieszczany w kolejce natychmiast po rozpoczęciu uczenia. Szczegóły stanu są zapisywane w pliku.
-
-````
-> python add-utterances-3-6.py -train
-````
-
-> [!NOTE]
-> Zduplikowane wypowiedzi nie są ponownie dodawane, ale nie powodują wystąpienia błędu. Pole `response` zawiera identyfikator oryginalnej wypowiedzi.
-
-Wywołanie przykładu z argumentem `-train` spowoduje utworzenie pliku `training-results.json` wskazującego, że żądanie uczenia aplikacji usługi LUIS zostało pomyślnie umieszczone w kolejce. 
-
 W poniższym kodzie znajduje się wynik pomyślnego żądania uczenia:
+
 ```json
 {
     "request": null,
@@ -134,20 +82,105 @@ W poniższym kodzie znajduje się wynik pomyślnego żądania uczenia:
 }
 ```
 
-Po umieszczeniu żądania uczenia w kolejce zakończenie uczenia może trochę potrwać.
+```JSON
+Requested training status.
+[
+   {
+      "modelId": "eb2f117c-e10a-463e-90ea-1a0176660acc",
+      "details": {
+         "statusId": 0,
+         "status": "Success",
+         "exampleCount": 33,
+         "trainingDateTime": "2017-11-20T18:09:11Z"
+      }
+   },
+   {
+      "modelId": "c1bdfbfc-e110-402e-b0cc-2af4112289fb",
+      "details": {
+         "statusId": 0,
+         "status": "Success",
+         "exampleCount": 33,
+         "trainingDateTime": "2017-11-20T18:09:11Z"
+      }
+   },
+   {
+      "modelId": "863023ec-2c96-4d68-9c44-34c1cbde8bc9",
+      "details": {
+         "statusId": 0,
+         "status": "Success",
+         "exampleCount": 33,
+         "trainingDateTime": "2017-11-20T18:09:11Z"
+      }
+   },
+   {
+      "modelId": "82702162-73ba-4ae9-a6f6-517b5244c555",
+      "details": {
+         "statusId": 0,
+         "status": "Success",
+         "exampleCount": 33,
+         "trainingDateTime": "2017-11-20T18:09:11Z"
+      }
+   },
+   {
+      "modelId": "37121f4c-4853-467f-a9f3-6dfc8cad2763",
+      "details": {
+         "statusId": 0,
+         "status": "Success",
+         "exampleCount": 33,
+         "trainingDateTime": "2017-11-20T18:09:11Z"
+      }
+   },
+   {
+      "modelId": "de421482-753e-42f5-a765-ad0a60f50d69",
+      "details": {
+         "statusId": 0,
+         "status": "Success",
+         "exampleCount": 33,
+         "trainingDateTime": "2017-11-20T18:09:11Z"
+      }
+   },
+   {
+      "modelId": "80f58a45-86f2-4e18-be3d-b60a2c88312e",
+      "details": {
+         "statusId": 0,
+         "status": "Success",
+         "exampleCount": 33,
+         "trainingDateTime": "2017-11-20T18:09:11Z"
+      }
+   },
+   {
+      "modelId": "c9eb9772-3b18-4d5f-a1e6-e0c31f91b390",
+      "details": {
+         "statusId": 0,
+         "status": "Success",
+         "exampleCount": 33,
+         "trainingDateTime": "2017-11-20T18:09:11Z"
+      }
+   },
+   {
+      "modelId": "2afec2ff-7c01-4423-bb0e-e5f6935afae8",
+      "details": {
+         "statusId": 0,
+         "status": "Success",
+         "exampleCount": 33,
+         "trainingDateTime": "2017-11-20T18:09:11Z"
+      }
+   },
+   {
+      "modelId": "95a81c87-0d7b-4251-8e07-f28d180886a1",
+      "details": {
+         "statusId": 0,
+         "status": "Success",
+         "exampleCount": 33,
+         "trainingDateTime": "2017-11-20T18:09:11Z"
+      }
+   }
+]
+```
 
-## <a name="get-training-status-from-the-command-line"></a>Pobieranie stanu uczenia z poziomu wiersza polecenia
-Wywołaj przykład z argumentem `-status`, aby sprawdzić stan uczenia i zapisać szczegóły stanu do pliku.
-
-````
-> python add-utterances-3-6.py -status
-````
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Po zakończeniu tego samouczka usuń program Visual Studio i aplikację konsolową, jeśli nie będą Ci już potrzebne. 
+Po ukończeniu przewodnika Szybki start usuń wszystkie pliki utworzone w tym przewodniku Szybki start. 
 
 ## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"] 
 > [Programowe tworzenie aplikacji LUIS](luis-tutorial-node-import-utterances-csv.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website
-

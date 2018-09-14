@@ -12,14 +12,24 @@ ms.topic: quickstart
 ms.date: 04/10/2018
 ms.author: sngun
 clicktale: true
-ms.openlocfilehash: 19da0591d61e55cc34a7a0cc17ed13b197cdabab
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 672156d6c301fc26f8e4da5f78523f1fe30bac6f
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38652060"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698132"
 ---
 # <a name="quickstart-build-a-net-web-app-with-azure-cosmos-db-using-the-sql-api-and-the-azure-portal"></a>Szybki start: Tworzenie aplikacji internetowej platformy .NET w usłudze Azure Cosmos DB przy użyciu interfejsu API SQL i witryny Azure Portal
+
+> [!div class="op_single_selector"]
+> * [.NET](create-sql-api-dotnet.md)
+> * [Java](create-sql-api-java.md)
+> * [Node.js](create-sql-api-nodejs.md)
+> * [Node.js 2](create-sql-api-nodejs-preview.md)
+> * [Python](create-sql-api-python.md)
+> * [Xamarin](create-sql-api-xamarin-dotnet.md)
+>  
+> 
 
 Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu dystrybucji globalnej i możliwości skalowania poziomego opartego na usłudze Azure Cosmos DB, możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
 
@@ -121,9 +131,13 @@ Teraz wróć do witryny Azure Portal, aby uzyskać informacje o parametrach poł
 
     `<add key="endpoint" value="FILLME" />`
 
-4. Następnie skopiuj wartość klucza podstawowego z portalu i przypisz ją do klucza authKey w pliku web.config. Aplikacja została zaktualizowana i zawiera teraz wszystkie informacje potrzebne do nawiązania komunikacji z usługą Azure Cosmos DB. 
+4. Następnie skopiuj wartość klucza podstawowego z portalu i przypisz ją do klucza authKey w pliku web.config. 
 
     `<add key="authKey" value="FILLME" />`
+    
+5. Następnie zaktualizuj wartość bazy danych, tak aby była zgodna z nazwą utworzonej wcześniej bazy danych. Aplikacja została zaktualizowana i zawiera teraz wszystkie informacje potrzebne do nawiązania komunikacji z usługą Azure Cosmos DB. 
+
+    `<add key="database" value="Tasks" />`    
     
 ## <a name="run-the-web-app"></a>Uruchamianie aplikacji internetowej
 1. W programie Visual Studio kliknij projekt prawym przyciskiem myszy w **Eksploratorze rozwiązań**, a następnie kliknij polecenie **Zarządzaj pakietami NuGet**. 

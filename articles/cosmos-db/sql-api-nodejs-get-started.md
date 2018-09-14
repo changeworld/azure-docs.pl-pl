@@ -12,22 +12,23 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 08/14/2017
 ms.author: sngun
-ms.openlocfilehash: 8eba0f70141fe28a478e842523023a22c2db50fe
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 16225e666df59da654e993c4d0618a97288471ac
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628753"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698268"
 ---
 # <a name="nodejs-tutorial-use-the-sql-api-in-azure-cosmos-db-to-create-a-nodejs-console-application"></a>Samouczek środowiska Node.js: tworzenie aplikacji konsolowej Node.js przy użyciu interfejsu API SQL w usłudze Azure Cosmos DB
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
-> * [Node.js dla MongoDB](mongodb-samples.md)
-> * [Node.js](sql-api-nodejs-get-started.md)
-> * [Node.js 2.0 (wersja zapoznawcza)](sql-api-nodejs-get-started-preview.md)
 > * [Java](sql-api-java-get-started.md)
+> * [Java (asynchroniczny)](sql-api-async-java-get-started.md)
+> * [Node.js](sql-api-nodejs-get-started.md)
+> * [Node.js 2](sql-api-nodejs-get-started-preview.md) 
+> 
 
 
 Witamy w samouczku środowiska Node.js dla zestawu SDK środowiska Node.js usługi Azure Cosmos DB! W ramach tego samouczka zostanie utworzona aplikacja konsolowa, która tworzy zasoby usługi Azure Cosmos DB i wykonuje dla nich zapytania.

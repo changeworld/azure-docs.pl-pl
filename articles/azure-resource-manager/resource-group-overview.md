@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: overview
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/16/2018
+ms.date: 08/30/2018
 ms.author: tomfitz
-ms.openlocfilehash: 9b8f87f3cf09fef020ceed0166dd1652617ef605
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: d04625fe78c423c995460afa29a81d96c6ce9cfb
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126613"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43337977"
 ---
 # <a name="azure-resource-manager-overview"></a>Omówienie usługi Azure Resource Manager
 Infrastruktura aplikacji zwykle obejmuje wiele składników — może to być maszyna wirtualna, konto magazynu i sieć wirtualna albo aplikacja internetowa, baza danych, serwer bazy danych i usługi zewnętrzne. Te składniki nie są widoczne jako osobne jednostki, tylko jako powiązane i zależne od siebie nawzajem części jednej całości. Dlatego najlepiej wdrażać i monitorować je oraz zarządzać nimi grupowo. Usługa Azure Resource Manager umożliwia pracę z zasobami tworzącymi rozwiązanie w formie grupy. Wszystkie zasoby danego rozwiązania można wdrożyć, zaktualizować lub usunąć w ramach jednej skoordynowanej operacji. Wdrażanie wykonuje się przy użyciu szablonu, którego można następnie używać w różnych środowiskach (testowanie, etap przejściowy i produkcja). Usługa Resource Manager zapewnia funkcje zabezpieczeń, inspekcji i znakowania ułatwiające zarządzanie zasobami po wdrożeniu. 
@@ -52,8 +52,6 @@ Usługa Resource Manager zapewnia kilka korzyści:
 * Możliwość stosowania kontroli dostępu do wszystkich usług w grupie zasobów dzięki natywnej integracji funkcji kontroli dostępu na podstawie ról z platformą zarządzania.
 * Możliwość dodawania tagów do zasobów w celu logicznego uporządkowania wszystkich zasobów w ramach subskrypcji.
 * Możliwość wyjaśniania rozliczeń w organizacji przez wyświetlanie kosztów dla grupy zasobów korzystających z tego samego tagu.  
-
-Usługa Resource Manager udostępnia nową metodę wdrażania rozwiązań i zarządzania nimi. Jeśli znasz wcześniejszy model wdrażania i chcesz dowiedzieć się więcej o zmianach, zobacz artykuł [Understanding Resource Manager deployment and classic deployment](resource-manager-deployment-model.md) (Opis wdrażania za pomocą usługi Resource Manager oraz wdrażania klasycznego).
 
 ## <a name="guidance"></a>Wskazówki
 Poniższe sugestie pomogą Ci w pełni wykorzystać możliwości usługi Resource Manager w pracy z rozwiązaniami.
@@ -88,9 +86,9 @@ Nazwa typu zasobu ma następujący format: **{dostawca_zasobów}/{typ_zasobu}**.
 Przed rozpoczęciem wdrażania zasobów należy uzyskać wiedzę na temat dostępnych dostawców zasobów. Znajomość nazw zasobów i ich dostawców pomaga określić zasoby, które mają zostać wdrożone na platformie Azure. Dodatkowo trzeba znać prawidłowe lokalizacje i wersje interfejsów API dla każdego typu zasobu. Aby uzyskać więcej informacji, zobacz [Dostawcy zasobów i ich typy](resource-manager-supported-services.md).
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
-Usługa Resource Manager umożliwia utworzenie szablonu (w formacie JSON) do definiowania infrastruktury i konfiguracji rozwiązania platformy Azure. Dzięki szablonowi można wielokrotnie wdrażać rozwiązanie w całym jego cyklu życia z gwarancją spójnego stanu zasobów po każdym wdrożeniu. W przypadku tworzenia rozwiązania z portalu rozwiązanie automatycznie zawiera szablon wdrożenia. Nie trzeba tworzyć szablonu od początku — można zacząć od szablonu istniejącego rozwiązania i dostosować go do konkretnych potrzeb. Aby uzyskać szablon dla istniejącej grupy zasobów, można wyeksportować bieżący stan grupy lub skorzystać z szablonu użytego do określonego wdrożenia. Przeglądając [wyeksportowany szablon](resource-manager-export-template.md), można poznać jego składnię.
+Usługa Resource Manager umożliwia utworzenie szablonu (w formacie JSON) do definiowania infrastruktury i konfiguracji rozwiązania platformy Azure. Dzięki szablonowi można wielokrotnie wdrażać rozwiązanie w całym jego cyklu życia z gwarancją spójnego stanu zasobów po każdym wdrożeniu. W przypadku tworzenia rozwiązania z portalu rozwiązanie automatycznie zawiera szablon wdrożenia. Nie trzeba tworzyć szablonu od początku — można zacząć od szablonu istniejącego rozwiązania i dostosować go do konkretnych potrzeb. Aby zapoznać się z przykładem, zobacz [Szybki start: Tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md). Aby uzyskać szablon dla istniejącej grupy zasobów, można także wyeksportować bieżący stan tej grupy lub skorzystać z szablonu użytego do określonego wdrożenia. Przeglądając [wyeksportowany szablon](resource-manager-export-template.md), można poznać jego składnię.
 
-Aby dowiedzieć się więcej o formacie szablonu i sposobie jego konstruowania, zobacz [Tworzenie pierwszego szablonu usługi Azure Resource Manager](resource-manager-create-first-template.md). Aby wyświetlić składnię JSON dla typów zasobów, zobacz [Define resources in Azure Resource Manager templates](/azure/templates/) (Definiowanie zasobów w szablonach usługi Azure Resource Manager).
+Aby dowiedzieć się więcej o formacie szablonu i sposobie jego konstruowania, zobacz [Szybki start: Tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md). Aby wyświetlić składnię JSON dla typów zasobów, zobacz [Define resources in Azure Resource Manager templates](/azure/templates/) (Definiowanie zasobów w szablonach usługi Azure Resource Manager).
 
 W usłudze Resource Manager szablon jest przetwarzany jak wszystkie pozostałe żądania (zobacz ilustrację przedstawiającą [Spójną warstwę zarządzania](#consistent-management-layer)). Szablon jest analizowany, a jego składnia zostaje poddana konwersji do operacji interfejsu API REST dla odpowiednich dostawców zasobów. Na przykład, gdy usługa Resource Manager odbiera szablon o następującej definicji zasobu:
 
@@ -277,19 +275,11 @@ Aby uzyskać informacje na temat korzystania z tych języków do obsługi zasob�
 
 > [!NOTE]
 > Jeśli dany zestaw SDK nie udostępnia wymaganych funkcji, możesz również bezpośrednio wywołać [interfejs API REST platformy Azure](https://docs.microsoft.com/rest/api/resources/).
-> 
-> 
+
 
 ## <a name="next-steps"></a>Następne kroki
-* Artykuł [Eksportowanie szablonu usługi Azure Resource Manager z istniejących zasobów](resource-manager-export-template.md) zawiera proste instrukcje dotyczące pracy z szablonami.
-* Bardziej szczegółowe instrukcje dotyczące tworzenia szablonu zawiera artykuł [Tworzenie pierwszego szablonu usługi Azure Resource Manager](resource-manager-create-first-template.md).
-* Aby poznać funkcje, których można użyć w szablonie, zobacz [Template functions](resource-group-template-functions.md) (Funkcje szablonu).
-* Aby uzyskać informacje dotyczące korzystania z programu Visual Studio w połączeniu z usługą Resource Manager, zobacz [Tworzenie i wdrażanie grup zasobów platformy Azure za pomocą programu Visual Studio](vs-azure-tools-resource-groups-deployment-projects-create-deploy.md).
-* Aby uzyskać informacje dotyczące migracji zasobów z wersji klasycznej do usługi ARM, zobacz [Migrowanie z wersji klasycznej do usługi Azure Resource Manager](resource-manager-deployment-model.md#migrate-from-classic-to-resource-manager)
 
-Oto film z omówieniem tego zagadnienia:
+W tym artykule przedstawiono sposób wdrażania zasobów na platformie Azure, kontrolowania dostępu do tych zasobów oraz zarządzania nimi za pomocą usługi Azure Resource Manager. Przejdź do następnego artykułu, aby dowiedzieć się, jak utworzyć swój pierwszy szablon usługi Azure Resource Manager.
 
->[!VIDEO https://channel9.msdn.com/Blogs/Azure-Documentation-Shorts/Azure-Resource-Manager-Overview/player]
-
-
-[powershellref]: https://docs.microsoft.com/powershell/resourcemanager/azurerm.resources/v3.2.0/azurerm.resources
+> [!div class="nextstepaction"]
+> [Szybki start: tworzenie i wdrażanie szablonów usługi Azure Resource Manager przy użyciu witryny Azure Portal](./resource-manager-quickstart-create-templates-use-the-portal.md)

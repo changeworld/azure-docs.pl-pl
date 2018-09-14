@@ -1,117 +1,79 @@
 ---
-title: Samouczek dotyczący dodawania wypowiedzi do aplikacji LUIS przy użyciu języka Ruby | Microsoft Docs
-description: Z tego samouczka dowiesz się, jak wywołać aplikację LUIS przy użyciu języka Ruby.
+title: Szybki start — zmiana modelu i uczenie aplikacji LUIS przy użyciu języka Ruby — Azure Cognitive Services | Microsoft Docs
+description: W tym przewodniku Szybki start języka Ruby dodasz przykładowe wypowiedzi do aplikacji Home Automation i przeprowadzisz uczenie aplikacji. Przykładowe wypowiedzi to tekst z rozmowami użytkownika mapowany na intencje. Poprzez zapewnienie przykładowych wypowiedzi dla intencji możesz nauczyć aplikację LUIS, jakim intencjom odpowiada rodzaj tekstu podanego przez użytkownika.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: tutorial
-ms.date: 12/13/2017
-ms.author: v-geberr
-ms.openlocfilehash: 7a470fd551a58978e6f2be0450a2e2a6cd471fc4
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.topic: quickstart
+ms.date: 08/24/2018
+ms.author: diberry
+ms.openlocfilehash: 4df6352c140328b93044fd2340fb7c46d44e1b04
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36266060"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43771800"
 ---
-# <a name="tutorial-add-utterances-to-app-using-ruby"></a>Samouczek: Dodawanie wypowiedzi do aplikacji przy użyciu języka Ruby 
-W tym samouczku pokazano, jak napisać program służący do dodawania wypowiedzi do intencji za pomocą interfejsów API tworzenia w języku Ruby.
+# <a name="quickstart-change-model-using-ruby"></a>Szybki start: zmiana modelu przy użyciu języka Ruby
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Tworzenie projektu konsolowego programu Visual Studio 
-> * Dodawanie metody służącej do wywoływania interfejsu API usługi LUIS w celu dodawania wypowiedzi i uczenia aplikacji
-> * Dodawanie pliku JSON z przykładowymi wypowiedziami do intencji BookFlight
-> * Uruchamianie konsoli i wyświetlanie stanu uczenia dla wypowiedzi
-
-Aby uzyskać więcej informacji, zobacz dokumentację techniczną dotyczącą interfejsów API [dodawania wypowiedzi do intencji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08), [uczenia](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) i [stanu uczenia](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46).
-
-Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS][LUIS] w celu tworzenia aplikacji LUIS.
+[!include[Quickstart introduction for change model](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
+[!include[Quickstart prerequisites for changing model](../../../includes/cognitive-services-luis-qs-change-model-prereq.md)]
 * [Ruby](http://rubyinstaller.org/) 
-* Twój **[klucz tworzenia](luis-concept-keys.md#authoring-key)** usługi LUIS. Możesz go znaleźć w obszarze Ustawienia konta w witrynie internetowej usługi [LUIS](luis-reference-regions.md).
-* Twój istniejący [**identyfikator aplikacji**](./luis-get-started-create-app.md) usługi LUIS. Identyfikator aplikacji jest wyświetlany na pulpicie nawigacyjnym aplikacji. Aplikacja LUIS z intencjami i jednostkami użyta w pliku `utterances.json` musi istnieć przed uruchomieniem tego kodu w pliku `add-utterances.rb`. Za pomocą kodu znajdującego się tym artykule nie są tworzone intencje ani jednostki. Służy on jedynie do dodawania wypowiedzi do istniejących intencji i jednostek. 
-* **Identyfikator wersji** w aplikacji, w której odbierane są wypowiedzi. Domyślny identyfikator to „0.1”.
-* Utwórz nowy plik o nazwie `add-utterances.rb` w programie VSCode.
+* [Visual Studio Code](https://code.visualstudio.com/)
 
-> [!NOTE] 
-> Kompletny plik `add-utterances.cs` i przykładowy plik `utterances.json` są dostępne w [**repozytorium Github** LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/authoring-api-samples/ruby/).
+[!include[Code is available in LUIS-Samples Github repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
 
+## <a name="example-utterances-json-file"></a>Plik JSON z przykładowymi wypowiedziami
 
-## <a name="write-the-ruby-code"></a>Tworzenie kodu w języku Ruby
+[!include[Quickstart explanation of example utterance JSON file](../../../includes/cognitive-services-luis-qs-change-model-json-ex-utt.md)]
 
-Dodaj zależności do pliku.
+## <a name="create-quickstart-code"></a>Tworzenie kodu przewodnika Szybki start 
 
-   [!code-ruby[Ruby and LUIS Dependencies](~/samples-luis/documentation-samples/authoring-api-samples/ruby/add-utterances.rb?range=1-28 "Ruby and LUIS Dependencies")]
+Dodaj zależności do pliku o nazwie `add-utterances.rb`.
+
+   [!code-ruby[Ruby and LUIS Dependencies](~/samples-luis/documentation-samples/quickstarts/change-model/ruby/add-utterances.rb?range=1-21 "Ruby and LUIS Dependencies")]
 
 Dodaj żądanie GET używane dla stanu uczenia.
 
-   [!code-ruby[SendGet](~/samples-luis/documentation-samples/authoring-api-samples/ruby/add-utterances.rb?range=30-40 "SendGet")]
+   [!code-ruby[SendGet](~/samples-luis/documentation-samples/quickstarts/change-model/ruby/add-utterances.rb?range=23-33 "SendGet")]
 
 Dodaj żądanie POST służące do tworzenia wypowiedzi lub uruchamiania uczenia. 
 
-   [!code-ruby[SendPost](~/samples-luis/documentation-samples/authoring-api-samples/ruby/add-utterances.rb?range=42-54 "SendPost")]
+   [!code-ruby[SendPost](~/samples-luis/documentation-samples/quickstarts/change-model/ruby/add-utterances.rb?range=35-47 "SendPost")]
 
 Dodaj funkcję `AddUtterances`.
 
-   [!code-ruby[AddUtterances method](~/samples-luis/documentation-samples/authoring-api-samples/ruby/add-utterances.rb?range=56-61 "AddUtterances method")]
+   [!code-ruby[AddUtterances method](~/samples-luis/documentation-samples/quickstarts/change-model/ruby/add-utterances.rb?range=49-54 "AddUtterances method")]
 
 
 Dodaj funkcję `Train`. 
 
-   [!code-ruby[Train](~/samples-luis/documentation-samples/authoring-api-samples/ruby/add-utterances.rb?range=63-69 "Train")]
+   [!code-ruby[Train](~/samples-luis/documentation-samples/quickstarts/change-model/ruby/add-utterances.rb?range=56-62 "Train")]
 
 Dodaj funkcję `Status`.
 
-   [!code-ruby[Status](~/samples-luis/documentation-samples/authoring-api-samples/ruby/add-utterances.rb?range=71-75 "Status")]
+   [!code-ruby[Status](~/samples-luis/documentation-samples/quickstarts/change-model/ruby/add-utterances.rb?range=64-68 "Status")]
 
 Aby zarządzać argumentami, dodaj kody główny.
 
-   [!code-ruby[Main code](~/samples-luis/documentation-samples/authoring-api-samples/ruby/add-utterances.rb?range=77-93 "Main code")]
+   [!code-ruby[Main code](~/samples-luis/documentation-samples/quickstarts/change-model/ruby/add-utterances.rb?range=70-72 "Main code")]
 
-## <a name="specify-utterances-to-add"></a>Określanie wypowiedzi do dodania
-Utwórz plik `utterances.json` i edytuj go w celu określenia **tablicy wypowiedzi** do dodania do aplikacji usługi LUIS. Intencje i jednostki **muszą** znajdować się już w aplikacji LUIS.
-
-> [!NOTE]
-> Aplikacja LUIS z intencjami i jednostkami użyta w pliku `utterances.json` musi istnieć przed uruchomieniem tego kodu w pliku `add-utterances.rb`. Za pomocą kodu znajdującego się tym artykule nie są tworzone intencje ani jednostki. Służy on jedynie do dodawania wypowiedzi do istniejących intencji i jednostek.
-
-Pole `text` zawiera tekst wypowiedzi. Pole `intentName` musi odpowiadać nazwie wypowiedzi w aplikacji LUIS. Pole `entityLabels` jest wymagane. Jeśli nie chcesz oznaczać jakichkolwiek jednostek, podaj pustą listę, co przedstawiono w poniższym przykładzie:
-
-Jeśli lista entityLabels nie jest pusta, elementy `startCharIndex` i `endCharIndex` muszą oznaczać jednostkę określoną w polu `entityName`. Oba indeksy to liczniki określane od zera, w związku z czym wartość 6 w górnym przykładzie odnosi się do litery „S” z ciągu Seattle, a nie do znaku spacji przed tą literą.
-
-```json
-[
-    {
-        "text": "go to Seattle",
-        "intentName": "BookFlight",
-        "entityLabels": [
-            {
-                "entityName": "Location::LocationTo",
-                "startCharIndex": 6,
-                "endCharIndex": 12
-            }
-        ]
-    },
-    {
-        "text": "book a flight",
-        "intentName": "BookFlight",
-        "entityLabels": []
-    }
-]
-```
-
-## <a name="add-an-utterance-from-the-command-line"></a>Dodawanie wypowiedzi z poziomu wiersza polecenia
+## <a name="run-code"></a>Uruchamianie kodu
 
 Uruchom aplikację z poziomu wiersza polecenia za pomocą języka Ruby.
 
-Wywołanie pliku `add-utterances.rb` tylko z plikiem utterance.json jako argumentem powoduje dodanie nowych wypowiedzi, ale nie uczy aplikacji usługi LUIS za ich pomocą.
-````
-> ruby add-utterances.rb ./utterances.json
-````
+### <a name="add-an-utterance-from-the-command-line"></a>Dodawanie wypowiedzi z poziomu wiersza polecenia
+
+Wywołanie pliku `add-utterances.rb` spowoduje dodanie wypowiedzi, przeprowadzenie uczenia i uzyskanie stanu uczenia.
+
+```CMD
+> ruby add-utterances.rb 
+```
 
 Powoduje to wyświetlenie wyników wywołania interfejsu API dodawania wypowiedzi. Pole `response` jest w tym formacie na potrzeby dodanych wypowiedzi. Właściwość `hasError` ma wartość false, co oznacza, że wypowiedź została dodana.  
 
@@ -134,35 +96,7 @@ Powoduje to wyświetlenie wyników wywołania interfejsu API dodawania wypowiedz
     ]
 ```
 
-## <a name="add-an-utterance-and-train-from-the-command-line"></a>Dodawanie wypowiedzi i uczenie z poziomu wiersza polecenia
-Wywołaj polecenie add-utterance z argumentem `-train` w celu wysłania żądania uczenia.
-
-````
-> ruby add-utterances.rb ./utterances.json -train
-````
-
-> [!NOTE]
-> Zduplikowane wypowiedzi nie są ponownie dodawane, ale nie powodują wystąpienia błędu. Pole `response` zawiera identyfikator oryginalnej wypowiedzi.
-
-W poniższym kodzie znajduje się wynik pomyślnego żądania uczenia:
-```json
-{
-    "request": null,
-    "response": {
-        "statusId": 9,
-        "status": "Queued"
-    }
-}
-```
-
-Po umieszczeniu żądania uczenia w kolejce zakończenie uczenia może trochę potrwać.
-
-## <a name="get-training-status-from-the-command-line"></a>Pobieranie stanu uczenia z poziomu wiersza polecenia
-Wywołaj przykład z argumentem `-status`, aby sprawdzić stan uczenia.
-
-````
-> ruby add-utterances.rb ./utterances.json -status
-````
+Kolejna odpowiedź przedstawia uczenie w kolejce. Następnie kolejna odpowiedź przedstawia stan każdej intencji. 
 
 ```
 Requested training status.
@@ -261,10 +195,8 @@ Requested training status.
 ```
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Po zakończeniu tego samouczka usuń program Visual Studio i aplikację konsolową, jeśli nie będą Ci już potrzebne.
+Po ukończeniu przewodnika Szybki start usuń wszystkie pliki utworzone w tym przewodniku Szybki start. 
 
 ## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"] 
 > [Programowe tworzenie aplikacji LUIS](luis-tutorial-node-import-utterances-csv.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

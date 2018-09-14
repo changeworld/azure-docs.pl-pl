@@ -1,60 +1,54 @@
 ---
-title: Wywołanie i odpowiedź — Szybki Start języka Python dla usług Azure kognitywnych, interfejsu API Bing sieci Web wyszukiwania | Dokumentacja firmy Microsoft
-description: Pobierz informacje i przykładowy kod w celu szybkiego Rozpoczynanie pracy przy użyciu interfejsu API wyszukiwania usługi Bing sieci Web w kognitywnych usług Microsoft Azure.
+title: 'Szybki start: wywoływanie interfejsu API wyszukiwania w sieci Web Bing za pomocą języka Python'
+description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć swoje pierwsze wywołanie interfejsu API wyszukiwania w sieci Web Bing za pomocą języka Python i odebrać odpowiedź w formacie JSON.
 services: cognitive-services
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
-ms.date: 9/18/2017
-ms.author: v-jerkin
-ms.openlocfilehash: 8d4df9db60c7a74a5b9e53d4622528c0054b4f19
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.topic: quickstart
+ms.date: 8/16/2018
+ms.author: erhopf
+ms.openlocfilehash: cd53a323a07617284e82004a6b3feed57b6e15e2
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347576"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888611"
 ---
-# <a name="call-and-response-your-first-bing-web-search-query-in-python"></a>Wywołania i odpowiedzi: pierwszego zapytania wyszukiwania usługi Bing w sieci Web w języku Python
+# <a name="quickstart-use-python-to-call-the-bing-web-search-api"></a>Szybki start: wywoływanie interfejsu API wyszukiwania w sieci Web Bing za pomocą języka Python  
 
-Interfejs API wyszukiwania usługi Bing sieci Web udostępnia środowisko podobne do Bing.com/Search zwracając się, że wyniki wyszukiwania, które określa Bing są istotne dla kwerendy użytkownika. Wyniki mogą obejmować stron sieci Web, obrazów, klipów wideo, wiadomości i jednostek, wraz z zapytania wyszukiwania powiązanych, pisowni stref czasowych, konwersja jednostek, tłumaczenia i obliczeń. Rodzaje otrzymane wyniki na podstawie ich przydatności i warstwy subskrybowanych interfejsy API wyszukiwania usługi Bing.
+Ten przewodnik Szybki start umożliwi Ci utworzenie Twojego pierwszego wywołania interfejsu API wyszukiwania w sieci Web Bing i odebranie odpowiedzi w formacie JSON w mniej niż 10 minut.  
 
-Zapoznaj się [dokumentacja interfejsu API](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) uzyskać szczegółowe informacje techniczne dotyczące interfejsów API.
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
-W tym przykładzie można uruchomić jako notesu Jupyter na [MyBinder](https://mybinder.org) , klikając polecenie Uruchom integratora znaczków: 
+Ten przykład działa jako notes Jupyter w usłudze [MyBinder](https://mybinder.org). Kliknij etykietę uruchamiania usługi Binder:
 
-[![Obiekt wiążący](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingWebSearchAPI.ipynb)
+[![Binder](https://mybinder.org/badge.svg)](https://mybinder.org/v2/gh/Microsoft/cognitive-services-notebooks/master?filepath=BingWebSearchAPI.ipynb)
 
+## <a name="define-variables"></a>Definiowanie zmiennych
 
-## <a name="prerequisites"></a>Wymagania wstępne
-Musi mieć [kognitywnych interfejsu API usług konta](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsy API wyszukiwania usługi Bing**. [Bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca dla tego przewodnika Szybki Start. Należy klucz dostępu podany przy wywołaniu metody aktywacji bezpłatną wersję próbną lub może używać klucza płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
-
-## <a name="running-the-walkthrough"></a>Uruchomiona przewodnika
-
-Ustaw `subscription_key` do klucza interfejsu API dla usługi interfejsu API Bing.
-
+Zamień wartość `subscription_key` na odpowiedni klucz subskrypcji ze swojego konta platformy Azure.
 
 ```python
-subscription_key = None
+subscription_key = "YOUR_ACCESS_KEY"
 assert subscription_key
 ```
 
-Następnie sprawdź, czy `search_url` punktu końcowego jest poprawna. W tym tylko jeden punkt końcowy jest używany do wyszukiwania usługi Bing interfejsów API. Jeśli wystąpią błędy autoryzacji dokładnie, czy ta wartość względem punktu końcowego wyszukiwania usługi Bing w pulpicie nawigacyjnym platformy Azure.
-
+Zadeklaruj punkt końcowy interfejsu API wyszukiwania w sieci Web Bing. Jeśli wystąpią błędy autoryzacji, dokładnie sprawdź tę wartość, porównując ją z punktem końcowym wyszukiwania w usłudze Bing na pulpicie nawigacyjnym platformy Azure.
 
 ```python
 search_url = "https://api.cognitive.microsoft.com/bing/v7.0/search"
 ```
 
-Ustaw `search_term` zapytania Bing dla kognitywnych usług firmy Microsoft.
-
+Możesz dostosować zapytanie wyszukiwania, zamieniając wartość `search_term`.
 
 ```python
-search_term = "Microsoft Cognitive Services"
+search_term = "Azure Cognitive Services"
 ```
 
-Z poniższego bloku używa `requests` biblioteki w języku Python do wyróżnienia do wyszukiwania usługi Bing interfejsów API i zwrócenie wyników jako obiekt JSON. Sprawdź, czy jest przekazywana klucza interfejsu API za pomocą `headers` słownika i wyszukiwanie termin za pośrednictwem `params` słownika. Aby zapoznać się z pełną listą opcje, które mogą służyć do filtrowania wyników wyszukiwania, zapoznaj się [interfejsu API REST](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) dokumentacji.
+## <a name="make-a-request"></a>Wysyłanie żądania
 
+W tym bloku za pomocą biblioteki `requests` wywoływany jest interfejs API wyszukiwania w sieci Web Bing i zwracane są wyniki w postaci obiektu JSON. Klucz interfejsu API jest przekazywany do słownika `headers`, a wyszukiwany termin i parametry zapytania są przekazywane do słownika `params`. Aby uzyskać pełną listę opcji i parametrów, zobacz dokumentację [interfejsu API wyszukiwania w sieci Web Bing w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference).
 
 ```python
 import requests
@@ -66,8 +60,9 @@ response.raise_for_status()
 search_results = response.json()
 ```
 
-`search_results` Obiekt zawiera wyniki wyszukiwania, oraz rozbudowane metadane, takie jak powiązane zapytania i strony. Następujące wiersze kodu formatu najpopularniejsze strony zwróconych przez kwerendę.
+## <a name="format-and-display-the-response"></a>Formatowanie i wyświetlanie odpowiedzi
 
+Obiekt `search_results` zawiera wyniki wyszukiwania i metadane, takie jak powiązane zapytania i strony. Ten kod formatuje i wyświetla odpowiedź w przeglądarce za pomocą biblioteki `IPython.display`.
 
 ```python
 from IPython.display import HTML
@@ -80,14 +75,13 @@ rows = "\n".join(["""<tr>
 HTML("<table>{0}</table>".format(rows))
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="sample-code-on-github"></a>Kod przykładowy w witrynie GitHub
+
+Jeśli chcesz uruchomić ten kod lokalnie, pełny [przykład jest dostępny w witrynie GitHub](https://github.com/Azure-Samples/cognitive-services-REST-api-samples/blob/master/nodejs/Search/BingWebSearchv7.js).
+
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek aplikacji jednej strony wyszukiwania usługi Bing w sieci Web](../tutorial-bing-web-search-single-page-app.md)
+> [Samouczek dotyczący jednostronicowej aplikacji wyszukiwania w sieci Web Bing](../tutorial-bing-web-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz także 
-
-[Wyszukiwania usługi Bing w sieci Web — Omówienie](../overview.md)  
-[Wypróbuj](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/)  
-[Pobierz klucz bezpłatnej wersji próbnej dostępu](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)
-[dokumentacja interfejsu API wyszukiwania sieci Web usługi Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)
+[!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

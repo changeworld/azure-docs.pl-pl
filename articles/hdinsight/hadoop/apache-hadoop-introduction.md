@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017, mvc
 ms.topic: overview
 ms.date: 05/07/2018
-ms.openlocfilehash: 3bf1b4c9ea0db3a51f2455edf3e1e70aaa3dcdab
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 634abb107ce3578de4baccdfdec2c5bdde166f11
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39595736"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43668296"
 ---
 # <a name="what-is-azure-hdinsight-and-the-hadoop-technology-stack"></a>Co to jest usługa Azure HDInsight oraz stos technologii Hadoop?
 
@@ -113,6 +113,17 @@ Klastry HDInsight, takie jak Spark, HBase, Kafka, Hadoop i inne, obsługują wie
 |Języki maszyny wirtualnej Java (JVM)     | Wiele języków innych niż Java można uruchamiać za pomocą maszyny wirtualnej Java (JVM). Jednak do uruchomienia niektórych z tych języków mogą być potrzebne dodatkowe składniki zainstalowane w klastrze. W klastrach usługi HDInsight są obsługiwane następujące języki działające w oparciu o JVM: <ul><li>Clojure</li><li>Jython (Python dla platformy Java)</li><li>Scala</li></ul>     |
 |Języki specyficzne dla platformy Hadoop     | Klastry HDInsight obsługują następujące języki specyficzne dla stosu technologii Hadoop: <ul><li>Pig Latin do zadań Pig</li><li>HiveQL do zadań Hive oraz SparkSQL</li></ul>        |
  
+
+## <a name="development-tools-for-hdinsight"></a>Narzędzia programistyczne dla usługi HDInsight 
+Narzędzia programistyczne usługi HDInsight, takie jak IntelliJ, Eclipse, Visual Studio Code i Visual Studio, umożliwiają tworzenie i przesyłanie zapytań o dane i zadania usługi HDInsight, wykorzystując bezproblemową integrację z platformą Azure.
+
+* [Zestaw narzędzi platformy Azure dla środowiska IntelliJ](https://docs.microsoft.com/en-us/azure/hdinsight/spark/apache-spark-intellij-tool-plugin)
+
+* [Zestaw narzędzi platformy Azure dla środowiska Eclipse](https://docs.microsoft.com/en-us/azure/hdinsight/spark/apache-spark-eclipse-tool-plugin)
+
+* [Narzędzia Azure HDInsight Tools dla programu VS Code](https://docs.microsoft.com/en-us/azure/hdinsight/hdinsight-for-vscode?branch=pr-en-us-22999)
+
+* [Narzędzia Azure Data Lake Tools for Visual Studio](https://docs.microsoft.com/en-us/azure/hdinsight/hadoop/apache-hadoop-visual-studio-tools-get-started)
 
 ## <a name="business-intelligence-on-hdinsight"></a>Analiza biznesowa w usłudze HDInsight
 Znane narzędzia do analizy biznesowej (BI, business intelligence) pobierają, analizują i raportują dane zintegrowane z usługą HDInsight przy użyciu dodatku Power Query lub sterownika Microsoft Hive ODBC:

@@ -14,12 +14,12 @@ ms.workload: na
 ms.date: 08/10/2018
 ms.author: routlaw, glenga
 ms.custom: mvc, devcenter
-ms.openlocfilehash: aeb00bf55c578f61e5e1edbaab11c7773b9eab94
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 3840d8d1e18e73c1f08c450859032c07e441cff2
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42023961"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43699179"
 ---
 # <a name="create-your-first-function-with-java-and-maven-preview"></a>Tworzenie pierwszej funkcji przy użyciu języka Java i narzędzia Maven (wersja zapoznawcza)
 
@@ -175,11 +175,37 @@ curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.
 Hello, AzureFunctionsTest
 ```
 
+## <a name="make-changes-and-redeploy"></a>Wprowadzanie zmian i ponowne wdrażanie
+
+Otwórz do edycji plik źródłowy `src/main.../Function.java` w wygenerowanym projekcie, aby zmienić tekst zwracany przez aplikację funkcji. Zmień ten wiersz:
+
+```java
+return request.createResponse(200, "Hello, " + name);
+```
+
+Na następujący:
+
+```java
+return request.createResponse(200, "Hi, " + name);
+```
+
+Zapisz zmiany i wdróż ponownie, uruchamiając polecenie `azure-functions:deploy` z poziomu terminalu, tak jak poprzednio. Aplikacja funkcji zostanie zaktualizowana, a żądanie:
+
+```bash
+curl -w '\n' -d AzureFunctionsTest https://fabrikam-functions-20170920120101928.azurewebsites.net/api/HttpTrigger-Java
+```
+
+będzie miało zaktualizowane dane wyjściowe:
+
+```Output
+Hi, AzureFunctionsTest
+```
+
 ## <a name="next-steps"></a>Następne kroki
 
 Aplikacja funkcji języka Java z prostym wyzwalaczem HTTP została utworzona i wdrożona w usłudze Azure Functions.
 
 - Zapoznaj się z [Przewodnikiem dewelopera po funkcjach języka Java](functions-reference-java.md), aby uzyskać więcej informacji na temat tworzenia funkcji języka Java.
 - Dodaj do swojego projektu kolejne funkcje z różnymi wyzwalaczami, używając elementu docelowego `azure-functions:add` narzędzia Maven.
-- Przeprowadź lokalne debugowanie funkcji za pomocą programu Visual Studio Code. Po zainstalowaniu [pakietu rozszerzenia języka Java](https://marketplace.visualstudio.com/items?itemName=vscjava.vscode-java-pack) i otworzeniu projektu usługi Functions w programie Visual Studio Code [dołącz debuger](https://code.visualstudio.com/Docs/editor/debugging#_launch-configurations) do portu 5005. Następnie ustaw punkt przerwania w edytorze i wyzwól swoją funkcję, gdy będzie uruchomiona lokalnie: ![Debugowanie funkcji w programie Visual Studio Code](media/functions-create-java-maven/vscode-debug.png).
-- Przeprowadź zdalne debugowanie funkcji za pomocą programu Visual Studio Code. Aby uzyskać instrukcje, sprawdź dokumentację dotyczącą [pisania bezserwerowych aplikacji Java](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud).
+- Pisanie i debugowanie funkcji lokalnie za pomocą oprogramowania [Visual Studio Code](https://code.visualstudio.com/docs/java/java-azurefunctions), [IntelliJ](functions-create-maven-intellij.md) i [Eclipse](functions-create-maven-eclipse.md). 
+- Debuguj funkcje wdrożone na platformie Azure przy użyciu programu Visual Studio Code. Zobacz dokumentację [bezserwerowych aplikacji Java](https://code.visualstudio.com/docs/java/java-serverless#_remote-debug-functions-running-in-the-cloud) programu Visual Studio Code, aby uzyskać instrukcje.

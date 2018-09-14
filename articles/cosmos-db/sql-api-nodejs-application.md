@@ -11,21 +11,22 @@ ms.devlang: nodejs
 ms.topic: tutorial
 ms.date: 03/23/2018
 ms.author: sngun
-ms.openlocfilehash: cdf3edf5bfd8d13f71c25b8bf0bbf0ea3d992a5d
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: f7f41e9d77e0687c6c8b25a4163348a7310aa40c
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628158"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697327"
 ---
 # <a name="_Toc395783175"></a>Tworzenie aplikacji internetowej Node.js za pomocą usługi Azure Cosmos DB
+
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-dotnet-application.md)
-> * [Node.js](sql-api-nodejs-application.md)
-> * [Node.js 2.0 (wersja zapoznawcza)](sql-api-nodejs-application-preview.md)
 > * [Java](sql-api-java-application.md)
+> * [Node.js](sql-api-nodejs-application.md)
+> * [Node.js 2](sql-api-nodejs-application-preview.md)
 > * [Python](sql-api-python-application.md)
-> 
+> * [Xamarin](mobile-apps-with-xamarin.md)
 > 
 
 W tym samouczku środowiska Node.js pokazano, jak przy użyciu usługi Azure Cosmos DB oraz interfejsu API SQL przechowywać dane i uzyskiwać do nich dostęp z poziomu aplikacji Node.js Express hostowanej w usłudze Azure Websites. Utworzysz prostą, opartą na sieci Web aplikację do zarządzania zadaniami (aplikację ToDo), która umożliwia tworzenie, pobieranie i kończenie zadań. Zadania są przechowywane jako dokumenty JSON w usłudze Azure Cosmos DB. Ten samouczek zawiera szczegółowe omówienie tworzenia i rozwoju aplikacji oraz objaśnienie poszczególnych fragmentów kodu.

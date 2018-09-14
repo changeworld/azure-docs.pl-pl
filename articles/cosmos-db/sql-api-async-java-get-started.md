@@ -11,23 +11,22 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 06/29/2018
 ms.author: sngun
-ms.openlocfilehash: 2ea09b8f138f9cb6729af0e0aff1500caccde10f
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: faa213caf415f98c230af741822e17a511b6fe43
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163312"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696299"
 ---
 # <a name="build-a-java-application-by-using-azure-cosmos-db-async-java-sdk"></a>Tworzenie aplikacji Java za pomocą zestawu SDK asynchronicznego języka Java usługi Azure Cosmos DB 
 
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
-> * [Node.js dla MongoDB](mongodb-samples.md)
-> * [Node.js](sql-api-nodejs-get-started.md)
 > * [Java](sql-api-java-get-started.md)
-> * [Asyn Java](sql-api-async-java-get-started.md)
->  
+> * [Java (asynchroniczny)](sql-api-async-java-get-started.md)
+> * [Node.js](sql-api-nodejs-get-started.md)
+> * [Node.js 2](sql-api-nodejs-get-started-preview.md) 
 > 
 
 Azure Cosmos DB to globalnie dystrybuowana, wielomodelowa baza danych. W tym samouczku pokazano, jak używać konta interfejsu API SQL usługi Azure Cosmos DB do przechowywania danych oraz uzyskiwania do nich dostępu za pomocą aplikacji asynchronicznego języka Java. 

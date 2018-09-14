@@ -1,79 +1,65 @@
 ---
-title: Samouczek dotyczący wywoływania aplikacji Language Understanding (LUIS) przy użyciu języka Node.js| Microsoft Docs
-description: Z tego samouczka dowiesz się, jak wywołać aplikację LUIS przy użyciu języka Node.js.
+title: Analizowanie tekstu w języku naturalnym w usłudze Language Understanding (LUIS) przy użyciu języka JavaScript — Cognitive Services — Azure Cognitive Services | Microsoft Docs
+description: W tym przewodniku Szybki start użyjesz dostępnej publicznie aplikacji LUIS, aby określić intencję użytkownika w tekście konwersacji. Przy użyciu języka JavaScript wyślesz intencję użytkownika jako tekst do punktu końcowego przewidywania HTTP aplikacji publicznej. W punkcie końcowym usługa LUIS zastosuje model aplikacji publicznej, aby przeanalizować tekst w języku naturalnym pod kątem znaczenia, określając ogólną intencję i wyodrębniając dane dotyczące domeny podmiotu aplikacji.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: tutorial
-ms.date: 12/13/2017
-ms.author: v-geberr
-ms.openlocfilehash: 62c6816e753ee2c29aee0b8f68dec0ebd9f4be44
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.topic: quickstart
+ms.date: 08/23/2018
+ms.author: diberry
+ms.openlocfilehash: 10210c3759611a77c4430a97896a19a6b97b9fa9
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265408"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "43771713"
 ---
-# <a name="tutorial-call-a-luis-endpoint-using-javascript"></a>Samouczek: Wywoływanie punktu końcowego aplikacji LUIS przy użyciu języka JavaScript
-Przekazuj wypowiedzi do punktu końcowego aplikacji LUIS i uzyskuj intencje oraz jednostki.
+# <a name="quickstart-analyze-text-using-javascript"></a>Szybki start: analiza tekstu przy użyciu języka JavaScript
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Tworzenie subskrypcji usługi LUIS i kopiowanie wartości klucza do późniejszego użytku
-> * Wyświetlanie wyników punktu końcowego aplikacji LUIS w przeglądarce dla publicznej przykładowej aplikacji IoT
-> * Tworzenie aplikacji konsoli programu Visual Studio w języku C# w celu wykonywania wywołań HTTPS do punktu końcowego usługi LUIS
+[!include[Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
-Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS][LUIS] w celu tworzenia aplikacji LUIS.
+<a name="create-luis-subscription-key"></a>
 
-## <a name="create-luis-subscription-key"></a>Tworzenie klucza subskrypcji usługi LUIS
-Aby wykonywać wywołania przykładowej aplikacji LUIS używanej w tym przewodniku, potrzebny jest klucz interfejsu API usług Cognitive Services. 
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-luis-repo-note.md)]
 
-Aby uzyskać klucz interfejsu API, wykonaj następujące czynności: 
+## <a name="prerequisites"></a>Wymagania wstępne
 
-1. Najpierw należy utworzyć [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) w witrynie Azure Portal. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-
-2. Zaloguj się do witryny Azure Portal na stronie https://portal.azure.com. 
-
-3. Aby uzyskać klucz, postępuj zgodnie z instrukcjami w temacie [Tworzenie kluczy subskrypcji przy użyciu platformy Azure](./luis-how-to-azure-subscription.md).
-
-4. Wróć do witryny internetowej usługi [LUIS](luis-reference-regions.md) i zaloguj się przy użyciu konta platformy Azure. 
-
-    [![](media/luis-get-started-node-get-intent/app-list.png "Zrzut ekranu przedstawiający listę tworzenia aplikacji")](media/luis-get-started-node-get-intent/app-list.png)
-
-## <a name="understand-what-luis-returns"></a>Interpretacja wyników zwracanych przez aplikację LUIS
-
-Aby zrozumieć, co zwraca aplikacja LUIS, możesz wkleić adres URL przykładowej aplikacji LUIS w oknie przeglądarki. Przykładowa aplikacja to aplikacja IoT, która wykrywa, czy użytkownik chce włączyć, czy wyłączyć światła.
-
-1. Punkt końcowy przykładowej aplikacji ma następujący format: `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=<YOUR_API_KEY>&verbose=false&q=turn%20on%20the%20bedroom%20light`. Skopiuj ten adres URL i zastąp wartość pola `subscription-key` swoim kluczem subskrypcji.
-
-2. Wklej adres URL w oknie przeglądarki, a następnie naciśnij klawisz Enter. W przeglądarce zostanie wyświetlony wynik w formacie JSON, który wskazuje, że usługa LUIS wykryła intencję `HomeAutomation.TurnOn` i jednostkę `HomeAutomation.Room` o wartości `bedroom`.
-
-    ![Wynik w formacie JSON z informacją o wykryciu intencji TurnOn](./media/luis-get-started-node-get-intent/turn-on-bedroom.png)
-
-3. Zmień wartość parametru `q=` w adresie URL na wartość `turn off the living room light`, a następnie naciśnij klawisz Enter. Wynik wskazuje teraz, że aplikacja LUIS wykryła intencję `HomeAutomation.TurnOff` i jednostkę `HomeAutomation.Room` o wartości `living room`. 
-
-    ![Wynik w formacie JSON z informacją o wykryciu intencji TurnOff](./media/luis-get-started-node-get-intent/turn-off-living-room.png)
+* [Visual Studio Code](https://code.visualstudio.com/)
+* Identyfikator aplikacji publicznej: df67dcdb-c37d-46af-88e1-8b97951ca1c2
 
 
-## <a name="consume-a-luis-result-using-the-endpoint-api-with-javascript"></a>Korzystanie z wyniku aplikacji LUIS przy użyciu interfejsu API punktu końcowego za pomocą języka JavaScript 
+## <a name="get-luis-key"></a>Pobieranie klucza usługi LUIS
+
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
+
+## <a name="analyze-text-with-browser"></a>Analiza tekstu przy użyciu przeglądarki
+
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
+
+## <a name="analyze-text-with-javascript"></a>Analiza tekstu przy użyciu języka JavaScript 
 
 Aby uzyskać dostęp do tego samego wyniku, który został wyświetlony w oknie przeglądarki w poprzednim kroku, możesz użyć języka JavaScript. 
+
 1. Skopiuj poniższy kod i zapisz go w pliku HTML:
 
-   [!code-javascript[Console app code that calls a LUIS endpoint](~/samples-luis/documentation-samples/endpoint-api-samples/javascript/call-endpoint.html)]
-2. Zastąp ciąg `"YOUR SUBSCRIPTION KEY"` swoim kluczem subskrypcji w tym wierszu kodu: `xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","YOUR SUBSCRIPTION KEY");`
+   [!code-html[Console app code that calls a LUIS endpoint](~/samples-luis/documentation-samples/quickstarts/analyze-text/javascript/call-endpoint.html)]
 
-3. Otwórz plik, który został zapisany za pomocą przeglądarki internetowej.  Powinno zostać wyświetlone okno alertu z następującą informacją: `Detected the following intent: TurnOn`.
+2. Otwórz plik w przeglądarce. Wprowadź klucz punktu końcowego usługi LUIS w formularzu i wybierz pozycję **Prześlij**.
 
-![Wyskakujące okno z informacją TurnOn](./media/luis-get-started-node-get-intent/popup-turn-on.png)
+    ![Przykład kodu HTML wyświetlanego w przeglądarce z wynikami usługi LUIS dla aplikacji Home Automation](./media/luis-get-started-js-get-intent/html-results.png)
+
+    Pod formularzem zostaną wyświetlone wyniki. 
+
+## <a name="luis-keys"></a>Klucze usługi LUIS
+
+[!include[Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-key-usage-para.md)]
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Dwa zasoby utworzone w tym samouczku to klucz subskrypcji usługi LUIS i projekt w języku C#. Usuń klucz subskrypcji usługi LUIS z witryny Azure Portal. Zamknij projekt programu Visual Studio i usuń katalog z systemu plików. 
+
+Usuń plik JavaScript.
 
 ## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
 > [Dodawanie wypowiedzi](luis-get-started-javascript-add-utterance.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

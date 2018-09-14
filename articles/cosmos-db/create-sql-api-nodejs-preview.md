@@ -11,14 +11,23 @@ ms.devlang: nodejs
 ms.topic: quickstart
 ms.date: 07/30/2018
 ms.author: dech
-ms.openlocfilehash: 96d09ff6c43a26f1ebf36fa5d5d113627cbc06e9
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: e6455e5417828b51921fdf608dc95d76154162d6
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43043257"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698659"
 ---
 # <a name="azure-cosmos-db-build-a-nodejs-app-using-sql-api-javascript-sdk-20-preview-and-the-azure-portal"></a>Azure Cosmos DB: tworzenie aplikacji Node.js przy użyciu interfejsu API SQL, zestawu SDK 2.0 języka JavaScript (wersja zapoznawcza) i witryny Azure Portal 
+
+> [!div class="op_single_selector"]
+> * [.NET](create-sql-api-dotnet.md)
+> * [Java](create-sql-api-java.md)
+> * [Node.js](create-sql-api-nodejs.md)
+> * [Node.js 2](create-sql-api-nodejs-preview.md)
+> * [Python](create-sql-api-python.md)
+> * [Xamarin](create-sql-api-xamarin-dotnet.md)
+>  
 
 Azure Cosmos DB to rozproszona globalnie wielomodelowa usługa bazy danych firmy Microsoft. Dzięki dystrybucji globalnej i możliwości skalowania poziomego w usłudze Azure Cosmos DB możesz szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, par klucz/wartość oraz grafów. 
 

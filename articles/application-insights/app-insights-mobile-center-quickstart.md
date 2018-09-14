@@ -11,12 +11,12 @@ ms.reviewer: daviste
 ms.custom: mvc
 ms.topic: quickstart
 manager: carmonm
-ms.openlocfilehash: fd594e65de79844720462996a89477e0a6237ceb
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: e69cf8753fb0cc9326e047ec97cbe08ee6f26610
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38988929"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43668465"
 ---
 # <a name="start-analyzing-your-mobile-app-with-app-center-and-application-insights"></a>Rozpoczęcie analizowania aplikacji mobilnej za pomocą Centrum aplikacji i usługi Application Insights
 
@@ -68,9 +68,9 @@ Aby upewnić się, że zdarzenia niestandardowe są otrzymywane, przejdź do kar
 Gdy aplikacja wysyła zdarzenia niestandardowe i są one odbierane przez Centrum aplikacji, musisz utworzyć zasób usługi Application Insights typu Centrum aplikacji w witrynie Azure Portal:
 
 1. Zaloguj się do witryny [Azure Portal](https://portal.azure.com/).
-2. Wybierz pozycję **Utwórz zasób** > **Monitorowanie + zarządzanie** > **Application Insights**.
+2. Wybierz pozycję **Utwórz zasób** > **Narzędzia do zarządzania** > **Application Insights**.
 
-    ![Dodawanie zasobu usługi Application Insights](./media/app-insights-mobile-center-quickstart/add.png)
+    ![Dodawanie zasobu usługi Application Insights](./media/app-insights-mobile-center-quickstart/add-b.png)
 
     Zostanie wyświetlone okno konfiguracji. Wypełnij pola wejściowe, używając poniższej tabeli.
 
@@ -81,7 +81,7 @@ Gdy aplikacja wysyła zdarzenia niestandardowe i są one odbierane przez Centrum
    | **Grupa zasobów**     | Nowa grupa zasobów lub istniejąca grupa zasobów z menu | Grupa zasobów, w której ma zostać utworzony nowy zasób usługi Application Insights |
    | **Lokalizacja** | Lokalizacja z menu | Wybierz lokalizację w pobliżu Ciebie lub w pobliżu miejsca hostowania aplikacji |
 
-3. Kliknij przycisk **Utwórz**.
+3. Kliknij pozycję **Utwórz**.
 
 Jeśli aplikacja obsługuje wiele platform (iOS, Android itp.), najlepiej utworzyć oddzielne zasoby usługi Application Insights, po jednym dla każdej platformy.
 

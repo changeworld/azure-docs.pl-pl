@@ -1,60 +1,106 @@
 ---
-title: 'Szybki Start: Użyj wyszukiwania w Internecie Bing zestawu SDK dla języka C#'
-description: Ustawienia wyszukiwania w Internecie aplikację konsolową zestawu SDK C#.
-titleSuffix: Azure cognitive services Web search SDK C# quickstart
+title: 'Szybki start: używanie zestawu SDK wyszukiwania w Internecie Bing dla języka C#'
+description: Dowiedz się, jak używać zestawu SDK wyszukiwania w Internecie Bing dla języka C#.
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 08/16/2018
-ms.author: v-gedod, erhopf
-ms.openlocfilehash: ef54487a1df7303fa92a78e4f3219f40f558da2b
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
-ms.translationtype: MT
+ms.author: erhopf
+ms.openlocfilehash: ed958f4a691b878cfa7ff9766a0fb72857cce5db
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887323"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186800"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Szybki Start: Użyj wyszukiwania w Internecie Bing zestawu SDK dla języka C#
+# <a name="quickstart-use-the-bing-web-search-sdk-for-c"></a>Szybki start: używanie zestawu SDK wyszukiwania w Internecie Bing dla języka C#
 
-Zestaw SDK wyszukiwania w sieci Web Bing zawiera funkcje interfejsu API REST dla żądań sieci web i wyniki analizy.
+Zestaw SDK wyszukiwania w Internecie Bing ułatwia integrowanie wyszukiwania w Internecie Bing z aplikacją C#. Z tego przewodnika Szybki start dowiesz się, jak utworzyć wystąpienie klienta, wysłać żądanie i wyświetlić odpowiedź.
 
-[Źródła kodu dla języka C# Bing wyszukiwania zestawu SDK sieci Web przykładów](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/blob/master/BingSearchv7/BingWebSearch/WebSearchSamples.cs) jest dostępna w witrynie GitHub.
+Chcesz zobaczyć kod teraz? [Przykłady zastosowania zestawu SDK wyszukiwania w Internecie Bing dla języka C#](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/) są dostępne w usłudze GitHub.
 
-## <a name="application-dependencies"></a>Zależności aplikacji
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
-Aby skonfigurować aplikację konsoli przy użyciu zestawu SDK wyszukiwania w sieci Web Bing, przejdź do `Manage NuGet Packages` opcji z poziomu Eksploratora rozwiązań w programie Visual Studio.  Dodaj `Microsoft.Azure.CognitiveServices.Search.WebSearch` pakietu.
+## <a name="prerequisites"></a>Wymagania wstępne
 
-Instalowanie [pakietu NuGet zestawu SDK z wyszukiwania w sieci Web](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) instaluje również zależności, w tym:
+Oto kilka rzeczy, które są potrzebne przed rozpoczęciem tego przewodnika Szybki start:
+
+* [Program Visual Studio](https://visualstudio.microsoft.com/downloads/) lub
+* [Program Visual Studio Code 2017](https://code.visualstudio.com/download)
+  * [Rozszerzenie C# for Visual Studio Code](https://visualstudio.microsoft.com/downloads/)
+  * [Menedżer pakietów NuGet](https://github.com/jmrog/vscode-nuget-package-manager)
+* [Zestaw .Net Core SDK](https://www.microsoft.com/net/download)
+
+## <a name="create-a-project-and-install-dependencies"></a>Tworzenie projektu i instalowanie zależności
+
+Pierwszym krokiem jest utworzenie nowego projektu konsoli. Jeśli potrzebujesz pomocy przy konfigurowaniu projektu konsoli, zobacz [Hello World -- Your First Program (C# Programming Guide)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program) (Witaj świecie — Twój pierwszy program [Przewodnik programowania w języku C#]). Aby korzystać z zestawu SDK wyszukiwania w Internecie Bing w aplikacji, musisz zainstalować element `Microsoft.Azure.CognitiveServices.Search.WebSearch` przy użyciu Menedżera pakietów NuGet.
+
+[Pakiet zestawu SDK wyszukiwania w Internecie](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) instaluje także następujące elementy:
+
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
 * Newtonsoft.Json
 
-## <a name="web-search-client"></a>Klient wyszukiwania w sieci Web
-Aby utworzyć wystąpienie `WebSearchAPI` klienta, dodawanie dyrektyw using:
-```
+## <a name="declare-dependencies"></a>Deklarowanie zależności
+
+Otwórz projekt w programie Visual Studio lub Visual Studio Code i zaimportuj te zależności:
+
+```csharp
+using System;
+using System.Collections.Generic;
 using Microsoft.Azure.CognitiveServices.Search.WebSearch;
 using Microsoft.Azure.CognitiveServices.Search.WebSearch.Models;
+using System.Linq;
+```
 
-```
-Następnie utwórz wystąpienie klienta:
-```
-var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
+## <a name="create-project-scaffolding"></a>Tworzenie szkieletu projektu
 
+Podczas tworzenia nowego projektu konsoli powinna zostać utworzona przestrzeń nazw i klasa dla aplikacji. Twój program powinien wyglądać następująco:
 
-```
-Użyj klienta, aby wyszukać tekst zapytania:
-```
-// Search for "Yosemite National Park"
-var webData = client.Web.Search(query: "Yosemite National Park");
-Console.WriteLine("Searched for Query# \" Yosemite National Park \"");
+```csharp
+namespace WebSearchSDK
+{
+    class YOUR_PROGRAM
+    {
 
+        // The code in the following sections goes here.
+
+    }
+}
 ```
-Analizowanie stron sieci web, w wynikach poprzednie zapytanie:
+
+W poniższych sekcjach utworzymy naszą przykładową aplikację w ramach tej klasy.
+
+## <a name="construct-a-request"></a>Konstruowanie żądania
+
+Ten kod tworzy zapytanie wyszukiwania.
+
+```csharp
+public static void WebResults(WebSearchAPI client)
+{
+    try
+    {
+        var webData = client.Web.Search(query: "Yosemite National Park");
+        Console.WriteLine("Searching for \"Yosemite National Park\"");
+
+        // Code for handling responses is provided in the next section...
+
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("Encountered exception. " + ex.Message);
+    }
+}
 ```
-//WebPages
+
+## <a name="handle-the-response"></a>Obsługa odpowiedzi
+
+Następnie dodajmy kod do analizy odpowiedzi i wyświetlania wyników. Wartości `name` i `url` dla pierwszej strony internetowej, pierwszego obrazu, artykułu i wideo są wyświetlane, jeśli są obecne w obiekcie odpowiedzi.
+
+```csharp
 if (webData?.WebPages?.Value?.Count > 0)
 {
     // find the first web page
@@ -62,286 +108,306 @@ if (webData?.WebPages?.Value?.Count > 0)
 
     if (firstWebPagesResult != null)
     {
-        Console.WriteLine("Webpage Results #{0}", webData.WebPages.Value.Count);
+        Console.WriteLine("Webpage Results # {0}", webData.WebPages.Value.Count);
         Console.WriteLine("First web page name: {0} ", firstWebPagesResult.Name);
         Console.WriteLine("First web page URL: {0} ", firstWebPagesResult.Url);
     }
     else
     {
-        Console.WriteLine("Couldn't find web results!)";
+        Console.WriteLine("Didn't find any web pages...");
     }
 }
 else
 {
-    Console.WriteLine("Didn't see any Web data..");
+    Console.WriteLine("Didn't find any web pages...");
 }
 
-```
-## <a name="complete-console-application"></a>Aplikacja konsolowa ukończone
-
-Następująca aplikacja konsoli wykonuje zapytanie uprzednio zdefiniowany i analizuje stron sieci web, obrazów, wiadomości i wideo zawarte w wynikach:
-```
-using System;
-using System.Collections.Generic;
-using Microsoft.Azure.CognitiveServices.Search.WebSearch;
-using Microsoft.Azure.CognitiveServices.Search.WebSearch.Models;
-using System.Linq;
-
-namespace WebSrchSDK
+/*
+ * Images
+ * If the search response contains images, the first result's name
+ * and url are printed.
+ */
+if (webData?.Images?.Value?.Count > 0)
 {
-    class Program
+    // find the first image result
+    var firstImageResult = webData.Images.Value.FirstOrDefault();
+
+    if (firstImageResult != null)
     {
-        static void Main(string[] args)
-        {
-            var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR-ACCESS-KEY"));
-
-            WebResults(client);
-            // Include the following calls to use queries defined under following headings.
-            //WebResultsWithCountAndOffset(client);  
-            //WebSearchWithResponseFilter(client);
-            //WebSearchWithAnswerCountPromoteAndSafeSearch(client);
-
-            Console.WriteLine("Any key to exit... ");
-            Console.ReadKey();
-        }
-
-        public static void WebResults(WebSearchAPI client)
-        {
-            try
-            {
-                // Search for (Yosemite National Park"), print the number of results and print out name and url of first result.
-                var webData = client.Web.Search(query: "Yosemite National Park");
-                Console.WriteLine("Searched for Query# \" Yosemite National Park \"");
-
-                //WebPages
-                if (webData?.WebPages?.Value?.Count > 0)
-                {
-                    // find the first web page
-                    var firstWebPagesResult = webData.WebPages.Value.FirstOrDefault();
-
-                    if (firstWebPagesResult != null)
-                    {
-                        Console.WriteLine("Webpage Results #{0}", webData.WebPages.Value.Count);
-                        Console.WriteLine("First web page name: {0} ", firstWebPagesResult.Name);
-                        Console.WriteLine("First web page URL: {0} ", firstWebPagesResult.Url);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Couldn't find web results!");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Didn't see any Web data..");
-                }
-
-                //Images
-                if (webData?.Images?.Value?.Count > 0)
-                {
-                    // find the first image result
-                    var firstImageResult = webData.Images.Value.FirstOrDefault();
-
-                    if (firstImageResult != null)
-                    {
-                        Console.WriteLine("Image Results #{0}", webData.Images.Value.Count);
-                        Console.WriteLine("First Image result name: {0} ", firstImageResult.Name);
-                        Console.WriteLine("First Image result URL: {0} ", firstImageResult.ContentUrl);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Couldn't find first image results!");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Didn't see any image data..");
-                }
-
-                //News
-                if (webData?.News?.Value?.Count > 0)
-                {
-                    // find the first news result
-                    var firstNewsResult = webData.News.Value.FirstOrDefault();
-
-                    if (firstNewsResult != null)
-                    {
-                        Console.WriteLine("\r\nNews Results #{0}", webData.News.Value.Count);
-                        Console.WriteLine("First news result name: {0} ", firstNewsResult.Name);
-                        Console.WriteLine("First news result URL: {0} ", firstNewsResult.Url);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Couldn't find any News results!");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Didn't see first news data..");
-                }
-
-                //Videos
-                if (webData?.Videos?.Value?.Count > 0)
-                {
-                    // find the first video result
-                    var firstVideoResult = webData.Videos.Value.FirstOrDefault();
-
-                    if (firstVideoResult != null)
-                    {
-                        Console.WriteLine("\r\nVideo Results #{0}", webData.Videos.Value.Count);
-                        Console.WriteLine("First Video result name: {0} ", firstVideoResult.Name);
-                        Console.WriteLine("First Video result URL: {0} ", firstVideoResult.ContentUrl);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Couldn't find first video results!");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Didn't see any video data..");
-                }
-            }
-
-            catch (Exception ex)
-            {
-                Console.WriteLine("Encountered exception. " + ex.Message);
-            }
-
-        }
+        Console.WriteLine("Image Results # {0}", webData.Images.Value.Count);
+        Console.WriteLine("First Image result name: {0} ", firstImageResult.Name);
+        Console.WriteLine("First Image result URL: {0} ", firstImageResult.ContentUrl);
+    }
+    else
+    {
+        Console.WriteLine("Didn't find any images...");
     }
 }
+else
+{
+    Console.WriteLine("Didn't find any images...");
+}
 
+/*
+ * News
+ * If the search response contains news articles, the first result's name
+ * and url are printed.
+ */
+if (webData?.News?.Value?.Count > 0)
+{
+    // find the first news result
+    var firstNewsResult = webData.News.Value.FirstOrDefault();
+
+    if (firstNewsResult != null)
+    {
+        Console.WriteLine("\r\nNews Results # {0}", webData.News.Value.Count);
+        Console.WriteLine("First news result name: {0} ", firstNewsResult.Name);
+        Console.WriteLine("First news result URL: {0} ", firstNewsResult.Url);
+    }
+    else
+    {
+        Console.WriteLine("Didn't find any news articles...");
+    }
+}
+else
+{
+    Console.WriteLine("Didn't find any news articles...");
+}
+
+/*
+ * Videos
+ * If the search response contains videos, the first result's name
+ * and url are printed.
+ */
+if (webData?.Videos?.Value?.Count > 0)
+{
+    // find the first video result
+    var firstVideoResult = webData.Videos.Value.FirstOrDefault();
+
+    if (firstVideoResult != null)
+    {
+        Console.WriteLine("\r\nVideo Results # {0}", webData.Videos.Value.Count);
+        Console.WriteLine("First Video result name: {0} ", firstVideoResult.Name);
+        Console.WriteLine("First Video result URL: {0} ", firstVideoResult.ContentUrl);
+    }
+    else
+    {
+        Console.WriteLine("Didn't find any videos...");
+    }
+}
+else
+{
+    Console.WriteLine("Didn't find any videos...");
+}
 ```
 
-Przykłady wyszukiwania Bing pokazują różne funkcje zestawu SDK.  Dodaj następujące funkcje do uprzednio zdefiniowany `WebSrchSDK` klasy.
+## <a name="declare-the-main-method"></a>Deklarowanie metody main
 
-## <a name="count-and-offset-parameters"></a>Przesunięcie i liczba parametrów
+W tej aplikacji metoda main zawiera kod, który tworzy wystąpienie klienta, weryfikuje klucz `subscriptionKey` i wywołuje metodę `WebResults`. Przed kontynuowaniem upewnij się, że został wprowadzony prawidłowy klucz subskrypcji dla konta platformy Azure.
 
-Poniższy kod wyszukuje "Najlepsze restauracje w Seattle", sprawdza liczbę wyników i wyświetla nazwę i adres URL pierwszego wyniku.
+```csharp
+static void Main(string[] args)
+{
+    var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
+    WebResults(client);
+
+    Console.WriteLine("Press any key to exit...");
+    Console.ReadKey();
+}
 ```
-       public static void WebResultsWithCountAndOffset(WebSearchAPI client)
+
+## <a name="run-the-application"></a>Uruchamianie aplikacji
+
+Uruchommy aplikację!
+
+```console
+dotnet run
+```
+
+## <a name="define-functions-and-filter-results"></a>Definiowanie funkcji i filtrowanie wyników
+
+Teraz, gdy wykonaliśmy pierwsze wywołanie interfejsu API wyszukiwania w Internecie Bing, przyjrzyjmy się kilku funkcjom przedstawiającym funkcjonalności zestawu SDK w zakresie uściślania zapytań i filtrowania wyników. Każdą funkcję można dodać do aplikacji C# utworzonej w poprzedniej sekcji.
+
+### <a name="limit-the-number-of-results-returned-by-bing"></a>Ograniczanie liczby wyników zwracanych przez usługę Bing
+
+W tym przykładzie użyto parametrów `count` i `offset`, aby ograniczyć liczbę wyników zwracanych dla zapytania „Best restaurants in Seattle”. Wartości `name` i `URL` są wyświetlane dla pierwszego wyniku.
+
+1. Dodaj następujący kod do projektu konsoli:
+    ```csharp
+    public static void WebResultsWithCountAndOffset(WebSearchAPI client)
+    {
+        try
         {
-            try
+            var webData = client.Web.SearchAsync(query: "Best restaurants in Seattle", offset: 10, count: 20).Result;
+            Console.WriteLine("\r\nSearching for \" Best restaurants in Seattle \"");
+
+            if (webData?.WebPages?.Value?.Count > 0)
             {
-                var webData = client.Web.SearchAsync(query: "Best restaurants in Seattle", offset: 10, count: 20).Result;
-                Console.WriteLine("\r\nSearched for Query# \" Best restaurants in Seattle \"");
+                var firstWebPagesResult = webData.WebPages.Value.FirstOrDefault();
 
-                if (webData?.WebPages?.Value?.Count > 0)
+                if (firstWebPagesResult != null)
                 {
-                    // find the first web page
-                    var firstWebPagesResult = webData.WebPages.Value.FirstOrDefault();
-
-                    if (firstWebPagesResult != null)
-                    {
-                        Console.WriteLine("Web Results #{0}", webData.WebPages.Value.Count);
-                        Console.WriteLine("First web page name: {0} ", firstWebPagesResult.Name);
-                        Console.WriteLine("First web page URL: {0} ", firstWebPagesResult.Url);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Couldn't find first web result!");
-                    }
+                    Console.WriteLine("Web Results #{0}", webData.WebPages.Value.Count);
+                    Console.WriteLine("First web page name: {0} ", firstWebPagesResult.Name);
+                    Console.WriteLine("First web page URL: {0} ", firstWebPagesResult.Url);
                 }
                 else
                 {
-                    Console.WriteLine("Didn't see any Web data..");
+                    Console.WriteLine("Couldn't find first web result!");
                 }
             }
-            catch (Exception ex)
+            else
             {
-                Console.WriteLine("Encountered exception. " + ex.Message);
+                Console.WriteLine("Didn't see any Web data..");
             }
         }
-
-```
-## <a name="response-filter"></a>Filtr odpowiedzi
-
-Następujące zapytanie wyszukuje wystąpienia terminu "Microsoft", przy użyciu filtru odpowiedzi równa `news` i następnie drukuje szczegóły wyników.
-```
-        public static void WebSearchWithResponseFilter(WebSearchAPI client)
+        catch (Exception ex)
         {
-            //var client = new WebSearchAPI(new ApiKeyServiceClientCredentials(subscriptionKey));
-
-            try
-            {
-                IList<string> responseFilterstrings = new List<string>() { "news" };
-                var webData = client.Web.SearchAsync(query: "Microsoft", responseFilter: responseFilterstrings).Result;
-                Console.WriteLine("\r\nSearched for Query# \" Microsoft \" with response filters \"news\"");
-
-                //News
-                if (webData?.News?.Value?.Count > 0)
-                {
-                    // find the first news result
-                    var firstNewsResult = webData.News.Value.FirstOrDefault();
-
-                    if (firstNewsResult != null)
-                    {
-                        Console.WriteLine("News Results #{0}", webData.News.Value.Count);
-                        Console.WriteLine("First news result name: {0} ", firstNewsResult.Name);
-                        Console.WriteLine("First news result URL: {0} ", firstNewsResult.Url);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Couldn't find first News results!");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Didn't see any News data..");
-                }
-
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Encountered exception. " + ex.Message);
-            }
-        }
-
-```
-## <a name="query-parameters---count-promotion-safe-search"></a>Parametry - count, promocji, bezpieczne wyszukiwanie zapytania
-
-To zapytanie "Matki Gaga", wyszukiwania, za pomocą `answerCount` i `promote` parametry następnie drukuje szczegóły wyników.
-
-```
-        public static void WebSearchWithAnswerCountPromoteAndSafeSearch(WebSearchAPI client)
-        {
-            //var client = new WebSearchAPI(new ApiKeyServiceClientCredentials(subscriptionKey));
-
-            try
-            {
-                IList<string> promoteAnswertypeStrings = new List<string>() { "videos" };
-                var webData = client.Web.SearchAsync(query: "Lady Gaga", answerCount: 2, promote: promoteAnswertypeStrings, safeSearch: SafeSearch.Strict).Result;
-                Console.WriteLine("\r\nSearched for Query# \" Lady Gaga \"");
-
-                if (webData?.Videos?.Value?.Count > 0)
-                {
-                    var firstVideosResult = webData.Videos.Value.FirstOrDefault();
-
-                    if (firstVideosResult != null)
-                    {
-                        Console.WriteLine("Video Results #{0}", webData.Videos.Value.Count);
-                        Console.WriteLine("First Video result name: {0} ", firstVideosResult.Name);
-                        Console.WriteLine("First Video result URL: {0} ", firstVideosResult.ContentUrl);
-                    }
-                    else
-                    {
-                        Console.WriteLine("Couldn't find videos results!");
-                    }
-                }
-                else
-                {
-                    Console.WriteLine("Didn't see any data..");
-                }
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("Encountered exception. " + ex.Message);
-            }
+            Console.WriteLine("Encountered exception. " + ex.Message);
         }
     }
-```
+    ```
+2. Dodaj metodę `WebResultsWithCountAndOffset` do klasy `main`:
+    ```csharp
+    static void Main(string[] args)
+    {
+        var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
 
-## <a name="next-steps"></a>Kolejne kroki
+        WebResults(client);
+        // Search with count and offset...
+        WebResultsWithCountAndOffset(client);  
 
-[Przykłady zestawu SDK platformy .NET usług cognitive services](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7).
+        Console.WriteLine("Press any key to exit...");
+        Console.ReadKey();
+    }
+    ```
+3. Uruchom aplikację.
+
+### <a name="filter-for-news"></a>Filtrowanie wiadomości
+
+W tym przykładzie użyto parametru `response_filter`, aby przefiltrować wyniki wyszukiwania. Zwrócone wyniki wyszukiwania zostały ograniczone do artykułów z wiadomościami dotyczących hasła „Microsoft”. Wartości `name` i `URL` są wyświetlane dla pierwszego wyniku.
+
+1. Dodaj następujący kod do projektu konsoli:
+    ```csharp
+    public static void WebSearchWithResponseFilter(WebSearchAPI client)
+    {
+        try
+        {
+            IList<string> responseFilterstrings = new List<string>() { "news" };
+            var webData = client.Web.SearchAsync(query: "Microsoft", responseFilter: responseFilterstrings).Result;
+            Console.WriteLine("\r\nSearching for \" Microsoft \" with response filter \"news\"");
+
+            if (webData?.News?.Value?.Count > 0)
+            {
+                var firstNewsResult = webData.News.Value.FirstOrDefault();
+
+                if (firstNewsResult != null)
+                {
+                    Console.WriteLine("News Results #{0}", webData.News.Value.Count);
+                    Console.WriteLine("First news result name: {0} ", firstNewsResult.Name);
+                    Console.WriteLine("First news result URL: {0} ", firstNewsResult.Url);
+                }
+                else
+                {
+                    Console.WriteLine("Couldn't find first News results!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Didn't see any News data..");
+            }
+
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Encountered exception. " + ex.Message);
+        }
+    }
+    ```
+2. Dodaj metodę `WebResultsWithCountAndOffset` do klasy `main`:
+    ```csharp
+    static void Main(string[] args)
+    {
+        var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
+
+        WebResults(client);
+        // Search with count and offset...
+        WebResultsWithCountAndOffset(client);  
+        // Search with news filter...
+        WebSearchWithResponseFilter(client);
+
+        Console.WriteLine("Press any key to exit...");
+        Console.ReadKey();
+    }
+    ```
+3. Uruchom aplikację.
+
+### <a name="use-safe-search-answer-count-and-the-promote-filter"></a>Używanie filtrów safe search, answer count i promote
+
+W tym przykładzie użyto parametrów `answer_count`, `promote` i `safe_search`, aby przefiltrować wyniki wyszukiwania dla zapytania „Music Videos”. Wartości `name` i `URL` są wyświetlane dla pierwszego wyniku.
+
+1. Dodaj następujący kod do projektu konsoli:
+    ```csharp
+    public static void WebSearchWithAnswerCountPromoteAndSafeSearch(WebSearchAPI client)
+    {
+        try
+        {
+            IList<string> promoteAnswertypeStrings = new List<string>() { "videos" };
+            var webData = client.Web.SearchAsync(query: "Music Videos", answerCount: 2, promote: promoteAnswertypeStrings, safeSearch: SafeSearch.Strict).Result;
+            Console.WriteLine("\r\nSearching for \"Music Videos\"");
+
+            if (webData?.Videos?.Value?.Count > 0)
+            {
+                var firstVideosResult = webData.Videos.Value.FirstOrDefault();
+
+                if (firstVideosResult != null)
+                {
+                    Console.WriteLine("Video Results # {0}", webData.Videos.Value.Count);
+                    Console.WriteLine("First Video result name: {0} ", firstVideosResult.Name);
+                    Console.WriteLine("First Video result URL: {0} ", firstVideosResult.ContentUrl);
+                }
+                else
+                {
+                    Console.WriteLine("Couldn't find videos results!");
+                }
+            }
+            else
+            {
+                Console.WriteLine("Didn't see any data..");
+            }
+        }
+        catch (Exception ex)
+        {
+            Console.WriteLine("Encountered exception. " + ex.Message);
+        }
+    }
+    ```
+2. Dodaj metodę `WebResultsWithCountAndOffset` do klasy `main`:
+    ```csharp
+    static void Main(string[] args)
+    {
+        var client = new WebSearchAPI(new ApiKeyServiceClientCredentials("YOUR_SUBSCRIPTION_KEY"));
+
+        WebResults(client);
+        // Search with count and offset...
+        WebResultsWithCountAndOffset(client);  
+        // Search with news filter...
+        WebSearchWithResponseFilter(client);
+        // Search with answer count, promote, and safe search
+        WebSearchWithAnswerCountPromoteAndSafeSearch(client);
+
+        Console.WriteLine("Press any key to exit...");
+        Console.ReadKey();
+    }
+    ```
+3. Uruchom aplikację.
+
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Pamiętaj, aby po zakończeniu pracy z tym projektem usunąć klucz subskrypcji z kodu aplikacji.
+
+## <a name="next-steps"></a>Następne kroki
+
+> [!div class="nextstepaction"]
+> [Przykłady zastosowania zestawu SDK dla platformy Node.js usług Cognitive Services](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/)

@@ -1,62 +1,108 @@
 ---
-title: Wywołanie i odpowiedź — Ruby — Szybki Start dla usługi kognitywnych Azure, interfejsu API Bing sieci Web wyszukiwania | Dokumentacja firmy Microsoft
-description: Pobierz informacje i przykładowy kod w celu szybkiego Rozpoczynanie pracy przy użyciu interfejsu API wyszukiwania usługi Bing sieci Web w kognitywnych usług Microsoft Azure.
+title: 'Szybki start: wywoływanie interfejsu API wyszukiwania w sieci Web Bing za pomocą języka Ruby'
+description: Z tego przewodnika Szybki start dowiesz się, jak utworzyć swoje pierwsze wywołanie interfejsu API wyszukiwania w sieci Web Bing za pomocą języka Ruby i odebrać odpowiedź w formacie JSON.
 services: cognitive-services
-documentationcenter: ''
-author: v-jerkin
+author: erhopf
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
-ms.date: 9/18/2017
-ms.author: v-jerkin
-ms.openlocfilehash: b0f5c395fcdf043f4111f63ef16f0d33d5257e74
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.topic: quickstart
+ms.date: 8/16/2018
+ms.author: erhopf
+ms.openlocfilehash: a60bf0ef12272be3b224fdbf9f9819057fe4aa55
+ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347537"
+ms.lasthandoff: 08/24/2018
+ms.locfileid: "42888709"
 ---
-# <a name="call-and-response-your-first-bing-web-search-query-in-ruby"></a>Wywołania i odpowiedzi: pierwszego zapytania wyszukiwania usługi Bing w sieci Web w języku Ruby
+# <a name="quickstart-use-ruby-to-call-the-bing-web-search-api"></a>Szybki start: wywoływanie interfejsu API wyszukiwania w sieci Web Bing za pomocą języka Ruby  
 
-Interfejs API wyszukiwania usługi Bing sieci Web zapewnia podobny do Bing.com/Search zwracając się, że wyniki wyszukiwania, które określa Bing są istotne dla kwerendy użytkownika. Wyniki mogą obejmować stron sieci Web, obrazów, klipów wideo, wiadomości i jednostek, wraz z zapytania wyszukiwania powiązanych, pisowni stref czasowych, konwersja jednostek, tłumaczenia i obliczeń. Rodzaje otrzymane wyniki na podstawie ich przydatności i warstwy subskrybowanych interfejsy API wyszukiwania usługi Bing.
+Ten przewodnik Szybki start umożliwi Ci utworzenie Twojego pierwszego wywołania interfejsu API wyszukiwania w sieci Web Bing i odebranie odpowiedzi w formacie JSON w mniej niż 10 minut.  
 
-Ten artykuł zawiera prostej aplikacji konsolowej wykonuje zapytania interfejsu API Bing sieci Web wyszukiwania, który wyświetla zwrócone nieprzetworzone wyniki wyszukiwania, które są w formacie JSON. Ta aplikacja jest napisany w języku Ruby, interfejsu API jest zgodny z żadnego języka programowania, które mogą wysyłać żądania HTTP i przeanalizować składni JSON usługi sieci RESTful Web. 
+[!INCLUDE [bing-web-search-quickstart-signup](../../../../includes/bing-web-search-quickstart-signup.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne będzie [Ruby 2.4 lub nowszym](https://www.ruby-lang.org/en/downloads/) do uruchomienia przykładu kodu.
+Oto kilka rzeczy, które są potrzebne przed rozpoczęciem tego przewodnika Szybki start:
 
-Musi mieć [kognitywnych interfejsu API usług konta](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsy API wyszukiwania usługi Bing**. [Bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) jest wystarczająca dla tego przewodnika Szybki Start. Należy klucz dostępu podany przy wywołaniu metody aktywacji bezpłatną wersję próbną lub może używać klucza płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
+* [Ruby 2.4 lub nowsza wersja](https://www.ruby-lang.org/en/downloads/)
+* Klucz subskrypcji
 
-## <a name="running-the-application"></a>Uruchamianie aplikacji
+## <a name="create-a-project-and-declare-required-modules"></a>Tworzenie projektu i deklarowanie wymaganych modułów
 
-Aby uruchomić tę aplikację, wykonaj następujące kroki.
+Utwórz nowy projekt Ruby w ulubionym środowisku IDE lub edytorze. Następnie zażądaj pakietów: `net/https` do obsługi żądań, `uri` do obsługi identyfikatora URI i `json` do analizowania odpowiedzi.
 
-1. Utwórz nowy projekt dopisków fonetycznych w ulubionych IDE lub edytora.
-2. Dodaj podany kod.
-3. Zastąp `accessKey` wartości z klucza dostępu prawidłową dla Twojej subskrypcji.
-4. Uruchom program.
+```ruby
+require 'net/https'
+require 'uri'
+require 'json'
+```
+
+## <a name="define-variables"></a>Definiowanie zmiennych
+
+Zanim będzie można kontynuować, należy ustawić kilka zmiennych. Upewnij się, że wartości `$uri` oraz `path` są prawidłowe, i zamień wartość `accessKey` na odpowiedni klucz subskrypcji ze swojego konta platformy Azure. Możesz dostosować zapytanie wyszukiwania, zamieniając wartość `term`.
+
+```ruby
+accessKey = "YOUR_SUBSCRIPTION_KEY"
+uri  = "https://api.cognitive.microsoft.com"
+path = "/bing/v7.0/search"
+term = "Microsoft Cognitive Services"
+
+if accessKey.length != 32 then
+    puts "Invalid Bing Search API subscription key!"
+    puts "Please paste yours into the source code."
+    abort
+end
+```
+
+## <a name="make-a-request"></a>Wysyłanie żądania
+
+Za pomocą tego kodu wyślij żądanie i obsłuż odpowiedź.
+
+```ruby
+# Construct the endpoint uri.
+uri = URI(uri + path + "?q=" + URI.escape(term))
+puts "Searching the Web for: " + term
+
+# Create the request.
+request = Net::HTTP::Get.new(uri)
+request['Ocp-Apim-Subscription-Key'] = accessKey
+
+# Get the response.
+response = Net::HTTP.start(uri.host, uri.port, :use_ssl => uri.scheme == 'https') do |http|
+    http.request(request)
+end
+```
+
+## <a name="print-the-response"></a>Wyświetlanie odpowiedzi
+
+Zweryfikuj nagłówki, nadaj danym odpowiedzi format JSON i wyświetl wyniki wyszukiwania.
+
+```ruby
+puts "\nRelevant Headers:\n\n"
+response.each_header do |key, value|
+    # Header names are lower-cased.
+    if key.start_with?("bingapis-") or key.start_with?("x-msedge-") then
+        puts key + ": " + value
+    end
+end
+
+puts "\nJSON Response:\n\n"
+puts JSON::pretty_generate(JSON(response.body))
+```
+
+## <a name="put-it-all-together"></a>Zebranie wszystkich elementów
+
+Ostatnim krokiem jest zweryfikowanie kodu i uruchomienie go. Jeśli chcesz porównać swój kod z naszym, oto pełny program:
 
 ```ruby
 require 'net/https'
 require 'uri'
 require 'json'
 
-# **********************************************
-# *** Update or verify the following values. ***
-# **********************************************
-
-# Replace the accessKey string value with your valid access key.
 accessKey = "enter key here"
-
-# Verify the endpoint URI.  At this writing, only one endpoint is used for Bing
-# search APIs.  In the future, regional endpoints may be available.  If you
-# encounter unexpected authorization errors, double-check this value against
-# the endpoint for your Bing Web search instance in your Azure dashboard.
-
 uri  = "https://api.cognitive.microsoft.com"
 path = "/bing/v7.0/search"
-
 term = "Microsoft Cognitive Services"
 
 if accessKey.length != 32 then
@@ -66,7 +112,6 @@ if accessKey.length != 32 then
 end
 
 uri = URI(uri + path + "?q=" + URI.escape(term))
-
 puts "Searching the Web for: " + term
 
 request = Net::HTTP::Get.new(uri)
@@ -78,7 +123,6 @@ end
 
 puts "\nRelevant Headers:\n\n"
 response.each_header do |key, value|
-    # header names are coerced to lowercase
     if key.start_with?("bingapis-") or key.start_with?("x-msedge-") then
         puts key + ": " + value
     end
@@ -88,9 +132,9 @@ puts "\nJSON Response:\n\n"
 puts JSON::pretty_generate(JSON(response.body))
 ```
 
-## <a name="json-response"></a>Odpowiedź w formacie JSON
+## <a name="sample-response"></a>Przykładowa odpowiedź
 
-Przykładowa odpowiedź jest zgodna. Aby ograniczyć długość JSON, jest wyświetlany tylko jeden wynik i inne części odpowiedzi zostały obcięte. 
+Odpowiedzi z interfejsu API wyszukiwania w sieci Web Bing są zwracane w formacie JSON. Ta przykładowa odpowiedź została obcięta w celu pokazania pojedynczego wyniku.
 
 ```json
 {
@@ -214,14 +258,9 @@ Przykładowa odpowiedź jest zgodna. Aby ograniczyć długość JSON, jest wyśw
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Samouczek aplikacji jednej strony wyszukiwania usługi Bing w sieci Web](../tutorial-bing-web-search-single-page-app.md)
+> [Samouczek dotyczący jednostronicowej aplikacji wyszukiwania w sieci Web Bing](../tutorial-bing-web-search-single-page-app.md)
 
-## <a name="see-also"></a>Zobacz także 
-
-[Wyszukiwania usługi Bing w sieci Web — Omówienie](../overview.md)  
-[Wypróbuj](https://azure.microsoft.com/services/cognitive-services/bing-web-search-api/)  
-[Pobierz klucz bezpłatnej wersji próbnej dostępu](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api)  
-[Dokumentacja interfejsu API wyszukiwania sieci Web usługi Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference)
+[!INCLUDE [bing-web-search-quickstart-see-also](../../../../includes/bing-web-search-quickstart-see-also.md)]

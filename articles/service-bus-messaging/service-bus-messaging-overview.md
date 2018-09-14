@@ -3,24 +3,24 @@ title: Omówienie obsługi komunikatów w usłudze Azure Service Bus | Microsoft
 description: Opis obsługi komunikatów w usłudze Service Bus
 services: service-bus-messaging
 documentationcenter: ''
-author: sethmanheim
+author: spelluru
 manager: timlt
 editor: ''
 ms.service: service-bus-messaging
 ms.topic: overview
 ms.date: 05/22/2018
 ms.custom: mvc
-ms.author: sethm
-ms.openlocfilehash: 0357602e6085b25fc6d11363113ebc962dc4d008
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: spelluru
+ms.openlocfilehash: a291d4d7ecafde366a20b7e7f1f12a95303da90d
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34643094"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697622"
 ---
 # <a name="what-is-azure-service-bus"></a>Co to jest Azure Service Bus?
 
-Usługa Microsoft Azure Service Bus jest w pełni zarządzanym brokerem komunikatów do integracji przedsiębiorstw. Usługa Service Bus jest najczęściej używana do rozdzielania aplikacji i usług i jest niezawodną i bezpieczną platformą do przesyłania danych asynchronicznych i stanu. Dane są przesyłane między różnymi aplikacjami i usługami przy użyciu *komunikatów*. Komunikat jest w formacie binarnym, który może zawierać plik JSON, XML lub tylko tekst. 
+Usługa Microsoft Azure Service Bus jest w pełni zarządzanym brokerem komunikatów do integracji przedsiębiorstw. Usługa Service Bus jest najczęściej używana do rozdzielania aplikacji i usług oraz jest niezawodną i bezpieczną platformą do asynchronicznego przesyłania danych i stanu. Dane są przesyłane między różnymi aplikacjami i usługami przy użyciu *komunikatów*. Komunikat jest w formacie binarnym, który może zawierać kod JSON, XML lub po prostu tekst. 
 
 Niektóre typowe scenariusze obsługi komunikatów:
 
@@ -35,11 +35,11 @@ Przestrzeń nazw jest kontenerem określania zakresu dla wszystkich składników
 
 ## <a name="queues"></a>Kolejki
 
-Komunikaty są wysyłane do i odbierane z *kolejek*. Kolejki umożliwiają przechowywanie komunikatów tak długo, aż aplikacja odbierająca stanie się dostępna, pobierze je i rozpocznie ich przetwarzanie.
+Komunikaty są wysyłane do *kolejek* i odbierane z nich. Kolejki umożliwiają przechowywanie komunikatów tak długo, aż aplikacja odbierająca stanie się dostępna, pobierze je i rozpocznie ich przetwarzanie.
 
 ![Kolejka](./media/service-bus-messaging-overview/about-service-bus-queue.png)
 
-Po odebraniu komunikaty w kolejkach są porządkowane i oznaczane znacznikami czasu. Po zaakceptowaniu komunikat jest bezpiecznie przechowywany w magazynie nadmiarowym. Komunikaty są dostarczane w trybie *ściągania*, który dostarcza komunikaty na żądanie.
+Po przybyciu do kolejki komunikaty są porządkowane i oznaczane znacznikiem czasu. Po zaakceptowaniu komunikat jest bezpiecznie przechowywany w magazynie nadmiarowym. Komunikaty są dostarczane w trybie *ściągania*, który dostarcza komunikaty na żądanie.
 
 ## <a name="topics"></a>Tematy
 
@@ -47,9 +47,9 @@ Do wysyłania i odbierania komunikatów można również używać *tematów*. Ko
 
 ![Temat](./media/service-bus-messaging-overview/about-service-bus-topic.png)
 
-Tematy mogą mieć wiele niezależnych subskrypcji. Subskrybent tematu może otrzymywać kopie wszystkich komunikatów wysłanych do tego tematu. Subskrypcje są nazywane jednostkami, które są trwale tworzone, ale mogą opcjonalnie wygasać lub być automatycznie usuwane.
+Tematy mogą mieć wiele niezależnych subskrypcji. Subskrybent tematu może otrzymywać kopie wszystkich komunikatów wysłanych do tego tematu. Subskrypcje to nazywane jednostki, które są tworzone na stałe, ale mogą opcjonalnie wygasać lub być automatycznie usuwane.
 
-W niektórych scenariuszach odbieranie przez subskrypcje wszystkich komunikaty wysłanych do tematu może być niepożądane. Jeśli tak jest, możesz użyć [reguł i filtrów](topic-filters.md), aby określić warunki, które wyzwalają opcjonalne [akcje](topic-filters.md#actions), przefiltrować określone komunikaty i ustawić lub zmodyfikować właściwości komunikatów.
+W niektórych scenariuszach odbieranie przez subskrypcje wszystkich komunikatów wysłanych do tematu może być niepożądane. W takim przypadku możesz użyć [reguł i filtrów](topic-filters.md), aby określić warunki, które wyzwalają opcjonalne [akcje](topic-filters.md#actions), przefiltrować określone komunikaty i ustawić lub zmodyfikować właściwości komunikatów.
 
 ## <a name="advanced-features"></a>Funkcje zaawansowane
 
@@ -61,15 +61,15 @@ Aby zrealizować w usłudze Service Bus metodę FIFO („pierwszy na wejściu, p
 
 ### <a name="auto-forwarding"></a>Automatyczne przekazywanie
 
-Funkcja [Automatyczne przekazywanie](service-bus-auto-forwarding.md) służy do łączenia kolejki lub subskrypcji z inną kolejką lub innym tematem, które należą do tej samej przestrzeni nazw. Gdy funkcja automatycznego przekazywania jest włączona, usługa Service Bus automatycznie usuwa komunikaty znajdujące się w pierwszej kolejce lub subskrypcji (źródle) i umieszcza je w drugiej kolejce lub drugim temacie (obiekcie docelowym).
+Funkcja [automatycznego przekazywania](service-bus-auto-forwarding.md) służy do łączenia kolejki lub subskrypcji z inną kolejką lub innym tematem, które należą do tej samej przestrzeni nazw. Gdy funkcja automatycznego przekazywania jest włączona, usługa Service Bus automatycznie usuwa komunikaty znajdujące się w pierwszej kolejce lub subskrypcji (źródle) i umieszcza je w drugiej kolejce lub drugim temacie (celu).
 
 ### <a name="dead-lettering"></a>Obsługa utraconych komunikatów
 
-Usługa Service Bus obsługuje [kolejkę utraconych komunikatów](service-bus-dead-letter-queues.md) (DLQ) do przechowywania komunikatów, których nie można dostarczyć do żadnego odbiorcy lub których nie można przetworzyć. Potem można usunąć komunikaty z kolejki DLQ lub sprawdzić je.
+Usługa Service Bus obsługuje [kolejkę utraconych komunikatów](service-bus-dead-letter-queues.md) (DLQ) na potrzeby przechowywania komunikatów, których nie można dostarczyć do żadnego odbiorcy lub których nie można przetworzyć. Te komunikaty można usunąć z kolejki DLQ lub zbadać.
 
 ### <a name="scheduled-delivery"></a>Zaplanowane dostarczanie
 
-Można przesyłać komunikaty do kolejki lub tematu [w celu opóźnionego przetwarzania](message-sequencing.md#scheduled-messages); np., aby zaplanować udostępnienie zadania do przetwarzania przez system w określonym czasie.
+Komunikaty można przesyłać do kolejki lub tematu [w celu wykonania opóźnionego przetwarzania](message-sequencing.md#scheduled-messages), na przykład aby zaplanować udostępnienie zadania do przetwarzania przez system w określonym czasie.
 
 ### <a name="message-deferral"></a>Odraczanie komunikatów
 
@@ -81,7 +81,7 @@ Gdy klient kolejki lub subskrypcji odbiera komunikat, który chce przetworzyć, 
 
 ### <a name="transactions"></a>Transakcje
 
-Funkcja [Transakcja](service-bus-transactions.md) grupuje razem co najmniej dwie operacje w zakresie wykonywania. Usługa Service Bus obsługuje grupowanie operacji względem jednej jednostki obsługi komunikatów (kolejki, tematu, subskrypcji) w zakresie transakcji.
+[Transakcja](service-bus-transactions.md) grupuje razem co najmniej dwie operacje w zakresie wykonania. Usługa Service Bus obsługuje grupowanie operacji względem jednej jednostki obsługi komunikatów (kolejki, tematu, subskrypcji) w zakresie transakcji.
 
 ### <a name="filtering-and-actions"></a>Filtrowanie i akcje
 
@@ -89,25 +89,25 @@ Subskrybenci mogą zdefiniować, które komunikaty chcą odbierać z tematu. Kom
 
 ### <a name="auto-delete-on-idle"></a>Automatyczne usuwanie w stanie bezczynności
 
-[Automatyczne usuwanie w stanie bezczynności](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle) służy do określania interwału bezczynności, po którym kolejka zostaje automatycznie usunięta. Minimalny czas trwania wynosi 5 minut.
+[Automatyczne usuwanie w stanie bezczynności](/dotnet/api/microsoft.servicebus.messaging.queuedescription.autodeleteonidle) służy do określania interwału bezczynności, po którym kolejka zostanie automatycznie usunięta. Minimalny czas trwania wynosi 5 minut.
 
 ### <a name="duplicate-detection"></a>Wykrywanie duplikatów
 
-Jeśli wystąpi błąd, który powoduje, że klient ma wątpliwości dotyczące wyniku operacji wysyłania, funkcja [wykrywania duplikatów](duplicate-detection.md) eliminuje te wątpliwości, umożliwiając wysyłającemu ponowne wysłanie tego samego komunikatu, a kolejka lub temat odrzuca wszystkie kopie duplikatów.
+Jeśli wystąpi błąd, który powoduje, że klient ma wątpliwości dotyczące wyniku operacji wysyłania, funkcja [wykrywania duplikatów](duplicate-detection.md) eliminuje te wątpliwości, umożliwiając wysyłającemu ponowne wysłanie tego samego komunikatu, a kolejka lub temat odrzuca wszystkie duplikaty.
 
-### <a name="sas-rbac-and-msi"></a>Protokoły SAS, RBAC i MSI
+### <a name="sas-rbac-and-msi"></a>Funkcje SAS, RBAC i MSI
 
 Usługa Service Bus obsługuje protokoły zabezpieczeń, np. [sygnaturę dostępu współdzielonego](service-bus-sas.md) (SAS), [kontrolę dostępu na podstawie ról](service-bus-role-based-access-control.md) (RBAC) i [tożsamość usługi zarządzanej](service-bus-managed-service-identity.md) (MSI).
 
 ### <a name="geo-disaster-recovery"></a>Geograficzne odzyskiwanie po awarii
 
-Jeżeli w regionach lub centrach danych Azure dojdzie do przestoju, [Geograficzne odzyskiwanie po awarii](service-bus-geo-dr.md) umożliwia kontynuowanie przetwarzania danych w innym regionie lub centrum danych.
+Jeśli w regionach lub centrach danych Azure dojdzie do przestoju, [geograficzne odzyskiwanie po awarii](service-bus-geo-dr.md) umożliwia kontynuowanie przetwarzania danych w innym regionie lub centrum danych.
 
 ### <a name="security"></a>Bezpieczeństwo
 
 Usługa Service Bus obsługuje standardowe protokoły [AMQP 1.0](service-bus-amqp-overview.md) i [HTTP/REST](/rest/api/servicebus/).
 
-## <a name="client-libraries"></a>Biblioteki klienckie
+## <a name="client-libraries"></a>Biblioteki klienta
 
 Usługa Service Bus obsługuje biblioteki klienckie środowisk [.NET](https://github.com/Azure/azure-service-bus-dotnet/tree/master), [Java](https://github.com/Azure/azure-service-bus-java/tree/master) i [JMS](https://github.com/Azure/azure-service-bus/tree/master/samples/Java/qpid-jms-client).
 
@@ -127,5 +127,5 @@ Aby rozpocząć korzystanie z obsługi komunikatów usługi Service Bus, zobacz 
 
 * [Porównanie usług obsługi komunikatów platformy Azure](../event-grid/compare-messaging-services.md?toc=%2fazure%2fservice-bus-messaging%2ftoc.json&bc=%2fazure%2fservice-bus-messaging%2fbreadcrumb%2ftoc.json)
 * Dodatkowe informacje na temat warstw [Standardowej i Premium](https://azure.microsoft.com/pricing/details/service-bus/) usługi Azure Service Bus oraz ich cen
-* [Performance and Latency of Azure Service Bus Premium tier](https://blogs.msdn.microsoft.com/servicebus/2016/07/18/premium-messaging-how-fast-is-it/) (Wydajność i opóźnienie warstwy Premium usługi Azure Service Bus)
-* Znajdowanie informacji w przewodnikach Szybki start dla środowisk [.NET](service-bus-quickstart-powershell.md), [Java](service-bus-quickstart-powershell.md) lub [JMS](service-bus-quickstart-powershell.md)
+* [Performance and Latency of Azure Service Bus Premium tier](https://blogs.msdn.microsoft.com/servicebus/2016/07/18/premium-messaging-how-fast-is-it/) (Wydajność i opóźnienie usługi Azure Service Bus w warstwie Premium)
+* Wypróbuj przewodniki Szybki start dla technologii [.NET](service-bus-quickstart-powershell.md), [Java](service-bus-quickstart-powershell.md) lub [JMS](service-bus-quickstart-powershell.md)

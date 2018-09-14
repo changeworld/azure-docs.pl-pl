@@ -1,47 +1,49 @@
 ---
-title: Tworzenie klastra Kubernetes z usługi Kubernetes Azure (AKS) i Terraform
-description: Samouczek pokazujący sposób tworzenia klastra Kubernetes z usługą Kubernetes Azure i Terraform
-keywords: terraform, devops, maszyny wirtualnej, azure, kubernetes
+title: Tworzenie klastra Kubernetes za pomocą usługi Azure Kubernetes Service (AKS) i narzędzia Terraform
+description: Samouczek pokazujący sposób tworzenia klastra Kubernetes za pomocą usługi Azure Kubernetes Service i narzędzia Terraform
+services: terraform
+ms.service: terraform
+keywords: terraform, devops, virtual machine, azure, kubernetes
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
+ms.topic: tutorial
 ms.date: 06/11/2018
-ms.topic: article
-ms.openlocfilehash: bd00a0cc8446802a03570edd58949a46c0769101
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
-ms.translationtype: MT
+ms.openlocfilehash: 8a997c88943b0273d3136dbf02a784fbdb982527
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35304202"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666811"
 ---
-# <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Tworzenie klastra Kubernetes z usługą Kubernetes Azure i Terraform
-[Usługa Kubernetes Azure (AKS)](/azure/aks/) zarządza środowisku hostowanej Kubernetes, ułatwiając szybkie i łatwe wdrażanie i zarządzanie nimi konteneryzowanych aplikacji bez wiedzy aranżacji kontenera. Eliminuje to również uciążliwości związane z bieżącą obsługą i konserwacją dzięki aprowizowaniu, aktualizowaniu i skalowaniu zasobów na żądanie bez przełączania aplikacji do trybu offline.
+# <a name="create-a-kubernetes-cluster-with-azure-kubernetes-service-and-terraform"></a>Tworzenie klastra Kubernetes za pomocą usługi Azure Kubernetes Service i narzędzia Terraform
+Usługa [Azure Kubernetes Service (AKS)](/azure/aks/) zarządza hostowanym środowiskiem Kubernetes, dzięki czemu można szybko i łatwo wdrażać konteneryzowane aplikacje i zarządzać nimi bez specjalistycznej wiedzy z zakresu aranżacji kontenerów. Eliminuje to również uciążliwości związane z bieżącą obsługą i konserwacją dzięki aprowizowaniu, aktualizowaniu i skalowaniu zasobów na żądanie bez przełączania aplikacji do trybu offline.
 
-W tym samouczku opisano sposób wykonywania następujących zadań tworzenia [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) klastra przy użyciu [Terraform](http://terraform.io) i AKS:
+Z tego samouczka dowiesz się, jak wykonywać następujące zadania w ramach tworzenia klastra [Kubernetes](https://www.redhat.com/en/topics/containers/what-is-kubernetes) za pomocą narzędzia [Terraform](http://terraform.io) i usługi AKS:
 
 > [!div class="checklist"]
-> * Umożliwia definiowanie klastra Kubernetes HCL (HashiCorp Language)
-> * Umożliwia utworzenie klastra Kubernetes Terraform i AKS
-> * Użyj narzędzia kubectl do testowania dostępności klastra Kubernetes
+> * Definiowanie klastra Kubernetes za pomocą języka HCL (HashiCorp Language)
+> * Tworzenie klastra Kubernetes za pomocą narzędzia Terraform i usługi AKS
+> * Testowanie dostępności klastra Kubernetes za pomocą narzędzia kubectl
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - **Subskrypcja platformy Azure**: jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **Skonfiguruj Terraform**: postępuj zgodnie z instrukcjami w artykule [Terraform i Konfiguracja dostępu do platformy Azure](/azure/virtual-machines/linux/terraform-install-configure)
+- **Skonfiguruj narzędzie Terraform**: postępuj zgodnie ze wskazówkami w artykule [Terraform and configure access to Azure](/azure/virtual-machines/linux/terraform-install-configure) (Terraform i konfigurowanie dostępu do platformy Azure).
 
-- **Nazwy głównej usługi Azure**: postępuj zgodnie z instrukcjami w sekcji **Tworzenie nazwy głównej usługi** w artykule, [zapisać nazwy głównej usługi platformy Azure z Azure CLI 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal). Zanotuj wartości appId, nazwa wyświetlana, hasło i dzierżawcy.
+- **Jednostka usługi platformy Azure**: postępuj zgodnie z instrukcjami w sekcji dotyczącej **tworzenia jednostki usługi** artykułu [Tworzenie jednostki usługi platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/create-an-azure-service-principal-azure-cli?view=azure-cli-latest#create-the-service-principal). Zapisz wartości pozycji appId, displayName, password i tenant.
 
-## <a name="create-the-directory-structure"></a>Utwórz strukturę katalogów
-Pierwszym krokiem jest można utworzyć katalogu, który zawiera pliki konfiguracji Terraform wykonywania.
+## <a name="create-the-directory-structure"></a>Tworzenie struktury katalogów
+Pierwszym krokiem jest utworzenie katalogu, w którym będą przechowywane pliki konfiguracji narzędzia Terraform dla tego ćwiczenia.
 
-1. Przejdź do [portalu Azure](http://portal.azure.com).
+1. Przejdź do witryny [Azure Portal](http://portal.azure.com).
 
-1. Otwórz [powłoki chmury Azure](/azure/cloud-shell/overview). Jeśli wcześniej nie wybrano środowisko, wybierz **Bash** jako środowiska.
+1. Otwórz usługę [Azure Cloud Shell](/azure/cloud-shell/overview). Jeśli środowisko nie zostało wybrane wcześniej, wybierz pozycję **Bash** jako swoje środowisko.
 
-    ![Chmura wierszu polecenia powłoki](./media/terraform-create-k8s-cluster-with-tf-and-aks/azure-portal-cloud-shell-button-min.png)
+    ![Wiersz polecenia usługi Cloud Shell](./media/terraform-create-k8s-cluster-with-tf-and-aks/azure-portal-cloud-shell-button-min.png)
 
-1. Przejdź do `clouddrive` katalogu.
+1. Zmień katalog na `clouddrive`.
 
     ```bash
     cd clouddrive
@@ -53,22 +55,22 @@ Pierwszym krokiem jest można utworzyć katalogu, który zawiera pliki konfigura
     mkdir terraform-aks-k8s
     ```
 
-1. Przejdź do nowego katalogu:
+1. Zmień katalog na nowy:
 
     ```bash
     cd terraform-aks-k8s
     ```
 
-## <a name="declare-the-azure-provider"></a>Deklarowanie dostawca usługi Azure
-Utwórz plik konfiguracji Terraform, który deklaruje dostawca usługi Azure.
+## <a name="declare-the-azure-provider"></a>Deklarowanie dostawcy platformy Azure
+Utwórz plik konfiguracji narzędzia Terraform zawierający deklarację dostawcy platformy Azure.
 
-1. W chmurze powłoki, Utwórz plik o nazwie `main.tf`.
+1. W usłudze Cloud Shell utwórz plik o nazwie `main.tf`.
 
     ```bash
     vi main.tf
     ```
 
-1. Wprowadź tryb wstawiania, wybierając I klucza.
+1. Przejdź do trybu wstawiania, naciskając klawisz I.
 
 1. Wklej następujący kod do edytora:
 
@@ -83,24 +85,24 @@ Utwórz plik konfiguracji Terraform, który deklaruje dostawca usługi Azure.
 
     ```
 
-1. Zamknij tryb wstawiania, wybierając **Esc** klucza.
+1. Opuść tryb wstawiania, naciskając klawisz **Esc**.
 
-1. Zapisz plik i zamknij Edytor vi, wprowadzając następujące polecenie:
+1. Zapisz plik i zamknij edytor VI, wprowadzając następujące polecenie:
 
     ```bash
     :wq
     ```
 
 ## <a name="define-a-kubernetes-cluster"></a>Definiowanie klastra Kubernetes
-Utwórz plik konfiguracji Terraform, który deklaruje zasobów klastra Kubernetes.
+Utwórz plik konfiguracji narzędzia Terraform zawierający deklarację zasobów dla klastra Kubernetes.
 
-1. W chmurze powłoki, Utwórz plik o nazwie `k8s.tf`.
+1. W usłudze Cloud Shell utwórz plik o nazwie `k8s.tf`.
 
     ```bash
     vi k8s.tf
     ```
 
-1. Wprowadź tryb wstawiania, wybierając I klucza.
+1. Przejdź do trybu wstawiania, naciskając klawisz I.
 
 1. Wklej następujący kod do edytora:
 
@@ -143,15 +145,15 @@ Utwórz plik konfiguracji Terraform, który deklaruje zasobów klastra Kubernete
     }
     ```
 
-    Poprzedni kod ustawia nazwę klastra, lokalizacji i resource_group_name. Ponadto dns_prefix - stanowiącej część w pełni kwalifikowanej nazwy domeny (FQDN) używane do dostępu do klastra - ma wartość.
+    Powyższy kod ustawia wartości name, location i resource_group_name klastra. Ponadto ustawiana jest wartość dns_prefix, która stanowi część w pełni kwalifikowanej nazwy domeny (FQDN) umożliwiającej dostęp do klastra.
 
-    **Linux_profile** rekordu umożliwia konfigurowanie ustawień, które umożliwiają logowanie do węzłów procesu roboczego przy użyciu protokołu SSH.
+    Rekord **linux_profile** pozwala na skonfigurowanie ustawień umożliwiających logowanie się do węzłów procesu roboczego przy użyciu protokołu SSH.
 
-    Z AKS zapłacisz tylko dla węzłów procesu roboczego. **Agent_pool_profile** rekordu konfiguruje szczegółów dla tych węzłów procesu roboczego. **Rekordu agent_pool_profile** zawiera liczbę węzłów procesu roboczego do utworzenia i rodzaj węzłów procesu roboczego. Skalowanie w górę lub w przyszłości skali klastra należy zmodyfikować **liczba** wartości w tym rekordzie.
+    W przypadku usługi AKS płacisz tylko za węzły procesu roboczego. Rekord **agent_pool_profile** konfiguruje szczegółowe informacje dotyczące tych węzłów procesu roboczego. Rekord **agent_pool_profile** zawiera liczbę węzłów procesu roboczego do utworzenia i typ węzłów procesu roboczego. Jeśli w przyszłości będzie konieczne powiększenie lub zmniejszenie klastra, zmodyfikuj wartość **count** w tym rekordzie.
 
-1. Zamknij tryb wstawiania, wybierając **Esc** klucza.
+1. Opuść tryb wstawiania, naciskając klawisz **Esc**.
 
-1. Zapisz plik i zamknij Edytor vi, wprowadzając następujące polecenie:
+1. Zapisz plik i zamknij edytor VI, wprowadzając następujące polecenie:
 
     ```bash
     :wq
@@ -159,13 +161,13 @@ Utwórz plik konfiguracji Terraform, który deklaruje zasobów klastra Kubernete
 
 ## <a name="declare-the-variables"></a>Deklarowanie zmiennych
 
-1. W chmurze powłoki, Utwórz plik o nazwie `variables.tf`.
+1. W usłudze Cloud Shell utwórz plik o nazwie `variables.tf`.
 
     ```bash
     vi variables.tf
     ```
 
-1. Wprowadź tryb wstawiania, wybierając I klucza.
+1. Przejdź do trybu wstawiania, naciskając klawisz I.
 
 1. Wklej następujący kod do edytora:
 
@@ -198,24 +200,24 @@ Utwórz plik konfiguracji Terraform, który deklaruje zasobów klastra Kubernete
     }
     ```
 
-1. Zamknij tryb wstawiania, wybierając **Esc** klucza.
+1. Opuść tryb wstawiania, naciskając klawisz **Esc**.
 
-1. Zapisz plik i zamknij Edytor vi, wprowadzając następujące polecenie:
+1. Zapisz plik i zamknij edytor VI, wprowadzając następujące polecenie:
 
     ```bash
     :wq
     ```
 
-## <a name="create-a-terraform-output-file"></a>Utwórz plik wyjściowy Terraform
-[Generuje Terraform](https://www.terraform.io/docs/configuration/outputs.html) zezwala na określanie wartości, które zostaną wyróżnione dla użytkownika, gdy Terraform stosuje planu i można wyświetlić przy użyciu `terraform output` polecenia. W tej sekcji utworzysz plik wyjściowy, który umożliwia dostęp do klastra z [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/).
+## <a name="create-a-terraform-output-file"></a>Tworzenie pliku wyjściowego narzędzia Terraform
+[Dane wyjściowe narzędzia Terraform](https://www.terraform.io/docs/configuration/outputs.html) umożliwiają definiowanie wartości, które będą wyróżnione dla użytkownika, gdy narzędzie Terraform zastosuje plan, i do których będzie można wysyłać zapytania za pomocą polecenia `terraform output`. W tej sekcji utworzysz plik wyjściowy umożliwiający uzyskanie dostępu do klastra za pomocą narzędzia [kubectl](https://kubernetes.io/docs/reference/kubectl/overview/).
 
-1. W chmurze powłoki, Utwórz plik o nazwie `output.tf`.
+1. W usłudze Cloud Shell utwórz plik o nazwie `output.tf`.
 
     ```bash
     vi output.tf
     ```
 
-1. Wprowadź tryb wstawiania, wybierając I klucza.
+1. Przejdź do trybu wstawiania, naciskając klawisz I.
 
 1. Wklej następujący kod do edytora:
 
@@ -249,80 +251,80 @@ Utwórz plik konfiguracji Terraform, który deklaruje zasobów klastra Kubernete
     }
     ```
 
-1. Zamknij tryb wstawiania, wybierając **Esc** klucza.
+1. Opuść tryb wstawiania, naciskając klawisz **Esc**.
 
-1. Zapisz plik i zamknij Edytor vi, wprowadzając następujące polecenie:
+1. Zapisz plik i zamknij edytor VI, wprowadzając następujące polecenie:
 
     ```bash
     :wq
     ```
 
-## <a name="set-up-azure-storage-to-store-terraform-state"></a>Konfigurowanie magazynu Azure do przechowywania stanu Terraform
-Terraform śledzi stan lokalnie za pomocą `terraform.tfstate` pliku. Ten wzorzec działa dobrze w środowisku pojedynczej osoby. Jednak w środowisku bardziej praktyczne wieloosobowej zachodzi potrzeba śledzenia stanu na serwerze, przy użyciu [magazynu Azure](/azure/storage/). W tej sekcji możesz pobrać niezbędnych informacji o koncie magazynu (nazwa konta i klucz konta) i utworzyć kontenera magazynu, w którym będą przechowywane informacje o stanie Terraform.
+## <a name="set-up-azure-storage-to-store-terraform-state"></a>Konfigurowanie usługi Azure Storage na potrzeby przechowywania stanu narzędzia Terraform
+Narzędzie Terraform śledzi stan lokalnie za pośrednictwem pliku `terraform.tfstate`. Ten wzorzec sprawdza się dobrze w środowisku jednoosobowym. Jednak w bardziej praktycznym środowisku wieloosobowym musisz śledzić stan na serwerze przy użyciu usługi [Azure Storage](/azure/storage/). W tej sekcji pobierzesz niezbędne informacje o koncie magazynu (nazwę konta i klucz konta) oraz utworzysz kontener magazynu, w którym będą przechowywane informacje o stanie narzędzia Terraform.
 
-1. W portalu Azure wybierz **wszystkie usługi** w lewym menu.
+1. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi** z menu po lewej stronie.
 
-1. Wybierz **kont magazynu**.
+1. Wybierz pozycję **Konta usługi Storage**.
 
-1. Na **kont magazynu** , a następnie wybierz nazwę konta magazynu, do którego Terraform jest do przechowywania stanu. Na przykład można użyć na koncie magazynu utworzonym podczas otwierania powłoki chmury po raz pierwszy.  Nazwa konta magazynu utworzone przez powłokę chmury zazwyczaj rozpoczyna się od `cs` następuje ciąg losowych liter i cyfr. **Pamiętać nazwy konta magazynu, które można wybrać, ponieważ jest on potrzebny później.**
+1. Na karcie **Konta usługi Storage** wybierz nazwę konta magazynu, na którym ma być przechowywany stan narzędzia Terraform. Na przykład możesz skorzystać z konta magazynu utworzonego przy pierwszym otwarciu usługi Cloud Shell.  Nazwa konta magazynu utworzonego przez usługę Cloud Shell zwykle zaczyna się od ciągu `cs`, po którym następuje losowy ciąg liter i cyfr. **Zapamiętaj nazwę wybranego konta magazynu, ponieważ będzie ona potrzebna później.**
 
-1. Na karcie Konto magazynu, wybierz **klucze dostępu**.
+1. Na karcie konta magazynu wybierz pozycję **Klucze dostępu**.
 
     ![Menu konta magazynu](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account.png)
 
-1. Zwróć uwagę na **klucz1** **klucza** wartość. (Wybierając ikonę z prawej strony klucz skopiowanie wartości do Schowka.)
+1. Zanotuj wartość **klucza** **key1**. (Wybranie ikony po prawej stronie klucza spowoduje skopiowanie wartości do schowka).
 
-    ![Klucze dostępu do konta magazynu](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account-access-key.png)
+    ![Klucze dostępu konta magazynu](./media/terraform-create-k8s-cluster-with-tf-and-aks/storage-account-access-key.png)
 
-1. W powłoce chmury, utworzenia kontenera na koncie magazynu Azure (Zastąp &lt;YourAzureStorageAccountName > i &lt;YourAzureStorageAccountAccessKey > symboli zastępczych z odpowiednimi wartościami dla konta magazynu Azure ).
+1. W usłudze Cloud Shell utwórz kontener na koncie usługi Azure Storage (zamień symbole zastępcze &lt;YourAzureStorageAccountName> i &lt;YourAzureStorageAccountAccessKey> na wartości odpowiednie dla Twojego konta usługi Azure Storage).
 
     ```bash
     az storage container create -n tfstate --account-name <YourAzureStorageAccountName> --account-key <YourAzureStorageAccountKey>
     ```
 
 ## <a name="create-the-kubernetes-cluster"></a>Tworzenie klastra Kubernetes
-W tej sekcji, zobacz temat jak korzystać `terraform init` polecenie, aby utworzyć zasoby zdefiniowane pliki konfiguracji utworzone w poprzednich sekcjach.
+W tej sekcji dowiesz się, jak za pomocą polecenia `terraform init` utworzyć zasoby zdefiniowane w plikach konfiguracji, które zostały utworzone w poprzednich sekcjach.
 
-1. W powłoce chmury zainicjować Terraform (Zastąp &lt;YourAzureStorageAccountName > i &lt;YourAzureStorageAccountAccessKey > symboli zastępczych z odpowiednimi wartościami dla konta magazynu Azure).
+1. W usłudze Cloud Shell zainicjuj narzędzie Terraform (zamień symbole zastępcze &lt;YourAzureStorageAccountName> i &lt;YourAzureStorageAccountAccessKey> na wartości odpowiednie dla Twojego konta usługi Azure Storage).
 
     ```bash
     terraform init -backend-config="storage_account_name=<YourAzureStorageAccountName>" -backend-config="container_name=tfstate" -backend-config="access_key=<YourStorageAccountAccessKey>" -backend-config="key=codelab.microsoft.tfstate" 
     ```
     
-    `terraform init` Polecenie wyświetla Powodzenie inicjowanie wtyczki wewnętrznej bazy danych i dostawcy:
+    Polecenie `terraform init` spowoduje wyświetlenie informacji o pomyślnym zainicjowaniu wtyczki dostawcy i zaplecza:
 
-    ![Przykładowe wyniki "terraform init"](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-init-complete.png)
+    ![Przykładowe wyniki wykonania polecenia „terraform init”](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-init-complete.png)
 
-1. Uruchom `terraform plan` polecenie, aby utworzyć plan Terraform, który definiuje elementy infrastruktury. Polecenie będą wymagane dwie wartości: **var.client_id** i **var.client_secret**. Aby uzyskać **var.client_id** zmiennej, wprowadź **appId** wartość skojarzoną z Twojej nazwy głównej usługi. Aby uzyskać **var.client_secret** zmiennej, wprowadź **hasło** wartość skojarzoną z Twojej nazwy głównej usługi.
+1. Uruchom polecenie `terraform plan`, aby utworzyć plan narzędzia Terraform definiujący elementy infrastruktury. Polecenie zażąda dwóch wartości: **var.client_id** i **var.client_secret**. W przypadku zmiennej **var.client_id** wprowadź wartość **appId** skojarzoną z Twoją jednostką usługi. W przypadku zmiennej **var.client_secret** wprowadź wartość **password** skojarzoną z Twoją jednostką usługi.
 
     ```bash
     terraform plan -out out.plan
     ```
 
-    `terraform plan` Polecenie wyświetla zasoby, które zostaną utworzone po uruchomieniu `terraform apply` polecenia:
+    Polecenie `terraform plan` spowoduje wyświetlenie zasobów, które zostaną utworzone po uruchomieniu polecenia `terraform apply`:
 
-    ![Przykładowe wyniki "terraform planu"](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-plan-complete.png)
+    ![Przykładowe wyniki wykonania polecenia „terraform plan”](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-plan-complete.png)
 
-1. Uruchom `terraform apply` polecenie, aby zastosować plan do utworzenia klastra Kubernetes. Proces tworzenia klastra Kubernetes może potrwać kilka minut, co przekroczeniem limitu czasu sesji powłoki chmury. Jeśli upłynie limit czasu sesji powłoki w chmurze, można wykonać czynności opisane w sekcji ["Odzyskanie limit powłoki chmury"](#recover-from-a-dloud-shell-timeout) pozwala na ukończenie tego samouczka.
+1. Uruchom polecenie `terraform apply`, aby zastosować plan w celu utworzenia klastra Kubernetes. Proces tworzenia klastra Kubernetes może potrwać kilka minut, powodując przekroczenie limitu czasu sesji usługi Cloud Shell. W przypadku przekroczenia limitu czasu sesji usługi Cloud Shell możesz wykonać kroki opisane w sekcji [„Odzyskiwanie sprawności po przekroczeniu limitu czasu w usłudze Cloud Shell”](#recover-from-a-dloud-shell-timeout), aby ukończyć ten samouczek.
 
     ```bash
     terraform apply out.plan
     ```
 
-    `terraform apply` Polecenie wyświetla wyniki tworzenia zasoby zdefiniowane w plikach konfiguracji:
+    Polecenie `terraform apply` spowoduje wyświetlenie wyników tworzenia zasobów zdefiniowanych w plikach konfiguracji:
 
-    ![Przykładowe wyniki "Zastosuj terraform"](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-apply-complete.png)
+    ![Przykładowe wyniki wykonania polecenia „terraform apply”](./media/terraform-create-k8s-cluster-with-tf-and-aks/terraform-apply-complete.png)
 
-1. W portalu Azure wybierz **wszystkie usługi** w menu po lewej stronie, aby wyświetlić zasoby utworzone dla nowego klastra Kubernetese.
+1. W witrynie Azure Portal wybierz pozycję **Wszystkie usługi** z menu po lewej stronie, aby wyświetlić zasoby utworzone dla nowego klastra Kubernetes.
 
-    ![Chmura wierszu polecenia powłoki](./media/terraform-create-k8s-cluster-with-tf-and-aks/k8s-resources-created.png)
+    ![Wiersz polecenia usługi Cloud Shell](./media/terraform-create-k8s-cluster-with-tf-and-aks/k8s-resources-created.png)
 
-## <a name="recover-from-a-cloud-shell-timeout"></a>Odzyskiwanie z powłoki chmury przekroczenie limitu czasu
-Jeśli upłynie limit czasu sesji powłoki w chmurze, można wykonać następujące kroki, aby odzyskać:
+## <a name="recover-from-a-cloud-shell-timeout"></a>Odzyskiwanie sprawności po przekroczeniu limitu czasu w usłudze Cloud Shell
+Jeśli limit czasu sesji usługi Cloud Shell zostanie przekroczony, możesz wykonać poniższe kroki, aby odzyskać usługę:
 
-1. Rozpocznij sesję powłoki chmury.
+1. Uruchom sesję usługi Cloud Shell.
 
-1. Przejdź do katalogu zawierającego Terraform plików konfiguracji.
+1. Przejdź do katalogu zawierającego pliki konfiguracji narzędzia Terraform.
 
     ```bash
     cd /clouddrive/terraform-aks-k8s
@@ -334,16 +336,16 @@ Jeśli upłynie limit czasu sesji powłoki w chmurze, można wykonać następuj�
     export KUBECONFIG=./azurek8s
     ```
     
-## <a name="test-the-kubernetes-cluster"></a>Przetestowanie klastra Kubernetes
-Narzędzia Kubernetes może służyć do Sprawdź nowo utworzonego klastra.
+## <a name="test-the-kubernetes-cluster"></a>Testowanie klastra Kubernetes
+Nowo utworzony klaster można sprawdzić za pomocą narzędzi usługi Kubernetes.
 
-1. Uzyskiwanie konfiguracji Kubernetes ze stanu Terraform i zapisz go w pliku tego kubectl może odczytywać.
+1. Pobierz konfigurację usługi Kubernetes ze stanu narzędzia Terraform i zapisz ją w pliku możliwym do odczytania przez narzędzie kubectl.
 
     ```bash
     echo "$(terraform output kube_config)" > ./azurek8s
     ```
 
-1. Ustaw zmienną środowiskową kubectl przejmuje poprawne konfiguracji.
+1. Ustaw zmienną środowiskową tak, aby narzędzie kubectl pobrało poprawną konfigurację.
 
     ```bash
     export KUBECONFIG=./azurek8s
@@ -355,14 +357,14 @@ Narzędzia Kubernetes może służyć do Sprawdź nowo utworzonego klastra.
     kubectl get nodes
     ```
 
-    Powinny pojawić się szczegóły węzłów procesu roboczego, a ich powinny mieć stan **gotowe**, jak pokazano na poniższej ilustracji:
+    Powinny zostać wyświetlone szczegóły węzłów procesu roboczego. Wszystkie one powinny mieć stan **Gotowy**, jak pokazano na poniższej ilustracji:
 
-    ![Narzędzie kubectl pozwala sprawdzić kondycję Kubernetes klastra](./media/terraform-create-k8s-cluster-with-tf-and-aks/kubectl-get-nodes.png)
+    ![Narzędzie kubectl umożliwia sprawdzenie kondycji klastra Kubernetes](./media/terraform-create-k8s-cluster-with-tf-and-aks/kubectl-get-nodes.png)
 
-## <a name="next-steps"></a>Kolejne kroki
-W tym artykule przedstawiono sposób umożliwiają utworzenie klastra Kubernetes Terraform i AKS. Poniżej przedstawiono dodatkowe zasoby ułatwiające Dowiedz się więcej o Terraform na platformie Azure: 
+## <a name="next-steps"></a>Następne kroki
+W tym artykule przedstawiono sposób tworzenia klastra Kubernetes przy użyciu narzędzia Terraform i usługi AKS. Poniżej przedstawiono kilka dodatkowych zasobów zawierających więcej informacji na temat narzędzia Terraform na platformie Azure: 
 
- [Koncentrator Terraform w domenie Microsoft.com](https://docs.microsoft.com/azure/terraform/)  
- [Dokumentacji dostawcy Terraform platformy Azure](http://aka.ms/terraform)  
- [Źródłowy dostawca Terraform Azure](http://aka.ms/tfgit)  
- [Moduły Terraform Azure](http://aka.ms/tfmodules)
+ [Centrum narzędzia Terraform w witrynie Microsoft.com](https://docs.microsoft.com/azure/terraform/)  
+ [Dokumentacja dostawcy narzędzia Terraform na platformie Azure](http://aka.ms/terraform)  
+ [Źródło dostawcy narzędzia Terraform na platformie Azure](http://aka.ms/tfgit)  
+ [Moduły narzędzia Terraform na platformie Azure](http://aka.ms/tfmodules)

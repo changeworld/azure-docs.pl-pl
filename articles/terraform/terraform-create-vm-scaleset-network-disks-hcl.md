@@ -1,52 +1,54 @@
 ---
-title: Ustaw Użyj Terraform utworzyć skalę maszyny wirtualnej platformy Azure
-description: Samouczek dotyczący korzystania z narzędzia Terraform w celu skonfigurowania i wersji skalowania maszyn wirtualnych platformy Azure, ustaw wraz z sieci wirtualnej i zarządzane dołączone dyski
-keywords: terraform i infrastruktury devops i wirtualnych maszyn, Azure, skalowanie zestawu, sieć, Magazyn, modułów
+title: Tworzenie zestawu skalowania maszyn wirtualnych platformy Azure przy użyciu narzędzia Terraform
+description: Samouczek dotyczący konfigurowania i wersjonowania zestawu skalowania maszyn wirtualnych platformy Azure wraz z siecią wirtualną i zarządzanymi dołączonymi dyskami przy użyciu narzędzia Terraform
+services: terraform
+ms.service: terraform
+keywords: terraform, devops, virtual machine, Azure, scale set, network, storage, modules
 author: tomarcher
 manager: jeconnoc
 ms.author: tarcher
+ms.topic: tutorial
 ms.date: 06/04/2018
-ms.topic: article
-ms.openlocfilehash: 5922bad24c50a9d315aae42ce11a33801b9dbcaf
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
-ms.translationtype: MT
+ms.openlocfilehash: 9b6a7187827622443c3cb29566dfb5eef840d595
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971837"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666199"
 ---
-# <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Ustaw Użyj Terraform utworzyć skalę maszyny wirtualnej platformy Azure
+# <a name="use-terraform-to-create-an-azure-virtual-machine-scale-set"></a>Tworzenie zestawu skalowania maszyn wirtualnych platformy Azure przy użyciu narzędzia Terraform
 
-[Zestawy skalowania maszyn wirtualnych platformy Azure](/azure/virtual-machine-scale-sets) pozwalają na tworzenie i zarządzanie nimi grupę identycznych, obciążenia równoważenia maszyn wirtualnych, gdzie liczbę wystąpień maszyn wirtualnych może automatycznie zwiększyć lub zmniejszyć w odpowiedzi na zapotrzebowanie lub zdefiniowany harmonogram. 
+[Zestawy skalowania maszyn wirtualnych platformy Azure](/azure/virtual-machine-scale-sets) pozwalają utworzyć grupę identycznych maszyn wirtualnych o zrównoważonym obciążeniu, w której liczba wystąpień maszyn wirtualnych może się automatycznie zwiększać lub zmniejszać w odpowiedzi na zapotrzebowanie lub zdefiniowany harmonogram, oraz zarządzać nią. 
 
-W tym samouczku dowiesz się, jak używać [usługi Azure Cloud Shell](/azure/cloud-shell/overview) do wykonywania następujących zadań:
+W tym samouczku wyjaśniono, jak za pomocą usługi [Azure Cloud Shell](/azure/cloud-shell/overview) wykonać następujące zadania:
 
 > [!div class="checklist"]
-> * Konfigurowanie wdrożenia programu Terraform
-> * Użycie zmiennych i danych wyjściowych dla wdrożenia programu Terraform 
+> * Konfigurowanie wdrożenia narzędzia Terraform
+> * Używanie zmiennych i danych wyjściowych dla wdrożenia programu Terraform 
 > * Tworzenie i wdrażanie infrastruktury sieci
-> * Tworzenie i wdrażanie zestawu skalowania maszyn wirtualnych i dołączyć go do sieci
-> * Tworzenie i wdrażanie serwera przesiadkowego, aby nawiązać połączenie z maszynami wirtualnymi za pośrednictwem protokołu SSH
+> * Tworzenie i wdrażanie zestawu skalowania maszyn wirtualnych i dołączanie go do sieci
+> * Tworzenie i wdrażanie rampy w celu nawiązywania połączeń z maszynami wirtualnymi za pośrednictwem protokołu SSH
 
 > [!NOTE]
-> Najnowszą wersję programu Terraform, pliki konfiguracji używane w tym artykule znajdują się w [Awesome Terraform repozytorium w serwisie Github](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss).
+> Najnowsza wersja plików konfiguracji narzędzia Terraform używanych w tym artykule znajduje się w [repozytorium Awesome Terraform w witrynie Github](https://github.com/Azure/awesome-terraform/tree/master/codelab-vmss).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - **Subskrypcja platformy Azure**: jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio).
 
-- **Zainstaluj narzędzia Terraform**: postępuj zgodnie z instrukcjami w artykule [Terraform i skonfigurować dostęp do platformy Azure](/azure/virtual-machines/linux/terraform-install-configure)
+- **Zainstaluj narzędzie Terraform**: postępuj zgodnie ze wskazówkami w artykule [Terraform and configure access to Azure](/azure/virtual-machines/linux/terraform-install-configure) (Terraform i konfigurowanie dostępu do platformy Azure).
 
-- **Tworzenie pary kluczy SSH**: Jeśli nie masz jeszcze SSH pary kluczy, postępuj zgodnie z instrukcjami w artykule [sposobu tworzenia i używania publicznych i prywatnych pary kluczy SSH dla maszyn wirtualnych systemu Linux na platformie Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys).
+- **Utwórz parę kluczy SSH**: jeśli jeszcze nie masz pary kluczy SSH, postępuj zgodnie z instrukcjami w artykule [How to create and use an SSH public and private key pair for Linux VMs in Azure](https://docs.microsoft.com/en-us/azure/virtual-machines/linux/mac-create-ssh-keys) (Jak utworzyć parę publicznych i prywatnych kluczy SSH dla maszyn wirtualnych z systemem Linux i używać ich).
 
 ## <a name="create-the-directory-structure"></a>Tworzenie struktury katalogów
 
-1. Przejdź do [witryny Azure portal](http://portal.azure.com).
+1. Przejdź do witryny [Azure Portal](http://portal.azure.com).
 
-1. Otwórz [usługi Azure Cloud Shell](/azure/cloud-shell/overview). Jeśli środowisko nie została wybrana wcześniej, wybierz opcję **Bash** jako środowiska.
+1. Otwórz usługę [Azure Cloud Shell](/azure/cloud-shell/overview). Jeśli środowisko nie zostało wybrane wcześniej, wybierz pozycję **Bash** jako swoje środowisko.
 
-    ![Cloud Shell w wierszu polecenia](./media/terraform-create-vm-scaleset-network-disks-hcl/azure-portal-cloud-shell-button-min.png)
+    ![Wiersz polecenia usługi Cloud Shell](./media/terraform-create-vm-scaleset-network-disks-hcl/azure-portal-cloud-shell-button-min.png)
 
-1. Zmień katalog na `clouddrive` katalogu.
+1. Zmień katalog na `clouddrive`.
 
     ```bash
     cd clouddrive
@@ -58,16 +60,16 @@ W tym samouczku dowiesz się, jak używać [usługi Azure Cloud Shell](/azure/cl
     mkdir vmss
     ```
 
-1. Zmień katalogi do nowego katalogu:
+1. Zmień katalog na nowy:
 
     ```bash
     cd vmss
     ```
 
-## <a name="create-the-variables-definitions-file"></a>Utwórz plik definicji zmiennych
-W tej sekcji można zdefiniować zmienne, które Dostosuj zasoby utworzone w narzędziu Terraform.
+## <a name="create-the-variables-definitions-file"></a>Tworzenie plików definicji zmiennych
+W tej sekcji zdefiniujesz zmienne, za pomocą których dostosujesz zasoby utworzone w narzędziu Terraform.
 
-W ramach usługi Azure Cloud Shell wykonaj następujące czynności:
+W usłudze Azure Cloud Shell wykonaj następujące czynności:
 
 1. Utwórz plik o nazwie `variables.tf`.
 
@@ -75,7 +77,7 @@ W ramach usługi Azure Cloud Shell wykonaj następujące czynności:
     vi variables.tf
     ```
 
-1. Wprowadź trybu wstawiania, wybierając I klucz.
+1. Przejdź do trybu wstawiania, naciskając klawisz I.
 
 1. Wklej następujący kod do edytora:
 
@@ -99,18 +101,18 @@ W ramach usługi Azure Cloud Shell wykonaj następujące czynności:
   }
   ```
 
-1. Tryb wstawiania w zakończenia, wybierając klawisz Esc.
+1. Opuść tryb wstawiania, naciskając klawisz Esc.
 
-1. Zapisz plik i zamknij Edytor vi, wprowadzając następujące polecenie:
+1. Zapisz plik i zamknij edytor VI, wprowadzając następujące polecenie:
 
     ```bash
     :wq
     ```
 
-## <a name="create-the-output-definitions-file"></a>Utwórz plik definicji danych wyjściowych
-W tej sekcji utworzysz plik który opisano dane wyjściowe po wdrożeniu.
+## <a name="create-the-output-definitions-file"></a>Tworzenie pliku definicji danych wyjściowych
+W tej sekcji utworzysz plik opisujący dane wyjściowe po wdrożeniu.
 
-W ramach usługi Azure Cloud Shell wykonaj następujące czynności:
+W usłudze Azure Cloud Shell wykonaj następujące czynności:
 
 1. Utwórz plik o nazwie `output.tf`.
 
@@ -118,9 +120,9 @@ W ramach usługi Azure Cloud Shell wykonaj następujące czynności:
     vi output.tf
     ```
 
-1. Wprowadź trybu wstawiania, wybierając I klucz.
+1. Przejdź do trybu wstawiania, naciskając klawisz I.
 
-1. Wklej następujący kod do edytora do udostępnienia w pełni kwalifikowana nazwa domeny (FQDN) dla maszyn wirtualnych. :
+1. Wklej do edytora poniższy kod, aby uwidocznić w pełni kwalifikowaną nazwę domeny (FQDN) dla maszyn wirtualnych. :
 
   ```JSON
     output "vmss_public_ip" {
@@ -128,32 +130,32 @@ W ramach usługi Azure Cloud Shell wykonaj następujące czynności:
     }
   ```
 
-1. Tryb wstawiania w zakończenia, wybierając klawisz Esc.
+1. Opuść tryb wstawiania, naciskając klawisz Esc.
 
-1. Zapisz plik i zamknij Edytor vi, wprowadzając następujące polecenie:
+1. Zapisz plik i zamknij edytor VI, wprowadzając następujące polecenie:
 
     ```bash
     :wq
     ```
 
-## <a name="define-the-network-infrastructure-in-a-template"></a>Zdefiniuj infrastrukturę sieciową w szablonie
-W tej sekcji utworzysz następującymi elementami infrastruktury sieci w nowej grupie zasobów platformy Azure: 
+## <a name="define-the-network-infrastructure-in-a-template"></a>Definiowanie infrastruktury sieci w szablonie
+W tej sekcji utworzysz w nowej grupie zasobów platformy Azure następującą infrastrukturę sieci: 
 
-  - Jednej sieci wirtualnej (VNET) przy użyciu przestrzeni adresów 10.0.0.0/16 
-  - Jednej podsieci z przestrzeni adresowej 10.0.2.0/24
-  - Dwa publiczne adresy IP. Jeden używanym przez maszynę wirtualną równoważenia obciążenia zestawu skalowania, inne użyte do nawiązania połączenia z serwerem przesiadkowym SSH.
+  - Jedna sieć wirtualna (VNET) z przestrzenią adresową 10.0.0.0/16 
+  - Jedna podsieć z przestrzenią adresową 10.0.2.0/24
+  - Dwa publiczne adresy IP: jeden używany przez moduł równoważenia obciążenia zestawu skalowania maszyn wirtualnych, a drugi służący do nawiązywania połączenia z rampą SSH
 
-W ramach usługi Azure Cloud Shell wykonaj następujące czynności:
+W usłudze Azure Cloud Shell wykonaj następujące czynności:
 
-1. Utwórz plik o nazwie `vmss.tf` do opisania skalowania maszyn wirtualnych zestawu infrastruktury.
+1. Utwórz plik o nazwie `vmss.tf` w celu opisania infrastruktury zestawu skalowania maszyn wirtualnych.
 
     ```bash
     vi vmss.tf
     ```
 
-1. Wprowadź trybu wstawiania, wybierając I klucz.
+1. Przejdź do trybu wstawiania, naciskając klawisz I.
 
-1. Wklej następujący kod na końcu pliku do udostępnienia w pełni kwalifikowana nazwa domeny (FQDN) dla maszyn wirtualnych. 
+1. Na końcu pliku wklej poniższy kod, aby uwidocznić w pełni kwalifikowaną nazwę domeny (FQDN) dla maszyn wirtualnych. 
 
   ```JSON
   resource "azurerm_resource_group" "vmss" {
@@ -194,61 +196,61 @@ W ramach usługi Azure Cloud Shell wykonaj następujące czynności:
   }
   ```
 
-1. Tryb wstawiania w zakończenia, wybierając klawisz Esc.
+1. Opuść tryb wstawiania, naciskając klawisz Esc.
 
-1. Zapisz plik i zamknij Edytor vi, wprowadzając następujące polecenie:
+1. Zapisz plik i zamknij edytor VI, wprowadzając następujące polecenie:
 
   ```bash
   :wq
   ```
 
-## <a name="provision-the-network-infrastructure"></a>Udostępniać infrastrukturę sieci
-Przy użyciu usługi Azure Cloud Shell z katalogu, w którym zostały utworzone pliki konfiguracji (.tf) wykonaj następujące czynności:
+## <a name="provision-the-network-infrastructure"></a>Aprowizowanie infrastruktury sieci
+Używając usługi Azure Cloud Shell z katalogu, w którym zostały utworzone pliki konfiguracji (.tf), wykonaj następujące kroki:
 
-1. Inicjowanie programu Terraform.
+1. Zainicjuj narzędzie Terraform.
 
   ```bash
   terraform init 
   ```
 
-1. Uruchom następujące polecenie, aby wdrożyć zdefiniowanych infrastruktury na platformie Azure.
+1. Uruchom poniższe polecenie, aby wdrożyć zdefiniowaną infrastrukturę na platformie Azure.
 
   ```bash
   terraform apply
   ```
 
-  Terraform wyświetli monit o podanie wartości "Lokalizacja" jako **lokalizacji** zmienna jest zdefiniowana w `variables.tf`, ale nigdy nie jest ustawiona. Można wprowadzić żadnej prawidłowej lokalizacji — np. "Zachodnie stany USA" a następnie wybierając przycisk Enter. (Użyj nawiasów wokół dowolnej wartości ze spacjami).
+  Narzędzie Terraform wyświetli monit o podanie wartości zmiennej „location”, ponieważ zmienna **location** jest zdefiniowana w pliku `variables.tf`, ale nigdy nie została ustawiona. Możesz wprowadzić dowolną prawidłową lokalizację, np. „Zachodnie stany USA”, a następnie nacisnąć klawisz Enter. (Wokół każdej wartości zawierającej spacje użyj nawiasów).
 
-1. Narzędzie Terraform drukuje dane wyjściowe, zgodnie z definicją w `output.tf` pliku. Jak pokazano na poniższym zrzucie ekranu, nazwy FQDN ma postać &lt;id >.&lt; Lokalizacja >. cloudapp.azure.com. Wartość identyfikatora jest obliczoną wartością i lokalizacja to wartości, podane podczas uruchamiania narzędzia Terraform.
+1. Narzędzie Terraform wyświetli dane wyjściowe zgodnie z definicją w pliku `output.tf`. Jak pokazano na poniższym zrzucie ekranu, nazwa FQDN przyjmuje postać &lt;id>.&lt;location>.cloudapp.azure.com. Wartość id jest wartością obliczoną, a location to wartość podana podczas uruchamiania narzędzia Terraform.
 
-  ![W pełni kwalifikowanej nazwy domeny dla publicznego adresu IP zestawu skalowania maszyn wirtualnych](./media/terraform-create-vm-scaleset-network-disks-hcl/fqdn.png)
+  ![W pełni kwalifikowana nazwa domeny zestawu skalowania maszyn wirtualnych dla publicznego adresu IP](./media/terraform-create-vm-scaleset-network-disks-hcl/fqdn.png)
 
-1. W menu portalu Azure wybierz **grup zasobów** z menu głównego.
+1. Z menu głównego w witrynie Azure Portal wybierz pozycję **Grupy zasobów**.
 
-1. Na **grup zasobów** zaznacz **myResourceGroup** do wyświetlania zasobów, które zostały utworzone przez narzędzie Terraform.
+1. Na karcie **Grupy zasobów** wybierz pozycję **myResourceGroup**, aby wyświetlić zasoby, które zostały utworzone przez narzędzie Terraform.
   ![Zasoby sieciowe zestawu skalowania maszyn wirtualnych](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-resources.png)
 
-## <a name="add-a-virtual-machine-scale-set"></a>Dodaj zestaw skalowania maszyn wirtualnych
+## <a name="add-a-virtual-machine-scale-set"></a>Dodawanie zestawu skalowania maszyn wirtualnych
 
-W tej sekcji dowiesz się, jak dodać następujące zasoby do szablonu:
+W tej sekcji nauczysz się, jak dodać do szablonu następujące zasoby:
 
-- Usługa Azure load balancer i reguł do obsługi aplikacji i dołączyć je do publicznego adresu IP skonfigurowane wcześniej w tym artykule
-- Pula adresów zaplecza platformy Azure, a przypisz go do modułu równoważenia obciążenia 
-- Port sondy kondycji używane przez aplikację i skonfigurować w usłudze równoważenia obciążenia 
-- Profiluje za modułem równoważenia obciążenia, który jest uruchamiany w sieci Wirtualnej wdrożony we wcześniejszej części tego artykułu zestawu skalowania maszyn wirtualnych
-- [Serwer Nginx](http://nginx.org/) na węzłach maszyna wirtualna używa skalowania [pakietu cloud-init](http://cloudinit.readthedocs.io/en/latest/).
+- Moduł równoważenia obciążenia platformy Azure oraz reguły obsługi aplikacji i dołączania jej do publicznego adresu IP skonfigurowanego wcześniej w tym artykule
+- Pula adresów zaplecza platformy Azure i przypisywanie jej do modułu równoważenia obciążenia 
+- Port sondy kondycji używany przez aplikację i skonfigurowany w module równoważenia obciążenia 
+- Zestaw skalowania maszyn wirtualnych stojący za modułem równoważenia obciążenia, który jest uruchamiany w sieci wirtualnej wdrożonej we wcześniejszej części tego artykułu
+- Serwer [nginx](http://nginx.org/) na węzłach skalowania maszyny wirtualnej korzystający z pakietu [cloud-init](http://cloudinit.readthedocs.io/en/latest/).
 
-W usłudze Cloud Shell wykonaj następujące czynności:
+W usłudze Cloud Shell wykonaj następujące kroki:
 
-1. Otwórz `vmss.tf` pliku konfiguracji.
+1. Otwórz plik konfiguracji `vmss.tf`.
 
   ```bash
   vi vmss.tf
   ```
 
-1. Przejdź na koniec pliku, a następnie wprowadź trybie append, wybierając klawisz A.
+1. Przejdź na koniec pliku, a następnie przejdź do trybu dołączania, naciskając klawisz A.
 
-1. Wklej następujący kod na końcu pliku:
+1. Na końcu pliku wklej następujący kod:
 
   ```JSON
   resource "azurerm_lb" "vmss" {
@@ -348,21 +350,21 @@ W usłudze Cloud Shell wykonaj następujące czynności:
 }
   ```
 
-1. Tryb wstawiania w zakończenia, wybierając klawisz Esc.
+1. Opuść tryb wstawiania, naciskając klawisz Esc.
 
-1. Zapisz plik i zamknij Edytor vi, wprowadzając następujące polecenie:
+1. Zapisz plik i zamknij edytor VI, wprowadzając następujące polecenie:
 
     ```bash
     :wq
     ```
 
-1. Utwórz plik o nazwie `web.conf` ma pełnić rolę konfiguracji pakietu cloud-init dla maszyn wirtualnych, które są częścią zestawu skalowania. 
+1. Utwórz plik o nazwie `web.conf`, który będzie pełnił rolę konfiguracji pakietu cloud-init dla maszyn wirtualnych będących częścią zestawu skalowania. 
 
     ```bash
     vi web.conf
     ```
 
-1. Wprowadź trybu wstawiania, wybierając I klucz.
+1. Przejdź do trybu wstawiania, naciskając klawisz I.
 
 1. Wklej następujący kod do edytora:
 
@@ -372,23 +374,23 @@ W usłudze Cloud Shell wykonaj następujące czynności:
     - nginx
   ```
 
-1. Tryb wstawiania w zakończenia, wybierając klawisz Esc.
+1. Opuść tryb wstawiania, naciskając klawisz Esc.
 
-1. Zapisz plik i zamknij Edytor vi, wprowadzając następujące polecenie:
+1. Zapisz plik i zamknij edytor VI, wprowadzając następujące polecenie:
 
     ```bash
     :wq
     ```
 
-1. Otwórz `variables.tf` pliku konfiguracji.
+1. Otwórz plik konfiguracji `variables.tf`.
 
   ```bash
   vi variables.tf
   ```
 
-1. Przejdź na koniec pliku, a następnie wprowadź trybie append, wybierając klawisz A.
+1. Przejdź na koniec pliku, a następnie przejdź do trybu dołączania, naciskając klawisz A.
 
-1. Wklejając następujący kod na końcu pliku, dostosować wdrożenia:
+1. Dostosuj wdrożenie, wklejając na końcu pliku następujący kod:
 
   ```JSON
   variable "application_port" {
@@ -406,54 +408,54 @@ W usłudze Cloud Shell wykonaj następujące czynności:
   }
   ``` 
 
-1. Tryb wstawiania w zakończenia, wybierając klawisz Esc.
+1. Opuść tryb wstawiania, naciskając klawisz Esc.
 
-1. Zapisz plik i zamknij Edytor vi, wprowadzając następujące polecenie:
+1. Zapisz plik i zamknij edytor VI, wprowadzając następujące polecenie:
 
     ```bash
     :wq
     ```
 
-1. Tworzenie planu narzędzia Terraform w celu wizualizacji wdrażania zestawu skalowania maszyn wirtualnych. (Należy określić hasło wybrane, a także lokalizacji zasobów).
+1. Utwórz plan narzędzia Terraform, aby zwizualizować wdrożenie zestawu skalowania maszyn wirtualnych. (Musisz określić wybrane przez siebie hasło, a także lokalizację swoich zasobów).
 
   ```bash
   terraform plan
   ```
 
-  Dane wyjściowe polecenia powinny być podobne do Poniższy zrzut ekranu:
+  Dane wyjściowe polecenia powinny wyglądać podobnie jak na poniższym zrzucie ekranu:
 
-  ![Dane wyjściowe z tworzenia zestawu skalowania maszyn wirtualnych](./media/terraform-create-vm-scaleset-network-disks-hcl/add-mvss-plan.png)
+  ![Dane wyjściowe z utworzenia zestawu skalowania maszyn wirtualnych](./media/terraform-create-vm-scaleset-network-disks-hcl/add-mvss-plan.png)
 
-1. Wdrażanie nowych zasobów na platformie Azure.
+1. Wdróż nowe zasoby na platformie Azure.
 
   ```bash
   terraform apply 
   ```
 
-  Dane wyjściowe polecenia powinny być podobne do Poniższy zrzut ekranu:
+  Dane wyjściowe polecenia powinny wyglądać podobnie jak na poniższym zrzucie ekranu:
 
-  ![Grupa zasobów zestawu skalowania maszyn wirtualnych programu Terraform](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents.png)
+  ![Grupa zasobów zestawu skalowania maszyn wirtualnych narzędzia Terraform](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents.png)
 
-1. Otwórz przeglądarkę i połącz się nazwy FQDN, który został zwrócony przez polecenie. 
+1. Otwórz przeglądarkę i połącz się z nazwą FQDN, która została zwrócona przez polecenie. 
 
-  ![Wyniki przeglądania do pełni kwalifikowaną nazwę domeny](./media/terraform-create-vm-scaleset-network-disks-hcl/browser-fqdn.png)
+  ![Wyniki przejścia do w pełni kwalifikowanej nazwy domeny](./media/terraform-create-vm-scaleset-network-disks-hcl/browser-fqdn.png)
 
-## <a name="add-an-ssh-jumpbox"></a>Dodaj serwer przesiadkowy SSH
-SSH *rampy* pojedynczy serwer, który "przejdziesz" za pośrednictwem w celu uzyskania dostępu do innych serwerów w sieci. W tym kroku należy skonfigurować następujące zasoby:
+## <a name="add-an-ssh-jumpbox"></a>Dodawanie rampy SSH
+*Rampa* SSH to pojedynczy serwer, przez który „przeskakujesz”, aby uzyskać dostęp do innych serwerów w sieci. W tym kroku skonfigurujesz następujące zasoby:
 
-- Interfejs sieciowy (lub serwera przesiadkowego) podłączone do tej samej podsieci co zestaw skalowania maszyn wirtualnych.
+- Interfejs sieciowy (rampa) podłączony do tej samej podsieci co zestaw skalowania maszyn wirtualnych.
 
-- Maszyna wirtualna jest połączona z tym interfejsem sieciowym. Ta rampy jest dostępny zdalnie. Po nawiązaniu połączenia możesz SSH do dowolnej maszyny wirtualne w zestawie skalowania.
+- Maszyna wirtualna połączona z tym interfejsem sieciowym. „Rampa” jest dostępna zdalnie. Po nawiązaniu połączenia możesz za pomocą protokołu SSH połączyć się z dowolną maszyną wirtualną w zestawie skalowania.
 
-1. Otwórz `vmss.tf` pliku konfiguracji.
+1. Otwórz plik konfiguracji `vmss.tf`.
 
   ```bash
   vi vmss.tf
   ```
 
-1. Przejdź na koniec pliku, a następnie wprowadź trybie append, wybierając klawisz A.
+1. Przejdź na koniec pliku, a następnie przejdź do trybu dołączania, naciskając klawisz A.
 
-1. Wklej następujący kod na końcu pliku:
+1. Na końcu pliku wklej następujący kod:
 
   ```JSON
   resource "azurerm_public_ip" "jumpbox" {
@@ -515,15 +517,15 @@ SSH *rampy* pojedynczy serwer, który "przejdziesz" za pośrednictwem w celu uzy
   }
   ```
 
-1. Otwórz `output.tf` pliku konfiguracji.
+1. Otwórz plik konfiguracji `output.tf`.
 
   ```bash
   vi output.tf
   ```
 
-1. Przejdź na koniec pliku, a następnie wprowadź trybie append, wybierając klawisz A.
+1. Przejdź na koniec pliku, a następnie przejdź do trybu dołączania, naciskając klawisz A.
 
-1. Wklej następujący kod na końcu pliku, aby wyświetlić nazwę hosta serwera przesiadkowego, gdy wdrożenie jest ukończone:
+1. Na końcu pliku wklej następujący kod, aby po ukończeniu wdrożenia wyświetlić nazwę hosta rampy:
 
   ```
   output "jumpbox_public_ip" {
@@ -531,41 +533,41 @@ SSH *rampy* pojedynczy serwer, który "przejdziesz" za pośrednictwem w celu uzy
   }
   ```
 
-1. Tryb wstawiania w zakończenia, wybierając klawisz Esc.
+1. Opuść tryb wstawiania, naciskając klawisz Esc.
 
-1. Zapisz plik i zamknij Edytor vi, wprowadzając następujące polecenie:
+1. Zapisz plik i zamknij edytor VI, wprowadzając następujące polecenie:
 
     ```bash
     :wq
     ```
 
-1. Wdrażanie serwera przesiadkowego.
+1. Wdróż rampę.
 
   ```bash
   terraform apply 
   ```
 
-Po zakończeniu wdrożenia powinien wyglądać zawartość grupy zasobów, który pokazano na poniższym zrzucie ekranu:
+Po zakończeniu wdrożenia zawartość grupy zasobów powinna przypominać tę, którą pokazano na poniższym zrzucie ekranu:
 
-![Grupa zasobów zestawu skalowania maszyn wirtualnych programu Terraform](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents-final.png)
+![Grupa zasobów zestawu skalowania maszyn wirtualnych narzędzia Terraform](./media/terraform-create-vm-scaleset-network-disks-hcl/resource-group-contents-final.png)
 
 > [!NOTE]
-> Możliwość zalogowania się przy użyciu hasła jest wyłączona na serwer przesiadkowy i zestawu skalowania maszyn wirtualnych została wdrożona. Zaloguj się przy użyciu protokołu SSH na dostęp do maszyny wirtualne.
+> Możliwość logowania się przy użyciu hasła na rampie i we wdrożonym zestawie skalowania maszyn wirtualnych jest wyłączona. Aby uzyskać dostęp do maszyn wirtualnych, zaloguj się za pomocą protokołu SSH.
 
 ## <a name="environment-cleanup"></a>Czyszczenie środowiska 
 
-Aby usunąć zasoby programu Terraform, które zostały utworzone w ramach tego samouczka, wprowadź następujące polecenie w usłudze Cloud Shell:
+Aby usunąć zasoby narzędzia Terraform, które zostały utworzone w ramach tego samouczka, wprowadź w usłudze Cloud Shell następujące polecenie:
 
 ```bash
 terraform destroy
 ```
 
-Zniszczenie może potrwać kilka minut.
+Proces niszczenia może potrwać kilka minut.
 
-## <a name="next-steps"></a>Kolejne kroki
-W tym artykule przedstawiono sposób tworzenia zestawu skalowania maszyn wirtualnych platformy Azure za pomocą narzędzia Terraform. Poniżej przedstawiono niektóre dodatkowe zasoby, aby dowiedzieć się więcej o narzędziu Terraform na platformie Azure: 
+## <a name="next-steps"></a>Następne kroki
+W tym artykule przedstawiono sposób tworzenia zestawu skalowania maszyn wirtualnych platformy Azure za pomocą narzędzia Terraform. Poniżej przedstawiono kilka dodatkowych zasobów zawierających więcej informacji na temat narzędzia Terraform na platformie Azure: 
 
- [Centrum programu Terraform w domenie Microsoft.com](https://docs.microsoft.com/azure/terraform/)  
- [Dokumentacja usługi Terraform Azure dostawcy](http://aka.ms/terraform)  
- [Źródłowy dostawca Terraform Azure](http://aka.ms/tfgit)  
- [Moduły Terraform Azure](http://aka.ms/tfmodules)
+ [Centrum narzędzia Terraform w witrynie Microsoft.com](https://docs.microsoft.com/azure/terraform/)  
+ [Dokumentacja dostawcy narzędzia Terraform na platformie Azure](http://aka.ms/terraform)  
+ [Źródło dostawcy narzędzia Terraform na platformie Azure](http://aka.ms/tfgit)  
+ [Moduły narzędzia Terraform na platformie Azure](http://aka.ms/tfmodules)

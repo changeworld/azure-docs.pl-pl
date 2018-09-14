@@ -13,14 +13,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/15/2017
 ms.author: tomfitz
-ms.openlocfilehash: 2fd128ce04ac883396948e6114582dd15288390a
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: 704bbe5cc566833ef1279e84f0fab9f363dfaa11
+ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34359744"
+ms.lasthandoff: 09/06/2018
+ms.locfileid: "43841632"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Wdrożenie przy użyciu usługi Azure Resource Manager a wdrożenie klasyczne: omówienie modeli wdrażania i stanu zasobów
+
+> [!NOTE]
+> Informacje zawarte w tym artykule powinny zostać użyte wyłącznie podczas migracji z klasycznego wdrożenia do wdrożenia w usłudze Azure Resource Manager.
+
 Ten artykuł zawiera informacje o modelu wdrażania przy użyciu usługi Resource Manager i modelu klasycznym. Model wdrażania przy użyciu usługi Resource Manager i model klasyczny to dwa różne sposoby wdrażania rozwiązań platformy Azure i zarządzania nimi. Stosuje się je za pośrednictwem dwóch różnych zestawów interfejsów API, a wdrożone zasoby mogą zawierać znaczące różnice. Te dwa modele nie są ze sobą zgodne. W tym artykule opisano te różnice.
 
 Aby uprościć wdrażanie i zarządzanie zasobami, firma Microsoft zaleca używanie usługi Resource Manager dla wszystkich nowych zasobów. Firma Microsoft zaleca ponowne wdrożenie istniejących zasobów przy użyciu usługi Resource Manager, jeśli to możliwe.

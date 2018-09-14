@@ -11,21 +11,22 @@ ms.devlang: java
 ms.topic: tutorial
 ms.date: 05/22/2017
 ms.author: sngun
-ms.openlocfilehash: 11831ad6e80c86c3c276fea0524af522046f1a03
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: c69aefa6271f9766687ce3b63f959dd4e414b98c
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38299765"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696680"
 ---
 # <a name="nosql-tutorial-build-a-sql-api-java-console-application"></a>Samouczek NoSQL: tworzenie aplikacji konsolowej w języku Java dla interfejsu API SQL
+
 > [!div class="op_single_selector"]
 > * [.NET](sql-api-get-started.md)
 > * [.NET Core](sql-api-dotnetcore-get-started.md)
-> * [Node.js dla MongoDB](mongodb-samples.md)
-> * [Node.js](sql-api-nodejs-get-started.md)
 > * [Java](sql-api-java-get-started.md)
->  
+> * [Java (asynchroniczny)](sql-api-async-java-get-started.md)
+> * [Node.js](sql-api-nodejs-get-started.md)
+> * [Node.js 2](sql-api-nodejs-get-started-preview.md) 
 > 
 
 Witamy w samouczku NoSQL dla zestawu Java SDK interfejsu API SQL dla usługi Azure Cosmos DB! W ramach tego samouczka zostanie utworzona aplikacja konsolowa, która tworzy zasoby usługi Azure Cosmos DB i wykonuje dla nich zapytania.

@@ -12,12 +12,12 @@ ms.topic: tutorial
 ms.date: 03/30/2018
 ms.author: dech
 ms.custom: mvc
-ms.openlocfilehash: ea8bb1db53deaa546f4174ddc04d9a270aa96d9a
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 771c4a33603ddf262df3b35992d318d34de6c2dc
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43187787"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43698115"
 ---
 # <a name="use-data-migration-tool-to-migrate-your-data-to-azure-cosmos-db"></a>Migrowanie danych do usługi Azure Cosmos DB za pomocą narzędzia do migracji danych 
 
@@ -28,7 +28,7 @@ Który interfejs API będzie używany w usłudze Azure Cosmos DB?
 * **[Interfejs SQL API](documentdb-introduction.md)** — dane można importować za pomocą dowolnej opcji źródła w narzędziu do migracji danych.
 * **[Interfejs Table API](table-introduction.md)**  — dane można importować za pomocą narzędzia do migracji danych lub narzędzia AzCopy. Zobacz [Import data for use with the Azure Cosmos DB Table API (Importowanie danych do użycia z interfejsem Table API usługi Azure Cosmos DB)](table-import.md), aby uzyskać więcej informacji.
 * **[Interfejs MongoDB API](mongodb-introduction.md)** — narzędzie do migracji danych aktualnie nie obsługuje interfejsu MongoDB API usługi Azure Cosmos DB ani jako źródła, ani jako celu. Jeśli chcesz migrować dane do kolekcji interfejsu MongoDB API lub z tych kolekcji w usłudze Azure Cosmos DB, zapoznaj się z instrukcjami podanymi w temacie [Azure Cosmos DB: How to migrate data for the MongoDB API (Azure Cosmos DB: jak migrować dane na potrzeby interfejsu MongoDB API)](mongodb-migrate.md). Narzędzia do migracji danych można również używać do eksportowania danych z bazy danych MongoDB do kolekcji interfejsu SQL API usługi Azure Cosmos DB do użycia z interfejsem SQL API. 
-* **[Interfejs Graph API](graph-introduction.md)** — obecnie narzędzie do migracji danych nie jest obsługiwanym narzędziem importu dla kont interfejsu Graph API. 
+* **[Interfejs API języka Gremlin](graph-introduction.md)** — obecnie narzędzie do migracji danych nie jest obsługiwane na potrzeby importu kont interfejsu API języka Gremlin. 
 
 Ten samouczek obejmuje następujące zadania:
 

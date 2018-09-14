@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: hero-article
-ms.date: 05/10/2017
+ms.date: 08/31/2018
 ms.author: ambapat
-ms.openlocfilehash: df577222fb8f9d13bd33c5705e6234362519d351
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 9b8b0da6e1572ab79ffb369497f64aad2cd249b9
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41920601"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43343466"
 ---
 # <a name="secure-your-key-vault"></a>Zabezpieczanie własnego magazynu kluczy
 Usługa Azure Key Vault to usługa w chmurze, która zabezpiecza klucze szyfrowania i wpisy tajne (takie jak certyfikaty, parametry połączenia, hasła) dla aplikacji w chmurze. Ponieważ te dane są poufne i mają krytyczne znaczenie dla prowadzonej działalności, wskazane jest zabezpieczenie dostępu do własnego magazynu kluczy, tak aby tylko autoryzowane aplikacje i użytkownicy mogli uzyskiwać do niego dostęp. Ten artykuł zawiera omówienie modelu dostępu do magazynu kluczy, wyjaśnia uwierzytelnianie i autoryzację oraz na przykładzie opisuje sposób zabezpieczania dostępu do magazynu kluczy dla aplikacji w chmurze.
@@ -94,8 +94,8 @@ Zasady dostępu magazynu kluczy przyznają oddzielnie uprawnienia do kluczy, wpi
 
 > [!IMPORTANT]
 > Należy pamiętać, że zasady dostępu magazynu kluczy są stosowane na poziomie magazynu. Na przykład jeśli użytkownikowi udzielono uprawnień do tworzenia i usuwania kluczy, będzie on mógł wykonywać te operacje na wszystkich kluczach w tym magazynie kluczy.
-> 
-> 
+
+Oprócz zastosowania zasad dostępu, dostęp do warstwy danych można również ograniczyć przy użyciu [punktów końcowych sieci wirtualnej dla usługi Azure Key Vault](key-vault-overview-vnet-service-endpoints.md), konfigurując [zapory i reguły sieci wirtualnej](key-vault-network-security.md) na potrzeby dodatkowej warstwy zabezpieczeń.
 
 ## <a name="example"></a>Przykład
 Załóżmy, że tworzona jest aplikacja, która używa certyfikatu dla protokołu SSL, usługi Azure Storage do przechowywania danych oraz klucza RSA o długości 2048 bitów dla operacji podpisywania. Załóżmy, że ta aplikacja działa na maszynie wirtualnej (lub w zestawie skalowania maszyny wirtualnej). Możesz używać magazynu kluczy do przechowywania wszystkich wpisów tajnych aplikacji i do przechowywania certyfikatu uruchamiania, który jest używany przez aplikację do uwierzytelniania za pomocą usługi Azure Active Directory.
@@ -201,8 +201,8 @@ W tym przykładzie przedstawiono prosty scenariusz. Rzeczywiste scenariusze mog�
 
 > [!NOTE]
 > Uwaga: W tym przykładzie pokazano, jak dostęp do magazynu kluczy będzie zabezpieczany (blokowany) w środowisku produkcyjnym. Deweloperzy powinni mieć swoją własną subskrypcję lub grupę zasobów, w której mają pełne uprawnienia do zarządzania swoimi magazynami, maszynami wirtualnymi i kontem magazynu, gdzie opracowują aplikacje.
-> 
-> 
+
+Zdecydowanie zaleca się, aby dodatkowo zabezpieczyć dostęp do magazynu kluczy przez [skonfigurowanie zapór i sieci wirtualnych usługi Key Vault](key-vault-network-security.md).
 
 ## <a name="resources"></a>Zasoby
 * [Kontrola dostępu oparta na rolach w usłudze Azure Active Directory](../role-based-access-control/role-assignments-portal.md)
@@ -243,6 +243,8 @@ W tym przykładzie przedstawiono prosty scenariusz. Rzeczywiste scenariusze mog�
   Linki do dokumentacji referencyjnej dotyczącej poleceń cmdlet programu PowerShell służących do zarządzania zasadami dostępu magazynu kluczy.
 
 ## <a name="next-steps"></a>Następne kroki
+[Konfigurowanie zapór i sieci wirtualnych usługi Key Vault](key-vault-network-security.md)
+
 Aby zapoznać się z samouczkiem wprowadzającym dla administratora, zobacz [Wprowadzenie do usługi Azure Key Vault](key-vault-get-started.md).
 
 Aby uzyskać więcej informacji na temat rejestrowania użycia usługi Key Vault, zobacz [Funkcja rejestrowania usługi Azure Key Vault](key-vault-logging.md).

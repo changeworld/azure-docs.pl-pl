@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: tutorial
 ms.service: active-directory
 ms.component: B2C
-ms.openlocfilehash: fffffbf7ce654c263976378da01f032599145a94
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 4953cb0db428de19268cdd90661f7818b06b6945
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591571"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43343866"
 ---
 # <a name="tutorial-enable-single-page-app-authentication-with-accounts-using-azure-active-directory-b2c"></a>Samouczek: włączanie uwierzytelniania aplikacji jednostronicowej przy użyciu kont w usłudze Azure Active Directory B2C
 
@@ -24,24 +24,24 @@ W tym samouczku pokazano, jak używać usługi Azure Active Directory (Azure AD)
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
 > [!div class="checklist"]
-> * Rejestrowanie przykładowej aplikacji jednostronicowej w dzierżawie usługi Azure AD B2C.
+> * Rejestrowanie przykładowej aplikacji jednostronicowej w katalogu usługi Azure AD B2C.
 > * Tworzenie zasad rejestracji, logowania, edytowania profilów i resetowania haseł użytkowników.
-> * Konfigurowanie przykładowej aplikacji w celu korzystania z dzierżawy usługi Azure AD B2C.
+> * Konfigurowanie przykładowej aplikacji w celu korzystania z katalogu usługi Azure AD B2C.
 
 [!INCLUDE [quickstarts-free-trial-note](../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Utwórz własną [dzierżawę usługi Azure AD B2C](active-directory-b2c-get-started.md).
+* Utwórz własny [katalog usługi Azure AD B2C](active-directory-b2c-get-started.md).
 * Zainstaluj program [Visual Studio 2017](https://www.visualstudio.com/downloads/) z pakietem roboczym **Tworzenie aplikacji na platformie ASP.NET i aplikacji internetowych**.
 * Zestaw [.NET Core 2.0.0 SDK](https://www.microsoft.com/net/core) lub nowszy
 * Zainstalować środowisko [Node.js](https://nodejs.org/en/download/).
 
 ## <a name="register-single-page-app"></a>Rejestrowanie aplikacji jednostronicowej
 
-Aplikacje należy [zarejestrować](../active-directory/develop/developer-glossary.md#application-registration) w dzierżawie, zanim będą mogły otrzymywać [tokeny dostępu](../active-directory/develop/developer-glossary.md#access-token) z usługi Azure Active Directory. Rejestracja aplikacji powoduje utworzenie [identyfikatora aplikacji](../active-directory/develop/developer-glossary.md#application-id-client-id) dla aplikacji w dzierżawie. 
+Aplikacje należy [zarejestrować](../active-directory/develop/developer-glossary.md#application-registration) w katalogu, zanim będą mogły otrzymywać [tokeny dostępu](../active-directory/develop/developer-glossary.md#access-token) z usługi Azure Active Directory. Rejestracja aplikacji powoduje utworzenie [identyfikatora aplikacji](../active-directory/develop/developer-glossary.md#application-id-client-id) dla aplikacji w katalogu. 
 
-Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administrator globalny dzierżawy usługi Azure AD B2C.
+Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administrator globalny katalogu usługi Azure AD B2C.
 
 [!INCLUDE [active-directory-b2c-switch-b2c-tenant](../../includes/active-directory-b2c-switch-b2c-tenant.md)]
 
@@ -49,7 +49,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administr
 
 2. W ustawieniach usługi B2C kliknij pozycję **Aplikacje**, a następnie kliknij pozycję **Dodaj**. 
 
-    Aby zarejestrować przykładową aplikację internetową w dzierżawie, użyj następujących ustawień:
+    Aby zarejestrować przykładową aplikację internetową w katalogu, użyj następujących ustawień:
     
     ![Dodawanie nowej aplikacji](media/active-directory-b2c-tutorials-spa/spa-registration.png)
     
@@ -63,7 +63,7 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/) jako administr
     
 3. Kliknij pozycję **Utwórz**, aby zarejestrować aplikację.
 
-Zarejestrowane aplikacje są wyświetlane na liście aplikacji dla dzierżawy usługi Azure AD B2C. Wybierz aplikację jednostronicową z listy. Zostanie wyświetlone okienko właściwości zarejestrowanej aplikacji jednostronicowej.
+Zarejestrowane aplikacje są wyświetlane na liście aplikacji dla katalogu usługi Azure AD B2C. Wybierz aplikację jednostronicową z listy. Zostanie wyświetlone okienko właściwości zarejestrowanej aplikacji jednostronicowej.
 
 ![Właściwości aplikacji jednostronicowej](./media/active-directory-b2c-tutorials-spa/b2c-spa-properties.png)
 
@@ -127,25 +127,25 @@ Aby umożliwić resetowanie haseł w aplikacji, należy utworzyć **zasady reset
 
 ## <a name="update-single-page-app-code"></a>Aktualizowanie kodu aplikacji jednostronicowej
 
-Po zarejestrowaniu aplikacji i utworzeniu zasad należy skonfigurować aplikację w celu korzystania z dzierżawy usługi Azure AD B2C. W tym samouczku skonfigurujesz przykładową aplikację SPA JavaScript, którą można pobrać z witryny GitHub. 
+Po zarejestrowaniu aplikacji i utworzeniu zasad należy skonfigurować aplikację w celu korzystania z katalogu usługi Azure AD B2C. W tym samouczku skonfigurujesz przykładową aplikację SPA JavaScript, którą można pobrać z witryny GitHub. 
 
 [Pobierz plik zip](https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp/archive/master.zip) lub sklonuj przykładową aplikację internetową z usługi GitHub.
 
 ```
 git clone https://github.com/Azure-Samples/active-directory-b2c-javascript-msal-singlepageapp.git
 ```
-Przykładowa aplikacja pokazuje, jak aplikacja jednostronicowa może używać usługi Azure AD B2C na potrzeby tworzenia nowych kont i logowania użytkowników, a także wywoływania chronionego internetowego interfejsu API. Należy zmodyfikować aplikację tak, aby korzystała z rejestracji aplikacji w Twojej dzierżawie i konfigurowała utworzone zasady. 
+Przykładowa aplikacja pokazuje, jak aplikacja jednostronicowa może używać usługi Azure AD B2C na potrzeby tworzenia nowych kont i logowania użytkowników, a także wywoływania chronionego internetowego interfejsu API. Należy zmodyfikować aplikację tak, aby korzystała z rejestracji aplikacji w Twoim katalogu i konfigurowała utworzone zasady. 
 
 Aby zmienić ustawienia aplikacji:
 
 1. Otwórz plik `index.html` w przykładowej aplikacji jednostronicowej platformy Node.js.
-2. Skonfiguruj przykład obejmujący informacje na temat rejestracji dzierżawy usługi Azure AD B2C. Zmień następujące wiersze kodu:
+2. Skonfiguruj przykład obejmujący informacje na temat rejestracji katalogu usługi Azure AD B2C. Zmień następujące wiersze kodu (pamiętaj, aby zamienić wartości na nazwy Twojego katalogu i interfejsów API):
 
     ```javascript
-    // The current application coordinates were pre-registered in a B2C tenant.
+    // The current application coordinates were pre-registered in a B2C directory.
     var applicationConfig = {
         clientID: '<Application ID for your SPA obtained from portal app registration>',
-        authority: "https://login.microsoftonline.com/tfp/<your-tenant-name>.onmicrosoft.com/B2C_1_SiUpIn",
+        authority: "https://fabrikamb2c.b2clogin.com/tfp/fabrikamb2c.onmicrosoft.com/B2C_1_SiUpIn",
         b2cScopes: ["https://fabrikamb2c.onmicrosoft.com/demoapi/demo.read"],
         webApi: 'https://fabrikamb2chello.azurewebsites.net/hello',
     };
@@ -185,20 +185,20 @@ Przykładowa aplikacja obsługuje rejestrację, logowanie, edytowanie profilów 
 
     ![Przepływ pracy rejestracji](media/active-directory-b2c-tutorials-desktop-app/sign-up-workflow.png)
 
-4. Kliknij pozycję **Utwórz**, aby utworzyć konto lokalne w dzierżawie usługi Azure AD B2C.
+4. Kliknij pozycję **Utwórz**, aby utworzyć konto lokalne w katalogu usługi Azure AD B2C.
 
 Teraz użytkownik może logować się i korzystać z aplikacji SPA, używając swojego adresu e-mail.
 
 > [!NOTE]
-> Po zalogowaniu aplikacja wyświetla błąd „niewystarczające uprawnienia”. Ten błąd jest wyświetlany, ponieważ próbujesz uzyskać dostęp do zasobu z dzierżawy pokazowej. Ponieważ token dostępu jest prawidłowy tylko dla dzierżawy usługi Azure AD, wywołanie interfejsu API nie ma autoryzacji. Przejdź do następnego samouczka, aby utworzyć chroniony internetowy interfejs API. 
+> Po zalogowaniu aplikacja wyświetla błąd „niewystarczające uprawnienia”. Ten błąd jest wyświetlany, ponieważ próbujesz uzyskać dostęp do zasobu z katalogu pokazowego. Ponieważ token dostępu jest prawidłowy tylko dla katalogu usługi Azure AD, wywołanie interfejsu API nie ma autoryzacji. Przejdź do następnego samouczka, aby utworzyć chroniony internetowy interfejs API dla Twojego katalogu. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-Jeśli planujesz wypróbować inne samouczki usługi Azure AD B2C, możesz użyć swojej dzierżawy usługi Azure AD B2C. Możesz [usunąć dzierżawę usługi Azure AD B2C](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant), gdy nie będzie już potrzebna.
+Jeśli planujesz wypróbować inne samouczki usługi Azure AD B2C, możesz użyć swojego katalogu usługi Azure AD B2C. Możesz [usunąć katalog usługi Azure AD B2C](active-directory-b2c-faqs.md#how-do-i-delete-my-azure-ad-b2c-tenant), gdy nie będzie już potrzebny.
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku pokazano, jak utworzyć dzierżawę usługi Azure AD B2C, utworzyć zasady i zaktualizować przykładową aplikację jednostronicową w celu korzystania z dzierżawy usługi Azure AD B2C. Przejdź do następnego samouczka, aby dowiedzieć się, jak rejestrować, konfigurować i wywoływać chroniony internetowy interfejs API z poziomu aplikacji klasycznej.
+W tym samouczku pokazano, jak utworzyć katalog usługi Azure AD B2C, utworzyć zasady i zaktualizować przykładową aplikację jednostronicową w celu korzystania z katalogu usługi Azure AD B2C. Przejdź do następnego samouczka, aby dowiedzieć się, jak rejestrować, konfigurować i wywoływać chroniony internetowy interfejs API z poziomu aplikacji klasycznej.
 
 > [!div class="nextstepaction"]
 > 

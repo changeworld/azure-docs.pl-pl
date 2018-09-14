@@ -98,6 +98,30 @@ items:
       href: quickstarts-sdk/csharp-thumb-sdk.md
     - name: Wyodrębnianie tekstu odręcznego
       href: quickstarts-sdk/csharp-hand-text-sdk.md
+- name: Pojęcia
+  items:
+  - name: Tagowanie obrazów
+    href: concept-tagging-images.md
+  - name: Kategoryzowanie obrazów
+    href: concept-categorizing-images.md
+  - name: Opisywanie obrazów
+    href: concept-describing-images.md
+  - name: Wykrywanie twarzy
+    href: concept-detecting-faces.md
+  - name: Wykrywanie typów obrazów
+    href: concept-detecting-image-types.md
+  - name: Wykrywanie zawartości specyficznej dla domeny
+    href: concept-detecting-domain-content.md
+  - name: Wykrywanie schematów kolorów
+    href: concept-detecting-color-schemes.md
+  - name: Generowanie miniatur
+    href: concept-generating-thumbnails.md
+  - name: Wyodrębnianie tekstu za pomocą technologii optycznego rozpoznawania znaków
+    href: concept-extracting-text-ocr.md
+  - name: Rozpoznawanie tekstu drukowanego i pisma odręcznego
+    href: concept-recognizing-text.md
+  - name: Wykrywanie zawartości dla dorosłych
+    href: concept-detecting-adult-content.md
 - name: Przewodniki z instrukcjami
   items:
   - name: Pierwsze aplikacje z funkcją przetwarzania obrazów
@@ -160,9 +184,9 @@ items:
     href: https://azure.microsoft.com/global-infrastructure/services/
   - name: Taksonomia kategorii
     href: Category-Taxonomy.md
-ms.openlocfilehash: c784546bdba472882b6c098befc584da35bbac59
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 6bdbfc9285665c6e0f7eb678c50e19bd82238696
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43337505"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "44714415"

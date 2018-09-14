@@ -13,14 +13,14 @@ ms.topic: overview
 ms.custom: mvc
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 08/28/2018
+ms.date: 09/04/2018
 ms.author: alkohli
-ms.openlocfilehash: 931b3fd4730ed9ca3a901b423d6c804dfa7e5305
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 26f8f59d940c1e4a25e24229c2a3df75052e63e4
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143546"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43783294"
 ---
 # <a name="what-is-azure-data-box-disk-preview"></a>Co to jest usługa Azure Data Box Disk? (Wersja zapoznawcza)
 
@@ -48,7 +48,7 @@ A. Urządzenia Azure Data Box Disk umożliwiają szybki, niedrogi i bezpieczny t
 Dyski są szyfrowane za pomocą funkcji szyfrowania dysków Microsoft BitLocker, a klucze szyfrowania są zarządzane w witrynie Azure Portal. Następnie kopiujesz dane z serwerów klientów. W centrum danych firma Microsoft migruje dane z dysku do chmury przy użyciu szybkiego połączenia przekazywania w sieci prywatnej i przekazuje je na platformę Azure.
 
 ### <a name="q-when-should-i-use-data-box-disks"></a>PYTANIE: Kiedy używać urządzeń Data Box Disk?
-A. Jeśli masz 35 TB (lub mniej) danych, które chcesz przenieść na platformę Azure, zastosowanie urządzeń Data Box Disk będzie korzystne.
+A. Jeśli masz nie więcej niż 40 TB danych, które chcesz przenieść na platformę Azure, korzystne będzie zastosowanie urządzeń Data Box Disk.
 
 ### <a name="q-what-is-the-price-of-data-box-disks"></a>PYTANIE: Jaki jest koszt urządzeń Data Box Disk?
 A. W okresie obowiązywania wersji zapoznawczej urządzenia Data Box Disk są dostępne bezpłatnie. Bezpłatna jest także przesyłka, natomiast zostaną naliczone opłaty za magazyn platformy Azure.
@@ -60,10 +60,10 @@ A.  Aby otrzymać urządzenia Azure Data Box Disk, najpierw zarejestruj się w c
 A. W przypadku 5 dysków — każdy o rozmiarze 8 TB (7 TB pojemności do wykorzystania) — maksymalna pojemność do wykorzystania to 35 TB. W związku z tym jednorazowo możesz przenieść 35 TB danych.  Aby przenieść większą ilość danych, musisz zamówić więcej dysków.
 
 ### <a name="q-how-can-i-check-if-data-box-disks-are-available-in-my-region"></a>PYTANIE: Jak sprawdzić, czy urządzenia Data Box Disk są dostępne w moim regionie? 
-A.  W okresie obowiązywania wersji zapoznawczej urządzenia Data Box Disk są dostępne w Stanach Zjednoczonych, Kanadzie i we wszystkich krajach Unii Europejskiej.  
+A.  W okresie obowiązywania wersji zapoznawczej urządzenia Data Box Disk są dostępne w Stanach Zjednoczonych, Kanadzie, Australii i we wszystkich krajach Unii Europejskiej.  
 
 ### <a name="q-which-regions-can-i-store-data-in-with-data-box-disks"></a>PYTANIE: W jakich regionach mogę zapisać dane, korzystając z usługi Data Box Disk?
-A. Wersja zapoznawcza usługi Data Box Disk jest obsługiwana we wszystkich regionach Stanów Zjednoczonych, Kanadzie oraz w regionach Europa Zachodnia i Europa Północna. Obsługiwane są tylko regiony chmury publicznej Azure. Usługa Azure Government ani inne suwerenne chmury nie są obsługiwane.
+A. Wersja zapoznawcza usługi Data Box Disk jest obsługiwana we wszystkich regionach Stanów Zjednoczonych, Kanadzie, Australii oraz w regionach Europa Zachodnia i Europa Północna. Obsługiwane są tylko regiony chmury publicznej Azure. Usługa Azure Government ani inne suwerenne chmury nie są obsługiwane.
 
 ### <a name="q-whom-should-i-contact-if-i-encounter-any-issues--with-data-box-disks"></a>PYTANIE: Z kim należy się skontaktować, gdy pojawią się jakiekolwiek problemy z urządzeniami Data Box Disk?
 A. Jeśli wystąpią problemy z urządzeniami Data Box Disk, skontaktuj się z [pomocą techniczną usługi Data Box Disk](mailto:expresspodsupport@microsoft.com).

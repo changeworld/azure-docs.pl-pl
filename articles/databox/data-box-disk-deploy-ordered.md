@@ -12,21 +12,21 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 07/17/2018
+ms.date: 09/04/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f46a3ecb3c4ef6ace31b7010ba9068ab04a43315
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: 37130e946aad00ef4eca14b7ce7942a8e435e6cd
+ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126545"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43782332"
 ---
 # <a name="tutorial-order-an-azure-data-box-disk-preview"></a>Samouczek: zamawianie usługi Azure Data Box Disk (wersja zapoznawcza)
 
-Azure Data Box Disk to rozwiązanie w chmurze, które umożliwia importowanie danych lokalnych na platformę Azure szybko, łatwo i bez problemów. Możesz przenieść dane na dyski półprzewodnikowe (SSD) dostarczone przez firmę Microsoft i wysłać te dyski z powrotem. Te dane są następnie przekazywane na platformę Azure. 
+Azure Data Box Disk to hybrydowe rozwiązanie w chmurze, które umożliwia importowanie danych lokalnych na platformę Azure szybko, łatwo i bez problemów. Możesz przenieść dane na dyski półprzewodnikowe (SSD) dostarczone przez firmę Microsoft i wysłać te dyski z powrotem. Te dane są następnie przekazywane na platformę Azure. 
 
-W tym samouczku opisano sposób zamawiania usługi Azure Data Box Disk. Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+W tym samouczku opisano sposób zamawiania usługi Azure Data Box Disk. Ten samouczek zawiera informacje dotyczące:
 
 > [!div class="checklist"]
 > * Tworzenie konta usługi Data Box Disk
@@ -38,7 +38,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 > [!IMPORTANT]
 > - Usługa Data Box Disk jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
-> - W okresie obowiązywania wersji zapoznawczej usługa Data Box Disk może być wysyłana do klientów w Stanach Zjednoczonych i Unii Europejskiej. Aby uzyskać więcej informacji, przejdź do tematu [Dostępność regionalna](data-box-disk-overview.md#region-availability).
+> - W okresie obowiązywania wersji zapoznawczej urządzenie Data Box Disk może być wysyłane do klientów w Stanach Zjednoczonych, Europie Zachodniej i Północnej, Kanadzie i Australii. Aby uzyskać więcej informacji, przejdź do tematu [Dostępność regionalna](data-box-disk-overview.md#region-availability).
 
 ## <a name="sign-up"></a>Rejestrowanie 
 
@@ -56,7 +56,7 @@ Wykonaj poniższe czynności w witrynie [Azure Portal](https://aka.ms/azuredatab
     
    ![Wyszukiwanie pozycji Azure Data Box 1](media/data-box-disk-deploy-ordered/search-data-box11.png)
 
-2. Kliknij przycisk **Utwórz**.
+2. Kliknij pozycję **Utwórz**.
 
 3. Sprawdź, czy usługa Data Box jest dostępna w Twoim regionie. Wprowadź lub wybierz poniższe informacje i kliknij pozycję **Zastosuj**.
 
@@ -80,7 +80,7 @@ Wykonaj poniższe czynności w witrynie [Azure Portal](https://aka.ms/azuredatab
     |---|---|
     |Name (Nazwa)|Podaj przyjazną nazwę, aby śledzić zamówienie.<br> Nazwa może zawierać od 3 do 24 znaków, które mogą być literami, cyframi i łącznikami. <br> Nazwa musi zaczynać i kończyć się literą lub cyfrą. |
     |Grupa zasobów| Użyj istniejącej grupy lub utwórz nową. <br> Grupa zasobów to kontener logiczny zasobów, które mogą być zarządzane lub wdrażane razem. |
-    |Docelowy region platformy Azure| Wybierz region swojego konta magazynu.<br> Obecnie są obsługiwane konta magazynu we wszystkich regionach USA oraz regionach Europa Zachodnia i Europa Północna. |
+    |Docelowy region platformy Azure| Wybierz region swojego konta magazynu.<br> Obecnie są obsługiwane konta magazynu we wszystkich regionach USA, regionach Europa Zachodnia i Europa Północna, Kanadzie i Australii. |
     |Konta magazynu|W oparciu o wybrany region platformy Azure wybierz z listy filtrowanej istniejące konto magazynu. <br>Można również utworzyć nowe konto ogólnego przeznaczenia w wersji 1 lub konto ogólnego przeznaczenia w wersji 2. |
     |Szacowany rozmiar danych w terabajtach (TB)| Wprowadź szacowany rozmiar w TB. <br>W zależności od rozmiaru danych firma Microsoft wysyła odpowiednią liczbę dysków SSD o pojemności 8 TB (7 TB pojemności do wykorzystania). <br>Maksymalna pojemność do wykorzystania na 5 dyskach to maksymalnie 35 TB. |
 

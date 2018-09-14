@@ -1,6 +1,6 @@
 ---
-title: 'Szybki start: interfejs API grafów z językiem PHP — Azure Cosmos DB | Microsoft Docs'
-description: W tym przewodniku Szybki start przedstawiono używanie interfejsu API grafów usługi Azure Cosmos DB do tworzenia aplikacji konsolowej przy użyciu witryny Azure Portal i języka PHP
+title: 'Szybki start: interfejs API języka Gremlin dla języka PHP — Azure Cosmos DB | Microsoft Docs'
+description: W tym przewodniku Szybki start przedstawiono użycie interfejsu API języka Gremlin usługi Azure Cosmos DB do utworzenia aplikacji konsolowej przy użyciu witryny Azure Portal i języka PHP
 services: cosmos-db
 author: luisbosquez
 manager: kfile
@@ -11,16 +11,25 @@ ms.devlang: php
 ms.topic: quickstart
 ms.date: 01/05/2018
 ms.author: lbosq
-ms.openlocfilehash: 2dabaf5650619ed2ec8d73c88deec136c25e544e
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 06f54429957a84de81e3dfaae00c6126b5340b74
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38310275"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43702497"
 ---
 # <a name="azure-cosmos-db-create-a-graph-database-using-php-and-the-azure-portal"></a>Azure Cosmos DB: tworzenie bazy danych grafów przy użyciu języka PHP i witryny Azure Portal
 
-W tym przewodniku Szybki start przedstawiono używanie języka PHP i [interfejsu API grafów](graph-introduction.md) usługi Azure Cosmos DB do tworzenia aplikacji konsolowej przez sklonowanie przykładu z serwisu GitHub. Ten przewodnik Szybki start przeprowadzi Cię również przez tworzenie konta usługi Azure Cosmos DB przy użyciu portalu internetowego platformy Azure.   
+> [!div class="op_single_selector"]
+> * [Konsola Gremlin](create-graph-gremlin-console.md)
+> * [.NET](create-graph-dotnet.md)
+> * [Java](create-graph-java.md)
+> * [Node.js](create-graph-nodejs.md)
+> * [Python](create-graph-python.md)
+> * [PHP](create-graph-php.md)
+>  
+
+W tym przewodniku Szybki start przedstawiono użycie języka PHP i [interfejsu API języka Gremlin](graph-introduction.md) usługi Azure Cosmos DB do utworzenia aplikacji konsolowej przez sklonowanie przykładu z usługi GitHub. Ten przewodnik Szybki start przeprowadzi Cię również przez tworzenie konta usługi Azure Cosmos DB przy użyciu portalu internetowego platformy Azure.   
 
 Azure Cosmos DB to rozproszona globalnie, wielomodelowa usługa bazy danych firmy Microsoft. Dzięki wykorzystaniu globalnego rozproszenia i możliwości skalowania w poziomie w usłudze Azure Cosmos DB można szybko tworzyć i za pomocą zapytań badać bazy danych dokumentów, tabel, par klucz/wartość i grafowe.  
 
@@ -44,7 +53,7 @@ Przed utworzeniem bazy danych grafów musisz utworzyć konto bazy danych Gremlin
 
 ## <a name="clone-the-sample-application"></a>Klonowanie przykładowej aplikacji
 
-Teraz przejdźmy do pracy z kodem. Sklonujemy aplikację interfejsu API programu Graph z usługi GitHub, ustawimy parametry połączenia i uruchomimy ją. Zobaczysz, jak łatwo jest pracować programowo z danymi.  
+Teraz przejdźmy do pracy z kodem. Sklonujemy aplikację interfejsu API języka Gremlin z usługi GitHub, ustawimy parametry połączenia i uruchomimy ją. Zobaczysz, jak łatwo jest pracować programowo z danymi.  
 
 1. Otwórz wiersz polecenia, utwórz nowy folder o nazwie git-samples, a następnie zamknij wiersz polecenia.
 

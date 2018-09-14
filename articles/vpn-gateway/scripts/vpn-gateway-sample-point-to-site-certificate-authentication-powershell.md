@@ -9,12 +9,12 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 04/17/2018
 ms.author: alzam
-ms.openlocfilehash: ae83cf4146d5daf11aa9f51ad16d5f05d0be73e8
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 3974810cd40fee7b34713502d573cccb74dab60c
+ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42887755"
+ms.lasthandoff: 08/31/2018
+ms.locfileid: "43344191"
 ---
 # <a name="create-a-vpn-gateway-and-add-point-to-site-configuration-using-powershell"></a>Tworzenie bramy VPN Gateway i dodawanie konfiguracji typu punkt-lokacja za pomocą programu PowerShell
 
@@ -113,8 +113,8 @@ Ten skrypt używa następujących poleceń w celu utworzenia wdrożenia. Każda 
 | [New-AzureRmVirtualNetwork](/powershell/module/azurerm.network/new-azurermvirtualnetwork) | Tworzy sieć wirtualną. |
 | [New-AzureRmPublicIpAddress](/powershell/module/azurerm.network/new-azurermpublicipaddress) | Tworzy publiczny adres IP. |
 | [New-AzureRmVirtualNetworkGatewayIpConfig](/powershell/module/azurerm.network/new-azurermvirtualnetworkgatewayipconfig) | Tworzy nową konfigurację adresu IP bramy. |
-| [New-AzureRmVirtualNetworkGateway](/powershell/module/azurerm.resources/new-azurermvirtualnetworkgateway) | Tworzy bramę sieci VPN. |
-| [New-SelfSignedCertificate](/powershell/module/azurerm.resources/new-selfsignedcertificate) | Tworzy nowy certyfikat główny z podpisem własnym. |
+| [New-AzureRmVirtualNetworkGateway](https://docs.microsoft.com/powershell/module/azurerm.network/new-azurermvirtualnetworkgateway?view=azurermps-6.8.1) | Tworzy bramę sieci VPN. |
+| [New-SelfSignedCertificate]https://docs.microsoft.com/powershell/module/pkiclient/new-selfsignedcertificate?view=win10-ps) | Tworzy nowy certyfikat główny z podpisem własnym. |
 | [Remove-AzureRmResourceGroup](/powershell/module/azurerm.resources/remove-azurermresourcegroup) | Usuwa grupę zasobów i wszystkie zasoby w niej zawarte. |
 | [Set-AzureRmVirtualNetwork](/powershell/module/azurerm.network/set-azurermvirtualnetwork) | Ustawia konfigurację podsieci dla sieci wirtualnej. |
 

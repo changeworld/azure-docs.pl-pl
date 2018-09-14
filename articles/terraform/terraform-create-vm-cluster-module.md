@@ -1,39 +1,39 @@
 ---
-title: Użyj Terraform modułów, aby utworzyć klaster maszyny Wirtualnej na platformie Azure
-description: Dowiedz się, jak utworzyć klaster maszyny wirtualnej systemu Windows na platformie Azure przy użyciu modułów Terraform
-keywords: terraform, devops, maszyny wirtualnej, sieci, modułów
-author: rloutlaw
-ms.service: virtual-machines-linux
-ms.topic: article
-ms.workload: infrastructure
+title: Tworzenie klastra maszyn wirtualnych na platformie Azure za pomocą modułów Terraform
+description: Dowiedz się, jak za pomocą modułów Terraform utworzyć klaster maszyn wirtualnych systemu Windows na platformie Azure
+services: terraform
+ms.service: terraform
+keywords: terraform, devops, virtual machine, network, modules
+author: tomarcher
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: tutorial
 ms.date: 10/19/2017
-ms.custom: devops
-ms.author: routlaw
-ms.openlocfilehash: e33aef252413eeb243b03543f171d5f1e2385b48
-ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-ms.translationtype: MT
+ms.openlocfilehash: 03c09e190fce9cbbd98cea3565dd2437f79dadf1
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/16/2018
-ms.locfileid: "29952221"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43666637"
 ---
-# <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>Tworzenie klastra maszyny Wirtualnej z Terraform za pomocą rejestru modułu
+# <a name="create-a-vm-cluster-with-terraform-using-the-module-registry"></a>Tworzenie klastra maszyn wirtualnych za pomocą narzędzia Terraform korzystającego z rejestru modułów
 
-W tym artykule przedstawiono tworzenie małych klastra maszyny Wirtualnej z Terraform [modułu rozwiązań usługi obliczenia Azure](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). Ten samouczek zawiera informacje na temat wykonywania następujących czynności: 
+W tym artykule opisano proces tworzenia małego klastra maszyn wirtualnych za pomocą modułu Terraform [Azure Compute](https://registry.terraform.io/modules/Azure/compute/azurerm/1.0.2). Ten samouczek zawiera informacje na temat wykonywania następujących czynności: 
 
 > [!div class="checklist"]
-> * Konfigurowanie uwierzytelniania w systemie Azure
-> * Utwórz szablon Terraform
-> * Wizualizuj zmiany z planem
-> * Zastosuj konfigurację, aby utworzyć klaster maszyny Wirtualnej
+> * Konfigurowanie uwierzytelniania na platformie Azure
+> * Tworzenie szablonu narzędzia Terraform
+> * Wizualizowanie zmian za pomocą planu
+> * Stosowanie konfiguracji w celu utworzenia klastra maszyn wirtualnych
 
-Aby uzyskać więcej informacji o Terraform, zobacz [dokumentacji Terraform](https://www.terraform.io/docs/index.html).
+Aby uzyskać więcej informacji na temat narzędzia Terraform, zobacz [dokumentację narzędzia Terraform](https://www.terraform.io/docs/index.html).
 
-## <a name="set-up-authentication-with-azure"></a>Konfigurowanie uwierzytelniania w systemie Azure
+## <a name="set-up-authentication-with-azure"></a>Konfigurowanie uwierzytelniania na platformie Azure
 
 > [!TIP]
-> Jeśli użytkownik [używać zmiennych środowiskowych Terraform](/azure/virtual-machines/linux/terraform-install-configure#set-environment-variables) lub uruchomione w tym samouczku [powłoki chmury Azure](/azure/cloud-shell/overview), Pomiń ten krok.
+> Jeśli [używasz zmiennych środowiskowych narzędzia Terraform](/azure/virtual-machines/linux/terraform-install-configure#set-environment-variables) lub uruchamiasz ten samouczek w usłudze [Azure Cloud Shell](/azure/cloud-shell/overview), pomiń ten krok.
 
- Przegląd [Terraform zainstalować i skonfigurować dostęp do usługi Azure](/azure/virtual-machines/linux/terraform-install-configure) można utworzyć nazwy głównej usługi platformy Azure. Użyj tej nazwy głównej usługi w celu wypełnienia nowego pliku `azureProviderAndCreds.tf` w pustego katalogu z następującym kodem:
+ Zapoznaj się z artykułem [Install Terraform and configure access to Azure](/azure/virtual-machines/linux/terraform-install-configure) (Instalowanie narzędzia Terraform i konfigurowanie dostępu do platformy Azure), aby utworzyć jednostkę usługi platformy Azure. Użyj tej jednostki usługi, aby wypełnić nowy plik `azureProviderAndCreds.tf` w pustym katalogu następującym kodem:
 
 ```tf
 variable subscription_id {}
@@ -51,7 +51,7 @@ provider "azurerm" {
 
 ## <a name="create-the-template"></a>Tworzenie szablonu
 
-Utwórz nowy szablon Terraform o nazwie `main.tf` z następującym kodem:
+Utwórz nowy szablon narzędzia Terraform o nazwie `main.tf`, używając następującego kodu:
 
 ```tf
 module mycompute {
@@ -85,24 +85,24 @@ output "vm_private_ips" {
 }
 ```
 
-Uruchom `terraform init` w katalogu konfiguracji. Przy użyciu wersji Terraform co najmniej 0.10.6 zawiera następujące dane wyjściowe:
+Uruchom polecenie `terraform init` w Twoim katalogu konfiguracji. Użycie narzędzia Terraform w wersji co najmniej 0.10.6 spowoduje wyświetlenie następujących danych wyjściowych:
 
 ![Terraform Init](media/terraformInitWithModules.png)
 
-## <a name="visualize-the-changes-with-plan"></a>Wizualizuj zmiany z planem
+## <a name="visualize-the-changes-with-plan"></a>Wizualizowanie zmian za pomocą planu
 
-Uruchom `terraform plan` do podglądu infrastruktury maszyny wirtualnej utworzonej przez szablon.
+Uruchom polecenie `terraform plan`, aby wyświetlić podgląd infrastruktury maszyn wirtualnych utworzonej przez szablon.
 
 ![Terraform Plan](media/terraform-create-vm-cluster-with-infrastructure/terraform-plan.png)
 
 
-## <a name="create-the-virtual-machines-with-apply"></a>Tworzenie maszyn wirtualnych z Zastosuj
+## <a name="create-the-virtual-machines-with-apply"></a>Tworzenie maszyn wirtualnych za pomocą polecenia apply
 
-Uruchom `terraform apply` do obsługi administracyjnej maszyn wirtualnych na platformie Azure.
+Uruchom polecenie `terraform apply`, aby aprowizować maszyny wirtualne na platformie Azure.
 
-![Zastosuj Terraform](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
+![Terraform Apply](media/terraform-create-vm-cluster-with-infrastructure/terraform-apply.png)
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-- Przejrzyj listę [modułów Azure Terraform](https://registry.terraform.io/modules/Azure)
-- Utwórz [zestawu skalowania maszyn wirtualnych z Terraform](terraform-create-vm-scaleset-network-disks-hcl.md)
+- Przeglądanie listy [modułów Azure Terraform](https://registry.terraform.io/modules/Azure)
+- Tworzenie [zestawu skalowania maszyn wirtualnych za pomocą narzędzia Terraform](terraform-create-vm-scaleset-network-disks-hcl.md)

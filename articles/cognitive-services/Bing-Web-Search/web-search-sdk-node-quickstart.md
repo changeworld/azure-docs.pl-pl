@@ -1,45 +1,85 @@
 ---
-title: 'Szybki Start: Używanie wyszukiwania w Internecie Bing zestawu SDK dla platformy Node.js'
-description: Instalator dla wyszukiwania w Internecie aplikację konsolową zestawu SDK.
-titleSuffix: Azure cognitive services
+title: 'Szybki start: używanie zestawu SDK wyszukiwania w sieci Web Bing dla platformy Node.js'
+description: Dowiedz się, jak używać zestawu SDK wyszukiwania w sieci Web Bing dla platformy Node.js.
 services: cognitive-services
-author: mikedodaro
-manager: rosh
+author: erhopf
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 08/16/2018
-ms.author: v-gedod, erhopf
-ms.openlocfilehash: e25c295fc0fc144110325d3c494a513ea35aeb05
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
-ms.translationtype: MT
+ms.author: erhopf
+ms.openlocfilehash: 7c3003ab4ba40a9d0212e7c94b6dd3bfbc8f0ca2
+ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888594"
+ms.lasthandoff: 08/29/2018
+ms.locfileid: "43186635"
 ---
-# <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>Szybki Start: Używanie wyszukiwania w Internecie Bing zestawu SDK dla platformy Node.js
+# <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>Szybki start: używanie zestawu SDK wyszukiwania w sieci Web Bing dla platformy Node.js
 
-Zestaw SDK wyszukiwania w sieci Web Bing zawiera funkcje interfejsu API REST dla sieci web kwerend i wyniki analizy.
+Zestaw SDK wyszukiwania w sieci Web Bing ułatwia integrowanie wyszukiwania w sieci Web Bing w aplikacji Node.js. Z tego przewodnika Szybki start dowiesz się, jak utworzyć wystąpienie klienta, wysłać żądanie i wyświetlić odpowiedź.
 
-[Kod dla przykładowych zestawach SDK wyszukiwania w sieci Web Bing węzeł źródłowy](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/webSearch.js) jest dostępna w witrynie GitHub.
+Chcesz zobaczyć kod teraz? [Przykłady zastosowania zestawu SDK wyszukiwania w sieci Web Bing dla platformy Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples) są dostępne w witrynie GitHub.
 
-## <a name="application-dependencies"></a>Zależności aplikacji
+[!INCLUDE [bing-web-search-quickstart-signup](../../../includes/bing-web-search-quickstart-signup.md)]
 
-Aby skonfigurować aplikację konsoli przy użyciu zestawu SDK wyszukiwania w sieci Web Bing, uruchom `npm install azure-cognitiveservices-websearch` w środowisku programistycznym.
+## <a name="prerequisites"></a>Wymagania wstępne
 
-## <a name="web-search-client"></a>Klient wyszukiwania w sieci Web
-Pobierz [klucz subskrypcji usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) w obszarze *wyszukiwania*. Utwórz wystąpienie obiektu `CognitiveServicesCredentials`:
-```
+Oto kilka rzeczy, które są potrzebne przed rozpoczęciem tego przewodnika Szybki start:
+
+* [Środowisko Node.js 6](https://nodejs.org/en/download/) lub nowsze
+* Klucz subskrypcji  
+
+## <a name="set-up-your-development-environment"></a>Konfigurowanie środowiska projektowego
+
+Zacznijmy od skonfigurowania środowiska deweloperskiego dla projektu Node.js.
+
+1. Utwórz nowy katalog dla projektu:
+
+    ```console
+    mkdir YOUR_PROJECT
+    ```
+
+2. Utwórz nowy plik pakietu:
+
+    ```console
+    cd YOUR_PROJECT
+    npm init
+    ```
+
+3. Teraz zainstalujmy kilka modułów platformy Azure i dodajmy je do pliku `package.json`:
+
+    ```console
+    npm install --save azure-cognitiveservices-websearch
+    npm install --save ms-rest-azure
+    ```
+
+## <a name="create-a-project-and-declare-required-modules"></a>Tworzenie projektu i deklarowanie wymaganych modułów
+
+W tym samym katalogu, w którym znajduje się plik `package.json`, utwórz nowy projekt Node.js w ulubionym środowisku IDE lub edytorze. Na przykład: `sample.js`.
+
+Następnie skopiuj ten kod do projektu. Ładuje on moduły zainstalowane w poprzedniej sekcji.
+
+```javascript
 const CognitiveServicesCredentials = require('ms-rest-azure').CognitiveServicesCredentials;
-let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
-```
-Następnie utwórz wystąpienie klienta:
-```
 const WebSearchAPIClient = require('azure-cognitiveservices-websearch');
+```
+
+## <a name="instantiate-the-client"></a>Tworzenie wystąpienia klienta
+
+Ten kod tworzy wystąpienie klienta i używa modułu `azure-cognitiveservices-websearch`. Przed kontynuowaniem upewnij się, że został wprowadzony prawidłowy klucz subskrypcji dla konta platformy Azure.
+
+```javascript
+let credentials = new CognitiveServicesCredentials('YOUR-ACCESS-KEY');
 let webSearchApiClient = new WebSearchAPIClient(credentials);
 ```
-Wyszukaj w wynikach:
-```
+
+## <a name="make-a-request-and-print-the-results"></a>Wysyłanie żądania i wyświetlanie wyników
+
+Za pomocą klienta wyślij zapytanie wyszukiwania do wyszukiwania w sieci Web Bing. Jeśli odpowiedź zawiera wyniki dla jakichkolwiek elementów w tablicy `properties`, w konsoli zostanie wyświetlona wartość `result.value`.
+
+```javascript
 webSearchApiClient.web.search('seahawks').then((result) => {
     let properties = ["images", "webPages", "news", "videos"];
     for (let i = 0; i < properties.length; i++) {
@@ -52,18 +92,21 @@ webSearchApiClient.web.search('seahawks').then((result) => {
 }).catch((err) => {
     throw err;
 })
-
 ```
-Ten kod wyświetla `result.value` elementy do konsoli bez analizowania tekstu.  Wyniki, jeśli według kategorii, obejmują:
-- _typ: "ImageObject"
-- _typ: "NewsArticle"
-- _typ: "Strona sieci Web"
-- _typ: "VideoObjectElementType"
 
-<!-- Remove until this can be replaced with a sanitized version.
-![Video results](media/web-search-sdk-node-results.png)
--->
+## <a name="run-the-program"></a>Uruchamianie programu
 
-## <a name="next-steps"></a>Kolejne kroki
+Ostatnim krokiem jest uruchomienie programu.
 
-[Przykłady zestawu SDK środowiska Node.js usługi cognitive services](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+## <a name="clean-up-resources"></a>Oczyszczanie zasobów
+
+Pamiętaj, aby po zakończeniu pracy z tym projektem usunąć klucz subskrypcji z kodu programu.
+
+## <a name="next-steps"></a>Następne kroki
+
+> [!div class="nextstepaction"]
+> [Przykłady zastosowania zestawu SDK i usług Cognitive Services dla platformy Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+
+## <a name="see-also"></a>Zobacz też
+
+* [Dokumentacja zestawu Azure Node SDK](https://docs.microsoft.com/javascript/api/azure-cognitiveservices-websearch/)

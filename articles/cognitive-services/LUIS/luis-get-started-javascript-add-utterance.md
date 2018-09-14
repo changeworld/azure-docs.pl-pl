@@ -1,53 +1,48 @@
 ---
-title: Samouczek dotyczący dodawania wypowiedzi do aplikacji usługi LUIS przy użyciu języka JavaScript | Microsoft Docs
-description: Z tego samouczka dowiesz się, jak wywołać aplikację usługi LUIS przy użyciu języka JavaScript.
+title: Przewodnik Szybki start dotyczący dodawania wypowiedzi do aplikacji usługi LUIS przy użyciu języka JavaScript — Azure Cognitive Services | Microsoft Docs
+description: Z tego przewodnika Szybki start dowiesz się, jak wywołać aplikację usługi LUIS przy użyciu języka JavaScript.
 services: cognitive-services
-author: v-geberr
-manager: kaiqb
+author: diberry
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
-ms.topic: tutorial
-ms.date: 12/18/2017
-ms.author: v-geberr
-ms.openlocfilehash: b6d021dcfdddb5449aa989c6aa06d7faf326befb
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.topic: quickstart
+ms.date: 08/24/2018
+ms.author: diberry
+ms.openlocfilehash: ffc19d12c1d3fbb24c514ac87f298d1a52d23eb8
+ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36265463"
+ms.lasthandoff: 08/27/2018
+ms.locfileid: "43771884"
 ---
-# <a name="tutorial-add-utterances-to-app-using-javascript"></a>Samouczek: Dodawanie wypowiedzi do aplikacji przy użyciu języka JavaScript
-W tym samouczku pokazano, jak napisać program służący do dodawania wypowiedzi do intencji za pomocą interfejsów API tworzenia w języku JavaScript.
+# <a name="quickstart-change-model-using-javascript"></a>Szybki start: zmiana modelu przy użyciu języka JavaScript
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Tworzenie projektu konsolowego programu Visual Studio 
-> * Dodawanie metody służącej do wywoływania interfejsu API usługi LUIS w celu dodawania wypowiedzi i uczenia aplikacji
-> * Dodawanie pliku JSON z przykładowymi wypowiedziami do intencji BookFlight
-> * Uruchamianie konsoli i wyświetlanie stanu uczenia dla wypowiedzi
-
-Aby uzyskać więcej informacji, zobacz dokumentację techniczną dotyczącą interfejsów API [dodawania wypowiedzi do intencji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c08), [uczenia](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c45) i [stanu uczenia](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c46).
-
-Na potrzeby tego artykułu wymagane jest bezpłatne konto usługi [LUIS][LUIS] w celu tworzenia aplikacji LUIS.
+[!include[Quickstart introduction for change model](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Twój [**klucz tworzenia**](luis-concept-keys.md#authoring-key) usługi LUIS. 
-* Twój istniejący **identyfikator aplikacji** i **identyfikator wersji** usługi LUIS. 
-* Nowy plik o nazwie `add-utterances.html` w programie VSCode.
 
-> [!NOTE] 
-> Kompletny plik `add-utterances.html` jest dostępny w [**repozytorium Github** LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/authoring-api-samples/javascript/add-utterance.html).
+[!include[Quickstart prerequisites for changing model](../../../includes/cognitive-services-luis-qs-change-model-prereq.md)]
+* [Program Visual Studio Code](https://code.visualstudio.com/)
+
+[!include[Code is available in LUIS-Samples Github repo](../../../includes/cognitive-services-luis-qs-change-model-luis-repo-note.md)]
+
+## <a name="example-utterances-json-file"></a>Plik JSON z przykładowymi wypowiedziami
+
+[!include[Quickstart explanation of example utterance JSON file](../../../includes/cognitive-services-luis-qs-change-model-json-ex-utt.md)]
 
 
-## <a name="write-the-code"></a>Tworzenie kodu
+## <a name="create-quickstart-code"></a>Tworzenie kodu przewodnika Szybki start
+
 Utwórz plik `add-utterances.html` i dodaj następujący kod:
 
-   [!code-javascript[Java Dependencies](~/samples-luis/documentation-samples/authoring-api-samples/javascript/add-utterance.html "Java Dependencies")]
+   [!code-html[Html code](~/samples-luis/documentation-samples/quickstarts/change-model/javascript/add-utterance.html "Javascript code")]
 
-## <a name="view-in-browser"></a>Wyświetlanie w przeglądarce
+## <a name="run-code"></a>Uruchamianie kodu
+
 1. Otwórz plik w przeglądarce.
 
-2. Dodaj identyfikator tworzenia i identyfikator aplikacji usługi LUIS oraz zmień wersję, jeśli jest ona inna niż `0.1`
+2. Dodaj identyfikator tworzenia usługi LUIS, identyfikator Twojej aplikacji LUIS.
 
 3. Zmodyfikuj **tablicę wypowiedzi** do dodania do Twojej aplikacji. Są one przechowywane w zmiennej utteranceJSON. Zmień te wartości na potrzeby używanej domeny i wypowiedzi. 
 
@@ -80,13 +75,11 @@ Utwórz plik `add-utterances.html` i dodaj następujący kod:
 
 6. Wybierz przycisk `Train Status`, aby wyświetlić stan uczenia. 
 
-![Add-utterances.html](./media/luis-quickstart-javascript-add-utterance/add-utterance.png)
+    ![Add-utterances.html](./media/luis-quickstart-javascript-add-utterance/add-utterance.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-Po zakończeniu tego samouczka usuń program Visual Studio i aplikację konsolową, jeśli nie będą Ci już potrzebne. 
+Po ukończeniu przewodnika Szybki start usuń wszystkie pliki utworzone w tym przewodniku Szybki start. 
 
 ## <a name="next-steps"></a>Następne kroki
 > [!div class="nextstepaction"]
 > [Integrowanie usługi LUIS z botem](luis-csharp-tutorial-build-bot-framework-sample.md)
-
-[LUIS]: https://docs.microsoft.com/azure/cognitive-services/luis/luis-reference-regions#luis-website

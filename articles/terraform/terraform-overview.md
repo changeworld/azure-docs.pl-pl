@@ -1,50 +1,52 @@
 ---
-title: Przy użyciu Terraform w usłudze Azure
-description: Wprowadzenie do korzystania z Terraform do program w wersji i wdrażanie infrastruktury platformy Azure.
-ms.service: virtual-machines-linux
-keywords: terraform, devops, przegląd, planowanie, zastosowanie oraz automatyzacji
-author: binderjoe
-ms.author: jbinder
-ms.date: 10/19/2017
-ms.topic: article
-ms.openlocfilehash: 5d313bda6a1067e6d023f62fb26704f9aee5c7bf
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
-ms.translationtype: MT
+title: Korzystanie z narzędzia Terraform na platformie Azure
+description: Wprowadzenie do wersjonowania i wdrażania infrastruktury platformy Azure za pomocą narzędzia Terraform.
+services: terraform
+ms.service: terraform
+keywords: terraform, devops, overview, plan, apply, automate
+author: tomarcher
+manager: jeconnoc
+ms.author: tarcher
+ms.topic: tutorial
+ms.date: 08/31/2018
+ms.openlocfilehash: dd340238f8a70c1dd0cfc172976bef6b1ad282b1
+ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37114476"
+ms.lasthandoff: 09/04/2018
+ms.locfileid: "43665633"
 ---
-# <a name="terraform-with-azure"></a>Terraform z platformy Azure
+# <a name="terraform-with-azure"></a>Narzędzie Terraform na platformie Azure
 
-[Hashicorp Terraform](https://www.terraform.io/) to narzędzie typu open source do obsługi i zarządzania nimi infrastruktury chmury. Określa on zasady infrastruktury w plikach konfiguracji, które opisują topologii zasobów w chmurze, takich jak maszyny wirtualne, konta magazynu i interfejsów sieci. W Terraform interfejsu wiersza polecenia (CLI) zawiera prosty mechanizm wdrażania i wersji pliki konfiguracyjne do platformy Azure lub innych obsługiwanych chmury.
+[Hashicorp Terraform](https://www.terraform.io/) jest narzędziem typu open source do aprowizowania infrastruktury chmury i zarządzania nią. Określa ono infrastrukturę w plikach konfiguracji opisujących topologię zasobów w chmurze, takich jak maszyny wirtualne, konta magazynu i interfejsy sieciowe. Interfejs wiersza polecenia (CLI) narzędzia Terraform zawiera prosty mechanizm wdrażania i wersjonowania plików konfiguracji na platformie Azure lub w dowolnej innej obsługiwanej chmurze.
 
-W tym artykule opisano korzyści wynikające ze stosowania Terraform do zarządzania infrastrukturą systemu Azure.
+W tym artykule opisano korzyści wynikające z zarządzania infrastrukturą platformy Azure za pomocą narzędzia Terraform.
 
-## <a name="automate-infrastructure-management"></a>Automatyczne zarządzanie infrastrukturą.
+## <a name="automate-infrastructure-management"></a>Automatyzacja zarządzania infrastrukturą
 
-Pliki konfiguracji na podstawie szablonu w Terraform umożliwiają definiowanie, udostępnić i skonfigurować zasoby platformy Azure w sposób powtarzalny i przewidywalne. Automatyzowanie infrastruktury ma wiele zalet:
+Oparte na szablonach pliki konfiguracji narzędzia Terraform umożliwiają definiowanie, aprowizowanie i konfigurowanie zasobów platformy Azure w powtarzalny i przewidywalny sposób. Zautomatyzowanie infrastruktury przynosi kilka korzyści:
 
-- Zmniejsza potencjalnych błędów ludzkich podczas wdrażania infrastruktury i zarządzanie nią.
-- Wdraża tego samego szablonu wielokrotnie Utwórz identyczne środowiska deweloperskie, badanie i produkcji.
-- Zmniejsza koszt środowisk projektowania i testowania, ponieważ są one tworzone na żądanie.
+- Zmniejsza możliwość popełnienia błędów przez człowieka podczas wdrażania infrastruktury i zarządzania nią.
+- Wielokrotnie wdraża ten sam szablon, aby tworzyć identyczne środowiska programowania, testowania i produkcji.
+- Zmniejsza koszt środowisk programowania i testowania, tworząc je na żądanie.
 
-## <a name="understand-infrastructure-changes-before-they-are-applied"></a>Zrozumienie zmian w infrastrukturze przed ich zastosowaniem 
+## <a name="understand-infrastructure-changes-before-they-are-applied"></a>Omówienie zmian w infrastrukturze przed ich zastosowaniem 
 
-Jako zasób topologii staje się złożonych opis znaczenie i wpływ zmiany infrastruktury może być trudne.
+Gdy topologia zasobów staje się coraz bardziej skomplikowana, zrozumienie znaczenia i wpływu zmian w infrastrukturze może być trudne.
 
-Terraform udostępnia interfejsu wiersza polecenia (CLI), który umożliwia użytkownikom sprawdzania poprawności i Podgląd zmian w infrastrukturze przed ich wdrożeniem. Podgląd zmian w infrastrukturze w sejfie, sposób produktywności ma wiele zalet:
-- Członkowie zespołu można bardziej efektywnej współpracy przez szybkie opis proponowanych zmian i ich wpływu.
-- Niezamierzone zmiany może być wykrytych wczesnym etapie projektowania
+Narzędzie Terraform zapewnia interfejs wiersza polecenia (CLI), który umożliwia użytkownikom zweryfikowanie i wyświetlenie podglądu zmian w infrastrukturze przed ich wdrożeniem. Wyświetlenie podglądu zmian w infrastrukturze w bezpieczny, produktywny sposób przynosi kilka korzyści:
+- Członkowie zespołu mogą współpracować bardziej efektywnie dzięki szybkiemu zrozumieniu proponowanych zmian i ich wpływu.
+- Niezamierzone zmiany można wychwycić na wczesnym etapie procesu programowania.
 
 
-## <a name="deploy-infrastructure-to-multiple-clouds"></a>Wdrażanie infrastruktury na wiele chmur
+## <a name="deploy-infrastructure-to-multiple-clouds"></a>Wdrażanie infrastruktury w wielu chmurach
 
-Terraform nadaje popularne narzędzia dla chmury wielu scenariuszy, wdrożonym podobne infrastruktury platformy Azure i dostawców w chmurze dodatkowe lub lokalnymi centrami danych. Umożliwia ona deweloperom używać tych samych narzędzi i pliki konfiguracji do zarządzania infrastruktury na wielu dostawców chmury.
+Terraform to popularne narzędzie w przypadku scenariuszy z wieloma chmurami, w których podobna infrastruktura jest wdrażana na platformie Azure oraz u dodatkowych dostawców usług w chmurze lub w lokalnych centrach danych. Umożliwia ono deweloperom zarządzanie infrastrukturą u wielu dostawców chmury za pomocą tych samych narzędzi i plików konfiguracji.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Teraz, gdy masz omówienie Terraform i korzyści, w tym miejscu są Sugerowane następne kroki:
+Oto następne sugerowane kroki po zapoznaniu się z omówieniem narzędzia Terraform i jego zalet:
 
-- Rozpoczynanie pracy przez [Terraform Instalowanie i konfigurowanie go do użycia usługi Azure](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure).
-- [Utwórz maszynę wirtualną platformy Azure przy użyciu Terraform](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-create-complete-vm)
-- Eksploruj [moduł usługi Azure Resource Manager dla Terraform](https://www.terraform.io/docs/providers/azurerm/) 
+- Zacznij od [zainstalowania narzędzia Terraform i skonfigurowania go na potrzeby korzystania z platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-install-configure).
+- [Utwórz maszynę wirtualną platformy Azure przy użyciu narzędzia Terraform](https://docs.microsoft.com/azure/virtual-machines/linux/terraform-create-complete-vm).
+- Zapoznaj się z tematem [Moduł usługi Azure Resource Manager dla narzędzia Terraform](https://www.terraform.io/docs/providers/azurerm/). 

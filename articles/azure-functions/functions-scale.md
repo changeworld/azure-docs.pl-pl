@@ -13,12 +13,12 @@ ms.topic: reference
 ms.date: 08/09/2018
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: b562b10be8add02d0a3c6eb95e8df8eb0711a208
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 7168db80593426977e238fa2b8a5f09638cf0fdf
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093536"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542163"
 ---
 # <a name="azure-functions-scale-and-hosting"></a>Funkcje Azure podlegają skalowaniu i hosting
 
@@ -124,7 +124,7 @@ Jednostka skalowania jest aplikacja funkcji. Gdy aplikacja funkcji jest skalowan
 
 Skalowanie może się różnić od szeregu czynników, a inaczej w zależności od języka wybranego i wyzwalaczy skalowania. Istnieją jednak kilka aspektów skalowanie, które istnieją już dziś w systemie:
 
-* Aplikacja funkcji pojedynczej tylko jest skalowany w górę do maksymalnie 200 wystąpień. Pojedyncze wystąpienie może przetwarzać więcej niż jednego komunikatu lub żądania naraz, więc nie ma ustawiony limit na liczbę współbieżnych wykonań.
+* Aplikacja jednej funkcji tylko dająca możliwość skalowania do maksymalnie 100 wystąpień. Pojedyncze wystąpienie może przetwarzać więcej niż jednego komunikatu lub żądania naraz, więc nie ma ustawiony limit na liczbę współbieżnych wykonań.
 * Nowe wystąpienia tylko zostaną przydzielone co najwyżej raz na 10 sekund.
 
 Różnymi wyzwalaczami mogą także mieć różne, w ograniczonym zakresie, a także udokumentowanego poniżej:

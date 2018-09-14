@@ -13,16 +13,16 @@ ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: lbosq
 ms.custom: mvc
-ms.openlocfilehash: ad38976f439c399d839d6c5ee9dcd6ade7726c71
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: e3ed90d0b706e742588a5a0966d9ac3bda44ecbd
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37081911"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43697446"
 ---
-# <a name="tutorial-query-azure-cosmos-db-graph-api-by-using-gremlin"></a>Samouczek: Wykonywanie zapytań w interfejsie API programu Graph w usłudze Azure Cosmos DB przy użyciu języka Gremlin
+# <a name="tutorial-query-azure-cosmos-db-gremlin-api-by-using-gremlin"></a>Samouczek: wykonywanie zapytań względem interfejsu API języka Gremlin w usłudze Azure Cosmos DB przy użyciu języka Gremlin
 
-[Interfejs API programu Graph](graph-introduction.md) w usłudze Azure Cosmos DB obsługuje zapytania w języku [Gremlin](https://github.com/tinkerpop/gremlin/wiki). W tym artykule udostępniono przykładowe dokumenty i zapytania ułatwiające rozpoczęcie pracy. Szczegółowa dokumentacja dotycząca języka Gremlin została podana w artykule [Obsługa języka Gremlin](gremlin-support.md).
+[Interfejs API języka Gremlin](graph-introduction.md) w usłudze Azure Cosmos DB obsługuje zapytania w języku [Gremlin](https://github.com/tinkerpop/gremlin/wiki). W tym artykule udostępniono przykładowe dokumenty i zapytania ułatwiające rozpoczęcie pracy. Szczegółowa dokumentacja dotycząca języka Gremlin została podana w artykule [Obsługa języka Gremlin](gremlin-support.md).
 
 W tym artykule opisano następujące zadania: 
 

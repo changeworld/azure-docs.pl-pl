@@ -2,28 +2,28 @@
 title: Szybki start — wysyłanie i odbieranie komunikatów do i z usługi Azure Service Bus | Microsoft Docs
 description: Z tego przewodnika Szybki start dowiesz się, jak wysyłać i odbierać komunikaty usługi Service Bus przy użyciu programu PowerShell oraz klienta platformy .NET Standard
 services: service-bus-messaging
-author: sethmanheim
+author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.devlang: dotnet
 ms.topic: quickstart
 ms.custom: mvc
 ms.date: 05/22/2018
-ms.author: sethm
-ms.openlocfilehash: b22bf2acc83f46eda1aa74981377e66261d13394
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: spelluru
+ms.openlocfilehash: 5652069e7a81f54936a41ddb563b49fe6131e7e0
+ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34660625"
+ms.lasthandoff: 09/05/2018
+ms.locfileid: "43696840"
 ---
 # <a name="quickstart-send-and-receive-messages-using-azure-powershell-and-net"></a>Szybki start: wysyłanie i odbieranie komunikatów przy użyciu programu Azure PowerShell oraz platformy .NET
 
-Microsoft Azure Service Bus jest brokerem komunikatów integracji przedsiębiorstwa, który zapewnia bezpieczne przesyłanie komunikatów oraz całkowitą niezawodność. Typowy scenariusz usługi Service Bus zwykle wiąże się z rozdzieleniem od siebie co najmniej dwóch aplikacji, usług lub procesów oraz przesłaniem zmian stanu lub danych. Takie scenariusze mogą obejmować planowanie wielu zadań wsadowych w innej aplikacji lub innych usługach bądź wyzwalanie realizacji zamówienia. Na przykład firma handlowa może wysłać dane z punktu sprzedaży na zaplecze biura lub do regionalnego centrum dystrybucji w celu uzupełnienia zapasów oraz aktualizacji zapasów magazynowych. W tym scenariuszu aplikacja kliencka wysyła i odbiera komunikaty z kolejki usługi Service Bus.
+Microsoft Azure Service Bus jest brokerem komunikatów integracji przedsiębiorstwa, który zapewnia bezpieczne przesyłanie komunikatów oraz całkowitą niezawodność. Typowy scenariusz usługi Service Bus zwykle wiąże się z rozdzieleniem co najmniej dwóch aplikacji, usług lub procesów oraz przesłaniem zmian stanu lub danych. Takie scenariusze mogą obejmować planowanie wielu zadań wsadowych w innej aplikacji lub innych usługach bądź wyzwalanie realizacji zamówienia. Na przykład firma handlowa może wysłać dane z punktu sprzedaży na zaplecze biura lub do regionalnego centrum dystrybucji w celu uzupełnienia zapasów oraz aktualizacji spisu inwentarza. W tym scenariuszu aplikacja kliencka wysyła komunikaty do kolejki usługi Service Bus i je z niej odbiera.
 
 ![kolejka](./media/service-bus-quickstart-powershell/quick-start-queue.png)
 
-W tym przewodniku Szybki start opisano, jak wysyłać i odbierać komunikaty z i do kolejki usługi Service Bus, używając programu PowerShell do utworzenia przestrzeni nazw do przesyłania komunikatów i kolejki w ramach tej przestrzeni nazw oraz uzyskać poświadczenia autoryzacji do tej przestrzeni nazw. Następnie w procedurze przedstawiono, jak wysyłać i odbierać komunikaty z kolejki przy użyciu biblioteki platformy [.NET Standard](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
+W tym przewodniku Szybki start opisano, jak wysyłać i odbierać komunikaty z i do kolejki usługi Service Bus, używając programu PowerShell do utworzenia przestrzeni nazw na potrzeby przesyłania komunikatów i kolejki w ramach tej przestrzeni nazw, a także jak uzyskać poświadczenia autoryzacji do tej przestrzeni nazw. Następnie w procedurze przedstawiono, jak wysyłać i odbierać komunikaty z tej kolejki przy użyciu [biblioteki platformy .NET Standard](https://www.nuget.org/packages/Microsoft.Azure.ServiceBus).
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto][].
 
@@ -34,7 +34,7 @@ Aby ukończyć kroki tego samouczka, upewnij się, że zainstalowano następują
 - [Program Visual Studio 2017 Update 3 (wersja 15.3, 26730.01)](http://www.visualstudio.com/vs) lub nowszy.
 - [Zestaw NET Core SDK](https://www.microsoft.com/net/download/windows), wersja 2.0 lub nowsza.
 
-Ten przewodnik Szybki start wymaga używania najnowszej wersji programu Azure PowerShell. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Install and Configure Azure PowerShell][].
+Ten przewodnik Szybki start wymaga używania najnowszej wersji programu Azure PowerShell. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie i konfigurowanie programu Azure PowerShell][].
 
 ## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
 
@@ -50,7 +50,7 @@ Ten przewodnik Szybki start wymaga używania najnowszej wersji programu Azure Po
    Login-AzureRmAccount
    ```
 
-3. Wydaj następujące polecenia, aby ustawić kontekst bieżącej subskrypcji lub wyświetlić aktualnie aktywną subskrypcję:
+3. Uruchom następujące polecenia, aby ustawić kontekst bieżącej subskrypcji lub wyświetlić aktualnie aktywną subskrypcję:
 
    ```azurepowershell-interactive
    Select-AzureRmSubscription -SubscriptionName "MyAzureSubName" 
@@ -59,7 +59,7 @@ Ten przewodnik Szybki start wymaga używania najnowszej wersji programu Azure Po
 
 ## <a name="provision-resources"></a>Inicjowanie zasobów
 
-W wierszu polecenia programu PowerShell wydaj następujące polecenia w celu zainicjowania zasobów usługi Service Bus. Pamiętaj, aby zastąpić wszystkie elementy zastępcze odpowiednimi wartościami:
+W wierszu polecenia programu PowerShell uruchom następujące polecenia w celu zainicjowania zasobów usługi Service Bus. Pamiętaj, aby zastąpić wszystkie elementy zastępcze odpowiednimi wartościami:
 
 ```azurepowershell-interactive
 # Create a resource group 
@@ -75,11 +75,11 @@ New-AzureRmServiceBusQueue -ResourceGroupName my-resourcegroup -NamespaceName na
 Get-AzureRmServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-name -Name RootManageSharedAccessKey
 ```
 
-Po uruchomieniu `Get-AzureRmServiceBusKey` polecenia cmdlet skopiuj i wklej parametry połączenia oraz nazwę wybranej kolejki do lokalizacji tymczasowej, np. Notatnika. Będą one potrzebne w kolejnym kroku.
+Po uruchomieniu polecenia cmdlet `Get-AzureRmServiceBusKey` skopiuj i wklej parametry połączenia oraz nazwę wybranej kolejki do lokalizacji tymczasowej, np. Notatnika. Będą one potrzebne w kolejnym kroku.
 
 ## <a name="send-and-receive-messages"></a>Wysyłanie i odbieranie komunikatów
 
-Po utworzeniu przestrzeni nazw i kolejki (i jeśli masz niezbędne poświadczenia) można już wysyłać i odbierać komunikaty. Kod można przeanalizować w [folderze przykładów usługi GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart).
+Po utworzeniu przestrzeni nazw i kolejki (i jeśli masz niezbędne poświadczenia) możesz wysyłać i odbierać komunikaty. Kod można zbadać w [tym folderze przykładów usługi GitHub](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveQuickStart).
 
 Aby uruchomić kod, wykonaj następujące czynności:
 
@@ -91,7 +91,7 @@ Aby uruchomić kod, wykonaj następujące czynności:
 
 3. Przejdź do folderu przykładów `azure-service-bus\samples\DotNet\GettingStarted\BasicSendReceiveQuickStart\BasicSendReceiveQuickStart`.
 
-4. Jeśli ta czynność nie została jeszcze wykonana, uzyskaj parametry połączenia przy użyciu następującego polecenia cmdlet programu PowerShell. Pamiętaj, aby zastąpić `my-resourcegroup` i `namespace-name` określonymi wartościami: 
+4. Jeśli ta czynność nie została jeszcze wykonana, uzyskaj parametry połączenia przy użyciu następującego polecenia cmdlet programu PowerShell. Pamiętaj, aby zastąpić `my-resourcegroup` i `namespace-name` konkretnymi wartościami: 
 
    ```azurepowershell-interactive
    Get-AzureRmServiceBusKey -ResourceGroupName my-resourcegroup -Namespace namespace-name -Name RootManageSharedAccessKey
@@ -125,11 +125,11 @@ Remove-AzureRmResourceGroup -Name my-resourcegroup
 
 ## <a name="understand-the-sample-code"></a>Omówienie przykładowego kodu
 
-Ta sekcja zawiera więcej szczegółów na temat możliwości wykorzystania przykładowego kodu. 
+Ta sekcja zawiera więcej szczegółów na temat operacji wykonywanych przez przykładowy kod. 
 
-### <a name="get-connection-string-and-queue"></a>Pobieranie parametrów połączenia i kolejki
+### <a name="get-connection-string-and-queue"></a>Pobieranie kolejki i parametrów połączenia
 
-Parametry połączenia i nazwa kolejki są przekazywane do metody `Main()` jako argumenty wiersza polecenia. `Main()` deklaruje dwie zmienne parametrów do przechowywania tych wartości:
+Parametry połączenia i nazwa kolejki są przekazywane do metody `Main()` jako argumenty wiersza polecenia. Element `Main()` deklaruje dwie zmienne ciągu do przechowywania tych wartości:
 
 ```csharp
 static void Main(string[] args)
@@ -162,11 +162,11 @@ static void Main(string[] args)
 }
 ```
  
-Metoda `Main()` rozpoczyna następnie asynchroniczną pętlę komunikatów, `MainAsync()`.
+Metoda `Main()` następnie rozpoczyna asynchroniczną pętlę komunikatów, `MainAsync()`.
 
 ### <a name="message-loop"></a>Pętla komunikatów
 
-Metoda MainAsync() tworzy klienta kolejki z argumentami wiersza polecenia, wywołuje odbierające narzędzie obsługi komunikatów o nazwie `RegisterOnMessageHandlerAndReceiveMessages()` i wysyła zestaw komunikatów:
+Metoda MainAsync() tworzy klienta kolejki z argumentami wiersza polecenia, wywołuje procedurę obsługi komunikatów o nazwie `RegisterOnMessageHandlerAndReceiveMessages()` i wysyła zestaw komunikatów:
 
 ```csharp
 static async Task MainAsync(string ServiceBusConnectionString, string QueueName)
@@ -190,7 +190,7 @@ static async Task MainAsync(string ServiceBusConnectionString, string QueueName)
 }
 ```
 
-Metoda `RegisterOnMessageHandlerAndReceiveMessages()` po prostu ustawia kilka opcji obsługi komunikatów, a następnie wywołuje metodę `RegisterMessageHandler()` klienta kolejki, która rozpoczyna odbieranie:
+Metoda `RegisterOnMessageHandlerAndReceiveMessages()` po prostu ustawia kilka opcji procedury obsługi komunikatów, a następnie wywołuje metodę `RegisterMessageHandler()` klienta kolejki, która rozpoczyna odbieranie:
 
 ```csharp
 static void RegisterOnMessageHandlerAndReceiveMessages()
@@ -258,10 +258,10 @@ static async Task ProcessMessagesAsync(Message message, CancellationToken token)
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym artykule utworzono przestrzeń nazw usługi Service Bus oraz inne zasoby wymagane do wysyłania i odbierania komunikatów z kolejki. Aby dowiedzieć się więcej na temat pisania kodu do wysyłania i odbierania komunikatów, kontynuuj pracę z następującym samouczkiem dotyczącym usługi Service Bus:
+W tym artykule utworzono przestrzeń nazw usługi Service Bus oraz inne zasoby wymagane do wysyłania i odbierania komunikatów z kolejki. Aby dowiedzieć się więcej na temat pisania kodu w celu wysyłania i odbierania komunikatów, kontynuuj pracę z następującym samouczkiem dotyczącym usługi Service Bus:
 
 > [!div class="nextstepaction"]
-> [Update inventory using Azure PowerShell](./service-bus-tutorial-topics-subscriptions-powershell.md) (Aktualizowanie magazynu przy użyciu programu Azure PowerShell)
+> [Update inventory using Azure PowerShell (Aktualizowanie magazynu przy użyciu programu Azure PowerShell)](./service-bus-tutorial-topics-subscriptions-powershell.md)
 
 [bezpłatne konto]: https://azure.microsoft.com/free/?ref=microsoft.com&utm_source=microsoft.com&utm_medium=docs&utm_campaign=visualstudio
-[Install and Configure Azure PowerShell]: /powershell/azure/install-azurerm-ps (Instalowanie i konfigurowanie programu Azure PowerShell)
+[Instalowanie i konfigurowanie programu Azure PowerShell]: /powershell/azure/install-azurerm-ps

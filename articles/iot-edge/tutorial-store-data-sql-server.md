@@ -5,16 +5,16 @@ services: iot-edge
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 08/22/2018
+ms.date: 08/30/2018
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: 7e02caf9706a5127d3729256fcc238f467eb2991
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 2b393a5b60ba534fba8115ab3ef0f35a26ad3ed4
+ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143504"
+ms.lasthandoff: 08/30/2018
+ms.locfileid: "43300357"
 ---
 # <a name="tutorial-store-data-at-the-edge-with-sql-server-databases"></a>Samouczek: przechowywanie danych na brzegu sieci przy użyciu baz danych programu SQL Server
 
@@ -176,7 +176,11 @@ W następujących krokach przedstawiono sposób tworzenia funkcji usługi IoT Ed
 
 1. W eksploratorze programu Visual Studio Code otwórz plik **deployment.template.json**. 
 2. Znajdź sekcję **moduleContent.$edgeAgent.properties.desired.modules**. Powinny być w niej wyświetlane dwa moduły: moduł **tempSensor**, który generuje symulowane dane, i moduł **sqlFunction**.
-3. Dodaj następujący kod, aby zadeklarować trzeci moduł:
+3. Jeśli używasz kontenerów systemu Windows, zmodyfikuj sekcję **sqlFunction.settings.image**.
+    ```json
+    "image": "${MODULES.sqlFunction.windows-amd64}"
+    ```
+4. Dodaj następujący kod, aby zadeklarować trzeci moduł. Dodaj przecinek po sekcji sqlFunction i wstaw:
 
    ```json
    "sql": {
@@ -191,16 +195,18 @@ W następujących krokach przedstawiono sposób tworzenia funkcji usługi IoT Ed
    }
    ```
 
-4. W zależności od systemu operacyjnego urządzenia usługi IoT Edge zaktualizuj parametry **sql.settings** przy użyciu następującego kodu:
+   Oto przykład w przypadku jakichkolwiek problemów z dodawaniem elementu JSON. ![Dodawanie kontenera programu SQL Server](./media/tutorial-store-data-sql-server/view_json_sql.png)
 
-   * W systemie Windows:
+5. W zależności od typu kontenerów platformy Docker na urządzeniu usługi IoT Edge zaktualizuj parametry **sql.settings** przy użyciu następującego kodu:
+
+   * Kontenery systemu Windows:
 
       ```json
       "image": "microsoft/mssql-server-windows-developer",
-      "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"MSSQL_SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"C:\\\\mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}}"
+      "createOptions": "{\"Env\": [\"ACCEPT_EULA=Y\",\"SA_PASSWORD=Strong!Passw0rd\"],\"HostConfig\": {\"Mounts\": [{\"Target\": \"C:\\\\mssql\",\"Source\": \"sqlVolume\",\"Type\": \"volume\"}],\"PortBindings\": {\"1433/tcp\": [{\"HostPort\": \"1401\"}]}}}"
       ```
 
-   * W systemie Linux:
+   * Kontenery systemu Linux:
 
       ```json
       "image": "microsoft/mssql-server-linux:2017-latest",
@@ -210,28 +216,20 @@ W następujących krokach przedstawiono sposób tworzenia funkcji usługi IoT Ed
    >[!Tip]
    >Za każdym razem, gdy tworzysz kontener programu SQL Server w środowisku produkcyjnym, zaleca się [zmienić domyślne hasło administratora systemu](https://docs.microsoft.com/sql/linux/quickstart-install-connect-docker#change-the-sa-password).
 
-5. Zapisz plik **deployment.template.json**. 
+6. Zapisz plik **deployment.template.json**.
 
 ## <a name="build-your-iot-edge-solution"></a>Kompilowanie rozwiązania usługi IoT Edge
 
 W poprzednich sekcjach utworzono rozwiązanie z jednym modułem, a następnie dodano drugi do szablonu manifestu wdrożenia. Teraz musisz skompilować rozwiązanie, utworzyć obrazy kontenerów dla modułów i wypchnąć obrazy do rejestru kontenerów. 
 
-1. W pliku deployment.template.json podaj środowisku uruchomieniowemu usługi IoT Edge swoje poświadczenia rejestru, aby mogło uzyskać dostęp do obrazów modułów. Znajdź sekcję **moduleContent.$edgeAgent.properties.desired.runtime.settings**. 
-2. Wstaw następujący kod JSON po elemencie **loggingOptions**:
+1. W pliku env podaj środowisku uruchomieniowemu usługi IoT Edge swoje poświadczenia rejestru, aby mogło uzyskać dostęp do obrazów modułów. Znajdź sekcje **CONTAINER_REGISTRY_USERNAME** oraz **CONTAINER_REGISTRY_PASSWORD** i wstaw swoje poświadczenia po znaku równości: 
 
-   ```JSON
-   "registryCredentials": {
-       "myRegistry": {
-           "username": "",
-           "password": "",
-           "address": ""
-       }
-   }
+   ```env
+   CONTAINER_REGISTRY_USERNAME_yourContainerReg=<username>
+   CONTAINER_REGISTRY_PASSWORD_yourContainerReg=<password>
    ```
-
-3. Wstaw poświadczenia rejestru do pól **username**, **password** i **address**. Użyj wartości skopiowanych podczas tworzenia usługi Azure Container Registry na początku tego samouczka.
-4. Zapisz plik **deployment.template.json**.
-5. Zaloguj się do rejestru kontenerów w programie Visual Studio Code, aby mógł on wypchnąć obrazy do rejestru. Użyj tych samych poświadczeń, które dodano do manifestu wdrożenia. W zintegrowanym terminalu wprowadź następujące polecenie: 
+2. Zapisz plik env.
+3. Zaloguj się do rejestru kontenerów w programie Visual Studio Code, aby mógł on wypchnąć obrazy do rejestru. Użyj tych samych poświadczeń, które zostały dodane do pliku env. W zintegrowanym terminalu wprowadź następujące polecenie:
 
     ```csh/sh
     docker login -u <ACR username> <ACR login server>
@@ -243,7 +241,7 @@ W poprzednich sekcjach utworzono rozwiązanie z jednym modułem, a następnie do
     Login Succeeded
     ```
 
-6. W eksploratorze programu VS Code kliknij prawym przyciskiem myszy plik **deployment.template.json** i wybierz polecenie **Skompiluj rozwiązanie usługi IoT Edge**. 
+4. W eksploratorze programu VS Code kliknij prawym przyciskiem myszy plik **deployment.template.json** i wybierz polecenie **Skompiluj i wypchnij rozwiązanie usługi IoT Edge**. 
 
 ## <a name="deploy-the-solution-to-a-device"></a>Wdrażanie rozwiązania na urządzeniu
 
@@ -287,7 +285,7 @@ Ta sekcja zawiera opis konfigurowania bazy danych SQL do przechowywania danych d
    * Kontener systemu Windows:
 
       ```cmd
-      sqlcmd -S localhost -U SA -P 'Strong!Passw0rd'
+      sqlcmd -S localhost -U SA -P "Strong!Passw0rd"
       ```
 
    * Kontener systemu Linux: 

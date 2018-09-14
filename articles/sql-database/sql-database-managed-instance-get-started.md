@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: quickstart
-ms.date: 08/13/2018
+ms.date: 08/31/2018
 ms.author: jovanpop-msft
-ms.openlocfilehash: cb378c2d2773096992ef688653fd77b2625f8754
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 4271f0cef31b0e028ed1f9408166c37d4cbbe109
+ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42022690"
+ms.lasthandoff: 09/01/2018
+ms.locfileid: "43382002"
 ---
 # <a name="create-an-azure-sql-managed-instance"></a>Tworzenie wystąpienia zarządzanego Azure SQL
 
@@ -60,7 +60,7 @@ Poniższe kroki pokazują, jak utworzyć wystąpienie zarządzane po zatwierdzen
 2. Zlokalizuj **Wystąpienie zarządzane**, a następnie wybierz pozycję **Wystąpienie zarządzane usługi Azure SQL Database (wersja zapoznawcza)**.
 3. Kliknij pozycję **Utwórz**.
 
-   ![Tworzenie wystąpienia zarządzanego](./media/sql-database-managed-instance-tutorial/managed-instance-create.png)
+   ![Tworzenie wystąpienia zarządzanego](./media/sql-database-managed-instance-get-started/managed-instance-create.png)
 
 4. Wybierz subskrypcję i upewnij się, że warunki dotyczące wersji zapoznawczej są oznaczone jako **Zaakceptowane**.
 
@@ -77,26 +77,21 @@ Poniższe kroki pokazują, jak utworzyć wystąpienie zarządzane po zatwierdzen
    |**Lokalizacja**|Lokalizacja, która została wybrana wcześniej|Aby uzyskać informacje na temat regionów, zobacz temat [Regiony platformy Azure](https://azure.microsoft.com/regions/).|
    |**Sieć wirtualna**|Sieć wirtualna, która została utworzona wcześniej| Jeśli nie zmieniono nazw w poprzednim kroku, wybierz element **MyNewVNet/ManagedInstances**. W przeciwnym razie wybierz nazwę sieci wirtualnej i nazwę podsieci z wystąpieniem zarządzanym, które zostały wprowadzone w poprzedniej sekcji. **Nie używaj domyślnej podsieci, ponieważ nie została ona skonfigurowana pod kątem hostowania wystąpień zarządzanych**. |
 
-   ![formularz tworzenia wystąpienia zarządzanego](./media/sql-database-managed-instance-tutorial/managed-instance-create-form.png)
+   ![formularz tworzenia wystąpienia zarządzanego](./media/sql-database-managed-instance-get-started/managed-instance-create-form.png)
 
 6. Kliknij pozycję **Warstwa cenowa**, aby ustalić rozmiar zasobów obliczeniowych i magazynu, a także sprawdzić opcje warstw cenowych. Domyślnie wystąpienie zyskuje bezpłatnie 32 GB miejsca do magazynowania, **co może nie być wystarczające dla Twoich aplikacji**.
 7. Użyj suwaków lub pól tekstowych, aby określić ilość pamięci i liczbę rdzeni wirtualnych. 
-   ![wystąpienie zarządzane warstwy cenowej](./media/sql-database-managed-instance-tutorial/managed-instance-pricing-tier.png)
+   ![wystąpienie zarządzane warstwy cenowej](./media/sql-database-managed-instance-get-started/managed-instance-pricing-tier.png)
 
 8. Po zakończeniu kliknij pozycję **Zastosuj**, aby zapisać wybór.  
 9. Kliknij pozycję **Utwórz**, aby wdrożyć wystąpienie zarządzane.
 10. Kliknij ikonę **Powiadomienia**, aby wyświetlić stan wdrożenia.
- 
-   ![postęp wdrażania](./media/sql-database-managed-instance-tutorial/deployment-progress.png)
-
 11. Kliknij pozycję **Wdrażanie jest w toku**, aby otworzyć okno wystąpienia zarządzanego i dokładniej monitorować postęp wdrażania.
- 
-   ![postęp wdrażania 2](./media/sql-database-managed-instance-tutorial/managed-instance.png)
 
 Podczas wdrażania możesz przejść do następnej procedury.
 
 > [!IMPORTANT]
-> W przypadku pierwszego wystąpienia w podsieci czas wdrożenia jest zazwyczaj znacznie dłuższy niż w przypadku kolejnych wystąpień — czasami zakończenie procesu zajmuje ponad 24 godziny. Nie anuluj operacji wdrażania, ponieważ proces trwa dłużej niż oczekiwano. Ten długi czas wdrożenia pierwszego wystąpienia jest sytuacją tymczasową. Wkrótce po rozpoczęciu publicznej wersji zapoznawczej należy oczekiwać znacznej redukcji czasu wdrożenia. Utworzenie drugiego wystąpienia zarządzanego w podsieci potrwa kilka minut.
+> W przypadku pierwszego wystąpienia w podsieci czas wdrożenia jest zazwyczaj znacznie dłuższy niż w przypadku kolejnych wystąpień. Nie anuluj operacji wdrażania, ponieważ proces trwa dłużej niż oczekiwano. Utworzenie drugiego wystąpienia zarządzanego w podsieci potrwa kilka minut.
 
 ## <a name="prepare-client-machine"></a>Przygotowywanie maszyny klienta
 

@@ -3,7 +3,7 @@ title: Dowiedz się więcej o najnowszej wersji systemu operacyjnego gościa pla
 description: Najnowsze informacje o wersji i zgodność zestawu SDK dla systemu operacyjnego gościa usługi w chmurze platformy Azure.
 services: cloud-services
 documentationcenter: na
-author: raiye
+author: RichardScheel
 manager: timlt
 editor: ''
 ms.assetid: 6306cafe-1153-44c7-8554-623b03d59a34
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 8/3/2018
-ms.author: raiye
-ms.openlocfilehash: 2ee31e0a2d563ddf2aa63498b4ca280e4da26754
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.date: 9/12/2018
+ms.author: RichardScheel
+ms.openlocfilehash: 8d49742e90e09a8836309db165b07074645df00a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524862"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576174"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Wersje systemów operacyjnych gościa platformy Azure i zgodności zestawów SDK
 Zapewnia zwalnia z aktualne informacje o najnowszych systemu operacyjnego gościa platformy Azure dla usług w chmurze. Te informacje pomagają planowanie ścieżki uaktualnienia przed wyłączeniem systemie operacyjnym gościa. Jeśli konfigurujesz role do użycia *automatyczne* aktualizacji systemu operacyjnego gościa, zgodnie z opisem w [ustawienia aktualizacji systemu operacyjnego gościa Azure][Azure Guest OS Update Settings], nie jest istotne, przeczytanie na tej stronie.
@@ -36,13 +36,16 @@ Zapewnia zwalnia z aktualne informacje o najnowszych systemu operacyjnego gości
 >
 
 > [!IMPORTANT]
-> Począwszy od w miarę wprowadzania aktualizacji z listopada, tylko najnowsze 2 wersje systemu operacyjnego gościa będzie obsługiwana i dostępna w witrynie Azure portal.
+> Tylko najnowsze 2 wersje systemu operacyjnego gościa będzie obsługiwana i dostępna w witrynie Azure portal.
 >
 >
 
 Nie wiesz o tym, jak zaktualizować system operacyjny gościa? Sprawdź [to] [ cloud updates] się.
 
 ## <a name="news-updates"></a>Aktualizacje wiadomości
+
+###### <a name="september-12-2018"></a>**12 września 2018 r.**
+System operacyjny gościa sierpnia został wydany.
 
 ###### <a name="august-3-2018"></a>**3 sierpnia 2018 r.**
 System operacyjny gościa lipca został wydany.
@@ -86,23 +89,22 @@ System operacyjny gościa października został wydany.
 Zainstalowany program .NET framework: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 
 > [!NOTE]
-> Daty z * są może ulec zmianie.
->
 > Hasła protokołu RDP dla 5 rodziny systemów operacyjnych, musi być co najmniej 10 znaków.
 >
 
-| Ciąg konfiguracji | Data wydania | Wyłącz daty | Datą wygaśnięcia |
-| --- | --- | --- | --- |
-| WA-GOŚCIA-OS-5.21_201807-02 |3 sierpnia 2018 r. |Wpis 5.23 |TBD |
-| WA-GOŚCIA-OS-5.20_201806-01 |3 lipca 2018 r. |Wpis 5.22 |TBD |
-|~~WA-GOŚCIA-OS-5.19_201805-01~~ |1 czerwca 2018 r. |3 sierpnia 2018 r. |TBD |
-|~~WA-GOŚCIA-OS-5.18_201804-01~~ |4 maja 2018 r. |3 lipca 2018 r. |TBD |
-|~~WA-GOŚCIA-OS-5.17_201803-01~~ |6 kwietnia 2018 r. |1 czerwca 2018 r.|TBD |
-|~~WA-GOŚCIA-OS-5.16_201802-01~~ |12 marca 2018 r. |4 maja 2018 r. |TBD |
-|~~WA-GUEST-OS-5.15_201801-01~~ |4 stycznia 2018 r. |6 kwietnia 2018 r. |TBD |
-|~~WA-GUEST-OS-5.14_201712-01~~ |4 stycznia 2018 r. |12 marca 2018 r. |TBD |
-|~~WA-GUEST-OS-5.13_201711-01~~ |14 grudnia 2017 r. |4 stycznia 2018 r.|TBD |
-|~~WA-GUEST-OS-5.12_201710-02~~ |8 listopada 2017 r. |4 stycznia 2018 r. |TBD |
+| Ciąg konfiguracji | Data wydania | Wyłącz daty |
+| --- | --- | --- |
+| WA-GOŚCIA-OS-5.22_201808-01 |12 września 2018 r. |Wpis 5,24 |
+| WA-GOŚCIA-OS-5.21_201807-02 |3 sierpnia 2018 r. |Wpis 5.23 |
+|~~WA-GOŚCIA-OS-5.20_201806-01~~ |3 lipca 2018 r. |12 września 2018 r. |
+|~~WA-GOŚCIA-OS-5.19_201805-01~~ |1 czerwca 2018 r. |3 sierpnia 2018 r. |
+|~~WA-GOŚCIA-OS-5.18_201804-01~~ |4 maja 2018 r. |3 lipca 2018 r. |
+|~~WA-GOŚCIA-OS-5.17_201803-01~~ |6 kwietnia 2018 r. |1 czerwca 2018 r.|
+|~~WA-GOŚCIA-OS-5.16_201802-01~~ |12 marca 2018 r. |4 maja 2018 r. |
+|~~WA-GUEST-OS-5.15_201801-01~~ |4 stycznia 2018 r. |6 kwietnia 2018 r. |
+|~~WA-GUEST-OS-5.14_201712-01~~ |4 stycznia 2018 r. |12 marca 2018 r. |
+|~~WA-GUEST-OS-5.13_201711-01~~ |14 grudnia 2017 r. |4 stycznia 2018 r.|
+|~~WA-GUEST-OS-5.12_201710-02~~ |8 listopada 2017 r. |4 stycznia 2018 r. |
 
 
 ## <a name="family-4-releases"></a>Zwalnia rodziny w wersji 4
@@ -110,23 +112,19 @@ Zainstalowany program .NET framework: 4.0, 4.5, 4.5.1, 4.5.2, 4.6, 4.6.1, 4.6.2
 
 Zainstalowany program .NET framework: 4.0 4.5, 4.5.1, 4.5.2
 
-> [!NOTE]
-> Daty z * są może ulec zmianie
->
->
-
-| Ciąg konfiguracji | Data wydania | Wyłącz daty | Datą wygaśnięcia |
-| --- | --- | --- | --- |
-| WA-GOŚCIA-OS-4.56_201807-02 |3 sierpnia 2018 r. |Wpis 4.58 |TBD |
-| WA-GOŚCIA-OS-4.55_201806-01 |3 lipca 2018 r. |Wpis 4.57 |TBD |
-|~~WA-GOŚCIA-OS-4.54_201805-01~~ |1 czerwca 2018 r. |3 sierpnia 2018 r. |TBD |
-|~~WA-GOŚCIA-OS-4.53_201804-01~~ |4 maja 2018 r. |3 lipca 2018 r. |TBD |
-|~~WA-GOŚCIA-OS-4.52_201803-01~~ |6 kwietnia 2018 r. |1 czerwca 2018 r. |TBD |
-|~~WA-GOŚCIA-OS-4.51_201802-01~~ |12 marca 2018 r. |4 maja 2018 r. |TBD |
-|~~WA-GUEST-OS-4.50_201801-01~~ |4 stycznia 2018 r. |6 kwietnia 2018 r. |TBD |
-|~~WA-GUEST-OS-4.49_201712-01~~ |4 stycznia 2018 r. |12 marca 2018 r. |TBD |
-|~~WA-GUEST-OS-4.48_201711-01~~ |14 grudnia 2017 r. |4 stycznia 2018 r. |TBD |
-|~~WA-GUEST-OS-4.47_201710-02~~ |8 listopada 2017 r. |4 stycznia 2018 r. |TBD |
+| Ciąg konfiguracji | Data wydania | Wyłącz daty |
+| --- | --- | --- |
+| WA-GOŚCIA-OS-4.57_201808-01 |12 września 2018 r. |Wpis 4,59 |
+| WA-GOŚCIA-OS-4.56_201807-02 |3 sierpnia 2018 r. |Wpis 4.58 |
+|~~WA-GOŚCIA-OS-4.55_201806-01~~ |3 lipca 2018 r. |12 września 2018 r. |
+|~~WA-GOŚCIA-OS-4.54_201805-01~~ |1 czerwca 2018 r. |3 sierpnia 2018 r. |
+|~~WA-GOŚCIA-OS-4.53_201804-01~~ |4 maja 2018 r. |3 lipca 2018 r. |
+|~~WA-GOŚCIA-OS-4.52_201803-01~~ |6 kwietnia 2018 r. |1 czerwca 2018 r. |
+|~~WA-GOŚCIA-OS-4.51_201802-01~~ |12 marca 2018 r. |4 maja 2018 r. |
+|~~WA-GUEST-OS-4.50_201801-01~~ |4 stycznia 2018 r. |6 kwietnia 2018 r. |
+|~~WA-GUEST-OS-4.49_201712-01~~ |4 stycznia 2018 r. |12 marca 2018 r. |
+|~~WA-GUEST-OS-4.48_201711-01~~ |14 grudnia 2017 r. |4 stycznia 2018 r. |
+|~~WA-GUEST-OS-4.47_201710-02~~ |8 listopada 2017 r. |4 stycznia 2018 r. |
 
 
 ## <a name="family-3-releases"></a>Zwalnia rodziny 3
@@ -134,23 +132,19 @@ Zainstalowany program .NET framework: 4.0 4.5, 4.5.1, 4.5.2
 
 Zainstalowany program .NET framework: 4.0 4.5, 4.5.1, 4.5.2
 
-> [!NOTE]
-> Daty z * są może ulec zmianie
->
->
-
-| Ciąg konfiguracji | Data wydania | Wyłącz daty | Datą wygaśnięcia |
-| --- | --- | --- | --- |
-| WA-GOŚCIA-OS-3.63_201807-02 |3 sierpnia 2018 r. |Wpis 3.65 |TBD |
-| WA-GOŚCIA-OS-3.62_201806-01 |3 lipca 2018 r. |Wpis 3.64 |TBD |
-|~~WA-GOŚCIA-OS-3.61_201805-01~~ |1 czerwca 2018 r. |3 sierpnia 2018 r. |TBD |
-|~~WA-GOŚCIA-OS-3.60_201804-01~~ |4 maja 2018 r. |3 lipca 2018 r. |TBD |
-|~~WA-GOŚCIA-OS-3.59_201803-01~~ |6 kwietnia 2018 r. |1 czerwca 2018 r. |TBD |
-|~~WA-GOŚCIA-OS-3.58_201802-01~~ |19 marca 2018 r. |4 maja 2018 r. |TBD |
-|~~WA-GUEST-OS-3.57_201801-01~~ |29 stycznia 2018 r. |6 kwietnia 2018 r. |TBD |
-|~~WA-GUEST-OS-3.56_201712-01~~ |4 stycznia 2018 r. |19 marca 2018 r. |TBD |
-|~~WA-GUEST-OS-3.55_201711-01~~ |14 grudnia 2017 r. |29 stycznia 2018 r. |TBD |
-|~~WA-GUEST-OS-3.54_201710-02~~ |8 listopada 2017 r. |4 stycznia 2018 r. |TBD |
+| Ciąg konfiguracji | Data wydania | Wyłącz daty |
+| --- | --- | --- |
+| WA-GOŚCIA-OS-3.64_201808-01 |12 września 2018 r. |Wpis 3,66 |
+| WA-GOŚCIA-OS-3.63_201807-02 |3 sierpnia 2018 r. |Wpis 3.65 |
+|~~WA-GOŚCIA-OS-3.62_201806-01~~ |3 lipca 2018 r. |12 września 2018 r. |
+|~~WA-GOŚCIA-OS-3.61_201805-01~~ |1 czerwca 2018 r. |3 sierpnia 2018 r. |
+|~~WA-GOŚCIA-OS-3.60_201804-01~~ |4 maja 2018 r. |3 lipca 2018 r. |
+|~~WA-GOŚCIA-OS-3.59_201803-01~~ |6 kwietnia 2018 r. |1 czerwca 2018 r. |
+|~~WA-GOŚCIA-OS-3.58_201802-01~~ |19 marca 2018 r. |4 maja 2018 r. |
+|~~WA-GUEST-OS-3.57_201801-01~~ |29 stycznia 2018 r. |6 kwietnia 2018 r. |
+|~~WA-GUEST-OS-3.56_201712-01~~ |4 stycznia 2018 r. |19 marca 2018 r. |
+|~~WA-GUEST-OS-3.55_201711-01~~ |14 grudnia 2017 r. |29 stycznia 2018 r. |
+|~~WA-GUEST-OS-3.54_201710-02~~ |8 listopada 2017 r. |4 stycznia 2018 r. |
 
 
 ## <a name="family-2-releases"></a>Zwalnia rodziny 2
@@ -158,25 +152,21 @@ Zainstalowany program .NET framework: 4.0 4.5, 4.5.1, 4.5.2
 
 Zainstalowany program .NET framework: 3.5, 4.0, 4.5, 4.5.1, 4.5.2
 
-> [!NOTE]
-> Daty z * są może ulec zmianie
->
->
-
-| Ciąg konfiguracji | Data wydania | Wyłącz daty | Datą wygaśnięcia |
-| --- | --- | --- | --- |
-| WA-GOŚCIA-OS-2.76_201807-02 |3 sierpnia 2018 r. |Wpis 2.78 |TBD |
-| WA-GOŚCIA-OS-2.75_201806-01 |3 lipca 2018 r. |Wpis 2.77 |TBD |
-|~~WA-GOŚCIA-OS-2.74_201805-01~~ |1 czerwca 2018 r. |3 sierpnia 2018 r.|TBD |
-|~~WA-GOŚCIA-OS-2.73_201804-01~~ |4 maja 2018 r. |3 lipca 2018 r. |TBD |
-|~~WA-GOŚCIA-OS-2.72_201803-01~~ |6 kwietnia 2018 r. |1 czerwca 2018 r. |TBD |
-|~~WA-GOŚCIA-OS-2.71_201802-01~~ |12 marca 2018 r. |4 maja 2018 r. |TBD |
-|~~WA-GUEST-OS-2.70_201801-01~~ |29 stycznia 2018 r. |6 kwietnia 2018 r. |TBD |
-|~~WA-GUEST-OS-2.69_201712-01~~ |4 stycznia 2018 r. |12 marca 2018 r. |TBD |
-|~~WA-GUEST-OS-2.68_201711-01~~ |14 grudnia 2017 r. |29 stycznia 2018 r. |TBD |
-|~~WA-GUEST-OS-2.67_201710-02~~ |8 listopada 2017 r. |4 stycznia 2018 r. |TBD |
-|~~WA-GUEST-OS-2.66_201709-01~~ |6 października 2017 r. |14 grudnia 2017 r. |TBD |
-|~~WA-GUEST-OS-2.65_201708-01~~ |24 sierpnia 2017 r. |14 grudnia 2017 r. |TBD |
+| Ciąg konfiguracji | Data wydania | Wyłącz daty |
+| --- | --- | --- |
+| WA-GOŚCIA-OS-2.77_201808-01 |12 września 2018 r. |Wpis 2.79 |
+| WA-GOŚCIA-OS-2.76_201807-02 |3 sierpnia 2018 r. |Wpis 2.78 |
+|~~WA-GOŚCIA-OS-2.75_201806-01~~ |3 lipca 2018 r. |12 września 2018 r. |
+|~~WA-GOŚCIA-OS-2.74_201805-01~~ |1 czerwca 2018 r. |3 sierpnia 2018 r.|
+|~~WA-GOŚCIA-OS-2.73_201804-01~~ |4 maja 2018 r. |3 lipca 2018 r. |
+|~~WA-GOŚCIA-OS-2.72_201803-01~~ |6 kwietnia 2018 r. |1 czerwca 2018 r. |
+|~~WA-GOŚCIA-OS-2.71_201802-01~~ |12 marca 2018 r. |4 maja 2018 r. |
+|~~WA-GUEST-OS-2.70_201801-01~~ |29 stycznia 2018 r. |6 kwietnia 2018 r. |
+|~~WA-GUEST-OS-2.69_201712-01~~ |4 stycznia 2018 r. |12 marca 2018 r. |
+|~~WA-GUEST-OS-2.68_201711-01~~ |14 grudnia 2017 r. |29 stycznia 2018 r. |
+|~~WA-GUEST-OS-2.67_201710-02~~ |8 listopada 2017 r. |4 stycznia 2018 r. |
+|~~WA-GUEST-OS-2.66_201709-01~~ |6 października 2017 r. |14 grudnia 2017 r. |
+|~~WA-GUEST-OS-2.65_201708-01~~ |24 sierpnia 2017 r. |14 grudnia 2017 r. |
 
 
 ## <a name="msrc-patch-updates"></a>Centrum MSRC poprawek i aktualizacji
@@ -221,7 +211,7 @@ W poniższym przykładzie 2 to rodzina, 12, jest to wersja i "rel2" jest to wers
 Ciąg konfiguracji dla systemu operacyjnego gościa ma to te same informacje osadzone w nim, oraz Data pokazywanie poprawek MSRC, które zostały rozważone w tej wersji. W tym przykładzie MSRC poprawki wygenerowane dla systemu Windows Server 2008 R2 do i łącznie — sierpień 2012 zostały uwzględnione w. Uwzględniane są tylko poprawki specjalnie mające zastosowanie do tej wersji systemu Windows Server. Na przykład jeśli poprawka MSRC odnosi się do programu Microsoft Office, nie będzie uwzględniony, ponieważ ten produkt nie jest częścią obrazu podstawowego systemu Windows Server.
 
 ## <a name="guest-os-system-update-process"></a>Proces aktualizacji systemu systemu operacyjnego gościa
-Ta strona zawiera informacje na temat przyszłych wersji systemu operacyjnego gościa. Klienci wskazali, że chce wiedzieć, gdy wystąpi wydania, ponieważ ich ról usługi w chmurze zostanie ponownie uruchomiony, jeśli są one ustawione na "Automatyczny" Aktualizacja. Wersje systemu operacyjnego gościa występują zwykle co najmniej pięć (5) dni po MSRC aktualizacji wersji, która występuje w drugi wtorek każdego miesiąca. Nowe wersje zawierają wszystkie odpowiednie poprawki MSRC dla każdej rodziny systemów operacyjnych gościa.
+Ta strona zawiera informacje na temat przyszłych wersji systemu operacyjnego gościa. Klienci wskazali, że chce wiedzieć, gdy wystąpi wydania, ponieważ ich ról usługi w chmurze zostanie ponownie uruchomiony, jeśli są one ustawione na "Automatyczny" Aktualizacja. Wersje systemu operacyjnego gościa występują zwykle 2 – 3 tygodnie po MSRC aktualizacji wersji, która występuje w drugi wtorek każdego miesiąca. Nowe wersje zawierają wszystkie odpowiednie poprawki MSRC dla każdej rodziny systemów operacyjnych gościa.
 
 Microsoft Azure stale udostępnia aktualizacje. System operacyjny gościa jest tylko jeden taki aktualizacji w potoku. Wydanie mogą mieć wpływ wiele czynników za duża, aby wyświetlić listę w tym miejscu. Ponadto platforma Azure działa w dosłownie setki tysięcy maszyn. Oznacza to, że jest wręcz niemożliwe dokładnej daty i godziny, kiedy nastąpi ponowne uruchomienie komputera usługi ról. Pracujemy nad planem do ograniczenia lub czas ponownego uruchamiania.
 

@@ -6,7 +6,7 @@
 ## [Porównanie usług Data Lake Storage. 1 generacji i Azure Storage](data-lake-store-comparison-with-blob-storage.md)
 ## [Usługa Data Lake Storage 1. generacji do przetwarzania danych big data](data-lake-store-data-scenarios.md)
 ## [Aplikacje typu „open source” współdziałające z usługą Data Lake Storage 1. generacji](data-lake-store-compatible-oss-other-applications.md)
-## [Najlepsze rozwiązania dotyczące korzystania z usługi Data Lake Storage 1. generacji](data-lake-store-best-practices.md)
+## [Najlepsze praktyki](data-lake-store-best-practices.md)
 
 # Rozpoczęcie pracy
 ## [Korzystanie z portalu](data-lake-store-get-started-portal.md)
@@ -26,8 +26,8 @@
 
 ## Zabezpieczanie danych
 ### [Omówienie zabezpieczeń](data-lake-store-security-overview.md)
-### [Kontrola dostępu w usłudze Data Lake Storage 1. generacji](data-lake-store-access-control.md)
-### [Zabezpieczanie danych w usłudze Data Lake Storage 1. generacji](data-lake-store-secure-data.md)
+### [Kontrola dostępu](data-lake-store-access-control.md)
+### [Zabezpieczanie przechowywanych danych](data-lake-store-secure-data.md)
 ### [Szyfrowanie](data-lake-store-encryption.md)
 
 ## Uwierzytelnianie za pomocą usługi Data Lake Storage 1. generacji
@@ -55,12 +55,12 @@
 #### [Korzystanie z języka Python](data-lake-store-data-operations-python.md)
 
 ## Wydajność
-### [Wskazówki dotyczące dostrajania wydajności usługi Azure Data Lake Storage 1. generacji](data-lake-store-performance-tuning-guidance.md)
-### [Wskazówki dotyczące dostrajania wydajności w przypadku używania programu PowerShell z usługą Data Lake Storage 1. generacji](data-lake-store-performance-tuning-powershell.md)
-### [Wskazówki dotyczące dostrajania wydajności oprogramowania Spark w usługach HDInsight i Data Lake Storage 1. generacji](data-lake-store-performance-tuning-spark.md)
-### [Wskazówki dotyczące dostrajania wydajności oprogramowania Hive w usługach HDInsight i Data Lake Storage 1. generacji](data-lake-store-performance-tuning-hive.md)
-### [Wskazówki dotyczące dostrajania wydajności oprogramowania MapReduce w usługach HDInsight i Data Lake Storage 1. generacji](data-lake-store-performance-tuning-mapreduce.md)
-### [Wskazówki dotyczące dostrajania wydajności oprogramowania Storm w usługach HDInsight i Data Lake Storage 1. generacji](data-lake-store-performance-tuning-storm.md)
+### [Omówienie](data-lake-store-performance-tuning-guidance.md)
+### [Korzystanie z programu Azure PowerShell](data-lake-store-performance-tuning-powershell.md)
+### [Korzystanie z platformy Spark w usłudze HDInsight](data-lake-store-performance-tuning-spark.md)
+### [Korzystanie z platformy Hive w usłudze HDInsight](data-lake-store-performance-tuning-hive.md)
+### [Korzystanie w usłudze HDInsight](data-lake-store-performance-tuning-mapreduce.md)
+### [Korzystanie z platformy Storm w usłudze HDInsight](data-lake-store-performance-tuning-storm.md)
 
 ## Integracja z usługami Azure Services
 ### Za pomocą usługi HDInsight
