@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 09/12/2018
+ms.date: 09/13/2018
 ms.author: brenduns
 ms.reviewer: jeffgo
-ms.openlocfilehash: ddb1fcd91ff0c0018bcab9988a5ab063b882cf36
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
-ms.translationtype: HT
+ms.openlocfilehash: e396fc82754188ea655c70b44d4bf937a3c3163c
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714671"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544215"
 ---
 # <a name="download-marketplace-items-from-azure-to-azure-stack"></a>Pobieranie elementów portalu marketplace z platformy Azure do usługi Azure Stack
 
@@ -148,9 +148,9 @@ Istnieją dwie części do tego scenariusza:
 ### <a name="import-the-download-and-publish-to-azure-stack-marketplace"></a>Importowanie, pobieranie i publikowanie do usługi Azure Stack w portalu Marketplace
 1. Pliki obrazów maszyn wirtualnych lub szablonów rozwiązań, które masz [wcześniej pobrano](#use-the-marketplace-syndication-tool-to-download-marketplace-items) muszą być dostępne lokalnie do środowiska usługi Azure Stack.  
 
-2. Korzystać z portalu administratora, aby przekazać pakiet elementu portalu marketplace (plik .azpkg) do magazynu obiektów Blob platformy Azure Stack. Przekazywanie pakietu udostępnia je zadaniom usługi Azure Stack Aby później można opublikować elementu portalu Marketplace usługi Azure Stack.
+2. Przekazywanie pakietu elementu portalu marketplace (plik .azpkg) oraz obraz wirtualnego dysku twardego (plik VHD) do magazynu obiektów Blob platformy Azure Stack, należy korzystać z portalu administratora. Przekazywanie pakietu i pliki dysku udostępnia je do usługi Azure Stack, aby później można opublikować elementu portalu Marketplace usługi Azure Stack.
 
-   Przekazywanie wymaga posiadania konta magazynu przy użyciu publicznie kontenera (patrz wymagania wstępne dotyczące tego scenariusza)   
+   Przekazywanie wymaga posiadania konta magazynu przy użyciu publicznie kontenera (patrz wymagania wstępne dotyczące tego scenariusza).  
    1. W portalu administracyjnym usługi Azure Stack, przejdź do **wszystkich usług** a następnie w obszarze **dane + magazyn** kategorii, wybierz opcję **kont magazynu**.  
    
    2. Wybierz konto magazynu z subskrypcji, a następnie w obszarze **usługę BLOB SERVICE**, wybierz opcję **kontenery**.  
@@ -159,7 +159,7 @@ Istnieją dwie części do tego scenariusza:
    3. Wybierz kontener, o których chcesz użyć, a następnie wybierz pozycję **przekazywanie** otworzyć **przekazywanie obiektu blob** okienka.  
       ![Kontener](media/azure-stack-download-azure-marketplace-item/container.png)  
    
-   4. W okienku przekazywania obiektów blob, przejdź do plików, które chcesz załadować do pamięci masowej, a następnie wybierz pozycję **przekazywanie**.  
+   4. W okienku przekazywania obiektów blob, przejdź do plików pakietu lub dysku, aby załadować do pamięci masowej, a następnie wybierz pozycję **przekazywanie**.  
       ![upload](media/azure-stack-download-azure-marketplace-item/upload.png)  
 
    5. Pliki, które są przekazywane są wyświetlane w okienku kontenera. Wybierz plik, a następnie skopiuj adres URL z **właściwości obiektu Blob** okienka. Użyjesz tego adresu URL w następnym kroku podczas importowania elementu portalu marketplace do usługi Azure Stack.  Na poniższym obrazie kontenera jest *magazynu obiektów blob-test* i plik jest *Microsoft.WindowsServer2016DatacenterServerCore ARM.1.0.801.azpkg*.  Plik, adres URL jest *https://testblobstorage1.blob.local.azurestack.external/blob-test-storage/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg*.  
@@ -169,7 +169,7 @@ Istnieją dwie części do tego scenariusza:
 
    Możesz uzyskać *wydawcy*, *oferują*, i *jednostki sku* wartości obrazu z pliku tekstowego zawierającego pliki do pobrania przy użyciu pliku AZPKG. Plik tekstowy znajduje się w lokalizacji docelowej. *Wersji* wartość wersji, podczas pobierania elementu z platformy Azure w ramach poprzedniej procedury. 
  
-   W poniższej przykładowy skrypt są używane wartości dla systemu Windows Server 2016 Datacenter — instalacja Server Core maszyny wirtualnej. Zastąp *URI_path* na ścieżkę do lokalizacji magazynu obiektów blob dla elementu.
+   W poniższej przykładowy skrypt są używane wartości dla systemu Windows Server 2016 Datacenter — instalacja Server Core maszyny wirtualnej. Wartość *- Osuri* jest przykładowa ścieżka do lokalizacji magazynu obiektów blob dla elementu.
 
    ```PowerShell  
    Add-AzsPlatformimage `
@@ -178,7 +178,7 @@ Istnieją dwie części do tego scenariusza:
     -sku "2016-Datacenter-Server-Core" `
     -osType Windows `
     -Version "2016.127.20171215" `
-    -OsUri "URI_path"  
+    -OsUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.vhd"  
    ```
    **Informacje o szablonach rozwiązania:** niektóre szablony mogą zawierać małych 3 MB. Plik wirtualnego dysku twardego o nazwie **fixed3.vhd**. Nie trzeba zaimportować ten plik do usługi Azure Stack. Fixed3.VHD.  Ten plik jest dołączone do niektórych szablony rozwiązań, aby spełniać wymagania publikacji w portalu Azure Marketplace.
 
@@ -198,7 +198,7 @@ Istnieją dwie części do tego scenariusza:
      -GalleryItemUri "https://mystorageaccount.blob.local.azurestack.external/cont1/Microsoft.WindowsServer2016DatacenterServerCore-ARM.1.0.801.azpkg" `
      –Verbose
     ```
-5. Po opublikowaniu elementu w galerii, go, przechodząc do **wszystkich usług**. Następnie w obszarze **ogólne** kategorii, wybierz opcję **Marketplace**.  Jeżeli pobieranie jest szablon rozwiązania, upewnij się, że możesz dodać wszelkie zależne obraz wirtualnego dysku twardego dla tego szablonu rozwiązania.  
+5. Po opublikowaniu elementu galerii jest teraz dostępny do użycia. Aby upewnić się, zostanie opublikowany element galerii, przejdź do **wszystkich usług**, a następnie w obszarze **ogólne** kategorii, wybierz opcję **Marketplace**.  Jeżeli pobieranie jest szablon rozwiązania, upewnij się, że możesz dodać wszelkie zależne obraz wirtualnego dysku twardego dla tego szablonu rozwiązania.  
   ![Wyświetl w portalu marketplace](media/azure-stack-download-azure-marketplace-item/view-marketplace.png)  
 
 > [!NOTE]

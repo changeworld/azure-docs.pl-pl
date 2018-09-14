@@ -11,20 +11,20 @@ ms.service: key-vault
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: hero-article
+ms.topic: conceptual
 ms.date: 08/31/2018
 ms.author: ambapat
-ms.openlocfilehash: 9b8b0da6e1572ab79ffb369497f64aad2cd249b9
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
-ms.translationtype: HT
+ms.openlocfilehash: d8c5e660b460e763fb4a500463543316c8c914ed
+ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43343466"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44159411"
 ---
 # <a name="secure-your-key-vault"></a>Zabezpieczanie własnego magazynu kluczy
 Usługa Azure Key Vault to usługa w chmurze, która zabezpiecza klucze szyfrowania i wpisy tajne (takie jak certyfikaty, parametry połączenia, hasła) dla aplikacji w chmurze. Ponieważ te dane są poufne i mają krytyczne znaczenie dla prowadzonej działalności, wskazane jest zabezpieczenie dostępu do własnego magazynu kluczy, tak aby tylko autoryzowane aplikacje i użytkownicy mogli uzyskiwać do niego dostęp. Ten artykuł zawiera omówienie modelu dostępu do magazynu kluczy, wyjaśnia uwierzytelnianie i autoryzację oraz na przykładzie opisuje sposób zabezpieczania dostępu do magazynu kluczy dla aplikacji w chmurze.
 
-## <a name="overview"></a>Omówienie
+## <a name="overview"></a>Przegląd
 Dostęp do magazynu kluczy jest kontrolowany za pośrednictwem dwóch oddzielnych interfejsów: płaszczyzny zarządzania i płaszczyzny danych. W przypadku obu płaszczyzn wymagane jest odpowiednie uwierzytelnianie i autoryzacja, zanim obiekt wywołujący (użytkownik lub aplikacja) będzie mógł uzyskać dostęp do magazynu kluczy. Uwierzytelnianie ustala tożsamość obiektu wywołującego, podczas gdy autoryzacja określa, jakie operacje może wykonywać obiekt wywołujący.
 
 Na potrzeby uwierzytelniania płaszczyzna zarządzania i płaszczyzna danych używają usługi Azure Active Directory. Na potrzeby autoryzacji płaszczyzna zarządzania używa kontroli dostępu opartej na rolach (RBAC), natomiast płaszczyzna danych używa zasad dostępu magazynu kluczy.

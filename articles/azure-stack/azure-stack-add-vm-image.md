@@ -15,12 +15,12 @@ ms.topic: get-started-article
 ms.date: 09/05/2018
 ms.author: mabrigg
 ms.reviewer: kivenkat
-ms.openlocfilehash: ba4c53f03350995544eb95917102bd7123a077d2
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 7a5c6875f080655e69f549e45ec474958128754f
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022768"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45575817"
 ---
 # <a name="make-a-virtual-machine-image-available-in-azure-stack"></a>Udostępnić obraz maszyny wirtualnej w usłudze Azure Stack
 
@@ -75,7 +75,7 @@ Obrazy muszą dawać mogą być przywoływane przez identyfikator URI magazynu o
 ## <a name="add-a-vm-image-to-the-marketplace-by-using-powershell"></a>Dodawanie obrazu maszyny Wirtualnej w portalu Marketplace przy użyciu programu PowerShell
 
 > [!Note]  
-> Po dodaniu obraz tylko będą dostępne dla usługi Azure Resource Manager, na podstawie szablonów i wdrożeń programu PowerShell. Aby udostępnić obraz użytkowników jako elementu portalu marketplace publikowanie elementu portalu marketplace, wykonując kroki opisane w artykule, [tworzenie i publikowanie elementu portalu Marketplace](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-create-and-publish-marketplace-item)
+> Po dodaniu obraz tylko będą dostępne dla usługi Azure Resource Manager, na podstawie szablonów i wdrożeń programu PowerShell. Aby udostępnić obraz użytkowników jako elementu portalu marketplace publikowanie elementu portalu marketplace, wykonując kroki opisane w artykule, [tworzenie i publikowanie elementu portalu Marketplace](https://docs.microsoft.com/azure/azure-stack/azure-stack-create-and-publish-marketplace-item)
 
 1. [Instalowanie programu PowerShell dla usługi Azure Stack](azure-stack-powershell-install.md).  
 

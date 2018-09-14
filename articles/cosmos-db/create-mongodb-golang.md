@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 07/21/2017
 ms.author: sclyon
 ms.custom: mvc
-ms.openlocfilehash: 68049b9c0b9186a433ddf3c92be12487cfd3c13b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 7bfcbf2c72dbe33727097841f34f3f6869e9d2d8
+ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700284"
+ms.lasthandoff: 09/07/2018
+ms.locfileid: "44053135"
 ---
 # <a name="azure-cosmos-db-build-a-mongodb-api-console-app-with-golang-and-the-azure-portal"></a>Azure Cosmos DB: Tworzenie aplikacji konsolowej interfejsu API usługi MongoDB przy użyciu języka Golang i witryny Azure Portal
 
@@ -138,7 +138,7 @@ Metoda **mgo.Dial()** jest używana w przypadku braku połączenia SSL. W przypa
 Do utworzenia obiektu sesji używane jest wystąpienie obiektu **DialWithInfo{}**. Po ustanowieniu sesji można uzyskać dostęp do kolekcji, używając poniższego fragmentu kodu:
 
 ```go
-collection := session.DB(“database”).C(“package”)
+collection := session.DB("database").C("package")
 ```
 
 <a id="create-document"></a>
