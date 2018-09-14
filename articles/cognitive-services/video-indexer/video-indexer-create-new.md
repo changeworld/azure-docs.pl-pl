@@ -7,20 +7,20 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 09/09/2018
 ms.author: juliako
-ms.openlocfilehash: 161a47f72a0f8038a515c09f25ec2a8e8a520547
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: a713a85a3301b211f922268d6afc4d047bd12023
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390844"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541704"
 ---
 # <a name="create-highlights-from-existing-videos"></a>Utwórz najważniejsze wydarzenia z istniejących wideo
 
 W tym temacie dowiesz się, jak tworzyć i publikować oparte na inne pliki wideo informacjom o filmie wideo.
 
-1. Zaloguj się do Twojej [Video Indexer](https://api-portal.videoindexer.ai/) konta.
+1. Przejdź do [Video Indexer](https://www.videoindexer.ai/) witryny sieci Web i zaloguj się.
 2. Znajdź film wideo, z którego chcesz utworzyć informacjom o filmie wideo.
 3. Naciśnij klawisz **Odtwórz**.
 
@@ -52,8 +52,8 @@ W tym temacie dowiesz się, jak tworzyć i publikować oparte na inne pliki wide
 
 Po utworzeniu nowej listy odtwarzania, możesz kontynuować przetwarzanie, zgodnie z opisem w jednym z tych tematów: 
 
-- [Przetwarzanie zawartości przy użyciu interfejsu REST API indeksatora wideo](video-indexer-use-apis.md)
-- [Osadzanie widżetów visual w aplikacji](video-indexer-embed-widgets.md)
+- [Przetwarzanie zawartości przy użyciu interfejsu REST API usługi Video Indexer](video-indexer-use-apis.md)
+- [Osadzanie widgetów wizualnych w aplikacji](video-indexer-embed-widgets.md)
 
 ## <a name="see-also"></a>Zobacz także
 

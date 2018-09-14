@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 231a9876c7a84953a7d9a88b761a1da9475d1f48
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 9cb2b0bdb036b26fbd355ff4bd84885b7e15507d
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43248145"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541977"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Zarządzanie aktualizacjami dla wielu maszyn
 
@@ -50,7 +50,7 @@ Rozwiązanie Update Management jest obsługiwana w następujących systemach ope
 
 Agenci dla systemu Linux muszą mieć dostęp do repozytorium aktualizacji.
 
-To rozwiązanie nie obsługuje agenta Operations Management Suite (OMS) dla systemu Linux, który jest skonfigurowany do raportowania do wielu obszarów roboczych usługi Azure Log Analytics.
+To rozwiązanie nie obsługuje Log Analytics Agent dla systemu Linux, który jest skonfigurowany do raportowania do wielu obszarów roboczych usługi Azure Log Analytics.
 
 ## <a name="enable-update-management-for-azure-virtual-machines"></a>Włączanie rozwiązania Update Management dla maszyn wirtualnych platformy Azure
 
@@ -127,7 +127,7 @@ W **nowe wdrożenie aktualizacji** okienku określ następujące informacje:
 
 - **Nazwa**: wprowadź unikatową nazwę identyfikującą wdrożenie aktualizacji.
 - **System operacyjny**: Wybierz **Windows** lub **Linux**.
-- **Maszyny do zaktualizowania**: Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub wybierz maszyny, aby wybrać maszyn, które chcesz zaktualizować. Jeśli wybierzesz **maszyn**, gotowości maszyny jest wyświetlany w **AKTUALIZUJ gotowość AGENTA** kolumny. Widać stan kondycji komputera, zanim zaplanowane wdrożenie aktualizacji. Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [grup komputerów w usłudze Log Analytics](../log-analytics/log-analytics-computer-groups.md)
+- **Maszyny do zaktualizowania**: Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub wybierz maszyny, aby wybrać maszyn, które chcesz zaktualizować. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**. Widać stan kondycji komputera, zanim zaplanowane wdrożenie aktualizacji. Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../log-analytics/log-analytics-computer-groups.md)
 
   ![Nowe okienko wdrożenia aktualizacji](./media/manage-update-multi/update-select-computers.png)
 

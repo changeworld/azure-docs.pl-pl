@@ -8,12 +8,12 @@ ms.date: 09/07/2018
 ms.topic: conceptual
 ms.service: active-directory
 ms.component: b2c
-ms.openlocfilehash: a9faece909bba89714deef9d229ab86bd351b445
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: bdacbe425aa3140f8a3d60fdf121712d1e6eda3e
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347141"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541606"
 ---
 # <a name="solutions-and-training-for-azure-active-directory-b2c"></a>Rozwiązania i szkolenie dotyczące usługi Azure Active Directory B2C
 
@@ -25,7 +25,4 @@ Usługa Azure Active Directory (Azure AD) B2C umożliwia organizacjom Implemento
 | [Uzyskiwanie wiedzy w usłudze Azure AD B2C: kurs dla deweloperów](https://aka.ms/learnAADB2C) | Ten kurs end-to-end zajmuje deweloperom za pośrednictwem pełną podróż na temat tworzenia aplikacji za pomocą usługi Azure AD B2C, jako mechanizm uwierzytelniania. Dziesięć szczegółowe modułów z laboratoriów obejmuje wszystko od rejestrowania subskrypcji platformy Azure do tworzenia zasad niestandardowych, które definiują kursów, która będą angażować swoich klientów. |
 | [Włączanie partnerów, dostawców i klienci mogą uzyskiwać dostęp do aplikacji w usłudze Azure active Directory](https://aka.ms/aadexternalidentities) | Każda organizacja sukces, niezależnie od tego, czy rozmiar, branży lub zgodności i poziom zabezpieczeń zależy od możliwości organizacji w kontakcie z klientami i współpracować z innymi organizacjami.<br><br>Połączenie usługi Azure AD i usługi Azure AD B2C i współpracy B2B usługi Azure AD ten przewodnik zawiera informacje o wartości biznesowej i mechanika kompilacji środowisko sieci web lub aplikacji, które zapewnia skonsolidowany uwierzytelniania dostosowane do kontekstów z usługi pracowników, partnerów biznesowych oraz dostawców i klientów. |
 | [Migrowanie aplikacji uwierzytelniania usługi Azure AD B2C w środowisku hybrydowym](https://aka.ms/MigratetoAADB2C) | W organizacjach nowoczesnych współczesnych transformacja cyfrowa i przejście do chmury odbywa się w etapach, wymaganie większości organizacji przynajmniej tymczasowo działa w środowisku hybrydowym tożsamości.<br><br>Ten przewodnik skupia się na tworzeniu planu migracji do przenoszenia pierwszą aplikację usługi Azure AD B2C i opisano zagadnienia, aby to zrobić w środowisku hybrydowym tożsamości. |
-
-<!-- 
-| [General Data protection Regulation (GDPR) Considerations for Customer Facing Applications](https://aka.ms/AADB2CandGDPR) | For any customer facing applications, GDPR must be taken into consideration by all organizations that embark on projects that hold personal data and serve EU citizens.<br><br>This solution Guide focuses on how Azure AD B2C can be used as a flexible component of your overall GDPR compliance approach, including how AAD B2C components support each of the key GDPR rights for individuals. | 
--->
+| [Ochrona danych Ogólne zagadnienia (Regulation, GDPR) aplikacji połączonego z klientów](https://aka.ms/AADB2CandGDPR) | Dla każdego klienta, aplikacjach skierowanych RODO musi być brana pod uwagę przez wszystkie organizacje, które rozpoczęcia projektów, które przechowują dane osobiste i obsługiwać obywatelom Unii Europejskiej.<br><br>Ten przewodnik koncentruje się na jak usługi Azure AD B2C może służyć jako składnik elastyczne z ogólnym podejściem zgodności RODO, tym, jak składniki usługi Azure AD B2C obsługę każdego z kluczy praw RODO dla użytkowników indywidualnych. |

@@ -9,12 +9,12 @@ ms.reviewer: jasonwhowell
 ms.assetid: db35f16e-1565-4873-a851-bd987accdc58
 ms.topic: conceptual
 ms.date: 05/24/2018
-ms.openlocfilehash: 0386406f5fc81a007d55bd5358e7a6b333f63b04
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: f48dc07e27c6cb01a842f1f6d720ed6476028ef7
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048337"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542316"
 ---
 # <a name="adding-a-user-in-the-azure-portal"></a>Dodanie użytkownika w witrynie Azure portal
 
@@ -31,12 +31,12 @@ ms.locfileid: "43048337"
 Przyznaj "R-X" lub "RWX", zgodnie z potrzebami, w przypadku folderów zawierających dane wejściowe i dane wyjściowe.
 
 
-## <a name="optionally-add-the-user-to-the-azure-data-lake-store-role-reader-role"></a>Opcjonalnie można dodać użytkownika do roli usługi Azure Data Lake Store **czytnika** roli.
-1.  Znajdź swoje konto usługi Azure Data Lake Store.
+## <a name="optionally-add-the-user-to-the-azure-data-lake-storage-gen1-role-reader-role"></a>Opcjonalnie można dodać użytkownika do roli usługi Azure Data Lake Storage Gen1 **czytnika** roli.
+1.  Znajdź swoje konto usługi Azure Data Lake Storage Gen1.
 2.  Kliknij pozycję **użytkowników**.
 3. Kliknij pozycję **Add** (Dodaj).
 4.  Wybierz rolę RBAC platformy Azure, aby przypisać tę grupę.
-5.  Przypisz do roli czytelnika. Ta rola ma minimalny zestaw uprawnień wymaganych do przeglądania/zarządzanie danymi zapisanymi w usłudze ADLS. Przypisz do tej roli, jeśli grupa nie jest przeznaczona do zarządzania usługami platformy Azure.
+5.  Przypisz do roli czytelnika. Ta rola ma minimalny zestaw uprawnień wymaganych do przeglądania/zarządzanie danymi zapisanymi w ADLSGen1. Przypisz do tej roli, jeśli grupa nie jest przeznaczona do zarządzania usługami platformy Azure.
 6.  Wpisz nazwę grupy.
 7.  Kliknij przycisk **OK**.
 

@@ -1,49 +1,50 @@
 ---
-title: Najlepsze praktyki kognitywnych usług Azure - Maker — strona główna - | Dokumentacja firmy Microsoft
-description: Aby poprawić bazy wiedzy i udostępnić lepsze wyniki użytkownikom końcowym bot Twojej aplikacji/rozmowy, należy użyć następujące najlepsze rozwiązania.
+title: Najlepsze praktyki — QnA Maker
+titlesuffix: Azure Cognitive Services
+description: Używania tych najlepszych rozwiązań, aby usprawnić bazy wiedzy i zapewniają lepsze wyniki użytkownikom końcowym bota aplikacji/rozmowy.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/12/2018
 ms.author: saneppal
-ms.openlocfilehash: 7a85ebbc3892a90e98e73a73425c1f8ec1de0b35
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: c82c117d149da39fba7b9a243aebb3e127540881
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349901"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542935"
 ---
 # <a name="best-practices"></a>Najlepsze praktyki
-[Cyklu programistycznym wiedzy](../Concepts/development-lifecycle-knowledge-base.md) prowadzi użytkownika na temat zarządzania należy KB end-to-end. Aby poprawić bazy wiedzy i udostępnić lepsze wyniki użytkownikom końcowym bot Twojej aplikacji/rozmowy, należy użyć następujące najlepsze rozwiązania.
+[Cykl życia projektowania bazy wiedzy knowledge base](../Concepts/development-lifecycle-knowledge-base.md) przejdziesz na temat sposobu zarządzania nimi KB end-to-end. Używania tych najlepszych rozwiązań, aby usprawnić bazy wiedzy i zapewniają lepsze wyniki użytkownikom końcowym bota aplikacji/rozmowy.
 
 ## <a name="extraction"></a>Wyodrębniania
-Maker — strona główna jest stale poprawy algorytmów wyodrębniania QnAs zawartości i rozwijania listy plików i obsługiwane formaty strony HTML. Postępuj zgodnie z [wytyczne](../Concepts/data-sources-supported.md) dla wyodrębniania na podstawie typu dokumentu czy wyodrębniania z. 
+Usługa QnA Maker jest stale poprawy algorytmów, które umożliwiają wyodrębnianie znacznie z zawartości i rozwijając listę plików i strony HTML formaty obsługiwane. Postępuj zgodnie z [wytycznych](../Concepts/data-sources-supported.md) dla wyodrębniania na podstawie typu dokumentu używany jest wyodrębniania z. 
 
-Ogólnie rzecz biorąc często zadawane pytania dotyczące stron powinna być autonomiczne i nie są połączone z innymi informacjami. Podręczniki powinny mieć wyczyść nagłówki, najlepiej strony indeksu. 
+Ogólnie rzecz biorąc często zadawane pytania dotyczące strony powinna być autonomiczne i nie są połączone z innymi informacjami. Podręczniki powinny mieć, usuń zaznaczenie pozycji, a najlepiej strony indeksu. 
 
 ## <a name="rankingmatching"></a>Klasyfikacja/dopasowania
-Upewnij się, że dokonywania najlepsze wykorzystanie funkcje klasyfikacji, które obsługuje Maker — strona główna. Dzięki temu zwiększy prawdopodobieństwo który zapytania danego użytkownika zostanie odebrane z kolei odpowiednią odpowiedź.
+Upewnij się, że wykonujesz optymalnie wykorzystać funkcje klasyfikacji, które obsługuje usługi QnA Maker. To zwiększa prawdopodobieństwo który zapytania danego użytkownika zostanie odebrane z właściwą odpowiedzią.
 
 ### <a name="add-alternate-questions"></a>Dodaj alternatywne pytania
-[Alternatywny pytania](../How-To/edit-knowledge-base.md) zwiększyć prawdopodobieństwo zgodny z zapytaniem użytkownika. Alternatywne pytania są przydatne, gdy istnieje wiele sposobów, w którym może zostać wyświetlony monit tego samego zapytania. Może to obejmować zmian w strukturze zdanie (na przykład *"Jest dostępne postojowego"?* a *"Masz wstrzymywanie samochód?"* ) lub zmiany w stylu programu word i żargon (na przykład *"Hi"* i *"Yo"*, *"Brak Witaj!"* ).
+[Alternatywny pytania](../How-To/edit-knowledge-base.md) zwiększyć prawdopodobieństwo pasują do zapytania użytkownika. Alternatywne pytania są przydatne, gdy istnieje wiele sposobów, w którym może zostać wyświetlony monit tego samego zapytania. Może to obejmować zmiany w strukturze zdanie (na przykład *"Jest dostępna parkowania?"* a *"Masz park samochodu?"* ) lub zmiany w stylu programu word i żargonu (na przykład *"Hi"* a *"Yo"*, *"Hej tam!"* ).
 
-### <a name="use-metadata-filters"></a>Używanie filtrów metadanych
-[Metadane](../How-To/edit-knowledge-base.md) dodaje możliwość zawęzić liczbę wyników kwerendy użytkownika oparte na filtrów. Odpowiedzi bazy wiedzy knowledge base może się różnić w zależności w tagu metadanych, nawet jeśli zapytanie jest taka sama. Na przykład *"gdzie jest postojowego znajduje się"* mogą mieć różne odpowiedzi, jeśli różni się lokalizację gałęzi restauracji — metadanych jest *lokalizacji: Seattle* i *lokalizacji: Redmond*.)
+### <a name="use-metadata-filters"></a>Użyj filtrów metadanych
+[Metadane](../How-To/edit-knowledge-base.md) dodaje możliwość zawężać wyniki zapytania użytkownika, w oparciu o filtry. Odpowiedź bazy wiedzy knowledge base może się różnić w zależności w tagu metadanych nawet, jeśli zapytanie jest taka sama. Na przykład *"gdzie jest umieszczony parkowania"* mogą mieć różne odpowiedzi, jeśli różni się lokalizacja gałęzi, restauracji — metadanych jest *lokalizacji: Seattle* a *lokalizacji: Redmond*.)
 
-### <a name="use-synonyms"></a>Użyj synonimy
-Chociaż niektóre obsługę synonimy w języku angielskim, użyj [zmiany w programie word](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) można dodać synonimy słów kluczowych, które przyjmują innej formie (przykład: *kupić* -> *zakupu*  lub *netbanking* -> *net banku*. Synonimy należy dodać na poziomie usługi Maker — strona główna i współużytkowane przez wszystkie bazy wiedzy w usłudze.
+### <a name="use-synonyms"></a>Używać synonimów
+Choć niektóre Obsługa synonimów w języku angielskim, użyj [word zmiany](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) można dodać synonimy do słów kluczowych, które przyjmują różne formularza (przykład: *Kup* -> *zakupu*  lub *netbanking* -> *net bankowości*. Synonimy, należy dodać na poziomie usługi QnA Maker i współużytkowane przez wszystkie bazy wiedzy w usłudze.
 
-### <a name="use-distinct-words-to-differentiate-questions"></a>Umożliwia rozróżnianie pytania unikatowych słów
-Algorytmy dopasowania rangę Maker — strona główna, zgodne z zapytaniem użytkownika, z zapytania w bazie wiedzy knowledge base działają najlepiej, jeśli pytania adresów różnych potrzeb. Powtarzania tej samej Word ustawiony między wartością pytania zmniejsza prawdopodobieństwo, że wybrano prawo odpowiedzi dla danego użytkownika zapytania słowa.
+### <a name="use-distinct-words-to-differentiate-questions"></a>Użyj unikatowych słów, aby odróżnić pytania
+Usługa QnA Maker dopasowania i rangi algorytmów, zgodne z zapytaniem użytkownika, za pomocą zapytania w bazie wiedzy knowledge base działają najlepiej, jeśli każde pytanie dotyczy różne potrzeby. Powtórzenie tego samego wyrazu ustawiony między pytania zmniejsza prawdopodobieństwo, że wybrano prawidłowej odpowiedzi dla danego użytkownika zapytania za pomocą tych słów.
 
 ## <a name="collaborate"></a>Współpraca
-Maker — strona główna umożliwia użytkownikom [współpracę](../How-to/collaborate-knowledge-base.md) w bazie wiedzy. Użytkownicy potrzebują dostępu do grupy zasobów platformy Azure — strona główna Maker, aby uzyskać dostęp do bazy wiedzy. W niektórych organizacjach może być zewnętrzny edycji wiedzy i konserwacji i nadal mieć możliwość ochrony dostępu do ich zasobów platformy Azure. Ten model osoba zatwierdzająca edytora można wykonywać, konfigurując dwa identyczne [Maker — strona główna usług](../How-to/set-up-qnamaker-service-azure.md) w ramach różnych subskrypcji i wyznaczenie jednego cyklu testowania edycji. Po zakończeniu testowania można przesyłać zawartość wiedzy z [importowania i eksportowania](../Tutorials/migrate-knowledge-base.md) procesu z usługą Maker — strona główna osoba zatwierdzająca zostanie ostatecznie opublikować w bazie wiedzy i zaktualizować punktu końcowego.
+Usługa QnA Maker umożliwia użytkownikom [współpracy](../How-to/collaborate-knowledge-base.md) na wiedzy. Użytkownicy potrzebują dostępu do grupy zasobów platformy Azure usługa QnA Maker, aby uzyskać dostęp do bazy wiedzy. W niektórych organizacjach może być oddelegowanie edytowanie wiedzy i konserwacji i nadal mieć możliwość ochrony dostępu do swoich zasobów platformy Azure. Ten model osoba zatwierdzająca edytora można osiągnąć, konfigurując dwa identyczne [usługi QnA Maker](../How-to/set-up-qnamaker-service-azure.md) w różnych subskrypcjach i wyznaczanie jednego cyklu testowania edycji. Po zakończeniu testowania można przenieść zawartości bazy wiedzy przy użyciu [import-export](../Tutorials/migrate-knowledge-base.md) procesu usługi QnA Maker osoby zatwierdzającej, która zostanie ostatecznie publikowanie bazy wiedzy knowledge base i aktualizowanie punktu końcowego.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Edytuj bazy wiedzy](../How-to/edit-knowledge-base.md)
+> [Edytowanie wiedzy](../How-to/edit-knowledge-base.md)
 

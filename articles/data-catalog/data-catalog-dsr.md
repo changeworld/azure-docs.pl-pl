@@ -8,12 +8,12 @@ ms.assetid: fd4345ca-2ed8-4c5e-9c4b-f954be2fc9f9
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 0f7ee285e77b9e54e2ff720f10f0d24c5b764014
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7b3f403ac479e0a6a8a4ae46c2a5ab448bd8ecc2
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042943"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544134"
 ---
 # <a name="supported-data-sources-in-azure-data-catalog"></a>Obsługiwane źródła danych w usłudze Azure Data Catalog
 
@@ -369,7 +369,7 @@ Metadane można opublikować za pomocą publicznego interfejsu API lub przez kli
       <td>✓</td>
       <td>✓</td>
       <td></td>
-      <td></td>
+      <td>Tylko starszego kolekcje z usługi Azure DocumentDB i kolekcji interfejsu API SQL w usłudze Azure Cosmos DB są zgodne. Nowszych interfejsów API usługi DB Cosmos nie są jeszcze obsługiwane. Wybierz z listy źródła danych usługi Azure DocumentDB.</td>
     </tr>
     <tr>
       <td>Ogólne ODBC tabeli</td>
@@ -534,32 +534,6 @@ Jeśli chcesz zobaczyć określonego źródła danych obsługiwane, nim znać (l
             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; domain
             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; account
             <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; name
-        
-      </td>
-    </tr>
-    <tr>
-      <td>Cosmos</td>
-      <td>Container</td>
-      <td>Virtual cluster</td>
-      <td>
-        
-            Protocol: cosmos
-            <br>Authentication: {basic, windows}
-            <br>Address:
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
-        
-      </td>
-    </tr>
-    <tr>
-      <td>Cosmos</td>
-      <td>Table</td>
-      <td>Stream, stream set, view</td>
-      <td>
-        
-            Protocol: cosmos
-            <br>Authentication: {basic, windows}
-            <br>Address:
-            <br>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; url
         
       </td>
     </tr>

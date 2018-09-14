@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/10/2018
+ms.date: 09/12/2018
 ms.author: bwren
-ms.openlocfilehash: 0e513cc4f6a7d5d030ded807870de9eb0fdc0ed8
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 97cf5c06372d416037b875078809aebb7e633456
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972642"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542841"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Czas wprowadzania danych w usłudze Log Analytics
 Usługa Azure Log Analytics to usługa danych dużej skali, która obsługuje tysiące klientów wysyłania terabajtów danych każdego miesiąca w tempie rosnącą. Są często zadawane pytania dotyczące czasu, jaki zajmuje dane staną się dostępne w usłudze Log Analytics po ich zebraniu. W tym artykule opisano różne czynniki, które wpływają na ten czas oczekiwania.
 
 ## <a name="typical-latency"></a>Typowy czas oczekiwania
-Opóźnienie odnosi się do danych jest tworzona w monitorowanym systemie czas i czas, który jest dostarczany poddać analizie w usłudze Log Analytics. Typowe opóźnienia w celu pozyskiwania danych w usłudze Log Analytics jest od 3 do 10 minut, przy użyciu 95% danych pozyskanych w czasie krótszym niż 7 minut. Określone opóźnienie dla dowolnych danych określonego różnią się w zależności od różnych czynników, które zostało opisane poniżej.
+Opóźnienie odnosi się do danych jest tworzona w monitorowanym systemie czas i czas, który jest dostarczany poddać analizie w usłudze Log Analytics. Typowe opóźnienia w celu pozyskiwania danych w usłudze Log Analytics to od 2 do 5 minut. Określone opóźnienie dla dowolnych danych określonego różnią się w zależności od różnych czynników, które zostało opisane poniżej.
 
 ## <a name="sla-for-log-analytics"></a>Umowa SLA dla usługi Log Analytics
 [Umowy poziomu usług (SLA) Log Analytics](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) prawne wiążącej umowy definiujący po Microsoft zwroty klientów, gdy usługa nie spełnia wymagań swoje cele. To nie jest ustalane na podstawie typowej wydajność systemu, ale jego najgorszym zanotowano potencjalnych sytuacji krytycznego.
@@ -60,7 +60,7 @@ Niektóre rozwiązania nie zbierają dane z agenta i może używać metody kolek
 Zapoznaj się z dokumentacją dla każdego rozwiązania jej częstotliwość zbierania.
 
 ### <a name="pipeline-process-time"></a>Czas przetwarzania potoku
-Po rekordy dziennika są pozyskiwane potokiem usługi Log Analytics, są one zapisywane do magazynu tymczasowego w celu zapewnienia izolacji dzierżawy i upewnij się, że dane nie są tracone. Ten proces zwykle dodaje 5 – 15 sekund. Niektóre rozwiązania do zarządzania wdrożenie większych algorytmów do agregacji danych i uzyskiwania szczegółowych informacji, zgodnie z przesyłania strumieniowego danych w. Na przykład monitorowanie wydajności sieci agreguje dane przychodzące w odstępach 3-minutowy skutecznie Dodawanie 3-minutowy czas oczekiwania.
+Po rekordy dziennika są pozyskiwane potokiem usługi Log Analytics, są one zapisywane do magazynu tymczasowego w celu zapewnienia izolacji dzierżawy i upewnij się, że dane nie są tracone. Ten proces zwykle dodaje 5 – 15 sekund. Niektóre rozwiązania do zarządzania wdrożenie większych algorytmów do agregacji danych i uzyskiwania szczegółowych informacji, zgodnie z przesyłania strumieniowego danych w. Na przykład monitorowanie wydajności sieci agreguje dane przychodzące w odstępach 3-minutowy skutecznie Dodawanie 3-minutowy czas oczekiwania. Inny proces, który dodaje opóźnienie to proces, który obsługuje niestandardowe dzienniki. W niektórych przypadkach ten proces może dodać kilka minut opóźnienia do dzienników, które są zbierane z plików przez agenta.
 
 ### <a name="new-custom-data-types-provisioning"></a>Nowe typy danych niestandardowych, inicjowanie obsługi administracyjnej
 Po utworzeniu nowego typu danych niestandardowych z [dziennik niestandardowy](../log-analytics/log-analytics-data-sources-custom-logs.md) lub [interfejsu API modułu zbierającego dane](../log-analytics/log-analytics-data-collector-api.md), system tworzy kontener dedykowanych dla magazynu. Jest to jednorazowa obciążenie, które występuje tylko na pierwsze wystąpienie tego typu danych.

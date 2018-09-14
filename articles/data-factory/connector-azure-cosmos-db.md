@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/11/2018
 ms.author: jingwang
-ms.openlocfilehash: eb290dffd7bdd86b9776d4f30b6fd09a2a952a46
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: db2f3086da41e990e6f87d8086d6e8defa447532
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720025"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543447"
 ---
 # <a name="copy-data-to-or-from-azure-cosmos-db-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure Cosmos DB przy użyciu usługi Azure Data Factory
 
@@ -41,7 +41,7 @@ W szczególności ten łącznik usługi Azure Cosmos DB obsługuje:
 Data Factory integruje się z [usługi Cosmos DB zbiorcze wykonawca biblioteki](https://github.com/Azure/azure-cosmosdb-bulkexecutor-dotnet-getting-started) aby zapewnić najlepszą wydajność, zapisywanie do usługi Cosmos DB.
 
 >[!TIP]
->Obejrzyj [ten film wideo](https://www.youtube.com/watch?v=5-SRNiC_qOU&t=760s) który przeprowadzi kopiowanie danych z usługi Azure Blob storage do usługi Cosmos DB i opisano zagadnienia dotyczące dane wprowadzane do usługi Cosmos DB ogólnie rzecz biorąc dostrajania wydajności oprogramowania.
+>Obejrzyj [ten film wideo](https://youtu.be/5-SRNiC_qOU) który przeprowadzi kopiowanie danych z usługi Azure Blob storage do usługi Cosmos DB i opisano zagadnienia dotyczące dane wprowadzane do usługi Cosmos DB ogólnie rzecz biorąc dostrajania wydajności oprogramowania.
 
 ## <a name="getting-started"></a>Wprowadzenie
 

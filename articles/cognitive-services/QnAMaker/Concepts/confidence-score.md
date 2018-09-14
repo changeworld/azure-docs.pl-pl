@@ -1,75 +1,75 @@
 ---
-title: Wynik zaufania — kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
-titleSuffix: Azure
-description: Wyjaśniający wynik zaufania
+title: Współczynnik ufności — QnA Maker
+titleSuffix: Azure Cognitive Services
+description: Współczynnik ufności określa stopień dopasowania użytkownika pytanie i odpowiedź zwrócona.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
+ms.date: 09/12/2018
 ms.author: saneppal
-ms.openlocfilehash: c97bdb7e57275ebd1893bc28248c4ecc6b35c153
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 30a29bdcb56eb39bcd004b5a7bf8f3526e2d5c75
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348657"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541738"
 ---
 # <a name="confidence-score"></a>Współczynnik ufności
 
-Wynik zaufania określa stopień dopasowania użytkownika pytanie i odpowiedź zwrócona.
+Współczynnik ufności określa stopień dopasowania użytkownika pytanie i odpowiedź zwrócona.
 
-Jeśli kwerenda użytkownika jest dopasowywana zawartość bazy wiedzy knowledge base, może istnieć więcej niż jeden odpowiedź zwrócona. Odpowiedzi są zwracane w porządku uporządkowanej według rangi zmniejszanie wynik zaufania.
+Jeśli kwerenda użytkownika jest dopasowywana zawartość bazy wiedzy, może istnieć więcej niż jedną odpowiedź zwrócona. Odpowiedzi są zwracane w rankingu kolejności malejących współczynnik ufności.
 
-Wynik ufności jest od 0 do 100.
+Współczynnik ufności jest od 0 do 100.
 
-|Wartość wyniku|Ufność|
+|Wartość|Ufność|
 |--|--|
-|100|Dokładne dopasowanie użytkownika zapytań i pytanie KB|
-|90|Zgodne większość wyrazy wysokiego zaufania-|
-|40-60|Zgodne słowa ważne odpowiedniego obaw —|
-|10|Niski obaw — ważne wyrazy nie są zgodne|
-|0|Brak zgodności programu word|
+|100|Dokładne dopasowanie użytkownika zapytania i zapytania KB|
+|90|Odpowiada większość słów o dużej pewności-|
+|40-60|Dopasowania słów ważne uczciwe obaw —|
+|10|Niski obaw — ważne słowa nie są zgodne|
+|0|Brak dopasowania programu word|
 
 
-## <a name="similar-confidence-scores"></a>Podobne wyniki zaufania
-Wiele odpowiedzi mają podobne wynik zaufania, jest prawdopodobne, że kwerenda ma zbyt ogólnym i dlatego dopasowanych z równym prawdopodobieństwem wiele odpowiedzi. Spróbuj struktury QnAs Twojego lepiej, dzięki czemu każdy podmiot — strona główna zawiera różne opcje.
+## <a name="similar-confidence-scores"></a>Podobne wyniki ufności
+Wiele odpowiedzi mają podobne współczynnik ufności, jest prawdopodobne, że zapytanie było zbyt ogólne i w związku z tym dopasowane z równym prawdopodobieństwem przy użyciu wielu odpowiedzi. Spróbuj struktury usługi znacznie lepiej, tak, aby każda jednostka pytań i odpowiedzi ma różne opcje.
 
 
-## <a name="improving-confidence-scores"></a>Poprawa wyniki zaufania
-Aby zwiększyć wynik zaufania określonej odpowiedzi na kwerendę użytkownika, można dodać kwerenda użytkownika w bazie wiedzy jako alternatywne pytanie na tej odpowiedzi.
+## <a name="improving-confidence-scores"></a>Usprawnienie oceny zaufania
+Aby poprawić współczynnik ufności z określonej odpowiedzi na zapytanie użytkownika, można dodać zapytania użytkownika do bazy wiedzy knowledge base, jako alternatywnej pytanie na odpowiedź.
    
-## <a name="confidence-score-differences"></a>Różnice wynik zaufania
-Wynik zaufania odpowiedzi mogą ulec zmianie w nieznaczny między testu i opublikowanej wersji w bazie wiedzy, nawet jeśli zawartość jest taka sama. Jest to spowodowane zawartości testu i opublikowanych wiedzy znajdują się w różnych indeksów usługi Azure Search.
+## <a name="confidence-score-differences"></a>Różnice ocena ufności
+Współczynnik ufności odpowiedzi mogą ulec zmianie w nieznaczny między testu i opublikowanej wersji w bazie wiedzy knowledge base, nawet jeśli zawartość jest taka sama. Jest to spowodowane zawartości testu i opublikowane wiedzy znajdują się w różnych indeksów usługi Azure Search.
 
-Zobacz tutaj sposób [publikowania](../How-To/publish-knowledge-base.md) działanie.
+Zobacz tutaj sposób, w jaki [publikowania](../How-To/publish-knowledge-base.md) działanie.
 
 
-## <a name="no-match-found"></a>Nie znaleziono dopasowania
-Nie dobrej znaleziono przez ranker, wynik zaufania 0,0 lub "None" jest zwracany, a wartość domyślna jest "Nie znaleziono w artykule bazy wiedzy dopasowania dobrej". Można zastąpić tej odpowiedzi domyślnej w kodzie bot lub aplikacji wywołaniem punktu końcowego. Alternatywnie można również ustawić zastąpienie odpowiedzi na platformie Azure i spowoduje to zmianę domyślnego dla wszystkich baz wiedzy wdrożone w określonej usłudze Maker — strona główna.
+## <a name="no-match-found"></a>Nie znaleziono dopasowań
+Po znalezieniu niezgodności dobre, oceniania współczynnik ufności 0.0, lub "None" jest zwracany, a odpowiedź domyślną jest "Dobrą niezgodności w w bazie wiedzy". Możesz przesłonić to odpowiedź domyślną w kodzie bot lub aplikacji, wywołanie punktu końcowego. Alternatywnie można również ustawić odpowiedzi zastąpienie na platformie Azure i spowoduje to zmianę domyślnego dla wszystkich baz wiedzy wdrożone w określonej usługi QnA Maker.
 
-1. Przejdź do [portalu Azure](http://portal.azure.com) i przejdź do grupę zasobów, która reprezentuje usługę Maker — strona główna został utworzony.
+1. Przejdź do [witryny Azure portal](http://portal.azure.com) i przejdź do grupy zasobów, która reprezentuje utworzonej usługi QnA Maker.
 
-2. Kliknij, aby otworzyć **usługi aplikacji**.
+2. Kliknij, aby otworzyć **usługi App Service**.
 
-    ![Usługa dostępu do aplikacji](../media/qnamaker-concepts-confidencescore/set-default-response.png)
+    ![Dostęp do usługi App service](../media/qnamaker-concepts-confidencescore/set-default-response.png)
 
-3. Polecenie **ustawienia aplikacji** i edytować **DefaultAnswer** pole odpowiedzi domyślną. Kliknij pozycję **Zapisz**.
+3. Kliknij pozycję **ustawienia aplikacji** i edytować **DefaultAnswer** pole odpowiedź domyślną. Kliknij pozycję **Zapisz**.
 
-    ![Zmień domyślny](../media/qnamaker-concepts-confidencescore/change-response.png)
+    ![Zmień domyślną odpowiedź](../media/qnamaker-concepts-confidencescore/change-response.png)
 
-4. Uruchom ponownie usługi aplikacji
+4. Uruchom ponownie usługi App service
 
-    ![Ponowne uruchomienie usługi aplikacji — strona główna Maker](../media/qnamaker-faq/qnamaker-appservice-restart.png)
+    ![Ponowne uruchomienie usługi App Service usługa QnA Maker](../media/qnamaker-faq/qnamaker-appservice-restart.png)
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Obsługiwane źródła danych](./data-sources-supported.md)
+> [Źródła danych obsługiwane](./data-sources-supported.md)
 
 ## <a name="see-also"></a>Zobacz także 
 
-[Omówienie Maker — strona główna](../Overview/overview.md)
+[Omówienie usługi QnA Maker](../Overview/overview.md)

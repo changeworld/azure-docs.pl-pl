@@ -8,16 +8,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 09/12/2018
 ms.author: curtand
 ms.reviewer: beengen
 ms.custom: it-pro
-ms.openlocfilehash: b6b7f6f51e848223adcf618ebbc47df08e7ea7ef
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: c9728b63545450fe9160c3e4a79bace254ccc533
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44392269"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543849"
 ---
 # <a name="user-consent-and-linkedin-account-connections-data-sharing"></a>Zgoda użytkownika i udostępnianie danych połączenia konta usługi LinkedIn
 
@@ -31,7 +31,7 @@ Aby wyświetlić informacje LinkedIn z usługami i aplikacjami firmy Microsoft, 
 
 Dostęp do informacji usługi LinkedIn w ramach usług i aplikacji firmy Microsoft ułatwia użytkownikom łączenie, zaangażowania i utworzyć relacje profesjonalnych współpracownikom, klientom i partnerom wewnątrz organizacji i poza nią. Nowi użytkownicy mogą szybciej się wszystkiego, łączenie ze współpracownikami, więcej informacji na temat ich i łatwe uzyskiwanie dostępu do informacji. Poniżej przedstawiono przykładowy sposób LinkedIn informacje są wyświetlane na karcie profil w aplikacjach firmy Microsoft:
 
-![Włączanie połączenia konta usługi LinkedIn](./media/linkedin-user-consent/display-example-02.png)
+![Włączanie połączenia konta usługi LinkedIn](./media/linkedin-user-consent/display-example.png)
 
 ## <a name="enable-and-announce-linkedin-account-connections"></a>Włącz i poinformować o połączenia konta usługi LinkedIn
 

@@ -1,54 +1,54 @@
 ---
-title: 'Zawsze zaszyfrowane: Azure SQL Database — magazynu certyfikatów systemu Windows | Dokumentacja firmy Microsoft'
-description: W tym artykule przedstawiono sposób zabezpieczyć poufne dane z bazy danych SQL przy użyciu szyfrowania bazy danych przy użyciu zawsze zaszyfrowane kreatora w programu SQL Server Management Studio (SSMS). On również przedstawiono sposób przechowywania kluczy szyfrowania w magazynie certyfikatów systemu Windows.
-keywords: szyfrowanie danych, szyfrowania sql, szyfrowania bazy danych poufnych danych, zawsze zaszyfrowane
+title: 'Zawsze szyfrowane: Usługa Azure SQL Database — magazyn certyfikatów Windows | Dokumentacja firmy Microsoft'
+description: W tym artykule pokazano, jak zabezpieczyć poufne dane w usłudze SQL database przy użyciu szyfrowania bazy danych przez Kreator zawsze szyfrowane w SQL Server Management Studio (SSMS). On również pokazano, jak do przechowywania kluczy szyfrowania w magazynie certyfikatów Windows.
+keywords: szyfrowanie danych, szyfrowanie sql, szyfrowanie bazy danych, dane poufne, są zawsze szyfrowane
 services: sql-database
-author: stevestein
+author: VanMSFT
 manager: craigg
 ms.service: sql-database
 ms.custom: security
 ms.topic: conceptual
 ms.date: 04/01/2018
-ms.author: sstein
-ms.openlocfilehash: 25565f2369bc684525a53889b6cd069af5ce32f0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: vanto
+ms.openlocfilehash: c6656a1ef5e52782461d9b9e7106ff81eb3983ee
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647038"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544051"
 ---
-# <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-the-windows-certificate-store"></a>Zawsze zaszyfrowane: Ochrona poufnych danych w bazie danych SQL i przechowywania kluczy szyfrowania w magazynie certyfikatów systemu Windows
+# <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-the-windows-certificate-store"></a>Zawsze szyfrowane: Chronić poufne dane w bazie danych SQL i przechowywania kluczy szyfrowania w magazynie certyfikatów Windows
 
-W tym artykule przedstawiono sposób zabezpieczyć poufne dane z bazy danych SQL przy użyciu szyfrowania bazy danych przy użyciu [zawsze szyfrowany Kreator](https://msdn.microsoft.com/library/mt459280.aspx) w [programu SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx). On również przedstawiono sposób przechowywania kluczy szyfrowania w magazynie certyfikatów systemu Windows.
+W tym artykule pokazano, jak zabezpieczyć poufne dane w usłudze SQL database przy użyciu szyfrowania bazy danych przy użyciu [Kreator zawsze szyfrowane](https://msdn.microsoft.com/library/mt459280.aspx) w [programu SQL Server Management Studio (SSMS)](https://msdn.microsoft.com/library/hh213248.aspx). On również pokazano, jak do przechowywania kluczy szyfrowania w magazynie certyfikatów Windows.
 
-Zawsze zaszyfrowane jest nową technologią szyfrowania danych w bazie danych SQL Azure i programu SQL Server, która pomaga chronić poufnych danych przechowywanych na serwerze podczas przenoszenia między klientem a serwerem i danych w trakcie używania, zapewnienie poufnych danych, nigdy nie jest wyświetlany jako zwykłego tekstu w systemie bazy danych. Po dane są szyfrowane, tylko aplikacje klienckie lub serwery aplikacji, które mają dostęp do kluczy można uzyskać dostępu do danych w postaci zwykłego tekstu. Aby uzyskać szczegółowe informacje, zobacz [zawsze zaszyfrowane (aparat bazy danych)](https://msdn.microsoft.com/library/mt163865.aspx).
+Always Encrypted to nowej technologii szyfrowania danych w usłudze Azure SQL Database i programu SQL Server, która pomaga chronić poufne dane przechowywane na serwerze podczas przenoszenia między klientem i serwerem oraz gdy dane są używane, zapewniając poufnych danych nigdy nie jest wyświetlany jako zwykły tekst wewnątrz system bazy danych. Po dane są szyfrowane, tylko aplikacje klienckie lub serwery aplikacji, które mają dostęp do kluczy mogą uzyskać dostęp do danych w postaci zwykłego tekstu. Aby uzyskać szczegółowe informacje, zobacz [Always Encrypted (aparat bazy danych)](https://msdn.microsoft.com/library/mt163865.aspx).
 
-Po skonfigurowaniu bazy danych zawsze zaszyfrowane, spowoduje utworzenie aplikacji klienckiej w języku C# z programem Visual Studio do pracy z zaszyfrowanych danych.
+Po skonfigurowaniu bazy danych są zawsze szyfrowane, utworzysz aplikację kliencką w języku C# za pomocą programu Visual Studio do pracy z zaszyfrowanych danych.
 
-Wykonaj kroki opisane w tym artykule opisano konfigurowanie zawsze zaszyfrowane dla bazy danych Azure SQL. W tym artykule dowiesz się, jak wykonać następujące zadania:
+Wykonaj kroki opisane w tym artykule, aby dowiedzieć się, jak skonfigurować Always Encrypted dla usługi Azure SQL database. W tym artykule dowiesz się, jak wykonywać następujące zadania:
 
-* Użyj Kreatora zawsze zaszyfrowane w programie SSMS, aby utworzyć [zawsze zaszyfrowane klucze](https://msdn.microsoft.com/library/mt163865.aspx#Anchor_3).
-  * Utwórz [klucza głównego kolumny (CMK)](https://msdn.microsoft.com/library/mt146393.aspx).
-  * Utwórz [klucza szyfrowania kolumny (CEK)](https://msdn.microsoft.com/library/mt146372.aspx).
-* Tworzenie tabeli bazy danych i szyfrowania kolumn.
+* Użyj Kreatora zawsze szyfrowane w programie SSMS, aby utworzyć [zawsze zaszyfrowane klucze](https://msdn.microsoft.com/library/mt163865.aspx#Anchor_3).
+  * Tworzenie [klucz główny kolumny (CMK)](https://msdn.microsoft.com/library/mt146393.aspx).
+  * Tworzenie [klucza szyfrowania kolumny (CEK)](https://msdn.microsoft.com/library/mt146372.aspx).
+* Tworzenie tabeli bazy danych i szyfrowanie kolumny.
 * Utwórz aplikację, która wstawia, wybiera i wyświetla dane z zaszyfrowanych kolumn.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym samouczku potrzebne są:
+W tym samouczku będą potrzebne:
 
-* Konto i subskrypcja platformy Azure. Jeśli nie masz, zaloguj się do [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
+* Konto i subskrypcja platformy Azure. Jeśli nie masz, należy zasubskrybować [bezpłatna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 * [SQL Server Management Studio](https://msdn.microsoft.com/library/mt238290.aspx) wersji 13.0.700.242 lub nowszej.
 * [.NET framework 4.6](https://msdn.microsoft.com/library/w0x726c2.aspx) lub nowszej (na komputerze klienckim).
 * Program [Visual Studio](https://www.visualstudio.com/downloads/download-visual-studio-vs.aspx).
 
 ## <a name="create-a-blank-sql-database"></a>Tworzenie pustej bazy danych SQL
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
-2. Kliknij przycisk **Utwórz zasób** > **dane i magazyn** > **bazy danych SQL**.
-3. Utwórz **puste** bazy danych o nazwie **Clinic** na nowym lub istniejącym serwerze. Aby uzyskać szczegółowe instrukcje dotyczące tworzenia bazy danych w portalu Azure, zobacz [pierwszą bazę danych Azure SQL](sql-database-get-started-portal.md).
+2. Kliknij przycisk **Utwórz zasób** > **dane + magazyn** > **bazy danych SQL**.
+3. Tworzenie **puste** bazy danych o nazwie **kliniki** na nowy lub istniejący serwer. Aby uzyskać szczegółowe instrukcje dotyczące tworzenia bazy danych w witrynie Azure portal, zobacz [pierwszej bazy danych Azure SQL](sql-database-get-started-portal.md).
    
     ![Tworzenie pustej bazy danych](./media/sql-database-always-encrypted/create-database.png)
 
-Parametry połączenia należy później w samouczku. Po utworzeniu bazy danych, przejdź do nowej bazy danych Clinic i skopiuj parametry połączenia. Parametry połączenia można uzyskać w dowolnym momencie, ale łatwo skopiować go w portalu Azure.
+W dalszej części tego samouczka będą potrzebne parametry połączenia. Po utworzeniu bazy danych, przejdź do nowej bazy danych kliniki i skopiuj parametry połączenia. Parametry połączenia można uzyskać w dowolnym momencie, ale można łatwo skopiować go, gdy jesteś w witrynie Azure portal.
 
 1. Kliknij przycisk **baz danych SQL** > **Clinic** > **Pokaż parametry połączenia bazy danych**.
 2. Skopiuj parametry połączenia dla **ADO.NET**.
@@ -56,21 +56,21 @@ Parametry połączenia należy później w samouczku. Po utworzeniu bazy danych,
     ![Skopiuj parametry połączenia](./media/sql-database-always-encrypted/connection-strings.png)
 
 ## <a name="connect-to-the-database-with-ssms"></a>Nawiązywanie połączenia z bazą danych za pomocą programu SSMS
-Otwórz SSMS i nawiąż połączenie z serwerem z bazą danych Clinic.
+Otwórz aplikację SSMS i połączyć się z serwerem z bazą danych okulistycznej.
 
 1. Otwórz program SSMS. (Kliknij **Connect** > **aparatu bazy danych** otworzyć **Połącz z serwerem** okna, jeśli nie jest otwarty).
-2. Wprowadź nazwę serwera i poświadczenia. Nazwa serwera można znaleźć w bloku bazy danych SQL i w parametrach połączenia skopiowane wcześniej. Wpisz nazwy serwerów pełną, w tym *database.windows.net*.
+2. Wprowadź nazwę serwera i poświadczenia. Nazwa serwera można znaleźć w bloku bazy danych SQL i parametry połączenia skopiowane wcześniej. Typ w tym nazwa kompletnego serwera *database.windows.net*.
    
     ![Skopiuj parametry połączenia](./media/sql-database-always-encrypted/ssms-connect.png)
 
-Jeśli **nowej reguły zapory** okno, zaloguj się na platformie Azure oraz umożliwiają SSMS Utwórz nową regułę zapory dla Ciebie.
+Jeśli **nowej reguły zapory** zostanie wyświetlone okno dialogowe, zaloguj się do platformy Azure, dzięki czemu program SSMS, Utwórz nową regułę zapory dla Ciebie.
 
 ## <a name="create-a-table"></a>Tworzenie tabeli
-W tej sekcji utworzysz tabelę do przechowywania danych pacjenta. Będzie to normalna tabeli początkowo — skonfiguruje szyfrowania w następnej sekcji.
+W tej sekcji utworzysz tabelę do przechowywania danych pacjentów. Jest to normalne tabeli początkowo — skonfigurujesz szyfrowania w następnej sekcji.
 
-1. Rozwiń węzeł **baz danych**.
+1. Rozwiń **baz danych**.
 2. Kliknij prawym przyciskiem myszy **Clinic** bazy danych, a następnie kliknij przycisk **nowe zapytanie**.
-3. Wklej następujący języka Transact-SQL (T-SQL) do okna nowej kwerendy i **Execute** go.
+3. Wklej następujących instrukcji języka Transact-SQL (T-SQL) w nowym oknie zapytania i **Execute** go.
 
         CREATE TABLE [dbo].[Patients](
          [PatientId] [int] IDENTITY(1,1),
@@ -87,82 +87,82 @@ W tej sekcji utworzysz tabelę do przechowywania danych pacjenta. Będzie to nor
          GO
 
 
-## <a name="encrypt-columns-configure-always-encrypted"></a>Szyfrowania kolumn (Konfigurowanie zawsze szyfrowane)
-SSMS udostępnia kreatora, aby łatwo skonfigurować zawsze zaszyfrowane poprzez ustawienie CMK CEK i zaszyfrowanych kolumn dla Ciebie.
+## <a name="encrypt-columns-configure-always-encrypted"></a>Szyfrowanie kolumn (Konfigurowanie funkcji Always Encrypted)
+SSMS udostępnia kreatora łatwe konfigurowanie funkcji Always Encrypted poprzez skonfigurowanie CMK CEK i zaszyfrowanych kolumn dla Ciebie.
 
-1. Rozwiń węzeł **baz danych** > **Clinic** > **tabel**.
-2. Kliknij prawym przyciskiem myszy **pacjentów** tabeli i wybierz **szyfrowania kolumn** aby otworzyć Kreatora zawsze szyfrowane:
+1. Rozwiń **baz danych** > **Clinic** > **tabel**.
+2. Kliknij prawym przyciskiem myszy **pacjentów** tabeli, a następnie wybierz pozycję **szyfrowania kolumn** aby otworzyć Kreatora zawsze szyfrowane:
    
-    ![Szyfrowania kolumn](./media/sql-database-always-encrypted/encrypt-columns.png)
+    ![Szyfrowanie kolumn](./media/sql-database-always-encrypted/encrypt-columns.png)
 
-Kreator zawsze zaszyfrowane zawiera następujące sekcje: **kolumn wybór**, **konfiguracji klucza głównego** (CMK), **weryfikacji**, i **Podsumowanie**.
+Kreator zawsze szyfrowane zawiera następujące sekcje: **wybór kolumn**, **konfiguracji klucza głównego** (CMK) **weryfikacji**, i **podsumowanie** .
 
-### <a name="column-selection"></a>Wybór kolumny
-Kliknij przycisk **dalej** na **wprowadzenie** strony, aby otworzyć **kolumn wybór** strony. Na tej stronie możesz wybrać kolumny, które mają być szyfrowane, [typ szyfrowania i jakie klucza szyfrowania kolumny (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) do użycia.
+### <a name="column-selection"></a>Wybór kolumn
+Kliknij przycisk **dalej** na **wprowadzenie** strony, aby otworzyć **wybór kolumn** strony. Na tej stronie będą wybierz kolumny, które mają być szyfrowane, [typ szyfrowania i jakie klucza szyfrowania kolumny (CEK)](https://msdn.microsoft.com/library/mt459280.aspx#Anchor_2) do użycia.
 
-Szyfrowanie **SSN** i **Data urodzenia** informacje dotyczące każdego pacjenta. **SSN** kolumny użyje deterministyczne szyfrowania, który obsługuje równości wyszukiwań, sprzężeń i Grupuj według. **Data urodzenia** kolumny użyje losowego szyfrowania, który nie obsługuje operacji.
+Szyfruj **SSN** i **datę urodzenia** informacji dla każdego pacjenta. **SSN** kolumny użyje deterministyczne szyfrowanie, które obsługuje wyszukiwań równości, sprzężeń i Grupuj według. **Datę urodzenia** kolumny będzie używać szyfrowania losowego, który nie obsługuje operacji.
 
-Ustaw **typ szyfrowania** dla **SSN** kolumny **Deterministic** i **Data urodzenia** kolumny **Randomized**. Kliknij przycisk **Dalej**.
+Ustaw **typ szyfrowania** dla **SSN** kolumny **Deterministic** i **datę urodzenia** kolumny **Randomized** . Kliknij przycisk **Dalej**.
 
-![Szyfrowania kolumn](./media/sql-database-always-encrypted/column-selection.png)
+![Szyfrowanie kolumn](./media/sql-database-always-encrypted/column-selection.png)
 
 ### <a name="master-key-configuration"></a>Konfiguracja klucza głównego
-**Konfiguracji klucza głównego** strona jest gdzie konfigurowanie Twojego CMK i wybierz dostawcę magazynu kluczy przechowywania CMK. Obecnie można przechowywać CMK w magazynie certyfikatów systemu Windows, usługi Azure Key Vault lub sprzętowego modułu zabezpieczeń (HSM). W tym samouczku przedstawiono sposób przechowywania kluczy w magazynie certyfikatów systemu Windows.
+**Konfiguracji klucza głównego** strona jest gdzie skonfigurować swoje CMK i wybierz dostawcę magazynu kluczy przechowywania CMK. Obecnie CMK można przechowywać w magazynie certyfikatów Windows, usługi Azure Key Vault lub sprzętowego modułu zabezpieczeń (HSM). W tym samouczku przedstawiono sposób przechowywania kluczy w magazynie certyfikatów Windows.
 
-Sprawdź, czy **magazynu certyfikatów systemu Windows** jest zaznaczone, a następnie kliknij przycisk **dalej**.
+Upewnij się, że **magazynu certyfikatów Windows** jest zaznaczone, a następnie kliknij przycisk **dalej**.
 
 ![Konfiguracja klucza głównego](./media/sql-database-always-encrypted/master-key-configuration.png)
 
 ### <a name="validation"></a>Walidacja
-Można teraz szyfrowanie kolumny lub zapisać skrypt programu PowerShell, aby uruchomić później. W tym samouczku, wybierz **przystąpić do zakończenia teraz** i kliknij przycisk **dalej**.
+Można teraz szyfrowanie kolumny lub Zapisz skrypt programu PowerShell, aby uruchomić później. Na potrzeby tego samouczka wybierz **przejść do Zakończ teraz** i kliknij przycisk **dalej**.
 
 ### <a name="summary"></a>Podsumowanie
-Sprawdź, czy ustawienia są wszystkie prawidłowe i kliknij przycisk **Zakończ** aby ukończyć instalację na zawsze szyfrowane.
+Sprawdź, czy ustawienia są poprawne, a następnie kliknij przycisk **Zakończ** aby ukończyć instalację dla funkcji Always Encrypted.
 
 ![Podsumowanie](./media/sql-database-always-encrypted/summary.png)
 
 ### <a name="verify-the-wizards-actions"></a>Sprawdź akcje Kreatora
-Po zakończeniu pracy Kreatora bazy danych jest skonfigurowane dla zawsze szyfrowane. Kreator wykonywane następujące akcje:
+Po zakończeniu pracy Kreatora bazy danych skonfigurowano dla funkcji Always Encrypted. Kreator wykonywane następujące akcje:
 
-* Utworzyć CMK.
-* Utworzyć CEK.
-* Skonfigurowane zaznaczonych kolumnach do szyfrowania. Twoje **pacjentów** tabeli nie ma obecnie żadnych danych, ale wszystkie istniejące dane w zaznaczonych kolumnach jest teraz zaszyfrowana.
+* Utworzony CMK.
+* Utworzony CEK.
+* Skonfigurowane zaznaczonych kolumnach do szyfrowania. Twoje **pacjentów** tabeli obecnie nie ma żadnych danych, ale wszystkie istniejące dane w zaznaczonych kolumnach są teraz szyfrowane.
 
-Możesz sprawdzić, przechodząc do tworzenia kluczy w programie SSMS **Clinic** > **zabezpieczeń** > **zawsze zaszyfrowane klucze**. Możesz teraz przeglądać z wygenerowana Kreatora nowych kluczy.
+Tworzenie kluczy w programie SSMS można sprawdzić, przechodząc do **Clinic** > **zabezpieczeń** > **zawsze zaszyfrowane klucze**. Będą teraz widoczne nowe klucze, które kreator automatycznie wygenerowanego.
 
-## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>Tworzenie aplikacji klienckiej, która współdziała z zaszyfrowanych danych
-Teraz, gdy skonfigurowano zawsze zaszyfrowane, można utworzyć aplikację, która wykonuje *wstawia* i *wybiera* w przypadku kolumn zaszyfrowanych. Aby pomyślnie uruchomić przykładowej aplikacji, należy uruchomić ją na tym samym komputerze którym uruchomiono kreatora zawsze szyfrowane. Aby uruchomić aplikację na innym komputerze, należy wdrożyć certyfikaty zawsze zaszyfrowane do komputera z uruchomionym aplikacji klienckiej.  
+## <a name="create-a-client-application-that-works-with-the-encrypted-data"></a>Utwórz aplikację kliencką, która współdziała z zaszyfrowanych danych
+Skoro zdefiniowano Always Encrypted, można utworzyć aplikację, która wykonuje *wstawia* i *wybiera* dotycząca zaszyfrowanych kolumn. Aby pomyślnie uruchomić przykładową aplikację, należy uruchomić go na tym samym komputerze gdzie został uruchomiony Kreator zawsze szyfrowane. Aby uruchomić aplikację na innym komputerze, należy wdrożyć certyfikaty są zawsze szyfrowane, do komputera z uruchomioną aplikację kliencką.  
 
 > [!IMPORTANT]
-> Aplikacja musi używać [SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx) obiekty podczas przekazywania do serwera z kolumnami zawsze zaszyfrowane dane w postaci zwykłego tekstu. Przekazywanie wartości literałów bez przy użyciu obiektów SqlParameter spowoduje Wystąpił wyjątek.
+> Aplikacja musi używać [parametr SqlParameter](https://msdn.microsoft.com/library/system.data.sqlclient.sqlparameter.aspx) obiekty podczas przekazywania danych w postaci zwykłego tekstu na serwerze przy użyciu funkcji zawsze zaszyfrowane kolumny. Przekazanie wartości literałów bez korzystania z obiektów parametr SqlParameter spowoduje wyjątek.
 > 
 > 
 
-1. Otwórz program Visual Studio i utworzyć nową aplikację konsoli języka C#. Upewnij się, że projekt ma ustawioną wartość **.NET Framework 4.6** lub nowszym.
-2. Nazwij projekt **AlwaysEncryptedConsoleApp** i kliknij przycisk **OK**.
+1. Otwórz program Visual Studio i Utwórz nową aplikację konsoli C#. Upewnij się, że projekt jest ustawiona na **.NET Framework 4.6** lub nowszej.
+2. Nadaj projektowi nazwę **AlwaysEncryptedConsoleApp** i kliknij przycisk **OK**.
 
 ![Nową aplikację konsoli](./media/sql-database-always-encrypted/console-app.png)
 
-## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>Modyfikowanie parametrów połączenia, aby włączyć zawsze zaszyfrowane
-W tej sekcji wyjaśniono, jak włączyć zawsze zaszyfrowane w ciągu połączenia bazy danych. Należy zmodyfikować aplikację konsoli utworzonego w następnej sekcji "Zawsze zaszyfrowane Przykładowa aplikacja konsolowa".
+## <a name="modify-your-connection-string-to-enable-always-encrypted"></a>Zmodyfikuj parametry połączenia umożliwiające Always Encrypted
+W tej sekcji opisano sposób włączania funkcji zawsze zaszyfrowane w ciągu połączenia bazy danych. Należy zmodyfikować aplikację konsoli, nowo utworzoną w następnej sekcji "Always Encrypted Przykładowa aplikacja konsolowa."
 
-Aby włączyć zawsze zaszyfrowane, musisz dodać **ustawienie szyfrowania kolumny** — słowo kluczowe połączenia ciąg i ustaw ją na **włączone**.
+Aby włączyć Always Encrypted, musisz dodać **ustawienie szyfrowania kolumny** — słowo kluczowe do połączenia ciągu i ustaw ją na **włączone**.
 
-Możesz ustawić bezpośrednio w parametrach połączenia lub można ją ustawić za pomocą [SqlConnectionStringBuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx). Przykładową aplikację w następnej sekcji przedstawiono sposób użycia **SqlConnectionStringBuilder**.
+Możesz ustawić bezpośrednio w parametrach połączenia lub jest on ustawiany za pomocą [SqlConnectionStringBuilder](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.aspx). Przykładowa aplikacja w następnej sekcji pokazano, jak **SqlConnectionStringBuilder**.
 
 > [!NOTE]
-> Jest to jedyna różnica wymagane w określonych aplikacji klienckiej zawsze szyfrowane. Jeśli masz istniejącą aplikację przechowujący zewnętrznie parametrach połączenia (to znaczy w pliku konfiguracyjnym), można włączyć zawsze zaszyfrowane, bez konieczności zmieniania kodu.
+> Jest to jedyna zmiana wymagane w aplikacji klienckiej określonych funkcji zawsze zaszyfrowane. Jeśli masz istniejącą aplikację, która przechowuje zewnętrznie jego parametry połączenia (czyli w pliku konfiguracji), można włączyć funkcji Always Encrypted bez zmieniania kodu.
 > 
 > 
 
-### <a name="enable-always-encrypted-in-the-connection-string"></a>Włącz zawsze zaszyfrowane w parametrach połączenia
-Dodaj następujące słowo kluczowe parametrów połączenia:
+### <a name="enable-always-encrypted-in-the-connection-string"></a>Włączanie funkcji zawsze zaszyfrowane w parametrach połączenia
+Dodaj następujące słowo kluczowe do parametrów połączenia:
 
     Column Encryption Setting=Enabled
 
 
-### <a name="enable-always-encrypted-with-a-sqlconnectionstringbuilder"></a>Włącz zawsze zaszyfrowane przy SqlConnectionStringBuilder
-Poniższy kod przedstawia sposób włączania zawsze szyfrowane przez ustawienie [SqlConnectionStringBuilder.ColumnEncryptionSetting](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) do [włączone](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx).
+### <a name="enable-always-encrypted-with-a-sqlconnectionstringbuilder"></a>Włącz zawsze zaszyfrowane za pomocą SqlConnectionStringBuilder
+Poniższy kod przedstawia sposób włączania funkcji Always Encrypted, ustawiając [SqlConnectionStringBuilder.ColumnEncryptionSetting](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectionstringbuilder.columnencryptionsetting.aspx) do [włączone](https://msdn.microsoft.com/library/system.data.sqlclient.sqlconnectioncolumnencryptionsetting.aspx).
 
     // Instantiate a SqlConnectionStringBuilder.
     SqlConnectionStringBuilder connStringBuilder =
@@ -175,15 +175,15 @@ Poniższy kod przedstawia sposób włączania zawsze szyfrowane przez ustawienie
 
 
 ## <a name="always-encrypted-sample-console-application"></a>Zawsze zaszyfrowane Przykładowa aplikacja konsolowa
-W przykładzie pokazano, jak:
+Niniejszy przykład pokazuje, jak:
 
-* Zmodyfikuj parametry połączenia, aby włączyć zawsze szyfrowane.
-* Wstawianie danych w zaszyfrowanych kolumn.
-* Wybierz rekord filtrując określonej wartości w zaszyfrowanej kolumny.
+* Zmodyfikuj parametry połączenia umożliwiające Always Encrypted.
+* Wstawianie danych zaszyfrowanych kolumn.
+* Zaznacz rekord, filtrując dla określonej wartości w zaszyfrowanej kolumny.
 
-Zastąp zawartość **Program.cs** następującym kodem. Zastąp ciąg połączenia dla zmiennej globalnej connectionString w wierszu bezpośrednio nad metody Main ciągu prawidłowe połączenie z portalu Azure. Jest to tylko zmiany, które należy wprowadzić ten kod.
+Zastąp zawartość **Program.cs** następującym kodem. Zastąp parametry połączenia dla zmiennej globalnej connectionString w wierszu bezpośrednio powyżej metody Main Twojej prawidłowe parametry połączenia w witrynie Azure portal. Jest to jedyna zmiana, które należy wprowadzić ten kod.
 
-Uruchom aplikację, aby wyświetlić zawsze zaszyfrowane w akcji.
+Uruchom aplikację, aby zobaczyć są zawsze szyfrowane w działaniu.
 
     using System;
     using System.Collections.Generic;
@@ -466,50 +466,50 @@ Uruchom aplikację, aby wyświetlić zawsze zaszyfrowane w akcji.
 
 
 ## <a name="verify-that-the-data-is-encrypted"></a>Sprawdź, czy dane są szyfrowane.
-Można szybko sprawdzić, czy dane na serwerze są szyfrowane, badając **pacjentów** danych za pomocą narzędzia SSMS. (Użyj tego połączenia gdzie ustawienie szyfrowania kolumny nie jest jeszcze włączone).
+Można szybko sprawdzić, czy rzeczywistych danych na serwerze są szyfrowane, badając **pacjentów** danych za pomocą programu SSMS. (Użyj tego połączenia gdzie ustawieniem szyfrowania kolumny nie jest jeszcze włączone).
 
-Uruchom następujące zapytanie w bazie danych Clinic.
+Uruchom następujące zapytanie w bazie danych okulistycznej.
 
     SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
 
-Widać, że zaszyfrowanych kolumn nie zawierają żadnych danych w postaci zwykłego tekstu.
+Aby zobaczyć, że zaszyfrowanych kolumn nie zawierają żadnych danych w postaci zwykłego tekstu.
 
    ![Nową aplikację konsoli](./media/sql-database-always-encrypted/ssms-encrypted.png)
 
-Aby uzyskać dostęp do danych w postaci zwykłego tekstu przy użyciu narzędzia SSMS, można dodać **ustawienie szyfrowania kolumny = włączone** parametru do połączenia.
+Aby uzyskać dostęp do danych w postaci zwykłego tekstu za pomocą programu SSMS, możesz dodać **ustawienie szyfrowania kolumny = włączone** parametrów połączenia.
 
-1. W programie SSMS, kliknij prawym przyciskiem myszy serwer w **Eksplorator obiektów**, a następnie kliknij przycisk **rozłączenia**.
+1. W programie SSMS kliknij prawym przyciskiem myszy serwer w **Eksplorator obiektów**, a następnie kliknij przycisk **rozłączenia**.
 2. Kliknij przycisk **Connect** > **aparatu bazy danych** otworzyć **Połącz z serwerem** okna, a następnie kliknij przycisk **opcje**.
 3. Kliknij przycisk **dodatkowe parametry połączenia** i typ **ustawienie szyfrowania kolumny = włączone**.
    
     ![Nową aplikację konsoli](./media/sql-database-always-encrypted/ssms-connection-parameter.png)
-4. Uruchom następujące zapytanie w **Clinic** bazy danych.
+4. Uruchom następujące zapytanie **kliniki** bazy danych.
    
         SELECT FirstName, LastName, SSN, BirthDate FROM Patients;
    
-     Można przeglądać dane w postaci zwykłego tekstu w zaszyfrowanych kolumn.
+     Teraz widać danych zwykłego tekstu, zaszyfrowanych kolumn.
 
     ![Nową aplikację konsoli](./media/sql-database-always-encrypted/ssms-plaintext.png)
 
 
 
 > [!NOTE]
-> Jeśli łączysz się z SSMS (lub dowolnego klienta) z innego komputera, nie będzie miał dostęp do kluczy szyfrowania i nie będzie możliwe do odszyfrowania danych.
+> Jeśli łączysz się przy użyciu programu SSMS (lub dowolnego klienta), za pomocą innego komputera, nie będzie miał dostęp do kluczy szyfrowania i nie będzie do odszyfrowania danych.
 > 
 > 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Po utworzeniu bazy danych, która używa zawsze zaszyfrowane, można wykonać następujące czynności:
+Po utworzeniu bazy danych, która korzysta z funkcji zawsze zaszyfrowane, można wykonać następujące czynności:
 
-* W tym przykładzie należy uruchomić na innym komputerze. Nie będzie on mieć dostęp do kluczy szyfrowania, więc nie ma dostępu do danych w postaci zwykłego tekstu ani nie będzie działać prawidłowo.
+* Za pomocą innego komputera, należy uruchomić ten przykład. Nie będzie mieć dostępu do kluczy szyfrowania, więc nie ma dostępu do danych w postaci zwykłego tekstu i nie zostanie pomyślnie uruchomiona.
 * [Obracanie i wyczyścić klucze](https://msdn.microsoft.com/library/mt607048.aspx).
-* [Migracja danych, które jest już zaszyfrowane za pomocą zawsze zaszyfrowane](https://msdn.microsoft.com/library/mt621539.aspx).
-* [Wdrażanie certyfikatów zawsze zaszyfrowane na innych komputerach klienckich](https://msdn.microsoft.com/library/mt723359.aspx#Anchor_1) (zobacz sekcję "Co certyfikatów dostępnych do aplikacji i użytkowników").
+* [Migrowanie danych, który jest już zaszyfrowany z funkcją Always Encrypted](https://msdn.microsoft.com/library/mt621539.aspx).
+* [Wdrażanie certyfikatów są zawsze szyfrowane na innych komputerach klienckich](https://msdn.microsoft.com/library/mt723359.aspx#Anchor_1) (zobacz sekcję "Co certyfikaty dostępny do aplikacji i użytkownicy").
 
 ## <a name="related-information"></a>Informacje pokrewne
-* [Zawsze zaszyfrowane (Programowanie klienta)](https://msdn.microsoft.com/library/mt147923.aspx)
-* [Przezroczystego szyfrowania danych](https://msdn.microsoft.com/library/bb934049.aspx)
+* [Zawsze szyfrowane (Programowanie klienta)](https://msdn.microsoft.com/library/mt147923.aspx)
+* [Przezroczyste szyfrowanie danych](https://msdn.microsoft.com/library/bb934049.aspx)
 * [Szyfrowanie serwera SQL](https://msdn.microsoft.com/library/bb510663.aspx)
-* [Kreator zawsze zaszyfrowane](https://msdn.microsoft.com/library/mt459280.aspx)
-* [Blog zawsze zaszyfrowane](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
+* [Kreator zawsze szyfrowane](https://msdn.microsoft.com/library/mt459280.aspx)
+* [Zawsze zaszyfrowane Blog](http://blogs.msdn.com/b/sqlsecurity/archive/tags/always-encrypted/)
 

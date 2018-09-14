@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/2/2018
 ms.author: markgal
-ms.openlocfilehash: 5fd0cb92bd35b1f238e4080d2c9e8caf781b8131
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: aa26106460f305568fcb2dd1b84fbc54370e5f39
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493872"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543581"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Pytania dotyczące usługi Azure Backup
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące składników usługi Azure Backup. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Aby zadać pytanie dotyczące usługi Azure Backup, kliknij pozycję **Komentarze** (po prawej stronie). Komentarze są wyświetlane na dole tego artykułu. Aby komentować, musisz mieć konto Livefyre. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -41,6 +41,9 @@ Nie. Magazyn jest tworzone na poziomie subskrypcji i nie może zostać przypisan
 
 ### <a name="can-i-migrate-backup-data-to-another-vault-br"></a>Czy można migrować dane kopii zapasowej w innym magazynie? <br/>
 Nie. Nie można przenieść dane kopii zapasowej, przechowywane w magazynie w innym magazynie.
+
+### <a name="can-i-change-from-grs-to-lrs-after-a-backup-br"></a>Można zmienić z GRS na LRS po utworzeniu kopii zapasowej? <br/>
+Nie. Magazyn usługi Recovery Services można zmienić tylko opcje magazynu, zanim wszystkie kopie zapasowe są przechowywane. 
 
 ### <a name="recovery-services-vaults-are-resource-manager-based-are-backup-vaults-still-supported-br"></a>Magazyny usług Recovery Services są oparte na usłudze Resource Manager. Czy magazyny kopii zapasowych są nadal obsługiwane? <br/>
 Magazyny kopii zapasowych zostały przekonwertowane na magazynów usługi Recovery Services. Jeśli nie zostały przekonwertowane magazynu kopii zapasowych w magazynie usługi Recovery Services, magazynu kopii zapasowych został przekonwertowany w magazynie usługi Recovery Services dla Ciebie. 

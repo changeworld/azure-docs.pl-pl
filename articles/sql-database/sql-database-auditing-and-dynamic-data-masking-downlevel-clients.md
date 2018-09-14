@@ -1,6 +1,6 @@
 ---
-title: Tabela inspekcji, przekierowanie TDS punktów końcowych IP bazy danych SQL Azure i | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o inspekcji przekierowania TDS i adres IP punktu końcowego zmiany podczas wykonywania inspekcji tabeli w bazie danych SQL Azure.
+title: Tabela inspekcji, przekierowanie TDS i IP punktów końcowych usługi Azure SQL Database | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o inspekcji TDS przekierowania i adres IP punktu końcowego zmiany podczas wykonywania inspekcji tabel w usłudze Azure SQL Database.
 services: sql-database
 author: giladm
 manager: craigg
@@ -9,43 +9,44 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: giladm
-ms.openlocfilehash: b615e9ff67788c2f02c2fa0c33e0de3331e77885
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: vanto
+ms.openlocfilehash: 9fcb070f41d699cef3ef11ba9b8feb6cdfd83ae5
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645633"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541220"
 ---
-# <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>Baza danych SQL — klienci z obniżonym poziomem obsługuje i punkcie końcowym IP zmian dla tabeli inspekcji
+# <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>Obsługa klientów niższych poziomów bazy danych SQL — i punktu końcowego adresu IP zmienia się w przypadku inspekcji tabel
 
 > [!IMPORTANT]
-> Ten dokument ma zastosowanie tylko do inspekcji tabeli, która jest **teraz przestarzałe**.<br>
-> Użyj nowej [Inspekcja obiektów Blob](sql-database-auditing.md) — metoda, która **nie** wymagają modyfikacji ciągu połączenia klientów niższych poziomów. Dodatkowe informacje o inspekcji obiektu Blob można znaleźć w [wprowadzenie inspekcji bazy danych SQL](sql-database-auditing.md).
+> Ten dokument ma zastosowanie tylko do inspekcji tabel, która jest **zakończyliśmy**.<br>
+> Użyj nowej [inspekcji obiektów Blob](sql-database-auditing.md) metody, która **nie** wymaga modyfikacji ciągu połączenia klientów niższych poziomów. Dodatkowe informacje na temat inspekcji obiektów Blob można znaleźć w [Rozpoczynanie pracy z inspekcją bazy danych SQL](sql-database-auditing.md).
 
-[Baza danych inspekcji](sql-database-auditing.md) działa automatycznie klientom SQL, które obsługują przekierowanie TDS. Należy pamiętać, że w tym przekierowania nie ma zastosowania, korzystając z metody Inspekcja obiektów Blob.
+[Bazy danych inspekcji](sql-database-auditing.md) automatycznie współpracuje z usługą SQL klientów, które obsługują przekierowanie TDS. Pamiętaj, że przekierowanie nie ma zastosowania, korzystając z metody inspekcji obiektów Blob.
 
 ## <a id="subheading-1"></a>Obsługa klientów niższych poziomów
-Dowolnego klienta, który implementuje TDS 7.4 powinny również obsługiwać przekierowania. Wyjątki od tej reguły obejmują JDBC 4.0, w którym funkcji przekierowania nie jest w pełni obsługiwane i Tedious dla środowiska Node.JS, w których przekierowania nie została zaimplementowana.
+Dowolny klient, który implementuje TDS w wersji 7.4 powinien obsługiwać również przekierowania. Wyjątki od tej reguły obejmują JDBC 4.0, w którym funkcji przekierowania nie jest w pełni obsługiwana i Tedious dla środowiska Node.JS, w których przekierowania nie została zaimplementowana.
 
-Dla "Klientów niższych poziomów" tj. które Obsługa TDS 7.3 i poniżej — nazwa FQDN serwera w połączeniu ciąg wersji powinno zostać zmodyfikowane:
+Dla "Klientów niższych poziomów" czyli które pomocy technicznej TDS w wersji 7.3 i poniżej. nazwa FQDN serwera w połączeniu parametry powinny być modyfikowane:
 
 Oryginalna nazwa FQDN serwera w ciągu połączenia: <*nazwy serwera*>. database.windows.net
 
 Nazwa FQDN serwera zmodyfikowane w ciągu połączenia: <*nazwy serwera*> .database. **bezpieczne**. windows.net
 
-Zawiera listę częściowej "Klienci z obniżonym poziomem":
+Częściowa lista "Klienci z obniżonym poziomem" obejmuje:
 
-* .NET 4.0 i poniżej,
+* Program .NET 4.0 i poniżej
 * ODBC 10.0 i poniżej.
-* JDBC (podczas JDBC obsługuje TDS 7.4, funkcji przekierowania TDS nie jest całkowicie obsługiwana)
-* Niewygodny (dla środowiska Node.JS)
+* JDBC (JDBC obsługują TDS w wersji 7.4, funkcja przekierowywania TDS nie jest w pełni obsługiwany)
+* Tedious (dla środowiska Node.JS)
 
-**Uwaga:** modyfikacji FDQN powyższym serwerze mogą być przydatne także stosowania zasad inspekcji programu SQL Server poziom bez potrzebę konfiguracji kroku w każdej bazie danych (ograniczenie tymczasowe).
+**Uwaga:** powyższym serwerze modyfikacji nazwy FDQN może być przydatne także zastosowanie zasady inspekcji usługi SQL Server poziom bez na potrzeby konfiguracji krok w każdej bazie danych (tymczasowe ograniczenie).
 
-## <a id="subheading-2"></a>Punkt końcowy IP zmienia podczas włączania inspekcji
-Należy pamiętać, że po włączeniu inspekcji tabeli punkt końcowy IP bazy danych ulegnie zmianie. Jeśli ustawienia zapory strict, zaktualizuj tych ustawień zapory odpowiednio.
+## <a id="subheading-2"></a>Punkt końcowy IP zmienia się podczas włączania inspekcji
+Należy pamiętać, że po włączeniu inspekcji tabel punktu końcowego adresu IP bazy danych ulegnie zmianie. W przypadku ustawienia zapory ścisłe aktualizacji tych ustawień zapory odpowiednio.
 
-Nowy punkt końcowy IP bazy danych będzie zależeć od regionu bazy danych:
+Nowy punkt końcowy IP bazy danych zależy od regionu bazy danych:
 
 | Region bazy danych | Możliwe IP punktów końcowych. |
 | --- | --- |

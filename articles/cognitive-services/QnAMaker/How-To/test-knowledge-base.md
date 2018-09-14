@@ -1,76 +1,77 @@
 ---
-title: Jak przetestować bazy wiedzy knowledge base - Maker — strona główna - usług kognitywnych Azure | Dokumentacja firmy Microsoft
-description: Testowanie bazy wiedzy przed jej opublikowaniem.
+title: Jak przetestować wiedzy — QnA Maker
+titlesuffix: Azure Cognitive Services
+description: Testowanie bazy wiedzy usługi QnA Maker jest ważną częścią proces iteracyjny, aby poprawić dokładność odpowiedzi zostały zwrócone. Możesz przetestować wiedzy za pośrednictwem czatu rozszerzonego interfejsu, który umożliwia także, że możesz wprowadzać zmiany.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/12/2018
 ms.author: saneppal
-ms.openlocfilehash: cffb63666edab25e1b3b0739d0e0f2f828600f3a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d2b93e62513f256e151d3ab3b34d6dc6d9a49d79
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348681"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542620"
 ---
 # <a name="test-your-knowledge-base"></a>Testowanie bazy wiedzy
 
-Testowanie Maker — strona główna bazy wiedzy jest ważnym elementem procesem iteracyjnym w celu zwiększenia dokładności odpowiedzi zostały zwrócone. Można przetestować w bazie wiedzy za pomocą rozmowy rozszerzone interfejs, który umożliwia też dokonaj edycji.
+Testowanie bazy wiedzy usługi QnA Maker jest ważną częścią proces iteracyjny, aby poprawić dokładność odpowiedzi zostały zwrócone. Możesz przetestować wiedzy za pośrednictwem czatu rozszerzonego interfejsu, który umożliwia także, że możesz wprowadzać zmiany.
 
 ## <a name="test-answer-matching"></a>Dopasowanie odpowiedzi testu
 
-1.  Dostęp do bazy wiedzy, wybierając jego nazwę na **Moje baz wiedzy** strony.
-2.  Aby uzyskać dostęp do panelu poza slajdów testu, wybierz **testu** w górnym panelu aplikacji.
+1.  Dostęp do bazy wiedzy, wybierając jego nazwę na **moich baz wiedzy** strony.
+2.  Aby uzyskać dostęp do panelu slajdów w poziomie testu, wybierz pozycję **testu** w Twojej aplikacji na górnym panelu.
 
-    ![Test dostępu](../media/qnamaker-how-to-test-kb/access-test.png)
+    ![Dostęp do testu](../media/qnamaker-how-to-test-kb/access-test.png)
 
-3.  Wprowadź zapytanie w polu tekstowym, a następnie wybierz Enter.
+3.  Wprowadź zapytanie w polu tekstowym i naciśnij klawisz Enter.
 
-4.  Najlepiej dopasowanej odpowiedzi z bazy wiedzy jest zwracana jako odpowiedzi.
+4.  Najlepiej dopasowany odpowiedź z bazy wiedzy są zwracane jako odpowiedzi.
 
-## <a name="clear-test-panel"></a>Panel wyczyść testu
+## <a name="clear-test-panel"></a>Testu zwykłego panelu
 
-Aby wyczyścić wszystkie zapytania wprowadzone testu i ich wyniki z testów konsoli, wybierz **rozpoczęcie** w lewym górnym rogu panelu testu.
+Aby wyczyścić wszystkie zapytania wprowadzony testu i ich wyniki z konsoli testów, wybierz **zacząć od początku** w lewym górnym rogu panelu testu.
 
-## <a name="close-test-panel"></a>Panel Zamknij testu
+## <a name="close-test-panel"></a>Test Zamknij panel
 
-Aby zamknąć panel testu, wybierz **testu** przycisk ponownie. Po otwarciu Panelu testu nie można edytować zawartość bazy wiedzy Knowledge Base.
+Aby zamknąć panel testu, wybierz **testu** ponownie przycisk. Gdy Test jest otwarty panel, nie można edytować zawartość bazy wiedzy Knowledge Base.
 
 ## <a name="inspect-score"></a>Sprawdź wynik
 
-Należy sprawdzić szczegóły wyniku testu w panelu inspekcję.
+Możesz sprawdzić szczegóły wyniku testu w panelu Sprawdź.
 
-1.  Otwórz Panel slajdów poza testu wybierz **inspekcję** uzyskać więcej informacji dotyczących tej odpowiedzi.
+1.  Otwórz panel slajdów w poziomie testu wybierz **Sprawdź** więcej informacji na temat tej odpowiedzi.
 
     ![Sprawdź odpowiedzi](../media/qnamaker-how-to-test-kb/inspect.png)
 
-2.  Pojawi się panel inspekcji. Panel zawiera górnej oceniania opcje, a także wszelkich zidentyfikowanych jednostek. Panel przedstawia wynik utterance wybrane.
+2.  Zostanie wyświetlony panel inspekcji. Na panelu są dostępne u góry oceniania przeznaczenie, a także żadnych określonych jednostek. Zespół przedstawia wynik wybranego wypowiedź.
 
 ## <a name="correct-the-top-scoring-answer"></a>Popraw górnej oceniania odpowiedzi
 
-Jeśli górnej oceniania odpowiedzi jest nieprawidłowy, wybierz poprawną odpowiedź z listy i wybierz **Zapisz i uczenia**.
+Jeśli u góry oceniania odpowiedzi jest niepoprawny, wybierz poprawną odpowiedź z listy i wybierz przycisk **Zapisz i szkolenie**.
 
-![Test dostępu](../media/qnamaker-how-to-test-kb/choose-answer.png)
+![Dostęp do testu](../media/qnamaker-how-to-test-kb/choose-answer.png)
 
 ## <a name="add-alternate-questions"></a>Dodaj alternatywne pytania
 
-Inne formy zapytania można dodać do danej odpowiedzi. Typ odpowiedzi alternatywnego w polu tekstowym i kliknij przycisk enter, aby dodać je. Wybierz **Zapisz i uczenia** do przechowywania aktualizacji.
+Możesz dodać inne formy pytanie do danej odpowiedzi. Typ odpowiedzi alternatywna w polu tekstowym i kliknij przycisk enter, aby je dodać. Wybierz **Zapisz i szkolenie** do przechowywania aktualizacji.
 
-![Test dostępu](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
+![Dostęp do testu](../media/qnamaker-how-to-test-kb/add-alternate-question.png)
 
 ## <a name="add-a-new-answer"></a>Dodaj nową odpowiedź
 
-Można dodać nową odpowiedź, jeśli istniejące odpowiedzi, które były zgodne są niepoprawne lub odpowiedzi nie istnieje w bazie wiedzy knowledge base (nie dobrej znaleziono dopasowania w KB). Wprowadź nową odpowiedź na pytanie bieżącego w polu tekstowym, a następnie naciśnij klawisz enter, aby dodać go. 
+Jeśli któreś z istniejących odpowiedzi, które zostały dopasowane są niepoprawne lub odpowiedź nie istnieje w bazie wiedzy knowledge base (nie dobre znaleziono odpowiedników w KB), możesz dodać nową odpowiedź. Wprowadź nową odpowiedź do bieżącego zapytania w polu tekstowym i naciśnij klawisz enter, aby dodać go. 
 
-Wybierz **Zapisz i uczenia** utrwalić tej odpowiedzi. Teraz dodano nową parę pytań i odpowiedzi do bazy wiedzy.
+Wybierz **Zapisz i szkolenie** można utrwalić tej odpowiedzi. Nową parę odpowiedź na pytanie został dodany do bazy wiedzy.
 
-![Test dostępu](../media/qnamaker-how-to-test-kb/add-answer.png)
+![Dostęp do testu](../media/qnamaker-how-to-test-kb/add-answer.png)
 
 > [!NOTE]
-> Wszystkie zmiany do bazy wiedzy tylko są zapisywane po naciśnięciu **Zapisz i uczenia** przycisku.
+> Wszystkie zmiany do bazy wiedzy tylko są zapisywane po naciśnięciu klawisza **Zapisz i szkolenie** przycisku.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

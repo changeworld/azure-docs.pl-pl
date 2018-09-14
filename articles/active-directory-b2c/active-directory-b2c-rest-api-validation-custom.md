@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/24/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b4fda38834782be502e2581b7b3d1097000b07bb
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 0ac9b98a9dfe06492775481cd590bfb4d0db4b55
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37440667"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542586"
 ---
 # <a name="walkthrough-integrate-rest-api-claims-exchanges-in-your-azure-ad-b2c-user-journey-as-validation-on-user-input"></a>Wskazówki: Integracja interfejsu API REST wymianą oświadczeń podróży użytkownika usługi Azure AD B2C jako sprawdzanie poprawności danych wejściowych użytkownika
 
@@ -118,7 +118,7 @@ Aby dodać wymiana oświadczeń do samodzielnie profilu technicznego:
 
 1. Otwórz plik TrustFrameworkBase.xml i wyszukaj `<TechnicalProfile Id="SelfAsserted-ProfileUpdate">`.
 2. Sprawdź konfigurację tego profilu technicznego. Sprawdź, jak program exchange z użytkownikiem jest zdefiniowany jako oświadczenia, które pojawi się prośba o użytkownika (oświadczeń wejściowych) i oświadczenia, które będzie można oczekiwać od dostawcy samodzielnie (oświadczeń danych wyjściowych).
-3. Wyszukaj `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`i zwróć uwagę, że ten profil jest wywoływana jako aranżacji krok 4 `<UserJourney Id="ProfileEdit">`.
+3. Wyszukaj `TechnicalProfileReferenceId="SelfAsserted-ProfileUpdate`i zwróć uwagę, że ten profil jest wywoływana jako aranżacji krok 5 z `<UserJourney Id="ProfileEdit">`.
 
 ## <a name="step-4-upload-and-test-the-profile-edit-rp-policy-file"></a>Krok 4: Przekaż i przetestować plik zasad profilu edycji planu odzyskiwania
 

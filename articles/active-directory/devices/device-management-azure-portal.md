@@ -16,17 +16,17 @@ ms.topic: article
 ms.date: 08/25/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: ff1d51021038909c132bef4cb680589b9951f218
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 7aa7cd2e5b1cf1346a5a7b1f82ec9c7933dd1112
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041429"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542484"
 ---
 # <a name="how-to-manage-devices-using-the-azure-portal"></a>Jak zarządzać urządzeniami przy użyciu witryny Azure portal
 
 
-Za pomocą zarządzania urządzeniami w usłudze Azure Active Directory (Azure AD) można zagwarantować, że użytkownicy uzyskują dostęp do zasobów z urządzeń, które spełniają Twoje standardy dotyczące bezpieczeństwa i zgodności. 
+Zarządzanie urządzeniami w usłudze Azure Active Directory (Azure AD) pozwala zapewnić, że użytkownicy uzyskują dostęp do zasobów z urządzeń, które spełniają Twoje standardy dotyczące zabezpieczeń i zgodności. 
 
 W tym artykule:
 
@@ -123,7 +123,7 @@ Jako administrator możesz zarządzać zarejestrowane lub dołączonym do urząd
 
 ### <a name="manage-an-intune-device"></a>Zarządzanie urządzeniami usługi Intune
 
-Jeśli jesteś administratorem usługi Intune, możesz zarządzać urządzeniami, oznaczone jako **Microsoft Intune**. Administrator może zobaczyć dodatkowe urządzenia 
+Jeśli jesteś administratorem usługi Intune, możesz zarządzać urządzeniami, oznaczone jako **Microsoft Intune**. 
 
 ![Zarządzanie urządzeniami usługi Intune](./media/device-management-azure-portal/31.png)
 

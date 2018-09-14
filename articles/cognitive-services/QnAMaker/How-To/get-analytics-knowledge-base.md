@@ -1,33 +1,33 @@
 ---
-title: Jak uzyskać analizy swoją wiedzę podstawowej - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
-titleSuffix: Azure
-description: Jak uzyskać analytics na bazy wiedzy
+title: Analizy bazy wiedzy
+titleSuffix: Azure Cognitive Services
+description: Usługa QnA Maker przechowuje wszystkie dzienniki czatu i innych telemetrii po włączeniu usługi App Insights podczas tworzenia usługi QnA Maker. Uruchom przykładowe zapytania można pobrać dzienniki czatu z usługi App Insights.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/12/2018
 ms.author: saneppal
-ms.openlocfilehash: 1588d0c5a8eaf4e161b5319c9f33a772dc56b247
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 28dd34cc49d0004dd434a54d53f3f27f7c7d80e7
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348617"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542706"
 ---
-# <a name="get-analytics-on-your-knowledge-base"></a>Uzyskaj analizy na bazy wiedzy
+# <a name="get-analytics-on-your-knowledge-base"></a>Uzyskiwanie danych analitycznych na potrzeby bazy wiedzy
 
-Maker — strona główna przechowuje wszystkie dzienniki rozmów i inne dane telemetryczne, jeśli włączono App Insights podczas [tworzenia usługi Maker — strona główna](./set-up-qnamaker-service-azure.md). Uruchamianie przykładowych zapytań można pobrać dzienników rozmów z usługi App Insights.
+Usługa QnA Maker przechowuje wszystkie dzienniki czatu i innych telemetrii po włączeniu usługi App Insights podczas [tworzenia usługi QnA Maker](./set-up-qnamaker-service-azure.md). Uruchom przykładowe zapytania można pobrać dzienniki czatu z usługi App Insights.
 
 1. Przejdź do zasobu usługi App Insights.
 
-    ![Wybierz z zasobu usługi application insights](../media/qnamaker-how-to-analytics-kb/resources-created.png)
+    ![Wybierz zasób usługi application insights](../media/qnamaker-how-to-analytics-kb/resources-created.png)
 
-2. Wybierz **Analytics**. Nowe otworzyć okno, gdzie można zbadać Maker — strona główna telemetrii.
+2. Wybierz **analizy**. Nowe otworzyć okno, gdzie można tworzyć zapytania telemetrii usługi QnA Maker.
 
-    ![Wybierz analityka](../media/qnamaker-how-to-analytics-kb/analytics.png)
+    ![Wybierz usługi Analytics](../media/qnamaker-how-to-analytics-kb/analytics.png)
 
 3. Wklej poniższe zapytanie i uruchom go.
 
@@ -44,13 +44,13 @@ Maker — strona główna przechowuje wszystkie dzienniki rozmów i inne dane te
         | project KbId, timestamp, resultCode, duration, question, answer
     ```
 
-    Wybierz **Uruchom** do uruchomienia zapytania.
+    Wybierz **Uruchom** Aby uruchomić zapytanie.
 
     ![Uruchamianie zapytania](../media/qnamaker-how-to-analytics-kb/run-query.png)
 
-## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>Uruchamianie zapytań dotyczących innych analytics na Maker — strona główna bazy wiedzy
+## <a name="run-queries-for-other-analytics-on-your-qna-maker-knowledge-base"></a>Uruchamianie zapytań dla innych analiz dotyczących wiedzy usługi QnA Maker
 
-### <a name="total-90-day-traffic"></a>Ruch związany z 90-dniowy
+### <a name="total-90-day-traffic"></a>Całkowity ruch 90 dni
 
 ```query
     //Total Traffic
@@ -60,7 +60,7 @@ Maker — strona główna przechowuje wszystkie dzienniki rozmów i inne dane te
     | summarize ChatCount=count() by bin(timestamp, 1d), KbId
 ``` 
 
-### <a name="total-question-traffic-in-a-given-time-period"></a>Pytanie łączny ruch w danym okresie
+### <a name="total-question-traffic-in-a-given-time-period"></a>Łączna liczba pytanie ruchu w danym okresie czasu
 
 ```query
     //Total Question Traffic in a given time period
@@ -73,7 +73,7 @@ Maker — strona główna przechowuje wszystkie dzienniki rozmów i inne dane te
     | summarize ChatCount=count() by KbId
 ```
 
-### <a name="user-traffic"></a>Ruchu użytkowników
+### <a name="user-traffic"></a>Użytkownik — ruch
 
 ```query
     //User Traffic
@@ -88,7 +88,7 @@ Maker — strona główna przechowuje wszystkie dzienniki rozmów i inne dane te
     | summarize ChatCount=count() by bin(timestamp, 1d), UserId, KbId
 ```
 
-### <a name="latency-distribution-of-questions"></a>Rozkład opóźnienia pytania
+### <a name="latency-distribution-of-questions"></a>Rozkład opóźnienia pytań
 
 ```query
     //Latency distribution of questions

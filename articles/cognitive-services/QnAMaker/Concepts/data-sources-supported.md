@@ -1,21 +1,21 @@
 ---
-title: Obsługiwane — źródeł danych usług Microsoft Cognitive Services | Dokumentacja firmy Microsoft
-titleSuffix: Azure
-description: Obsługiwane źródła danych
+title: Źródła danych obsługiwane — QnA Maker
+titleSuffix: Azure Cognitive Services
+description: Usługa QnA Maker automatycznie wyodrębniać pary pytań i odpowiedzi z typowych lub częściową strukturą zawartości formatów, takich jak często zadawane pytania i podręczniki. Zawartości mogą być również dodawane do bazy wiedzy z plików ze strukturą.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 04/21/2018
+ms.date: 09/12/2018
 ms.author: saneppal
-ms.openlocfilehash: 698f96b15a9387cd30d26e684ed03ff4cc3346a7
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 0436d5015ee4b369aeead7691f87ef313259d391
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43697904"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544000"
 ---
 # <a name="data-sources"></a>Źródła danych 
 Usługa QnA Maker automatycznie wyodrębniać pary pytań i odpowiedzi z typowych lub częściową strukturą zawartości formatów, takich jak często zadawane pytania i podręczniki. Zawartości mogą być również dodawane do bazy wiedzy z plików ze strukturą.

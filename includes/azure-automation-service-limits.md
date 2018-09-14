@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 04/05/2018
 ms.author: gwallace
 ms.custom: include file
-ms.openlocfilehash: e0ab3476713b1fc491c7c8f2e02263c283d42440
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: 34cae9172d9b024bd6866742d39d82ad496bfc52
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "43435625"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45570425"
 ---
 | Zasób | Limit maksymalny |Uwagi|
 | --- | --- |---|
@@ -29,6 +29,7 @@ ms.locfileid: "43435625"
 | Maksymalna liczba kont usługi Automation w ramach subskrypcji |Bez ograniczeń ||
 |Maksymalna liczba równoczesnych zadań, które można uruchomić na jednym hybrydowego procesu roboczego elementu Runbook|50 ||
 | Maksymalna liczba zadania elementu Runbook parametry rozmiar   | 512 kb||
+| Maksymalna liczba parametrów   | 50|Można przekazać ciągu JSON lub XML do parametru i przeanalizować za pomocą elementu runbook, jeśli osiągnięty limit liczby 50 parametrów|
 | Maksymalny rozmiar ładunku elementu webhook |  512 kb|
 
 **<sup>1</sup>**  piaskownicy jest udostępnionym środowiskiem, które mogą być używane przez wiele zadań, zadań przy użyciu tego samego piaskownicy są powiązane przez ograniczenia zasobów piaskownicy.

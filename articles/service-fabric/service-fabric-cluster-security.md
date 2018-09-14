@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/14/2018
 ms.author: aljo
-ms.openlocfilehash: 52730ae24f4917ab593914c390df798f7f58dbde
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: e791ddd3ade2ff486f1c3ec123695ecc155353d6
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42061035"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541908"
 ---
 # <a name="service-fabric-cluster-security-scenarios"></a>Scenariusze zabezpieczeń klastra usługi Service Fabric
 Klaster usługi Azure Service Fabric jest zasobem, którego jesteś właścicielem. Jest odpowiedzialny za Zabezpieczanie klastrów zapobiega nieautoryzowanym użytkownikom nawiązywanie połączeń z nich. Zabezpieczonego klastra jest szczególnie ważne w przypadku obciążeń produkcyjnych są uruchomione w klastrze. Chociaż można utworzyć z niezabezpieczonym klastrem, jeśli klaster udostępnia punktów końcowych zarządzania do publicznej sieci internet, użytkowników anonimowych można się z nim. Niezabezpieczonych klastrów nie są obsługiwane w przypadku obciążeń produkcyjnych. 
@@ -92,6 +92,7 @@ Niektóre ważne kwestie należy wziąć pod uwagę:
 * Aby utworzyć certyfikaty dla klastrów, które są uruchomione obciążeń produkcyjnych, użyj poprawnie skonfigurowanej usługi certyfikatów systemu Windows Server lub jednej z zatwierdzonych [certyfikatu urzędu certyfikacji](https://en.wikipedia.org/wiki/Certificate_authority).
 * Nie wolno używać żadnych tymczasowych produkcją lub Testuj certyfikaty, które tworzysz przy użyciu narzędzi, takich jak MakeCert.exe w środowisku produkcyjnym.
 * Można użyć certyfikatu z podpisem własnym, ale tylko w przypadku klastra testowego. Nie należy używać certyfikatu z podpisem własnym w środowisku produkcyjnym.
+* Podczas generowania odcisk palca certyfikatu, należy wygenerować odcisk SHA1. Algorytm SHA1 jest, co to jest używana podczas konfigurowania klienta i klaster odciski palców certyfikatu.
 
 ### <a name="cluster-and-server-certificate-required"></a>Certyfikat klastra i serwera (wymagane)
 Te certyfikaty (jedną podstawową i opcjonalnie pomocniczego) są wymagane do zabezpieczenia klastra i zapobiegania nieuprawnionemu dostępowi do niego. Te certyfikaty, udostępniają klastra i serwera uwierzytelniania.

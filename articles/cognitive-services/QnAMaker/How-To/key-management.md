@@ -1,37 +1,37 @@
 ---
-title: Klucz Zarządzanie - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
-titleSuffix: Azure
-description: Jak zarządzanie kluczami Maker — strona główna
+title: Zarządzanie zasobami i klucz — QnA Maker
+titleSuffix: Azure Cognitive Services
+description: Usługa QnA Maker obsługuje dwa rodzaje kluczy, kluczy subskrypcji i klucze punktu końcowego.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/12/2018
 ms.author: saneppal
-ms.openlocfilehash: b402187f4949dac34fa476648c81b980ba3efc96
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9134819fc4610daadb617e123d861673e8cbfd32
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348669"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543446"
 ---
 # <a name="key-management"></a>Zarządzanie kluczami
 
-Usługi — strona główna Maker zajmuje się dwa rodzaje kluczy, **klucze subskrypcji** i **punktu końcowego klucze**.
+Usługa QnA Maker obsługuje dwa rodzaje kluczy **klucze subskrypcji** i **klucze punktu końcowego**.
 
 ![Zarządzanie kluczami](../media/qnamaker-how-to-key-management/key-management.png)
 
-1. **Klucze subskrypcji**: klucze te są używane do dostępu [Maker — strona główna usługa zarządzania interfejsów API](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff). Te interfejsy API umożliwiają wykonywanie różnych operacji CRUD na bazy wiedzy.  
+1. **Klucze subskrypcji**: te klucze są używane do dostępu [interfejsami API usługi zarządzania usługi QnA Maker](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff). Te interfejsy API umożliwiają wykonywanie różnych operacji CRUD na wiedzy.  
 
-2. **Punkt końcowy kluczy**: klucze te umożliwiają dostęp do punktu końcowego wiedzy można uzyskać odpowiedzi na pytanie użytkownika. Zazwyczaj będzie używać tego punktu końcowego w kodzie bot/aplikacji rozmów, który wykorzystuje usługę Maker — strona główna.
+2. **Punkt końcowy klucze**: te klucze są używane do dostępu do punktu końcowego bazy wiedzy knowledge base, można uzyskać odpowiedzi na pytania użytkowników. Zazwyczaj należy użyć tego punktu końcowego w kodzie aplikacji/bota rozmowy, który wykorzystuje usługę QnA Maker.
  
 ## <a name="subscription-keys"></a>Klucze subskrypcji
-Można wyświetlać i zresetować Twoje klucze subskrypcji z portalu Azure, w którym utworzono zasób Maker — strona główna. 
-1. Przejdź do zasobu Maker — strona główna w portalu Azure.
+Można przeglądać i zresetować klucze subskrypcji w witrynie Azure portal, w której utworzono zasób usługi QnA Maker. 
+1. Przejdź do zasobu usługi QnA Maker w witrynie Azure portal.
 
-    ![Lista zasobów Maker — strona główna](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
+    ![Lista zasobów usługi QnA Maker](../media/qnamaker-how-to-key-management/qnamaker-resource-list.png)
 
 2. Przejdź do **klucze**.
 
@@ -39,20 +39,20 @@ Można wyświetlać i zresetować Twoje klucze subskrypcji z portalu Azure, w kt
 
 ## <a name="endpoint-keys"></a>Klucze punktu końcowego
 
-Klucze punktu końcowego można zarządzać za pomocą [Maker — strona główna portalu](https://qnamaker.ai).
+Klucze punkt końcowy, można zarządzać przy użyciu [portalu narzędzia QnA Maker](https://qnamaker.ai).
 
-1. Zaloguj się do [Maker — strona główna portalu](https://qnamaker.ai), a następnie przejdź do **zarządzanie kluczami**.
+1. Zaloguj się do [portalu narzędzia QnA Maker](https://qnamaker.ai), a następnie przejdź do **zarządzanie kluczami**.
 
-    ![klucz punktu końcowego](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
+    ![Klucz punktu końcowego](../media/qnamaker-how-to-key-management/Endpoint-keys.png)
 
-2. Wyświetl lub zresetować Twoje klucze.
+2. Umożliwia wyświetlenie lub zresetować klucze.
 
     ![Menedżer klucza punktu końcowego](../media/qnamaker-how-to-key-management/Endpoint-keys1.png)
 
     >[!NOTE]
-    >Odśwież klucze, jeśli uważasz, że zostały one złamane. Może to wymagać odpowiednie zmiany w kodzie aplikacji/Bot.
+    >Jeśli uważasz, że zostały naruszone, należy odświeżyć klucze. Może to wymagać odpowiednie zmiany w kodzie aplikacji/Bota.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Utwórz bazę wiedzy w innym języku](./language-knowledge-base.md)
+> [Tworzenie bazy wiedzy w różnych językach](./language-knowledge-base.md)

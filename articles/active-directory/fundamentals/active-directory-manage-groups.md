@@ -1,80 +1,61 @@
 ---
-title: Zarządzanie dostępem do zasobów w usłudze Azure AD za pomocą grup | Microsoft Docs
-description: Jak używać grup w usłudze Azure Active Directory w celu zarządzania dostępem użytkowników do aplikacji i zasobów lokalnie i w chmurze.
+title: Więcej informacji na temat zarządzania dostępem dla aplikacji i zasobów przy użyciu grup usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat zarządzania dostępem do aplikacji w chmurze, lokalnych aplikacji i zasobów przy użyciu grup usługi Azure Active Directory w organizacji.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
-ms.topic: overview
+ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: lizross
-ms.custom: H1Hack27Feb2017;it-pro
 ms.reviewer: piotrci
-ms.openlocfilehash: cce3b4f15acbcc6ce78ea0623c6b9f3c23941cb0
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
-ms.translationtype: HT
+ms.openlocfilehash: 437831736d80214ce569b41de7b13c2d051aaf40
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37859629"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45572825"
 ---
-# <a name="manage-access-to-resources-with-azure-active-directory-groups"></a>Zarządzanie dostępem do zasobów za pomocą grup usługi Azure Active Directory
-Usługa Azure Active Directory (Azure AD) to kompleksowe rozwiązanie do zarządzania tożsamościami i dostępem, które oferuje niezawodny zestaw funkcji służących do zarządzania dostępem do aplikacji i zasobów lokalnie oraz w chmurze, w tym do usług online firmy Microsoft, takich jak Office 365, a także działających w modelu SaaS aplikacji firm innych niż Microsoft. Ten artykuł zawiera omówienie tematu, ale jeśli chcesz rozpocząć korzystanie z grup usługi Azure AD już teraz, wykonaj czynności zawarte w artykule [Managing security groups in Azure AD (Zarządzanie grupami zabezpieczeń w usłudze Azure AD)](active-directory-groups-create-azure-portal.md). Jeśli chcesz się dowiedzieć, jak zarządzać grupami w usłudze Azure Active Directory za pomocą programu PowerShell, możesz przeczytać więcej na ten temat w artykule [Azure Active Directory cmdlets for group management (Polecenia cmdlet do zarządzania grupami w usłudze Azure Active Directory)](../users-groups-roles/groups-settings-v2-cmdlets.md).
+# <a name="learn-about-access-management-using-azure-active-directory-groups"></a>Więcej informacji na temat zarządzania dostępem przy użyciu grup usługi Azure Active Directory
+Azure Active Directory (Azure AD) pomaga w zarządzaniu aplikacji opartych na chmurze, lokalnych aplikacji i zasoby przy użyciu grup w organizacji. Twoje zasoby mogą być częścią katalogu, takie jak uprawnienia do zarządzania obiektami za pomocą ról w katalogu lub zewnętrznie w stosunku do katalogu, takie jak do oprogramowania jako usługi (SaaS), Azure services witryn programu SharePoint i zasobów lokalnych.
 
-> [!NOTE]
-> Aby korzystać z usługi Azure Active Directory, potrzebne jest konto platformy Azure. Jeśli nie masz konta, możesz [utworzyć bezpłatne konto platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
->
->
+>[!NOTE]
+>Aby korzystać z usługi Azure Active Directory, potrzebne jest konto platformy Azure. Jeśli nie masz konta, możesz [utworzyć bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
 
-W usłudze Azure AD jedną z głównych funkcji jest możliwość zarządzania dostępem do zasobów. Te zasoby mogą być częścią katalogu, jak w przypadku uprawnień do zarządzania obiektami za pośrednictwem ról w katalogu, lub znajdować się poza katalogiem, jak w przypadku aplikacji SaaS, usług platformy Azure, witryn programu SharePoint lub zasobów lokalnych. Istnieją cztery sposoby przypisania użytkownikowi praw dostępu do zasobu:
-
-1. Przypisanie bezpośrednie
-
-    Użytkownicy mogą zostać bezpośrednio przypisani do zasobu przez właściciela tego zasobu.
-2. Członkostwo w grupie
-
-    Grupa może zostać przypisana do zasobu przez właściciela zasobu. Wówczas dostęp do zasobu jest udzielany członkom tej grupy. Następnie właściciel grupy może zarządzać członkostwem w grupie. W rezultacie właściciel zasobu deleguje na właściciela grupy uprawnienie do przypisywania użytkowników do swojego zasobu.
-3. Na podstawie reguł
-
-    Właściciel zasobu może użyć reguły, aby określić, którym użytkownikom należy przypisać dostęp do zasobu. Efekt reguły zależy od atrybutów użytych w tej regule oraz ich wartości dla konkretnych użytkowników. W ten sposób właściciel zasobu deleguje prawo do zarządzania dostępem do swojego zasobu na autorytatywne źródło w zakresie atrybutów używanych w tej regule. Właściciel zasobu nadal zarządza samą regułą i określa, jakie atrybuty i wartości zapewniają dostęp do jego zasobu.
-4. Źródło zewnętrzne
-
-    Dostęp do zasobu pochodzi z zewnętrznego źródła, na przykład z grupy zsynchronizowanej ze źródłem autorytatywnym, takim jak katalog lokalny lub aplikacja SaaS, na przykład WorkDay. Właściciel zasobu przypisuje grupę, aby umożliwić dostęp do zasobu, a źródło zewnętrzne zarządza członkami grupy.
-
-   ![Diagram przedstawiający przegląd zarządzania dostępem](./media/active-directory-manage-groups/access-management-overview.png)
-
-## <a name="watch-a-video-that-explains-access-management"></a>Obejrzyj wideo, w którym wyjaśniono zarządzanie dostępem
-Możesz obejrzeć krótkie wideo zawierające więcej informacji na ten temat:
-
-**Azure AD: Introduction to dynamic membership for groups (Azure AD: wprowadzenie do członkostwa dynamicznego dla grup)**
-
-> [!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD--Introduction-to-Dynamic-Memberships-for-Groups/player]
->
->
-
-## <a name="how-does-access-management-in-azure-active-directory-work"></a>Jak działa zarządzanie dostępem w usłudze Azure Active Directory?
-Kluczowym elementem rozwiązania do zarządzania dostępem w usłudze Azure AD jest grupa zabezpieczeń. Korzystanie z grupy zabezpieczeń do zarządzania dostępem do zasobów to dobrze znany paradygmat, który oferuje elastyczny i zrozumiały sposób zapewniania dostępu do zasobu wybranej grupie użytkowników. Właściciel zasobu (lub administrator katalogu) może przypisać grupę, aby udzielić określonych uprawnień dostępu do jego zasobów. Członkowie grupy uzyskają dostęp, a właściciel zasobu może delegować prawo do zarządzania listą członków grupy na kogoś innego, na przykład kierownika działu lub administratora działu technicznego.
+## <a name="how-does-access-management-in-azure-ad-work"></a>Jak uzyskać dostęp do zarządzania w pracy w usłudze Azure AD?
+Azure AD pomaga w zapewnieniu dostępu do zasobów organizacji, zapewniając praw dostępu do jednego użytkownika lub dla całej usługi Azure AD grupy. Przy użyciu grup umożliwia zasobu właściciela (lub właściciela katalogu usługi Azure AD), przypisać zestaw uprawnień dostępu do wszystkich członków tej grupy, nie trzeba podać praw pojedynczo. Właściciel zasobu lub katalogu można również przyznać uprawnienia do zarządzania dla listy elementów członkowskich do kogoś innego, takiego jak Menedżer działu lub administrator pomocy technicznej, umożliwiając mu Dodawanie i usuwanie elementów członkowskich, zgodnie z potrzebami. Aby uzyskać więcej informacji na temat zarządzenie właścicielami grup, zobacz [zarządzenie właścicielami grup](active-directory-accessmanagement-managing-group-owners.md)
 
 ![Diagram zarządzania dostępem w usłudze Azure Active Directory](./media/active-directory-manage-groups/active-directory-access-management-works.png)
 
-Właściciel grupy może również włączyć żądania samoobsługowe dla grupy. Dzięki temu użytkownik końcowy może wyszukać i znaleźć grupę, a następnie zażądać dołączenia do niej, czyli w praktyce zwrócić się o przydzielenie dostępu do zasobów, które są zarządzane za pośrednictwem tej grupy. Właściciel grupy może skonfigurować grupę tak, aby żądania dołączenia były zatwierdzane automatycznie lub aby wymagały zatwierdzenia przez właściciela grupy. Gdy użytkownik zażąda dołączenia do grupy, żądanie dołączenia jest przekazywane do właścicieli grupy. Jeśli jeden z właścicieli zatwierdzi żądanie, użytkownik zostanie o tym powiadomiony i dołączy do grupy. Jeśli jeden z właścicieli odrzuci żądanie, użytkownik zostanie o tym powiadomiony, ale nie dołączy do grupy.
+## <a name="ways-to-assign-access-rights"></a>Sposoby przypisywania praw dostępu
+Istnieją cztery sposoby przypisywania zasobów prawa dostępu dla użytkowników:
 
-## <a name="getting-started-with-access-management"></a>Wprowadzenie do zarządzania dostępem
-Chcesz zacząć? Wypróbuj kilka podstawowych zadań, które można wykonać w grupach usługi Azure AD. Za pomocą tych opcji możesz zapewnić różnym grupom użytkowników wyspecjalizowany dostęp do różnych zasobów w organizacji. Lista podstawowych kroków jest przedstawiona poniżej.
+- **Bezpośrednie przypisania.** Właściciel zasobu przypisuje bezpośrednio do użytkownika do zasobu.
 
-* [Creating a simple rule to configure dynamic memberships for a group (Tworzenie prostej reguły w celu skonfigurowania dynamicznego członkostwa w grupie)](active-directory-groups-create-azure-portal.md)
-* [Using a group to manage access to SaaS applications (Używanie grupy do zarządzania dostępem do aplikacji SaaS)](../users-groups-roles/groups-saasapps.md)
-* [Włączanie samoobsługi użytkowników końcowych w grupie](../users-groups-roles/groups-self-service-management.md)
-* [Integrowanie katalogów lokalnych z usługą Azure Active Directory](../connect/active-directory-aadconnect.md)
-* [Managing owners for a group (Zarządzanie właścicielami grupy)](active-directory-accessmanagement-managing-group-owners.md)
+- **Przypisania grupy.** Właściciel zasobu przypisuje grupę usługi Azure AD do zasobu, który automatycznie zapewnia wszystkie dostępu członkom grupy zasobów. Członkostwo w grupie jest zarządzana przez właściciela grupy i właściciela zasobu, umożliwiając właściciel, albo dodać lub usunąć członków z grupy. Aby uzyskać więcej informacji na temat dodawania lub usuwania członkostwa w grupie zobacz [porady: Dodawanie lub usuwanie grupy z innej grupy przy użyciu portalu Azure Active Directory](active-directory-groups-membership-azure-portal.md). 
 
-## <a name="next-steps"></a>Następne kroki
-Podstawowe kwestie związane z zarządzaniem dostępem są już jasne. Oto kilka dodatkowych zaawansowanych funkcji zarządzania dostępem do aplikacji i zasobów w usłudze Azure Active Directory.
+- **Przypisanie oparte na regułach.** Właściciel zasobu tworzy grupę i używa regułę w celu zdefiniowania, czyli użytkownicy przypisani do określonego zasobu. Reguła opiera się na atrybuty, które są przypisane do poszczególnych użytkowników. Właściciel zasobu zarządza reguły, określania atrybutów i wartości, które są wymagane, aby zezwolić na dostęp do zasobu. Aby uzyskać więcej informacji, zobacz [utworzyć grupę dynamiczną i sprawdzić stan](../users-groups-roles/groups-create-rule.md).
 
-* [Using attributes to create advanced rules (Używanie atrybutów do tworzenia reguł zaawansowanych)](../users-groups-roles/groups-dynamic-membership.md)
-* [Managing security groups in Azure AD (Zarządzanie grupami zabezpieczeń w usłudze Azure AD)](active-directory-groups-create-azure-portal.md)
-* [Graph API reference for groups (Dokumentacja interfejsu API programu Graph dla grup)](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/groups-operations#GroupFunctions)
-* [Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy](../users-groups-roles/groups-settings-cmdlets.md)
+    Możesz też obejrzeć ten krótki film wideo, szybkie informacje na temat tworzenia i używania grup dynamicznych:
+
+    >[!VIDEO https://channel9.msdn.com/Series/Azure-Active-Directory-Videos-Demos/Azure-AD--Introduction-to-Dynamic-Memberships-for-Groups/player]
+
+- **Przypisanie zewnętrznego urzędu.** Dostępu pochodzi z zewnętrznego źródła, takich jak katalogu lokalnego lub aplikacji SaaS. W takiej sytuacji właściciel zasobu przypisuje grupę do przydzielenia dostępu do zasobu, i następnie źródła zewnętrznego zarządza członków grupy.
+
+   ![Diagram przedstawiający przegląd zarządzania dostępem](./media/active-directory-manage-groups/access-management-overview.png)
+
+## <a name="can-users-join-groups-without-being-assigned"></a>Użytkownicy dołączyć do grup bez przypisania?
+Właściciel grupy, można pozwolić użytkownikom znajdowanie własne grupy, aby dołączyć, zamiast przypisywać je. Właściciel również skonfigurować grupy Automatyczne akceptowanie wszystkich użytkowników, którzy join lub wymagają zatwierdzenia.
+
+Po użytkownik zażąda dołączenia do grupy, żądanie jest przekazywane do właściciela grupy. Jeśli jest to wymagane, właściciel może zatwierdzić żądanie, a użytkownik jest powiadamiany o członkostwo w grupie. Jednak jeśli masz wielu właścicielom, a jeden z nich nie uwzględni, użytkownik zostanie powiadomiony, ale nie została dodana do grupy. Aby uzyskać więcej informacji oraz instrukcje na temat umożliwić użytkownikom żądanie dołączenia do grup, zobacz [Konfigurowanie usługi Azure AD, dzięki czemu użytkownicy mogą żądać dołączenia do grup](../users-groups-roles/groups-self-service-management.md)
+
+## <a name="next-steps"></a>Kolejne kroki
+Teraz, gdy masz znacznej liczby wprowadzenie do zarządzania dostępem przy użyciu grup, możesz rozpocząć zarządzanie zasobami i aplikacji.
+
+- [Utwórz nową grupę za pomocą usługi Azure Active Directory](active-directory-groups-create-azure-portal.md) lub [tworzenie i zarządzanie nimi nową grupę za pomocą poleceń cmdlet programu PowerShell](../users-groups-roles/groups-settings-v2-cmdlets.md)
+
+- [Używanie grup do udzielania dostępu do zintegrowanych aplikacji SaaS](../users-groups-roles/groups-saasapps.md)
+
+- [Synchronizuj grupy lokalnej na platformę Azure za pomocą usługi Azure AD Connect](../connect/active-directory-aadconnect.md)

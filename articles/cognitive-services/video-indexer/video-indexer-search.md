@@ -7,20 +7,20 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/31/2018
+ms.date: 09/09/2018
 ms.author: juliako
-ms.openlocfilehash: 1cffa067d8028adab4dbcc82c529f77d980ce6be
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: 72f110c0c98e6fb6ee5fca684fdc74c6986e032c
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39397547"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541410"
 ---
 # <a name="find-exact-moments-within-videos"></a>Znajdowanie konkretnych momentów w wideo
 
 Ten temat przedstawia opcje wyszukiwania, które umożliwiają znajdowanie konkretnych momentów w wideo pliku.
 
-1. Zaloguj się do Twojej [Video Indexer](https://api-portal.videoindexer.ai/) konta.
+1. Przejdź do [Video Indexer](https://www.videoindexer.ai/) witryny sieci Web i zaloguj się.
 2. Przeszukiwanie wszystkich filmów wideo w ramach Twojego konta.
 
     W poniższym przykładzie przeszukaliśmy dla wszystkich filmów wideo utworzone przez Channel9 ze Scottem Hanselmanem.
@@ -49,8 +49,8 @@ Ten temat przedstawia opcje wyszukiwania, które umożliwiają znajdowanie konkr
 Po znalezieniu wideo, który chcesz pracować, możesz kontynuować przetwarzanie filmu wideo, zgodnie z opisem w jednym z tych tematów: 
 
 - [Tworzenie nowych informacji szczegółowych wideo, oparty na istniejących wideo](video-indexer-create-new.md)
-- [Przetwarzanie zawartości przy użyciu interfejsu REST API indeksatora wideo](video-indexer-use-apis.md)
-- [Osadzanie widżetów visual w aplikacji](video-indexer-embed-widgets.md)
+- [Przetwarzanie zawartości przy użyciu interfejsu REST API usługi Video Indexer](video-indexer-use-apis.md)
+- [Osadzanie widgetów wizualnych w aplikacji](video-indexer-embed-widgets.md)
 
 ## <a name="see-also"></a>Zobacz także
 

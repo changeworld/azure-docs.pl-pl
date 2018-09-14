@@ -12,14 +12,14 @@ ms.workload: ''
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/09/2018
+ms.date: 09/12/2018
 ms.author: danlep
-ms.openlocfilehash: 1669d5a2237322f72dce3b172c32e7199900a4e0
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 987cbcc642152a4077cc895ad06e43ac56113497
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054343"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45544068"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Wybierz rozmiar maszyny Wirtualnej dla węzłów obliczeniowych w puli usługi Azure Batch
 
@@ -41,8 +41,8 @@ Pule usługi Batch w konfiguracji maszyny wirtualnej obsługuje wszystkie rozmia
 | Podstawowa — seria A | Basic_A0 (A0) |
 | Seria A | Standardowa_A0 |
 | Seria B | Wszyscy |
-| Seria M | Wszyscy |
 
+Maszyny wirtualne serii M są obsługiwane tylko dla węzłów o niskim priorytecie.
 
 
 ### <a name="pools-in-cloud-service-configuration"></a>Pulach w konfiguracji usługi w chmurze

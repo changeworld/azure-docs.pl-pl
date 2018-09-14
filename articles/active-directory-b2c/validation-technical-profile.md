@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 07a5c378ddf73f245104f64e1dae945525a1e01a
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: f08d5732939e853785e2cce1d1e9ed8eea7f9ad7
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381441"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543143"
 ---
 # <a name="define-a-validation-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Definiowanie profilu technicznego sprawdzania poprawności w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -53,8 +53,8 @@ Samodzielnie profilu technicznego mogą definiować profilu technicznego sprawdz
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
 | Identyfikator odwołania | Yes | Identyfikator profilu technicznego już zdefiniowane w zasadach lub zasady nadrzędne. |
-|ContinueOnError|Nie| Wskazująca, czy sprawdzanie poprawności wszystkie profile techniczne kolejnych weryfikacji powinno być kontynuowane, jeśli ten profil techniczny validaiton zgłasza błąd. Wartości dozwoloną: `ture` lub `false` (ustawienie domyślne, zostanie zatrzymane przetwarzanie dalszych weryfikacji profile i komunikat o błędzie). 
-|ContinueOnSuccess | Nie | Wskazująca, czy Weryfikacja profile żadnych kolejnych weryfikacji powinno być kontynuowane, jeśli ten profil techniczny sprawdzania poprawności zakończy się pomyślnie. Wartości dozwoloną: `ture` lub `false`. Wartość domyślna to `true`, co oznacza, że przetwarzanie dalszych profilów sprawdzania poprawności będzie kontynuowane. |
+|ContinueOnError|Nie| Wskazująca, czy sprawdzanie poprawności wszystkie profile techniczne kolejnych weryfikacji powinno być kontynuowane, jeśli ten profil techniczny validaiton zgłasza błąd. Wartości dozwoloną: `true` lub `false` (ustawienie domyślne, zostanie zatrzymane przetwarzanie dalszych weryfikacji profile i komunikat o błędzie). 
+|ContinueOnSuccess | Nie | Wskazująca, czy Weryfikacja profile żadnych kolejnych weryfikacji powinno być kontynuowane, jeśli ten profil techniczny sprawdzania poprawności zakończy się pomyślnie. Wartości dozwoloną: `true` lub `false`. Wartość domyślna to `true`, co oznacza, że przetwarzanie dalszych profilów sprawdzania poprawności będzie kontynuowane. |
 
 **ValidationTechnicalProfile** element zawiera następującego elementu:
 

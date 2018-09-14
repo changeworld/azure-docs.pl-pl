@@ -7,14 +7,14 @@ author: juliako
 manager: erikre
 ms.service: cognitive-services
 ms.topic: article
-ms.date: 07/25/2018
+ms.date: 09/09/2018
 ms.author: juliako
-ms.openlocfilehash: 73359955861b88f2bc5ca297c32fa78c2632148c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: bd0f9e01257bec2d39ef0c8e13b68c4a7a13637d
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449484"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542932"
 ---
 # <a name="use-azure-video-indexer-api"></a>Użyj interfejsu API indeksatora wideo platformy Azure
 
@@ -23,23 +23,20 @@ ms.locfileid: "39449484"
 
 Usługa Video Indexer konsoliduje różne technologie audio i wideo sztucznej inteligencji (AI), oferowane przez firmę Microsoft w jednej usłudze zintegrowane, co upraszcza programowanie. Interfejsy API są przeznaczone do umożliwienia deweloperom skupić się na korzystanie z technologii AI multimediów bez konieczności martwienia się o skalowanie globalne dotrzeć do, dostępność i niezawodność platformy w chmurze. Interfejs API umożliwia przekazywanie plików, uzyskiwanie szczegółowych informacji szczegółowych wideo i uzyskiwanie adresów URL szczegółowe informacje, jak i odtwarzacz widżetów w celu osadzania ich w aplikacji i innych zadań.
 
-Podczas tworzenia konta indeksatora wideo, możesz wybrać bezpłatne konto próbne (skąd określonej liczbie bezpłatnych minut indeksowania) lub opcję płatną (gdzie możesz nie są ograniczone według przydziału). Za pomocą bezpłatnej wersji próbnej Video Indexer zapewnia do 600 minut indeksować bezpłatne dla użytkowników witryny sieci Web, i maksymalnie 2 400 minut bezpłatne indeksowania dla użytkowników interfejsu API. W przypadku płatnych opcji tworzenia konta Video Indexer, który jest [podłączone do subskrypcji platformy Azure i konto usługi Azure Media Services](connect-to-azure.md). Płacisz indeksowane w ciągu kilku minut, a także konta multimediów powiązane opłaty. 
+Podczas tworzenia konta indeksatora wideo, możesz wybrać bezpłatne konto próbne (skąd określonej liczbie bezpłatnych minut indeksowania) lub opcję płatną (gdzie możesz nie są ograniczone według przydziału). Za pomocą bezpłatnej wersji próbnej Video Indexer zapewnia do 600 minut indeksować bezpłatne dla użytkowników witryny sieci Web, i maksymalnie 2 400 minut bezpłatne indeksowania dla użytkowników interfejsu API. W przypadku płatnych opcji tworzenia konta Video Indexer, który jest [podłączone do subskrypcji platformy Azure i konto usługi Azure Media Services](connect-to-azure.md). Płacisz za także jako konta usługi Azure Media Services z powiązanych opłat indeksowane w ciągu kilku minut. 
 
-W tym artykule pokazano, jak deweloperzy mogą korzystać z [interfejsu API indeksatora wideo](https://api-portal.videoindexer.ai/). Aby zapoznać się z bardziej szczegółowym omówieniem usługi Video Indexer, zobacz [Przegląd](video-indexer-overview.md) artykułu.
+W tym artykule pokazano, jak deweloperzy mogą korzystać z [interfejsu API indeksatora wideo](https://api-portal.videoindexer.ai/).
 
 ## <a name="subscribe-to-the-api"></a>Subskrybowanie do interfejsu API
 
-1. Rejestrowanie.
-
-    Aby rozpocząć tworzenie aplikacji za pomocą indeksatora wideo, musisz pierwszego logowania do [Video Indexer](https://api-portal.videoindexer.ai/) portalu. 
+1. Zaloguj się do [portalu dla deweloperów usługa Video Indexer](https://api-portal.videoindexer.ai/).
     
-    ![Rejestrowanie](./media/video-indexer-use-apis/video-indexer-api01.png)
+    ![Logowanie](./media/video-indexer-use-apis/video-indexer-api01.png)
 
     > [!Important]
     > * Należy użyć tego samego dostawcy, którego użyto podczas rejestracji w usłudze Video Indexer.
     > * Osobiste Google i Microsoft (outlook/live) konta należy używać tylko dla konta wersji próbnej. Konta połączone z platformy Azure wymaga usługi Azure AD.
     > * Może istnieć tylko jedno aktywne konto na wiadomości E-Mail. Jeśli użytkownik próbuje zalogować się za pomocą user@gmail.com za pomocą konta LinkedIn, a następnie za pomocą user@gmail.com do nowszego Google zostanie wyświetlona strona błędu, informujący o tym użytkownika już istnieje.
-
 
 2. Subskrypcja.
 
@@ -91,15 +88,15 @@ Stosowanie wartości opisanych w poniższej tabeli. **Param value** jest wartoś
 
 Parametr Accountid jest wymagany we wszystkich wywołaniach interfejsu API operacyjnej. Identyfikator konta jest identyfikatorem GUID, który można uzyskać w jednym z następujących sposobów:
 
-* Użyj portalu usługi Video Indexer, aby pobrać identyfikator konta:
+* Użyj **Video Indexer witryny sieci Web** uzyskać identyfikator konta:
 
-    1. Zaloguj się do [videoindexer](https://www.videoindexer.ai/).
+    1. Przejdź do [Video Indexer](https://www.videoindexer.ai/) witryny sieci Web i zaloguj się.
     2. Przejdź do **ustawienia** strony.
     3. Skopiuj identyfikator konta.
 
         ![Identyfikator konta](./media/video-indexer-use-apis/account-id.png)
 
-* Za pomocą interfejsu API można programowo pobrać identyfikatora konta.
+* Użyj **portalu dla deweloperów indeksatora wideo** programowo uzyskać nazwę konta.
 
     Użyj [uzyskać kont](https://api-portal.videoindexer.ai/docs/services/authorization/operations/Get-Accounts?) interfejsu API.
     
@@ -225,7 +222,5 @@ Debug.WriteLine(playerWidgetLink);
 ## <a name="next-steps"></a>Kolejne kroki
 
 [Sprawdź szczegóły w danych wyjściowych JSON](video-indexer-output-json.md).
-
-## <a name="see-also"></a>Zobacz także
 
 [Omówienie indeksatora wideo](video-indexer-overview.md)

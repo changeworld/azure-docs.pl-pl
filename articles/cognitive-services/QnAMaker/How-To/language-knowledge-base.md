@@ -1,49 +1,50 @@
 ---
-title: Tworzenie usług kognitywnych Azure wiedzy z systemem innym niż angielski - Maker — strona główna - | Dokumentacja firmy Microsoft
-description: Jak utworzyć bazę wiedzy z systemem innym niż angielski.
+title: Innej niż angielska bazy wiedzy knowledge base — QnA Maker
+titleSuffix: Azure Cognitive Services
+description: Usługa QnA Maker obsługuje zawartość bazy wiedzy w wielu językach. Jednak każda usługa QnA Maker ma być zarezerwowana dla jednego języka. Pierwszy wiedzy utworzone przeznaczonych dla określonej usługi QnA Maker określa język tej usługi.
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/12/2018
 ms.author: saneppal
-ms.openlocfilehash: 3fbd590229044af0daa60968fd8d556d539a58c9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9f5ece2b996f922437d36a6087c63859f89e0c55
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348652"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543524"
 ---
-# <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Obsługa języka zawartości wiedzy Maker — strona główna
-Maker — strona główna obsługuje wiedzy zawartości w wielu językach. Jednak każdej usługi Maker — strona główna ma być zarezerwowana dla jednego języka. Pierwszy wiedzy utworzone przeznaczonych dla określonej usługi Maker — strona główna ustawia język tej usługi. Zobacz [tutaj](../Overview/languages-supported.md) listę obsługiwanych języków.
+# <a name="language-support-of-knowledge-base-content-for-qna-maker"></a>Obsługa języków w bazie wiedzy knowledge base zawartości usługi QnA Maker
+Usługa QnA Maker obsługuje zawartość bazy wiedzy w wielu językach. Jednak każda usługa QnA Maker ma być zarezerwowana dla jednego języka. Pierwszy wiedzy utworzone przeznaczonych dla określonej usługi QnA Maker określa język tej usługi. Zobacz [tutaj](../Overview/languages-supported.md) uzyskać listę obsługiwanych języków.
 
-Język jest rozpoznawany automatycznie z zawartości wyodrębniania źródeł danych. Po utworzeniu nowej usługi Maker — strona główna i nowej wiedzy tej usługi, można sprawdzić, czy język został poprawnie ustawiony.
+Język jest rozpoznawany automatycznie z zawartości źródła danych wyodrębniania. Po utworzeniu nowego usługa QnA Maker i nowej wiedzy w tej usłudze, możesz sprawdzić, czy język został prawidłowo ustawiony.
 
-1. Przejdź do [portalu Azure](https://portal.azure.com/).
+1. Przejdź do [witryny Azure Portal](https://portal.azure.com/).
 
-2. Wybierz **grup zasobów** i przejdź do grupy zasobów, w którym usługa Maker — strona główna jest wdrożone i wybierz **usługi Azure Search** zasobów.
+2. Wybierz **grup zasobów** i przejdź do grupy zasobów, w których ta usługa QnA Maker jest wdrożone i wybierz **usługi Azure Search** zasobów.
 
     ![Wybierz zasób usługi Azure Search](../media/qnamaker-how-to-language-kb/select-azsearch.png)
 
-3. Wybierz **testkb** indeksu. Ten indeks usługi Azure Search jest zawsze pierwszy utworzony i zawiera zapisane zawartości wszystkich zasad wiedzy w tej usłudze. 
+3. Wybierz **testkb** indeksu. Ten indeks usługi Azure Search jest zawsze pierwszej utworzone i zawiera zapisane treści baz wiedzy w tej usłudze. 
 
     ![Wybierz Test KB](../media/qnamaker-how-to-language-kb/select-testkb.png)
 
-4. Wybierz **pola** zawierającego szczegóły testkb sekcji.
+4. Wybierz **pola** wyświetlania szczegółów testkb sekcji.
 
     ![Wybierz pola](../media/qnamaker-how-to-language-kb/selectfields.png)
 
-5. Pole wyboru dla **analizator** Aby wyświetlić szczegółowe dane języków.
+5. Pole wyboru dla **analizatora** Aby wyświetlić szczegółowe dane języków.
 
-    ![Wybierz analizatora](../media/qnamaker-how-to-language-kb/select-analyzer.png)
+    ![Wybierz Analizator](../media/qnamaker-how-to-language-kb/select-analyzer.png)
 
-6. Powinien znajdować się analizatora ustawiono konkretnego języka. Podczas wykonywania kroku tworzenia wiedzy automatycznie wykryto tego języka. Ten język nie można zmienić po utworzeniu zasobu.
+6. Powinien znajdować się ustawiono analizatora określonego języka. Ten język został automatycznie wykryty podczas wykonywania kroku tworzenie bazy wiedzy knowledge base. Ten język nie można zmienić po utworzeniu zasobu.
 
     ![Wybrane analizatora](../media/qnamaker-how-to-language-kb/selected-analyzer.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Tworzenie za pomocą usługi Azure Bot bot — strona główna](../Tutorials/create-qna-bot.md)
+> [Utwórz bota pytań i odpowiedzi z usługi Azure Bot Service](../Tutorials/create-qna-bot.md)

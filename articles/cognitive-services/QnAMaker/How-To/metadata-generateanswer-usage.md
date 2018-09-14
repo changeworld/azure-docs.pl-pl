@@ -1,20 +1,21 @@
 ---
-title: Używanie metadanych w wiedzy wraz z interfejsem API GenerateAnswer | Dokumentacja firmy Microsoft
-description: Metadane przy użyciu GenerateAnswer interfejsu API
+title: Metadane z GenerateAnswer interfejsu API — usługa QnA Maker
+titleSuffix: Azure Cognitive Services
+description: Narzędzie QnA Maker umożliwia dodanie metadanych, w postaci par klucz wartość do zestawów z pytań i odpowiedzi. Informacja ta może służyć do filtrowania wyników na zapytania użytkowników i do przechowywania dodatkowych informacji, które mogą być używane w kolejnych konwersacje.
 services: cognitive-services
 author: pchoudhari
-manager: rsrikan
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/18/2018
+ms.date: 09/12/2018
 ms.author: pchoudh
-ms.openlocfilehash: e1b7c82e6998705bdc7e1c1a5d279bda7793667a
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: d715707217803355aea35eece0a9963b0a213c65
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43305203"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542671"
 ---
 # <a name="using-metadata-and-the-generateanswer-api"></a>Przy użyciu metadanych i interfejsu API GenerateAnswer
 

@@ -8,18 +8,18 @@ ms.reviewer: vanto
 ms.service: sql-database
 ms.custom: security
 ms.topic: conceptual
-ms.date: 07/10/2018
+ms.date: 09/10/2018
 ms.author: giladm
-ms.openlocfilehash: a69142ebabc4af8b8543dc5dd276b99130620470
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: aca01e67339d5f6d003021cb17f1787093b79eda
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714976"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45543966"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Usługi Azure SQL Database Data odnajdywanie i klasyfikacja
 Odnajdywanie i klasyfikacja (obecnie w wersji zapoznawczej) danych zapewnia zaawansowane możliwości wbudowane w usłudze Azure SQL Database dla **odnajdywania**, **klasyfikowania**, **etykietowania**  &  **ochrony** poufnych danych w bazach danych.
-Odnajdywanie i klasyfikacja najbardziej poufnych danych (biznesowe, finansów, opieki zdrowotnej, dane osobowe, itp.) można odtworzyć zasadniczą rolę w stature ochrony Twojej organizacji. Może służyć jako infrastruktury:
+Odnajdowanie i klasyfikowanie najbardziej poufnych danych (biznesowe, finansowych, ochrony zdrowia, dane osobowe (PII) i itp.), można odtwarzać zasadniczą rolę w stature ochrony Twojej organizacji. Może służyć jako infrastruktury:
 * Pomaga zaspokoić potrzeby dotyczące standardów ochrony prywatności danych i wymagania dotyczące zgodności z przepisami.
 * Różne scenariusze zabezpieczeń, takich jak monitorowanie (inspekcji) i alarmując nietypowego dostępu do poufnych danych.
 * Kontrolowanie dostępu do i wzmacniania ochrony bezpieczeństwa baz danych zawierających poufne dane.
@@ -42,6 +42,17 @@ W poniższej sekcji opisano proces odnajdywania, klasyfikowania i etykietowania 
 Klasyfikacja zawiera dwa atrybuty metadanych:
 * Etykiety — atrybuty głównego klasyfikacji są używane do definiowania poziomu poufności danych przechowywanych w kolumnie.  
 * Typy informacji — zapewniają dodatkowe poziom szczegółowości na typ danych przechowywanych w kolumnie.
+
+## <a name="define-and-customize-your-classification-taxonomy"></a>Definiowanie i dostosowywanie taksonomii klasyfikacji
+
+SQL odnajdywanie i klasyfikacja danych zawiera zestaw wbudowanych etykiet czułości oraz zestaw wbudowanych typów informacji i logiki odnajdywania. Masz teraz możliwość dostosowywania ta Taksonomia i zdefiniuj zestaw i klasyfikacji konstrukcji klasyfikacji dla określonego środowiska.
+
+Definicja i dostosowywania taksonomii klasyfikacji odbywa się w jednej centralnej lokalizacji dla całej dzierżawie platformy Azure. Lokalizacja znajduje się w [usługi Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro), jako część zasad zabezpieczeń. To zadanie można wykonać tylko osoby z uprawnieniami administracyjnymi w grupie zarządzania dzierżawy katalogu głównego.
+
+W ramach zarządzania zasadami ochrony informacji można zdefiniować niestandardowe etykiety, ustaw ich pozycję i skojarzyć je z wybranym zestawem typów informacji. Można również dodać własne typy niestandardowych informacji i skonfigurować je przy użyciu ciągu wzorce, które są dodawane do logiki odnajdywania do identyfikacji tego typu danych w bazach danych.
+Dowiedz się więcej o dostosowywaniu i zasad w zarządzaniu [Information Protection zasady poradnik](https://go.microsoft.com/fwlink/?linkid=2009845&clcid=0x409).
+
+Po zdefiniowaniu zasad obowiązujących w całej dzierżawy możesz kontynuować klasyfikacji poszczególnych baz danych za pomocą niestandardowych zasad.
 
 ## <a name="classify-your-sql-database"></a>Klasyfikowanie SQL Database
 

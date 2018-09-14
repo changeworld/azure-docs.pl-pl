@@ -9,12 +9,13 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: ronitr
-ms.openlocfilehash: c4d9eb5f7105e0e1b16ad994d397885b9232a0ea
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.reviewer: vanto
+ms.openlocfilehash: 92be9a54e5309670b51baa371d26406676778737
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719532"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542095"
 ---
 # <a name="sql-database-dynamic-data-masking"></a>Baza danych SQL dynamiczne maskowanie danych
 

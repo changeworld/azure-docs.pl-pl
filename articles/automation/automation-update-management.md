@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/29/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 62a7bb9bf63e8ebf97f9aeb5b08bf08ef06da43b
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: ddc27d9f5124000601a57b4ecd72c3d6021c109f
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782794"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45542637"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -88,9 +88,9 @@ Agenci Windows musi być skonfigurowany do komunikowania się z serwerem usług 
 
 #### <a name="linux"></a>Linux
 
-Dla systemu Linux komputer musi mieć dostęp do repozytorium aktualizacji. Repozytorium aktualizacji może być prywatny lub publiczny. Protokół TLS 1.1 i TLS 1.2 jest wymagany do interakcji z rozwiązania Update Management. Agent usługi Operations Management Suite (OMS) dla systemu Linux, który jest skonfigurowany do raportowania do wielu obszarów roboczych usługi Log Analytics nie jest obsługiwana za pomocą tego rozwiązania.
+Dla systemu Linux komputer musi mieć dostęp do repozytorium aktualizacji. Repozytorium aktualizacji może być prywatny lub publiczny. Protokół TLS 1.1 i TLS 1.2 jest wymagany do interakcji z rozwiązania Update Management. Log Analytics Agent dla systemu Linux, który jest skonfigurowany do raportowania do wielu obszarów roboczych usługi Log Analytics nie jest obsługiwana za pomocą tego rozwiązania.
 
-Aby uzyskać informacje o sposobach instalowania agenta pakietu OMS dla systemu Linux i Pobierz najnowszą wersję, zobacz [Operations Management Suite Agent dla systemu Linux](https://github.com/microsoft/oms-agent-for-linux). Aby uzyskać informacje dotyczące sposobu instalowania agenta pakietu OMS dla Windows, zobacz [Operations Management Suite Agent dla Windows](../log-analytics/log-analytics-windows-agent.md).
+Aby uzyskać informacje o sposobach instalowania agenta usługi Log Analytics dla systemu Linux i Pobierz najnowszą wersję, zobacz [Operations Management Suite Agent dla systemu Linux](https://github.com/microsoft/oms-agent-for-linux). Aby uzyskać informacje o sposobie instalowania Log Analytics Agent for Windows, zobacz [Operations Management Suite Agent dla Windows](../log-analytics/log-analytics-windows-agent.md).
 
 ## <a name="permissions"></a>Uprawnienia
 
@@ -147,7 +147,7 @@ Na komputerze Windows możesz przejrzeć następujące informacje, aby sprawdzi�
 Jeśli agent jest skonfigurowany do komunikowania się z Internetem przez zaporę lub serwer proxy agenta nie może komunikować się z usługą Log Analytics, upewnij się, że serwer zapory lub serwera proxy jest prawidłowo skonfigurowany. Aby dowiedzieć się, jak sprawdzić, czy zapora lub serwer proxy jest prawidłowo skonfigurowane, zobacz [konfiguracji sieci dla agenta Windows](../log-analytics/log-analytics-agent-windows.md) lub [konfigurację sieci dla agenta systemu Linux](../log-analytics/log-analytics-agent-linux.md).
 
 > [!NOTE]
-> Jeśli Twoje systemy Linux są skonfigurowane do komunikowania się z serwerem proxy lub bramę pakietu OMS i dodajesz tego rozwiązania, aktualizacja *proxy.conf* uprawnień, aby przyznać grupie omiuser uprawnienie do odczytu w pliku przy użyciu następujących polecenia:
+> Jeśli Twoje systemy Linux są skonfigurowane do komunikowania się z serwerem proxy lub brama usługi Log Analytics i dodajesz tego rozwiązania, aktualizacja *proxy.conf* uprawnień, aby przyznać grupie omiuser uprawnienie do odczytu w pliku przy użyciu następujące polecenia:
 >
 > `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/proxy.conf`
 > `sudo chmod 644 /etc/opt/microsoft/omsagent/proxy.conf`

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 07/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 04afd71183bcb8001d017b0027f29338b8d67ddb
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 50de43fd6f9ca579b501c47514c9f8fca4f53ae8
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42442371"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45540972"
 ---
 # <a name="enable-and-review-kubernetes-master-node-logs-in-azure-kubernetes-service-aks"></a>Włączyć i przejrzeć Kubernetes węzła głównego dzienników w usłudze Azure Kubernetes Service (AKS)
 
@@ -75,8 +75,7 @@ Może upłynąć kilka minut, zanim dzienniki diagnostyczne można włączyć i 
 Po lewej stronie wybierz **wyszukiwanie w dzienniku**. Aby wyświetlić *apiserver klastra kubernetes w usłudze*, wprowadź następujące zapytanie w polu tekstowym:
 
 ```
-search *
-| where Type == "AzureDiagnostics"
+AzureDiagnostics
 | where Category == "kube-apiserver"
 | project log_s
 ```
@@ -84,8 +83,7 @@ search *
 Wiele dzienników prawdopodobnie są zwracane do serwera interfejsu API. Aby określić zakres szczegółów zapytania, aby wyświetlić dzienniki dotyczące serwera NGINX pod, utworzony w poprzednim kroku, dodać kolejny *gdzie* instrukcję, aby wyszukać *zasobników/nginx* pokazany na poniższe przykładowe zapytanie:
 
 ```
-search *
-| where Type == "AzureDiagnostics"
+AzureDiagnostics
 | where Category == "kube-apiserver"
 | where log_s contains "pods/nginx"
 | project log_s

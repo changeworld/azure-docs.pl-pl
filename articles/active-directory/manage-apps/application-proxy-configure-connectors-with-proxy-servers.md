@@ -11,16 +11,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/31/2017
+ms.date: 09/12/2018
 ms.author: barbkess
-ms.reviewer: harshja
+ms.reviewer: japere
 ms.custom: it-pro
-ms.openlocfilehash: 7f9d74ce60d2a433f6bb63be4f131ac430452036
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: e67428116c66c05d83efbb217d7ec81f75124051
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363418"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45540848"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Praca z istniejących serwerów proxy w środowisku lokalnym
 
@@ -77,7 +77,7 @@ Wyniku mających tylko ruchu wychodzącego, nie ma potrzeby konfigurowania dost�
 
 Jeśli WPAD jest włączona w środowisku i odpowiednio skonfigurowane, łącznik automatycznie odnajduje serwera proxy ruchu wychodzącego i niepomyślna próba użycia go. Jednak jawnie skonfigurujesz łącznik za pośrednictwem serwera proxy ruchu wychodzącego.
 
-Aby to zrobić, Edytuj plik C:\Program Files\Microsoft usługi AAD aplikacji serwera Proxy Connector\ApplicationProxyConnectorService.exe.config i Dodaj *przestrzeni nazw system.net* sekcji pokazano, w tym przykładzie kodu. Zmiana *proxyserver:8080* w celu uwzględnienia nazwy serwera proxy w lokalnych lub adres IP i portu nasłuchiwania na.
+Aby to zrobić, Edytuj plik C:\Program Files\Microsoft usługi AAD aplikacji serwera Proxy Connector\ApplicationProxyConnectorService.exe.config i Dodaj *przestrzeni nazw system.net* sekcji pokazano, w tym przykładzie kodu. Zmiana *proxyserver:8080* w celu uwzględnienia nazwy serwera proxy w lokalnych lub adres IP i portu nasłuchiwania na. Wartość musi zawierać prefiks http://, nawet wtedy, gdy używasz adresu IP.
 
 ```xml
 <?xml version="1.0" encoding="utf-8" ?>
