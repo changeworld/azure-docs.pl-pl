@@ -1,20 +1,21 @@
 ---
-title: Zrozumienie klucze usługi LUIS — Azure | Dokumentacja firmy Microsoft
-description: Użyj klawiszy Language Understanding (LUIS) do tworzenia aplikacji i wysyłania zapytań Twojej endpoing.
+title: Zrozumienie klucze usługi LUIS
+titleSuffix: Azure Cognitive Services
+description: Usługa LUIS używa dwa klucze, tworzenia i punktu końcowego. Podczas tworzenia konta usługi LUIS tworzenia klucza jest tworzony automatycznie. Gdy wszystko jest gotowe do opublikowania z aplikacją usługi LUIS, możesz potrzebne do utworzenia klucza punktu końcowego przypisać go do swojej aplikacji usługi LUIS, a pomocą kwerendy punktu końcowego.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/23/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b40ca74999be1821ffa329224ff419646591960e
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 3049d073c691fca69844f68e8d70234c331ae152
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225180"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629169"
 ---
 # <a name="keys-in-luis"></a>Klucze usługi LUIS
 Usługa LUIS wykorzystuje dwa klucze: [tworzenia](#programmatic-key) i [punktu końcowego](#endpoint-key). Podczas tworzenia konta usługi LUIS tworzenia klucza jest tworzony automatycznie. Gdy wszystko jest gotowe do opublikowania z aplikacją usługi LUIS, musisz [tworzenia klucza punktu końcowego](luis-how-to-azure-subscription.md#create-luis-endpoint-key), [ją przypisać](luis-how-to-manage-keys.md#assign-endpoint-key) z aplikacją usługi LUIS i [pomocą kwerendy punktu końcowego](#use-endpoint-key-in-query). 
@@ -22,7 +23,7 @@ Usługa LUIS wykorzystuje dwa klucze: [tworzenia](#programmatic-key) i [punktu k
 |Klucz|Przeznaczenie|
 |--|--|
 |[Tworzenie klucza](#programmatic-key)|Tworzenie, publikowanie, zarządzanie współpracownikom, przechowywanie wersji|
-|[Klucz punktu końcowego](#endpoint-key)| Wykonywanie zapytań|
+|[Klucz punktu końcowego](#endpoint-key)| Wykonywanie zapytania|
 
 Ważne jest, aby tworzyć aplikacje usługi LUIS w [regionów](luis-reference-regions.md#publishing-regions) które również chcesz publikować i wykonywać zapytania.
 
@@ -41,9 +42,9 @@ Jeśli chcesz, aby **kwerendy punktu końcowego produkcji**, tworzenie platformy
 > Dla wygody wiele przykładów użyć tworzenia klucza, ponieważ zapewnia kilka wywołań punktu końcowego w jego [przydziału](luis-boundaries.md#key-limits).  
 
 ## <a name="endpoint-key"></a>Klucz punktu końcowego
- Gdy będziesz potrzebować **kwerendy punktu końcowego produkcji**, Utwórz [klucz usługi LUIS](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) w witrynie Azure portal. Zapamiętaj nazwę używaną do tworzenia klucza, będzie on potrzebny podczas dodawania klucza do aplikacji...
+ Gdy będziesz potrzebować **kwerendy punktu końcowego produkcji**, Utwórz [klucz usługi LUIS](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) w witrynie Azure portal. Zapamiętaj nazwę używaną do tworzenia klucza, będzie on potrzebny podczas dodawania klucza do aplikacji.
 
-Po zakończeniu procesu subskrypcji usługi LUIS [Dodaj klucz](luis-how-to-manage-keys.md#assign-endpoint-key) z aplikacją na **Publikuj** strony. 
+Po zakończeniu procesu subskrypcji usługi LUIS [przypisany klawisz](luis-how-to-manage-keys.md#assign-endpoint-key) do aplikacji. 
 
 Klucz punktu końcowego umożliwia limit przydziału liczby trafień punktu końcowego zgodnie z planem użycia, które zostały określone podczas tworzenia klucza. Zobacz [ceny usług Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/?v=17.23h) Aby uzyskać informacje o cenach.
 
@@ -73,6 +74,10 @@ Regiony publikowania różnią się od tworzenia regionów. Upewnij się, że tw
 
 ## <a name="key-limit-errors"></a>Błędy limitu klucza
 W przypadku przekroczenia usługi na drugim limit przydziału, wystąpi błąd HTTP 429. W przypadku przekroczenia usługi na miesiąc limit przydziału, komunikat o błędzie HTTP 403. Usuń te błędy, uzyskując LUIS [punktu końcowego](#endpoint-key) klucza, [przypisywanie](luis-how-to-manage-keys.md#assign-endpoint-key) klucza do aplikacji w **publikowania** strony [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web.
+
+## <a name="automating-assignment-of-the-endpoint-key"></a>Automatyzowanie przypisanie klucza punktu końcowego
+
+Aby można było przypisać klucza punktu końcowego do aplikacji usługi LUIS, należy użyć witryny sieci Web usługi LUIS poprawne tworzenie i publikowanie [regionów](luis-reference-regions.md). Brak **nie** zautomatyzowanej metody to zrobić, niezależnie od tego mechanizmu, takie jak za pomocą usługi Azure resource Menedżera skryptu, wiersza polecenia platformy Azure, SDK programowy, lub za pomocą interfejsów API.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

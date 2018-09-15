@@ -8,19 +8,19 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 40c7e0744825697779e6bd19a78d8d3512b5d63e
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d857767e5d94daa0a32997474722cec608e513b0
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023464"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630549"
 ---
 # <a name="data-extraction"></a>Wyodrębnianie danych
-Usługa LUIS daje możliwość pobrać informacje z wypowiedzi języka naturalnego użytkownika. Informacje są wyodrębniane w sposób, że może służyć przez program, aplikacji lub chatbot podjąć działania.
+Usługa LUIS daje możliwość pobrać informacje z wypowiedzi języka naturalnego użytkownika. Informacje są wyodrębniane w sposób, że może służyć przez program, aplikacji lub czatbot podjąć działania. W poniższych sekcjach Dowiedz się, jakie dane są zwracane z intencje i podmioty, wraz z przykładami JSON. 
 
-W poniższych sekcjach Dowiedz się, jakie dane są zwracane z intencje i podmioty, wraz z przykładami JSON. Najtrudniejsze dane do wyodrębnienia to dane maszyny do opanowania, ponieważ nie jest zgodny z tekstu do dokładnego dopasowania. Wyodrębnianie danych z maszyny przedstawiono [jednostek](luis-concept-entity-types.md) musi być częścią [cyklu tworzenia](luis-concept-app-iteration.md) aż masz pewność, odbieranie danych, o których oczekujesz. 
+Najtrudniejsze dane do wyodrębnienia to dane maszyny do opanowania, ponieważ nie jest zgodny z tekstu do dokładnego dopasowania. Wyodrębnianie danych z maszyny przedstawiono [jednostek](luis-concept-entity-types.md) musi być częścią [cyklu tworzenia](luis-concept-app-iteration.md) aż masz pewność, odbieranie danych, o których oczekujesz. 
 
 ## <a name="data-location-and-key-usage"></a>Użycie danych lokalizacji i klucz
 Usługa LUIS udostępnia dane z opublikowanego [punktu końcowego](luis-glossary.md#endpoint). **Żądanie HTTPS** (POST lub GET) zawiera wypowiedź, a także niektóre konfiguracje opcjonalne, takie jak środowisk przejściowych lub produkcyjnych. 
@@ -29,7 +29,7 @@ Usługa LUIS udostępnia dane z opublikowanego [punktu końcowego](luis-glossary
 
 `appID` Jest dostępny na **ustawienia** strony z aplikacją usługi LUIS, jak również w adresie URL (po `/apps/`) podczas edytowania aplikacji usługi LUIS. `subscription-key` Jest klucza punktu końcowego używanego na potrzeby zapytań Twojej aplikacji. Za pomocą klucza usługi bezpłatne Tworzenie/modułu uruchamiającego podczas nauki korzystania z usługi LUIS, jest ważne, aby zmienić wartość klucza punktu końcowego z kluczem, który obsługuje Twoja [oczekiwane użycie usługi LUIS](luis-boundaries.md#key-limits). `timezoneOffset` Jednostka jest minut.
 
-**Odpowiedzi HTTPS** zawiera wszystkie informacje na temat intencji i jednostki usługi LUIS można określić na podstawie bieżącego opublikowanego modelu albo punktu końcowego przejściowych lub produkcyjnych. Punkt końcowy adres URL znajduje się na [LUIS](luis-reference-regions.md) witryny sieci Web **Publikuj** strony. 
+**Odpowiedzi HTTPS** zawiera wszystkie informacje na temat intencji i jednostki usługi LUIS można określić na podstawie bieżącego opublikowanego modelu albo punktu końcowego przejściowych lub produkcyjnych. Punkt końcowy adres URL znajduje się na [LUIS](luis-reference-regions.md) witryny sieci Web w **Zarządzaj** sekcji na **kluczy i punktów końcowych** strony. 
 
 ## <a name="data-from-intents"></a>Dane z opcjami
 Danych podstawowych jest najwyższym oceniania **intencji nazwa**. Za pomocą `MyStore` [Szybki Start](luis-quickstart-intents-only.md), odpowiedź na punkt końcowy jest:
@@ -568,13 +568,37 @@ Dla wszystkich innych języków odpowiedź jest:
 ### <a name="key-phrase-extraction-entity-data"></a>Dane jednostki wyodrębnianie kluczowych fraz
 Jednostki wyodrębnianie kluczowych fraz zwraca kluczowych fraz w wypowiedź, dostarczone przez [analizy tekstu](https://docs.microsoft.com/azure/cognitive-services/text-analytics/).
 
-<!-- TBD: verify JSON-->
 ```JSON
-"keyPhrases": [
-    "places",
-    "beautiful views",
-    "favorite trail"
-]
+{
+  "query": "Is there a map of places with beautiful views on a favorite trail?",
+  "topScoringIntent": {
+    "intent": "GetJobInformation",
+    "score": 0.764368951
+  },
+  "intents": [
+    ...
+  ],
+  "entities": [
+    {
+      "entity": "beautiful views",
+      "type": "builtin.keyPhrase",
+      "startIndex": 30,
+      "endIndex": 44
+    },
+    {
+      "entity": "map of places",
+      "type": "builtin.keyPhrase",
+      "startIndex": 11,
+      "endIndex": 23
+    },
+    {
+      "entity": "favorite trail",
+      "type": "builtin.keyPhrase",
+      "startIndex": 51,
+      "endIndex": 64
+    }
+  ]
+}
 ```
 
 ## <a name="data-matching-multiple-entities"></a>Dopasowywanie wiele jednostek danych

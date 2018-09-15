@@ -3,7 +3,7 @@ title: Informacje o wersji programu Microsoft Azure Stack Development Kit | Doku
 description: Ulepszenia, poprawki i znane problemy dotyczące usługi Azure Stack Development Kit.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 ms.assetid: ''
 ms.service: azure-stack
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2018
-git ms.author: brenduns
+git ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: 9c9b93b5e7877d853a2f27678af61774171c01cb
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: ad596e2f63d3ef5fb82fe52699fef3a79e835274
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543333"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634816"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Informacje o wersji usługi Azure Stack Development Kit  
 Ten artykuł zawiera informacje dotyczące ulepszeń, poprawek i znanych problemach w usłudze Azure Stack Development Kit. Jeśli nie masz pewności, której wersji używasz, możesz to zrobić [korzystanie z portalu, aby sprawdzić](.\.\azure-stack-updates.md#determine-the-current-version).

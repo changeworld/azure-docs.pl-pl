@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 09/12/2018
 ms.topic: conceptual
-ms.openlocfilehash: 709886e77819adca961a44f65fe6402dd7d20d53
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 09c5981701ffdee5f2e5dba47cc98c91d5df7526
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716303"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603910"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Zdalne monitorowanie wyborów związanych z architekturą
 
@@ -43,7 +43,7 @@ Dla strumienia przetwarzania rozwiązania do zdalnego monitorowania korzysta z u
 W przypadku usługi storage akceleratora rozwiązania monitorowania zdalnego używa usługi Azure Time Series Insights i Azure Cosmos DB. Usługa Azure Time Series Insights są przechowywane komunikaty przechodzącego przez usługę IoT Hub z połączonych urządzeń. Akcelerator rozwiązań używa usługi Azure Cosmos DB na potrzeby wszystkie magazyny takie jak zimnego magazynu, definicje zasad, alarmy i ustawień konfiguracji. Usługa Azure Cosmos DB jest rozwiązanie zalecane magazynu ciepłego ogólnego przeznaczenia dla aplikacji IoT, chociaż rozwiązań, takich jak Azure Time Series Insights i Azure Data Lake są odpowiednie dla wielu przypadków użycia. Za pomocą usługi Azure Time Series Insights można uzyskać lepszy wgląd w dane szeregów czasowych czujników, wykrywania trendów i anomalii, co pozwala na przeprowadzanie analiz głównych przyczyn i unikanie kosztownych przestojów. 
 
 > [!NOTE]
-> Azure Time Series Insights dla akceleratora rozwiązania monitorowania zdalnego jest obecnie dostępna w wersji zapoznawczej i jest dostępna tylko w [Wybierz regiony](https://azure.microsoft.com/global-infrastructure/services/). Jeśli wdrożono akceleratora rozwiązania monitorowania zdalnego spoza tych regionów, Cosmos DB to domyślna opcja magazynowania.
+> Usługa Time Series Insights nie jest obecnie dostępna w chmurze Azure (Chiny). Nowych wdrożeń akceleratora zdalne monitorowanie rozwiązań w chmurze Azure (Chiny) używać usługi Cosmos DB do przechowywania wszystkich.
 
 ### <a name="business-integration"></a>Integracja biznesowa
 Integracja biznesowa w rozwiązaniu do zdalnego monitorowania jest ograniczona do generowania alarmy, które są umieszczane w magazynie bez wyłączania zasilania. Dodatkowo można wykonać integracji firmy dzięki integracji rozwiązania z usługą Azure Logic Apps.

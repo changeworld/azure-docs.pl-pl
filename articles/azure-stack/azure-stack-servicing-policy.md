@@ -3,7 +3,7 @@ title: Obsługa zasad z usługi Azure Stack | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o usłudze Azure Stack obsługi zasad i jak zapewnić zintegrowany system wspierany.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: caac3d2f-11cc-4ff2-82d6-52b58fee4c39
@@ -13,14 +13,14 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: harik
-ms.openlocfilehash: f74a4ad0507f1c1f029befff88d733ffa719a763
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 523be365e8b66c157546470a70ddec73d3e1e5d1
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023515"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630685"
 ---
 # <a name="azure-stack-servicing-policy"></a>Obsługa zasad z usługi Azure Stack
 W tym artykule opisano zasady obsługi dla usługi Azure Stack zintegrowane systemy i co należy zrobić, aby zapewnić systemu w stanie wspieranym. 

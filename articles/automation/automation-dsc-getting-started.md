@@ -4,17 +4,17 @@ description: Objaśnienie i przykłady typowych zadań w usługi Azure Automatio
 services: automation
 ms.service: automation
 ms.component: dsc
-author: DCtheGeek
-ms.author: dacoulte
+author: bobbytreed
+ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9a18855d11c0b367b7d58ffb0f4c62e752c05b89
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: fc1c870d06d6bf4a0db941b261e9aebd317fdcb1
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40004236"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634364"
 ---
 # <a name="getting-started-with-azure-automation-state-configuration"></a>Wprowadzenie do usługi Azure Automation stanu konfiguracji
 
@@ -123,7 +123,7 @@ Po uruchomieniu kompilacji, można je wyświetlić w **zadania kompilacji** Kafe
 
 ## <a name="viewing-node-configurations"></a>Wyświetlanie konfiguracji węzła
 
-Pomyślne wykonanie zadań kompilacji tworzy jeden lub więcej nowe konfiguracje węzłów. Konfiguracja węzła jest dokument MOF, który jest wdrożony na serwerze ściągania i jest gotowa i stosowane przez co najmniej jeden węzeł. Konfiguracje węzłów można wyświetlić na koncie usługi Automation w **State configuration (DSC)** strony. Konfiguracja węzła o nazwie z formularzem *ConfigurationName*.* NodeName*.
+Pomyślne wykonanie zadań kompilacji tworzy jeden lub więcej nowe konfiguracje węzłów. Konfiguracja węzła jest dokument MOF, który jest wdrożony na serwerze ściągania i jest gotowa i stosowane przez co najmniej jeden węzeł. Konfiguracje węzłów można wyświetlić na koncie usługi Automation w **State configuration (DSC)** strony. Konfiguracja węzła o nazwie z formularzem *ConfigurationName*. *NodeName*.
 
 1. Zaloguj się w witrynie [Azure Portal](https://portal.azure.com).
 1. Po lewej stronie, kliknij przycisk **wszystkie zasoby** i następnie nazwę konta usługi Automation.

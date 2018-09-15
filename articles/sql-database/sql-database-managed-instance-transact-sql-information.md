@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 0813/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 57c6b52df3e8f6c47eb794cda4b47bfa2d7de374
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: c35fdb391f3ec3f0af3a7c916cb22cb58c90dd64
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051242"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604670"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server 
 
@@ -267,7 +267,7 @@ Tabele zewnętrzne odwołujące się do plików w systemie plików HDFS lub Azur
 
 ### <a name="replication"></a>Replikacja 
  
-Replikacja jest obsługiwana w wystąpieniu zarządzanym. Aby uzyskać informacji o replikacji, zobacz [replikacji programu SQL Server](http://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
+Replikacja jest dostępna w publicznej wersji zapoznawczej na wystąpieniu zarządzanym. Aby uzyskać informacji o replikacji, zobacz [replikacji programu SQL Server](http://docs.microsoft.com/sql/relational-databases/replication/replication-with-sql-database-managed-instance).
  
 ### <a name="restore-statement"></a>Przywracanie — instrukcja 
  
@@ -335,23 +335,24 @@ Aby uzyskać informacje na temat instrukcji Restore, zobacz [PRZYWRÓCIĆ instru
 - `sp_attach_db`, `sp_attach_single_file_db`, i `sp_detach_db` nie są obsługiwane. Zobacz [sp_attach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-db-transact-sql), [sp_attach_single_file_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-attach-single-file-db-transact-sql), i [sp_detach_db](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-detach-db-transact-sql).
 - `sp_renamedb` nie jest obsługiwane. Zobacz [sp_renamedb](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-renamedb-transact-sql).
 
-### <a name="sql-server-agent"></a>Program SQL Server Agent 
- 
+### <a name="sql-server-agent"></a>Program SQL Server Agent
+
 - Ustawienia agenta SQL są tylko do odczytu. Procedura `sp_set_agent_properties` nie jest obsługiwana w wystąpieniu zarządzanym.  
-- Zadania — tylko kroki zadania języka T-SQL są aktualnie obsługiwane (dodatkowe kroki zostaną dodane w publicznej wersji zapoznawczej).
- - SSIS nie jest jeszcze obsługiwana. 
- - Replikacja nie jest jeszcze obsługiwana.  
-  - Czytnik dziennika transakcji nie jest jeszcze obsługiwana.  
-  - Migawka nie jest jeszcze obsługiwana.  
-  - Dystrybutor nie jest jeszcze obsługiwana.  
-  - Scal nie jest obsługiwana.  
+- Zadania — kroki w zadaniu języka T-SQL są obecnie obsługiwane.
+- Inne typy zadań kroki nie są obecnie obsługiwane (krok typów zostanie dodana w okresie publicznej wersji zapoznawczej).
+  - Zadania replikacji nie jest obsługiwane w tym:
+    - Czytnik dziennika transakcji.  
+    - Migawki.
+    - Dystrybutor.  
+    - Scalanie.  
+  - SSIS nie jest jeszcze obsługiwana. 
   - Czytnik kolejki nie jest obsługiwane.  
- - Powłoka poleceń nie jest jeszcze obsługiwana. 
+  - Powłoka poleceń nie jest jeszcze obsługiwana. 
   - Wystąpienia zarządzanego nie można uzyskać dostępu zewnętrznych zasobów (np. udziały sieciowe za pośrednictwem robocopy).  
- - Program PowerShell nie jest jeszcze obsługiwana.
- - Usługi Analysis Services nie są obsługiwane.  
+  - Program PowerShell nie jest jeszcze obsługiwana.
+  - Usługi Analysis Services nie są obsługiwane.  
 - Powiadomienia są obsługiwane częściowo.
- - Powiadomienie e-mail jest obsługiwane, wymagane jest skonfigurowanie profil poczty bazy danych. Może istnieć tylko jedna baza danych profilu poczty i musi zostać wywołana `AzureManagedInstance_dbmail_profile` w publicznej wersji zapoznawczej (tymczasowe ograniczenie).  
+- Powiadomienie e-mail jest obsługiwane, wymagane jest skonfigurowanie profil poczty bazy danych. Może istnieć tylko jedna baza danych profilu poczty i musi zostać wywołana `AzureManagedInstance_dbmail_profile` w publicznej wersji zapoznawczej (tymczasowe ograniczenie).  
  - Pagera nie jest obsługiwane.  
  - NetSend nie jest obsługiwane. 
  - Alerty nie są jeszcze nie obsługiwane.

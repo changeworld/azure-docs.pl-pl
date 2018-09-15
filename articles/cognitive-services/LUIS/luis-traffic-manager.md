@@ -1,20 +1,21 @@
 ---
-title: Użyj usługi Microsoft Azure Traffic Manager, aby zwiększyć przydział punktu końcowego w Language Understanding (LUIS) — Azure | Dokumentacja firmy Microsoft
-description: Użyj usługi Microsoft Azure Traffic Manager, aby rozłożyć przydziału punktu końcowego w wielu subskrypcjach w Language Understanding (LUIS) aby zwiększyć limit przydziału punktu końcowego
+title: Użyj usługi Microsoft Azure Traffic Manager, aby zwiększyć limit przydziału punktu końcowego w Language Understanding (LUIS)
+titleSuffix: Azure Cognitive Services
+description: Language Understanding (LUIS) oferuje możliwość zwiększenia limitu przydziału żądania punktu końcowego, po przekroczeniu limitu przydziału jednego klucza. Polega to na tworzenie więcej kluczy dla usługi LUIS, a następnie dodanie ich do aplikacji usługi LUIS w **Publikuj** strony w **zasobów i klucze** sekcji.
 author: diberry
 manager: cjgronlund
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 909c32452db216f79633b94c31f39350b7a6ee20
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 69e9ad14dd2efaecd587140f6d49550e6daf5e5c
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248632"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634952"
 ---
 # <a name="use-microsoft-azure-traffic-manager-to-manage-endpoint-quota-across-keys"></a>Microsoft Azure Traffic Manager umożliwia zarządzanie przydziału punktu końcowego za pośrednictwem kluczy
 Language Understanding (LUIS) oferuje możliwość zwiększenia limitu przydziału żądania punktu końcowego, po przekroczeniu limitu przydziału jednego klucza. Polega to na tworzenie więcej kluczy dla usługi LUIS, a następnie dodanie ich do aplikacji usługi LUIS w **Publikuj** strony w **zasobów i klucze** sekcji. 
@@ -44,9 +45,7 @@ New-AzureRmResourceGroup -Name luis-traffic-manager -Location "West US"
 
     ![Zrzut ekranu usługi Azure portal za pomocą dwóch kluczy usługi LUIS w grupie zasobów usługi luis — traffic-manager](./media/traffic-manager/luis-keys.png)
 
-2. W [LUIS] [ LUIS] witryny sieci Web na **Publikuj** strony, Dodaj klucze do aplikacji, a także ponownie opublikować aplikację. 
-
-    ![Zrzut ekranu usługi LUIS portal za pomocą dwóch kluczy usługi LUIS na stronie publikowania](./media/traffic-manager/luis-keys-in-luis.png)
+2. W [LUIS] [ LUIS] witryny sieci Web w **Zarządzaj** sekcji na **kluczy i punktów końcowych** strony, przypisywanie klawiszy do aplikacji i ponowne opublikowanie aplikacji przy użyciu Wybieranie **Publikuj** przycisk w prawym górnym menu. 
 
     Przykładowy adres URL w **punktu końcowego** kolumny za pomocą żądania GET klucza punktu końcowego jako parametr zapytania. Skopiuj adresy URL punktów końcowych dwóch nowych kluczy. Są one używane w ramach konfiguracji usługi Traffic Manager w dalszej części tego artykułu.
 
@@ -350,7 +349,7 @@ dns.resolveAny('luis-dns-parent.trafficmanager.net', (err, ret) => {
 
 Odpowiedź oznaczająca Powodzenie z punktem końcowym usługi LUIS jest:
 
-```cmd
+```json
 [
     {
         value: 'westus.api.cognitive.microsoft.com', 

@@ -6,13 +6,13 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/10/2018
-ms.openlocfilehash: ea72e4ac778e52d4f6e4f5597d38a1de59ba43fc
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.date: 09/14/2018
+ms.openlocfilehash: 193aa8f87a90eb7bbf1e2c49132ad480881d41fe
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348943"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633473"
 ---
 # <a name="azure-disk-encryption-for-iaas-vms"></a>Usługa Azure Disk Encryption dla maszyn wirtualnych IaaS 
 Platforma Microsoft Azure jest zobowiązana do zapewnienia Twojej prywatności danych, niezależność danych, a umożliwiając kontroli platformy Azure hostowanej danych za pomocą wielu zaawansowanych technologii szyfrowania, kontroli i zarządzać kluczami szyfrowania, a kontrola i inspekcja dostępu do danych. Formant ten zapewnia klientom platformy Azure swobodę wyboru rozwiązania, który najlepiej zaspokaja ich potrzeby biznesowe. W tym artykule przedstawiono rozwiązanie technologiczne "Dysku szyfrowanie dla Windows i Linux IaaS maszyn wirtualnych platformy Azure", aby chronić i chronić dane zgodnie z wymaganiami co do bezpieczeństwa organizacji i zobowiązaniami w zakresie zgodności. 
@@ -78,7 +78,10 @@ Rozwiązanie nie obsługuje następujących scenariuszy, funkcji i technologii:
 * Maszyny wirtualne IaaS, które są tworzone za pomocą klasycznego metodę tworzenia maszyny Wirtualnej
 * Włączanie szyfrowania na obrazach niestandardowych klienta maszyn wirtualnych IaaS z systemem Linux
 * Integracja z usługą zarządzania kluczami w środowisku lokalnym
-* Usługa pliki systemu Azure (udostępnionego systemu plików), Network File System (NFS), dynamiczne woluminy i maszyn wirtualnych Windows, które są skonfigurowane przy użyciu systemów programowej macierzy RAID
+* Usługa pliki systemu Azure (udostępnionego systemu plików)
+* Network File System (NFS)
+* Woluminy dynamiczne
+* Maszyny wirtualne Windows, które są skonfigurowane przy użyciu systemów programowej macierzy RAID
 
 ## <a name="encryption-features"></a>Funkcje szyfrowania
 Po włączeniu i wdrożeniu usługi Azure Disk Encryption maszyn wirtualnych IaaS platformy Azure, następujące funkcje są włączone, w zależności od konfiguracji podano:

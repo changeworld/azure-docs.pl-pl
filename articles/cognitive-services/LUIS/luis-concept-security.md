@@ -1,20 +1,21 @@
 ---
-title: Omówienie dostępu do aplikacji usługi LUIS — Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak dostęp do tworzenia usługi LUIS.
+title: Omówienie dostępu do aplikacji usługi LUIS
+titleSuffix: Azure Cognitive Services
+description: Tworzenie dostępu jest dostępna dla właścicieli i współpracowników. Dla aplikacji sieci prywatnej dostępu do punktu końcowego jest dostępna dla właścicieli i współpracowników. W przypadku publicznych aplikacji dostęp do punktu końcowego jest dostępny dla wszystkich, ma swoje własne konto usługi LUIS, która zawiera identyfikator aplikacji publicznych.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: fddffbcabba753e9ef214f924d5ff2cee38427a5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: ca179dc845930bd0cbc89f8bf700bd1650ecf7fc
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301697"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633106"
 ---
 # <a name="authoring-and-endpoint-user-access"></a>Dostęp użytkownika do tworzenia i punktu końcowego
 Tworzenie dostępu jest dostępna dla właścicieli i współpracowników. Dla aplikacji sieci prywatnej dostępu do punktu końcowego jest dostępna dla właścicieli i współpracowników. W przypadku publicznych aplikacji dostęp do punktu końcowego jest dostępny dla wszystkich, ma swoje własne konto usługi LUIS, która zawiera identyfikator aplikacji publicznych. 
@@ -37,11 +38,13 @@ Właściciela i współpracowników wszystkie mają dostęp do tworzenia aplikac
 |Szkolenie|
 
 ## <a name="access-to-endpoint"></a>Dostęp do punktu końcowego
-Dostęp do punktu końcowego do zapytania usługi LUIS jest kontrolowany przez **publicznych** ustawienie aplikacji **ustawienia** strony. Zapytanie o punkt końcowy aplikacji prywatnych są sprawdzane pod kątem autoryzowanego klucza z pozostałymi trafień limitu przydziału. Zapytanie punktu końcowego aplikacji publicznej musi również podać klucz punktu końcowego (z spojrzenia wykonuje zapytanie) który również jest sprawdzane dla pozostałych trafień limitu przydziału. 
-
-Klucz punktu końcowego jest przekazywany w ciąg zapytania żądania GET projektu i zlecania nagłówek wpisu.
+Dostęp do kwerendy punktu końcowego jest kontrolowany przez ustawienie na **informacje o aplikacji** strony w **Zarządzaj** sekcji. 
 
 ![Zestaw aplikacji na publiczną](./media/luis-concept-security/set-application-as-public.png)
+
+|[Prywatnych punktów końcowych](#private-app-endpoint-security)|[Publiczny punkt końcowy](#public-app-endpoint-access)|
+|:--|:--|
+|Dostępne do właściciela i współpracowników|Dostępne dla właściciela, współpracowników i każdy else który wie, identyfikator aplikacji|
 
 ### <a name="private-app-endpoint-security"></a>Zabezpieczenia punktu końcowego aplikacji prywatnych
 Punkt końcowy aplikacji prywatnych jest dostępna tylko dla następujących czynności:
@@ -50,14 +53,19 @@ Punkt końcowy aplikacji prywatnych jest dostępna tylko dla następujących czy
 |--|--|--|
 |Klucz tworzenia właściciela| Maksymalnie 1000 punkt końcowy trafień|
 |Współpracowników tworzenia kluczy| Maksymalnie 1000 punkt końcowy trafień|
-|Punkt końcowy klucze dodane z **[Publikuj](luis-how-to-publish-app.md)** strony|Właściciela i współpracowników dodać klucze punktu końcowego|
+|Dowolny klawisz, przypisany do usługi LUIS przez autor lub Współautor|Na podstawie warstwy użycia klucza|
 
-Inne klucze tworzenia lub punkt końcowy ma **nie** dostępu.
+#### <a name="microsoft-user-accounts"></a>Konta użytkowników firmy Microsoft
+Autorzy i współpracowników można przypisać klucze prywatne aplikacją usługi LUIS. Konto Microsoft, które tworzy klucz usługi LUIS w witrynie Azure portal musi być właścicielem aplikacji lub Współautor aplikacji. Nie można przypisać klucza prywatnego aplikacji z innego konta platformy Azure.
+
+Zobacz [użytkownik dzierżawy usługi Azure Active Directory](luis-how-to-collaborate.md#azure-active-directory-tenant-user) Aby dowiedzieć się więcej na temat kont użytkowników usługi Active Directory. 
 
 ### <a name="public-app-endpoint-access"></a>Dostęp do punktu końcowego publicznego aplikacji
-Konfigurowanie aplikacji jako **publicznych** na **ustawienia** strony aplikacji. Po skonfigurowaniu aplikacji jako publiczne, _wszelkie_ prawidłowe LUIS tworzenia klucza lub klucza punktu końcowego usługi LUIS mogą wysyłać zapytania swojej aplikacji, tak długo, jak klucz nie został użyty przydział całego punktu końcowego.
+Po skonfigurowaniu aplikacji jako publiczne, _wszelkie_ prawidłowe LUIS tworzenia klucza lub klucza punktu końcowego usługi LUIS mogą wysyłać zapytania swojej aplikacji, tak długo, jak klucz nie został użyty przydział całego punktu końcowego.
 
 Użytkownik, który nie jest właścicielem lub współpracownika, dostęp tylko do aplikacji publicznej Jeśli podany identyfikator aplikacji. Usługa LUIS nie ma publicznej _rynku_ lub w inny sposób wyszukiwania dla aplikacji w sieci publicznej.  
+
+Opublikowaniu publicznych aplikacji we wszystkich regionach, aby użytkownik z kluczem zależności od regionu zasobu usługi LUIS dostęp do aplikacji w niezależnie od regionu jest skojarzony z kluczem zasobów.
 
 ## <a name="microsoft-user-accounts"></a>Konta użytkowników firmy Microsoft
 Autorzy i współpracowników dodać klucze do usługi LUIS na stronie publikowania. Konto Microsoft, które tworzy klucz usługi LUIS w witrynie Azure portal musi być właścicielem aplikacji lub Współautor aplikacji. 
@@ -71,11 +79,13 @@ If the Microsoft user account is part of an Azure Active Directory (AAD), and th
 ### Administrator consent
 If the Microsoft user account is part of an Azure Active Directory (AAD), and the active directory doesn't allow users to give consent, then the administrator can give individual consent via the method discussed in this [blog](https://blogs.technet.microsoft.com/tfg/2017/10/15/english-tips-to-manage-azure-ad-users-consent-to-applications-using-azure-ad-graph-api/). 
 -->
+
 ## <a name="securing-the-endpoint"></a>Zabezpieczanie punktu końcowego 
 Można kontrolować, kto może wyświetlać klucza punktu końcowego usługi LUIS, wywołując ją w środowisku serwer serwer. Usługa LUIS korzystają z robota, połączenie między bot i LUIS jest już bezpieczne. Bezpośrednie wywoływanie punktu końcowego usługi LUIS należy utworzyć interfejs API po stronie serwera (takich jak Azure [funkcja](https://azure.microsoft.com/services/functions/)) przy użyciu kontrolowanego dostępu (takich jak [AAD](https://azure.microsoft.com/services/active-directory/)). Gdy wywoływany jest interfejs API po stronie serwera i uwierzytelnianie i autoryzacja są weryfikowane, Przekaż wywołań do usługi LUIS. Chociaż ta strategia nie zapobiegać atakom typu man-in--middle, zaciemnia punktu końcowego od swoich użytkowników, pozwala na śledzenie dostępu i umożliwia dodawanie rejestrowania odpowiedzi punktu końcowego (takie jak [usługi Application Insights](https://azure.microsoft.com/services/application-insights/)).  
 
 ## <a name="security-compliance"></a>Zgodności zabezpieczeń
-Usługa LUIS zakończona pomyślnie, ISO 27001: 2013 i inspekcji 27018:2014 ISO z ZEROWĄ niezgodności (wyniki) w raporcie inspekcji. Ponadto usługa LUIS również uzyskać certyfikacji STAR CSA z najwyższą możliwe Award Gold dojrzałości możliwości oceny. Azure jest chmura publiczna jedyny duży dostawca usług w zdobyć ten certyfikat. Aby uzyskać więcej informacji można znaleźć usługi LUIS zawarte w instrukcji scope zaktualizowane w głównym platformy Azure [zgodność](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942) dokument, który odwołuje się do [Centrum zaufania](https://www.microsoft.com/en-us/trustcenter/compliance/iso-iec-27001) stron ISO.  
+ 
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-security-compliance.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 

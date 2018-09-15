@@ -1,5 +1,5 @@
 ---
-title: Pojęcia dotyczące zmian danych usługi LUIS — dodatkowy opis
+title: Pojęcia dotyczące zmian danych usługi LUIS — Language Understanding
 titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak można zmienić danych przed prognozy w Language Understanding (LUIS)
 services: cognitive-services
@@ -8,17 +8,17 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/26/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 2949f7afa5d04d9f7ea738ad6f7b9333bfaf958f
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: f3caac697bad0bdb1401e85ac032fe167c25e112
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023021"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631263"
 ---
 # <a name="data-alterations"></a>Zmiany danych
-Usługa LUIS udostępnia metody do manipulowania wypowiedź przed lub podczas prognozowania. 
+Usługa LUIS udostępnia metody do manipulowania wypowiedź przed lub podczas prognozowania. Należą do ustalania Pisownia i rozwiązywanie problemów w strefie czasowej dla datetimeV2 wydarzenia. 
 
 ## <a name="correct-spelling-errors-in-utterance"></a>W poprawianiu błędów pisowni w polu wypowiedź
 Używa usługi LUIS [Bing pisowni Sprawdź interfejsu API w wersji 7](https://azure.microsoft.com/services/cognitive-services/spell-check/) poprawiać błędy pisowni w wypowiedź. Usługa LUIS musi mieć klucz skojarzony z tą usługą. Utwórz klucz, a następnie dodaj klucz jako parametr querystring na [punktu końcowego](https://aka.ms/luis-endpoint-apis). 
@@ -48,6 +48,9 @@ Gdy [Bing pisowni Sprawdź interfejsu API w wersji 7](https://azure.microsoft.co
 }
 ```
  
+### <a name="whitelist-words"></a>Lista dozwolonych słów
+Sprawdzanie pisowni Bing, które są używane w LUIS interfejsu API nie obsługuje białą listę wyrazów zostać zignorowane podczas pisowni Sprawdź zmiany. Jeśli zachodzi potrzeba białą listę wyrazów lub akronimów, przetwarzać wypowiedź w aplikacji klienckiej z białą listę przed wysłaniem wypowiedź do usługi LUIS w celu prognozowania intencji.
+
 ## <a name="change-time-zone-of-prebuilt-datetimev2-entity"></a>Zmień strefę czasową datetimeV2 wstępnie utworzone jednostki
 Gdy aplikacją usługi LUIS używa datetimeV2 wstępnie utworzone jednostki, wartość daty i godziny mogą być zwracane w odpowiedzi prognozy. Strefa czasowa żądania jest używany do określenia poprawną datę i godzinę do zwrócenia. Jeśli żądanie pochodzi z robota lub innej aplikacji scentralizowane przed przejściem do usługi LUIS, popraw strefy czasowej, których używa usługi LUIS. 
 

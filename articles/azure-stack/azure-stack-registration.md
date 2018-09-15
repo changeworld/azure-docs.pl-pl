@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 6f406f63f4ae7518b93153db30c9ca51564b848c
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 92c0ad6dfde4fc83a912b4a3387d8b586e72809c
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720144"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630447"
 ---
 # <a name="register-azure-stack-with-azure"></a>Rejestrowania usługi Azure Stack na platformie Azure
 
@@ -52,7 +52,7 @@ Przed zarejestrowaniem usługi Azure Stack przy użyciu platformy Azure, musisz 
 
 - Nazwa użytkownika i hasło dla konta które jest właścicielem subskrypcji (konta MSA/2FA są obsługiwane).
 
-- Konto użytkownika musi być administratorem w dzierżawie usługi Azure AD, do którego usługa Azure Stack jest zarejestrowany, na przykład `yourazurestacktenant.onmicrosoft.com`.
+- Konto użytkownika musi mieć dostęp do subskrypcji platformy Azure i masz uprawnienia do tworzenia aplikacji z obsługą tożsamości i nazwy główne usług w katalogu skojarzonego z posiadaną subskrypcją.
 
 - Dostawca zasobów usługi Azure Stack zarejestrowany (patrz sekcja rejestrowanie dostawcy zasobów platformy Azure Stack poniżej, aby uzyskać szczegółowe informacje).
 
@@ -106,7 +106,7 @@ Wykonaj następujące kroki, aby zarejestrować usługi Azure Stack z platformą
 
 1. Można zarejestrować dostawcy zasobów usługi Azure Stack przy użyciu platformy Azure, uruchom program PowerShell ISE z uprawnieniami administracyjnymi, a następnie użyj następujących poleceń cmdlet programu PowerShell przy użyciu **EnvironmentName** zestaw parametrów na typ odpowiednią subskrypcję platformy Azure (patrz Parametry poniżej).
 
-2. Dodaj konto platformy Azure, która służy do rejestrowania usługi Azure Stack. Aby dodać konto, należy uruchomić **Add-AzureRmAccount** polecenia cmdlet. Zostanie wyświetlony monit o wprowadzenie poświadczeń konta administrator globalny usługi Azure i może być konieczne użycie uwierzytelnianie 2-etapowe, na podstawie konfiguracji konta.
+2. Dodaj konto platformy Azure, która służy do rejestrowania usługi Azure Stack. Aby dodać konto, należy uruchomić **Add-AzureRmAccount** polecenia cmdlet. Zostanie wyświetlony monit o wprowadzenie poświadczeń konta platformy Azure i może być konieczne użycie uwierzytelnianie 2-etapowe, na podstawie konfiguracji konta.
 
    ```PowerShell  
       Add-AzureRmAccount -EnvironmentName "<AzureCloud, AzureChinaCloud, or AzureUSGovernment>"
@@ -166,7 +166,7 @@ Wykonaj następujące kroki, aby zarejestrować usługi Azure Stack z platformą
 
 1. Można zarejestrować dostawcy zasobów usługi Azure Stack przy użyciu platformy Azure, uruchom program PowerShell ISE z uprawnieniami administracyjnymi, a następnie użyj następujących poleceń cmdlet programu PowerShell przy użyciu **EnvironmentName** zestaw parametrów na typ odpowiednią subskrypcję platformy Azure (patrz Parametry poniżej).
 
-2. Dodaj konto platformy Azure, która służy do rejestrowania usługi Azure Stack. Aby dodać konto, należy uruchomić **Add-AzureRmAccount** polecenia cmdlet. Zostanie wyświetlony monit o wprowadzenie poświadczeń konta administrator globalny usługi Azure i może być konieczne użycie uwierzytelnianie 2-etapowe, na podstawie konfiguracji konta.
+2. Dodaj konto platformy Azure, która służy do rejestrowania usługi Azure Stack. Aby dodać konto, należy uruchomić **Add-AzureRmAccount** polecenia cmdlet. Zostanie wyświetlony monit o wprowadzenie poświadczeń konta platformy Azure i może być konieczne użycie uwierzytelnianie 2-etapowe, na podstawie konfiguracji konta.
 
    ```PowerShell  
       Add-AzureRmAccount -EnvironmentName "<AzureCloud, AzureChinaCloud, or AzureUSGovernment>"

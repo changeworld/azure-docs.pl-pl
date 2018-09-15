@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: jeking
 ms.component: common
-ms.openlocfilehash: be3d0d32e60e23b2b2d7d414d2297b86dec62f1d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: eee9998280f2105fee5144b520bc8000b086f941
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576837"
+ms.locfileid: "45603933"
 ---
 # <a name="geo-redundant-storage-grs-cross-regional-replication-for-azure-storage"></a>Magazyn geograficznie nadmiarowy (GRS): replikacji między regionami dla usługi Azure Storage
 [!INCLUDE [storage-common-redundancy-GRS](../../../includes/storage-common-redundancy-grs.md)]
@@ -41,7 +41,7 @@ Niektóre kwestie należy pamiętać, korzystając z RA-GRS:
    * Czas firma Microsoft wymaga, aby określić, czy dane można odzyskać w lokalizacji podstawowej lub przejścia w tryb failover jest konieczne.
    * Czas Przejdź w tryb failover konta magazynu, zmieniając głównej wpisy DNS, aby wskazywały do lokalizacji dodatkowej.
 
-   Firma Microsoft podejmuje odpowiedzialność naszych użytkowników bardzo poważnie zachowania danych. W przypadku każdej okazji odzyskanie danych w regionie podstawowym, firma Microsoft będzie opóźnienie przełączenie w tryb failover i skoncentrować się na odzyskanie danych. Przyszłych wersjach usługi pozwoli Wyzwól tryb failover na poziomie konta, dzięki czemu możesz cel czasu odzyskiwania można kontrolować.
+   Firma Microsoft podejmuje odpowiedzialność naszych użytkowników bardzo poważnie zachowania danych. W przypadku każdej okazji odzyskanie danych w regionie podstawowym, firma Microsoft będzie opóźnienie przełączenie w tryb failover i skoncentrować się na odzyskanie danych. 
 
 ## <a name="paired-regions"></a>Sparowane regiony 
 Podczas tworzenia konta magazynu, możesz wybrać region podstawowy dla konta. Sparowanym regionie pomocniczym jest określana na podstawie podstawowego regionu i nie można jej zmienić. Aby uzyskać aktualne informacje na temat regionów obsługiwanych przez platformę Azure, zobacz [firm ciągłości działania i odzyskiwania po awarii (BCDR): regiony sparowane platformy Azure](../../best-practices-availability-paired-regions.md).

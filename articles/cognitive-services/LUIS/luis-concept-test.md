@@ -1,22 +1,23 @@
 ---
-title: Przetestuj aplikację usługi LUIS — Azure | Dokumentacja firmy Microsoft
-description: Language Understanding (LUIS) umożliwia ciągłe prace w swojej aplikacji, aby dostosować go i zwiększyć jej interpretacji języka.
+title: Przetestuj aplikację usługi LUIS
+titleSuffix: Azure Cognitive Services
+description: Testowanie jest procesem świadczenie usługi LUIS wypowiedzi próbki i uzyskiwanie odpowiedzi rozpoznawane LUIS intencje i podmioty. Usługa LUIS można przetestować interaktywnie wypowiedź jednego naraz, lub podaj partii wypowiedzi. Za pomocą testowania, możesz porównać bieżącego aktywnego modelu do opublikowanego modelu.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/14/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: d231eaf98358e3f8237a820e59433558d293872f
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 41ba968eb68f2104a2183917c4ef850b2b6a9edc
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224351"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629954"
 ---
-# <a name="testing-in-luis"></a>Testowanie w usługi LUIS
+# <a name="testing-example-utterances-in-luis"></a>Testowanie przykład wypowiedzi w usługi LUIS
 
 Testowanie jest procesem świadczenie usługi LUIS wypowiedzi próbki i uzyskiwanie odpowiedzi rozpoznawane LUIS intencje i podmioty. 
 
@@ -25,6 +26,7 @@ Możesz [test](luis-interactive-test.md) LUIS interaktywnie jeden wypowiedź w c
 <a name="A-test-score"></a>
 <a name="Score-all-intents"></a>
 <a name="E-(exponent)-notation"></a>
+
 ## <a name="what-is-a-score-in-testing"></a>Co to jest ocena podczas testowania?
 Zobacz [prognozowania oceny](luis-concept-prediction-score.md) pojęcia, aby dowiedzieć się więcej o wyniki prognozy.
 

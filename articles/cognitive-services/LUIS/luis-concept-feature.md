@@ -1,20 +1,21 @@
 ---
-title: Omówienie funkcji usługi LUIS aplikacji na platformie Azure | Dokumentacja firmy Microsoft
-description: Informacje o funkcjach, które pomagają poprawić wydajność aplikacji usługi LUIS. Funkcje obejmują list frazy i wzorców wyrażeń regularnych rozpoznawania.
+title: Funkcje w aplikacjach usługi LUIS w usługach Azure Cognitive Services
+titleSuffix: Azure Cognitive Services
+description: Dodawanie funkcji do języka modelu w celu dostarczanie wskazówek na temat rozpoznawanie dane wejściowe, które chcesz oznaczyć lub klasyfikowanie. Funkcje pomocy usługi LUIS rozpoznać intencje i podmioty.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 04/18/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 8d3f006f27d1d728f89458deba27e1c1a63b6de5
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 906e63c94666d2e24b486f5ae34f99133408c4dc
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224932"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45628713"
 ---
 # <a name="phrase-list-features-in-luis"></a>Wyrażenie funkcji listy usługi LUIS
 

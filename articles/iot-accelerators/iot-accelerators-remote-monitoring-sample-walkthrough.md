@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 11/10/2017
 ms.author: dobett
-ms.openlocfilehash: 4e1456064e35b55871638e9eeb34859194cb869b
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: f059c57396610a10f9e35a6dad8408c6be1d89cb
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714908"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604314"
 ---
 # <a name="remote-monitoring-solution-accelerator-overview"></a>Omówienie akceleratora rozwiązań do zdalnego monitorowania
 
@@ -120,6 +120,9 @@ Zadania usługi ASA dostarczać dane telemetryczne z podłączonych urządzeń d
 ### <a name="azure-time-series-insights"></a>Azure Time Series Insights
 
 [Usługa Azure Time Series Insights](https://docs.microsoft.com/azure/time-series-insights/) magazynów danych telemetrycznych z urządzeń połączonych z usługą akcelerator rozwiązań. Umożliwia ona także wizualizowanie i wykonywania zapytań względem danych telemetrycznych z urządzenia w rozwiązaniu internetowym interfejsie użytkownika.
+
+> [!NOTE]
+> Usługa Time Series Insights nie jest obecnie dostępna w chmurze Azure (Chiny). Nowych wdrożeń akceleratora zdalne monitorowanie rozwiązań w chmurze Azure (Chiny) używać usługi Cosmos DB do przechowywania wszystkich.
 
 ### <a name="configuration-microservice"></a>Mikrousługi konfiguracji
 

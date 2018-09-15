@@ -1,20 +1,21 @@
 ---
-title: Zrozumienie, jak role są używane w jednostkach na podstawie wzorca — Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rola umożliwia w jednostce na podstawie wzorca nadaj nazwę podtypem kontekstowe jednostki.
+title: Zrozumienie, jak role są używane w jednostkach na podstawie wzorca
+titleSuffix: Azure Cognitive Services
+description: Role są podtypy nazwanych, kontekstowych podmiotu używana tylko we wzorcach. Na przykład Kup wypowiedź biletu z nowego Jorku do Londynu, zarówno w Nowym Jorku, jak i w Londynie są miast, ale każda ma inne znaczenie w zdaniu. Nowy Jork jest miasto źródła i Londyn jest miasta docelowego.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
-ms.technology: luis
+ms.component: language-understanding
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: d2692cdce9da7428bd7b30c4feaf7347792618f5
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: aabd3a22498e0e33993d715e7a5882dde7aacf37
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39222707"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632487"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>Role jednostki we wzorcach są podtypy kontekstowych
 Role są podtypy nazwanych, kontekstowych podmiotu używana tylko w [wzorców](luis-concept-patterns.md).
@@ -31,9 +32,10 @@ Role nadaj nazwę różnic:
 ## <a name="how-are-roles-used-in-patterns"></a>Jak role są używane we wzorcach?
 W polu wypowiedź szablonu wzorca role są używane w ramach wypowiedź: 
 
-```
-buy a ticket from {Location:origin} to {Location:destination}
-```
+|Wzorzec z rolami jednostki|
+|--|
+|`buy a ticket from {Location:origin} to {Location:destination}`|
+
 
 ## <a name="role-syntax-in-patterns"></a>Składnia roli we wzorcach
 Jednostki i rola są ujęte w nawiasach, `{}`. Jednostka i rola są rozdzielone średnikiem. 

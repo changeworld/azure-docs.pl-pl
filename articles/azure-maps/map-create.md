@@ -3,18 +3,18 @@ title: Tworzenie mapy za pomocą usługi Azure Maps | Dokumentacja firmy Microso
 description: Tworzenie Javascript map
 author: jingjing-z
 ms.author: jinzh
-ms.date: 05/07/2018
+ms.date: 09/14/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: c5d48e2e7316f33a565fc61a769a29c00834eed5
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 0e292bfd38402d5a36be217746fd352ce4627177
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43343373"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633320"
 ---
 # <a name="create-a-map"></a>Tworzenie mapy
 
@@ -42,21 +42,23 @@ W powyższym kodzie [obiektu mapy](https://docs.microsoft.com/javascript/api/azu
 
 W powyższym kodzie [obiektu mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest) jest tworzony za pomocą `new atlas.Map()`. Właściwości mapy, takie jak pole ograniczenia są częścią [CameraBoundsOptions](https://docs.microsoft.com/javascript/api/azure-maps-control/models.cameraboundsoptions?view=azure-iot-typescript-latest). Można zdefiniować CameraBoundsOptions za pośrednictwem [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamerabounds) funkcji klasy mapy.
 
-## <a name="try-out-the-code"></a>Wypróbuj kod 
+## <a name="try-out-the-code"></a>Wypróbuj kod
 
-Spójrz na powyższym przykładowym kodzie. Edytuj kod JavaScript, na karcie JS po lewej stronie i zobaczyć zmiany widoku mapy na karcie wyników, po prawej stronie. Możesz również kliknąć przycisk "Edytuj na funkcji codepen można" i edytowanie kodu w funkcji codepen można. 
+Spójrz na powyższym przykładowym kodzie. Edytuj kod JavaScript, na karcie JS po lewej stronie i zobaczyć zmiany widoku mapy na karcie wyników, po prawej stronie. Możesz również kliknąć przycisk "Edytuj na funkcji codepen można" i edytowanie kodu w funkcji codepen można.
 
 <a id="relatedReference"></a>
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej na temat klasy i metody używane w tym artykule: 
-* [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-    * [setCamera](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamera)
-    * [setCameraBounds](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#setcamerabounds)
-    
-Aby uzyskać więcej przykładów kodu do dodania do map zobacz następujące artykuły: 
-* [Wybierz style mapy](choose-map-style.md)
-* [Dodawanie kontrolki mapy](map-add-controls.md)
-    
+Dowiedz się więcej na temat klasy i metody używane w tym artykule:
 
+> [!div class="nextstepaction"]
+> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+
+Zobacz przykłady kodu, aby dodać funkcje do aplikacji:
+
+> [!div class="nextstepaction"]
+> [Wybierz style mapy](choose-map-style.md)
+
+> [!div class="nextstepaction"]
+> [Dodawanie kontrolki mapy](map-add-controls.md)

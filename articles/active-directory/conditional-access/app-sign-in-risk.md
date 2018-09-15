@@ -2,7 +2,7 @@
 title: Przewodnik Szybki Start — blokuje dostęp po wykryciu zagrożenia sesji przy użyciu dostępu warunkowego usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: W tym przewodniku Szybki Start dowiesz się, jak konfigurować zasady dostępu warunkowego usługi Azure Active Directory (Azure AD) do blokowania operacji logowania w oparciu o ryzyko sesji.
 services: active-directory
-keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
+keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 07/17/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: 2bd52486a78ca103e0070d94ea423c069f845587
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 65f740e23b68727bdffa4a966518b1581fb5b0a6
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627512"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604369"
 ---
 # <a name="quickstart-block-access-when-a-session-risk-is-detected-with-azure-active-directory-conditional-access"></a>Szybki Start: Blokuje dostęp po wykryciu zagrożenia sesji przy użyciu dostępu warunkowego usługi Azure Active Directory  
 
@@ -46,7 +46,7 @@ Aby ukończyć ten scenariusz, w ramach tego samouczka, potrzebne są:
 
 - **Przeglądarka tor** — [przeglądarki Tor](https://www.torproject.org/projects/torbrowser.html.en) zaprojektowano w celu zachowania prywatności w trybie online. Identity Protection wykrywa logowania w przeglądarce sieci Tor jako **logowania z anonimowych adresów IP**, który ma poziom średniego ryzyka. Aby uzyskać więcej informacji, zobacz [Zdarzenia o podwyższonym ryzyku w usłudze Azure Active Directory](../reports-monitoring/concept-risk-events.md).  
 
-- **Konto testowe o nazwie Alain Charon** — Jeśli nie wiesz, jak tworzyć konta testowego, zobacz [Dodawanie użytkowników w chmurze](../fundamentals/add-users-azure-active-directory.md#add-cloud-based-users).
+- **Konto testowe o nazwie Alain Charon** — Jeśli nie wiesz, jak tworzyć konta testowego, zobacz [Dodawanie użytkowników w chmurze](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 
 ## <a name="test-your-sign-in"></a>Testowanie logowania 
@@ -206,7 +206,7 @@ Aby sprawdzić zasady, spróbuj zalogować się do swojej [witryny Azure portal]
 
 Gdy nie są już potrzebne, Usuń użytkownika testowego, w przeglądarce sieci Tor i zasady dostępu warunkowego:
 
-- Jeśli nie wiesz, jak usunąć użytkownika usługi Azure AD, zobacz [usunąć użytkowników z usługi Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-users-from-azure-ad).
+- Jeśli nie wiesz, jak usunąć użytkownika usługi Azure AD, zobacz [usunąć użytkowników z usługi Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
 
 - Aby usunąć zasady, wybierz zasady, a następnie kliknij przycisk **Usuń** na pasku narzędzi Szybki dostęp.
 

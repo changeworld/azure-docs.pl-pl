@@ -1,42 +1,29 @@
 ---
-title: Samouczek za pomocą jednostki pattern.any usprawniających prognoz usługi LUIS — Azure | Dokumentacja firmy Microsoft
-titleSuffix: Cognitive Services
-description: W tym samouczku Użyj jednostki pattern.any w celu przewidywania intencji i jednostki usługi LUIS.
+title: 'Samouczek 5: Jednostki Pattern.any tekst w dowolnej postaci'
+titleSuffix: Azure Cognitive Services
+description: Służy do wyodrębniania danych z wypowiedzi jednostki pattern.any, gdzie jest prawidłowo sformatowaną wypowiedzi i gdzie końca danych może łatwo pomylić z pozostałych wyrazów wypowiedź.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 43f169ae11191c2e98c4538189bce781821de980
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: dce75710137f4d4160cb2f55f856066c7c93ac78
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157858"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45628987"
 ---
-# <a name="tutorial-improve-app-with-patternany-entity"></a>Samouczek: Ulepszaniu aplikacji z jednostką pattern.any
+# <a name="tutorial-5-extract-free-form-data"></a>Samouczek: 5. Wyodrębnianie danych z dowolnych
 
-W tym samouczku Użyj jednostki pattern.any, aby zwiększyć prognozowania intencji i jednostek.  
+W tym samouczku Użyj jednostki pattern.any do wyodrębniania danych z wypowiedzi, gdzie są prawidłowo sformatowaną wypowiedzi i gdzie końca danych może łatwo pomylić z pozostałych wyrazów wypowiedź. 
 
-> [!div class="checklist"]
-* Dowiedz się, kiedy i jak używać pattern.any
-* Tworzenie wzorca, który używa pattern.any
-* Jak zweryfikować ulepszenia prognoz
+Jednostka pattern.any umożliwia wyszukiwanie dowolnych danych, w którym treść jednostki sprawia, że trudno ustalić koniec jednostki od reszty wypowiedź. 
 
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Przed rozpoczęciem
-Jeśli nie masz zarządzania zasobami ludzkimi firmy [ról wzorca](luis-tutorial-pattern-roles.md) samouczek, [zaimportować](luis-how-to-start-new-app.md#import-new-app) dane JSON do nowej aplikacji w [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web. Aplikację do zaimportowania znajduje się w [przykłady LUIS](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-roles-HumanResources.json) repozytorium GitHub.
-
-Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `patt-any`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. 
-
-## <a name="the-purpose-of-patternany"></a>Celem pattern.any
-Jednostka pattern.any umożliwia wyszukiwanie danych dowolnej postaci, w którym treść jednostki sprawia, że trudno ustalić koniec jednostki od reszty wypowiedź. 
-
-Ta aplikacja zarządzania zasobami ludzkimi pomaga pracownikom Znajdź formy firmy. Formularze zostały dodane w [samouczek wyrażenia regularnego](luis-quickstart-intents-regex-entity.md). Nazwy formularza z tego samouczka używane wyrażeń regularnych do wyodrębniania nazwa formularza, który został prawidłowo sformatowaną, takich jak nazwy formularza pogrubiona w poniższej tabeli wypowiedź:
+Ta aplikacja zarządzania zasobami ludzkimi pomaga pracownikom Znajdź formy firmy. 
 
 |Wypowiedź|
 |--|
@@ -54,11 +41,38 @@ Wypowiedzi o nazwie przyjazna formularza wyglądać następująco:
 |Autora **"Żądania relokacji z nowym składnikiem w wersji 2018 firmy 5 pracownika"**?|
 |**Żądanie przeniesienia z nowym składnikiem w wersji 2018 firmy 5 pracownika** jest publikowany w języku francuskim?|
 
-Różnej długości obejmuje fraz, które mogą mylić LUIS, o którym kończy się jednostki. Przy użyciu jednostki Pattern.any we wzorcu umożliwia określenie początku i na końcu nazwy formularza, dzięki czemu usługa LUIS poprawnie wyodrębnia nazwę formularza.
+Różnej długości zawiera wyrazy, które mogą mylić LUIS, o którym kończy się jednostki. Przy użyciu jednostki Pattern.any we wzorcu umożliwia określenie początku i na końcu nazwy formularza, dzięki czemu usługa LUIS poprawnie wyodrębnia nazwę formularza.
 
-**Gdy wzorce umożliwiają mniej wypowiedzi przykład, jeśli obiekty nie są wykrywane, wzorzec jest niezgodny.**
+|Przykład wypowiedź szablonu|
+|--|
+|Gdzie jest {Nazwa_formularza} [?]|
+|Autora {Nazwa_formularza} [?]|
+|{Nazwa formularza} jest publikowany w języku francuskim [?]|
 
-## <a name="add-example-utterances-to-the-existing-intent-findform"></a>Dodawanie wypowiedzi przykładzie do istniejącego intencji FindForm 
+**W tym samouczku dowiesz się, jak:**
+
+> [!div class="checklist"]
+> * Użyj istniejącego samouczek aplikacji
+> * Dodawanie wypowiedzi przykład do istniejącej jednostki
+> * Tworzenie jednostki Pattern.any
+> * Tworzenie wzorca
+> * Szkolenie
+> * Wzór nowego testu
+
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>Użyj istniejącej aplikacji
+Kontynuuj aplikację utworzoną w samouczku ostatni o nazwie **kadry**. 
+
+Jeśli nie masz aplikacji kadry z poprzedniego samouczka, należy użyć następujących czynności:
+
+1.  Pobierz i Zapisz [pliku JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-roles-HumanResources.json).
+
+2. Importuj dane JSON do nowej aplikacji.
+
+3. Z **Zarządzaj** sekcji na **wersji** kartę, klonowanie wersji i nadaj mu nazwę `patt-any`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używany jako część trasy adresu URL, nazwa nie może zawierać żadnych znaków, które nie są prawidłowe w adresie URL.
+
+## <a name="add-example-utterances"></a>Dodawanie wypowiedzi przykład 
 Usuń keyPhrase wstępnie utworzone jednostki, jeśli jest trudny do tworzenia i oznaczanie jednostek Nazwa_formularza. 
 
 1. Wybierz **kompilacji** w górnym menu nawigacyjnym i w wybierz **intencji** nawigacji po lewej stronie.
@@ -128,6 +142,8 @@ Jednostka Pattern.any wyodrębnia jednostki o różnej długości. Działa tylko
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
+
+W tym samouczku dodany przykład wypowiedzi do istniejących intencji, a następnie tworzone nowe Pattern.any nazwa formularza. Następnie samouczka utworzona szablon dla istniejącej intencji z nowy przykład wypowiedzi i jednostek. Testowanie interaktywne wykazało, że wzorzec i jego celem były przewidzieć, ponieważ znaleziono jednostki. 
 
 > [!div class="nextstepaction"]
 > [Dowiedz się, jak użyć ról z wzorcem](luis-tutorial-pattern-roles.md)

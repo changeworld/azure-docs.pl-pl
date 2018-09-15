@@ -15,24 +15,26 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 359e5e671287c4d330deeb2d3573877d9ee5d1c5
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: acf51056a084abc08bda2d7f73b561f442f57784
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190214"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605536"
 ---
 # <a name="creating-charts-and-diagrams-from-log-analytics-queries"></a>Tworzenie wykresów i diagramów z zapytań usługi Log Analytics
 
 > [!NOTE]
 > Należy wykonać [zaawansowane agregacji w zapytań usługi Log Analytics](advanced-aggregations.md) przed wykonaniem tej lekcji.
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
+
 W tym artykule opisano różne wizualizacje w usłudze Azure Log Analytics, aby wyświetlać dane na różne sposoby.
 
 ## <a name="charting-the-results"></a>Tworzenie wykresów wyników
 Rozpocznij od przejrzenia liczbę komputerów, które istnieją na system operacyjny, w ciągu ostatniej godziny:
 
-```OQL
+```KQL
 Heartbeat
 | where TimeGenerated > ago(1h)
 | summarize count(Computer) by OSType  
@@ -50,7 +52,7 @@ Uzyskanie lepszego widoku, wybierz **wykresu**i wybierz polecenie **kołowy** mo
 ## <a name="timecharts"></a>Timecharts
 Pokaż average, 50. i 95. percentyle czasu procesora w pojemnikach równej 1 godz. Zapytanie generuje wiele serii, a następnie możesz wybrać serii do wyświetlenia na wykresie czasu:
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(1d) 
 | where CounterName == "% Processor Time" 
@@ -65,7 +67,7 @@ Wybierz **wiersza** wykresu opcja wyświetlania:
 
 Linię odwołania może pomóc w prosty sposób identyfikowania Metryka przekracza określony próg. Aby dodać wiersz do wykresu, należy rozszerzyć zestaw danych o stałej kolumny:
 
-```OQL
+```KQL
 Perf
 | where TimeGenerated > ago(1d) 
 | where CounterName == "% Processor Time" 
@@ -78,7 +80,7 @@ Perf
 ## <a name="multiple-dimensions"></a>Wiele wymiarów
 Wiele wyrażeń w `by` klauzuli `summarize` utworzyć wiele wierszy w wynikach, jeden dla każdej kombinacji wartości.
 
-```OQL
+```KQL
 SecurityEvent
 | where TimeGenerated > ago(1d)
 | summarize count() by tostring(EventID), AccountType, bin(TimeGenerated, 1h)

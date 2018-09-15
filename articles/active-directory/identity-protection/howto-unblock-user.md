@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure Active Directory Identity Protection - sposób odblokowania użytkowników | Dokumentacja firmy Microsoft
+title: Jak odblokować użytkowników za pomocą usługi Azure Active Directory Identity Protection | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak odblokować użytkowników, które zostały zablokowane przez zasady usługi Azure Active Directory Identity Protection.
 services: active-directory
 keywords: Usługa Azure active directory identity protection Odblokuj użytkownika
@@ -13,17 +13,18 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/15/2018
+ms.date: 09/13/2018
 ms.author: markvi
-ms.reviewer: nigu
-ms.openlocfilehash: c5f251f2de938d4441672c8aa1a6dbc6bd616155
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.reviewer: raluthra
+ms.openlocfilehash: f8bf983033407bbf597af15f18f28ecf33b7558f
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575495"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631688"
 ---
-# <a name="azure-active-directory-identity-protection---how-to-unblock-users"></a>Usługa Azure Active Directory Identity Protection - sposób odblokowania użytkowników
+# <a name="how-to-unblock-users"></a>Instrukcje: Odblokowania użytkowników
+
 Za pomocą usługi Azure Active Directory Identity Protection można skonfigurować zasady, aby zablokować użytkowników, jeśli skonfigurowane warunki są spełnione. Zazwyczaj zablokowany użytkownik kontaktów pomocy technicznej w celu zostają odblokowane. W tym artykule opisano kroki należy wykonać, aby odblokować zablokowany użytkownik.
 
 ## <a name="determine-the-reason-for-blocking"></a>Określić przyczynę zablokowania

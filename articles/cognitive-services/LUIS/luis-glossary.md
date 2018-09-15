@@ -1,5 +1,6 @@
 ---
-title: Słownik usługi Language Understanding (LUIS) interfejsu API | Dokumentacja firmy Microsoft
+title: Słownik usługi Language Understanding (LUIS) interfejsu API
+titleSuffix: Azure Cognitive Services
 description: Glosariusz opisano terminy, które można napotkać podczas pracy z usługą interfejsu API usługi LUIS.
 services: cognitive-services
 author: diberry
@@ -7,16 +8,17 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 3f99e58a38bbe9ecc87165b5e6fa24a5a49e5e4a
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: a66eb42ac03b96757a0363c9dd442adc5ca75023
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39390062"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634371"
 ---
 # <a name="glossary"></a>Słownik
+Language Understanding (LUIS) słownik wyjaśnia, warunki, które można napotkać podczas pracy z usługą interfejsu API usługi LUIS.
 
 ## <a name="active-version"></a>Wersja aktywna
 
@@ -72,7 +74,7 @@ W kontekście usługi LUIS **domeny** jest obszarem wiedzy. Twoja domena to spec
 
 ## <a name="endpoint"></a>Punkt końcowy
 
-[Punktu końcowego usługi LUIS](https://aka.ms/luis-endpoint-apis) adres URL jest, dokąd wysyłać zapytania usługi LUIS po [aplikacją usługi LUIS](#luis-app) jest utworzonych i opublikowanych. Adres URL punktu końcowego zawiera region opublikowanej aplikacji, a także identyfikator aplikacji. Można znaleźć punktu końcowego na **[Publikuj](luis-how-to-publish-app.md)** strony aplikacji, w tabeli zasobów i kluczy, lub możesz uzyskać adres URL punktu końcowego z [uzyskać informacje o aplikacji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) interfejsu API.
+[Punktu końcowego usługi LUIS](https://aka.ms/luis-endpoint-apis) adres URL jest, dokąd wysyłać zapytania usługi LUIS po [aplikacją usługi LUIS](#luis-app) jest utworzonych i opublikowanych. Adres URL punktu końcowego zawiera region opublikowanej aplikacji, a także identyfikator aplikacji. Można znaleźć punktu końcowego na **[kluczy i punktów końcowych](/luis-how-to-manage-keys.md)** strony aplikacji, lub można uzyskać adresu URL punktu końcowego z [uzyskać informacje o aplikacji](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c37) interfejsu API.
 
 Przykładowy punkt końcowy wygląda następująco:
 
@@ -167,7 +169,7 @@ Zalewanie mowy umożliwia usługi rozpoznawania mowy w celu zalewany, Twój mode
 
 ## <a name="spelling-correction"></a>Korekty pisowni
 
-Na stronie publikowania Włącz [sprawdzania pisowni Bing](luis-how-to-publish-app.md#enable-bing-spell-checker) do poprawianie błędnie napisanych wyrazów w wypowiedzi przed prognozy. 
+Włączanie sprawdzania pisowni Bing do poprawianie błędnie napisanych wyrazów w wypowiedzi przed prognozy. 
 
 ## <a name="starter-key"></a>Klucz Starter
 
@@ -175,7 +177,7 @@ Taki sam jak [klucza programowego](#programmatic-key), których nazwy zostały z
 
 ## <a name="subscription-key"></a>Klucz subskrypcji
 
-Klucz subskrypcji jest **punktu końcowego** klucz skojarzony z usługi LUIS [tworzenia na platformie Azure](luis-how-to-azure-subscription.md). Ten klucz nie jest [tworzenia klucza](#programmatic-key). W przypadku klucza punktu końcowego powinno być używane do wszelkie żądania punktu końcowego, zamiast tworzenia klucza. Możesz zobaczyć swoje bieżącego klucza punktu końcowego wewnątrz adres URL punktu końcowego w dolnej części [ **publikowania aplikacji** strony](luis-how-to-publish-app.md) w [LUIS](luis-reference-regions.md) witryny sieci Web. Jest to wartość z **klucz subskrypcji** pary nazwa/wartość. 
+Klucz subskrypcji jest **punktu końcowego** klucz skojarzony z usługi LUIS [tworzenia na platformie Azure](luis-how-to-azure-subscription.md). Ten klucz nie jest [tworzenia klucza](#programmatic-key). W przypadku klucza punktu końcowego powinno być używane do wszelkie żądania punktu końcowego, zamiast tworzenia klucza. Możesz zobaczyć swoje bieżącego klucza punktu końcowego wewnątrz adres URL punktu końcowego w dolnej części [ **kluczy i punktów końcowych** strony](luis-how-to-manage-keys.md) w [LUIS](luis-reference-regions.md) witryny sieci Web. Jest to wartość z **klucz subskrypcji** pary nazwa/wartość. 
 
 ## <a name="test"></a>Test
 

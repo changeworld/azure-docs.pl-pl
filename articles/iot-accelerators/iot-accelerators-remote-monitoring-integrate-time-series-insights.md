@@ -8,12 +8,12 @@ ms.date: 09/12/2018
 ms.topic: conceptual
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.openlocfilehash: 6d41b4347eac29144743a22cb83e508cdab9b164
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: ba6d79661a2c07ba3eef1f16a117992a858830b5
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45552446"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605933"
 ---
 # <a name="integrate-azure-time-series-insights-with-remote-monitoring"></a>Integrowanie usługi Azure Time Series Insights przy użyciu funkcji zdalnego monitorowania
 
@@ -22,7 +22,7 @@ Azure Time Series Insights to w pełni zarządzana usługa związana z analizą,
 Akcelerator rozwiązań zdalnego monitorowania udostępnia teraz automatycznego wdrażania i integracji usługi Time Series insights. W tym instruktażu dowiesz się, jak skonfigurować usługi Time Series Insights do istniejącego rozwiązania monitorowania zdalnego, który nie zawiera jeszcze usługi Time Series Insights.
 
 > [!NOTE]
-> Usługa Time Series Insights nie jest jeszcze dostępna w chmurze na platformie Azure (Chiny). Nowych wdrożeń w chmurze na platformie Azure (Chiny) w dalszym ciągu używać usługi Cosmos DB do przechowywania wszystkich.
+> Usługa Time Series Insights nie jest obecnie dostępna w chmurze Azure (Chiny). Nowych wdrożeń akceleratora zdalne monitorowanie rozwiązań w chmurze Azure (Chiny) używać usługi Cosmos DB do przechowywania wszystkich.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

@@ -8,12 +8,12 @@ ms.technology: Speech to Text
 ms.topic: article
 ms.date: 04/26/2018
 ms.author: panosper
-ms.openlocfilehash: 02af95859bcbdc3dd9fdd6d6354cae9cdf99eae8
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: fcc57ea7729f8a907fd39fe346270cc52c148f07
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717951"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605593"
 ---
 # <a name="batch-transcription"></a>Transkrypcja wsadowa
 
@@ -59,21 +59,21 @@ Dla stereo strumieni audio transkrypcji Batch dzieli kanału lewy i prawy podcza
 
 ## <a name="authorization-token"></a>Token autoryzacji
 
-Zgodnie z wszystkich funkcji programu Unified Speech Service, Utwórz klucz subskrypcji z [witryny Azure portal](https://portal.azure.com). Wykonaj te proste kroki 6.
+Zgodnie z wszystkich funkcji programu Unified Speech Service, Utwórz klucz subskrypcji z [witryny Azure portal](https://portal.azure.com) następujące naszych [Get-Started guide](get-started.md). Jeśli planujesz uzyskiwanie transkrypcje modeli podstawowych w naszym następnie to wszystko, co należy zrobić. 
 
-1. Utworzony klucz subskrypcji w następujących Azure naszych [Wprowadzenie — przewodnik](get-started.md) 
+Jeśli planowane jest na dostosowywanie i przy użyciu modelu niestandardowego należy dodać ten klucz subscritpion na portal usługi custom speech w następujący sposób:
 
-2. Zaloguj się do [Custom Speech](https://customspeech.ai).
+1. Zaloguj się do [Custom Speech](https://customspeech.ai).
 
-3. Wybierz pozycję **Subskrypcje**.
+2. Wybierz pozycję **Subskrypcje**.
 
-4. Wybierz **połączyć z istniejącą subskrypcją**.
+3. Wybierz **połączyć z istniejącą subskrypcją**.
 
-5. Dodaj klucz subskrypcji i alias w widoku, który pojawia się
+4. Dodaj klucz subskrypcji i alias w widoku, który pojawia się
 
     ![Zrzut ekranu Custom Speech subskrypcji strony](media/stt/Subscriptions.jpg)
 
-6. Skopiuj i Wklej klucz w kodzie klienta w następującym przykładzie.
+5. Skopiuj i Wklej klucz w kodzie klienta w następującym przykładzie.
 
 > [!NOTE]
 > Jeśli planujesz użyć niestandardowego modelu, konieczne będzie identyfikator modelu zbyt. Należy pamiętać, że nie jest to identyfikator punktu końcowego, który można znaleźć w widoku Szczegóły punktu końcowego. To identyfikator modelu, który można pobrać po wybraniu szczegółów tego modelu.
@@ -101,7 +101,7 @@ Po uzyskaniu tokenu, należy określić identyfikator URI sygnatury dostępu Wsp
    static async Task TranscribeAsync()
         { 
             private const string SubscriptionKey = "<your Speech[Preview] subscription key>";
-            private const string HostName = "cris.ai";
+            private const string HostName = "westus.cris.ai";
             private const int Port = 443;
     
             // Creating a Batch transcription API Client

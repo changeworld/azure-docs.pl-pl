@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: a7aeecc84a3629b43f2c1eb40030866a941d0d3b
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 2b06dcfd4bdeb68d114c0c6dd57134fadfef57b5
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39627988"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605848"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Szybki Start: Wymagaj warunki użytkowania, należy zaakceptować przed uzyskaniem dostępu do aplikacji w chmurze 
 
@@ -45,7 +45,7 @@ Aby ukończyć ten scenariusz, w tym przewodniku Szybki Start, potrzebne są:
 
 - **Dostęp do usługi Azure AD — wersja Premium** — dostęp warunkowy usługi Azure AD jest możliwość usługi Azure AD Premium. 
 
-- **Konto testowe o nazwie Isabella Simonsen** — Jeśli nie wiesz, jak tworzyć konta testowego, zobacz [Dodawanie użytkowników w chmurze](../fundamentals/add-users-azure-active-directory.md#add-cloud-based-users).
+- **Konto testowe o nazwie Isabella Simonsen** — Jeśli nie wiesz, jak tworzyć konta testowego, zobacz [Dodawanie użytkowników w chmurze](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 
 ## <a name="test-your-sign-in"></a>Testowanie logowania
@@ -250,7 +250,7 @@ Aby sprawdzić zasady, spróbuj zalogować się do swojej [witryny Azure portal]
 
 Gdy nie są już potrzebne, Usuń użytkownika testowego i zasady dostępu warunkowego:
 
-- Jeśli nie wiesz, jak usunąć użytkownika usługi Azure AD, zobacz [usunąć użytkowników z usługi Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-users-from-azure-ad).
+- Jeśli nie wiesz, jak usunąć użytkownika usługi Azure AD, zobacz [usunąć użytkowników z usługi Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
 
 - Aby usunąć zasady, wybierz zasady, a następnie kliknij przycisk **Usuń** na pasku narzędzi Szybki dostęp.
 

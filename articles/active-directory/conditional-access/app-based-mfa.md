@@ -2,7 +2,7 @@
 title: Przewodnik Szybki Start — Wymagaj uwierzytelniania wieloskładnikowego (MFA) dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory | Dokumentacja firmy Microsoft
 description: W tym przewodniku Szybki Start dowiesz się, jak powiązać Twoje wymagania dotyczące uwierzytelniania dla typu aplikacji w chmurze używanych przy użyciu dostępu warunkowego usługi Azure Active Directory (Azure AD).
 services: active-directory
-keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, bezpieczny dostęp do zasobów firmy, zasady dostępu warunkowego
+keywords: dostęp warunkowy do aplikacji, dostęp warunkowy w usłudze Azure AD, zabezpieczenia dostępu do zasobów firmy, zasady dostępu warunkowego
 documentationcenter: ''
 author: MarkusVi
 manager: mtillman
@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 06/13/2018
 ms.author: markvi
 ms.reviewer: calebb
-ms.openlocfilehash: eee4d73042232aabd995a749b7848306be0ef655
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: f27ced5c67c5124d0792c5ce3884c88473fba056
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628260"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604199"
 ---
 # <a name="quickstart-require-mfa-for-specific-apps-with-azure-active-directory-conditional-access"></a>Szybki Start: Wymagaj uwierzytelniania Wieloskładnikowego dla określonych aplikacji przy użyciu dostępu warunkowego usługi Azure Active Directory 
 
@@ -42,7 +42,7 @@ Aby ukończyć ten scenariusz, w tym przewodniku Szybki Start, potrzebne są:
 
 - **Dostęp do usługi Azure AD — wersja Premium** — dostęp warunkowy usługi Azure AD jest możliwość usługi Azure AD Premium. 
 
-- **Konto testowe o nazwie Isabella Simonsen** — Jeśli nie wiesz, jak tworzyć konta testowego, zobacz [Dodawanie użytkowników w chmurze](../fundamentals/add-users-azure-active-directory.md#add-cloud-based-users).
+- **Konto testowe o nazwie Isabella Simonsen** — Jeśli nie wiesz, jak tworzyć konta testowego, zobacz [Dodawanie użytkowników w chmurze](../fundamentals/add-users-azure-active-directory.md#add-a-new-user).
 
 
 ## <a name="test-your-sign-in"></a>Testowanie logowania
@@ -209,7 +209,7 @@ Aby sprawdzić zasady, spróbuj zalogować się do swojej [witryny Azure portal]
 
 Gdy nie są już potrzebne, Usuń użytkownika testowego i zasady dostępu warunkowego:
 
-- Jeśli nie wiesz, jak usunąć użytkownika usługi Azure AD, zobacz [usunąć użytkowników z usługi Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-users-from-azure-ad).
+- Jeśli nie wiesz, jak usunąć użytkownika usługi Azure AD, zobacz [usunąć użytkowników z usługi Azure AD](../fundamentals/add-users-azure-active-directory.md#delete-a-user).
 
 - Aby usunąć zasady, wybierz zasady, a następnie kliknij przycisk **Usuń** na pasku narzędzi Szybki dostęp.
 

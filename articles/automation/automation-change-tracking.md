@@ -10,12 +10,12 @@ ms.date: 08/31/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0707726ec86b0a0c69d1ec752ebd6761327f3f0f
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 713c0f676067cb32a84361dd7801031295e2244f
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43669487"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634442"
 ---
 # <a name="track-changes-in-your-environment-with-the-change-tracking-solution"></a>Śledź zmiany w środowisku przy użyciu rozwiązania Change Tracking
 
@@ -33,13 +33,23 @@ Windows agent oficjalnie obsługuje następujące wersje systemu operacyjnego Wi
 
 Oficjalnie obsługiwane są poniższe dystrybucje systemu Linux. Jednak agenta systemu Linux może być również uruchomić na inne dystrybucje nie na liście. Jeśli nie określono inaczej, wszystkie wersje pomocnicze są obsługiwane w przypadku wszystkich wersji głównych, na liście.  
 
-* Linux Amazon 2012.09 do 2015.09 — x86/x64 64
-* CentOS Linux 5, 6 i 7 — x86/x64 64  
-* Oracle Linux 5, 6 i 7 — x86/x64 64
-* Red Hat Enterprise Linux Server 5, 6 i 7 — x86/x64 64
-* Debian GNU/Linux 6, 7 i 8 — x86/x64 64
-* Ubuntu 12.04 LTS, 14.04 LTS, 16.04 LTS (x86/x64)
-* SUSE Linux Enterprise Server 11 i 12 — x86/x64 64
+### <a name="64-bit"></a>64-bitowa
+
+* CentOS 6 i 7
+* Amazon Linux 2017.09
+* Oracle Linux 6 i 7
+* Red Hat Enterprise Linux Server 6 i 7
+* Debian GNU/Linux 8 i 9
+* Ubuntu Linux 14.04 LTS, 16.04 LTS i 18.04 LTS
+* SUSE Linux Enterprise Server 12
+
+### <a name="32-bit"></a>32-bitowa
+
+* CentOS 6
+* Oracle Linux 6
+* Red Hat Enterprise Linux Server 6
+* Debian GNU/Linux 8 i 9
+* LTS Ubuntu Linux 14.04 i 16.04 LTS
 
 ## <a name="enable-change-tracking-and-inventory"></a>Włączanie rozwiązania Change Tracking and Inventory
 
@@ -93,7 +103,7 @@ Aby skonfigurować plików śledzenia na komputerach z Windows, wykonaj następu
 |Enabled (Włączony)     | Określa, czy ustawienia została zastosowana.        |
 |Nazwa elementu     | Przyjazna nazwa pliku, który ma być śledzony.        |
 |Grupa     | Nazwa grupy do logicznego grupowania plików.        |
-|Wprowadzanie ścieżki     | Ścieżka do sprawdzania pliku na przykład: "c:\temp\\\*.txt"<br>Można również używać zmiennych środowiskowych takich jak "%winDir%\System32\\\*. *"       |
+|Wprowadzanie ścieżki     | Ścieżka do sprawdzania pliku, na przykład: „c:\temp\\\*.txt”<br>Możesz użyć również zmiennych środowiskowych, takich jak „%winDir%\System32\\\*.*”       |
 |Rekursja     | Określa, czy podczas wyszukiwania elementu, który ma być śledzony, ma być używana rekursja.        |
 |Przekaż zawartość pliku dla wszystkich ustawień| Włącza lub wyłącza przekazywanie zawartości pliku dla śledzonych zmian. Dostępne opcje: **True** lub **False**.|
 
@@ -146,6 +156,7 @@ Pozostałe ograniczenia:
 Rozwiązanie Change Tracking jest obecnie następujące problemy:
 
 * Poprawki, aktualizacje nie są zbierane dla systemu Windows 10 Creators Update i Windows Server 2016 Core RS3 maszyny.
+* W przypadku plików Windows Change Tracking aktualnie nie wykrywa po dodaniu nowego pliku do ścieżki folderu śledzonych
 
 ## <a name="change-tracking-data-collection-details"></a>Zmiana szczegółów kolekcji danych śledzenia
 

@@ -1,20 +1,21 @@
 ---
-title: Language Understanding (LUIS) na platformie Azure — często zadawane pytania | Dokumentacja firmy Microsoft
-description: Uzyskaj odpowiedzi na często zadawane pytania na temat Language Understanding (LUIS)
+title: Często zadawane pytania — usługi Language Understanding (LUIS)
+titleSuffix: Azure Cognitive Services
+description: Ten artykuł zawiera odpowiedzi na często zadawane pytania na temat Language Understanding (LUIS).
 author: diberry
 manager: cjgronlund
 services: cognitive-services
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 07/26/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: a266055c7685dca87d985775584a9ea7a4bda883
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: c338f874f426eef047f29e958877368c61db7e62
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128524"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630261"
 ---
 # <a name="language-understanding-faq"></a>Language Understanding często zadawane pytania
 
@@ -63,7 +64,7 @@ Cortana, który wstępnie skompilowanych aplikacji zostały zaniechane w 2017 r.
 Usługa LUIS [tokenizes](luis-glossary.md#token) na podstawie wypowiedź [kultury](luis-supported-languages.md#tokenization). Oryginalna wartość i tokenami wartości są dostępne dla [wyodrębnianie danych](luis-concept-data-extraction.md#tokenized-entity-returned).
 
 ### <a name="how-do-i-create-and-assign-a-luis-endpoint-key"></a>Jak utworzyć i przypisać klucza punktu końcowego usługi LUIS?
-[Tworzenie klucza punktu końcowego](luis-how-to-azure-subscription.md#create-luis-endpoint-key) na platformie Azure Twoja [usługi](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) poziom. [Przypisany klawisz](luis-how-to-manage-keys.md#assign-endpoint-key) na **[Publikuj](luis-how-to-publish-app.md)** strony. Nie ma żadnych odpowiednich interfejsów API dla tej akcji. Następnie należy zmienić żądania HTTP do punktu końcowego do [użycia nowego klucza punktu końcowego](luis-concept-keys.md#use-endpoint-key-in-query).
+[Tworzenie klucza punktu końcowego](luis-how-to-azure-subscription.md#create-luis-endpoint-key) na platformie Azure Twoja [usługi](https://azure.microsoft.com/pricing/details/cognitive-services/language-understanding-intelligent-services/) poziom. [Przypisany klawisz](luis-how-to-manage-keys.md#assign-endpoint-key) na **[kluczy i punktów końcowych](luis-how-to-manage-keys.md)** strony. Nie ma żadnych odpowiednich interfejsów API dla tej akcji. Następnie należy zmienić żądania HTTP do punktu końcowego do [użycia nowego klucza punktu końcowego](luis-concept-keys.md#use-endpoint-key-in-query).
 
 ### <a name="how-do-i-interpret-luis-scores"></a>Jak interpretować wyniki usługi LUIS? 
 System powinien używać najwyższy intencji oceniania niezależnie od jego wartość. Na przykład współczynnik poniżej 0,5 (mniej niż 50%) niekoniecznie oznacza, że usługa LUIS ma niski zaufania. Zapewnianie większej ilości danych szkoleniowych może zwiększyć wynik intencji najbardziej prawdopodobną.
@@ -115,13 +116,18 @@ Zobacz [prognozowania różnice między kopie tej samej aplikacji](luis-concept-
 ## <a name="app-publishing"></a>Publikowanie aplikacji
 
 ### <a name="what-is-the-tenant-id-in-the-add-a-key-to-your-app-window"></a>Co to jest identyfikator dzierżawy w oknie "Dodaj klucz do aplikacji"?
-Na platformie Azure dzierżawca reprezentuje klienta lub organizację, która jest skojarzona z usługą. Znajdź swój identyfikator dzierżawy w witrynie Azure portal w **identyfikator katalogu** pola, wybierając **usługi Azure Active Directory** > **Zarządzaj**  >  **Właściwości**.
+Na platformie Azure dzierżawca reprezentuje klienta lub organizację, który jest skojarzony z usługą. Znajdź swój identyfikator dzierżawy w witrynie Azure portal w **identyfikator katalogu** pola, wybierając **usługi Azure Active Directory** > **Zarządzaj**  >  **Właściwości**.
 
 ![Identyfikator dzierżawy w witrynie Azure portal](./media/luis-manage-keys/luis-assign-key-tenant-id.png)
 
 <a name="why-are-there-more-subscription-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>
-### <a name="why-are-there-more-endpoint-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>Dlaczego więcej klucze punktu końcowego na moją aplikację do publikacji strony niż przypisane do aplikacji? 
-Każda aplikacja usługi LUIS ma klucz tworzenia starter. Klucze punktu końcowego usługi LUIS utworzone horyzoncie czasowym GA są widoczne na stronie publikowania, niezależnie od tego, jeśli zostały dodane do aplikacji. Stało się ułatwić migrację wersji ogólnie dostępnej. Na stronie publikowania nie ma żadnych nowych kluczy punktu końcowego usługi LUIS. 
+<a name="why-are-there-more-endpoint-keys-on-my-apps-publish-page-than-i-assigned-to-the-app"></a>
+
+
+### <a name="why-are-there-more-endpoint-keys-assigned-to-my-app-than-i-assigned"></a>Dlaczego są więcej kluczy punktu końcowego przypisane do mojej aplikacji, niż przypisane 
+Każda aplikacja usługi LUIS ma klucz tworzenia starter liście punktów końcowych dla wygody. Ten klucz umożliwia tylko kilka trafienia punktu końcowego, dzięki czemu możesz wypróbować usługi LUIS.  
+
+Jeśli aplikacja istniały przed LUIS jest ogólnie dostępna (GA), klucze punktu końcowego usługi LUIS w ramach subskrypcji są przypisywane automatycznie. Stało się ułatwić migrację wersji ogólnie dostępnej. Nowych kluczy punktu końcowego usługi LUIS w witrynie Azure portal są _nie_ automatycznie przypisywana do usługi LUIS. 
 
 ## <a name="app-management"></a>Zarządzanie aplikacjami
 

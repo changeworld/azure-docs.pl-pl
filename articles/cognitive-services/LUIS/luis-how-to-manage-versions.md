@@ -1,108 +1,66 @@
 ---
-title: Zarządzanie wersjami w aplikacji usługi LUIS na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zarządzać wersjami w aplikacjach Language Understanding (LUIS).
+title: Zarządzanie wersjami w aplikacjach usługi LUIS
+titleSuffix: Azure Cognitive Services
+description: Wersje umożliwiają tworzenie i publikowanie różnych modeli. Dobrą praktyką jest, aby sklonować bieżącego aktywnego modelu do innej wersji aplikacji przed wprowadzeniem zmian w modelu.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/29/2017
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 4941cf533f1b860ead07a416d5af6f62a1978305
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: dcb7f47ae7ade4ee0a18801934f36576fc75f4ae
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226598"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629478"
 ---
 # <a name="manage-versions"></a>Zarządzanie wersjami
 
-Każdorazowo, działają na podstawie modelu, tworzenie innego [wersji](luis-concept-version.md) aplikacji. 
+Wersje umożliwiają tworzenie i publikowanie różnych modeli. Dobrym rozwiązaniem jest klonowanie bieżącego aktywnego modelu z innym [wersji](luis-concept-version.md) aplikacji przed wprowadzeniem zmian w modelu. 
 
-## <a name="set-active-version"></a>Ustaw wersję active
-Aby pracować z wersjami, Otwórz aplikację, wybierając jego nazwę na **Moje aplikacje** strony, a następnie wybierz pozycję **ustawienia** na górnym pasku.
+Aby pracować z wersjami, Otwórz aplikację, wybierając jego nazwę na **Moje aplikacje** strony, a następnie wybierz pozycję **Zarządzaj** w górnym pasku, a następnie zaznacz **wersji** w nawigacji po lewej stronie. 
 
-![Strona wersji](./media/luis-how-to-manage-versions/settings.png)
+Listę wersji pokazują, które wersje są publikowane, gdzie są publikowane i która wersja jest obecnie aktywny. 
 
-**Ustawienia** strona umożliwia konfigurowanie ustawień dla całej aplikacji, w tym wersje i współpracowników. 
+[![](./media/luis-how-to-manage-versions/versions-import.png "Zarządzanie sekcję strony z wersjami")](./media/luis-how-to-manage-versions/versions-import.png#lightbox)
 
 ## <a name="clone-a-version"></a>Klonowanie wersji
-1. Na **ustawienia** stronie po sekcji ustawień aplikacji i współpracowników Znajdź wiersz mający wersję, aby sklonować. Wybierz przycisk wielokropka (***...*** ) przycisk na prawej. 
 
-    ![Właściwości wiersza wersji](./media/luis-how-to-manage-versions/version-section.png)
+1. Wybierz wersję chcesz sklonować wybierz **klonowania** na pasku narzędzi. 
 
-2. Wybierz **klonowania** z listy.
-
-    ![Wybór właściwości wiersza wersji](./media/luis-how-to-manage-versions/version-three-dots-modal.png)
-
-3. W **wersji klonowania** okno dialogowe, wpisz nazwę dla nowej wersji, takich jak "0,2".
+2. W **wersji klonowania** okno dialogowe, wpisz nazwę dla nowej wersji, takich jak "0,2".
 
    ![Okno dialogowe wersji klonowania](./media/luis-how-to-manage-versions/version-clone-version-dialog.png)
  
- > [!NOTE]
- > Wersja identyfikator może zawierać tylko znaki, cyfry lub "." i nie może być dłuższa niż 10 znaków.
+     > [!NOTE]
+     > Wersja identyfikator może zawierać tylko znaki, cyfry lub "." i nie może być dłuższa niż 10 znaków.
  
  Nową wersję przy użyciu określonej nazwy jest utworzona i ustawiona jako aktywnej wersji.
- 
-  ![Wersja zostanie utworzony i dodany do listy](./media/luis-how-to-manage-versions/new-version.png)
-
- > [!NOTE]
- > Pokazany na wcześniejszej ilustracji, opublikowanej wersji jest skojarzony z kolorowym znacznikiem, wskazujący typ miejsca, gdzie został opublikowany: produkcyjnych (zielony), przemieszczania (czerwony) i obie (czarny). Szkolenia i publikowania daty są wyświetlane dla każdej opublikowanej wersji.
 
 ## <a name="set-active-version"></a>Ustaw wersję active
-1. Na **ustawienia** stronie **wersji** listy, wybierz przycisk wielokropka (***...*** ) przycisk po prawej stronie.
 
-2. Wybierz z listy wyskakującego **Ustaw jako aktywne**.
+Wybierz wersję z listy, a następnie wybierz **wprowadzić Active** na pasku narzędzi. 
 
-    ![Ustaw wersję active](./media/luis-how-to-manage-versions/set-active-version.png)
-
-    Wersja aktywna jest wyróżniona jasny kolor niebieski, jak pokazano na poniższym zrzucie ekranu:
-
-    ![Wersja aktywna](./media/luis-how-to-manage-versions/set-active-version-done.png) 
-
+[![](./media/luis-how-to-manage-versions/versions-other.png "Zarządzanie sekcję strony z wersjami")](./media/luis-how-to-manage-versions/versions-other.png#lightbox)
 
 ## <a name="import-version"></a>Wersja importu
-Wersja można zaimportować z pliku JSON. Po zaimportowaniu wersji nowej wersji staje się aktywny wersji.
 
-**Aby zaimportować wersję:**
+1. Wybierz **wersji importu** na pasku narzędzi. 
 
-1. Na **ustawienia** wybierz opcję **importowania nowej wersji** przycisku.
+2. W **importowania nowej wersji** oknie podręcznym, wprowadź nową nazwę w wersji 10 znaków. Należy ustawić identyfikator wersji, jeśli w pliku JSON w wersji już istnieje w aplikacji.
 
-    ![Przycisk Importuj](./media/luis-how-to-manage-versions/import-version.png)
+    ![Zarządzanie sekcję strony z wersjami](./media/luis-how-to-manage-versions/versions-import-pop-up.png)
 
-2. Wybierz **Przeglądaj** i wybierz plik JSON.
+    Po zaimportowaniu wersji nowej wersji staje się aktywny wersji.
 
-    ![Okno dialogowe importowania wersji](./media/luis-how-to-manage-versions/import-version-dialog.png)
+<a name = "export-version"></a>
 
-Należy ustawić identyfikator wersji, jeśli w pliku JSON w wersji już istnieje w aplikacji.
+## <a name="other-actions"></a>Inne akcje
 
-## <a name="export-version"></a>Eksportuj wersję
-Wersja można wyeksportować do pliku JSON.
+* Aby **Usuń** wersji, wybierz wersję z listy, a następnie wybierz **Usuń** na pasku narzędzi. Wybierz przycisk **OK**. 
+* Aby **Zmień nazwę** wersji, wybierz wersję z listy, a następnie wybierz **Zmień nazwę** na pasku narzędzi. Wprowadź nową nazwę, a następnie wybierz pozycję **gotowe**. 
+* Aby **wyeksportować** wersji, wybierz wersję z listy, a następnie wybierz **eksportowania aplikacji** na pasku narzędzi. Plik jest pobierany na komputer lokalny. 
 
-**Aby wyeksportować wersji:**
-
-1. Na **ustawienia** stronie **wersji** listy, wybierz przycisk wielokropka (***...*** ) przycisk po prawej stronie.
-
-2. Wybierz **wyeksportować** wyskakującego liście akcji i wybierz, w którym chcesz zapisać plik.
-
-## <a name="delete-a-version"></a>Usuwanie wersji
-Można usuwać wersje, ale musisz zachować co najmniej jedną wersję aplikacji. Możesz usunąć wszystkie wersje, z wyjątkiem aktywnej wersji. 
-
-1. Na **ustawienia** stronie **wersji** listy, wybierz przycisk wielokropka (***...*** ) przycisk po prawej stronie.
-
-2. Wybierz **Usuń** wyskakującego liście akcji i wybierz, w którym chcesz zapisać plik.
-
-    ![Wersja potwierdzenie usunięcia](./media/luis-how-to-manage-versions/delete-menu.png) 
-
-
-## <a name="rename-a-version"></a>Zmień nazwę wersji
-Można zmienić wersji, tak długo, jak nazwa wersji nie jest już używany.  
-
-1. Na **ustawienia** stronie **wersji** listy, wybierz przycisk wielokropka (***...*** ) przycisk po prawej stronie.
-
-2. Wybierz **Zmień nazwę** wyskakującego liście akcji.
-
-3. Wprowadź nazwę nowej wersji, a następnie wybierz pozycję **gotowe**.
-
-    ![Zmień nazwę wersji potwierdzenia](./media/luis-how-to-manage-versions/rename-popup.png) 

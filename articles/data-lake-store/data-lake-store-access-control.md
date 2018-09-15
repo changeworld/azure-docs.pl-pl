@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 0810aff364f8a015e93d7513b13ac7dcb5379556
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 335c3fe4e27ce6025ad889cc7958a32223dc85f8
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544102"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629937"
 ---
 # <a name="access-control-in-azure-data-lake-storage-gen1"></a>Kontrola dostępu w usłudze Azure Data Lake magazynu Gen1
 
@@ -40,18 +40,6 @@ Zarówno listy ACL dostępu, jak i domyślne listy ACL mają tę samą struktur�
 > Zmiana domyślnej listy ACL w lokalizacji nadrzędnej nie wpływa na listę ACL dostępu lub domyślną listę ACL elementów podrzędnych, które już istnieją.
 >
 >
-
-## <a name="users-and-identities"></a>Użytkownicy i tożsamości
-
-Każdy plik i folder ma różne uprawnienia do tych tożsamości:
-
-* Użytkownik będący właścicielem
-* Grupa będąca właścicielem
-* Użytkownicy nazwani
-* Grupy nazwane
-* Wszyscy pozostali użytkownicy
-
-Tożsamości użytkowników i grup są tożsamościami usługi Azure Active Directory (Azure AD). Więc jeśli nie określono inaczej, termin "użytkownik" w kontekście Data Lake Storage Gen1, może oznaczać użytkownika usługi Azure AD lub grupy zabezpieczeń usługi Azure AD.
 
 ## <a name="permissions"></a>Uprawnienia
 
@@ -100,7 +88,19 @@ Poniżej przedstawiono kilka typowych scenariuszy, które pomagają zrozumieć, 
 >
 
 
-## <a name="the-super-user"></a>Administrator
+## <a name="users-and-identities"></a>Użytkownicy i tożsamości
+
+Każdy plik i folder ma różne uprawnienia do tych tożsamości:
+
+* Użytkownik będący właścicielem
+* Grupa będąca właścicielem
+* Użytkownicy nazwani
+* Grupy nazwane
+* Wszyscy pozostali użytkownicy
+
+Tożsamości użytkowników i grup są tożsamościami usługi Azure Active Directory (Azure AD). Więc jeśli nie określono inaczej, termin "użytkownik" w kontekście Data Lake Storage Gen1, może oznaczać użytkownika usługi Azure AD lub grupy zabezpieczeń usługi Azure AD.
+
+### <a name="the-super-user"></a>Administrator
 
 Administrator ma najwięcej uprawnień spośród wszystkich użytkowników w ramach konta Data Lake Storage Gen1. Administrator:
 
@@ -115,7 +115,7 @@ Jeśli chcesz utworzyć niestandardową rolę kontroli dostępu opartej na rolac
 - Microsoft.Authorization/roleAssignments/write
 
 
-## <a name="the-owning-user"></a>Użytkownik będący właścicielem
+### <a name="the-owning-user"></a>Użytkownik będący właścicielem
 
 Użytkownik, który utworzył element, jest automatycznie właścicielem elementu. Użytkownik będący właścicielem może:
 
@@ -127,7 +127,7 @@ Użytkownik, który utworzył element, jest automatycznie właścicielem element
 >
 >
 
-## <a name="the-owning-group"></a>Grupa będąca właścicielem
+### <a name="the-owning-group"></a>Grupa będąca właścicielem
 
 **Tło**
 
@@ -234,7 +234,7 @@ Poniższym pseudokodzie pokazuje, jak maska umask jest stosowane podczas tworzen
 ```
 def set_default_acls_for_new_child(parent, child):
     child.acls = []
-    foreach entry in parent.acls :
+    for entry in parent.acls :
         new_entry = None
         if (entry.type == OWNING_USER) :
             new_entry = entry.clone(perms = entry.perms & (~umask.owning_user))

@@ -11,21 +11,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/20/2018
+ms.date: 09/13/2018
 ms.author: magoedte; bwren
 ms.component: na
-ms.openlocfilehash: 386aad94461fa3f2ceafb7564342797eefa2f086
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 996502ffe5a31fcfa1b73dab9a041c336c4ea98f
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42059626"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45602635"
 ---
 # <a name="viewing-and-analyzing-data-in-log-analytics"></a>Wyświetlanie i analizowanie danych w usłudze Log Analytics
 Dostępne są dwie opcje dostępne w witrynie Azure portal do analizowania danych przechowywanych w usłudze Log analytics oraz do tworzenia zapytań dotyczących analizy ad-hoc. Zapytania, które możesz utworzyć przy użyciu tych portali może służyć do innych funkcji, takich jak alerty i pulpity nawigacyjne.
 
-## <a name="log-analytics-page-preview"></a>Strona analizy dziennika (wersja zapoznawcza)
-Otwórz stronę usługi Log Analytics z **dzienniki (wersja zapoznawcza)** w menu usługi Log Analytics. Jest to nowe środowisko pracy z danymi dzienników i tworzenie zapytań. Możesz zapoznaj się z wprowadzeniem do tego portalu i sprawdzić jego funkcje na [wprowadzenie stronie Log Analytics w witrynie Azure portal](query-language/get-started-analytics-portal.md).
+## <a name="log-analytics-page"></a>Strona analizy dziennika
+Otwórz stronę usługi Log Analytics z **dzienniki** w menu usługi Log Analytics. Jest to nowe środowisko pracy z danymi dzienników i tworzenie zapytań. Możesz zapoznaj się z wprowadzeniem do tego portalu i sprawdzić jego funkcje na [wprowadzenie stronie Log Analytics w witrynie Azure portal](query-language/get-started-analytics-portal.md).
 
 Na stronie usługi Log Analytics udostępnia następujące ulepszenia w porównaniu z [wyszukiwanie w dzienniku](#log-search) środowiska.
 
@@ -55,8 +55,8 @@ Przeglądarka wymaga dostępu do następujących adresów, aby uzyskać dostęp 
 | docs.loganalytics.io   | Dynamiczny | 80,443 |
 
 
-## <a name="log-search"></a>Wyszukiwanie w dzienniku
-Otwórz stronę wyszukiwania dziennika z **dzienniki** w menu usługi Log Analytics lub z **usługi Log Analytics** w menu usługi Azure Monitor. Jest to odpowiednie do analizowania danych dziennika przy użyciu podstawowych zapytań. Oferuje ona wiele funkcji edytowania zapytania bez konieczności pełnej znajomości języka zapytań.  Może uzyskać podsumowanie informacji o tych funkcji w [tworzenia wyszukiwań w dziennikach w usłudze Azure Log Analytics przy użyciu wyszukiwania dziennika](log-analytics-log-search-log-search-portal.md). 
+## <a name="log-search-classic"></a>Wyszukiwanie w dzienniku (wersja klasyczna)
+Otwórz stronę wyszukiwania dziennika z **dzienniki (wersja klasyczna)** w menu usługi Log Analytics lub z **usługi Log Analytics** w menu usługi Azure Monitor. Jest to odpowiednie do analizowania danych dziennika przy użyciu podstawowych zapytań. Oferuje ona wiele funkcji edytowania zapytania bez konieczności pełnej znajomości języka zapytań.  Może uzyskać podsumowanie informacji o tych funkcji w [tworzenia wyszukiwań w dziennikach w usłudze Azure Log Analytics przy użyciu wyszukiwania dziennika](log-analytics-log-search-log-search-portal.md). 
 
 
 ![Strona wyszukiwania dziennika](media/log-analytics-log-search-portals/log-search-portal.png)

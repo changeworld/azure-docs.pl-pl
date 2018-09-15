@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/12/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: c9429f5909e5ba3fd66681fa62cf16125922d075
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: ded2aa17fe9b8de2d8c8f662f5d99b1ce33a2b25
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721776"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634208"
 ---
 # <a name="add-a-kubernetes-cluster-to-the-azure-stack-marketplace"></a>Dodaj klaster Kubernetes w portalu Marketplace usługi Azure Stack
 
@@ -70,7 +70,7 @@ Dodaj poniższy obraz Ubuntu Server w portalu Marketplace:
 
 1. Wybierz **+ Dodaj na platformie Azure**.
 
-1. Wprowadź `UbuntuServer`.
+1. Wprowadź polecenie `UbuntuServer`.
 
 1. Wybierz serwer przy użyciu następującego profilu:
     - **Wydawca**: Canonical
@@ -93,7 +93,7 @@ Dodaj klaster Kubernetes z witryny Marketplace:
 
 1. Wybierz **+ Dodaj na platformie Azure**.
 
-1. Wprowadź `Custom Script for Linux`.
+1. Wprowadź polecenie `Custom Script for Linux`.
 
 1. Wybierz odpowiedni skrypt, za pomocą następującego profilu:
     - **Oferty**: niestandardowego skryptu dla systemu Linux w wersji 2.0
@@ -110,11 +110,11 @@ Dodaj klaster Kubernetes z witryny Marketplace:
 
 1. Otwórz [portalu administracyjnego](https://adminportal.local.azurestack.external).
 
-1. Wybierz **A; usług** a następnie w obszarze **administracji** kategorii, wybierz opcję **zarządzania Marketplace**.
+1. Wybierz **Dodawanie usług** a następnie w obszarze **administracji** kategorii, wybierz opcję **zarządzania Marketplace**.
 
 1. Wybierz **+ Dodaj na platformie Azure**.
 
-1. Wprowadź `Kubernetes Cluster`.
+1. Wprowadź polecenie `Kubernetes Cluster`.
 
 1. Wybierz pozycję `Kubernetes Cluster`.
 

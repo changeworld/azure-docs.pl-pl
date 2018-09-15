@@ -3,33 +3,26 @@ title: Utraconych wiadomości i zasady ponawiania prób dla subskrypcji usługi 
 description: W tym artykule opisano, jak dostosować opcje dostarczania zdarzeń usługi Event Grid. Zestaw docelowy utraconych wiadomości i określić, jak długo próbę dostarczania.
 services: event-grid
 author: tfitzmac
-manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/03/2018
+ms.date: 09/13/2018
 ms.author: tomfitz
-ms.openlocfilehash: 5a37fadc179157ba590b31a79fcd98f223cb1869
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 5db53567b1df9e726fb0c507f0302536ea45b7f4
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39501953"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603774"
 ---
 # <a name="dead-letter-and-retry-policies"></a>Utraconych wiadomości i zasady ponawiania prób
 
-Podczas tworzenia subskrypcji zdarzeń, można dostosować ustawienia dostarczania zdarzeń. Można ustawić, jak długo usługi Event Grid próbuje dostarczyć wiadomości. Można ustawić konto magazynu do przechowywania zdarzeń, których nie można dostarczyć do punktu końcowego.
+Podczas tworzenia subskrypcji zdarzeń, można dostosować ustawienia dostarczania zdarzeń. W tym artykule przedstawiono sposób ustawiania lokalizacji utraconych wiadomości i Dostosuj ustawienia ponawiania prób. Aby uzyskać informacje o tych funkcjach, zobacz [dostarczanie komunikatów usługi Event Grid i ponów próbę](delivery-and-retry.md).
 
 [!INCLUDE [event-grid-preview-feature-note.md](../../includes/event-grid-preview-feature-note.md)]
 
 ## <a name="set-dead-letter-location"></a>Ustaw lokalizację utraconych wiadomości
 
-Kiedy usługi Event Grid może dostarczyć zdarzenia, może wysłać zdarzenia niedostarczone do konta magazynu. Ten proces jest nazywany Obsługa utraconych komunikatów. Domyślnie obsługa utraconych komunikatów nie Włącz usługi Event Grid. Aby ją włączyć, należy określić konto magazynu do przechowywania zdarzeń niedostarczone podczas tworzenia subskrypcji zdarzeń. Możesz pobierać zdarzenia z tego konta magazynu, aby rozwiązać dostaw.
-
-Usługa Event Grid wysyła zdarzenie do lokalizacji utraconych czy wypróbuje wszystkich jego ponownych prób, jeżeli otrzyma komunikat o błędzie, który wskazuje dostarczania nigdy nie powiedzie się. Na przykład jeśli usługi Event Grid otrzyma błąd niewłaściwy format podczas dostarczania zdarzeń, wysyła zdarzenia, do lokalizacji utraconych wiadomości. Występuje opóźnienie pięciu minut od ostatniej próby dostarczenia zdarzeń i kiedy są dostarczane do lokalizacji utraconych wiadomości. To opóźnienie jest przeznaczona do zmniejszenia liczba operacji magazynu obiektów Blob. Jeśli lokalizacja utraconych wiadomości jest niedostępna przez kilka godzin, zdarzenie zostało porzucone.
-
-Przed ustawieniem lokalizacja utraconych wiadomości, musi mieć konto magazynu przy użyciu kontenera. Możesz podać punktu końcowego dla tego kontenera, podczas tworzenia subskrypcji zdarzeń. Punkt końcowy jest w formacie: `/subscriptions/<subscription-id>/resourceGroups/<resource-group-name>/providers/Microsoft.Storage/storageAccounts/<storage-name>/blobServices/default/containers/<container-name>`
-
-Poniższy skrypt pobiera identyfikator zasobu istniejącego konta magazynu i tworzy subskrypcji zdarzeń, która używa kontener na tym koncie magazynu dla punktu końcowego utraconych wiadomości.
+Aby ustawić lokalizację utraconych wiadomości, potrzebne jest konto magazynu do przechowywania zdarzeń, których nie można dostarczyć do punktu końcowego. Poniższy skrypt pobiera identyfikator zasobu istniejącego konta magazynu i tworzy subskrypcji zdarzeń, która używa kontener na tym koncie magazynu dla punktu końcowego utraconych wiadomości.
 
 ```azurecli-interactive
 # if you have not already installed the extension, do it now.
@@ -48,8 +41,6 @@ az eventgrid event-subscription create \
   --endpoint <endpoint_URL> \
   --deadletter-endpoint $storageid/blobServices/default/containers/$containername
 ```
-
-Odpowiadanie na zdarzenia niedostarczone za pomocą usługi Event Grid [utworzysz subskrypcję zdarzeń](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) dla magazynu obiektów blob utraconych wiadomości. Za każdym razem, gdy magazynu obiektów blob utraconych odbiera niedostarczone zdarzeń usługi Event Grid powiadamia programu obsługi. Program obsługi odpowiada za pomocą akcji, które mają zostać podjęte, jaką niedostarczone zdarzenia. 
 
 Aby wyłączyć Obsługa utraconych komunikatów, uruchom ponownie polecenie, aby utworzyć subskrypcję zdarzeń, ale nie zapewniają wartość dla `deadletter-endpoint`. Nie ma potrzeby usuwania subskrypcji zdarzeń.
 

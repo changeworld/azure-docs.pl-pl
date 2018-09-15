@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 11/08/2016
 ms.author: sedusch
-ms.openlocfilehash: eb2b26333647d464a3a18cd07bf1576251fb3830
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: a2daf75e5a75a4fb0be06986903a2f4f9be8adf0
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715407"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634850"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Wdrażania maszyn wirtualnych platformy Azure dla oprogramowania SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -483,7 +483,7 @@ W witrynie Azure portal wprowadź następujące parametry szablonu:
   * **Nazwa użytkownika administratora** i **hasło administratora**: nazwa użytkownika i hasło.
     Nowy użytkownik jest tworzony w przypadku logowania się do maszyny wirtualnej.
   * **Nowej lub istniejącej podsieci**: Określa, czy tworzenia nowej sieci wirtualnej i podsieci, czy istniejąca podsieć jest używana. Jeśli masz już sieć wirtualną, która jest połączona z siecią lokalną, wybierz opcję **istniejące**.
-  * **Identyfikator podsieci**: identyfikator podsieci maszyn wirtualnych będą łączyć się z. Wybierz podsieć sieci wirtualnej sieci prywatnej (VPN) lub sieci wirtualnej usługi Azure ExpressRoute na potrzeby połączenia z maszyną wirtualną z siecią lokalną. Identyfikator zwykle wygląda następująco: /subscriptions/&lt;identyfikator subskrypcji > /resourceGroups/&lt;nazwy grupy zasobów > /providers/Microsoft.Network/virtualNetworks/&lt;nazwa sieci wirtualnej > /subnets/&lt;Nazwa podsieci >
+  * **Identyfikator podsieci**: Jeśli chcesz wdrożyć maszynę Wirtualną w istniejącej sieci wirtualnej, w którym masz zdefiniowanej podsieci maszyny Wirtualnej powinien być przypisany do nazwy identyfikator odpowiednią podsieć. Identyfikator zwykle wygląda następująco: /subscriptions/&lt;identyfikator subskrypcji > /resourceGroups/&lt;nazwy grupy zasobów > /providers/Microsoft.Network/virtualNetworks/&lt;nazwa sieci wirtualnej > /subnets/&lt;Nazwa podsieci >
 
 1. **Warunki i postanowienia**:  
     Przejrzyj i zaakceptuj postanowienia prawne.
@@ -614,9 +614,7 @@ W witrynie Azure portal wprowadź następujące parametry szablonu:
 
     Nowy użytkownik jest tworzony w przypadku logowania się do maszyny wirtualnej.
   * **Nowej lub istniejącej podsieci**: Określa, czy utworzono nową sieć wirtualną i podsieć, czy istniejąca podsieć jest używana. Jeśli masz już sieć wirtualną, która jest połączona z siecią lokalną, wybierz opcję **istniejące**.
-  * **Identyfikator podsieci**: identyfikator podsieci, do której maszyny wirtualne połączy się. Wybierz podsieć sieci VPN lub usługi ExpressRoute wirtualnej służące do połączenia z maszyną wirtualną z siecią lokalną. Identyfikator zwykle wygląda następująco:
-
-    /Subscriptions/&lt;identyfikator subskrypcji > /resourceGroups/&lt;nazwy grupy zasobów > /providers/Microsoft.Network/virtualNetworks/&lt;nazwa sieci wirtualnej > /subnets/&lt;Nazwa podsieci >
+  * **Identyfikator podsieci**: Jeśli chcesz wdrożyć maszynę Wirtualną w istniejącej sieci wirtualnej, w którym masz zdefiniowanej podsieci maszyny Wirtualnej powinien być przypisany do nazwy identyfikator odpowiednią podsieć. Identyfikator zwykle wygląda następująco: /subscriptions/&lt;identyfikator subskrypcji > /resourceGroups/&lt;nazwy grupy zasobów > /providers/Microsoft.Network/virtualNetworks/&lt;nazwa sieci wirtualnej > /subnets/&lt;Nazwa podsieci >
 
 1. **Warunki i postanowienia**:  
     Przejrzyj i zaakceptuj postanowienia prawne.
@@ -697,9 +695,7 @@ W witrynie Azure portal wprowadź następujące parametry szablonu:
   * **Identyfikator URI wirtualnego dysku twardego dysku systemu operacyjnego** (tylko szablony dysku niezarządzanego): identyfikator URI prywatnej dysku systemu operacyjnego, na przykład https://&lt;accountname >.blob.core.windows.net/vhds/osdisk.vhd.
   * **Identyfikator dysku zarządzanego dysku systemu operacyjnego** (tylko szablony dysków zarządzanych): identyfikator dysku zarządzanego systemu operacyjnego z dysku /subscriptions/92d102f7-81a5-4df7-9877-54987ba97dd9/resourceGroups/group/providers/Microsoft.Compute/disks/WIN
   * **Nowej lub istniejącej podsieci**: Określa, czy tworzenia nowej sieci wirtualnej i podsieci, czy istniejąca podsieć jest używana. Jeśli masz już sieć wirtualną, która jest połączona z siecią lokalną, wybierz opcję **istniejące**.
-  * **Identyfikator podsieci**: identyfikator podsieci, do której maszyny wirtualne połączy się. Wybierz podsieć sieci VPN lub usługi Azure ExpressRoute wirtualnej służące do połączenia z maszyną wirtualną z siecią lokalną. Identyfikator zwykle wygląda następująco:
-
-    /Subscriptions/&lt;identyfikator subskrypcji > /resourceGroups/&lt;nazwy grupy zasobów > /providers/Microsoft.Network/virtualNetworks/&lt;nazwa sieci wirtualnej > /subnets/&lt;Nazwa podsieci >
+  * **Identyfikator podsieci**: Jeśli chcesz wdrożyć maszynę Wirtualną w istniejącej sieci wirtualnej, w którym masz zdefiniowanej podsieci maszyny Wirtualnej powinien być przypisany do nazwy identyfikator odpowiednią podsieć. Identyfikator zwykle wygląda następująco: /subscriptions/&lt;identyfikator subskrypcji > /resourceGroups/&lt;nazwy grupy zasobów > /providers/Microsoft.Network/virtualNetworks/&lt;nazwa sieci wirtualnej > /subnets/&lt;Nazwa podsieci >
 
 1. **Warunki i postanowienia**:  
     Przejrzyj i zaakceptuj postanowienia prawne.
@@ -835,7 +831,7 @@ Kroki, które należy wykonać, aby skonfigurować serwer proxy w Windows różn
 Ustawienia serwera proxy musi być prawidłowo skonfigurowany dla konta System lokalny, aby uzyskać dostęp do Internetu. Jeśli ustawienia serwera proxy nie są ustawione przez zasady grupy, można skonfigurować ustawienia dla lokalnego konta systemowego.
 
 1. Przejdź do **Start**, wprowadź **gpedit.msc**, a następnie wybierz pozycję **Enter**.
-1. Wybierz **konfiguracji komputera** > **Szablony administracyjne** > **składników Windows**  >  ** Program Internet Explorer**. Upewnij się, że ustawienie **wprowadzić serwera proxy, ustawienia dla poszczególnych komputerów (a nie na użytkownika)** zostało wyłączone lub nieskonfigurowane.
+1. Wybierz **konfiguracji komputera** > **Szablony administracyjne** > **składników Windows**  >   **Program Internet Explorer**. Upewnij się, że ustawienie **wprowadzić serwera proxy, ustawienia dla poszczególnych komputerów (a nie na użytkownika)** zostało wyłączone lub nieskonfigurowane.
 1. W **Panelu sterowania**, przejdź do **Centrum sieci i udostępniania** > **Opcje internetowe**.
 1. Na **połączeń** zaznacz **ustawienia sieci LAN** przycisku.
 1. Wyczyść **Automatycznie wykryj ustawienia** pole wyboru.

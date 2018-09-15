@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: b7b1279dbb1256269705da3f8be6f6d2c1151368
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 9b04f6bc2158f88b54bb4ed086c2f74b5a28eedd
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346342"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605219"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>Użytkowników B2B przydział w usłudze Azure AD dostęp do aplikacji w środowisku lokalnym
 
@@ -63,7 +63,7 @@ Na poniższym diagramie przedstawiono ogólne omówienie serwera Proxy aplikacji
 Możesz zarządzać obiektów użytkownika B2B w środowisku lokalnym przy użyciu zasad zarządzania cyklem życia. Na przykład:
 
 - Zasady uwierzytelniania wieloskładnikowego (MFA) dla użytkownika gościa można skonfigurować tak, aby usługa MFA jest używany podczas uwierzytelniania serwera Proxy aplikacji. Aby uzyskać więcej informacji, zobacz [dostęp warunkowy dla użytkowników współpracy B2B](conditional-access.md).
-- Wszelkie dostęp sponsorowany przeglądów dostępu, weryfikacji konta, itp., które są wykonywane w chmurze B2B, po którym użytkownik ma zastosowanie do użytkowników w środowisku lokalnym. Na przykład usunięcie użytkownika chmury za pomocą zasad zarządzania cyklem życia użytkownika lokalnego również jest usunięte, usługa synchronizacji programu MIM lub za pomocą synchronizacji programu Azure AD Connect. Aby uzyskać więcej informacji, zobacz [przeglądy zarządzanie dostępem gości za pomocą usługi Azure AD access](../active-directory-azure-ad-controls-manage-guest-access-with-access-reviews.md).
+- Wszelkie dostęp sponsorowany przeglądów dostępu, weryfikacji konta, itp., które są wykonywane w chmurze B2B, po którym użytkownik ma zastosowanie do użytkowników w środowisku lokalnym. Na przykład usunięcie użytkownika chmury za pomocą zasad zarządzania cyklem życia użytkownika lokalnego również jest usunięte, usługa synchronizacji programu MIM lub za pomocą synchronizacji programu Azure AD Connect. Aby uzyskać więcej informacji, zobacz [przeglądy zarządzanie dostępem gości za pomocą usługi Azure AD access](../governance/manage-guest-access-with-access-reviews.md).
 
 ### <a name="create-b2b-guest-user-objects-through-mim-preview"></a>Tworzenie obiektów użytkowników gości B2B przy użyciu programu MIM (wersja zapoznawcza)
 

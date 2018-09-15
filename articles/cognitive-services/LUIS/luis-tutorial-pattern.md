@@ -1,76 +1,56 @@
 ---
-title: Samouczek przy użyciu wzorców w celu przewidywania usługi LUIS — Azure | Dokumentacja firmy Microsoft
-titleSuffix: Cognitive Services
-description: W tym samouczku należy użyć wzorca dla opcji, aby zwiększyć prognozy intencji i jednostki usługi LUIS.
+title: 'Samouczek 3: Wzorce ulepszania prognoz usługi LUIS'
+titleSuffix: Azure Cognitive Services
+description: Aby zwiększyć intencji i jednostek prognozowania przy jednoczesnym zapewnieniu mniej wypowiedzi przykładu, należy użyć wzorców. Wzorzec jest dostarczany za pomocą przykładu wypowiedź szablonu, który zawiera Składnia służąca do identyfikowania jednostki i tekstu można zignorować.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 07/30/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 9c14f2121cd83cec802f4fd4a92661d58eb7efb3
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 3b41105a20b765abd084fc387370a49b657d1cba
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159576"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634731"
 ---
-# <a name="tutorial-improve-app-with-patterns"></a>Samouczek: Ulepszaniu aplikacji wzorami
+# <a name="tutorial-3-add-common-utterance-formats"></a>Samouczek 3. Dodaj typowe formaty wypowiedź
 
-W tym samouczku Użyj wzorce, aby zwiększyć prognozowania intencji i jednostek.  
+W ramach tego samouczka Aby zwiększyć intencji i jednostek prognozowania przy jednoczesnym zapewnieniu mniej wypowiedzi przykładu należy użyć wzorców. Wzorzec jest dostarczany za pomocą przykładu wypowiedź szablonu, który zawiera Składnia służąca do identyfikowania jednostki i tekstu można zignorować. Wzorzec jest kombinacją Dopasowywanie wyrażeń i uczenia maszynowego.  Przykład wypowiedź szablonu, wraz z intencji wypowiedzi zapewniają LUIS lepiej zrozumieć, z jakiego wypowiedzi Dopasuj intencji. 
+
+**W tym samouczku dowiesz się, jak:**
 
 > [!div class="checklist"]
-* Jak zidentyfikować, że wzorzec może pomóc Twojej aplikacji
-* Jak utworzyć wzorca
-* Jak zweryfikować ulepszenia prognozowania wzorzec
+> * Użyj istniejącego samouczek aplikacji 
+> * Utwórz opcję
+> * Szkolenie
+> * Publikowanie
+> * Pobierz intencje i podmioty z punktu końcowego
+> * Tworzenie wzorca
+> * Sprawdź ulepszenia prognozowania wzorzec
+> * Można zignorować, tekstu i zagnieździć w ramach wzorzec
+> * Użyj panelu test, aby sprawdzić, czy wzorzec
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="before-you-begin"></a>Przed rozpoczęciem
+## <a name="use-existing-app"></a>Użyj istniejącej aplikacji
 
-Jeśli nie masz zarządzania zasobami ludzkimi firmy [partii testów](luis-tutorial-batch-testing.md) samouczek, [zaimportować](luis-how-to-start-new-app.md#import-new-app) dane JSON do nowej aplikacji w [usługi LUIS](luis-reference-regions.md#luis-website) witryny sieci Web. Aplikację do zaimportowania znajduje się w [przykłady LUIS](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-batchtest-HumanResources.json) repozytorium GitHub.
+Kontynuuj aplikację utworzoną w samouczku ostatni o nazwie **kadry**. 
 
-Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `patterns`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. 
+Jeśli nie masz aplikacji kadry z poprzedniego samouczka, należy użyć następujących czynności:
 
-## <a name="patterns-teach-luis-common-utterances-with-fewer-examples"></a>Wzorce uczyć LUIS wspólnej wypowiedzi wraz z przykładami mniej
+1.  Pobierz i Zapisz [pliku JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-batchtest-HumanResources.json).
 
-Ze względu na charakter domeny zarządzania zasobami ludzkimi istnieje kilka typowych sposobów z pytaniem o relacjach pracowników w organizacji. Na przykład:
+2. Importuj dane JSON do nowej aplikacji.
 
-|Wypowiedzi|
-|--|
-|Kto Jill Jones zgłosić do?|
-|Kto raporty do Jill Jones?|
-
-Te wypowiedzi są zbyt Zamknij, aby określić kontekstowych unikatowości każdego bez podawania wiele przykładów wypowiedź. Dodając wzorzec intencji, LUIS uczy się typowe wzorce wypowiedź intencji bez podawania wiele przykładów wypowiedź. 
-
-Przykładowy szablon wypowiedzi konwersji między innymi:
-
-|Przykładowy szablon wypowiedzi|
-|--|
-|Tego, kto wykonuje {pracowników} zgłosić?|
-|Kto raporty do {pracownika}?|
-
-Wzorzec jest dostarczany za pomocą przykładu wypowiedź szablonu, który zawiera Składnia służąca do identyfikowania jednostki i tekstu można zignorować. Wzorzec jest kombinacją Dopasowywanie wyrażeń regularnych i uczenia maszynowego.  Przykład wypowiedź szablonu, wraz z intencji wypowiedzi zapewniają LUIS lepiej zrozumieć, z jakiego wypowiedzi Dopasuj intencji.
-
-Aby wzorzec można dopasować do wypowiedź jednostek w ramach wypowiedź musi odpowiadać jednostek w wypowiedź szablon najpierw. Jednak szablonu nie ułatwiania prognozowania jednostki, tylko intencji. 
-
-**Gdy wzorce umożliwiają mniej wypowiedzi przykład, jeśli obiekty nie są wykrywane, wzorzec jest niezgodny.**
-
-Należy pamiętać, że pracownicy zostały utworzone w [jednostki samouczek](luis-quickstart-intent-and-list-entity.md).
+3. Z **Zarządzaj** sekcji na **wersji** kartę, klonowanie wersji i nadaj mu nazwę `patterns`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używany jako część trasy adresu URL, nazwa nie może zawierać żadnych znaków, które nie są prawidłowe w adresie URL.
 
 ## <a name="create-new-intents-and-their-utterances"></a>Utwórz nowy intencje i ich wypowiedzi
 
-Dodawanie dwóch nowych intencji: `OrgChart-Manager` i `OrgChart-Reports`. Gdy usługa LUIS zwraca prognozowania do aplikacji klienckiej intencji nazwy mogą być używane jako nazwy funkcji w aplikacji klienckiej, a jednostka pracownik może być używana jako parametr do tej funkcji.
-
-```Javascript
-OrgChart-Manager(employee){
-    ///
-}
-```
-
-1. Upewnij się, że aplikacja Human Resources znajduje się w sekcji **Build** (Kompilacja) aplikacji LUIS. Możesz przejść do tej sekcji, wybierając pozycję **Build** (Kompilacja) na górnym pasku menu po prawej stronie. 
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Na stronie **Intents** (Intencje) wybierz pozycję **Create new intent** (Utwórz nową intencję). 
 
@@ -110,17 +90,17 @@ OrgChart-Manager(employee){
 
 ## <a name="caution-about-example-utterance-quantity"></a>Ostrzeżenie o ilości wypowiedź przykład
 
-Ilość przykład wypowiedzi w tych intencji nie wystarcza do nauczenia usługi LUIS prawidłowo. W przypadku aplikacji rzeczywistych każdego intencji powinien mieć co najmniej 15 wypowiedzi zapewnia szeroki wybór i wypowiedź długość słowa. Te kilka wypowiedzi są wybrane specjalnie w celu wyróżnienia wzorców. 
+[!include[Too few examples](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]
 
-## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
+## <a name="train"></a>Szkolenie
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikowanie aplikacji w celu uzyskania adresu URL punktu końcowego
+## <a name="publish"></a>Publikowanie
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>Wysyłanie zapytania do punktu końcowego za pomocą różnych wypowiedzi
+## <a name="get-intent-and-entities-from-endpoint"></a>Pobierz intencje i podmioty z punktu końcowego
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
@@ -215,13 +195,53 @@ Aby wynik poprawne intencji znacznie wyższe w postaci wartości procentowej i d
 
 Pozostaw to drugie okno przeglądarki jest otwarte. Możesz użyć później w samouczku. 
 
-## <a name="add-the-template-utterances"></a>Dodawanie wypowiedzi szablonu
+## <a name="template-utterances"></a>Szablon wypowiedzi
+Ze względu na charakter domeny zarządzania zasobami ludzkimi istnieje kilka typowych sposobów z pytaniem o relacjach pracowników w organizacji. Na przykład:
+
+|Wypowiedzi|
+|--|
+|Kto Jill Jones zgłosić do?|
+|Kto raporty do Jill Jones?|
+
+Te wypowiedzi są zbyt Zamknij, aby określić kontekstowych unikatowości każdego bez podawania wiele przykładów wypowiedź. Dodając wzorzec intencji, LUIS uczy się typowe wzorce wypowiedź intencji bez podawania wiele przykładów wypowiedź. 
+
+Przykłady wypowiedź szablonu konwersji między innymi:
+
+|Przykłady wypowiedzi szablonów|znaczenie składni|
+|--|--|
+|Tego, kto wykonuje {pracowników} raportować do [?]|wymienne {pracowników}, ignorowanie [?]}|
+|Kto raporty pracownikowi {} [?]|wymienne {pracowników}, ignorowanie [?]}|
+
+`{Employee}` Składni oznacza lokalizację jednostki w ramach wypowiedź szablonu jako jest również jako jakiej encji. Opcjonalnych składni `[?]`, oznacza słowa lub znaki interpunkcyjne, które są opcjonalne. Usługa LUIS dopasowuje wypowiedź, ignorowanie opcjonalny tekst w nawiasie.
+
+Gdy składnia wygląda wyrażeń regularnych, nie jest wyrażeń regularnych. Tylko nawias klamrowy `{}`, a nawias kwadratowy `[]`, składnia jest obsługiwana. One może być zagnieżdżona w maksymalnie dwa poziomy.
+
+Aby wzorzec można dopasować do wypowiedź jednostek w ramach wypowiedź musi odpowiadać jednostek w wypowiedź szablon najpierw. Jednak szablonu nie ułatwiania prognozowania jednostki, tylko intencji. 
+
+**Gdy wzorce umożliwiają mniej wypowiedzi przykład, jeśli obiekty nie są wykrywane, wzorzec jest niezgodny.**
+
+W tym samouczku należy dodać dwa nowe intencji: `OrgChart-Manager` i `OrgChart-Reports`. 
+
+|Intencja|Wypowiedź|
+|--|--|
+|Schemat organizacyjny — Manager|Kto Jill Jones zgłosić do?|
+|Schemat organizacyjny — raporty|Kto raporty do Jill Jones?|
+
+Gdy usługa LUIS zwraca prognozowania do aplikacji klienckiej intencji nazwy mogą być używane jako nazwy funkcji w aplikacji klienckiej, a jednostka pracownik może być używana jako parametr do tej funkcji.
+
+```Javascript
+OrgChartManager(employee){
+    ///
+}
+```
+
+Należy pamiętać, że pracownicy zostały utworzone w [jednostki samouczek](luis-quickstart-intent-and-list-entity.md).
 
 1. Wybierz **kompilacji** w górnym menu.
 
 2. W lewym obszarze nawigacji w obszarze **lepsza wydajność aplikacji**, wybierz opcję **wzorców** w lewym obszarze nawigacji.
 
-3. Wybierz **schemat organizacyjny — Manager** przeznaczenie, wprowadź następujące wypowiedzi szablonu, po kolei, wybranie enter po każdym wypowiedź szablonu:
+3. Wybierz **schemat organizacyjny — Manager** przeznaczenie, wprowadź następujące wypowiedzi szablonu:
 
     |Szablon wypowiedzi|
     |:--|
@@ -232,17 +252,13 @@ Pozostaw to drugie okno przeglądarki jest otwarte. Możesz użyć później w s
     |Kto jest {} [w] przełożonego [?]|
     |Kto jest szefa {pracownika} [?]|
 
-    `{Employee}` Składni oznacza lokalizację jednostki w ramach wypowiedź szablonu jako jest również jako jakiej encji. 
-
     Jednostki przy użyciu ról należy użyć składni, która zawiera nazwę roli i są objęte [oddzielne samouczek dotyczący ról](luis-tutorial-pattern-roles.md). 
-
-    Opcjonalnych składni `[]`, oznacza słowa lub znaki interpunkcyjne, które są opcjonalne. Usługa LUIS dopasowuje wypowiedź, ignorowanie opcjonalny tekst w nawiasie.
 
     Jeśli wpiszesz wypowiedź szablonu, pomaga LUIS wypełnienie w jednostce po wprowadzeniu lewy nawias klamrowy `{`.
 
     [![Zrzut ekranu przedstawiający wprowadzanie wypowiedzi szablonu dla intencji](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png)](./media/luis-tutorial-pattern/hr-pattern-missing-entity.png#lightbox)
 
-4. Wybierz **schemat organizacyjny — raporty** przeznaczenie, wprowadź następujące wypowiedzi szablonu, po kolei, wybranie enter po każdym wypowiedź szablonu:
+4. Wybierz **schemat organizacyjny — raporty** przeznaczenie, wprowadź następujące wypowiedzi szablonu:
 
     |Szablon wypowiedzi|
     |:--|
@@ -427,6 +443,8 @@ Wszystkie te wypowiedzi znaleziono jednostek wewnątrz, w związku z tym one pas
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
+
+W tym samouczku dodaje dwa intencji dla wypowiedzi były trudne do prognozowania o wysokiej dokładności bez konieczności wiele wypowiedzi przykład. Dodawanie wzorce te dozwolone LUIS, aby lepiej przewiduj intencji za pomocą znacznie więcej punktów. Oznaczanie jednostek i można zignorować tekst dozwolone LUIS zastosować wzorzec do szerszego zakresu wypowiedzi.
 
 > [!div class="nextstepaction"]
 > [Dowiedz się, jak użyć ról z wzorcem](luis-tutorial-pattern-roles.md)

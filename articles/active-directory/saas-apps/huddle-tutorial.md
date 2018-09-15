@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 08114fc52665eb336844a1072df8bd3f2591dd07
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: fc4ea2538ebe5876e8f3572ab8ad76c4b3b44b8c
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093468"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634340"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-huddle"></a>Samouczek: Integracja usługi Azure Active Directory z zbijają się
 
@@ -56,6 +56,7 @@ W ramach tego samouczka można przetestować usługę Azure AD rejestracji jedno
 2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-huddle-from-the-gallery"></a>Dodawanie zbijają się za pomocą galerii
+
 Aby skonfigurować integrację zbijają się w usłudze Azure AD, należy dodać zbijają się za pomocą galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać zbijają się z galerii, wykonaj następujące czynności:**
@@ -67,7 +68,7 @@ Aby skonfigurować integrację zbijają się w usłudze Azure AD, należy dodać
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![Aplikacje][2]
-    
+
 3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Aplikacje][3]
@@ -80,24 +81,18 @@ Aby skonfigurować integrację zbijają się w usłudze Azure AD, należy dodać
 
     ![Tworzenie użytkownika testowego usługi Azure AD](./media/huddle-tutorial/tutorial_huddle_addfromgallery.png)
 
-##  <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+## <a name="configuring-and-testing-azure-ad-single-sign-on"></a>Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 W tej sekcji konfigurowania i testowania usługi Azure AD logowanie jednokrotne za pomocą zbijają się w oparciu o użytkownika testu o nazwie "Britta Simon."
 
 Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w zbijają się z użytkownikiem w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w zbijają się musi zostać ustanowione.
 
-W zbijają się, należy przypisać wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** do ustanawiania relacji łączy.
-
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą zbijają się, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configuring-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-
 2. **[Tworzenie użytkownika testowego usługi Azure AD](#creating-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-
 3. **[Tworzenie użytkownika testowego zbijają się](#creating-a-huddle-test-user)**  — aby odpowiednikiem Britta Simon w zbijają się połączonego z usługi Azure AD reprezentacja użytkownika.
-
 4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assigning-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-
 5. **[Testowanie logowania jednokrotnego](#testing-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configuring-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
@@ -111,10 +106,13 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![Konfigurowanie logowania jednokrotnego][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
+
     ![Konfigurowanie logowania jednokrotnego](./media/huddle-tutorial/tutorial_huddle_samlbase.png)
 
 3. Na **zbijają się domena i adresy URL** sekcji, wykonaj następujące kroki, jeśli chcesz skonfigurować aplikację w **tożsamości** zainicjowano tryb:
+
+    > [!NOTE]
+    > Wystąpienie zbijają się zostanie wykryty automatycznie z domeny wprowadzony poniżej.
 
     ![Zbijają się domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/huddle-tutorial/tutorial_huddle_url.png)
 
@@ -122,16 +120,16 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     | | |
     |--|--|
-    | `https://<customsubdomain>.huddle.com`|
-    | `https://us.huddle.com` |
+    | `https://<customsubdomain>.huddle.net`|
+    | `https://my.huddle.net` |
     | |
 
     b. W **adres URL odpowiedzi** polu tekstowym wpisz dowolny adres URL, za pomocą następującego wzorca:
 
     | | |
     |--|--|
-    | `https://<customsubdomain>.huddle.com/saml/idp-initiated-sso`|
-    | `https://us.huddle.com/saml/idp-initiated-sso`|
+    | `https://<customsubdomain>.huddle.net/saml/idp-initiated-sso`|
+    | `https://my.huddle.net/saml/idp-initiated-sso`|
     | |
 
 4. Sprawdź **Pokaż zaawansowane ustawienia adresu URL** i wykonać następujący krok, jeśli chcesz skonfigurować aplikację w **SP** zainicjowano tryb:
@@ -139,15 +137,14 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![Zbijają się domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/huddle-tutorial/tutorial_huddle_url1.png)
 
     W **adres URL logowania** polu tekstowym wpisz dowolny adres URL, za pomocą następującego wzorca:
-    
+
     | | |
     |--|--|
-    | `https://<customsubdomain>.huddle.com`|
-    | `https://us.huddle.com`|
+    | `https://<customsubdomain>.huddle.net`|
     | |
 
-    > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora, adres URL odpowiedzi i adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta zbijają się](https://huddle.zendesk.com) do uzyskania tych wartości. 
+    > [!NOTE]
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego identyfikatora, adres URL odpowiedzi i adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta zbijają się](https://huddle.zendesk.com) do uzyskania tych wartości.
 
 5. Na **certyfikat podpisywania SAML** kliknij **Certificate(Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
@@ -157,15 +154,15 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/huddle-tutorial/tutorial_general_400.png)
 
-7. Na **zbijają się konfiguracji** , kliknij przycisk **skonfigurować zbijają się** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po sekcji.** 
+7. Na **zbijają się konfiguracji** , kliknij przycisk **skonfigurować zbijają się** otworzyć **Konfigurowanie logowania jednokrotnego** okna. Kopiuj **identyfikator jednostki języka SAML i SAML pojedynczego logowania jednokrotnego adres URL usługi** z **krótki przewodnik po sekcji.**
 
     ![Konfigurowanie logowania jednokrotnego](./media/huddle-tutorial/tutorial_huddle_configure.png) 
-    
+
 8. Aby skonfigurować logowanie jednokrotne zbijają się po stronie, musisz wysłać pobrany **certyfikatu**, **SAML pojedynczego logowania jednokrotnego usługi adresu URL**, i **identyfikator jednostki SAML** do [ Zbijają się z zespołem pomocy technicznej klienta](https://huddle.zendesk.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.  
-   
+
     >[!NOTE]
-    > Logowania jednokrotnego musi być włączona przez zespół pomocy technicznej zbijają się. Otrzymasz powiadomienie po zakończeniu konfiguracji. 
-    > 
+    > Logowania jednokrotnego musi być włączona przez zespół pomocy technicznej zbijają się. Otrzymasz powiadomienie po zakończeniu konfiguracji.
+    >
 
 ### <a name="creating-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 

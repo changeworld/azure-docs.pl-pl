@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: fd4955cb2d7ea76e8d0fd6c60027740b64bd8b24
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: ac1c3b4ac49cd8934316eb5653af8f5af2cf801a
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44026251"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630158"
 ---
 # <a name="collaborating"></a>Współpraca
 
@@ -30,6 +30,11 @@ Zobacz [użytkownik dzierżawy usługi Azure Active Directory](luis-how-to-colla
 
 ## <a name="luis-app-owner"></a>Właściciel aplikacji usługi LUIS
 Konta, które służy do tworzenia aplikacji jest właścicielem. Każda aplikacja ma jednego właściciela. Właściciel znajduje się w aplikacji  **[ustawienia](luis-how-to-collaborate.md)**. To konto które można usunąć aplikacji. Jest to również konto które otrzymuje wiadomość e-mail po osiągnięciu limitu przydziału z punktu końcowego 75% limit miesięczny. 
+
+## <a name="authorization-roles"></a>Role autoryzacji
+Usługa LUIS nie obsługuje różne role dla właścicieli i współpracowników z jednym wyjątkiem. Właściciel jest to jedyne konto, które można usunąć aplikacji.
+
+Jeśli interesuje Cię w kontrolowaniu dostępu do modelu, należy wziąć pod uwagę model tworzenia wycinków w mniejszych aplikacje usługi LUIS, gdzie każda mniejszych aplikacja ma bardziej ograniczony zestaw współpracowników. Użyj [wysyłania](https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch) umożliwia nadrzędnego aplikacją usługi LUIS do zarządzania koordynacji między aplikacjami nadrzędnymi i podrzędnymi.
 
 ## <a name="transfer-ownership"></a>Przenoszenie własności
 Usługa LUIS nie zapewnia przeniesienie prawa własności, jednak żadnych współpracownika wyeksportować aplikację, a następnie utwórz aplikację przez zaimportowanie. Należy pamiętać, że nowa aplikacja ma inny identyfikator aplikacji. Nowych potrzeb aplikacji ma być uczony, opublikowane, a nowy punkt końcowy używane.

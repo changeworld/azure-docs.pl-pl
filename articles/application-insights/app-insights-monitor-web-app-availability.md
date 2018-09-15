@@ -11,15 +11,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 02/09/2018
+ms.date: 09/13/2018
 ms.reviewer: sdash
 ms.author: mbullwin
-ms.openlocfilehash: 392abef7f92dce024ba6e4af091cf58fde5119b6
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: cf5f85d4f7e9dbe1278e9dc4290967d781b398f3
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302395"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632828"
 ---
 # <a name="monitor-availability-and-responsiveness-of-any-web-site"></a>Monitorowanie dostępności i czasu odpowiedzi dowolnej witryny sieci Web
 Po wdrożeniu aplikacji internetowej lub witryny internetowej na dowolnym serwerze możesz skonfigurować testy, aby monitorować jej dostępność i czas odpowiedzi. Usługa [Azure Application Insights](app-insights-overview.md) wysyła żądania sieci Web do aplikacji w regularnych odstępach czasu z punktów na całym świecie. Jeśli aplikacja będzie odpowiadać powoli lub wcale, usługa powiadomi Cię o tym za pomocą alertu.
@@ -33,11 +33,6 @@ Istnieją dwa rodzaje testów dostępności:
 
 Dla każdego zasobu aplikacji możesz utworzyć maksymalnie 100 testów dostępności.
 
-
-> [!NOTE] 
-> * Lokalizacje testu dostępności zostały niedawno przeniesione do centrów danych platformy Azure. Dzięki temu możliwe jest dodawanie lokalizacji do stale rozwijającej się sieci centrów danych platformy Azure.  
-> * Nie musisz aktualizować testów. Przeprowadzono migrację wszystkich testów i są one uruchamiane z poziomu nowej lokalizacji. 
->* Aby uzyskać więcej informacji, zapoznaj się z informacjami dotyczącymi [aktualizacji usługi](https://blogs.msdn.microsoft.com/applicationinsights-status/2018/01/24/application-insights-availability-monitoring-test-locations-updated/).
 
 ## <a name="create"></a>Otwieranie zasobu dla własnych raportów testów dostępności
 
@@ -55,15 +50,17 @@ Otwórz blok Dostępność i dodaj test.
 ![Podaj przynajmniej adres URL swojej witryny sieci Web](./media/app-insights-monitor-web-app-availability/13-availability.png)
 
 * **Adres URL** może odnosić się do dowolnej strony sieci Web, którą chcesz przetestować, ale musi być widoczny w publicznym Internecie. Adres URL może zawierać ciąg zapytania. Możesz więc np. szybko sprawdzić działanie bazy danych. Jeśli adres URL jest rozpoznawany jako przekierowanie, zostanie prześledzonych maksymalnie 10 przekierowań.
-* **Analizuj zależne żądania**: po zaznaczeniu tej opcji test zażąda obrazów, skryptów, plików stylów i innych plików, które są częścią testowanej strony sieci Web. Rejestrowany czas odpowiedzi obejmuje czas poświęcony na pobieranie tych plików. Test zakończy się niepowodzeniem, jeśli nie uda się pobrać tych zasobów w ramach limitu czasu dla całego testu. 
-
-    Jeśli pole opcji nie zostanie zaznaczone, test zażąda tylko pliku pod podanym adresem URL.
+* **Analizuj zależne żądania**: po zaznaczeniu tej opcji test zażąda obrazów, skryptów, plików stylów i innych plików, które są częścią testowanej strony sieci Web. Rejestrowany czas odpowiedzi obejmuje czas poświęcony na pobieranie tych plików. Test zakończy się niepowodzeniem, jeśli nie uda się pobrać tych zasobów w ramach limitu czasu dla całego testu. Jeśli pole opcji nie zostanie zaznaczone, test zażąda tylko pliku pod podanym adresem URL.
 
 * **Włącz ponawianie próby**: zaznaczenie pola tej opcji spowoduje, że nieudany test zostanie ponowiony po krótkim czasie. Błąd jest zgłaszany dopiero wtedy, gdy trzy kolejne próby się nie powiodą. Kolejne testy są następnie wykonywane ze zwykłą częstotliwością. Ponawianie prób jest tymczasowo wstrzymane do czasu następnego sukcesu. Ta reguła jest stosowana niezależnie w każdej lokalizacji testu. Ta opcja jest zalecana. Średnio około 80% błędów znika po ponowieniu testu.
 
 * **Częstotliwość testu**: określa, jak często wykonywane są testy w poszczególnych lokalizacjach testowych. Przy domyślnej częstotliwości równej 5 minut i 5 lokalizacjach testu witryna będzie testowana średnio co minutę.
 
 * **Lokalizacje testu** są to miejsca, z których nasze serwery wysyłają żądania sieci Web do Twojego adresu URL. Wybierz więcej niż jedną lokalizację, aby móc odróżnić problemy z witryną od problemów z siecią. Wybrać można maksymalnie 16 lokalizacji.
+
+> [!NOTE] 
+> * Zdecydowanie zaleca się testowania z wielu lokalizacji, aby zapobiec fałszywych alarmów, wynikające z przejściowych problemów z określonej lokalizacji.
+> * Włączanie opcji powoduje "Analizuj zależne żądania" w bardziej rygorystyczne wyboru. Test może nie działać w sytuacjach, które mogą nie być widoczne podczas przeglądania ręcznie lokacji.
 
 * **Kryteria powodzenia**:
 
@@ -72,58 +69,6 @@ Otwórz blok Dostępność i dodaj test.
     **Odpowiedź HTTP**: zwrócony kod stanu, który będzie uznawany za sukces. Kod 200 oznacza, że została zwrócona normalna strona sieci Web.
 
     **Zgodność zawartości**: ciąg znaków, np. „Witaj!” Sprawdzamy, czy w każdej odpowiedzi występuje dokładna zgodność pod względem wielkości liter. Musi to być zwykły ciąg znaków bez symboli wieloznacznych. Pamiętaj, że w razie zmiany zawartości strony może być konieczne zaktualizowanie tego ciągu.
-* **Alerty** są domyślnie wysyłane, jeśli błędy występują w trzech lokalizacjach przez ponad pięć minut. Błąd w jednej lokalizacji prawdopodobnie wynika z problemu z siecią, a nie z witryną. Próg błędu można jednak zmienić na mniej lub bardziej wrażliwy. Zmienić można też adresata wiadomości e-mail z alertami.
-
-    Skonfigurować można również [element webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md), który jest wywoływany w momencie zgłoszenia alertu. Należy jednak pamiętać, że obecnie parametry zapytania nie są przekazywane jako właściwości.
-
-### <a name="test-more-urls"></a>Testowanie większej liczby adresów URL
-Dodaj więcej testów. Na przykład oprócz testowania strony głównej możesz sprawdzić, czy działa baza danych, testując adres URL dla wyszukiwania.
-
-
-## <a name="monitor"></a>Wyświetlanie wyników testów dostępności
-
-Po kilku minutach kliknij pozycję **Odśwież**, aby zobaczyć wyniki testu. 
-
-![Podsumowanie wyników w bloku głównym](./media/app-insights-monitor-web-app-availability/14-availSummary-3.png)
-
-Wykres punktowy przedstawia przykłady wyników testów, które zawierają szczegóły diagnostycznego kroku testu. Aparat testowy przechowuje szczegółowe informacje diagnostyczne dla testów z błędami. W przypadku udanych testów szczegółowe informacje diagnostyczne są przechowywane dla podzbioru wykonań. Umieść kursor na zielonych/czerwonych kropkach, aby zobaczyć sygnaturę czasową testu, czas trwania testu, lokalizację i nazwę testu. Kliknij dowolną kropkę na wykresie punktowym, aby wyświetlić szczegóły wyniku testu.  
-
-Wybierz określony test, lokalizację lub skróć okres czasu, aby zobaczyć więcej wyników w okolicy interesującego okresu czasu. Użyj Eksploratora wyszukiwania, aby zobaczyć wyniki z wszystkich wykonań, lub użyj zapytań analitycznych w celu uruchomienia niestandardowych raportów dla tych danych.
-
-Oprócz nieprzetworzonych wyników w Eksploratorze metryk istnieją dwie metryki dostępności: 
-
-1. Dostępność: procent testów, które zostały pomyślnie zakończone, dla wszystkich wykonań testów. 
-2. Czas trwania testu: średni czas trwania testu dla wszystkich wykonań testów.
-
-Filtry możesz zastosować do nazwy testu, lokalizacji, aby przeanalizować trendy określonego testu lub lokalizacji.
-
-## <a name="edit"></a> Sprawdzanie i edytowanie testów
-
-Na stronie podsumowania wybierz określony test. Strona ta będzie zawierać określone wyniki, można ją również edytować lub wyłączać.
-
-![Edytowanie lub wyłączanie testu sieci Web](./media/app-insights-monitor-web-app-availability/19-availEdit-3.png)
-
-Podczas przeprowadzania konserwacji swojej usługi możesz wyłączyć testy dostępności lub skojarzone z nimi reguły alertów. 
-
-## <a name="failures"></a>Jeśli widzisz błędy
-Kliknij czerwoną kropkę.
-
-![Kliknij czerwoną kropkę](./media/app-insights-monitor-web-app-availability/open-instance-3.png)
-
-
-Na podstawie wyniku testu dostępności możesz:
-
-* Zbadać odpowiedź odebraną z serwera.
-* Diagnozować błędy przy użyciu danych telemetrycznych po stronie serwera, zebranych podczas przetwarzania wystąpienia żądania zakończonego niepowodzeniem.
-* Zaloguj się problem lub elementu roboczego w usłudze Git bądź DevOps platformy Azure w celu prześledzenia problemu. Błąd będzie zawierać link do tego zdarzenia.
-* Otworzyć wynik testu sieci Web w programie Visual Studio.
-
-*Test wygląda dobrze, ale jest raportowany jako błąd?* Zobacz [Często zadawane pytania](#qna), aby zapoznać się ze sposobami ograniczania szumu.
-
-
-> [!TIP]
-> Aby zapewnić niezawodne monitorowanie, zalecamy przeprowadzenie testowania z co najmniej 2 lokalizacji.
->
 
 ## <a name="multi-step-web-tests"></a>Wieloetapowe testy sieci Web
 Możliwe jest monitorowanie scenariusza, który obejmuje sekwencję adresów URL. Jeśli na przykład monitorujesz witrynę sklepu, możesz sprawdzić, czy dodawanie towarów do koszyka działa prawidłowo.
@@ -178,22 +123,6 @@ Nagraj sesję sieci Web w programie Visual Studio Enterprise.
 
     Ustaw lokalizacje testu, częstotliwość i parametry alertu w taki sam sposób, jak w przypadku testów ping.
 
-#### <a name="3-see-the-results"></a>3. Zobacz wyniki
-
-Wyświetl wyniki testu i ewentualne błędy w taki sam sposób, jak w przypadku testów pojedynczego adresu URL.
-
-Można również pobrać wyniki testów, aby je wyświetlić w programie Visual Studio.
-
-Aby pobrać wyniki testu. Przejdź do Podsumowanie testu dostępności, kliknij wynik na wykresie, aby otworzyć okno wyniku testu dostępności, a następnie kliknij na **Otwórz w programie Visual Studio** można pobrać wyniku testu.
-
-#### <a name="too-many-failures"></a>Zbyt wiele niepowodzeń?
-
-* Typową przyczyną błędu jest to, że test trwa zbyt długo. Nie może trwać dłużej niż dwie minuty.
-
-* Pamiętaj, że wszystkie zasoby strony (skrypty, arkusze stylów, obrazy itd.) muszą załadować się poprawnie, aby test zakończył się powodzeniem.
-
-* Test sieci Web musi być całkowicie zawarty w skrypcie webtest — w teście nie można użyć funkcji zakodowanych.
-
 ### <a name="plugging-time-and-random-numbers-into-your-multi-step-test"></a>Dodawanie wtyczek czasu i liczb losowych do testu wieloetapowego
 Załóżmy, że testujesz narzędzie, które pobiera dane zależne od czasu (np. ceny akcji) z zewnętrznego źródła. Podczas rejestrowania testu sieci Web należy używać określonych godzin, ale ustawionych jako parametry testu: StartTime (Godzina rozpoczęcia) i EndTime (Godzina zakończenia).
 
@@ -216,6 +145,87 @@ Wtyczki testu sieci Web umożliwiają parametryzowanie czasu.
     ![Używanie {{nazwa wtyczki}} w parametrze testu.](./media/app-insights-monitor-web-app-availability/appinsights-72webtest-plugin-name.png)
 
 Teraz przekaż test do portalu. Wartości dynamiczne zostaną zastosowane w każdym przebiegu testu.
+
+
+## <a name="monitor"></a>Wyświetlanie wyników testów dostępności
+
+Po kilku minutach kliknij pozycję **Odśwież**, aby zobaczyć wyniki testu. 
+
+![Podsumowanie wyników w bloku głównym](./media/app-insights-monitor-web-app-availability/14-availSummary-3.png)
+
+Wykres punktowy przedstawia przykłady wyników testów, które zawierają szczegóły diagnostycznego kroku testu. Aparat testowy przechowuje szczegółowe informacje diagnostyczne dla testów z błędami. W przypadku udanych testów szczegółowe informacje diagnostyczne są przechowywane dla podzbioru wykonań. Umieść kursor na zielonych/czerwonych kropkach, aby zobaczyć sygnaturę czasową testu, czas trwania testu, lokalizację i nazwę testu. Kliknij dowolną kropkę na wykresie punktowym, aby wyświetlić szczegóły wyniku testu.  
+
+Wybierz określony test, lokalizację lub skróć okres czasu, aby zobaczyć więcej wyników w okolicy interesującego okresu czasu. Użyj Eksploratora wyszukiwania, aby zobaczyć wyniki z wszystkich wykonań, lub użyj zapytań analitycznych w celu uruchomienia niestandardowych raportów dla tych danych.
+
+Oprócz nieprzetworzonych wyników w Eksploratorze metryk istnieją dwie metryki dostępności: 
+
+1. Dostępność: procent testów, które zostały pomyślnie zakończone, dla wszystkich wykonań testów. 
+2. Czas trwania testu: średni czas trwania testu dla wszystkich wykonań testów.
+
+Filtry możesz zastosować do nazwy testu, lokalizacji, aby przeanalizować trendy określonego testu lub lokalizacji.
+
+## <a name="edit"></a> Sprawdzanie i edytowanie testów
+
+Na stronie podsumowania wybierz określony test. Strona ta będzie zawierać określone wyniki, można ją również edytować lub wyłączać.
+
+![Edytowanie lub wyłączanie testu sieci Web](./media/app-insights-monitor-web-app-availability/19-availEdit-3.png)
+
+Podczas przeprowadzania konserwacji swojej usługi możesz wyłączyć testy dostępności lub skojarzone z nimi reguły alertów. 
+
+## <a name="failures"></a>Jeśli widzisz błędy
+Kliknij czerwoną kropkę.
+
+![Kliknij czerwoną kropkę](./media/app-insights-monitor-web-app-availability/open-instance-3.png)
+
+W wyniku testu dostępności zobaczysz szczegółów transakcji dotyczące wszystkich składników. W tym miejscu możesz wykonywać następujące czynności:
+
+* Zbadać odpowiedź odebraną z serwera.
+* Diagnozowanie błędów przy użyciu danych telemetrycznych po stronie serwera skorelowany zebranych podczas przetwarzania testu dostępności nie powiodło się.
+* Zarejestrować problem lub element roboczy w usłudze Git bądź VSTS w celu prześledzenia problemu. Błąd będzie zawierać link do tego zdarzenia.
+* Otworzyć wynik testu sieci Web w programie Visual Studio.
+
+Dowiedz się więcej o diagnostyce transakcji typu end to end środowisko [tutaj](app-insights-transaction-diagnostics.md).
+
+Kliknij wiersz wyjątek, aby wyświetlić szczegóły dotyczące wyjątków po stronie serwera, który spowodował niepowodzenie testu dostępności syntetycznych. Możesz też pobrać [migawkę debugowania](app-insights-snapshot-debugger.md) dla bogatszych diagnostyki z poziomu kodu.
+
+![Diagnostyczne po stronie serwera](./media/app-insights-monitor-web-app-availability/open-instance-4.png)
+
+## <a name="alerts"></a> Alerty dostępności
+Może mieć następujące typy reguł alertów na danych dotyczących dostępności za pomocą środowiska klasycznych alertów:
+1. X z Y lokalizacji, raportowania awarii w przedziale czasu
+2. Dostępność agregacji wartości procentowej spadnie poniżej wartości progowej
+3. Test Średni czas trwania zwiększa powyżej wartości progowej
+
+### <a name="alert-on-x-out-of-y-locations-reporting-failures"></a>Alert po wystąpieniu X z Y lokalizacji, raportowanie błędów
+X z Y lokalizacji, reguła alertu jest domyślnie włączone w [nowe alerty ujednolicone środowisko](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), podczas tworzenia nowego testu dostępności. Użytkownik może zrezygnować przez wybranie opcji "klasyczny" lub wyłączenie reguły alertu.
+
+![Utwórz środowisko](./media/app-insights-monitor-web-app-availability/appinsights-71webtestUpload.png)
+
+**Ważne**: za pomocą [nowe alerty ujednoliconego](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), preferencje ważność i powiadomień regułę alertu z [grup akcji](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-action-groups) **musi być** skonfigurowane w środowisko alertów. Bez wykonać następujące kroki subskrybent otrzyma tylko powiadomienia w portalu. 
+
+1. Po zapisaniu test dostępności, kliknij nową nazwę testu, aby przejść do jego szczegóły. Kliknij pozycję "Edytuj alert" ![edytować po zapisaniu](./media/app-insights-monitor-web-app-availability/editaftersave.png)
+
+2. Ustaw poziom ważności, opis reguły, a co najważniejsze — grupę akcji, która ma preferencje powiadamiania, którego chcesz użyć dla tej reguły alertu.
+![Edytuj po zapisaniu](./media/app-insights-monitor-web-app-availability/setactiongroup.png)
+
+
+> [!NOTE]
+> * Konfigurowanie grup akcji, aby otrzymywać powiadomienia po wyzwoleniu alertu, wykonując kroki opisane powyżej. Bez tego kroku subskrybent otrzyma tylko powiadomienia w portalu po wyzwoleniu reguły.
+>
+### <a name="alert-on-availability-metrics"></a>Alert po wystąpieniu metryki dostępności
+Za pomocą [nowe alerty ujednoliconego](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), można alert po wystąpieniu segmentowanych dostępności agregacji i testowania oraz metryki czasu trwania:
+
+1. Wybierz zasób usługi Application Insights w środowisku metryki, a następnie wybierz metrykę dostępności: ![wybór metryki dostępności](./media/app-insights-monitor-web-app-availability/selectmetric.png)
+
+2. Konfigurowanie alertów, którą opcję z menu spowoduje przejście do nowego środowiska którym można wybrać określonych testów lub lokalizacji, aby skonfigurować reguły alertu dotyczącego. Można również skonfigurować grupy akcji dla tej reguły alertu, w tym miejscu.
+    ![Konfiguracja alertów dostępności](./media/app-insights-monitor-web-app-availability/availabilitymetricalert.png)
+
+### <a name="alert-on-custom-analytics-queries"></a>Alert po wystąpieniu zapytań analitycznych niestandardowe
+Za pomocą [nowe alerty ujednoliconego](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-unified-alerts), może generować alerty na [dzienników niestandardowych kwerend](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log). Za pomocą niestandardowych zapytań może generować alerty na dowolny warunek, który pomoże Ci w uzyskaniu najbardziej niezawodny sygnał problemy z dostępnością. Dotyczy to również szczególnie ma to zastosowanie, w przypadku wysyłania wyniki dostępności niestandardowych przy użyciu zestawu SDK TrackAvailability. 
+
+> [!Tip]
+> * Metryki dotyczące dostępności danych obejmują żadnych wyników dostępności niestandardowych, które mogą przesyłać przez wywołanie metody nasz zestaw SDK TrackAvailability. Możesz użyć alertów dotyczących obsługi różnych metryk w ramach alertu wyniki dostępności niestandardowych.
+>
 
 ## <a name="dealing-with-sign-in"></a>Obsługa logowania
 Jeśli użytkownicy logują się do aplikacji, dostępne są różne opcje symulowania logowania, które pozwolą przetestować strony dostępne po zalogowaniu. Zastosowane podejście zależy od typu zabezpieczeń zapewnianych przez aplikację.
@@ -253,11 +263,10 @@ Jeśli w ramach testu należy zalogować się przy użyciu protokołu OAuth, og�
 * Sparametryzuj tokeny, ustawiając parametr, gdy token jest zwracany z witryny uwierzytelniającej i używając go w zapytaniu do tej witryny.
   Program Visual Studio podejmie próby parametryzacji testu, ale parametryzacja tokenów nie przebiegnie poprawnie.
 
-
 ## <a name="performance-tests"></a>Testy wydajności
 Witrynę internetową możesz poddać testowi obciążeniowemu. Podobnie jak w przypadku testu dostępności można wysłać proste żądania lub żądania wieloetapowe z naszych punktów na całym świecie. W przeciwieństwie do testu dostępności wysyłanych jest wiele żądań symulujących wielu równoczesnych użytkowników.
 
-Z poziomu bloku Przegląd otwórz pozycję **Ustawienia**, **Testy wydajności**. Podczas tworzenia testu zaproszono Cię do łączenia lub Utwórz organizację usługom DevOps platformy Azure.
+Z poziomu bloku Przegląd otwórz pozycję **Ustawienia**, **Testy wydajności**. Podczas tworzenia testu zaproszono Cię do łączenia lub Utwórz konto DevOps platformy Azure.
 
 Po zakończeniu testu wyświetlane są czasy reakcji i współczynniki powodzenia.
 
@@ -272,50 +281,68 @@ Po zakończeniu testu wyświetlane są czasy reakcji i współczynniki powodzeni
 * Automatyczne [konfigurowanie testów dostępności za pomocą skryptów środowiska PowerShell](app-insights-powershell.md#add-an-availability-test).
 * Konfigurowanie [elementu webhook](../monitoring-and-diagnostics/insights-webhooks-alerts.md) który jest wywoływany przy zgłaszaniu alertu.
 
-## <a name="qna"></a>Pytania? Problemy?
+## <a name="qna"></a> FAQ
+
+* *Witryna wygląda prawidłowo, ale występują niepowodzenia testów? Dlaczego usługa Application Insights jest ze mną alertów?*
+
+    * Test ma "Analizy zależne requests" włączone? Który skutkuje rygorystyczne kontrole zasoby, takie jak skrypty, obrazy itd. Tego rodzaju błędów może nie być widoczne w przeglądarce. Sprawdź wszystkie obrazy, skrypty, arkusze stylów i inne pliki ładowane przez stronę. Jeśli pobranie dowolnego z nich nie powiedzie się, test zostanie zgłoszony jako nieudany — nawet wtedy, gdy główna strona HTML ładuje się poprawnie. Aby test ignorował takie błędy zasobów, wystarczy usunąć zaznaczenie pola „Analizuj zależne żądania” w konfiguracji testu. 
+
+    * Aby zmniejszyć ryzyko wystąpienia szumu powodowanego przez drobne przejściowe problemy z siecią itp., zaznacz pole „Włącz ponawianie próby w przypadku niepowodzenia testów” w konfiguracji. Możesz także przeprowadzać testy z większej liczby lokalizacji i odpowiednio dostosować próg reguły alertu, aby zapobiec wywoływaniu niepotrzebnych alertów przez problemy występujące w jednej lokalizacji.
+
+    * Kliknij dowolny czerwonych kropek doświadczeniu dostępności lub jakiekolwiek niepowodzenie dostępności Eksploratora wyszukiwania, aby wyświetlić szczegóły Dlaczego mamy zgłosił błąd. Wynik testu, wraz z skorelowanej telemetrii po stronie serwera (jeśli jest włączona) powinno pomóc zrozumieć, dlaczego test nie powiódł się. Typowe przyczyny problemy przejściowe problemy z połączeniem sieciowym lub. 
+
+    * Czy limit czasu testu? Firma Microsoft przerwać testów po 2 minuty. Jeśli Twoje polecenie ping lub test wieloetapowy trwa dłużej niż 2 minuty, firma Microsoft będzie zgłaszać jako błąd. Rozważ podzielenie testu na wiele migawek, które można wykonać w krótszych czasów trwania.
+
+    * Wszystkie lokalizacje zgłosili awarii lub tylko niektóre z nich? Jeśli tylko niektóre zgłoszone błędy, może to być spowodowane problemy sieciowe/usługa CDN. Ponownie klikając czerwonych kropek powinna pomagać zrozumieć, dlaczego lokalizacji zgłoszone błędy.
+
+* *Nie pobrały I wiadomości e-mail, gdy alertu wyzwolona lub rozwiązane lub oba?*
+
+    Sprawdź konfigurację alertów klasycznych, aby potwierdzić swój adres e-mail znajduje się bezpośrednio lub listy dystrybucyjnej, które znajdują się na jest skonfigurowany do otrzymywać powiadomienia. Jeśli tak jest, sprawdź konfigurację listy dystrybucji, aby potwierdzić, że może ona odbierać wiadomości e-mail zewnętrznych. Również szybko sprawdzić, jeśli administrator poczty może mieć żadnych zasady skonfigurowane, które mogą być przyczyną tego problemu.
+
+* *Nie odebrał powiadomienie elementów webhook?*
+
+    Sprawdź aplikację odbieranie powiadomień elementu webhook jest dostępny i pomyślnie przetwarza żądania elementu webhook. Zobacz [to](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitor-alerts-unified-log-webhook) Aby uzyskać więcej informacji.
+
 * *Sporadyczne niepowodzenia testu z błędem naruszenia protokołu*
 
     Błąd „Naruszenie protokołu (...) Po CR musi występować LF” oznacza problem związany z serwerem (lub zależnościami). Występuje w przypadku ustawienia nieprawidłowo sformułowanych nagłówków w odpowiedzi. Przyczyną mogą być moduły równoważenia obciążenia lub sieci dostarczania zawartości. Mówiąc bardziej szczegółowo, w niektórych nagłówkach koniec wiersza może nie być sygnalizowany znakiem CRLF, co narusza specyfikację protokołu HTTP i prowadzi do niepowodzenia walidacji na poziomie żądania internetowego .NET. Sprawdź odpowiedź, aby znaleźć nagłówki, które mogą powodować naruszenie.
     
     Uwaga: błąd adresu URL może nie występować w przeglądarkach mających bardziej swobodne reguły walidacji nagłówków HTTP. Zobacz ten wpis w blogu, aby uzyskać szczegółowe wyjaśnienie tego problemu: http://mehdi.me/a-tale-of-debugging-the-linkedin-api-net-and-http-protocol-violations/  
-* *Witryna wygląda prawidłowo, ale występują niepowodzenia testów*
-
-    * Sprawdź wszystkie obrazy, skrypty, arkusze stylów i inne pliki ładowane przez stronę. Jeśli pobranie dowolnego z nich nie powiedzie się, test zostanie zgłoszony jako nieudany — nawet wtedy, gdy główna strona HTML ładuje się poprawnie. Aby test ignorował takie błędy zasobów, wystarczy usunąć zaznaczenie pola „Analizuj zależne żądania” w konfiguracji testu. 
-
-    * Aby zmniejszyć ryzyko wystąpienia szumu powodowanego przez drobne przejściowe problemy z siecią itp., zaznacz pole „Włącz ponawianie próby w przypadku niepowodzenia testów” w konfiguracji. Możesz także przeprowadzać testy z większej liczby lokalizacji i odpowiednio dostosować próg reguły alertu, aby zapobiec wywoływaniu niepotrzebnych alertów przez problemy występujące w jednej lokalizacji.
     
 * *Nie widzę żadnych danych telemetrycznych po stronie serwera do diagnozowania niepowodzeń testów*
     
-    Jeśli usługa Application Insights została skonfigurowana dla aplikacji po stronie serwera, może to być spowodowane trwaniem [próbkowania](app-insights-sampling.md).
+    Jeśli usługa Application Insights została skonfigurowana dla aplikacji po stronie serwera, może to być spowodowane trwaniem [próbkowania](app-insights-sampling.md). Wybierz wynik w różnych dostępności.
+
 * *Czy mogę wywołać kod z mojego testu sieci Web?*
 
     Nie. Kroki testu muszą być zawarte w pliku .webtest. Nie można też wywoływać innych testów sieci Web ani używać pętli. Istnieje jednak kilka wtyczek, które mogą być przydatne.
+
 * *Czy jest obsługiwany protokół HTTPS?*
 
     Obsługujemy protokół TLS 1.1 i TLS 1.2.
 * *Czym różnią się „testy sieci Web” i „testy dostępności”?*
 
     Te dwa terminy mogą być używane zamiennie. Testy dostępności to bardziej ogólny termin, który, oprócz wieloetapowych testów witryny, obejmuje testy ping pojedynczego adresu URL.
+    
 * *Chcę użyć testów dostępności na naszym serwerze wewnętrznym działającym za zaporą.*
 
     Istnieją dwa możliwe rozwiązania:
     
     * Skonfiguruj zaporę, aby zezwolić na żądania przychodzące z [adresów IP naszych agentów testów sieci Web](app-insights-ip-addresses.md).
     * Napisz własny kod do okresowego testowania wewnętrznego serwera. Uruchom kod jako proces w tle na serwerze testowym za zaporą. Proces testowania może wysyłać wyniki do usługi Application Insights za pomocą interfejsu API [TrackAvailability()](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.trackavailability) w podstawowym zestawie SDK. Wymaga to, aby serwer testowy miał dostęp do połączeń wychodzących punktu końcowego pozyskiwania usługi Application Insights, ale stanowi to dużo mniejsze zagrożenie bezpieczeństwa niż alternatywne dopuszczenie żądań przychodzących. Wyniki nie będą widoczne w blokach testów dostępności sieci Web, ale są wyświetlane jako wyniki dostępności w obszarach analizy, wyszukiwania i eksploratora metryk.
+
 * *Przekazywanie wieloetapowego testu sieci Web kończy się niepowodzeniem*
 
-    Limit rozmiaru to 300 KB.
+    Niektóre przyczyny może się to zdarzyć:
+    * Limit rozmiaru to 300 KB.
+    * Pętle nie są obsługiwane.
+    * Odwołania do innych testów sieci Web nie są obsługiwane.
+    * Źródła danych nie są obsługiwane.
 
-    Pętle nie są obsługiwane.
-
-    Odwołania do innych testów sieci Web nie są obsługiwane.
-
-    Źródła danych nie są obsługiwane.
 * *Mój test wieloetapowy nie jest wykonywany w całości*
 
-    Istnieje limit 100 żądań na test.
+    Istnieje limit 100 żądań na test. Ponadto test zostanie zatrzymany, jeśli działa dłużej niż dwie minuty.
 
-    Test zostanie zatrzymany, jeśli działa dłużej niż dwie minuty.
 * *Jak uruchomić test z wykorzystaniem certyfikatów klienta?*
 
     Niestety nie jest to obsługiwane.

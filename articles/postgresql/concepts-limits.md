@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: 52dfac826de86f67b3143cce49c35088547c4b39
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: e096a67d953860ec2e9601f25dbd9ca92a8fb4a3
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171776"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633783"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Ograniczenia dotyczące usługi Azure Database for PostgreSQL
 W poniższych sekcjach opisano, pojemnością i limitami funkcjonalności w usłudze bazy danych.
@@ -47,7 +47,7 @@ Azure system wymaga pięć połączeń do monitorowania usługi Azure Database f
 - Zmniejsza rozmiar magazynu serwera nie jest obecnie obsługiwane.
 
 ### <a name="server-version-upgrades"></a>Uaktualnienia wersji serwera
-- Automatycznej migracji między wersjami aparatu głównej bazy danych nie jest obecnie obsługiwane.
+- Automatycznej migracji między wersjami aparatu głównej bazy danych nie jest obecnie obsługiwane. Jeśli chcesz uaktualnić do następnej wersji głównej, [zrzucanie i przywracanie](./howto-migrate-using-dump-and-restore.md) go do serwera, który został utworzony przy użyciu nowej wersji aparatu.
 
 ### <a name="subscription-management"></a>Zarządzanie subskrypcjami
 - Dynamicznie przenoszenie serwerów w subskrypcji i grup zasobów nie jest obecnie obsługiwane.

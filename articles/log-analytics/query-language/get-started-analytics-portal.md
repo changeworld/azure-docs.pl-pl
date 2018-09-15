@@ -1,6 +1,6 @@
 ---
-title: Rozpoczynanie pracy ze stroną usługi Log Analytics w witrynie Azure portal | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera samouczek dla Pisanie zapytań przy użyciu strony usługi Log Analytics.
+title: Rozpoczynanie pracy z usługą Log Analytics w witrynie Azure portal | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera samouczek do pisania zapytań, za pomocą usługi Log Analytics w witrynie Azure portal.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -15,14 +15,16 @@ ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 493497476fdfe7d96d6f2dde735bab0147e547a7
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 2c35d71d127903a67dce2280b2d0ab335079b480
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42057411"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604471"
 ---
-# <a name="get-started-with-the-log-analytics-page-in-the-azure-portal"></a>Rozpoczynanie pracy ze stroną usługi Log Analytics w witrynie Azure portal
+# <a name="get-started-with-log-analytics-in-the-azure-portal"></a>Rozpoczynanie pracy z usługą Log Analytics w witrynie Azure portal
+
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 W tym samouczku dowiesz się, jak pisać zapytania usługi Log Analytics za pomocą strony usługi Log Analytics w witrynie Azure portal (obecnie w wersji zapoznawczej). Jego nauczą Cię, jak do:
 
@@ -45,7 +47,7 @@ Strona usługi Log Analytics jest w sieci web narzędzie służące do zapisu i 
 ## <a name="basic-queries"></a>Podstawowe zapytania
 Zapytania mogą służyć do terminy wyszukiwania, identyfikację trendów, analizować wzorce i wiele innych informacji na podstawie danych. Uruchom przy użyciu podstawowego zapytania:
 
-```OQL
+```KQL
 Event | search "error"
 ```
 
@@ -55,7 +57,7 @@ Zapytania można zacząć od jednej nazwy tabeli lub **wyszukiwania** polecenia.
 
 Innym sposobem pisania tego samego zapytania będą:
 
-```OQL
+```KQL
 search in (Event) "error"
 ```
 
@@ -79,7 +81,7 @@ W każdej tabeli dane są organizowane w kolumnach zawierających różne typy d
 ## <a name="filter-the-results"></a>Filtrowanie wyników
 Od zebrania wszystko _zdarzeń_ tabeli.
 
-```OQL
+```KQL
 Event
 ```
 
@@ -133,7 +135,7 @@ Jeśli zapytanie zawiera jawnie filtr _TimeGenerated_, czas selektora tytuł zos
 ## <a name="charts"></a>Wykresy
 Oprócz zwracania wyników w tabeli, wyniki zapytania mogą być przedstawiane na formaty wizualne. Użyj następującego zapytania, na przykład:
 
-```OQL
+```KQL
 Event 
 | where EventLevelName == "Error" 
 | where TimeGenerated > ago(1d) 

@@ -3,7 +3,7 @@ title: Klient Pomoc dotycząca rozliczeń i obciążeń zwrotnych w usłudze Azu
 description: Dowiedz się, jak pobrać informacje o użyciu zasobów z usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: mattbriggs
+author: sethmanheim
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,14 +12,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 07/12/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: f055837711b52fc32cb387fb86c623d3502f47ab
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: fcfd5d4e9e2f30d769818df29cf8a76bd9113d4f
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39090143"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632414"
 ---
 # <a name="usage-and-billing-in-azure-stack"></a>Użycie i rozliczenia w usłudze Azure Stack
 

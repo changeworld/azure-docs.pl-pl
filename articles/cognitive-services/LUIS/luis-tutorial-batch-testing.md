@@ -1,51 +1,27 @@
 ---
-title: Umożliwia testowanie partii poprawić prognoz usługi LUIS | Dokumentacja firmy Microsoft
-titleSuffix: Azure
-description: Batch test obciążeniowy, przejrzyj wyniki i poprawy usługi LUIS prognozy ze zmianami.
+title: 'Samouczek 2: Test usługi Batch przy użyciu zestawu wypowiedzi 1000 '
+titleSuffix: Azure Cognitive Services
+description: Ten samouczek pokazuje, jak za pomocą testowania partii znaleźć wypowiedź prognozowania problemy w aplikacji i je rozwiązać.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 5abaeaee87d54e82df29e75b89c83522b8746730
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 1f1055b84a83d71931ebd0ca11b5bcd1bd16ad02
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158249"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630988"
 ---
-# <a name="improve-app-with-batch-test"></a>Ulepszaniu aplikacji z testem usługi batch
+# <a name="tutorial--2-batch-test-data-sets"></a>Samouczek: # 2. Zestawy danych testowych usługi Batch
 
-Ten samouczek pokazuje, jak na potrzeby testowania partii Znajdź wypowiedź prognozowania problemy.  
-
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
-
-<!-- green checkmark -->
-> [!div class="checklist"]
-* Utwórz plik wsadowy testu 
-* Uruchom test usługi batch
-* Przejrzyj wyniki testu
-* Usuń błędy 
-* Przetestowanie usługi batch
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Przed rozpoczęciem
-
-Jeśli nie masz zarządzania zasobami ludzkimi firmy [Przejrzyj wypowiedzi punktu końcowego](luis-tutorial-review-endpoint-utterances.md) samouczek, [zaimportować](luis-how-to-start-new-app.md#import-new-app) dane JSON do nowej aplikacji w [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web. Aplikacja do zaimportowania znajduje się w repozytorium [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-review-HumanResources.json) usługi Github.
-
-Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `batchtest`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. 
-
-Uczenie aplikacji.
-
-## <a name="purpose-of-batch-testing"></a>Celem testowanie usługi batch
+Ten samouczek pokazuje, jak za pomocą testowania partii znaleźć wypowiedź prognozowania problemy w aplikacji i je rozwiązać.  
 
 Testowanie usługi Batch umożliwia zweryfikowanie aktywny, skonfigurowanych pod kątem stanu modelu przy użyciu znanego zestawu etykietami wypowiedzi i jednostek. W pliku wsadowym w formacie JSON Dodawanie wypowiedzi i ustawić etykiety jednostki, które należy przewidzieć wewnątrz wypowiedź. 
-
-<!--The recommended test strategy for LUIS uses three separate sets of data: example utterances provided to the model, batch test utterances, and endpoint utterances. --> Podczas korzystania z aplikacji innych niż ten samouczek, upewnij się, że jesteś *nie* przy użyciu wypowiedzi przykład już dodany do intencji. Aby sprawdzić swoje wypowiedzi testu partii względem wypowiedzi przykład [wyeksportować](luis-how-to-start-new-app.md#export-app) aplikacji. Porównaj aplikacji przykład wypowiedź firmy do wypowiedzi testu usługi batch. 
 
 Wymagania dotyczące testowania usługi batch:
 
@@ -53,13 +29,42 @@ Wymagania dotyczące testowania usługi batch:
 * Bez duplikatów. 
 * Dozwolone typy jednostek: tylko jednostki obrabiane przedstawiono proste hierarchicznych (tylko do nadrzędnego) i złożone. Testowanie usługi Batch przydaje się tylko do obrabiane do opanowania intencje i podmioty.
 
-## <a name="create-a-batch-file-with-utterances"></a>Utwórz plik wsadowy z wypowiedzi
+Podczas korzystania z aplikacji innych niż w tym samouczku, czy *nie* Użyj wypowiedzi przykład już dodany do intencji. 
 
-1. Tworzenie `HumanResources-jobs-batch.json` w edytorze tekstu, takie jak [VSCode](https://code.visualstudio.com/). 
+**W tym samouczku dowiesz się, jak:**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * Użyj istniejącego samouczek aplikacji
+> * Utwórz plik wsadowy testu 
+> * Uruchom test usługi batch
+> * Przejrzyj wyniki testu
+> * Usuń błędy 
+> * Przetestowanie usługi batch
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>Użyj istniejącej aplikacji
+
+Kontynuuj aplikację utworzoną w samouczku ostatni o nazwie **kadry**. 
+
+Jeśli nie masz aplikacji kadry z poprzedniego samouczka, należy użyć następujących czynności:
+
+1.  Pobierz i Zapisz [pliku JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-review-HumanResources.json).
+
+2. Importuj dane JSON do nowej aplikacji.
+
+3. Z **Zarządzaj** sekcji na **wersji** kartę, klonowanie wersji i nadaj mu nazwę `batchtest`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używany jako część trasy adresu URL, nazwa nie może zawierać żadnych znaków, które nie są prawidłowe w adresie URL. 
+
+4. Uczenie aplikacji.
+
+## <a name="batch-file"></a>Plik wsadowy
+
+1. Tworzenie `HumanResources-jobs-batch.json` w edytorze tekstu lub [Pobierz](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-jobs-batch.json) go. 
 
 2. W pliku wsadowym w formacie JSON, dodawanie wypowiedzi z **intencji** mają dostęp do przewidywanych w teście. 
 
-   [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorial-batch-testing/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
+   [!code-json[Add the intents to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-jobs-batch.json "Add the intents to the batch test file")]
 
 ## <a name="run-the-batch"></a>Uruchom partię
 
@@ -73,13 +78,13 @@ Wymagania dotyczące testowania usługi batch:
 
     [![Zrzut ekranu usługi LUIS aplikacji za pomocą zestawu danych importu wyróżniony](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png)](./media/luis-tutorial-batch-testing/hr-import-dataset-button.png#lightbox)
 
-4. Wybierz lokalizację systemu plików `HumanResources-jobs-batch.json` pliku.
+4. Wybierz lokalizację pliku `HumanResources-jobs-batch.json` pliku.
 
 5. Nazwij zestaw danych `intents only` i wybierz **gotowe**.
 
     ![Wybierz plik](./media/luis-tutorial-batch-testing/hr-import-new-dataset-ddl.png)
 
-6. Wybierz przycisk **Uruchom**. Zaczekaj, aż testu jest wykonywane.
+6. Wybierz przycisk **Uruchom**. 
 
 7. Wybierz **wyniki**.
 
@@ -109,7 +114,7 @@ Należy zauważyć, że zarówno intencji mają ten sam liczbę błędów. Niepo
 
 Wypowiedzi odpowiadającego górnej do punktu w **wynik fałszywie dodatni** sekcji są `Can I apply for any database jobs with this resume?` i `Can I apply for any database jobs with this resume?`. Dla pierwszego wypowiedź, wyraz `resume` tylko została użyta w **ApplyForJob**. Dla drugiego wypowiedź, wyraz `apply` tylko została użyta w **ApplyForJob** intencji.
 
-## <a name="fix-the-app-based-on-batch-results"></a>Usuń aplikację na podstawie wyników usługi batch
+## <a name="fix-the-app"></a>Usuń aplikację
 
 Celem tej sekcji jest wszystkie wypowiedzi poprawnie przewidzieć dla **GetJobInformation** Napraw aplikację. 
 
@@ -119,7 +124,7 @@ Również być może zastanawiasz się o usuwaniu wypowiedzi z **ApplyForJob** a
 
 Pierwsze rozwiązanie polega na dodawanie wypowiedzi więcej do **GetJobInformation**. Drugi poprawka jest zmniejszenie wagi wyrazy, takie jak `resume` i `apply` kierunku **ApplyForJob** intencji. 
 
-### <a name="add-more-utterances-to-getjobinformation"></a>Dodawanie wypowiedzi więcej do **GetJobInformation**
+### <a name="add-more-utterances"></a>Dodawanie wypowiedzi więcej
 
 1. Zamknij panel testu usługi batch, wybierając **Test** w górnym menu nawigacyjnym panelu. 
 
@@ -149,7 +154,7 @@ Pierwsze rozwiązanie polega na dodawanie wypowiedzi więcej do **GetJobInformat
 
 4. Uczenie aplikacji, wybierając **Train** w górnym kierunku prawego paska nawigacyjnego.
 
-## <a name="verify-the-fix-worked"></a>Sprawdzić zadziałała poprawki
+## <a name="verify-the-new-model"></a>Sprawdź nowy model
 
 Aby sprawdzić, czy oczekuje wypowiedzi w teście usługi batch, należy ponownie uruchomić test usługi batch.
 
@@ -171,12 +176,12 @@ Po pierwsze pisaniu i testowaniu plików wsadowych, zaleca się rozpoczynać kil
 
 Wartość **zadania** jednostki, podany w wypowiedzi testu jest zazwyczaj jednego lub dwóch słów o kilka przykładów jest więcej słów. Jeśli _własne_ aplikacji kadrowej zwykle zawiera nazwy zadania wiele słów, z etykietą wypowiedzi przykład **zadania** jednostki w tej aplikacji nie będzie działać poprawnie.
 
-1. Tworzenie `HumanResources-entities-batch.json` w edytorze tekstu, takie jak [VSCode](https://code.visualstudio.com/). Lub Pobierz [pliku](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorial-batch-testing/HumanResources-entities-batch.json) z repozytorium Github Samples usługi LUIS.
+1. Tworzenie `HumanResources-entities-batch.json` w edytorze tekstu, takie jak [VSCode](https://code.visualstudio.com/) lub [Pobierz](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/HumanResources-entities-batch.json) go.
 
 
 2. W pliku wsadowym w formacie JSON, Dodaj tablicę obiektów, które zawierają wypowiedzi z **intencji** mają dostęp do przewidywanych w test, a także lokalizacje wszystkie jednostki w wypowiedź. Ponieważ jednostka jest oparte na tokenie, upewnij się, uruchamianie i zatrzymywanie każdej jednostki na znak. Nie rozpoczyna się lub kończy wypowiedź w miejscu. Powoduje to błąd podczas importowania pliku wsadowego.  
 
-   [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorial-batch-testing/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
+   [!code-json[Add the intents and entities to the batch test file](~/samples-luis/documentation-samples/tutorials/HumanResources-entities-batch.json "Add the intents and entities to the batch test file")]
 
 
 ## <a name="run-the-batch-with-entities"></a>Uruchom partię z jednostkami
@@ -222,15 +227,13 @@ Te zadania są pozostawiane należy wykonać.
 
 Dodawanie [wzorzec](luis-concept-patterns.md) przed jednostki jest poprawnie przewidzieć, nie będzie można rozwiązać ten problem. Jest to spowodowane wzorzec nie będzie zgodne, dopóki nie zostaną wykryte wszystkich jednostek w wzorzec. 
 
-## <a name="what-has-this-tutorial-accomplished"></a>Co osiągnięto w ramach tego samouczka?
-
-Dokładność prognozowania aplikacji został zwiększony, znajdowanie błędów w partii i poprawianie modelu. 
-
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
+
+Samouczek umożliwia wyszukiwanie problemów z bieżącym modelem testu usługi batch. Model został rozwiązany i powtórnie testowane z pliku wsadowego, aby sprawdzić, czy zmiana była poprawna.
 
 > [!div class="nextstepaction"]
 > [Więcej informacji na temat wzorców](luis-tutorial-pattern.md)

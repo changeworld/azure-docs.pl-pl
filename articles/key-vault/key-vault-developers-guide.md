@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 09/05/2018
 ms.author: bryanla
-ms.openlocfilehash: b8b51ed8cbaaaaaa463dd1ed841e6d5193fec40a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 3dc80c97a43c35295deacefc37a76471912c9b42
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301919"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603995"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Przewodnik dewelopera usługi Azure Key Vault
 
@@ -129,7 +129,7 @@ Następujące artykuły i scenariusze zawierają ze wskazówek specyficznych dla
 - [Jak wdrożyć certyfikaty na maszynach wirtualnych z usługi Key Vault](https://blogs.technet.microsoft.com/kv/2015/07/14/deploy-certificates-to-vms-from-customer-managed-key-vault/) — uruchomiona na maszynie wirtualnej platformy Azure wymagań dotyczących certyfikatu aplikacji w chmurze. Jak można uzyskać ten certyfikat do tej maszyny Wirtualnej już dzisiaj?
 - [Jak skonfigurować usługi Key Vault przy użyciu typu end to end rotacji i inspekcji kluczy](key-vault-key-rotation-log-monitoring.md) — to zawiera szczegółowe instrukcje dotyczące konfigurowania rotacji kluczy i przeprowadzanie inspekcji za pomocą usługi Azure Key Vault.
 - [Wdrażanie certyfikatu aplikacji sieci Web platformy Azure za pośrednictwem usługi Key Vault]( https://blogs.msdn.microsoft.com/appserviceteam/2016/05/24/deploying-azure-web-app-certificate-through-key-vault/) zawiera instrukcje krok po kroku dotyczące wdrażania certyfikatów przechowywanych w usłudze Key Vault w ramach [certyfikatu usługi App Service](https://azure.microsoft.com/blog/internals-of-app-service-certificate/) oferty.
-- [Przyznaj uprawnienie do wielu aplikacji do dostępu do magazynu kluczy](key-vault-group-permissions-for-apps.md) zasady kontroli dostępu do usługi Key Vault obsługuje tylko 16 wpisów. Można jednak utworzyć grupę zabezpieczeń usługi Azure Active Directory. Dodaj wszystkie jednostki usługi skojarzonego do tej grupy zabezpieczeń, a następnie przyznać dostęp do tej grupy zabezpieczeń w usłudze Key Vault.
+- [Przyznaj uprawnienie do wielu aplikacji do dostępu do magazynu kluczy](key-vault-group-permissions-for-apps.md) zasady kontroli dostępu do usługi Key Vault obsługuje maksymalnie 1024 wpisów. Można jednak utworzyć grupę zabezpieczeń usługi Azure Active Directory. Dodaj wszystkie jednostki usługi skojarzonego do tej grupy zabezpieczeń, a następnie przyznać dostęp do tej grupy zabezpieczeń w usłudze Key Vault.
 - Aby uzyskać więcej wskazówek specyficznych dla zadań na integrowanie i używania magazynów kluczy na platformie Azure, zobacz [Ryan Jones przykłady szablonów usługi Azure Resource Manager dla usługi Key Vault](https://github.com/rjmax/ArmExamples/tree/master/keyvaultexamples).
 - [Jak używać usuwania nietrwałego w usłudze Key Vault z interfejsem wiersza polecenia](key-vault-soft-delete-cli.md) przejdziesz przez użycie i cykl życia magazynu kluczy i różnych obiektów magazynu kluczy przy użyciu opcji soft-delete włączone.
 - [Jak używać usuwania nietrwałego w usłudze Key Vault przy użyciu programu PowerShell](key-vault-soft-delete-powershell.md) przejdziesz przez użycie i cykl życia magazynu kluczy i różnych obiektów magazynu kluczy przy użyciu opcji soft-delete włączone.

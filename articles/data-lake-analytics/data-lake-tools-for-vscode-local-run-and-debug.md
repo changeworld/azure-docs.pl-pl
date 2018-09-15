@@ -9,15 +9,17 @@ ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
 ms.topic: conceptual
 ms.date: 07/14/2017
-ms.openlocfilehash: bf98562224c2da770541f731ba93ec2e5dc1718d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 42982e3fa0a854109a6b887640604498ac68847c
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041324"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632263"
 ---
 # <a name="run-u-sql-and-debug-locally-in-visual-studio-code"></a>Uruchomienie języka U-SQL i Debuguj lokalnie w programie Visual Studio Code
-W tym artykule opisano sposób uruchamiania zadań U-SQL na lokalnej maszynie do programowania w celu przyspieszenia wczesnych faz kodowania lub do debugowania kodu lokalnie w programie Visual Studio Code. Aby uzyskać instrukcje dotyczące usługi Azure Data Lake narzędzia dla programu Visual Studio Code, zobacz [użycia Azure Data Lake Tools for Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md). 
+W tym artykule opisano sposób uruchamiania zadań U-SQL na lokalnej maszynie do programowania w celu przyspieszenia wczesnych faz kodowania lub do debugowania kodu lokalnie w programie Visual Studio Code. Aby uzyskać instrukcje dotyczące usługi Azure Data Lake narzędzia dla programu Visual Studio Code, zobacz [użycia Azure Data Lake Tools for Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md).
+
+Tylko Windows urządzenia Azure Data Lake Tools for Visual Studio obsługuje akcji lokalne uruchomienie języka U-SQL i Debuguj lokalnie U-SQL. Instalacje w systemach macOS i systemami operacyjnymi opartymi na systemie Linux nie obsługują tej funkcji.
 
 ## <a name="set-up-the-u-sql-local-run-environment"></a>Skonfiguruj lokalne środowisko uruchomieniowe języka U-SQL
 

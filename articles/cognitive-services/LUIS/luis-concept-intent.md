@@ -1,20 +1,21 @@
 ---
-title: Zrozumieć intencje w aplikacji usługi LUIS na platformie Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano, jakie intencji znajdują się w aplikacji Language Understanding Intelligent Service (LUIS).
+title: Zrozumieć intencje w aplikacjach usługi LUIS
+titleSuffix: Azure Cognitive Services
+description: Intencji reprezentuje zadanie lub akcję użytkownik chce wykonać. Jest to cel lub celem wyrażone w wypowiedź użytkownika. Definiują zestaw intencji, które odnosi się do akcji, które użytkownicy chcą w aplikacji.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/04/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 456f28191161c9a2fac223bf2a31e62e54ae28ae
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: fcc14d2a7273a586386dc4da1f218d50d8aa9aef
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225792"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629716"
 ---
 # <a name="intents-in-luis"></a>Intencje w usługi LUIS
 
@@ -25,7 +26,7 @@ Definiują zestaw intencji, które odnosi się do akcji, które użytkownicy chc
 Przeznaczeniu podróży   |   Przykładowe wypowiedzi   | 
 ------|------|
  BookFlight     |   "Zarezerwuj mnie lot Rio w następnym tygodniu" <br/> "Podnoszenia mnie do Rio na 24th" <br/> "Potrzebuję bilet płaszczyzny niedzielę dalej do Rio de Janeiro"    |
- Pozdrowienie     |   "Hi" <br/>"Hello" <br/>"Good morning"  |
+ Pozdrowienia     |   "Hi" <br/>"Hello" <br/>"Good morning"  |
  CheckWeather | "Co to jest dane takie jak pogody w Bostonie?" <br/> "Pokaż prognozy dla tego weekend" |
  Brak         | "Dostać się ze mną przepisu plik cookie"<br>"Czy Lakers wygrać?" |
 

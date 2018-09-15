@@ -4,15 +4,15 @@ description: Zawiera omówienie urządzenia modułu zbierającego i sposobu ich 
 author: ruturaj
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/10/2018
+ms.date: 09/14/2018
 ms.author: ruturajd
 services: azure-migrate
-ms.openlocfilehash: dae6cc9a55049e2b44291eb105288b33a1db9e7b
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: 6822bd149d5542d577fa18db3c9f50007ae48d35
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44325536"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605066"
 ---
 # <a name="collector-appliance"></a>Urządzenie modułu zbierającego
 
@@ -30,12 +30,17 @@ Można utworzyć modułu zbierającego, wykonując kroki opisane w tym miejscu -
 
 Istnieją dwie metody, w których odnaleźć w lokalnym środowisku:
 
-a. **Jednorazowe:** modułu zbierającego dla tego modelu, który komunikuje się z programu vCenter Server, aby zebrać metadanych dotyczących maszyn wirtualnych. Do zbierania danych wydajności maszyn wirtualnych opiera się na dane historyczne wydajności, przechowywane w programie vCenter Server i umożliwia zbieranie informacji o historii wydajności ostatni miesiąc. W tym modelu usługi Azure Migrate zbiera dane licznika średni (a licznik szczytu), dla każdego metryki, [Dowiedz się więcej] (https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected) o licznikach wydajności, zebranych przez usługę Azure Migrate. Ponieważ jest jednorazowe, urządzenie w tym przypadku nie jest stale podłączony do projektu. Dzięki temu zmiany w środowisku lokalnym nie są odzwierciedlane w usłudze Azure Migrate, po ukończeniu odnajdywania. Jeśli chcesz, aby odzwierciedlić zmiany, trzeba odnajdywanie tym samym środowisku, w tym samym projekcie.
+a. **Jednorazowe:** modułu zbierającego dla tego modelu, który komunikuje się z programu vCenter Server, aby zebrać metadanych dotyczących maszyn wirtualnych. Do zbierania danych wydajności maszyn wirtualnych opiera się na dane historyczne wydajności, przechowywane w programie vCenter Server i umożliwia zbieranie informacji o historii wydajności ostatni miesiąc. W tym modelu usługi Azure Migrate zbiera dane licznika średni, (a licznik szczytowa) dla każdego metryki. Ponieważ jest jednorazowe, urządzenie w tym przypadku nie jest stale podłączony do projektu. Dzięki temu zmiany w środowisku lokalnym nie są odzwierciedlane w usłudze Azure Migrate, po ukończeniu odnajdywania. Jeśli chcesz, aby odzwierciedlić zmiany, trzeba odnajdywanie tym samym środowisku, w tym samym projekcie.
+
+> [!NOTE]
+> Ta metoda wymaga ustawienia statystyk w programie vCenter Server na poziom 3 i poczekaj na co najmniej jeden dzień przed rozpoczęciem odnajdywania, aby zbierać metryki wydajności wymagane.
 
 b. **Ciągłe odnajdywania:** urządzenia modułu zbierającego dla tego modelu stale jest podłączony do projektu Azure Migrate. Profiluje ciągle środowisku lokalnym na potrzeby zbierania danych użycia w czasie rzeczywistym na co 20 sekund. Urządzenie następnie ustala telefoniczny przykłady 20 sekund i tworzy pojedynczego punktu danych dla co 15 minut, wybierając wartość maksymalna, który jest wysyłany na platformie Azure. Ten model nie zależy od ustawienia statystyk programu vCenter Server na potrzeby zbierania danych o wydajności. Można zatrzymać ciągłe profilowania dowolnym przez urządzenie.
 
 > [!NOTE]
-> Funkcji ciągłego odnajdywania jest dostępna w wersji zapoznawczej.
+> Funkcji ciągłego odnajdywania jest dostępna w wersji zapoznawczej. Jeśli nie masz programu vCenter Server statystyk, które ustawienia są ustawione na poziom 3, firma Microsoft zaleca użycie tej metody.
+
+[Dowiedz się więcej] (https://docs.microsoft.com/azure/migrate/concepts-collector#what-data-is-collected) o licznikach wydajności, zebranych przez usługę Azure Migrate.
 
 ## <a name="collector-communication-diagram"></a>Diagram komunikacji modułu zbierającego
 

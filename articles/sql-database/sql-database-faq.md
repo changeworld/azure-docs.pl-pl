@@ -9,12 +9,12 @@ ms.custom: reference
 ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: carlrab
-ms.openlocfilehash: a7837ac6af82b5c67ea5779340aedc16cb78d156
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 218bd9031193d4987fdc1e0ae2bf302bdb028673
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286336"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604505"
 ---
 # <a name="sql-database-faq"></a>SQL Database — często zadawane pytania
 
@@ -71,7 +71,7 @@ Baza danych SQL, klienci będą mogli korzystać następujące prawa, które są
 Koszt obliczeń odpowiada moc obliczeniową całkowita, które jest obsługiwane dla aplikacji. W warstwie krytyczne dla działania firmy firma Microsoft automatycznie Przydziel co najmniej 3 replik Always ON. Aby uwzględnić ten dodatkowy przydział zasobów obliczeniowych, cena — rdzeń wirtualny jest około 2.7 x wyżej w krytyczne dla działania firmy. Z tego samego powodu wyższych cen magazynu za GB w warstwie krytyczne dla działania firmy odzwierciedla wysokiej We/Wy i małe opóźnienia magazyn SSD. W tym samym czasie koszt magazynu kopii zapasowych nie jest inny, ponieważ w obu przypadkach używamy klasę magazynu w warstwie standardowa.
 
 ## <a name="how-am-i-charged-for-storage---based-on-what-i-configure-upfront-or-on-what-the-database-uses"></a>Jak jest naliczana opłata magazynu — na podstawie co można skonfigurować z wyprzedzeniem lub baza danych używa?
-Różnych typów pamięci masowej są rozliczane w różny sposób. Do przechowywania danych opłaty są naliczane za aprowizowanego magazynu na podstawie maksymalny rozmiar bazy danych lub puli, którą wybierzesz. Koszt nie ulega zmianie, chyba że zmniejszyć lub zwiększyć maksymalną tego. Magazyn kopii zapasowych jest skojarzony z automatycznie tworzonymi kopiami zapasowymi Twojego wystąpienia. Wydłużenie okresu przechowywania kopii zapasowych zwiększa ilość przestrzeni w magazynie kopii zapasowych używanej przez wystąpienie. Magazyn kopii zapasowych jest bezpłatny do poziomu 100 procent łącznie zaprowizowanej pojemności magazynu serwera. Dodatkowe użycie magazynu kopii zapasowych jest rozliczane w GB na miesiąc. Jeśli na przykład magazyn bazy danych ma rozmiar 100 GB, otrzymasz bezpłatnie 100 GB magazynu kopii zapasowych. Ale jeśli kopia zapasowa ma rozmiar 110 GB, płacisz za dodatkowe 10 GB.
+Różnych typów pamięci masowej są rozliczane w różny sposób. Do przechowywania danych opłaty są naliczane za aprowizowanego magazynu na podstawie maksymalny rozmiar bazy danych lub puli, którą wybierzesz. Koszt nie ulega zmianie, chyba że zmniejszyć lub zwiększyć maksymalną tego. Magazyn kopii zapasowych jest skojarzony z automatycznie tworzonymi kopiami zapasowymi Twojego wystąpienia i jest przydzielany dynamicznie. Wydłużenie okresu przechowywania kopii zapasowych zwiększa ilość przestrzeni w magazynie kopii zapasowych używanej przez wystąpienie. Magazyn kopii zapasowych jest bezpłatny do poziomu 100 procent łącznie zaprowizowanej pojemności magazynu serwera. Dodatkowe użycie magazynu kopii zapasowych jest rozliczane w GB na miesiąc. Jeśli na przykład magazyn bazy danych ma rozmiar 100 GB, otrzymasz bezpłatnie 100 GB magazynu kopii zapasowych. Ale jeśli kopia zapasowa ma rozmiar 110 GB, płacisz za dodatkowe 10 GB. 
 
 W magazynie kopii zapasowej pojedynczej bazy danych opłaty są naliczane proporcjonalnie do magazynowania, która została przydzielona do kopii zapasowych bazy danych o wielkości bazy danych. W przypadku magazynu kopii zapasowych elastycznej puli jest naliczana proporcjonalnie do magazynowania, która została przydzielona do kopii zapasowych bazy danych wszystkich baz danych w puli minus danych maksymalny rozmiar puli elastycznej. Wszelkie wzrost rozmiaru bazy danych lub puli elastycznej lub zwiększenie szybkości transakcji, wymaga więcej pamięci masowej, a zatem zwiększa opłata za magazyn kopii zapasowych.  Wraz ze zwiększeniem rozmiaru maksymalnego danych to nowa kwota jest odejmowany od rozmiar magazynu kopii zapasowych rozliczane.
 

@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 06/28/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: d6d68842b5e519201f7990a9c361710115de7fea
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: ec149b0f100ae3e170f39911eafc399f24509dfa
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022954"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630396"
 ---
 # <a name="entities-in-luis"></a>Jednostki w usługi LUIS
 
@@ -46,10 +46,10 @@ Jeśli wybór programu word lub rozmieszczeniu word jest taka sama, ale nie ozna
 
 Następujące wypowiedzi, wyraz `fair` jest Homogram. Została wpisana takie same, ale ma inne znaczenie:
 
-```
-What kind of county fairs are happening in the Seattle area this summer?
-Is the current rating for the Seattle review fair?
-```
+|Wypowiedź|
+|--|
+|Jakiego rodzaju targach hrabstwa występują na terenie Seattle tego lata?|
+|Jest bieżąca ocena do przeglądu Seattle uczciwe?|
 
 Jeśli chce się jednostkę zdarzeń, aby znaleźć wszystkie dane zdarzeń, etykieta wyraz `fair` w pierwszym wypowiedź, ale nie w ciągu sekundy.
 

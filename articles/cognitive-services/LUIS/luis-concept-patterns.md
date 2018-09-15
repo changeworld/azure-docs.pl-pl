@@ -1,24 +1,24 @@
 ---
-title: Dowiedz się, jak wzorce zwiększyć dokładność prognozowania | Dokumentacja firmy Microsoft
-titleSuffix: Azure
-description: Dowiedz się, jak projektować wzorców w celu zwiększenia wyniki prognozowania intencji i znaleźć jednostki.
+title: Dowiedz się, jak wzorce zwiększenia dokładności prognozy
+titleSuffix: Azure Cognitive Services
+description: Wzorce są przeznaczone do zwiększenia dokładności, gdy kilka wypowiedzi są bardzo podobne. Wzorzec pozwala uzyskać większą precyzję dla intencji bez podawania wielu wypowiedzi więcej.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
-ms.technology: luis
+ms.component: language-understanding
 ms.topic: article
-ms.date: 06/08/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: c08419e3fb5b25284121a0eac30c38c8ba7570f1
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 0a61ec4407a23e8cc515c2343a92bd77460d424b
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225221"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631416"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Wzorce zwiększenia dokładności prognozy
-Wzorce są przeznaczone do zwiększenia dokładności, gdy kilka wypowiedzi są bardzo podobne. Udostępniając wzorzec wypowiedź, LUIS może mieć o dużej pewności prognozowania. 
+Wzorce są przeznaczone do zwiększenia dokładności, gdy kilka wypowiedzi są bardzo podobne.  Wzorzec pozwala uzyskać większą precyzję dla intencji bez podawania wielu wypowiedzi więcej. 
 
 ## <a name="patterns-solve-low-intent-confidence"></a>Wzorce rozwiązać niski ufności intencji
 Należy wziąć pod uwagę aplikacja zarządzania zasobami ludzkimi, zawierający raporty dotyczące schematu organizacyjnego w odniesieniu do pracownika. Podana nazwa pracownika i relacji, LUIS zwraca pracowników zaangażowane. Należy wziąć pod uwagę pracownika, Tom, za pomocą Menedżera nazwę Alicja i zespół o nazwie podwładnych: Michael Rebecca i Carl.
@@ -60,25 +60,25 @@ Jednostki we wzorcach są ujęte w nawiasach klamrowych `{}`. Wzorce mogą obejm
 ### <a name="syntax-to-add-an-entity-to-a-pattern-template"></a>Składni, aby dodać obiekt do szablonu wzorca
 Dodawanie jednostki do szablonu wzorca, należy ująć nazwę jednostki w nawiasach klamrowych, takich jak `Who does {Employee} manage?`. 
 
-```
-Who does {Employee} manage?
-```
+|Wzorzec z jednostką|
+|--|
+|`Who does {Employee} manage?`|
 
 ### <a name="syntax-to-add-an-entity-and-role-to-a-pattern-template"></a>Składnia służąca do dodawania jednostki i roli do szablonu wzorca
 Rola jednostki jest oznaczona jako `{entity:role}` nazwą jednostki, następuje dwukropek, a następnie nazwę roli. Aby dodać obiekt za pomocą roli do szablonu wzorca, należy ująć nazwę podmiotu i nazwy roli za pomocą nawiasów klamrowych, takich jak `Book a ticket from {Location:Origin} to {Location:Destination}`. 
 
-```
-Book a ticket from {Location:Origin} to {Location:Destination}
-```
+|Wzorzec z rolami jednostki|
+|--|
+|`Book a ticket from {Location:Origin} to {Location:Destination}`|
 
 ### <a name="syntax-to-add-a-patternany-to-pattern-template"></a>Składnia służąca do dodawania pattern.any do szablonu wzorca
 Jednostka Pattern.any umożliwia dodawanie jednostki o różnej długości do wzorca. Tak długo, jak następnie szablonu wzorca pattern.any może być dowolnej długości. 
 
 Aby dodać **Pattern.any** jednostki do szablonu wzorca Otocz jednostki Pattern.any za pomocą nawiasów klamrowych, takich jak `How much does {Booktitle} cost and what format is it available in?`.  
 
-```
-How much does {Booktitle} cost and what format is it available in?
-```
+|Wzorzec z jednostką Pattern.any|
+|--|
+|`How much does {Booktitle} cost and what format is it available in?`|
 
 |Tytułów książek we wzorcu|
 |--|
@@ -107,9 +107,9 @@ Aby rozwiązać ten wyjątek z wzorcem, dodać `the man from la mancha` jako dop
 ### <a name="syntax-to-mark-optional-text-in-a-template-utterance"></a>Składnia służąca do oznaczania opcjonalny tekst w polu wypowiedź szablonu
 Oznacz opcjonalny tekst w wypowiedź przy użyciu składni wyrażeń regularnych nawias kwadratowy, `[]`. Opcjonalny tekst można zagnieżdżać maksymalnie tylko dwa nawiasy kwadratowe nawiasy kwadratowe.
 
-```
-[find] email about {subject} [from {person}]
-```
+|Wzorzec z opcjonalnym tekstem|
+|--|
+|`[find] email about {subject} [from {person}]`|
 
 Znaków interpunkcyjnych, takie jak `.`, `!`, i `?` można zignorować przy użyciu nawiasami kwadratowymi. Aby ignorować te znaczniki, każdego znaku musi być w oddzielnym wzorca. Opcjonalnych składni nie obsługuje obecnie zignorowano element na liście kilka elementów.
 

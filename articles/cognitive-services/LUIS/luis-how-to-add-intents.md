@@ -1,25 +1,26 @@
 ---
-title: Dodawanie intencji w aplikacjach usługi LUIS | Dokumentacja firmy Microsoft
-description: Language Understanding (LUIS) umożliwiają dodawanie intencji ułatwiające aplikacje rozumieniu żądań użytkowników i ich poprawnie.
+title: Dodawanie intencji w aplikacjach usługi LUIS
+titleSuffix: Azure Cognitive Services
+description: Dodawanie intencji z aplikacją usługi LUIS do identyfikowania grup pytania lub polecenia, które mają ten sam intencji.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
 ms.service: cognitive-services
-ms.openlocfilehash: 0ebf15ea49467674ab3c56aa7983131593cf5c9a
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 687cbad9d1e493e07fc5f813fdd7c52dee3b97d4
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225890"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634629"
 ---
 # <a name="manage-intents"></a>Zarządzanie opcjami 
 Dodaj [intencji](luis-concept-intent.md) z aplikacją usługi LUIS do identyfikowania grup pytania lub polecenia, które mają ten sam intencji. 
 
-Dodaj i Zarządzaj Twoje intencje z **intencji** strony dostępnym **intencji** LUIS w panelu po lewej stronie. 
+Intencji odbywa się z **kompilacji** sekcji na górnym pasku narzędzi. Dodaj i Zarządzaj Twoje intencje z **intencji** strony, dostępne w panelu po lewej stronie. 
 
 W poniższej procedurze przedstawiono sposób dodawania celem "Bookflight" w aplikacji TravelAgent.
 
@@ -28,7 +29,6 @@ W poniższej procedurze przedstawiono sposób dodawania celem "Bookflight" w apl
 1. Otwórz aplikację (na przykład TravelAgent), klikając jego nazwę **Moje aplikacje** strony, a następnie kliknij przycisk **intencji** w panelu po lewej stronie. 
 2. Na **intencji** kliknij **Utwórz nowy opcję**.
 
-    ![Lista intencji](./media/luis-how-to-add-intents/IntentsList.png)
 3. W **Utwórz nowy opcję** okno dialogowe, typ zamiar nazwę "BookFlight" i kliknij przycisk **gotowe**.
 
     ![Dodawanie intencji](./media/luis-how-to-add-intents/Addintent-dialogbox.png)
@@ -105,7 +105,7 @@ Aby usunąć kilka wypowiedzi:
 2. Wybierz **gotowe** w **usuwania wypowiedzi?** wyskakującego okna dialogowego.
 
 ## <a name="search-in-utterances-on-intent-page"></a>Wyszukiwanie w wypowiedzi na stronie intencji
-Celem można wyszukiwać wypowiedzi, które zawierają tekst (słów i fraz). Na przykład można zauważyć błąd, który obejmuje określony wyraz i chcesz znaleźć wszystkie przykłady, które zawierają konkretnego wyrazu. 
+Możesz wyszukać wypowiedzi, które zawierają tekst (słów i fraz) na liście wypowiedź intencji. Na przykład można zauważyć błąd, który obejmuje określony wyraz i chcesz znaleźć wszystkie przykłady, które zawierają konkretnego wyrazu. 
 
 1. Na pasku narzędzi, wybierz ikonę lupy.
 

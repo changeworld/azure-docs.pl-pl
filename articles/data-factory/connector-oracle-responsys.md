@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z Responsys Oracle przy użyciu fabryki danych Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane z Oracle Responsys do zbiornika obsługiwane magazyny danych za pomocą działania kopiowania w potoku fabryki danych Azure.
+title: Kopiowanie danych z bazy danych Oracle Responsys przy użyciu usługi Azure Data Factory (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skopiować dane z Oracle Responsys do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -13,45 +13,45 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 1368a75fb8ae44949ef25def19589ab164e25d8b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: dab282ad8f5f55b12d83f3329823d76b8ba4000f
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37058981"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629306"
 ---
-# <a name="copy-data-from-oracle-responsys-using-azure-data-factory"></a>Kopiowanie danych z Responsys Oracle przy użyciu fabryki danych Azure
+# <a name="copy-data-from-oracle-responsys-using-azure-data-factory"></a>Kopiowanie danych z bazy danych Oracle Responsys przy użyciu usługi Azure Data Factory
 
-Ten artykuł przedstawia sposób użycia działanie kopiowania w fabryce danych Azure można skopiować danych z Oracle Responsys. Opiera się na [skopiuj omówienie działania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z bazy danych Oracle Responsys. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
 > [!IMPORTANT]
-> Ten łącznik jest obecnie w przeglądzie. Możesz wypróbować jej możliwości i przekaż nam swoją opinię. Jeśli w swoim rozwiązaniu chcesz wprowadzić zależność od łączników w wersji zapoznawczej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).
+> Ten łącznik jest obecnie w wersji zapoznawczej. Możesz wypróbować tę funkcję i przekaż nam swoją opinię. Jeśli w swoim rozwiązaniu chcesz wprowadzić zależność od łączników w wersji zapoznawczej, skontaktuj się z [pomocą techniczną platformy Azure](https://azure.microsoft.com/support/).
 
-## <a name="supported-capabilities"></a>Obsługiwane możliwości
+## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Możesz skopiować dane z programem Oracle Responsys żadnych obsługiwanych ujścia magazynu danych. Lista magazynów danych, które są obsługiwane jako źródła/wychwytywanie przez działanie kopiowania, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Można skopiować dane z bazy danych Oracle Responsys, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
-Fabryka danych Azure oferuje wbudowane sterowników, aby umożliwić łączność, w związku z tym nie trzeba ręcznie zainstalowania sterownika korzystania z tego łącznika.
+Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić łączność, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika, za pomocą tego łącznika.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
-Można utworzyć potoku o aktywności kopiowania przy użyciu zestawu .NET SDK, zestaw SDK Python, programu Azure PowerShell, interfejsu API REST lub szablonu usługi Azure Resource Manager. Zobacz [samouczek działania kopiowania](quickstart-create-data-factory-dot-net.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+Utworzysz potok za pomocą działania kopiowania przy użyciu zestawu .NET SDK, zestaw SDK języka Python, programu Azure PowerShell, interfejsu API REST lub szablonu usługi Azure Resource Manager. Zobacz [samouczka działania kopiowania](quickstart-create-data-factory-dot-net.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek fabryki danych określonej do łącznika Oracle Responsys.
+Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do łącznika Oracle Responsys.
 
-## <a name="linked-service-properties"></a>Połączona usługa właściwości
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
-Obsługiwane są następujące właściwości dla Oracle Responsys połączone usługi:
+Następujące właściwości są obsługiwane w przypadku Responsys Oracle połączone usługi:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi mieć ustawioną: **Responsys** | Yes |
+| type | Właściwość type musi być równa: **Responsys** | Yes |
 | endpoint | Punkt końcowy serwera Respopnsys  | Yes |
 | clientId | Identyfikator klienta skojarzony z aplikacją Responsys.  | Yes |
-| clientSecret | Klucz tajny klienta skojarzone z aplikacją Responsys. Istnieje możliwość Oznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w ADF lub przechowywania haseł w usłudze Azure Key Vault i pozwól ADF skopiuj ściągania działaniach stamtąd podczas wykonywania kopii danych — Dowiedz się więcej o [przechowywania poświadczeń w magazynie kluczy](store-credentials-in-key-vault.md). | Yes |
+| clientSecret | Klucz tajny klienta, powiązane z daną aplikacją Responsys. Istnieje możliwość Oznacz to pole jako SecureString bezpiecznie przechowywać w usłudze ADF lub przechowywać haseł w usłudze Azure Key Vault i pozwól usłudze ADF kopiowania ściągnięcia acitivty stamtąd, podczas wykonywania kopii danych — Dowiedz się więcej z [Store poświadczeń w usłudze Key Vault](store-credentials-in-key-vault.md). | Yes |
 | useEncryptedEndpoints | Określa, czy punkty końcowe źródła danych są szyfrowane przy użyciu protokołu HTTPS. Wartość domyślna to true.  | Nie |
-| useHostVerification | Określa, czy nazwa hosta w certyfikacie serwera, aby dopasować nazwę hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
-| usePeerVerification | Określa, czy można zweryfikować tożsamości serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
+| useHostVerification | Określa, czy wymagają zgodności nazwy hosta w certyfikacie serwera, aby dopasować nazwę hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
+| usePeerVerification | Określa, czy do zweryfikowania tożsamości serwera, podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to true.  | Nie |
 
 **Przykład:**
 
@@ -78,9 +78,9 @@ Obsługiwane są następujące właściwości dla Oracle Responsys połączone u
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę właściwości dostępnych do definiowania zestawów danych i sekcje, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę obsługiwanych przez zestaw danych Oracle Responsys właściwości.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Oracle Responsys.
 
-Aby skopiować dane z bazy danych Oracle Responsys, ustaw właściwość Typ zestawu danych do **ResponsysObject**. Nie ma dodatkowych właściwości określonego typu w tego typu dataset.
+Aby skopiować dane z bazy danych Oracle Responsys, należy ustawić właściwość typu zestawu danych na **ResponsysObject**. Nie ma dodatkowych właściwości specyficzne dla danego typu w tego typu zestawu danych.
 
 **Przykład**
 
@@ -100,16 +100,16 @@ Aby skopiować dane z bazy danych Oracle Responsys, ustaw właściwość Typ zes
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Pełną listę sekcje i właściwości dostępnych dla definiowania działań, zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwane przez źródło Oracle Responsys.
+Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło Oracle Responsys.
 
 ### <a name="oracle-responsys-as-source"></a>Oracle Responsys jako źródło
 
-Aby skopiować dane z bazy danych Oracle Responsys, należy ustawić typ źródła w przypadku działania kopiowania do **ResponsysSource**. Następujące właściwości są obsługiwane w przypadku działania kopiowania **źródła** sekcji:
+Aby skopiować dane z bazy danych Oracle Responsys, należy ustawić typ źródła w działaniu kopiowania, aby **ResponsysSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi mieć ustawioną właściwość type źródła działania kopiowania: **ResponsysSource** | Yes |
-| query | Użyj niestandardowych zapytania SQL można odczytać danych. Na przykład: `"SELECT * FROM MyTable"`. | Yes |
+| type | Musi być równa wartości właściwości type źródło działania kopiowania: **ResponsysSource** | Yes |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Yes |
 
 **Przykład:**
 
@@ -144,4 +144,4 @@ Aby skopiować dane z bazy danych Oracle Responsys, należy ustawić typ źród�
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Lista magazynów danych obsługiwane jako źródła i wychwytywanie przez działanie kopiowania w fabryce danych Azure, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

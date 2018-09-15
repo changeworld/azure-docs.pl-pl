@@ -10,12 +10,12 @@ ms.custom: security
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: vanto
-ms.openlocfilehash: d8f8a823f19ff233d05d09c126cf2524a0aa532e
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 5149b4cbd1e86bfca3ad7d628d129a08aff60a98
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542197"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604313"
 ---
 # <a name="always-encrypted-protect-sensitive-data-in-sql-database-and-store-your-encryption-keys-in-azure-key-vault"></a>Zawsze szyfrowane: Chronić poufne dane w bazie danych SQL i przechowywania kluczy szyfrowania w usłudze Azure Key Vault
 
@@ -595,7 +595,9 @@ Aby zobaczyć, że zaszyfrowanych kolumn nie zawierają żadnych danych w postac
 
    ![Nową aplikację konsoli](./media/sql-database-always-encrypted-azure-key-vault/ssms-encrypted.png)
 
-Aby uzyskać dostęp do danych w postaci zwykłego tekstu za pomocą programu SSMS, możesz dodać *ustawienie szyfrowania kolumny = włączone* parametrów połączenia.
+Aby uzyskać dostęp do danych w postaci zwykłego tekstu za pomocą programu SSMS, najpierw należy upewnić się, że użytkownik ma odpowiednie uprawnienia w usłudze Azure Key Vault: *uzyskać*, *unwrapKey*, i *Sprawdź*. Aby uzyskać szczegółowe informacje, zobacz [tworzenie i klucz główny kolumny Store (Always Encrypted)](https://docs.microsoft.com/en-us/sql/relational-databases/security/encryption/create-and-store-column-master-keys-always-encrypted?view=sql-server-2017).
+
+Następnie dodaj *ustawienie szyfrowania kolumny = włączone* parametru podczas połączenia.
 
 1. W programie SSMS kliknij prawym przyciskiem myszy serwer w **Eksplorator obiektów** i wybierz polecenie **rozłączenia**.
 2. Kliknij przycisk **Connect** > **aparatu bazy danych** otworzyć **Połącz z serwerem** oknie i kliknij przycisk **opcje**.

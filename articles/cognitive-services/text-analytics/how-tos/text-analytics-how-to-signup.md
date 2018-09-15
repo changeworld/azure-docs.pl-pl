@@ -1,22 +1,23 @@
 ---
-title: Tworzenie konta interfejsu API analizy tekstu (Microsoft Cognitive Services na platformie Azure) | Microsoft Docs
+title: Załóż konto interfejsu API analizy tekstu
+titleSuffix: Azure Cognitive Services
 description: Instrukcje dotyczące tworzenia konta na potrzeby analizy tekstu i działania w ramach limitów.
 services: cognitive-services
 author: HeidiSteen
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
-ms.topic: get-started-article
-ms.date: 3/07/2018
+ms.topic: conceptual
+ms.date: 09/12/2018
 ms.author: heidist
-ms.openlocfilehash: dfa5ba138a2e0db75dfc097ca2430fe9c82e826f
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
-ms.translationtype: HT
+ms.openlocfilehash: a369d6028cc2957113de01dab0371ad5305a0c68
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39623253"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605537"
 ---
-# <a name="how-to-sign-up-for-text-analytics-api"></a>Jak utworzyć konto interfejsu API analizy tekstu
+# <a name="how-to-sign-up-for-the-text-analytics-api"></a>Jak zarejestrować się do interfejsu API analizy tekstu
 
 Zasoby analizy tekstu są dostępne w chmurze 24 godziny na dobę przez 7 dni w tygodniu. Aby można było przekazać zawartość na potrzeby analizy, musisz utworzyć konto w celu uzyskania klucza dostępu. Każde wywołanie interfejsu API wymaga klucza dostępu dla żądania.
 
@@ -51,12 +52,12 @@ Aby uzyskać więcej informacji, odwiedź [stronę cennika](https://azure.micros
 ### <a name="what-constitutes-a-transaction-in-the-text-analytics-api"></a>Jak definiuje się transakcję w przypadku interfejsu API analizy tekstu?
 Każda adnotacja do dokumentu jest uznawana za transakcję. Wywołania wsadowego oceniania będą uwzględniane na podstawie liczby dokumentów, które mają zostać ocenione w ramach transakcji. Na przykład wysłanie 1000 dokumentów do analizy tonacji w jednym wywołaniu interfejsu API zostanie uznane za 1000 transakcji.
 
-## <a name="see-also"></a>Zobacz też 
+## <a name="see-also"></a>Zobacz także 
 
  [Przegląd analizy tekstu](../overview.md)  
  [Często zadawane pytania](../text-analytics-resource-faq.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
 > [Uzyskiwanie klucza dostępu](text-analytics-how-to-access-key.md)

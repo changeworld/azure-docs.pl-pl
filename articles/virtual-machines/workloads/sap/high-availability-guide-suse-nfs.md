@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 6ad943d2ae98093f7e5b94df59757ff603083cfe
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 99b7b83ca2d7f6f19df137e6ecf5deaf411e9a5e
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43668959"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634748"
 ---
 # <a name="high-availability-for-nfs-on-azure-vms-on-suse-linux-enterprise-server"></a>Wysoka dostępność systemu NFS na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server
 
@@ -119,7 +119,7 @@ Można użyć jednego z szablonów szybkiego startu w usłudze GitHub do wdraża
    4. Nazwa użytkownika administratora i hasła administratora  
       Tworzony jest nowy użytkownik, który może służyć do logowania się do komputera.
    5. Identyfikator podsieci  
-      Identyfikator podsieci, do którego powinny być połączone maszyny wirtualne. Pozostaw puste, jeśli chcesz utworzyć nową sieć wirtualną lub wybierz podsieć sieci VPN lub usługi Express Route wirtualnej połączenia z maszyną wirtualną z siecią lokalną. Identyfikator zwykle wygląda /subscriptions/**&lt;identyfikator subskrypcji&gt;**/resourceGroups/**&lt;nazwy grupy zasobów&gt;**/providers/ Microsoft.Network/virtualNetworks/**&lt;nazwa sieci wirtualnej&gt;**/subnets/**&lt;Nazwa podsieci&gt;**
+      Jeśli chcesz wdrożyć maszynę Wirtualną w istniejącej sieci wirtualnej, w którym masz zdefiniowanej podsieci maszyny Wirtualnej powinien być przypisany do nazwy identyfikator odpowiednią podsieć. Identyfikator zwykle wygląda /subscriptions/**&lt;identyfikator subskrypcji&gt;**/resourceGroups/**&lt;nazwy grupy zasobów&gt;**/providers/ Microsoft.Network/virtualNetworks/**&lt;nazwa sieci wirtualnej&gt;**/subnets/**&lt;Nazwa podsieci&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Ręczne wdrażanie systemu Linux za pomocą witryny Azure portal
 

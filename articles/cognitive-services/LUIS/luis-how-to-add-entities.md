@@ -1,6 +1,6 @@
 ---
-title: Dodawanie jednostek w aplikacjach usługi LUIS | Dokumentacja firmy Microsoft
-titleSuffix: Azure
+title: Dodawanie jednostek w aplikacjach usługi LUIS
+titleSuffix: Azure Cognitive Services
 description: Dodaj jednostki (kluczowe dane w domenie aplikacji) w aplikacjach Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -8,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: e97f9a5391799849983bd98db5400e0a842627b7
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 3fe76afca2eb8b14641589e4e29fc20b5d3de7fa
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224130"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632289"
 ---
 # <a name="manage-entities"></a>Zarządzanie jednostkami
 Po zidentyfikowaniu aplikacji [intencji](luis-concept-intent.md), musisz [etykiety wypowiedzi przykład](luis-concept-utterance.md) z [jednostek](luis-concept-entity-types.md). Jednostki są ważnych elementów pytanie lub polecenia i mogą być istotne dla aplikacji klienckiej do wykonywania swoich zadań. 
@@ -31,9 +31,7 @@ Wstępnie utworzone jednostki są zdefiniowane w [aparatów rozpoznawania tekstu
  
 2. Na **jednostek** wybierz opcję **Zarządzanie ze wstępnie utworzonych jednostek**.
 
-    ![Zrzut ekranu przedstawiający dodawanie wstępnie utworzone jednostki, na stronie jednostki](./media/add-entities/manage-prebuilt-entities-button.png)
-
-3. W **Dodawanie lub usuwanie wstępnie utworzonych jednostek** okno dialogowe, wybierz opcję **numer** i **datetimeV2** ze wstępnie utworzonych jednostek. Następnie wybierz pozycję **gotowe**.
+3. W **Dodawanie lub usuwanie wstępnie utworzonych jednostek** okno dialogowe, wybierz opcję **numer** i **datetimeV2** ze wstępnie utworzonych jednostek. Następnie wybierz pozycję **Done** (Gotowe).
 
     ![Zrzut ekranu Dodaj okno dialogowe wstępnie utworzone jednostki](./media/add-entities/list-of-prebuilt-entities.png)
 
@@ -43,8 +41,6 @@ Wstępnie utworzone jednostki są zdefiniowane w [aparatów rozpoznawania tekstu
 Proste jednostka jest ogólny jednostki, która opisuje pojęcia pojedynczego. 
 
 1. W swojej aplikacji z **kompilacji** sekcji, a następnie kliknij przycisk **jednostek** w panelu po lewej stronie, a następnie wybierz **Utwórz nową jednostkę**.
-
-    ![Zrzut ekranu jednostki strony Tworzenie nowej jednostki wyróżnionym](./media/add-entities/create-new-entity-button.png)
 
 2. W podręcznym oknie dialogowym, wpisz `Airline` w **nazwa jednostki** wybierz opcję **proste** z **typu jednostki** listy, a następnie wybierz **gotowe**.
 
@@ -57,7 +53,7 @@ Jednostka wyrażenia regularnego umożliwia wyodrębnienie danych z wypowiedź, 
 
 1. W swojej aplikacji, wybierz **jednostek** z nawigacji po lewej stronie, a następnie wybierz **Utwórz nową jednostkę**.
 
-2. W oknie podręcznym okno dialogowe, typ `AirFrance Flight` w **nazwa jednostki** wybierz opcję **wyrażenia regularnego** z **typu jednostki** listy, wprowadź wyrażenie regularne `AFR[0-9]{3,4}`, a następnie wybierz pozycję **gotowe**. 
+2. W podręcznym oknie dialogowym, wprowadź `AirFrance Flight` w **nazwa jednostki** wybierz opcję **wyrażenia regularnego** z **typu jednostki** listy, wprowadź wyrażenie regularne `AFR[0-9]{3,4}`, a następnie wybierz pozycję **gotowe**. 
 
     To wyrażenie regularne lotu AirFrance oczekuje, że trzy znaki dosłownie `AFR`, następnie 3 lub 4 cyfr. Liczba cyfr, może być dowolną liczbę z zakresu od 0 do 9. Wyrażenie regularne dopasowuje numery lotów AirFrance: "AFR101", "ARF1302" i "AFR5006". Zobacz [wyodrębnianie danych](luis-concept-data-extraction.md) dowiedzieć się więcej o wyodrębniania jednostki z punktu końcowego odpowiedź JSON na zapytanie.
 

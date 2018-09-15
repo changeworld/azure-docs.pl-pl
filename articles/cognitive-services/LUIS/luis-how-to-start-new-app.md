@@ -1,5 +1,5 @@
 ---
-title: Tworzenie nowej aplikacji z użyciem usługi LUIS | Dokumentacja firmy Microsoft
+title: Tworzenie nowej aplikacji z użyciem usługi LUIS
 description: Utwórz aplikacje i zarządzaj nimi na stronie sieci Web Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
@@ -7,84 +7,98 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 04/17/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 3adeecd4a4e2040a92689b7c92be9630c9a0d93b
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: efea082ac6f2f0ac2aef491a4f5f3f0c7e1652cc
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39225418"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634924"
 ---
 # <a name="create-an-app"></a>Tworzenie aplikacji
-Możesz utworzyć nową aplikację na różne sposoby: 
+Istnieje kilka sposobów, aby utworzyć aplikację usługi LUIS. Można utworzyć aplikację usługi LUIS w [LUIS](https://www.luis.ai) portalu lub za pomocą usługi LUIS tworzenia [interfejsów API](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f).
+
+## <a name="using-the-luis-portal"></a>Za pomocą portalu usługi LUIS
+Można utworzyć nową aplikację w portalu usługi LUIS na kilka sposobów:
 
 * [Rozpocznij](#create-new-app) z pustą aplikację i utworzyć intencji, wypowiedzi i jednostek.
 * [Rozpocznij](#create-new-app) z pustą aplikacją i Dodaj [ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md).
 * [Importowanie aplikacji usługi LUIS](#import-new-app) z pliku JSON, który zawiera już intencji, wypowiedzi i jednostek.
 
-## <a name="what-is-an-app"></a>Co to jest aplikacja
-Ta aplikacja zawiera [wersji](luis-how-to-manage-versions.md) modelu, a także dowolnego [współpracowników](luis-how-to-collaborate.md) dla aplikacji. Podczas tworzenia aplikacji wybierz kulturę ([języka](luis-supported-languages.md)) który **nie można później zmienić**. 
+## <a name="using-the-authoring-apis"></a>Za pomocą tworzenia interfejsów API
+Można utworzyć nową aplikację za pomocą tworzenia interfejsów API na kilka sposobów:
 
-Domyślna wersja nowej aplikacji jest "0.1". 
+* [Rozpocznij](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/5890b47c39e2bb052c5b9c2f) z pustą aplikację i utworzyć intencji, wypowiedzi i jednostek.
+* [Rozpocznij](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/59104e515aca2f0b48c76be5) przy użyciu wbudowanych domeny.  
 
-Można tworzyć i zarządzanie aplikacjami na **Moje aplikacje** strony. Są zawsze dostępne na tej stronie, wybierając **Moje aplikacje** na górnym pasku nawigacyjnym z [LUIS](luis-reference-regions.md) witryny sieci Web. 
 
-[![](media/luis-create-new-app/apps-list.png "Zrzut ekranu przedstawiający listę aplikacji")](media/luis-create-new-app/apps-list.png#lightbox)
+<a name="export-app"></a>
+<a name="import-new-app"></a>
+<a name="delete-app"></a>
+ 
 
-## <a name="create-new-app"></a>Tworzenie nowej aplikacji
+## <a name="create-new-app-in-luis"></a>Utwórz nową aplikację w usługi LUIS
 
 1. Na **Moje aplikacje** wybierz opcję **Utwórz nową aplikację**.
+
+    ![Lista aplikacji LUIS](./media/luis-create-new-app/apps-list.png)
+
+
 2. W oknie dialogowym Nazwa aplikacji "TravelAgent".
 
     ![Utwórz nowe okno dialogowe aplikacji](./media/luis-create-new-app/create-app.png)
 
 3. Wybierz Twojej kulturze aplikacji (TravelAgent aplikacji, wybierz język angielski), a następnie wybierz pozycję **gotowe**. 
 
-    >[!NOTE]
-    >Nie można zmienić kulturę, gdy aplikacja zostanie utworzona. 
+    > [!NOTE]
+    > Kultury nie można zmienić po utworzeniu aplikacji. 
 
-## <a name="import-new-app"></a>Importuj nowej aplikacji
-Nazwa (50 char max), wersja (10 char max) i opis aplikacji można ustawić w pliku JSON. Przykładowe pliki JSON aplikacji są dostępne pod adresem [przykłady LUIS](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/Examples-BookFlight).
+    
 
-1. Na **Moje aplikacje** wybierz opcję **importowania Nowa aplikacja**.
-2. W **importowania Nowa aplikacja** okno dialogowe, wybierz plik JSON definiujący aplikacji usługi LUIS.
+<!--
 
-    ![Importuj nowe okno dialogowe aplikacji](./media/luis-create-new-app/import-app.png)
+## Import new app
+You can set the name (50 char max), version (10 char max), and description of an app in the JSON file. Examples of application JSON files are available at [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/tree/master/documentation-samples/Examples-BookFlight).
 
-## <a name="export-app"></a>Eksportowanie aplikacji
-1. Na **Moje aplikacje** stronie, wybierz przycisk wielokropka (***...*** ) na końcu wiersza aplikacji.
+1. On **My Apps** page, select **Import new app**.
+2. In the **Import new app** dialog, select the JSON file defining the LUIS app.
 
-    [![](media/luis-create-new-app/apps-list.png "Zrzut ekranu przedstawiający wyskakujące okno dialogowe akcji dla aplikacji")](media/luis-create-new-app/three-dots.png#lightbox)
+    ![Import a new app dialog](./media/luis-create-new-app/import-app.png)
 
-2. Wybierz **eksportowania aplikacji** z menu. 
+## Export app
+1. On **My Apps** page, select the ellipsis (***...***) at the end of the app row.
 
-## <a name="rename-app"></a>Zmień nazwę aplikacji
+    [![](media/luis-create-new-app/apps-list.png "Screenshot of pop-up dialog of per-app actions")](media/luis-create-new-app/three-dots.png#lightbox)
 
-1. Na **Moje aplikacje** stronie, wybierz przycisk wielokropka (***...*** ) na końcu wiersza aplikacji. 
-2. Wybierz **Zmień nazwę** z menu.
-3. Wprowadź nową nazwę aplikacji, a następnie wybierz pozycję **gotowe**.
+2. Select **Export app** from the menu. 
 
-## <a name="delete-app"></a>Usuwanie aplikacji
+## Rename app
+
+1. On **My Apps** page, select the ellipsis (***...***) at the end of the app row. 
+2. Select **Rename** from the menu.
+3. Enter the new name of the app and select **Done**.
+
+## Delete app
 
 > [!CAUTION]
-> Usuwasz aplikację dla wszystkich współpracowników i właściciela. [Eksportuj](#export-app) aplikacji przed jej usunięciem. 
+> You are deleting the app for all collaborators and the owner. [Export](#export-app) the app before deleting it. 
 
-1. Na **Moje aplikacje** stronie, wybierz przycisk wielokropka (***...*** ) na końcu wiersza aplikacji. 
-2. Wybierz **Usuń** z menu.
-3. Wybierz **Ok** w oknie potwierdzenia.
+1. On **My Apps** page, select the ellipsis (***...***) at the end of the app row. 
+2. Select **Delete** from the menu.
+3. Select **Ok** in the confirmation window.
 
-## <a name="export-endpoint-logs"></a>Eksportuj dzienniki punktu końcowego
-Dzienniki zawierają zapytanie, czasem UTC i odpowiedź JSON usługi LUIS.
+## Export endpoint logs
+The logs contain the Query, UTC time, and LUIS JSON response.
 
-1. Na **Moje aplikacje** stronie, wybierz przycisk wielokropka (***...*** ) na końcu wiersza aplikacji. 
-2. Wybierz **Eksportuj dzienniki punktu końcowego** z menu.
+1. On **My Apps** page, select the ellipsis (***...***) at the end of the app row. 
+2. Select **Export endpoint logs** from the menu.
 
 ```
 Query,UTC DateTime,Response
 text i'm driving and will be 30 minutes late to the meeting,02/13/2018 15:18:43,"{""query"":""text I'm driving and will be 30 minutes late to the meeting"",""intents"":[{""intent"":""None"",""score"":0.111048922},{""intent"":""SendMessage"",""score"":0.987501}],""entities"":[{""entity"":""i ' m driving and will be 30 minutes late to the meeting"",""type"":""Message"",""startIndex"":5,""endIndex"":58,""score"":0.162995353}]}"
 ```
-
+-->
 ## <a name="next-steps"></a>Kolejne kroki
 
 Pierwsze zadanie w aplikacji jest [Dodawanie intencji](luis-how-to-add-intents.md).

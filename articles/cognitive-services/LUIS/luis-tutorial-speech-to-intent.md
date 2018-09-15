@@ -1,26 +1,24 @@
 ---
-title: Używaj mowy zestawu SDK języka C# z użyciem usługi LUIS — Azure | Dokumentacja firmy Microsoft
-titleSuffix: Azure
-description: Użyj przykładu zestawu SDK języka C# mowy głosu do mikrofonu i uzyskiwać prognozy intencje i podmioty LUIS zwracane.
+title: Używaj mowy zestawu SDK języka C# z użyciem usługi LUIS
+titleSuffix: Azure Cognitive Services
+description: Usługa mowy umożliwia pojedynczego żądania do odbierania audio i zwracać prognoz usługi LUIS obiekty JSON. W tym artykule pobranie i używanie projektu C# w programie Visual Studio do odczytania wypowiedź do mikrofonu i otrzymywanie informacji prognoz usługi LUIS. Projekt używa pakietu NuGet usługi rozpoznawania mowy, już dołączone jako odwołanie.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: aadca428fa076d697cc0f893673672850ddc27d4
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 8eff6ff3d0263708158f2fea82380e88ba4638ad
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124400"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633631"
 ---
 # <a name="integrate-speech-service"></a>Integracja usługi mowy
-[Usługa rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umożliwia użycie pojedynczego żądania do odbierania audio i zwracać prognoz usługi LUIS obiekty JSON.
-
-W tym artykule pobranie i używanie projektu C# w programie Visual Studio do odczytania wypowiedź do mikrofonu i otrzymywanie informacji prognoz usługi LUIS. Projekt używa mowy [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) pakietu już dołączone jako odwołanie. 
+[Usługa rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/Speech-Service/) umożliwia użycie pojedynczego żądania do odbierania audio i zwracać prognoz usługi LUIS obiekty JSON. W tym artykule pobranie i używanie projektu C# w programie Visual Studio do odczytania wypowiedź do mikrofonu i otrzymywanie informacji prognoz usługi LUIS. Projekt używa mowy [NuGet](https://www.nuget.org/packages/Microsoft.CognitiveServices.Speech/) pakietu już dołączone jako odwołanie. 
 
 W tym artykule potrzebne bezpłatne [LUIS] [ LUIS] konta witryny sieci Web, aby zaimportować aplikację.
 
@@ -32,12 +30,13 @@ Opcje, a wypowiedzi w tym artykule pochodzą z aplikacji usługi LUIS zarządzan
 
 Ta aplikacja ma intencji, jednostek i wypowiedzi związane z domeny zarządzania zasobami ludzkimi. Przykład wypowiedzi obejmują:
 
-```
-Who is John Smith's manager?
-Who does John Smith manage?
-Where is Form 123456?
-Do I have any paid time off?
-```
+|Przykładowe wypowiedzi|
+|--|
+|Kto jest Menedżer Jan Kowalski?|
+|Kto będzie zarządzała Jan Kowalski?|
+|Gdzie jest 123456 formularza?|
+|Czy mają ilekroć płatne?|
+
 
 ## <a name="add-keyphrase-prebuilt-entity"></a>Dodaj KeyPhrase wstępnie utworzone jednostki
 Po zaimportowaniu aplikacji, wybierz **jednostek**, następnie **Zarządzanie ze wstępnie utworzonych jednostek**. Dodaj **KeyPhrase** jednostki. Jednostka KeyPhrase wyodrębnia klucza posiadaczem z wypowiedź.
@@ -45,19 +44,18 @@ Po zaimportowaniu aplikacji, wybierz **jednostek**, następnie **Zarządzanie ze
 ## <a name="train-and-publish-the-app"></a>Uczenie i publikowanie aplikacji
 1. Na pasku nawigacyjnym z góry, prawej wybierz **szkolenie** przycisk to w opracowywaniu aplikacji usługi LUIS.
 
-2. Wybierz **Publikuj** można przejść do strony publikowania. 
+2. Wybierz **Zarządzaj** w prawym górnym rogu paska, a następnie zaznacz **kluczy i punktów końcowych** w nawigacji po lewej stronie. 
 
-3. W dolnej części **Publikuj** strony, należy dodać klucz usługi LUIS utworzone w [klucza punktu końcowego tworzenia usługi LUIS](#create-luis-endpoint-key) sekcji.
+3. Na **kluczy i punktów końcowych** strony, należy przypisać klucza usługi LUIS utworzonego w [klucza punktu końcowego tworzenia usługi LUIS](#create-luis-endpoint-key) sekcji.
 
-4. Publikowanie aplikacji usługi LUIS, wybierając **Publikuj** przycisk z prawej strony gniazda publikowania. 
-
-  Na **Publikuj** strony, zbieraj Identyfikatora aplikacji, publikowanie regionu i subskrypcji Identyfikatora klucza usługi LUIS, utworzone w [klucza punktu końcowego tworzenia usługi LUIS](#create-luis-endpoint-key) sekcji. Należy zmodyfikować kod, aby użyć tych wartości w dalszej części tego artykułu. 
-
-  Te wartości są uwzględnione w adresu URL punktu końcowego w dolnej części **Publikuj** strony o klucz, który został utworzony. 
+  Na tej stronie zbierania Identyfikatora aplikacji, publikowanie regionu i subskrypcji Identyfikatora klucza usługi LUIS utworzone w [klucza punktu końcowego tworzenia usługi LUIS](#create-luis-endpoint-key) sekcji. Należy zmodyfikować kod, aby użyć tych wartości w dalszej części tego artykułu. 
   
   Czy **nie** użyć klucza bezpłatne początkowy na potrzeby tego ćwiczenia. Tylko **Language Understanding** klucza utworzonego w witrynie Azure portal będzie działać na potrzeby tego ćwiczenia. 
 
   https://**REGION**.api.cognitive.microsoft.com/luis/v2.0/apps/**APPID**? klucz subskrypcji =**LUISKEY**& q =
+
+
+4. Publikowanie aplikacji usługi LUIS, wybierając **Publikuj** przycisk w prawym górnym rogu paska. 
 
 ## <a name="audio-device"></a>Urządzenia audio
 W tym artykule używa urządzenia audio na tym komputerze. Który może być zestaw słuchawkowy, mogą przy użyciu mikrofonu lub wbudowane urządzenia audio. Sprawdź audio poziom danych wejściowych, aby zobaczyć, jeśli należy powiesz głośniej niż zwykle zapewnienie mowy wykrywane przez urządzenie audio. 

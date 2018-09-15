@@ -1,5 +1,6 @@
 ---
-title: Zarządzaj subskrypcjami punkt końcowy platformy Azure | Dokumentacja firmy Microsoft
+title: Punkt końcowy zarządzania subskrypcjami w usługi LUIS
+titleSuffix: Azure Cognitive Services
 description: W tym artykule tworzenia klucza punktu końcowego naliczane dla swojego konta usługi LUIS zapewnić nieograniczony ruch do punktu końcowego zgodnie z planem płatności.
 services: cognitive-services
 author: diberry
@@ -7,14 +8,14 @@ manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/21/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 0b735499ae589e44c2ce5076fce38ec47ddd69c7
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: dcee5ce7ce103db734cf4b63c26944945efed0ea
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39223283"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630906"
 ---
 # <a name="manage-azure-endpoint-subscription-keys"></a>Zarządzanie kluczami subskrypcji punkt końcowy platformy Azure
 
@@ -26,7 +27,7 @@ Testowanie i prototypu tylko przy użyciu warstwy bezpłatna (F0). W przypadku s
 <a name="create-luis-service"></a>
 ## <a name="create-luis-endpoint-key"></a>Tworzenie klucza punktu końcowego usługi LUIS
 
-1. Zaloguj się do  **[platformy Microsoft Azure](https://ms.portal.azure.com/)** 
+1. Zaloguj się do  **[platformy Microsoft Azure](https://ms.portal.azure.com/)**. 
 2. Kliknij zielony **+** Zaloguj się w prawym górnym panelu po lewej stronie i poszukaj pozycji "LUIS" w witrynie marketplace, a następnie kliknij pozycję **Language Understanding** i postępuj zgodnie z **tworzenia środowiska**  utworzyć konto subskrypcji usługi LUIS. 
 
     ![Azure Search](./media/luis-azure-subscription/azure-search.png) 
@@ -40,8 +41,7 @@ Testowanie i prototypu tylko przy użyciu warstwy bezpłatna (F0). W przypadku s
     ![Klucze Azure](./media/luis-azure-subscription/azure-keys.png)
 
     > [!Note] 
-    > * Zaloguj się do Twojego regionu [LUIS](luis-reference-regions.md) witryny sieci Web i [Dodaj nowy klucz punktu końcowego usługi LUIS](luis-how-to-manage-keys.md#assign-endpoint-key). 
-    > * Trzeba pamiętać nazwy usługi platformy Azure został utworzony, aby go zaznaczyć w regionie [LUIS](luis-reference-regions.md) strona publikowania.  
+    > Zaloguj się w Twoim regionie [LUIS](luis-reference-regions.md) witryny sieci Web i [przypisać nowe usługi LUIS klucza punktu końcowego](luis-how-to-manage-keys.md#assign-endpoint-key). Potrzebna jest nazwa subskrypcji usługi LUIS z kroku 3.
 
 ## <a name="change-luis-pricing-tier"></a>Zmiana usługi LUIS — warstwa cenowa
 

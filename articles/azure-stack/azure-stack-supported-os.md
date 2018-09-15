@@ -3,7 +3,7 @@ title: Obsługiwane systemy operacyjne gościa dla usługi Azure Stack | Dokumen
 description: Te systemy operacyjne gościa może służyć w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: Brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
-ms.author: Brenduns
+ms.author: sethm
 ms.reviewer: JeffGoldner
-ms.openlocfilehash: d6e9531edf8915e4b6c2636372b756002fca10fd
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 65e9b4371eab4e4e4978e91184ab9712b9ecc9eb
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382403"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629379"
 ---
 # <a name="guest-operating-systems-supported-on-azure-stack"></a>Systemy operacyjne gościa obsługiwane w usłudze Azure Stack
 
@@ -55,20 +55,20 @@ Dystrybucje systemu Linux wyświetlane jako dostępne w portalu Marketplace zawi
 >
 > [Pakiet cloud-init](https://cloud-init.io/) nie jest obsługiwana w usłudze Azure Stack w tej chwili.
 
-| Dystrybucja | Opis | Publisher | Portal Marketplace |
+| Dystrybucja | Opis | Wydawca | Portal Marketplace |
 | --- | --- | --- | --- | --- | --- |
-| 6,9 opartych na systemie centOS | 64-bitowa | Rogue Wave | Tak |
-| Opartych na systemie centOS 7.4 | 64-bitowa | Rogue Wave | Tak |
-| ClearLinux | 64-bitowa | ClearLinux.org | Tak |
+| 6,9 opartych na systemie centOS | 64-bitowa | Rogue Wave | Yes |
+| Opartych na systemie centOS 7.4 | 64-bitowa | Rogue Wave | Yes |
+| ClearLinux | 64-bitowa | ClearLinux.org | Yes |
 | Kontener systemu Linux |  64-bitowa | CoreOS | Stable |
-| Debian 8 "Jessie" | 64-bitowa | credativ |  Tak |
-| Debian 9 "Stretch." | 64-bitowa | credativ | Tak |
+| Debian 8 "Jessie" | 64-bitowa | credativ |  Yes |
+| Debian 9 "Stretch." | 64-bitowa | credativ | Yes |
 | Red Hat Enterprise Linux 7.x | 64-bitowa | Red Hat |Możliwość skorzystania z własnego obrazu |
-| SLES 11SP4 | 64-bitowa | SUSE | Tak |
-| SLES 12SP3 | 64-bitowa | SUSE | Tak |
-| Ubuntu 14.04-LTS | 64-bitowa | Canonical | Tak |
-| Ubuntu 16.04-LTS | 64-bitowa | Canonical | Tak |
-| Ubuntu 18.04-LTS | 64-bitowa | Canonical | Tak |
+| SLES 11SP4 | 64-bitowa | SUSE | Yes |
+| SLES 12SP3 | 64-bitowa | SUSE | Yes |
+| Ubuntu 14.04-LTS | 64-bitowa | Canonical | Yes |
+| Ubuntu 16.04-LTS | 64-bitowa | Canonical | Yes |
+| Ubuntu 18.04-LTS | 64-bitowa | Canonical | Yes |
 
 Inne dystrybucje systemu Linux mogą być obsługiwane w przyszłości.
 

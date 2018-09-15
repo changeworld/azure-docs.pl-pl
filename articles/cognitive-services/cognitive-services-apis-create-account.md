@@ -1,9 +1,10 @@
 ---
-title: Utwórz konto interfejsy API usług Cognitive Services w witrynie Azure portal | Dokumentacja firmy Microsoft
-description: Jak utworzyć konta interfejsów API firmy Microsoft Cognitive Services w witrynie Azure portal.
+title: 'Szybki Start: Tworzenie konta usług Cognitive Services w witrynie Azure portal'
+titleSuffix: Microsoft Docs
+description: Dowiedz się, jak utworzyć konto umożliwiające dostęp do usług Azure Cognitive Services.
 services: cognitive-services
 documentationcenter: ''
-author: garyericson
+author: aahill
 manager: cgronlun
 editor: ''
 ms.assetid: b6176bb2-3bb6-4ebf-84d1-3598ee6e01c6
@@ -11,68 +12,62 @@ ms.service: cognitive-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/01/2018
-ms.author: garye
+ms.date: 09/06/2018
+ms.author: aahi
 ms.reviewer: gibattag
-ms.openlocfilehash: ed5f19b23375ecb83e19274c7405e9a1208a7985
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.openlocfilehash: 232e0aa64eef4f6829813efff6e0abffd0a78518
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39036159"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605134"
 ---
-# <a name="create-a-cognitive-services-apis-account-in-the-azure-portal"></a>Utwórz konto interfejsy API usług Cognitive Services w witrynie Azure portal
+# <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>Szybki Start: Tworzenie konta usług Cognitive Services w witrynie Azure portal
 
-Aby korzystać z interfejsu API usług Cognitive firmy Microsoft, należy najpierw utworzyć konto w witrynie Azure portal.
+Użyj tego przewodnika Szybki Start, aby rozpocząć korzystanie z usług Azure Cognitive Services. Te usługi są reprezentowane przez platformę Azure [zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal), które pozwalają połączyć się z co najmniej jedną z wielu Cognitive Services interfejsami API dostępnymi.
 
-1. Zaloguj się w [Portalu Azure](http://portal.azure.com).
+## <a name="prerequisites"></a>Wymagania wstępne
 
-2. Kliknij przycisk **+ Utwórz zasób**.
+* Ważnej subskrypcji platformy Azure. Możesz [Tworzenie konta usługi](https://azure.microsoft.com/free/) za darmo.
 
-3. W obszarze Azure Marketplace wybierz **SI i Cognitive Services** i wykrywa listę dostępnych interfejsów API. Kliknij pozycję **holograficznych** Aby wyświetlić całą listę interfejsy API usług Cognitive Services. Polecenie interfejsu API w wybranym w taki sposób, aby kontynuować.
+## <a name="create-and-subscribe-to-an-azure-cognitive-services-resource"></a>Tworzyć i subskrybować zasobów usług Azure Cognitive Services
 
-    ![Wybierz interfejsy API usług Cognitive Services](media/cognitive-services-apis-create-account/select-cognitive-services-apis.png)
+1. Zaloguj się do [witryny Azure portal](http://portal.azure.com)i kliknij przycisk **+ Utwórz zasób**.
+    
+    ![Wybierz interfejsy API usług Cognitive Services](media/cognitive-services-apis-create-account/azurePortalScreen.png)
 
-4. Na **Utwórz** Podaj następujące informacje:
+2. W obszarze Azure Marketplace wybierz **SI i uczenie maszynowe**. Jeśli nie widzisz usługi interesuje Cię, kliknij polecenie **holograficznych** Aby wyświetlić cały katalog interfejsów API usług Cognitive Services.
 
-   - **Nazwa konta:** nazwy konta. Firma Microsoft zaleca używanie nazwę opisową, na przykład *AFaceAPIAccount*.
+    ![Wybierz interfejsy API usług Cognitive Services](media/cognitive-services-apis-create-account/azureMarketplace.png)
 
-   - **Subskrypcja:** wybierz jedną z dostępnych subskrypcji platformy Azure, do których użytkownik ma co najmniej uprawnienia współautora.
+3. Na **Utwórz** Podaj następujące informacje:
 
-   - **Typ interfejsu API:** wybierz Cognitive Services API, którego chcesz użyć. Aby uzyskać więcej informacji na temat różnych Cognitive Services interfejsami API dostępnymi odwiedź [usług Cognitive Services](https://azure.microsoft.com/services/cognitive-services/) lokacji.
+    |    |    |
+    |--|--|
+    | **Nazwa** | Opisowa nazwa zasobu usług cognitive services. Firma Microsoft zaleca używanie nazwę opisową, na przykład *MyNameFaceAPIAccount*. |
+    | **Subskrypcja** | Wybierz jedną z dostępnych subskrypcji platformy Azure. |
+    | **Lokalizacja** | Lokalizacja wystąpienia usługi cognitive Services. Różne lokalizacje może wprowadzić opóźnienie, ale nie mają wpływu na dostępność Twojego zasobu w czasie wykonywania. |
+    | **Warstwa cenowa** | Koszt konta usług Cognitive Services zależy od wybranych opcji i użycie. Aby uzyskać więcej informacji, zobacz omówienie interfejsu API [cennik](https://azure.microsoft.com/pricing/details/cognitive-services/).
+    | **Grupa zasobów** | [Grupy zasobów platformy Azure](https://docs.microsoft.com/azure/architecture/cloud-adoption/getting-started/azure-resource-access#what-is-an-azure-resource-group) który będzie zawierał zasobu usług Cognitive Services. Można utworzyć nową grupę lub Dodaj go do istniejących grup. |
 
-   - **Warstwa cenowa:** koszt konta usług Cognitive Services jest zależny od rzeczywistego użycia i opcji, możesz wybrać. Aby uzyskać więcej informacji na temat cen dla każdego interfejsu API, zobacz [stronach z cennikami](https://azure.microsoft.com/pricing/details/cognitive-services/).
+    ![Ekran tworzenia zasobów](media/cognitive-services-apis-create-account/resource_create_screen.png)
 
-   - **Grupa zasobów:** grupa zasobów to kolekcja zasobów, które mają ten sam cykl życia, uprawnienia i zasady. Aby dowiedzieć się więcej na temat grup zasobów, zobacz [zarządzanie zasobami platformy Azure za pośrednictwem portalu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
+## <a name="access-your-resource"></a>Dostęp do zasobu 
 
-   - **Lokalizacja grupy zasobów:** jest to wymagane tylko wtedy, gdy interfejs API wybrane globalne (nie powiązane z lokalizacją). Jeśli interfejs API jest globalna i niepowiązana do lokalizacji, jednak należy określić lokalizację dla grupy zasobów, gdzie znajduje się metadane skojarzone z kontem interfejsu API usług Cognitive Services. Ta lokalizacja nie ma wpływu na dostępność konta w czasie wykonywania. Aby dowiedzieć się więcej na temat grup zasobów, zobacz [zarządzanie zasobami platformy Azure za pośrednictwem portalu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-portal).
+Po utworzeniu zasobu możesz do niego dostęp na pulpicie nawigacyjnym platformy Azure, jeśli został przypięty. W przeciwnym razie można znaleźć w **grup zasobów**.
 
-   - **Jawnego potwierdzenia postanowieniami dotyczącymi świadczenia usług Online:** aby można było utworzyć konto subskrypcji właściciele lub współautorzy (zgodnie z definicją [kontroli dostępu](https://docs.microsoft.com/azure/role-based-access-control/overview)) musi jawnie potwierdzić warunki, dotyczy usług Cognitive Services w [postanowieniami dotyczącymi świadczenia usług Online](https://www.microsoft.com/en-us/Licensing/product-licensing/products.aspx). 
+W ramach zasobu usług Cognitive Services, można użyć adresu URL punktu końcowego i klucze w **Przegląd** sekcji, aby rozpocząć tworzenie interfejsu API wywołuje w swoich aplikacjach.
 
-     Właściciel subskrypcji można wyłączyć tworzenie konta usług Cognitive Services dla konkretnej grupy zasobów lub subskrypcji za pośrednictwem [zasady usługi Azure](../azure-policy/azure-policy-introduction.md) postępując zgodnie z artykułem [przy użyciu Azure portal, aby przypisać i zarządzanie nimi zasady zasobów](../azure-policy/assign-policy-definition.md) i przypisywanie definicji zasad "nie dozwolone typy zasobów" i określając **Microsoft.CognitiveServices/accounts** jako typ zasobu docelowego.
+![Ekran zasobów](media/cognitive-services-apis-create-account/resourceScreen.png)
 
-     Jeśli tworzenie kont zostało wyłączone, w czasie tworzenia konta będzie wyświetlony następujący błąd:
+## <a name="next-steps"></a>Następne kroki
 
-     ![Błąd tworzenia konta](media/cognitive-services-apis-create-account/error-message.png)
+> [!div class="nextstepaction"]
+> [Samouczek przetwarzania interfejsu API języka C# na komputer](https://docs.microsoft.com/azure/cognitive-services/computer-vision/tutorials/csharptutorial)
 
-5. Aby przypiąć konta na pulpicie nawigacyjnym witryny Azure portal, kliknij przycisk **Przypnij do pulpitu nawigacyjnego**.
+## <a name="see-also"></a>Zobacz także
 
-6. Kliknij przycisk **Utwórz**, aby utworzyć konto.
-
-Po pomyślnym wdrożeniu konta usług Cognitive Services kliknij Kafelek na pulpicie nawigacyjnym, aby wyświetlić informacje o koncie.
-
-Możesz użyć **adresu URL punktu końcowego** w **Przegląd** sekcji i kluczy w **klucze** sekcji, aby rozpocząć tworzenie interfejsu API wywołuje w swoich aplikacjach.
-
-![Wyświetlanie informacji o koncie](media/cognitive-services-apis-create-account/display-account.png)
-
-![Wyświetl klucze konta](media/cognitive-services-apis-create-account/account-keys.png)
-
-### <a name="next-steps"></a>Następne kroki
-
-Aby uzyskać więcej informacji na temat wszystkich Microsoft Cognitive Services dostępny zobacz [usług Cognitive Services](https://azure.microsoft.com/services/cognitive-services/).
-
-Aby uzyskać przy użyciu interfejsów API usług Cognitive Services przykładowe przewodniki Szybki Start:
-
- - [Przewodniki Szybki Start komputera przetwarzania języka C#](computer-vision/quickstarts/csharp.md)
- - [Analiza tekstu przy użyciu języka Python](text-analytics/quickstarts/python.md)
- - [Interfejs API za pomocą języka JavaScript rozpoznawania twarzy](face/quickstarts/javascript.md)
+* [Szybki Start: Wyodrębnianie tekstu odręcznego z obrazów](https://docs.microsoft.com/azure/cognitive-services/computer-vision/quickstarts/csharp-hand-text)
+* [Samouczek: Tworzenie aplikacji do wykrywania i ramki twarzy na obrazie](https://docs.microsoft.com/azure/cognitive-services/Face/Tutorials/FaceAPIinCSharpTutorial)
+* [Tworzenie strony sieci Web wyszukiwania niestandardowego](https://docs.microsoft.com/azure/cognitive-services/bing-custom-search/tutorials/custom-search-web-page)
+* [Integrowanie Language Understanding (LUIS) z botem przy użyciu platformy Bot Framework](https://docs.microsoft.com/azure/cognitive-services/luis/luis-nodejs-tutorial-build-bot-framework-sample)

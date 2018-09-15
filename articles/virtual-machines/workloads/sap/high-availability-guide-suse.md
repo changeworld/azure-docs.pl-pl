@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 238f411ca1a1bb1aa3c89a515edd2091162512a2
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 02a12cc9fc614a642a5dad37e21bd8343c669aad
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379763"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631144"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-suse-linux-enterprise-server-for-sap-applications"></a>Wysoka dostępność środowiska SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server dla aplikacji SAP
 
@@ -73,7 +73,7 @@ Najpierw przeczytaj następujące uwagi SAP i dokumenty
 * Uwaga SAP [1999351] zawiera dodatkowe informacje dotyczące rozwiązywania problemów rozszerzenia platformy Azure Enhanced Monitoring dla rozwiązania SAP.
 * [WIKI społeczności SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) ma wszystkie wymagane informacje o SAP dla systemu Linux.
 * [Azure maszyny wirtualne, planowania i implementacji dla rozwiązania SAP w systemie Linux][planning-guide]
-* [Wdrażania maszyn wirtualnych platformy Azure dla rozwiązania SAP w systemie Linux (w tym artykule)][deployment-guide]
+* [Wdrażania maszyn wirtualnych platformy Azure dla rozwiązania SAP w systemie Linux][deployment-guide]
 * [Wdrażania systemu DBMS na maszynach wirtualnych platformy Azure dla rozwiązania SAP w systemie Linux][dbms-guide]
 * [SUSE SAP HA przewodniki z najlepszymi rozwiązaniami] [ suse-ha-guide] przewodniki zawierają wszystkie wymagane informacje, aby skonfigurować Netweaver wysokiej dostępności i replikacji systemu SAP HANA w środowisku lokalnym. Użyj tych przewodników jako głównej linii bazowej. Zapewniają one znacznie bardziej szczegółowe informacje.
 
@@ -149,7 +149,7 @@ Można użyć jednego z szablonów szybkiego startu w usłudze GitHub do wdraża
    9. Nazwa użytkownika administratora i hasła administratora  
       Tworzony jest nowy użytkownik, który może służyć do logowania się do komputera.
    10. Identyfikator podsieci  
-   Identyfikator podsieci, do którego powinny być połączone maszyny wirtualne.  Pozostaw puste, jeśli chcesz utworzyć nową sieć wirtualną lub wybierz tej samej podsieci, która użycia lub utworzenia jako część wdrożenia serwera systemu plików NFS. Identyfikator zwykle wygląda /subscriptions/**&lt;identyfikator subskrypcji&gt;**/resourceGroups/**&lt;nazwy grupy zasobów&gt;**/providers/ Microsoft.Network/virtualNetworks/**&lt;nazwa sieci wirtualnej&gt;**/subnets/**&lt;Nazwa podsieci&gt;**
+   Jeśli chcesz wdrożyć maszynę Wirtualną w istniejącej sieci wirtualnej, w którym masz zdefiniowanej podsieci maszyny Wirtualnej powinien być przypisany do nazwy identyfikator odpowiednią podsieć. Identyfikator zwykle wygląda /subscriptions/**&lt;identyfikator subskrypcji&gt;**/resourceGroups/**&lt;nazwy grupy zasobów&gt;**/providers/ Microsoft.Network/virtualNetworks/**&lt;nazwa sieci wirtualnej&gt;**/subnets/**&lt;Nazwa podsieci&gt;**
 
 ### <a name="deploy-linux-manually-via-azure-portal"></a>Ręczne wdrażanie systemu Linux za pomocą witryny Azure portal
 

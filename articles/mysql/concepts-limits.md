@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: 1fd5905b8ea3f87fe6cfc2a830b73b8120a717dd
-ms.sourcegitcommit: 4597964eba08b7e0584d2b275cc33a370c25e027
+ms.openlocfilehash: c18faa94f207b98400fece366a23a68c3d7bc58c
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37341481"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633184"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Ograniczenia dotyczące usługi Azure Database for MySQL
 Poniżej opisano pojemności, obsługa aparatu magazynu, uprawnień obsługę, dane manipulowania instrukcji oraz ograniczenia funkcjonalności w usłudze bazy danych. Zobacz też [ogólne ograniczenia](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) mające zastosowanie do aparatu bazy danych MySQL.
@@ -72,7 +72,7 @@ Po przekroczeniu limitu połączeń może zostać wyświetlony następujący bł
 - Zmniejsza rozmiar magazynu serwera nie jest obsługiwane.
 
 ### <a name="server-version-upgrades"></a>Uaktualnienia wersji serwera
-- Automatycznej migracji między wersjami aparatu głównej bazy danych nie jest obecnie obsługiwane.
+- Automatycznej migracji między wersjami aparatu głównej bazy danych nie jest obecnie obsługiwane. Jeśli chcesz uaktualnić do następnej wersji głównej, [zrzucanie i przywracanie](./concepts-migrate-dump-restore.md) go do serwera, który został utworzony przy użyciu nowej wersji aparatu.
 
 ### <a name="point-in-time-restore"></a>Przywracanie do punktu w czasie
 - Podczas korzystania z funkcji Odzyskiwanie, nowy serwer jest tworzony przy użyciu tej samej konfiguracji, co serwer, który opiera się na.

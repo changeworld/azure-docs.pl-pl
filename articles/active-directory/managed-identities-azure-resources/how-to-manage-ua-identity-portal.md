@@ -1,6 +1,6 @@
 ---
 title: Jak zarządzać przypisanych przez użytkownika tożsamości zarządzanej przy użyciu witryny Azure portal
-description: Krok po kroku instrukcje dotyczące sposobu tworzenia, wyświetlania i usuwania, użytkownik przypisany zarządzanych tożsamości.
+description: Krok po kroku instrukcje dotyczące sposobu tworzenia, wyświetlania list, Usuń i przypisać rolę do zarządzanych tożsamości przypisanych przez użytkownika.
 services: active-directory
 documentationcenter: ''
 author: daveba
@@ -14,20 +14,20 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 6729bee9bfebd8e80ae3b791dc2a8a480ac8b525
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 180d4092a2570b719e77d98319ab9b329f2e48c5
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158726"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45637429"
 ---
-# <a name="create-list-or-delete-a-user-assigned-managed-identity-using-the-azure-portal"></a>Utwórz listę lub usunąć przypisanych przez użytkownika tożsamości zarządzanej przy użyciu witryny Azure portal
+# <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Utwórz listę, usuń lub przypisać rolę do przypisanych przez użytkownika tożsamości zarządzanej przy użyciu witryny Azure portal
 
 [!INCLUDE [preview-notice](~/includes/active-directory-msi-preview-notice-ua.md)]
 
 Zarządzanych tożsamości dla zasobów platformy Azure udostępnia usługi platformy Azure za pomocą tożsamości zarządzanej w usłudze Azure Active Directory. Można użyć tej tożsamości do uwierzytelniania do usług, które obsługują uwierzytelnianie usługi Azure AD bez konieczności używania poświadczeń w kodzie. 
 
-W tym artykule dowiesz się, jak tworzyć, listy i usuwać przypisane przez użytkownika tożsamości zarządzanej przy użyciu witryny Azure Portal.
+W tym artykule dowiesz się, jak tworzyć, listy, usuń lub przypisywanie roli do użytkownika przypisane zarządzanych tożsamości przy użyciu witryny Azure Portal.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -37,7 +37,7 @@ W tym artykule dowiesz się, jak tworzyć, listy i usuwać przypisane przez uży
     - [Współautor tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) roli, aby utworzyć, odczytać (lista), aktualizowanie i usuwanie tożsamości zarządzanej przypisanych przez użytkownika.
     - [Operator tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-operator) roli można odczytać właściwości tożsamości zarządzanej przypisanych przez użytkownika (lista).
 
-## <a name="create-a-user-assigned-managed-identity"></a>Tworzenie zarządzanych tożsamości przypisanych przez użytkownika
+## <a name="create-a-user-assigned-managed-identity"></a>Tworzenie tożsamości zarządzanej przypisanej przez użytkownika
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta skojarzonego z subskrypcją platformy Azure można utworzyć zarządzanej tożsamości przypisanych przez użytkownika.
 2. W polu wyszukiwania wpisz *tożsamości zarządzanych*, a następnie w obszarze **usług**, kliknij przycisk **tożsamości zarządzanych**.
@@ -48,7 +48,7 @@ W tym artykule dowiesz się, jak tworzyć, listy i usuwać przypisane przez uży
    - **Lokalizacja**: Wybierz lokalizację, aby wdrożyć przypisanych przez użytkownika tożsamości zarządzanej, na przykład **zachodnie stany USA**.
 4. Kliknij pozycję **Utwórz**.
 
-![Tworzenie zarządzanych tożsamości przypisanych przez użytkownika](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
+![Tworzenie tożsamości zarządzanej przypisanej przez użytkownika](./media/how-to-manage-ua-identity-portal/create-user-assigned-managed-identity-portal.png)
 
 ## <a name="list-user-assigned-managed-identities"></a>Lista zarządzanych tożsamości przypisanych przez użytkownika
 
@@ -65,3 +65,19 @@ W tym artykule dowiesz się, jak tworzyć, listy i usuwać przypisane przez uży
 3. W obszarze okno dialogowe z potwierdzeniem wybierz **tak**.
 
 ![Usuń przypisanych przez użytkownika z tożsamości zarządzanej](./media/how-to-manage-ua-identity-portal/delete-user-assigned-managed-identity-portal.png)
+
+## <a name="assign-a-role-to-a-user-assigned-managed-identity"></a>Przypisywanie roli do zarządzanych tożsamości przypisanych przez użytkownika 
+
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com) przy użyciu konta skojarzonego z subskrypcją platformy Azure, aby wyświetlić listę zarządzanych tożsamości przypisanych przez użytkownika.
+2. W polu wyszukiwania wpisz *tożsamości zarządzanych*, a w obszarze usługi, kliknij przycisk **tożsamości zarządzanych**.
+3. Zwracana jest lista tożsamości przypisanych przez użytkownika zarządzanego dla Twojej subskrypcji.  Wybierz tożsamość zarządzanego przypisanego przez użytkownika, którą chcesz przypisać rolę.
+4. Wybierz **kontrola dostępu (IAM)** , a następnie wybierz **Dodaj**.
+
+   ![Start przypisanych przez użytkownika z tożsamości zarządzanej](./media/how-to-manage-ua-identity-portal/assign-role-screenshot1.png)
+
+5. W bloku Dodawanie uprawnień, skonfiguruj następujące wartości, a następnie kliknij przycisk **Zapisz**:
+   - **Rola** -rolę do przypisania
+   - **Przypisz dostęp do** — zasobów, aby przypisać użytkownik przypisany tożsamości zarządzanej
+   - **Wybierz** — element członkowski, aby przypisać dostęp
+   
+   ![Użytkownik przypisany tożsamość zarządzaną zarządzania tożsamościami i Dostępem](./media/how-to-manage-ua-identity-portal/assign-role-screenshot2.png)  

@@ -15,18 +15,19 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: f027754f26a9063aa5faa548fd01576624811005
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 1b9a8e4a8706dea43e33331cd196fbe2ad877a3a
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190210"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605559"
 ---
 # <a name="working-with-json-and-data-structures-in-log-analytics-queries"></a>Praca z formatami JSON i danych struktury zapytań usługi Log Analytics
 
 > [!NOTE]
 > Należy wykonać [Rozpoczynanie pracy z usługą portalu analiza](get-started-analytics-portal.md) i [wprowadzenie do zapytań](get-started-queries.md) przed wykonaniem tej lekcji.
 
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 Obiekty zagnieżdżone są obiektami, które zawierają inne obiekty w tablicy lub mapę pary klucz wartość. Te obiekty są reprezentowane jako ciągi formatu JSON. W tym artykule opisano, jak JSON służy do pobierania danych i analizowanie obiektów zagnieżdżonych.
 
@@ -39,7 +40,7 @@ Użyj `extractjson` umożliwiają dostęp do określonego elementu JSON w znanej
 
 Użyj nawiasów, indeksy i kropki do oddzielania elementów:
 
-```OQL
+```KQL
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
 print hosts_report
 | extend status = extractjson("$.hosts[0].status", hosts_report)
@@ -47,7 +48,7 @@ print hosts_report
 
 Jest to ten sam wynik, za pomocą tylko notacji nawiasy:
 
-```OQL
+```KQL
 let hosts_report='{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}';
 print hosts_report 
 | extend status = extractjson("$['hosts'][0]['status']", hosts_report)
@@ -55,7 +56,7 @@ print hosts_report
 
 Jeśli istnieje tylko jeden element, można użyć tylko kropkowego:
 
-```OQL
+```KQL
 let hosts_report='{"location":"North_DC", "status":"running", "rate":5}';
 print hosts_report 
 | extend status = hosts_report.status
@@ -67,7 +68,7 @@ print hosts_report
 ### <a name="parsejson"></a>parsejson
 Do dostępu do wielu elementów w strukturze json, łatwiej jest uzyskać dostęp jako obiekt dynamiczny. Użyj `parsejson` można rzutować danych tekstowych, aby obiekt dynamiczny. Po konwersji typu dynamicznego, dodatkowe funkcje może służyć do analizowania danych.
 
-```OQL
+```KQL
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
 print hosts_object 
 | extend status0=hosts_object.hosts[0].status, rate1=hosts_object.hosts[1].rate
@@ -78,7 +79,7 @@ print hosts_object
 ### <a name="arraylength"></a>arraylength
 Użyj `arraylength` do liczby elementów w tablicy:
 
-```OQL
+```KQL
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
 print hosts_object 
 | extend hosts_num=arraylength(hosts_object.hosts)
@@ -87,7 +88,7 @@ print hosts_object
 ### <a name="mvexpand"></a>mvexpand
 Użyj `mvexpand` można przerwać właściwości obiektu w oddzielnych wierszach.
 
-```OQL
+```KQL
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
 print hosts_object 
 | mvexpand hosts_object.hosts[0]
@@ -98,7 +99,7 @@ print hosts_object
 ### <a name="buildschema"></a>buildschema
 Użyj `buildschema` można pobrać schematu, który dopuszcza wszystkie wartości obiektu:
 
-```OQL
+```KQL
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"location":"South_DC", "status":"stopped", "rate":3}]}');
 print hosts_object 
 | summarize buildschema(hosts_object)
@@ -122,7 +123,7 @@ Te dane wyjściowe w tym artykule opisano nazwy pola obiektów i ich zgodnych ty
 
 Zagnieżdżone obiekty mogą mieć różne schematy w następującym przykładzie:
 
-```OQL
+```KQL
 let hosts_object = parsejson('{"hosts": [{"location":"North_DC", "status":"running", "rate":5},{"status":"stopped", "rate":"3", "range":100}]}');
 print hosts_object 
 | summarize buildschema(hosts_object)

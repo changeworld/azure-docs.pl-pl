@@ -1,50 +1,59 @@
 ---
-title: Resetowanie haseł w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Administrator zainicjował resetowania hasła dla użytkownika w usłudze Azure Active Directory
+title: Jak zresetować hasło użytkownika w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
+description: Zresetuj hasło użytkownika, przy użyciu usługi Azure Active Directory.
 services: active-directory
-documentationcenter: ''
-author: MicrosoftGuyJFlo
+author: eross-msft
 manager: mtillman
-editor: ''
 ms.assetid: fad5624b-2f13-4abc-b3d4-b347903a8f16
 ms.service: active-directory
 ms.component: fundamentals
 ms.workload: identity
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 11/01/2017
-ms.author: joflore
-ms.reviewer: sahenry
+ms.topic: conceptual
+ms.date: 09/05/2018
+ms.author: lizross
+ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 689ab264e56bc8559db6237eee19566e9e3c429f
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: e6f937063832e6b2a5f301d6d61aec4b3426ea28
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35648440"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45603094"
 ---
-# <a name="reset-the-password-for-a-user-in-azure-active-directory"></a>Resetowanie hasła dla użytkownika w usłudze Azure Active Directory
+# <a name="how-to-reset-a-users-password-using-azure-active-directory"></a>Porady: resetowanie hasła użytkownika przy użyciu usługi Azure Active Directory
+Możesz zresetować hasła użytkownika, czy zapomniane hasło, jeśli użytkownik pobiera blokada urządzenia, czy hasło nigdy nie odebrane przez użytkownika.
 
-Administratorzy może być konieczne zresetowanie hasła użytkownika w przypadkach, gdzie one nie pamiętam, zostały zablokowane out lub innych scenariuszy. Poniższe kroki ułatwiają procedurę resetowania hasła użytkownika.
+>[!Note]
+>Chyba że dzierżawy usługi Azure AD jest katalogu macierzystego użytkownika, nie można zresetować swoje hasło. Oznacza to, że jeśli użytkownik loguje się do swojej organizacji za pomocą konta z innej organizacji, konta Microsoft lub konto Google, nie można zresetować swoje hasło.<br><br>Jeśli użytkownik ma źródło Urząd jako Windows Server Active Directory, tylko wtedy będzie można zresetować hasła, jeśli włączono funkcję zapisywania zwrotnego haseł.<br><br>Jeśli użytkownik ma źródło Urząd jako zewnętrzne usługi Azure AD, nie można zresetować hasło. Tylko użytkownik lub Konfigurator w zewnętrznej usłudze Azure AD, można zresetować hasła.
 
-## <a name="how-to-reset-the-password-for-a-user"></a>Jak zresetować hasło dla użytkownika
+## <a name="to-reset-a-password"></a>Aby zresetować hasło
 
-1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) za pomocą konta mającego uprawnienia katalogu resetowania haseł użytkowników.
-2. Wybierz **usługi Azure Active Directory** > **użytkowników i grup** > **wszyscy użytkownicy**.
-3. Wybierz użytkownika, czy chcesz zresetować hasło.
-2. Dla wybranego użytkownika wybierz **Resetuj hasło**.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) jako administrator globalny, administrator użytkownika lub hasło administratora. Aby uzyskać więcej informacji na temat dostępnych ról, zobacz [przypisywanie ról administratorów w usłudze Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md#available-roles)
 
-    ![Resetowanie hasła dla użytkownika z profilu użytkownika w usłudze Azure AD](./media/active-directory-users-reset-password-azure-portal/user-password-reset.png)
-    
-6. Na **Resetuj hasło**, wybierz opcję **Resetuj hasło**.
-7. Hasło tymczasowe zostanie wyświetlona, które następnie można udostępniać użytkownikowi. Użytkownik będzie monitowany następnie zmiany hasła przy następnym ich logowania. 
+2. Wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**Wyszukaj i wybierz użytkownika, który potrzebuje resetowania, a następnie wybierz **resetowania hasła**.
 
-   > [!NOTE]
-   > To hasło tymczasowe nie ma czasu wygaśnięcia więc będzie obowiązywać do momentu logowania i są następnie muszą go zmienić. 
+    **Alain Charon — profil** zostanie wyświetlona strona z **Resetuj hasło** opcji.
+
+    ![Strony profilu użytkownika, z podświetloną opcją hasło resetowania](media/active-directory-users-reset-password-azure-portal/user-profile-reset-password-link.png)
+
+3. W **Resetuj hasło** wybierz opcję **Resetuj hasło**.
+
+    Tymczasowe hasło jest generowane automatycznie dla użytkownika.
+
+4. Skopiuj hasło i przekaż go do użytkownika. Będzie wymagane wprowadzenie przez użytkownika, aby zmienić hasło podczas następnego logowania.
+
+    >[!Note]
+    >Tymczasowe hasło nigdy nie wygasa. Podczas następnego logowania użytkownika, hasła będzie nadal działać, bez względu na to ile czasu minęło od wygenerowano hasło tymczasowe.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Dodawanie użytkownika](../add-users-azure-active-directory.md)
-* [Przypisywanie ról administratora użytkownikowi](active-directory-users-assign-role-azure-portal.md)
-* [Zarządzanie profilami użytkowników](active-directory-users-profile-azure-portal.md)
-* [Usuwanie użytkownika w usłudze Azure AD](../add-users-azure-active-directory.md)
+Po po zresetowaniu hasła użytkownika, należy wykonać następujące procesy basic:
+
+- [Dodawanie lub usuwanie użytkowników](add-users-azure-active-directory.md)
+
+- [Przypisywanie ról do użytkowników](active-directory-users-assign-role-azure-portal.md)
+
+- [Dodać lub zmienić informacje o profilu](active-directory-users-profile-azure-portal.md)
+
+- [Utworzenie podstawowej grupy i dodawać członków](active-directory-groups-create-azure-portal.md)
+
+Lub można wykonywać bardziej złożonych scenariuszy użytkownika, takich jak przypisanie delegatów, przy użyciu zasad oraz udostępnianie kont użytkowników. Aby uzyskać więcej informacji na temat innych dostępnych akcji, zobacz [dokumentacja zarządzania użytkownika usługi Azure Active Directory](../users-groups-roles/index.yml).

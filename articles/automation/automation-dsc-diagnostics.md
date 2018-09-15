@@ -4,17 +4,17 @@ description: W tym artykule pokazano sposób wysyłania Desired State Configurat
 services: automation
 ms.service: automation
 ms.component: dsc
-author: DCtheGeek
-ms.author: dacoulte
+author: bobbytreed
+ms.author: robreed
 ms.date: 08/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 1b3c0cd71508aef9a608e0c41e32cd079e40d4e5
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 62d201e608864949c86e52d8ac8fbf9ce8538f11
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003470"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45631467"
 ---
 # <a name="forward-azure-automation-state-configuration-reporting-data-to-log-analytics"></a>Przekazuj konfiguracji stanu automatyzacji Azure raportowania danych do usługi Log Analytics
 

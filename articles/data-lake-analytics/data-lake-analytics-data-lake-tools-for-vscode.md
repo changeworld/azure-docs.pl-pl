@@ -2,19 +2,19 @@
 title: Użyj usługi Azure Data Lake Tools for Visual Studio Code
 description: Dowiedz się, jak używać usługi Azure Data Lake Tools for Visual Studio Code do tworzenia, testowania i uruchamiania skryptów U-SQL.
 services: data-lake-analytics
+ms.service: data-lake-analytics
 author: Jejiang
 ms.author: jejiang
 ms.reviewer: jasonwhowell
 ms.assetid: dc9b21d8-c5f4-4f77-bcbc-eff458f48de2
-ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 02/09/2018
-ms.openlocfilehash: b06b4c4484e3f41b64ff2d60ce558726c555a2e3
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: e470d27ccfea68f628b793f9afd695bb363e295a
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047915"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630839"
 ---
 # <a name="use-azure-data-lake-tools-for-visual-studio-code"></a>Użyj usługi Azure Data Lake Tools for Visual Studio Code
 
@@ -24,7 +24,7 @@ W tym artykule Dowiedz się, jak można używać usługi Azure Data Lake Tools f
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Azure Data Lake Tools dla programu VS Code obsługuje Windows, Linux i MacOS.  
+Azure Data Lake Tools dla programu VS Code obsługuje Windows, Linux i macOS. U-SQL działają i lokalnego debugowania lokalnego działa tylko w Windows.
 
 - [Visual Studio Code](https://www.visualstudio.com/products/code-vs.aspx)
 
@@ -220,6 +220,8 @@ Uruchamiania lokalnego języka U-SQL sprawdza dane lokalne i weryfikuje skryptu 
 - Debugowanie usługi C# związanym z kodem. 
 - Przejść przez kod. 
 - Zweryfikuj skrypt lokalnie.
+
+Funkcja debugowania lokalnego uruchomienia i lokalne tylko działa w środowiskach Windows, a nie jest obsługiwana w systemach macOS i systemami operacyjnymi opartymi na systemie Linux.
 
 Aby uzyskać instrukcje dotyczące uruchamiania lokalnego i debugowania lokalnego, zobacz [uruchamiania lokalnego języka U-SQL i debugowania lokalnego przy użyciu programu Visual Studio Code](data-lake-tools-for-vscode-local-run-and-debug.md).
 

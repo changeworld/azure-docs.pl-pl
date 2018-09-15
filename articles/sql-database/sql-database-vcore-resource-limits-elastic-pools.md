@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: 068ecf8283b92873542a7cb9ab2202212fd2ad2c
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: af9d34b0c3b59cbf012d16de27bb4c60a809f619
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39495513"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630965"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pul elastycznych
 
@@ -50,8 +50,8 @@ W przypadku pul elastycznych SQL Database w poniższej tabeli przedstawiono zaso
 |We/Wy, czas oczekiwania (w przybliżeniu)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|210|420|840|1680|3360|5040|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
-|Maksymalna liczba puli gęstość|100|200|500|500|500|500|
-|Kliknij pozycję zatrzymuje minimalnej/maksymalnej elastycznej puli|0, 0.25, 0.5, 1|0, 0,25, 0,5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|
+|Maksymalna liczba baz danych na pulę|100|200|500|500|500|500|
+|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0.25, 0.5, 1|0, 0,25, 0,5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|
 |Liczba replik|1|1|1|1|1|1|
 |Multi-AZ|ND|ND|ND|ND|ND|ND|
 |Przeczytaj skalowalnego w poziomie|ND|ND|ND|ND|ND|ND|
@@ -74,8 +74,8 @@ W przypadku pul elastycznych SQL Database w poniższej tabeli przedstawiono zaso
 |We/Wy, czas oczekiwania (w przybliżeniu)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|5 – 7 ms (zapis)<br>5 – 10 ms (odczyt)|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|210|420|840|1680|2520|3360|4200|8400
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|30000|
-|Maksymalna liczba puli gęstość|100|200|500|500|500|500|500|500|
-|Kliknij pozycję zatrzymuje minimalnej/maksymalnej elastycznej puli|0, 0,25, 0,5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, o rozmiarze 0,5, 1, 2, 4, 8, 16, 24, 32|0, o rozmiarze 0,5, 1, 2, 4, 8, 16, 24, 32, 40|0, o rozmiarze 0,5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
+|Maksymalna liczba baz danych na pulę|100|200|500|500|500|500|500|500|
+|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|0, 0,25, 0,5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, o rozmiarze 0,5, 1, 2, 4, 8, 16, 24, 32|0, o rozmiarze 0,5, 1, 2, 4, 8, 16, 24, 32, 40|0, o rozmiarze 0,5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
 |Liczba replik|1|1|1|1|1|1|1|1|
 |Multi-AZ|ND|ND|ND|ND|ND|ND|ND|ND|
 |Przeczytaj skalowalnego w poziomie|ND|ND|ND|ND|ND|ND|ND|ND|
@@ -100,8 +100,8 @@ W przypadku pul elastycznych SQL Database w poniższej tabeli przedstawiono zaso
 |We/Wy, czas oczekiwania (w przybliżeniu)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|210|420|840|1680|3360|5040|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
-|Maksymalna liczba puli gęstość|ND|50|100|100|100|100|
-|Kliknij pozycję zatrzymuje minimalnej/maksymalnej elastycznej puli|ND|0, 0,25, 0,5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|
+|Maksymalna liczba baz danych na pulę|Nieobsługiwane|50|100|100|100|100|
+|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|ND|0, 0,25, 0,5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|
 |Liczba replik|3|3|3|3|3|3|
 |Multi-AZ|ND|ND|ND|ND|ND|ND|
 |Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|
@@ -124,8 +124,8 @@ W przypadku pul elastycznych SQL Database w poniższej tabeli przedstawiono zaso
 |Docelowy operacji We/Wy (64 KB)|5000|10 000|20000|40000|60000|80000|100000|200000
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|210|420|840|1680|2520|3360|5040|8400|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|30000|
-|Maksymalna liczba puli gęstość|ND|50|100|100|100|100|100|100|
-|Kliknij pozycję zatrzymuje minimalnej/maksymalnej elastycznej puli|ND|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, o rozmiarze 0,5, 1, 2, 4, 8, 16, 24, 32|0, o rozmiarze 0,5, 1, 2, 4, 8, 16, 24, 32, 40|0, o rozmiarze 0,5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
+|Maksymalna liczba baz danych na pulę|ND|50|100|100|100|100|100|100|
+|Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|ND|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|0, o rozmiarze 0,5, 1, 2, 4, 8, 16, 24, 32|0, o rozmiarze 0,5, 1, 2, 4, 8, 16, 24, 32, 40|0, o rozmiarze 0,5, 1, 2, 4, 8, 16, 24, 32, 40, 80|
 |Liczba replik|3|3|3|3|3|3|3|3|
 |Multi-AZ|ND|ND|ND|ND|ND|ND|ND|ND|
 |Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|

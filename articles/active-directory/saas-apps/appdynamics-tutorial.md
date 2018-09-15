@@ -11,14 +11,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/09/2018
+ms.date: 09/13/2018
 ms.author: jeedes
-ms.openlocfilehash: 3600e83d18f8cabd03c46af2ef47445c588cbdb5
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 7f24dad3cfefd5ecb0b1c78f4a2b242c99a01239
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38548286"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605831"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-appdynamics"></a>Samouczek: Integracja usługi Azure Active Directory z oprogramowaniem AppDynamics
 
@@ -36,7 +36,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD z oprogramowaniem AppDynamics, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - AppDynamics logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -59,7 +59,7 @@ Aby skonfigurować integrację z oprogramowaniem AppDynamics w usłudze Azure AD
 
 **Aby dodać AppDynamics z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
     ![Usługa Active Directory][1]
 
@@ -112,7 +112,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie logowania jednokrotnego](./media/appdynamics-tutorial/tutorial_appdynamics_url.png)
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.saas.appdynamics.com`
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.saas.appdynamics.com?accountName=<companyname>`
 
     b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.saas.appdynamics.com/controller`
 
@@ -184,11 +184,12 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
 
     c. Wybierz **Pokaż hasło** i zanotuj wartość **hasło**.
 
-    d. Kliknij przycisk **Utwórz**.
+    d. Kliknij pozycję **Utwórz**.
 
 ### <a name="creating-an-appdynamics-test-user"></a>Tworzenie użytkownika testowego AppDynamics
 
 Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w AppDynamics. AppDynamics obsługę just-in-time, który jest domyślnie włączona. Brak elementu akcji dla Ciebie w tej sekcji. Nowy użytkownik jest tworzony podczas próby dostępu AppDynamics, jeśli go jeszcze nie istnieje.
+
 >[!Note]
 >Jeśli musisz ręcznie utworzyć użytkownika, skontaktuj się z [zespołem pomocy technicznej klienta AppDynamics](https://www.appdynamics.com/support/).
 
@@ -231,7 +232,7 @@ Po kliknięciu kafelka AppDynamics w panelu dostępu, użytkownik powinien uzysk
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
-* [Co to jest dostęp do aplikacji i logowanie jednokrotne z usługą Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
+* [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
 <!--Image references-->
 

@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/14/2018
 ms.author: mabrigg
-ms.openlocfilehash: 3d856f4fad845dfdd4d9a30fa176a4c0bfbc875b
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: b6196ec434d00a6fbc6714095fa4182ede98ce91
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024346"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45633439"
 ---
 # <a name="how-to-consume-monitoring-data-from-azure-stack"></a>Jak używać danych monitorowania z usługi Azure Stack
 
@@ -35,7 +35,7 @@ Możesz znaleźć dane monitorowania w jednym miejscu za pomocą potoku usługi 
 | Metryki magazynu | Metryki | Azure Storage | Tabela magazynu:<br>Analityka magazynu |
 | Dziennik aktywności | Zdarzenia | Wszystkich usług platformy Azure | INTERFEJS API REST:<br>Usługa Azure Monitor zdarzenia interfejsu API |
 | Obliczenia dzienników systemu operacyjnego gościa (na przykład dzienniki usług IIS, ETW SYSLOG) | Zdarzenia | Windows i maszyn wirtualnych systemu Linux | Tabela magazynu lub obiektów blob:<br>Windows lub Diagnostyka Azure dla systemu Linux <br>Centrum zdarzeń:<br>Diagnostyka Azure dla systemu Windows |
-| Dzienniki magazynu | Zdarzenia | Azure Storage | Tabela magazynu:<br>Analityka magazynu<br>`Vita: how about hybrid OMS/AppInsights, shall we mention?` |
+| Dzienniki magazynu | Zdarzenia | Azure Storage | Tabela magazynu:<br>Analityka magazynu |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

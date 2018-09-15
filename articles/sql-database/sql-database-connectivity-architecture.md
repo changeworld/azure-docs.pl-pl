@@ -2,19 +2,19 @@
 title: Architektura łączności usługi Azure SQL Database | Dokumentacja firmy Microsoft
 description: W tym dokumencie wyjaśniono Azure SQLDB architektura łączności z w obrębie platformy Azure lub z spoza platformy Azure.
 services: sql-database
-author: CarlRabeler
+author: DhruvMsft
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 01/24/2018
-ms.author: carlrab
-ms.openlocfilehash: 6f160965f11f94c39e823724b192169c3712974d
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.author: dhruv
+ms.openlocfilehash: 8159a9eb8d8829ed01609cebc3ae41713892f6cf
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575385"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630184"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Architektura łączności bazy danych Azure SQL 
 

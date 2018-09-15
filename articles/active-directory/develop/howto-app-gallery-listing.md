@@ -13,21 +13,20 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/31/2018
+ms.date: 09/14/2018
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
-ms.openlocfilehash: d5c00e9df9c1bfee0c665cafc763c52a36f98052
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 6e15a2c940778427c953bd0a3d469ef55f7e3187
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345849"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632062"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
 
-
-##  <a name="what-is-the-azure-ad-application-gallery"></a>Co to jest galerii aplikacji usługi Azure AD?
+## <a name="what-is-the-azure-ad-application-gallery"></a>Co to jest galerii aplikacji usługi Azure AD?
 
 Azure Active Directory (Azure AD) to oparta na chmurze Usługa zarządzania tożsamościami. [Galerii aplikacji usługi Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/) znajduje się w portalu Azure Marketplace sklepu z aplikacjami, gdzie wszystkie łączniki aplikacji są publikowane do logowania jednokrotnego i aprowizacji użytkowników. Klienci, którzy używają usługi Azure AD jako dostawcy tożsamości znaleźć innego łączników aplikacji SaaS, opublikowane w tym miejscu. Administratorzy IT Dodaj łączniki z galerii aplikacji i następnie konfigurowanie i używanie łączników do logowania jednokrotnego i aprowizacji. Usługi Azure AD obsługuje wszystkie protokoły głównych federacyjnego logowania jednokrotnego, łącznie z języka SAML 2.0, OpenID Connect, OAuth i WS-Fed.
 
@@ -57,7 +56,28 @@ Azure Active Directory (Azure AD) to oparta na chmurze Usługa zarządzania toż
 
 - W przypadku żądań użytkownika automatyczne Inicjowanie obsługi administracyjnej aplikacji powinny figurować w galerii przy użyciu pojedynczego logowania jednokrotnego włączoną funkcję przy użyciu dowolnego protokołu federation opisanych powyżej. Możesz poprosić potrzeby logowania jednokrotnego i Inicjowanie obsługi administracyjnej ze sobą w portalu, jeśli go jeszcze nie znajduje się użytkownik.
 
-##  <a name="implementing-sso-using-federation-protocol"></a>Implementowanie logowania jednokrotnego przy użyciu protokołu federation
+## <a name="submit-the-request-in-the-portal"></a>Przesyłanie żądania w portalu
+
+Po przetestowaniu, że usługi integracji aplikacji działa z usługą Azure AD, należy przesłać żądanie dostępu na naszych [Portal sieci aplikacji](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Jeśli masz konto usługi Office 365, używać, aby zalogować się do tego portalu. W przeciwnym razie użyj konta Microsoft (np. Outlook lub Hotmail) do logowania.
+
+Jeśli po zalogowaniu zostanie wyświetlona następująca strona, skontaktuj się z [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>) i podaj konto e-mail, którego chcesz użyć do przesyłania żądania. Zespół usługi Azure AD zostanie następnie dodaj konto w portalu sieci aplikacji firmy Microsoft.
+
+![Żądanie dostępu w portalu programu SharePoint](./media/howto-app-gallery-listing/errorimage.png)
+
+Po dodaniu konta, możesz zalogować się do portalu sieci aplikacji firmy Microsoft.
+
+A jeśli po zalogowaniu zostanie wyświetlona następująca strona, podać uzasadnienie biznesowe na potrzeby uzyskiwania dostępu w polu tekstowym, a następnie wybierz **żądanie dostępu**.
+
+  ![Żądanie dostępu w portalu programu SharePoint](./media/howto-app-gallery-listing/accessrequest.png)
+
+Nasz zespół przegląda szczegółowe informacje i umożliwia dostęp do odpowiednio. Po zatwierdzeniu żądania możesz zalogować się do portalu i przesłać żądanie, klikając **przesłać żądanie (ISV)** Kafelek formularz na stronie głównej.
+
+![Portal programu SharePoint strony głównej](./media/howto-app-gallery-listing/homepage.png)
+
+> [!NOTE]
+> Jeśli masz problemy dotyczące dostępu, skontaktuj się z pomocą [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
+
+## <a name="implementing-sso-using-federation-protocol"></a>Implementowanie logowania jednokrotnego przy użyciu protokołu federation
 
 Aby wyświetlić listę aplikacji w galerii aplikacji Azure AD, należy najpierw wdrożyć jedną z następujących protokołów Federacji obsługiwane przez usługę Azure AD i Akceptuję warunki galerii aplikacji usługi Azure AD. Przeczytaj warunki i postanowienia galerii aplikacji usługi Azure AD z [tutaj](https://azure.microsoft.com/en-us/support/legal/active-directory-app-gallery-terms/).
 
@@ -69,7 +89,7 @@ Aby wyświetlić listę aplikacji w galerii aplikacji Azure AD, należy najpierw
 
     * Jeśli masz problemy dotyczące dostępu, skontaktuj się z pomocą [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
-*   **SAML 2.0** lub **WS-Fed**: Jeśli aplikacja obsługuje SAML 2.0, można zintegrować go bezpośrednio z dzierżawy usługi Azure AD przy użyciu [instrukcje dotyczące dodawania aplikacji niestandardowej](../manage-apps/configure-single-sign-on-non-gallery-applications.md).
+*   **SAML 2.0** lub **WS-Fed**: Jeśli aplikacja obsługuje SAML 2.0, można zintegrować go bezpośrednio z dzierżawy usługi Azure AD przy użyciu [instrukcje dotyczące dodawania aplikacji niestandardowej](../active-directory-saas-custom-apps.md).
 
     ![Oś czasu wyświetlanie protokołu SAML 2.0 i WS-Fed aplikacji w galerii](./media/howto-app-gallery-listing/saml.png)
 
@@ -87,7 +107,7 @@ Utwórz aplikację internetową, która zawiera strony logowania HTML do skonfig
 
 * Jeśli masz problemy dotyczące dostępu, skontaktuj się z pomocą [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
-##  <a name="updateremove-existing-listing"></a>Aktualizowanie/Usuwanie istniejącej listy
+## <a name="updateremove-existing-listing"></a>Aktualizowanie/Usuwanie istniejącej listy
 
 Aby zaktualizować lub usunąć istniejącą aplikację w galerii aplikacji Azure AD, najpierw musisz przesłać żądanie w [Portal sieci aplikacji](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Jeśli masz konto usługi Office 365, używać, aby zalogować się do tego portalu. W przeciwnym razie użyj konta Microsoft (np. Outlook lub Hotmail) do logowania.
 
@@ -101,18 +121,8 @@ Aby zaktualizować lub usunąć istniejącą aplikację w galerii aplikacji Azur
 
     * Jeśli masz problemy dotyczące dostępu, skontaktuj się z pomocą [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
-## <a name="submit-the-request-in-the-portal"></a>Przesyłanie żądania w portalu
-
-Po przetestowaniu, że usługi integracji aplikacji działa z usługą Azure AD, należy przesłać żądanie dostępu na naszych [Portal sieci aplikacji](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Jeśli masz konto usługi Office 365, używać, aby zalogować się do tego portalu. W przeciwnym razie użyj konta Microsoft (np. Outlook lub Hotmail) do logowania.
-
-Po zalogowaniu się w zostanie wyświetlona następująca strona. Podać uzasadnienie biznesowe na potrzeby uzyskiwania dostępu w polu tekstowym, a następnie wybierz **żądanie dostępu**. Nasz zespół przegląda szczegółowe informacje i umożliwia dostęp do odpowiednio. Po tym można zalogować się do portalu i przesłać żądanie szczegółowe dla aplikacji.
-
-Jeśli masz problemy dotyczące dostępu, skontaktuj się z pomocą [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
-
-![Żądanie dostępu w portalu programu SharePoint](./media/howto-app-gallery-listing/accessrequest.png)
-
 ## <a name="timelines"></a>Osie czasu
-    
+
 Oś czasu dla procesu wyświetlania listy protokołu SAML 2.0 i WS-Fed aplikacji w galerii jest 7 – 10 dni roboczych.
 
    ![Oś czasu wyświetlania listy aplikacji saml w galerii](./media/howto-app-gallery-listing/timeline.png)

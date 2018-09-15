@@ -1,9 +1,9 @@
 ---
-title: Raport danych użycia usługi Azure stosu na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować dane użycia raportowania w programie Azure stosu.
+title: Raport danych użycia usługi Azure Stack na platformie Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować dane użycia raportowania w usłudze Azure Stack.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.service: azure-stack
@@ -12,101 +12,101 @@ pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
-ms.author: brenduns
+ms.author: sethm
 ms.reviewer: alfredop
-ms.openlocfilehash: daaaf6c574c4b169c19ebec42ad68e2d818ca1cb
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: 54a81e6c5c6e1fe5c37b985e40174dc369edfe6d
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34603706"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45630413"
 ---
-# <a name="report-azure-stack-usage-data-to-azure"></a>Raport danych użycia usługi Azure stosu na platformie Azure 
+# <a name="report-azure-stack-usage-data-to-azure"></a>Raport danych użycia usługi Azure Stack na platformie Azure 
 
-Dane użycia, nazywany również dane dotyczące zużycia, reprezentuje ilość zasobów używanych. 
+Dane użycia, nazywany również dane dotyczące zużycia, reprezentuje ilość używanych zasobów. 
 
-Azure systemów wielowęzłowego stosu, które używają modelu rozliczeń na podstawie zużycia powinni zgłaszać dane użycia do platformy Azure na potrzeby rozliczeń.  Operatory stosu Azure należy skonfigurować ich wystąpienia stosu Azure raportować dane użycia na platformie Azure.
+Stos wielowęzłowego systemy usługi Azure, które używają modelu rozliczeń na podstawie użycia należy zgłaszać dane użycia na platformie Azure w celu rozliczeń.  Operatorzy usługi Azure Stack, należy skonfigurować swoje wystąpienie usługi Azure Stack raportować dane użycia na platformie Azure.
 
 > [!NOTE]
-> Raportowanie danych użycia jest wymagana dla użytkowników wielowęzłowego stosu Azure licencji, zgodnie z modelem płatności jako — użytkownik użycia. Opcjonalne dla klientów, którzy licencji, zgodnie z modelem pojemności (zobacz [jak kupić strony](https://azure.microsoft.com/overview/azure-stack/how-to-buy/). Dla użytkowników usługi Azure stosu Development Kit operatory stosu Azure raport danych użycia i przetestować tę funkcję. Jednak użytkownicy nie zostanie obciążona dla bez użycia, które wiążą się. 
+> Raportowanie danych użycia jest wymagana dla użytkowników wielowęzłowego usługi Azure Stack, którzy zakupili zgodnie z modelem płatności jako — rzeczywiste użycie. Jest to opcjonalne dla klientów, którzy licencji w ramach modelu pojemności (zobacz [jak strony zakupu](https://azure.microsoft.com/overview/azure-stack/how-to-buy/). Dla użytkowników usługi Azure Stack Development Kit operatorom usługi Azure Stack można zgłaszać dane użycia i przetestować funkcję. Jednak użytkownicy nie będą naliczane za dotychczasowe użycie, które wiążą się. 
 
 
 ![Przepływ rozliczeń](media/azure-stack-usage-reporting/billing-flow.png)
 
-Dane użycia są wysyłane z stosu Azure na platformie Azure przez mostek Azure. Na platformie Azure commerce system przetwarza dane użycia i generuje BOM. Po wygenerowaniu BOM, właściciela subskrypcji platformy Azure można wyświetlić i pobierz go z [Centrum konta platformy Azure](https://account.windowsazure.com/Subscriptions). Aby dowiedzieć się, jak jest licencjonowana stosu Azure, zobacz [stosu Azure pakowania i cenach dokumentu](https://go.microsoft.com/fwlink/?LinkId=842847&clcid=0x409).
+Dane użycia są wysyłane z usługi Azure Stack na platformie Azure za pośrednictwem mostka platformy Azure. Na platformie Azure commerce system przetwarza dane użycia i generuje rachunku. Po rachunek jest generowany, właściciel subskrypcji platformy Azure można wyświetlić i pobrać z [Centrum konta platformy Azure](https://account.windowsazure.com/Subscriptions). Aby dowiedzieć się, jak ma licencję usługi Azure Stack, zapoznaj się [usługi Azure Stack, pakowania i ceny dokumentu](https://go.microsoft.com/fwlink/?LinkId=842847&clcid=0x409).
 
-## <a name="set-up-usage-data-reporting"></a>Konfigurowanie raportowania danych użycia
+## <a name="set-up-usage-data-reporting"></a>Skonfiguruj raportowanie danych użycia
 
-Aby skonfigurować raportowanie danych użycia, należy najpierw [zarejestruj wystąpienie stosu Azure Azure](azure-stack-register.md). W ramach procesu rejestracji składnik Azure Mostek stosu Azure, która łączy stosu Azure na platformie Azure i wysyła dane użycia, jest skonfigurowany. Następujące dane użycia są wysyłane z stosu Azure do platformy Azure:
+Aby skonfigurować raportowanie danych użycia, należy najpierw [rejestrowania Twojego wystąpienia usługi Azure Stack na platformie Azure](azure-stack-register.md). W ramach procesu rejestracji składnik Mostek platformy Azure, usługi Azure Stack, który łączy z usługi Azure Stack na platformie Azure i wysyła dane użycia, jest skonfigurowany. Następujące dane użycia są wysyłane z usługi Azure Stack na platformie Azure:
 
-- **Pomiarowe identyfikator** — Unikatowy identyfikator zasobu, który został wykorzystany.
-- **Ilość** — ilość użycia zasobów.
-- **Lokalizacja** — lokalizacja wdrożonym bieżącego zasobu stosu Azure.
-- **Identyfikator URI zasobu** — identyfikator URI zasobu, dla którego obciążenie jest raportowany w pełni kwalifikowana.
-- **Identyfikator subskrypcji** — identyfikator subskrypcji użytkownika stosu Azure jest lokalny subskrypcji (stos Azure).
-- **Czas** — godzina rozpoczęcia i zakończenia danych użycia. Brak pewne opóźnienie między czasem, podczas tych zasobów są używane w stosie Azure i danych użycia jest zgłaszany do obsługi handlu. Azure stosu agreguje dane dotyczące wykorzystania co 24 godziny i raportowania danych użycia do potoku handlu na platformie Azure ma inny kilka godzin. Tak użycie, która występuje tuż przed północy może wyświetlane na platformie Azure następnego dnia.
+- **Identyfikator licznika** — Unikatowy identyfikator zasobu, który został wykorzystany.
+- **Ilość** — stopień użycia zasobów.
+- **Lokalizacja** — lokalizacji, w których jest wdrażany bieżącego zasobu usługi Azure Stack.
+- **Identyfikator URI zasobu** — identyfikator URI zasobu, dla których użycie jest zgłaszany w pełni kwalifikowana.
+- **Identyfikator subskrypcji** — identyfikator subskrypcji użytkownika usługi Azure Stack, czyli lokalnego subskrypcji (usługa Azure Stack).
+- **Czas** — godzina rozpoczęcia i zakończenia danych użycia. Ma pewne opóźnienie między czas podczas tych zasobów są używane w usłudze Azure Stack i danych użycia jest zgłaszany do commerce. Azure Stack agreguje dane dotyczące wykorzystania co 24 godziny i raportowania danych użycia do potoku commerce na platformie Azure ma inną kilka godzin. Tak użycie występujący wkrótce wcześniejszą niż północ może być ujęte w systemie Azure następnego dnia.
 
-## <a name="generate-usage-data-reporting"></a>Generowanie raportowania danych użycia
+## <a name="generate-usage-data-reporting"></a>Generowanie raportowanie danych użycia
 
-1. Aby przetestować dane użycia raportowania, należy utworzyć kilka zasobów w stosie Azure. Na przykład można utworzyć [konta magazynu](azure-stack-provision-storage-account.md), [maszyny Wirtualnej systemu Windows Server](azure-stack-provision-vm.md) i maszyny Wirtualnej systemu Linux z podstawowe i standardowe jednostki SKU, aby zobaczyć sposób użycia rdzeni został zgłoszony. Dane użycia dla różnych typów zasobów są zgłaszane w różnych liczników.
+1. Aby przetestować raportowanie danych użycia, należy utworzyć kilka zasobów w usłudze Azure Stack. Na przykład można utworzyć [konta magazynu](azure-stack-provision-storage-account.md), [maszyny Wirtualnej z systemem Windows Server](azure-stack-provision-vm.md) i Maszynę wirtualną systemu Linux przy użyciu Basic i standardowej jednostki SKU, aby zobaczyć, jak raportowania użycia rdzeni. Dane użycia dla różnych typów zasobów są zgłaszane w ramach różnych liczników.
 
-2. Pozostaw zasobów uruchomione przez kilka godzin. Informacje dotyczące użycia są zbierane mniej więcej co godzinę. Po zebraniu, dane te są przesyłane do usługi Azure i przetwarzane w systemie Azure commerce. Ten proces może potrwać kilka godzin.
+2. Zostaw swoje zasoby, uruchomione przez kilka godzin. Informacje dotyczące użycia są zbierane mniej więcej co godzinę. Po zebraniu, te dane są przesyłane do platformy Azure i przetwarzane w systemie handlu platformy Azure. Ten proces może potrwać kilka godzin.
 
-## <a name="view-usage---csp-subscriptions"></a>Wyświetl informacje o użyciu - subskrypcje dostawcy usług Kryptograficznych
+## <a name="view-usage---csp-subscriptions"></a>Wyświetl informacje o użyciu - subskrypcji dostawcy CSP
 
-Jeśli zarejestrowano stosu Azure przy użyciu subskrypcji dostawcy usług Kryptograficznych, można wyświetlić z użycia i opłat w taki sam sposób, w którym możesz wyświetlić wykorzystania platformy Azure. Wykorzystanie stosu Azure zostanie uwzględniony, faktury i w pliku uzgadniania, dostępne za pośrednictwem [Centrum partnerskiego](https://partnercenter.microsoft.com/partner/home). Plik uzgadniania jest aktualizowany co miesiąc. Jeśli musisz uzyskiwać dostęp najnowsze informacje o użyciu stosu Azure, można użyć interfejsów API Centrum partnerskiego.
+Jeśli zarejestrowano usługi Azure Stack przy użyciu subskrypcji programu CSP możesz wyświetlić użycia i opłat w taki sam sposób, w którym można wyświetlić użycie platformy Azure. Użycie platformy Azure Stack będą uwzględnione na fakturze i w pliku uzgodnień, dostępne za pośrednictwem [Centrum partnerskiego](https://partnercenter.microsoft.com/partner/home). W pliku uzgodnień jest aktualizowany co miesiąc. Jeśli musisz uzyskiwać dostęp do najnowszych informacji użycia usługi Azure Stack, używając interfejsów API Centrum partnerskiego.
 
-   ![Centrum partnerskiego](media/azure-stack-usage-reporting/partner-center.png)
+   ![Centrum partnerskie](media/azure-stack-usage-reporting/partner-center.png)
 
 
-## <a name="view-usage--enterprise-agreement-subscriptions"></a>Wyświetl informacje o użyciu — Umowa Enterprise Agreement subskrypcji
+## <a name="view-usage--enterprise-agreement-subscriptions"></a>Wyświetl informacje o użyciu — subskrypcji Enterprise Agreement
 
-Jeśli zarejestrowano stosu Azure przy użyciu subskrypcji Enterprise Agreement, można wyświetlić z użycia i opłat w [EA Portal](https://ea.azure.com/). Wykorzystanie stosu Azure zostaną uwzględnione w zaawansowanych pliki do pobrania wraz z użycia platformy Azure w sekcji raportów w portalu EA. 
+Jeśli zarejestrowano usługi Azure Stack przy użyciu subskrypcji Enterprise Agreement, możesz wyświetlić użycia i kosztów w [portalu EA Portal](https://ea.azure.com/). Użycie platformy Azure Stack zostaną uwzględnione w zaawansowanych pliki do pobrania wraz z użycia platformy Azure w witrynie EA portal, w sekcji raporty. 
 
 ## <a name="view-usage--other-subscriptions"></a>Wyświetl informacje o użyciu — inne subskrypcje
 
-Jeśli zarejestrowane stosu Azure przy użyciu żadnego innego typu subskrypcji, na przykład w przypadku subskrypcji płatności zgodnie z rzeczywistym użyciem, można wyświetlić użycia i opłat w Centrum konta platformy Azure. Zaloguj się do [Centrum konta platformy Azure](https://account.windowsazure.com/Subscriptions) jako platformy Azure konta administratora, a następnie wybierz subskrypcję platformy Azure, które używane do rejestrowania stosu Azure. Można wyświetlić dane użycia stosu Azure, ilości pobierane dla każdego z używanych zasobów, jak pokazano na poniższej ilustracji:
+Jeśli zarejestrowano usługi Azure Stack przy użyciu dowolny inny typ subskrypcji, na przykład w przypadku subskrypcji płatności zgodnie z rzeczywistym użyciem, użycia i opłat można wyświetlić w Centrum konta platformy Azure. Zaloguj się do [Centrum konta platformy Azure](https://account.windowsazure.com/Subscriptions) jako platformy Azure, konto administratora i wybierz subskrypcję platformy Azure, używany do rejestrowania usługi Azure Stack. Możesz wyświetlić dane użycia usługi Azure Stack, kwota naliczana dla każdego z używanych zasobów, jak pokazano na poniższej ilustracji:
 
    ![Przepływ rozliczeń](media/azure-stack-usage-reporting/pricing-details.png)
 
-Dla usługi Azure stosu Development Kit zasobów Azure stosu nie są naliczane, ceny jest wyświetlany jako 0,00 USD.
+Zasoby usługi Azure Stack dla usługi Azure Stack Development Kit nie są naliczane, więc cena jest przedstawiana w postaci 0,00 USD.
 
-## <a name="which-azure-stack-deployments-are-charged"></a>Które wdrożenia stosu Azure są naliczane?
+## <a name="which-azure-stack-deployments-are-charged"></a>Wdrożenia usługi Azure Stack, które są rozliczane?
 
-Użycie zasobów jest bezpłatna dla zestawu SDK usługi Azure stosu. Natomiast systemy wielowęzłowego stosu Azure są naliczane obciążenia maszyn wirtualnych, usług magazynu i usług aplikacji.
+Użycie zasobów jest bezpłatne w przypadku usługi Azure Stack Development Kit. Natomiast w przypadku systemów z wieloma węzłami usługi Azure Stack, obciążenie maszyn wirtualnych, usług magazynu i usług aplikacji jest naliczana.
 
-## <a name="are-users-charged-for-the-infrastructure-vms"></a>Użytkownicy są naliczane za infrastrukturę maszyn wirtualnych?
+## <a name="are-users-charged-for-the-infrastructure-vms"></a>Czy użytkownicy są naliczane za infrastrukturą maszyn wirtualnych?
 
-Nie. Dane użycia dla niektórych stosu Azure dostawcy zasobów maszyn wirtualnych jest zgłaszany na platformie Azure, ale nie ma żadnych opłat dla tych maszyn wirtualnych, ani dla maszyn wirtualnych utworzonych podczas wdrażania umożliwia infrastruktury Azure stosu.  
+Nie. Dane użycia dla dostawcy zasobów usługi Azure Stack niektórych maszyn wirtualnych jest zgłaszany do usługi Azure, ale nie będą naliczane opłaty dla tych maszyn wirtualnych ani utworzony podczas wdrażania maszyn wirtualnych umożliwiające infrastruktury Azure Stack.  
 
-Użytkownicy są naliczane tylko dla maszyn wirtualnych uruchamianych w ramach subskrypcji dzierżawy. W obszarze subskrypcje dzierżawy w celu zapewnienia przestrzegania postanowień licencyjnych dotyczących stosu Azure należy wdrożyć wszystkich obciążeń.
+Użytkownicy są naliczane tylko dla maszyn wirtualnych działających w ramach subskrypcji dzierżawy. Wszystkie obciążenia musi zostać wdrożony w ramach subskrypcji dzierżawy do przestrzegania postanowień licencyjnych w usłudze Azure Stack.
 
-## <a name="i-have-a-windows-server-license-i-want-to-use-on-azure-stack-how-do-i-do-it"></a>Użytkownik ma licencję systemu Windows Server, który ma być użyty na stosie Azure, jak to zrobić?
+## <a name="i-have-a-windows-server-license-i-want-to-use-on-azure-stack-how-do-i-do-it"></a>Mam licencję systemu Windows Server, które w usłudze Azure Stack, jak to zrobić?
 
-Przy użyciu istniejących licencji pozwala uniknąć generowania liczników użycia. Istniejących licencji systemu Windows Server mogą być używane w stosie Azure, zgodnie z opisem w sekcji "Przy użyciu istniejącego oprogramowania z usługi Azure stosu" [Przewodnik licencjonowania stosu Azure](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409). Klienci muszą wdrażać maszynami wirtualnymi systemu Windows Server, zgodnie z opisem w [korzyści hybrydowego licencji systemu Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) artykuł, aby można było używać ich istniejących licencji.
+Przy użyciu istniejących licencji pozwala uniknąć generowania mierników użycia. Istniejące licencje systemu Windows Server mogą być używane w usłudze Azure Stack, zgodnie z opisem w sekcji "Za pomocą istniejącego oprogramowania za pomocą usługi Azure Stack" [wskazówki dotyczące licencjonowania usługi Azure Stack](https://go.microsoft.com/fwlink/?LinkId=851536&clcid=0x409). Klienci muszą wdrożyć maszyn wirtualnych systemu Windows Server, zgodnie z opisem w [korzyść użycia hybrydowego dla licencji systemu Windows Server](https://docs.microsoft.com/azure/virtual-machines/windows/hybrid-use-benefit-licensing) artykuł, aby można było używać swoich istniejących licencji.
 
-## <a name="which-subscription-is-charged-for-the-resources-consumed"></a>Subskrypcji, której dotyczy kosztów używanych zasobów?
-Subskrypcję, która jest dostępne, gdy [rejestrowania stosu Azure za pomocą usługi Azure](azure-stack-register.md) rozliczany.
+## <a name="which-subscription-is-charged-for-the-resources-consumed"></a>Opłaty za subskrypcję, która są naliczane za zasoby używane?
+Subskrypcję, która znajduje się kiedy [rejestrowania usługi Azure Stack z platformą Azure](azure-stack-register.md) jest naliczana.
 
-## <a name="what-types-of-subscriptions-are-supported-for-usage-data-reporting"></a>Jakie rodzaje subskrypcje są obsługiwane dla raportowania danych użycia?
+## <a name="what-types-of-subscriptions-are-supported-for-usage-data-reporting"></a>Jakie rodzaje subskrypcje są obsługiwane dla raportowanie danych użycia?
 
-Multinode stosu Azure Enterprise Agreement (EA) i dostawcy usług Kryptograficznych subskrypcje są obsługiwane. Azure stosu Development Kit subskrypcji Enterprise Agreement (EA), płatność za rzeczywiste użycie dostawcy usług Kryptograficznych i MSDN obsługiwać raportowanie danych użycia.
+W przypadku multinode usługi Azure Stack subskrypcji Enterprise Agreement (EA) i dostawcy usług Kryptograficznych są obsługiwane. Azure Stack Development Kit subskrypcji Enterprise Agreement (EA), rozliczana według bieżącego użycia i dostawcy usług Kryptograficznych oraz MSDN obsługuje raportowanie danych użycia.
 
-## <a name="does-usage-data-reporting-work-in-sovereign-clouds"></a>Czy dane użycia raportowania pracy w chmurach suwerennych?
+## <a name="does-usage-data-reporting-work-in-sovereign-clouds"></a>Odbywa się praca w chmurach suwerennych raportowanie danych użycia?
 
-W zestawie Azure stosu Development Kit raportowania danych użycia wymaga subskrypcji, które są tworzone w globalnym systemie Azure. Subskrypcjami w jednym z suwerennych chmury (chmury Azure dla instytucji rządowych, platformy Azure w Niemczech i Chińskiej wersji platformy Azure) nie można zarejestrować przy użyciu platformy Azure, więc nie obsługują użycia danych raportowania.
+W usłudze Azure Stack Development Kit raportowanie danych użycia wymaga subskrypcji, które są tworzone w globalnego systemu Azure. Nie można zarejestrować subskrypcji utworzonych w jednym z chmur suwerennych (chmury Azure Government, Azure (Niemcy) i Azure — Chiny) na platformie Azure, dzięki czemu nie obsługują raportowanie danych użycia.
 
-## <a name="how-can-users-identify-azure-stack-usage-data-in-the-azure-billing-portal"></a>Jak użytkownicy zidentyfikować dane użycia stosu Azure w portalu Azure rozliczeń
+## <a name="how-can-users-identify-azure-stack-usage-data-in-the-azure-billing-portal"></a>Jak użytkownicy rozpoznać danych użycia usługi Azure Stack w portalu rozliczeń systemu Azure?
 
-Użytkownicy mogą zobaczyć stos Azure dane użycia w pliku szczegóły użycia. Aby wiedzieć, jak uzyskać pliku szczegóły użycia, zapoznaj się [Pobierz plik użycia z artykułu Centrum konta platformy Azure](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv). Szczegóły użycia zawiera liczniki stosu Azure identyfikujące Azure stosu magazynu i maszyn wirtualnych. Wszystkie zasoby używane w stosie Azure są zgłaszane w regionie o nazwie "Azure stosu."
+Użytkownicy widzą danych użycia usługi Azure Stack w pliku szczegółów użycia. Aby dowiedzieć się o tym, jak można pobrać pliku szczegóły użycia, zobacz [pobierania pliku użycia z artykułu Centrum konta platformy Azure](https://docs.microsoft.com/azure/billing/billing-download-azure-invoice-daily-usage-date#download-usage-from-the-account-center-csv). Plik szczegółów użycia zawiera liczników usługi Azure Stack, które identyfikują maszyn wirtualnych i magazynu usługi Azure Stack. Wszystkie zasoby używane w usłudze Azure Stack są zgłaszane w regionie, o nazwie "Usługa Azure Stack."
 
-## <a name="why-doesnt-the-usage-reported-in-azure-stack-match-the-report-generated-from-azure-account-center"></a>Dlaczego użycia raportowane w stosie Azure nie odpowiada raportów wygenerowanych z Centrum konta platformy Azure?
+## <a name="why-doesnt-the-usage-reported-in-azure-stack-match-the-report-generated-from-azure-account-center"></a>Dlaczego użycia zgłoszonych w usłudze Azure Stack nie odpowiada Raport wygenerowany na podstawie Centrum konta platformy Azure?
 
-Jest zawsze opóźnienie między danych użycia zgłoszonych przez wykorzystanie stosu Azure interfejsów API i danych użycia zgłoszonych przez Centrum konta platformy Azure. Opóźnienie to czas potrzebny do przekazywania danych użycia ze stosu Azure do handlu Azure. Ze względu na to opóźnienie użycia, która występuje tuż przed północy może wyświetlane w usłudze Azure następnego dnia. Jeśli używasz [interfejsów API usługi Azure stosu użycia](azure-stack-provider-resource-api.md)i porównywania wyników do użycia w portalu Azure rozliczeń, zobaczysz różnicy.
+Zawsze jest opóźnienie między danych użycia zgłoszonych przez użycie usługi Azure Stack interfejsów API i danych użycia zgłoszonych przez Centrum konta platformy Azure. Opóźnienie to czas potrzebny na przekazywanie danych użycia z usługi Azure Stack do handlu platformy Azure. Ze względu na to opóźnienie użycie występujący wkrótce wcześniejszą niż północ może być ujęte w systemie Azure następnego dnia. Jeśli używasz [interfejsów API usługi Azure Stack użycia](azure-stack-provider-resource-api.md)i porównać wyniki do użycia w portalu rozliczeń systemu Azure, możesz zobaczyć różnicę.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 * [Interfejs API użycia dostawcy](azure-stack-provider-resource-api.md)  
 * [Interfejs API użycia dzierżawy](azure-stack-tenant-resource-usage-api.md)
 * [Często zadawane pytania na temat użycia](azure-stack-usage-related-faq.md)
-* [Zarządzanie użycia i rozliczeń jako dostawcy usług w chmurze](azure-stack-add-manage-billing-as-a-csp.md)
+* [Zarządzanie użycia i rozliczeń co dostawcy usług w chmurze](azure-stack-add-manage-billing-as-a-csp.md)

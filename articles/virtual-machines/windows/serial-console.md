@@ -14,14 +14,14 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 1bb6e464b748f2558cec35a95554bb3e08b667f0
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 785b0137624cc6d940f4944e0357d0a5774561df
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378333"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634714"
 ---
-# <a name="virtual-machine-serial-console-preview"></a>Konsola szeregowa maszyny wirtualnej (wersja zapoznawcza) 
+# <a name="virtual-machine-serial-console"></a>Konsola szeregowa maszyny wirtualnej
 
 
 Konsola szeregowa maszyny wirtualnej na platformie Azure zapewnia dostęp do konsoli usługi oparte na tekście dla maszyn wirtualnych Windows. Jest to połączenie szeregowe do portu szeregowego COM1 maszyny wirtualnej, zapewniając dostęp do maszyny wirtualnej, który jest niezależny od sieci lub stan systemu operacyjnego maszyny wirtualnej. Dostęp do konsoli szeregowej dla maszyny wirtualnej można obecnie tylko można zrobić za pomocą witryny Azure portal i jest dozwolone tylko dla tych użytkowników, którzy mają Współautor maszyny Wirtualnej lub nowszej dostęp do maszyny wirtualnej. 
@@ -29,7 +29,7 @@ Konsola szeregowa maszyny wirtualnej na platformie Azure zapewnia dostęp do kon
 Konsola szeregowa dokumentację dotyczącą maszyn wirtualnych systemu Linux [tutaj](../linux/serial-console.md).
 
 > [!Note] 
-> Wersje zapoznawcze są udostępniane pod warunkiem, że wyrażasz zgodę na warunki użytkowania. Aby uzyskać więcej informacji zobacz [Microsoft Azure dodatkowym warunkom użytkowania wersji zapoznawczych platformy Microsoft.] (https://azure.microsoft.com/support/legal/preview-supplemental-terms/) Obecnie ta usługa jest w **publicznej wersji zapoznawczej** i dostęp do konsoli szeregowej dla maszyn wirtualnych jest dostępny dla globalnych regionów platformy Azure. W tym momencie konsoli szeregowej nie jest dostępna chmury Azure Government, Azure (Niemcy) i Azure (Chiny).
+> Konsola szeregowa dla maszyn wirtualnych jest ogólnie dostępna w globalnych regionów platformy Azure. W tym momencie konsoli szeregowej nie jest jeszcze dostępna chmury platformy Azure Government lub Azure (Chiny).
 
  
 
@@ -51,7 +51,7 @@ Konsola szeregowa dla maszyn wirtualnych jest dostępny za pośrednictwem tylko 
   1. Otwórz witrynę Azure portal
   2. W menu po lewej stronie wybierz maszyny wirtualne.
   3. Kliknij maszynę Wirtualną na liście. Zostanie otwarta strona Przegląd dla maszyny Wirtualnej.
-  4. Przewiń w dół, pomoc techniczna i rozwiązywanie problemów z sekcji, a następnie kliknij opcję Konsola szeregowa (wersja zapoznawcza). Nowe okienko z konsolą szeregową otworzy się i rozpocząć połączenie.
+  4. Przewiń w dół, pomoc techniczna i rozwiązywanie problemów z sekcji, a następnie kliknij opcję "Konsoli szeregowej". Nowe okienko z konsolą szeregową otworzy się i rozpocząć połączenie.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
 
@@ -187,18 +187,18 @@ Nie masz wymaganych uprawnień do używania konsoli szeregowej maszyny Wirtualne
 Nie można określić grupy zasobów dla konta magazynu diagnostyki rozruchu "<STORAGEACCOUNTNAME>". Sprawdź, czy Diagnostyka rozruchu jest włączona dla tej maszyny Wirtualnej, i czy masz dostęp do tego konta magazynu. | Dostęp do konsoli szeregowej wymaga określonych uprawnień dostępu. Zobacz [wymaganiami dotyczącymi dostępu](#prerequisites) Aby uzyskać szczegółowe informacje
 Odpowiedź "Dostęp zabroniony" napotkano podczas uzyskiwania dostępu do konta magazynu diagnostyki rozruchu dla tej maszyny Wirtualnej. | Upewnij się, że tej diagnostyki rozruchu zapory konta. Konto magazynu diagnostyki rozruchu dostępny jest niezbędne do konsoli szeregowej funkcjonowania.
 Gniazda sieci Web został zamknięty lub nie można otworzyć. | Może być konieczne do listy dozwolonych `*.console.azure.com`. Bardziej szczegółowe, ale dłużej podejście jest do listy dozwolonych adresów [zakresów adresów IP centrum danych platformy Microsoft Azure](https://www.microsoft.com/en-us/download/details.aspx?id=41653), które są stosunkowo regularnie zmieniane.
+Tylko informacje o kondycji jest wyświetlany podczas nawiązywania połączenia maszyny Wirtualnej z systemem Windows| Spowoduje to wyświetlenie Jeśli specjalnej konsoli administracyjnej nie został włączony dla obrazu systemu Windows. Zobacz [dostęp szeregowy konsoli dla Windows](#access-serial-console-for-windows) instrukcje na temat sposobu ręcznego włączenia SAC na maszynie Wirtualnej Windows. Więcej informacji znajduje się w temacie [sygnałów kondycji Windows](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
 
 ## <a name="known-issues"></a>Znane problemy 
-Jak My nadal w fazie (wersja zapoznawcza), aby uzyskać dostęp do konsoli szeregowej, będziemy działają przez niektóre znane problemy, poniżej przedstawiono listę o możliwe obejścia 
+Mamy świadomość, problemy z konsolą szeregową. Poniżej przedstawiono listę tych problemów oraz kroki dotyczące ograniczania ryzyka.
 
 Problem                             |   Środki zaradcze 
 :---------------------------------|:--------------------------------------------|
 Naciśnięcie wprowadź po transparent połączenia nie są wyświetlane dziennika w wierszu polecenia | Zobacz tę stronę: [Hitting wprowadź, nic nie robi](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Hitting_enter_does_nothing.md). To może się zdarzyć, jeśli używasz niestandardowej maszyny Wirtualnej wzmocnione urządzenia lub CHODNIKÓW konfiguracji tego Windows causers niepowodzenie prawidłowo połączenia do portu szeregowego.
-Tylko informacje o kondycji jest wyświetlany podczas nawiązywania połączenia maszyny Wirtualnej z systemem Windows| Spowoduje to wyświetlenie Jeśli specjalnej konsoli administracyjnej nie został włączony dla obrazu systemu Windows. Zobacz [dostęp szeregowy konsoli dla Windows](#access-serial-console-for-windows) instrukcje na temat sposobu ręcznego włączenia SAC na maszynie Wirtualnej Windows. Więcej informacji znajduje się w temacie [sygnałów kondycji Windows](https://github.com/Microsoft/azserialconsole/blob/master/Known_Issues/Windows_Health_Info.md).
 Nie można wpisać w SAC stanie się monit, jeśli włączone jest debugowanie jądra | Nawiązać połączenia RDP z maszyną Wirtualną i uruchom `bcdedit /debug {current} off` z wiersza polecenia z podwyższonym poziomem uprawnień. Jeśli z jakiegoś powodu RDP można zamiast tego Dołącz dysk systemu operacyjnego do innej maszyny Wirtualnej platformy Azure i zmodyfikuj go podczas podłączyć jako dysku danych przy użyciu `bcdedit /store <drive letter of data disk>:\boot\bcd /debug <identifier> off`, następnie zamienić ponownie dysk.
 Wklejając w programie PowerShell powoduje SAC trzeciego znaku gdyby pierwotną wersją zawartości powtarzające się znaki | Obejście tego problemu jest zwolnienie modułu PSReadLine z bieżącej sesji. Uruchom `Remove-Module PSReadLine` wyładować modułu PSReadLine z bieżącej sesji — to będzie nie usuwać ani odinstalowania modułu.
 Niektóre dane wejściowe z klawiatury generuje dziwne SAC danych wyjściowych (np. `[A`, `[3~`) | [VT100](https://aka.ms/vtsequences) sekwencje ucieczki nie są obsługiwane przez wiersz SAC.
-Odpowiedź "Dostęp zabroniony" napotkano podczas uzyskiwania dostępu do konta magazynu diagnostyki rozruchu dla tej maszyny Wirtualnej. | Upewnij się, że tej diagnostyki rozruchu zapory konta. Konto magazynu diagnostyki rozruchu dostępny jest niezbędne do konsoli szeregowej funkcjonowania.
+Wklejanie bardzo długich ciągów nie działa | Konsola szeregowa ogranicza długość ciągów w terminalu, aby 2048 znaków. To, aby uniknąć przeciążenia przepustowość portu szeregowego.
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania 
 **PYTANIA I ODPOWIEDZI. Jak wysłać opinię?**

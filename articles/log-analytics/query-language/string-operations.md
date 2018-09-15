@@ -15,18 +15,20 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: de1ba8b8560e65586ac59f9a04165a93492f3e05
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 2acdc2cc7397e169a32a0257c0fc6020338c944f
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40190226"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45604488"
 ---
 # <a name="working-with-strings-in-log-analytics-queries"></a>Praca z ciągami zapytań usługi Log Analytics
 
 
 > [!NOTE]
 > Należy wykonać [Rozpoczynanie pracy z usługą portalu analiza](get-started-analytics-portal.md) i [wprowadzenie do zapytań](get-started-queries.md) przed ukończenie tego samouczka.
+
+[!INCLUDE [log-analytics-demo-environment](../../../includes/log-analytics-demo-environment.md)]
 
 W tym artykule opisano jak edytowanie, porównaj, wyszukiwanie i wykonywanie wielu innych operacji na ciągi. 
 
@@ -36,13 +38,13 @@ Każdy znak w ciągu ma numer indeksu, zgodnie z jego lokalizacją. Pierwszy zna
 ## <a name="strings-and-escaping-them"></a>Ciągi i ich anulowania zapewnianego element
 Wartości ciągu są ujęte w nawiasy przy użyciu znaków cudzysłowu pojedynczym lub podwójnym. Ukośnik odwrotny (\) służy do znaki ucieczki znak następujący przykład \t dla karty, \n dla nowego wiersza, i \" sam znak cudzysłowu.
 
-```OQL
+```KQL
 print "this is a 'string' literal in double \" quotes"
 ```
 
 Aby zapobiec "\\" z działającym jako znak ucieczki, należy dodać "@" jako prefiksu parametry:
 
-```OQL
+```KQL
 print @"C:\backslash\not\escaped\with @ prefix"
 ```
 
@@ -106,7 +108,7 @@ Liczba przypadków, które można dopasować ciągu wyszukiwania w kontenerze. Z
 
 #### <a name="plain-string-matches"></a>Zwykły ciąg znaków dopasowania
 
-```OQL
+```KQL
 print countof("The cat sat on the mat", "at");  //result: 3
 print countof("aaa", "a");  //result: 3
 print countof("aaaa", "aa");  //result: 3 (not 2!)
@@ -116,7 +118,7 @@ print countof("ababa", "aba");  //result: 2
 
 #### <a name="regex-matches"></a>Pasuje do wyrażenia regularnego
 
-```OQL
+```KQL
 print countof("The cat sat on the mat", @"\b.at\b", "regex");  //result: 3
 print countof("ababa", "aba", "regex");  //result: 1
 print countof("abcabc", "a.c", "regex");  // result: 2
@@ -129,7 +131,7 @@ Pobiera pasuje do wyrażenia regularnego z ciągu. Opcjonalnie również konwert
 
 ### <a name="syntax"></a>Składnia
 
-```OQL
+```KQL
 extract(regex, captureGroup, text [, typeLiteral])
 ```
 
@@ -147,7 +149,7 @@ Jeśli nie zostanie odnaleziony odpowiednik lub konwersja typu nie powiedzie si�
 ### <a name="examples"></a>Przykłady
 
 Poniższy przykład wyodrębnia ostatni oktet *ComputerIP* z rekordu pulsu:
-```OQL
+```KQL
 Heartbeat
 | where ComputerIP != "" 
 | take 1
@@ -155,7 +157,7 @@ Heartbeat
 ```
 
 Poniższy przykład wyodrębnia ostatni oktet, rzutuje na *rzeczywistych* wpisz (number), a następnie oblicza wartość dalej IP
-```OQL
+```KQL
 Heartbeat
 | where ComputerIP != "" 
 | take 1
@@ -165,7 +167,7 @@ Heartbeat
 ```
 
 W przykładzie poniżej ciąg *śledzenia* jest wyszukiwana w definicji "Czasu trwania". Dopasowanie jest rzutowany na *rzeczywistych* i pomnożona przez stałą czasu (1 s) *który rzutuje czasu trwania typu timespan*.
-```OQL
+```KQL
 let Trace="A=12, B=34, Duration=567, ...";
 print Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real));  //result: 567
 print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) * time(1s);  //result: 00:09:27
@@ -186,7 +188,7 @@ isnotempty(value)
 
 ### <a name="examples"></a>Przykłady
 
-```OQL
+```KQL
 print isempty("");  // result: true
 
 print isempty("0");  // result: false
@@ -211,7 +213,7 @@ parseurl(urlstring)
 
 ### <a name="examples"></a>Przykłady
 
-```OQL
+```KQL
 print parseurl("http://user:pass@contoso.com/icecream/buy.aspx?a=1&b=2#tag")
 ```
 
@@ -251,7 +253,7 @@ Tekst, który po zastąpieniu wszystkie dopasowania wyrażenia regularnego ocen 
 
 ### <a name="examples"></a>Przykłady
 
-```OQL
+```KQL
 SecurityEvent
 | take 1
 | project Activity 
@@ -282,7 +284,7 @@ split(source, delimiter [, requestedIndex])
 
 ### <a name="examples"></a>Przykłady
 
-```OQL
+```KQL
 print split("aaa_bbb_ccc", "_");    // result: ["aaa","bbb","ccc"]
 print split("aa_bb", "_");          // result: ["aa","bb"]
 print split("aaa_bbb_ccc", "_", 1); // result: ["bbb"]
@@ -301,7 +303,7 @@ strcat("string1", "string2", "string3")
 ```
 
 ### <a name="examples"></a>Przykłady
-```OQL
+```KQL
 print strcat("hello", " ", "world") // result: "hello world"
 ```
 
@@ -316,7 +318,7 @@ strlen("text_to_evaluate")
 ```
 
 ### <a name="examples"></a>Przykłady
-```OQL
+```KQL
 print strlen("hello")   // result: 5
 ```
 
@@ -337,7 +339,7 @@ substring(source, startingIndex [, length])
 - `length` -Opcjonalnym parametrem, który może służyć do określania Żądana długość zwracany ciąg podrzędny.
 
 ### <a name="examples"></a>Przykłady
-```OQL
+```KQL
 print substring("abcdefg", 1, 2);   // result: "bc"
 print substring("123456", 1);       // result: "23456"
 print substring("123456", 2, 2);    // result: "34"
@@ -356,7 +358,7 @@ toupper("value")
 ```
 
 ### <a name="examples"></a>Przykłady
-```OQL
+```KQL
 print tolower("HELLO"); // result: "hello"
 print toupper("hello"); // result: "HELLO"
 ```

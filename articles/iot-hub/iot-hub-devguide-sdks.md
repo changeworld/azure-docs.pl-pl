@@ -6,22 +6,24 @@ manager: timlt
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 03/12/2018
+ms.date: 09/14/2018
 ms.author: dobett
-ms.openlocfilehash: b57a448459101150363d595910cefcde991f1f92
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: f5d493628df68e0afbe05137b0d7386d6c40f7d4
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721819"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45605746"
 ---
 # <a name="understand-and-use-azure-iot-hub-sdks"></a>Zrozumienia i użycia, zestawami SDK Azure IoT Hub
 
-Istnieją dwie kategorie software development Kit (SDK) do pracy z usługą IoT Hub:
+Istnieją trzy kategorie software development Kit (SDK) do pracy z usługą IoT Hub:
 
 * **Zestawy SDK urządzeń** umożliwiają tworzenie aplikacji uruchamianych na urządzeniach IoT przy użyciu klienta modułu lub klienta urządzenia. Te aplikacje wysyłanie danych telemetrycznych do Centrum IoT i opcjonalnie odbierać komunikaty, zadania, metody lub aktualizacji bliźniaczej reprezentacji z Centrum IoT hub.  Umożliwia także klienta modułu do tworzenia [modułów](https://docs.microsoft.com/azure/iot-edge/iot-edge-modules) dla [środowisko uruchomieniowe usługi Azure IoT Edge](https://docs.microsoft.com/en-us/azure/iot-edge/about-iot-edge).
 
 * **Zestawy SDK usług** umożliwiają zarządzanie Centrum IoT i opcjonalnie wysyłanie komunikatów, planowania zadań, wywoływanie metod bezpośrednich lub wysyłania aktualizacji żądaną właściwość do Twojego urządzenia IoT lub modułów.
+
+* **Zestawy SDK aprowizacji urządzeń** pozwoli na aprowizację urządzenia do usługi IoT Hub przy użyciu [usługi Device Provisioning](../iot-dps/about-iot-dps.md).
 
 Dowiedz się więcej o korzyściach związanych z tworzeniem, za pomocą usługi Azure IoT SDKs [tutaj][lnk-benefits-blog].
 
@@ -107,7 +109,29 @@ Usługa Azure IoT Hub zestawu SDK usługi dla systemu iOS:
 > [!NOTE]
 > Zobacz pliki readme w repozytoriach usługi GitHub, informacji o używaniu języka i menedżerów pakietów specyficznych dla platformy, aby zainstalować pliki binarne i zależności na komputerze deweloperskim.
 
+## <a name="device-provisioning-sdks"></a>Zestawy SDK aprowizacji urządzeń
 
+**Zestawami SDK Microsoft Azure aprowizacji** pozwoli na aprowizację urządzenia do usługi IoT Hub przy użyciu [usługi Device Provisioning](../iot-dps/about-iot-dps.md).
+
+Aprowizacja usług i urządzeń zestawy SDK platformy Azure dla języka C#:
+* [Aprowizacja urządzenia klienckiego zestawu SDK](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/provisioning/device)
+* [Zestaw SDK klienta usługi aprowizowania](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/provisioning/service)
+
+Aprowizacja usług i urządzeń zestawy SDK platformy Azure dla języka Java:
+* [Aprowizacja urządzenia klienckiego zestawu SDK](https://github.com/Azure/azure-iot-sdk-java/blob/master/provisioning-device-client)
+* [Zestaw SDK klienta usługi aprowizowania](https://github.com/Azure/azure-iot-sdk-java/blob/master/provisioning/provisioning-service-client)
+
+Aprowizacja usług i urządzeń zestawy SDK platformy Azure dla środowiska Node.js:
+* [Aprowizacja urządzenia klienckiego zestawu SDK](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/device)
+* [Zestaw SDK klienta usługi aprowizowania](https://github.com/Azure/azure-iot-sdk-node/tree/master/provisioning/service)
+
+Aprowizacja usług i urządzeń zestawy SDK platformy Azure dla języka Python:
+* [Aprowizacja urządzenia klienckiego zestawu SDK](https://github.com/Azure/azure-iot-sdk-python/blob/master/provisioning_device_client)
+* [Zestaw SDK klienta usługi aprowizowania](https://github.com/Azure/azure-iot-sdk-python/tree/master/provisioning_service_client)
+
+Aprowizacja usług i urządzeń zestawy SDK platformy Azure dla języka C:
+* [Aprowizacja urządzenia klienckiego zestawu SDK](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning_client)
+* [Zestaw SDK klienta usługi aprowizowania](https://github.com/Azure/azure-iot-sdk-c/blob/master/provisioning/service)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

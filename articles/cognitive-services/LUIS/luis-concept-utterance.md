@@ -1,20 +1,21 @@
 ---
-title: Wypowiedzi w aplikacjach usługi LUIS na platformie Azure | Dokumentacja firmy Microsoft
-description: Dodawanie wypowiedzi w aplikacjach Language Understanding Intelligent Service (LUIS).
+title: Wypowiedzi w aplikacjach usługi LUIS
+titleSuffix: Azure Cognitive Services
+description: Wypowiedzi są dane wejściowe użytkownika, że Twoja aplikacja wymaga, aby zinterpretować. Zbieraj fraz, które uważasz, że użytkownicy będą mogli wprowadzać. Dołącz wypowiedzi, które oznaczają to samo, ale są konstruowane inaczej długość słowa i rozmieszczenie programu word.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 02/13/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 6f962d0aaf631051c841be29d2854a89bf58ac25
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: c455296348e3b4378a2912fa5388098b206b3ea4
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224419"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45632317"
 ---
 # <a name="utterances-in-luis"></a>Wypowiedzi w usługi LUIS
 
@@ -35,12 +36,14 @@ Podczas wybierania wypowiedzi, należy pamiętać, co myślisz, jest wspólny te
 Znajdziesz, nawet jeśli wprowadzisz działań mających na celu tworzenie zdania zależeć od wzorców, będą nadal powtórzenie niektóre słownika.
 
 Wykonaj te wypowiedzi przykładu:
-```
-how do I get a computer?
-Where do I get a computer?
-I want to get a computer, how do I go about it?
-When can I have a computer? 
-```
+
+|Przykładowe wypowiedzi|
+|--|
+|jak uzyskać komputera?|
+|Gdzie uzyskać komputera?|
+|Chcę uzyskać komputera, jak przejść na ten temat?|
+|Gdy masz, komputer?| 
+
 W tym miejscu termin core nie zróżnicowane "computer". Można mówią, komputerów stacjonarnych, laptopów, stacji roboczej lub nawet po prostu maszyny. Usługa LUIS inteligentnie wnioskuje synonimy z kontekstu, ale podczas tworzenia wypowiedzi szkolenia jest nadal lepiej różnią się w ich.
 
 ## <a name="example-utterances-in-each-intent"></a>Przykład wypowiedzi w każdej intencji

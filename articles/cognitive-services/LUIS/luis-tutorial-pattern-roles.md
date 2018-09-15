@@ -1,80 +1,70 @@
 ---
-title: Samouczek przy użyciu ról wzorca usprawniających prognoz usługi LUIS — Azure | Dokumentacja firmy Microsoft
-titleSuffix: Cognitive Services
-description: W tym samouczku należy użyć ról wzorca kontekstowe z powiązanymi obiektami, aby zwiększyć prognoz usługi LUIS.
+title: 'Samouczek 4: Dane dotyczące ról wzorca dla kontekstu'
+titleSuffix: Azure Cognitive Services
+description: Aby wyodrębnić dane z wypowiedź prawidłowo sformatowaną szablonu, należy użyć wzorca. Wypowiedź szablon używa prostego jednostki i role można wyodrębnić powiązanych danych, takie jak lokalizacja pochodzenia i lokalizację docelową.
 services: cognitive-services
 author: diberry
 manager: cjgronlund
 ms.service: cognitive-services
-ms.technology: luis
+ms.technology: language-understanding
 ms.topic: article
-ms.date: 08/03/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 6f3e7c9db7bbdb6bc24d123208355fc7a1d8e7e8
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: f3ddbad350ed42823ca95136ae2a507c46c3c763
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161938"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634544"
 ---
-# <a name="tutorial-improve-app-with-pattern-roles"></a>Samouczek: Ulepszaniu aplikacji przy użyciu ról wzorca
+# <a name="tutorial-4-extract-contextually-related-patterns"></a>Samouczek 4. Wyodrębnij kontekstowe powiązane wzorów
 
-W tym samouczku Użyj prostego jednostki przy użyciu ról w połączeniu z wzorców, aby zwiększyć prognozowania intencji i jednostek.  Korzystając z wzorców, potrzebne są mniej wypowiedzi przykład intencji.
+W tym samouczku należy użyć wzorca do wyodrębniania danych z wypowiedź prawidłowo sformatowaną szablonu. Wypowiedź szablon używa prostego jednostki i role można wyodrębnić powiązanych danych, takie jak lokalizacja pochodzenia i lokalizację docelową.  Korzystając z wzorców, potrzebne są mniej wypowiedzi przykład intencji.
 
-> [!div class="checklist"]
-* Omówienie ról wzorca
-* Proste jednostki za pomocą ról 
-* Tworzenie wzorca dla wypowiedzi przy użyciu prostego jednostki przy użyciu ról
-* Jak zweryfikować ulepszenia prognozowania wzorzec
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Przed rozpoczęciem
-Jeśli nie masz zarządzania zasobami ludzkimi firmy [wzorzec](luis-tutorial-pattern.md) samouczek, [zaimportować](luis-how-to-start-new-app.md#import-new-app) dane JSON do nowej aplikacji w [LUIS](luis-reference-regions.md#luis-website) witryny sieci Web. Aplikację do zaimportowania znajduje się w [przykłady LUIS](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-patterns-HumanResources-v2.json) repozytorium GitHub.
-
-Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `roles`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. 
-
-## <a name="the-purpose-of-roles"></a>Celem ról
 Role ma na celu wyodrębnienia kontekstowe powiązanych jednostek w wypowiedź. W polu wypowiedź `Move new employee Robert Williams from Sacramento and San Francisco`, Miasto źródła i miasta docelowego wartości są ze sobą powiązane i używać języka wspólnego do oznaczania każdej lokalizacji. 
 
-Korzystając z wzorców, można wykryć żadnych jednostek w wzorzec _przed_ wypowiedź pasuje do wzorca. 
 
-Podczas tworzenia wzorca pierwszym krokiem jest wybranie przeznaczenie wzorzec. Wybierając intencji, jeśli pasuje do wzorca, poprawny celem jest zawsze zwracany za pomocą Wysoka ocena (zazwyczaj 99 100%). 
-
-### <a name="compare-hierarchical-entity-to-simple-entity-with-roles"></a>Porównaj hierarchiczne jednostki do prostych jednostki przy użyciu ról
-
-W [hierarchiczne samouczek](luis-quickstart-intent-and-hier-entity.md), **MoveEmployee** intencji wykryte, gdy przenieść istniejące pracownika z jednym budynku i pakietu office. Wyrażenia o przykład obejmowała początkowe i docelowe lokalizacje, ale nie użyto ról. Zamiast tego początkowego i docelowego zostały dzieci hierarchiczne jednostki. 
-
-W tym samouczku aplikacja zarządzania zasobami ludzkimi wykrywa wypowiedzi informacje o przenoszeniu nowi pracownicy z jedno z miast na inny. Te dwa rodzaje wypowiedzi są podobne, ale zostaną rozwiązane za pomocą różnych możliwości usługi LUIS.
-
-|Samouczek|Przykład wypowiedź|Początkowe i docelowe lokalizacje|
-|--|--|--|
-|[Hierarchiczne (nie role)](luis-quickstart-intent-and-hier-entity.md)|mV Jill Jones z **a-2349** do **b-1298**|a-2349 b-1298|
-|Ten samouczek (przy użyciu ról)|Przenieś Billy Patterson z **Yuma** do **Denver**.|Yuma, Denver|
-
-Nie można użyć hierarchicznej jednostki we wzorcu, ponieważ tylko hierarchiczne nadrzędnych są używane we wzorcach. Aby można było powrócić nazwane lokalizacje źródła i przeznaczenia, muse Użyj wzorca.
-
-### <a name="simple-entity-for-new-employee-name"></a>Proste jednostki dla nowej nazwy pracownika
 Nazwa nowego pracownika, Billy Patterson nie jest częścią obiektami listy **pracowników** jeszcze. Nowa nazwa pracowników jest wyodrębniany najpierw wysłać nazwę do systemu zewnętrznego do tworzenia poświadczeń firmowych. Po utworzeniu poświadczeń firmowych poświadczeń pracowników są dodawane do listy jednostki **pracowników**.
 
-**Pracowników** lista została utworzona w [samouczek](luis-quickstart-intent-and-list-entity.md).
-
-**Nowy_pracownik** jednostka jest jednostką proste bez ról. 
-
-### <a name="simple-entity-with-roles-for-relocation-cities"></a>Proste jednostki przy użyciu ról dla miast relokacji
 Nowych pracowników i rodziny muszą zostać przeniesiona z bieżącego miasta, Miasto, w którym znajduje się fikcyjnej firmy. Ponieważ nowych pracownika mogą pochodzić z dowolnego miasta, lokalizacje konieczne ich odnalezienie. Listy zestawu, na przykład obiektami listy nie będzie działać, ponieważ będzie można wyodrębnić tylko miasta na liście.
 
-Nazwy ról, skojarzone z miast początkowe i docelowe muszą być unikatowa wśród wszystkich jednostek. Prosty sposób, aby upewnić się, że role są unikatowe, jest aby powiązać je względem jednostki zawartości za pośrednictwem strategia nazewnictwa. **NewEmployeeRelocation** jednostka jest jednostką proste przy użyciu dwóch ról: **NewEmployeeReloOrigin** i **NewEmployeeReloDestination**.
+Nazwy ról, skojarzone z miast początkowe i docelowe muszą być unikatowa wśród wszystkich jednostek. Prosty sposób, aby upewnić się, że role są unikatowe, jest aby powiązać je względem jednostki zawartości za pośrednictwem strategia nazewnictwa. **NewEmployeeRelocation** jednostka jest jednostką proste przy użyciu dwóch ról: **NewEmployeeReloOrigin** i **NewEmployeeReloDestination**. Relokacji bazy jest mała w przypadku przenoszenia.
 
-### <a name="simple-entities-need-enough-examples-to-be-detected"></a>Proste jednostki muszą wystarczająco dużo przykłady, aby zostało wykryte
 Ponieważ wypowiedź przykład `Move new employee Robert Williams from Sacramento and San Francisco` obejmuje tylko maszyny do opanowania jednostek, jest zapewnienie wystarczającej ilości wypowiedzi przykład do intencji, dlatego jednostki są wykrywane.  
 
 **Gdy wzorce umożliwiają mniej wypowiedzi przykład, jeśli obiekty nie są wykrywane, wzorzec jest niezgodny.**
 
 Jeśli masz trudności z wykrywaniem proste jednostki, ponieważ jest to nazwa miasta, Rozważ dodanie frazy listę wartości podobne. Ułatwia to wykrywanie nazwę miejscowości, zapewniając LUIS sygnał dodatkowe o danym typie wyrazu lub frazy. Wyświetla frazy tylko pomoc wzorzec, co ułatwia wykrycie jednostki, co jest niezbędne do wzorzec do dopasowania. 
 
+**W tym samouczku dowiesz się, jak:**
+
+> [!div class="checklist"]
+> * Użyj istniejącego samouczek aplikacji
+> * Tworzenie nowych jednostek
+> * Utwórz nowy opcję
+> * Szkolenie
+> * Publikowanie
+> * Pobierz intencje i podmioty z punktu końcowego
+> * Tworzenie wzorca przy użyciu ról
+> * Utwórz wyrażenie listę miast
+> * Pobierz intencje i podmioty z punktu końcowego
+
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>Użyj istniejącej aplikacji
+Kontynuuj aplikację utworzoną w samouczku ostatni o nazwie **kadry**. 
+
+Jeśli nie masz aplikacji kadry z poprzedniego samouczka, należy użyć następujących czynności:
+
+1.  Pobierz i Zapisz [pliku JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-patterns-HumanResources-v2.json).
+
+2. Importuj dane JSON do nowej aplikacji.
+
+3. Z **Zarządzaj** sekcji na **wersji** kartę, klonowanie wersji i nadaj mu nazwę `roles`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używany jako część trasy adresu URL, nazwa nie może zawierać żadnych znaków, które nie są prawidłowe w adresie URL.
+
 ## <a name="create-new-entities"></a>Tworzenie nowych jednostek
-1. Wybierz **kompilacji** w górnym menu.
+
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wybierz **jednostek** w lewym obszarze nawigacji. 
 
@@ -124,15 +114,15 @@ Etykietowanie jednostek w ramach tej procedury może być łatwiejsze, jeśli ke
 
     Jeśli usunięto jednostki keyPhrase, dodaj je do aplikacji teraz.
 
-## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
+## <a name="train"></a>Szkolenie
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikowanie aplikacji w celu uzyskania adresu URL punktu końcowego
+## <a name="publish"></a>Publikowanie
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-without-pattern"></a>Punkt końcowy bez wzorzec zapytania
+## <a name="get-intent-and-entities-from-endpoint"></a>Pobierz intencje i podmioty z punktu końcowego
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
@@ -224,9 +214,12 @@ Etykietowanie jednostek w ramach tej procedury może być łatwiejsze, jeśli ke
 
 Wynik konwersji prognoz jest tylko około 50%. Jeśli Twoja aplikacja kliencka wymaga większa liczba zostanie podana, musi on zostać naprawione. Jednostki nie były albo przewidzieć.
 
+Wyodrębniono jednej z lokalizacji, ale nie w innej lokalizacji. 
+
 Wzorców pomoże wynik prognozowania, jednak jednostki musi można poprawnie przewidzieć przed wypowiedź pasuje do wzorca. 
 
-## <a name="add-a-pattern-that-uses-roles"></a>Dodawanie wzorca, który używa ról
+## <a name="pattern-with-roles"></a>Wzorzec przy użyciu ról
+
 1. Wybierz **kompilacji** w górnym menu nawigacyjnym.
 
 2. Wybierz **wzorców** w nawigacji po lewej stronie.
@@ -237,8 +230,8 @@ Wzorców pomoże wynik prognozowania, jednak jednostki musi można poprawnie prz
 
     Jeśli uczenie i publikowanie i zapytania punktu końcowego może być rozczarować zobaczyć, że obiekty nie zostaną znalezione, więc wzorca nie są zgodne, dlatego nie poprawić Prognozowanie. Jest to konsekwencją nie ma wystarczającej ilości wypowiedzi przykład z etykietami jednostkami. Zamiast opcji dodawania więcej przykładów, dodać listy frazy, aby rozwiązać ten problem.
 
-## <a name="create-a-phrase-list-for-cities"></a>Utwórz listę frazy dla miast
-Miast, np. imion i nazwisk się trudne, że ich dowolnej kombinacji wyrazów i znaki interpunkcyjne. Ale miast w regionie świata są znane, dlatego usługa LUIS musi frazy listę miast, aby zapoznać się z. 
+## <a name="cities-phrase-list"></a>Lista fraz miast
+Miast, np. imion i nazwisk się trudne, że ich dowolnej kombinacji wyrazów i znaki interpunkcyjne. Miast, w regionie świata są znane, dlatego usługa LUIS musi frazy listę miast, aby zapoznać się z. 
 
 1. Wybierz **listy fraz** z **lepsza wydajność aplikacji** części menu po lewej stronie. 
 
@@ -255,16 +248,13 @@ Miast, np. imion i nazwisk się trudne, że ich dowolnej kombinacji wyrazów i z
     |Miami|
     |Dallas|
 
-    Nie należy dodawać każdego miasta w świecie lub nawet co Miasto, w tym regionie. Usługa LUIS musi być możliwe do uogólnienia jakim mieście jest na liście. 
-
-    Upewnij się zachować **te wartości są wymienne** wybrane. To ustawienie oznacza, że wyrazy na liście na traktowane jako synonimów. Jest to dokładnie, jak powinny być traktowane w strukturze.
-
-    Należy pamiętać, [ostatniego](luis-quickstart-primary-and-secondary-data.md) tej serii samouczka utworzona lista frazy została również zwiększyć wykrywania jednostki proste jednostki.  
+    Nie należy dodawać każdego miasta w świecie lub nawet co Miasto, w tym regionie. Usługa LUIS musi być możliwe do uogólnienia jakim mieście jest na liście. Upewnij się zachować **te wartości są wymienne** wybrane. To ustawienie oznacza, że wyrazy na liście na traktowane jako synonimów. 
 
 3. Uczenie i publikowanie aplikacji.
 
-## <a name="query-endpoint-for-pattern"></a>Końcowy zapytania dla wzorca
-1. Na stronie **Publish** (Publikowanie) wybierz link **endpoint** (punkt końcowy) u dołu strony. Ta czynność spowoduje otwarcie nowego okna przeglądarki z adresem URL punktu końcowego na pasku adresu. 
+## <a name="get-intent-and-entities-from-endpoint"></a>Pobierz intencje i podmioty z punktu końcowego
+
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Move wayne berry from miami to mount vernon`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
 
@@ -380,11 +370,24 @@ Miast, np. imion i nazwisk się trudne, że ich dowolnej kombinacji wyrazów i z
 
 Wynik konwersji jest teraz znacznie wyższa i nazwy ról są częścią odpowiedzi jednostki.
 
+## <a name="hierarchical-entities-versus-roles"></a>Hierarchiczna jednostki i role
+
+W [hierarchiczne samouczek](luis-quickstart-intent-and-hier-entity.md), **MoveEmployee** intencji wykryte, gdy przenieść istniejące pracownika z jednym budynku i pakietu office. Wyrażenia o przykład obejmowała początkowe i docelowe lokalizacje, ale nie użyto ról. Zamiast tego początkowego i docelowego zostały dzieci hierarchiczne jednostki. 
+
+W tym samouczku aplikacja zarządzania zasobami ludzkimi wykrywa wypowiedzi informacje o przenoszeniu nowi pracownicy z jedno z miast na inny. Te dwa rodzaje wypowiedzi są takie same, ale zostaną rozwiązane za pomocą różnych możliwości usługi LUIS.
+
+|Samouczek|Przykład wypowiedź|Początkowe i docelowe lokalizacje|
+|--|--|--|
+|[Hierarchiczne (nie role)](luis-quickstart-intent-and-hier-entity.md)|mV Jill Jones z **a-2349** do **b-1298**|a-2349 b-1298|
+|Ten samouczek (przy użyciu ról)|Przenieś Billy Patterson z **Yuma** do **Denver**.|Yuma, Denver|
+
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
+
+W tym samouczku dodać jednostki przy użyciu ról i przeznaczenie z wypowiedzi przykład. Pierwszy prognozowania punktu końcowego przy użyciu jednostki poprawnie przewidzieć intencji ale z oceną zaufania niski. Wykryto tylko jeden z dwoma jednostkami. Następnie samouczka dodane wzorzec, który umożliwia zwiększenie wartości nazwy miast w wypowiedzi ról jednostki i listy fraz. Drugi prognozowania punktu końcowego zwrócony wynik o wysokim poziomie pewności i znaleźć obiema rolami jednostki. 
 
 > [!div class="nextstepaction"]
 > [Poznaj najlepsze rozwiązania dotyczące aplikacji usługi LUIS](luis-concept-best-practices.md)
