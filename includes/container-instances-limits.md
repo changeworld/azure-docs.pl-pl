@@ -1,13 +1,13 @@
 | Zasób | Limit domyślny |
 | --- | :--- |
-| Grupy kontenerów na [subskrypcję](../articles/billing-buy-sign-up-azure-subscription.md) | 20<sup>1</sup> |
+| Grupy kontenerów na [subskrypcję](../articles/billing-buy-sign-up-azure-subscription.md) | 100<sup>1</sup> |
 | Liczba kontenerów na grupę kontenerów | 60 |
 | Liczba woluminów na grupę kontenerów | 20 |
 | Porty na adres IP | 5 |
-| Utworzenia kontenera na godzinę |60<sup>1</sup> |
-| Utworzenia kontenera na 5 minut | 20<sup>1</sup> |
-| Usunięcia kontenera na godzinę | 150<sup>1</sup> |
-| Usunięcia kontenera na 5 minut | 50<sup>1</sup> |
+| Utworzenia kontenera na godzinę |300<sup>1</sup> |
+| Utworzenia kontenera na 5 minut | 100<sup>1</sup> |
+| Usunięcia kontenera na godzinę | 300<sup>1</sup> |
+| Usunięcia kontenera na 5 minut | 100<sup>1</sup> |
 | Wiele kontenerów na grupę kontenerów | Tylko system Linux<sup>2</sup> |
 | Woluminy usługi Azure Files | Tylko system Linux<sup>2</sup> |
 | Woluminy GitRepo | Tylko system Linux<sup>2</sup> |

@@ -3,14 +3,14 @@
 
 # Omówienie
 ## [Omówienie usługi Data Lake Storage 1. generacji](data-lake-store-overview.md)
-## [Porównanie usług Data Lake Storage. 1 generacji i Azure Storage](data-lake-store-comparison-with-blob-storage.md)
-## [Usługa Data Lake Storage 1. generacji do przetwarzania danych big data](data-lake-store-data-scenarios.md)
-## [Aplikacje typu „open source” współdziałające z usługą Data Lake Storage 1. generacji](data-lake-store-compatible-oss-other-applications.md)
+## [Porównanie z usługą Azure Storage](data-lake-store-comparison-with-blob-storage.md)
+## [Przetwarzanie danych big data](data-lake-store-data-scenarios.md)
+## [Praca z aplikacjami open source](data-lake-store-compatible-oss-other-applications.md)
 ## [Najlepsze praktyki](data-lake-store-best-practices.md)
 
 # Rozpoczęcie pracy
-## [Korzystanie z portalu](data-lake-store-get-started-portal.md)
-## [Korzystanie z programu PowerShell](data-lake-store-get-started-powershell.md)
+## [Korzystanie z witryny Azure Portal](data-lake-store-get-started-portal.md)
+## [Korzystanie z programu Azure PowerShell](data-lake-store-get-started-powershell.md)
 ## [Korzystanie z interfejsu wiersza polecenia platformy Azure 2.0](data-lake-store-get-started-cli-2.0.md)
 
 

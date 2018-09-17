@@ -1,6 +1,6 @@
 ---
-title: Konfigurowanie replikacji systemu SAP HANA na maszynach wirtualnych platformy Azure (VMs) | Dokumentacja firmy Microsoft
-description: Ustanów wysoką dostępność środowiska SAP HANA na maszynach wirtualnych Azure (maszyny wirtualne).
+title: Wysoka dostępność programu SAP HANA na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server | Dokumentacja firmy Microsoft
+description: Wysoka dostępność programu SAP HANA na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server
 services: virtual-machines-linux
 documentationcenter: ''
 author: MSSedusch
@@ -13,14 +13,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: 7a0797d79da95db77174a3e067a1e84276f286a5
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: dfcb5c7c0b487b8379d89a9b285bae1ca1a9c774
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42055814"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45634527"
 ---
-# <a name="high-availability-of-sap-hana-on-azure-virtual-machines"></a>Wysoka dostępność środowiska SAP HANA na maszynach wirtualnych platformy Azure
+# <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Wysoka dostępność programu SAP HANA na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server
 
 [dbms-guide]:dbms-guide.md
 [deployment-guide]:deployment-guide.md
@@ -110,7 +110,7 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
     - **Dostępność systemu**: Wybierz **HA**.
     - **Nazwa użytkownika administratora i hasło administratora**: tworzony jest nowy użytkownik, który może służyć do logowania się do komputera.
     - **Nowej lub istniejącej podsieci**: Określa, czy należy utworzyć nową sieć wirtualną i podsieć lub użyć istniejącej podsieci. Jeśli masz już sieć wirtualną, która jest połączona z siecią lokalną, wybierz opcję **istniejące**.
-    - **Identyfikator podsieci**: identyfikator podsieci, do którego powinny być połączone maszyny wirtualne. Aby połączyć maszynę wirtualną do sieci lokalnej, wybierz podsieć sieci wirtualnej VPN lub usługi Azure ExpressRoute. Identyfikator zwykle wygląda **/subscriptions/\<identyfikator subskrypcji > /resourceGroups/\<nazwy grupy zasobów > /providers/Microsoft.Network/virtualNetworks/\<nazwa sieci wirtualnej > /subnets/ \<Nazwa podsieci >**.
+    - **Identyfikator podsieci**: Jeśli chcesz wdrożyć maszynę Wirtualną w istniejącej sieci wirtualnej, w którym masz zdefiniowanej podsieci maszyny Wirtualnej powinien być przypisany do nazwy identyfikator odpowiednią podsieć. Identyfikator zwykle wygląda **/subscriptions/\<identyfikator subskrypcji > /resourceGroups/\<nazwy grupy zasobów > /providers/Microsoft.Network/virtualNetworks/\<nazwa sieci wirtualnej > /subnets/ \<Nazwa podsieci >**.
 
 ### <a name="manual-deployment"></a>Ręczne wdrażanie
 
@@ -969,7 +969,7 @@ Uwaga: Następujące testy są przeznaczone do można uruchomić w sekwencji i z
    <pre><code>hn1adm@hn1-db-1:/usr/sap/HN1/HDB03> HDB stop
    </code></pre>
 
-   Program pacemaker wykryje zatrzymane wystąpienie oprogramowania HANA i oznacz zasób jako węzeł hn1-db-1 nie powiodło się. Uruchom następujące polecenie, aby wyczyścić stanu nie powiodło się. Program pacemaker należy następnie automatycznie ponownie uruchomić wystąpienie oprogramowania HANA.
+   Program pacemaker wykryje zatrzymane wystąpienie oprogramowania HANA i oznacz zasób jako węzeł hn1-db-1 nie powiodło się. Program pacemaker automatycznie ponownie uruchomić wystąpienie oprogramowania HANA. Uruchom następujące polecenie, aby wyczyścić stanu nie powiodło się.
 
    <pre><code># run as root
    hn1-db-1:~ # crm resource cleanup msl_SAPHana_HN1_HDB03 hn1-db-1
