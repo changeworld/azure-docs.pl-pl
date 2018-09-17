@@ -3,8 +3,7 @@ title: Dowiedz się więcej o najnowszej wersji systemu operacyjnego gościa pla
 description: Najnowsze informacje o wersji i zgodność zestawu SDK dla systemu operacyjnego gościa usługi w chmurze platformy Azure.
 services: cloud-services
 documentationcenter: na
-author: RichardScheel
-manager: timlt
+author: raiye
 editor: ''
 ms.assetid: 6306cafe-1153-44c7-8554-623b03d59a34
 ms.service: cloud-services
@@ -12,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 9/12/2018
-ms.author: RichardScheel
-ms.openlocfilehash: 8d49742e90e09a8836309db165b07074645df00a
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.date: 9/13/2018
+ms.author: raiye
+ms.openlocfilehash: 239482151384ff555d86e3d639bfe1d75b0d0ceb
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576174"
+ms.locfileid: "45604896"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Wersje systemów operacyjnych gościa platformy Azure i zgodności zestawów SDK
 Zapewnia zwalnia z aktualne informacje o najnowszych systemu operacyjnego gościa platformy Azure dla usług w chmurze. Te informacje pomagają planowanie ścieżki uaktualnienia przed wyłączeniem systemie operacyjnym gościa. Jeśli konfigurujesz role do użycia *automatyczne* aktualizacji systemu operacyjnego gościa, zgodnie z opisem w [ustawienia aktualizacji systemu operacyjnego gościa Azure][Azure Guest OS Update Settings], nie jest istotne, przeczytanie na tej stronie.

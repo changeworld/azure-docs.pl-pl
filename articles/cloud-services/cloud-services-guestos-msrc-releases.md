@@ -3,8 +3,7 @@ title: Lista aktualizacji zastosowanych do systemu operacyjnego gościa platform
 description: Lista aktualizacji zastosowanych do wersji systemu operacyjnego gościa
 services: cloud-services
 documentationcenter: na
-author: RichardScheel
-manager: timlt
+author: raiye
 editor: ''
 ms.assetid: d0a272a9-ed01-4f4c-a0b3-bd5e841bdd77
 ms.service: cloud-services
@@ -12,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 9/12/2018
-ms.author: RichardScheel
-ms.openlocfilehash: 4ef49fe978db5c9b04bf9c8271e192fa60433d4b
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.date: 9/13/2018
+ms.author: raiye
+ms.openlocfilehash: c0eff5054b186ebc701e88d793992c8729408b7d
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722303"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45606001"
 ---
 # <a name="azure-guest-os"></a>System operacyjny gościa platformy Azure
 Poniższe tabele zawierają informacje o aktualizacjach usługi Microsoft Security Response Center (MSRC) stosowane do systemu operacyjnego gościa platformy Azure. Wyszukaj w tym artykule, aby określić, jeśli dana aktualizacja ma zastosowanie do systemu operacyjnego gościa, którego używasz. Aktualizacje zawsze przenoszone w konkretnym [rodziny] [ family-explain] były one wprowadzone w.
