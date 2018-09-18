@@ -8,20 +8,20 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: jaboes
 ms.custom: include file
-ms.openlocfilehash: b2561f4b1b5ef27f389114c85f0646b968f7765e
-ms.sourcegitcommit: 301855e018cfa1984198e045872539f04ce0e707
+ms.openlocfilehash: c7db8eaf57bf29e17b4543e99a44655030aa6172
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/19/2018
-ms.locfileid: "36269565"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45979135"
 ---
-# <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Za pomocą Managed dysków w szablonach usługi Azure Resource Manager
+# <a name="using-managed-disks-in-azure-resource-manager-templates"></a>Za pomocą usługi Managed Disks w szablonach usługi Azure Resource Manager
 
-Ten dokument przeprowadzi Cię przez różnice między zarządzanymi i niezarządzanymi dysków przy użyciu szablonów usługi Azure Resource Manager na umieszczanie maszyn wirtualnych. Przykłady ułatwić aktualizowanie istniejących szablonów, które korzystają z dysków niezarządzanych do zarządzanych dysków. Odwołania, jest używany [101 maszyny wirtualnej — prosty — windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) szablonu jako przewodnika. Widać szablon przy użyciu zarówno [dyskach zarządzanych](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) i przy użyciu poprzedniej wersji [niezarządzanych dysków](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) Jeśli chcesz bezpośrednio porównywać.
+W tym dokumencie przedstawiono różnice między zarządzanymi i niezarządzanymi dyskami aprowizację maszyn wirtualnych za pomocą szablonów usługi Azure Resource Manager. Przykłady ułatwiają aktualizowanie istniejących szablonów, które korzystają z dysków niezarządzanych do dysków zarządzanych. Odwołanie, używamy [101-maszyny wirtualnej — prosty — windows](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows) szablonu jako wskazówki. Możesz zobaczyć szablon przy użyciu zarówno [usługi managed Disks](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows/azuredeploy.json) i poprzedniej wersji przy użyciu [niezarządzane dyski](https://github.com/Azure/azure-quickstart-templates/tree/93b5f72a9857ea9ea43e87d2373bf1b4f724c6aa/101-vm-simple-windows/azuredeploy.json) Jeśli chcesz je bezpośrednio porównywać.
 
-## <a name="unmanaged-disks-template-formatting"></a>Niezarządzane formatowania szablonu dysków
+## <a name="unmanaged-disks-template-formatting"></a>Formatowanie szablonu dysków niezarządzanych
 
-Aby rozpocząć, umożliwia podjęcia wyglądu w sposób niezarządzany dyski są wdrażane. Podczas tworzenia dysków niezarządzane, potrzebujesz konta magazynu do przechowywania plików wirtualnego dysku twardego. Możesz utworzyć nowe konto magazynu lub użyć już istniejącego. W tym artykule przedstawiono sposób tworzenia nowego konta magazynu. Utwórz zasób konta magazynu w bloku zasobów, jak pokazano poniżej.
+Aby rozpocząć, możemy take wygląd, w jaki sposób usługa unmanaged disks są wdrażane. Podczas tworzenia dysków niezarządzanych, potrzebne jest konto magazynu do przechowywania plików wirtualnego dysku twardego. Można utworzyć nowe konto magazynu lub użyj przepływu, który już istnieje. W tym artykule pokazano, jak utworzyć nowe konto magazynu. Utwórz zasób konta magazynu w bloku zasobów, jak pokazano poniżej.
 
 ```json
 {
@@ -37,7 +37,7 @@ Aby rozpocząć, umożliwia podjęcia wyglądu w sposób niezarządzany dyski s�
 }
 ```
 
-W obiekcie maszyny wirtualnej należy dodać zależność na koncie magazynu, aby upewnić się, że został utworzony przed maszyny wirtualnej. W ramach `storageProfile` sekcji, określ pełny identyfikator URI lokalizacji wirtualnego dysku twardego, który odwołuje się do konta magazynu i jest wymagany dla dysku systemu operacyjnego i dysków z danymi.
+W ramach obiektu maszyny wirtualnej należy dodać zależność od konta magazynu, aby upewnić się, czy został utworzony przed maszyny wirtualnej. W ramach `storageProfile` sekcji podaj pełny identyfikator URI lokalizacja wirtualnego dysku twardego, który odwołuje się do konta magazynu i nie jest wymagana dla dysku systemu operacyjnego i dysków z danymi.
 
 ```json
 {
@@ -85,18 +85,18 @@ W obiekcie maszyny wirtualnej należy dodać zależność na koncie magazynu, ab
 }
 ```
 
-## <a name="managed-disks-template-formatting"></a>Zarządzane formatowania szablonu dysków
+## <a name="managed-disks-template-formatting"></a>Zarządzane dyski szablonu formatowania
 
-W przypadku dysków zarządzanych Azure dysk staje się zasobem najwyższego poziomu i nie wymaga już konto magazynu ma zostać utworzony przez użytkownika. Dysków zarządzanych zostały najpierw udostępnione w `2016-04-30-preview` wersja interfejsu API są dostępne w wszystkie kolejne wersje interfejsu API i są teraz domyślny typ dysku. Poniższe sekcje przeprowadzenie ustawienia domyślne i szczegółów jak dostosować dysków.
+Za pomocą usługi Azure Managed Disks dysk stanie się zasobem najwyższego poziomu i nie wymaga już konto magazynu ma zostać utworzony przez użytkownika. Dyski zarządzane najpierw zostały ujawnione w `2016-04-30-preview` wersji interfejsu API są dostępne we wszystkich kolejnych wersjach interfejsu API i są teraz domyślny typ dysku. W poniższych sekcjach opisano domyślne ustawienia i szczegółowo opisują jak dalej dostosowywać dysków.
 
 > [!NOTE]
-> Zalecane jest użycie wersji interfejsu API później niż `2016-04-30-preview` jako wystąpiły zmiany podziału między `2016-04-30-preview` i `2017-03-30`.
+> Zalecane jest użycie wersji interfejsu API nowsze niż `2016-04-30-preview` jako wprowadzono istotne zmiany między `2016-04-30-preview` i `2017-03-30`.
 >
 >
 
-### <a name="default-managed-disk-settings"></a>Domyślne ustawienia dysków zarządzanych
+### <a name="default-managed-disk-settings"></a>Domyślne ustawienia dysku zarządzanego
 
-Aby utworzyć Maszynę wirtualną z dyskami zarządzanych, już nie musisz utworzyć magazyn kont zasobów i można zaktualizować zasobu maszyny wirtualnej w następujący sposób. W szczególności należy pamiętać, że `apiVersion` odzwierciedla `2017-03-30` i `osDisk` i `dataDisks` nie odnoszą się do określonego identyfikatora URI dysku VHD. W przypadku wdrażania bez określenia dodatkowych właściwości, dysk będzie używać [magazynu Standard-LRS](../articles/storage/common/storage-redundancy.md). Jeśli nazwa nie zostanie określona, zajmuje format `<VMName>_OsDisk_1_<randomstring>` dla dysku systemu operacyjnego i `<VMName>_disk<#>_<randomstring>` dla każdego dysku danych. Domyślnie szyfrowania dysków Azure jest wyłączony; buforowanie jest odczytu/zapisu dla dysku systemu operacyjnego i brak w przypadku dysków z danymi. W poniższym przykładzie mogą pojawić się, że istnieje zależność konta magazynu, mimo że to jest tylko do przechowywania diagnostyki i nie jest wymagany dla magazynu danych na dysku.
+Aby utworzyć Maszynę wirtualną z dyskami zarządzanymi, nie potrzebujesz już do utworzenia magazynu konta zasobu, a następnie można zaktualizować zasobu maszyny wirtualnej w następujący sposób. W szczególności należy pamiętać, że `apiVersion` odzwierciedla `2017-03-30` i `osDisk` i `dataDisks` nie będzie odwoływać się do określonego identyfikatora URI dysku VHD. W przypadku wdrażania bez określenia dodatkowych właściwości, dysk użyje typu magazynu, w zależności od rozmiaru maszyny Wirtualnej. Na przykład jeśli używasz Premium stanie rozmiar maszyny Wirtualnej (rozmiary za pomocą "s" w ich imieniu, takie jak Standard_D2s_v3) system użyje Premium_LRS magazynu. Użyj ustawienia jednostki sku dysku, aby określić typ magazynu. Jeśli nazwa nie zostanie określona, zajmuje format `<VMName>_OsDisk_1_<randomstring>` dla dysku systemu operacyjnego i `<VMName>_disk<#>_<randomstring>` dla każdego dysku danych. Domyślnie usługa Azure disk encryption jest wyłączony; buforowanie jest odczytu/zapisu dla dysku systemu operacyjnego i brak w przypadku dysków z danymi. W poniższym przykładzie może Zauważ, że nadal ma zależy od konta magazynu, mimo że to jest tylko do przechowywania diagnostyki i nie jest wymagany dla magazynu danych na dysku.
 
 ```json
 {
@@ -135,9 +135,9 @@ Aby utworzyć Maszynę wirtualną z dyskami zarządzanych, już nie musisz utwor
 }
 ```
 
-### <a name="using-a-top-level-managed-disk-resource"></a>Przy użyciu zasobów dysków zarządzanych w najwyższego poziomu
+### <a name="using-a-top-level-managed-disk-resource"></a>Za pomocą zasobem najwyższego poziomu dysku zarządzanego
 
-Zamiast określać konfigurację dysków w obiekcie maszyny wirtualnej można tworzenia zasobu dysku najwyższego poziomu i dołącz je jako część tworzenie maszyny wirtualnej. Na przykład można utworzyć zasobu dysku w następujący sposób, aby użyć jako dysku danych.
+Jako alternatywę do określania konfiguracji dysku w obiekcie maszyny wirtualnej można utworzyć zasób dyskowy najwyższego poziomu i dołączyć go jako część tworzenia maszyn wirtualnych. Na przykład można utworzyć zasób dysku w następujący sposób, aby użyć jako dysku danych.
 
 ```json
 {
@@ -157,7 +157,7 @@ Zamiast określać konfigurację dysków w obiekcie maszyny wirtualnej można tw
 }
 ```
 
-W ramach obiektu maszyny Wirtualnej odwołuje się do obiektu dysku jest dołączony. Określ identyfikator ID zasobu dysku zarządzanego utworzone w `managedDisk` właściwość umożliwia dołączanie dysku tworzenia maszyny Wirtualnej. `apiVersion` Dla maszyny Wirtualnej zasobów ma ustawioną wartość `2017-03-30`. Zależność od zasobu dyskowego jest dodawany do upewnij się, że pomyślnie utworzono przed utworzeniem maszyny Wirtualnej. 
+W ramach obiektu maszyny Wirtualnej należy odwołać się do obiektu dysku do podłączenia. Określ identyfikator ID zasobu dysku zarządzanego, utworzone w `managedDisk` właściwość umożliwia dołączanie dysku podczas tworzenia maszyny Wirtualnej. `apiVersion` Dla maszyny Wirtualnej jest równa zasobów `2017-03-30`. Zależność od zasobu dyskowego jest dodawany do upewnij się, że jego pomyślnym utworzeniu przed utworzeniem maszyny Wirtualnej. 
 
 ```json
 {
@@ -200,9 +200,9 @@ W ramach obiektu maszyny Wirtualnej odwołuje się do obiektu dysku jest dołąc
 }
 ```
 
-### <a name="create-managed-availability-sets-with-vms-using-managed-disks"></a>Tworzenie zestawów dostępności zarządzanych maszyn wirtualnych za pomocą dysków zarządzanych
+### <a name="create-managed-availability-sets-with-vms-using-managed-disks"></a>Tworzenie zarządzanych zestawów dostępności z maszynami wirtualnymi przy użyciu dysków zarządzanych
 
-Do tworzenia zarządzanego zestawy dostępności z maszynami wirtualnymi przy użyciu dysków zarządzanych, Dodaj `sku` obiektu dostępności ustawić zasobów i ustawić `name` właściwości `Aligned`. Ta właściwość zapewnia, że dyski dla każdej maszyny Wirtualnej są wystarczająco odizolowane od siebie, aby uniknąć pojedynczych punktów awarii. Należy również zauważyć, że `apiVersion` dla zestawu dostępności zasobów ma ustawioną wartość `2017-03-30`.
+Do utworzenia zarządzanej zestawy dostępności mające maszyny wirtualne korzystają z dysków zarządzanych, należy dodać `sku` obiektu zestawie dostępności zasobów i ustawić `name` właściwość `Aligned`. Ta właściwość gwarantuje, że dyski dla każdej maszyny Wirtualnej są wystarczająco odizolowane od siebie, aby uniknąć pojedynczych punktów awarii. Należy również zauważyć, że `apiVersion` dla zestawu dostępności zasobów ustawiono `2017-03-30`.
 
 ```json
 {
@@ -220,14 +220,14 @@ Do tworzenia zarządzanego zestawy dostępności z maszynami wirtualnymi przy u�
 }
 ```
 
-### <a name="standard-ssd-disks"></a>Dyski SSD standardowe
+### <a name="standard-ssd-disks"></a>Dyski SSD w warstwie standardowa
 
-Poniżej przedstawiono parametry wymagane w szablonie usługi Resource Manager do tworzenia standardowych dysków SSD:
+Poniżej przedstawiono parametry potrzebne w szablonie usługi Resource Manager do utworzenia dysków SSD w warstwie standardowa:
 
-* *apiVersion* dla Microsoft.Compute musi być ustawiona jako `2018-04-01` (lub nowsza)
+* *wersja interfejsu API* dla dostawcy Microsoft.Compute musi być ustawiona jako `2018-04-01` (lub nowszy)
 * Określ *managedDisk.storageAccountType* jako `StandardSSD_LRS`
 
-W poniższym przykładzie przedstawiono *properties.storageProfile.osDisk* sekcji dla maszyny Wirtualnej, która używa standardowych dysków SSD:
+W poniższym przykładzie przedstawiono *properties.storageProfile.osDisk* dotyczącej maszyny Wirtualnej, która korzysta z dysków SSD w warstwie standardowa:
 
 ```json
 "osDisk": {
@@ -241,19 +241,19 @@ W poniższym przykładzie przedstawiono *properties.storageProfile.osDisk* sekcj
 }
 ```
 
-Na przykład Pełna szablonu tworzenia dysku standardowych dysków SSD przy użyciu szablonu, zobacz [utworzyć Maszynę wirtualną z obrazu systemu Windows w przypadku standardowych dysków danych SSD](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/).
+Aby uzyskać kompletny szablon przykład sposobu tworzenia dysku SSD w warstwie standardowa przy użyciu szablonu, zobacz [Utwórz Maszynę wirtualną z obrazu Windows przy użyciu standardowych dysków z danymi SSD](https://github.com/azure/azure-quickstart-templates/tree/master/101-vm-with-standardssd-disk/).
 
 ### <a name="additional-scenarios-and-customizations"></a>Dodatkowe scenariusze i dostosowania
 
-Aby uzyskać pełne informacje dotyczące specyfikacji interfejsu API REST, zapoznaj się z tematem [tworzenie dysków zarządzanych w dokumentacji interfejsu API REST](/rest/api/manageddisks/disks/disks-create-or-update). Dostępne są dodatkowe scenariusze, a także domyślne i dopuszczalne wartości, które można przesłać do interfejsu API za pomocą szablonu wdrożenia. 
+Aby uzyskać pełne informacje na temat specyfikacji interfejsu API REST, przejrzyj [Tworzenie dysku zarządzanego dokumentację interfejsu API REST](/rest/api/manageddisks/disks/disks-create-or-update). Znajdziesz w dodatkowych scenariuszach, a także domyślne i dopuszczalne wartości, które mogą być przesyłane do interfejsu API za pomocą wdrożeń szablonu. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Pełna szablonów, które zarządzanych dysków można znaleźć w następujących łączy repozytorium Szybki Start Azure.
-    * [Maszyny Wirtualnej systemu Windows z dyskiem zarządzanym](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
-    * [Maszyny Wirtualnej systemu Linux z dyskiem zarządzanym](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
-    * [Pełną listę szablonów zarządzanych dysku](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
-* Odwiedź stronę [omówienie dysków zarządzanych Azure](../articles/virtual-machines/windows/managed-disks-overview.md) dokumentu, aby dowiedzieć się więcej o dyskach zarządzanych.
-* Zapoznaj się z dokumentacją odwołanie szablonu, zasobów maszyny wirtualnej po przejściu na stronę [odwołania do szablonu Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines) dokumentu.
-* Zapoznaj się z dokumentacją odwołanie szablonu, zasoby dyskowe odwiedzając [odwołania do szablonu Microsoft.Compute/disks](/azure/templates/microsoft.compute/disks) dokumentu.
-* Aby uzyskać informacje dotyczące sposobu używania dysków zarządzanych w zestawy skalowania maszyny wirtualnej platformy Azure, odwiedź stronę [dysków danych za pomocą zestawów skali](https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks) dokumentu.
+* Aby uzyskać pełne szablony, które korzystają z dysków zarządzanych skorzystaj z następujących linków repozytorium Szybki Start platformy Azure.
+    * [Maszyna wirtualna Windows w przypadku dysków zarządzanych](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-windows)
+    * [Maszyny Wirtualnej systemu Linux przy użyciu dysku zarządzanego](https://github.com/Azure/azure-quickstart-templates/tree/master/101-vm-simple-linux)
+    * [Pełną listę szablonów dysku zarządzanego](https://github.com/Azure/azure-quickstart-templates/blob/master/managed-disk-support-list.md)
+* Odwiedź stronę [Omówienie usługi Azure Managed Disks](../articles/virtual-machines/windows/managed-disks-overview.md) dokumentu, aby dowiedzieć się więcej na temat dysków zarządzanych.
+* Przejrzyj dokumentację referencyjną szablonu zasobów maszyny wirtualnej, odwiedzając [odwołanie do szablonu Microsoft.Compute/virtualMachines](/azure/templates/microsoft.compute/virtualmachines) dokumentu.
+* Przejrzyj dokumentację referencyjną szablonu zasobów dyskowych, odwiedzając [odwołanie do szablonu Microsoft.Compute/disks](/azure/templates/microsoft.compute/disks) dokumentu.
+* Aby uzyskać informacje na temat sposobu używania dysków zarządzanych w zestawach skalowania maszyn wirtualnych platformy Azure, odwiedź stronę [korzystanie z dysków danych za pomocą zestawów skalowania](https://docs.microsoft.com/en-us/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-attached-disks) dokumentu.

@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: 0920489daf99445a9d715d0858cf68ae45e6a178
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a0e0b8e2de3c944698cdbc6b1b11351f70e77276
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42058198"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729896"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>Limity zasobów dla pul elastycznych za pomocą modelu zakupu opartego na jednostkach DTU 
 
@@ -25,9 +25,9 @@ Aby oparty na jednostkach DTU zakupu modelu limity zasobów dla pojedynczych baz
 > [!IMPORTANT]
 > W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
 
-## <a name="elastic-pool-storage-sizes-and-performance-levels"></a>Elastyczna pula: magazyn o rozmiarze i poziomy wydajności
+## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Elastyczna pula: magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych
 
-W przypadku pul elastycznych SQL Database w poniższej tabeli przedstawiono zasoby dostępne w poszczególnych usług warstwy i poziomu wydajności. Można ustawić warstwę usługi, poziom wydajności i wielkość magazynu przy użyciu [witryny Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), [wiersza polecenia platformy Azure](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), lub [interfejsu API REST](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
+W przypadku pul elastycznych SQL Database w poniższych tabelach wyświetlanie zasobów dostępnych w poszczególnych warstwach usług i obliczenia rozmiaru. Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwota [witryny Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), [wiersza polecenia platformy Azure](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), lub [interfejsu API REST](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
 
 > [!NOTE]
 > Limity zasobów pojedynczych baz danych w pulach elastycznych zazwyczaj są takie same jak dla pojedynczych baz danych poza pule na podstawie liczby jednostek Dtu i warstwy usług. Na przykład maksymalna współbieżnych procesów roboczych dla S2 bazy danych jest 120 pracowników. Tak max współbieżnych procesów roboczych dla bazy danych w puli standardowej jest również 120 pracowników Jeśli maksymalna wartość DTU na bazę danych w puli 50 jednostek Dtu (co jest równoważne do warstwy S2).

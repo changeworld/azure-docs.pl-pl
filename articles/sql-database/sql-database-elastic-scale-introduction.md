@@ -1,94 +1,94 @@
 ---
-title: Skalowanie w poziomie przy użyciu usługi Azure SQL Database | Dokumentacja firmy Microsoft
-description: Oprogramowanie jako usługa (SaaS) deweloperzy mogą łatwo utworzyć elastyczne, skalowalne baz danych w chmurze za pomocą tych narzędzi
+title: Skalowanie w poziomie za pomocą usługi Azure SQL Database | Dokumentacja firmy Microsoft
+description: Oprogramowanie deweloperów usługi (SaaS) można łatwo utworzyć elastyczne, skalowalne bazy danych w chmurze za pomocą tych narzędzi
 services: sql-database
 manager: craigg
 author: stevestein
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 09/14/2018
 ms.author: sstein
-ms.openlocfilehash: e8a07f1a1d172a96646a5c71a6267239e159c267
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: b28b61dc9faf94c21854a73f99af47e302c8d153
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646572"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729930"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Scaling out with Azure SQL Database (Skalowanie w poziomie za pomocą usługi Azure SQL Database)
-Możesz łatwo skalować w poziomie baz danych Azure SQL przy użyciu **elastycznej bazy danych** narzędzia. Te narzędzia i funkcje pozwala korzystać z zasobów bazy danych **bazy danych SQL Azure** do tworzenia rozwiązań dla obciążeń transakcyjnych, a szczególnie oprogramowania jako aplikacje usługi (SaaS). Elastyczne funkcje bazy danych składają się z:
+Można łatwo skalować w poziomie baz danych Azure SQL przy użyciu **Elastic Database** narzędzia. Te narzędzia i funkcje pozwalają korzystać z zasobów bazy danych **usługi Azure SQL Database** nad tworzeniem rozwiązań dla obciążeń transakcyjnych, a szczególnie oprogramowanie jako usługa (SaaS) aplikacji. Funkcje elastycznej bazy danych składają się:
 
-* [Biblioteka klienta usługi elastycznej bazy danych](sql-database-elastic-database-client-library.md): funkcja, która umożliwia tworzenie i obsługa bazy danych podzielonej jest biblioteka klienta.  Zobacz [wprowadzenie do narzędzi elastycznej bazy danych](sql-database-elastic-scale-get-started.md).
-* [Elastyczne narzędzia scalania podziału bazy danych](sql-database-elastic-scale-overview-split-and-merge.md): przenosi dane między podzielonej baz danych. Jest to przydatna do przenoszenia danych z wieloma dzierżawcami bazy danych do bazy danych pojedynczej dzierżawy (lub odwrotnie). Zobacz [samouczek narzędzi elastycznej bazy danych scalania podziału](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
-* [Zadania elastyczne bazy danych](sql-database-elastic-jobs-overview.md) (wersja zapoznawcza): umożliwia zadań zarządzania dużą liczbą baz danych Azure SQL. Łatwe wykonywanie operacji administracyjnych, takie jak zmiany schematu, Zarządzanie poświadczeniami, aktualizacje danych odwołania, zbierania danych o wydajności lub przy użyciu zadań gromadzenia danych telemetrii dzierżawy (klienta).
-* [Zapytanie elastycznej bazy danych](sql-database-elastic-query-overview.md) (wersja zapoznawcza): umożliwia uruchomienie zapytania języka Transact-SQL, obejmującej wiele baz danych. Umożliwia to połączenie narzędzi do raportowania, takich jak Excel, usługa Power BI, Tableau, itp.
-* [Transakcje elastycznej](sql-database-elastic-transactions-overview.md): Ta funkcja umożliwia uruchamianie transakcje obejmujące wiele baz danych w bazie danych SQL Azure. Transakcji elastycznej bazy danych są dostępne dla aplikacji .NET przy użyciu ADO .NET oraz integrują się z znanych programowania środowisko przy użyciu [System.Transaction klasy](https://msdn.microsoft.com/library/system.transactions.aspx).
+* [Biblioteka kliencka elastic Database](sql-database-elastic-database-client-library.md): biblioteki klienta jest funkcją, która pozwala na tworzenie i obsługa baz danych podzielonych na fragmenty.  Zobacz [Rozpocznij pracę z narzędziami elastycznej bazy danych](sql-database-elastic-scale-get-started.md).
+* [Narzędzie do dzielenia i scalania elastycznych baz danych](sql-database-elastic-scale-overview-split-and-merge.md): przenosi dane między bazami danych podzielonych na fragmenty. To narzędzie jest przydatne w przypadku przenoszenia danych z wielodostępną bazą danych do bazy danych jedną dzierżawą (lub odwrotnie). Zobacz [Elastic database Split-Merge tool samouczek](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
+* [Zadania elastic Database](sql-database-elastic-jobs-overview.md) (wersja zapoznawcza): używanie zadań do zarządzania dużą liczbą baz danych Azure SQL. Łatwo wykonywać operacje administracyjne, takie jak zmiany schematu, Zarządzanie poświadczeniami, aktualizacje danych referencyjnych, zbierania danych o wydajności lub zbieranie danych telemetrycznych dzierżaw (klientów) przy użyciu zadań.
+* [Zapytanie elastic Database](sql-database-elastic-query-overview.md) (wersja zapoznawcza): można uruchamiać zapytanie Transact-SQL, która obejmuje wiele baz danych. Umożliwia to połączenie narzędzi do raportowania, takie jak Excel, Power BI, Tableau, itp.
+* [Transakcje elastyczne](sql-database-elastic-transactions-overview.md): Ta funkcja pozwala na uruchamianie transakcje obejmujące wiele baz danych w usłudze Azure SQL Database. Transakcje elastyczne bazy danych są dostępne dla aplikacji .NET za pomocą ADO .NET i integracji z dobrze znanych programowania środowisko przy użyciu [klasy System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx).
 
-Na poniższym rysunku przedstawiono architekturę, która obejmuje **elastycznej bazy danych funkcji** w odniesieniu do kolekcji baz danych.
+Na poniższym rysunku przedstawiono architekturę, która obejmuje **funkcje Elastic Database** względem kolekcji baz danych.
 
-Na rysunku kolory bazy danych reprezentują schematów. Bazy danych o tej samej kolor współużytkować ten sam schemat.
+Na poniższej ilustracji kolory, bazy danych reprezentują schematów. Bazy danych przy użyciu tego samego koloru współużytkują ten sam schemat.
 
-1. Zestaw **baz danych Azure SQL** są hostowane na platformie Azure przy użyciu architektury dzielenia na fragmenty.
-2. **Biblioteki klienta elastycznej bazy danych** służy do zarządzania zestawem niezależnego fragmentu.
+1. Zbiór **baz danych Azure SQL** znajduje się na platformie Azure przy użyciu architecture dzielenie na fragmenty.
+2. **Biblioteka kliencka Elastic Database** służy do zarządzania zestawem fragmentu.
 3. Podzbiór baz danych są umieszczane w **puli elastycznej**. (Zobacz [co to jest pula?](sql-database-elastic-pool.md)).
-4. **Zadania elastycznej bazy danych** jest uruchamiana według harmonogramu lub ad hoc skryptów T-SQL dla wszystkich baz danych.
-5. **Narzędzia do scalania podziału** służy do przenoszenia danych z jednego niezależnego fragmentu do innej.
-6. **Elastycznej bazy danych zapytania** umożliwia Napisz zapytanie, które obejmuje wszystkie bazy danych w zestawie niezależnego fragmentu.
-7. **Transakcje elastycznej** zezwalają na uruchamianie transakcje obejmujące wiele baz danych. 
+4. **Zadania Elastic Database** uruchamia skrypty T-SQL według harmonogramu ani ad hoc dla wszystkich baz danych.
+5. **Narzędzie do dzielenia i scalania** służy do przenoszenia danych z jednego fragmentu do innego.
+6. **Zapytaniu Elastic Database** można napisać zapytanie, które obejmuje wszystkie bazy danych w zestawie fragmentu.
+7. **Transakcje elastyczne** umożliwiają uruchamianie transakcje obejmujące wiele baz danych. 
 
 ![Narzędzia elastycznych baz danych][1]
 
 ## <a name="why-use-the-tools"></a>Dlaczego warto używać narzędzi?
-Elastyczność i skalowalność dla aplikacji w chmurze została proste dla maszyn wirtualnych i magazynu obiektów blob — po prostu Dodaj odjąć jednostki lub zwiększyć zasilania. Lecz pozostają wyzwanie dla stanowych przetwarzania danych w relacyjnych baz danych. Wyzwania pojawiło się w następujących scenariuszach:
+Osiągnięcie elastyczności i skalowania dla aplikacji w chmurze zostało proste dla maszyn wirtualnych i magazynu obiektów blob — po prostu Dodaj usuwaj jednostki lub zwiększenia mocy. Ale pozostają wyzwanie dla stanowych przetwarzania danych w relacyjnych baz danych. Wyzwania pojawiło się w następujących scenariuszach:
 
-* Powiększania i zmniejszania pojemności relacyjnej bazy danych części obciążenie.
-* Zarządzanie punktami HotSpot, które mogą wystąpić podczas wpływających na konkretnego podzestawu dane — takie jak zajęty end klienta (dzierżawcy).
+* Rozwija i zmniejszanie pojemności dla relacyjnej bazy danych części obciążenia.
+* Zarządzanie hotspotami, które mogą wystąpić podczas wpływających na określony podzbiór danych — takich jak zajęty klientów końcowych (dzierżawa).
 
-Tradycyjnie scenariuszy, takich jak te dotyczą zainwestować w serwerach dużą skalę bazy danych do obsługi tej aplikacji. Jednak ta opcja jest ograniczona w chmurze, w którym przetwarzania się dzieje na sprzęcie masowym wstępnie zdefiniowane. Zamiast tego przesyłanie danych i przetwarzania przez wiele baz danych strukturalnych tak samo (ze skalowalnego w poziomie wzorcem znanym jako "dzielenia na fragmenty") stanowi alternatywę do tradycyjnych metod skalowanie w pionie zarówno pod względem kosztów i elastyczność.
+Tradycyjnie scenariusze, takie jak te dotyczą inwestować w serwery bazy danych w większej skali, do obsługi tej aplikacji. Jednak ta opcja jest ograniczona w chmurze, w którym wszystkie przetwarzanie odbywa się na sprzęcie masowym wstępnie zdefiniowane. Zamiast tego dystrybucję danych i przetwarzania w wielu bazach danych strukturalnych identycznie (znana jako "fragmentowania" wzorca skalowalnego w poziomie) stanowi alternatywę dla tradycyjnego podejścia skalowanie w górę, zarówno pod względem kosztów i elastyczność.
 
-## <a name="horizontal-and-vertical-scaling"></a>Skalowanie w poziomie i w pionie
-Na poniższej ilustracji przedstawiono wymiary poziome i pionowe skalowania, które są podstawowe sposoby, które mogą być skalowane elastycznych baz danych.
+## <a name="horizontal-and-vertical-scaling"></a>Skalowanie w poziomie i pionie
+Na poniższej ilustracji przedstawiono poziome i pionowe wymiary skalowania, które są podstawowe sposoby, które mogą być skalowane elastycznych baz danych.
 
-![Poziome i pionowe skalowania w poziomie][2]
+![Poziome i pionowe skalowalnego w poziomie][2]
 
-Skalowanie w poziomie odwołuje się do dodawania lub usuwania bazy danych, aby dopasować pojemności lub ogólnej wydajności. To jest również nazywany "skalowanie" out. Dzielenia na fragmenty, w którym danych jest podzielonym na partycje w kolekcji identycznie strukturalnych baz danych, jest to często stosowana metoda implementuje skalowanie w poziomie.  
+Skalowanie w poziomie odnosi się do dodawania lub usuwania bazy danych w celu dostosowania pojemności lub ogólnej wydajności, również przywołane "skalowanie". Dzielenie na fragmenty, w którym dane są partycjonowane na zbiór identycznie ze strukturą baz danych, jest typowym sposobem wdrożenia, skalowanie w poziomie.  
 
-Skalowanie w pionie odwołuje się do zwiększenie lub zmniejszenie poziomu wydajności bazy danych poszczególnych — jest to również nazywane "skalowaniu."
+Skalowanie w pionie odwołuje się do zwiększenie lub zmniejszenie rozmiaru obliczeń poszczególnych baz danych, znany także jako "skalowanie w górę."
 
-Większość aplikacji baz danych w skali chmury użycie kombinacji tych dwóch strategii. Na przykład aplikacja oprogramowania jako usługi mogą używać skalowanie w poziomie do obsługi administracyjnej nowych klientów końcowych i skalowanie w pionie umożliwia każdego odbiorcy końcowego bazy danych, można zwiększać i zmniejszać zasoby odpowiednio do potrzeb obciążenia.
+Większość aplikacji baz danych w skali chmury użyć kombinacji tych dwóch strategii. Na przykład aplikacja oprogramowania jako usługi może użyć skalowanie w poziomie do aprowizowania nowych klientów końcowych i skalowanie w pionie umożliwia bazy danych każdego klienta końcowego zwiększać i zmniejszać zasoby zgodnie z potrzebami przez obciążenie.
 
-* Skalowanie w poziomie jest zarządzany przy użyciu [biblioteki klienta elastycznej bazy danych](sql-database-elastic-database-client-library.md).
+* Skalowanie w poziomie jest zarządzane przy użyciu [Biblioteka kliencka Elastic Database](sql-database-elastic-database-client-library.md).
 * Skalowanie w pionie odbywa się przy użyciu poleceń cmdlet programu Azure PowerShell, aby zmienić warstwę usługi lub poprzez umieszczenie bazy danych w puli elastycznej.
 
 ## <a name="sharding"></a>Dzielenie na fragmenty
-*Dzielenia na fragmenty* to technika do dystrybucji dużych ilości danych strukturalnych tak samo dla pewnej liczby niezależnych baz danych. Jest to szczególnie popularnych z deweloperami chmury tworzenie oprogramowania jako ofert usługi (SAAS) dla klientów końcowych lub firmy. Tych klientów końcowych są często określane jako "dzierżawców". Dzielenia na fragmenty mogą być wymagane dla wielu sytuacjach:  
+*Dzielenie na fragmenty* to technika, aby rozdystrybuować dużych ilości danych strukturalnych identycznie wiele niezależnych baz danych. Jest to szczególnie popularne wśród deweloperów rozwiązań w chmurze tworzenia oprogramowania jako oferty usługi (SAAS) dla klientów końcowych lub firmy. Ci klienci końcowi często są określane jako "dzierżawy". Dzielenie na fragmenty może być wymagany przez dowolną liczbę powodów:  
 
-* Całkowita ilość danych jest za duży dla ograniczenia pojedynczej bazy danych
-* Przepływność transakcji ogólną obciążenie przekracza możliwości pojedynczej bazy danych
-* Dzierżawcy mogą wymagać fizycznego izolacji od siebie, więc oddzielne bazy danych są wymagane dla każdego dzierżawcy
-* Różne sekcje bazy danych może być konieczne znajdują się w różnych lokalizacjach geograficznych dla zgodności, wydajność lub z przyczyn geograficznymi.
+* Łączna ilość danych jest zbyt duży, aby zmieścić w ramach ograniczeń pojedynczej bazy danych
+* Przepływność transakcji całkowitego obciążenia przekracza możliwości pojedynczej bazy danych
+* Dzierżawcy mogą wymagać fizyczne odizolowanie od siebie, więc osobne bazy danych są wymagane dla każdego dzierżawcy
+* Poszczególne sekcje bazy danych może być konieczne znajdują się w różnych lokalizacjach geograficznych dla zgodności, wydajność lub z przyczyn geopolitycznych.
 
-W innych sytuacjach, takich jak wprowadzanie danych z urządzeń rozproszonych dzielenia na fragmenty można wypełnić zestaw baz danych, które są zorganizowane tymczasowe. Na przykład oddzielnej bazy danych może być dedykowany dla każdego dnia lub tygodnia. W takim przypadku dzielenia na fragmenty klucz musi być liczbą całkowitą reprezentującą Data (istnieje we wszystkich wierszach podzielonej tabel) i zapytania podczas pobierania informacji dotyczących zakresu dat muszą być kierowane przez aplikację do podzbioru w danym zakresie obejmujących baz danych.
+W innych scenariuszach, takich jak pozyskiwania danych z urządzeń rozproszonych dzielenia na fragmenty może służyć do wypełniania zestawu baz danych, które są zorganizowane czasowo. Na przykład oddzielnej bazy danych mogą być przeznaczone do obsługi każdego dnia lub tygodnia. W takim przypadku klucz fragmentowania może być liczbą całkowitą reprezentującą datę (istnieje we wszystkich wierszach tabel podzielonej na fragmenty) i pobieranie informacji o zakres dat zapytania muszą być kierowane przez aplikację do podzbioru baz danych obejmujących zakres w danym.
 
-Dzielenia na fragmenty działa najlepiej, gdy każda transakcja w aplikacji można ograniczyć do pojedynczej wartości klucza dzielenia na fragmenty. Która sprawia, że wszystkie transakcje są lokalne z określoną bazą danych.
+Dzielenie na fragmenty działa najlepiej, gdy uwzględniające każdą czynność w aplikacji można ograniczyć do pojedynczej wartości klucza fragmentowania. Która gwarantuje, że wszystkie transakcje są lokalne w konkretnej bazy danych.
 
 ## <a name="multi-tenant-and-single-tenant"></a>Wielodostępne i pojedynczej dzierżawy
-Niektóre aplikacje używają najprostsza metoda tworzenia oddzielnej bazy danych dla każdego dzierżawcy. Jest to **wzorca dzielenia na fragmenty pojedynczej dzierżawy** zapewnia izolację, możliwość wykonywania kopii zapasowej i przywracania i zasobów skalowanie na poziom szczegółowości dzierżawcy. Z pojedynczej dzierżawy dzielenia na fragmenty każda baza danych jest skojarzona z wartość Identyfikatora dzierżawy określonego (lub wartość klucza klienta), ale ten klucz nie muszą zawsze być obecne w samych danych. Odpowiada aplikacji kierować każdego żądania do odpowiedniej bazy danych — i biblioteki klienta może to uprościć.
+Niektóre aplikacje używają najprostszą metodą tworzenia oddzielnej bazy danych dla każdego dzierżawcy. To podejście jest **wzorzec fragmentowania pojedynczej dzierżawy** zapewniająca izolację, możliwość wykonywania kopii zapasowej/przywracania i zasobów, skalowanie na poziomie szczegółowości dzierżawy. Za pomocą fragmentowania pojedynczej dzierżawy każda baza danych jest skojarzona z wartością Identyfikatora dzierżawy określonego (lub wartość klucza klienta), ale ten klucz nie muszą zawsze być obecne w samych danych. Odpowiada za aplikację do rozsyłania każdego żądania do odpowiedniej bazy danych — i biblioteki klienta można uproszczenie tej informacji.
 
 ![Pojedynczej dzierżawy w porównaniu z wieloma dzierżawcami][4]
 
-Inne scenariusze pakietu wielu dzierżawców ze sobą do bazy danych zamiast izolowanie je do oddzielnego baz danych. To jest typowe **wzorca dzielenia na fragmenty wielodostępne** - i może być prowadzony przez fakt, że aplikacja zarządza dużą liczbę małych dzierżaw. W wielodostępnym dzielenia na fragmenty wierszy w tabelach bazy danych wszystkich mają klucz, który identyfikuje identyfikator dzierżawcy lub klucz dzielenia na fragmenty. Ponownie warstwy aplikacji jest odpowiedzialny za routing żądania dzierżawcy z odpowiednią bazą danych, a to może być obsługiwana przez biblioteki klienta elastycznej bazy danych. Ponadto zabezpieczenia na poziomie wierszy może służyć do filtru wierszy, które każdego dzierżawcy można uzyskać dostępu do — Aby uzyskać więcej informacji, zobacz [wielodostępnych aplikacji za pomocą narzędzi elastycznej bazy danych i zabezpieczenia na poziomie wiersza](sql-database-elastic-tools-multi-tenant-row-level-security.md). Redystrybuowanie danych między bazami danych mogą być wymagane ze wzorcem wielodostępne dzielenia na fragmenty, a umożliwiają to narzędzie do scalania podziału elastycznej bazy danych. Aby dowiedzieć się więcej na temat wzorców projektowych dla aplikacji SaaS wykorzystujących pule elastyczne, zobacz artykuł [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md) (Wzorce projektowe dla wielodostępnych aplikacji SaaS korzystających z usługi Azure SQL Database).
+Inne scenariusze pakietu wielu dzierżaw razem do bazy danych zamiast izolowanie ich do osobnych baz danych. Ten wzorzec jest typowa **wzorzec fragmentowania wielodostępnych** — i opartych na fakt, że aplikacja zarządza dużą liczbę małych dzierżaw. W fragmentowania wielodostępnych wierszy w tabelach bazy danych wszystkich służą do przenoszenia klucz, który identyfikuje identyfikator dzierżawy lub klucz fragmentowania. Ponownie w warstwie aplikacji jest odpowiedzialny za routing żądanie dzierżawy z odpowiednią bazą danych i to może być obsługiwany przez Biblioteka kliencka elastic database. Ponadto, zabezpieczenia na poziomie wierszy może służyć do filtra wierszy, które każdego dzierżawcy mogą uzyskiwać dostęp do — Aby uzyskać szczegółowe informacje, zobacz [wielodostępnych aplikacji za pomocą narzędzi elastycznych baz danych i zabezpieczenia na poziomie wiersza](sql-database-elastic-tools-multi-tenant-row-level-security.md). Ponowne dystrybuowanie danych w bazach danych mogą być potrzebne przy użyciu wzorzec fragmentowania wielu dzierżawców i jest zapewniana przez narzędzie do dzielenia i scalania elastycznej bazy danych. Aby dowiedzieć się więcej na temat wzorców projektowych dla aplikacji SaaS wykorzystujących pule elastyczne, zobacz artykuł [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md) (Wzorce projektowe dla wielodostępnych aplikacji SaaS korzystających z usługi Azure SQL Database).
 
-### <a name="move-data-from-multiple-to-single-tenancy-databases"></a>Przenoszenie danych z wielu baz danych z pojedynczej dzierżawy
-Podczas tworzenia aplikacji SaaS, jest typowy oferowanie potencjalnych odbiorców wersję próbną oprogramowania. W tym przypadku jest ekonomiczna korzystanie z bazy danych z wieloma dzierżawcami danych. Jednak gdy dot, dzierżawy pojedynczej bazy danych jest lepszym rozwiązaniem, ponieważ zapewnia lepszą wydajność. Jeśli klient ma utworzony danych podczas okresu próbnego, użyj [narzędzia do scalania podziału](sql-database-elastic-scale-overview-split-and-merge.md) przenoszenia danych z wieloma dzierżawcami do nowej bazy danych jednego dzierżawcy.
+### <a name="move-data-from-multiple-to-single-tenancy-databases"></a>Przenoszenie danych z wielu dzierżawców z pojedynczej bazy danych
+Podczas tworzenia aplikacji SaaS, jest zazwyczaj oferują potencjalnych klientów z wersji próbnej oprogramowania. W tym przypadku jest ekonomiczna do użycia z wielodostępną bazą danych dla danych. Jednak gdy z dot, pojedynczej dzierżawy baza danych jest lepiej, ponieważ zapewnia lepszą wydajność. Jeśli klient utworzona danych w trakcie okresu próbnego, użyj [narzędzie do dzielenia i scalania](sql-database-elastic-scale-overview-split-and-merge.md) przenoszenia danych z wieloma dzierżawami, z jedną dzierżawą bazą danych.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby przykładową aplikację prezentującą biblioteki klienta, zobacz [wprowadzenie do narzędzi elastycznej bazy danych](sql-database-elastic-scale-get-started.md).
+Aby uzyskać przykładową aplikację, która pokazuje biblioteki klienta, zobacz [Rozpocznij pracę z narzędziami elastycznej bazy danych](sql-database-elastic-scale-get-started.md).
 
-Aby dokonać konwersji istniejących baz danych do korzystania z narzędzi, zobacz [migracji istniejących baz danych do skalowania w poziomie](sql-database-elastic-convert-to-use-elastic-tools.md).
+Aby dokonać konwersji istniejących baz danych w celu korzystania z narzędzi, zobacz [Migrowanie istniejących baz danych do skalowania w poziomie](sql-database-elastic-convert-to-use-elastic-tools.md).
 
-Aby wyświetlić szczegółowe informacje na temat puli elastycznej, zobacz [zagadnienia dotyczące cen i wydajności dla elastycznej puli](sql-database-elastic-pool.md), lub Utwórz nową pulę z [pule elastyczne](sql-database-elastic-pool-manage-portal.md).  
+Aby wyświetlić szczegółowe informacje na temat elastycznej puli, zobacz [zagadnienia dotyczące cen i wydajności dla puli elastycznej](sql-database-elastic-pool.md), lub utworzyć nową pulę z [pul elastycznych](sql-database-elastic-pool-manage-portal.md).  
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

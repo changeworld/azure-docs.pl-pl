@@ -4,18 +4,18 @@ description: Co to jest środowisko pomocy technicznej do współpracy B2B usłu
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: reference
 ms.date: 05/26/2017
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: f0d4ae4544bbb79e532a043bea7585fcc93705a9
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 1474bf13a6d364fcbd90adee09a1a60bcafc2ccb
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35647813"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985281"
 ---
 # <a name="getting-support-for-b2b-collaboration"></a>Uzyskiwanie pomocy technicznej do współpracy B2B
 

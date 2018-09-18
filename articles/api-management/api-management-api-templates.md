@@ -14,37 +14,37 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/09/2017
 ms.author: apimpm
-ms.openlocfilehash: 9abbdda2300fd8d51bec372624f0349455cf2b01
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: 74f7956a0b705748228216b3f1aa52607ff55614
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33937048"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983499"
 ---
 # <a name="api-templates-in-azure-api-management"></a>Szablony interfejsu API w usłudze Azure API Management
-Zarządzanie interfejsami API Azure zapewnia możliwość dostosować zawartość strony portalu dewelopera przy użyciu zestawu szablonów, które skonfigurować ich zawartości. Przy użyciu [DotLiquid](http://dotliquidmarkup.org/) składni i Edytor wybranych przez użytkownika, takie jak [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), i zestaw udostępnionego zlokalizowane [zasoby ciągu](api-management-template-resources.md#strings), [symboli zasobów](api-management-template-resources.md#glyphs), i [strony kontrolki](api-management-page-controls.md), ma dużą elastyczność konfigurowania zawartości stron, zgodnie z własnymi potrzebami, za pomocą tych szablonów.  
+Usługa Azure API Management zapewnia możliwość dostosować zawartość portalu dla deweloperów przy użyciu zestawu szablonów, które ich zawartość. Przy użyciu [DotLiquid](http://dotliquidmarkup.org/) składni i Edytor wybranych przez użytkownika, takich jak [DotLiquid dla projektantów](https://github.com/dotliquid/dotliquid/wiki/DotLiquid-for-Designers), i zlokalizowanych podany zbiór [zasoby ciągu](api-management-template-resources.md#strings), [symbol zasoby](api-management-template-resources.md#glyphs), i [stronie kontrolki](api-management-page-controls.md), masz dużą elastyczność konfigurowania zawartości stron, zgodnie z potrzebami przy użyciu tych szablonów.  
   
-Szablony w tej sekcji umożliwiają dostosowanie zawartości strony interfejsu API w portalu dla deweloperów.  
+Szablony w tej sekcji umożliwiają dostosowanie zawartości stron interfejsu API w portalu dla deweloperów.  
   
--   [Lista interfejsu API](#APIList)  
+-   [Interfejs API — lista](#APIList)  
 -   [Operacja](#Product)  
 -   [Przykłady kodu](#CodeSamples)  
     -   [Curl](#Curl)  
     -   [C#](#CSharp)  
     -   [Java](#Stub)  
     -   [JavaScript](#JavaScript)  
-    -   [Objective C](#ObjectiveC)  
+    -   [Język Objective C](#ObjectiveC)  
     -   [PHP](#PHP)  
     -   [Python](#Python)  
     -   [Ruby](#Ruby)  
 
 > [!NOTE]
->  Przykładowe domyślnych szablonów znajdują się w następującej dokumentacji, ale mogą ulec zmianie z powodu ciągłe ulepszenia. Szablonów domyślnych na żywo można wyświetlić w portalu dla deweloperów, przechodząc do żądanego szablony osobno. Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [dostosowywaniu portalu dla deweloperów interfejsu API zarządzania za pomocą szablonów](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
+>  Przykładowe szablony domyślne są uwzględnione w poniższej dokumentacji, ale mogą ulec zmianie ze względu na stałe udoskonalenia. Szablony domyślne na żywo można wyświetlić w portalu dla deweloperów, przechodząc do żądanego szablony osobno. Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [Dostosowywanie portalu dla deweloperów usługi API Management przy użyciu szablonów](https://azure.microsoft.com/documentation/articles/api-management-developer-portal-templates/).  
   
-##  <a name="APIList"></a> Lista interfejsu API  
- **Interfejsu API listy** szablonu umożliwia dostosowanie treści strony listy interfejsu API w portalu dla deweloperów.  
+##  <a name="APIList"></a> Interfejs API — lista  
+ **Interfejs API — lista** szablon umożliwia dostosowanie treść strony listy interfejsu API w portalu dla deweloperów.  
   
- ![Lista API portalu deweloperów](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "APIM Developer Portal szablony interfejsu API listy")  
+ ![Listy interfejsów API w portalu dla deweloperów](./media/api-management-api-templates/APIM-Developer-Portal-Templates-API-List.png "listy interfejsów API szablonów portalu dla deweloperów usługi APIM")  
   
 ### <a name="default-template"></a>Szablon domyślny  
   
@@ -77,17 +77,17 @@ Szablony w tej sekcji umożliwiają dostosowanie zawartości strony interfejsu A
 ```  
   
 ### <a name="controls"></a>Kontrolki  
- `API list` Szablonu może korzystać z następujących [strony kontrolki](api-management-page-controls.md).  
+ `API list` Szablonu może korzystać z następujących [stronie kontrolki](api-management-page-controls.md).  
   
 -   [Formant stronicowania](api-management-page-controls.md#paging-control)  
   
--   [formant wyszukiwania](api-management-page-controls.md#search-control)  
+-   [Kontrolka wyszukiwania](api-management-page-controls.md#search-control)  
   
 ### <a name="data-model"></a>Model danych  
   
 |Właściwość|Typ|Opis|  
 |--------------|----------|-----------------|  
-|Interfejsy API|Kolekcja [podsumowanie interfejsu API](api-management-template-data-model-reference.md#APISummary) jednostek.|Interfejsy API są widoczne dla bieżącego użytkownika.|  
+|interfejsy API|Kolekcja [podsumowanie interfejsu API](api-management-template-data-model-reference.md#APISummary) jednostek.|Interfejsy API widoczne dla bieżącego użytkownika.|  
   
 ### <a name="sample-template-data"></a>Przykładowe dane szablonu  
   
@@ -110,9 +110,9 @@ Szablony w tej sekcji umożliwiają dostosowanie zawartości strony interfejsu A
 ```  
   
 ##  <a name="Product"></a> Operacja  
- **Operacji** szablonu umożliwia dostosowanie treści strony operacji w portalu dla deweloperów.  
+ **Operacji** szablon umożliwia dostosowanie strony operacji w portalu dla deweloperów.  
   
- ![Strona operacji portalu dewelopera](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "strona operacji szablony APIM portalu dla deweloperów")  
+ ![Strona operacji Portal dla deweloperów](./media/api-management-api-templates/APIM-Developer-Portal-templates-Operation-page.png "strony operacji szablonów portalu dla deweloperów usługi APIM")  
   
 ### <a name="default-template"></a>Szablon domyślny  
   
@@ -336,17 +336,17 @@ Szablony w tej sekcji umożliwiają dostosowanie zawartości strony interfejsu A
 ```  
   
 ### <a name="controls"></a>Kontrolki  
- `Operation` Szablonu nie zezwala na używanie [strony kontrolki](api-management-page-controls.md).  
+ `Operation` Szablonu nie zezwala na używanie dowolnych [stronie kontrolki](api-management-page-controls.md).  
   
 ### <a name="data-model"></a>Model danych  
   
 |Właściwość|Typ|Opis|  
 |--------------|----------|-----------------|  
 |apiId|ciąg|Identyfikator bieżącego interfejsu API.|  
-|Nazwa_funkcji_api|ciąg|Nazwa interfejsu API.|  
+|ApiName|ciąg|Nazwa interfejsu API.|  
 |apiDescription|ciąg|Opis interfejsu API.|  
-|api|[Podsumowanie interfejsu API](api-management-template-data-model-reference.md#APISummary) jednostki.|Bieżący interfejsu API.|  
-|operacja|[Operacja](api-management-template-data-model-reference.md#Operation)|Operacja aktualnie wyświetlany.|  
+|api|[Podsumowanie interfejsu API](api-management-template-data-model-reference.md#APISummary) jednostki.|Bieżącego interfejsu API.|  
+|operacja|[Operacja](api-management-template-data-model-reference.md#Operation)|Obecnie wyświetlany limit czasu operacji.|  
 |sampleUrl|ciąg|Adres URL dla bieżącej operacji.|  
 |operationMenu|[Operacja menu](api-management-template-data-model-reference.md#Menu)|Menu operacji dla tego interfejsu API.|  
 |consoleUrl|Identyfikator URI|Identyfikator URI dla **wypróbuj** przycisku.|  
@@ -640,9 +640,9 @@ Szablony w tej sekcji umożliwiają dostosowanie zawartości strony interfejsu A
 ```  
   
 ##  <a name="CodeSamples"></a> Przykłady kodu  
- Następujące szablony umożliwiają dostosowanie treści przykładów kodu poszczególnych na stronie operacji.  
+ Poniższe szablony umożliwiają dostosowanie treści przykłady kodu poszczególnych, na stronie operacji.  
   
- ![Przykłady kodu szablony portalu dewelopera](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "przykłady APIM Developer Portal szablony kodu")  
+ ![Przykłady kodu szablonów portalu dla deweloperów](./media/api-management-api-templates/APIM-Developer-Portal-Templates-Code-samples.png "przykłady kodu szablonów portalu dla deweloperów usługi APIM")  
   
 -   [Curl](#Curl)  
   
@@ -652,7 +652,7 @@ Szablony w tej sekcji umożliwiają dostosowanie zawartości strony interfejsu A
   
 -   [JavaScript](#JavaScript)  
   
--   [Objective C](#ObjectiveC)  
+-   [Język Objective C](#ObjectiveC)  
   
 -   [PHP](#PHP)  
   
@@ -660,8 +660,8 @@ Szablony w tej sekcji umożliwiają dostosowanie zawartości strony interfejsu A
   
 -   [Ruby](#Ruby)  
   
-###  <a name="Curl"></a> Narzędzie curl  
- **DocumentationSamplesCurl** szablonu umożliwia dostosowanie tym przykładowym kodzie w sekcji przykładów kodu strony operacji.  
+###  <a name="Curl"></a> Curl  
+ **DocumentationSamplesCurl** szablonu można dostosować ten przykładowy kod w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
   
@@ -679,7 +679,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 ```  
   
 #### <a name="controls"></a>Kontrolki  
- Szablony przykładowy kod nie zezwalaj na używanie [strony kontrolki](api-management-page-controls.md).  
+ Przykładowe szablony kodu nie zezwalają na używanie dowolnych [stronie kontrolki](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Model danych  
  [Przykładowy kod](api-management-template-data-model-reference.md#Sample) jednostki.  
@@ -714,7 +714,7 @@ curl -v -X {{method}} "{{scheme}}://{{host}}{{path}}{{query | escape }}"
 ```  
   
 ###  <a name="CSharp"></a> C#  
- **DocumentationSamplesCsharp** szablonu umożliwia dostosowanie tym przykładowym kodzie w sekcji przykładów kodu strony operacji.  
+ **DocumentationSamplesCsharp** szablonu można dostosować ten przykładowy kod w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
   
@@ -858,7 +858,7 @@ namespace CSHttpClientSample
 ```  
   
 #### <a name="controls"></a>Kontrolki  
- Szablony przykładowy kod nie zezwalaj na używanie [strony kontrolki](api-management-page-controls.md).  
+ Przykładowe szablony kodu nie zezwalają na używanie dowolnych [stronie kontrolki](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Model danych  
  [Przykładowy kod](api-management-template-data-model-reference.md#Sample) jednostki.  
@@ -893,7 +893,7 @@ namespace CSHttpClientSample
 ```  
   
 ###  <a name="Stub"></a> Java  
- **DocumentationSamplesJava** szablonu umożliwia dostosowanie tym przykładowym kodzie w sekcji przykładów kodu strony operacji.  
+ **DocumentationSamplesJava** szablonu można dostosować ten przykładowy kod w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
   
@@ -954,7 +954,7 @@ public class JavaSample
 ```  
   
 #### <a name="controls"></a>Kontrolki  
- Szablony przykładowy kod nie zezwalaj na używanie [strony kontrolki](api-management-page-controls.md).  
+ Przykładowe szablony kodu nie zezwalają na używanie dowolnych [stronie kontrolki](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Model danych  
  [Przykładowy kod](api-management-template-data-model-reference.md#Sample) jednostki.  
@@ -989,7 +989,7 @@ public class JavaSample
 ```  
   
 ###  <a name="JavaScript"></a> JavaScript  
- **DocumentationSamplesJs** szablonu umożliwia dostosowanie tym przykładowym kodzie w sekcji przykładów kodu strony operacji.  
+ **DocumentationSamplesJs** szablonu można dostosować ten przykładowy kod w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
   
@@ -1043,7 +1043,7 @@ public class JavaSample
 ```  
   
 #### <a name="controls"></a>Kontrolki  
- Szablony przykładowy kod nie zezwalaj na używanie [strony kontrolki](api-management-page-controls.md).  
+ Przykładowe szablony kodu nie zezwalają na używanie dowolnych [stronie kontrolki](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Model danych  
  [Przykładowy kod](api-management-template-data-model-reference.md#Sample) jednostki.  
@@ -1077,8 +1077,8 @@ public class JavaSample
 }  
 ```  
   
-###  <a name="ObjectiveC"></a> Objective C  
- **DocumentationSamplesObjc** szablonu umożliwia dostosowanie tym przykładowym kodzie w sekcji przykładów kodu strony operacji.  
+###  <a name="ObjectiveC"></a> Język Objective C  
+ **DocumentationSamplesObjc** szablonu można dostosować ten przykładowy kod w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
   
@@ -1155,7 +1155,7 @@ int main(int argc, const char * argv[])
 ```  
   
 #### <a name="controls"></a>Kontrolki  
- Szablony przykładowy kod nie zezwalaj na używanie [strony kontrolki](api-management-page-controls.md).  
+ Przykładowe szablony kodu nie zezwalają na używanie dowolnych [stronie kontrolki](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Model danych  
  [Przykładowy kod](api-management-template-data-model-reference.md#Sample) jednostki.  
@@ -1190,13 +1190,13 @@ int main(int argc, const char * argv[])
 ```  
   
 ###  <a name="PHP"></a> PHP  
- **DocumentationSamplesPhp** szablonu umożliwia dostosowanie tym przykładowym kodzie w sekcji przykładów kodu strony operacji.  
+ **DocumentationSamplesPhp** szablonu można dostosować ten przykładowy kod w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
   
 ```xml  
 <?php  
-// This sample uses the Apache HTTP client from HTTP Components (http://hc.apache.org/httpcomponents-client-ga/)  
+// This sample uses the HTTP_Request2 PHP library (https://github.com/pear/HTTP_Request2)  
 require_once 'HTTP/Request2.php';  
   
 $request = new Http_Request2('{{scheme}}://{{host}}{{path}}');  
@@ -1245,7 +1245,7 @@ catch (HttpException $ex)
 ```  
   
 #### <a name="controls"></a>Kontrolki  
- Szablony przykładowy kod nie zezwalaj na używanie [strony kontrolki](api-management-page-controls.md).  
+ Przykładowe szablony kodu nie zezwalają na używanie dowolnych [stronie kontrolki](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Model danych  
  [Przykładowy kod](api-management-template-data-model-reference.md#Sample) jednostki.  
@@ -1280,7 +1280,7 @@ catch (HttpException $ex)
 ```  
   
 ###  <a name="Python"></a> Python  
- **DocumentationSamplesPython** szablonu umożliwia dostosowanie tym przykładowym kodzie w sekcji przykładów kodu strony operacji.  
+ **DocumentationSamplesPython** szablonu można dostosować ten przykładowy kod w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
   
@@ -1363,7 +1363,7 @@ except Exception as e:
 ```  
   
 #### <a name="controls"></a>Kontrolki  
- Szablony przykładowy kod nie zezwalaj na używanie [strony kontrolki](api-management-page-controls.md).  
+ Przykładowe szablony kodu nie zezwalają na używanie dowolnych [stronie kontrolki](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Model danych  
  [Przykładowy kod](api-management-template-data-model-reference.md#Sample) jednostki.  
@@ -1398,7 +1398,7 @@ except Exception as e:
 ```  
   
 ###  <a name="Ruby"></a> Ruby  
- **DocumentationSamplesRuby** szablonu umożliwia dostosowanie tym przykładowym kodzie w sekcji przykładów kodu strony operacji.  
+ **DocumentationSamplesRuby** szablonu można dostosować ten przykładowy kod w sekcji przykładów kodu strony operacji.  
   
 #### <a name="default-template"></a>Szablon domyślny  
   
@@ -1434,7 +1434,7 @@ puts response.body
 ```  
   
 #### <a name="controls"></a>Kontrolki  
- Szablony przykładowy kod nie zezwalaj na używanie [strony kontrolki](api-management-page-controls.md).  
+ Przykładowe szablony kodu nie zezwalają na używanie dowolnych [stronie kontrolki](api-management-page-controls.md).  
   
 #### <a name="data-model"></a>Model danych  
  [Przykładowy kod](api-management-template-data-model-reference.md#Sample) jednostki.  
@@ -1469,4 +1469,4 @@ puts response.body
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [dostosowywaniu portalu dla deweloperów interfejsu API zarządzania za pomocą szablonów](api-management-developer-portal-templates.md).
+Aby uzyskać więcej informacji na temat pracy z szablonami, zobacz [Dostosowywanie portalu dla deweloperów usługi API Management przy użyciu szablonów](api-management-developer-portal-templates.md).

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
 ms.component: common
-ms.openlocfilehash: edc0cf7c8700e1ab728109bc9cbfda8135a59ee9
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 6b7a361213a0236d71fe41566ba71c28b2958cd7
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574746"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736346"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Zarządzanie cyklem życia z magazynu obiektów Blob platformy Azure (wersja zapoznawcza)
 
@@ -30,7 +30,7 @@ Należy wziąć pod uwagę zestaw danych, który jest dostępny w punktach wczes
 
 ## <a name="storage-account-support"></a>Obsługa konta magazynu
 
-Zasady zarządzania cyklem życia jest dostępny z obu ogólnego przeznaczenia w wersji 2 (GPv2) konto oraz konto magazynu obiektów Blob. Możesz przekonwertować istniejące konto ogólnego przeznaczenia (GPv1) do wersji GPv2 przy użyciu prostego procesu jednym kliknięciem w witrynie Azure portal. Aby dowiedzieć się więcej, zobacz [Opcje kont usługi Azure Storage](../common/storage-account-options.md).  
+Zasady zarządzania cyklem życia jest dostępny z obu ogólnego przeznaczenia w wersji 2 (GPv2) konto oraz konto magazynu obiektów Blob. Możesz przekonwertować istniejące konto ogólnego przeznaczenia (GPv1) do wersji GPv2 przy użyciu prostego procesu jednym kliknięciem w witrynie Azure portal. Aby uzyskać więcej informacji na temat kont magazynu, zobacz [Przegląd konta usługi Azure storage](../common/storage-account-overview.md) Aby dowiedzieć się więcej.  
 
 ## <a name="pricing"></a>Cennik 
 

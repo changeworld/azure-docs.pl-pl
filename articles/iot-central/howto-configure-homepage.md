@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1b4d97c1e8c4360028cb249b7e1a61f9fc26e9f2
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 609dc8aa1305833fb3677de6fbe95cf490237a4a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300532"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731125"
 ---
 ## <a name="configuring-homepage"></a>Konfigurowanie strony głównej
 
@@ -27,7 +27,7 @@ Wybieranie **Edytuj**, zostanie otwarty Biblioteka pulpitu nawigacyjnego w panel
 
 ![Biblioteka pulpitu nawigacyjnego](media\howto-configure-homepage\image2.png)
 
-Na przykład można dodać **ustawień i właściwości** Kafelek, aby pokazywać zaznaczenie bieżące wartości ustawień i właściwości. Aby to zrobić, najpierw wybierz **szablon urządzenia** polecenie **wystąpienia urządzenia**. Po które podają kafelka, tytuł i wybierz **ustawienie** lub **właściwość** do wyświetlenia. W tym przypadku Wybraliśmy **szybkość wentylator**. Klikając **gotowe** spowoduje, że ten Kafelek, aby są wyświetlane na stronie głównej.
+Na przykład można dodać **ustawień i właściwości** Kafelek, aby pokazywać zaznaczenie bieżące wartości ustawień i właściwości. Aby to zrobić, najpierw wybierz **szablon urządzenia** polecenie **wystąpienia urządzenia**. Po które podają kafelka, tytuł i wybierz **ustawienie** lub **właściwość** do wyświetlenia. W tym przypadku Wybraliśmy **Ustaw temperatury**. Klikając **gotowe** spowoduje, że ten Kafelek, aby są wyświetlane na stronie głównej.
 
 !["Configure szczegóły urządzenia" formularz Szczegóły ustawień i właściwości](media\howto-configure-homepage\image3.png)
 

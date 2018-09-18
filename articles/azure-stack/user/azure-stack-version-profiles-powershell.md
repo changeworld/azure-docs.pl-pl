@@ -12,23 +12,21 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 994893eb73356fde9acc593569dc5fb1c5a0106f
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 87052b39524ae7e3a789cada4ef9720f080726a6
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391134"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985485"
 ---
 # <a name="use-api-version-profiles-for-powershell-in-azure-stack"></a>Użyj profilami wersji interfejsu API środowiska PowerShell w usłudze Azure Stack
 
 *Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Profilami wersji interfejsu API umożliwiają zarządzanie wersją różnice między platformą Azure i usługi Azure Stack. Profilu wersji interfejsu API to zbiór modułów AzureRM PowerShell w określonych wersjach interfejsu API. Każda platforma w chmurze ma zestaw obsługiwanych profilami wersji interfejsu API. Na przykład usługi Azure Stack obsługuje wersji określonego profilu Legitymacja, takie jak **2017-03-09-profile**, a platforma Azure obsługuje **najnowsze** profilu wersji interfejsu API. Po zainstalowaniu profilu, są zainstalowane moduły AzureRM PowerShell, które odpowiadają określony profil.
-
- 
+Profilami wersji interfejsu API umożliwiają zarządzanie wersją różnice między platformą Azure i usługi Azure Stack. Profilu wersji interfejsu API to zbiór modułów AzureRM PowerShell w określonych wersjach interfejsu API. Każda platforma w chmurze ma zestaw obsługiwanych profilami wersji interfejsu API. Na przykład usługi Azure Stack obsługuje wersji określonego profilu Legitymacja, takie jak **2018-03-01-hybrydowego**, a platforma Azure obsługuje **najnowsze** profilu wersji interfejsu API. Po zainstalowaniu profilu, są zainstalowane moduły AzureRM PowerShell, które odpowiadają określony profil.
 
 ## <a name="install-the-powershell-module-required-to-use-api-version-profiles"></a>Instalowanie modułu programu PowerShell trzeba używać profilami wersji interfejsu API
 
@@ -38,13 +36,27 @@ Profilami wersji interfejsu API umożliwiają zarządzanie wersją różnice mi�
 Install-Module -Name AzureRm.BootStrapper
 ```
 
+## <a name="azure-stack-version-and-profile-versions"></a>Wersja usługi Azure Stack i wersji profilu
+
+W poniższej tabeli wymieniono wymagana wersja profilu interfejsu API i moniker modułu programu PowerShell administratora z umożliwiający najnowsze wersje usługi Azure Stack. Jeśli używasz w tym artykule przy użyciu wersji przed 1808 aktualizacji wersji profilu i moniker poprawnej wartości.
+
+| Nr wersji | Profilu wersji interfejsu API | PS monikera modułu administracyjnego. |
+| --- | --- | --- |
+| 1808 lub nowszy | 2018-03-01-hybrydowe | 1.5.0 |
+| 1804 lub nowszy | 2017-03-09-profile | 1.4.0 |
+| Wersje wcześniejsze niż 1804 | 2017-03-09-profile | 1.2.11 |
+
+> [!Note]  
+> Aby uaktualnić 1.2.11 wersji, zobacz [Przewodnik po migracji](https://aka.ms/azpsh130migration).
+
 ## <a name="install-a-profile"></a>Instalowanie profilu
 
-Użyj **Install-AzureRmProfile** polecenia cmdlet z **2017-03-09-profile** profilu wersji interfejsu API, aby zainstalować moduły AzureRM wymagane przez usługę Azure Stack. Moduły operatora usługi Azure Stack nie są zainstalowane za pomocą tego profilu wersji interfejsu API. Powinny być instalowane osobno jak określono w kroku 3 [Instalowanie programu PowerShell dla usługi Azure Stack](azure-stack-powershell-install.md) artykułu.
+Użyj **Install-AzureRmProfile** polecenia cmdlet z **2018-03-01-hybrydowego** profilu wersji interfejsu API, aby zainstalować moduły AzureRM wymagane przez usługę Azure Stack. Moduły operatora usługi Azure Stack nie są zainstalowane za pomocą tego profilu wersji interfejsu API. Powinny być instalowane osobno jak określono w kroku 3 [Instalowanie programu PowerShell dla usługi Azure Stack](../azure-stack-powershell-install.md) artykułu.
 
 ```PowerShell 
-Install-AzureRMProfile -Profile 2017-03-09-profile
+Install-AzureRMProfile -Profile 2018-03-01-hybrid
 ```
+
 ## <a name="install-and-import-modules-in-a-profile"></a>Zainstaluj i zaimportuj moduły w profilu
 
 Użyj **Użyj-AzureRmProfile** polecenia cmdlet, aby zainstalować i zaimportować moduły, które są skojarzone z profilem wersji interfejsu API. W sesji programu PowerShell, można zaimportować tylko jeden profil wersji interfejsu API. Aby zaimportować innego profilu wersji interfejsu API, należy otworzyć nową sesję programu PowerShell. Użyj-AzureRMProfile uruchamia następujące zadania:  
@@ -54,17 +66,17 @@ Użyj **Użyj-AzureRmProfile** polecenia cmdlet, aby zainstalować i zaimportowa
 
 ```PowerShell
 # Installs and imports the specified API version profile into the current PowerShell session.
-Use-AzureRmProfile -Profile 2017-03-09-profile -Scope CurrentUser
+Use-AzureRmProfile -Profile 2018-03-01-hybrid -Scope CurrentUser
 
 # Installs and imports the specified API version profile into the current PowerShell session without any prompts
-Use-AzureRmProfile -Profile 2017-03-09-profile -Scope CurrentUser -Force
+Use-AzureRmProfile -Profile 2018-03-01-hybrid -Scope CurrentUser -Force
 ```
 
 Aby zainstalować i importowanie wybranych modułów AzureRM z profilu wersji interfejsu API, należy uruchomić polecenie cmdlet Użyj-AzureRMProfile z **modułu** parametru:
 
 ```PowerShell
 # Installs and imports the compute, Storage and Network modules from the specified API version profile into your current PowerShell session.
-Use-AzureRmProfile -Profile 2017-03-09-profile -Module AzureRM.Compute, AzureRM.Storage, AzureRM.Network
+Use-AzureRmProfile -Profile 2018-03-01-hybrid -Module AzureRM.Compute, AzureRM.Storage, AzureRM.Network
 ```
 
 ## <a name="get-the-installed-profiles"></a>Pobieranie zainstalowanych profilów
@@ -78,6 +90,7 @@ Get-AzureRmProfile -ListAvailable
 # lists the API version profiles which are installed on your machine
 Get-AzureRmProfile
 ```
+
 ## <a name="update-profiles"></a>Profile Update
 
 Użyj **Update-AzureRmProfile** polecenia cmdlet, aby zaktualizować moduły w profilu wersji interfejsu API do najnowszej wersji modułów, które są dostępne w galerii programu PowerShell. Zaleca się zawsze uruchamiaj **Update-AzureRmProfile** polecenia cmdlet w nowej sesji programu PowerShell w celu uniknięcia konfliktów podczas importowania modułów. Polecenie cmdlet Update-AzureRmProfile uruchamia następujące zadania:
@@ -87,14 +100,14 @@ Użyj **Update-AzureRmProfile** polecenia cmdlet, aby zaktualizować moduły w p
 3. Instaluje i importuje modułów zaktualizowany do bieżącej sesji programu PowerShell.  
 
 ```PowerShell
-Update-AzureRmProfile -Profile 2017-03-09-profile
+Update-AzureRmProfile -Profile 2018-03-01-hybrid
 ```
 
-Aby usunąć zainstalowanych wcześniej wersji modułów, przed rozpoczęciem aktualizacji do najnowszej wersji, użyj polecenia cmdlet Update-AzureRmProfile wraz z **- RemovePreviousVersions** parametru:
+<!-- To remove the previously installed versions of the modules before updating to the latest available version, use the Update-AzureRmProfile cmdlet along with the **-RemovePreviousVersions** parameter:
 
 ```PowerShell 
-Update-AzureRmProfile -Profile 2017-03-09-profile -RemovePreviousVersions
-```
+Update-AzureRmProfile -Profile 2018-03-01-hybrid -RemovePreviousVersions
+``` --> 
 
 To polecenie cmdlet jest uruchamiane następujące zadania:  
 
@@ -108,7 +121,7 @@ To polecenie cmdlet jest uruchamiane następujące zadania:
 Użyj **Uninstall-AzureRmProfile** polecenia cmdlet można odinstalować określonego profilu wersji interfejsu API.
 
 ```PowerShell 
-Uninstall-AzureRmProfile -Profile 2017-03-09-profile
+Uninstall-AzureRmProfile -Profile  2018-03-01-hybrid
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

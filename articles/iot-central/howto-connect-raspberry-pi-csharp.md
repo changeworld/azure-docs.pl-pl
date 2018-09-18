@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: timlt
-ms.openlocfilehash: 63843797cca7fe84cdb9ce91d2282b1c0c288f0c
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: a9390ac9046ad1e0ec5a1689052ee99bf76ec6f4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205140"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734239"
 ---
 # <a name="connect-a-raspberry-pi-to-your-azure-iot-central-application-c"></a>Łączenie urządzenia Raspberry Pi z aplikacją usługi Azure IoT Central (C#)
 
@@ -262,6 +262,9 @@ Aby wykonać następujące czynności, można użyć programu Visual Studio Code
 ## <a name="run-your-net-application"></a>Uruchamianie aplikacji .NET
 
 Dodaj parametry połączenia specyficzne dla urządzenia do kodu dla tego urządzenia do uwierzytelniania za pomocą usługi Azure IoT Central. Zanotuj te parametry połączenia zostały wprowadzone po dodaniu rzeczywistego urządzenia do aplikacji usługi Azure IoT Central.
+
+  > [!NOTE]
+   > Usługa Azure IoT Central przeszła do przy użyciu usługi Azure IoT Hub Device Provisioning (DPS) dla wszystkich połączeń urządzeń, wykonaj te instrustions do [pobieranie parametrów połączenia urządzenia](concepts-connectivity.md#getting-device-connection-string) i kontynuować pracę z pozostałej części tego samouczka.
 
 1. Zastąp `{your device connection string}` w **Program.cs** pliku zanotowanymi wcześniej parametrami połączenia.
 

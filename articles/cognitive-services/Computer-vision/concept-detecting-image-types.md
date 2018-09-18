@@ -1,23 +1,23 @@
 ---
-title: Wykrywanie typy obrazów
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Pojęcia dotyczące wykrywania typy obrazów przy użyciu przetwarzania obrazów w usługach Azure Cognitive Services.
+title: Wykrywanie typy obrazów — przetwarzanie obrazów
+titleSuffix: Azure Cognitive Services
+description: Pojęcia dotyczące wykrywania typy obrazów przy użyciu interfejsu API przetwarzania obrazów.
 services: cognitive-services
 author: deken
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: 6c0280959e82eaa2da4927b48af7ebc28db25a7d
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 1a76106caed514f56e897203fba5215b7e93d4ff
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44725560"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984830"
 ---
-# <a name="detecting-image-types"></a>Wykrywanie typy obrazów
+# <a name="detecting-image-types"></a>Wykrywanie typów obrazów
 
 Przetwarzanie obrazów można analizować typu zawartości obrazów, wskazując, czy obraz jest obrazem clipart, ocena prawdopodobieństwo skalowania lub rysowanie linii.
 

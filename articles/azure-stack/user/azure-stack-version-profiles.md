@@ -10,15 +10,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: db60aaacfb2ba60dbe73663cb415e2a3baea5400
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 270587f484216d130848ee3c7bdc8ae1c1df0afc
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745803"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982157"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack
 
@@ -46,7 +46,7 @@ Ten temat ułatwia:
     Wydane w erze kwartalna, ta wersja koncentruje się na spójność i stabilność między wieloma chmurami. Ten profil jest przeznaczony dla optymalnej zgodności usługi Azure Stack.
     - **rrrr mm-dd-profile** znajduje się pomiędzy optymalne stabilności i najnowszych funkcji.
 
-### <a name="azure-api-profiles-and-azure-stack-compatibility"></a>Profilami interfejsu API platformy Azure i zgodności usługi Azure Stack
+## <a name="azure-api-profiles-and-azure-stack-compatibility"></a>Profilami interfejsu API platformy Azure i zgodności usługi Azure Stack
 
 Najnowsze profile interfejsu API platformy Azure nie są zgodne z usługą Azure Stack. Można użyć następujących konwencji nazewnictwa do identyfikowania profile dla rozwiązań usługi Azure Stack.
 

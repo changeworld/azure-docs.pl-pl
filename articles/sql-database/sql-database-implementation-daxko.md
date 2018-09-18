@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: ee06039242afe5b5e92cf2fecc4c3fa9bff0b78b
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 10720f42f7a9b10b42ccaaaad81acca369592f6a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39214373"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731215"
 ---
 # <a name="daxkocsi-used-azure-to-accelerate-its-development-cycle-and-to-enhance-its-customer-services-and-performance"></a>Daxko/CSI użyła systemu Azure, przyspieszyć cykl tworzenia i zwiększyć jej działu pomocy technicznej i wydajność
 ![Daxko/CSI Logo](./media/sql-database-implementation-daxko/csidaxkologo25.png)
@@ -59,7 +59,7 @@ Już dziś około 99% CSI oprogramowania klientów są hostowane na platformie A
 ## <a name="azure-elastic-pools-free-up-it-resources"></a>Pule elastyczne usługi Azure Uwolnij zasoby IT
 Kilka funkcji platformy Azure pomogły oprogramowania CSI shift miałyby infrastrukturę i operacje, które skupia się do funkcji i rozwoju skupia się. Może być największa zaleta zostało z elastycznymi pulami.
 
-Oprogramowanie CSI udostępnia obecnie około 550 baz danych dla klientów. Przed pul elastycznych trudno było zarządzać oznacza wiele baz danych w ramach struktury warstwy. Menedżerowie OPS było przypisać warstwy wydajności, w zależności od potrzeb dużego ruchu klientów, które wymagane znaczące IT zasobów obciążenie. Dzięki pulom elastycznym menedżerów można przypisać dzierżaw premium lub standardowa puli, zgodnie z potrzebami i następnie przenieść klientów na podstawie rozmiaru i potrzebujesz. Klienci niemal natychmiast; mieli świadomość skutków pul elastycznych przed pul elastycznych klienci miał przekroczeń limitu czasu i innych problemów w okresach dużego ruchu użycia, ale dzięki pulom elastycznym, klienci będą mogli doświadczyć gwałtownymi wzrostami liczby działań zgodnie z potrzebami i może nadal używać SpectrumNG bez problemów.
+Oprogramowanie CSI udostępnia obecnie około 550 baz danych dla klientów. Przed pul elastycznych trudno było zarządzać oznacza wiele baz danych w ramach struktury warstwy. Menedżerowie OPS było przypisać warstwy usług i obliczenia rozmiarów, w zależności od potrzeb dużego ruchu klientów, które wymagane znaczące IT zasobów obciążenie. Dzięki pulom elastycznym menedżerów można przypisać dzierżaw premium lub standardowa puli, zgodnie z potrzebami i następnie przenieść klientów na podstawie rozmiaru i potrzebujesz. Klienci niemal natychmiast; mieli świadomość skutków pul elastycznych przed pul elastycznych klienci miał przekroczeń limitu czasu i innych problemów w okresach dużego ruchu użycia, ale dzięki pulom elastycznym, klienci będą mogli doświadczyć gwałtownymi wzrostami liczby działań zgodnie z potrzebami i może nadal używać SpectrumNG bez problemów.
 
 ## <a name="azure-active-geo-replication-accelerates-reporting"></a>Usługa Azure aktywnej replikacji geograficznej przyspiesza raportowania
 Wielu klientów oprogramowania CSI są również korzystanie z platformy Azure aktywną replikację geograficzną. Przy użyciu aktywnej replikacji geograficznej maksymalnie cztery odczytu pomocniczych baz danych można skonfigurować w centrum danych z tej samej lub różnych regionach. CSI oprogramowanie korzysta z aktywnej replikacji geograficznej na dwa sposoby: najpierw pomocnicze bazy danych są dostępne w przypadku awarii centrum danych lub z brakiem, aby nawiązać połączenie z podstawowej bazy danych. i po drugie, pomocniczych baz danych można odczytać i może służyć do odciążenia obciążeń tylko do odczytu, takich jak zadania raportowania. Niektórzy klienci oprogramowania CSI użyć tej korzyści, aby przyspieszyć raportowania przepływów pracy.

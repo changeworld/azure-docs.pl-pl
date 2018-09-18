@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/13/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 1c3df6aa8b4080cbd70b53a994f743fb82d896b5
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 3ec7f6043c1d2e8e8f090ffc60822768ab9bc9d9
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542367"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984005"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Używanie programu Visual Studio Code do tworzenia i debugowania modułów języka C dla usługi Azure IoT Edge
 
@@ -111,7 +111,7 @@ Informacje o konfiguracji w utrzymuje funkcji debugowania kodu programu VS `laun
 
 1. Przejdź do widoku debugowania programu VS Code. Wybierz plik konfiguracji debugowania dla modułu. Nazwa opcji debugowania powinny być podobne do **ModuleName Remote Debug (C)**
 
-   ![Wybierz opcję debugowania konfiguracji](./media/how-to-develop-c-module/debug-config.png).
+   ![Wybierz opcję debugowania konfiguracji](./media/how-to-develop-c-module/debug-config.png)
 
 2. Przejdź do adresu `main.c`. Dodaj punkt przerwania w tym pliku.
 

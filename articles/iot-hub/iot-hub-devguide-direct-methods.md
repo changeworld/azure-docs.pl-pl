@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: nberdy
-ms.openlocfilehash: 4d55c152bdc938d943c90a3e51af37b45f6a8eb5
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: c1684ce28cd52ac1891804ebb490b8b59d6fcccc
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43301400"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729777"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Zrozumienie i wywoływanie metod bezpośrednich z usługi IoT Hub
 Usługa IoT Hub zapewnia możliwość wywoływanie metod bezpośrednich na urządzeniach z chmury. Metody bezpośrednie reprezentują interakcji "żądanie-odpowiedź", za pomocą urządzenia, które są podobne do wywołania HTTP, w tym ich powodzenie lub niepowodzenie natychmiast (po określonej przez użytkownika limit czasu). To podejście jest przydatne w scenariuszach, gdzie kurs natychmiastowego działania różni się w zależności od tego, czy urządzenie zostało przygotowane.
@@ -112,7 +112,7 @@ W tym celu należy użyć `ServiceClient.InvokeDeviceMethodAsync()` metody i prz
 ## <a name="handle-a-direct-method-on-a-device"></a>Dojście metody bezpośredniej o urządzeniu
 ### <a name="mqtt"></a>MQTT
 #### <a name="method-invocation"></a>Wywołanie metody
-Urządzenia otrzymują żądań metody bezpośredniej na temat protokołu MQTT: `$iothub/methods/POST/{method name}/?$rid={request id}`
+Urządzenia otrzymują żądań metody bezpośredniej na temat protokołu MQTT: `$iothub/methods/POST/{method name}/?$rid={request id}`. Liczba subskrypcji na urządzeniu jest ograniczona do 5. Dlatego zaleca się nie subskrybować każdej metody bezpośredniej indywidualnie. Zamiast tego należy wziąć pod uwagę subskrybowanie `$iothub/methods/POST/#` a następnie przeprowadź filtrowanie komunikatów poprawne działanie jest gwarantowane, oparte na nazwy żądanej metody.
 
 Treść, która otrzymaniem przez nie znajduje się w następującym formacie:
 

@@ -8,15 +8,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: Active
-ms.date: 07/25/2018
+ms.date: 09/14/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: ce7c41730bec4e014225fb8c744d029493f5ec2c
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 3a9a81154a7ae03b524ca13da3b4576841c3cab3
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43246790"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736771"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Dowiedz się więcej o automatycznych kopii zapasowych bazy danych SQL
 
@@ -26,7 +26,7 @@ SQL Database automatycznie tworzy kopie zapasowe baz danych i używa platformy A
 
 ## <a name="what-is-a-sql-database-backup"></a>Co to jest kopię zapasową bazy danych SQL?
 
-SQL Database przy użyciu technologii SQL Server do utworzenia [pełne](https://msdn.microsoft.com/library/ms186289.aspx), [różnicowej](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server), i [dziennika transakcji](https://msdn.microsoft.com/library/ms191429.aspx) kopii zapasowych na potrzeby punktu w czasie przywracania (Odzyskiwanie). Kopie zapasowe dziennika transakcji ogólnie występują co 5 – 10 minut, oraz różnicowe kopie zapasowe zazwyczaj co 12 godzin, z częstotliwością, na podstawie poziomu wydajności i zmniejszenia liczby działań bazy danych. Kopie zapasowe dziennika transakcji, za pomocą pełnych i różnicowych kopii zapasowych, umożliwiają przywrócenie bazy danych do określonego punktu w czasie na tym samym serwerze, który hostuje bazę danych. Kopie zapasowe są przechowywane w obiektach blob magazynu RA-GRS, które są replikowane do [sparowanym centrum danych](../best-practices-availability-paired-regions.md) do ochrony przed awariami centrum danych. Po przywróceniu bazy danych usługi wpadł na których kopie zapasowe mają być przywracane dziennika pełnej, różnicowej i transakcji.
+SQL Database przy użyciu technologii SQL Server do utworzenia [pełne](https://msdn.microsoft.com/library/ms186289.aspx), [różnicowej](https://docs.microsoft.com/sql/relational-databases/backup-restore/differential-backups-sql-server), i [dziennika transakcji](https://msdn.microsoft.com/library/ms191429.aspx) kopii zapasowych na potrzeby punktu w czasie przywracania (Odzyskiwanie). Kopie zapasowe dziennika transakcji ogólnie występują co 5 – 10 minut, oraz różnicowe kopie zapasowe zazwyczaj co 12 godzin, z częstotliwością, na podstawie rozmiaru obliczeń i zmniejszenia liczby działań bazy danych. Kopie zapasowe dziennika transakcji, za pomocą pełnych i różnicowych kopii zapasowych, umożliwiają przywrócenie bazy danych do określonego punktu w czasie na tym samym serwerze, który hostuje bazę danych. Kopie zapasowe są przechowywane w obiektach blob magazynu RA-GRS, które są replikowane do [sparowanym centrum danych](../best-practices-availability-paired-regions.md) do ochrony przed awariami centrum danych. Po przywróceniu bazy danych usługi wpadł na których kopie zapasowe mają być przywracane dziennika pełnej, różnicowej i transakcji.
 
 
 Możesz użyć tych kopii zapasowych:
@@ -66,7 +66,7 @@ Jeśli zwiększysz bieżącym okresem przechowywania Odzyskiwanie bazy danych SQ
 
 ## <a name="how-often-do-backups-happen"></a>Jak często stanie kopie zapasowe?
 ### <a name="backups-for-point-in-time-restore"></a>Tworzenie kopii zapasowych do punktu w czasie przywracania
-SQL Database obsługuje samoobsługowego przywracania w momencie (Odzyskiwanie) przez automatyczne tworzenie pełnej kopii zapasowej, różnicowe kopie zapasowe i kopie zapasowe dziennika transakcji. Pełne kopie zapasowe są tworzone co tydzień, różnicowe kopie zapasowe są zazwyczaj tworzone co 12 godzin i kopie zapasowe dziennika transakcji są zazwyczaj tworzone co 5 – 10 minut, z częstotliwością, na podstawie poziomu wydajności i zmniejszenia liczby działań bazy danych. Pierwsza pełna kopia zapasowa jest zaplanowane, natychmiast, po utworzeniu bazy danych. Zazwyczaj zostanie zakończona w ciągu 30 minut, ale może to trwać dłużej, gdy baza danych znajduje się o znacznym rozmiarze. Na przykład tworzenia początkowej kopii zapasowej może potrwać dłużej przywróconej bazy danych lub kopii bazy danych. Po pierwszej pełnej kopii zapasowej wszystkie dodatkowe kopie zapasowe są zaplanowane automatycznie i zarządzane w trybie dyskretnym w tle. Dokładny czas wszystkie kopie zapasowe bazy danych jest określany przez usługę SQL Database jako jej całkowitego obciążenia systemu.
+SQL Database obsługuje samoobsługowego przywracania w momencie (Odzyskiwanie) przez automatyczne tworzenie pełnej kopii zapasowej, różnicowe kopie zapasowe i kopie zapasowe dziennika transakcji. Pełne kopie zapasowe są tworzone co tydzień, różnicowe kopie zapasowe są zazwyczaj tworzone co 12 godzin i kopie zapasowe dziennika transakcji są zazwyczaj tworzone co 5 – 10 minut, z częstotliwością, na podstawie rozmiaru obliczeń i zmniejszenia liczby działań bazy danych. Pierwsza pełna kopia zapasowa jest zaplanowane, natychmiast, po utworzeniu bazy danych. Zazwyczaj zostanie zakończona w ciągu 30 minut, ale może to trwać dłużej, gdy baza danych znajduje się o znacznym rozmiarze. Na przykład tworzenia początkowej kopii zapasowej może potrwać dłużej przywróconej bazy danych lub kopii bazy danych. Po pierwszej pełnej kopii zapasowej wszystkie dodatkowe kopie zapasowe są zaplanowane automatycznie i zarządzane w trybie dyskretnym w tle. Dokładny czas wszystkie kopie zapasowe bazy danych jest określany przez usługę SQL Database jako jej całkowitego obciążenia systemu.
 
 Odzyskiwanie kopii zapasowych są geograficznie nadmiarowy i chronione przez [replikacji między regionami w usłudze Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage)
 

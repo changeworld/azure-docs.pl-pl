@@ -8,13 +8,13 @@ ms.author: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/14/2018
-ms.openlocfilehash: a2c992a47e40a4f8764f5950c65bb90f1cd9e066
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/14/2018
+ms.openlocfilehash: 7c58162048de341468b69a29c55edf346b376e9b
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43045147"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733818"
 ---
 # <a name="use-external-metadata-stores-in-azure-hdinsight"></a>Użyj zewnętrznych magazynów metadanych w usłudze Azure HDInsight
 
@@ -29,11 +29,11 @@ Istnieją dwa sposoby metadanych można skonfigurować dla klastrów usługi HDI
 
 ## <a name="default-metastore"></a>Domyślny magazyn metadanych
 
-Domyślnie HDInsight aprowizuje metadanych z każdego typu klastra. Zamiast tego możesz określić niestandardowy Magazyn metadanych. Domyślny magazyn metadanych należy uwzględnić następujące kwestie:
-- Bez dodatkowych kosztów. HDInsight aprowizuje metadanych z każdego typu klastra bez żadnych dodatkowych kosztów.
-- Każdy domyślny magazyn metadanych jest częścią cyklu życia klastra. Podczas usuwania klastra również usunięte magazynu metadanych i metadanych.
+Domyślnie HDInsight tworzy metadanych z każdego typu klastra. Zamiast tego możesz określić niestandardowy Magazyn metadanych. Domyślny magazyn metadanych należy uwzględnić następujące kwestie:
+- Bez dodatkowych kosztów. HDInsight tworzy metadanych z każdego typu klastra bez żadnych dodatkowych kosztów.
+- Każdy domyślny magazyn metadanych jest częścią cyklu życia klastra. Po usunięciu klastra odpowiedniego magazynu metadanych i metadane również zostaną usunięte.
 - Domyślny magazyn metadanych nie mogą mieć inne klastry.
-- Domyślny magazyn metadanych używa podstawowe bazy danych SQL Azure, która z limitem 5 jednostek DTU (jednostka transakcji bazy danych).
+- Domyślny magazyn metadanych używa podstawowe bazy danych SQL Azure, która ma ograniczenie do pięciu (jednostka transakcji bazy danych) jednostek DTU.
 Ten domyślny magazyn metadanych jest zwykle używane dla stosunkowo proste obciążeń, które nie wymagają wielu klastrów i nie wymagają metadanych zachowane poza cyklu życia klastra.
 
 
@@ -46,11 +46,7 @@ HDInsight obsługuje również niestandardowe magazyny metadanych, które są za
 - Płacisz za koszt magazynu metadanych (bazy danych SQL Azure) zgodnie z poziomem wydajności, które wybierzesz.
 - Magazyn metadanych można zwiększać zgodnie z potrzebami.
 
-
 ![Przypadek użycia Store metadanych programu Hive HDInsight](./media/hdinsight-use-external-metadata-stores/metadata-store-use-case.png)
-
-<!-- Image – Typical shared custom Metastore scenario in HDInsight (?) -->
-
 
 
 ### <a name="select-a-custom-metastore-during-cluster-creation"></a>Wybierz niestandardowy Magazyn metadanych podczas tworzenia klastra
@@ -67,12 +63,14 @@ Można również dodać dodatkowe klastry na niestandardowy Magazyn metadanych z
 
 Poniżej przedstawiono pewne ogólne HDInsight Hive magazynu metadanych najlepsze rozwiązania:
 
-- Niestandardowy Magazyn metadanych, jeśli to możliwe, należy użyć, ponieważ ułatwi to zasoby obliczeniowe oddzielne (uruchomionego klastra) i metadanych (przechowywanego w Magazyn metadanych).
+- Użyj niestandardowy Magazyn metadanych, jeśli to możliwe, ułatwiające zasoby obliczeniowe oddzielne (uruchomionego klastra) i metadanych (przechowywanego w Magazyn metadanych).
 - Zacznij od warstwy S2, co zapewnia 50 jednostek DTU i 250 GB miejsca do magazynowania. Jeśli widzisz "wąskie gardło", można zwiększać bazy danych.
-- Upewnij się, że Magazyn metadanych, zaprojektowane dla jednej wersji klastra HDInsight nie jest udostępniany w różnych wersjach klastra HDInsight. Różne wersje programu Hive używają różnych schematów. Na przykład nie można udostępniać metadanych klastry Hive 1.2 i Hive 2.1.
-- Utwórz kopię zapasową swojej niestandardowy Magazyn metadanych okresowo.
-- Zachowuj magazynu metadanych i klaster HDInsight, w tym samym regionie.
+- Jeśli jest planowane wielu klastrów HDInsight dostęp do oddzielnych danych na użytek oddzielnej bazy danych magazynu metadanych w każdym klastrze. Jeśli udostępniasz metadanych dla wielu klastrów HDInsight, oznacza to, że klastry używają tych samych metadanych i plików danych w usłudze podstawowej użytkownika.
+- Utwórz kopię zapasową swojej niestandardowy Magazyn metadanych okresowo. Usługa Azure SQL Database automatycznie generuje kopii zapasowych, ale różni się w przedziale czasu przechowywania kopii zapasowych. Aby uzyskać więcej informacji, zobacz [Dowiedz się więcej o automatycznych kopii zapasowych bazy danych SQL](../sql-database/sql-database-automated-backups.md).
+- Znajdź Twojego magazynu metadanych i klaster HDInsight, w tym samym regionie, najwyższej wydajności i opłaty za ruch wychodzący z sieci najniższy.
 - Monitorowanie usługi magazynu metadanych dla wydajności i dostępności przy użyciu narzędzi monitorowania bazy danych SQL platformy Azure, takich jak witryny Azure portal lub usługi Azure Log Analytics.
+- Po utworzeniu nowego wyższej wersji usługi Azure HDInsight względem istniejącej bazy danych niestandardowy Magazyn metadanych systemu uaktualnia schematu magazynu metadanych, jest nieodwracalne bez przywracania bazy danych z kopii zapasowej.
+- Jeśli udostępniasz metadanych w wielu klastrach, upewnij się, że wszystkie klastry mają taką samą wersję HDInsight. Różne wersje programu Hive, użyj innego magazynu metadanych schematy bazy danych. Na przykład nie można udostępniać metadanych w gałęzi rejestru 1.2 i Hive 2.1 klastrach numerów wersji. 
 
 ## <a name="oozie-metastore"></a>Magazyn metadanych programu Oozie
 

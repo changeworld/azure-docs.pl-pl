@@ -11,12 +11,12 @@ ms.topic: article
 ms.date: 08/14/2018
 ms.author: danlep
 ms.custom: mvc
-ms.openlocfilehash: 6a9897e94bf8f58ca4000f68ff30bfc6eece6249
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: a2b6b3334176cb6fdd86c17b4d11cb03a42dd4bf
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057252"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731806"
 ---
 # <a name="store-batch-ai-job-input-and-output-with-azure-storage"></a>Store dane wejściowe zadania usługi Batch AI i danych wyjściowych za pomocą usługi Azure Storage
 
@@ -30,7 +30,7 @@ Usługa Azure Storage to rozwiązanie do magazynowania w chmurze firmy Microsoft
 
 W przypadku wybrania usługi Azure Storage dla środowiska usługi Batch AI, zaleca się przechowywanie plików wejściowych (takich jak zestawy danych) w kontenerze obiektów Blob, który ma wyższą przepływność, i szkolenia dane wyjściowe są przechowywane w udziale plików, który obsługuje przesyłania strumieniowego (umożliwiając Odczytywanie danych wyjściowych dzienników po uruchomieniu zadania jednocześnie). 
 
-Zanim użyjesz usługi Azure Storage, należy najpierw [Tworzenie konta usługi Azure Storage](../storage/common/storage-create-storage-account.md#create-a-storage-account). Usługa Batch AI obsługuje instalowanie woluminów z obu ogólnego przeznaczenia w wersji 1 (GPv1) i ogólnego przeznaczenia w wersji 2 (GPv2) usługi Azure Storage kont. Konto usługi Azure Storage można przechowywać wiele kontenerów obiektów Blob lub wystąpienia udziału plików. Wybierając konto magazynu weź pod uwagę wymagania dotyczące kosztów i wydajności [opcji](../storage/common/storage-account-options.md). 
+Zanim użyjesz usługi Azure Storage, należy najpierw [Tworzenie konta usługi Azure Storage](../storage/common/storage-quickstart-create-account.md). Usługa Batch AI obsługuje instalowanie woluminów z obu ogólnego przeznaczenia w wersji 1 (GPv1) i ogólnego przeznaczenia w wersji 2 (GPv2) usługi Azure Storage kont. Konto usługi Azure Storage można przechowywać wiele kontenerów obiektów Blob lub wystąpienia udziału plików. Wybierając typ konta magazynu do utworzenia, weź pod uwagę wymagania dotyczące kosztów i wydajności. Aby uzyskać więcej informacji, zobacz [Przegląd konta usługi Azure storage](../storage/common/storage-account-overview.md). 
 
 Aby utworzyć kontener obiektów Blob i Przekaż swój zestaw danych do kontenera obiektów Blob platformy Azure, wybierz jedną z następujących metod:
 - [Witryna Azure portal](../storage/blobs/storage-quickstart-blobs-portal.md) przekazywania z graficznym interfejsem użytkownika sieci web. Aby przekazać małą liczbę plików, witryna Azure portal udostępnia najprostszy operacji.

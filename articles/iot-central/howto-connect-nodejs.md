@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 55ce85702804d99d806220d7f0a4ea0820975f4f
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 8a5d880d0238e38fbbaa9de22fc1baf604f0fc07
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206041"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733468"
 ---
 # <a name="connect-a-generic-client-application-to-your-azure-iot-central-application-nodejs"></a>Łączenie aplikacji klienckiej ogólnego aplikację usługi Azure IoT Central (Node.js)
 
@@ -129,7 +129,11 @@ Poniższe kroki pokazują jak utworzyć aplikację kliencką, która implementuj
     var client = clientFromConnectionString(connectionString);
     ```
 
-    Aktualizuj symbol zastępczy `{your device connection string}` parametrami połączenia urządzenia. Na stronie szczegółów połączenia będą kopiowane tej wartości, po dodaniu rzeczywistego urządzenia. W tym przykładzie, możemy zainicjować `targetTemperature` na zero, można opcjonalnie wykonać bieżącej odczytu z urządzenia lub wartość z bliźniaczej reprezentacji urządzenia. 
+  > [!NOTE]
+   > Usługa Azure IoT Central przeszła do przy użyciu usługi Azure IoT Hub Device Provisioning (DPS) dla wszystkich połączeń urządzeń, wykonaj te instrustions do [pobieranie parametrów połączenia urządzenia](concepts-connectivity.md#getting-device-connection-string) i kontynuować pracę z pozostałej części tego samouczka.
+
+
+    Aktualizuj symbol zastępczy `{your device connection string}` przy użyciu parametrów połączenia urządzenia. W tym przykładzie, możemy zainicjować `targetTemperature` na zero, można opcjonalnie wykonać bieżącej odczytu z urządzenia lub wartość z bliźniaczej reprezentacji urządzenia. 
 
 1. Aby wysyłać pomiary dotyczące prawdziwych danych telemetrycznych, stanu i zdarzeń z aplikacją usługi Azure IoT Central, dodaj następującą funkcję do pliku:
 

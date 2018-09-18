@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 01/17/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: b261ec5fb0ad437202df1a8fd8683a095cb1bb96
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 03280f87b4b49b3e42091c6b1572a7f050afb336
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42058170"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983168"
 ---
 # <a name="overview-of-share-snapshots-for-azure-files"></a>Omówienie migawek udziału plików platformy Azure 
 Usługa Azure Files oferuje możliwość robienia migawek udziału udziałów plików. Udostępnianie migawki przechwytywania stanu udziału w danym momencie. W tym artykule opisano możliwości, jakie zapewniają migawek udziałów i jak można było korzystać z nich w Twoim przypadku użycia niestandardowego.
@@ -32,7 +32,7 @@ Po utworzeniu udziału plików, można utworzyć okresowe migawki udziału, udzi
 ## <a name="capabilities"></a>Możliwości
 Migawkę udziału jest w momencie, tylko do odczytu kopię danych. Tworzenie, usuwanie i zarządzać migawki za pomocą interfejsu API REST. Te same możliwości również są dostępne w bibliotekę klienta wiersza polecenia platformy Azure i witryny Azure portal. 
 
-Migawki udziału można wyświetlić przy użyciu interfejsu API REST i protokół SMB. Można pobrać listy wersji pliku lub katalogu, a następnie zainstalować określoną wersję bezpośrednio jako dysk. 
+Migawki udziału można wyświetlić przy użyciu interfejsu API REST i protokół SMB. Można pobrać listy wersji pliku lub katalogu, a następnie zainstalować określoną wersję bezpośrednio jako dysk (dostępne tylko na Windows — zobacz [limity](#limits)). 
 
 Po utworzeniu migawki udziału go można odczytać, kopiowana, lub usunięte, ale nie zostały zmodyfikowane. Nie można skopiować migawki udziału całego do innego konta magazynu. Musisz zrobić to za plik, za pomocą narzędzia AzCopy lub innych mechanizmów kopiowania.
 
@@ -62,6 +62,8 @@ Migawki nie są wliczane do limitu 5 TB udziału. Nie ma żadnego limitu, ile mi
 Maksymalna liczba migawek udziałów, które usługi Azure Files umożliwia obecnie to 200. Po migawek udziałów 200 musisz usunąć starsze migawek udziałów, aby utworzyć nowe. 
 
 Nie ma żadnego limitu jednoczesnych wywołań do tworzenia migawek udziałów. Nie ma żadnego limitu ilości miejsca na za tego udziału, w których może używać migawek udziału określonego pliku. 
+
+Obecnie nie jest możliwe do zainstalowania migawek udziału w systemie Linux. Jest to spowodowane klient SMB w systemie Linux nie obsługuje instalowania migawki, takich jak Windows jest.
 
 ## <a name="copying-data-back-to-a-share-from-share-snapshot"></a>Kopiowanie danych do udziału z migawki udziału
 Operacje kopiowania, które obejmują pliki i udostępniać migawki należy wykonać następujące czynności:

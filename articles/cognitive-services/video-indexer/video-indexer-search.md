@@ -1,20 +1,21 @@
 ---
-title: Użyj indeksatora wideo platformy Azure, aby znaleźć dokładnie momentów w pliku wideo | Dokumentacja firmy Microsoft
-description: W tym temacie pokazano, jak znaleźć dokładnie momentów w pliku wideo.
+title: Znajdowanie konkretnych momentów w wideo — Video Indexer pliku
+titlesuffix: Azure Cognitive Services
+description: W tym temacie pokazano, jak znajdowanie konkretnych momentów filmów wideo przy użyciu Video Indexer — w pliku.
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 09/09/2018
+ms.component: video-indexer
+ms.topic: conceptual
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 72f110c0c98e6fb6ee5fca684fdc74c6986e032c
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 9806f9c3f22429d61ac765773e4b6971d683a6b1
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541410"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984511"
 ---
 # <a name="find-exact-moments-within-videos"></a>Znajdowanie konkretnych momentów w wideo
 

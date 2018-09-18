@@ -1,30 +1,30 @@
 ---
-title: Wybieranie pojemności dla danego wdrożenia usługi QnA Maker — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
-titleSuffix: Azure
+title: Pojemność zasobów dla wdrożenia — QnA Maker
+titleSuffix: Azure Cognitive Services
 description: Przewodnik dotyczący wybranie pojemności dla danego wdrożenia usługi QnA Maker
 services: cognitive-services
 author: nstulasi
-manager: sangitap
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: article
-ms.date: 05/07/2018
-ms.author: saneppal
-ms.openlocfilehash: 71af374fbd08fe1f7568bc1ece2a65af2de3ad19
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.date: 09/12/2018
+ms.author: nstulasi
+ms.openlocfilehash: e2c9239ccd42e2464c85172be0e91492bd8f6718
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45573370"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736788"
 ---
 # <a name="choosing-capacity-for-your-qna-maker-deployment"></a>Wybieranie pojemności dla danego wdrożenia usługi QnA Maker
 
 Usługa QnA Maker przyjmuje zależność dla trzech zasobów platformy Azure:
 1.  App Service (dla środowiska wykonawczego)
 2.  Usługa Azure Search (do przechowywania znacznie)
-3.  App Insights (opcjonalnie, do przechowywania chatlogs i telemetrii)
+3.  App Insights (opcjonalnie, do przechowywania dzienniki czatu i telemetrii)
 
-Przed przystąpieniem do tworzenia usługi QnA Maker możesz zdecydować, której warstwy usług powyżej jest odpowiednia dla Ciebie. 
+Przed przystąpieniem do tworzenia usługi QnA Maker możesz zdecydować, którą warstwę usług powyżej jest odpowiednia dla Ciebie. 
 
 Zwykle istnieją trzy parametry, które należy wziąć pod uwagę:
 1. **Przepływność należy z niej**: Wybierz odpowiedni [Plan usługi App](https://azure.microsoft.com/en-in/pricing/details/app-service/plans/) dla usługi App service zgodnie z potrzebami. Możesz [skalowanie w górę](https://docs.microsoft.com/azure/app-service/web-sites-scale) lub w dół aplikacji. To powinien również mieć wpływ na wybór jednostki SKU usługi Azure Search, zobacz więcej szczegółów [tutaj](https://docs.microsoft.com/azure/search/search-sku-tier).
@@ -38,7 +38,7 @@ W poniższej tabeli przedstawiono niektóre wytyczne wysokiego poziomu.
 |                        | Usługa QnA Maker zarządzania | App Service | Azure Search | Ograniczenia                      |
 | ---------------------- | -------------------- | ----------- | ------------ | -------------------------------- |
 | Eksperymentowanie        | Bezpłatna jednostka SKU             | Warstwa Bezpłatna   | Warstwa Bezpłatna    | Publikowanie do 2 artykułów bazy wiedzy, rozmiar 50 MB  |
-| Środowisko programistyczne/testowe   | Standardowy SKU         | Udostępniona      | Podstawowa        | Publikowanie do 4 Kb/s, rozmiar 2GB    |
+| Środowisko programistyczne/testowe   | Standardowy SKU         | Udostępniona      | Podstawowa        | Publikowanie do 4 Kb/s, rozmiar 2 GB    |
 | Środowiska produkcyjnego | Standardowy SKU         | Podstawowa       | Standardowa (Standard)     | Publikowanie do 49 artykułów bazy wiedzy, rozmiar 25 GB |
 
 Dla uaktualnienie stosie usługi QnA Maker, zobacz [uaktualnienia usługi QnA Maker](../How-To/upgrade-qnamaker-service.md).

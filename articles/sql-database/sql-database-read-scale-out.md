@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 8/27/2018
+ms.date: 09/14/2018
 ms.author: sashan
-ms.openlocfilehash: c0fa4a9868aa19032888aa50a0d300dd2e88fcca
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: d7c3a672224bd7a167956d7699541880de11bef9
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124821"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737043"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Ładowanie równoważenie obciążeń związanych z zapytaniami tylko do odczytu (wersja zapoznawcza) przy użyciu repliki tylko do odczytu
 
@@ -26,7 +26,7 @@ Każda baza danych w warstwie Premium ([modelu zakupu opartego na jednostkach DT
 
 ![Repliki tylko do odczytu](media/sql-database-managed-instance/business-critical-service-tier.png)
 
-Te repliki są aprowizowane na tym samym poziomie wydajności co replika odczytu i zapisu, używanych przez połączenia bazy danych w regularnych. **Odczytu skalowalnego w poziomie** funkcja pozwala załadować saldo bazy danych SQL Database tylko do odczytu obciążeń przy użyciu pojemność jednej z replik tylko do odczytu nie udostępniały repliki do odczytu i zapisu. Dzięki temu obciążenie tylko do odczytu zostanie odizolowana od głównej obciążenia odczytu i zapisu, a nie ma wpływu na jego wydajność. Ta funkcja jest przeznaczona dla aplikacji, które obejmują logicznie oddzielone obciążeń tylko do odczytu, takich jak analiza, a w związku z tym można także umożliwia czerpanie korzyści wydajności przy użyciu tej dodatkowej pojemności bez dodatkowych kosztów.
+Te repliki są aprowizowane za pomocą tego samego rozmiaru obliczeń jako replika odczytu i zapisu, używanych przez połączenia bazy danych w regularnych. **Odczytu skalowalnego w poziomie** funkcja pozwala załadować saldo bazy danych SQL Database tylko do odczytu obciążeń przy użyciu pojemność jednej z replik tylko do odczytu nie udostępniały repliki do odczytu i zapisu. Dzięki temu obciążenie tylko do odczytu zostanie odizolowana od głównej obciążenia odczytu i zapisu, a nie ma wpływu na jego wydajność. Ta funkcja jest przeznaczona dla aplikacji, które obejmują logicznie oddzielone obciążeń tylko do odczytu, takich jak analiza, a w związku z tym można także umożliwia czerpanie korzyści wydajności przy użyciu tej dodatkowej pojemności bez dodatkowych kosztów.
 
 Funkcja odczytu skalowalnego w poziomie za pomocą określonej bazy danych, należy go najpierw włączyć podczas tworzenia bazy danych lub później, zmieniając jego konfigurację przy użyciu programu PowerShell, wywołując [polecenia Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) lub [ Nowy-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) poleceń cmdlet lub za pomocą interfejsu REST API usługi Azure Resource Manager [baz danych — Utwórz lub zaktualizuj](/rest/api/sql/databases/createorupdate) metody. 
 

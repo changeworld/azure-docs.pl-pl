@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 09/13/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 0cf6291cb12366c4f710092c1b36c8cb0b8c14fb
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 2deacb7d15f370c9182c3239493ed60f735d738c
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578399"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736839"
 ---
 # <a name="using-azure-for-hosting-and-running-sap-workload-scenarios"></a>Korzystanie z platformy Azure do hostowania i uruchamiania scenariusze obciążeń SAP
 
@@ -103,23 +103,11 @@ Dotyczące bazy danych bez HANA obciążenia SAP na platformie azure, takich jak
 
 Baz danych SAP HANA na platformie Azure można znaleźć w sekcji SAP HANA na maszynach wirtualnych platformy Azure.
 
-Aby uzyskać wysoką dostępność obciążeń SAP na platformie Azure dostępne są następujące dokumenty:
+Aby zapewnić wysoką dostępność obciążeń SAP na platformie Azure dokument wejścia jest:
 
 - [Azure maszyny wirtualne wysokiej dostępności dla oprogramowania SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-start)
-- [Architektura wysokiej dostępności i scenariusze SAP NetWeaver](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-architecture-scenarios)
-- [Korzystanie z ponownego uruchamiania maszyny Wirtualnej infrastruktury platformy Azure do osiągnięcia "wyższej dostępności" systemu SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-higher-availability-architecture-scenarios)
-- [Klaster wystąpienie SAP ASCS/SCS na klastrze pracy awaryjnej Windows przy użyciu udostępnionego dysku klastra na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-shared-disk)
-- [Klaster wystąpienie SAP ASCS/SCS na klastrze pracy awaryjnej Windows przy użyciu udziału plików na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-guide-wsfc-file-share)
-- [Wysoka dostępność środowiska SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server dla aplikacji SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)
-- [Przygotowanie infrastruktury platformy Azure do SAP wysokiej dostępności przy użyciu klastra pracy awaryjnej Windows i udostępnionego dysku dla SAP ASCS/SCS.](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-shared-disk)
-- [Przygotowywanie infrastruktury platformy Azure SAP wysokiej dostępności przy użyciu Windows trybu failover klastra i udział plików dla wystąpień SAP ASCS/SCS](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-infrastructure-wsfc-file-share)
-- [Wysoka dostępność systemu NFS na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-nfs)
-- [Konfigurowanie program Pacemaker w systemie SUSE Linux Enterprise Server na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker)
-- [https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse-pacemaker](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-shared-disk)
-- [Zainstaluj oprogramowanie SAP NetWeaver wysokiej dostępności na Windows trybu failover klastra i udział plików dla wystąpień SAP ASCS/SCS na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-high-availability-installation-wsfc-file-share)
-- [Wysoka dostępność środowiska SAP NetWeaver na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server dla aplikacji SAP](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/high-availability-guide-suse)
-- [SAP ASCS/SCS wystąpienia — wiele identyfikatorów SID wysokiej dostępności z systemu Windows Server Failover Clustering i udostępnionego dysku na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-shared-disk)
-- [SAP ASCS/SCS wystąpienia — wiele identyfikatorów SID wysokiej dostępności z systemu Windows Server Failover Clustering i udział plików na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/workloads/sap/sap-ascs-ha-multi-sid-wsfc-file-share)
+
+Dokument wpis wskazuje różnych innych dokumentów architektury i scenariusza. W scenariuszu kolejnych dokumentów znajdują się linki do szczegółowych dokumentów technicznych wyjaśniające, wdrażania i konfigurowania metody różnych wysokiej dostępności. Różne dokumenty z tworzeniem i skonfigurowanie wysokiej dostępności dla obciążeń SAP NetWeaver są obejmujące systemu Linux, a także Windows, systemów operacyjnych.
 
 
 Aby uzyskać integrację usługi Azure Active Directory (AAD) i usług SAP i logowanie jednokrotne, wyświetlanie listy dokumentów, takich jak:
@@ -134,10 +122,10 @@ Aby uzyskać integrację usługi Azure Active Directory (AAD) i usług SAP i log
 
 Do integracji usług platformy Azure na składniki SAP listy dokumentów wygląda następująco:
 
-- [Używanie narzędzia SAP HANA w usłudze Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-sap-hana)
-- [Zapytanie bezpośrednie i SAP HANA](https://docs.microsoft.com/power-bi/desktop-directquery-sap-hana)
-- [Użyj łącznika systemu SAP BW w programie Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-sap-bw-connector) 
-- [Usługa Azure Data Factory oferuje integrację danych SAP HANA i Business Warehouse](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
+- [Używanie oprogramowania SAP HANA w programie Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-sap-hana)
+- [Tryb DirectQuery i oprogramowanie SAP HANA](https://docs.microsoft.com/power-bi/desktop-directquery-sap-hana)
+- [Używanie łącznika SAP BW Connector w programie Power BI Desktop](https://docs.microsoft.com/power-bi/desktop-sap-bw-connector) 
+- [Usługa Azure Data Factory oferuje integrację danych oprogramowania SAP HANA i Business Warehouse](https://azure.microsoft.com/blog/azure-data-factory-offer-sap-hana-and-business-warehouse-data-integration)
 
 
 

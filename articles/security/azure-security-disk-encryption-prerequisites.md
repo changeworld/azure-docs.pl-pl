@@ -6,13 +6,13 @@ ms.service: security
 ms.subservice: Azure Disk Encryption
 ms.topic: article
 ms.author: mstewart
-ms.date: 09/10/2018
-ms.openlocfilehash: 0750ea0877d5f27a8ceb091f8c3904048c9314aa
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.date: 09/14/2018
+ms.openlocfilehash: e025a1a625bded118ea7f3b3968502115b64d83a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348280"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734702"
 ---
 # <a name="azure-disk-encryption-prerequisites"></a>Wymagania wstępne usługi Azure Disk Encryption 
  W tym artykule, wymagań wstępnych szyfrowania dysków Azure, opisano elementy, które muszą być spełnione, zanim użyjesz usługi Azure Disk Encryption. Usługa Azure Disk Encryption jest zintegrowana z usługą [usługi Azure Key Vault](https://docs.microsoft.com/azure/key-vault/) pomagające w zarządzaniu kluczami szyfrowania. Możesz użyć [programu Azure PowerShell](/powershell/azure/overview), [wiersza polecenia platformy Azure](/cli/azure/), lub [witryny Azure portal](https://portal.azure.com) do konfigurowania usługi Azure Disk Encryption.
@@ -127,6 +127,9 @@ Jeśli już znasz z usługi Key Vault i Azure AD wymagania wstępne dotyczące u
 1. Jeśli to konieczne, Utwórz grupę zasobów.
 2. Tworzenie magazynu kluczy. 
 3. Zaawansowane zasady dostępu magazynu kluczy zestawu.
+
+>[!WARNING]
+>Przed usunięciem magazynu kluczy, upewnij się, szyfruje wszystkie istniejące maszyny wirtualne z nim. Aby chronić w magazynie przed przypadkowym usunięciem [Włącz usuwanie nietrwałe](../key-vault/key-vault-soft-delete-powershell.md#enabling-soft-delete) i [blokady zasobu](../azure-resource-manager/resource-group-lock-resources.md) w magazynie. 
  
 ## <a name="bkmk_KeyVault"></a> Tworzenie magazynu kluczy 
 Usługa Azure Disk Encryption jest zintegrowana z usługą [usługi Azure Key Vault](https://azure.microsoft.com/documentation/services/key-vault/) ułatwiają kontrolowanie i zarządzanie kluczami szyfrowania dysku i wpisami tajnymi w ramach subskrypcji usługi key vault. Można utworzyć magazyn kluczy lub użyć istniejącego dla usługi Azure Disk Encryption. Aby uzyskać więcej informacji dotyczących magazynów kluczy, zobacz [Rozpoczynanie pracy z usługą Azure Key Vault](../key-vault/key-vault-get-started.md) i [zabezpieczanie własnego magazynu kluczy](../key-vault/key-vault-secure-your-key-vault.md). Szablon usługi Resource Manager, programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure umożliwia tworzenie magazynu kluczy. 

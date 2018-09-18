@@ -7,12 +7,12 @@ ms.date: 06/24/2018
 ms.topic: conceptual
 ms.service: iot-hub
 services: iot-hub
-ms.openlocfilehash: 571aa5a080ae4622a23fdb20d712327d4ec6fbf9
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 5eb0ba659961d809d0ae471034b03263f87e3894
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42059585"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985502"
 ---
 # <a name="best-practices-for-device-configuration-within-an-iot-solution"></a>Najlepsze rozwiązania dotyczące konfiguracji urządzenia w ramach rozwiązania IoT
 
@@ -55,7 +55,7 @@ Poniżej przedstawiono najlepsze rozwiązania dla producentów sprzętu i rozwi�
 
 Poniżej przedstawiono najlepsze rozwiązania dla deweloperów IoT, którzy tworzą systemy oparte na platformie Azure:
 
-* **Implementowanie [bliźniaczych reprezentacji urządzeń](iot-hub-devguide-device-twins.md):** bliźniaczych reprezentacji urządzeń Włącz synchronizowanie wymaganą konfiguracją z chmury oraz raportowanie bieżącej konfiguracji i właściwościach urządzenia. Najlepszym sposobem wdrożenia bliźniaczych reprezentacji urządzeń w ramach aplikacji rozwiązań w chmurze jest za pośrednictwem [Azure IoT SDKs](https://github.com/Azure/azure-iot-sdks.) bliźniacze reprezentacje urządzeń to najlepszym rozwiązaniem w przypadku konfiguracji, ponieważ ich:
+* **Implementowanie [bliźniaczych reprezentacji urządzeń](iot-hub-devguide-device-twins.md):** bliźniaczych reprezentacji urządzeń Włącz synchronizowanie wymaganą konfiguracją z chmury oraz raportowanie bieżącej konfiguracji i właściwościach urządzenia. Najlepszym sposobem wdrożenia bliźniaczych reprezentacji urządzeń w ramach aplikacji rozwiązań w chmurze jest za pośrednictwem [Azure IoT SDKs](https://github.com/Azure/azure-iot-sdks). Bliźniacze reprezentacje urządzeń to najlepszym rozwiązaniem w przypadku konfiguracji, ponieważ ich:
 
     * Obsługuje komunikację dwukierunkową.
     * Umożliwia zarówno Stany urządzeń połączonych, jak i bez połączenia. 

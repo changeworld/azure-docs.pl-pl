@@ -5,15 +5,15 @@ author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: reference
-ms.date: 03/30/2018
+ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: 3219f8e61a0aa469775a972e6b240eb2069c2cd9
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: b7e18d943bea179cb6163d7f91a0761311ecf38e
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929971"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985247"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki z usługą Azure Monitor
 Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wykresy je w portalu, uzyskując dostęp do nich za pośrednictwem interfejsu API REST lub ich zapytań przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Oto Pełna lista wszystkich metryk jest obecnie dostępna z potoku metryk usługi Azure Monitor. Inne metryki mogą być dostępne w portalu lub przy użyciu starszej wersji interfejsów API. Ta lista poniżej zawiera tylko metryk przy użyciu skonsolidowany potoku metryk usługi Azure Monitor. Użyj kwerendy i dostępem tych metryk [2018-01-01-api-version](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -83,7 +83,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |FailedRequests|Żądania bramy zakończone niepowodzeniem|Licznik|Łącznie|Liczba błędów w żądaniach bramy|Lokalizacja i nazwa hosta|
 |OtherRequests|Inne żądania bramy|Licznik|Łącznie|Liczba inne żądania bramy|Lokalizacja i nazwa hosta|
 |Czas trwania|Całkowity czas trwania żądań bramy|Milisekundy|Średnia|Ogólny czas trwania dla żądania bramy (w milisekundach)|Lokalizacja i nazwa hosta|
-|Pojemność|Wydajność (wersja zapoznawcza)|Procent|Średnia|Metryki dla usługi ApiManagement|Lokalizacja|
+|Pojemność|Pojemność|Procent|Średnia|Metryki dla usługi ApiManagement|Lokalizacja|
 
 ## <a name="microsoftautomationautomationaccounts"></a>Microsoft.Automation/automationAccounts
 
@@ -119,34 +119,44 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |PoolResizeCompleteEvent|Zdarzenia pełną zmiany rozmiaru puli|Licznik|Łącznie|Łączna liczba zmienia rozmiar puli, które zostały ukończone|Nie wymiarów|
 |PoolDeleteStartEvent|Zdarzenia rozpoczęcia usuwania puli|Licznik|Łącznie|Łączna liczba usuwa puli, które zostały uruchomione|Nie wymiarów|
 |PoolDeleteCompleteEvent|Zdarzenia pełną usuwania puli|Licznik|Łącznie|Łączna liczba usuwa puli, które zostały ukończone|Nie wymiarów|
+|JobDeleteCompleteEvent|Zadania Usuń zakończenie zdarzenia|Licznik|Łącznie|Całkowita liczba zadań, które zostały pomyślnie usunięte.|Nie wymiarów|
+|JobDeleteStartEvent|Zadania Usuń rozpoczęcia zdarzenia|Licznik|Łącznie|Całkowita liczba zadań, które zostały wymagane do usunięcia.|Nie wymiarów|
+|JobDisableCompleteEvent|Zdarzenia pełne wyłączenie zadań|Licznik|Łącznie|Całkowita liczba zadań, które zostały pomyślnie wyłączone.|Nie wymiarów|
+|JobDisableStartEvent|Zadanie Wyłącz rozpoczęcia zdarzenia|Licznik|Łącznie|Całkowita liczba zadań, wymagające być wyłączona.|Nie wymiarów|
+|JobStartEvent|Zadanie rozpoczęcia zdarzenia|Licznik|Łącznie|Całkowita liczba zadań, które zostały pomyślnie uruchomione.|Nie wymiarów|
+|JobTerminateCompleteEvent|Zadanie zakończenia zdarzenia ukończone|Licznik|Łącznie|Całkowita liczba zadań, które zostały pomyślnie zakończone.|Nie wymiarów|
+|JobTerminateStartEvent|Zadanie zakończenia zdarzenia rozpoczęcia|Licznik|Łącznie|Całkowita liczba zadań, wymagające ma zostać zakończony.|Nie wymiarów|
 
 ## <a name="microsoftcacheredis"></a>Microsoft.Cache/redis
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|connectedclients|Podłączeni klienci|Licznik|Maksimum||Nie wymiarów|
-|totalcommandsprocessed|Łączna liczba operacji|Licznik|Łącznie||Nie wymiarów|
-|Trafienia w pamięci podręcznej|Trafienia w pamięci podręcznej|Licznik|Łącznie||Nie wymiarów|
-|cachemisses|Chybienia w pamięci podręcznej|Licznik|Łącznie||Nie wymiarów|
-|getcommands|Pobrania|Licznik|Łącznie||Nie wymiarów|
-|setcommands|Zestawy|Licznik|Łącznie||Nie wymiarów|
-|operationsPerSecond|Operacje na sekundę|Licznik|Łącznie||Nie wymiarów|
-|evictedkeys|Wykluczone klucze|Licznik|Łącznie||Nie wymiarów|
-|totalkeys|Całkowita liczba kluczy|Licznik|Maksimum||Nie wymiarów|
-|expiredkeys|Wygasłe klucze|Licznik|Łącznie||Nie wymiarów|
-|usedmemory|Użyta pamięć|Bajty|Maksimum||Nie wymiarów|
-|usedmemoryRss|Używana pamięć RSS|Bajty|Maksimum||Nie wymiarów|
-|serverLoad|Obciążenie serwera|Procent|Maksimum||Nie wymiarów|
-|cacheWrite|Zapis w pamięci podręcznej|Bajty na sekundę|Maksimum||Nie wymiarów|
-|cacheRead|Odczyt pamięci podręcznej|Bajty na sekundę|Maksimum||Nie wymiarów|
-|percentProcessorTime|Procesor CPU|Procent|Maksimum||Nie wymiarów|
+|connectedclients|Podłączeni klienci|Licznik|Maksimum||ShardId|
+|totalcommandsprocessed|Łączna liczba operacji|Licznik|Łącznie||ShardId|
+|Trafienia w pamięci podręcznej|Trafienia w pamięci podręcznej|Licznik|Łącznie||ShardId|
+|cachemisses|Chybienia w pamięci podręcznej|Licznik|Łącznie||ShardId|
+|getcommands|Pobrania|Licznik|Łącznie||ShardId|
+|setcommands|Zestawy|Licznik|Łącznie||ShardId|
+|operationsPerSecond|Operacje na sekundę|Licznik|Maksimum||ShardId|
+|evictedkeys|Wykluczone klucze|Licznik|Łącznie||ShardId|
+|totalkeys|Całkowita liczba kluczy|Licznik|Maksimum||ShardId|
+|expiredkeys|Wygasłe klucze|Licznik|Łącznie||ShardId|
+|usedmemory|Użyta pamięć|Bajty|Maksimum||ShardId|
+|usedmemorypercentage|Procent używanej pamięci|Procent|Maksimum||ShardId|
+|usedmemoryRss|Używana pamięć RSS|Bajty|Maksimum||ShardId|
+|serverLoad|Obciążenie serwera|Procent|Maksimum||ShardId|
+|cacheWrite|Zapis w pamięci podręcznej|Bajty na sekundę|Maksimum||ShardId|
+|cacheRead|Odczyt pamięci podręcznej|Bajty na sekundę|Maksimum||ShardId|
+|percentProcessorTime|Procesor CPU|Procent|Maksimum||ShardId|
+|cacheLatency|Pamięć podręczna opóźnienie mikrosekund (wersja zapoznawcza)|Licznik|Średnia||ShardId, SampleType|
+|błędy|Błędy|Licznik|Maksimum||ShardId, ErrorType|
 |connectedclients0|Podłączeni klienci (fragmencie 0)|Licznik|Maksimum||Nie wymiarów|
 |totalcommandsprocessed0|Łączna liczba operacji (fragmencie 0)|Licznik|Łącznie||Nie wymiarów|
 |cachehits0|Trafienia w pamięci podręcznej (fragmencie 0)|Licznik|Łącznie||Nie wymiarów|
 |cachemisses0|Chybienia w pamięci podręcznej (fragmencie 0)|Licznik|Łącznie||Nie wymiarów|
 |getcommands0|Pobiera (fragmencie 0)|Licznik|Łącznie||Nie wymiarów|
 |setcommands0|Zestawy (fragmencie 0)|Licznik|Łącznie||Nie wymiarów|
-|operationsPerSecond0|Operacje na sekundę (fragmencie 0)|Licznik|Łącznie||Nie wymiarów|
+|operationsPerSecond0|Operacje na sekundę (fragmencie 0)|Licznik|Maksimum||Nie wymiarów|
 |evictedkeys0|Wykluczone klucze (fragmencie 0)|Licznik|Łącznie||Nie wymiarów|
 |totalkeys0|Całkowita liczba kluczy (fragmencie 0)|Licznik|Maksimum||Nie wymiarów|
 |expiredkeys0|Wygasłe klucze (fragmencie 0)|Licznik|Łącznie||Nie wymiarów|
@@ -162,7 +172,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |cachemisses1|Chybienia w pamięci podręcznej (fragmencie 1)|Licznik|Łącznie||Nie wymiarów|
 |getcommands1|Pobiera (fragmencie 1)|Licznik|Łącznie||Nie wymiarów|
 |setcommands1|Zestawy (fragmencie 1)|Licznik|Łącznie||Nie wymiarów|
-|operationsPerSecond1|Operacje na sekundę (fragmencie 1)|Licznik|Łącznie||Nie wymiarów|
+|operationsPerSecond1|Operacje na sekundę (fragmencie 1)|Licznik|Maksimum||Nie wymiarów|
 |evictedkeys1|Wykluczone klucze (fragmencie 1)|Licznik|Łącznie||Nie wymiarów|
 |totalkeys1|Całkowita liczba kluczy (fragmencie 1)|Licznik|Maksimum||Nie wymiarów|
 |expiredkeys1|Wygasłe klucze (fragmencie 1)|Licznik|Łącznie||Nie wymiarów|
@@ -178,7 +188,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |cachemisses2|Chybienia w pamięci podręcznej (fragmencie 2)|Licznik|Łącznie||Nie wymiarów|
 |getcommands2|Pobiera (fragmencie 2)|Licznik|Łącznie||Nie wymiarów|
 |setcommands2|Zestawy (fragmencie 2)|Licznik|Łącznie||Nie wymiarów|
-|operationsPerSecond2|Operacje na sekundę (fragmencie 2)|Licznik|Łącznie||Nie wymiarów|
+|operationsPerSecond2|Operacje na sekundę (fragmencie 2)|Licznik|Maksimum||Nie wymiarów|
 |evictedkeys2|Wykluczone klucze (fragmencie 2)|Licznik|Łącznie||Nie wymiarów|
 |totalkeys2|Całkowita liczba kluczy (fragmencie 2)|Licznik|Maksimum||Nie wymiarów|
 |expiredkeys2|Wygasłe klucze (fragmencie 2)|Licznik|Łącznie||Nie wymiarów|
@@ -194,7 +204,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |cachemisses3|Chybienia w pamięci podręcznej (fragmencie 3)|Licznik|Łącznie||Nie wymiarów|
 |getcommands3|Pobiera (fragmencie 3)|Licznik|Łącznie||Nie wymiarów|
 |setcommands3|Zestawy (fragmencie 3)|Licznik|Łącznie||Nie wymiarów|
-|operationsPerSecond3|Operacje na sekundę (fragmencie 3)|Licznik|Łącznie||Nie wymiarów|
+|operationsPerSecond3|Operacje na sekundę (fragmencie 3)|Licznik|Maksimum||Nie wymiarów|
 |evictedkeys3|Wykluczone klucze (fragmencie 3)|Licznik|Łącznie||Nie wymiarów|
 |totalkeys3|Całkowita liczba kluczy (fragmencie 3)|Licznik|Maksimum||Nie wymiarów|
 |expiredkeys3|Wygasłe klucze (fragmencie 3)|Licznik|Łącznie||Nie wymiarów|
@@ -210,7 +220,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |cachemisses4|Chybienia w pamięci podręcznej (fragmencie 4)|Licznik|Łącznie||Nie wymiarów|
 |getcommands4|Pobiera (fragmencie 4)|Licznik|Łącznie||Nie wymiarów|
 |setcommands4|Zestawy (fragmencie 4)|Licznik|Łącznie||Nie wymiarów|
-|operationsPerSecond4|Operacje na sekundę (fragmencie 4)|Licznik|Łącznie||Nie wymiarów|
+|operationsPerSecond4|Operacje na sekundę (fragmencie 4)|Licznik|Maksimum||Nie wymiarów|
 |evictedkeys4|Wykluczone klucze (fragmencie 4)|Licznik|Łącznie||Nie wymiarów|
 |totalkeys4|Całkowita liczba kluczy (fragmencie 4)|Licznik|Maksimum||Nie wymiarów|
 |expiredkeys4|Wygasłe klucze (fragmencie 4)|Licznik|Łącznie||Nie wymiarów|
@@ -226,7 +236,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |cachemisses5|Chybienia w pamięci podręcznej (fragmencie 5)|Licznik|Łącznie||Nie wymiarów|
 |getcommands5|Pobiera (fragmencie 5)|Licznik|Łącznie||Nie wymiarów|
 |setcommands5|Zestawy (fragmencie 5)|Licznik|Łącznie||Nie wymiarów|
-|operationsPerSecond5|Operacje na sekundę (fragmencie 5)|Licznik|Łącznie||Nie wymiarów|
+|operationsPerSecond5|Operacje na sekundę (fragmencie 5)|Licznik|Maksimum||Nie wymiarów|
 |evictedkeys5|Wykluczone klucze (fragmencie 5)|Licznik|Łącznie||Nie wymiarów|
 |totalkeys5|Całkowita liczba kluczy (fragmencie 5)|Licznik|Maksimum||Nie wymiarów|
 |expiredkeys5|Wygasłe klucze (fragmencie 5)|Licznik|Łącznie||Nie wymiarów|
@@ -242,7 +252,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |cachemisses6|Chybienia w pamięci podręcznej (fragmencie 6)|Licznik|Łącznie||Nie wymiarów|
 |getcommands6|Pobiera (fragmencie 6)|Licznik|Łącznie||Nie wymiarów|
 |setcommands6|Zestawy (fragmencie 6)|Licznik|Łącznie||Nie wymiarów|
-|operationsPerSecond6|Operacje na sekundę (fragmencie 6)|Licznik|Łącznie||Nie wymiarów|
+|operationsPerSecond6|Operacje na sekundę (fragmencie 6)|Licznik|Maksimum||Nie wymiarów|
 |evictedkeys6|Wykluczone klucze (fragmencie 6)|Licznik|Łącznie||Nie wymiarów|
 |totalkeys6|Całkowita liczba kluczy (fragmencie 6)|Licznik|Maksimum||Nie wymiarów|
 |expiredkeys6|Wygasłe klucze (fragmencie 6)|Licznik|Łącznie||Nie wymiarów|
@@ -258,7 +268,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |cachemisses7|Chybienia w pamięci podręcznej (fragmencie 7)|Licznik|Łącznie||Nie wymiarów|
 |getcommands7|Pobiera (fragmencie 7)|Licznik|Łącznie||Nie wymiarów|
 |setcommands7|Zestawy (fragmencie 7)|Licznik|Łącznie||Nie wymiarów|
-|operationsPerSecond7|Operacje na sekundę (fragmencie 7)|Licznik|Łącznie||Nie wymiarów|
+|operationsPerSecond7|Operacje na sekundę (fragmencie 7)|Licznik|Maksimum||Nie wymiarów|
 |evictedkeys7|Wykluczone klucze (fragmencie 7)|Licznik|Łącznie||Nie wymiarów|
 |totalkeys7|Całkowita liczba kluczy (fragmencie 7)|Licznik|Maksimum||Nie wymiarów|
 |expiredkeys7|Wygasłe klucze (fragmencie 7)|Licznik|Łącznie||Nie wymiarów|
@@ -274,7 +284,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |cachemisses8|Chybienia w pamięci podręcznej (fragmencie 8)|Licznik|Łącznie||Nie wymiarów|
 |getcommands8|Pobiera (fragmencie 8)|Licznik|Łącznie||Nie wymiarów|
 |setcommands8|Zestawy (fragmencie 8)|Licznik|Łącznie||Nie wymiarów|
-|operationsPerSecond8|Operacje na sekundę (fragmencie 8)|Licznik|Łącznie||Nie wymiarów|
+|operationsPerSecond8|Operacje na sekundę (fragmencie 8)|Licznik|Maksimum||Nie wymiarów|
 |evictedkeys8|Wykluczone klucze (fragmencie 8)|Licznik|Łącznie||Nie wymiarów|
 |totalkeys8|Całkowita liczba kluczy (fragmencie 8)|Licznik|Maksimum||Nie wymiarów|
 |expiredkeys8|Wygasłe klucze (fragmencie 8)|Licznik|Łącznie||Nie wymiarów|
@@ -290,7 +300,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |cachemisses9|Chybienia w pamięci podręcznej (fragmencie 9)|Licznik|Łącznie||Nie wymiarów|
 |getcommands9|Pobiera (fragmencie 9)|Licznik|Łącznie||Nie wymiarów|
 |setcommands9|Zestawy (fragmencie 9)|Licznik|Łącznie||Nie wymiarów|
-|operationsPerSecond9|Operacje na sekundę (fragmencie 9)|Licznik|Łącznie||Nie wymiarów|
+|operationsPerSecond9|Operacje na sekundę (fragmencie 9)|Licznik|Maksimum||Nie wymiarów|
 |evictedkeys9|Wykluczone klucze (fragmencie 9)|Licznik|Łącznie||Nie wymiarów|
 |totalkeys9|Całkowita liczba kluczy (fragmencie 9)|Licznik|Maksimum||Nie wymiarów|
 |expiredkeys9|Wygasłe klucze (fragmencie 9)|Licznik|Łącznie||Nie wymiarów|
@@ -317,13 +327,13 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Procentowe użycie procesora CPU|Procentowe użycie procesora CPU|Procent|Średnia|Procent przydzielonych jednostek obliczeniowych, które są obecnie używane przez maszyny wirtualne.|Nie wymiarów|
-|Sieć — wejście|Sieć — wejście|Bajty|Łącznie|Liczba bajtów odebranych ze wszystkich interfejsów sieciowych przez maszyny wirtualne (ruch przychodzący).|Nie wymiarów|
-|Sieć — wyjście|Sieć — wyjście|Bajty|Łącznie|Liczba bajtów wysłanych we wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch wychodzący).|Nie wymiarów|
-|Bajty odczytu dysku/s|Odczyt dysku|Bajty na sekundę|Średnia|Średnia liczba bajtów odczytanych z dysku w okresie monitorowania.|Nie wymiarów|
-|Bajty zapisu dysku/s|Zapis dysku|Bajty na sekundę|Średnia|Średnia liczba bajtów zapisanych na dysku w okresie monitorowania.|Nie wymiarów|
-|Operacje odczytu dysku/s|Operacje odczytu dysku/s|CountPerSecond|Średnia|Operacje we/wy na sekundę dotyczące odczytu z dysku.|Nie wymiarów|
-|Operacje zapisu dysku/s|Operacje zapisu dysku/s|CountPerSecond|Średnia|Operacje we/wy na sekundę dotyczące zapisu na dysku.|Nie wymiarów|
+|Procentowe użycie procesora CPU|Procentowe użycie procesora CPU|Procent|Średnia|Procent przydzielonych jednostek obliczeniowych, które są obecnie używane przez maszyny wirtualne.|RoleInstanceId|
+|Sieć — wejście|Sieć — wejście|Bajty|Łącznie|Liczba bajtów odebranych ze wszystkich interfejsów sieciowych przez maszyny wirtualne (ruch przychodzący).|RoleInstanceId|
+|Sieć — wyjście|Sieć — wyjście|Bajty|Łącznie|Liczba bajtów wysłanych we wszystkich interfejsach sieciowych przez maszyny wirtualne (ruch wychodzący).|RoleInstanceId|
+|Bajty odczytu dysku/s|Odczyt dysku|Bajty na sekundę|Średnia|Średnia liczba bajtów odczytanych z dysku w okresie monitorowania.|RoleInstanceId|
+|Bajty zapisu dysku/s|Zapis dysku|Bajty na sekundę|Średnia|Średnia liczba bajtów zapisanych na dysku w okresie monitorowania.|RoleInstanceId|
+|Operacje odczytu dysku/s|Operacje odczytu dysku/s|CountPerSecond|Średnia|Operacje we/wy na sekundę dotyczące odczytu z dysku.|RoleInstanceId|
+|Operacje zapisu dysku/s|Operacje zapisu dysku/s|CountPerSecond|Średnia|Operacje we/wy na sekundę dotyczące zapisu na dysku.|RoleInstanceId|
 
 ## <a name="microsoftcognitiveservicesaccounts"></a>Microsoft.CognitiveServices/accounts
 
@@ -340,7 +350,8 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |Opóźnienie|Opóźnienie|MS|Średnia|Opóźnienie w milisekundach.|Nie wymiarów|
 |CharactersTranslated|Przetłumaczone znaki|Licznik|Łącznie|Łączna liczba znaków w przychodzącym żądaniu tekstowym.|Nie wymiarów|
 |SpeechSessionDuration|Czas trwania sesji mowy|Sekundy|Łącznie|Łączny czas trwania sesji mowy w sekundach.|Nie wymiarów|
-|TotalTransactions|Łączna liczba transakcji|Licznik|Łącznie|Całkowita liczba transakcji|Nie wymiarów|
+|TotalTransactions|Łączna liczba transakcji|Licznik|Łącznie|Łączna liczba transakcji.|Nie wymiarów|
+|TotalTokenCalls|Łączna liczba wywołań tokenów|Licznik|Łącznie|Łączna liczba wywołań tokenów.|Nie wymiarów|
 
 ## <a name="microsoftcomputevirtualmachines"></a>Microsoft.Compute/virtualMachines
 
@@ -420,6 +431,8 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |---|---|---|---|---|---|
 |CpuUsage|Użycie procesora CPU|Licznik|Średnia|Użycie procesora CPU na wszystkich rdzeniach (w tysięcznych częściach rdzenia).|containerName|
 |MemoryUsage|Użycie pamięci|Bajty|Średnia|Całkowite użycie pamięci (w bajtach).|containerName|
+|NetworkBytesReceivedPerSecond|Liczba bajtów odebranych przez sieć na sekundę|Bajty|Średnia|Bajty sieci na sekundę.|Nie wymiarów|
+|NetworkBytesTransmittedPerSecond|Liczba bajtów przesłanych przez sieć na sekundę|Bajty|Średnia|Liczba bajtów przesłanych przez sieć na sekundę.|Nie wymiarów|
 
 ## <a name="microsoftcontainerservicemanagedclusters"></a>Microsoft.ContainerService/managedClusters
 
@@ -501,7 +514,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|TotalStorage|Całkowita ilość miejsca|Bajty|Maksimum|Całkowita ilość danych przechowywanych na koncie.|Nie wymiarów|
+|TotalStorage|Całkowita ilość miejsca do magazynowania|Bajty|Maksimum|Całkowita ilość danych przechowywanych na koncie.|Nie wymiarów|
 |DataWritten|Zapisane dane|Bajty|Łącznie|Całkowita ilość danych zapisywanych na koncie.|Nie wymiarów|
 |Odczyt danych|Odczyt danych|Bajty|Łącznie|Łączna ilość danych odczytanych z konta.|Nie wymiarów|
 |WriteRequests|Żądania zapisu|Licznik|Łącznie|Liczba danych liczbę żądań zapisu do konta.|Nie wymiarów|
@@ -520,8 +533,11 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |serverlog_storage_percent|Procent magazynu dziennika serwera|Procent|Średnia|Procent magazynu dziennika serwera|Nie wymiarów|
 |serverlog_storage_usage|Używany Magazyn dzienników serwera|Bajty|Średnia|Używany Magazyn dzienników serwera|Nie wymiarów|
 |serverlog_storage_limit|Limit magazynu dziennika serwera|Bajty|Średnia|Limit magazynu dziennika serwera|Nie wymiarów|
-|active_connections|Całkowita liczba aktywnych połączeń|Licznik|Średnia|Całkowita liczba aktywnych połączeń|Nie wymiarów|
-|connections_failed|Łączna liczba połączeń nie powiodło się|Licznik|Łącznie|Łączna liczba połączeń nie powiodło się|Nie wymiarów|
+|active_connections|Aktywne połączenia|Licznik|Średnia|Aktywne połączenia|Nie wymiarów|
+|connections_failed|Połączenia zakończone niepowodzeniem|Licznik|Łącznie|Połączenia zakończone niepowodzeniem|Nie wymiarów|
+|seconds_behind_master|Opóźnienie replikacji w ciągu kilku sekund|Licznik|Średnia|Opóźnienie replikacji w ciągu kilku sekund|Nie wymiarów|
+|network_bytes_egress|Sieć — wyjście|Bajty|Łącznie|Sieć się między aktywnych połączeń|Nie wymiarów|
+|network_bytes_ingress|Sieć — wejście|Bajty|Łącznie|W sieci, między aktywnych połączeń|Nie wymiarów|
 
 ## <a name="microsoftdbforpostgresqlservers"></a>Microsoft.DBforPostgreSQL/servers
 
@@ -536,8 +552,10 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |serverlog_storage_percent|Procent magazynu dziennika serwera|Procent|Średnia|Procent magazynu dziennika serwera|Nie wymiarów|
 |serverlog_storage_usage|Używany Magazyn dzienników serwera|Bajty|Średnia|Używany Magazyn dzienników serwera|Nie wymiarów|
 |serverlog_storage_limit|Limit magazynu dziennika serwera|Bajty|Średnia|Limit magazynu dziennika serwera|Nie wymiarów|
-|active_connections|Całkowita liczba aktywnych połączeń|Licznik|Łącznie|Całkowita liczba aktywnych połączeń|Nie wymiarów|
-|connections_failed|Łączna liczba połączeń nie powiodło się|Licznik|Łącznie|Łączna liczba połączeń nie powiodło się|Nie wymiarów|
+|active_connections|Aktywne połączenia|Licznik|Średnia|Aktywne połączenia|Nie wymiarów|
+|connections_failed|Połączenia zakończone niepowodzeniem|Licznik|Łącznie|Połączenia zakończone niepowodzeniem|Nie wymiarów|
+|network_bytes_egress|Sieć — wyjście|Bajty|Łącznie|Sieć się między aktywnych połączeń|Nie wymiarów|
+|network_bytes_ingress|Sieć — wejście|Bajty|Łącznie|W sieci, między aktywnych połączeń|Nie wymiarów|
 
 ## <a name="microsoftdevicesiothubs"></a>Microsoft.Devices/IotHubs
 
@@ -548,25 +566,25 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |c2d.commands.egress.complete.success|Polecenia zakończona|Licznik|Łącznie|Wiele poleceń z chmury do urządzenia zakończyło się powodzeniem, urządzenie|Nie wymiarów|
 |c2d.commands.egress.abandon.success|Polecenia porzucone|Licznik|Łącznie|Wiele poleceń chmura urządzenie porzucone przez urządzenie|Nie wymiarów|
 |c2d.commands.egress.reject.success|Polecenia odrzucone|Licznik|Łącznie|Wiele poleceń chmura urządzenie odrzucone przez urządzenie|Nie wymiarów|
-|devices.totalDevices|Łączna liczba urządzeń|Licznik|Łącznie|Liczba urządzeń zarejestrowanych do Centrum IoT hub|Nie wymiarów|
-|devices.connectedDevices.allProtocol|Połączone urządzenia|Licznik|Łącznie|Liczba urządzeń podłączonych do Centrum IoT hub|Nie wymiarów|
-|d2c.telemetry.egress.success|Komunikaty telemetryczne dostarczane|Licznik|Łącznie|Liczba wiadomości zostały pomyślnie zapisane do punktów końcowych (łącznie)|Nie wymiarów|
-|d2c.telemetry.egress.dropped|Porzucone komunikaty|Licznik|Łącznie|Liczba komunikatów porzucony, ponieważ punkt końcowy dostarczania zostało dead|Nie wymiarów|
-|d2c.telemetry.egress.orphaned|Oddzielone wiadomości|Licznik|Łącznie|Liczba wiadomości, które nie pasują wszystkie trasy, łącznie z rezerwowego trasy|Nie wymiarów|
-|d2c.telemetry.egress.invalid|Nieprawidłowe komunikaty|Licznik|Łącznie|Liczba wiadomości, które nie są dostarczane z powodu niezgodności z punktem końcowym|Nie wymiarów|
-|d2c.telemetry.egress.fallback|Komunikaty rezerwowego warunek dopasowania|Licznik|Łącznie|Liczba komunikatów zapisanych do rezerwowego punktu końcowego|Nie wymiarów|
-|d2c.endpoints.egress.eventHubs|Wiadomości dostarczone do punktów końcowych Centrum zdarzeń|Licznik|Łącznie|Liczba wiadomości zostały pomyślnie zapisane do punktów końcowych Centrum zdarzeń|Nie wymiarów|
-|d2c.endpoints.latency.eventHubs|Czas oczekiwania na komunikat dla punktów końcowych Centrum zdarzeń|Milisekundy|Średnia|Średnie opóźnienie między komunikatów przychodzących do usługi IoT hub i ruch przychodzący komunikat do punktu końcowego Centrum zdarzeń, w milisekundach|Nie wymiarów|
-|d2c.endpoints.egress.serviceBusQueues|Wiadomości dostarczone do punktów końcowych kolejki usługi Service Bus|Licznik|Łącznie|Liczba wiadomości zostały pomyślnie zapisane do kolejki usługi Service Bus punktów końcowych|Nie wymiarów|
-|d2c.endpoints.latency.serviceBusQueues|Czas oczekiwania na komunikat dla punktów końcowych kolejki usługi Service Bus|Milisekundy|Średnia|Średnie opóźnienie między komunikatów przychodzących do usługi IoT hub i ruch przychodzący komunikat do punktu końcowego kolejki usługi Service Bus, w milisekundach|Nie wymiarów|
-|d2c.endpoints.egress.serviceBusTopics|Wiadomości dostarczone do punktów końcowych z tematu usługi Service Bus|Licznik|Łącznie|Liczba wiadomości zostały pomyślnie zapisane do punktów końcowych z tematu usługi Service Bus|Nie wymiarów|
-|d2c.endpoints.latency.serviceBusTopics|Czas oczekiwania na komunikat dla punktów końcowych z tematu usługi Service Bus|Milisekundy|Średnia|Średnie opóźnienie między komunikatów przychodzących do usługi IoT hub i ruch przychodzący komunikat do punktu końcowego tematu usługi Service Bus, w milisekundach|Nie wymiarów|
-|d2c.endpoints.egress.builtIn.events|Komunikaty dostarczane do wbudowany punkt końcowy (komunikaty/zdarzenia)|Licznik|Łącznie|Liczba wiadomości zostały pomyślnie zapisane wbudowany punkt końcowy (komunikaty/zdarzenia)|Nie wymiarów|
-|d2c.endpoints.latency.builtIn.events|Komunikat o opóźnieniu wbudowany punkt końcowy (komunikaty/zdarzenia)|Milisekundy|Średnia|Średnie opóźnienie między komunikatów przychodzących do usługi IoT hub i komunikatów przychodzących do wbudowany punkt końcowy (komunikaty/zdarzenia), w milisekundach |Nie wymiarów|
-|d2c.endpoints.egress.storage|Wiadomości dostarczone do punktów końcowych magazynu|Licznik|Łącznie|Liczba wiadomości zostały pomyślnie zapisane punkty końcowe usługi storage|Nie wymiarów|
-|d2c.endpoints.latency.storage|Czas oczekiwania na komunikat dla punktów końcowych magazynu|Milisekundy|Średnia|Średnie opóźnienie między komunikatów przychodzących do usługi IoT hub i ruch przychodzący komunikat do punktu końcowego magazynu (w milisekundach)|Nie wymiarów|
-|d2c.endpoints.egress.storage.bytes|Dane zapisywane w magazynie|Bajty|Łącznie|Ilość danych, w bajtach, zapisywane do punktów końcowych magazynu|Nie wymiarów|
-|d2c.endpoints.egress.storage.blobs|Zapisywane w magazynie obiektów blob|Licznik|Łącznie|Liczba napisanych z punktami końcowymi magazynu obiektów blob|Nie wymiarów|
+|devices.totalDevices|Łączna liczba urządzeń (przestarzałe)|Licznik|Łącznie|Liczba urządzeń zarejestrowanych do Centrum IoT hub|Nie wymiarów|
+|devices.connectedDevices.allProtocol|Połączone urządzenia (przestarzałe) |Licznik|Łącznie|Liczba urządzeń podłączonych do Centrum IoT hub|Nie wymiarów|
+|d2c.telemetry.egress.success|Routingu: wydana komunikaty telemetryczne|Licznik|Łącznie|Liczba przypadków, gdy wiadomości zostały pomyślnie dostarczone do wszystkich punktów końcowych przy użyciu routingu w usłudze IoT Hub. Jeśli komunikat jest kierowany do wielu punktów końcowych, ta wartość zwiększa się o jeden dla każdego skutecznej. Jeśli komunikat jest dostarczane do tego samego punktu końcowego wiele razy, ta wartość zwiększa się o jeden dla każdego skutecznej.|Nie wymiarów|
+|d2c.telemetry.egress.dropped|Routingu: porzucone komunikaty telemetryczne |Licznik|Łącznie|Liczba przypadków, gdy komunikaty zostały porzucone przez usługę IoT Hub routing z powodu braku punktów końcowych. Ta wartość nie jest liczony komunikaty dostarczane do trasy rezerwowej, gdy porzuconych wiadomości nie są dostarczane istnieje.|Nie wymiarów|
+|d2c.telemetry.egress.orphaned|Routingu: porzucone komunikaty telemetryczne |Licznik|Łącznie|Liczba przypadków, gdy komunikaty zostały oddzielone kierując usługi IoT Hub, ponieważ nie pasują do żadnych reguł routingu (w tym reguły rezerwowego). |Nie wymiarów|
+|d2c.telemetry.egress.invalid|Routing: komunikaty telemetryczne niezgodne|Licznik|Łącznie|Liczba razy routingu w usłudze IoT Hub nie można dostarczać komunikatów z powodu niezgodności z punktem końcowym. Ta wartość nie obejmuje ponownych prób.|Nie wymiarów|
+|d2c.telemetry.egress.fallback|Routing: komunikaty dostarczane do rezerwowego|Licznik|Łącznie|Liczba przypadków, dostarczenia komunikatów w Centrum IoT Hub routingu do skojarzonej z trasą rezerwowego punktu końcowego.|Nie wymiarów|
+|d2c.endpoints.egress.eventHubs|Routing: komunikaty dostarczane do Centrum zdarzeń|Licznik|Łącznie|Liczba przypadków, gdy Centrum IoT Hub routingu pomyślnie dostarczone wiadomości do punktów końcowych Centrum zdarzeń.|Nie wymiarów|
+|d2c.endpoints.latency.eventHubs|Routing: komunikat o opóźnieniu dla Centrum zdarzeń|Milisekundy|Średnia|Średnie opóźnienie (w milisekundach) między komunikatów przychodzących do usługi IoT Hub i ruch przychodzący komunikat do punktu końcowego Centrum zdarzeń.|Nie wymiarów|
+|d2c.endpoints.egress.serviceBusQueues|Routing: komunikaty dostarczane do kolejki usługi Service Bus|Licznik|Łącznie|Liczba przypadków, gdy usługi IoT Hub routingu pomyślnie dostarczone wiadomości do punktów końcowych kolejki usługi Service Bus.|Nie wymiarów|
+|d2c.endpoints.latency.serviceBusQueues|Routing: opóźnienie komunikat do kolejki usługi Service Bus|Milisekundy|Średnia|Średnie opóźnienie (w milisekundach) między komunikatów przychodzących do usługi IoT Hub i transferu danych przychodzących danych telemetrycznych komunikat do punktu końcowego kolejki usługi Service Bus.|Nie wymiarów|
+|d2c.endpoints.egress.serviceBusTopics|Routing: komunikaty dostarczane do tematu usługi Service Bus|Licznik|Łącznie|Liczba przypadków, gdy Centrum IoT Hub routingu pomyślnie dostarczone wiadomości do punktów końcowych z tematu usługi Service Bus.|Nie wymiarów|
+|d2c.endpoints.latency.serviceBusTopics|Routing: opóźnienie komunikat do tematu usługi Service Bus|Milisekundy|Średnia|Średnie opóźnienie (w milisekundach) między komunikatów przychodzących do usługi IoT Hub i transferu danych przychodzących danych telemetrycznych komunikat do punktu końcowego tematu usługi Service Bus.|Nie wymiarów|
+|d2c.endpoints.egress.builtIn.events|Routing: komunikaty dostarczane do komunikaty/zdarzenia|Licznik|Łącznie|Liczba przypadków, gdy Centrum IoT Hub routingu pomyślnie dostarczone wiadomości do wbudowany punkt końcowy (komunikaty/zdarzenia).|Nie wymiarów|
+|d2c.endpoints.latency.builtIn.events|Routing: komunikat o opóźnieniu komunikaty/zdarzenia|Milisekundy|Średnia|Średnie opóźnienie (w milisekundach) między komunikatów przychodzących do usługi IoT Hub i transferu danych przychodzących danych telemetrycznych wiadomości do wbudowany punkt końcowy (komunikaty/zdarzenia).|Nie wymiarów|
+|d2c.endpoints.egress.storage|Routing: komunikaty dostarczane do magazynu|Licznik|Łącznie|Liczba przypadków, gdy usługi IoT Hub routingu pomyślnie dostarczone wiadomości do punktów końcowych magazynu.|Nie wymiarów|
+|d2c.endpoints.latency.storage|Routing: komunikat o opóźnieniu magazynu|Milisekundy|Średnia|Średnie opóźnienie (w milisekundach) między komunikatów przychodzących do usługi IoT Hub i transferu danych przychodzących danych telemetrycznych komunikat do punktu końcowego magazynu.|Nie wymiarów|
+|d2c.endpoints.egress.storage.bytes|Routing: dane dostarczane do magazynu|Bajty|Łącznie|Ilość danych (w bajtach) routingu w usłudze IoT Hub dostarczone do punktów końcowych magazynu.|Nie wymiarów|
+|d2c.endpoints.egress.storage.blobs|Routing: obiektów blob jest dostarczane do magazynu|Licznik|Łącznie|Liczba przypadków, gdy routingu w usłudze IoT Hub dostarczane obiekty BLOB do przechowywania punktów końcowych.|Nie wymiarów|
 |d2c.twin.read.success|Pomyślne bliźniacze odczyty z urządzenia|Licznik|Łącznie|Liczba wszystkich pomyślnie zainicjował urządzenia bliźniacze odczyty na dysku.|Nie wymiarów|
 |d2c.twin.read.failure|Nie powiodło się bliźniacze odczyty z urządzenia|Licznik|Łącznie|Zainicjowane przez urządzenie bliźniacze odczyty liczbę wszystkich, nie powiodło się.|Nie wymiarów|
 |d2c.twin.read.size|Rozmiar odpowiedzi bliźniacze odczyty z urządzenia|Bajty|Średnia|Średnią, minimalna i maksymalna elementu wszystkie udane, inicjowane przez urządzenie bliźniaczej reprezentacji odczytów.|Nie wymiarów|
@@ -600,7 +618,11 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |Jobs.failed|Zadania zakończone niepowodzeniem|Licznik|Łącznie|Liczba wszystkich zadań zakończonych niepowodzeniem.|Nie wymiarów|
 |d2c.telemetry.ingress.sendThrottle|Liczby błędów ograniczania dostępności|Licznik|Łącznie|Ogranicza liczby błędów ograniczania dostępności z powodu przepływności urządzenia|Nie wymiarów|
 |dailyMessageQuotaUsed|Całkowita liczba komunikatów używane|Licznik|Średnia|Liczba całkowita liczba wiadomości używanych obecnie. Jest to wartość zbiorcza, która jest resetowany do zera UTC 00:00 każdego dnia.|Nie wymiarów|
-|deviceDataUsage|Łączna liczba devicedata użycia|Licznik|Łącznie|Bajty przesłane do i z wszelkie urządzenia podłączone do usługi IotHub|Nie wymiarów|
+|deviceDataUsage|Łączna liczba devicedata użycie (przestarzałe)|Bajty|Łącznie|Bajty przesłane do i z wszelkie urządzenia podłączone do usługi IotHub|Nie wymiarów|
+|deviceDataUsageV2|Użycie danych łączna liczba urządzeń (wersja zapoznawcza)|Bajty|Łącznie|Bajty przesłane do i z wszelkie urządzenia podłączone do usługi IotHub|Nie wymiarów|
+|totalDeviceCount|Łączna liczba urządzeń (wersja zapoznawcza)|Licznik|Średnia|Liczba urządzeń zarejestrowanych do Centrum IoT hub|Nie wymiarów|
+|connectedDeviceCount|Połączone urządzenia (wersja zapoznawcza)|Licznik|Średnia|Liczba urządzeń podłączonych do Centrum IoT hub|Nie wymiarów|
+|Konfiguracje|Konfiguracja metryki|Licznik|Łącznie|Metryki dla operacji konfiguracji|Nie wymiarów|
 
 ## <a name="microsoftdevicesprovisioningservices"></a>Microsoft.Devices/provisioningServices
 
@@ -614,12 +636,39 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|MetadataRequests|Żądania metadanych|Licznik|Licznik|Liczba żądań metadanych. Usługa cosmos DB obsługuje kolekcji metadanych systemowych dla każdego konta, które pozwala wyliczyć kolekcje, bazami danych itp i ich konfiguracji bezpłatnie.|GlobalDatabaseAccountName, DatabaseName, CollectionName, Region, StatusCode|
-|MongoRequestCharge|Opłata za żądanie MONGO|Licznik|Łącznie|Wykorzystane jednostki żądania MONGO|GlobalDatabaseAccountName, DatabaseName, CollectionName, Region, CommandName, kod błędu|
-|MongoRequests|Żądania MONGO|Licznik|Licznik|Liczba żądań Mongo|GlobalDatabaseAccountName, DatabaseName, CollectionName, Region, CommandName, kod błędu|
-|TotalRequestUnits|Jednostki łączna liczba żądań|Licznik|Łącznie|Używane jednostki żądania|GlobalDatabaseAccountName, DatabaseName, CollectionName, Region, StatusCode|
-|TotalRequests|Łączna liczba żądań|Licznik|Licznik|Liczba żądań|GlobalDatabaseAccountName, DatabaseName, CollectionName, Region, StatusCode|
+|MetadataRequests|Żądania metadanych|Licznik|Licznik|Liczba żądań metadanych. Usługa cosmos DB obsługuje kolekcji metadanych systemowych dla każdego konta, które pozwala wyliczyć kolekcje, bazami danych itp i ich konfiguracji bezpłatnie.|DatabaseName, StatusCode CollectionName, Region,|
+|MongoRequestCharge|Opłata za żądanie MONGO|Licznik|Łącznie|Wykorzystane jednostki żądania MONGO|DatabaseName CollectionName, Region, CommandName, kod błędu|
+|MongoRequests|Żądania MONGO|Licznik|Licznik|Liczba żądań Mongo|DatabaseName CollectionName, Region, CommandName, kod błędu|
+|TotalRequestUnits|Jednostki łączna liczba żądań|Licznik|Łącznie|Używane jednostki żądania|DatabaseName, StatusCode CollectionName, Region,|
+|TotalRequests|Łączna liczba żądań|Licznik|Licznik|Liczba żądań|DatabaseName, StatusCode CollectionName, Region,|
 
+
+## <a name="microsofteventgridtopics"></a>Microsoft.EventGrid/topics
+
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|PublishSuccessCount|Opublikowane zdarzenia|Licznik|Łącznie|Łączna liczba zdarzeń opublikowane w tym temacie|Nie wymiarów|
+|PublishFailCount|Zdarzenia nie powiodło się|Licznik|Łącznie|Łączna liczba zdarzeń, nie można opublikować w tym temacie|ErrorType, błąd|
+|UnmatchedEventCount|Niedopasowanych zdarzeń|Licznik|Łącznie|Łączna liczba zdarzeń, które nie pasują dowolnej subskrypcji zdarzeń dla tego tematu|Nie wymiarów|
+
+## <a name="microsofteventgrideventsubscriptions"></a>Microsoft.EventGrid/eventSubscriptions
+
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|MatchedEventCount|Dopasowane zdarzenia|Licznik|Łącznie|Łączna liczba zdarzeń do tej subskrypcji zdarzeń|Nie wymiarów|
+|DeliveryAttemptFailCount|Dostarczanie zdarzeń nie powiodło się|Licznik|Łącznie|Łączna liczba zdarzeń, nie można dostarczyć do tej subskrypcji zdarzeń|Błąd, ErrorType|
+|DeliverySuccessCount|Działanie jest gwarantowane zdarzenia|Licznik|Łącznie|Łączna liczba zdarzeń dostarczane do tej subskrypcji zdarzeń|Nie wymiarów|
+|DestinationProcessingDurationInMs|Docelowy czas przetwarzania|Milisekundy|Średnia|Czas przetwarzania docelowego (w milisekundach)|Nie wymiarów|
+|DroppedEventCount|Zdarzenia porzucone|Licznik|Łącznie|Całkowita liczba porzuconych zdarzeń pasujących do tej subskrypcji zdarzeń|Nie wymiarów|
+|DeadLetteredCount|Dostępnie zdarzenia|Licznik|Łącznie|Łączna liczba zdarzeń dostępnie dopasowany do tej subskrypcji zdarzeń|DeadLetterReason|
+
+## <a name="microsofteventgridextensiontopics"></a>Microsoft.EventGrid/extensionTopics
+
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|PublishSuccessCount|Opublikowane zdarzenia|Licznik|Łącznie|Łączna liczba zdarzeń opublikowane w tym temacie|Nie wymiarów|
+|PublishFailCount|Zdarzenia nie powiodło się|Licznik|Łącznie|Łączna liczba zdarzeń, nie można opublikować w tym temacie|ErrorType, błąd|
+|UnmatchedEventCount|Niedopasowanych zdarzeń|Licznik|Łącznie|Łączna liczba zdarzeń, które nie pasują dowolnej subskrypcji zdarzeń dla tego tematu|Nie wymiarów|
 
 ## <a name="microsofteventhubnamespaces"></a>Microsoft.EventHub/namespaces
 
@@ -660,6 +709,29 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |EHAMSGS|Archiwizowanie komunikatów|Licznik|Łącznie|Zarchiwizowane komunikaty centrum zdarzeń usługi Event Hubs w przestrzeni nazw|Nie wymiarów|
 |EHAMBS|Przepływność archiwizowania komunikatów|Bajty|Łącznie|Przepływność zarchiwizowanych komunikatów centrum zdarzeń usługi Event Hubs w przestrzeni nazw|Nie wymiarów|
 
+## <a name="microsofteventhubclusters"></a>Microsoft.EventHub/clusters
+
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|SuccessfulRequests|Liczba pomyślnych żądań (wersja zapoznawcza)|Licznik|Łącznie|Żądania zakończone powodzeniem dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
+|ServerErrors|Błędy serwera. (Wersja zapoznawcza)|Licznik|Łącznie|Błędy serwera dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
+|UserErrors|Błędy użytkowników. (Wersja zapoznawcza)|Licznik|Łącznie|Błędy użytkowników dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
+|QuotaExceededErrors|Błędy przekroczenia przydziału. (Wersja zapoznawcza)|Licznik|Łącznie|Błędy przekroczenia przydziału dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
+|ThrottledRequests|Żądania ograniczone. (Wersja zapoznawcza)|Licznik|Łącznie|Żądania ograniczone dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
+|IncomingRequests|Przychodzące żądania (wersja zapoznawcza)|Licznik|Łącznie|Żądania przychodzące dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
+|IncomingMessages|Komunikaty przychodzące (wersja zapoznawcza)|Licznik|Łącznie|Komunikaty przychodzące dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
+|OutgoingMessages|Komunikaty wychodzące (wersja zapoznawcza)|Licznik|Łącznie|Komunikaty wychodzące dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
+|IncomingBytes|Bajty przychodzące. (Wersja zapoznawcza)|Bajty|Łącznie|Bajty przychodzące dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
+|OutgoingBytes|Bajty wychodzące. (Wersja zapoznawcza)|Bajty|Łącznie|Bajty wychodzące dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
+|ActiveConnections|Połączeń ActiveConnections (wersja zapoznawcza)|Licznik|Średnia|Całkowita liczba aktywnych połączeń dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
+|ConnectionsOpened|Połączenia otwarte. (Wersja zapoznawcza)|Licznik|Średnia|Połączenia otwarte dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
+|ConnectionsClosed|Połączenia zamknięte. (Wersja zapoznawcza)|Licznik|Średnia|Połączenia zamknięte dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
+|CaptureBacklog|Lista prac funkcji Capture. (Wersja zapoznawcza)|Licznik|Łącznie|Lista prac funkcji Capture dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
+|CapturedMessages|Przechwycone komunikaty. (Wersja zapoznawcza)|Licznik|Łącznie|Przechwycone komunikaty dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
+|CapturedBytes|Przechwycone bajty. (Wersja zapoznawcza)|Bajty|Łącznie|Przechwycone bajty dla elementu Microsoft.EventHub. (Wersja zapoznawcza)|Nie wymiarów|
+|Procesor CPU|Procesor (wersja zapoznawcza)|Procent|Maksimum|Użycie procesora CPU dla klastra Centrum zdarzeń w procentach|Rola|
+|AvailableMemory|Dostępna pamięć (wersja zapoznawcza)|Licznik|Maksimum|Dostępna pamięć dla klastra Centrum zdarzeń w bajtach|Rola|
+
 ## <a name="microsofthdinsightclusters"></a>Microsoft.HDInsight/clusters
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
@@ -688,7 +760,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|Opóźnienie|Opóźnienie|Milisekundy|Średnia|Czas trwania wywołań interfejsu API|OperationName, klasy OperationResult|
+|Sposób użycia|Sposób użycia|Licznik|Licznik|Liczba z interfejsu API|ApiCategory, ApiName|
 
 ## <a name="microsoftlogicworkflows"></a>Microsoft.Logic/workflows
 
@@ -724,17 +796,71 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |BillableActionExecutions|Rozliczane wykonania akcji|Licznik|Łącznie|Liczba rozliczanych wykonań akcji przepływu pracy.|Nie wymiarów|
 |BillableTriggerExecutions|Rozliczane wykonania wyzwalaczy|Licznik|Łącznie|Liczba rozliczanych wykonań wyzwalaczy przepływu pracy.|Nie wymiarów|
 |TotalBillableExecutions|Łączna liczba rozliczanych wykonań|Licznik|Łącznie|Liczba rozliczanych wykonań przepływu pracy.|Nie wymiarów|
+|BillingUsageNativeOperation|Użycie rozliczeń dla wykonań operacji macierzystych|Licznik|Łącznie|Liczba rozliczanych wykonań natywnych operacji.|Nie wymiarów|
+|BillingUsageStandardConnector|Użycie rozliczeń dla wykonań łącznika standardowego|Licznik|Łącznie|Liczba rozliczanych wykonań łączników standardowych.|Nie wymiarów|
+|BillingUsageStorageConsumption|Użycie rozliczeń dla wykonań wykorzystania magazynu|Licznik|Łącznie|Liczba rozliczanych wykonań wykorzystania magazynu.|Nie wymiarów|
+|BillingUsageNativeOperation|Użycie rozliczeń dla wykonań operacji macierzystych|Licznik|Łącznie|Liczba rozliczanych wykonań natywnych operacji.|Nie wymiarów|
+|BillingUsageStandardConnector|Użycie rozliczeń dla wykonań łącznika standardowego|Licznik|Łącznie|Liczba rozliczanych wykonań łączników standardowych.|Nie wymiarów|
+|BillingUsageStorageConsumption|Użycie rozliczeń dla wykonań wykorzystania magazynu|Licznik|Łącznie|Liczba rozliczanych wykonań wykorzystania magazynu.|Nie wymiarów|
+
+## <a name="microsoftnetappnetappaccountscapacitypoolsvolumes"></a>Microsoft.NetApp/netAppAccounts/capacityPools/Volumes
+
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|AverageOtherLatency|Średnie opóźnienie innych|MS/op|Średnia|Średni innych czas oczekiwania (który nie jest odczyt lub zapis) w MS na operację|Nie wymiarów|
+|AverageReadLatency|Średnia, opóźnienie odczytu|MS/op|Średnia|Średni czas oczekiwania (w milisekundach) dla operacji odczytu|Nie wymiarów|
+|AverageTotalLatency|Średni całkowity czas oczekiwania|MS/op|Średnia|Średnie opóźnienie całkowite w MS na operację|Nie wymiarów|
+|AverageWriteLatency|Opóźnienie zapisu średni|MS/op|Średnia|Opóźnienie zapisu średnia w MS na operację|Nie wymiarów|
+|FilesystemOtherOps|System plików innych operacjach|Platforma OPS|Średnia|Liczba plików inne operacje (nie jest odczyt lub zapis)|Nie wymiarów|
+|FilesystemReadOps|Operacje odczytu dla systemu plików|Platforma OPS|Średnia|Liczba plików, operacje odczytu|Nie wymiarów|
+|FilesystemTotalOps|Łączna liczba operacji systemu plików|Platforma OPS|Średnia|Suma wszystkich operacji systemu plików|Nie wymiarów|
+|FilesystemWriteOps|Operacje zapisu systemu plików|Platforma OPS|Średnia|Liczba operacji zapisu w systemie plików|Nie wymiarów|
+|IoBytesPerOtherOps|Bajty We/Wy na innych operacjach|Bajty/op|Średnia|Numer elementu w pionie i w poziomie bajtów na inne operacje (nie jest odczyt lub zapis)|Nie wymiarów|
+|IoBytesPerReadOps|Bajty We/Wy na operacje odczytu|Bajty/op|Średnia|Liczba bajtów na operację odczytu We/Wy|Nie wymiarów|
+|IoBytesPerTotalOps|Bajty We/Wy na op we wszystkich operacjach|Bajty/op|Średnia|Suma wszystkich we/wy operacji bajtów|Nie wymiarów|
+|IoBytesPerWriteOps|Bajty We/Wy dla operacji zapisu|Bajty/op|Średnia|Numer elementu w pionie i w poziomie bajtów na operację zapisu|Nie wymiarów|
+|OtherIops|Inne operacje We/Wy|operacje na sekundę|Średnia|Inne we/wy operacji na sekundę|Nie wymiarów|
+|OtherThroughput|Inne przepływności|MB/s|Średnia|Inne przepływności (nie jest odczyt lub zapis) w MB na sekundę|Nie wymiarów|
+|ReadIops|Operacje odczytu We/Wy|operacje na sekundę|Średnia|Odczyt/Ściemnianie operacji na sekundę|Nie wymiarów|
+|ReadThroughput|Przepływność odczytu|MB/s|Średnia|Przeczytaj przepustowość w MB na sekundę|Nie wymiarów|
+|TotalIops|Łączna liczba operacji We/Wy|operacje na sekundę|Średnia|Suma wszystkich we/wy operacji na sekundę|Nie wymiarów|
+|TotalThroughput|Łączna przepływność|MB/s|Średnia|Suma wszystkich przepustowość w MB na sekundę|Nie wymiarów|
+|VolumeAllocatedSize|Przydzielony rozmiar woluminu|B|Średnia|Przydzielony rozmiar woluminu (nie rzeczywiste używane w bajtach)|Nie wymiarów|
+|VolumeLogicalSize|Rozmiar logiczny woluminu|B|Średnia|Rozmiar logiczny woluminu (używanych w bajtach)|Nie wymiarów|
+|VolumeSnapshotSize|Rozmiar migawki woluminu|B|Średnia|Rozmiar wszystkich migawek w woluminie|Nie wymiarów|
+|WriteIops|Operacje We/Wy zapisu|operacje na sekundę|Średnia|Zapisu We/Wy operacji na sekundę|Nie wymiarów|
+|WriteThroughput|Przepływność zapisu|MB/s|Średnia|Zapisywanie przepustowość w MB na sekundę|Nie wymiarów|
+
+## <a name="microsoftnetappnetappaccountscapacitypools"></a>Microsoft.NetApp/netAppAccounts/capacityPools
+
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|VolumePoolAllocatedSize|Rozmiar puli przydzielona woluminu|B|Średnia|Przydzielony rozmiar puli (nie rzeczywiste używane w bajtach)|Nie wymiarów|
+|VolumePoolAllocatedUsed|Pula woluminów przydzielonych używane|B|Średnia|Przydzielony rozmiar używane w puli|Nie wymiarów|
+|VolumePoolTotalLogicalSize|Całkowity rozmiar logiczny woluminu puli|B|Średnia|Suma rozmiaru logicznego wszystkich woluminów należących do puli|Nie wymiarów|
+|VolumePoolTotalSnapshotSize|Rozmiar migawki całkowitej puli woluminu|B|Średnia|Suma wszystkich migawek w puli|Nie wymiarów|
+
+## <a name="microsoftnetworknetworkinterfaces"></a>Microsoft.Network/networkInterfaces
+
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|BytesSentRate|Bajty wysłane|Licznik|Łącznie|Liczba bajtów wysyłane interfejsu sieciowego|Nie wymiarów|
+|BytesReceivedRate|Odebrane bajty|Licznik|Łącznie|Liczba bajtów odebranych interfejsu sieciowego|Nie wymiarów|
+|PacketsSentRate|Pakiety wysłane|Licznik|Łącznie|Liczba pakietów interfejsu sieciowego, wysłane|Nie wymiarów|
+|PacketsReceivedRate|Odebrane pakiety|Licznik|Łącznie|Liczba pakietów na interfejsie sieciowym otrzymane|Nie wymiarów|
 
 ## <a name="microsoftnetworkloadbalancers"></a>Microsoft.Network/loadBalancers
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|VipAvailability|Dostępność adresu VIP|Licznik|Średnia|Dostępność punktów końcowych VIP, na podstawie wyników badania|Wirtualny adres IP, VipPort|
-|DipAvailability|Dostępność DIP|Licznik|Średnia|Dostępność punktów końcowych DIP, na podstawie wyników badania|ProtocolType, DipPort, VipAddress, VipPort, DipAddress|
-|ByteCount|Liczba bajtów|Licznik|Łącznie|Całkowita liczba bajtów przesłanych w przedziale czasu|Wirtualny adres IP, VipPort, kierunku|
-|PacketCount|Liczba pakietów|Licznik|Łącznie|Całkowita liczba pakietów przesyłanych w przedziale czasu|Wirtualny adres IP, VipPort, kierunku|
-|SYNCount|Liczba SYN|Licznik|Łącznie|Całkowita liczba pakietów SYN przesyłane w przedziale czasu|Wirtualny adres IP, VipPort, kierunku|
-|SnatConnectionCount|Liczba połączeń SNAT|Licznik|Łącznie|Całkowita liczba nowych połączeń SNAT utworzone w przedziale czasu|Wirtualny adres IP, DipAddress, Element ConnectionState|
+|VipAvailability|Dostępność ścieżki danych|Licznik|Średnia|Średnia dostępność ścieżki danych modułu równoważenia obciążenia na czas trwania|FrontendIPAddress, FrontendPort|
+|DipAvailability|Stan sondy kondycji|Licznik|Średnia|Średnia stan sondy kondycji modułu równoważenia obciążenia na czas trwania|ProtocolType, BackendPort, FrontendIPAddress, FrontendPort, BackendIPAddress|
+|ByteCount|Liczba bajtów|Licznik|Łącznie|Całkowita liczba bajtów przesłanych w przedziale czasu|Kierunek FrontendIPAddress, FrontendPort,|
+|PacketCount|Liczba pakietów|Licznik|Łącznie|Całkowita liczba pakietów przesyłanych w przedziale czasu|Kierunek FrontendIPAddress, FrontendPort,|
+|SYNCount|Liczba SYN|Licznik|Łącznie|Całkowita liczba pakietów SYN przesyłane w przedziale czasu|Kierunek FrontendIPAddress, FrontendPort,|
+|SnatConnectionCount|Liczba połączeń SNAT|Licznik|Łącznie|Całkowita liczba nowych połączeń SNAT utworzone w przedziale czasu|Element ConnectionState FrontendIPAddress, BackendIPAddress,|
+|AllocatedSnatPorts|Przydzielonych portów SNAT (wersja zapoznawcza)|Licznik|Łącznie|Całkowita liczba portów SNAT przydzielone w przedziale czasu|FrontendIPAddress, BackendIPAddress, ProtocolType|
+|UsedSnatPorts|Używane porty SNAT (wersja zapoznawcza)|Licznik|Łącznie|Całkowita liczba portów SNAT używane w przedziale czasu|FrontendIPAddress, BackendIPAddress, ProtocolType|
 
 ## <a name="microsoftnetworkdnszones"></a>Microsoft.Network/dnszones
 
@@ -770,7 +896,7 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |DDoSTriggerTCPPackets|Liczba przychodzących pakietów protokołu TCP do wyzwolenia ataki DDOS|CountPerSecond|Maksimum|Liczba przychodzących pakietów protokołu TCP do wyzwolenia ataki DDOS|Nie wymiarów|
 |DDoSTriggerUDPPackets|Liczba przychodzących pakietów UDP do wyzwolenia ataki DDOS|CountPerSecond|Maksimum|Liczba przychodzących pakietów UDP do wyzwolenia ataki DDOS|Nie wymiarów|
 |DDoSTriggerSYNPackets|Liczba przychodzących pakietów SYN do wyzwolenia ataki DDOS|CountPerSecond|Maksimum|Liczba przychodzących pakietów SYN do wyzwolenia ataki DDOS|Nie wymiarów|
-|VipAvailability|Dostępność|Licznik|Średnia|Średnia dostępność adres IP w przedziale czasu|Port|
+|VipAvailability|Dostępność ścieżki danych|Licznik|Średnia|Średnia dostępność adresu IP na czas trwania|Port|
 |ByteCount|Liczba bajtów|Licznik|Łącznie|Całkowita liczba bajtów przesłanych w przedziale czasu|Portu i kierunek|
 |PacketCount|Liczba pakietów|Licznik|Łącznie|Całkowita liczba pakietów przesyłanych w przedziale czasu|Portu i kierunek|
 |SynCount|Liczba SYN|Licznik|Łącznie|Całkowita liczba pakietów SYN przesyłane w przedziale czasu|Portu i kierunek|
@@ -780,17 +906,20 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
 |Przepływność|Przepływność|Bajty na sekundę|Łącznie|Liczba bajtów na sekundę, który obsługiwał Application Gateway|Nie wymiarów|
-|UnhealthyHostCount|Liczba hostów w złej kondycji|Licznik|Średnia|Liczba hostów w złej kondycji w wewnętrznej bazie danych. Można filtrować według poszczególnych puli wewnętrznej bazy danych do wyświetlenia hostów w dobrej kondycji/złej kondycji w puli zaplecza określone.|BackendSettingsPool|
-|HealthyHostCount|Liczba hostów w dobrej kondycji|Licznik|Średnia|Liczba hostów zaplecza w dobrej kondycji. Można filtrować według poszczególnych puli wewnętrznej bazy danych do wyświetlenia hostów w dobrej kondycji/złej kondycji w puli zaplecza określone.|BackendSettingsPool. |
+|UnhealthyHostCount|Liczba hostów w złej kondycji|Licznik|Średnia|Liczba hostów w złej kondycji wewnętrznej bazy danych|BackendSettingsPool|
+|HealthyHostCount|Liczba hostów w dobrej kondycji|Licznik|Średnia|Liczba hostów zaplecza w dobrej kondycji|BackendSettingsPool|
 |TotalRequests|Łączna liczba żądań|Licznik|Łącznie|Liczba pomyślnych żądań, które usługa Application Gateway jest obsługiwane|BackendSettingsPool|
 |FailedRequests|Żądania zakończone niepowodzeniem|Licznik|Łącznie|Liczba nieudanych żądań, które usługa Application Gateway jest obsługiwane|BackendSettingsPool|
-|ResponseStatus|Stan odpowiedzi|Licznik|Łącznie|Stan odpowiedzi HTTP zwrócony przez usługę Application Gateway. Dystrybucja kodów stanu odpowiedzi może być dodatkowo categoized do wyświetlania odpowiedzi w 2xx, 3xx, 4xx i 5xx kategorii.|HttpStatusGroup|
+|ResponseStatus|Stan odpowiedzi|Licznik|Łącznie|Stan odpowiedzi HTTP zwrócony przez usługę Application Gateway|HttpStatusGroup|
 |Wartości CurrentConnections|Bieżąca liczba połączeń|Licznik|Łącznie|Liczba bieżących połączeń ustanowionych z usługą Application Gateway|Nie wymiarów|
 
 ## <a name="microsoftnetworkvirtualnetworkgateways"></a>Microsoft.Network/virtualNetworkGateways
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
+|AverageBandwidth|Brama S2S przepustowości|Bajty na sekundę|Średnia|Średnia przepustowość lokacja lokacja bramy w bajtach na sekundę|Nie wymiarów|
+|P2SBandwidth|Przepustowość P2S bramy|Bajty na sekundę|Średnia|Średnia przepustowość punkt lokacja bramy w bajtach na sekundę|Nie wymiarów|
+|P2SConnectionCount|Liczba połączeń P2S|Licznik|Maksimum|Liczba połączeń punkt lokacja bramy|Protokół|
 |TunnelAverageBandwidth|Przepustowość tunelu|Bajty na sekundę|Średnia|Średnia przepustowość tunelu w bajtach na sekundę|ConnectionName, RemoteIP|
 |TunnelEgressBytes|Bajty wychodzące tunelu|Bajty|Łącznie|Wychodzące bajty tunel|ConnectionName, RemoteIP|
 |TunnelIngressBytes|Bajty przychodzące tunelu|Bajty|Łącznie|Przychodzące bajty tunel|ConnectionName, RemoteIP|
@@ -800,6 +929,20 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |TunnelIngressPacketDropTSMismatch|Porzucanie pakietów niezgodność ruch przychodzący serwera terminali tunelu|Licznik|Łącznie|Liczba przychodzących pakietów listy z niezgodności selektor ruchu tunelu|ConnectionName, RemoteIP|
 
 ## <a name="microsoftnetworkexpressroutecircuits"></a>Microsoft.Network/expressRouteCircuits
+
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|BitsInPerSecond|BitsInPerSecond|CountPerSecond|Średnia|Usługa BITS ingressing platformy Azure na sekundę|Nie wymiarów|
+|BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Średnia|Usługa BITS egressing platformy Azure na sekundę|Nie wymiarów|
+
+## <a name="microsoftnetworkexpressroutecircuitspeerings"></a>Microsoft.Network/expressRouteCircuits/peerings
+
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|BitsInPerSecond|BitsInPerSecond|CountPerSecond|Średnia|Usługa BITS ingressing platformy Azure na sekundę|Nie wymiarów|
+|BitsOutPerSecond|BitsOutPerSecond|CountPerSecond|Średnia|Usługa BITS egressing platformy Azure na sekundę|Nie wymiarów|
+
+## <a name="microsoftnetworkconnections"></a>Microsoft.Network/connections
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
@@ -996,10 +1139,10 @@ Wydarzenie|Wydarzenie|Licznik|Średnia|Wydarzenie|Źródło dziennika zdarzeń, 
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|SuccessfulRequests|Liczba pomyślnych żądań (wersja zapoznawcza)|Licznik|Łącznie|Łączna liczba udanych żądań dla przestrzeni nazw (wersja zapoznawcza)|EntityName, |
-|ServerErrors|Błędy serwera. (Wersja zapoznawcza)|Licznik|Łącznie|Błędy serwera dla elementu Microsoft.ServiceBus. (Wersja zapoznawcza)|EntityName, |
-|UserErrors|Błędy użytkowników. (Wersja zapoznawcza)|Licznik|Łącznie|Błędy użytkowników dla elementu Microsoft.ServiceBus. (Wersja zapoznawcza)|EntityName, |
-|ThrottledRequests|Żądania ograniczone. (Wersja zapoznawcza)|Licznik|Łącznie|Żądania ograniczone dla elementu Microsoft.ServiceBus. (Wersja zapoznawcza)|EntityName, |
+|SuccessfulRequests|Liczba pomyślnych żądań (wersja zapoznawcza)|Licznik|Łącznie|Łączna liczba udanych żądań dla przestrzeni nazw (wersja zapoznawcza)|EntityName|
+|ServerErrors|Błędy serwera. (Wersja zapoznawcza)|Licznik|Łącznie|Błędy serwera dla elementu Microsoft.ServiceBus. (Wersja zapoznawcza)|EntityName|
+|UserErrors|Błędy użytkowników. (Wersja zapoznawcza)|Licznik|Łącznie|Błędy użytkowników dla elementu Microsoft.ServiceBus. (Wersja zapoznawcza)|EntityName|
+|ThrottledRequests|Żądania ograniczone. (Wersja zapoznawcza)|Licznik|Łącznie|Żądania ograniczone dla elementu Microsoft.ServiceBus. (Wersja zapoznawcza)|EntityName|
 |IncomingRequests|Przychodzące żądania (wersja zapoznawcza)|Licznik|Łącznie|Żądania przychodzące dla elementu Microsoft.ServiceBus. (Wersja zapoznawcza)|EntityName|
 |IncomingMessages|Komunikaty przychodzące (wersja zapoznawcza)|Licznik|Łącznie|Komunikaty przychodzące dla elementu Microsoft.ServiceBus. (Wersja zapoznawcza)|EntityName|
 |OutgoingMessages|Komunikaty wychodzące (wersja zapoznawcza)|Licznik|Łącznie|Komunikaty wychodzące dla elementu Microsoft.ServiceBus. (Wersja zapoznawcza)|EntityName|
@@ -1014,15 +1157,12 @@ Wydarzenie|Wydarzenie|Licznik|Średnia|Wydarzenie|Źródło dziennika zdarzeń, 
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|ConnectionCount|Liczba połączeń|Licznik|Maksimum|Liczba połączeń użytkowników.|Nie wymiarów|
-|ConnectionCountPerSecond|Liczba połączeń na sekundę|CountPerSecond|Średnia|Liczba połączeń średnia na sekundę.|Nie wymiarów|
-|MessageCount|Liczba komunikatów|Licznik|Maksimum|Łączna ilość wiadomości w miesiącu|Nie wymiarów|
-|MessageCountPerSecond|Liczba komunikatów na sekundę|CountPerSecond|Średnia|Średnia liczba komunikatów|Nie wymiarów|
-|MessageUsed|Wiadomości używany|Procent|Maksimum|Wartość procentowa wiadomości zostały użyte w miesiącu|Nie wymiarów|
-|ConnectionUsed|Użyte połączenia|Procent|Maksimum|Wartość procentowa połączenia zostały użyte|Nie wymiarów|
+|ConnectionCount|Liczba połączeń|Licznik|Maksimum|Liczba połączeń użytkowników.|Endpoint|
+|MessageCount|Liczba komunikatów|Licznik|Łącznie|Łączna liczba wiadomości.|Nie wymiarów|
+|InboundTraffic|Ruch przychodzący|Bajty|Łącznie|Ruch przychodzący usługi|Nie wymiarów|
+|OutboundTraffic|Ruch wychodzący|Bajty|Łącznie|Ruch wychodzący z usługi|Nie wymiarów|
 |UserErrors|Błędy użytkowników|Procent|Maksimum|Procent błędów użytkownika|Nie wymiarów|
 |SystemErrors|Błędy systemu|Procent|Maksimum|Procent błędów systemu|Nie wymiarów|
-|SystemLoad|Obciążenie systemu|Procent|Maksimum|Procent obciążenia systemu|Nie wymiarów|
 
 ## <a name="microsoftsqlserversdatabases"></a>Microsoft.Sql/servers/databases
 
@@ -1066,24 +1206,17 @@ Wydarzenie|Wydarzenie|Licznik|Średnia|Wydarzenie|Źródło dziennika zdarzeń, 
 |storage_used|Użyty magazyn|Bajty|Średnia|Użyty magazyn|Nie wymiarów|
 |xtp_storage_percent|Procent magazynu OLTP w pamięci|Procent|Średnia|Procent magazynu OLTP w pamięci|Nie wymiarów|
 
-## <a name="microsoftsqlservers"></a>Microsoft.Sql/servers
-
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
-|---|---|---|---|---|---|
-|dtu_consumption_percent|Procent użycia jednostek DTU|Procent|Średnia|Procent użycia jednostek DTU|ElasticPoolResourceId|
-|storage_used|Użyty magazyn|Bajty|Średnia|Użyty magazyn|ElasticPoolResourceId|
-
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-|UsedCapacity|Używana pojemność|Bajty|Średnia|Używana pojemność konta|Nie wymiarów|
-|Transakcje|Transakcje|Licznik|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje udane i nieudane żądania, a także żądania, które wygenerowany błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi.|ResponseType, GeoType, ApiName|
-|Zdarzenia związane z transferem danych przychodzących|Zdarzenia związane z transferem danych przychodzących|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|GeoType, ApiName|
-|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|GeoType, ApiName|
-|SuccessServerLatency|Opóźnienie serwera dla opóźnienia|Milisekundy|Średnia|Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego w elemencie AverageE2ELatency.|GeoType, ApiName|
-|SuccessE2ELatency|Opóźnienie E2E dla powodzenia|Milisekundy|Średnia|Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|GeoType, ApiName|
-|Dostępność|Dostępność|Procent|Średnia|Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests i podzielenie go przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy skutkują od ograniczoną dostępnością usługi magazynu lub określonej operacji interfejsu API.|GeoType, ApiName|
+|UsedCapacity|Używana pojemność|Bajty|Łącznie|Używana pojemność konta|Nie wymiarów|
+|Transakcje|Transakcje|Licznik|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje udane i nieudane żądania, a także żądania, które wygenerowany błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi.|Wartość ResponseType, GeoType, ApiName, uwierzytelniania|
+|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Uwierzytelnianie GeoType, ApiName,|
+|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Uwierzytelnianie GeoType, ApiName,|
+|SuccessServerLatency|Opóźnienie serwera dla opóźnienia|Milisekundy|Średnia|Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego w elemencie AverageE2ELatency.|Uwierzytelnianie GeoType, ApiName,|
+|SuccessE2ELatency|Opóźnienie E2E dla powodzenia|Milisekundy|Średnia|Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Uwierzytelnianie GeoType, ApiName,|
+|Dostępność|Dostępność|Procent|Średnia|Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests i podzielenie go przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy skutkują od ograniczoną dostępnością usługi magazynu lub określonej operacji interfejsu API.|Uwierzytelnianie GeoType, ApiName,|
 
 ## <a name="microsoftstoragestorageaccountsblobservices"></a>Microsoft.Storage/storageAccounts/blobServices
 
@@ -1092,40 +1225,12 @@ Wydarzenie|Wydarzenie|Licznik|Średnia|Wydarzenie|Źródło dziennika zdarzeń, 
 |BlobCapacity|Pojemność obiektu blob|Bajty|Łącznie|Ilość miejsca w magazynie (w bajtach) używana przez usługę obiektów blob konta magazynu.|BlobType|
 |BlobCount|Liczba obiektów blob|Licznik|Łącznie|Liczba obiektów blob w usłudze obiektów blob konta magazynu.|BlobType|
 |ContainerCount|Liczba kontenerów obiektów blob|Licznik|Średnia|Liczba kontenerów w usłudze obiektów blob konta magazynu.|Nie wymiarów|
-|Transakcje|Transakcje|Licznik|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje udane i nieudane żądania, a także żądania, które wygenerowany błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi.|ResponseType, GeoType, ApiName|
-|Zdarzenia związane z transferem danych przychodzących|Zdarzenia związane z transferem danych przychodzących|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|GeoType, ApiName|
-|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|GeoType, ApiName|
-|SuccessServerLatency|Opóźnienie serwera dla opóźnienia|Milisekundy|Średnia|Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego w elemencie AverageE2ELatency.|GeoType, ApiName|
-|SuccessE2ELatency|Opóźnienie E2E dla powodzenia|Milisekundy|Średnia|Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|GeoType, ApiName|
-|Dostępność|Dostępność|Procent|Średnia|Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests i podzielenie go przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy skutkują od ograniczoną dostępnością usługi magazynu lub określonej operacji interfejsu API.|GeoType, ApiName|
-
-## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft.Storage/storageAccounts/tableServices
-
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
-|---|---|---|---|---|---|
-|TableCapacity|Pojemność tabeli|Bajty|Średnia|Ilość miejsca w magazynie (w bajtach) używanego przez usługę tabeli konta magazynu.|Nie wymiarów|
-|TableCount|Liczba tabel|Licznik|Średnia|Liczba tabel w usłudze tabeli konta magazynu.|Nie wymiarów|
-|TableEntityCount|Liczba jednostek tabel|Licznik|Średnia|Liczba jednostek tabel w usłudze tabeli konta magazynu.|Nie wymiarów|
-|Transakcje|Transakcje|Licznik|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje udane i nieudane żądania, a także żądania, które wygenerowany błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi.|ResponseType, GeoType, ApiName|
-|Zdarzenia związane z transferem danych przychodzących|Zdarzenia związane z transferem danych przychodzących|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|GeoType, ApiName|
-|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|GeoType, ApiName|
-|SuccessServerLatency|Opóźnienie serwera dla opóźnienia|Milisekundy|Średnia|Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego w elemencie AverageE2ELatency.|GeoType, ApiName|
-|SuccessE2ELatency|Opóźnienie E2E dla powodzenia|Milisekundy|Średnia|Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|GeoType, ApiName|
-|Dostępność|Dostępność|Procent|Średnia|Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests i podzielenie go przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy skutkują od ograniczoną dostępnością usługi magazynu lub określonej operacji interfejsu API.|GeoType, ApiName|
-
-## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft.Storage/storageAccounts/queueServices
-
-|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
-|---|---|---|---|---|---|
-|QueueCapacity|Pojemność kolejki|Bajty|Średnia|Ilość miejsca w magazynie (w bajtach) używanego przez usługę kolejki konta magazynu.|Nie wymiarów|
-|QueueCount|Liczba kolejek|Licznik|Średnia|Liczba kolejek w usłudze kolejki konta magazynu.|Nie wymiarów|
-|QueueMessageCount|Liczba komunikatów w kolejce|Licznik|Średnia|Przybliżona liczba komunikatów w kolejce w usłudze kolejki konta magazynu.|Nie wymiarów|
-|Transakcje|Transakcje|Licznik|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje udane i nieudane żądania, a także żądania, które wygenerowany błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi.|ResponseType, GeoType, ApiName|
-|Zdarzenia związane z transferem danych przychodzących|Zdarzenia związane z transferem danych przychodzących|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|GeoType, ApiName|
-|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|GeoType, ApiName|
-|SuccessServerLatency|Opóźnienie serwera dla opóźnienia|Milisekundy|Średnia|Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego w elemencie AverageE2ELatency.|GeoType, ApiName|
-|SuccessE2ELatency|Opóźnienie E2E dla powodzenia|Milisekundy|Średnia|Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|GeoType, ApiName|
-|Dostępność|Dostępność|Procent|Średnia|Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests i podzielenie go przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy skutkują od ograniczoną dostępnością usługi magazynu lub określonej operacji interfejsu API.|GeoType, ApiName|
+|Transakcje|Transakcje|Licznik|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje udane i nieudane żądania, a także żądania, które wygenerowany błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi.|Wartość ResponseType, GeoType, ApiName, uwierzytelniania|
+|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Uwierzytelnianie GeoType, ApiName,|
+|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Uwierzytelnianie GeoType, ApiName,|
+|SuccessServerLatency|Opóźnienie serwera dla opóźnienia|Milisekundy|Średnia|Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego w elemencie AverageE2ELatency.|Uwierzytelnianie GeoType, ApiName,|
+|SuccessE2ELatency|Opóźnienie E2E dla powodzenia|Milisekundy|Średnia|Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Uwierzytelnianie GeoType, ApiName,|
+|Dostępność|Dostępność|Procent|Średnia|Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests i podzielenie go przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy skutkują od ograniczoną dostępnością usługi magazynu lub określonej operacji interfejsu API.|Uwierzytelnianie GeoType, ApiName,|
 
 ## <a name="microsoftstoragestorageaccountsfileservices"></a>Microsoft.Storage/storageAccounts/fileServices
 
@@ -1134,12 +1239,40 @@ Wydarzenie|Wydarzenie|Licznik|Średnia|Wydarzenie|Źródło dziennika zdarzeń, 
 |FileCapacity|Pojemność plików|Bajty|Średnia|Ilość miejsca w magazynie (w bajtach) używanego przez usługę plików konta magazynu.|Nie wymiarów|
 |FileCount|Liczba plików|Licznik|Średnia|Liczba plików w usłudze plików konta magazynu.|Nie wymiarów|
 |FileShareCount|Liczba udziałów plików|Licznik|Średnia|Liczba udziałów plików w usłudze plików konta magazynu.|Nie wymiarów|
-|Transakcje|Transakcje|Licznik|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje udane i nieudane żądania, a także żądania, które wygenerowany błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi.|ResponseType, GeoType, ApiName|
-|Zdarzenia związane z transferem danych przychodzących|Zdarzenia związane z transferem danych przychodzących|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|GeoType, ApiName|
-|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|GeoType, ApiName|
-|SuccessServerLatency|Opóźnienie serwera dla opóźnienia|Milisekundy|Średnia|Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego w elemencie AverageE2ELatency.|GeoType, ApiName|
-|SuccessE2ELatency|Opóźnienie E2E dla powodzenia|Milisekundy|Średnia|Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|GeoType, ApiName|
-|Dostępność|Dostępność|Procent|Średnia|Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests i podzielenie go przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy skutkują od ograniczoną dostępnością usługi magazynu lub określonej operacji interfejsu API.|GeoType, ApiName|
+|Transakcje|Transakcje|Licznik|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje udane i nieudane żądania, a także żądania, które wygenerowany błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi.|Wartość ResponseType, GeoType, ApiName, uwierzytelniania|
+|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Uwierzytelnianie GeoType, ApiName,|
+|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Uwierzytelnianie GeoType, ApiName,|
+|SuccessServerLatency|Opóźnienie serwera dla opóźnienia|Milisekundy|Średnia|Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego w elemencie AverageE2ELatency.|Uwierzytelnianie GeoType, ApiName,|
+|SuccessE2ELatency|Opóźnienie E2E dla powodzenia|Milisekundy|Średnia|Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Uwierzytelnianie GeoType, ApiName,|
+|Dostępność|Dostępność|Procent|Średnia|Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests i podzielenie go przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy skutkują od ograniczoną dostępnością usługi magazynu lub określonej operacji interfejsu API.|Uwierzytelnianie GeoType, ApiName,|
+
+## <a name="microsoftstoragestorageaccountsqueueservices"></a>Microsoft.Storage/storageAccounts/queueServices
+
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|QueueCapacity|Pojemność kolejki|Bajty|Średnia|Ilość miejsca w magazynie (w bajtach) używanego przez usługę kolejki konta magazynu.|Nie wymiarów|
+|QueueCount|Liczba kolejek|Licznik|Średnia|Liczba kolejek w usłudze kolejki konta magazynu.|Nie wymiarów|
+|QueueMessageCount|Liczba komunikatów w kolejce|Licznik|Średnia|Przybliżona liczba komunikatów w kolejce w usłudze kolejki konta magazynu.|Nie wymiarów|
+|Transakcje|Transakcje|Licznik|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje udane i nieudane żądania, a także żądania, które wygenerowany błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi.|Wartość ResponseType, GeoType, ApiName, uwierzytelniania|
+|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Uwierzytelnianie GeoType, ApiName,|
+|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Uwierzytelnianie GeoType, ApiName,|
+|SuccessServerLatency|Opóźnienie serwera dla opóźnienia|Milisekundy|Średnia|Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego w elemencie AverageE2ELatency.|Uwierzytelnianie GeoType, ApiName,|
+|SuccessE2ELatency|Opóźnienie E2E dla powodzenia|Milisekundy|Średnia|Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Uwierzytelnianie GeoType, ApiName,|
+|Dostępność|Dostępność|Procent|Średnia|Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests i podzielenie go przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy skutkują od ograniczoną dostępnością usługi magazynu lub określonej operacji interfejsu API.|Uwierzytelnianie GeoType, ApiName,|
+
+## <a name="microsoftstoragestorageaccountstableservices"></a>Microsoft.Storage/storageAccounts/tableServices
+
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|TableCapacity|Pojemność tabeli|Bajty|Średnia|Ilość miejsca w magazynie (w bajtach) używanego przez usługę tabeli konta magazynu.|Nie wymiarów|
+|TableCount|Liczba tabel|Licznik|Średnia|Liczba tabel w usłudze tabeli konta magazynu.|Nie wymiarów|
+|TableEntityCount|Liczba jednostek tabel|Licznik|Średnia|Liczba jednostek tabel w usłudze tabeli konta magazynu.|Nie wymiarów|
+|Transakcje|Transakcje|Licznik|Łącznie|Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje udane i nieudane żądania, a także żądania, które wygenerowany błędy. Korzystanie z wymiaru ResponseType numer innego typu odpowiedzi.|Wartość ResponseType, GeoType, ApiName, uwierzytelniania|
+|Ruch przychodzący|Ruch przychodzący|Bajty|Łącznie|Ilość danych przychodzących w bajtach. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure.|Uwierzytelnianie GeoType, ApiName,|
+|Ruch wychodzący|Ruch wychodzący|Bajty|Łącznie|Ilość danych wychodzących w bajtach. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu.|Uwierzytelnianie GeoType, ApiName,|
+|SuccessServerLatency|Opóźnienie serwera dla opóźnienia|Milisekundy|Średnia|Średni czas oczekiwania, używane przez usługę Azure Storage do przetwarzania żądania zakończonego powodzeniem w milisekundach. Ta wartość nie obejmuje opóźnienia sieci określonego w elemencie AverageE2ELatency.|Uwierzytelnianie GeoType, ApiName,|
+|SuccessE2ELatency|Opóźnienie E2E dla powodzenia|Milisekundy|Średnia|Średnie opóźnienie end-to-end żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API (w milisekundach). Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi.|Uwierzytelnianie GeoType, ApiName,|
+|Dostępność|Dostępność|Procent|Średnia|Procent dostępności dla usługi magazynu lub określonej operacji interfejsu API. Dostępność jest obliczana przez podzielenie wartości TotalBillableRequests i podzielenie go przez liczbę żądań mających zastosowanie, łącznie z tymi, które wygenerowały nieoczekiwane błędy. Wszystkie nieoczekiwane błędy skutkują od ograniczoną dostępnością usługi magazynu lub określonej operacji interfejsu API.|Uwierzytelnianie GeoType, ApiName,|
 
 ## <a name="microsoftstreamanalyticsstreamingjobs"></a>Microsoft.StreamAnalytics/streamingjobs
 
@@ -1157,7 +1290,8 @@ Wydarzenie|Wydarzenie|Licznik|Średnia|Wydarzenie|Źródło dziennika zdarzeń, 
 |AMLCalloutFailedRequests|Żądania funkcji zakończone niepowodzeniem|Licznik|Łącznie|Żądania funkcji zakończone niepowodzeniem|Nie wymiarów|
 |AMLCalloutInputEvents|Zdarzenia funkcji|Licznik|Łącznie|Zdarzenia funkcji|Nie wymiarów|
 |DeserializationError|Błędy deserializacji danych wejściowych|Licznik|Łącznie|Błędy deserializacji danych wejściowych|Nie wymiarów|
-|EarlyInputEvents|Zdarzenia, w których czas aplikacji jest wcześniejszy niż czas ich odbioru.|Licznik|Łącznie|Zdarzenia, w których czas aplikacji jest wcześniejszy niż czas ich odbioru.|Nie wymiarów|
+|EarlyInputEvents|Wczesne zdarzenia wejściowe|Licznik|Łącznie|Wczesne zdarzenia wejściowe|Nie wymiarów|
+|OutputWatermarkDelaySeconds|Opóźnienie znaku wodnego|Sekundy|Maksimum|Opóźnienie znaku wodnego|Nie wymiarów|
 
 ## <a name="microsofttimeseriesinsightsenvironments"></a>Microsoft.TimeSeriesInsights/environments
 
@@ -1217,6 +1351,7 @@ Wydarzenie|Wydarzenie|Licznik|Średnia|Wydarzenie|Źródło dziennika zdarzeń, 
 |AppConnections|Połączenia|Licznik|Średnia|Połączenia|Wystąpienie|
 |Dojścia|Liczba dojść|Licznik|Średnia|Liczba dojść|Wystąpienie|
 |Wątki|Liczba wątków|Licznik|Średnia|Liczba wątków|Wystąpienie|
+|PrivateBytes|Bajty prywatne|Bajty|Średnia|Bajty prywatne|Wystąpienie|
 |IoReadBytesPerSecond|Odczytane bajty We/Wy na sekundę|Bajty na sekundę|Łącznie|Odczytane bajty We/Wy na sekundę|Wystąpienie|
 |IoWriteBytesPerSecond|Zapisane bajty We/Wy na sekundę|Bajty na sekundę|Łącznie|Zapisane bajty We/Wy na sekundę|Wystąpienie|
 |IoOtherBytesPerSecond|Inne bajty We/Wy na sekundę|Bajty na sekundę|Łącznie|Inne bajty We/Wy na sekundę|Wystąpienie|
@@ -1242,6 +1377,7 @@ Wydarzenie|Wydarzenie|Licznik|Średnia|Wydarzenie|Źródło dziennika zdarzeń, 
 |AverageMemoryWorkingSet|Średni zestaw roboczy pamięci|Bajty|Średnia|Średni zestaw roboczy pamięci|Wystąpienie|
 |FunctionExecutionUnits|Jednostki wykonawcze funkcji|Licznik|Łącznie|Jednostki wykonawcze funkcji|Wystąpienie|
 |FunctionExecutionCount|Liczba wykonań funkcji|Licznik|Łącznie|Liczba wykonań funkcji|Wystąpienie|
+|PrivateBytes|Bajty prywatne|Bajty|Średnia|Bajty prywatne|Wystąpienie|
 |IoReadBytesPerSecond|Odczytane bajty We/Wy na sekundę|Bajty na sekundę|Łącznie|Odczytane bajty We/Wy na sekundę|Wystąpienie|
 |IoWriteBytesPerSecond|Zapisane bajty We/Wy na sekundę|Bajty na sekundę|Łącznie|Zapisane bajty We/Wy na sekundę|Wystąpienie|
 |IoOtherBytesPerSecond|Inne bajty We/Wy na sekundę|Bajty na sekundę|Łącznie|Inne bajty We/Wy na sekundę|Wystąpienie|
@@ -1281,6 +1417,7 @@ Wydarzenie|Wydarzenie|Licznik|Średnia|Wydarzenie|Źródło dziennika zdarzeń, 
 |AppConnections|Połączenia|Licznik|Średnia|Połączenia|Wystąpienie|
 |Dojścia|Liczba dojść|Licznik|Średnia|Liczba dojść|Wystąpienie|
 |Wątki|Liczba wątków|Licznik|Średnia|Liczba wątków|Wystąpienie|
+|PrivateBytes|Bajty prywatne|Bajty|Średnia|Bajty prywatne|Wystąpienie|
 |IoReadBytesPerSecond|Odczytane bajty We/Wy na sekundę|Bajty na sekundę|Łącznie|Odczytane bajty We/Wy na sekundę|Wystąpienie|
 |IoWriteBytesPerSecond|Zapisane bajty We/Wy na sekundę|Bajty na sekundę|Łącznie|Zapisane bajty We/Wy na sekundę|Wystąpienie|
 |IoOtherBytesPerSecond|Inne bajty We/Wy na sekundę|Bajty na sekundę|Łącznie|Inne bajty We/Wy na sekundę|Wystąpienie|

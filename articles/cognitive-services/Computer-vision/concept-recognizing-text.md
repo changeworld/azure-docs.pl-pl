@@ -1,21 +1,21 @@
 ---
-title: Rozpoznawanie tekstu drukowanego i pisma odręcznego
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Pojęcia związane z rozpoznawanie tekstu drukowanego i pisma odręcznego na obrazach za pomocą przetwarzania obrazów w usługach Azure Cognitive Services.
+title: Rozpoznawanie tekstu drukowanego lub ręcznie — przetwarzanie obrazów
+titleSuffix: Azure Cognitive Services
+description: Pojęcia związane z rozpoznawanie tekstu drukowanego i pisma odręcznego na obrazach za pomocą interfejsu API przetwarzania obrazów.
 services: cognitive-services
 author: deken
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: bdfef668eddc712d2637dcf53a01f193a3204880
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 49cba0e9b6958beb07b6f074e6dc748679514525
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44725484"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985315"
 ---
 # <a name="recognizing-printed-and-handwritten-text"></a>Rozpoznawanie tekstu drukowanego i pisma odręcznego
 

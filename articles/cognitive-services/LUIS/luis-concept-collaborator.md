@@ -10,12 +10,12 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: ac1c3b4ac49cd8934316eb5653af8f5af2cf801a
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 5573bd36761fb56f0731f886bd705327625f06fe
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630158"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734509"
 ---
 # <a name="collaborating"></a>Współpraca
 
@@ -34,7 +34,7 @@ Konta, które służy do tworzenia aplikacji jest właścicielem. Każda aplikac
 ## <a name="authorization-roles"></a>Role autoryzacji
 Usługa LUIS nie obsługuje różne role dla właścicieli i współpracowników z jednym wyjątkiem. Właściciel jest to jedyne konto, które można usunąć aplikacji.
 
-Jeśli interesuje Cię w kontrolowaniu dostępu do modelu, należy wziąć pod uwagę model tworzenia wycinków w mniejszych aplikacje usługi LUIS, gdzie każda mniejszych aplikacja ma bardziej ograniczony zestaw współpracowników. Użyj [wysyłania](https://github.com/Microsoft/botbuilder-tools/tree/master/Dispatch) umożliwia nadrzędnego aplikacją usługi LUIS do zarządzania koordynacji między aplikacjami nadrzędnymi i podrzędnymi.
+Jeśli interesuje Cię w kontrolowaniu dostępu do modelu, należy wziąć pod uwagę model tworzenia wycinków w mniejszych aplikacje usługi LUIS, gdzie każda mniejszych aplikacja ma bardziej ograniczony zestaw współpracowników. Użyj [wysyłania](https://aka.ms/dispatch-tool) umożliwia nadrzędnego aplikacją usługi LUIS do zarządzania koordynacji między aplikacjami nadrzędnymi i podrzędnymi.
 
 ## <a name="transfer-ownership"></a>Przenoszenie własności
 Usługa LUIS nie zapewnia przeniesienie prawa własności, jednak żadnych współpracownika wyeksportować aplikację, a następnie utwórz aplikację przez zaimportowanie. Należy pamiętać, że nowa aplikacja ma inny identyfikator aplikacji. Nowych potrzeb aplikacji ma być uczony, opublikowane, a nowy punkt końcowy używane.

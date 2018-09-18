@@ -12,12 +12,12 @@ ms.devlang: nodejs
 ms.topic: reference
 ms.date: 03/04/2018
 ms.author: glenga
-ms.openlocfilehash: d80914fcd1f667924b52122b39f95871c1e21532
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a8ee92d117a416d638f62b573dfb155f67bf66e0
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298016"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983165"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions JavaScript
 
@@ -94,6 +94,13 @@ context.bindings.myOutput = {
 ```
 
 Należy pamiętać, że można zdefiniować przy użyciu danych powiązania danych wyjściowych `context.done` zamiast metody `context.binding` obiektu (patrz poniżej).
+
+### <a name="contextbindingdata-property"></a>Właściwość context.bindingData
+
+```
+context.bindingData
+```
+Zwraca obiekt o nazwie, który zawiera dane wywołania funkcji i metadanych wyzwalacza (`invocationId`, `sys.methodName`, `sys.utcNow`, `sys.randGuid`). Na przykład wyzwalacz metadanych zobacz [przykład usługi event hubs](functions-bindings-event-hubs.md#trigger---javascript-example).
 
 ### <a name="contextdone-method"></a>Metoda context.Done
 ```
@@ -262,8 +269,9 @@ Podczas pracy z wyzwalaczami HTTP można uzyskiwanie dostępu do obiektów żąd
     ```javascript
     context.bindings.response = { status: 201, body: "Insert succeeded." };
     ```
++ _[Tylko odpowiedzi]_  Przez wywołanie metody `context.res.send(body?: any)`. Odpowiedź HTTP jest tworzony przy użyciu danych wejściowych `body` jako treść odpowiedzi. `context.done()` jest wywoływany niejawnie.
 
-+ [Tylko odpowiedzi] Przez wywołanie metody `context.done()`. Specjalny rodzaj powiązanie HTTP zwraca odpowiedź, który jest przekazywany do `context.done()` metody. Powiązanie danych wyjściowych następujące HTTP definiuje `$return` parametr danych wyjściowych:
++ _[Tylko odpowiedzi]_  Przez wywołanie metody `context.done()`. Specjalny rodzaj powiązanie HTTP zwraca odpowiedź, który jest przekazywany do `context.done()` metody. Powiązanie danych wyjściowych następujące HTTP definiuje `$return` parametr danych wyjściowych:
 
     ```json
     {

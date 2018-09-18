@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: 3b05f553e591de2660e9842f316de0cb6f80c852
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 5d070c1d65ea15450589e1b590eaf926c10e749f
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42061708"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736193"
 ---
 # <a name="overview-azure-sql-database-resource-limits"></a>Limity zasobów usługi Azure SQL Database — omówienie 
 
@@ -47,7 +47,7 @@ Ten artykuł zawiera omówienie zasobów usługi Azure SQL Database ogranicza i 
 Gdy wzrośnie wykorzystanie obliczeń bazy danych (według liczby jednostek Dtu i Edtu lub rdzenie wirtualne), kwerendami zwiększa i może nawet przekroczyć limit czasu. W tych warunkach zapytania mogą być umieszczane w kolejce przez usługę i są pod warunkiem, że zwolnić zasoby do wykonania jako zasób.
 Gdy wystąpią wykorzystanie dużą mocą obliczeniową, opcje środki zaradcze:
 
-- Zwiększenie poziomu wydajności bazy danych lub elastycznej puli w celu zapewnienia bazy danych przy użyciu większej ilości zasobów obliczeniowych. Zobacz [skalowanie pojedynczej bazy danych zasobów](sql-database-single-database-scale.md) i [skalowanie elastycznej puli zasobów](sql-database-elastic-pool-scale.md).
+- Zwiększenie rozmiaru obliczeń bazy danych lub elastycznej puli w celu zapewnienia bazy danych przy użyciu większej ilości zasobów obliczeniowych. Zobacz [skalowanie pojedynczej bazy danych zasobów](sql-database-single-database-scale.md) i [skalowanie elastycznej puli zasobów](sql-database-elastic-pool-scale.md).
 - Optymalizowanie zapytań, aby zmniejszyć wykorzystanie zasobów każdej kwerendy. Aby uzyskać więcej informacji, zobacz [zapytania dostrajania/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
 ### <a name="storage"></a>Magazyn
@@ -62,10 +62,10 @@ Gdy wystąpią wykorzystania miejsca wysoka, opcje środki zaradcze:
 
 ### <a name="sessions-and-workers-requests"></a>Sesje i procesów roboczych (żądań) 
 
-Maksymalna liczba sesji i procesy robocze są określane przez usługę warstwy i poziomu wydajności (jednostki Dtu i Edtu). Nowe żądania są odrzucane po osiągnięciu limitu sesji lub proces roboczy, a klienci otrzymują komunikat o błędzie. Chociaż można kontrolować liczbę połączeń, które są dostępne przez aplikację, liczba współbieżnych procesów roboczych jest często trudniejsze do oszacowania i sterowania. Jest to szczególnie istotne w okresach szczytowego obciążenia po osiągnięciu limitów zasobów bazy danych i procesów roboczych, ustawianie ze względu na dłużej uruchomionych zapytań. 
+Maksymalna liczba sesji i procesy robocze są określane przez warstwę usług i obliczenia rozmiaru (jednostki Dtu i Edtu). Nowe żądania są odrzucane po osiągnięciu limitu sesji lub proces roboczy, a klienci otrzymują komunikat o błędzie. Chociaż można kontrolować liczbę połączeń, które są dostępne przez aplikację, liczba współbieżnych procesów roboczych jest często trudniejsze do oszacowania i sterowania. Jest to szczególnie istotne w okresach szczytowego obciążenia po osiągnięciu limitów zasobów bazy danych i procesów roboczych, ustawianie ze względu na dłużej uruchomionych zapytań. 
 
 Gdy wystąpią wysokie wykorzystanie sesji lub proces roboczy, opcje środki zaradcze:
-- Zwiększenie poziomu wydajności lub Warstwa usługi bazy danych lub elastycznej puli. Zobacz [skalowanie pojedynczej bazy danych zasobów](sql-database-single-database-scale.md) i [skalowanie elastycznej puli zasobów](sql-database-elastic-pool-scale.md).
+- Zwiększenie usługi warstwy lub obliczenia rozmiaru bazy danych lub elastycznej puli. Zobacz [skalowanie pojedynczej bazy danych zasobów](sql-database-single-database-scale.md) i [skalowanie elastycznej puli zasobów](sql-database-elastic-pool-scale.md).
 - Optymalizacja zapytania, aby zmniejszyć wykorzystanie zasobów każdej kwerendy, jeśli przyczyną zwiększonej wykorzystanie jest z powodu rywalizacji o zasoby obliczeniowe. Aby uzyskać więcej informacji, zobacz [zapytania dostrajania/Hinting](sql-database-performance-guidance.md#query-tuning-and-hinting).
 
 ## <a name="next-steps"></a>Kolejne kroki

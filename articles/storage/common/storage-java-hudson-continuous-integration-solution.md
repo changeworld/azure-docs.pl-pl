@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 02/28/2017
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: c076ae96f8aba648196dc5222db3da3da68673ff
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 86a14d12f6621524ef26e2a869d4be532105dc77
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528395"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732352"
 ---
 # <a name="using-azure-storage-with-a-hudson-continuous-integration-solution"></a>Korzystanie z usługi Azure Storage z rozwiązaniem ciągłej integracji Hudson
 ## <a name="overview"></a>Przegląd
@@ -53,7 +53,7 @@ Następujące polecenie, aby korzystać z usługi obiektów Blob z rozwiązaniem
      
       Podczas gdy typowe rozwiązanie z ciągłą Integracją rozwiązania Hudson, należy skonfigurować do uruchamiania jako usługa, uruchomiona Hudson war w wierszu polecenia, będzie wystarczająca na potrzeby tego samouczka.
 * Konto platformy Azure. Możesz zasubskrybować konta platformy Azure w <http://www.azure.com>.
-* Konto usługi Azure Storage. Jeśli nie masz jeszcze konta magazynu, możesz utworzyć ją przy użyciu czynności opisane w temacie [Tworzenie konta magazynu](../common/storage-create-storage-account.md#create-a-storage-account).
+* Konto usługi Azure Storage. Jeśli nie masz jeszcze konta magazynu, możesz utworzyć ją przy użyciu czynności opisane w temacie [Tworzenie konta magazynu](../common/storage-quickstart-create-account.md).
 * Znajomość rozwiązanie ciągłej integracji Hudson jest zalecane, ale nie jest to wymagane, zgodnie z następującą zawartością użyje podstawowy przykład aby pokazać, że kroki wymagane w przypadku korzystania z usługi Blob service jako repozytorium do ciągłej integracji Hudson artefaktów kompilacji.
 
 ## <a name="how-to-use-the-blob-service-with-hudson-ci"></a>Jak używać usługi obiektów Blob z ciągłą Integracją rozwiązania Hudson

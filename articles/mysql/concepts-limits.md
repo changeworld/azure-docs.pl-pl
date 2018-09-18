@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: c18faa94f207b98400fece366a23a68c3d7bc58c
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: d73c0cc6416145fa3764d2ef938d6de7a4195c1b
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633184"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982882"
 ---
 # <a name="limitations-in-azure-database-for-mysql"></a>Ograniczenia dotyczące usługi Azure Database for MySQL
 Poniżej opisano pojemności, obsługa aparatu magazynu, uprawnień obsługę, dane manipulowania instrukcji oraz ograniczenia funkcjonalności w usłudze bazy danych. Zobacz też [ogólne ograniczenia](https://dev.mysql.com/doc/mysql-reslimits-excerpt/5.6/en/limits.html) mające zastosowanie do aparatu bazy danych MySQL.
@@ -80,9 +80,6 @@ Po przekroczeniu limitu połączeń może zostać wyświetlony następujący bł
 
 ### <a name="vnet-service-endpoints"></a>Punkty końcowe usługi sieci wirtualnej
 - Obsługa punktów końcowych usługi sieci wirtualnej jest tylko w przypadku serwerów ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.
-
-### <a name="subscription-management"></a>Zarządzanie subskrypcjami
-- Dynamicznie przenoszenie serwerów wstępnie utworzonych w subskrypcji i grupy zasobów nie jest obecnie obsługiwane.
 
 ## <a name="current-known-issues"></a>Obecnie znane problemy
 - Wystąpienia serwera MySQL Wyświetla wersja serwera problem, po nawiązaniu połączenia. Aby uzyskać z właściwym serwerem w wystąpieniu aparatu wersji, użyj `select version();` polecenia.

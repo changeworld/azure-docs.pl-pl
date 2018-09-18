@@ -1,27 +1,25 @@
 ---
-title: Omówienie usługi Azure Identity | Microsoft Docs
-description: Uzyskaj podstawowe informacje o terminach, pojęciach i zaleceniach dotyczących rozwiązania do obsługi tożsamości na platformie Microsoft Azure, aby podejmować możliwie najlepsze decyzje związane z zarządzaniem tożsamościami w organizacji.
-keywords: ''
+title: Co to jest Microsoft Azure Identity? | Microsoft Docs
+description: Więcej informacji o tożsamości Microsoft Azure — warunki rozwiązania, pojęcia i zalecenia dotyczące najlepszych decyzji nadzoru tożsamości dla Twojej organizacji.
+services: active-directory
 author: eross-msft
 manager: mtillman
-ms.reviewer: jsnow
-ms.author: lizross
-ms.date: 7/17/2017
-ms.topic: overview
-ms.prod: ''
-ms.service: azure-directory
+ms.service: active-directory
 ms.component: fundamentals
-ms.technology: ''
-ms.assetid: ''
-ms.custom: it-pro
-ms.openlocfilehash: ec84cdb4e226eea4d16d28d63acd7be59241b973
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
-ms.translationtype: HT
+ms.workload: identity
+ms.topic: conceptual
+ms.date: 7/17/2017
+ms.author: lizross
+ms.reviewer: jsnow
+custom: it-pro
+ms.openlocfilehash: db14dbf298596a9fdc189c27ea8608d472c58a35
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346920"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737247"
 ---
-# <a name="understand-azure-identity-solutions"></a>Omówienie rozwiązań do obsługi tożsamości na platformie Azure
+# <a name="what-is-microsoft-azure-identity"></a>Co to jest usługa Microsoft Azure identity?
 Usługa Microsoft Azure Active Directory (Azure AD) to rozwiązanie do zarządzania tożsamościami i dostępem w chmurze, które oferuje usługi katalogowe, nadzór nad tożsamościami i zarządzanie dostępem do aplikacji. Usługa Azure AD umożliwia [szybkie logowanie jednokrotne (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) do tysięcy wstępnie zintegrowanych aplikacji komercyjnych i niestandardowych w [galerii aplikacji usługi Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/). Wielu z tych aplikacji najprawdopodobniej już używasz, np. Office 365, Salesforce.com, Box, ServiceNow i Workday.
 
 Pojedynczy katalog usługi Azure AD jest automatycznie kojarzony z subskrypcją platformy Azure podczas jej tworzenia. Następnie usługa Azure AD, jako usługa zarządzania tożsamościami na platformie Azure, zapewnia wszystkie funkcje związane z zarządzaniem tożsamościami i kontrolą dostępu dla zasobów opartych na chmurze. Te zasoby mogą obejmować użytkowników, aplikacje i grupy dla pojedynczej dzierżawy (organizacji), jak pokazano na poniższym diagramie:
@@ -119,7 +117,7 @@ Mamy mnóstwo przydatnych zasobów online, dzięki którym dowiesz się wszystki
 * [Co to jest licencjonowanie usługi Microsoft Azure Active Directory?](active-directory-licensing-whatis-azure-portal.md)
 * [Jak odnajdywać niezaakceptowane oficjalnie aplikacje w chmurze, które są używane w mojej organizacji?](../manage-apps/cloud-app-discovery.md)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Teraz, gdy znasz już pojęcia dotyczące tożsamości na platformie Azure oraz dostępne opcje, możesz użyć następujących zasobów, aby rozpocząć wdrażanie wybranej opcji:
 

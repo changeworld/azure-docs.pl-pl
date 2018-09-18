@@ -6,7 +6,7 @@
 | type |Właściwość type musi być równa: **AzureStorage** |Yes |
 | Parametry połączenia |Określ informacje potrzebne do łączenia z usługą Azure storage dla właściwości connectionString. |Yes |
 
-Zobacz następujący artykuł, wykonując czynności przedstawione widok/kopiowania klucza konta usługi Azure Storage: [wyświetlanie, kopiowanie i ponowne generowanie magazynu, klucze dostępu](../articles/storage/common/storage-create-storage-account.md#manage-your-storage-account).
+W poniższej sekcji, wykonując czynności przedstawione widok/kopiowania klucza konta usługi Azure Storage: [klucze dostępu](../articles/storage/common/storage-account-manage.md#access-keys).
 
 **Przykład:**  
 

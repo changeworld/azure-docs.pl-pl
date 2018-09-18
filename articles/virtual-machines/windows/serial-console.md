@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 785b0137624cc6d940f4944e0357d0a5774561df
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 1597e850219ddbab1a0714072c47e12016aa2069
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634714"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736892"
 ---
 # <a name="virtual-machine-serial-console"></a>Konsola szeregowa maszyny wirtualnej
 
@@ -64,9 +64,8 @@ Nowsze obrazy systemu Windows Server na platformie Azure będzie mieć [specjaln
 * `bcdedit /emssettings EMSPORT:1 EMSBAUDRATE:115200`
 3. Ponowne uruchomienie systemu pod kątem Konsola SAC włączenia
 
-![](../media/virtual-machines-serial-console/virtual-machine-windows-serial-console-connect.gif)
 
-Jeśli potrzebne SAC można włączyć w trybie offline 
+Jeśli to konieczne, konsola SAC można włączyć w trybie offline oraz:
 
 1. Dołącz dysk systemu windows, który ma SAC skonfigurowany dla jako dysk danych do istniejącej maszyny Wirtualnej. 
 2. W administracyjnym wierszu polecenia Uruchom następujące polecenia 

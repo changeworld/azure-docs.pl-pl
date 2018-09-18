@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/31/2017
 ms.author: wesmc
-ms.openlocfilehash: 6733891213f15e9ceaf08ef7fb50380db47a695f
-ms.sourcegitcommit: c2c64fc9c24a1f7bd7c6c91be4ba9d64b1543231
+ms.openlocfilehash: b48235b1c1912ac767070d5890d4768138a9db8b
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39259198"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732095"
 ---
 # <a name="import-and-export-data-in-azure-redis-cache"></a>Importowanie i eksportowanie danych w usłudze Azure Redis Cache
 Import/Export jest operacji zarządzania danych usługi Azure Redis Cache, która umożliwia importowanie danych do usługi Azure Redis Cache lub eksportowanie danych z usługi Azure Redis Cache, importowania i eksportowania migawki usługi Redis Cache bazy danych (RDB) z cache w wersji premium do obiektu blob na platformie Azure Konto magazynu. 
@@ -78,7 +78,7 @@ Eksport umożliwia eksportowanie danych przechowywanych w usłudze Azure Redis C
 2. Kliknij przycisk **Wybierz kontener magazynu** i wybrać odpowiednie konto magazynu. Konto magazynu musi być w tej samej subskrypcji i regionie jako pamięci podręcznej.
 
    > [!IMPORTANT]
-   > Eksportuj sprawdza w przypadku stronicowych obiektów blob, które są obsługiwane przez wdrożeń klasycznych, jak i kont magazynu usługi Resource Manager, ale nie są obsługiwane przez [konta usługi Blob storage](../storage/common/storage-account-options.md#blob-storage-accounts) w tej chwili.
+   > Wyeksportuj sprawdza w przypadku stronicowych obiektów blob, które są obsługiwane przez wdrożeń klasycznych, jak i kont magazynu usługi Resource Manager, ale nie są obsługiwane przez kont usługi Blob storage w tej chwili. Aby uzyskać więcej informacji, zobacz [Przegląd konta usługi Azure storage](../storage/common/storage-account-overview.md).
    >
    >
 
@@ -156,7 +156,7 @@ Jeśli pozostają na **importowania danych** lub **eksportowanie danych** bloku 
 Aby rozwiązać ten problem, rozpocząć import lub Eksport przed 15 minut upłynie.
 
 ### <a name="i-got-an-error-when-exporting-my-data-to-azure-blob-storage-what-happened"></a>Otrzymuję błąd podczas eksportowania danych do usługi Azure Blob Storage. Co się stało?
-Eksportu działa tylko w przypadku plików z pliku RDB jest przechowywane jako stronicowe obiekty BLOB. Inne typy obiektów blob nie są obsługiwane obecnie, w tym kont usługi blob storage z warstwami gorąca i chłodna. Aby uzyskać więcej informacji, zobacz [konta usługi Blob storage](../storage/common/storage-account-options.md#blob-storage-accounts).
+Eksportu działa tylko w przypadku plików z pliku RDB jest przechowywane jako stronicowe obiekty BLOB. Inne typy obiektów blob nie są obsługiwane obecnie, w tym kont usługi Blob storage z warstwami gorąca i chłodna. Aby uzyskać więcej informacji, zobacz [Przegląd konta usługi Azure storage](../storage/common/storage-account-overview.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się, jak korzystać z funkcji premium więcej w pamięci podręcznej.

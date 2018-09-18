@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/03/2018
+ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: b8c1a0a0c4f2b3b33338f1f76245fd4bcb66ad61
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 08b7c7f9fe66de2824f28a69ecb23c1a095c2624
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42057333"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732977"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>Limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu opartego na jednostkach DTU 
 
@@ -25,12 +25,12 @@ Aby uzyskać oparty na jednostkach DTU zakupu model zasobu limity dla pul elasty
 > [!IMPORTANT]
 > W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
 
-## <a name="single-database-storage-sizes-and-performance-levels"></a>Pojedyncza baza danych: magazyn o rozmiarze i poziomy wydajności
+## <a name="single-database-storage-sizes-and-compute-sizes"></a>Pojedyncza baza danych: magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych
 
-Dla pojedynczych baz danych w poniższych tabelach przedstawiono zasoby dostępne dla pojedynczej bazy danych w poszczególnych usług warstwy i poziomu wydajności. Można ustawić warstwę usługi, poziom wydajności i ilość miejsca w magazynie dla pojedynczej bazy danych za pomocą [witryny Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), [wiersza polecenia platformy Azure](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases), lub [Interfejsu API REST](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases).
+Dla pojedynczych baz danych w poniższych tabelach Pokaż zasoby dostępne dla pojedynczej bazy danych w poszczególnych warstwach usług i obliczenia rozmiaru. Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazynie dla pojedynczej bazy danych za pomocą [witryny Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), [wiersza polecenia platformy Azure](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases), lub [ Interfejs API REST](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases).
 
 ### <a name="basic-service-tier"></a>Warstwa Podstawowa usług
-| **Poziom wydajności** | **Podstawowa** |
+| **Obliczenia rozmiaru** | **Podstawowa** |
 | :--- | --: |
 | Maksymalna liczba jednostek DTU | 5 |
 | Dołączony magazyn (GB) | 2 |
@@ -41,7 +41,7 @@ Dla pojedynczych baz danych w poniższych tabelach przedstawiono zasoby dostępn
 |||
 
 ### <a name="standard-service-tier"></a>Warstwa Standardowa usług
-| **Poziom wydajności** | **S0** | **S1** | **S2** | **S3** |
+| **Obliczenia rozmiaru** | **S0** | **S1** | **S2** | **S3** |
 | :--- |---:| ---:|---:|---:|
 | Maksymalna liczba jednostek DTU | 10 | 20 | 50 | 100 |
 | Dołączony magazyn (GB) | 250 | 250 | 250 | 250 |
@@ -52,7 +52,7 @@ Dla pojedynczych baz danych w poniższych tabelach przedstawiono zasoby dostępn
 ||||||
 
 ### <a name="standard-service-tier-continued"></a>Warstwy usług w warstwie standardowa (ciąg dalszy)
-| **Poziom wydajności** | **S4** | **S6** | **S7** | **S9** | **S12** |
+| **Obliczenia rozmiaru** | **S4** | **S6** | **S7** | **S9** | **S12** |
 | :--- |---:| ---:|---:|---:|---:|
 | Maksymalna liczba jednostek DTU | 200 | 400 | 800 | 1600 | 3000 |
 | Dołączony magazyn (GB) | 250 | 250 | 250 | 250 | 250 |
@@ -63,7 +63,7 @@ Dla pojedynczych baz danych w poniższych tabelach przedstawiono zasoby dostępn
 |||||||
 
 ### <a name="premium-service-tier"></a>Warstwa Premium usług 
-| **Poziom wydajności** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** | 
+| **Obliczenia rozmiaru** | **P1** | **P2** | **P4** | **P6** | **P11** | **P15** | 
 | :--- |---:|---:|---:|---:|---:|---:|
 | Maksymalna liczba jednostek DTU | 125 | 250 | 500 | 1000 | 1750 | 4000 |
 | Dołączony magazyn (GB) | 500 | 500 | 500 | 500 | 4096 | 4096 |
@@ -79,31 +79,31 @@ Dla pojedynczych baz danych w poniższych tabelach przedstawiono zasoby dostępn
 
 ## <a name="single-database-change-storage-size"></a>Pojedyncza baza danych: zmiana rozmiaru magazynu
 
-- Cena jednostki DTU dla pojedynczej bazy danych obejmuje określoną ilość pamięci masowej bez ponoszenia dodatkowych kosztów. Dodatkowego magazynu ponad uwzględnioną kwotę można zaaprowizować za dodatkową opłatą maksymalnie limit maksymalnego rozmiaru, w przyrostach o rozmiarze 250 GB do 1 TB, a następnie w przyrostach wynoszących 256 GB ponad 1 TB. Magazyn w pakiecie kwoty i limity maksymalnego rozmiaru, zobacz [pojedynczej bazy danych: magazyn o rozmiarze i poziomy wydajności](#single-database-storage-sizes-and-performance-levels).
+- Cena jednostki DTU dla pojedynczej bazy danych obejmuje określoną ilość pamięci masowej bez ponoszenia dodatkowych kosztów. Dodatkowego magazynu ponad uwzględnioną kwotę można zaaprowizować za dodatkową opłatą maksymalnie limit maksymalnego rozmiaru, w przyrostach o rozmiarze 250 GB do 1 TB, a następnie w przyrostach wynoszących 256 GB ponad 1 TB. Magazyn w pakiecie kwoty i limity maksymalnego rozmiaru, zobacz [pojedynczej bazy danych: magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych](#single-database-storage-sizes-and-performance-levels).
 - Dodatkowy magazyn dla pojedynczej bazy danych mogą być udostępniane przez odpowiednie zwiększenie jego maksymalnego rozmiaru za pomocą [witryny Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [języka Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), [platformy Azure Interfejs wiersza polecenia](/cli/azure/sql/db#az_sql_db_update), lub [interfejsu API REST](/rest/api/sql/databases/update).
 - Cena dodatkowego magazynu dla pojedynczej bazy danych jest mnożony przez cena jednostkowa dodatkowego magazynu w warstwie usług wielkość dodatkowego magazynu. Szczegółowe informacje na temat cena magazynu dodatkowego, [cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
 
 ## <a name="single-database-change-dtus"></a>Pojedyncza baza danych: zmiana liczby jednostek Dtu
 
-Po początkowym wybraniu warstwy usług, poziom wydajności i ilość miejsca w magazynie, użytkownik może pojedynczej bazy danych w górę lub dół dynamicznie skalować na podstawie rzeczywistej wydajności przy użyciu [witryny Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [języka Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), [wiersza polecenia platformy Azure](/cli/azure/sql/db#az_sql_db_update), lub [interfejsu API REST](/rest/api/sql/databases/update). 
+Po początkowym wybraniu warstwy usług, rozmiar obliczeń i ilość miejsca w magazynie, użytkownik może pojedynczej bazy danych w górę lub dół dynamicznie skalować na podstawie rzeczywistej wydajności przy użyciu [witryny Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [języka Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [ Program PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), [wiersza polecenia platformy Azure](/cli/azure/sql/db#az_sql_db_update), lub [interfejsu API REST](/rest/api/sql/databases/update). 
 
-W poniższym wideo pokazano, dynamicznie zmieniające się warstwy wydajności, aby zwiększyć dostępna liczba jednostek Dtu dla pojedynczej bazy danych.
+Wideo pokazano, dynamicznie zmieniające się usługa warstwy i obliczenia rozmiaru w celu zwiększenia dostępna liczba jednostek Dtu dla pojedynczej bazy danych.
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-SQL-Database-dynamically-scale-up-or-scale-down/player]
 >
 
-Zmienienie warstwy usług i/lub poziomu wydajności bazy danych powoduje utworzenie repliki oryginalnej bazy danych na nowym poziomie wydajności, a następnie przełączenie połączeń do repliki. Podczas tego procesu nie zostaną utracone żadne dane, ale podczas przełączania do repliki połączenia do bazy danych są chwilowo wyłączane, dlatego niektóre bieżące transakcje mogą zostać wycofane. Długość czasu na przejście zmienia się, ale jest mniej niż 30 sekund 99% czasu. W przypadku dużej liczby transakcji w locie w chwili połączenia są wyłączone, długość czasu na przejście może być dłuższy. 
+Zmiana usługi warstwy i/lub obliczyć rozmiar bazy danych powoduje utworzenie repliki oryginalnej bazy danych na nowy rozmiar obliczeń, a następnie przełączenie połączeń do repliki. Podczas tego procesu nie zostaną utracone żadne dane, ale podczas przełączania do repliki połączenia do bazy danych są chwilowo wyłączane, dlatego niektóre bieżące transakcje mogą zostać wycofane. Długość czasu na przejście zmienia się, ale jest mniej niż 30 sekund 99% czasu. W przypadku dużej liczby transakcji w locie w chwili połączenia są wyłączone, długość czasu na przejście może być dłuższy. 
 
-Czas trwania całego procesu skalowania w górę zależy zarówno od rozmiaru, jak i warstwy usług bazy danych przed zmianą oraz po niej. Na przykład 250 GB bazy danych, zmiana do, z lub do warstwy standardowa, należy wykonać w ciągu 6 godzin. Dla bazy danych taki sam rozmiar, który zmiana poziomów wydajności w ramach warstwy Premium skalowanie w górę powinno zakończyć się w ciągu trzech godzin.
+Czas trwania całego procesu skalowania w górę zależy zarówno od rozmiaru, jak i warstwy usług bazy danych przed zmianą oraz po niej. Na przykład 250 GB bazy danych, zmiana do, z lub do warstwy standardowa, należy wykonać w ciągu 6 godzin. Dla bazy danych taki sam rozmiar, zmiana rozmiarów wystąpień obliczeniowych w ramach warstwy Premium skalowanie w górę powinno zakończyć się w ciągu trzech godzin.
 
 > [!TIP]
 > Aby monitorować działania w toku, zobacz: [zarządzania operacjami usługi przy użyciu interfejsu API REST programu SQL](/rest/api/sql/Operations/List), [zarządzania operacjami usługi przy użyciu interfejsu wiersza polecenia](/cli/azure/sql/db/op), [monitorowanie operacji przy użyciu języka T-SQL](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) i te dwie Polecenia programu PowerShell: [Get-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/get-azurermsqldatabaseactivity) i [Stop-AzureRmSqlDatabaseActivity](/powershell/module/azurerm.sql/stop-azurermsqldatabaseactivity).
 
-* Jeśli uaktualniasz na wyższy poziom wydajności lub Warstwa usługi maksymalnego rozmiaru bazy danych nie zwiększa chyba że jawnie określisz o większym rozmiarze (maxsize).
-* W przypadku obniżania, miejsca w bazie danych, używane musi być mniejszy niż maksymalny dozwolony rozmiar docelowej usługi warstwy i poziomu wydajności. 
-* Przed obniżeniem z **Premium** do **standardowa** warstwy, koszty dodatkowego magazynu ma zastosowanie w przypadku, gdy (1) maksymalny rozmiar bazy danych jest obsługiwana w poziom wydajności miejsca docelowego i (2) maksymalny rozmiar przekracza wielkość magazynu w pakiecie poziom wydajności miejsca docelowego. Na przykład, jeśli P1 baza danych o maksymalnej długości wynoszący 500 GB, jest downsized do S3, następnie magazyn dodatkowy koszt dotyczy ponieważ S3 obsługuje maksymalny rozmiar wynoszący 500 GB, a jego dostępnej ilości magazynu tylko 250 GB. Więc wielkość dodatkowego magazynu to 500 GB-250 GB = 250 GB. Cennik dodatkowego magazynu, zobacz [cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). Jeśli rzeczywistą ilość miejsca jest mniejsza niż wielkość magazynu w pakiecie, następnie to dodatkowych kosztów można uniknąć przez ograniczenie maksymalnego rozmiaru bazy danych do uwzględnioną kwotę. 
-* Podczas uaktualniania bazy danych o [geografickou replikaci](sql-database-geo-replication-portal.md) włączone, należy uaktualnić pomocnicze bazy danych do odpowiedniej warstwy wydajności przed uaktualnieniem podstawowej bazy danych (ogólne wytyczne w celu uzyskania najlepszej wydajności). Podczas uaktualniania do innego, najpierw uaktualniania dodatkowej bazy danych jest wymagana.
-* Przed obniżeniem bazę danych przy użyciu [geografickou replikaci](sql-database-geo-replication-portal.md) włączone, obniżyć jej podstawowych baz danych do odpowiedniej warstwy wydajności przed przejściem do pomocniczej bazy danych (ogólne wytyczne w celu uzyskania najlepszej wydajności). Przed obniżeniem do innej wersji, najpierw zmiany na starszą wersję podstawowej bazy danych jest wymagana.
+* W przypadku uaktualniania do wersji na wyższą warstwę usługi lub obliczenia rozmiaru, maksymalnego rozmiaru bazy danych zwiększa, chyba że jawnie określisz o większym rozmiarze (maxsize).
+* Na starszą wersję bazy danych, miejsca w bazie danych, używane musi być mniejszy niż maksymalny dozwolony rozmiar docelowej warstwy usług i rozmiaru obliczeń. 
+* Przed obniżeniem z **Premium** do **standardowa** warstwy, koszty dodatkowego magazynu ma zastosowanie w przypadku, gdy (1) maksymalny rozmiar bazy danych jest obsługiwana w rozmiar docelowej obliczeń i (2) maksymalny rozmiar przekracza dołączonej wielkość magazynu w celu obliczenia rozmiaru. Na przykład, jeśli P1 baza danych o maksymalnej długości wynoszący 500 GB, jest downsized do S3, następnie magazyn dodatkowy koszt dotyczy ponieważ S3 obsługuje maksymalny rozmiar wynoszący 500 GB, a jego dostępnej ilości magazynu tylko 250 GB. Więc wielkość dodatkowego magazynu to 500 GB-250 GB = 250 GB. Cennik dodatkowego magazynu, zobacz [cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/). Jeśli rzeczywistą ilość miejsca jest mniejsza niż wielkość magazynu w pakiecie, następnie to dodatkowych kosztów można uniknąć przez ograniczenie maksymalnego rozmiaru bazy danych do uwzględnioną kwotę. 
+* Podczas uaktualniania bazy danych o [geografickou replikaci](sql-database-geo-replication-portal.md) włączona, Uaktualnij pomocnicze bazy danych do żądanej usługi i obliczenia rozmiaru przed uaktualnieniem podstawowej bazy danych (ogólne wytyczne w celu uzyskania najlepszej wydajności). Podczas uaktualniania do innego, najpierw uaktualniania dodatkowej bazy danych jest wymagana.
+* Przed obniżeniem bazę danych przy użyciu [geografickou replikaci](sql-database-geo-replication-portal.md) włączona, obniżyć jej podstawowych baz danych do warstwy usług z żądaną i obliczenia rozmiaru przed przejściem do pomocniczej bazy danych (ogólne wytyczne w celu uzyskania najlepszej wydajności). Przed obniżeniem do innej wersji, najpierw zmiany na starszą wersję podstawowej bazy danych jest wymagana.
 * Oferowane usługi przywracania różnią się w zależności do warstwy usług. Jeśli są powrót do subskrypcji **podstawowe** warstwy jest krótszym okresie przechowywania kopii zapasowych — Zobacz [kopie zapasowe bazy danych SQL Azure](sql-database-automated-backups.md).
 * Nowe właściwości bazy danych są stosowane dopiero po zakończeniu wprowadzania zmian.
 
@@ -115,9 +115,9 @@ Maksymalny rozmiar większy niż 1 TB dla bazy danych P11 i P15 jest obsługiwan
 - W przypadku istniejących P11 i P15 baz danych znajdujących się w jednym z obsługiwanych regionów, możesz zwiększyć maksymalny rozmiar magazynu na ponad 1 TB z przyrostami 256 GB do 4 TB. Aby zobaczyć, czy większy rozmiar jest obsługiwana w Twoim regionie, użyj [DATABASEPROPERTYEX](/sql/t-sql/functions/databasepropertyex-transact-sql) funkcji lub Sprawdź rozmiar bazy danych w witrynie Azure portal. Uaktualnianie istniejącej P11 lub P15 bazy danych można wykonać tylko przez głównego identyfikatora logowania poziomu serwera lub członkowie roli bazy danych dbmanager. 
 - Jeśli operacja uaktualniania jest wykonywane w obsługiwanym regionie natychmiast zaktualizować konfigurację. Baza danych pozostaje w trybie online podczas procesu uaktualniania. Jednak nie możesz wykorzystywać cała kwota magazynu ponad 1 TB miejsca do magazynowania do czasu rzeczywistego wynoszącego zostali uaktualnieni do wersji nowy rozmiar maksymalny. Wymagany czas zależy od rozmiaru bazy danych, trwa uaktualnianie. 
 - Podczas tworzenia lub aktualizowania P11 lub P15 bazy danych, można wybrać tylko między maksymalny rozmiar 1 TB pojemności i 4 TB w przyrostach wynoszących 256 GB. Podczas tworzenia P11/P15, domyślna opcja magazynu o rozmiarze 1 TB jest wstępnie wybrane. W przypadku baz danych znajdujących się w jednym z obsługiwanych regionów można zwiększyć maksymalną magazynu do maksymalnie 4 TB dla nowej lub istniejącej pojedynczej bazy danych. Inne regiony nie można zwiększyć maksymalny rozmiar, powyżej 1 TB. Cena nie ulega zmianie, gdy wybierzesz 4 TB uwzględnionego magazynu.
-- Jeśli maksymalny rozmiar bazy danych ma wartość większą niż 1 TB, następnie nie można zmienić do 1 TB, nawet jeśli rzeczywisty magazyn używany znajduje się poniżej 1 TB. W związku z tym, nie można obniżyć P11 lub P15 o maksymalnym rozmiarze większym niż 1 TB na wartość 1 TB P11, 1 TB P15 lub obniżenia wydajności warstwy, takich jak P1 P6). To ograniczenie dotyczy także przywracania i kopii scenariusze, w tym punkcie w czasie, przywracanie geograficzne długo-długoterminowa kopia zapasowa zachowywania i kopii bazy danych. Po skonfigurowaniu bazy danych o maksymalnym rozmiarze większym niż 1 TB, wszystkie operacje przywracania tej bazy danych muszą być uruchamiane w P11/P15 o maksymalnym rozmiarze większym niż 1 TB.
+- Jeśli maksymalny rozmiar bazy danych ma wartość większą niż 1 TB, następnie nie można zmienić do 1 TB, nawet jeśli rzeczywisty magazyn używany znajduje się poniżej 1 TB. W związku z tym nie można obniżyć P11 lub P15 o maksymalnym rozmiarze większym niż 1 TB do 1 TB P11 lub TB P15 1 lub niższych obliczenia rozmiaru, na przykład P1 P6). To ograniczenie dotyczy także przywracania i kopii scenariusze, w tym punkcie w czasie, przywracanie geograficzne długo-długoterminowa kopia zapasowa zachowywania i kopii bazy danych. Po skonfigurowaniu bazy danych o maksymalnym rozmiarze większym niż 1 TB, wszystkie operacje przywracania tej bazy danych muszą być uruchamiane w P11/P15 o maksymalnym rozmiarze większym niż 1 TB.
 - Aktywna replikacja geograficzna scenariuszach:
-   - Definiowanie relacji replikacji geograficznej: Jeśli podstawowa baza danych jest P11 lub P15, secondary(ies) również musi być P11 lub P15; niższych warstwach wydajności zostały odrzucone jako pomocnicze bazy danych, ponieważ nie może obsługiwać więcej niż 1 TB.
+   - Definiowanie relacji replikacji geograficznej: Jeśli podstawowa baza danych jest P11 lub P15, secondary(ies) również musi być P11 lub P15; niższe rozmiarów wystąpień obliczeniowych są odrzucane jako pomocnicze bazy danych, ponieważ nie może obsługiwać więcej niż 1 TB.
    - Uaktualnianie podstawowej bazy danych w relacji replikacji geograficznej: Zmiana maksymalnego rozmiaru na więcej niż 1 TB w podstawowej bazie danych wyzwala tę samą zmianę w pomocniczej bazie danych. Obu uaktualnień musi zakończyć się powodzeniem, zmiany na serwerze podstawowym zaczęły obowiązywać. Region dla opcji więcej niż 1 TB ograniczenia. Jeśli pomocniczy znajduje się w regionie, który nie obsługuje więcej niż 1 TB, podstawowy nie jest uaktualniany.
 - Za pomocą usługi Import/Export dla obciążenia baz danych P11/P15, za pomocą więcej niż 1 TB nie jest obsługiwana. Użyj SqlPackage.exe do [zaimportować](sql-database-import.md) i [wyeksportować](sql-database-export.md) danych.
 

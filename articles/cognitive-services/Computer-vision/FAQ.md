@@ -1,89 +1,91 @@
 ---
-title: Często zadawane pytania dotyczące wizji komputera interfejsu API | Dokumentacja firmy Microsoft
-description: Odpowiedzi na często zadawane pytania dotyczące interfejsu API przetwarzania obrazów komputera w usługach kognitywnych firmy Microsoft.
+title: Często zadawane pytania dotyczące interfejsu API przetwarzania obrazów
+titlesuffix: Azure Cognitive Services
+description: Uzyskaj odpowiedzi na często zadawane pytania dotyczące interfejsu API przetwarzania obrazów w usługach Azure Cognitive Services.
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/26/2017
 ms.author: kefre
-ms.openlocfilehash: 5c862dd2fb26a005f4e785673a4e9358ecf9286f
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 5c0a4e981a290b9a758c8401a75e546c61618b45
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346980"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983905"
 ---
-# <a name="computer-vision-api-frequently-asked-questions"></a>Wizja komputera interfejsu API często zadawane pytania
-### <a name="if-you-cant-find-answers-to-your-questions-in-this-faq-try-asking-the-computer-vision-api-community-on-stackoverflowhttpsstackoverflowcomquestionstaggedproject-oxfordormicrosoft-cognitive-or-contact-help-and-support-on-uservoicehttpscognitiveuservoicecom"></a>Jeśli nie możesz znaleźć odpowiedzi na pytania w tych często zadawanych PYTAŃ, spróbuj pytaniem społeczności API przetwarzania obrazów komputera na [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) lub skontaktuj się z [Pomoc i obsługa techniczna na UserVoice](https://cognitive.uservoice.com/)
+# <a name="computer-vision-api-frequently-asked-questions"></a>Interfejs API przetwarzania obrazów — często zadawane pytania
+
+### <a name="if-you-cant-find-answers-to-your-questions-in-this-faq-try-asking-the-computer-vision-api-community-on-stackoverflowhttpsstackoverflowcomquestionstaggedproject-oxfordormicrosoft-cognitive-or-contact-help-and-support-on-uservoicehttpscognitiveuservoicecom"></a>Jeśli nie możesz znaleźć odpowiedzi na pytania w tym — często zadawane pytania, zadaj społeczności interfejs API przetwarzania obrazów na [StackOverflow](https://stackoverflow.com/questions/tagged/project-oxford+or+microsoft-cognitive) lub skontaktuj się z [Pomoc i obsługa techniczna w usłudze UserVoice](https://cognitive.uservoice.com/)
 
 -----
 
-**Pytanie**: *komputera wizji API do używania niestandardowych tagów można uczenia?  Na przykład chcę źródła danych w obrazach RAS cat uczenia AI, a następnie wartość rasy na żądanie AI.*
+**Pytanie**: *mogą uczyć się za pomocą tagów niestandardowych, interfejs API przetwarzania obrazów?  Na przykład chcę otrzymywać kanału informacyjnego w obrazach RAS cat szkolenie sztucznej Inteligencji, a następnie wartość na rynku emulatorowi w żądaniu sztucznej Inteligencji.*
 
-**Odpowiedzi**: Ta funkcja jest obecnie niedostępna. Jednak naszych inżynierów pracy można wyświetlić tej funkcji na komputerze wizji.
-
------
-
-**Pytanie**: *wizji komputer może być używane lokalnie bez połączenia z Internetem?*
-
-**Odpowiedzi**: obecnie nie oferujemy lokalnymi lub rozwiązania lokalnego.
+**Odpowiedź**: Ta funkcja jest obecnie niedostępna. Jednak nasi inżynierowie zajmujący się nad przenieść tej funkcji do przetwarzania obrazów.
 
 -----
 
-**Pytanie**: *języki są obsługiwane z wizji komputera?*
+**Pytanie**: *przetwarzania obrazów może być używany lokalnie, bez połączenia z Internetem?*
 
-**Odpowiedzi**: obsługiwane języki:
+**Odpowiedź**: obecnie nie oferujemy lokalną lub rozwiązania lokalnego.
+
+-----
+
+**Pytanie**: *które języki są obsługiwane przy użyciu przetwarzania obrazów?*
+
+**Odpowiedź**: obsługiwane języki:
 
 | | | Obsługiwane języki | | |
 |---------------- |------------------ |------------------ |--------------------------- |--------------------
-| Duński (da k)  | Niderlandzki (nl-NL)     | Polski           | Fiński (fi-FI)            |Francuski (fr-FR)
+| Duński (da k)  | Holenderski (nl-NL)     | Polski           | Fiński (fi-FI)            |Francuski (fr-FR)
 | Niemiecki (de-DE)  | Grecki (el-GR)     | Węgierski (hu-HU) | Włoski (it-IT)            | Japoński (ja-JP)
-| Koreański (ko-KR)  | Norweski (nb-NO) | Polski (pl-PL)    | Portugalski (pt-BR) (pt-PT) | Rosyjski (ru-RU)
+| Koreański (ko-KR)  | Norweski (nb nie) | Polski (pl-PL)    | Portugalski (pt-BR) (pt-PT) | Rosyjski (ru-RU)
 | Hiszpański (es-ES)   | Szwedzki (sv SV)     | Turecki (tr TU)   |                            |
 
 -----
 
-**Pytanie**: *wizji komputer może być używany do odczytu rejestracyjnych?*
+**Pytanie**: *przetwarzania obrazów może być użyte do odczytu talerzy licencji?*
 
-**Odpowiedzi**: API wizji zapewnia dobry wykrywanie tekstu z Rozpoznawania, ale nie jest obecnie zoptymalizowana dla rejestracyjnych. Firma Microsoft stale próbuje poprawy naszych usług i dodano Rozpoznawania automatycznego rozpoznawania płytkę licencji do naszej listy żądania funkcji.
-
------
-
-**Pytanie:** *języki są obsługiwane w przypadku rozpoznawania pisma ręcznego?*
-
-**Odpowiedzi**: obecnie jest obsługiwana tylko w języku angielskim.
+**Odpowiedź**: interfejs API przetwarzania zapewnia dobre wykrywania tekstu za pomocą oprogramowania OCR, ale nie jest obecnie zoptymalizowany dla rejestracyjnych. Firma Microsoft stale dążymy do poprawy naszych usług i dodaliśmy optyczne rozpoznawanie znaków rozpoznawania płytkę licencji automatycznie do naszej listy żądania funkcji.
 
 -----
 
-**Pytanie**: *rodzaje zapisywania powierzchni są obsługiwane w przypadku rozpoznawania pisma ręcznego?*
+**Pytanie:** *które języki są obsługiwane w przypadku rozpoznawania pisma ręcznego?*
 
-**Odpowiedzi**: technologii współpracuje z różnych rodzajów powierzchni, w tym tablic, oficjalny dokument i żółty notatki.
-
------
-
-**Pytanie**: *czas operacji rozpoznawania pisma ręcznego podąża?*
-
-**Odpowiedzi**: czas potrzebny jest zależna od długość tekstu. Dla dłuższych tekstów może potrwać kilka sekund. W związku z tym po zakończeniu operacji Rozpoznaj tekst odręcznie, może być konieczne oczekiwania, zanim będzie można pobrać wyników przy użyciu operacji Get odręcznie wynik operacji tekstu.
+**Odpowiedź**: aktualnie obsługiwana jest tylko język angielski.
 
 -----
 
-**Pytanie**: *jak tekst dojścia technologii rozpoznawania pisma ręcznego, wstawione na karetkę pośrodku wiersza?*
+**Pytanie**: *jakiego rodzaju pisania powierzchni są obsługiwane w przypadku rozpoznawania pisma ręcznego?*
 
-**Odpowiedzi**: takiego tekstu jest zwracana jako osobny wiersz przez operację rozpoznawania pisma ręcznego.
+**Odpowiedź**: technologia działa z różnymi rodzajami powierzchnie, w tym tablic, oficjalny dokument i żółty notatki.
 
 -----
 
-**Pytanie**: *jak technologię rozpoznawania pisma ręcznego obsługuje przekreślonym słowa lub wierszy?*
+**Pytanie**: *jak operacja rozpoznawania pisma ręcznego długo?*
 
-**Odpowiedzi**: Jeśli wyrazy są przekroczyła z wielu wierszy do renderowania ich nierozpoznawalną, operacja rozpoznawania pisma ręcznego nie zachowuje je. Jednak jeśli wyrazy są przekroczyła przy użyciu jednego wiersza, że przecięcia jest traktowany jako szumu i wyrazów wciąż uzyskać pobrana przez operacji rozpoznawania pisma ręcznego.
+**Odpowiedź**: ilość czasu, potrzebny jest zależna od długości tekstu. Dla dłuższych tekstów może potrwać kilka sekund. W związku z tym po zakończeniu operacji rozpoznawanie tekstu odręcznego, konieczne może być oczekiwania, zanim będzie można pobrać wyniki za pomocą operacji Pobierz odręcznego wynik operacji tekstu.
+
+-----
+
+**Pytanie**: *jakie tekst uchwyt technologii rozpoznawania pisma odręcznego, który został wstawiony przy użyciu daszek pośrodku linii?*
+
+**Odpowiedź**: takiego tekstu jest zwracana jako oddzielnych wierszach przez operację rozpoznawania pisma ręcznego.
+
+-----
+
+**Pytanie**: *jak technologii rozpoznawania pisma ręcznego obsługuje przekreślonym słowa lub wierszy?*
+
+**Odpowiedź**: Jeśli słowa zostanie przekroczony z wieloma wierszami do renderowania ich nierozpoznawalną, operacja rozpoznawania pisma ręcznego nie je pobrać. Jednak jeśli słowa zostanie przekroczony przy użyciu pojedynczego wiersza, tego przejścia, jest traktowany jako hałasu i wyrazy nadal uzyskać odebrane przez operację rozpoznawania pisma ręcznego.
 
 -----
 
 **Pytanie**: *orientacji tekstu, jakie są obsługiwane w przypadku technologii rozpoznawania pisma ręcznego?*
 
-**Odpowiedzi**: tekst ukierunkowane pod kątem programu do około 30 stopni do 40 stopni może pobrać pobrana przez operację rozpoznawania pisma ręcznego.
+**Odpowiedź**: tekst o orientacji pod kątem programu do około 30 stopni na stopnie 40 Pobierz odebrane przez operację rozpoznawania pisma ręcznego.
 
 -----

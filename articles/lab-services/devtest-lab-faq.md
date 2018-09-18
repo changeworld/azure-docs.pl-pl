@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 08b27acc2d3114486b86aa0c311b9396c0bed48f
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 370700f8d146dd626e6e13deceb09dcaea34a9f3
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297319"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983954"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs — często zadawane pytania
 Uzyskaj odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azure DevTest Labs.
@@ -172,7 +172,7 @@ Działanie w środowisku laboratoryjnym w witrynie Azure portal, można usunąć
     # Get the VMs from that lab.
     $labVMs = Get-AzureRmResource | Where-Object {
               $_.ResourceType -eq 'microsoft.devtestlab/labs/virtualmachines' -and
-              $_.ResourceName -like "$($lab.ResourceName)/*"}
+              $_.Name -like "$($lab.Name)/*"}
 
     # Delete the VMs.
     foreach($labVM in $labVMs)

@@ -1,81 +1,59 @@
 ---
-title: Podstawy zarządzania tożsamościami na platformie Azure | Microsoft Docs
-description: Tożsamości w chmurze są teraz najlepszym sposobem na zachowanie kontroli i wglądu w to, w jaki sposób i kiedy użytkownicy uzyskują dostęp do firmowych danych i aplikacji.
-keywords: ''
+title: Jakie są podstawowe informacje dotyczące zarządzania tożsamościami i dostępem z platformą Azure? — Usługa azure Active Directory | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat możliwości zaawansowaną ochronę i dodatkowe narzędzia, które są dostępne w wersji usługi Azure Active Directory — wersja Premium.
+services: active-directory
 author: eross-msft
 manager: mtillman
-ms.reviewer: jsnow
 ms.author: lizross
-ms.date: 08/07/2018
-ms.topic: overview
-ms.prod: ''
 ms.service: active-directory
 ms.component: fundamentals
-ms.technology: ''
-ms.assetid: ''
+ms.workload: identity
+ms.topic: conceptual
+ms.date: 09/13/2018
+ms.reviewer: jsnow
 ms.custom: it-pro
-ms.openlocfilehash: 327cecd129befb56c33d7fcf2d59ee5b58a18549
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
-ms.translationtype: HT
+ms.openlocfilehash: f7baa29c77ae4af9813bfc755a39cc07288a3ad2
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42022562"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734679"
 ---
-# <a name="fundamentals-of-azure-identity-management"></a>Podstawy zarządzania tożsamościami na platformie Azure
-
-Coraz więcej firmowych zasobów cyfrowych jest używanych poza siecią firmową, w chmurze i na urządzeniach, dlatego posiadanie niezawodnego rozwiązania do zarządzania dostępem i tożsamościami w chmurze staje się koniecznością. Tożsamości w chmurze są teraz najlepszym sposobem na zachowanie kontroli i wglądu w to, w jaki sposób i kiedy użytkownicy uzyskują dostęp do firmowych danych i aplikacji.
-
-Firma Microsoft już od ponad dziesięciu lat zabezpiecza tożsamości w chmurze, a teraz dzięki usłudze [Azure Active Directory (AD)](active-directory-whatis.md) te systemy zabezpieczeń są dostępne również dla Ciebie. Dzięki usłudze Azure AD administratorzy w przedsiębiorstwach mogą łatwo zwiększyć poziom odpowiedzialności użytkowników i administratorów, korzystając z lepszych zabezpieczeń i funkcji zarządzania niż kiedykolwiek wcześniej.
-
-Usługa Azure AD — wersja Premium to rozwiązanie do zarządzania tożsamościami i dostępem w chmurze zawierające zaawansowane funkcje zabezpieczeń, które umożliwiają korzystanie z jednej bezpiecznej tożsamości dla wszystkich aplikacji, ochrony tożsamości (rozszerzoną dzięki systemowi [Microsoft Intelligence Security Graph](https://www.microsoft.com/security/intelligence)) oraz technologii Privileged Identity Management. To nie jest po prostu kolejne narzędzie do monitorowania i raportowania. Usługa Azure AD — wersja Premium chroni tożsamości użytkowników w czasie rzeczywistym i umożliwia tworzenie opartych na ryzyku zasad elastycznego dostępu, aby chronić dane organizacji.
+# <a name="what-are-the-fundamentals-of-azure-identity-and-access-management"></a>Jakie są podstawowe informacje dotyczące zarządzania tożsamościami i dostępem z platformą Azure?
+Usługa Azure AD Premium jest oparte na chmurze tożsamościami i dostępem rozwiązaniem do zarządzania, z możliwościami zaawansowaną ochronę. Te zaawansowane funkcje pomagają bezpieczna tożsamość dla wszystkich aplikacji, ochrony tożsamości (rozszerzony za pomocą [programu Microsoft graph security intelligence](https://www.microsoft.com/security/intelligence)), i [Privileged Identity Management (PIM)](../privileged-identity-management/pim-configure.md). Usługa Azure AD pomaga w zabezpieczeniu tożsamości użytkowników w czasie rzeczywistym, ułatwiając tworzenie opartych na ryzykach zasady dostępu adaptacyjne wokół danych Twojej organizacji.
 
 Obejrzyj ten krótki film wideo, aby zapoznać się z omówieniem zarządzania tożsamościami i ochrony tożsamości w usłudze Azure AD:
 >[!VIDEO https://www.youtube.com/embed/9LGIJ2-FKIM]
 
-Firma Microsoft zapewnia nie tylko tożsamość umożliwiającą wszechstronny dostęp, ale również zestaw narządzi do automatyzacji, ochrony i zarządzania systemami IT w Twojej organizacji. Mimo dostępności chmury obliczeniowej nadal istnieje potrzeba wykonywania i kontrolowania zadań IT, takich jak obsługa zgłoszeń do działu pomocy technicznej w celu resetowania haseł użytkowników, zarządzanie grupami użytkowników oraz żądania aplikacji. Sytuację jeszcze bardziej komplikuje fakt, że pracownicy obecnie korzystają w pracy z własnych urządzeń i łatwo dostępnych aplikacji SaaS, co sprawia, że utrzymanie kontroli nad ich aplikacjami we wszystkich firmowych centrach danych i na publicznych platformach w chmurze staje się jeszcze większym wyzwaniem.
+Usługa Azure AD udostępnia również zestaw narzędzi, które mogą pomóc w bezpieczny, automatyzacji i zarządzania środowiskiem, w tym resetowaniem haseł, zarządzanie użytkownikami i grupami i żądania aplikacji. Usługa Azure AD może również ułatwić zarządzanie urządzeń należących do użytkowników i dostępu i kontroli nad oprogramowania jako usługi (SaaS).
 
-[!INCLUDE [identity](../../../includes/azure-ad-licenses.md)]
+Aby uzyskać więcej informacji o kosztach wersje usługi Azure Active Directory Premium systemu Azure i powiązane z nim narzędzia, zobacz [cennik usługi Azure Active Directory](https://azure.microsoft.com/pricing/details/active-directory/).
 
 ## <a name="connect-on-premises-active-directory-with-azure-ad-and-office-365"></a>Łączenie lokalnej usługi Active Directory z usługą Azure AD oraz Office 365
-Organizacje, które dużo zainwestowały w lokalną usługę Active Directory, mogą uzupełnić te inwestycje o chmurę, integrując lokalne katalogi z usługą Azure AD w modelu [hybrydowego zarządzania tożsamościami](https://aka.ms/aadframework). Dzięki temu użytkownicy mogą pracować wydajniej, korzystając z jednej tożsamości przy uzyskiwaniu dostępu do zasobów, bez względu na lokalizację. To umożliwia użytkownikom i organizacjom korzystanie z logowania jednokrotnego w celu uzyskania dostępu zarówno do zasobów lokalnych, jak i usług w chmurze, na przykład Office 365.
+Rozszerzanie wdrożenia usługi Active Directory środowiska lokalnego do chmury przez integrowanie katalogów lokalnych z usługą Azure AD za pomocą [hybrydowe Zarządzanie tożsamościami](https://aka.ms/aadframework). [Program Azure AD Connect](../connect/active-directory-aadconnect.md) zapewnia tej integracji przyznawanie użytkownikom jednej tożsamości i logowania jednokrotnego (SSO), dostęp do zasobów lokalnych i usług w chmurze, takich jak Office 365.
 
-Program [Azure AD Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) to jedyne narzędzie potrzebne do wykonania integracji. Program Azure AD Connect posiada funkcje umożliwiające obsługę synchronizacji tożsamości i zastępuje starsze wersje narzędzi do integracji tożsamości, takie jak DirSync i Azure AD Sync. Program Azure AD Connect umożliwia zarządzanie tożsamościami i synchronizację zasobów lokalnych z usługą Azure AD za pośrednictwem następujących funkcji:
+Program Azure AD Connect zastępuje starsze wersje narzędzi do integracji tożsamości, takie jak DirSync i Azure AD Sync, pomagając zgodnie z potrzebami synchronizacji tożsamości między lokalną i usługą Azure AD. Synchronizacja usługi Azure AD Connect jest włączana za pomocą:
 
-- Synchronizacja — ten składnik odpowiada za tworzenie użytkowników, grup i innych obiektów. Odpowiada także za zapewnienie zgodności informacji o tożsamości lokalnych użytkowników i grup z informacjami w chmurze. Można również włączyć funkcję zapisywania zwrotnego haseł, aby utrzymać synchronizację katalogów lokalnych, gdy użytkownik zaktualizuje swoje hasło w usłudze Azure AD.
-- Uwierzytelnianie — gdy usługa Azure AD to Twoja nowa warstwa kontroli, uwierzytelnianie stanowi podstawę dostępu w chmurze. Wybór właściwej metody uwierzytelniania to kluczowa decyzja podczas konfigurowania rozwiązania tożsamości hybrydowej usługi Azure AD. Zapoznaj się z [tym przewodnikiem](https://aka.ms/auth-options), aby wybrać opcję uwierzytelniania w chmurze (Synchronizacja skrótów haseł/Uwierzytelnianie przekazywane) lub uwierzytelniania federacyjnego (AD FS) w swojej organizacji.
-- Monitorowanie kondycji — składnik [Azure AD Connect Health](https://docs.microsoft.com/azure/active-directory/connect-health/active-directory-aadconnect-health) zapewnia zaawansowane monitorowanie z możliwością wyświetlania aktywności w centralnej lokalizacji w witrynie Azure Portal.
+- **Synchronizacja.** Odpowiedzialnych za tworzenie użytkowników, grup i innych obiektów. Jest również odpowiedzialny za upewnienie się, że informacje o tożsamości użytkowników w środowisku lokalnym odpowiada elementom w usłudze Azure AD. Włączanie zapisywania zwrotnego haseł pomaga również synchronizowanie katalogów lokalnych użytkowników zaktualizowania hasła w usłudze Azure AD.
+
+- uwierzytelnianie. Ważne jest wybranie metody uwierzytelniania w prawo, podczas konfigurowania Twojego rozwiązania tożsamości hybrydowej usługi Azure AD. Można wybrać uwierzytelnianie w chmurze (synchronizacji skrótów haseł / uwierzytelnianie przekazywane) lub uwierzytelnianie federacyjne (AD FS) w swojej organizacji. Aby uzyskać więcej informacji na temat dostępnych opcji, zobacz [wybierz metodę uwierzytelniania odpowiednie dla Twojego rozwiązania tożsamości hybrydowej usługi Azure Active Directory](https://aka.ms/auth-options).
+
+- **Monitorowanie kondycji.** Program Azure AD Connect Health oferuje funkcje monitorowania i centralnej lokalizacji w witrynie Azure portal, aby wyświetlić to działanie. Aby uzyskać więcej informacji, zobacz [Monitorowanie lokalnej infrastruktury do obsługi tożsamości i usług synchronizacji w chmurze](../connect-health/active-directory-aadconnect-health.md).
 
 ## <a name="increase-productivity-and-reduce-helpdesk-costs-with-self-service-and-single-sign-on-experiences"></a>Zwiększanie produktywności i obniżanie kosztów pomocy technicznej dzięki funkcjom samoobsługi i logowania jednokrotnego
+Użytkownicy zaoszczędzić czas, w których użytkownicy muszą jednej nazwy użytkownika i hasło, wraz ze spójnym środowiskiem na każdym urządzeniu. Użytkownicy oszczędzają czas, wykonując samoobsługi zadania, takie jak[zresetować zapomniane hasło](../user-help/active-directory-passwords-update-your-own-password.md) lub zażądać dostępu do aplikacji bez konieczności oczekiwania na pomocy od pomocy technicznej.
 
-Pracownicy są bardziej wydajni, gdy muszą zapamiętać tylko jedną nazwę użytkownika i jedno hasło oraz mają spójne środowisko pracy na każdym urządzeniu. Oszczędzają również czas, gdy mogą wykonywać zadania samodzielnie, na przykład [zresetować zapomniane hasło](https://docs.microsoft.com/azure/active-directory/active-directory-passwords) lub zażądać dostępu do aplikacji bez konieczności oczekiwania na pomoc techniczną.
+Wspieranie logowania jednokrotnego i spójne środowisko, usługi Azure AD [rozszerza usługi Active Directory w środowisku lokalnym](../connect/active-directory-aadconnect.md) do chmury, dzięki czemu Twoi użytkownicy mogli używać swoich podstawowego konta organizacyjnego dla swoich urządzeń przyłączonych do domeny firmy zasobów, i sieci web i aplikacji SaaS muszą korzystać wykonywane zadania. 
 
-Usługa Azure AD [rozszerza lokalną usługę Active Directory](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect) do chmury, umożliwiając użytkownikom korzystanie z podstawowego konta organizacji zarówno podczas korzystania z urządzeń przyłączonych do domeny i zasobów firmy, jak i wszelkich aplikacji internetowych i SaaS, których potrzebują do pracy. Użytkownicy nie muszą zapamiętywać kilku zestawów nazw użytkownika i haseł, a ponadto mogą automatycznie uzyskiwać (i tracić) dostęp do aplikacji na podstawie przynależności do grup w organizacji oraz tego, czy są pracownikami firmy. Możesz również kontrolować dostęp do aplikacji galerii lub własnych aplikacji lokalnych opracowanych i opublikowanych za pośrednictwem [serwera proxy aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started).
+Ponadto dostęp do aplikacji można automatycznie aprowizowana (lub cofanie aprowizacji) na podstawie członkostwa w grupach i stanu użytkownika, ułatwiając kontrola dostępu do aplikacji z galerii lub własnych aplikacji w środowisku lokalnym, które zostały opracowane i opublikowane za pośrednictwem [serwera Proxy aplikacji usługi Azure AD](../manage-apps/application-proxy.md).
 
-## <a name="manage-and-control-access-to-corporate-resources"></a>Kontrola dostępu do zasobów firmy i zarządzanie nim
-Rozwiązania do zarządzania tożsamościami i dostępem firmy Microsoft umożliwiają pracownikom działu IT ochronę dostępu do aplikacji i zasobów w firmowym centrum danych oraz w chmurze dzięki dodatkowym poziomom weryfikacji, takim jak [uwierzytelnianie wieloskładnikowe](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-whats-next) oraz [zasady dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-azure-portal). Monitorowanie podejrzanej aktywności przy użyciu zaawansowanych raportów zabezpieczeń, inspekcji i alertów umożliwia rozwiązywanie potencjalnych problemów z zabezpieczeniami.
+## <a name="manage-and-control-access-to-your-organizational-resources"></a>Zarządzanie i kontrola dostępu do zasobów organizacji
+Rozwiązania zarządzania tożsamościami i dostępem firmy Microsoft pomagają chronić dostęp do aplikacji i zasobów w centrum danych Twojej organizacji i w chmurze. To zarządzanie dostępem pomaga zapewnić dodatkowe poziomy sprawdzania poprawności, takich jak [uwierzytelnianie wieloskładnikowe](../authentication/concept-mfa-howitworks.md) i [zasady dostępu warunkowego](../conditional-access/overview.md). Monitorowania podejrzanych działań przez zaawansowane raportowanie zabezpieczeń, inspekcji, a alerty mogą także ułatwiają eliminowanie potencjalnych problemów z zabezpieczeniami.
 
-Zasady dostępu warunkowego w usłudze Azure AD — wersja Premium dają administratorom w przedsiębiorstwach możliwość tworzenia reguł dostępu opartych na zasadach dla wszelkich aplikacji połączonych z usługą Azure AD (aplikacji SaaS, niestandardowych aplikacji w chmurze i lokalnych aplikacji internetowych). Usługa Azure AD ocenia te zasady w czasie rzeczywistym i wymusza ich stosowanie zawsze wtedy, gdy użytkownik próbuje uzyskać dostęp do aplikacji. Zasady ochrony tożsamości platformy Azure umożliwiają automatyczne podjęcie działań po wykryciu podejrzanej aktywności. To na przykład blokowanie dostępu użytkownikom o wysokim ryzyku, wymuszanie uwierzytelniania wieloskładnikowego oraz resetowanie haseł użytkowników, jeśli istnieje podejrzenie, że poświadczenia zostały naruszone.
-
+Za pomocą zasad dostępu warunkowego w usłudze Azure AD — wersja Premium umożliwia tworzenie reguł na podstawie zasad dostępu dla dowolnej aplikacji platformy Azure podłączonej do usługi AD, takich jak aplikacje SaaS, niestandardowe aplikacje działające w chmurze lub lokalnie lub aplikacji sieci web). Usługa Azure AD ocenia reguły w czasie rzeczywistym, wymuszając ich zastosowanie zawsze, gdy użytkownik próbuje uzyskać dostęp do aplikacji. Zasady ochrony usługi Azure identity pozwalają automatycznie podejmuje działania (przez blokowanie dostępu, wymuszanie uwierzytelniania wieloskładnikowego lub resetowanie haseł użytkowników) Jeśli został odnaleziony podejrzanych działań.
 
 ## <a name="azure-active-directory-privileged-identity-management"></a>Azure Active Directory Privileged Identity Management
+[Privileged Identity Management (PIM)](../privileged-identity-management/pim-getting-started.md), dołączone do wersji usługi Azure Active Directory Premium 2, ułatwia odnajdowanie, ograniczanie i monitorowanie konta z uprawnieniami administracyjnymi oraz ich dostępu do zasobów w usłudze Azure Active Directory i innych Usługi online firmy Microsoft. Usługa PIM pomaga również administrowanie dostępu administracyjnego na żądanie dla dokładnego okres czasu, czego potrzebujesz, co oznacza, umożliwia administratorom żądania uwierzytelnienia Multi-Factor Authentication, tymczasowe podniesienia swoich uprawnień przez wstępnie skonfigurowany czas przed ich kont powrócić do stanu zwykłego użytkownika.
 
-Funkcja [Privileged Identity Management](https://docs.microsoft.com/azure/active-directory/active-directory-privileged-identity-management-getting-started), dostępna w ramach oferty Azure Active Directory — wersja Premium P2, umożliwia znajdowanie, ograniczanie i monitorowanie kont administratorów oraz ich dostępu do zasobów w usłudze Azure Active Directory oraz innych usługach online firmy Microsoft. Ułatwia ona również udzielanie dostępu administracyjnego na żądanie, dokładnie na taki czas, przez jaki jest potrzebny.
-
-Funkcja Privileged Identity Management może obsługiwać udzielanie uprawnień administratora na żądanie, tak aby administratorzy mogli żądać, pod warunkiem uwierzytelnienia wieloskładnikowego, tymczasowego podniesienia swoich uprawnień na określony czas, po którym ich konto wróci do stanu normalnego użytkownika.
-
-## <a name="benefits-of-azure-identity"></a>Korzyści z zarządzania tożsamościami na platformie Azure
-
-Dzięki zarządzaniu tożsamościami na platformie Azure możesz:
-
--   Utworzyć jedną tożsamość dla jednego użytkownika w całej firmie i zarządzać nią, synchronizując użytkowników, grupy i urządzenia dzięki programowi [Azure Active Directory Connect](https://docs.microsoft.com/azure/active-directory/connect/active-directory-aadconnect).
-
--   Zapewnić dostęp przy użyciu logowania jednokrotnego do aplikacji, w tym do tysięcy wstępnie zintegrowanych aplikacji SaaS, lub zapewnić bezpieczny dostęp zdalny do lokalnych aplikacji SaaS przy użyciu [serwera proxy aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/active-directory-application-proxy-get-started).
-
--   Zabezpieczyć dostęp do aplikacji przez wymuszenie [uwierzytelniania wieloskładnikowego](https://docs.microsoft.com/azure/multi-factor-authentication/multi-factor-authentication-whats-next) na podstawie zasad zarówno dla aplikacji lokalnych, jak i dla aplikacji w chmurze.
-
--   Zwiększyć produktywność użytkowników dzięki [samoobsługowemu resetowaniu haseł](https://docs.microsoft.com/azure/active-directory/active-directory-passwords) oraz żądaniom dostępu do aplikacji i grup przy użyciu portalu [MyApps](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-user-help).
-
--   Skorzystać z [wysokiej dostępności i niezawodności](https://docs.microsoft.com/azure/architecture/resiliency/high-availability-azure-applications) globalnego rozwiązania klasy korporacyjnej umożliwiającego zarządzanie tożsamościami i dostępem w chmurze.
-
-## <a name="next-steps"></a>Następne kroki
-[Dowiedz się więcej na temat rozwiązań do obsługi tożsamości na platformie Azure](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions)
+## <a name="next-steps"></a>Kolejne kroki
+Aby uzyskać więcej informacji na temat architektury usługi Azure AD, zobacz [co to jest architektura usługi Azure AD?](active-directory-architecture.md).

@@ -1,51 +1,49 @@
 ---
-title: Genomics:How firmy Microsoft, aby zgłosić żądanie pomocy technicznej | Dokumentacja firmy Microsoft
+title: 'Microsoft Genomics: Jak zgłosić żądanie pomocy technicznej | Dokumentacja firmy Microsoft'
 titleSuffix: Azure
-description: Dowiedz się więcej na temat plików biletu pomocy technicznej
-keywords: Rozwiązywanie problemów, błąd, debugowanie, pomocy technicznej
-services: microsoft-genomics
+description: W tym omówieniu opisano jak zgłosić żądanie pomocy technicznej, aby skontaktować się z Microsoft Genomics. Może to być przydatne, jeśli nie jest możliwe w celu rozwiązania zgłoszonego problemu za pomocą przewodnik rozwiązywania problemów i często zadawane pytania.
+keywords: Rozwiązywanie problemów, błąd, debugowanie, obsługa
+services: genomics
 author: grhuynh
-manager: jhubbard
-editor: jasonwhowell
+manager: cgronlun
 ms.author: grhuynh
-ms.service: microsoft-genomics
-ms.workload: genomics
+ms.service: genomics
 ms.topic: article
 ms.date: 05/23/2018
-ms.openlocfilehash: b50de691c9ac6085a416405ece600afcb5575e92
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: d5e33f5b22012b297cdceacbe38425934f0f65b4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655492"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734373"
 ---
-# <a name="how-to-contact-microsoft-genomics-for-support"></a>Sposób kontaktu z Genomics Microsoft pomocy technicznej
-Ten przegląd zawiera opis sposobu zgłosić żądanie pomocy technicznej do kontaktowania się z Genomics firmy Microsoft. Może to być przydatne, jeśli nie jesteś w stanie Rozwiązywanie problemów przy użyciu problem [przewodnik rozwiązywania problemów](troubleshooting-guide-genomics.md) lub [— często zadawane pytania](frequently-asked-questions-genomics.md). 
+# <a name="how-to-contact-microsoft-genomics-for-support"></a>Sposobu kontaktu z firmą Microsoft Genomics, pomocy technicznej
+W tym omówieniu opisano jak zgłosić żądanie pomocy technicznej, aby skontaktować się z Microsoft Genomics. Może to być przydatne, jeśli nie jesteś w stanie Rozwiązywanie problemów przy użyciu problem [przewodnik rozwiązywania problemów z](troubleshooting-guide-genomics.md) lub [— często zadawane pytania](frequently-asked-questions-genomics.md). 
 
 
-## <a name="file-a-support-ticket-through-the-azure-portal"></a>Plik biletu pomocy technicznej za pośrednictwem portalu Azure
-Po pierwsze Zaloguj się do konta platformy Azure w portalu Azure. Kliknij znak zapytania w prawym górnym rogu i wybierz polecenie `Help + support`.
+## <a name="file-a-support-ticket-through-the-azure-portal"></a>Utwórz bilet pomocy technicznej za pośrednictwem witryny Azure portal
+Najpierw zaloguj się do konta platformy Azure w witrynie Azure portal. Kliknij znak zapytania w prawym górnym rogu i wybierz pozycję `Help + support`.
 
-![Skontaktuj się z pomocą techniczną w portalu Azure](./media/file-support-ticket/genomics-contact-support.png "się z pomocą techniczną w portalu Azure") 
+![Skontaktuj się z działem pomocy technicznej w witrynie Azure portal](./media/file-support-ticket/genomics-contact-support.png "się z pomocą techniczną w witrynie Azure portal") 
 
 
 
 Następnie wybierz opcję `New support request`. 
 
-![Nowe żądanie pomocy technicznej](./media/file-support-ticket/new-support-request.png "nowy obsługuje żądania") 
+![Nowe żądanie pomocy technicznej](./media/file-support-ticket/new-support-request.png "nowe żądanie obsługi") 
 
-Wypełnianie `Basics`, takie jak `Issue type` i `Subscription`. Wybierz najbardziej odpowiedniego `Issue type` do problem, na przykład na ilustracji poniżej, `Technical` została wybrana. Należy wybrać `Microsoft Genomics` jako odpowiedniej usługi.  `Microsoft Genomics` zostaną wyświetlone w obszarze `Intelligence and Analytics` kategorii.   Po wybraniu `Microsoft Genomics`, możesz również jest proszony o podanie Twojej `Support plan` typu.
+Wypełnij `Basics`, w tym `Issue type` i `Subscription`. Wybierz najbardziej odpowiedniego `Issue type` problem; jako przykład na poniższej ilustracji `Technical` został wybrany. Pamiętaj o wybraniu `Microsoft Genomics` jako odpowiednie usługi.  `Microsoft Genomics` zostaną wyświetlone w obszarze `Intelligence and Analytics` kategorii.   Po wybraniu `Microsoft Genomics`, możesz również jest proszony o podanie Twojej `Support plan` typu.
 
-![Obsługuje żądania podstawy](./media/file-support-ticket/support-request-basics.png "podstawy żądania obsługi")
+![Obsługuje żądania podstawy](./media/file-support-ticket/support-request-basics.png "podstawy żądania pomocy technicznej")
 
 
-Następnie Dodaj szczegóły problemu. Narzędzie żądania również połączy się z istniejącą dokumentacji, które mogą być pomocne w celu. W tym przykładzie problem jest związany `Genomics keys`, ale inne opcje są także dostępne.
+Następnie dodaj szczegółowe informacje o problemie. Narzędzia żądania także łączenie się z istniejącą dokumentacją, które mogą być pomocne ułatwić. W tym przykładzie problem jest związany z `Genomics keys`, ale również jest dostępnych kilka innych opcji.
 
-![Problem żądania pomocy technicznej](./media/file-support-ticket/support-request-problem.png "problem żądania obsługi")
+![Problem podczas żądania pomocy technicznej](./media/file-support-ticket/support-request-problem.png "problem żądania pomocy technicznej")
 
-Ostatnio Dodaj swoje informacje kontaktowe i wybierz `Create` u dołu ekranu, aby przesłać żądanie pomocy technicznej.
+Ostatnie Dodaj swoje informacje kontaktowe, a następnie wybierz pozycję `Create` u dołu ekranu w celu przesłania żądania pomocy technicznej.
 
-![Obsługuje żądania, skontaktuj się z pomocą](./media/file-support-ticket/support-request-contact.png "kontakt z działem pomocy technicznej żądania")
+![Obsługuje żądania, skontaktuj się z pomocą](./media/file-support-ticket/support-request-contact.png "żądania pomocy technicznej skontaktuj się z")
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule przedstawiono sposób przesłać żądanie obsługi. Można także rozwiązać typowe problemy dotyczące korzystania z naszych [— często zadawane pytania](frequently-asked-questions-genomics.md) i naszych [przewodnik rozwiązywania problemów](troubleshooting-guide-genomics.md). 
+W tym artykule przedstawiono sposób przesłać żądanie pomocy technicznej. Można również rozwiązać typowe problemy przy użyciu naszego [— często zadawane pytania](frequently-asked-questions-genomics.md) i naszej [przewodnik rozwiązywania problemów z](troubleshooting-guide-genomics.md). 

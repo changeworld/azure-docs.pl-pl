@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/28/2017
-ms.openlocfilehash: bc1f1dd577231f5b22474f6cd3dc622480209dd9
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 1a7fcc11bf1b98d5feaeae07264e556acce2b14b
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042922"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736086"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-debug-spark-applications-remotely-in-hdinsight-through-vpn"></a>Debugowanie aplikacji Spark zdalnie w HDInsight za pośrednictwem sieci VPN przy użyciu zestawu narzędzi platformy Azure dla środowiska IntelliJ
 
@@ -132,7 +132,7 @@ Firma Microsoft zaleca również utworzyć klaster Apache Spark w usłudze Azure
     Aby dodać te pliki do projektu, skopiuj je w obszarze **/src** folderów w drzewie Twojego projektu, na przykład `<your project directory>\src`.
 1. Aktualizacja `core-site.xml` plik, aby wprowadzić następujące zmiany:
 
-   a. Zastąp zaszyfrowany klucz. `core-site.xml` Plik zawiera zaszyfrowany klucz konta magazynu skojarzonego z klastrem. W `core-site.xml` pliku, który został dodany do projektu, Zamień na klucz rzeczywisty magazyn skojarzony z domyślnego konta magazynu zaszyfrowanego klucza. Aby uzyskać więcej informacji, zobacz [zarządzanie kluczami dostępu do magazynu](../../storage/common/storage-create-storage-account.md#manage-your-storage-account).
+   a. Zastąp zaszyfrowany klucz. `core-site.xml` Plik zawiera zaszyfrowany klucz konta magazynu skojarzonego z klastrem. W `core-site.xml` pliku, który został dodany do projektu, Zamień na klucz rzeczywisty magazyn skojarzony z domyślnego konta magazynu zaszyfrowanego klucza. Aby uzyskać więcej informacji, zobacz [zarządzanie kluczami dostępu do magazynu](../../storage/common/storage-account-manage.md#access-keys).
 
            <property>
                  <name>fs.azure.account.key.hdistoragecentral.blob.core.windows.net</name>

@@ -4,28 +4,43 @@ description: W tym artykule opisano, jak uzyskiwać dokładniejsze oceny za pomo
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 06/19/2018
+ms.date: 09/17/2018
 ms.author: raynew
-ms.openlocfilehash: 37c4ce8638c8f0481151449317d6cd387b61b256
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 4f5ab4565191b38c07b2071609a57db2525860e3
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39622902"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733418"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Uściślanie zawartości grupy za pomocą mapowania zależności grupy
 
-W tym artykule opisano Uściślanie zawartości grupy przez wizualizację zależności dla wszystkich maszyn w grupie. Ta metoda jest zazwyczaj używana, gdy zajdzie potrzeba doprecyzowania członkostwa dla istniejącej grupy przez krzyżowe sprawdzanie zależności między grupami, przed uruchomieniem oceny. Rafinacja grupy za pomocą wizualizacji zależności można skutecznie ułatwi zaplanowanie migracji do Azure.You można wykryć wszystkie współzależne systemy, które chcesz zmigrować razem. Ułatwia on upewnij się, że nic nie pozostawione awarii dziwnego, że nie występują podczas migracji na platformę Azure. 
+W tym artykule opisano Uściślanie zawartości grupy przez wizualizację zależności dla wszystkich maszyn w grupie. Ta metoda jest zazwyczaj używana, gdy zajdzie potrzeba doprecyzowania członkostwa dla istniejącej grupy przez krzyżowe sprawdzanie zależności między grupami, przed uruchomieniem oceny. Rafinacja grupy za pomocą wizualizacji zależności mogą pomóc efektywnego planowania migracji do platformy Azure. Może odnajdywać wszystkie współzależne systemy, które chcesz zmigrować razem. Ułatwia on upewnij się, że nic nie pozostawione awarii dziwnego, że nie występują podczas migracji na platformę Azure.
 
 
 > [!NOTE]
 > Grupy, dla których chcesz zwizualizować zależności nie powinien zawierać więcej niż 10 maszyny. Jeśli masz więcej niż 10 maszyn w grupie, firma Microsoft zaleca, aby podzielić ją na mniejszych grup, aby korzystać z funkcji wizualizacji zależności.
 
 
-# <a name="prepare-the-group-for-dependency-visualization"></a>Przygotowania grupy do wizualizacji zależności
-Aby wyświetlić zależności grupy, musisz pobrać i zainstalować agentów na każdym komputerze w środowisku lokalnym, który jest częścią grupy. Ponadto w przypadku maszyn bez łączności internetowej musisz pobrać i zainstalować [bramy pakietu OMS](../log-analytics/log-analytics-oms-gateway.md) na nich.
+## <a name="prepare-for-dependency-visualization"></a>Przygotowanie do wizualizacji zależności
+Usługa Azure Migrate korzysta z rozwiązania mapy usługi w usłudze Log Analytics, aby umożliwić wizualizacja zależności maszyn.
+
+### <a name="associate-a-log-analytics-workspace"></a>Skojarzyć obszar roboczy usługi Log Analytics
+Aby korzystać z wizualizacji zależności, należy skojarzyć obszar roboczy usługi Log Analytics, nowej lub istniejącej z projektem migracji platformy Azure. Możesz tworzyć lub dołączyć obszaru roboczego w tej samej subskrypcji, w której jest tworzony projekt migracji.
+
+- Aby dołączyć obszar roboczy usługi Log Analytics do projektu, w **Przegląd**, przejdź do **Essentials** części projektu, kliknij przycisk **wymaga konfiguracji**
+
+    ![Skojarzyć obszar roboczy usługi Log Analytics](./media/concepts-dependency-visualization/associate-workspace.png)
+
+- Gdy tworzysz nowy obszar roboczy, musisz określić nazwę obszaru roboczego. Obszar roboczy zostanie utworzony w tej samej subskrypcji co projekt migracji i region, w tym samym [lokalizacja geograficzna platformy Azure](https://azure.microsoft.com/global-infrastructure/geographies/) jako projekt migracji.
+- **Użyj istniejącej** opcji wyświetla tylko te obszary robocze, które są tworzone w regionach, w których jest dostępna usługa Service Map. Jeśli masz obszar roboczy w regionie, w których nie jest dostępna usługa Service Map, nie będzie ono wyświetlane w polu listy rozwijanej.
+
+> [!NOTE]
+> Nie można zmienić obszar roboczy skojarzony z projektem migracji.
 
 ### <a name="download-and-install-the-vm-agents"></a>Pobieranie i instalowanie agentów maszyny wirtualnej
+Aby wyświetlić zależności grupy, musisz pobrać i zainstalować agentów na każdym komputerze w środowisku lokalnym, który jest częścią grupy. Ponadto w przypadku maszyn bez łączności internetowej musisz pobrać i zainstalować [bramy pakietu OMS](../log-analytics/log-analytics-oms-gateway.md) na nich.
+
 1. W **Przegląd**, kliknij przycisk **Zarządzaj** > **grup**, przejdź do wymaganej grupy.
 2. Na liście maszyn wirtualnych w **agenta zależności** kolumny, kliknij przycisk **wymaga instalacji** Aby uzyskać instrukcje dotyczące sposobu pobierania i instalowania agentów.
 3. Na **zależności** strony, Pobierz i zainstaluj program Microsoft Monitoring Agent (MMA) i agenta zależności na każdej maszynie Wirtualnej, która jest częścią grupy.
@@ -37,8 +52,8 @@ Aby zainstalować agenta na komputerze Windows:
 
 1. Kliknij dwukrotnie pobranego agenta.
 2. Na **stronie powitalnej** kliknij przycisk **Dalej**. Na stronie **Postanowienia licencyjne** kliknij przycisk **Zgadzam się**, aby zaakceptować warunki licencji.
-3. W **Folder docelowy**, zachować lub zmienić domyślny folder instalacji > **dalej**. 
-4. W **opcje instalacji agenta**, wybierz opcję **usługi Azure Log Analytics** > **dalej**. 
+3. W **Folder docelowy**, zachować lub zmienić domyślny folder instalacji > **dalej**.
+4. W **opcje instalacji agenta**, wybierz opcję **usługi Azure Log Analytics** > **dalej**.
 5. Kliknij przycisk **Dodaj** Aby dodać nowy obszar roboczy usługi Log Analytics. Wklej identyfikator obszaru roboczego i klucz, który został skopiowany z portalu. Kliknij przycisk **Dalej**.
 
 
@@ -66,7 +81,7 @@ Agenci zainstalowani na wszystkich komputerach w grupie możesz wizualizować za
 3. Mapa zależności dla grupy zawiera następujące informacje:
     - Dla ruchu przychodzącego (klientów) oraz połączenia wychodzące TCP (serwery), do i z wszystkich maszyn, które są częścią grupy
         - Zależnych maszyn, które nie mają zainstalowany agent MMA i zależności są pogrupowane według numerów portów
-        - Maszynom dependenct programu MMA i agenta zależności zainstalowane są wyświetlane jako oddzielne pola 
+        - Zależnych maszyn, które mają programu MMA i zainstalować agenta zależności są wyświetlane jako oddzielne pola
     - Procesy uruchomione na maszynie, możesz rozwinąć każde pole maszyny do wyświetlania procesów
     - Właściwości, takie jak w pełni kwalifikowanej nazwy domeny, System operacyjny i każdej maszyny, itp. adres MAC, możesz kliknąć pole każdej maszyny w taki sposób, aby wyświetlić te szczegóły
 

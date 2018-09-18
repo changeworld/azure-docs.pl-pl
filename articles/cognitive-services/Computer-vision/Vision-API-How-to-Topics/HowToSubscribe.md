@@ -1,20 +1,21 @@
 ---
-title: Uzyskiwanie kluczy subskrypcji dla interfejsu API przetwarzania obrazów | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można pobrać kluczy subskrypcji dla wywołań interfejsu API przetwarzania obrazów w usługach Cognitive Services.
+title: Uzyskiwanie kluczy subskrypcji dla interfejsu API przetwarzania obrazów
+titlesuffix: Azure Cognitive Services
+description: Dowiedz się, jak można pobrać kluczy subskrypcji dla wywołań interfejsu API przetwarzania obrazów w usługach Azure Cognitive Services.
 services: cognitive-services
 author: KellyDF
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
 ms.topic: article
 ms.date: 05/19/2017
 ms.author: kefre
-ms.openlocfilehash: 682266df9e1a1f8209904697358d10bbaa633cf1
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: db4d589bb0c7611e632a90f2174ad8e9c415bf6a
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35760248"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985426"
 ---
 # <a name="how-to-obtain-subscription-keys"></a>Jak uzyskiwanie kluczy subskrypcji
 
@@ -41,4 +42,4 @@ Jeśli nie pamiętasz region związane z kluczem subskrypcji po uzyskaniu klucza
 
 ### <a name="related-links"></a>Linki pokrewne:
 
-* [Opcje cenowe interfejsów API usługi Microsoft Cognitive](https://azure.microsoft.com/pricing/details/cognitive-services/)
+* [Opcje cenowe interfejsów API usług Azure Cognitive Services](https://azure.microsoft.com/pricing/details/cognitive-services/)

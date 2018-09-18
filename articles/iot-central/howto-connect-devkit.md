@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ea9ff8f93ede3b9ec5e7eed83c6049b0c23de7e8
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 94de5566db2395a3daf24c99a43cca6853e12cce
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205463"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736975"
 ---
 # <a name="connect-an-mxchip-iot-devkit-device-to-your-azure-iot-central-application"></a>Podłącz urządzenie z systemem zestawu deweloperskiego IoT Mxchip z aplikacją usługi Azure IoT Central
 
@@ -43,26 +43,34 @@ Można znaleźć szczegółowe informacje o konfiguracji [Szczegóły szablonu z
 
 ## <a name="add-a-real-device"></a>Dodawanie rzeczywistego urządzenia
 
-W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **zestawu deweloperskiego** szablon urządzenia i zanotować parametry połączenia urządzenia. Aby uzyskać więcej informacji, zobacz [dodać rzeczywistego urządzenia do aplikacji usługi Azure IoT Central](tutorial-add-device.md).
+W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **zestawu deweloperskiego** szablon urządzenia i zanotować szczegółów połączenia urządzeń (**identyfikator zakresu, identyfikator urządzenia i podstawowego klucza**).
+
+1. Dodaj **rzeczywistego urządzenia** z Device Explorer kliknij **+ nowy > rzeczywistych** dodać rzeczywistego urządzenia.
+    * Wprowadź identyfikator urządzenia **<span style="color:Red">(powinno wskazywać na małe litery)</span>** lub sugerowane identyfikator urządzenia.
+    * Wprowadź nazwę urządzenia, lub użyć sugerowanej nazwy
+    
+    ![Dodaj urządzenie](media\concepts-connectivity\add-device.png)
+
+
+1. Pobierz szczegóły połączenia, takich jak **identyfikator zakresu, identyfikator urządzenia i podstawowego klucza** dla dodanego urządzenia, klikając **Connect** na stronie urządzenia.
+ 
+    ![Szczegóły połączenia](media\concepts-connectivity\device-connect.PNG)
+
+3. Upewnij się zapisać te informacje, jak będzie temporaritly uzyskać połączenia z Internetem podczas przygotowywania urządzenia Mxchip. 
+
 
 ### <a name="prepare-the-devkit-device"></a>Przygotuj urządzenie Mxchip
 
 > [!NOTE]
 > Jeśli poprzednio korzystano z urządzenia lub sieci Wi-Fi poświadczenia przechowywane i chcesz ponownie skonfigurować urządzeniu na korzystanie z innej sieci Wi-Fi, parametry połączenia lub pomiaru danych telemetrycznych, naciśnij jednocześnie **A** i **B** przyciski na tablicy jednocześnie. Jeśli to nie zadziała, naciśnij klawisz **resetowania** przycisk, a następnie spróbuj ponownie.
 
-#### <a name="before-you-start-configuring-the-device"></a>Przed rozpoczęciem konfigurowania urządzenia:
-1. W przypadku usługi IoT Central **Devkits przykładowe** przejdź do `Device Explorer` ->  `select MXChip Template`  ->  `Click on +New and choose **Real** Device`  ->  `Connect this device` (w prawym górnym rogu) 
-2. Skopiuj podstawowe parametry połączenia
-3. Pamiętaj zapisać parametry połączenia jako użytkownik będzie temporaritly uzyskać połączenia z Internetem podczas przygotowywania urządzenia Mxchip. 
 
 
 #### <a name="to-prepare-the-devkit-device"></a>Aby przygotować urządzenie Mxchip:
 
 
-1. Pobierz najnowszy wstępnie skompilowanych usługi Azure IoT Central oprogramowania układowego dla zestawu deweloperskiego z [zwalnia](https://github.com/Azure/iot-central-firmware/releases) strony w witrynie GitHub. Wygląda filename pobierania na stronie wersji `AZ3166-IoT-Central-X.X.X.bin`.
-
+1. Pobierz najnowszy wstępnie skompilowanych usługi Azure IoT Central oprogramowania układowego dla zestawu deweloperskiego z [zwalnia](http://aka.ms/iotcentral-docs-MXChip-releases) strony w witrynie GitHub.
 1. Podłącz urządzenie Mxchip do komputera deweloperskiego za pomocą kabla USB. W Windows na dysku mapowane na pamięć na urządzeniu Mxchip zostanie otwarte okno Eksploratora plików. Na przykład dysk może być wywoływana **az3166 usługi (D:)**.
-
 1. Przeciągnij **iotCentral.bin** pliku na okno dysku. Po zakończeniu kopiowania urządzenie uruchamia się ponownie z nowym oprogramowaniem układowym.
 
 1. Po ponownym uruchomieniu urządzenia Mxchip, wyświetli się następujący ekran:
@@ -75,7 +83,7 @@ W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **zestawu d
     ```
 
     > [!NOTE]
-    > Na ekranie są wyświetlane inaczej, naciśnij klawisz **A** i **B** przyciski na urządzeniu, w tym samym czasie, aby ponownie uruchomić urządzenie. 
+    > Jeśli na ekranie są wyświetlane inaczej, zresetować urządzenie i naciśnij klawisz **A** i **B** przyciski na urządzeniu, w tym samym czasie, aby ponownie uruchomić urządzenie. 
 
 1. Urządzenie jest teraz w trybie punktu dostępu. Można połączyć z tym punktem dostępu do sieci Wi-Fi, z komputera lub urządzenia przenośnego.
 
@@ -89,7 +97,7 @@ W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **zestawu d
     - Dodaj nazwę sieci Wi-Fi 
     - Twoje hasło dostępu do sieci Wi-Fi
     - Kod PIN na urządzeniu LCD 
-    - Parametry połączenia urządzenia (powinien został już zapisany zgodnie z krokami) można znaleźć parametrów połączenia w `https://apps.iotcentral.com` -> `Device Explorer` -> `Device` -> `Select or Create a new Real Device` -> `Connect this device` (w prawym górnym rogu)
+    - Szczegóły połączenia **identyfikator zakresu, identyfikator urządzenia i podstawowego klucza** urządzenia (powinien został już zapisany zgodnie z krokami)      
     - Wybierz wszystkie dostępne dane telemetryczne pomiary! 
 
 1. Po wybraniu **Konfigurowanie urządzenia**, zostanie wyświetlona następująca strona:
@@ -99,7 +107,6 @@ W aplikacji usługi Azure IoT Central, Dodaj prawdziwe urządzenie z **zestawu d
 1. Naciśnij klawisz **resetowania** przycisk na urządzeniu.
 
 
-
 ## <a name="view-the-telemetry"></a>Widok danych telemetrycznych
 
 Po ponownym uruchomieniu urządzenia Mxchip pokazuje ekran na urządzeniu:
@@ -107,6 +114,9 @@ Po ponownym uruchomieniu urządzenia Mxchip pokazuje ekran na urządzeniu:
 * Liczba komunikaty telemetryczne wysyłane.
 * Liczba błędów.
 * Liczba żądanych właściwości odebranych i liczbę zgłaszanych właściwości wysyłanych z.
+
+> [!NOTE]
+> Jeśli urządzenie znajduje się na pętli podczas sprawdzania connect, jeśli urządzenie jest *zablokowane* w IoT Central i *odblokowanie* urządzenia, dzięki czemu można połączyć ją do aplikacji.
 
 Potrząśnij przyrost liczbę zgłaszanych właściwości wysyłanych z urządzenia. Urządzenie wysyła losową liczbę jako **zdechną numer** właściwości urządzenia.
 

@@ -10,15 +10,15 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/06/2018
+ms.date: 09/15/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: dc362dba62e8fd41b33e10368483577d8166f300
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4ef50e1a027c0109b4e076e5f1dbbb1ba4ce2950
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722337"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737502"
 ---
 # <a name="azure-resource-manager-resource-provider-operations"></a>Operacje dostawcy zasobów w usłudze Azure Resource Manager
 
@@ -34,6 +34,9 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Typ akcji | Operacja | Opis |
 > | --- | --- | --- |
 > | Akcja | Microsoft.AAD/domainServices/delete | Usuń usługi domeny |
+> | Akcja | Microsoft.AAD/domainServices/oucontainer/delete | Usuwanie kontenera jednostki organizacyjnej |
+> | Akcja | Microsoft.AAD/domainServices/oucontainer/read | Odczytaj jednostki organizacyjnej kontenerów |
+> | Akcja | Microsoft.AAD/domainServices/oucontainer/write | Zapis kontenera jednostki organizacyjnej |
 > | Akcja | Microsoft.AAD/domainServices/read | Usługi domenowe odczytu |
 > | Akcja | Microsoft.AAD/domainServices/write | Pisanie usług domenowych |
 > | Akcja | Microsoft.AAD/locations/operationresults/read |  |
@@ -699,7 +702,9 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Cache/redis/patchSchedules/read | Pobiera harmonogram stosowania poprawek pamięci podręcznej Redis Cache |
 > | Akcja | Microsoft.Cache/redis/patchSchedules/write | Modyfikuj harmonogram stosowania poprawek pamięci podręcznej Redis Cache |
 > | Akcja | Microsoft.Cache/redis/read | Wyświetl ustawienia i konfigurację pamięci podręcznej Redis w portalu zarządzania |
+> | Akcja | Microsoft.Cache/redis/recommendations/read | Odczyt z usługi Azure Redis Cache zalecenia |
 > | Akcja | Microsoft.Cache/redis/regenerateKey/action | Zmień wartość kluczy dostępu pamięci podręcznej Redis w portalu zarządzania |
+> | Akcja | Microsoft.Cache/redis/start/action | Uruchom wystąpienie pamięci podręcznej. |
 > | Akcja | Microsoft.Cache/redis/start/action | Uruchom wystąpienie pamięci podręcznej. |
 > | Akcja | Microsoft.Cache/redis/stop/action | Zatrzymaj wystąpienie pamięci podręcznej. |
 > | Akcja | Microsoft.Cache/redis/write | Zmodyfikuj ustawienia i konfigurację pamięci podręcznej Redis w portalu zarządzania |
@@ -825,8 +830,12 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ClassicCompute/domainNames/capabilities/read | Pokazuje możliwości nazwy domeny |
 > | Akcja | Microsoft.ClassicCompute/domainNames/delete | Usuwa nazwy domen dla zasobów. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/deploymentslots/read | Pokazuje miejsca wdrożenia. |
+> | Akcja | Microsoft.ClassicCompute/domainNames/deploymentslots/roles/read | Uzyskiwanie roli na miejsce wdrożenia nazwy domeny |
+> | Akcja | Microsoft.ClassicCompute/domainNames/deploymentslots/roles/roleinstances/read | Pobierz wystąpienie roli dla roli w miejsce wdrożenia nazwy domeny |
 > | Akcja | Microsoft.ClassicCompute/domainNames/deploymentslots/state/read | Pobierz stan miejsca wdrożenia. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/deploymentslots/state/write | Dodaj stan miejsca wdrożenia. |
+> | Akcja | Microsoft.ClassicCompute/domainNames/deploymentslots/upgradedomain/read | Pobierz domeny uaktualnień dla miejsca wdrożenia od nazwy domeny |
+> | Akcja | Microsoft.ClassicCompute/domainNames/deploymentslots/upgradedomain/write | Aktualizowanie domeny uaktualnień dla miejsca wdrożenia od nazwy domeny |
 > | Akcja | Microsoft.ClassicCompute/domainNames/deploymentslots/write | Tworzy lub aktualizuje wdrożenie. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/extensions/delete | Usuwa rozszerzenia nazwy domeny. |
 > | Akcja | Microsoft.ClassicCompute/domainNames/extensions/operationStatuses/read | Odczytuje stan operacji dla rozszerzeń nazw domen. |
@@ -1173,6 +1182,9 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Compute/virtualMachineScaleSets/osUpgradeHistory/read | Pobiera historię uaktualniania systemu operacyjnego dla zestawu skalowania maszyn wirtualnych |
 > | Akcja | Microsoft.Compute/virtualMachineScaleSets/performMaintenance/action | Przeprowadza planowaną konserwację na wystąpieniach zestawu skalowania maszyn wirtualnych |
 > | Akcja | Microsoft.Compute/virtualMachineScaleSets/powerOff/action | Wyłącza wystąpienia zestawu skalowania maszyn wirtualnych |
+> | Akcja | Microsoft.Compute/virtualMachineScaleSets/providers/Microsoft.Insights/diagnosticSettings/read | Pobiera ustawienie diagnostyczne dla zestawu skalowania maszyn wirtualnych. |
+> | Akcja | Microsoft.Compute/virtualMachineScaleSets/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienie diagnostyczne dla zestawu skalowania maszyn wirtualnych. |
+> | Akcja | Microsoft.Compute/virtualMachineScaleSets/providers/Microsoft.Insights/logDefinitions/read | Pobiera dostępne dzienniki dla zestawów skalowania maszyn wirtualnych. |
 > | Akcja | Microsoft.Compute/virtualMachineScaleSets/providers/Microsoft.Insights/metricDefinitions/read | Odczytuje definicje metryk zestawu skalowania maszyn wirtualnych |
 > | Akcja | Microsoft.Compute/virtualMachineScaleSets/publicIPAddresses/read | Pobierz właściwości wszystkich publicznych adresów IP zestawu skalowania maszyn wirtualnych |
 > | Akcja | Microsoft.Compute/virtualMachineScaleSets/read | Pobiera właściwości zestawu skalowania maszyn wirtualnych |
@@ -2164,6 +2176,9 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Insights/AlertRules/Throttled/Action | Ograniczono regułę alertu dotyczącego metryki klasycznej |
 > | Akcja | Microsoft.Insights/AlertRules/Write | Utwórz lub zaktualizuj alert dotyczący metryki klasycznej |
 > | Akcja | Microsoft.Insights/AutoscaleSettings/Delete | Usuń ustawienie automatycznego skalowania |
+> | Akcja | Microsoft.Insights/AutoscaleSettings/providers/Microsoft.Insights/diagnosticSettings/Read | Odczytaj ustawienie diagnostyczne zasobu |
+> | Akcja | Microsoft.Insights/AutoscaleSettings/providers/Microsoft.Insights/diagnosticSettings/Write | Utwórz lub zaktualizuj ustawienie diagnostyczne zasobu |
+> | Akcja | Microsoft.Insights/AutoscaleSettings/providers/Microsoft.Insights/logDefinitions/Read | Przeczytaj definicje dzienników |
 > | Akcja | Microsoft.Insights/AutoscaleSettings/providers/Microsoft.Insights/MetricDefinitions/Read | Przeczytaj definicje metryk |
 > | Akcja | Microsoft.Insights/AutoscaleSettings/Read | Odczytaj ustawienie automatycznego skalowania |
 > | Akcja | Microsoft.Insights/AutoscaleSettings/Scaledown/Action | Automatyczne skalowanie — zainicjowano skalowanie w dół |
@@ -2257,7 +2272,6 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Insights/Logs/ContainerInventory/Read | Odczytaj dane z tabeli ContainerInventory |
 > | Akcja | Microsoft.Insights/Logs/ContainerLog/Read | Odczytaj dane z tabeli ContainerLog |
 > | Akcja | Microsoft.Insights/Logs/ContainerServiceLog/Read | Odczytaj dane z tabeli ContainerServiceLog |
-> | Akcja | Microsoft.Insights/Logs/CustomLogs/Read | Odczytywanie danych z dowolnego dziennika niestandardowego |
 > | Akcja | Microsoft.Insights/Logs/DeviceAppCrash/Read | Odczytaj dane z tabeli DeviceAppCrash |
 > | Akcja | Microsoft.Insights/Logs/DeviceAppLaunch/Read | Odczytaj dane z tabeli DeviceAppLaunch |
 > | Akcja | Microsoft.Insights/Logs/DeviceCalendar/Read | Odczytaj dane z tabeli DeviceCalendar |
@@ -2496,9 +2510,6 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.LabServices/labAccounts/labs/users/write | Dodawanie lub modyfikowanie użytkowników. |
 > | Akcja | Microsoft.LabServices/labAccounts/labs/write | Dodawanie lub modyfikowanie laboratoriów. |
 > | Akcja | Microsoft.LabServices/labAccounts/read | Przeczytaj kontami laboratorium. |
-> | Akcja | Microsoft.LabServices/labAccounts/sizes/GetRegionalAvailability/action | Uzyskaj informacje o dostępności regionalnej dla każdej kategorii rozmiar skonfigurowany w ramach konta laboratorium |
-> | Akcja | Microsoft.LabServices/labAccounts/sizes/read | Przeczytaj rozmiarów. |
-> | Akcja | Microsoft.LabServices/labAccounts/sizes/ResetOverrides/action | Resetuje konfigurację rozmiar tego konta laboratorium do wartości domyślnych |
 > | Akcja | Microsoft.LabServices/labAccounts/write | Dodaje lub modyfikuje kontami laboratorium. |
 > | Akcja | Microsoft.LabServices/locations/operations/read | Operacje odczytu. |
 > | Akcja | Microsoft.LabServices/register/action | Rejestruje subskrypcję |
@@ -3742,6 +3753,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/OutboundConnection/read | Odczytaj dane z tabeli OutboundConnection |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/Perf/read | Odczytaj dane z tabeli Perf |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/ProtectionStatus/read | Odczytaj dane z tabeli ProtectionStatus |
+> | Akcja | Microsoft.OperationalInsights/workspaces/query/read | Uruchamianie zapytań względem danych w obszarze roboczym |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/ReservedAzureCommonFields/read | Odczytaj dane z tabeli ReservedAzureCommonFields |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/ReservedCommonFields/read | Odczytaj dane z tabeli ReservedCommonFields |
 > | Akcja | Microsoft.OperationalInsights/workspaces/query/SCCMAssessmentRecommendation/read | Odczytaj dane z tabeli SCCMAssessmentRecommendation |
@@ -4280,11 +4292,6 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.ServiceBus/namespaces/messagingPlan/read | Pobiera Plan obsługi wiadomości dla przestrzeni nazw.<br>Ten interfejs API jest przestarzały.<br>Właściwości udostępniane przez zasób MessagingPlan są przenoszone do (nadrzędnego) zasobu Namespace w nowszych wersjach interfejsu API...<br>Ta operacja nie jest obsługiwana w wersji 2017-04-01 interfejsu API. |
 > | Akcja | Microsoft.ServiceBus/namespaces/messagingPlan/write | Aktualizuje Plan obsługi wiadomości dla przestrzeni nazw.<br>Ten interfejs API jest przestarzały.<br>Właściwości udostępniane przez zasób MessagingPlan są przenoszone do (nadrzędnego) zasobu Namespace w nowszych wersjach interfejsu API...<br>Ta operacja nie jest obsługiwana w wersji 2017-04-01 interfejsu API. |
 > | Akcja | Microsoft.ServiceBus/namespaces/migrate/action | Operacja migracji przestrzeni nazw |
-> | Akcja | Microsoft.ServiceBus/namespaces/migrationConfigurations/delete | Usuwa konfigurację migracji. |
-> | Akcja | Microsoft.ServiceBus/namespaces/migrationConfigurations/read | Pobiera konfigurację migracji wskazującą stan migracji oraz oczekujące operacje replikacji |
-> | Akcja | Microsoft.ServiceBus/namespaces/migrationConfigurations/revert/action | Przywraca migrację przestrzeni nazw z warstwy Standardowa do warstwy Premium |
-> | Akcja | Microsoft.ServiceBus/namespaces/migrationConfigurations/upgrade/action | Przypisuje serwer DNS skojarzony z przestrzenią nazw warstwy Standardowa do przestrzeni nazw warstwy Premium, co powoduje ukończenie migracji oraz zatrzymanie synchronizacji zasobów z przestrzeni nazw warstwy Standardowa do przestrzeni nazw warstwy Premium. |
-> | Akcja | Microsoft.ServiceBus/namespaces/migrationConfigurations/write | Tworzy lub migracji aktualizacje konfiguracji. Spowoduje to uruchomienie synchronizacji zasobów od planu standard do przestrzeni nazw premium |
 > | Akcja | Microsoft.ServiceBus/namespaces/operationresults/read | Pobierz stan operacji przestrzeni nazw |
 > | Akcja | Microsoft.ServiceBus/namespaces/providers/Microsoft.Insights/diagnosticSettings/read | Pobierz listę opisów zasobów ustawień diagnostycznych Namespace |
 > | Akcja | Microsoft.ServiceBus/namespaces/providers/Microsoft.Insights/diagnosticSettings/write | Pobierz listę opisów zasobów ustawień diagnostycznych Namespace |
@@ -4455,7 +4462,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Sql/managedInstances/delete | Usuwa istniejącego wystąpienia zarządzanego. |
 > | Akcja | Microsoft.Sql/managedInstances/encryptionProtector/read | Zwraca listę funkcji ochrony szyfrowania serwera lub pobiera właściwości dla określonego serwera funkcja ochrony szyfrowania. |
 > | Akcja | Microsoft.Sql/managedInstances/encryptionProtector/write | Aktualizowanie właściwości dla określonego funkcja ochrony szyfrowania serwera. |
-> | Akcja | Microsoft.Sql/managedInstances/keys/delete | Usuwa istniejący klucz wystąpienia zarządzanego Azure SQL Database. |
+> | Akcja | Microsoft.Sql/managedInstances/keys/delete | Usuwa istniejący klucz wystąpienia zarządzanego Azure SQL. |
 > | Akcja | Microsoft.Sql/managedInstances/keys/read | Zwraca listę wystąpienia zarządzanego kluczy lub pobiera właściwości dla klucza określonego wystąpienia zarządzanego. |
 > | Akcja | Microsoft.Sql/managedInstances/keys/write | Tworzy klucz z określonymi parametrami lub aktualizuje właściwości bądź tagi dla klucza określonego wystąpienia zarządzanego. |
 > | Akcja | Microsoft.Sql/managedInstances/metricDefinitions/read | Pobierz definicje metryk wystąpienia zarządzanego |
@@ -4712,7 +4719,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Storage/storageAccounts/blobServices/containers/read | Zwraca kontener lub listę kontenerów |
 > | Akcja | Microsoft.Storage/storageAccounts/blobServices/containers/setLegalHold/action | Ustaw stan archiwizacji ze względów prawnych dla kontenera obiektów blob |
 > | Akcja | Microsoft.Storage/storageAccounts/blobServices/containers/write | Zwraca wynik umieszczania lub dzierżawienia kontenera obiektów blob |
-> | Element DataAction | Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action | Zwraca klucz delegowania użytkownika dla usługi Blob Service |
+> | Akcja | Microsoft.Storage/storageAccounts/blobServices/generateUserDelegationKey/action | Zwraca klucz delegowania użytkownika dla usługi Blob Service |
 > | Akcja | Microsoft.Storage/storageAccounts/blobServices/providers/Microsoft.Insights/diagnosticSettings/read | Pobiera ustawienia diagnostyczne dla zasobu. |
 > | Akcja | Microsoft.Storage/storageAccounts/blobServices/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienia diagnostyczne dla zasobu. |
 > | Akcja | Microsoft.Storage/storageAccounts/blobServices/providers/Microsoft.Insights/logDefinitions/read | Pobiera definicję dziennika dla usługi Blob Service |
@@ -4724,7 +4731,7 @@ Zawsze ewoluuje operacji dostawcy zasobów. Aby uzyskać najnowsze operacji, uż
 > | Akcja | Microsoft.Storage/storageAccounts/fileServices/providers/Microsoft.Insights/diagnosticSettings/write | Tworzy lub aktualizuje ustawienia diagnostyczne dla zasobu. |
 > | Akcja | Microsoft.Storage/storageAccounts/fileServices/providers/Microsoft.Insights/logDefinitions/read | Pobiera definicję dziennika dla usługi File Service |
 > | Akcja | Microsoft.Storage/storageAccounts/fileServices/providers/Microsoft.Insights/metricDefinitions/read | Uzyskaj listę definicji metryk magazynu firmy Microsoft. |
-> | Akcja | Microsoft.Storage/storageAccounts/lastsynctime/read |  |
+> | Akcja | Microsoft.Storage/storageAccounts/lastsynctime/read | Zwraca czas ostatniej synchronizacji dla konta magazynu |
 > | Akcja | Microsoft.Storage/storageAccounts/listAccountSas/action | Zwraca token sygnatury dostępu współdzielonego konta dla określonego konta magazynu. |
 > | Akcja | Microsoft.Storage/storageAccounts/listkeys/action | Zwraca klucze dostępu dla podanego konta magazynu. |
 > | Akcja | Microsoft.Storage/storageAccounts/listServiceSas/action | Zwraca token sygnatury dostępu współdzielonego usługi dla określonego konta magazynu. |

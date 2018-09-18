@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 09/13/2018
 ms.author: babanisa
-ms.openlocfilehash: 48fd43a315735ec8ba70f1a399462b65930fe069
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: fc8233b21ad662c6e595a04408bde75df46f97d6
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574117"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982939"
 ---
 # <a name="receive-events-to-an-http-endpoint"></a>Odbieranie zdarzeń w punkcie końcowym HTTP
 
@@ -24,7 +24,7 @@ W tym artykule opisano sposób [weryfikacji punktu końcowego HTTP](security-aut
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Musisz mieć aplikację funkcji przy użyciu [funkcji wyzwalanej przez HTTP](../azure-functions/functions-create-generic-webhook-triggered-function.md)
+Potrzebujesz aplikacji funkcji przy użyciu funkcji wyzwalanej przez protokół HTTP.
 
 ## <a name="add-dependencies"></a>Dodaj zależności
 

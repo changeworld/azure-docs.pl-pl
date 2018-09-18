@@ -11,12 +11,12 @@ ms.custom: managed instance
 ms.topic: conceptual
 ms.date: 07/24/2018
 ms.author: bonova
-ms.openlocfilehash: 276d36562aece7101465752528f59008e1ee7607
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: cf3f7e131b177634318a6114b4f1efefcb9a9cec
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050327"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985664"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migracja wystąpienia programu SQL Server do wystąpienia zarządzanego Azure SQL Database
 
@@ -39,7 +39,7 @@ Na wysokim poziomie proces migracji bazy danych wygląda następująco:
 
 Najpierw Ustal, czy wystąpienie zarządzane jest zgodny z wymagania bazy danych aplikacji. Wystąpienie zarządzane jest zaprojektowany w celu zapewnienia łatwego lift- and -shift migracji dla większości istniejących aplikacji, które używają programu SQL Server w środowisku lokalnym lub na maszynach wirtualnych. Jednak czasami może być wymagane funkcje lub możliwości, które nie są jeszcze obsługiwane i kosztów wdrożenia obejście tego problemu jest zbyt wysokie. 
 
-Użyj [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) do wykrywania potencjalnych problemy ze zgodnością mogących mieć wpływ na funkcjonalność bazy danych w usłudze Azure SQL Database. Program DMA nie obsługuje jeszcze zarządzane wystąpienia jako lokalizację docelową migracji, ale zalecane do uruchamiania oceny w bazie danych Azure SQL i dokładnie przejrzyj listę zgłoszonych potrafiło i problemy ze zgodnością z dokumentacji produktu. Zobacz [różnice między pojedyncze bazy danych SQL Azure i wystąpienia zarządzanego](sql-database-features.md) Aby sprawdzić, czy istnieją niektóre zgłoszone problemy z blokowaniem, nie blokują w wystąpieniu zarządzanym ponieważ większość blokowania problemy, zapobiegając migracji do Usługa Azure SQL Database zostały usunięte z wystąpieniem zarządzanym. Dla wystąpienia funkcji, takich jak zapytania wielu baz danych, transakcje między bazami danych w ramach tego samego wystąpienia serwera połączonego innych SQL źródeł, CLR, globalne tabele tymczasowe, widoki poziomu wystąpienia, Usługa Service Broker i podobne są dostępne w wystąpieniach zarządzanych. 
+Użyj [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) do wykrywania potencjalnych problemy ze zgodnością mogących mieć wpływ na funkcjonalność bazy danych w usłudze Azure SQL Database. Program DMA nie obsługuje jeszcze zarządzane wystąpienia jako lokalizację docelową migracji, ale zalecane do uruchamiania oceny w bazie danych Azure SQL i dokładnie przejrzyj listę zgłoszonych potrafiło i problemy ze zgodnością z dokumentacji produktu. Zobacz [funkcji usługi Azure SQL Database](sql-database-features.md) Aby sprawdzić, czy istnieją niektóre zgłoszone problemy z blokowaniem, nie blokują w wystąpieniu zarządzanym, ponieważ większość blokowania problemy, co uniemożliwia migracji do usługi Azure SQL Database zostały usunięte z zarządzanego Wystąpienie. Dla wystąpienia funkcji, takich jak zapytania wielu baz danych, transakcje między bazami danych w ramach tego samego wystąpienia serwera połączonego innych SQL źródeł, CLR, globalne tabele tymczasowe, widoki poziomu wystąpienia, Usługa Service Broker i podobne są dostępne w wystąpieniach zarządzanych. 
 
 W przypadku niektórych zgłaszane problemy z blokowaniem, które nie są usuwane w wystąpieniu zarządzanym usługi SQL Azure, może być konieczne należy wziąć pod uwagę alternatywnych opcji, takich jak [programu SQL Server na maszynach wirtualnych platformy Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Oto kilka przykładów:
 

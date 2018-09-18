@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 921e9df11cd79e9d2558d9ca6a490a8da064deb8
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 877ea4c143d74414c3d733c446da57060322b11d
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630345"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982135"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizacja usługi Azure Stack 1808
 
@@ -57,7 +57,7 @@ Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack.
 
 - <!-- | IS ASDK--> **Łańcuch bloków szablony**. Można teraz wykonać [wdrożeń konsorcjum Ethereum](azure-stack-ethereum.md) w usłudze Azure Stack. Można znaleźć trzy nowe szablony w [usługi Azure Stack szablonów Szybki Start](https://github.com/Azure/AzureStack-QuickStart-Templates). Umożliwiają one użytkownikowi wdrażanie i konfigurowanie sieci Ethereum konsorcjum zawierającym wiele elementów członkowskich przy minimalnej znajomości platformy Azure i Ethereum. Szablony ma na celu ułatwić użytkownikom do instalacji i testowania aplikacji łańcucha bloków wdrożeń w kilku krokach.
 
-
+- <!-- | IS ASDK--> **Interfejs API w wersji profilu 2017-03-09-profile została zaktualizowana w celu 2018-03-01-hybrydowego**. Profile interfejsu API Określ dostawca zasobów platformy Azure i wersja interfejsu API dla punkty końcowe REST platformy Azure. Aby uzyskać więcej informacji na temat profilów, zobacz [Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack](/azure/azure-stack/user/azure-stack-version-profiles).
 
  ### <a name="fixed-issues"></a>Rozwiązane problemy
 - <!-- IS ASDK--> Rozwiązaliśmy problem w przypadku tworzenia zestaw dostępności w portalu, co spowodowało w zestawie, domeny błędów i domeny aktualizacji 1. 
@@ -142,6 +142,17 @@ Ta aktualizacja zawiera także ograniczania ryzyka związanego z wykonywaniem sp
 Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 
 ### <a name="portal"></a>Portal
+
+- <!-- TBD - IS ASDK --> Możesz zobaczyć pustego pulpitu nawigacyjnego w portalu. Aby odzyskać pulpitu nawigacyjnego, kliknij **Edytuj pulpit nawigacyjny**, a następnie kliknij prawym przyciskiem myszy i wybierz **przywrócony stan domyślny**.
+
+- <!-- 2930718 - IS ASDK --> W portalu administratora przy uzyskiwaniu dostępu do szczegółów dowolnej subskrypcji użytkownika po zamknięciu bloku i klikając **ostatnie**, nie jest wyświetlana Nazwa subskrypcji użytkownika.
+
+- <!-- 3060156 - IS ASDK --> W portalach administratora i użytkownika, klikając ustawienia portalu i wybierając **Usuń wszystkie ustawienia i prywatne pulpity nawigacyjne** nie działa zgodnie z oczekiwaniami. Powiadomienia o błędzie jest wyświetlany. 
+
+- <!-- 2930799 - IS ASDK --> W portalach administratora i użytkownika w obszarze **wszystkich usług**, element zawartości **planów ochrony przed atakami DDoS** niepoprawnie znajduje się na liście. Nie jest faktycznie dostępne w usłudze Azure Stack. Jeśli spróbujesz go utworzyć, zostanie wyświetlony błąd informujący, że portal nie można utworzyć elementu portalu marketplace. 
+
+- <!-- 2930820 - IS ASDK --> W portalach administratora i użytkownika jeśli wyszukasz "Docker" jest niepoprawnie zwrócony element. Nie jest faktycznie dostępne w usłudze Azure Stack. Jeśli spróbujesz go utworzyć, zostanie wyświetlony blok ze wskazaniem błędu. 
+
 - <!-- 2967387 – IS, ASDK --> Konto używane do logowania do portalu administratora lub użytkownika usługi Azure Stack jest wyświetlany jako **Niezidentyfikowany użytkownik**. Dzieje się tak, gdy konto nie ma albo *pierwszy* lub *ostatniego* nazwy. Aby obejść ten problem, należy edytować konto użytkownika, aby podać nazwę pierwszego lub ostatniego. Należy następnie zaloguj i zaloguj ponownie do portalu. 
 
 -  <!--  2873083 - IS ASDK --> Kiedy używać portalu, aby utworzyć zestaw skalowania maszyn wirtualnych zestawu (zestawu skalowania maszyn wirtualnych), *rozmiaru wystąpienia* listy rozwijanej nie załadować się poprawnie, gdy używasz programu Internet Explorer. Aby obejść ten problem, należy użyć innej przeglądarki podczas korzystania z portalu do tworzenia zestawu skalowania maszyn wirtualnych.  
@@ -151,8 +162,6 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 - <!--2760466 – IS  ASDK --> Po zainstalowaniu nowego środowiska usługi Azure Stack, z tą wersją, ten alert oznacza to, *wymagana aktywacja* mogą nie być wyświetlane. [Aktywacja](azure-stack-registration.md) jest wymagany, zanim będzie można użyć portalu marketplace syndykacji.  
 
 - <!-- TBD - IS ASDK --> Dwa typy subskrypcji administracyjne, które zostały [wprowadzonym w wersji 1804](azure-stack-update-1804.md#new-features) nie powinny być używane. Typy subskrypcji **pomiaru subskrypcji**, i **subskrypcji zużycie**. Te typy subskrypcji są wyświetlane w nowych wersji środowiska usługi Azure Stack począwszy od wersji 1804, ale nie są jeszcze gotowe do użycia. Można nadal używać **domyślny dostawca** typu subskrypcji.
-
-- <!-- TBD - IS --> Możesz zobaczyć pustego pulpitu nawigacyjnego w portalu. Aby odzyskać pulpitu nawigacyjnego, wybierz ikonę koła zębatego w prawym górnym rogu portalu, a następnie wybierz **przywrócić ustawienia domyślne**.
 
 - <!-- TBD - IS ASDK --> Usuwanie subskrypcji użytkownika powoduje zasoby oddzielone. Jako obejście najpierw usuń zasoby użytkowników lub całą grupę zasobów, a następnie usuń subskrypcji użytkownika.
 

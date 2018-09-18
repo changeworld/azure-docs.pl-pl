@@ -10,12 +10,12 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: genemi
-ms.openlocfilehash: cc3e870d67f3c38fe4173275b6fd210d0c4ee05a
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 87560f3fb34c281b6802ef5079fd1445caba6db8
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423563"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983635"
 ---
 # <a name="deploy-and-explore-a-multitenant-saas-app-that-uses-the-database-per-tenant-pattern-with-sql-database"></a>Wdrażanie i eksplorowanie wielodostępną aplikację SaaS, która używa wzorca bazy danych dla dzierżawcy z usługą SQL Database
 
@@ -83,7 +83,7 @@ Podczas wdrażania aplikacji, Pobierz skrypty źródłowych kodu i zarządzanie.
 > Zawartość pliku wykonywalnego (skrypty i biblioteki dll) może być blokowana przez Windows, gdy pliki zip są pobierane z zewnętrznego źródła i wyodrębnić. Wykonaj kroki, aby odblokować plik zip, przed wyodrębnić skryptów. Odblokowanie zapewnia, że można uruchamiać skrypty.
 
 1. Przejdź do [repozytorium GitHub WingtipTicketsSaaS DbPerTenant][github-wingtip-dpt].
-1. Wybierz **klonowania lub pobierania**.
+1. Wybierz przycisk **Clone or download** (Sklonuj lub pobierz).
 1. Wybierz **Pobierz ZIP**, a następnie zapisz plik.
 1. Kliknij prawym przyciskiem myszy **WingtipTicketsSaaS-DbPerTenant-master.zip** pliku, a następnie wybierz **właściwości**.
 1. Na **ogólne** zaznacz **odblokowanie** > **Zastosuj**.
@@ -242,7 +242,7 @@ Przejdź do serwera **tenants1-dpt -&lt;użytkownika&gt;** i wybierz **Pool1** d
 - Pierwszy wykres, etykietą **wykorzystanie zasobów**, pokazuje użycie jednostek eDTU w puli.
 - Drugi wykres przedstawia użycie jednostek eDTU pięciu najbardziej aktywnych baz danych w puli.
 
-Dwa wykresy pokazują, że elastyczne pule i bazy danych SQL są dobrze nadaje się do nieprzewidywalnych obciążeń aplikacji SaaS. Wykresy pokazują, że każdy przenoszenie obsługi dużego ruchu do możliwie jak 40 jednostek Edtu są cztery bazy danych, a jeszcze wszystkich baz danych wygodnie są obsługiwane przez pulę 50 eDTU. 50 eDTU puli mogą obsługiwać nawet większych obciążeń. Jeśli bazy danych są aprowizowane jako autonomiczne bazy danych, każdy z nich musi być S2 (50 jednostek DTU) do obsługi chwilowego. Koszt cztery autonomicznych baz danych S2 jest prawie trzykrotnie przekraczałby koszt puli. W rzeczywistych warunkach klienci bazy danych SQL, uruchamiać do 500 baz danych w pulach 200 jednostek eDTU. Aby uzyskać więcej informacji, zobacz [samouczek monitorowania wydajności](saas-dbpertenant-performance-monitoring.md).
+Dwa wykresy pokazują, że elastyczne pule i bazy danych SQL są dobrze nadaje się do nieprzewidywalnych obciążeń aplikacji SaaS. Wykresy pokazują, że każdy przenoszenie obsługi dużego ruchu do możliwie jak 40 jednostek Edtu są cztery bazy danych, a jeszcze wszystkich baz danych wygodnie są obsługiwane przez pulę 50 eDTU. 50 eDTU puli mogą obsługiwać nawet większych obciążeń. Jeśli bazy danych są aprowizowane jako pojedynczych baz danych, każdy z nich musi być S2 (50 jednostek DTU) do obsługi chwilowego. Koszt cztery autonomicznych baz danych S2 jest prawie trzykrotnie przekraczałby koszt puli. W rzeczywistych warunkach klienci bazy danych SQL, uruchamiać do 500 baz danych w pulach 200 jednostek eDTU. Aby uzyskać więcej informacji, zobacz [samouczek monitorowania wydajności](saas-dbpertenant-performance-monitoring.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 

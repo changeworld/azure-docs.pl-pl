@@ -1,23 +1,23 @@
 ---
-title: Wykrywanie zawartości specyficznego dla domeny
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Pojęcia związane z opisem obrazów przy użyciu przetwarzania obrazów w usługach Azure Cognitive Services.
+title: Wykrywanie specyficznego dla domeny zawartości — przetwarzanie obrazów
+titleSuffix: Azure Cognitive Services
+description: Pojęcia związane z opisem obrazów przy użyciu interfejsu API przetwarzania obrazów.
 services: cognitive-services
 author: deken
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: 699698d8235d8fa53050a67491ee4f0e1c336d0e
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: b197227b6550703e4cc303fc800839dc48bf2d1c
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44725521"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985213"
 ---
-# <a name="detecting-domain-specific-content"></a>Wykrywanie zawartości specyficznego dla domeny
+# <a name="detecting-domain-specific-content"></a>Wykrywanie zawartości specyficznej dla domeny
 
 Ponadto do znakowania i najwyższego poziomu o kategoryzacji, przetwarzanie obrazów obsługuje również informacje specjalistyczne (lub specyficznego dla domeny). Informacje można zaimplementować jako metoda autonomiczna lub wysokiego poziomu o kategoryzacji. Działa ona jako sposób, aby dalej zawęzić Taksonomia kategorii 86 przez dodanie modeli specyficznych dla domeny.
 

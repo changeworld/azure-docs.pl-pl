@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/22/2018
 ms.author: jroth
 ms.custom: include file
-ms.openlocfilehash: 08cd67e86666cdc9c9fc1b0f4ef98cf3ea7a156c
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 2d0fa179e7d1ae87372536d315175f1406baf21a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "43435618"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45978935"
 ---
 | Zasób | Limit domyślny | Limit maksymalny |
 | --- | --- | --- |
@@ -21,7 +21,7 @@ ms.locfileid: "43435618"
 | Całkowita liczba rdzeni maszyn wirtualnych na [subskrypcję](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na region | Kontakt z pomocą techniczną |
 | Liczba rdzeni maszyn wirtualnych na serię (Dv2, F itp.) na [subskrypcję](../articles/billing-buy-sign-up-azure-subscription.md) |20<sup>1</sup> na region | Kontakt z pomocą techniczną |
 | [Współadministratorzy](../articles/billing-add-change-azure-subscription-administrator.md) na subskrypcję |Nieograniczona liczba |Nieograniczona liczba |
-| [Konta magazynu](../articles/storage/common/storage-create-storage-account.md) na region na subskrypcję |200 |200<sup>2</sup> |
+| [Konta magazynu](../articles/storage/common/storage-quickstart-create-account.md) na region na subskrypcję |200 |200<sup>2</sup> |
 | [Grupy kontenerów](../articles/azure-resource-manager/resource-group-overview.md) na subskrypcję |980 |980 |
 | [Zestawy dostępności](../articles/virtual-machines/windows/manage-availability.md#configure-multiple-virtual-machines-in-an-availability-set-for-redundancy) na subskrypcję |2000 na region |2000 na region |
 | Odczyty interfejsu API usługi Resource Manager |15 000 na godzinę |15 000 na godzinę |

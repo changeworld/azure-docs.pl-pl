@@ -1,18 +1,18 @@
 ---
 title: Używać usługi Azure Storage jako zaplecza programu Terraform
-description: Wprowadzenie do przechowywania stanu Terrafom w usłudze Azure Storage.
+description: Wprowadzenie do przechowywania stanu programu Terraform w usłudze Azure Storage.
 services: terraform
 author: neilpeterson
 ms.service: terraform
 ms.topic: article
 ms.date: 09/13/2018
 ms.author: nepeters
-ms.openlocfilehash: c27c6bc5f2071203c9a9dd5a94e73c0cb4626598
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 2bee9f73f430e18fe159eed142b265cc1934860e
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45608305"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984982"
 ---
 # <a name="store-terraform-state-in-azure-storage"></a>Stan programu Terraform Store w usłudze Azure Storage
 
@@ -35,7 +35,7 @@ RESOURCE_GROUP_NAME=tfstatestorage
 STORAGE_ACCOUNT_NAME=tfstatestorage$RANDOM
 CONTAINER_NAME=tfstatestorage
 
-# Ceeate resoruce group
+# Create resource group
 az group create --name $RESOURCE_GROUP_NAME --location eastus
 
 # Create storage account
@@ -49,7 +49,7 @@ az storage container create --name $CONTAINER_NAME --account-name $STORAGE_ACCOU
 
 echo "storage_account_name: $STORAGE_ACCOUNT_NAME"
 echo "container_name: $CONTAINER_NAME"
-echo "ARM_ACCESS_KEY: $ACCOUNT_KEY"
+echo "access_key: $ACCOUNT_KEY"
 ```
 
 Zanotuj nazwę konta magazynu, nazwy kontenera i klucz dostępu do magazynu. Te wartości są wymagane podczas konfigurowania zdalnego stanu.
@@ -79,7 +79,7 @@ export ARM_ACCESS_KEY=$(az keyvault secret show --name terraform-backend-key --v
 
 Aby skonfigurować narzędzie Terraform w celu użycia wewnętrznej bazy danych, należy dołączyć *zaplecza* konfiguracji o typie *azurerm* wewnątrz konfiguracji programu Terraform. Dodaj *storage_account_name*, *container_name*, i *klucz* wartości do bloku konfiguracji.
 
-Poniższy przykład umożliwia skonfigurowanie programu Terraform zaplecza i tworzy i grupy zasobów platformy Azure.
+Poniższy przykład umożliwia skonfigurowanie programu Terraform w wewnętrznej bazie danych i tworzy i grupy zasobów platformy Azure.
 
 ```json
 terraform {
@@ -91,7 +91,7 @@ terraform {
 }
 
 resource "azurerm_resource_group" "state-demo-secure" {
-  name     = "state-demoe"
+  name     = "state-demo"
   location = "eastus"
 }
 ```
@@ -102,7 +102,7 @@ Teraz zainicjować konfiguracji z *Terraform init* , a następnie uruchom konfig
 
 Korzystając z usługi Azure Storage Blob do przechowywania stanów, obiekt blob zostanie automatycznie zablokowane przed dowolną operacją, która zapisuje stan. Taka konfiguracja zapobiega wiele operacji współbieżnych stanu, co może powodować uszkodzenie. Aby uzyskać więcej informacji, zobacz [stan blokowania] [ terraform-state-lock] o dokumentacji programu Terraform.
 
-Blokada może być Zobacz, badając obiekt blob do witryny Azure portal lub inne narzędzie do zarządzania platformy Azure.
+Blokady są widoczne podczas badania obiekt blob do witryny Azure portal lub inne narzędzie do zarządzania platformy Azure.
 
 ![Obiektów blob platformy Azure z blokadą](media/terraform-backend/lock.png)
 

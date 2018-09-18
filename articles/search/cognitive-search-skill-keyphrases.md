@@ -10,18 +10,21 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: b1da16269a1cbe83c6c0c625aba13026b6a462d6
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 694271115626c652523be34160ad6a07053f6387
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35942584"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735802"
 ---
 #   <a name="key-phrase-extraction-cognitive-skill"></a>Klucz frazy umiejętności cognitive
 
 **Klucz frazy** umiejętności ocenia tekstu bez struktury, a następnie dla każdego rekordu zwraca listę fraz kluczowych.
 
 Ta możliwość jest przydatna, jeśli chcesz szybko identyfikować jego główne punkty najważniejsze w rekordzie. Na przykład dany tekst wejściowy "żywności został wyborna i wystąpiły personelu wspaniała", usługa zwraca "jedzenie" i "personel wspaniała".
+
+> [!NOTE]
+> Wyszukiwanie poznawcze jest dostępne w publicznej wersji zapoznawczej. Wykonywanie zestawu umiejętności i wyodrębniania obrazu i normalizacji są obecnie oferowane bezpłatnie. W późniejszym czasie cen tych funkcji zostanie ogłoszona. 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.KeyPhraseExtractionSkill 

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: mabrigg
-ms.openlocfilehash: 975c5c2c5f0da7a6db946c6d1032b485947134d2
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 058e1f9abbf094fb49a21191f60195df53615451
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717710"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985298"
 ---
 # <a name="using-the-administrator-portal-in-azure-stack"></a>Korzystanie z portalu administratora w usłudze Azure Stack
 
@@ -71,6 +71,8 @@ Portale administratora i użytkownika są wspierane przez osobnych wystąpień u
 ### <a name="customize-the-dashboard"></a>Dostosowywanie pulpitu nawigacyjnego
 
 Pulpit nawigacyjny zawiera zestaw domyślnych kafelków. Możesz wybrać **Edytuj pulpit nawigacyjny** zmodyfikować domyślny pulpit nawigacyjny, lub wybierz **nowy pulpit nawigacyjny** można dodać niestandardowy pulpit nawigacyjny. Możesz łatwo dodać Kafelki do pulpitu nawigacyjnego. Na przykład, możesz wybrać **+ Utwórz zasób**, kliknij prawym przyciskiem myszy **oferty i plany**, a następnie wybierz pozycję **Przypnij do pulpitu nawigacyjnego**.
+
+Czasami może pojawić się pustego pulpitu nawigacyjnego w portalu. Aby odzyskać pulpitu nawigacyjnego, kliknij **Edytuj pulpit nawigacyjny**, a następnie kliknij prawym przyciskiem myszy i wybierz **przywrócony stan domyślny**.
 
 ### <a name="quick-access-to-online-documentation"></a>Szybki dostęp do dokumentacji online
 

@@ -6,15 +6,15 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/17/2018
+ms.date: 09/14/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: a4bf21f972da1aa92d6f127e8cbabb89a9c31489
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4fe75d8d350ee2d2a97b9d7efb10ff3c1675168d
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719957"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737114"
 ---
 # <a name="azure-sql-database-purchasing-models-and-resources"></a>Usługa Azure SQL Database zakupu modeli i zasoby 
 
@@ -26,7 +26,7 @@ Następujących tabel i wykresów porównania i porównać te dwa modele zakupu.
 
 |**Model zakupu**|**Opis**|**Najlepsze dla**|
 |---|---|---|
-|Model oparty na jednostkach DTU|Ten model opiera się na powiązane miary obliczeniowe, magazynu i zasobów we/wy. Poziomy wydajności są wyrażane jako liczba jednostek DTU (Database Transaction Unit) dla pojedynczych baz danych oraz jako liczba jednostek eDTU (elastic Database Transaction Unit) dla pul elastycznych. Aby uzyskać więcej informacji na temat jednostek Dtu i Edtu, zobacz [co to są jednostki Dtu i Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)?|Najlepsze dla klientów chcących zasobów proste, wstępnie skonfigurowanych opcji.| 
+|Model oparty na jednostkach DTU|Ten model opiera się na powiązane miary obliczeniowe, magazynu i zasobów we/wy. Obliczenia rozmiarów są wyrażone w jednostkach transakcji bazy danych (Dtu) dla pojedynczych baz danych i jednostek transakcji elastic Database (Edtu) dla pul elastycznych. Aby uzyskać więcej informacji na temat jednostek Dtu i Edtu, zobacz [co to są jednostki Dtu i Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)?|Najlepsze dla klientów chcących zasobów proste, wstępnie skonfigurowanych opcji.| 
 |Model oparty na rdzeniach wirtualnych|Ten model umożliwia niezależne Wybierz zasoby obliczeniowe i magazynowe. Umożliwia on również używać korzyści użycia hybrydowego platformy Azure dla programu SQL Server w celu uzyskania oszczędności kosztów.|Najlepsze dla klientów, którzy wartości elastyczności, kontroli i przejrzystości.|
 ||||  
 
@@ -50,22 +50,22 @@ Model zakupu opartego na rdzeniach wirtualnych umożliwia niezależnie wybrać z
 > Moc obliczeniowa, IOs, dane i Magazyn dzienników są naliczane zgodnie z bazy danych lub elastycznej puli. Magazyn kopii zapasowych jest rozliczane na każdej bazy danych. Aby uzyskać szczegółowe informacje o opłaty za wystąpienia zarządzanego, zapoznaj się [wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance.md).
 > **Ograniczenia dotyczące regionów:** modelu zakupu opartego na rdzeniach wirtualnych nie jest jeszcze dostępna w następujących regionach: Europa Zachodnia, Francja środkowa, południowe Zjednoczone Królestwo, zachodnie Zjednoczone Królestwo i Australia południowo-wschodnia.
 
-Jeśli bazy danych lub elastycznej puli zajmuje ponad 300 Konwersja jednostek DTU na rdzeniach wirtualnych może zmniejszyć koszt. Możesz również przekonwertować przy użyciu wybranego interfejsu API lub portalu Azure, bez przestojów. Jednak konwersja nie jest wymagana. Jeśli model zakupu jednostek DTU spełnia swoje wymagania biznesowe i wydajności, można nadal jej używać. Jeśli zdecydujesz się przekonwertować modelu rdzenia wirtualnego z modelu jednostek DTU, należy wybrać poziom wydajności, za pomocą następujące reguły akceptacji: każdy 100 jednostek DTU w warstwie standardowa wymaga co najmniej 1 rdzeń wirtualny w warstwie przeznaczenie ogólne; Każdy 125 jednostek DTU w warstwie Premium wymaga co najmniej 1 rdzeń wirtualny w warstwie krytyczne dla działania firmy.
+Jeśli bazy danych lub elastycznej puli zajmuje ponad 300 Konwersja jednostek DTU na rdzeniach wirtualnych może zmniejszyć koszt. Możesz również przekonwertować przy użyciu wybranego interfejsu API lub portalu Azure, bez przestojów. Jednak konwersja nie jest wymagana. Jeśli model zakupu jednostek DTU spełnia swoje wymagania biznesowe i wydajności, można nadal jej używać. Jeśli zdecydujesz się przekonwertować modelu rdzenia wirtualnego z modelu jednostek DTU, należy wybrać rozmiar obliczeń przy użyciu następujące reguły akceptacji: każdy 100 jednostek DTU w warstwie standardowa wymaga co najmniej 1 rdzeń wirtualny w warstwie przeznaczenie ogólne; Każdy 125 jednostek DTU w warstwie Premium wymaga co najmniej 1 rdzeń wirtualny w warstwie krytyczne dla działania firmy.
 
 ## <a name="dtu-based-purchasing-model"></a>Model zakupu w oparciu o jednostki DTU
 
 Jednostki transakcji bazy danych (DTU) reprezentuje mieszany pomiar procesora CPU, pamięci, odczytuje i zapisuje. Model zakupu opartego na jednostkach DTU oferuje zestaw wstępnie skonfigurowane pakiety zasobów obliczeniowych i magazynu dostosowane do różnych poziomów wydajności aplikacji w pakiecie. Klienci, którzy preferują prostotę wstępnie skonfigurowanego pakietu i płatności w stałej kwocie każdego miesiąca, może się okazać modelu opartego na jednostkach DTU bardziej odpowiednie do ich potrzeb. W oparty na jednostkach DTU model zakupu, klienci mogą wybierać między **podstawowe**, **standardowa**, i **Premium** warstwy usług dla obu [pojedyncze bazy danych](sql-database-single-database-scale.md) i [pul elastycznych](sql-database-elastic-pool.md). Ten model zakupu nie jest dostępna w [wystąpienia zarządzane](sql-database-managed-instance.md).
 
 ### <a name="what-are-database-transaction-units-dtus"></a>Co to są jednostki transakcji bazy danych (Dtu)?
-Dla pojedynczej bazy danych Azure SQL na określonym poziomie wydajności w ramach [warstwy usług](sql-database-single-database-scale.md), firma Microsoft gwarantuje więc pewnego poziomu zasobów dla tej bazy danych (niezależnie od innej bazy danych w chmurze platformy Azure), zapewniając poziom przewidywalnej wydajności. Ilość zasobów jest obliczany jako liczba jednostek transakcji bazy danych lub liczby jednostek Dtu i jest miarą powiązane obliczeń, magazynu i zasobów we/wy. Współczynnik obejmujący te zasoby był pierwotnie określany za [obciążenia porównawczego OLTP](sql-database-benchmark-overview.md), jest przeznaczona do typowym, rzeczywistym obciążeniom OLTP. Gdy obciążenie przekracza ilość dowolnego z następujących zasobów, przepływność jest ograniczone — wynikowy niska wydajność i przekroczenia limitu czasu. Zasoby używane przez obciążenie nie miało wpływu na zasoby dostępne dla innych baz danych SQL w chmurze platformy Azure, a zasoby używane przez inne obciążenia nie miało wpływu na zasoby dostępne dla usługi SQL database.
+Dla pojedynczej bazy danych Azure SQL na określonym obliczenia rozmiaru na [warstwy usług](sql-database-single-database-scale.md), firma Microsoft gwarantuje więc pewnego poziomu zasobów dla tej bazy danych (niezależnie od innej bazy danych w chmurze platformy Azure), zapewniając przewidywalne poziom wydajności. Ilość zasobów jest obliczany jako liczba jednostek transakcji bazy danych lub liczby jednostek Dtu i jest miarą powiązane obliczeń, magazynu i zasobów we/wy. Współczynnik obejmujący te zasoby był pierwotnie określany za [obciążenia porównawczego OLTP](sql-database-benchmark-overview.md), jest przeznaczona do typowym, rzeczywistym obciążeniom OLTP. Gdy obciążenie przekracza ilość dowolnego z następujących zasobów, przepływność jest ograniczone — wynikowy niska wydajność i przekroczenia limitu czasu. Zasoby używane przez obciążenie nie miało wpływu na zasoby dostępne dla innych baz danych SQL w chmurze platformy Azure, a zasoby używane przez inne obciążenia nie miało wpływu na zasoby dostępne dla usługi SQL database.
 
 ![obwiedni](./media/sql-database-what-is-a-dtu/bounding-box.png)
 
-Liczba jednostek Dtu są najbardziej przydatne do zrozumienia względna ilość zasobów między bazami danych Azure SQL na różne poziomy wydajności i warstwy usług. Na przykład podwojenie liczby jednostek Dtu przez zwiększenie poziomu wydajności bazy danych odpowiada dwukrotnemu zwiększeniu zestawu zasobów dostępnych dla tej bazy danych. Na przykład baza danych Premium P11 z 1750 jednostkami DTU zapewnia 350 razy więcej mocy obliczeniowej DTU niż podstawowa baza danych z 5 jednostkami DTU.  
+Liczba jednostek Dtu są najbardziej przydatne do zrozumienia względna ilość zasobów między bazami danych Azure SQL w różnych rozmiarów wystąpień obliczeniowych i warstwy usług. Na przykład podwojenie liczby jednostek Dtu przez zwiększenie rozmiaru obliczeń bazy danych odpowiada dwukrotnemu zwiększeniu zestawu zasobów dostępnych dla tej bazy danych. Na przykład baza danych Premium P11 z 1750 jednostkami DTU zapewnia 350 razy więcej mocy obliczeniowej DTU niż podstawowa baza danych z 5 jednostkami DTU.  
 
 Aby uzyskać lepszy wgląd w użycie zasobów (DTU), obciążenia, należy użyć [usługi Azure SQL Database Query Performance Insight](sql-database-query-performance.md) do:
 
-- Zidentyfikuj najpopularniejsze zapytania według liczby Procesor/czas trwania/wykonywania, które potencjalnie mogą być dostosowane w celu zwiększenia wydajności. Na przykład, zapytanie intensywnie korzystających z operacji We/Wy organizowanych przez użycie [techniki optymalizacji w pamięci](sql-database-in-memory.md) skuteczniej wykorzystać ilość dostępnej pamięci w niektórych usług warstwy i poziomu wydajności.
+- Zidentyfikuj najpopularniejsze zapytania według liczby Procesor/czas trwania/wykonywania, które potencjalnie mogą być dostosowane w celu zwiększenia wydajności. Na przykład, zapytanie intensywnie korzystających z operacji We/Wy organizowanych przez użycie [techniki optymalizacji w pamięci](sql-database-in-memory.md) skuteczniej wykorzystać dostępnej pamięci w pewnym warstwę usługi i obliczenia rozmiaru.
 - Przechodzenie do szczegółów kwerendy, wyświetlanie historii wykorzystania zasobów i tekstem.
 - Zalecenia dotyczące, które pokazują akcje wykonywane przez dostrajania wydajności dostępu [SQL Database Advisor](sql-database-advisor.md).
 

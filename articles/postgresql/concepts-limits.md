@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 06/30/2018
-ms.openlocfilehash: e096a67d953860ec2e9601f25dbd9ca92a8fb4a3
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 0bd894e99fd575fca734a101a1cde0f0a2979682
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633783"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983762"
 ---
 # <a name="limitations-in-azure-database-for-postgresql"></a>Ograniczenia dotyczące usługi Azure Database for PostgreSQL
 W poniższych sekcjach opisano, pojemnością i limitami funkcjonalności w usłudze bazy danych.
@@ -48,9 +48,6 @@ Azure system wymaga pięć połączeń do monitorowania usługi Azure Database f
 
 ### <a name="server-version-upgrades"></a>Uaktualnienia wersji serwera
 - Automatycznej migracji między wersjami aparatu głównej bazy danych nie jest obecnie obsługiwane. Jeśli chcesz uaktualnić do następnej wersji głównej, [zrzucanie i przywracanie](./howto-migrate-using-dump-and-restore.md) go do serwera, który został utworzony przy użyciu nowej wersji aparatu.
-
-### <a name="subscription-management"></a>Zarządzanie subskrypcjami
-- Dynamicznie przenoszenie serwerów w subskrypcji i grup zasobów nie jest obecnie obsługiwane.
 
 ### <a name="vnet-service-endpoints"></a>Punkty końcowe usługi sieci wirtualnej
 - Obsługa punktów końcowych usługi sieci wirtualnej jest tylko w przypadku serwerów ogólnego przeznaczenia i zoptymalizowana pod kątem pamięci.

@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 09/14/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 75805cad43f015f1741193ec5a1ead1fa7603f41
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: bcb533fbaa788498734776147c9bd053d35bef60
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42057698"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733586"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Odzyskiwanie bazy danych Azure SQL za pomocą bazy danych automatycznych kopii zapasowych
 SQL Database oferuje następujące opcje odzyskiwania bazy danych przy użyciu [automatyczne kopie zapasowe bazy danych](sql-database-automated-backups.md) i [kopii zapasowych podlegających długoterminowemu przechowywaniu](sql-database-long-term-retention.md). Można przywrócić z kopii zapasowej bazy danych, aby:
@@ -32,7 +32,7 @@ Przywróconej bazy danych generuje koszt dodatkowego magazynu w następujących 
 - Przywracanie P11 – P15 S4-S12 lub P1 – P6, jeśli maksymalnego rozmiaru bazy danych jest większa niż 500 GB.
 - Przywracanie P1 – P6 do S4-S12, jeśli maksymalnego rozmiaru bazy danych jest większa niż 250 GB.
 
-Dodatkowy koszt jest, ponieważ maksymalny rozmiar przywróconej bazy danych jest większe niż wielkość magazynu oferowanego w pakiecie dla poziomu wydajności, a zaaprowizowanego magazynu dodatkowego aprowizowanego ponad uwzględnioną kwotę jest bardzo obciążona.  Aby uzyskać szczegóły dodatkowego magazynu, zobacz [SQL Database, cennik](https://azure.microsoft.com/pricing/details/sql-database/).  Jeśli rzeczywistą ilość miejsca jest mniejsza niż wielkość magazynu oferowanego w pakiecie, następnie to dodatkowych kosztów można uniknąć przez ograniczenie maksymalnego rozmiaru bazy danych do uwzględnioną kwotę.  
+Dodatkowy koszt jest, ponieważ maksymalny rozmiar przywróconej bazy danych jest większe niż wielkość magazynu oferowanego w pakiecie dla rozmiaru obliczeń i zaaprowizowanego magazynu dodatkowego aprowizowanego ponad uwzględnioną kwotę jest bardzo obciążona.  Aby uzyskać szczegóły dodatkowego magazynu, zobacz [SQL Database, cennik](https://azure.microsoft.com/pricing/details/sql-database/).  Jeśli rzeczywistą ilość miejsca jest mniejsza niż wielkość magazynu oferowanego w pakiecie, następnie to dodatkowych kosztów można uniknąć przez ograniczenie maksymalnego rozmiaru bazy danych do uwzględnioną kwotę.  
 
 > [!NOTE]
 > [Automatyczne kopie zapasowe bazy danych](sql-database-automated-backups.md) są używane podczas tworzenia [kopiowanie bazy danych](sql-database-copy.md). 
@@ -43,7 +43,7 @@ Dodatkowy koszt jest, ponieważ maksymalny rozmiar przywróconej bazy danych jes
 Czas odzyskiwania, aby przywrócić bazę danych przy użyciu kopii zapasowych automatycznych bazy danych ma wpływ na kilka czynników: 
 
 * Rozmiar bazy danych
-* Poziom wydajności bazy danych
+* Rozmiar obliczeń bazy danych
 * Liczba zaangażowanych dzienniki transakcji
 * Zmniejszenia liczby działań, który ma być powtórzone odzyskiwanie do punktu przywracania
 * Przepustowość sieci, jeśli przywracania jest w innym regionie 
@@ -72,11 +72,11 @@ Można przywrócić istniejącą bazę danych do wcześniejszego punktu w czasie
 > Aby uzyskać przykładowy skrypt programu PowerShell przedstawiający sposób wykonywania w momencie przywracania bazy danych, zobacz [przywrócić bazę danych SQL przy użyciu programu PowerShell](scripts/sql-database-restore-database-powershell.md).
 >
 
-Można przywrócić bazy danych do poziomu wydajności lub Warstwa usługi, a jako pojedynczą bazę danych lub do puli elastycznej. Upewnij się, że masz wystarczające zasoby, na serwerze logicznym lub w puli elastycznej, na którym odbywa się przywracanie bazy danych. Po wykonaniu tych czynności, przywróconej bazy danych jest normalne, w pełni dostępne online bazy danych. Przywrócona baza danych będzie naliczana opłata w oparciu o jego usługi warstwy i poziomu wydajności do normalnych stawek za użycie. Do czasu ukończenia przywracania bazy danych nie są naliczane opłaty.
+Można przywrócić bazy danych do dowolnej warstwy usługi lub rozmiaru obliczeń i jako pojedynczą bazę danych lub do puli elastycznej. Upewnij się, że masz wystarczające zasoby, na serwerze logicznym lub w puli elastycznej, na którym odbywa się przywracanie bazy danych. Po wykonaniu tych czynności, przywróconej bazy danych jest normalne, w pełni dostępne online bazy danych. Przywrócona baza danych jest rozliczana według normalnych stawek za użycie na podstawie jego warstwy usług i rozmiaru obliczeń. Do czasu ukończenia przywracania bazy danych nie są naliczane opłaty.
 
 Ogólnie przywrócić bazę danych do wcześniejszego punktu w celach recovery. Po wykonaniu tej czynności można traktować przywróconej bazy danych jako mogą zastąpić oryginalnej bazy danych lub użyć go do pobierania danych z, a następnie zaktualizuj oryginalnej bazy danych. 
 
-* ***Baza danych zastępczy:*** Jeśli przywróconej bazy danych jest przeznaczony jako zamiennika dla oryginalnej bazy danych, należy sprawdzić poziom wydajności i/lub warstwy usług są odpowiednie, a także skalowanie bazy danych, jeśli to konieczne. Można zmienić nazwy oryginalnej bazy danych, a następnie nadaj przywróconej bazy danych do oryginalnej nazwy przy użyciu [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database) polecenia języka T-SQL. 
+* ***Baza danych zastępczy:*** Jeśli przywróconej bazy danych jest przeznaczony jako zamiennika dla oryginalnej bazy danych, należy sprawdzić rozmiar obliczeń i/lub warstwy usług są odpowiednie, a także skalowanie bazy danych, jeśli to konieczne. Można zmienić nazwy oryginalnej bazy danych, a następnie nadaj przywróconej bazy danych do oryginalnej nazwy przy użyciu [ALTER DATABASE](/sql/t-sql/statements/alter-database-azure-sql-database) polecenia języka T-SQL. 
 * ***Odzyskiwanie danych:*** Jeśli planowane jest do pobierania danych z przywróconej bazy danych, aby odzyskać sprawność po błędzie użytkownika lub aplikacji, musisz zapisu i wykonywania skryptów odzyskiwania danych niezbędnych do wyodrębniania danych z przywróconej bazy danych do oryginalnej bazy danych. Mimo, że operacja przywracania może zająć dużo czasu, przywracania bazy danych jest widoczny na liście baz danych w całym procesie przywracania. Jeśli usuniesz bazę danych podczas przywracania, operacja przywracania została anulowana i nie są naliczane dla bazy danych, która nie została ukończona, przywracania. 
 
 ### <a name="azure-portal"></a>Azure Portal
@@ -146,7 +146,7 @@ Jak już wspomniano, oprócz witryny Azure portal odzyskiwanie bazy danych możn
 |  | |
 
 ## <a name="summary"></a>Podsumowanie
-Automatyczne kopie zapasowe chronić baz danych użytkownika i błędy aplikacji, usuwać przypadkowym bazy danych, lub długotrwały przestojów. Ta wbudowana funkcja jest dostępna dla wszystkich warstw usług i poziomy wydajności. 
+Automatyczne kopie zapasowe chronić baz danych użytkownika i błędy aplikacji, usuwać przypadkowym bazy danych, lub długotrwały przestojów. Ta wbudowana funkcja jest dostępna dla wszystkich warstw usług i rozmiarów wystąpień obliczeniowych. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Omówienie ciągłości działania i scenariuszach można znaleźć [omówienie ciągłości działania](sql-database-business-continuity.md).

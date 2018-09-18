@@ -1,23 +1,23 @@
 ---
-title: Wykrywanie schematy kolorów
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Pojęcia dotyczące wykrywania schemat kolorów na obrazach za pomocą przetwarzania obrazów w usługach Azure Cognitive Services.
+title: Wykrywanie schematy kolorów — przetwarzanie obrazów
+titleSuffix: Azure Cognitive Services
+description: Pojęcia dotyczące wykrywania schemat kolorów na obrazach za pomocą interfejsu API przetwarzania obrazów.
 services: cognitive-services
 author: deken
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: 66abab93ba9c1152d18428e66d648c6ba690aaa0
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: c01433ed3ef1279bf3db9bdcf76e57aad2208895
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44725384"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983601"
 ---
-# <a name="detecting-color-schemes"></a>Wykrywanie schematy kolorów
+# <a name="detecting-color-schemes"></a>Wykrywanie schematów kolorów
 
 Przetwarzania obrazów wyodrębnia kolory z obrazu. Kolory są następnie analizowane w trzech różnych kontekstach: dominujący kolor, kolor tła dominujący i kolory dominujące obrazu jako całości. Są one podzielone na 12 dominujących kolorów akcentu. Te kolory akcentu są czarne, niebieski, brown, szary, zielony, orange, różowy, fioletowy, red, zielonomodrym, biały i żółty. Przetwarzania obrazów analizuje kolory wyodrębnione z obrazu do zwrócenia reprezentujące najbardziej aktywnej kolorów dla obrazu do przeglądarki przy użyciu kombinacji kolory dominujące i nasycenie kolorem akcentu. W zależności od kolory na obrazie proste czarno biały lub kolorów akcentu mogą być zwracane w szesnastkowe kody kolorów. Przetwarzania obrazów zwraca również wartość logiczną, wskazującą, czy obraz jest czarno- & białe.
 

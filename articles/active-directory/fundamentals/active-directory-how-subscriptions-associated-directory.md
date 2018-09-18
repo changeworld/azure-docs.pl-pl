@@ -1,70 +1,70 @@
 ---
-title: Jak dodać istniejącą subskrypcję platformy Azure do katalogu usługi Azure AD | Microsoft Docs
-description: Jak dodać istniejącą subskrypcję do katalogu usługi Azure AD
+title: Jak dodać istniejącą subskrypcję platformy Azure z dzierżawą usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak dodać istniejącą subskrypcję platformy Azure z dzierżawą usługi Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
 ms.topic: conceptual
-ms.date: 12/12/2017
+ms.date: 09/13/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: oldportal;it-pro;
-ms.openlocfilehash: 6b0933e9aa732cb9a01a454764fb0425465ec078
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.custom: it-pro
+ms.openlocfilehash: dd62b22eca40a214c5b08a9bc48815e40fe90e47
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503315"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984090"
 ---
-# <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Jak skojarzyć lub dodać subskrypcję platformy Azure do usługi Azure Active Directory
+# <a name="how-to-associate-or-add-an-azure-subscription-to-azure-active-directory"></a>Jak: skojarzyć lub dodać subskrypcję platformy Azure do usługi Azure Active Directory
+Subskrypcja platformy Azure ma relację zaufania w usłudze Azure Active Directory (Azure AD), co oznacza, że subskrypcja ufa usługi Azure AD do uwierzytelniania użytkowników, usług i urządzeń. Wiele subskrypcji może ufać tego samego katalogu usługi Azure AD, ale każda subskrypcja zaufać tylko jeden katalog.
 
-W tym artykule opisano relację między subskrypcją platformy Azure i usługą Azure Active Directory (Azure AD) oraz sposób dodawania istniejącej subskrypcji do katalogu usługi Azure AD. Twoja subskrypcja platformy Azure ma relację zaufania z usługą Azure AD, co oznacza, że subskrypcja ufa katalogowi podczas uwierzytelniania użytkowników, usług i urządzeń. Wiele subskrypcji może ufać temu samemu katalogowi, ale każda subskrypcja może ufać tylko jednemu katalogowi. 
+Jeśli subskrypcja wygaśnie, utracisz dostęp do wszystkich innych zasobów skojarzonych z tą subskrypcją. Jednak katalogu usługi Azure AD pozostanie na platformie Azure, umożliwiając skojarzenia i zarządzać katalogiem przy użyciu innej subskrypcji platformy Azure.
 
-Relacja zaufania między subskrypcją a katalogiem różni się od relacji z innymi zasobami na platformie Azure (witrynami internetowymi, bazami danych itd.). Jeśli subskrypcja wygaśnie, dostęp do innych zasobów skojarzonych z tą subskrypcją również nie będzie możliwy. Katalog usługi Azure AD pozostanie jednak na platformie Azure i będzie można skojarzyć z nim inną subskrypcję oraz zarządzać katalogiem przy użyciu nowej subskrypcji.
+Wszyscy użytkownicy mają jeden katalog "domowy" dla uwierzytelniania. Jednak użytkownicy mogą również być gośćmi w innych katalogach. Możesz zobaczyć oba katalogi gości i macierzystego dla każdego użytkownika w usłudze Azure AD.
 
-Wszyscy użytkownicy mają jeden katalog macierzysty, który ich uwierzytelnia, ale mogą również być gośćmi w innych katalogach. W usłudze Azure AD możesz zobaczyć katalogi, w których Twoje konto użytkownika jest członkiem lub gościem.
+>[!Important]
+>Wszystkie [kontroli dostępu opartej na rolach (RBAC)](../../role-based-access-control/role-assignments-portal.md) użytkowników za pomocą przypisanego dostępu oraz wszyscy administratorzy subskrypcji utracą dostęp po subskrypcji zmiany w katalogu. Ponadto jeśli masz żadnych magazynów kluczy, ich będzie również zostaną objęte przeniesienia subskrypcji. Aby rozwiązać ten problem, musisz mieć [zmiana Identyfikatora dzierżawy magazynu kluczy](../../key-vault/key-vault-subscription-move-fix.md) przed wznowieniem operacji.
+
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
+Zanim można skojarzyć lub dodać subskrypcję, należy wykonać następujące zadania:
 
-* Musisz zalogować się przy użyciu konta mającego dostęp właściciela RBAC do subskrypcji.
-* Musisz zalogować się przy użyciu konta, które istnieje w bieżącym katalogu, z którym jest skojarzona subskrypcja, oraz w katalogu, do którego chcesz ją dodać. Aby dowiedzieć się więcej na temat uzyskiwania dostępu do innego katalogu, zobacz [W jaki sposób administratorzy usługi Azure Active Directory dodają użytkowników we współpracy B2B?](../b2b/add-users-administrator.md)
-* Ta funkcja jest niedostępna dla subskrypcji dostawców usług w chmurze (MS-AZR-0145P, MS-AZR-0146P, MS-AZR-159P) ani subskrypcji Microsoft Imagine (MS-AZR-0144P).
+- Zaloguj się przy użyciu konta, które:
+    - Ma **właściciela RBAC** dostępu do subskrypcji.
 
+    - Istnieje w bieżącym katalogu, który jest skojarzony z subskrypcją i nowego katalogu, który jest, które chcesz skojarzyć subskrypcję, w przyszłości. Aby uzyskać więcej informacji na temat uzyskiwania dostępu do innego katalogu, zobacz [jak Administratorzy usługi Azure Active Directory dodać użytkowników we współpracy B2B?](../b2b/add-users-administrator.md).
+
+- Upewnij się, że nie używasz subskrypcję dostawcy usługi Azure w chmurze (CSP) (MS-AZR - 0145 P, MS - AZR - 0146 P, MS - AZR - 159 P), subskrypcję Internal firmy Microsoft (MS-AZR - 0015 P) lub subskrypcję programu Microsoft Imagine (MS-AZR - 0144 P).
+    
 ## <a name="to-associate-an-existing-subscription-to-your-azure-ad-directory"></a>Aby skojarzyć lub dodać istniejącą subskrypcję do katalogu usługi Azure AD
+1. Zaloguj się i wybierz subskrypcję, której chcesz użyć z [strony subskrypcje w witrynie Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
 
-1. Zaloguj się i wybierz subskrypcję ze [strony Subskrypcje w witrynie Azure Portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-2. Kliknij przycisk **Zmień katalog**.
+2. Wybierz **Zmień katalog**.
 
-    ![Zrzut ekranu przedstawiający przycisk Zmień katalog](./media/active-directory-how-subscriptions-associated-directory/edit-directory-button.PNG)
-3. Przejrzyj ostrzeżenia. Po zmianie katalogu subskrypcji wszyscy użytkownicy usługi [Kontrola dostępu oparta na rolach (RBAC)](../../role-based-access-control/role-assignments-portal.md) z przypisanym dostępem oraz wszyscy administratorzy subskrypcji utracą dostęp.
-4. Wybierz katalog.
+    ![Strony subskrypcje, z podświetloną opcją katalogu zmiany](media/active-directory-how-subscriptions-associated-directory/change-directory-button.png)
 
-    ![Zrzut ekranu przedstawiający interfejs użytkownika podczas zmiany katalogu](./media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.PNG)
-5. Kliknij przycisk **Zmień**.
-6. To wszystko! Użyj przełącznika katalogów, aby przejść do nowego katalogu. Może upłynąć do 10 minut, zanim wszystko zostanie poprawnie wyświetlone.
+3. Przejrzyj wszelkie ostrzeżenia, które są wyświetlane, a następnie wybierz **zmiany**.
 
-    ![Zrzut ekranu przedstawiający powiadomienie o pomyślnej zmianie katalogu](./media/active-directory-how-subscriptions-associated-directory/edit-directory-success.PNG)
+    ![Zmień przedstawiający katalogu, aby zmienić stronę katalogu](media/active-directory-how-subscriptions-associated-directory/edit-directory-ui.png)
 
-    ![Zrzut ekranu przedstawiający przełącznik](./media/active-directory-how-subscriptions-associated-directory/directory-switcher.PNG)
+    Zmianie katalogu subskrypcji, i otrzymujesz komunikat o powodzeniu.
 
+    ![Komunikat o powodzeniu](media/active-directory-how-subscriptions-associated-directory/edit-directory-success.png)    
 
-Przeniesienie subskrypcji ma także wpływ na wszelkie posiadane magazyny kluczy platformy Azure, dlatego [zmień identyfikator dzierżawy magazynu kluczy](../../key-vault/key-vault-subscription-move-fix.md) przed wznowieniem operacji.
+4. Użyj przełącznika katalogów, aby przejść do nowego katalogu. Może upłynąć do 10 minut, zanim wszystko zostanie poprawnie wyświetlone.
 
-Zmienianie katalogu subskrypcji jest operacją wykonywaną na poziomie usługi. Nie ma ona wpływu na własność rozliczeń subskrypcji, a administrator konta nadal może zmienić administratora usługi za pomocą [Centrum konta](https://account.azure.com/subscriptions). Jeśli chcesz usunąć oryginalny katalog, musisz przenieść własność rozliczeń subskrypcji na nowego administratora konta. Aby dowiedzieć się więcej na temat przenoszenia własności rozliczeń, zobacz [Transfer ownership of an Azure subscription to another account](../../billing/billing-subscription-transfer.md) (Przenoszenie własności subskrypcji platformy Azure na inne konto). 
+    ![Strony przełącznik katalogu](media/active-directory-how-subscriptions-associated-directory/directory-switcher.png)
+
+Zmienianie katalogu subskrypcji jest operacją poziomu usług, dzięki czemu nie ma wpływu na własność rozliczeń subskrypcji. Administrator konta nadal może zmienić administratora usługi z [Centrum kont](https://account.azure.com/subscriptions). Aby usunąć oryginalny katalog, trzeba przekazać subskrypcji, rozliczeń prawa własności do nowego administratora konta. Aby dowiedzieć się więcej na temat przenoszenia własności rozliczeń, zobacz [Transfer ownership of an Azure subscription to another account](../../billing/billing-subscription-transfer.md) (Przenoszenie własności subskrypcji platformy Azure na inne konto). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się więcej na temat bezpłatnego tworzenia nowego katalogu usługi Azure AD, zobacz [Jak uzyskać dzierżawę usługi Azure Active Directory](../develop/quickstart-create-new-tenant.md).
-* Aby dowiedzieć się więcej na temat przenoszenia własności rozliczeń subskrypcji platformy Azure, zobacz [Transfer ownership of an Azure subscription to another account](../../billing/billing-subscription-transfer.md) (Przenoszenie własności subskrypcji platformy Azure na inne konto).
-* Aby dowiedzieć się więcej o kontrolowaniu dostępu do zasobów na platformie Microsoft Azure, zobacz [Understanding resource access in Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md) (Opis dostępu do zasobów na platformie Azure).
-* Aby uzyskać więcej informacji na temat sposobu przypisywania ról w usłudze Azure AD, zobacz [Przypisywanie ról administratorów w usłudze Azure Active Directory](../users-groups-roles/directory-assign-admin-roles.md).
+- Aby utworzyć nowe usługi Azure AD dzierżawy, zobacz [dostępu do usługi Azure Active Directory, aby utworzyć nową dzierżawę](active-directory-access-create-new-tenant.md)
 
-<!--Image references-->
-[1]: ./media/active-directory-how-subscriptions-associated-directory/WAAD_PassThruAuth.png
-[2]: ./media/active-directory-how-subscriptions-associated-directory/WAAD_OrgAccountSubscription.png
-[3]: ./media/active-directory-how-subscriptions-associated-directory/WAAD_SignInDisambiguation.PNG
+- Aby dowiedzieć się więcej o kontrolowaniu dostępu do zasobów na platformie Microsoft Azure, zobacz [Understanding resource access in Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md) (Opis dostępu do zasobów na platformie Azure).
+
+- Aby dowiedzieć się więcej na temat sposobu przypisywania ról w usłudze Azure AD, zobacz [sposobu przypisywania ról w katalogu dla użytkowników w usłudze Azure Active Directory](active-directory-users-assign-role-azure-portal.md)

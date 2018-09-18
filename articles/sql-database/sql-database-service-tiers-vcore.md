@@ -6,15 +6,15 @@ author: CarlRabeler
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/30/2018
+ms.date: 09/14/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 8266d9e3530969154ac9c8c877badda9f8b4fed3
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 93b017482006507d616d9125cd17fd2f14389d59
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307276"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983050"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Wybieranie warstwy usług (rdzeń wirtualny), obliczeniowych, pamięci, magazynu i zasoby we/wy
 
@@ -26,7 +26,7 @@ model rdzenia wirtualnego pozwala również na używanie [hybrydowej platformy A
 
 ## <a name="service-tier-characteristics"></a>Właściwości warstwy usług
 
-Model rdzenia wirtualnego zapewnia dwie warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy. Warstwy usługi są zróżnicowane według szeroką gamę poziomów wydajności, projekt wysokiej dostępności, odporności izolacji, typów pamięci masowej i zakres operacji We/Wy. Klienta należy skonfigurować osobno wymagane okres przechowywania i przechowywania kopii zapasowych.
+Model rdzenia wirtualnego zapewnia dwie warstwy usług ogólnego przeznaczenia i krytyczne dla działania firmy. Warstwy usługi są zróżnicowane według szeroką gamę rozmiarów wystąpień obliczeniowych, projekt wysokiej dostępności, odporności izolacji, typów pamięci masowej i zakres operacji We/Wy. Klienta należy skonfigurować osobno wymagane okres przechowywania i przechowywania kopii zapasowych.
 
 Poniższa tabela pomoże Ci zrozumieć różnice między tymi dwoma warstwami:
 
@@ -53,10 +53,10 @@ Zobacz [— często zadawane pytania dla bazy danych SQL](sql-database-faq.md) o
 
 Rozważ następujące źródła:
 - Przydzielenia pamięci, która jest używana przez pliki danych (MDF) i plików (LDF) dziennika.
-- Każdy poziom wydajności pojedynczej bazy danych obsługuje maksymalny rozmiar bazy danych, za pomocą domyślny maksymalny rozmiar 32 GB.
+- Każdej pojedynczej bazy danych zasobów obliczeniowych obsługuje rozmiar maksymalny rozmiar bazy danych, za pomocą domyślny maksymalny rozmiar 32 GB.
 - Po skonfigurowaniu rozmiar wymagany pojedynczej bazy danych (rozmiar MDF), 30% dodatkowego miejsca do magazynowania jest automatycznie dodawany do obsługi LDF
 - Określony rozmiar magazynu w wystąpieniu zarządzanym usługi musi być wielokrotność 32 GB.
-- Można wybrać dowolnego rozmiaru bazy danych pojedyncze między 10 GB i maksymalnej obsługiwanej
+- Można wybrać żadnych rozmiar pojedynczej bazy danych między 10 GB i maksymalnej obsługiwanej
  - Dla magazynu w warstwie standardowa należy zwiększyć lub zmniejszyć rozmiar w przyrostach co 10 GB
  - Dla usługi Premium storage należy zwiększyć lub zmniejszyć rozmiar w partiach po 250 GB
 - W przypadku warstwy usług ogólnego przeznaczenia `tempdb` używa dołączone dyski SSD i ten koszt przechowywania jest uwzględniona w cenie — rdzeń wirtualny.
@@ -113,13 +113,13 @@ Migracja grup trybu failover z wieloma bazami danych wymaga migracji poszczegól
 
 ### <a name="creation-of-a-geo-replication-secondary"></a>Tworzenie pomocniczej replikacji geograficznej
 
-Można utworzyć tylko przy użyciu tej samej warstwy usługi jako podstawowy pomocniczej geograficznej. Baza danych o szybkości generowania rekordów dziennika wysoka zalecane jest, czy pomocniczy został utworzony na tym samym poziomie wydajności jako podstawowy. Jeśli tworzysz pomocniczej geograficznej w puli elastycznej dla pojedynczej podstawowej bazy danych, zaleca się że pula ma `maxVCore` ustawienia jest zgodny z poziomem wydajności podstawowej bazy danych. Jeśli tworzysz pomocniczej geograficznej w puli elastycznej dla podstawowego w innej puli elastycznej, zalecane pule mają taką samą `maxVCore` ustawienia
+Można utworzyć tylko przy użyciu tej samej warstwy usługi jako podstawowy pomocniczej geograficznej. Baza danych o szybkości generowania rekordów dziennika wysoka zalecane jest, czy pomocniczy został utworzony przy użyciu tego samego rozmiaru obliczeń jako podstawowy. Jeśli tworzysz pomocniczej geograficznej w puli elastycznej dla pojedynczej podstawowej bazy danych, zaleca się że pula ma `maxVCore` ustawienie odpowiada rozmiarowi obliczeń podstawowej bazy danych. Jeśli tworzysz pomocniczej geograficznej w puli elastycznej dla podstawowego w innej puli elastycznej, zalecane pule mają taką samą `maxVCore` ustawienia
 
 ### <a name="using-database-copy-to-convert-a-dtu-based-database-to-a-vcore-based-database"></a>Przy użyciu kopii bazy danych do przekonwertowania bazy danych oparty na jednostkach DTU na bazę danych oparty na rdzeniach wirtualnych.
 
-Można skopiować dowolną bazę danych z poziomem wydajności oparty na jednostkach DTU do bazy danych o wydajności oparty na rdzeniach wirtualnych poziomu bez ograniczeń lub specjalne, sekwencjonowanie tak długo, jak poziom wydajności miejsca docelowego obsługuje maksymalny rozmiar bazy danych źródłowej bazy danych. Jest to spowodowane kopii bazy danych tworzy migawkę danych od godziny rozpoczęcia operacji kopiowania i nie wykonuje synchronizację danych między źródłowym a docelowym. 
+Można skopiować dowolną bazę danych o rozmiarze mocą obliczeniową opartą na jednostkach DTU do bazy danych o rozmiarze oparty na rdzeniach wirtualnych obliczeń bez ograniczeń lub specjalne sekwencjonowania, tak długo, jak rozmiar obliczeń docelowej obsługuje maksymalny rozmiar bazy danych źródłowej bazy danych. Jest to spowodowane kopii bazy danych tworzy migawkę danych od godziny rozpoczęcia operacji kopiowania i nie wykonuje synchronizację danych między źródłowym a docelowym. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby uzyskać szczegółowe informacje o określonych poziomów wydajności i dostępności dla pojedynczej bazy danych opcje rozmiaru magazynu, zobacz [limity zasobów opartych na rdzeniach wirtualnych bazy danych SQL Database dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md#single-database-storage-sizes-and-performance-levels)
-- Szczegółowe informacje dotyczące określonych poziomów wydajności i magazynowania dostępnych dla pul elastycznych opcji rozmiaru zawiera [bazy danych SQL Database oparty na rdzeniach wirtualnych zasobów limity dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels).
+- Aby uzyskać szczegółowe informacje na temat określonych zasobów obliczeniowych, rozmiary i opcje rozmiaru magazynu jest dostępny dla pojedynczej bazy danych, zobacz [limity zasobów opartych na rdzeniach wirtualnych bazy danych SQL Database dla pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes)
+- Szczegółowe informacje na temat określonych obliczenia rozmiarów i wyświetlić opcje rozmiaru magazynu jest dostępne dla elastycznych pul [bazy danych SQL Database oparty na rdzeniach wirtualnych zasobów limity dla pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).

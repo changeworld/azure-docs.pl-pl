@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: c1ea223bf00dea32fb150cf141be7b5ea3239215
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: ca6d36a4f06865b630e869623752bc5d488b6251
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055424"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732944"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pojedynczej bazy danych
 
@@ -26,14 +26,14 @@ Oparte na jednostkach DTU limitów zakupu modelu zobacz [limity zasobów na pods
 > W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
 
 
-## <a name="single-database-storage-sizes-and-performance-levels"></a>Pojedyncza baza danych: magazyn o rozmiarze i poziomy wydajności
+## <a name="single-database-storage-sizes-and-compute-sizes"></a>Pojedyncza baza danych: magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych
 
-Dla pojedynczych baz danych w poniższych tabelach przedstawiono zasoby dostępne dla pojedynczej bazy danych w poszczególnych usług warstwy i poziomu wydajności. Można ustawić warstwę usługi, poziom wydajności i ilość miejsca w magazynie dla pojedynczej bazy danych za pomocą [witryny Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [języka Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), [Wiersza polecenia platformy azure](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases), lub [interfejsu API REST](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases).
+Dla pojedynczych baz danych w poniższych tabelach Pokaż zasoby dostępne dla pojedynczej bazy danych w poszczególnych warstwach usług i obliczenia rozmiaru. Można ustawić warstwę usługi, rozmiar obliczeń i ilość miejsca w magazynie dla pojedynczej bazy danych za pomocą [witryny Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [języka Transact-SQL](sql-database-single-databases-manage.md#transact-sql-manage-logical-servers-and-databases), [PowerShell](sql-database-single-databases-manage.md#powershell-manage-logical-servers-and-databases), [ Interfejs wiersza polecenia Azure](sql-database-single-databases-manage.md#azure-cli-manage-logical-servers-and-databases), lub [interfejsu API REST](sql-database-single-databases-manage.md#rest-api-manage-logical-servers-and-databases).
 
 ### <a name="general-purpose-service-tier"></a>Warstwy usług w usłudze ogólnego przeznaczenia
 
 #### <a name="generation-4-compute-platform"></a>Platforma obliczeniowa generacja 4
-|Poziom wydajności|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24
+|Obliczenia rozmiaru|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
 |Rdzenie wirtualne|1|2|4|8|16|24|
@@ -55,7 +55,7 @@ Dla pojedynczych baz danych w poniższych tabelach przedstawiono zasoby dostępn
 |||
 
 #### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa generowania 5
-|Poziom wydajności|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40| GP_Gen5_80|
+|Obliczenia rozmiaru|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40| GP_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |
 |Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|
 |Rdzenie wirtualne|2|4|8|16|24|32|40|80|
@@ -79,7 +79,7 @@ Dla pojedynczych baz danych w poniższych tabelach przedstawiono zasoby dostępn
 ### <a name="business-critical-service-tier"></a>Warstwy usług krytycznych biznesowych
 
 #### <a name="generation-4-compute-platform"></a>Platforma obliczeniowa generacja 4
-|Poziom wydajności|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
+|Obliczenia rozmiaru|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
 |Rdzenie wirtualne|1|2|4|8|16|24|
@@ -101,7 +101,7 @@ Dla pojedynczych baz danych w poniższych tabelach przedstawiono zasoby dostępn
 |||
 
 #### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa generowania 5
-|Poziom wydajności|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
+|Obliczenia rozmiaru|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
 |Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|5|
 |Rdzenie wirtualne|2|4|8|16|24|32|40|80|

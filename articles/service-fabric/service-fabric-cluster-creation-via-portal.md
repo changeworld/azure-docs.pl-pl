@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/06/2018
 ms.author: aljo
-ms.openlocfilehash: e56c60f67dcfe5c11191942a812d2c670055dfd8
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: fbca9c746863b852a9ddd46d00a65d4133961718
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092652"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984377"
 ---
 # <a name="create-a-service-fabric-cluster-in-azure-using-the-azure-portal"></a>Tworzenie klastra usługi Service Fabric na platformie Azure przy użyciu witryny Azure portal
 > [!div class="op_single_selector"]
@@ -123,7 +123,7 @@ Skonfiguruj węzły klastra. Typy węzłów definiują rozmiarów maszyn wirtual
 7. **Włącz zwrotny serwer proxy**.  [Usługi Service Fabric zwrotny serwer proxy](service-fabric-reverseproxy.md) mikrousług pomaga działającego w klastrze usługi Service Fabric odnajdywania i komunikować się z innymi usługami, które mają punktów końcowych http.
 8. W obszarze **+ Pokaż ustawienia opcjonalne**, skonfigurować klaster **diagnostyki**. Domyślnie diagnostyki są włączone w klastrze na potrzeby rozwiązywania problemów. Jeśli chcesz wyłączyć zmiany diagnostyki **stan** Przełącz, aby **poza**. Wyłączenie diagnostyki jest **nie** zalecane. Jeśli już masz utworzonego projektu usługi Application Insights, a następnie przekazać jego klucza śladów aplikacji są kierowane do niego.
 9. **Uwzględnij usługę DNS**.  [Usługi DNS](service-fabric-dnsservice.md) to opcjonalna usługa, która umożliwia znalezienie innych usług za pomocą protokołu DNS.
-10. Wybierz **tryb uaktualniania sieci szkieletowej** ma równa klastra. Wybierz **automatyczne**, jeśli system ma automatycznie wybierze najnowszej dostępnej wersji i spróbuj uaktualnić klaster do niego. Ustaw tryb **ręczne**, jeśli chcesz wybrać obsługiwaną wersję. Szczegółowe informacje na temat tryb uaktualniania sieci szkieletowej na ten temat można znaleźć w [dokumencie klastra uaktualniania, usługi Service fabric w-]. [service-fabric-— uaktualniania klastra]
+10. Wybierz **tryb uaktualniania sieci szkieletowej** ma równa klastra. Wybierz **automatyczne**, jeśli system ma automatycznie wybierze najnowszej dostępnej wersji i spróbuj uaktualnić klaster do niego. Ustaw tryb **ręczne**, jeśli chcesz wybrać obsługiwaną wersję. Szczegółowe informacje na temat sieci szkieletowej uaktualnić tryb zobacz [klastra uaktualniania, usługi Service fabric w-dokumentu.][service-fabric-cluster-upgrade]
 
 > [!NOTE]
 > Obsługiwane są tylko klastry z systemem obsługiwanych wersji usługi Service Fabric. Wybierając **ręczne** trybie są przełączania się na odpowiedzialność do uaktualnienia klastra do obsługiwanej wersji.
@@ -225,7 +225,8 @@ W tym momencie masz zabezpieczonego klastra za pomocą certyfikatów do uwierzyt
 [service-fabric-connect-and-communicate-with-services]: service-fabric-connect-and-communicate-with-services.md
 [service-fabric-health-introduction]: service-fabric-health-introduction.md
 [service-fabric-reliable-services-backup-restore]: service-fabric-reliable-services-backup-restore.md
-<!--[remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md#remote-connect-to-a-virtual-machine-scale-set-instance-or-a-cluster-node --> [remote-connect-to-a-vm-scale-set]: service-fabric klastra — nodetypes.md [service-fabric-— uaktualniania klastra]: klastra upgrade.md, Usługa Service fabric w-d
+[remote-connect-to-a-vm-scale-set]: service-fabric-cluster-nodetypes.md
+[service-fabric-cluster-upgrade]: service-fabric-cluster-upgrade.md
 
 <!--Image references-->
 [SearchforServiceFabricClusterTemplate]: ./media/service-fabric-cluster-creation-via-portal/SearchforServiceFabricClusterTemplate.png

@@ -9,12 +9,12 @@ ms.custom: develop databases
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: jodebrui
-ms.openlocfilehash: f4e056e9f8461085df6ae447672e2c9ec91aa3ca
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 5fd0d487371acdf8d0b3301cc881aa2f059a9f41
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092407"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984156"
 ---
 # <a name="optimize-performance-by-using-in-memory-technologies-in-sql-database"></a>Optymalizowanie wydajności przy użyciu technologii w pamięci w bazie danych SQL
 
@@ -72,7 +72,7 @@ Szczegółowe materiały wideo o technologii:
 
 Przetwarzanie OLTP danych w pamięci zawiera tabele zoptymalizowane pod kątem pamięci, które są używane do przechowywania danych użytkownika. Te tabele są wymagane, aby zmieścić ją w pamięci. Ponieważ zarządzasz pamięci bezpośrednio w usłudze SQL Database, mamy koncepcji limit przydziału dla danych użytkownika. Ten pomysł nazywa się *pojemność magazynu OLTP w pamięci*.
 
-Każdy obsługiwany autonomicznej bazy danych, warstwa cenowa i poszczególnych pul elastycznych w warstwie cenowej obejmuje pewien pojemność magazynu OLTP w pamięci. Zobacz [limity zasobów oparty na jednostkach DTU — Pojedyncza baza danych](sql-database-dtu-resource-limits-single-databases.md), [limity zasobów oparty na jednostkach DTU - pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md),[limity zasobów opartych na rdzeniach wirtualnych - pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md) i [limity zasobów opartych na rdzeniach wirtualnych - pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md).
+Każdy obsługiwany pojedynczej bazy danych warstwa cenowa i poszczególnych pul elastycznych w warstwie cenowej obejmuje pewien pojemność magazynu OLTP w pamięci. Zobacz [limity zasobów oparty na jednostkach DTU — Pojedyncza baza danych](sql-database-dtu-resource-limits-single-databases.md), [limity zasobów oparty na jednostkach DTU - pul elastycznych](sql-database-dtu-resource-limits-elastic-pools.md),[limity zasobów opartych na rdzeniach wirtualnych - pojedynczych baz danych](sql-database-vcore-resource-limits-single-databases.md) i [limity zasobów opartych na rdzeniach wirtualnych - pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md).
 
 Następujące elementy są wliczane do dumy magazynu OLTP w pamięci:
 

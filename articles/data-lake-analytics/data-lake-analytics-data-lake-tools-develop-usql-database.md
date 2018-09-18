@@ -10,12 +10,12 @@ ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.workload: big-data
 ms.date: 07/03/2018
-ms.openlocfilehash: c731fd78ed7052697b3a5bd7c4da3a743e5a208d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 4518011fbeaefbb32403f5b37e434e7315beffa0
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299617"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734928"
 ---
 # <a name="use-a-u-sql-database-project-to-develop-a-u-sql-database-for-azure-data-lake"></a>Użyj projektu bazy danych U-SQL do tworzenia bazy danych U-SQL dla usługi Azure Data Lake
 
@@ -94,7 +94,7 @@ Możesz wdrożyć bazę danych U-SQL za pomocą projektu bazy danych U-SQL lub p
 
 `PackageDeploymentTool.exe` udostępnia programowania i interfejsów z wierszem polecenia, które ułatwiają wdrażanie bazy danych U-SQL. Zestaw SDK jest uwzględniony w [pakietu Nuget zestawu SDK U-SQL](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)znajdujący się w folderze `build/runtime/PackageDeploymentTool.exe`.
 
-[Dowiedz się więcej na temat zestawu SDK oraz sposób konfigurowania potoku ciągłej integracji/ciągłego wdrażania na potrzeby wdrażania bazy danych U-SQL](data-lake-analytics-cicd-overview.md#deploy-u-sql-database-through-azure-devops).
+[Dowiedz się więcej na temat zestawu SDK oraz sposób konfigurowania potoku ciągłej integracji/ciągłego wdrażania na potrzeby wdrażania bazy danych U-SQL](data-lake-analytics-cicd-overview.md).
 
 ## <a name="reference-a-u-sql-database-project"></a>Odwoływać się do projektu bazy danych U-SQL
 

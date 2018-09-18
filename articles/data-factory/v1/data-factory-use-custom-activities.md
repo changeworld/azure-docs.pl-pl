@@ -1,6 +1,6 @@
 ---
 title: Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
-description: Informacje o sposobie tworzenia niestandardowych działań i używać ich w potoku fabryki danych Azure.
+description: Dowiedz się, jak tworzyć niestandardowe działania i używać ich w potoku usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -14,74 +14,74 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: douglasl
 robots: noindex
-ms.openlocfilehash: 044d47a294df4e218c84a928a63426dde4f8373b
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 580dd5bf6a7e905927189f4b1ae42ab49a1cbc80
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37053137"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730719"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
-> * [W wersji 1](data-factory-use-custom-activities.md)
-> * [W wersji 2 (bieżąca wersja)](../transform-data-using-dotnet-custom-activity.md)
+> * [Wersja 1](data-factory-use-custom-activities.md)
+> * [Wersja 2 (bieżąca wersja)](../transform-data-using-dotnet-custom-activity.md)
 
 > [!NOTE]
-> Ten artykuł dotyczy wersji 1 fabryki danych. Jeśli używasz bieżącą wersję usługi fabryka danych, zobacz [działań niestandardowych w wersji 2](../transform-data-using-dotnet-custom-activity.md).
+> Ten artykuł dotyczy wersji 1 usługi Data Factory. Jeśli używasz bieżącą wersję usługi Data Factory, zobacz [niestandardowych działań w wersji 2](../transform-data-using-dotnet-custom-activity.md).
 
-Istnieją dwa typy działań, które można używać w potoku fabryki danych Azure.
+Istnieją dwa typy działań, które można używać w potoku usługi Azure Data Factory.
 
-- [Działania przepływu danych](data-factory-data-movement-activities.md) do przenoszenia danych między [obsługiwane magazyny danych źródłowy i odbiorczy](data-factory-data-movement-activities.md#supported-data-stores-and-formats).
-- [Działania przekształcania danych](data-factory-data-transformation-activities.md) do przekształcania danych przy użyciu usług, takich jak Azure HDInsight, partii zadań Azure i usługi Azure Machine Learning obliczeniowe. 
+- [Działania przenoszenia danych](data-factory-data-movement-activities.md) do przenoszenia danych między [obsługiwane magazyny danych źródła i ujścia](data-factory-data-movement-activities.md#supported-data-stores-and-formats).
+- [Działania przekształcania danych](data-factory-data-transformation-activities.md) do przekształcania danych za pomocą usług obliczeniowych, takich jak Azure HDInsight, Azure Batch i Azure Machine Learning. 
 
-Aby przenieść dane do/z magazynem danych, który nie obsługuje fabryki danych, należy utworzyć **działania niestandardowego** z własnych logiki przenoszenia danych i użyj działania w potoku. Podobnie aby proces/transformacji danych w taki sposób, który nie jest obsługiwany przez fabrykę danych, tworzenie niestandardowego działania na własną logikę przekształcania danych i użyj działania w potoku. 
+Aby przenieść dane do/z magazynu danych, który nie obsługuje usługi Data Factory, należy utworzyć **niestandardowe działanie** z własną logiką przepływu danych i używania działania w potoku. Podobnie celu przekształcenie/przetworzenie danych w sposób, który nie jest obsługiwany przez usługę Data Factory, Utwórz niestandardowe działanie za pomocą własnej logiki przekształcania danych i użyć działania w potoku. 
 
-Można skonfigurować niestandardowe działania do uruchamiania na **partii zadań Azure** puli maszyn wirtualnych. Korzystając z partii zadań Azure, można użyć tylko istniejącej puli partii zadań Azure.
+Można skonfigurować niestandardowe działanie, aby uruchomić na **usługi Azure Batch** puli maszyn wirtualnych. Korzystając z usługi Azure Batch, można użyć tylko istniejącej puli Azure Batch.
 
-Następujący przewodnik zawiera instrukcje krok po kroku dotyczące tworzenia działań niestandardowych .NET i używania działań niestandardowych w potoku. Użyto **partii zadań Azure** połączonej usługi. 
+Następujące instruktaż zawiera szczegółowe instrukcje dotyczące tworzenia niestandardowe działanie platformy .NET i używania niestandardowego działania w potoku. Przewodnik używa **usługi Azure Batch** połączoną usługę. 
 
 > [!IMPORTANT]
-> - Nie jest możliwe użycie bramę zarządzania danymi z działań niestandardowych dostęp do lokalnych źródeł danych. Obecnie [brama zarządzania danymi](data-factory-data-management-gateway.md) obsługuje tylko działania kopiowania i działania procedury składowanej w fabryce danych.   
+> - Nie jest możliwe użycie bramy zarządzania danymi z działań niestandardowych dostęp do lokalnych źródeł danych. Obecnie [bramy zarządzania danymi](data-factory-data-management-gateway.md) obsługuje tylko działania kopiowania i działanie procedury składowanej w usłudze Data Factory.   
 
-## <a name="walkthrough-create-a-custom-activity"></a>Wskazówki: Tworzenie niestandardowego działania
+## <a name="walkthrough-create-a-custom-activity"></a>Przewodnik: Tworzenie niestandardowego działania
 ### <a name="prerequisites"></a>Wymagania wstępne
 * Visual Studio 2012/2013/2015
 * Pobierz i zainstaluj zestaw [SDK .NET Azure](https://azure.microsoft.com/downloads/).
 
-### <a name="azure-batch-prerequisites"></a>Wymagania wstępne partii platformy Azure
-W tym przewodnikiem możesz uruchomić własnych działań platformy .NET przy użyciu partii zadań Azure jako zasoby obliczeniowe. **Partia zadań Azure** Trwa obliczanie platformy usług do uruchomienia równoległego na dużą skalę i wysokiej wydajności (HPC) aplikacji wydajnie w chmurze. Partia zadań Azure Planowanie zadań obliczeniowych do uruchamiania na zarządzanego **kolekcji maszyn wirtualnych**, i może automatycznie skali zasoby obliczeniowe do potrzeb zadań. Zobacz [podstawowe informacje o partii zadań Azure] [ batch-technical-overview] artykułu szczegółowe omówienie usługi partia zadań Azure.
+### <a name="azure-batch-prerequisites"></a>Wymagania wstępne usługi Azure Batch
+W instruktażu możesz uruchamiać swoje niestandardowe działania programu .NET przy użyciu usługi Azure Batch jako zasobów obliczeniowych. **Usługa Azure Batch** jest przetwarzanie platformy usługi do uruchamiania dużych równoległych i o wysokiej wydajności aplikacji (HPC), wydajnie w chmurze. Usługa Azure Batch planuje pracę intensywnych obliczeń do uruchamiania na zarządzanej **kolekcji maszyn wirtualnych**, i może automatycznie skalować zasoby obliczeniowe do potrzeb Twojego zadania. Zobacz [podstawy usługi Azure Batch] [ batch-technical-overview] artykułu szczegółowe omówienie usługi Azure Batch.
 
-Samouczek należy utworzyć konto partii zadań Azure przy użyciu puli maszyn wirtualnych. Oto konkretne kroki:
+Samouczek należy utworzyć konto usługi Azure Batch przy użyciu puli maszyn wirtualnych. Oto konkretne kroki:
 
-1. Utwórz **konto partii zadań Azure** przy użyciu [portalu Azure](http://portal.azure.com). Zobacz [tworzenie i zarządzanie nimi konto partii zadań Azure] [ batch-create-account] artykułu, aby uzyskać instrukcje.
-2. Zanotuj nazwę konta usługi partia zadań Azure, klucz konta, identyfikator URI i nazwa puli. Należy je w celu utworzenia usługi partia zadań Azure połączone.
-    1. Na stronie głównej dla konta usługi partia zadań Azure, zobacz **adres URL** w następującym formacie: `https://myaccount.westus.batch.azure.com`. W tym przykładzie **myaccount** jest nazwa konta partii zadań Azure. Identyfikator URI używanych w definicji połączonej usługi jest adresem URL bez nazwy konta. Na przykład: `https://<region>.batch.azure.com`.
+1. Tworzenie **konta usługi Azure Batch** przy użyciu [witryny Azure portal](http://portal.azure.com). Zobacz [Tworzenie konta usługi Azure Batch i zarządzanie nim] [ batch-create-account] artykuł, aby uzyskać instrukcje.
+2. Zanotuj nazwę konta usługi Azure Batch, klucza konta, identyfikator URI i nazwy puli. Będą one potrzebne do tworzenia usługi Azure Batch połączone.
+    1. Na stronie głównej konta usługi Azure Batch, zobacz **adresu URL** w następującym formacie: `https://myaccount.westus.batch.azure.com`. W tym przykładzie **myaccount** jest nazwą konta usługi Azure Batch. Identyfikator URI, których używasz w definicji połączonej usługi jest adres URL bez nazwy konta. Na przykład: `https://<region>.batch.azure.com`.
     2. Kliknij przycisk **klucze** w menu po lewej stronie, a następnie skopiuj **podstawowy klucz dostępu**.
     3. Aby użyć istniejącej puli, kliknij **pule** na pasku menu, a następnie zanotuj **identyfikator** puli. Jeśli nie masz istniejącej puli, przejdź do następnego kroku.     
-2. Utwórz **puli partii zadań Azure**.
+2. Tworzenie **puli Azure Batch**.
 
-   1. W [portalu Azure](https://portal.azure.com), kliknij przycisk **Przeglądaj** w menu po lewej stronie, a następnie kliknij przycisk **konta usługi partia zadań**.
-   2. Wybierz konto partii zadań Azure, aby otworzyć **konta usługi partia zadań** bloku.
+   1. W [witryny Azure portal](https://portal.azure.com), kliknij przycisk **Przeglądaj** w menu po lewej stronie, a następnie kliknij przycisk **konta usługi Batch**.
+   2. Wybierz swoje konto usługi Azure Batch, aby otworzyć **konta usługi Batch** bloku.
    3. Kliknij przycisk **pule** kafelka.
-   4. W **pule** bloku, kliknij przycisk Dodaj, aby dodać pulę na pasku narzędzi.
-      1. Wpisz identyfikator puli (identyfikator puli). Uwaga **identyfikator puli**; potrzebne podczas tworzenia rozwiązania fabryki danych.
-      2. Określ **systemu Windows Server 2012 R2** ustawienia rodziny systemów operacyjnych.
-      3. Wybierz **warstwę cenową węzła**.
-      4. Wprowadź **2** wartości dla **docelowego w wersji dedykowanej** ustawienie.
-      5. Wprowadź **2** wartości dla **maksymalna liczba zadań na węzeł** ustawienie.
+   4. W **pule** bloku, kliknij przycisk Dodaj na pasku narzędzi, aby dodać pulę.
+      1. Wpisz identyfikator puli (identyfikator puli). Uwaga **identyfikator puli**; będzie on potrzebny podczas tworzenia rozwiązania usługi Data Factory.
+      2. Określ **systemu Windows Server 2012 R2** ustawienia Rodzina systemów operacyjnych.
+      3. Wybierz **warstwie cenowej węzła**.
+      4. Wprowadź **2** jako wartość **docelowego w wersji dedykowanej** ustawienie.
+      5. Wprowadź **2** jako wartość **maksymalna liczba zadań na węzeł** ustawienie.
    5. Kliknij przycisk **OK**, aby utworzyć pulę.
-   6. Należy zanotować **identyfikator** puli. 
+   6. Zanotuj **identyfikator** puli. 
 
 
 
 ### <a name="high-level-steps"></a>Ogólne kroki
-Poniżej przedstawiono dwa ogólne kroki wykonywane w ramach tego przewodnika: 
+Poniżej przedstawiono dwa ogólne kroki, które wykonujesz w ramach tego przewodnika: 
 
-1. Tworzenie niestandardowego działania, który zawiera proste danych przekształcania/przetwarzania logiki.
-2. Tworzenie fabryki danych Azure z potok, który korzysta z działań niestandardowych.
+1. Utwórz niestandardowe działanie, które zawiera logikę przetworzenia/przekształcenia danych proste.
+2. Tworzenie usługi Azure data factory z potokiem, który wykorzystuje działania niestandardowe.
 
 ### <a name="create-a-custom-activity"></a>Tworzenie niestandardowego działania
-Aby utworzyć niestandardowe działanie .NET, należy utworzyć **Biblioteka klas programu .NET** projektu z klasy, która implementuje, który **IDotNetActivity** interfejsu. Ten interfejs jest tylko jedna metoda: [Execute](https://msdn.microsoft.com/library/azure/mt603945.aspx) i podpisie:
+Aby utworzyć niestandardowe działanie platformy .NET, Utwórz **Biblioteka klas programu .NET** projektu za pomocą klasy, która implementuje, **IDotNetActivity** interfejsu. Ten interfejs ma tylko jedną metodę: [Execute](https://msdn.microsoft.com/library/azure/mt603945.aspx) i podpisie:
 
 ```csharp
 public IDictionary<string, string> Execute(
@@ -92,22 +92,22 @@ public IDictionary<string, string> Execute(
 ```
 
 
-Metoda przyjmuje cztery parametry:
+Ta metoda przyjmuje cztery parametry:
 
-- **linkedServices**. Ta właściwość jest wyliczalny listę usług połączonych magazyn danych odwołuje się zestaw danych wejścia/wyjścia dla działania.   
-- **zestawy danych**. Ta właściwość jest wyliczalny listę zestawów danych wejścia/wyjścia dla działania. Ten parametr umożliwia pobieranie lokalizacji i schematy wynika z zestawów danych wejściowych i wyjściowych.
-- **działanie**. Ta właściwość reprezentuje bieżącego działania. Umożliwia dostęp rozszerzone właściwości skojarzone z działań niestandardowych do. Zobacz [dostępu właściwości rozszerzone](#access-extended-properties) szczegółowe informacje.
-- **Rejestrator**. Ten obiekt umożliwia zapisanie komentarze debugowania tej powierzchni w dzienniku użytkownika dla potoku.
+- **linkedServices**. Ta właściwość jest listę wyliczalną Store danych, połączonej usługi odwołuje się zestawy danych wejściowych/wyjściowych działania.   
+- **zestawy danych**. Ta właściwość jest lista numerowana wejściowych/wyjściowych zestawów danych przeznaczonych do działania. Ten parametr umożliwia uzyskiwanie lokalizacji i schematy definiowane przez danych wejściowych i wyjściowych zestawów danych.
+- **działanie**. Ta właściwość reprezentuje bieżące działanie. Można je uzyskać dostęp do rozszerzonych właściwości skojarzone z działań niestandardowych. Zobacz [dostęp do właściwości rozszerzone](#access-extended-properties) Aby uzyskać szczegółowe informacje.
+- **Rejestrator**. Ten obiekt umożliwia pisać komentarze debugowania tej powierzchni w dzienniku użytkownika dla potoku.
 
 Metoda zwraca słownik, który może służyć do łańcuch niestandardowych działań w przyszłości. Ta funkcja nie jest jeszcze zaimplementowana, więc Zwróć pusty słownik z metody.  
 
 ### <a name="procedure"></a>Procedura
-1. Utwórz **Biblioteka klas programu .NET** projektu.
+1. Tworzenie **Biblioteka klas programu .NET** projektu.
    <ol type="a">
      <li>Uruchom <b>programu Visual Studio 2017</b> lub <b>programu Visual Studio 2015</b> lub <b>programu Visual Studio 2013</b> lub <b>programu Visual Studio 2012</b>.</li>
      <li>Kliknij pozycję <b>Plik</b>, wskaż polecenie <b>Nowy</b> i kliknij pozycję <b>Projekt</b>.</li>
-     <li>Rozwiń węzeł <b>Szablony</b> i wybierz opcję <b>Visual C#</b>. W tym przewodniku używasz C#, ale można używać dowolnego języka .NET do opracowywania działań niestandardowych.</li>
-     <li>Wybierz <b>biblioteki klas</b> z listy typów projektów po prawej stronie. VS 2017 wybierz <b>biblioteki klas (.NET Framework)</b> </li>
+     <li>Rozwiń węzeł <b>Szablony</b> i wybierz opcję <b>Visual C#</b>. W tym przewodniku możesz używać języka C#, ale można używać dowolnego języka platformy .NET do tworzenia działań niestandardowych.</li>
+     <li>Wybierz <b>biblioteki klas</b> z listy typów projektów po prawej stronie. W programie VS 2017 wybierz <b>biblioteki klas (.NET Framework)</b> </li>
      <li>Wprowadź <b>MyDotNetActivity</b> dla <b>nazwa</b>.</li>
      <li>Wybierz <b>C:\ADFGetStarted</b> dla <b>lokalizacji</b>.</li>
      <li>Kliknij przycisk <b>OK</b>, aby utworzyć projekt.</li>
@@ -120,15 +120,15 @@ Metoda zwraca słownik, który może służyć do łańcuch niestandardowych dzi
     ```PowerShell
     Install-Package Microsoft.Azure.Management.DataFactories
     ```
-4. Importuj **usługi Azure Storage** pakiet NuGet do projektu.
+4. Importuj **usługi Azure Storage** pakietu NuGet w projekcie.
 
     ```PowerShell
     Install-Package WindowsAzure.Storage -Version 4.3.0
     ```
 
     > [!IMPORTANT]
-    > Uruchamianie usługi fabryka danych wymaga wersji 4.3 WindowsAzure.Storage. Jeśli dodasz odwołanie do nowszej wersji zestawu Azure Storage w projekcie działań niestandardowych, zostanie wyświetlony błąd, gdy działanie wykonuje. Aby rozwiązać problem, zobacz [izolacji elementu Appdomain](#appdomain-isolation) sekcji. 
-5. Dodaj następujące **przy użyciu** instrukcje do pliku źródłowego w projekcie.
+    > Uruchamianie usługi fabryka danych wymaga wersji 4.3 WindowsAzure.Storage. Jeśli dodasz odwołanie do nowszej wersji zestawu Azure Storage w projekcie niestandardowe działanie, zostanie wyświetlony błąd, gdy działanie wykonuje. Aby naprawić błąd, zobacz [izolacji elementu Appdomain](#appdomain-isolation) sekcji. 
+5. Dodaj następujący kod **przy użyciu** instrukcje pliku źródłowego w projekcie.
 
     ```csharp
 
@@ -158,14 +158,14 @@ Metoda zwraca słownik, który może służyć do łańcuch niestandardowych dzi
     ```csharp
     namespace MyDotNetActivityNS
     ```
-7. Zmień nazwę klasy, która ma **MyDotNetActivity** i pochodzi ona z **IDotNetActivity** interfejsu pokazane na poniższy fragment kodu:
+7. Zmień nazwę klasy, która ma **MyDotNetActivity** i pochodzić z **IDotNetActivity** interfejsu, jak pokazano w poniższym fragmencie kodu:
 
     ```csharp
     public class MyDotNetActivity : IDotNetActivity
     ```
-8. Implementowanie (Dodaj) **Execute** metody **IDotNetActivity** interfejsu do **MyDotNetActivity** klasy i skopiuj następujący kod do metody.
+8. Implementowanie (Dodaj) **Execute** metody **IDotNetActivity** współpracować w celu **MyDotNetActivity** klasy, a następnie skopiuj następujący przykładowy kod do metody.
 
-    Poniższy przykład zlicza wystąpienia terminu wyszukiwania ("Microsoft") w każdym obiekcie blob skojarzony z wycinka danych.
+    Poniższy przykład zlicza wystąpienia wyszukiwany termin ("Microsoft") w każdy obiekt blob skojarzony z wycinka danych.
 
     ```csharp
     /// <summary>
@@ -283,7 +283,7 @@ Metoda zwraca słownik, który może służyć do łańcuch niestandardowych dzi
         return new Dictionary<string, string>();
     }
     ```
-9. Dodaj następujące metody pomocnika: 
+9. Dodaj następujące metody pomocy: 
 
     ```csharp
     /// <summary>
@@ -358,7 +358,7 @@ Metoda zwraca słownik, który może służyć do łańcuch niestandardowych dzi
     }
     ```
 
-    Metoda GetFolderPath zwraca ścieżkę do folderu, który wskazuje element dataset i metoda GetFileName zwraca nazwę obiektu blob/pliku, który wskazuje element dataset. Jeśli użytkownik havefolderPath definiuje, korzystając ze zmiennych, takich jak {Year}, {Month}, {Day} itd., metoda zwraca ciąg w postaci, w jakiej jest bez zamianę wartości środowiska uruchomieniowego. Zobacz [dostępu właściwości rozszerzone](#access-extended-properties) sekcji, aby uzyskać szczegółowe informacje dotyczące uzyskiwania dostępu do SliceStart, SliceEnd itp.    
+    Metoda GetFolderPath zwraca ścieżkę do folderu, który wskazuje zestaw danych, a metoda GetFileName zwraca nazwę pliku obiektu blob/wskazujący zestaw danych. Jeśli użytkownik havefolderPath definiuje, korzystając ze zmiennych, takich jak {Year}, {Month} {dzień} itp., metoda zwraca ciąg w postaci, w jakiej jest bez zastępowania ich wartości środowiska uruchomieniowego. Zobacz [dostęp do właściwości rozszerzone](#access-extended-properties) sekcji, aby uzyskać szczegółowe informacje na temat uzyskiwania dostępu do parametru SliceStart, SliceEnd itp.    
 
     ```JSON
     "name": "InputDataset",
@@ -370,39 +370,39 @@ Metoda zwraca słownik, który może służyć do łańcuch niestandardowych dzi
             "folderPath": "adftutorial/inputfolder/",
     ```
 
-    Metoda Calculate oblicza liczbę wystąpień — słowo kluczowe pliki wejściowe (obiekty BLOB w folderze) firmy Microsoft. Wyszukiwany termin ("Microsoft") jest ustalony w kodzie.
-10. Skompiluj projekt. Kliknij przycisk **kompilacji** w menu, kliknij **Kompiluj rozwiązanie**.
+    Metoda Calculate oblicza liczbę wystąpień — słowo kluczowe plików wejściowych (obiekty BLOB w folderze) firmy Microsoft. Wyszukiwany termin ("Microsoft") jest ustalony w kodzie.
+10. Skompiluj projekt. Kliknij przycisk **kompilacji** menu, a następnie kliknij **Kompiluj rozwiązanie**.
 
     > [!IMPORTANT]
-    > Ustaw 4.5.2 wersję programu .NET Framework jako platforma docelowa projektu: kliknij prawym przyciskiem myszy projekt, a następnie kliknij przycisk **właściwości** można ustawić platformę docelową. Fabryki danych nie obsługuje niestandardowych działań skompilowany .NET Framework w wersji nowszej niż 4.5.2.
+    > Ustaw 4.5.2 wersję programu .NET Framework jako platformę docelową dla projektu: kliknij prawym przyciskiem myszy projekt, a następnie kliknij przycisk **właściwości** można ustawić platformę docelową. Fabryki danych nie obsługuje niestandardowych działań skompilowany .NET Framework w wersji nowszej niż 4.5.2.
 
-11. Uruchom **Eksploratora Windows**, a następnie przejdź do **bin\debug** lub **bin\release** folder, w zależności od typu kompilacji.
-12. Utwórz plik zip **MyDotNetActivity.zip** zawierający wszystkie pliki binarne w <project folder>\bin\Debug folderu. Obejmują **MyDotNetActivity.pdb** pliku, tak aby uzyskać dodatkowe szczegóły, takie jak numer wiersza w kodzie źródłowym, która spowodowała problem, jeśli wystąpił błąd. 
+11. Uruchom **Eksplorator Windows**, a następnie przejdź do **bin\debug** lub **bin\release** folder, w zależności od typu kompilacji.
+12. Tworzenie pliku zip **MyDotNetActivity.zip** zawierający wszystkie pliki binarne w <project folder>folderze \bin\Debug. Obejmują **MyDotNetActivity.pdb** plików tak, aby uzyskać dodatkowe szczegóły, takie jak numer linii w kodzie źródłowym, która spowodowała problem, jeśli wystąpił błąd. 
 
     > [!IMPORTANT]
     > Wszystkie pliki w archiwum ZIP działania niestandardowego muszą znajdować się na **najwyższym poziomie**, bez podfolderów.
 
     ![Binarne pliki wyjściowe](./media/data-factory-use-custom-activities/Binaries.png)
-14. Tworzenie kontenera obiektów blob o nazwie **customactivitycontainer** Jeśli jeszcze nie istnieje. 
-15. Przekaż MyDotNetActivity.zip jako obiekt blob do customactivitycontainer w **ogólnego przeznaczenia** magazynu obiektów blob platformy Azure (gorącą nie/chłodnej magazynu obiektów Blob), który odwołuje się do AzureStorageLinkedService.  
+14. Utwórz kontener obiektów blob o nazwie **customactivitycontainer** Jeśli jeszcze nie istnieje. 
+15. Przekaż MyDotNetActivity.zip jako obiekt blob do customactivitycontainer w **ogólnego przeznaczenia** usługi Azure blob storage (nie gorący/chłodny magazyn obiektów Blob), który jest określany przez AzureStorageLinkedService.  
 
 > [!IMPORTANT]
-> Jeśli dodać ten projekt działania .NET do rozwiązania w programie Visual Studio, zawierający projekt fabryki danych i Dodaj odwołanie do projektu działania .NET z projektu aplikacji fabryki danych nie należy przeprowadzić ostatnie dwa kroki ręcznego tworzenia zip plik i przekazać go do magazynu obiektów blob platformy Azure ogólnego przeznaczenia. Podczas publikowania jednostek fabryki danych przy użyciu programu Visual Studio, te kroki automatycznie są wykonywane przez proces publikowania. Aby uzyskać więcej informacji, zobacz [fabryki danych projektu programu Visual Studio](#data-factory-project-in-visual-studio) sekcji.
+> Jeśli dodawanie tego projektu działanie platformy .NET do rozwiązania w programie Visual Studio, która zawiera projekt usługi fabryka danych, a następnie dodaj odwołanie do projektu działanie platformy .NET z projektu aplikacji usługi Data Factory, nie należy wykonać dwa ostatnie kroki ręcznego tworzenia pliku zip plik i przekazać go do ogólnego przeznaczenia Azure blob storage. Podczas publikowania jednostek usługi Data Factory przy użyciu programu Visual Studio, te kroki są wykonywane automatycznie przez proces publikowania. Aby uzyskać więcej informacji, zobacz [projekt usługi fabryka danych w programie Visual Studio](#data-factory-project-in-visual-studio) sekcji.
 
-## <a name="create-a-pipeline-with-custom-activity"></a>Utworzyć potok z działań niestandardowych
-Utworzono niestandardowe działania i przekazać do kontenera obiektów blob w pliku zip z plików binarnych **ogólnego przeznaczenia** konta magazynu Azure. W tej sekcji utworzysz fabryki danych Azure z potok, który korzysta z działań niestandardowych.
+## <a name="create-a-pipeline-with-custom-activity"></a>Tworzenie potoku za pomocą niestandardowego działania
+Utworzono niestandardowe działanie i przekazany plik zip z plikami binarnymi do kontenera obiektów blob w **ogólnego przeznaczenia** konta usługi Azure Storage. W tej sekcji utworzysz usługi Azure data factory z potokiem, który wykorzystuje działania niestandardowe.
 
-Wejściowy zestaw danych dla działań niestandardowych reprezentuje obiektów blob (pliki) w folderze customactivityinput adftutorial kontenera w magazynie obiektów blob. Zestaw danych wyjściowych dla działania reprezentuje obiekty BLOB danych wyjściowych w folderze customactivityoutput adftutorial kontenera w magazynie obiektów blob.
+Wejściowy zestaw danych działania niestandardowego reprezentuje obiektów blob (pliki) w folderze customactivityinput kontenera adftutorial w magazynie obiektów blob. Wyjściowy zestaw danych działania reprezentuje wyjściowych obiektów blob w folderze customactivityoutput kontenera adftutorial w magazynie obiektów blob.
 
-Utwórz **plik.txt** pliku o następującej zawartości i przekaż go do **customactivityinput** folderu **adftutorial** kontenera. Tworzenie kontenera adftutorial, jeśli już istnieje. 
+Tworzenie **plik.txt** pliku o następującej zawartości i przekaż go do **customactivityinput** folderu **adftutorial** kontenera. Tworzenie kontenera adftutorial, jeśli go jeszcze nie istnieje. 
 
 ```
 test custom activity Microsoft test custom activity Microsoft
 ```
 
-Folder wejściowy odpowiada wycinka w fabryce danych Azure, nawet jeśli folder zawiera dwa lub więcej plików. Każdy wycinek jest przetwarzany przez potok, działania niestandardowego iterację wszystkich obiektów blob w folderze wejściowych dla tego wycinka.
+Folderu danych wejściowych odpowiada że wycinek jest w usłudze Azure Data Factory, nawet wtedy, gdy folder ma dwa lub więcej plików. Każdy wycinek jest przetwarzany przez potok, niestandardowe działanie iteruje wszystkich obiektów blob w folderze wejściowym dla tego wycinka.
 
-Zobaczysz, że jeden wyjściowy plik z folderu adftutorial\customactivityoutput z jednego lub więcej wierszy (tak samo jak liczbę obiektów blob w folderze wprowadzania):
+Zobaczysz, że jeden wyjściowy plik z folderu adftutorial\customactivityoutput z jednego lub więcej wierszy (tak jak liczbę obiektów blob w folderze wejściowym):
 
 ```
 2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2016-11-16-00/file.txt.
@@ -411,55 +411,55 @@ Zobaczysz, że jeden wyjściowy plik z folderu adftutorial\customactivityoutput 
 
 Poniżej przedstawiono kroki, które należy wykonać w tej sekcji:
 
-1. Utwórz **fabryki danych**.
-2. Utwórz **połączone usługi** dla maszyn wirtualnych w puli partii zadań Azure uruchamianego działań niestandardowych i usługi Azure Storage, który zawiera obiekty BLOB wejścia/wyjścia.
-3. Utwórz dane wejściowe i wyjściowe **zestawów danych** reprezentujące dane wejściowe i wyjściowe działania niestandardowego.
-4. Utwórz **potoku** używający działania niestandardowego.
+1. Tworzenie **usługi data factory**.
+2. Tworzenie **połączonych usług** puli Azure Batch maszyn wirtualnych na uruchamiająca niestandardowe działanie i magazynu platformy Azure, w którym przechowywane są obiekty BLOB we/wy.
+3. Utworzenie wejściowych i wyjściowych **zestawów danych** reprezentujące dane wejściowe i wyjściowe działania niestandardowego.
+4. Tworzenie **potoku** używającej niestandardowego działania.
 
 > [!NOTE]
-> Utwórz **plik.txt** i przekaż go do kontenera obiektów blob, jeśli jeszcze tego nie zrobiono. Zobacz instrukcje w poprzedniej sekcji.   
+> Tworzenie **plik.txt** i przekaż go do kontenera obiektów blob, jeśli jeszcze tego nie zrobiłeś. Zobacz instrukcje w poprzedniej sekcji.   
 
 ### <a name="step-1-create-the-data-factory"></a>Krok 1: Tworzenie fabryki danych
-1. Po zalogowaniu się do portalu Azure, wykonaj następujące czynności:
+1. Po zalogowaniu się do witryny Azure portal, wykonaj następujące czynności:
    1. Kliknij przycisk **Utwórz zasób** w menu po lewej stronie.
-   2. Kliknij przycisk **dane i analiza** w **nowy** bloku.
+   2. Kliknij przycisk **dane + analiza** w **New** bloku.
    3. Kliknij przycisk **Fabryka danych** w bloku **Analiza danych**.
    
-    ![Nowe menu fabryki danych Azure](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
-2. W **nowa fabryka danych** bloku, wprowadź **CustomActivityFactory** dla nazwy. Nazwa fabryki danych Azure musi być globalnie unikatowa. Jeśli zostanie wyświetlony błąd: **nazwa fabryki danych "CustomActivityFactory" nie jest dostępna**, Zmień nazwę fabryki danych (na przykład **yournameCustomActivityFactory**), a następnie spróbuj ponownie utworzyć.
+    ![Nowe menu usługi Azure Data Factory](media/data-factory-use-custom-activities/new-azure-data-factory-menu.png)
+2. W **nowa fabryka danych** bloku wprowadź **CustomActivityFactory** dla nazwy. Nazwa fabryki danych Azure musi być globalnie unikatowa. Jeśli zostanie wyświetlony błąd: **nazwa fabryki danych "CustomActivityFactory" nie jest dostępna**, Zmień nazwę fabryki danych (na przykład **yournameCustomActivityFactory**), a następnie spróbuj utworzyć ją ponownie.
 
-    ![Nowy blok fabryki danych Azure](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
-3. Kliknij przycisk **Nazwa grupy zasobów**i wybierz istniejącą grupę zasobów lub Utwórz grupę zasobów.
-4. Sprawdź, czy używasz właściwego **subskrypcji** i **region** miejscu fabryki danych ma zostać utworzony.
+    ![Nowy blok usługi Azure Data Factory](media/data-factory-use-custom-activities/new-azure-data-factory-blade.png)
+3. Kliknij przycisk **nazwy grupy zasobów**i wybierz istniejącą grupę zasobów lub Utwórz grupę zasobów.
+4. Sprawdź, że używasz prawidłowych **subskrypcji** i **region** , w której chcesz utworzyć fabrykę danych.
 5. Kliknij przycisk **Utwórz** w bloku **Nowa fabryka danych**.
-6. Zobacz tworzony w fabryce danych **pulpitu nawigacyjnego** portalu Azure.
-7. Po fabryki danych został utworzony pomyślnie, wyświetlona bloku fabryki danych przedstawiona zawartość fabryki danych.
+6. Zostanie wyświetlony w fabryce danych tworzony w **pulpit nawigacyjny** w witrynie Azure Portal.
+7. Po pomyślnym utworzeniu fabryki danych, zobaczysz bloku Data Factory zawartością fabryki danych.
     
     ![Blok Fabryka danych](media/data-factory-use-custom-activities/data-factory-blade.png)
 
-### <a name="step-2-create-linked-services"></a>Krok 2: Tworzenie usługi połączonej
-Połączone usługi łączą magazyny danych lub usługi obliczeniowe z fabryką danych Azure. W tym kroku możesz połączyć Twoje konto usługi Azure Storage i konta usługi partia zadań Azure z fabryką danych.
+### <a name="step-2-create-linked-services"></a>Krok 2: Tworzenie połączonych usług
+Połączone usługi łączą magazyny danych lub usługi obliczeniowe z fabryką danych Azure. W tym kroku połączysz swoje konto usługi Azure Storage i konta usługi Azure Batch z fabryką danych.
 
 #### <a name="create-azure-storage-linked-service"></a>Tworzenie połączonej usługi Azure Storage
-1. Kliknij przycisk **tworzenie i wdrażanie** Kafelek na **FABRYKI danych** bloku **CustomActivityFactory**. Pojawi się Edytor fabryki danych.
-2. Kliknij przycisk **nowy magazyn danych** polecenie Pasek i wybierz polecenie **magazynu Azure**. Powinien zostać wyświetlony skrypt JSON do tworzenia połączonej usługi Azure Storage w edytorze.
+1. Kliknij przycisk **tworzenie i wdrażanie** kafelków na **usługi DATA FACTORY** bloku **CustomActivityFactory**. Pojawi się Edytor fabryki danych.
+2. Kliknij przycisk **nowy magazyn danych** na polecenia paska, a następnie wybierz **usługi Azure storage**. Powinien zostać wyświetlony skrypt JSON do tworzenia połączonej usługi Azure Storage w edytorze.
     
-    ![Nowy magazyn danych - Azure Storage](media/data-factory-use-custom-activities/new-data-store-menu.png)
-3. Zastąp `<accountname>` z nazwą konta magazynu Azure i `<accountkey>` z kluczem dostępu konta magazynu platformy Azure. Informacje na temat pobierania klucza dostępu do magazynu znajdują się w artykule [Wyświetlanie, kopiowanie i ponowne generowanie kluczy dostępu do magazynu](../../storage/common/storage-create-storage-account.md#manage-your-storage-account).
+    ![Nowy magazyn danych — Azure Storage](media/data-factory-use-custom-activities/new-data-store-menu.png)
+3. Zastąp `<accountname>` z nazwą konta usługi Azure storage i `<accountkey>` kluczem dostępu konta usługi Azure storage. Informacje na temat pobierania klucza dostępu do magazynu znajdują się w artykule [Wyświetlanie, kopiowanie i ponowne generowanie kluczy dostępu do magazynu](../../storage/common/storage-account-manage.md#access-keys).
 
     ![Usługa Azure Storage zbędne usługi](media/data-factory-use-custom-activities/azure-storage-linked-service.png)
 4. Kliknij przycisk **Wdróż** na pasku poleceń, aby wdrożyć połączoną usługę.
 
-#### <a name="create-azure-batch-linked-service"></a>Tworzenie usługi partia zadań Azure połączone
-1. W edytorze fabryki danych, kliknij polecenie **... Więcej** na pasku poleceń, kliknij przycisk **nowych obliczeń**, a następnie wybierz **partii zadań Azure** z menu.
+#### <a name="create-azure-batch-linked-service"></a>Tworzenie usługi Azure Batch połączone
+1. W edytorze fabryki danych, kliknij przycisk **... Więcej** na pasku poleceń kliknij **nowe obliczenie**, a następnie wybierz pozycję **usługi Azure Batch** z menu.
 
-    ![Nowe obliczeń - partii zadań Azure](media/data-factory-use-custom-activities/new-azure-compute-batch.png)
-2. Do skryptu JSON, należy wprowadzić następujące zmiany:
+    ![Nowe obliczenie — Azure Batch](media/data-factory-use-custom-activities/new-azure-compute-batch.png)
+2. Skrypt JSON, należy wprowadzić następujące zmiany:
 
-   1. Określ nazwę konta partii zadań Azure **accountName** właściwości. **Adres URL** z **bloku konta usługi partia zadań Azure** znajduje się w następującym formacie: `http://accountname.region.batch.azure.com`. Dla **batchUri** właściwości w formacie JSON, musisz usunąć `accountname.` z adresu URL i użycia `accountname` dla `accountName` właściwości JSON.
-   2. Określ klucz konta partii zadań Azure **accessKey** właściwości.
-   3. Określ nazwę puli został utworzony jako część wymagania wstępne dotyczące **poolName** właściwości. Można również określić identyfikator puli zamiast nazwy puli.
-   4. Określ identyfikator URI usługi partia zadań Azure dla **batchUri** właściwości. Przykład: `https://westus.batch.azure.com`.  
+   1. Określ nazwę konta usługi Azure Batch **accountName** właściwości. **Adresu URL** z **bloku konta usługi Azure Batch** znajduje się w następującym formacie: `http://accountname.region.batch.azure.com`. Aby uzyskać **batchUri** właściwości w kodzie JSON, którą chcesz usunąć `accountname.` z adresu URL i użycia `accountname` dla `accountName` właściwość JSON.
+   2. Określ klucz konta usługi Azure Batch **accessKey** właściwości.
+   3. Określ nazwę puli został utworzony jako część wymagań wstępnych dotyczących **poolName** właściwości. Można również określić identyfikator puli zamiast nazwy puli.
+   4. Określ identyfikator URI usługi Azure Batch dla **batchUri** właściwości. Przykład: `https://westus.batch.azure.com`.  
    5. Określ **AzureStorageLinkedService** dla **linkedServiceName** właściwości.
 
         ```json
@@ -483,11 +483,11 @@ Połączone usługi łączą magazyny danych lub usługi obliczeniowe z fabryką
     
 
 ### <a name="step-3-create-datasets"></a>Krok 3: Tworzenie zestawów danych
-W tym kroku możesz utworzyć zestawy danych do reprezentowania danych wejściowych i wyjściowych.
+W tym kroku utworzysz zestawy danych do reprezentowania danych wejściowych i wyjściowych.
 
 #### <a name="create-input-dataset"></a>Tworzenie wejściowego zestawu danych
-1. W **edytorze** fabryki danych kliknij kolejno polecenia  **Więcej** na pasku poleceń, kliknij przycisk **nowy zestaw danych**, a następnie wybierz **magazynu obiektów Blob Azure** z menu rozwijanego.
-2. Zastąp dane JSON w okienku po prawej stronie następujący fragment kodu JSON:
+1. W **edytorze** fabryki danych kliknij kolejno polecenia  **Więcej** na pasku poleceń kliknij **nowy zestaw danych**, a następnie wybierz pozycję **usługi Azure Blob storage** z menu rozwijanego.
+2. Zastąp kod JSON w prawym okienku następującym fragmentem kodu JSON:
 
     ```json
     {
@@ -511,16 +511,16 @@ W tym kroku możesz utworzyć zestawy danych do reprezentowania danych wejściow
     }
     ```
 
-   Utworzyć potok w dalszej części tego przewodnika, czas rozpoczęcia: 2016-11-16T00:00:00Z i na końcu czasu: 2016-11-16T05:00:00Z. Jest to zaplanowane co godzinę, wyprodukować danych co pięć wycinków wejścia/wyjścia (między **00**: 00:00 -> **05**: 00:00).
+   Tworzenie potoku w dalszej części tego przewodnika, czas rozpoczęcia: 2016-11-16T00:00:00Z i godzinę zakończenia: 2016-11-16T05:00:00Z. Zostaje zaplanowane do wygenerowania danych co godzinę, co pięć wycinki wejścia/wyjścia (między **00**: -> 00:00 **05**: 00:00).
 
-   **Częstotliwość** i **interwał** dla zestawu danych wejściowych jest ustawiony na **godzina** i **1**, co oznacza, że wejściowy wycinek jest dostępny co godzinę. W tym przykładzie jest tego samego pliku (plik.txt) w intputfolder.
+   **Częstotliwość** i **interwał** dla wejściowego zestawu danych jest ustawiony na **godzinę** i **1**, co oznacza, że wycinek danych wejściowych jest dostępny co godzinę. W tym przykładzie jest tego samego pliku (plik.txt) w intputfolder.
 
-   Poniżej przedstawiono godziny rozpoczęcia dla każdego wycinka, która jest reprezentowana przez SliceStart zmienna w powyższym fragment kodu JSON.
+   Poniżej przedstawiono godziny rozpoczęcia dla każdego wycinka jest reprezentowany przez SliceStart zmiennej systemowej w powyższym fragmencie kodu JSON.
 3. Kliknij przycisk **Wdróż** na pasku narzędzi, aby utworzyć i wdrożyć **InputDataset**. Upewnij się, że na pasku tytułu w edytorze wyświetlany jest komunikat **TABELA ZOSTAŁA UTWORZONA POMYŚLNIE**.
 
 #### <a name="create-an-output-dataset"></a>Tworzenie wyjściowego zestawu danych
-1. W **Edytor fabryki danych**, kliknij przycisk **... Więcej** na pasku poleceń, kliknij przycisk **nowy zestaw danych**, a następnie wybierz **magazynu obiektów Blob Azure**.
-2. Zastąp skryptu JSON, w okienku po prawej stronie poniższy skrypt JSON:
+1. W **edytora fabryki danych**, kliknij przycisk **... Więcej** na pasku poleceń kliknij **nowy zestaw danych**, a następnie wybierz pozycję **usługi Azure Blob storage**.
+2. Zastąp skrypt JSON w okienku po prawej stronie poniższy skrypt JSON:
 
     ```JSON
     {
@@ -550,9 +550,9 @@ W tym kroku możesz utworzyć zestawy danych do reprezentowania danych wejściow
     }
     ```
 
-     Lokalizacja danych wyjściowych jest **adftutorial/customactivityoutput/** i nazwa pliku wyjściowego jest RRRR MM-dd-HH.txt w przypadku RRRR MM-dd gg rok, miesiąc, Data i godzina tworzonym wycinka. Zobacz [dokumentacja dla deweloperów] [ adf-developer-reference] szczegółowe informacje.
+     Lokalizacja danych wyjściowych jest **adftutorial/customactivityoutput/** i nazwa pliku wyjściowego jest RRRR MM-dd-HH.txt, gdy RRRR MM-dd HH roku, miesiąca, daty i godziny wycinka generowany. Zobacz [dokumentacja dla deweloperów] [ adf-developer-reference] Aby uzyskać szczegółowe informacje.
 
-    Obiekt blob/plik wyjściowy jest generowany dla każdego wejściowego wycinka. Oto, jak dla każdego wycinka nosi nazwę pliku wyjściowego. Wszystkie pliki wyjściowe są generowane w jednym folderze wyjściowym: **adftutorial\customactivityoutput**.
+    Obiekt blob/plik wyjściowy jest generowany dla każdego wycinek danych wejściowych. Oto, jak plik wyjściowy nosi nazwę każdego wycinka. Wszystkie pliki wyjściowe są generowane w jednym folderze danych wyjściowych: **adftutorial\customactivityoutput**.
 
    | Wycinek | Godzina rozpoczęcia | Plik wyjściowy |
    |:--- |:--- |:--- |
@@ -562,12 +562,12 @@ W tym kroku możesz utworzyć zestawy danych do reprezentowania danych wejściow
    | 4 |2016-11-16T03:00:00 |2016-11-16-03.txt |
    | 5 |2016-11-16T04:00:00 |2016-11-16-04.txt |
 
-    Należy pamiętać, że wszystkie pliki w folderze wejściowych część wycinek z godziny rozpoczęcia wymienionych powyżej. Podczas przetwarzania tego wycinka działania niestandardowego skanowania za pomocą każdego pliku i tworzy wiersz w pliku danych wyjściowych z liczbą wystąpień terminu wyszukiwania ("Microsoft"). Jeśli istnieją trzy pliki w inputfolder, istnieją trzy wiersze w pliku wyjściowym dla każdego wycinka co godzinę: 2016-11-16-00.txt 2016-11-16:01:00:00.txt itp.
+    Należy pamiętać, że wszystkie pliki w folderze wejściowym są częścią wycinek z czasem rozpoczęcia wymienionych powyżej. Podczas przetwarzania tego wycinka niestandardowe działanie skanowania za pomocą każdego pliku i tworzy linię w pliku danych wyjściowych z liczbą wystąpień wyszukiwany termin ("Microsoft"). Jeśli istnieją trzy pliki w inputfolder, istnieją trzy wiersze w pliku danych wyjściowych dla każdego wycinka co godzinę: 2016-11-16-00.txt 2016-11-16:01:00:00.txt itp.
 3. Aby wdrożyć **OutputDataset**, kliknij przycisk **Wdróż** na pasku poleceń.
 
-### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>Tworzenie i uruchamianie potok, który korzysta z działań niestandardowych
-1. W edytorze fabryki danych, kliknij polecenie **... Więcej**, a następnie wybierz **nowy potok** na pasku poleceń. 
-2. Zastąp dane JSON w okienku po prawej stronie poniższy skrypt JSON:
+### <a name="create-and-run-a-pipeline-that-uses-the-custom-activity"></a>Tworzenie i uruchamianie potoku, który używa niestandardowego działania
+1. W edytorze fabryki danych, kliknij przycisk **... Więcej**, a następnie wybierz pozycję **nowy potok** na pasku poleceń. 
+2. Zastąp kod JSON w okienku po prawej stronie poniższy skrypt JSON:
 
     ```JSON
     {
@@ -616,123 +616,123 @@ W tym kroku możesz utworzyć zestawy danych do reprezentowania danych wejściow
 
     Pamiętaj o następujących kwestiach:
 
-   * **Współbieżność** ustawiono **2** tak, aby dwa wycinków są przetwarzane równolegle przez 2 maszyny wirtualne w puli partii zadań Azure.
-   * Brak jednego działania w sekcji działania i jest typu: **DotNetActivity**.
-   * **AssemblyName** ma ustawioną nazwę biblioteki DLL: **MyDotnetActivity.dll**.
+   * **Współbieżność** ustawiono **2** tak, że dwa wycinki są przetwarzane równolegle przez 2 maszyny wirtualne w puli Azure Batch.
+   * W sekcji działań jest jedno działanie i jest typu: **DotNetActivity**.
+   * **AssemblyName** jest ustawiona na nazwę biblioteki DLL: **MyDotnetActivity.dll**.
    * **Punkt wejścia** ustawiono **MyDotNetActivityNS.MyDotNetActivity**.
-   * **PackageLinkedService** ustawiono **AzureStorageLinkedService** wskazującego do magazynu obiektów blob, który zawiera plik zip działania niestandardowego. Jeśli używasz różnych kont usługi Azure Storage dla wejścia/wyjścia plików i działania niestandardowego pliku zip, utworzysz innego połączoną usługą magazynu Azure. W tym artykule przyjęto założenie, że używasz tego samego konta magazynu Azure.
+   * **PackageLinkedService** ustawiono **AzureStorageLinkedService** wskazującego na magazynu obiektów blob, który zawiera plik zip działania niestandardowego. Jeśli używasz różnych kont usługi Azure Storage dla plików wejściowych/wyjściowych i plik zip działania niestandardowego, utworzysz inną połączoną usługę Azure Storage. W tym artykule założono, że używasz tego samego konta usługi Azure Storage.
    * **PackageFile** ustawiono **customactivitycontainer/MyDotNetActivity.zip**. Jest w formacie: containerforthezip/nameofthezip.zip.
-   * Trwa to niestandardowe działanie **InputDataset** jako dane wejściowe i **OutputDataset** jako dane wyjściowe.
-   * Wskazuje właściwość linkedServiceName działania niestandardowego **AzureBatchLinkedService**, który informuje fabryki danych Azure, wymagającym działań niestandardowych do uruchamiania na maszynach wirtualnych Azure partii.
-   * **isPaused** właściwość jest ustawiona na **false** domyślnie. Potok uruchamia natychmiast w tym przykładzie, ponieważ wycinków rozpoczęcia w przeszłości. Tę właściwość można ustawić wartość true, aby wstrzymać potoku i go ustawić ponownie na wartość false, aby uruchomić ponownie.
-   * **Start** czasu i **zakończenia** czasy są **pięć** godziny od siebie i wycinki są tworzone co godzinę, więc pięć wycinków są produkowane przez potok.
+   * Niestandardowe działanie przyjmuje **InputDataset** jako dane wejściowe i **OutputDataset** jako dane wyjściowe.
+   * Wskazuje właściwość linkedServiceName działania niestandardowego **AzureBatchLinkedService**, który informuje usługi Azure Data Factory działanie niestandardowe muszą zostać uruchomione na maszynach wirtualnych platformy Azure Batch.
+   * **isPaused** właściwość jest ustawiona na **false** domyślnie. Potok uruchamia natychmiast w tym przykładzie, ponieważ wycinki można uruchomić w przeszłości. Tę właściwość można ustawić na wartość true, aby wstrzymać potoku i go ustawić ponownie na wartość false, aby ponownie uruchomić.
+   * **Start** czasu i **zakończenia** godziny są **pięć** godziny od siebie i wycinki są generowane co godzinę, więc pięć wycinki są produkowane przez potok.
 3. Aby wdrożyć potok, kliknij przycisk **Wdróż** na pasku poleceń.
 
 ### <a name="monitor-the-pipeline"></a>Monitorowanie potoku
-1. W bloku fabryki danych w portalu Azure, kliknij **Diagram**.
+1. W bloku Data Factory w witrynie Azure portal, kliknij **Diagram**.
 
     ![Kafelek Diagram](./media/data-factory-use-custom-activities/DataFactoryBlade.png)
-2. W widoku diagramu kliknij przycisk OutputDataset.
+2. Na stronie widok diagramu kliknij przycisk zestawu OutputDataset.
 
     ![Widok diagramu](./media/data-factory-use-custom-activities/diagram.png)
-3. Powinny być widoczne czy wycinków pięć dane wyjściowe są w stanie gotowe. Jeśli nie są w stanie gotowe, nie została opracowana jeszcze. 
+3. Powinieneś zobaczyć, że wycinki pięć dane wyjściowe są w stanie gotowe. Jeśli nie są w stanie gotowe, jeszcze nie została opracowana jeszcze. 
 
    ![Wycinki danych wyjściowych](./media/data-factory-use-custom-activities/OutputSlices.png)
 4. Sprawdź, czy pliki wyjściowe są generowane w magazynie obiektów blob w **adftutorial** kontenera.
 
    ![dane wyjściowe z działań niestandardowych][image-data-factory-ouput-from-custom-activity]
-5. Po otwarciu pliku wyjściowego, powinny być widoczne dane wyjściowe podobne do następujących danych wyjściowych:
+5. Jeśli otworzysz plik wyjściowy, powinny pojawić się dane wyjściowe są podobne do następujących danych wyjściowych:
 
     ```
     2 occurrences(s) of the search term "Microsoft" were found in the file inputfolder/2016-11-16-00/file.txt.
     ```
-6. Użyj [portalu Azure] [ azure-preview-portal] lub poleceń cmdlet programu Azure PowerShell do monitorowania z fabryki danych, potoki i zestawów danych. Można wyświetlić wiadomości z **ActivityLogger** w kodzie niestandardowe działania w dziennikach (w szczególności 0.log użytkownika), które można pobrać z portalu lub przy użyciu poleceń cmdlet.
+6. Użyj [witryny Azure portal] [ azure-preview-portal] lub poleceń cmdlet programu Azure PowerShell, aby monitorować fabryki danych, potoki i zestawów danych. Można wyświetlić wiadomości z **ActivityLogger** w kodzie niestandardowe działania w dzienniki (w szczególności nazwach user-0.log), które można pobrać z portalu lub przy użyciu poleceń cmdlet.
 
-   ![Pobierz dzienniki z działań niestandardowych][image-data-factory-download-logs-from-custom-activity]
+   ![Pobieranie dzienników z działań niestandardowych][image-data-factory-download-logs-from-custom-activity]
 
-Zobacz [monitorować i zarządzać potoki](data-factory-monitor-manage-pipelines.md) szczegółowy opis kroków monitorowania zestawy danych i potoki.      
+Zobacz [monitorowanie potoków i zarządzanie nimi](data-factory-monitor-manage-pipelines.md) Aby uzyskać szczegółowe instrukcje dotyczące monitorowania potoków i zestawów danych.      
 
-## <a name="data-factory-project-in-visual-studio"></a>Projekt fabryki danych w programie Visual Studio  
-Można tworzyć i publikować jednostek fabryki danych przy użyciu programu Visual Studio, a za pomocą portalu Azure. Szczegółowe informacje na temat tworzenia i publikowania jednostek fabryki danych przy użyciu programu Visual Studio, zobacz [kompilacji swój pierwszy potok, za pomocą programu Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) i [skopiować dane z obiektu Blob Azure do usługi Azure SQL](data-factory-copy-activity-tutorial-using-visual-studio.md) artykuły.
+## <a name="data-factory-project-in-visual-studio"></a>Projekt usługi fabryka danych w programie Visual Studio  
+Można tworzyć i publikować jednostki fabryki danych przy użyciu programu Visual Studio zamiast przy użyciu witryny Azure portal. Szczegółowe informacje na temat tworzenia i publikowania jednostek usługi Data Factory przy użyciu programu Visual Studio, zobacz [Tworzenie pierwszego potoku za pomocą programu Visual Studio](data-factory-build-your-first-pipeline-using-vs.md) i [kopiowanie danych z obiektów Blob platformy Azure do bazy danych SQL Azure](data-factory-copy-activity-tutorial-using-visual-studio.md) artykuły.
 
-Jeśli tworzysz projekt fabryki danych w programie Visual Studio, należy wykonać następujące dodatkowe czynności:
+Jeśli tworzysz projekt usługi fabryka danych w programie Visual Studio, należy wykonać następujące dodatkowe czynności:
  
-1. Dodaj fabryki danych projektu do rozwiązania Visual Studio, które zawiera projekt działania niestandardowego. 
-2. Dodaj odwołanie do projektu działania .NET z projektu fabryki danych. Kliknij prawym przyciskiem myszy projekt w fabryce danych, wskaż pozycję **Dodaj**, a następnie kliknij przycisk **odwołania**. 
+1. Dodaj projekt usługi fabryka danych do rozwiązania programu Visual Studio, które zawiera projekt działań niestandardowych. 
+2. Dodaj odwołanie do projektu działanie platformy .NET z projekt usługi fabryka danych. Kliknij prawym przyciskiem myszy projekt usługi fabryka danych, wskaż opcję **Dodaj**, a następnie kliknij przycisk **odwołania**. 
 3. W **Dodaj odwołanie** okno dialogowe, wybierz opcję **MyDotNetActivity** projektu, a następnie kliknij przycisk **OK**.
 4. Tworzenie i publikowanie rozwiązania.
 
     > [!IMPORTANT]
-    > Podczas publikowania jednostek fabryki danych pliku zip jest automatycznie tworzony i jest przekazywany do kontenera obiektów blob: customactivitycontainer. Jeśli kontenera obiektów blob nie istnieje, jest on automatycznie tworzony zbyt.  
+    > Podczas publikowania jednostek usługi Data Factory pliku zip jest automatycznie tworzony i zostanie przekazany do kontenera obiektów blob: customactivitycontainer. Jeśli kontener obiektów blob nie istnieje, zostanie automatycznie utworzony zbyt.  
 
 
-## <a name="data-factory-and-batch-integration"></a>Integracja z fabryki danych i usługi partia zadań
-Usługi fabryka danych tworzy zadanie w partii zadań Azure o nazwie: **adf poolname: xxx zadania**. Kliknij przycisk **zadania** z menu po lewej stronie. 
+## <a name="data-factory-and-batch-integration"></a>Integracja usługi Data Factory i Batch
+Usługa Data Factory tworzy zadanie w usłudze Azure Batch o nazwie: **adf poolname: xxx zadania**. Kliknij przycisk **zadań** menu po lewej stronie. 
 
-![Fabryka danych Azure - zadań wsadowych](media/data-factory-use-custom-activities/data-factory-batch-jobs.png)
+![Usługa Azure Data Factory — zadania usługi Batch](media/data-factory-use-custom-activities/data-factory-batch-jobs.png)
 
-Zadanie jest tworzone przy każdym uruchomieniu działania wycinek. W przypadku pięć wycinków gotowy do przetwarzania pięć zadań są tworzone w ramach tego zadania. Jeśli istnieje wiele węzłów obliczeniowych w puli partii, co najmniej dwa wycinków można uruchomić równolegle. Jeśli maksymalny zadań na węzeł obliczeń jest ustawiona na > 1, może istnieć więcej niż jeden wycinek uruchomionych na tej samej mocy obliczeniowej.
+Zadanie jest tworzone dla każdego uruchomienia działania wycinka. W przypadku pięciu wycinki gotowe do przetworzenia pięć zadań są tworzone w ramach tego zadania. W przypadku wielu węzłach obliczeniowych w puli usługi Batch, co najmniej dwa wycinki mogą uruchamiać równolegle. Jeśli maksymalny zadań na węzeł obliczeniowy jest ustawiona na > 1, możesz mieć więcej niż jeden wycinek uruchomionych na tych samych obliczeń.
 
-![Fabryka danych Azure - zadań zadania wsadowego](media/data-factory-use-custom-activities/data-factory-batch-job-tasks.png)
+![Usługa Azure Data Factory — zadania usługi Batch](media/data-factory-use-custom-activities/data-factory-batch-job-tasks.png)
 
-Na poniższym diagramie przedstawiono związek między fabryki danych Azure i partii zadań.
+Na poniższym diagramie przedstawiono relację między zadaniami w usłudze Azure Data Factory i Batch.
 
-![Fabryka danych & partii](./media/data-factory-use-custom-activities/DataFactoryAndBatch.png)
+![Data Factory i Batch](./media/data-factory-use-custom-activities/DataFactoryAndBatch.png)
 
 ## <a name="troubleshoot-failures"></a>Rozwiązywanie problemów z błędami
-Rozwiązywanie problemów z składa się z kilku podstawowych techniki:
+Rozwiązywanie problemów z obejmuje kilka podstawowych technik:
 
-1. Jeśli zostanie wyświetlony następujący błąd, używasz magazynu obiektów blob aktywny/chłodnej zamiast przy użyciu magazynu obiektów blob platformy Azure ogólnego przeznaczenia. Przekaż plik zip do **ogólnego przeznaczenia konta magazynu Azure**. 
+1. Jeśli zostanie wyświetlony następujący błąd, używasz gorąca/chłodny magazyn obiektów blob zamiast ogólnego przeznaczenia usługi Azure blob storage. Przekaż plik zip do **konto magazynu ogólnego przeznaczenia Azure**. 
  
     ```
     Error in Activity: Job encountered scheduling error. Code: BlobDownloadMiscError Category: ServerError Message: Miscellaneous error encountered while downloading one of the specified Azure Blob(s).
     ``` 
-2. Jeśli zostanie wyświetlony następujący błąd, upewnij się, że nazwa klasy w pliku CS odpowiada nazwa określona dla **punktu wejścia** właściwości w potoku JSON. W tym przewodnikiem jest nazwa klasy: MyDotNetActivity i punktu wejścia w formacie JSON: MyDotNetActivityNS. **MyDotNetActivity**.
+2. Jeśli zostanie wyświetlony następujący błąd, upewnij się, że nazwa klasy w pliku CS odpowiada nazwa określona dla **punktu wejścia** właściwości w kodzie JSON potoku. W instruktażu, nazwa klasy to: MyDotNetActivity i punktu wejścia w formacie JSON: MyDotNetActivityNS. **MyDotNetActivity**.
 
     ```
     MyDotNetActivity assembly does not exist or doesn't implement the type Microsoft.DataFactories.Runtime.IDotNetActivity properly
     ```
 
-   Jeśli nazwy są zgodne, upewnij się, że wszystkie pliki binarne znajdują się w **folderu głównego** pliku zip. Oznacza to podczas otwierania pliku zip, powinny być widoczne wszystkie pliki w folderze głównym, a nie wszystkie podfoldery.   
-3. Jeśli wycinek wejściowy nie jest ustawiony na **gotowe**, potwierdź poprawność struktury folderów wejściowych i **plik.txt** istnieje w folderze wejściowego.
-3. W **Execute** metody działania niestandardowego, użyj **IActivityLogger** obiektu do logowania się informacje ułatwiające rozwiązywanie problemów. Zarejestrowane komunikaty, wyświetlani w plikach dziennika użytkownika (co najmniej jeden plik o nazwie: 0.log użytkownika, 1.log użytkownika, użytkownik 2.log itp.).
+   Jeśli nazwy są zgodne, upewnij się, że wszystkie pliki binarne znajdują się w **folder główny** pliku zip. Oznacza to gdy otworzysz plik zip, powinien zostać wyświetlony wszystkie pliki w folderze głównym, a nie w żadnych podfolderów.   
+3. Jeśli wycinek danych wejściowych nie jest ustawiony na **gotowe**, upewnij się, że struktura folderów wejściowych jest poprawna i **plik.txt** istnieje w folderach wejściowych.
+3. W **Execute** metody działania niestandardowego użyj **IActivityLogger** obiektu, aby rejestrować informacje, które pomagają w rozwiązywaniu problemów. Zarejestrowane komunikaty pojawiają się w plikach dzienników użytkownika (co najmniej jeden plik o nazwie: nazwach user-0.log, user-1.log, user-2.log itp.).
 
-   W **OutputDataset** bloku, kliknij wycinek, aby wyświetlić **WYCINKA danych** bloku dla tego wycinka. Zostanie wyświetlony **uruchomień działania** dla tego wycinka. Powinny pojawić się jeden uruchamiania dla wycinka działania. Jeśli klikniesz przycisk uruchamiania na pasku poleceń, można uruchomić inne działanie Uruchom dla tej samej wycinka.
+   W **OutputDataset** bloku kliknij wycinek, aby wyświetlić **WYCINKA danych** blok dla tego wycinka. Zostanie wyświetlony **uruchomienia działania** dla tego wycinka. Powinien zostać wyświetlony jeden przebiegu działania dla wycinka. Na pasku poleceń kliknij przycisk Uruchom, po uruchomieniu kolejnego działania, uruchom dla tej samej wycinka.
 
-   Po kliknięciu przycisku uruchamiania działania, zobacz **szczegóły uruchomienia działania** bloku zawierającego listę plików dziennika. Zobaczysz zarejestrowane komunikaty, w pliku user_0.log. Gdy wystąpi błąd, zostanie wyświetlony trzech uruchomień działania, ponieważ liczby ponownych prób jest ustawiona na 3 w potoku/aktywność JSON. Po kliknięciu przycisku Uruchom działania, zobaczysz plików dziennika, które można przejrzeć, aby rozwiązać problem.
+   Po kliknięciu przycisku uruchomienia działania, zobacz **szczegóły URUCHAMIANIA działania** bloku zawierającego listę plików dziennika. Zarejestrowane komunikaty, w pliku user_0.log zostanie wyświetlony. Wystąpi błąd, zostanie wyświetlony trzy uruchomienia działania, ponieważ liczba ponownych prób jest równa 3 w kodzie JSON potoku/działania. Po kliknięciu przycisku uruchomienia działania zostanie wyświetlony pliki dziennika, które można przeglądać, aby rozwiązać ten błąd.
 
-   Na liście plików dziennika, kliknij **0.log użytkownika**. W prawym okienku są wyniki za pomocą **IActivityLogger.Write** metody. Jeśli nie widzisz wszystkich wiadomości, sprawdź, czy istnieje więcej plików dziennika o nazwie: user_1.log, user_2.log itp. W przeciwnym razie kod mogła zakończyć się niepowodzeniem po ostatniej rejestrowany komunikat.
+   Na liście plików dziennika, kliknij **nazwach user-0.log**. W prawym okienku są wyniki użycia **IActivityLogger.Write** metody. Jeśli nie widzisz wszystkich wiadomości, sprawdź, czy istnieją więcej plików dziennika o nazwie: user_1.log, user_2.log itp. W przeciwnym razie kod może nie powiodło się po ostatniej rejestrowany komunikat.
 
-   Ponadto sprawdź **0.log systemu** za wszelkie komunikaty o błędach systemu i wyjątki.
-4. Obejmują **PDB** plików w pliku zip, aby szczegóły błędu mają informacje takie jak **stosu wywołań** po wystąpieniu błędu.
+   Ponadto należy sprawdzić **0.log systemu** za wszelkie komunikaty o błędach systemu i wyjątki.
+4. Obejmują **PDB** plików w pliku zip, aby szczegóły błędu zawierać informacje, takie jak **stos wywołań** po wystąpieniu błędu.
 5. Wszystkie pliki w archiwum ZIP działania niestandardowego muszą znajdować się na **najwyższym poziomie**, bez podfolderów.
-6. Upewnij się, że **assemblyName** (MyDotNetActivity.dll), **punktu wejścia**(MyDotNetActivityNS.MyDotNetActivity), **packageFile** (customactivitycontainer / MyDotNetActivity.zip) i **packageLinkedService** (powinny wskazywać **ogólnego przeznaczenia**magazynu obiektów blob platformy Azure, który zawiera plik zip) są ustawione prawidłowe wartości.
+6. Upewnij się, że **assemblyName** (MyDotNetActivity.dll), **punktu wejścia**(MyDotNetActivityNS.MyDotNetActivity), **packageFile** (customactivitycontainer / MyDotNetActivity.zip) i **packageLinkedService** (powinien wskazywać **ogólnego przeznaczenia**magazynu obiektów blob platformy Azure, który zawiera plik zip) są ustawione na poprawne wartości.
 7. Jeśli naprawiono błąd i chcesz przetworzyć wycinek ponownie, kliknij prawym przyciskiem wycinek w bloku **OutputDataset** i kliknij polecenie **Uruchom**.
-8. Jeśli zostanie wyświetlony następujący błąd, są za pomocą pakietu magazynu Azure w wersji > 4.3.0. Uruchamianie usługi fabryka danych wymaga wersji 4.3 WindowsAzure.Storage. Zobacz [izolacji elementu Appdomain](#appdomain-isolation) sekcji OBEJŚCIE Jeśli należy użyć nowszej wersji zestawu Azure Storage. 
+8. Jeśli zostanie wyświetlony następujący błąd, używasz pakietu usługi Azure Storage w wersji > 4.3.0. Uruchamianie usługi fabryka danych wymaga wersji 4.3 WindowsAzure.Storage. Zobacz [izolacji elementu Appdomain](#appdomain-isolation) sekcji OBEJŚCIE Jeśli musisz użyć nowszej wersji zestawu Azure Storage. 
 
     ```
     Error in Activity: Unknown error in module: System.Reflection.TargetInvocationException: Exception has been thrown by the target of an invocation. ---> System.TypeLoadException: Could not load type 'Microsoft.WindowsAzure.Storage.Blob.CloudBlob' from assembly 'Microsoft.WindowsAzure.Storage, Version=4.3.0.0, Culture=neutral, 
     ```
 
-    Jeśli używasz 4.3.0 wersji pakietu usługi Azure Storage, Usuń istniejące odwołanie do pakietu wersji > 4.3.0 usługi Azure Storage. Następnie uruchom następujące polecenie w konsoli Menedżera pakietów NuGet. 
+    Jeśli używasz 4.3.0 wersję pakietu usługi Azure Storage, Usuń istniejące odwołanie do pakietu wersji > 4.3.0 usługi Azure Storage. Następnie uruchom następujące polecenie z poziomu konsoli Menedżera pakietów NuGet. 
 
     ```PowerShell
     Install-Package WindowsAzure.Storage -Version 4.3.0
     ```
 
-    Skompiluj projekt. Usuń zespół Azure.Storage wersji > 4.3.0 z folderu bin\Debug. Utwórz plik zip zawierający pliki binarne i pliku PDB. Zastąpić starego pliku zip to w kontenerze obiektów blob (customactivitycontainer). Uruchom ponownie wycinków, których nie powiodła się (kliknij prawym przyciskiem myszy wycinek i kliknij przycisk Uruchom).   
-8. Działania niestandardowe nie używa **app.config** plików z pakietu. W związku z tym jeśli kod odczytuje wszelkie parametry połączenia z pliku konfiguracji, działa w czasie wykonywania. Najlepszym rozwiązaniem w przypadku przy użyciu partii zadań Azure do przechowywania wszelkich kluczy tajnych w **Azure KeyVault**, użyj nazwy głównej usługi oparte na certyfikatach, aby chronić **keyvault**i wprowadzić certyfikat do partii zadań Azure Pula. Niestandardowe działanie .NET będzie miało w takiej sytuacji dostęp do danych poufnych z magazynu KeyVault w czasie uruchomienia. To rozwiązanie jest ogólny rozwiązania i można skalować do dowolnego typu klucza tajnego, nie tylko w parametrach połączenia.
+    Skompiluj projekt. Usuń Azure.Storage zestawu w wersji > 4.3.0 z folderu bin\Debug. Utwórz plik zip, pliki binarne i pliku PDB. Zastąp starego pliku zip wskazanego w kontenerze obiektów blob (customactivitycontainer). Uruchom ponownie wycinków, które nie powiodło się (kliknij prawym przyciskiem myszy wycinka i kliknij przycisk Uruchom).   
+8. Działanie niestandardowe nie korzysta z **app.config** plik z pakietu. W związku z tym jeśli kod odczyta dowolne parametry połączenia z pliku konfiguracji, działa w czasie wykonywania. Najlepszym rozwiązaniem, gdy za pomocą usługi Azure Batch jest przechowywanie wszystkich danych poufnych w **Azure KeyVault**, użyć jednostki usługi oparte na certyfikatach, aby chronić **keyvault**i dystrybucja certyfikatu do usługi Azure Batch Pula. Niestandardowe działanie .NET będzie miało w takiej sytuacji dostęp do danych poufnych z magazynu KeyVault w czasie uruchomienia. To rozwiązanie jest to rozwiązanie ogólne i mogą być skalowane do dowolnego typu danych poufnych, nie tylko parametrów połączenia.
 
-   Istnieje obejście łatwiejsze (ale nie najlepiej): można utworzyć **Azure SQL połączona usługa** z ustawień parametrów połączenia, utworzyć zestawu danych, który używa połączonej usługi, a łańcucha zestawu danych jako fikcyjny wejściowy zestaw danych do Niestandardowe działania .NET. Następnie dostępne parametry połączenia połączonej usługi w kodzie działania niestandardowego.  
+   Ma ułatwić obejście problemu (ale nie najlepszym rozwiązaniem jest): można utworzyć **połączonej usługi Azure SQL** ustawienia parametrów połączenia, tworzenie zestawu danych, który korzysta z połączonej usługi i połączyć w łańcuch zestawu danych jako fikcyjnego wejściowego zestawu danych do niestandardowe działanie platformy .NET. Mogą uzyskiwać dostęp do parametrów połączenia połączonej usługi w kodzie działań niestandardowych.  
 
-## <a name="update-custom-activity"></a>Aktualizowanie działań niestandardowych
-Po zaktualizowaniu kod dla działań niestandardowych skompiluj go i przekazać plik zip, który zawiera nowe pliki binarne do magazynu obiektów blob.
+## <a name="update-custom-activity"></a>Niestandardowe działanie aktualizacji
+Po zaktualizowaniu kodu niestandardowego działania, skompiluj go, a następnie przekaż plik zip, który zawiera nowe pliki binarne do magazynu obiektów blob.
 
 ## <a name="appdomain-isolation"></a>Izolacja domeny aplikacji
-Zobacz [Cross próbki AppDomain](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) który pokazuje, jak utworzyć niestandardowe działanie, które nie jest ograniczona do wersji zestawu używanych przez uruchamianie fabryki danych (przykład: WindowsAzure.Storage v4.3.0 Newtonsoft.Json v6.0.x, itp.).
+Zobacz [obejmujące wiele przykładowych AppDomain](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) , dowiesz się, jak utworzyć niestandardowe działanie, które nie jest ograniczony do wersji zestawu, używanych przez uruchamianie usługi Data Factory (przykład: 4.3.0 WindowsAzure.Storage Newtonsoft.Json v6.0.x, itp.).
 
 ## <a name="access-extended-properties"></a>Dostęp do właściwości rozszerzone
-Można zadeklarować właściwości rozszerzone w działaniu JSON, jak pokazano w poniższym przykładzie:
+Można zadeklarować właściwości rozszerzone w działaniu, w formacie JSON, jak pokazano w następującym przykładzie:
 
 ```JSON
 "typeProperties": {
@@ -748,9 +748,9 @@ Można zadeklarować właściwości rozszerzone w działaniu JSON, jak pokazano 
 ```
 
 
-W tym przykładzie są dwie właściwości rozszerzone: **SliceStart** i **DataFactoryName**. Wartość SliceStart opiera się na SliceStart zmiennej systemowej. Zobacz [zmienne systemowe](data-factory-functions-variables.md) listę zmiennych obsługiwany system. Wartość DataFactoryName jest ustalony na CustomActivityFactory.
+W tym przykładzie istnieją dwie właściwości rozszerzone: **SliceStart** i **DataFactoryName**. Wartość parametru SliceStart opiera się na zmiennej systemowej SliceStart. Zobacz [zmiennych systemowych](data-factory-functions-variables.md) listę zmiennych obsługiwany system. Wartość DataFactoryName jest ustalony na CustomActivityFactory.
 
-Aby przejść do nich rozszerzone właściwości w **Execute** metody, użyj kod podobny do następującego kodu:
+Aby przejść do nich rozszerzone właściwości w **Execute** metody, użyj kodu podobne do następującego kodu:
 
 ```csharp
 // to get extended properties (for example: SliceStart)
@@ -766,12 +766,12 @@ foreach (KeyValuePair<string, string> entry in extendedProperties)
 }
 ```
 
-## <a name="auto-scaling-of-azure-batch"></a>Automatyczne skalowanie partii zadań Azure
-Można również utworzyć puli partii zadań Azure z **skalowania automatycznego** funkcji. Na przykład można utworzyć puli partii zadań azure 0 dedykowanych maszyn wirtualnych i formuły skalowania automatycznego na podstawie liczby oczekujących zadań. 
+## <a name="auto-scaling-of-azure-batch"></a>Automatyczne skalowanie usługi Azure Batch
+Możesz również utworzyć puli usługi Azure Batch przy użyciu **skalowania automatycznego** funkcji. Na przykład można utworzyć puli usługi azure batch przy użyciu 0 dedykowanych maszyn wirtualnych i formułę skalowania automatycznego na podstawie liczby oczekujących zadań. 
 
-Przykładowa formuła tutaj realizuje następujące zachowanie: podczas tworzenia puli, rozpoczyna się od 1 maszyny Wirtualnej. Metryka $PendingTasks definiuje liczbę zadań uruchomiona + aktywny (w kolejce) stanu.  Formuła znajduje średnią liczbę oczekujących zadań w ciągu ostatnich 180 sekund i odpowiednio ustawia TargetDedicated. Gwarantuje, że TargetDedicated nigdy nie wykracza poza 25 maszyn wirtualnych. Tak, jak nowe zadania są przesyłane, automatycznie zwiększa rozmiar puli i jako zakończenie zadania, maszyn wirtualnych stają się wolnego jeden po drugim i skalowanie automatyczne zmniejsza tych maszyn wirtualnych. startingNumberOfVMs i maxNumberofVMs można dostosować do własnych potrzeb.
+Na formułę przykładowe realizuje następujące zachowanie: podczas tworzenia puli, rozpoczyna się od maszyny Wirtualnej 1. Metryki $PendingTasks definiuje liczbę zadań uruchamiania + aktywny (kolejki) stanu.  Formuła wyszukuje średnią liczbę zadań oczekujących w ostatnich 180 sekund i ustawia odpowiednio TargetDedicated. Zapewnia, że TargetDedicated nigdy nie trafiają ponad 25 maszyn wirtualnych. Tak, ponieważ nowe zadania są przesyłane, puli automatycznie rozszerza się w i jako zadania, maszyn wirtualnych stają się bezpłatne pojedynczo, i automatyczne skalowanie zmniejsza tych maszyn wirtualnych. startingNumberOfVMs i maxNumberofVMs mogą być dostosowane do potrzeb.
 
-Formuła skalowania automatycznego:
+Formułę skalowania automatycznego:
 
 ``` 
 startingNumberOfVMs = 1;
@@ -781,13 +781,13 @@ pendingTaskSamples = pendingTaskSamplePercent < 70 ? startingNumberOfVMs : avg($
 $TargetDedicated=min(maxNumberofVMs,pendingTaskSamples);
 ```
 
-Zobacz [automatycznie skali obliczeniowe węzłów w puli partii zadań Azure](../../batch/batch-automatic-scaling.md) szczegółowe informacje.
+Zobacz [automatyczne skalowanie węzłów obliczeniowych w puli usługi Azure Batch](../../batch/batch-automatic-scaling.md) Aby uzyskać szczegółowe informacje.
 
-Jeśli w puli jest przy użyciu domyślnego [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx), usługa partia zadań może zająć 15 do 30 minut, aby przygotować maszyny Wirtualnej przed uruchomieniem działania niestandardowego.  Jeśli pula używa innego autoScaleEvaluationInterval, usługa partia zadań może zająć autoScaleEvaluationInterval + 10 minut.
+Jeśli pula używa domyślnie [autoScaleEvaluationInterval](https://msdn.microsoft.com/library/azure/dn820173.aspx), usługa Batch może potrwać 15 – 30 minut, aby przygotować maszynę Wirtualną przed uruchomieniem działania niestandardowego.  Jeśli pula używa różnych autoScaleEvaluationInterval, usługa Batch może potrwać autoScaleEvaluationInterval + 10 minut.
 
 
-## <a name="create-a-custom-activity-by-using-net-sdk"></a>Tworzenie niestandardowego działania przy użyciu zestawu .NET SDK
-W przewodniku, w tym artykule Tworzenie fabryki danych z potok, który używa działań niestandardowych za pomocą portalu Azure. Poniższy kod przedstawia sposób tworzenia fabryki danych przy użyciu zestawu .NET SDK zamiast tego. Można znaleźć więcej szczegółów na temat przy użyciu zestawu SDK do programowego tworzenia potoków w [utworzyć potok z działania kopiowania przy użyciu interfejsu API platformy .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md) artykułu. 
+## <a name="create-a-custom-activity-by-using-net-sdk"></a>Utwórz niestandardowe działanie przy użyciu zestawu .NET SDK
+W instruktażu, w tym artykule Tworzenie fabryki danych obejmującej potok, który używa niestandardowego działania przy użyciu witryny Azure portal. Poniższy kod przedstawia sposób tworzenia fabryki danych przy użyciu zestawu SDK .NET zamiast tego. Można znaleźć więcej szczegółów na temat przy użyciu zestawu SDK do programowego tworzenia potoków w [tworzenie potoku za pomocą działania kopiowania przy użyciu interfejsu API platformy .NET](data-factory-copy-activity-tutorial-using-dotnet-api.md) artykułu. 
 
 ```csharp
 using System;
@@ -1027,17 +1027,17 @@ namespace DataFactoryAPITestApp
 ```
 
 ## <a name="debug-custom-activity-in-visual-studio"></a>Debugowanie działań niestandardowych w programie Visual Studio
-[Fabryki danych Azure - lokalnego środowiska](https://github.com/gbrueckl/Azure.DataFactory.LocalEnvironment) przykładem w witrynie GitHub zawiera narzędzia, która umożliwia debugowanie niestandardowych działań platformy .NET w programie Visual Studio.  
+[Usługi Azure Data Factory — środowisko lokalne](https://github.com/gbrueckl/Azure.DataFactory.LocalEnvironment) przykład w witrynie GitHub zawiera narzędzia, która pozwala na debugowanie niestandardowe działania programu .NET w programie Visual Studio.  
 
 
-## <a name="sample-custom-activities-on-github"></a>Przykład niestandardowych działań w witrynie GitHub
+## <a name="sample-custom-activities-on-github"></a>Przykładowe niestandardowe działania w witrynie GitHub
 | Sample | Jakie niestandardowe działanie robi |
 | --- | --- |
-| [Narzędzie do pobierania danych HTTP](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample). |Pobiera dane z punktu końcowego HTTP do magazynu obiektów Blob Azure przy użyciu działań niestandardowych C# w fabryce danych. |
-| [Przykładowe wskaźniki nastrojów klientów analizy w usłudze Twitter](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |Wywołuje model usługi uczenie Maszynowe Azure i analizy wskaźniki nastrojów klientów oceniania, prognozowania itp. |
-| [Uruchom skrypt języka R](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample). |Wywołuje skrypt języka R, uruchamiając RScript.exe w klastrze usługi HDInsight, na którym jest już zainstalowany R na nim. |
-| [Krzyżowe AppDomain .NET działania](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |Używa innego zestawu wersji z takich, które jest używane przez uruchamianie fabryki danych |
-| [Ponowne przetworzenie modelu w usług Azure Analysis Services](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample) |  Ponownego przetwarzania modelu w usług Azure Analysis Services. |
+| [Narzędzie do pobierania danych HTTP](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/HttpDataDownloaderSample). |Pobiera dane z punktu końcowego HTTP do usługi Azure Blob Storage przy użyciu niestandardowych C# działania w usłudze Data Factory. |
+| [Próbka analizy tonacji w usłudze Twitter](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/TwitterAnalysisSample-CustomC%23Activity) |Wywołuje modelu usługi uczenie Maszynowe Azure i analiza tonacji oceniania, przewidywania itp. |
+| [Uruchom skrypt języka R](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/RunRScriptUsingADFSample). |Wywołuje skrypt języka R, uruchamiając Rscript.exe.{0}nie w klastrze usługi HDInsight, w którym jest już zainstalowany R na nim. |
+| [Krzyżowe elementu AppDomain działanie platformy .NET](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/CrossAppDomainDotNetActivitySample) |Używa innego zestawu w wersjach od takich, które jest używane przez uruchamianie usługi Data Factory |
+| [Ponowne przetwarzanie modeli w usługach Azure Analysis Services](https://github.com/Azure/Azure-DataFactory/tree/master/Samples/AzureAnalysisServicesProcessSample) |  Ponownego przetwarzania modelu w usłudze Azure Analysis Services. |
 
 [batch-net-library]: ../../batch/batch-dotnet-get-started.md
 [batch-create-account]: ../../batch/batch-account-create-portal.md

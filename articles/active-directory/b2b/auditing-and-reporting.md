@@ -4,18 +4,18 @@ description: Właściwości użytkownika gościa są konfigurowane we współpra
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/12/2017
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 50f6a1ee7486918869342f032818d587c99f4cac
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 80ae3d2603cbb1c52c5bbe5e72ef7880cf0da6eb
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35647805"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984606"
 ---
 # <a name="auditing-and-reporting-a-b2b-collaboration-user"></a>Inspekcja i raportowanie użytkownika współpracy B2B
 Użytkownicy-goście masz inspekcji funkcje podobne do użytkowników. Oto przykład zaproszenie i realizacji historii użytkownika osoby zaproszonej Sam Oogle:

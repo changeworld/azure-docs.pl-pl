@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 2484d01c268757ef612ba7b397b80b8ea4c4e76a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 39287e4d90e4f6f42dd1f79d5457853e253bd736
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528143"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737060"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Usługa Azure Import/Export umożliwia importowanie danych do usługi Azure Blob Storage
 
@@ -25,7 +25,7 @@ Przed przystąpieniem do tworzenia zadania importu do przenoszenia danych do us�
 
 - Mieć aktywną subskrypcją platformy Azure, który może służyć do usługi Import/Export.
 - Ma co najmniej jedno konto usługi Azure Storage z kontenera magazynu. Przejrzyj listę rzeczy, [obsługiwanych kont magazynu i typów magazynu dla usługi Import/Export](storage-import-export-requirements.md). 
-    - Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [sposób tworzenia konta magazynu](storage-create-storage-account.md#create-a-storage-account). 
+    - Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [sposób tworzenia konta magazynu](storage-quickstart-create-account.md). 
     - Aby uzyskać informacji na temat kontenera magazynu, przejdź do [utworzyć kontenera magazynu](../blobs/storage-quickstart-blobs-portal.md#create-a-container).
 - Mieć odpowiednią liczbę dysków [obsługiwane typy](storage-import-export-requirements.md#supported-disks). 
 - System Windows z systemem [obsługiwany system operacyjny w wersji](storage-import-export-requirements.md#supported-operating-systems). 

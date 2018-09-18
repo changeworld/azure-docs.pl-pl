@@ -1,21 +1,21 @@
 ---
-title: Wykrywanie twarzy
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Pojęcia dotyczące wykrywania twarzy przy użyciu przetwarzania obrazów w usługach Azure Cognitive Services.
+title: Wykrywanie twarzy — przetwarzanie obrazów
+titleSuffix: Azure Cognitive Services
+description: Pojęcia dotyczące wykrywania twarzy przy użyciu interfejsu API przetwarzania obrazów.
 services: cognitive-services
 author: deken
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: abf0dc0ea80685130f6566ae962d2bed124e0924
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: df1cd989d82fa5541c2d81fe6629671d6e063bc4
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44725497"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984558"
 ---
 # <a name="detecting-faces"></a>Wykrywanie twarzy
 

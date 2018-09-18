@@ -8,12 +8,12 @@ services: devops
 custom: jenkins
 ms.date: 07/31/2018
 ms.component: common
-ms.openlocfilehash: 549150abc630cd247927b4ba7042d0bdf0e8b88a
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: b7ac5c277b45ae5c005a284d5c38e55099c11e33
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39524393"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735566"
 ---
 # <a name="using-azure-storage-with-a-jenkins-continuous-integration-solution"></a>Za pomocą usługi Azure Storage z rozwiązaniem ciągłej integracji Jenkins
 
@@ -48,7 +48,7 @@ Korzyści z używania usługi obiektów Blob, aby hostować swoje artefakty komp
      
       Podczas gdy typowe rozwiązanie ciągłej integracji narzędzia Jenkins, należy skonfigurować do uruchamiania jako usługa, uruchomiona war narzędzia Jenkins w wierszu polecenia, będzie wystarczająca na potrzeby tego samouczka.
 * Konto platformy Azure. Możesz zasubskrybować konta platformy Azure w <http://www.azure.com>.
-* Konto usługi Azure Storage. Jeśli nie masz jeszcze konta magazynu, możesz utworzyć ją przy użyciu czynności opisane w temacie [Tworzenie konta magazynu](../common/storage-create-storage-account.md#create-a-storage-account).
+* Konto usługi Azure Storage. Jeśli nie masz jeszcze konta magazynu, możesz utworzyć ją przy użyciu czynności opisane w temacie [Tworzenie konta magazynu](../common/storage-quickstart-create-account.md).
 * Znajomość rozwiązanie ciągłej integracji Jenkins jest zalecane, ale nie jest to wymagane, zgodnie z następującą zawartością użyje podstawowy przykład w celu dowiesz się, że artefakty kompilacji kroki wymagane w przypadku korzystania z usługi Blob service jako repozytorium do ciągłej integracji narzędzia Jenkins.
 
 ## <a name="how-to-use-the-blob-service-with-jenkins-ci"></a>Jak używać usługi obiektów Blob przy użyciu ciągłej integracji Jenkins

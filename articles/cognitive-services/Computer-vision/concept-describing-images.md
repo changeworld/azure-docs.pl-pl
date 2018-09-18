@@ -1,25 +1,25 @@
 ---
-title: Opisujące obrazów
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Pojęcia związane z opisem obrazów przy użyciu przetwarzania obrazów w usługach Azure Cognitive Services.
+title: Opisujące obrazów — przetwarzanie obrazów
+titleSuffix: Azure Cognitive Services
+description: Pojęcia związane z opisem obrazów przy użyciu interfejsu API przetwarzania obrazów.
 services: cognitive-services
 author: deken
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: be59055a2c6cd1366c8c52370fa97158ab8d6c88
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: a65e3ea2fb28ca8a2250fb3e39860eb5e08c18f4
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44725396"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981988"
 ---
-# <a name="describing-images"></a>Opisujące obrazów
+# <a name="describing-images"></a>Opisywanie obrazów
 
-Algorytmy przetwarzania obrazów analizowanie zawartości obrazu. Ta analiza stanowi podstawę dla "opis" wyświetlana jako język zrozumiałą dla użytkownika w postaci kompletnych zdań. Opis podsumowuje, co znajduje się na obrazie. Algorytmy przetwarzania obrazów Generowanie opisy różnych oparte na funkcji visual zidentyfikowane na obrazie. Poszczególne opisy są oceniane, po czym generowany jest współczynnik ufności. Następnie zwracana jest lista uporządkowana od najwyższego do najniższego współczynnika ufności.
+Algorytmy przetwarzania obrazów analizowanie zawartości obrazu. Ta analiza stanowi podstawę dla "opis" wyświetlana jako język zrozumiałą dla użytkownika w postaci kompletnych zdań. Opis podsumowuje, co znajduje się na obrazie. Algorytmy przetwarzania obrazów Generowanie opisy różnych oparte na funkcji visual zidentyfikowane na obrazie. Każdy opis jest szacowana, a współczynnik ufności wygenerowany. Następnie zwracana jest lista uporządkowana od najwyższego do najniższego współczynnika ufności.
 
 ## <a name="image-description-example"></a>Przykład opis obrazu
 

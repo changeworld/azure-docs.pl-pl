@@ -8,18 +8,20 @@ ms.topic: article
 ms.date: 03/20/2018
 ms.author: jeking
 ms.component: common
-ms.openlocfilehash: dfd5058b17a211adf97eb8729158b2b65d7b6975
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 0a4ebefd89414fa62ca69f2f9cc726f471694bee
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579517"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733620"
 ---
 # <a name="zone-redundant-storage-zrs-highly-available-azure-storage-applications"></a>Magazyn strefowo nadmiarowy (ZRS): wysoko dostępnych aplikacji usługi Azure Storage
 [!INCLUDE [storage-common-redundancy-ZRS](../../../includes/storage-common-redundancy-zrs.md)]
 
 ## <a name="support-coverage-and-regional-availability"></a>Zakres pomocy technicznej i dostępność regionalna
-Magazyn ZRS obsługuje obecnie standard [ogólnego przeznaczenia w wersji 2 (GPv2)](storage-account-options.md#general-purpose-v2-accounts) typów kont. Magazyn ZRS jest dostępny dla blokowych obiektów blob, -disk stronicowe obiekty BLOB, pliki, tabele i kolejki. Ponadto wszystkie swoje [Storage Analytics](storage-analytics.md) dzienniki i [metryk usługi Storage](storage-enable-and-view-metrics.md)
+Magazyn ZRS obecnie obsługuje typy kont ogólnego przeznaczenia standard w wersji 2. Aby uzyskać więcej informacji na temat typów kont magazynu, zobacz [Przegląd konta usługi Azure storage](storage-account-overview.md).
+
+Magazyn ZRS jest dostępny dla blokowych obiektów blob, -disk stronicowe obiekty BLOB, pliki, tabele i kolejki.
 
 Magazyn ZRS jest ogólnie dostępna w następujących regionach:
 
@@ -80,7 +82,9 @@ Działu pomocy technicznej następnie Tobą skontaktuje. Osoba będzie dostępne
 >
 > Gdy stanie się ZRS [jest ogólnie dostępna](#support-coverage-and-regional-availability) w regionie, klienci nie będzie można utworzyć konta klasycznego magazynu ZRS w portalu, w tym regionie. Za pomocą programu Microsoft PowerShell i wiersza polecenia platformy Azure do utworzenia konta klasycznego magazynu ZRS jest obsługiwana, dopóki klasyczny magazyn ZRS jest przestarzała.
 
-Klasyczny magazyn ZRS asynchronicznie replikuje dane między centrami danych w jednym lub dwóch regionach. Replika może być niedostępna, chyba że firma Microsoft zainicjuje przejście w tryb failover do regionu pomocniczego. Klasyczny magazyn ZRS jest dostępna tylko dla **blokowe obiekty BLOB** w [ogólnego przeznaczenia w wersji 1 (GPv1)](storage-account-options.md#general-purpose-v1-accounts) kont magazynu. Nie można przekonwertować konta klasycznego magazynu ZRS na konto magazynu LRS lub GRS ani odwrotnie, a ponadto konto klasycznego magazynu ZRS nie ma metryk ani funkcji rejestrowania.
+Klasyczny magazyn ZRS asynchronicznie replikuje dane między centrami danych w jednym lub dwóch regionach. Replika może być niedostępna, chyba że firma Microsoft zainicjuje przejście w tryb failover do regionu pomocniczego. Nie można przekonwertować konta klasycznego magazynu ZRS na konto magazynu LRS lub GRS ani odwrotnie, a ponadto konto klasycznego magazynu ZRS nie ma metryk ani funkcji rejestrowania.
+
+Klasyczny magazyn ZRS jest dostępna tylko dla **blokowe obiekty BLOB** w ogólnego przeznaczenia w wersji 1 (GPv1) konta magazynu. Aby uzyskać więcej informacji na temat kont magazynu, zobacz [Przegląd konta usługi Azure storage](storage-account-overview.md).
 
 Nie można przekonwertować konta klasycznego magazynu ZRS, do lub z magazynu LRS, GRS lub RA-GRS. Konta klasycznego magazynu ZRS nie obsługują także metryk i rejestrowania.
 

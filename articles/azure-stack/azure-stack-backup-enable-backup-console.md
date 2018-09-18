@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/05/2018
 ms.author: jeffgilb
-ms.openlocfilehash: 1373e98b8edac81ebdb15aaf36d8bbfc910029fe
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: fdcc4f51f49e8eb133deeeecd070c55511cda464
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44026189"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985800"
 ---
 # <a name="enable-backup-for-azure-stack-from-the-administration-portal"></a>Włączanie tworzenia kopii zapasowej z portalu administratora usługi Azure Stack
 Włącz usługi Backup infrastrukturę, za pośrednictwem portalu administracyjnego usługi Azure Stack mogą generować kopii zapasowych. Te kopie zapasowe można użyć do przywrócenia środowiska za pomocą odzyskiwania w chmurze w przypadku powstania [poważnej awarii](.\azure-stack-backup-recover-data.md). Cel odzyskiwania w chmurze jest zapewnienie, że Twoje operatory i użytkownicy mogą Zaloguj się do portalu po ukończeniu odzyskiwania. Użytkownicy mają swoje subskrypcje przywrócone w tym uprawnienia dostępu opartej na rolach i ról, oryginalnym planów, ofert i obliczeń wcześniej zdefiniowane, magazynu i limitów przydziałów sieci.
@@ -62,7 +62,7 @@ Administratorzy i użytkownicy są odpowiedzialne za tworzenie kopii zapasowych 
 ## <a name="start-backup"></a>Rozpocznij wykonywanie kopii zapasowej
 Aby rozpocząć tworzenie kopii zapasowej, kliknij pozycję **Utwórz teraz kopię zapasową** aby rozpocząć tworzenie kopii zapasowej na żądanie. Kopii zapasowej na żądanie nie zmodyfikuje podczas następnej zaplanowanej kopii zapasowej. Po zakończeniu zadania, można potwierdzić ustawień w **Essentials**:
 
-![Usługa Azure Stack — kopii zapasowej na żądanie](media\azure-stack-backup\scheduled-backup.png).
+![Usługa Azure Stack — kopii zapasowej na żądanie](media\azure-stack-backup\scheduled-backup.png)
 
 Można również uruchomić polecenie cmdlet programu PowerShell **Start AzsBackup** na tym komputerze administracji usługi Azure Stack. Aby uzyskać więcej informacji, zobacz [wykonywanie kopii zapasowych usługi Azure Stack](azure-stack-backup-back-up-azure-stack.md).
 

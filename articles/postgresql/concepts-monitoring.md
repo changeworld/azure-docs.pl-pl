@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie bazy danych platformy Azure dla PostgreSQL
-description: W tym artykule opisano metryki monitorowania oraz alertów dla bazy danych Azure dla PostgreSQL, w tym statystyk Procesora, pamięci masowej i połączenia.
+title: Monitorowanie w usłudze Azure Database for PostgreSQL
+description: W tym artykule opisano metryki dotyczące monitorowania i alertów dla usługi Azure Database for PostgreSQL, w tym statystyk procesora CPU, Magazyn i połączenia.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
@@ -8,35 +8,40 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 02/28/2018
-ms.openlocfilehash: d0a57fe6d7b1040c32f6d67e2bf0259176c72099
-ms.sourcegitcommit: c765cbd9c379ed00f1e2394374efa8e1915321b9
+ms.date: 09/17/2018
+ms.openlocfilehash: 17b12514e32ad8d1548d834d72e0f7564fe78143
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 02/28/2018
-ms.locfileid: "29687612"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985783"
 ---
-# <a name="monitoring-in-azure-database-for-postgresql"></a>Monitorowanie bazy danych platformy Azure dla PostgreSQL
-Monitorowanie danych dotyczących serwerów ułatwia rozwiązywanie problemów i Optymalizuj dla obciążenia. Bazy danych platformy Azure dla PostgreSQL zapewnia różnych metryk, które zapewniają wgląd w zachowania zasobów, do obsługi serwera PostgreSQL. 
+# <a name="monitoring-in-azure-database-for-postgresql"></a>Monitorowanie w usłudze Azure Database for PostgreSQL
+Dane dotyczące serwerów monitorowania ułatwia rozwiązywanie problemów i zoptymalizować dla obciążenia. Usługa Azure Database for PostgreSQL udostępnia różne metryki, które zapewniają wgląd w zachowanie zasobach obsługujących serwera PostgreSQL. 
 
 ## <a name="metrics"></a>Metryki
-Wszystkie metryki Azure ma częstotliwość co minutę, a wszystkie metryki zapewnia 30 dni historii. Alerty można skonfigurować na metryki. Aby uzyskać instrukcje krok po kroku, zobacz [jak skonfigurować alerty](howto-alert-on-metric.md). Inne zadania obejmują konfigurowanie akcje automatyczne, wykonywanie zaawansowane metody analizy i archiwizowania historii. Aby uzyskać więcej informacji, zobacz [omówienie metryk usługi Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Wszystkie metryki usługi Azure mieć częstotliwość co minutę, a wszystkie metryki zapewnia 30 dni historii. Można skonfigurować alerty dotyczące metryk. Aby uzyskać wskazówki krok po kroku, zobacz [jak skonfigurować alerty](howto-alert-on-metric.md). Inne zadania obejmują skonfigurowanie zautomatyzowanych akcji, wykonywanie zaawansowanych analiz i archiwizowanie historii. Aby uzyskać więcej informacji, zobacz [Przegląd metryk usługi Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
-### <a name="list-of-metrics"></a>Lista metryk
-Te metryki są dostępne dla bazy danych Azure dla PostgreSQL:
+### <a name="list-of-metrics"></a>Listy metryk
+Te metryki są dostępne dla usługi Azure Database for PostgreSQL:
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Opis|
 |---|---|---|---|---|
-|cpu_percent|Procent procesora CPU|Procent|Procent procesora CPU w użyciu.|
-|memory_percent|Procent pamięci|Procent|Procent użycia pamięci.|
-|io_consumption_percent|Procent we/wy|Procent|Procent we/wy w użyciu.|
-|storage_percent|Procent użycia magazynu|Procent|Maksymalne przez procent magazynu używane poza serwera.|
-|storage_used|Użyty magazyn|Bajty|Ilość pamięci masowej w użyciu. Magazyn używany przez usługę zawiera pliki bazy danych, dzienników transakcji i dzienniki serwera.|
-|storage_limit|Limit magazynu|Bajty|Maksymalna przestrzeń magazynowa dla tego serwera.|
-|active_connections|Całkowita liczba aktywnych połączeń|Licznik|Liczba aktywnych połączeń z serwerem.|
-|connections_failed|Całkowita liczba połączeń nie powiodło się|Licznik|Liczba połączeń z serwerem nie powiodło się.|
+|cpu_percent|Procent użycia Procesora|Procent|Procent użycia Procesora w użyciu.|
+|memory_percent|Procent pamięci|Procent|Procent pamięci w użyciu.|
+|io_consumption_percent|% Operacji We/Wy|Procent|Procent we/wy w użyciu.|
+|storage_percent|Procent użycia magazynu|Procent|Maksymalne przez wartość procentowa magazynu używane poza serwerem.|
+|storage_used|Użyty magazyn|Bajty|Ilość miejsca w magazynie. Magazyn używany przez usługę mogą obejmować pliki bazy danych, dzienników transakcji i dzienniki serwera.|
+|storage_limit|Limit magazynu|Bajty|Maksymalny rozmiar magazynu dla tego serwera.|
+|serverlog_storage_percent|Procent magazynu dziennika serwera|Procent|Wartość procentowa używane poza magazyn dzienników serwera maksymalna serwera magazynu dziennika serwera.|
+|serverlog_storage_usage|Używany Magazyn dzienników serwera|Bajty|Ilość miejsca w magazynie dziennika na serwerze.|
+|serverlog_storage_limit|Limit magazynu dziennika serwera|Bajty|Przechowywanie dziennika serwera maksymalną dla tego serwera.|
+|active_connections|Aktywne połączenia|Licznik|Liczba aktywnych połączeń z serwerem.|
+|connections_failed|Połączenia zakończone niepowodzeniem|Licznik|Liczba połączeń z serwerem nie powiodło się.|
+|network_bytes_egress|Sieć — wyjście|Bajty|Sieć się między aktywnych połączeń.|
+|network_bytes_ingress|Sieć — wejście|Bajty|Sieć w różnych aktywnych połączeń.|
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Zobacz [jak skonfigurować alerty](howto-alert-on-metric.md) wskazówki dotyczące tworzenia alertu na metryki.
-- Aby uzyskać więcej informacji na temat dostępu i wyeksportować metryki przy użyciu portalu Azure, interfejsu API REST lub interfejsu wiersza polecenia, zobacz [omówienie metryk usługi Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+- Zobacz [jak skonfigurować alerty](howto-alert-on-metric.md) wskazówki dotyczące tworzenia alertu na metrykę.
+- Aby uzyskać więcej informacji na temat sposobu uzyskania dostępu i eksportowanie metryk przy użyciu witryny Azure portal, interfejsu API REST lub interfejsu wiersza polecenia, zobacz [Przegląd metryk usługi Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).

@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: reference
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: 218bd9031193d4987fdc1e0ae2bf302bdb028673
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 479f7df740e75ae44a5198414036ff0b0c216471
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604505"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730651"
 ---
 # <a name="sql-database-faq"></a>SQL Database — często zadawane pytania
 
@@ -41,7 +41,7 @@ W wielu przypadkach aplikacje mogą korzystać z prostoty wstępnie skonfigurowa
 Modele oparte na jednostkach DTU i rdzeniach wirtualnych będą nadal istnieć obok siebie. Udostępniamy model oparty na rdzeniach wirtualnych w odpowiedzi na prośby klientów większą przejrzystość w zakresie ich zasobów bazy danych oraz możliwość oddzielnie skalować swoje zasoby obliczeniowe i magazynowe. Model oparty na rdzeniach wirtualnych umożliwia również dodatkowe oszczędności dla klientów z aktywnym pakietem Software Assurance za pośrednictwem korzyści użycia hybrydowego platformy Azure dla programu SQL Server.
 
 ## <a name="how-should-i-choose-between-the-dtu-based-purchasing-model-vs-the-vcore-based-purchasing-model"></a>Jak wybrać między vs oparty na jednostkach DTU model zakupu modelu zakupu opartego na rdzeniach wirtualnych? 
-Jednostka transmisji danych (DTU) jest oparta na kombinacji pomiarów procesora, pamięci, odczytów i zapisów. Poziomy wydajności oparte na jednostkach DTU reprezentują wstępnie skonfigurowane pakiety zasobów dostosowane do różnych poziomów wydajności aplikacji. Klienci, którzy nie chcesz martwić się o podstawowe zasoby i preferujesz prostotę wstępnie skonfigurowanego pakietu podczas płacenia stałą każdego miesiąca może się okazać modelu opartego na jednostkach DTU bardziej odpowiednie do ich potrzeb. Jednak w przypadku klientów, którzy potrzebujesz szczegółowego wglądu w dostępne zasoby lub chcesz skalować je niezależnie, aby osiągnąć optymalną wydajność, model oparty na rdzeniach wirtualnych będzie najlepszym wyborem.  Ponadto jeśli klient ma aktywne Software Assurance (SA) dla programu SQL Server, ich można korzystać z ich istniejących inwestycji i Zaoszczędź do 30% z [korzyści z używania hybrydowej platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Opcje w ramach zakupu modeli zapewniają korzyści w pełni zarządzanej usługi takie jak automatyczne kopie zapasowe, aktualizacje oprogramowania i poprawek. 
+Jednostka transmisji danych (DTU) jest oparta na kombinacji pomiarów procesora, pamięci, odczytów i zapisów. Rozmiary mocą obliczeniową opartą na jednostkach DTU reprezentują wstępnie skonfigurowane pakiety zasobów dostosowane do różnych poziomów wydajności aplikacji. Klienci, którzy nie chcesz martwić się o podstawowe zasoby i preferujesz prostotę wstępnie skonfigurowanego pakietu podczas płacenia stałą każdego miesiąca może się okazać modelu opartego na jednostkach DTU bardziej odpowiednie do ich potrzeb. Jednak w przypadku klientów, którzy potrzebujesz szczegółowego wglądu w dostępne zasoby lub chcesz skalować je niezależnie, aby osiągnąć optymalną wydajność, model oparty na rdzeniach wirtualnych będzie najlepszym wyborem.  Ponadto jeśli klient ma aktywne Software Assurance (SA) dla programu SQL Server, ich można korzystać z ich istniejących inwestycji i Zaoszczędź do 30% z [korzyści z używania hybrydowej platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).  Opcje w ramach zakupu modeli zapewniają korzyści w pełni zarządzanej usługi takie jak automatyczne kopie zapasowe, aktualizacje oprogramowania i poprawek. 
 
 ## <a name="what-is-the-azure-hybrid-benefit-for-sql-server"></a>Co to jest korzyść użycia hybrydowego platformy Azure dla programu SQL Server? 
 [Korzyści z używania hybrydowej platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md) pomaga zmaksymalizować wykorzystanie obecnych inwestycji licencjonowania i przyspieszyć ich migrację do chmury. Azure korzyść użycia hybrydowego dla programu SQL Server jest oparta na platformie Azure korzyści, która umożliwia użycie licencji programu SQL Server z pakietem Software Assurance zapłacić obniżonych stawek ("stawka podstawowa") w bazie danych SQL. Korzyść użycia hybrydowego platformy Azure dla programu SQL Server jest dostępna w publicznej wersji zapoznawczej modelu zakupu opartego na rdzeniach wirtualnych dla pojedynczych baz danych SQL Database i pul elastycznych. Można stosować tej korzyści, nawet jeśli jednostka SKU jest aktywna, ale należy pamiętać, że podstawowa stawka jest stosowana od momentu wybrania jej w witrynie Azure portal. Żadne środki nie będą naliczane wstecznie.
@@ -78,8 +78,8 @@ W magazynie kopii zapasowej pojedynczej bazy danych opłaty są naliczane propor
 ## <a name="how-do-i-select-the-right-sku-when-converting-an-existing-database-to-the-new-service-tiers"></a>Jak wybrać odpowiednie jednostki SKU, podczas konwersji istniejącej bazy danych do nowych warstw usług? 
 Istniejących aplikacji SQL Database przy użyciu modelu opartego na jednostkach DTU w warstwie usług ogólnego przeznaczenia jest porównywalna z warstwą standardowa. Krytyczne dla działania firmy warstwy usług jest porównywalna z warstwy Premium. W obu przypadkach należy przydzielić co najmniej 1 rdzeń wirtualny dla każdego 100 DTU, której aplikacja korzysta z modelu opartego na jednostkach DTU.
 
-## <a name="do-the-new-vcore-based-service-tiers-offer-the-performance-levels-compatible-with-all-existing-service-level-objectives-slos"></a>Nowe warstwy usług oparte na rdzeniach wirtualnych, są one zgodne z wszystkich istniejących celów poziomu usług (slo) poziomów wydajności?
-Nowe warstwy usług oparte na rdzeniach wirtualnych oferuje opcje wydajnościowe porównywalny dla wszystkich elastycznych pul i baz danych przy użyciu 100 jednostek Dtu lub więcej.  Będziemy nadal dodawać więcej cele slo wraz z upływem czasu, aby pomieścić sub 100 jednostek DTU obciążeń.
+## <a name="do-the-new-vcore-based-service-tiers-offer-the-compute-sizes-compatible-with-all-existing-compute-sizes"></a>Czy nowe warstwy usług oparte na rdzeniach wirtualnych oferują zgodny z istniejącymi wszystkich rozmiarów wystąpień obliczeniowych obliczenia rozmiarów?
+Nowe warstwy usług oparte na rdzeniach wirtualnych oferuje opcje wydajnościowe porównywalny dla wszystkich elastycznych pul i baz danych przy użyciu 100 jednostek Dtu lub więcej.  Firma Microsoft nalicza dodające się, że rozmiary wraz z upływem czasu, aby pomieścić sub 100 jednostek DTU obciążeń większej mocy obliczeniowej.
 
 ## <a name="are-there-any-database-feature-differences-between-the-existing-dtu-based-and-new-vcore-based-service-tiers"></a>Czy istnieją wszystkie bazy danych różnicach w funkcjonalności między istniejących warstw usługi oparte na jednostkach DTU i nowy oparty na rdzeniach wirtualnych? 
 Nowe warstwy usługi obsługuje nadzbiór funkcji, które są dostępne w bieżących ofert oparty na jednostkach DTU. Dodatkowe funkcje obejmują zestaw dodatkowych dynamicznych widoków zarządzania (DMV) i opcje konfiguracji dodatkowych zasobów. 
@@ -110,7 +110,7 @@ Ponieważ model rdzenia wirtualnego umożliwia niezależną kontrolę nad iloś�
 ## <a name="how-often-can-i-adjust-the-resources-per-pool"></a>Jak często można dostosować zasoby na pulę
 Tak często, jak chcesz. Zobacz [Zarządzanie elastycznymi pulami](sql-database-elastic-pool.md).
 
-## <a name="how-long-does-it-take-to-change-the-service-tier-or-performance-level-of-a-single-database-or-move-a-database-in-and-out-of-an-elastic-pool"></a>Jak długo trwa zmiana poziomu wydajności lub Warstwa usługi pojedynczej bazy danych lub przenosić bazy danych do i z puli elastycznej?
+## <a name="how-long-does-it-take-to-change-the-service-tier-or-compute-size-of-a-single-database-or-move-a-database-in-and-out-of-an-elastic-pool"></a>Jak długo trwa zmiana warstwy usługi compute rozmiar pojedynczej bazy danych lub przenosić bazy danych do i z puli elastycznej?
 Zmiana warstwy usługi bazy danych i przeniesienie do i z puli wymaga bazy danych do skopiowania na platformie jako operacji w tle. Zmiana warstwy usługi może potrwać od kilku minut do kilku godzin w zależności od rozmiaru bazy danych. W obu przypadkach bazy danych pozostają online i dostępne podczas przenoszenia. Aby uzyskać więcej informacji o zmienianiu pojedynczych baz danych, zobacz [Zmienianie warstwy usługi bazy danych](sql-database-service-tiers-dtu.md). 
 
 ## <a name="when-should-i-use-a-single-database-vs-elastic-databases"></a>Kiedy należy używać pojedynczej bazy danych i elastycznych baz danych?
@@ -120,7 +120,7 @@ Ogólnie rzecz biorąc, pule elastyczne są przeznaczone dla typowej [oprogramow
 W ramach bazy danych SQL na podstawie przewidywalnej stawki godzinowej na podstawie [zakupem modelu](sql-database-service-tiers-dtu.md). Rzeczywiste użycie jest obliczane i proporcjonalnie co godzinę, dlatego na rachunku mogą być widoczne części godziny. Na przykład jeśli baza danych istnieje przez 12 godzin w miesiącu, na rachunku pokazuje użycie pół dnia. 
 
 ## <a name="what-if-a-single-database-is-active-for-less-than-an-hour-or-uses-a-higher-service-tier-for-less-than-an-hour"></a>Co zrobić, jeśli pojedynczej bazy danych jest aktywna krócej niż godzinę lub korzystanie z wyższej warstwy usługi dla mniej niż godzinę?
-Opłata jest naliczana za każdy godzinę istnienia bazy danych przy użyciu najwyższej warstwy usługi i poziom wydajności zastosowany w ciągu tej godziny, niezależnie od użycia lub tego, czy baza danych była Aktywna krócej niż godzinę. Po utworzeniu pojedynczej bazy danych i usuniesz ją 5 minut później rachunku odzwierciedla za godzinę korzystania z jednej bazy danych. 
+Opłaty naliczane są za każdą godzinę istnienia bazy danych przy użyciu najwyższej warstwy usługi i obliczenia rozmiaru zastosowany w ciągu tej godziny, niezależnie od użycia lub tego, czy baza danych była Aktywna krócej niż godzinę. Po utworzeniu pojedynczej bazy danych i usuniesz ją 5 minut później rachunku odzwierciedla za godzinę korzystania z jednej bazy danych. 
 
 Przykłady:
 
@@ -141,8 +141,8 @@ Oparte na jednostkach DTU: zakupu przykłady modelu:
 Pule elastyczne są naliczane opłaty za następujące cechy:
 
 * Pula elastyczna jest rozliczane po jego utworzeniu, nawet wtedy, gdy istnieją żadnych baz danych w puli.
-* Pula elastyczna jest rozliczana co godzinę. Jest to taką samą częstotliwością pomiarów, jak w przypadku poziomów wydajności dla pojedynczych baz danych.
-* Jeśli zmiany rozmiaru puli elastycznej następnie puli nie jest rozliczane według nowych ilość zasobów do momentu ukończenia operacji zmiany rozmiaru. To jest zgodna z tym samym wzorcem podczas zmieniania poziomu wydajności pojedynczej bazy danych.
+* Pula elastyczna jest rozliczana co godzinę. Jest to ten sam częstotliwość pomiarów, jak w przypadku rozmiarów wystąpień obliczeniowych pojedynczych baz danych.
+* Jeśli zmiany rozmiaru puli elastycznej następnie puli nie jest rozliczane według nowych ilość zasobów do momentu ukończenia operacji zmiany rozmiaru. To jest zgodna z tym samym wzorcem podczas zmieniania rozmiaru obliczeń pojedynczych baz danych.
 * Cena elastycznej puli opiera się na zasoby w puli. Cena elastycznej puli jest niezależna od liczby i użycie elastycznych baz danych w nim.
 
 Aby uzyskać więcej informacji, zobacz [cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/), [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md), i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).

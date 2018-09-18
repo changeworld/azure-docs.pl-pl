@@ -1,26 +1,20 @@
 ---
-title: 'Szybki Start: Tworzenie konta usług Cognitive Services w witrynie Azure portal'
-titleSuffix: Microsoft Docs
-description: Dowiedz się, jak utworzyć konto umożliwiające dostęp do usług Azure Cognitive Services.
+title: Utwórz konto interfejsy API usług Cognitive Services w witrynie Azure portal
+titlesuffix: Azure Cognitive Services
+description: Jak utworzyć konta interfejsów API firmy Microsoft Cognitive Services w witrynie Azure portal.
 services: cognitive-services
-documentationcenter: ''
-author: aahill
+author: garyericson
 manager: cgronlun
-editor: ''
-ms.assetid: b6176bb2-3bb6-4ebf-84d1-3598ee6e01c6
 ms.service: cognitive-services
-ms.tgt_pltfrm: na
-ms.devlang: na
-ms.topic: article
-ms.date: 09/06/2018
-ms.author: aahi
-ms.reviewer: gibattag
-ms.openlocfilehash: 232e0aa64eef4f6829813efff6e0abffd0a78518
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.topic: conceptual
+ms.date: 02/01/2018
+ms.author: garye
+ms.openlocfilehash: bab88c00b8c429bc604c4606d2db72df6b694243
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605134"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982797"
 ---
 # <a name="quickstart-create-a-cognitive-services-account-in-the-azure-portal"></a>Szybki Start: Tworzenie konta usług Cognitive Services w witrynie Azure portal
 

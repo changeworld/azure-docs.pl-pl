@@ -1,26 +1,25 @@
 ---
-title: Jak używać katalogu dzierżawy usługi Azure AD — omówienie | Microsoft Docs
-description: Wyjaśnia, czym jest „dzierżawa usługi Azure AD” oraz jak nią zarządzać za pomocą usługi Azure Active Directory
+title: Zarządzanie dzierżawą usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat dzierżawy usługi Azure AD jest i jak nią zarządzać za pomocą usługi Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.service: active-directory
-ms.workload: identity
 ms.component: fundamentals
-ms.topic: overview
-ms.date: 08/23/2017
+ms.workload: identity
+ms.topic: conceptual
+ms.date: 08/23/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.custom: it-pro;oldportal
-ms.openlocfilehash: b18ff1f59a46e98544159b488294e2d3f7bd9cd7
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
-ms.translationtype: HT
+custom: it-pro
+ms.openlocfilehash: 2a548a16a6b896ae1c1297badcef6154b64977f1
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37767536"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737179"
 ---
-# <a name="manage-your-azure-ad-directory"></a>Zarządzanie swoim katalogiem usługi Azure AD
+# <a name="manage-your-azure-active-directory-tenant"></a>Zarządzanie dzierżawą usługi Azure Active Directory
 
 ## <a name="what-is-an-azure-ad-tenant"></a>Co to jest dzierżawa usługi Azure AD?
 W usłudze Azure Active Directory (Azure AD) dzierżawa to dedykowane wystąpienie katalogu usługi Azure AD, które otrzymuje organizacja po zarejestrowaniu w usłudze firmy Microsoft w chmurze, takiej jak Azure lub Office 365. Każdy katalog usługi Azure AD jest odrębny i oddzielony od innych katalogów usługi Azure AD. Podobnie jak budynek biurowy, który jest zabezpieczonym zasobem przeznaczonym tylko dla Twojej organizacji, katalog Azure AD został zaprojektowany jako zabezpieczony zasób do użytku tylko Twojej organizacji. Architektura usługi Azure AD izoluje dane klienta i informacje o tożsamości, więc użytkownicy i administratorzy jednego katalogu usługi Azure AD nie mogą przypadkowo ani złośliwie uzyskać dostępu do danych w innym katalogu.
@@ -114,7 +113,7 @@ Są sprawdzane następujące warunki:
 * Z katalogiem nie mogą być skojarzone żadne z usług Microsoft Online Services, takie jak platforma Microsoft Azure, usługa Office 365 lub usługa Azure AD w warstwie Premium. Na przykład jeśli domyślny katalog został utworzony na platformie Azure, nie możesz usunąć tego katalogu, jeśli subskrypcja platformy Azure wciąż korzysta z niego na potrzeby uwierzytelniania. Nie można także usunąć katalogu, jeśli inny użytkownik skojarzył z nim subskrypcję. 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Forum usługi Azure AD](https://social.msdn.microsoft.com/forums/azure/en-US/home?forum=windowsazuread)
 * [Forum usługi Azure Multi-Factor Authentication](https://social.msdn.microsoft.com/Forums/azure/en-US/home?forum=windowsazureactiveauthentication)
 * [Witryna StackOverflow z pytaniami dotyczącymi platformy Azure](https://stackoverflow.com/questions/tagged/azure-active-directory)

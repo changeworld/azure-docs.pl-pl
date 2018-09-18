@@ -1,28 +1,26 @@
 ---
-title: Co to jest licencjonowanie oparte na grupach w usłudze Azure AD? | Microsoft Docs
-description: Opis licencjonowania opartego na grupach w usłudze Azure Active Directory, sposobu jego działania i najlepszych rozwiązań
+title: Co to jest oparte na grupach Licencjonowanie w usłudze Azure Active Directory? | Microsoft Docs
+description: Dowiedz się więcej o usłudze Azure Active Directory na podstawie grupy licencji, tym, jak działa i najlepszych rozwiązań.
 services: active-directory
 keywords: Zarządzanie licencjonowaniem w usłudze Azure AD
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
 ms.component: fundamentals
-ms.topic: overview
+ms.topic: conceptual
 ms.workload: identity
 ms.date: 06/13/2018
 ms.author: lizross
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 5f5aab6a8514636e8be09deb773748080871b9d4
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
-ms.translationtype: HT
+ms.openlocfilehash: 7848b52bcf5204a871920cbfab8a0e95223654d4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39005235"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735905"
 ---
-# <a name="group-based-licensing-basics-in-azure-active-directory"></a>Podstawy licencjonowania opartego na grupach w usłudze Azure Active Directory
+# <a name="what-is-group-based-licensing-in-azure-active-directory"></a>Co to jest oparte na grupach Licencjonowanie w usłudze Azure Active Directory?
 
 Płatne usługi w chmurze firmy Microsoft, takie jak usługa Office 365, pakiet Enterprise Mobility + Security, usługa Dynamics 365 i inne podobne produkty firmy Microsoft, wymagają licencji. Te licencje są przypisywane do każdego użytkownika, który potrzebuje dostępu do tych usług. Aby zarządzać licencjami, administratorzy korzystają z jednego z portali zarządzania (Office lub Azure) i poleceń cmdlet programu PowerShell. Azure Active Directory (Azure AD) to podstawowa infrastruktura, która obsługuje zarządzanie tożsamościami dla wszystkich usług w chmurze firmy Microsoft. Usługa Azure AD przechowuje informacje o stanach przypisania licencji dla użytkowników.
 
@@ -57,7 +55,7 @@ Poniżej przedstawiono główne funkcje licencjonowania opartego na grupach:
 
 Jeśli masz propozycję nowej funkcji lub chcesz podzielić się opinią, odwiedź [forum administratorów usługi Azure AD](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=162510).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Aby dowiedzieć się więcej na temat innych scenariuszy zarządzania licencjami w ramach programu licencjonowania opartego na grupach, zobacz:
 

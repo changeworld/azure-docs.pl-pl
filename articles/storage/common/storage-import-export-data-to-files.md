@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 6cbaaeed75f160a2281fdce0949397b9a14bf981
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 1be7dd9ce537d0999ace01eafa46318e42df9f20
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347923"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732451"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Usługa Azure Import/Export umożliwia importowanie danych do usługi Azure Files
 
@@ -26,7 +26,7 @@ Obsługuje usługi Import/Export importować tylko z usługą Azure Files do us�
 Przed przystąpieniem do tworzenia zadania importu do przenoszenia danych do usługi Azure Files, starannie Przejrzyj i ukończ poniższą listę wymagań wstępnych. Musisz mieć:
 
 - Mieć aktywną subskrypcję platformy Azure za pomocą usługi Import/Export.
-- Ma co najmniej jedno konto usługi Azure Storage. Przejrzyj listę rzeczy, [obsługiwanych kont magazynu i typów magazynu dla usługi Import/Export](storage-import-export-requirements.md). Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [sposób tworzenia konta magazynu](storage-create-storage-account.md#create-a-storage-account).
+- Ma co najmniej jedno konto usługi Azure Storage. Przejrzyj listę rzeczy, [obsługiwanych kont magazynu i typów magazynu dla usługi Import/Export](storage-import-export-requirements.md). Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [sposób tworzenia konta magazynu](storage-quickstart-create-account.md).
 - Mieć odpowiednią liczbę dysków [obsługiwane typy](storage-import-export-requirements.md#supported-disks). 
 - System Windows z systemem [obsługiwany system operacyjny w wersji](storage-import-export-requirements.md#supported-operating-systems).
 - [Pobierz WAImportExport w wersji 2](https://www.microsoft.com/download/details.aspx?id=55280) w systemie Windows. Rozpakuj go do domyślnego folderu `waimportexport`. Na przykład `C:\WaImportExport`.

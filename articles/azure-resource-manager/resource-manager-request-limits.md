@@ -1,74 +1,74 @@
 ---
-title: Limity żądań usługi Azure Resource Manager | Dokumentacja firmy Microsoft
-description: Informacje dotyczące używania przepustowości z żądaniami usługi Azure Resource Manager po osiągnięciu limitu subskrypcji.
+title: Limity żądań w usłudze Azure Resource Manager | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak używać ograniczania żądań usługi Azure Resource Manager, gdy zostały osiągnięte limity subskrypcji.
 services: azure-resource-manager
 documentationcenter: na
 author: tfitzmac
-manager: timlt
-editor: tysonn
 ms.assetid: e1047233-b8e4-4232-8919-3268d93a3824
 ms.service: azure-resource-manager
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/10/2018
+ms.date: 09/17/2018
 ms.author: tomfitz
-ms.openlocfilehash: f3dcb0c5036b2cfc38ef2a6a16269a8697bbd9e6
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.openlocfilehash: fdc98c6d88b18f770d1869acbea5998ad4571287
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
-ms.locfileid: "34358867"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981817"
 ---
-# <a name="throttling-resource-manager-requests"></a>Ograniczanie żądań Resource Manager
-Dla każdej subskrypcji i dzierżawy Resource Manager limity żądań do 15 000 na godzinę do odczytu i zapisu żądania 1200 na godzinę. Te limity mają zastosowanie do każdego wystąpienia usługi Azure Resource Manager. Istnieje wiele wystąpień w każdym regionie Azure i wdrożeniu usługi Azure Resource Manager wszystkie regiony platformy Azure.  Tak, w praktyce skutecznie znacznie wyższa niż te limity są limity, jako użytkownik żądań są zazwyczaj obsługiwane przez wiele różnych wystąpień.
+# <a name="throttling-resource-manager-requests"></a>Ograniczanie żądań usługi Resource Manager
+Dla każdej subskrypcji platformy Azure i dzierżawy usługi Resource Manager pozwala maksymalnie 12 000 żądań na godzinę żądania odczytu i 1200 zapisu na godzinę. Limity te są ograniczone do Identyfikatora podmiotu zabezpieczeń, dzięki czemu żądania i identyfikator subskrypcji lub identyfikatora dzierżawy W przypadku żądań pochodzących z więcej niż jeden identyfikator podmiotu zabezpieczeń, limit jednej subskrypcji, czy dzierżawa jest większa niż 12 000 i 1200 na godzinę.
 
-Jeśli aplikacji lub skryptu osiągnie tych ograniczeń, należy do ograniczania własnych żądań. W tym artykule przedstawiono sposób określania pozostałych żądań, które mają przed przekroczeniem limitu oraz sposobu odpowiedzi po osiągnięciu limitu.
+Żądania są stosowane do dzierżawy lub Twojej subskrypcji. Żądania subskrypcji są te dotyczą przekazanie subskrypcji IDENTYFIKATORA, takie jak pobieranie grup zasobów w ramach subskrypcji. Żądania dzierżawy nie zawierają Identyfikatora subskrypcji, takie jak pobieranie prawidłowych lokalizacji platformy Azure.
 
-Po osiągnięciu limitu, otrzymasz kod stanu HTTP **429 zbyt wiele żądań**.
+Te limity mają zastosowanie do każdego wystąpienia usługi Azure Resource Manager. Istnieje wiele wystąpień w każdym regionie platformy Azure i usługi Azure Resource Manager jest wdrażana we wszystkich regionach platformy Azure.  Zatem w praktyce skutecznie znacznie wyższa niż te limity są limity, jako użytkownik żądania są zazwyczaj obsługiwane przez wiele różnych wystąpień.
 
-Liczba żądań, które obejmuje subskrypcję lub dzierżawy. Jeśli masz wiele równoczesnych aplikacje wysyłania żądań w ramach subskrypcji, żądania z tych aplikacji są dodawane ze sobą w celu określenia liczby pozostałych żądań.
+Jeśli aplikacji lub skryptu osiągnie te limity, należy ograniczania żądań. W tym artykule przedstawiono sposób określenia pozostałych żądań, które mają przed przekroczeniem limitu oraz reagowanie po osiągnięciu limitu.
 
-Subskrypcja zakres żądania są te dotyczą przekazywanie subskrypcji IDENTYFIKATORA, takie jak pobieranie grup zasobów w ramach subskrypcji. Żądania dzierżawy w zakresie nie zawierać identyfikator subskrypcji, takie jak pobieranie prawidłowych lokalizacji platformy Azure.
+W przypadku osiągnięcia limitu otrzymasz kod stanu HTTP **429 zbyt wiele żądań**.
 
 ## <a name="remaining-requests"></a>Pozostałych żądań
-Liczba pozostałych żądań, które można określić, sprawdzając nagłówków odpowiedzi. Każde żądanie zawiera wartości dla wielu żądań zapisu i odczytu pozostałych. W poniższej tabeli opisano nagłówki odpowiedzi, który można sprawdzić dla tych wartości:
+Liczba pozostałych żądań, które można określić, sprawdzając nagłówki odpowiedzi. Każde żądanie zawiera wartości liczbę żądań zapisu i odczytu pozostałych. W poniższej tabeli opisano nagłówki odpowiedzi, które można sprawdzić w przypadku tych wartości:
 
 | Nagłówek odpowiedzi | Opis |
 | --- | --- |
-| x-ms-ratelimit-remaining-subscription-reads |Zakres subskrypcji odczytuje pozostałych. Ta wartość jest zwracana w operacji odczytu. |
-| x-ms-ratelimit-remaining-subscription-writes |Zakres subskrypcji zapisuje pozostałych. Ta wartość jest zwracana w przypadku operacji zapisu. |
-| x-ms-ratelimit-remaining-tenant-reads |Zakres dzierżawy odczytuje pozostałych |
-| x-ms-ratelimit-remaining-tenant-writes |Zapisuje zakres dzierżawy pozostałych |
-| x-ms-ratelimit-remaining-subscription-resource-requests |Subskrypcja zakresu pozostałych żądań typu zasobu.<br /><br />Wartość tego nagłówka jest zwracany tylko wtedy, jeśli usługa ma zastąpić domyślny limit. Menedżer zasobów dodaje tej wartości, zamiast subskrypcji odczytów i zapisów. |
-| x-ms-ratelimit-remaining-subscription-resource-entities-read |Subskrypcja zakresu pozostałych żądania kolekcji dla typu zasobu.<br /><br />Wartość tego nagłówka jest zwracany tylko wtedy, jeśli usługa ma zastąpić domyślny limit. Ta wartość określa liczbę pozostałych żądań kolekcji (listy zasobów). |
-| x-ms-ratelimit-remaining-tenant-resource-requests |Zakres dzierżawy pozostałych żądań typu zasobu.<br /><br />Ten nagłówek jest dodawać tylko dla żądań na poziomie dzierżawy, a tylko wtedy, gdy usługa ma zastąpić domyślny limit. Menedżer zasobów dodaje tej wartości, zamiast dzierżawy odczytów i zapisów. |
-| x-ms-ratelimit-remaining-tenant-resource-entities-read |Dzierżawy zakresu pozostałych żądania kolekcji dla typu zasobu.<br /><br />Ten nagłówek jest dodawać tylko dla żądań na poziomie dzierżawy, a tylko wtedy, gdy usługa ma zastąpić domyślny limit. |
+| x-ms-ratelimit-remaining-subscription-reads |Subskrypcja o określonym zakresie odczytuje pozostałych. Ta wartość jest zwracana na operacje odczytu. |
+| x-ms-ratelimit-remaining-subscription-writes |Subskrypcja o określonym zakresie zapisuje pozostałe. Ta wartość jest zwracana w przypadku operacji zapisu. |
+| x-ms-ratelimit-remaining-tenant-reads |Dzierżawa o określonym zakresie odczytuje pozostałe |
+| x-ms-ratelimit-remaining-tenant-writes |Dzierżawa o określonym zakresie zapisuje pozostałe |
+| x-ms-ratelimit-remaining-subscription-resource-requests |Subskrypcja obejmuje pozostałe żądania typu zasobu.<br /><br />Ta wartość nagłówka jest zwracany tylko wtedy, jeśli usługa została zastąpiona domyślny limit. Menedżer zasobów dodaje tę wartość, zamiast subskrypcji odczyty lub zapisy. |
+| x-ms-ratelimit-remaining-subscription-resource-entities-read |Subskrypcja obejmuje pozostałe żądania kolekcji dla typu zasobu.<br /><br />Ta wartość nagłówka jest zwracany tylko wtedy, jeśli usługa została zastąpiona domyślny limit. Ta wartość określa liczbę pozostałych żądań kolekcji (listy zasobów). |
+| x-ms-ratelimit-remaining-tenant-resource-requests |Pozostałe żądania typu zasobu dzierżawy o określonym zakresie.<br /><br />Tego pliku nagłówkowego jest dodawana tylko dla żądań na poziomie dzierżawy i tylko wtedy, gdy usługa ma zastąpić domyślny limit. Menedżer zasobów dodaje tę wartość, zamiast dzierżawy odczyty lub zapisy. |
+| x-ms-ratelimit-remaining-tenant-resource-entities-read |Dzierżawa o określonym zakresie pozostałe żądania kolekcji dla typu zasobu.<br /><br />Tego pliku nagłówkowego jest dodawana tylko dla żądań na poziomie dzierżawy i tylko wtedy, gdy usługa ma zastąpić domyślny limit. |
 
 ## <a name="retrieving-the-header-values"></a>Pobieranie wartości nagłówka
-Nie różni się od pobierania wartości nagłówka się podczas pobierania tych wartości nagłówka w tym kod lub skrypt. 
+Podczas pobierania tych wartości nagłówka w kodzie albo skrypt nie różni się od pobierania dowolnej wartości nagłówka. 
 
-Na przykład w **C#**, możesz pobrać wartość nagłówka z **HttpWebResponse** obiektu o nazwie **odpowiedzi** następującym kodem:
+Na przykład w **C#**, pobrać wartość nagłówka z **HttpWebResponse** obiektu o nazwie **odpowiedzi** następującym kodem:
 
 ```cs
 response.Headers.GetValues("x-ms-ratelimit-remaining-subscription-reads").GetValue(0)
 ```
 
-W **PowerShell**, pobrać wartość nagłówka podczas operacji Invoke WebRequest.
+W **PowerShell**, możesz pobrać wartość nagłówka z operacją Invoke-WebRequest.
 
 ```powershell
 $r = Invoke-WebRequest -Uri https://management.azure.com/subscriptions/{guid}/resourcegroups?api-version=2016-09-01 -Method GET -Headers $authHeaders
 $r.Headers["x-ms-ratelimit-remaining-subscription-reads"]
 ```
 
-Lub, jeśli chcesz zobaczyć pozostałych żądań do debugowania, możesz podać **-Debug** parametru na Twojej **środowiska PowerShell** polecenia cmdlet.
+Aby uzyskać kompletny przykład programu PowerShell, zobacz [Sprawdź limity usługi Resource Manager w przypadku subskrypcji](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
+
+Jeśli chcesz zobaczyć pozostałe żądania do debugowania, możesz podać **-debugowanie** parametrem w Twojej **programu PowerShell** polecenia cmdlet.
 
 ```powershell
 Get-AzureRmResourceGroup -Debug
 ```
 
-Która zwraca wiele wartości, z uwzględnieniem następujących wartości odpowiedzi:
+Zwraca wiele wartości, łącznie z następującą wartością odpowiedzi:
 
 ```powershell
 DEBUG: ============================ HTTP RESPONSE ============================
@@ -87,7 +87,7 @@ Aby uzyskać limity zapisu, użyj operacji zapisu:
 New-AzureRmResourceGroup -Name myresourcegroup -Location westus -Debug
 ```
 
-Która zwraca wiele wartości, łącznie z następujących wartości:
+Zwraca wiele wartości, w tym następujące wartości:
 
 ```powershell
 DEBUG: ============================ HTTP RESPONSE ============================
@@ -100,13 +100,13 @@ Pragma                        : no-cache
 x-ms-ratelimit-remaining-subscription-writes: 1199
 ```
 
-W **interfejsu wiersza polecenia Azure**, pobrać wartość nagłówka przy użyciu opcji na pełniejsze.
+W **wiersza polecenia platformy Azure**, pobrać wartość nagłówka przy użyciu opcji bardziej szczegółowy.
 
 ```azurecli
 az group list --verbose --debug
 ```
 
-Która zwraca wiele wartości, łącznie z następujących wartości:
+Zwraca wiele wartości, w tym następujące wartości:
 
 ```azurecli
 msrest.http_logger : Response status: 200
@@ -126,7 +126,7 @@ Aby uzyskać limity zapisu, użyj operacji zapisu:
 az group create -n myresourcegroup --location westus --verbose --debug
 ```
 
-Która zwraca wiele wartości, łącznie z następujących wartości:
+Zwraca wiele wartości, w tym następujące wartości:
 
 ```azurecli
 msrest.http_logger : Response status: 201
@@ -139,10 +139,11 @@ msrest.http_logger :     'Expires': '-1'
 msrest.http_logger :     'x-ms-ratelimit-remaining-subscription-writes': '1199'
 ```
 
-## <a name="waiting-before-sending-next-request"></a>Oczekiwania przed wysłaniem żądania dalej
-Po osiągnięciu limitu żądań, Menedżer zasobów zwraca **429** kod stanu HTTP i **ponownych prób po** wartość nagłówka. **Ponownych prób po** wartość określa liczbę sekund oczekiwania w aplikacji (lub uśpienia) przed wysłaniem następnego żądania. Po wysłaniu żądania, przed upływem wartość ponownych prób, żądanie nie jest przetwarzane i zwracany jest nowa wartość ponownych prób.
+## <a name="waiting-before-sending-next-request"></a>Oczekiwania przed wysłaniem następnego żądania
+W przypadku osiągnięcia limitu żądań usługi Resource Manager zwraca **429** kod stanu HTTP i **Retry-After** wartością w nagłówku. **Retry-After** wartość określa liczbę sekund, Twoja aplikacja powinna oczekiwać (lub uśpienia) przed wysłaniem następnego żądania. W przypadku wysłania żądania przed upływem wartość ponownych prób nie jest przetwarzanie Twojego żądania i nową wartość ponownych prób jest zwracana.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Aby uzyskać więcej informacji na temat limitów i przydziały zobacz [subskrypcji platformy Azure i usługi limity, przydziały i ograniczenia](../azure-subscription-service-limits.md).
-* Informacje na temat obsługi żądań asynchronicznych REST, zobacz [śledzić operacje asynchroniczne Azure](resource-manager-async-operations.md).
+* Aby uzyskać kompletny przykład programu PowerShell, zobacz [Sprawdź limity usługi Resource Manager w przypadku subskrypcji](https://github.com/Microsoft/csa-misc-utils/tree/master/psh-GetArmLimitsViaAPI).
+* Aby uzyskać więcej informacji na temat limity przydziału i ograniczenia, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md).
+* Aby dowiedzieć się więcej informacji na temat obsługi żądań asynchronicznych REST, zobacz [śledzenie operacji asynchronicznych Azure](resource-manager-async-operations.md).

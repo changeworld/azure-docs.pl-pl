@@ -4,18 +4,18 @@ description: Współpracy w usłudze Azure Active Directory B2B obsługuje uwier
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/11/2017
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 8e8e73b9206cf2134e96e609dfe5558c54e4289c
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 47d41884a50450399df6273502096e0e630dbcf3
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35649490"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981766"
 ---
 # <a name="conditional-access-for-b2b-collaboration-users"></a>Dostęp warunkowy dla użytkowników współpracy B2B
 

@@ -4,18 +4,18 @@ description: Środki zaradcze dla typowych problemów przy użyciu funkcji wspó
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: ca339319a370fd56cf8493418ae311b39f8fa59e
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 1df0d637b8e45cc59ddd9c04e501d88d0e6de6de
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35648376"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981783"
 ---
 # <a name="troubleshooting-azure-active-directory-b2b-collaboration"></a>Rozwiązywanie problemów z współpracy B2B usługi Azure Active Directory
 

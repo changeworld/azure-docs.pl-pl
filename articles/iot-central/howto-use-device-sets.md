@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpfr
-ms.openlocfilehash: d0b802842d60d68bab36e87913a84c5e40b8e431
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: 28706ad77f48ae826b621ebdd920d26f3b87178a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39206075"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731987"
 ---
 # <a name="use-device-sets-in-your-azure-iot-central-application"></a>Za pomocą zestawów urządzeń w aplikacji usługi Azure IoT Central
 
@@ -50,7 +50,7 @@ Po utworzeniu zestawu urządzeń, można skonfigurować jej **pulpit nawigacyjny
 
 1. Wybierz **pulpit nawigacyjny** kartę.
 
-1. Włącz **trybu projektowania**.
+1. Kliknij przycisk **Edytuj szablon**.
 
     ![Tryb projektowania na](media/howto-use-device-sets/image3.png)
 
@@ -58,9 +58,6 @@ Po utworzeniu zestawu urządzeń, można skonfigurować jej **pulpit nawigacyjny
 
 1. Dodaj Kafelek łącza:
     1. Wybierz **łącze** w okienku po prawej stronie.
-
-        ![Wybierz łącze](media/howto-use-device-sets/image6.png)
-
     1. Nadaj link **tytuł**.
     1. Wybierz adres URL, który ma zostać otwarty po kliknięciu linku.
     1. Nadaj link opis, który pokazuje poniżej **tytuł**.
@@ -87,38 +84,26 @@ Po utworzeniu zestawu urządzeń, można skonfigurować jej **pulpit nawigacyjny
     > [!NOTE]
     > Można dodać wiele obrazów, łączy i siatki.
   
-    1. Wyłącz **trybu projektowania**.
+    1. Kliknij przycisk **Gotowe**.
 
     ![Trybu projektowania wyłączone](media/howto-use-device-sets/image10.png)
 
 
 ### <a name="configuring-location-map-in-your-device-sets-dashboard"></a>Konfigurowanie Mapa lokalizacji w urządzeniu ustawia pulpitu nawigacyjnego 
-Możesz dodać mapę lokalizacji, aby wizualizować lokalizacji urządzenia zestawy w mapie. 
+Możesz dodać mapę lokalizacji, aby wizualizować lokalizacji urządzenia zestawy w mapie.
 
 Aby dodać mapę lokalizacji na urządzeniu ustawia pulpit nawigacyjny, musi mieć właściwość skonfigurowanej lokalizacji w szablonie urządzenia, zobacz [utworzyć właściwość lokalizacji obsługiwane przez usługi Azure Maps](howto-set-up-template.md).
 
 
-1. Na pulpicie nawigacyjnym zestawy urządzeń wybierz mapę z biblioteki. 
+1. Na pulpicie nawigacyjnym z zestawu urządzeń wybierz mapę z biblioteki.
 
     ![Urządzenia, ustawia mapy pulpitu nawigacyjnego](media/howto-use-device-sets/LocationMaps1.png)
 
-
 2. Nadaj tytuł, a następnie wybierz właściwość location, wcześniej skonfigurowane w ramach właściwości urządzenia.
-
-    ![Konfigurowanie pulpitu nawigacyjnego mapy](media/howto-use-device-sets/LocationMaps2.png)
-
 3. Zapisz, aby zobaczyć mapę kafelka, wyświetlanie lokalizacji urządzenia w zestawie urządzeń.
-
-    ![Zapisywanie map pulpitu nawigacyjnego](media/howto-use-device-sets/LocationMaps3.png)
-
-
-5. Teraz gdy operator wyświetla pulpit nawigacyjny zestawy urządzeń, dyrektor może zobaczyć wszystkie Kafelki zostały skonfigurowane, w tym miejscu mapy w celu wizualizowania lokalizacji urządzenia w skrócie! 
-
-    ![Widok mapy Operator pulpitu nawigacyjnego](media/howto-use-device-sets/LocationMaps4.png)
-
-    Będzie zmiana rozmiaru mapę, aby Twoje żądany rozmiar.
-
-    Kliknięcie numeru pin w mapie wyświetli informacje o urządzeniu, nazwę i lokalizację. Możesz kliknąć w oknie podręcznym, aby przejść do strony właściwości urządzenia.  
+4. Teraz gdy operator wyświetla pulpit nawigacyjny zestawy urządzeń, dyrektor może zobaczyć wszystkie Kafelki zostały skonfigurowane, w tym miejscu mapy w celu wizualizowania lokalizacji urządzenia w skrócie! 
+    
+[!NOTE] Będzie zmiana rozmiaru mapę, aby Twoje żądany rozmiar. Kliknięcie numeru pin w mapie wyświetli informacje o urządzeniu, nazwę i lokalizację. Możesz kliknąć w oknie podręcznym, aby przejść do strony właściwości urządzenia.  
 
 
 ## <a name="configure-the-list-for-your-device-set"></a>Konfiguruj listę zestawu urządzeń

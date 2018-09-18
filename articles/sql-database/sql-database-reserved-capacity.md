@@ -8,18 +8,18 @@ manager: craigg
 ms.service: sql-database
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/05/2018
+ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: e66bc77894b417b80d51b9b7e87ef61a654b3b2e
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 84fb916a5620bc7d91f01b9aebfd3eae8346f6bf
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054499"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729439"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Zapłać z góry za zasoby obliczeniowe bazy danych SQL Database o pojemności usługi Azure SQL Database, zarezerwowane
 
-Oszczędzaj pieniądze dzięki usłudze Azure SQL Database przez prepaying za zasoby obliczeniowe usługi Azure SQL Database, w porównaniu z cenami zgodnie z rzeczywistym użyciem. Pojemność usługi Azure SQL Database, zarezerwowana możesz składają zobowiązanie w bazie danych SQL w danym okresie rok lub trzy lata na uzyskanie znacznych rabatów na kosztach obliczeń. Aby kupić pojemność zastrzeżone bazy danych SQL, należy określić region platformy Azure, typ wdrożenia, warstwa wydajności i termin. 
+Oszczędzaj pieniądze dzięki usłudze Azure SQL Database przez prepaying za zasoby obliczeniowe usługi Azure SQL Database, w porównaniu z cenami zgodnie z rzeczywistym użyciem. Pojemność usługi Azure SQL Database, zarezerwowana możesz składają zobowiązanie w bazie danych SQL w danym okresie rok lub trzy lata na uzyskanie znacznych rabatów na kosztach obliczeń. Aby kupić pojemność zastrzeżone bazy danych SQL, należy określić region platformy Azure, typ zasobu, warstwy usług i termin. 
 
 Nie trzeba przypisać rezerwacji wystąpień bazy danych SQL. Dopasowywanie wystąpienia bazy danych SQL, które zostały już uruchomione lub tych, które są nowo wdrożone, będą automatycznie korzystać. Po zakupie rezerwacji, jesteś góry za koszty obliczeniowe dla wystąpień baz danych SQL w danym okresie rok lub trzy lata. Tak szybko, jak można kupić rezerwację, bazy danych SQL, opłaty za zasoby obliczeniowe, które odpowiadają atrybuty rezerwacji nie jest już wynoszą płatności — jako — można przejść stawki. Rezerwacja nie obejmuje opłaty za oprogramowanie, sieci lub magazynu skojarzonego z wystąpieniem bazy danych SQL. Na koniec okresu rezerwacji korzyściami dotyczącymi rozliczeń wygasa, a bazy danych SQL są naliczane płatności — jako — możesz Przejdź opłaty. Rezerwacji nie automatycznego odnawiania. Aby uzyskać informacje o cenach, zobacz [bazy danych SQL zastrzeżone oferty pojemności](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 
@@ -32,7 +32,7 @@ Szczegółowe informacje na jak rozliczane są klientów korporacyjnych i klient
 
 ## <a name="determine-the-right-sql-size-before-purchase"></a>Rozmiar jest określany na prawo SQL przed dokonaniem zakupu
 
-Rozmiar rezerwacji powinna być oparta na całkowitej ilości zasobów obliczeniowych, używane przez istniejące lub wkrótce do--wdrażanych SQL pojedynczy baz danych i/lub pul elastycznych w określonym regionie i przy użyciu tej samej generacji sprzętu i warstwy wydajności. 
+Rozmiar rezerwacji powinna być oparta na całkowitej ilości zasobów obliczeniowych, używane przez istniejące lub wkrótce do--wdrażanych SQL pojedynczy baz danych i/lub pul elastycznych w określonym regionie i przy użyciu tej samej generacji sprzętu i warstwy usługi. 
 
 Na przykład załóżmy, że używasz jednego ogólnego przeznaczenia 5. generacji — 16 rdzeniach wirtualnych elastycznej puli oraz dwóch krytyczne dla działania, 5. generacji — 4 pojedynczych baz danych (rdzeń wirtualny). Dodatkowo załóżmy powinien planujesz wdrożenie w ramach następnego miesiąca, dodatkowe ogólnego przeznaczenia, 5. generacji — 16 rdzeniach wirtualnych elastycznej puli i jedną krytyczne dla działania, 5. generacji — 32 puli elastycznej (rdzeń wirtualny). Ponadto Załóżmy, że wiesz, że te zasoby będą potrzebne do co najmniej 1 rok. W takim przypadku należy kupić 32 rdzenie wirtualne (2 x 16 pikseli), 1 rok Rezerwacja SQL bazy danych jedną/elastycznej puli ogólnego przeznaczenia — obliczenia 5. generacji i 40 (2 x 4 + 32) rdzeń wirtualny 1 rok Rezerwacja SQL bazy danych jedną/elastycznej puli krytyczne dla działania firmy — obliczenia 5. generacji.
 
@@ -51,8 +51,8 @@ Na przykład załóżmy, że używasz jednego ogólnego przeznaczenia 5. generac
     |Subskrypcja|Subskrypcja użytej do zapłacenia za rezerwację pojemności bazy danych SQL zastrzeżone. Metodę płatności dla subskrypcji jest naliczana opłata z góry kosztów rezerwacji wydajności bazy danych SQL zastrzeżone. Wymagany typ subskrypcji to Enterprise Agreement (numer oferty MS-AZR-0017P) lub Płatność zgodnie z rzeczywistym użyciem (numer oferty MS-AZR-0003P). W przypadku subskrypcji Enterprise opłaty są odliczane od salda zobowiązania pieniężnego rejestracji lub naliczane jako nadwyżka. W przypadku subskrypcji z płatnością zgodnie z rzeczywistym użyciem opłaty obciążają kartę kredytową lub metodę płatności faktury powiązaną z subskrypcją.|    
     |Zakres       |Zakres rezerwacji pamięci rdzeń wirtualny może obejmować subskrypcji jednej lub wielu subskrypcji (zakres udostępniony). Jeśli wybierzesz: <ul><li>Subskrypcja pojedyncza — rabat związany z rezerwacją pamięci rdzeń wirtualny jest stosowany do wystąpienia bazy danych SQL w ramach tej subskrypcji. </li><li>Czy rabat związany z rezerwacją pamięci rdzeń wirtualny w warstwie współdzielona — są stosowane do wystąpień bazy danych SQL w ramach dowolnej subskrypcji w ramach kontekstu rozliczeń. Dla klientów korporacyjnych zakres udostępniony jest rejestracji i zawiera wszystkie subskrypcje (z wyjątkiem tworzenia i testowania subskrypcje) w ramach rejestracji. Dla klientów rozliczana według bieżącego użycia udostępnionych zakres jest wszystkie subskrypcje płatność za rzeczywiste użycie utworzonego przez administratora konta.</li></ul>|
     |Region      |Region platformy Azure, który pasuje do żadnego z bazą danych SQL zastrzeżone rezerwacji wydajności.|    
-    |Typ wdrożenia|Typ wdrożenia SQL, który chcesz kupić rezerwację dla.|
-    |Warstwa wydajności|Warstwa wydajności dla wystąpień baz danych SQL.
+    |Typ zasobu|Typ zasobu SQL, który chcesz kupić rezerwację dla.|
+    |Warstwy usług|Warstwy usług dla wystąpień baz danych SQL.
     |Termin        |Jeden rok lub trzy lata.|
     |Ilość    |Liczba wystąpień, które zostały zakupione w ramach bazy danych SQL zastrzeżone rezerwacji wydajności. Ilość jest liczby uruchomionych wystąpień bazy danych SQL, które mogą uzyskać rabat rozliczeń. Na przykład jeśli używasz 10 wystąpień bazy danych SQL w regionie wschodnie stany USA, następnie należy określić ilość jako 10, aby zmaksymalizować korzyści dla wszystkich działających maszyn. |
 
@@ -64,7 +64,7 @@ Na przykład załóżmy, że używasz jednego ogólnego przeznaczenia 5. generac
 
 Jeśli potrzebujesz anulować bazy danych SQL zastrzeżone rezerwację zdolności produkcyjnych, może być 12% zakończenia opłatę za wcześniejsze zakończenie. Zwroty zależą od najniższej ceny zakupu cen lub bieżąca cena zastrzeżenia. Zwroty są ograniczone do 50 000 USD rocznie. Zwrot kosztów, które otrzymujesz jest pozostałe saldo proporcjonalnie pomniejszona o 12% zakończenia opłatę za wcześniejsze zakończenie. Aby zażądać anulowania, przejdź do rezerwacji w witrynie Azure portal i wybierz pozycję **zwrot** do utworzenia żądania obsługi.
 
-Jeśli musisz zmienić rezerwacji wydajności bazy danych SQL zastrzeżone do innego regionu, typu wdrożenia, warstwa wydajności lub termin mogą wymieniać go do innej rezerwacji, która jest większa lub równa wartości. Data rozpoczęcia okresu dla nowej rezerwacji nie jest przenoszone z wymiana rezerwacji. Wartość 1 lub 3 lat. rozpoczyna się podczas tworzenia nowej rezerwacji. Aby zażądać programu exchange, przejdź do rezerwacji w witrynie Azure portal i wybierz **Exchange** do utworzenia żądania obsługi.
+Jeśli musisz zmienić rezerwacji wydajności bazy danych SQL zastrzeżone do innego regionu, typu zasobu, warstwę usług lub termin mogą wymieniać go do innej rezerwacji, która jest większa lub równa wartości. Data rozpoczęcia okresu dla nowej rezerwacji nie jest przenoszone z wymiana rezerwacji. Wartość 1 lub 3 lat. rozpoczyna się podczas tworzenia nowej rezerwacji. Aby zażądać programu exchange, przejdź do rezerwacji w witrynie Azure portal i wybierz **Exchange** do utworzenia żądania obsługi.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

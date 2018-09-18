@@ -6,19 +6,19 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: load & move data
-ms.date: 09/04/2018
+ms.date: 09/14/2018
 ms.author: carlrab
 ms.topic: conceptual
-ms.openlocfilehash: 6df71f50129ec6901d0b8688b0a6d3619260cf22
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: eefffdc425a300a8a4caa358494fbdc4fd84e356
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634238"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983988"
 ---
 # <a name="import-a-bacpac-file-to-a-new-azure-sql-database"></a>Importowanie pliku BACPAC do nowej bazy danych SQL Azure
 
-Kiedy należy zaimportować bazę danych z archiwum lub podczas migracji z innej platformy, można importować schemat bazy danych i danych z [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) pliku. Plik BACPAC jest plikiem ZIP z rozszerzeniem pliku BACPAC zawierające metadane i dane z bazy danych programu SQL Server. Można zaimportować plik BACPAC z magazynu obiektów blob platformy Azure (tylko w przypadku magazynu standardowego) lub z magazynu lokalnego w lokalizacji lokalnej. Aby zapewnić maksymalną szybkość importu, zaleca się, określić wyższej usługi warstwy i poziomu wydajności, takie jak P6 i następnie Skaluj w dół zgodnie z potrzebami, po pomyślnym importu. Ponadto poziom zgodności bazy danych, po zaimportowaniu opiera się na poziom zgodności bazy danych źródłowych. 
+Kiedy należy zaimportować bazę danych z archiwum lub podczas migracji z innej platformy, można importować schemat bazy danych i danych z [BACPAC](https://msdn.microsoft.com/library/ee210546.aspx#Anchor_4) pliku. Plik BACPAC jest plikiem ZIP z rozszerzeniem pliku BACPAC zawierające metadane i dane z bazy danych programu SQL Server. Można zaimportować plik BACPAC z magazynu obiektów blob platformy Azure (tylko w przypadku magazynu standardowego) lub z magazynu lokalnego w lokalizacji lokalnej. Aby zapewnić maksymalną szybkość importu, firma Microsoft zaleca, określ wyższej warstwy usługi i obliczenia rozmiaru, na przykład P6, a następnie Skaluj w dół zgodnie z potrzebami, po pomyślnym importu. Ponadto poziom zgodności bazy danych, po zaimportowaniu opiera się na poziom zgodności bazy danych źródłowych. 
 
 > [!IMPORTANT] 
 > Po przeprowadzeniu migracji bazy danych do usługi Azure SQL Database, istnieje możliwość obsługi bazy danych w jego bieżący poziom zgodności (poziom 100 AdventureWorks2008R2 bazy danych) lub na wyższym poziomie. Aby uzyskać więcej informacji o implikacjach i opcjach związanych z używaniem bazy danych na określonym poziomie zgodności, zobacz [ALTER DATABASE Compatibility Level](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-compatibility-level) (Instrukcja ALTER DATABASE — poziom zgodności). Zapoznaj się też z tematem [ALTER DATABASE SCOPED CONFIGURATION](https://docs.microsoft.com/sql/t-sql/statements/alter-database-scoped-configuration-transact-sql), aby uzyskać informacje o dodatkowych ustawieniach na poziomie bazy danych związanych z poziomem zgodności.   >
@@ -104,7 +104,7 @@ $importStatus
 Aby uzyskać inny przykładowy skrypt, zobacz [Importowanie bazy danych z pliku BACPAC](scripts/sql-database-import-from-bacpac-powershell.md).
 
 ## <a name="limitations"></a>Ograniczenia
-- Importowanie do bazy danych w puli elastycznej nie jest obsługiwane. Można zaimportować dane do bazę pojedynczego wystąpienia, a następnie przenieść bazę danych do puli.
+- Importowanie do bazy danych w puli elastycznej nie jest obsługiwane. Można zaimportować danych do pojedynczej bazy danych, a następnie przenieść bazę danych do puli.
 
 ## <a name="import-using-other-methods"></a>Importowanie przy użyciu innych metod
 

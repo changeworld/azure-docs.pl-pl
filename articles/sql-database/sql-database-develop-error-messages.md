@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: develop apps
 ms.topic: conceptual
-ms.date: 07/16/2018
+ms.date: 09/14/2018
 ms.author: sstein
-ms.openlocfilehash: d97ec2cc67da7c4bc1479c55a9a7c35c0c754532
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 643add4e0e4732734e9ef763a587755bf8700605
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39092532"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731006"
 ---
 # <a name="sql-error-codes-for-sql-database-client-applications-database-connection-errors-and-other-issues"></a>Kody błędów SQL dla aplikacji klienckich, SQL Database: błędy połączeń i inne problemy z bazy danych
 
@@ -111,7 +111,7 @@ Następujące błędy odnoszą się do tworzenia i używania pul elastycznych:
 | 40857 |EX_USER |Nie znaleziono serwera puli elastycznej: "%ls", nazwa puli elastycznej: "%ls". |Nazwa serwera. Nazwa puli elastycznej |Określona pula elastyczna nie istnieje na określonym serwerze. |Podaj nazwę puli elastycznej prawidłowe. |
 | 40858 |EX_USER |Pula elastyczna "%ls" już istnieje na serwerze: "%ls" |Nazwa puli elastycznej, nazwa serwera |Określona pula elastyczna jest już istnieje na określonym serwerze logicznym. |Podaj nową nazwę puli elastycznej. |
 | 40859 |EX_USER |Pula elastyczna nie obsługuje warstwy usług "%ls". |Warstwa usług puli elastycznej |Warstwa określonej usługi nie jest obsługiwana dla puli elastycznej inicjowania obsługi administracyjnej. |Podaj poprawną wersję, lub pozostaw puste, aby użyć domyślnej warstwy usługi warstwy usług. |
-| 40860 |EX_USER |Kombinacja puli elastycznej "%ls" i usługi cel "%ls" jest nieprawidłowa. |Nazwa puli elastycznej; Nazwa celu poziomu usługi |Elastycznej puli i usługa cel można określić jednocześnie tylko wtedy, gdy określono cel usług jako "ElasticPool". |Określ poprawny kombinacja puli elastycznej i cel usługi. |
+| 40860 |EX_USER |Kombinacja puli elastycznej "%ls" i usługi cel "%ls" jest nieprawidłowa. |Nazwa puli elastycznej; warstwy usług |Elastycznej puli i usługi warstwy mogą jednocześnie można określić tylko wtedy, gdy typ zasobu jest określony jako "ElasticPool". |Określ poprawny kombinacja puli elastycznej i warstwy usług. |
 | 40861 |EX_USER |Wersja bazy danych "%. *ls nie może być inna niż warstwa usług puli elastycznej, czyli "%.* ls. |Wersja bazy danych, warstwa usług puli elastycznej |Wersja bazy danych jest inna niż warstwa usług puli elastycznej. |Nie można określić wersji bazy danych, która jest inna niż warstwa usług puli elastycznej.  Należy pamiętać, że wersja bazy danych nie muszą być określone. |
 | 40862 |EX_USER |Nazwa puli elastycznej musi być określona, jeśli określono cel usług puli elastycznej. |Brak |Cel usług puli elastycznej nie identyfikuje jednoznacznie puli elastycznej. |Określ nazwę puli elastycznej, jeśli za pomocą cel usług puli elastycznej. |
 | 40864 |EX_USER |Liczba jednostek Dtu dla puli elastycznej musi wynosić co najmniej (%d) liczby jednostek Dtu, dla warstwy usług "%. * ls. |Liczba jednostek Dtu dla puli elastycznej Warstwa usług puli elastycznej. |Trwa próba skonfigurowania jednostek Dtu dla puli elastycznej poniżej minimalnego limitu. |Ustawienie liczby jednostek Dtu dla elastycznej puli co najmniej minimalny limit ponownych prób. |

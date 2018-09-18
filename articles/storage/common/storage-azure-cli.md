@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: d09505e4738243576dbde64fa6daba22d054bc8e
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 10b0d475113e5fcd413c7e62f88dcd434fc72a52
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053271"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732775"
 ---
 # <a name="using-the-azure-cli-20-with-azure-storage"></a>Przy użyciu wiersza polecenia platformy Azure 2.0 za pomocą usługi Azure Storage
 
@@ -31,7 +31,7 @@ W tym przewodniku założono, że rozumiesz podstawowe pojęcia dotyczące usłu
 
 ### <a name="accounts"></a>Konta
 * **Konto platformy Azure**: Jeśli nie masz jeszcze subskrypcji platformy Azure, [Utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
-* **Konto magazynu**: zobacz sekcję [Tworzenie konta magazynu](storage-create-storage-account.md#create-a-storage-account) w temacie [Informacje o kontach magazynu Azure](storage-create-storage-account.md).
+* **Konto magazynu**: zobacz sekcję [Tworzenie konta magazynu](storage-quickstart-create-account.md) w temacie [Informacje o kontach magazynu Azure](storage-create-storage-account.md).
 
 ### <a name="install-the-azure-cli-20"></a>Instalacja interfejsu wiersza polecenia platformy Azure 2.0
 

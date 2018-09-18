@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.author: cshoe
 ms.component: common
-ms.openlocfilehash: 912ae17fb7bb5d5cecad0af5b53d817b2faeef02
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 268459fde7a622079656e637d2c51562cea358a4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39522205"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730953"
 ---
 # <a name="azure-storage-security-guide"></a>Przewodnik po zabezpieczeniach magazynu platformy Azure
 
@@ -142,20 +142,13 @@ Również przy użyciu usługi Azure Key Vault dodaje kolejny poziom zabezpiecze
 
 Inną zaletą przy użyciu usługi Azure Key Vault jest można także kontrolować dostęp do swoich kluczy za pomocą usługi Azure Active Directory. Oznacza to, że możesz udzielić dostępu do kilku aplikacji, które musisz pobrać klucze z usługi Azure Key Vault i wiedzieć, czy inne aplikacje nie będą mogli uzyskać dostęp do kluczy bez nadawania im uprawnienia specjalnie.
 
-Uwaga: zaleca się używać tylko jeden z kluczy we wszystkich aplikacjach, w tym samym czasie. Jeśli używasz klucz 1 w jednych miejscach i klawisz 2 w innych, nie można obrócić klucze bez utraty dostępu do aplikacji.
+> [!NOTE]
+> Firma Microsoft zaleca korzystanie tylko jeden z kluczy we wszystkich aplikacjach, w tym samym czasie. Jeśli używasz klucz 1 w jednych miejscach i klawisz 2 w innych, nie można obrócić klucze bez utraty dostępu do aplikacji.
 
 #### <a name="resources"></a>Zasoby
-* [O kontach magazynu Azure](storage-create-storage-account.md#regenerate-storage-access-keys)
 
-  Ten artykuł zawiera omówienie kont magazynu i w tym artykule omówiono wyświetlanie, kopiowanie i ponowne generowanie kluczy dostępu do magazynu.
+* [Zarządzanie ustawieniami konta magazynu w witrynie Azure portal](storage-account-manage.md)
 * [Dokumentacja interfejsu API REST dostawcy zasobów usługi Azure Storage](https://msdn.microsoft.com/library/mt163683.aspx)
-
-  Ten artykuł zawiera łącza do określonych artykuły na temat pobierania kluczy konta magazynu i ponowne generowanie kluczy konta magazynu dla konta platformy Azure przy użyciu interfejsu API REST. Uwaga: Są to konta magazynu usługi Resource Manager.
-* [Operacje na kontach magazynu](https://msdn.microsoft.com/library/ee460790.aspx)
-
-  W tym artykule w dokumentacji interfejsu API REST magazynu Service Manager zawiera linki do artykułów określonych na pobieranie i ponowne generowanie kluczy konta magazynu przy użyciu interfejsu API REST. Uwaga: To klasyczne konta magazynu.
-
-  W tym artykule pokazano, jak używać usługi Active Directory do kontrolowania dostępu do kluczy usługi Azure Key Vault przy użyciu usługi Azure Storage. Pokazano również, jak na potrzeby ponownego generowania kluczy w systemie godzinowym zadanie usługi Azure Automation.
 
 ## <a name="data-plane-security"></a>Bezpieczeństwo płaszczyzny danych
 Bezpieczeństwo płaszczyzny danych odnosi się do metody używane do zabezpieczania obiektów danych przechowywanych w usłudze Azure Storage — obiektów blob, kolejek, tabel i plików. Zobaczyliśmy, metody służące do szyfrowania danych i zabezpieczeń podczas przesyłania danych, ale jak przejdziesz temat kontrolowania dostępu do obiektów?

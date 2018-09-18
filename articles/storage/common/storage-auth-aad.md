@@ -1,6 +1,6 @@
 ---
-title: Uwierzytelnianie dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Uwierzytelnianie dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza).
+title: Uwierzytelnianie dostępu do obiektów blob platformy Azure i queues, korzystając z usługi Azure Active Directory (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Uwierzytelnianie dostępu do obiektów blob platformy Azure i queues, korzystając z usługi Azure Active Directory (wersja zapoznawcza).
 services: storage
 author: tamram
 ms.service: storage
@@ -8,18 +8,18 @@ ms.topic: article
 ms.date: 09/07/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 802eefb7ed8191525a8a4a6601b620ca5dfd5faa
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: d48eee711e5d43c2113c3a21d87386b350c6b01f
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300617"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731904"
 ---
-# <a name="authenticate-access-to-azure-storage-using-azure-active-directory-preview"></a>Uwierzytelnianie dostępu do usługi Azure Storage za pomocą usługi Azure Active Directory (wersja zapoznawcza)
+# <a name="authenticate-access-to-azure-blobs-and-queues-using-azure-active-directory-preview"></a>Uwierzytelnianie dostępu do obiektów blob platformy Azure i queues, korzystając z usługi Azure Active Directory (wersja zapoznawcza)
 
 Usługa Azure Storage obsługuje uwierzytelnianie i autoryzacja przy użyciu usługi Azure Active Directory (AD) dla usług obiektów Blob i kolejek. Za pomocą usługi Azure AD można użyć kontroli dostępu opartej na rolach (RBAC) do udzielania dostępu do użytkowników, grup lub jednostek usług aplikacji. 
 
-Autoryzowanie aplikacji uzyskujących dostęp do usługi Azure Storage przy użyciu usługi Azure AD udostępnia wyższego poziomu zabezpieczeń i łatwość użycia w porównaniu z innymi opcjami autoryzacji. Gdy możesz kontynuować klucza wspólnego autoryzacji za pomocą aplikacji, za pomocą usługi Azure AD zmierzone konieczności przechowywania klucza dostępu do konta za pomocą kodu. Podobnie można kontynuować udzielanie szczegółową kontrolę dostępu do zasobów na koncie magazynu przy użyciu sygnatury dostępu współdzielonego (SAS), ale usługa Azure AD oferuje podobne możliwości bez konieczności zarządzania tokeny sygnatur dostępu Współdzielonego ani martwić się o odwołaniu ze złamanymi zabezpieczeniami sygnatury dostępu Współdzielonego.
+Uwierzytelnianie użytkowników lub aplikacji przy użyciu poświadczeń usługi Azure AD udostępnia doskonałe zabezpieczenia i łatwość użycia w porównaniu z innej metody autoryzacji. Gdy możesz kontynuować klucza wspólnego autoryzacji za pomocą aplikacji, za pomocą usługi Azure AD zmierzone konieczności przechowywania klucza dostępu do konta za pomocą kodu. Nadal m ożna również udzielić szczegółową kontrolę dostępu do zasobów na koncie magazynu przy użyciu sygnatury dostępu współdzielonego (SAS), ale usługa Azure AD oferuje podobne możliwości bez konieczności zarządzania tokeny sygnatur dostępu Współdzielonego ani martwić się o odwołaniu ze złamanymi zabezpieczeniami sygnatury dostępu Współdzielonego. Firma Microsoft zaleca korzystanie z uwierzytelniania usługi Azure AD dla aplikacji usługi Azure Storage, jeśli jest to możliwe.
 
 ## <a name="about-the-preview"></a>O wersji zapoznawczej
 

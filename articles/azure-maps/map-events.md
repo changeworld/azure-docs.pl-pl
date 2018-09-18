@@ -3,38 +3,41 @@ title: Obsługa zdarzeń myszy przy użyciu usługi Azure Maps | Dokumentacja fi
 description: Jak utworzyć mapę interaktywną Javascript za pomocą mapy zdarzeń
 author: jingjing-z
 ms.author: jinzh
-ms.date: 05/07/2018
+ms.date: 09/14/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: d8b17affb34ddf31fc2016e0c297b293b4a260c2
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 5c72a7c9f9eee18beb1805fb9043482f63de3144
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745689"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45728560"
 ---
-# <a name="interacting-with-the-map--mouse-events"></a>Interakcja z mapą — zdarzenia myszy 
+# <a name="interact-with-the-map---mouse-events"></a>Interakcja z mapą — zdarzenia myszy
 
-W tym artykule pokazano, jak uczynić interaktywnymi na mapie za pomocą odbiornik zdarzeń.
+W tym artykule dowiesz się, jak używać [addEventListener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener) można uczynić interaktywnymi na mapie.
 
 ## <a name="try-out-the-code"></a>Wypróbuj kod
 
 <iframe height='618' scrolling='no' title='Interakcja z mapą — zdarzenia myszy' src='//codepen.io/azuremaps/embed/bLZEWd/?height=618&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Zobacz pióra <a href='https://codepen.io/azuremaps/pen/bLZEWd/'>interakcja z mapą — zdarzenia myszy</a> przez usługi Azure Maps (<a href='https://codepen.io/azuremaps'>@azuremaps</a>) na <a href='https://codepen.io'>funkcji codepen można</a>.
 </iframe>
 
-Poeksperymentuj z powyższych mapy i zobacz pokrewnych zdarzeń myszy wyróżnione po prawej stronie. Możesz kliknąć kartę JS, aby wyświetlić i edytować kod JavaScript. Możesz również kliknąć przycisk "Edytuj na funkcji codepen można" i edytować kod w funkcji codepen można.
+Poeksperymentuj z powyższych mapy i zobacz pokrewnych zdarzeń myszy wyróżnione po prawej stronie. Możesz kliknąć **kartę JS** do wyświetlania i edytowania kodu JavaScript. Możesz również kliknąć **edytować na funkcji codepen można** znajdujący się i edytowanie kodu w funkcji codepen można.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej na temat klasy i metody używane w tym artykule: 
+Dowiedz się więcej na temat klasy i metody używane w tym artykule:
 
-* [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-    * [addEventListener](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addeventlistener)
+> [!div class="nextstepaction"]
+> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
-Aby uzyskać więcej przykładów kodu do dodania do map zobacz następujący artykuł: 
-* [Wyświetlanie wyników wyszukiwania](./map-search-location.md)
+Zobacz następujące artykuły, aby uzyskać przykłady pełnego kodu:
 
-Zapoznaj się z naszym [kodu przykładowej strony](http://aka.ms/AzureMapsSamples) do scenariuszy mapowania.
+> [!div class="nextstepaction"]
+> [Wyświetlanie wyników wyszukiwania](./map-search-location.md)
+
+> [!div class="nextstepaction"]
+> [Strona przykładowy kod](http://aka.ms/AzureMapsSamples)

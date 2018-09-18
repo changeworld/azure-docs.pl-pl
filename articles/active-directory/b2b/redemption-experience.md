@@ -4,18 +4,18 @@ description: W tym artykule opisano środowisko realizacji zaproszenia współpr
 services: active-directory
 ms.service: active-directory
 ms.component: B2B
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 0dbf4a15817ae55f573640196020263428d4c817
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 7819ed3e18092e8b7bdf52225e7025b4b6d8146a
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35649382"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981886"
 ---
 # <a name="azure-active-directory-b2b-collaboration-invitation-redemption"></a>Realizacja zaproszenia współpracy w usłudze Azure Active Directory B2B
 

@@ -1,6 +1,6 @@
 ---
-title: Korektorze kognitywnych wyszukiwania umiejętności (Azure Search) | Dokumentacja firmy Microsoft
-description: Wyodrębnianie metadanych i informacji z danych bez struktury i kształtu go jako typ złożony w potoku wzbogacenia usługi Azure Search.
+title: Umiejętności wyszukiwania kognitywnego shaper (Azure Search) | Dokumentacja firmy Microsoft
+description: Wyodrębnianie metadanych i ustrukturyzowanych informacji z danych bez struktury i kształtować je jako typ złożony w usłudze Azure Search wzbogacony potok.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,32 +10,34 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 311f4bd67081de567763783a9d86540eda36d9f8
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 286e1f9d6f6ae09d98aa87b447df7a7524642a1f
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33791007"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729004"
 ---
-#   <a name="shaper-cognitive-skill"></a>Umiejętności kognitywnych korektorze
+#   <a name="shaper-cognitive-skill"></a>Shaper umiejętności cognitive
 
-**Korektorze** umiejętności tworzy typu złożonego do obsługi złożonych pola (znanej także jako wieloczęściowego). Pole typu złożonego wiele części, ale jest traktowany jako pojedynczy element w indeksie usługi wyszukiwanie Azure. Skonsolidowane pola przydatne w scenariuszach wyszukiwania przykładami łączenie imię i nazwisko w jedno pole, miejscowość i stan jako pojedyncze pole lub nazwę i Data urodzenia w jedno pole do ustalenia tożsamości.
+**Shaper** umiejętności tworzy typu złożonego do obsługi złożonych pola (nazywane także wieloczęściowy pola). Pole Typ złożony ma wiele części, ale jest traktowany jako pojedynczy element w indeksie usługi Azure Search. Skonsolidowane pola przydatne w scenariuszach wyszukiwania przykładami łączenie imię i nazwisko w jedno pole, miasta i stanu do pojedynczego pola lub nazwa i Data urodzenia na pojedyncze pole, aby ustanowić unikatową tożsamość.
 
-Umiejętności korektorze umożliwia zasadniczo Utwórz strukturę definiuje nazwy elementów członkowskich tej struktury i przypisać wartości do każdego elementu członkowskiego.
+Umiejętności Shaper umożliwia zasadniczo tworzenia struktury definiuje nazwy elementów członkowskich tej struktury i przypisania wartości do każdego elementu członkowskiego.
 
-Domyślnie ta metoda obsługuje obiekty, które są głębokości jeden poziom. W przypadku bardziej złożonych obiektów tworzenia łańcucha kilka kroków korektorze.
+Domyślnie ta technika obsługuje obiekty, które są szczegółowe o jeden poziom. W przypadku bardziej złożonych obiektów można połączyć kilka kroków Shaper.
 
-W odpowiedzi nazwy wyjściowego jest zawsze "output". Wewnętrznie potoku można mapować na inną nazwę, takie jak "analyzedText" w poniższych przykładach "output", ale korektorze umiejętności sam "output" w odpowiedzi. Może to być ważne debugowania wzbogaconego dokumentów i zwróć uwagę, niezgodność nazw lub jeśli Tworzenie niestandardowych umiejętności i struktury odpowiedź samodzielnie.
+W odpowiedzi Nazwa wyjściowego jest zawsze "output". Wewnętrznie potoku można mapować innej nazwy, takie jak "analyzedText" w poniższych przykładach "wyjściowe", ale Shaper umiejętności, sama zwraca "output" w odpowiedzi. Może to być ważne debugowania wzbogaconego dokumentów i zwróć uwagę, niezgodność nazw lub jeśli Tworzenie niestandardowych umiejętności i struktury odpowiedzi samodzielnie.
 
+> [!NOTE]
+> Wyszukiwanie poznawcze jest dostępne w publicznej wersji zapoznawczej. Wykonywanie zestawu umiejętności i wyodrębniania obrazu i normalizacji są obecnie oferowane bezpłatnie. W późniejszym czasie cen tych funkcji zostanie ogłoszona. 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Util.ShaperSkill
 
 ## <a name="sample-1-complex-types"></a>Przykład 1: typy złożone
 
-Rozważmy scenariusz, w którym ma zostać utworzona struktura wywołuje *analyzedText* która ma dwa elementy członkowskie: *tekst* i *wskaźniki nastrojów klientów*odpowiednio. W usłudze Azure Search jest nazywany wieloczęściowych pole wyszukiwania *typu złożonego*, i nie jest nie jest jeszcze obsługiwane poza pole. W tej wersji zapoznawczej umiejętności korektorze można wygenerować pola typu złożonego w indeksie. 
+Rozważmy scenariusz, w którym chcesz utworzyć strukturę o nazwie *analyzedText* zawierający dwa elementy członkowskie: *tekstu* i *tonacji*odpowiednio. W usłudze Azure Search jest wywoływana wieloczęściowy polu możliwym do przeszukania *typu złożonego*, i nie jest jeszcze obsługiwany poza pakietem. W tej wersji zapoznawczej umiejętności Shaper może służyć do generowania pola typu złożonego w indeksie. 
 
-W poniższym przykładzie przedstawiono składnik nazwy jako dane wejściowe. Struktura danych wyjściowych (złożone pola w usłudze Azure Search) jest określany za pośrednictwem *targetName*. 
+W poniższym przykładzie przedstawiono elementu członkowskiego nazw jako dane wejściowe. Struktura danych wyjściowych (złożonych pola w usłudze Azure Search) jest określona za pomocą *targetName*. 
 
 
 ```json
@@ -62,7 +64,7 @@ W poniższym przykładzie przedstawiono składnik nazwy jako dane wejściowe. St
 ```
 
 ### <a name="sample-input"></a>Przykładowe dane wejściowe
-Dokument JSON, zapewniając danych użytecznego wejściowych dla tego umiejętności korektorze może być:
+Dokument JSON, zapewniając użyteczne dane wejściowe dla tego umiejętności Shaper może być:
 
 ```json
 {
@@ -80,7 +82,7 @@ Dokument JSON, zapewniając danych użytecznego wejściowych dla tego umiejętno
 
 
 ### <a name="sample-output"></a>Przykładowe dane wyjściowe
-Umiejętności korektorze generuje nowy element o nazwie *analyzedText* Scalonej elementami *tekst* i *wskaźniki nastrojów klientów*. 
+Umiejętności Shaper generuje nowy element o nazwie *analyzedText* z elementami połączone *tekstu* i *tonacji*. 
 
 ```json
 {
@@ -100,11 +102,11 @@ Umiejętności korektorze generuje nowy element o nazwie *analyzedText* Scalonej
 }
 ```
 
-## <a name="sample-2-input-consolidation"></a>Przykład 2: wejściowy konsolidacji
+## <a name="sample-2-input-consolidation"></a>Przykład 2: konsolidacji danych wejściowych
 
-W kolejnym przykładzie załóżmy, że na różnych etapach przetwarzania potokowego zostały wyodrębnione tytuł książki i oddzielenia na różnych stronach książki. Można teraz utworzyć struktura single składa się z tych różnych danych wejściowych.
+W kolejnym przykładzie załóżmy, że na różnych etapach cyklu przetwarzania potokowego w programie, zostały wyodrębnione tytuł książki i oddzielenia na różnych stronach w książce. Można teraz utworzyć struktura single składa się z różnych danych wejściowych.
 
-Korektorze definicji umiejętności w tym scenariuszu może wyglądać następująco:
+Definicja Shaper umiejętności, w tym scenariuszu może wyglądać następująco:
 
 ```json
 {
@@ -130,7 +132,7 @@ Korektorze definicji umiejętności w tym scenariuszu może wyglądać następuj
 ```
 
 ### <a name="sample-output"></a>Przykładowe dane wyjściowe
-W takim przypadku korektorze Spłaszcza wszystkie tytuły rozdział, aby utworzyć pojedynczą tablicę. 
+W tym przypadku Shaper Spłaszcza wszystkie tytuły rozdział, aby utworzyć pojedynczą tablicę. 
 
 ```json
 {
@@ -155,5 +157,5 @@ W takim przypadku korektorze Spłaszcza wszystkie tytuły rozdział, aby utworzy
 ## <a name="see-also"></a>Zobacz także
 
 + [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md)
-+ [Sposób definiowania skillset](cognitive-search-defining-skillset.md)
++ [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)
 

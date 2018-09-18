@@ -3,7 +3,7 @@ title: Co to są strefy dostępności platformy Azure? | Microsoft Docs
 description: Aby utworzyć wysoko dostępne i odporne na błędy aplikacje na platformie Azure, strefy dostępności zapewniają fizycznie oddzielone lokalizacje, używane do uruchamiania Twoich zasobów.
 services: ''
 documentationcenter: ''
-author: iainfoulds
+author: cynthn
 manager: jeconnoc
 editor: ''
 tags: ''
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 06/27/2018
-ms.author: iainfou
+ms.date: 08/31/2018
+ms.author: cynthn
 ms.custom: mvc I am an ITPro and application developer, and I want to protect (use Availability Zones) my applications and data against data center failure (to build Highly Available applications).
-ms.openlocfilehash: 6a4dcc2cd3b196221b881783c79ddb0adaa6f38b
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 488f7fa123692a908c36619e17166cee27d17612
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42059549"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735870"
 ---
 # <a name="what-are-availability-zones-in-azure"></a>Co to są strefy dostępności na platformie Azure?
 Strefy dostępności to oferta, która chroni aplikacje i dane przed awariami centrów danych o wysokiej dostępności. Strefy dostępności to unikatowe fizycznie lokalizacje w regionie platformy Azure. Każda strefa składa się z co najmniej jeden centrów danych, wyposażone w niezależne zasilanie, chłodzenie i usługi sieciowe. Aby zapewnić odporność, istnieje co najmniej trzy osobne strefy we wszystkich regionach włączone. Fizyczne rozdzielenie stref dostępności w obrębie regionu chroni aplikacje i dane przed awariami centrum danych. Strefowo nadmiarowe usługi replikować aplikacji i danych w różnych strefach dostępności, aby zapewnić ochronę przed pojedynczej punktami z awarią. Dzięki strefom dostępności platforma Azure oferuje branży najlepsze dostępność przez 99,99% maszyny Wirtualnej SLA dotyczącą czasu dostępności. Pełna treść [umowy SLA dotyczącej usługi Azure](https://azure.microsoft.com/support/legal/sla/virtual-machines/) wyjaśnia w całości kwestię gwarantowanej dostępności platformy Azure.
@@ -40,10 +40,13 @@ Aby uzyskać kompleksowy zestaw funkcji ciągłości na platformie Azure, tworze
 ## <a name="regions-that-support-availability-zones"></a>Regiony, które obsługują strefy dostępności
 
 - Środkowe stany USA
-- Francja Środkowa
 - Wschodnie stany USA 2 (wersja zapoznawcza)
-- Europa Zachodnia
+- Francja Środkowa
+- Europa Północna
 - Azja południowo-wschodnia (wersja zapoznawcza)
+- Europa Zachodnia
+- Zachodnie stany USA 2
+
 
 
 ## <a name="services-that-support-availability-zones"></a>Usługi obsługujące strefy dostępności

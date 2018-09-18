@@ -1,6 +1,6 @@
 ---
-title: Użycie funkcji RBAC do zarządzania prawami dostępu do kontenerów usługi Azure Storage i kolejki (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Użyj kontroli dostępu opartej na rolach (RBA) do przypisywania ról, aby uzyskać dostęp do danych usługi Azure Storage do użytkowników, grup, jednostek usług aplikacji lub tożsamości usługi zarządzanej. Usługa Azure Storage obsługuje role wbudowane i niestandardowe prawa dostępu do kontenerów i kolejek.
+title: Zarządzanie prawami dostępu do kontenerów i kolejek (wersja zapoznawcza) — usługi Azure Storage przy użyciu kontroli RBAC | Dokumentacja firmy Microsoft
+description: Użyj kontroli dostępu opartej na rolach (RBAC) do przypisywania ról, aby uzyskać dostęp do danych obiektów blob i kolejek do użytkowników, grup, jednostek usług aplikacji lub tożsamości usługi zarządzanej. Usługa Azure Storage obsługuje role wbudowane i niestandardowe prawa dostępu do kontenerów i kolejek.
 services: storage
 author: tamram
 ms.service: storage
@@ -8,20 +8,20 @@ ms.topic: article
 ms.date: 09/07/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: 2a85277c72b63f248fa6d2b06cc1daa1ccbf5ce5
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: c26eee05a59a10036138f81086b3f6a9e0de6d5d
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298679"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737298"
 ---
 # <a name="manage-access-rights-to-azure-storage-data-with-rbac-preview"></a>Zarządzanie prawami dostępu do danych usługi Azure Storage za pomocą funkcji RBAC (wersja zapoznawcza)
 
 Azure Active Directory (Azure AD) autoryzuje praw dostępu do zabezpieczonych zasobów przy użyciu [kontroli dostępu opartej na rolach (RBAC)](https://docs.microsoft.com/azure/role-based-access-control/overview). Usługa Azure Storage definiuje zestaw wbudowane role kontroli RBAC, które obejmują typowe zestawy uprawnień, które umożliwiają dostęp do kontenerów i kolejki. Gdy rola RBAC jest przypisany do tożsamości usługi Azure AD, tożsamość ma uprawnienia do tych zasobów, zgodnie z określonego zakresu. Może należeć do poziomu subskrypcji, grupy zasobów, konto magazynu lub pojedynczy kontener lub kolejki zakresu dostępu. Można przypisać prawa dostępu do zasobów usługi Azure Storage przy użyciu witryny Azure portal, narzędzi wiersza polecenia platformy Azure i interfejsów API zarządzania platformy Azure. 
 
-Tożsamości usługi Azure AD może być użytkownika, grupy lub nazwy głównej usługi aplikacji, lub może być *tożsamości usługi zarządzanej*. Podmiot zabezpieczeń może być użytkownika, grupy lub aplikacji jednostki usługi. A [tożsamości usługi zarządzanej](../../active-directory/managed-identities-azure-resources/overview.md) jest automatycznie zarządzanych tożsamości używany do uwierzytelniania z aplikacjami uruchomionymi na maszynach wirtualnych platformy Azure, aplikacji funkcji, zestawy skalowania maszyn wirtualnych i innych. Aby uzyskać omówienie tożsamości w usłudze Azure AD, zobacz [Understand Azure tożsamością](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions).
+Tożsamości usługi Azure AD może być użytkownika, grupy lub nazwy głównej usługi aplikacji, lub może być tożsamość zarządzaną dla zasobów platformy Azure. Podmiot zabezpieczeń może być użytkownika, grupy lub aplikacji jednostki usługi. A [tożsamości zarządzanej dla zasobów platformy Azure](../../active-directory/managed-identities-azure-resources/overview.md) jest automatycznie zarządzanych tożsamości używany do uwierzytelniania z aplikacjami uruchomionymi na maszynach wirtualnych platformy Azure, aplikacji funkcji, zestawy skalowania maszyn wirtualnych i innych. Aby uzyskać omówienie tożsamości w usłudze Azure AD, zobacz [Understand Azure tożsamością](https://docs.microsoft.com/azure/active-directory/understand-azure-identity-solutions).
 
-## <a name="rbac-roles-for-azure-storage"></a>Role RBAC dla usługi Azure Storage
+## <a name="rbac-roles-for-blobs-and-queues"></a>Role RBAC dla kolejek i obiektów blob
 
 Usługa Azure Storage obsługuje niestandardowe i wbudowane role RBAC. Usługa Azure Storage oferuje następujące wbudowane role kontroli RBAC do użycia z usługą Azure AD:
 

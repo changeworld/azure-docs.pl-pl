@@ -8,15 +8,15 @@ manager: craigg
 ms.service: sql-database
 ms.subservice: elastic-pool
 ms.custom: DBs & servers
-ms.date: 07/27/2018
+ms.date: 09/14/2018
 ms.author: ninarn
 ms.topic: conceptual
-ms.openlocfilehash: ffc74eafed81c3dad836cfe70050244cb66a820b
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 39c127569ea3ea5339c90554e1e899212f1b3f6a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003743"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735516"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pul elastycznych pozwalają na zarządzanie i skalowania wielu baz danych Azure SQL
 
@@ -55,7 +55,7 @@ Na poniższej ilustracji pokazano przykład bazy danych, która przez większoś
 
    ![pojedyncza baza danych odpowiednia dla puli](./media/sql-database-elastic-pool/one-database.png)
 
-W przedstawionym okresie pięciu minut baza danych DB1 odnotowuje wzrost użycia do 90 DTU, ale jej całkowite średnie użycie jest mniejsze niż pięć DTU. Do obsługi tego obciążenia w jednej bazie danych wymagany jest poziom wydajności S3, ale spowoduje to, że większość zasobów pozostanie nieużywana w okresach niskiej aktywności.
+W przedstawionym okresie pięciu minut baza danych DB1 odnotowuje wzrost użycia do 90 DTU, ale jej całkowite średnie użycie jest mniejsze niż pięć DTU. Rozmiar obliczeń S3 jest wymagany do obsługi tego obciążenia w jednej bazie danych, ale spowoduje to, że większość zasobów nieużywane w okresach niskiej aktywności.
 
 Pula umożliwia udostępnienie tych nieużywanych jednostek DTU wielu bazom danych, a tym samym zmniejsza liczbę potrzebnych jednostek DTU i obniża koszty ogólne.
 
@@ -65,7 +65,7 @@ Rozwijając poprzedni przykład, załóżmy, że istnieją dodatkowe bazy danych
 
    ![dwadzieścia baz danych z wzorcem użycia odpowiednim dla puli](./media/sql-database-elastic-pool/twenty-databases.png)
 
-Zagregowane użycie jednostek DTU we wszystkich 20 bazach danych przedstawia czarna linia na poprzednim rysunku. Pokazuje ona, że zagregowane użycie jednostek DTU nigdy nie przekracza 100 DTU i wskazuje, że te 20 baz danych może współużytkować 100 jednostek eDTU w tym okresie. Skutkuje to dwudziestokrotnym zmniejszeniem liczby DTU i trzynastokrotnie niższą ceną w porównaniu do umieszczenia każdej z baz danych na poziomie wydajności S3 dla pojedynczej bazy danych.
+Zagregowane użycie jednostek DTU we wszystkich 20 bazach danych przedstawia czarna linia na poprzednim rysunku. Pokazuje ona, że zagregowane użycie jednostek DTU nigdy nie przekracza 100 DTU i wskazuje, że te 20 baz danych może współużytkować 100 jednostek eDTU w tym okresie. Skutkuje to 20-krotne zmniejszenie liczby jednostek Dtu i 13 x obniżki cen w porównaniu do umieszczenia każdej z baz danych w trybie S3 obliczenia rozmiarów dla pojedynczych baz danych.
 
 Ten przykład jest idealny z następujących przyczyn:
 
@@ -75,21 +75,21 @@ Ten przykład jest idealny z następujących przyczyn:
 
 Cena puli jest funkcją jednostek eDTU puli. Chociaż cena jednostki eDTU dla puli jest 1,5 raza większa niż cena jednostki DTU dla pojedynczej bazy danych, **jednostki eDTU puli mogą być współdzielone przez wiele baz danych, a tym samym potrzebna jest mniejsza całkowita liczba jednostek eDTU**. Te różnice w cenie i współużytkowanie jednostek eDTU są podstawą potencjalnych oszczędności, które mogą zapewnić pule.
 
-Następujące reguły akceptacji powiązane z liczbą baz danych i użyciem baz danych pomagają upewnić się, że pula zapewnia mniejsze koszty w porównaniu z użyciem poziomów wydajności dla pojedynczych baz danych.
+Następujące reguły akceptacji powiązane z liczbą baz danych i użyciem baz danych pomóc upewnić się, że pula zapewnia mniejsze koszty w porównaniu z użyciem rozmiarów wystąpień obliczeniowych dla pojedynczych baz danych.
 
 ### <a name="minimum-number-of-databases"></a>Minimalna liczba baz danych
 
 Jeśli łączna ilość zasobów dla pojedynczych baz danych jest większa niż 1,5 x zasoby wymagane dla puli, pula elastyczna jest bardziej opłacalna.
 
 ***Oparte na jednostkach DTU przykładowy model zakupu***<br>
-Aby pula 100 eDTU była bardziej opłacalna niż korzystanie z poziomów wydajności dla pojedynczych baz danych, potrzebne są co najmniej dwie baz danych S3 lub co najmniej 15 baz danych S0.
+Aby pula 100 eDTU była bardziej opłacalna niż korzystanie z rozmiarów wystąpień obliczeniowych dla pojedynczych baz danych potrzebne co najmniej dwie baz danych S3 lub co najmniej 15 baz danych S0.
 
 ### <a name="maximum-number-of-concurrently-peaking-databases"></a>Maksymalna liczba baz danych z równoczesnymi szczytami użycia
 
 Dzięki udostępnieniu zasobów, nie wszystkie bazy danych w puli mogą jednocześnie używać zasobów do limitu dostępne dla pojedynczych baz danych. Mniejsza liczba baz danych, które jednocześnie odnotowują szczytowe użycie, tym niższy można ustawić zasobów w puli i tym bardziej opłacalne staje się puli. Ogólnie rzecz biorąc nie więcej niż 2/3 (lub 67%) baz danych w puli powinno jednocześnie doświadczać ich limitu zasobów.
 
 ***Oparte na jednostkach DTU przykładowy model zakupu***<br>
-Aby zmniejszyć koszty dla trzech baz danych S3 w puli 200 eDTU, co najwyżej dwie z tych baz danych mogą jednocześnie osiągać szczytowe użycie. W przeciwnym razie, jeśli więcej niż dwie z tych czterech baz danych S3 jednocześnie osiągają szczytowe użycie, rozmiar puli musiałby zostać zwiększony do ponad 200 eDTU. Jeśli rozmiar puli będzie większy niż 200 eDTU, konieczne będzie dodanie większej liczby baz danych S3, aby koszty puli pozostały niższe niż w przypadku poziomów wydajności dla pojedynczych baz danych.
+Aby zmniejszyć koszty dla trzech baz danych S3 w puli 200 eDTU, co najwyżej dwie z tych baz danych mogą jednocześnie osiągać szczytowe użycie. W przeciwnym razie, jeśli więcej niż dwie z tych czterech baz danych S3 jednocześnie osiągają szczytowe użycie, rozmiar puli musiałby zostać zwiększony do ponad 200 eDTU. Jeśli rozmiar puli będzie większy niż 200 Edtu, większej liczby baz danych S3 musi zostać dodane do aby koszty puli pozostały niższe niż obliczenia rozmiarów dla pojedynczych baz danych.
 
 Należy zauważyć, że w tym przykładzie nie jest rozważane użycie innych baz danych w puli. Jeśli wszystkie bazy danych mają jakiś poziom użycia w dowolnym danym momencie czasu, wówczas mniej niż 2/3 (lub 67%) baz danych może jednocześnie osiągać szczytowe użycie.
 
@@ -123,7 +123,7 @@ W przypadkach, gdy nie można użyć narzędzi, skorzystanie z następujących i
 2. Oszacuj miejsce do magazynowania wymagane dla puli przez dodanie liczby bajtów potrzebnych dla wszystkich baz danych w puli. Następnie określ rozmiar puli (w jednostkach eDTU), który zapewni tę ilość miejsca przechowywania.
 3. W przypadku opartego na jednostkach DTU modelu zakupu weź większą z wartości szacunkowych eDTU, z kroku 1 i 2. Dla opartych na rdzeniach wirtualnych model zakupu należy wykonać szacowania — rdzeń wirtualny z kroku 1.
 4. Zobacz [SQL Database, cennik](https://azure.microsoft.com/pricing/details/sql-database/) i Znajdź najmniejszy puli rozmiar jest większy niż szacunkowa wartość z kroku 3.
-5. Porównaj cenę puli z kroku 5 z ceną za używanie odpowiednich poziomów wydajności dla pojedynczych baz danych.
+5. Porównaj cenę puli z kroku 5 z ceną za używanie rozmiarów obliczeniowych odpowiednie dla pojedynczych baz danych.
 
 ## <a name="using-other-sql-database-features-with-elastic-pools"></a>Przy użyciu innych funkcji usługi SQL Database z pulami elastycznymi
 
@@ -151,7 +151,7 @@ Istnieją dwa sposoby, można utworzyć pulę elastyczną w witrynie Azure porta
 > [!NOTE]
 > Można utworzyć wiele pul na serwerze, ale nie można dodać bazy danych z różnych serwerów do tej samej puli.
 
-Warstwa usług puli Określa funkcje dostępne dla elastycznych w puli, a maksymalna ilość zasobów dostępnych dla każdej bazy danych. Aby uzyskać szczegółowe informacje, zobacz limity zasobów dla elastycznych pul w [modelu jednostek DTU](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels). Zasób oparty na rdzeniach wirtualnych limity dla pul elastycznych, zobacz [limity zasobów opartych na rdzeniach wirtualnych - pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md).
+Warstwa usług puli Określa funkcje dostępne dla elastycznych w puli, a maksymalna ilość zasobów dostępnych dla każdej bazy danych. Aby uzyskać szczegółowe informacje, zobacz limity zasobów dla elastycznych pul w [modelu jednostek DTU](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes). Zasób oparty na rdzeniach wirtualnych limity dla pul elastycznych, zobacz [limity zasobów opartych na rdzeniach wirtualnych - pul elastycznych](sql-database-vcore-resource-limits-elastic-pools.md).
 
 Aby skonfigurować zasoby i ceny puli, kliknij przycisk **skonfigurować pulę**. Następnie wybierz warstwę usługi, dodać bazy danych do puli i skonfigurować limity zasobów dla puli i jego bazami danych.
 

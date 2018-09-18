@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 07/13/2018
+ms.date: 09/11/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 489d9c430db000710368a65f3100bb175ad00eae
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 988f77dd0f8f31f6e31e5371ed263d4c4195c105
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39041185"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45984877"
 ---
 # <a name="runbook-and-module-galleries-for-azure-automation"></a>Galeria elementów Runbook i modułów usługi Azure Automation
 Zamiast tworzenia własnych elementów runbook i modułów w usłudze Azure Automation, możesz uzyskać dostęp do różnych scenariuszy, które zostały już utworzone przez firmę Microsoft i społeczność.  Możesz użyć tych scenariuszy, bez żadnych modyfikacji lub można ich używać jako punkt początkowy i edytować je do swoich specyficznych wymagań.
@@ -94,6 +94,10 @@ Moduły programu PowerShell zawierają polecenia cmdlet, które można użyć w 
 
 > [!NOTE]
 > Moduły, które obsługują tylko program PowerShell core nie są obsługiwane w usłudze Azure Automation i nie mogą być importowane w witrynie Azure portal lub wdrażany bezpośrednio z galerii programu PowerShell.
+
+## <a name="python-runbooks"></a>Elementy Runbook języka Python
+
+Elementy Runbook języka Python są dostępne w [galerii Centrum skryptów](https://gallery.technet.microsoft.com/scriptcenter/site/search?f%5B0%5D.Type=RootCategory&f%5B0%5D.Value=WindowsAzure&f%5B1%5D.Type=ProgrammingLanguage&f%5B1%5D.Value=Python&f%5B1%5D.Text=Python&sortBy=Date&username=). Elementy runbook języka Python, aby Galeria Centrum skryptów może współtworzyć zawartość. Po użytkownik upewnij się, dodać tag **Python** podczas przekazywania Twojego wkładu.
 
 ## <a name="requesting-a-runbook-or-module"></a>Żądanie runbook lub modułu
 Można wysyłać żądania do [User Voice](https://feedback.azure.com/forums/246290-azure-automation/).  Jeśli potrzebujesz pomocy, zapisywania elementu runbook lub masz pytanie dotyczące programu PowerShell, należy zadać pytanie na naszym [forum](http://social.msdn.microsoft.com/Forums/windowsazure/en-US/home?forum=azureautomation&filter=alltypes&sort=lastpostdesc).

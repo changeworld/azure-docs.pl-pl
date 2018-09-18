@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: nitinme
-ms.openlocfilehash: 3cc38e7ede9882e78e509738351696a64c938c40
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: d24a268cf389dfe9dec914b2d27bbe8e466ea675
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391423"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737196"
 ---
 # <a name="comparing-azure-data-lake-storage-gen1-and-azure-blob-storage"></a>Porównanie usługi Azure Data Lake Storage Gen1 i usługi Azure Blob Storage
 Tabela, w tym artykule zawiera podsumowanie różnic między usługi Azure Data Lake Storage Gen1 i Azure Blob Storage, które wzdłuż niektórych kluczowych aspektów przetwarzania danych big Data. Usługa Azure Blob Storage jest ogólnego przeznaczenia, skalowalny magazyn obiektów przeznaczony do szerokiej gamy scenariuszy magazynowania. Azure Data Lake Storage Gen1 to ogromne repozytorium, które jest zoptymalizowane pod kątem obciążeń analizy danych big data.
@@ -31,9 +31,9 @@ Tabela, w tym artykule zawiera podsumowanie różnic między usługi Azure Data 
 | Interfejs API |Interfejs API REST przy użyciu protokołu HTTPS |Interfejs API REST za pośrednictwem protokołu HTTP/HTTPS |
 | Interfejs API po stronie serwera |[Interfejs API REST zgodnych z WebHDFS](https://msdn.microsoft.com/library/azure/mt693424.aspx) |[Interfejs API REST magazynu obiektów Blob platformy Azure](https://msdn.microsoft.com/library/azure/dd135733.aspx) |
 | Klient systemu plików usługi Hadoop |Yes |Yes |
-| Operacje na danych — uwierzytelnianie |Na podstawie [tożsamości usługi Azure Active Directory](../active-directory/develop/authentication-scenarios.md) |Oparte na wspólne klucze tajne — [kluczy dostępu do konta](../storage/common/storage-create-storage-account.md#manage-your-storage-account) i [klucze dostępu współużytkowanego w podpisie](../storage/common/storage-dotnet-shared-access-signature-part-1.md). |
+| Operacje na danych — uwierzytelnianie |Na podstawie [tożsamości usługi Azure Active Directory](../active-directory/develop/authentication-scenarios.md) |Oparte na wspólne klucze tajne — [kluczy dostępu do konta](../storage/common/storage-account-manage.md#access-keys) i [klucze dostępu współużytkowanego w podpisie](../storage/common/storage-dotnet-shared-access-signature-part-1.md). |
 | Operacje na danych — protokół uwierzytelniania |OAuth 2.0. Wywołania musi zawierać prawidłowy token JWT (JSON Web Token) wystawione przez usługę Azure Active Directory |Kod uwierzytelniania wiadomości bazujących na skrótach (HMAC). Wywołania musi zawierać wartości skrótu SHA-256 algorytmem Base64 nad częścią żądania HTTP. |
-| Operacje na danych — autoryzacji |Listy kontroli dostępu POSIX (kontroli dostępu ACL).  Listy ACL w oparciu o usługi Azure Active Directory tożsamości można ustawić na poziomie plików i folderów. |W przypadku zezwolenia na poziomie konta — użyj [kluczy dostępu do konta](../storage/common/storage-create-storage-account.md#manage-your-storage-account)<br>W przypadku konta, kontenera lub obiektu blob autoryzacji — użyj [udostępnione klucze sygnatur dostępu](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
+| Operacje na danych — autoryzacji |Listy kontroli dostępu POSIX (kontroli dostępu ACL).  Listy ACL w oparciu o usługi Azure Active Directory tożsamości można ustawić na poziomie plików i folderów. |W przypadku zezwolenia na poziomie konta — użyj [kluczy dostępu do konta](../storage/common/storage-account-manage.md#access-keys)<br>W przypadku konta, kontenera lub obiektu blob autoryzacji — użyj [udostępnione klucze sygnatur dostępu](../storage/common/storage-dotnet-shared-access-signature-part-1.md) |
 | Operacje na danych — Inspekcja |Jest dostępna. Zobacz [tutaj](data-lake-store-diagnostic-logs.md) informacji. |Dostępne |
 | Szyfrowanie danych magazynowanych |<ul><li>Przezroczyste, po stronie serwera</li> <ul><li>Za pomocą kluczy zarządzanych przez usługę</li><li>Za pomocą kluczy zarządzanych przez klienta w usłudze Azure KeyVault</li></ul></ul> |<ul><li>Przezroczyste, po stronie serwera</li> <ul><li>Za pomocą kluczy zarządzanych przez usługę</li><li>Za pomocą kluczy zarządzanych przez klienta w usłudze Azure KeyVault (wersja zapoznawcza)</li></ul><li>Szyfrowania po stronie klienta</li></ul> |
 | Operacje zarządzania (np. Tworzenie konta) |[Kontrola dostępu oparta na rolach](../role-based-access-control/overview.md) (RBAC) udostępnianej przez platformę Azure w celu zarządzania kontami |[Kontrola dostępu oparta na rolach](../role-based-access-control/overview.md) (RBAC) udostępnianej przez platformę Azure w celu zarządzania kontami |

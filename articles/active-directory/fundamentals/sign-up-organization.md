@@ -1,38 +1,40 @@
 ---
-title: Załóż konto usługi Azure AD jako organizacja | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można użyć służbowego lub szkolnego konta, aby korzystać z istniejących kont użytkowników, zasady, ustawienia lub wdrożeń na serwerze lokalnym już mieć i poprawa wydajności między lokalnej infrastruktury tożsamości i usługi Azure AD w organizacji.
+title: Jak zasubskrybować usługę Azure Active Directory jako organizacja | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zarejestrować Twojej organizacji i korzystać z platformy Azure i usługi Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
 ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
 ms.topic: conceptual
-ms.date: 08/28/2017
+ms.date: 09/14/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: a8d4781af0320f86eb5dd0b4b5e71c0ca7db5a18
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.openlocfilehash: 77b49a050724cbf4666ca5253cc1fa518c441e62
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37063938"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732536"
 ---
-# <a name="how-to-sign-up-for-azure-ad-as-an-organization"></a>Jak: utworzyć konto usługi Azure AD jako organizacja
-Niedawna można tylko utworzysz nową subskrypcję Microsoft Azure przy użyciu konta Microsoft (Windows Live ID). Azure obsługuje teraz przy użyciu jednej z następujących dwóch metod konta, aby utworzyć konto:
+# <a name="how-to-sign-up-for-azure-active-directory-as-an-organization"></a>Porady: Zarejestruj się w usłudze Azure Active Directory jako organizacja
+Załóż konto usługi Azure Active Directory (Azure AD) przy użyciu nowej subskrypcji Microsoft Azure:
 
-* **Konta Microsoft** (utworzone przez użytkownika do użytku osobistego) — umożliwiają dostęp do wszystkich produktów firmy Microsoft konsumentów i usługami w chmurze, takich jak Outlook (usługi Hotmail), programu Messenger, OneDrive, MSN, Xbox LIVE lub usługi Office 365. Podczas tworzenia skrzynki pocztowej Outlook.com automatycznie tworzy konto Microsoft. Po utworzeniu konta Microsoft, jej można uzyskać dostęp do usług chmurowych firmy Microsoft związane z odbiorców lub Azure. [Dowiedz się więcej](https://account.microsoft.com/account)
-* **Konta służbowe** (wystawiony przez administratora dla firm/uczelni Użyj) - zapewniają dostęp do wszystkich małych, średnich i dużych firm poziom usług chmurowych firmy Microsoft, takich jak Azure, Microsoft Intune lub usługi Office 365. Po zarejestrowaniu jako organizacja do jednego z tych usług katalogowych w chmurze jest udostępniany automatycznie w usłudze Azure Active Directory do reprezentowania organizacji. [Dowiedz się więcej](active-directory-administer.md)
-  
-    Po utworzeniu tego katalogu, administrator może tworzyć użytkowników i przypisywanie licencji na ich podstawie na subskrypcje usługi chmury, które potrzebują dostępu, takich jak Azure.
+- **Konto Microsoft.** Aby uzyskać dostęp do platformy Azure i wszystkich klientów indywidualnych produktów firmy Microsoft i usługi w chmurze, takich jak Outlook (Hotmail), Messenger, OneDrive, MSN, Xbox LIVE lub usługi Office 365, należy użyć osobiste konto Microsoft. Założeniem Skrzynka pocztowa Outlook.com automatycznie tworzy konta Microsoft. Aby uzyskać więcej informacji, zobacz [Przegląd konta Microsoft](https://account.microsoft.com/account).
 
-Czy chcesz utworzyć konto Azure jako organizacja? [**Zarejestruj się teraz**](https://azure.microsoft.com/pricing/purchase-options/)
+- **Konta służbowego lub szkolnego.** Aby uzyskać dostęp do wszystkich małych, średnich i usługi enterprise cloud services firmy Microsoft, takich jak Azure, Microsoft Intune i Office 365, należy użyć z miejsca pracy lub szkoły związane z kontem. Po zarejestrowaniu się do jednej z tych usług jako organizacja, usługi Azure AD automatycznie aprowizuje katalogu oparte na chmurze, reprezentujący Twojej organizacji. Aby uzyskać więcej informacji, zobacz [Zarządzanie swoim katalogiem usługi Azure AD](active-directory-administer.md).
 
-**Dodatkowe zasoby**
+## <a name="next-steps"></a>Kolejne kroki
 
-* [Blog Microsoft Azure](https://azure.microsoft.com/blog/)
-* [Co to jest usługa Azure AD?](active-directory-whatis.md)
-* [Użyj lokalnej infrastruktury tożsamości w chmurze](../connect/active-directory-aadconnect.md)
+- [Zarejestruj się jako organizacja](https://azure.microsoft.com/pricing/purchase-options/)
+
+- [Zarejestruj się w przypadku wersji usługi Azure Active Directory — wersja Premium](active-directory-get-started-premium.md)
+
+- [Dowiedz się więcej o usłudze Azure AD](active-directory-whatis.md)
+
+- [Używanie lokalnej infrastruktury tożsamości w chmurze](../connect/active-directory-aadconnect.md)
+
+- [Odwiedź blog Microsoft Azure](https://azure.microsoft.com/blog/)
 

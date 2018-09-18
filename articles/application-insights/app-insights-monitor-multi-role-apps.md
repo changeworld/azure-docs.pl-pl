@@ -10,20 +10,20 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 05/17/2017
+ms.date: 09/17/2018
 ms.author: mbullwin
-ms.openlocfilehash: 191913500daf7f1ab20f92c7e951f58598d5d14e
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: bf247748415822d5ba1a0e652fdeff384d8e8db1
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35647720"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982055"
 ---
 # <a name="monitor-multi-component-applications-with-application-insights-preview"></a>Monitorowanie aplikacji wieloskładnikowych za pomocą usługi Application Insights (wersja zapoznawcza)
 
 Można monitorować aplikacje, które składają się z wielu składników serwera, ról lub usługi z [usługi Azure Application Insights](app-insights-overview.md). Kondycja składników i relacje między nimi są wyświetlane na jednej mapie aplikacji. Można śledzić poszczególnych operacji za pomocą wielu składników za pomocą automatycznego korelacji HTTP. Diagnostyki kontenerów można zintegrować i skorelowane z telemetrii aplikacji. Użyj pojedynczego zasobu usługi Application Insights dla wszystkich składników aplikacji. 
 
-![Mapa aplikacji wieloskładnikowych](./media/app-insights-monitor-multi-role-apps/app-map.png)
+![Mapa aplikacji wieloskładnikowych](./media/app-insights-monitor-multi-role-apps/application-map-001.png)
 
 Możemy korzystać "component" oznacza dowolną działa część dużych aplikacji. Na przykład typowa aplikacja biznesowa może zawierać kod klienta działający w przeglądarkach sieci web, rozmawiając z jedną lub więcej usług sieci web aplikacji korzystających z kolei ponownie usługami zaplecza. Składniki serwera może być obsługiwana lokalnie w chmurze, może być role sieć web i procesu roboczego platformy Azure lub może działać w kontenerach, takich jak Docker lub usługi Service Fabric. 
 
@@ -33,7 +33,7 @@ W tym miejscu klucza technika polega na przesyłanie danych telemetrycznych z ka
 
 Aby uzyskać więcej informacji o tym, jak zastąpić `cloud_RoleName` Zobacz właściwość [dodać właściwości: ITelemetryInitializer](app-insights-api-filtering-sampling.md#add-properties-itelemetryinitializer).  
 
-W niektórych przypadkach może to nie być odpowiednie, a użytkownik może chcieć użyć oddzielne zasoby dla różnych grup składników. Może na przykład może być konieczne użycie różnych zasobów do zarządzania lub celów rozliczeniowych. Korzystanie z osobnych zasobów oznacza, że nie widzieć wszystkie składniki, które są wyświetlane na jednej mapie aplikacji; oraz że nie można wykonać zapytania składnikami w [analizy](app-insights-analytics.md). Musisz również skonfigurować oddzielne zasoby.
+W niektórych przypadkach może to nie być odpowiednie, a użytkownik może chcieć użyć oddzielne zasoby dla różnych grup składników. Może na przykład może być konieczne użycie różnych zasobów do zarządzania lub celów rozliczeniowych.
 
 Z tego ostrzeżenie przyjmiemy w pozostałej części tego dokumentu, które chcesz wysyłać dane z wielu składników do jednego zasobu usługi Application Insights.
 

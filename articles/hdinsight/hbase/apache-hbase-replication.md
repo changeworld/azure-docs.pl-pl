@@ -3,18 +3,18 @@ title: Konfigurowanie replikacji klaster bazy danych HBase w sieci wirtualnej pl
 description: Informacje o sposobie konfigurowania replikacji bazy danych HBase z jednej wersji HDInsight do innego dla równoważenia obciążenia, wysoką dostępność, bez jakichkolwiek przestojów migracji i aktualizacji i odzyskiwania po awarii.
 services: hdinsight,virtual-network
 author: jasonwhowell
+ms.author: jasonh
 ms.reviewer: jasonh
 ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 05/11/2018
-ms.author: jasonh
-ms.openlocfilehash: 624165f5ee1140ade9b9ce03c5249d297c8d83f1
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/15/2018
+ms.openlocfilehash: 0d675b3efa165f36b93d791975a8007a68b02e12
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047487"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734762"
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Konfigurowanie replikacji klaster bazy danych HBase w sieci wirtualnej platformy Azure
 
@@ -135,7 +135,7 @@ Aby zainstalować Bind, użyj następującej procedury:
     sudo apt-get install bind9 -y
     ```
 
-3. Aby skonfigurować powiązania do przekazywania żądań rozpoznawania nazw na serwerze DNS w sieci lokalnej, skorzystaj z poniższego tekstu jako zawartość `/etc/bind/named.conf.options` pliku:
+3. Konfigurowanie powiązania do przekazywania żądań rozpoznawania nazw na serwerze DNS w sieci lokalnej. Aby to zrobić, skorzystaj z poniższego tekstu jako zawartość `/etc/bind/named.conf.options` pliku:
 
     ```
     acl goodclients {
@@ -151,7 +151,7 @@ Aby zainstalować Bind, użyj następującej procedury:
         allow-query { goodclients; };
 
         forwarders {
-            168.63.129.16 #This is the Azure DNS server
+            168.63.129.16; #This is the Azure DNS server
         };
 
         dnssec-validation auto;

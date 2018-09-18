@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: c55667e61e35186f63f49082db0c3adadd66ff68
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: b46e365ea3903a8f2c805717df13d361c823148d
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633385"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985600"
 ---
 # <a name="azure-stack-1807-update"></a>Aktualizacja usługi Azure Stack 1807
 
@@ -172,6 +172,9 @@ Aby uzyskać więcej informacji na temat tych luk w zabezpieczeniach kliknij pop
 Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 
 ### <a name="portal"></a>Portal
+
+- Możliwość [Otwórz nowe żądanie obsługi z listy rozwijanej](azure-stack-manage-portals.md#quick-access-to-help-and-support) w obrębie administrator portalu nie są dostępne. Dla usługi Azure Stack zintegrowanych systemów, użyj następującego linku: [ https://aka.ms/newsupportrequest ](https://aka.ms/newsupportrequest).
+
 - <!-- 2931230 – IS  ASDK --> Plany, które są dodawane do subskrypcji użytkownika, ponieważ nie można usunąć planu dodatku, nawet wtedy, gdy usuniesz plan z subskrypcji użytkownika. Plan pozostanie, dopóki odwołujące się do planu dodatku subskrypcje zostaną również usunięte. 
 
 - <!--2760466 – IS  ASDK --> Po zainstalowaniu nowego środowiska usługi Azure Stack, z tą wersją, ten alert oznacza to, *wymagana aktywacja* mogą nie być wyświetlane. [Aktywacja](azure-stack-registration.md) jest wymagany, zanim będzie można użyć portalu marketplace syndykacji.  

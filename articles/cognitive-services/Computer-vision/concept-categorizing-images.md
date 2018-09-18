@@ -1,21 +1,21 @@
 ---
-title: Kategoryzowanie obrazów
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Pojęcia związane z kategoryzowanie obrazów przy użyciu przetwarzania obrazów w usługach Azure Cognitive Services.
+title: Kategoryzowanie obrazów — przetwarzanie obrazów
+titleSuffix: Azure Cognitive Services
+description: Pojęcia związane z kategoryzowanie obrazów przy użyciu interfejsu API przetwarzania obrazów.
 services: cognitive-services
 author: deken
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: 9c15392e7f7df346553f925c5bf255ee900d25fe
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 345432cbc8a552ba7f6a4902cec72bcc1bf9feac
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44725395"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983558"
 ---
 # <a name="categorizing-images"></a>Kategoryzowanie obrazów
 

@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1bf20ebec5792fc01c62966a0454c37c3c950182
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 554434e57c5c67809f79aab21054e6ad60fe8491
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35938601"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729394"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Usługa Azure AD Connect użytkownika opcje logowania
 Usługa Azure Active Directory (Azure AD) Connect umożliwia użytkownikom logować się do zasobów lokalnych i chmurze przy użyciu tego samego hasła. W tym artykule opisano kluczowe pojęcia związane z każdego modelu tożsamości ułatwić wybór tożsamości, którego chcesz użyć do logowania do usługi Azure AD.
@@ -114,7 +114,7 @@ Nazwa UPN użytkownika ma następujący format username@domain. Na przykład dla
 ### <a name="user-principal-name-in-azure-ad"></a>Główna nazwa użytkownika w usłudze Azure AD
 Kreator Azure AD Connect używa atrybutu userPrincipalName lub umożliwia określenie atrybutu (w instalacji niestandardowej) do użycia ze środowiska lokalnego jako główną nazwę użytkownika w usłudze Azure AD. Jest to wartość, która jest używana do logowania się do usługi Azure AD. Jeśli wartość atrybutu userPrincipalName nie odpowiadają zweryfikowanej domeny w usłudze Azure AD, następnie usługi Azure AD zastępuje go znakiem domyślnego. wartość onmicrosoft.com.
 
-Każdy katalog usługi Azure Active Directory jest dostarczany z nazwą domeny wbudowane, za pomocą contoso.onmicrosoft.com format, umożliwiające rozpoczęcie korzystania z platformy Azure lub innych usług firmy Microsoft. Można zwiększyć i uprościć środowisko logowania za pomocą domen niestandardowych. Aby uzyskać informacji na temat niestandardowych nazw domen w usłudze Azure AD i sposobie weryfikacji domeny, zobacz [Dodawanie niestandardowej nazwy domeny do usługi Azure Active Directory](../fundamentals/add-custom-domain.md#add-the-custom-domain-name-to-your-directory).
+Każdy katalog usługi Azure Active Directory jest dostarczany z nazwą domeny wbudowane, za pomocą contoso.onmicrosoft.com format, umożliwiające rozpoczęcie korzystania z platformy Azure lub innych usług firmy Microsoft. Można zwiększyć i uprościć środowisko logowania za pomocą domen niestandardowych. Aby uzyskać informacji na temat niestandardowych nazw domen w usłudze Azure AD i sposobie weryfikacji domeny, zobacz [Dodawanie niestandardowej nazwy domeny do usługi Azure Active Directory](../fundamentals/add-custom-domain.md#add-a-custom-domain-name).
 
 ## <a name="azure-ad-sign-in-configuration"></a>Konfiguracja logowania się w usłudze Azure AD
 ### <a name="azure-ad-sign-in-configuration-with-azure-ad-connect"></a>Konfiguracja usłudze Azure AD logowania za pomocą usługi Azure AD Connect
@@ -126,7 +126,7 @@ Strony logowania usługi Azure AD wymieniono sufiksy nazw UPN, które są zdefin
 | Stan | Opis | Wymagana akcja |
 |:--- |:--- |:--- |
 | Zweryfikowano |Program Azure AD Connect znalezione dopasowania zweryfikowane domeny w usłudze Azure AD. Wszyscy użytkownicy w tej domenie może Zaloguj się przy użyciu ich poświadczeń lokalnych. |Jest wymagana żadna akcja. |
-| Nie zweryfikowano |Program Azure AD Connect można odnaleźć pasującego domeny niestandardowej w usłudze Azure AD, ale nie jest on weryfikowany. Sufiks nazwy UPN użytkowników tej domeny zostanie zmieniony na wartość domyślna. dodany sufiks onmicrosoft.com po synchronizacji, jeśli domena nie jest zweryfikowana. | [Weryfikowanie domeny niestandardowej w usłudze Azure AD.](../fundamentals/add-custom-domain.md#verify-the-custom-domain-name-in-azure-ad) |
+| Nie zweryfikowano |Program Azure AD Connect można odnaleźć pasującego domeny niestandardowej w usłudze Azure AD, ale nie jest on weryfikowany. Sufiks nazwy UPN użytkowników tej domeny zostanie zmieniony na wartość domyślna. dodany sufiks onmicrosoft.com po synchronizacji, jeśli domena nie jest zweryfikowana. | [Weryfikowanie domeny niestandardowej w usłudze Azure AD.](../fundamentals/add-custom-domain.md#verify-your-custom-domain-name) |
 | Nie dodano |Program Azure AD Connect nie znalazł domeny niestandardowej, która odpowiadał sufiks głównej nazwy użytkownika. Sufiks nazwy UPN użytkowników tej domeny zostanie zmieniony na wartość domyślna. Jeśli domena nie jest dodana i zweryfikowane w usłudze Azure dodany sufiks onmicrosoft.com. | [Dodanie i zweryfikowanie domeny niestandardowej, która odpowiada sufiks głównej nazwy użytkownika.](../fundamentals/add-custom-domain.md) |
 
 Strony logowania usługi Azure AD wymieniono sufiksy nazw UPN, które są zdefiniowane dla usługi Active Directory w środowisku lokalnym i odpowiedniej domeny niestandardowej w usłudze Azure AD przy użyciu bieżącego stanu weryfikacji. W instalacji niestandardowej, teraz możesz wybrać atrybut dla nazwy głównej użytkownika na **logowania w usłudze Azure AD** strony.

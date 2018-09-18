@@ -4,24 +4,39 @@ description: W tym artykule opisano sposób tworzenia oceny za pomocą zależno�
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 07/05/2018
+ms.date: 09/17/2018
 ms.author: raynew
-ms.openlocfilehash: 4b83380558c10bc4f96d56f89a5cc2b7b53edc2e
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.openlocfilehash: 31cbec8eab499fac116eac6fa2addac4ec2a340b
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39621083"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45737102"
 ---
 # <a name="group-machines-using-machine-dependency-mapping"></a>Grupowanie maszyn za pomocą mapowania zależności maszyn
 
 W tym artykule opisano sposób tworzenia grupy maszyn na potrzeby [usługi Azure Migrate](migrate-overview.md) oceny przez wizualizację zależności maszyn. Ta metoda jest zazwyczaj używana, gdy chcesz ocenić grupy maszyn wirtualnych z wyższego poziomu zaufania, krzyżowe sprawdzanie zależności maszyny, przed uruchomieniem oceny. Wizualizacja zależności mogą pomóc w efektywnego planowania migracji do platformy Azure. Ułatwia on upewnij się, że nic nie pozostawione awarii dziwnego, że nie występują podczas migracji na platformę Azure. Może odnajdywać wszystkie współzależne systemy, które trzeba migrowane razem i ustalić, czy na komputerze z uruchomionym systemem nadal działa jako użytkownicy lub kwalifikuje się do likwidacji zamiast migracji.
 
 
-## <a name="prepare-machines-for-dependency-mapping"></a>Przygotowywanie komputerów na potrzeby mapowania zależności
-Aby wyświetlić zależności maszyny, musisz pobrać i zainstalować agentów na każdym komputerze w środowisku lokalnym, który ma zostać oceniona. Ponadto w przypadku maszyn bez łączności internetowej musisz pobrać i zainstalować [bramy pakietu OMS](../log-analytics/log-analytics-oms-gateway.md) na nich.
+## <a name="prepare-for-dependency-visualization"></a>Przygotowanie do wizualizacji zależności
+Usługa Azure Migrate korzysta z rozwiązania mapy usługi w usłudze Log Analytics, aby umożliwić wizualizacja zależności maszyn.
+
+### <a name="associate-a-log-analytics-workspace"></a>Skojarzyć obszar roboczy usługi Log Analytics
+Aby korzystać z wizualizacji zależności, należy skojarzyć obszar roboczy usługi Log Analytics, nowej lub istniejącej z projektem migracji platformy Azure. Możesz tworzyć lub dołączyć obszaru roboczego w tej samej subskrypcji, w której jest tworzony projekt migracji.
+
+- Aby dołączyć obszar roboczy usługi Log Analytics do projektu, w **Przegląd**, przejdź do **Essentials** części projektu, kliknij przycisk **wymaga konfiguracji**
+
+    ![Skojarzyć obszar roboczy usługi Log Analytics](./media/concepts-dependency-visualization/associate-workspace.png)
+
+- Gdy tworzysz nowy obszar roboczy, musisz określić nazwę obszaru roboczego. Obszar roboczy zostanie utworzony w tej samej subskrypcji co projekt migracji i region, w tym samym [lokalizacja geograficzna platformy Azure](https://azure.microsoft.com/global-infrastructure/geographies/) jako projekt migracji.
+- **Użyj istniejącej** opcji wyświetla tylko te obszary robocze, które są tworzone w regionach, w których jest dostępna usługa Service Map. Jeśli masz obszar roboczy w regionie, w których nie jest dostępna usługa Service Map, nie będzie ono wyświetlane w polu listy rozwijanej.
+
+> [!NOTE]
+> Nie można zmienić obszar roboczy skojarzony z projektem migracji.
 
 ### <a name="download-and-install-the-vm-agents"></a>Pobieranie i instalowanie agentów maszyny wirtualnej
+Po skonfigurowaniu obszar roboczy, musisz pobrać i zainstalować agentów na każdym komputerze w środowisku lokalnym, który ma zostać oceniona. Ponadto w przypadku maszyn bez łączności internetowej musisz pobrać i zainstalować [bramy pakietu OMS](../log-analytics/log-analytics-oms-gateway.md) na nich.
+
 1. W **Przegląd**, kliknij przycisk **Zarządzaj** > **maszyn**i wybierz maszynę wymagane.
 2. W **zależności** kolumny, kliknij przycisk **agenci**.
 3. Na **zależności** strony, Pobierz i zainstaluj program Microsoft Monitoring Agent (MMA) i agenta zależności na każdej maszynie Wirtualnej, które ma zostać oceniona.

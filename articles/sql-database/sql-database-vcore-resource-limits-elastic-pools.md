@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: af9d34b0c3b59cbf012d16de27bb4c60a809f619
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 19693e394b0bd3a589ead25e2ddfa2fa88e92bad
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630965"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730383"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pul elastycznych
 
@@ -25,17 +25,17 @@ Oparte na jednostkach DTU limitów zakupu modelu zobacz [limity zasobów na pods
 > [!IMPORTANT]
 > W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).
 
-## <a name="elastic-pool-storage-sizes-and-performance-levels"></a>Elastyczna pula: magazyn o rozmiarze i poziomy wydajności
+## <a name="elastic-pool-storage-sizes-and-compute-sizes"></a>Elastyczna pula: magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych
 
-W przypadku pul elastycznych SQL Database w poniższej tabeli przedstawiono zasoby dostępne w poszczególnych usług warstwy i poziomu wydajności. Można ustawić warstwę usługi, poziom wydajności i wielkość magazynu przy użyciu [witryny Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), [wiersza polecenia platformy Azure](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), lub [interfejsu API REST](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
+W przypadku pul elastycznych SQL Database w poniższych tabelach wyświetlanie zasobów dostępnych w poszczególnych warstwach usług i obliczenia rozmiaru. Można ustawić warstwę usługi, rozmiar obliczeń i magazynu przy użyciu kwota [witryny Azure portal](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases), [PowerShell](sql-database-elastic-pool-manage.md#powershell-manage-elastic-pools-and-pooled-databases), [wiersza polecenia platformy Azure](sql-database-elastic-pool-manage.md#azure-cli-manage-elastic-pools-and-pooled-databases), lub [interfejsu API REST](sql-database-elastic-pool-manage.md#rest-api-manage-elastic-pools-and-pooled-databases).
 
 > [!NOTE]
-> Limity zasobów pojedynczych baz danych w pulach elastycznych zazwyczaj są takie same jak dla pojedynczych baz danych poza pule, które ma taki sam poziom wydajności. Na przykład maksymalna współbieżnych procesów roboczych dla bazy danych GP_Gen4_1 to 200 pracowników. Dlatego maksymalny współbieżnych procesów roboczych dla bazy danych w puli GP_Gen4_1 jest również 200 pracowników. Uwaga: łączna liczba współbieżnych procesów roboczych w puli GP_Gen4_1 to 210.
+> Limity zasobów pojedynczych baz danych w pulach elastycznych są ogólnie takie same jak dla pojedynczych baz danych poza pule, które ma taką samą obliczenia rozmiaru. Na przykład maksymalna współbieżnych procesów roboczych dla bazy danych GP_Gen4_1 to 200 pracowników. Dlatego maksymalny współbieżnych procesów roboczych dla bazy danych w puli GP_Gen4_1 jest również 200 pracowników. Uwaga: łączna liczba współbieżnych procesów roboczych w puli GP_Gen4_1 to 210.
 
 ### <a name="general-purpose-service-tier"></a>Warstwy usług w usłudze ogólnego przeznaczenia
 
 #### <a name="generation-4-compute-platform"></a>Platforma obliczeniowa generacja 4
-|Poziom wydajności|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24|
+|Obliczenia rozmiaru|GP_Gen4_1|GP_Gen4_2|GP_Gen4_4|GP_Gen4_8|GP_Gen4_16|GP_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
 |Rdzenie wirtualne|1|2|4|8|16|24|
@@ -59,7 +59,7 @@ W przypadku pul elastycznych SQL Database w poniższej tabeli przedstawiono zaso
 |||
 
 #### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa generowania 5
-|Poziom wydajności|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
+|Obliczenia rozmiaru|GP_Gen5_2|GP_Gen5_4|GP_Gen5_8|GP_Gen5_16|GP_Gen5_24|GP_Gen5_32|GP_Gen5_40|GP_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|5|
 |Rdzenie wirtualne|2|4|8|16|24|32|40|80|
@@ -85,7 +85,7 @@ W przypadku pul elastycznych SQL Database w poniższej tabeli przedstawiono zaso
 ### <a name="business-critical-service-tier"></a>Warstwy usług krytycznych biznesowych
 
 #### <a name="generation-4-compute-platform"></a>Platforma obliczeniowa generacja 4
-|Poziom wydajności|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
+|Obliczenia rozmiaru|BC_Gen4_1|BC_Gen4_2|BC_Gen4_4|BC_Gen4_8|BC_Gen4_16|BC_Gen4_24|
 |:--- | --: |--: |--: |--: |--: |--: |
 |Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
 |Rdzenie wirtualne|1|2|4|8|16|24|
@@ -100,7 +100,7 @@ W przypadku pul elastycznych SQL Database w poniższej tabeli przedstawiono zaso
 |We/Wy, czas oczekiwania (w przybliżeniu)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|1 – 2 ms (zapis)<br>1 – 2 ms (odczyt)|
 |Maksymalna liczba współbieżnych procesów roboczych (żądań)|210|420|840|1680|3360|5040|
 |Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
-|Maksymalna liczba baz danych na pulę|Nieobsługiwane|50|100|100|100|100|
+|Maksymalna liczba baz danych na pulę|Tylko jednej bazy danych są obsługiwane w przypadku tego rozmiaru obliczeń|50|100|100|100|100|
 |Min/max warianty pul elastycznych (rdzeń wirtualny) pozwalają na bazę danych|ND|0, 0,25, 0,5, 1, 2|0, 0.25, 0.5, 1, 2, 4|0, 0.25, 0.5, 1, 2, 4, 8|0, 0,25, 0,5, 1, 2, 4, 8, 16|0, 0,25, 0,5, 1, 2, 4, 8, 16, 24|
 |Liczba replik|3|3|3|3|3|3|
 |Multi-AZ|ND|ND|ND|ND|ND|ND|
@@ -109,7 +109,7 @@ W przypadku pul elastycznych SQL Database w poniższej tabeli przedstawiono zaso
 |||
 
 #### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa generowania 5
-|Poziom wydajności|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
+|Obliczenia rozmiaru|BC_Gen5_2|BC_Gen5_4|BC_Gen5_8|BC_Gen5_16|BC_Gen5_24|BC_Gen5_32|BC_Gen5_40|BC_Gen5_80|
 |:--- | --: |--: |--: |--: |--: |--: |--: |--: |
 |Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|5|
 |Rdzenie wirtualne|2|4|8|16|24|32|40|80|

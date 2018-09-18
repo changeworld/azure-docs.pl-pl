@@ -7,14 +7,14 @@ services: sql-database
 ms.service: sql-database
 ms.custom: monitor and tune
 ms.topic: conceptual
-ms.date: 04/01/2018
+ms.date: 09/14/2018
 ms.author: aamalvea
-ms.openlocfilehash: aec4ce2e4fb22872673c977816ffbe8616567885
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 43702de9f0da3b5b82c304cf9289768f7a8264fc
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718237"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732638"
 ---
 # <a name="use-azure-portal-to-create-alerts-for-azure-sql-database-and-data-warehouse"></a>Tworzenie alertów dla usługi Azure SQL Database i Data Warehouse za pomocą witryny Azure portal
 
@@ -108,7 +108,7 @@ Po utworzeniu alertu możesz wybrać go oraz:
 | magazyn danych SQL | connection_successful | Pomyślnie nawiązane połączenia | Łącznie | 10 minut |
 | magazyn danych SQL | connection_failed | Połączenia zakończone niepowodzeniem | Łącznie | 10 minut |
 | magazyn danych SQL | blocked_by_firewall | Blokowane przez zaporę | Łącznie | 10 minut |
-| magazyn danych SQL | service_level_objective | Cel poziomu usługi bazy danych | Łącznie | 10 minut |
+| magazyn danych SQL | service_level_objective | Warstwy usługi bazy danych | Łącznie | 10 minut |
 | magazyn danych SQL | dwu_limit | limit jednostek dwu | Maksimum | 10 minut |
 | magazyn danych SQL | dwu_consumption_percent | Procent jednostek DWU | Średnia | 10 minut |
 | magazyn danych SQL | dwu_used | Używane jednostki DWU | Średnia | 10 minut |

@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: adigan
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4839b1aaa56be1ad93fa1dd685ca3176d1cc8a27
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: c59653bf3709f7798fd92a44fa420b99f2cbc6b6
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42061725"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733576"
 ---
 # <a name="configure-azure-backup-reports"></a>Konfigurowanie raportów usługi Azure Backup
 Ten artykuł zawiera informacje o krokach można skonfigurować raportów dla usługi Azure Backup przy użyciu magazynu usługi Recovery Services i dostępu do tych raportów przy użyciu usługi Power BI. Po wykonaniu tych kroków, możesz bezpośrednio przejść do usługi Power BI, aby wyświetlić wszystkie raporty, dostosowywanie i tworzenie raportów. 
@@ -83,7 +83,7 @@ Po konfigurowania konta magazynu dla raportów przy użyciu magazynu usługi rec
 4. Wprowadź nazwę konta magazynu, które są skonfigurowane w kroku 5 powyżej, a następnie kliknij przycisk **dalej** przycisku.
 
     ![Podaj nazwę konta magazynu](./media/backup-azure-configure-reports/content-pack-storage-account-name.png)    
-5. Wprowadź klucz konta magazynu dla tego konta magazynu. Możesz [wyświetlanie i kopiowanie kluczy dostępu do magazynu](../storage/common/storage-create-storage-account.md#manage-your-storage-account) , przechodząc do swojego konta magazynu w witrynie Azure portal. 
+5. Wprowadź klucz konta magazynu dla tego konta magazynu. Możesz [wyświetlanie i kopiowanie kluczy dostępu do magazynu](../storage/common/storage-account-manage.md#access-keys) , przechodząc do swojego konta magazynu w witrynie Azure portal. 
 
      ![Wprowadź konto magazynu](./media/backup-azure-configure-reports/content-pack-storage-account-key.png) <br/>
      

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: eb6516400d362fe60adc05590353ec003c70e059
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 6e449c1216fabf64da2b2abb59a7066fa30e332d
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42055503"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982984"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Wykonanie elementu Runbook w usłudze Azure Automation
 
@@ -59,7 +59,7 @@ Możesz wyświetlić podsumowania stanu wszystkich zadań elementów runbook lub
 
 Po prawej stronie wybranego konta usługi Automation, zostanie wyświetlone podsumowanie wszystkich zadań elementów runbook dla wybranego konta usługi Automation w ramach **statystyki zadania** kafelka.
 
-![Kafelek statystyki zadania](./media/automation-runbook-execution/automation-account-job-status-summary.png).
+![Kafelek statystyki zadania](./media/automation-runbook-execution/automation-account-job-status-summary.png)
 
 Ten Kafelek zawiera liczbę oraz graficzną reprezentację stanu zadania dla wszystkich zadań wykonywanych.
 

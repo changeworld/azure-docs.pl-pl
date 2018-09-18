@@ -1,6 +1,6 @@
 ---
-title: Uzyskaj pomoc techniczną dla usługi Azure AD | Dokumentacja firmy Microsoft
-description: Jak uzyskać pomoc techniczną dotyczącą usługi Azure Active Directory
+title: Jak uzyskać pomoc techniczną dotyczącą usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak uzyskać pomoc techniczną dotyczącą usługi Azure Active Directory.
 services: active-directory
 documentationcenter: na
 author: eross-msft
@@ -14,16 +14,14 @@ ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 72212d2d47ff0290ee541c1ffeab6d73dbf3185d
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: d7d499ed43ee2eab03e46e408104eca4af6a2945
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35942742"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729398"
 ---
-# <a name="how-to-get-support-for-azure-active-directory"></a>Jak uzyskać pomoc techniczną dotyczącą usługi Azure Active Directory
-
-
+# <a name="how-to-get-support-for-azure-active-directory"></a>Porady: uzyskiwanie pomocy technicznej usługi Azure Active Directory
 Firma Microsoft zapewnia globalne technicznych, przedsprzedaży, rozliczeń i pomoc techniczna dla subskrypcji usługi Azure Active Directory (Azure AD). Obsługa jest dostępna online i telefonicznie w przypadku Microsoft Azure płatnych subskrypcji i wersji próbnej. Telefoniczna pomoc techniczna i online pomocy technicznej dotyczącej rozliczeń są dostępne w dodatkowych językach. 
 
 ## <a name="find-help-without-opening-a-support-ticket"></a>Uzyskiwanie pomocy bez konieczności otwierania biletu pomocy technicznej

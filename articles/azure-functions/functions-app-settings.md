@@ -8,14 +8,14 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 08/22/2018
+ms.date: 09/16/2018
 ms.author: glenga
-ms.openlocfilehash: 9f6746f1bf8fb65e39933afa00b74a2b8266a1a9
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: f7299b9193c5ab24431feb9c73a0a3cf97596da3
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095440"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734945"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Dokumentacja ustawień aplikacji dla usługi Azure Functions
 
@@ -152,18 +152,15 @@ Wartością domyślną jest "6.5.0".
 |---|------------|
 |WITRYNY SIECI WEB\_WĘZŁA\_DEFAULT_VERSION|6.5.0|
 
-## <a name="websiterunfromzip"></a>WITRYNY SIECI WEB\_URUCHOM\_FROM\_ZIP
+## <a name="websiterunfrompackage"></a>WITRYNY SIECI WEB\_URUCHOM\_FROM\_PAKIETU
 
 Umożliwia aplikacji funkcji do uruchamiania z pliku zainstalowanego pakietu.
 
-> [!NOTE]
-> To ustawienie dotyczy funkcja w wersji zapoznawczej.
-
 |Klucz|Wartość przykładowa|
 |---|------------|
-|WITRYNY SIECI WEB\_URUCHOM\_FROM\_ZIP|1|
+|WITRYNY SIECI WEB\_URUCHOM\_FROM\_PAKIETU|1|
 
-Prawidłowe wartości to URL, który jest rozpoznawany jako lokalizacja pliku wdrożenia pakietu lub `1`. Po ustawieniu `1`, pakiet musi znajdować się w `d:\home\data\SitePackages` folderu. Korzystając z pliku zip wdrożenia to ustawienie, pakiet jest automatycznie przekazywana do tej lokalizacji.  Aby uzyskać więcej informacji, zobacz [uruchamiać swoje funkcje na podstawie pliku pakietu](run-functions-from-deployment-package.md).
+Prawidłowe wartości to URL, który jest rozpoznawany jako lokalizacja pliku wdrożenia pakietu lub `1`. Po ustawieniu `1`, pakiet musi znajdować się w `d:\home\data\SitePackages` folderu. Korzystając z pliku zip wdrożenia to ustawienie, pakiet jest automatycznie przekazywana do tej lokalizacji. W wersji zapoznawczej, to ustawienie nosiła nazwę `WEBSITE_RUN_FROM_ZIP`. Aby uzyskać więcej informacji, zobacz [uruchamiać swoje funkcje na podstawie pliku pakietu](run-functions-from-deployment-package.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

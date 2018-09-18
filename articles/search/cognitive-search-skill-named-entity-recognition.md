@@ -1,6 +1,6 @@
 ---
-title: O nazwie rozpoznawanie jednostek wyszukiwania kognitywnych umiejętności (Azure Search) | Dokumentacja firmy Microsoft
-description: Wyodrębnij nazwane jednostki dla organizacji, lokalizacji i osoby z tekstu w potoku kognitywnych wyszukiwania usługi Azure Search.
+title: O nazwie rozpoznawanie jednostek wyszukiwania kognitywnego umiejętności (Azure Search) | Dokumentacja firmy Microsoft
+description: Wyodrębnij nazwane jednostek dla organizacji, lokalizacji i osoby z pliku tekstowego w potoku usługi Azure Search w usłudze wyszukiwania poznawczego.
 services: search
 manager: pablocas
 author: luiscabrer
@@ -10,47 +10,50 @@ ms.workload: search
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: luisca
-ms.openlocfilehash: 73ffcf5e2ced63fddaf0f5ef2ca7e72a7d94b966
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: 653a4675d546432eea8478ba6203be1df71ec4f4
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33791042"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731397"
 ---
-#    <a name="named-entity-recognition-cognitive-skill"></a>Nazwane umiejętności kognitywnych rozpoznawania jednostek
+#    <a name="named-entity-recognition-cognitive-skill"></a>Nazwane umiejętności cognitive rozpoznawanie jednostek
 
-**Rozpoznawanie jednostek o nazwie** umiejętności wyodrębnia nazwane jednostki w tekście. Dostępne jednostki obejmują `person`, `location`, i `organization`.
+**Rozpoznawania jednostki o nazwie** umiejętności wyodrębnia nazwane jednostek z pliku tekstowego. Dostępne jednostki i obejmuje dodatkowe typy `person`, `location`, i `organization`.
+
+> [!NOTE]
+> Wyszukiwanie poznawcze jest dostępne w publicznej wersji zapoznawczej. Wykonywanie zestawu umiejętności i wyodrębniania obrazu i normalizacji są obecnie oferowane bezpłatnie. W późniejszym czasie cen tych funkcji zostanie ogłoszona. 
 
 ## <a name="odatatype"></a>@odata.type  
 Microsoft.Skills.Text.NamedEntityRecognitionSkill
 
 ## <a name="skill-parameters"></a>Parametry kwalifikacji
 
-Parametry jest rozróżniana wielkość liter.
+Parametrów jest rozróżniana wielkość liter.
 
 | Nazwa parametru     | Opis |
 |--------------------|-------------|
-| kategorie    | Tablica kategorie, które należy wyodrębnić.  Typy możliwe kategorii: `"Person"`, `"Location"`, `"Organization"`. Jeśli podano bez kategorii, zwracane są wszystkie typy.|
-|defaultLanguageCode |  Kod języka wejściowego tekstu. Obsługiwane są następujące języki: `ar, cs, da, de, en, es, fi, fr, he, hu, it, ko, pt-br, pt`|
-| minimumPrecision  | Liczbą z zakresu od 0 do 1. Jeśli dokładność jest starsza niż ta wartość, nie są zwracane jednostki. Wartość domyślna to 0.|
+| kategorie    | Tablica kategorie, które mają zostać wyodrębnione.  Typy możliwe kategorii: `"Person"`, `"Location"`, `"Organization"`. Jeśli nie podano żadnej kategorii, zwracane są wszystkie typy.|
+|defaultLanguageCode |  Kod języka tekstu wejściowego. Są obsługiwane następujące języki: `ar, cs, da, de, en, es, fi, fr, he, hu, it, ko, pt-br, pt`|
+| minimumPrecision  | Liczba od 0 do 1. Jeśli dokładność jest niższa niż ta wartość, nie są zwracane jednostki. Wartość domyślna to 0.|
 
 ## <a name="skill-inputs"></a>Dane wejściowe umiejętności
 
 | Wprowadź nazwę      | Opis                   |
 |---------------|-------------------------------|
-| atrybutu languageCode  | Opcjonalny. Wartość domyślna to `"en"`.  |
-| Tekst          | Tekst do analizy.          |
+| languageCode  | Opcjonalny. Wartość domyślna to `"en"`.  |
+| tekst          | Tekst do przeanalizowania.          |
 
 ## <a name="skill-outputs"></a>Dane wyjściowe umiejętności
 
 | Nazwa wyjściowego     | Opis                   |
 |---------------|-------------------------------|
 | osoby      | Tablica ciągów, gdzie każdy ciąg reprezentuje imię osoby. |
-| Lokalizacje  | Tablica ciągów, gdzie każdy ciąg reprezentuje lokalizację. |
-| Organizacje  | Tablica ciągów, gdzie każdy ciąg reprezentuje organizacji. |
-| jednostki | Tablica typów złożonych. Każdy typ złożony zawiera następujące pola: <ul><li>Kategoria (`"person"`, `"organization"`, lub `"location"`)</li> <li>wartość (nazwa rzeczywista jednostki)</li><li>Przesunięcie (lokalizację, w którym zostało znalezione w tekście)</li><li>zaufania (wartość z zakresu od 0 do 1, która reprezentuje tego zaufania, wartość rzeczywista jednostki)</li></ul> |
+| lokalizacje  | Tablica ciągów, w którym każdy ciąg reprezentuje lokalizację. |
+| organizations  | Tablica ciągów, w której każdy ciąg reprezentuje organizacji. |
+| jednostki | Tablica typów złożonych. Każdy typ złożony zawiera następujące pola: <ul><li>Kategoria (`"person"`, `"organization"`, lub `"location"`)</li> <li>wartość (nazwa rzeczywistego jednostki)</li><li>Przesunięcie (lokalizację, w którym zostało znalezione w tekście)</li><li>zaufania (wartość z zakresu od 0 do 1, który reprezentuje tego zaufania, wartość rzeczywista jednostki)</li></ul> |
 
-##  <a name="sample-definition"></a>Przykład definicji
+##  <a name="sample-definition"></a>Przykładowa definicja
 
 ```json
   {
@@ -135,9 +138,9 @@ Parametry jest rozróżniana wielkość liter.
 
 
 ## <a name="error-cases"></a>W przypadku wystąpienia błędów
-Określ kod nieobsługiwany język lub jeśli zawartość nie jest zgodny język określony, zwracany jest błąd i są wyodrębniane żadnych jednostek.
+Jeśli określono nieobsługiwany język kodu lub jeśli zawartość nie jest zgodny język określony, błąd jest zwracany, a nie jednostki są wyodrębniane.
 
 ## <a name="see-also"></a>Zobacz także
 
 + [Wstępnie zdefiniowane umiejętności](cognitive-search-predefined-skills.md)
-+ [Sposób definiowania skillset](cognitive-search-defining-skillset.md)
++ [Jak Definiowanie zestawu umiejętności](cognitive-search-defining-skillset.md)

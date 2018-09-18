@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: 19e47e0dba1a89ea32f42ef0bafc26f8c59b4ad7
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 4defdabde19b2dcf7f9872fd6da1b63b0d244913
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288306"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983822"
 ---
 # <a name="how-to-distribute-data-globally-with-azure-cosmos-db"></a>Jak dystrybuować dane globalnie za pomocą usługi Azure Cosmos DB
 Platforma Azure jest powszechnie stosowana — jej zasięgu globalnym w regionach geograficznych ponad 50 i stale powiększający się. Za pomocą jego obecność jedną zróżnicowane możliwości, które platforma Azure oferuje deweloperom jest możliwość tworzenie, wdrażanie i łatwe zarządzanie globalnie rozproszonych aplikacji. 
@@ -28,7 +28,7 @@ Platforma Azure jest powszechnie stosowana — jej zasięgu globalnym w regionac
 
 Jak nauczyliśmy się podczas tworzenia usługi Azure Cosmos DB, dodawanie globalnej dystrybucji nie może być ekskluzywnym. Nie może być "skręcania jednokrotnego" na jego podstawie system bazy danych "w jednej lokacji". Możliwości oferowane przez globalnie rozproszonej bazy danych obejmują poza tradycyjnych awarii geograficznego odzyskiwania (Geo-DR) oferowane przez bazy danych "w jednej lokacji". Pojedyncza lokacja bazy danych oferuje możliwość Geo-DR to podzbiór globalnie rozproszonych baz danych. 
 
-Dzięki gotowej do użycia dystrybucję globalną usługi Azure Cosmos DB, deweloperzy nie muszą tworzyć własne szkieletu replikacji przez wprowadzenie albo wzorzec Lambda (na przykład [replikacji usługi DynamoDB AWS](https://github.com/awslabs/dynamodb-cross-region-library/blob/master/README.md)) za pośrednictwem dziennika bazy danych lub przez w wielu regionach, wykonywania operacji "double zapisu". Robimy *nie* zaleca się takiego podejścia, ponieważ nie jest możliwe sprawdzić ich poprawność takiego podejścia i podaj dźwięku umowy SLA. 
+Przy użyciu gotowej do użycia dystrybucję globalną usługi Azure Cosmos DB deweloperzy nie trzeba tworzyć własne szkieletu replikacji przez zastosowanie wzorca Lambda za pośrednictwem dziennika bazy danych lub wykonywania operacji "double zapisu" w wielu regionach. Robimy *nie* zaleca się takiego podejścia, ponieważ nie jest możliwe sprawdzić ich poprawność takiego podejścia i podaj dźwięku umowy SLA. 
 
 W tym artykule zawiera omówienie funkcji dystrybucję globalną usługi Azure Cosmos DB. Ponadto opisano podejście unikatowy usługi Azure Cosmos DB, by zapewnić kompleksowe umowy SLA. 
 

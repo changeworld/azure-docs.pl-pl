@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 807026d2de40de1b14d2eb1d9eeb9da0aade4ad7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 0b0ddedde49208a85628cdfc226f870a32ff7170
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297761"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985868"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -218,7 +218,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Service Fabric
 * Usługa Service Fabric siatki
 * Usługa SignalR
-* Magazyn
+* Nie można przenieść magazyn — konta magazynu w różnych regionach, w tej samej operacji. Zamiast tego należy użyć oddzielnych operacji dla każdego regionu.
 * Magazyn (klasyczny) — zobacz [ograniczenia wdrożenia klasycznego](#classic-deployment-limitations)
 * Stream Analytics — Stream Analytics, zadania nie można przenieść uruchamianego w stanie.
 * Bazy danych programu SQL server — bazy danych i serwera musi znajdować się w tej samej grupie zasobów. Gdy przesuniesz programu SQL server, jego baz danych są również przenoszone. To zachowanie ma zastosowanie do baz danych Azure SQL Database i Azure SQL Data Warehouse.

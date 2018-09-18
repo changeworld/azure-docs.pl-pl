@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/10/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 5e729c2e3a802df15973fc6a43ee42265d1de654
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: f387c1afe88f2bba476309b2e2e01942d2b7ae5b
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44164746"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45982629"
 ---
 # <a name="setting-up-smt-server-for-suse-linux"></a>Konfigurowanie serwera SMT w systemie SUSE Linux
 Duże wystąpienia SAP HANA nie ma bezpośredniego połączenia z Internetem. Dlatego nie jest dość proste zarejestrować takiej jednostki u dostawcy systemu operacyjnego, a także pobieranie i stosowanie poprawek. Jeśli SUSE Linux jedno rozwiązanie może być Konfigurowanie serwera SMT w Maszynie wirtualnej platformy Azure. Maszyna wirtualna platformy Azure musi znajdować się w sieci wirtualnej platformy Azure, który jest podłączony do dużych wystąpień HANA. Za pomocą takiego serwera SMT jednostki dużych wystąpień HANA może zarejestrować, a następnie pobrania poprawek. 
@@ -33,11 +33,11 @@ Jako warunek wstępny do instalacji serwera SMT spełniającego zadania dla duż
 
 ## <a name="installation-of-smt-server-on-azure-vm"></a>Instalacja serwera SMT na maszynie Wirtualnej platformy Azure
 
-W tym kroku należy zainstalować serwer SMT w Maszynie wirtualnej platformy Azure. Pierwsza miara jest zalogować się do [Centrum klienta SUSE](https://scc.suse.com/)
+W tym kroku należy zainstalować serwer SMT w Maszynie wirtualnej platformy Azure. Pierwsza miara jest zalogować się do [Centrum klienta SUSE](https://scc.suse.com/).
 
 Ponieważ użytkownik jest zalogowany, przejdź do organizacji--> poświadczeń organizacji. Poświadczenia, które są niezbędne do skonfigurowania serwera SMT powinien znajdować się w tej sekcji.
 
-Trzecim krokiem jest instalacji maszyny Wirtualnej z systemem SUSE Linux w sieci wirtualnej platformy Azure. Aby wdrożyć maszynę Wirtualną, należy podjąć w systemie SLES 12 z dodatkiem SP2 obrazu z galerii platformy Azure. W procesie wdrożenia nie należy zdefiniować nazwę DNS i nie używać statycznych adresów IP, jak pokazano w tym zrzucie ekranu
+Trzecim krokiem jest instalacji maszyny Wirtualnej z systemem SUSE Linux w sieci wirtualnej platformy Azure. Aby wdrożyć maszynę Wirtualną, należy podjąć wyświetlania obrazu z galerii w systemie SLES 12 z dodatkiem SP2 (Wybierz obraz BYOS SUSE) platformy Azure. W procesie wdrożenia nie należy zdefiniować nazwę DNS i nie używać statycznych adresów IP, jak pokazano w tym zrzucie ekranu
 
 ![Wdrażanie maszyny wirtualnej dla serwera SMT](./media/hana-installation/image3_vm_deployment.png)
 
@@ -56,7 +56,28 @@ echo "export NCURSES_NO_UTF8_ACS=1" >> .bashrc
 
 Po wykonaniu tych poleceń, uruchom ponownie usługi powłokę bash w celu aktywowania ustawienia. Następnie uruchom YAST.
 
-W YAST przejdź do obsługi oprogramowania i wyszukaj smt. Wybierz smt, który automatycznie przełącza się yast2 smt, jak pokazano poniżej
+Połączenie z maszyną Wirtualną (smtserver) z lokacją SUSE.
+
+```
+smtserver:~ # SUSEConnect -r <registration code> -e s<email address> --url https://scc.suse.com
+Registered SLES_SAP 12.2 x86_64
+To server: https://scc.suse.com
+Using E-Mail: email address
+Successfully registered system.
+```
+
+Gdy maszyna wirtualna jest połączona z lokacją SUSE, należy zainstalować pakiety smt. Użyj następującego polecenia programu putty, aby zainstalować pakiety smt.
+
+```
+smtserver:~ # zypper in smt
+Refreshing service 'SUSE_Linux_Enterprise_Server_for_SAP_Applications_12_SP2_x86_64'.
+Loading repository data...
+Reading installed packages...
+Resolving package dependencies...
+```
+
+
+Aby zainstalować pakiety smt umożliwia także narzędzie YAST. W YAST przejdź do obsługi oprogramowania i wyszukaj smt. Wybierz smt, który automatycznie przełącza się yast2 smt, jak pokazano poniżej
 
 ![SMT w yast](./media/hana-installation/image5_smt_in_yast.PNG)
 

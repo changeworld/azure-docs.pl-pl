@@ -7,14 +7,14 @@ author: MladjoA
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 09/14/2018
 ms.author: mlandzic
-ms.openlocfilehash: 52fce1cf1acb5e084c629c9cad6486d6a599b4fd
-ms.sourcegitcommit: e0834ad0bad38f4fb007053a472bde918d69f6cb
+ms.openlocfilehash: a57e354651255e2d3ff723e978222d1a5a9fa002
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37435778"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733350"
 ---
 # <a name="azure-sql-database-elastic-query-overview-preview"></a>Omówienie zapytanie elastyczne w usłudze Azure SQL Database (wersja zapoznawcza)
 
@@ -28,7 +28,7 @@ Zapytania w bazach danych Azure SQL całkowicie w języka T-SQL. Zezwala na tylk
 
 ### <a name="available-on-standard-tier"></a>Dostępne w warstwie standardowa
 
-Elastyczne zapytanie jest obsługiwany w warstwie wydajności warstwy standardowa i Premium. Zobacz sekcję dotyczącą ograniczenia wersji zapoznawczej, poniżej na ograniczenia wydajności, które niższych warstwach wydajności.
+Elastyczne zapytanie jest obsługiwane w następujących warstwach usługi Standard i Premium. Zobacz sekcję dotyczącą ograniczenia wersji zapoznawczej, poniżej na ograniczenia wydajności, które w niższych warstwach usług.
 
 ### <a name="push-parameters-to-remote-databases"></a>Parametry wypychania do zdalnej bazy danych
 
@@ -101,7 +101,7 @@ Przy użyciu zapytania elastycznego do wykonywania zadań raportowania za pośre
 
 > [!NOTE]
 > Elastyczne zapytanie bazy danych (węzła głównego) może być oddzielnej bazy danych lub może być tej samej bazy danych, który jest hostem mapowania fragmentów.
-> Niezależnie od konfiguracji, możesz wybrać, upewnij się, że tej usługi i najwyższą warstwę wydajności tej bazy danych jest wystarczająco wysoka, aby obsłużyć oczekiwane żądania logowania/zapytań.
+> Niezależnie od konfiguracji, możesz wybrać, upewnij się, że warstwy usług i mocy obliczeniowej rozmiar tej bazy danych jest wystarczająco wysoka, aby obsłużyć oczekiwane żądania logowania/zapytań.
 
 Poniższe kroki należy skonfigurować zapytania elastycznej bazy danych na poziomie partycjonowania scenariusze, które wymagają dostępu do zestawu tabel znajdujących się na (zazwyczaj) kilka zdalnej bazy danych SQL:
 
@@ -133,7 +133,7 @@ Elastyczne zapytanie znajduje się na koszt baz danych Azure SQL Database. Nale�
 
 ## <a name="preview-limitations"></a>Ograniczenia wersji zapoznawczej
 
-* Uruchamianie pierwszego zapytania elastyczne może potrwać kilka minut w ramach warstwy wydajności warstwy standardowa. Ten czas jest niezbędne, aby załadować zapytania elastycznego funkcjonalności. poprawia wydajność ładowania z warstwy wyższej wydajności.
+* Uruchamianie pierwszego zapytania elastyczne może potrwać kilka minut na warstwie usługi standardowa. Ten czas jest niezbędne, aby załadować zapytania elastycznego funkcjonalności. poprawia wydajność ładowania z wyższej warstwy usług i rozmiarów wystąpień obliczeniowych.
 * Obsługa skryptów zewnętrznych źródeł danych lub tabele zewnętrzne z programu SSMS lub program SSDT nie jest jeszcze obsługiwana.
 * Import/Export dla bazy danych SQL nie obsługuje jeszcze zewnętrznych źródeł danych i tabel zewnętrznych. Jeśli musisz użyć usługi Import/Export, Porzuć te obiekty przed wyeksportowaniem, a następnie ponownie utwórz je po zaimportowaniu.
 * Zapytanie elastyczne aktualnie obsługuje tylko dostęp tylko do odczytu do tabel zewnętrznych. Można jednak, używając pełnej funkcjonalności języka T-SQL w bazie danych którym jest zdefiniowany w tabeli zewnętrznej. Może to być przydatne, np. zachować tymczasowych wyników, na przykład przy użyciu, lokalizację, wybierz OPCJĘ < column_list > w < local_table > lub Definiowanie procedur składowanych w bazie danych zapytania elastycznego, odwołując się do tabel zewnętrznych.

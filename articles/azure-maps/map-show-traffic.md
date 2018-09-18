@@ -3,22 +3,22 @@ title: Pokaż ruchu przy użyciu usługi Azure Maps | Dokumentacja firmy Microso
 description: Jak wyświetlać dane o ruchu na mapie kodu Javascript
 author: jingjing-z
 ms.author: jinzh
-ms.date: 05/07/2018
+ms.date: 09/14/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 2499822db587dbf47dccedf6039d0fb5823c58b5
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 6d5c721ab84c28bae9415dceeaa09fd12cc05824
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746082"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733026"
 ---
 # <a name="show-traffic-on-the-map"></a>Wyświetlanie ruchu na mapie
 
-W tym artykule przedstawiono sposób wyświetlania informacji o ruchu i zdarzeń na mapie. 
+W tym artykule przedstawiono sposób wyświetlania informacji o ruchu i zdarzeń na mapie.
 
 ## <a name="understand-the-code"></a>Zrozumienie kodu
 
@@ -31,12 +31,20 @@ Drugi blok kodu używa [setTraffic](https://docs.microsoft.com/javascript/api/az
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej na temat klasy i metody używane w tym artykule: 
-* [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-    * [setTraffic](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#settraffic)
+Dowiedz się więcej na temat klasy i metody używane w tym artykule:
 
-Aby uzyskać więcej przykładów kodu do dodania do map zobacz następujące artykuły: 
-* [Interakcja z mapą — zdarzenia myszy](./map-events.md)
-* [Tworzenie mapy dostępne](./map-accessibility.md)
+> [!div class="nextstepaction"]
+> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
 
-Zapoznaj się z naszym [kodu przykładowej strony](http://aka.ms/AzureMapsSamples) do scenariuszy mapowania.
+Zobacz następujące artykuły, aby wyświetlić przykłady pełnego kodu:
+
+> [!div class="nextstepaction"]
+> [Strona przykładowy kod](http://aka.ms/AzureMapsSamples)
+
+Zwiększyć komfort pracy użytkowników:
+
+> [!div class="nextstepaction"]
+> [Mapy interakcji ze zdarzeniami myszy](./map-events.md)
+
+> [!div class="nextstepaction"]
+> [Tworzenie mapy dostępne](./map-accessibility.md)

@@ -1,24 +1,24 @@
 ---
 title: Warstwy usługi SQL Database platformy Azure — jednostek DTU | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat warstw usług dla pojedynczej puli baz danych i do poziomów wydajności i rozmiaru magazynu.
+description: Więcej informacji na temat warstw usług dla pojedynczej puli baz danych i do rozmiarów wystąpień obliczeniowych i rozmiaru magazynu.
 services: sql-database
 author: sachinpMSFT
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 09/14/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: d0250d508ca6d21ee09c9402e10d2fdb025529ac
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 27e6e12efc28bb8ee1cdaa9ec62d7ca8c4c68f38
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42058262"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45729743"
 ---
-# <a name="choosing-a-dtu-based-service-tier-performance-level-and-storage-resources"></a>Wybieranie warstwy usług oparte na jednostkach DTU, poziom wydajności i zasobów magazynu 
+# <a name="choosing-a-dtu-based-service-tier-compute-size-and-storage-resources"></a>Wybieranie warstwy usług oparte na jednostkach DTU, obliczenia rozmiaru i zasobów magazynu 
 
-Warstwy usługi są zróżnicowane według szeroką gamę poziomów wydajności przy użyciu stałej ilość miejsca do magazynowania, ustalony okres przechowywania kopii zapasowych i stałej cenie. Wszystkie warstwy usługi oferują elastyczność zmiany poziomów wydajności bez przestojów. Pojedyncze bazy danych i pul elastycznych są rozliczane proporcjonalnie, godzinowo usługi warstwy i poziomu wydajności.
+Warstwy usługi są zróżnicowane według szeroką gamę rozmiarów wystąpień obliczeniowych o stałą ilość miejsca do magazynowania, ustalony okres przechowywania kopii zapasowych i stałej cenie. Wszystkie warstwy usługi oferują elastyczność zmiany rozmiarów wystąpień obliczeniowych bez przestojów. Pojedyncze bazy danych i pul elastycznych są rozliczane godzinowo na podstawie warstwy usługi i obliczeń rozmiaru.
 
 > [!IMPORTANT]
 > Wystąpienie zarządzane SQL Database, obecnie w publicznej wersji zapoznawczej nie obsługuje model zakupu jednostek DTU. Aby uzyskać więcej informacji, zobacz [wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance.md). 
@@ -40,7 +40,7 @@ Wybieranie warstwy usług zależy przede wszystkim ciągłości biznesowej, maga
 
 ## <a name="single-database-dtu-and-storage-limits"></a>Limity liczby jednostek DTU i magazynu pojedynczej bazy danych
 
-Poziomy wydajności są wyrażane jako liczba jednostek DTU (Database Transaction Unit) dla pojedynczych baz danych oraz jako liczba jednostek eDTU (elastic Database Transaction Unit) dla pul elastycznych. Aby uzyskać więcej informacji na temat jednostek Dtu i Edtu, zobacz [co to są jednostki Dtu i Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)?
+Obliczenia rozmiarów są wyrażone w jednostkach transakcji bazy danych (Dtu) dla pojedynczych baz danych i jednostek transakcji elastic Database (Edtu) dla pul elastycznych. Aby uzyskać więcej informacji na temat jednostek Dtu i Edtu, zobacz [co to są jednostki Dtu i Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus)?
 
 ||Podstawowa|Standardowa (Standard)|Premium|
 | :-- | --: | --: | --: | --: |
@@ -73,7 +73,7 @@ Poziomy wydajności są wyrażane jako liczba jednostek DTU (Database Transactio
 Właściwości fizyczne (procesor CPU, pamięć, we/wy) powiązanych z Każda miara jednostek DTU są kalibrowane testów porównawczych, która symuluje obciążenie bazy danych rzeczywistych.
 
 ### <a name="correlating-benchmark-results-to-real-world-database-performance"></a>Korelowanie wyników testów porównawczych wydajności bazy danych rzeczywistych
-Jest ważne dowiedzieć się, że wszystkie testy porównawcze są reprezentatywne ale wskazuje tylko. Stawki za transakcje osiągane przy użyciu aplikacji testu porównawczego nie będzie taka sama, jak te, które mogą być osiągnięte z innymi aplikacjami. Testu porównawczego składa się z kolekcją innej transakcji, które typy uruchamiać schemat zawierający szeroką gamę tabele i typy danych. Podczas testu porównawczego skorzysta z tego samego podstawowe operacje, które są wspólne dla wszystkich obciążeń OLTP, nie reprezentuje dowolnej klasy określonej bazy danych lub aplikacji. Cel testu porównawczego jest zapewnienie uzasadnione przewodnik względnej wydajności można oczekiwać podczas skalowania w górę lub w dół od poziomów wydajności bazy danych. W rzeczywistości bazy danych o różnych rozmiarach i złożoności, występują różne kombinacje obciążeń i będzie odpowiadać na różne sposoby. Na przykład aplikacji intensywnie korzystających z operacji We/Wy może wystąpić wcześniej progów we/wy lub aplikacji intensywnie korzystających z procesora CPU mogą występować limity procesora CPU, wcześniej. Nie ma żadnej gwarancji, które dowolnej określonej bazy danych będzie skalowane w taki sam sposób jak testów porównawczych, zgodnie z rosnącym obciążeniem.
+Jest ważne dowiedzieć się, że wszystkie testy porównawcze są reprezentatywne ale wskazuje tylko. Stawki za transakcje osiągane przy użyciu aplikacji testu porównawczego nie będzie taka sama, jak te, które mogą być osiągnięte z innymi aplikacjami. Testu porównawczego składa się z kolekcją innej transakcji, które typy uruchamiać schemat zawierający szeroką gamę tabele i typy danych. Podczas testu porównawczego skorzysta z tego samego podstawowe operacje, które są wspólne dla wszystkich obciążeń OLTP, nie reprezentuje dowolnej klasy określonej bazy danych lub aplikacji. Cel testu porównawczego jest zapewnienie uzasadnione przewodnik względnej wydajności bazy danych, która może być oczekiwany podczas skalowania w górę lub w dół od rozmiarów wystąpień obliczeniowych. W rzeczywistości bazy danych o różnych rozmiarach i złożoności, występują różne kombinacje obciążeń i będzie odpowiadać na różne sposoby. Na przykład aplikacji intensywnie korzystających z operacji We/Wy może wystąpić wcześniej progów we/wy lub aplikacji intensywnie korzystających z procesora CPU mogą występować limity procesora CPU, wcześniej. Nie ma żadnej gwarancji, które dowolnej określonej bazy danych będzie skalowane w taki sam sposób jak testów porównawczych, zgodnie z rosnącym obciążeniem.
 
 Testu wydajności i jego metody są opisane bardziej szczegółowo poniżej.
 
@@ -155,5 +155,5 @@ Kluczowe metryki w uruchomionym teście są przepływności i czasu odpowiedzi.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby uzyskać szczegółowe informacje o określonych poziomów wydajności i opcje rozmiaru magazynu jest dostępne dla pojedynczych baz danych, zobacz [limity zasobów na podstawie jednostek DTU bazy danych SQL dla pojedynczych baz danych](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-performance-levels).
-- Szczegółowe informacje na temat określonych poziomów wydajności i opcji rozmiaru magazynu, dostępne dla elastycznych pul, [limity zasobów na podstawie jednostek DTU bazy danych SQL](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-performance-levels).
+- Aby uzyskać szczegółowe informacje na temat określonych zasobów obliczeniowych, rozmiary i opcje rozmiaru magazynu jest dostępne dla pojedynczych baz danych, zobacz [limity zasobów na podstawie jednostek DTU bazy danych SQL dla pojedynczych baz danych](sql-database-dtu-resource-limits-single-databases.md#single-database-storage-sizes-and-compute-sizes).
+- Aby uzyskać szczegółowe informacje na temat określonych zasobów obliczeniowych, rozmiary i opcje rozmiaru magazynu jest dostępne dla pul elastycznych, zobacz [limity zasobów na podstawie jednostek DTU bazy danych SQL](sql-database-dtu-resource-limits-elastic-pools.md#elastic-pool-storage-sizes-and-compute-sizes).

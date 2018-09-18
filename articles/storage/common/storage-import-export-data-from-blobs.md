@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: a7456bedeb6bc870ad5d6892fe697fb2dfcd3bc1
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: a85fb6ce211e6089f67cb2e2f265fbda06a25b10
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39527808"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735096"
 ---
 # <a name="use-the-azure-importexport-service-to-export-data-from-azure-blob-storage"></a>Usługa Azure Import/Export umożliwia eksportowanie danych z usługi Azure Blob storage
 Ten artykuł zawiera instrukcje krok po kroku dotyczące sposobu używania usługi Azure Import/Export bezpiecznie eksportowania dużych ilości danych z usługi Azure Blob storage. Usługa wymaga dostarczaj puste dyski w centrach danych platformy Azure. Usługa eksportuje dane z konta magazynu na dyski i następnie jest dostarczany z stacje ponownie.
@@ -23,7 +23,7 @@ Ten artykuł zawiera instrukcje krok po kroku dotyczące sposobu używania usłu
 Przed przystąpieniem do tworzenia zadania eksportu transferować dane z usługi Azure Blob Storage, należy dokładnie przejrzyj i ukończ Poniższa lista wymagań wstępnych dla tej usługi. Musisz mieć:
 
 - Mieć aktywną subskrypcją platformy Azure, który może służyć do usługi Import/Export.
-- Ma co najmniej jedno konto usługi Azure Storage. Przejrzyj listę rzeczy, [obsługiwanych kont magazynu i typów magazynu dla usługi Import/Export](storage-import-export-requirements.md). Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [sposób tworzenia konta magazynu](storage-create-storage-account.md#create-a-storage-account).
+- Ma co najmniej jedno konto usługi Azure Storage. Przejrzyj listę rzeczy, [obsługiwanych kont magazynu i typów magazynu dla usługi Import/Export](storage-import-export-requirements.md). Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [sposób tworzenia konta magazynu](storage-quickstart-create-account.md).
 - Mieć odpowiednią liczbę dysków [obsługiwane typy](storage-import-export-requirements.md#supported-disks).
 - Mieć konto FedEx/DHL w sprawie.  
     - Konto musi być prawidłowy, powinny mieć salda i musi mieć możliwości wysyłki zwrotnej.

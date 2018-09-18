@@ -1,6 +1,6 @@
 ---
-title: Rozwiązanie Agent Health w usłudze OMS | Microsoft Docs
-description: Ten artykuł ma pomóc w zrozumieniu, jak używać tego rozwiązania do monitorowania kondycji Twoich agentów raportujących bezpośrednio do usługi OMS lub programu System Center Operations Manager.
+title: Rozwiązanie Agent Health na platformie Azure | Dokumentacja firmy Microsoft
+description: Ten artykuł ma na celu pomóc Ci zrozumieć, jak korzystać z tego rozwiązania do monitorowania kondycji Twoich agentów raportujących bezpośrednio do usługi Log Analytics lub System Center Operations Manager.
 services: operations-management-suite
 documentationcenter: ''
 author: MGoedtel
@@ -14,24 +14,24 @@ ms.devlang: na
 ms.topic: article
 ms.date: 03/19/2017
 ms.author: magoedte
-ms.openlocfilehash: 8a6275748c82fbb448a767af690121abbd1f669a
-ms.sourcegitcommit: 756f866be058a8223332d91c86139eb7edea80cc
+ms.openlocfilehash: f0737c6a6ff228b92a030242faf7f4d634bdd9f2
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/02/2018
-ms.locfileid: "37347096"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733192"
 ---
-#  <a name="agent-health-solution-in-oms"></a>Rozwiązanie Agent Health w usłudze OMS
-Rozwiązanie Agent Health w usłudze OMS pomaga zrozumieć, dla wszystkich agentów raportujących bezpośrednio do obszaru roboczego usługi OMS lub grupy zarządzania programu System Center Operations Manager połączonej z usługą OMS, które z nich nie odpowiadają, a które przesyłają dane operacyjne.  Można także śledzić liczbę wdrożonych agentów i ich geograficzne rozmieszczenie oraz wykonywać inne zapytania dające informacje na temat rozmieszczenia agentów wdrożonych na platformie Azure, w innych środowiskach w chmurze i lokalnie.    
+#  <a name="agent-health-solution-in-azure"></a>Rozwiązanie Agent Health na platformie Azure
+Rozwiązanie Agent Health na platformie Azure pomaga zrozumieć, dla wszystkich agentów raportujących do obszaru roboczego usługi Log Analytics lub System Center Operations Manager grupy zarządzania podłączone bezpośrednio do usługi Log Analytics, które są nie odpowiada i wysyłaniem operacyjne dane.  Można także śledzić liczbę wdrożonych agentów i ich geograficzne rozmieszczenie oraz wykonywać inne zapytania dające informacje na temat rozmieszczenia agentów wdrożonych na platformie Azure, w innych środowiskach w chmurze i lokalnie.    
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed wdrożeniem tego rozwiązania potwierdź, że masz aktualnie obsługiwanych [agentów systemu Windows](../log-analytics/log-analytics-windows-agent.md) raportujących do obszaru roboczego usługi OMS lub do [grupy zarządzania programu Operations Manager](../log-analytics/log-analytics-om-agents.md) zintegrowanej z Twoim obszarem roboczym usługi OMS.    
+Przed wdrożeniem tego rozwiązania, upewnij się, masz aktualnie obsługiwanych [agenci Windows](../log-analytics/log-analytics-windows-agent.md) raportowania do obszaru roboczego usługi Log Analytics lub serwerowi [grupy zarządzania programu Operations Manager](../log-analytics/log-analytics-om-agents.md) zintegrowana z usługą obszar roboczy.    
 
 ## <a name="solution-components"></a>Składniki rozwiązania
 To rozwiązanie składa się z następujących zasobów, które są dodawane do Twojego obszaru roboczego, i bezpośrednio połączonych agentów lub grupy zarządzania połączonej z programem Operations Manager.
 
 ### <a name="management-packs"></a>Pakiety administracyjne
-Jeśli grupa zarządzania programu System Center Operations Manager jest połączona z obszarem roboczym usługi OMS, to następujące pakiety administracyjne są instalowane w programie Operations Manager.  Te pakiety administracyjne są również instalowane na bezpośrednio połączonych komputerach z systemem Windows po dodaniu tego rozwiązania. W przypadku tych pakietów administracyjnych nie trzeba niczego konfigurować ani niczym zarządzać.
+Jeśli grupa zarządzania programu System Center Operations Manager jest połączona z obszarem roboczym usługi Log Analytics, następujące pakiety administracyjne są instalowane w programie Operations Manager.  Te pakiety administracyjne są również instalowane na bezpośrednio połączonych komputerach z systemem Windows po dodaniu tego rozwiązania. W przypadku tych pakietów administracyjnych nie trzeba niczego konfigurować ani niczym zarządzać.
 
 * Microsoft System Center Advisor HealthAssessment Direct Channel Intelligence Pack  (Microsoft.IntelligencePacks.HealthAssessmentDirect)
 * Microsoft System Center Advisor HealthAssessment Server Channel Intelligence Pack (Microsoft.IntelligencePacks.HealthAssessmentViaServer).  
@@ -39,7 +39,7 @@ Jeśli grupa zarządzania programu System Center Operations Manager jest połąc
 Aby uzyskać więcej informacji na temat aktualizowania pakietów administracyjnych rozwiązania, zobacz artykuł [Connect Operations Manager to Log Analytics](../log-analytics/log-analytics-om-agents.md) (Połączenie programu Operations Manager z usługą Log Analytics).
 
 ## <a name="configuration"></a>Konfigurowanie
-Dodaj rozwiązanie Agent Health do swojego obszaru roboczego usługi OMS za pomocą procesu opisanego w temacie [Dodawanie rozwiązań](../log-analytics/log-analytics-add-solutions.md). Nie są wymagane żadne dalsze czynności konfiguracyjne.
+Dodaj rozwiązanie Agent Health do swojego obszaru roboczego usługi Log Analytics, za pomocą procesu opisanego w [Dodawanie rozwiązań](../log-analytics/log-analytics-add-solutions.md). Nie są wymagane żadne dalsze czynności konfiguracyjne.
 
 
 ## <a name="data-collection"></a>Zbieranie danych
@@ -52,7 +52,7 @@ W poniższej tabeli opisano połączone źródła, które obsługuje to rozwiąz
 | Grupa zarządzania programu System Center Operations Manager | Yes | Zdarzenia pulsu są zbierane z agentów raportujących do grupy zarządzania co 60 sekund, a następnie przekazywane do usługi Log Analytics. Bezpośrednie połączenie agenta programu Operations Manager z usługą Log Analytics nie jest wymagane. Dane zdarzeń pulsu są przekazywane z grupy zarządzania do repozytorium usługi Log Analytics.|
 
 ## <a name="using-the-solution"></a>Użycie rozwiązania
-Po dodaniu rozwiązania do obszaru roboczego usługi OMS na pulpicie nawigacyjnym usługi OMS pojawi się kafelek **Agent Health**. Ten kafelek pokazuje całkowitą liczbę agentów oraz liczbę nieodpowiadających agentów w ciągu ostatnich 24 godzin.<br><br> ![Kafelek rozwiązania Agent Health na pulpicie nawigacyjnym](./media/monitoring-solution-agenthealth/agenthealth-solution-tile-homepage.png)
+Po dodaniu rozwiązania do obszaru roboczego usługi Log Analytics, **Agent Health** zostanie dodany Kafelek do pulpitu nawigacyjnego. Ten kafelek pokazuje całkowitą liczbę agentów oraz liczbę nieodpowiadających agentów w ciągu ostatnich 24 godzin.<br><br> ![Kafelek rozwiązania Agent Health na pulpicie nawigacyjnym](./media/monitoring-solution-agenthealth/agenthealth-solution-tile-homepage.png)
 
 Kliknij kafelek **Agent Health**, aby otworzyć pulpit nawigacyjny rozwiązania **Agent Health**.  Na pulpicie nawigacyjnym znajdują się kolumny wymienione w poniższej tabeli. Każda kolumna zawiera listę dziesięciu najważniejszych zdarzeń według liczby odpowiadającej kryteriom tej kolumny dla określonego zakresu czasu. Możesz uruchomić przeszukiwanie rejestru zwracające pełną listę, wybierając pozycję **Zobacz wszystko** w prawej dolnej części kolumny lub klikając kolumnę nagłówka.
 
@@ -65,12 +65,12 @@ Kliknij kafelek **Agent Health**, aby otworzyć pulpit nawigacyjny rozwiązania 
 | Rozkład według kategorii agenta | Rozkład różnych kategorii agentów wysyłających zdarzenia pulsu: bezpośredni agenci, agenci programu OpsMgr i serwer zarządzania programu OpsMgr.|
 | Rozkład według grupy zarządzania | Rozkład różnych grup zarządzania SCOM w Twoim środowisku.|
 | Lokalizacja geograficzna agentów | Rozkład różnych krajów, w których masz agentów, i łączna liczba agentów zainstalowanych w każdym kraju.|
-| Liczba zainstalowanych bram | Liczba serwerów, które mają zainstalowaną bramę usługi OMS, oraz lista tych serwerów.|
+| Liczba zainstalowanych bram | Liczba serwerów, które mają zainstalowanej bramy analizy dziennika, a lista tych serwerów.|
 
 ![Przykład pulpitu nawigacyjnego rozwiązania Agent Health](./media/monitoring-solution-agenthealth/agenthealth-solution-dashboard.png)  
 
 ## <a name="log-analytics-records"></a>Rekordy usługi Log Analytics
-Rozwiązanie tworzy jeden typ rekordu w repozytorium usługi OMS.  
+Rozwiązanie tworzy jeden typ rekordu, w obszarze roboczym usługi Log Analytics.  
 
 ### <a name="heartbeat-records"></a>Rekordy Heartbeat
 Tworzony jest rekord o typie **Heartbeat**.  Te rekordy mają właściwości podane w poniższej tabeli.  
@@ -83,9 +83,9 @@ Tworzony jest rekord o typie **Heartbeat**.  Te rekordy mają właściwości pod
 | OSType | System operacyjny Windows lub Linux.|
 | OSMajorVersion | Wersja główna systemu operacyjnego.|
 | OSMinorVersion | Wersja pomocnicza systemu operacyjnego.|
-| Wersja | Wersja agenta pakietu OMS lub agenta programu Operations Manager.|
+| Wersja | Wersja agenta programu log Analytics lub agenta programu Operations Manager.|
 | SCAgentChannel | Wartością jest *Direct* i/lub *SCManagementServer*.|
-| IsGatewayInstalled | Jeśli zainstalowana jest brama usługi OMS, wartością jest *true*; w przeciwnym razem wartością jest *false*.|
+| IsGatewayInstalled | Jeśli jest zainstalowana brama usługi Log Analytics, wartość jest *true*, w przeciwnym razie wartość jest *false*.|
 | ComputerIP | Adres IP komputera.|
 | RemoteIPCountry | Lokalizacja geograficzna, w której wdrożony jest komputer.|
 | ManagementGroupName | Nazwa grupy zarządzania programu Operations Manager.|
@@ -93,7 +93,7 @@ Tworzony jest rekord o typie **Heartbeat**.  Te rekordy mają właściwości pod
 | RemoteIPLongitude | Długość geograficzna lokalizacji geograficznej komputera.|
 | RemoteIPLatitude | Szerokość geograficzna lokalizacji geograficznej komputera.|
 
-Każdy agent raportujący do serwera zarządzania programu Operations Manager będzie wysyłać dwa pulsy, a wartość właściwości SCAgentChannel będzie obejmować obie wartości, **Direct** i **SCManagementServer**, zależnie od tego, które źródła danych usługi Log Analytics i rozwiązania zostały włączone w subskrypcji usługi OMS. Zapewne pamiętasz, że dane z rozwiązań są albo przesyłane bezpośrednio z serwera zarządzania programu Operations Manager do usługi internetowej OMS, albo, ze względu na ilość danych zgromadzonych na agencie, wysyłane bezpośrednio z agenta do usługi internetowej OMS. W przypadku zdarzeń pulsu, które mają wartość **SCManagementServer**, wartość ComputerIP jest adresem IP serwera zarządzania, ponieważ dane są faktycznie przekazywane przez niego.  W przypadku pulsów z parametrem SCAgentChannel ustawionym na wartość **Direct** jest to publiczny adres IP agenta.  
+Każdy agent raportujący do serwera zarządzania programu Operations Manager będzie wysyłać dwa pulsy, a wartość właściwości SCAgentChannel będzie obejmować obie **bezpośredniego** i **SCManagementServer** zależności od tego, jakie dziennika Analiza źródła danych i rozwiązania, które zostały włączone w Twojej subskrypcji. Jeżeli pamiętasz, dane z rozwiązań są albo przesyłane bezpośrednio z serwera zarządzania programu Operations Manager do usługi Log Analytics lub ze względu na ilość danych zgromadzonych na agencie, wysyłane bezpośrednio z agenta do usługi Log Analytics. W przypadku zdarzeń pulsu, które mają wartość **SCManagementServer**, wartość ComputerIP jest adresem IP serwera zarządzania, ponieważ dane są faktycznie przekazywane przez niego.  W przypadku pulsów z parametrem SCAgentChannel ustawionym na wartość **Direct** jest to publiczny adres IP agenta.  
 
 ## <a name="sample-log-searches"></a>Przykładowe wyszukiwania dzienników
 Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla rekordów zbieranych przez to rozwiązanie.
@@ -111,11 +111,11 @@ Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla rekordów zbi
 | Heartbeat &#124; summarize AggregatedValue = count() by Category |Rozkład według kategorii agenta |
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by ManagementGroupName | Rozkład według grupy zarządzania |
 | Heartbeat &#124; summarize AggregatedValue = dcount(Computer) by RemoteIPCountry |Lokalizacja geograficzna agentów |
-| Heartbeat &#124; where iff(isnotnull(toint(IsGatewayInstalled)), IsGatewayInstalled == true, IsGatewayInstalled == "true") == true &#124; distinct Computer |Liczba zainstalowanych bram usługi OMS |
+| Heartbeat &#124; where iff(isnotnull(toint(IsGatewayInstalled)), IsGatewayInstalled == true, IsGatewayInstalled == "true") == true &#124; distinct Computer |Liczba zainstalowanych bram analizy dzienników |
 
 
 
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 * Dowiedz się więcej na temat [alertów w usłudze Log Analytics](../log-analytics/log-analytics-alerts.md), aby poznać szczegóły generowania alertów z usługi Log Analytics.

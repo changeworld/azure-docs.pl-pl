@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 08/01/2018
+ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: 3ba1f7a5759f037ce4bcfafcef40d0b247692f58
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 57e83376747b9a3e2d30dec37d4a378a167580e5
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45577041"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733114"
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>Wybieranie opcji programu SQL Server w chmurze: usługa Azure SQL Database (PaaS) lub program SQL Server na maszynach wirtualnych Azure (IaaS)
 
@@ -89,7 +89,7 @@ Ograniczone fundusze są często podstawowym czynnikiem decydującym o wyborze s
 
 #### <a name="billing-and-licensing-basics"></a>Podstawowe informacje dotyczące rozliczeń i licencjonowania
 
-Obecnie **bazy danych SQL** jest oferowana jako usługa i jest dostępna w kilku warstwach usługi z różnych cen dla zasobów, z których wszystkie są naliczane godzinowo według stałej stawki ustalanej oparte na usługi warstwy i poziomu wydajności możesz wybrać. Wystąpienie zarządzane SQL Database możesz także dostarczyć własną licencję. Więcej informacji na temat przenoszenia własnej licencji można znaleźć w temacie [Przenośność licencji za pośrednictwem programu Software Assurance w systemie Azure](https://azure.microsoft.com/pricing/license-mobility/). Rozliczany jest również internetowy ruch wychodzący po zwykłych [stawkach transferu danych](https://azure.microsoft.com/pricing/details/data-transfers/). Można dynamicznie zmieniać warstwy usług i poziomy wydajności odpowiednio do potrzeb przepływności zależeć od Twojej aplikacji. Aby uzyskać najnowsze informacje dotyczące bieżących obsługiwanych warstw usług można wyświetlić [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md). Można również utworzyć [pul elastycznych](sql-database-elastic-pool.md) współużytkowanie zasobów między wystąpieniami bazy danych do zmniejszenia kosztów i obsłużyć obciążenie nagłego zapotrzebowania.
+Obecnie **bazy danych SQL** jest oferowana jako usługa i jest dostępna w kilku warstwach usług z cenami różnych zasobów, z których wszystkie są naliczane godzinowo według stałej stawki ustalanej na podstawie warstwy usługi i wybranego rozmiaru obliczeń. Wystąpienie zarządzane SQL Database możesz także dostarczyć własną licencję. Więcej informacji na temat przenoszenia własnej licencji można znaleźć w temacie [Przenośność licencji za pośrednictwem programu Software Assurance w systemie Azure](https://azure.microsoft.com/pricing/license-mobility/). Rozliczany jest również internetowy ruch wychodzący po zwykłych [stawkach transferu danych](https://azure.microsoft.com/pricing/details/data-transfers/). Możesz dynamicznie dostosować warstwy usług i obliczenia rozmiarów odpowiednio do potrzeb przepływności zależeć od Twojej aplikacji. Aby uzyskać najnowsze informacje dotyczące bieżących obsługiwanych warstw usług można wyświetlić [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md). Można również utworzyć [pul elastycznych](sql-database-elastic-pool.md) współużytkowanie zasobów między wystąpieniami bazy danych do zmniejszenia kosztów i obsłużyć obciążenie nagłego zapotrzebowania.
 
 W przypadku usługi **SQL Database** oprogramowanie bazy danych jest automatycznie konfigurowane, poprawiane i uaktualniane przez firmę Microsoft, co obniża koszty administracyjne. Ponadto [wbudowana funkcja tworzenia kopii zapasowych](sql-database-automated-backups.md) pozwala osiągnąć znaczne oszczędności kosztów, zwłaszcza w przypadku dużej liczby baz danych. 
 

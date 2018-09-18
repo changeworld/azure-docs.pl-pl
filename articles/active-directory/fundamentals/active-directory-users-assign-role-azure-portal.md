@@ -1,6 +1,6 @@
 ---
 title: Jak przypisać role w katalogach użytkowników za pomocą usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Jak przypisać role w katalogach użytkowników za pomocą usługi Azure Active Directory.
+description: Dowiedz się, jak przypisać role w katalogach użytkowników za pomocą usługi Azure Active Directory.
 services: active-directory
 author: eross-msft
 manager: mtillman
@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 09/06/2018
 ms.author: lizross
 ms.reviewer: jeffsta
-ms.openlocfilehash: 02eb55509a3708517dff4c14640826a3a21f1df0
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b73df5ec0381e83c54c8cd9f8c0335448def0c6d
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603723"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733046"
 ---
 # <a name="how-to-assign-roles-and-administrators-to-users-with-azure-active-directory"></a>Porady: przypisuj role i Administratorzy użytkowników w usłudze Azure Active Directory
 Jeśli użytkownik w organizacji wymaga uprawnień do zarządzania zasobami usługi Azure Active Directory (Azure AD), należy przypisać użytkownika odpowiednią rolę w usłudze Azure AD oparty na czynności użytkownika wymaga uprawnień do wykonania.

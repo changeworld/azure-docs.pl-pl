@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: how-to
 ms.topic: conceptual
-ms.date: 08/15/2018
+ms.date: 09/14/2018
 ms.author: moslake
-ms.openlocfilehash: 498e83e7c312480af6d2eff7d44bd13aee9c55fd
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 09b7df861f65a5fb4b3c9727f61f73a0ff4e0d65
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42055008"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730244"
 ---
 # <a name="manage-file-space-in-azure-sql-database"></a>Zarządzanie przestrzenią pliku w usłudze Azure SQL Database
 W tym artykule opisano różne rodzaje miejsca do magazynowania w usłudze Azure SQL Database i czynności, które mogą być wykonywane, gdy przydzielone miejsce plików baz danych i pul elastycznych musi odbywać się jawnie.
@@ -27,7 +27,7 @@ W usłudze Azure SQL Database większość metryk miejsce magazynowania wyświet
 - T-SQL: [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)
 - T-SQL: [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)
 
-Brak wzorców obciążenia gdzie alokacji podstawowych plików danych dla baz danych może stać się większy niż ilość danych używanych stron.  Taka sytuacja może wystąpić, gdy miejsce używane zwiększa i dane są usuwane.  Jest to spowodowane pliku miejsce przydzielone nie jest automatycznie odzyskane po usunięciu danych.  W takich scenariuszach przydzielonego miejsca dla bazy danych lub puli może przekracza obsługiwany limit i zapobiec wzrostu ilości danych lub uniemożliwić zmiany warstwy wydajności i wymagają, zmniejszając pliki danych, aby uniknąć.
+Brak wzorców obciążenia gdzie alokacji podstawowych plików danych dla baz danych może stać się większy niż ilość danych używanych stron.  Taka sytuacja może wystąpić, gdy miejsce używane zwiększa i dane są usuwane.  Jest to spowodowane pliku miejsce przydzielone nie jest automatycznie odzyskane po usunięciu danych.  W takich scenariuszach przydzielonego miejsca dla bazy danych lub puli może przekracza obsługiwany limit i zapobiec wzrostu ilości danych lub uniemożliwić warstwy usług obliczeniowych zmiany rozmiaru i wymagają, zmniejszając pliki danych, aby uniknąć.
 
 Usługa SQL DB nie zmniejsza automatycznie plików danych, aby odzyskać nieużywane miejsce przydzielone z powodu potencjalnego wpływu na wydajność bazy danych.  Jednak klientów może spowodować zmniejszenie pliki danych za pomocą samoobsługowej w momencie ich wyboru, wykonując kroki opisane w [odzyskać nieużywane miejsca przydzielonego](#reclaim-unused-allocated-space). 
 

@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/10/2018
+ms.date: 09/17/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 912d4e1af3e1a4d07efddafa38bda5697b226787
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: cca9a12b0512ca502d143f4a88c959e1bfc4f90e
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44392276"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985885"
 ---
 # <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie
 
@@ -456,8 +456,8 @@ Oto przykład harmonogramu wyrażenia cron w/etc/crontab:
 ```
 00 1-23 * * * ./azure_hana_backup.pl hana hourlyhana 15min 46
 10 00 * * *  ./azure_hana_backup.pl hana dailyhana 15min 28
-00,05,10,15,20,25,30,35,40,45,50,55 * * * *  Perform SAP HANA transaction log backup
-22 12 * * *  ./azure_hana_backup.pl log dailylogback 3min 28
+00,05,10,15,20,25,30,35,40,45,50,55 * * * * ./azure_hana_backup.pl logs regularlogback 3min 28
+22 12 * * *  ./azure_hana_backup.pl logs dailylogback 3min 28
 30 00 * * *  ./azure_hana_backup.pl boot TypeI dailyboot 15min 28
 ```
 W poprzednim przykładzie, jest co godzinę migawki połączone, która obejmuje /hana/shared (obejmuje/usr/sap) i woluminów, które zawierają dane/hana/lokalizacji. Na użytek tego typu migawka szybsze odzyskiwanie w momencie w ciągu ostatnich dwóch dni. Ponadto istnieje dzienną migawkę codziennie na tych woluminach. Dlatego masz dwa dni obowiązywania przez godzinę migawki, a także cztery tygodnie pokrycia, dzienne migawki. Ponadto wolumin kopii zapasowej dziennika transakcji kopia zapasowa jest tworzona codziennie. Te kopie zapasowe są przechowywane także czterech tygodni. Jak widać w trzecim wierszu crontab kopii zapasowej dziennika transakcji HANA jest zaplanowane do wykonania co 5 minut. Godziny rozpoczęcia zadań różnych cron, które są wykonywane migawek magazynu są zróżnicowane, tak, aby te migawki nie są wykonywane w całości w pewnym momencie w czasie. 
@@ -466,8 +466,8 @@ W poniższym przykładzie możesz wykonać połączone migawkę, która obejmuje
 
 ```
 10 0-23 * * * ./azure_hana_backup.pl hana hourlyhana 15min 48
-0,5,10,15,20,25,30,35,40,45,50,55 * * * *  Perform SAP HANA transaction log backup
-2,7,12,17,22,27,32,37,42,47,52,57 * * * *  ./azure_hana_backup.pl log logback 3min 48
+0,5,10,15,20,25,30,35,40,45,50,55 * * * * ./azure_hana_backup.pl logs regularlogback 3min 28
+2,7,12,17,22,27,32,37,42,47,52,57 * * * *  ./azure_hana_backup.pl logs logback 3min 48
 30 00 * * *  ./azure_hana_backup.pl boot TypeII dailyboot 15min 28
 ```
 

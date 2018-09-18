@@ -1,21 +1,21 @@
 ---
-title: Generowanie miniatur
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Pojęcia dotyczące generowania miniatur obrazów przy użyciu przetwarzania obrazów w usługach Azure Cognitive Services.
+title: Generowanie miniatur — przetwarzanie obrazów
+titleSuffix: Azure Cognitive Services
+description: Pojęcia dotyczące generowania miniatur obrazów przy użyciu interfejsu API przetwarzania obrazów.
 services: cognitive-services
 author: deken
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: 92de0c0a428c9010188131a768074234241ed604
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: ff16fa4d30fb60e6b1376027a40242af23be04d1
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44725500"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985351"
 ---
 # <a name="generating-thumbnails"></a>Generowanie miniatur
 

@@ -1,35 +1,52 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: storage
+author: tamram
+ms.service: storage
+ms.topic: include
+ms.date: 09/15/2018
+ms.author: tamram
+ms.custom: include file
+ms.openlocfilehash: 634143f56bc9134f240ff42b7b5989605c8bffde
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45979303"
+---
 ## <a name="set-up-the-development-environment"></a>Konfigurowanie środowiska deweloperskiego
 
-Ta sekcja przeprowadzi Cię przez Konfigurowanie środowiska deweloperskiego. W tym tworzenie aplikacji ASP.NET MVC, dodawanie połączenia usług połączonych dodawania kontrolera i określanie dyrektywy wymaganej przestrzeni nazw.
+W tej sekcji przedstawiono konfigurowanie środowiska deweloperskiego. Obejmuje to tworzenie aplikacji ASP.NET MVC, dodawanie połączenia usług połączonych, Dodawanie kontrolera i określając dyrektywy wymaganej przestrzeni nazw.
 
-### <a name="create-an-aspnet-mvc-app-project"></a>Utwórz projekt aplikacji platformy ASP.NET MVC
+### <a name="create-an-aspnet-mvc-app-project"></a>Tworzenie projektu aplikacji platformy ASP.NET MVC
 
 1. Otwórz program Visual Studio.
 
-1. Wybierz z menu głównego **pliku** > **nowy** > **projektu**.
+1. W menu głównym wybierz **pliku** > **New** > **projektu**.
 
 1. W **nowy projekt** okno dialogowe, wybierz opcję **Web** > **aplikacji sieci Web platformy ASP.NET (.NET Framework)**. W **nazwa** określ **StorageAspNet**. Kliknij przycisk **OK**.
 
-    ![Okno dialogowe zrzut ekranu nowego projektu](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-1.png)
+    ![Zrzut ekranu nowego projektu, okno dialogowe](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-1.png)
 
-1. W **nowej aplikacji sieci Web ASP.NET** okno dialogowe, wybierz opcję **MVC**, a następnie wybierz **OK**.
+1. W **Nowa aplikacja internetowa ASP.NET** okno dialogowe, wybierz opcję **MVC**, a następnie wybierz pozycję **OK**.
 
-    ![Okno dialogowe zrzut ekranu z nowej aplikacji sieci Web ASP.NET](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-2.png)
+    ![Zrzut ekranu z nowej aplikacji sieci Web ASP.NET, okno dialogowe](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-2.png)
 
-### <a name="use-connected-services-to-connect-to-an-azure-storage-account"></a>Użyj podłączonych usług do łączenia się z kontem magazynu platformy Azure
+### <a name="use-connected-services-to-connect-to-an-azure-storage-account"></a>Nawiązywanie połączenia z konta usługi Azure storage za pomocą usług połączonych
 
 1. W **Eksploratora rozwiązań**, kliknij prawym przyciskiem myszy projekt.
 
-2. Wybierz z menu kontekstowego **Dodaj** > **podłączonej usługi**.
+2. Z menu kontekstowego wybierz **Dodaj** > **podłączoną usługę**.
 
-1. W **usług połączonych** okno dialogowe, wybierz opcję **magazynu w chmurze z usługą Azure Storage**.
+1. W **podłączone usługi** okno dialogowe, wybierz opcję **magazynu w chmurze z usługą Azure Storage**.
 
-    ![Zrzut ekranu połączona usług — okno dialogowe](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-3.png)
+    ![Zrzut ekranu z połączonych usług, okno dialogowe](./media/vs-storage-aspnet-getting-started-setup-dev-env/vs-storage-aspnet-getting-started-setup-dev-env-3.png)
 
-1. W **usługi Azure Storage** okno dialogowe, wybierz konto magazynu Azure do użycia na potrzeby tego samouczka. Aby utworzyć nowe konto magazynu platformy Azure, wybierz **Utwórz nowe konto magazynu**i wypełnij formularz. Po wybraniu istniejącego konta magazynu lub tworzenia nowej, wybierz **Dodaj**. Visual Studio instaluje pakiet NuGet dla usługi Azure Storage i parametry połączenia magazynu **Web.config**.
+1. W **usługi Azure Storage** okno dialogowe, wybierz opcję konta magazynu platformy Azure ma być używany na potrzeby tego samouczka. Aby utworzyć nowe konto magazynu platformy Azure, wybierz **Utwórz nowe konto magazynu**i wypełnij formularz. Po wybraniu istniejące konto magazynu lub tworząc nową, wybierz **Dodaj**. Program Visual Studio instaluje pakiet NuGet dla usługi Azure Storage i parametry połączenia magazynu w celu **Web.config**.
 
 > [!TIP]
-> Aby dowiedzieć się, jak utworzyć konto magazynu z [portalu Azure](https://portal.azure.com), zobacz [Utwórz konto magazynu](../articles/storage/common/storage-create-storage-account.md#create-a-storage-account).
+> Aby dowiedzieć się, jak utworzyć konto magazynu przy użyciu [witryny Azure portal](https://portal.azure.com), zobacz [Tworzenie konta magazynu](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account).
 >
-> Można również utworzyć konto magazynu przy użyciu [programu Azure PowerShell](../articles/storage/common/storage-powershell-guide-full.md), [interfejsu wiersza polecenia Azure](../articles/storage/common/storage-azure-cli.md), lub [powłoki chmury Azure](../articles/cloud-shell/overview.md).
+> Można również utworzyć konto magazynu przy użyciu [programu Azure PowerShell](../articles/storage/common/storage-powershell-guide-full.md), [wiersza polecenia platformy Azure](../articles/storage/common/storage-azure-cli.md), lub [usługi Azure Cloud Shell](../articles/cloud-shell/overview.md).
 

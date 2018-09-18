@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.author: shlo
 robots: noindex
-ms.openlocfilehash: 4c7dddcb5e39eb1f72fb59af753ab167bc44d3e3
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 2c00e42284783439b0a01f6ba6bab31be053b1c9
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056515"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45736414"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Wywoływanie programów platformy Spark z potoków usługi Azure Data Factory
 
@@ -109,7 +109,7 @@ W tym kroku opisano łączenie konta magazynu z fabryką danych. Zestaw danych, 
 
    ![AzureStorageLinkedService](./media/data-factory-build-your-first-pipeline-using-editor/azure-storage-linked-service.png)
 
-1. Zastąp **nazwa konta** i **klucz konta** przy użyciu nazwy i klucza dostępu konta magazynu. Aby dowiedzieć się, jak uzyskać klucz dostępu do magazynu, zapoznaj się z informacjami na temat sposobów wyświetlania, kopiowania i ponownego generowania kluczy dostępu do magazynu podanymi w sekcji [Zarządzanie kontem magazynu](../../storage/common/storage-create-storage-account.md#manage-your-storage-account).
+1. Zastąp **nazwa konta** i **klucz konta** przy użyciu nazwy i klucza dostępu konta magazynu. Aby dowiedzieć się, jak uzyskać klucz dostępu do magazynu, zapoznaj się z informacjami na temat sposobów wyświetlania, kopiowania i ponownego generowania kluczy dostępu do magazynu podanymi w sekcji [Zarządzanie kontem magazynu](../../storage/common/storage-account-manage.md#access-keys).
 
 1. Aby wdrożyć połączoną usługę, wybierz **Wdróż** na pasku poleceń. Po pomyślnym wdrożeniu połączonej usługi okno Wersja robocza-1 zniknie. W widoku drzewa po lewej stronie pojawi się wartość **AzureStorageLinkedService**.
 

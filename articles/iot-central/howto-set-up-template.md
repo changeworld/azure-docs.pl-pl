@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: dafa58c5356c89351ab0eb711e4095b767aee1ae
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1cff44e8430af0a544da948b33a15439fae56d8e
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44298170"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45735654"
 ---
 # <a name="set-up-a-device-template"></a>Konfigurowanie szablonu urządzenia
 
@@ -74,8 +74,6 @@ Na przykład można dodać nowej miary telemetrii temperatury:
 
 Po wybraniu **gotowe**, **temperatury** miary, który pojawia się na liście pomiarów. Operator widzą wizualizacji dane dotyczące temperatury, która gromadzi urządzenia.
 
-![Wykres miary](./media/howto-set-up-template/measurementsgraph.png)
-
 ### <a name="create-an-event-measurement"></a>Tworzenie miary zdarzeń
 Aby dodać nowe miary zdarzenia, wybierz **Edytuj szablon**, a następnie kliknij przycisk **+ nowej miary** przycisku. Wybierz **zdarzeń** jako wartość typu, a następnie wprowadź szczegóły **Utwórz zdarzenie** formularza.
 
@@ -89,7 +87,7 @@ Po wybraniu **gotowe**, **błąd Motor wentylator** miary, który pojawia się n
 
 ![Zdarzenie pomiarów wykresu](./media/howto-set-up-template/eventmeasurementschart.png)
 
-Aby wyświetlić więcej szczegółów na temat zdarzenia, wybierz ikonę zdarzeń na wykresie:
+Aby wyświetlić więcej szczegółów na temat zdarzenia, wybierz ikonę zdarzeń na wykresie.
 
 ![Szczegóły dotyczące zdarzeń "Wentylator Motor Error"](./media/howto-set-up-template/eventmeasurementsdetail.png)
 
@@ -108,9 +106,6 @@ Po wybraniu **gotowe**, **tryb wentylator** pomiaru stanu, który pojawia się n
 ![Wykres stanu pomiaru](./media/howto-set-up-template/statemeasurementschart.png)
 
 Jeśli urządzenie wysyła nadmiar punktów danych w małych czas trwania, pomiar stanu pojawia się z inną wizualizację, jak pokazano na poniższym zrzucie ekranu. Po kliknięciu na wykresie wszystkie punkty danych, w tym okresie są wyświetlane w porządku chronologicznym. Można również zawęzić zakres czasu, aby zobaczyć pomiaru wykreślić na wykresie.
-
-![Szczegóły dotyczące pomiaru stan "Statyczne wentylator tryb"](./media/howto-set-up-template/statemeasurementsdetail.png)
-
 
 ## <a name="settings"></a>Ustawienia
 
@@ -182,11 +177,7 @@ Właściwość location jako właściwość aplikacji można utworzyć za pomoc�
    - **Lokalizacja adresu**
    - **Lokalizacja jako współrzędne** 
 
-4. Wybierz **Zapisz** i **gotowe**. 
-
-   ![Właściwość lokalizacji przy użyciu adresu instalacji dodane](./media/howto-set-up-template/locationcloudproperty3.png)
-
-Teraz operator można zaktualizować wartości lokalizacji w postaci pole lokalizacji. 
+4. Wybierz **Zapisz** i **gotowe**. Teraz operator można zaktualizować wartości lokalizacji w postaci pole lokalizacji. 
 
 #### <a name="add-location-as-a-device-property"></a>Dodaj lokalizację jako właściwości urządzenia 
 
@@ -261,11 +252,7 @@ Jeśli skonfigurowano właściwość location wcześniej w [utworzyć właściwo
 
    ![Kafelek mapy z wybranej lokalizacji](./media/howto-set-up-template/locationcloudproperty6map.png) 
 
-Można zmienić rozmiar mapy rozmiarowi żądaną.
-
-Teraz gdy operator wyświetla pulpit nawigacyjny, mogą zobaczyć wszystkie Kafelki pulpitu nawigacyjnego, które zostały skonfigurowane, w tym mapę lokalizacji.
-
-![Kafelki na pulpicie nawigacyjnym](./media/howto-set-up-template/locationcloudproperty7map.png) 
+Można zmienić rozmiar mapy rozmiarowi żądaną. Teraz gdy operator wyświetla pulpit nawigacyjny, mogą zobaczyć wszystkie Kafelki pulpitu nawigacyjnego, które zostały skonfigurowane, w tym mapę lokalizacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

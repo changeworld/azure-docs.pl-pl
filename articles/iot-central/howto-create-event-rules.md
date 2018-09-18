@@ -8,14 +8,16 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 40c7b2865795f8c6a5cfbabe4d59aea1715d4a57
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 889f3928ee72c035035abb635eb71ec0b06a3b45
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42059631"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730164"
 ---
-# <a name="create-an-eevent-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Utwórz regułę eEvent i Konfigurowanie powiadomień w aplikacji usługi Azure IoT Central
+# <a name="create-an-event-rule-and-set-up-notifications-in-your-azure-iot-central-application"></a>Tworzenie reguły zdarzeń i Konfigurowanie powiadomień w aplikacji usługi Azure IoT Central
+
+*Ten artykuł dotyczy operatorów, konstruktorów i administratorów.*
 
 Usługa Azure IoT Central umożliwia zdalne monitorowanie połączonych urządzeń. Reguły usługi Azure IoT Central umożliwiają monitorowanie urządzeń w czasie zbliżonym do rzeczywistego i automatycznie wykonywanie akcji, takich jak wysłać wiadomość e-mail lub wyzwalacza Microsoft Flow. Za pomocą kilku kliknięć można określić warunek, który chcesz monitorować dane urządzenia i skonfiguruj odpowiednie działanie. W tym artykule opisano sposób tworzenia reguły, aby monitorować zdarzenia wysyłane przez urządzenie.
 
@@ -37,10 +39,10 @@ Aby utworzyć regułę zdarzeń, szablon urządzenia musi mieć co najmniej jedn
     ![Jeszcze żadnych reguł](media\howto-create-event-rules\Rules_Landing_Page.png)
 
 
-1. Na **reguły** kliknij pozycję **+ Nowa reguła** wyświetlić typy reguł, które można utworzyć.
+1. Na **reguły** kliknij pozycję **Edytuj szablon** i następnie **+ Nowa reguła** wyświetlić typy reguł, które można utworzyć.
 
 
-1. Kliknij pozycję **zdarzeń** Kafelek, aby utworzyć regułę.
+1. Kliknij pozycję **zdarzeń** Kafelek, aby utworzyć zdarzenia reguła monitorowania.
 
     ![Typy zasad](media\howto-create-event-rules\Rule_Types.png)
 
@@ -92,6 +94,8 @@ W tej sekcji pokazano, jak skonfigurować akcje do wykonania po wyzwoleniu regu�
    ![Konfigurowanie akcji](media\howto-create-event-rules\Configure_Action.png)
 
 1. Aby zapisać regułę, wybierz **Zapisz**. Reguła przechodzi na żywo w ciągu kilku minut i rozpoczyna monitorowanie zdarzeń wysyłanych do aplikacji. Gdy spełnia warunek określony w regule, zasada wyzwala akcji dotyczącej wiadomości e-mail skonfigurowany.
+
+1. Wybierz **gotowe** aby zakończyć działanie **Edytuj szablon** trybu.
 
 Możesz dodać inne akcje reguły, takie jak Microsoft Flow i elementów webhook. Możesz dodać maksymalnie 5 czynności dla każdej reguły.
 

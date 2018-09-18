@@ -1,23 +1,23 @@
 ---
-title: Możliwości wyodrębniania tekstu za pomocą oprogramowania OCR
-titleSuffix: Computer Vision - Cognitive Services - Azure
-description: Pojęcia związane z możliwości wyodrębniania tekstu za pomocą funkcji optycznego rozpoznawania znaków przy użyciu przetwarzania obrazów w usługach Azure Cognitive Services.
+title: Możliwości wyodrębniania tekstu za pomocą oprogramowania OCR - przetwarzania obrazów
+titleSuffix: Azure Cognitive Services
+description: Pojęcia związane z możliwości wyodrębniania tekstu za pomocą optycznego rozpoznawania znaków (OCR) przy użyciu interfejsu API przetwarzania obrazów.
 services: cognitive-services
 author: deken
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: computer-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/29/2018
 ms.author: v-deken
-ms.openlocfilehash: 07efe49c53b13094f3f67db3b3becb57a7c473d8
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: af88063a68cef4953da8357596ce64e4510e8d36
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44725545"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985460"
 ---
-# <a name="extracting-text-with-ocr"></a>Możliwości wyodrębniania tekstu za pomocą oprogramowania OCR
+# <a name="extracting-text-with-ocr"></a>Wyodrębnianie tekstu za pomocą technologii optycznego rozpoznawania znaków
 
 Technologia optycznego rozpoznawania znaków (OCR) w wizualizacji komputerowej wykrywa zawartość tekstową na obrazie i wyodrębnia zidentyfikowany tekst do strumienia znaków czytelnych. Wynik służy do wyszukiwania i wiele innych celów, takich jak dokumentacji medycznej, zabezpieczeniami i bankowością. Funkcja automatycznie wykrywa język. Optyczne rozpoznawanie znaków oszczędza czas i zapewnia wygodę dla użytkowników, umożliwiając im wykonywanie zdjęć tekstu zamiast przepisywania tekstu.
 

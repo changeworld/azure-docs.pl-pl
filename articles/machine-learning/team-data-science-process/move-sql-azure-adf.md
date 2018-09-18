@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/04/2017
 ms.author: deguhath
-ms.openlocfilehash: 5e5e8c3a81d911cb47edfcb5432bc423872a29ec
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: c0a488d34ffe2e5a8e8a3883276c1038039bc785
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42059635"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45731301"
 ---
 # <a name="move-data-from-an-on-premises-sql-server-to-sql-azure-with-azure-data-factory"></a>Przenoszenie danych z lokalnego programu SQL server do usługi SQL Azure z usługą Azure Data Factory
 W tym temacie pokazano, jak przenieść dane z bazy danych lokalnego programu SQL Server do usługi Azure SQL Database za pomocą usługi Azure Blob Storage przy użyciu usługi Azure Data Factory (ADF).
@@ -54,7 +54,7 @@ Skonfigurujemy potoku usługi ADF, który komponuje się dwa działania migracji
 W tym samouczku przyjęto założenie, że masz:
 
 * **Subskrypcji platformy Azure**. Jeśli nie masz subskrypcji, możesz zarejestrować się, aby uzyskać dostęp do [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/).
-* **Konta usługi Azure storage**. Używasz konta usługi Azure storage do przechowywania danych w ramach tego samouczka. Jeśli nie masz konta usługi Azure storage, zobacz [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md) artykułu. Po utworzeniu konta magazynu, należy uzyskać klucz konta, które umożliwiają dostęp do magazynu. Zobacz [zarządzanie kluczami dostępu do magazynu](../../storage/common/storage-create-storage-account.md#manage-your-storage-access-keys).
+* **Konta usługi Azure storage**. Używasz konta usługi Azure storage do przechowywania danych w ramach tego samouczka. Jeśli nie masz konta usługi Azure storage, zobacz [Tworzenie konta magazynu](../../storage/common/storage-quickstart-create-account.md) artykułu. Po utworzeniu konta magazynu, należy uzyskać klucz konta, które umożliwiają dostęp do magazynu. Zobacz [zarządzanie kluczami dostępu do magazynu](../../storage/common/storage-account-manage.md#access-keys).
 * Dostęp do **usługi Azure SQL Database**. Jeśli musisz skonfigurować usługi Azure SQL Database, temat [wprowadzenie do programu Microsoft Azure SQL Database ](../../sql-database/sql-database-get-started.md) zawiera informacje o udostępnienie nowego wystąpienia usługi Azure SQL Database.
 * Zainstalowany i skonfigurowany **programu Azure PowerShell** lokalnie. Aby uzyskać instrukcje, zobacz [jak zainstalować i skonfigurować program Azure PowerShell](/powershell/azure/overview).
 
@@ -86,7 +86,7 @@ Połączona usługa definiuje informacje wymagane przez usługę Azure Data Fact
 
 1. Na lokalnym serwerze SQL Server
 2. Azure Blob Storage
-3. Baza danych SQL Azure
+3. Baza danych Azure SQL Database
 
 Procedura krok po kroku dotyczące tworzenia połączonej usługi jest podawany jako [Tworzenie połączonych usług](../../data-factory/tutorial-hybrid-copy-portal.md#create-a-pipeline).
 

@@ -7,17 +7,17 @@ manager: craigg
 ms.service: sql-database
 ms.custom: migrate
 ms.topic: conceptual
-ms.date: 06/20/2018
+ms.date: 09/14/2018
 ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: data-movement
-ms.openlocfilehash: d82cc3ee1074e326c9e4dee7fd65e338cb95e19f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4b48f360c95170a36d1e79b075403d541c8b66ed
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722235"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983937"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nowe DBA w chmurze — zarządzania bazą danych w usłudze Azure SQL Database
 
@@ -36,9 +36,9 @@ W tym artykule omówiono niektóre z podstawowych cech bazy danych SQL Azure jak
 Możliwości odzyskiwania ciągłość działalności biznesowej i odzyskiwanie po awarii firm umożliwiają kontynuować swoją firmę w zwykły sposób, w razie awarii. Po awarii może być zdarzeń na poziomie bazy danych (na przykład ktoś przez pomyłkę spada kluczowym tabeli) lub centrum danych zdarzenia poziomu (katastrofy regionalnych, na przykład tsunami). 
 
 ### <a name="how-do-i-create-and-manage-backups-on-sql-database"></a>Jak utworzyć i zarządzanie kopiami zapasowymi w bazie danych SQL?
-Nie twórz kopie zapasowe w usłudze Azure SQL DB i to, ponieważ nie masz. SQL Database automatycznie tworzy kopie zapasowe baz danych, dzięki czemu możesz już nie muszą przejmować planowania, wykonywania i zarządzanie kopiami zapasowymi. Platforma przyjmuje pełna kopia zapasowa co tydzień, różnicowej kopii zapasowej co kilka godzin i dziennika kopii zapasowej co 5 minut, aby upewnić się, że odzyskiwanie po awarii jest wydajny i minimalne utrata danych. Pierwsza pełna kopia zapasowa odbywa się, jak utworzyć bazę danych. Te kopie zapasowe są udostępniane użytkownikowi przez pewien okres o nazwie "Okres przechowywania" i zależy od warstwy wydajności, którą wybierzesz.  SQL Database udostępnia możliwość przywracania do dowolnego punktu w czasie w ramach tego przechowywania okresu przy użyciu [punktu w czasie odzyskiwania (Odzyskiwanie)](sql-database-recovery-using-backups.md#point-in-time-restore).
+Nie twórz kopie zapasowe w usłudze Azure SQL DB i to, ponieważ nie masz. SQL Database automatycznie tworzy kopie zapasowe baz danych, dzięki czemu możesz już nie muszą przejmować planowania, wykonywania i zarządzanie kopiami zapasowymi. Platforma przyjmuje pełna kopia zapasowa co tydzień, różnicowej kopii zapasowej co kilka godzin i dziennika kopii zapasowej co 5 minut, aby upewnić się, że odzyskiwanie po awarii jest wydajny i minimalne utrata danych. Pierwsza pełna kopia zapasowa odbywa się, jak utworzyć bazę danych. Te kopie zapasowe są udostępniane użytkownikowi przez pewien okres o nazwie "Okres przechowywania" i zależy od warstwy usługi, którą wybierzesz. SQL Database udostępnia możliwość przywracania do dowolnego punktu w czasie w ramach tego przechowywania okresu przy użyciu [punktu w czasie odzyskiwania (Odzyskiwanie)](sql-database-recovery-using-backups.md#point-in-time-restore).
 
-|Warstwa wydajności|Czas przechowywania w dniach|
+|Warstwa usług|Czas przechowywania w dniach|
 |---|:---:|
 |Podstawowa|7|
 |Standardowa (Standard)|35|
@@ -202,7 +202,7 @@ W usłudze SQL Database można skorzystać z inteligentnego szczegółowe inform
 
    ![Monitorowanie — wykres 2](./media/sql-database-manage-after-migration/chart.png)
 
-Na podstawie tego wykresu można skonfigurować alerty przez zasób. Te alerty umożliwiają reagowanie na ilością zasobów za pomocą adresu e-mail, zapis do punktu końcowego HTTPS/HTTP lub wykonania akcji. Zobacz [monitorowanie wydajności bazy danych w bazie danych SQL](sql-database-single-database-monitor.md) szczegółowe informacje.
+Na podstawie tego wykresu można skonfigurować alerty przez zasób. Te alerty umożliwiają reagowanie na ilością zasobów za pomocą adresu e-mail, zapis do punktu końcowego HTTPS/HTTP lub wykonania akcji. Aby uzyskać więcej informacji, zobacz [tworzyć alerty](sql-database-insights-alerts-portal.md).
 
 - **Dynamicznych widoków zarządzania**: możesz zbadać [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dynamicznego widoku zarządzania do zwrócenia Historia statystyk użycia zasobów z ostatniej godziny i [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) widoku wykazu systemu do zwrócenia historii w ciągu ostatnich 14 dni.
 - **Szczegółowe informacje o wydajności zapytań**: [Query Performance Insight](sql-database-query-performance.md) pozwala wyświetlać historię, najpopularniejsze zapytania korzystające z zasobów i długotrwałe zapytania dla konkretnej bazy danych. Można szybko zidentyfikować NAJPOPULARNIEJSZE zapytania, wykorzystanie zasobów, czasu trwania i częstotliwości wykonywania. Można śledzić zapytań i wykrywać regresji. Ta funkcja wymaga [Query Store](/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) były włączone i aktywnej bazy danych.
@@ -218,21 +218,21 @@ Znacznie zyskują swoje podejście do rozwiązywania problemów z wydajnością 
 
 Za pomocą Rozwiązywanie problemów z wydajnością, jest ważne, aby ustalić, czy jest tylko aplikacja lub tworzenie jej kopii bazy danych, która ma wpływ na wydajność aplikacji. Często znajduje się problem z wydajnością w warstwie aplikacji. Może to być architektury lub wzorzec dostępu do danych. Rozważmy na przykład korzystać z aplikacji z dużą liczbą, która jest wrażliwa na opóźnienie sieci. W takim przypadku aplikacja spada, ponieważ będzie istniało wiele żądań krótki, przechodząc do i z powrotem dodać te natężenie ruchu ("dużą liczbą") między aplikacją a serwera a na obciążonej sieci, szybko. Aby zwiększyć wydajność w takiej sytuacji, można użyć [wsadowe](sql-database-performance-guidance.md#batch-queries). Za pomocą partie pomaga znacznie ponieważ teraz przetworzenie żądania w partii; w związku z tym pomaga zmniejszyć opóźnienia w obie strony i poprawić wydajność aplikacji. 
 
-Ponadto w przypadku zauważenia spadku ogólnej wydajności bazy danych, można monitorować [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) i [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) dynamicznego zarządzania widoków w celu Dowiedz się, użycie procesora CPU, we/wy i pamięci. Wydajność może być wpływ, ponieważ baza danych jest przetrzymywany zasobów. Może to być może należy zmienić poziom wydajności i/lub warstwę, w oparciu o stałym wzbogacaniu i zmniejszanie obciążenia usługi. 
+Ponadto w przypadku zauważenia spadku ogólnej wydajności bazy danych, można monitorować [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) i [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) dynamicznego zarządzania widoków w celu Dowiedz się, użycie procesora CPU, we/wy i pamięci. Wydajność może być wpływ, ponieważ baza danych jest przetrzymywany zasobów. Może to być może należy zmienić rozmiar obliczeń i/lub warstwę, w oparciu o stałym wzbogacaniu i zmniejszanie obciążenia usługi. 
 
 Aby uzyskać kompleksowy zestaw zaleceń dotyczących dostrajania problemy z wydajnością, zobacz: [dostrajania bazy danych](sql-database-performance-guidance.md#tune-your-database).
 
-### <a name="how-do-i-ensure-i-am-using-the-appropriate-service-tier-and-performance-level"></a>Jak zapewnić, że używam odpowiednią usługę warstwy i poziomu wydajności?
-Usługa SQL Database oferuje różne warstwy usług podstawowa, standardowa i Premium. Każda warstwa usługi, możesz uzyskać gwarantowane przewidywalnej wydajności związany z poziomu tej usługi. W zależności od obciążenia może być wzrosty działania gdzie wykorzystanie zasobów może napotkać Zaokrąglenie w górę bieżący poziom wydajności, które znajdują się w. W takich przypadkach warto najpierw rozpocząć poprzez ocenę czy wszelkie dostrajania może pomóc (na przykład dodawanie lub zmienianie indeksu itp.). Jeśli nadal napotykasz problemy limit, należy wziąć pod uwagę przeniesienie na wyższy poziom wydajności lub poziomu usługi. 
+### <a name="how-do-i-ensure-i-am-using-the-appropriate-service-tier-and-compute-size"></a>Jak zapewnić I używam warstwy odpowiednią usługę i obliczenia rozmiaru
+Usługa SQL Database oferuje różne warstwy usług podstawowa, standardowa i Premium. Każda warstwa usługi, możesz uzyskać gwarantowane przewidywalnej wydajności związany z danej warstwie usługi. W zależności od obciążenia może być wzrosty działania gdzie wykorzystanie zasobów może napotkać Zaokrąglenie w górę bieżący rozmiar obliczeń, które znajdują się w. W takich przypadkach warto najpierw rozpocząć poprzez ocenę czy wszelkie dostrajania może pomóc (na przykład dodawanie lub zmienianie indeksu itp.). Jeśli nadal napotykasz problemy limit, rozważ przeniesienie na wyższą warstwę usługi lub obliczenia rozmiaru. 
 
-|**Poziom usług**|**Typowe scenariusze przypadków użycia**|
+|**Warstwa usług**|**Typowe scenariusze przypadków użycia**|
 |---|---|
 |**Podstawowa**|Aplikacje korzystające z grupy użytkowników i bazy danych, która nie ma wysokie wymagania dotyczące współbieżności, skalowalność i wydajność. |
 |**Standardowa**|Aplikacje za pomocą znaczne wymagania współbieżności, skalowalność i wydajność dzięki połączeniu z usługami małej do średniej żądania We/Wy. |
 |**Premium**|Aplikacje z dużą liczbą równoczesnych użytkowników, wysoka Procesora/pamięci i wysoki żądań We/Wy. Wysoka współbieżności, wysokiej przepływności i opóźnienia w przypadku poufnych aplikacji można wykorzystać na poziomie Premium. |
 |||
 
-Upewnienie się, że jesteś na poziom wydajności w prawo, aby uzyskać można monitorować swoje użycie zasobów zapytań i bazy danych za pomocą jednego z wymienionych powyżej metod "Jak mogę monitorować wydajności i użycia zasobów w usłudze SQL Database". Należy znaleźć zapytania/bazy danych działają spójnie gorąca na Procesora/pamięci itp., należy rozważyć skalowanie w górę do wyższego poziomu wydajności. Podobnie jeśli użytkownik należy pamiętać, że nawet w swojej godzinach szczytu, prawdopodobnie nie korzystać z zasobów, jaka; należy rozważyć skalowanie w dół od bieżący poziom wydajności. 
+Upewnienie się, że jesteś na rozmiar obliczeń w prawo, aby uzyskać można monitorować swoje użycie zasobów zapytań i bazy danych za pomocą jednego z wymienionych powyżej metod "Jak mogę monitorować wydajności i użycia zasobów w usłudze SQL Database". Należy znaleźć zapytania/bazy danych działają spójnie gorąca na Procesora/pamięci itp., należy rozważyć skalowanie w górę do większy rozmiar obliczeń. Podobnie jeśli użytkownik należy pamiętać, że nawet w swojej godzinach szczytu, prawdopodobnie nie korzystać z zasobów, jaka; należy rozważyć skalowanie w dół od bieżącego rozmiaru obliczeń. 
 
 Jeśli masz wzorca aplikacji SaaS lub scenariusza konsolidacji bazy danych, należy rozważyć użycie puli elastycznej dla optymalizację kosztów. Pula elastyczna jest doskonałym sposobem osiągnięcia konsolidacji bazy danych oraz optymalizację kosztów. Aby dowiedzieć się więcej o zarządzaniu wieloma bazami danych przy użyciu elastycznej puli, zobacz: [Zarządzanie pul i baz danych](sql-database-elastic-pool-manage.md#azure-portal-manage-elastic-pools-and-pooled-databases). 
 

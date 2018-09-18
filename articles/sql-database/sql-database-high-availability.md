@@ -6,15 +6,15 @@ author: jovanpop-msft
 manager: craigg
 ms.service: sql-database
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 09/14/2018
 ms.author: jovanpop
 ms.reviewer: carlrab, sashan
-ms.openlocfilehash: 1aab8dfd3a4bcc33cddb71dec08157ee7eb68f8d
-ms.sourcegitcommit: 465ae78cc22eeafb5dfafe4da4b8b2138daf5082
+ms.openlocfilehash: b35eafd8c154b6550104a87bfadce6ec528e911a
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44324652"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732525"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Wysoka dostępność i Azure SQL Database
 
@@ -23,8 +23,8 @@ Usługa Azure SQL Database to platforma jako usługa, która gwarantuje, że baz
 Platforma Azure w pełni zarządza każdym usługi Azure SQL Database i gwarantuje bez utraty danych i wysoki odsetek dostępność danych. Azure automatycznie obsługuje stosowanie poprawek, kopii zapasowych, replikacji, wykrywanie awarii, bazowego sprzętu potencjalnych, awarii oprogramowania lub sieci, wdrażanie poprawek, pracy w trybie Failover, uaktualnienia bazy danych i innych zadań konserwacyjnych. Inżynierów programu SQL Server wdrożono najbardziej znanych sposobów postępowania, zapewniając, że wszystkie operacje konserwacji odbywa się w czasie krótszym niż 0,01% czas życia Twojej bazy danych. Ta architektura została zaprojektowana, aby upewnić się, że zatwierdzone dane nigdy nie zostaną utracone i że operacji konserwacji są wykonywane bez wywierania wpływu na obciążenia. Nie istnieją żadne okna konserwacyjne ani przestoje, wymagające należy zatrzymać obciążenia, gdy baza danych jest uaktualniony lub utrzymane. Wbudowana wysoka dostępność w usłudze Azure SQL Database gwarantuje, że ta baza danych nigdy nie będą pojedynczym punktem awarii w architekturze oprogramowania.
 
 Usługa Azure SQL Database jest oparty na architekturę aparatu bazy danych programu SQL Server, która jest uwzględniany w środowisku chmury w celu zapewnienia dostępności 99,99%, nawet w przypadku wystąpienia awarii infrastruktury. Istnieją dwa modele architektury wysokiej dostępności, które są używane w usłudze Azure SQL Database (obydwaj zapewniające dostępność na poziomie 99,99%):
-- Model Standard/ogólnego przeznaczenia, który jest oparty na oddzielenie zasobów obliczeniowych i magazynowych. Ten model architektury opiera się na wysoką dostępność i niezawodność warstwy magazynowania, ale może mieć niektóre potencjalne obniżenie wydajności podczas czynności konserwacyjnych.
-- Premium/krytycznych modelu biznesowego opartego na klastrze procesy aparatu bazy danych. Ten model architektury opiera się na fakt, że jest zawsze kworum węzłów aparatu bazy danych dostępności i ma negatywny wpływ na wydajność minimalne obciążenie nawet w trakcie czynności konserwacyjnych.
+- Model warstwy usługi Standard/ogólnego przeznaczenia, oparty na oddzielenie zasobów obliczeniowych i magazynowych. Ten model architektury opiera się na wysoką dostępność i niezawodność warstwy magazynowania, ale może mieć niektóre potencjalne obniżenie wydajności podczas czynności konserwacyjnych.
+- Model warstwy Premium/business krytycznych usług, który jest oparty na klastrze procesy aparatu bazy danych. Ten model architektury opiera się na fakt, że jest zawsze kworum węzłów aparatu bazy danych dostępności i ma negatywny wpływ na wydajność minimalne obciążenie nawet w trakcie czynności konserwacyjnych.
 
 Platforma Azure uaktualnia i poprawek podstawowego systemu operacyjnego, sterowników i aparatu bazy danych programu SQL Server sposób niewidoczny dla użytkownika za pomocą minimalny czas przestoju dla użytkowników końcowych. Usługa Azure SQL Database działa na najnowsza stabilna wersja aparatu bazy danych programu SQL Server i system operacyjny Windows, a większość użytkowników będzie nie należy zauważyć, że uaktualnienia są wykonywane stale.
 
@@ -59,7 +59,7 @@ Ponadto klaster krytyczne dla działania firmy udostępnia wbudowanego węzła t
 
 Domyślnie repliki zestawu kworum w przypadku konfiguracji z magazynu lokalnego są tworzone w tym samym centrum danych. Wraz z wprowadzeniem [strefy dostępności platformy Azure](../availability-zones/az-overview.md), masz możliwość umieszczenia różnych replik w zestawach kworum różnych strefach dostępności w tym samym regionie. Aby wyeliminować pojedynczy punkt awarii, pierścień kontroli również występuje w wielu strefach jako trzy pierścienie bramy (GW). Routing do pierścienia daną bramę jest kontrolowana przez [usługi Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) (ATM). Ponieważ nadmiarowy konfiguracji strefy nie powoduje utworzenia nadmiarowości dodatkowa baza danych, użycia stref dostępności (wersja zapoznawcza) w warstwach Premium lub krytyczne dla działania firmy jest dostępna bez dodatkowych kosztów. Wybierając nadmiarowych strefy baz danych, możesz wprowadzić bazach danych Premium lub krytyczne dla działania firmy odporne na błędy dużo większego zbioru awarii, w tym awarii krytycznego centrum danych bez wprowadzania żadnych zmian w logice aplikacji. Możesz również przeprowadzić konwersję wszystkie istniejące bazy danych Premium lub krytyczne dla działania firmy lub pule nadmiarowe konfiguracji strefy.
 
-Strefy nadmiarowe kworum zestawie ma replik w różnych centrach danych z niektórych odległość między nimi, opóźnienie sieci zwiększone może zwiększyć czas zatwierdzenia i dlatego ma wpływ na wydajność niektórych obciążeń OLTP. Zawsze możesz wrócić do konfiguracji pojedynczej strefy, wyłączając ustawienie nadmiarowości strefy. Ten proces jest rozmiar operacji na danych i jest podobna do aktualizacji poziomu (SLO) regularne usługi. Po zakończeniu procesu bazy danych lub puli jest migrowane z nadmiarowych pierścień strefy do pierścienia jedną strefę lub na odwrót.
+Strefy nadmiarowe kworum zestawie ma replik w różnych centrach danych z niektórych odległość między nimi, opóźnienie sieci zwiększone może zwiększyć czas zatwierdzenia i dlatego ma wpływ na wydajność niektórych obciążeń OLTP. Zawsze możesz wrócić do konfiguracji pojedynczej strefy, wyłączając ustawienie nadmiarowości strefy. Ten proces jest rozmiar operacji na danych i jest podobna do aktualizacji warstwy usług regularnych. Po zakończeniu procesu bazy danych lub puli jest migrowane z nadmiarowych pierścień strefy do pierścienia jedną strefę lub na odwrót.
 
 > [!IMPORTANT]
 > Strefa nadmiarowych baz danych i pule elastyczne są obecnie obsługiwane tylko w warstwie Premium. W publicznej wersji zapoznawczej, kopie zapasowe i inspekcji rekordy są przechowywane w magazynach RA-GRS i dlatego nie można automatycznie dostępne w przypadku awarii całej strefy. 
@@ -69,7 +69,7 @@ Poniższy diagram przedstawia nadmiarowe strefy wersję architektura wysokiej do
 ![Wysoka dostępność architektury strefowo nadmiarowe](./media/sql-database-high-availability/high-availability-architecture-zone-redundant.png)
 
 ## <a name="read-scale-out"></a>Odczyt skalowalnego w poziomie
-Zgodnie z opisem, warstw Premium i krytyczne dla działania firmy korzystać z zestawów kworum i zawsze włączonej technologii wysokiej dostępności, zarówno w jednej strefie i konfiguracje nadmiarowe stref. Jedną z zalet funkcji AlwaysOn jest, że repliki są zawsze transakcyjnie spójne. Ponieważ repliki mają ten sam poziom wydajności jako podstawowy, aplikacji mogą korzystać z tej dodatkowej pojemności do obsługi obciążeń tylko do odczytu nie wymagają ponoszenia dodatkowych kosztów (odczytu skalowalnego w poziomie). Dzięki temu zapytania tylko do odczytu zostanie odizolowana od głównej obciążenia odczytu i zapisu i nie ma wpływu na jego wydajność. Przeczytaj funkcja skalowania w poziomie jest przeznaczona dla aplikacji, które obejmują logicznie oddzielone obciążeń tylko do odczytu, takich jak analiza i w związku z tym może wykorzystać atak za tej dodatkowej pojemności bez konieczności nawiązywania połączenia podstawowego. 
+Zgodnie z opisem, warstw Premium i krytyczne dla działania firmy korzystać z zestawów kworum i zawsze włączonej technologii wysokiej dostępności, zarówno w jednej strefie i konfiguracje nadmiarowe stref. Jedną z zalet funkcji AlwaysOn jest, że repliki są zawsze transakcyjnie spójne. Ponieważ repliki mają taki sam rozmiar obliczeń jako podstawowy, aplikacji mogą korzystać z tej dodatkowej pojemności do obsługi obciążeń tylko do odczytu nie wymagają ponoszenia dodatkowych kosztów (odczytu skalowalnego w poziomie). Dzięki temu zapytania tylko do odczytu zostanie odizolowana od głównej obciążenia odczytu i zapisu i nie ma wpływu na jego wydajność. Przeczytaj funkcja skalowania w poziomie jest przeznaczona dla aplikacji, które obejmują logicznie oddzielone obciążeń tylko do odczytu, takich jak analiza i w związku z tym może wykorzystać atak za tej dodatkowej pojemności bez konieczności nawiązywania połączenia podstawowego. 
 
 Funkcja odczytu skalowalnego w poziomie za pomocą określonej bazy danych, musisz jawnie aktywować go podczas tworzenia bazy danych lub później, zmieniając jego konfigurację przy użyciu programu PowerShell, wywołując [polecenia Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) lub [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) poleceń cmdlet lub za pomocą interfejsu REST API usługi Azure Resource Manager [baz danych — Utwórz lub zaktualizuj](/rest/api/sql/databases/createorupdate) metody.
 

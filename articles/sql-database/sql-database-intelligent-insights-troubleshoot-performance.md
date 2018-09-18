@@ -8,14 +8,14 @@ ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 04/04/2018
+ms.date: 09/14/2018
 ms.author: v-daljep
-ms.openlocfilehash: 100cb939c0d7297b92af3255382745355aa8d271
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9c2bb85d9c0bb02b7eb698dbee07f488c2ad0b62
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722116"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45733191"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Rozwiązywanie problemów z wydajnością usługi Azure SQL Database dzięki inteligentnej analizie
 
@@ -283,7 +283,7 @@ Zmiany w zakresie bazy danych konfiguracji można ustawić dla każdej pojedyncz
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Diagnostyka dziennika danych wyjściowych o zakresie bazy danych zmian konfiguracji, które wprowadzono niedawno powodujące obniżenie wydajności w porównaniu do poprzedniego zachowania obciążeń siedmiu dni. Możesz przywrócić zmiany konfiguracji do poprzedniej wartości. Możesz również określić wartości przez wartość aż do osiągnięcia poziomu żądaną wydajność. Możesz skopiować wartości konfiguracji w zakresie bazy danych, z podobnych bazy danych za pomocą zadowalającą wydajność. Jeśli nie możesz rozwiązywać problemy z wydajnością, Przywróć domyślne wartości domyślne bazy danych SQL, a następnie spróbuj dostrajania, począwszy od tej linii bazowej.
+Diagnostyka dziennika danych wyjściowych o zakresie bazy danych zmian konfiguracji, które wprowadzono niedawno powodujące obniżenie wydajności w porównaniu do poprzedniego zachowania obciążeń siedmiu dni. Możesz przywrócić zmiany konfiguracji do poprzedniej wartości. Możesz również określić wartości przez wartość aż do osiągnięcia rozmiar żądanej obliczeń. Możesz skopiować wartości konfiguracji w zakresie bazy danych, z podobnych bazy danych za pomocą zadowalającą wydajność. Jeśli nie możesz rozwiązywać problemy z wydajnością, Przywróć domyślne wartości domyślne bazy danych SQL, a następnie spróbuj dostrajania, począwszy od tej linii bazowej.
 
 Aby uzyskać więcej informacji na temat optymalizowania o zakresie bazy danych konfiguracji i składni języka T-SQL na zmiany konfiguracji, zobacz [Alter o zakresie bazy danych konfiguracji (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx).
 

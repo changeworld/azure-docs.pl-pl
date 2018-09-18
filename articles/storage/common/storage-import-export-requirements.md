@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 10e8fb6ac5bcce278de3924ebd3a0d9f90392217
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 18c27e4059ea06fcc52863b2d7671c14167dae75
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39528058"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45732757"
 ---
 # <a name="azure-importexport-system-requirements"></a>Wymagania dotyczące systemu Azure Import/Export
 
@@ -32,12 +32,15 @@ Aby przygotować dyski twarde, za pomocą narzędzia WAImportExport, następują
 
 ## <a name="supported-storage-accounts"></a>Konta magazynu obsługiwane
 
-Usługa Azure Import/Export obsługuje następujące [konta usługi Azure storage](storage-account-options.md).
+Usługa Azure Import/Export obsługuje następujące typy kont magazynu:
+
+- Kont magazynu ogólnego przeznaczenia v2
 - Ogólne v1 konta magazynu przeznaczenia (wdrożenia zarówno klasyczny, jak i usługi Azure Resource Manager)
 - Konta usługi Blob Storage
-- Kont magazynu ogólnego przeznaczenia v2
 
-Każde zadanie może służyć do przesyłania danych do lub z tylko jednego konta magazynu. Innymi słowy zadanie importu/eksportu pojedynczej nie mogą rozciągać się na wielu kontach magazynu. Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [sposób tworzenia konta magazynu](storage-create-storage-account.md#create-a-storage-account).
+Aby uzyskać więcej informacji na temat kont magazynu, zobacz [omówienie kont magazynu platformy Azure](storage-account-overview.md).
+
+Każde zadanie może służyć do przesyłania danych do lub z tylko jednego konta magazynu. Innymi słowy zadanie importu/eksportu pojedynczej nie mogą rozciągać się na wielu kontach magazynu. Aby uzyskać informacje dotyczące tworzenia nowego konta magazynu, zobacz [sposób tworzenia konta magazynu](storage-quickstart-create-account.md).
 
 > [!IMPORTANT] 
 > Usługa Azure Import/Eksport obsługują kont magazynu, gdzie [punkty końcowe usługi sieci wirtualnej](../../virtual-network/virtual-network-service-endpoints-overview.md) funkcja została włączona. 

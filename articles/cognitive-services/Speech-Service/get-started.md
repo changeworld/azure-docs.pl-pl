@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: v-jerkin
-ms.openlocfilehash: a0ff6c09eb0a6fffe0ce82fe9ccb3bc43970ad68
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 5ae57764e2950d027e832eccec5393d4aec4486a
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024622"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45981841"
 ---
 # <a name="try-the-speech-service-for-free"></a>Wypróbuj bezpłatnie usługę rozpoznawania mowy
 
@@ -130,7 +130,7 @@ Aby dodać zasób usługi mowy do konta platformy Azure:
 1. W obszarze **Szybki Start**, wybierz opcję **klucze** łącze w kroku 1, aby wyświetlić klucze subskrypcji. Każda subskrypcja ma dwa klucze; Możesz użyć dowolnego klucza w aplikacji. Wybierz przycisk obok każdego klucza, aby skopiować go do Schowka wklejania w kodzie.
 
 > [!NOTE]
-> Można utworzyć nieograniczoną liczbę subskrypcji do warstwy standardowa w jednym lub wielu regionach. Jednak można utworzyć tylko jedną subskrypcję z warstwy bezpłatna.
+> Można utworzyć nieograniczoną liczbę subskrypcji do warstwy standardowa w jednym lub wielu regionach. Jednak można utworzyć tylko jedną subskrypcję z warstwy bezpłatna. Wdrożenia modelu w ramach warstwy bezpłatna, które pozostają nieużywane przez 7 dni będzie można ponowić automatycznie.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
