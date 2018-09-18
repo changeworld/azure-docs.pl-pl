@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 0439f35a8ad7daab780bde301a2ec5fee8aaf1d6
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 8c56b4d0bbd4b2726b9673ca537084376ee40d94
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718293"
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45629327"
 documentType: LandingData
 title: Dokumentacja usługi Azure SQL Database
 metadata:
@@ -107,7 +107,7 @@ sections:
       values:
       - href: /azure/sql-database/sql-database-get-started-portal
       - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-cli
-      - href: /azure/sql-database//scripts/sql-database-create-and-configure-database-powershell
+      - href: /azure/sql-database/scripts/sql-database-create-and-configure-database-powershell
       - href: 
     - title: Tworzenie wystąpienia zarządzanego SQL
       values:
@@ -135,7 +135,7 @@ sections:
     - title: Skalowanie wystąpienia zarządzanego
       values:
       - href: 
-      - href: 
+      - href: https://medium.com/azure-sqldb-managed-instance/working-with-sql-managed-instance-using-azure-cli-611795fe0b44
       - href: https://blogs.msdn.microsoft.com/sqlserverstorageengine/2018/05/31/change-size-azure-sql-managed-instance-using-powershell/
       - href: 
     - title: Konfigurowanie sieci platformy Azure dla wystąpienia zarządzanego
@@ -152,9 +152,9 @@ sections:
     style: ordered
     items:
     - html: Tworzenie i projektowanie schematu dla nowej bazy danych SQL przy użyciu platformy <a href="/azure/sql-database/sql-database-design-first-database">SSMS</a> lub <a href="/azure/sql-database/sql-database-design-first-database-csharp">.NET</a>
-    - html: <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Migrowanie istniejącej bazy danych programu SQL Server do używania w usłudze Azure SQL Database</a>
+    - html: Migrowanie istniejącej bazy danych do platformy Azure za pomocą <a href="/azure/sql-database/sql-database-managed-instance-get-started-restore">polecenia RESTORE bazy danych</a>, <a href="/azure/sql-database/sql-database-migrate-your-sql-server-database">Asystenta migracji bazy danych</a> lub <a href="/azure/sql-database/sql-database-import">funkcji importowania pliku BACPAC</a>
     - html: <a href="/azure/sql-database/sql-database-security-tutorial">Zabezpieczanie usługi SQL Database</a>
-    - html: <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">Implementowanie rozproszonej geograficznie bazy danych</a>
+    - html: Globalne dystrybuowanie danych przy użyciu <a href="/azure/sql-database/sql-database-implement-geo-distributed-database">rozproszonej geograficznie bazy danych</a>
 - title: Bezpłatne szkolenie wideo firmy PluralSight
   items:
   - type: list

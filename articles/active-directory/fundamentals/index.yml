@@ -1,0 +1,53 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 4c9f26c36b0cf79c8bd28e57fc7bdec5dda22764
+ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/15/2018
+ms.locfileid: "45636329"
+documentType: LandingData
+title: Podstawowa dokumentacja usługi Azure Active Directory
+metadata:
+  document_id: 
+  title: Podstawowa dokumentacja usługi Azure Active Directory
+  description: Poznaj podstawowe pojęcia i procesy dostępne podczas korzystania z usługi Azure Active Directory.
+  services: active-directory
+  ms.component: fundamentals
+  author: eross-msft
+  manager: mtillman
+  ms.service: active-directory
+  ms.topic: landing-page
+  ms.date: 09/07/2018
+  ms.author: lizross
+abstract:
+  description: Poznaj podstawowe pojęcia i procesy dotyczące usługi Azure Active Directory (Azure AD), w tym sposób tworzenia podstawowych użytkowników i grup oraz sposób tworzenia podstawowego środowiska w celu rozpoczęcia pracy.
+sections:
+- title: 5-minutowe przewodniki Szybki start
+  items:
+  - type: paragraph
+    text: Dowiedz się, jak rozpocząć pracę z portalem usługi Azure Active Directory.
+  - type: list
+    style: icon48
+    items:
+    - image:
+        src: ./media/index/i_portal.png
+      text: Uzyskiwanie dostępu do usługi Azure AD w celu utworzenia dzierżawy
+      href: active-directory-access-create-new-tenant.md
+    - image:
+        src: ./media/index/i_tasks.png
+      text: Wyświetlanie grup i członków
+      href: active-directory-groups-view-azure-portal.md
+- title: Przewodniki krok po kroku
+  items:
+  - type: paragraph
+    text: Dowiedz się, jak wykonywać podstawowe zadania w celu skonfigurowania środowiska usługi Azure Active Directory
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="/azure/active-directory/fundamentals/active-directory-get-started-premium">Tworzenie konta w usłudze Azure AD Premium</a>
+    - html: <a href="/azure/active-directory/fundamentals/add-custom-domain">Jak dodać niestandardową nazwę domeny</a>
+    - html: <a href="/azure/active-directory/fundamentals/active-directory-groups-create-azure-portal">Jak utworzyć podstawową grupę i dodać członków</a>
+    - html: <a href="/azure/active-directory/fundamentals/active-directory-accessmanagement-managing-group-owners">Jak dodać właścicieli grupy</a>
+    - html: <a href="/azure/active-directory/fundamentals/add-users-azure-active-directory">Jak dodać nowego użytkownika</a>
+    - html: <a href="/azure/active-directory/fundamentals/active-directory-users-assign-role-azure-portal">Jak przypisać role do użytkowników</a>
+    - html: <a href="/azure/active-directory/fundamentals/license-users-groups">Jak przypisać licencje do użytkowników</a>

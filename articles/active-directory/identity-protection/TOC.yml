@@ -1,0 +1,63 @@
+items:
+- name: Dokumentacja usługi Identity Protection
+  href: index.yml
+- name: Omówienie
+  items:
+  - name: Co to jest usługa Azure AD Identity Protection?
+    href: overview.md
+- name: Przewodniki Szybki start
+  items:
+  - name: Blokowanie dostępu po wykryciu ryzykownej sesji
+    href: quickstart-sign-in-risk-policy.md
+- name: Pojęcia
+  items:
+  - name: Co to są luki w zabezpieczeniach?
+    href: vulnerabilities.md
+  - name: Co to są powiadomienia?
+    href: notifications.md
+  - name: Co to jest środowisko logowania?
+    href: flows.md
+  expanded: false
+- name: Przewodniki z instrukcjami
+  items:
+  - name: Włączanie usługi Azure AD Identity Protection
+    href: enable.md
+  - name: Konfigurowanie zasad rejestracji usługi MFA
+    href: howto-mfa-policy.md
+  - name: Konfigurowanie zasad ryzyka logowania
+    href: howto-sign-in-risk-policy.md
+  - name: Konfigurowanie zasad ryzyka użytkowników
+    href: howto-user-risk-policy.md
+  - name: Odblokowywanie użytkowników
+    href: howto-unblock-user.md
+  - name: Symulowanie ryzykownych zdarzeń
+    href: playbook.md
+  - name: Korzystanie z interfejsu API programu Microsoft Graph
+    href: graph-get-started.md
+  - name: Często zadawane pytania
+    href: faqs.md
+  expanded: true
+- name: Dokumentacja
+  items:
+  - name: Słownik
+    href: glossary.md
+- name: Zasoby
+  items:
+  - name: Forum z opiniami na temat platformy Azure
+    href: https://feedback.azure.com/forums/169401-azure-active-directory
+  - name: Forum MSDN
+    href: https://social.msdn.microsoft.com/Forums/azure/home?forum=WindowsAzureAD
+  - name: Cennik
+    href: https://azure.microsoft.com/pricing/details/active-directory/
+  - name: Aktualizacje usług
+    href: ../fundamentals/whats-new.md
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-active-directory
+  - name: Filmy wideo
+    href: https://azure.microsoft.com/documentation/videos/index/?services=active-directory
+ms.openlocfilehash: 651ac43690180fadad6eef7f83d2a58b531752ed
+ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45606715"
