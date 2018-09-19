@@ -1,28 +1,49 @@
-
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/13/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: f0e584a4a4a54fc04b5539b56d5c901bfaa42bcc
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46293776"
+---
 ## <a name="register-your-application"></a>Rejestrowanie aplikacji
 Aplikację można zarejestrować na dwa sposoby, zgodnie z opisem w dwóch następnych sekcjach.
 
-### <a name="option-1-express-mode"></a>Opcja 1: Tryb ekspresowy
-Można szybko zarejestrować aplikację w następujący sposób:
+### <a name="option-1-express"></a>Opcja 1: Express
 1. Przejdź do [portalu rejestracji aplikacji Microsoft](https://apps.dev.microsoft.com/portal/register-app?appType=mobileAndDesktopApp&appTech=android&step=configure).
-2.  W **Nazwa aplikacji** wprowadź nazwę aplikacji.
+2.  W **Nazwa aplikacji**, wprowadź nazwę aplikacji.
 
 3. Upewnij się, że **instrukcje konfiguracji** pole wyboru jest wybrany, a następnie wybierz **Utwórz**.
 
-4. Postępuj zgodnie z instrukcjami w celu uzyskania Identyfikatora aplikacji i wklej go w kodzie.
+4. Postępuj zgodnie z instrukcjami dotyczącymi uzyskiwania Identyfikatora aplikacji, a następnie wklej go w kodzie.
 
-### <a name="option-2-advanced-mode"></a>Opcja 2: Tryb zaawansowany
-Aby zarejestrować aplikację i dodać swoje informacje rejestracyjne aplikacji do rozwiązania, wykonaj następujące czynności:
-1. Jeśli nie zostało już zarejestrowane aplikacji, przejdź do [portalu rejestracji aplikacji Microsoft](https://apps.dev.microsoft.com/portal/register-app).
+### <a name="option-2-advanced"></a>Opcja 2: Zaawansowane 
+1. Przejdź do [portalu rejestracji aplikacji Microsoft](https://apps.dev.microsoft.com/portal/register-app).
 2. W **Nazwa aplikacji** wprowadź nazwę aplikacji. 
 
 3. Upewnij się, że **instrukcje konfiguracji** pole wyboru jest wyczyszczone, a następnie wybierz **Utwórz**.
 
-4. Wybierz **dodać platformy**, wybierz pozycję **aplikacji natywnej**, a następnie wybierz **zapisać**.
+4. Wybierz **Dodaj platformy**, wybierz opcję **aplikacji natywnej**, a następnie wybierz pozycję **Zapisz**.
 
 5. W obszarze **aplikacji** > **java** > **{hosta}. { przestrzeń nazw}**, otwórz `MainActivity`. 
 
-6.  Zastąp *[aplikacji identyfikatora w tym miejscu wprowadź]* w następującym wierszu z Identyfikatorem aplikacji, który został zarejestrowany:
+6.  Zastąp *[Wprowadź identyfikator aplikacji w tym miejscu]* z aplikacją / identyfikator klienta:
 
     ```java
     final static String CLIENT_ID = "[Enter the application Id here]";
@@ -30,7 +51,7 @@ Aby zarejestrować aplikację i dodać swoje informacje rejestracyjne aplikacji 
 <!-- Workaround for Docs conversion bug -->
 7. W obszarze **aplikacji** > **manifesty**, otwórz *AndroidManifest.xml* pliku.
 
-8. W `manifest\application` węzła, Dodaj następujące działania. Sposób tak rejestrów `BrowserTabActivity` działanie, które umożliwia systemu operacyjnego można wznowić aplikacji po jej ukończeniu uwierzytelniania:
+8. W `manifest\application`, Dodaj następujące działania. `BrowserTabActivity` Działanie, które umożliwia firmie Microsoft wywołania zwrotnego do aplikacji po jej zakończeniu uwierzytelniania:
 
     ```xml
     <!--Intent filter to capture System Browser calling back to our app after sign-in-->
@@ -49,4 +70,4 @@ Aby zarejestrować aplikację i dodać swoje informacje rejestracyjne aplikacji 
     </activity>
     ```
 <!-- Workaround for Docs conversion bug -->
-9. W `BrowserTabActivity` węzła, Zastąp `[Enter the application Id here]` z identyfikatorem aplikacji.
+9. W `BrowserTabActivity`, Zastąp `[Enter the application Id here]` z aplikacją / identyfikator klienta.

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/09/2018
+ms.date: 09/18/2018
 ms.author: kumud
-ms.openlocfilehash: 6c196d16258e4bf000f998899086c7a6d0197fba
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 8c3d632063c8ed9347aa870d0971cc09dc1a658e
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42058094"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129543"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Usługa Traffic Manager — często zadawane pytania (FAQ)
 
@@ -72,7 +72,7 @@ Aby obejść ten problem, zaleca się przy użyciu przekierowania HTTP do kierow
 Pełna obsługa "naked" domen w usłudze Traffic Manager jest śledzona w naszych planach funkcji. Możesz zarejestrować działu pomocy technicznej dla tego żądania funkcji przez [głosu dla niego w naszej witrynie opinii społeczności](https://feedback.azure.com/forums/217313-networking/suggestions/5485350-support-apex-naked-domains-more-seamlessly).
 
 ### <a name="does-traffic-manager-consider-the-client-subnet-address-when-handling-dns-queries"></a>Usługa Traffic Manager za adres podsieci klienta podczas przetwarzania zapytań DNS? 
-Tak, oprócz adres IP źródła zapytania DNS otrzymuje (co zwykle jest adres IP programu rozpoznawania nazw DNS), podczas przeprowadzania wyszukiwania dla metody routingu Geographic i wydajność, usługa traffic manager również uwzględnia adres podsieci klienta, jeśli jest uwzględnione w zapytaniu przez program rozpoznawania nazw, dzięki czemu żądania w imieniu użytkownika końcowego.  
+Tak, oprócz adres IP źródła zapytania DNS otrzymuje (co zwykle jest adres IP programu rozpoznawania nazw DNS), podczas przeprowadzania wyszukiwania dla metody routingu Geographic, wydajności i podsieci, usługa traffic manager również uwzględnia adres podsieci klienta, jeśli uwzględnione w zapytaniu przez program rozpoznawania nazw, dzięki czemu żądania w imieniu użytkownika końcowego.  
 W szczególności [7871 RFC — podsieci klienta DNS zapytań](https://tools.ietf.org/html/rfc7871) zapewniający [mechanizmu rozszerzenia DNS (EDNS0)](https://tools.ietf.org/html/rfc2671) które można przekazać na adres podsieci klienta z rozpoznawania nazw, które go obsługują.
 
 ### <a name="what-is-dns-ttl-and-how-does-it-impact-my-users"></a>Co to jest czas wygaśnięcia DNS oraz jak ma ona wpływu na moich użytkowników?
@@ -133,6 +133,39 @@ Region, można przypisać tylko jeden punkt końcowy w profilu, jeśli jego przy
 ### <a name="are-there-any-restrictions-on-the-api-version-that-supports-this-routing-type"></a>Czy istnieją jakieś ograniczenia dotyczące wersji interfejsu API, która obsługuje ten typ routingu?
 
 Tak, tylko interfejsu API w wersji 2017-03-01 i nowszych obsługuje geograficznego routingu typu. Starsze wersje interfejsu API nie może służyć do utworzone profile typu routingu geograficznego lub przypisać regionów geograficznych do punktów końcowych. Jeśli starszej wersji interfejsu API jest używany do pobierania profilów z subskrypcją platformy Azure, dowolny profil geograficzny typu routingu nie są zwracane. Ponadto przy użyciu starszych wersji interfejsu API żadnego profilu zwracane, ma punkty końcowe z przypisaniem region geograficzny, nie ma przypisania region geograficzny, wyświetlane.
+
+## <a name="traffic-manager-subnet-traffic-routing-method"></a>Metody routingu ruchu podsieci usługi Traffic Manager
+
+### <a name="what-are-some-use-cases-where-subnet-routing-is-useful"></a>Jakie są niektóre przypadki użycia, w której podsieci routing jest przydatne?
+Podsieć routingu pozwala odróżnić doświadczenie w zakresie dostarczania dla konkretnych zestawów użytkowników identyfikowanych na podstawie źródłowego adresu IP z ich adres IP żądania DNS. Przykładem może być przedstawiający różną zawartość, jeśli użytkownicy nawiązują połączenie z witryną sieci Web dla swojej Centrali firmy. Inny będzie ograniczenie dostępu użytkowników z określonych usługodawców internetowych, aby uzyskać dostęp tylko do punktów końcowych, które obsługują tylko połączeń IPv4, jeśli te usługodawców internetowych mają podrzędnych par wydajność, gdy używany jest protokół IPv6.
+Kolejny powód, aby użyć metody routingu dla podsieci w połączeniu z innych profilów zagnieżdżonych profilu ustawiono. Na przykład jeśli chcesz użyć metody routingu geograficznego dla grodzenia użytkowników, ale dla określonego usługodawcę internetowego chcesz wykonać inną metodę routingu, możesz mieć profil withy podsieci metody routingu jako profil nadrzędnego i zastąpienie tego usługodawcy internetowego, aby użyć element podrzędny określonego pro plik, a ma standardowy profil geograficzny wszystkim innym użytkownikom.
+
+### <a name="how-does-traffic-manager-know-the-ip-address-of-the-end-user"></a>Jak usługa Traffic Manager znać adres IP użytkownika końcowego?
+Urządzenia użytkowników końcowych zwykle używać programu rozpoznawania nazw DNS do wyszukiwania DNS w ich imieniu. Wychodzący adres IP takiego rozpoznawania nazw są usługi Traffic Manager widzi jako źródłowy adres IP. Ponadto metody routingu dla podsieci również sprawdza, czy informacje EDNS0 rozszerzone klienta podsieci (ECS), który został przekazany z żądaniem. Jeśli informacje o ECS, to adres używany do określenia routingu. W przypadku braku informacji ECS adres IP źródła zapytania jest używana do celów routingu.
+
+### <a name="how-can-i-specify-ip-addresses-when-using-subnet-routing"></a>Jak można określić adresy IP, przy użyciu routingu podsieci?
+Adresy IP można skojarzyć z punktem końcowym usługi można określić na dwa sposoby. Po pierwsze służy notacji poczwórnej kropkowana octet dziesiętną z początkowy i końcowy adres do określania zakresu (np. 1.2.3.4-5.6.7.8 lub 3.4.5.6-3.4.5.6). Po drugie umożliwia notacji CIDR Określ zakres (np. 1.2.3.0/24). Można określić wiele zakresów i można użyć obu typów notacji w zestawie zakresu. Kilka ograniczenia mają zastosowanie.
+-   Nie może mieć nakładanie się zakresów adresów, ponieważ każdego adresu IP musi być mapowane na tylko jeden punkt końcowy
+-   Adres początkowy nie może być większa niż adres końcowy
+-   W przypadku notacji CIDR, adres IP przed '/' powinien być adres początkowy zakresu (np. 1.2.3.0/24 jest prawidłowy, ale 1.2.3.4.4/24 nie jest prawidłową)
+
+### <a name="how-can-i-specify-a-fallback-endpoint-when-using-subnet-routing"></a>Jak można określić rezerwowy punkt końcowy przy użyciu routingu podsieci?
+W profilu z routingiem podsieci w przypadku punktu końcowego z podsieciami, nie mapowanego, każde żądanie, które nie jest zgodny z innych punktów końcowych nastąpi przekierowanie do tego miejsca. Zdecydowanie zaleca się mieć taki rezerwowego punktu końcowego w Twoim profilu, ponieważ usługi Traffic Manager zwróci odpowiedź NXDOMAIN, jeśli żądanie jest oferowana w i nie została zamapowana na żadnych punktów końcowych lub jeśli jest mapowany do punktu końcowego, ale ten punkt końcowy jest w złej kondycji.
+
+### <a name="what-happens-if-an-endpoint-is-disabled-in-a-subnet-routing-type-profile"></a>Co się stanie, jeśli punkt końcowy jest wyłączony w podsieci routingu typu profilu?
+W profilu z routingiem podsieci w przypadku punktu końcowego, z którego jest wyłączona, usługi Traffic Manager będzie zachowywać się tak, jakby punkt końcowy i mapowania podsieci, których nie istnieje. Jeśli zostanie odebrana zapytania, które mogłyby zostały dopasowane do jego mapowania adresów IP i punkt końcowy jest wyłączony, Traffic Manager zwróci rezerwowego punktu końcowego, (jeden z Brak mapowań) lub jeśli punkt końcowy nie jest obecny, zwróci odpowiedź NXDOMAIN
+
+## <a name="traffic-manager-multivalue-traffic-routing-method"></a>Metody routingu ruchu atrybut wielowartościowy elementu usługi Traffic Manager
+
+### <a name="what-are-some-use-cases-where-multivalue-routing-is-useful"></a>Co to są niektórych przypadków użycia, w których wielu wartości routing jest przydatne?
+Routing wielowartościowe zwraca wiele punktów końcowych w dobrej kondycji w odpowiedzi na jedno zapytanie. Główną zaletą to to, że jeśli punkt końcowy jest w złej kondycji, klient ma więcej opcji, aby ponowić próbę bez wprowadzania inne wywołanie DNS (która może zwrócić tę samą wartość z nadrzędnego pamięci podręcznej). Ma to zastosowanie w przypadku aplikacji poufnych dostępności, które chce, aby zminimalizować przestoje.
+Innym zastosowaniem dla metody routingu opartego na wielu wartości jest, jeśli punkt końcowy jest "dwukierunkowy" do obu protokołu IPv4 i IPv6 adresów, a chcesz nadać obiekt wywołujący obie opcje do wyboru gdy inicjuje on połączenie z punktem końcowym.
+
+### <a name="how-many-endpoints-are-returned-when-multivalue-routing-is-used"></a>Ile punktów końcowych są zwracane, gdy wielu wartości routing jest używany?
+Można określić maksymalną liczbę endopints ma zostać zwrócona, a atrybut wielowartościowy elementu zwróci nie częściej niż wiele punktów końcowych w dobrej kondycji po otrzymaniu kwerendy. Maksymalnej możliwej wartości dla tej konfiguracji wynosi 10.
+
+### <a name="will-i-get-the-same-set-of-endpoints-when-multivalue-routing-is-used"></a>Ten sam zestaw punktów końcowych będzie uzyskać po wielu wartości routing jest używany?
+Nie możemy zagwarantować, że ten sam zestaw punktów końcowych zostanie zwrócone w każdym zapytaniu. Dotyczy to również fakt, że niektóre z punktów końcowych, które mogą zostać przekazane złej kondycji, w tym momencie nie zostaną uwzględnione w odpowiedzi
 
 ## <a name="real-user-measurements"></a>Pomiary rzeczywistego użytkownika
 
@@ -257,7 +290,7 @@ Tak. "Staging" miejsca usługi w chmurze można skonfigurować w usłudze Traffi
 
 Usługa Traffic Manager nie zapewnia obecnie IPv6 addressible serwerów nazw. Jednak usługa Traffic Manager można jej użyć protokołu IPv6 klientom nawiązywanie połączenia z punktów końcowych protokołu IPv6. Klient nie powoduje żądania DNS bezpośrednio do usługi Traffic Manager. Zamiast tego klient korzysta z rekursywnych usług DNS. Tylko protokół IPv6 klienta wysyła żądania do rekursywnych usług DNS za pomocą protokołu IPv6. Następnie usługa cykliczne, powinno być możliwe do kontaktowania się z serwerami nazw usługi Traffic Manager przy użyciu protokołu IPv4.
 
-Usługa Traffic Manager odpowiada za pomocą nazwy DNS punktu końcowego. Do obsługi punktu końcowego protokołu IPv6, musi istnieć rekord DNS AAAA wskazuje nazwę DNS punktu końcowego adresu IPv6. Kontrole kondycji usługi Traffic Manager obsługują tylko adresy IPv4. Usługa musi ujawniać punkt końcowy protokołu IPv4 na tą samą nazwą DNS.
+Usługa Traffic Manager odpowiada za pomocą nazwy DNS lub adres IP punktu końcowego. Aby zapewnić obsługę punktu końcowego protokołu IPv6, dostępne są dwie opcje. Można dodać punkt końcowy, jako nazwę DNS, które ma skojarzony rekord AAAA i Traffic Manager będzie sprawdzenie kondycji, ten punkt końcowy i zwracany typ go jako rekord CNAME w odpowiedzi na zapytanie. Można również dodać punkt końcowy bezpośrednio przy użyciu adresu IPv6 i usługi Traffic Manager zwróci rekord AAAA typu w odpowiedzi na zapytanie. 
 
 ### <a name="can-i-use-traffic-manager-with-more-than-one-web-app-in-the-same-region"></a>Czy można używać usługi Traffic Manager, za pomocą więcej niż jednej aplikacji sieci Web, w tym samym regionie?
 
@@ -300,6 +333,46 @@ Usługa Traffic manager nie może dostarczyć wszelkie weryfikację certyfikatu,
 * Certyfikaty po stronie serwera SNI nie są obsługiwane.
 * Certyfikaty klienta nie są obsługiwane.
 
+### <a name="do-i-use-an-ip-address-or-a-dns-name-when-adding-an-endpoint"></a>Używać adresu IP lub nazwy DNS podczas dodawania punktu końcowego?
+Usługa Traffic Manager obsługuje dodawanie punktów końcowych, za pomocą trzy sposoby, aby znaleźć je — jako nazwy DNS, jako adres IPv4, a jako adres IPv6. Jeśli punkt końcowy został dodany jako adres IPv4 lub IPv6 odpowiedzi na zapytanie będzie typ rekordu A lub AAAA, odpowiednio. Jeśli punkt końcowy został dodany jako nazwa DNS, to odpowiedź na zapytanie będą typu rekordu CNAME. . Zwróć uwagę, że dodanie punktów końcowych, jako adres IPv4 lub IPv6 jest dozwolona tylko punkt końcowy jest typu "Zewnętrzny".
+Wszystkie metody routingu oraz ustawień monitorowania są obsługiwane przez trzy typy adresowania punktów końcowych.
+
+### <a name="what-types-of-ip-addresses-can-i-use-when-adding-an-endpoint"></a>Jakie typy adresów IP można użyć podczas dodawania punktu końcowego?
+Traffic Manager umożliwia określanie punktów końcowych przy użyciu adresów IPv4 lub IPv6. Istnieje kilka ograniczeń, które są wymienione poniżej:
+- Adresy, które odpowiadają zarezerwowanych prywatnych przestrzeni adresów IP nie są dozwolone. Te adresy obejmują przywołane w dokumencie RFC 1918, RFC 6890, RFC 5737, RFC 3068 RFC 2544 i RFC 5771
+- Adres nie może zawierać żadnych numerów portów (można określić porty, które mają zostać użyte w ustawieniach profilu konfiguracji) 
+- Nie dwa punkty końcowe, w tym samym profilu może mieć ten sam docelowy adres IP
+
+### <a name="can-i-use-different-endpoint-addressing-types-within-a-single-profile"></a>Można użyć innego punktu końcowego adresowania typów w jednym profilu?
+Nie, usługi Traffic Manager umożliwia mieszanie adresowania typy punktów końcowych w profilu, z wyjątkiem w przypadku profilu z wieloma wartościami typu routingu, gdzie można łączyć IPv4 i typy adresów IPv6
+
+### <a name="what-happens-when-an-incoming-querys-record-type-is-different-from-the-record-type-associated-with-the-addressing-type-of-the-endpoints"></a>Co się stanie, gdy typ rekordu przychodzące zapytania jest inny niż typ rekordu, skojarzone z typem adresowania punkty końcowe?
+Po odebraniu zapytania względem profilu usługi Traffic Manager umożliwia znalezienie najpierw, punkt końcowy, który musi być zwracane zgodnie z określonej metody routingu i stan kondycji punktów końcowych. Następnie przeszukuje na żądany w zapytaniu przychodzących typ rekordu i typ rekordu, skojarzone z punktem końcowym przed zwróceniem odpowiedzi na podstawie poniższej tabeli.
+
+Dla profilów przy użyciu dowolnej metody routingu w innych niż atrybut wielowartościowy elementu:
+|Przychodzące żądania zapytania|    Typ punktu końcowego|  Podany odpowiedź|
+|--|--|--|
+|WSZYSTKIE |  A / AAAA / CNAME |  Docelowy punkt końcowy| 
+|A |    A / CNAME | Docelowy punkt końcowy|
+|A |    AAAA |  NODATA |
+|AAAA | AAAA / CNAME |  Docelowy punkt końcowy|
+|AAAA | A | NODATA |
+|CNAME |    CNAME | Docelowy punkt końcowy|
+|CNAME  |A / AAAA | NODATA |
+|
+Dla profilów za pomocą metody routingu opartego na ustawić atrybut wielowartościowy elementu:
+
+|Przychodzące żądania zapytania|    Typ punktu końcowego | Podany odpowiedź|
+|--|--|--|
+|WSZYSTKIE |  Kombinacja A i AAAA | Miejsce docelowe punktów końcowych|
+|A |    Kombinacja A i AAAA | Tylko docelowych punktów końcowych, wpisz|
+|AAAA   |Kombinacja A i AAAA|     Tylko docelowych punktów końcowych typu AAAA|
+|CNAME |    Kombinacja A i AAAA | NODATA |
+
+### <a name="can-i-use-a-profile-with-ipv4--ipv6-addressed-endpoints-in-a-nested-profile"></a>Można używać profilu z połączeniami IPv4 / IPv6 rozwiązane punktów końcowych w profilu zagnieżdżone?
+Tak, z wyjątkiem, że profil typu atrybut wielowartościowy elementu nie może być profil nadrzędnego w profilu zagnieżdżone skonfigurowaniem.
+
+
 ### <a name="i-stopped-an-azure-cloud-service--web-application-endpoint-in-my-traffic-manager-profile-but-i-am-not-receiving-any-traffic-even-after-i-restarted-it-how-can-i-fix-this"></a>Zatrzymano usługi w chmurze platformy Azure / sieci web punktu końcowego aplikacji w moim profilu usługi Traffic Manager, ale nie otrzymuję cały ruch nawet w przypadku, gdy I ponownie uruchomiony. Jak można to naprawić?
 
 Gdy platformy Azure, usługa w chmurze / sieci web punktu końcowego aplikacji jest zatrzymana zatrzymanie usługi Traffic Manager sprawdzenia jej kondycji, a następnie ponownie uruchamia kontrole kondycji, tylko wtedy, gdy wykryje, że uruchomieniu punktu końcowego. Aby uniknąć tego opóźnienia, wyłącz i ponownie włączyć punkt końcowy w profilu usługi Traffic Manager, po ponownym uruchomieniu punktu końcowego.   
@@ -326,9 +399,13 @@ Za pomocą tych ustawień, usługa Traffic Manager może zapewnić przejścia w 
 
 Usługa Traffic Manager są ustawienia monitorowania na poziomie profilu. Jeśli potrzebujesz użyć innego ustawienia monitorowania dla tylko jeden punkt końcowy, może to nastąpić przez punkt końcowy jako [zagnieżdżone profilu](traffic-manager-nested-profiles.md) którego ustawienia monitorowania różnią się od profilu nadrzędnej.
 
-### <a name="what-host-header-do-endpoint-health-checks-use"></a>Jakie kondycja punktu końcowego nagłówka hosta sprawdza, czy użycie?
+### <a name="how-can-i-assign-http-headers-to-the-traffic-manager-health-checks-to-my-endpoints"></a>Jak można przypisać nagłówków HTTP do usługi Traffic Manager kontroli kondycji moje punkty końcowe?
+Usługa Traffic Manager umożliwia określenie niestandardowych nagłówków w tym HTTP (S) kontroli kondycji, inicjuje go do punktów końcowych. Jeśli chcesz określić niestandardowy nagłówek, możesz to zrobić na poziomie profilu (ma zastosowanie do wszystkich punktów końcowych) lub je określić na poziomie punktu końcowego. Jeśli nagłówek jest zdefiniowany na obu poziomach, określona na poziomie punktu końcowego spowoduje przesłonięcie poziomu profile, jeden.
+Jeden typowy przypadek użycia tego jest określenie nagłówki hosta tak, aby żądania usługi Traffic Manager może uzyskać prawidłowo kierowane do punktu końcowego usługi hostowanej w środowisku wielodostępnym. Innym przypadku użycia tego jest zidentyfikowanie żądania usługi Traffic Manager z dzienników żądania HTTP (S) punktu końcowego
 
-Usługa Traffic Manager używa nagłówki hosta kontroli kondycji HTTP i HTTPS. Nagłówek hosta, używane przez usługę Traffic Manager jest nazwą obiektu docelowego punktu końcowego, skonfigurowanym w profilu. Wartość nagłówka hosta nie można określić osobno z właściwością target.
+## <a name="what-host-header-do-endpoint-health-checks-use"></a>Jakie kondycja punktu końcowego nagłówka hosta sprawdza, czy użycie?
+Jeśli nie podano żadnego ustawienia nagłówka niestandardowego hosta, nagłówek hosta, używane przez usługę Traffic Manager jest nazwą DNS skonfigurowanych w profilu, obiektu docelowego punktu końcowego, jeśli jest dostępny. 
+
 
 ### <a name="what-are-the-ip-addresses-from-which-the-health-checks-originate"></a>Jakie są adresy IP, z których pochodzą kontroli kondycji?
 

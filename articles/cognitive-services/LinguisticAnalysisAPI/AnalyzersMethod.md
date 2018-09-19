@@ -1,24 +1,25 @@
 ---
-title: Metoda analizatorów Lingistic analizy interfejsu API | Dokumentacja firmy Microsoft
-description: Analizatory interfejsu API REST zawiera listę analizatorów, które są obecnie obsługiwane przez usługę w kognitywnych usług firmy Microsoft.
+title: Metoda Analyzers - Lingistic interfejsu API analizy
+titlesuffix: Azure Cognitive Services
+description: Analizatory interfejsu API REST zawiera listę analizatorów, które są obecnie obsługiwane przez interfejsu API analizy językowej.
 services: cognitive-services
 author: RichardSunMS
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: linguistic-analysis
-ms.topic: article
+ms.topic: conceptual
 ms.date: 06/30/2016
 ms.author: lesun
-ms.openlocfilehash: 3fc243a0da77c5bae9009929f2b82e1353347752
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b443bbd6377f0720c8be86bbe2b7a3e8ab8cb880
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346925"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129016"
 ---
-# <a name="analyzers-method"></a>Analizatory — metoda
+# <a name="analyzers-method"></a>Metoda analyzers
 
-**Analizatorów** interfejsu API REST zawiera listę analizatorów obecnie obsługiwane przez usługę.
+**Analizatory** interfejsu API REST zawiera listę analizatory są obecnie obsługiwane przez usługę.
 Odpowiedź zawiera ich [nazwy](Analyzer-Names.md) i języków obsługiwanych przez każdą (na przykład "en" w języku angielskim).
 
 ## <a name="request-parameters"></a>Parametry żądania
@@ -26,14 +27,14 @@ Brak
 
 <br>
 
-## <a name="response-parameters"></a>Parametry odpowiedzi
+## <a name="response-parameters"></a>Parametrów odpowiedzi
 Name (Nazwa) | Typ | Opis
 -----|------|--------------
-Języki | Lista ciągów | Lista dwóch kodów litery ISO języka, dla których można użyć tego analizatora.
+Języki | Lista ciągów | Lista dwóch kodów literę ISO języka, dla których można użyć tego analizatora.
 id   | ciąg | Unikatowy identyfikator dla tego analizatora
-rodzaj | ciąg | szerokie typu analizatora tutaj
-Specyfikacja | ciąg | Nazwa specyfikacji używany dla tego analizatora
-Implementacja | ciąg | Opis modelu i/lub algorytm za tego analizatora
+rodzaj | ciąg | szerokie typ analizatora tutaj
+Specyfikacja | ciąg | Nazwa specyfikacji używane dla tego analizatora
+Implementacja | ciąg | Opis modelu i/lub algorytm, za ten analizatora
 
 <br>
 ## <a name="example"></a>Przykład

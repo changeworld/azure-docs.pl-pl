@@ -1,6 +1,6 @@
 ---
-title: 'Uwierzytelnianie użytkownika końcowego: Data Lake Store za pomocą usługi Azure Active Directory w języku Java | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak wykonać uwierzytelnianie użytkownika końcowego z Data Lake Store za pomocą usługi Azure Active Directory z językiem Java
+title: 'Uwierzytelnianie użytkowników końcowych: Java za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak wykonać uwierzytelnianie użytkowników końcowych za pomocą usługi Azure Data Lake Storage Gen1 za pomocą usługi Azure Active Directory za pomocą języka Java
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 633bf87d1e02a1132cfc5cd151b1e58418de8152
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 47b975b3ea0cfa9d2fb2536236b0a8dfaef14503
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625022"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126942"
 ---
-# <a name="end-user-authentication-with-data-lake-store-using-java"></a>Uwierzytelnianie użytkownika końcowego za pomocą usługi Data Lake Store za pomocą języka Java
+# <a name="end-user-authentication-with-azure-data-lake-storage-gen1-using-java"></a>Uwierzytelnianie użytkowników końcowych za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu języka Java
 > [!div class="op_single_selector"]
 > * [Korzystanie z języka Java](data-lake-store-end-user-authenticate-java-sdk.md)
 > * [Korzystanie z zestawu SDK dla platformy .NET](data-lake-store-end-user-authenticate-net-sdk.md)
@@ -27,12 +27,12 @@ ms.locfileid: "34625022"
 > 
 >   
 
-W tym artykule opisano sposób użycia zestawu Java SDK w celu uwierzytelniania użytkowników końcowych za pomocą usługi Azure Data Lake Store. Do usługi do uwierzytelniania przy użyciu przy użyciu zestawu SDK Java usługi Data Lake Store, zobacz [do usługi uwierzytelniania za pomocą usługi Data Lake Store za pomocą języka Java](data-lake-store-service-to-service-authenticate-java.md).
+W tym artykule dowiesz się, jak korzystanie z zestawu SDK języka Java w celu uwierzytelniania użytkowników końcowych za pomocą usługi Azure Data Lake Storage Gen1. Do usługi do uwierzytelniania przy użyciu Data Lake Storage Gen1 przy użyciu zestawu SDK języka Java, zobacz [uwierzytelniania Service to service za pomocą programu Data Lake Storage Gen1 przy użyciu języka Java](data-lake-store-service-to-service-authenticate-java.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Tworzenie aplikacji usługi Azure Active Directory "Native"**. Należy wykonać czynności opisane w [uwierzytelniania użytkowników końcowych za pomocą usługi Data Lake Store za pomocą usługi Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
+* **Tworzenie aplikacji usługi Azure Active Directory "Natywnego"**. Zostały wykonane kroki opisane w [uwierzytelnianie użytkowników końcowych za pomocą programu Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory](data-lake-store-end-user-authenticate-using-active-directory.md).
 
 * [Maven](https://maven.apache.org/install.html). Ten samouczek używa programu Maven na potrzeby zależności między kompilacją i projektem. Chociaż istnieje możliwość kompilacji bez używania systemu kompilacji, takiego jak Maven lub Gradle, systemy te znacznie ułatwiają zarządzanie zależnościami.
 
@@ -56,7 +56,7 @@ W tym artykule opisano sposób użycia zestawu Java SDK w celu uwierzytelniania 
           </dependency>
         </dependencies>
    
-    Pierwszą zależnością jest użycie zestawu SDK usługi Data Lake Store (`azure-data-lake-store-sdk`) z repozytorium maven. Drugą zależnością (`slf4j-nop`) jest określenie struktury rejestrowania używanej dla tej aplikacji. Zestaw SDK usługi Data Lake Store używa fasady rejestrowania [slf4j](http://www.slf4j.org/), która umożliwia wybór spośród wielu popularnych struktur rejestrowania, takich jak log4j, rejestrowanie Java, logback itp. lub brak rejestrowania. W tym przykładzie wyłączyliśmy rejestrowanie, dlatego używamy powiązania **slf4j-nop**. Aby używać innych opcji rejestrowania w aplikacji, zobacz [tutaj](http://www.slf4j.org/manual.html#projectDep).
+    Pierwszą zależnością jest użycie zestawu SDK usługi Data Lake Storage Gen1 (`azure-data-lake-store-sdk`) z repozytorium maven. Drugą zależnością (`slf4j-nop`) jest określenie struktury rejestrowania używanej dla tej aplikacji. Korzysta z zestawu SDK usługi Data Lake Storage Gen1 [slf4j](http://www.slf4j.org/) fasady rejestrowania, które umożliwia wybór spośród wielu popularnych struktur rejestrowania, takich jak log4j, rejestrowanie Java, logback itp., lub Brak rejestrowania. W tym przykładzie wyłączyliśmy rejestrowanie, dlatego używamy powiązania **slf4j-nop**. Aby używać innych opcji rejestrowania w aplikacji, zobacz [tutaj](http://www.slf4j.org/manual.html#projectDep).
 
 3. Dodaj do swojej aplikacji następujące instrukcje importowania.
 
@@ -67,17 +67,17 @@ W tym artykule opisano sposób użycia zestawu Java SDK w celu uwierzytelniania 
         import com.microsoft.azure.datalake.store.oauth2.AccessTokenProvider;
         import com.microsoft.azure.datalake.store.oauth2.DeviceCodeTokenProvider;
 
-4. Użyj następującego fragmentu kodu w aplikacji Java można uzyskać tokenu dla aplikacji natywnej usługi Active Directory został utworzony wcześniej przy użyciu `DeviceCodeTokenProvider`. Zastąp **wypełniania-tutaj** rzeczywiste wartości dla natywnych aplikacji usługi Azure Active Directory.
+4. Aby uzyskać token dla usługi Active Directory aplikacji natywnej utworzonego wcześniej przy użyciu za pomocą następującego fragmentu kodu w aplikacji Java `DeviceCodeTokenProvider`. Zastąp **Fill-in-tutaj** rzeczywistymi wartościami dla natywnych aplikacji Azure Active Directory.
 
         private static String nativeAppId = "FILL-IN-HERE";
             
         AccessTokenProvider provider = new DeviceCodeTokenProvider(nativeAppId);   
 
-Zestaw SDK usługi Data Lake Store udostępnia wygodne metody zarządzania tokenami zabezpieczającymi, które są potrzebne do komunikacji z kontem usługi Data Lake Store. Jednak zestaw SDK nie zmusza do używania tylko tych metod. Możesz również używać jakichkolwiek innych sposobów uzyskiwania tokenu, na przykład przy użyciu [zestawu SDK usługi Azure Active Directory](https://github.com/AzureAD/azure-activedirectory-library-for-java) lub własnego kodu niestandardowego.
+Zestaw SDK usługi Data Lake Storage Gen1 udostępnia wygodne metody, które umożliwiają zarządzanie tokeny zabezpieczające, potrzebne do komunikacji z kontem Data Lake Storage Gen1. Jednak zestaw SDK nie zmusza do używania tylko tych metod. Możesz również używać jakichkolwiek innych sposobów uzyskiwania tokenu, na przykład przy użyciu [zestawu SDK usługi Azure Active Directory](https://github.com/AzureAD/azure-activedirectory-library-for-java) lub własnego kodu niestandardowego.
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule przedstawiono sposób uwierzytelniania użytkowników końcowych do uwierzytelniania w usłudze Azure Data Lake Store przy użyciu zestawu SDK Java. Teraz można przeglądać następujące artykuły, które porozmawiać na temat sposobu korzystania z zestawu Java SDK do pracy z usługą Azure Data Lake Store.
+W tym artykule przedstawiono sposób uwierzytelniania za pomocą usługi Azure Data Lake Storage Gen1 za pomocą uwierzytelniania użytkowników końcowych przy użyciu zestawu SDK języka Java. Możesz teraz przejrzeć następujące artykuły, które omówiono sposób korzystania z zestawu SDK Java do pracy z usługi Azure Data Lake Storage Gen1.
 
-* [Operacje na danych w usłudze Data Lake Store przy użyciu zestawu SDK Java](data-lake-store-get-started-java-sdk.md)
+* [Operacje na danych na Data Lake Storage Gen1 przy użyciu zestawu SDK języka Java](data-lake-store-get-started-java-sdk.md)
 
 

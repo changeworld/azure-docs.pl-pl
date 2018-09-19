@@ -12,12 +12,12 @@ ms.date: 09/14/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 77b49a050724cbf4666ca5253cc1fa518c441e62
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: ac9783d970af96242266a787071ec831ef5c0df8
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732536"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296910"
 ---
 # <a name="how-to-sign-up-for-azure-active-directory-as-an-organization"></a>Porady: Zarejestruj się w usłudze Azure Active Directory jako organizacja
 Załóż konto usługi Azure Active Directory (Azure AD) przy użyciu nowej subskrypcji Microsoft Azure:
@@ -36,5 +36,11 @@ Załóż konto usługi Azure Active Directory (Azure AD) przy użyciu nowej subs
 
 - [Używanie lokalnej infrastruktury tożsamości w chmurze](../connect/active-directory-aadconnect.md)
 
+<<<<<<< HEAD
+* [Blog Microsoft Azure](https://azure.microsoft.com/blog/)
+* [Co to jest usługa Azure AD?](active-directory-whatis.md)
+* [Używanie lokalnej infrastruktury tożsamości w chmurze](../hybrid/whatis-hybrid-identity.md)
+=======
 - [Odwiedź blog Microsoft Azure](https://azure.microsoft.com/blog/)
+>>>>>>> 73f447b1499ba1f189efb6832ad759f1230e55a2
 

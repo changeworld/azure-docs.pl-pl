@@ -14,17 +14,40 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 04/03/2017
 ms.author: terrylan
-ms.openlocfilehash: 0b3b8082412b12a0fffbaea04409a8bbb3f4ac15
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 45f5dc840f015793912e314ab3d47e54a409708e
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295381"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126670"
 ---
 # <a name="protecting-azure-sql-service-and-data-in-azure-security-center"></a>Ochrona usługi Azure SQL i danych w usłudze Azure Security Center
 Usługa Azure Security Center analizuje stan zabezpieczeń zasobów platformy Azure. Gdy usługa Security Center zidentyfikuje potencjalnych luk w zabezpieczeniach, tworzy zaleceń, które przeprowadzą Cię przez proces konfigurowania wymaganych kontrolek.  Zalecenia odnoszą się do typów zasobów platformy Azure: maszyny wirtualne (VM), networking, SQL i dane i aplikacje.
 
 W tym artykule opisano zaleceń, które mają zastosowanie do usługi Azure SQL i danych. Centrum zalecenia dotyczące włączania inspekcji dla serwerów SQL platformy Azure i bazy danych, włączania szyfrowania baz danych SQL i włączania szyfrowania konta magazynu platformy Azure.  Użyj poniższej tabeli jako odwołanie ułatwiające zrozumienie dostępnych zaleceń usługi i danych SQL i jak każdy z nich działa w przypadku zastosowania.
+### <a name="monitor-data-security"></a>Monitorowanie bezpieczeństwa danych
+
+Po kliknięciu pozycji **Bezpieczeństwo danych** w sekcji **Zapobieganie** zostanie otwarty blok **Zasoby danych** z zaleceniami dotyczącymi usług SQL i Storage. Przedstawia on także [zalecenia](security-center-sql-service-recommendations.md) dotyczące ogólnej kondycji bazy danych. Aby uzyskać więcej informacji dotyczących szyfrowania magazynu, przeczytaj artykuł [Enable encryption for Azure storage account in Azure Security Center](security-center-enable-encryption-for-storage-account.md) (Włączanie szyfrowania dla konta usługi Azure Storage w usłudze Azure Security Center).
+
+![Zasoby danych](./media/security-center-monitoring/security-center-monitoring-fig13-newUI-2017.png)
+
+W obszarze **Zalecenia SQL** można kliknąć dowolne zalecenie i uzyskać więcej szczegółów na temat dalszych działań w celu rozwiązania problemu. Poniższy przykład pokazuje rozszerzenie zalecenia **Inspekcja bazy danych i wykrywanie zagrożeń w bazach danych SQL**.
+
+![Szczegółowe informacje o zaleceniach SQL](./media/security-center-monitoring/security-center-monitoring-fig14-ga-new.png)
+
+Blok **Włączanie inspekcji i wykrywania zagrożeń dla baz danych SQL** zawiera następujące informacje:
+
+* Lista baz danych SQL
+* Serwer, na którym znajdują się bazy danych SQL
+* Informacje o tym, czy to ustawienie jest dziedziczone z serwera lub czy jest unikatowe w tej bazie danych
+* Bieżący stan
+* Ważność problemu
+
+Po kliknięciu bazy danych w celu zastosowania tego zalecenia zostanie otwarty blok **Inspekcja i wykrywanie zagrożeń**, jak pokazano na poniższym ekranie.
+
+![Inspekcja i wykrywanie zagrożeń](./media/security-center-monitoring/security-center-monitoring-fig15-ga.png)
+
+Aby włączyć funkcję inspekcji, zaznacz pole wyboru **WŁĄCZONE** poniżej opcji **Inspekcja**.
 
 ## <a name="available-sql-service-and-data-recommendations"></a>Dostępne usługi i dane zalecenia dotyczące SQL
 | Zalecenie | Opis |

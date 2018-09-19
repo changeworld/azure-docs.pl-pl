@@ -1,27 +1,27 @@
 ---
-title: Interfejsu API tłumaczenia tekstu rejestracji | Dokumentacja firmy Microsoft
-titleSuffix: Microsoft Cognitive Services
+title: Interfejsu API tłumaczenia tekstu rejestracji
+titleSuffix: Azure Cognitive Services
 description: Jak zarejestrować się do interfejsu API tłumaczenia tekstu.
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: nolachar
-ms.openlocfilehash: 2aa293acfa1a9e3fd95a64f6981bd8dc9747b6b6
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 18d2926be9d358b90e5b34754e689604aef85522
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "36265561"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128321"
 ---
 # <a name="how-to-sign-up-for-the-translator-text-api"></a>Jak zarejestrować się do interfejsu API tłumaczenia tekstu
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
-- Nie masz jeszcze konta? Możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/) eksperymentowanie bez dodatkowych opłat.
+- Nie masz jeszcze konta? Możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/free/), aby eksperymentować bez opłat.
 - Masz już konto? [Rejestrowanie](https://ms.portal.azure.com/)
 
 ## <a name="create-a-subscription-to-the-translator-text-api"></a>Utwórz subskrypcję interfejsu API tłumaczenia tekstu

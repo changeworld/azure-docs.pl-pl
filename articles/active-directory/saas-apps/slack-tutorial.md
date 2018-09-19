@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/16/2018
+ms.date: 09/14/2018
 ms.author: jeedes
-ms.openlocfilehash: b742f3eb9124093bcf0c3c912bbae0367cdcce56
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 5b1099e46cf1aa2fd4b948fee8407cfd859390ce
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053843"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129120"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-slack"></a>Samouczek: Integracja usługi Azure Active Directory z Slack
 
@@ -217,6 +217,9 @@ Celem tej sekcji jest, aby utworzyć użytkownika o nazwie Britta Simon w Slack.
 
 > [!NOTE]
 > Jeśli potrzebujesz ręcznie utworzyć użytkownika, musisz skontaktować się z [zespołem pomocy technicznej Slack](https://slack.com/help/contact).
+
+> [!NOTE]
+> Program Azure AD Connect narzędzia do synchronizacji, które można synchronizować lokalne Active Directory tożsamości usługi Azure AD, a następnie te synchronizowanych użytkowników można również użyć aplikacji, jak inni użytkownicy w chmurze, takich jak.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

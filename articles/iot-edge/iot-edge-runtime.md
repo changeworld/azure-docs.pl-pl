@@ -8,12 +8,12 @@ ms.date: 08/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f832b05969c028880f6e375ff4a2ee8dc7a7eaf4
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 3f3a8c8a8bce59d1757e9ad53c8ebdbd06a7f33f
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42060236"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294173"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Omówienie środowiska uruchomieniowego usługi Azure IoT Edge oraz jej architektury
 
@@ -23,7 +23,7 @@ ms.locfileid: "42060236"
 
 * Instaluje i aktualizuje obciążenia na urządzeniu.
 * Zapewnia zachowanie standardów zabezpieczeń usługi Azure IoT Edge na urządzeniu.
-* Zapewnia, że [moduły usługi IoT Edge] [ lnk-modules] nieprzerwane działanie.
+* Zapewnia, że [moduły usługi IoT Edge] [lnk modułów] są zawsze uruchamiane.
 * Przesyła raporty o kondycji modułów do chmury na potrzeby zdalnego monitorowania.
 * Usprawnia komunikację między podrzędnymi urządzeniami liścia a urządzenia usługi IoT Edge.
 * Usprawnia komunikację między modułami na urządzeniu usługi IoT Edge.
@@ -117,7 +117,7 @@ Aby uzyskać więcej informacji na temat struktury zabezpieczeń usługi Azure I
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Omówienie modułów usługi Azure IoT Edge][lnk-modules]
+[Świadomość, że certyfikaty usługi Azure IoT Edge][lnk-certs]
 
 <!-- Images -->
 [1]: ./media/iot-edge-runtime/Pipeline.png
@@ -126,4 +126,4 @@ Aby uzyskać więcej informacji na temat struktury zabezpieczeń usługi Azure I
 [4]: ./media/iot-edge-runtime/ModuleEndpointsWithRoutes.png
 
 <!-- Links -->
-[lnk-modules]: iot-edge-modules.md
+[lnk-certs]: iot-edge-certs.md

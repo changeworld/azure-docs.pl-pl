@@ -1,6 +1,6 @@
 ---
-title: Uwierzytelnianie w Data Lake Store przy użyciu usługi Azure Active Directory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak i uwierzytelniania w usłudze Data Lake Store przy użyciu usługi Azure Active Directory
+title: Uwierzytelnianie w usłudze Azure Data Lake magazynu Gen1 przy użyciu usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak i uwierzytelnianie za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,24 +11,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 7db48b03a6f34655917c82702c12dbc9bc4c987a
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: feb35336681376f6f4bd262418146d931f3d1e83
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494181"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294887"
 ---
-# <a name="authentication-with-data-lake-store-using-azure-active-directory"></a>Authentication with Data Lake Store przy użyciu usługi Azure Active Directory uwierzytelnianie
+# <a name="authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Uwierzytelnianie za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory
 
-Azure Data Lake Store używa usługi Azure Active Directory do uwierzytelniania. Przed tworzenia aplikacji, która współdziała z usługi Azure Data Lake Store, musisz zdecydować, jak do uwierzytelniania aplikacji z usługą Azure Active Directory (Azure AD).
+Azure Data Lake Storage Gen1 używa usługi Azure Active Directory do uwierzytelniania. Przed tworzenia aplikacji współdziałająca z usługą Data Lake Storage Gen1, należy określić sposób uwierzytelniania aplikacji za pomocą usługi Azure Active Directory (Azure AD).
 
 ## <a name="authentication-options"></a>Opcje uwierzytelniania
 
-* **Uwierzytelnianie użytkowników końcowych** — użytkownik końcowy poświadczeń platformy Azure są używane do uwierzytelniania w usłudze Data Lake Store. Tworzonych do pracy z Data Lake Store aplikacji wyświetli monit o poświadczenia użytkownika. W rezultacie, ten mechanizm uwierzytelniania jest *interaktywne* i aplikacja zostanie uruchomiona w kontekście zalogowanego użytkownika. Aby uzyskać więcej informacji oraz instrukcje, zobacz [uwierzytelnianie użytkowników końcowych dla Data Lake Store](data-lake-store-end-user-authenticate-using-active-directory.md).
+* **Uwierzytelnianie użytkowników końcowych** — użytkownik końcowy poświadczeń platformy Azure są używane do uwierzytelniania w usłudze Data Lake Storage Gen1. Aplikację, którą tworzysz do pracy z Data Lake Storage Gen1 wyświetli monit o poświadczenia użytkownika. W rezultacie, ten mechanizm uwierzytelniania jest *interaktywne* i aplikacja zostanie uruchomiona w kontekście zalogowanego użytkownika. Aby uzyskać więcej informacji oraz instrukcje, zobacz [uwierzytelnianie użytkowników końcowych dla Data Lake Storage Gen1](data-lake-store-end-user-authenticate-using-active-directory.md).
 
-* **Service-to-service authentication** — Użyj tej opcji, jeśli chcesz, aby uwierzytelniać Data Lake Store aplikacji. W takiej sytuacji należy utworzyć aplikację usługi Azure Active Directory (AD) i użyć klucza z aplikacji usługi Azure AD do uwierzytelniania w usłudze Data Lake Store. W rezultacie, ten mechanizm uwierzytelniania jest *nieinterakcyjnych*. Aby uzyskać więcej informacji oraz instrukcje, zobacz [uwierzytelniania do usługi Data Lake Store](data-lake-store-service-to-service-authenticate-using-active-directory.md).
+* **Service-to-service authentication** — Użyj tej opcji, jeśli chcesz, aby uwierzytelniać Data Lake Storage Gen1 aplikacji. W takiej sytuacji należy utworzyć aplikację usługi Azure Active Directory (AD) i użyć klucza z aplikacji usługi Azure AD do uwierzytelniania w usłudze Data Lake Storage Gen1. W rezultacie, ten mechanizm uwierzytelniania jest *nieinterakcyjnych*. Aby uzyskać więcej informacji oraz instrukcje, zobacz [uwierzytelniania do usługi Data Lake Storage Gen1](data-lake-store-service-to-service-authenticate-using-active-directory.md).
 
-W poniższej tabeli przedstawiono, jak i mechanizmów uwierzytelniania service to service dla użytkowników końcowych są obsługiwane w przypadku Data Lake Store. Oto, jak odczytać tabeli.
+W poniższej tabeli przedstawiono, jak i mechanizmów uwierzytelniania service to service dla użytkowników końcowych są obsługiwane w przypadku Data Lake Storage Gen1. Oto, jak odczytać tabeli.
 
 * Symbol ✔ * oznacza, że opcja uwierzytelniania jest obsługiwana i łączy do artykułu, który demonstruje sposób użycia opcji uwierzytelniania. 
 * ✔ symbol oznacza, że opcja uwierzytelniania jest obsługiwany. 

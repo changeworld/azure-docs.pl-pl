@@ -17,12 +17,12 @@ ms.date: 07/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
 ms.custom: seohack1
-ms.openlocfilehash: 38d024de0fd2490d33f7c06498d3ff8d0d06e503
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 3b4c9de16c7248cbd3087689544d70fe22c858fd
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42056780"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296417"
 ---
 # <a name="setting-up-on-premises-conditional-access-by-using-azure-active-directory-device-registration"></a>Konfigurowanie lokalnego dostępu warunkowego przy użyciu usługi Azure Active Directory rejestracji urządzenia
 Gdy możesz wymagać od użytkowników dołączenie do miejsca pracy swoje urządzenia osobiste do usługi rejestracji urządzeń usługi Azure Active Directory (Azure AD), ich urządzeń można oznaczyć jako znane w organizacji. Oto przewodnik krok po kroku dotyczące włączania dostępu warunkowego do aplikacji lokalnych przy użyciu usługi Active Directory Federation Services (AD FS) w systemie Windows Server 2012 R2.
@@ -88,7 +88,7 @@ Wykonaj kroki z listy kontrolnej, aby włączyć i skonfigurować usługę rejes
 ## <a name="part-3-enable-device-writeback-in-azure-ad"></a>Część 3: Włącz urządzenia zapisu w usłudze Azure AD
 | Zadanie | Informacje ogólne |
 | --- | --- |
-| Wykonaj drugiej części "Włączanie zapisywania zwrotnego urządzeń w usłudze Azure AD Connect." Po zakończeniu pracy, wróć do tego przewodnika. |[Włączanie zapisywania zwrotnego urządzeń w programie Azure AD Connect](./connect/active-directory-aadconnect-feature-device-writeback.md) |
+| Wykonaj drugiej części "Włączanie zapisywania zwrotnego urządzeń w usłudze Azure AD Connect." Po zakończeniu pracy, wróć do tego przewodnika. |[Włączanie zapisywania zwrotnego urządzeń w programie Azure AD Connect](hybrid/how-to-connect-device-writeback.md) |
 
 ## <a name="optional-part-4-enable-multi-factor-authentication"></a>[Opcjonalnie] Część 4: Włącz uwierzytelnianie wieloskładnikowe
 Zdecydowanie zaleca się skonfigurować jeden z kilku opcji uwierzytelniania Multi-Factor Authentication. Jeśli chcesz wymagać uwierzytelniania wieloskładnikowego, zobacz [wybierz rozwiązania zabezpieczeń uwierzytelniania wieloskładnikowego](authentication/concept-mfa-whichversion.md). Zawiera opis każdego rozwiązania i linki do pomocne w konfigurowaniu wybranego rozwiązania.
@@ -107,9 +107,9 @@ Wdrożenie jest teraz ukończona i możesz wypróbować niektóre scenariusze. U
 
 **Zobacz:**
 
-- [Integrowanie katalogów lokalnych z usługą Azure Active Directory](./connect/active-directory-aadconnect.md) — Aby przejrzeć informacje o pojęciach.
+- [Integrowanie katalogów lokalnych z usługą Azure Active Directory](hybrid/whatis-hybrid-identity.md) — Aby przejrzeć informacje o pojęciach.
 
-- [Instalację niestandardową programu Azure AD Connect](./connect/active-directory-aadconnect-get-started-custom.md) — Aby uzyskać instrukcje instalacji.
+- [Instalację niestandardową programu Azure AD Connect](hybrid/how-to-connect-install-custom.md) — Aby uzyskać instrukcje instalacji.
 
 
 ## <a name="upgrade-your-active-directory-domain-services-schema"></a>Uaktualnienia schematu do usług domenowych Active Directory

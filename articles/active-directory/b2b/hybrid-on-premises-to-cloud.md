@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: mtillman
 ms.reviewer: sasubram
-ms.openlocfilehash: 0cbcb6095c59089008bd9a95b9bb0a3ddaa70a58
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 722ab51d0f591b8f16924d1d5661385267b7f0e6
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984059"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295159"
 ---
 # <a name="grant-locally-managed-partner-accounts-access-to-cloud-resources-using-azure-ad-b2b-collaboration"></a>Udzielanie lokalnie zarządzanych przez partnera kont dostępu do zasobów w chmurze przy użyciu współpracy B2B usługi Azure AD
 
@@ -32,17 +32,17 @@ Są dwa podejścia typowych dla tego:
 - Należy określić atrybut usługi Active Directory nieużywane w środowisku lokalnym (na przykład extensionAttribute1) do użycia jako atrybutu źródłowego. 
 - Alternatywnie dziedziczyć wartość atrybutu UserType inne właściwości. Na przykład chcesz synchronizować wszystkich użytkowników jako gościa, gdy jego atrybut UserPrincipalName usługi Active Directory w środowisku lokalnym, który kończy się z domeną *@partners.contoso.com*.
  
-Atrybut szczegółowe wymaganiami, zobacz [Włącz synchronizację UserType](../connect/active-directory-aadconnectsync-change-the-configuration.md#enable-synchronization-of-usertype). 
+Atrybut szczegółowe wymaganiami, zobacz [Włącz synchronizację UserType](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype). 
 
 ## <a name="configure-azure-ad-connect-to-sync-users-to-the-cloud"></a>Skonfiguruj program Azure AD Connect, aby zsynchronizować użytkowników z chmurą
 
 Po zidentyfikowaniu unikatowy atrybut, można skonfigurować program Azure AD Connect do synchronizowania tych użytkowników w chmurze jako użytkownicy usługi Azure AD B2B (oznacza to, że użytkownicy z wartością UserType = gościa). Z punktu widzenia autoryzacji Ci użytkownicy są nie do odróżnienia od użytkowników B2B utworzonymi za pomocą procesu zapraszania współpracy B2B usługi Azure AD.
 
-Aby uzyskać instrukcje dotyczące wdrażania, zobacz [Włącz synchronizację UserType](../connect/active-directory-aadconnectsync-change-the-configuration.md#enable-synchronization-of-usertype).
+Aby uzyskać instrukcje dotyczące wdrażania, zobacz [Włącz synchronizację UserType](../hybrid/how-to-connect-sync-change-the-configuration.md#enable-synchronization-of-usertype).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Współpracy usługi Azure Active Directory B2B dla organizacji hybrydowych](hybrid-organizations.md)
 - [Użytkowników B2B przydział w usłudze Azure AD dostęp do aplikacji w środowisku lokalnym](hybrid-cloud-to-on-premises.md)
-- Omówienie programu Azure AD Connect, zobacz [integrowanie katalogów lokalnych z usługą Azure Active Directory](../connect/active-directory-aadconnect.md).
+- Omówienie programu Azure AD Connect, zobacz [integrowanie katalogów lokalnych z usługą Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 

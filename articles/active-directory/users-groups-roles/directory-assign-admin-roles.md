@@ -14,12 +14,12 @@ ms.date: 09/07/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 2768ba4726ccaf5e2249e356e425aeafaaaf91f6
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 985fd559c0af0306dc5b0868a8d7ccc66ca790f8
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349249"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296706"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Przypisywanie ról administratorów w usłudze Azure Active Directory
 
@@ -119,12 +119,20 @@ Dostępne są następujące role administratora:
 
 * **[Administrator usługi SharePoint](#sharepoint-service-administrator)**: użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft SharePoint Online, jeśli usługa została zainstalowana, a także możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi. Więcej informacji o [ról administratora o usługi Office 365](https://support.office.com/article/About-Office-365-admin-roles-da585eea-f576-4f55-a1e0-87090b6aaa9d).
 
-* **[Skype dla firm / Administrator usługi Lync](#lync-service-administrator)**: użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Skype dla firm, gdy usługa jest obecna, a także zarządzać specyficzne dla programu Skype atrybutów użytkownika w usłudze Azure Active Katalog. Ponadto ta rola daje możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi i uzyskać dostęp do zespołów i Skype dla firm Centrum administracyjnego. Konto musi mieć również licencję dla zespołów lub nie można uruchomić polecenia cmdlet programu PowerShell zespołów. Więcej informacji o [dotyczące programu Skype dla firm przypisaną rolę administratora](https://support.office.com/en-us/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) i zespołów, informacje o licencjonowaniu na [Skype dla firm i Microsoft Teams dodatek licencjonowania](https://docs.microsoft.com/en-us/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
+* **[Skype dla firm / Administrator usługi Lync](#lync-service-administrator)**: użytkownicy z tą rolą mają uprawnienia globalne w usłudze Microsoft Skype dla firm, gdy usługa jest obecna, a także zarządzać specyficzne dla programu Skype atrybutów użytkownika w usłudze Azure Active Katalog. Ponadto ta rola daje możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi i uzyskać dostęp do zespołów i Skype dla firm Centrum administracyjnego. Konto musi mieć również licencję dla zespołów lub nie można uruchomić polecenia cmdlet programu PowerShell zespołów. Więcej informacji o [dotyczące programu Skype dla firm przypisaną rolę administratora](https://support.office.com/article/about-the-skype-for-business-admin-role-aeb35bda-93fc-49b1-ac2c-c74fbeb737b5) i zespołów, informacje o licencjonowaniu na [Skype dla firm i Microsoft Teams dodatek licencjonowania](https://docs.microsoft.com/skypeforbusiness/skype-for-business-and-microsoft-teams-add-on-licensing/skype-for-business-and-microsoft-teams-add-on-licensing)
 
   > [!NOTE]
   > W interfejsu API Microsoft Graph, interfejs API usługi Azure AD Graph i Azure AD PowerShell ta rola jest rozpoznawana jako "Administrator usługi Lync". "Usługi Skype dla firm Administrator usługi" jest w [witryny Azure portal](https://portal.azure.com/).
   >
   >
+
+* **[Zespoły administratora komunikacji](#teams-communications-administrator)**: użytkownicy w tej roli mogą zarządzać aspektów Microsoft Teams obciążenie związane z głosu & telefonii. W tym narzędzia do zarządzania dla przypisywania numerów telefonów, głos i spotkania zasady i pełny dostęp do narzędzi analizy wywołania.
+
+* **[Zespoły ze specjalistą pomocy technicznej komunikacji](#teams-communications-support-engineer)**: użytkownicy w tej roli można rozwiązywać problemy z komunikacją w ramach Microsoft Teams i Skype dla firm przy użyciu użytkownika wywołać narzędzia do rozwiązywania problemów w Microsoft Teams i Skype dla Centrum administratora firmy. Użytkownicy w tej roli mogą wyświetlać pełną wywołanie rejestrowanie informacji dla wszystkich uczestników związane.
+
+* **[Zespoły, specjalista ds. pomocy technicznej komunikacji](#teams-communications-support-specialist)**: użytkownicy w tej roli można rozwiązywać problemy z komunikacją w ramach Microsoft Teams i Skype dla firm przy użyciu użytkownika wywołać narzędzia do rozwiązywania problemów w Microsoft Teams i Skype dla Centrum administratora firmy. Użytkownicy w tej roli mogą wyświetlać szczegóły użytkownika tylko w wywołaniu dla określonego użytkownika, że ma wyszukiwać.
+
+* **[Zespoły, Administrator usługi](#teams-service-administrator)**: użytkownicy w tej roli mogą zarządzać wszystkimi aspektami obciążenie Microsoft Teams przy użyciu programu Microsoft Teams & Skype Centrum administracyjnego usługi biznesowe i odpowiednie moduły programu PowerShell. W tym, wśród innych obszarów, wszystkie narzędzia do zarządzania związane z telefoniczne, wiadomości, spotkań i same zespoły dbają. Ta rola również przyznaje możliwość zarządzania grupami usługi Office 365.
 
 * **[Administrator kont użytkowników](#user-account-administrator)**: użytkownicy, z tą rolą mogą tworzyć i zarządzać wszystkimi aspektami użytkowników i grup. Ponadto ta rola obejmuje możliwość zarządzania biletami pomocy technicznej i monitorowania kondycji usługi. Obowiązują pewne ograniczenia. Na przykład ta rola nie zezwala na usuwanie administratora globalnego. Administratorzy kont użytkowników można zmienić hasła i unieważnić tokenów odświeżania dla użytkowników, Administratorzy pomocy technicznej i innych administratorów konta użytkownika. Unieważnienie token odświeżania wymusza na użytkowniku, aby zalogować się ponownie.
 
@@ -1081,6 +1089,93 @@ Może zarządzać wszystkimi aspektami usługi SharePoint.
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Odczytywanie i konfigurowanie kondycji usługi Office 365. |
 | Microsoft.office365.SharePoint/allEntities/allTasks | Tworzenie i usuwanie wszystkich zasobów i odczytywanie i aktualizowanie właściwości standardowe w microsoft.office365.sharepoint. |
 | Microsoft.office365.supportTickets/allEntities/allTasks | Tworzenie i zarządzanie biletami pomocy technicznej usługi Office 365. |
+
+### <a name="teams-communications-administrator"></a>Zespoły komunikacji administratora
+Można zarządzać wywołania i funkcje spotkania w usłudze Microsoft Teams.
+
+  > [!NOTE]
+  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
+  >
+  >
+
+  > [!NOTE]
+  > Ta rola ma uprawnienia addditonal poza usługą Azure Active Directory. Zobacz opis roli powyżej, aby uzyskać więcej informacji.
+  >
+  >
+
+| **Akcje** | **Opis** |
+| --- | --- |
+| Microsoft.AAD.Directory/policies/Basic/Read | Przeczytaj podstawowe właściwości zasady w usłudze Azure Active Directory. |
+| microsoft.azure.accessService/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi dostępu do platformy Azure. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Przeczytaj i konfigurowanie usługi Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Tworzenie i zarządzanie biletami pomocy technicznej platformy Azure. |
+| Microsoft.office365.serviceHealth/allEntities/allTasks | Odczytywanie i konfigurowanie kondycji usługi Office 365. |
+| Microsoft.office365.supportTickets/allEntities/allTasks | Tworzenie i zarządzanie biletami pomocy technicznej usługi Office 365. |
+| Microsoft.office365.usageReports/allEntities/Read | Raporty użycia odczytu Office 365. |
+
+### <a name="teams-communications-support-engineer"></a>Ze specjalistą pomocy technicznej komunikacji zespołów
+Można rozwiązywać problemy łączności z poziomu usługi Teams przy użyciu zaawansowanych narzędzi.
+
+  > [!NOTE]
+  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
+  >
+  >
+
+  > [!NOTE]
+  > Ta rola ma uprawnienia addditonal poza usługą Azure Active Directory. Zobacz opis roli powyżej, aby uzyskać więcej informacji.
+  >
+  >
+
+| **Akcje** | **Opis** |
+| --- | --- |
+| Microsoft.AAD.Directory/policies/Basic/Read | Przeczytaj podstawowe właściwości zasady w usłudze Azure Active Directory. |
+| microsoft.azure.accessService/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi dostępu do platformy Azure. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Przeczytaj i konfigurowanie usługi Azure Service Health. |
+| Microsoft.office365.serviceHealth/allEntities/allTasks | Odczytywanie i konfigurowanie kondycji usługi Office 365. |
+
+### <a name="teams-communications-support-specialist"></a>Specjalista ds. pomocy technicznej komunikacji zespołów
+Można rozwiązywać problemy łączności z poziomu usługi Teams przy użyciu podstawowych narzędzi.
+
+  > [!NOTE]
+  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
+  >
+  >
+
+  > [!NOTE]
+  > Ta rola ma uprawnienia addditonal poza usługą Azure Active Directory. Zobacz opis roli powyżej, aby uzyskać więcej informacji.
+  >
+  >
+
+| **Akcje** | **Opis** |
+| --- | --- |
+| Microsoft.AAD.Directory/policies/Basic/Read | Przeczytaj podstawowe właściwości zasady w usłudze Azure Active Directory. |
+| microsoft.azure.accessService/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi dostępu do platformy Azure. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Przeczytaj i konfigurowanie usługi Azure Service Health. |
+| Microsoft.office365.serviceHealth/allEntities/allTasks | Odczytywanie i konfigurowanie kondycji usługi Office 365. |
+
+### <a name="teams-service-administrator"></a>Administrator usługi teams
+Można zarządzać usługą Microsoft Teams.
+
+  > [!NOTE]
+  > Ta rola dziedziczy dodatkowe uprawnienia roli czytelników katalogu.
+  >
+  >
+
+  > [!NOTE]
+  > Ta rola ma uprawnienia addditonal poza usługą Azure Active Directory. Zobacz opis roli powyżej, aby uzyskać więcej informacji.
+  >
+  >
+
+| **Akcje** | **Opis** |
+| --- | --- |
+| microsoft.aad.directory/groups/hiddenMembers/read | Odczytaj właściwość groups.hiddenMembers w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/policies/Basic/Read | Przeczytaj podstawowe właściwości zasady w usłudze Azure Active Directory. |
+| microsoft.azure.accessService/allEntities/allTasks | Zarządzaj wszystkimi aspektami usługi dostępu do platformy Azure. |
+| microsoft.azure.serviceHealth/allEntities/allTasks | Przeczytaj i konfigurowanie usługi Azure Service Health. |
+| microsoft.azure.supportTickets/allEntities/allTasks | Tworzenie i zarządzanie biletami pomocy technicznej platformy Azure. |
+| Microsoft.office365.serviceHealth/allEntities/allTasks | Odczytywanie i konfigurowanie kondycji usługi Office 365. |
+| Microsoft.office365.supportTickets/allEntities/allTasks | Tworzenie i zarządzanie biletami pomocy technicznej usługi Office 365. |
+| Microsoft.office365.usageReports/allEntities/Read | Raporty użycia odczytu Office 365. |
 
 ### <a name="user-account-administrator"></a>Administrator kont użytkowników
 Może zarządzać wszystkimi aspektami użytkowników i grup

@@ -10,18 +10,18 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 5d8fe6282d956d7f399aff9f7aa250c5061dc887
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: eb3c1177f86f4c595280521f4dbcbe8081f68895
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159570"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296248"
 ---
 # <a name="deploy-password-reset-without-requiring-end-user-registration"></a>Wdrażanie resetowania haseł bez wymagania rejestracji użytkowników końcowych
 
 Aby wdrożyć usługi Azure Active Directory (Azure AD) samoobsługowego resetowania haseł (SSPR), dane uwierzytelniania musi być obecny. Niektóre organizacje mają użytkownikom, podaj swoje dane uwierzytelniania, samodzielnie. Jednak wiele organizacji chce synchronizować z danymi, która już istnieje w usłudze Active Directory. Zsynchronizowane dane będą dostępne dla usługi Azure AD i funkcji samoobsługowego resetowania HASEŁ, bez konieczności interakcji z użytkownikiem, jeśli użytkownik:
    * Poprawnie formatowanie danych w Twoim katalogu w środowisku lokalnym.
-   * Konfigurowanie [program Azure AD Connect przy użyciu ustawień ekspresowych](./../connect/active-directory-aadconnect-get-started-express.md).
+   * Konfigurowanie [program Azure AD Connect przy użyciu ustawień ekspresowych](../hybrid/how-to-connect-install-express.md).
 
 Aby działać poprawnie, numerów telefonów musi być w formacie *+ CountryCode PhoneNumber*, na przykład 4255551234 + 1.
 
@@ -36,7 +36,7 @@ Jeśli używasz domyślne ustawienia Azure AD Connect zostały wprowadzone nast�
 
 | Lokalna usługa Active Directory | Azure AD |
 | --- | --- |
-| telephoneNumber | Telefon biurowy |
+| telephoneNumber | Telefon służbowy |
 | Telefon komórkowy | Telefon komórkowy |
 
 Gdy użytkownik zweryfikuje numeru telefonu komórkowego, pole telefonu w obszarze informacje kontaktowe uwierzytelniania w usłudze Azure AD również zostaną wypełnione przy użyciu tego numeru.

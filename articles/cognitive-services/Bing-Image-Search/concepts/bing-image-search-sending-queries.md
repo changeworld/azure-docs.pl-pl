@@ -1,6 +1,7 @@
 ---
-title: Wysyłanie zapytań do interfejsu API wyszukiwania obrazów Bing | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat wysyłania i dostosowywanie zapytania wyszukiwania wysłane do interfejsu API wyszukiwania obrazów Bing.
+title: Wysyłanie zapytań obrazu — interfejs API wyszukiwania obrazów Bing
+titleSuffix: Azure Cognitive Services
+description: Więcej informacji na temat dostosowywania zapytań wyszukiwania wysyłanych do interfejsu API wyszukiwania obrazów Bing.
 services: cognitive-services
 author: aahill
 manager: cgronlun
@@ -10,12 +11,12 @@ ms.component: bing-image-search
 ms.topic: conceptual
 ms.date: 8/8/2018
 ms.author: aahi
-ms.openlocfilehash: bf0db0b6d2aa54a853ba86b570ca05fba902dbc1
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 5d2dcc60a8707394ec07a76e3286929db365c651
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049562"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296519"
 ---
 # <a name="send-queries-to-the-bing-image-search-api"></a>Wysyłanie zapytań do interfejsu API wyszukiwania obrazów Bing
 
@@ -102,7 +103,7 @@ The following shows an example of the pivot queries.
 
 ## <a name="expand-the-query"></a>Rozwiń zapytanie
 
-Jeśli usługa Bing może rozwinąć zapytanie w celu zawężenia kryteriów oryginalnego wyszukiwania, obiekt [Images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) zawiera pole `queryExpansions`. Na przykład, jeśli kwerenda ma *Microsoft Surface*, rozwinięty zapytania mogą być: 
+Jeśli usługa Bing może rozwinąć zapytanie w celu zawężenia kryteriów oryginalnego wyszukiwania, obiekt [Images](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#images) zawiera pole `queryExpansions`. Na przykład, jeśli kwerenda ma *Microsoft Surface*, rozwinięty zapytania mogą być:
 - Microsoft Surface **Pro 3**.
 - Microsoft Surface **RT**.
 - Microsoft Surface **Phone**.

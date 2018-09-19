@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 04/25/2018
+ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0d98aef3e75130bbab7871733f709bf5e2ffdbcb
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 62c171381201f3cedee869aba301859a7047f5ce
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541253"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294917"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Wdrażanie Windows hybrydowego procesu roboczego Runbook
 
@@ -30,7 +30,7 @@ Aby zainstalować i skonfigurować Windows hybrydowego procesu roboczego Runbook
 Dostępne są następujące minimalne wymagania dotyczące Windows hybrydowego procesu roboczego Runbook:
 
 * System Windows Server 2012 lub nowszy.
-* Windows PowerShell 4.0 lub nowszy ([pobrać program WMF 4.0](https://www.microsoft.com/download/details.aspx?id=40855)). Firma Microsoft zaleca program Windows PowerShell 5.1 ([Pobierz program WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)) dla zwiększenia niezawodności.
+* Program Windows PowerShell w wersji 5.1 lub nowszej ([Pobierz program WMF 5.1](https://www.microsoft.com/download/details.aspx?id=54616)).
 * .NET framework 4.6.2 lub nowszy.
 * Dwa rdzenie.
 * 4 GB pamięci RAM.
@@ -63,8 +63,8 @@ Wykonaj poniższe kroki, aby zautomatyzować instalację i konfigurację roli Wi
      > [!NOTE]
      > Obecnie tylko regiony usługi Automation, obsługiwane w przypadku integracji z usługą Log Analytics są **Australia południowo-wschodnia**, **wschodnie stany USA 2**, **Azja południowo-wschodnia**, i  **Europa Zachodnia**. Jeśli konto usługi Automation nie jest w jednym z tych regionów, skrypt tworzy obszar roboczy usługi Log Analytics, ale ostrzega o tym, że nie może łączyć je ze sobą.
 
-1. Na komputerze, należy otworzyć **programu Windows PowerShell** z **Start** ekranu w trybie administratora.
-1. Z powłoki wiersza polecenia programu PowerShell przejdź do folderu, który zawiera skrypt, który został pobrany. Zmienianie wartości parametrów *- AutomationAccountName*, *- AAResourceGroupName*, *- OMSResourceGroupName*, *- HybridGroupName*, *- SubscriptionId*, i *Nazwa_obszaru_roboczego -*. Następnie uruchom skrypt.
+2. Na komputerze, należy otworzyć **programu Windows PowerShell** z **Start** ekranu w trybie administratora.
+3. Z powłoki wiersza polecenia programu PowerShell przejdź do folderu, który zawiera skrypt, który został pobrany. Zmienianie wartości parametrów *- AutomationAccountName*, *- AAResourceGroupName*, *- OMSResourceGroupName*, *- HybridGroupName*, *- SubscriptionId*, i *Nazwa_obszaru_roboczego -*. Następnie uruchom skrypt.
 
      > [!NOTE]
      > Zostanie wyświetlony monit uwierzytelnienia za pomocą platformy Azure po uruchomieniu skryptu. Możesz *musi* Zaloguj się przy użyciu konta będącego członkiem roli Administratorzy subskrypcji i współadministratorem subskrypcji.
@@ -75,9 +75,9 @@ Wykonaj poniższe kroki, aby zautomatyzować instalację i konfigurację roli Wi
    -SubscriptionId <AzureSubscriptionId> -WorkspaceName <NameOfLogAnalyticsWorkspace>
    ```
 
-1. Zostanie wyświetlony monit o zgodę na instalowania Menedżera NuGet, a następnie zostanie wyświetlony monit o uwierzytelnianie przy użyciu swoich poświadczeń platformy Azure.
+4. Zostanie wyświetlony monit o zgodę na instalowania Menedżera NuGet, a następnie zostanie wyświetlony monit o uwierzytelnianie przy użyciu swoich poświadczeń platformy Azure.
 
-1. Po zakończeniu działania skryptu **grupy hybrydowych procesów roboczych** strona zawiera nową grupę i liczba elementów członkowskich. Jeśli jest istniejącą grupę, liczba elementów członkowskich jest zwiększany. Możesz wybrać grupę, z listy na **grupy hybrydowych procesów roboczych** strony i wybierz **hybrydowych procesów roboczych** kafelka. Na **hybrydowych procesów roboczych** stronie zobaczysz każdy członek grupy na liście.
+5. Po zakończeniu działania skryptu **grupy hybrydowych procesów roboczych** strona zawiera nową grupę i liczba elementów członkowskich. Jeśli jest istniejącą grupę, liczba elementów członkowskich jest zwiększany. Możesz wybrać grupę, z listy na **grupy hybrydowych procesów roboczych** strony i wybierz **hybrydowych procesów roboczych** kafelka. Na **hybrydowych procesów roboczych** stronie zobaczysz każdy członek grupy na liście.
 
 ### <a name="manual-deployment"></a>Ręczne wdrażanie
 

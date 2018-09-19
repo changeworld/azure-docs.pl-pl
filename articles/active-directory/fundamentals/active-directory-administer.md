@@ -12,12 +12,12 @@ ms.date: 08/23/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 custom: it-pro
-ms.openlocfilehash: 2a548a16a6b896ae1c1297badcef6154b64977f1
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: eb9cf7c21613ab91cc0b8e41a4454835d18f2c34
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737179"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297932"
 ---
 # <a name="manage-your-azure-active-directory-tenant"></a>Zarządzanie dzierżawą usługi Azure Active Directory
 
@@ -42,7 +42,7 @@ Zaleca się korzystanie z konta administratora używanego dla pierwszej usługi 
 
 Jeśli na przykład zarejestrujesz się w celu uzyskania subskrypcji usługi Microsoft Intune, a następnie dalej będziesz synchronizować lokalną usługę Active Directory z katalogiem usługi Azure AD, możesz zarejestrować się w innej usłudze firmy Microsoft, takiej jak Office 365, i łatwo uzyskać takie same korzyści z integracji katalogu, które były dostępne w usłudze Microsoft Intune.
 
-Aby uzyskać więcej informacji na temat integracji Twojego lokalnego katalogu z usługą Azure AD, zobacz [Directory integration with Azure AD Connect](../connect/active-directory-aadconnect.md) (Integracja katalogu z usługą Azure AD Connect).
+Aby uzyskać więcej informacji na temat integracji Twojego lokalnego katalogu z usługą Azure AD, zobacz [Directory integration with Azure AD Connect](../hybrid/whatis-hybrid-identity.md) (Integracja katalogu z usługą Azure AD Connect).
 
 ### <a name="associate-an-existing-azure-ad-directory-with-a-new-azure-subscription"></a>Kojarzenie istniejącego katalogu usługi Azure AD z nową subskrypcją platformy Azure
 Możesz skojarzyć nową subskrypcję platformy Azure z tym samym katalogiem, który uwierzytelnia logowanie dla istniejącej subskrypcji usługi Office 365 lub Microsoft Intune. Aby uzyskać więcej informacji dotyczących tego scenariusza, zobacz [Transfer ownership of an Azure subscription to another account](../../billing/billing-subscription-transfer.md) (Przenoszenie własności subskrypcji platformy Azure na inne konto)

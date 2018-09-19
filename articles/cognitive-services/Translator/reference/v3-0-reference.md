@@ -1,55 +1,56 @@
 ---
-title: Microsoft Translator tekst interfejsu API w wersji 3.0 odwołania | Dokumentacja firmy Microsoft
-description: Dokumentacji interfejsu API w wersji 3.0 Microsoft Translator tekstu.
+title: Odwołanie V3.0 interfejs API tłumaczenia tekstu w usłudze Translator
+titlesuffix: Azure Cognitive Services
+description: Dokumentacja dotycząca V3.0 interfejs API tekstu usługi Translator.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: cfaa9584e833b137b417d9074fbfcf606eb21388
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 9282d8af30cbfb3346394bcd71510faf8d8c8a21
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347752"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129390"
 ---
-#<a name="translator-text-api-v30"></a>Translator tekst interfejsu API w wersji 3.0
+# <a name="translator-text-api-v30"></a>Interfejs API tekstu usługi Translator w wersji 3.0
 
 ## <a name="whats-new"></a>Co nowego?
 
-Wersja 3 interfejsu API Microsoft Translator tekst zawiera nowoczesnych API sieci Web opartych na formacie JSON. Zwiększa użyteczność i wydajność dzięki konsolidacji istniejących funkcji w mniejszą liczbę operacji i udostępnia nowe funkcje.
+Interfejs API tekstu usługi Translator w wersji 3 zapewnia nowoczesnych opartych na formacie JSON internetowego interfejsu API. Zwiększa użyteczność i wydajność dzięki konsolidacji istniejących funkcji w mniejszą liczbę operacji i udostępnia nowe funkcje.
 
- * Transliterację przekonwertować tekst w jednym języku z jednego skryptu na inny skrypt.
- * Tłumaczenie do wielu języków w jednym żądaniu.
- * Wykrywanie języka, tłumaczenia i transliterację w jedno żądanie.
- * Słownik do wyszukiwania alternatywne tłumaczenia terminu, aby znaleźć tłumaczeń Wstecz i przykładami przedstawiający terminów używanych w kontekście.
- * Więcej szczegółowych wyników wykrywania języka.
+ * Transliterację konwersji tekstu w jednym języku jeden skrypt inny skrypt.
+ * Tłumaczenie na wiele języków, w jednym żądaniu.
+ * Wykrywanie języka, tłumaczenia i transliterację w jednym żądaniu.
+ * Słownik, który wyszukiwanie alternatywnych tłumaczeń okresu, można znaleźć kopii tłumaczenia i przykłady pokazujące terminy używane w kontekście.
+ * Bardziej szczegółowy wyniki wykrywanie języka.
 
-## <a name="base-urls"></a>Podstawowych adresów URL
+## <a name="base-urls"></a>Podstawowych adresach URL
 
-Tekst interfejsu API w wersji 3.0 jest dostępna w chmurze następujące:
+Tekst interfejsu API w wersji 3.0 jest dostępna w następujących chmury:
 
 | Opis | Region | Podstawowy adres URL                                        |
 |-------------|--------|-------------------------------------------------|
-| Azure       | Globalny | API.cognitive.microsofttranslator.com           |
+| Azure       | Global | API.cognitive.microsofttranslator.com           |
 
 
 ## <a name="authentication"></a>Authentication
 
-Zasubskrybuj Translator API tekstu w kognitywnych usług firmy Microsoft i korzystania z klucza subskrypcji (dostępne w portalu Azure) do uwierzytelniania. 
+Subskrybowanie do interfejsu API tłumaczenia tekstu w usługach Microsoft Cognitive Services i używają klucz subskrypcji (dostępne w witrynie Azure portal) do uwierzytelniania. 
 
-Najprostszym sposobem jest przekazanie klucz tajny Azure z usługą Translator przy użyciu nagłówek żądania `Ocp-Apim-Subscription-Key`.
+Najprostszym sposobem jest przekazać klucz tajny platformy Azure do usługi Translator, przy użyciu nagłówka żądania `Ocp-Apim-Subscription-Key`.
 
-Alternatywą jest uzyskać token autoryzacji z usługi tokenu przy użyciu klucza tajnego. Następnie przekaż token autoryzacji przy użyciu usługi Translator `Authorization` nagłówek żądania. Aby uzyskać token autoryzacji, należy `POST` żądania do następującego adresu URL:
+Alternatywą jest do użycia tego klucza tajnego do uzyskania tokenu autoryzacji z usługi tokenu. Następnie należy przekazać token autoryzacji za pomocą usługi Translator `Authorization` nagłówek żądania. Aby uzyskać token autoryzacji, należy `POST` żądania do następującego adresu URL:
 
 | Środowisko     | Adres URL usługi uwierzytelniania                                |
 |-----------------|-----------------------------------------------------------|
 | Azure           | `https://api.cognitive.microsoft.com/sts/v1.0/issueToken` |
 
-Poniżej przedstawiono przykład żądań do uzyskania tokenu podany klucz tajny:
+Oto przykład żądania do uzyskania tokenu danego klucza tajnego:
 
 ```
 // Pass secret key using header
@@ -58,38 +59,38 @@ curl --header 'Ocp-Apim-Subscription-Key: <your-key>' --data "" 'https://api.cog
 curl --data "" 'https://api.cognitive.microsoft.com/sts/v1.0/issueToken?Subscription-Key=<your-key>'
 ```
 
-Żądanie powiodło się zwraca token dostępu zakodowane jako zwykły tekst w treści odpowiedzi. Nieprawidłowy token jest przekazywany do usługi translatora jako tokenu elementu nośnego w autoryzacji.
+Żądania zakończonego powodzeniem zwraca token dostępu zakodowany jako zwykły tekst w treści odpowiedzi. Prawidłowy token jest przekazywany do usługi Translator jako token elementu nośnego w autoryzacji.
 
 ```
 Authorization: Bearer <Base64-access_token>
 ```
 
-Token uwierzytelniania jest ważny przez 10 minut. Token powinna być ponownie używane, gdy wielu wywołań interfejsów API translatora. Jednak program sprawia, że żądania interfejsu API translatora przez dłuższy czas, następnie programu musisz poprosić nowy token dostępu w regularnych odstępach czasu (np. co 8 minut).
+Token uwierzytelniania jest ważny przez 10 minut. Token powinien być ponownie używane, gdy wielu wywołań interfejsów API usługi Translator. Jednak jeśli program sprawia, że żądania do interfejsu API usługi Translator przez dłuższy czas, następnie program musi żądać nowy token dostępu w regularnych odstępach czasu (np. co 8 minut).
 
-Podsumowując, żądanie klienta interfejsu API Translator obejmuje jeden nagłówek autoryzacji z poniższej tabeli:
+Aby podsumować, żądanie klienta interfejsu API usługi Translator będzie obejmować jeden nagłówek autoryzacji z poniższej tabeli:
 
 <table width="100%">
   <th width="30%">Nagłówki</th>
   <th>Opis</th>
   <tr>
-    <td>OCP-Apim subskrypcji — klawisz</td>
-    <td>*Używane z subskrypcją usługi kognitywnych, jeśli klucz tajny*.<br/>Wartość jest Azure klucz tajny dla Twojej subskrypcji do interfejsu API tekst translatora.</td>
+    <td>OCP-Apim-Subscription-Key</td>
+    <td>*Używane z subskrypcją usług Cognitive Services, jeśli przekazujesz klucz tajny*.<br/>Wartość jest platformy Azure klucz tajny dla Twojej subskrypcji do interfejsu API tłumaczenia tekstu.</td>
   </tr>
   <tr>
     <td>Autoryzacja</td>
-    <td>*Jeśli token uwierzytelniania za pomocą subskrypcji usługi kognitywnych.*<br/>Wartość jest token elementu nośnego: "Bearer <token>".</td>
+    <td>*Jeśli przekazujesz tokenu uwierzytelniania za pomocą subskrypcji usług Cognitive Services.*<br/>Wartość tokenu elementu nośnego: "Bearer <token>".</td>
   </tr>
 </table> 
 
 ## <a name="errors"></a>Błędy
 
-Błąd standardowy odpowiedzi jest obiekt JSON z pary nazwa/wartość o nazwie `error`. Wartość jest także obiekt JSON z właściwościami:
+Odpowiedzi błędu standardowego jest obiekt JSON z pary nazwa/wartość o nazwie `error`. Wartość jest także obiekt JSON z właściwościami:
 
   * `code`Kod błędu zdefiniowany przez serwer.
 
-  * `message`: Ciąg, podając czytelny dla człowieka reprezentację błędu.
+  * `message`: Ciąg, zapewniając czytelny dla człowieka reprezentację błędu.
 
-Na przykład klient z bezpłatnej subskrypcji próbnej będzie wyświetlony następujący błąd po wyczerpaniu wolnego przydziału:
+Na przykład klient z bezpłatnej subskrypcji próbnej będzie komunikat o błędzie po wyczerpaniu bezpłatny limit przydziału:
 
 ```
 {

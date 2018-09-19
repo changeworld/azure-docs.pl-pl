@@ -9,14 +9,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/07/2018
+ms.date: 09/18/2018
 ms.author: tomfitz
-ms.openlocfilehash: 45adce48e64ba185e3bb30ec5385ca8f8c523972
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 4ec09f5ed57dca89934efa750eed05e1ebcb1216
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44164752"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298289"
 ---
 # <a name="move-operation-support-for-resources"></a>Przenoszenie obsługi operacji dla zasobów
 
@@ -95,7 +95,7 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | ------------- | -------------- | ------------ |
 | Klastry | Nie | Nie |
 | fileservers | Nie | Nie |
-| Zadania | Nie | Nie |
+| zadania | Nie | Nie |
 | obszary robocze | Nie | Nie |
 
 ## <a name="microsoftbingmaps"></a>Microsoft.BingMaps
@@ -169,7 +169,7 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | restorepointcollections | Nie | Nie |
 | sharedvmimages | Nie | Nie |
 | sharedvmimages/wersji | Nie | Nie |
-| Migawki | Yes | Yes |
+| migawki | Yes | Yes |
 | maszyn wirtualnych | Yes | Yes |
 | maszyn wirtualnych/rozszerzenia | Yes | Yes |
 | virtualmachinescalesets | Yes | Yes |
@@ -216,7 +216,7 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 ## <a name="microsoftdatabox"></a>Microsoft.DataBox
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | -------------- | ------------ |
-| Zadania | Nie | Nie |
+| zadania | Nie | Nie |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft.DataBoxEdge
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -269,13 +269,13 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 ## <a name="microsoftdbformysql"></a>Microsoft.DBforMySQL
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | -------------- | ------------ |
-| serwerów | Nie | Nie |
+| serwerów | Yes | Yes |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft.DBforPostgreSQL
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | -------------- | ------------ |
 | servergroups | Nie | Nie |
-| serwerów | Nie | Nie |
+| serwerów | Yes | Yes |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 | Typ zasobu | Grupa zasobów | Subskrypcja |

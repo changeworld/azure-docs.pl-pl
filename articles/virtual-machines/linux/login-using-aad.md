@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 1ce03c55a346adf846619c50f09eb063e6b6f639
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 2201455477af2bd871f8e8e401536d45af4a02f7
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734628"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294656"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Zaloguj się do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu uwierzytelniania usługi Azure Active Directory (wersja zapoznawcza)
 
@@ -35,7 +35,7 @@ Istnieje wiele korzyści, zaloguj się do maszyn wirtualnych systemu Linux na pl
   - Dzięki zmniejszeniu swoje poleganie na lokalne konta administratorów, nie trzeba się martwić o utratę/kradzieży poświadczeń, użytkownicy konfigurowania poświadczeń słabe itp.
   - Złożoność hasła i zasady okres istnienia hasła skonfigurowane dla katalogu usługi Azure AD pomóc bezpieczne maszyn wirtualnych systemu Linux oraz.
   - Aby dodatkowo zabezpieczyć logowanie do maszyn wirtualnych platformy Azure można skonfigurować uwierzytelnianie wieloskładnikowe.
-  - Możliwość zalogowania się do maszyn wirtualnych systemu Linux w usłudze Azure Active Directory działa również w przypadku klientów używających [usług federacyjnych](../../active-directory/connect/active-directory-aadconnectfed-whatis.md).
+  - Możliwość zalogowania się do maszyn wirtualnych systemu Linux w usłudze Azure Active Directory działa również w przypadku klientów używających [usług federacyjnych](../../active-directory/hybrid/how-to-connect-fed-whatis.md).
 
 - **Bezproblemową współpracę:** With Role-Based kontroli dostępu (RBAC), można określić, kto zalogować się do danej maszyny Wirtualnej jako zwykli użytkownicy lub z uprawnieniami administratora. Gdy użytkownicy dołączyć lub opuścić zespół, można zaktualizować zasad RBAC dla maszyny Wirtualnej udzielić dostępu, zgodnie z potrzebami. To środowisko jest znacznie prostsze niż w przypadku czyszczenie maszyn wirtualnych, aby usunąć niepotrzebne kluczy publicznych SSH. Gdy pracownik odejdzie z organizacji ich konta użytkownika zostało wyłączone lub usunięte z usługi Azure AD, nie będzie mieć dostęp do zasobów.
 

@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 763e992f10bfad3550a35c1f9cc125b5865cc82f
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 83e3007a7c3198c5ae37cf95d2b21cde88bd8210
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45633133"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127151"
 ---
-# <a name="copy-data-from-quickbooks-using-azure-data-factory"></a>Kopiowanie danych z programu QuickBooks przy użyciu usługi Azure Data Factory
+# <a name="copy-data-from-quickbooks-using-azure-data-factory-preview"></a>Kopiowanie danych z programu QuickBooks przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
 W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z programu QuickBooks. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 

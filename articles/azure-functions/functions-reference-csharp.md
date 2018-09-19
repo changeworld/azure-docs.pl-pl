@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: reference
 ms.date: 12/12/2017
 ms.author: glenga
-ms.openlocfilehash: 3bdb5bc2aa47a51cc95a4274fbf20ba5d0515130
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 9a75e7ed8ce25384d39afb22ef50b5453ef543ba
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094285"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129679"
 ---
 # <a name="azure-functions-c-script-csx-developer-reference"></a>Azure funkcje języka C# (csx) skrypt dokumentacja dla deweloperów
 
@@ -34,7 +34,30 @@ W tym artykule założono, że zostały już przeczytane [przewodnik dla dewelop
 
 *Csx* format umożliwia pisanie mniej "standardowy" i skoncentrować się na pisaniu tylko funkcji C#. Zamiast zawijania wszystko w przestrzeni nazw i klasy, wystarczy zdefiniować `Run` metody. Obejmują wszystkie odwołania do zestawu i przestrzeni nazw na początku tego pliku w zwykły sposób.
 
-Aplikacja funkcji *csx* pliki są kompilowane podczas inicjowania wystąpienia. Ten krok kompilacji oznacza na przykład zimnego może to trwać dłużej skryptu funkcji języka C# w porównaniu do bibliotek klas języka C#. Ten krok kompilacji jest też, dlaczego funkcji skryptu języka C# są edytowalne w witrynie Azure Portal, mimo że bibliotek klas języka C# nie.
+Aplikacja funkcji *csx* pliki są kompilowane podczas inicjowania wystąpienia. Ten krok kompilacji oznacza na przykład zimnego może to trwać dłużej skryptu funkcji języka C# w porównaniu do bibliotek klas języka C#. Ten krok kompilacji jest też, dlaczego funkcji skryptu języka C# są edytowalne w witrynie Azure portal, mimo że bibliotek klas języka C# nie.
+
+## <a name="folder-structure"></a>Struktura folderów
+
+Struktura folderów dla projektu skryptu języka C# wygląda podobnie do poniższego:
+
+```
+FunctionsProject
+ | - MyFirstFunction
+ | | - run.csx
+ | | - function.json
+ | | - function.proj
+ | - MySecondFunction
+ | | - run.csx
+ | | - function.json
+ | | - function.proj
+ | - host.json
+ | - extensions.csproj
+ | - bin
+```
+
+Brak pliku udostępnionego [host.json] (funkcje host-json.md), który może służyć do konfigurowania aplikacji funkcji. Każda funkcja ma swój własny plik kodu (csx) i plik konfiguracji powiązania (function.json).
+
+Rozszerzenia powiązania wymagane w [wersji 2.x](functions-versions.md) funkcji środowiska uruchomieniowego są zdefiniowane w `extensions.csproj` pliku z plikami rzeczywistej biblioteki w `bin` folderu. Podczas tworzenia lokalnie, należy najpierw [zarejestrować rozszerzeń powiązania](functions-triggers-bindings.md#local-development-azure-functions-core-tools). Podczas tworzenia funkcji w witrynie Azure portal, rejestracja odbywa się za Ciebie.
 
 ## <a name="binding-to-arguments"></a>Powiązanie z argumentami
 
@@ -336,8 +359,10 @@ Następujące zestawy mogą być przywoływane przez prostą nazwę (na przykła
 ## <a name="referencing-custom-assemblies"></a>Odwoływanie się do zestawów niestandardowych
 
 Aby odwoływać się do niestandardowego zestawu, można użyć albo *udostępnionego* zestawu lub *prywatnej* zestawu:
-- Zestawy udostępnione są współdzielone przez wszystkie funkcje w obrębie aplikacji funkcji. Odwołanie do zestawu niestandardowego, należy przekazać do folderu o nazwie zestawu `bin` w swojej [folder główny aplikacji funkcji](functions-reference.md#folder-structure) (wwwroot). 
-- Zestawy prywatne są dostępne w ramach kontekstu danej funkcji i obsługuje ładowanie bezpośrednie aplikacji w różnych wersjach. Zestawy prywatne powinny zostać przekazane w `bin` folderu w katalogu funkcji. Odwołuje się do zestawów przy użyciu nazwy pliku, takich jak `#r "MyAssembly.dll"`. 
+
+* Zestawy udostępnione są współdzielone przez wszystkie funkcje w obrębie aplikacji funkcji. Odwołanie do zestawu niestandardowego, należy przekazać do folderu o nazwie zestawu `bin` w swojej [folder główny aplikacji funkcji](functions-reference.md#folder-structure) (wwwroot).
+
+* Zestawy prywatne są dostępne w ramach kontekstu danej funkcji i obsługuje ładowanie bezpośrednie aplikacji w różnych wersjach. Zestawy prywatne powinny zostać przekazane w `bin` folderu w katalogu funkcji. Odwołuje się do zestawów przy użyciu nazwy pliku, takich jak `#r "MyAssembly.dll"`.
 
 Aby uzyskać informacje na temat przekazywania plików do folderu funkcji, zobacz sekcję na [Zarządzanie pakietami](#using-nuget-packages).
 
@@ -486,7 +511,7 @@ W poniższej tabeli przedstawiono atrybuty .NET dla każdego typu powiązania i 
 | Mobile Apps | [`Microsoft.Azure.WebJobs.MobileTableAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/MobileTableAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.MobileApps"` |
 | Notification Hubs | [`Microsoft.Azure.WebJobs.NotificationHubAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.NotificationHubs/NotificationHubAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.NotificationHubs"` |
 | Service Bus | [`Microsoft.Azure.WebJobs.ServiceBusAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAttribute.cs), [`Microsoft.Azure.WebJobs.ServiceBusAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs.ServiceBus/ServiceBusAccountAttribute.cs) | `#r "Microsoft.Azure.WebJobs.ServiceBus"` |
-| Kolejki magazynu | [`Microsoft.Azure.WebJobs.QueueAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
+| Kolejka magazynu | [`Microsoft.Azure.WebJobs.QueueAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/QueueAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 | Obiekt blob magazynu | [`Microsoft.Azure.WebJobs.BlobAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/BlobAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 | Tabela magazynu | [`Microsoft.Azure.WebJobs.TableAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/TableAttribute.cs), [`Microsoft.Azure.WebJobs.StorageAccountAttribute`](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/StorageAccountAttribute.cs) | |
 | Twilio | [`Microsoft.Azure.WebJobs.TwilioSmsAttribute`](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.Twilio/TwilioSMSAttribute.cs) | `#r "Microsoft.Azure.WebJobs.Extensions.Twilio"` |

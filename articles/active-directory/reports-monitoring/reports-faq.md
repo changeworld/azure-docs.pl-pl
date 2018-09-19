@@ -15,12 +15,12 @@ ms.component: report-monitor
 ms.date: 05/10/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f1683321e23eff82e73dc9bb44941fc390633b8c
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: c2e131776fb9f2c5e87c363d0d57e655bc34448f
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056221"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294224"
 ---
 # <a name="azure-active-directory-reporting-faq"></a>Usługa Azure Active Directory reporting — często zadawane pytania
 
@@ -169,3 +169,7 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 **Pyt.: Nazwa zasad w raporcie wszystkie logowania jest niezgodny z nazwa zasad w urzędzie certyfikacji. Dlaczego?**
 
 **Odp.:** nazwę zasady w raporcie wszystkie logowania opiera się na nazwę zasad urzędu certyfikacji podczas logowania. Może to być niezgodne z nazwa zasad w urzędzie certyfikacji, jeśli zaktualizowano nazwę zasady później, oznacza to, że po zalogowaniu.
+
+**Pytanie: Moja Logowanie zostało zablokowane z powodu zasad dostępu warunkowego, ale raport aktywności logowania pokazuje, czy logowanie zakończyło się pomyślnie. Dlaczego?**
+
+**Odp.:** obecnie raport logowania może nie zawierać dokładne wyniki dla scenariuszy programu Exchange ActiveSync, stosowania dostępu warunkowego. Może istnieć przypadków, gdy wynik Zaloguj się w raporcie pokazuje pomyślne logowanie, ale logowania w rzeczywistości nie powiodło się z powodu zasad dostępu warunkowego. 

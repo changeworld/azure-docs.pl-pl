@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 54e6b4f5804e7390b7574aa60b4d3a76df15da11
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 5416c8ada8fcc7f630d68f223b88c50209d14438
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42055164"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296400"
 ---
 # <a name="how-it-works-azure-ad-self-service-password-reset"></a>Jak to działa: Usługa Azure AD samoobsługowego resetowania haseł
 
@@ -161,8 +161,8 @@ Jeśli zainstalować, skonfigurować i włączyć program Azure AD Connect, masz
 Ta strona zawiera szybkie stan lokalnego klienta zapisywania zwrotnego, wyświetlony zostanie jeden z następujących komunikatów na podstawie bieżącej konfiguracji:
 
 * Usługi w środowisku lokalnym klientem zapisywania zwrotnego jest uruchomiony.
-* Usługa Azure AD jest w trybie online i jest połączona z lokalnego klienta zapisywania zwrotnego. Jednak prawdopodobnie zainstalowana wersja programu Azure AD Connect jest nieaktualna. Należy wziąć pod uwagę [uaktualnienie usługi Azure AD Connect](./../connect/active-directory-aadconnect-upgrade-previous-version.md) aby upewnić się, że masz najnowszych funkcji łączności i ważnych poprawek błędów.
-* Niestety nie możemy sprawdzić swój status klienta zapisywania zwrotnego w środowisku lokalnym, ponieważ zainstalowana wersja programu Azure AD Connect jest nieaktualna. [Uaktualnij program Azure AD Connect](./../connect/active-directory-aadconnect-upgrade-previous-version.md) Aby móc sprawdzić stan połączenia.
+* Usługa Azure AD jest w trybie online i jest połączona z lokalnego klienta zapisywania zwrotnego. Jednak prawdopodobnie zainstalowana wersja programu Azure AD Connect jest nieaktualna. Należy wziąć pod uwagę [uaktualnienie usługi Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md) aby upewnić się, że masz najnowszych funkcji łączności i ważnych poprawek błędów.
+* Niestety nie możemy sprawdzić swój status klienta zapisywania zwrotnego w środowisku lokalnym, ponieważ zainstalowana wersja programu Azure AD Connect jest nieaktualna. [Uaktualnij program Azure AD Connect](../hybrid/how-to-upgrade-previous-version.md) Aby móc sprawdzić stan połączenia.
 * Niestety prawdopodobnie nie można nawiązać połączenia lokalnego klienta zapisywania zwrotnego teraz. [Rozwiązywanie problemów z usługi Azure AD Connect](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) Aby przywrócić połączenie.
 * Niestety, firma Microsoft nie może nawiązać lokalnego klienta zapisywania zwrotnego, ponieważ funkcja zapisywania zwrotnego haseł nie zostało poprawnie skonfigurowane. [Konfigurowanie zapisywania zwrotnego haseł](howto-sspr-writeback.md) Aby przywrócić połączenie.
 * Niestety prawdopodobnie nie można nawiązać połączenia lokalnego klienta zapisywania zwrotnego teraz. Może to być spowodowane przez tymczasowe problemy po naszej stronie. Jeśli problem będzie się powtarzać, [Rozwiązywanie problemów z programu Azure AD Connect](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback-connectivity) Aby przywrócić połączenie.

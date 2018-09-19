@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: 468c6486274b8bf1dc202716f525c39face91862
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f8aa37dbc2d3fb5f560d899626a84a2ab86ff223
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297302"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294581"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Przewodnik dla początkujących deweloperów platformy Azure
 
@@ -261,7 +261,7 @@ Jako programiści chcemy rzucić się na głęboką do kodu, a następnie sprób
 
 ### <a name="what-is-an-azure-account"></a>Co to jest konto platformy Azure?
 
-Aby można było utworzyć lub pracy z subskrypcją platformy Azure, musi mieć konto platformy Azure. Konto platformy Azure jest po prostu tożsamości w usłudze Azure AD, lub w katalogu, np. firmowego lub szkolnego organizacji, który jest zaufany przez usługę Azure AD. Jeśli nie należysz do tej organizacji, możesz zawsze utworzyć subskrypcję, za pomocą Account firmy Microsoft, co jest zaufany przez usługę Azure AD. Aby dowiedzieć się więcej na temat integracji usługi Active Directory lokalnego systemu Windows Server z usługą Azure AD, zobacz [integrowanie tożsamości lokalnych z usługą Azure Active Directory](../../active-directory/active-directory-aadconnect.md).
+Aby można było utworzyć lub pracy z subskrypcją platformy Azure, musi mieć konto platformy Azure. Konto platformy Azure jest po prostu tożsamości w usłudze Azure AD, lub w katalogu, np. firmowego lub szkolnego organizacji, który jest zaufany przez usługę Azure AD. Jeśli nie należysz do tej organizacji, możesz zawsze utworzyć subskrypcję, za pomocą Account firmy Microsoft, co jest zaufany przez usługę Azure AD. Aby dowiedzieć się więcej na temat integracji usługi Active Directory lokalnego systemu Windows Server z usługą Azure AD, zobacz [integrowanie tożsamości lokalnych z usługą Azure Active Directory](../../active-directory/hybrid/whatis-hybrid-identity.md).
 
 Każda subskrypcja platformy Azure jest połączona relacją zaufania z wystąpieniem usługi Azure AD. Oznacza to, że subskrypcja ufa katalogowi na potrzeby uwierzytelniania użytkowników, usług i urządzeń. Wiele subskrypcji może ufać temu samemu katalogowi, ale dana subskrypcja może ufać tylko jednemu katalogowi. Aby dowiedzieć się więcej, zobacz [jak subskrypcje platformy Azure są skojarzone z usługą Azure Active Directory](../../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md).
 

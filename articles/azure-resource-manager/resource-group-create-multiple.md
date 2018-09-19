@@ -12,16 +12,18 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 25488295ec046eb0ca7473af76e4618eacb1155d
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 8828ba3c91df7b0a2fde3c42ecd81bd4ee4d17a3
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38600774"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295941"
 ---
 # <a name="deploy-multiple-instances-of-a-resource-or-property-in-azure-resource-manager-templates"></a>Wdrażanie wielu wystąpień zasobów lub właściwości w szablonach usługi Resource Manager platformy Azure
 
 W tym artykule pokazano, jak przejść do szablonu usługi Azure Resource Manager do tworzenia wielu wystąpień tego zasobu. Jeśli musisz określić, czy zasób został wdrożony na wszystkich, zobacz [element warunek](resource-manager-templates-resources.md#condition).
+
+Aby zapoznać się z samouczkiem, zobacz [samouczek: tworzenie wielu wystąpień zasobów przy użyciu szablonów usługi Resource Manager](./resource-manager-tutorial-create-multiple-instances.md).
 
 ## <a name="resource-iteration"></a>Iteracja zasobów
 
@@ -442,6 +444,9 @@ W poniższych przykładach pokazano typowe scenariusze dotyczące tworzenia wiel
 |[Wiele reguł zabezpieczeń](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.json) |Wdrażanie wielu reguł zabezpieczeń w usłudze sieciowej grupy zabezpieczeń. Jego tworzy reguły zabezpieczeń z parametru. W przypadku parametru zobacz [wielu plików parametr sieciowej grupy zabezpieczeń](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/multipleinstance/multiplesecurityrules.parameters.json). |
 
 ## <a name="next-steps"></a>Kolejne kroki
+
+* Aby wykonać kroki samouczka, zobacz [samouczek: tworzenie wielu wystąpień zasobów przy użyciu szablonów usługi Resource Manager](./resource-manager-tutorial-create-multiple-instances.md).
+
 * Jeśli chcesz dowiedzieć się więcej o części szablonu, zobacz [Tworzenie szablonów usługi Resource Manager platformy Azure](resource-group-authoring-templates.md).
 * Aby dowiedzieć się, jak wdrożyć szablon, zobacz [wdrażanie aplikacji przy użyciu szablonu Azure Resource Manager](resource-group-template-deploy.md).
 

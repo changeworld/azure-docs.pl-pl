@@ -12,12 +12,12 @@ ms.date: 09/04/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: 533c02f842918c5c27aaaf421a4f828022de6b8f
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 782363144a6b1dd87aff515c38588b6ce70b61bd
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604972"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295108"
 ---
 # <a name="how-to-add-or-delete-users-using-azure-active-directory"></a>Porady: Dodawanie lub usuwanie użytkowników za pomocą usługi Azure Active Directory
 Dodaj nowych użytkowników lub usuń istniejący użytkownicy z dzierżawy usługi Azure Active Directory (Azure AD) przy użyciu usługi Azure AD.
@@ -55,7 +55,7 @@ Można utworzyć nowego użytkownika za pomocą usługi Azure Active Directory.
     Użytkownik zostanie utworzony i dodany do dzierżawy usługi Azure AD.
 
 ## <a name="add-a-new-user-within-a-hybrid-environment"></a>Dodawanie nowego użytkownika w środowisku hybrydowym
-Jeśli masz środowisko z usługi Azure Active Directory (w chmurze) i Active Directory systemu Windows Server (lokalnie), można dodać nowych użytkowników, synchronizowanie danych istniejącego konta użytkownika. Aby uzyskać więcej informacji na temat środowisk hybrydowych i użytkowników, zobacz [integrowanie katalogów lokalnych z usługą Azure Active Directory](../connect/active-directory-aadconnect.md).
+Jeśli masz środowisko z usługi Azure Active Directory (w chmurze) i Active Directory systemu Windows Server (lokalnie), można dodać nowych użytkowników, synchronizowanie danych istniejącego konta użytkownika. Aby uzyskać więcej informacji na temat środowisk hybrydowych i użytkowników, zobacz [integrowanie katalogów lokalnych z usługą Azure Active Directory](../hybrid/whatis-hybrid-identity.md).
 
 ## <a name="delete-a-user"></a>Usuwanie użytkownika
 Można usunąć istniejącego użytkownika przy użyciu usługi Azure Active Directory.

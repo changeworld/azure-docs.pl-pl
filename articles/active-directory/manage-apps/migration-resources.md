@@ -8,15 +8,15 @@ ms.service: active-directory
 ms.component: app-mgmt
 ms.topic: conceptual
 ms.workload: identity
-ms.date: 09/16/2018
+ms.date: 09/17/2018
 ms.author: barbkess
 ms.reviewer: baselden
-ms.openlocfilehash: 950f315ae5cbeba678aceb8e901ec9bc235a07da
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 8338ae097f6376b8d46244831cfa7a0c6553d825
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45740698"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128091"
 ---
 # <a name="resources-for-migrating-applications-to-azure-active-directory"></a>Zasoby dotyczące migrowania aplikacji do usługi Azure Active Directory
 
@@ -25,6 +25,8 @@ Zasoby pomagające w migracji do usługi Azure Active Directory (Azure AD) dost�
 | Zasób  | Opis  |
 |:-----------|:-------------|
 |[Migrowanie aplikacji do usługi Azure AD](https://aka.ms/migrateapps/whitepaper) | Ten oficjalny dokument przedstawia korzyści wynikające z migracji i opisuje sposób planowania migracji w czterech fazach jasno opisane: Odnajdywanie, klasyfikacja, migracji i bieżące zarządzanie. Poprowadzą Cię kolejne kroki sposobu myślenia o procesie i podzielić projekt na łatwe gotowego do konsumpcji części. W całym dokumencie podano linki do ważnych zasobów, które pomogą Ci po drodze. |
+|[Przewodnik po rozwiązaniu: migrowanie aplikacji z usługi Active Directory Federation Services (AD FS) do usługi Azure AD](https://aka.ms/migrateapps/adfssolutionguide) | Ten przewodnik przeprowadzi Cię przez ten sam cztery fazy planowania i wykonywania opisanych na wyższym poziomie w oficjalnym dokumencie migracji projektu migracji aplikacji. W tym przewodniku dowiesz się, jak zastosować te etapy do określonego celu, przenoszenie aplikacji z usług federacyjnych Azure Directory (AD FS) do usługi Azure AD.|
+| [Narzędzie: Usługi Active Directory Federation usług migracji gotowości skryptu](https://aka.ms/migrateapps/adfsscript) | To jest skrypt można uruchomić na serwerze usługi Active Directory Federation Services (AD FS) w środowisku lokalnym w celu określenia gotowości aplikacji pod kątem migracji do usługi Azure AD.|
 | [Plan wdrożenia: Migrowanie z usług AD FS do synchronizacji skrótów haseł](https://aka.ms/ADFSTOPHSDPDownload) | Z synchronizacji skrótów haseł skróty haseł użytkowników są synchronizowane z usługi Active Directory środowiska lokalnego do usługi Azure AD. Dzięki temu usługa Azure AD do uwierzytelniania użytkowników bez interakcji z usługą Active Directory w środowisku lokalnym.| 
 | [Plan wdrożenia: Migrowanie z usług AD FS do uwierzytelniania przekazywanego](https://aka.ms/ADFSTOPTADPDownload)|Uwierzytelnianie przekazywane usługi Azure AD pomaga użytkownikom na logowanie się zarówno lokalnie, jak i aplikacji działających w chmurze przy użyciu tego samego hasła. Ta funkcja zapewnia użytkownikom lepsze środowisko, ponieważ mają one mniej jedno hasło do zapamiętania. Zmniejsza to także koszty pomocy technicznej IT, ponieważ użytkownicy są mniej prawdopodobne, należy zapominać, jak mają logować się, gdy potrzebują do zapamiętania hasło. Gdy użytkownicy logują się za pomocą usługi Azure AD, ta funkcja weryfikuje ich hasła bezpośrednio w lokalnej usłudze Active Directory.|
 | [Plan wdrożenia: Włączanie logowania jednokrotnego do aplikacji SaaS z usługą Azure AD](https://aka.ms/SSODPDownload) | Pojedynczego logowania jednokrotnego (SSO) ułatwia dostęp wszystkie aplikacje i zasoby niezbędne do prowadzenia firmy, podczas logowania się tylko raz, za pomocą jednego konta użytkownika. Na przykład po zalogowaniu się użytkownika, użytkownik może przechodzić z Microsoft Office, do usługi SalesForce do usługi Box bez uwierzytelniania (na przykład wpisanie hasła) po raz drugi. 

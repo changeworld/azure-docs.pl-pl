@@ -9,12 +9,12 @@ ms.author: eustacea
 ms.date: 07/30/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 9b4801048c391aae6e95f4181464255ecf6151fc
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
+ms.openlocfilehash: 4594685291396b8b80e62abe57be109f0abbd81d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39359984"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126347"
 ---
 # <a name="azure-iot-edge-security-manager"></a>Menedżer zabezpieczeń w usłudze Azure IoT Edge
 
@@ -109,7 +109,7 @@ Macierzysty proces, instalacji i aktualizacji demona zabezpieczeń usługi IoT E
 
 ### <a name="hardware-security-module-platform-abstraction-layer-hsm-pal"></a>Warstwa abstrakcji platformy modułu zabezpieczeń sprzętu (PAL przez sprzętowy moduł zabezpieczeń)
 
-HSM PAL przenosi wszystkie głównym zaufania sprzętu do izolowania dewelopera lub użytkownika usługi IoT Edge z ich złożoności.  Składa się z kombinacji interfejsu programista aplikacji (API) i trans procedury łączności domeny, na przykład komunikacji między środowisko standardowe wykonanie i bezpieczne enklawy.  Rzeczywiste wdrożenie PAL sprzętowego modułu zabezpieczeń zależy od konkretnego sprzętu bezpieczny w użyciu.  Początku swojego istnienia umożliwia korzystanie z praktycznie dowolnego sprzętu dolina bezpieczne w ekosystemie IoT.
+HSM PAL przenosi wszystkie głównym zaufania sprzętu do izolowania dewelopera lub użytkownika usługi IoT Edge z ich złożoności.  Składa się z kombinacji interfejsu programowania aplikacji (API) i trans procedury łączności domeny, na przykład komunikacji między środowisko standardowe wykonanie i bezpieczne enklawy.  Rzeczywiste wdrożenie PAL sprzętowego modułu zabezpieczeń zależy od konkretnego sprzętu bezpieczny w użyciu.  Początku swojego istnienia umożliwia korzystanie z praktycznie dowolnego sprzętu dolina bezpieczne w ekosystemie IoT.
 
 ## <a name="secure-silicon-root-of-trust-hardware"></a>Zabezpieczenia głównego dolina sprzętu zaufania
 

@@ -1,6 +1,6 @@
 ---
-title: Zarejestruj dane z Data Lake Store w usłudze Azure Data Catalog | Dokumentacja firmy Microsoft
-description: Zarejestruj dane z Data Lake Store w usłudze Azure Data Catalog
+title: Zarejestruj dane z usługi Azure Data Lake Storage Gen1 w usłudze Azure Data Catalog | Dokumentacja firmy Microsoft
+description: Zarejestruj dane z usługi Azure Data Lake Storage Gen1 w usłudze Azure Data Catalog
 services: data-lake-store,data-catalog
 documentationcenter: ''
 author: nitinme
@@ -12,27 +12,27 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 8da9f0f8aeb36d9ff2f87511c902dd719bc755b9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 35fc7b2c713f8d4b88f4a44d9ddef5d92ba4c402
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39441604"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294317"
 ---
-# <a name="register-data-from-data-lake-store-in-azure-data-catalog"></a>Zarejestruj dane z Data Lake Store w usłudze Azure Data Catalog
-W tym artykule dowiesz się, jak zintegrować usługi Azure Data Lake Store za pomocą usługi Azure Data Catalog w celu uzyskania danych stała się wykrywalna dla organizacji, integrując je z usługą Data Catalog. Aby uzyskać więcej informacji na temat katalogowanie danych, zobacz [usługi Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Aby zrozumieć scenariusze, w których możesz użyć wykazu danych, zobacz [typowych scenariuszy usługi Azure Data Catalog](../data-catalog/data-catalog-common-scenarios.md).
+# <a name="register-data-from-azure-data-lake-storage-gen1-in-azure-data-catalog"></a>Zarejestruj dane z usługi Azure Data Lake Storage Gen1 w usłudze Azure Data Catalog
+W tym artykule dowiesz się, jak zintegrować usługi Azure Data Lake Storage Gen1 z usługą Azure Data Catalog w celu uzyskania danych stała się wykrywalna dla organizacji, integrując je z usługą Data Catalog. Aby uzyskać więcej informacji na temat katalogowanie danych, zobacz [usługi Azure Data Catalog](../data-catalog/data-catalog-what-is-data-catalog.md). Aby zrozumieć scenariusze, w których możesz użyć wykazu danych, zobacz [typowych scenariuszy usługi Azure Data Catalog](../data-catalog/data-catalog-common-scenarios.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed przystąpieniem do wykonania kroków opisanych w tym samouczku należy dysponować następującymi elementami:
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Włączanie subskrypcji platformy Azure** w publicznej wersji zapoznawczej Data Lake Store. Zobacz [instrukcje](data-lake-store-get-started-portal.md).
-* **Konto usługi Azure Data Lake Store**. Postępuj zgodnie z instrukcjami w temacie [Rozpoczynanie pracy z usługą Azure Data Lake Store za pomocą witryny Azure Portal](data-lake-store-get-started-portal.md). W tym samouczku należy utworzyć konta Data Lake Store, o nazwie **datacatalogstore**.
+* **Włączanie subskrypcji platformy Azure** for Data Lake Storage Gen1. Zobacz [instrukcje](data-lake-store-get-started-portal.md).
+* **Konta Data Lake Storage Gen1**. Postępuj zgodnie z instrukcjami w artykule [Rozpoczynanie pracy z usługą Azure Data Lake Storage Gen1 przy użyciu witryny Azure Portal](data-lake-store-get-started-portal.md). W tym samouczku Tworzenie konta Data Lake Storage Gen1 o nazwie **datacatalogstore**.
 
     Po utworzeniu konta, a następnie Przekaż przykładowy zestaw danych do niego. W tym samouczku, Daj nam przekazać wszystkie pliki CSV w **AmbulanceData** folderu w [repozytorium Git usługi Azure Data Lake](https://github.com/Azure/usql/tree/master/Examples/Samples/Data/AmbulanceData/). Można użyć różnych klientów, takie jak [Eksploratora usługi Azure Storage](http://storageexplorer.com/), aby przekazać dane do kontenera obiektów blob.
 * **Usługa Azure Data Catalog**. Twoja organizacja musi już mieć utworzone dla Twojej organizacji usługi Azure Data Catalog. Tylko jeden wykaz jest dozwolony dla każdej organizacji.
 
-## <a name="register-data-lake-store-as-a-source-for-data-catalog"></a>Register Data Lake Store jako źródło dla usługi Data Catalog
+## <a name="register-data-lake-storage-gen1-as-a-source-for-data-catalog"></a>Zarejestruj Data Lake Storage Gen1 jako źródło dla usługi Data Catalog
 
 > [!VIDEO https://channel9.msdn.com/Series/AzureDataLake/ADCwithADL/player]
 
@@ -44,15 +44,15 @@ Przed przystąpieniem do wykonania kroków opisanych w tym samouczku należy dys
 1. Na stronie powitalnej kliknij **Zaloguj**, a następnie wprowadź swoje poświadczenia.
 
     ![Ekran powitalny](./media/data-lake-store-with-data-catalog/welcome.screen.png "ekran powitalny")
-1. Wybierz stronę źródła danych wybierz **usługi Azure Data Lake**, a następnie kliknij przycisk **dalej**.
+1. Wybierz stronę źródła danych wybierz **usługi Azure Data Lake Store**, a następnie kliknij przycisk **dalej**.
 
     ![Wybierz źródło danych](./media/data-lake-store-with-data-catalog/select-source.png "wybierz źródło danych")
-1. Na następnej stronie podaj nazwę konta Data Lake Store, które chcesz zarejestrować w usłudze Data Catalog. Dla pozostałych opcji zostaw jako domyślne, a następnie kliknij przycisk **Connect**.
+1. Na następnej stronie podaj nazwę konta Data Lake Storage Gen1, które chcesz zarejestrować w usłudze Data Catalog. Dla pozostałych opcji zostaw jako domyślne, a następnie kliknij przycisk **Connect**.
 
     ![Łączenie ze źródłem danych](./media/data-lake-store-with-data-catalog/connect-to-source.png "łączenie ze źródłem danych")
 1. Następnej strony można podzielić na następujące segmenty.
 
-    a. **Hierarchii serwerów** pole reprezentuje strukturę folderów konta Data Lake Store. **$Root** reprezentuje katalog główny konta Data Lake Store i **AmbulanceData** reprezentuje folder utworzony w katalogu głównym konta Data Lake Store.
+    a. **Hierarchii serwerów** pole reprezentuje strukturę folderów konta Data Lake Storage Gen1. **$Root** reprezentuje katalog główny konta Data Lake Storage Gen1 i **AmbulanceData** reprezentuje folder utworzony w katalogu głównym konta Data Lake Storage Gen1.
 
     b. **Dostępne obiekty** pole zawiera listę plików i folderów w obszarze **AmbulanceData** folderu.
 
@@ -80,4 +80,4 @@ Przed przystąpieniem do wykonania kroków opisanych w tym samouczku należy dys
 ## <a name="see-also"></a>Zobacz także
 * [Dodawać adnotacje do źródeł danych w usłudze Data Catalog](../data-catalog/data-catalog-how-to-annotate.md)
 * [Dokumentowanie źródeł danych w usłudze Data Catalog](../data-catalog/data-catalog-how-to-documentation.md)
-* [Integracja Data Lake Store z innymi usługami platformy Azure](data-lake-store-integrate-with-other-services.md)
+* [Integracja Data Lake Storage Gen1 z innymi usługami platformy Azure](data-lake-store-integrate-with-other-services.md)

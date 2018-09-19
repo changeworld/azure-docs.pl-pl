@@ -1,23 +1,26 @@
 ---
-title: Interfejs wiersza polecenia usługi Knowledge Exploration Service | Dokumentacja firmy Microsoft
-description: Tworzenie indeksu i gramatyki plików z danymi strukturalnymi przy użyciu interfejsu wiersza polecenia KES, a następnie wdrożyć je jako usługi sieci web w usługach Microsoft Cognitive Services.
+title: Interfejs wiersza polecenia — interfejs API usługi Eksploracja wiedzy
+titlesuffix: Azure Cognitive Services
+description: Tworzenie indeksu i gramatyki plików z danymi strukturalnymi przy użyciu interfejsu wiersza polecenia, a następnie wdrożyć je jako usługi sieci web.
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/24/2016
 ms.author: paulhsu
-ms.openlocfilehash: 71a6f5ac93e5605182a55de1bae9a99c5c3eddf4
-ms.sourcegitcommit: dc646da9fbefcc06c0e11c6a358724b42abb1438
+ms.openlocfilehash: 7ec2282317019275b15a8e506753408c75a68561
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39136359"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127159"
 ---
 # <a name="command-line-interface"></a>Command Line Interface
-Interfejs wiersza polecenia KES umożliwia tworzenie indeksu i gramatyki plików z danymi strukturalnymi i wdrażanie ich jako usług sieci web.  Używa ona ogólnych składni: `kes.exe <command> <required_args> [<optional_args>]`.  Możesz uruchomić `kes.exe` bez argumentów, aby wyświetlić listę poleceń, lub `kes.exe <command>` do wyświetlania listy argumentów, które są dostępne dla określonego polecenia.  Poniżej przedstawiono listę dostępnych poleceń:
+
+Interfejs wiersza polecenia usługi Eksploracja wiedzy (KES) umożliwia tworzenie indeksu i gramatyki plików z danymi strukturalnymi i wdrażanie ich jako usług sieci web.  Używa ona ogólnych składni: `kes.exe <command> <required_args> [<optional_args>]`.  Możesz uruchomić `kes.exe` bez argumentów, aby wyświetlić listę poleceń, lub `kes.exe <command>` do wyświetlania listy argumentów, które są dostępne dla określonego polecenia.  Poniżej przedstawiono listę dostępnych poleceń:
+
 * build_index
 * build_grammar
 * host_service

@@ -12,12 +12,12 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: data-movement
-ms.openlocfilehash: 4b48f360c95170a36d1e79b075403d541c8b66ed
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 9ca8c42d99f3bd7548c685f03328084865a09906
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983937"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295788"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nowe DBA w chmurze — zarządzania bazą danych w usłudze Azure SQL Database
 
@@ -73,12 +73,12 @@ Istnieją [dwóch metod uwierzytelniania](sql-database-control-access.md#authent
 - [Uwierzytelnianie usługi Azure Active Directory](sql-database-aad-authentication.md)
 - Uwierzytelnianie SQL. 
 
-Uwierzytelnianie tradycyjnego systemu windows nie jest obsługiwana. Usługa Azure Active Directory (AD) to scentralizowany Usługa zarządzania tożsamościami i dostępem. Dzięki temu można bardzo łatwo udostępnić pojedynczego logowania jednokrotnego dostępu rejestracji jednokrotnej (SSO) wszystkich pracowników w Twojej organizacji. Oznacza to, że poświadczenia są współużytkowane przez wszystkich usług platformy Azure do uwierzytelniania prostsze. Obsługuje usługi AAD [uwierzytelniania Wieloskładnikowego (uwierzytelniania współczynnik Multi)](sql-database-ssms-mfa-authentication.md) i za pomocą [kilkoma kliknięciami](../active-directory/connect/active-directory-aadconnect-get-started-express.md) AAD można zintegrować z usługą Active Directory systemu Windows Server. Uwierzytelnianie SQL działa dokładnie tak, jak używasz go w przeszłości. Podaj nazwę użytkownika/hasło, i mogą uwierzytelniać użytkowników do dowolnej bazy danych na danym serwerze logicznym. Umożliwia także bazy danych SQL Database i SQL Data Warehouse, która oferuje uwierzytelnianie wieloskładnikowe kont gości i użytkowników w domenie usługi Azure AD. Jeśli masz już usługi Active Directory w środowisku lokalnym, może tworzyć federacje katalogu z usługą Azure Active Directory do rozszerzenia katalogu usługi Azure.
+Uwierzytelnianie tradycyjnego systemu windows nie jest obsługiwana. Usługa Azure Active Directory (AD) to scentralizowany Usługa zarządzania tożsamościami i dostępem. Dzięki temu można bardzo łatwo udostępnić pojedynczego logowania jednokrotnego dostępu rejestracji jednokrotnej (SSO) wszystkich pracowników w Twojej organizacji. Oznacza to, że poświadczenia są współużytkowane przez wszystkich usług platformy Azure do uwierzytelniania prostsze. Obsługuje usługi AAD [uwierzytelniania Wieloskładnikowego (uwierzytelniania współczynnik Multi)](sql-database-ssms-mfa-authentication.md) i za pomocą [kilkoma kliknięciami](../active-directory/hybrid/how-to-connect-install-express.md) AAD można zintegrować z usługą Active Directory systemu Windows Server. Uwierzytelnianie SQL działa dokładnie tak, jak używasz go w przeszłości. Podaj nazwę użytkownika/hasło, i mogą uwierzytelniać użytkowników do dowolnej bazy danych na danym serwerze logicznym. Umożliwia także bazy danych SQL Database i SQL Data Warehouse, która oferuje uwierzytelnianie wieloskładnikowe kont gości i użytkowników w domenie usługi Azure AD. Jeśli masz już usługi Active Directory w środowisku lokalnym, może tworzyć federacje katalogu z usługą Azure Active Directory do rozszerzenia katalogu usługi Azure.
 
 |**Jeśli użytkownik...**|**Baza danych SQL / SQL Data Warehouse**|
 |---|---|
 |Nie chcesz używać usługi Azure Active Directory (AD) na platformie Azure|Użyj [uwierzytelnianie SQL](sql-database-security-overview.md)|
-|AD używane w programie SQL Server w środowisku lokalnym|[Sfederuj AD z usługą Azure AD](../active-directory/connect/active-directory-aadconnect.md)i korzystać z uwierzytelniania usługi Azure AD. Dzięki temu można użyć logowania jednokrotnego.|
+|AD używane w programie SQL Server w środowisku lokalnym|[Sfederuj AD z usługą Azure AD](../active-directory/hybrid/whatis-hybrid-identity.md)i korzystać z uwierzytelniania usługi Azure AD. Dzięki temu można użyć logowania jednokrotnego.|
 |Trzeba wymusić uwierzytelnianie wieloskładnikowe (MFA)|Wymagać uwierzytelniania Wieloskładnikowego jako zasady za pomocą [dostęp warunkowy Microsoft](sql-database-conditional-access.md)i użyj [uwierzytelniania usługi Azure AD Universal z obsługą uwierzytelniania Wieloskładnikowego](sql-database-ssms-mfa-authentication.md).|
 |Mają konta gościa z konta Microsoft (live.com, outlook.com) lub z innych domen (gmail.com)|Użyj [uwierzytelniania usługi Azure AD Universal](sql-database-ssms-mfa-authentication.md) w usłudze SQL Database/Data Warehouse, która korzysta z [współpracy B2B usługi Azure AD](../active-directory/active-directory-b2b-what-is-azure-ad-b2b.md).|
 |Zalogować się do Windows przy użyciu poświadczeń usługi Azure AD z domeny federacyjnej|Użyj [zintegrowane uwierzytelnianie usługi Azure AD](sql-database-aad-authentication-configure.md).|

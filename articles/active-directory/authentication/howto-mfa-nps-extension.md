@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: a24988bb9866dde72769107f1c45fc461c039f9a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 9873347683fdfabd93083b44d034a8d9d5bcaeef
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39161061"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297541"
 ---
 # <a name="integrate-your-existing-nps-infrastructure-with-azure-multi-factor-authentication"></a>Integrowanie istniejącej infrastruktury NPS przy użyciu usługi Azure Multi-Factor Authentication
 
@@ -63,7 +63,7 @@ Te biblioteki są instalowane automatycznie z rozszerzeniem.
 
 Microsoft Azure Active Directory Module for Windows PowerShell jest zainstalowany, jeśli nie jest jeszcze obecna, za pomocą skryptu konfiguracji, który można uruchomić jako część procesu instalacji. Nie ma potrzeby do zainstalowania tego modułu wcześniej, jeśli nie został jeszcze zainstalowany.
 
-### <a name="azure-active-directory"></a>Usługa Azure Active Directory
+### <a name="azure-active-directory"></a>Azure Active Directory
 
 Wszyscy przy użyciu rozszerzenia serwera NPS musi być synchronizowane z usługą Azure Active Directory za pomocą usługi Azure AD Connect, a musi być zarejestrowana na potrzeby uwierzytelniania Wieloskładnikowego.
 
@@ -105,7 +105,7 @@ Ten krok może już być ukończone w dzierżawie, ale warto dokładnie sprawdzi
 2. Wybierz **usługi Azure Active Directory** > **programu Azure AD Connect**
 3. Sprawdź, czy stan usługi synchronizacji **włączone** i które ostatniej synchronizacji było krócej niż godzinę temu.
 
-Jeśli potrzebujesz Konferencję nowe działanie synchronizacji, nam instrukcje w [synchronizacji programu Azure AD Connect: harmonogram](../connect/active-directory-aadconnectsync-feature-scheduler.md#start-the-scheduler).
+Jeśli potrzebujesz Konferencję nowe działanie synchronizacji, nam instrukcje w [synchronizacji programu Azure AD Connect: harmonogram](../hybrid/how-to-connect-sync-feature-scheduler.md#start-the-scheduler).
 
 ### <a name="determine-which-authentication-methods-your-users-can-use"></a>Określanie użytkowników można użyć metod uwierzytelniania
 

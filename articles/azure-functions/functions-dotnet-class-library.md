@@ -9,14 +9,14 @@ keywords: usługa Azure Functions, funkcje, przetwarzanie zdarzeń, elementy web
 ms.service: azure-functions
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 12/12/2017
+ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 9f538b48918bdde923c6dbf3999302e45b955035
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 54ac616f97ba034893721ff62fc6157dd045b5f8
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092414"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126829"
 ---
 # <a name="azure-functions-c-developer-reference"></a>Usługa Azure Functions dla deweloperów odwołanie w C#
 
@@ -36,10 +36,24 @@ W tym artykule założono, że użytkownik przeczytał już następujące artyku
 W programie Visual Studio **usługi Azure Functions** szablon projektu umożliwia utworzenie C# projekt biblioteki klas zawierający następujące pliki:
 
 * [Host.JSON](functions-host-json.md) — przechowuje ustawienia konfiguracji, które mają wpływ na wszystkich funkcji w projekcie, gdy uruchomiona lokalnie lub na platformie Azure.
-* [Local.Settings.JSON](functions-run-local.md#local-settings-file) — przechowuje ustawienia aplikacji i parametry połączenia, które są używane podczas uruchamiania lokalnego.
+* [Local.Settings.JSON](functions-run-local.md#local-settings-file) — przechowuje ustawienia aplikacji i parametry połączenia, które są używane podczas uruchamiania lokalnego. Ten plik zawiera wpisy tajne i nie będą publikowane do aplikacji funkcji na platformie Azure. Zamiast tego należy [Dodawanie ustawień aplikacji do aplikacji funkcji](functions-develop-vs.md#function-app-settings).
+
+Podczas tworzenia projektu w katalogu wyjściowego strukturę folderów, która wygląda tak, że jest generowany w kompilacji:
+
+```
+<framework.version>
+ | - bin
+ | - MyFirstFunction
+ | | - function.json
+ | - MySecondFunction
+ | | - function.json
+ | - host.json
+```
+
+Jest to katalog, co zostanie wdrożona do aplikacji funkcji na platformie Azure. Rozszerzenia powiązania wymagane w [wersji 2.x](functions-versions.md) funkcji środowiska uruchomieniowego są [dodane do projektu jako pakiety NuGet](functions-triggers-bindings.md#c-class-library-with-visual-studio-2017).
 
 > [!IMPORTANT]
-> Proces kompilacji tworzy *function.json* pliku dla każdej funkcji. To *function.json* pliku nie jest przeznaczona do można edytować bezpośrednio. Nie można zmienić konfiguracji powiązania lub wyłączyć tę funkcję, edytując ten plik. Aby wyłączyć funkcję, należy użyć [wyłączyć](https://github.com/Azure/azure-webjobs-sdk/blob/master/src/Microsoft.Azure.WebJobs/DisableAttribute.cs) atrybutu. Na przykład dodać aplikację logiczną ustawienie MY_TIMER_DISABLED i zastosować `[Disable("MY_TIMER_DISABLED")]` do funkcji. Następnie można włączyć i wyłączyć, zmieniając ustawienia aplikacji.
+> Proces kompilacji tworzy *function.json* pliku dla każdej funkcji. To *function.json* pliku nie jest przeznaczona do można edytować bezpośrednio. Nie można zmienić konfiguracji powiązania lub wyłączyć tę funkcję, edytując ten plik. Aby dowiedzieć się, jak wyłączyć funkcję, zobacz [wyłączania funkcji](disable-function.md#functions-2x---c-class-libraries).
 
 ## <a name="methods-recognized-as-functions"></a>Metody został rozpoznany jako funkcje
 

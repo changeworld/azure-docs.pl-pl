@@ -12,19 +12,19 @@ ms.date: 7/17/2017
 ms.author: lizross
 ms.reviewer: jsnow
 custom: it-pro
-ms.openlocfilehash: db14dbf298596a9fdc189c27ea8608d472c58a35
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: e22f5ced30e30d6f53a1d29c8be2f318161d4fc0
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737247"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294853"
 ---
 # <a name="what-is-microsoft-azure-identity"></a>Co to jest usługa Microsoft Azure identity?
 Usługa Microsoft Azure Active Directory (Azure AD) to rozwiązanie do zarządzania tożsamościami i dostępem w chmurze, które oferuje usługi katalogowe, nadzór nad tożsamościami i zarządzanie dostępem do aplikacji. Usługa Azure AD umożliwia [szybkie logowanie jednokrotne (SSO)](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-apps-manage-sso) do tysięcy wstępnie zintegrowanych aplikacji komercyjnych i niestandardowych w [galerii aplikacji usługi Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/). Wielu z tych aplikacji najprawdopodobniej już używasz, np. Office 365, Salesforce.com, Box, ServiceNow i Workday.
 
 Pojedynczy katalog usługi Azure AD jest automatycznie kojarzony z subskrypcją platformy Azure podczas jej tworzenia. Następnie usługa Azure AD, jako usługa zarządzania tożsamościami na platformie Azure, zapewnia wszystkie funkcje związane z zarządzaniem tożsamościami i kontrolą dostępu dla zasobów opartych na chmurze. Te zasoby mogą obejmować użytkowników, aplikacje i grupy dla pojedynczej dzierżawy (organizacji), jak pokazano na poniższym diagramie:
 
-![Usługa Azure Active Directory](./media/understand-azure-identity-solutions/azure-ad.png)
+![Azure Active Directory](./media/understand-azure-identity-solutions/azure-ad.png)
 
 Platforma Microsoft Azure oferuje kilka sposobów wykorzystania obsługi tożsamości jako usługi (IDaaS) z różnymi poziomami złożoności, aby spełniać potrzeby poszczególnych organizacji. W pozostałej części tego artykułu przedstawiono podstawową terminologię i pojęcia związane z tożsamościami na platformie Azure, a także rekomendacje, dzięki którym można podejmować najlepsze decyzje, wybierając spośród dostępnych możliwości.
 
@@ -106,7 +106,7 @@ Poniżej przedstawiono kilka typowych scenariuszy związanych z tożsamościami 
 ## <a name="where-can-i-learn-more"></a>Gdzie mogę dowiedzieć się więcej?
 Mamy mnóstwo przydatnych zasobów online, dzięki którym dowiesz się wszystkiego o usłudze Azure AD. Poniżej przedstawiono listę doskonałych artykułów, które ułatwią rozpoczęcie pracy:
 
-* [Włączanie katalogu do zarządzania hybrydowego przy użyciu programu Azure AD Connect](../connect/active-directory-aadconnect.md)
+* [Włączanie katalogu do zarządzania hybrydowego przy użyciu programu Azure AD Connect](../hybrid/whatis-hybrid-identity.md)
 * [Dodatkowe zabezpieczenia dla połączonego świata](../authentication/multi-factor-authentication.md)
 * [Automatyzacja aprowizacji i cofania aprowizacji użytkowników dla aplikacji SaaS przy użyciu usługi Azure Active Directory](../manage-apps/user-provisioning.md)
 * [Zarządzanie hasłami z dowolnego miejsca](../user-help/active-directory-passwords-update-your-own-password.md)

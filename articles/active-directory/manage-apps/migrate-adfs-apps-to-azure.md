@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.date: 03/02/2018
 ms.author: barbkess
-ms.openlocfilehash: cdce0ae223a637ac30ed472d2bf711aa36958414
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 8d5f31f09d51794f9ad3c126edf2fd935f379221
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346767"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296480"
 ---
 # <a name="migrate-ad-fs-on-premises-apps-to-azure"></a>Migracja lokalnych aplikacji usług AD FS na platformę Azure 
 
@@ -238,4 +238,4 @@ Jeśli chcesz, aby usługa Azure AD bezpośrednio obsługiwała aprowizowanie u�
 
 - [Zarządzanie aplikacjami przy użyciu usługi Azure Active Directory](what-is-application-management.md)
 - [Zarządzanie dostępem do aplikacji](what-is-access-management.md)
-- [Program Azure AD Connect a federacja](../active-directory-aadconnectfed-whatis.md)
+- [Program Azure AD Connect a federacja](../hybrid/how-to-connect-fed-whatis.md)

@@ -1,23 +1,25 @@
 ---
-title: Format schematu w interfejsie API usługi eksploracji wiedzy | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat formatu schematu w wiedzy eksploracji usługi (KES) interfejsu API w usługach kognitywnych.
+title: Format schematu — interfejs API usługi Eksploracja wiedzy
+titlesuffix: Azure Cognitive Services
+description: Więcej informacji na temat format schematu w wiedzy Exploration Service (KES) interfejsu API.
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 3009392a5acb12a8f4df3d30a2cbe5e74f2172fc
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 07f5536641b55aadf9d8b2623bf4797b8dcd7bd5
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347101"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129254"
 ---
 # <a name="schema-format"></a>Format schematu
-Schemat jest określony w pliku JSON, który opisuje Struktura atrybutu obiektów w pliku danych używany do tworzenia indeksu.  Dla każdego atrybutu schematu Określa nazwę, typ danych, opcjonalny operacji i listy synonimów opcjonalne.  Obiekt może być równa 0 lub więcej wartości każdego z atrybutów.  Poniżej znajdują się uproszczony przykład z publikacji academic domeny:
+
+Schemat jest określona w pliku JSON, który opisuje strukturę atrybutów obiektów w pliku danych używanego do utworzenia indeksu.  Dla każdego atrybutu schemat określa nazwę, typ danych, opcjonalny operacji i listy opcjonalnych synonimów.  0 lub więcej wartości każdego z atrybutów, może być obiekt.  Poniżej przedstawiono uproszczony przykład z domeny akademickich publikacji:
 
 ``` json
 {
@@ -33,52 +35,56 @@ Schemat jest określony w pliku JSON, który opisuje Struktura atrybutu obiektó
 }
 ```
 
-W nazwach atrybutów jest uwzględniana wielkość liter identyfikatorów, które zaczynać się literą i zawierać tylko litery (A-Z), cyfry (0-9) i znak podkreślenia (\_).  Atrybut zastrzeżone "logprob" służy do określania prawdopodobieństwa względną logarytm naturalny między obiektami.
+W nazwach atrybutów jest rozróżniana wielkość liter identyfikatorów, które zaczynają się literą i zawierać tylko litery (A – Z), cyfry (0 – 9) i podkreślenie (\_).  Atrybut zarezerwowanych "logprob" jest używany do określenia prawdopodobieństw względne logarytmu naturalnego między obiektami.
 
 ## <a name="attribute-type"></a>Typ atrybutu
-Poniżej przedstawiono listę atrybutów obsługiwane typy danych:
+
+Poniżej przedstawiono listę typów danych obsługiwanych atrybutu:
 
 | Typ | Opis | Operacje | Przykład |
 |------|-------------|------------|---------|
-| Ciąg | Ciąg (1 – 1024 znaki) | równy, starts_with | "hello world" |
-| Int32 | 32-bitowa liczba całkowita | równy, starts_with, is_between | 2016 |
-| Int64 | 64-bitowa liczba całkowita | równy, starts_with, is_between | 9876543210 |
-| podwójne | Wartość zmiennoprzecinkową podwójnej precyzji | równy, starts_with, is_between | 1.602e-19 |
-| Date | Data (1400-01-01 do 9999-12-31) | równy, is_between | "2016-03-14" |
+| Ciąg | Ciąg (1 – 1024 znaki) | Equals, starts_with | "hello world" |
+| Int32 | 32-bitowa liczba całkowita ze znakiem | równa się, starts_with, is_between | 2016 |
+| Int64 | 64-bitowa liczba całkowita ze znakiem | równa się, starts_with, is_between | 9876543210 |
+| Podwójne | Wartość zmiennoprzecinkowa o podwójnej precyzji | równa się, starts_with, is_between | 1.602e-19 |
+| Date | Data (1400-01-01 do 9999-12-31) | Equals, is_between | "2016-03-14" |
 | Identyfikator GUID | Unikatowy identyfikator globalny | równa się | "602DD052-CC47-4B23-A16A-26B52D30C05B" |
-| Obiekt blob | Wewnętrznie skompresowane dane nieindeksowanych | *Brak* | "Zwiększenie możliwości dostępnych dla każdej osoby, a każda organizacja na świecie osiągaj więcej" |
-| Złożone | Kompozycja wiele atrybutów podrzędne| *Nie dotyczy* | {"Name": "harry shum", "Przynależności": "microsoft"} |
+| Blob | Wewnętrznie skompresowanych danych nieindeksowaną | *Brak* | "Zwiększenie możliwości dostępnych dla każdej osoby i każdej organizacji, na świecie, aby mogli osiągnąć więcej" |
+| Złożone | Kompozycja wiele atrybutów podrzędnych| *Nie dotyczy* | {"Name": "harry shum", "Przynależności": "microsoft"} |
 
-Atrybuty ciągu są używane do reprezentowania wartości ciągów, które mogą pojawić się jako część zapytania użytkownika.  Obsługują one dokładne dopasowanie *jest równe* operacji, jak również *starts_with* operacji scenariusze wykonania zapytania, takie jak Dopasowywanie "micros" za "microsoft".  Bez uwzględniania wielkości liter i rozmyte dopasowywanie do obsługi błędów pisowni będą obsługiwane w przyszłej wersji.
+Atrybuty ciągu są używane do reprezentowania wartości ciągów, które mogą się pojawić jako część zapytania użytkownika.  Obsługują one dokładne dopasowanie *jest równa* operacji, jak również *starts_with* operacji scenariuszach uzupełniania zapytań, na przykład dopasowania "micros" z "microsoft".  Bez uwzględniania wielkości liter i rozmyte dopasowywanie do obsługi błędów pisowni będą obsługiwane w przyszłych wydaniach.
 
-Atrybuty Int32/Int64/podwójny są używane do reprezentowania wartości liczbowych.  *Is_between* operacji włącza obsługę nierówności (lt, le, gt, ge), w czasie wykonywania.  *Starts_with* operacji obsługuje scenariusze wykonania zapytania, takie jak dopasowania "20" z "2016" lub "3". z "3,14".
+Atrybuty Int32/Int64/podwójnej precyzji są używane do reprezentowania wartości liczbowych.  *Is_between* operacji umożliwia obsługę nierówności (lt, le, gt, ge) w czasie wykonywania.  *Starts_with* operacja obsługuje scenariuszach uzupełniania zapytań, na przykład dopasowywania "20" z "2016" lub "3". za pomocą "3,14".
 
-Atrybuty daty są używane do kodowania wydajnie wartości daty.  *Is_between* operacji włącza obsługę nierówności (lt, le, gt, ge), w czasie wykonywania.
+Atrybuty daty są używane do efektywne kodowanie wartości daty.  *Is_between* operacji umożliwia obsługę nierówności (lt, le, gt, ge) w czasie wykonywania.
   
-Identyfikator GUID atrybuty służą do wydajnie reprezentują wartości identyfikatora GUID z domyślną obsługę *jest równe* operacji.
+Identyfikator GUID atrybuty są używane do wydajnego reprezentują wartości identyfikatora GUID domyślnie obsługuje *jest równa* operacji.
 
-Atrybuty obiektów blob są używane do efektywne kodowanie obiektów blob potencjalnie dużej ilości danych do środowiska wykonawczego wyszukiwania z odpowiedniego obiektu bez obsługi do żadnej operacji indeksowania na podstawie zawartości obiektu blob wartości.
+Atrybuty obiektów blob są używane do efektywne kodowanie potencjalnie dużych ilości danych obiektów blob, do środowiska uruchomieniowego wyszukiwania z odpowiedniego obiektu, bez obsługi dla każdej operacji indeksowania, na podstawie zawartości wartości obiektu blob.
 
 ### <a name="composite-attributes"></a>Atrybuty złożone
-Atrybuty złożone są używane do reprezentowania grupowania wartości atrybutów.  Nazwa każdego atrybutu podrzędnego zaczyna się od nazwy atrybutu złożonego, a następnie ".".  Wartości atrybutów złożone są określane jako obiekt JSON zawierający wartości atrybutów zagnieżdżonych.  Złożone atrybutów może mieć wielu wartości obiektu.  Jednak atrybuty złożone nie mogą mieć podrzędne atrybutów, które same atrybuty złożonego.
 
-W powyższym przykładzie publikację academic dzięki temu usługa kwerendy dokumentach "harry shum", gdy jest on w "microsoft".  Bez złożonego atrybutów usługi można tylko zapytania, dla dokumentów w przypadku, gdy autorów jest "harry shum" i jednym autorów jest "Microsoft".  Aby uzyskać więcej informacji, zobacz [złożonego zapytania](SemanticInterpretation.md#composite-function).
+Złożone atrybuty są używane do reprezentowania grupowania wartości atrybutów.  Nazwa każdego z atrybutów podrzędnych rozpoczyna się od nazwy atrybutu złożonego, a następnie ".".  Wartości dla atrybutów złożone są określane jako obiekt JSON, zawierającą wartości atrybutów zagnieżdżonych.  Złożone atrybutów może mieć wiele wartości obiektu.  Jednak złożone atrybutów nie może mieć podrzędnej atrybutów, które same atrybuty złożone są.
+
+W powyższym przykładzie akademickich publikacji dzięki temu usługa do wykonywania zapytań dla dokumentów przez "harry shum" podczas, gdy jest on na "microsoft".  Bez złożonego atrybutów usługi można badać tylko dokumentów, gdzie jest on autorzy "harry shum" i jednym autorów wynosi "microsoft".  Aby uzyskać więcej informacji, zobacz [złożonego zapytania](SemanticInterpretation.md#composite-function).
 
 ## <a name="attribute-operations"></a>Operacje na atrybutach
-Domyślnie każdy atrybut został zaindeksowany do obsługi operacji wszystkie dostępne na typ danych atrybutu.  Określonej operacji nie jest wymagana, zestaw indeksowanej operacji można jawnie określić Aby zmniejszyć rozmiar indeksu.  W poniższy fragment kodu z powyższego schematu przykład atrybutu Author.Id został zaindeksowany do obsługi tylko *jest równe* operacji, ale nie dodatkowe *starts_with* i *is_between*  operacje dla atrybutów Int32.
+
+Domyślnie każdy atrybut są indeksowane, aby obsługiwać wszystkie operacje dostępne na typ danych atrybutu.  Określoną operacją nie jest wymagane, zestaw indeksowanej operacji można jawnie określone, aby zmniejszyć rozmiar indeksu.  W poniższym fragmencie kodu z powyższego przykładu schematu atrybut Author.Id są indeksowane, aby obsługiwać tylko *jest równa* operacja, ale nie dodatkowe *starts_with* i *is_between*  operacje dla atrybutów typu Int32.
 ```json
 {"name":"Author.Id", "type":"Int32", "operations":["equals"]}
 ```
 
-Gdy atrybut jest przywoływany wewnątrz gramatyki, *starts_with* operacji należy określić w schemacie w kolejności do wygenerowania zakończeń z częściowa zapytań usługi.  
+Gdy atrybut odwołuje się do wewnątrz gramatyki *starts_with* operacji musi być określona w schemacie w kolejności do generowania uzupełnienia z częściowego zapytań usługi.  
 
-## <a name="attribute-synonyms"></a>Atrybut synonimy
-Często jest to pożądane odwoływanie się do wartość atrybutu określonego ciągu w synonim.  Na przykład użytkownicy mogą odwoływać się do "Microsoft" jako "MSFT" lub "MS".  W takich przypadkach definicja atrybutu można określić nazwę pliku schematu znajduje się w tym samym katalogu co plik schematu.  Każdy wiersz w pliku synonim reprezentuje wpisem synonim w następującym formacie JSON: `["<canonical>", "<synonym>"]`.  W schemacie przykład "AuthorName.syn" to plik JSON zawierający synonim wartości dla atrybutu Author.Name.
+## <a name="attribute-synonyms"></a>Synonimy — atrybut
+
+Często zaleca się wartość atrybutu określonego ciągu według synonimu.  Na przykład użytkownicy mogą odwoływać się do "Microsoft", "MSFT" lub "MS".  W takich przypadkach definicja atrybutu można określić nazwę pliku schematu znajduje się w tym samym katalogu co plik schematu.  Każdy wiersz w pliku synonim reprezentuje wpis synonimów w następującym formacie JSON: `["<canonical>", "<synonym>"]`.  W schemacie przykład "AuthorName.syn" to plik JSON, który zawiera wartości synonim dla atrybutu Author.Name.
 
 `{"name":"Author.Name", "type":"String", "synonyms":"AuthorName.syn"}`
 
 
-Canonical wartość może mieć wielu synonimy.  Wiele wartości kanonicznej może udostępniać synonim wspólnej.  W takich przypadkach usługa rozpozna niejednoznaczności za pomocą wielu interpretacji.  Poniżej jest przykładowy plik synonimy AuthorName.syn odpowiadający powyższego schematu:
+Canonical wartość może mieć wiele synonimów.  Wiele wartości canonical może udostępniać typowe synonimów.  W takiej sytuacji usługa rozpozna niejednoznaczność poprzez wiele interpretacji.  Poniżej jest przykładowy plik synonimy AuthorName.syn odpowiadający powyższego schematu:
 ```json
 ["harry shum","heung-yeung shum"]
 ["harry shum","h shum"]

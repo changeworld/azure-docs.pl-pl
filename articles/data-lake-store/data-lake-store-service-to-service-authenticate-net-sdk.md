@@ -1,6 +1,6 @@
 ---
-title: 'Do usługi uwierzytelniania: zestaw .NET SDK z usługą Data Lake Store za pomocą usługi Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie uzyskania do usługi uwierzytelniania przy użyciu usługi Azure Active Directory przy użyciu zestawu .NET SDK usługi Data Lake Store
+title: 'Service-to-service authentication: zestawu SDK platformy .NET przy użyciu usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak osiągnąć service to service uwierzytelnianie za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory przy użyciu zestawu .NET SDK
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: 388b84024a031a181625404ec1429087982dffbe
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bd03c0801fed0da6d9a87466bc33819f6afa4578
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34625495"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296927"
 ---
-# <a name="service-to-service-authentication-with-data-lake-store-using-net-sdk"></a>Aby usługa uwierzytelniania za pomocą przy użyciu zestawu .NET SDK usługi Data Lake Store
+# <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-net-sdk"></a>Do usługi uwierzytelniania za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu zestawu SDK platformy .NET
 > [!div class="op_single_selector"]
 > * [Korzystanie z języka Java](data-lake-store-service-to-service-authenticate-java.md)
 > * [Korzystanie z zestawu SDK dla platformy .NET](data-lake-store-service-to-service-authenticate-net-sdk.md)
@@ -27,7 +27,7 @@ ms.locfileid: "34625495"
 > 
 >  
 
-W tym artykule informacje o sposobie używania zestawu .NET SDK w celu usługi do uwierzytelniania za pomocą usługi Azure Data Lake Store. Do uwierzytelnienia użytkownika końcowego przy użyciu zestawu .NET SDK usługi Data Lake Store, zobacz [uwierzytelniania użytkowników końcowych za pomocą usługi Data Lake Store przy użyciu zestawu .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md).
+Ten artykuł zawiera informacje o sposobie używania zestawu SDK platformy .NET w celu usługi do uwierzytelniania za pomocą usługi Azure Data Lake Storage Gen1. Aby uwierzytelnianie użytkowników końcowych za pomocą programu Data Lake Storage Gen1 przy użyciu zestawu .NET SDK, zobacz [uwierzytelnianie użytkowników końcowych za pomocą programu Data Lake Storage Gen1 przy użyciu zestawu .NET SDK](data-lake-store-end-user-authenticate-net-sdk.md).
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -35,7 +35,7 @@ W tym artykule informacje o sposobie używania zestawu .NET SDK w celu usługi d
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Tworzenie aplikacji usługi Azure Active Directory "Web"**. Należy wykonać czynności opisane w [do usługi uwierzytelniania za pomocą usługi Data Lake Store za pomocą usługi Azure Active Directory](data-lake-store-service-to-service-authenticate-using-active-directory.md).
+* **Tworzenie aplikacji usługi Azure Active Directory "Web"**. Zostały wykonane kroki opisane w [Service to service uwierzytelnianie za pomocą programu Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory](data-lake-store-service-to-service-authenticate-using-active-directory.md).
 
 ## <a name="create-a-net-application"></a>Tworzenie aplikacji .NET
 1. Otwórz program Visual Studio i utwórz aplikację konsolową.
@@ -77,8 +77,8 @@ W tym artykule informacje o sposobie używania zestawu .NET SDK w celu usługi d
         using Microsoft.Azure.Management.DataLake.Store.Models;
         using Microsoft.IdentityModel.Clients.ActiveDirectory;
 
-## <a name="service-to-service-authentication-with-client-secret"></a>Aby usługa uwierzytelniania za pomocą klucza tajnego klienta
-Dodaj następujący fragment kodu w aplikacji klienta .NET. Zastąp symbole zastępcze wartości pobierane z aplikacji sieci web usługi Azure AD (wyświetlane jako warunek wstępny).  Ta Wstawka kodu umożliwia uwierzytelnianie aplikacji **nieinteraktywnie** z Data Lake Store za pomocą klucza tajnego/klucz klienta dla usługi Azure AD aplikacji sieci web. 
+## <a name="service-to-service-authentication-with-client-secret"></a>Usługa Usługa uwierzytelniania za pomocą klucza tajnego klienta
+Dodaj następujący fragment kodu w aplikacji klienckiej .NET. Zastąp wartości zastępcze wartościami pobranymi z aplikacji sieci web usługi Azure AD (wymienione jako warunek wstępny).  Ten fragment kodu umożliwia uwierzytelnianie aplikacji **nieinteraktywnego** za pomocą programu Data Lake Storage Gen1 przy użyciu klucza tajnego klienta/klucza dla aplikacji sieci web usługi Azure AD. 
 
     private static void Main(string[] args)
     {    
@@ -93,11 +93,11 @@ Dodaj następujący fragment kodu w aplikacji klienta .NET. Zastąp symbole zast
         var adlCreds = GetCreds_SPI_SecretKey(TENANT, ADL_TOKEN_AUDIENCE, CLIENTID, secret_key);
     }
 
-Fragment poprzedzających korzysta z funkcji pomocnika `GetCreds_SPI_SecretKey`. Kod dla tej funkcji pomocnika jest dostępny [tutaj w serwisie Github](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_secretkey).
+Fragment kodu poprzedzającej używa funkcji pomocnika, która `GetCreds_SPI_SecretKey`. Kod dla tej funkcji pomocnika jest dostępny [tutaj w serwisie Github](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_secretkey).
 
-## <a name="service-to-service-authentication-with-certificate"></a>Aby usługa uwierzytelniania za pomocą certyfikatu
+## <a name="service-to-service-authentication-with-certificate"></a>Usługa Usługa uwierzytelniania za pomocą certyfikatu
 
-Dodaj następujący fragment kodu w aplikacji klienta .NET. Zastąp symbole zastępcze wartości pobierane z aplikacji sieci web usługi Azure AD (wyświetlane jako warunek wstępny). Ta Wstawka kodu umożliwia uwierzytelnianie aplikacji **nieinteraktywnie** z Data Lake Store przy użyciu certyfikatu dla usługi Azure AD aplikacji sieci web. Aby uzyskać instrukcje dotyczące tworzenia aplikacji usługi Azure AD, zobacz [Tworzenie nazwy głównej usługi z certyfikatami](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate).
+Dodaj następujący fragment kodu w aplikacji klienckiej .NET. Zastąp wartości zastępcze wartościami pobranymi z aplikacji sieci web usługi Azure AD (wymienione jako warunek wstępny). Ten fragment kodu umożliwia uwierzytelnianie aplikacji **nieinteraktywnego** za pomocą programu Data Lake Storage Gen1 przy użyciu certyfikatu dla aplikacji sieci web usługi Azure AD. Aby uzyskać instrukcje dotyczące sposobu tworzenia aplikacji usługi Azure AD, zobacz [Tworzenie jednostki usługi przy użyciu certyfikatów](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate).
 
     
     private static void Main(string[] args)
@@ -113,12 +113,12 @@ Dodaj następujący fragment kodu w aplikacji klienta .NET. Zastąp symbole zast
         var adlCreds = GetCreds_SPI_Cert(TENANT, ADL_TOKEN_AUDIENCE, CLIENTID, cert);
     }
 
-Fragment poprzedzających korzysta z funkcji pomocnika `GetCreds_SPI_Cert`. Kod dla tej funkcji pomocnika jest dostępny [tutaj w serwisie Github](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert).
+Fragment kodu poprzedzającej używa funkcji pomocnika, która `GetCreds_SPI_Cert`. Kod dla tej funkcji pomocnika jest dostępny [tutaj w serwisie Github](https://github.com/Azure-Samples/data-lake-analytics-dotnet-auth-options#getcreds_spi_cert).
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule przedstawiono sposób uwierzytelniania za pomocą usługi Azure Data Lake Store za pomocą usługi do uwierzytelniania przy użyciu zestawu .NET SDK. Teraz można przeglądać następujące artykuły, które opisano sposób użycia zestawu .NET SDK do pracy z usługą Azure Data Lake Store.
+W tym artykule przedstawiono sposób uwierzytelniania w usłudze Data Lake Storage Gen1 za pomocą usługi do uwierzytelniania przy użyciu zestawu .NET SDK. Możesz teraz przejrzeć następujące artykuły, które porozmawiać na temat sposobu pracy z Data Lake Storage Gen1 przy użyciu zestawu SDK platformy .NET.
 
-* [Account management operations on Data Lake Store using .NET SDK (Operacje zarządzania kontem w usłudze Data Lake Store przy użyciu zestawu SDK platformy .NET)](data-lake-store-get-started-net-sdk.md)
-* [Operacje na danych na przy użyciu zestawu .NET SDK usługi Data Lake Store](data-lake-store-data-operations-net-sdk.md)
+* [Operacje zarządzania kontem w Data Lake Storage Gen1 przy użyciu zestawu .NET SDK](data-lake-store-get-started-net-sdk.md)
+* [Operacje na danych na Data Lake Storage Gen1 przy użyciu zestawu .NET SDK](data-lake-store-data-operations-net-sdk.md)
 
 

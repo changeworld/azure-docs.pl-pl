@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: 0bd7e5bd3fc4c4ce3508ca7d3f877fbdf00d5375
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: ddbb621561d8fcef3637e036be004d17aea76f40
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717645"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129305"
 ---
 # <a name="add-map-controls-to-azure-maps"></a>Dodawanie kontrolki mapy do usługi Azure Maps
 
@@ -26,7 +26,7 @@ W tym artykule przedstawiono sposób dodawania kontrolki mapy do mapy. Zostanie 
 
 Pierwszy blok kodu w powyższy kod tworzy obiekt mapy. Zobacz [Utwórz mapę](./map-create.md) instrukcje dotyczące sposobu tworzenia mapy.
 
-Drugi blok kodu tworzy obiekt Kontrolka powiększenia, używając atlas [ZoomControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.zoomcontrol?view=azure-iot-typescript-latest).
+Drugi blok kodu tworzy obiekt Powiększenie, przy użyciu atlas [ZoomControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.zoomcontrol?view=azure-iot-typescript-latest).
 
 Kontrolka powiększenia dodaje możliwość powiększanie i pomniejszanie mapy. Trzeci blok dodaje powiększenia mapy za pomocą mapy [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody.
 
@@ -48,7 +48,7 @@ Wysokość formantu dodaje możliwości, aby zmienić wysokość mapy. Trzeci bl
 
 Pierwszy blok kodu w powyższy kod tworzy obiekt mapy. Zobacz [Utwórz mapę](./map-create.md) instrukcje dotyczące sposobu tworzenia mapy.
 
-Drugi blok kodu tworzy obiekt formantu kompasu, używając atlas [kontroli Compass](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.compasscontrol?view=azure-iot-typescript-latest#compasscontrol). Dodaje także kompasu formant do mapy za pomocą mapy [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody.
+Drugi blok kodu tworzy obiekt Compass kontrolki, używając atlas [kontroli Compass](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.compasscontrol?view=azure-iot-typescript-latest#compasscontrol). Dodaje także kompasu formant do mapy za pomocą mapy [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody.
 
 ## <a name="a-map-with-all-controls"></a>Mapa przy użyciu wszystkich formantów
 
@@ -57,9 +57,9 @@ Drugi blok kodu tworzy obiekt formantu kompasu, używając atlas [kontroli Compa
 
 Pierwszy blok kodu w powyższy kod tworzy obiekt mapy. Zobacz [Utwórz mapę](./map-create.md) instrukcje dotyczące sposobu tworzenia mapy.
 
-Drugi blok kodu tworzy obiekt formantu kompasu, używając atlas [CompassControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.compasscontrol?view=azure-iot-typescript-latest#compasscontrol) i dodaje je do mapy za pomocą mapy [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody.
+Drugi blok kodu tworzy obiekt Compass kontrolki, używając atlas [CompassControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.compasscontrol?view=azure-iot-typescript-latest#compasscontrol) i dodaje je do mapy za pomocą mapy [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody.
 
-Trzeci bloku kodu tworzy obiekt Kontrolka powiększenia, używając atlas [ZoomControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.zoomcontrol?view=azure-iot-typescript-latest) i dodaje je do mapy za pomocą mapy [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody.
+Trzeci bloku kodu tworzy obiekt Powiększenie, przy użyciu atlas [ZoomControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.zoomcontrol?view=azure-iot-typescript-latest) i dodaje je do mapy za pomocą mapy [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody.
 
 Czwarty blok kodu tworzy obiekt formantu pomysłu, używając atlas [PitchControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.pitchcontrol?view=azure-iot-typescript-latest) i dodaje je do mapy za pomocą mapy [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody.
 
@@ -67,16 +67,18 @@ Ostatni blok kodu dodaje obiekt selektor stylu do mapy, używając atlas [StyleC
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej na temat klasy i metody używane w tym artykule: 
-* [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-    * [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol)
+Dowiedz się więcej na temat klasy i metody używane w tym artykule:
 
-* [— Atlas](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest)
-    * [CompassControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.compasscontrol?view=azure-iot-typescript-latest#compasscontrol)
-    * [ZoomControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.zoomcontrol?view=azure-iot-typescript-latest)
-    * [PitchControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.pitchcontrol?view=azure-iot-typescript-latest)
-    * [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol?view=azure-iot-typescript-latest#stylecontrol)
-    
-Aby uzyskać więcej przykładów kodu do dodania do map zobacz następujące artykuły: 
-* [Dodawanie numeru pin](./map-add-pin.md)
-* [Dodawanie menu podręcznego](./map-add-popup.md)
+> [!div class="nextstepaction"]
+> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+
+> [!div class="nextstepaction"]
+> [— Atlas](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas?view=azure-iot-typescript-latest)
+
+Zobacz następujące artykuły, aby uzyskać pełny kod:
+
+> [!div class="nextstepaction"]
+> [Dodawanie numeru pin](./map-add-pin.md)
+
+> [!div class="nextstepaction"]
+> [Dodawanie menu podręcznego](./map-add-popup.md)

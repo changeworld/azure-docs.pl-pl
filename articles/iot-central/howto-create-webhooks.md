@@ -3,19 +3,21 @@ title: Tworzenie elementów webhook w regułach w usłudze Azure IoT Central | D
 description: Tworzenie elementów webhook w usłudze Azure IoT Central automatycznie powiadamiać innych aplikacji, gdy wyzwolenie reguły.
 author: viv-liu
 ms.author: viviali
-ms.date: 07/17/2018
+ms.date: 09/17/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1e21076cafe21e6c0efcdf5a8146278eabd9ebc4
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 896d4e9c775fa0b0c8eb062d11d141901daa7242
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39228045"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295989"
 ---
 # <a name="create-webhook-actions-on-rules-in-azure-iot-central"></a>Utwórz akcje elementu webhook na reguły w usłudze Azure IoT Central
+
+*Ten temat dotyczy konstruktorów i administratorów.*
 
 Elementy Webhook pozwalają połączyć aplikację IoT Central do innych aplikacji i usług, zdalne monitorowanie i powiadomienia. Elementy Webhook powiadamiają automatycznie, inne aplikacje i usługi, z którymi się łączysz zawsze wtedy, gdy reguła jest wyzwalana w swojej aplikacji IoT Central. Aplikacja IoT Central wyśle żądanie POST do punktu końcowego HTTP innej aplikacji przy każdym wyzwoleniu reguły. Ładunek będzie zawierać szczegóły dotyczące urządzenia i wyzwalacza reguły. 
 
@@ -25,11 +27,11 @@ W tym przykładzie połączysz się RequestBin powiadomieniom reguły wyzwalać 
 1. Otwórz [RequestBin](http://requestbin.net/). 
 1. Utwórz nowe narzędzia RequestBin i kopiowania **URL pojemnika**. 
 1. Tworzenie [reguły telemetrii](howto-create-telemetry-rules.md) lub [reguły zdarzenia](howto-create-event-rules.md). Zapisać regułę, a następnie dodaj nową akcję.
-![Ekran tworzenia elementu Webhook](media/howto-create-webhooks/webhookcreate.png)
+![Ekran tworzenia elementu Webhook](media/howto-create-webhooks/webhookcreate.PNG)
 1. Wybierz akcję elementu webhook i podać nazwę wyświetlaną i wklej adres URL pojemnika, jako adres URL wywołania zwrotnego. 
-1. Zapisz zasady
+1. Zapisać reguły.
 
-Gdy reguła jest wyzwalana, powinien zostać wyświetlony nowe wezwanie są wyświetlane w RequestBin.
+Teraz po wyzwoleniu reguły powinien być widoczny nowe wezwanie są wyświetlane w RequestBin.
 
 ## <a name="payload"></a>Ładunek
 Po wyzwoleniu reguły żądanie HTTP POST wykonywane, aby adres URL wywołania zwrotnego zawierającego ładunek json z pomiarów, urządzenia, reguły i szczegóły dotyczące aplikacji. Reguły telemetrii obciążenie może wyglądać następująco:
@@ -42,6 +44,7 @@ Po wyzwoleniu reguły żądanie HTTP POST wykonywane, aby adres URL wywołania z
         "id":"ID",
         "name":  "Refrigerator1",
         "simulated" : true,
+        "deviceId": "deviceID",
         "deviceTemplate":{
             "id": "ID",
             "version":"1.0.0"

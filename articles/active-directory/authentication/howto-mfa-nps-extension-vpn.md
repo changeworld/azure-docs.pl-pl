@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: c1247dfca6dea638da2113fef940b97ad3348b9a
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 0754b13704810816b1650010a00185031ca41f5d
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39160284"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297575"
 ---
 # <a name="integrate-your-vpn-infrastructure-with-azure-mfa-by-using-the-network-policy-server-extension-for-azure"></a>Integrowanie infrastruktury sieci VPN z usługą Azure MFA za pomocą rozszerzenia serwera zasad sieciowych na platformie Azure
 
@@ -122,7 +122,7 @@ Microsoft Azure Active Directory modułu programu PowerShell nie jest już obecn
 
 Aby użyć rozszerzenia serwera NPS, lokalnych użytkowników musi być synchronizowane z usługą Azure Active Directory i włączone dla usługi MFA. W tym przewodniku założono, że lokalnych użytkowników są synchronizowane z usługą Azure Active Directory za pomocą usługi Azure AD Connect. Instrukcje dotyczące włączania uwierzytelniania Wieloskładnikowego użytkownicy znajdują się poniżej.
 
-Aby uzyskać informacje o usłudze Azure AD Connect, zobacz [integrowanie katalogów lokalnych z usługą Azure Active Directory](../connect/active-directory-aadconnect.md). 
+Aby uzyskać informacje o usłudze Azure AD Connect, zobacz [integrowanie katalogów lokalnych z usługą Azure Active Directory](../hybrid/whatis-hybrid-identity.md). 
 
 ### <a name="azure-active-directory-guid-id"></a>Identyfikator GUID usługi Azure Active Directory 
 
@@ -393,7 +393,7 @@ Aby użyć skryptu, należy podać rozszerzenie przy użyciu poświadczeń admin
 
 6. Uruchom ponownie serwer.
 
-### <a name="verify-the-configuration"></a>Sprawdź, czy konfiguracja
+### <a name="verify-the-configuration"></a>Sprawdzanie konfiguracji
 Aby sprawdzić konfigurację, należy ustanowić nowe połączenie VPN z serwerem sieci VPN. Po pomyślnym wprowadzeniu poświadczeń dla uwierzytelniania podstawowego, połączenie sieci VPN czeka uwierzytelniania pomocniczego zakończyło się sukcesem, zanim połączenie zostanie nawiązane, jak pokazano poniżej. 
 
 ![W oknie Ustawienia Windows w sieci VPN](./media/howto-mfa-nps-extension-vpn/image42.png)
@@ -453,5 +453,5 @@ Aby uzyskać więcej informacji, zobacz [integrowanie istniejącej infrastruktur
 
 [Brama usług pulpitu zdalnego i serwer Azure Multi-Factor Authentication korzystające z usługi RADIUS](howto-mfaserver-nps-rdg.md)
 
-[Integrowanie katalogów lokalnych z usługą Azure Active Directory](../connect/active-directory-aadconnect.md)
+[Integrowanie katalogów lokalnych z usługą Azure Active Directory](../hybrid/whatis-hybrid-identity.md)
 

@@ -8,12 +8,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 06/28/2018
 ms.author: mahilleb
-ms.openlocfilehash: 1cb00035dc8f1cdeabd1beb22ca69f47bf4bd89e
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d651a0a9e006e996db44b82eeaf0a1242a4114e0
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379574"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296094"
 ---
 # <a name="regions-of-the-speech-service"></a>Regiony usługi mowy
 
@@ -35,16 +35,17 @@ W [zestaw SDK rozpoznawania mowy](speech-sdk.md), regiony są określane jako ci
 
 W poniższej tabeli wymieniono dostępne regiony dla **rozpoznawania mowy** i **tłumaczenia**:
 
-Region| Wartość parametru regionu w zestawie SDK rozpoznawania mowy| Portal
--|-
-Zachodnie stany USA| `westus`| https://westus.cris.ai
-Zachodnie stany USA 2| `westus2`| https://westus2.cris.ai
-Wschodnie stany USA| `eastus`| https://eastus.cris.ai
-Wschodnie stany USA 2| `eastus2`| https://eastus2.cris.ai
-Azja Wschodnia| `eastasia`| https://eastasia.cris.ai
-Azja Południowo-Wschodnia| `southeastasia`| https://southeastasia.cris.ai
-Europa Północna| `northeurope`| https://northeurope.cris.ai
-Europa Zachodnia|  `westeurope`| https://westeurope.cris.ai
+  Region | Parametr zestaw SDK rozpoznawania mowy | Portal
+ ------|-------|--------
+ Zachodnie stany USA | `westus` | https://westus.cris.ai
+ Zachodnie stany USA 2 | `westus2` | https://westus2.cris.ai 
+ Wschodnie stany USA | `eastus` | https://eastus.cris.ai
+ Wschodnie stany USA 2 | `eastus2` | https://eastus2.cris.ai
+ Azja Wschodnia | `eastasia` | https://eastasia.cris.ai
+ Azja Południowo-Wschodnia | `southeastasia` | https://southeastasia.cris.ai
+ Europa Północna | `northeurope` | https://northeurope.cris.ai
+ Europa Zachodnia | `westeurope` | https://westeurope.cris.ai
+
 
 ### <a name="regions-for-intent-recognition"></a>Regiony dla rozpoznawanie intencji
 

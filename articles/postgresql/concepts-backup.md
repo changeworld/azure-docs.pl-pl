@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: aafe474ef23d499f505f0e1dab7623e5d032cc84
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 707803e1f69a3146772e71ff711a48b510d8c9fc
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391712"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127571"
 ---
 # <a name="backup-and-restore-in-azure-database-for-postgresql"></a>Kopia zapasowa i przywracanie w usłudze Azure Database for PostgreSQL
 
@@ -66,6 +66,8 @@ Konieczne może czekać na następnej kopii zapasowej dziennika transakcji możn
 ### <a name="geo-restore"></a>Przywracanie geograficzne
 
 Po skonfigurowaniu serwera na potrzeby geograficznie nadmiarowych kopii zapasowych, można przywrócić serwer do innego regionu platformy Azure, w którym ta usługa jest dostępna. Funkcja przywracania geograficznego jest domyślną opcję odzyskiwania, gdy serwer będzie niedostępny z powodu zdarzenia w regionie, w którym jest hostowany serwer. Jeśli na dużą skalę zdarzenia w regionie skutkuje brakiem dostępu aplikacji bazy danych, można przywrócić serwer z geograficznie nadmiarowych kopii zapasowych na serwerze w każdym innym regionie. Występuje opóźnienie między podczas tworzenia kopii zapasowej i kiedy są replikowane do innego regionu. To opóźnienie może trwać do godziny, więc w przypadku poważnej awarii, może wystąpić do utraty danych jedną godzinę.
+
+Podczas przywracania geograficznego konfiguracje serwerów, które mogą być zmieniane obejmują generacja obliczeń, (rdzeń wirtualny), okres przechowywania kopii zapasowej i opcje nadmiarowości kopii zapasowej. Zmienianie warstwę cenową (podstawowa, ogólnego przeznaczenia lub zoptymalizowane pod kątem pamięci) lub rozmiar magazynu nie jest obsługiwane.
 
 ### <a name="perform-post-restore-tasks"></a>Wykonaj zadania wykonywane po przywróceniu
 

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: annaba
-ms.openlocfilehash: 62ee6aae825d822a1d87858ea6a7eab953a33318
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 2f6b9ee7a23341f27272a4614bed6be5ae422ce0
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43345229"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297278"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Wprowadzenie do uwierzytelniania opartego na certyfikatach w usłudze Azure Active Directory
 
@@ -29,7 +29,7 @@ Konfiguruje tę funkcję, eliminuje konieczność wprowadzania kombinację nazwy
 W tym temacie:
 
 - Zawiera instrukcje konfigurowania i korzystanie z uwierzytelniania opartego na certyfikatach dla użytkowników dzierżaw w planach Office 365 Enterprise, Business, Education i dla instytucji rządowych USA. Ta funkcja jest dostępna w wersji zapoznawczej w planach (Chiny) pakietu Office 365, ochrona dla instytucji rządowych USA i nam rządu federalnego.
-- Przyjęto założenie, że masz już [infrastruktury kluczy publicznych (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) i [usług AD FS](../connect/active-directory-aadconnectfed-whatis.md) skonfigurowane.
+- Przyjęto założenie, że masz już [infrastruktury kluczy publicznych (PKI)](https://go.microsoft.com/fwlink/?linkid=841737) i [usług AD FS](../hybrid/how-to-connect-fed-whatis.md) skonfigurowane.
 
 ## <a name="requirements"></a>Wymagania
 
@@ -107,7 +107,7 @@ Aby pobrać zaufanych urzędów certyfikacji, które są zdefiniowane w katalogu
 
     Get-AzureADTrustedCertificateAuthority
 
-### <a name="add"></a>Dodawanie
+### <a name="add"></a>Add
 
 Aby utworzyć zaufanego urzędu certyfikacji, należy użyć [New AzureADTrustedCertificateAuthority](/powershell/module/azuread/new-azureadtrustedcertificateauthority?view=azureadps-2.0) polecenia cmdlet i ustaw **crlDistributionPoint** atrybutu do poprawnej wartości:
 
@@ -118,7 +118,7 @@ Aby utworzyć zaufanego urzędu certyfikacji, należy użyć [New AzureADTrusted
     $new_ca.crlDistributionPoint=”<CRL Distribution URL>”
     New-AzureADTrustedCertificateAuthority -CertificateAuthorityInformation $new_ca
 
-### <a name="remove"></a>Usuń
+### <a name="remove"></a>Remove
 
 Aby usunąć zaufany urząd certyfikacji, należy użyć [AzureADTrustedCertificateAuthority Usuń](/powershell/module/azuread/remove-azureadtrustedcertificateauthority?view=azureadps-2.0) polecenia cmdlet:
 

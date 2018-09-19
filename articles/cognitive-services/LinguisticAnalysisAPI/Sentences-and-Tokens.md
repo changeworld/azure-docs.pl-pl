@@ -1,71 +1,72 @@
 ---
-title: Zdań i tokenów w interfejsie API językową analiza | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat rozdzielenie zdanie i tokenizacji językowe analizy interfejsu API w usługach kognitywnych.
+title: Zdania i tokeny - interfejsu API analizy językowej
+titlesuffix: Azure Cognitive Services
+description: Więcej informacji na temat oddzielanie w interfejsu API analizy językowej wyrazów i tokenów.
 services: cognitive-services
 author: DavidLiCIG
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: linguistic-analysis
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: davl
-ms.openlocfilehash: 78e539f365728ad540308e9cfb07af44bf6d8fe7
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: b31ca8f88d1e8d5710c3a6a6cfccbb167fdd762a
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37084046"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126279"
 ---
-# <a name="sentence-separation-and-tokenization"></a>Rozdzielenie zdanie i Tokenizacji
+# <a name="sentence-separation-and-tokenization"></a>Oddzielanie wyrazów i tokenów
 
-## <a name="background-and-motivation"></a>Tło i motywacją
+## <a name="background-and-motivation"></a>Tło i motywację
 
-Podana treść, pierwszym krokiem językową analiza jest podziel go na zdań i tokenów.
+Biorąc pod uwagę treści pewnego tekstu, pierwszym krokiem analizy językowej jest podzielenie go na zdania i tokeny.
 
-### <a name="sentence-separation"></a>Rozdzielenie zdanie
+### <a name="sentence-separation"></a>Rozdzielenie zdania
 
-Na pierwszy rzut wydaje się, że krytyczne tekstu do zdań jest łatwy: tylko znaleźć znaczników zakończenia zdania i przerwać zdań.
-Znaczniki są jednak często skomplikowane i niejednoznaczne.
+Na pierwszy rzut oka, wygląda na to podzielenie tekst na zdania to proste: wystarczy znaleźć znaczniki koniec zdania i Podziel zdania istnieje.
+Te znaczniki są jednak często skomplikowane i niejednoznaczne.
 
-Należy wziąć pod uwagę następujące przykładowy tekst:
+Należy wziąć pod uwagę następujące tekstowi przykładu:
 
-> Co powiedziałeś?!? Nie można otrzymywać informacje o dyrektora "nowej propozycji." Należy koniecznie Państwa-Pani Smith.
+> Co powiedziałeś?!? Nie zasłyszane dyrektora "Nowa propozycja." Warto Pan i Pani Smith.
 
-Ten tekst zawiera trzy zdań:
+Ten tekst zawiera trzy zdania:
 
 - Co powiedziałeś?!?
-- Nie można otrzymywać informacje o dyrektora "nowej propozycji."
-- Należy koniecznie Państwa-Pani Smith.
+- Nie zasłyszane dyrektora "Nowa propozycja."
+- Warto Pan i Pani Smith.
 
-Należy zwrócić uwagę, jak punkty końcowe zdań są oznaczone w bardzo różne sposoby.
-Pierwszy kończy się na kombinacji znaków zapytania i wykrzykniki (nazywane również interrobang).
-Drugi kończy się kropką lub kropką, ale następujące znaku cudzysłowu należy pobierane do poprzedniego zdanie.
-W trzecim zdaniu widać, jak ten sam znak kropki może służyć do oznaczania także skróty.
-Wyszukiwanie tylko na znaki interpunkcyjne zawiera zestaw odpowiednimi kandydatami, ale dalszej pracy wymagane w celu zidentyfikowania granice zdanie wartość true.
+Należy pamiętać o tym, jak koniec zdania są oznaczone na różne sposoby.
+Pierwszy kończy się na kombinacji znaków zapytania i wykrzykniki (czasami nazywany interrobang).
+Drugi kończy się kropką ani kropką, ale następujące znaku cudzysłowu powinny były ściągane do poprzedniego zdania.
+W trzecim zdania można zobaczyć, jak ten sam znak kropki może służyć do oznaczania także skrótami.
+Patrząc tylko znaki interpunkcyjne udostępnia zestaw dobrym kandydatem, ale dalszej pracy jest wymagane w celu zidentyfikowania granice true zdania.
 
 ### <a name="tokenization"></a>Tokenizacji
 
-Następne zadanie jest Podziel te zdania na tokeny.
-W większości przypadków tokeny w języku angielskim są rozdzielane znakami odstępu.
-(Wyszukiwanie słów lub tokenów jest znacznie łatwiejsze w języku angielskim niż w języku chińskim, gdzie spacje przeważnie nie są używane między wyrazami.
+Kolejnym krokiem jest Podziel te zdania na tokeny.
+W większości przypadków angielskiej tokeny są rozdzielone biały znak.
+(Wyszukiwanie tokenów lub wyrazów jest znacznie łatwiejsze w języku angielskim niż chiński, gdzie przede wszystkim nie służą spacji między wyrazami.
 Pierwsze zdanie mogą być zapisane jako "Whatdidyousay?")
 
 Istnieje kilka przypadków trudne.
-Po pierwsze znaki interpunkcyjne często (ale nie zawsze) powinien można podzielić od jego otaczającym kontekście.
-Po drugie, jest język angielski *skrótów*, takie jak "nie" lub "jest", gdzie skompresowane i skrót na mniejsze części słowa. Celem tokenizator ma podzielić sekwencja znaków słów.
+Po pierwsze znaki interpunkcyjne często (ale nie zawsze) powinny być podziału poza nie otaczającego kontekstu.
+Po drugie, ma angielski *skrótów*, takie jak "nie" lub "to", gdy skompresowane i skrót na mniejsze części słowa. Celem tokenizator jest przerwać sekwencja znaków słowa.
 
-Teraz wróć do zdań przykład z góry.
-Teraz możemy umieszczone kropką"center" (&middot;) między każdy token distinct.
+Powrócimy do zdań przykład z góry.
+Teraz możemy zostały umieszczone "center dot" (&middot;) między każdy token distinct.
 
-- Co &middot; czy &middot; można &middot; powiedzieć &middot; ?!?
-- I &middot; czy &middot; e &middot; usłyszeć &middot; o &middot; &middot; Dyrektor &middot; w &middot; " &middot; nowe &middot; propozycji &middot; . &middot; "
-- On &middot; w &middot; ważne &middot; do &middot; p.&middot; i &middot; Pani. &middot; Smith &middot; .
+- Co &middot; czy &middot; możesz &middot; powiedzieć &middot; ?!?
+- Czy mogę &middot; została &middot; IE &middot; Posłuchaj &middot; o &middot; &middot; Dyrektor ds. &middot; firmy &middot; " &middot; nowe &middot; propozycji &middot; . &middot; "
+- Jego &middot; firmy &middot; ważne &middot; do &middot; Pan&middot; i &middot; Pani. &middot; Nowak &middot; .
 
-Należy zwrócić uwagę, jak większość tokeny są słowa znajdował się w słowniku (np. *ważne*, *Dyrektor*).
+Należy zauważyć, jak większości tokeny to słowa, które można znaleźć w słowniku (np. *ważne*, *Dyrektor*).
 Inne może składać się wyłącznie znaków interpunkcyjnych.
-Ponadto istnieją bardziej nietypowe tokenów do reprezentowania skrótów, takich jak *e* dla *nie*, zaimki dzierżawcze, takich jak *w*itp. Ta tokenizacji umożliwia obsługę słowa *nie* i zwrot *nie* w sposób bardziej spójny dla wystąpienia.
+Istnieją bardziej nietypowe tokenów do reprezentowania skrótów, takich jak *IE* dla *nie*, takich jak Zaimki dzierżawcze *firmy*itp. Ta tokenizacji umożliwia obsługę słowa *nie* i zwrot *nie* w sposób bardziej spójny dla wystąpienia.
 
 ## <a name="specification"></a>Specyfikacja
 
-Należy podjąć spójne decyzje dotyczące co obejmuje zdania i token.
-Firma Microsoft zależą od specyfikacji z [Penn Treebank](https://catalog.ldc.upenn.edu/ldc99t42) (niektóre dodatkowe szczegóły są dostępne pod adresem ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html).
+Należy spójne decyzje dotyczące co składa się z zdania i token.
+Polegamy na specyfikacji z [Treebank partnerów](https://catalog.ldc.upenn.edu/ldc99t42) (niektóre dodatkowe szczegóły są dostępne pod adresem ftp://ftp.cis.upenn.edu/pub/treebank/public_html/tokenization.html).

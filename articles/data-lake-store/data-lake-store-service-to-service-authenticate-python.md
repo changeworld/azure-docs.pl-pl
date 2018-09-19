@@ -1,6 +1,6 @@
 ---
-title: 'Do usługi uwierzytelniania: Python z usługą Data Lake Store za pomocą usługi Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Dowiedz się, jak wykonać uwierzytelnianie usługi do usługi z usługi Data Lake Store za pomocą usługi Azure Active Directory przy użyciu języka Python
+title: 'Service-to-service authentication: języka Python za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak osiągnąć service to service uwierzytelnianie za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory przy użyciu języka Python
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: f2ebd9228b9fa7861527dab20277ceb09f61b544
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: a8e2cb090b2ee02301c54697db9edadeaebd9cd3
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34626236"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295415"
 ---
-# <a name="service-to-service-authentication-with-data-lake-store-using-python"></a>Aby usługa uwierzytelniania za pomocą Data Lake Store z użyciem języka Python
+# <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-python"></a>Uwierzytelnianie Service to service za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu języka Python
 > [!div class="op_single_selector"]
 > * [Korzystanie z języka Java](data-lake-store-service-to-service-authenticate-java.md)
 > * [Korzystanie z zestawu SDK dla platformy .NET](data-lake-store-service-to-service-authenticate-net-sdk.md)
@@ -27,7 +27,7 @@ ms.locfileid: "34626236"
 > 
 >  
 
-W tym artykule informacje o sposobie używania zestawu SDK Python celu usługi do uwierzytelniania za pomocą usługi Azure Data Lake Store. Dla użytkownika końcowego uwierzytelniania za pomocą usługi Data Lake Store za pomocą języka Python, zobacz [uwierzytelniania użytkowników końcowych za pomocą usługi Data Lake Store za pomocą języka Python](data-lake-store-end-user-authenticate-python.md).
+Ten artykuł zawiera informacje o sposobie używania zestawu SDK języka Python w celu usługi do uwierzytelniania za pomocą usługi Azure Data Lake Storage Gen1. Aby uwierzytelnianie użytkowników końcowych za pomocą programu Data Lake Storage Gen1 przy użyciu języka Python, zobacz [uwierzytelnianie użytkowników końcowych za pomocą programu Data Lake Storage Gen1 przy użyciu języka Python](data-lake-store-end-user-authenticate-python.md).
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -36,15 +36,15 @@ W tym artykule informacje o sposobie używania zestawu SDK Python celu usługi d
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Tworzenie aplikacji usługi Azure Active Directory "Web"**. Należy wykonać czynności opisane w [do usługi uwierzytelniania za pomocą usługi Data Lake Store za pomocą usługi Azure Active Directory](data-lake-store-service-to-service-authenticate-using-active-directory.md).
+* **Tworzenie aplikacji usługi Azure Active Directory "Web"**. Zostały wykonane kroki opisane w [Service to service uwierzytelnianie za pomocą programu Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory](data-lake-store-service-to-service-authenticate-using-active-directory.md).
 
 ## <a name="install-the-modules"></a>Instalacja modułów
 
-Aby móc pracować z usługą Data Lake Store przy użyciu języka Python, musisz zainstalować trzy moduły.
+Aby pracować z Data Lake Storage Gen1 przy użyciu języka Python, musisz zainstalować trzy moduły.
 
 * Moduł `azure-mgmt-resource`, który obejmuje moduły platformy Azure dla usługi Active Directory itp.
-* Moduł `azure-mgmt-datalake-store`, który obejmuje operacje zarządzania kontem usługi Azure Data Lake Store. Aby uzyskać więcej informacji na temat tego modułu, zobacz [dokumentację modułu do zarządzania dla usługi Azure Data Lake Store](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
-* Moduł `azure-datalake-store`, który obejmuje operacje systemu plików usługi Azure Data Lake Store. Aby uzyskać więcej informacji na temat tego modułu, zobacz [dokumentację modułu systemu plików dla usługi Azure Data Lake Store](http://azure-datalake-store.readthedocs.io/en/latest/).
+* `azure-mgmt-datalake-store` Moduł, który obejmuje operacje zarządzania kontem Data Lake Storage Gen1. Aby uzyskać więcej informacji na temat tego modułu, zobacz [odwołania do modułu usługi Azure Data Lake magazynu Gen1 Management](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
+* `azure-datalake-store` Moduł, który obejmuje operacje systemu plików Data Lake Storage Gen1. Aby uzyskać więcej informacji na temat tego modułu, zobacz [dokumentację modułu systemu plików azure-datalake-store](http://azure-datalake-store.readthedocs.io/en/latest/).
 
 Użyj następujących poleceń, aby zainstalować moduły.
 
@@ -64,11 +64,11 @@ pip install azure-datalake-store
     ## Use this for Azure AD authentication
     from msrestazure.azure_active_directory import AADTokenCredentials
 
-    ## Required for Azure Data Lake Store account management
+    ## Required for Data Lake Storage Gen1 account management
     from azure.mgmt.datalake.store import DataLakeStoreAccountManagementClient
     from azure.mgmt.datalake.store.models import DataLakeStoreAccount
 
-    ## Required for Azure Data Lake Store filesystem management
+    ## Required for Data Lake Storage Gen1 filesystem management
     from azure.datalake.store import core, lib, multithread
 
     # Common Azure imports
@@ -84,7 +84,7 @@ pip install azure-datalake-store
 
 ## <a name="service-to-service-authentication-with-client-secret-for-account-management"></a>Uwierzytelnianie między usługami z kluczem tajnym klienta w celu zarządzania kontami
 
-Użyj ta Wstawka kodu uwierzytelniania za pomocą usługi Azure AD dla operacji zarządzania kontem w usłudze Data Lake przechowywania, takich jak tworzenie konta usługi Data Lake Store, usuwanie konta usługi Data Lake Store itp. Poniższy fragment kodu może służyć do uwierzytelniania aplikacji nieinteraktywnie, przy użyciu klucza tajnego klienta dla aplikacji / usługi podmiotu zabezpieczeń istniejącej usługi Azure AD "Aplikacja sieci Web" aplikacji.
+Za pomocą tego fragmentu kodu do uwierzytelniania za pomocą usługi Azure AD, dla operacji zarządzania kontem w Data Lake Storage Gen1, takie jak tworzenie konta Data Lake Storage Gen1, konto usuwania Gen1 Data Lake Storage itp. Poniższy fragment kodu służy do uwierzytelniania aplikacji w sposób nieinterakcyjny za pomocą klucza tajnego klienta dla aplikacji / jednostki usługi z istniejącej usługi Azure AD "Aplikacja sieci Web" aplikacji.
 
     authority_host_uri = 'https://login.microsoftonline.com'
     tenant = '<TENANT>'
@@ -99,7 +99,7 @@ Użyj ta Wstawka kodu uwierzytelniania za pomocą usługi Azure AD dla operacji 
 
 ## <a name="service-to-service-authentication-with-client-secret-for-filesystem-operations"></a>Uwierzytelnianie między usługami z wpisem tajnym klienta dla operacji systemu plików
 
-Użyj następującego fragmentu kodu do uwierzytelniania w usłudze Azure AD w celu wykonywania operacji w usłudze Data Lake Store, takich jak tworzenie folderów, przekazywanie plików itp. Poniższego fragmentu kodu można użyć do uwierzytelniania aplikacji w sposób nieinterakcyjny za pomocą klucza tajnego klienta aplikacji / nazwy głównej usługi. Użyj tej metody wraz z istniejącą aplikacją sieci Web usługi Azure AD.
+Użyj poniższy fragment kodu do uwierzytelniania za pomocą usługi Azure AD dla operacji systemu plików w Data Lake Storage Gen1, takie jak tworzenie folderów, przekazywanie pliku itp. Poniższego fragmentu kodu można użyć do uwierzytelniania aplikacji w sposób nieinterakcyjny za pomocą klucza tajnego klienta aplikacji / nazwy głównej usługi. Użyj tej metody wraz z istniejącą aplikacją internetową usługi Azure AD.
 
     tenant = '<TENANT>'
     RESOURCE = 'https://datalake.azure.net/'
@@ -113,7 +113,7 @@ Użyj następującego fragmentu kodu do uwierzytelniania w usłudze Azure AD w c
 
 <!-- ## Service-to-service authentication with certificate for account management
 
-Use this snippet to authenticate with Azure AD for account management operations on Data Lake Store such as create Data Lake Store account, delete Data Lake Store account, etc. The following snippet can be used to authenticate your application non-interactively, using the certificate of an existing Azure AD "Web App" application. For instructions on how to create an Azure AD application, see [Create service principal with certificates](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate).
+Use this snippet to authenticate with Azure AD for account management operations on Data Lake Storage Gen1 such as create a Data Lake Storage Gen1 account, delete a Data Lake Storage Gen1 account, etc. The following snippet can be used to authenticate your application non-interactively, using the certificate of an existing Azure AD "Web App" application. For instructions on how to create an Azure AD application, see [Create service principal with certificates](../azure-resource-manager/resource-group-authenticate-service-principal.md#create-service-principal-with-self-signed-certificate).
 
     authority_host_uri = 'https://login.microsoftonline.com'
     tenant = '<TENANT>'
@@ -128,9 +128,9 @@ Use this snippet to authenticate with Azure AD for account management operations
     credentials = AADTokenCredentials(mgmt_token, client_id) -->
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule przedstawiono sposób uwierzytelniania za pomocą usługi Azure Data Lake Store za pomocą usługi do uwierzytelniania przy użyciu języka Python. Teraz można przeglądać następujące artykuły, które porozmawiać na temat sposobu korzystania z języka Python do pracy z usługą Azure Data Lake Store.
+W tym artykule przedstawiono sposób uwierzytelniania w usłudze Data Lake Storage Gen1 za pomocą usługi do uwierzytelniania przy użyciu języka Python. Możesz teraz przejrzeć następujące artykuły, które mówić o tym, jak używać języka Python do pracy z Data Lake Storage Gen1.
 
-* [Operacji zarządzania kontem w usłudze Data Lake Store za pomocą języka Python](data-lake-store-get-started-python.md)
-* [Operacje na danych w usłudze Data Lake Store za pomocą języka Python](data-lake-store-data-operations-python.md)
+* [Operacje zarządzania kontem w Data Lake Storage Gen1 przy użyciu języka Python](data-lake-store-get-started-python.md)
+* [Operacje na danych na Data Lake Storage Gen1 przy użyciu języka Python](data-lake-store-data-operations-python.md)
 
 

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/23/2018
+ms.date: 09/20/2018
 ms.author: rkarlin
-ms.openlocfilehash: 9043c6583a15d3be9d0d468e83a4bf79b3121794
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 313697d73d1e269691f1af4f021545049a907d66
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304122"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127095"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Zbieranie danych w usłudze Azure Security Center
 Usługa Security Center zbiera dane z maszyn wirtualnych (VM) i komputerów spoza platformy Azure do monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy. Przykłady takich danych to: operacyjnych, typ i wersja, dzienniki systemu (Windows dzienniki zdarzeń), operacyjnego systemu uruchomione procesy, Nazwa maszyny, adresy IP i zalogowanego użytkownika. Program Microsoft Monitoring Agent kopiuje również pliki zrzutu awaryjnego do swojego obszaru roboczego.
@@ -34,7 +34,8 @@ Ten artykuł zawiera wskazówki dotyczące sposobu instalacji programu Microsoft
 > - Zbieranie danych dla zestawu skalowania maszyn wirtualnych nie jest obecnie obsługiwane.
 
 
-## <a name="enable-automatic-provisioning-of-microsoft-monitoring-agent"></a>Włącz automatyczną aprowizację programu Microsoft Monitoring Agent     
+## Włącz automatyczną aprowizację programu Microsoft Monitoring Agent <a name="auto-provision-mma"></a>
+
 Aby zebrać dane z maszyn powinna mieć zainstalowany program Microsoft Monitoring Agent.  Instalacja agenta może być automatycznie (zalecane) lub możesz zainstalować agenta ręcznie.  
 
 >[!NOTE]
@@ -296,9 +297,9 @@ Program Microsoft Monitoring Agent, można zainstalować ręcznie, dzięki czemu
 -   Aby zidentyfikować problemy z instalacją automatycznej aprowizacji, zobacz [monitorowanie problemów dotyczących kondycji agenta](security-center-troubleshooting-guide.md#mon-agent).
 
 -  Aby zidentyfikować wymagania sieciowe agenta monitorowania, zobacz [rozwiązywania problemów, wymagania sieciowe agenta monitorowania](security-center-troubleshooting-guide.md#mon-network-req).
--   Aby zidentyfikować problemy przy dołączaniu ręczne, zobacz [jak rozwiązywać problemy dotyczące przechodzenia do pakietu Operations Management Suite](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues)
+-   Aby zidentyfikować problemy przy dołączaniu ręczne, zobacz [jak rozwiązywać problemy dotyczące przechodzenia do pakietu Operations Management Suite](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
 
-- Aby zidentyfikować niemonitorowanych maszyn wirtualnych i problemy z komputerami, zobacz [niemonitorowanych maszyn wirtualnych i komputerów](security-center-virtual-machine-protection.md#unmonitored-vms-and-computers)
+- Aby zidentyfikować niemonitorowanych maszyn wirtualnych i problemy z komputerami, zobacz [niemonitorowanych maszyn wirtualnych i komputerów](security-center-virtual-machine-protection.md#unmonitored-vms-and-computers).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Ten artykuł pokazuje, jak zbieranie danych i automatycznej aprowizacji w usłudze Security Center działa. Aby dowiedzieć się więcej na temat Centrum zabezpieczeń, zobacz następujące artykuły:

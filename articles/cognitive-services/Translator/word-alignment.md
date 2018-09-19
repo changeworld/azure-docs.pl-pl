@@ -1,44 +1,45 @@
 ---
-title: Wyrównanie informacji przy użyciu interfejsu API Microsoft Translator tekstu w programie Word | Dokumentacja firmy Microsoft
-description: Otrzymywanie informacji wyrównanie programu word z interfejsu API Microsoft Translator tekstu.
+title: Word wyrównanie informacje — interfejs API tekstu usługi Translator
+titlesuffix: Azure Cognitive Services
+description: Otrzymywanie informacji, wyrównanie programu word z interfejsu API tłumaczenia tekstu.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/14/2017
 ms.author: v-jansko
-ms.openlocfilehash: 9d8284db61235284ec0d5a1594c34687c89560e9
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 16334dbcb4631bd927069620e73c1c4474ff99fa
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347689"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126262"
 ---
-# <a name="how-to-receive-word-alignment-information"></a>Jak odbierać informacje wyrównanie programu word
+# <a name="how-to-receive-word-alignment-information"></a>Jak otrzymywać informacje wyrównanie programu word
 
 ## <a name="receiving-word-alignment-information"></a>Odbieranie informacji wyrównanie programu word
-Aby odbierać informacje wyrównania, używana jest metoda Przetłumacz i dodać parametr opcjonalny includeAlignment.
+Aby otrzymywać informacje wyrównanie, używana jest metoda Translate i zawierać parametr opcjonalny includeAlignment.
 
 ## <a name="alignment-information-format"></a>Format informacji o wyrównania
-Wyrównanie jest zwracana jako wartość ciągu następującego formatu dla każdego wyrazu źródła. Informacje dotyczące każdego wyrazu jest oddzielona od miejsca, w tym dla rozdzielonej spacjami języków (skrypty), takich jak angielski, chiński:
+Wyrównanie jest zwracana jako wartość ciągu następujący format dla każdego wyrazu w źródle. Informacje dotyczące każdego wyrazu jest oddzielona od miejsca, w tym oddzielone miejsca języków (skrypt), takich jak chiński:
 
 [[SourceTextStartIndex]: [SourceTextEndIndex] — [TgtTextStartIndex]: [TgtTextEndIndex]] *
 
-Przykład wyrównanie ciąg: "0:0-7:10 11 1:2:20 0 3:4:3 3:4-4:5:5-21 6:21".
+Parametrów wyrównanie przykład: "0:0-7:10 1:2-11:20 0 3:4:3, 3:4-4:5:5-21 6:21".
 
-Innymi słowy dwukropek oddziela start Indeks końcowy, kreska oddziela języki i spacją wyrazy. O jedno słowo w mogą być wyrównane z zero, co najmniej kilka słów w innym języku, a wyrównany wyrażenie może być nieciągłych. Jeśli wyrównanie informacje są niedostępne, element wyrównania jest pusta. Metoda zwraca błąd braku w takiej sytuacji.
+Innymi słowy dwukropek oddziela start końcowego indeksu, kreska oddziela językach i spacja oddziela słowa. O jeden wyraz może być dostosowanie zero, jeden lub wiele słów w innym języku, a wyrównany wyrażenie może być nieciągłe. Po udostępnieniu żadnych informacji wyrównanie elementu wyrównania jest pusta. Metoda zwraca błąd braku w takiej sytuacji.
 
 ## <a name="restrictions"></a>Ograniczenia
-Wyrównanie jest zwracany wyłącznie dla podzbioru kierunki w tym momencie:
-* z języka angielskiego na inny język;
-* z dowolnego innego języka na język angielski, chiński uproszczony, chiński tradycyjny i łotewski język angielski
-* z japoński, koreański lub koreański użytkownikowi japońskiego nie będą otrzymywać informacji wyrównania w przypadku zdanie zwięzłych tłumaczenia. Przykład zwięzłych tłumaczenia jest "To jest test", "Świetnie musisz" i innych zdania o dużej częstotliwości.
+Wyrównanie jest zwracany tylko wtedy dla podzbioru kierunki w tym momencie:
+* z języka angielskiego na dowolnym innym języku;
+* z dowolnego innego języka na język angielski, chiński uproszczony, chiński tradycyjny i łotewski do języka angielskiego
+* z japoński, koreański lub koreański użytkownikowi japońskiego nie będzie otrzymywać informacji wyrównanie przypadku zdanie zwięzłych tłumaczenia. Przykład zwięzłych tłumaczenia jest "To jest test", "Kocham Cię" i inne zdania wysokiej częstotliwości.
 
 ## <a name="example"></a>Przykład
 
-Przykład JSON
+Przykładowy plik JSON
 
 ```json
 [

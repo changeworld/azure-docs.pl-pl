@@ -12,12 +12,12 @@ ms.date: 09/10/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: b33f2e809ae5758e41f7a76680347b9487f3f461
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: e49e362528f5fcd00a13a9fc1b233e62a569fe5a
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735340"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297950"
 ---
 # <a name="how-to-add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Porady: Dodawanie niestandardowej nazwy domeny za pomocą portalu Azure Active Directory
 Każdej nowej usługi Azure AD dzierżawy, który jest dostarczany z początkową nazwę domeny, *nazwa_domeny*. onmicrosoft.com. Nie można zmienić ani usunąć początkowej nazwy domeny, ale nazwy organizacji może dodać do listy. Dodawanie niestandardowych nazw domen, ułatwia utworzenie nazwy użytkownika, które są znane użytkownikom, takie jak _alain@contoso.com_.
@@ -31,9 +31,14 @@ Najpierw należy dodać nazwę domeny niestandardowej do dzierżawy usługi Azur
 ### <a name="to-add-a-custom-domain-name"></a>Aby dodać niestandardową nazwę domeny
 1. Zaloguj się do [portalu usługi Azure AD](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
 
+<<<<<<< HEAD
+> [!TIP]
+> Jeśli zamierzasz sfederować lokalną usługę AD systemu Windows Server z usługą Azure AD, zaznacz pole wyboru **Planuję skonfigurować tę domenę do logowania jednokrotnego przy użyciu lokalnej usługi Active Directory** podczas uruchamiania narzędzia Azure AD Connect, aby zsynchronizować katalogi. Należy również zarejestrować tę samą nazwę domeny, która została wybrana do sfederowania z katalogiem lokalnym w kroku **Domena usługi Azure AD** w kreatorze. Wygląd tego kroku w Kreatorze można zobaczyć w [tych instrukcjach](../hybrid/how-to-connect-install-custom.md#verify-the-azure-ad-domain-selected-for-federation). Jeśli nie masz narzędzia Azure AD Connect, możesz [pobrać jej tutaj](http://go.microsoft.com/fwlink/?LinkId=615771).
+=======
 2. Wybierz **usługi Azure Active Directory**, wybierz opcję **niestandardowe nazwy domen**, a następnie wybierz pozycję **Dodaj domenę niestandardową**.
+>>>>>>> 73f447b1499ba1f189efb6832ad759f1230e55a2
 
-    ![Firma Fabrikam - niestandardowego bloku nazwy domeny, z podświetloną opcją domeny niestandardowej Dodaj](media/add-custom-domain/add-custom-domain.png)
+    ![Fabrikam - Custom domain names blade, with Add custom domain option highlighted](media/add-custom-domain/add-custom-domain.png)
 
 3. Wpisz nową nazwę domeny firmowej na **niestandardowej nazwy domeny** pole (na przykład _contoso.com_), a następnie wybierz pozycję **Dodaj domenę**.
 

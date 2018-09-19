@@ -1,29 +1,30 @@
 ---
-title: Analizowanie metoda w interfejsie API językową analiza | Dokumentacja firmy Microsoft
-description: Sposób użycia metody analizy językową analiza interfejsu API do analizowania określone dane wejściowe języka naturalnego.
+title: Analizowanie metoda - interfejsu API analizy językowej
+titlesuffix: Azure Cognitive Services
+description: Jak użyć metody analizy interfejsu API analizy językowej do analizowania określonych danych wejściowych języka naturalnego.
 services: cognitive-services
 author: RichardSunMS
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: linguistic-analysis
-ms.topic: article
+ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: lesun
-ms.openlocfilehash: b17a00f31845bfa05572dff7ca94e9a1ffd69586
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c8d380a23c1bbfca8258ef533453050c72a3abd0
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347108"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46129628"
 ---
-# <a name="analyze-method"></a>Analizuj — metoda
+# <a name="analyze-method"></a>Metoda analyze
 
-**Analizowanie** interfejsu API REST jest używany do analizowania wprowadzania danego języka naturalnego.
-Które mogą dotyczyć tylko znajdowanie [zdań i tokeny](Sentences-and-Tokens.md) w tym danych wejściowych, znalezienia [tagów części z mowy](POS-tagging.md), lub znajdowania [drzewa constitutency](Constituency-Parsing.md).
+**Analizowanie** interfejsu API REST jest używany do analizowania danych wejściowych danego języka naturalnego.
+Który może obejmować tylko znajdowanie [zdania i tokeny](Sentences-and-Tokens.md) w tym dane wejściowe, znajdowanie [tagów części mowy](POS-tagging.md), lub znajdowania [drzewa constitutency](Constituency-Parsing.md).
 Można określić wyników, wybierając odpowiednie analizatorów.
-Aby wyświetlić listę wszystkich dostępnych analizatorów, obejrzyj  **[analizatorów](AnalyzersMethod.md)**.
+Aby wyświetlić listę wszystkich dostępnych analizatorów, Przyjrzyj się  **[analizatory](AnalyzersMethod.md)**.
 
-Należy pamiętać, że trzeba określić język ciągu wejściowego.
+Uwaga: należy także określić język, w ciągu wejściowym.
 
 **Punkt końcowy REST:**
 ```
@@ -35,38 +36,38 @@ https://westus.api.cognitive.microsoft.com/linguistics/v1.0/analyze
 
 Name (Nazwa) | Typ | Wymagane | Opis
 -----|-------|----------|------------
-**język**    | ciąg | Yes | Kod języka ISO do zastosowania w przypadku analizy dwóch list. Na przykład "en" jest angielski.
-**analyzerIds** | Lista ciągów | Yes | Lista identyfikatorów GUID z analizatorów do zastosowania. Zobacz dokumentację analizatorów, aby uzyskać więcej informacji.
-**tekst**        | ciąg | Yes | Nieprzetworzone dane wejściowe do analizy. Może to być krótkich ciągów, takich jak wyraz lub frazę, pełny zdania, lub pełne akapitu lub discourse.
+**Język**    | ciąg | Yes | Dwuliterowa kod języka ISO ma być używany do analizy. Na przykład "en" jest angielski.
+**analyzerIds** | Lista ciągów | Yes | Lista identyfikatorów GUID analizatorów, aby zastosować. Zobacz dokumentację analizatorów, aby uzyskać więcej informacji.
+**Tekst**        | ciąg | Yes | Nieprzetworzone dane wejściowe do analizy. Może to być krótkiego ciągu, takiej jak słowo lub frazę, pełną zdania, akapitu pełną lub discourse.
 
-<br>
 ## <a name="response-json"></a>Odpowiedź (JSON)
-Tablica analizy danych wyjściowych, po jednej dla każdego atrybutu określony w żądaniu.
+
+Tablica wyników analizy, po jednym dla każdego atrybutu określona w żądaniu.
 
 Wyniki wyglądają następująco:
 
 Name (Nazwa) | Typ | Opis
 -----|------|--------------
 analyzerId | ciąg | Analizator określony identyfikator GUID
-Wynik | obiekt | wynik analizatora
+wynik | obiekt | wynik analizatora
 
-Należy zwrócić uwagę na to, czy typ wyniku zależy od typu wejściowych analizatora.
+Należy pamiętać, że typ wyniku zależy od typu analizatora danych wejściowych.
 
-### <a name="tokens-response-json"></a>Odpowiedzi tokeny (JSON)
+### <a name="tokens-response-json"></a>Tokeny odpowiedzi (JSON)
 
 Name (Nazwa) | Typ | Opis
 -----|------|-------------
-Wynik | Lista obiektów zdanie | granice zdanie zidentyfikowany w tekście |
-wynik [x]. Przesunięcie | int | początkowe przesunięcie znaku każdego zdania |
-wynik [x]. Długość | int | Długość w znakach każdego zdania |
-wynik [x]. Tokeny | Lista obiektów tokenu | granice tokenu w zdaniu |
-wynik [x]. Tokeny [y]. Przesunięcie | int | początkowe przesunięcie znaku tokenu |
-wynik [x]. Tokeny [y]. Długość | int | Długość w znakach tokenu |
-wynik [x]. Tokeny [y]. RawToken | ciąg | znak wewnątrz tokenu, przed normalizacji |
-wynik [x]. Tokeny [y]. NormalizedToken | ciąg | znormalizowana postać znaku, bezpieczne [drzewo analizy](Constituency-Parsing.md); na przykład znak nawiasu otwierającego "(" staje się - LRB - |
+wynik | Lista obiektów zdania | granice zdania zidentyfikowany w tekście |
+wynik [x]. Przesunięcie | Int | każde zdanie początkowe przesunięcie znaku |
+wynik [x]. Len | Int | Długość w znakach każdego zdania |
+wynik [x]. Tokeny | Lista obiektów tokenu | Token granice wskazane w zdaniu |
+wynik [x]. Tokeny [t]. Przesunięcie | Int | początkowe przesunięcie znaku tokenu |
+wynik [x]. Tokeny [t]. Len | Int | Długość w znakach tokenu |
+wynik [x]. Tokeny [t]. RawToken | ciąg | znak wewnątrz ten token, zanim normalizacji |
+wynik [x]. Tokeny [t]. NormalizedToken | ciąg | znormalizowana postać znaku bezpieczne użycie [drzewo analizy](Constituency-Parsing.md); na przykład znak nawiasu otwierającego "(" staje się - LRB - |
 
 Przykładowe dane wejściowe: "to jest test. Witaj. "
-Przykład JSON odpowiedzi:
+Przykładowa odpowiedź JSON:
 ```json
 [
   {
@@ -130,15 +131,13 @@ Przykład JSON odpowiedzi:
 ### <a name="pos-tags-response-json"></a>Położenie znaczników odpowiedzi (JSON)
 
 Wynik jest listę list ciągów.
-Dla każdego zdania znajduje się lista tagów POS jeden tag POS dla każdego tokenu.
-Aby znaleźć tokenu odpowiadający tagami POS, należy poprosić o na obiekt tokenizacji.
+Dla każdego zdania znajduje się lista tagów punktu sprzedaży, jeden tag punktu sprzedaży dla każdego tokenu.
+Aby znaleźć token odpowiadający każdego znacznika punktu sprzedaży, należy poprosić o na obiekt tokenizacji.
 
-### <a name="constituency-tree-response-json"></a>Wyborczy drzewa odpowiedzi (JSON)
+### <a name="constituency-tree-response-json"></a>Fraz drzewa odpowiedzi (JSON)
 
-Wynik jest lista ciągów, drzewo analizy jednej dla każdego zdania znalezione w danych wejściowych.
-Drzewa analizy są reprezentowane w formularzu ujętego w nawiasy.
-
-<br>
+Wynikiem jest lista ciągów, drzewo analizy jeden dla każdego zdania w danych wejściowych.
+Drzew analizy są reprezentowane w formularzu ujęty w nawiasy.
 
 ## <a name="example"></a>Przykład
 

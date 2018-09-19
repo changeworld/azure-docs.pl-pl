@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 09/18/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: b46e365ea3903a8f2c805717df13d361c823148d
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 53f01ad6e8a801c69ea93c54e805807cb8eed34d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985600"
+ms.locfileid: "46127826"
 ---
 # <a name="azure-stack-1807-update"></a>Aktualizacja usługi Azure Stack 1807
 
@@ -158,14 +158,10 @@ Aby uzyskać więcej informacji na temat tych luk w zabezpieczeniach kliknij pop
 - <!-- 2830461 - IS --> W pewnych okolicznościach podczas aktualizacji wymaga uwagi, odpowiedni alert może nie zostać wygenerowany. Dokładny stan nadal zostaną odzwierciedlone w portalu i nie ulega zmianie.
 
 ### <a name="post-update-steps"></a>Kroki po aktualizacji
+Po zainstalowaniu tej aktualizacji Zainstaluj wszystkie odpowiednie poprawki. Uzyskać więcej informacji, zobacz następujące artykuły bazy wiedzy knowledge base, a także naszego [obsługi zasad](azure-stack-servicing-policy.md). 
+- [KB 4464231 — usługi Azure Stack poprawki w usłudze Azure Stack poprawkę 1.1807.1.78]( https://support.microsoft.com/help/4464231)
 
-- <!-- 2933866 – IS --> **Ulepszone stan instalacji aktualizacji nie powiodło się.** W tej wersji dodano dwie nowe kategorie stanu, aby zapewnić operatory więcej szczegółów na temat instalacji aktualizacji nie powiodło się. Dwie kategorie *PreparationFailed*, i *InstallationFailed*. Po zainstalowaniu tej wersji, możesz zobaczyć informacje dotyczące wcześniejszych niepowodzeń instalacji aktualizacji zmieniony w celu uwzględnienia tych nowych kategorii. 
-
-<!-- *There are no post-update steps for update 1807.* -->
-
-<!-- After the installation of this update, install any applicable Hotfixes. For more information view the following knowledge base articles, as well as our [Servicing Policy](azure-stack-servicing-policy.md).  
- - Link to KB  
- -->
+ <!-- 2933866 – IS --> Po zainstalowaniu tej aktualizacji, możesz zobaczyć **ulepszone stanu instalacji aktualizacji nie powiodło się.** Może to obejmować informacje o poprzednich błędach instalacji aktualizacji, które są zmienione w celu odzwierciedlenia dwie nowe kategorie stanu. Nowe kategorie stanu są *PreparationFailed*, i *InstallationFailed*.  
 
 ## <a name="known-issues-post-installation"></a>Znane problemy (po instalacji)
 

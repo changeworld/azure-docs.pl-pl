@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: piotrci
-ms.openlocfilehash: 437831736d80214ce569b41de7b13c2d051aaf40
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 3ec8472285ecc7512e2eedc8b9ac850ef8e9cf87
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45572825"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298024"
 ---
 # <a name="learn-about-access-management-using-azure-active-directory-groups"></a>Więcej informacji na temat zarządzania dostępem przy użyciu grup usługi Azure Active Directory
 Azure Active Directory (Azure AD) pomaga w zarządzaniu aplikacji opartych na chmurze, lokalnych aplikacji i zasoby przy użyciu grup w organizacji. Twoje zasoby mogą być częścią katalogu, takie jak uprawnienia do zarządzania obiektami za pomocą ról w katalogu lub zewnętrznie w stosunku do katalogu, takie jak do oprogramowania jako usługi (SaaS), Azure services witryn programu SharePoint i zasobów lokalnych.
@@ -58,4 +58,4 @@ Teraz, gdy masz znacznej liczby wprowadzenie do zarządzania dostępem przy uży
 
 - [Używanie grup do udzielania dostępu do zintegrowanych aplikacji SaaS](../users-groups-roles/groups-saasapps.md)
 
-- [Synchronizuj grupy lokalnej na platformę Azure za pomocą usługi Azure AD Connect](../connect/active-directory-aadconnect.md)
+- [Synchronizuj grupy lokalnej na platformę Azure za pomocą usługi Azure AD Connect](../hybrid/whatis-hybrid-identity.md)

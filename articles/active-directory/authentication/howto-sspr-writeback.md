@@ -10,28 +10,28 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: e613ff742096077fe1765d4b855b6c7d409cc228
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: 1ae74f7c43e763962224683954b28e5941136c08
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39158951"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295822"
 ---
 # <a name="how-to-configure-password-writeback"></a>Instrukcje: Konfigurowanie funkcji zapisywania zwrotnego haseł
 
-Firma Microsoft zaleca, aby używać funkcji automatycznej aktualizacji [program Azure AD Connect](./../connect/active-directory-aadconnect-get-started-express.md) podczas korzystania z funkcji zapisywania zwrotnego haseł.
+Firma Microsoft zaleca, aby używać funkcji automatycznej aktualizacji [program Azure AD Connect](../hybrid/how-to-connect-install-express.md) podczas korzystania z funkcji zapisywania zwrotnego haseł.
 
-W następujących krokach założono, program Azure AD Connect została już skonfigurowana w danym środowisku, za pomocą [Express](./../connect/active-directory-aadconnect-get-started-express.md) lub [niestandardowe](./../connect/active-directory-aadconnect-get-started-custom.md) ustawienia.
+W następujących krokach założono, program Azure AD Connect została już skonfigurowana w danym środowisku, za pomocą [Express](../hybrid/how-to-connect-install-express.md) lub [niestandardowe](../hybrid/how-to-connect-install-custom.md) ustawienia.
 
-1. Aby skonfigurować i włączyć funkcję zapisywania zwrotnego haseł, zaloguj się do serwera usługi Azure AD Connect i uruchomić **program Azure AD Connect** Kreatora konfiguracji.
-2. Na **powitalnej** wybierz opcję **Konfiguruj**.
-3. Na **dodatkowe zadania** wybierz opcję **Dostosowywanie opcji synchronizacji**, a następnie wybierz pozycję **dalej**.
-4. Na **nawiązywanie połączenia z usługi Azure AD** strony, wprowadź poświadczenia administratora globalnego, a następnie wybierz pozycję **dalej**.
-5. Na **łączenie katalogów** i **domen/jednostek organizacyjnych** filtrowanie stron, wybierz **dalej**.
-6. Na **funkcje opcjonalne** strony, zaznacz pole obok pozycji **funkcji zapisywania zwrotnego haseł** i wybierz **dalej**.
+1. Aby skonfigurować i włączyć zapisywanie zwrotne haseł, zaloguj się na serwerze programu Azure AD Connect i uruchom kreatora konfiguracji programu **Azure AD Connect**.
+2. Na **stronie powitalnej** wybierz pozycję **Konfiguruj**.
+3. Na stronie **Zadania dodatkowe** wybierz pozycję **Dostosuj opcje synchronizacji**, a następnie wybierz pozycję **Dalej**.
+4. Na stronie **Łączenie z usługą Azure AD** wprowadź poświadczenia administratora globalnego, a następnie wybierz pozycję **Dalej**.
+5. Na stronach filtrowania **Łączenie katalogów** i **Domena/jednostka OU** wybierz pozycję **Dalej**.
+6. Na stronie **Funkcje opcjonalne** zaznacz pole obok pozycji **Zapisywanie zwrotne haseł** i wybierz pozycję **Dalej**.
    ![Włączanie zapisywania zwrotnego haseł w programie Azure AD Connect][Writeback]
-7. Na **wszystko gotowe do skonfigurowania** wybierz opcję **Konfiguruj** i poczekaj na zakończenie procesu.
-8. Po wyświetleniu konfiguracji Zakończ wybierz **zakończenia**.
+7. Na stronie **Wszystko gotowe do skonfigurowania** wybierz pozycję **Konfiguruj** i poczekaj na zakończenie procesu.
+8. Po ukończeniu konfiguracji wybierz pozycję **Zakończ**.
 
 Typowe zadania dotyczące rozwiązywania problemów związanych z zapisywaniem zwrotnym haseł, zobacz sekcję dotyczącą [Rozwiązywanie problemów z zapisywaniem zwrotnym haseł](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) w naszym artykuł dotyczący rozwiązywania problemów.
 

@@ -1,22 +1,23 @@
 ---
-title: Metoda wyszukiwania słownika interfejs API tekstu usługi Microsoft Translator | Dokumentacja firmy Microsoft
-description: Metoda Microsoft Translator tekstu interfejsu API słownika wyszukiwania.
+title: Metoda wyszukiwania słownika interfejs API tekstu usługi Translator
+titlesuffix: Azure Cognitive Services
+description: Metoda wyszukiwania słownika interfejsu API tekstu usługi Translator.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
-ms.technology: microsoft translator
-ms.topic: article
+ms.component: translator-text
+ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 5a186f60dc099b095c00056d965aa92618c2c708
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 41b610f3504a8eb6619613e3ad0aa7c1c4cf9f66
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37868089"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46127848"
 ---
-# <a name="text-api-30-dictionary-lookup"></a>3.0 interfejs API tłumaczenia tekstu: Wyszukiwanie słownika
+# <a name="translator-text-api-30-dictionary-lookup"></a>API 3.0 tekstu usługi Translator: Wyszukiwanie słownika
 
 Dostarcza alternatywnych tłumaczeń dla programów word i małą liczbą wyrażenia idiomatyczne. Każde tłumaczenie części mowy i ma listę wstecz tłumaczenia. Tłumaczenia wstecz umożliwić użytkownikowi zrozumieć tłumaczenie w kontekście. [Przykład słownika](.\v3-0-dictionary-examples.md) operacja umożliwia dalsze do przechodzenia do szczegółów Zobacz przykład użycia każdej pary tłumaczenia.
 
@@ -139,7 +140,7 @@ Odpowiedź oznaczająca Powodzenie to tablica JSON z jeden wynik dla każdego ci
 
 W tym przykładzie pokazano, jak wyszukać alternatywnych tłumaczeń w języku hiszpańskim okresu angielskiej `fly` .
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curltabcurl"></a>[Curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly'}]"
@@ -190,7 +191,7 @@ Treść odpowiedzi (skrót dla jasności) to:
 
 Ten przykład pokazuje, co się stanie, gdy termin są wyszukiwane nie istnieje dla pary prawidłowe słownika.
 
-# <a name="curltabcurl"></a>[curl](#tab/curl)
+# <a name="curltabcurl"></a>[Curl](#tab/curl)
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/dictionary/lookup?api-version=3.0&from=en&to=es" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d "[{'Text':'fly123456'}]"

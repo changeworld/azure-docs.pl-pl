@@ -1,23 +1,23 @@
 ---
 title: Wdrażanie rozwiązania do monitorowania zdalnego lokalnie — Azure | Dokumentacja firmy Microsoft
 description: Ten poradnik pokazuje, jak wdrożyć zdalnego monitorowania akcelerator rozwiązań do maszyny lokalnej na potrzeby projektowania i testowania.
-author: dominicbetts
+author: asdonald
 manager: timlt
 ms.author: asdonald
 ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 09/17/2018
 ms.topic: conceptual
-ms.openlocfilehash: e29a21639d3d7c7acb6093bcd8eb9947721273bc
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 966af342937a36adc5932a7a4c92ee127723b4a0
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982546"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295737"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>Wdrażanie zdalne monitorowanie akceleratora rozwiązań lokalnie
 
-W tym artykule pokazano, jak wdrożyć akcelerator rozwiązań monitorowania zdalnego na komputerze lokalnym na potrzeby projektowania i testowania. To podejście mikrousługi są wdrażane na lokalny kontener platformy Docker i korzysta z usługi IoT Hub, Cosmos DB i Azure Time Series Insights w chmurze. Możesz użyć akceleratorów rozwiązań (komputery) interfejsu wiersza polecenia do wdrożenia usługi Azure cloud services.
+W tym artykule pokazano, jak wdrożyć akcelerator rozwiązań monitorowania zdalnego na komputerze lokalnym na potrzeby projektowania i testowania. To podejście mikrousługi są wdrażane na lokalny kontener platformy Docker i korzysta z usługi IoT Hub, Cosmos DB i Azure Time Series Insights w chmurze.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -27,68 +27,69 @@ Jeśli jej nie masz, możesz utworzyć bezpłatne konto próbne w zaledwie kilka
 
 Aby wykonać wdrożenie lokalne, potrzebne są następujące narzędzia, które są zainstalowane na lokalnej maszynie do programowania:
 
-* [Usługa Git](https://git-scm.com/)
+* [Git](https://git-scm.com/)
 * [Docker](https://www.docker.com)
 * [Narzędzia docker compose](https://docs.docker.com/compose/install/)
-* [Node.js](https://nodejs.org/) — to oprogramowanie jest wymagane w przypadku komputerów z systemem interfejsu wiersza polecenia.
+* [Node.js v8](https://nodejs.org/) — to oprogramowanie jest wymagane w przypadku komputerów z systemem interfejsu wiersza polecenia, które skrypty umożliwia tworzenie zasobów platformy Azure. Nie należy używać Node.js v10.
 
 > [!NOTE]
 > Te narzędzia są dostępne na wielu platformach, w tym Windows i Linux oraz dla systemu iOS.
 
 ### <a name="download-the-source-code"></a>Pobierz kod źródłowy
 
- Repozytorium GitHub zdalne monitorowanie kodu źródłowego zawiera pliki konfiguracji platformy Docker, których należy pobrać, konfigurowanie i uruchamianie obrazów platformy Docker, które zawierają mikrousług. Aby sklonować i utworzyć lokalną wersję repozytorium, użyj środowiska wiersza polecenia, aby przejść do odpowiedniego folderu na komputerze lokalnym, a następnie uruchom jedno z następujących poleceń:
+Repozytorium GitHub zdalne monitorowanie kodu źródłowego zawiera pliki konfiguracji platformy Docker, których należy pobrać, konfigurowanie i uruchamianie obrazów platformy Docker, które zawierają mikrousług. Aby sklonować i utworzyć lokalną wersję repozytorium, użyj środowiska wiersza polecenia, aby przejść do odpowiedniego folderu na komputerze lokalnym, a następnie uruchom jedno z następujących poleceń:
 
 Aby zainstalować implementacji języka Java, mikrousługi, uruchom polecenie:
 
 ```cmd/sh
-git clone --recurse-submodules  https://github.com/Azure/azure-iot-pcs-remote-monitoring-java.git
+git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-java.git
 ```
 
 Aby zainstalować implementacje platformy .net, mikrousługi, uruchom polecenie:
 
 ```cmd\sh
-git clone --recurse-submodules  https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
+git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
 ```
 
 > [!NOTE]
-> Te polecenia Pobierz kod źródłowy wszystkie mikrousługi. Mimo że nie ma potrzeby kodu źródłowego, aby uruchomić mikrousług na platformie Docker, kod źródłowy jest przydatne, jeśli planujesz później zmodyfikować wstępnie skonfigurowanego rozwiązania i lokalne testowanie zmian.
+> Te polecenia Pobierz kod źródłowy wszystkie mikrousługi. Mimo że nie ma potrzeby kodu źródłowego, aby uruchomić mikrousług na platformie Docker, kod źródłowy jest przydatne, jeśli planujesz później zmodyfikować akcelerator rozwiązań i lokalne testowanie zmian.
 
 ## <a name="deploy-the-azure-services"></a>Wdrażaj usługi platformy Azure
 
-Mimo że w tym artykule pokazano, jak uruchomić mikrousługi lokalnie, są one zależne od usług platformy Azure działające w chmurze. Można wdrożyć te usługi platformy Azure [ręcznie za pomocą witryny Azure portal](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Manual-steps-to-create-azure-resources-for-local-setup), lub użyć dostarczonego skryptu. W poniższych przykładach skryptów przyjęto założenie, że używasz repozytorium .NET na maszynie Windows. Jeśli pracujesz w innym środowisku, Dostosuj ścieżek, rozszerzeń plików i separatorami ścieżki odpowiednio. Aby użyć dostarczonego skryptu:
+Mimo że w tym artykule pokazano, jak uruchomić mikrousługi lokalnie, są one zależne od usług platformy Azure działające w chmurze. Można wdrożyć te usługi platformy Azure [ręcznie za pomocą witryny Azure portal](https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet/wiki/Manual-steps-to-create-azure-resources-for-local-setup), lub użyć dostarczonego skryptu. W poniższych przykładach skryptów przyjęto założenie, że używasz repozytorium .NET na maszynie Windows. Jeśli pracujesz w innym środowisku, Dostosuj ścieżek, rozszerzeń plików i separatorami ścieżki odpowiednio. Aby użyć dostarczone skrypty:
 
-### <a name="new-users"></a>Nowi użytkownicy
-Dla użytkowników, którzy mają **nie została jeszcze** utworzony wymaganych zasobów platformy Azure, przejdź do wykonaj następujące czynności:
+### <a name="create-new-azure-resources"></a>Tworzenie nowych zasobów platformy Azure
 
- 1. W środowisku wiersza polecenia i przejdź do **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\launch** folderu w sklonowanej kopii repozytorium.
+Jeśli jeszcze nie utworzono wymaganych zasobów platformy Azure, wykonaj następujące czynności:
 
- 2. Uruchom **start.cmd lub start.sh** skryptu i postępuj zgodnie z monitami. Skrypt wyświetli monit o podanie następujących informacji:
+1. W środowisku wiersza polecenia i przejdź do **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\launch** folderu w sklonowanej kopii repozytorium.
+
+2. Uruchom **start.cmd** skryptu i postępuj zgodnie z monitami. Skrypt wyświetli monit o podanie następujących informacji:
     * Nazwa rozwiązania.
     * Subskrypcja platformy Azure, która ma być używana.
     * Lokalizacja centrum danych platformy Azure do użycia.
 
-    Skrypt tworzy grupę zasobów na platformie Azure, nazwą rozwiązania.
+    Skrypt tworzy grupę zasobów na platformie Azure, nazwą rozwiązania. Ta grupa zasobów zawiera zasoby platformy Azure, który korzysta z akceleratora rozwiązań.
 
- 3. W środowisku wiersza polecenia i przejdź do **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\launch\os\win** folderu w sklonowanej kopii repozytorium.
+3. W środowisku wiersza polecenia i przejdź do **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\launch\os\win** folderu w sklonowanej kopii repozytorium.
 
- 4. Uruchom **set-env-uri.cmd lub set-env-uri.sh** skryptu.
- 
- 5. Zaktualizuj swoje moduły podrzędne usługi git, aby upewnić się, że zainstalowano najnowszy te: ```cd <repo-name>``` , a następnie uruchom następujące polecenie ```git submodule foreach git pull origin master```
+4. Uruchom **set-env-uri.cmd** skryptu.
+
+5. Zaktualizuj swoje moduły podrzędne usługi git, aby upewnić się, że zainstalowano najnowsze wersje: `cd <repo-name>` , a następnie uruchom następujące polecenie `git submodule foreach git pull origin master`
 
 > [!NOTE]
-> Jeśli zostały sklonowane repozytorium azure-iot-pcs-remote-monitoring-dotnet, folder skryptów znajduje się w katalogu usług modułu podrzędnego (folder).
-Skrypt uruchamiania wymaga **Node.js** do wykonania, zainstaluj najnowszy stabilny środowisku Node 8 (używaj 10 węzła) przed rozpoczęciem korzystania z tego skryptu. Ponadto ten skrypt może wymagać uprawnień węźle lub uprawnień "sudo" jako próbuje zainstalować [komputerów cli](https://github.com/Azure/pcs-cli) interfejsu wiersza polecenia, do monitorowania zdalnego wdrożenia.  
+> Jeśli zostały sklonowane repozytorium azure-iot-pcs-remote-monitoring-dotnet, folder skryptów znajduje się w katalogu usług modułu podrzędnego (folder). Ten skrypt może wymagać uprawnień administracyjnych lub uprawnień "sudo", ponieważ próbuje zainstalować [komputerów cli](https://github.com/Azure/pcs-cli).
 
-### <a name="existing-users"></a>Istniejących użytkowników
-Dla osób, które zostały już utworzone wymaganych zasobów platformy azure, a tylko również zaktualizować je, wykonaj tylko **jeden** z następujących czynności:
+### <a name="use-existing-azure-resources"></a>Użyj istniejących zasobów platformy Azure
 
- * Ustaw zmienne środowiskowe globalnie na swojej maszynie.
- * **Program VS Code:** ustawić zmienne środowiskowe w konfiguracji uruchamiania środowiska IDE, czyli pliku launch.json.
- * **Visual Studio:** ustawić zmienne środowiskowe dla projektu usługi sieci Web, mikrousługi, dodając ją do właściwości → środowisko → debugowania zmiennych
- 
-Na koniec Zaktualizuj swoje moduły podrzędne usługi git, aby upewnić się, że zainstalowano najnowszy te: ```cd <repo-name>``` , a następnie uruchom następujące polecenie ```git submodule foreach git pull origin master```
- 
+Jeśli utworzono już wymaganych zasobów platformy Azure, wystarczy zaktualizować je wyłącznie zakończyć **jeden** z następujących czynności:
+
+* Ustaw zmienne środowiskowe globalnie na swojej maszynie.
+* **Program VS Code:** ustawić zmienne środowiskowe w konfiguracji uruchamiania, edytując **launch.json** pliku.
+* **Visual Studio:** ustawić zmienne środowiskowe dla projektu usługi sieci Web, mikrousługi, dodając ją do **właściwości > debugowanie > Zmienne środowiskowe**.
+
+Na koniec Zaktualizuj swoje moduły podrzędne usługi git, aby upewnić się, że zainstalowano najnowsze wersje: `cd <repo-name>` , a następnie uruchom następujące polecenie `git submodule foreach git pull origin master`.
+
 Chociaż nie jest to zalecane, zmienne środowiskowe można również ustawić w pliku appsettings.ini obecny w folderze usługi sieci Web dla poszczególnych mikrousług.
 
 ## <a name="run-the-microservices-in-docker"></a>Uruchom mikrousług na platformie Docker

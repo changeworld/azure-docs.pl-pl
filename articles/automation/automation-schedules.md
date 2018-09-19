@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: shared-capabilities
 author: georgewallace
 ms.author: gwallace
-ms.date: 05/08/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 211d79f387697ce850ac645ef65338c216e2bd76
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: 3d8492d2a8982c9c85bfc91867f7eb6c2da04e58
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382199"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294768"
 ---
 # <a name="scheduling-a-runbook-in-azure-automation"></a>Planowanie elementu Runbook w usłudze Azure Automation
 
@@ -50,7 +50,10 @@ W witrynie Azure portal lub za pomocą programu Windows PowerShell, można utwor
 1. W witrynie Azure portal na koncie usługi automation wybierz **harmonogramy** sekcji **zasoby udostępnione** po lewej stronie.
 1. Kliknij przycisk **Dodaj harmonogram** w górnej części strony.
 1. Na **nowy harmonogram** okienku wpisz **nazwa** i opcjonalnie **opis** nowego harmonogramu.
-1. Wybierz harmonogram jest uruchamiane jeden raz, czy zgodnie z harmonogramem cyklicznych, wybierając **raz** lub **cyklu**. Jeśli wybierzesz **raz** określ **czas rozpoczęcia**, a następnie kliknij przycisk **Utwórz**. Jeśli wybierzesz **cyklu**, określ **czas rozpoczęcia** oraz jak często chcesz elementu runbook powtórzyć - przy częstotliwości **godzinę**, **dzień**, **tydzień**, lub **miesiąca**. Po wybraniu **tydzień** lub **miesiąca** z listy rozwijanej **opcji cyklu** jest wyświetlana w okienku, a po ich wybraniu, **opcji cyklu** zostanie wyświetlony w okienku i można wybrać dzień tygodnia, w przypadku wybrania **tydzień**. W przypadku wybrania **miesiąca**, aby wybrać **dni tygodnia** lub określone dni miesiąca w kalendarzu i na koniec chcesz Uruchom ostatniego dnia miesiąca, czy nie, a następnie kliknij przycisk **OK**.
+1. Wybierz harmonogram jest uruchamiane jeden raz, czy zgodnie z harmonogramem cyklicznych, wybierając **raz** lub **cyklicznie**. Jeśli wybierzesz **raz** określ **czas rozpoczęcia**, a następnie kliknij przycisk **Utwórz**. Jeśli wybierzesz **cyklicznie**, określ **czas rozpoczęcia** i **Powtórz co**, wybierz częstotliwość, jak często chcesz elementu runbook Powtórz - przez **godzinę**, **dzień**, **tydzień**, lub **miesiąca**.
+    1. Jeśli wybierzesz **tygodnia**, podano listę dni tygodnia do wyboru. Wybierz liczbę dni, jak chcesz. Pierwsze uruchomienie harmonogramu nastąpi w pierwszym dniu wybrane po czasie rozpoczęcia.
+    2. Jeśli wybierzesz **miesiąca**, możesz skorzystać z różnych opcji. Aby uzyskać **miesięczne occurrances** , wybierz opcję **dni miesiąca** lub **dni tygodnia**. Jeśli wybierzesz **dni miesiąca** kalendarz jest wyświetlany, który pozwala wybrać dowolną liczbę dni, jak chcesz. Jeśli wybierzesz datę, takie jak 31, która nie występuje w bieżącym miesiącu, harmonogram nie będzie działać. Uruchomienie ostatniego dnia harmonogramu, wybierz opcję **tak** w obszarze **Uruchom ostatniego dnia miesiąca**. Jeśli wybierzesz **dni tygodnia**, **Powtórz co** opcję jest przedstawiany. Wybierz **pierwszy**, **drugi**, **trzeci**, **czwarty**, lub **ostatniego**. Na koniec wybierz dzień do powtarzania.
+1. Po zakończeniu kliknij przycisk **Utwórz**.
 
 ### <a name="to-create-a-new-schedule-with-windows-powershell"></a>Aby utworzyć nowy harmonogram za pomocą programu Windows PowerShell
 
@@ -73,9 +76,9 @@ Element runbook może być połączony z wieloma harmonogramami, a harmonogram m
 ### <a name="to-link-a-schedule-to-a-runbook-with-the-azure-portal"></a>W celu powiązania harmonogramu z elementem runbook za pomocą witryny Azure portal
 
 1. W witrynie Azure portal na koncie usługi automation wybierz **elementów Runbook** sekcji **automatyzacji procesów** po lewej stronie.
-1. Kliknij nazwę elementu runbook do zaplanowania.
-1. Jeśli element runbook nie jest obecnie połączony z harmonogramem, są oferowane opcję utworzenia nowego harmonogramu lub Połącz z istniejącym harmonogramem.
-1. Jeśli element runbook ma parametry, można wybrać opcję **zmodyfikuj parametry uruchomieniowe (domyślne: Azure)** i **parametry** okienko zostanie wyświetlony, gdzie można wprowadzić informacje w związku z tym.
+2. Kliknij nazwę elementu runbook do zaplanowania.
+3. Jeśli element runbook nie jest obecnie połączony z harmonogramem, są oferowane opcję utworzenia nowego harmonogramu lub Połącz z istniejącym harmonogramem.
+4. Jeśli element runbook ma parametry, można wybrać opcję **zmodyfikuj parametry uruchomieniowe (domyślne: Azure)** i **parametry** okienko zostanie wyświetlony, gdzie można wprowadzić informacje w związku z tym.
 
 ### <a name="to-link-a-schedule-to-a-runbook-with-windows-powershell"></a>Powiązanie harmonogramu z elementem runbook za pomocą programu Windows PowerShell
 

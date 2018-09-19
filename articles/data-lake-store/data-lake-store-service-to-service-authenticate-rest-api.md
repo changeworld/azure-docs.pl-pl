@@ -1,6 +1,6 @@
 ---
-title: 'Do usługi uwierzytelniania: interfejsu API REST z usługą Data Lake Store za pomocą usługi Azure Active Directory | Dokumentacja firmy Microsoft'
-description: Informacje o sposobie uzyskania do usługi uwierzytelniania przy użyciu usługi Azure Active Directory przy użyciu interfejsu API REST usługi Data Lake Store
+title: 'Service-to-service authentication: interfejs API REST przy użyciu usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak osiągnąć usługa Usługa uwierzytelniania za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory przy użyciu interfejsu API REST
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: ffa9b7408475820735e35a82edc0b1751abeb08a
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: dd282091d41538b7e3dc08eb0b3d82539fa0bb4f
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34624853"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295601"
 ---
-# <a name="service-to-service-authentication-with-data-lake-store-using-rest-api"></a>Usługa do uwierzytelniania przy użyciu interfejsu API REST usługi Data Lake Store
+# <a name="service-to-service-authentication-with-azure-data-lake-storage-gen1-using-rest-api"></a>Usługa Usługa uwierzytelniania za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu interfejsu API REST
 > [!div class="op_single_selector"]
 > * [Korzystanie z języka Java](data-lake-store-service-to-service-authenticate-java.md)
 > * [Korzystanie z zestawu SDK dla platformy .NET](data-lake-store-service-to-service-authenticate-net-sdk.md)
@@ -27,15 +27,15 @@ ms.locfileid: "34624853"
 > 
 > 
 
-W tym artykule informacje o sposobie używania interfejsu API REST w celu usługi do uwierzytelniania za pomocą usługi Azure Data Lake Store. Do uwierzytelnienia użytkownika końcowego przy użyciu interfejsu API REST usługi Data Lake Store, zobacz [uwierzytelniania użytkownika końcowego przy użyciu interfejsu API REST usługi Data Lake Store](data-lake-store-end-user-authenticate-rest-api.md).
+W tym artykule dowiesz się o tym, jak używać interfejsu API REST w celu usługi do uwierzytelniania za pomocą usługi Azure Data Lake Storage Gen1. Aby uwierzytelnianie użytkowników końcowych za pomocą programu Data Lake Storage Gen1 przy użyciu interfejsu API REST, zobacz [uwierzytelnianie użytkowników końcowych za pomocą programu Data Lake Storage Gen1 przy użyciu interfejsu API REST](data-lake-store-end-user-authenticate-rest-api.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Tworzenie aplikacji usługi Azure Active Directory "Web"**. Należy wykonać czynności opisane w [do usługi uwierzytelniania za pomocą usługi Data Lake Store za pomocą usługi Azure Active Directory](data-lake-store-service-to-service-authenticate-using-active-directory.md).
+* **Tworzenie aplikacji usługi Azure Active Directory "Web"**. Zostały wykonane kroki opisane w [Service to service uwierzytelnianie za pomocą programu Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory](data-lake-store-service-to-service-authenticate-using-active-directory.md).
 
 ## <a name="service-to-service-authentication"></a>Uwierzytelnianie między usługami
-W tym scenariuszu aplikacja udostępnia własne poświadczenia w celu wykonania operacji. W tym celu należy wygenerować żądanie POST, tak jak pokazano w poniższy fragment kodu: 
+W tym scenariuszu aplikacja udostępnia własne poświadczenia, aby wykonywać operacje. W tym celu należy wygenerować żądanie POST, tak jak pokazano w poniższym fragmencie kodu: 
 
     curl -X POST https://login.microsoftonline.com/<TENANT-ID>/oauth2/token  \
       -F grant_type=client_credentials \
@@ -43,15 +43,15 @@ W tym scenariuszu aplikacja udostępnia własne poświadczenia w celu wykonania 
       -F client_id=<CLIENT-ID> \
       -F client_secret=<AUTH-KEY>
 
-Dane wyjściowe żądania zawiera token autoryzacji (wskazywane przez `access-token` w danych wyjściowych poniżej) czy następnie przekazujesz o wywołaniach interfejsu API REST. Zapisz token uwierzytelniania w pliku tekstowym. będzie on potrzebny w wywołaniach REST usługi Data Lake Store.
+Dane wyjściowe w żądaniu zawiera token autoryzacji (wskazywane przez `access-token` w danych wyjściowych poniżej), aby były następnie przekazywane z wywołaniami interfejsu API REST. Zapisz token uwierzytelniania w pliku tekstowym. będą potrzebne podczas wykonywania wywołania REST do Data Lake Storage Gen1.
 
     {"token_type":"Bearer","expires_in":"3599","expires_on":"1458245447","not_before":"1458241547","resource":"https://management.core.windows.net/","access_token":"<REDACTED>"}
 
 W tym artykule wykorzystano podejście **nieinterakcyjne**. Więcej informacji na temat podejścia nieinterakcyjnego (wywołań między usługami) zawiera temat [Service to service calls using credentials](https://msdn.microsoft.com/library/azure/dn645543.aspx) (Wywołania między usługami przy użyciu poświadczeń). 
 
 ## <a name="next-steps"></a>Kolejne kroki
-W tym artykule przedstawiono sposób uwierzytelniania za pomocą usługi Azure Data Lake Store za pomocą usługi do uwierzytelniania przy użyciu interfejsu API REST. Teraz można przeglądać następujące artykuły, które opisano sposób użycia interfejsu API REST do pracy z usługą Azure Data Lake Store.
+W tym artykule przedstawiono sposób uwierzytelniania w usłudze Data Lake Storage Gen1 za pomocą usługi do uwierzytelniania przy użyciu interfejsu API REST. Możesz teraz przejrzeć następujące artykuły, które omówiono sposób użycia interfejsu API REST do pracy z Data Lake Storage Gen1.
 
-* [Operacji zarządzania kontem w usłudze Data Lake Store za pomocą interfejsu API REST](data-lake-store-get-started-rest-api.md)
-* [Operacje na danych w usłudze Data Lake Store za pomocą interfejsu API REST](data-lake-store-data-operations-rest-api.md)
+* [Operacje zarządzania kontem w Data Lake Storage Gen1 przy użyciu interfejsu API REST](data-lake-store-get-started-rest-api.md)
+* [Operacje na danych na Data Lake Storage Gen1 przy użyciu interfejsu API REST](data-lake-store-data-operations-rest-api.md)
 

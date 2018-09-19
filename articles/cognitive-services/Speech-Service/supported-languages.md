@@ -1,5 +1,5 @@
 ---
-title: Usługa rozpoznawania mowy obsługiwane języki — Microsoft Cognitive Services
+title: Usługa rozpoznawania mowy obsługiwane języki — usług Azure Cognitive Services
 description: Lista języków obsługiwanych przez usługę rozpoznawania mowy.
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
@@ -9,22 +9,22 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 704534ed50e12e7f9290cb321ad3b9e1b99117d5
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: a4307ee0ff210dafee5afe51bd9cb90db9be22e5
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377892"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295432"
 ---
 # <a name="supported-languages-for-speech-service"></a>Obsługiwane języki dla usługi mowy
 
-Różne języki są obsługiwane w przypadku różnych funkcji usługi mowy. Poniższe tabele zawierają podsumowanie obsługę języka.
+Różne języki są obsługiwane w przypadku różnych funkcji usługi mowy. W poniższej tabeli podsumowano obsługę języka.
 
 ## <a name="speech-to-text"></a>Zamiana mowy na tekst
 
 Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące języki. 
 
-  Kod | Język | Adaptacja akustyczna | Dostosowania języka | Wymowa dostosowania
+  Kod | Język | Akustyczna | Dostosowania języka | Wymowa dostosowania
  ------|----------|---------------------|---------------------|-------------------------
  ar EG | Arabski (Egipt), standard nowoczesne | Nie | Yes | Nie
  IT-IT | Włoski (Włochy) | Nie | Yes | Nie 
@@ -93,7 +93,7 @@ fr-FR | Francuski (Francja)|Kobieta | "Microsoft Server mowy zamiany tekstu na m
 | | |Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (fr-FR, HortenseRUS)"
 | | |Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (fr-FR, Paul, Apollo)"
 HE-IL| Hebrajski (Izrael) | Mężczyzna| "Microsoft Server mowy Text na głos mowy (he-IL Asaf)"
-w | Hindi (Indie) | Kobieta | "Microsoft Server mowy Text na głos mowy (hi-IN, Kalpana, Apollo)"
+w | Hindi (India) | Kobieta | "Microsoft Server mowy Text na głos mowy (hi-IN, Kalpana, Apollo)"
 | | |Kobieta | "Microsoft Server mowy Text na głos mowy (cześć IN, Kalpana)"
 | | | Mężczyzna | "Microsoft Server mowy Text na głos mowy (cześć IN, Hemant)"
 hr-HR | Chorwacki | Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (hr-HR Matej)"
@@ -105,24 +105,24 @@ ja-JP | Japoński |Kobieta | "Microsoft Server mowy zamiany tekstu na mowę gło
 | | |Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (ja-JP, Ichiro, Apollo)"
 | | |Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (ja-JP, HarukaRUS)"
 ko-KR | Koreański |Kobieta | "Microsoft Server mowy Text na głos mowy (ko-KR, HeamiRUS)"
-ms-MY | Malajski|Mężczyzna | "Głosu zamiany tekstu na mowę mowy serwera firmy Microsoft (ms Moje, Rizwan)"
-nb-NO | Norweski|Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosu (nb — bez HuldaRUS)"
-NL-NL | Holenderski|Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (nl-NL, HannaRUS)"
-pl-PL | Polski|Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (pl-PL, PaulinaRUS)"
-pt-BR | Portugalski (Brazylia)|Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (pt-BR, HeloisaRUS)"
+ms-MY | Malajski | Mężczyzna | "Głosu zamiany tekstu na mowę mowy serwera firmy Microsoft (ms Moje, Rizwan)"
+nb-NO | Norweski | Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosu (nb — bez HuldaRUS)"
+NL-NL | Holenderski | Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (nl-NL, HannaRUS)"
+pl-PL | Polski | Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (pl-PL, PaulinaRUS)"
+pt-BR | Portugalski (Brazylia) | Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (pt-BR, HeloisaRUS)"
 | | |Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (pt-BR, Daniel, Apollo)"
-pt-PT | Portugalski (Portugalia)|Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (pt-PT, HeliaRUS)"
-RO RO | Rumuński|Mężczyzna | "Microsoft Server mowy Text na głos mowy (ro-RO Andrei)"
+pt-PT | Portugalski (Portugalia) | Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (pt-PT, HeliaRUS)"
+RO RO | Rumuński | Mężczyzna | "Microsoft Server mowy Text na głos mowy (ro-RO Andrei)"
 ru-RU |Rosyjski| Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (ru-RU, Irina, Apollo)"
 | | |Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (Apollo Pavel, ru-RU)"
 | | |Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (ru-RU, EkaterinaRUS)"
-sk-SK | Słowacki|Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (sk-SK Filip)"
-sl SI | Słoweński|Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (sl-SI Lado)"
-sv-SE | Szwedzki|Kobieta | "Microsoft Server mowy Text na głos mowy (sv-SE, HedvigRUS)"
-Ta w | Tamilski (Indie) |Mężczyzna | "Microsoft Server mowy Text na głos mowy (ta-IN, Valluvar)"
-th TH | Tajlandzki|Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (th-TH Pattara)"
-tr-TR |Turecki| Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (tr-TR, SedaRUS)"
-vi-VN | Wietnamski|Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosu (vi-VN)"
+sk-SK | Słowacki | Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (sk-SK Filip)"
+sl SI | Słoweński | Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (sl-SI Lado)"
+sv-SE | Szwedzki | Kobieta | "Microsoft Server mowy Text na głos mowy (sv-SE, HedvigRUS)"
+Ta w | Tamilski (Indie) | Mężczyzna | "Microsoft Server mowy Text na głos mowy (ta-IN, Valluvar)"
+th TH | Tajlandzki | Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosowych (th-TH Pattara)"
+tr-TR |Turecki | Kobieta | "Microsoft Server mowy zamiany tekstu na mowę głosowych (tr-TR, SedaRUS)"
+vi-VN | Wietnamski | Mężczyzna | "Microsoft Server mowy zamiany tekstu na mowę głosu (vi-VN)"
 zh-CN | Chiński (kontynent)|Kobieta | "Microsoft Server mowy Text na głos mowy (zh-CN, HuihuiRUS)"
 | | |Kobieta | "Microsoft Server mowy Text na głos mowy (zh-CN, Yaoyao, Apollo)"
 | | |Mężczyzna | "Microsoft Server mowy Text na głos mowy (zh-CN, Kangkang, Apollo)"
@@ -140,13 +140,13 @@ zh-TW | Chiński (Tajwan)|Kobieta | "Microsoft Server mowy Text na głos mowy (z
 Dostosowanie głos jest dostępna dla US English (en US), kontynent, chiński (zh-CN) i włoski (it-IT).
 
 > [!NOTE]
-> Szkolenia włoskojęzycznego rozpoczyna się od zestaw ponad 2000 wypowiedzi. Modele dwujęzyczny chiński angielski są również obsługiwane za pomocą początkowego zestawu danych z ponad 2000 wypowiedzi.
+> Szkolenia włoskojęzycznego rozpoczyna się od zestawu danych z ponad 2000 wypowiedzi. Chiński — angielski dwujęzyczny modele również są obsługiwane za pomocą ponad 2000 wypowiedzi początkowego zestawu danych.
 
 ## <a name="speech-translation"></a>Tłumaczenie mowy
 
 **Tłumaczenia mowy** API obsługę innych języków tłumaczenia mowy do rozpoznawania mowy i rozpoznawania mowy na tekst. Język źródłowy zawsze musi być z poniższej tabeli języka mowy. Dostępne języki docelowej zależą od tego, czy element docelowy tłumaczenia jest mowy lub tekstu.
 
-Można uzyskać listy języków programowo przy użyciu punktu końcowego języków interfejsu API REST. Na liście przedstawiono każdy kod języka, a także nazwę języka w języku angielskim — lub w innych obsługiwanych języków. Ta lista jest aktualizowana przez usługę Microsoft Translator, zawsze wtedy, gdy nowy język staje się dostępna.
+Listę języków można uzyskać programistycznie przy użyciu punktu końcowego języków interfejsu API REST. Lista zawiera każdego kodu języka, a także nazwę języka w języku angielskim lub w obsługiwanym języku. Ta lista jest aktualizowana przez usługę Microsoft Translator, zawsze wtedy, gdy nowy język staje się dostępna.
 
 ### <a name="speech-languages"></a>Języki mowy
 

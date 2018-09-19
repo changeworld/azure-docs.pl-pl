@@ -12,12 +12,12 @@ ms.workload: On Demand
 ms.date: 07/25/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: c653f1f5366e7dac43f51d5daf1f0b13d93674ce
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 5e45bff827a8c376d4b35ee88f1f000c2b122443
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721994"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298238"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Omówienie zagadnień dotyczących ciągłości działalności biznesowej zapewnianej przez usługę Azure SQL Database
 
@@ -59,11 +59,11 @@ W poniższej tabeli porównano wartości ERT i RPO dla każdej warstwy usług dl
 
 ## <a name="recover-a-database-to-the-existing-server"></a>Odzyskiwanie bazy danych do istniejącego serwera
 
-SQL Database automatycznie przeprowadza kombinację co tydzień pełne kopie zapasowe, różnicowe kopie zapasowe co godzinę i dziennika transakcji, kopie zapasowe co 5 – 10 minut, aby chronić swoją firmę przed utratą danych. Kopie zapasowe są przechowywane w magazynu RA-GRS do 35 dni dla wszystkich warstwach usługi, z wyjątkiem następujących warstwach usługi podstawowa jednostek DTU przechowywania kopii zapasowych przez 7 dni. Aby uzyskać więcej informacji, zobacz [automatycznych kopiach zapasowych](sql-database-automated-backups.md). Możesz przywrócić istniejącego formularza bazy danych automatycznych kopii zapasowych do wcześniejszego punktu w czasie jako nową bazę danych na tym samym serwerze logicznym przy użyciu witryny Azure portal, programu PowerShell lub interfejsu API REST. Aby uzyskać więcej informacji, zobacz [punktu w czasie przywracania](sql-database-recovery-using-backups.md#point-in-time-restore).
+SQL Database automatycznie przeprowadza kombinację tworzenia pełnych kopii zapasowych co tydzień, różnicowe kopie zapasowe, zazwyczaj wykonywane co 12 godzin i dziennika kopii zapasowych co 5 – 10 minut, aby chronić swoją firmę przed utratą danych transakcji. Kopie zapasowe są przechowywane w magazynu RA-GRS do 35 dni dla wszystkich warstwach usługi, z wyjątkiem następujących warstwach usługi podstawowa jednostek DTU przechowywania kopii zapasowych przez 7 dni. Aby uzyskać więcej informacji, zobacz [automatycznych kopiach zapasowych](sql-database-automated-backups.md). Możesz przywrócić istniejącego formularza bazy danych automatycznych kopii zapasowych do wcześniejszego punktu w czasie jako nową bazę danych na tym samym serwerze logicznym przy użyciu witryny Azure portal, programu PowerShell lub interfejsu API REST. Aby uzyskać więcej informacji, zobacz [punktu w czasie przywracania](sql-database-recovery-using-backups.md#point-in-time-restore).
 
 Maksymalna obsługiwana w momencie przywracania (Odzyskiwanie) okres przechowywania nie jest wystarczający dla aplikacji, można go rozszerzyć, konfigurując długoterminowe zasady przechowywania (od lewej do prawej) dla baz danych. Aby uzyskać więcej informacji, zobacz [długoterminowego przechowywania kopii zapasowych](sql-database-long-term-retention.md).
 
-Tych automatycznych kopii zapasowych bazy danych można użyć, aby odzyskać bazę danych po wystąpieniu różnych zdarzeń powodujących zakłócenia, zarówno w obrębie centrum danych, jak również do innego centrum danych. W przypadku korzystania z automatycznych kopii zapasowych bazy danych szacowany czas odzyskiwania zależy od kilku czynników, w tym łącznej liczby jednocześnie odzyskiwanych baz danych w tym samym regionie, rozmiaru bazy danych, rozmiaru dziennika transakcji oraz przepustowości sieci. Czas odzyskiwania jest zazwyczaj mniej niż 12 godzin. Może trwać dłużej, aby odzyskać bazę danych lub bardzo dużych active. Aby uzyskać więcej informacji o czasie odzyskiwania, zobacz [bazy danych czas odzyskiwania](sql-database-recovery-using-backups.md#recovery-time). Podczas odzyskiwania do innego obszaru danych potencjalna utrata danych jest ograniczona do 1 godziny przez magazyn geograficznie nadmiarowy w ramach tworzonych co godzinę różnicowych kopii zapasowych bazy danych.
+Tych automatycznych kopii zapasowych bazy danych można użyć, aby odzyskać bazę danych po wystąpieniu różnych zdarzeń powodujących zakłócenia, zarówno w obrębie centrum danych, jak również do innego centrum danych. W przypadku korzystania z automatycznych kopii zapasowych bazy danych szacowany czas odzyskiwania zależy od kilku czynników, w tym łącznej liczby jednocześnie odzyskiwanych baz danych w tym samym regionie, rozmiaru bazy danych, rozmiaru dziennika transakcji oraz przepustowości sieci. Czas odzyskiwania jest zazwyczaj mniej niż 12 godzin. Może trwać dłużej, aby odzyskać bazę danych lub bardzo dużych active. Aby uzyskać więcej informacji o czasie odzyskiwania, zobacz [bazy danych czas odzyskiwania](sql-database-recovery-using-backups.md#recovery-time). W przypadku odzyskiwania do innego obszaru danych, potencjalnej utraty danych jest ograniczona do 1 godziny przy użyciu geograficznie nadmiarowych kopii zapasowych.
 
 Zautomatyzowane tworzenie kopii zapasowych i [w momencie przywracania](sql-database-recovery-using-backups.md#point-in-time-restore) jako mechanizm ciągłość działalności biznesowej i odzyskiwania firm Jeśli aplikacji:
 
@@ -122,7 +122,7 @@ Jeśli jako mechanizm odzyskiwania używają aktywna replikacja geograficzna i g
 > 
 
 ### <a name="perform-a-geo-restore"></a>Wykonaj operację przywracania geograficznego
-Jeśli używane są zautomatyzowane kopie zapasowe przy użyciu replikacji dla magazynu geograficznie nadmiarowego jako mechanizm odzyskiwania, [zainicjować odzyskiwanie bazy danych przy użyciu przywracania geograficznego](sql-database-disaster-recovery.md#recover-using-geo-restore). Odzyskiwanie ma zwykle miejsce w ciągu 12 godzin, z utratą danych maksymalnie z jednej godziny, w zależności od tego, kiedy została wykonana i zreplikowana ostatnia tworzona co godzinę różnicowa kopia zapasowa. Do momentu ukończenia odzyskiwania baza danych nie może rejestrować żadnych transakcji ani odpowiadać na żadne zapytania. Gdy to spowoduje przywrócenie bazy danych do ostatniego dostępnego punktu w czasie, przywracanie pomocniczej geograficznej do dowolnego punktu w czasie nie jest obecnie obsługiwane.
+Jeśli używane są zautomatyzowane kopie zapasowe przy użyciu replikacji dla magazynu geograficznie nadmiarowego jako mechanizm odzyskiwania, [zainicjować odzyskiwanie bazy danych przy użyciu przywracania geograficznego](sql-database-disaster-recovery.md#recover-using-geo-restore). Odzyskiwanie ma zwykle miejsce w ciągu 12 godzin — z utratą danych maksymalnie jednej godziny określone przez kiedy została wykonana ostatnia kopia zapasowa dziennika i replikacją geograficzną do innego regionu. Do momentu ukończenia odzyskiwania baza danych nie może rejestrować żadnych transakcji ani odpowiadać na żadne zapytania. Gdy to spowoduje przywrócenie bazy danych do ostatniego dostępnego punktu w czasie, przywracanie pomocniczej geograficznej do dowolnego punktu w czasie nie jest obecnie obsługiwane.
 
 > [!NOTE]
 > Jeśli centrum danych powróci do trybu online przed przełączeniem aplikacji za pośrednictwem do odzyskanej bazy danych, można anulować odzyskiwanie.  

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: reference
 ms.date: 05/22/2018
 ms.author: barclayn
-ms.openlocfilehash: 359648a843375477ea56ab791533208c11af9c81
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 807b8a17570dfdcefa07a42719b7b0b24e4f31d7
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42054969"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46297166"
 ---
 # <a name="azure-key-vault-customer-data-features"></a>Funkcje danych klienta w usłudze Azure Key Vault
 
@@ -37,7 +37,7 @@ Poniższe informacje identyfikuje dane klienta w ramach usługi Azure Key Vault:
 - Kontakty certyfikatu może zawierać adresy e-mail użytkowników, nazw lub numerów telefonów
 - Wystawcy certyfikatu może zawierać adresy e-mail, nazwy, numerów telefonów, poświadczenia konta i szczegóły organizacyjne
 - Dowolne tagi można zastosować do obiektów w usłudze Azure Key Vault. Te obiekty obejmują magazynów kluczy, wpisów tajnych, certyfikatów i kont magazynu. Tagi używane mogą zawierać dane osobowe
-- Dzienniki dostępu w usłudze Azure Key Vault zawierają identyfikatory obiektów [UPN](../active-directory/connect/active-directory-aadconnect-userprincipalname.md)i adresy IP dla każdego wywołania interfejsu API REST
+- Dzienniki dostępu w usłudze Azure Key Vault zawierają identyfikatory obiektów [UPN](../active-directory/hybrid/plan-connect-userprincipalname.md)i adresy IP dla każdego wywołania interfejsu API REST
 - Dzienniki diagnostyczne platformy Azure Key Vault może zawierać identyfikatory obiektów i adresy IP dla wywołań interfejsu API REST
 
 ## <a name="deleting-customer-data"></a>Usuwanie danych klienta

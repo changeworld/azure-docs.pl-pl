@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 06/18/2018
 ms.author: asmalser
-ms.openlocfilehash: 930ca49a63e34214ec197d8dd37f38361b34fe90
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 917baa4b0d983df858c64cd0fa5b697b0fbb316c
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44347039"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298272"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning-preview"></a>Samouczek: Konfigurowanie produktu Workday do inicjowania obsługi administracyjnej użytkowników (wersja zapoznawcza)
 
@@ -75,7 +75,7 @@ Scenariusz opisany w tym samouczku przyjęto założenie, że masz następujące
 * Dzierżawy produktu Workday wdrożenia na potrzeby testowania i integracji
 * Uprawnienia administratora w usłudze WORKDAY aplikacja do tworzenia użytkownika integracji systemu i wprowadzić zmiany do przetestowania danych pracownika do celów testowych
 * Przypisywanie użytkowników do usługi Active Directory, aby uzyskać przyłączone do domeny serwerze z systemem Windows usługi, 2012 lub nowszej jest wymagany do hosta [lokalnego agenta synchronizacji](https://go.microsoft.com/fwlink/?linkid=847801)
-* [Program Azure AD Connect](../connect/active-directory-aadconnect.md) synchronizacji od usługi Active Directory a usługą Azure AD
+* [Program Azure AD Connect](../hybrid/whatis-hybrid-identity.md) synchronizacji od usługi Active Directory a usługą Azure AD
 
 ### <a name="solution-architecture"></a>Architektura rozwiązania
 
@@ -504,11 +504,11 @@ Jak skonfigurować aprowizację usługi Azure Active Directory będzie zależeć
 
 | Scenariusz | Rozwiązanie |
 | -------- | -------- |
-| **Użytkownicy muszą być przygotowana do usługi Active Directory a usługą Azure AD** | Użyj  **[program AAD Connect](../connect/active-directory-aadconnect.md)** |
-| **Użytkownicy muszą być przygotowana do usługi Active Directory tylko** | Użyj  **[program AAD Connect](../connect/active-directory-aadconnect.md)** |
+| **Użytkownicy muszą być przygotowana do usługi Active Directory a usługą Azure AD** | Użyj  **[program AAD Connect](../hybrid/whatis-hybrid-identity.md)** |
+| **Użytkownicy muszą być przygotowana do usługi Active Directory tylko** | Użyj  **[program AAD Connect](../hybrid/whatis-hybrid-identity.md)** |
 | **Użytkownicy muszą być przygotowana do usługi Azure AD tylko (tylko w chmurze)** | Użyj **Workday do inicjowania obsługi usługi Azure Active Directory** aplikacji w galerii aplikacji |
 
-Aby uzyskać instrukcje na temat konfigurowania usługi Azure AD Connect, zobacz [dokumentacja usługi Azure AD Connect](../connect/active-directory-aadconnect.md).
+Aby uzyskać instrukcje na temat konfigurowania usługi Azure AD Connect, zobacz [dokumentacja usługi Azure AD Connect](../hybrid/whatis-hybrid-identity.md).
 
 W poniższych sekcjach opisano konfigurowanie połączenia między produktem Workday i Azure AD, inicjowania obsługi użytkowników tylko w chmurze.
 

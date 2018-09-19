@@ -12,47 +12,44 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
+ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 23b7ca44b72b8840579f369954f41f554d4c8852
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 7e7e9d078bf9339beb2ad5ac53ea858e843242ce
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36943423"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46293725"
 ---
-# <a name="sign-in-users-and-call-the-microsoft-graph-api-from-an-android-app"></a>Zaloguj się użytkowników i wywołania interfejsu API programu Microsoft Graph z aplikacji systemu Android
+# <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Logowania użytkowników i wywoływania usługi Microsoft Graph w aplikacji systemu Android
 
-W tym przewodniku pokazano, jak natywnych aplikacji systemu Android mogą pobrać token dostępu i wywołania interfejsu API programu Graph firmy Microsoft lub innych interfejsów API, które wymagają tokenów dostępu z punktu końcowego usługi Azure Active Directory w wersji 2.
+W tym samouczku dowiesz się, jak utworzyć aplikację dla systemu Android i integrowanie platforma tożsamości firmy Microsoft. Ściślej mówiąc ta aplikacja będzie logowania użytkownika, uzyskania tokenu dostępu do wywołania interfejsu API programu Microsoft Graph i dokonać podstawowego żądania interfejsu API programu Microsoft Graph.  
 
-Po zakończeniu przewodnika, aplikacja będzie mogła akceptować logowania konta osobiste (takie jak outlook.com, live.com i inne) oraz kont służbowych z firmy lub organizacji, która używa usługi Azure Active Directory. Aplikacja zostanie następnie wywołać interfejs API, który jest chroniony przez punkt końcowy usługi Azure Active Directory w wersji 2.  
+Po zakończeniu przewodnika, aplikacja będzie akceptować logowania osobistych kont Microsoft (w tym outlook.com, live.com i inne) i służbowego konta z firmy lub organizacji, która używa usługi Azure Active Directory. 
 
 ## <a name="how-the-sample-app-generated-by-this-guide-works"></a>Jak działa przykładowej aplikacji wygenerowane przez ten przewodnik
-![Jak działa w tym przykładzie](media/active-directory-develop-guidedsetup-android-intro/android-intro.png)
+![Jak działa ten przykład](media/active-directory-develop-guidedsetup-android-intro/android-intro.png)
 
-Przykładowej aplikacji utworzonej za pomocą tego przewodnika opiera się na scenariuszu, w których aplikacja systemu Android służy do interfejsu API sieci Web, który akceptuje tokeny od punktu końcowego usługi Azure Active Directory w wersji 2 (Microsoft Graph API, w tym przypadku). W tym scenariuszu aplikacja dodaje nabytych przez niego token na żądania HTTP za pośrednictwem nagłówek autoryzacji. Biblioteka uwierzytelniania firmy Microsoft (MSAL) obsługuje nabycia tokenu i odnawiania dla Ciebie.
+Aplikacja w tym przykładzie będzie logować użytkowników i Pobierz dane w ich imieniu.  Te dane będą uzyskiwać dostęp za pośrednictwem zdalnego interfejsu API (Microsoft interfejsu API programu Graph w tym przypadku) wymaga autoryzacji, która jest również chroniony przez platforma tożsamości firmy Microsoft. 
+
+W szczególności 
+* Aplikacja uruchomi strony sieci web do logowania użytkownika.
+* Aplikacja zostanie wystawiony token dostępu do interfejsu API programu Microsoft Graph.
+* Token dostępu zostaną uwzględnione w żądaniu HTTP do interfejsu API sieci web.
+* Przetworzenie odpowiedzi programu Microsoft Graph. 
+
+W tym przykładzie używa biblioteki Microsoft Authentication dla systemu Android (MSAL) do koordynowania i pomagając przy użyciu uwierzytelniania Biblioteka MSAL automatycznie odnowić tokenów, dostarczanie SSO między innymi aplikacjami na urządzeniu, ułatwiają zarządzanie konta i obsługa większości przypadków dostępu warunkowego. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Ten przewodnik instalacji koncentruje się na Android Studio, ale dopuszczalne jest również inne środowiska programowania aplikacji dla systemu Android. 
-* Zestaw SDK systemu android 21 lub nowszy jest wymagany (zalecane 25 zestawu SDK).
-* Google Chrome lub przeglądarki sieci web, która korzysta kart niestandardowych jest wymagany dla tej wersji programu MSAL dla systemu Android.
+* Ten Instalator z przewodnikiem używa systemu Android Studio 3.0. 
+* System android 21 lub nowszy jest wymagany (25 + jest zalecane).
+* Google Chrome lub przeglądarki sieci web, która używa kart niestandardowych jest wymagana dla tej wersji biblioteki MSAL dla systemu Android.
 
-> [!NOTE]
-> Google Chrome nie jest dołączony do programu Visual Studio Emulator for Android. Zaleca się przetestowanie kod na emulatorze z interfejsu API 25 lub obraz z interfejsu API 21 lub nowszej mającej Google Chrome zainstalowane.
+## <a name="library"></a>Biblioteka
 
-## <a name="handling-token-acquisition-for-accessing-protected-web-apis"></a>Obsługa tokenów nabycia do uzyskiwania dostępu do chronionego interfejsów API sieci Web
-
-Po uwierzytelnieniu użytkownika Przykładowa aplikacja odbiera token dostępu, który może służyć do badania interfejsu API programu Microsoft Graph i interfejsu API sieci Web, który jest chroniony przez usługę Azure Active Directory w wersji 2.
-
-Interfejsy API, takich jak Microsoft Graph wymagają tokenu dostępu, aby zezwolić na dostęp do określonych zasobów. Na przykład token dostępu jest wymagany do odczytu profilu użytkownika, dostęp do kalendarza użytkownika lub Wyślij wiadomość e-mail. Aplikacja może zażądać tokenu dostępu przy użyciu MSAL dostępu do tych zasobów, określając zakresy interfejsu API. Ten token dostępu jest dodawane do nagłówka HTTP autoryzacji dla każdego wywołania utworzona przed chronionego zasobu. 
-
-MSAL zarządza buforowanie i odświeżanie tokenów dostępu, dzięki czemu nie trzeba aplikacji.
-
-## <a name="libraries"></a>Biblioteki
-
-W tym przewodniku korzysta z bibliotek następujące:
+W tym przewodniku używane są następujące biblioteki uwierzytelniania:
 
 |Biblioteka|Opis|
 |---|---|
-|[com.microsoft.identity.client](http://javadoc.io/doc/com.microsoft.identity.client/msal)|Biblioteka uwierzytelniania firmy Microsoft (MSAL)|
+|[com.microsoft.identity.client](http://javadoc.io/doc/com.microsoft.identity.client/msal)|Microsoft Authentication Library (MSAL)|

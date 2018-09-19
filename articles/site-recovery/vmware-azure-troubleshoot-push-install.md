@@ -8,93 +8,94 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.author: ramamill
-ms.date: 07/06/2018
-ms.openlocfilehash: 8d5db03eeebb659414ea1f554e5b34c938fd2795
-ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
+ms.date: 09/17/2018
+ms.openlocfilehash: d77b252351c15bea13b0fa1fb42fa062d508fbdc
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37952913"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46126993"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Rozwiązywanie problemów z instalacją wypychaną usługi mobilności
 
-W tym artykule opisano, jak rozwiązywać typowe błędy, które może być twarzy przy próbie zainstalowania usługi mobilności Azure Site Recovery na serwerze źródłowym, aby włączyć ochronę.
+Instalacja usługi mobilności jest krokiem podczas włączania replikacji. Powodzenie ten krok zależy wyłącznie spełnienie wymagań wstępnych i pracą z nimi przy użyciu obsługiwanych konfiguracji. Najbardziej typowe błędy, stosowanych podczas instalacji usługi mobilności są ze względu na
 
-## <a name="error-78007---the-requested-operation-could-not-be-completed"></a>Błąd 78007 — nie można ukończyć żądanej operacji
-Ten błąd może zostać wygenerowany przez usługę z kilku powodów. Wybierz odpowiedni błąd dostawcy, rozwiązywać problemy z dalszych.
+* Łączność/poświadczenia błędy
+* Nieobsługiwanych systemów operacyjnych
 
-* [Błąd 95103](#error-95103---protection-could-not-be-enabled-ep0854) 
-* [Błąd 95105](#error-95105---protection-could-not-be-enabled-ep0856) 
-* [Błąd 95107](#error-95107---protection-could-not-be-enabled-ep0858) 
-* [Błąd 95108](#error-95108---protection-could-not-be-enabled-ep0859) 
-* [Błąd 95117](#error-95117---protection-could-not-be-enabled-ep0865) 
-* [Błąd 95213](#error-95213---protection-could-not-be-enabled-ep0874) 
-* [Błąd 95224](#error-95224---protection-could-not-be-enabled-ep0883) 
-* [Błąd 95265](#error-95265---protection-could-not-be-enabled-ep0902) 
+Po włączeniu replikacji usługa Azure Site Recovery próbuje wypchnąć zainstalować agenta usługi mobilności na maszynie wirtualnej. W ramach tego serwera konfiguracji próbuje nawiązywanie połączenia z maszyną wirtualną i kopiowanie agenta. Aby umożliwić pomyślną instalację, wykonaj wskazówki dotyczące rozwiązywania problemów krok po kroku przedstawionych poniżej
 
+## <a name="credentials-check-errorid-95107--95108"></a>Sprawdź poświadczenia (identyfikator błędu: 95107 & 95108)
 
-## <a name="error-95105---protection-could-not-be-enabled-ep0856"></a>Błąd 95105 - ochrony nie można włączyć (EP0856)
+* Sprawdź, czy konto użytkownika podczas. Włączanie replikacji **prawidłowy, dokładne**.
+* Usługa Azure Site Recovery wymaga **uprawnienie administratora** do przeprowadzenia instalacji wypychanej.
+  * Windows, sprawdź, czy konto użytkownika ma dostęp administracyjny lokalnego lub domeny, na maszynie źródłowej.
+  * Jeśli nie używasz konta domeny, należy wyłączyć kontrolę dostępu użytkowników zdalnych na komputerze lokalnym.
+    * Aby wyłączyć kontrolę dostępu użytkowników zdalnych, w kluczu rejestru HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System Dodaj nową wartość typu DWORD: LocalAccountTokenFilterPolicy. Ustaw wartość na 1. Aby wykonać ten krok, uruchom następujące polecenie w wierszu polecenia:
 
-**Kod błędu:** | **Możliwe przyczyny** | **Zalecenia dotyczące błędów**
---- | --- | ---
-95105 </br>**Komunikat o błędzie:** instalacji wypychanej usługi mobilności na maszynie źródłowej nie powiodła się z kodem błędu **EP0856**. <br> Albo **udostępnianie plików i drukarek** nie jest dozwolona w źródle maszynowo lub występują są sieci problemy z łącznością między serwerem przetwarzania a maszyną źródłową.| **Udostępnianie plików i drukarek** nie jest włączona. | Zezwalaj na **udostępnianie plików i drukarek** na maszynie źródłowej w Zaporze Windows. Na maszynie źródłowej w obszarze **zapory Windows** > **Zezwalaj aplikacji lub funkcji za pośrednictwem zapory**, wybierz opcję **udostępnianie plików i drukarek we wszystkich profilach**. </br> Ponadto sprawdź następujące wymagania wstępne do pomyślnego zakończenia instalacji wypychanej.<br> Przeczytaj więcej na temat [Rozwiązywanie problemów z usługą WMI wystawia](#troubleshoot-wmi-issues).
+         `REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1`
+  * Dla systemu Linux musisz wybrać konto główne dla pomyślnej instalacji agenta mobilności.
 
+Jeśli chcesz zmodyfikować poświadczeń konta wybranego użytkownika, postępuj zgodnie z instrukcjami [tutaj](vmware-azure-manage-configuration-server.md#modify-credentials-for-mobility-service-installation).
 
-## <a name="error-95107---protection-could-not-be-enabled-ep0858"></a>Błąd 95107 - ochrony nie można włączyć (EP0858)
+## <a name="connectivity-check-errorid-95117--97118"></a>**Sprawdzenie łączności (identyfikator błędu: 95117 & 97118)**
 
-**Kod błędu:** | **Możliwe przyczyny** | **Zalecenia dotyczące błędów**
---- | --- | ---
-95107 </br>**Komunikat o błędzie:** instalacji wypychanej usługi mobilności na maszynie źródłowej nie powiodła się z kodem błędu **EP0858**. <br> Poświadczenia podane zainstalować usługi mobilności są niepoprawne lub konto użytkownika ma niewystarczające uprawnienia. | Poświadczenia użytkownika do zainstalowania usługi mobilności na maszynie źródłowej są nieprawidłowe. | Upewnij się, że poświadczenia użytkownika dostarczone dla maszyny źródłowej na serwerze konfiguracji są poprawne. <br> Aby dodać lub edytować poświadczeń użytkownika, przejdź do serwera konfiguracji i wybierz **Cspsconfigtool** > **Zarządzanie kontem**. </br> Ponadto, sprawdź następujące [wymagania wstępne](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery) do pomyślnego zakończenia instalacji wypychanej.
+* Upewnij się, że możesz wysłać polecenie ping do komputera źródłowego z serwera konfiguracji. Jeśli serwera przetwarzania skalowalnego w poziomie zostały wybrane podczas. Włączanie replikacji, upewnij się, że jesteś w stanie wysłać polecenie ping z serwera przetwarzania maszyna źródłowa.
+  * Z wiersza polecenia komputera serwera źródłowego, użyj Telnet, aby wykonać polecenie ping do serwera konfiguracji / skalowalny w poziomie przetwarzania serwera przy użyciu portu https (domyślnie 9443), jak pokazano poniżej, aby zobaczyć, jeśli istnieją problemy z połączeniem sieciowym lub problemy z blokowaniem portów zapory.
 
+     `telnet <CS/ scale-out PS IP address> <port>`
 
-## <a name="error-95117---protection-could-not-be-enabled-ep0865"></a>Błąd 95117 - ochrony nie można włączyć (EP0865)
+  * Jeśli nie można się połączyć, Zezwalaj na przychodzące port 9443 na serwerze konfiguracji / skalowalny w poziomie serwerze przetwarzania.
+  * Sprawdź stan usługi **InMage Scout VX Agent — Sentinel/Outpost**. Uruchom usługę, jeśli nie jest uruchomiona.
 
-**Kod błędu:** | **Możliwe przyczyny** | **Zalecenia dotyczące błędów**
---- | --- | ---
-95117 </br>**Komunikat o błędzie:** instalacji wypychanej usługi mobilności na maszynie źródłowej nie powiodła się z kodem błędu **EP0865**. <br> Maszyna źródłowa nie jest uruchomiona lub występują problemy z łącznością sieciową między serwerem przetwarzania a maszyną źródłową. | Problemy z łącznością sieciową między serwerem przetwarzania i serwera źródłowego. | Sprawdź łączność między serwerem przetwarzania a na serwerze źródłowym. </br> Ponadto, sprawdź następujące [wymagania wstępne](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery) do pomyślnego zakończenia instalacji wypychanej.|
+* Ponadto w przypadku **maszyny Wirtualnej systemu Linux**,
+  * Sprawdź, czy są zainstalowane najnowsze pakiety openssh, openssh-server i openssl.
+  * Sprawdź i upewnij się, że Secure Shell (SSH) jest włączona i działa na porcie 22.
+  * SFTP usługi powinny być uruchomione. Aby włączyć SFTP podsystem i uwierzytelnianie hasłem w pliku sshd_config
+    * Zaloguj się jako użytkownik główny.
+    * Przejdź do pliku /etc/ssh/sshd_config i znajdź wiersz, który rozpoczyna się od PasswordAuthentication.
+    * Usuń znaczniki komentarza i zmień wartość na tak
+    * Znajdź wiersz, który rozpoczyna się od podsystemu i usuń znaczniki komentarza
+    * Uruchom ponownie usługę sshd.
+* Próba połączenia może nie powiodło się jeśli nie będzie odpowiednie odpowiedzi po upływie określonego czasu lub ustanowionego połączenia nie powiodło się, ponieważ połączony host nie odpowiedział.
+* Łączność / / domeny sieciowej może być problemu związanego z. Można również ze względu na nazwę DNS, rozwiązywania problemów lub problem wyczerpanie portów TCP. Sprawdź, czy istnieją znane problemy w domenie.
 
-## <a name="error-95103---protection-could-not-be-enabled-ep0854"></a>Błąd 95103 - ochrony nie można włączyć (EP0854)
+## <a name="file-and-printer-sharing-services-check-errorid-95105--95106"></a>Sprawdzanie usług udostępniania plików i drukarek (identyfikator błędu: 95105 & 95106)
 
-**Kod błędu:** | **Możliwe przyczyny** | **Zalecenia dotyczące błędów**
---- | --- | ---
-95103 </br>**Komunikat o błędzie:** instalacji wypychanej usługi mobilności na maszynie źródłowej nie powiodła się z kodem błędu **EP0854**. <br> Instrumentacja zarządzania Windows (WMI) nie jest dozwolona na maszynie źródłowej lub występują problemy z łącznością sieciową między serwerem przetwarzania a maszyną źródłową.| Usługa WMI jest zablokowany w Zaporze Windows. | Usługa WMI w Zaporze Windows. W obszarze **zapory Windows** > **Zezwalaj aplikacji lub funkcji za pośrednictwem zapory**, wybierz opcję **WMI dla wszystkich profilów**. </br> Ponadto, sprawdź następujące [wymagania wstępne](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery) do pomyślnego zakończenia instalacji wypychanej.|
+Po sprawdzenie łączności Sprawdź, czy na maszynie wirtualnej włączono usługi udostępniania plików i drukarek.
 
-## <a name="error-95213---protection-could-not-be-enabled-ep0874"></a>Błąd 95213 - ochrony nie można włączyć (EP0874)
+Aby uzyskać **windows 2008 R2 i wcześniejsze wersje**,
 
-**Kod błędu:** | **Możliwe przyczyny** | **Zalecenia dotyczące błędów**
---- | --- | ---
-95213 </br>**Komunikat o błędzie:** instalacji usługi Mobility na źródłowej maszynie % SourceIP; nie powiodło się z kodem błędu **EP0874**. <br> | Wersja systemu operacyjnego na maszynie źródłowej nie jest obsługiwane. <br>| Upewnij się, że maszyna źródłowa jest obsługiwana wersja systemu operacyjnego. Odczyt [macierz obsługi](https://aka.ms/asr-os-support). </br> Ponadto, sprawdź następujące [wymagania wstępne](https://aka.ms/pushinstallerror) do pomyślnego zakończenia instalacji wypychanej.| 
+* Aby włączyć udostępnianie plików i drukarek przez zaporę Windows
+  * Otwórz panel sterowania -> System i Zabezpieczenia -> zapory Windows -> w okienku po lewej stronie, kliknij przycisk Zaawansowane ustawienia -> w drzewie konsoli kliknij pozycję reguły ruchu przychodzącego.
+  * Znajdź reguły pliku i udostępnianie drukarki (sesji NB — ruch przychodzący) i udostępnianie plików i drukarek (ruch przychodzący SMB). Dla każdej reguły, kliknij prawym przyciskiem myszy regułę, a następnie kliknij przycisk **Włącz regułę**.
+* Aby włączyć udostępnianie za pomocą zasad grupy plików
+  * Przejdź do ekranu startowego, wpisz polecenie gpmc.msc i wyszukiwania.
+  * W okienku nawigacji otwórz następujące foldery: lokalne zasady komputera, Konfiguracja użytkownika, Szablony administracyjne, Windows, składników i udostępniania w sieci.
+  * W okienku szczegółów kliknij dwukrotnie **uniemożliwić użytkownikom udostępnianie plików w swoim profilu**. Aby wyłączyć ustawienia zasad grupy, a następnie włącz możliwość jego udostępniania plików, kliknij przycisk wyłączone. Kliknij przycisk OK, aby zapisać zmiany. Aby dowiedzieć się więcej, kliknij przycisk [tutaj](https://docs.microsoft.com/en-us/previous-versions/windows/it-pro/windows-server-2008-R2-and-2008/cc754359(v=ws.10)).
 
+Aby uzyskać **nowsze wersje**, postępuj zgodnie z instrukcjami [tutaj](vmware-azure-install-mobility-service.md#install-mobility-service-by-push-installation-from-azure-site-recovery) umożliwiające udostępnianie plików i drukarek
 
-## <a name="error-95108---protection-could-not-be-enabled-ep0859"></a>Błąd 95108 - ochrony nie można włączyć (EP0859)
+## <a name="windows-management-instrumentation-wmi-configuration-check"></a>Sprawdzenie konfiguracji Instrumentacji zarządzania Windows (WMI)
 
-**Kod błędu:** | **Możliwe przyczyny** | **Zalecenia dotyczące błędów**
---- | --- | ---
-95108 </br>**Komunikat o błędzie:** instalacji wypychanej usługi mobilności na maszynie źródłowej nie powiodła się z kodem błędu **EP0859**. <br>| Poświadczenia podane zainstalować usługi mobilności są niepoprawne lub konto użytkownika ma niewystarczające uprawnienia. <br>| Upewnij się, że podane poświadczenia są **głównego** poświadczeń konta. Aby dodać lub edytować poświadczeń użytkownika, przejdź do serwera konfiguracji, a następnie wybierz **Cspsconfigtool** ikonę skrótu na pulpicie. Wybierz **Zarządzanie kontem** umożliwiają dodawanie lub edytowanie poświadczeń.|
+Po sprawdzić usług plików i drukarek, należy włączyć usługę WMI przez zaporę.
 
-## <a name="error-95265---protection-could-not-be-enabled-ep0902"></a>Błąd 95265 - ochrony nie można włączyć (EP0902)
+* W Panelu sterowania kliknij pozycję zabezpieczenia, a następnie kliknij zaporę Windows.
+* Kliknij przycisk Zmień ustawienia, a następnie kliknij kartę Wyjątki.
+* W oknie wyjątki zaznacz pole wyboru dla Windows Management Instrumentation (WMI) aby umożliwić ruch usługi WMI przez zaporę. 
 
-**Kod błędu:** | **Możliwe przyczyny** | **Zalecenia dotyczące błędów**
---- | --- | ---
-95265 </br>**Komunikat o błędzie:** instalacji wypychanej usługi mobilności na maszynie źródłowej powiodła się, ale maszyna źródłowa wymaga ponownego uruchomienia dla niektórych zmiany w systemie zaczęły obowiązywać. <br>| Starszą wersję usługi mobilności został już zainstalowany na serwerze.| Replikacja maszyny wirtualnej nadal bezproblemowo.<br> Uruchom ponownie serwer podczas następnego okna obsługi w taki sposób, aby uzyskać korzyści wynikające z nowych ulepszeń usługi mobilności.|
+Można również włączyć ruch usługi WMI przez zaporę, w tym celu w wierszu polecenia. Użyj następującego polecenia `netsh advfirewall firewall set rule group="windows management instrumentation (wmi)" new enable=yes`
+Inne artykuły dotyczące rozwiązywania problemów WMI można znaleźć w następujących artykułach.
 
-
-## <a name="error-95224---protection-could-not-be-enabled-ep0883"></a>Błąd 95224 - ochrony nie można włączyć (EP0883)
-
-**Kod błędu:** | **Możliwe przyczyny** | **Zalecenia dotyczące błędów**
---- | --- | ---
-95224 </br>**Komunikat o błędzie:** wypychana instalacji usługi mobilności na maszynie źródłowej % SourceIP; nie powiodła się. kod błędu **EP0883**. Oczekuje na ponowne uruchomienie systemu z poprzedniej instalacji lub aktualizacji.| Nie można ponownie uruchomić system, podczas odinstalowywania starszej lub niezgodna wersja usługi mobilności.| Upewnij się, że nie ma wersji usługi mobilności istnieje na serwerze. <br> Uruchom ponownie serwer, a następnie uruchom ponownie zadanie włączania ochrony.|
-
-## <a name="resource-to-troubleshoot-push-installation-problems"></a>Zasób, aby rozwiązać problemy z instalacją wypychaną
-
-#### <a name="troubleshoot-file-and-print-sharing-issues"></a>Rozwiązywanie problemów z plików i wydruku udostępniania problemów
-* [Włącz lub wyłącz udostępnianie za pomocą zasad grupy plików](https://technet.microsoft.com/library/cc754359(v=ws.10).aspx)
-* [Włącz udostępnianie plików i drukarek przez zaporę Windows](https://technet.microsoft.com/library/ff633412(v=ws.10).aspx)
-
-#### <a name="troubleshoot-wmi-issues"></a>Rozwiązywanie problemów z usługą WMI
 * [Podstawowe testy usługi WMI](https://blogs.technet.microsoft.com/askperf/2007/06/22/basic-wmi-testing/)
 * [Rozwiązywanie problemów z usługą WMI](https://msdn.microsoft.com/library/aa394603(v=vs.85).aspx)
 * [Rozwiązywanie problemów ze skryptami WMI i usługi WMI](https://technet.microsoft.com/library/ff406382.aspx#H22)
+
+## <a name="unsupported-operating-systems"></a>Nieobsługiwanych systemów operacyjnych
+
+Inny najbardziej typową przyczyną błędu może być spowodowany nieobsługiwany system operacyjny. Upewnij się, że używasz obsługiwanej wersji jądra systemu operacyjnego/pomyślną instalację usługi mobilności.
+
+Aby dowiedzieć się, o które systemy operacyjne są obsługiwane przez usługę Azure Site Recovery, zobacz nasze [dokumencie macierz obsługi](vmware-physical-azure-support-matrix.md#replicated-machines).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

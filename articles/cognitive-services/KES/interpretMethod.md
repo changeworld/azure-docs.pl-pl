@@ -1,53 +1,58 @@
 ---
-title: Interpretowanie metoda w interfejsie API usługi eksploracji wiedzy | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak użyć tej metody Interpret w wiedzy eksploracji usługi (KES) interfejsu API w usługach kognitywnych.
+title: Interpretowanie metody — interfejs API usługi Eksploracja wiedzy
+titlesuffix: Azure Cognitive Services
+description: Dowiedz się, jak użyć tej metody interpretację w wiedzy Exploration Service (KES) interfejsu API.
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: ef68d98dacf393abf8d030b9312217ea380947d2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 45badbdbe1a7e1f2028a00d54458db35a4f7d440
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347093"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46128011"
 ---
 # <a name="interpret-method"></a>Interpretowanie — metoda
-*Interpretowania* metoda pobiera ciąg zapytania języka naturalnego i zwraca sformatowany interpretacje zamiarów użytkownika na podstawie danych gramatyki i indeksu.  Aby zapewnić środowisko wyszukiwania interaktywne, ta metoda może zostać wywołana wprowadzone przez użytkownika z każdego znaku *pełną* ustawiona na 1 Włącz sugestie automatycznego zakończenia.
+
+*Interpretacji* metoda przyjmuje ciąg zapytania w języku naturalnym i zwraca sformatowany interpretacji intencji użytkownika na podstawie danych Gramatyka języka i indeksem.  W celu udostępnienia środowiska interaktywnego wyszukiwania, może można wywołać tej metody wprowadzone przez użytkownika za pomocą każdego znaku *pełną* parametru równa 1, aby włączyć automatyczne uzupełnianie sugestie.
 
 ## <a name="request"></a>Żądanie
+
 `http://<host>/interpret?query=<query>[&<options>]`
 
 Name (Nazwa)|Wartość| Opis
 ----|----|----
-query    | Ciąg tekstowy | Zapytanie wprowadzonej przez użytkownika.  Pełne jest ustawiona na 1, kwerendy będą interpretowane jako prefiksu do generowania sugestie automatycznego uzupełniania zapytania.        
-Zakończenie | 0 (ustawienie domyślne) lub 1 | 1 oznacza, że sugestie automatycznego uzupełniania są generowane, na podstawie danych gramatyki i indeksu.         
-count    | Numer (domyślne = 10) | Maksymalna liczba interpretacje do zwrócenia.         
-Przesunięcie   | Numer (domyślne = 0) | Indeks pierwszego interpretacji do zwrócenia.  Na przykład *count = 2 & przesunięcie = 0* zwraca interpretacje 0 i 1. *liczba = 2 & przesunięcie = 2* zwraca interpretacje 2 i 3.       
-timeout  | Numer (domyślne = 1000) | Limit czasu w milisekundach. Zwracane są tylko interpretacje znaleziono przed upływem limitu czasu.
+query    | Ciąg tekstowy | Zapytanie wprowadzonej przez użytkownika.  Pełne jest ustawiona na 1, zapytania będą interpretowane jako prefiks dla generowania sugestie automatyczne uzupełnianie zapytań.        
+Wykonaj | 0 (ustawienie domyślne) lub 1 | 1 oznacza, że wygenerowany automatycznego uzupełniania, sugestii na podstawie danych Gramatyka języka i indeksem.         
+count    | Liczba (domyślny = 10) | Maksymalna liczba interpretacji do zwrócenia.         
+Przesunięcie   | Liczba (domyślny = 0) | Indeks pierwszego interpretacji do zwrócenia.  Na przykład *count = 2 & przesunięcie = 0* zwraca interpretacje 0 i 1. *liczba = 2 & przesunięcie = 2* zwraca interpretacje 2 i 3.       
+timeout  | Liczba (domyślny = 1000) | Przekroczono limit czasu w milisekundach. Zwracane są tylko interpretacji znaleziono przed upływem limitu czasu.
 
-Przy użyciu *liczba* i *przesunięcie* parametrów dużej liczby wyników można uzyskać przyrostowo przez wiele żądań.
+Za pomocą *liczba* i *przesunięcie* parametrów, dużą liczbę wyników można uzyskać przyrostowo za pośrednictwem wielu żądań.
 
 ## <a name="response-json"></a>Odpowiedź (JSON)
+
 JSONPath     | Opis
 ---------|---------
 $.query |*Zapytanie* parametrów z żądania.
-$.interpretations   |Tablica 0 lub więcej sposobów pasuje wejściowe zapytania dotyczącego gramatyki.
-$.interpretations [\*] .logprob   |Względne dziennika prawdopodobieństwo interpretacji (< = 0).  Wyższe wartości są bardziej prawdopodobne.
-$.interpretations [\*] .parse |Ciąg XML, który zawiera interpretacji każdej części zapytania.
+$.interpretations   |Tablica 0 lub więcej sposobów, aby dopasować wejściowych zapytania dotyczącego gramatyki.
+$.interpretations [\*] .logprob   |Względna dziennika prawdopodobieństwo interpretacji (< = 0).  Większe wartości są bardziej prawdopodobne.
+$.interpretations [\*] .parse |Ciąg XML, który pokazuje, jak interpretować została każda część zapytania.
 $.interpretations [\*] Rules |Tablica 1 lub więcej reguł zdefiniowanych w gramatyce wywoływane podczas interpretacji.
-$.interpretations [\*] Rules [\*] .Nazwa    |Nazwa reguły.
-$.interpretations [\*] Rules [\*] .output  |Semantycznego dane wyjściowe reguły.
-$.interpretations [\*] Rules [\*]. output.type |Typ danych wyjściowych semantycznego.
-$.interpretations [\*] Rules [\*]. output.value|Wartość semantyki danych wyjściowych.  
+$.interpretations [\*] Rules [\*] .name    |Nazwa reguły.
+$.interpretations [\*] Rules [\*] .output  |Semantyczne dane wyjściowe reguły.
+$.interpretations [\*] Rules [\*]. output.type |Typ danych semantycznych danych wyjściowych.
+$.interpretations [\*] Rules [\*]. output.value|Wartość semantycznego danych wyjściowych.  
 $.aborted | Wartość true, jeśli upłynął limit czasu żądania.
 
-### <a name="parse-xml"></a>Dokonać analizy pliku XML
-Analizy XML oznacza (ukończone) zapytania z informacjami o jak odpowiada względem reguły w gramatyce i atrybutów w indeksie.  Poniżej znajduje się przykład z publikacji academic domeny:
+### <a name="parse-xml"></a>Analizowanie danych XML
+
+Analizy XML oznacza stosowanym (ukończenie) zapytanie o informacje jak dopasowuje względem reguły w gramatyce i atrybuty w indeksie.  Poniżej przedstawiono przykład z domeny akademickich publikacji:
 
 ```xml
 <rule name="#GetPapers">
@@ -60,16 +65,17 @@ Analizy XML oznacza (ukończone) zapytania z informacjami o jak odpowiada wzglę
 </rule>
 ```
 
-`<rule>` Element rozgranicza zakresu w zapytaniu dopasowywania reguły określony przez jego `name` atrybutu.  Mogą być zagnieżdżone, gdy analizy obejmuje odwołania do reguły w gramatyce.
+`<rule>` Element rozgranicza zakresu w zapytaniu pasujących reguł, określony przez jego `name` atrybutu.  Może być zagnieżdżony, gdy analizy obejmuje odwołania do reguły w gramatyce.
 
-`<attr>` Element rozgranicza zakresu w zapytaniu dopasowania określony przez atrybut indeksu jego `name` atrybutu.  Gdy dopasowania obejmuje synonim w zapytanie wejściowe `canonical` atrybut będzie zawierał wartości kanonicznej dopasowania synonim z indeksu.
+`<attr>` Element rozgranicza zakresu w zapytaniu dopasowanie atrybutu indeksu, określony przez jego `name` atrybutu.  Gdy dopasowanie obejmuje synonimów w zapytanie wejściowe `canonical` atrybut będzie zawierać wartość canonical dopasowania synonimu z indeksu.
 
 ## <a name="example"></a>Przykład
-W przykładzie academic publikacji następujące żądania zwraca maksymalnie 2 automatycznego uzupełniania sugestie dotyczące zapytań prefiksu "dokumentach jaime":
+
+W tym przykładzie akademickich publikacje następujące żądanie zwraca maksymalnie 2 sugestie automatycznego uzupełniania dla zapytania prefiksu "dokumentach trzyczęściową":
 
 `http://<host>/interpret?query=papers by jaime&complete=1&count=2`
 
-Odpowiedź zawiera dwóch pierwszych ("count = 2") najprawdopodobniej interpretacje, kończące z częściowa zapytania "dokumentach jaime": "dokumenty przez jaime teevan" i "dokumenty przez zielony jaime".  Zakończeń zapytania usługi wygenerowany zamiast uwzględnieniu tylko dokładne odpowiedniki Autor "jaime", ponieważ określony w żądaniu "pełną = 1". Należy pamiętać, że wartości kanonicznej "zielony j l" dopasowane za pośrednictwem synonim "jamie zielony", zgodnie z analizy.
+Odpowiedź zawiera dwa pierwsze ("liczba = 2") najprawdopodobniej interpretacji, które wykonać zapytania częściowego "dokumentach trzyczęściową": "papers przez teevan trzyczęściową" i "papers przez zielony trzyczęściową".  Uzupełnienia zapytań usługi generowane zamiast biorąc pod uwagę tylko dokładne dopasowania dla autora "trzyczęściową", ponieważ określony w żądaniu "Pełna = 1". Należy pamiętać, że wartość canonical "l" j"zielony" dopasowane za pośrednictwem synonim "jamie green", jak wskazano w analizy.
 
 
 ```json
@@ -106,7 +112,7 @@ Odpowiedź zawiera dwóch pierwszych ("count = 2") najprawdopodobniej interpreta
 }
 ```  
 
-Po typ danych wyjściowych semantycznego to "query", jak w poniższym przykładzie zgodnych obiektów mogą być pobierane przez przekazanie *output.value* do [ *oceny* ](evaluateMethod.md) interfejsu API za pomocą *wyrażenie* parametru.
+Jeśli typ danych semantycznych wyjściowych jest "query", jak w poniższym przykładzie, zgodnych obiektów mogą być pobierane przez przekazanie *output.value* do [ *oceny* ](evaluateMethod.md) interfejsu API za pośrednictwem *expr* parametru.
 
 `http://<host>/evaluate?expr=Composite(AA.AuN=='jaime teevan')`
   

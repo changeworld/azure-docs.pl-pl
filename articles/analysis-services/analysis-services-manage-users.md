@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 846b76bddbc771a924a1d710cd333dfa4623f5ec
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: a629c598c94e44713f8990871c46272dc48b1359
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37450042"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296281"
 ---
 # <a name="authentication-and-user-permissions"></a>Uwierzytelnianie i uprawnienia użytkownika
 Usługa Azure Analysis Services używa usługi Azure Active Directory (Azure AD) do uwierzytelniania tożsamości zarządzania i użytkownika. Dowolny użytkownik, tworzenia, zarządzania lub nawiązywanie połączeń z usług Azure Analysis Services server musi mieć tożsamości prawidłowego użytkownika w [dzierżawy usługi Azure AD](../active-directory/fundamentals/active-directory-administer.md) w tej samej subskrypcji.
@@ -33,7 +33,7 @@ W zależności od aplikacji klienckiej lub narzędzia, których używasz typ uwi
 
 Usługa Power BI Desktop, SSDT i SSMS obsługuje uniwersalne uwierzytelnianie usługi Active Directory, w przypadku metody interakcyjnej obsługującego usługi Azure Multi-Factor Authentication (MFA). Usługa Azure MFA zabezpiecza dostęp do danych i aplikacji przy jednoczesnym zapewnieniu prostoty procesu logowania. Zapewnia ona silne uwierzytelnianie za pomocą kilku opcji weryfikacji (połączenie telefoniczne, wiadomość SMS, kart inteligentnych przy użyciu numeru pin lub powiadomienie aplikacji mobilnej). Interaktywne MFA za pomocą usługi Azure AD może spowodować wyskakujące okno dialogowe do sprawdzania poprawności. **Uniwersalne uwierzytelnianie jest zalecane**.
 
-Jeśli logowanie do platformy Azure przy użyciu konta Windows i uniwersalne uwierzytelnianie nie jest zaznaczona lub dostępne (Excel), [Active Directory Federation Services (AD FS)](../active-directory/connect/active-directory-aadconnect-azure-adfs.md) jest wymagana. Z Federacją, usługi Azure AD i użytkowników usługi Office 365 są uwierzytelniane przy użyciu poświadczeń lokalnych i dostęp do zasobów platformy Azure.
+Jeśli logowanie do platformy Azure przy użyciu konta Windows i uniwersalne uwierzytelnianie nie jest zaznaczona lub dostępne (Excel), [Active Directory Federation Services (AD FS)](../active-directory/hybrid/how-to-connect-fed-azure-adfs.md) jest wymagana. Z Federacją, usługi Azure AD i użytkowników usługi Office 365 są uwierzytelniane przy użyciu poświadczeń lokalnych i dostęp do zasobów platformy Azure.
 
 ### <a name="sql-server-management-studio-ssms"></a>SQL Server Management Studio (SSMS)
 Serwery usługi Azure Analysis Services obsługują połączenia z [SSMS V17.1](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms) lub nowszej za pomocą uwierzytelniania Windows, uwierzytelnianie hasłem usługi Active Directory i Active Directory Universal Authentication. Ogólnie rzecz biorąc zalecane jest, że używasz uwierzytelniania usługi Active Directory Universal, ponieważ:
