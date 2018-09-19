@@ -12,7 +12,6 @@
 
 
 # Rozpoczęcie pracy
-## [Rozpoczynanie pracy z usługą Azure AD](fundamentals/get-started-azure-ad.md)
 ## [Tworzenie konta w usłudze Azure AD Premium](fundamentals/active-directory-get-started-premium.md)
 ## [Dodawanie niestandardowej nazwy domeny](fundamentals/add-custom-domain.md)
 ## [Configure company branding (Konfigurowanie oznaczenia marką firmy)](fundamentals/customize-branding.md)
@@ -20,6 +19,7 @@
 ## [Assign licenses to users (Przypisywanie licencji do użytkowników)](fundamentals/license-users-groups.md)
 ## [Configure Self-service password reset (Konfigurowanie samoobsługowego resetowania haseł)](authentication/quickstart-sspr.md)
 ## [Dodawanie informacji o ochronie prywatności w organizacji do usługi Azure AD](active-directory-properties-area.md)
+## [Uzyskiwanie dostępu do usługi Azure Active Directory w celu utworzenia nowej dzierżawy](fundamentals/active-directory-access-create-new-tenant.md)
 
 
 # Instrukcje
@@ -91,11 +91,13 @@
 ### [Narażeni użytkownicy](reports-monitoring/concept-user-at-risk.md)
 ### [Ryzykowne logowania](reports-monitoring/concept-risky-sign-ins.md)
 ### [Zdarzenia ryzyka](reports-monitoring/concept-risk-events.md)
-### [Monitorowanie dzienników przy użyciu usługi Azure Monitor](reports-monitoring/overview-activity-logs-in-azure-monitor.md)
+### [Monitorowanie dzienników przy użyciu usługi Azure Monitor](reports-monitoring/concept-activity-logs-in-azure-monitor.md)
 ### [Często zadawane pytania](reports-monitoring/reports-faq.md)
 
 ### Zadania
-#### [Konfigurowanie nazwanych lokalizacji](active-directory-named-locations.md)
+#### [Pobieranie raportu logowań](reports-monitoring/quickstart-download-sign-in-report.md)
+#### [Pobieranie raportu inspekcji](reports-monitoring/quickstart-download-audit-report.md)
+#### [Konfigurowanie nazwanych lokalizacji](reports-monitoring/quickstart-configure-named-locations.md)
 #### [Znajdowanie raportów aktywności](reports-monitoring/howto-find-activity-reports.md)
 #### [Używanie pakietu zawartości Azure AD Power BI](reports-monitoring/howto-power-bi-content-pack.md)
 #### [Korygowanie użytkowników oflagowanych w związku z ryzykiem](reports-monitoring/howto-remediate-users-flagged-for-risk.md)

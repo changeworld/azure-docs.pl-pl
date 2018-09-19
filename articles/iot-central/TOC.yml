@@ -48,6 +48,8 @@ items:
       href: howto-connect-raspberry-pi-csharp.md
     - name: Przygotowywanie i łączenie urządzenia z systemem Windows IoT Core
       href: howto-connect-windowsiotcore.md
+    - name: Monitorowanie łączności urządzeń przy użyciu wiersza polecenia
+      href: howto-use-iotc-explorer.md
   - name: Zarządzanie urządzeniami
     items:
     - name: Konfigurowanie szablonu urządzenia
@@ -120,9 +122,9 @@ items:
     href: iot-central-customer-data-requests.md
   - name: Stack Overflow
     href: https://stackoverflow.com/questions/tagged/azure-iot-central
-ms.openlocfilehash: 75958525a9315f521aea8389850379625d635aee
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 103bbb59a20194447d49e11327df1d984ccb0a8a
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543949"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983122"
