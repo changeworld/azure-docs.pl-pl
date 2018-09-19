@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 1628bfc24a1d6a0d1753b59c54b2cd5c09fe41cf
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 00dd74ccd317799ca3afcbe0ed1ca85e19bb3cbe
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45629597"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123882"
 ---
-# <a name="copy-data-from-concur-using-azure-data-factory"></a>Kopiowanie danych z Concur przy użyciu usługi Azure Data Factory
+# <a name="copy-data-from-concur-using-azure-data-factory-preview"></a>Kopiowanie danych z Concur przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
 W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych ze Concur. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 

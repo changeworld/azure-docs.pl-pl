@@ -1,57 +1,58 @@
 ---
-title: Metoda CalcHistogram w interfejsie API usługi eksploracji wiedzy | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak użyć tej metody CalcHistogram w wiedzy eksploracji usługi (KES) interfejsu API w usługach kognitywnych.
+title: Metoda CalcHistogram — interfejs API usługi Eksploracja wiedzy
+titlesuffix: Azure Cognitive Services
+description: Dowiedz się, jak użyć metody CalcHistogram w wiedzy Exploration Service (KES) interfejsu API.
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: 6ed694b0cc9cf41b815cc54b9f6d12adb2b7cd64
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 0ca43d6f6879198b8f80794c1948439e15f312ad
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347033"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46122760"
 ---
 # <a name="calchistogram-method"></a>calchistogram — metoda
-*Calchistogram* metody oblicza obiektów zgodnego z wyrażeniem structured query i oblicza rozkład wartości atrybutu.
+*Calchistogram* metoda oblicza obiektów dopasowywania wyrażeń zapytań ze strukturą i oblicza rozkład wartości atrybutu.
 
 ## <a name="request"></a>Żądanie
 `http://<host>/calchistogram?expr=<expr>[&options]` 
 
 Name (Nazwa)|Wartość|Opis
 ----|-----|-----------
-wyrażenie | Ciąg tekstowy | Wyrażenie Structured query jednostek indeksem służącym do obliczenia histogramów.
-Atrybuty | Ciąg tekstowy (domyślne = "") | Rozdzielana przecinkami lista atrybutów do dołączenia w odpowiedzi.
-count   | Numer (domyślne = 10) | Liczba wyników do zwrócenia.
-Przesunięcie  | Numer (domyślne = 0) | Indeks pierwszego wyniku do zwrócenia.
+wyrażenie | Ciąg tekstowy | Wyrażenia zapytań ze strukturą, które określa jednostki indeksu, względem którego ma zostać obliczanie histogramów.
+Atrybuty | Ciąg tekstowy (domyślny = "") | Rozdzielana przecinkami lista atrybutów do dołączenia w odpowiedzi.
+count   | Liczba (domyślny = 10) | Liczba wyników do zwrócenia.
+Przesunięcie  | Liczba (domyślny = 0) | Indeks pierwszego wyniku do zwrócenia.
 
 ## <a name="response-json"></a>Odpowiedź (JSON)
 JSONPath | Opis
 ----|----
 $.expr | *wyrażenie* parametrów z żądania.
-$.num_entities | Całkowita liczba zgodnych jednostek.
-$.histograms |  Tablica histogramów, jeden dla każdej żądanej właściwości.
-$.histograms [\*] .attribute | Nazwa atrybutu, w którym została obliczona histogramu.
-$.histograms [\*] .distinct_values | Liczba wartości odrębnych wśród odpowiadającym jednostek dla tego atrybutu.
-$.histograms [\*] .total_count | Całkowita liczba wystąpień wartość wśród odpowiadającym jednostek dla tego atrybutu.
+$.num_entities | Łączna liczba zgodnych jednostek.
+$.histograms |  Tablica histogramów, jeden dla każdego żądanego atrybutu.
+$.histograms [\*] .attribute | Nazwa atrybutu, względem której została obliczona histogram.
+$.histograms [\*] .distinct_values | Liczba unikatowych wartości między dopasowania jednostek dla tego atrybutu.
+$.histograms [\*] .total_count | Całkowita liczba wystąpień wartość między dopasowania jednostek dla tego atrybutu.
 $.histograms [\*] .histogram | Histogram dane dla tego atrybutu.
 $.histograms [\*] .histogram [\*] .value | Wartość atrybutu.
-$.histograms [\*] .histogram [\*] .logprob  | Całkowita liczba logarytm naturalny prawdopodobieństwo zgodnych jednostek z wartością tego atrybutu.
-$.histograms [\*] .histogram [\*] .count    | Liczba zgodnych jednostek z wartością tego atrybutu.
+$.histograms [\*] .histogram [\*] .logprob  | Łączna liczba logarytmu naturalnego prawdopodobieństwo, że dopasowanie jednostki z wartością tego atrybutu.
+$.histograms [\*] .histogram [\*] .count    | Liczba zgodne jednostki z wartością tego atrybutu.
 $.aborted | Wartość true, jeśli upłynął limit czasu żądania.
 
 ### <a name="example"></a>Przykład
-W przykładzie academic publikacji następujące oblicza histogram publikacji liczników za pomocą roku i słowo kluczowe dla konkretnego autora od 2013:
+W tym przykładzie akademickich publikacje następujące oblicza histogram liczby publikacji przez rok i słowo kluczowe dla danego autora od 2013:
 
 `http://<host>/calchistogram?expr=And(Composite(Author.Name=='jaime teevan'),Year>=2013)&attributes=Year,Keyword&count=4`
 
-Odpowiedź wskazuje, czy dokumenty 37 dopasowanie wyrażenia zapytania.  Aby uzyskać *roku* atrybutu, istnieją 3 różne wartości, po jednej dla każdego roku od 2013.  Liczba całkowita papieru przez 3 różne wartości jest 37.  Dla każdego *roku*, histogram zawiera wartość prawdopodobieństwa całkowita logarytm naturalny, a liczba zgodnych jednostek.     
+Odpowiedź wskazuje, że 37 dokumentów dopasowania wyrażenia zapytania.  Aby uzyskać *roku* atrybutu, istnieją 3 różne wartości, jeden dla każdego roku od 2013 r.  Liczba całkowita dokument za pośrednictwem 3 różne wartości jest 37.  Dla każdego *roku*, histogram pokazuje wartości, prawdopodobieństwa całkowita logarytmu naturalnego oraz liczby pasujących jednostek.     
 
-Histogramu *— słowo kluczowe* pokazuje, czy 34 słowa kluczowe distinct. Dokument może być skojarzony z wieloma słowami kluczowymi, łączna liczba (53) może być większa niż liczba zgodnych jednostek.  Mimo że istnieją różne wartości 34, odpowiedź zawiera tylko pierwszych 4 z powodu "count = 4" parametru.
+Histogram dla *— słowo kluczowe* wskazuje, że są 34 unikatowych słów kluczowych. Jak dokument może być skojarzony z wieloma słów kluczowych, łączna liczba (53) może być większa niż liczba zgodnych jednostek.  Mimo że istnieją 34 różne wartości, odpowiedź zawiera tylko pierwszych 4 z powodu "liczba = 4" parametru.
 
 ```json
 {

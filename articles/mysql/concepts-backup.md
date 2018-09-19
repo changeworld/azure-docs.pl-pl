@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 21d6ed8a21e4c9273446eff6b0057214c715873f
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 9d07f6cd5fa6a2df82dc2cbf9c1ebe08e5941acf
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391729"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125021"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql"></a>Kopia zapasowa i przywracanie w usłudze Azure Database for MySQL
 
@@ -66,6 +66,8 @@ Konieczne może czekać na następnej kopii zapasowej dziennika transakcji możn
 ### <a name="geo-restore"></a>Przywracanie geograficzne
 
 Po skonfigurowaniu serwera na potrzeby geograficznie nadmiarowych kopii zapasowych, można przywrócić serwer do innego regionu platformy Azure, w którym ta usługa jest dostępna. Funkcja przywracania geograficznego jest domyślną opcję odzyskiwania, gdy serwer będzie niedostępny z powodu zdarzenia w regionie, w którym jest hostowany serwer. Jeśli na dużą skalę zdarzenia w regionie skutkuje brakiem dostępu aplikacji bazy danych, można przywrócić serwer z geograficznie nadmiarowych kopii zapasowych na serwerze w każdym innym regionie. Występuje opóźnienie między podczas tworzenia kopii zapasowej i kiedy są replikowane do innego regionu. To opóźnienie może trwać do godziny, więc w przypadku poważnej awarii, może wystąpić do utraty danych jedną godzinę.
+
+Podczas przywracania geograficznego konfiguracje serwerów, które mogą być zmieniane obejmują generacja obliczeń, (rdzeń wirtualny), okres przechowywania kopii zapasowej i opcje nadmiarowości kopii zapasowej. Zmienianie warstwę cenową (podstawowa, ogólnego przeznaczenia lub zoptymalizowane pod kątem pamięci) lub rozmiar magazynu podczas przywracania geograficznego nie jest obsługiwane.
 
 ### <a name="perform-post-restore-tasks"></a>Wykonaj zadania wykonywane po przywróceniu
 

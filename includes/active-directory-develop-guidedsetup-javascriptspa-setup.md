@@ -3,7 +3,7 @@ title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: active-directory
 documentationcenter: dev-center-name
-author: andretms
+author: navyasric
 manager: mtillman
 editor: ''
 ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
@@ -12,49 +12,49 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
-ms.author: andret
+ms.date: 09/17/2018
+ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: 24a5baade2168df603f5505baeaaf8e1c3ea2411
-ms.sourcegitcommit: c851842d113a7078c378d78d94fea8ff5948c337
+ms.openlocfilehash: 724166d402f81fa3a2c977d107111f5a0c32571d
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/18/2018
-ms.locfileid: "36205231"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46293766"
 ---
 ## <a name="setting-up-your-web-server-or-project"></a>Konfigurowanie serwera sieci web lub projektu
 
-> Preferowane jest zamiast tego Pobierz ten przykładowy projekt? 
-> - [Pobieranie projektu Visual Studio](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/VisualStudio.zip)
+> Chcesz zamiast tego Pobierz ten przykładowy projekt?
+> - [Pobieranie projektu programu Visual Studio](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/VisualStudio.zip)
 >
 > lub
-> - [Pobierz pliki projektu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/core.zip) serwera sieci web z lokalnych, takich jak Python
+> - [Pobierz pliki projektu](https://github.com/Azure-Samples/active-directory-javascript-graphapi-v2/archive/core.zip) dla lokalnego serwera internetowego, takie jak węzeł
 >
-> A następnie przejdź do [kroku konfiguracji](#register-your-application) skonfigurowaniu przykładowy kod przed jej wykonanie.
+> A następnie przejdź do [kroku konfiguracji](#register-your-application) do skonfigurowania przykładowego kodu przed jej wykonanie.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Serwer sieci web lokalnych, takich jak [Python http.server](https://www.python.org/downloads/), [serwera http](https://www.npmjs.com/package/http-server/), [.NET Core](https://www.microsoft.com/net/core), lub integracji usług IIS Express z [programu Visual Studio 2017](https://www.visualstudio.com/downloads/) jest wymagana do uruchamiania Instalatora z przewodnikiem. 
+Serwer sieci web w lokalnych, takich jak [Node.js](https://nodejs.org/en/download/), [platformy .NET Core](https://www.microsoft.com/net/core), lub usług IIS Express integracji z usługą [programu Visual Studio 2017](https://www.visualstudio.com/downloads/) jest wymagany do uruchomienia w tym samouczku.
 
-Instrukcje w tym przewodniku są oparte na Visual Studio 2017 r i Python, ale możesz użyć dowolnego środowiska programowania lub serwer sieci Web.
+Instrukcje w tym przewodniku są oparte na technologii Node.js i programu Visual Studio 2017, ale możesz użyć dowolnego środowiska programowania lub serwer sieci Web.
 
-## <a name="create-your-project"></a>Tworzenie projektu 
+## <a name="create-your-project"></a>Utwórz projekt
 
-> ### <a name="option-1-visual-studio"></a>Opcja 1: Visual Studio 
-> Jeśli używasz programu Visual Studio i tworzenia nowego projektu, wykonaj poniższe kroki, aby utworzyć nowe rozwiązanie Visual Studio:
+> ### <a name="option-1-visual-studio"></a>Opcja 1: Visual Studio
+> Jeśli używasz programu Visual Studio i tworzenia nowego projektu, wykonaj poniższe kroki, aby utworzyć nowe rozwiązanie programu Visual Studio:
 > 1.    W programie Visual Studio:  `File` > `New` > `Project`
-> 2.    W obszarze `Visual C#\Web`, wybierz pozycję `ASP.NET Web Application (.NET Framework)`
-> 3.    Nazwa aplikacji, a następnie kliknij przycisk *OK*
-> 4.    W obszarze `New ASP.NET Web Application`, wybierz pozycję `Empty`
+> 2.    W obszarze `Visual C#\Web`, wybierz opcję `ASP.NET Web Application (.NET Framework)`
+> 3.    Nadaj nazwę aplikacji, a następnie kliknij przycisk *OK*
+> 4.    W obszarze `New ASP.NET Web Application`, wybierz opcję `Empty`
 
 <p/><!-- -->
 
-> ### <a name="option-2-python-other-web-servers"></a>Opcja 2: Python / inne serwery w sieci web
-> Upewnij się, że zainstalowano [Python](https://www.python.org/downloads/), wykonaj kroki opisane poniżej:
-> - Utwórz folder na potrzeby hostowania aplikacji.
+> ### <a name="option-2-node-other-web-servers"></a>Opcja 2: Węzeł / inne serwery sieci web
+> Upewnij się, że zainstalowano [Node.js](https://nodejs.org/en/download/), następnie wykonaj kroki opisane poniżej:
+> - Utwórz folder do hostowania aplikacji.
 
 
-## <a name="create-your-single-page-applications-ui"></a>Tworzenie aplikacji jednej strony interfejsu użytkownika
-1.  Utwórz *index.html* Twojego SPA JavaScript w pliku. Jeśli używasz programu Visual Studio, wybierz projekt (folder główny projekt), kliknij prawym przyciskiem myszy i wybierz: `Add`  >  `New Item`  >  `HTML page` i nadaj mu nazwę index.html
+## <a name="create-your-single-page-applications-ui"></a>Tworzenie interfejsu użytkownika aplikacji jednostronicowej
+1.  Tworzenie *index.html* swoje SPA JavaScript w pliku. Jeśli używasz programu Visual Studio wybierz projekt (folder główny projektu), kliknij prawym przyciskiem myszy i wybierz pozycję: `Add`  >  `New Item`  >  `HTML page` i nadaj mu nazwę index.html
 2.  Dodaj następujący kod do strony:
 ```html
 <!DOCTYPE html>

@@ -1,7 +1,30 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/13/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: cf6ded1252528a0bbfac9c7378f03384cc484c50
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46293761"
+---
+## <a name="use-msal-to-get-a-token"></a>Użycia biblioteki MSAL do pobrania tokenu 
 
-## <a name="use-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Użyj MSAL, aby uzyskać token dla interfejsu API programu Microsoft Graph
-
-1.  W obszarze **aplikacji** > **java** > **{domena}. { AppName}**, otwórz `MainActivity`. 
+1.  W obszarze **aplikacji** > **java** > **{domain}. { AppName}**, otwórz `MainActivity`. 
 2.  Dodaj następujące instrukcje importu:
 
     ```java
@@ -22,7 +45,7 @@
     import com.microsoft.identity.client.*;
     ```
 
-3. Zastąp `MainActivity` klasy z następującym kodem:
+3. Zastąp `MainActivity` klasy przy użyciu następującego kodu:
 
     ```java
     public class MainActivity extends AppCompatActivity {
@@ -219,23 +242,21 @@
 
 <!--start-collapse-->
 ### <a name="more-information"></a>Więcej informacji
-#### <a name="get-a-user-token-interactively"></a>Pobierz token użytkownika interakcyjnego
-Wywoływanie `AcquireTokenAsync` metoda powoduje okna, które monituje użytkowników do logowania. Aplikacje zazwyczaj wymagają użytkownikom na logowanie interakcyjne po raz pierwszy potrzebnych do uzyskania dostępu do chronionego zasobu. Może być muszą się zalogować, gdy dyskretnej operacji można uzyskać tokenu nie powiodło się (na przykład po wygaśnięciu hasła użytkownika).
+#### <a name="get-a-user-token-interactively"></a>Pobierz token użytkownika interaktywnego
+Wywoływanie `AcquireTokenAsync` metoda uruchamia okno, który monituje użytkowników, aby zalogować się lub wybierz swoje konto. Aplikacje zazwyczaj należy poprosić użytkownika dla początkowej interakcji, ale mogą działać dyskretnie od tego momentu na. 
 
-#### <a name="get-a-user-token-silently"></a>Pobierz token użytkownika dyskretnej
-`AcquireTokenSilentAsync` Metoda obsługuje nabycia tokenu i odnowienia bez interakcji użytkownika. Po `AcquireTokenAsync` jest wykonywana po raz pierwszy `AcquireTokenSilentAsync` jest zwykle metodę można uzyskać tokeny, które uzyskują dostęp do chronionych zasobów w kolejnych wywołaniach, ponieważ wywołania żądania lub odnowić tokeny zostały wprowadzone w trybie dyskretnym.
+#### <a name="get-a-user-token-silently"></a>Pobierz token użytkownika dyskretnie
+`AcquireTokenSilentAsync` Metoda pobiera token bez żadnej interakcji użytkownika.  `AcquireTokenSilentAsync` może być traktowana jako optymalnych żądanie, powrót do `AcquireTokenAsync` po użytkownik musi zalogować się ponownie lub wykonać pewne dodatkowe autoryzacji, takich jak uwierzytelniania wieloskładnikowego 
 
-Po pewnym czasie `AcquireTokenSilentAsync` metoda zakończy się niepowodzeniem. Przyczyny niepowodzenia może być, czy użytkownik został wylogowany lub zmienić swoje hasło na innym urządzeniu. Gdy MSAL wykryje, że problem można rozwiązać, gdyż akcję interaktywne, jego generowane `MsalUiRequiredException` wyjątku. Aplikacja może obsłużyć tego wyjątku na dwa sposoby:
+Gdy `AcquireTokenSilentAsync` zakończy się niepowodzeniem, spowoduje wygenerowanie `MsalUiRequiredException`. Aplikacja może obsłużyć ten wyjątek na dwa sposoby:
 
-* Można wykonać połączenie przed `AcquireTokenAsync` natychmiast. To wywołanie powoduje monitowanie użytkownika do logowania. Ten wzorzec jest zazwyczaj używany w aplikacji online w przypadku, gdy brak dostępnej zawartości w trybie offline dla użytkownika. Przykładowe wygenerowane za pomocą tego Instalatora z przewodnikiem następuje tego wzorca, który można wyświetlić w czasie działania pierwszy wykonać próbki. 
-    * Ponieważ żaden użytkownik nie ma korzystali z aplikacji `PublicClientApp.Users.FirstOrDefault()` zawiera wartość null i `MsalUiRequiredException` wyjątku. 
-    * Następnie kod w próbce obsługuje wyjątek przez wywołanie metody `AcquireTokenAsync`, która powoduje monitowanie użytkownika do logowania. 
-
-* Ona zamiast tego prezentować oznaczenia wizualne dla użytkowników, którzy interakcyjne logowanie jest wymagane, dzięki czemu użytkownik może wybrać pozycję odpowiednich momentach do logowania. Lub aplikacji można ponowić próbę `AcquireTokenSilentAsync` później. Ten wzorzec jest często używany, gdy użytkownicy mogą używać innych funkcji aplikacji bez przerw w działaniu — na przykład, jeśli w trybie offline zawartość jest dostępna w aplikacji. W takim przypadku użytkownicy mogą wybrać, jeśli chcą, aby zalogować się do dostępu do chronionego zasobu albo Odśwież nieaktualne informacje. Alternatywnie aplikacji można zdecydować ponowić próbę `AcquireTokenSilentAsync` przywrócenie sieci po jest tymczasowo niedostępny. 
+* Wywołaj `AcquireTokenAsync` natychmiast. To wywołanie powoduje monitowanie użytkownika do logowania. Ten wzorzec jest używany w aplikacjach online w przypadku, gdy brak zawartości w trybie offline dostępne dla użytkownika. Przykładowe generowane w ramach tego samouczka poniżej tego wzorca, który można wyświetlić w czasie działania pierwszego wykonania próbki.
+* Przedstawia użytkowników, że interakcyjnego logowania jest wymagane oznaczenia wizualnego. Wywołaj `AcquireTokenAsync` po użytkownik jest gotowy.
+* Ponów próbę wykonania `AcquireTokenSilentAsync` później. Ten wzorzec jest często używane, gdy użytkownicy mogą używać innych funkcji aplikacji bez przerw w działaniu — na przykład, jeśli zawartość w trybie offline jest dostępna w aplikacji. Aplikacja może zdecydować ponowić próbę `AcquireTokenSilentAsync` po przywróceniu sieci po przejściu jest tymczasowo niedostępny. 
 <!--end-collapse-->
 
-## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>Wywołanie interfejsu API programu Microsoft Graph przy użyciu tokenu, który został uzyskany
-Dodaj następujące metody do `MainActivity` klasy:
+## <a name="call-the-microsoft-graph-api"></a>Wywołanie interfejsu API programu Microsoft Graph 
+Dodaj następujące metody w `MainActivity` klasy:
 
 ```java
 /* Use Volley to make an HTTP request to the /me endpoint from MS Graph using an access token */
@@ -292,14 +313,14 @@ private void updateGraphUI(JSONObject graphResponse) {
 }
 ```
 <!--start-collapse-->
-### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>Więcej informacji na temat nawiązywania połączenia przed chronionego interfejsu API REST
+### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>Więcej informacji na temat wywołania chronionego interfejsu API REST
 
-W tej przykładowej aplikacji `callGraphAPI` wywołania `getAccessToken` , a następnie tworzy HTTP `GET` żądania dotyczącego zasobu, która wymaga tokenu i zwraca zawartość. Ta metoda dodaje nabytych przez niego tokenu w nagłówku autoryzacji HTTP. Dla tego przykładu zasób jest interfejsu API programu Microsoft Graph *mnie* punktu końcowego, który wyświetla informacje o profilu użytkownika.
+W tej przykładowej aplikacji `callGraphAPI()` używa `getAccessToken()` można pobrać tokenu dostępu od nowa.  Aplikacja używa tokenu w protokole HTTP `GET` żądania względem interfejsu API programu Microsoft Graph. 
 <!--end-collapse-->
 
-## <a name="set-up-sign-out"></a>Konfigurowanie wylogowania
+## <a name="set-up-sign-out"></a>Konfigurowanie Wyloguj się
 
-Dodaj następujące metody do `MainActivity` klasy:
+Dodaj następujące metody w `MainActivity` klasy:
 
 ```java
 /* Clears a user's tokens from the cache.
@@ -353,7 +374,8 @@ private void updateSignedOutUI() {
 <!--start-collapse-->
 ### <a name="more-information-about-user-sign-out"></a>Więcej informacji na temat wylogowania użytkownika
 
-`onSignOutClicked` w poprzednim kodzie usuwa użytkowników w buforze użytkownika MSAL kod w praktyce określa MSAL zapomnieć bieżącego użytkownika, dzięki czemu przyszłych żądań można uzyskać tokenu powiedzie się tylko wtedy, gdy jest on interaktywne.
+`onSignOutClicked()` Metoda usuwa użytkowników z pamięci podręcznej biblioteki MSAL. Biblioteka MSAL nie będzie już mieć każdy stan dla zalogowanego użytkownika, a będą rejestrowane z aplikacji. 
 
-Mimo że aplikacja, w tym przykładzie obsługuje pojedynczy użytkowników, MSAL obsługuje scenariusze, w których może być podpisana wiele kont w tym samym czasie. Przykładem jest aplikacja poczty e-mail, gdy użytkownik ma wiele kont.
+### <a name="more-information-on-multi-account-scenarios"></a>Więcej informacji na temat konta wielu scenariuszy
+Biblioteka MSAL również obsługuje scenariusze, gdy wiele kont zalogowano się w tym samym czasie. Na przykład wiele aplikacji poczty e-mail pozwalają na wiele kont zalogować się w tym samym czasie. 
 <!--end-collapse-->

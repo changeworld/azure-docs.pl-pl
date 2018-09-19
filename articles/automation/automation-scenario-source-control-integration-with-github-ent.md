@@ -1,6 +1,6 @@
 ---
-title: Integracja kontroli źródła usługi Automatyzacja Azure z systemem GitHub Enterprise
-description: W tym artykule opisano szczegóły dotyczące sposobu konfigurowania integracji z systemem GitHub Enterprise dla kontroli źródła elementów runbook automatyzacji.
+title: Integracja kontroli źródła usługi Azure Automation z usługą GitHub Enterprise
+description: W tym artykule opisano szczegółowe informacje o sposobie konfigurowania integracji z usługą GitHub Enterprise do kontroli źródła, elementów runbook usługi Automation.
 services: automation
 ms.service: automation
 author: georgewallace
@@ -8,75 +8,76 @@ ms.author: gwallace
 ms.date: 04/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 685d434affd0561658ae99c50bbe7b1fc27a5572
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 8c7dc256b92252793545336ffc45a987054a5509
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "35648782"
 ---
-# <a name="azure-automation-scenario---automation-source-control-integration-with-github-enterprise"></a>Scenariusz automatyzacji Azure - automatyzacji integracji kontroli źródła z systemem GitHub Enterprise
+# <a name="azure-automation-scenario---automation-source-control-integration-with-github-enterprise"></a>Scenariusz automatyzacji platformy Azure — Integracja kontroli źródła usługi Automation z usługą GitHub Enterprise
 
-Automatyzacja obsługuje obecnie integracji kontroli źródła, dzięki czemu można skojarzyć elementów runbook do Twojego konta automatyzacji do repozytorium GitHub kontroli źródła. Jednakże klienci, którzy wdrożyli [systemem GitHub Enterprise](https://enterprise.github.com/home) do obsługi swoje praktyki DevOps, również chcesz jej używać do zarządzania cyklem życia elementów runbook, które są opracowywane automatyzować procesy biznesowe i obsługę operacji zarządzania.
+Automatyzacja obecnie obsługuje integrację kontroli źródła, co pozwala na Kojarzenie elementów runbook na Twoim koncie usługi Automation do repozytorium kontroli źródła usługi GitHub. Jednak klienci, którzy wdrożyli [GitHub Enterprise](https://enterprise.github.com/home) do obsługi swoich praktyk DevOps, również ma on służyć do zarządzania cyklem życia elementów runbook, które są opracowywane automatyzować procesy biznesowe i obsługę operacji zarządzania.
 
-W tym scenariuszu masz komputerem z systemem Windows w centrum danych skonfigurowany jako hybrydowy proces roboczy elementu Runbook z modułów usługi Azure Resource Manager i zainstalować narzędzia Git. Maszynie hybrydowego procesu roboczego ma Sklonowanie lokalnego repozytorium Git. Po uruchomieniu elementu runbook na hybrydowy proces roboczy jest zsynchronizowany katalog Git i zawartość pliku elementu runbook są importowane do konta automatyzacji.
+W tym scenariuszu masz komputer Windows w centrum danych, skonfigurowany jako hybrydowy proces roboczy elementu Runbook z modułami usługi Azure Resource Manager i zainstalowane narzędzia Git. Maszyna procesu roboczego hybrydowego ma klonu lokalnego repozytorium Git. Po uruchomieniu elementu runbook w hybrydowym procesie roboczym jest zsynchronizowany katalog usługi Git, i zawartość pliku elementu runbook są importowane do konta usługi Automation.
 
-W tym artykule opisano sposób konfigurowania tej konfiguracji w danym środowisku usługi Automatyzacja Azure. Możesz uruchomić konfigurowanie przy użyciu poświadczeń zabezpieczeń wymagane do obsługi tego scenariusza i wdrażania hybrydowego procesu roboczego elementu Runbook w centrum danych do uruchamiania elementów runbook i dostępu do repozytorium GitHub Enterprise, aby zsynchronizować elementów runbook elementy runbook automatyzacji z Twoim kontem automatyzacji.
+W tym artykule opisano sposób konfigurowania tej konfiguracji w danym środowisku usługi Azure Automation. Możesz uruchomić Konfigurowanie usługi Automation przy użyciu poświadczeń zabezpieczeń wymaganych do obsługi tego scenariusza i wdrażania hybrydowego procesu roboczego elementu Runbook w centrum danych w celu uruchamiania elementów runbook i dostępu do repozytorium GitHub Enterprise, aby zsynchronizować elementy runbook elementów runbook za pomocą konta usługi Automation.
 
 ## <a name="getting-the-scenario"></a>Uzyskiwanie scenariusza
 
-W tym scenariuszu składa się z dwóch elementów runbook programu PowerShell, które można importować bezpośrednio z [galerię elementów Runbook](automation-runbook-gallery.md) w portalu Azure lub pobrać z [galerii programu PowerShell](https://www.powershellgallery.com).
+Ten scenariusz składa się z dwóch elementy runbook programu PowerShell, które można importować bezpośrednio z [galerii elementów Runbook](automation-runbook-gallery.md) w witrynie Azure portal lub Pobierz go z [galerii programu PowerShell](https://www.powershellgallery.com).
 
 ### <a name="runbooks"></a>Elementy Runbook
 
 Element Runbook | Opis|
 --------|------------|
-Export-RunAsCertificateToHybridWorker | Element Runbook umożliwia wyeksportowanie RunAs certyfikatu z konta automatyzacji do hybrydowy proces roboczy, aby mógł uwierzytelnić elementów runbook w procesie roboczym, z platformy Azure, aby można było zaimportować elementy runbook do konta automatyzacji.|
-LocalGitFolderToAutomationAccount synchronizacji | Element Runbook synchronizuje folder lokalny Git na maszynie hybrydowych, a następnie zaimportować pliki runbook (*.ps1) do konta automatyzacji.|
+Export-RunAsCertificateToHybridWorker | Element Runbook wywozu certyfikatu RunAs z kontem usługi Automation, do hybrydowego procesu roboczego, tak aby elementów runbook w procesie roboczym mogą uwierzytelniać za pomocą platformy Azure w celu importowania elementów runbook na konto usługi Automation.|
+LocalGitFolderToAutomationAccount synchronizacji | Element Runbook synchronizuje lokalny folder Git na komputerze hybrydowych, a następnie zaimportować pliki elementu runbook (*.ps1) na konto usługi Automation.|
 
 ### <a name="credentials"></a>Poświadczenia
 
 Poświadczenie | Opis|
 -----------|------------|
-GitHRWCredential | Zasób poświadczeń, możesz utworzyć zawierać nazwę użytkownika i hasło dla użytkownika z uprawnieniami do hybrydowy proces roboczy.|
+GitHRWCredential | Zasób poświadczenia, możesz utworzyć zawierać nazwy użytkownika i hasło dla użytkownika z uprawnieniami do hybrydowego procesu roboczego.|
 
 ## <a name="installing-and-configuring-this-scenario"></a>Instalowanie i konfigurowanie scenariusza
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-1. Element runbook LocalGitFolderToAutomationAccount synchronizacji jest uwierzytelniany przy użyciu [konta Uruchom jako platformy Azure](automation-sec-configure-azure-runas-account.md).
+1. Synchronizacja LocalGitFolderToAutomationAccount elementu runbook jest uwierzytelniany przy użyciu [konta Uruchom jako platformy](automation-sec-configure-azure-runas-account.md).
 
-2. Wymagany jest również obszar roboczy analizy dzienników z rozwiązania Automatyzacja Azure, włączona i skonfigurowana. Jeśli nie masz, który jest skojarzony z kontem automatyzacji używane do instalowania i konfigurowania tego scenariusza, jest tworzony i skonfigurowana za użytkownika podczas wykonywania **OnPremiseHybridWorker.ps1 nowy** skryptu z hybrydowy proces roboczy elementu runbook.
+2. Wymagany jest również obszar roboczy usługi Log Analytics za pomocą rozwiązania usługi Azure Automation, włączona i skonfigurowana. Jeśli nie masz, który jest skojarzony z konta usługi Automation umożliwiają instalowanie i konfigurowanie tego scenariusza, jest tworzony i skonfigurowane podczas wykonywania **New OnPremiseHybridWorker.ps1** skrypt z hybrydowego elementu runbook proces roboczy.
 
     > [!NOTE]
-    > Obecnie w następujących regionach obsługują tylko automatyzacji Integracja z usługą analizy dzienników - **południowo-wschodnia Australia**, **wschodnie stany USA 2**, **Azja południowo-wschodnia**, i  **Europa Zachodnia**.
+    > Obecnie w następujących regionach obsługują tylko automatyzacji integracji z usługą Log Analytics — **Australia południowo-wschodnia**, **wschodnie stany USA 2**, **Azja południowo-wschodnia**, i  **Europa Zachodnia**.
 
-3. Komputer, który może służyć jako dedykowanych procesów roboczych Runbook hybrydowych, obsługującym oprogramowania GitHub i obsługa plików elementu runbook (*runbook*.ps1) w katalogu źródłowym, w systemie plików, które umożliwia synchronizację między GitHub i Twoje automatyzacji konto.
+3. Komputer, który może służyć jako dedykowane hybrydowego procesu roboczego elementu Runbook obsługującego oprogramowania GitHub i obsługa plików elementu runbook (*runbook*.ps1) w katalogu źródłowym, w systemie plików, które można synchronizować między usługami GitHub i automatyzacji konto.
 
-### <a name="import-and-publish-the-runbooks"></a>Importowanie i publikować elementy runbook
+### <a name="import-and-publish-the-runbooks"></a>Importowanie i publikowanie elementów runbook
 
-Aby zaimportować *RunAsCertificateToHybridWorker eksportu* i *LocalGitFolderToAutomationAccount synchronizacji* elementów runbook z galerii elementu Runbook z konta usługi Automatyzacja w portalu Azure, wykonaj procedury opisane w [importowanie elementu Runbook z galerii Runbook](automation-runbook-gallery.md#to-import-a-runbook-from-the-runbook-gallery-with-the-azure-portal). Elementy runbook należy opublikować po ich zostały pomyślnie zaimportowane do konta automatyzacji.
+Aby zaimportować *RunAsCertificateToHybridWorker eksportu* i *LocalGitFolderToAutomationAccount synchronizacji* elementów runbook z galerii elementów Runbook z poziomu konta usługi Automation w witrynie Azure portal, postępuj zgodnie z procedury przedstawione w [importowania elementu Runbook, z galerii elementów Runbook](automation-runbook-gallery.md#to-import-a-runbook-from-the-runbook-gallery-with-the-azure-portal). Publikowanie elementów runbook, po ich zostały pomyślnie zaimportowane do konta usługi Automation.
 
-### <a name="deploy-and-configure-hybrid-runbook-worker"></a>Wdrażanie i konfigurowanie hybrydowy proces roboczy elementu Runbook
+### <a name="deploy-and-configure-hybrid-runbook-worker"></a>Wdrażanie i konfigurowanie hybrydowego procesu roboczego Runbook
 
-Jeśli nie masz już wdrożone w centrum danych hybrydowego Runbook Worker, należy zapoznać się z wymaganiami i postępuj zgodnie z instrukcjami instalacji zautomatyzowanej przy użyciu procedury w Azure automatyzacji hybrydowe procesy robocze elementu Runbook - automatyzacji instalacji i konfiguracji [Windows](automation-windows-hrw-install.md#automated-deployment) lub [Linux](automation-linux-hrw-install.md#installing-linux-hybrid-runbook-worker). Po pomyślnym zainstalowaniu hybrydowy proces roboczy na komputerze, wykonaj następujące kroki, aby ukończyć jej Konfigurowanie tego scenariusza.
+Jeśli nie masz hybrydowego procesu roboczego Runbook już wdrożone w centrum danych, zapoznaj się z wymaganiami i postępuj zgodnie z instrukcjami instalacji zautomatyzowanej za pomocą usługi Azure Automation hybrydowych procesów roboczych Runbook — automatyzowanie instalacji i konfiguracji dla procedury [Windows](automation-windows-hrw-install.md#automated-deployment) lub [Linux](automation-linux-hrw-install.md#installing-a-linux-hybrid-runbook-worker). Po pomyślnym zainstalowaniu hybrydowy proces roboczy na komputerze, wykonaj następujące kroki, aby ukończyć konfigurację tak, aby umożliwić obsługę tego scenariusza.
 
-1. Zaloguj się komputerze, na którym rola hybrydowy proces roboczy elementu Runbook przy użyciu konta, które ma lokalne uprawnienia administracyjne i Utwórz katalog do przechowywania plików Git elementu runbook. Klonowanie wewnętrzny repozytorium Git do katalogu.
-1. Jeśli nie masz już konto Uruchom jako tworzone lub chcesz utworzyć nową jedną dedykowanego dla tego celu, w portalu Azure przejdź do konta automatyzacji, wybierz konto automatyzacji i utworzyć [zasób poświadczeń](automation-credentials.md) który zawiera nazwę użytkownika i hasło dla użytkownika z uprawnieniami do hybrydowy proces roboczy.
-1. Z Twojego konta automatyzacji [edytować element runbook](automation-edit-textual-runbook.md)**RunAsCertificateToHybridWorker eksportu** i zmodyfikować wartość zmiennej *$Password* silnym hasłem.  Po zmodyfikowaniu wartość, kliknij przycisk **publikowania** ma wersję roboczą elementu runbook opublikowane.
-1. Uruchamiania elementu runbook **RunAsCertificateToHybridWorker eksportu**, a następnie w **Uruchom element Runbook** bloku, w obszarze opcji **parametrów uruchomieniowych** wybierz opcję **hybrydowy proces roboczy** i na liście rozwijanej wybierz utworzony wcześniej w tym scenariuszu grupy hybrydowych procesów roboczych.
+1. Zaloguj się do komputera hostującego rolę hybrydowego procesu roboczego Runbook za pomocą konta z uprawnieniami administratora lokalnego, a następnie utwórz katalog do przechowywania plików elementu runbook usługi Git. Sklonuj z wewnętrznego repozytorium Git w katalogu.
+1. Jeśli nie masz już utworzone konto Uruchom jako lub Utwórz nową jeden w wersji dedykowanej w tym celu, w witrynie Azure portal przejdź do konta usługi Automation wybierz konto usługi Automation i tworzenia [zasób poświadczeń](automation-credentials.md) , zawiera nazwę użytkownika i hasło dla użytkownika z uprawnieniami do hybrydowego procesu roboczego.
+1. Na koncie usługi Automation [edytować element runbook](automation-edit-textual-runbook.md)**RunAsCertificateToHybridWorker eksportu** i zmodyfikować wartość zmiennej *$Password* silnym hasłem.    Po zmodyfikowaniu wartości kliknij przycisk **Publikuj** mieć wersję roboczą elementu runbook opublikowane.
+1. Uruchamianie elementu runbook **RunAsCertificateToHybridWorker eksportu**, a następnie w **uruchamianie elementu Runbook** bloku, w obszarze opcji **parametrów uruchomieniowych** wybierz opcję  **Hybrydowy proces roboczy** i na liście rozwijanej wybierz utworzony wcześniej w tym scenariuszu grupy hybrydowych procesów roboczych.
 
-    Eksportuje ten certyfikat do hybrydowy proces roboczy, aby elementy runbook na proces roboczy może uwierzytelnić się przy użyciu platformy Azure przy użyciu połączenia Uruchom jako w celu zarządzania zasobami Azure (w szczególności w tym scenariuszu - import konta automatyzacji elementów runbook).
+    To umożliwia wyeksportowanie certyfikatu do hybrydowego procesu roboczego tak, aby elementy runbook na usługi procesu roboczego mogą uwierzytelniać za pomocą platformy Azure przy użyciu połączenie Uruchom jako, aby można było zarządzać zasobami platformy Azure (w szczególności w tym scenariuszu — Importowanie elementów runbook konta usługi Automation).
 
-1. Wybierz wcześniej utworzoną grupę hybrydowych procesów roboczych z konta automatyzacji i [Określ konto Uruchom jako](automation-hrw-run-runbooks.md#runas-account) grupy hybrydowych procesów roboczych i wybranego zasobu poświadczeń tylko lub już został utworzony. Gwarantuje to, że synchronizacja elementu runbook można uruchomić polecenia usługi Git. 
-1. Uruchomić element runbook **LocalGitFolderToAutomationAccount synchronizacji**, podaj następujące wymagane wartości parametru wejściowego i w **Uruchom element Runbook** bloku, w obszarze opcji **parametrów uruchomieniowych** wybierz opcję **hybrydowy proces roboczy** i na liście rozwijanej wybierz utworzony wcześniej w tym scenariuszu grupy hybrydowych procesów roboczych:
+1. Na koncie usługi Automation wybierz utworzoną wcześniej grupę hybrydowych procesów roboczych i [Określ konto Uruchom jako](automation-hrw-run-runbooks.md#runas-account) dla grupy hybrydowych procesów roboczych i wybierz opcję Zasób poświadczeń, po prostu lub już został utworzony. Gwarantuje to, że synchronizacji elementu runbook można uruchomić polecenia Git. 
+1. Uruchamianie elementu runbook **LocalGitFolderToAutomationAccount synchronizacji**, zapewniają następujące wymagane wartości parametrów wejściowych i **uruchamianie elementu Runbook** bloku, w obszarze opcji **parametrów uruchomieniowych**  wybierz opcję **hybrydowy proces roboczy** i na liście rozwijanej wybierz utworzony wcześniej w tym scenariuszu grupy hybrydowych procesów roboczych:
 
-   * *Grupa zasobów* — Nazwa grupy zasobów skojarzonych z Twoim kontem automatyzacji
-   * *AutomationAccountName* — nazwa konta automatyzacji
-   * *GitPath* — lokalny folder lub plik na hybrydowy proces roboczy elementu Runbook, gdzie Git jest skonfigurowany do pobierania najnowszych zmian
+   * *Grupa zasobów* — Nazwa grupy zasobów skojarzonych z Twoim kontem usługi Automation
+   * *AutomationAccountName* -nazwa konta usługi Automation
+   * *GitPath* — lokalnego folderu lub pliku w hybrydowym procesie roboczym elementu Runbook, gdzie usługa Git jest skonfigurowana do pobierania najnowszych zmian
 
-    Synchronizuje folder lokalny Git na komputerze hybrydowego procesu roboczego, a następnie importowanie plików .ps1 w katalogu źródłowym na koncie automatyzacji.
+    Synchronizuje lokalny folder Git na komputerze hybrydowego procesu roboczego, a następnie importuje plikach .ps1 w katalogu źródłowym do konta usługi Automation.
 
-1. Wyświetl szczegóły podsumowania zadania dla elementu runbook, wybierając ją z **elementów Runbook** bloku w konta automatyzacji, a następnie wybierz **zadania** kafelka. Upewnij się, zakończyła się pomyślnie, wybierając **wszystkie dzienniki** kafelków i przeglądanie strumienia szczegółowy dziennik.
+1. Wyświetl szczegóły podsumowania zadania elementu runbook, wybierając je z **elementów Runbook** bloku konta usługi Automation, a następnie wybierz **zadań** kafelka. Upewnij się, zakończyła się pomyślnie, wybierając **wszystkie dzienniki** kafelków i przeglądania szczegółowego dziennika strumienia.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

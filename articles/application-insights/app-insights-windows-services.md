@@ -1,6 +1,6 @@
 ---
-title: "Usługa Azure Application Insights dla systemu Windows Server i ról procesów roboczych | Microsoft Docs"
-description: "Ręczne dodawanie zestawu SDK usługi Application Insights do aplikacji platformy ASP.NET w celu dokonania analizy użycia, dostępności i wydajności."
+title: Usługa Azure Application Insights dla systemu Windows Server i ról procesów roboczych | Microsoft Docs
+description: Ręczne dodawanie zestawu SDK usługi Application Insights do aplikacji platformy ASP.NET w celu dokonania analizy użycia, dostępności i wydajności.
 services: application-insights
 documentationcenter: .net
 author: mrbullwinkle
@@ -10,18 +10,19 @@ ms.service: application-insights
 ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: mbullwin
-ms.openlocfilehash: bf7921926c69fff214e94a2d0edc22b28fb8eac0
-ms.sourcegitcommit: e462e5cca2424ce36423f9eff3a0cf250ac146ad
-ms.translationtype: HT
+ms.openlocfilehash: 3f2f0925cf6ec612b84765e42217723d8c8729c6
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 11/01/2017
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "35644726"
 ---
 # <a name="manually-configure-application-insights-for-net-applications"></a>Ręczne konfigurowanie aplikacji Application Insights dla aplikacji platformy .NET
 
-[Usługi Application Insights](app-insights-overview.md) można skonfigurować do monitorowania szerokiej gamy aplikacji lub ról aplikacji, składników lub mikrousług. Program Visual Studio oferuje [jednoetapową konfigurację](app-insights-asp-net.md) usług i aplikacji sieci Web. W przypadku innych typów aplikacji platformy .NET, takich jak role serwera wewnętrznej bazy danych lub aplikacje klasyczne, można ręcznie skonfigurować usługi Application Insights.
+[Usługi Application Insights](app-insights-overview.md) można skonfigurować do monitorowania szerokiej gamy aplikacji lub ról aplikacji, składników lub mikrousług. Program Visual Studio oferuje [jednoetapową konfigurację](app-insights-asp-net.md) usług i aplikacji internetowych. W przypadku innych typów aplikacji platformy .NET, takich jak role serwera wewnętrznej bazy danych lub aplikacje klasyczne, można ręcznie skonfigurować usługi Application Insights.
 
 ![Przykładowe wykresy monitorowania wydajności](./media/app-insights-windows-services/10-perf.png)
 
@@ -38,7 +39,7 @@ Potrzebne elementy:
 
 ### <a name="part-of-a-larger-app-use-existing-resource"></a>Część większej aplikacji: użyj istniejącego zasobu
 
-Jeśli aplikacja sieci Web ma kilka składników — na przykład aplikację frontonu sieci Web i jedną lub więcej usług zaplecza — wówczas użytkownik powinien wysyłać dane telemetryczne ze wszystkich składników do tego samego zasobu. Umożliwi to ich wyświetlenie na jednej mapie aplikacji i śledzenie żądań od jednego elementu do innego.
+Jeśli aplikacja internetowa ma kilka składników — na przykład aplikację frontonu internetowego i jedną lub więcej usług zaplecza — wówczas użytkownik powinien wysyłać dane telemetryczne ze wszystkich składników do tego samego zasobu. Umożliwi to ich wyświetlenie na jednej mapie aplikacji i śledzenie żądań od jednego elementu do innego.
 
 Zatem jeśli inne składniki tej aplikacji są już monitorowane, wystarczy użyć tego samego zasobu.
 
@@ -142,10 +143,10 @@ Zobacz [ten punkt rozwiązywania problemów](app-insights-asp-net-troubleshoot-n
 > 
 > 
 
-## <a name="video"></a>Połączenia wideo
+## <a name="video"></a>Video
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * [Dodaj więcej danych telemetrycznych](app-insights-asp-net-more.md), aby uzyskać pełny obraz swojej aplikacji.
 

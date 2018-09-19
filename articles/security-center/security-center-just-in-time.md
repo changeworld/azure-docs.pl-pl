@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/05/2018
+ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: 2a079456813a67eb40d5cf42bcdd2c91fbc631d3
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: cb13da7ad9387b7170882752b1620c2756bc3675
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297043"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124155"
 ---
 # <a name="manage-virtual-machine-access-using-just-in-time"></a>Zarządzanie dostępem maszyny wirtualnej przy użyciu dokładnie na czas
 
@@ -108,6 +108,9 @@ W obszarze **Konfiguracja dostępu do maszyn wirtualnych JIT**, można także do
 
 3. Kliknij przycisk **OK**.
 
+> [!NOTE]
+>Gdy dostęp do maszyn wirtualnych JIT jest włączone dla maszyny Wirtualnej, usługa Azure Security Center tworzy odmówić wszystkich reguł ruchu przychodzącego dla wybranych portów w grupach zabezpieczeń sieci skojarzonych z nim. Zasady będzie najwyższy priorytet o sieciowych grupach zabezpieczeń lub niższy priorytet niż istniejące reguły, które zostały już istnieje. Zależy to od analizy wykonywane przez usługę Azure Security Center, która określa, czy reguła jest bezpieczne.
+>
 ## <a name="requesting-access-to-a-vm"></a>Żądanie dostępu do maszyny Wirtualnej
 
 Aby poprosić o dostęp do maszyny Wirtualnej:
@@ -162,8 +165,6 @@ Możesz uzyskać wgląd w działania maszyny Wirtualnej przy użyciu przeszukiwa
 
   **Dziennik aktywności** udostępnia widok filtrowany poprzednich operacji dla tej maszyny Wirtualnej wraz z godzina, Data i subskrypcji.
 
-  ![Wyświetl dziennik aktywności][5]
-
 Informacje dziennika można pobrać, wybierając **kliknij tutaj, aby pobrać wszystkie elementy w formacie CSV**.
 
 Modyfikowanie filtrów i wybierz **Zastosuj** do tworzenia wyszukiwania i dziennika.
@@ -172,15 +173,62 @@ Modyfikowanie filtrów i wybierz **Zastosuj** do tworzenia wyszukiwania i dzienn
 
 Po prostu dostęp maszyny Wirtualnej w czasie funkcja może być używana przy użyciu interfejsu API usługi Azure Security Center. Możesz uzyskać informacje na temat skonfigurowanych maszyn wirtualnych, dodawać nowe, poproś o dostęp do maszyny Wirtualnej, a także bardziej, za pośrednictwem tego interfejsu API. Zobacz [zasad dostępu do sieci Jit](https://docs.microsoft.com/rest/api/securitycenter/jitnetworkaccesspolicies), aby dowiedzieć się więcej na temat just w czasie interfejsu API REST.
 
-### <a name="configuring-a-just-in-time-policy-for-a-vm"></a>Konfigurowanie tylko w zasadach czasu dla maszyny Wirtualnej
+## <a name="using-just-in-time-vm-access-via-powershell"></a>Przy użyciu dokładnie na czas dostępu do maszyny Wirtualnej za pomocą programu PowerShell 
 
-Aby skonfigurować tylko w zasadach czasu w określonej maszyny Wirtualnej, musisz uruchomić to polecenie w sesji programu PowerShell: Set-ASCJITAccessPolicy.
-Postępuj zgodnie z dokumentacji poleceń cmdlet, aby dowiedzieć się więcej.
+Aby użyć tylko w czas rozwiązania dostępu do maszyny Wirtualnej za pomocą programu PowerShell, użyj oficjalne poleceń cmdlet programu PowerShell Centrum zabezpieczeń Azure, zwłaszcza `Set-AzureRmJitNetworkAccessPolicy`.
+
+W poniższym przykładzie ustawiono tylko w czasie maszyna wirtualna zasady na określonej maszynie Wirtualnej dostępu i ustawia następujące czynności:
+1.  Zamykanie portów 22 i 3389.
+2.  Ustaw maksymalny przedział czasu wynoszącego 3 godziny dla każdego, dzięki czemu można je otworzyć za zatwierdzone żądania.
+3.  Zezwala na użytkownika, który żąda dostępu do kontroli źródła adresów IP, a także umożliwia użytkownikowi ustanowić sesję pomyślne na zatwierdzonych dokładnie na czas żądania dostępu.
+
+W programie PowerShell, aby to zrobić, uruchom następujące polecenie:
+
+1.  Przypisz zmienna, która zawiera tylko w czasie maszyna wirtualna zasady dostępu dla maszyny Wirtualnej:
+
+        $JitPolicy = (@{
+         id="/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
+        ports=(@{
+             number=22;
+             protocol="*";
+             allowedSourceAddressPrefix=@("*");
+             maxRequestAccessDuration="PT3H"},
+             @{
+             number=3389;
+             protocol="*";
+             allowedSourceAddressPrefix=@("*");
+             maxRequestAccessDuration="PT3H"})})
+
+2.  Wstaw maszyny Wirtualnej dokładnie na czas maszyny Wirtualnej warunkowego do tablicy:
+    
+        $JitPolicyArr=@($JitPolicy)
+
+3.  Konfigurowanie tylko w czasie maszyna wirtualna zasady na wybranej maszynie Wirtualnej dostępu:
+    
+        Set-AzureRmJitNetworkAccessPolicy -Kind "Basic" -Location "LOCATION" -Name "default" -ResourceGroupName "RESOURCEGROUP" -VirtualMachine $JitPolicyArr 
 
 ### <a name="requesting-access-to-a-vm"></a>Żądanie dostępu do maszyny Wirtualnej
 
-Aby dostęp do określonej maszyny Wirtualnej, który jest chroniony za pomocą tylko w rozwiązaniu do czasu, należy uruchomić to polecenie w sesji programu PowerShell: ASCJITAccess wywołania.
-Postępuj zgodnie z dokumentacji poleceń cmdlet, aby dowiedzieć się więcej.
+W poniższym przykładzie widać tylko w żądaniu dostępu do maszyny Wirtualnej godziny określonej maszyny Wirtualnej w port, który 22 jest wymagane do otwarcia dla określonego adresu IP i dla określonego przedziału czasu:
+
+W programie PowerShell, uruchom następujące polecenie:
+1.  Konfigurowanie właściwości maszyny Wirtualnej żądania dostępu
+
+        $JitPolicyVm1 = (@{
+          id="/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Compute/virtualMachines/VMNAME"
+        ports=(@{
+           number=22;
+           endTimeUtc="2018-09-17T17:00:00.3658798Z";
+           allowedSourceAddressPrefix=@("IPV4ADDRESS")})})
+2.  Wstaw parametry żądania dostępu do maszyny Wirtualnej w tablicy:
+
+        $JitPolicyArr=@($JitPolicyVm1)
+3.  Wyślij żądanie dostępu (Użyj Identyfikatora zasobu uzyskany w kroku 1)
+
+        Start-AzureRmJitNetworkAccessPolicy -ResourceId "/subscriptions/SUBSCRIPTIONID/resourceGroups/RESOURCEGROUP/providers/Microsoft.Security/locations/LOCATION/jitNetworkAccessPolicies/default" -VirtualMachine $JitPolicyArr
+
+Aby uzyskać więcej informacji zobacz dokumentację poleceń cmdlet programu PowerShell.
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 W tym artykule przedstawiono sposób dokładnie na czas dostępu do maszyny Wirtualnej w usłudze Security Center pomaga, kontrolować dostęp do usługi Azure virtual machines.

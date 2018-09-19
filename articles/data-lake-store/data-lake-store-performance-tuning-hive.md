@@ -1,6 +1,6 @@
 ---
-title: Dostosowywanie wskazówki dotyczące wydajności Hive usługi Azure Data Lake Store | Dokumentacja firmy Microsoft
-description: Dostosowywanie wskazówki dotyczące wydajności Hive usługi Azure Data Lake Store
+title: Usługa Azure Data Lake Storage Gen1 wydajności technologii Hive wytyczne dotyczące dostosowywania | Dokumentacja firmy Microsoft
+description: Usługa Azure Data Lake Storage Gen1 wydajności technologii Hive wytyczne dotyczące dostosowywania
 services: data-lake-store
 documentationcenter: ''
 author: stewu
@@ -12,30 +12,30 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/19/2016
 ms.author: stewu
-ms.openlocfilehash: c46eb1b2da62d70337e60066ed0706c3a4fdedcf
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: e9d0ad0398dfc238d48060247cdb6f29b0f34a60
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34198973"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123338"
 ---
-# <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-store"></a>Wskazówki dotyczące Hive w usłudze HDInsight i usługi Azure Data Lake Store dostrajania wydajności
+# <a name="performance-tuning-guidance-for-hive-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Wskazówki dotyczące technologii Hive HDInsight i Azure Data Lake Storage Gen1 dostrajania wydajności
 
-Aby zapewnić dobrą wydajność w wielu innych przypadków użycia skonfigurowane ustawienia domyślne.  Dla operacji We/Wy znacznym zapytań Aby uzyskać lepszą wydajność ADLS można przedstawić Hive.  
+Domyślne ustawienia zostały ustawione, aby zapewnić dobrą wydajność w wielu różnych przypadków użycia.  Dla zapytań intensywnie korzystających z operacji We/Wy gałąź może być dostosowane do osiągnąć wyższą wydajność przy użyciu usługi Azure Data Lake Storage Gen1.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
-* **Konto usługi Azure Data Lake Store**. Aby uzyskać instrukcje na temat go utworzyć, zobacz [wprowadzenie do usługi Azure Data Lake Store](data-lake-store-get-started-portal.md)
-* **Klaster HDInsight Azure** z dostępem do konta usługi Data Lake Store. Zobacz [tworzenia klastra usługi HDInsight z usługą Data Lake Store](data-lake-store-hdinsight-hadoop-use-portal.md). Upewnij się, że włączenie pulpitu zdalnego dla klastra.
-* **Uruchomiona Hive w usłudze HDInsight**.  Aby dowiedzieć się więcej na temat uruchamiania zadań Hive w usłudze HDInsight, zobacz () [używanie Hive w usłudze HDInsight]https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
-* **Wytyczne dotyczące ADLS dostrajania wydajności**.  Pojęcia dotyczące ogólnej wydajności, aby zapoznać [Data Lake magazynu dostrajanie wytyczne dotyczące wydajności](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
+* **Konta Data Lake Storage Gen1**. Aby uzyskać instrukcje na temat jej tworzenia, zobacz [Rozpoczynanie pracy z usługą Azure Data Lake Storage Gen1](data-lake-store-get-started-portal.md)
+* **Klaster usługi Azure HDInsight** dzięki dostępowi do konta Data Lake Storage Gen1. Zobacz [Tworzenie klastra HDInsight z usługą Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md). Upewnij się, że włączenie pulpitu zdalnego dla klastra.
+* **Systemem Hive HDInsight**.  Aby dowiedzieć się więcej o uruchamianiu zadań Hive na HDInsight, zobacz ([korzystanie z programu Hive na HDInsight]https://docs.microsoft.com/azure/hdinsight/hdinsight-use-hive)
+* **Wytyczne dotyczące Data Lake Storage Gen1 dostrajania wydajności**.  Pojęcia związane z ogólnej wydajności, zobacz [Data Lake Storage Gen1 dostrajania wskazówki dotyczące wydajności](https://docs.microsoft.com/azure/data-lake-store/data-lake-store-performance-tuning-guidance)
 
 ## <a name="parameters"></a>Parametry
 
-Poniżej przedstawiono najważniejsze ustawienia, aby dostroić zwiększonej wydajności ADLS:
+Poniżej przedstawiono najważniejsze ustawienia, należy dostosować w celu zwiększenia wydajności Data Lake Storage Gen1:
 
-* **hive.tez.container.SIZE** — ilość pamięci użytej przez każdego zadania
+* **hive.tez.container.SIZE** — ilość pamięci używana przez każdego zadania
 
 * **rozmiar tez.GROUPING.min** — minimalny rozmiar każdego mapowania
 
@@ -43,31 +43,31 @@ Poniżej przedstawiono najważniejsze ustawienia, aby dostroić zwiększonej wyd
 
 * **hive.EXEC.reducer.Bytes.per.reducer** — rozmiar każdego reduktor
 
-**hive.tez.container.SIZE** — rozmiar kontenera Określa, ile pamięci dostępnej dla każdego zadania.  Jest to główny danych wejściowych do kontrolowania współbieżność w gałęzi.  
+**hive.tez.container.SIZE** — rozmiar kontenera określa ilość pamięci dostępnej dla każdego zadania.  Jest to główny dane wejściowe na potrzeby kontroli współbieżności w gałęzi.  
 
-**rozmiar tez.GROUPING.min** — ten parametr umożliwia określenie minimalny rozmiar każdego mapowania.  Jeśli liczba mapowań, które wybierze Tez jest mniejsza niż wartość tego parametru, Tez użyje wartość ustawiona w tym miejscu.
+**rozmiar tez.GROUPING.min** — ten parametr można ustawić minimalny rozmiar każdego mapowania.  Jeśli liczba liczby maperów, które wybierze Tez jest mniejsza niż wartość tego parametru, Tez użyje wartość ustawiona w tym miejscu.
 
-**rozmiar tez.GROUPING.max** — parametr można ustawić maksymalny rozmiar każdego mapowania.  Jeśli liczba mapowań, które wybierze Tez jest większa niż wartość tego parametru, Tez użyje wartość ustawiona w tym miejscu.
+**rozmiar tez.GROUPING.max** — parametr można ustawić maksymalny rozmiar każdego mapowania.  Jeśli liczba liczby maperów, które wybierze Tez jest większy niż wartość tego parametru, Tez użyje wartość ustawiona w tym miejscu.
 
 **hive.EXEC.reducer.Bytes.per.reducer** — ten parametr określa rozmiar każdego reduktor.  Domyślnie każdy reduktor to 256MB.  
 
 ## <a name="guidance"></a>Wskazówki
 
-**Ustaw hive.exec.reducer.bytes.per.reducer** — wartość domyślna działa dobrze, gdy jest nieskompresowanych danych.  Dane są kompresowane należy zmniejszyć rozmiar reduktor.  
+**Ustaw hive.exec.reducer.bytes.per.reducer** — wartość domyślna działa dobrze, gdy jest bez kompresji danych.  Dla danych, które jest skompresowany należy zmniejszyć rozmiar reduktor.  
 
-**Ustaw hive.tez.container.size** — w każdym węźle jest określona przez yarn.nodemanager.resource.memory mb pamięci i powinien zostać poprawnie określony HDI klastra domyślnie.  Aby uzyskać dodatkowe informacje na temat ustawiania odpowiedniej ilości pamięci w YARN, zobacz [post](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom).
+**Ustaw hive.tez.container.size** — w każdym węźle jest określona przez yarn.nodemanager.resource.memory mb pamięci i należy poprawnie ustawić na klaster usługi HDI domyślnie.  Aby uzyskać dodatkowe informacje na temat ustawiania odpowiedniej ilości pamięci w YARN, zobacz [wpis](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-hive-out-of-memory-error-oom).
 
-Intensywnych obciążeń We/Wy mogą korzystać z równoległości więcej przy zmniejszaniu rozmiaru kontenera aplikacji Tez. Dzięki temu użytkownik więcej kontenerów, co zwiększa współbieżności.  Jednak niektóre zapytania Hive wymagają znaczną ilość pamięci (np. MapJoin).  Jeśli zadanie nie ma wystarczającej ilości pamięci, wystąpi wyjątek braku pamięci w czasie wykonywania.  Jeśli zostanie wyświetlony poza wyjątkami pamięci, należy zwiększyć ilość pamięci.   
+Obciążeń z intensywnym wykorzystaniem we/wy może korzystać z równoległości więcej przez zmniejszenie rozmiaru kontenera w aplikacji Tez. Dzięki temu użytkownik większej liczbie kontenerów, co zwiększa współbieżności.  Jednak niektóre zapytania programu Hive wymagać znacznej ilości pamięci (np. MapJoin).  Jeśli zadanie nie ma wystarczającej ilości pamięci, wystąpi wyjątek braku pamięci podczas wykonywania.  Jeśli pojawi się poza wyjątki pamięci, należy zwiększyć ilość pamięci.   
 
-Współbieżnych liczba zadań uruchomionych lub równoległości zostaną ograniczone przez pamięć YARN.  Liczba kontenerów YARN wyznaczają liczbę równoczesnych zadań można uruchamiać.  Aby znaleźć pamięci YARN w każdym węźle, można przejść do narzędzia Ambari.  Przejdź do YARN, a następnie Wyświetl kartę Configs.  Pamięć YARN jest wyświetlany w tym oknie.  
+Numer równoczesnych zadań uruchomionych lub równoległości będzie ograniczone przez całkowitej ilości pamięci usługi YARN.  Liczba kontenerów YARN określają, jak wiele współbieżnych zadań można uruchamiać.  Aby znaleźć pamięci usługi YARN w każdym węźle, możesz przejść do narzędzia Ambari.  Przejdź do usługi YARN i wyświetlić kartę konfiguracje.  W tym oknie wyświetlane jest pamięci usługi YARN.  
 
         Total YARN memory = nodes * YARN memory per node
         # of YARN containers = Total YARN memory / Tez container size
-W celu poprawy wydajności przy użyciu ADLS należy zwiększyć współbieżność możliwie.  Tez automatycznie oblicza liczbę zadań, które powinny być tworzone, dzięki czemu nie trzeba go ustawić.   
+Klawisz w celu poprawy wydajności przy użyciu usług Data Lake Storage Gen1 jest zwiększyć współbieżność, o ile to możliwe.  Tez automatycznie oblicza liczbę zadań, które mają zostać utworzone, więc nie trzeba ustawić go.   
 
-## <a name="example-calculation"></a>Przykład obliczeń
+## <a name="example-calculation"></a>Przykład obliczania
 
-Załóżmy, że klaster D14 8 węzłów.  
+Załóżmy, że masz klaster D14 8 node.  
 
     Total YARN memory = nodes * YARN memory per node
     Total YARN memory = 8 nodes * 96GB = 768GB
@@ -75,19 +75,19 @@ Załóżmy, że klaster D14 8 węzłów.
 
 ## <a name="limitations"></a>Ograniczenia
 
-**ADLS ograniczania przepustowości** 
+**Data Lake Storage Gen1 ograniczania** 
 
-UIf osiągnął limity przepustowości udostępniane przez ADLS, zacząć Zobacz niepowodzeń zadań. Może to być identyfikowany przez obserwowania błędy ograniczania przepustowości w dziennikach zadań.  Aby zmniejszyć równoległości, zwiększyć rozmiar kontenera aplikacji Tez.  Jeśli potrzebujesz więcej współbieżności dla zadania, skontaktuj się z nami.
+Jeśli napotkasz limity przepustowości, dostarczone przez Data Lake Storage Gen1, rozpocząć się niepowodzeń zadań. Może to być identyfikowany przez monitorowanie błędów ograniczania dostępności w dziennikach zadania.  Aby zmniejszyć równoległości, zwiększenie rozmiaru kontenera w aplikacji Tez.  Jeśli potrzebujesz uzyskać większą współbieżność dla zadania, skontaktuj się z nami.
 
-Aby sprawdzić, jeśli użytkownik są pobierania ograniczane, musisz włączyć rejestrowania po stronie klienta debugowania. Oto, jak można to zrobić:
+Aby sprawdzić, jeśli użytkownik jest ograniczany, musisz włączyć debugowanie rejestrowania po stronie klienta. Poniżej przedstawiono, jak można to zrobić:
 
-1. Umieść następującą właściwość w właściwości log4j w pliku konfiguracyjnym Hive. Można to zrobić z widoku Ambari: log4j.logger.com.microsoft.azure.datalake.store=DEBUG ponownie uruchomić usługę wszystkie węzły/konfiguracji zaczęły obowiązywać.
+1. Umieść następującą właściwość we właściwościach log4j w konfiguracji programu Hive. Można to zrobić w widoku Ambari: log4j.logger.com.microsoft.azure.datalake.store=DEBUG ponownie uruchomić usługę wszystkie węzły/konfiguracji zostały wprowadzone.
 
-2. Jeśli możesz są pobierania ograniczane, zobaczysz kod błędu HTTP 429 w pliku dziennika gałęzi. Gałąź plik dziennika znajduje się w /tmp/&lt;użytkownika&gt;/hive.log
+2. Jeśli użytkownik jest ograniczany, zobaczysz kod błędu HTTP 429 w pliku dziennika programu hive. Plik dziennika programu hive jest /tmp/&lt;użytkownika&gt;/hive.log
 
-## <a name="further-information-on-hive-tuning"></a>Więcej informacji na temat dostrajania gałęzi
+## <a name="further-information-on-hive-tuning"></a>Dodatkowe informacje o dostosowywaniu programu Hive
 
-Poniżej przedstawiono kilka blogi, pomagających dostroić zapytań Hive:
-* [Optymalizacja zapytań programu Hive dla platformy Hadoop w usłudze HDInsight](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
-* [Rozwiązywanie problemów z wydajność zapytań Hive](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
-* [Rozmawiać z konferencji Ignite na optymalizowanie Hive w usłudze HDInsight](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)
+Poniżej przedstawiono kilka blogi, pomagających dostrajanie zapytań Hive:
+* [Optymalizowanie zapytań technologii Hive dla usługi Hadoop w HDInsight](https://azure.microsoft.com/documentation/articles/hdinsight-hadoop-optimize-hive-query/)
+* [Rozwiązywanie problemów z wydajnością zapytań Hive](https://blogs.msdn.microsoft.com/bigdatasupport/2015/08/13/troubleshooting-hive-query-performance-in-hdinsight-hadoop-cluster/)
+* [Rozmowa na konferencji Ignite na optymalizowanie gałęzi na HDInsight](https://channel9.msdn.com/events/Machine-Learning-and-Data-Sciences-Conference/Data-Science-Summit-2016/MSDSS25)

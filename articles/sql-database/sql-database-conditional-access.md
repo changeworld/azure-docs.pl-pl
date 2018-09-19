@@ -1,51 +1,58 @@
 ---
-title: Dostęp warunkowy — baza danych Azure SQL i magazynem danych | Doc firmy Microsoft
-description: Informacje o sposobie konfigurowania warunkowego dostępu do bazy danych SQL Azure i magazynem danych.
+title: Dostęp warunkowy — usługi Azure SQL Database i Data Warehouse | Microsoft docs
+description: Dowiedz się, jak skonfigurować dostęp warunkowy dla usługi Azure SQL Database i Data Warehouse.
 services: sql-database
 author: GithubMirek
 manager: johammer
 ms.custom: security
 ms.service: sql-database
+ms.prod_service: sql-database, sql-data-warehouse
 ms.topic: conceptual
 ms.date: 04/01/2018
 ms.author: mireks
-ms.openlocfilehash: 83762136659756204aab5da367b905f66e770087
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: vanto
+ms.openlocfilehash: 702121c18ade244bce5ab3a9c5a57a0245ad80c6
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647463"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "35938819"
 ---
-# <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Dostęp warunkowy (MFA) i baza danych Azure SQL i magazynem danych  
+# <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Dostęp warunkowy (MFA) przy użyciu usługi Azure SQL Database i Data Warehouse  
 
-Zarówno bazy danych SQL i magazyn danych SQL obsługuje dostęp warunkowy firmy Microsoft. Poniższe kroki przedstawiają sposób konfigurowania bazy danych SQL do wymuszania zasad dostępu warunkowego.  
+Usługa Azure [bazy danych SQL](sql-database-technical-overview.md) i [SQL Data Warehouse](../sql-data-warehouse/sql-data-warehouse-overview-what-is.md) obsługują dostęp warunkowy Microsoft. 
+
+> [!NOTE]
+> Ten temat dotyczy serwera Azure SQL oraz baz danych zarówno usługi SQL Database, jak i SQL Data Warehouse utworzonych na serwerze Azure SQL. Dla uproszczenia usługi SQL Database i SQL Data Warehouse są łącznie nazywane usługą SQL Database.
+
+Poniższe kroki pokazują sposób konfigurowania bazy danych SQL do wymuszania zasad dostępu warunkowego.  
 
 ## <a name="prerequisites"></a>Wymagania wstępne  
-- Należy skonfigurować bazy danych SQL lub SQL Data Warehouse w celu obsługi uwierzytelniania usługi Azure Active Directory. Do wykonania określonych kroków, zobacz [Konfigurowanie i zarządzanie nimi uwierzytelniania usługi Azure Active Directory z bazą danych SQL lub SQL Data Warehouse](sql-database-aad-authentication-configure.md).  
-- Po włączeniu usługi Multi-Factor authentication, należy połączyć z na obsługiwanych narzędzia, takie jak najnowsze narzędzia SSMS. Aby uzyskać więcej informacji, zobacz [uwierzytelnianie wieloskładnikowe skonfigurować bazy danych SQL Azure dla programu SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md).  
+- Należy skonfigurować usługi SQL Database lub SQL Data Warehouse, aby zapewnić obsługę uwierzytelniania usługi Azure Active Directory. Aby poznać konkretne kroki, zobacz [Konfigurowanie i zarządzanie nimi w usłudze Azure Active Directory uwierzytelnianie przy użyciu bazy danych SQL Database lub SQL Data Warehouse](sql-database-aad-authentication-configure.md).  
+- Po włączeniu usługi Multi-Factor authentication, należy połączyć z w obsługiwanych narzędzia, takiego jak najnowszej wersji środowiska SSMS. Aby uzyskać więcej informacji, zobacz [uwierzytelnianie wieloskładnikowe Konfigurowanie usługi Azure SQL Database, SQL Server Management Studio](sql-database-ssms-mfa-authentication-configure.md).  
 
-## <a name="configure-ca-for-azure-sql-dbdw"></a>Konfigurowanie urzędu certyfikacji dla bazy danych Azure SQL/magazynu danych  
-1.  Zaloguj się do portalu, wybierz **usługi Azure Active Directory**, a następnie wybierz **dostępu warunkowego**. Aby uzyskać więcej informacji, zobacz [informacje techniczne dotyczące usługi Azure Active Directory dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference).  
-  ![Blok dostępu warunkowego](./media/sql-database-conditional-access/conditional-access-blade.png) 
+## <a name="configure-ca-for-azure-sql-dbdw"></a>Konfigurowanie urzędu certyfikacji dla bazy danych/magazyn danych Azure SQL  
+1.  Zaloguj się do portalu, wybierz **usługi Azure Active Directory**, a następnie wybierz pozycję **dostępu warunkowego**. Aby uzyskać więcej informacji, zobacz [informacje techniczne dotyczące usługi Azure Active Directory dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/active-directory-conditional-access-technical-reference).  
+  ![w bloku dostępu warunkowego](./media/sql-database-conditional-access/conditional-access-blade.png) 
      
-2.  W **zasady dostępu warunkowego** bloku, kliknij przycisk **nowe zasady**, podaj nazwę, a następnie kliknij przycisk **skonfigurować reguły**.  
-3.  W obszarze **przypisania**, wybierz pozycję **użytkowników i grup**, sprawdź **Wybierz użytkowników i grupy**, a następnie wybierz użytkownika lub grupę dostępu warunkowego. Kliknij przycisk **wybierz**, a następnie kliknij przycisk **gotowe** aby zaakceptować wybór.  
-  ![Wybierz użytkowników i grup](./media/sql-database-conditional-access/select-users-and-groups.png)  
+2.  W **zasady dostępu warunkowego** bloku kliknij **nowe zasady**, podaj nazwę, a następnie kliknij przycisk **reguły**.  
+3.  W obszarze **przypisania**, wybierz opcję **użytkowników i grup**, sprawdź **Wybieranie użytkowników i grup**, a następnie wybierz użytkownika lub grupy, aby dostęp warunkowy. Kliknij przycisk **wybierz**, a następnie kliknij przycisk **gotowe** aby zaakceptować wybór.  
+  ![Wybierz użytkowników i grupy](./media/sql-database-conditional-access/select-users-and-groups.png)  
 
-4.  Wybierz **aplikacji w chmurze**, kliknij przycisk **Wybierz aplikacje**. Możesz sprawdzić wszystkie aplikacje dostępne dla dostępu warunkowego. Wybierz **bazy danych SQL Azure**, u dołu kliknij **wybierz**, a następnie kliknij przycisk **gotowe**.  
+4.  Wybierz **aplikacje w chmurze**, kliknij przycisk **Wybierz aplikacje**. Możesz wyświetlać wszystkie aplikacje dostępne dla dostępu warunkowego. Wybierz **usługi Azure SQL Database**, kliknij u dołu **wybierz**, a następnie kliknij przycisk **gotowe**.  
   ![Wybierz bazę danych SQL](./media/sql-database-conditional-access/select-sql-database.png)  
-  Jeśli nie możesz znaleźć **bazy danych SQL Azure** wymienionych w poniższym zrzucie ekranu trzeci, wykonaj następujące czynności:   
-  - Zaloguj się do Twojego wystąpienia DW bazy danych SQL Azure przy użyciu narzędzia SSMS przy użyciu konta administratora usługi AAD.  
-  - Wykonanie `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER`.  
-  - Zaloguj się do usługi AAD i sprawdź, czy baza danych SQL Azure i magazynu danych są wyświetlane w aplikacji w sieci usługi AAD.  
+  Jeśli nie możesz znaleźć **usługi Azure SQL Database** wymienione w poniższym zrzucie ekranu trzeci, wykonaj następujące czynności:   
+  - Zaloguj się do swojego wystąpienia bazy danych/magazyn danych SQL Azure przy użyciu narzędzia SSMS przy użyciu konta administratora usługi AAD.  
+  - Wykonaj `CREATE USER [user@yourtenant.com] FROM EXTERNAL PROVIDER`.  
+  - Zaloguj się do usługi AAD i sprawdź, czy usługi Azure SQL Database i Data Warehouse są wyświetlane w aplikacji w Twojej usłudze AAD.  
 
-5.  Wybierz **dostęp do formantów**, wybierz pozycję **Grant**, a następnie sprawdź zasady, które chcesz zastosować. Na przykład możemy wybierz **wymusić uwierzytelnianie wieloskładnikowe**.  
-  ![Wybierz Udziel dostępu](./media/sql-database-conditional-access/grant-access.png)  
+5.  Wybierz **kontrole dostępu**, wybierz opcję **Grant**, a następnie sprawdź zasady, które chcesz zastosować. W tym przykładzie wybierzemy **Wymagaj uwierzytelniania wieloskładnikowego**.  
+  ![Wybierz udzielanie dostępu](./media/sql-database-conditional-access/grant-access.png)  
 
 ## <a name="summary"></a>Podsumowanie  
-Wybrana aplikacja (Azure SQL Database) umożliwiający połączenie do usługi Azure SQL bazy danych/magazynu danych przy użyciu usługi Azure AD Premium, teraz wymusza wybrane zasady dostępu warunkowego **wymagane uwierzytelnianie wieloskładnikowe.**  
-Pytania dotyczące bazy danych SQL Azure i magazynem danych dotyczących uwierzytelniania wieloskładnikowego, skontaktuj się z MFAforSQLDB@microsoft.com.  
+Wybranej aplikacji (Azure SQL Database), dzięki czemu można połączyć do bazy danych/magazyn danych SQL Azure przy użyciu usługi Azure AD Premium, teraz wymusza wybrane zasady dostępu warunkowego **wymagane uwierzytelnianie wieloskładnikowe.**  
+Masz pytania dotyczące usługi Azure SQL Database i Data Warehouse dotyczące uwierzytelniania wieloskładnikowego, skontaktuj się z pomocą MFAforSQLDB@microsoft.com.  
 
 ## <a name="next-steps"></a>Kolejne kroki  
 
-Samouczek, zobacz [zabezpieczenia bazy danych SQL Azure](sql-database-security-tutorial.md).
+Aby zapoznać się z samouczkiem, zobacz [Zabezpieczanie usługi Azure SQL Database](sql-database-security-tutorial.md).

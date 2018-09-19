@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: bwren
-ms.openlocfilehash: 3772b03d9a9d688b9d0eac42d51af7a2f2e0c5bd
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: e3620bbf92cab926d56c4de0817f833b61cf2b03
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42060923"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125089"
 ---
 # <a name="office-365-management-solution-in-azure-preview"></a>Rozwiązanie do zarządzania usługi Office 365 na platformie Azure (wersja zapoznawcza)
 
@@ -497,7 +497,7 @@ Na pulpicie nawigacyjnym znajdują się kolumny wymienione w poniższej tabeli. 
 | Operacje | Zawiera informacje dotyczące aktywnych użytkowników z wszystkich monitorowanych subskrypcji usługi Office 365. Można również wyświetlić liczbę działań, które zdarzają się wraz z upływem czasu.
 | Exchange | Pokazuje podział działania serwera Exchange, takie jak uprawnienia Dodaj skrzynkę pocztową lub skrzynki pocztowej Ustaw. |
 | Sharepoint | Pokazuje najważniejszych działań, że użytkownicy wykonać na dokumentów programu SharePoint. Podczas przechodzenia do szczegółów z tego kafelka na stronie wyszukiwania znajdują się szczegółowe informacje o tych działań, takich jak dokument docelowy i lokalizację tego działania. Na przykład w przypadku zdarzenia dostępu do pliku będzie mógł wyświetlić dokument, który jest dostępny, jego nazwa skojarzonego konta i adres IP. |
-| Usługa Azure Active Directory | Obejmuje działania użytkowników najważniejsze, takich jak zresetować hasło użytkownika i prób logowania. Podczas przechodzenia do szczegółów można wyświetlić szczegóły tych działań, takich jak stan wyniku. Najczęściej jest to przydatne, jeśli chcesz monitorować podejrzanych działań w usłudze Azure Active Directory. |
+| Azure Active Directory | Obejmuje działania użytkowników najważniejsze, takich jak zresetować hasło użytkownika i prób logowania. Podczas przechodzenia do szczegółów można wyświetlić szczegóły tych działań, takich jak stan wyniku. Najczęściej jest to przydatne, jeśli chcesz monitorować podejrzanych działań w usłudze Azure Active Directory. |
 
 
 
@@ -547,7 +547,7 @@ Te rekordy są tworzone, gdy próbuje zalogować użytkownika usługi Active Dir
 | UserDomain | Tożsamość informacji o dzierżawie (TII). | 
 
 
-### <a name="azure-active-directory"></a>Usługa Azure Active Directory
+### <a name="azure-active-directory"></a>Azure Active Directory
 Te rekordy są tworzone po dokonaniu zmiany lub dodatki do obiektów w usłudze Azure Active Directory.
 
 | Właściwość | Opis |

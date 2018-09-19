@@ -1,6 +1,6 @@
 ---
-title: 'Python: operacje zarządzania kontem w usłudze Azure Data Lake Store | Microsoft Docs'
-description: Dowiedz się, jak używać zestawu SDK języka Python do pracy z operacjami zarządzania kontem usługi Data Lake Store.
+title: 'Python: Operacje zarządzania kontem w usłudze Azure Data Lake magazynu Gen1 | Dokumentacja firmy Microsoft'
+description: Dowiedz się, jak używać zestawu SDK języka Python do pracy z operacji zarządzania kontem usługi Azure Data Lake Storage Gen1.
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: e5b04a4cfbf26011753715f02baea689ec3065b6
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 0cc5b101e1afb6ea648963188887cf43b65a5afa
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39009245"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124953"
 ---
-# <a name="account-management-operations-on-azure-data-lake-store-using-python"></a>Operacje zarządzania kontem w usłudze Azure Data Lake Store za pomocą języka Python
+# <a name="account-management-operations-on-azure-data-lake-storage-gen1-using-python"></a>Operacje zarządzania kontem w usłudze Azure Data Lake magazynu Gen1 przy użyciu języka Python
 > [!div class="op_single_selector"]
 > * [Zestaw SDK platformy .NET](data-lake-store-get-started-net-sdk.md)
 > * [Interfejs API REST](data-lake-store-get-started-rest-api.md)
@@ -27,7 +27,7 @@ ms.locfileid: "39009245"
 >
 >
 
-Dowiedz się, jak używać zestawu SDK języka Python dla usługi Azure Data Lake Store do wykonywania podstawowych operacji zarządzania kontem, takich jak tworzenie konta usługi Data Lake Store, generowanie listy kont usługi Data Lake Store itp. Aby uzyskać instrukcje na temat sposobu wykonywania operacji systemu plików w usłudze Data Lake Store przy użyciu języka Python, zobacz [Operacje systemu plików w usłudze Data Lake Store za pomocą języka Python](data-lake-store-data-operations-python.md).
+Dowiedz się, jak używać zestawu SDK języka Python dla usługi Azure Data Lake Storage Gen1 do wykonywania podstawowych operacji zarządzania, takie jak tworzenie konta Data Lake Storage Gen1, Data Lake Storage Gen1 wyświetlanie listy kont itd konta. Aby uzyskać instrukcje na temat sposobu wykonywania operacji systemu plików na Data Lake Storage Gen1 przy użyciu języka Python, zobacz [operacje systemu plików w Data Lake Storage Gen1 przy użyciu języka Python](data-lake-store-data-operations-python.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -39,11 +39,11 @@ Dowiedz się, jak używać zestawu SDK języka Python dla usługi Azure Data Lak
 
 ## <a name="install-the-modules"></a>Instalacja modułów
 
-Aby móc pracować z usługą Data Lake Store przy użyciu języka Python, musisz zainstalować trzy moduły.
+Aby pracować z Data Lake Storage Gen1 przy użyciu języka Python, musisz zainstalować trzy moduły.
 
 * Moduł `azure-mgmt-resource`, który obejmuje moduły platformy Azure dla usługi Active Directory itp.
-* Moduł `azure-mgmt-datalake-store`, który obejmuje operacje zarządzania kontem usługi Azure Data Lake Store. Aby uzyskać więcej informacji na temat tego modułu, zobacz [dokumentację modułu do zarządzania dla usługi Azure Data Lake Store](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
-* Moduł `azure-datalake-store`, który obejmuje operacje systemu plików usługi Azure Data Lake Store. Aby uzyskać więcej informacji na temat tego modułu, zobacz [dokumentację modułu systemu plików dla usługi Azure Data Lake Store](http://azure-datalake-store.readthedocs.io/en/latest/).
+* `azure-mgmt-datalake-store` Moduł, który obejmuje operacje zarządzania kontem usługi Azure Data Lake Storage Gen1. Aby uzyskać więcej informacji na temat tego modułu, zobacz [odwołania do modułu usługi Azure Data Lake magazynu Gen1 Management](https://docs.microsoft.com/python/api/azure.mgmt.datalake.store?view=azure-python).
+* `azure-datalake-store` Moduł, który obejmuje operacje systemu plików usługi Azure Data Lake Storage Gen1. Aby uzyskać więcej informacji na temat tego modułu, zobacz [dokumentację modułu systemu plików azure-datalake-store](http://azure-datalake-store.readthedocs.io/en/latest/).
 
 Użyj następujących poleceń, aby zainstalować moduły.
 
@@ -69,11 +69,11 @@ pip install azure-datalake-store
     ## Use this only for Azure AD multi-factor authentication
     from msrestazure.azure_active_directory import AADTokenCredentials
 
-    ## Required for Azure Data Lake Store account management
+    ## Required for Data Lake Storage Gen1 account management
     from azure.mgmt.datalake.store import DataLakeStoreAccountManagementClient
     from azure.mgmt.datalake.store.models import DataLakeStoreAccount
 
-    ## Required for Azure Data Lake Store filesystem management
+    ## Required for Data Lake Storage Gen1 filesystem management
     from azure.datalake.store import core, lib, multithread
 
     # Common Azure imports
@@ -90,12 +90,12 @@ pip install azure-datalake-store
 
 W tej sekcji omówione zostaną różne sposoby uwierzytelniania w usłudze Azure AD. Dostępne opcje:
 
-* Aby dowiedzieć się więcej o uwierzytelnianiu użytkowników końcowych w aplikacji, zobacz [End-user authentication with Data Lake Store using Python (Uwierzytelnianie użytkowników końcowych w usłudze Data Lake Store za pomocą języka Python)](data-lake-store-end-user-authenticate-python.md).
-* Aby dowiedzieć się więcej o uwierzytelnianiu „usługa-usługa” w aplikacji, zobacz [Service-to-service authentication with Data Lake Store using Python (Uwierzytelnianie „usługa-usługa” w usłudze Data Lake Store za pomocą języka Python)](data-lake-store-service-to-service-authenticate-python.md).
+* Do uwierzytelniania użytkownika końcowego dla aplikacji, zobacz [uwierzytelnianie użytkowników końcowych za pomocą programu Data Lake Storage Gen1 przy użyciu języka Python](data-lake-store-end-user-authenticate-python.md).
+* Do uwierzytelniania service to service dla aplikacji, zobacz [uwierzytelniania Service to service za pomocą programu Data Lake Storage Gen1 przy użyciu języka Python](data-lake-store-service-to-service-authenticate-python.md).
 
-## <a name="create-client-and-data-lake-store-account"></a>Tworzenie klienta i konta usługi Data Lake Store
+## <a name="create-client-and-data-lake-storage-gen1-account"></a>Tworzenie klienta i Data Lake Storage Gen1 konta
 
-Poniższy fragment kodu najpierw tworzy klienta konta usługi Data Lake Store. Używa on obiektu klienta do utworzenia konta usługi Data Lake Store. Na koniec fragment kodu tworzy obiekt klienta systemu plików.
+Poniższy fragment kodu najpierw tworzy klienta konta Data Lake Storage Gen1. Tworzenie konta Data Lake Storage Gen1 używa obiektu klienta. Na koniec fragment kodu tworzy obiekt klienta systemu plików.
 
     ## Declare variables
     subscriptionId = 'FILL-IN-HERE'
@@ -103,10 +103,10 @@ Poniższy fragment kodu najpierw tworzy klienta konta usługi Data Lake Store. U
     resourceGroup = 'FILL-IN-HERE'
     location = 'eastus2'
 
-    ## Create data lake store account management client object
+    ## Create Data Lake Storage Gen1 account management client object
     adlsAcctClient = DataLakeStoreAccountManagementClient(armCreds, subscriptionId)
 
-    ## Create a Data Lake Store account
+    ## Create a Data Lake Storage Gen1 account
     adlsAcctResult = adlsAcctClient.account.create(
         resourceGroup,
         adlsAccountName,
@@ -116,24 +116,24 @@ Poniższy fragment kodu najpierw tworzy klienta konta usługi Data Lake Store. U
     ).wait()
 
     
-## <a name="list-the-data-lake-store-accounts"></a>Wyświetlanie listy kont usługi Data Lake Store
+## <a name="list-the-data-lake-storage-gen1-accounts"></a>Wyświetlanie listy kont Data Lake Storage Gen1
 
-    ## List the existing Data Lake Store accounts
+    ## List the existing Data Lake Storage Gen1 accounts
     result_list_response = adlsAcctClient.account.list()
     result_list = list(result_list_response)
     for items in result_list:
         print(items)
 
-## <a name="delete-the-data-lake-store-account"></a>Usuwanie konta usługi Data Lake Store
+## <a name="delete-the-data-lake-storage-gen1-account"></a>Usuwanie konta Data Lake Storage Gen1
 
-    ## Delete the existing Data Lake Store accounts
+    ## Delete an existing Data Lake Storage Gen1 account
     adlsAcctClient.account.delete(adlsAccountName)
     
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Operacje systemu plików w usłudze Data Lake Store za pomocą języka Python](data-lake-store-data-operations-python.md).
+* [Operacje systemu plików w Data Lake Storage Gen1 przy użyciu języka Python](data-lake-store-data-operations-python.md).
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Azure Data Lake Store Python (Filesystem) Reference](http://azure-datalake-store.readthedocs.io/en/latest) (Dokumentacja języka Python dla usługi Azure Data Lake Store [system plików])
-* [Open Source Big Data applications compatible with Azure Data Lake Store](data-lake-store-compatible-oss-other-applications.md) (Aplikacje danych big data typu open source zgodne z usługą Azure Data Lake Store)
+* [Dokumentacja języka Python (Filesystem) Azure-datalake-store](http://azure-datalake-store.readthedocs.io/en/latest)
+* [Otwórz źródło danych big Data aplikacji zgodnych z usługi Azure Data Lake Storage Gen1](data-lake-store-compatible-oss-other-applications.md)

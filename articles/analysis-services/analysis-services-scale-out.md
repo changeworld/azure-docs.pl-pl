@@ -5,15 +5,15 @@ author: minewiskan
 manager: kfile
 ms.service: azure-analysis-services
 ms.topic: conceptual
-ms.date: 09/13/2018
+ms.date: 09/18/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: e494c2bc90f6db1f3a850fccff88efdf26f43012
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 7c0aa2d43001100a392f8882316b7998838d90b9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604242"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121944"
 ---
 # <a name="azure-analysis-services-scale-out"></a>Usługa Azure Analysis Services skalowalnego w poziomie
 
@@ -27,7 +27,7 @@ Za pomocą skalowalnego w poziomie można utworzyć pulę zapytania przy użyciu
 
 Niezależnie od liczby replik zapytań, znajdującym się w puli zapytania obciążeń przetwarzania nie są dystrybuowane między replikami zapytań. Pojedynczy serwer służy jako serwer przetwarzania. Repliki zapytania służyć tylko zapytania względem modeli synchronizowane między każdej repliki zapytania w puli zapytania. 
 
-Podczas skalowania w poziomie, nowe replikami zapytania są dodawane do puli zapytania przyrostowo. Może upłynąć do pięciu minut, zanim nowe zasoby repliki zapytania mają zostać uwzględnione w puli zapytania; gotowe do odbierania połączeń klientów i zapytań. Gdy wszystkie nowe repliki zapytania są włączone i uruchomione, nowe połączenia klientów jest równoważone między wszystkich zasobów w puli zapytania. Istniejące połączenia klienta nie są zmieniane z zasobu, które są aktualnie połączeni.  Podczas skalowania w, wszelkie istniejące połączenia klienta do kwerendy puli zasobów, który jest usuwany z puli zapytania są kończone. Ich ponowne łączenie się pozostały zasób puli zapytania po zakończeniu skalowanie w operacji, który może zająć maksymalnie pięć minut.
+Podczas skalowania w poziomie, nowe replikami zapytania są dodawane do puli zapytania przyrostowo. Może upłynąć do pięciu minut, zanim nowe zasoby repliki zapytania mają zostać uwzględnione w puli zapytania. Gdy wszystkie nowe repliki zapytania są włączone i uruchomione, nowe połączenia klientów jest równoważone między wszystkich zasobów w puli zapytania. Istniejące połączenia klienta nie są zmieniane z zasobu, które są aktualnie połączeni.  Podczas skalowania w, wszelkie istniejące połączenia klienta do kwerendy puli zasobów, który jest usuwany z puli zapytania są kończone. Ich ponowne łączenie się pozostały zasób puli zapytania po zakończeniu skalowanie w operacji, który może zająć maksymalnie pięć minut.
 
 Podczas przetwarzania modeli, po ukończeniu operacji przetwarzania, należy wykonać synchronizację między serwerem przetwarzania a replikami zapytania. Automatyzacja operacji przetwarzania, należy skonfigurować operacji synchronizacji po pomyślnym zakończeniu operacji przetwarzania. Można przeprowadzić synchronizację ręcznie w portalu lub przy użyciu programu PowerShell lub interfejsu API REST. 
 
@@ -63,7 +63,6 @@ Liczba replik zapytań, które można skonfigurować są ograniczone według reg
 
 Modele tabelaryczne na podstawowym serwerze są synchronizowane z serwerem funkcji replica. Po ukończeniu synchronizacji rozpocznie się puli zapytania, dystrybucja przychodzące zapytania na serwery repliki. 
 
-
 ## <a name="synchronization"></a>Synchronizacja 
 
 Podczas aprowizacji nowej repliki zapytania usług Azure Analysis Services automatycznie replikuje swoje modele we wszystkich replik. Można również wykonać ręczną synchronizację za pomocą portalu lub interfejsu API REST. W przypadku przetwarzania modeli, należy wykonać synchronizację, dlatego aktualizacje są synchronizowane między repliki zapytania.
@@ -90,8 +89,6 @@ Aby ustawić liczba replik zapytań, należy użyć [Set-AzureRmAnalysisServices
 
 Aby uruchomić synchronizacji, użyj [AzureAnalysisServicesInstance synchronizacji](https://docs.microsoft.com/powershell/module/azurerm.analysisservices/sync-azureanalysisservicesinstance).
 
-
-
 ## <a name="connections"></a>Połączenia
 
 Na stronie przeglądu serwera istnieją dwie nazwy serwera. Jeśli nie skonfigurowano jeszcze skalowalnego w poziomie serwera, obie nazwy serwera działać tak samo. Po skonfigurowaniu skalowalnego w poziomie serwera, należy określić nazwę odpowiedniego serwera, w zależności od typu połączenia. 
@@ -107,7 +104,6 @@ SSMS, SSDT i parametry połączenia w programie PowerShell, użyj aplikacji funk
 **Problem:** użytkownicy otrzymują błąd **nie można odnaleźć serwera "\<nazwa serwera >" wystąpienie w trybie połączenia "ReadOnly".**
 
 **Rozwiązanie:** podczas wybierania **oddziel serwer przetwarzania od puli zapytań** opcji połączeń klienta za pomocą domyślne parametry połączenia (bez: rw) są przekierowywane do repliki puli zapytania. Jeśli replik w puli zapytania nie zostały jeszcze w trybie online ponieważ synchronizacji nie został jeszcze zostały zakończone, połączeń przekierowanego klienckich może zakończyć się niepowodzeniem. Aby zapobiec połączenia zakończone niepowodzeniem, należy zrezygnować z oddziel serwer przetwarzania od puli zapytań, dopiero po zakończeniu operacji skalowania w poziomie i synchronizacji. Metryki pamięci i QPU służy do monitorowania stanu synchronizacji.
-
 
 ## <a name="related-information"></a>Informacje pokrewne
 

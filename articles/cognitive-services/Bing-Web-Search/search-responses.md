@@ -1,23 +1,23 @@
 ---
-title: Odpowiedzi API wyszukiwania w Internecie Bing | Dokumentacja firmy Microsoft
-titleSuffix: Microsoft Cognitive Services
-description: Więcej informacji na temat typów odpowiedzi i odpowiedzi udzielone przez API wyszukiwania w Internecie Bing.
+title: Odpowiedzi wyszukiwania - API wyszukiwania w Internecie Bing
+titleSuffix: Azure Cognitive Services
+description: Więcej informacji na temat typów odpowiedzi i odpowiedzi z API wyszukiwania w Internecie Bing.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 8/13/2018
 ms.author: erhopf
-ms.openlocfilehash: 13e9792f3d5765047dabb4cdef59e85a47a69aba
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: f3a4c8bb024aa5e92365b72b8cc2180cc6f4d6d4
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42889473"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123780"
 ---
-# <a name="bing-web-search-responses"></a>Odpowiedzi wyszukiwania w Internecie Bing  
+# <a name="bing-web-search-api-response-structure-and-answer-types"></a>Typy struktury i odpowiedzi odpowiedzi interfejsu API wyszukiwania Bing w sieci Web  
 
 Podczas wyszukiwania w Internecie Bing wysyłać żądania wyszukiwania, zwraca [ `SearchResponse` ](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) obiektu w treści odpowiedzi. Obiekt zawiera pola dla każdej odpowiedzi, który Bing określany został istotne dla kwerendy. Ten przykład ilustruje obiekt odpowiedzi, jeśli Bing zwrócone wszystkie odpowiedzi:
 

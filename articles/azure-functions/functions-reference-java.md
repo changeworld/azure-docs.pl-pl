@@ -9,14 +9,14 @@ keywords: Azure functions, funkcje, przetwarzanie zdarzeń, elementy webhook, ob
 ms.service: azure-functions
 ms.devlang: java
 ms.topic: conceptual
-ms.date: 08/10/2018
+ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: f0dc471e8875ad0d738fce10421c3586752148b9
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: f6c5eb4a3ace1fcca1bbbef321371d55a0ce8da9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092313"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123491"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions Java
 
@@ -26,7 +26,35 @@ ms.locfileid: "44092313"
 
 Funkcji platformy Azure powinna być metoda bezstanowe klasy, która przetwarza dane wejściowe i generuje dane wyjściowe. Mimo że można napisać metody wystąpienia, funkcja nie może zależeć od wszystkie pola wystąpienia klasy. Wszystkie metody funkcji musi mieć `public` modyfikator dostępu.
 
-Można umieścić więcej niż jedną funkcję w projekcie. Należy unikać umieszczenie funkcji w oddzielnych plikach JAR.
+## <a name="folder-structure"></a>Struktura folderów
+
+Struktura folderów dla projektu Java wygląda podobnie do poniższego:
+
+```
+FunctionsProject
+ | - src
+ | | - main
+ | | | - java
+ | | | | - FunctionApp
+ | | | | | - MyFirstFunction.java
+ | | | | | - MySecondFunction.java
+ | - target
+ | | - azure-functions
+ | | | - FunctionApp
+ | | | | - FunctionApp.jar
+ | | | | - host.json
+ | | | | - MyFirstFunction
+ | | | | | - function.json
+ | | | | - MySecondFunction
+ | | | | | - function.json
+ | | | | - bin
+ | | | | - lib
+ | - pom.xml
+```
+
+Brak pliku udostępnionego [host.json] (funkcje host-json.md), który może służyć do konfigurowania aplikacji funkcji. Każda funkcja ma swój własny plik kodu (początku) i plik konfiguracji powiązania (function.json).
+
+Można umieścić więcej niż jedną funkcję w projekcie. Należy unikać umieszczenie funkcji w oddzielnych plikach JAR. FunctionApp w katalogu docelowym jest o tym, co zostanie wdrożona do aplikacji funkcji na platformie Azure.
 
 ## <a name="triggers-and-annotations"></a>Wyzwalacze i adnotacje
 

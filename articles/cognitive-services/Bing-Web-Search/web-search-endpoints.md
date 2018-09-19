@@ -1,37 +1,38 @@
 ---
-title: Punkt końcowy sieci Web wyszukiwania | Dokumentacja firmy Microsoft
-description: Podsumowanie punkt końcowy interfejsu API sieci Web wyszukiwania.
+title: Punkt końcowy wyszukiwania w sieci Web
+titleSuffix: Azure Cognitive Services
+description: Podsumowanie punktu końcowego interfejsu API wyszukiwania w sieci Web.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: v-gedod
-ms.openlocfilehash: 72fbe1a0eb4379ad032e649f7299e37a0214adfb
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 3058ca6cf0eb99486dd4c269d43b274fb367f7a9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346976"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125463"
 ---
 # <a name="web-search-endpoint"></a>Punkt końcowy wyszukiwania w sieci Web
-**Interfejsu API sieci Web wyszukiwania** zwraca stron sieci Web, grup dyskusyjnych, obrazów, klipów wideo, i [jednostek](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web). Jednostek zawiera podsumowanie informacji o osoby, miejsca lub tematu.
+**API wyszukiwania w Internecie** zwraca stron sieci Web, grup dyskusyjnych, obrazy, wideo, a [jednostek](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web). Jednostki zawierają podsumowanie informacji dotyczących osoby, miejsca lub tematu.
 ## <a name="endpoint"></a>Endpoint
-Aby uzyskać wyniki wyszukiwania w sieci Web przy użyciu interfejsu API Bing, Wyślij `GET` żądanie następujący punkt końcowy. Nagłówki i parametry adresu URL dalsze Definiowanie specyfikacji.
+Aby uzyskać wyniki wyszukiwania w Internecie przy użyciu interfejsu API usługi Bing, Wyślij `GET` żądanie następujący punkt końcowy. Nagłówki i parametry adresu URL dalsze Definiowanie specyfikacji.
 
-**Punkt końcowy**: sieci Web zwraca wyniki, które mają zastosowanie do użytkownika wyszukiwania zdefiniowane przez zapytanie `?q=""`.
+**Punkt końcowy**: wyniki z Internetu zwraca, które są istotne dla użytkownika wyszukiwania zapytanie zdefiniowane przez `?q=""`.
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/search
 ```
-Punkt końcowy: Aby uzyskać więcej informacji o nagłówkach, parametry, rynku kody, obiekty odpowiedzi, błędów, itp., zobacz [w wersji 7 interfejsu API sieci Web Bing](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) odwołania.
+Punkt końcowy: Szczegółowe informacje na temat nagłówki i parametry, rynek kodów, obiekty odpowiedzi, błędy itp., zobacz [interfejsu API sieci Web Bing w wersji 7](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference) odwołania.
 
 ## <a name="response-json"></a>Odpowiedź JSON
-Odpowiedź na żądania wyszukiwania w sieci Web obejmuje wszystkie wyniki jako obiektów JSON. Podczas analizowania wynik wymaga procedury obsługi elementów każdego typu. Zobacz [samouczek](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/tutorial-bing-web-search-single-page-app) i [kod źródłowy](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/tutorial-bing-web-search-single-page-app-source) przykłady.
+Odpowiedź na żądanie wyszukiwania w sieci Web zawiera wszystkie wyniki jako obiekty JSON. Analizowanie wyników wymaga procedur, które obsługują elementy każdego typu. Zobacz [samouczek](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/tutorial-bing-web-search-single-page-app) i [kod źródłowy](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/tutorial-bing-web-search-single-page-app-source) przykłady.
 
 ## <a name="next-steps"></a>Kolejne kroki
-**Bing** interfejsów API obsługi akcji wyszukiwania, które zwracają wyniki zgodnie z ich typu. Wszystkie punkty końcowe wyszukiwania zwracają wyniki w postaci obiektów JSON odpowiedzi.  Wszystkie punkty końcowe obsługi zapytań, które zwracają określonego języka i/lub lokalizacji geograficznej, szerokość i wyszukiwania usługi radius.
+**Bing** interfejsy API obsługują akcji wyszukiwania, które zwracają wyniki według ich typu. Wszystkie punkty końcowe wyszukiwania zwracają wyniki w postaci obiektów odpowiedzi JSON.  Wszystkie punkty końcowe obsługują zapytań, które zwracają określonego języka i/lub lokalizacji długość geograficzna, szerokość i wyszukiwania usługi radius.
 
-Aby uzyskać pełne informacje na temat parametrów obsługiwanych przez każdy punkt końcowy zobacz strony podręcznika dla każdego typu.
-Przykłady podstawowego żądania za pomocą wyszukiwania w sieci Web interfejsu API, zobacz [wyszukiwania sieci Web szybkie — uruchamia](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/search-the-web).
+Aby uzyskać pełne informacje na temat parametrów obsługiwanych przez każdy punkt końcowy zobacz strony pomocy dla każdego typu.
+Przykłady podstawowe żądania za pomocą wyszukiwania w sieci Web interfejsu API, zobacz [wyszukiwania w sieci Web przewodniki szybkiego startu](https://docs.microsoft.com/azure/cognitive-services/bing-web-search/search-the-web).

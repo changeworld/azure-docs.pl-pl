@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/17/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 5ae57764e2950d027e832eccec5393d4aec4486a
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: cbb73b199255af7e7a91b1586b331acde035bfd7
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981841"
+ms.locfileid: "46124516"
 ---
 # <a name="try-the-speech-service-for-free"></a>Wypróbuj bezpłatnie usługę rozpoznawania mowy
 
@@ -26,7 +26,7 @@ Na koniec usługa mowy oferuje bezpłatne, niskim warstwy, która jest odpowiedn
 
 ## <a name="free-trial"></a>Bezpłatna wersja próbna
 
-30-dniowej bezpłatnej wersji próbnej umożliwia dostęp do warstwy cenowej przez ograniczony czas standardowa S0. 
+30-dniowej bezpłatnej wersji próbnej umożliwia dostęp do ze standardowej warstwy cenowej przez ograniczony czas.
 
 Aby zarejestrować się w 30-dniowej bezpłatnej wersji próbnej:
 
@@ -44,58 +44,30 @@ Aby zarejestrować się w 30-dniowej bezpłatnej wersji próbnej:
 
    ![Wyraź zgodę na warunki](media/index/try-speech-api-free-trial3.png)
 
-1. Zaloguj się przy użyciu swojego konta Microsoft, Facebook, LinkedIn i GitHub. Alternatywnie możesz zasubskrybować bezpłatne konto Microsoft:
+1. Zaloguj się przy użyciu swojego konta Microsoft, Facebook, LinkedIn i GitHub.
 
-    * Przejdź do [portalu konta usługi Microsoft](https://account.microsoft.com/account).
-    * Wybierz **Zaloguj się przy użyciu Microsoft**.
+    Możesz zasubskrybować bezpłatnego konta Microsoft na [portalu konta usługi Microsoft](https://account.microsoft.com/account). Aby rozpocząć, kliknij pozycję **Zaloguj się przy użyciu Microsoft** , a następnie po wyświetleniu monitu, aby zalogować się, kliknij **utwórz je.** Wykonaj kroki, aby utworzyć i zweryfikować nowego konta Microsoft.
 
-    ![Logowanie](media/index/try-speech-api-free-trial4.png)
-
-    * Po wyświetleniu monitu, aby zalogować się, zaznaczyć **utworzyć**.
-
-    ![Utwórz nowe konto](media/index/try-speech-api-free-trial5.png)
-
-    * W krokach, które należy wykonać, wprowadź adres e-mail lub numer telefonu należy przypisać mu hasło, a następnie postępuj zgodnie z instrukcjami, aby zweryfikować swoje nowe konto Microsoft.
-
-Po zalogowaniu, rozpoczyna się Twoja bezpłatna wersja próbna. Wyświetlane strony sieci Web Wyświetla listę wszystkich usług Azure Cognitive Services do których użytkownik ma obecnie subskrypcji wersji próbnej. Dwa klucze subskrypcji są wyświetlane obok **usług przetwarzania mowy**. Żadnego z nich można używać w aplikacjach.
+Po zalogowaniu się do usług Cognitive Services spróbuj zaczyna się Twoja bezpłatna wersja próbna. Wyświetlane strony sieci Web Wyświetla listę wszystkich usług Azure Cognitive Services do których użytkownik ma obecnie subskrypcji wersji próbnej. Dwa klucze subskrypcji są wyświetlane obok **usług przetwarzania mowy**. Żadnego z nich można używać w aplikacjach.
 
 > [!NOTE]
-> Wszystkie subskrypcje bezpłatnej wersji próbnej znajdują się w regionie zachodnie stany USA. Po wprowadzeniu żądań, należy użyć punktu końcowego, który odnosi się do regionu.
+> Wszystkie subskrypcje bezpłatnej wersji próbnej znajdują się w regionie zachodnie stany USA. Po wprowadzeniu żądań, należy użyć `westus` punktu końcowego.
 
 ## <a name="new-azure-account"></a>Nowe konto platformy Azure
 
 Nowe konta usługi Azure otrzymywać 200 USD środków usługa, która jest dostępna przez maksymalnie 30 dni. Wartość tego kredytu można użyć, aby bliżej zapoznać się z usługą mowy lub rozpoczęcie tworzenia aplikacji.
 
-Aby zarejestrować się do nowego konta platformy Azure:
+Aby utworzyć nowe konto platformy Azure, przejdź do [strona tworzenia konta usługi Azure](https://azure.microsoft.com/free/ai/), kliknij przycisk **Rozpocznij za darmo,** i Utwórz nowe konto platformy Azure przy użyciu konta Microsoft.
 
-1. Przejdź do [strona tworzenia konta usługi Azure](https://azure.microsoft.com/free/ai/). 
+Możesz zasubskrybować bezpłatnego konta Microsoft na [portalu konta usługi Microsoft](https://account.microsoft.com/account). Aby rozpocząć, kliknij pozycję **Zaloguj się przy użyciu Microsoft** , a następnie po wyświetleniu monitu, aby zalogować się, kliknij **utwórz je.** Wykonaj kroki, aby utworzyć i zweryfikować nowego konta Microsoft.
 
-1. Wybierz **Rozpocznij bezpłatnie**.
-
-    ![Rozpocznij bezpłatnie](media/index/try-speech-api-new-azure1.png)
-
-1. Zaloguj się przy użyciu konta Microsoft. Jeśli nie masz:
-
-    * Przejdź do [portalu konta usługi Microsoft](https://account.microsoft.com/account).
-    * Wybierz **Zaloguj się przy użyciu Microsoft**.
-    * Po wyświetleniu monitu, aby zalogować się, zaznaczyć **utwórz je.**
-    * W krokach, które należy wykonać, wprowadź adres e-mail lub numer telefonu należy przypisać mu hasło, a następnie postępuj zgodnie z instrukcjami, aby zweryfikować swoje nowe konto Microsoft.
-
-1. Wprowadź pozostałe informacje, które zażądał założyć konto. Określ kraj i nazwy, a następnie podaj telefonu oraz adres e-mail.
-
-    ![Wprowadź informacje](media/index/try-speech-api-new-azure2.png)
-
-    Przez telefon i podając numer karty kredytowej, należy zweryfikować Twoją tożsamość. (Karta kredytowa nie zostanie obciążona) GD, zaakceptuj umowę z użytkownikiem platformy Azure. 
-
-    ![Zaakceptuj Umowę](media/index/try-speech-api-new-azure3.png)
-
-Twoje bezpłatne konto platformy Azure jest tworzony. Wykonaj kroki opisane w następnej sekcji, aby rozpocząć subskrypcję usługi mowy.
+Po utworzeniu konta platformy Azure, wykonaj kroki opisane w następnej sekcji, aby rozpocząć subskrypcję usługi mowy.
 
 ## <a name="create-a-speech-resource-in-azure"></a>Utwórz zasób mowy na platformie Azure
 
-Aby dodać zasób usługi mowy do konta platformy Azure:
+Aby dodać zasób usługi mowy (w warstwie bezpłatna lub płatna) do konta platformy Azure:
 
-1. Zaloguj się do [witryny Azure portal](https://ms.portal.azure.com/) przy użyciu swojego konta Microsoft.
+1. Zaloguj się do [witryny Azure portal](https://ms.portal.azure.com/) przy użyciu konta Microsoft.
 
 1. Wybierz **Utwórz zasób** w lewym górnym rogu portalu.
 
@@ -107,7 +79,7 @@ Aby dodać zasób usługi mowy do konta platformy Azure:
 
     ![Wybierz Speech (wersja zapoznawcza)](media/index/try-speech-api-create-speech2.png)
 
-1. W obszarze **Speech (wersja zapoznawcza)**, wybierz opcję **Utwórz** przycisku.
+1. W obszarze **Speech (wersja zapoznawcza)**, kliknij przycisk **Utwórz** przycisku.
 
     ![Kliknij przycisk Utwórz](media/index/try-speech-api-create-speech3.png)
 
@@ -116,21 +88,33 @@ Aby dodać zasób usługi mowy do konta platformy Azure:
     * Nazwa dla nowego zasobu. Nazwa służy do rozróżnienia wielu subskrypcji tej samej usługi.
     * Wybierz subskrypcję platformy Azure, nowy zasób z którym skojarzony jest ustalenie, jak są naliczane opłaty.
     * Wybierz region, w którym zasób będzie używany. Obecnie usługa rozpoznawania mowy jest dostępna w regionach zachodnie stany USA, Azja Wschodnia i Europa Północna.
-    * Wybierz warstwę cenową, albo F0 (ograniczoną bezpłatną subskrypcję) lub S0 (standardowa subskrypcja). Wybierz **Wyświetl pełne szczegóły ceny** pełne informacje dotyczące cen i użycie przydziały dla każdej warstwy.
+    * Wybierz opcję bezpłatnej i płatnej warstwy cenowej. Kliknij przycisk **Wyświetl pełne szczegóły ceny** pełne informacje dotyczące cen i użycie przydziały dla każdej warstwy.
     * Utwórz nową grupę zasobów dla tej subskrypcji mowy lub Przypisz subskrypcję przechodząc do istniejącej grupy zasobów. Pomoc, której możesz przechowywać różne subskrypcje platformy Azure uporządkowane grupy zasobów.
     * Wygodny dostęp do Twojej subskrypcji w przyszłości, wybierz **Przypnij do pulpitu nawigacyjnego** pole wyboru.
     * Wybierz **utworzyć.**
 
     ![Kliknij przycisk Utwórz](media/index/try-speech-api-create-speech4.png)
 
-    Może upłynąć kilka minut, aby utworzyć i wdrożyć nowy zasób mowy. Wybierz **Szybki Start** Aby wyświetlić informacje dotyczące nowego zasobu.
+    Może potrwać kilka minut, aby utworzyć i wdrożyć nowy zasób mowy. Wybierz **Szybki Start** Aby wyświetlić informacje dotyczące nowego zasobu.
 
     ![Panel szybkiego startu](media/index/try-speech-api-create-speech5.png)
 
-1. W obszarze **Szybki Start**, wybierz opcję **klucze** łącze w kroku 1, aby wyświetlić klucze subskrypcji. Każda subskrypcja ma dwa klucze; Możesz użyć dowolnego klucza w aplikacji. Wybierz przycisk obok każdego klucza, aby skopiować go do Schowka wklejania w kodzie.
+1. W obszarze **Szybki Start**, kliknij przycisk **klucze** łącze w kroku 1, aby wyświetlić klucze subskrypcji. Każda subskrypcja ma dwa klucze; Możesz użyć dowolnego klucza w aplikacji. Wybierz przycisk obok każdego klucza, aby skopiować go do Schowka wklejania w kodzie.
 
 > [!NOTE]
 > Można utworzyć nieograniczoną liczbę subskrypcji do warstwy standardowa w jednym lub wielu regionach. Jednak można utworzyć tylko jedną subskrypcję z warstwy bezpłatna. Wdrożenia modelu w ramach warstwy bezpłatna, które pozostają nieużywane przez 7 dni będzie można ponowić automatycznie.
+
+## <a name="switch-to-a-new-subscription"></a>Przełącz się do nowej subskrypcji
+
+Aby przełączyć się z jednej subskrypcji, na przykład kiedy Twoja bezpłatna wersja próbna wygaśnie lub gdy publikujesz aplikację, należy zastąpić klucz regionu i subskrypcji w kodzie za pomocą klucza regionu i subskrypcji nowego zasobu platformy Azure.
+
+> [!NOTE]
+> Bezpłatna wersja próbna klucze są tworzone w regionie zachodnie stany USA (`westus`) regionie. Z subskrypcji utworzonej za pomocą pulpitu nawigacyjnego platformy Azure może być w niektórych innym regionie, wybranie opcji Tak.
+
+* Jeśli aplikacja używa [zestaw SDK rozpoznawania mowy](speech-sdk.md), takich jak Podaj kod regionu `westus`, podczas tworzenia wystąpienia `RecognizerFactory`. 
+* Jeśli aplikacja używa jednej z usług mowy [interfejsów API REST](rest-apis.md), region jest częścią punktu końcowego identyfikatora URI, można użyć podczas wysyłania żądań.
+
+Kluczy utworzonych dla regionu są prawidłowe tylko w tym regionie. Podjęto próbę użycia je z innymi regionami będą powodować błędy uwierzytelniania.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

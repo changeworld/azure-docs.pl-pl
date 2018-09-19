@@ -1,40 +1,41 @@
 ---
-title: Aby wyświetlić odpowiedzi sieci web przy użyciu klasyfikacji | Dokumentacja firmy Microsoft
-description: Pokazuje, jak używać klasyfikacji do wyświetlenia odpowiedzi, które zwraca interfejs API wyszukiwania usługi Bing sieci Web.
+title: Jak wyświetlić wyniki wyszukiwania — interfejs API wyszukiwania Bing w sieci Web za pomocą klasyfikacji
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak używać funkcji Klasyfikacja można wyświetlić wyniki wyszukiwania z API wyszukiwania w Internecie Bing.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
+manager: cgronlun
 ms.assetid: BBF87972-B6C3-4910-BB52-DE90893F6C71
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 750146f3bb28b94594a71733b68f092880360c5a
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: d362d3aa131ba2ddfec8c7873352c634e7ce099c
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348997"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124205"
 ---
-# <a name="using-ranking-to-display-results"></a>Aby wyświetlić wyniki przy użyciu klasyfikacji  
+# <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>Jak używać funkcji Klasyfikacja do wyświetlania wyników API wyszukiwania w Internecie Bing  
 
-Każda odpowiedź wyszukiwania zawiera [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) odpowiedzi, który określa sposób musisz wyświetlić wyniki wyszukiwania. Odpowiedź klasyfikacji grupuje wyniki przez mainline i paska bocznego zawartości dla strony wyników wyszukiwania tradycyjnych. Jeśli nie są wyświetlane wyniki w tradycyjny połączeniach i format paska bocznego, musisz podać zawartości połączeniach nowszej widoczność niż zawartość paska bocznego.  
-  
-W każdej grupie (mainline lub paska bocznego), [elementów](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items) tablicy identyfikuje zawartość musi występować w określonej kolejności. Każdy element udostępnia dwa sposoby do identyfikowania wyniku w odpowiedzi.  
-  
--   `answerType` i `resultIndex` — `answerType` pole identyfikuje odpowiedzi (na przykład strony sieci Web lub wiadomości) i `resultIndex` identyfikuje wyniku w odpowiedzi (na przykład artykuł wiadomości). Indeks się od zera.  
-  
--   `value` — `value` Pole zawiera identyfikator, który jest zgodny z Identyfikatorem odpowiedzi lub wyniku w odpowiedzi. Odpowiedź na pytanie lub wyniki zawierają identyfikator, ale nie oba.  
-  
-Przy użyciu Identyfikatora jest łatwiejsze do użycia, ponieważ konieczne jest niezgodny z Identyfikatorem klasyfikacji o identyfikatorze odpowiedzi lub jednego z jego wyniki. Jeśli obiekt odpowiedzi zawiera `id` pola, Wyświetl wyniki wszystkich odpowiedzi ze sobą. Na przykład jeśli `News` obiekt zawiera `id` pola, wyświetlać wszystkie artykuły ze sobą. Jeśli `News` nie ma obiektu `id` pola każdego artykułu wiadomości zawiera `id` pola i odpowiedzi klasyfikacji łączy artykuły z wyników z innych odpowiedzi.  
-  
-Przy użyciu `answerType` i `resultIndex` jest nieco bardziej skomplikowane. Możesz użyć `answerType` do identyfikowania odpowiedzi, który zawiera wyników do wyświetlenia. Następnie należy użyć `resultIndex` do indeksu za pomocą wyniki odpowiedź na pytanie, aby uzyskać wyników do wyświetlenia. ( `answerType` Wartość jest nazwą pola w [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) obiektu.) Jeśli jest powinien, aby wyświetlić wyniki wszystkich odpowiedzi ze sobą, odpowiedzi klasyfikacji elementu nie zawiera `resultIndex` pola.  
+Każda odpowiedź wyszukiwania zawiera [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse) odpowiedzi, który określa, jak należy wyświetlić wyniki wyszukiwania. Odpowiedź klasyfikacji grupuje wyniki według mainline i paska bocznego zawartości dla strona wyników wyszukiwania tradycyjnych. Jeśli nie są wyświetlane wyniki w przypadku tradycyjnych linii głównej i paska bocznego format, należy podać linii głównej zawartości bardziej widoczny niż zawartość pasku bocznym.  
+
+W każdej grupie (mainline lub pasku bocznym), [elementów](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankinggroup-items) tablicy identyfikuje zawartość musi znajdować się w podanej kolejności. Każdy element zawiera następujące dwa sposoby, aby zidentyfikować wynik w odpowiedzi.  
+
+-   `answerType` i `resultIndex` — `answerType` pole identyfikuje odpowiedzi (np. strony sieci Web lub wiadomości) i `resultIndex` identyfikuje wyniku w odpowiedzi (na przykład artykuł grup dyskusyjnych). Indeks się od zera.  
+
+-   `value` — `value` Pole zawiera identyfikator, który jest zgodny z Identyfikatorem odpowiedzi lub wyniku w odpowiedzi. Odpowiedź na pytanie lub wyniki zawierają identyfikator, ale nie oba jednocześnie.  
+
+Przy użyciu Identyfikatora jest łatwiejszy w obsłudze, ponieważ konieczne jest zgodny z Identyfikatorem klasyfikacji o identyfikatorze odpowiedzi lub jednego z jego wyniki. Jeśli obiekt odpowiedzi zawiera `id` pola, wyświetlić wyniki wszystkich odpowiedzi ze sobą. Na przykład jeśli `News` obiekt zawiera `id` pola, wyświetlić wszystkie artykuły z wiadomościami ze sobą. Jeśli `News` nie ma obiektu `id` pola, a następnie zawiera każdego artykułu z wiadomościami `id` pola i odpowiedzi klasyfikacji napisana artykuły z wiadomościami z wynikami z innych odpowiedzi.  
+
+Za pomocą `answerType` i `resultIndex` jest nieco bardziej skomplikowane. Możesz użyć `answerType` do identyfikowania odpowiedzi, który zawiera wyników do wyświetlenia. Następnie należy użyć `resultIndex` do indeksu za pośrednictwem wyników odpowiedź na pytanie, aby uzyskać wynik do wyświetlenia. ( `answerType` Wartością jest nazwa pola w [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) obiektu.) Jeśli masz powinien wyświetlić wyników wszystkich odpowiedzi ze sobą, odpowiedź klasyfikacji elementu nie zawiera `resultIndex` pola.  
 
 ## <a name="ranking-response-example"></a>Klasyfikacja przykład odpowiedzi
 
-Poniżej przedstawiono przykład [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse). Ponieważ nie ma odpowiedzi sieci Web `id` pola, czy wyświetlane pojedynczo oparte na klasyfikacji do wszystkich stron sieci Web (każdej strony sieci Web zawiera `id` pól). I dlatego dołączaj obrazów, klipów wideo i odpowiedzi wyszukiwań pokrewnych `id` pola, czy wyświetlane wyniki każdego z tych odpowiedzi razem oparte na klasyfikacji.
-  
+Poniżej pokazano przykład [RankingResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#rankingresponse). Ponieważ nie ma odpowiedzi w sieci Web `id` pola, zostanie wyświetlony wszystkich stron sieci Web, które są indywidualnie oparte na klasyfikacji (każdej strony sieci Web obejmuje `id` pola). A ponieważ obrazy, wideo i powiązane wyszukiwania odpowiedzi zawiera `id` pola, będą wyświetlane wyniki każdego z tych odpowiedzi razem w oparciu o rangę.
+
 ```json
 {  
     "_type" : "SearchResponse",
@@ -203,24 +204,24 @@ Poniżej przedstawiono przykład [RankingResponse](https://docs.microsoft.com/re
     }
 }  
 ```  
-  
-W oparciu o tę odpowiedź klasyfikacji, połączeniach wyświetla następujące wyniki wyszukiwania:  
-  
--   Pierwszego wyniku strony sieci Web 
+
+Na podstawie tej klasyfikacji odpowiedzi, linii głównej będzie wyświetlane następujące wyniki wyszukiwania:  
+
+-   Pierwszego wyniku strony sieci Web
 -   Wszystkie obrazy  
--   Wyniki drugiego i trzeciego strony sieci Web  
--   Wszystkie pliki wideo  
+-   Wyniki druga i trzecia strona sieci Web  
+-   Wszystkie filmy wideo  
 -   Wyniki strony sieci Web 4, 5 i 6.  
-  
-I paska bocznego wyświetla następujące wyniki wyszukiwania:  
-  
--   Wszystkie powiązane wyszukiwania  
-  
+
+I paska bocznego będą wyświetlane następujące wyniki wyszukiwania:  
+
+-   Powiązane wyszukiwania  
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Uzyskać informacji o unranked wyników, zobacz [podwyższania poziomu odpowiedzi, które nie są klasyfikowane](./filter-answers.md#promoting-answers-that-are-not-ranked).
+Aby uzyskać informacji na temat podwyższania poziomu unranked wyników, zobacz [podwyższania poziomu odpowiedzi, które nie są oceniane](./filter-answers.md#promoting-answers-that-are-not-ranked).
 
-Aby dowiedzieć się, jak ograniczenie liczby uporządkowanej według rangi odpowiedzi w odpowiedzi, zobacz [ograniczenie liczby odpowiedzi w odpowiedzi](./filter-answers.md#limiting-the-number-of-answers-in-the-response).
+Aby dowiedzieć się, jak ograniczenie liczby rangi odpowiedzi w odpowiedzi, zobacz [ograniczenie liczby odpowiedzi w odpowiedzi](./filter-answers.md#limiting-the-number-of-answers-in-the-response).
 
-Np. C#, który używa klasyfikacji, aby wyświetlić wyniki, zobacz [klasyfikacji samouczek C#](./csharp-ranking-tutorial.md).
+Dla języka C# przykładu, który używa klasyfikacji, aby wyświetlić wyniki, zobacz [klasyfikacji samouczek języka C#](./csharp-ranking-tutorial.md).

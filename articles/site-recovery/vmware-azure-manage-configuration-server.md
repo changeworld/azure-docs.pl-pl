@@ -6,53 +6,77 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 07/06/2018
 ms.author: raynew
-ms.openlocfilehash: 1d2f194eb6a2186fc1e8451a7022d26cd1013bb2
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 8877234502ff662954dc6fe0c19d8252db42d7d6
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022400"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123560"
 ---
 # <a name="manage-the-configuration-server-for-vmware-vms"></a>Zarządzanie serwerem konfiguracji dla maszyn wirtualnych VMware
 
 Ustaw się na lokalnym serwerze konfiguracji, gdy używasz [usługi Azure Site Recovery](site-recovery-overview.md) do odzyskiwania po awarii maszyn wirtualnych VMware i serwerów fizycznych na platformę Azure. Serwer konfiguracji służy do koordynowania komunikacji między lokalną VMware i platformą Azure oraz do zarządzania replikacją danych. Ten artykuł zawiera podsumowanie typowych zadań zarządzania na serwerze konfiguracji po jej wdrożeniu.
 
-
-
-## <a name="modify-vmware-settings"></a>Modyfikowanie ustawień programu VMware
+## <a name="access-configuration-server"></a>Dostęp do serwera konfiguracji
 
 Można uzyskać dostęp do serwera konfiguracji w następujący sposób:
-    - Zaloguj się do maszyny Wirtualnej, na którym została wdrożona i Rozpocznij Azure Site Recovery Configuration Manager ze skrótu na pulpicie.
-    - Alternatywnie, mają dostęp do serwera konfiguracji, zdalnie z **https://*ConfigurationServerName*/:44315 /**. Zaloguj się przy użyciu poświadczeń administratora.
 
-### <a name="modify-vmware-server-settings"></a>Zmodyfikuj ustawienia serwera VMware
+* Zaloguj się do maszyny Wirtualnej, na którym została wdrożona i rozpoczęcie **Azure Site Recovery Configuration Manager** ze skrótu na pulpicie.
+* Alternatywnie, są dostępne na serwerze konfiguracji zdalnie https://*ConfigurationServerName*/:44315 /. Zaloguj się przy użyciu poświadczeń administratora.
 
-1. Aby skojarzyć z serwerem konfiguracji na inny serwer programu VMware, po zalogowaniu, wybierz pozycję **poświadczenia serwera vCenter Server/vSphere ESXi Dodaj**.
+## <a name="modify-vmware-server-settings"></a>Zmodyfikuj ustawienia serwera VMware
+
+1. Aby skojarzyć inny serwer programu VMware z serwerem konfiguracji po [logowania](#access-configuration-server), wybierz opcję **poświadczenia serwera vCenter Server/vSphere ESXi Dodaj**.
 2. Wprowadź szczegółowe informacje, a następnie wybierz **OK**.
 
+## <a name="modify-credentials-for-automatic-discovery"></a>Zmodyfikowania poświadczeń do automatycznego odnajdowania
 
-### <a name="modify-credentials-for-automatic-discovery"></a>Zmodyfikowania poświadczeń do automatycznego odnajdowania
-
-1. Aby zaktualizować poświadczenia używane do łączenia z serwerem VMware do automatycznego odnajdowania maszyn wirtualnych programu VMware, po zalogowaniu wybierz **Edytuj**.
+1. Aby zaktualizować poświadczenia używane do łączenia z serwerem VMware do automatycznego odnajdowania maszyn wirtualnych programu VMware, po [logowania](#access-configuration-server), wybierz konto i kliknij przycisk **Edytuj**.
 2. Wprowadź nowe poświadczenia, a następnie wybierz **OK**.
 
     ![Modyfikowanie programu VMware](./media/vmware-azure-manage-configuration-server/modify-vmware-server.png)
 
+Można również zmodyfikować poświadczenia za pośrednictwem CSPSConfigtool.exe.
+
+1. Zaloguj się do serwera konfiguracji, a następnie uruchom CSPSConfigtool.exe
+2. Wybierz konto chcesz zmodyfikować, a następnie kliknij przycisk **Edytuj**.
+3. Wprowadź poświadczenia zmodyfikowane, a następnie kliknij przycisk **Ok**
 
 ## <a name="modify-credentials-for-mobility-service-installation"></a>Modyfikowanie poświadczenia na potrzeby instalacji usługi mobilności
 
 Zmodyfikuj poświadczenia używane do automatycznego instalowania usługi mobilności na maszynach wirtualnych VMware, należy włączyć dla replikacji.
 
-1. Po zalogowaniu wybierz **Zarządzanie poświadczeniami maszyny wirtualnej**
-2. Wprowadź nowe poświadczenia, a następnie wybierz **OK**.
+1. Po [logowania](#access-configuration-server), wybierz opcję **Zarządzanie poświadczeniami maszyny wirtualnej**
+2. Wybierz konto chcesz zmodyfikować, a następnie kliknij przycisk **edycji**
+3. Wprowadź nowe poświadczenia, a następnie wybierz **OK**.
 
     ![Zmodyfikowania poświadczeń usługi mobilności](./media/vmware-azure-manage-configuration-server/modify-mobility-credentials.png)
+
+Można również zmodyfikować poświadczeń za pośrednictwem CSPSConfigtool.exe.
+
+1. Zaloguj się do serwera konfiguracji, a następnie uruchom CSPSConfigtool.exe
+2. Wybierz konto chcesz zmodyfikować, a następnie kliknij przycisk **edycji**
+3. Wprowadź nowe poświadczenia, a następnie kliknij przycisk **Ok**.
+
+## <a name="add-credentials-for-mobility-service-installation"></a>Dodaj poświadczenia na potrzeby instalacji usługi mobilności
+
+Jeśli zdarzyło Ci się przeoczyć dodawania poświadczeń podczas wdrażania pakietu OVF serwera konfiguracji
+
+1. Po [logowania](#access-configuration-server), wybierz opcję **Zarządzanie poświadczeniami maszyny wirtualnej**.
+2. Kliknij pozycję **Dodawanie poświadczeń maszyny wirtualnej**.
+    ![Dodaj mobilności — poświadczenia](media/vmware-azure-manage-configuration-server/add-mobility-credentials.png)
+3. Wprowadź nowe poświadczenia, a następnie kliknij pozycję **Dodaj**.
+
+Można również dodać poświadczeń za pośrednictwem CSPSConfigtool.exe.
+
+1. Zaloguj się do serwera konfiguracji, a następnie uruchom CSPSConfigtool.exe
+2. Kliknij przycisk **Dodaj**, wprowadź nowe poświadczenia i kliknij przycisk **Ok**.
 
 ## <a name="modify-proxy-settings"></a>Modyfikowanie ustawień serwera proxy
 
 Zmodyfikuj ustawienia serwera proxy komputera serwera konfiguracji, aby uzyskać dostęp do Internetu na platformie Azure. Jeśli masz maszyny server procesu, oprócz domyślnego serwera proces uruchomiony na komputerze z serwerem konfiguracji, należy zmodyfikować ustawienia na obu komputerach.
 
-1. Po zalogowaniu do serwera konfiguracji, wybierz **Zarządzanie łącznością**.
+1. Po [logowania](#access-configuration-server) z serwerem konfiguracji wybierz **Zarządzanie łącznością**.
 2. Zaktualizuj wartości serwera proxy. Następnie wybierz pozycję **Zapisz** Aby zaktualizować ustawienia.
 
 ## <a name="add-a-network-adapter"></a>Dodawanie karty sieciowej
@@ -60,7 +84,7 @@ Zmodyfikuj ustawienia serwera proxy komputera serwera konfiguracji, aby uzyskać
 Szablon Open Virtualization Format (OVF) umożliwia wdrożenie serwera konfiguracji maszyny Wirtualnej z jedną kartą sieciową.
 
 - Możesz [Dodawanie karty sieciowej do maszyny Wirtualnej](vmware-azure-deploy-configuration-server.md#add-an-additional-adapter), ale można go dodać, aby zarejestrować serwer konfiguracji w magazynie.
-- Aby dodać kartę, po zarejestrowaniu serwera konfiguracji w magazynie, należy dodać kartę do właściwości maszyny Wirtualnej. Następnie należy ponownie zarejestrować serwer w magazynie.
+- Aby dodać kartę, po zarejestrowaniu serwera konfiguracji w magazynie, należy dodać kartę do właściwości maszyny Wirtualnej. Następnie należy [ponownie zarejestrować](#reregister-a-configuration-server-in-the-same-vault) serwera w magazynie.
 
 
 ## <a name="reregister-a-configuration-server-in-the-same-vault"></a>Zarejestruj ponownie serwer konfiguracji, w tym samym magazynie
@@ -87,7 +111,8 @@ Jeśli trzeba, można ponownie zarejestrować serwer konfiguracji, w tym samym m
   ```
           net stop obengine
           net start obengine
-  ```
+   ```
+
 
 ## <a name="register-a-configuration-server-with-a-different-vault"></a>Rejestrowanie serwera konfiguracji za pomocą innego magazynu
 

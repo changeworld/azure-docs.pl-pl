@@ -1,24 +1,25 @@
 ---
-title: Obsługiwane języki w interfejsie API w usłudze Translator firmy Microsoft | Dokumentacja firmy Microsoft
-description: Wyświetl języki obsługiwane przez interfejs API tekstu usługi Microsoft Translator.
+title: Języki obsługiwane interfejs API tekstu usługi Translator
+titlesuffix: Azure Cognitive Services
+description: Wyświetl języki obsługiwane przez interfejs API tekstu usługi Translator.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: v-jansko
-ms.openlocfilehash: 15e01dd55a0fe297eab69417074dc58a15b469c4
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 9318a562fad00f61d50fdce19b8b84b62c294cba
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43783216"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124852"
 ---
-# <a name="supported-languages-in-the-microsoft-translator-text-api"></a>Obsługiwane języki w interfejs API tekstu usługi Microsoft Translator
+# <a name="supported-languages-in-the-translator-text-api"></a>Obsługiwane języki w interfejsie API tekstu usługi Translator
 
-Interfejs API tekstu usługi Microsoft Translator obsługuje następujące języki do tłumaczenia tekstu na tekst. Tłumaczenie neuronowe (NMT) stanowi nowy standard w poszukiwaniu tłumaczeń maszyny bazujących na sztucznej Inteligencji wysokiej jakości i jest dostępny jako domyślne za pomocą interfejsu API tekstu usługi Translator w wersji 3, gdy neuronowych system będzie dostępny. Neuronowego tłumaczenia maszynowego jest dostępna w wersji 2 za pomocą kategorii "generalnn".
+Interfejs API tekstu usługi Translator obsługuje następujące języki do tłumaczenia tekstu na tekst. Tłumaczenie neuronowe (NMT) stanowi nowy standard w poszukiwaniu tłumaczeń maszyny bazujących na sztucznej Inteligencji wysokiej jakości i jest dostępny jako domyślne za pomocą interfejsu API tekstu usługi Translator w wersji 3, gdy neuronowych system będzie dostępny. Neuronowego tłumaczenia maszynowego jest dostępna w wersji 2 za pomocą kategorii "generalnn".
 
 [Dowiedz się więcej o tym, jak działa tłumaczenia maszynowego](https://www.microsoft.com/translator/mt.aspx)
 
@@ -97,12 +98,12 @@ Metoda Transliterate obsługuje następujące języki. W "do/z" "<> -" oznacza, 
 | Język    | Kod języka | Skrypt | Do i z niej | Skrypt|
 |:----------- |:-------------:|:-------------:|:-------------:|:-------------:|
 | Arabski | ar | Arabski | <--> | Łaciński |
-|Bengalski  | bn | Bengalski | <--> | Łaciński |
+|Bengalski  | bn | Bengali | <--> | Łaciński |
 | Chiński (uproszczony) | zh-Hans | Chiński uproszczony | <--> | Łaciński |
 | Chiński (uproszczony) | zh-Hans | Chiński uproszczony | <--> | Chiński tradycyjny |
 | Chiński (tradycyjny) | zh-Hant | Chiński tradycyjny | <--> | Łaciński |
 | Chiński (tradycyjny) | zh-Hant | Chiński tradycyjny | <--> | Chiński uproszczony |
-| Gudżarati | gu  | Gudżarati | --> | Łaciński |
+| Gujarati | gu  | Gujarati | --> | Łaciński |
 | Hebrajski | ADAM | Hebrajski | <--> | Łaciński |
 | Hindi | hi | Dewanagari | <--> | Łaciński |
 | Japoński | ja | Japoński | <--> | Łaciński |
@@ -110,7 +111,7 @@ Metoda Transliterate obsługuje następujące języki. W "do/z" "<> -" oznacza, 
 | Malasian | ml | Malajalam | --> | Łaciński |
 | Marathi | mr | Dewanagari | --> | Łaciński |
 | Orija | lub | Orija | <--> | Łaciński |
-| Pendżabski | pa | Gurmukhi | <--> | Łaciński  |
+| Punjabi | pa | Gurmukhi | <--> | Łaciński  |
 | Serbski (cyrylica) | Funkcja SR-Cyrl | Cyrylica  | --> | Łaciński |
 | Serbski (łaciński) | Funkcja SR-Latn | Łaciński | --> | Cyrylica |
 | Tamilski | ta | Tamilski | --> | Łaciński |

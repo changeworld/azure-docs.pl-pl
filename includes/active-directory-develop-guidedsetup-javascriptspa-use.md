@@ -1,7 +1,31 @@
-## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Zaloguj użytkownika za pomocą biblioteki uwierzytelniania firmy Microsoft (MSAL)
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: active-directory
+documentationcenter: dev-center-name
+author: navyasric
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/17/2018
+ms.author: nacanuma
+ms.custom: include file
+ms.openlocfilehash: 94d57abc95dabf1da579f6d2105ca6c74140a86f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46293518"
+---
+## <a name="use-the-microsoft-authentication-library-msal-to-sign-in-the-user"></a>Biblioteka Microsoft Authentication Library (MSAL) umożliwia logowanie użytkownika
 
-1.  Utwórz plik o nazwie `app.js`. Jeśli używasz programu Visual Studio, wybierz projekt (folder główny projekt), kliknij prawym przyciskiem myszy i wybierz: `Add`  >  `New Item`  >  `JavaScript File`:
-2.  Dodaj następujący kod do Twojej `app.js` pliku:
+1.  Utwórz plik o nazwie `app.js`. Jeśli używasz programu Visual Studio wybierz projekt (folder główny projektu), kliknij prawym przyciskiem myszy i wybierz pozycję: `Add`  >  `New Item`  >  `JavaScript File`:
+2.  Dodaj następujący kod, aby Twoje `app.js` pliku:
 
 ```javascript
 // Graph API endpoint to show user profile
@@ -113,32 +137,32 @@ function showError(endpoint, error, errorDesc) {
 <!--start-collapse-->
 ### <a name="more-information"></a>Więcej informacji
 
-Po kliknięciu *"Wywołaj Microsoft interfejsu API programu Graph"* przycisku po raz pierwszy, `callGraphApi` wywołania metody `loginRedirect` do logowania użytkownika. Ta metoda powoduje przekierowanie użytkownika do *punktu końcowego programu Microsoft Azure Active Directory v2* Monituj i sprawdzić poprawności poświadczeń użytkownika. W wyniku pomyślnego logowania, zostanie przekierowany użytkownik w wrócić do oryginalnego *index.html* strony i token odebraniu przetworzonych przez `msal.js` i informacji zawartych w tokenie są buforowane. Token ten jest nazywany *token Identyfikatora* i zawiera podstawowe informacje o użytkowniku, takie jak nazwa wyświetlana użytkownika. Jeśli planujesz używać danych udostępniane przez ten token do celów, musisz upewnij się, że ten token jest zweryfikowany przez serwer wewnętrznej bazy danych, aby zagwarantować, że token został wystawiony dla prawidłowego użytkownika dla aplikacji.
+Po kliknięciu *"Wywołania interfejsu API Microsoft Graph"* przycisku po raz pierwszy `callGraphApi` wywołania metody `loginRedirect` do logowania użytkownika. Ta metoda powoduje przekierowanie użytkownika do *punktu końcowego v2 Microsoft Azure Active Directory* Monituj i sprawdzanie poprawności poświadczeń użytkownika. W wyniku pomyślne logowanie, użytkownik jest przekierowany z powrotem do oryginalnego *index.html* strony i token odebraniu przetworzonych przez `msal.js` i informacje zawarte w tokenie są buforowane. Token ten jest znany jako *tokenu Identyfikacyjnego* i zawiera podstawowe informacje o użytkowniku, takie jak nazwa wyświetlana użytkownika. Jeśli planujesz użyć wszystkie dane udostępniane przez ten token do żadnych celów, musisz upewnij się, że token ten jest weryfikowane przez serwer wewnętrznej bazy danych w celu zagwarantowania, że token został wystawiony do prawidłowego użytkownika dla aplikacji.
 
-SPA wygenerowane przez ten przewodnik nie oznacza, że użycie bezpośrednio tokenu identyfikator — zamiast tego wywołuje `acquireTokenSilent` i/lub `acquireTokenRedirect` uzyskanie *token dostępu* wykorzystywane do badania interfejsu API programu Microsoft Graph. Przykładowe, która weryfikuje token Identyfikatora, należy przyjrzeć [to](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "Github active-directory-javascript-singlepageapp-dotnet-webapi-v2 próbki") ASP używa przykładowej aplikacji w usłudze GitHub — przykład Interfejs API sieci web .NET dla tokenu weryfikacji.
+SPA wygenerowane przez ten przewodnik nie oznacza, że użycie bezpośrednio tokenu Identyfikacyjnego — zamiast tego wywołuje `acquireTokenSilent` i/lub `acquireTokenRedirect` uzyskania *token dostępu* umożliwia tworzenie zapytań dotyczących interfejsu API programu Microsoft Graph. Przykład sprawdza poprawność tokenu Identyfikatora, należy spojrzeć na [to](https://github.com/Azure-Samples/active-directory-javascript-singlepageapp-dotnet-webapi-v2 "przykładowe active-directory-javascript-singlepageapp-dotnet-webapi-v2 Github") ASP korzysta z przykładowej aplikacji w usłudze GitHub — przykład Interfejs API sieci web platformy .NET dla walidacji tokenów.
 
-#### <a name="getting-a-user-token-interactively"></a>Pobieranie tokenu użytkownika interakcyjnego
+#### <a name="getting-a-user-token-interactively"></a>Pobieranie tokenu użytkownika interaktywnego
 
-Po początkowej logowania, czy chcesz o konieczności ponownego uwierzytelnienia za każdym razem, należy uzyskać token dostępu do zasobu — tak *acquireTokenSilent* powinny być używane w większości przypadków do uzyskania tokenów. Istnieje jednak sytuacji, należy wymusić użytkownikom na interakcję z punktem końcowym w wersji 2 usługi Azure Active Directory — Oto kilka przykładów:
-- Użytkownicy mogą potrzebować ponownie wprowadzić swoje poświadczenia, ponieważ hasło wygasło
-- Żąda dostępu do zasobu, który użytkownik musi wyrazić zgodę na aplikację
+Po początkowej logowania, nie chcesz o konieczności ponownego uwierzytelnienia za każdym razem, gdy potrzebują do wysłania żądania tokenu dostępu do zasobu — więc *acquireTokenSilent* powinny być używane w większości przypadków do uzyskania tokenów. Istnieją jednak sytuacje, trzeba wymusić użytkownikom na interakcję z punktu końcowego v2 usługi Azure Active Directory — niektóre przykłady to:
+- Użytkownicy może być konieczne ponowne wprowadzenie poświadczeń, ponieważ hasło wygasło
+- Aplikacja żąda dostępu do zasobu, który użytkownik musi wyrazić zgodę na
 - Uwierzytelnianie dwuskładnikowe jest wymagana
 
-Wywoływanie *acquireTokenRedirect(scope)* spowodować przekierowaniu użytkowników do punktu końcowego usługi Azure Active Directory w wersji 2 (lub *acquireTokenPopup(scope)* wynik w oknie podręcznym) gdzie użytkownicy muszą wchodzić w interakcje Potwierdzenie poświadczeń, zapewniając zgody wymaganego zasobu lub kończenie uwierzytelniania dwuskładnikowego.
+Wywoływanie *acquireTokenRedirect(scope)* spowodować przekierowywanie użytkowników do punktu końcowego usługi Azure Active Directory w wersji 2 (lub *acquireTokenPopup(scope)* wynik w oknie podręcznym) gdzie użytkownicy muszą wchodzić w interakcje Potwierdzenie poświadczeń, wyrażenia zgody na wymagany zasób lub ukończenie uwierzytelniania dwuskładnikowego.
 
-#### <a name="getting-a-user-token-silently"></a>Pobieranie tokenu użytkownika dyskretnej
-` acquireTokenSilent` Metoda obsługuje przejęć tokenu i wznowienie bez interakcji użytkownika. Po `loginRedirect` (lub `loginPopup`) jest wykonywana po raz pierwszy `acquireTokenSilent` jest metoda często używane do uzyskiwania tokenów umożliwiają dostęp do chronionych zasobów w kolejnych wywołaniach — jako wywołania żądania lub odnowić tokeny zostały wprowadzone w trybie dyskretnym.
-`acquireTokenSilent` może się nie powieść w niektórych przypadkach — na przykład hasło użytkownika wygasło. Aplikacja może obsłużyć tego wyjątku na dwa sposoby:
+#### <a name="getting-a-user-token-silently"></a>Pobieranie tokenu użytkownika dyskretnie
+` acquireTokenSilent` Obsługiwała pozyskanie tokenu i wznowienie bez żadnej interakcji użytkownika. Po `loginRedirect` (lub `loginPopup`) jest wykonywana po raz pierwszy `acquireTokenSilent` jest metodą, często używane do uzyskiwania tokenów, które umożliwiają dostęp do chronionych zasobów dla kolejnych wywołań — jak do żądania lub odnowienia tokenów wywołań dyskretnie.
+`acquireTokenSilent` może się nie powieść w niektórych przypadkach — na przykład użytkownika hasło wygasło. Aplikacja może obsłużyć ten wyjątek na dwa sposoby:
 
-1.  Wywoływania `acquireTokenRedirect` natychmiast, która powoduje monitowanie użytkownika do logowania. Ten wzorzec jest często używana w aplikacji online w przypadku, gdy brak nieuwierzytelnione zawartości w aplikacji dostępne dla użytkownika. Przykładowe wygenerowane za pomocą tego Instalatora z przewodnikiem używa tego wzorca.
+1.  Wywołanie `acquireTokenRedirect` natychmiast, które powoduje monitowanie użytkownika do logowania. Ten wzorzec jest często używana w aplikacji w trybie online w przypadku, gdy brak nieuwierzytelnione zawartości w aplikacji dostępne dla użytkownika. W przykładzie, wygenerowane za pomocą tego Instalatora z przewodnikiem użyto tego wzorca.
 
-2. Aplikacje można wprowadzić oznaczenia wizualne dla użytkownika, który interakcyjnego logowania jest wymagana, więc użytkownik może wybrać, właściwym czasie zalogować się lub aplikacji można ponowić próbę `acquireTokenSilent` w późniejszym czasie. Jest ona powszechnie stosowana, gdy użytkownik może użyć innych funkcji aplikacji bez są zakłócone — na przykład Brak dostępnej zawartości nieuwierzytelnione w aplikacji. W takim przypadku użytkownik może zdecydować, chcąc Zaloguj się do uzyskania dostępu do zabezpieczonych zasobów lub Odśwież nieaktualne informacje.
+2. Aplikacje może być wizualne oznaczenie do użytkownika, który interakcyjnego logowania jest wymagana, dzięki czemu użytkownik może wybrać w odpowiednim czasie, aby zalogować się lub aplikacji można ponowić próbę `acquireTokenSilent` w późniejszym czasie. Jest to często używane, po użytkownik może użyć innych funkcji aplikacji bez zakłócana — na przykład jest nieuwierzytelnione zawartość dostępna w aplikacji. W tym przypadku użytkownik może wybrać, gdy mają logować się do uzyskania dostępu do chronionego zasobu lub odświeżyć nieaktualne informacje.
 
 <!--end-collapse-->
 
 ## <a name="call-the-microsoft-graph-api-using-the-token-you-just-obtained"></a>Wywołanie interfejsu API programu Microsoft Graph przy użyciu tokenu, który został uzyskany
 
-Dodaj następujący kod do Twojej `app.js` pliku:
+Dodaj następujący kod, aby Twoje `app.js` pliku:
 
 ```javascript
 /**
@@ -192,15 +216,15 @@ function callWebApiWithToken(endpoint, token, responseElement, showTokenElement)
 ```
 <!--start-collapse-->
 
-### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>Więcej informacji na temat nawiązywania połączenia przed chronionego interfejsu API REST
+### <a name="more-information-on-making-a-rest-call-against-a-protected-api"></a>Więcej informacji na temat wywołania chronionego interfejsu API REST
 
-W przykładowej aplikacji utworzonych przez ten przewodnik `callWebApiWithToken()` używa metody w celu HTTP `GET` żądania względem chronionego zasobu, który wymaga tokenu, a następnie wróć zawartości do obiektu wywołującego. Ta metoda dodaje token nabyte w *nagłówek autoryzacji HTTP*. Dla przykładowej aplikacji utworzone przez tego przewodnika, zasób jest interfejsu API programu Microsoft Graph *mnie* punktu końcowego — Wyświetla informacje o profilu użytkownika.
+W przykładowej aplikacji utworzony w tym przewodniku `callWebApiWithToken()` metoda umożliwia HTTP `GET` żądania względem chronionego zasobu, który wymaga tokenu, a następnie wróć zawartości do obiektu wywołującego. Metoda ta umożliwia dodanie uzyskano token w *nagłówek autoryzacji HTTP*. Dla przykładowej aplikacji utworzone przez tego przewodnika, zasób jest interfejsu API programu Microsoft Graph *mnie* punktu końcowego — Wyświetla informacje o profilu użytkownika.
 
 <!--end-collapse-->
 
 ## <a name="add-a-method-to-sign-out-the-user"></a>Dodaj metodę, aby się wylogować użytkownika
 
-Dodaj następujący kod do Twojej `app.js` pliku:
+Dodaj następujący kod, aby Twoje `app.js` pliku:
 
 ```javascript
 /**

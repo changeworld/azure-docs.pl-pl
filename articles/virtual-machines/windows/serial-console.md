@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 1597e850219ddbab1a0714072c47e12016aa2069
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: d46c0382540f33f41c44249cf9464426de265000
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736892"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124249"
 ---
 # <a name="virtual-machine-serial-console"></a>Konsola szeregowa maszyny wirtualnej
 
@@ -29,7 +29,7 @@ Konsola szeregowa maszyny wirtualnej na platformie Azure zapewnia dostęp do kon
 Konsola szeregowa dokumentację dotyczącą maszyn wirtualnych systemu Linux [tutaj](../linux/serial-console.md).
 
 > [!Note] 
-> Konsola szeregowa dla maszyn wirtualnych jest ogólnie dostępna w globalnych regionów platformy Azure. W tym momencie konsoli szeregowej nie jest jeszcze dostępna chmury platformy Azure Government lub Azure (Chiny).
+> Konsola szeregowa dla maszyn wirtualnych jest ogólnie dostępna w globalnych regionów platformy Azure. W tym momencie konsoli szeregowej nie jest jeszcze dostępna w chmurach platformy Azure Government lub Azure (Chiny).
 
  
 

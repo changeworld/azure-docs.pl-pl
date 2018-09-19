@@ -9,14 +9,14 @@ ms.service: sql-database
 ms.subservice: managed-instance
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 09/14/2018
 ms.author: bonova
-ms.openlocfilehash: 7a2b98f0a78c82b65d7d29181a048ab59f237107
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 113f171f5ad4bcc8ee9abc2935a9741f7c23c3b0
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391933"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45734222"
 ---
 # <a name="what-is-a-managed-instance-preview"></a>Co to jest wystąpienie zarządzane (wersja zapoznawcza)?
 
@@ -61,7 +61,7 @@ Poniższa tabela pomoże Ci zrozumieć, jak wybrać optymalną konfigurację wys
 ||4. generacja|5. generacja|
 |----|------|-----|
 |Sprzęt|Intel E5-2673 v3 (Haswell) procesorów 2,4 GHz, dołączone dyski SSD — rdzeń wirtualny = 1 PP (fizycznych rdzeni)|Intel E5-2673 v4 (broadwell z zegarem) 2,3 GHz procesorów, szybkie eNVM dyski SSD, — rdzeń wirtualny = LP 1 (hyper wątek)|
-|Poziomy wydajności|8, 16, 24 rdzenie wirtualne|8, 16, 24, 32, 40, 64, 80 rdzeni wirtualnych|
+|Obliczenia rozmiarów|8, 16, 24 rdzenie wirtualne|8, 16, 24, 32, 40, 64, 80 rdzeni wirtualnych|
 |Memory (Pamięć)|7 GB na rdzeń wirtualny|5.5 GB na rdzeń wirtualny|
 ||||
 

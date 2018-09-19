@@ -3,7 +3,7 @@ title: File Integrity Monitoring w usłudze Azure Security Center | Dokumentacja
 description: " Dowiedz się, jak włączyć File Integrity Monitoring w usłudze Azure Security Center. "
 services: security-center
 documentationcenter: na
-author: TerryLanfear
+author: rkarlin
 manager: MBaldwin
 editor: ''
 ms.assetid: 411d7bae-c9d4-4e83-be63-9f2f2312b075
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2018
-ms.author: terrylan
-ms.openlocfilehash: e8455dddf62c16cb5ebcf20622580fad82d783a7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 09/21/2018
+ms.author: rkarlin
+ms.openlocfilehash: 56aa756230dc908157a5a3d244d379215935cd2f
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296237"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124120"
 ---
 # <a name="file-integrity-monitoring-in-azure-security-center"></a>File Integrity Monitoring w usłudze Azure Security Center
 Dowiedz się, jak skonfigurować plik Integrity Monitoring (FIM) w usłudze Azure Security Center za pomocą tego przewodnika.
@@ -182,6 +182,14 @@ W obszarze **edytowanie na potrzeby śledzenia zmian** możesz:
   ![Enabled ustaw wartość false][19]
 
 6. Wybierz pozycję **Zapisz**.
+
+## <a name="folder-and-path-monitoring-using-wildcards"></a>Folderu i ścieżka monitorowania przy użyciu symboli wieloznacznych
+
+Używać symboli wieloznacznych, aby uprościć śledzenia między katalogami. Po skonfigurowaniu folderu monitorowania przy użyciu symboli wieloznacznych, stosowane są następujące reguły:
+-   Symbole wieloznaczne są wymagane do śledzenia wielu plików.
+-   Symboli wieloznacznych można używać tylko w ostatnim segmencie ścieżki, takie jak C:\folder\file lub /etc/*.conf
+-   Jeśli zmienna środowiskowa zawiera ścieżkę, która jest nieprawidłowa, weryfikacja zakończy się powodzeniem, ale ścieżka zakończy się niepowodzeniem po uruchomieniu spisu.
+-   Podczas ustawiania ścieżki, należy unikać ogólne ścieżek, takich jak c:\*. * co spowoduje zbyt wiele folderów-są przenoszone.
 
 ## <a name="disable-fim"></a>Wyłącz usługi FIM
 Można wyłączyć usługi FIM. FIM używa rozwiązania Azure Change Tracking w celu śledzenia i identyfikowania zmian w Twoim środowisku. Po wyłączeniu usługi FIM, usuniesz rozwiązania Change Tracking z wybranego obszaru roboczego.

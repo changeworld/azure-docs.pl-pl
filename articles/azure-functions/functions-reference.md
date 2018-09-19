@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: d2b05c83f77a58e224760d90d111b270d71a6514
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: d97766b0a8c0df3b414d78f563406530f67c313b
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44092431"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125378"
 ---
 # <a name="azure-functions-developers-guide"></a>Przewodnik dla deweloperów usługi Azure Functions
 W usłudze Azure Functions określonych funkcji udostępniania kilka podstawowych pojęć technicznych i składniki, niezależnie od języka lub powiązania, którego używasz. Zanim przejdziesz do nauki szczegóły specyficzne dla danego języka lub powiązania, koniecznie zapoznaj się z tego omówienia, która ma zastosowanie do wszystkich z nich.
@@ -65,12 +65,10 @@ W celu ułatwienia wyzwalaczy HTTP, jest również hosta sieci web, który jest 
 ## <a name="folder-structure"></a>Struktura folderów
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
 
-Podczas tworzenia projektu wdrażania funkcji do aplikacji funkcji w usłudze Azure App Service, możesz traktować tej struktury folderów, jako kod lokacji. Możesz użyć istniejących narzędzi, np. ciągłej integracji i ciągłego wdrażania lub skrypty wdrażania niestandardowego może wdrożyć instalacji pakietu aktualizacji w czasie lub kodu transpilation.
+Podczas tworzenia projektu wdrażania funkcji w aplikacji funkcji na platformie Azure, można traktować jako kod lokacji tej struktury folderów. Firma Microsoft zaleca używanie [pakiet wdrażania](deployment-zip-push.md) do wdrażania projektu do aplikacji funkcji na platformie Azure. Można również użyć istniejących narzędzi, takich jak [ciągłej integracji i ciągłego wdrażania](functions-continuous-deployment.md) i DevOps platformy Azure.
 
 > [!NOTE]
-> Upewnij się wdrożyć swoje `host.json` plików i funkcja folderów bezpośrednio do `wwwroot` folderu. Nie dołączaj `wwwroot` folderu we wdrożeniach. W przeciwnym razie na końcu `wwwroot\wwwroot` folderów. 
-> 
-> 
+> Upewnij się wdrożyć swoje `host.json` plików i funkcja folderów bezpośrednio do `wwwroot` folderu. Nie dołączaj `wwwroot` folderu we wdrożeniach. W przeciwnym razie na końcu `wwwroot\wwwroot` folderów.
 
 ## <a id="fileupdate"></a> Jak zaktualizować pliki aplikacji — funkcja
 Edytor funkcji wbudowanych w witrynie Azure portal umożliwia uaktualnienie *function.json* plik oraz plik kodu dla funkcji. Przekazywanie lub inne pliki aktualizacji, takich jak *package.json* lub *project.json* lub zależności, trzeba użyć innych metod wdrażania.

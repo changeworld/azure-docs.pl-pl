@@ -1,79 +1,79 @@
 ---
-title: Część z mowy znakowanie językową analiza interfejsu API | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak znakowanie części z mowy w usługach kognitywnych Microsoft identyfikuje kategorii lub część mowy każdego wyrazu tekstu.
+title: Tagowanie części mowy — interfejs API analizy językowej
+description: Dowiedz się, jak znakowanie część mowy w interfejsu API analizy językowej identyfikuje kategorii lub część mowy wystąpień poszczególnych wyrazów tekstu.
 services: cognitive-services
 author: RichardSunMS
-manager: wkwok
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: linguistic-analysis
-ms.topic: article
+ms.topic: conceptual
 ms.date: 09/27/2016
 ms.author: lesun
-ms.openlocfilehash: 90fd5b05c2dabdac88c6c8da288ab629177be38d
-ms.sourcegitcommit: d1eefa436e434a541e02d938d9cb9fcef4e62604
+ms.openlocfilehash: 636b8bc4ef41674d1e9ca12111aecee05870f381
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/28/2018
-ms.locfileid: "37082642"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124572"
 ---
-# <a name="part-of-speech-tagging"></a>Znakowanie części z mowy
+# <a name="part-of-speech-tagging"></a>Tagowanie części mowy
 
-## <a name="background-and-motivation"></a>Tło i Motywacją
+## <a name="background-and-motivation"></a>Tło i motywację
 
-Tekst zostało rozdzielone zdań i tokeny, następnym krokiem analizy po do identyfikowania kategorii lub części z mowy każdego wyrazu.
-Obejmują one kategorie, takie jak *rzeczownik* (zazwyczaj reprezentujący osoby, miejsca, rzeczy, pomysły, itp.) i *zlecenie* (zazwyczaj reprezentujące akcje, zmiany stanu itd. Niektóre wyrazów część mowy jest jednoznaczne (dla wystąpienia *quagmire* to naprawdę tylko rzeczownikiem), ale dla wielu innych jest stwierdzić.
-*Tabela* można to miejsce, w którym sit (lub układ 2-D cyfry), ale można również "Tabela dyskusji".
+Tekst został rozdzielony na zdania i tokeny, następnym krokiem analizy po do identyfikowania kategorii lub części mowy każdego wyrazu.
+Należą do kategorii, takich jak *rzeczownik* (zazwyczaj reprezentujący osób, miejsc, rzeczy, pomysły, itp.) i *zlecenie* (zazwyczaj reprezentujących akcje, zmiany stanu itd. Dla niektórych słów części mowy jest jednoznaczna (na przykład *quagmire* jest tak naprawdę tylko rzeczownik), ale w przypadku wielu innych jest trudno stwierdzić.
+*Tabela* można to miejsce, w którym znajdują się (lub 2-D układ liczb), ale możesz również "Tabela dyskusję na temat".
 
-## <a name="list-of-part-of-speech-tags"></a>Lista tagów części z mowy
+## <a name="list-of-part-of-speech-tags"></a>Lista tagów części mowy
 
-| Tag | Opis | Przykład słowa |
+| Tag | Opis | Przykład słów |
 |-----|-------------|---------------|
-| $ | dolara ($) | $ |
+| $ | Dolar | $ |
 | \`\` | cudzysłów otwierający | \` \`\` |
 | '' | zamykającego znaku cudzysłowu | ' '' |
-| ( | nawias otwierający | ( [ { |
-| ) | nawias zamykający | ) ] } |
-| , | przecinkami | , |
+| ( | Nawias otwierający | ( [ { |
+| ) | Nawias zamykający | ) ] } |
+| , | Przecinkami | , |
 | -- | kreska | -- |
-| . | terminator zdanie | . ! ? |
+| . | terminator zdania | . ! ? |
 | : | dwukropek lub wielokropka | : ; ... |
-| DW | połączeniu koordynowanie | i, ale lub jeszcze|
-| DYSKU CD | cyfry kardynalnej | dziewięć 1980 20 "96 |
-| DT | determiner |wszystkie zarówno ani|
-| EX | egzystencjalna miejsca | Brak |
-| ŚRODOWISKA .NET FRAMEWORK | obcy programu word | enfant terrible hoi polloi je ne sais quoi |
-| W | preposition lub włączających połączeniu| w elemencie Jeśli po czy |
-| JJ | przymiotnik lub liczby porządkowej | dziewiąty pretty execrable wielomodalnymi |
-| JJR | przymiotnik porównawczych | lepiej szybciej tańsze |
-| JJS | przymiotnik superlative | najlepsze najszybciej najtańszej | 
+| CC | razem i koordynowania działań | a, ale lub jeszcze|
+| CIĄGŁE DOSTARCZANIE | cyfry kardynalną | dziewięć 1980 20 96 " |
+| DT | determiner |wszystkie zarówno żadnego z tych celów|
+| NA PRZYKŁAD | egzystencjalna miejsca | istnieje |
+| ŚRODOWISKA .NET FRAMEWORK | obce słowa | enfant terrible hoi polloi je ne sais quoi |
+| INDIE | preposition lub nadrzędne połączeniu| wewnątrz w przypadku po czy |
+| JJ | przymiotnik lub liczb porządkowych | dziewiąty wielomodalnymi dość execrable |
+| JJR | przymiotnik porównawczych | lepiej, szybciej tańsze |
+| JJS | przymiotnik superlative | najlepsze najszybszych najtańszej | 
 | LS | Znacznik elementów listy | (b) 1 2 A B A. B. |
-| MD | modalne pomocniczych | można mogą są będzie można może powinien powinna |
-| NN | rzeczownik, typowe, liczbie pojedynczej lub masowej | buta pieniędzy ziemniaka |
-| NNP | rzeczownik, pojedynczego właściwe, | Kennedy Roosevelt Chicago Weehauken |
-| NNPS | rzeczownik, właściwe, w liczbie mnogiej | Krzewy Springfields |
-| NNS | rzeczownik, typowych, w liczbie mnogiej | elementy pola myszy |
-| (czas pacyficzny) | wstępne determiner | wszystkie zarówno połowie wiele takich dość się, że to |
-| POS | genitive znacznika | "w |
-| ZASADY REPLIKACJI HASEŁ | zrozumieć osobiste | Użytkownik on go I możemy ich możesz |
-| ZASADY REPLIKACJI HASEŁ$ | zrozumieć dzierżawczego | hers jego jego Moje naszych ich sieci |
+| MD | Pomocnik modalne | można może są będzie można może powinien programu |
+| NN | rzeczownik, wspólnego, pojedynczej lub pamięci masowej | buta pieniądze ziemniaczanej |
+| NNP | rzeczownik, odpowiednie, liczbę pojedynczą | Kennedy Roosevelt Chicago Weehauken |
+| NNPS | rzeczownik, odpowiednie, w liczbie mnogiej | Krzewów Springfields |
+| NNS | rzeczownik, wspólnego, w liczbie mnogiej | elementy myszy pola |
+| PDT | wstępne determiner | wszystkie zarówno połowie wiele dość takich się, że to |
+| PUNKTU SPRZEDAŻY | genitive znacznika | "w |
+| ZASADY REPLIKACJI HASEŁ | zrozumieć osobistych | ona on ją I będziemy ich możesz |
+| ZASADY REPLIKACJI HASEŁ$ | zrozumieć dzierżawczego | Przekształca jego jego Moje naszych ich usługi |
 | RB | Parametr | klinicznie tylko |
-| RBR | Parametr porównawczych | dalsze gloomier grander graver większa grimmer przeszkodę poważniejszych zdrowsze większych wyższej jednak większe nowsze leaner dłuższy mniej doskonale mniejszym lonelier dłużej głośność dolna więcej... |
-| SPZ | Parametr superlative | najlepsze największych bluntest najwcześniejszą najdalszych pierwszy najdalej najtrudniejsze heartiest najwyższy największy najmniej mniej większość najbliższej najgorszy drugi najbardziej restrykcyjne metody |
-| PLANU ODZYSKIWANIA | Cząstka | wyłączone na górę limit o |
-| SYM | Symbol | % & |
+| RBR | Parametr porównawczych | dalsze gloomier grander graver większą grimmer trudniejsze poważniejszych lepszy wynik dotyczący większych wyższe jednak większe nowsze sprawniej dłuższy mniej doskonale mniejszym lonelier dłużej głośność małe więcej... |
+| SPZ | Parametr superlative | najlepsze największych bluntest Najwcześniejsza położony pierwszy najdalszego najtrudniejsze heartiest najwyższy największych najmniej mniej większość najbliższym najgorszy drugi najbardziej restrykcyjne metody |
+| JEDNOSTKI UZALEŻNIONEJ | Cząstka | Wyłącz na górę się o |
+| SYMBOLI | Symbol | % & |
 | DO | "do" jako znacznik preposition lub infinitive | na |
-| NIESTETY | interjection | Niestety doskonale howdy hello |
-| VB | zlecenie, formularza podstawowego | Nadaj bieżąco przypisania |
-| VBD | zlecenie, przeszłego | nadać przypisanej flew |
-| VBG | zlecenie, obecnie participle lub gerund | nadanie upływa przypisywanie |
-| VBN | zlecenie, participle w przeszłości | podane przypisanej znajdowały się powietrzu |
-| VBP | zlecenie, teraźniejszym, osoby nie 3 pojedynczej | Nadaj bieżąco przypisania |
-| VBZ | zlecenie, teraźniejszym, 3 pojedynczej osoby | zapewnia przypisuje prostej |
-| WDT | KI determiner | który jakie którego |
-| WP | KI zrozumieć | kto którego |
-| WP$ | KI zrozumieć dzierżawczego | którego |
-| WRB | Ki zlecenia | jak jednak zawsze, gdy gdzie |
+| NIESTETY | interjection | Niestety hura howdy hello |
+| VB | zlecenie, formularza podstawowego | Nadaj bieżąco Przypisz |
+| VBD | zlecenie, przeszłym | udostępniła przypisane poleciał |
+| VBG | zlecenie, participle obecne lub gerund | zapewniając upływa przypisywanie |
+| VBN | zlecenie, participle w przeszłości | biorąc pod uwagę przypisane przesyłane |
+| VBP | zlecenie, teraźniejszego, nie 3rd osoby pojedynczej | Nadaj bieżąco Przypisz |
+| VBZ | zlecenie, teraźniejszego, 3 osoby pojedynczej | zapewnia przypisuje prostej |
+| WDT | Determiner pytania "Wh" | jakie który |
+| WP | Zrozumieć pytania "Wh" | kto którego |
+| WP$ | Pytania "Wh" zrozumieć dzierżawczego | którego |
+| WRB | Parametr pytania "Wh" | jak jednak zawsze wtedy, gdy gdzie |
 
 ## <a name="specification"></a>Specyfikacja
 
-Podobnie jak w przypadku tokenizacji, możemy zależą od specyfikacji z [Penn Treebank](https://catalog.ldc.upenn.edu/ldc99t42).
+Jak w przypadku tokenizacji, możemy polegać na specyfikacji z [Treebank partnerów](https://catalog.ldc.upenn.edu/ldc99t42).

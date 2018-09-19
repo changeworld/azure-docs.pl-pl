@@ -13,19 +13,19 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: c975b3e03f0293e4ef2464451b4c72fb709a1895
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 688ed311906754ee390b9a6ccd0ac430f42e8387
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730500"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125412"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Interfejs API usługi Application Insights dla niestandardowych zdarzeń i metryk
 
 Wstaw kilka wierszy kodu w aplikacji, aby dowiedzieć się, jak użytkownicy korzystają z nim lub aby łatwiej diagnozować problemy. Za wysyłają dane telemetryczne z aplikacji urządzenia i pulpitu, klienci sieci web i serwerów sieci web. Użyj [usługi Azure Application Insights](app-insights-overview.md) core API telemetrii do wysyłania niestandardowych zdarzeń i metryk i własnych wersji standardowa telemetria. Ten interfejs API jest tego samego interfejsu API, używanego przez standardowe moduły zbierające dane usługi Application Insights.
 
 > [!NOTE]
-> `TrackMetric()` nie jest już preferowaną metodę wysyłania metryki niestandardowe w języku C# na podstawie aplikacji. W [wersji beta 2,60 3](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/CHANGELOG.md#version-260-beta3) zestawu SDK .NET usługi Insights aplikacji nowej metody [ `TelemetryClient.GetMetric()` ](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) została wprowadzona. Począwszy od zestawu SDK .NET usługi Application Insights [wersji 2.72](https://docs.microsoft.com/en-us/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) ta funkcja jest teraz częścią stabilnej wersji.
+> `TrackMetric()` nie jest już aplikacje oparte na preferowaną metodę wysyłania metryki niestandardowe dla platformy .NET. W [wersji beta 2,60 3](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/CHANGELOG.md#version-260-beta3) zestawu SDK .NET usługi Insights aplikacji nowej metody [ `TelemetryClient.GetMetric()` ](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) została wprowadzona. Począwszy od zestawu SDK .NET usługi Application Insights [wersji 2.72](https://docs.microsoft.com/en-us/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) ta funkcja jest teraz częścią stabilnej wersji.
 
 ## <a name="api-summary"></a>Podsumowanie interfejsu API
 Podstawowego interfejsu API jest jednolita na wszystkich platformach, oprócz kilka zmian, takich jak `GetMetric`(tylko język C#).

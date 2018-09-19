@@ -8,33 +8,218 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 64dce26303c0e700da54d371af5cb275b1613d70
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 7d5656d6599e1d8d2a3e85b9d41bcce6490e1511
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122107"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124171"
 ---
 # <a name="speech-service-rest-apis"></a>Usługa rozpoznawania mowy interfejsów API REST
 
-Interfejsy API REST, ujednolicone usługi mowy są podobne do interfejsów API dostarczonych przez [interfejsu API rozpoznawania mowy](https://docs.microsoft.com/azure/cognitive-services/Speech) (wcześniej znane jako usługa rozpoznawania mowy Bing). Punktów końcowych, które różnią się od punktów końcowych używanych przez usługę rozpoznawania mowy w poprzednim.
+Interfejsy API REST, ujednolicone usługi mowy są podobne do interfejsów API dostarczonych przez [modułu Speech API Bing](https://docs.microsoft.com/azure/cognitive-services/Speech). Punktów końcowych, które różnią się od punktów końcowych używanych przez usługę rozpoznawania mowy Bing. Regionalne punkty końcowe są dostępne i trzeba użyć klucza subskrypcji odpowiadający punktu końcowego, którego używasz.
 
 ## <a name="speech-to-text"></a>Zamiana mowy na tekst
 
-W funkcji rozpoznawania mowy do interfejsu API tłumaczenia tekstu tylko punktów końcowych używanych różnią się od poprzedniej Speech service interfejs API rozpoznawania mowy. W poniższej tabeli przedstawiono nowe punkty końcowe. Użyj jednego, który odpowiada Twoim regionie subskrypcji.
+Punktów końcowych rozpoznawania mowy, interfejsu API REST usługi tekstowe są wyświetlane w poniższej tabeli. Użyj jednego, który odpowiada Twoim regionie subskrypcji.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-speech-to-text.md)]
-
-Zamiana mowy na interfejs API tłumaczenia tekstu w przeciwnym razie jest podobny do [interfejsu API REST](https://docs.microsoft.com/azure/cognitive-services/speech/getstarted/getstartedrest) poprzedniego interfejsu API rozpoznawania mowy.
-
-Zamiana mowy na tekst REST API obsługuje tylko krótkie wypowiedzi. Żądania może zawierać maksymalnie 10 sekund audio i ostatnie 14 sekundy ogólnej. Interfejs API REST zwraca tylko wyników końcowych nie przejściowym lub częściowe wyniki.
 
 > [!NOTE]
 > Jeśli dostosowany model akustyczny lub model języka lub wymowa, należy użyć niestandardowego punktu końcowego.
 
+Ten interfejs API obsługuje tylko krótkie wypowiedzi. Żądania może zawierać maksymalnie 10 sekund audio i ostatnie 14 sekundy ogólnej. Interfejs API REST zwraca tylko wyników końcowych nie przejściowym lub częściowe wyniki. Usługa rozpoznawania mowy ma również [batch transkrypcji](batch-transcription.md) interfejsu API, które można wykonać transkrypcji audio dłużej.
+
+### <a name="query-parameters"></a>Parametry zapytania
+
+Następujące parametry mogą być zawarte w ciągu zapytania żądania REST.
+
+|Nazwa parametru|Wymagane/opcjonalne|Znaczenie|
+|-|-|-|
+|`language`|Wymagane|Identyfikator doceniona języka. Zobacz [obsługiwane języki](supported-languages.md#speech-to-text).|
+|`format`|Optional (Opcjonalność)<br>Wartość domyślna: `simple`|Format wyników `simple` lub `detailed`. Proste wyniki obejmują `RecognitionStatus`, `DisplayText`, `Offset`i czas trwania. Szczegółowe wyniki będą zawierać wielu kandydatów z wartościami zaufania i cztery różne reprezentacje.|
+|`profanity`|Optional (Opcjonalność)<br>Wartość domyślna: `masked`|Jak obsługiwać wulgaryzmów w wyniki rozpoznawania. Może być `masked` (zastępuje wulgaryzmów gwiazdkami), `removed` (spowoduje to usunięcie wszystkich wulgaryzmów), lub `raw` (w tym wulgaryzmów).
+
+### <a name="request-headers"></a>Nagłówki żądań
+
+Następujące pola są wysyłane w nagłówku żądania HTTP.
+
+|Nagłówek|Znaczenie|
+|------|-------|
+|`Ocp-Apim-Subscription-Key`|Klucz subskrypcji usługi mowy. Albo tego pliku nagłówkowego lub `Authorization` musi zostać podana.|
+|`Authorization`|Token autoryzacji poprzedzone wyrazem `Bearer`. Albo tego pliku nagłówkowego lub `Ocp-Apim-Subscription-Key` musi zostać podana. Zobacz [uwierzytelniania](#authentication).|
+|`Content-type`|W tym artykule opisano format i kodera-dekodera audio danych. Obecnie ta wartość musi być `audio/wav; codec=audio/pcm; samplerate=16000`.|
+|`Transfer-Encoding`|Opcjonalne. Jeśli podana, musi być `chunked` umożliwia danych audio w celu ich wysłania w wielu małych fragmentów zamiast pojedynczego pliku.|
+|`Expect`|Jeśli używasz fragmentaryczne transferu, Wyślij `Expect: 100-continue`. Usługa rozpoznawania mowy potwierdza żądanie początkowe i czeka na dodatkowe dane.|
+|`Accept`|Opcjonalne. Jeśli podano, musi zawierać `application/json`, jak usługa mowy udostępnia wyniki w formacie JSON. (Niektóre struktury żądania sieci Web Podaj wartość domyślną niezgodne, jeśli nie zostanie określony, dzięki czemu jest dobrym rozwiązaniem jest zawsze zawierać `Accept`)|
+
+### <a name="audio-format"></a>Audio format
+
+Dźwięku w treści HTTP `PUT` żądania i powinna być w formacie WAV PCM pojedynczy kanał (mono) na 16 KHz 16-bitowych.
+
+### <a name="chunked-transfer"></a>Fragmentaryczne transferu
+
+Transferu pakietowego (`Transfer-Encoding: chunked`) może pomóc zmniejszyć opóźnienie rozpoznawania, ponieważ zezwala ona na usługę rozpoznawania mowy, aby rozpocząć przetwarzanie plik dźwiękowy otrzymało go są przesyłane. Interfejs API REST nie zapewnia tymczasowe lub częściowe wyniki. Ta opcja jest przeznaczona wyłącznie do zwiększyć szybkość reakcji.
+
+Poniższy kod ilustruje sposób wysyłania audio we fragmentach. `request` Obiekt HTTPWebRequest podłączonego do odpowiedniego punktu końcowego REST. `audioFile` jest to ścieżka do pliku audio na dysku.
+
+```csharp
+using (fs = new FileStream(audioFile, FileMode.Open, FileAccess.Read))
+{
+
+    /*
+    * Open a request stream and write 1024 byte chunks in the stream one at a time.
+    */
+    byte[] buffer = null;
+    int bytesRead = 0;
+    using (Stream requestStream = request.GetRequestStream())
+    {
+        /*
+        * Read 1024 raw bytes from the input audio file.
+        */
+        buffer = new Byte[checked((uint)Math.Min(1024, (int)fs.Length))];
+        while ((bytesRead = fs.Read(buffer, 0, buffer.Length)) != 0)
+        {
+            requestStream.Write(buffer, 0, bytesRead);
+        }
+
+        // Flush
+        requestStream.Flush();
+    }
+}
+```
+
+### <a name="example-request"></a>Przykładowe żądanie
+
+Poniżej przedstawiono typowe żądania.
+
+```HTTP
+POST speech/recognition/conversation/cognitiveservices/v1?language=en-US&format=detailed HTTP/1.1
+Accept: application/json;text/xml
+Content-Type: audio/wav; codec=audio/pcm; samplerate=16000
+Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY
+Host: westus.stt.speech.microsoft.com
+Transfer-Encoding: chunked
+Expect: 100-continue
+```
+
+### <a name="http-status"></a>Stan HTTP
+
+Stanu HTTP odpowiedzi wskazuje sukces lub typowe warunki błędów.
+
+Kod HTTP|Znaczenie|Możliwa przyczyna
+-|-|-|
+100|Kontynuuj|Wstępne żądanie zostało zaakceptowane. Czy kontynuować wysyłanie pozostałe dane. (Używany przy użyciu transferu pakietowego).
+200|OK|Żądanie powiodło się; treść odpowiedzi jest obiekt JSON.
+400|Nieprawidłowe żądanie|Kod języka podany lub nie jest obsługiwany język; Nieprawidłowy plik audio.
+401|Brak autoryzacji|Klucz subskrypcji lub autoryzacji token jest nieprawidłowy w określonym regionie lub nieprawidłowy punkt końcowy.
+403|Zabroniony|Brak klucz subskrypcji lub autoryzacji tokenu.
+
+### <a name="json-response"></a>Odpowiedź w formacie JSON
+
+Wyniki są zwracane w formacie JSON. `simple` Format obejmuje tylko następujące pola najwyższego poziomu.
+
+|Nazwa pola|Zawartość|
+|-|-|
+|`RecognitionStatus`|Stan, takich jak `Success` rozpoznawania się pomyślnie. Zobacz następną tabelę.|
+|`DisplayText`|Rozpoznany tekst po wielkość liter, znaki interpunkcyjne, tekst odwrotny normalizacji (Konwersja tekstu mówionego na krótszą formularzy, takich jak 200, "200" lub "odzyskiwania po awarii. Smith""lekarzem Smith"), a wulgaryzmów maskowania. Istnieje tylko w przypadku powodzenia.|
+|`Offset`|Czas (w jednostkach 100-nanosekundowych), jaką rozpoznawanym mowy rozpoczyna się w strumienia audio.|
+|`Duration`|Czas trwania (w jednostkach 100-nanosekundowych) rozpoznawaną mowy w strumienia audio.|
+
+`RecognitionStatus` Pole może zawierać następujących wartości.
+
+|Wartość stanu|Opis
+|-|-|
+| `Success` | Rozpoznawanie zakończyło się pomyślnie, a pole Wyświetlany_tekst jest obecny. |
+| `NoMatch` | Wykryto mowy strumienia audio, ale bez wyrazów z języka docelowego zostały dopasowane. Zwykle oznacza, że rozpoznawanie jest inny język niż te, które użytkownik mówiącego Prezydenta. |
+| `InitialSilenceTimeout` | Początek strumienia audio zawiera tylko wyciszenia, a usługa upłynął limit czasu oczekiwania podczas rozpoznawania mowy. |
+| `BabbleTimeout` | Początek strumienia audio zawiera tylko hałasu i usługi, upłynął limit czasu oczekiwania podczas rozpoznawania mowy. |
+| `Error` | Usługa rozpoznawania napotkał błąd wewnętrzny i nie może kontynuować działania. Spróbuj ponownie, jeśli to możliwe. |
+
+> [!NOTE]
+> Jeśli użytkownik komunikuje się tylko wulgaryzmów i `profanity` parametr zapytania ma wartość `remove`, usługa nie zwraca wyniku rozpoznawania mowy, chyba że jest w trybie rozpoznawania `interactive`. W tym przypadku usługa zwraca wyniki mowy `RecognitionStatus` z `NoMatch`. 
+
+`detailed` Format obejmuje te same pola jako `simple` formacie wraz z `NBest` pola. `NBest` Pola znajduje się lista alternatywnych interpretacji tych samych mowy, randze spośród wszystkich dokumentów z największym prawdopodobieństwem najmniej prawdopodobne. Pierwszy wpis jest taki sam jak wynik rozpoznawania głównego. Każdy wpis zawiera następujące pola:
+
+|Nazwa pola|Zawartość|
+|-|-|
+|`Confidence`|Współczynnik ufności wpisu od 0,0 (nie zaufania) 1.0 (pełne zaufanie)
+|`Lexical`|Leksykalne formularza rozpoznany tekst: rzeczywistymi słowami został rozpoznany.
+|`ITN`|Znormalizowane tekstu odwrotność ("") forma kanoniczna rozpoznany, za pomocą telefonu liczb, liczby, skróty ("lekarzem smith" do "odzyskiwania po awarii smith") i inne zastosowane przekształcenia.
+|`MaskedITN`| Formularz podczas przy użyciu maskowania wulgaryzmów stosowane, jeśli jest to wymagane.
+|`Display`| Formularz wyświetlania rozpoznany tekst, znaki interpunkcyjne i dodaje wielkie litery. Taki sam jak `DisplayText` w wyniku najwyższego poziomu.
+
+### <a name="sample-responses"></a>Przykład odpowiedzi
+
+Poniżej przedstawiono typowe odpowiedzi dla `simple` rozpoznawania.
+
+```json
+{
+  "RecognitionStatus": "Success",
+  "DisplayText": "Remind me to buy 5 pencils.",
+  "Offset": "1236645672289",
+  "Duration": "1236645672289"
+}
+```
+
+Poniżej przedstawiono typowe odpowiedzi dla `detailed` rozpoznawania.
+
+```json
+{
+  "RecognitionStatus": "Success",
+  "Offset": "1236645672289",
+  "Duration": "1236645672289",
+  "NBest": [
+      {
+        "Confidence" : "0.87",
+        "Lexical" : "remind me to buy five pencils",
+        "ITN" : "remind me to buy 5 pencils",
+        "MaskedITN" : "remind me to buy 5 pencils",
+        "Display" : "Remind me to buy 5 pencils.",
+      },
+      {
+        "Confidence" : "0.54",
+        "Lexical" : "rewind me to buy five pencils",
+        "ITN" : "rewind me to buy 5 pencils",
+        "MaskedITN" : "rewind me to buy 5 pencils",
+        "Display" : "Rewind me to buy 5 pencils.",
+      }
+  ]
+}
+```
+
 ## <a name="text-to-speech"></a>Zamiana tekstu na mowę
 
-Nowy tekst na mowę interfejs API obsługuje 24 KHz wyjściowego audio. `X-Microsoft-OutputFormat` Nagłówek może teraz zawierać następujące wartości.
+Dostępne są następujące punkty końcowe REST dla usługi mowy tekst na mowę interfejsu API. Użycie punktu końcowego, który odpowiada Twoim regionie subskrypcji.
+
+[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
+
+> [!NOTE]
+> Jeśli utworzono niestandardową czcionkę głosową, należy użyć skojarzone niestandardowego punktu końcowego.
+
+Usługa rozpoznawania mowy obsługuje wyjściowego audio 24 KHz, oprócz danych wyjściowych 16 Khz, obsługiwane przez rozpoznawania mowy Bing. Cztery formaty danych wyjściowych 24 KHz są dostępne do użycia w `X-Microsoft-OutputFormat` nagłówka HTTP, jak są dwa głosy 24 KHz, `Jessa24kRUS` i `Guy24kRUS`.
+
+Ustawienia regionalne | Język   | Płeć | Mapowanie nazwy usługi
+-------|------------|--------|------------
+pl-PL  | US English | Kobieta | "Microsoft Server mowy Text na głos mowy (en US, Jessa24kRUS)" 
+pl-PL  | US English | Mężczyzna   | "Microsoft Server mowy Text na głos mowy (en US, Guy24kRUS)"
+
+Pełną listę dostępnych głosów jest dostępna w [obsługiwane języki](supported-languages.md#text-to-speech).
+
+### <a name="request-headers"></a>Nagłówki żądań
+
+Następujące pola są wysyłane w nagłówku żądania HTTP.
+
+|Nagłówek|Znaczenie|
+|------|-------|
+|`Authorization`|Token autoryzacji poprzedzone wyrazem `Bearer`. Wymagane. Zobacz [uwierzytelniania](#authentication).|
+|`Content-Type`|Typ zawartości danych wejściowych: `application/ssml+xml`.|
+|`X-Microsoft-OutputFormat`|Format danych wyjściowych audio. Zobacz następną tabelę.|
+|`X-Search-AppId`|Tylko do szesnastkowy identyfikator GUID (nie kresek) który unikatowo identyfikuje aplikację klienta. Może to być identyfikator sklepu. FF nie jest aplikacja ze sklepu, możesz użyć dowolnego identyfikatora GUID.|
+|`X-Search-ClientId`|Tylko do szesnastkowy identyfikator GUID (nie kresek) który jednoznacznie identyfikuje wystąpienie aplikacji dla każdej instalacji.|
+|`User-Agent`|Nazwa aplikacji. Wymagane; musi zawierać mniej niż 255 znaków.|
+
+Formaty danych wyjściowych audio dostępne (`X-Microsoft-OutputFormat`) szybkości transmisji bitów i kodowania.
 
 |||
 |-|-|
@@ -45,22 +230,48 @@ Nowy tekst na mowę interfejs API obsługuje 24 KHz wyjściowego audio. `X-Micro
 `riff-24khz-16bit-mono-pcm`        | `audio-24khz-160kbitrate-mono-mp3`
 `audio-24khz-96kbitrate-mono-mp3`  | `audio-24khz-48kbitrate-mono-mp3`
 
-Usługa rozpoznawania mowy udostępnia teraz dwa głosy 24 KHz:
+### <a name="request-body"></a>Treść żądania
 
-Ustawienia regionalne | Język   | Płeć | Mapowanie nazwy usługi
--------|------------|--------|------------
-pl-PL  | US English | Kobieta | "Microsoft Server mowy Text na głos mowy (en US, Jessa24kRUS)" 
-pl-PL  | US English | Mężczyzna   | "Microsoft Server mowy Text na głos mowy (en US, Guy24kRUS)"
+Tekst, który ma zostać przekształcony na mowę, jest wysyłany jako treść HTTP `POST` żądania w zwykły tekst lub [język znaczników synteza mowy](speech-synthesis-markup.md) formatu (SSML) z kodowaniem tekst UTF-8. Należy użyć SSML, jeśli chcesz używać głosu innych niż Usługa domyślna głosu.
 
-Dostępne są następujące punkty końcowe REST dla ujednolicone usługi tekstu na mowę interfejsu API. Użycie punktu końcowego, który odpowiada Twoim regionie subskrypcji.
+### <a name="sample-request"></a>Przykładowe żądanie
 
-[!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
+Następujące żądanie HTTP używa treści SSML wyboru mowy. Treść musi być dłuższy niż 1000 znaków.
 
-Zachowanie tych różnic, pamiętając, jak możesz odwołać się do [dokumentację interfejsu API REST](https://docs.microsoft.com/azure/cognitive-services/speech/api-reference-rest/bingvoiceoutput) poprzedniego interfejsu API rozpoznawania mowy.
+```xml
+POST /cognitiveservices/v1 HTTP/1.1
+
+X-Microsoft-OutputFormat: raw-16khz-16bit-mono-pcm
+Content-Type: application/ssml+xml
+Host: westus.tts.speech.microsoft.com
+Content-Length: 225
+Authorization: Bearer [Base64 access_token]
+
+<speak version='1.0' xml:lang='en-US'><voice xml:lang='en-US' xml:gender='Female' 
+    name='Microsoft Server Speech Text to Speech Voice (en-US, ZiraRUS)'>
+        Microsoft Speech Service Text-to-Speech API
+</voice></speak>
+```
+
+### <a name="http-response"></a>Odpowiedź HTTP
+
+Stanu HTTP odpowiedzi wskazuje sukces lub typowe warunki błędów.
+
+Kod HTTP|Znaczenie|Możliwa przyczyna
+-|-|-|
+200|OK|Żądanie powiodło się; treść odpowiedzi jest plik audio.
+400|Nieprawidłowe żądanie|Brak dokumentu SSML zbyt długa lub nieprawidłowa wartość pola wymaganego nagłówka.
+401|Brak autoryzacji|Klucz subskrypcji lub autoryzacji token jest nieprawidłowy w określonym regionie lub nieprawidłowy punkt końcowy.
+403|Zabroniony|Brak klucz subskrypcji lub autoryzacji tokenu.
+413|Jednostka żądania jest zbyt duża|Wprowadzany tekst jest dłuższy niż 1000 znaków.
+
+W przypadku stanu HTTP `200 OK`, treść odpowiedzi zawiera plik audio w formacie żądanej. Ten plik może odtwarzać jest przekazywane lub zapisany do buforu lub nowszej odtwarzania lub inne użycie w pliku.
 
 ## <a name="authentication"></a>Authentication
 
-Wysyła żądanie do interfejsu API REST usługi mowy wymaga tokenu dostępu. Uzyskania tokenu, podając swój klucz subskrypcji z usługą mowy regionalnych `issueToken` punktu końcowego, co pokazano w poniższej tabeli. Użycie punktu końcowego, który odpowiada Twoim regionie subskrypcji.
+Wysyła żądanie do interfejsu API REST usługi mowy wymaga klucza subskrypcji albo tokenu dostępu. Ogólnie rzecz biorąc najłatwiej bezpośrednio; wysyłać klucz subskrypcji Usługa rozpoznawania mowy następnie uzyskuje token dostępu dla Ciebie. Jednakże aby zminimalizować czas odpowiedzi, możesz zamiast tego użyj tokenu dostępu.
+
+Uzyskać token z uwzględnieniem klucz subskrypcji regionalnej usługi mowy `issueToken` punktu końcowego, co pokazano w poniższej tabeli. Użycie punktu końcowego, który odpowiada Twoim regionie subskrypcji.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
 
@@ -121,40 +332,40 @@ curl -v -X POST
 Klasa C# poniżej pokazano, jak można uzyskać tokenu dostępu. Podczas tworzenia wystąpienia klasy, należy przekazać swój klucz subskrypcji usługi mowy. Jeśli Twoja subskrypcja nie jest w regionie zachodnie stany USA, Zmień nazwę hosta `FetchTokenUri` odpowiednio.
 
 ```cs
-    /*
-     * This class demonstrates how to get a valid access token.
-     */
-    public class Authentication
+/*
+    * This class demonstrates how to get a valid access token.
+    */
+public class Authentication
+{
+    public static readonly string FetchTokenUri =
+        "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
+    private string subscriptionKey;
+    private string token;
+
+    public Authentication(string subscriptionKey)
     {
-        public static readonly string FetchTokenUri =
-            "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
-        private string subscriptionKey;
-        private string token;
+        this.subscriptionKey = subscriptionKey;
+        this.token = FetchTokenAsync(FetchTokenUri, subscriptionKey).Result;
+    }
 
-        public Authentication(string subscriptionKey)
+    public string GetAccessToken()
+    {
+        return this.token;
+    }
+
+    private async Task<string> FetchTokenAsync(string fetchUri, string subscriptionKey)
+    {
+        using (var client = new HttpClient())
         {
-            this.subscriptionKey = subscriptionKey;
-            this.token = FetchTokenAsync(FetchTokenUri, subscriptionKey).Result;
-        }
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+            UriBuilder uriBuilder = new UriBuilder(fetchUri);
 
-        public string GetAccessToken()
-        {
-            return this.token;
-        }
-
-        private async Task<string> FetchTokenAsync(string fetchUri, string subscriptionKey)
-        {
-            using (var client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
-                UriBuilder uriBuilder = new UriBuilder(fetchUri);
-
-                var result = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null);
-                Console.WriteLine("Token Uri: {0}", uriBuilder.Uri.AbsoluteUri);
-                return await result.Content.ReadAsStringAsync();
-            }
+            var result = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null);
+            Console.WriteLine("Token Uri: {0}", uriBuilder.Uri.AbsoluteUri);
+            return await result.Content.ReadAsStringAsync();
         }
     }
+}
 ```
 
 ### <a name="using-a-token"></a>Za pomocą tokenu
@@ -182,84 +393,84 @@ Token autoryzacji wygasa po upływie 10 minut. Odnów autoryzację dzięki uzysk
 Poniższy kod C# jest zamiennikiem dla klasy przedstawiony wcześniej. `Authentication` Klasy automatycznie uzyskuje nowy token dostępu co dziewięć minut za pomocą czasomierza. Takie podejście zapewnia, że prawidłowy token jest zawsze dostępny podczas działania programu.
 
 > [!NOTE]
-> Zamiast używać czasomierza, można przechowywać sygnaturę czasową, gdy bieżący token zostały pobrane, a następnie poprosić o nowe tylko wtedy, gdy bieżący token jest bliski wygaśnięcia. Ta metoda pozwala uniknąć niepotrzebnego żądanie nowych tokenów i może być bardziej odpowiednie dla programów, które rzadko żądaniami funkcji rozpoznawania mowy.
+> Zamiast używać czasomierza, można przechowywać sygnaturę czasową, gdy ostatni token zostały pobrane, a następnie poprosić o nowe tylko wtedy, gdy jest bliski wygaśnięcia. Ta metoda pozwala uniknąć niepotrzebnego żądanie nowych tokenów i może być bardziej odpowiednie dla programów, które rzadko żądaniami funkcji rozpoznawania mowy.
 
 Tak jak poprzednio, upewnij się, że `FetchTokenUri` wartość odpowiada regionie Twojej subskrypcji. Podczas tworzenia wystąpienia klasy, należy przekazać swój klucz subskrypcji.
 
 ```cs
-    /*
-     * This class demonstrates how to maintain a valid access token.
-     */
-    public class Authentication
+/*
+    * This class demonstrates how to maintain a valid access token.
+    */
+public class Authentication
+{
+    public static readonly string FetchTokenUri = 
+        "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
+    private string subscriptionKey;
+    private string token;
+    private Timer accessTokenRenewer;
+
+    //Access token expires every 10 minutes. Renew it every 9 minutes.
+    private const int RefreshTokenDuration = 9;
+
+    public Authentication(string subscriptionKey)
     {
-        public static readonly string FetchTokenUri = 
-            "https://westus.api.cognitive.microsoft.com/sts/v1.0/issueToken";
-        private string subscriptionKey;
-        private string token;
-        private Timer accessTokenRenewer;
+        this.subscriptionKey = subscriptionKey;
+        this.token = FetchToken(FetchTokenUri, subscriptionKey).Result;
 
-        //Access token expires every 10 minutes. Renew it every 9 minutes.
-        private const int RefreshTokenDuration = 9;
+        // renew the token on set duration.
+        accessTokenRenewer = new Timer(new TimerCallback(OnTokenExpiredCallback),
+                                        this,
+                                        TimeSpan.FromMinutes(RefreshTokenDuration),
+                                        TimeSpan.FromMilliseconds(-1));
+    }
 
-        public Authentication(string subscriptionKey)
+    public string GetAccessToken()
+    {
+        return this.token;
+    }
+
+    private void RenewAccessToken()
+    {
+        this.token = FetchToken(FetchTokenUri, this.subscriptionKey).Result;
+        Console.WriteLine("Renewed token.");
+    }
+
+    private void OnTokenExpiredCallback(object stateInfo)
+    {
+        try
         {
-            this.subscriptionKey = subscriptionKey;
-            this.token = FetchToken(FetchTokenUri, subscriptionKey).Result;
-
-            // renew the token on set duration.
-            accessTokenRenewer = new Timer(new TimerCallback(OnTokenExpiredCallback),
-                                           this,
-                                           TimeSpan.FromMinutes(RefreshTokenDuration),
-                                           TimeSpan.FromMilliseconds(-1));
+            RenewAccessToken();
         }
-
-        public string GetAccessToken()
+        catch (Exception ex)
         {
-            return this.token;
+            Console.WriteLine(string.Format("Failed renewing access token. Details: {0}", ex.Message));
         }
-
-        private void RenewAccessToken()
-        {
-            this.token = FetchToken(FetchTokenUri, this.subscriptionKey).Result;
-            Console.WriteLine("Renewed token.");
-        }
-
-        private void OnTokenExpiredCallback(object stateInfo)
+        finally
         {
             try
             {
-                RenewAccessToken();
+                accessTokenRenewer.Change(TimeSpan.FromMinutes(RefreshTokenDuration), TimeSpan.FromMilliseconds(-1));
             }
             catch (Exception ex)
             {
-                Console.WriteLine(string.Format("Failed renewing access token. Details: {0}", ex.Message));
-            }
-            finally
-            {
-                try
-                {
-                    accessTokenRenewer.Change(TimeSpan.FromMinutes(RefreshTokenDuration), TimeSpan.FromMilliseconds(-1));
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine(string.Format("Failed to reschedule the timer to renew access token. Details: {0}", ex.Message));
-                }
-            }
-        }
-
-        private async Task<string> FetchToken(string fetchUri, string subscriptionKey)
-        {
-            using (var client = new HttpClient())
-            {
-                client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
-                UriBuilder uriBuilder = new UriBuilder(fetchUri);
-
-                var result = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null);
-                Console.WriteLine("Token Uri: {0}", uriBuilder.Uri.AbsoluteUri);
-                return await result.Content.ReadAsStringAsync();
+                Console.WriteLine(string.Format("Failed to reschedule the timer to renew access token. Details: {0}", ex.Message));
             }
         }
     }
+
+    private async Task<string> FetchToken(string fetchUri, string subscriptionKey)
+    {
+        using (var client = new HttpClient())
+        {
+            client.DefaultRequestHeaders.Add("Ocp-Apim-Subscription-Key", subscriptionKey);
+            UriBuilder uriBuilder = new UriBuilder(fetchUri);
+
+            var result = await client.PostAsync(uriBuilder.Uri.AbsoluteUri, null);
+            Console.WriteLine("Token Uri: {0}", uriBuilder.Uri.AbsoluteUri);
+            return await result.Content.ReadAsStringAsync();
+        }
+    }
+}
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

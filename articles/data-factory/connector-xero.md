@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 0b9af90733d12ef7cdd05a796a0d0b794f4ddc4a
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: d9ee9a73f4e88786ca51fe9fac50ce51e25b4dde
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634085"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123372"
 ---
-# <a name="copy-data-from-xero-using-azure-data-factory"></a>Kopiowanie danych z usługi Xero przy użyciu usługi Azure Data Factory
+# <a name="copy-data-from-xero-using-azure-data-factory-preview"></a>Kopiowanie danych z usługi Xero przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
 W tym artykule opisano sposób użycia działania kopiowania w usłudze Azure Data Factory, aby skopiować dane z usługi Xero. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 

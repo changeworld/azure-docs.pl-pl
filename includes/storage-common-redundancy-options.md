@@ -8,16 +8,16 @@ ms.topic: include
 ms.date: 03/26/2018
 ms.author: tamram
 ms.custom: include file
-ms.openlocfilehash: 3b187b5d776a099fd41e3db5b5c14c67f3ef9483
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: b965fea3d4f166b1a801dda7cafd8e4190790c68
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30325943"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45739508"
 ---
-Dostępne są następujące opcje replikacji dla konta magazynu:
+Opcje replikacji dla konta magazynu obejmują:
 
-* [Magazyn lokalnie nadmiarowy (LRS)](../articles/storage/common/storage-redundancy-lrs.md): strategię replikacji najprostszy, tanich, która udostępnia usługi Azure Storage.
-* [Magazyn strefowo nadmiarowy (ZRS)](../articles/storage/common/storage-redundancy-zrs.md): prosty opcji wysokiej dostępności i trwałości.
-* [Magazyn geograficznie nadmiarowy (GRS)](../articles/storage/common/storage-redundancy-grs.md): replikacji między regionalne do ochrony przed niedostępności całej regionu.
-* [Dostęp do odczytu magazynu geograficznie nadmiarowego (RA-GRS)](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage): replikacji między regionalne z dostępem do odczytu do repliki.
+* [Magazyn lokalnie nadmiarowy (LRS)](../articles/storage/common/storage-redundancy-lrs.md): prosta i ekonomiczna strategia replikacji. Dane są replikowane w obrębie pojedynczej jednostki skalowania magazynu.
+* [Magazyn strefowo nadmiarowy (ZRS)](../articles/storage/common/storage-redundancy-zrs.md): replikacja na potrzeby wysokiej dostępności i trwałości. Dane są replikowane synchronicznie w trzech strefach dostępności. 
+* [Magazyn geograficznie nadmiarowy (GRS)](../articles/storage/common/storage-redundancy-grs.md): replikacja między regionami w celu ochrony przed niedostępnością obejmującą cały region.
+* [Dostęp do odczytu z magazynu geograficznie nadmiarowego (RA-GRS)](../articles/storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage): replikacja między regionami z dostępem do odczytu do repliki.

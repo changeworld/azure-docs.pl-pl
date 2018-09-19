@@ -1,31 +1,34 @@
 ---
-title: Dostosowanie tłumaczenia interfejs API tekstu usługi Microsoft Translator | Dokumentacja firmy Microsoft
+title: Dostosowanie tłumaczenia interfejs API tekstu usługi Translator
+titlesuffix: Azure Cognitive Services
 description: Użyj Centrum w usłudze Translator firmy Microsoft, aby utworzyć własny system tłumaczenia maszynowego, korzystając z preferowanych terminologii i stylu.
 services: cognitive-services
 author: Jann-Skotdal
-manager: chriswendt1
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: translator-text
 ms.topic: article
 ms.date: 05/10/2018
 ms.author: v-jansko
-ms.openlocfilehash: 9c7083ed0147b221d3d400afe83bb3bd6b6db86e
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: d71158bc74ffe15f133cc637371ddc840ef9df9e
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574027"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124341"
 ---
 # <a name="customize-your-text-translations"></a>Dostosuj tłumaczenia tekstu
 
-Microsoft niestandardowe w usłudze Translator w wersji zapoznawczej to funkcja usługi Microsoft Translator, która umożliwia użytkownikom dostosowywanie zaawansowane neuronowego tłumaczenia maszynowego Microsoft Translator podczas tłumaczenia tekstu przy użyciu interfejsu API tekstu usługi Translator firmy Microsoft (tylko wersja 3). 
+Microsoft niestandardowe w usłudze Translator w wersji zapoznawczej to funkcja usługi Microsoft Translator, która umożliwia użytkownikom dostosowywanie zaawansowane neuronowego tłumaczenia maszynowego Microsoft Translator podczas tłumaczenia tekstu przy użyciu interfejsu API tłumaczenia tekstu (tylko wersja 3). 
 
 Tej funkcji można również dostosować tłumaczenia mowy, gdy jest używane z [mowy w usłudze Cognitive Services w wersji zapoznawczej](https://docs.microsoft.com/azure/cognitive-services/speech-service/).
 
 ## <a name="custom-translator"></a>Niestandardowe w usłudze Translator
+
 Translator niestandardowe umożliwiają tworzenie tłumaczenie neuronowe systemami, zapoznaj się z terminologią używane we własnych firm i branży. System tłumaczeń dostosowany zostanie następnie integrowanie istniejących aplikacji, przepływów pracy i witryn sieci Web. 
 
 ### <a name="how-does-it-work"></a>Jak to działa?
+
 Użyj wcześniej przetłumaczone dokumentów (ulotki, stron sieci Web, dokumentacji, itp.), system tłumaczeń, odzwierciedlający Twoje specyficzne dla domeny terminologii i stylu, lepiej niż system ogólnego tłumaczenia kompilacji. Użytkownicy mogą przesłać dokumenty TMX XLIFF, TXT, DOCX i XLSX.  
 
 System akceptuje także danych, który jest równolegle na poziomie dokumentu, ale jeszcze nie jest wyrównany na poziomie pojedynczych zdań. Jeśli użytkownicy mają dostęp do wersji tej samej zawartości, w wielu językach, ale w oddzielnych dokumentów niestandardowe w usłudze Translator będzie można automatycznie dopasowywać zdań między dokumentów.  System umożliwia również jednojęzyczne danych w językach jednego lub obu tych uzupełniają dane równoległe szkolenie i ulepszać tłumaczenia. 
@@ -60,5 +63,6 @@ Starsze Centrum w usłudze Translator firmy Microsoft może służyć do transla
 >Podobne funkcje są dostępne w interfejsie API usługi Translator koncentratora. Zobacz [ https://hub.microsofttranslator.com/swagger ](https://hub.microsofttranslator.com/swagger). 
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 > [!div class="nextstepaction"]
 > [Skonfiguruj system dostosowane języka, przy użyciu niestandardowych w usłudze Translator](http://aka.ms/CustomTranslatorDocs)

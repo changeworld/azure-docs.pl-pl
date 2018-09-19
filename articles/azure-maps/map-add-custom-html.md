@@ -9,16 +9,16 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.custom: codepen
-ms.openlocfilehash: 5060839be244f55700b40735e598964a0b7b6709
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: e5cfbc7ddc10edf9b21afce73e3b7f8795fcdac9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382049"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121961"
 ---
 # <a name="add-custom-html-to-the-map"></a>Dodawanie niestandardowego kodu HTML do mapy
 
-W tym artykule przedstawiono sposób dodawania niestandardowego kodu HTML, takich jak plik obrazu do mapy. 
+W tym artykule przedstawiono sposób dodawania niestandardowego kodu HTML, takich jak plik obrazu do mapy.
 
 ## <a name="understand-the-code"></a>Zrozumienie kodu
 
@@ -33,11 +33,15 @@ Ostatni blok kodu używa [addHtml](https://docs.microsoft.com/javascript/api/azu
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się więcej na temat klasy i metody używane w tym artykule: 
-* [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
-    * [addHtml](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addhtml)
-    
-Aby uzyskać więcej przykładów kodu do dodania do map zobacz następujące artykuły: 
-* [Wyświetlanie wyników wyszukiwania](./map-search-location.md)
-* [Uzyskiwanie informacji na podstawie współrzędnych](./map-get-information-from-coordinate.md)
+Dowiedz się więcej na temat klasy i metody używane w tym artykule:
 
+> [!div class="nextstepaction"]
+> [Mapy](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest)
+
+Aby uzyskać więcej przykładów kodu do dodania do map zobacz następujące artykuły:
+
+> [!div class="nextstepaction"]
+> [Wyświetlanie wyników wyszukiwania](./map-search-location.md)
+
+> [!div class="nextstepaction"]
+> [Uzyskiwanie informacji na podstawie współrzędnych](./map-get-information-from-coordinate.md)

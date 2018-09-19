@@ -12,12 +12,12 @@ ms.devlang: fsharp
 ms.topic: reference
 ms.date: 09/09/2016
 ms.author: syclebsc
-ms.openlocfilehash: ec4260363aa0af3062a6d61db44a75d9ebd599db
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 5593f76511f43106d6743a158b051e118ef2a4a6
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44090748"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125259"
 ---
 # <a name="azure-functions-f-developer-reference"></a>Odwołanie do usługi Azure Functions dla deweloperów F #
 
@@ -29,6 +29,29 @@ W tym artykule założono, że zostały już przeczytane [dokumentacja dla dewel
 `.fsx` Plik znajduje się skrypt F #. Jego można traktować jako projektu języka F #, która znajduje się w jednym pliku. Plik zawiera kod dla Twojego programu (w tym przypadku funkcji platformy Azure) oraz dyrektywy do zarządzania zależnościami.
 
 Kiedy używasz `.fsx` dla funkcji platformy Azure, często wymagane zestawy są automatycznie dołączane do Ciebie, co pozwala skupić się na kod funkcji, a nie "standardowy".
+
+## <a name="folder-structure"></a>Struktura folderów
+
+Struktura folderów dla projektu skryptu F # wygląda podobnie do poniższego:
+
+```
+FunctionsProject
+ | - MyFirstFunction
+ | | - run.fsx
+ | | - function.json
+ | | - function.proj
+ | - MySecondFunction
+ | | - run.fsx
+ | | - function.json
+ | | - function.proj
+ | - host.json
+ | - extensions.csproj
+ | - bin
+```
+
+Brak pliku udostępnionego [host.json] (funkcje host-json.md), który może służyć do konfigurowania aplikacji funkcji. Każda funkcja ma swój własny plik kodu (.fsx) i plik konfiguracji powiązania (function.json).
+
+Rozszerzenia powiązania wymagane w [wersji 2.x](functions-versions.md) funkcji środowiska uruchomieniowego są zdefiniowane w `extensions.csproj` pliku z plikami rzeczywistej biblioteki w `bin` folderu. Podczas tworzenia lokalnie, należy najpierw [zarejestrować rozszerzeń powiązania](functions-triggers-bindings.md#local-development-azure-functions-core-tools). Podczas tworzenia funkcji w witrynie Azure portal, rejestracja odbywa się za Ciebie.
 
 ## <a name="binding-to-arguments"></a>Powiązanie z argumentami
 Każde powiązanie obsługuje niektóre argumenty, zgodnie z opisem w [dokumentacja dla deweloperów usługi wyzwalaczy i powiązań usługi Azure Functions](functions-triggers-bindings.md). Na przykład jedno z powiązań argument, który obsługuje wyzwalacz obiektu blob jest POCO, które mogą być wyrażone za pomocą rekordu F #. Na przykład:

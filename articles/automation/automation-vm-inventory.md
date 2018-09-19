@@ -10,11 +10,12 @@ ms.author: jehunte
 ms.date: 03/30/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: d5f9bae34dabba71861adc9b2aeb0d33b8a1e226
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: 30569c3a89de320769d433b5b3a4af9cf4e08e66
+ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "35647853"
 ---
 # <a name="manage-an-azure-virtual-machine-with-inventory-collection"></a>Zarządzanie maszyną wirtualną platformy Azure z wykorzystaniem zbierania spisu
 
@@ -24,7 +25,7 @@ Istnieje możliwość włączenia śledzenia z użyciem spisu dla maszyny wirtua
 
 Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/).
 
-W tym artykule przyjęto założenie, że masz maszyny Wirtualnej, aby skonfigurować rozwiązanie na. Jeśli nie masz maszyny wirtualnej platformy Azure, utwórz [maszynę wirtualną](../virtual-machines/windows/quick-create-portal.md).
+W tym artykule przyjęto założenie, że masz maszynę Wirtualną do konfigurowania rozwiązania na. Jeśli nie masz maszyny wirtualnej platformy Azure, utwórz [maszynę wirtualną](../virtual-machines/windows/quick-create-portal.md).
 
 ## <a name="sign-in-to-the-azure-portal"></a>Logowanie się do witryny Azure Portal
 
@@ -34,14 +35,14 @@ Zaloguj się w witrynie [Azure Portal](https://portal.azure.com/).
 
 1. W okienku po lewej stronie witryny Azure Portal wybierz pozycję **Maszyny wirtualne**.
 2. Z listy maszyn wirtualnych wybierz maszynę wirtualną.
-3. Na **zasobów** menu, w obszarze **operacji**, wybierz pozycję **spisu**.
+3. Na **zasobów** menu, w obszarze **operacji**, wybierz opcję **spisu**.
 4. Wybierz obszar roboczy usługi Log Analytics, aby zapisać w nim dzienniki danych.
     Jeśli w tym regionie nie ma dostępnego dla Ciebie obszaru roboczego, pojawi się monit o utworzenie domyślnego obszaru roboczego i konta usługi Automation.
 5. Aby rozpocząć dołączanie swojego komputera, kliknij pozycję **Włącz**.
 
    ![Widok opcji dołączania](./media/automation-vm-inventory/inventory-onboarding-options.png)
 
-    Pojawi się pasek stanu z informacją o tym, że trwa włączanie rozwiązania. Ten proces może potrwać do 15 minut. W tym czasie możesz zamknąć okno, lub można zachować otwarty i powiadomi użytkownika po włączeniu rozwiązania. Stan wdrożenia możesz monitorować w okienku powiadomień.
+    Pojawi się pasek stanu z informacją o tym, że trwa włączanie rozwiązania. Ten proces może potrwać do 15 minut. W tym czasie możesz zamknąć okno lub zostawić je otwarte i powiadomi użytkownika po włączeniu rozwiązania. Stan wdrożenia możesz monitorować w okienku powiadomień.
 
    ![Widok rozwiązania spisu natychmiast po dołączeniu](./media/automation-vm-inventory/inventory-onboarded.png)
 
@@ -51,11 +52,11 @@ Po zakończeniu wdrażania pasek stanu zniknie. System nadal będzie zbierać da
 
 Domyślnie na potrzeby zbierania skonfigurowane są oprogramowanie, usługi systemu Windows oraz demony systemu Linux. Aby zbierać spis dla rejestru systemu Windows i plików, skonfiguruj ustawienia zbierania spisu.
 
-1. W **spisu** widok, wybierz opcję **edytowanie ustawień** u góry okna.
+1. W **spisu** widoku, wybierz opcję **edytowanie ustawień** znajdujący się u góry okna.
 2. Aby dodać nowe ustawienie zbierania, przejdź do kategorii ustawienia, które chcesz dodać, wybierając karty **Rejestr systemu Windows**, **Pliki systemu Windows** oraz **Pliki systemu Linux**.
 3. Wybierz odpowiednią kategorię, a następnie kliknij przycisk **Dodaj** w górnej części okna.
 
-Poniższe tabele zawierają informacje dotyczące każdej właściwości, które mogą być skonfigurowane dla różnych kategorii.
+Poniższe tabele zawierają informacje dotyczące każdej właściwości, które można skonfigurować dla różnych kategorii.
 
 ### <a name="windows-registry"></a>Rejestr systemu Windows
 
@@ -88,6 +89,24 @@ Poniższe tabele zawierają informacje dotyczące każdej właściwości, które
 |Użyj polecenia Sudo     | To ustawienie określa, czy podczas sprawdzania elementu jest używane polecenie sudo.         |
 |Linki     | To ustawienie określa, w jaki sposób są obsługiwane linki symboliczne podczas przechodzenia między katalogami.<br> **Ignoruj** — ignoruje linki symboliczne i nie uwzględnia plików/katalogów, do których się odwołują<br>**Śledź** — śledzi linki symboliczne podczas rekursji i uwzględnia również pliki/katalogi, do których się odwołują<br>**Zarządzaj** — śledzi linki symboliczne i umożliwia obsługę zwracanej zawartości      |
 
+## <a name="manage-machine-groups"></a>Zarządzaj grupami maszyn
+
+Spis umożliwia tworzenie i wyświetlanie grupy maszyn w usłudze Log Analytics. Grupy maszyn są kolekcjami maszynach zdefiniowanych przez zapytanie w usłudze Log Analytics.
+
+Na komputerze grupy wybierz widok **maszyny grupy** karty na stronie spisu.
+
+![Widok grupy maszyn, na stronie spisu](./media/automation-vm-inventory/inventory-machine-groups.png)
+
+Wybór grupy maszyn z listy spowoduje otwarcie strony grupy maszyn. Ta strona zawiera szczegółowe informacje o grupie maszyn. Obejmują one zapytanie analizy dziennika, który jest używany do definiowania grupy. W dolnej części strony jest listą stronicowane maszyn, które należą do tej grupy.
+
+![Wyświetl stronę grupy maszyn](./media/automation-vm-inventory/machine-group-page.png)
+
+Kliknij przycisk **+ klonowania** przycisk, aby sklonować grupy maszyn. W tym miejscu należy nadać grupie nową nazwę i alias dla grupy. Definicja może się zmienić w tej chwili. Po zmianie naciśnij zapytania **zapytanie weryfikacji** nad wersją zapoznawczą maszyn, które będzie można wybrać. Gdy jesteś zadowolony z grupy kliknij **Utwórz** można utworzyć grupy maszyn
+
+Jeśli chcesz utworzyć nową grupę mchine, wybierz opcję **+ Utwórz grupę maszyny**. Ten przycisk otwiera **Utwórz stronę grupy maszyny** gdzie można zdefiniować nowej grupy. Kliknij przycisk **Utwórz** do utworzenia grupy.
+
+![Utwórz nową grupę maszyn](./media/automation-vm-inventory/create-new-group.png)
+
 ## <a name="disconnect-your-virtual-machine-from-management"></a>Odłączanie maszyny wirtualnej od zarządzania
 
 Aby usunąć maszynę wirtualną z zarządzania spisem:
@@ -102,4 +121,4 @@ Aby usunąć maszynę wirtualną z zarządzania spisem:
 ## <a name="next-steps"></a>Kolejne kroki
 
 * Aby dowiedzieć się więcej o zarządzaniu zmianami w plikach i ustawieniach rejestru na maszynach wirtualnych, zobacz [Track software changes in your environment with the Change Tracking solution](../log-analytics/log-analytics-change-tracking.md) (Śledzenie zmian oprogramowania w środowisku za pomocą rozwiązania do śledzenia zmian).
-* Aby dowiedzieć się więcej o zarządzaniu systemem Windows i pakietu aktualizacji na maszynach wirtualnych, zobacz [rozwiązania do zarządzania aktualizacji w usłudze Azure](../operations-management-suite/oms-solution-update-management.md).
+* Aby dowiedzieć się więcej o zarządzaniu Windows i aktualizacjami pakietów na maszynach wirtualnych, zobacz [rozwiązanie do zarządzania aktualizacjami w usłudze Azure](../operations-management-suite/oms-solution-update-management.md).

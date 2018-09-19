@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 09/17/2018
 ms.author: jeedes
-ms.openlocfilehash: e100859a184db2b6298dd02a1bb7bb238de27d51
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: e7cb3049f680f81026e09388066001413922600a
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44096283"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123859"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silverback"></a>Samouczek: Integracja usługi Azure Active Directory z Silverback
 
@@ -38,7 +38,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 Aby skonfigurować integrację usługi Azure AD za pomocą Silverback, potrzebne są następujące elementy:
 
 - Subskrypcji usługi Azure AD
-- Silverback logowanie jednokrotne włączone subskrypcji
+- Aktywna subskrypcja Silverback
 
 > [!NOTE]
 > Aby przetestować kroki opisane w tym samouczku, zaleca się używania środowiska produkcyjnego.
@@ -107,11 +107,11 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Silverback domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/silverback-tutorial/tutorial_silverback_url.png)
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<YOURSILVERBACKURL>/ssp`
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<YOURSILVERBACKURL>.com/ssp`
 
-    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<YOURSILVERBACKURL>`
+    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `<YOURSILVERBACKURL>.com`
 
-    c. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<YOURSILVERBACKURL>/sts/authorize/login`
+    c. W **adres URL odpowiedzi** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<YOURSILVERBACKURL>.com/sts/authorize/login`
 
     > [!NOTE] 
     > Te wartości są prawdziwe. Rzeczywisty adres URL logowania, identyfikator i adres URL odpowiedzi, należy zaktualizować te wartości. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Silverback](mailto:helpdesk@matrix42.com) do uzyskania tych wartości. 
@@ -124,7 +124,31 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/silverback-tutorial/tutorial_general_400.png)
 
-6. Aby skonfigurować logowanie jednokrotne na **Silverback** stronie, musisz wysłać **adres Url metadanych Federacji aplikacji** do [zespołem pomocy technicznej Silverback](mailto:helpdesk@matrix42.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+6.  Zaloguj się do serwera Silverback z uprawnieniami administratora i wykonaj następujące czynności:
+
+    a.  Przejdź do **administratora** > **dostawcy uwierzytelniania**.
+
+    b. Na **ustawień dostawcy uwierzytelniania** strony, wykonaj następujące czynności:
+
+    ![Administrator ](./media/silverback-tutorial/tutorial_silverback_admin.png)
+
+    c.  Kliknij pozycję **Importuj z adresu URL**.
+    
+    d.  Wklej skopiowany adres URL metadanych, a następnie kliknij przycisk **OK**.
+    
+    e.  Potwierdzenia otrzymania pracy **OK** , a następnie wartości zostaną wypełnione automatycznie.
+    
+    f.  Włącz **wyświetlane na stronie logowania**.
+    
+    g.  Włącz **dynamiczne tworzenie użytkownika** Aby automatycznie dodać przez użytkowników usługi Azure AD autoryzacji (opcjonalnie).
+    
+    h.  Tworzenie **tytuł** dla przycisku na portalu samoobsługowego.
+
+    i.  Przekaż **ikonę** , klikając **wybierz plik**.
+    
+    j.  Wybierz tło **kolor** dla przycisku.
+    
+    k.  Kliknij pozycję **Zapisz**.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 
@@ -160,7 +184,34 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
  
 ### <a name="create-a-silverback-test-user"></a>Tworzenie użytkownika testowego Silverback
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Silverback. Praca z [zespołem pomocy technicznej Silverback](mailto:helpdesk@matrix42.com) Aby dodać użytkowników na platformie Silverback. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+Aby umożliwić użytkownikom usługi Azure AD, zaloguj się do Silverback, musi być obsługiwana w Silverback. W Silverback Inicjowanie obsługi administracyjnej jest zadanie ręczne.
+
+**Aby udostępnić konto użytkownika, wykonaj następujące czynności:**
+
+1. Zaloguj się do serwera Silverback jako Administrator.
+
+2. Przejdź do **użytkowników** i **Dodaj nowego użytkownika urządzenia**.
+
+3. Na **podstawowe** strony, wykonaj następujące czynności:
+
+    ![Użytkownik ](./media/silverback-tutorial/tutorial_silverback_user.png)
+
+    a. W **Username** tekstu wprowadź nazwę użytkownika, takich jak **Britta**.
+
+    b. W **imię** tekstu Wprowadź imię użytkownika, takich jak **Britta**.
+
+    c. W **nazwisko** tekstu wprowadź nazwisko użytkownika, takich jak **Simon**.
+
+    d. W **adres E-mail** tekstu wprowadź adres e-mail użytkownika, takich jak **Brittasimon@contoso.com**.
+
+    e. W **hasło** tekstu wprowadź hasło.
+    
+    f. W **Potwierdź hasło** polu tekstowym Wprowadź ponownie hasło i potwierdź.
+
+    g. Kliknij pozycję **Zapisz**.
+
+>[!NOTE]
+>Jeśli nie chcesz ręcznie utworzyć każdy użytkownik należy włączyć **dynamiczne tworzenie użytkownika** pole wyboru w obszarze **administratora** > **dostawcy uwierzytelniania**.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

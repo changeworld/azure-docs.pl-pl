@@ -12,12 +12,12 @@ ms.topic: conceptual
 ms.date: 07/01/2018
 ms.author: jehollan
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 7d29cd3801bf997bf5c28ed0845996725aaf1840
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 8b0681165fe84dd54f3b81f610c6698998e881de
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093655"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125497"
 ---
 # <a name="create-your-first-function-with-java-and-eclipse-preview"></a>Tworzenie pierwszej funkcji przy użyciu języka Java i Eclipse (wersja zapoznawcza)
 
@@ -77,7 +77,7 @@ Wybierz **Uruchom** menu i Otwórz **Debuguj konfiguracje**. Wybierz **zdalna ap
 
 ![Debugowanie funkcji w środowisku Eclipse](media/functions-create-first-java-eclipse/debug-configuration-eclipse.PNG)
 
-Ustaw punkty przerwania i zbadaj obiekty w funkcji za pomocą środowiska IDE. Po zakończeniu Zatrzymaj debuger i uruchamianie hosta funkcji. Tylko jednej funkcji — host może być aktywności i działania lokalnie, w czasie.
+Ustaw punkty przerwania i zbadaj obiekty w funkcji za pomocą środowiska IDE. Po zakończeniu Zatrzymaj debuger i uruchamianie hosta funkcji. Tylko jednej funkcji — host może być aktywny i działa lokalnie w danym momencie.
 
 ## <a name="deploy-the-function-to-azure"></a>Wdrażanie funkcji na platformie Azure
 

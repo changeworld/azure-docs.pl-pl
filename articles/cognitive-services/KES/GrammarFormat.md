@@ -1,27 +1,30 @@
 ---
-title: Format gramatyki w interfejsie API usługi Eksploracja wiedzy | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat format gramatyki w wiedzy Exploration Service (KES) interfejsu API w usługach Cognitive Services.
+title: Format gramatyki — interfejs API usługi Eksploracja wiedzy
+titlesuffix: Azure Cognitive Services
+description: Więcej informacji na temat format gramatyki w wiedzy Exploration Service (KES) interfejsu API.
 services: cognitive-services
 author: bojunehsu
-manager: stesp
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: knowledge-exploration
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/26/2016
 ms.author: paulhsu
-ms.openlocfilehash: b64025be2f5a9708162da475c1f037d7f253d2c6
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 4b4010152622cd9a1d8111ac92dd1960e78d4601
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865757"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46125157"
 ---
 # <a name="grammar-format"></a>Format gramatyki
+
 Gramatyka jest plik XML, który określa zestaw ważona zapytań w języku naturalnym, których usługa może interpretować, a także jak tych zapytań w języku naturalnym są tłumaczone na wyrażeniach zapytań semantycznych.  Składnia gramatyki opiera się na [SRGS](http://www.w3.org/TR/speech-grammar/), to standard W3C gramatyki rozpoznawania mowy, za pomocą rozszerzeń do obsługi integracji indeksu danych i funkcji semantycznego.
 
 Poniżej opisano poszczególne elementy składni, które mogą być używane w gramatyki.  Zobacz [w tym przykładzie](#example) dla pełną gramatyki, który demonstruje użycie tych elementów w kontekście.
 
-### <a name="grammar-element"></a>Gramatyka — Element 
+### <a name="grammar-element"></a>Gramatyka — Element
+
 `grammar` Element jest elementem najwyższego poziomu w gramatyce specyfikacji XML.  Wymagane `root` atrybut określa nazwę reguły głównej, która określa punkt początkowy gramatyki.
 
 ```xml
@@ -29,6 +32,7 @@ Poniżej opisano poszczególne elementy składni, które mogą być używane w g
 ```
 
 ### <a name="import-element"></a>Import — Element
+
 `import` Element importuje definicję schematu z zewnętrznego pliku, aby włączyć atrybut odwołania. Element musi być obiektem podrzędnym obiektu najwyższego poziomu `grammar` elementu i pojawiają się przed każdą `attrref` elementów. Wymagane `schema` atrybut określa nazwę pliku schematu znajduje się w tym samym katalogu co plik XML gramatyki. Wymagane `name` element Określa schemat alias oznacza kolejne `attrref` elementy używać podczas odwoływania się do atrybutów zdefiniowanych w tym schemacie.
 
 ```xml
@@ -36,6 +40,7 @@ Poniżej opisano poszczególne elementy składni, które mogą być używane w g
 ```
 
 ### <a name="rule-element"></a>Reguła elementu
+
 `rule` Element definiuje reguły gramatyki, strukturalnych jednostki, która określa zestaw wyrażeń zapytania, które może interpretować systemu.  Element musi być obiektem podrzędnym obiektu najwyższego poziomu `grammar` elementu.  Wymagane `id` atrybut określa nazwę reguły, które jest przywoływane z `grammar` lub `ruleref` elementów.
 
 A `rule` element definiuje zestaw rozszerzeń prawnych.  Tokeny tekstu dopasowywania zapytanie wejściowe bezpośrednio.  `item` elementy Określ powtórzeń i zmienia interpretację prawdopodobieństwa.  `one-of` elementy wskazują opcje alternatywne.  `ruleref` elementy Włącz konstruowania bardziej złożonych rozszerzenia z tymi prostsze.  `attrref` elementy umożliwiają dopasowań w odniesieniu do wartości atrybutu z indeksu.  `tag` elementy Określ semantykę interpretacji i może zmienić prawdopodobieństwo interpretacji.
@@ -45,6 +50,7 @@ A `rule` element definiuje zestaw rozszerzeń prawnych.  Tokeny tekstu dopasowyw
 ```
 
 ### <a name="example-element"></a>przykład elementu
+
 Opcjonalny `example` element określa przykład fraz, które mogą być akceptowane przez zawierający `rule` definicji.  To może służyć do dokumentacji i/lub testowania automatycznego.
 
 ```xml
@@ -52,6 +58,7 @@ Opcjonalny `example` element określa przykład fraz, które mogą być akceptow
 ```
 
 ### <a name="item-element"></a>element — Element
+
 `item` Element grupy sekwencji konstrukcji gramatyki.  Może służyć do wskazania powtórzeń sekwencji rozszerzenia lub określić alternatywne w połączeniu z `one-of` elementu.
 
 Podczas `item` element nie jest elementem podrzędnym `one-of` elementu, można określić powtórzenie sekwencji ujęty, przypisując `repeat` atrybutu wartość licznika.  Wartość liczby "*n*" (gdzie *n* jest liczbą całkowitą) wskazuje, że sekwencja musi wystąpić dokładnie *n* razy.  Wartość liczby "*m*-*n*" umożliwia sekwencji występować między *m* i *n* razy (włącznie).  Wartość liczby "*m*—" Określa, że sekwencja musi występować przynajmniej *m* razy.  Opcjonalny `repeat-logprob` atrybut może służyć do zmiany interpretacji prawdopodobieństwo powtórzeniami dodatkowe poza minimum.
@@ -71,6 +78,7 @@ Gdy `item` elementy są wyświetlane jako elementy podrzędne `one-of` elementu,
 ```
 
 ### <a name="one-of-element"></a>jeden — element
+
 `one-of` Element Określa alternatywną rozszerzenia wśród jednego elementu podrzędnego `item` elementów.  Tylko `item` elementów może występować wewnątrz `one-of` elementu.  Względna prawdopodobieństwa wśród różnych opcji można określić za pomocą `logprob` atrybutu w każdego elementu podrzędnego `item`.
 
 ```xml
@@ -82,6 +90,7 @@ Gdy `item` elementy są wyświetlane jako elementy podrzędne `one-of` elementu,
 ```
 
 ### <a name="ruleref-element"></a>ruleref — Element
+
 `ruleref` Element określa prawidłowe rozszerzenia za pomocą odwołania do innego `rule` elementu.  Za pośrednictwem `ruleref` elementów, mogą być wbudowane bardziej złożonych wyrażeń z reguł prostsze.  Wymagane `uri` atrybut wskazuje nazwę występujących w odwołaniu `rule` przy użyciu składni "#*rulename*".  Aby przechwycić semantycznego dane wyjściowe reguły z odwołaniami, Użyj opcjonalnego `name` atrybutu, aby określić nazwę zmiennej, do której przypisany jest semantycznego danych wyjściowych.
  
 ```xml
@@ -89,6 +98,7 @@ Gdy `item` elementy są wyświetlane jako elementy podrzędne `one-of` elementu,
 ```
 
 ### <a name="attrref-element"></a>attrref — Element
+
 `attrref` Element odwołuje się do atrybutu indeksu, umożliwiając dopasowywania w odniesieniu do wartości atrybutu zaobserwowane w indeksie.  Wymagane `uri` atrybut określa nazwę schematu indeksu i nazwy atrybutu przy użyciu składni "*schemaName*#*attrName*".  Musi być pewnym `import` element, który Importuje schemat o nazwie *schemaName*.  Nazwa atrybutu jest nazwa atrybutu zdefiniowanej w schemacie odpowiednie.
 
 Oprócz dopasowania danych wejściowych użytkownika, `attrref` element zwraca również wartość obiektu zapytań ze strukturą jako dane wyjściowe, który wybierze podzbiór obiektów w indeks pasujących wartości wejściowej.  Użyj opcjonalnego `name` atrybutu, aby określić nazwę zmiennej, w którym powinny być przechowywane dane wyjściowe obiektu zapytania.  Obiekt zapytania może składać się z innymi obiektami zapytanie w celu utworzenia więcej złożonych wyrażeń.  Zobacz [interpretacja semantyczna](SemanticInterpretation.md) Aby uzyskać szczegółowe informacje.  
@@ -97,7 +107,8 @@ Oprócz dopasowania danych wejściowych użytkownika, `attrref` element zwraca r
 <attrref uri="academic#Keyword" name="keyword"/>
 ```
 
-#### <a name="query-completion"></a>Ukończenie zapytań 
+#### <a name="query-completion"></a>Ukończenie zapytań
+
 Aby zapewnić obsługę uzupełnienia zapytań przy interpretowaniu zapytania częściowego użytkowników, każdy atrybut odwołania musi zawierać "starts_with" jako operacji w definicji schematu.  Podany prefiks zapytania użytkownika, `attrref` pasuje do wszystkich wartości w indeksie, kończące prefiks i uzyskanie każdej wartości ukończone jako osobne interpretacji gramatyki.  
 
 Przykłady:
@@ -105,6 +116,7 @@ Przykłady:
 * Dopasowywanie `<attrref uri="academic#Year" name="year"/>` względem zapytania prefiksu "200" generuje interpretacja dla dokumentów w "2000" interpretacja dokumentów "2001" itp.
 
 #### <a name="matching-operations"></a>Pasujących operacji
+
 Oprócz dokładnego dopasowania, wybierz typy atrybutów również prefiks pomocy technicznej i nierówności odpowiada za pomocą opcjonalnego `op` atrybutu.  Jeśli żaden obiekt w indeksie ma wartość, która jest zgodna, powoduje to zablokowanie ścieżki gramatyki i usługa nie zostanie wygenerowany wszelkie interpretacji przechodzenie przez tę ścieżkę gramatyki.   `op` Atrybutu wartości domyślnych "eq".
 
 ```xml
@@ -129,6 +141,7 @@ Przykłady:
 * `<attrref uri="academic#Year" op="starts_with" name="year"/>` Dopasowuje ciąg wejściowy "20" i zwraca w dokumenty pojedynczego interpretacji publikowane w 200 299, 2000 2999, itp.  Jest to przypadek użycia rzadkie.
 
 ### <a name="tag-element"></a>tag elementu
+
 `tag` Element określa, jak ścieżka za pośrednictwem gramatyki ma być interpretowany.  Zawiera ona sekwencja zakończona średnikiem instrukcji.  Instrukcja może być przypisanie literałem lub zmienną do innej zmiennej.  On również przypisać dane wyjściowe funkcji z atrybutem 0 lub większą liczbę parametrów do zmiennej.  Każdy parametr funkcji może być określona za pomocą literałem lub zmienną.  Jeśli funkcja nie zwraca żadnych danych wyjściowych, przypisanie zostanie pominięty.  Zakres zmiennej jest lokalny zawierającej regule.
 
 ```xml
@@ -144,12 +157,13 @@ Niektóre instrukcje mogą zmienić prawdopodobieństwo, że ścieżka interpret
 Aby uzyskać listę obsługiwanych funkcji semantyczne, zobacz [semantycznego funkcji](SemanticInterpretation.md#semantic-functions).
 
 ## <a name="interpretation-probability"></a>Prawdopodobieństwo interpretacja
+
 Prawdopodobieństwo ścieżką interpretacji za pośrednictwem gramatyki jest zbiorcza dziennika prawdopodobieństwo, że wszystkie `<item>` elementy i funkcje semantycznego napotkano po drodze.  Opisano w nim względnego prawdopodobieństwa wystąpienia określonej sekwencji wejściowych do dopasowania.
 
 Biorąc pod uwagę prawdopodobieństwo *p* od 0 do 1 odpowiedniego prawdopodobieństwo, że dziennik może zostać obliczony jako dziennik (*p*), gdzie log() jest funkcja logarytmu naturalnego.  Za pomocą dziennika prawdopodobieństwa umożliwia systemowi accumulate prawdopodobieństwo wspólnego drogę interpretacji przez proste dodanie.  Unika również zmiennoprzecinkowych niedopełnienie wspólne dla takich obliczeń prawdopodobieństwa wspólnych.  Należy pamiętać, że zgodnie z projektem, prawdopodobieństwo, że dziennik ma zawsze wartość ujemną wartość zmiennoprzecinkowa lub 0, gdzie większe wartości wskazują prawdopodobieństwo.
 
-<a name="example"></a>
 ## <a name="example"></a>Przykład
+
 Poniżej przedstawiono przykładowy kod XML z domeny publikacji akademickich, który demonstruje różne elementy gramatyki:
 
 ```xml

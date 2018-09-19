@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: jingwang
-ms.openlocfilehash: 227ad1c50050ae87bd0598815fff44fffa4196e8
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 8d2550d6a1f99adaec7423997365412eb61ffbdf
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630889"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46124699"
 ---
-# <a name="copy-data-from-shopify-using-azure-data-factory"></a>Kopiowanie danych z Shopify przy użyciu usługi Azure Data Factory
+# <a name="copy-data-from-shopify-using-azure-data-factory-preview"></a>Kopiowanie danych z Shopify przy użyciu usługi Azure Data Factory (wersja zapoznawcza)
 
 W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych ze Shopify. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 

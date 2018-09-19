@@ -1,21 +1,22 @@
 ---
-title: Filtrowanie odpowiedzi sieci web, które zwraca Bing | Dokumentacja firmy Microsoft
-description: Pokazuje, jak używać responseFilter do filtrowania odpowiedzi, które zwraca API wyszukiwania w Internecie Bing.
+title: Jak filtrować wyniki wyszukiwania - API wyszukiwania w Internecie Bing
+titleSuffix: Azure Cognitive Services
+description: Dowiedz się, jak filtrować i wyświetlać wyniki wyszukiwania z API wyszukiwania w Internecie Bing.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
+manager: cgronlun
 ms.assetid: 8B837DC2-70F1-41C7-9496-11EDFD1A888D
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/12/2017
 ms.author: scottwhi
-ms.openlocfilehash: 64095089e4c0841aa1f77165969221836c747738
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: 700fae4e206e547037406d4f15f32cb167fbe6b9
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42888577"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46123593"
 ---
 # <a name="filtering-the-answers-that-the-search-response-includes"></a>Filtrowanie odpowiedzi, które obejmuje odpowiedzi wyszukiwania  
 
@@ -81,25 +82,25 @@ Poniżej przedstawiono odpowiedzi na poprzednie zapytanie. Jak widać Bing nie z
 }
 ```
 
-Jeśli chcesz wykluczyć określonych typów zawartości, takiej jak obrazy, z odpowiedzi, można wykluczyć je z łącznikiem (prefiks wartości responseFilter minus). Oddzielne typy wykluczonych przecinkami: 
+Jeśli chcesz wykluczyć określonych typów zawartości, takiej jak obrazy, z odpowiedzi, można wykluczyć je z łącznikiem (prefiks wartości responseFilter minus). Oddzielne typy wykluczonych przecinkami:
 
 ```
 &responseFilter=-images,-videos
 ```
 
-Chociaż Bing nie zwrócił wyników wideo i wiadomości w poprzedniej odpowiedzi, nie oznacza to, że zawartości wideo i wiadomości nie istnieje. Oznacza to po prostu strony nie obejmują ich. Jednak jeśli użytkownik [strony](./paging-webpages.md) za pośrednictwem więcej wyników kolejnych stronach będzie prawdopodobnie je uwzględnić. Ponadto jeśli wywołasz [interfejsu API wyszukiwania wideo](../bing-video-search/search-the-web.md) i [interfejsu API wyszukiwania wiadomości](../bing-news-search/search-the-web.md) punktów końcowych w bezpośrednio odpowiedzi prawdopodobnie będzie zawierać wyniki. 
+Chociaż Bing nie zwrócił wyników wideo i wiadomości w poprzedniej odpowiedzi, nie oznacza to, że zawartości wideo i wiadomości nie istnieje. Oznacza to po prostu strony nie obejmują ich. Jednak jeśli użytkownik [strony](./paging-webpages.md) za pośrednictwem więcej wyników kolejnych stronach będzie prawdopodobnie je uwzględnić. Ponadto jeśli wywołasz [interfejsu API wyszukiwania wideo](../bing-video-search/search-the-web.md) i [interfejsu API wyszukiwania wiadomości](../bing-news-search/search-the-web.md) punktów końcowych w bezpośrednio odpowiedzi prawdopodobnie będzie zawierać wyniki.
 
 Odradza się przy użyciu się `responseFilter` można pobrać wyniki z jednego interfejsu API. Jeśli chcesz, aby zawartość z jednego interfejsu API Bing, bezpośrednio wywołać tego interfejsu API. Na przykład, aby móc odbierać tylko obrazy, Wyślij żądanie do punktu końcowego interfejsu API wyszukiwania obrazów `https://api.cognitive.microsoft.com/bing/v7.0/images/search` lub jednego z innych [obrazów](https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference#endpoints) punktów końcowych. Wywoływanie jednego interfejsu API są ważne nie tylko ze względu na wydajność, ale ponieważ interfejsy API specyficzne dla zawartości oferują bogatszy wyników. Na przykład można użyć filtrów, które nie są dostępne do interfejsu API wyszukiwania w sieci Web do filtrowania wyników.  
-  
+
 Aby uzyskać wyniki wyszukiwania z określonej domeny, należy dołączyć `site:` — operator zapytań w ciągu zapytania.  
 
 ```
 https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies+site:contososailing.com&mkt=en-us
 ```
 
-> [!NOTE] 
-> Zależnie od zapytania, jeśli używasz `site:` — operator zapytań, istnieje ryzyko, że odpowiedź może zawierać treści dla dorosłych niezależnie od wartości [bezpieczne wyszukiwanie](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#safesearch) ustawienie. Operatora `site:` używaj tylko wtedy, gdy znasz zawartość witryny i w swoim scenariuszu uwzględniasz możliwość pojawienia się zawartości dla dorosłych. 
-  
+> [!NOTE]
+> Zależnie od zapytania, jeśli używasz `site:` — operator zapytań, istnieje ryzyko, że odpowiedź może zawierać treści dla dorosłych niezależnie od wartości [bezpieczne wyszukiwanie](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#safesearch) ustawienie. Operatora `site:` używaj tylko wtedy, gdy znasz zawartość witryny i w swoim scenariuszu uwzględniasz możliwość pojawienia się zawartości dla dorosłych.
+
 ## <a name="limiting-the-number-of-answers-in-the-response"></a>Ograniczenie liczby odpowiedzi w odpowiedzi
 
 Bing zawiera odpowiedzi w odpowiedzi oparte na klasyfikacji. Na przykład po wykonaniu zapytania *pływających + dinghies*, Wyszukiwarka Bing zwróci `webpages`, `images`, `videos`, i `relatedSearches`.
@@ -118,7 +119,7 @@ Bing zawiera odpowiedzi w odpowiedzi oparte na klasyfikacji. Na przykład po wyk
 }
 ```
 
-Aby ograniczyć liczbę odpowiedzi tego Bing zwraca odpowiedzi dwóch pierwszych stron sieci Web i obrazów, zestaw [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#answercount) parametr 2 zapytania. 
+Aby ograniczyć liczbę odpowiedzi tego Bing zwraca odpowiedzi dwóch pierwszych stron sieci Web i obrazów, zestaw [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#answercount) parametr 2 zapytania.
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&answerCount=2&mkt=en-us HTTP/1.1  
@@ -159,7 +160,7 @@ Jeśli dodasz `responseFilter` parametr poprzednie zapytanie i ustaw go na stron
 
 ## <a name="promoting-answers-that-are-not-ranked"></a>Podwyższanie poziomu odpowiedzi, które nie są klasyfikowane
 
-W przypadku stron sieci Web, obrazów, filmów wideo i relatedSearches górnej pozycjonowane odpowiedzi, które Wyszukiwarka Bing zwróci dla zapytania, odpowiedź będzie zawierać na nie odpowiedzieć. Jeśli ustawisz [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#answercount) dwóch (2), Bing zwraca górną dwie odpowiedzi rangi: stron sieci Web i obrazy. W przypadku Bing w celu uwzględnienia obrazów i filmów wideo w odpowiedzi, należy określić [podwyższanie poziomu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#promote) parametr zapytania i ustaw ją na obrazów i filmów wideo. 
+W przypadku stron sieci Web, obrazów, filmów wideo i relatedSearches górnej pozycjonowane odpowiedzi, które Wyszukiwarka Bing zwróci dla zapytania, odpowiedź będzie zawierać na nie odpowiedzieć. Jeśli ustawisz [answerCount](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#answercount) dwóch (2), Bing zwraca górną dwie odpowiedzi rangi: stron sieci Web i obrazy. W przypadku Bing w celu uwzględnienia obrazów i filmów wideo w odpowiedzi, należy określić [podwyższanie poziomu](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#promote) parametr zapytania i ustaw ją na obrazów i filmów wideo.
 
 ```  
 GET https://api.cognitive.microsoft.com/bing/v7.0/search?q=sailing+dinghies&answerCount=2&promote=images%2Cvideos&mkt=en-us HTTP/1.1  
