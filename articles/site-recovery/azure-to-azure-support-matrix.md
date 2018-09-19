@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: sujayt
-ms.openlocfilehash: 105c1d97a812841e82a0c364ec7dda097c0dd399
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 1fa5451b852a564ef3f0858fdfe0ab0091117508
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717373"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46296028"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
 
@@ -171,7 +171,8 @@ Dyski zarządzane w warstwie standardowa | Obsługiwane regiony systemu Azure, w
 Premium Managed disks | Obsługiwane regiony systemu Azure, w których usługa Azure Site Recovery jest obsługiwany. |
 Miejsca do magazynowania | Obsługiwane |         
 Szyfrowanie danych magazynowanych (SSE) | Obsługiwane | Funkcja SSE jest ustawieniem domyślnym dla kont magazynu.   
-Usługa Azure Disk Encryption (ADE) | Nieobsługiwane |
+Usługa Azure Disk Encryption (ADE) dla systemu operacyjnego Windows | Włączone dla maszyn wirtualnych [szyfrowanie za pomocą aplikacji usługi Azure AD](https://aka.ms/ade-aad-app) są obsługiwane |
+Usługa Azure Disk Encryption (ADE) dla systemu Linux, systemu operacyjnego | Nieobsługiwane |
 Dodaj lub usuń gorąco dysku | Nieobsługiwane | Dodaj lub Usuń dysk danych na maszynie Wirtualnej, należy wyłączyć replikację i włącz ponownie replikację maszyny Wirtualnej.
 Wykluczanie dysku | Nieobsługiwane|   Dysk tymczasowy jest domyślnie wykluczony.
 Bezpośrednie miejsca do magazynowania magazynu  | Nieobsługiwane|
