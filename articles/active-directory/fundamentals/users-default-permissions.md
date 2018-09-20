@@ -1,26 +1,25 @@
 ---
-title: Porównanie uprawnień domyślnych użytkowników w usłudze Azure AD | Microsoft Docs
-description: Porównanie uprawnień członka, gościa, właściciela aplikacji i właściciela grupy
+title: Jakie są domyślne uprawnienia użytkowników usługi Azure Active Directory? | Microsoft Docs
+description: Dowiedz się więcej o uprawnieniach inny użytkownik, dostępne w usłudze Azure Active Directory.
 services: active-directory
-documentationcenter: ''
 author: eross-msft
 manager: mtillman
-editor: ''
 ms.service: active-directory
-ms.workload: identity
 ms.component: fundamentals
-ms.topic: overview
+ms.workload: identity
+ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: lizross
 ms.reviewer: vincesm
-ms.openlocfilehash: e2571a6854d2c3de2425547b69c5435286182ef7
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
-ms.translationtype: HT
+custom: it-pro
+ms.openlocfilehash: 9a9bd33dce4b2be9e15df2745dd25338cdb42702
+ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448156"
+ms.lasthandoff: 09/17/2018
+ms.locfileid: "45730483"
 ---
-# <a name="default-user-permissions-in-azure-active-directory"></a>Uprawnienia domyślne użytkowników w usłudze Azure Active Directory
+# <a name="what-are-the-default-user-permissions-in-azure-active-directory"></a>Jakie są domyślne uprawnienia użytkowników usługi Azure Active Directory?
 
 W usłudze Azure Active Directory (Azure AD) wszystkim użytkownikom jest udzielany zestaw uprawnień domyślnych. Na dostęp użytkownika mają wpływ typ użytkownika, [członkostwa w ramach roli](https://docs.microsoft.com/azure/active-directory/active-directory-users-assign-role-azure-portal) i prawa własności do poszczególnych obiektów. W tym artykule opisano te uprawnienia domyślne oraz zawarto porównanie uprawnień domyślnych członka i użytkownika gościa.
 
@@ -52,7 +51,7 @@ Uprawnienie | Wyjaśnienie ustawienia
 ---------- | ------------
 Możliwość tworzenia grup zabezpieczeń | Ustawienie tej opcji na wartość Nie uniemożliwia użytkownikom tworzenie grup zabezpieczeń. Administratorzy globalni i administratorzy kont użytkowników mogą nadal tworzyć grupy zabezpieczeń. Aby uzyskać więcej informacji, zobacz [Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy](../users-groups-roles/groups-settings-cmdlets.md).
 Możliwość tworzenia grup usługi Office 365 | Ustawienie tej opcji na wartość Nie uniemożliwia użytkownikom tworzenie grup usługi Office 365. Ustawienie tej opcji na wartość Niektóre umożliwia wybranemu zestawowi użytkowników tworzenie grup usługi Office 365. Administratorzy globalni i administratorzy kont użytkowników będą nadal mogli tworzyć grupy usługi Office 365. Aby uzyskać więcej informacji, zobacz [Polecenia cmdlet usługi Azure Active Directory służące do konfigurowania ustawień grupy](../users-groups-roles/groups-settings-cmdlets.md).
-Ogranicz dostęp do portalu administracyjnego usługi Azure AD | Ustawienie tej opcji na wartość Nie uniemożliwia użytkownikom uzyskanie dostępu do portalu usługi Azure Active Directory.
+Ogranicz dostęp do portalu administracyjnego usługi Azure AD | Ustawienie tej opcji nie uniemożliwia użytkownikom uzyskiwanie dostępu do usługi Azure Active Directory.
 Możliwość odczytywania innych użytkowników | To ustawienie jest dostępne tylko w programie PowerShell. Ustawienie tej opcji na wartość $false uniemożliwia użytkownikom nieadministracyjnym odczytywanie informacji o użytkowniku z katalogu. Nie zapobiega to jednak odczytywaniu informacji o użytkowniku w innych usługach firmy Microsoft, takich jak Exchange Online. To ustawienie powinno być używane tylko w specjalnych okolicznościach i ustawianie go na wartość $false nie jest zalecane.
 
 ## <a name="object-ownership"></a>Własność obiektu
@@ -68,9 +67,9 @@ When a user adds a new enterprise application, they are automatically added as a
 
 Gdy użytkownik tworzy grupę, jest automatycznie dodawany jako właściciel tej grupy. Właściciel może zarządzać właściwościami grupy, takimi jak nazwa, a także zarządzać członkostwem. Właściciel może również dodawać i usuwać innych właścicieli. W odróżnieniu od administratorów globalnych i administratorów kont użytkowników właściciele mogą zarządzać tylko posiadanymi przez siebie grupami. Aby dowiedzieć się, jak przypisać właściciela grupy, zobacz [Managing owners for a group](active-directory-accessmanagement-managing-group-owners.md) (Zarządzanie właścicielami grupy).
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-* Aby dowiedzieć się więcej o modyfikowaniu administratorów subskrypcji platformy Azure, zobacz [How to add or change Azure administrator roles](../../billing/billing-add-change-azure-subscription-administrator.md) (Jak dodać lub zmienić role administratora platformy Azure).
+* Aby dowiedzieć się więcej na temat sposobu przypisywania ról administratora usługi Azure AD, zobacz [przypisać użytkownika do ról administratora w usłudze Azure Active Directory](active-directory-users-assign-role-azure-portal.md)
 * Aby dowiedzieć się więcej o kontrolowaniu dostępu do zasobów na platformie Microsoft Azure, zobacz [Understanding resource access in Azure](../../role-based-access-control/rbac-and-directory-admin-roles.md) (Opis dostępu do zasobów na platformie Azure).
 * Aby uzyskać więcej informacji dotyczących relacji między usługą Azure Active Directory i subskrypcją platformy Azure, zobacz [Jak subskrypcje platformy Azure są kojarzone z usługą Azure Active Directory](active-directory-how-subscriptions-associated-directory.md).
 * [Zarządzanie użytkownikami](add-users-azure-active-directory.md)

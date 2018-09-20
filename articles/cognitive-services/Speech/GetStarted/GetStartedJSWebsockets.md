@@ -1,20 +1,21 @@
 ---
-title: Wprowadzenie do interfejsu API rozpoznawania mowy firmy Microsoft w języku JavaScript | Dokumentacja firmy Microsoft
-description: Użyj interfejsu API rozpoznawania mowy firmy Microsoft w usługach Cognitive Services do tworzenia aplikacji, które stale Konwertuj dźwięk mówiony na tekst.
+title: Wprowadzenie do interfejsu API rozpoznawania mowy Bing w języku JavaScript | Dokumentacja firmy Microsoft
+titlesuffix: Azure Cognitive Services
+description: Użyj interfejsu API rozpoznawania mowy Bing w usługach Cognitive Services do tworzenia aplikacji, które stale Konwertuj dźwięk mówiony na tekst.
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 12/21/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 04332c453d22122e65a758a65b09e17300e07f02
-ms.sourcegitcommit: 7208bfe8878f83d5ec92e54e2f1222ffd41bf931
+ms.openlocfilehash: 024f359362aba3f7d4f99b7dd36954a755c4d1f2
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/14/2018
-ms.locfileid: "39040542"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366084"
 ---
 # <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>Wprowadzenie do interfejsu API rozpoznawania mowy w języku JavaScript
 
@@ -38,7 +39,7 @@ W tej sekcji przeprowadzimy Cię przez niezbędne kroki, aby załadować przykł
 
 ### <a name="open-the-sample-directly"></a>Otwórz przykładową bezpośrednio
 
-Uzyskać klucz subskrypcji, zgodnie z powyższym opisem. Następnie otwórz [łącze do przykładu](https://htmlpreview.github.io/?https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html). Spowoduje to załadowanie strony w domyślnej przeglądarce (renderowany przy użyciu [htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com)).
+Uzyskać klucz subskrypcji, zgodnie z powyższym opisem. Następnie otwórz [łącze do przykładu](https://htmlpreview.github.io/? https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/preview/samples/browser/Sample.html). Spowoduje to załadowanie strony w domyślnej przeglądarce (renderowany przy użyciu [htmlPreview](https://github.com/htmlpreview/htmlpreview.github.com)).
 
 ### <a name="open-the-sample-from-a-local-copy"></a>Otwórz przykładową z lokalną kopią
 

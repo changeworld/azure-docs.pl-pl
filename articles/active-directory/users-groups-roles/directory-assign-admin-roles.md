@@ -1,6 +1,6 @@
 ---
-title: Przypisywanie ról administratorów w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
-description: Roli administratora można dodać użytkowników, przypisywać role administracyjne, resetować hasła użytkowników, zarządzać licencjami użytkowników lub zarządzać domenami. Użytkownik, któremu przypisano rolę administratora ma takie same uprawnienia dla wszystkich usług w chmurze do których zostały zasubskrybowane przez organizację.
+title: Role administratorów odwoływać się do usługi Azure Active Directory | Dokumentacja firmy Microsoft
+description: Roli administratora można dodać użytkowników, przypisywać role administracyjne, resetować hasła użytkowników, zarządzać licencjami użytkowników lub zarządzać domenami.
 services: active-directory
 documentationcenter: ''
 author: curtand
@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 09/19/2018
 ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
-ms.openlocfilehash: 985fd559c0af0306dc5b0868a8d7ccc66ca790f8
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 04deb1168c8c5c0977d0f20c9307ce10d2d12d35
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296706"
+ms.locfileid: "46466119"
 ---
 # <a name="assigning-administrator-roles-in-azure-active-directory"></a>Przypisywanie ról administratorów w usłudze Azure Active Directory
 
@@ -327,7 +327,8 @@ Pełny dostęp do zarządzania urządzeniami w usłudze Azure AD.
 | **Akcje** | **Opis** |
 | --- | --- |
 | Microsoft.AAD.Directory/Devices/DELETE | Usuwanie urządzeń w usłudze Azure Active Directory. |
-| Microsoft.AAD.Directory/Devices/Update | Zaktualizuj właściwość accountEnabled na urządzeniach w usłudze Azure Active Directory |
+| Microsoft.AAD.Directory/Devices/disable | Wyłącz urządzenia w usłudze Azure Active Directory. |
+| Microsoft.AAD.Directory/Devices/enable | Włącz urządzeń w usłudze Azure Active Directory. |
 | microsoft.aad.reports/allEntities/read | Odczytywanie raportów usługi Azure AD. |
 | microsoft.azure.serviceHealth/allEntities/allTasks | Przeczytaj i konfigurowanie usługi Azure Service Health. |
 | Microsoft.office365.serviceHealth/allEntities/allTasks | Odczytywanie i konfigurowanie kondycji usługi Office 365. |
