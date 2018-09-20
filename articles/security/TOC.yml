@@ -16,8 +16,6 @@ items:
     href: abstract-container-security-microsoft-azure.md
   - name: Włączanie bezpieczeństwa działania
     href: abstract-azure-operational-security.md
-  - name: Ład na platformie Azure
-    href: governance-in-azure.md
   - name: Izolacja w chmurze platformy Azure
     href: azure-isolation.md
   - name: Bezpieczna hybrydowa architektura sieci
@@ -38,6 +36,7 @@ items:
   - name: Szyfrowanie dysków
     items:
     - name: Najlepsze praktyki
+      displayName: transit
       href: azure-security-data-encryption-best-practices.md
     - name: Szyfrowanie danych w spoczynku
       href: azure-security-encryption-atrest.md
@@ -64,12 +63,16 @@ items:
       - name: Rozwiązywanie problemów
         href: azure-security-disk-encryption-tsg.md
       - name: Usługa Azure Disk Encryption z aplikacją usługi Azure AD (wcześniejsza wersja)
+        displayName: active directory
         items:
         - name: Szyfrowanie dysków za pomocą aplikacji usługi Azure AD — wymagania wstępne
+          displayName: active directory
           href: azure-security-disk-encryption-prerequisites-aad.md
         - name: Szyfrowanie dysków za pomocą aplikacji usługi Azure AD dla maszyn wirtualnych z systemem Windows
+          displayName: active directory
           href: azure-security-disk-encryption-windows-aad.md
         - name: Szyfrowanie dysków za pomocą aplikacji usługi Azure AD dla maszyn wirtualnych z systemem Linux
+          displayName: active directory
           href: azure-security-disk-encryption-linux-aad.md
   - name: Zabezpieczenia usługi Azure Storage
     href: security-storage-overview.md
@@ -113,12 +116,16 @@ items:
     href: security-identity-management-overview.md
     items:
     - name: Wybieranie uwierzytelniania w usłudze Azure AD
+      displayName: identity, active directory
       href: azure-ad-choose-authn.md
     - name: Lista kontrolna zabezpieczeń
+      displayName: identity, active directory, password
       href: azure-ad-secure-steps.md
     - name: Najlepsze praktyki
+      displayName: password, identity, active directory
       href: azure-security-identity-management-best-practices.md
     - name: Wymuszanie uwierzytelniania wieloskładnikowego dla administratorów subskrypcji
+      displayName: identity
       href: azure-security-global-admin.md
   - name: Bezpieczeństwo sieci
     href: security-network-overview.md
@@ -172,10 +179,12 @@ items:
       - name: Rozpoczęcie pracy
         href: security-azure-log-integration-get-started.md
       - name: Integrowanie dzienników inspekcji usługi Azure AD
+        displayName: active directory
         href: security-azure-log-integration-ad.md
       - name: Integrowanie alertów usługi Security Center
         href: security-azure-log-integration-security-center.md
       - name: Integrowanie dzienników z usługi Key Vault
+        displayName: keyvault
         href: security-azure-log-integration-keyvault-eventhub.md
       - name: Często zadawane pytania
         href: security-azure-log-integration-faq.md
@@ -187,14 +196,17 @@ items:
     - name: Lista kontrolna zabezpieczeń
       href: azure-operational-security-checklist.md
 - name: Zarządzanie i zgodność
+  displayName: blueprint
   items:
   - name: OCHRONA DANYCH (AUSTRALIA)
+    displayName: blueprint
     items:
     - name: Aplikacja internetowa IaaS
       href: ./blueprints/au-protected-iaaswa-overview.md
     - name: Aplikacja internetowa PaaS
       href: ./blueprints/au-protected-paaswa-overview.md
   - name: FedRAMP
+    displayName: blueprint
     items:
     - name: Analiza danych
       href: ./blueprints/fedramp-analytics-overview.md
@@ -205,6 +217,7 @@ items:
     - name: Aplikacja internetowa PaaS
       href: ./blueprints/fedramp-paaswa-overview.md
   - name: FFIEC
+    displayName: blueprint
     items:
     - name: Analiza danych
       href: ./blueprints/ffiec-analytics-overview.md
@@ -215,6 +228,7 @@ items:
     - name: Aplikacja internetowa PaaS
       href: ./blueprints/ffiec-paaswa-overview.md
   - name: RODO
+    displayName: blueprint
     items:
     - name: Analiza danych
       href: ./blueprints/gdpr-analytics-overview.md
@@ -225,10 +239,12 @@ items:
     - name: Aplikacja internetowa PaaS
       href: ./blueprints/gdpr-paaswa-overview.md
   - name: HIPAA/HITRUST
+    displayName: blueprint
     items:
     - name: Dane kondycji i SI
       href: ./blueprints/azure-health.md
   - name: NIST SP 800-171
+    displayName: blueprint
     items:
     - name: Analiza danych
       href: ./blueprints/nist171-analytics-overview.md
@@ -239,6 +255,7 @@ items:
     - name: Aplikacja internetowa PaaS
       href: ./blueprints/nist171-paaswa-overview.md
   - name: PCI DSS
+    displayName: blueprint
     items:
     - name: Analiza danych
       href: ./blueprints/pcidss-analytics-overview.md
@@ -249,10 +266,12 @@ items:
     - name: Aplikacja internetowa PaaS
       href: ./blueprints/pcidss-paaswa-overview.md
   - name: TIC
+    displayName: blueprint
     items:
     - name: Połączenia Trusted Internet Connection za pomocą platformy Azure
       href: ./compliance/compliance-tic.md
   - name: UK NHS
+    displayName: blueprint
     items:
     - name: Analiza danych
       href: ./blueprints/uknhs-analytics-overview.md
@@ -263,6 +282,7 @@ items:
     - name: Aplikacja internetowa PaaS
       href: ./blueprints/uknhs-paaswa-overview.md
   - name: UK OFFICIAL
+    displayName: blueprint
     items:
     - name: Aplikacja internetowa IaaS
       href: ./blueprints/ukofficial-iaaswa-overview.md
@@ -318,9 +338,9 @@ items:
         href: azure-security-threat-modeling-tool-sensitive-data.md
       - name: Zarządzanie sesjami
         href: azure-security-threat-modeling-tool-session-management.md
-ms.openlocfilehash: 2e0bdab31a721c5b55488ac21579f0cb9ac45151
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 99ff7a6ba5a2289855739ce8b269c4b3aae10e61
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841568"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364860"
