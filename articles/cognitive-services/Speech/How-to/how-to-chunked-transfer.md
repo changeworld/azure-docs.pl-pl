@@ -1,31 +1,32 @@
 ---
-title: Jak strumieniem Audio transferu pakietowego | Dokumentacja firmy Microsoft
-description: Jak używać podzielony trasfer wysłać strumień dźwiękowy do usługi mowy
+title: Jak Stream Audio transferu pakietowego | Dokumentacja firmy Microsoft
+titlesuffix: Azure Cognitive Services
+description: Jak używać fragmentaryczne trasfer do wysyłania strumienia audio do usługi rozpoznawania mowy Bing
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 7d02340932dfc547893c4c40cbe08978b7b93756
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 1796a82b85182e6d231cb0bf1536cda2406e2c53
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347397"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364911"
 ---
-# <a name="chunked-transfer-encoding"></a>Kodowanie transferu pakietowego
+# <a name="chunked-transfer-encoding"></a>Kodowanie fragmentaryczne transferu
 
-Wykonać transkrypcji mowy na tekst, rozpoznawanie mowy Microsoft interfejsu API umożliwia wysyłanie audio jako jednym fragmencie całego lub do dzielenia audio na małe fragmenty o różnych. Przesyłanie strumieniowe audio wydajne i zmniejszenia opóźnień zapisu, zaleca się używanie [kodowanie transferu pakietowego](https://en.wikipedia.org/wiki/Chunked_transfer_encoding) do przesyłania strumieniowego audio do usługi. Implementacje może skutkować większego opóźnienia postrzegane przez użytkowników. Aby uzyskać więcej informacji, zobacz [strumieni Audio](../concepts.md#audio-streams) strony.
+Także zamiana mowy na tekst, interfejs API rozpoznawania mowy firmy Microsoft pozwala wysyłać audio jako jeden całego fragmentu lub skalowane audio na małe fragmenty. Efektywne przesyłanie strumieniowe audio i zredukowanie opóźnień transkrypcji, zalecane jest użycie [Kodowanie fragmentaryczne transferu](https://en.wikipedia.org/wiki/Chunked_transfer_encoding) do przesyłania strumieniowego audio do usługi. Inne implementacje może spowodować większych opóźnień postrzegane przez użytkowników. Aby uzyskać więcej informacji, zobacz [strumieni Audio](../concepts.md#audio-streams) strony.
 
 > [!NOTE]
-> Nie może przekazać więcej niż 10 sekund dźwięku w dowolnym jedno żądanie, a żądanie całkowity czas trwania nie może przekraczać 14 sekund.
+> Nie może przekazać więcej niż 10 sekund audio w dowolnej jedno żądanie, a czas trwania całkowite żądanie nie może przekraczać 14 sekund.
 > [!NOTE]
-> Należy określić kodowanie tylko wtedy, gdy używasz transferu pakietowego [interfejsów API REST](../GetStarted/GetStartedREST.md) do wywołania tej usługi mowy. Aplikacje używające [bibliotek klienckich](../GetStarted/GetStartedClientLibraries.md) nie trzeba konfigurować kodowanie transferu pakietowego.
+> Należy określić kodowanie, tylko wtedy, gdy używasz transferu pakietowego [interfejsów API REST](../GetStarted/GetStartedREST.md) wywołać usługę rozpoznawania mowy. Aplikacje, które używają [biblioteki klienckie](../GetStarted/GetStartedClientLibraries.md) nie trzeba konfigurować Kodowanie fragmentaryczne transferu.
 
-Poniższy kod przedstawia sposób ustawić kodowanie transferu pakietowego i Wyślij plik dźwiękowy są dzielone na fragmenty 1024 bajtów.
+Poniższy kod przedstawia sposób Ustaw Kodowanie fragmentaryczne transferu, a także wysłać plik dźwiękowy jest podzielony na fragmenty 1024 bajtów.
 
 ```cs
 

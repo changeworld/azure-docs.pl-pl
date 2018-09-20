@@ -10,14 +10,22 @@ ms.reviewer: v-mamcge, jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: troubleshooting
 ms.date: 04/09/2018
-ms.openlocfilehash: b05b824d8d35351030ca466566f14e4249d4b99d
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 399c7b000360a73a9bab06b046be21c9d93a1c70
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626624"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367134"
 ---
 # <a name="diagnose-and-solve-problems-in-your-time-series-insights-environment"></a>Diagnozowanie i rozwiązywanie problemów w danym środowisku usługi Time Series Insights
+
+W tym artykule opisano niektóre problemy, które można napotkać w danym środowisku usługi Time Series Insights. Oferuje ona potencjalne przyczyny i potencjalne rozwiązania do rozpoznania.
+
+## <a name="video"></a>Wideo: 
+
+### <a name="in-this-video-we-cover-common-time-series-insights-customer-challenges-and-mitigationsbr"></a>W tym filmie omówione typowych wyzwań klienta usługi Time Series Insights i środki zaradcze.</br>
+
+> [!VIDEO https://www.youtube.com/embed/7U0SwxAVSKw]
 
 ## <a name="problem-1-no-data-is-shown"></a>Problem 1: Brak danych jest wyświetlany.
 Istnieje kilka przyczyn typowych, dlaczego mogą nie być wyświetlane dane w [Azure Eksplorator usługi Time Series Insights](https://insights.timeseries.azure.com):
@@ -31,7 +39,7 @@ Usługa Azure Time Series Insights obsługuje tylko dane JSON. Aby uzyskać przy
    ![Uprawnienia do połączenia z usługi IoT Hub](media/diagnose-and-solve-problems/iothub-serviceconnect-permissions.png)
 
    Pokazany na wcześniejszej ilustracji, albo zasady **iothubowner** i **usługi** będzie działać, ponieważ mają **połączenie z usługą** uprawnień.
-   
+
 * Centrum zdarzeń, musisz podać klucz, który ma **nasłuchiwania** uprawnień.
 
    ![Uprawnienie nasłuchiwania Centrum zdarzeń](media/diagnose-and-solve-problems/eventhub-listen-permissions.png)

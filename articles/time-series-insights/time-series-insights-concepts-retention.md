@@ -10,15 +10,22 @@ ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/09/2018
-ms.openlocfilehash: 204a9d64d14fe190cb0de73c964bb95b4b9b475f
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: e265a66b841530d1133d760ebdcdf56046d1aee1
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39628770"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364135"
 ---
 # <a name="understand-data-retention-in-time-series-insights"></a>Omówienie przechowywania danych w usłudze Time Series Insights
+
 W tym artykule opisano dwa ustawienia, które mają wpływ na przechowywanie danych w środowisku usługi Time Series Insights (TSI).
+
+## <a name="video"></a>Wideo: 
+
+### <a name="in-this-video-we-cover-time-series-insights-data-retention-and-how-to-plan-for-itbr"></a>W tym filmie omówione przechowywanie danych usługi Time Series Insights oraz sposobu planowania dla niego.</br>
+
+> [!VIDEO https://www.youtube.com/embed/03x6zKDQ6DU]
 
 Każde środowisko usługi TSI ma ustawienie sterujące **czas przechowywania danych**. Wartość rozciąga się od 1 do 400 dni. Dane zostaną usunięte, oparte na środowisku pojemności lub przechowywania czas magazynowania (1 – 400), osiągnięta jako pierwsza.
 

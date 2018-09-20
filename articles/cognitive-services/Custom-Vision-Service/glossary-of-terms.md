@@ -1,91 +1,92 @@
 ---
-title: Słownik terminów dla niestandardowych Vision usług — usług Azure kognitywnych | Dokumentacja firmy Microsoft
-description: Słownik terminów wizji niestandardowe usługi.
+title: Słownik terminów — Custom Vision Service
+titlesuffix: Azure Cognitive Services
+description: Słownik terminów usługi Custom Vision.
 services: cognitive-services
 author: anrothMSFT
-manager: corncar
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-vision
-ms.topic: article
+ms.topic: conceptual
 ms.date: 05/08/2017
 ms.author: anroth
-ms.openlocfilehash: 871617ce3c1c5a84df746c0c7d87c113b3a6f354
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ae68db3de5d1f7eaacbe355133b9b7b61f145f04
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347876"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363415"
 ---
-# <a name="glossary-of-terms-for-custom-vision-service"></a>Słownik terminów usługi wizji niestandardowe
+# <a name="glossary-of-terms-for-custom-vision-service"></a>Słownik terminów dla usługi Custom Vision Service
 
-Poniżej przedstawiono niektóre terminów używanych w usługi wizji niestandardowych i ich znaczenie.
+Poniżej przedstawiono niektóre pojęcia używane w usłudze Custom Vision Service oraz ich znaczenie.
 
 ## <a name="classifier"></a>Klasyfikator
 
-Klasyfikator jest tworzonych przy użyciu usługi wizji niestandardowe, za pomocą kilka obrazów uczenia modelu. Po zakończeniu szkolenia nowy klasyfikator pojawi się punkt końcowy oceny (HTTPS) można dodać do aplikacji. Każdy klasyfikatora tworzonych w własnego projektu, a po zalogowaniu się można wyświetlić wszystkie projekty.
+Klasyfikator to model tworzonych za pomocą usługi Custom Vision Service przy użyciu kilku uczone obrazy. Po zakończeniu szkolenia nowych klasyfikatora otrzymasz endpoint oceny (HTTPS), można dodać do swojej aplikacji. Każdy klasyfikatora, które tworzysz jest we własnym projekcie i można wyświetlić wszystkie projekty po zalogowaniu.
 
-## <a name="domain"></a>Domena
+## <a name="domain"></a>Domain
 
-Podczas tworzenia projektu, należy wybrać "domeny" dla tego projektu. Domena optymalizuje klasyfikatora dla określonego typu obiektu w obrazów. Na przykład w przypadku danego scenariusza klasyfikowania między obrazy koła firmy apple i obrazy ciasto marchewkowe, wybierz domenę "Żywności". Jeśli nie wiesz, która domena, aby wybrać, następnie wybierz domenę "Ogólne".
+Podczas tworzenia projektu, możesz wybrać "domena" dla tego projektu. Domeny optymalizuje klasyfikatora dla określonego typu obiektu do obrazów. Na przykład w przypadku danego scenariusza klasyfikowania między obrazów kołowy firmy apple, a obrazy ciasto marchewkowe, wybierz domenę "Jedzenie". Jeśli masz pewności, która domena, do wyboru, a następnie wybierz pozycję "Generic" domeny.
 
-- **Domena żywności.** Zoptymalizowana pod kątem parownice dostępne w menu w restauracji. Nie zostało zoptymalizowane rozpoznawania poszczególnych owoców lub warzyw. Do klasyfikowania fotografie poszczególnych owoców lub warzyw, w tym celu użyć ogólnego domeny.
-- **Domena punkty.** Zoptymalizowana pod kątem rozpoznawalnych punkty orientacyjne, fizyczne i sztucznych. Ta domena działa najlepiej, gdy punkty jest widoczny w fotografii, nawet jeśli punkty nieco jest zablokowane przez grupy osób stwarza przed nim.
-- **Domena sprzedaży detalicznej.** Zoptymalizowana pod kątem klasyfikującego obrazów w katalogu zakupów lub zakupów witryna sieci Web. Wysokiej precyzji przy klasyfikacji sukienki, spodnie, koszule itp., następnie użyć domeny sprzedaży detalicznej.
-- **Domena dla dorosłych.** Zoptymalizowane, aby dokładniej zdefiniować między zawartość dla dorosłych i zawartości z systemem innym niż osoba dorosła. Na przykład jeśli chcesz zablokować obrazów osób w kąpieliskach kolory tej domeny umożliwia tworzenie niestandardowych klasyfikatora w tym.
-- **Ogólne domeny.** Dobrze nadaje się do szerokiej gamy zadań klasyfikacji obrazu.
+- **Domena żywności.** Zoptymalizowane pod kątem płytki, który będzie wyświetlony menu restauracji. Nie zoptymalizowanym rozpoznawania poszczególnych owoców lub warzyw. Do klasyfikowania fotografie poszczególne owoce lub warzyw, należy użyć domeny ogólnego do tego celu.
+- **Domena charakterystycznych elementów krajobrazu.** Zoptymalizowane pod kątem rozpoznawalnych charakterystycznych elementów krajobrazu, zarówno naturalnych, jak i sztucznych. Ta domena działa najlepiej, gdy charakterystycznych elementów krajobrazu jest widoczny w fotografii, nawet wtedy, gdy charakterystycznych elementów krajobrazu to nieco zablokowane przez grupy osób stanowiące przed nim.
+- **Domena sprzedaży detalicznej.** Zoptymalizowane pod kątem klasyfikowania obrazów w katalogu zakupów lub zakupów witryna sieci Web. Bardzo precyzyjnej podczas klasyfikowania sukienki, spodnie, koszule itp., następnie użyć domeny sprzedaży detalicznej.
+- **Treści dla dorosłych domeny.** Zoptymalizowana, aby dokładniej zdefiniować między treści dla dorosłych i zawartości — zawartość dla dorosłych. Na przykład jeśli chcesz zablokować obrazów osób w kąpieli kolory tej domeny umożliwia tworzenie niestandardowych klasyfikatora, aby to zrobić.
+- **Ogólne domeny.** Dobrze przystosowane do potrzeb szerokiej gamy zadań klasyfikacji obrazów.
 
-Modele generowane przez **compact domen** można eksportować z funkcji eksportu iteracji. Są one zoptymalizowane pod kątem ograniczenia klasyfikacji w czasie rzeczywistym na urządzeniach przenośnych. Klasyfikatory skompilowanej za pomocą compact domeny mogą być nieco mniej dokładne standardowej w domenę z tym samym ilością danych szkoleniowych. Zależności te są duże, aby uruchomić lokalnie w niemal w czasie rzeczywistym. 
+Modeli generowanych przez **compact domen** można wyeksportować za pomocą funkcji eksportu iteracji. Są one zoptymalizowane pod kątem ograniczenia klasyfikacji w czasie rzeczywistym na urządzeniach przenośnych. Klasyfikatorów utworzonych za pomocą compact domeny mogą być nieco mniej dokładne standardowej w domenę przy użyciu tej samej ilości danych szkoleniowych. Kosztem jest, że są one wystarczająco mała, aby uruchomić lokalnie w niemal w czasie rzeczywistym. 
 
 ## <a name="training-image"></a>Obraz szkolenia
 
-Utworzenie klasyfikatora programu wysokiej precyzji, usługa wizji niestandardowy musi kilka obrazów szkolenia. Obraz szkolenia jest fotografii obraz niestandardowy usługa wizji klasyfikowania. Na przykład do klasyfikowania pomarańczy, będzie potrzebny do przekazywania kilka obrazów pomarańczy usługą wizji niestandardowe aby umożliwić usłudze utworzenie klasyfikatora, który może rozpoznawać pomarańczy. Zaleca się co najmniej 30 obrazów na tag.
+Aby utworzyć klasyfikatora dużej dokładności, usługi Custom Vision Service wymaga kilku uczone obrazy. Obraz szkolenia jest fotografii obraz, który chcesz, aby usługi Custom Vision Service do klasyfikowania. Na przykład można klasyfikować Pomarańcze, należałoby Przekaż kilka obrazów Pomarańcze do usługi Custom Vision Service, aby umożliwić usłudze klasyfikatora, który może rozpoznawać Pomarańcze utworzyć. Zalecamy co najmniej 30 obrazy na tag.
 
-## <a name="iteration"></a>Iteracji
+## <a name="iteration"></a>Iteracja
 
-Każdy czasu, gdy pociąg lub ponownie uczenia z klasyfikatora, Utwórz nową iterację modelu. Zachowaj mamy kilka ostatnich iteracji, aby można porównywać postęp w czasie. Możesz usunąć wszelkie iteracji, które już być przydatne. Należy pamiętać, usuwanie iteracji jest trwały, czy należy również usunąć wszystkie obrazy lub zmiany, które były unikatowe dla tej iteracji. 
+Co godzinę Train lub ponownie uczyć klasyfikatory, możesz utworzyć nową iterację modelu. Przechowujemy kilka ostatnich iteracji, aby umożliwić porównywanie postęp wraz z upływem czasu. Można usuwać dowolną iterację, które nie są już być przydatne. Należy pamiętać, że usunięcie iteracji jest trwały i zostaną również usunięte wszelkie obrazy i zmiany, które są unikatowe dla tej iteracji. 
 
 ## <a name="workspace"></a>Obszar roboczy
 
-Obszar roboczy zawiera wszystkie obrazy szkolenia i odzwierciedla wszystkie zmiany z z najnowszych iteracji, takich jak usunięte lub dodane obrazów. Szkolenie z klasyfikatora, możesz utworzyć nową iterację Twojej klasyfikatora przy użyciu obrazów w obszarze roboczym.
+Obszar roboczy zawiera wszystkie obrazy szkolenia i odzwierciedla wszystkie zmiany z Twojej ostatnich iteracji, takich jak usunięte lub dodane obrazów. Możesz uczyć klasyfikatory, możesz utworzyć nową iterację klasyfikatora, przy użyciu obrazów obecny w obszarze roboczym.
 
 ## <a name="tags"></a>Tagi
 
-Używaj tagów do etykiety obiektów obrazów szkolenia. Jeśli tworzysz klasyfikatora do identyfikacji psów i kucyków spowodowałaby tag "dog" na obrazów, które zawierają skalary, znacznikiem "kuce", na obrazów, które zawierają kuców, a jednocześnie "kot" i "kuce" obrazów zawierających dog i konika na.
+Za pomocą tagów można oznaczyć obiekty do obrazów do szkolenia. Jeśli tworzysz klasyfikatora do identyfikowania psów i kucyków możesz umieścić tag "dog" na obrazach, które zawierają psy, znacznikiem "pony", na obrazach, które zawierają kuców i zarówno "dog" i "pony" obrazów zawierających pies i pony.
 
 ## <a name="evaluation"></a>Ocena
 
-Po ma uczony z klasyfikatora, można przesyłać żadnego obrazu do oceny, przy użyciu punkt końcowy https wygenerowany automatycznie. Twoje klasyfikatora zwraca zestaw przewidywane tagów w kolejności zaufania.
+Gdy ma skonfigurowanych pod kątem klasyfikatora, możesz przesłać dowolnego obrazu do oceny przy użyciu punktu końcowego https wygenerowany automatycznie. Klasyfikatora zwraca zestaw przewidywane tagów w kolejności zaufania.
 
 ## <a name="predictions"></a>Prognozy
 
-Zgodnie z klasyfikatora akceptuje nowych obrazów do klasyfikowania, są przechowywane obrazy dla Ciebie. Te obrazy umożliwia zwiększyć dokładność Twojej klasyfikatora przez poprawnie znakowanie źle przewidywane obrazów. Następnie można tych nowych obrazów ponownie uczenia z klasyfikatora.
+Jak klasyfikatora akceptuje nowych obrazów do klasyfikowania, obrazy są przechowywane dla Ciebie. Te obrazy można użyć, aby poprawić dokładność klasyfikatora poprawnie, oznaczając źle przewidziane obrazów. Następnie można te nowe obrazy ponownie uczyć klasyfikatory.
 
-## <a name="precision"></a>Dokładność
+## <a name="precision"></a>Precyzja
 
-Podczas klasyfikowania obrazu, jak prawdopodobnie jest Twoje klasyfikatora poprawnie klasyfikowania obrazu? Poza wszystkie obrazy używane w celu przeszkolenia klasyfikatora (psów i kucyków) jaki procent czy modelu wyświetlony poprawna? 99 tagi poprawne poza 100 obrazów zapewnia dokładność 99%.
+Podczas klasyfikowania obrazu, jak prawdopodobnie jest klasyfikatory poprawnie klasyfikowania obrazów? Poza wszystkie obrazy używane do trenowania klasyfikatora (psów i kuców) jaki procent czy modelu wyświetlony poprawne? 99 prawidłowe tagi poza 100 obrazów zapewnia dokładność 99%.
 
 ## <a name="recall"></a>Odwołaj
 
-Poza wszystkich obrazów, które powinny mieć zostały poprawnie klasyfikowane ile może Twoje klasyfikatora ustalić poprawnie? Odwołania 100% oznacza to, czy wystąpiły 38 obrazy dog obrazy używane w celu przeszkolenia klasyfikatora, 38 psów zostały znalezione przez klasyfikatora.
+Poza wszystkie obrazy, które powinny mieć został poprawnie klasyfikowane ile klasyfikatora zidentyfikować prawidłowo? Odwołania 100% oznacza to, jeśli wystąpiły 38 pies obrazy zawierają obrazy używane do trenowania klasyfikatora, znaleziono 38 psy przez klasyfikatora.
 
 ## <a name="settings"></a>Ustawienia
 
-Istnieją dwa typy ustawień, ustawienia na poziomie projektu i na poziomie użytkownika.
+Istnieją dwa rodzaje ustawień i ustawienia na poziomie projektu i ustawień na poziomie użytkownika.
 
 - Ustawienia na poziomie projektu: 
   
-  Zastosuj ustawienia na poziomie projektu do projektu lub klasyfikatora. Obejmują one:
+  Ustawienia na poziomie projektu mają zastosowanie do projektu lub klasyfikatora. Ulepszenia obejmują:
 
-   - Projektu domeny
+   - Projekt do domeny
    - Nazwa projektu
-   - Opis elementu projektu
+   - Opis projektu
    - Użycie:
-      - Liczba obrazów szkolenia
-      - Znaczniki utworzone
+      - Liczba obrazów do szkolenia
+      - Liczba tagów utworzone
       - Liczba iteracji utworzone
 
 - Ustawienia na poziomie użytkownika: 
-   - Klucze subskrypcji: jeden dla szkolenia, jeden dla oceny/prognozowania.
+   - Klucze subskrypcji: jeden dla szkolenia, jeden dla oceny/prognozy.
    - Użycie:
       - Liczba projektów utworzonych
-      - Liczba wywołań interfejsu API w wersji ewaluacyjnej/prognozowania.
+      - Liczba wywołań interfejsu API w wersji ewaluacyjnej/prognozy.

@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 09/18/2018
 ms.author: sashan
-ms.openlocfilehash: d7c3a672224bd7a167956d7699541880de11bef9
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: d29886b5c8693e4465053c8816fc38376a51fafc
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737043"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363604"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Ładowanie równoważenie obciążeń związanych z zapytaniami tylko do odczytu (wersja zapoznawcza) przy użyciu repliki tylko do odczytu
 
@@ -119,7 +119,7 @@ Aby uzyskać więcej informacji, zobacz [baz danych — Utwórz lub zaktualizuj]
 Jeśli używasz odczytu skalowalnego w poziomie można załadować saldo tylko do odczytu na obciążenie bazy danych, która jest replikowana geograficznie (np. jako członek grupy trybu failover), upewnij się, że odczytu skalowalnego w poziomie jest włączona na podstawowe i pomocnicze bazy danych replikowanej geograficznie. Pozwoli to zagwarantować ten sam efekt równoważenia obciążenia, gdy aplikacja nawiązuje połączenie z nową podstawową po włączeniu trybu failover. Jeśli łączysz się do pomocniczej bazy danych replikowanej geograficznie skalę odczytu włączone, sesje z `ApplicationIntent=ReadOnly` będą kierowane do jednej z replik taki sam sposób, firma Microsoft trasy połączeń w głównej bazie danych.  Sesje bez `ApplicationIntent=ReadOnly` będą kierowane do repliki podstawowej replikowanej geograficznie pomocniczej, który również jest tylko do odczytu. Replikowanej geograficznie pomocniczej bazy danych jest inny punkt końcowy niż podstawowa baza danych, dlatego w przeszłości pomocniczy dostęp do jej nie muszą ustawić `ApplicationIntent=ReadOnly`. Aby zapewnić zgodność z poprzednimi wersjami `sys.geo_replication_links` Pokazuje widok DMV `secondary_allow_connections=2` (każde połączenie klienta jest dozwolone).
 
 > [!NOTE]
-> Podczas korzystania z wersji zapoznawczej firma Microsoft nie będzie wykonywać działania okrężnego lub wszelkie inne ze zrównoważonym obciążeniem: routing między lokalnym repliki pomocniczej bazy danych. 
+> Podczas (wersja zapoznawcza), działanie okrężne lub inne obciążenia o zrównoważonym obciążeniu routingu między lokalnym repliki pomocniczej bazy danych nie jest obsługiwana. 
 
 
 ## <a name="next-steps"></a>Kolejne kroki

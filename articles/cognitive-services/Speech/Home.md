@@ -1,5 +1,6 @@
 ---
 title: Usługa rozpoznawania mowy Bing firmy Microsoft | Dokumentacja firmy Microsoft
+titlesuffix: Azure Cognitive Services
 description: Użyj interfejsu API mowy usługi Microsoft, aby dodać głosem do aplikacji, w tym w czasie rzeczywistym interakcji z użytkownikami.
 services: cognitive-services
 author: zhouwangzw
@@ -7,16 +8,16 @@ manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: d58642b95a60d4f1c83dfd969d0c76511dca4653
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 637259b2fac46cf2c903c1986e6dfb303fe89408
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43097399"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366267"
 ---
-# <a name="microsoft-bing-speech-api-overview"></a>Omówienie interfejsu API rozpoznawania mowy Bing firmy Microsoft
+# <a name="what-is-bing-speech"></a>Co to jest rozpoznawanie mowy Bing?
 
 API rozpoznawania mowy Bing firmy Microsoft oparte na chmurze oferuje deweloperom łatwy sposób tworzyć zaawansowane funkcje obsługujące rozpoznawanie mowy w swoich aplikacjach, takich jak formant polecenia głosowe, użytkownika okna dialogowego, używając konwersacji naturalnych mowy i transkrypcja mowy i dyktowania. Interfejs API mowy firmy Microsoft obsługuje zarówno *zamiana mowy na tekst* i *zamiany tekstu na mowę* konwersji.
 

@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 09/12/2018
+ms.date: 09/18/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 559859e1f844cae37b0baaf48b0ad7c5cc2d4b0a
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: c2caa9ebbc3a4e6b9180466950775524986fd244
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542456"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364571"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Konfigurowanie sieci wirtualnej dla wystąpienie zarządzane usługi Azure SQL Database
 
@@ -42,7 +42,7 @@ Aby utworzyć wystąpienie zarządzane, należy utworzyć dedykowaną podsieć (
 - **W wersji dedykowanej podsieci**: podsieci wystąpienia zarządzanego nie może zawierać wszystkie inne usługi w chmurze skojarzone z nim, a nie może być podsieć bramy. Nie można utworzyć wystąpienie zarządzane w podsieci, która zawiera zasoby innych niż wystąpienia zarządzanego, a nie można później dodać innych zasobów w podsieci.
 - **Niezgodne grupy zabezpieczeń sieci (NSG)**: sieciowej grupy zabezpieczeń, które są skojarzone z podsieci wystąpienia zarządzanego musi zawierać reguły pokazano w poniższych tabelach (reguł zabezpieczeń ruchu przychodzącego obowiązkowe i reguły zabezpieczeń dla ruchu wychodzącego obowiązkowe) przed jakiekolwiek inne reguły. Sieciowa grupa zabezpieczeń można użyć w pełni kontrolować dostęp do endpoint danych wystąpienia zarządzanego, filtrując ruch na porcie 1433. 
 - **Tabeli zgodnych tras zdefiniowanych przez użytkownika (UDR)**: podsieci wystąpienia zarządzanego musi mieć tabelę tras użytkownika za pomocą **internetowej następnego przeskoku 0.0.0.0/0** jako obowiązkowe trasy zdefiniowanej przez użytkownika do niej przypisany. Ponadto możesz dodać trasy zdefiniowanej przez użytkownika tego kieruje ruch z zakresów IP prywatnych w środowisku lokalnym jako miejsce docelowe za pośrednictwem bramy sieci wirtualnej lub sieci wirtualne urządzenie sieciowe. 
-- **Opcjonalne niestandardowe DNS**: Jeżeli niestandardowe DNS jest określony w thevirtual sieciowy, adres IP platformy Azure cyklicznego programu rozpoznawania nazw (na przykład 168.63.129.16) musi być dodana do listy. Aby uzyskać więcej informacji, zobacz [Konfigurowanie niestandardowych serwerów DNS](sql-database-managed-instance-custom-dns.md). Niestandardowego serwera DNS musi być w stanie rozpoznać nazwy hostów w następujących domen i poddomen ich: *microsoft.com*, *windows.net*, *windows.com*, *msocsp.com*, *digicert.com*, *live.com*, *microsoftonline.com*, i *microsoftonline-p.com*. 
+- **Opcjonalne niestandardowe DNS**: Jeżeli niestandardowe DNS jest określony w wirtualnej sieciowy, adres IP platformy Azure cyklicznego programu rozpoznawania nazw (na przykład 168.63.129.16) musi być dodana do listy. Aby uzyskać więcej informacji, zobacz [Konfigurowanie niestandardowych serwerów DNS](sql-database-managed-instance-custom-dns.md). Niestandardowego serwera DNS musi być w stanie rozpoznać nazwy hostów w następujących domen i poddomen ich: *microsoft.com*, *windows.net*, *windows.com*, *msocsp.com*, *digicert.com*, *live.com*, *microsoftonline.com*, i *microsoftonline-p.com*. 
 - **Brak punktów końcowych usługi**: podsieci wystąpienia zarządzanego nie może mieć powiązany punktu końcowego usługi. Upewnij się, że opcji punktów końcowych usługi jest wyłączona podczas tworzenia sieci wirtualnej.
 - **Wystarczającą liczbą adresów IP**: podsieci wystąpienia zarządzanego jest posiadanie absolutnego minimum 16 adresów IP (zalecane są co najmniej 32 adresów IP). Aby uzyskać więcej informacji, zobacz [określi rozmiar podsieci wystąpienia zarządzanego](#determine-the-size-of-subnet-for-managed-instances)
 

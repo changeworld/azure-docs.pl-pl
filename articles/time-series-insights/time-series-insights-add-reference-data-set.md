@@ -10,12 +10,12 @@ ms.reviewer: jasonh, kfile, anshan
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 02/15/2018
-ms.openlocfilehash: 2cf9c8baf715acf0eef36d640c22f355435c9ca5
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.openlocfilehash: 45520a556d109158987dd47e33a1efb52a1cd356
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39631048"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364741"
 ---
 # <a name="create-a-reference-data-set-for-your-time-series-insights-environment-using-the-azure-portal"></a>Tworzenie zestawu danych referencyjnych dla środowiska usługi Time Series Insights przy użyciu witryny Azure portal
 
@@ -24,6 +24,12 @@ W tym artykule opisano sposób dodawania zestawu danych referencyjnych do środo
 Zestawu danych referencyjnych jest kolekcją elementów, które polepszają zdarzenia ze źródła zdarzenia. Aparat transferu danych przychodzących Series Insights czasu łączy każde zdarzenie ze źródła zdarzeń z odpowiednich wiersza danych w zestawie danych referencyjnych. To rozszerzone zdarzenie jest następnie dostępne dla zapytania. To połączenie jest oparte na kolumny klucza podstawowego, zdefiniowane w zestawie danych referencyjnych.
 
 Dane referencyjne nie jest przyłączona wstecznie. Oznacza to, że tylko danych przychodzących bieżących i przyszłych jest dopasowane i przyłączone do odwołania zestawu daty, po jego skonfigurowaniu i przekazać.
+
+## <a name="video"></a>Wideo: 
+
+### <a name="in-this-video-we-cover-time-series-insights-reference-data-modelbr"></a>W tym filmie omówione modelu danych usługi Time Series Insights odwołania.</br>
+
+> [!VIDEO https://www.youtube.com/embed/Z0NuWQUMv1o]
 
 ## <a name="add-a-reference-data-set"></a>Dodawanie zestawu danych referencyjnych
 
@@ -63,7 +69,7 @@ Dane referencyjne nie jest przyłączona wstecznie. Oznacza to, że tylko danych
 
    ![Dodaj dane referencyjne](media/add-reference-data-set/parse_data.png)
 
-9. Przejrzyj każdej kolumny, aby zobaczyć zakłada, że typ danych, a zmiana typu danych, jeśli to konieczne.  Wybierz symbol typu danych w nagłówku kolumny: ** # ** dla podwójnej precyzji (dane liczbowe) **T | F** na wartość logiczną, lub **Abc** ciągu.
+9. Przejrzyj każdej kolumny, aby zobaczyć zakłada, że typ danych, a zmiana typu danych, jeśli to konieczne.  Wybierz symbol typu danych w nagłówku kolumny: **#** dla podwójnej precyzji (dane liczbowe) **T | F** na wartość logiczną, lub **Abc** ciągu.
 
    ![Wybierz typy danych w nagłówkach kolumn.](media/add-reference-data-set/choose_datatypes.png)
 
@@ -71,7 +77,7 @@ Dane referencyjne nie jest przyłączona wstecznie. Oznacza to, że tylko danych
 
 11. Kliknij przycisk **Dodaj wiersz** lub **Dodaj kolumnę** można dodać więcej wartości danych referencyjnych, zgodnie z potrzebami.
 
-12. Wpisz wartość w **filtrować wiersze... ** pola, aby przejrzeć określonych wierszy, zgodnie z potrzebami. Filtr jest przydatne podczas przeglądania danych, ale nie została zastosowana podczas przekazywania danych.
+12. Wpisz wartość w **filtrować wiersze...**  pola, aby przejrzeć określonych wierszy, zgodnie z potrzebami. Filtr jest przydatne podczas przeglądania danych, ale nie została zastosowana podczas przekazywania danych.
  
 13. Nazwa zestawu danych, wypełniając **Nazwa zestawu danych** pole powyżej siatki danych.
 
@@ -81,7 +87,7 @@ Dane referencyjne nie jest przyłączona wstecznie. Oznacza to, że tylko danych
 
    ![Wybierz kolumny klucza.](media/add-reference-data-set/set_primary_key.png)
 
-   Opcjonalnie można zaznaczyć ** + ** przycisk, aby dodać kolumnę klucza pomocniczego jako złożony klucz podstawowy. Jeśli potrzebujesz cofnąć zaznaczenie, wybierz pustą wartość z listy rozwijanej można usunąć klucza pomocniczego.
+   Opcjonalnie można zaznaczyć **+** przycisk, aby dodać kolumnę klucza pomocniczego jako złożony klucz podstawowy. Jeśli potrzebujesz cofnąć zaznaczenie, wybierz pustą wartość z listy rozwijanej można usunąć klucza pomocniczego.
 
 15.  Aby przekazać dane, wybierz **przekazywania wierszy** przycisku.
 

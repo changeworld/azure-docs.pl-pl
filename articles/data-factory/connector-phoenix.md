@@ -1,6 +1,6 @@
 ---
-title: Kopiowanie danych z Phoenix przy użyciu fabryki danych Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skopiować dane z Phoenix do zbiornika obsługiwane magazyny danych za pomocą działania kopiowania w potoku fabryki danych Azure.
+title: Kopiowanie danych z oprogramowania Phoenix za pomocą usługi Azure Data Factory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skopiować dane z rozwiązania Phoenix do magazynów danych ujścia obsługiwane za pomocą działania kopiowania w potoku usługi Azure Data Factory.
 services: data-factory
 documentationcenter: ''
 author: linda33wj
@@ -11,50 +11,53 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 04/19/2017
+ms.date: 09/19/2018
 ms.author: jingwang
-ms.openlocfilehash: fc4eb2b717ea9f4c1b2813db7dcf02062948bae0
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 78e432bf526ad270ae8543ad1be40727ed560d4b
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37048360"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367903"
 ---
-# <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Kopiowanie danych z Phoenix przy użyciu fabryki danych Azure 
+# <a name="copy-data-from-phoenix-using-azure-data-factory"></a>Kopiowanie danych z oprogramowania Phoenix za pomocą usługi Azure Data Factory 
 
-W tym artykule omówiono sposób użycia działanie kopiowania w fabryce danych Azure, aby skopiować dane z Phoenix. Opiera się na [skopiuj omówienie działania](copy-activity-overview.md) artykułu, który przedstawia ogólny przegląd działanie kopiowania.
+W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych ze Phoenix. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 
-## <a name="supported-capabilities"></a>Obsługiwane możliwości
+## <a name="supported-capabilities"></a>Obsługiwane funkcje
 
-Możesz skopiować dane z Phoenix żadnych obsługiwanych ujścia magazynu danych. Lista magazynów danych, które są obsługiwane jako źródła/wychwytywanie przez działanie kopiowania, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
+Możesz skopiować dane z rozwiązania Phoenix, do dowolnego obsługiwanego magazynu danych ujścia. Aby uzyskać listę magazynów danych, obsługiwane przez działanie kopiowania jako źródła/ujścia, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats) tabeli.
 
-Fabryka danych Azure oferuje wbudowane sterowników, aby umożliwić łączność, w związku z tym nie trzeba ręcznie zainstalowania sterownika korzystania z tego łącznika.
+Usługa Azure Data Factory udostępnia wbudowanego sterownika, aby umożliwić łączność, dlatego nie trzeba ręcznie zainstalować dowolnego sterownika, za pomocą tego łącznika.
 
 ## <a name="getting-started"></a>Wprowadzenie
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
-Poniższe sekcje zawierają szczegółowe informacje o właściwościach, które są używane do definiowania jednostek fabryki danych określonej do Phoenix łącznika.
+Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi Data Factory określonych Phoenix łącznikiem.
 
-## <a name="linked-service-properties"></a>Połączona usługa właściwości
+## <a name="linked-service-properties"></a>Właściwości usługi połączonej
 
-Phoenix połączone usługi, obsługiwane są następujące właściwości:
+Następujące właściwości są obsługiwane w przypadku Phoenix połączone usługi:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Właściwość type musi mieć ustawioną: **Phoenix** | Yes |
-| host | IP adres lub nazwę hosta serwera Phoenix. (to znaczy 192.168.222.160)  | Yes |
-| port | Port TCP używany przez serwer Phoenix nasłuchiwanie dla połączeń klienta. Wartość domyślna to 8765. Jeśli łączysz się Azure HDInsights, należy określić port jako 443. | Nie |
-| httpPath | Częściowe adres URL, odpowiadający Phoenix serwera. (to znaczy /gateway/sandbox/phoenix/version). Wartość domyślna to `hbasephoenix` używania WindowsAzureHDInsightService.  | Nie |
-| Typ authenticationType | Mechanizm uwierzytelniania używany do łączenia się z serwerem Phoenix. <br/>Dozwolone wartości to: **anonimowe**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Yes |
+| type | Właściwość type musi być równa: **Phoenix** | Yes |
+| host | Adres IP lub hosta nazwę serwera Phoenix. (czyli 192.168.222.160)  | Yes |
+| port | Port TCP używany serwer Phoenix do nasłuchiwania połączeń klientów. Wartość domyślna to 8765. Jeśli łączysz się Azure HDInsights, należy określić port ustawiony na 443. | Nie |
+| httpPath | Częściowe adres URL serwera Phoenix. (czyli /gateway/sandbox/phoenix/version). Określ `/hbasephoenix0` Jeśli używany klaster HDInsights.  | Nie |
+| Element authenticationType | Mechanizm uwierzytelniania używany do łączenia się z serwerem Phoenix. <br/>Dozwolone wartości to: **anonimowe**, **UsernameAndPassword**, **WindowsAzureHDInsightService** | Yes |
 | nazwa użytkownika | Nazwa użytkownika używana do łączenia się z serwerem Phoenix.  | Nie |
-| hasło | Hasło odpowiadający nazwie użytkownika. Zaznacz to pole jako SecureString Zapisz w bezpiecznej lokalizacji w fabryce danych lub [odwołania klucz tajny przechowywane w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
+| hasło | Hasło odpowiadający nazwie użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
 | enableSsl | Określa, czy połączenia z serwerem są szyfrowane przy użyciu protokołu SSL. Wartość domyślna to false.  | Nie |
-| trustedCertPath | Pełna ścieżka pliku PEM, zawierająca zaufane certyfikaty urzędu certyfikacji do weryfikowania serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Tej właściwości można ustawić tylko w przypadku korzystania z protokołu SSL na siebie IR. Wartość domyślna to plik cacerts.pem zainstalowane z IR.  | Nie |
+| trustedCertPath | Pełna ścieżka pliku PEM, zawierająca zaufane certyfikaty urzędu certyfikacji w celu sprawdzenia serwer podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Tę właściwość można ustawić tylko w przypadku korzystania z protokołu SSL na Self-Hosted IR Wartością domyślną jest instalowany z wewnątrz pliku cacerts.pem  | Nie |
 | useSystemTrustStore | Określa, czy ma być używany certyfikat urzędu certyfikacji z magazynu zaufania systemu lub z określonego pliku PEM. Wartość domyślna to false.  | Nie |
-| allowHostNameCNMismatch | Określa, czy wymagają nazwy certyfikat wystawiony przez urząd certyfikacji SSL do dopasowania nazwy hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to false.  | Nie |
-| allowSelfSignedServerCert | Określa, czy certyfikaty z podpisem własnym z serwera. Wartość domyślna to false.  | Nie |
-| connectVia | [Integrację środowiska uruchomieniowego](concepts-integration-runtime.md) ma być używany do nawiązania połączenia z magazynem danych. (Jeśli w magazynie danych jest dostępny publicznie) można użyć środowiska uruchomieniowego integracji Self-hosted lub środowiska uruchomieniowego integracji Azure. Jeśli nie zostanie określony, używa domyślnej środowiska uruchomieniowego integracji Azure. |Nie |
+| allowHostNameCNMismatch | Określa, czy wymagają nazwy certyfikatów wystawionych przez urząd certyfikacji SSL Period z nazwą hosta serwera podczas nawiązywania połączenia za pośrednictwem protokołu SSL. Wartość domyślna to false.  | Nie |
+| allowSelfSignedServerCert | Określa, czy zezwalać na certyfikaty z podpisem własnym z serwera. Wartość domyślna to false.  | Nie |
+| connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
+
+>[!NOTE]
+>Jeśli klaster nie obsługuje trwałych sesji, np. HDInsight, należy jawnie dodać indeksu węzła na końcu ustawienia ścieżki http, np. Określ `/hbasephoenix0` zamiast `/hbasephoenix`.
 
 **Przykład:**
 
@@ -66,7 +69,7 @@ Phoenix połączone usługi, obsługiwane są następujące właściwości:
         "typeProperties": {
             "host" : "<cluster>.azurehdinsight.net",
             "port" : "443",
-            "httpPath" : "hbasephoenix",
+            "httpPath" : "/hbasephoenix0",
             "authenticationType" : "WindowsAzureHDInsightService",
             "username" : "<username>",
             "password": {
@@ -80,9 +83,9 @@ Phoenix połączone usługi, obsługiwane są następujące właściwości:
 
 ## <a name="dataset-properties"></a>Właściwości zestawu danych
 
-Aby uzyskać pełną listę właściwości dostępnych do definiowania zestawów danych i sekcje, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę obsługiwanych przez zestaw danych Phoenix właściwości.
+Aby uzyskać pełną listę sekcje i właściwości dostępne Definiowanie zestawów danych, zobacz [zestawów danych](concepts-datasets-linked-services.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez zestaw danych Phoenix.
 
-Aby skopiować dane z Phoenix, ustaw właściwość Typ zestawu danych do **PhoenixObject**. Nie ma dodatkowych właściwości określonego typu w tego typu dataset.
+Aby skopiować dane z rozwiązania Phoenix, należy ustawić właściwość typu zestawu danych na **PhoenixObject**. Nie ma dodatkowych właściwości specyficzne dla danego typu w tego typu zestawu danych.
 
 **Przykład**
 
@@ -101,16 +104,16 @@ Aby skopiować dane z Phoenix, ustaw właściwość Typ zestawu danych do **Phoe
 
 ## <a name="copy-activity-properties"></a>Właściwości działania kopiowania
 
-Pełną listę sekcje i właściwości dostępnych dla definiowania działań, zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę obsługiwanych przez źródło Phoenix właściwości.
+Aby uzyskać pełną listę sekcje i właściwości dostępne do definiowania działań zobacz [potoki](concepts-pipelines-activities.md) artykułu. Ta sekcja zawiera listę właściwości obsługiwanych przez źródło Phoenix.
 
 ### <a name="phoenixsource-as-source"></a>PhoenixSource jako źródło
 
-Aby skopiować dane z Phoenix, należy ustawić typ źródła w przypadku działania kopiowania do **PhoenixSource**. Następujące właściwości są obsługiwane w przypadku działania kopiowania **źródła** sekcji:
+Aby skopiować dane z rozwiązania Phoenix, należy ustawić typ źródła w działaniu kopiowania, aby **PhoenixSource**. Następujące właściwości są obsługiwane w działaniu kopiowania **źródła** sekcji:
 
 | Właściwość | Opis | Wymagane |
 |:--- |:--- |:--- |
-| type | Musi mieć ustawioną właściwość type źródła działania kopiowania: **PhoenixSource** | Yes |
-| query | Użyj niestandardowych zapytania SQL można odczytać danych. Na przykład: `"SELECT * FROM MyTable"`. | Yes |
+| type | Musi być równa wartości właściwości type źródło działania kopiowania: **PhoenixSource** | Yes |
+| query | Umożliwia odczytywanie danych niestandardowe zapytania SQL. Na przykład: `"SELECT * FROM MyTable"`. | Yes |
 
 **Przykład:**
 
@@ -145,4 +148,4 @@ Aby skopiować dane z Phoenix, należy ustawić typ źródła w przypadku dział
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Lista magazynów danych obsługiwane jako źródła i wychwytywanie przez działanie kopiowania w fabryce danych Azure, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).
+Aby uzyskać listę magazynów danych obsługiwanych jako źródła i ujścia działania kopiowania w usłudze Azure Data Factory, zobacz [obsługiwane magazyny danych](copy-activity-overview.md#supported-data-stores-and-formats).

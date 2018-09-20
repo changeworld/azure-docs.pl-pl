@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/16/2018
+ms.date: 09/18/2018
 ms.author: douglasl
-ms.openlocfilehash: 57c691271c2b2673ade40d600162934341e18a81
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 94c4a3fbd1c854401c42af5787c22db0e5dd6083
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300244"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364988"
 ---
 # <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Ciągła integracja i wdrażanie w usłudze Azure Data Factory
 
@@ -69,7 +69,7 @@ Oto dla całego cyklu życia ciągłej integracji i ciągłego wdrażania, któr
 
 ## <a name="automate-continuous-integration-with-azure-devops-services-releases"></a>Automatyzowanie ciągłej integracji z wersjami usługi DevOps platformy Azure
 
-Poniżej przedstawiono kroki, aby skonfigurować wydania usługi Azure DevOps, dzięki czemu można zautomatyzować wdrażanie fabryki danych w wielu środowiskach.
+Poniżej przedstawiono kroki, aby skonfigurować to wersja usługi DevOps platformy Azure, więc można zautomatyzować wdrażanie fabryki danych w wielu środowiskach.
 
 ![Diagram przedstawiający ciągłej integracji z usługami DevOps platformy Azure](media/continuous-integration-deployment/continuous-integration-image12.png)
 
@@ -81,7 +81,7 @@ Poniżej przedstawiono kroki, aby skonfigurować wydania usługi Azure DevOps, d
 
 -   [Usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/) zawierające wpisy tajne.
 
-### <a name="set-up-a-azure-devops-services-release"></a>Ustawianie wersji usługi Azure DevOps
+### <a name="set-up-an-azure-devops-services-release"></a>Ustawianie wersji usługi DevOps platformy Azure
 
 1.  Przejdź do strony usługi usługom DevOps platformy Azure, w tym samym projekcie jako skonfigurowane za pomocą usługi Data Factory.
 
@@ -799,9 +799,9 @@ else {
 
 ## <a name="use-custom-parameters-with-the-resource-manager-template"></a>Parametry niestandardowe za pomocą szablonu usługi Resource Manager
 
-Można zdefiniować niestandardowe parametry szablonu usługi Resource Manager. Po prostu musisz mieć w pliku o nazwie `arm-template-parameters-definition.json` w folderze głównym repozytorium. (Nazwa pliku musi odpowiadać nazwie, pokazano poniżej, dokładnie.) Data Factory próbuje odczytać plik, niezależnie od gałęzi, w którym aktualnie pracujesz w, ale nie tylko z gałęzi współpracy. Jeśli plik nie zostanie znaleziony, Data Factory używa domyślnych definicji.
+Można zdefiniować niestandardowe parametry szablonu usługi Resource Manager. Po prostu musisz mieć w pliku o nazwie `arm-template-parameters-definition.json` w folderze głównym repozytorium. (Nazwa pliku musi odpowiadać nazwie, pokazano poniżej, dokładnie.) Data Factory próbuje odczytać plik, niezależnie od gałęzi, w którym aktualnie pracujesz w, ale nie tylko z gałęzi współpracy. Jeśli plik nie zostanie znaleziony, Data Factory używa domyślnych parametrów i wartości.
 
-Poniższy przykład przedstawia przykładowy plik parametrów. Użyj tego przykładu jako odwołanie, aby utworzyć plik niestandardowych parametrów. Jeśli plik, który podasz nie jest w nieprawidłowym formacie JSON, Data Factory generuje komunikat o błędzie w konsoli przeglądarki i powraca do domyślnych definicji objętego interfejs użytkownika usługi Data Factory.
+Poniższy przykład przedstawia przykładowy plik parametrów. Użyj tego przykładu jako odwołanie, aby utworzyć plik niestandardowych parametrów. Jeśli plik, który podasz nie jest w nieprawidłowym formacie JSON, Data Factory generuje komunikat o błędzie w konsoli przeglądarki i powraca do domyślnych parametrów i wartości widocznych na interfejs użytkownika usługi Data Factory.
 
 ```json
 {

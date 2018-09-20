@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 09/19/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 92c0ad6dfde4fc83a912b4a3387d8b586e72809c
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 6a929c0226734a95e088e78307f2bbcc0571adef
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630447"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364605"
 ---
 # <a name="register-azure-stack-with-azure"></a>Rejestrowania usługi Azure Stack na platformie Azure
 
@@ -45,18 +45,18 @@ Będą potrzebne następujące elementy w miejscu, przed zarejestrowaniem:
 
 Przed zarejestrowaniem usługi Azure Stack przy użyciu platformy Azure, musisz mieć:
 
-- Identyfikator subskrypcji dla subskrypcji platformy Azure. Aby uzyskać identyfikator, zaloguj się do platformy Azure, kliknij przycisk **wszystkich usług**. Następnie w obszarze **ogólne** kategorii, wybierz opcję **subskrypcje**, kliknij subskrypcję, dla którego chcesz użyć, a następnie w obszarze **Essentials** można znaleźć identyfikatora subskrypcji.
+- Identyfikator subskrypcji dla subskrypcji platformy Azure. Umowy EA, dostawcy usług Kryptograficznych lub dostawcy usług Kryptograficznych udostępnionych usług, których subskrypcje są obsługiwane w przypadku rejestracji. Dostawcy usług kryptograficznych, musisz zdecydować, czy [korzystania z subskrypcji dostawcy usług Kryptograficznych lub CSPSS](azure-stack-add-manage-billing-as-a-csp.md#create-a-csp-or-cspss-subscription).<br><br>Aby uzyskać identyfikator, zaloguj się do platformy Azure, kliknij przycisk **wszystkich usług**. Następnie w obszarze **ogólne** kategorii, wybierz opcję **subskrypcje**, kliknij subskrypcję, dla którego chcesz użyć, a następnie w obszarze **Essentials** można znaleźć identyfikatora subskrypcji.
 
   > [!Note]  
   > Subskrypcje w chmurze (Niemcy) nie są obecnie obsługiwane.
 
-- Nazwa użytkownika i hasło dla konta które jest właścicielem subskrypcji (konta MSA/2FA są obsługiwane).
+- Nazwa użytkownika i hasło dla konta które jest właścicielem subskrypcji.
 
 - Konto użytkownika musi mieć dostęp do subskrypcji platformy Azure i masz uprawnienia do tworzenia aplikacji z obsługą tożsamości i nazwy główne usług w katalogu skojarzonego z posiadaną subskrypcją.
 
 - Dostawca zasobów usługi Azure Stack zarejestrowany (patrz sekcja rejestrowanie dostawcy zasobów platformy Azure Stack poniżej, aby uzyskać szczegółowe informacje).
 
-Po zarejestrowaniu uprawnienia administratora globalnego usługi Azure Active Directory nie jest wymagana. Jednak niektóre operacje mogą wymagać poświadczenia administratora globalnego. Na przykład skryptu Instalatora dostawcy zasobów lub nową funkcję wymagające uprawnienia przyznawane. Możesz tymczasowo ponownie przywrócić uprawnienia administratora globalnego dla konta lub użyj konta oddzielne administratora globalnego, który jest właścicielem *domyślne subskrypcję dostawcy*.
+Po zarejestrowaniu uprawnienia administratora globalnego usługi Azure Active Directory nie jest wymagana. Jednak niektóre operacje mogą wymagać poświadczenia administratora globalnego. Na przykład skryptu Instalatora dostawcy zasobów lub nową funkcję wymagające uprawnienia przyznawane. Możesz tymczasowo przywrócić uprawnienia administratora globalnego dla konta lub użyj konta oddzielne administratora globalnego, który jest właścicielem *domyślne subskrypcję dostawcy*.
 
 Jeśli nie masz subskrypcji platformy Azure, która spełnia te wymagania, możesz to zrobić [Utwórz w tym miejscu Utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free/?b=17.06). Rejestrowanie usługi Azure Stack jest naliczana opłata bez kosztów związanych z subskrypcją platformy Azure.
 

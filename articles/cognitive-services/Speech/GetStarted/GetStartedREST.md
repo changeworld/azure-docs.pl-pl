@@ -1,64 +1,65 @@
 ---
-title: Rozpoczynanie pracy z interfejsem API rozpoznawania mowy firmy Microsoft przy użyciu REST | Dokumentacja firmy Microsoft
-description: Umożliwia dostęp do interfejsu API rozpoznawania mowy w kognitywnych usług firmy Microsoft, aby przekonwertować na tekst rozmowy audio REST.
+title: Wprowadzenie do interfejsu API rozpoznawania mowy Bing za pomocą interfejsu REST | Dokumentacja firmy Microsoft
+titlesuffix: Azure Cognitive Services
+description: Dostęp do interfejsu API rozpoznawania mowy w usługach Microsoft Cognitive Services do Konwertuj dźwięk mówiony na tekst przy użyciu architektury REST.
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 53785cdfd75c23910802f2be20e6305817b3b097
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: ed1624648d668f392ed854cccf0843809b7e0e5e
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347464"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365140"
 ---
-# <a name="get-started-with-speech-recognition-by-using-the-rest-api"></a>Wprowadzenie do rozpoznawania mowy przy użyciu interfejsu API REST
+# <a name="quickstart-use-the-bing-speech-recognition-rest-api"></a>Szybki Start: Używanie rozpoznawania mowy Bing interfejsu API REST
 
-Oparte na chmurze mowy usługi aplikacje można tworzyć przy użyciu interfejsu API REST można przekonwertować na tekst rozmowy audio.
+Za pomocą opartej na chmurze usługa rozpoznawania mowy Bing aplikacje można tworzyć przy użyciu interfejsu API REST do Konwertuj dźwięk mówiony na tekst.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-### <a name="subscribe-to-the-speech-api-and-get-a-free-trial-subscription-key"></a>Subskrybowanie API mowy i uzyskiwanie klucza bezpłatnej subskrypcji próbnej
+### <a name="subscribe-to-the-speech-api-and-get-a-free-trial-subscription-key"></a>Subskrybowanie do interfejsu API mowy i Uzyskaj klucz subskrypcji wersji próbnej
 
-Interfejs API mowy jest częścią usługi kognitywnych (wcześniej Oxford projektu). Możesz uzyskać klucze bezpłatnej subskrypcji próbnej z [subskrypcji usługi kognitywnych](https://azure.microsoft.com/try/cognitive-services/) strony. Po wybraniu interfejsu API mowy wybierz **uzyskać klucz interfejsu API** uzyskać klucza. Zwraca wartość klucza podstawowego i pomocniczego. Obydwu kluczy są powiązane z tego samego przydziału, dzięki czemu można użyć albo klucza.
+Interfejs API mowy jest częścią usług Cognitive Services (wcześniej Project Oxford). Możesz uzyskać bezpłatną subskrypcję próbną kluczy z [subskrypcji usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) strony. Po wybraniu interfejsu API rozpoznawania mowy, wybierz opcję **Uzyskaj klucz interfejsu API** można pobrać klucza. Zwraca klucz podstawowy i pomocniczy. Oba klucze są powiązane z tego samego limitu przydziału, aby można było używać żadnego z nich.
 
 > [!IMPORTANT]
->* Pobierz klucz subskrypcji. Aby korzystać z interfejsu API REST, musi mieć [klucza subskrypcji](https://azure.microsoft.com/try/cognitive-services/).
+>* Pobierz klucz subskrypcji. Zanim można uzyskać dostęp do interfejsu API REST, konieczne jest posiadanie [klucz subskrypcji](https://azure.microsoft.com/try/cognitive-services/).
 >
->* Użyj klucza subskrypcji. W poniższych przykładach REST należy zastąpić YOUR_SUBSCRIPTION_KEY klucz subskrypcji. 
+>* Użyj klucza subskrypcji. W następujących przykładach REST należy zastąpić YOUR_SUBSCRIPTION_KEY klucz subskrypcji. 
 >
->* Zapoznaj się [uwierzytelniania](../how-to/how-to-authentication.md) strony dotyczące sposobu uzyskania klucza subskrypcji.
+>* Zapoznaj się [uwierzytelniania](../how-to/how-to-authentication.md) stron dotyczące sposobu uzyskania klucza subskrypcji.
 
-### <a name="prerecorded-audio-file"></a>Plik nagrań audio
+### <a name="prerecorded-audio-file"></a>Plik dźwiękowy nagrań
 
-W tym przykładzie używamy nagrania audio pliku ilustrujący sposób użycia interfejsu API REST. Zapisz plik dźwiękowy, informujący o tym krótką frazę. Na przykład "Co to jest pogodzie, takich jak dzisiaj?" lub "Odnaleźć zabawne filmów, aby obejrzeć". Rozpoznawanie mowy interfejs API obsługuje również dane wejściowe mikrofonu zewnętrznego.
+W tym przykładzie używamy zarejestrowany plik dźwiękowy do ilustrują sposób korzystania z interfejsu API REST. Zapisz plik audio, informujący o tym, krótkich fraz. Załóżmy na przykład, "Co to jest pogody, takich jak dzisiaj?" lub "Znajdź zabawnych filmy, aby obejrzeć". Interfejs API rozpoznawania mowy obsługuje również dane wejściowe mikrofonu zewnętrznego.
 
 > [!NOTE]
-> Przykład wymaga tego audio jest rejestrowany jako pliku WAV z **PCM pojedynczy kanał (mono), 16 KHz**.
+> Przykład wymaga tego audio jest rejestrowany jako plik WAV o **PCM pojedynczy kanał (mono) 16 KHz**.
 
-## <a name="build-a-recognition-request-and-send-it-to-the-speech-recognition-service"></a>Żądanie rozpoznawania kompilacji, a następnie wyślij ją z usługą rozpoznawania mowy
+## <a name="build-a-recognition-request-and-send-it-to-the-speech-recognition-service"></a>Żądanie rozpoznawania kompilacji oraz wysyłać je do usługi rozpoznawania mowy
 
-Następnym krokiem rozpoznawania mowy jest wysłanie żądania POST do punktów końcowych HTTP mowy z właściwego żądania nagłówek i treść.
+Następnym krokiem rozpoznawania mowy jest wysłanie żądania POST do punktów końcowych HTTP mowy z żądania prawidłowego nagłówka i treści.
 
 ### <a name="service-uri"></a>Identyfikator URI usługi
 
-Usługa rozpoznawania mowy identyfikatora URI jest zdefiniowana na podstawie [tryby rozpoznawania](../concepts.md#recognition-modes) i [języków rozpoznawania](../concepts.md#recognition-languages):
+Usługę rozpoznawania mowy, identyfikator URI jest zdefiniowana na podstawie [tryby rozpoznawania](../concepts.md#recognition-modes) i [języków rozpoznawania](../concepts.md#recognition-languages):
 
 ```HTTP
 https://speech.platform.bing.com/speech/recognition/<RECOGNITION_MODE>/cognitiveservices/v1?language=<LANGUAGE_TAG>&format=<OUTPUT_FORMAT>
 ```
 
-`<RECOGNITION_MODE>` Określa tryb rozpoznawania i musi mieć jedną z następujących wartości: `interactive`, `conversation`, lub `dictation`. Jest to ścieżka wymaganego zasobu w identyfikatorze URI. Aby uzyskać więcej informacji, zobacz [tryby rozpoznawania](../concepts.md#recognition-modes).
+`<RECOGNITION_MODE>` Określa tryb rozpoznawanie i musi mieć jedną z następujących wartości: `interactive`, `conversation`, lub `dictation`. Jest to ścieżka wymaganego zasobu w identyfikatorze URI. Aby uzyskać więcej informacji, zobacz [tryby rozpoznawania](../concepts.md#recognition-modes).
 
-`<LANGUAGE_TAG>` jest to wymagany parametr w ciągu zapytania. Definiuje języka docelowego do konwersji audio: na przykład `en-US` angielski (Stany Zjednoczone). Aby uzyskać więcej informacji, zobacz [języków rozpoznawania](../concepts.md#recognition-languages).
+`<LANGUAGE_TAG>` jest wymaganym parametrem ciągu zapytania. Definiuje język docelowy do konwersji audio: na przykład `en-US` dla języka angielskiego (Stany Zjednoczone). Aby uzyskać więcej informacji, zobacz [języków rozpoznawania](../concepts.md#recognition-languages).
 
-`<OUTPUT_FORMAT>` jest opcjonalny parametr ciągu zapytania. Dozwolone wartości są `simple` i `detailed`. Domyślnie usługa zwraca wyniki w `simple` format. Aby uzyskać więcej informacji, zobacz [format danych wyjściowych](../concepts.md#output-format).
+`<OUTPUT_FORMAT>` to opcjonalny parametr ciągu zapytania. Jego dozwolone wartości to `simple` i `detailed`. Domyślnie usługa zwraca wyniki w `simple` formatu. Aby uzyskać więcej informacji, zobacz [format danych wyjściowych](../concepts.md#output-format).
 
-W poniższej tabeli wymieniono przykładowe identyfikatory URI usługi.
+Przykłady usługi identyfikatory URI są wymienione w poniższej tabeli.
 
 | Tryb rozpoznawania  | Język | Format danych wyjściowych | Identyfikator URI usługi |
 |---|---|---|---|
@@ -67,16 +68,16 @@ W poniższej tabeli wymieniono przykładowe identyfikatory URI usługi.
 | `dictation` | fr-FR | Proste | https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR&format=simple |
 
 > [!NOTE]
-> Identyfikator URI usługi jest wymagane tylko wtedy, gdy aplikacja używa interfejsów API REST do wywołania tej usługi rozpoznawania mowy. Jeśli używany jest jeden z [bibliotek klienckich](GetStartedClientLibraries.md), zwykle nie trzeba znać URI, który jest używany. Biblioteki klienta może używać innej usługi identyfikatory URI, które są stosowane tylko dla określonego klienta biblioteki. Aby uzyskać więcej informacji zobacz Biblioteka klienta wybranych przez użytkownika.
+> Identyfikator URI usługi jest wymagane tylko wtedy, gdy aplikacja używa interfejsów API REST, aby wywołać usługę rozpoznawania mowy. Jeśli używasz jednego z [biblioteki klienckie](GetStartedClientLibraries.md), zwykle nie trzeba wiedzieć, których identyfikator URI jest używany. Biblioteki klienckie może używać innej usługi identyfikatory URI, które mają zastosowanie tylko w przypadku biblioteki klienta właściwy. Aby uzyskać więcej informacji zobacz Biblioteka klienta wybranych przez użytkownika.
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
-W nagłówku żądania musi być ustawione następujące pola:
+Następujące pola musi być ustawiona w nagłówku żądania:
 
-- `Ocp-Apim-Subscription-Key`: Za każdym razem, wywołania tej usługi, należy podać klucz subskrypcji w `Ocp-Apim-Subscription-Key` nagłówka. Usługa rozpoznawania mowy obsługuje również operacji związanych z autoryzacją tokeny zamiast klucze subskrypcji. Aby uzyskać więcej informacji, zobacz [uwierzytelniania](../How-to/how-to-authentication.md).
-- `Content-type`: `Content-type` Opisuje format i kodera-dekodera audio strumienia. Obecnie tylko pliku WAV i kodowanie PCM Mono 16000 jest obsługiwane. Wartość Content-type dla tego formatu jest `audio/wav; codec=audio/pcm; samplerate=16000`.
+- `Ocp-Apim-Subscription-Key`: Za każdym razem, należy wywołać usługę, należy przekazać swój klucz subskrypcji w `Ocp-Apim-Subscription-Key` nagłówka. Usługa rozpoznawania mowy obsługuje również operacji związanych z autoryzacją tokeny zamiast kluczy subskrypcji. Aby uzyskać więcej informacji, zobacz [uwierzytelniania](../How-to/how-to-authentication.md).
+- `Content-type``Content-type` Opisuje format i kodera-dekodera audio strumienia. Obecnie tylko plik WAV i PCM Mono 16000 kodowanie jest obsługiwane. Wartość Content-type ten format jest `audio/wav; codec=audio/pcm; samplerate=16000`.
 
-`Transfer-Encoding` Pole jest opcjonalne. Jeśli to pole jest ustawiona `chunked`, dźwięk można dzielenia na małe fragmenty. Aby uzyskać więcej informacji, zobacz [transferu pakietowego](../How-to/how-to-chunked-transfer.md).
+`Transfer-Encoding` Pole jest opcjonalne. Jeśli to pole jest ustawiona na `chunked`, audio mogą być skalowane na małe fragmenty. Aby uzyskać więcej informacji, zobacz [transferu pakietowego](../How-to/how-to-chunked-transfer.md).
 
 Poniżej przedstawiono przykładowy nagłówek żądania:
 
@@ -92,7 +93,7 @@ Expect: 100-continue
 
 ### <a name="send-a-request-to-the-service"></a>Wyślij żądanie do usługi
 
-Poniższy przykład przedstawia sposób wysłania żądania rozpoznawania mowy do punkty końcowe REST mowy. Używa `interactive` trybu rozpoznawania.
+Poniższy przykład pokazuje, jak wysyłać żądań rozpoznawania mowy punkty końcowe REST mowy. Używa ona `interactive` trybu rozpoznawania.
 
 > [!NOTE]
 > Zastąp `YOUR_AUDIO_FILE` ze ścieżką do pliku nagrań audio. Zastąp `YOUR_SUBSCRIPTION_KEY` z kluczem subskrypcji.
@@ -121,12 +122,12 @@ $RecoResponse
 
 ```
 
-# <a name="curltabcurl"></a>[Narzędzie curl](#tab/curl)
+# <a name="curltabcurl"></a>[Curl](#tab/curl)
 
-W przykładzie użyto curl w systemie Linux z bash. Jeśli nie jest dostępna na platformie, może być konieczne zainstalowanie curl. Przykład działa także w programów Cygwin na systemu Windows, Git Bash, zsh i innych powłoki.
+W przykładzie użyto programu curl w systemie Linux przy użyciu programu bash. Jeśli nie jest dostępny na Twojej platformie, może być konieczne do zainstalowania programu curl. Przykład działa również na Cygwin na Windows, systemu Git Bash, zsh i innych powłoki.
 
 > [!NOTE]
-> Zachowaj `@` przed nazwą pliku audio podczas zamieniania `YOUR_AUDIO_FILE` ze ścieżką do pliku nagrań audio, ponieważ oznacza to, że wartość `--data-binary` jest nazwą pliku, a nie dane.
+> Zachowaj `@` przed nazwą pliku audio podczas zastępowania `YOUR_AUDIO_FILE` ze ścieżką do pliku nagrań audio, ponieważ oznacza to, że wartość `--data-binary` jest nazwą pliku, a nie dane.
 
 ```
 curl -v -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE
@@ -172,14 +173,14 @@ using (FileStream fs = new FileStream(YOUR_AUDIO_FILE, FileMode.Open, FileAccess
 
 ---
 
-## <a name="process-the-speech-recognition-response"></a>Proces rozpoznawania mowy odpowiedzi
+## <a name="process-the-speech-recognition-response"></a>Przetworzenie odpowiedzi rozpoznawania mowy
 
-Po przetworzeniu żądania, usługa mowy zwraca wyniki w odpowiedzi na formacie JSON.
+Po przetworzeniu żądania, usługa rozpoznawania mowy zwraca wyniki do odpowiedzi w formacie JSON.
 
 > [!NOTE]
-> Jeśli poprzedni kod zwraca błąd, zobacz [Rozwiązywanie problemów](../troubleshooting.md) zlokalizować możliwe przyczyny.
+> Jeśli poprzedni kod zwraca błąd, zobacz [Rozwiązywanie problemów](../troubleshooting.md) do lokalizowania możliwa przyczyna.
 
-Poniższy fragment kodu przedstawia przykładowy sposób uzyskać odpowiedzi ze strumienia.
+Poniższy fragment kodu przedstawia przykład jak odpowiedzi może być odczytany ze strumienia.
 
 # <a name="powershelltabpowershell"></a>[Program PowerShell](#tab/Powershell)
 
@@ -188,9 +189,9 @@ Poniższy fragment kodu przedstawia przykładowy sposób uzyskać odpowiedzi ze 
 ConvertTo-Json $RecoResponse
 ```
 
-# <a name="curltabcurl"></a>[Narzędzie curl](#tab/curl)
+# <a name="curltabcurl"></a>[Curl](#tab/curl)
 
-W tym przykładzie curl bezpośrednio zwraca komunikat odpowiedzi w ciągu. Jeśli chcesz wyświetlić w formacie JSON, można użyć dodatkowych narzędzi, na przykład jq.
+W tym przykładzie curl bezpośrednio zwraca komunikat odpowiedzi w ciągu. Jeśli chcesz było wyświetlane w formacie JSON, można użyć dodatkowych narzędzi, na przykład jq.
 
 ```
 curl -X POST "https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=en-us&format=detailed" -H "Transfer-Encoding: chunked" -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY" -H "Content-type: audio/wav; codec=audio/pcm; samplerate=16000" --data-binary @YOUR_AUDIO_FILE | jq
@@ -241,17 +242,17 @@ OK
 
 Interfejs API REST ma następujące ograniczenia:
 
-- Obsługuje on strumieniem audio tylko do 15 sekund.
-- Podczas rozpoznawania nie obsługuje pośrednich wyników. Użytkownicy otrzymują tylko wynik końcowy rozpoznawania.
+- Strumień audio obsługuje tylko do 15 sekund.
+- Nie obsługuje on wyniki pośrednie podczas rozpoznawania. Użytkownicy będą otrzymywać tylko wynik końcowy rozpoznawania.
 
-Aby usunąć te ograniczenia, należy użyć mowy [bibliotek klienckich](GetStartedClientLibraries.md). Lub może współpracować bezpośrednio z [protokół WebSocket mowy](../API-Reference-REST/websocketprotocol.md).
+Aby usunąć te ograniczenia, użyj mowy [biblioteki klienckie](GetStartedClientLibraries.md). Lub może współpracować bezpośrednio z [protokołu WebSocket mowy](../API-Reference-REST/websocketprotocol.md).
 
 ## <a name="whats-next"></a>Co dalej
 
-- Aby zobaczyć sposób użycia interfejsu API REST w języku C#, Java, itp., zobacz te [przykładowe aplikacje](../samples.md).
-- Aby zlokalizować i napraw błędy, zobacz [Rozwiązywanie problemów](../troubleshooting.md).
-- Aby korzystać z bardziej zaawansowanych funkcji, zobacz jak rozpocząć pracę przy użyciu mowy [bibliotek klienckich](GetStartedClientLibraries.md).
+- Aby zobaczyć, jak używać interfejsu API REST w języku C#, Java, itp., zobacz te [przykładowe aplikacje](../samples.md).
+- Aby znaleźć i naprawić błędy, zobacz [Rozwiązywanie problemów](../troubleshooting.md).
+- Aby korzystać z bardziej zaawansowanych funkcji, zobacz, jak rozpocząć pracę przy użyciu funkcji rozpoznawania mowy [biblioteki klienckie](GetStartedClientLibraries.md).
 
 ### <a name="license"></a>Licencja
 
-Wszystkie kognitywnych usług zestawy SDK i przykłady, jest udzielana z licencją MIT. Aby uzyskać więcej informacji, zobacz [licencji](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md).
+Wszystkie Cognitive Services zestawy SDK i przykłady są licencjonowane z licencją MIT. Aby uzyskać więcej informacji, zobacz [licencji](https://github.com/Microsoft/Cognitive-Speech-STT-JavaScript/blob/master/LICENSE.md).

@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 09/19/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: af8c0b6a4aa0c3b6e25f92dc450faa22a01ee374
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 42b157a63b76474f6c9482da75072878fe9291e0
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579182"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46466000"
 ---
 # <a name="log-analytics-data-security"></a>Bezpieczeństwo danych analizy dziennika
 Ten dokument jest przeznaczony do dostarczania informacji usługi Azure Log Analytics do uzupełnienia informacji o [Centrum zaufania systemu Azure](../security/security-microsoft-trust-center.md).  
@@ -44,9 +44,9 @@ Na ułatwieniu zapewnienia bezpieczeństwa danych przesyłanych do usługi Log A
 
 [Rady standardami bezpieczeństwa PCI](https://www.pcisecuritystandards.org/) ustawił [terminu 30 czerwca 2018 r.](https://www.pcisecuritystandards.org/pdfs/PCI_SSC_Migrating_from_SSL_and_Early_TLS_Resource_Guide.pdf) wyłączyć starsze wersje protokołu TLS/SSL i uaktualniania, aby lepiej zabezpieczyć protokołów. Gdy starsze obsługuje jest już w Azure, jeśli Twoi agenci nie mogą komunikować się za pośrednictwem co najmniej protokołu TLS 1.2, nie będzie mogła wysyłać dane do usługi Log Analytics. 
 
-Firma Microsoft nie zaleca się jawne ustawienie agenta można używać tylko protokołu TLS 1.2, chyba że absolutnie konieczne, ponieważ może to spowodować awarię funkcji zabezpieczenia na poziomie platformy, które pozwalają na automatyczne wykrywanie i korzystać z zalet nowszej bardziej bezpieczne protokoły jako staną się dostępne takie jako TLS 1.3. 
+Firma Microsoft nie zaleca się jawne ustawienie agenta można używać tylko protokołu TLS 1.2, chyba że absolutnie konieczne, ponieważ może przerwać funkcji zabezpieczenia na poziomie platformy, które pozwalają na automatyczne wykrywanie i korzystać z nowsze protokoły bezpieczniejsze, gdy tylko staną się dostępne, na przykład jako TLS 1.3. 
 
-### <a name="platform-specific-guidance"></a>Wskazówki dotyczące określonej platformy
+### <a name="platform-specific-guidance"></a>Ze wskazówek specyficznych dla platformy
 
 |Języka/platformy | Pomoc techniczna | Więcej informacji |
 | --- | --- | --- |
@@ -117,11 +117,11 @@ Program zabezpieczenia i nadzór informacji usługi Log Analytics oprogramowania
 
 Każdy członek zespołu rozwoju odbiera szkolenia formalnego aplikacji w zakresie zabezpieczeń. Wewnętrznie system kontroli wersji służy do tworzenia oprogramowania. Każdy projekt oprogramowania jest chroniona przez system kontroli wersji.
 
-Firma Microsoft ma zespołu zabezpieczeń i zgodności, nadzoruje, która ocenia wszystkich usług firmy Microsoft. Specjaliści ds. bezpieczeństwa informacji tworzą zespół i nie są oni skojarzeni z działów inżynieryjne, które osiąga usługi Log Analytics. Specjaliści ds. bezpieczeństwa mają własne łańcuch zarządzania i jednostkach niezależnych produktów i usług w celu zapewnienia bezpieczeństwa i zgodności.
+Firma Microsoft ma zespołu zabezpieczeń i zgodności, nadzoruje, która ocenia wszystkich usług firmy Microsoft. Specjaliści ds. bezpieczeństwa informacji tworzą zespół i nie są oni skojarzeni z zespołami inżynierów opracowuje usługi Log Analytics. Specjaliści ds. bezpieczeństwa mają własne łańcuch zarządzania i jednostkach niezależnych produktów i usług w celu zapewnienia bezpieczeństwa i zgodności.
 
 Zarząd firmy Microsoft jest powiadamiany przez roczny raport o wszystkich programów bezpieczeństwa informacji w firmie Microsoft.
 
-Zespoły Legal firmy Microsoft i zgodności i innych partnerów z branży można uzyskać różne certyfikaty aktywnie pracuje zespół rozwoju i usługi oprogramowania usługi Log Analytics.
+Opracowywania oprogramowania w usłudze Log Analytics i zespołu usług trwają intensywne prace ze zespołów Legal firmy Microsoft i zgodności i innych partnerów z branży można uzyskać różne certyfikaty.
 
 ## <a name="certifications-and-attestations"></a>Certyfikatami i aprobatami
 Usługa Azure Log Analytics spełnia następujące wymagania:
@@ -176,7 +176,7 @@ Zgodnie z powyższym opisem z serwera zarządzania lub agenci połączone bezpo�
 ## <a name="3-the-log-analytics-service-receives-and-processes-data"></a>3. Usługa Log Analytics odbiera i przetwarza dane
 Usługa Log Analytics zapewnia dane przychodzące z zaufanego źródła, sprawdzając poprawność certyfikatów i integralności danych za pomocą uwierzytelniania platformy Azure. Nieprzetworzone dane pierwotne, następnie znajduje się w Centrum zdarzeń platformy Azure w regionie, dane będą przechowywane po pewnym czasie w stanie spoczynku. Typ danych przechowywanych zależy od typów rozwiązań, które zostały zaimportowane, a następnie używane do zbierania danych. Następnie usługi Log Analytics usługi procesy nieprzetworzone dane i pozyskuje go do bazy danych.
 
-Okres przechowywania zebranych danych przechowywanych w bazie danych, zależy od wybranego planu cenowego. Aby uzyskać *bezpłatna* warstwy, zebrane dane są dostępne przez 7 dni. Aby uzyskać *płatnych* warstwy, zebranych danych jest dostępna przez 31 dni domyślnie, ale może zostać rozszerzony do 730 dni. Dane są przechowywane, szyfrowane, gdy w usłudze Azure storage, aby zapewnić poufności danych. Dane z ostatnich dwóch tygodni, również są przechowywane w pamięci podręcznej oparte na dyskach SSD, a ta pamięć podręczna jest aktualnie niezaszyfrowane.  Planujemy do obsługi takiego szyfrowania w późniejszym połowie 2018 r.  
+Okres przechowywania zebranych danych przechowywanych w bazie danych, zależy od wybranego planu cenowego. Aby uzyskać *bezpłatna* warstwy, zebrane dane są dostępne przez siedem dni. Aby uzyskać *płatnych* warstwy, zebranych danych jest dostępna przez 31 dni domyślnie, ale może zostać rozszerzony do 730 dni. Dane są przechowywane, szyfrowane, gdy w usłudze Azure storage, aby zapewnić poufność danych, a dane są replikowane w regionie lokalnym przy użyciu magazynu lokalnie nadmiarowego (LRS). Dane z ostatnich dwóch tygodni, również są przechowywane w pamięci podręcznej oparte na dyskach SSD, a ta pamięć podręczna jest aktualnie niezaszyfrowane.  Obecnie pracujemy nad obsługuje szyfrowanie oparte na dyskach SSD pamięci podręcznej.      
 
 ## <a name="4-use-log-analytics-to-access-the-data"></a>4. Usługa Log Analytics umożliwia dostęp do danych
 Aby uzyskać dostęp do obszaru roboczego usługi Log Analytics, możesz zarejestrować się do witryny Azure portal przy użyciu konta organizacji lub konta Microsoft, które wcześniej. Cały ruch między portalem i usługą Log Analytics są wysyłane za pośrednictwem bezpiecznego kanału protokołu HTTPS. Korzystając z portalu, identyfikator sesji jest generowany na kliencie użytkownika (przeglądarka sieci web), a dane są przechowywane w lokalnej pamięci podręcznej, dopóki sesja zostanie zakończona. Gdy zakończone, pamięci podręcznej zostaną usunięte. Pliki cookie po stronie klienta, które nie zawierają danych osobowych, nie są automatycznie usuwane. Pliki cookie dotyczące sesji są oznaczane HTTPOnly i są chronione. Po upływie wstępnie ustaloną bezczynności sesji portalu platformy Azure zostanie zakończony.

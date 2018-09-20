@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/07/2018
 ms.author: jingwang
 ms.custom: include file
-ms.openlocfilehash: d7a088db46d936d4a9626132254eb7bfbdd0f83f
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: db7aa397d66c6bc3878633437682759b4be2d119
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44168504"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46473863"
 ---
 | Kategoria | Magazyn danych | Obsługiwany jako źródło | Obsługiwany jako ujście | Obsługiwane przez środowisko [Azure IR](../articles/data-factory/concepts-integration-runtime.md#azure-integration-runtime) | Obsługiwane przez [własne środowisko IR](../articles/data-factory/concepts-integration-runtime.md#self-hosted-integration-runtime) |
 |:--- |:--- |:--- |:--- |:--- |:--- |
@@ -74,6 +74,7 @@ ms.locfileid: "44168504"
 | &nbsp; |[Jira (wersja zapoznawcza)](../articles/data-factory/connector-jira.md) |✓ | |✓ |✓  |
 | &nbsp; |[Magento (wersja zapoznawcza)](../articles/data-factory/connector-magento.md) |✓ | |✓ |✓  |
 | &nbsp; |[Marketo (wersja zapoznawcza)](../articles/data-factory/connector-marketo.md) |✓ | |✓ |✓  |
+| &nbsp; |[Usługi Office 365 (wersja zapoznawcza)](../articles/data-factory/connector-oracle-eloqua.md) |✓ | |✓ |✓  |
 | &nbsp; |[Oracle Eloqua (wersja zapoznawcza)](../articles/data-factory/connector-oracle-eloqua.md) |✓ | |✓ |✓  |
 | &nbsp; |[Oracle Responsys (wersja zapoznawcza)](../articles/data-factory/connector-oracle-responsys.md) |✓ | |✓ |✓  |
 | &nbsp; |[Usługa w chmurze firmy Oracle (wersja zapoznawcza)](../articles/data-factory/connector-oracle-service-cloud.md) |✓ | |✓ |✓  |

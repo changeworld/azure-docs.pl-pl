@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 05/31/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 33072732053325f29dc44e4a46b809c1afaa93f4
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 38086d0e975956aefe4fcde4eda67d939d58f617
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312648"
+ms.locfileid: "46365846"
 ---
 # <a name="azure-ad-connect-user-sign-in-options"></a>Usługa Azure AD Connect użytkownika opcje logowania
 Usługa Azure Active Directory (Azure AD) Connect umożliwia użytkownikom logować się do zasobów lokalnych i chmurze przy użyciu tego samego hasła. W tym artykule opisano kluczowe pojęcia związane z każdego modelu tożsamości ułatwić wybór tożsamości, którego chcesz użyć do logowania do usługi Azure AD.
@@ -114,7 +114,7 @@ Nazwa UPN użytkownika ma następujący format username@domain. Na przykład dla
 ### <a name="user-principal-name-in-azure-ad"></a>Główna nazwa użytkownika w usłudze Azure AD
 Kreator Azure AD Connect używa atrybutu userPrincipalName lub umożliwia określenie atrybutu (w instalacji niestandardowej) do użycia ze środowiska lokalnego jako główną nazwę użytkownika w usłudze Azure AD. Jest to wartość, która jest używana do logowania się do usługi Azure AD. Jeśli wartość atrybutu userPrincipalName nie odpowiadają zweryfikowanej domeny w usłudze Azure AD, następnie usługi Azure AD zastępuje go znakiem domyślnego. wartość onmicrosoft.com.
 
-Każdy katalog usługi Azure Active Directory jest dostarczany z nazwą domeny wbudowane, za pomocą contoso.onmicrosoft.com format, umożliwiające rozpoczęcie korzystania z platformy Azure lub innych usług firmy Microsoft. Można zwiększyć i uprościć środowisko logowania za pomocą domen niestandardowych. Aby uzyskać informacji na temat niestandardowych nazw domen w usłudze Azure AD i sposobie weryfikacji domeny, zobacz [Dodawanie niestandardowej nazwy domeny do usługi Azure Active Directory](../fundamentals/add-custom-domain.md#add-a-custom-domain-name).
+Każdy katalog usługi Azure Active Directory jest dostarczany z nazwą domeny wbudowane, za pomocą contoso.onmicrosoft.com format, umożliwiające rozpoczęcie korzystania z platformy Azure lub innych usług firmy Microsoft. Można zwiększyć i uprościć środowisko logowania za pomocą domen niestandardowych. Aby uzyskać informacji na temat niestandardowych nazw domen w usłudze Azure AD i sposobie weryfikacji domeny, zobacz [Dodawanie niestandardowej nazwy domeny do usługi Azure Active Directory](../fundamentals/add-custom-domain.md).
 
 ## <a name="azure-ad-sign-in-configuration"></a>Konfiguracja logowania się w usłudze Azure AD
 ### <a name="azure-ad-sign-in-configuration-with-azure-ad-connect"></a>Konfiguracja usłudze Azure AD logowania za pomocą usługi Azure AD Connect

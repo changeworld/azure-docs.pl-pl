@@ -1,30 +1,31 @@
 ---
-title: Rozpoznawanie mowy Microsoft protokół WebSocket | Dokumentacja firmy Microsoft
-description: Dokumentacja protokołu mowy usługi oparte na protokół WebSockets
+title: Protokół WebSocket rozpoznawania mowy Bing | Dokumentacja firmy Microsoft
+titlesuffix: Azure Cognitive Services
+description: Dokumentacja protokołu rozpoznawania mowy Bing, w oparciu o protokół WebSockets
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 17954536e8bdb49c09204c2e522586b79cb1bef5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 906b71f8312db843745f2e49fd211b010d8a6c83
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347496"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46368242"
 ---
-# <a name="speech-service-websocket-protocol"></a>Protokół WebSocket usługi mowy
+# <a name="bing-speech-websocket-protocol"></a>Protokół WebSocket rozpoznawania mowy Bing
 
-  Usługa rozpoznawania mowy to oparte na chmurze platforma, która funkcji najbardziej zaawansowane algorytmy dostępne do konwertowania rozmowy audio na tekst. Protokół usługi mowy definiuje [ustawienia połączenia](#connection-establishment) między aplikacjami klienta i usługi i rozpoznawania mowy wiadomości wymieniane między partnerami ([klienta pochodzi wiadomości](#client-originated-messages)i [pochodzi usługi wiadomości](#service-originated-messages)). Ponadto [wiadomości telemetrii](#telemetry-schema) i [obsługi błędów](#error-handling) opisano.
+Rozpoznawanie mowy Bing jest oparte na chmurze platformy, która oferuje najbardziej zaawansowanych algorytmów do konwertowania dźwięk mówiony na tekst. Protokół rozpoznawania mowy Bing definiuje [ustawienia połączenia](#connection-establishment) między aplikacjami klienta i usługę i komunikaty rozpoznawania mowy, które są wymieniane między odpowiedniki ([komunikatów pochodzących od klientów](#client-originated-messages) i [pochodzi z usługi wiadomości](#service-originated-messages)). Ponadto [komunikaty telemetryczne](#telemetry-schema) i [obsługi błędów](#error-handling) są opisane.
 
 ## <a name="connection-establishment"></a>Ustanawianie połączenia
 
-Protokół usługi mowy zgodna ze specyfikacją standardowego protokołu WebSocket [IETF RFC 6455](https://tools.ietf.org/html/rfc6455). Połączenia obiektu WebSocket rozpoczyna się jako żądanie HTTP, która zawiera nagłówki HTTP, które wskazuje zamiar uaktualnienia połączenia do WebSocket zamiast za pomocą semantyki HTTP klienta. Serwer wskazuje chęć uczestnictwa w połączenia obiektu WebSocket, zwracając HTTP `101 Switching Protocols` odpowiedzi. Po wymianie tego uzgadniania zarówno klient, jak i usługa gniazda nie zamykaj i rozpocząć korzystanie opartego na komunikat protokołu do wysyłania i odbierania informacji.
+Protokół usługi mowy zgodna ze specyfikacją standardowego protokołu WebSocket [IETF RFC 6455](https://tools.ietf.org/html/rfc6455). Połączenie WebSocket rozpoczyna się jako żądanie HTTP, który zawiera nagłówki HTTP, które wskazują klienta chęci uaktualnienia połączenia do WebSocket, zamiast korzystać z semantyką HTTP. Serwer wskazuje chęć uczestnictwa w połączeniem WebSocket, zwracając HTTP `101 Switching Protocols` odpowiedzi. Po wymianie to uzgadniania zarówno klienta, jak i usługi nie zamykaj gniazda i rozpocząć korzystanie opartego na komunikat protokołu do wysyłania i odbierania informacji.
 
-Aby rozpocząć uzgadnianie protokołu WebSocket, aplikacja kliencka wysyła żądanie HTTPS GET do usługi. Obejmuje standardowych nagłówków uaktualnienia obiektu WebSocket wraz z innymi nagłówki, które są specyficzne dla mowy.
+Aby rozpocząć uzgadnianie protokołu WebSocket, aplikacja kliencka wysyła żądanie GET protokołu HTTPS do usługi. Obejmuje ona standardowych nagłówków uaktualnienia WebSocket wraz z innych nagłówków, które są specyficzne dla funkcji rozpoznawania mowy.
 
 ```HTTP
 GET /speech/recognition/interactive/cognitiveservices/v1 HTTP/1.1
@@ -38,7 +39,7 @@ X-ConnectionId: A140CAF92F71469FA41C72C7B5849253
 Origin: https://speech.platform.bing.com
 ```
 
-Usługa odpowiada następująco:
+Usługa odpowiada za pomocą:
 
 ```HTTP
 HTTP/1.1 101 Switching Protocols
@@ -49,21 +50,21 @@ Set-Cookie: SpeechServiceToken=AAAAABAAWTC8ncb8COL; expires=Wed, 17 Aug 2016 15:
 Date: Wed, 17 Aug 2016 15:03:52 GMT
 ```
 
-Wszystkie żądania mowy wymagają [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) szyfrowania. Użycie mowy niezaszyfrowane żądania nie jest obsługiwane. Następujące TLS, wersja jest obsługiwana:
+Wszystkie żądania mowy wymagają [TLS](https://en.wikipedia.org/wiki/Transport_Layer_Security) szyfrowania. Korzystanie z żądaniami funkcji rozpoznawania mowy niezaszyfrowane nie jest obsługiwana. Następującą wersję protokołu TLS są obsługiwane:
 
 * TLS 1.2
 
 ### <a name="connection-identifier"></a>Identyfikator połączenia
 
-Usługa rozpoznawania mowy wymaga, aby wszyscy klienci obejmują unikatowy identyfikator połączenia. Klienci *musi* obejmują *X ConnectionId* nagłówka po rozpoczęciu uzgadniania protokołu WebSocket. *X ConnectionId* nagłówek musi być [unikatowym identyfikatorem](https://en.wikipedia.org/wiki/Universally_unique_identifier) wartość (UUID). Żądania uaktualnienia protokołu WebSocket, które nie zawierają *X ConnectionId*, nie określaj wartości dla *X ConnectionId* nagłówka, lub nie zawiera prawidłowej wartości identyfikatora UUID są odrzucane przez usługę za pomocą protokołu HTTP `400 Bad Request` odpowiedzi.
+Usługa rozpoznawania mowy wymaga, że wszyscy klienci obejmują unikatowy identyfikator połączenia. Klienci *musi* obejmują *X ConnectionId* nagłówka podczas uruchamiania uzgadniania protokołu WebSocket. *X ConnectionId* nagłówek może mieć [unikatowym identyfikatorem](https://en.wikipedia.org/wiki/Universally_unique_identifier) wartość (UUID). Żądania uaktualnienia WebSocket, które nie zawierają *X ConnectionId*, nie określaj wartości *X ConnectionId* nagłówka, lub nie zawiera prawidłowej wartości identyfikatora UUID są odrzucane przez usługę za pośrednictwem protokołu HTTP `400 Bad Request` odpowiedzi.
 
 ### <a name="authorization"></a>Autoryzacja
 
-Oprócz standardowych nagłówków uzgadnianie protokołu WebSocket mowy wymagają *autoryzacji* nagłówka. Bez tego nagłówka są odrzucane przez usługę za pomocą protokołu HTTP żądania połączeń `403 Forbidden` odpowiedzi.
+Oprócz standardowych nagłówków uzgadnianie protokołu WebSocket wymagają żądaniami funkcji rozpoznawania mowy *autoryzacji* nagłówka. Bez tego pliku nagłówkowego są odrzucane przez usługę za pośrednictwem protokołu HTTP, żądania połączeń `403 Forbidden` odpowiedzi.
 
 *Autoryzacji* nagłówek musi zawierać token dostępu tokenu Web JSON (JWT).
 
-Aby uzyskać informacje dotyczące subskrypcji i uzyskanie kluczy interfejsu API, które są używane do pobierania prawidłowych tokenów dostępu JWT, zobacz [subskrypcji usługi kognitywnych](https://azure.microsoft.com/try/cognitive-services/) strony.
+Aby dowiedzieć się, jak subskrybować i uzyskać klucze interfejsu API, które są używane do pobierania tokenów dostępu w usłudze prawidłowy token JWT, zobacz [subskrypcji usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) strony.
 
 Klucz interfejsu API jest przekazywany do usługi tokenu. Na przykład:
 
@@ -76,97 +77,97 @@ Następujące informacje nagłówka są wymagane do uzyskania tokenu dostępu.
 
 | Name (Nazwa) | Format | Opis |
 |----|----|----|
-| OCP-Apim subskrypcji — klawisz | ASCII | Twój klucz subskrypcji |
+| OCP-Apim-Subscription-Key | ASCII | Twój klucz subskrypcji |
 
-Usługa tokenu zwraca token dostępu JWT jako `text/plain`. Następnie tokenu JWT jest przekazywany jako `Base64 access_token` do uzgadniania jako *autoryzacji* nagłówka poprzedzona ciągiem `Bearer`. Na przykład:
+Zwraca wartość usługi tokenu JWT token dostępu jako `text/plain`. Następnie tokenu JWT jest przekazywany jako `Base64 access_token` do uzgadniania jako *autoryzacji* nagłówków z prefiksem ciągu `Bearer`. Na przykład:
 
 `Authorization: Bearer [Base64 access_token]`
 
 ### <a name="cookies"></a>Pliki cookie
 
-Klienci *musi* obsługujących pliki cookie HTTP, jak określono w [RFC 6265](https://tools.ietf.org/html/rfc6265).
+Klienci *musi* obsługujących pliki cookie HTTP, jak to określono w [RFC 6265](https://tools.ietf.org/html/rfc6265).
 
 ### <a name="http-redirection"></a>Przekierowywanie HTTP
 
-Klienci *musi* obsługuje mechanizmów przekierowania standardowych określony przez [Specyfikacja protokołu HTTP](http://www.w3.org/Protocols/rfc2616/rfc2616.html).
+Klienci *musi* obsługi przekierowania standardowych mechanizmów, określony przez [specyfikacji protokołu HTTP](http://www.w3.org/Protocols/rfc2616/rfc2616.html).
 
-### <a name="speech-endpoints"></a>Punkty końcowe mowy
+### <a name="speech-endpoints"></a>Punktów końcowych rozpoznawania mowy
 
-Klienci *musi* użycia odpowiedniego punktu końcowego usługi mowy. Punkt końcowy jest oparta na tryb rozpoznawania i języka. W tabeli przedstawiono przykłady.
+Klienci *musi* użyć odpowiednich punktów końcowych usługi mowy. Punkt końcowy zależy od trybu rozpoznawania i język. W tabeli przedstawiono kilka przykładów.
 
 | Tryb | Ścieżka | Identyfikator URI usługi |
 | -----|-----|-----|
 | Interaktywne | /Speech/Recognition/Interactive/cognitiveservices/V1 |https://speech.platform.bing.com/speech/recognition/interactive/cognitiveservices/v1?language=pt-BR |
 | Konwersacja | /Speech/Recognition/Conversation/cognitiveservices/V1 |https://speech.platform.bing.com/speech/recognition/conversation/cognitiveservices/v1?language=en-US |
-| dyktowania | /Speech/Recognition/Dictation/cognitiveservices/V1 |https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR |
+| Dyktowanie | /Speech/Recognition/Dictation/cognitiveservices/V1 |https://speech.platform.bing.com/speech/recognition/dictation/cognitiveservices/v1?language=fr-FR |
 
 Aby uzyskać więcej informacji, zobacz [identyfikator URI usługi](../GetStarted/GetStartedREST.md#service-uri) strony.
 
 ### <a name="report-connection-problems"></a>Problemy z połączeniem raportu
 
-Klienci powinni zgłaszać natychmiast wszystkie problemy podczas nawiązywania połączenia. Message protocol dla raportowania nieudane połączenia jest opisany w [telemetrii awarii połączenia](#connection-failure-telemetry).
+Klienci natychmiast powinien wysyłać raporty problemów napotkanych podczas nawiązywania połączenia. Message protocol dla raportowania połączenia zakończone niepowodzeniem jest opisana w [telemetrii awarii połączenia](#connection-failure-telemetry).
 
-### <a name="connection-duration-limitations"></a>Ograniczenia czasu trwania połączenia
+### <a name="connection-duration-limitations"></a>Ograniczenia dotyczące czasu trwania połączenia
 
-W porównaniu z połączenia HTTP usługi sieci web typowe, ostatni połączeń protokołu WebSocket *długi* czasu. Usługa rozpoznawania mowy wprowadza ograniczenia na czas trwania połączenia obiektu WebSocket do usługi:
+W porównaniu z połączenia HTTP usługi typowej sieci web, ostatnie połączeń protokołu WebSocket *długie* czasu. Usługa rozpoznawania mowy umieszcza ograniczenia na czas trwania połączeń protokołu WebSocket z usługą:
 
- * Maksymalny czas trwania dowolnego aktywnego połączenia obiektu WebSocket to 10 minut. Połączenie jest aktywne, jeśli usługa lub klient wysyła komunikaty protokołu WebSocket za pośrednictwem tego połączenia. Usługa przerywa połączenie bez ostrzeżenia, po osiągnięciu limitu. Klientów należy opracować scenariuszy użytkownika, które nie wymagają połączenia pozostają aktywne, lub prawie połączenia maksymalny okres istnienia.
+ * Maksymalny czas trwania dla dowolnego aktywne połączenia protokołu WebSocket to 10 minut. Połączenie jest aktywne, jeśli usługa lub klient wysyła komunikaty protokołu WebSocket za pośrednictwem tego połączenia. Usługa kończy połączenie bez ostrzeżenia, po osiągnięciu limitu. Klienci opracować scenariuszy użytkowników, które nie wymagają połączenia pozostaną aktywne po lub w pobliżu połączenia maksymalny okres istnienia.
 
- * Maksymalny czas trwania dowolnego nieaktywnego połączenia obiektu WebSocket jest 180 sekund. Połączenie jest aktywne, jeśli usługa ani klient wysłał komunikat protokołu WebSocket za pośrednictwem połączenia. Po osiągnięciu maksymalny okres istnienia nieaktywne zakończenie usługi następuje nieaktywnego połączenia obiektu WebSocket.
+ * Maksymalny czas trwania dla dowolnego nieaktywnego połączenia protokołu WebSocket to 180 sekund. Połączenie jest aktywne, jeśli usługa ani klient wysłano komunikat protokołu WebSocket za pośrednictwem połączenia. Po osiągnięciu maksymalnego nieaktywne okresu istnienia, usługa kończy nieaktywnego połączenia protokołu WebSocket.
 
 ## <a name="message-types"></a>Typy komunikatu
 
-Po nawiązaniu połączenia obiektu WebSocket między klientem a usługą Klient i usługa może wysyłać wiadomości. W tej sekcji opisano format te komunikaty protokołu WebSocket.
+Po nawiązaniu połączenia protokołu WebSocket między klientem a usługą zarówno klient, jak i usługa może wysyłać wiadomości. W tej sekcji opisano format te komunikaty protokołu WebSocket.
 
-[Grupa robocza IETF RFC 6455](https://tools.ietf.org/html/rfc6455) Określa komunikaty protokołu WebSocket mogą przesyłać dane przy użyciu tekstu lub kodowania binarnego. Dwa kodowania używać różnych formatów w locie. Każdy format jest zoptymalizowana pod kątem efektywne kodowanie transmisji i dekodowanie ładunek komunikatu.
+[6455 RFC organizacji IETF](https://tools.ietf.org/html/rfc6455) Określa komunikaty protokołu WebSocket mogą przesyłać dane przy użyciu tekstu lub kodowanie binarne. Dwa kodowania używają różnych formatów w locie. Każdy format jest zoptymalizowany pod kątem efektywne kodowanie, transmisji i dekodowanie ładunek komunikatu.
 
-### <a name="text-websocket-messages"></a>Tekst wiadomości protokołu WebSocket
+### <a name="text-websocket-messages"></a>Komunikaty protokołu WebSocket tekstu
 
-Tekst wiadomości protokołu WebSocket przenoszenia ładunku informacji tekstowych, która składa się z sekcją nagłówków i treści oddzielone w pary znanych o podwójnej precyzji karetki znakami nowego wiersza dla wiadomości HTTP. I, takie jak wiadomości HTTP, wiadomości tekstowych protokołu WebSocket Określ nagłówków w *Nazwa: wartość* format oddzielone parę jednym karetki znakami nowego wiersza. Tekst zawarte w wiadomości SMS protokołu WebSocket *musi* użyj [UTF-8](https://tools.ietf.org/html/rfc3629) kodowania.
+Komunikaty protokołu WebSocket tekst przenoszenia ładunek informacji tekstowych, która składa się z części nagłówki i treść rozdzielone pary znanych nowego wiersza powrotu karetki podwójnej precyzji dla wiadomości HTTP. I, takich jak wiadomości HTTP wiadomości protokołu WebSocket tekstu określ nagłówki w *Nazwa: wartość* format rozdzielone parę pojedynczego karetki znakami nowego wiersza. Dowolny tekst, zawarte w wiadomości SMS WebSocket *musi* użyj [UTF-8](https://tools.ietf.org/html/rfc3629) kodowania.
 
-Tekst wiadomości protokołu WebSocket należy określić ścieżkę wiadomości w nagłówku *ścieżki*. Wartość tego nagłówka musi być jednego z typów wiadomości protokołu mowy zdefiniowane w dalszej części tego dokumentu.
+Komunikaty protokołu WebSocket tekstu, należy określić ścieżkę wiadomości w nagłówku *ścieżki*. Wartość tego nagłówka stanowi musi być jeden z typów wiadomości protokołu rozpoznawania mowy, zdefiniowane w dalszej części tego dokumentu.
 
-### <a name="binary-websocket-messages"></a>Komunikaty protokołu WebSocket binarne
+### <a name="binary-websocket-messages"></a>Binarny komunikaty protokołu WebSocket
 
-Binarny wiadomości protokołu WebSocket przenoszenia ładunek danych binarnych. W protokole mowy usługi audio jest przesyłane do i odbierane z usługi przy użyciu binarnej wiadomości protokołu WebSocket. Wszystkie inne komunikaty są wiadomości tekstowe protokołu WebSocket. 
+Binarny komunikaty protokołu WebSocket przenoszenia ładunek danych binarnych. Za pomocą protokołu rozpoznawania mowy usługi audio jest przesyłane do i odbierane z usługi za pomocą binarne komunikatów protokołu WebSocket. Wszystkie inne komunikaty są komunikaty protokołu WebSocket tekstu. 
 
-Podobnie jak tekst wiadomości protokołu WebSocket binary wiadomości protokołu WebSocket składają się z nagłówek i treść sekcji. Określ pierwsze 2 bajty obiektu binarnego komunikat protokołu WebSocket, [big-endian](https://en.wikipedia.org/wiki/Endianness) kolejność sekcji nagłówka rozmiar 16-bitową liczbę całkowitą. Rozmiar sekcji nagłówka minimalna jest 0 bajtów. Maksymalny rozmiar to 8192 bajtów. Tekst w nagłówkach wiadomości protokołu WebSocket binarne *musi* użyj [US-ASCII](https://tools.ietf.org/html/rfc20) kodowania.
+Takie jak tekst wiadomości protokołu WebSocket binarne wiadomości protokołu WebSocket składają się nagłówek i treść sekcji. Określ pierwsze 2 bajty obiektu komunikatu binarnego WebSocket, [big-endian](https://en.wikipedia.org/wiki/Endianness) kolejność sekcji nagłówka rozmiar 16-bitową liczbę całkowitą. Minimalna nagłówek o rozmiarze sekcji to 0 bajtów. Maksymalny rozmiar to 8192 bajtów. Tekst w nagłówkach binarne komunikaty protokołu WebSocket *musi* użyj [US-ASCII](https://tools.ietf.org/html/rfc20) kodowania.
 
-Nagłówków binarne komunikatu protokołu WebSocket są kodowane w tym samym formacie jak tekst wiadomości protokołu WebSocket. *Nazwa: wartość* format jest oddzielona parę jednym karetki znakami nowego wiersza. Binarny wiadomości protokołu WebSocket należy określić ścieżkę wiadomości w nagłówku *ścieżki*. Wartość tego nagłówka musi być jednego z typów wiadomości protokołu mowy zdefiniowane w dalszej części tego dokumentu.
+Nagłówków binarne komunikatu protokołu WebSocket są kodowane w tym samym formacie jak wiadomości protokołu WebSocket tekstu. *Nazwa: wartość* format jest oddzielona parę pojedynczego karetki znakami nowego wiersza. Binarny komunikaty protokołu WebSocket, należy określić ścieżkę wiadomości w nagłówku *ścieżki*. Wartość tego nagłówka stanowi musi być jeden z typów wiadomości protokołu rozpoznawania mowy, zdefiniowane w dalszej części tego dokumentu.
 
-Tekst i binarne wiadomości protokołu WebSocket są używane w protokole mowy usługi. 
+Tekst i binarny komunikaty protokołu WebSocket są używane w protokole usługa rozpoznawania mowy. 
 
-## <a name="client-originated-messages"></a>Zainicjowano klienta wiadomości
+## <a name="client-originated-messages"></a>Komunikatów pochodzących od klientów
 
-Po nawiązaniu połączenia zarówno klient, jak i usługi można uruchomić do wysyłania wiadomości. W tej sekcji opisano format i ładunku wiadomości, które aplikacje klienckie wysłać do usługi mowy. Sekcja [pochodzi usługi wiadomości](#service-originated-messages) przedstawia komunikaty, które pochodzą z usługi rozpoznawania mowy i są wysyłane do aplikacji klienckich.
+Po nawiązaniu połączenia zarówno klient, jak i usługi można uruchomić do wysyłania wiadomości. W tej sekcji opisano format i ładunku komunikatów, które aplikacje klienckie wysyłają do usługi rozpoznawania mowy. Sekcja [pochodzi z usługi wiadomości](#service-originated-messages) przedstawia informacje o wiadomości, które pochodzą z usługi rozpoznawania mowy i są wysyłane do aplikacji klienckich.
 
-Główne komunikaty wysyłane przez klienta do usług są `speech.config`, `audio`, i `telemetry` wiadomości. Zanim firma Microsoft należy wziąć pod uwagę każdy komunikat szczegółowo, typowe wymagane nagłówki komunikatów komunikaty te są opisane.
+Główne wiadomości wysłane przez klienta do usług są `speech.config`, `audio`, i `telemetry` wiadomości. Zanim firma Microsoft uważa, każdy komunikat szczegółowy, typowe wymagane nagłówki komunikatów te komunikaty są opisane.
 
 ### <a name="required-message-headers"></a>Nagłówki komunikatów wymagane
 
-Następujące nagłówki są wymagane dla wszystkich wiadomości pochodzących od klienta.
+Następujące nagłówki są wymagane dla wszystkich komunikatów pochodzących od klientów.
 
 | Nagłówek | Wartość |
 |----|----|
-| Ścieżka | Ścieżka określona w tym dokumencie |
+| Ścieżka | Ścieżka podana w tym dokumencie |
 | Identyfikator żądania X | Identyfikator UUID w formacie "nie-dash" |
 | Sygnatura czasowa X | Sygnatura czasowa zegara klienta UTC w formacie ISO 8601 |
 
 #### <a name="x-requestid-header"></a>Nagłówek X-RequestId
 
-Zainicjowano klienta żądań jest unikatowo identyfikowana przez *X-RequestId* nagłówek komunikatu. Ten nagłówek jest wymagany dla wszystkich wiadomości pochodzących od klienta. *X-RequestId* wartość nagłówka musi być UUID w formie "nie-dash", na przykład *123e4567e89b12d3a456426655440000*. On *nie* być w formie kanonicznej *123e4567-e89b-12d3-a456-426655440000*. Żądania bez *X-RequestId* nagłówka lub z wartością nagłówka, który używa nieprawidłowy format dla identyfikatorów UUID spowodować przerwanie połączenia obiektu WebSocket.
+Żądań pochodzących od klientów unikatowo zidentyfikować za pomocą *X RequestId* nagłówka komunikatu. Tego pliku nagłówkowego jest wymagana dla wszystkich komunikatów pochodzących od klientów. *X RequestId* wartość nagłówka musi być to identyfikator UUID w formie "nie kreska", na przykład *123e4567e89b12d3a456426655440000*. Jego *nie* w postaci kanonicznej *123e4567-e89b-12d3-a456-426655440000*. Żądania bez *X RequestId* nagłówka przy użyciu wartości nagłówka, w formacie nieprawidłowe identyfikatory UUID nie są przyczyną usługę, aby zakończyć połączenie protokołu WebSocket.
 
-#### <a name="x-timestamp-header"></a>Nagłówek X-znacznik czasu
+#### <a name="x-timestamp-header"></a>Nagłówek X-znacznik czasu:
 
-Każdy komunikat wysyłany do usługi mowy przez aplikację kliencką *musi* obejmują *sygnatury czasowej X* nagłówka. Wartość tego nagłówka jest czas, kiedy klient wysyła wiadomość. Żądania bez *sygnatury czasowej X* nagłówka lub z wartością nagłówka, który korzysta z niewłaściwym formacie spowodować przerwanie połączenia obiektu WebSocket.
+Każdy komunikat wysyłany do usługi rozpoznawania mowy przez aplikację kliencką *musi* obejmują *sygnatura czasowa X* nagłówka. Wartość dla tego pliku nagłówkowego jest czas, kiedy klient wysyła komunikat. Żądania bez *sygnatura czasowa X* nagłówek lub z wartością nagłówek, który ma niewłaściwy format spowodować, że usługa przerywania połączenia protokołu WebSocket.
 
-*Sygnatury czasowej X* wartość nagłówka musi mieć formę "yyyy"-"MM"-"dd'T" HH ":"mm":" ss "." fffffffZ ""fffffff"w przypadku ułamek sekund. Na przykład "12,5" oznacza "12 + 5/10 sekund i"12.526"oznacza 12 oraz sekund 526/1000". Ten format jest zgodny z [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i, w przeciwieństwie do standardowego protokołu HTTP *data* nagłówka, może udostępnić rozpoznawania milisekund. Aplikacje klienckie mogą okrągłe sygnatury czasowe do najbliższej milisekund. Aplikacje klienckie konieczne upewnij się, że zegar urządzenia dokładnie śledzi czas za pomocą [serwera protokołu NTP (Network Time)](https://en.wikipedia.org/wiki/Network_Time_Protocol).
+*Sygnatura czasowa X* wartość nagłówka musi mieć postać "yyyy'-'MM'-'dd'T' HH': 'mm':'ss '." fffffffZ "gdzie"fffffff"to część 1 sekunda. Na przykład "12,5" oznacza "12 + 5/10 sekundy i"12.526"oznacza" 12 oraz sekund 526/1000". Ten format jest zgodny z [ISO 8601](https://en.wikipedia.org/wiki/ISO_8601) i, w przeciwieństwie do standardowego protokołu HTTP *data* nagłówka, funkcja ta może zapewnić rozpoznawanie milisekund. Aplikacje klienckie mogą okrągłe sygnatury czasowe do najbliższej milisekundy. Aplikacje klienckie, należy upewnić się, że zegara urządzenia śledzi dokładnego czasu za pomocą [serwera protokołu NTP (Network Time)](https://en.wikipedia.org/wiki/Network_Time_Protocol).
 
 ### <a name="message-speechconfig"></a>Komunikat `speech.config`
 
-Usługa rozpoznawania mowy musi wiedzieć, właściwości aplikacji, aby zapewnić najlepsze możliwe mowę. Dane wymagane właściwości zawierają informacje o urządzeniu i systemu operacyjnego, który obsługuje aplikacja. Podaj te informacje w `speech.config` wiadomości.
+Usługa rozpoznawania mowy musi znać cechy aplikacji w taki sposób, aby zapewnić najlepsze możliwe mowę. Dane wymagane właściwości obejmują informacje o urządzeniu i systemu operacyjnego, która napędza aplikację. Możesz podać tę informację w `speech.config` wiadomości.
 
-Klienci *musi* wysyłania `speech.config` komunikatu natychmiast po nawiązaniu połączenia usługi mowy i przed wysyłają wszelkie `audio` wiadomości. Aby wysłać `speech.config` wiadomości tylko raz dla każdego połączenia.
+Klienci *musi* wysyłania `speech.config` komunikatów bezpośrednio w przypadku, po nawiązaniu połączenia usługa rozpoznawania mowy i przed dowolnego wysyłają `audio` wiadomości. Trzeba będzie wysłać `speech.config` tylko raz komunikatu dla połączenia.
 
 | Pole | Opis |
 |----|----|
@@ -181,10 +182,10 @@ Klienci *musi* wysyłania `speech.config` komunikatu natychmiast po nawiązaniu 
 | Sygnatura czasowa X | Sygnatura czasowa zegara klienta UTC w formacie ISO 8601 |
 | Content-Type | Application/json; charset = utf-8 |
 
-Podobnie jak w przypadku wszystkich wiadomości pochodzących od klienta w protokole mowy usługi `speech.config` komunikat *musi* obejmują *sygnatury czasowej X* nagłówek, który rejestruje czas zegara klienta UTC wysłania wiadomości do usługi. `speech.config` Komunikat *nie* wymagają *X-RequestId* nagłówka, ponieważ ten komunikat nie jest skojarzone z żądaniem określonego mowy.
+Podobnie jak w przypadku wszystkich wiadomości pochodzi klienta za pomocą protokołu rozpoznawania mowy usługi `speech.config` komunikat *musi* obejmują *sygnatura czasowa X* nagłówek, który rejestruje czas zegara klienta UTC, kiedy wiadomość została wysłana w usłudze. `speech.config` Komunikat *nie* wymagają *X RequestId* nagłówka ponieważ ten komunikat nie jest skojarzona z żądaniem określonego mowy.
 
 #### <a name="message-payload"></a>Ładunek komunikatu
-Ładunek `speech.config` wiadomość jest strukturze JSON, który zawiera informacje o aplikacji. W poniższym przykładzie przedstawiono te informacje. Zawiera informacje o kontekście klientów i urządzeń *kontekstu* element strukturze JSON. 
+Ładunek `speech.config` komunikat jest strukturę JSON, który zawiera informacje o aplikacji. Te informacje można znaleźć w poniższym przykładzie. Zawiera informacje o kontekście dla klienta i urządzenia *kontekstu* element strukturze JSON. 
 
 ```JSON
 {
@@ -209,33 +210,33 @@ Podobnie jak w przypadku wszystkich wiadomości pochodzących od klienta w proto
 
 ##### <a name="system-element"></a>Element systemu
 
-System.version element `speech.config` komunikat zawiera wersję mowy oprogramowania SDK używany przez aplikację klienta lub urządzenia. Wartość jest w formie *major.minor.build.branch*. Można pominąć *gałęzi* składników, jeśli nie ma zastosowania.
+Elementem system.version `speech.config` wiadomość zawiera wersję mowy SDK oprogramowanie używane przez aplikację klienta lub urządzenia. Wartość ma postać *major.minor.build.branch*. Możesz pominąć *gałęzi* składnik, jeśli nie ma zastosowania.
 
-##### <a name="os-element"></a>Element systemu operacyjnego
+##### <a name="os-element"></a>OS element
 
 | Pole | Opis | Sposób użycia |
 |-|-|-|
-| OS.platform | Systemu operacyjnego platformy, która obsługuje aplikację, na przykład systemu Windows, Android, iOS albo Linux |Wymagane |
+| OS.platform | Systemu operacyjnego platformy, który jest hostem aplikacji, na przykład, Windows, Android, iOS i Linux |Wymagane |
 | OS.name | Nazwa produktu systemu operacyjnego, na przykład Debian lub Windows 10 | Wymagane |
-| OS.Version | Wersja systemu operacyjnego w postaci *major.minor.build.branch* | Wymagane |
+| OS.Version | Wersja systemu operacyjnego w formie *major.minor.build.branch* | Wymagane |
 
 ##### <a name="device-element"></a>Element urządzenia
 
 | Pole | Opis | Sposób użycia |
 |-|-|-|
-| Device.Manufacturer | Producenta urządzenia | Wymagane |
+| Device.Manufacturer | Producent sprzętu urządzenia | Wymagane |
 | Device.model | Model urządzenia | Wymagane |
-| Device.Version | Wersja oprogramowania urządzenia dostarczone przez producenta urządzenia. Ta wartość określa wersję urządzenia, które mogą być śledzone przez producenta. | Wymagane |
+| Device.Version | Wersja oprogramowania urządzenia, dostarczone przez producenta urządzenia. Ta wartość określa wersję urządzenia, które mogą być śledzone przez producenta. | Wymagane |
 
 ### <a name="message-audio"></a>Komunikat `audio`
 
-Aplikacje klienckie obsługujące rozpoznawanie mowy wysłać audio do usługi mowy konwertując strumieniem audio do serii fragmentów audio. Każdego fragmentu audio niesie segment rozmowy audio, który ma zostać przetłumaczone przez usługę. Maksymalny rozmiar jednego fragmentu audio jest 8192 bajtów. Strumień audio wiadomości są *komunikatów binarnych WebSocket*.
+Aplikacje klienckie przeznaczone dla komputerów z obsługą mowy wysyłać audio usługa rozpoznawania mowy za pomocą konwersji strumienia audio na serię fragmenty audio. Każdy fragment audio niesie ze sobą segment dźwięk mówiony, który ma być przetłumaczone przez usługę. Maksymalny rozmiar jednego fragmentu audio jest 8192 bajtów. Komunikaty strumienia audio są *komunikatów binarnych WebSocket*.
 
-Klienci używają `audio` komunikat do wysłania do usługi fragmentu audio. Klienci odczytu dźwięku z mikrofonów w fragmentów i wysyłanie tych fragmentów mowy usługi do zapisu. Pierwszy `audio` wiadomości musi zawierać poprawnie sformułowanym nagłówek, który prawidłowo Określa, że audio zgodne z jednym z formatów kodowania obsługiwane przez usługę. Dodatkowe `audio` wiadomości zawierają tylko dane odczytane ze mikrofon strumienia binarnego audio.
+Klienci używają `audio` wiadomości do wysłania fragmentu audio do usługi. Klienci wysyłają tych fragmentów mowy usługi dla transkrypcji i przeczytaj dźwięku z mikrofonu we fragmentach. Pierwszy `audio` wiadomości musi zawierać sformułowany nagłówek, który prawidłowo Określa, że audio są zgodne w jednym z formatów kodowania, obsługiwane przez usługę. Dodatkowe `audio` wiadomości zawierają tylko binarne audio strumienia danych odczytanych z mikrofonu.
 
-Klienci mogą opcjonalnie wysyłają `audio` komunikat o treści o zerowej długości. Ten komunikat informuje usługi, że klient zna użytkownik zatrzymał mówiąc, utterance została zakończona i mikrofon jest wyłączona.
+Klienci mogą opcjonalnie wysyłają `audio` wiadomość z treścią o zerowej długości. Ta wiadomość informuje usługę, że klient zna użytkownik zatrzymał mówić, wypowiedź została zakończona i mikrofonu jest wyłączony.
 
-Usługa rozpoznawania mowy używa pierwszego `audio` komunikat, który zawiera identyfikator unikatowy żądania sygnalizują uruchomienia nowego cyklu żądania/odpowiedzi lub *włączyć*. Po otrzymaniu usługi `audio` wiadomości przy użyciu nowego identyfikatora żądania odrzuca komunikaty w kolejce lub Niewysłane, które są skojarzone z wszelkie poprzednie Włącz.
+Usługa rozpoznawania mowy używa pierwszego `audio` wiadomość, która zawiera identyfikator unikatowy żądania w celu sygnalizowania, że początku nowego cyklu żądania/odpowiedzi lub *Włącz*. Gdy usługa otrzyma `audio` komunikatów za pomocą nowego identyfikatora żądania, odrzuca on umieszczonych w kolejce lub niewysłanych wiadomości, które są skojarzone z dowolnego poprzedniego Włącz.
 
 | Pole | Opis |
 |-------------|----------------|
@@ -244,7 +245,7 @@ Usługa rozpoznawania mowy używa pierwszego `audio` komunikat, który zawiera i
 
 #### <a name="required-message-headers"></a>Nagłówki komunikatów wymagane
 
-Następujące nagłówki są wymagane dla wszystkich `audio` wiadomości.
+Następujące nagłówki są wymagane w przypadku wszystkich `audio` wiadomości.
 
 | Nagłówek         |  Wartość     |
 | ------------- | ---------------- |
@@ -255,19 +256,19 @@ Następujące nagłówki są wymagane dla wszystkich `audio` wiadomości.
 
 #### <a name="supported-audio-encodings"></a>Obsługiwane są audio
 
-W tej sekcji opisano audio koderów-dekoderów, obsługiwane przez usługę mowy.
+W tej sekcji opisano audio kodery-dekodery obsługiwane przez usługę rozpoznawania mowy.
 
-##### <a name="pcm"></a>PCM
+##### <a name="pcm"></a>MODUŁU PCM
 
-Usługa rozpoznawania mowy akceptuje nieskompresowanych pulse kodu modulacji (PCM) audio. Dźwięk jest wysyłane do usługi w [WAV](https://en.wikipedia.org/wiki/WAV) sformatować, więc bryłkach pierwszy audio *musi* zawierać prawidłową [Interchange Format pliku zasobu](https://en.wikipedia.org/wiki/Resource_Interchange_File_Format) nagłówka (RIFF). Jeśli klient inicjuje Włącz z fragmentu audio, który wykonuje *nie* zawierają nieprawidłowy nagłówek RIFF, usługa odrzuca żądanie i przerywa połączenia obiektu WebSocket.
+Usługa rozpoznawania mowy akceptuje nieskompresowanych pulse kodu modulacji (PCM) audio. Audio są wysyłane do usługi w [WAV](https://en.wikipedia.org/wiki/WAV) formatowania, więc pierwszym dźwięk, Podziel *musi* zawierać prawidłową [Format pliku wymiany zasobów](https://en.wikipedia.org/wiki/Resource_Interchange_File_Format) nagłówka (RIFF). Jeśli klient inicjuje Włącz z fragmentu audio, który wykonuje *nie* obejmują prawidłowego nagłówka RIFF, usługa odrzuca żądanie i przerywa połączenie protokołu WebSocket.
 
-PCM audio *musi* będą próbkowane przy 16 kHz z 16 bitów na przykład i jeden kanał (*riff-16khz-16-bitowych-mono-pcm*). Usługa rozpoznawania mowy nie obsługuje stereo strumieni audio i odrzuca strumieni audio, które nie korzystają z określona szybkość transmisji bitów, częstotliwość próbkowania lub liczba kanałów.
+Dźwięk PCM *musi* będą próbkowane w 16 kHz z 16 bitów na przykład i jednego kanału (*riff-16khz-16-bitowych-mono-pcm*). Usługa rozpoznawania mowy nie obsługuje stereo strumieni audio i odrzuca strumieni audio, które nie korzystają z określona szybkość transmisji bitów, częstotliwość próbkowania lub liczby kanałów.
 
 ##### <a name="opus"></a>Dziele
 
-Dziele jest otwarty, bez licencjonowanych, wszechstronny kodera-dekodera audio. Usługa rozpoznawania mowy obsługuje dziele na szybkość transmisji bitów stałej `32000` lub `16000`. Tylko `OGG` kontener dziele jest obecnie obsługiwany określonym przez `audio/ogg` typ mime.
+Dziele jest otwarty, niepodlegającej opłatom tantiemowym, wszechstronny kodera-dekodera audio. Usługa rozpoznawania mowy obsługuje dziele przy stałej szybkości `32000` lub `16000`. Tylko `OGG` kontener dziele jest obecnie obsługiwany określoną przez `audio/ogg` typ mime.
 
-Aby użyć dziele, zmodyfikuj [próbki JavaScript](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/master/samples/browser/Sample.html#L101) i zmienić `RecognizerSetup` metody do zwrócenia.
+Aby użyć dziele, zmodyfikuj [próbki kodu JavaScript](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript/blob/master/samples/browser/Sample.html#L101) i zmień `RecognizerSetup` metody do zwrócenia.
 
 ```javascript
 return SDK.CreateRecognizerWithCustomAudioSource(
@@ -283,23 +284,23 @@ return SDK.CreateRecognizerWithCustomAudioSource(
           ));
 ```
 
-#### <a name="detect-end-of-speech"></a>Wykryj koniec mowy
+#### <a name="detect-end-of-speech"></a>Wykrywanie zakończenia mowy
 
-Ludzi nie można jawnie sygnalizować, gdy będą gotowe, mówiąc. Każda aplikacja, która akceptuje mowy jako dane wejściowe ma dwie opcje obsługi koniec mowy w strumień audio: usługa wykrywania zakończenia z mowy i wykrywania zakończenia z mowy klienta. Tych dwóch opcji wykrywania zakończenia z mowy usługi zwykle zapewnia lepsze środowisko pracy użytkownika.
+Ludzie jawnie sygnalizuje, gdy będą gotowe mówić. Każda aplikacja, która akceptuje mowy jako dane wejściowe ma jedną z dwóch opcji obsługi koniec mowy w strumień audio: wykrywanie zakończenia mowy i wykrywanie zakończenia mowy klienta usługi. Z tych dwóch opcji wykrywanie zakończenia mowy usługi zwykle zapewnia lepsze środowisko użytkownika.
 
-##### <a name="service-end-of-speech-detection"></a>Wykrywanie zakończenia z mowy usługi
+##### <a name="service-end-of-speech-detection"></a>Wykrywanie zakończenia mowy usługi
 
-Aby utworzyć środowisko idealne mowy bezobsługowego, aplikacje pozwalają usłudze na Wykryj, kiedy użytkownik zakończył mówiąc. Klienci wysyłają dźwięku z mikrofonów jako *audio* fragmentów, dopóki usługa wykrywa wyciszenia i odpowiada z powrotem `speech.endDetected` wiadomości.
+Aby utworzyć środowisko idealne bezobsługowego mowy, aplikacje umożliwiają usługę, aby wykryć, kiedy użytkownik zakończył mówić. Klienci wysyłają dźwięku z mikrofonu jako *audio* chunks, dopóki usługa wykrywa wyciszenia i odpowiada z powrotem `speech.endDetected` wiadomości.
 
-##### <a name="client-end-of-speech-detection"></a>Wykrywanie zakończenia z mowy klienta
+##### <a name="client-end-of-speech-detection"></a>Wykrywanie zakończenia mowy klienta
 
-Aplikacje klienckie, które umożliwiają użytkownikom sygnalizuje koniec mowy w jakiś sposób również zapewnić usługę który sygnału. Na przykład aplikacja klienta może być "Stop" lub użytkownik może nacisnąć przycisk "Wyciszenia". Sygnalizują zakończenia z mowy, aplikacje klienckie wysyłania *audio* fragmentu komunikat o treści o zerowej długości. Usługa rozpoznawania mowy interpretuje tego komunikatu jako koniec strumienia przychodzącego audio.
+Aplikacje klienckie, które umożliwiają użytkownikom w celu sygnalizowania, że koniec mowy w jakiś sposób również umożliwiają usłudze, sygnału. Na przykład aplikacja kliencka może być "Stop" lub "Wycisz" przycisk, który użytkownik może nacisnąć. O końcu mowy, Wyślij aplikacje klienckie *audio* fragmentów wiadomość z treścią o zerowej długości. Usługa rozpoznawania mowy interpretuje ten komunikat, jako koniec przychodzącego strumienia audio.
 
 ### <a name="message-telemetry"></a>Komunikat `telemetry`
 
-Aplikacje klienckie *musi* potwierdzić koniec każda Włączanie wysyłając dane telemetryczne dotyczące Włącz usługi mowy. Włącz end potwierdzenia umożliwia usłudze mowy upewnij się, że wszystkie komunikaty niezbędne do zakończenia żądania i odpowiedzi prawidłowo zostały odebrane przez klienta. Włącz end potwierdzenia umożliwia również mowy usługi sprawdzić, czy aplikacje klienckie działają zgodnie z oczekiwaniami. Informacje te są cenne, jeśli potrzebujesz pomocy, rozwiązywanie problemów z aplikacji z obsługą mowy.
+Aplikacje klienckie *musi* potwierdzić końca każdego Włącz poprzez wysyłanie telemetrii dotyczącej ruch do usługi rozpoznawania mowy. Włącz end potwierdzenia umożliwia usługa rozpoznawania mowy upewnić się, że wszystkie komunikaty niezbędne do ukończenia żądania i odpowiedzi przez punkt końcowy prawidłowo zostały odebrane przez klienta. Włącz end potwierdzenia umożliwia także usługa rozpoznawania mowy sprawdzić, czy aplikacje klienckie działają zgodnie z oczekiwaniami. Te informacje są nieocenione, jeśli potrzebujesz pomocy w rozwiązywaniu problemów aplikacji z obsługą mowy.
 
-Klienci muszą potwierdzić koniec Włącz wysyłając `telemetry` wiadomości wkrótce od momentu odebrania `turn.end` wiadomości. Klienci powinien próbować rozpoznać `turn.end` tak szybko, jak to możliwe. W przypadku niepowodzenia aplikacji klienckiej potwierdzić zakończenia Włącz mowy usługi może być przerwanie połączenia z powodu błędu. Klientów należy wysłać tylko jeden `telemetry` komunikat dla każdego żądania i odpowiedzi identyfikowane przez *X-RequestId* wartość.
+Klienci muszą potwierdzić koniec Włącz, wysyłając `telemetry` wiadomości wkrótce od momentu odebrania `turn.end` wiadomości. Klienci próbują należy potwierdzić `turn.end` tak szybko, jak to możliwe. Jeśli aplikacja kliencka nie powiedzie się potwierdzić koniec Włącz, usługa rozpoznawania mowy może przerwać połączenie z powodu błędu. Klienci muszą wysyłać tylko jeden `telemetry` komunikat dla każdego żądania i odpowiedzi identyfikowane przez *X RequestId* wartość.
 
 | Pole | Opis |
 | ------------- | ---------------- |
@@ -307,28 +308,28 @@ Klienci muszą potwierdzić koniec Włącz wysyłając `telemetry` wiadomości w
 | Ścieżka | `telemetry` |
 | Sygnatura czasowa X | Sygnatura czasowa zegara klienta UTC w formacie ISO 8601 |
 | Content-Type | `application/json` |
-| Treść | Struktura JSON, która zawiera informacje o kliencie o ruchu |
+| Treść | Strukturę JSON, która zawiera informacje o kliencie o Włącz |
 
-Schemat dla treści `telemetry` wiadomości jest zdefiniowany w [schematu Telemetrii](#telemetry-schema) sekcji.
+Schemat dla treści `telemetry` wiadomości jest zdefiniowany w [schematu danych Telemetrycznych](#telemetry-schema) sekcji.
 
 #### <a name="telemetry-for-interrupted-connections"></a>Dane telemetryczne dla przerwanego połączenia
 
-Jeśli połączenie sieciowe nie powiedzie się z jakiegokolwiek powodu w kolejce i funkcji klienta *nie* odbierania `turn.end` komunikatów z usługi, klient wysyła `telemetry` wiadomości. Ten komunikat przedstawia nieudanych żądań, przy następnym klient nawiązuje połączenie z usługą. Klienci nie muszą podejmować natychmiast połączenie do wysłania `telemetry` wiadomości. Komunikat może być buforowane na kliencie i wysyłany przez połączenie przyszłych użytkownik zażądał. `telemetry` Komunikat dla żądań zakończonych niepowodzeniem *musi* użyj *X-RequestId* wartość z zakresu od nieudanych żądań. Mogą być wysyłane do usługi, jak jest nawiązywane połączenie, nie trzeba czekać do wysyłania i odbierania wiadomości innych.
+Jeśli połączenie sieciowe nie powiedzie się z jakiegokolwiek powodu w kolejce, a klient ma *nie* otrzymywać `turn.end` komunikatów z usługi, klient wysyła `telemetry` wiadomości. Ta wiadomość opisuje nieudanych żądań następnym razem, gdy klient wysyła połączenia z usługą. Klienci nie muszą podejmować natychmiastowe połączenie do wysłania `telemetry` wiadomości. Komunikat może być buforowane na kliencie i przesyłane za pośrednictwem przyszłych połączenia użytkownik zażądał. `telemetry` Komunikat dla żądań zakończonych niepowodzeniem *musi* użyj *X RequestId* wartość z żądania nie powiodło się. Mogą być wysyłane do usługi, gdy tylko jest nawiązywane połączenie, nie trzeba czekać do wysyłania czy odbierania dla innych wiadomości.
 
-## <a name="service-originated-messages"></a>Zainicjowano usługę wiadomości
+## <a name="service-originated-messages"></a>Komunikatów pochodzących od usługi
 
-W tej sekcji opisano komunikaty, które pochodzą z usługi rozpoznawania mowy i są wysyłane do klienta. Usługa mowy przechowuje rejestr możliwości klienta i generuje komunikaty wymagane przez każdego klienta, więc nie wszyscy klienci otrzymają wszystkie komunikaty, które zostały opisane w tym miejscu. Jednak wiadomości odwołuje się wartość *ścieżki* nagłówka. Na przykład możemy odwoływać się do obiektu WebSocket wiadomości tekstowych z *ścieżki* wartość `speech.hypothesis` jako speech.hypothesis wiadomości.
+W tej sekcji opisano wiadomości, które pochodzą z usługi rozpoznawania mowy i są wysyłane do klienta. Usługa rozpoznawania mowy przechowuje rejestr możliwości klienta i generuje komunikaty wymagane przez każdego klienta, więc nie wszyscy klienci otrzymają wszystkie komunikaty, które są opisane w tym miejscu. Celu skrócenia programu, komunikaty są przywoływane przez wartość *ścieżki* nagłówka. Na przykład nazywamy WebSocket wiadomość SMS z *ścieżki* wartość `speech.hypothesis` jako speech.hypothesis wiadomości.
 
 ### <a name="message-speechstartdetected"></a>Komunikat `speech.startDetected`
 
-`speech.startDetected` Komunikat wskazuje, że usługa mowy wykryto mowy w strumieniem audio.
+`speech.startDetected` Komunikat oznacza, że usługa rozpoznawania mowy mowy w strumienia audio.
 
 | Pole | Opis |
 | ------------- | ---------------- |
 | Kodowanie komunikatu protokołu WebSocket | Tekst |
 | Ścieżka | `speech.startDetected` |
 | Content-Type | Application/json; charset = utf-8 |
-| Treść | Struktura JSON, która zawiera informacje o warunkach, jeśli wykryto początku mowy. *Przesunięcie* pola struktury określa przesunięcie (w jednostkach 100 nanosekund) wykrycia mowy w strumieniu audio, względem początku strumienia. |
+| Treść | Struktura JSON, która zawiera informacje o warunkach, gdy wykryte początek mowy. *Przesunięcie* pola w tej strukturze określa przesunięcie (w jednostkach 100-nanosekundowych) czas wykrycia mowy w usłudze stream audio względem początku strumienia. |
 
 #### <a name="sample-message"></a>Przykładowy komunikat
 
@@ -344,9 +345,9 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 
 ### <a name="message-speechhypothesis"></a>Komunikat `speech.hypothesis`
 
-Podczas rozpoznawania mowy usługi mowy okresowo generuje hipotezę o słowa usługi rozpoznany. Usługa mowy wysyła te hipotez do klienta, co około 300 milisekund. `speech.hypothesis` Odpowiedni *tylko* dla ulepszenia środowiska mowy. Nie należy wykonać jej zależności od zawartości lub dokładności tekst wiadomości.
+Podczas rozpoznawania mowy usługa rozpoznawania mowy okresowo generuje hipotezę o wyrazy usługi został rozpoznany. Usługa rozpoznawania mowy wysyła te hipotezy do klienta, co około 300 milisekund. `speech.hypothesis` Nadaje *tylko* na zwiększenie komfortu mowy. Nie należy wykonać wszelkie zależności od zawartości lub dokładności tekstu w tych komunikatach.
 
- `speech.hypothesis` Wiadomości ma zastosowanie do tych klientów, którzy mają możliwość renderowania tekstu i chcesz wyrazić swoją opinię niemal czasie rzeczywistym w trakcie rozpoznawania osobie, która jest czytanie.
+ `speech.hypothesis` Komunikatu ma zastosowanie do tych klientów, którzy mają możliwość renderowania tekstu i aby przekazać opinię niemal w czasie rzeczywistym, rozpoznawania w toku do osoby, która mówiącego Prezydenta.
 
 | Pole | Opis |
 | ------------- | ---------------- |
@@ -370,24 +371,24 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 }
 ```
 
-*Przesunięcie* element określa przesunięcie (w jednostkach 100 nanosekund) po frazie został rozpoznany, względem początku strumieniem audio.
+*Przesunięcie* element określa przesunięcie (w jednostkach 100-nanosekundowych) kiedy został rozpoznany frazy, względem początku strumienia audio.
 
-*Czas trwania* element określa czas trwania (w jednostkach 100 nanosekund) Ta fraza mowy.
+*Czas trwania* element określa czas trwania (w jednostkach 100-nanosekundowych) Ta fraza mowy.
 
-Klientów nie musi wprowadzać żadnym założeniu o częstotliwości, czas lub tekst zawarty w hipoteza mowy lub spójności tekstu w dowolnej hipotez dwóch mowy. Hipotez są tylko migawki z procesem przekształcania w usłudze. Reprezentuje stabilna akumulacji przekształcania. Na przykład pierwszej hipoteza mowy mogą zawierać słowa "fun poprawnie", a drugi hipoteza mogą zawierać słowa "Rady odnaleźć." Usługa rozpoznawania mowy nie wykonywać żadnych przetwarzania końcowego (na przykład wielkie litery, znaki interpunkcyjne) tekst w hipoteza mowy.
+Klienci nie należy czynić żadnych założeń o częstotliwości, czasu lub tekst zawarty w hipotezę mowy lub spójność tekst w dowolnej hipotezy dwóch mowy. Hipotezy to po prostu migawki z procesem transkrypcji w usłudze. Przedstawiają one stabilny akumulacja transkrypcji. Na przykład pierwsza hipoteza mowy może zawierać słowa "Zabawa poprawnie", a drugi hipotezę może zawierać słowa "Rady find." Usługa rozpoznawania mowy nie wykonuje żadnych przetwarzanie końcowe (na przykład wielkość liter, znaki interpunkcyjne) na podstawie tekstu w hipotezę mowy.
 
 ### <a name="message-speechphrase"></a>Komunikat `speech.phrase`
 
-Gdy mowy usługi określa, czy ma on wystarczających informacji do utworzenia wyniku rozpoznawania, która nie zmienia tworzy usługi `speech.phrase` wiadomości. Usługa rozpoznawania mowy tworzy te wyniki po wykryciu, że użytkownik zakończył zdanie lub frazę.
+Gdy usługa rozpoznawania mowy Określa, że ma on wystarczających informacji do uzyskania wyniku rozpoznawania, który nie ulegnie zmianie, tworzy usługi `speech.phrase` wiadomości. Usługa rozpoznawania mowy tworzy następujące wyniki po wykryciu, że użytkownik zakończył zdania lub frazy.
 
 | Pole | Opis |
 | ------------- | ---------------- |
 | Kodowanie komunikatu protokołu WebSocket | Tekst |
 | Ścieżka | `speech.phrase` |
 | Content-Type | application/json |
-| Treść | Wyrażenie mowy strukturze JSON |
+| Treść | Fraza mowy strukturze JSON |
 
-Schematu JSON frazy mowy zawiera następujące pola: `RecognitionStatus`, `DisplayText`, `Offset`, i `Duration`. Aby uzyskać więcej informacji o tych pól, zobacz [zapisu odpowiedzi](../concepts.md#transcription-responses).
+Schemat JSON frazy mowy zawiera następujące pola: `RecognitionStatus`, `DisplayText`, `Offset`, i `Duration`. Aby uzyskać więcej informacji na temat tych pól, zobacz [odpowiedzi transkrypcji](../concepts.md#transcription-responses).
 
 #### <a name="sample-message"></a>Przykładowy komunikat
 
@@ -406,13 +407,13 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 
 ### <a name="message-speechenddetected"></a>Komunikat `speech.endDetected`
 
-`speech.endDetected` Komunikat informuje, że aplikacja kliencka powinna zostać przerwana przesyłania strumieniowego audio do usługi.
+`speech.endDetected` Komunikat informuje, że aplikacja kliencka powinna zostać przerwana strumieniowe przesyłanie audio do usługi.
 
 | Pole | Opis |
 | ------------- | ---------------- |
 | Kodowanie komunikatu protokołu WebSocket | Tekst |
 | Ścieżka | `speech.endDetected` |
-| Treść | Struktura JSON, która zawiera przesunięcie, gdy wykryto zakończenie mowy. Przesunięcie jest reprezentowana w jednostki 100-nanosekundowych przesunięcie od początku dźwięk, który służy do rozpoznawania. |
+| Treść | Struktura JSON, która zawiera przesunięcie, gdy wykryto koniec mowy. Przesunięcie jest reprezentowany w jednostkach 100-nanosekundowych przesunięcie od początku dźwięk, który jest używany do rozpoznawania. |
 | Content-Type | Application/json; charset = utf-8 |
 
 #### <a name="sample-message"></a>Przykładowy komunikat
@@ -427,11 +428,11 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 }
 ```
 
-*Przesunięcie* element określa przesunięcie (w jednostkach 100 nanosekund) po frazie został rozpoznany, względem początku strumieniem audio.
+*Przesunięcie* element określa przesunięcie (w jednostkach 100-nanosekundowych) kiedy został rozpoznany frazy, względem początku strumienia audio.
 
 ### <a name="message-turnstart"></a>Komunikat `turn.start`
 
-`turn.start` Sygnalizuje początek Włącz względem usługi. `turn.start` Komunikat zawsze jest pierwszy komunikat odpowiedzi, pojawi się na każde żądanie. Jeśli użytkownik nie otrzyma `turn.start` komunikatów, założono, że stan połączenia usługi jest nieprawidłowa.
+`turn.start` Sygnalizuje początek Włącz z punktu widzenia usługi. `turn.start` Wiadomości, zawsze jest pierwszy komunikat odpowiedzi, pojawi się do każdego żądania. Jeśli nie otrzymasz `turn.start` komunikatu, założono, że stan połączenia usługi jest nieprawidłowy.
 
 | Pole | Opis |
 | ------------- | ---------------- |
@@ -454,11 +455,11 @@ X-RequestId: 123e4567e89b12d3a456426655440000
 }
 ```
 
-Treść `turn.start` wiadomości jest strukturą JSON, która zawiera kontekst na początku ruch. *Kontekstu* element zawiera *serviceTag* właściwości. Ta właściwość określa wartość tagu skojarzoną z Włącz usługę. Ta wartość może być używana przez firmę Microsoft, jeśli potrzebujesz pomocy, rozwiązywanie problemów z błędami w aplikacji.
+Treść `turn.start` komunikat jest strukturą JSON, która zawiera kontekst na początku Włącz. *Kontekstu* element zawiera *serviceTag* właściwości. Ta właściwość określa wartość tagu, usługi skojarzone z Włącz. Ta wartość może być używana przez firmę Microsoft, jeśli potrzebujesz pomocy, rozwiązywanie problemów z błędami w aplikacji.
 
 ### <a name="message-turnend"></a>Komunikat `turn.end`
 
-`turn.end` Sygnalizuje koniec Włącz względem usługi. `turn.end` Wiadomości jest zawsze ostatniego komunikatu odpowiedzi, pojawi się na każde żądanie. Klienci mogą używać odebranie tej wiadomości jako sygnał oczyszczania działań i przejście do stanu bezczynności. Jeśli użytkownik nie otrzyma `turn.end` komunikatów, założono, że stan połączenia usługi jest nieprawidłowa. W takich przypadkach Zamknij istniejące połączenie z usługą i ponownie.
+`turn.end` Sygnalizuje koniec Włącz z punktu widzenia usługi. `turn.end` Wiadomości, zawsze jest ostatni komunikat odpowiedzi, pojawi się do każdego żądania. Klienci mogą używać odebranie tej wiadomości jako sygnał dla działań oczyszczania i przejście do stanu bezczynności. Jeśli nie otrzymasz `turn.end` komunikatu, założono, że stan połączenia usługi jest nieprawidłowy. W takich przypadkach Zamknij istniejące połączenie z usługą i ponownie.
 
 | Pole | Opis |
 | ------------- | ---------------- |
@@ -473,15 +474,15 @@ Path: turn.end
 X-RequestId: 123e4567e89b12d3a456426655440000
 ```
 
-## <a name="telemetry-schema"></a>Schemat telemetrii
+## <a name="telemetry-schema"></a>Schemat danych telemetrycznych
 
-Treść *telemetrii* komunikat jest strukturą JSON, która zawiera informacje o kliencie o Wyłącz lub próby połączenia. Struktura składa się z sygnatury czasowe klienta służące do rejestrowania, gdy wystąpienia zdarzeń klienta. Każdy sygnatura czasowa musi być w formacie ISO 8601 zgodnie z opisem w sekcji "Nagłówek X-znacznik czasu". *Dane telemetryczne* wiadomości, który nie należy określać wszystkie wymagane pola w strukturze JSON lub nie używaj format sygnatury czasowej poprawne może spowodować, że usługa zakończenie połączenia do klienta. Klienci *musi* podać prawidłowe wartości dla wszystkich wymaganych pól. Klienci *powinien* Podaj wartości dla pól opcjonalnych zawsze, gdy jest to odpowiednie. Wartości widoczne w próbek w tej sekcji są tylko do celów ilustracyjnych.
+Treść *telemetrii* komunikat jest strukturę JSON, która zawiera informacje o kliencie o Wyłącz lub próby połączenia. Struktura składa się z klienta sygnatury czasowe, służące do rejestrowania po wystąpieniu zdarzenia klienta. Każdy sygnatura czasowa musi być w formacie ISO 8601, zgodnie z opisem w sekcji "Header sygnatura czasowa X". *Dane telemetryczne* wiadomości, który nie należy określać wszystkie wymagane pola w strukturze JSON lub nie używaj format sygnatury czasowej poprawne może spowodować, że usługa zakończyć połączenie z klientem. Klienci *musi* podać prawidłowe wartości dla wszystkich wymaganych pól. Klienci *powinien* Podaj wartości dla pól opcjonalnych zawsze, gdy jest to odpowiednie. Wartości wyświetlane w przykładach w tej sekcji są wyłącznie do celów informacyjnych.
 
-Dane telemetryczne schematu jest podzielona na następujące elementy: Odebrano komunikat sygnatury czasowe i metryki. Format i użycia każdej części określonego w poniższych sekcjach.
+Schemat danych telemetrycznych jest podzielona na następujące elementy: Odebrano komunikat sygnatury czasowe i metryki. Format i użycia każdej części jest określona w poniższych sekcjach.
 
 ### <a name="received-message-time-stamps"></a>Sygnatury czasowe odebranego komunikatu
 
-Klienci muszą zawierać wartości czas od przyjęcia dla wszystkich wiadomości, które otrzymają po pomyślnym połączeniu się z usługą. Te wartości muszą zarejestrować czas podczas klienta *Odebrano* każdy komunikat z sieci. Wartość nie należy zarejestrować innym czasie. Na przykład klient nie powinien zarejestrować czas po jego *działał* w komunikacie. Sygnatury czasowe odebranego komunikatu są określone w tablicy *Nazwa: wartość* pary. Określa nazwę pary *ścieżki* wartość komunikatu. Wartość pary określa czas klienta, kiedy wiadomość została odebrana. Lub, jeśli więcej niż jeden komunikat o określonej nazwie została odebrana, wartość pary jest tablicę sygnatury czasowe, która wskazuje, kiedy zostały odebrane wiadomości.
+Klienci mogą zawierać godziny od otrzymania wartości dla wszystkich wiadomości, które otrzyma po pomyślnym nawiązaniu połączenia z usługą. Te wartości należy zanotować czas podczas klienta *Odebrano* każdy komunikat z sieci. Wartość nie należy rejestrować dowolnym innym czasie. Na przykład klient nie powinien zanotować czas podczas jego *działał* wiadomości. Sygnatury czasowe odebranego komunikatu są określone w tablicy *Nazwa: wartość* pary. Nazwa pary Określa *ścieżki* wartość komunikatu. Wartość pary określa czas klienta, kiedy wiadomość została odebrana. Lub, jeśli odebrano więcej niż jeden komunikat o określonej nazwie, wartość pary jest tablica sygnatury czasowe, która wskazuje, kiedy te komunikaty zostały odebrane.
 
 ```JSON
   "ReceivedMessages": [
@@ -492,86 +493,86 @@ Klienci muszą zawierać wartości czas od przyjęcia dla wszystkich wiadomości
   ]
 ```
 
-Klienci *musi* otrzymanie wszystkich wiadomości wysłanych przez usługę w tym sygnatury czasowe dla tych wiadomości w treści JSON. Jeśli klient nie otrzymanie komunikatu, usługa może przerwać połączenie.
+Klienci *musi* otrzymanie wszystkich komunikatów wysłanych przez usługę, umieszczając sygnatury czasowe dla tych wiadomości w treść kodu JSON. Jeśli klient nie otrzymanie wiadomości, usługa może przerwać połączenie.
 
 ### <a name="metrics"></a>Metryki
 
-Klienci muszą zawierać informacje o zdarzeniach, które wystąpiły w czasie trwania żądanie. Obsługiwane są następujące metryki: `Connection`, `Microphone`, i `ListeningTrigger`.
+Klienci mogą zawierać informacje o zdarzeniach, które wystąpiły w okresie istnienia żądania. Obsługiwane są następujące metryki: `Connection`, `Microphone`, i `ListeningTrigger`.
 
-### <a name="metric-connection"></a>Metryka `Connection`
+### <a name="metric-connection"></a>Metryki `Connection`
 
-`Connection` Metryka określa szczegółowe informacje o próby nawiązania połączenia przez klienta. Metryka musi zawierać sygnatury czasowe, gdy połączenia obiektu WebSocket zostało rozpoczęcia i zakończenia. `Connection` Metryka jest wymagana *tylko dla pierwszego Włącz połączenia*. Włącza kolejnych nie wymagane jest uwzględnienie tych informacji. Jeśli klient przesyła wiele prób połączenia przed jest nawiązywane połączenie, informacje o *wszystkie* próby nawiązania połączenia należy dołączyć. Aby uzyskać więcej informacji, zobacz [telemetrii awarii połączenia](#connection-failure-telemetry).
+`Connection` Metryka określa szczegółowe informacje o próby nawiązania połączenia przez klienta. Metryka musi zawierać sygnaturą czasową, gdy połączenie WebSocket zostało uruchomione i zakończone. `Connection` Metryka jest wymagana *tylko w przypadku pierwszego Włącz połączenia*. Włącza kolejnych nie trzeba dołączyć tę informację. Jeśli klient wysyła wiele prób połączenia, zanim połączenie zostanie nawiązane, informacje o *wszystkich* próby nawiązania połączenia mają zostać uwzględnione. Aby uzyskać więcej informacji, zobacz [telemetrii awarii połączenia](#connection-failure-telemetry).
 
 | Pole | Opis | Sposób użycia |
 | ----- | ----------- | ----- |
 | Name (Nazwa) | `Connection` | Wymagane |
 | Identyfikator | Wartość identyfikatora połączenia, który był używany w *X ConnectionId* nagłówek dla tego żądania połączenia | Wymagane |
-| Uruchamianie | Czas wysłania żądania połączenia klienta | Wymagane |
-| Koniec | Podczas gdy klient otrzymał powiadomienie, że połączenie zostało ustanowione pomyślnie, lub w przypadku błędów odrzucony, zostało odrzucone lub nie powiodło się | Wymagane |
-| Błąd | Opis błędu, który wystąpił, jeśli istnieje. Jeśli połączenie powiodło się, klienci należy pominąć to pole. Maksymalna długość tego pola wynosi 50 znaków. | Wymagane w przypadku błąd, w przeciwnym razie pominięcia |
+| Uruchamianie | Czas, kiedy klient wysyłał żądania połączenia | Wymagane |
+| Zakończ | Podczas gdy klient otrzymał powiadomienie, że połączenie zostało nawiązane pomyślnie, lub w przypadku błędów, odrzucona, odrzuconych lub nie powiodło się | Wymagane |
+| Błąd | Opis błędu, który wystąpił, jeśli istnieje. Połączenie zakończyło się pomyślnie, należy pominąć znak tego pola przez klientów. Maksymalna długość tego pola wynosi 50 znaków. | Wymagane w przypadkach, błąd, w przeciwnym razie pominięcia |
 
-Opis błędu powinien mieć maksymalnie 50 znaków i najlepiej musi mieć jedną z wartości wymienione w poniższej tabeli. Jeśli warunek błędu nie odpowiada jednej z tych wartości, klienci mogą używać zwięzły opis warunku błędu przy użyciu [CamelCasing](https://en.wikipedia.org/wiki/Camel_case) bez biały znak. Umożliwia wysyłanie *telemetrii* komunikat wymaga połączenia z usługą, więc tylko przejściowego lub tymczasowe błędy mogą być zgłaszane *telemetrii* wiadomości. Błędów, które *trwale* bloku klienta z nawiązywania połączenia z usługą uniemożliwia wysyłanie wiadomości z usługą przez klienta w tym *telemetrii* wiadomości.
+Opis błędu nie powinna przekraczać 50 znaków i najlepiej musi mieć jedną z wartości wymienione w poniższej tabeli. Jeśli warunek błędu nie odpowiada jednej z tych wartości, klienci mogą używać zwięzły opis warunku błędu przy użyciu [CamelCasing](https://en.wikipedia.org/wiki/Camel_case) bez biały znak. Możliwość wysyłania *telemetrii* komunikat wymaga połączenia z usługą, więc tylko przejściowy lub tymczasowe błędy mogą być zgłaszane w *telemetrii* wiadomości. Błędów, które *trwale* bloku przez klienta podczas nawiązywania połączenia z usługą zapobiec wysyła wszystkie komunikaty do usługi, w tym *telemetrii* wiadomości.
 
 | Błąd | Sposób użycia |
 | ----- | ----- |
-| DNSfailure | Klient nie może połączyć się z usługą z powodu błędu DNS w stos sieciowy. |
-| NoNetwork | Klient próbował połączenie, ale stos sieci zgłosił, że nie sieci fizycznej była dostępna. |
+| DNSfailure | Klient nie może połączyć się z usługą z powodu błędu DNS w stosie sieci. |
+| NoNetwork | Klient próbował połączenie, ale stos sieciowy zgłosił, że nie sieci fizycznej była dostępna. |
 | NoAuthorization | Połączenie klienta nie powiodło się podczas próby uzyskania tokenu autoryzacji dla połączenia. |
-| NoResources | Klient zabrakło niektórych zasobów lokalnych (na przykład pamięci) podczas próby nawiązania połączenia. |
-| Zabroniony | Klient nie może połączyć się z usługą, ponieważ Usługa zwróciła HTTP `403 Forbidden` kod stanu na żądanie uaktualnienia obiektu WebSocket. |
-| Brak autoryzacji | Klient nie może połączyć się z usługą, ponieważ Usługa zwróciła HTTP `401 Unauthorized` kod stanu na żądanie uaktualnienia obiektu WebSocket. |
-| BadRequest | Klient nie może połączyć się z usługą, ponieważ Usługa zwróciła HTTP `400 Bad Request` kod stanu na żądanie uaktualnienia obiektu WebSocket. |
-| ServerUnavailable | Klient nie może połączyć się z usługą, ponieważ Usługa zwróciła HTTP `503 Server Unavailable` kod stanu na żądanie uaktualnienia obiektu WebSocket. |
-| ServerError | Klient nie może połączyć się z usługą, ponieważ Usługa zwróciła `HTTP 500` kod stanu błędu wewnętrznego na żądanie uaktualnienia obiektu WebSocket. |
-| Limit czasu | Przekroczono limit czasu bez odpowiedzi z usługi żądania połączenia klienta. *Zakończenia* pole zawiera godzinę, kiedy klient upłynął limit czasu i zatrzymanie oczekiwania dla połączenia. |
-| ClientError | Klient zakończył połączenie ze względu na błąd wewnętrzny klienta. | 
+| NoResources | Klient zabrakło niektórych lokalnych zasobów (np. pamięci), podczas próby nawiązania połączenia. |
+| Zabroniony | Klient nie może połączyć się z usługą, ponieważ Usługa zwróciła HTTP `403 Forbidden` kod stanu na żądanie uaktualnienia protokołu WebSocket. |
+| Brak autoryzacji | Klient nie może połączyć się z usługą, ponieważ Usługa zwróciła HTTP `401 Unauthorized` kod stanu na żądanie uaktualnienia protokołu WebSocket. |
+| BadRequest | Klient nie może połączyć się z usługą, ponieważ Usługa zwróciła HTTP `400 Bad Request` kod stanu na żądanie uaktualnienia protokołu WebSocket. |
+| ServerUnavailable | Klient nie może połączyć się z usługą, ponieważ Usługa zwróciła HTTP `503 Server Unavailable` kod stanu na żądanie uaktualnienia protokołu WebSocket. |
+| Błąd ServerError | Klient nie może połączyć się z usługą, ponieważ Usługa zwróciła `HTTP 500` kod stanu błędu wewnętrznego na żądanie uaktualnienia protokołu WebSocket. |
+| Limit czasu | Upłynął limit czasu bez odpowiedzi z usługi żądanie połączenia klienta. *Zakończenia* pole zawiera godzinę, kiedy klient przekroczyło limit czasu i zatrzymanie oczekiwanie na połączenie. |
+| Błąd ClientError | Klient zakończył połączenie ze względu na błąd wewnętrznego klienta. | 
 
-### <a name="metric-microphone"></a>Metryka `Microphone`
+### <a name="metric-microphone"></a>Metryki `Microphone`
 
-`Microphone` Metryka jest wymagana dla wszystkich włącza mowy. Ta metryka mierzy czas na kliencie, w którym wejście audio jest używana dla żądania mowy.
+`Microphone` Metryka jest wymagana dla wszystkich włącza mowy. Ta metryka mierzy czas na komputerze klienckim, podczas którego wejścia audio jest aktywnie używana dla żądania mowy.
 
-Użyj poniższych przykładach jako wskazówki do rejestrowania *Start* czasu wartości `Microphone` metryki w aplikacji klienta:
+Można użyć następujących przykładów jak wskazówki for rejestrujące *Start* wartości dla czasu `Microphone` metryki w aplikacji klienckiej:
 
-* Aplikacja kliencka wymaga, czy użytkownik musi nacisnąć fizycznego przycisku w celu rozpoczęcia mikrofon. Po naciśnięcie przycisku aplikacja kliencka odczytuje dane wejściowe mikrofon i wysyła je z usługą rozpoznawania mowy. *Start* wartość `Microphone` Metryka rejestruje czas po naciśnięcie przycisku, gdy mikrofon jest zainicjowana i gotowa do podawanie danych wejściowych. *Zakończenia* wartość `Microphone` Metryka rejestruje czas, gdy aplikacja kliencka zatrzymana, przesyłania strumieniowego audio do usługi, po odebraniu go `speech.endDetected` komunikatów z usługi.
+* Aplikacja kliencka wymaga, że wymaga naciśnięcia przycisku fizycznego, można uruchomić z mikrofonu. Po naciśnięcie przycisku aplikacja kliencka odczytuje dane wejściowe z mikrofonu i wysyła je do usługi rozpoznawania mowy. *Start* wartość `Microphone` metryki rejestruje czas po naciśnięcie przycisku, gdy mikrofon jest inicjowany i przygotuj dane wejściowe. *Zakończenia* wartość `Microphone` metryki rejestruje czas, kiedy aplikacja kliencka zatrzymana, strumieniowe przesyłanie audio do usługi, po otrzymaniu jej `speech.endDetected` wiadomości z usługi.
 
-* Aplikacja kliencka używa spotter — słowo kluczowe "zawsze" nasłuchiwania. Tylko wtedy, gdy spotter — słowo kluczowe wykrywa frazę rozmowy wyzwalacza aplikacja kliencka zbierania danych wejściowych z mikrofon i wysyłają je do usługi mowy. *Start* wartość `Microphone` Metryka rejestruje czas, kiedy spotter — słowo kluczowe powiadomienia klienta, aby rozpocząć korzystanie z danych wejściowych z mikrofonu. *Zakończenia* wartość `Microphone` Metryka rejestruje czas, gdy aplikacja kliencka zatrzymana, przesyłania strumieniowego audio do usługi, po odebraniu go `speech.endDetected` komunikatów z usługi.
+* Aplikacja kliencka używa spotter — słowo kluczowe, który nasłuchuje "zawsze". Tylko wtedy, gdy spotter — słowo kluczowe wykrywa fraz wypowiadanych wyzwalacz aplikacja kliencka zbierania danych wejściowych z mikrofonu i wysyłać je do usługi rozpoznawania mowy. *Start* wartość `Microphone` metryki rejestruje czas, kiedy spotter — słowo kluczowe powiadomienia klienta, aby rozpocząć korzystanie z danych wejściowych z mikrofonu. *Zakończenia* wartość `Microphone` metryki rejestruje czas, kiedy aplikacja kliencka zatrzymana, strumieniowe przesyłanie audio do usługi, po otrzymaniu jej `speech.endDetected` wiadomości z usługi.
 
-* Aplikacja kliencka ma dostęp do stały strumień audio i przeprowadza wykrywanie wyciszenia/mowy na strumieniu audio w *modułu wykrywania mowy*. *Start* wartość `Microphone` Metryka rejestruje czas po *modułu wykrywania mowy* powiadomienia klienta, aby rozpocząć korzystanie z danych wejściowych z strumieniem audio. *Zakończenia* wartość `Microphone` Metryka rejestruje czas, gdy aplikacja kliencka zatrzymana, przesyłania strumieniowego audio do usługi, po odebraniu go `speech.endDetected` komunikatów z usługi.
+* Aplikacja kliencka ma dostęp do stały strumień audio i przeprowadza wykrywanie wyciszenia/mowy w tym strumienia audio w *modułu wykrywania mowy*. *Start* wartość `Microphone` metryki rejestruje czas podczas *modułu wykrywania mowy* powiadomienia klienta, aby rozpocząć korzystanie z danych wejściowych ze strumienia audio. *Zakończenia* wartość `Microphone` metryki rejestruje czas, kiedy aplikacja kliencka zatrzymana, strumieniowe przesyłanie audio do usługi, po otrzymaniu jej `speech.endDetected` wiadomości z usługi.
 
-* Aplikacja kliencka jest przetwarzanie drugi Włącz żądania wielu Włącz i zostanie poinformowany przez komunikat odpowiedzi usługi, aby włączyć mikrofon do zbierania danych wejściowych dla drugiego Włącz. *Start* wartość `Microphone` Metryka rejestruje czas, kiedy aplikacja kliencka umożliwia mikrofon i zacznie korzystać z tego źródła audio danych wejściowych. *Zakończenia* wartość `Microphone` Metryka rejestruje czas, gdy aplikacja kliencka zatrzymana, przesyłania strumieniowego audio do usługi, po odebraniu go `speech.endDetected` komunikatów z usługi.
+* Aplikacja kliencka przetwarza drugi Włącz żądania Włącz wielu i jest informowany za pomocą usługi wiadomości odpowiedzi, aby włączyć mikrofonu w celu zbierania danych wejściowych dla drugiego Włącz. *Start* wartość `Microphone` metryki rejestruje czas, kiedy aplikacja kliencka umożliwia mikrofon i rozpoczyna się przy użyciu danych wejściowych z tego źródła audio. *Zakończenia* wartość `Microphone` metryki rejestruje czas, kiedy aplikacja kliencka zatrzymana, strumieniowe przesyłanie audio do usługi, po otrzymaniu jej `speech.endDetected` wiadomości z usługi.
 
-*Zakończenia* czasu wartość `Microphone` Metryka rejestruje czas, gdy aplikacja kliencka zatrzymana przesyłania strumieniowego audio danych wejściowych. W większości sytuacji to zdarzenie wystąpi, wkrótce po klienta odebranych `speech.endDetected` komunikatów z usługi. Aplikacje klienckie sprawdzić, czy ich jest prawidłowo odpowiadających protokołu przez zapewnienie, że *zakończenia* czasu wartość `Microphone` Metryka nastąpi później niż wartość czasu otrzymania `speech.endDetected` wiadomości. I jest zwykle opóźnienia między koniec ruchu i uruchomienia innego Włącz, klienci może sprawdzić zgodność protokołu przez zapewnienie, że *Start* czas `Microphone` metryki dla dowolnego kolejnych Włącz poprawnie rejestruje czas podczas klienta *uruchomiona* przy użyciu mikrofonu do strumienia wejście audio do usługi.
+*Zakończenia* czasu wartość `Microphone` metryki rejestruje czas, kiedy aplikacja kliencka zatrzymana, przesyłanie strumieniowe wejścia audio. W większości sytuacji to zdarzenie występuje zaraz po klient otrzymał `speech.endDetected` wiadomości z usługi. Aplikacje klienckie mogą sprawdzić, czy są one prawidłowo odpowiadających protokołu poprzez zapewnienie, że *zakończenia* czasu wartość `Microphone` metryki występuje później niż wartość czasu odebrania `speech.endDetected` wiadomości. I ponieważ jest zwykle opóźnienia między końcem jednego Włącz a początek Włącz innego, klienci mogą weryfikują zgodności protokołów poprzez zapewnienie, że *Start* czasem `Microphone` metryki dla wszelkich kolejnych Wyłącz poprawnie rejestruje czas podczas klienta *pracę* przy użyciu mikrofonu wejściem strumienia audio w usłudze.
 
 | Pole | Opis | Sposób użycia |
 | ----- | ----------- | ----- |
 | Name (Nazwa) | Mikrofon | Wymagane |
-| Uruchamianie | Klient uruchamiania przy użyciu wejściowych danych audio mikrofonu lub innych strumieniem audio lub odebrano wyzwalacz spotter — słowo kluczowe | Wymagane |
-| Koniec | Czas, kiedy klienta przestało używać strumienia mikrofon lub audio | Wymagane |
-| Błąd | Opis błędu, który wystąpił, jeśli istnieje. Jeśli operacje mikrofon zakończy się powodzeniem, klientów należy pominąć to pole. Maksymalna długość tego pola wynosi 50 znaków. | Wymagane w przypadku błąd, w przeciwnym razie pominięcia |
+| Uruchamianie | Czas, kiedy klient uruchomiony przy użyciu audio dane wejściowe z mikrofonu lub innego strumienia audio lub odebrane wyzwalacza z spotter — słowo kluczowe | Wymagane |
+| Zakończ | Czas, kiedy klient zatrzymana, za pomocą usługi stream mikrofon lub nagrania dźwiękowego | Wymagane |
+| Błąd | Opis błędu, który wystąpił, jeśli istnieje. Operacje mikrofon zakończyły się pomyślnie, należy pominąć znak tego pola przez klientów. Maksymalna długość tego pola wynosi 50 znaków. | Wymagane w przypadkach, błąd, w przeciwnym razie pominięcia |
 
-### <a name="metric-listeningtrigger"></a>Metryka `ListeningTrigger`
-`ListeningTrigger` Metryka mierzy czas, gdy użytkownik wykonuje akcję, która inicjuje wejście mowy. `ListeningTrigger` Metryka jest opcjonalne, ale zachęcamy klientów, którzy mogą zapewnić ta metryka, aby to zrobić.
+### <a name="metric-listeningtrigger"></a>Metryki `ListeningTrigger`
+`ListeningTrigger` Metryka mierzy czas, gdy użytkownik wykonuje akcję, która inicjuje wejście mowy. `ListeningTrigger` Metryka jest opcjonalne, ale zachęcamy klientów, którzy mogą zapewnić tę metrykę, aby to zrobić.
 
-Użyj poniższych przykładach jako wskazówki do rejestrowania *Start* i *zakończenia* czasu wartości `ListeningTrigger` metryki w aplikacji klienta.
+Można użyć następujących przykładów jak wskazówki for rejestrujące *Start* i *zakończenia* wartości dla czasu `ListeningTrigger` metryki w aplikacji klienckiej.
 
-* Aplikacja kliencka wymaga, czy użytkownik musi nacisnąć fizycznego przycisku w celu rozpoczęcia mikrofon. *Start* wartość ta metryka rejestruje czas naciśnięcie przycisku. *Zakończenia* wartość rejestruje czas, po zakończeniu naciśnięcie przycisku.
+* Aplikacja kliencka wymaga, że wymaga naciśnięcia przycisku fizycznego, można uruchomić z mikrofonu. *Start* wartość ta metryka rejestruje czas wypychania przycisku. *Zakończenia* wartość rejestruje czas, po zakończeniu wypychania przycisku.
 
-* Aplikacja kliencka używa spotter — słowo kluczowe "zawsze" nasłuchiwania. Po słowie kluczowym spotter wykrywa frazę wyzwalacza rozmowy, aplikacja kliencka odczytuje dane wejściowe mikrofon i wysyła je do usługi mowy. *Start* wartość ta metryka rejestruje czas po spotter — słowo kluczowe otrzymał dźwięk, który następnie wykryto frazy wyzwalacza. *Zakończenia* wartość rejestruje czas, gdy wyraz ostatniej frazy wyzwalacz był używany przez użytkownika.
+* Aplikacja kliencka używa spotter — słowo kluczowe, który nasłuchuje "zawsze". Po słowie kluczowym spotter wykrywa frazy prowadzone wyzwalacza, aplikacja kliencka odczytuje dane wejściowe z mikrofonu i wysyła je do usługi rozpoznawania mowy. *Start* wartość ta metryka rejestruje czasu otrzymania dźwięk, który następnie wykryto frazy wyzwalacza spotter — słowo kluczowe. *Zakończenia* wartość rejestruje czas po ostatni wyraz frazy wyzwalacz był używany przez użytkownika.
 
-* Aplikacja kliencka ma dostęp do stały strumień audio i przeprowadza wykrywanie wyciszenia/mowy na strumieniu audio w *modułu wykrywania mowy*. *Start* wartość ta metryka rejestruje czas który *modułu wykrywania mowy* Odebrano audio, który następnie wykryto mowy. *Zakończenia* wartość rejestruje czas po *modułu wykrywania mowy* wykryto mowy.
+* Aplikacja kliencka ma dostęp do stały strumień audio i przeprowadza wykrywanie wyciszenia/mowy w tym strumienia audio w *modułu wykrywania mowy*. *Start* wartość ta metryka rejestruje czas, *modułu wykrywania mowy* Odebrano dźwięk, który następnie wykryto mowy. *Zakończenia* wartość rejestruje czas podczas *modułu wykrywania mowy* wykryto mowy.
 
-* Aplikacja kliencka jest przetwarzanie drugi Włącz żądania wielu Włącz i zostanie poinformowany przez komunikat odpowiedzi usługi, aby włączyć mikrofon do zbierania danych wejściowych dla drugiego Włącz. Aplikacja kliencka powinna *nie* obejmują `ListeningTrigger` metryki dla tego ruchu.
+* Aplikacja kliencka przetwarza drugi Włącz żądania Włącz wielu i jest informowany za pomocą usługi wiadomości odpowiedzi, aby włączyć mikrofonu w celu zbierania danych wejściowych dla drugiego Włącz. Aplikacja kliencka powinna *nie* obejmują `ListeningTrigger` metryk dla tego ruchu.
 
 | Pole | Opis | Sposób użycia |
 | ----- | ----------- | ----- |
 | Name (Nazwa) | ListeningTrigger | Optional (Opcjonalność) |
-| Uruchamianie | Czas rozpoczęcia wyzwalacza nasłuchiwania klienta | Wymagane |
-| Koniec | Czas, po zakończeniu wyzwalacza nasłuchiwania klienta | Wymagane |
-| Błąd | Opis błędu, który wystąpił, jeśli istnieje. Jeśli operacja wyzwalacza zakończyło się pomyślnie, klientów należy pominąć to pole. Maksymalna długość tego pola wynosi 50 znaków. | Wymagane w przypadku błąd, w przeciwnym razie pominięcia |
+| Uruchamianie | Czas rozpoczęcia nasłuchiwania wyzwalacz klient | Wymagane |
+| Zakończ | Czas, po zakończeniu nasłuchiwania wyzwalacz klient | Wymagane |
+| Błąd | Opis błędu, który wystąpił, jeśli istnieje. Operacja wyzwalacza zakończyło się pomyślnie, należy pominąć znak tego pola przez klientów. Maksymalna długość tego pola wynosi 50 znaków. | Wymagane w przypadkach, błąd, w przeciwnym razie pominięcia |
 
 #### <a name="sample-message"></a>Przykładowy komunikat
 
-Poniższy przykład przedstawia wiadomość dane telemetryczne z części zarówno ReceivedMessages i metryki:
+Poniższy przykład pokazuje komunikaty telemetryczne z częściami ReceivedMessages i metryki:
 
 ```HTML
 Path: telemetry
@@ -609,15 +610,15 @@ X-Timestamp: 2016-08-16T15:03:54.183Z
 
 ## <a name="error-handling"></a>Obsługa błędów
 
-W tej sekcji opisano typy komunikatów o błędach i warunków, które aplikacja musi obsługiwać.
+W tej sekcji opisano rodzaje komunikaty o błędach i warunki, które Twoja aplikacja potrzebuje do obsługi.
 
 ### <a name="http-status-codes"></a>Kody stanu HTTP
 
-Podczas żądanie uaktualnienia obiektu WebSocket mowy usługi może zwracać standardowe kody stanu HTTP, takie jak `400 Bad Request`itp. Aplikacja musi obsługiwać poprawnie te warunki błędów.
+Podczas uaktualniania żądanie protokołu WebSocket, usługa rozpoznawania mowy może zwrócić wszystkich standardowych kodów stanu HTTP, takich jak `400 Bad Request`itp. Aplikacja musi poprawnie obsługiwać tych warunków błędu.
 
 #### <a name="authorization-errors"></a>Błędy autoryzacji
 
-Jeśli niepoprawne autoryzacji została podana podczas uaktualnienia obiektu WebSocket mowy usługi zwraca HTTP `403 Forbidden` kod stanu. Warunki, które mogą wyzwalać tego kodu błędu należą:
+Jeśli niepoprawne autoryzacja została podana podczas uaktualniania WebSocket Speech Service zwraca HTTP `403 Forbidden` kod stanu. Wśród ze zdarzeniami wyzwalającymi tego kodu błędu to:
 
 * Brak *autoryzacji* nagłówka
 
@@ -625,82 +626,82 @@ Jeśli niepoprawne autoryzacji została podana podczas uaktualnienia obiektu Web
 
 * Token autoryzacji wygasły
 
-`403 Forbidden` Komunikat o błędzie nie wskazują na problem z usługą rozpoznawania mowy. Ten komunikat o błędzie wskazuje na problem z aplikacją klienta.
+`403 Forbidden` Komunikat o błędzie nie wskazują na problem z usługą mowy. Ten komunikat o błędzie wskazuje na problem z aplikacją klienta.
 
-### <a name="protocol-violation-errors"></a>Błędy naruszenie protokołu
+### <a name="protocol-violation-errors"></a>Błędów naruszenia protokołu
 
-Jeśli usługa mowy wykryje naruszenie protokołu od klienta, usługa przerywa połączenia obiektu WebSocket po powrocie *kod stanu* i *Przyczyna* dla zakończenia połączenia. Aplikacje klienckie, można użyć tych informacji rozwiązanie naruszenia.
+Jeśli usługa rozpoznawania mowy wykryje naruszenie protokołu od klienta, usługa przerywa połączenie WebSocket po zwróceniu *kod stanu* i *Przyczyna* zakończenia. Aplikacje klienckie, można użyć tych informacji, rozwiązywanie problemów i naprawy naruszenia.
 
-#### <a name="incorrect-message-format"></a>Format komunikatu niepoprawne
+#### <a name="incorrect-message-format"></a>Format niepoprawny komunikat
 
-Jeśli klient wysyła tekst lub binarny komunikatu do usługi, która nie jest zakodowany w nieprawidłowym formacie podane w tej specyfikacji, Usługa zamyka połączenie z *1007 nieprawidłowych danych ładunku* kod stanu. 
+Jeśli klient wysyła tekst lub komunikatu binarnego do usługi, która nie jest zakodowana w prawidłowym formacie podane w tej specyfikacji, Usługa zamyka połączenie z *1007 nieprawidłowe dane ładunku* kod stanu. 
 
-Usługa zwraca ten kod stanu z różnych powodów, jak pokazano w poniższych przykładach:
+Usługa zwraca ten kod stanu różnych powodów, jak pokazano w poniższych przykładach:
 
-* "Komunikat niepoprawny format. Komunikatu binarnego ma nieprawidłowy nagłówek rozmiar prefiksu". Klient wysłał wiadomość binarne prefiksie rozmiar nieprawidłowy nagłówek.
+* "Komunikat niepoprawny format. Komunikatu binarnego ma nieprawidłowy nagłówek rozmiar prefiksu". Klient wysłał komunikatu binarnego, który ma nieprawidłowy nagłówek rozmiar prefiksu.
 
-* "Komunikat niepoprawny format. Binarny wiadomość ma nieprawidłowy nagłówek rozmiar". Klient wysłany komunikat binarne określony rozmiar nieprawidłowy nagłówek.
+* "Komunikat niepoprawny format. Komunikatu binarnego ma nieprawidłowy nagłówek rozmiar". Klient wysłał komunikatu binarnego, że określony rozmiar nieprawidłowy nagłówek.
 
-* "Komunikat niepoprawny format. Nagłówki komunikatów binarnych dekodowania w formacie UTF-8 nie powiodło się." Klient wysłał komunikatu binarnego, która zawiera nagłówki, które nie zostały poprawnie zakodowany w formacie UTF-8.
+* "Komunikat niepoprawny format. Nagłówki komunikatu binarnego dekodowanie do UTF-8 nie powiodło się." Klient wysłał komunikatu binarnego, która zawiera nagłówki, które nie zostały poprawnie zakodowany w formacie UTF-8.
 
-* "Komunikat niepoprawny format. Tekst wiadomości nie zawiera danych." Klient wysłał wiadomość SMS, która nie zawiera żadnych danych treści.
+* "Komunikat niepoprawny format. Wiadomości SMS nie zawiera danych." Klient wysyłał wiadomości SMS, który nie zawiera żadnych danych treści.
 
-* "Komunikat niepoprawny format. Wiadomość SMS dekodowania w formacie UTF-8 nie powiodło się." Klient wysłał wiadomość SMS, który nie został poprawnie zakodowany w formacie UTF-8.
+* "Komunikat niepoprawny format. Wiadomość SMS dekodowanie do UTF-8 nie powiodło się." Klient wysyłał wiadomości SMS, który nie został poprawnie zakodowany w formacie UTF-8.
 
-* "Komunikat niepoprawny format. Wiadomość SMS zawiera separatora nagłówka". Klient wysłał wiadomość SMS, który nie zawiera nagłówka separator ani używany separatora nieprawidłowy nagłówek.
+* "Komunikat niepoprawny format. Wiadomość SMS zawiera separator nie nagłówka". Klient wysyłał wiadomości SMS, który nie zawiera separator nagłówek lub użyć separatora nieprawidłowy nagłówek.
 
 #### <a name="missing-or-empty-headers"></a>Nagłówki lub jest pusty
 
-Jeśli klient wysyła komunikat, który nie ma wymaganego nagłówki *X-RequestId* lub *ścieżki*, Usługa zamyka połączenie z *błąd protokołu 1002* kod stanu. Komunikat jest "Brak lub być pusty nagłówek. {Nazwa nagłówka}."
+Jeśli klient wysyła komunikat, który nie ma wymaganych nagłówki *X RequestId* lub *ścieżki*, Usługa zamyka połączenie z *błąd protokołu 1002* kod stanu. Komunikat jest "header brakujące lub są puste. {Nazwa nagłówka}."
 
 #### <a name="requestid-values"></a>Identyfikator żądania wartości
 
-Jeśli klient wysyła komunikat, który określa *X-RequestId* nagłówka w niepoprawnym formacie, Usługa zamyka połączenie i zwraca *błąd protokołu 1002* stanu. Komunikat jest "nieprawidłowe żądanie. Wartość nagłówka X-RequestId nie została określona w formacie UUID dash nie."
+Jeśli klient wysyła komunikat, który określa *X RequestId* nagłówka w niepoprawnym formacie, Usługa zamyka połączenie i zwraca *błąd protokołu 1002* stanu. Komunikat jest "nieprawidłowe żądanie. Wartość nagłówka X-RequestId nie została określona w formacie UUID nie-dash."
 
 #### <a name="audio-encoding-errors"></a>Błędy kodowania audio
 
-Jeśli klient wyśle fragmentu audio, który inicjuje Włącz i audio format lub kodowanie nie jest zgodny z wymaganymi specyfikacjami, Usługa zamyka połączenie i zwraca *1007 nieprawidłowych danych ładunku* kod stanu. Komunikat wskazuje format kodowania źródła błędu.
+Jeśli klient wysyła fragmentu audio, który inicjuje Włącz i audio format lub kodowanie nie jest zgodny z wymaganą specyfikacją, Usługa zamyka połączenie i zwraca *1007 nieprawidłowe dane ładunku* kod stanu. Komunikat wskazuje format kodowania źródło błędu.
 
-#### <a name="requestid-reuse"></a>Identyfikator żądania ponownego użycia
+#### <a name="requestid-reuse"></a>Identyfikator żądania ponownego wykorzystania
 
-Po zakończeniu Włącz, jeśli klient wyśle wiadomość ponownie używa identyfikatora żądania z tego Włącz, Usługa zamyka połączenie i zwraca *błąd protokołu 1002* kod stanu. Komunikat jest "nieprawidłowe żądanie. Ponowne użycie identyfikatorów żądania nie jest dozwolone."
+Po zakończeniu Włącz, jeśli klient wysyła komunikat, który używa identyfikatora żądania z tego Wyłącz, Usługa zamyka połączenie i zwraca *błąd protokołu 1002* kod stanu. Komunikat jest "nieprawidłowe żądanie. Ponowne użycie identyfikatorów żądania nie jest dozwolona."
 
-## <a name="connection-failure-telemetry"></a>Telemetrii awarii połączenia
+## <a name="connection-failure-telemetry"></a>Dane telemetryczne błąd połączenia
 
-Aby zapewnić najlepsze możliwe środowisko korzystania, klienci muszą informuje mowy usługi sygnatury czasowe dla ważne punkty kontrolne w ciągu połączenia za pomocą *telemetrii* wiadomości. Jest równie ważne jest, że klienci poinformować usługi połączeń, które zostały próby, ale nie powiodło się.
+Aby zapewnić najlepsze możliwe środowisko korzystania, klienci musi powiadomić Speech Service sygnatury czasowe dla ważnych punktów kontrolnych w ramach połączenia przy użyciu *telemetrii* wiadomości. Jest równie ważne poinformować usługi, połączeń, które zostały podjęto, ale nie powiodło się, że klienci.
 
-Próba każdego połączenia nie powiodło się, klienci tworzą *telemetrii* wiadomości przy użyciu unikatowego *X-RequestId* wartość nagłówka. Ponieważ klient nie może ustanowić połączenia, *ReceivedMessages* pola w treści JSON można pominąć. Tylko `Connection` wpis w *metryki* pole jest uwzględniane. Ten wpis zawiera początek i koniec sygnatury czasowe, a także warunek błędu, który napotkano.
+Dla każdej próbie połączenia, który uległ awarii, klienci tworzą *telemetrii* wiadomości przy użyciu unikatowego *X RequestId* wartość nagłówka. Ponieważ klient nie może nawiązać połączenie, *ReceivedMessages* pola w treść kodu JSON można pominąć. Tylko `Connection` wpis *metryki* pole jest uwzględniane. Ten wpis zawiera początek i koniec sygnatury czasowe, a także warunek błędu, który wystąpił.
 
-### <a name="connection-retries-in-telemetry"></a>Ponowne próby połączenia w telemetrii
+### <a name="connection-retries-in-telemetry"></a>Próby połączenia w danych telemetrycznych
 
-Klienci powinna wskazywać *ponownych prób* z *próby nawiązania połączenia z wielu* przez zdarzenie powodujące próba nawiązania połączenia. Prób połączenia, które są przeprowadzane programowo bez żadnych danych wprowadzonych przez użytkownika są ponownych prób. Wielokrotne próby połączenia, które są wykonywane w odpowiedzi na dane wejściowe użytkownika są wielokrotne próby połączenia. Klienci Nadaj każdej próbie wyzwalane przez użytkownika połączenia unikatowych *X-RequestId* i *telemetrii* wiadomości. Ponowne użycie klientów *X-RequestId* dla programowe ponownych prób. Jeśli wprowadzono wiele ponownych prób dla pojedynczego połączenia, kolejnymi ponowieniami prób jest uwzględniona jako `Connection` wpis w *telemetrii* wiadomości.
+Klienci powinna wskazywać *ponownych prób* z *próby nawiązania połączenia z wieloma* przez zdarzenie, które wyzwala próba połączenia. Próby nawiązania połączenia, które są wykonywane programowo bez żadnych danych wejściowych użytkownika są ponownych prób. Wiele prób połączenia, które są wykonywane w odpowiedzi na dane wejściowe użytkownika są wielokrotne próby połączenia. Klienci Nadaj każdej próbie połączenia użytkownik wyzwolił unikatową *X RequestId* i *telemetrii* wiadomości. Użyj klientów ponownie *X RequestId* programowe ponownych prób. Jeśli wprowadzono wiele ponownych prób dla pojedynczego połączenia, każda próba ponowienia jest uwzględniona jako `Connection` wpis *telemetrii* wiadomości.
 
-Na przykład, załóżmy, że użytkownik mówi trigger — słowo kluczowe, aby uruchamiały połączenie, a pierwsza próba połączenia zakończy się niepowodzeniem z powodu błędów DNS. Jednak drugi próby, która ma zostać programowo przez klienta zakończy się pomyślnie. Ponieważ klient ponowione połączenie bez konieczności wprowadzania dodatkowych danych wejściowych od użytkownika, klient używa pojedynczego *telemetrii* komunikat z wieloma `Connection` wpisów do opisywania połączenia.
+Na przykład, załóżmy, że użytkownik mówi wyzwalacz — słowo kluczowe, aby uruchomić połączenia, a pierwsza próba połączenia kończy się niepowodzeniem z powodu błędów DNS. Natomiast druga próba, programowo wykonanym przez klienta zakończy się pomyślnie. Ponieważ klient próba połączenia bez konieczności dodatkowe dane wejściowe od użytkownika, klient używa jednej *telemetrii* komunikat z wieloma `Connection` wpisów, aby opisać połączenie.
 
-Inny przykład załóżmy, że użytkownik mówi trigger — słowo kluczowe, aby uruchamiały połączenie i ta próba połączenia nie powiedzie się po trzech ponownych prób. Klient zrezygnuje zatrzymuje próby nawiązania połączenia z usługą i informuje użytkownika, że coś poszło źle. Użytkownik mówi następnie wyzwalacza — słowo kluczowe ponownie. Teraz, załóżmy, że klient łączy się z usługą. Po nawiązaniu połączenia, natychmiast wysyła *telemetrii* komunikatu do usługi, który zawiera trzy `Connection` wpisów, które opisują błędów połączenia. Od momentu odebrania `turn.end` wiadomości, klient wysyła innego *telemetrii* komunikat, który opisuje udane połączenie.
+Inny przykład załóżmy, że użytkownik mówi wyzwalacz — słowo kluczowe, aby uruchomić połączenia i próba połączenia nie powiedzie się po trzech ponownych prób. Klient zrezygnuje zatrzymuje próby połączenia z usługą i informuje użytkownika, że wystąpił problem. Użytkownik mówi następnie wyzwalacz — słowo kluczowe ponownie. Tym razem Załóżmy, że klient łączy się z usługą. Po nawiązaniu połączenia, klient natychmiast wysyła *telemetrii* komunikatu do usługi, która zawiera trzy `Connection` wpisów, które opisują błędy połączenia. Od momentu odebrania `turn.end` wiadomości, klient wysyła innego *telemetrii* komunikat, który opisuje pomyślne połączenie.
 
-## <a name="error-message-reference"></a>Dokumentacja komunikatów o błędach
+## <a name="error-message-reference"></a>Informacje o komunikat o błędzie
 
 ### <a name="http-status-codes"></a>Kody stanu HTTP
 
 | Kod stanu HTTP | Opis | Rozwiązywanie problemów |
 | - | - | - |
-| 400 Niewłaściwe żądanie | Klient wysłał żądanie połączenia obiektu WebSocket, który jest niepoprawne. | Sprawdź podane wszystkich wymaganych parametrów i nagłówków HTTP oraz czy wartości są prawidłowe. |
-| 401 nieautoryzowane | Klient nie zawiera informacji o autoryzacji wymagane. | Sprawdź, czy wysyłasz *autoryzacji* nagłówka w połączenia obiektu WebSocket. |
-| 403 Zabroniony | Klient wysłał informacji o autoryzacji, ale był nieprawidłowy. | Sprawdź, czy nie wysyłasz wygasły lub nieprawidłowa wartość *autoryzacji* nagłówka. |
-| 404 — Nie odnaleziono | Klient próbuje uzyskać dostęp ścieżki adresu URL, który nie jest obsługiwany. | Sprawdź, czy używasz poprawny adres URL dla połączenia obiektu WebSocket. |
-| 500 Błąd serwera | Usługa napotkała błąd wewnętrzny i nie można spełnić żądania. | W większości przypadków ten błąd jest przejściowy. Ponów żądanie. |
-| 503 — usługa niedostępna | Usługa nie jest dostępny do obsługi żądania. | W większości przypadków ten błąd jest przejściowy. Ponów żądanie. |
+| 400 Niewłaściwe żądanie | Klient wysłał żądanie połączenia protokołu WebSocket, która była nieprawidłowa. | Sprawdź podano wszystkich wymaganych parametrów i nagłówków HTTP i czy wartości są poprawne. |
+| 401 Brak autoryzacji | Klient nie zawiera informacji o autoryzacji wymagane. | Upewnij się, że wysyłasz *autoryzacji* nagłówka w ramach połączenia protokołu WebSocket. |
+| 403 Zabroniony | Klient wysyłał informacje dotyczące autoryzacji, ale była nieprawidłowa. | Sprawdź, czy nie wysyłasz wartością wygasła lub jest nieprawidłowy *autoryzacji* nagłówka. |
+| 404 — Nie odnaleziono | Klient, próbowało uzyskać dostęp do ścieżki adresu URL, który nie jest obsługiwany. | Sprawdź, że używasz prawidłowego adresu URL dla połączenia protokołu WebSocket. |
+| Błąd serwera 500 | Usługa napotkała błąd wewnętrzny i nie może spełnić żądania. | W większości przypadków ten błąd jest przejściowy. Ponów żądanie. |
+| 503 — usługa niedostępna | Usługa nie mogła obsłużyć żądania. | W większości przypadków ten błąd jest przejściowy. Ponów żądanie. |
 
 ### <a name="websocket-error-codes"></a>Kody błędów protokołu WebSocket
 
 | Kod WebSocketsStatus | Opis | Rozwiązywanie problemów |
 | - | - | - |
-| Normalne zamknięcia 1000 | Usługa zamknięcie połączenia protokołu WebSocket bez błędów. | Jeśli nieoczekiwanego zamknięcia protokołu WebSocket, odczytać dokumentacji, aby upewnić się, że rozumiesz, jak i kiedy usługa można zakończyć połączenia obiektu WebSocket. |
-| Błąd protokołu 1002 | Klient nie może być zgodne z wymaganiami protokołu. | Sprawdź informacje w dokumentacji protokołu i wyraźnie o wymaganiach. Przeczytaj dokumentację poprzedniej o przyczyny błędu, aby zobaczyć, czy w przypadku naruszenia wymagania protokołu. |
-| 1007 nieprawidłowy ładunek danych | Klient wysłał nieprawidłowy ładunek w komunikacie protokołu. | Sprawdź ostatnią wiadomością wysłaną z usługą błędów. Przeczytaj dokumentację poprzedniej o błędach ładunku. |
-| Błąd serwera 1011 | Usługa napotkała błąd wewnętrzny i nie można spełnić żądania. | W większości przypadków ten błąd jest przejściowy. Ponów żądanie. |
+| 1000 normalne zamknięcia | Usługa zamknął połączenie WebSocket bez błędów. | W przypadku zamknięcia protokołu WebSocket był nieoczekiwany, należy przeczytać dokumentację, aby upewnić się, że rozumiesz, jak i kiedy usługa może zakończyć połączenie protokołu WebSocket. |
+| Błąd protokołu 1002 | Klient nie może być zgodne z wymaganiami protokołu. | Sprawdź, czy poznać dokumentacji protokołu i są jasno o wymaganiach. Przeczytaj dokumentację poprzedniej o przyczyny błędu, aby zobaczyć, jeśli masz naruszenie wymagania protokołu. |
+| 1007 nieprawidłowy ładunek danych | Klient wysłał nieprawidłowy ładunek komunikatu protokołu. | Sprawdź ostatni komunikat, który wysyłane do usługi w przypadku błędów. Przeczytaj dokumentację poprzedniej o błędach ładunku. |
+| Błąd serwera 1011 | Usługa napotkała błąd wewnętrzny i nie może spełnić żądania. | W większości przypadków ten błąd jest przejściowy. Ponów żądanie. |
 
 ## <a name="related-topics"></a>Powiązane tematy
 
-Zobacz [JavaScript SDK](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript) oznacza to implementacja protokołu WebSocket usług mowy.
+Zobacz [zestaw JavaScript SDK](https://github.com/Azure-Samples/SpeechToText-WebSockets-Javascript) oznacza to implementacja protokołu WebSocket usługi mowy.

@@ -1,6 +1,6 @@
 ---
-title: Najważniejsze wskazówki dotyczące bezpieczeństwa danych i szyfrowania | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera zestaw najlepsze rozwiązania dotyczące bezpieczeństwa danych i szyfrowania za pomocą wbudowanych funkcji platformy Azure.
+title: Bezpieczeństwo i szyfrowanie danych najlepsze rozwiązania | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera zestaw najlepsze rozwiązania dotyczące bezpieczeństwa danych i szyfrowanie za pomocą wbudowanych funkcji platformy Azure.
 services: security
 documentationcenter: na
 author: barclayn
@@ -12,155 +12,131 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 04/26/2018
+ms.date: 09/19/2018
 ms.author: barclayn
-ms.openlocfilehash: 574ca8a68bf6e532331a4b6f1106e472c8ab0449
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 263c04fd15240f365f2325c69d5cb25aa1a539f0
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32193584"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465881"
 ---
-# <a name="azure-data-security-and-encryption-best-practices"></a>Dobre praktyki dotyczące zabezpieczeń danych platformy Azure i szyfrowania
+# <a name="azure-data-security-and-encryption-best-practices"></a>Bezpieczeństwo i szyfrowanie danych platformy Azure, najlepsze rozwiązania
+Aby ułatwić ochronę danych w chmurze, musisz uwzględnić możliwe stany, w którym dane mogą wystąpić i kontrolki są dostępne dla tego stanu. Najlepsze rozwiązania dotyczące zabezpieczeń i szyfrowania danych platformy Azure odnoszą się do następujących stanów danych:
 
-Jeden z kluczy do ochrony danych w chmurze jest księgowanie możliwe stany, w których może wystąpić danych oraz kontrolki są dostępne dla tego stanu. Danych Azure na potrzeby szyfrowania najlepsze praktyki dotyczące zabezpieczeń i zalecenia będą wokół stanów następujące dane:
+- W stanie spoczynku: obejmuje to wszystkie informacje obiektów magazynu, kontenerów i typy statycznie występujących na nośniku fizycznym, czy magnetyczne lub dysków optycznych.
+- Podczas przesyłania: gdy dane są przesyłane między składnikami, lokalizacji lub programów, są przesyłane. Przykłady to transfer za pośrednictwem sieci, między usługi Service bus (ze środowiska lokalnego do chmury i na odwrót, w tym połączenia hybrydowe, takie jak usługi ExpressRoute), lub w trakcie procesu wejścia/wyjścia.
 
-* W pozostałych: W tym wszystkie informacje, które typy, statycznie występujących na nośnik fizyczny, kontenerów i obiektów magazynu można go magnetyczne lub optyczne dysku.
-* Podczas przesyłania: Podczas transferu danych między składnikami, lokalizacji lub programy, takie jak przez sieć, przez usługi service bus (z lokalnymi do chmury i odwrotnie, łącznie z połączeń hybrydowych, takie jak ExpressRoute) lub w trakcie operacji wejścia/wyjścia on jest traktować jako w ruchu.
+W tym artykule omówimy zbiór danych na platformie Azure bezpieczeństwo i szyfrowanie najlepszych rozwiązań. Następujące najlepsze rozwiązania są uzyskiwane z naszego środowiska z zabezpieczenia danych systemu Azure, szyfrowania i procesy, przez klientów, takich jak samodzielnie.
 
-W tym artykule omówiono kolekcji danych Azure zabezpieczeń i szyfrowania najlepszych rozwiązań. Następujące najlepsze rozwiązania są uzyskiwane z wiemy z doświadczenia z zabezpieczeniami danych Azure i szyfrowania i doświadczenia klientów, takie jak samodzielnie.
+Dla każdego najlepszym rozwiązaniem jest wyjaśnimy:
 
-Dla każdego ze względów wyjaśniamy:
+* Co to jest najlepsze rozwiązanie
+* Dlaczego chcesz włączyć na tym najlepszym rozwiązaniem jest
+* W przypadku awarii umożliwiające najlepszym rozwiązaniem, co może być skutkiem
+* Możliwe alternatywy najlepsze rozwiązanie polegające na
+* Jak można dowiesz się umożliwić najlepszym rozwiązaniem jest
 
-* Co to jest najlepszym rozwiązaniem
-* Dlaczego chcesz włączyć tej najlepsze praktyki
-* Jeśli nie zostanie włączone najlepszym rozwiązaniem, co może być skutkiem
-* Możliwe alternatywy najlepsze praktyki
-* Jak można znaleźć umożliwiające najlepsze praktyki
+W tym artykule bezpieczeństwo danych platformy Azure i najlepszych rozwiązań szyfrowania opiera się na opinii consensus i funkcji platformy Azure i zestawy funkcji występujących w czasie, który został zapisany w tym artykule. Opinie i technologii zmieniają się wraz z upływem czasu, a w tym artykule zostanie zaktualizowana w regularnych odstępach czasu, aby odzwierciedlać wprowadzone zmiany.
 
-W tym artykule Azure bezpieczeństwo danych i najlepsze rozwiązania w zakresie szyfrowania jest na podstawie opinii konsensu i funkcji platformy Azure i zestawy funkcji istniejących w chwili ten artykuł dotyczy. Opinie i technologie ulegną zmianom, a ten artykuł będzie aktualizowany na bieżąco w celu odzwierciedlenia tych zmian.
+## <a name="choose-a-key-management-solution"></a>Wybieranie rozwiązania do zarządzania kluczami
+Ochrona kluczy jest podstawą ochrony danych w chmurze.
 
-Danych Azure szyfrowania najlepsze praktyki dotyczące zabezpieczeń i omówione w tym artykule obejmują:
+[Usługa Azure Key Vault](../key-vault/key-vault-overview.md) pomaga chronić klucze kryptograficzne i używanie wpisów tajnych, które aplikacje i usługi w chmurze. Usługa Key Vault usprawnia proces zarządzania kluczami i pozwala zachować kontrolę nad kluczami, które mają dostęp do danych i szyfrują je. Deweloperzy mogą tworzyć klucze na potrzeby tworzenia i testowania w ciągu kilku minut i przeprowadzić ich migrację do kluczy produkcyjnych. W razie potrzeby administratorzy zabezpieczeń mogą przydzielić (i cofnąć) uprawnienia do używania kluczy.
 
-* Wymusić uwierzytelnianie wieloskładnikowe
-* Kontrola dostępu (RBAC) oparta na rolach użycia
-* Szyfrowanie maszyn wirtualnych platformy Azure
-* Używanie modeli zabezpieczeń sprzętu
-* Zarządzanie za pomocą bezpiecznego stacji roboczych
-* Włącz szyfrowanie danych SQL
-* Ochrona danych podczas przesyłania
-* Wymuszanie szyfrowania danych na poziomie plików
+Usługa Key Vault umożliwia utworzenie wielu zabezpieczonych kontenerów nazywanych magazynami. Te magazyny są wspierane przez sprzętowe moduły zabezpieczeń. Magazyny zmniejszają prawdopodobieństwo przypadkowej utraty danych zabezpieczeń, stanowiąc centrum przechowywania wpisów tajnych aplikacji. Magazyny kluczy również kontrolować i rejestrowanie dostępu do żadnego elementu są w nich przechowywane. Usługa Azure Key Vault obsługuje żądania i odnawianie certyfikatów zabezpieczeń TLS (Transport Layer). Oferuje ona funkcje niezawodne rozwiązanie do zarządzania cyklem życia certyfikatu.
 
-## <a name="enforce-multi-factor-authentication"></a>Wymusić uwierzytelnianie wieloskładnikowe
+Usługa Azure Key Vault jest przeznaczony do obsługi aplikacji kluczy i wpisów tajnych. Key Vault nie jest przeznaczony do magazynu haseł użytkowników.
 
-Pierwszym krokiem podczas dostępu do danych i sterowania w programie Microsoft Azure jest do uwierzytelnienia użytkownika. [Usługa Azure Multi-Factor Authentication (MFA)](../active-directory/authentication/multi-factor-authentication.md) jest metodą weryfikacji tożsamości użytkownika przy użyciu innej metody niż tylko nazwę użytkownika i hasło. Tego uwierzytelniania — metoda ułatwia zabezpieczenie dostępu do danych i aplikacji, spełniając zapotrzebowanie na prosty proces logowania.
+Poniżej przedstawiono najlepsze rozwiązania w zakresie zabezpieczeń za pomocą usługi Key Vault.
 
-Przez włączenie usługi Azure MFA dla użytkowników, dodajesz drugą warstwę zabezpieczeń do logowania użytkowników i transakcji. W takim przypadku transakcji może uzyskiwać dostęp do dokumentu znajdującego się na serwerze plików lub w trybie Online programu SharePoint. Usługa Azure MFA ułatwia również IT, aby zmniejszyć prawdopodobieństwo, że przejęciem poświadczeń dostępu do danych organizacji.
+**Najlepsze rozwiązanie**: udzielić dostępu użytkownikom, grupom i aplikacjom, które w określonym zakresie.   
+**Szczegóły**: RBAC Użyj wstępnie zdefiniowanych ról. Na przykład, aby udzielić dostępu użytkownika do zarządzania magazynami kluczy, możesz przypisać wstępnie zdefiniowaną rolę [Współautor magazynu klucz](../role-based-access-control/built-in-roles.md) do tego użytkownika w określonym zakresie. Zakres w tym przypadku będzie subskrypcją, grupą zasobów lub po prostu określonego magazynu kluczy. Jeśli wstępnie zdefiniowane role nie odpowiadają potrzebom, możesz to zrobić [zdefiniować własne role](../role-based-access-control/custom-roles.md).
 
-Na przykład: wymusić uwierzytelnianie wieloskładnikowe Azure dla użytkowników i skonfigurować go do użycia jako weryfikacji, połączenia telefonicznego lub wiadomości tekstowej w przypadku złamania zabezpieczeń poświadczeń użytkownika, atakujący będzie mógł dostęp do dowolnych zasobów, ponieważ on nie ma dostępu do telefonu użytkownika. Organizacje, które nie dodawaj tego dodatkową warstwę ochrony tożsamości są bardziej narażony na atak kradzieży poświadczeń, co może prowadzić do naruszenia danych.
+**Najlepsze rozwiązanie**: użytkownicy mają dostęp do kontroli.   
+**Szczegóły**: dostęp do magazynu kluczy jest kontrolowany za pośrednictwem dwóch oddzielnych interfejsów: płaszczyzny zarządzania i płaszczyzny danych. Mechanizmy kontroli dostępu do płaszczyzny zarządzania i płaszczyzny danych działają niezależnie.
 
-Jeden alternatywą dla organizacji, które mają być zachowane uwierzytelniania sterowania lokalnej jest użycie [serwera usługi Azure Multi-Factor Authentication](../active-directory/authentication/howto-mfaserver-deploy.md), nazywany również lokalne usługi MFA. Za pomocą tej metody nadal będzie mógł wymusić uwierzytelnianie wieloskładnikowe, przy zachowaniu MFA serwera lokalnego.
+Użycie funkcji RBAC w celu kontrolowania tego, jakie użytkownicy mają dostęp do. Na przykład jeśli użytkownik chce udzielić aplikacji dostępu do używania kluczy w magazynie kluczy, należy udzielić uprawnień dostępu do płaszczyzny danych za pomocą zasad dostępu magazynu kluczy i nie dostępu do płaszczyzny zarządzania jest wymagany dla tej aplikacji. Z drugiej strony Jeśli użytkownik powinien mieć możliwość odczytu właściwości magazynu i tagi, ale nie mają dostępu do kluczy, wpisów tajnych lub certyfikatów, to dostęp do odczytu użytkowników można przyznać za pośrednictwem RBAC i Brak dostępu do płaszczyzny danych jest wymagana.
 
-Aby uzyskać więcej informacji dotyczących usługi Azure MFA, przeczytaj artykuł [wprowadzenie do korzystania z usługi Azure Multi-Factor Authentication w chmurze](../active-directory/authentication/howto-mfa-getstarted.md).
+**Najlepsze rozwiązanie**: Store certyfikaty w magazynie kluczy. Certyfikaty są o wysokiej wartości. W niepowołane ręce mogą zostać złamane zabezpieczenia swojej aplikacji lub bezpieczeństwo powierzonych jej danych.   
+**Szczegóły**: usługi Azure Resource Manager można bezpieczne wdrażanie certyfikatów przechowywanych w usłudze Azure Key Vault do maszyn wirtualnych platformy Azure, gdy maszyny wirtualne są wdrażane. Ustawiając odpowiednie zasady dostępu dla usługi key vault, możesz również decydować, kto otrzymuje dostęp do swojego certyfikatu. Kolejną korzyścią jest to, które są zarządzane wszystkie certyfikaty w jednym miejscu w usłudze Azure Key Vault. Zobacz [wdrażanie certyfikatów na maszynach wirtualnych z zarządzanego przez klienta usługi Key Vault](https://blogs.technet.microsoft.com/kv/2016/09/14/updated-deploy-certificates-to-vms-from-customer-managed-key-vault/) Aby uzyskać więcej informacji.
 
-## <a name="use-role-based-access-control-rbac"></a>Kontrola dostępu (RBAC) oparta na rolach użycia
+**Najlepsze rozwiązanie**: Upewnij się, można odzyskać usuwanie magazynów kluczy lub obiektów magazynu kluczy.   
+**Szczegóły**: usunięcie klucza magazyny lub obiektów magazynu kluczy może być przypadkowego lub celowego. Włącz usuwanie nietrwałe i czyszczenie funkcje ochrony usługi Key Vault, szczególnie w przypadku kluczy, które są używane do szyfrowania danych magazynowanych. Usunięcie tych kluczy jest równoznaczne z utratą danych, aby można było odzyskać usuniętych magazynów i magazynu obiektów, jeśli to konieczne. Ćwicz operacje odzyskiwania usługi Key Vault w regularnych odstępach czasu.
 
-Ograniczanie dostępu na podstawie [, trzeba znać](https://en.wikipedia.org/wiki/Need_to_know) i [najniższych uprawnień](https://en.wikipedia.org/wiki/Principle_of_least_privilege) zasad zabezpieczeń. Jest to konieczne w przypadku organizacji, które mają być wymuszać zasady zabezpieczeń dla dostępu do danych. Azure opartej na rolach kontroli dostępu (RBAC) może służyć do przypisywania uprawnień do użytkowników, grup i aplikacji w określonego zakresu. Zakres przypisania roli może być pojedynczego zasobu, grupy zasobów lub subskrypcji.
+> [!NOTE]
+> Jeśli użytkownik ma uprawnienia współautora (RBAC) do płaszczyzny zarządzania magazynu kluczy, ich może udzielić sobie dostępu do płaszczyzny danych przez ustawienie zasad dostępu magazynu kluczy. Zaleca się, że należy ściśle kontrolować kto ma dostęp współautora do magazynów kluczy, aby zapewnić tylko upoważnione osoby mogą uzyskać dostęp i Zarządzanie magazynami kluczy, kluczy, wpisów tajnych i certyfikatów.
+>
+>
 
-Można wykorzystać [wbudowane role RBAC](../role-based-access-control/built-in-roles.md) na platformie Azure, aby przypisać uprawnienia do użytkowników. Należy rozważyć użycie *współautora konta magazynu* dla operatorów chmury, które muszą zarządzać kontami magazynu i *klasycznego współautora konta magazynu* roli do zarządzania klasycznych kont magazynu. Operatorzy chmury, które musi zarządzać maszynami wirtualnymi i konto magazynu, należy rozważyć dodanie ich do *Współautor·maszyny·wirtualnej* roli.
+## <a name="manage-with-secure-workstations"></a>Zarządzanie przy użyciu bezpiecznego stacji roboczych
+> [!NOTE]
+> Administrator subskrypcji lub właściciela, należy używać bezpiecznego dostępu do stacji roboczej lub na stacji roboczej z dostępem uprzywilejowanym.
+>
+>
 
-Organizacje, które nie wymusić kontrolę dostępu danych dzięki wykorzystaniu możliwości, takie jak RBAC może nadanie więcej uprawnień niż jest to niezbędne dla użytkowników. Może to prowadzić do naruszenia danych dzięki użyciu niektórzy użytkownicy mieli dostęp do danych, które nie powinny mieć w pierwszej kolejności.
+Ponieważ większość ataków skierować użytkownika końcowego, staje się punkt końcowy, jednego z punktów głównej ataku. Osoba atakująca, która obniża punkt końcowy, można użyć poświadczeń użytkownika do uzyskania dostępu do danych w organizacji. Większość ataków na punkt końcowy zalet fakt, że użytkownicy są administratorami w swoich lokalnych stacji roboczych.
 
-Użytkownik może dowiedzieć się więcej o Azure RBAC przeczytaj artykuł [kontroli dostępu](../role-based-access-control/role-assignments-portal.md).
+**Najlepsze rozwiązanie**: korzystania ze stacji roboczej bezpiecznego zarządzania w celu ochrony poufnych kont, zadań i danych.   
+**Szczegóły**: Użyj [stacji roboczej z dostępem uprzywilejowanym](https://technet.microsoft.com/library/mt634654.aspx) Aby zmniejszyć obszar narażony na ataki w stacji roboczych. Te stacje robocze bezpiecznego zarządzania może pomóc Ci rozwiązać niektóre z tych ataków i upewnij się, że Twoje dane są bezpieczniejsze.
 
-## <a name="encrypt-azure-virtual-machines"></a>Szyfrowanie maszyn wirtualnych platformy Azure
+**Najlepsze rozwiązanie**: Upewnij się, program endpoint protection.   
+**Szczegóły**: wymuszanie zasad zabezpieczeń na wszystkich urządzeniach, które są używane do pracy z danymi niezależnie od lokalizacji danych (w chmurze lub lokalnie).
 
-W przypadku wielu organizacji [szyfrowanie danych magazynowanych](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) jest obowiązkowy krok na drodze suwerenności dane, zgodności i ochrony prywatności danych. Szyfrowanie dysków Azure umożliwia administratorom IT szyfrowanie dysków systemu Windows i Linux IaaS maszyn wirtualnych (VM). Szyfrowanie dysków Azure korzysta z branży funkcje BitLocker standardowych systemu Windows i DM-Crypt systemu Linux w celu zapewnienia szyfrowania woluminów systemu operacyjnego i dysków z danymi.
+## <a name="protect-data-at-rest"></a>Ochrona magazynowanych danych
+[Szyfrowanie danych magazynowanych](https://blogs.microsoft.com/cybertrust/2015/09/10/cloud-security-controls-series-encrypting-data-at-rest/) stanowi krok obowiązkowy kierunku niezależność danych ochrony prywatności, zgodności i danych.
 
-Można korzystać z szyfrowania dysków Azure, aby chronić i ochrony danych w celu spełnienia zabezpieczeń organizacji i wymagań dotyczących zgodności. Organizacje powinny również należy wziąć pod uwagę przy użyciu szyfrowania w celu zmniejszenia ryzyka danych związanych z nieautoryzowanego dostępu. Zalecane jest również, szyfrowanie dysków przed zapisywania poufnych danych.
+**Najlepsze rozwiązanie**: Zastosuj szyfrowanie dysków, które pomagają w ochronie danych.   
+**Szczegóły**: Użyj [usługa Azure Disk Encryption](azure-security-disk-encryption.md). Umożliwia administratorom IT szyfrowanie dysków Windows i maszyn wirtualnych IaaS z systemem Linux. Szyfrowanie dysków łączy standardowych funkcji Windows BitLocker oraz funkcji dm-crypt systemu Linux, aby zapewnić szyfrowanie woluminów systemu operacyjnego i dysków z danymi.
 
-Upewnij się, że szyfrowania woluminów danych maszyny Wirtualnej i wolumin rozruchowy, aby chronić dane przechowywane na koncie magazynu Azure. Ochrona kluczy szyfrowania i klucze tajne dzięki wykorzystaniu [usługi Azure Key Vault](../key-vault/key-vault-whatis.md).
+Usługi Azure Storage i Azure SQL Database jako opcja szyfrowania przechowywanych danych domyślnie i wiele szyfrowania oferty usługi. Aby zachować kontrolę nad kluczami, które dostępu i szyfrowanie danych, można użyć usługi Azure Key Vault. Zobacz [obsługi modelu szyfrowania dostawcy zasobów platformy Azure, aby dowiedzieć się więcej](azure-security-encryption-atrest.md#azure-resource-providers-encryption-model-support).
 
-Dla lokalnych serwerów systemu Windows należy wziąć pod uwagę następujące szyfrowania najlepsze rozwiązania:
+**Najlepsze praktyki**: zastosowanie szyfrowania, aby pomóc ograniczyć ryzyko związane z nieautoryzowany dostęp do danych.   
+**Szczegóły**: szyfrowanie dysków, przed przystąpieniem do napisania danych poufnych do nich.
 
-* Użyj [funkcji BitLocker](https://technet.microsoft.com/library/dn306081.aspx) do szyfrowania danych
-* Przechowuje informacje dotyczące odzyskiwania w usługach AD DS.
-* Jeśli ma żadnych problemu, że klucze funkcji BitLocker zostały naruszone, zaleca się albo sformatować dysk, aby usunąć wszystkie wystąpienia metadanych funkcji BitLocker z dysku lub odszyfrować, a następnie ponownie szyfrować cały dysk.
+Organizacje, które nie wymuszają szyfrowanie danych są bardziej widoczne problemy z integralnością danych. Na przykład nieautoryzowani lub nieautoryzowane elementy użytkownicy mogą kradzieży danych na kontach których bezpieczeństwo zostało naruszone lub uzyskania nieautoryzowanego dostępu do danych zakodowane w formacie zwykłego. Firm również Musisz udowodnić, że są one skrupulatne poprawianie listy i korzystać z funkcji poprawne zabezpieczenia, aby zwiększyć ich bezpieczeństwo danych w celu zachowania zgodności z przepisami w branży.
 
-Organizacje, które nie wymusić szyfrowanie danych więcej mogą być narażone na problemy z integralnością danych, takich jak użytkownicy złośliwego lub nieautoryzowane kradzieży danych i naruszenia zabezpieczeń kont uzyskujących nieautoryzowany dostęp do danych w formacie zwykłego. Oprócz tych zagrożeń firm, które muszą być zgodne z przepisów branżowych dowieść większego i ich za pomocą formantów poprawnych zabezpieczeń w celu zwiększenia bezpieczeństwa danych.
+## <a name="protect-data-in-transit"></a>Ochrona przenoszonych danych
+Ochrona przenoszonych danych powinien być integralną część strategii ochrony danych. Ponieważ dane są przenoszone i z powrotem w wielu lokalizacjach, ogólnie zalecamy zawsze używają protokołów SSL/TLS do wymiany danych w różnych lokalizacjach. W niektórych przypadkach możesz chcieć izolowania kanał całej komunikacji między lokalnych i w chmurze infrastruktury przy użyciu sieci VPN.
 
-Użytkownik może dowiedzieć się więcej o szyfrowania dysków Azure od przeczytania artykułu [Azure dysku szyfrowanie dla systemu Windows i maszyn wirtualnych systemu Linux IaaS](azure-security-disk-encryption.md).
+W przypadku danych przenoszenia między sieci na infrastrukturę lokalną i platformą Azure należy wziąć pod uwagę odpowiednie zabezpieczenia, takie jak HTTPS lub sieci VPN. Wysyłając zaszyfrowany ruch sieciowy między siecią wirtualną platformy Azure a lokalizacją lokalną za pośrednictwem publicznej sieci internet, użyj [bramy Azure VPN Gateway](https://docs.microsoft.com/azure/vpn-gateway/).
 
-## <a name="use-hardware-security-modules"></a>Użyj sprzętowych modułów zabezpieczeń
-Rozwiązania szyfrowania zgodne ze standardami używać kluczy tajnych do szyfrowania danych. W związku z tym jest krytyczny, że te klucze są bezpiecznie przechowywane. Zarządzanie kluczami staje się integralną częścią ochrony danych, ponieważ będzie można użyć do przechowywania kluczy tajnych, które są używane do szyfrowania danych.
+Poniżej przedstawiono najlepsze rozwiązania dotyczące korzystania z bramy Azure VPN Gateway, SSL/TLS i protokół HTTPS.
 
-Używa szyfrowania dysków Azure [usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/) ułatwiają kontrolowanie i zarządzanie nimi klucze szyfrowania dysku i kluczy tajnych w ramach subskrypcji magazynu kluczy, podczas gdy zapewnienie, że wszystkie dane na dyskach maszyny wirtualnej są szyfrowane, gdy w magazynie Azure. Inspekcja kluczy i użycia zasad należy używać usługi Azure Key Vault.
+**Najlepsze rozwiązanie**: bezpieczny dostęp z wielu stacjach roboczych znajdujących się na lokalnych z siecią wirtualną platformy Azure.   
+**Szczegóły**: Użyj [sieci VPN typu lokacja lokacja](../vpn-gateway/vpn-gateway-howto-site-to-site-resource-manager-portal.md).
 
-Istnieje wiele ryzyka związanego z używaniem związanych z nie posiadają odpowiednie środki zabezpieczające w celu ochrony kluczy tajnych, które były używane do szyfrowania danych. Jeśli atakujący ma dostęp do kluczy tajnych, będzie mógł odszyfrować dane i mogących mieć dostęp do poufnych informacji.
+**Najlepsze rozwiązanie**: bezpieczny dostęp z poszczególnych stacji roboczych znajdujących się na lokalnych z siecią wirtualną platformy Azure.   
+**Szczegóły**: Użyj [sieci VPN typu punkt lokacja](../vpn-gateway/vpn-gateway-point-to-site-create.md).
 
-Użytkownik może dowiedzieć się więcej o ogólne zalecenia dotyczące zarządzania certyfikatami w usłudze Azure od przeczytania artykułu [zarządzania certyfikatami w usłudze Azure: porady](https://blogs.msdn.microsoft.com/azuresecurity/2015/07/13/certificate-management-in-azure-dos-and-donts/).
+**Najlepsze rozwiązanie**: przenoszenie większych zestawów danych za pośrednictwem dedykowanej o dużej szybkości łącza sieci WAN.   
+**Szczegóły**: Użyj [ExpressRoute](../expressroute/expressroute-introduction.md). Jeśli zdecydujesz się używać usługi ExpressRoute, można również zaszyfrować dane na poziomie aplikacji, za pomocą [SSL/TLS](https://support.microsoft.com/kb/257591) lub innych protokołów w celu zapewnienia dodatkowej ochrony.
 
-Aby uzyskać więcej informacji na temat usługi Azure Key Vault, przeczytaj [wprowadzenie do usługi Azure Key Vault](../key-vault/key-vault-get-started.md).
+**Najlepsze rozwiązanie**: wchodzić w interakcje z usługą Azure Storage w witrynie Azure portal.   
+**Szczegóły**: wykonywane wszystkie transakcje za pośrednictwem protokołu HTTPS. Można również użyć [interfejsu API REST magazynu](https://msdn.microsoft.com/library/azure/dd179355.aspx) za pośrednictwem protokołu HTTPS do interakcji z [usługi Azure Storage](https://azure.microsoft.com/services/storage/) i [usługi Azure SQL Database](https://azure.microsoft.com/services/sql-database/).
 
-## <a name="manage-with-secure-workstations"></a>Zarządzanie za pomocą bezpiecznego stacji roboczych
-Ponieważ większość ataków skierować użytkownika końcowego, staje się punkt końcowy, jednego z punktów głównej ataku. Jeśli osoba atakująca obniża punktu końcowego, on korzystać z poświadczeń użytkownika w celu uzyskania dostępu do danych organizacji. Większość ataków na punkt końcowy będą mogli korzystać z faktu, że użytkownicy końcowi są administratorami w swoich lokalnych stacji roboczych.
+Organizacje, które się nie powieść, aby chronić przesyłane dane są bardziej podatne na [ataków typu man-in--middle](https://technet.microsoft.com/library/gg195821.aspx), [podsłuchiwaniu](https://technet.microsoft.com/library/gg195641.aspx)i przejęcie kontroli sesji. Te ataki może być pierwszym działaniem wykonywanym w uzyskiwaniu dostępu do poufnych danych.
 
-Aby zmniejszyć to ryzyko, należy za pomocą bezpiecznego zarządzania stacji roboczej. Firma Microsoft zaleca użycie [uprzywilejowanego dostępu do stacji roboczych (ŁAPY)](https://technet.microsoft.com/library/mt634654.aspx) Aby zmniejszyć obszar ataków w stacji roboczych. Te stacje robocze bezpiecznego zarządzania mogą pomóc ograniczyć niektóre z nich ataków zapewnienia Twoje dane są bezpieczniejsze. Upewnij się, że umożliwia ŁAPY ograniczenia funkcjonalności i zablokować stację roboczą. Jest to ważny krok, aby zapewnić zapewnienia wysokiego poziomu zabezpieczeń dla kont poufnych, zadania i ochrony danych.
+## <a name="secure-email-documents-and-sensitive-data"></a>Zabezpieczanie poczty e-mail, dokumenty i poufne dane
+Chcesz kontrolować i zabezpieczanie poczty e-mail, dokumenty i dane poufne, które są udostępniane poza firmę. [Usługa Azure Information Protection](https://docs.microsoft.com/azure/information-protection/) to rozwiązanie oparte na chmurze ułatwia klasyfikowanie, etykietowanie i ochronę dokumentów oraz wiadomości e-mail. Można to zrobić automatycznie przez administratorów definiujących reguły i warunki, ręcznie przez użytkowników lub kombinacji, w której użytkownicy uzyskują zalecenia.
 
-Brak programu endpoint protection może zagrożenie danych, upewnij się, że wymuszać zasady zabezpieczeń dla wszystkich urządzeń, które są używane do pracy z danymi, bez względu na lokalizację danych (chmurze lub lokalnie).
+Klasyfikacja jest zawsze rozpoznać cały czas, niezależnie od tego, gdzie dane są przechowywane lub komu zostały udostępnione. Etykiety zawierają oznaczenia wizualne, takie jak nagłówek, stopka lub znak wodny. Metadane dodawane do plików i nagłówków wiadomości e-mail mają postać zwykłego tekstu. Zwykłego tekstu zapewnia, że inne usługi, takie jak rozwiązania zapobiegania utracie danych, mogą rozpoznać klasyfikację i podjąć odpowiednie działania.
 
-Dowiedz się więcej o uprawnieniach dostępu stacji roboczej od przeczytania artykułu [zabezpieczanie uprzywilejowanego dostępu](https://technet.microsoft.com/library/mt631194.aspx).
+Technologia ochrony korzysta z usługi Azure Rights Management (Azure RMS). Technologia ta jest zintegrowana z innymi usługami chmurowymi firmy Microsoft i aplikacji, takich jak usługi Office 365 i Azure Active Directory. Ta technologia ochrony używa zasad szyfrowania, tożsamości i autoryzacji. Ochrona stosowana przy użyciu usługi Azure RMS pozostaje z dokumentami i wiadomościami e-mail niezależnie od lokalizacji — wewnątrz lub na zewnątrz organizacji, sieci, serwerów plików i aplikacji.
 
-## <a name="enable-sql-data-encryption"></a>Włącz szyfrowanie danych SQL
-[Azure SQL Database przezroczystego szyfrowania danych](https://msdn.microsoft.com/library/dn948096.aspx) (funkcji TDE) chroni przed zagrożeniem złośliwych działań, wykonując w czasie rzeczywistym szyfrowanie i odszyfrowywanie bazy danych, skojarzonych kopii zapasowych, i pliki dziennika transakcji w stanie spoczynku bez konieczności wprowadzania zmian w aplikacji.  Funkcji TDE szyfruje magazyn całej bazy danych przy użyciu klucza symetrycznego o nazwie klucza szyfrowania bazy danych.
+To rozwiązanie ochrony informacji zapewnia kontrolę nad danymi nawet wtedy, gdy są one udostępniane innym osobom. Umożliwia także usługę Azure RMS za pomocą własnych line-of-business, aplikacji i rozwiązań do ochrony informacji od dostawców oprogramowania, czy tych aplikacji i rozwiązań hostowanych lokalnie lub w chmurze.
 
-Nawet wtedy, gdy cały magazyn jest zaszyfrowany, bardzo ważne jest także szyfrowanie Twojej bazy danych. Jest to implementacja obrony w głębokość podejście do ochrony danych. Jeśli używasz [bazy danych SQL Azure](https://msdn.microsoft.com/library/0bf7e8ff-1416-4923-9c4c-49341e208c62.aspx) i chcesz chronić poufne dane, takie jak karty kredytowej lub numerów ubezpieczenia społecznego, można zaszyfrować baz danych z trybem FIPS 140-2 szyfrowania AES zweryfikowanych 256-bitową, który spełnia wymagania wiele standardy branżowe (np. HIPAA, PCI).
+Zaleca się, możesz:
 
-Ważne jest, aby zrozumieć, że pliki związane z [rozszerzenia puli bufora](https://msdn.microsoft.com/library/dn133176.aspx) (BPE) nie są szyfrowane, gdy baza danych jest szyfrowana przy użyciu funkcji TDE. Należy użyć narzędzia szyfrowania na poziomie systemu plików, takich jak BitLocker lub [systemu szyfrowania plików](https://technet.microsoft.com/library/cc700811.aspx) (EFS) dla BPE powiązane pliki.
+- [Wdrażanie usługi Azure Information Protection](https://docs.microsoft.com/azure/information-protection/deployment-roadmap) dla Twojej organizacji.
+- Zastosowanie etykiet, które odzwierciedlają Twoje wymagania biznesowe. Na przykład: Zastosuj etykietę o nazwie "wysoce poufne" dla wszystkich dokumentów i wiadomości e-mail, które zawierają dane top-secret, klasyfikować i chronić te dane. Następnie tylko autoryzowani użytkownicy mogą uzyskać dostęp do tych danych przy zachowaniu dowolnych ograniczeń, które określisz.
+- Konfigurowanie [rejestrowania użycia usługi Azure RMS](https://docs.microsoft.com/azure/information-protection/log-analyze-usage) tak, aby monitorować, jak Twoja organizacja używa usługi ochrony.
 
-Od autoryzowanym użytkownikiem, takie jak administrator zabezpieczeń lub administrator bazy danych ma dostęp do danych, nawet jeśli bazy danych jest szyfrowany przy funkcji TDE, należy również postępować zgodnie z poniższymi zaleceniami:
+Organizacje, które będą słabe na [klasyfikacji danych](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) i ochrona plików może być bardziej podatne na danych wyciekom lub nieprawidłowemu użyciu danych. Za pomocą odpowiedniego pliku ochrony można analizować przepływów danych, aby uzyskać wgląd w firmie, wykrywać niebezpieczne zachowania i podejmować działania naprawcze, śledzić dostęp do dokumentów i tak dalej.
 
-* Uwierzytelnianie na poziomie bazy danych programu SQL
-* Uwierzytelniania systemu Azure AD przy użyciu role RBAC
-* Użytkownicy i aplikacje powinny używać osobnych kont do uwierzytelniania. W ten sposób można ograniczyć uprawnień użytkowników i aplikacje i zmniejszyć ryzyko złośliwych działań
-* Implementowanie zabezpieczeń na poziomie bazy danych przy użyciu ról stałej bazy danych (takich jak db_datareader lub db_datawriter), lub można utworzyć niestandardowe role w aplikacji można przyznać uprawnienia jawne do zaznaczonych obiektów bazy danych
+## <a name="next-steps"></a>Kolejne kroki
+Zobacz [zabezpieczeń platformy Azure najlepsze rozwiązania i wzorce](security-best-practices-and-patterns.md) dla więcej najważniejsze wskazówki dotyczące zabezpieczeń do użycia podczas one projektowanie, wdrażanie i zarządzanie rozwiązań w chmurze, korzystając z platformy Azure.
 
-Organizacje, które nie używają szyfrowania na poziomie bazy danych może być bardziej narażony na ataki, które mogą negatywnie wpłynąć na danych znajdujących się w bazach danych SQL.
-
-Użytkownik może dowiedzieć się więcej o funkcji SQL TDE szyfrowania przeczytaj artykuł [przezroczystego szyfrowania danych z bazy danych SQL Azure](https://msdn.microsoft.com/library/0bf7e8ff-1416-4923-9c4c-49341e208c62.aspx).
-
-## <a name="protect-data-in-transit"></a>Ochrona danych podczas przesyłania
-
-Ochrona danych podczas przesyłania powinien być integralną część strategii ochrony danych. Ponieważ dane będą przenoszone i z powrotem w wielu lokalizacjach, ogólne zalecenie jest zawsze używają protokołów SSL/TLS do wymiany danych w różnych lokalizacjach. W niektórych sytuacjach można odizolować kanału całej komunikacji między lokalnymi i w chmurze infrastruktury przy użyciu wirtualnej sieci prywatnej (VPN).
-
-Przenoszenie między lokalną infrastrukturą i Azure danych należy rozważyć odpowiednie zabezpieczenia, takie jak HTTPS lub sieci VPN.
-
-Dla organizacji, które trzeba bezpieczny dostęp z wielu stacji roboczych lokalnego do platformy Azure, użyj [Azure VPN lokacja lokacja](../vpn-gateway/vpn-gateway-site-to-site-create.md).
-
-Dla organizacji, które trzeba bezpieczny dostęp z jednej stacji roboczej znajdujących się lokalnie do platformy Azure, użyj [punkt-lokacja sieci VPN](../vpn-gateway/vpn-gateway-point-to-site-create.md).
-
-Większych zestawów danych można przenieść za pośrednictwem dedykowanej o dużej szybkości łącza sieci WAN takich jak [ExpressRoute](https://azure.microsoft.com/services/expressroute/). Jeśli chcesz używać usługi ExpressRoute, można także szyfrowanie danych na poziomie aplikacji przy użyciu [SSL/TLS](https://support.microsoft.com/kb/257591) lub innymi protokołami zapewnia dodatkową ochronę.
-
-Jeśli użytkownik korzysta z usługi Azure Storage za pośrednictwem portalu Azure, wszystkich transakcji jest realizowana za pośrednictwem protokołu HTTPS. [Interfejs API REST magazynu](https://msdn.microsoft.com/library/azure/dd179355.aspx) over HTTPS można również wchodzić w interakcje z [usługi Azure Storage](https://azure.microsoft.com/services/storage/) i [bazy danych SQL Azure](https://azure.microsoft.com/services/sql-database/).
-
-Organizacje, które się nie powieść, aby chronić przesyłane dane są bardziej narażony na [ataków man-in--middle](https://technet.microsoft.com/library/gg195821.aspx), [podsłuchiwaniu](https://technet.microsoft.com/library/gg195641.aspx) i przejęcie kontroli sesji. Tego rodzaju ataki może być pierwszym krokiem w uzyskiwaniu dostępu do poufnych danych.
-
-Możesz można dowiedzieć się więcej o sieci VPN platformy Azure opcja przeczytaj artykuł [planowania i projektowania dla bramy sieci VPN](../vpn-gateway/vpn-gateway-plan-design.md).
-
-## <a name="enforce-file-level-data-encryption"></a>Wymuszanie szyfrowania danych na poziomie plików
-
-Kolejną warstwę ochrony, która może zwiększyć poziom zabezpieczeń dla danych jest szyfrowanie pliku, bez względu na lokalizację pliku.
-
-[Usługa Azure RMS](https://technet.microsoft.com/library/jj585026.aspx) używa zasad szyfrowania, tożsamości i autoryzacji, aby ułatwić zabezpieczanie plików i wiadomości e-mail. Usługa Azure RMS działa na wielu urządzeniach — telefonach, tablety i komputery, aby chronić w obrębie organizacji i poza organizacją. Ta funkcja jest możliwa, ponieważ usługa Azure RMS dodaje poziom ochrony, która jest powiązana z danymi nawet wtedy, gdy opuszczą teren organizacji.
-
-Jeśli używasz usługi Azure RMS do ochrony plików za pomocą branżowego standardu kryptografii pełnej obsługi [FIPS 140-2](http://csrc.nist.gov/groups/STM/cmvp/standards.html). Podczas ochrony danych należy korzystać z usługi Azure RMS, masz gwarantują, że ta ochrona pozostanie z plikiem, nawet jeśli zostanie skopiowany do magazynu, które nie są pod kontrolą IT, takich jak Usługa magazynu w chmurze. Taki sam występuje w przypadku plików udostępnianych za pośrednictwem poczty e-mail, plik jest chroniony jako załącznik do wiadomości e-mail z instrukcjami sposobu otwierania chronionego załącznika.
-
-Podczas planowania wdrożenia usługi Azure RMS firma Microsoft zaleca następujące czynności:
-
-* Zainstaluj [aplikacji RMS sharing](https://technet.microsoft.com/library/dn339006.aspx). Ta aplikacja jest zintegrowany z pakietu Office aplikacji przez zainstalowanie pakietu Office dodatek tak, aby użytkownikom ochronę plików bezpośrednio.
-* Skonfiguruj aplikacje i usługi obsługują usługę Azure RMS
-* Utwórz [szablonów niestandardowych](https://technet.microsoft.com/library/dn642472.aspx) która odzwierciedla wymagania firmy. Na przykład: szablon do górnej poufne dane, które powinny być stosowane w wszystkich ściśle tajne związane z wiadomości e-mail.
-
-Organizacje, które są słabe na [klasyfikacji danych](http://download.microsoft.com/download/0/A/3/0A3BE969-85C5-4DD2-83B6-366AA71D1FE3/Data-Classification-for-Cloud-Readiness.pdf) i ochrona plików może być bardziej narażony na wycieku danych. Bez ochrony prawidłowego pliku organizacji nie będzie można uzyskiwać cenne informacje biznesowe, monitorować nadużycia i uniemożliwić nieautoryzowanym dostępem do plików.
-
-Dodatkowe informacje na temat usługi Azure RMS od przeczytania artykułu [wprowadzenie do korzystania z usługi Azure Rights Management](https://technet.microsoft.com/library/jj585016.aspx).
+Do dyspozycji więcej ogólnych informacji na temat zabezpieczeń platformy Azure i powiązane usługi firmy Microsoft są następujące zasoby:
+* [Blog zespołu usługi Azure Security](https://blogs.msdn.microsoft.com/azuresecurity/) — aktualne instrukcje dotyczące najnowszych zabezpieczeń platformy Azure
+* [Microsoft Security Response Center](https://technet.microsoft.com/library/dn440717.aspx) — w przypadku, gdy luk w zabezpieczeniach firmy Microsoft, w tym problemów z platformą Azure, mogą zostać zgłoszone lub za pośrednictwem poczty e-mail do secure@microsoft.com

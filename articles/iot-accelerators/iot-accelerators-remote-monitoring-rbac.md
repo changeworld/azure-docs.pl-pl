@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 08/06/2018
 ms.topic: conceptual
-ms.openlocfilehash: fccdc4ac40878060b94d495b8895e2a128c9477c
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: a56cb92dc8870bf3fff6de0b1d5d907a0898c216
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44716115"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364299"
 ---
 # <a name="configure-role-based-access-controls-in-the-remote-monitoring-solution-accelerator"></a>Konfigurowanie kontroli dostępu opartej na rolach w akceleratora rozwiązania monitorowania zdalnego
 
@@ -240,6 +240,8 @@ public async Task DeleteAsync(string id)
 ## <a name="next-steps"></a>Kolejne kroki
 
 W tym artykule przedstawiono sposób opartej na rolach dostęp kontrolki są implementowane w akceleratora rozwiązania monitorowania zdalnego.
+
+Zobacz [Konfigurowanie kontroli dostępu w Eksploratorze usługi Time Series Insights](iot-accelerators-remote-monitoring-rbac-tsi.md) uzyskać informacji na temat zarządzania dostępem do Eksploratora usługi Time Series Insights w akceleratora rozwiązania monitorowania zdalnego.
 
 Aby uzyskać obszerniejszych informacji koncepcyjnych związanych akceleratora rozwiązania monitorowania zdalnego, zobacz [Architektura zdalnego monitorowania](iot-accelerators-remote-monitoring-sample-walkthrough.md)
 

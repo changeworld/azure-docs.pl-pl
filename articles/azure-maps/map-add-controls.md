@@ -3,17 +3,17 @@ title: Dodawanie kontrolki mapy w usługi Azure Maps | Dokumentacja firmy Micros
 description: Jak dodać powiększenia, kontrola pomysłu, element sterujący i selektor stylu do mapy w usługi Azure Maps.
 author: walsehgal
 ms.author: v-musehg
-ms.date: 08/29/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: azure-maps
 services: azure-maps
 manager: timlt
-ms.openlocfilehash: ddbb621561d8fcef3637e036be004d17aea76f40
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 4410c2ec5851ff210ca8a5fb4f482e5e12d0b8e8
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129305"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367801"
 ---
 # <a name="add-map-controls-to-azure-maps"></a>Dodawanie kontrolki mapy do usługi Azure Maps
 
@@ -63,7 +63,7 @@ Trzeci bloku kodu tworzy obiekt Powiększenie, przy użyciu atlas [ZoomControl](
 
 Czwarty blok kodu tworzy obiekt formantu pomysłu, używając atlas [PitchControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.pitchcontrol?view=azure-iot-typescript-latest) i dodaje je do mapy za pomocą mapy [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody.
 
-Ostatni blok kodu dodaje obiekt selektor stylu do mapy, używając atlas [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol?view=azure-iot-typescript-latest#stylecontrol) i dodaje je do mapy za pomocą mapy [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody.
+Ostatni blok kodu tworzy obiekt selektor stylu przy użyciu atlas [StyleControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.control.stylecontrol?view=azure-iot-typescript-latest#stylecontrol) i dodaje je do mapy za pomocą mapy [addControl](https://docs.microsoft.com/javascript/api/azure-maps-control/atlas.map?view=azure-iot-typescript-latest#addcontrol) metody.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

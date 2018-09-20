@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: include
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/19/2018
+ms.date: 09/19/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: c5d61da61f6ec98a1cac37ce9b12b28019ce2ae1
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 7f8e9e8d333b87113783c566222b2d7ea57c411e
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44058509"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46368461"
 ---
 ## <a name="set-up-your-project"></a>Konfigurowanie projektu
 
@@ -33,27 +33,26 @@ Aplikacji, utworzonej za pomocą tego przewodnika przedstawia przycisk, który s
 >
 
 Aby utworzyć aplikację, wykonaj następujące czynności:
+
 1. W programie Visual Studio, wybierz **pliku** > **New** > **projektu**.
 2. W obszarze **szablony**, wybierz opcję **Visual C#**.
-3. Wybierz **aplikacja WPF** lub **aplikacji WPF**, w zależności od wersji programu Visual Studio w wersji korzystasz.
+3. Wybierz **aplikacja WPF (.NET Framework)**, w zależności od wersji programu Visual Studio w wersji korzystasz.
 
 ## <a name="add-msal-to-your-project"></a>Dodawanie biblioteki MSAL do projektu
+
 1. W programie Visual Studio, wybierz **narzędzia** > **Menedżera pakietów NuGet**> **Konsola Menedżera pakietów**.
 2. W oknie Konsola Menedżera pakietów Wklej następujące polecenia programu Azure PowerShell:
 
     ```powershell
-    Install-Package Microsoft.Identity.Client -Pre -Version 1.1.4-preview0002
+    Install-Package Microsoft.Identity.Client -Pre
     ```
 
     > [!NOTE] 
-    > To polecenie instaluje Biblioteka Microsoft Authentication Library. Biblioteka MSAL obsługuje pobieranie, buforowanie i odświeżanie tokenów użytkownika, które umożliwiają dostęp do interfejsów API, które są chronione przez usługę Azure Active Directory w wersji 2.
+    > To polecenie instaluje Biblioteka Microsoft Authentication Library. Biblioteka MSAL obsługuje pobieranie, buforowanie i odświeżanie tokenów użytkownika, które umożliwiają dostęp do interfejsów API, które są chronione przez usługę Azure Active Directory w wersji 2.0
     >
 
-    > [!NOTE]
-    > Ten przewodnik Szybki Start nie Użyj jeszcze najnowszą wersję platformy MSAL.NET, ale pracujemy nad aktualizacją
-    > 
-
 ## <a name="add-the-code-to-initialize-msal"></a>Dodaj kod, aby zainicjować biblioteki MSAL
+
 W tym kroku utworzysz klasy do obsługi interakcji z biblioteki MSAL, takie jak Obsługa tokenów.
 
 1. Otwórz *App.xaml.cs* pliku, a następnie dodaj odwołanie do biblioteki MSAL do klasy:
@@ -97,4 +96,3 @@ A *MainWindow.xaml* automatycznie utworzony plik jako część szablonu projektu
     </StackPanel>
 </Grid>
 ```
-

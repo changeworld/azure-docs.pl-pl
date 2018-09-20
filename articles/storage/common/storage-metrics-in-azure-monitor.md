@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/05/2017
 ms.author: fryu
 ms.component: common
-ms.openlocfilehash: 849253dd4a2e66acc6a509a0515a22309c90e081
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 99a1832d82005fabd6f8b62aea6ad7722b317a13
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "42055358"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367886"
 ---
 # <a name="azure-storage-metrics-in-azure-monitor"></a>Metryki usługi Azure Storage w usłudze Azure Monitor
 
@@ -25,7 +25,7 @@ Usługa Azure Monitor udostępnia interfejsy użytkownika ujednoliconego do moni
 
 Usługa Azure Monitor zapewnia wiele sposobów, aby dostęp do metryk. Użytkownik może uzyskiwać do nich dostęp z [witryny Azure portal](https://portal.azure.com), interfejsów API usługi Azure Monitor (REST i .net) i rozwiązań analitycznych, takich jak pakietu Operation Management Suite i usługi Event Hubs. Aby uzyskać więcej informacji, zobacz [metryk usługi Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
-Metryki są domyślnie włączone i możesz uzyskać dostęp z ostatnich 30 dni danych. Jeśli zachodzi potrzeba Zachowaj dane przez dłuższy okres czasu, można archiwizować dane metryk do konta usługi Azure Storage. To ustawienie jest konfigurowane w [ustawień diagnostycznych](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md#diagnostic-settings) w usłudze Azure Monitor.
+Metryki są domyślnie włączone, a dostęp można uzyskać dane z ostatnich dni 93. Jeśli zachodzi potrzeba Zachowaj dane przez dłuższy okres czasu, można archiwizować dane metryk do konta usługi Azure Storage. To ustawienie jest konfigurowane w [ustawień diagnostycznych](../../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) w usłudze Azure Monitor.
 
 ### <a name="access-metrics-in-the-azure-portal"></a>Dostęp do metryk w witrynie Azure portal
 
@@ -51,7 +51,7 @@ Poniższy przykład ilustruje sposób wyświetlenia listy definicja metryki na p
 # Login to Azure and enter your credentials when prompted.
 > armclient login
 
-> armclient GET /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/providers/microsoft.insights/metricdefinitions?api-version=2017-05-01-preview
+> armclient GET /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/providers/microsoft.insights/metricdefinitions?api-version=2018-01-01
 
 ```
 
@@ -95,7 +95,7 @@ Odpowiedź zawiera definicja metryki w formacie JSON:
 Poniższy przykład pokazuje, jak odczytać dane metryk na poziomie konta:
 
 ```
-> armclient GET "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/providers/microsoft.insights/metrics?metric=Availability&api-version=2017-05-01-preview&aggregation=Average&interval=PT1H"
+> armclient GET "/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/providers/microsoft.insights/metrics?metricnames=Availability&api-version=2018-01-01&aggregation=Average&interval=PT1H"
 
 ```
 
@@ -312,7 +312,7 @@ Na poniższym obrazie przedstawiono formatu do określania Identyfikatora zasobu
 /subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/queueServices/default
 `
 * Identyfikator zasobu usługi plików `
-/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/default
+/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Storage/storageAccounts/{storageAccountName}/fileServices/default
 `
 
 ### <a name="resource-id-in-azure-monitor-rest-api"></a>Identyfikator zasobu w usłudze Azure Monitor interfejsu API REST
@@ -375,7 +375,7 @@ Usługa Azure Storage udostępnia następujące metryki transakcji w usłudze Az
 | Nazwa metryki | Opis |
 | ------------------- | ----------------- |
 | Transakcje | Liczba żądań wysyłanych do usługi magazynu lub określonej operacji interfejsu API. Liczba ta obejmuje żądania zakończone zarówno powodzeniem, jak i niepowodzeniem, a także żądania, które wywołały błędy. <br/><br/> Jednostka: liczba <br/> Typ agregacji: łączna liczba <br/> Zastosowanie wymiarów: wartość ResponseType, GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions))<br/> Przykład: 1024 |
-| Zdarzenia związane z transferem danych przychodzących | Ilość danych przychodzących. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure. <br/><br/> Jednostka: bajty <br/> Typ agregacji: łączna liczba <br/> Zastosowanie wymiarów: GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions)) <br/> Przykład: 1024 |
+| Ruch przychodzący | Ilość danych przychodzących. Ta liczba obejmuje dane przychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane przychodzące w obrębie platformy Azure. <br/><br/> Jednostka: bajty <br/> Typ agregacji: łączna liczba <br/> Zastosowanie wymiarów: GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions)) <br/> Przykład: 1024 |
 | Ruch wychodzący | Ilość danych wychodzących. Ta liczba obejmuje dane wychodzące z klienta zewnętrznego do usługi Azure Storage, a także dane wychodzące w obrębie platformy Azure. W rezultacie liczba ta nie odzwierciedla danych wychodzących uwzględnianych na rozliczeniu. <br/><br/> Jednostka: bajty <br/> Typ agregacji: łączna liczba <br/> Zastosowanie wymiarów: GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions)) <br/> Przykład: 1024 |
 | SuccessServerLatency | Średni czas potrzebny na przetworzenie żądania zakończonego powodzeniem przez usługę Azure Storage. Ta wartość nie obejmuje opóźnienia sieci określonego przez wartość Opóźnienie E2E dla powodzenia. <br/><br/> Jednostka: MS <br/> Typ agregacji: średni <br/> Zastosowanie wymiarów: GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions)) <br/> Przykład: 1024 |
 | SuccessE2ELatency | Średnie całkowite opóźnienie dla żądań zakończonych powodzeniem kierowanych do usługi magazynu lub określonej operacji interfejsu API. Ta wartość obejmuje wymagany czas przetwarzania w usłudze Azure Storage do odczytania żądania, wysłania odpowiedzi i odebrania potwierdzenia dla odpowiedzi. <br/><br/> Jednostka: MS <br/> Typ agregacji: średni <br/> Zastosowanie wymiarów: GeoType, ApiName i uwierzytelniania ([definicji](#metrics-dimensions)) <br/> Przykład: 1024 |

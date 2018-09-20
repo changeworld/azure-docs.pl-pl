@@ -16,12 +16,12 @@ ms.component: report-monitor
 ms.date: 07/13/2018
 ms.author: priyamo
 ms.reviewer: dhanyahk
-ms.openlocfilehash: f2f00b94b50ecf1fc3d1b08a04063dbffa62501e
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 59b33bcc75890372a7b27b9aca40ad1e22c58281
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736142"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364282"
 ---
 # <a name="integrate-azure-ad-logs-with-splunk-by-using-azure-monitor-preview"></a>Integrowanie dzienników usługi Azure AD za pomocą Splunk przy użyciu usługi Azure Monitor (wersja zapoznawcza)
 

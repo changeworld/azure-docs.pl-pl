@@ -1,34 +1,36 @@
 ---
-title: LogDownloader - kognitywnych usług platformy Azure | Dokumentacja firmy Microsoft
-description: Pobierz pliki dziennika, które są tworzone przez usługę decyzji niestandardowe Azure.
+title: LogDownloader — Custom Decision Service
+titlesuffix: Azure Cognitive Services
+description: Pobierz pliki dziennika, które są produkowane przez Azure Custom Decision Service.
 services: cognitive-services
 author: marco-rossi29
-manager: marco-rossi29
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: marossi
-ms.openlocfilehash: 783b534b3b3f4bb7f5d9f073f491690759edfea5
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8c5ab0e297690f1fbdb41a2627dd63c3ea522d1b
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348985"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366816"
 ---
 # <a name="logdownloader"></a>LogDownloader
 
-Pobierz pliki dziennika, które są tworzone przez usługę decyzji niestandardowe Azure i generować *.gz* pliki, które są używane przez eksperymenty.
+Pobierz pliki dziennika, które są produkowane przez Azure Custom Decision Service oraz generować *.gz* pliki, które są używane przez eksperymentowanie w usłudze.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Python 3: Zainstalowane i ścieżki. Firma Microsoft zaleca 64-bitowej wersji do obsługi dużych plików.
-- *O Microsoft-ds* repozytorium: [sklonować repozytorium](https://github.com/Microsoft/mwt-ds).
-- *Obiektu blob magazynu azure* pakietu: Aby uzyskać szczegółowe informacje dotyczące instalacji, przejdź do [biblioteki Microsoft usługi Azure Storage dla języka Python](https://github.com/Azure/azure-storage-python#option-1-via-pypi).
-- Wprowadź parametry połączenia magazynu Azure w *mwt-ds/DataScience/ds.config*: wykonaj *my_app_id: my_connectionString* szablonu. Można określić wiele `app_id`. Po uruchomieniu `LogDownloader.py`, jeśli dane wejściowe `app_id` nie został znaleziony w `ds.config`, `LogDownloader.py` używa `$Default` parametry połączenia.
+- Python 3: Zainstalowana i w zmiennej path. Firma Microsoft zaleca 64-bitowej wersji do obsługi dużych plików.
+- *O Microsoft-ds* repozytorium: [Sklonuj repozytorium](https://github.com/Microsoft/mwt-ds).
+- *Obiektu blob magazynu azure* pakietu: Aby uzyskać szczegółowe informacje dotyczące instalacji, przejdź do [biblioteki usługi Microsoft Azure Storage dla języka Python](https://github.com/Azure/azure-storage-python#option-1-via-pypi).
+- Wprowadź parametry połączenia usługi Azure storage w *mwt-ds/DataScience/ds.config*: wykonaj *my_app_id: my_connectionString* szablonu. Można określić wiele `app_id`. Po uruchomieniu `LogDownloader.py`, jeśli dane wejściowe `app_id` nie zostanie znaleziony w `ds.config`, `LogDownloader.py` używa `$Default` parametry połączenia.
 
 ## <a name="usage"></a>Sposób użycia
 
-Przejdź do `mwt-ds/DataScience` i uruchom `LogDownloader.py` z odpowiednich argumentów, zgodnie z opisem w poniższym kodzie:
+Przejdź do `mwt-ds/DataScience` i uruchom `LogDownloader.py` z odpowiednimi argumentami, zgodnie z opisem w poniższym kodzie:
 
 ```cmd
 python LogDownloader.py [-h] -a APP_ID -l LOG_DIR [-s START_DATE]
@@ -41,33 +43,33 @@ python LogDownloader.py [-h] -a APP_ID -l LOG_DIR [-s START_DATE]
 
 | Dane wejściowe | Opis | Domyślne |
 | --- | --- | --- |
-| `-h`, `--help` | Pokaż komunikat pomocy i Zakończ. | |
-| `-a APP_ID`, `--app_id APP_ID` | Identyfikator aplikacji (oznacza to, że magazyn Azure blob nazwa kontenera). | Wymagane |
-| `-l LOG_DIR`, `--log_dir LOG_DIR` | Katalog podstawowy pobierania danych (podfolder zostanie utworzony).  | Wymagane |
-| `-s START_DATE`, `--start_date START_DATE` | Pobieranie Data (dołączony), w *RRRR-MM-DD* format. | `None` |
-| `-e END_DATE`, `--end_date END_DATE` | Pobieranie Data zakończenia (dołączony), w *RRRR-MM-DD* format. | `None` |
+| `-h`, `--help` | Pokaż komunikat pomocy i wyjścia. | |
+| `-a APP_ID`, `--app_id APP_ID` | Identyfikator aplikacji (czyli usługi Azure Storage blob nazwę kontenera). | Wymagane |
+| `-l LOG_DIR`, `--log_dir LOG_DIR` | Katalog podstawowy dla pobieranie danych (są tworzone).  | Wymagane |
+| `-s START_DATE`, `--start_date START_DATE` | Pobieranie rozpoczęcia (włączone), w *RRRR-MM-DD* formatu. | `None` |
+| `-e END_DATE`, `--end_date END_DATE` | Pobieranie Data zakończenia (włączone), w *RRRR-MM-DD* formatu. | `None` |
 | `-o OVERWRITE_MODE`, `--overwrite_mode OVERWRITE_MODE` | Tryb zastępowania do użycia. | |
 | | `0`: Nigdy nie należy zastępować; Poproś użytkownika, czy obiekty BLOB są obecnie używane. | Domyślne | |
-| | `1`: Monitowanie użytkownika o postępowania, gdy pliki mają różne rozmiary lub obiekty BLOB są obecnie używane. | |
-| | `2`: Zastąp zawsze; obiekty BLOB pobierania obecnie używane. | |
-| | `3`: Nigdy nie należy zastępować i dołączyć, jeśli rozmiar jest większy, bez pytania; obiekty BLOB pobierania obecnie używane. | |
-| | `4`: Nigdy nie należy zastępować i dołączyć, jeśli rozmiar jest większy, bez pytania; obiekty BLOB Pomiń obecnie używane. | |
-| `--dry_run` | Drukowanie, które obiekty BLOB może zostać pobrany, bez pobierania. | `False` |
-| `--create_gzip` | Utwórz *gzip* pliku Vowpal Wabbit. | `False` |
-| `--delta_mod_t DELTA_MOD_T` | Przedział czasu w sekundach, wykrywania, czy plik jest aktualnie używany. | `3600` s (`1` godziny) |
+| | `1`: Poproś użytkownika sposób kontynuować, jeśli pliki mają różne rozmiary, lub gdy obiekty BLOB są obecnie używane. | |
+| | `2`: Zawsze mają pierwszeństwo przed; Pobierz obiekty BLOB obecnie używane. | |
+| | `3`: Nigdy nie należy zastępować i dołączenia, jeśli rozmiar jest większy, bez monitowania; Pobierz obiekty BLOB obecnie używane. | |
+| | `4`: Nigdy nie należy zastępować i dołączenia, jeśli rozmiar jest większy, bez monitowania; Pomiń aktualnie używanego obiektów blob. | |
+| `--dry_run` | Drukowanie, które obiekty BLOB czy zostały pobrane, bez pobierania. | `False` |
+| `--create_gzip` | Tworzenie *gzip* pliku Vowpal Wabbit. | `False` |
+| `--delta_mod_t DELTA_MOD_T` | Przedział czasu w ciągu kilku sekund do wykrywania, czy plik jest obecnie w użyciu. | `3600` s (`1` godziny) |
 | `--verbose` | Drukowanie więcej szczegółów. | `False` |
-| `-v VERSION`, `--version VERSION` | Wersja narzędzia do pobierania dziennika do użycia. | |
-| | `1`: W przypadku niegotowane dzienniki (tylko w przypadku zgodności z poprzednimi wersjami). | Przestarzałe |
+| `-v VERSION`, `--version VERSION` | Wersja narzędzia do pobierania dzienników do użycia. | |
+| | `1`: W przypadku niegotowane dzienniki (tylko dla zgodności z poprzednimi wersjami). | Przestarzałe |
 | | `2`: W przypadku dzienników gotowe. | Domyślne |
 
 ### <a name="examples"></a>Przykłady
 
-Dla uruchomienia suchej pobierania wszystkich danych w kontenerze obiektu blob magazynu Azure Użyj następującego kodu:
+Do uruchomienia próbnego pobierania wszystkie dane w kontenerze obiektów blob usługi Azure Storage Użyj następującego kodu:
 ```cmd
 python LogDownloader.py -a your_app_id -l d:\data --dry_run
 ```
 
-Aby pobrać tylko dzienniki utworzone po 1 stycznia 2018 z `overwrite_mode=4`, użyj następującego kodu:
+Aby pobrać tylko dzienniki utworzone od 1 stycznia 2018 r. za pomocą `overwrite_mode=4`, użyj następującego kodu:
 ```cmd
 python LogDownloader.py -a your_app_id -l d:\data -s 2018-1-1 -o 4
 ```

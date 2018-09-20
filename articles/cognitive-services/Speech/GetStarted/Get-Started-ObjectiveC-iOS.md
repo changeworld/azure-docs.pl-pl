@@ -1,63 +1,64 @@
 ---
-title: Rozpoczynanie pracy z interfejsem API rozpoznawania mowy firmy Microsoft w języku Objective-C w systemie iOS | Dokumentacja firmy Microsoft
-description: Umożliwia tworzenie aplikacji systemu iOS, które przekonwertowana na tekst rozmowy audio API rozpoznawania mowy firmy Microsoft.
+title: Wprowadzenie do interfejsu API rozpoznawania mowy Bing w języku Objective C w systemie iOS | Dokumentacja firmy Microsoft
+titlesuffix: Azure Cognitive Services
+description: Tworzenie aplikacji dla systemu iOS, które Konwertuj dźwięk mówiony na tekst, należy użyć interfejsu API rozpoznawania mowy Bing.
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/29/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: bbb8d3975cdab537135b97ca9bbf6e845aa3fa0e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: af678ab1f63115d202214a754ad7afcb33b2f08a
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347444"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366628"
 ---
-# <a name="get-started-with-the-speech-recognition-api-in-objective-c-on-ios"></a>Rozpoczynanie pracy z interfejsem API rozpoznawania mowy w języku Objective-C w systemie iOS
+# <a name="quickstart-use-the-bing-speech-recognition-api-in-objective-c-on-ios"></a>Przewodnika Szybki Start: Użyj interfejs API rozpoznawania mowy Bing w języku Objective-C w systemie iOS
 
-Aplikacje systemu iOS, korzystających z usług chmurowych mowy można przekonwertować na tekst rozmowy audio można tworzyć przy użyciu interfejsu API rozpoznawania mowy. Interfejs API obsługuje przesyłania strumieniowego w czasie rzeczywistym, dzięki czemu aplikacja może jednocześnie i asynchronicznie otrzymywać wyniki częściowe rozpoznawania w tym samym czasie, który wysyła do usługi audio.
+Za pomocą interfejsu API rozpoznawania mowy można opracować aplikacje dla systemu iOS, które umożliwia konwertowanie dźwięku mówionego na tekst oparte na chmurze usługa rozpoznawania mowy. Interfejs API obsługuje przesyłanie strumieniowe w czasie rzeczywistym, dzięki czemu można równocześnie i asynchronicznie otrzymywać częściowe wyniki rozpoznawania na tym samym czasie, który wysyła audio do usługi aplikacji.
 
-W tym artykule wykorzystano przykładowej aplikacji, aby zademonstrować podstawy jak rozpocząć pracę z interfejsem API rozpoznawania mowy do opracowywania aplikacji systemu iOS. Pełną dokumentację interfejsu API, zobacz [informacje o bibliotece klienta SDK mowy](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html).
+W tym artykule używa przykładowej aplikacji, aby zademonstrować podstawy jak rozpocząć pracę z interfejsem API rozpoznawania mowy do opracowywania aplikacji systemu iOS. Aby uzyskać pełną dokumentację interfejsu API, zobacz [odwołanie do biblioteki klienta mowy SDK](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="platform-requirements"></a>Wymagania dotyczące platformy
 
-Upewnij się, czy zainstalowano Mac XCode IDE.
+Upewnij się, że środowisko IDE programu XCode Mac jest zainstalowany.
 
-### <a name="get-the-client-library-and-examples"></a>Pobierz klienta biblioteki i przykłady
+### <a name="get-the-client-library-and-examples"></a>Pobieranie klienta, biblioteki i przykłady
 
-Biblioteka klienta mowy i przykłady dla systemu iOS są dostępne na [mowy klient zestawu SDK dla systemu iOS](https://github.com/microsoft/cognitive-speech-stt-ios).
+Biblioteki klienta mowy i przykłady dla systemu iOS są dostępne w [mowy zestawu SDK klienta dla systemu iOS](https://github.com/microsoft/cognitive-speech-stt-ios).
 
-### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Subskrybowanie API rozpoznawania mowy i uzyskiwanie klucza bezpłatnej subskrypcji próbnej
+### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Subskrybowanie do interfejsu API rozpoznawania mowy i Uzyskaj klucz subskrypcji wersji próbnej
 
-Interfejs API mowy jest częścią usługi kognitywnych (wcześniej Oxford projektu). Możesz uzyskać klucze bezpłatnej subskrypcji próbnej z [subskrypcji usługi kognitywnych](https://azure.microsoft.com/try/cognitive-services/) strony. Po wybraniu interfejsu API mowy wybierz **uzyskać klucz interfejsu API** uzyskać klucza. Zwraca wartość klucza podstawowego i pomocniczego. Obydwu kluczy są powiązane z tego samego przydziału, dzięki czemu można użyć albo klucza.
+Interfejs API mowy jest częścią usług Cognitive Services (wcześniej Project Oxford). Możesz uzyskać bezpłatną subskrypcję próbną kluczy z [subskrypcji usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) strony. Po wybraniu interfejsu API rozpoznawania mowy, wybierz opcję **Uzyskaj klucz interfejsu API** można pobrać klucza. Zwraca klucz podstawowy i pomocniczy. Oba klucze są powiązane z tego samego limitu przydziału, aby można było używać żadnego z nich.
 
-Jeśli chcesz użyć *rozpoznawania z zamiarem*, należy zarejestrować się w celu [usługi inteligentnego opis języka (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
+Jeśli chcesz używać *uznanie z zamiarem*, należy również zarejestrować [Language Understanding Intelligent Service (LUIS)](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
 
 > [!IMPORTANT]
-> * Pobierz klucz subskrypcji. Zanim będzie można użyć bibliotek klienckich mowy, musisz mieć [klucza subskrypcji](https://azure.microsoft.com/try/cognitive-services/).
+> * Pobierz klucz subskrypcji. Korzystanie z biblioteki klienta mowy, konieczne jest posiadanie [klucz subskrypcji](https://azure.microsoft.com/try/cognitive-services/).
 >
-> * Użyj klucza subskrypcji. Z podanych iOS przykładowej aplikacji należy zaktualizować plik Samples/SpeechRecognitionServerExample/settings.plist kluczem subskrypcji. Aby uzyskać więcej informacji, zobacz [skompilować i uruchomić przykłady](#build-and-run-samples).
+> * Użyj klucza subskrypcji. Przy użyciu podanych dla systemu iOS przykładowej aplikacji musisz zaktualizować plik Samples/SpeechRecognitionServerExample/settings.plist z kluczem subskrypcji. Aby uzyskać więcej informacji, zobacz [kompilowanie i uruchamianie przykładów](#build-and-run-samples).
 
-## <a name="use-the-speech-client-library"></a>Użyj biblioteki klienckiej mowy
+## <a name="use-the-speech-client-library"></a>Korzystanie z biblioteki klienta mowy
 
-Aby dodać biblioteki klienta do projektu XCode, wykonaj następujące [instrukcje](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS#the-client-library).
+Aby dodać biblioteki klienckiej w projekcie XCode, postępuj zgodnie z tymi [instrukcje](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS#the-client-library).
 
 Aby znaleźć klienta odwołanie do biblioteki dla systemu iOS, zobacz [strony sieci Web](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html).
 
 ## <a name="build-and-run-samples"></a>Tworzenie i uruchamianie przykładów
 
-Aby uzyskać informacje na temat sposobu tworzenia i uruchamiania przykładów, zobacz [stronę README](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS#the-sample).
+Aby uzyskać informacje na temat sposobu tworzenia i uruchamiania przykładów, zobacz ten [stronę README](https://github.com/Azure-Samples/Cognitive-Speech-STT-iOS#the-sample).
 
 ## <a name="samples-explained"></a>Przykłady wyjaśniono
 
-### <a name="create-recognition-clients"></a>Utwórz rozpoznawania klientów
+### <a name="create-recognition-clients"></a>Tworzenie klientów do rozpoznawania
 
-Następujący kod w przykładzie przedstawiono sposób tworzenia klasy klienta rozpoznawanie na podstawie scenariuszy użytkowników:
+Poniższy kod w przykładzie przedstawiono sposób tworzenia klasy klienta rozpoznawanie na podstawie scenariuszy użytkowników:
 
 ```
 {
@@ -108,38 +109,38 @@ Następujący kod w przykładzie przedstawiono sposób tworzenia klasy klienta r
 
 ```
 
-Biblioteka klienta udostępnia wstępnie zaimplementowanym rozpoznawania klasy klienta dla typowych scenariuszy rozpoznawanie mowy:
+Biblioteka klienta zapewnia wstępnie zaimplementowano rozpoznawania klasy klienta dla typowych scenariuszy rozpoznawanie mowy:
 
-* `DataRecognitionClient`: Rozpoznawanie mowy z danymi PCM (na przykład z pliku lub audio źródła). Danych został podzielony na buforów, a każdy buforu jest wysyłane do usługi mowy. Żadnych modyfikacji odbywa się do buforów, dlatego użytkownicy mogą stosować własne wykrywania wyciszenia, w razie potrzeby. W przypadku danych z plików WAV można wysłać danych po prawej stronie pliku na serwerze. Jeśli masz nieprzetworzone dane, na przykład audio przesyłanych przez sieć Bluetooth, najpierw wysłać nagłówka formatu do serwera, a następnie dane.
-* `MicrophoneRecognitionClient`: Rozpoznawanie mowy pochodzące z mikrofon dźwięku. Upewnij się, że mikrofon jest włączony i danych z mikrofon jest wysyłane do usługi rozpoznawania mowy. Wbudowane "wyciszenia detektora" jest stosowany do danych mikrofon przed wysłaniem do usługi rozpoznawania.
-* `DataRecognitionClientWithIntent` i `MicrophoneRecognitionClientWithIntent`: oprócz rozpoznawania tekstu, te klienci będą zwracać strukturalnych informacji dotyczących przeznaczenia prelegenta, które aplikacje umożliwiające sterowanie dalsze akcje. Aby użyć "Opcje", musisz najpierw uczenia modelu przy użyciu [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
+* `DataRecognitionClient`: Usługa rozpoznawania mowy PCM danych (na przykład z pliku lub nagrania dźwiękowego źródła). Dane są dzielone na buforów, a każdy bufor są wysyłane do usługi rozpoznawania mowy. Brak możliwości modyfikacji odbywa się do buforów, dzięki czemu użytkownicy mogą stosować własne wykrywania wyciszenia, w razie potrzeby. Jeśli nie podano danych z plików WAV, umożliwia wysyłanie danych z prawej strony plików do serwera. Jeśli masz dane pierwotne, na przykład, audio, dostępne za pośrednictwem połączenia Bluetooth, najpierw wysyłasz nagłówka formatu do serwera, a następnie dane.
+* `MicrophoneRecognitionClient`: Usługa rozpoznawania mowy dźwięku z mikrofonu. Upewnij się, że mikrofon jest włączony i danych z mikrofonu są wysyłane do usługi rozpoznawania mowy. Wbudowane "wyciszenia detektora" są stosowane do danych mikrofonu, przed wysłaniem ich do usługi rozpoznawania.
+* `DataRecognitionClientWithIntent` i `MicrophoneRecognitionClientWithIntent`: oprócz rozpoznawanie tekstu, Ci klienci zwrócone ze strukturą informacje na temat zamiar osoby mówiącej, Twoje aplikacje mogą używać do dysku dalsze akcje. Aby użyć "Opcje", musisz najpierw wytrenuj model przy użyciu [LUIS](https://azure.microsoft.com/services/cognitive-services/language-understanding-intelligent-service/).
 
-### <a name="recognition-language"></a>Język rozpoznawania
+### <a name="recognition-language"></a>Rozpoznawania języka
 
-Jeśli używasz `SpeechRecognitionServiceFactory` można utworzyć klienta, musisz wybrać język. Aby uzyskać pełną listę języków obsługiwanych przez usługę mowy, zobacz [obsługiwanych języków](../API-Reference-REST/supportedlanguages.md).
+Kiedy używasz `SpeechRecognitionServiceFactory` tworzenia klienta, musisz wybrać język. Aby uzyskać pełną listę języków obsługiwanych przez usługę rozpoznawania mowy, zobacz [obsługiwane języki](../API-Reference-REST/supportedlanguages.md).
 
 ### <a name="speechrecognitionmode"></a>SpeechRecognitionMode
 
-Należy również określić `SpeechRecognitionMode` podczas tworzenia klienta z `SpeechRecognitionServiceFactory`:
+Należy także określić `SpeechRecognitionMode` po utworzeniu klienta z `SpeechRecognitionServiceFactory`:
 
-* `SpeechRecognitionMode_ShortPhrase`: Czas w sekundach utterance maksymalnie 15. Dane są wysyłane do usługi, klient otrzyma wyniki częściowe wielu oraz jeden wynik końcowy wiele opcji najlepiej n.
-* `SpeechRecognitionMode_LongDictation`: Utterance do dwóch minut long. Dane są wysyłane do usługi, klient otrzyma wielu wyniki częściowe oraz wielu wyników końcowych, oparte na którym serwer identyfikuje pauzy zdanie.
+* `SpeechRecognitionMode_ShortPhrase`: Wypowiedź maksymalnie 15 sekund długo. Ponieważ dane są wysyłane do usługi, klient odbierze wiele wyników częściowych i jeden wynik końcowy z wieloma opcjami n najlepszych.
+* `SpeechRecognitionMode_LongDictation`: Wypowiedź maksymalnie dwóch minut long. Ponieważ dane są wysyłane do usługi, klient odbierze wiele wyników częściowych i wiele wyników końcowych, w którym serwer identyfikuje wstrzymuje zdanie w oparciu.
 
 ### <a name="attach-event-handlers"></a>Dołącz procedury obsługi zdarzeń
 
-Możesz dołączyć różnych programów obsługi zdarzeń do klienta utworzonego:
+Różne programy obsługi zdarzeń można dołączyć do klienta został utworzony:
 
-* **Częściowe wyniki zdarzenia**: to zdarzenie jest wywoływana za każdym razem, gdy usługi mowy prognozuje, co możesz może być informujący o tym, nawet przed zakończeniem mówiąc (Jeśli używasz `MicrophoneRecognitionClient`) lub zakończenie wysyłania danych (Jeżeli używasz `DataRecognitionClient`).
-* **Zdarzenia błędu**: wywoływane, gdy usługa wykryje błąd.
-* **Zdarzenia konwersji**: wywoływana na klientach "WithIntent" (tylko w trybie ShortPhrase) po ostatnim rozpoznawania wyników jest analizowana w strukturze zamiar JSON.
-* **Powoduje zdarzenia**:
-  * W `SpeechRecognitionMode_ShortPhrase` tryb, to zdarzenie jest nazywany i zwraca n najlepsze wyniki, po zakończeniu mówiąc.
-  * W `SpeechRecognitionMode_LongDictation` trybie obsługi zdarzeń jest wywołana wiele razy, oparte na którym usługa identyfikuje zdanie pauzy.
-  * **Dla każdej opcji najlepiej n**, zwracane są wartości zaufania i kilka różnych metod rozpoznany. Aby uzyskać więcej informacji, zobacz [format danych wyjściowych](../Concepts.md#output-format).
+* **Częściowe wyniki zdarzeń**: to zdarzenie jest wywoływane za każdym razem, gdy usługi mowy przewiduje, użytkownik może być opinie, nawet zakończeniem wypowiedzi (Jeśli używasz `MicrophoneRecognitionClient`) lub zakończenie wysyłania danych (Jeśli używasz `DataRecognitionClient`).
+* **Zdarzenia błędu**: wywoływane, gdy usługa wykrywa błąd.
+* **Intencji zdarzenia**: wywoływana na klientach "WithIntent" (tylko w trybie ShortPhrase) po ostatnim rozpoznawania wynik jest przekształcany do ze strukturą intencji JSON.
+* **Wynik zdarzenia**:
+  * W `SpeechRecognitionMode_ShortPhrase` tryb, to zdarzenie jest wywoływana i zwraca wyniki n najlepszych, po zakończeniu mówić.
+  * W `SpeechRecognitionMode_LongDictation` tryb, program obsługi zdarzeń jest wywoływana wiele razy, oparte na którym usługa identyfikuje wstrzymuje zdania.
+  * **Dla każdej opcji n najlepszych**, zwracane są wartości zaufania i kilka różnych sposobów rozpoznany tekst. Aby uzyskać więcej informacji, zobacz [format danych wyjściowych](../Concepts.md#output-format).
 
 ## <a name="related-topics"></a>Powiązane tematy
 
-* [Informacje o bibliotece klienta dla systemu iOS](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html)
-* [Wprowadzenie do rozpoznawania mowy firmy Microsoft i/lub zamiar w języku Java w systemie Android](GetStartedJavaAndroid.md)
-* [Wprowadzenie do interfejsu API usługi Microsoft mowy w języku JavaScript](GetStartedJSWebsockets.md)
-* [Rozpoczynanie pracy z interfejsem API mowy Microsoft za pośrednictwem interfejsu REST](GetStartedREST.md)
+* [Dokumentacja biblioteki klienta dla systemu iOS](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-iOS/master/com.Microsoft.SpeechSDK-1_0-for-iOS.docset/Contents/Resources/Documents/index.html)
+* [Rozpoczynanie pracy z usługą rozpoznawania mowy firmy Microsoft i/lub przeznaczenie w języku Java w systemie Android](GetStartedJavaAndroid.md)
+* [Rozpoczynanie pracy z usługą Microsoft Speech API w języku JavaScript](GetStartedJSWebsockets.md)
+* [Wprowadzenie do interfejsu API mowy usługi Microsoft za pośrednictwem interfejsu REST](GetStartedREST.md)

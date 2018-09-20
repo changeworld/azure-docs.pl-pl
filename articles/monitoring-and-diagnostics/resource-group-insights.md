@@ -9,15 +9,15 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.author: daviste
-ms.openlocfilehash: 723006d37ed0570e32790a0bb70a3dce5a87ade8
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 7e0a68efc93d0f907edfb38dbc548ac95a35b3e1
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43345253"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465813"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Monitor grupy zasobów z usługą Azure Monitor (wersja zapoznawcza)
 
@@ -109,6 +109,11 @@ Wydajność oferuje swój własny galerii skoroszytów. W przypadku usługi App 
 W tym przypadku jeśli wybierzesz edycji pojawi się, że ten zestaw wizualizacji jest obsługiwana przez metryk usługi Azure Monitor.
 
  ![Zrzut ekranu przedstawiający widok wydajności z metryk usługi Azure](.\media\resource-group-insights\0012-performance-metrics.png)
+
+## <a name="troubleshooting"></a>Rozwiązywanie problemów
+
+### <a name="enabling-access-to-alerts"></a>Umożliwianie dostępu do alertów
+Usługa Azure Monitor dla grup zasobów wymaga pewnych uprawnień do dostępu do stanu alertu zasobów w grupie zasobów. Jeśli widzisz komunikat o błędzie podczas ładowania alertów, nie masz wystarczających uprawnień. Poproś administratora o udzielenie **właściciela** lub **Współautor** roli dla subskrypcji, zawierające grupa zasobów.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

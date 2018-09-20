@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/19/2018
 ms.author: sethm
 ms.reviewer: jeffgo
-ms.openlocfilehash: d09dec2f327d8b5911a4e55832ba106838c7ebc3
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 21fd3a33181542d86eccc4292ae68f7ce25e0a05
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42057681"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46366730"
 ---
 # <a name="azure-resource-manager-template-considerations"></a>Zagadnienia dotyczące szablonów usługi Azure Resource Manager
 
@@ -34,11 +34,13 @@ Szablon, który zamierzasz wdrożyć należy używać tylko usług Microsoft Azu
 
 ## <a name="public-namespaces"></a>Publiczne obszary nazw
 
-Ponieważ usługi Azure Stack znajduje się w centrum danych, ma przestrzenie nazw punktu końcowego innej usługi niż chmury publicznej platformy Azure. W rezultacie zapisane na stałe publiczne punkty końcowe w szablonach usługi Azure Resource Manager zakończyć się niepowodzeniem podczas próby wdróż je w usłudze Azure Stack. Można tworzyć dynamicznie przy użyciu punktów końcowych usługi *odwołania* i *łączenie* funkcji można pobrać wartości od dostawcy zasobów podczas wdrażania. Na przykład zamiast hardcoding *blob.core.windows.net* w szablonie, należy pobrać [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-simple-windows-vm/azuredeploy.json#L201) aby dynamicznie ustawić *osDisk.URI* punktu końcowego:
+Ponieważ usługi Azure Stack znajduje się w centrum danych, ma przestrzenie nazw punktu końcowego innej usługi niż chmury publicznej platformy Azure. W rezultacie zapisane na stałe publiczne punkty końcowe w szablonach usługi Azure Resource Manager zakończyć się niepowodzeniem podczas próby wdróż je w usłudze Azure Stack. Można tworzyć dynamicznie przy użyciu punktów końcowych usługi *odwołania* i *łączenie* funkcji można pobrać wartości od dostawcy zasobów podczas wdrażania. Na przykład zamiast hardcoding *blob.core.windows.net* w szablonie, należy pobrać [primaryEndpoints.blob](https://github.com/Azure/AzureStack-QuickStart-Templates/blob/master/101-vm-windows-create/azuredeploy.json#L175) aby dynamicznie ustawić *osDisk.URI* punktu końcowego:
 
-     "osDisk": {"name": "osdisk","vhd": {"uri":
-     "[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2015-06-15').primaryEndpoints.blob, variables('vmStorageAccountContainerName'),
-      '/',variables('OSDiskName'),'.vhd')]"}}
+```json
+"osDisk": {"name": "osdisk","vhd": {"uri":
+"[concat(reference(concat('Microsoft.Storage/storageAccounts/', variables('storageAccountName')), '2015-06-15').primaryEndpoints.blob, variables('vmStorageAccountContainerName'),
+ '/',variables('OSDiskName'),'.vhd')]"}}
+```
 
 ## <a name="api-versioning"></a>Obsługa wersji interfejsu API
 
@@ -54,7 +56,7 @@ Wersje usługi platformy Azure mogą się różnić między platformą Azure i u
 
 ## <a name="template-functions"></a>Funkcje szablonów
 
-Usługa Azure Resource Manager [funkcje](../../azure-resource-manager/resource-group-template-functions.md) zapewniają możliwości, które są wymagane do tworzenia dynamicznych szablonów. Na przykład można użyć funkcji zadań, takich jak:
+Usługa Azure Resource Manager [funkcje](../../azure-resource-manager/resource-group-template-functions.md) zapewniają możliwości, które są wymagane do tworzenia dynamicznych szablonów. Na przykład program funkcje zadań, takich jak:
 
 * Łączenie lub przycinanie ciągów.
 * Odwołuje się do wartości, z poziomu innych zasobów.
@@ -67,20 +69,22 @@ Te funkcje nie są dostępne w usłudze Azure Stack:
 
 ## <a name="resource-location"></a>Lokalizacja zasobu
 
-Szablony usługi Azure Resource Manager umożliwia umieść zasoby podczas wdrażania przez atrybut lokalizacji. Na platformie Azure lokalizacje dotyczą regionu zachodnie stany USA lub Ameryki Południowej. W usłudze Azure Stack lokalizacje są różne, ponieważ usługa Azure Stack znajduje się w centrum danych. Aby upewnić się, że szablony są możliwej między platformą Azure i usługi Azure Stack, powinny odwoływać lokalizację grupy zasobów, podczas wdrażania poszczególnych zasobów. Można to zrobić za pomocą `[resourceGroup().Location]` aby upewnić się, wszystkie zasoby dziedziczą lokalizację grupy zasobów. Poniższy fragment jest przykładem korzystania z tej funkcji podczas wdrażania konta magazynu:
+Użyj szablonów usługi Azure Resource Manager `location` atrybutu, aby umieścić zasoby podczas wdrażania. Na platformie Azure lokalizacje dotyczą regionu, takich jak zachodnie stany USA lub Ameryki Południowej. W usłudze Azure Stack lokalizacje są różne, ponieważ usługa Azure Stack znajduje się w centrum danych. Aby upewnić się, że szablony są niezbywalne między platformą Azure i usługi Azure Stack, powinny odwoływać lokalizację grupy zasobów, podczas wdrażania poszczególnych zasobów. Można to zrobić za pomocą `[resourceGroup().Location]` aby upewnić się, wszystkie zasoby dziedziczą lokalizację grupy zasobów. Poniższy kod jest przykładem korzystania z tej funkcji podczas wdrażania konta magazynu:
 
-    "resources": [
-    {
-      "name": "[variables('storageAccountName')]",
-      "type": "Microsoft.Storage/storageAccounts",
-      "apiVersion": "[variables('apiVersionStorage')]",
-      "location": "[resourceGroup().location]",
-      "comments": "This storage account is used to store the VM disks",
-      "properties": {
-      "accountType": "Standard_GRS"
-      }
-    }
-    ]
+```json
+"resources": [
+{
+  "name": "[variables('storageAccountName')]",
+  "type": "Microsoft.Storage/storageAccounts",
+  "apiVersion": "[variables('apiVersionStorage')]",
+  "location": "[resourceGroup().location]",
+  "comments": "This storage account is used to store the VM disks",
+  "properties": {
+  "accountType": "Standard_GRS"
+  }
+}
+]
+```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -1,21 +1,25 @@
 ---
-title: Tworzenie niestandardowych analizy dotyczące aplikacji usługi Azure IoT Central | Dokumentacja firmy Microsoft
-description: Operator jak utworzyć niestandardowe analizy dotyczące aplikacji usługi Azure IoT Central.
+title: Analizuj dane urządzenia w aplikacji usługi Azure IoT Central | Dokumentacja firmy Microsoft
+description: Analizuj dane urządzenia w aplikacji usługi Azure IoT Central.
 author: lmasieri
 ms.author: lmasieri
-ms.date: 08/26/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 0a78c534605b6eab08d5b12674689f0459e80b26
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: bf86e769aff4a9b03d5df1b1aef702814c605fa4
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247100"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46368090"
 ---
 # <a name="how-to-use-analytics-to-analyze-your-device-data"></a>Jak używać usługi analytics do analizowania danych urządzenia
+
+
+*Ten artykuł dotyczy operatorów, konstruktorów i administratorów.*
+
 
 Microsoft Azure IoT Central zapewnia bogate możliwości analizy możliwości mają sens dużych ilości danych z urządzeń. Aby rozpocząć pracę, odwiedź stronę **Analytics** w menu nawigacji po lewej stronie. 
 

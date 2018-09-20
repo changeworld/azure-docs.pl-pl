@@ -1,5 +1,6 @@
 ---
 title: Tekst na mowę interfejsu API usługi Microsoft Speech | Dokumentacja firmy Microsoft
+titlesuffix: Azure Cognitive Services
 description: Użyj zamiany tekstu na mowę interfejsu API, aby podać konwersji tekstu na mowę w czasie rzeczywistym w wielu różnych głosów i języków
 services: cognitive-services
 author: priyaravi20
@@ -7,14 +8,14 @@ manager: yanbo
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 03/16/2017
+ms.date: 09/18/2018
 ms.author: priyar
-ms.openlocfilehash: 6236bf1c4d9ac7ba672939543c16b8d02a79892e
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 1b8e13712d75920573104ba90dfea891b27370db
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41987487"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367937"
 ---
 # <a name="bing-text-to-speech-api"></a>Tekst do API rozpoznawania mowy Bing
 

@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 07/19/2018
-ms.openlocfilehash: 94d196ceecc0b63b9f0b0fe94f71363dc2086c30
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.date: 09/22/2018
+ms.openlocfilehash: b8d5208992e8f12fae3c010748b2c494e0d50ee8
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213654"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465661"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrowanie przy użyciu zrzutu i przywracania bazy danych PostgreSQL
 Możesz użyć [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) można wyodrębnić bazy danych PostgreSQL w pliku zrzutu i [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) przywrócenie bazy danych PostgreSQL z pliku archiwum, utworzone przez pg_dump.
@@ -57,6 +57,34 @@ W tym przykładzie należy przywrócić dane z pliku zrzutu **testdb.dump** do b
 ```bash
 pg_restore -v --no-owner --host=mydemoserver.postgres.database.azure.com --port=5432 --username=mylogin@mydemoserver --dbname=mypgsqldb testdb.dump
 ```
+
+## <a name="optimizing-the-migration-process"></a>Optymalizowanie procesu migracji
+
+Jednym ze sposobów migracji istniejącej bazy danych postgresql w warstwie do usługi Azure Database for postgresql w warstwie usługi jest tworzenie kopii zapasowej bazy danych w źródle i przywróć ją na platformie Azure. Aby zminimalizować czas wymagany do ukończenia migracji, należy wziąć pod uwagę przy użyciu następujących parametrów przy użyciu kopii zapasowej i przywracanie poleceń.
+
+> [!NOTE]
+> Aby uzyskać szczegółowe informacje o składni informacji, zobacz artykuły [pg_dump](https://www.postgresql.org/docs/9.6/static/app-pgdump.html) i [pg_restore](https://www.postgresql.org/docs/9.6/static/app-pgrestore.html).
+>
+
+### <a name="for-the-backup"></a>Dla kopii zapasowej
+- Utworzyć kopię zapasową z opcją -Fc przywracania można wykonać równolegle je przyspieszyć. Na przykład:
+
+    ```
+    pg_dump -h MySourceServerName -U MySourceUserName -Fc -d MySourceDatabaseName > Z:\Data\Backups\MyDatabaseBackup.dump
+    ```
+
+### <a name="for-the-restore"></a>Dla przywracania
+- Skopiuj pliki kopii zapasowej w sklepie systemu Azure blob/i wykonaj Przywracanie z tego miejsca. Powinna to być szybsze niż podczas przywracania w Internecie. 
+- Należy przeprowadzić już domyślnie, ale Otwieranie pliku zrzutu, aby sprawdzić, czy instrukcje tworzenia indeksu po wstawieniu danych. Jeśli nie jest wymagane, należy przenieść instrukcje tworzenia indeksu po wstawieniu danych.
+- Przywróć z przełącznikami -Fc i -j *#* równoległe przetwarzanie przywracania. *#* jest to liczba rdzeni na serwerze docelowym. Możesz też spróbować z *#* równa dwa razy liczbę rdzeni serwera docelowego, aby zobaczyć wpływ. Na przykład:
+
+    ```
+    pg_restore -h MyTargetServer.postgres.database.azure.com -U MyAzurePostgreSQLUserName -Fc -j 4 -d MyTargetDatabase Z:\Data\Backups\MyDatabaseBackup.dump
+    ```
+
+- Można również edytować plik zrzutu, dodając polecenie *Ustaw synchronous_commit = wyłączone;* na początku i polecenia *Ustaw synchronous_commit = on;* na końcu. Nie włączanie go na końcu, przed aplikacje zmiany danych, może spowodować utratę danych w kolejnych.
+
+Należy pamiętać, testować i weryfikować tych poleceń w środowisku testowym przed ich użyciem w środowisku produkcyjnym.
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Aby przeprowadzić migrację bazy danych PostgreSQL za pomocą eksportu i importu, zobacz [migracja bazy danych postgresql w warstwie użycie opcji eksportowania i importowania](howto-migrate-using-export-and-import.md).

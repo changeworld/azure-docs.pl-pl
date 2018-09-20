@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: dhruv
-ms.openlocfilehash: 8159a9eb8d8829ed01609cebc3ae41713892f6cf
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 6066462d0a7f31698745275c3c6d65c4e09d9cc5
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45630184"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364147"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Architektura łączności bazy danych Azure SQL 
 
@@ -51,13 +51,16 @@ Jeśli nawiązujesz połączenie spoza platformy Azure, Twoje połączenia mają
 ![Omówienie architektury](./media/sql-database-connectivity-architecture/connectivity-from-outside-azure.png)
 
 > [!IMPORTANT]
-> Podczas korzystania z punktów końcowych usługi za pomocą usługi Azure SQL Database zasad jest **Proxy** domyślnie. Aby włączyć łączność z wewnątrz sieci wirtualnej, należy zezwolić na połączenia wychodzące adresy IP bramy bazy danych SQL Azure określone na liście poniżej. Korzystając z punktów końcowych usługi zdecydowanie zaleca się zmianę zasad połączenia do **przekierowania** umożliwiające lepszą wydajność. W przypadku zmiany zasad połączenia do **przekierowania** nie będą wystarczające, aby umożliwić ruchu wychodzącego w sieciowej grupie zabezpieczeń do bramy usługi Azure SQLDB adresów IP wymienionych poniżej, musisz zezwolić na ruch wychodzący do wszystkich adresów IP SQLDB usługi Azure. Można to zrobić za pomocą tagów usługi sieciowej grupy zabezpieczeń (sieciowych grup zabezpieczeń). Aby uzyskać więcej informacji, zobacz [tagi usługi](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
+> Podczas korzystania z punktów końcowych usługi za pomocą usługi Azure SQL Database zasad jest **Proxy** domyślnie. Aby włączyć łączność z wewnątrz sieci wirtualnej, musisz zezwolić na połączenia wychodzące adresy IP bramy bazy danych SQL Azure określone na liście poniżej. Korzystając z punktów końcowych usługi zdecydowanie zaleca się zmianę zasad połączenia do **przekierowania** umożliwiające lepszą wydajność. W przypadku zmiany zasad połączenia do **przekierowania** nie będą wystarczające, aby umożliwić ruchu wychodzącego w sieciowej grupie zabezpieczeń do bramy usługi Azure SQLDB adresów IP wymienionych poniżej, musisz zezwolić na ruch wychodzący do wszystkich adresów IP SQLDB usługi Azure. Można to zrobić za pomocą tagów usługi sieciowej grupy zabezpieczeń (sieciowych grup zabezpieczeń). Aby uzyskać więcej informacji, zobacz [tagi usługi](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 ## <a name="azure-sql-database-gateway-ip-addresses"></a>Adresy IP bramy usługi Azure SQL Database
 
 Aby nawiązać połączenie z bazą danych Azure SQL z zasobami lokalnymi, należy zezwolić na wychodzący ruch sieciowy do bramy usługi Azure SQL Database dla regionu platformy Azure. Połączenia przejść tylko za pośrednictwem bramy podczas nawiązywania połączenia w trybie serwera Proxy, który jest domyślną kolekcją podczas nawiązywania połączenia z zasobami lokalnymi.
 
 Poniższa tabela zawiera listę podstawowych i pomocniczych adresów IP bramy usługi Azure SQL Database dla wszystkich obszarach danych. W niektórych regionach istnieją dwa adresy IP. W tych regionach podstawowy adres IP jest bieżący adres IP bramy, a drugi adres IP jest adresem IP trybu failover. Adres trybu failover jest adresem, do którego możemy przenieść serwer zapewnienie wysokiej dostępności usługi. W tych regionach zaleca się zezwolenie wychodzące adresy IP. Drugi adres IP jest własnością firmy Microsoft i nie będzie nasłuchiwać na wszystkie usługi, dopóki nie zostanie aktywowany przez usługę Azure SQL Database do akceptowania połączeń.
+
+> [!IMPORTANT]
+> Jeśli łączysz się z w obrębie platformy Azure będzie zasad połączenia **przekierowania** domyślnie (z wyjątkiem sytuacji, jeśli używasz punktów końcowych usługi). Nie będzie wystarczająca do następujących adresów IP. Musisz zezwolić na wszystkie adresy IP bazy danych SQL Azure. Jeśli połączenie jest nawiązywane z w obrębie sieci wirtualnej, można to zrobić za pomocą tagów usługi sieciowej grupy zabezpieczeń (sieciowych grup zabezpieczeń). Aby uzyskać więcej informacji, zobacz [tagi usługi](https://docs.microsoft.com/azure/virtual-network/security-overview#service-tags).
 
 | Nazwa regionu | Podstawowy adres IP | Adres IP pomocniczego |
 | --- | --- |--- |

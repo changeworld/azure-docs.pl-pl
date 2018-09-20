@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/26/2018
 ms.author: asmalser-msft
-ms.openlocfilehash: f069134c0665769316b794122cc077b05941f635
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: c645b0a99493c71a9fa1416c16876da30bcff891
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44346172"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367662"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Samouczek: Konfigurowanie usługi GitHub dla automatycznej aprowizacji użytkowników
 
@@ -80,7 +80,7 @@ Ta sekcja przeprowadzi Cię przez połączenie usługi Azure AD do konta użytko
 
     ![Okno dialogowe autoryzacji](./media/github-provisioning-tutorial/GitHub2.png)
 
-7. W witrynie Azure portal wprowadź **adres URL dzierżawy** i kliknij przycisk **Testuj połączenie** zapewniające usługi Azure AD connect można do swojej aplikacji w usłudze GitHub. Jeśli połączenie nie powiedzie się, upewnij się, Twoje konto usługi GitHub ma uprawnienia administratora i **adres URl dzierżawy** jest wprowadzona poprawnie, a następnie spróbuj ponownie w kroku "Autoryzuj" (może stanowić **adres URL dzierżawy** przez regułę: `https://api.github.com/scim/v2/<Organizations_name>` Możesz znaleźć swojej organizacji w ramach konta usługi GitHub: **ustawienia** > **organizacje**).
+7. W witrynie Azure portal wprowadź **adres URL dzierżawy** i kliknij przycisk **Testuj połączenie** zapewniające usługi Azure AD connect można do swojej aplikacji w usłudze GitHub. Jeśli połączenie nie powiedzie się, upewnij się, Twoje konto usługi GitHub ma uprawnienia administratora i **adres URl dzierżawy** jest wprowadzona poprawnie, a następnie spróbuj ponownie w kroku "Autoryzuj" (może stanowić **adres URL dzierżawy** przez regułę: `https://api.github.com/scim/v2/organizations/<Organization_name>` Możesz znaleźć swojej organizacji w ramach konta usługi GitHub: **ustawienia** > **organizacje**).
 
     ![Okno dialogowe autoryzacji](./media/github-provisioning-tutorial/GitHub3.png)
 

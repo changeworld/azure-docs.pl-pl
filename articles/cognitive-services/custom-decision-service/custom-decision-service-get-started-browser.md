@@ -1,27 +1,29 @@
 ---
-title: Wywołanie interfejsu API z poziomu przeglądarki - kognitywnych usług Azure | Dokumentacja firmy Microsoft
-description: Jak rozpocząć pracę z usługą decyzji niestandardowe Azure tak, aby zoptymalizować wywołań interfejsu API bezpośrednio w przeglądarce strony sieci Web.
+title: Wywoływanie interfejsu API z poziomu przeglądarki — Custom Decision Service
+titlesuffix: Azure Cognitive Services
+description: Jak zoptymalizować strony sieci Web, wywołań interfejsu API z przeglądarki do usługi Custom Decision Service.
 services: cognitive-services
 author: slivkins
-manager: slivkins
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
+ms.component: custom-decision-service
+ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: slivkins,marcozo,alekh
-ms.openlocfilehash: 10236c9d8f70d9b90a896464b4f86a847ee904c2
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 554b90efe1c646396597a722a74390e9048570ea
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349116"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363184"
 ---
 # <a name="call-api-from-a-browser"></a>Wywoływanie interfejsu API z przeglądarki
 
-Ten artykuł ułatwia wykonywanie wywołań do interfejsów API usługi Azure niestandardowe decyzji Service bezpośrednio z przeglądarki.
+Ten artykuł pomaga wykonywać wywołania interfejsów API usługi Azure Custom Decision usługi bezpośrednio w przeglądarce.
 
-Upewnij się, [zarejestrować aplikację](custom-decision-service-get-started-register.md), pierwszy.
+Pamiętaj, aby [Zarejestruj swoją aplikację](custom-decision-service-get-started-register.md)najpierw.
 
-Zacznijmy od początku. Aplikacja ma formę o stronę początkową, która łączy się kilka stron artykułów. Pierwsza strona używa usługi decyzji niestandardowe do określania kolejności stron artykułu. Wstaw następujący kod do head HTML front strony:
+Zaczynajmy. Aplikacja jest modelowane jako mające stronę początkową, który stanowi łącze do strony kilka artykułów. Pierwsza strona używa usługi Custom Decision Service do określania kolejności jej strony artykułu. Wstaw następujący kod do głowy HTML strony frontonu:
 
 ```html
 // Define the "callback function" to render UI
@@ -31,9 +33,9 @@ Zacznijmy od początku. Aplikacja ma formę o stronę początkową, która łąc
 <script src="https://ds.microsoft.com/api/v2/<appId>/rank/<actionSetId>" async></script>
 ```
 
-`data` Argument zawiera klasyfikację adresy URL do renderowania. Aby uzyskać więcej informacji, zobacz dokumentację [interfejsu API](custom-decision-service-api-reference.md).
+`data` Argument zawiera klasyfikacji adresy URL służące do renderowania. Aby uzyskać więcej informacji, zobacz odwołania [API](custom-decision-service-api-reference.md).
 
-Aby obsłużyć użytkownika kliknięcie istotny artykuł, należy wywołać następujący kod na stronie witryny:
+Aby obsłużyć użytkownika kliknięcie istotny artykuł, należy wywołać następujący kod na pierwszej stronie:
 
 ```javascript
 // call Reward API to report a click
@@ -43,9 +45,9 @@ $.ajax({
     contentType: "application/json" })
 ```
 
-W tym miejscu `data` jest argumentem `callback()` funkcji. Przykład wdrożenia znajduje się w tym [samouczek](custom-decision-service-tutorial-news.md#use-the-apis).
+W tym miejscu `data` jest argumentem `callback()` funkcji. Przykład wdrożenia można znaleźć w tym [samouczek](custom-decision-service-tutorial-news.md#use-the-apis).
 
-Na koniec należy podać akcji Ustaw interfejsu API, który zwraca listę artykułów (Akcje) uznany przez usługę decyzji niestandardowe. Implementuje ten interfejs API jako źródła danych RSS, jak pokazano poniżej:
+Na koniec należy podać akcji Ustaw interfejsu API, które zwraca listę artykułów (Akcje), aby zostały uznane za przez usługi Custom Decision Service. Implementuje ten interfejs API jako źródło danych RSS, jak pokazano poniżej:
 
 ```xml
 <rss version="2.0">
@@ -62,9 +64,9 @@ Na koniec należy podać akcji Ustaw interfejsu API, który zwraca listę artyku
 </rss>
 ```
 
-Tutaj każdy najwyższego poziomu `<item>` artykuł opisuje element. `<link>` Jest wymagana i jest używany jako identyfikator akcji przez usługę decyzji niestandardowe. Określ `<date>` (w formacie RSS), jeśli masz więcej niż 15 artykułów. 15 najnowsze artykuły są używane. `<title>` Jest opcjonalna i służy do tworzenia funkcjach tekstu artykułu.
+Tutaj każdy najwyższego poziomu `<item>` element zawiera opis artykułu. `<link>` Jest obowiązkowy i jest używany jako identyfikator akcji przez usługi Custom Decision Service. Określ `<date>` (w standardowym formacie RSS) Jeśli masz więcej niż 15 artykułów. 15 najnowsze artykuły są używane. `<title>` Jest opcjonalna i jest używany do tworzenia powiązanych z tekstem funkcji dla tego artykułu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Pracy za pośrednictwem [samouczek](custom-decision-service-tutorial-news.md) na pełniejsze przykład.
-* Zapoznaj się odwołanie [interfejsu API](custom-decision-service-api-reference.md) Aby dowiedzieć się więcej o funkcjach podana.
+* Trzymać się kolejności [samouczek](custom-decision-service-tutorial-news.md) bardziej szczegółowy przykład.
+* Zapoznaj się z odwołania [API](custom-decision-service-api-reference.md) Aby dowiedzieć się więcej o podanej funkcji.

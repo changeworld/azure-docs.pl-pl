@@ -13,12 +13,12 @@ ms.component: pim
 ms.date: 07/23/2018
 ms.author: rolyon
 ms.custom: pim ; H1Hack27Feb2017;oldportal;it-pro;
-ms.openlocfilehash: cf0c9b76a7edace9f2a9147823b292e218e20bf7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 63f4c4c48dd0fed3130dc99929a0e84c3cba2026
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300277"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46466051"
 ---
 # <a name="azure-ad-directory-roles-you-can-manage-in-pim"></a>Usługa Azure ról katalogu usługi AD, którymi można zarządzać w usłudze PIM
 <!-- **PLACEHOLDER: Need description of how this works. Azure PIM uses roles from MSODS objects.**-->
@@ -34,20 +34,20 @@ Nie ma żadnej różnicy w programie access poświęcić osobę z trwałe i kwal
 ## <a name="roles-managed-in-pim"></a>Role zarządzane w usłudze PIM
 Privileged Identity Management umożliwia przypisywanie użytkowników do typowych ról administratora, w tym:
 
-* **Administrator globalny** (znanego również jako administrator firmy) ma dostęp do wszystkich funkcji administracyjnych. Może mieć więcej niż jednego administratora globalnego w organizacji. Osoba, która zarejestruje się w celu zakupu usługi Office 365, automatycznie staje się administratorem globalnym.
+* **Administrator globalny** (znanego również jako Administrator firmy) ma dostęp do wszystkich funkcji administracyjnych. Może mieć więcej niż jednego administratora globalnego w organizacji. Osoba, która zarejestruje się w celu zakupu usługi Office 365, automatycznie staje się administratorem globalnym.
 * **Administrator ról uprzywilejowanych** zarządza usługa Azure AD PIM i aktualizuje przypisania roli dla innych użytkowników.  
 * **Administrator rozliczeń** dokonuje zakupów, zarządza subskrypcjami, zarządza biletami pomocy technicznej i monitoruje kondycję usługi.
-* **Administrator haseł** Resetuje hasła, zarządza żądaniami obsługi i monitoruje kondycję usługi. Administratorzy haseł mogą jedynie resetować hasła użytkowników.
+* **Administrator haseł** Resetuje hasła, zarządza żądaniami obsługi i monitoruje kondycję usługi. Administratorzy haseł są ograniczone do resetowania haseł dla użytkowników.
 * **Administrator usługi** zarządza żądaniami obsługi i monitoruje kondycję usługi.
   
   > [!NOTE]
-  > Jeśli używasz usługi Office 365, następnie przed przypisaniem roli administratora usługi dla użytkownika, najpierw Przypisz użytkownika uprawnień administracyjnych do usługi, takich jak Exchange Online.
+  > Jeśli używasz usługi Office 365, następnie przed przypisaniem roli administratora usługi dla użytkownika, najpierw przypisać uprawnienia administracyjne do usługi, takich jak Exchange Online.
   > 
   > 
-* **Administrator zarządzający użytkownikami** Resetuje hasła, monitoruje kondycję usługi oraz zarządza kontami użytkowników, grup użytkowników i żądania obsługi. Administrator zarządzający użytkownikami nie można usunąć administratora globalnego, tworzyć innych ról administratora ani resetować haseł rozliczeń, globalnych i administratorów usługi.
+* **Administrator użytkowników** Resetuje hasła, monitoruje kondycję usługi oraz zarządza kontami użytkowników, grup użytkowników i żądania obsługi. Administrator użytkowników nie może usunąć administratora globalnego, tworzyć innych ról administratora lub resetowanie haseł, rozliczeń, globalnych i administratorów usług.
 * **Administrator programu Exchange** ma dostęp administracyjny do usługi Exchange Online za pośrednictwem Centrum administracyjnego programu Exchange (EAC) i mogą wykonywać niemal dowolne zadanie w usłudze Exchange Online.
-* **Administrator programu SharePoint (wersja zapoznawcza)** ma dostęp administracyjny do usługi SharePoint Online za pośrednictwem Centrum administracyjnego programu SharePoint Online i mogą wykonywać niemal dowolne zadanie w usłudze SharePoint Online. Ta rola jest obecnie w wersji zapoznawczej. Uprawnieni użytkownicy mogą wystąpić opóźnienia, po aktywowaniu w usłudze PIM przy użyciu tej roli w programie SharePoint.
-* **Skype dla firm administratora** ma dostęp administracyjny do usługi Skype dla firm za pomocą programu Skype dla firm Centrum administracyjnego i może wykonywać niemal wszystkich zadań w programie Skype dla firm Online.
+* **Administrator usługi SharePoint** ma dostęp administracyjny do usługi SharePoint Online za pośrednictwem Centrum administracyjnego programu SharePoint Online i mogą wykonywać niemal dowolne zadanie w usłudze SharePoint Online. Uprawnieni użytkownicy mogą wystąpić opóźnienia, po aktywowaniu w usłudze PIM przy użyciu tej roli w programie SharePoint.
+* **Skype dla administratora firmy** ma dostęp administracyjny do usługi Skype dla firm za pomocą programu Skype dla firm Centrum administracyjnego i może wykonywać niemal wszystkich zadań w programie Skype dla firm Online.
 
 Przeczytaj następujące artykuły, aby uzyskać więcej informacji o [przypisywanie ról administratorów w usłudze Azure AD](../users-groups-roles/directory-assign-admin-roles.md) i [przypisywanie ról administratora w usłudze Office 365](https://support.office.com/article/Assigning-admin-roles-in-Office-365-eac4d046-1afd-4f1a-85fc-8219c79e1504).
 

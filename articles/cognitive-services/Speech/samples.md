@@ -1,5 +1,6 @@
 ---
-title: Przykłady dotyczące korzystania z usługi rozpoznawania mowy firmy Microsoft | Dokumentacja firmy Microsoft
+title: Przykłady dotyczące korzystania z funkcji rozpoznawania mowy Bing | Dokumentacja firmy Microsoft
+titlesuffix: Azure Cognitive Services
 description: Przykłady dotyczące korzystania z usługa mowy firmy Microsoft, która konwertuje dźwięk mówiony na tekst.
 services: cognitive-services
 author: zhouwangzw
@@ -7,18 +8,18 @@ manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/15/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 20ffba69d9f0f5b6648b19967c086e23e1dcb923
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 29000e67109a49991f8c5488843b2b379f689633
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "41988802"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367684"
 ---
-# <a name="microsoft-speech-client-samples"></a>Przykłady klienta mowy firmy Microsoft
+# <a name="bing-speech-client-samples"></a>Przykłady klienta rozpoznawania mowy Bing
 
-Usługa Microsoft Speech Service zawiera przykłady end-to-end, przedstawiający sposób użycia interfejsu API rozpoznawania mowy firmy Microsoft w różnych przypadków użycia, na przykład polecenie rozpoznawania ciągłe, wyróżnień i wykrywanie intencji. Wszystkie przykłady są dostępne w witrynie GitHub i można go pobrać za pomocą następujących łączy: README.md w każdym repozytorium, jak również [biblioteki klienckie](GetStarted/GetStartedClientLibraries.md) strony zawierają szczegółowe informacje o sposobie tworzenia i uruchamiania przykładów należy.
+Rozpoznawania mowy Bing udostępnia przykłady end-to-end, aby zademonstrować różnych przypadków użycia, na przykład polecenie rozpoznawania ciągłe, wyróżnień i wykrywanie intencji. Wszystkie przykłady są dostępne w witrynie GitHub i można go pobrać za pomocą następujących łączy: README.md w każdym repozytorium, jak również [biblioteki klienckie](GetStarted/GetStartedClientLibraries.md) strony zawierają szczegółowe informacje o sposobie tworzenia i uruchamiania przykładów należy.
 
 - [Przykłady interfejsu API REST](https://github.com/Azure-Samples/SpeechToText-REST)
 

@@ -1,7 +1,7 @@
 ---
-title: Niestandardowe wyszukiwania zestawu SDK C# Szybki Start | Dokumentacja firmy Microsoft
+title: Niestandardowe wyszukiwanie zestawu SDK języka C# Szybki Start | Dokumentacja firmy Microsoft
 titleSuffix: Cognitive Services
-description: Konfiguracja aplikacji konsoli niestandardowe wyszukiwania zestawu SDK C#.
+description: Skonfiguruj aplikację konsolową niestandardowego wyszukiwania zestawu SDK C#.
 services: cognitive-services
 author: mikedodaro
 manager: rosh
@@ -10,47 +10,48 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 01/31/2018
 ms.author: rosh
-ms.openlocfilehash: 59b208b53bec974433c50c0e2304dc96bd9bd09e
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 6b41dfbde0c2af776ee2c35220f731e40de334a0
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346900"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367852"
 ---
-# <a name="custom-search-sdk-c-quickstart"></a>Niestandardowe wyszukiwania zestawu SDK C# Szybki Start
+# <a name="custom-search-sdk-c-quickstart"></a>Zestaw SDK funkcji wyszukiwania niestandardowego w języku C# — Szybki start
 
-Zestaw SDK wyszukiwania usługi Bing niestandardowe zawiera funkcje interfejsu API REST dla encji wyszukiwania i analizowania wyników.
+Zestaw SDK wyszukiwanie niestandardowe Bing zawiera funkcje interfejsu API REST, wyszukiwanie jednostek i analizowanie wyników.
 
+Kod źródłowy, w tym przykładzie jest dostępny z [Github](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingCustomWebSearch).
 ## <a name="application-dependencies"></a>Zależności aplikacji
 
-Aby skonfigurować aplikację konsoli przy użyciu zestawu SDK wyszukiwania usługi Bing niestandardowych, przejdź do `Manage NuGet Packages` opcji z Eksploratora rozwiązań w programie Visual Studio. Dodaj `Microsoft.Azure.CognitiveServices.Search.CustomSearch` pakietu.
+Aby skonfigurować aplikację konsoli przy użyciu zestawu SDK programu Bing Custom Search, przejdź do `Manage NuGet Packages` opcji z poziomu Eksploratora rozwiązań w programie Visual Studio. Dodaj pakiet `Microsoft.Azure.CognitiveServices.Search.CustomSearch`.
 
-Instalowanie [wyszukiwanie niestandardowe NuGet](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) pakiet instaluje również zależności, łącznie z następujących zestawów:
+Instalowanie [NuGet Custom Search](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.CustomSearch/1.2.0) pakiet instaluje również zależności, w tym następujących zestawów:
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
 * Newtonsoft.Json
 
-## <a name="entity-search-client"></a>Jednostka wyszukiwania klienta
+## <a name="entity-search-client"></a>Jednostki wyszukiwania klienta
 
-Aby utworzyć wystąpienie klienta CustomSearchAPI, Dodaj dyrektyw using:
+Aby utworzyć wystąpienia klienta CustomSearchAPI, dodawanie dyrektyw using:
 ```
 using Microsoft.Azure.CognitiveServices.Search.CustomSearch;
 
 ```
 
-Wystąpienia klienta wyszukiwania niestandardowego: Zastąp `YOUR-CUSTOM-SEARCH-KEY` i `YOUR-CUSTOM-CONFIG-ID` identyfikator przypisany w konfiguracji punktu końcowego interfejsu API i klucz dostępu do [Moje wystąpień](https://www.customsearch.ai/).
+Utwórz wystąpienie klienta wyszukiwania niestandardowego: Zastąp `YOUR-CUSTOM-SEARCH-KEY` i `YOUR-CUSTOM-CONFIG-ID` swoim kluczem dostępu i konfiguracji punktu końcowego interfejsu API, identyfikator przypisany na [Moje wystąpienia](https://www.customsearch.ai/).
 ```
 var client = new CustomSearchAPI(new ApiKeyServiceClientCredentials("YOUR-CUSTOM-SEARCH-KEY"));
 
 ```
-Przy użyciu klienta do wyszukiwania tekstu zapytania:
+Użyj klienta, aby wyszukać tekst zapytania:
 ```
 var webData = client.CustomInstance.SearchAsync(query: "Xbox", customConfig: Int32.Parse("YOUR-CUSTOM-CONFIG-ID")).Result;
 
 ```
-## <a name="parse-the-results"></a>Wyniki analizy
+## <a name="parse-the-results"></a>Analizowanie wyników
 
-`SearchAsync` Metoda zwraca `WebData` obiekt, który zawiera `WebPages` Jeśli żadnego nie znaleziono dla zapytania. Ten kod znajduje pierwszy wynik i pobiera jego `Name` i `URL`.
+`SearchAsync` Metoda zwraca `WebData` obiekt, który zawiera `WebPages` Jeśli jakaś zostanie znaleziona dla zapytania. Ten kod umożliwia znalezienie pierwszego wyniku i pobiera jego `Name` i `URL`.
 ```
 var webData = client.CustomInstance.SearchAsync(query: "Xbox", customConfig: Int32.Parse("YOUR-CUSTOM-CONFIG-ID")).Result;
  
@@ -79,9 +80,9 @@ else
 }
 
 ```
-## <a name="complete-console-application"></a>Aplikacja konsolowa ukończone
+## <a name="complete-console-application"></a>Kompletna aplikacja konsolowa
 
-Poniższy kod wyszukuje w zapytaniu "Xbox" i drukowania `Name` i `URL` do pierwszego wyniku sieci web.
+Poniższy kod wyszukuje zapytania "Xbox" i wyświetla `Name` i `URL` dla pierwszego wyniku sieci web.
 ```
 using System;
 using System.Linq;
@@ -141,4 +142,4 @@ namespace CustomSrchSDK
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Usługi kognitywnych przykłady zestawu .NET SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)
+[Cognitive services .NET SDK samples (Przykłady zestawów SKD .NET usług Cognitive Services)](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

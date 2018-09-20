@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 04/19/2018
 ms.author: jingwang
-ms.openlocfilehash: f47e85b47f262e30e9160f11604220aa8055be5d
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 10867974c6f1c3fae6965b1888db3c4448b26a38
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701721"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364110"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Kopiowanie danych z bazy danych HBase za pomocą usługi Azure Data Factory 
 
@@ -45,7 +45,7 @@ Następujące właściwości są obsługiwane dla bazy danych HBase, połączone
 | type | Właściwość type musi być równa: **bazy danych HBase** | Yes |
 | host | Adres IP lub hosta nazwę serwera bazy danych HBase. (tj.)  `[clustername].azurehdinsight.net`, "192.168.222.160·)  | Yes |
 | port | Port TCP używany przez wystąpienie bazy danych HBase do nasłuchiwania połączeń klientów. Wartość domyślna to 9090. Jeśli łączysz się Azure HDInsights, należy określić port ustawiony na 443. | Nie |
-| httpPath | Częściowe adres URL serwera bazy danych HBase. (czyli `/hbaserest0`)  | Nie |
+| httpPath | Częściowe adres URL serwera bazy danych HBase, np. `/hbaserest0` przy użyciu klaster HDInsights. | Nie |
 | Element authenticationType | Mechanizm uwierzytelniania na potrzeby łączenia się z serwerem bazy danych HBase. <br/>Dozwolone wartości to: **anonimowe**, **podstawowe** | Yes |
 | nazwa użytkownika | Nazwa użytkownika, używany do łączenia się z wystąpieniem bazy danych HBase.  | Nie |
 | hasło | Hasło odpowiadający nazwie użytkownika. Oznacz to pole jako SecureString, aby bezpiecznie przechowywać w usłudze Data Factory lub [odwołanie wpisu tajnego przechowywanych w usłudze Azure Key Vault](store-credentials-in-key-vault.md). | Nie |
@@ -56,7 +56,7 @@ Następujące właściwości są obsługiwane dla bazy danych HBase, połączone
 | connectVia | [Środowiska Integration Runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. Używając środowiskiem Integration Runtime lub Azure Integration Runtime (Jeśli magazyn danych jest publicznie dostępny). Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
 >[!NOTE]
->Jeśli klaster nie obsługuje trwałych sesji, takich jak HDInsight, należy jawnie dodać indeksu węzła na końcu ustawienia ścieżki http, np. Określ `/hbaserest0` zamiast `/hbaserest`.
+>Jeśli klaster nie obsługuje trwałych sesji, np. HDInsight, należy jawnie dodać indeksu węzła na końcu ustawienia ścieżki http, np. Określ `/hbaserest0` zamiast `/hbaserest`.
 
 **Przykład dotyczący HDInsights bazy danych HBase:**
 

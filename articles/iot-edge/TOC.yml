@@ -42,6 +42,8 @@ items:
   items:
   - name: Środowisko uruchomieniowe usługi IoT Edge
     href: iot-edge-runtime.md
+  - name: Certyfikaty usługi IoT Edge
+    href: iot-edge-certs.md
   - name: Moduły usługi IoT Edge
     href: iot-edge-modules.md
     items:
@@ -56,8 +58,9 @@ items:
   - name: Urządzenie IoT Edge jako brama
     href: iot-edge-as-gateway.md
   - name: Bezpieczeństwo
-    href: security.md
     items:
+    - name: Zabezpieczanie usługi Azure IoT Edge
+      href: security.md
     - name: Menedżer zabezpieczeń usługi IoT Edge
       href: iot-edge-security-manager.md
   - name: Obsługa platform
@@ -204,9 +207,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 5df1ba3edec8108d1fd869778cf0e009296c3e92
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: d2dcc4e642e997903c01b6b375505e88e412d57b
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543915"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46294479"

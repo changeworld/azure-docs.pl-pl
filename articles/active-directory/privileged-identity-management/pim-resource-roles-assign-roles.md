@@ -14,12 +14,12 @@ ms.component: pim
 ms.date: 08/30/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 7b82be6cdc8b64595c11eef84e8071fad9c07191
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: daf83baf5f5c3a2b7bbfe39e043e2b8411d6dd06
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665467"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465779"
 ---
 # <a name="assign-azure-resource-roles-in-pim"></a>Przypisz role zasobów platformy Azure w usłudze PIM
 
@@ -32,7 +32,7 @@ Usługa Azure AD PIM można zarządzać ról wbudowanych zasobów platformy Azur
 - Menedżer zabezpieczeń i nie tylko
 
 >[!NOTE]
-Użytkownicy lub członkowie grupy przypisane do roli właściciel lub Administrator dostępu użytkowników i administratorów globalnych, które umożliwiają Zarządzanie subskrypcją w usłudze Azure AD są administratorami zasobów. Administratorzy mogą przypisać role, konfigurowanie ustawień roli i przegląd dostępu za pomocą usługi PIM dla zasobów platformy Azure. Wyświetl listę [wbudowane role zasobów platformy Azure](../../role-based-access-control/built-in-roles.md).
+Użytkownicy lub członkowie grupy przypisane do roli właściciel lub Administrator dostępu użytkowników i administratorów globalnych, które umożliwiają Zarządzanie subskrypcją w usłudze Azure AD są administratorami zasobów. Administratorzy mogą Przypisz role, konfigurowanie ustawień roli i przeglądu dostępu przy użyciu usługi PIM dla zasobów platformy Azure. Wyświetl listę [wbudowane role zasobów platformy Azure](../../role-based-access-control/built-in-roles.md).
 
 ## <a name="assign-a-role"></a>Przypisywanie roli
 

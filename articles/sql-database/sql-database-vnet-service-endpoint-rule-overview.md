@@ -8,15 +8,15 @@ author: DhruvMsft
 manager: craigg
 ms.custom: VNet Service endpoints
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 09/18/2018
 ms.reviewer: vanto
 ms.author: dmalik
-ms.openlocfilehash: e1c05b56a1a7cc57b4d85d696df324438d916f11
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 51a9c1e2528833f0931e0bff30a9ec8a78eb99e0
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720728"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367342"
 ---
 # <a name="use-virtual-network-service-endpoints-and-rules-for-azure-sql-database-and-sql-data-warehouse"></a>Na użytek punktów końcowych usługi sieci wirtualnej i zasady usługi Azure SQL Database i SQL Data Warehouse
 
@@ -125,7 +125,7 @@ Masz możliwość korzystania z [kontroli dostępu opartej na rolach (RBAC)] [ r
 
 Usługi Azure SQL Database funkcja reguł sieci wirtualnej ma następujące ograniczenia:
 
-- Aplikacja sieci Web mogą być mapowane na prywatny adres IP w sieci wirtualnej/podsieci. Nawet wtedy, gdy punkty końcowe usługi są włączone w danej sieci wirtualnej/podsieci, połączeń z serwerem z aplikacji sieci Web będzie źródło IP publicznej platformy Azure nie źródło sieci wirtualnej/podsieci. Aby włączyć łączność z aplikacji sieci Web na serwerze, który ma reguły zapory sieci wirtualnej, musisz mieć **Zezwalaj na wszystkie usługi systemu Azure** na serwerze.
+- Aplikacja sieci Web mogą być mapowane na prywatny adres IP w sieci wirtualnej/podsieci. Nawet wtedy, gdy punkty końcowe usługi są włączone w danej sieci wirtualnej/podsieci, połączeń z serwerem z aplikacji sieci Web będzie źródło IP publicznej platformy Azure nie źródło sieci wirtualnej/podsieci. Aby włączyć łączność z aplikacji sieci Web na serwerze, który ma reguły zapory sieci wirtualnej, musisz mieć **Zezwalaj na usługi platformy Azure na dostęp do serwera** na serwerze.
 
 - W zaporze dla usługi SQL Database każda reguła sieci wirtualnej odwołuje się do podsieci. Te odwołania podsieci muszą być hostowane w tym samym regionie geograficznym, który jest hostem bazy danych SQL.
 
@@ -157,23 +157,23 @@ FYI: Re ARM, 'Azure Service Management (ASM)' was the old name of 'classic deplo
 When searching for blogs about ASM, you probably need to use this old and now-forbidden name.
 -->
 
-## <a name="impact-of-removing-allow-all-azure-services"></a>Wpływ usunięcia "Zezwalaj na wszystkie usługi platformy Azure"
+## <a name="impact-of-removing-allow-azure-services-to-access-server"></a>Wpływ usunięcia "Zezwalaj na platformie Azure usługi dostępu do serwera"
 
-Wielu użytkowników ma zostać usunięty **Zezwalaj na wszystkie usługi platformy Azure** ze swoich serwerów SQL platformy Azure i zastąp go reguła zapory sieci wirtualnej.
+Wielu użytkowników ma zostać usunięty **Zezwalaj na usługi platformy Azure na dostęp do serwera** ze swoich serwerów SQL platformy Azure i zastąp go reguła zapory sieci wirtualnej.
 Jednak usunięcie to ma wpływ na następujące funkcje SQLDB platformy Azure:
 
 #### <a name="import-export-service"></a>Usługa eksportu importu
-SQLDB importu eksportowania usługa działa na maszynach wirtualnych na platformie Azure. Te maszyny wirtualne nie znajdują się w sieci wirtualnej i dlatego Uzyskaj adres IP platformy Azure podczas nawiązywania połączenia z bazą danych. Na temat usuwania **Zezwalaj na wszystkie usługi platformy Azure** te maszyny wirtualne nie będą mogli korzystać z bazy danych.
+SQLDB importu eksportowania usługa działa na maszynach wirtualnych na platformie Azure. Te maszyny wirtualne nie znajdują się w sieci wirtualnej i dlatego Uzyskaj adres IP platformy Azure podczas nawiązywania połączenia z bazą danych. Na temat usuwania **Zezwalaj na usługi platformy Azure na dostęp do serwera** te maszyny wirtualne nie będą mogli korzystać z bazy danych.
 Można obejść ten problem. Uruchom importowanie pliku BACPAC lub wyeksportuj go bezpośrednio w kodzie za pomocą interfejsu API DACFx. Upewnij się, że został wdrożony na maszynie wirtualnej, który znajduje się w podsieci sieci wirtualnej dla którego ustawiono regułę zapory.
 
 #### <a name="sql-database-query-editor"></a>Edytor zapytań bazy danych SQL
-Edytor zapytań bazy danych SQL Azure jest wdrażany na maszynach wirtualnych na platformie Azure. Te maszyny wirtualne nie są dostępne w sieci wirtualnej. W związku z tym maszyn wirtualnych Uzyskaj adres IP platformy Azure podczas nawiązywania połączenia z bazą danych. Na temat usuwania **Zezwalaj na wszystkie usługi platformy Azure**te maszyny wirtualne nie będą mogli korzystać z bazy danych.
+Edytor zapytań bazy danych SQL Azure jest wdrażany na maszynach wirtualnych na platformie Azure. Te maszyny wirtualne nie są dostępne w sieci wirtualnej. W związku z tym maszyn wirtualnych Uzyskaj adres IP platformy Azure podczas nawiązywania połączenia z bazą danych. Na temat usuwania **Zezwalaj na usługi platformy Azure na dostęp do serwera**te maszyny wirtualne nie będą mogli korzystać z bazy danych.
 
 #### <a name="table-auditing"></a>Inspekcji tabel
 Obecnie istnieją dwa sposoby włączania inspekcji usługi SQL Database. Inspekcja tabeli kończy się niepowodzeniem, po włączeniu punktów końcowych usługi na serwerze SQL platformy Azure. Środki zaradcze w tym miejscu jest przenoszenie z inspekcji obiektów Blob.
 
 #### <a name="impact-on-data-sync"></a>Wpływ na synchronizowanie danych
-Usługa Azure SQLDB ma funkcji Data Sync, który nawiązuje połączenie z baz danych przy użyciu adresów IP usługi Azure. Korzystając z punktów końcowych usługi, prawdopodobnie spowoduje wyłączenie **Zezwalaj na wszystkie usługi platformy Azure** dostęp do serwera logicznego. Spowoduje to przerwanie funkcji Data Sync.
+Usługa Azure SQLDB ma funkcji Data Sync, który nawiązuje połączenie z baz danych przy użyciu adresów IP usługi Azure. Korzystając z punktów końcowych usługi, prawdopodobnie spowoduje wyłączenie **Zezwalaj na usługi platformy Azure na dostęp do serwera** dostęp do serwera logicznego. Spowoduje to przerwanie funkcji Data Sync.
 
 ## <a name="impact-of-using-vnet-service-endpoints-with-azure-storage"></a>Wpływ za pomocą punktów końcowych usługi sieci wirtualnej z usługą Azure storage
 

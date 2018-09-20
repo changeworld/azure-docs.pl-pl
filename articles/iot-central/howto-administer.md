@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: a43febf1e78f80451b6aeed19e095b2c313d3216
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: adcc0b741cac0ac5038243c80b3da2e0ff872c95
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284857"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46466102"
 ---
 # <a name="how-to-administer-your-application"></a>Jak zarządzać aplikacją
 
@@ -168,6 +168,23 @@ Domyślnie wszystkie bezpłatne wersje próbne są dostępne przez 7 dni. Jeśli
 1. Kliknij przycisk **Rozszerz wersję próbną**. W oknie podręcznym wybierz odpowiednią dzierżawy usługi Azure Active Directory, a następnie subskrypcji platformy Azure do użytku aplikacji IoT Central:
 
 1. Następnie kliknij przycisk **Rozszerz**. Twój okres próbny teraz jest ważne przez 30 dni.
+
+## <a name="utilize-the-azure-sdks-to-do-control-plane-operations"></a>Korzystanie z zestawów SDK usługi Azure do sterowania operacjami płaszczyzny
+
+Pakiety zestawu SDK IoT Central usługi Azure Resource Manager są dostępne dla węzła, Python, C#, Ruby, Java i z rzeczywistym użyciem. Te biblioteki obsługi operacje warstwy kontroli IoT Central, dzięki czemu możesz tworzyć, listy, aktualizować lub usuwać aplikacje IoT Central. Zapewniają także pomocnicy do radzenia sobie z uwierzytelnianiem i dodanymi komentarzami, które są specyficzne dla każdego języka. 
+
+Przykłady użycia zestawów SDK usługi Azure Resource Manager znajduje się w temacie [ https://github.com/emgarten/iotcentral-arm-sdk-examples ](https://github.com/emgarten/iotcentral-arm-sdk-examples).
+
+Aby dowiedzieć się więcej Przyjrzyj się tych pakietów w witrynie GitHub.
+
+| Język | Repozytorium | Pakiet |
+| ---------| ---------- | ------- |
+| Węzeł | [https://github.com/Azure/azure-sdk-for-node](https://github.com/Azure/azure-sdk-for-node) | [https://www.npmjs.com/package/azure-arm-iotcentral](https://www.npmjs.com/package/azure-arm-iotcentral)
+| Python |[https://github.com/Azure/azure-sdk-for-python](https://github.com/Azure/azure-sdk-for-python) | [https://pypi.org/project/azure-mgmt-iotcentral](https://pypi.org/project/azure-mgmt-iotcentral)
+| C# | [https://github.com/Azure/azure-sdk-for-net](https://github.com/Azure/azure-sdk-for-net) | [https://www.nuget.org/packages/Microsoft.Azure.Management.IotCentral](https://www.nuget.org/packages/Microsoft.Azure.Management.IotCentral)
+| Ruby | [https://github.com/Azure/azure-sdk-for-ruby](https://github.com/Azure/azure-sdk-for-ruby) | [https://rubygems.org/gems/azure_mgmt_iot_central](https://rubygems.org/gems/azure_mgmt_iot_central)
+| Java | [https://github.com/Azure/azure-sdk-for-java](https://github.com/Azure/azure-sdk-for-java) | [https://search.maven.org/search?q=a:azure-mgmt-iotcentral](https://search.maven.org/search?q=a:azure-mgmt-iotcentral)
+| Przejdź | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go) | [https://github.com/Azure/azure-sdk-for-go](https://github.com/Azure/azure-sdk-for-go)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

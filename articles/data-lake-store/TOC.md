@@ -22,7 +22,7 @@
 ### [Korzystanie z narzędzia DistCp](data-lake-store-copy-data-wasb-distcp.md)
 ### [Korzystanie z narzędzia Sqoop](data-lake-store-data-transfer-sql-sqoop.md)
 ### [Przekazywanie danych ze źródeł offline](data-lake-store-offline-bulk-data-upload.md)
-### [Migrowanie usługi Data Lake Store między regionami](data-lake-store-migration-cross-region.md)
+### [Migrowanie usługi Data Lake Storage Gen1 między regionami](data-lake-store-migration-cross-region.md)
 
 ## Zabezpieczanie danych
 ### [Omówienie zabezpieczeń](data-lake-store-security-overview.md)
@@ -62,7 +62,7 @@
 ### [Korzystanie w usłudze HDInsight](data-lake-store-performance-tuning-mapreduce.md)
 ### [Korzystanie z platformy Storm w usłudze HDInsight](data-lake-store-performance-tuning-storm.md)
 
-## Integracja z usługami Azure Services
+## Integracja z usługami platformy Azure
 ### Za pomocą usługi HDInsight
 #### [Korzystanie z witryny Azure Portal](data-lake-store-hdinsight-hadoop-use-portal.md)
 #### [Korzystanie z programu Azure PowerShell (magazyn domyślny)](data-lake-store-hdinsight-hadoop-use-powershell-for-default-storage.md)

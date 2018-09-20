@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/07/2018
 ms.author: harijay
-ms.openlocfilehash: 6fb60955f1d436e13234243c0e83f1487cb7f7d0
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 1ede114f670dc7b1f610dff7cf076329e50f9240
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127724"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367784"
 ---
 # <a name="virtual-machine-serial-console"></a>Konsola szeregowa maszyny wirtualnej
 
@@ -44,7 +44,7 @@ Dokumentacja konsoli szeregowej, w przypadku maszyn wirtualnych Windows [tutaj](
 
     ![](../media/virtual-machines-serial-console/virtual-machine-serial-console-reset-password.png)
 
-* Aby uzyskać ustawienia właściwe dla dystrybucje systemu Linux, zobacz [dostęp do konsoli szeregowej dla systemu Linux](#access-serial-console-for-linux)
+* Aby uzyskać ustawienia właściwe dla dystrybucje systemu Linux, zobacz [dostęp do konsoli szeregowej dla systemu Linux](#Serial-Console-Linux-distro-availability)
 
 
 
@@ -52,15 +52,18 @@ Dokumentacja konsoli szeregowej, w przypadku maszyn wirtualnych Windows [tutaj](
 Konsola szeregowa dla maszyn wirtualnych jest dostępny za pośrednictwem tylko [witryny Azure portal](https://portal.azure.com). Poniżej przedstawiono kroki umożliwiające dostęp do konsoli szeregowej dla maszyn wirtualnych za pomocą portalu 
 
   1. Otwórz witrynę Azure portal
-  2. W menu po lewej stronie wybierz maszyny wirtualne.
-  3. Kliknij maszynę Wirtualną na liście. Zostanie otwarta strona Przegląd dla maszyny Wirtualnej.
-  4. Przewiń w dół, pomoc techniczna i rozwiązywanie problemów z sekcji, a następnie kliknij opcję "Konsoli szeregowej". Nowe okienko z konsolą szeregową otworzy się i rozpocząć połączenie.
+  1. (Pomiń to Jeśli maszyna wirtualna ma użytkownika, który korzysta z uwierzytelniania za pomocą hasła) Dodawanie użytkownika przy użyciu uwierzytelniania nazwy użytkownika/hasła, klikając blok "Resetuj hasło"
+  1. W menu po lewej stronie wybierz maszyny wirtualne.
+  1. Kliknij maszynę Wirtualną na liście. Zostanie otwarta strona Przegląd dla maszyny Wirtualnej.
+  1. Przewiń w dół, pomoc techniczna i rozwiązywanie problemów z sekcji, a następnie kliknij opcję "Konsoli szeregowej". Nowe okienko z konsolą szeregową otworzy się i rozpocząć połączenie.
 
 ![](../media/virtual-machines-serial-console/virtual-machine-linux-serial-console-connect.gif)
 
+### 
 
 > [!NOTE] 
-> Konsoli szeregowej wymaga użytkownika lokalnego przy użyciu hasła skonfigurowane. W tej chwili maszyny wirtualne tylko przy użyciu klucza publicznego SSH nie będzie dostępu do konsoli szeregowej. Aby utworzyć użytkownika lokalnego przy użyciu hasła, użyj [rozszerzenia dostępu do maszyny Wirtualnej](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension) (dostępną także w portalu, klikając pozycję "Resetuj hasło") i utworzenie użytkownika lokalnego przy użyciu hasła.
+> Konsoli szeregowej wymaga użytkownika lokalnego przy użyciu hasła skonfigurowane. W tej chwili maszyny wirtualne tylko przy użyciu klucza publicznego SSH nie będzie można zalogować się do konsoli szeregowej. Aby utworzyć użytkownika lokalnego przy użyciu hasła, użyj [rozszerzenia dostępu do maszyny Wirtualnej](https://docs.microsoft.com/azure/virtual-machines/linux/using-vmaccess-extension), która jest dostępna w witrynie portal, klikając pozycję "Resetuj hasło" w portalu i utworzenie użytkownika lokalnego przy użyciu hasła.
+> Może także zresetować hasło administratora na swoim koncie przez [umieszczeniu w trybie jednego użytkownika za pomocą programu GRUB](./serial-console-grub-single-user-mode.md).
 
 ## <a name="serial-console-linux-distro-availability"></a>Serial dostępności dystrybucja systemu Linux z konsoli
 Aby konsoli szeregowej działała poprawnie system operacyjny gościa, należy określić do odczytywania i zapisywania komunikatów konsoli do portu szeregowego. Większość [dystrybucji systemu Linux zalecanych dla platformy Azure](https://docs.microsoft.com/azure/virtual-machines/linux/endorsed-distros) zostały skonfigurowane domyślnie konsoli szeregowej. Wystarczy kliknąć sekcji konsoli szeregowej w witrynie Azure portal zapewni dostęp do konsoli. 
@@ -208,6 +211,8 @@ A. Obraz jest prawdopodobnie nieprawidłowo skonfigurowane, aby uzyskać dostęp
 **PYTANIA I ODPOWIEDZI. Konsola szeregowa jest dostępna dla zestawów skalowania maszyn wirtualnych?**
 
 A. Dostęp do konsoli szeregowej dla wystąpień zestawu skalowania maszyn wirtualnych w tej chwili nie jest obsługiwana.
+
+**PYTANIA I ODPOWIEDZI. Skonfigurować moją maszynę Wirtualną przy użyciu tylko uwierzytelnianie klucza SSH, czy nadal mogę korzystać konsoli szeregowej nawiązywania połączenia z maszyną Wirtualną?** A. tak. Konsola szeregowa nie wymaga kluczy SSH, wszystko, co należy zrobić jest więc skonfigurowane kombinacja nazwy użytkownika i hasła. Można to zrobić za pomocą bloku "Resetuj hasło" w portalu, a następnie użyciu tych poświadczeń do zalogowania się do konsoli szeregowej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Użyj konsoli szeregowej [rozruch CHODNIKÓW, a następnie wprowadź w trybie jednego użytkownika](serial-console-grub-single-user-mode.md)

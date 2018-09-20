@@ -4,18 +4,20 @@ description: Sposób eksportowania danych z aplikacji usługi Azure IoT Central
 services: iot-central
 author: viv-liu
 ms.author: viviali
-ms.date: 07/3/2018
+ms.date: 09/18/2018
 ms.topic: article
-ms.prod: azure-iot-central
+ms.service: azure-iot-central
 manager: peterpr
-ms.openlocfilehash: 5defbf7021936e3cc77250ccc453cb3887c77617
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: a1a7e6a62a88057cc8bc512a0c46de79a55ccd53
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576446"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46368141"
 ---
 # <a name="export-your-data-in-azure-iot-central"></a>Eksportowanie danych w usłudze Azure IoT Central
+
+*W tym temacie mają zastosowanie do administratorów.*
 
 W tym artykule opisano sposób używania funkcji eksportu ciągłego dane w usłudze Azure IoT Central okresowo eksportował dane do konta usługi Azure Blob storage. Możesz wyeksportować **pomiarów**, **urządzeń**, i **szablonów urządzeń** do plików za pomocą [Apache AVRO](https://avro.apache.org/docs/current/index.html) formatu. Wyeksportowane dane, może służyć do ścieżki nieaktywnej analizy, takich jak szkolenia modeli w usłudze Azure Machine Learning lub długoterminowej analizy trendu w usłudze Microsoft Power BI.
 
@@ -36,7 +38,7 @@ W tym artykule opisano sposób używania funkcji eksportu ciągłego dane w usł
 Pomiary, które urządzenia wysyłają są eksportowane do swojego konta magazynu, raz na minutę. Dane mają nowe komunikaty odbierane przez IoT Central ze wszystkich urządzeń, w tym czasie. Wyeksportowane pliki AVRO pełnić plików wiadomości wyeksportowany przez ten sam format [routing komunikatów usługi IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-csharp-csharp-process-d2c) do magazynu obiektów Blob.
 
 > [!NOTE]
-> Urządzenia, które wysyłać pomiary są reprezentowane przez identyfikatory urządzeń (patrz poniżej). Aby uzyskać nazwy urządzenia, należy wyeksportować migawki urządzenia. Korelowanie poszczególnych rekordów komunikatów za pomocą **connectionDeviceId** odpowiadającej identyfikator urządzenia.
+> Urządzenia, które wysyłać pomiary są reprezentowane przez identyfikatory urządzeń (patrz poniżej). Aby uzyskać nazwy urządzenia, należy wyeksportować migawki urządzenia. Korelowanie poszczególnych rekordów komunikatów za pomocą **connectionDeviceId** odpowiadający **deviceId** rekordu urządzenia.
 
 Poniższy przykład przedstawia rekord w pliku AVRO zdekodowany:
 
@@ -45,9 +47,9 @@ Poniższy przykład przedstawia rekord w pliku AVRO zdekodowany:
     "EnqueuedTimeUtc": "2018-06-11T00:00:08.2250000Z",
     "Properties": {},
     "SystemProperties": {
-        "connectionDeviceId": "2383d8ba-c98c-403a-b4d5-8963859643bb",
+        "connectionDeviceId": "<connectionDeviceId>",
         "connectionAuthMethod": "{\"scope\":\"hub\",\"type\":\"sas\",\"issuer\":\"iothub\",\"acceptingIpFilterRule\":null}",
-        "connectionDeviceGenerationId": "636614021491644195",
+        "connectionDeviceGenerationId": "<generationId>",
         "enqueuedTime": "2018-06-11T00:00:08.2250000Z"
     },
     "Body": "{\"humidity\":80.59100954598546,\"magnetometerX\":0.29451796907056726,\"magnetometerY\":0.5550332126050068,\"magnetometerZ\":-0.04116681874733441,\"connectivity\":\"connected\",\"opened\":\"triggered\"}"
@@ -56,12 +58,13 @@ Poniższy przykład przedstawia rekord w pliku AVRO zdekodowany:
 
 ### <a name="devices"></a>Urządzenia
 
-Po pierwszym włączeniu ciągły Eksport danych migawki jednego ze wszystkimi urządzeniami są eksportowane. Migawka zawiera:
-- Identyfikatory urządzeń.
-- Nazwy urządzenia.
-- Szablon urządzenia identyfikatorów.
-- Wartości właściwości.
-- Ustawianie wartości.
+Po pierwszym włączeniu ciągły Eksport danych migawki jednego ze wszystkimi urządzeniami są eksportowane. Każde urządzenie obejmuje:
+- `id` z urządzeń IoT Central
+- `name` urządzenia
+- `deviceId` z [usługi Device Provisioning](https://aka.ms/iotcentraldocsdps)
+- Informacje o szablonie urządzenia
+- Wartości właściwości
+- Ustawianie wartości
 
 Nowa migawka są zapisywane jeden raz na minutę. Migawka zawiera:
 
@@ -73,15 +76,16 @@ Nowa migawka są zapisywane jeden raz na minutę. Migawka zawiera:
 >
 > Każde urządzenie należy do szablonu urządzenia jest reprezentowany przez urządzenie identyfikatora szablonu. Aby uzyskać nazwę szablonu urządzenia, należy wyeksportować migawek szablonu urządzenia.
 
-Każdy rekord w plik zdekodowany AVRO wygląda następująco:
+Rekord w plik zdekodowany AVRO może wyglądać następująco:
 
 ```json
 {
-    "id": "2383d8ba-c98c-403a-b4d5-8963859643bb",
+    "id": "<id>",
     "name": "Refrigerator 2",
     "simulated": true,
+    "deviceId": "<deviceId>",
     "deviceTemplate": {
-        "id": "c318d580-39fc-4aca-b995-843719821049",
+        "id": "<template id>",
         "version": "1.0.0"
     },
     "properties": {
@@ -104,8 +108,10 @@ Każdy rekord w plik zdekodowany AVRO wygląda następująco:
 
 ### <a name="device-templates"></a>Szablony urządzenia
 
-Po pierwszym włączeniu ciągły Eksport danych pojedynczego migawki przy użyciu wszystkich szablonów urządzenia są eksportowane. Migawka zawiera: 
-- Szablon urządzenia identyfikatorów.
+Po pierwszym włączeniu ciągły Eksport danych pojedynczego migawki przy użyciu wszystkich szablonów urządzenia są eksportowane. Każdy szablon urządzenia obejmują:
+- `id` szablonu urządzenia
+- `name` szablonu urządzenia
+- `version` szablonu urządzenia
 - Typy danych pomiaru i minimalnej/maksymalnej wartości.
 - Typy danych właściwości i wartości domyślne.
 - Ustawianie typów danych i wartości domyślne.
@@ -118,11 +124,11 @@ Nowa migawka są zapisywane jeden raz na minutę. Migawka zawiera:
 > [!NOTE]
 > Szablony urządzenia usunięty od czasu ostatniego migawki nie są eksportowane. Obecnie migawek nie mają wskaźników dla szablonów usuniętego urządzenia.
 
-Każdy rekord w plik zdekodowany AVRO wygląda następująco:
+Rekord w plik zdekodowany AVRO może wyglądać następująco:
 
 ```json
 {
-    "id": "c318d580-39fc-4aca-b995-843719821049",
+    "id": "<id>",
     "name": "Refrigerated Vending Machine",
     "version": "1.0.0",
     "measurements": {
@@ -209,16 +215,16 @@ Każdy rekord w plik zdekodowany AVRO wygląda następująco:
 
 4. W obszarze **administracji**, wybierz opcję **eksportu danych**.
 
-   ![Konfigurowanie ciągły Eksport danych](media/howto-export-data/continuousdataexport.PNG)
-
 5. W **konta magazynu** listy rozwijanej wybierz swoje konto magazynu. W **kontenera** listy rozwijanej wybierz kontener. W obszarze **danych do wyeksportowania**, określ każdy rodzaj danych do wyeksportowania, ustawiając typ **na**.
 
 6. Aby włączyć ciągły Eksport danych, należy ustawić **eksportu danych** do **na**. Wybierz pozycję **Zapisz**.
 
+  ![Konfigurowanie ciągły Eksport danych](media/howto-export-data/continuousdataexport.PNG)
+
 7. Po kilku minutach dane są wyświetlane w ramach konta magazynu. Przejdź do swojego konta magazynu. Wybierz **Przeglądaj obiekty BLOB** > kontenera. Zobaczysz trzy foldery w danych eksportu. Domyślne ścieżki plików AVRO danymi eksportu są:
-    - Komunikaty: {container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/00.avro
-    - Urządzenia: {container}/devices/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/00.avro
-    - Szablony urządzenia: {container}/deviceTemplates/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/00.avro
+    - Komunikaty: {container}/measurements/{hubname}/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+    - Urządzenia: {container}/devices/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
+    - Szablony urządzenia: {container}/deviceTemplates/{YYYY}/{MM}/{dd}/{hh}/{mm}/{filename}.avro
 
 ## <a name="read-exported-avro-files"></a>Odczyt wyeksportowane pliki AVRO
 
@@ -280,7 +286,7 @@ def parse(filePath):
     transformed = pd.DataFrame()
 
     # The device ID is available in the id column.
-    transformed["device_id"] = devices["id"]
+    transformed["device_id"] = devices["deviceId"]
 
     # The template ID and version are present in a dictionary under
     # the deviceTemplate column.
@@ -395,7 +401,7 @@ public static async Task Run(string filePath)
                 {
                     // Get the field value directly. You can also yield return
                     // records and make the function IEnumerable<AvroRecord>.
-                    var deviceId = record.GetField<string>("id");
+                    var deviceId = record.GetField<string>("deviceId");
 
                     // The device template information is stored in a sub-record
                     // under the deviceTemplate field.
@@ -411,7 +417,7 @@ public static async Task Run(string filePath)
                     var fanSpeed = deviceSettingsRecord["fanSpeed"];
                     
                     Console.WriteLine(
-                        "ID: {0}, Template ID: {1}, Template Version: {2}, Fan Speed: {3}",
+                        "Device ID: {0}, Template ID: {1}, Template Version: {2}, Fan Speed: {3}",
                         deviceId,
                         templateId,
                         templateVersion,
@@ -524,8 +530,8 @@ const avro = require('avsc');
 async function parse(filePath) {
     const records = await load(filePath);
     for (const record of records) {
-        // Fetch the device ID from the id property.
-        const deviceId = record.id;
+        // Fetch the device ID from the deviceId property.
+        const deviceId = record.deviceId;
 
         // Fetch the template ID and version from the deviceTemplate property.
         const deviceTemplateId = record.deviceTemplate.id;
@@ -535,7 +541,7 @@ async function parse(filePath) {
         const fanSpeed = record.settings.device.fanSpeed;
 
         // Log the retrieved device ID and humidity.
-        console.log(`ID: ${deviceId}, Template ID: ${deviceTemplateId}, Template Version: ${deviceTemplateVersion}, Fan Speed: ${fanSpeed}`);
+        console.log(`deviceID: ${deviceId}, Template ID: ${deviceTemplateId}, Template Version: ${deviceTemplateVersion}, Fan Speed: ${fanSpeed}`);
     }
 }
 

@@ -1,14 +1,36 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: active-directory
+documentationcenter: dev-center-name
+author: andretms
+manager: mtillman
+editor: ''
+ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
+ms.service: active-directory
+ms.devlang: na
+ms.topic: include
+ms.tgt_pltfrm: na
+ms.workload: identity
+ms.date: 09/18/2018
+ms.author: andret
+ms.custom: include file
+ms.openlocfilehash: d4ba15e4ad46044c04c242c8805af9f320e95150
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46368454"
+---
+## <a name="use-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Użycia biblioteki MSAL do pobrania tokenu dla interfejsu API programu Microsoft Graph
 
-## <a name="use-msal-to-get-a-token-for-the-microsoft-graph-api"></a>Użyj MSAL, aby uzyskać token dla interfejsu API programu Microsoft Graph
+W tej sekcji użycia biblioteki MSAL można pobrać tokenu dla interfejsu API programu Microsoft Graph.
 
-W tej sekcji umożliwiają MSAL uzyskać token dla interfejsu API programu Microsoft Graph.
-
-1.  W *MainWindow.xaml.cs* plików, Dodaj odwołanie do MSAL do klasy:
+1.  W *MainWindow.xaml.cs* plików, Dodaj odwołanie do biblioteki MSAL do klasy:
 
     ```csharp
     using Microsoft.Identity.Client;
     ```
-<!-- Workaround for Docs conversion bug -->
 
 2. Zastąp `MainWindow` klasy kod następującym kodem:
 
@@ -33,9 +55,15 @@ W tej sekcji umożliwiają MSAL uzyskać token dla interfejsu API programu Micro
         {
             AuthenticationResult authResult = null;
 
+            var app = App.PublicClientApp;
+            ResultText.Text = string.Empty;
+            TokenInfoText.Text = string.Empty;
+
+            var accounts = await app.GetAccountsAsync();
+
             try
             {
-                authResult = await App.PublicClientApp.AcquireTokenSilentAsync(_scopes, App.PublicClientApp.Users.FirstOrDefault());
+                authResult = await app.AcquireTokenSilentAsync(_scopes, accounts.FirstOrDefault());
             }
             catch (MsalUiRequiredException ex)
             {
@@ -69,24 +97,29 @@ W tej sekcji umożliwiają MSAL uzyskać token dla interfejsu API programu Micro
 
 <!--start-collapse-->
 ### <a name="more-information"></a>Więcej informacji
-#### <a name="get-a-user-token-interactively"></a>Pobierz token użytkownika interakcyjnego
-Wywoływanie `AcquireTokenAsync` metoda powoduje okna, które monituje użytkowników do logowania. Aplikacje zazwyczaj wymagają użytkownikom na logowanie interakcyjne po raz pierwszy potrzebnych do uzyskania dostępu do chronionego zasobu. Może być muszą się zalogować, gdy dyskretnej operacji można uzyskać tokenu nie powiodło się (na przykład po wygaśnięciu hasła użytkownika).
 
-#### <a name="get-a-user-token-silently"></a>Pobierz token użytkownika dyskretnej
-`AcquireTokenSilentAsync` Metoda obsługuje nabycia tokenu i odnowienia bez interakcji użytkownika. Po `AcquireTokenAsync` jest wykonywana po raz pierwszy `AcquireTokenSilentAsync` jest zwykle metodę można uzyskać tokeny, które uzyskują dostęp do chronionych zasobów w kolejnych wywołaniach, ponieważ wywołania żądania lub odnowić tokeny zostały wprowadzone w trybie dyskretnym.
+#### <a name="get-a-user-token-interactively"></a>Pobierz token użytkownika interaktywnego
 
-Po pewnym czasie `AcquireTokenSilentAsync` metoda zakończy się niepowodzeniem. Przyczyny niepowodzenia może być, czy użytkownik został wylogowany lub zmienić swoje hasło na innym urządzeniu. Gdy MSAL wykryje, że problem można rozwiązać, gdyż akcję interaktywne, jego generowane `MsalUiRequiredException` wyjątku. Aplikacja może obsłużyć tego wyjątku na dwa sposoby:
+Wywoływanie `AcquireTokenAsync` metoda wyniki w oknie, który monituje użytkowników, aby zalogować się. Aplikacje zwykle wymagają od użytkowników zalogować się interaktywnie potrzebują dostępu do chronionego zasobu po raz pierwszy. Może być muszą się zalogować, gdy dyskretnej operację, aby uzyskać token nie powiodło się (na przykład, po wygaśnięciu hasła użytkownika).
 
-* Można wykonać połączenie przed `AcquireTokenAsync` natychmiast. To wywołanie powoduje monitowanie użytkownika do logowania. Ten wzorzec jest zazwyczaj używany w aplikacji online w przypadku, gdy brak dostępnej zawartości w trybie offline dla użytkownika. Przykładowe wygenerowane za pomocą tego Instalatora z przewodnikiem następuje tego wzorca, który można wyświetlić w czasie działania pierwszy wykonać próbki. 
-    * Ponieważ żaden użytkownik nie ma korzystali z aplikacji `PublicClientApp.Users.FirstOrDefault()` zawiera wartość null i `MsalUiRequiredException` wyjątku. 
-    * Następnie kod w próbce obsługuje wyjątek przez wywołanie metody `AcquireTokenAsync`, która powoduje monitowanie użytkownika do logowania.
+#### <a name="get-a-user-token-silently"></a>Pobierz token użytkownika dyskretnie
 
-* Ona zamiast tego prezentować oznaczenia wizualne dla użytkowników, którzy interakcyjne logowanie jest wymagane, dzięki czemu użytkownik może wybrać pozycję odpowiednich momentach do logowania. Lub aplikacji można ponowić próbę `AcquireTokenSilentAsync` później. Ten wzorzec jest często używany, gdy użytkownicy mogą używać innych funkcji aplikacji bez przerw w działaniu — na przykład, jeśli w trybie offline zawartość jest dostępna w aplikacji. W takim przypadku użytkownicy mogą wybrać, jeśli chcą, aby zalogować się do dostępu do chronionego zasobu albo Odśwież nieaktualne informacje. Alternatywnie aplikacji można zdecydować ponowić próbę `AcquireTokenSilentAsync` przywrócenie sieci po jest tymczasowo niedostępny.
+`AcquireTokenSilentAsync` Obsługiwała nabycia tokenu i odnowienia bez żadnej interakcji użytkownika. Po `AcquireTokenAsync` jest wykonywany po raz pierwszy `AcquireTokenSilentAsync` jest zwykle metody służące do uzyskiwania tokenów, uzyskujących dostęp do chronionych zasobów dla kolejnych wywołań, ponieważ do żądania lub odnowienia tokenów wywołań dyskretnie.
+
+Po pewnym czasie `AcquireTokenSilentAsync` metoda zakończy się niepowodzeniem. Przyczyny niepowodzenia może być, że użytkownik jest wylogowany lub zmienić swoje hasło na innym urządzeniu. Gdy biblioteki MSAL wykryje, że ten problem można rozwiązać, wymagając akcję interaktywne, jest on uruchamiany `MsalUiRequiredException` wyjątku. Aplikacja może obsłużyć ten wyjątek na dwa sposoby:
+
+* Może sprawić, że wywołanie względem `AcquireTokenAsync` natychmiast. To wywołanie powoduje monitowanie użytkownika do logowania. Ten wzorzec jest zwykle używany w aplikacjach w trybie online w przypadku, gdy brak zawartości w trybie offline dostępne dla użytkownika. Przykład wygenerowanych za pomocą tego Instalatora z przewodnikiem następuje tego wzorca, który można wyświetlić w czasie działania pierwszego wykonania próbki. 
+
+* Ponieważ żaden użytkownik nie ma korzystali z aplikacji, `PublicClientApp.Users.FirstOrDefault()` zawiera wartość null i `MsalUiRequiredException` wyjątku. 
+
+* Następnie kod w przykładzie obsługuje wyjątek, wywołując `AcquireTokenAsync`, które powoduje monitowanie użytkownika do logowania.
+
+* Oznaczenia wizualne ona prezentować użytkownikom, którzy interakcyjnego logowania jest wymagana, zamiast tego, tak, aby użytkownik może wybrać chwila Aby zarejestrować się w. Lub aplikacji można ponowić próbę `AcquireTokenSilentAsync` później. Ten wzorzec jest często używany, gdy użytkownicy mogą używać innych funkcji aplikacji bez przerw w działaniu — na przykład, jeśli zawartość w trybie offline jest dostępna w aplikacji. W takim przypadku użytkownicy mogą wybrać, chcąc Zaloguj się do dostępu do chronionego zasobu lub Odśwież nieaktualne informacje. Alternatywnie aplikacji zdecydować ponowić próbę `AcquireTokenSilentAsync` po przywróceniu sieci po przejściu jest tymczasowo niedostępny.
 <!--end-collapse-->
 
 ## <a name="call-the-microsoft-graph-api-by-using-the-token-you-just-obtained"></a>Wywołanie interfejsu API programu Microsoft Graph przy użyciu tokenu, który został uzyskany
 
-Dodaj następującą metodę nowe do Twojej `MainWindow.xaml.cs`. Metoda jest umożliwia `GET` żądania dotyczącego interfejsu API programu Graph przy użyciu nagłówka autoryzacji:
+Dodaj następującą nową metodę do swojej `MainWindow.xaml.cs`. Metoda umożliwia `GET` żądania interfejsu API programu Graph przy użyciu nagłówka autoryzacji:
 
 ```csharp
 /// <summary>
@@ -114,27 +147,30 @@ public async Task<string> GetHttpContentWithToken(string url, string token)
     }
 }
 ```
-<!--start-collapse-->
-### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>Więcej informacji na temat nawiązywania połączenia przed chronionego interfejsu API REST
 
-W tej przykładowej aplikacji, użyj `GetHttpContentWithToken` metody, aby HTTP `GET` żądania względem chronionego zasobu, który wymaga tokenu, a następnie wróć zawartości do obiektu wywołującego. Ta metoda dodaje nabytych przez niego tokenu w nagłówku autoryzacji HTTP. Dla tego przykładu zasób jest interfejsu API programu Microsoft Graph *mnie* punktu końcowego, który wyświetla informacje o profilu użytkownika.
+<!--start-collapse-->
+### <a name="more-information-about-making-a-rest-call-against-a-protected-api"></a>Więcej informacji na temat wywołania chronionego interfejsu API REST
+
+W tej przykładowej aplikacji, użyj `GetHttpContentWithToken` metody HTTP `GET` żądania względem chronionego zasobu, który wymaga tokenu, a następnie wróć zawartości do obiektu wywołującego. Metoda ta umożliwia dodanie uzyskano token w nagłówku autoryzacji HTTP. W tym przykładzie zasób jest interfejsu API programu Microsoft Graph *mnie* punktu końcowego, który wyświetla informacje o profilu użytkownika.
 <!--end-collapse-->
 
 ## <a name="add-a-method-to-sign-out-a-user"></a>Dodaj metodę, aby się wylogować użytkownika
 
-Aby wylogować się z użytkownikiem, dodaj następującą metodę do Twojej `MainWindow.xaml.cs` pliku:
+Aby się wylogować użytkownika, dodaj następującą metodę do swojej `MainWindow.xaml.cs` pliku:
 
 ```csharp
 /// <summary>
 /// Sign out the current user
 /// </summary>
-private void SignOutButton_Click(object sender, RoutedEventArgs e)
+private async void SignOutButton_Click(object sender, RoutedEventArgs e)
 {
-    if (App.PublicClientApp.Users.Any())
+    var accounts = await App.PublicClientApp.GetAccountsAsync(); 
+
+    if (accounts.Any())
     {
         try
         {
-            App.PublicClientApp.Remove(App.PublicClientApp.Users.FirstOrDefault());
+            await App.PublicClientApp.RemoveAsync(accounts.FirstOrDefault()); 
             this.ResultText.Text = "User has signed-out";
             this.CallGraphButton.Visibility = Visibility.Visible;
             this.SignOutButton.Visibility = Visibility.Collapsed;
@@ -146,17 +182,18 @@ private void SignOutButton_Click(object sender, RoutedEventArgs e)
     }
 }
 ```
+
 <!--start-collapse-->
 ### <a name="more-information-about-user-sign-out"></a>Więcej informacji na temat wylogowania użytkownika
 
-`SignOutButton_Click` Metoda usuwa użytkowników w buforze użytkownika MSAL kod w praktyce określa MSAL zapomnieć bieżącego użytkownika, dzięki czemu przyszłych żądań można uzyskać tokenu powiedzie się tylko wtedy, gdy jest on interaktywne.
+`SignOutButton_Click` Metoda usuwa użytkowników z biblioteki MSAL użytkownika pamięci podręcznej, które skutecznie zawiera informacje dotyczące biblioteki MSAL zapomnieć bieżącego użytkownika, tak aby przyszłe żądania, aby uzyskać token powiedzie się tylko wtedy, gdy staje się interakcyjne.
 
-Mimo że aplikacja, w tym przykładzie obsługuje pojedynczy użytkowników, MSAL obsługuje scenariusze, w których może być podpisana wiele kont w tym samym czasie. Przykładem jest aplikacja poczty e-mail, gdy użytkownik ma wiele kont.
+Mimo że aplikacja, w tym przykładzie obsługuje pojedynczy użytkownicy, biblioteka MSAL obsługuje scenariusze, w którym może być podpisana wielu kont w tym samym czasie. Przykładem jest aplikacja poczty e-mail, gdy użytkownik ma wiele kont.
 <!--end-collapse-->
 
-## <a name="display-basic-token-information"></a>Wyświetlanie informacji o tokenie podstawowe
+## <a name="display-basic-token-information"></a>Wyświetlanie podstawowych informacji o tokenie
 
-Aby wyświetlić podstawowe informacje o tokenie, dodaj następującą metodę do Twojej *MainWindow.xaml.cs* pliku:
+Aby wyświetlić podstawowe informacje o tokenie, dodaj następującą metodę do swojej *MainWindow.xaml.cs* pliku:
 
 ```csharp
 /// <summary>
@@ -167,16 +204,16 @@ private void DisplayBasicTokenInfo(AuthenticationResult authResult)
     TokenInfoText.Text = "";
     if (authResult != null)
     {
-        TokenInfoText.Text += $"Name: {authResult.User.Name}" + Environment.NewLine;
-        TokenInfoText.Text += $"Username: {authResult.User.DisplayableId}" + Environment.NewLine;
+        TokenInfoText.Text += $"Username: {authResult.Account.Username}" + Environment.NewLine;
         TokenInfoText.Text += $"Token Expires: {authResult.ExpiresOn.ToLocalTime()}" + Environment.NewLine;
         TokenInfoText.Text += $"Access Token: {authResult.AccessToken}" + Environment.NewLine;
     }
 }
 ```
+
 <!--start-collapse-->
 ### <a name="more-information"></a>Więcej informacji
 
-Oprócz tokenu dostępu, który jest używany do wywołania interfejsu API Graph firmy Microsoft, po loguje się użytkownik MSAL uzyskuje identyfikator tokenu. Token ten zawiera małego podzbioru informacje, które są odpowiednie dla użytkowników. `DisplayBasicTokenInfo` Metoda Wyświetla podstawowe informacje zawarte w tokenie. Na przykład wyświetla, nazwa wyświetlana użytkownika i identyfikator, a także data wygaśnięcia tokenu i ciąg reprezentujący sam token dostępu. Możesz wybrać *wywołać Microsoft interfejsu API programu Graph* przycisk wielokrotnie i zobacz, że ten sam token został ponownie dla kolejnych żądań. Można również sprawdzić Data wygaśnięcia jest rozszerzana podczas MSAL decyduje o jego czas odnowienia tokenu.
+Oprócz tokenu dostępu, który służy do wywoływania interfejsu API Microsoft Graph, po użytkownik loguje się biblioteka MSAL uzyskuje identyfikator tokenu. Ten token zawiera mały podzbiór informacje, które są odpowiednie dla użytkowników. `DisplayBasicTokenInfo` Metoda Wyświetla podstawowe informacje zawarte w tokenie. Na przykład wyświetla nazwę wyświetlaną tego użytkownika i identyfikator, tak jak Data wygaśnięcia tokenu i ciąg reprezentujący tokenu dostępu, sama. Możesz wybrać *wywołania interfejsu API Microsoft Graph* znajdujący się wiele razy i zobacz, że ten sam token został ponownie dla kolejnych żądań. Widać również zostanie przedłużony, gdy biblioteka MSAL postanawia go jest moment, aby odnowić token daty wygaśnięcia.
 <!--end-collapse-->
 

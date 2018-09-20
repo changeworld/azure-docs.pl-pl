@@ -9,15 +9,15 @@ ms.service: sql-database
 ms.custom: business continuity
 ms.topic: conceptual
 ms.workload: On Demand
-ms.date: 07/25/2018
+ms.date: 09/19/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 5e45bff827a8c376d4b35ee88f1f000c2b122443
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 803dddd13ab3b18b6f161be9c0004d18c8d69f1e
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298238"
+ms.locfileid: "46364200"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Omówienie zagadnień dotyczących ciągłości działalności biznesowej zapewnianej przez usługę Azure SQL Database
 
@@ -122,12 +122,10 @@ Jeśli jako mechanizm odzyskiwania używają aktywna replikacja geograficzna i g
 > 
 
 ### <a name="perform-a-geo-restore"></a>Wykonaj operację przywracania geograficznego
-Jeśli używane są zautomatyzowane kopie zapasowe przy użyciu replikacji dla magazynu geograficznie nadmiarowego jako mechanizm odzyskiwania, [zainicjować odzyskiwanie bazy danych przy użyciu przywracania geograficznego](sql-database-disaster-recovery.md#recover-using-geo-restore). Odzyskiwanie ma zwykle miejsce w ciągu 12 godzin — z utratą danych maksymalnie jednej godziny określone przez kiedy została wykonana ostatnia kopia zapasowa dziennika i replikacją geograficzną do innego regionu. Do momentu ukończenia odzyskiwania baza danych nie może rejestrować żadnych transakcji ani odpowiadać na żadne zapytania. Gdy to spowoduje przywrócenie bazy danych do ostatniego dostępnego punktu w czasie, przywracanie pomocniczej geograficznej do dowolnego punktu w czasie nie jest obecnie obsługiwane.
+Korzystając z automatycznych kopii zapasowych z magazynu geograficznie nadmiarowego (domyślnie włączony), można odzyskać bazy danych przy użyciu [geoprzywracanie](sql-database-disaster-recovery.md#recover-using-geo-restore). Odzyskiwanie ma zwykle miejsce w ciągu 12 godzin — bez utraty danych zależą od podczas ostatniego co godzinę różnicowa kopia zapasowa została podjęta i replikowane do jednej godziny. Do momentu ukończenia odzyskiwania baza danych nie może rejestrować żadnych transakcji ani odpowiadać na żadne zapytania. Należy zauważyć, że funkcja przywracania geograficznego tylko przywraca bazę danych do ostatniego dostępnego punktu w czasie.
 
 > [!NOTE]
 > Jeśli centrum danych powróci do trybu online przed przełączeniem aplikacji za pośrednictwem do odzyskanej bazy danych, można anulować odzyskiwanie.  
->
->
 
 ### <a name="perform-post-failover--recovery-tasks"></a>Wykonywanie zadań po przejściu do trybu failover lub po odzyskiwaniu
 Po odzyskaniu za pomocą dowolnego mechanizmu odzyskiwania należy wykonać następujące zadania dodatkowe, zanim będzie możliwe ponowne rozpoczęcie pracy przez użytkowników i aplikacje:

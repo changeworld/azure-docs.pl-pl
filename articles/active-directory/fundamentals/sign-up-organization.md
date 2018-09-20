@@ -12,12 +12,12 @@ ms.date: 09/14/2018
 ms.author: lizross
 ms.reviewer: jeffsta
 ms.custom: it-pro
-ms.openlocfilehash: ac9783d970af96242266a787071ec831ef5c0df8
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ccff64b88787291832b9d2ed84eb81919152d887
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296910"
+ms.locfileid: "46364775"
 ---
 # <a name="how-to-sign-up-for-azure-active-directory-as-an-organization"></a>Porady: Zarejestruj się w usłudze Azure Active Directory jako organizacja
 Załóż konto usługi Azure Active Directory (Azure AD) przy użyciu nowej subskrypcji Microsoft Azure:
@@ -26,9 +26,12 @@ Załóż konto usługi Azure Active Directory (Azure AD) przy użyciu nowej subs
 
 - **Konta służbowego lub szkolnego.** Aby uzyskać dostęp do wszystkich małych, średnich i usługi enterprise cloud services firmy Microsoft, takich jak Azure, Microsoft Intune i Office 365, należy użyć z miejsca pracy lub szkoły związane z kontem. Po zarejestrowaniu się do jednej z tych usług jako organizacja, usługi Azure AD automatycznie aprowizuje katalogu oparte na chmurze, reprezentujący Twojej organizacji. Aby uzyskać więcej informacji, zobacz [Zarządzanie swoim katalogiem usługi Azure AD](active-directory-administer.md).
 
+    >[!Note]
+    Zaleca się, że służbowy lub konta służbowego, jeśli masz już dostęp do usługi Azure AD. Jednakże należy używać, niezależnie od typu konta jest skojarzony z subskrypcją platformy Azure.
+
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Zarejestruj się jako organizacja](https://azure.microsoft.com/pricing/purchase-options/)
+- [Jak kupić platformę Azure](https://azure.microsoft.com/pricing/purchase-options/)
 
 - [Zarejestruj się w przypadku wersji usługi Azure Active Directory — wersja Premium](active-directory-get-started-premium.md)
 
@@ -36,11 +39,5 @@ Załóż konto usługi Azure Active Directory (Azure AD) przy użyciu nowej subs
 
 - [Używanie lokalnej infrastruktury tożsamości w chmurze](../connect/active-directory-aadconnect.md)
 
-<<<<<<< HEAD
-* [Blog Microsoft Azure](https://azure.microsoft.com/blog/)
-* [Co to jest usługa Azure AD?](active-directory-whatis.md)
-* [Używanie lokalnej infrastruktury tożsamości w chmurze](../hybrid/whatis-hybrid-identity.md)
-=======
 - [Odwiedź blog Microsoft Azure](https://azure.microsoft.com/blog/)
->>>>>>> 73f447b1499ba1f189efb6832ad759f1230e55a2
 

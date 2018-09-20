@@ -1,138 +1,139 @@
 ---
 title: Rozpoczynanie pracy z interfejsem API rozpoznawania mowy firmy Microsoft przy użyciu biblioteki usługi C# | Dokumentacja firmy Microsoft
-description: Biblioteka usługi rozpoznawania mowy Microsoft umożliwia przekonwertowana na tekst używany.
+titlesuffix: Azure Cognitive Services
+description: Biblioteka usług rozpoznawania mowy Bing umożliwia konwertowanie mowy na tekst.
 services: cognitive-services
 author: zhouwangzw
 manager: wolfma
 ms.service: cognitive-services
 ms.component: bing-speech
 ms.topic: article
-ms.date: 09/17/2017
+ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 0320f41658a7ac4d6bf9e88ed998c853b665d485
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 275f32ebdddf802b4f6d4e5c03cd4a7291cd2e73
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347469"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364316"
 ---
-# <a name="get-started-with-the-speech-recognition-service-library-in-c35-for-net-windows"></a>Rozpoczynanie pracy z biblioteki usługi rozpoznawania mowy w języku C&#35; dla platformy .NET systemu Windows
+# <a name="quickstart-use-the-bing-speech-recognition-service-library-in-c35-for-net-windows"></a>Szybki Start: Korzystanie z biblioteki usługi rozpoznawania mowy Bing w języku C&#35; dla Windows .NET
 
-Biblioteka usługi jest dla deweloperów, którzy mają własne usługi w chmurze i ma zostać wywołana mowy usługi z usługi. Aby wywołać usługę rozpoznawania mowy z aplikacji powiązanych z urządzenia, nie należy używać tego zestawu SDK. (Użyj innych bibliotek klienckich lub interfejsów API REST dla tej).
+To biblioteka usług dla deweloperów, którzy mają swoje własne usługi w chmurze i ma zostać wywołana usługa rozpoznawania mowy z ich usług. Jeśli chcesz wywołać usługę rozpoznawania mowy z aplikacji powiązanych z urządzenia, nie używaj tego zestawu SDK. (Użyj innych bibliotek klienta lub interfejsów API REST dla tego).
 
-Aby korzystać z biblioteki usługi C#, zainstalować [pakietu NuGet Microsoft.Bing.Speech](https://www.nuget.org/packages/Microsoft.Bing.Speech/). W bibliotece dokumentacji interfejsu API, zobacz [biblioteki usługi Microsoft mowy C#](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html).
+Aby korzystać z biblioteki usługi C#, należy zainstalować [pakietu NuGet Microsoft.Bing.Speech](https://www.nuget.org/packages/Microsoft.Bing.Speech/). Dokumentacja interfejsu API biblioteki, zobacz [Biblioteka usług Microsoft Speech C#](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html).
 
-W poniższych sekcjach opisano sposób instalowania, tworzenie i uruchamianie C# przykładowej aplikacji przy użyciu biblioteki usługi C#.
+Poniżej opisano sposób instalowania, tworzenie i uruchamianie języka C# przykładowej aplikacji przy użyciu biblioteki usługi C#.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 ### <a name="platform-requirements"></a>Wymagania dotyczące platformy
 
-Poniższy przykład został opracowany w systemu Windows 8 i .NET 4.5 + Framework za pomocą [programu Visual Studio 2015, Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs).
+Poniższy przykład został opracowany dla systemu Windows 8 + i .NET 4.5 + Framework za pomocą [Visual Studio 2015, Community Edition](https://www.visualstudio.com/products/visual-studio-community-vs).
 
-### <a name="get-the-sample-application"></a>Pobierz przykładową aplikację
+### <a name="get-the-sample-application"></a>Pobieranie przykładowej aplikacji
 
-Przykład w klonowania [standardowej biblioteki usługi mowy C#](https://github.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary) repozytorium.
+Sklonuj przykład z [standardowej biblioteki usługi mowy C#](https://github.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary) repozytorium.
 
-### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Subskrybowanie API rozpoznawania mowy i uzyskiwanie klucza bezpłatnej subskrypcji próbnej
+### <a name="subscribe-to-the-speech-recognition-api-and-get-a-free-trial-subscription-key"></a>Subskrybowanie do interfejsu API rozpoznawania mowy i Uzyskaj klucz subskrypcji wersji próbnej
 
-Interfejs API mowy jest częścią usługi kognitywnych (wcześniej Oxford projektu). Możesz uzyskać klucze bezpłatnej subskrypcji próbnej z [subskrypcji usługi kognitywnych](https://azure.microsoft.com/try/cognitive-services/) strony. Po wybraniu interfejsu API mowy wybierz **uzyskać klucz interfejsu API** uzyskać klucza. Zwraca wartość klucza podstawowego i pomocniczego. Obydwu kluczy są powiązane z tego samego przydziału, dzięki czemu można użyć albo klucza.
+Interfejs API mowy jest częścią usług Cognitive Services (wcześniej Project Oxford). Możesz uzyskać bezpłatną subskrypcję próbną kluczy z [subskrypcji usług Cognitive Services](https://azure.microsoft.com/try/cognitive-services/) strony. Po wybraniu interfejsu API rozpoznawania mowy, wybierz opcję **Uzyskaj klucz interfejsu API** można pobrać klucza. Zwraca klucz podstawowy i pomocniczy. Oba klucze są powiązane z tego samego limitu przydziału, aby można było używać żadnego z nich.
 
 > [!IMPORTANT]
-> * Pobierz klucz subskrypcji. Zanim będzie można użyć bibliotek klienckich mowy, musisz mieć [klucza subskrypcji](https://azure.microsoft.com/try/cognitive-services/).
+> * Pobierz klucz subskrypcji. Korzystanie z biblioteki klienta mowy, konieczne jest posiadanie [klucz subskrypcji](https://azure.microsoft.com/try/cognitive-services/).
 >
-> * Użyj klucza subskrypcji. Z podanych C# usługi biblioteki przykładowej aplikacji należy podać klucz subskrypcji jako jeden z parametrów wiersza polecenia. Aby uzyskać więcej informacji, zobacz [Uruchom przykładową aplikację](#step-3-run-the-sample-application).
+> * Użyj klucza subskrypcji. Podana C# usługi biblioteki przykładowej aplikacji musisz podać klucz subskrypcji jako jeden z parametrów wiersza polecenia. Aby uzyskać więcej informacji, zobacz [uruchamianie przykładowej aplikacji](#step-3-run-the-sample-application).
 
-## <a name="step-1-install-the-sample-application"></a>Krok 1: Instalowanie przykładowej aplikacji
+## <a name="step-1-install-the-sample-application"></a>Krok 1. Instalowanie przykładowej aplikacji
 
-1. Uruchom program Visual Studio 2015 i wybierz **pliku** > **Otwórz** > **projektu/rozwiązania**.
+1. Uruchom program Visual Studio 2015 i wybierz **pliku** > **Otwórz** > **projekt/rozwiązanie**.
 
-2. Kliknij dwukrotnie plik można otworzyć pliku programu Visual Studio 2015 Solution (.sln) o nazwie SpeechClient.sln. Rozwiązanie zostanie otwarty w programie Visual Studio.
+2. Kliknij dwukrotnie, aby otworzyć plik programu Visual Studio 2015 rozwiązania (.sln) o nazwie SpeechClient.sln. Rozwiązanie zostanie otwarty w programie Visual Studio.
 
-## <a name="step-2-build-the-sample-application"></a>Krok 2: Tworzenie przykładowej aplikacji
+## <a name="step-2-build-the-sample-application"></a>Krok 2. Tworzenie przykładowej aplikacji
 
-Naciśnij klawisze Ctrl + Shift + B, lub wybierz **kompilacji** menu wstążki. Następnie wybierz **Kompiluj rozwiązanie**.
+Naciśnij klawisze Ctrl + Shift + B, lub wybierz **kompilacji** menu wstążki. Następnie wybierz pozycję **Kompiluj rozwiązanie**.
 
 ## <a name="step-3-run-the-sample-application"></a>Krok 3: Uruchamianie przykładowej aplikacji
 
-1. Po zakończeniu kompilacji, naciśnij klawisz F5 lub wybierz **Start** menu wstążki do uruchamiania w przykładzie.
+1. Po zakończeniu kompilacji, naciśnij klawisz F5 lub wybierz **Start** w menu wstążki, aby uruchomić przykład.
 
-2. Otwórz katalog wyjściowy dla przykładu, na przykład SpeechClientSample\bin\Debug. Naciśnij klawisz Shift + prawym przyciskiem myszy i wybierz **Otwórz okno polecenia tutaj**.
+2. Otwórz katalog wyjściowy dla przykładu, na przykład SpeechClientSample\bin\Debug. Naciśnij klawisze Shift + Strzałka w prawo kliknij i zaznacz **Otwórz okno polecenia tutaj**.
 
 3. Uruchom `SpeechClientSample.exe` z następującymi argumentami:
 
-   * ARG [0]: Określ plik WAV wejściowego audio.
+   * ARG [0]: Określ plik wejściowy WAV audio.
    * ARG [1]: Określ audio ustawień regionalnych.
-   * Argument [2]: Określ tryby rozpoznawania: *krótki* dla `ShortPhrase` tryb i *długi* dla `LongDictation` trybu.
+   * Argument [2]: Określ tryby rozpoznawania: *krótki* dla `ShortPhrase` tryb i *długie* dla `LongDictation` trybu.
    * Argument [3]: Określ klucz subskrypcji dostęp do usługi rozpoznawania mowy.
 
 ## <a name="samples-explained"></a>Przykłady wyjaśniono
 
 ### <a name="recognition-modes"></a>Tryby rozpoznawania
 
-* `ShortPhrase` tryb: utterance maksymalnie 15 sekund czasu. Dane są wysyłane do serwera, klient otrzyma wyniki częściowe wielu oraz jeden wynik najlepsze końcowego.
-* `LongDictation` tryb: utterance maksymalnie 10 minut długo. Dane są wysyłane do serwera, klient otrzyma wielu wyniki częściowe oraz wielu wyników końcowych, oparte na którym serwer wskazuje pauzy zdanie.
+* `ShortPhrase` tryb: wypowiedź maksymalnie 15 sekund długo. Ponieważ dane są wysyłane do serwera, klient odbierze wiele wyników częściowych i jeden końcowy wynik najlepsze.
+* `LongDictation` tryb: wypowiedź maksymalnie 10 minut długo. Ponieważ dane są wysyłane na serwer, klient odbierze wiele wyników częściowych i wiele wyników końcowych w oparciu o którym serwer pauzy zdaniowe.
 
 ### <a name="supported-audio-formats"></a>Obsługiwane formaty audio
 
 Interfejs API mowy obsługuje audio/WAV przy użyciu następujących koderów-dekoderów:
 
-* Pojedynczy kanał PCM
+* Pojedynczy kanał modułu PCM
 * Siren
 * SirenSR
 
 ### <a name="preferences"></a>Preferencje
 
-Aby utworzyć SpeechClient, musisz najpierw utworzyć obiekt Preferencje. Obiekt Preferencje jest zestaw parametrów, który konfiguruje zachowania usługi mowy. Składa się z następujących pól:
+Aby utworzyć SpeechClient, musisz najpierw utwórz obiekt preferencji. Obiekt preferencji jest zestaw parametrów, który służy do konfigurowania zachowania usługi mowy. Składa się z następujących pól:
 
-* `SpeechLanguage`: Ustawienia regionalne dźwięku wysyłane do usługi mowy.
-* `ServiceUri`: Punktowi końcowemu używanemu do wywołania tej usługi mowy.
-* `AuthorizationProvider`: Implementacja IAuthorizationProvider umożliwia pobieranie tokenów w celu uzyskania dostępu do usługi mowy. Chociaż próbki dostawcy autoryzacji kognitywnych usług, zdecydowanie zaleca się utworzenie implementacji do obsługi pamięci podręcznej tokenu.
-* `EnableAudioBuffering`: Zaawansowanej opcji. Zobacz [zarządzania połączeniami](#connection-management).
+* `SpeechLanguage`: Ustawienia regionalne audio wysyłane do usługi rozpoznawania mowy.
+* `ServiceUri`: Punktu końcowego używanego do wywołania usługi mowy.
+* `AuthorizationProvider`: IAuthorizationProvider implementacja używane do pobierania tokenów w celu uzyskania dostępu do usługi rozpoznawania mowy. Mimo że przykład zawiera dostawcę autoryzacji usług Cognitive Services, firma Microsoft zdecydowanie zaleca się utworzenie własnej implementacji w celu obsługi pamięci podręcznej tokenu.
+* `EnableAudioBuffering`: Zaawansowana opcja. Zobacz [zarządzania połączeniami](#connection-management).
 
 ### <a name="speech-input"></a>Dane wejściowe mowy
 
 Obiekt SpeechInput składa się z dwóch pól:
 
-* **Audio**: strumień stosowania wybrana, z którego ściąga audio zestawu SDK. Może być dowolną [strumienia](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx) obsługującej odczytu.
+* **Audio**: implementacja strumienia w dowolnie, z której zestaw SDK pobiera audio. Może być dowolną [strumienia](https://msdn.microsoft.com/library/system.io.stream(v=vs.110).aspx) , która obsługuje Odczyt.
    > [!NOTE]
-   > Zestaw SDK wykrywa koniec strumienia, gdy zwraca strumień **0** podczas odczytywania.
+   > Zestaw SDK wykrywa koniec strumienia, gdy strumień zwraca **0** podczas odczytywania.
 
 * **RequestMetadata**: metadane dotyczące żądania mowy. Aby uzyskać więcej informacji, zobacz [odwołania](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html).
 
-### <a name="speech-request"></a>Żądanie mowy
+### <a name="speech-request"></a>Żądanie rozpoznawania mowy
 
-Po ma wystąpienia obiektów SpeechClient i SpeechInput, należy użyć RecognizeAsync Wyślij żądanie do usługi mowy.
+Po mają uruchomiony SpeechClient i SpeechInput obiektów, należy użyć RecognizeAsync, aby wysyłać żądania do usługi rozpoznawania mowy.
 
 ```cs
     var task = speechClient.RecognizeAsync(speechInput);
 ```
 
-Po zakończeniu żądanie kończy zadanie zwrócone przez RecognizeAsync. Ostatni RecognitionResult jest koniec uznania. Zadanie może zakończyć się niepowodzeniem, jeśli usługa lub zestawu SDK nie powiedzie się nieoczekiwanie.
+Po ukończeniu żądania zadanie zwracane przez RecognizeAsync się nie zakończy. Ostatni RecognitionResult jest końcem rozpoznawanie. Zadanie może zakończyć się niepowodzeniem, jeśli usługa lub zestawu SDK nie powiedzie się nieoczekiwanie.
 
 ### <a name="speech-recognition-events"></a>Zdarzenia rozpoznawania mowy
 
-#### <a name="partial-results-event"></a>Wyniki częściowe zdarzeń
+#### <a name="partial-results-event"></a>Zdarzenie wyniki częściowe
 
-To zdarzenie jest wywoływana za każdym razem, gdy usługi mowy prognozuje, co możesz może być informujący o tym, nawet przed zakończeniem mówiąc (Jeśli używasz `MicrophoneRecognitionClient`) lub zakończenie wysyłania danych (Jeżeli używasz `DataRecognitionClient`). Będzie możliwe subskrybowanie zdarzeń za pomocą `SpeechClient.SubscribeToPartialResult()`. Lub można użyć metody subskrypcji zdarzeń ogólnego `SpeechClient.SubscribeTo<RecognitionPartialResult>()`.
+To zdarzenie jest wywoływane za każdym razem, gdy usługa rozpoznawania mowy przewiduje, użytkownik może być opinie, nawet zakończeniem wypowiedzi (Jeśli używasz `MicrophoneRecognitionClient`) lub zakończenie wysyłania danych (Jeśli używasz `DataRecognitionClient`). Można subskrybować zdarzenia przy użyciu `SpeechClient.SubscribeToPartialResult()`. Możesz też metoda subskrypcji zdarzenia ogólne `SpeechClient.SubscribeTo<RecognitionPartialResult>()`.
 
 **Zwraca format** | Opis |
 ------|------
-**LexicalForm** | Ten formularz jest optymalna dla aplikacji wymagających wyników rozpoznawania mowy raw, nieprzetworzone.
-**Wyświetlany_tekst** | Rozpoznaną frazę z tekstu odwrotność funkcji normalizacji, wielkie litery, znaki interpunkcyjne i maskowania niestosownych wyrażeń stosowane. Niestosownych wyrażeń jest maskowane gwiazdki po początkowej znaku, na przykład "d ***." Ten formularz jest optymalna dla aplikacji, wyświetlanych wyników rozpoznawania mowy do użytkownika.
-**Zaufania** | Poziom zaufania rozpoznaną frazę reprezentuje skojarzone audio zgodnie z definicją w serwerze rozpoznawania mowy.
-**MediaTime** | Bieżący czas względem początku strumień dźwiękowy (w 100-nanosekundowych jednostkach czasu).
-**MediaDuration** | Bieżąca frazy czas trwania/długość względem audio segmentu (w 100-nanosekundowych jednostkach czasu).
+**LexicalForm** | Ta forma jest optymalna dla aplikacji wymagających wyniki rozpoznawania mowy raw, nieprzetworzonych.
+**Wyświetlany_tekst** | Rozpoznane fraza normalizacji odwrotność tekstu, wielkość liter, znaki interpunkcyjne i maskowania wulgaryzmów stosowane. Wulgaryzmów są maskowane symbolami gwiazdki po początkowej znaku, na przykład, "d ***." Ta forma jest optymalna do używania przez aplikacje, które wyświetlają wyniki rozpoznawania mowy do użytkownika.
+**zaufania** | Poziom zaufania rozpoznaną frazę reprezentuje dźwięk skojarzonego zgodnie z definicją serwera rozpoznawania mowy.
+**MediaTime** | Bieżąca godzina względem początku strumienia audio (w jednostkach 100-nanosekundowych czasu).
+**MediaDuration** | Bieżąca frazy czas trwania/długość względem audio segmentu (w jednostkach 100-nanosekundowych czasu).
 
-#### <a name="result-event"></a>Wynik zdarzeń
-Po zakończeniu mówiąc (w `ShortPhrase` tryb), to zdarzenie jest wywoływane. Opcje najlepiej n jest podany dla wyniku. W `LongDictation` trybie zdarzenia może być wywołana wiele razy, oparte na którym serwer wskazuje pauzy zdanie. Będzie możliwe subskrybowanie zdarzeń za pomocą `SpeechClient.SubscribeToRecognitionResult()`. Lub można użyć metody subskrypcji zdarzeń ogólnego `SpeechClient.SubscribeTo<RecognitionResult>()`.
+#### <a name="result-event"></a>Wynik zdarzenia
+Po zakończeniu wypowiedzi (w `ShortPhrase` tryb), to zdarzenie jest wywoływane. Otrzymasz n najlepszych opcji dla wyniku. W `LongDictation` trybie zdarzenia może być wywoływana wiele razy, oparte na którym serwer pauzy zdaniowe. Można subskrybować zdarzenia przy użyciu `SpeechClient.SubscribeToRecognitionResult()`. Możesz też metoda subskrypcji zdarzenia ogólne `SpeechClient.SubscribeTo<RecognitionResult>()`.
 
 **Zwraca format** | Opis |
 ------|------|
-**RecognitionStatus** | Stan w sposób rozpoznawania został utworzony. Na przykład został on utworzony wyniku pomyślne rozpoznawanie lub wyniku anulowanie połączenia itp.
-**Wyrażenia** | Zestaw najlepiej n fraz rozpoznany bez obaw rozpoznawania.
+**RecognitionStatus** | Stan jak rozpoznawanie został utworzony. Na przykład zostało wygenerowane w wyniku pomyślne rozpoznawanie lub w wyniku anulowanie połączenia itp.
+**Zwroty** | Zestaw wyrażeń rozpoznawanym n najlepszych bez obaw rozpoznawania.
 
-Aby uzyskać więcej informacji na temat wyników rozpoznawania zobacz [format danych wyjściowych](../Concepts.md#output-format).
+Aby uzyskać więcej informacji na temat rozpoznawania wyników, zobacz [format danych wyjściowych](../Concepts.md#output-format).
 
 ### <a name="speech-recognition-response"></a>Odpowiedź rozpoznawania mowy
 
@@ -153,15 +154,15 @@ What's the weather like? (Confidence:High)
 
 ## <a name="connection-management"></a>Zarządzanie połączeniami
 
-Interfejs API korzysta z jednego połączenia obiektu WebSocket na żądanie. Środowisko użytkownika optymalne zestawu SDK próbuje ponownie z usługą mowy i uruchomić uznanie z ostatnich RecognitionResult, który otrzymał. Na przykład jeśli audio żądanie jest długo dwie minuty, zestaw SDK Odebrano RecognitionEvent na znak co minutę i po pięciu sekundach wystąpił błąd sieci, zestaw SDK uruchamia nowe połączenie, która rozpoczyna się od znaku co minutę.
+Interfejs API korzysta z jednego połączenia protokołu WebSocket na żądanie. Środowisko użytkownika optymalne zestaw SDK próbuje ponownie połączyć się z usługa mowy i Rozpocznij rozpoznawanie od ostatniego RecognitionResult, który otrzymał. Na przykład jeśli żądanie audio wynosi dwie minuty, długie, zestaw SDK Odebrano RecognitionEvent pozycji co minutę i wystąpił błąd sieci po 5 sekundach, zestaw SDK uruchamia nowego połączenia, który rozpoczyna się od znaku jednej minuty.
 
 >[!NOTE]
->Zestaw SDK nie wyszukiwania wstecz do oznaczenia co minutę, ponieważ strumień może nie obsługuje operacji wyszukiwania. Zamiast tego zestawu SDK przechowuje bufor wewnętrzny używany do zbuforowania audio i czyści buforu jako odbiera zdarzenia RecognitionResult.
+>Zestaw SDK nie starać się wstecz do oznaczenia jednej minuty, ponieważ strumień może nie obsługiwać wyszukiwanie. Zamiast tego zestaw SDK śledzi buforu wewnętrznego wykorzystuje do buforowania audio i czyści bufor, gdy staje się RecognitionResult zdarzenia.
 
 ## <a name="buffering-behavior"></a>Zachowanie buforowania
 
-Domyślnie zestaw SDK buforuje audio, dzięki czemu można odzyskać, gdy wystąpi przerwań sieci. W przypadku których zaleca się odrzucić audio utracone podczas rozłączenia sieci i uruchomić ponownie połączenie, najlepiej wyłączyć buforowanie audio, ustawiając `EnableAudioBuffering` obiektu preferencje do `false`.
+Domyślnie zestaw SDK buforuje audio, dzięki czemu możliwe jest Odzyskiwanie po wystąpieniu przerwania sieci. W przypadku, gdy jest to korzystniejsze odrzucenie audio utracone podczas rozłączania sieci i uruchomić ponownie połączenie, warto wyłączyć buforowanie audio, ustawiając `EnableAudioBuffering` w obiekcie preferencje, aby `false`.
 
 ## <a name="related-topics"></a>Powiązane tematy
 
-[Dokumentacja biblioteki usługi Microsoft mowy C#](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html)
+[Dokumentacja biblioteki usługa Microsoft Speech C#](https://cdn.rawgit.com/Microsoft/Cognitive-Speech-STT-ServiceLibrary/master/docs/index.html)

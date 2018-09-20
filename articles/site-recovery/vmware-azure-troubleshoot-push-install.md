@@ -1,6 +1,6 @@
 ---
 title: Usługa Azure Site Recovery rozwiązywania problemów z programu VMware do platformy Azure | Dokumentacja firmy Microsoft
-description: Rozwiązywanie problemów z błędami podczas replikowania maszyn wirtualnych platformy Azure.
+description: Podczas replikowania maszyn wirtualnych platformy Azure, należy rozwiązać błędy instalacji wypychanej/usługi mobilności.
 services: site-recovery
 author: Rajeswari-Mamilla
 manager: rochakm
@@ -8,22 +8,23 @@ ms.service: site-recovery
 ms.devlang: na
 ms.topic: article
 ms.author: ramamill
-ms.date: 09/17/2018
-ms.openlocfilehash: d77b252351c15bea13b0fa1fb42fa062d508fbdc
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.date: 09/19/2018
+ms.openlocfilehash: 32b579ac680204a909c19e7125711d298b08b26a
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126993"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365489"
 ---
 # <a name="troubleshoot-mobility-service-push-installation-issues"></a>Rozwiązywanie problemów z instalacją wypychaną usługi mobilności
 
 Instalacja usługi mobilności jest krokiem podczas włączania replikacji. Powodzenie ten krok zależy wyłącznie spełnienie wymagań wstępnych i pracą z nimi przy użyciu obsługiwanych konfiguracji. Najbardziej typowe błędy, stosowanych podczas instalacji usługi mobilności są ze względu na
 
-* Łączność/poświadczenia błędy
+* Poświadczenie/uprawnień błędy
+* Błędy związane z łącznością
 * Nieobsługiwanych systemów operacyjnych
 
-Po włączeniu replikacji usługa Azure Site Recovery próbuje wypchnąć zainstalować agenta usługi mobilności na maszynie wirtualnej. W ramach tego serwera konfiguracji próbuje nawiązywanie połączenia z maszyną wirtualną i kopiowanie agenta. Aby umożliwić pomyślną instalację, wykonaj wskazówki dotyczące rozwiązywania problemów krok po kroku przedstawionych poniżej
+Po włączeniu replikacji usługa Azure Site Recovery próbuje wypchnąć zainstalować agenta usługi mobilności na maszynie wirtualnej. W ramach tego serwera konfiguracji próbuje nawiązywanie połączenia z maszyną wirtualną i kopiowanie agenta. Aby umożliwić pomyślną instalację, postępuj zgodnie z wskazówki dotyczące rozwiązywania problemów krok po kroku przedstawionych poniżej.
 
 ## <a name="credentials-check-errorid-95107--95108"></a>Sprawdź poświadczenia (identyfikator błędu: 95107 & 95108)
 

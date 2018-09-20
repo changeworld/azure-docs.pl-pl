@@ -8,18 +8,18 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: fundamentals
 ms.topic: conceptual
-ms.date: 09/11/2018
+ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: kexia
 custom: it-pro
-ms.openlocfilehash: 6a817d4e52d602c921cb04f8c40dbad632d41932
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: cdf1c8bfb8e623956d50975f36faafe10b534d06
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731330"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46367564"
 ---
-# <a name="how-to-add-branding-to-your-azure-ad-sign-in-page"></a>Porady: dodawanie znakowania na stronie logowania usługi Azure AD
+# <a name="how-to-add-branding-to-your-azure-active-directory-sign-in-page"></a>Porady: dodawanie znakowania na stronie logowania usługi Azure Active Directory
 Zapewnienie spójnego wyglądu i działania na stronach logowania w usłudze Azure Active Directory (Azure AD), należy użyć logo organizacji i niestandardowych schematów kolorów. Strony logowania są wyświetlane, gdy użytkownicy logują się do Twojej organizacji opartej na sieci web aplikacji, takich jak Office 365, która używa usługi Azure AD jako dostawcy tożsamości.
 
 >[!Note]
@@ -34,23 +34,30 @@ Niestandardowe znakowanie nie od razu pojawi się w przypadku użytkowników, pr
 > Wszystkie elementy znakowania są opcjonalne. Na przykład jeśli określisz Baner logo z Brak obrazu tła strony logowania Pokaż logo przy użyciu domyślnego obrazu tła, z lokacji docelowej (na przykład Office 365).<br><br>Ponadto znakowanie strony logowania nie jest przenoszone do osobistych kont Microsoft. Jeśli użytkowników lub Goście biznesowi logują się przy użyciu osobistego konta Microsoft, strony logowania nie będzie zawierać znakowania organizacji.
 
 ### <a name="to-customize-your-branding"></a>Aby dostosować znakowanie
-1. Zaloguj się do [portalu usługi Azure AD](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
 
 2. Wybierz **usługi Azure Active Directory**, a następnie wybierz pozycję **marką firmy**, a następnie wybierz pozycję **Konfiguruj**.
 
-    ![Contoso — blok znakowania firmy, wyróżnioną opcją Konfiguruj](media/customize-branding/company-branding-configure-button.png)
+    ![Contoso — strona znakowania firmy, wyróżnioną opcją Konfiguruj](media/customize-branding/company-branding-configure-button.png)
 
-3. Na **znakowania firmowego Konfiguruj** bloku dowolne lub wszystkie z poniższych informacji:
+3. Na **znakowania firmowego Konfiguruj** podaj dowolne lub wszystkie z poniższych informacji.
+
+    >[!Important]
+    >Wszystkie obrazy niestandardowe dodane na tej stronie mają rozmiar obrazu (w pikselach) i potencjalnie plików rozmiar (KB), ograniczenia. Ze względu na ograniczenia te najbardziej prawdopodobną należy utworzyć obrazy o rozmiarze zerowym za pomocą edytora zdjęć.
 
     - **Ustawienia ogólne**
 
-        ![Konfiguruj znakowanie bloku przy użyciu ustawień ogólnych, ukończono firmowe](media/customize-branding/configure-company-branding-general-settings.png)
+        ![Konfiguruj znakowanie strony, przy użyciu ustawień ogólnych, ukończono firmowe](media/customize-branding/configure-company-branding-general-settings.png)
 
         - **Język.** Język zostanie automatycznie ustawione jako domyślne i nie można jej zmienić.
         
-        - **Obraz tła strony logowania.** Wybierz plik obrazu PNG lub jpg, aby pojawiało się jako tła stron logowania. Obraz nie może być większa niż 1920 x 1080 pikseli, a musi mieć rozmiar pliku wynosi mniej niż 300 KB.
+        - **Obraz tła strony logowania.** Wybierz plik obrazu PNG lub jpg, aby pojawiało się jako tła stron logowania. 
+        
+            Obraz nie może być większa niż 1920 x 1080 pikseli, a musi mieć rozmiar pliku wynosi mniej niż 300 KB.
 
-        - **Logo baneru.** Wybierz wersję .png lub .jpg logo była wyświetlana na stronie logowania, po użytkownik wprowadza nazwę użytkownika i na **Moje aplikacje** strony portalu. Obraz nie może być większa niż 36 pikseli lub większa niż 245 pikseli. Zalecamy używanie przezroczystego obrazu, ponieważ w tle mogą być niezgodne z tła logo. Zalecamy również rezygnację z dodawania wypełnienia wokół obrazu lub może być Szukaj małe logo.
+        - **Logo baneru.** Wybierz wersję .png lub .jpg logo była wyświetlana na stronie logowania, po użytkownik wprowadza nazwę użytkownika i na **Moje aplikacje** strony portalu.
+            
+            Obraz nie może być większa niż 36 pikseli lub większa niż 245 pikseli. Zalecamy używanie przezroczystego obrazu, ponieważ w tle mogą być niezgodne z tła logo. Zalecamy również rezygnację z dodawania wypełnienia wokół obrazu lub może być Szukaj małe logo.
 
         - **Wskazówka dotycząca nazwy użytkownika.** Wpisz tekst wskazówki, która jest wyświetlana użytkownikom, gdy zapomną swoją nazwę użytkownika. Ten tekst musi być Unicode, bez łącza lub kodu i nie może przekraczać 64 znaków. Goście zalogować się do aplikacji, zaleca się nie zostaną dodane niej tę wskazówkę.
 
@@ -58,11 +65,13 @@ Niestandardowe znakowanie nie od razu pojawi się w przypadku użytkowników, pr
 
     - **Ustawienia zaawansowane**
             
-        ![Konfiguruj znakowanie bloku za pomocą ustawień zaawansowanych, ukończono firmowe](media/customize-branding/configure-company-branding-advanced-settings.png)   
+        ![Konfiguruj znakowanie strony za pomocą ustawień zaawansowanych, ukończono firmowe](media/customize-branding/configure-company-branding-advanced-settings.png)   
 
         - **Kolor tła strony logowania.** Określanie koloru w formacie szesnastkowym (na przykład białe jest #FFFFFF) wyświetlanego zamiast obrazu tła w sytuacjach połączenia o niskiej przepustowości. Zalecamy używanie podstawowego koloru baneru logo lub koloru organizacji.
 
-        - **Obraz kwadratowego logo.** Wybierz PNG (preferowany) lub jpg obraz logo organizacji, aby były widoczne dla użytkowników podczas procesu instalacji dla nowych urządzeń systemu Windows 10 Enterprise. Ten obraz jest używana tylko na potrzeby uwierzytelniania Windows i pojawia się tylko w przypadku dzierżaw korzystających z [rozwiązania Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) wdrażania lub podczas wprowadzania hasła napotyka stron w innym systemie Windows 10. Obraz nie może być większa niż 240 x 240 pikseli i musi mieć plik o rozmiarze poniżej 10 KB. Zalecamy używanie przezroczystego obrazu, ponieważ w tle mogą być niezgodne z tła logo. Zalecamy również rezygnację z dodawania wypełnienia wokół obrazu lub może być Szukaj małe logo.
+        - **Obraz kwadratowego logo.** Wybierz PNG (preferowany) lub jpg obraz logo organizacji, aby były widoczne dla użytkowników podczas procesu instalacji dla nowych urządzeń systemu Windows 10 Enterprise. Ten obraz jest używana tylko na potrzeby uwierzytelniania Windows i pojawia się tylko w przypadku dzierżaw korzystających z [rozwiązania Windows Autopilot]( https://docs.microsoft.com/windows/deployment/windows-autopilot/windows-10-autopilot) wdrażania lub podczas wprowadzania hasła napotyka stron w innym systemie Windows 10.
+        
+            Obraz nie może być większa niż 240 x 240 pikseli i musi mieć plik o rozmiarze poniżej 10 KB. Zalecamy używanie przezroczystego obrazu, ponieważ w tle mogą być niezgodne z tła logo. Zalecamy również rezygnację z dodawania wypełnienia wokół obrazu lub może być Szukaj małe logo.
     
         - **Obraz kwadratowego logo, motyw ciemny.** Taka sama jak powyższy obraz kwadratowego logo. Ten obraz logo odbywa się obraz kwadratowego logo, gdy jest używana na ciemnym tle, takie jak z ekranami przyłączone do systemu Windows 10 w usłudze Azure AD podczas początkowego out-of-box (OOBE).  Jeśli logo wygląda dobrze na biały, ciemny niebieski i czarnego tła, nie trzeba dodać ten obraz. 
         
@@ -74,22 +83,22 @@ Niestandardowe znakowanie nie od razu pojawi się w przypadku użytkowników, pr
 
 3. Po zakończeniu, dodając znak marki, wybierz **Zapisz**.
 
-  Ponieważ jest to pierwszy konfiguracji znakowania, staje się domyślnie dla Twojej dzierżawy. Jeśli dodasz więcej konfiguracje, uzyskasz opcję, aby wybrać domyślny.
-
-  >[!Important]
-  >Aby dodać więcej firmowych, znakowania konfiguracje dla Twojej dzierżawy należy wybrać **nowy język** na **Contoso - znakowania firmowego** bloku. Spowoduje to otwarcie **znakowania firmowego Konfiguruj** bloku, a następnie wykonaj te same czynności opisanych powyżej.
+    Jeśli ten proces tworzy pierwszej niestandardowej konfiguracji znakowania, staje się domyślnie dla Twojej dzierżawy. Jeśli masz dodatkowe konfiguracje, będzie można wybrać konfigurację domyślną.
+    
+    >[!Important]
+    >Aby dodać więcej firmowych, znakowania konfiguracje dla Twojej dzierżawy należy wybrać **nowy język** na **Contoso - znakowania firmowego** strony. Spowoduje to otwarcie **znakowania firmowego Konfiguruj** strony, a następnie wykonaj te same czynności opisanych powyżej.
 
 ## <a name="update-your-custom-branding"></a>Zaktualizuj niestandardowe znakowanie
 Po utworzeniu niestandardowe znakowanie może Przejdź wstecz i wszystkich danych, które chcesz zmienić.
 
 ### <a name="to-edit-your-custom-branding"></a>Aby edytować niestandardowe znakowanie
-1. Zaloguj się do [portalu usługi Azure AD](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
 
 2. Wybierz **usługi Azure Active Directory**, a następnie wybierz pozycję **marką firmy**, a następnie wybierz pozycję **Konfiguruj**.
 
-    ![Contoso — blok znakowania firmy, z konfiguracji domyślnej przedstawiono](media/customize-branding/company-branding-default-config.png)
+    ![Contoso — strony znakowania firmy, za pomocą konfiguracji domyślnej przedstawiono](media/customize-branding/company-branding-default-config.png)
 
-3. Na **znakowania firmowego Konfiguruj** bloku dodać, usunąć lub zmienić dowolne z informacją, w oparciu o opisów znajdujących się w [Dostosuj swoją stronę logowania w usłudze Azure AD](#customize-your-azure-ad-sign-in-page) dalszej części tego artykułu.
+3. Na **znakowania firmowego Konfiguruj** strony, Dodaj, usuń lub zmień informacje, w oparciu o opisów znajdujących się w [Dostosuj swoją stronę logowania w usłudze Azure AD](#customize-your-azure-ad-sign-in-page) dalszej części tego artykułu.
 
 4. Wybierz pozycję **Zapisz**.
 
@@ -100,16 +109,29 @@ Nie można zmienić język oryginalną konfigurację z językiem domyślnym. Jed
 
 ### <a name="to-add-a-language-specific-branding-configuration"></a>Aby dodać konfigurację znakowania specyficzny dla języka
 
-1. Zaloguj się do [portalu usługi Azure AD](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
+1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/) przy użyciu konta administratora globalnego dla katalogu.
 
 2. Wybierz **usługi Azure Active Directory**, a następnie wybierz pozycję **marką firmy**, a następnie wybierz pozycję **nowy język**.
 
-    ![Contoso — blok znakowania firmy, z podświetloną opcją nowy język](media/customize-branding/company-branding-new-language.png)
+    ![Contoso — strony znakowania firmy, z podświetloną opcją nowy język](media/customize-branding/company-branding-new-language.png)
 
-3. Na **znakowania firmowego Konfiguruj** bloku, wybierz swój język (na przykład francuski), a następnie dodaj dane przetłumaczone na opisów znajdujących się w podstawie [Dostosuj swoją stronę logowania w usłudze Azure AD](#customize-your-azure-ad-sign-in-page) w dalszej części tego artykułu.
+3. Na **znakowania firmowego Konfiguruj** stronie, wybierz swój język (na przykład francuski), a następnie dodaj dane przetłumaczone na opisów znajdujących się w podstawie [Dostosuj swoją stronę logowania w usłudze Azure AD](#customize-your-azure-ad-sign-in-page) w dalszej części tego artykułu.
 
 4. Wybierz pozycję **Zapisz**.
 
-    **Contoso — logo firmy** aktualizacje bloku pokazują nowej konfiguracji francuskim.
+    **Contoso — logo firmy** aktualizacji, aby pokazać nowej konfiguracji francuska stron.
 
-    ![Contoso — blok znakowania firmy, z konfiguracji domyślnej przedstawiono](media/customize-branding/company-branding-french-config.png)
+    ![Contoso — strony znakowania firmy, za pomocą konfiguracji domyślnej przedstawiono](media/customize-branding/company-branding-french-config.png)
+
+## <a name="add-your-custom-branding-to-pages"></a>Dodaj niestandardowe znakowanie do stron
+Dodaj niestandardowe znakowanie do stron, modyfikując na końcu adresu URL z tekstem, `?whr=yourdomainname`. Ta modyfikacja działa na wielu stronach, w tym strony konfiguracji usługi Multi-Factor Authentication (MFA), strony konfiguracji samoobsługowego resetowania haseł (SSPR) i znak na stronie.
+
+**Przykłady:**
+
+**Oryginalny adres URL:** https://aka.ms/MFASetup<br>
+**Niestandardowy adres URL:** https://account.activedirectory.windowsazure.com/proofup.aspx?whr=contoso.com
+
+**Oryginalny adres URL:** https://aka.ms/SSPR<br>
+**Niestandardowy adres URL:** https://passwordreset.microsoftonline.com/?whr=contoso.com
+
+ 

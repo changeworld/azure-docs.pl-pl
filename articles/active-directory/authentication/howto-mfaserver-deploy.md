@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: b882f8d8ffc818de5ec459f504965015f55897a3
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: d69addac0647513e00663110ac82eef343b77983
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159730"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46364622"
 ---
 # <a name="getting-started-with-the-azure-multi-factor-authentication-server"></a>Wprowadzenie do serwera Azure Multi-Factor Authentication
 
@@ -49,6 +49,7 @@ Upewnij się, że serwer Azure Multi-Factor Authentication spełnia następując
 |:--- |:--- |
 | Sprzęt |<li>200 MB wolnego miejsca na dysku twardym</li><li>Procesor umożliwiający obsługę architektury x32 lub x64</li><li>Co najmniej 1 GB pamięci RAM</li> |
 | Oprogramowanie |<li>Windows Server 2016</li><li>Windows Server 2012 R2</li><li>Windows Server 2012</li><li>Windows Server 2008 R2</li><li>Windows Server 2008, z dodatkiem SP1, SP2</li><li>Windows Server 2003 R2</li><li>Windows Server 2003, z dodatkiem SP1, SP2</li><li>Windows 10</li><li>Windows 8.1, wszystkie wersje</li><li>Windows 8, wszystkie wersje</li><li>Windows 7, wszystkie wersje</li><li>Windows Vista, wszystkie wersje, z dodatkiem SP1, SP2</li><li>Oprogramowanie Microsoft .NET 4.0 Framework</li><li>Usługi IIS 7.0 lub nowsze w przypadku instalacji portalu użytkowników lub zestawu SDK usługi sieci Web</li> |
+| Uprawnienia | Konto administratora domeny lub administratora przedsiębiorstwa do rejestracji w usłudze Active Directory |
 
 ### <a name="azure-mfa-server-components"></a>Składniki serwera usługi Azure MFA
 

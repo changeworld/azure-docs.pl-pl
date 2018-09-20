@@ -12,12 +12,12 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: data-movement
-ms.openlocfilehash: 9ca8c42d99f3bd7548c685f03328084865a09906
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 7cad09a3fc02d0c25f164f7e45974019ff9bbb71
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295788"
+ms.locfileid: "46367920"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nowe DBA w chmurze — zarządzania bazą danych w usłudze Azure SQL Database
 
@@ -98,7 +98,7 @@ Zapora uniemożliwia dostęp do serwera z zewnętrznej jednostki, zezwalając ty
 Można utworzyć reguły zapory na poziomie serwera lub na poziomie bazy danych. Reguły zapory na poziomie serwera mogą utworzone za pośrednictwem portalu lub za pomocą programu SSMS. Aby uzyskać więcej informacji na temat sposobu konfigurowania serwera oraz reguły zapory na poziomie bazy danych, zobacz: [tworzenie reguł zapory w bazie danych SQL](sql-database-security-tutorial.md#create-a-server-level-firewall-rule-in-the-azure-portal).
 
 #### <a name="service-endpoints"></a>Punkty końcowe usługi
-Domyślnie usługi SQL database jest skonfigurowany tak, aby "Zezwalaj na wszystkie usługi platformy Azure" — oznacza to, dowolnej maszyny wirtualnej na platformie Azure może próbować połączyć się z bazą danych. Te próby nadal jest konieczne może zostać uwierzytelniony. Jednakże jeśli nie chcesz bazę danych, aby były dostępne dla żadnych adresów IP usługi Azure, możesz wyłączyć "Zezwalaj na wszystkie usługi platformy Azure". Ponadto można skonfigurować [punkty końcowe usługi sieci Wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md).
+Domyślnie usługi SQL database jest skonfigurowany do "Zezwalaj na usługi platformy Azure na dostęp do serwera" — oznacza to, dowolnej maszyny wirtualnej na platformie Azure może próbować połączyć się z bazą danych. Te próby nadal jest konieczne może zostać uwierzytelniony. Jednakże jeśli nie chcesz bazę danych, aby były dostępne dla żadnych adresów IP usługi Azure, możesz wyłączyć "Zezwalaj na usługi platformy Azure na dostęp do serwera". Ponadto można skonfigurować [punkty końcowe usługi sieci Wirtualnej](sql-database-vnet-service-endpoint-rule-overview.md).
 
 Punkty końcowe usługi (SE) umożliwiają udostępnianie krytycznych zasobów platformy Azure tylko do własnej prywatnej sieci wirtualnej na platformie Azure. W ten sposób można zasadniczo wyeliminować publicznego dostępu do zasobów. Ruch między siecią wirtualną na platformie Azure pozostaje w sieci szkieletowej platformy Azure. Bez SE uzyskasz tunelowania wymuszanego routing pakietów. Sieć wirtualna wymusza ruch internetowy do organizacji i zapoznać się z tej samej trasie ruch usługi platformy Azure. Dzięki punktom końcowym usług można zoptymalizować to od przepływu pakietów bezpośrednio z sieci wirtualnej do usługi w sieci szkieletowej platformy Azure.
 
