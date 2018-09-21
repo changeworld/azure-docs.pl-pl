@@ -1,12 +1,12 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 2217adbbb9e5222e6c33bfcdce41c30396c7f231
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 95341f318a9902a82ecb0366400ec34d159f0225
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45740324"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46363687"
 documentType: LandingData
-title: Raporty i monitorowanie usługi Azure AD
+title: Raporty i monitorowanie w usłudze Azure Active Directory
 metadata:
   document_id: 
   title: Dokumentacja dotycząca raportów i monitorowania usługi Azure Active Directory — samouczki, przewodniki Szybki start, pojęcia | Microsoft Docs
@@ -22,7 +22,7 @@ metadata:
   ms.date: 08/14/2018
   ms.author: priyamo
 abstract:
-  description: Dowiedz się, jak wyświetlać raporty dotyczące zabezpieczeń i inspekcji dla danego środowiska lub monitorować je z upływem czasu, aby uzyskać szczegółowe informacje na temat wzorców użycia. Raporty usługi Azure AD umożliwiają uzyskiwanie szczegółowych informacji dotyczących zabezpieczeń i wzorców użycia w danym środowisku. Na przykład można uzyskać odpowiedzi na następujące pytania:<ul><li>W jaki sposób aplikacje lub usługi są wykorzystywane przez użytkowników?</li><li>Jakie są potencjalne zagrożenia wpływające na kondycję środowiska?</li><li>Jak rozwiązywać problemy uniemożliwiające użytkownikom wykonywanie pracy?</li>
+  description: Dowiedz się, jak wyświetlać raporty dotyczące zabezpieczeń i inspekcji dla danego środowiska lub monitorować je z upływem czasu, aby uzyskać szczegółowe informacje na temat wzorców użycia. Raporty usługi Azure Active Directory (Azure AD) umożliwiają uzyskiwanie szczegółowych informacji dotyczących zabezpieczeń i wzorców użycia w danym środowisku. Na przykład można uzyskać odpowiedzi na następujące pytania:<ul><li>W jaki sposób aplikacje lub usługi są wykorzystywane przez użytkowników?</li><li>Jakie są potencjalne zagrożenia wpływające na kondycję środowiska?</li><li>Jak rozwiązywać problemy uniemożliwiające użytkownikom wykonywanie pracy?</li>
 sections:
 - title: 5-minutowe przewodniki Szybki start
   items:

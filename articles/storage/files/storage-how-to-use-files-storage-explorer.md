@@ -8,12 +8,12 @@ ms.topic: get-started-article
 ms.date: 02/27/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: e8989cadd331021a3e35fc559421bbdd08f0b4fb
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 949d96bb1b5ffdc948737d4a47ffa14b2e344b5e
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521198"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574735"
 ---
 # <a name="manage-azure-file-shares-with-azure-storage-explorer"></a>Zarządzanie udziałami plików platformy Azure za pomocą Eksploratora usługi Azure Storage 
 Usługa [Azure Files](storage-files-introduction.md) to łatwy w użyciu system plików w chmurze firmy Microsoft. W tym przewodniku przedstawiono podstawowe informacje dotyczące pracy z udziałami plików platformy Azure przy użyciu [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/). Eksplorator usługi Storage to popularne narzędzie klienckie dostępne dla systemów Windows, macOS i Linux. Eksplorator usługi Storage służy do zarządzania udziałami plików platformy Azure i innymi zasobami magazynu.
@@ -91,7 +91,7 @@ Postęp pobierania będzie wyświetlany w okienku **Działania** na dole okna.
 
 ## <a name="create-and-modify-share-snapshots"></a>Tworzenie i modyfikowanie migawek udziałów
 Migawka zachowuje kopię udziału plików Azure w określonym momencie w czasie. Migawki udziału plików są podobne do innych technologii, które być może już znasz:
-- [Usługa kopiowania woluminów w tle (VSS)](https://docs.microsoft.com/en-us/windows/desktop/VSS/volume-shadow-copy-service-portal) dla systemów plików systemu Windows, takich jak NTFS i ReFS
+- [Usługa kopiowania woluminów w tle (VSS)](https://docs.microsoft.com/windows/desktop/VSS/volume-shadow-copy-service-portal) dla systemów plików systemu Windows, takich jak NTFS i ReFS
 - Migawki [Menedżera woluminów logicznych (LVM)](https://en.wikipedia.org/wiki/Logical_Volume_Manager_(Linux)#Basic_functionality) dla systemu Linux
 - Migawki [systemu plików firmy Apple (APFS)](https://developer.apple.com/library/content/documentation/FileManagement/Conceptual/APFS_Guide/Features/Features.html) dla systemu macOS
 

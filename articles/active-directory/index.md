@@ -1,226 +1,232 @@
 ---
-layout: LandingPage
+layout: HubPage
+hide_bc: true
 title: Dokumentacja usługi Azure Active Directory — samouczki i dokumentacja interfejsu API | Microsoft Docs
 description: Azure Active Directory (Azure AD) to wielodostępna, oparta na chmurze usługa firmy Microsoft do katalogowania tożsamości i zarządzaniami nimi, która w obrębie jednego rozwiązania łączy podstawowe usługi katalogowe, zarządzanie dostępem do aplikacji oraz ochronę tożsamości.
 services: active-directory
-author: rolyon
+author: barbkess
 manager: mtillman
 ms.assetid: ''
 ms.service: active-directory
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: landing-page
-ms.date: 08/16/2018
+ms.date: 09/14/2018
 ms.author: mtillman
-ms.openlocfilehash: cc79601e2ec283cca2f0ef97cd220c656fc3d311
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 43da4d780a93418a12cb0cbadc6a801da300188b
+ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339853"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46465830"
 ---
-# <a name="azure-active-directory-documentation"></a>Dokumentacja usługi Azure Active Directory
-
-Azure Active Directory (Azure AD) to wielodostępna, oparta na chmurze usługa do katalogowania tożsamości i zarządzania nimi.
-
-<ul class="panelContent cardsF">
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Podstawy</h3>
-                        <p>
-                        <a href="/azure/active-directory/fundamentals/active-directory-whatis">Co to jest usługa Azure AD?</a><br/>
-                        <a href="/azure/active-directory/fundamentals/understand-azure-identity-solutions">Rozwiązania w zakresie tożsamości</a><br/>
-                        <a href="/azure/active-directory/fundamentals/get-started-azure-ad">Wprowadzenie</a><br/>
-                        <a href="/azure/active-directory/fundamentals/whats-new">Co nowego</a><br/>
-                        <a href="/azure/active-directory/fundamentals/active-directory-deployment-plans">Plany wdrożenia usługi Azure AD</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3><a href="/azure/active-directory/users-groups-roles/index">Użytkownicy korporacyjni</a></h3>
-                        <p>
-                        <a href="/azure/active-directory/add-users-azure-active-directory">Użytkownicy</a><br/>
-                        <a href="/azure/active-directory/active-directory-manage-groups">Grupy</a><br/>
-                        <a href="/azure/active-directory/license-users-groups">Licencje</a><br/>
-                        <a href="/azure/active-directory/active-directory-administer">Zarządzanie katalogami</a><br/>
-                        <a href="/azure/active-directory/active-directory-assign-admin-roles-azure-portal">Role administratorów</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Użytkownicy zewnętrzni</h3>
-                        <p>
-                        <a href="/azure/active-directory/b2b/what-is-b2b">Działania między firmami (B2B)</a><br/>
-                        <a href="/azure/active-directory-b2c/">Działania między firmami i klientami (B2C)</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Authentication</h3>
-                        <p>
-                        <a href="/azure/active-directory/authentication/concept-sspr-howitworks">Hasła</a><br/>
-                        <a href="/azure/active-directory/authentication/concept-mfa-howitworks">Multi-Factor Authentication</a><br/>
-                        <a href="/azure/active-directory/active-directory-azureadjoin-passport">Windows Hello</a><br/>
-                        <a href="/azure/active-directory/authentication/active-directory-certificate-based-authentication-get-started">Uwierzytelnianie oparte na certyfikatach</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Ochrona</h3>
-                        <p>
-                        <a href="/azure/active-directory/active-directory-identityprotection">Ochrona tożsamości</a><br/>
-                        <a href="/azure/active-directory/conditional-access/index">Dostęp warunkowy</a><br/>
-                        <a href="/azure/active-directory/privileged-identity-management/pim-configure">Privileged Identity Management</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Urządzenia</h3>
-                        <p>
-                        <a href="/azure/active-directory/devices/index">Zarządzanie urządzeniami</a><br/>
-                        <a href="/azure/active-directory/user-help/device-management-azuread-registered-devices-windows10-setup">Urządzenia z systemem Windows 10</a><br/>
-                        <a href="/azure/active-directory/user-help/device-management-azuread-joined-devices-setup">Urządzenia przyłączone</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Aplikacje</h3>
-                        <p>
-                        <a href="/azure/active-directory/active-directory-enable-sso-scenario">Zarządzanie aplikacjami</a><br/>
-                        <a href="/azure/active-directory/manage-apps/migrate-adfs-apps-to-azure">Migracja aplikacji</a><br/>
-                        <a href="/azure/active-directory/active-directory-coreapps-assign-user-azure-portal">Aplikacje w przedsiębiorstwie</a><br/>
-                        <a href="/azure/active-directory/active-directory-managing-access-to-apps">Dostęp do aplikacji</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Uwierzytelnianie dla deweloperów</h3>
-                        <p>
-                        <a href="/azure/active-directory/develop/active-directory-authentication-scenarios">Informacje podstawowe o uwierzytelnianiu</a><br/>
-                        <a href="/azure/active-directory/develop/active-directory-integrating-applications">Integracja aplikacji</a><br/>
-                        <a href="/azure/active-directory/managed-service-identity/overview">Tożsamość zarządzana</a><br/>
-                        <a href="/azure/active-directory/develop/active-directory-code-samples">Przykłady kodu</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Dokumentacja</h3>
-                        <p>
-                        <a href="/powershell/module/azurerm.resources#active_directory">Azure RM PowerShell</a><br/>
-                        <a href="/powershell/azure/active-directory/overview">Azure AD PowerShell</a><br/>
-                        <a href="/cli/azure/ad">Interfejs wiersza polecenia platformy Azure</a><br/>
-                        <a href="https://developer.microsoft.com/graph/docs/api-reference/v1.0/resources/azure_ad_overview">Microsoft Graph</a><br/>
-                        <a href="/dotnet/api/overview/azure/activedirectory">.NET</a><br/>
-                        <a href="/java/api/overview/azure/activedirectory">Java</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Organizacje hybrydowe</h3>
-                        <p>
-                        <a href="/azure/active-directory/active-directory-hybrid-identity-design-considerations-overview">Rozwiązanie tożsamości hybrydowej</a><br/>
-                        <a href="/azure/active-directory/connect/active-directory-aadconnect">Integracja z katalogiem lokalnym</a><br/>
-                        <a href="/azure/active-directory/connect/active-directory-aadconnect-azure-adfs">Federation Services</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Zgodność i raporty</h3>
-                        <p>
-                        <a href="/azure/active-directory/active-directory-azure-ad-controls-access-reviews-overview">Przeglądy dostępu</a><br/>
-                        <a href="/azure/active-directory/active-directory-tou">Warunki użytkowania</a><br/>
-                        <a href="/azure/active-directory/active-directory-reporting-azure-portal">Raporty</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-    <li>
-        <div class="cardSize">
-            <div class="cardPadding">
-                <div class="card">
-                    <div class="cardText">
-                        <h3>Domeny</h3>
-                        <p>
-                        <a href="/azure/active-directory-domain-services/">Domain Services</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </li>
-</ul>
+<div id="main" class="v2">
+    <div class="container">
+        <h1>Dokumentacja usługi Azure Active Directory</h1>
+        <p>Azure Active Directory (Azure AD) to wielodostępna, oparta na chmurze usługa do katalogowania tożsamości i zarządzania nimi.</p>
+        <hr style="margin: 30px 0;" />
+        <ul class="pivots">
+            <li>
+                <a href="#products"></a>
+                <ul id="products">
+                    <li>
+                        <a class="singlePanelNavItem selected" style="display: none" href="#indexA" data-linktype="self-bookmark"></a>
+                        <ul class="panelContent singlePanelContent" id="indexA" style="border: medium; border-image: none; margin-top: 0px; display: flex; float: left;">
+                            <li class="fullSpan">
+                                <a href="#index1" data-linktype="self-bookmark"></a>
+                                <ul class="cardsF cols cols4" id="index1" style="float: left; display: flex; width: 100%; border-bottom: 1px var(--grey-lighter) solid;">  
+                                    <li>
+                                        <ul class="cardsB panelContent" id="cardtypes-B" style="float: left; display: flex; width: 100%;">
+                                            <li>
+                                                <a href="">
+                                                    <div class="cardSize">
+                                                        <div class="cardPadding">
+                                                            <div class="card">
+                                                                <div class="cardImageOuter">
+                                                                    <div class="cardImage">
+                                                                        <img alt="" src="https://docs.microsoft.com/media/common/i_learn-about.svg" data-linktype="external">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="cardText" style="padding-left: 0px">
+                                                                    <h3><a href="fundamentals/index.yml">Poznaj podstawy</a></h3> 
+                                                                    <p>
+                                                                        <a href="fundamentals/active-directory-whatis.md">Co to jest usługa Azure AD?</a><br>
+                                                                        <a href="fundamentals/active-directory-get-started-premium.md">Tworzenie konta w usłudze Azure AD Premium</a><br>
+                                                                        <a href="fundamentals/active-directory-access-create-new-tenant.md">Uzyskiwanie dostępu do usługi Azure AD i utworzenie dzierżawy</a><br>
+                                                                        <a href="fundamentals/add-users-azure-active-directory.md">Tworzenie grupy i dodawanie członków</a><br>
+                                                                        <a href="fundamentals/active-directory-users-assign-role-azure-portal.md">Przypisywanie ról do użytkowników</a><br>
+                                                                        <a href="fundamentals/license-users-groups.md">Przypisywanie licencji do użytkowników</a>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+<!--This is the learning section 
+                                            <li>
+                                                <a href="">
+                                                    <div class="cardSize">
+                                                        <div class="cardPadding">
+                                                            <div class="card">
+                                                                <div class="cardImageOuter">
+                                                                    <div class="cardImage">
+                                                                        <img alt="" src="https://docs.microsoft.com/media/common/i_learn-about.svg" data-linktype="external">
+                                                                    </div>
+                                                                </div>
+                                                                <div class="cardText" style="padding-left: 0px">
+                                                                    <h3><a href="">Build your skills with Microsoft Learn</a></h3> 
+                                                                    <p>
+                                                                        <a href="https://docs.microsoft.com/learn/modules/secure-azure-resources-with-conditional-access">Secure your Azure resources with conditional access</a><br>
+                                                                        <a href="">More interactive learning ...</a><br>
+                                                                    </p>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </li>
+ End of the learning section -->
+                                        </ul>
+                                    </li>
+                                    <li>
+                                        <div class="cardSize">
+                                            <div class="cardPadding">
+                                                <div class="card">
+                                                    <div class="cardText">
+                                                        <h3><a href="manage-apps/index.yml">Zarządzanie aplikacjami</a></h3>
+                                                        <p>
+                                                            <a href="manage-apps/add-application-portal.md">Dodawanie aplikacji</a><br>
+                                                            <a href="manage-apps/configure-single-sign-on-portal.md">Konfigurowanie logowania jednokrotnego</a><br>
+                                                            <a href="manage-apps/application-proxy.md">Serwer proxy aplikacji dla aplikacji lokalnych</a><br>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="authentication/index.yml">Metody uwierzytelniania</a></h3>
+                                                        <p>
+                                                            <a href="authentication/tutorial-mfa-applications.md">Włączanie uwierzytelniania MFA dla witryny Azure Portal</a><br>
+                                                            <a href="authentication/quickstart-sspr.md">Włącz samoobsługowe resetowanie haseł</a><br>
+                                                            <a href="authentication/concept-registration-mfa-sspr-converged.md">Rejestracja zbieżna dla uwierzytelniania MFA i samoobsługowego rejestrowania haseł</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="b2b/index.yml">Firma-firma (B2B)</a></h3>
+                                                        <p>
+                                                            <a href="b2b/b2b-quickstart-add-guest-users-portal.md">Dodawanie użytkowników-gości w portalu</a><br>
+                                                            <a href="b2b/b2b-tutorial-bulk-invite.md">Zbiorcze zapraszanie użytkowników-gości</a><br>
+                                                            <a href="b2b/b2b-tutorial-require-mfa.md">Wymaganie uwierzytelniania MFA dla użytkowników-gości</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="/azure/active-directory-b2c/index">Firma-klient (B2C)</a></h3>
+                                                        <p>
+                                                            <a href="/azure/active-directory-b2c/tutorial-create-tenant">Tworzenie dzierżawy usługi Azure AD B2C</a><br>
+                                                            <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-app">Włączanie uwierzytelniania w aplikacji internetowej</a><br>
+                                                            <a href="/azure/active-directory-b2c/active-directory-b2c-tutorials-web-api">Udzielanie dostępu do internetowego interfejsu API platformy ASP.NET</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="governance/access-reviews-overview.md">Przeglądy dostępu</a></h3>
+                                                        <p>
+                                                            <a href="governance/create-access-review.md">Tworzenie przeglądu dostępu</a><br>
+                                                            <a href="governance/perform-access-review.md">Wykonywanie przeglądu dostępu</a><br>
+                                                            <a href="governance/active-directory-tou.md">Warunki użytkowania</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="cardSize">
+                                            <div class="cardPadding">
+                                                <div class="card">
+                                                    <div class="cardText">
+                                                        <h3><a href="conditional-access/index.yml">Dostęp warunkowy</a></h3>
+                                                        <p>
+                                                            <a href="conditional-access/app-based-mfa.md">Wymaganie uwierzytelniania MFA dla określonych aplikacji</a><br>
+                                                            <a href="conditional-access/require-tou.md">Wymaganie akceptacji warunków użytkowania</a><br>
+                                                            <a href="conditional-access/app-sign-in-risk.md">Blokowanie dostępu po wykryciu ryzykownej sesji</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="develop/azure-ad-developers-guide.md">Deweloperzy</a></h3>
+                                                        <p>
+                                                            <a href="develop/authentication-scenarios.md">Scenariusze aplikacji</a><br>
+                                                            <a href="develop/active-directory-authentication-libraries.md">Biblioteki uwierzytelniania usługi Azure AD w wersji 1.0</a><br>
+                                                            <a href="develop/reference-v2-libraries.md">Biblioteki uwierzytelniania usługi Azure AD w wersji 2.0</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="devices/index.yml">Zarządzanie urządzeniami</a></h3>
+                                                        <p>
+                                                            <a href="devices/hybrid-azuread-join-managed-domains.md">Konfigurowanie hybrydowego dołączania dla domen zarządzanych</a><br>
+                                                            <a href="devices/hybrid-azuread-join-federated-domains.md">Konfigurowanie hybrydowego dołączania dla domen federacyjnych</a><br>
+                                                            <a href="devices/azuread-joined-devices-frx.md">Konfigurowanie pierwszego uruchomienia systemu Windows 10</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="/azure/active-directory-domain-services/index">Usługi domenowe</a></h3>
+                                                        <p>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-getting-started.md">Włączanie usługi Azure AD Domain Services</a><br>
+                                                            <a href="/azure/active-directory-domain-services/active-directory-ds-admin-guide-join-windows-vm-portal.md">Dołączanie maszyny wirtualnej z systemem Windows Server do domeny zarządzanej</a><br>
+                                                            <a href="/active-directory-domain-services/active-directory-ds-admin-guide-configure-secure-ldap.md">Konfigurowanie protokołu Secure LDAP</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="users-groups-roles/index.yml">Użytkownicy korporacyjni</a></h3>
+                                                        <p>
+                                                            <a href="users-groups-roles/directory-assign-admin-roles.md">Przypisywanie ról administratorów</a><br>
+                                                            <a href="users-groups-roles/licensing-groups-assign.md">Przypisywanie licencji do grup</a><br>
+                                                            <a href="users-groups-roles/groups-create-rule.md">Tworzenie grupy dynamicznej</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="cardSize">
+                                            <div class="cardPadding">
+                                                <div class="card">
+                                                    <div class="cardText">
+                                                        <h3><a href="hybrid/index.yml">Tożsamość hybrydowa</a></h3>
+                                                        <p>
+                                                            <a href="hybrid/tutorial-password-hash-sync.md">Program Azure AD Connect</a><br>
+                                                            <a href="hybrid/tutorial-passthrough-authentication.md">Integrowanie lasu usługi AD z chmurą</a><br>
+                                                            <a href="hybrid/tutorial-federation.md">Sfederuj las usługi AD z chmurą</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="identity-protection/index.yml">Ochrona tożsamości</a></h3>
+                                                        <p>
+                                                            <a href="identity-protection/enable.md">Włączanie</a><br>
+                                                            <a href="identity-protection/playbook.md">Symulowanie ryzykownych zdarzeń</a><br>
+                                                            <a href="identity-protection/howto-unblock-user.md">Odblokowywanie użytkowników</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="managed-identities-azure-resources/index.yml">Tożsamości zarządzane dla zasobów platformy Azure</a></h3>
+                                                        <p>
+                                                            <a href="managed-identities-azure-resources/tutorial-windows-vm-access-sql.md">Uzyskiwanie dostępu do usługi Azure SQL przy użyciu maszyny wirtualnej z systemem Windows</a><br>
+                                                            <a href="managed-identities-azure-resources/how-to-use-vm-token.md">Pozyskiwanie tokenu za pomocą maszyny wirtualnej platformy Azure</a><br>
+                                                            <a href="managed-identities-azure-resources/services-support-msi.md">Usługi obsługujące tożsamość zarządzaną</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="privileged-identity-management/index.yml">PIM</a></h3>
+                                                        <p>
+                                                            <a href="privileged-identity-management/pim-getting-started.md">Rozpoczynanie korzystania z usługi PIM</a><br>
+                                                            <a href="privileged-identity-management/pim-how-to-activate-role.md">Aktywowanie własnych ról katalogu</a><br>
+                                                            <a href="privileged-identity-management/pim-how-to-add-role-to-user.md">Przypisywanie ról katalogu</a>
+                                                        </p>
+                                                        <br><br>
+                                                        <h3><a href="reports-monitoring/index.yml">Raportowanie i monitorowanie</a></h3>
+                                                        <p>
+                                                            <a href="reports-monitoring/howto-find-activity-reports.md">Znajdowanie raportów aktywności</a><br>
+                                                            <a href="reports-monitoring/concept-activity-logs-in-azure-monitor.md">Korzystanie z dzienników usługi Azure AD w usłudze Azure Monitor</a><br>
+                                                            <a href="reports-monitoring/concept-reporting-api.md">Dostęp programowy</a>
+                                                        </p>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+</div>

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 7/11/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 84696b4135570168f8093b15f9a2deb4790eeebe
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: 05959143431a2cc11d79a4012f45eb565c1c91f2
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480887"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576002"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal
 
@@ -58,7 +58,7 @@ W tym samouczku utworzysz pojedynczą sieć wirtualną z trzema podsieciami:
 
 ![Infrastruktura sieci samouczka](media/tutorial-firewall-rules-portal/Tutorial_network.png)
 
-W tym samouczku jest używana uproszczona konfiguracja sieci w celu łatwego wdrażania. W przypadku wdrożeń produkcyjnych zalecany jest [model typu gwiazda](https://docs.microsoft.com/en-us/azure/architecture/reference-architectures/hybrid-networking/hub-spoke), w którym zapora znajduje się we własnej sieci wirtualnej, a serwery obciążeń znajdują się w wirtualnych sieciach równorzędnych w tym samym regionie z co najmniej jedną podsiecią.
+W tym samouczku jest używana uproszczona konfiguracja sieci w celu łatwego wdrażania. W przypadku wdrożeń produkcyjnych zalecany jest [model typu gwiazda](https://docs.microsoft.com/azure/architecture/reference-architectures/hybrid-networking/hub-spoke), w którym zapora znajduje się we własnej sieci wirtualnej, a serwery obciążeń znajdują się w wirtualnych sieciach równorzędnych w tym samym regionie z co najmniej jedną podsiecią.
 
 
 

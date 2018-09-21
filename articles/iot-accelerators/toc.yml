@@ -25,6 +25,8 @@ items:
     href: iot-accelerators-remote-monitoring-automate.md
   - name: Konfigurowanie urządzeń i zarządzanie nimi
     href: iot-accelerators-remote-monitoring-manage.md
+  - name: Przeprowadzanie analizy głównej przyczyny po wystąpieniu alertu
+    href: iot-accelerators-remote-monitoring-root-cause-analysis.md
   - name: Korzystanie z alertów i rozwiązywanie problemów z urządzeniami
     href: iot-accelerators-remote-monitoring-maintain.md
 - name: Pojęcia
@@ -93,6 +95,8 @@ items:
       href: iot-accelerators-integrate-data-lake.md
     - name: Konfigurowanie kontroli dostępu na podstawie ról
       href: iot-accelerators-remote-monitoring-rbac.md
+    - name: Udzielanie dostępu do eksploratora danych telemetrycznych
+      href: iot-accelerators-remote-monitoring-rbac-tsi.md
   - name: Zdalne monitorowanie (poprzednia wersja)
     items:
     - name: Co to są wstępnie skonfigurowane rozwiązania?
@@ -252,9 +256,9 @@ items:
     href: https://stackoverflow.com/questions/tagged/azure-iot-suite
   - name: Ścieżka szkoleniowa dotycząca akceleratorów rozwiązań IoT
     href: https://azure.microsoft.com/documentation/learning-paths/iot-suite/
-ms.openlocfilehash: 5612ae6fb91c31afc7305866ea3f99843c692619
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 935b9acf2eeaaee73745426eefb5625f470f62b7
+ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732910"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46365472"
