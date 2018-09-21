@@ -7,18 +7,18 @@ ms.service: dns
 ms.topic: overview
 ms.date: 6/7/2018
 ms.author: victorh
-ms.openlocfilehash: e95617664ee30f1b9253f1892176fd39649ee2c2
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 0812f5e3e23fbf49afec91524b4de2ff0eb7cd9a
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174636"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574185"
 ---
 # <a name="what-is-azure-dns"></a>Co to jest system DNS platformy Azure?
 
 Azure DNS to usługa hostingowa przeznaczona dla domen DNS, która umożliwia rozpoznawanie nazw przy użyciu infrastruktury platformy Microsoft Azure. Dzięki hostowaniu swoich domen na platformie Azure możesz zarządzać rekordami DNS z zastosowaniem tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń co w przypadku innych usług platformy Azure.
 
-Za pomocą usługi Azure DNS nie można kupić nazwy domeny. Za roczną opłatą możesz kupić nazwę domeny za pośrednictwem usługi [Azure Web Apps](https://docs.microsoft.com/en-us/azure/app-service/custom-dns-web-site-buydomains-web-app#buy-the-domain) lub innego rejestratora nazw domen. Następnie możesz hostować domeny w usłudze Azure DNS na potrzeby zarządzania rekordami. Aby uzyskać szczegółowe informacje, zobacz [Delegowanie domeny do usługi Azure DNS](dns-domain-delegation.md).
+Za pomocą usługi Azure DNS nie można kupić nazwy domeny. Za roczną opłatą możesz kupić nazwę domeny za pośrednictwem usługi [Azure Web Apps](https://docs.microsoft.com/azure/app-service/custom-dns-web-site-buydomains-web-app#buy-the-domain) lub innego rejestratora nazw domen. Następnie możesz hostować domeny w usłudze Azure DNS na potrzeby zarządzania rekordami. Aby uzyskać szczegółowe informacje, zobacz [Delegowanie domeny do usługi Azure DNS](dns-domain-delegation.md).
 
 W usłudze Azure DNS są dostępne następujące funkcje:
 
@@ -30,11 +30,11 @@ W usłudze Azure DNS domeny DNS są hostowane w globalnej sieci serwerów nazw D
 
 Usługa Azure DNS jest oparta na usłudze Azure Resource Manager. Dlatego oferuje funkcje usługi Resource Manager, takie jak:
 
-* [Kontrola dostępu oparta na rolach](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#access-control) — pozwala kontrolować, kto może wykonywać określone czynności w organizacji.
+* [Kontrola dostępu oparta na rolach](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#access-control) — pozwala kontrolować, kto może wykonywać określone czynności w organizacji.
 
-* [Dzienniki aktywności](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-overview#activity-logs) — umożliwiają monitorowanie sposobu, w jaki zasób został zmodyfikowany przez użytkownika w organizacji, lub znalezienie błędu podczas rozwiązywania problemów.
+* [Dzienniki aktywności](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview#activity-logs) — umożliwiają monitorowanie sposobu, w jaki zasób został zmodyfikowany przez użytkownika w organizacji, lub znalezienie błędu podczas rozwiązywania problemów.
 
-* [Blokowanie zasobów](https://docs.microsoft.com/en-us/azure/azure-resource-manager/resource-group-lock-resources) — umożliwia zablokowanie subskrypcji, grupy zasobów lub zasobu, co pozwala zapobiec przypadkowemu usunięciu lub zmodyfikowaniu kluczowych zasobów przez innych użytkowników w organizacji.
+* [Blokowanie zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-lock-resources) — umożliwia zablokowanie subskrypcji, grupy zasobów lub zasobu, co pozwala zapobiec przypadkowemu usunięciu lub zmodyfikowaniu kluczowych zasobów przez innych użytkowników w organizacji.
 
 Aby uzyskać więcej informacji, zobacz [How to protect DNS zones and records (Jak chronić strefy i rekordy DNS)](dns-protect-zones-recordsets.md). 
 

@@ -9,16 +9,16 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.date: 07/11/2018
 ms.author: mcarter
-ms.openlocfilehash: 7120080bfdc188c150c7065e1c0639ab8c04f173
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 63f4d9f72b9bf81ea772123d65db0659fd3ffa5c
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38989690"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45578178"
 ---
 # <a name="tutorial-add-auto-complete-to-your-search-box-using-azure-search"></a>Samouczek: dodawanie autouzupełniania do pola wyszukiwania przy użyciu usługi Azure Search
 
-Ten samouczek przedstawia sposób użycia [sugestii](https://docs.microsoft.com/rest/api/searchservice/suggestions), [funkcji autouzupełniania](https://docs.microsoft.com/en-us/rest/api/searchservice/autocomplete) oraz [aspektów](search-faceted-navigation.md) dostępnych za pomocą [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/) i [zestawu .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) do utworzenia pola wyszukiwania o zaawansowanych możliwościach. *Sugestie* udostępniają rekomendowane rzeczywiste wyniki na podstawie tekstu wpisanego przez użytkownika w danym momencie. *Autouzupełnianie*, [nowa funkcja dostępna w wersji zapoznawczej](search-api-preview.md) w usłudze Azure Search, udostępnia terminy z indeksu na potrzeby uzupełniania tekstu aktualnie wpisywanego przez użytkownika. Porównamy wiele technik mających na celu zwiększenie efektywności użytkowników oraz umożliwienie szybkiego i łatwego znajdowania wyszukiwanych treści przez udostępnienie użytkownikowi bogatych możliwości wyszukiwania bezpośrednio podczas wpisywania.
+Ten samouczek przedstawia sposób użycia [sugestii](https://docs.microsoft.com/rest/api/searchservice/suggestions), [funkcji autouzupełniania](https://docs.microsoft.com/rest/api/searchservice/autocomplete) oraz [aspektów](search-faceted-navigation.md) dostępnych za pomocą [interfejsu API REST usługi Azure Search](https://docs.microsoft.com/rest/api/searchservice/) i [zestawu .NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.search.documentsoperationsextensions?view=azure-dotnet) do utworzenia pola wyszukiwania o zaawansowanych możliwościach. *Sugestie* udostępniają rekomendowane rzeczywiste wyniki na podstawie tekstu wpisanego przez użytkownika w danym momencie. *Autouzupełnianie*, [nowa funkcja dostępna w wersji zapoznawczej](search-api-preview.md) w usłudze Azure Search, udostępnia terminy z indeksu na potrzeby uzupełniania tekstu aktualnie wpisywanego przez użytkownika. Porównamy wiele technik mających na celu zwiększenie efektywności użytkowników oraz umożliwienie szybkiego i łatwego znajdowania wyszukiwanych treści przez udostępnienie użytkownikowi bogatych możliwości wyszukiwania bezpośrednio podczas wpisywania.
 
 Ten samouczek przeprowadzi Cię przez aplikację opartą na platformie ASP.NET MVC, która używa języka C# do wywoływania [bibliotek klienta .NET usługi Azure Search](https://aka.ms/search-sdk) oraz języka JavaScript do bezpośredniego wywoływania interfejsu API REST usługi Azure Search. Aplikacja w tym samouczku posługuje się indeksem wypełnionym za pomocą danych przykładu [NYCJobs](https://github.com/Azure-Samples/search-dotnet-asp-net-mvc-jobs). Istnieje możliwość użycia indeksu w wersji już skonfigurowanej na potrzeby pokazu NYC Jobs lub wypełnienia własnego indeksu za pomocą modułu ładującego dane w przykładowym rozwiązaniu NYCJobs. W przykładzie użyto bibliotek JavaScript [jQuery UI](https://jqueryui.com/autocomplete/) i [XDSoft](https://xdsoft.net/jqplugins/autocomplete/) do utworzenia pola wyszukiwania obsługującego autouzupełnianie. Używając tych składników i usługi Azure Search, zapoznasz się z wieloma przykładami obsługi autouzupełniania z uzupełnianiem przy wpisywaniu w polu wyszukiwania.
 
@@ -214,7 +214,7 @@ Ten samouczek przedstawia podstawowe kroki tworzenia pola wyszukiwania, które o
 Integrowanie sugestii i autouzupełniania w środowisku wyszukiwania.  Zastanów się nad tym, jak użycie zestawu .Net SDK lub bezpośrednio interfejsu API REST może ułatwić udostępnienie możliwości usługi Azure Search użytkownikom podczas wpisywania, zwiększając ich efektywność.
 
 > [!div class="nextstepaction"]
-> [Interfejs API REST autouzupełniania](https://docs.microsoft.com/en-us/rest/api/searchservice/autocomplete)
-> [Interfejs API REST sugestii](https://docs.microsoft.com/en-us/rest/api/searchservice/suggestions)
-> [Atrybut indeksu aspektów dotyczący interfejsu API REST tworzenia indeksu](https://docs.microsoft.com/en-us/rest/api/searchservice/create-index)
+> [Interfejs API REST autouzupełniania](https://docs.microsoft.com/rest/api/searchservice/autocomplete)
+> [Interfejs API REST sugestii](https://docs.microsoft.com/rest/api/searchservice/suggestions)
+> [Atrybut indeksu aspektów dotyczący interfejsu API REST tworzenia indeksu](https://docs.microsoft.com/rest/api/searchservice/create-index)
 

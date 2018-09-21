@@ -14,12 +14,12 @@ ms.topic: overview
 ms.date: 04/19/2018
 ms.author: ccompy
 ms.custom: mvc
-ms.openlocfilehash: c6ae2aa46ae17c4ef995211b02112e1c05e2ec2f
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 34c041bf96ecc8ce7f4440d7afaa64de775baef7
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344481"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576940"
 ---
 # <a name="introduction-to-the-app-service-environments"></a>Wprowadzenie do środowisk App Service Environment #
  
@@ -73,7 +73,7 @@ Funkcja środowiska ASE polega na wdrożeniu usługi Azure App Service bezpośre
 
 [Sieciowe grupy zabezpieczeń][NSGs] ograniczają komunikację sieciową przychodzącą do podsieci, w której znajduje się środowisko ASE. Za pomocą tych grup można uruchamiać aplikacje za urządzeniami i usługami nadrzędnymi, takimi jak zapora aplikacji internetowych i sieciowi dostawcy SaaS.
 
-Aplikacje często muszą również uzyskiwać dostęp do zasobów firmy, takich jak wewnętrzne bazy danych i usługi internetowe. Jeśli środowisko ASE wdrożono w sieci wirtualnej mającej połączenie VPN z siecią lokalną, aplikacje w tym środowisku mają dostęp do zasobów lokalnych. Jest tak niezależnie od tego, czy połączenie VPN jest typu [lokacja-lokacja](https://docs.microsoft.com/en-us/azure/vpn-gateway/vpn-gateway-multi-site), czy [Azure ExpressRoute](http://azure.microsoft.com/services/expressroute/).
+Aplikacje często muszą również uzyskiwać dostęp do zasobów firmy, takich jak wewnętrzne bazy danych i usługi internetowe. Jeśli środowisko ASE wdrożono w sieci wirtualnej mającej połączenie VPN z siecią lokalną, aplikacje w tym środowisku mają dostęp do zasobów lokalnych. Jest tak niezależnie od tego, czy połączenie VPN jest typu [lokacja-lokacja](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-multi-site), czy [Azure ExpressRoute](http://azure.microsoft.com/services/expressroute/).
 
 Aby uzyskać więcej informacji na temat współdziałania środowisk ASE z sieciami wirtualnymi i sieciami lokalnymi, zobacz [App Service Environment network considerations][ASENetwork] (Zagadnienia dotyczące sieci środowiska App Service Environment).
 

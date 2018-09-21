@@ -15,16 +15,16 @@ ms.topic: quickstart
 ms.date: 06/22/2018
 ms.author: msangapu
 ms.custom: mvc
-ms.openlocfilehash: 6fa0bab5d2b402c85ea3ee70e7356f8c8c989ab9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 1d54d914edb306b89dc6f2604aa5af3d17cb535d
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446786"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45576786"
 ---
 # <a name="create-a-multi-container-preview-app-using-web-app-for-containers"></a>Tworzenie aplikacji wielokontenerowej (w wersji zapoznawczej) przy użyciu funkcji Web App for Containers
 
-Funkcja [Web App for Containers](app-service-linux-intro.md) oferuje elastyczny sposób korzystania z obrazów platformy Docker. W tym przewodniku Szybki start przedstawiono sposób wdrażania aplikacji wielokontenerowej w funkcji Web App for Containers przy użyciu usługi [Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview) oraz konfiguracji narzędzia Docker Compose. Instrukcje dotyczące platformy Kubernetes oraz pełne rozwiązanie z użyciem usługi Azure DB dla MySQL zawiera [samouczek dotyczący aplikacji wielokontenerowych](tutorial-multi-container-app.md).
+Funkcja [Web App for Containers](app-service-linux-intro.md) oferuje elastyczny sposób korzystania z obrazów platformy Docker. W tym przewodniku Szybki start przedstawiono sposób wdrażania aplikacji wielokontenerowej w funkcji Web App for Containers przy użyciu usługi [Cloud Shell](https://docs.microsoft.com/azure/cloud-shell/overview) oraz konfiguracji narzędzia Docker Compose. Instrukcje dotyczące platformy Kubernetes oraz pełne rozwiązanie z użyciem usługi Azure DB dla MySQL zawiera [samouczek dotyczący aplikacji wielokontenerowych](tutorial-multi-container-app.md).
 
 Użyjesz tego przewodnika Szybki start w usłudze Cloud Shell, ale możesz również uruchomić te polecenia lokalnie za pomocą [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) (w wersji 2.0.32 lub nowszej). 
 

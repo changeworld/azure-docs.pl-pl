@@ -10,12 +10,12 @@ ms.topic: tutorial
 ms.tgt_pltfrm: na
 ms.date: 06/08/2018
 ms.author: tomfitz
-ms.openlocfilehash: 39d2979aad3aee80ba010d5fc3cf83ad486baf2d
-ms.sourcegitcommit: 50f82f7682447245bebb229494591eb822a62038
+ms.openlocfilehash: 3b1da6e9068be3c96cce5973f29344fe7e4b4872
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/08/2018
-ms.locfileid: "35247884"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35764072"
 ---
 # <a name="publish-a-managed-application-for-internal-consumption"></a>Publikowanie aplikacji zarządzanej do użytku wewnątrz organizacji
 
@@ -171,7 +171,7 @@ Set-AzureStorageBlobContent -File "D:\myapplications\app.zip" `
 
 ### <a name="create-an-azure-active-directory-user-group-or-application"></a>Tworzenie grupy użytkowników aplikacji usługi Azure Active Directory
 
-Następnym krokiem jest wybranie grupy użytkowników lub aplikacji, która będzie zarządzać zasobami w imieniu klienta. Ta grupa użytkowników lub aplikacja ma uprawnienia w zarządzanej grupie zasobów zgodne z przypisaną rolą. Może to być dowolna wbudowana rola w ramach kontroli dostępu opartej na rolach (RBAC), na przykład Właściciel lub Współautor. Możesz także przydzielić uprawnienia do zarządzania zasobami wybranemu użytkownikowi, ale zwykle przydziela się je grupie użytkowników. Jeśli chcesz utworzyć nową grupę użytkowników usługi Active Directory, zobacz [Create a group and add members in Azure Active Directory](../active-directory/active-directory-groups-create-azure-portal.md) (Tworzenie grupy i dodawanie do niej członków w usłudze Azure Active Directory).
+Następnym krokiem jest wybranie grupy użytkowników lub aplikacji, która będzie zarządzać zasobami w imieniu klienta. Ta grupa użytkowników lub aplikacja ma uprawnienia w zarządzanej grupie zasobów zgodne z przypisaną rolą. Może to być dowolna wbudowana rola w ramach kontroli dostępu opartej na rolach (RBAC), na przykład Właściciel lub Współautor. Możesz także przydzielić uprawnienia do zarządzania zasobami wybranemu użytkownikowi, ale zwykle przydziela się je grupie użytkowników. Jeśli chcesz utworzyć nową grupę użytkowników usługi Active Directory, zobacz [Create a group and add members in Azure Active Directory](../active-directory/fundamentals/active-directory-groups-create-azure-portal.md) (Tworzenie grupy i dodawanie do niej członków w usłudze Azure Active Directory).
 
 Aby umożliwić zarządzanie zasobami, potrzebujesz identyfikatora obiektu grupy użytkowników. 
 

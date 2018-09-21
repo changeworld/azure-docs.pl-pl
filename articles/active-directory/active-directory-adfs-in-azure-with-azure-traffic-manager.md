@@ -15,15 +15,15 @@ ms.devlang: na
 ms.topic: get-started-article
 ms.date: 09/01/2016
 ms.author: anandy;billmath
-ms.openlocfilehash: e984d3d590021e3dd9e46d0f12493889b2acc229
-ms.sourcegitcommit: e266df9f97d04acfc4a843770fadfd8edf4fa2b7
+ms.openlocfilehash: 2ed0b551faba68c0956be89277348eeee60d759c
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/11/2017
-ms.locfileid: "26604783"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46298221"
 ---
 # <a name="high-availability-cross-geographic-ad-fs-deployment-in-azure-with-azure-traffic-manager"></a>Wdrażanie geograficznie rozproszonych usług AD FS o wysokiej dostępności na platformie Azure przy użyciu usługi Azure Traffic Manager
-Artykuł [Wdrożenie usług AD FS na platformie Azure](active-directory-aadconnect-azure-adfs.md) zawiera instrukcje krok po kroku dotyczące wdrażania prostej infrastruktury usług AD FS dla organizacji na platformie Azure. W tym artykule opisano następne kroki tworzenia geograficznie rozproszonego wdrożenia usług AD FS na platformie Azure przy użyciu usługi [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Usługa Azure Traffic Manager pomaga przy tworzeniu geograficznie rozproszonej infrastruktury usług AD FS o wysokiej dostępności i wydajności dla organizacji poprzez korzystanie z wielu dostępnych metod routingu dopasowanych do zróżnicowanych potrzeb infrastruktury.
+Artykuł [Wdrożenie usług AD FS na platformie Azure](hybrid/how-to-connect-fed-azure-adfs.md) zawiera instrukcje krok po kroku dotyczące wdrażania prostej infrastruktury usług AD FS dla organizacji na platformie Azure. W tym artykule opisano następne kroki tworzenia geograficznie rozproszonego wdrożenia usług AD FS na platformie Azure przy użyciu usługi [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md). Usługa Azure Traffic Manager pomaga przy tworzeniu geograficznie rozproszonej infrastruktury usług AD FS o wysokiej dostępności i wydajności dla organizacji poprzez korzystanie z wielu dostępnych metod routingu dopasowanych do zróżnicowanych potrzeb infrastruktury.
 
 Geograficznie rozproszona infrastruktura usług AD FS o wysokiej dostępności umożliwia wykonywanie następujących czynności:
 
@@ -45,7 +45,7 @@ Podstawowe zasady projektowania będą takie same jak w zasadach projektowania w
 
 ## <a name="steps-to-integrate-azure-traffic-manager"></a>Kroki dotyczące integrowania usługi Azure Traffic Manager
 ### <a name="deploy-ad-fs-in-the-new-geographical-region"></a>Wdrażanie usług AD FS w nowym regionie geograficznym
-Postępuj zgodnie z krokami i wskazówkami opisanymi w artykule [Wdrożenie usług AD FS na platformie Azure](active-directory-aadconnect-azure-adfs.md), aby wdrożyć tę samą topologię w nowym regionie geograficznym.
+Postępuj zgodnie z krokami i wskazówkami opisanymi w artykule [Wdrożenie usług AD FS na platformie Azure](hybrid/how-to-connect-fed-azure-adfs.md), aby wdrożyć tę samą topologię w nowym regionie geograficznym.
 
 ### <a name="dns-labels-for-public-ip-addresses-of-the-internet-facing-public-load-balancers"></a>Etykiety DNS dla publicznych adresów IP modułów równoważenia obciążenia dostępnych z Internetu (publicznych)
 Jak wspomniano powyżej, usługa Azure Traffic Manager może odwoływać się tylko do etykiet DNS jako punktów końcowych, dlatego należy pamiętać o utworzeniu etykiet DNS dla publicznego adresu IP zewnętrznych modułów równoważenia obciążenia. Poniższy zrzut ekranu przedstawia sposób konfiguracji etykiety DNS dla publicznego adresu IP. 
@@ -116,7 +116,7 @@ Najprostszym sposobem przetestowania działania usług AD FS jest użycie strony
     ![Test usług AD FS — uwierzytelnianie powiodło się](./media/active-directory-adfs-in-azure-with-azure-traffic-manager/adfstest2.png)
 
 ## <a name="related-links"></a>Powiązane linki
-* [Podstawowe wdrożenie usług AD FS na platformie Azure](active-directory-aadconnect-azure-adfs.md)
+* [Podstawowe wdrożenie usług AD FS na platformie Azure](hybrid/how-to-connect-fed-azure-adfs.md)
 * [Microsoft Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md)
 * [Metody routingu ruchu w usłudze Traffic Manager](../traffic-manager/traffic-manager-routing-methods.md)
 

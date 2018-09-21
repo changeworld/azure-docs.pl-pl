@@ -1,21 +1,21 @@
 ---
-title: Dowiedz się więcej o usłudze — usługi Microsoft Cognitive Services | Microsoft Docs
-titleSuffix: Azure
+title: Co jest usługa QnA Maker?
+titleSuffix: Azure Cognitive Services
 description: Usługa QnA Maker umożliwia zasilanie usługi pytań i odpowiedzi za pomocą częściowo ustrukturyzowanej zawartości, takiej jak dokumenty z często zadawanymi pytaniami, adresy URL i podręczniki produktów.
 services: cognitive-services
-author: noellelacharite
-manager: nolachar
+author: nstulasi
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: QnAMaker
+ms.component: qna-maker
 ms.topic: overview
-ms.date: 06/15/2018
-ms.author: nolachar
-ms.openlocfilehash: f34cec047c18a6db10b5adda82800c51d44c1155
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.date: 09/12/2018
+ms.author: saneppal
+ms.openlocfilehash: 16cb2d21094e70e7968e5ca45ec2582b7e60a430
+ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "36295149"
+ms.lasthandoff: 09/13/2018
+ms.locfileid: "45541942"
 ---
 # <a name="what-is-qna-maker"></a>Co jest usługa QnA Maker?
 

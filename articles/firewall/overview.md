@@ -8,12 +8,12 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 7/16/2018
 ms.author: victorh
-ms.openlocfilehash: 3657b619dc57b994158c711c46d4db6924aa2930
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 5e8048dc6b49a0f6c9a465e82a7278e491351034
+ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089825"
+ms.lasthandoff: 09/14/2018
+ms.locfileid: "45574134"
 ---
 # <a name="what-is-azure-firewall"></a>Co to jest usługa Azure Firewall?
 
@@ -61,8 +61,8 @@ W usłudze Azure Firewall w publicznej wersji zapoznawczej występują następuj
 |---------|---------|---------|
 |Współdziałanie z sieciowymi grupami zabezpieczeń     |Jeśli sieciowa grupa zabezpieczeń zostanie zastosowana w podsieci zapory, może zablokować wychodzącą łączność z Internetem, nawet jeśli sieciowa grupa zabezpieczeń jest skonfigurowana tak, aby zezwalać na wychodzący dostęp do Internetu. Wychodzące połączenia internetowe są oznaczone jako pochodzące z elementu VirtualNetwork, a miejscem docelowym jest Internet. Sieciowa grupa zabezpieczeń domyślnie *zezwala* na ruch między elementami VirtualNetwork, ale nie wtedy, gdy miejscem docelowym jest Internet.|Aby rozwiązać tej problem, dodaj następującą regułę ruchu przychodzącego do sieciowej grupy zabezpieczeń zastosowanej w podsieci zapory:<br><br>Źródło: VirtualNetwork Porty źródłowe: wszystkie <br><br>Miejsce docelowe: wszystkie Porty docelowe: wszystkie <br><br>Protokół: wszystkie Dostęp: zezwalaj|
 |Konflikt z funkcją Just in time (JIT) usługi Azure Security Center|W przypadku dostępu JIT do maszyny wirtualnej znajdującej się w podsieci z trasą zdefiniowaną przez użytkownika, która wskazuje usługę Azure Firewall jako bramę domyślną, funkcja JIT usługi Azure Security Center nie działa. Jest to rezultat asymetrycznego trasowania — pakiet przychodzi za pośrednictwem publicznego adresu IP maszyny wirtualnej (funkcja JIT umożliwiła dostęp), ale ścieżka powrotna biegnie przez zaporę, która odrzuca pakiet, ponieważ nie ustanowiono sesji w zaporze.|Aby wyeliminować ten problem, należy umieścić maszyny wirtualne z funkcją JIT w oddzielnej podsieci, w której nie ma zdefiniowanej przez użytkownika trasy do zapory.|
-|Model typu gwiazda z globalną komunikacją równorzędną nie działa|Model typu gwiazda, w którym koncentrator i zapora są wdrożone w jednym regionie świadczenia usługi Azure, a szprychy, połączone z koncentratorem za pomocą globalnej wirtualnej sieci równorzędnej, w innym, nie jest obsługiwany.|Aby uzyskać więcej informacji, zobacz temat dotyczący [tworzenia, zmieniania lub usuwania wirtualnych sieci równorzędnych](https://docs.microsoft.com/en-us/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints)|
-Reguły filtrowania dla protokołów innych niż TCP/UDP (na przykład ICMP) nie działają dla ruchu powiązanego z Internetem|Reguły filtrowania sieci dla protokołów innych niż TCP/UPD nie działają z funkcją SNAT i publicznym adresem IP. Protokoły inne niż TCP/UDP są obsługiwane między podsieciami szprych i sieciami wirtualnymi.|Usługa Azure Firewall korzysta ze standardowego modułu równoważenia obciążenia, [który obecnie nie obsługuje funkcji SNAT dla protokołów IP](https://docs.microsoft.com/en-us/azure/load-balancer/load-balancer-standard-overview#limitations). Firma Microsoft analizuje potencjalne opcje obsługi tego scenariusza w przyszłych wersjach.
+|Model typu gwiazda z globalną komunikacją równorzędną nie działa|Model typu gwiazda, w którym koncentrator i zapora są wdrożone w jednym regionie świadczenia usługi Azure, a szprychy, połączone z koncentratorem za pomocą globalnej wirtualnej sieci równorzędnej, w innym, nie jest obsługiwany.|Aby uzyskać więcej informacji, zobacz temat dotyczący [tworzenia, zmieniania lub usuwania wirtualnych sieci równorzędnych](https://docs.microsoft.com/azure/virtual-network/virtual-network-manage-peering#requirements-and-constraints)|
+Reguły filtrowania dla protokołów innych niż TCP/UDP (na przykład ICMP) nie działają dla ruchu powiązanego z Internetem|Reguły filtrowania sieci dla protokołów innych niż TCP/UPD nie działają z funkcją SNAT i publicznym adresem IP. Protokoły inne niż TCP/UDP są obsługiwane między podsieciami szprych i sieciami wirtualnymi.|Usługa Azure Firewall korzysta ze standardowego modułu równoważenia obciążenia, [który obecnie nie obsługuje funkcji SNAT dla protokołów IP](https://docs.microsoft.com/azure/load-balancer/load-balancer-standard-overview#limitations). Firma Microsoft analizuje potencjalne opcje obsługi tego scenariusza w przyszłych wersjach.
 
 
 

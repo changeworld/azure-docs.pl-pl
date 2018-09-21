@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 9512c800a35ad4a819c657b07227d781c63c6399
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: e91ca2ff438e3ae9e9b3f46e5a8db89f17fb1c8e
+ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39163397"
+ms.lasthandoff: 09/19/2018
+ms.locfileid: "46295125"
 ---
 # <a name="tutorial-enabling-password-writeback"></a>Samouczek: włączanie zapisywania zwrotnego haseł
 
@@ -29,7 +29,7 @@ W tym samouczku włączysz zapisywanie zwrotne haseł dla swojego środowiska hy
 
 * Dostęp do działającej dzierżawy usługi Azure AD z przypisaną co najmniej próbną wersją licencji.
 * Konto z uprawnieniami administratora globalnego w dzierżawie usługi Azure AD.
-* Istniejący serwer ze skonfigurowaną, uruchomioną aktualną wersją programu [Azure AD Connect](../connect/active-directory-aadconnect-get-started-express.md).
+* Istniejący serwer ze skonfigurowaną, uruchomioną aktualną wersją programu [Azure AD Connect](../hybrid/how-to-connect-install-express.md).
 * Ukończenie poprzednich samouczków dotyczących samoobsługowego resetowania hasła.
 
 ## <a name="enable-password-writeback-option-in-azure-ad-connect"></a>Włączanie opcji zapisywania zwrotnego haseł w programie Azure AD Connect

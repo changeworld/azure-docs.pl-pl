@@ -16,12 +16,12 @@ ms.date: 06/26/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: na
-ms.openlocfilehash: a79679068b03103bd8ca63455dd2d1758751aa6f
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: 617a2ab4f98155789ae882c4253f07d8712050d2
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131238"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45985553"
 ---
 # <a name="collect-data-about-azure-virtual-machines"></a>Zbieranie danych dotyczących infrastruktury Azure Virtual Machines
 Usługa [Azure Log Analytics](log-analytics-overview.md) umożliwia zbieranie danych bezpośrednio z maszyn wirtualnych platformy Azure i innych zasobów w środowisku do pojedynczego repozytorium na potrzeby szczegółowej analizy i korelacji.  W tym przewodniku Szybki start opisano, jak w kilku krokach skonfigurować i rozpocząć zbieranie danych z maszyn wirtualnych platformy Azure z systemem Linux lub Windows.  
@@ -78,7 +78,7 @@ Usługa Log Analytics może zbierać zdarzenia z dzienników zdarzeń systemu Wi
 7. Wybierz pozycję **Dane wydajności systemu Windows**, aby włączyć zbieranie liczników wydajności na komputerze z systemem Windows. 
 8. Podczas pierwszej konfiguracji liczników wydajności systemu Windows dla nowego obszaru roboczego usługi Log Analytics można szybko utworzyć kilka typowych liczników. Na liście obok każdego z nich znajduje się pole wyboru.
 
-    ![Zaznaczone domyślne liczniki wydajności systemu Windows](media/log-analytics-quick-collect-azurevm/windows-perfcounters-default.png).
+    ![Zaznaczone domyślne liczniki wydajności systemu Windows](media/log-analytics-quick-collect-azurevm/windows-perfcounters-default.png)
 
     Kliknij pozycję **Dodaj wybrane liczniki wydajności**.  Są one dodawane i ustawiane wstępnie z dziesięciosekundowym interwałem próbkowania kolekcji.
   
@@ -93,7 +93,7 @@ Usługa Log Analytics może zbierać zdarzenia z dzienników zdarzeń systemu Wi
 5. Wybierz pozycję **Dane wydajności systemu Linux**, aby włączyć zbieranie liczników wydajności na komputerze z systemem Linux. 
 6. Podczas pierwszej konfiguracji liczników wydajności systemu Linux dla nowego obszaru roboczego usługi Log Analytics można szybko utworzyć kilka typowych liczników. Na liście obok każdego z nich znajduje się pole wyboru.
 
-    ![Zaznaczone domyślne liczniki wydajności systemu Windows](media/log-analytics-quick-collect-azurevm/linux-perfcounters-default.png).
+    ![Zaznaczone domyślne liczniki wydajności systemu Windows](media/log-analytics-quick-collect-azurevm/linux-perfcounters-default.png)
 
     Kliknij pozycję **Dodaj wybrane liczniki wydajności**.  Są one dodawane i ustawiane wstępnie z dziesięciosekundowym interwałem próbkowania kolekcji.  
 

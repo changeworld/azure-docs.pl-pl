@@ -1,6 +1,7 @@
 ---
 title: 'Szybki start: używanie zestawu SDK wyszukiwania w sieci Web Bing dla platformy Node.js'
-description: Dowiedz się, jak używać zestawu SDK wyszukiwania w sieci Web Bing dla platformy Node.js.
+titleSuffix: Azure Cognitive Services
+description: Zestaw SDK wyszukiwania w sieci Web Bing ułatwia integrowanie wyszukiwania w sieci Web Bing w aplikacji Node.js. Z tego przewodnika Szybki start dowiesz się, jak utworzyć wystąpienie klienta, wysłać żądanie i wyświetlić odpowiedź.
 services: cognitive-services
 author: erhopf
 manager: cgronlun
@@ -9,12 +10,12 @@ ms.component: bing-web-search
 ms.topic: quickstart
 ms.date: 08/16/2018
 ms.author: erhopf
-ms.openlocfilehash: 7c3003ab4ba40a9d0212e7c94b6dd3bfbc8f0ca2
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: b27c11a69c7d16f38c2448d380b611940078c501
+ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43186635"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "46121927"
 ---
 # <a name="quickstart-use-the-bing-web-search-sdk-for-nodejs"></a>Szybki start: używanie zestawu SDK wyszukiwania w sieci Web Bing dla platformy Node.js
 
@@ -105,7 +106,7 @@ Pamiętaj, aby po zakończeniu pracy z tym projektem usunąć klucz subskrypcji 
 ## <a name="next-steps"></a>Następne kroki
 
 > [!div class="nextstepaction"]
-> [Przykłady zastosowania zestawu SDK i usług Cognitive Services dla platformy Node.js](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
+> [Przykłady zastosowania zestawu SDK dla platformy Node.js usług Cognitive Services](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples)
 
 ## <a name="see-also"></a>Zobacz też
 
