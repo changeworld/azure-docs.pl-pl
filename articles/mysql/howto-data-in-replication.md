@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
 ms.date: 08/31/2018
-ms.openlocfilehash: 83d970cf41dde4141fcba84c39b9b750783e54e0
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: da39d4132190a7dea661779c507fa817758c3e17
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667161"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497930"
 ---
 # <a name="how-to-configure-azure-database-for-mysql-data-in-replication"></a>Jak skonfigurować bazę danych Azure do replikacji danych MySQL
 
@@ -158,6 +158,9 @@ Poniższe kroki Przygotuj i skonfiguruj MySQL server hostowanych lokalnie, w mas
    - master_log_pos: pozycja dziennik binarny uruchamianie `show master status`
    - master_ssl_ca: kontekstu certyfikatu urzędu certyfikacji. Jeśli nie używasz protokołu SSL, należy przekazać pusty ciąg.
        - Zalecane jest przekazanie tego parametru w jako zmienną. Poniżej przedstawiono przykłady, aby uzyskać więcej informacji.
+
+> [!NOTE]
+> Jeśli serwer główny znajduje się w Maszynie wirtualnej platformy Azure, należy ustawić, "Zezwalaj na dostęp do usług platformy Azure" na "ON", aby zezwolić na serwerach głównego i repliki, aby komunikować się ze sobą. Ustawienie to można zmienić z **zabezpieczenia połączeń** opcje. Zapoznaj się [zarządzanie regułami zapory za pomocą portalu](howto-manage-firewall-using-portal.md) Aby uzyskać więcej informacji.
 
    **Przykłady**
 

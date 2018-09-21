@@ -14,12 +14,12 @@ ms.tgt_pltfrm: multiple
 ms.workload: na
 ms.date: 05/10/2018
 ms.author: tomfitz
-ms.openlocfilehash: 57cfa44a0eb114503b89733b2c3e309b65d5b7e5
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 84b32cadbd7d574e01053b61ace1203d495983b4
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023328"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498610"
 ---
 # <a name="use-azure-powershell-to-create-a-service-principal-with-a-certificate"></a>Tworzenie jednostki usługi z certyfikatem przy użyciu programu Azure PowerShell
 
@@ -29,7 +29,7 @@ Jeśli masz aplikację lub skrypt, które potrzebują dostępu do zasobów, moż
 * Używanie certyfikatu do uwierzytelnienia podczas wykonywania skryptu nienadzorowanego.
 
 > [!IMPORTANT]
-> Zamiast tworzyć jednostkę usługi, rozważ użycie tożsamości usługi zarządzanej w usłudze Azure AD na potrzeby tożsamości aplikacji. Azure AD MSI to dostępna w publicznej wersji zapoznawczej funkcja usługi Azure Active Directory, która upraszcza tworzenie tożsamości kodu. Jeśli kod jest uruchamiany w usłudze obsługującej funkcję Azure AD MSI i uzyskującej dostęp do zasobów, które obsługują uwierzytelnianie w usłudze Azure Active Directory, funkcja Azure AD MSI jest lepszym rozwiązaniem. Aby dowiedzieć się więcej na temat funkcji Azure AD MSI i zapoznać się z listą usług, które ją obecnie obsługują, zobacz [Tożsamość usługi zarządzanej dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/overview.md).
+> Zamiast tworzenia nazwy głównej usługi, należy wziąć pod uwagę przy użyciu zarządzanych tożsamości dla zasobów platformy Azure dla Twojej tożsamości aplikacji. Jeśli kod jest wykonywany na to usługa, która obsługuje zarządzanych tożsamości i uzyskuje dostęp do zasobów, które obsługują uwierzytelnianie usługi Azure Active Directory, zarządzanych tożsamości jest lepszym rozwiązaniem dla Ciebie. Aby dowiedzieć się więcej na temat zarządzanych tożsamości dla zasobów platformy Azure, w tym usług, które obecnie go obsługują, zobacz [co to jest zarządzanych tożsamości dla zasobów platformy Azure?](../active-directory/managed-identities-azure-resources/overview.md).
 
 W tym artykule przedstawiono sposób tworzenia jednostki usługi uwierzytelnianej przy użyciu certyfikatu. Aby skonfigurować jednostkę przy użyciu hasła, zobacz [Tworzenie jednostki usługi platformy Azure za pomocą programu Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).
 
@@ -207,9 +207,9 @@ Get-AzureRmADApplication -DisplayName exampleapp | New-AzureRmADAppCredential `
 
 Podczas tworzenia jednostki usługi mogą wystąpić następujące błędy:
 
-* **„Authentication_Unauthorized”** lub **„W kontekście nie znaleziono subskrypcji”**. Ten błąd jest wyświetlany, gdy Twoje konto nie ma w usłudze Azure Active Directory [wymaganych uprawnień](#required-permissions) do rejestrowania aplikacji. Przeważnie ten komunikat o błędzie jest wyświetlany, gdy tylko administratorzy w usłudze Azure Active Directory mogą rejestrować aplikacje, a konto użytkownika nie należy do administratora. Poproś administratora o przypisanie Cię do roli administratora lub o umożliwienie użytkownikom rejestrowania aplikacji.
+* **„Authentication_Unauthorized”** lub **„W kontekście nie znaleziono subskrypcji”**. — Zostanie wyświetlony ten błąd, gdy Twoje konto nie ma [wymagane uprawnienia](#required-permissions) usłudze Azure Active Directory, aby zarejestrować aplikację. Zazwyczaj ten błąd zostanie wyświetlony tylko Administrator użytkowników w usłudze Azure Active Directory mogą rejestrować aplikacje, gdy Twoje konto nie jest administratorem. Poproś administratora o przypisanie Cię do roli administratora lub o umożliwienie użytkownikom rejestrowania aplikacji.
 
-* Twoje konto **„nie ma autoryzacji do wykonania akcji „Microsoft.Authorization/roleAssignments/write” w zakresie „/subscriptions/{guid}””.** Ten komunikat zobaczysz, jeśli Twoje konto nie ma wystarczających uprawnień do przypisywania roli do tożsamości. Poproś administratora subskrypcji o dodanie Cię do roli Administrator dostępu użytkowników.
+* Twoje konto **"nie ma autoryzacji do wykonania akcji"Microsoft.Authorization/roleAssignments/write"w zakresie"/ subscriptions / {guid}"."**  — Zostanie wyświetlony ten błąd, gdy Twoje konto nie ma wystarczających uprawnień, aby przypisać rolę do tożsamości usługi. Poproś administratora subskrypcji o dodanie Cię do roli Administrator dostępu użytkowników.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Aby skonfigurować jednostkę przy użyciu hasła, zobacz [Tworzenie jednostki usługi platformy Azure za pomocą programu Azure PowerShell](/powershell/azure/create-azure-service-principal-azureps).

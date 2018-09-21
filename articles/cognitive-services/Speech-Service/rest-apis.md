@@ -8,12 +8,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 7d5656d6599e1d8d2a3e85b9d41bcce6490e1511
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 8f01130d46bce1e3b3e0b37f26e25d552c6002e5
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124171"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498117"
 ---
 # <a name="speech-service-rest-apis"></a>Usługa rozpoznawania mowy interfejsów API REST
 
@@ -49,9 +49,9 @@ Następujące pola są wysyłane w nagłówku żądania HTTP.
 |`Ocp-Apim-Subscription-Key`|Klucz subskrypcji usługi mowy. Albo tego pliku nagłówkowego lub `Authorization` musi zostać podana.|
 |`Authorization`|Token autoryzacji poprzedzone wyrazem `Bearer`. Albo tego pliku nagłówkowego lub `Ocp-Apim-Subscription-Key` musi zostać podana. Zobacz [uwierzytelniania](#authentication).|
 |`Content-type`|W tym artykule opisano format i kodera-dekodera audio danych. Obecnie ta wartość musi być `audio/wav; codec=audio/pcm; samplerate=16000`.|
-|`Transfer-Encoding`|Opcjonalne. Jeśli podana, musi być `chunked` umożliwia danych audio w celu ich wysłania w wielu małych fragmentów zamiast pojedynczego pliku.|
+|`Transfer-Encoding`|Opcjonalny. Jeśli podana, musi być `chunked` umożliwia danych audio w celu ich wysłania w wielu małych fragmentów zamiast pojedynczego pliku.|
 |`Expect`|Jeśli używasz fragmentaryczne transferu, Wyślij `Expect: 100-continue`. Usługa rozpoznawania mowy potwierdza żądanie początkowe i czeka na dodatkowe dane.|
-|`Accept`|Opcjonalne. Jeśli podano, musi zawierać `application/json`, jak usługa mowy udostępnia wyniki w formacie JSON. (Niektóre struktury żądania sieci Web Podaj wartość domyślną niezgodne, jeśli nie zostanie określony, dzięki czemu jest dobrym rozwiązaniem jest zawsze zawierać `Accept`)|
+|`Accept`|Opcjonalny. Jeśli podano, musi zawierać `application/json`, jak usługa mowy udostępnia wyniki w formacie JSON. (Niektóre struktury żądania sieci Web Podaj wartość domyślną niezgodne, jeśli nie zostanie określony, dzięki czemu jest dobrym rozwiązaniem jest zawsze zawierać `Accept`)|
 
 ### <a name="audio-format"></a>Audio format
 
@@ -59,7 +59,7 @@ Dźwięku w treści HTTP `PUT` żądania i powinna być w formacie WAV PCM pojed
 
 ### <a name="chunked-transfer"></a>Fragmentaryczne transferu
 
-Transferu pakietowego (`Transfer-Encoding: chunked`) może pomóc zmniejszyć opóźnienie rozpoznawania, ponieważ zezwala ona na usługę rozpoznawania mowy, aby rozpocząć przetwarzanie plik dźwiękowy otrzymało go są przesyłane. Interfejs API REST nie zapewnia tymczasowe lub częściowe wyniki. Ta opcja jest przeznaczona wyłącznie do zwiększyć szybkość reakcji.
+Transferu pakietowego (`Transfer-Encoding: chunked`) może pomóc zmniejszyć opóźnienie rozpoznawania, ponieważ zezwala ona na usługi mowy rozpoczęcie przetwarzania plików audio, gdy są przesyłane. Interfejs API REST nie zapewnia tymczasowe lub częściowe wyniki. Ta opcja jest przeznaczona wyłącznie do zwiększyć szybkość reakcji.
 
 Poniższy kod ilustruje sposób wysyłania audio we fragmentach. `request` Obiekt HTTPWebRequest podłączonego do odpowiedniego punktu końcowego REST. `audioFile` jest to ścieżka do pliku audio na dysku.
 
@@ -137,7 +137,7 @@ Wyniki są zwracane w formacie JSON. `simple` Format obejmuje tylko następując
 | `Error` | Usługa rozpoznawania napotkał błąd wewnętrzny i nie może kontynuować działania. Spróbuj ponownie, jeśli to możliwe. |
 
 > [!NOTE]
-> Jeśli użytkownik komunikuje się tylko wulgaryzmów i `profanity` parametr zapytania ma wartość `remove`, usługa nie zwraca wyniku rozpoznawania mowy, chyba że jest w trybie rozpoznawania `interactive`. W tym przypadku usługa zwraca wyniki mowy `RecognitionStatus` z `NoMatch`. 
+> Jeśli audio składa się tylko z wulgaryzmów i `profanity` parametr zapytania ma wartość `remove`, usługa nie zwróciła wynik mowy. 
 
 `detailed` Format obejmuje te same pola jako `simple` formacie wraz z `NBest` pola. `NBest` Pola znajduje się lista alternatywnych interpretacji tych samych mowy, randze spośród wszystkich dokumentów z największym prawdopodobieństwem najmniej prawdopodobne. Pierwszy wpis jest taki sam jak wynik rozpoznawania głównego. Każdy wpis zawiera następujące pola:
 
@@ -212,11 +212,9 @@ Następujące pola są wysyłane w nagłówku żądania HTTP.
 
 |Nagłówek|Znaczenie|
 |------|-------|
-|`Authorization`|Token autoryzacji poprzedzone wyrazem `Bearer`. Wymagane. Zobacz [uwierzytelniania](#authentication).|
+|`Authorization`|Token autoryzacji poprzedzone wyrazem `Bearer`. Wymagany. Zobacz [uwierzytelniania](#authentication).|
 |`Content-Type`|Typ zawartości danych wejściowych: `application/ssml+xml`.|
 |`X-Microsoft-OutputFormat`|Format danych wyjściowych audio. Zobacz następną tabelę.|
-|`X-Search-AppId`|Tylko do szesnastkowy identyfikator GUID (nie kresek) który unikatowo identyfikuje aplikację klienta. Może to być identyfikator sklepu. FF nie jest aplikacja ze sklepu, możesz użyć dowolnego identyfikatora GUID.|
-|`X-Search-ClientId`|Tylko do szesnastkowy identyfikator GUID (nie kresek) który jednoznacznie identyfikuje wystąpienie aplikacji dla każdej instalacji.|
 |`User-Agent`|Nazwa aplikacji. Wymagane; musi zawierać mniej niż 255 znaków.|
 
 Formaty danych wyjściowych audio dostępne (`X-Microsoft-OutputFormat`) szybkości transmisji bitów i kodowania.
@@ -230,9 +228,12 @@ Formaty danych wyjściowych audio dostępne (`X-Microsoft-OutputFormat`) szybko�
 `riff-24khz-16bit-mono-pcm`        | `audio-24khz-160kbitrate-mono-mp3`
 `audio-24khz-96kbitrate-mono-mp3`  | `audio-24khz-48kbitrate-mono-mp3`
 
+> [!NOTE]
+> Jeśli wybrany głosu i format danych wyjściowych inne szybkości transmisji bitów, audio jest próbkowany zgodnie z potrzebami. Jednak nie obsługują głosów 24khz `audio-16khz-16kbps-mono-siren` i `riff-16khz-16kbps-mono-siren` formaty danych wyjściowych. 
+
 ### <a name="request-body"></a>Treść żądania
 
-Tekst, który ma zostać przekształcony na mowę, jest wysyłany jako treść HTTP `POST` żądania w zwykły tekst lub [język znaczników synteza mowy](speech-synthesis-markup.md) formatu (SSML) z kodowaniem tekst UTF-8. Należy użyć SSML, jeśli chcesz używać głosu innych niż Usługa domyślna głosu.
+Tekst, który ma zostać przekonwertowany na mowę w celu jest wysyłany jako treść HTTP `POST` żądania albo jako zwykły tekst (ASCII lub UTF-8) lub [język znaczników synteza mowy](speech-synthesis-markup.md) formatu (SSML) (UTF-8). Żądania w postaci zwykłego tekstu za pomocą usługi głosowe w domyślnego i języka. Wyślij SSML używać różnych głosu.
 
 ### <a name="sample-request"></a>Przykładowe żądanie
 
@@ -260,10 +261,10 @@ Stanu HTTP odpowiedzi wskazuje sukces lub typowe warunki błędów.
 Kod HTTP|Znaczenie|Możliwa przyczyna
 -|-|-|
 200|OK|Żądanie powiodło się; treść odpowiedzi jest plik audio.
-400|Nieprawidłowe żądanie|Brak dokumentu SSML zbyt długa lub nieprawidłowa wartość pola wymaganego nagłówka.
-401|Brak autoryzacji|Klucz subskrypcji lub autoryzacji token jest nieprawidłowy w określonym regionie lub nieprawidłowy punkt końcowy.
-403|Zabroniony|Brak klucz subskrypcji lub autoryzacji tokenu.
-413|Jednostka żądania jest zbyt duża|Wprowadzany tekst jest dłuższy niż 1000 znaków.
+400 |Nieprawidłowe żądanie |Wymagany parametr jest Brak, pusta lub równa null. Lub wartość przekazana do każdego wymaganego lub opcjonalnego parametru jest nieprawidłowa. Typowym problemem jest nagłówkiem, który jest za długi.
+401|Brak autoryzacji |Żądanie nie jest autoryzowany. Zaznacz, aby upewnić się, że klucz subskrypcji lub token jest prawidłowy i w poprawny region.
+413|Jednostka żądania jest zbyt duża|Dane wejściowe SSML jest dłuższa niż 1024 znaki.
+|502|Zła brama    | Problem z siecią lub po stronie serwera. Może również oznaczać nieprawidłowy nagłówek.
 
 W przypadku stanu HTTP `200 OK`, treść odpowiedzi zawiera plik audio w formacie żądanej. Ten plik może odtwarzać jest przekazywane lub zapisany do buforu lub nowszej odtwarzania lub inne użycie w pliku.
 

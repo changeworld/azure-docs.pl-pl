@@ -11,14 +11,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 08/23/2018
+ms.date: 09/20/2018
 ms.author: alkohli
-ms.openlocfilehash: 8f34d5a38f09f015547f52cc4b44819b780932bb
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: 5da67b5141eb61823d3e376b6f0e6b0b3895ca68
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818862"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498287"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Opcje migracji danych z usługi StorSimple serii 5000 – 7000 
 
@@ -75,13 +75,22 @@ A. Tak. Migracja do innych rozwiązań magazynu przy użyciu hosta kopii danych 
 
 A. Migracja z serii 5000 i 7000 jest w pełni obsługiwaną operacją. W rzeczywistości firma Microsoft zaleca skontaktowanie się do działu pomocy technicznej, przed rozpoczęciem migracji. Migracja jest obecnie asystowanej operacji. Jeśli zamierzasz migrować dane z usługi StorSimple, urządzenie z serii 5000 – 7000, [Otwórz bilet pomocy technicznej](storsimple-8000-contact-microsoft-support.md).
 
-### <a name="q-how-does-the-cost-compare-for-the-two-listed-migrations-to-azure-hybrid-services"></a>PYTANIE: Jak wygląda porównanie kosztów dla dwie migracje wymienionych usług hybrydowej platformy Azure? 
+### <a name="q-what-is-the-pricing-model-for-both-the-migration-options"></a>PYTANIE: Co to jest model cenowy dla obu opcji migracji?
 
-A. Koszt migracji różni się w zależności od wybranej opcji. Podczas migracji, sama jest bezpłatny, jeśli zdecydujesz się na uaktualnienie do serii StorSimple 8000, nastąpi koszt urządzenia sprzętowego. Podobnie korzystając z usługi Azure File Sync, mogą obowiązywać opłaty za subskrypcję usługi. W każdym przypadku klienci także trzeba płacić bieżące koszty. Zapoznaj się [Kalkulator cen Microsoft dla odpowiednich usług](https://azure.microsoft.com/pricing/#product-picker) dla szacowania.  
+A. Koszt migracji różni się w zależności od wybranej opcji. Podczas migracji, sama jest bezpłatny, jeśli zdecydujesz się na uaktualnienie do serii StorSimple 8000, nastąpi koszt urządzenia sprzętowego. 
+
+Podobnie korzystając z usługi Azure File Sync, mogą obowiązywać opłaty za subskrypcję usługi. W każdym przypadku klienci także trzeba płacić bieżące koszty. Zapoznaj się z poniższymi oszacowanie: 
+- [Ceny usługi StorSimple](https://azure.microsoft.com/pricing/details/storsimple/)  
+- [Cennik AFS]( https://azure.microsoft.com/pricing/details/storage/files/)
 
 ### <a name="q--how-long-does-it-take-to-complete-a-migration"></a>PYTANIE:  Jak długo trwa do ukończenia migracji?
 
 A. Czas na migrację danych zależy od ilości danych i wybrania opcji uaktualniania. 
+
+### <a name="q-what-is-the-end-of-support-date-for-storsimple-8000-series"></a>PYTANIE: Jaka jest data zakończenia wsparcia dla serii StorSimple 8000?
+
+A. Data zakończenia wsparcia dla serii StorSimple 8000 jest publikowany [tutaj](https://support.microsoft.com/lifecycle/search?alpha=Azure%20StorSimple%208000%20Series).
+
 
 ## <a name="next-steps"></a>Kolejne kroki
  - [Migracja danych z magazynu StorSimple serii 5000 – 7000 do urządzenia z serii 8000](storsimple-8000-migrate-from-5000-7000.md).

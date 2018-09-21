@@ -11,15 +11,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 09/19/2018
 ms.author: sethm
 ms.reviewer: alfredo
-ms.openlocfilehash: af28bff0a9826bb96451ae944a377ad0ee284d87
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: eef1a2f82dc73a1c53b89bb3c9d145f87212ffcc
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634000"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498576"
 ---
 # <a name="add-tenant-for-usage-and-billing-to-azure-stack"></a>Dodawanie dzierżawy za użycie i rozliczenia w usłudze Azure Stack
 
@@ -69,9 +69,9 @@ Zaktualizuj swoją rejestrację przy użyciu subskrypcji na nowego klienta. Azur
 ### <a name="new-azurermresource-powershell-parameters"></a>Parametry nowej AzureRmResource programu PowerShell
 | Parametr | Opis |
 | --- | --- | 
-|registrationSubscriptionID | Subskrypcja platformy Azure, który został użyty podczas wstępnej rejestracji usługi Azure Stack. |
-| customerSubscriptionID | Subskrypcja platformy Azure (nie usługi Azure Stack) należące do klientów do zarejestrowania. Musi być utworzona w ramach oferty dostawcy usług Kryptograficznych; w praktyce oznacza to, za pośrednictwem Centrum partnerskiego. Jeśli klient ma więcej niż jedną dzierżawę usługi Azure Active Directory, należy utworzyć tej subskrypcji w ramach dzierżawy, która będzie służyć do logowania się do usługi Azure Stack.
-| resourceGroup | Grupa zasobów na platformie Azure, w którym przechowywany jest rejestracja. 
+|registrationSubscriptionID | Subskrypcja platformy Azure, który został użyty podczas wstępnej rejestracji usługi Azure Stack.|
+| customerSubscriptionID | Subskrypcja platformy Azure (nie usługi Azure Stack) należące do klientów do zarejestrowania. Musi być utworzona w ramach oferty dostawcy usług Kryptograficznych; w praktyce oznacza to, za pośrednictwem Centrum partnerskiego. Jeśli klient ma więcej niż jedną dzierżawę usługi Azure Active Directory, należy utworzyć tej subskrypcji w ramach dzierżawy, która będzie służyć do logowania się do usługi Azure Stack. Identyfikator subskrypcji klienta, należy użyć małe litery. |
+| resourceGroup | Grupa zasobów na platformie Azure, w którym przechowywany jest rejestracja. |
 | registrationName | Nazwa rejestracji usługi Azure Stack. Jest to obiekt przechowywanych na platformie Azure. | 
 | Właściwości | Określa właściwości zasobu. Ten parametr umożliwia określenie wartości właściwości, które są specyficzne dla typu zasobu.
 

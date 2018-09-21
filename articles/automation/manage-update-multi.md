@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/29/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 9cb2b0bdb036b26fbd355ff4bd84885b7e15507d
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 23f86581b5ecc5257ccb246c7199eef4246efb08
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541977"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498236"
 ---
 # <a name="manage-updates-for-multiple-machines"></a>Zarządzanie aktualizacjami dla wielu maszyn
 
@@ -127,6 +127,7 @@ W **nowe wdrożenie aktualizacji** okienku określ następujące informacje:
 
 - **Nazwa**: wprowadź unikatową nazwę identyfikującą wdrożenie aktualizacji.
 - **System operacyjny**: Wybierz **Windows** lub **Linux**.
+- **Grupy można zaktualizować (wersja zapoznawcza)**: Definiowanie zapytań, w zależności od kombinacji subskrypcji, grupy zasobów, lokalizacje i tagi, do tworzenia grupy dynamicznej maszyn wirtualnych platformy Azure, aby uwzględnić w danym wdrożeniu. Aby dowiedzieć się więcej, zobacz [grupy dynamiczne](automation-update-management.md#using-dynamic-groups)
 - **Maszyny do zaktualizowania**: Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub wybierz maszyny, aby wybrać maszyn, które chcesz zaktualizować. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**. Widać stan kondycji komputera, zanim zaplanowane wdrożenie aktualizacji. Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../log-analytics/log-analytics-computer-groups.md)
 
   ![Nowe okienko wdrożenia aktualizacji](./media/manage-update-multi/update-select-computers.png)
@@ -141,13 +142,15 @@ W **nowe wdrożenie aktualizacji** okienku określ następujące informacje:
   - Narzędzia
   - Aktualizacje
 
-- **Aktualizacje do wykluczenia**: Wybranie tej opcji powoduje otwarcie **wykluczyć** strony. Wprowadź artykuły z bazy wiedzy lub nazw pakietów, które mają zostać wykluczone.
+- **Aktualizacje do dołączania lub wykluczania** — spowoduje to otwarcie **uwzględniania/wykluczania** strony. Na osobnych kartach są aktualizacje być dołączone lub wykluczone. Aby uzyskać dodatkowe informacje na temat sposobu obsługi dołączania, zobacz [zachowanie dołączania](automation-update-management.md#inclusion-behavior)
 
 - **Ustawienia harmonogramu**: możesz zaakceptować domyślną datę i godzinę, czyli 30 minut po bieżącej godzinie. Można również określić inny czas.
 
    Możesz też określić, czy wdrożenie ma występować raz, czy zgodnie z harmonogramem cyklicznym. Aby skonfigurować Harmonogram cykliczny, w obszarze **cyklu**, wybierz opcję **cyklicznie**.
 
    ![Okno dialogowe Ustawienia harmonogramu](./media/manage-update-multi/update-set-schedule.png)
+
+- **Wstępnie skrypty i skrypty wykonywane po**: Wybierz skrypty do uruchomienia przed i po wdrożeniu. Aby dowiedzieć się więcej, zobacz [skrypty zarządzania przed i po](pre-post-scripts.md).
 - **Okno konserwacji (w minutach)**: Podaj okres czasu, który ma zostać przeprowadzone wdrażanie aktualizacji. To ustawienie pozwala zagwarantować, że zmiany będą wprowadzane w ramach zdefiniowanych okien obsługi.
 
 - **Ponowne uruchomienie kontroli** — to ustawienie określa sposób obsługi ponownego uruchamiania dla wdrożenia aktualizacji.

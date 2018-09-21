@@ -6,15 +6,15 @@ ms.service: automation
 ms.component: update-management
 author: georgewallace
 ms.author: gwallace
-ms.date: 08/29/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ddc27d9f5124000601a57b4ecd72c3d6021c109f
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 3e21cb90dbe76a648cbb23729cc5068e75e8e5f7
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542637"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498542"
 ---
 # <a name="update-management-solution-in-azure"></a>Rozwiązania Update Management na platformie Azure
 
@@ -35,7 +35,7 @@ Na poniższym diagramie przedstawiono koncepcyjny widok działania i przepływu 
 
 ![Przepływ procesu zarządzania aktualizacjami](media/automation-update-management/update-mgmt-updateworkflow.png)
 
-Rozwiązanie Update Management może służyć do natywnie dołączanie maszyn w wielu subskrypcji w ramach tej samej dzierżawy. Do zarządzania maszynami w innej dzierżawie, należy najpierw dodać je jako [maszyny spoza platformy Azure](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine).
+Rozwiązanie Update Management może służyć do natywnie dołączanie maszyn w wielu subskrypcji w ramach tej samej dzierżawy. Do zarządzania maszynami w innej dzierżawie, należy najpierw dodać je jako [maszyny spoza platformy Azure](automation-onboard-solutions-from-automation-account.md#onboard-a-non-azure-machine). 
 
 Po komputer przeprowadzi skanowanie pod kątem zgodności aktualizacji, agent przekazuje zbiorczo informacje do usługi Azure Log Analytics. Na komputerze Windows skanowanie pod kątem zgodności jest domyślnie przeprowadzane co 12 godzin.
 
@@ -55,6 +55,8 @@ Zaplanowane wdrożenie definiuje, które komputery docelowe otrzymywać odpowied
 Aktualizacje są instalowane przez elementy runbook w usłudze Azure Automation. Nie można wyświetlić tych elementów runbook i elementy runbook nie wymaga żadnej konfiguracji. Po utworzeniu wdrożenia aktualizacji wdrożenia aktualizacji powoduje utworzenie harmonogramu, który uruchamia główny element runbook aktualizacji w określonym czasie na uwzględnionych komputerach. Główny element runbook uruchamia podrzędny element runbook na każdym agencie, aby przeprowadzić instalację wymaganych aktualizacji.
 
 Od daty i czasu określony we wdrożeniu aktualizacji komputery docelowe równolegle uruchomić wdrożenie. Przed rozpoczęciem instalacji Aby sprawdzić, czy aktualizacje są nadal wymagane odbywa się skanowanie. Dla komputerów klienckich programu WSUS Jeśli aktualizacje nie są zatwierdzone w programie WSUS, wdrożenie aktualizacji kończy się niepowodzeniem.
+
+Masz maszynę zarejestrowane do zarządzania aktualizacjami w wielu Analytics obszary robocze usługi Log (Obsługa wielu regionów) nie jest obsługiwane.
 
 ## <a name="clients"></a>Klienci
 
@@ -190,7 +192,7 @@ Aby uruchomić przeszukiwanie dziennika, które zwraca informacje dotyczące mas
 
 Po aktualizacji są oceniane dla wszystkich komputerów z systemami Linux i Windows w obszarze roboczym, można zainstalować wymagane aktualizacje, tworząc *wdrożenie aktualizacji*. Wdrożenie aktualizacji to zaplanowana instalacja wymaganych aktualizacji na co najmniej jeden komputer. Należy określić datę i godzinę wdrożenia i komputera lub grupy komputerów, które do uwzględnienia w zakresie wdrożenia. Aby dowiedzieć się więcej na temat grup komputerów, zobacz [Computer groups in Log Analytics](../log-analytics/log-analytics-computer-groups.md) (Grupy komputerów w usłudze Log Analytics).
 
- Po włączeniu grupy komputerów we wdrożeniu aktualizacji członkostwa w grupie jest oceniane tylko raz, w momencie tworzenia harmonogramu. Kolejne zmiany do grupy nie są uwzględniane. Aby obejść ten problem, usuń zaplanowane wdrożenie aktualizacji i utwórz go ponownie.
+ Po włączeniu grupy komputerów we wdrożeniu aktualizacji członkostwa w grupie jest oceniane tylko raz, w momencie tworzenia harmonogramu. Kolejne zmiany do grupy nie są uwzględniane. Aby obejść to wykorzystania [grup dynamicznych](#using-dynamic-groups), te grupy są rozwiązywane w czasie wdrażania i są definiowane przez zapytanie.
 
 > [!NOTE]
 > Windows maszyn wirtualnych, które są wdrażane w portalu Azure Marketplace, domyślnie są ustawione na automatyczne otrzymywanie aktualizacji z usługi programu Windows Update. To zachowanie nie zmienia się po dodaniu tego rozwiązania lub Dodaj maszyny wirtualne Windows do obszaru roboczego. Jeśli nie aktywnie zarządzanie aktualizacjami za pomocą tego rozwiązania, stosuje się domyślne zachowanie (czyli automatyczne stosowanie aktualizacji).
@@ -198,6 +200,23 @@ Po aktualizacji są oceniane dla wszystkich komputerów z systemami Linux i Wind
 Aby uniknąć stosowania aktualizacji poza oknem obsługi w systemie Ubuntu, zmień konfigurację pakietu Unattended-Upgrade tak, aby wyłączyć aktualizacje automatyczne. Aby uzyskać informacje o sposobie konfigurowania pakietu, zobacz [temat poświęcony aktualizacjom automatycznym w podręczniku systemu Ubuntu Server](https://help.ubuntu.com/lts/serverguide/automatic-updates.html).
 
 Maszyny wirtualne, które zostały utworzone z obrazów Red Hat Enterprise Linux (RHEL) na żądanie, które są dostępne w witrynie Azure Marketplace są rejestrowane na dostęp [Red Hat Update infrastruktury (RHUI)](../virtual-machines/virtual-machines-linux-update-infrastructure-redhat.md) wdrożonej na platformie Azure. Innych dystrybucji systemu Linux należy aktualizować przy użyciu repozytorium plików online dystrybucji wykonując obsługiwane metody dystrybucji.
+
+Aby utworzyć nowe wdrożenie aktualizacji, wybierz **Zaplanuj wdrażanie aktualizacji**. **Nowe wdrożenie aktualizacji** zostanie otwarte okienko. Wprowadź wartości dla właściwości opisane w poniższej tabeli, a następnie kliknij przycisk **Utwórz**:
+
+| Właściwość | Opis |
+| --- | --- |
+| Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
+|System operacyjny| System Linux lub Windows|
+| Grupy można zaktualizować (wersja zapoznawcza)|Definiowanie zapytań, w zależności od kombinacji subskrypcji, grupy zasobów, lokalizacje i tagi, do tworzenia grupy dynamicznej maszyn wirtualnych platformy Azure, aby uwzględnić w danym wdrożeniu. Aby dowiedzieć się więcej, zobacz [grupy dynamiczne](automation-update-management.md#using-dynamic-groups)|
+| Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub wybrać maszynę z listy rozwijanej i wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../log-analytics/log-analytics-computer-groups.md) |
+|Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
+|Uwzględnianie/wykluczanie aktualizacji|Spowoduje to otwarcie **uwzględniania/wykluczania** strony. Na osobnych kartach są aktualizacje być dołączone lub wykluczone. Aby uzyskać dodatkowe informacje na temat sposobu obsługi dołączania, zobacz [zachowanie dołączania](automation-update-management.md#inclusion-behavior) |
+|Ustawienia harmonogramu|Wybierz godzinę do uruchomienia i wybrać jednorazowo lub cykliczne cyklu|
+| Skrypty przed i skryptu używanego po utworzeniu|Wybierz skrypty do uruchomienia przed i po wdrożeniu|
+| Okno obsługi |Liczba minut dla aktualizacji. Wartość może nie być mniej niż 30 minut, a nie więcej niż 6 godzin |
+| Ponowne uruchomienie kontroli| Określa sposób obsługi jest uruchamiany ponownie. Dostępne opcje:</br>Ponowne uruchomienie, jeśli jest to wymagane (ustawienie domyślne)</br>Zawsze uruchamiaj ponownie</br>Nigdy nie uruchamiaj ponownie</br>Tylko ponowne uruchomienie — aktualizacje nie zostaną zainstalowane|
+
+Można także programowo tworzyć wdrożenia aktualizacji. Aby dowiedzieć się, jak utworzyć wdrożenie aktualizacji za pomocą interfejsu API REST, zobacz [konfiguracji aktualizacji oprogramowania — tworzenie](/rest/api/automation/softwareupdateconfigurations/create). Istnieje również przykładowy element runbook, który może służyć do tworzenia tygodniowy wdrożenia aktualizacji. Aby dowiedzieć się więcej na temat tego elementu runbook, zobacz [utworzyć tygodniowy wdrożenie aktualizacji dla jednego lub więcej maszyn wirtualnych w grupie zasobów](https://gallery.technet.microsoft.com/scriptcenter/Create-a-weekly-update-2ad359a1).
 
 ## <a name="view-missing-updates"></a>Wyświetl brakujące aktualizacje
 
@@ -209,20 +228,7 @@ Wybierz **wdrożenia aktualizacji** kartę, aby wyświetlić listę istniejącyc
 
 ![Przegląd wyników wdrożenia aktualizacji](./media/automation-update-management/update-deployment-run.png)
 
-## <a name="create-or-edit-an-update-deployment"></a>Tworzenie lub edytowanie wdrożenia aktualizacji
-
-Aby utworzyć nowe wdrożenie aktualizacji, wybierz **Zaplanuj wdrażanie aktualizacji**. **Nowe wdrożenie aktualizacji** zostanie otwarte okienko. Wprowadź wartości dla właściwości opisane w poniższej tabeli, a następnie kliknij przycisk **Utwórz**:
-
-| Właściwość | Opis |
-| --- | --- |
-| Name (Nazwa) |Unikatowa nazwa identyfikującą wdrożenie aktualizacji. |
-|System operacyjny| System Linux lub Windows|
-| Maszyny do zaktualizowania |Wybierz zapisane wyszukiwanie, zaimportowane grupy, lub wybrać maszynę z listy rozwijanej i wybierz poszczególne maszyny. Jeśli wybierzesz pozycję **Maszyny**, gotowość maszyny będzie wyświetlana w kolumnie **AKTUALIZUJ GOTOWOŚĆ AGENTA**.</br> Aby dowiedzieć się więcej na temat różnych metod tworzenia grup komputerów w usłudze Log Analytics, zobacz [Grupy komputerów w usłudze Log Analytics](../log-analytics/log-analytics-computer-groups.md) |
-|Aktualizuj klasyfikacje|Wybierz wszystkie klasyfikacje aktualizacji, które są potrzebne|
-|Aktualizacje do wykluczenia|Wprowadź aktualizacje do wykluczenia. Windows wprowadź KB bez prefiksu "KB". Dla systemu Linux wprowadź nazwę pakietu, lub użyć symbolu wieloznacznego.  |
-|Ustawienia harmonogramu|Wybierz godzinę do uruchomienia i wybrać jednorazowo lub cykliczne cyklu|
-| Okno obsługi |Liczba minut dla aktualizacji. Wartość może nie być mniej niż 30 minut, a nie więcej niż 6 godzin |
-| Ponowne uruchomienie kontroli| Określa sposób obsługi jest uruchamiany ponownie. Dostępne opcje:</br>Ponowne uruchomienie, jeśli jest to wymagane (ustawienie domyślne)</br>Zawsze uruchamiaj ponownie</br>Nigdy nie uruchamiaj ponownie</br>Tylko ponowne uruchomienie — aktualizacje nie zostaną zainstalowane|
+Aby wyświetlić wdrożenie aktualizacji z interfejsu API REST, zobacz [przebiegów konfiguracji aktualizacji oprogramowania](/rest/api/automation/softwareupdateconfigurationruns).
 
 ## <a name="update-classifications"></a>Aktualizuj klasyfikacje
 
@@ -484,11 +490,32 @@ Update
 | project-away ClassificationWeight, InformationId, InformationUrl
 ```
 
+## <a name="using-dynamic-groups"></a>Za pomocą grup dynamicznych (wersja zapoznawcza)
+
+Rozwiązanie Update Management umożliwia dynamiczne grupy maszyn wirtualnych platformy Azure w celu wdrażania aktualizacji. Te grupy są definiowane przez kwerendę, gdy rozpocznie się wdrożenie aktualizacji, Członkowie tej grupy są oceniane. Podczas definiowania kwerendy następujących elementów może być używane razem do wypełniania grupy dynamicznej
+
+* Subskrypcja
+* Grupy zasobów
+* Lokalizacje
+* Tagi
+
+![Wybieranie grup](./media/automation-update-management/select-groups.png)
+
+Aby wyświetlić podgląd wyników grupę dynamiczną, kliknij przycisk **Podgląd** przycisku. Tej wersji zapoznawczej pokazuje członkostwa w grupie w tym czasie, w tym przykładzie Trwa wyszukiwanie maszyn ze znacznikiem **roli** jest równa **BackendServer**. Jeśli jedna maszyna mają ten tag dodany, będzie można dodać do wszystkich przyszłych wdrożeń względem tej grupy.
+
+![grupy (wersja zapoznawcza)](./media/automation-update-management/preview-groups.png)
+
 ## <a name="integrate-with-system-center-configuration-manager"></a>Integracja z programem System Center Configuration Manager
 
 Klienci, którzy zainwestowali w programie System Center Configuration Manager do zarządzania komputerami, serwerami i urządzeniami przenośnymi polegają również na sile i dojrzałości programu Configuration Manager, aby ułatwić zarządzanie aktualizacjami oprogramowania. Configuration Manager jest częścią cyklu zarządzania (suma) aktualizacji oprogramowania.
 
 Aby dowiedzieć się, jak zintegrować rozwiązanie do zarządzania z System Center Configuration Manager, zobacz [integracji System Center Configuration Manager z zarządzaniem aktualizacjami](oms-solution-updatemgmt-sccmintegration.md).
+
+## <a name="inclusion-behavior"></a>Zachowanie dołączania
+
+Włączenie aktualizacji można określić określonej aktualizacji do zastosowania. Poprawki lub pakietów, które są ustawione w celu uwzględnienia są instalowane bez względu na to klasyfikacje wybrane do wdrożenia.
+
+Dla maszyn z systemem Linux Jeśli pakiet jest uwzględniony, ale zawiera pakiet zależnych, który został wykluczony, specifcally pakiet nie jest zainstalowany.
 
 ## <a name="patch-linux-machines"></a>Maszyny z systemem Linux poprawki
 
@@ -527,3 +554,5 @@ Przejdź do samouczka na temat sposobu zarządzania aktualizacjami dla maszyn wi
 
 * Użyj wyszukiwania w dzienniku [usługi Log Analytics](../log-analytics/log-analytics-log-searches.md) do wyświetlania szczegółowych danych aktualizacji.
 * [Tworzenie alertów](../log-analytics/log-analytics-alerts.md) po wykryciu aktualizacje krytyczne jako brakujące z komputerów, czy komputer ma wyłączonymi aktualizacjami automatycznymi.
+
+* Aby dowiedzieć się, jak korzystać z rozwiązania Update Management za pośrednictwem interfejsu API REST, zobacz [konfiguracji aktualizacji oprogramowania](/rest/api/automation/softwareupdateconfigurations)

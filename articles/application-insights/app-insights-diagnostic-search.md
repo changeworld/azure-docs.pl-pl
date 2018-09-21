@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/18/2018
+ms.date: 09/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: 4d49b6c4fca668a6afe88ade5fbafb0ea9c02dfc
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 7ba278a244327e717c114177cd8878cd00dfd7b4
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296163"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497913"
 ---
 # <a name="using-search-in-application-insights"></a>Za pomocą wyszukiwania w usłudze Application Insights
 Wyszukiwanie jest funkcją [usługi Application Insights](app-insights-overview.md) służącego do wyszukania i zapoznaj się z elementów telemetrii, takich jak wyświetleń stron, wyjątki lub żądania sieci web. I przeglądać ślady dzienników i zdarzeń, które zostały zakodowane.
@@ -123,8 +123,8 @@ Poniżej przedstawiono wyrażeniach wyszukiwania, których można użyć:
 | Przykładowe zapytanie | Efekt |
 | --- | --- |
 | `apple` |Znajdowanie wszystkich zdarzeń w zakresie czasu, w których pola zawierają wyraz "apple" |
-| `apple AND banana` |Znajdź wydarzenia, które zawierają zarówno słów. Użyj kapitału "i" nie "i". |
-| `apple OR banana`<br/>`apple banana` |Znajdź wydarzenia, które zawierają program Microsoft word. Użyj "OR", nie "or".<br/>Krótka. |
+| `apple AND banana` <br/>`apple banana` |Znajdź wydarzenia, które zawierają zarówno słów. Użyj kapitału "i" nie "i". |
+| `apple OR banana` |Znajdź wydarzenia, które zawierają program Microsoft word. Użyj "OR", nie "or".<br/>Krótka. |
 | `apple NOT banana` |Znajdź wydarzenia, które zawierają jeden wyraz, ale nie drugiej. |
 
 ## <a name="sampling"></a>Próbkowanie

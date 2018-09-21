@@ -7,12 +7,12 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 09/25/2017
-ms.openlocfilehash: c8bde99e0247871212766a9915b9d07b7f392201
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: 776d5957ee2c11354c350523cbc8fde12fbcafaf
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465592"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498185"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Omówienie usuwania nietrwałego w usłudze Azure Key Vault
 
@@ -37,9 +37,16 @@ Usługa Azure Key Vault są śledzone zasoby, zarządzane przez usługę Azure R
 
 ### <a name="soft-delete-behavior"></a>Zachowanie dotyczące usuwania nietrwałego
 
-Za pomocą tej funkcji operacja usunięcia usługi key vault lub obiektu usługi key vault jest usuwania nietrwałego, efektywnie zawierającą te zasoby na okres przechowywania danego, zapewniając wygląd, że obiekt zostanie usunięta. Dodatkowo usługa zapewnia mechanizm odzyskiwania usuniętego obiektu, zasadniczo Cofnięcie usunięcia. 
+Za pomocą tej funkcji operacja usunięcia usługi key vault lub obiektu usługi key vault jest usuwania nietrwałego, efektywnie zawierającą te zasoby, dla okresu przechowywania danego (90 dni), zapewniając wygląd, że obiekt zostanie usunięta. Dodatkowo usługa zapewnia mechanizm odzyskiwania usuniętego obiektu, zasadniczo Cofnięcie usunięcia. 
 
 Opcji soft-delete jest opcjonalne zachowanie usługi Key Vault i jest **nie jest włączona domyślnie** w tej wersji. 
+
+### <a name="do-not-purge-flag"></a>Przeczyszczanie flagi
+Użytkownik, który chce, aby wymusić usunięcie magazynu lub obiektu magazynu można to zrobić. To, jeśli użytkownik ma uprawnienia do usuwania magazynu lub obiektu w magazynie można wymusić przeczyszczania, nawet wtedy, gdy jest włączone usuwanie nietrwałe dla tego magazynu. Jednak jeśli użytkownik chce zapobiec usunięciu życie magazyn lub obiektu magazynu mogą oni ustawić — ochrona przed czyszczeniem Włącz flagę, aby mieć wartość true. Po utworzeniu magazynu można włączyć flagę w ten sposób. Warunek wstępny do włączania ochrona przed czyszczeniem to musi mieć włączone usuwanie nietrwałe. To polecenie, aby to zrobić w wersji 2 interfejsu wiersza polecenia platformy Azure
+
+```
+az keyvault create --name "VaultName" --resource-group "ResourceGroupName" --location westus --enable-soft-delete true --enable-purge-protection true
+```
 
 ### <a name="key-vault-recovery"></a>Odzyskiwanie usługi Key vault
 

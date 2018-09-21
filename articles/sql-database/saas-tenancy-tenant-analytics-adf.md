@@ -1,6 +1,6 @@
 ---
 title: Uruchamianie zapytań analitycznych dla dzierżawy z bazami danych przy użyciu usługi Azure SQL Data Warehouse | Dokumentacja firmy Microsoft
-description: Zapytania analityczne międzydzierżawowa, przy użyciu danych wyodrębnionych z wieloma bazami danych Azure SQL Database.
+description: Zapytania analityczne międzydzierżawowa, przy użyciu danych pobranych z usługi Azure SQL Database, SQL Data Warehouse, Azure Data Factory lub usługi Power BI.
 keywords: samouczek usługi sql database
 services: sql-database
 documentationcenter: ''
@@ -13,14 +13,14 @@ ms.workload: Inactive
 ms.tgt_pltfrm: ''
 ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 09/19/2018
 ms.author: anjangsh
-ms.openlocfilehash: 9dad675188782f3feb769e47230aa7b0cb42b10e
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 6f483b19b79435e1d7090ff42ab7fc9d3f79d747
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737213"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498406"
 ---
 # <a name="explore-saas-analytics-with-azure-sql-database-sql-data-warehouse-data-factory-and-power-bi"></a>Poznaj analizy SaaS przy użyciu usługi Azure SQL Database, SQL Data Warehouse, Data Factory i Power BI
 

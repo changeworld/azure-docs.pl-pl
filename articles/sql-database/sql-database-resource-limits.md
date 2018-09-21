@@ -1,20 +1,20 @@
 ---
 title: Zasób platformy Azure SQL Database ogranicza — omówienie | Dokumentacja firmy Microsoft
-description: Ta strona zawiera opis niektórych typowych limitów zasobów na podstawie jednostek DTU dla pojedynczej bazy danych w usłudze Azure SQL Database.
+description: Ten artykuł zawiera omówienie zasobów usługi Azure SQL Database ogranicza i zawiera informacje dotyczące co się stanie, gdy te limity zasobów są osiągnięty lub przekroczony.
 services: sql-database
 author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 09/19/2018
 ms.author: carlrab
-ms.openlocfilehash: 5d070c1d65ea15450589e1b590eaf926c10e749f
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: fbb73e46ed3aa41b544e8fea5c6184675140e810
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736193"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498157"
 ---
 # <a name="overview-azure-sql-database-resource-limits"></a>Limity zasobów usługi Azure SQL Database — omówienie 
 

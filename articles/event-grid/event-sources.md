@@ -5,14 +5,14 @@ services: event-grid
 author: tfitzmac
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 08/21/2018
+ms.date: 09/19/2018
 ms.author: tomfitz
-ms.openlocfilehash: 15fe97e39fbc1c669762ddb7523cfd043638d3de
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: adef9d2f2d859c62d3b3b3a542536698fa668f9a
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144233"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498304"
 ---
 # <a name="event-sources-in-azure-event-grid"></a>Źródła zdarzeń w usłudze Azure Event Grid
 
@@ -58,7 +58,7 @@ Subskrybować tematy niestandardowe w celu reagowania na zdarzenia aplikacji.
 | [Program PowerShell: subskrybowanie zdarzeń dla tematu niestandardowego](./scripts/event-grid-powershell-subscribe-custom-topic.md)|Przykładowy skrypt tworzy subskrypcję tematu niestandardowego. Wysyła zdarzenia do elementu WebHook.|
 | [Szablon usługi Resource Manager: tematu niestandardowego i punktem końcowym elementu WebHook](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid) | Szablon usługi Resource Manager, który tworzy niestandardowy temat i subskrypcję tego niestandardowego tematu. Wysyła zdarzenia do elementu WebHook. |
 |
-| [Szablon usługi Resource Manager: tematu niestandardowego i punktu końcowego usługi Event Hubs](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/subscribeCustomTopicToEventHub.json)| Szablon usługi Resource Manager, która tworzy subskrypcję tematu niestandardowego. Wysyła zdarzenia do usługi Azure Event Hubs. |
+| [Szablon usługi Resource Manager: tematu niestandardowego i punktu końcowego usługi Event Hubs](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Szablon usługi Resource Manager, która tworzy subskrypcję tematu niestandardowego. Wysyła zdarzenia do usługi Azure Event Hubs. |
 | [Schemat zdarzeń](event-schema.md) | Pokazuje pola w zdarzeniach niestandardowych. |
 
 ## <a name="event-hubs"></a>Event Hubs
@@ -104,7 +104,7 @@ Subskrybowanie zdarzenia grupy zasobów, aby odpowiadanie na zmiany w zasoby w g
 | [Interfejs wiersza polecenia platformy Azure: subskrybowanie zdarzeń dla grupy zasobów i filtr dla zasobu](./scripts/event-grid-cli-resource-group-filter.md) | Przykładowy skrypt, który subskrybuje do zdarzeń dla grupy zasobów i filtruje zdarzenia dla jednego zasobu. |
 | [Program PowerShell: subskrybowanie zdarzeń dla grupy zasobów](./scripts/event-grid-powershell-resource-group.md) | Przykładowy skrypt, który subskrybuje do zdarzeń dla grupy zasobów. Wysyła zdarzenia do elementu WebHook. |
 | [Program PowerShell: subskrybowanie zdarzeń dla grupy zasobów i filtr dla zasobu](./scripts/event-grid-powershell-resource-group-filter.md) | Przykładowy skrypt, który subskrybuje do zdarzeń dla grupy zasobów i filtruje zdarzenia dla jednego zasobu. |
-| [Szablon usługi Resource Manager: subskrypcja grupy zasobów](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/subscribeResourceGroupToWebHook.json) | Subskrybuje zdarzenia dla grupy zasobów. Wysyła zdarzenia do elementu WebHook. |
+| [Szablon usługi Resource Manager: subskrypcji zasobu](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-resource-events-to-webhook) | Subskrybuje do zdarzeń dla platformy Azure subskrypcji lub grupy zasobów. Wysyła zdarzenia do elementu WebHook. |
 | [Schemat zdarzeń](event-schema-resource-groups.md) | Pokazuje pola w zasobie pogrupować zdarzenia. |
 
 ## <a name="service-bus"></a>Service Bus
@@ -128,7 +128,7 @@ Subskrybowanie zdarzeń usługi Blob Storage do odpowiadanie na zdarzenia utworz
 | [Szybki Start: tworzenie i kierowanie zdarzeń usługi Blob storage za pomocą witryny Azure portal](blob-event-quickstart-portal.md) | Pokazuje, jak korzystać z portalu do wysyłania zdarzeń usługi blob storage do elementu WebHook. |
 | [Interfejs wiersza polecenia platformy Azure: subskrybowanie zdarzeń dla konta usługi Blob storage](./scripts/event-grid-cli-blob.md) | Przykładowy skrypt, która ją subskrybuje zdarzenia dla konta usługi Blob storage. Wysyła zdarzenie do elementu WebHook. |
 | [Program PowerShell: subskrybowanie zdarzeń dla konta usługi Blob storage](./scripts/event-grid-powershell-blob.md) | Przykładowy skrypt, która ją subskrybuje zdarzenia dla konta usługi Blob storage. Wysyła zdarzenie do elementu WebHook. |
-| [Szablon usługi Resource Manager: Tworzenie usługi Blob storage i subskrypcji](https://github.com/Azure/azure-docs-json-samples/blob/master/event-grid/createBlobAndSubscribe.json) | Wdraża konto magazynu obiektów Blob platformy Azure i subskrybuje zdarzenia dla tego konta magazynu. Wysyła zdarzenia do elementu WebHook. |
+| [Szablon usługi Resource Manager: Tworzenie usługi Blob storage i subskrypcji](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-subscription-and-storage) | Wdraża konto magazynu obiektów Blob platformy Azure i subskrybuje zdarzenia dla tego konta magazynu. Wysyła zdarzenia do elementu WebHook. |
 | [Omówienie: reagowanie na zdarzenia usługi Blob storage](../storage/blobs/storage-blob-event-overview.md) | Omówienie integracji usługi Blob storage z usługą Event Grid. |
 | [Schemat zdarzeń](event-schema-blob-storage.md) | Pokazuje pola w zdarzeniach usługi Blob Storage. |
 

@@ -12,18 +12,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/17/2018
+ms.date: 09/19/2018
 ms.author: terrylan
-ms.openlocfilehash: ec8e4b1edfe815670664de83edf98a9e478101d2
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 309dddcea1022d9f14c1d4492f5564f2a4ad3b6f
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42057006"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498508"
 ---
 # <a name="azure-network-security-overview"></a>Omówienie zabezpieczeń sieci platformy Azure
 
-System Azure zawiera niezawodną infrastrukturę sieci do obsługi aplikacji i wymagań dotyczących łączności usługi. Łączność sieciowa jest możliwe między zasobami znajdującymi się na platformie Azure, między lokalnych i zasobów, hostowane w systemie Azure oraz do i z Internetu i platformy Azure.
+Zabezpieczenia sieciowe można zdefiniować jako procesu ochrony zasobów przed nieautoryzowanym dostępem lub ataku, stosując kontrolki do ruchu sieciowego. Celem jest zapewnienie, że tylko uprawnionym ruch jest dozwolony. System Azure zawiera niezawodną infrastrukturę sieci do obsługi aplikacji i wymagań dotyczących łączności usługi. Łączność sieciowa jest możliwe między zasobami znajdującymi się na platformie Azure, między lokalnych i zasobów, hostowane w systemie Azure oraz do i z Internetu i platformy Azure.
 
 W tym artykule omówiono niektóre z opcji oferowanych przez platformę Azure w obszarze zabezpieczeń sieci. Informacje na temat:
 
@@ -77,7 +77,11 @@ Więcej informacji:
 
 #### <a name="asc-just-in-time-vm-access"></a>ASC dostęp dokładnie na czas maszyny Wirtualnej
 
-[Centrum zabezpieczeń Azure](../security-center/security-center-just-in-time.md) zarządzać sieciowe grupy zabezpieczeń na maszynach wirtualnych i zablokować dostęp do maszyny Wirtualnej do użytkownika za pomocą kontroli dostępu opartej na rolach odpowiednie [RBAC](../role-based-access-control/overview.md) uprawnienia żądania dostępu. Po użytkownik pomyślnie autoryzowanych ASC sprawia, że zmiany do sieciowych grup zabezpieczeń, aby umożliwić dostęp do wybranych portów przez czas określony. Po upływie czasu sieciowe grupy zabezpieczeń zostaną przywrócone do ich poprzedniego stanu zabezpieczone.
+[Centrum zabezpieczeń Azure](../security-center/security-center-intro.md) zarządzać sieciowe grupy zabezpieczeń na maszynach wirtualnych i zablokować dostęp do maszyny Wirtualnej do użytkownika za pomocą kontroli dostępu opartej na rolach odpowiednie [RBAC](../role-based-access-control/overview.md) uprawnienia żądania dostępu. Po użytkownik pomyślnie autoryzowanych ASC sprawia, że zmiany do sieciowych grup zabezpieczeń, aby umożliwić dostęp do wybranych portów przez czas określony. Po upływie czasu sieciowe grupy zabezpieczeń zostaną przywrócone do ich poprzedniego stanu zabezpieczone.
+
+Więcej informacji:
+
+* [Usługa Azure Security Center po prostu w T](../security-center/security-center-just-in-time.md)
 
 #### <a name="service-endpoints"></a>Punkty końcowe usługi
 

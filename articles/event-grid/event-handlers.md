@@ -7,12 +7,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/21/2018
 ms.author: tomfitz
-ms.openlocfilehash: 08658c42687626779dea0de7dd724d9431a296da
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 12cc5a918044e3bc74e34f2e05adc9773dee5421
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42617145"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498661"
 ---
 # <a name="event-handlers-in-azure-event-grid"></a>Programy obsługi zdarzeń w usłudze Azure Event Grid
 
@@ -50,6 +50,7 @@ Usługa Event Hubs może działać jako źródło zdarzenia lub program obsługi
 |Stanowisko  |Opis  |
 |---------|---------|
 | [Szybki Start: kierowanie zdarzeń niestandardowych w usłudze Azure Event Hubs przy użyciu wiersza polecenia platformy Azure i usługi Event Grid](custom-event-to-eventhub.md) | Wysyła zdarzenie niestandardowe do Centrum zdarzeń dla przetwarzania przez aplikację. |
+| [Szablon usługi Resource Manager: tematu niestandardowego i punktu końcowego usługi Event Hubs](https://github.com/Azure/azure-quickstart-templates/tree/master/101-event-grid-event-hubs-handler)| Szablon usługi Resource Manager, która tworzy subskrypcję tematu niestandardowego. Wysyła zdarzenia do usługi Azure Event Hubs. |
 
 Aby zapoznać się z przykładami usługi Event hubs jako źródła, zobacz [źródła usługi Event Hubs](event-sources.md#event-hubs).
 

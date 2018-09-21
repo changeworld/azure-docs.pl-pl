@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: ff50ea8c49d35306ccb48ec703de39c27c24bf7b
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 639eff5806ef84c526ae8d0d0ed55ca790bdac08
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160680"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498032"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Omówienie usługi Azure Cloud Shell
 Usługa Azure Cloud Shell jest powłoką interaktywne, dostępny w przeglądarce do zarządzania zasobami platformy Azure.
@@ -28,7 +28,7 @@ Użytkownicy systemu Linux mogą wybrać korzystanie z powłoki Bash, zaś użyt
 
 Wypróbuj od shell.azure.com, klikając przycisk poniżej.
 
-[![](https://shell.azure.com/images/launchcloudshell.png "Uruchom usługę Azure Cloud Shell")](https://shell.azure.com)
+[![Osadzanie uruchamiania](https://shell.azure.com/images/launchcloudshell.png "Uruchom usługę Azure Cloud Shell")](https://shell.azure.com)
 
 Spróbuj z witryny Azure portal za pomocą ikony usługi Cloud Shell.
 

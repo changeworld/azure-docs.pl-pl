@@ -1,6 +1,6 @@
 ---
 title: Uruchamianie analizy międzydzierżawowa przy użyciu wyodrębnione dane | Dokumentacja firmy Microsoft
-description: Zapytania analityczne międzydzierżawowa, przy użyciu danych wyodrębnionych z wieloma bazami danych Azure SQL Database.
+description: Zapytania analityczne międzydzierżawowa, przy użyciu danych wyodrębnionych z wielu baz danych usługi Azure SQL Database aplikacji pojedynczej dzierżawy.
 keywords: samouczek usługi sql database
 services: sql-database
 author: stevestein
@@ -8,19 +8,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 09/19/2018
 ms.author: sstein
 ms.reviewer: anjangsh; billgib; genemi
-ms.openlocfilehash: b887572e7c2bdf22c8a6cc8ffa1641e402fd6a58
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a838630e3423ca5ec26893597e2bb2b6e36ede2e
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736431"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498063"
 ---
-# <a name="cross-tenant-analytics-using-extracted-data"></a>Wielu dzierżawach usługi analytics przy użyciu wyodrębnione dane
-
-W tym samouczku opisano scenariusz Zakończenie analizy. Scenariusz pokazuje, jak włączyć analytics przedsiębiorstwom podejmować inteligentne decyzje. Przy użyciu danych wyodrębnionych z każdej bazy danych dzierżawy, umożliwia analizę wgląd w dzierżawę użycie zachowania i aplikacji. Ten scenariusz obejmuje trzy kroki: 
+# <a name="cross-tenant-analytics-using-extracted-data---single-tenant-app"></a>Cross-tenant analytics przy użyciu wyodrębnione dane — aplikacja jednej dzierżawy
+ 
+W tym samouczku opisano scenariusz pełną analizę implementatoin pojedynczej dzierżawy. Scenariusz pokazuje, jak włączyć analytics przedsiębiorstwom podejmować inteligentne decyzje. Przy użyciu danych wyodrębnionych z każdej bazy danych dzierżawy, umożliwia analizę wgląd w zachowanie dzierżawy, w tym korzystanie z przykładowej aplikacji SaaS o nazwie Wingtip Tickets. Ten scenariusz obejmuje trzy kroki: 
 
 1.  **Wyodrębnij** danych z każdej bazy danych dzierżawy i **obciążenia** do magazynu usługi analytics.
 2.  **Przekształcanie danych wyodrębnionych** przetwarzania analizy.
@@ -241,3 +241,4 @@ Gratulacje!
 
 - Dodatkowe [samouczki nawiązujące do aplikacji SaaS o nazwie Wingtip](saas-dbpertenant-wingtip-app-overview.md#sql-database-wingtip-saas-tutorials).
 - [Zadania elastyczne](sql-database-elastic-jobs-overview.md).
+- [Analizować międzydzierżawowa, przy użyciu danych wyodrębnionych - aplikacji wielodostępnej](saas-multitenantdb-tenant-analytics.md)

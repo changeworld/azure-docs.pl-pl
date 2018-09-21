@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: article
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: c326232e0fc8f5f878241186eac8ae5ed23f0958
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 83a768b82172b8736ea06bfed012309ac92734b7
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366764"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497964"
 ---
 # <a name="enable-update-management-change-tracking-and-inventory-solutions-on-multiple-vms"></a>Włączanie rozwiązania Update Management, śledzenia zmian i spis rozwiązań na wielu maszynach wirtualnych
 
@@ -51,9 +51,13 @@ Użyj kontrolki filtrowania, aby wybrać maszyny wirtualne z różnych subskrypc
 
 ![Dołączanie rozwiązania Update management](media/automation-onboard-solutions-from-browse/onboardsolutions.png)
 
-Przejrzyj opcje dla obszaru roboczego usługi Log analytics i konto usługi Automation. Nowy obszar roboczy i konto usługi Automation są wybrane domyślnie. Jeśli masz istniejący obszar roboczy usługi Log Analytics i konto usługi Automation chcesz użyć, kliknij przycisk **zmienić** wybierać z **konfiguracji** strony. Gdy skończysz, kliknij pozycję **Zapisz**.
+Przejrzyj opcje dla obszaru roboczego usługi Log analytics i konto usługi Automation. Domyślnie wybrany istniejący obszar roboczy i konto usługi Automation. Jeśli chcesz użyć innego obszaru roboczego usługi Log Analytics i konto usługi Automation, kliknij przycisk **niestandardowe** wybierać z **Konfiguracja niestandardowa** strony. Po wybraniu obszaru roboczego usługi Log Analytics, dokonuje do określenia, jeśli jest połączony z kontem usługi Automation. Jeśli połączonego konta usługi Automation zostanie znaleziony, zostanie wyświetlony następujący ekran. Gdy skończysz, kliknij pozycję **OK**.
 
 ![Wybierz obszar roboczy i konto](media/automation-onboard-solutions-from-browse/selectworkspaceandaccount.png)
+
+Jeśli wybrany obszar roboczy nie został połączony z kontem usługi Automation, zobaczysz poniższy ekran. Wybierz konto usługi Automation i kliknij przycisk **OK** po zakończeniu.
+
+![Brak obszaru roboczego](media/automation-onboard-solutions-from-browse/no-workspace.png)
 
 Usuń zaznaczenie pola wyboru obok dowolnej maszyny wirtualnej, których nie chcesz, aby włączyć. Maszyny wirtualne, których nie można włączyć są już usunięte.
 

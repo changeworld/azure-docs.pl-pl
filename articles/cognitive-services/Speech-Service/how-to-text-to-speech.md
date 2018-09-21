@@ -9,16 +9,16 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: d19b71542f032111bbd3d9c7f3fe246110377b5d
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 2bcba37d5bf0e508c1f9aa1ad30ab1c039cff83f
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127590"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46497760"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Użyj "Tekst na mowę" usługi mowy
 
-Usługa rozpoznawania mowy udostępnia funkcjonalność zamiany tekstu na mowę za pośrednictwem prostego żądania HTTP. Gdy OPUBLIKUJESZ tekst, który ma być używany do odpowiednich punktów końcowych, a usługa zwraca plik audio (`.wav`) zawierający syntezatora mowy. Aplikacja następnie można użyć tego audio jako na potrzeby.
+Usługa rozpoznawania mowy udostępnia funkcjonalność zamiany tekstu na mowę za pośrednictwem prostego żądania HTTP. Możesz `POST` tekst, który ma być używany do odpowiednich punktów końcowych i usługi zwraca plik audio (`.wav`) zawierający syntezatora mowy. Aplikacja następnie można użyć tego audio jako na potrzeby.
 
 Treść żądania zamiany tekstu na mowę, może być zwykły tekst (ASCII lub UTF8) lub [SSML](speech-synthesis-markup.md) dokumentu. Za pomocą głosu domyślne telefoniczną żądania w formacie zwykłego tekstu. W większości przypadków chcesz użyć SSML treści. Żądanie HTTP musi zawierać [autoryzacji](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#authentication) tokenu. 
 
@@ -40,7 +40,7 @@ Aby określić głosu, użyj `<voice>` [SSML](speech-synthesis-markup.md) tagu. 
 
 Zobacz [głosów zamiany tekstu na mowę](supported-languages.md#text-to-speech) Aby uzyskać listę dostępnych głosów i ich nazwy.
 
-## <a name="make-a-request"></a>Wyślij żądanie
+## <a name="make-a-request"></a>Wysyłanie żądania
 
 Zamiana tekstu na mowę HTTP żądania w trybie WPIS z tekstem wymawiane w treści żądania. Maksymalna długość treści żądania HTTP to 1024 znaki. Żądanie musi mieć następujące nagłówki: 
 

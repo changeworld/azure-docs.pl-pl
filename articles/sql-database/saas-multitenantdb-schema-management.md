@@ -8,18 +8,18 @@ manager: craigg
 ms.service: sql-database
 ms.custom: scale out apps
 ms.topic: conceptual
-ms.date: 01/03/2018
+ms.date: 09/19/2018
 ms.reviewers: billgib
 ms.author: genemi
-ms.openlocfilehash: 026f3450535e4bed6a636fc5ae6ee9d821dbbb72
-ms.sourcegitcommit: 2b2129fa6413230cf35ac18ff386d40d1e8d0677
+ms.openlocfilehash: 2f22ed862f9b45334a961f80e47ee2b4634e46fb
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43247670"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498338"
 ---
 # <a name="manage-schema-in-a-saas-application-that-uses-sharded-multi-tenant-sql-databases"></a>Zarządzanie schematami w aplikacji SaaS, która używa podzielonej na fragmenty wielodostępnych baz danych SQL
-
+ 
 Ten samouczek analizuje trudności w utrzymaniu floty bazy danych w aplikacja oprogramowania jako usługi (SaaS). Rozwiązania zostały przedstawione dla wentylujące wprowadzonych zmian schematu w całej flocie baz danych.
 
 Podobnie jak każda aplikacja aplikacji SaaS o nazwie Wingtip Tickets ewoluuje wraz z upływem czasu i będzie wymagać zmiany w bazie danych. Zmiany mogą mieć wpływ na schemat lub odwołanie do danych lub w zadania konserwacji bazy danych. Za pomocą aplikacji SaaS przy użyciu bazy danych na wzorzec dzierżawy zmiany muszą być koordynowane między potencjalnie w bardzo wielu bazach danych dzierżaw. Ponadto musi ona zawierać tych zmian do procesu, aby upewnić się, że są one uwzględnione w nowych baz danych, ponieważ są one tworzone udostępniania bazy danych.

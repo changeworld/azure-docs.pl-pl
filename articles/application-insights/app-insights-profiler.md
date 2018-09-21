@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.reviewer: cawa
 ms.date: 08/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: 790d192823867ee858a7fa6bf030721002a6bd94
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: b11883ae592999a49db363486fd47a566bdfd360
+ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296877"
+ms.lasthandoff: 09/20/2018
+ms.locfileid: "46498712"
 ---
 # <a name="profile-live-azure-web-apps-with-application-insights"></a>Profil działających aplikacji sieci web platformy Azure za pomocą usługi Application Insights
 
-Ta funkcja usługi Azure Application Insights jest ogólnie dostępna dla funkcji Web Apps w usłudze Azure App Service i w wersji zapoznawczej zasoby obliczeniowe platformy Azure. Aby uzyskać informacje dotyczące [przy użyciu lokalnego profiler](https://docs.microsoft.com/azure/application-insights/enable-profiler-compute#enable-profiler-on-on-premises-servers).
+Ta funkcja usługi Azure Application Insights jest ogólnie dostępna dla funkcji Web Apps w usłudze Azure App Service i zasoby obliczeniowe platformy Azure. Aby uzyskać informacje dotyczące [przy użyciu lokalnego profiler](https://docs.microsoft.com/azure/application-insights/enable-profiler-compute#enable-profiler-on-on-premises-servers).
 
 W tym artykule omówiono ilość czasu spędzonego w każdej metodzie działającej aplikacji internetowej, gdy używasz [usługi Application Insights](app-insights-overview.md). Narzędzie Application Insights Profiler Wyświetla szczegółowe profile bieżących żądań, które zostały obsłużone przez aplikację. Profiler wyróżnia *ścieżka aktywna* , który używa najwięcej czasu. Żądania z różnych czasów odpowiedzi są profilowane, na podstawie próbkowania. Za pomocą różnych technik, można zminimalizować obciążenie, który jest skojarzony z aplikacją.
 
