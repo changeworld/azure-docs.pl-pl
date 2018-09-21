@@ -15,12 +15,12 @@ ms.topic: overview
 ms.date: 01/19/2018
 ms.author: mscurrell
 ms.custom: mvc
-ms.openlocfilehash: b784e64962569f22cba3bc52b6a4e9443a4587d5
-ms.sourcegitcommit: 20d103fb8658b29b48115782fe01f76239b240aa
+ms.openlocfilehash: 36d37c2d18823273b5c0f82ecae0f9420e35768c
+ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/03/2018
-ms.locfileid: "30311995"
+ms.lasthandoff: 09/12/2018
+ms.locfileid: "35621283"
 ---
 # <a name="what-is-azure-batch"></a>Co to jest Azure Batch?
 
@@ -61,7 +61,7 @@ Usługa Azure Batch cechuje się również możliwościami wyższego poziomu zal
 * Usługa Batch obsługuje [obciążenia renderowania](batch-rendering-service.md) na dużą skalę przy użyciu narzędzi do renderowania, takich jak Autodesk Maya, 3ds Max, Arnold i V-Ray. 
 * Użytkownicy języka R mogą instalować [pakiet języka R doAzureParallel](https://github.com/Azure/doAzureParallel), aby łatwo skalować w poziomie algorytmy języka R na pule usługi Batch.
 
-Zadania usługi Batch można też uruchamiać jako część większego przepływu pracy platformy Azure do przekształcania danych, który jest zarządzany przez narzędzia takie jak [Azure Data Factory](../data-factory/v1/data-factory-data-processing-using-batch.md).
+Zadania usługi Batch można też uruchamiać jako część większego przepływu pracy platformy Azure do przekształcania danych, który jest zarządzany przez narzędzia takie jak [Azure Data Factory](../data-factory/transform-data-using-dotnet-custom-activity.md).
 
 
 ## <a name="how-it-works"></a>Jak to działa
