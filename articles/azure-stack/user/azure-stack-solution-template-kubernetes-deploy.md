@@ -1,6 +1,6 @@
 ---
-title: Wdrażanie klastra Kubernetes do usługi Azure Stack | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wdrożyć klaster usługi Kubernetes do usługi Azure Stack.
+title: Wdrażanie rozwiązania Kubernetes do usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wdrożyć rozwiązanie Kubernetes usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,28 +11,28 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 09/25/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 00c3fd0d1f637575904ebaa8031159344adf7e9f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
-ms.translationtype: MT
+ms.openlocfilehash: a6e1acf3b9e69f32a8c175310134c534dbf8c561
+ms.sourcegitcommit: b34df37d1ac36161b377ba56c2f7128ba7327f3f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718580"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46876620"
 ---
-# <a name="deploy-a-kubernetes-cluster-to-azure-stack"></a>Wdrażanie klastra Kubernetes w usłudze Azure Stack
+# <a name="deploy-kubernetes-to-azure-stack"></a>Wdrażanie rozwiązania Kubernetes do usługi Azure Stack
 
 *Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
 > [!Note]  
-> Aparat AKS (usługi Azure Kubernetes Service) w usłudze Azure Stack jest w prywatnej wersji zapoznawczej. Operator usługi Azure Stack musisz poprosić o dostęp do elementu portalu Kubernetes Marketplace potrzebne do wykonania instrukcji w tym artykule.
+> Rozwiązanie Kubernetes w usłudze Azure Stack jest w wersji zapoznawczej. Operator usługi Azure Stack musisz poprosić o dostęp do elementu portalu Marketplace klastra Kubernetes potrzebne do wykonania instrukcji w tym artykule.
 
 Następujący artykuł patrzy na przy użyciu szablonu rozwiązania usługi Azure Resource Manager do wdrażania i przydzielanie zasobów dla rozwiązania Kubernetes w jednej, skoordynowanej operacji. Możesz należy do zebrania wymaganych informacji dotyczących instalacji usługi Azure Stack, Generowanie szablonu, a następnie wdrożyć do chmury. Należy pamiętać, że szablon nie jest taka sama zarządzana usługa AKS, oferowana w globalnej platformy Azure, ale bliżej usługi ACS.
 
 ## <a name="kubernetes-and-containers"></a>Kubernetes i kontenery
 
-Można zainstalować usługi Kubernetes przy użyciu szablonów usługi Azure Resource Manager, generowane przez aparat usługi Kubernetes usługi Azure (AKS) w usłudze Azure Stack. [Kubernetes](https://kubernetes.io) to system typu open source do automatyzowania wdrażania, skalowania i zarządzania nimi aplikacji w kontenerach. A [kontenera](https://www.docker.com/what-container) jest zawarty w obrazie, podobne do maszyny Wirtualnej. W przeciwieństwie do maszyny Wirtualnej obraz kontenera zawiera tylko zasoby potrzebne do uruchomienia aplikacji, takich jak kod, środowisko uruchomieniowe do wykonania kodu, określonych bibliotek i ustawień.
+Można zainstalować usługi Kubernetes przy użyciu szablonów usługi Azure Resource Manager, generowane przez aparat usługi ACS w usłudze Azure Stack. [Kubernetes](https://kubernetes.io) to system typu open source do automatyzowania wdrażania, skalowania i zarządzania nimi aplikacji w kontenerach. A [kontenera](https://www.docker.com/what-container) jest zawarty w obrazie, podobne do maszyny Wirtualnej. W przeciwieństwie do maszyny Wirtualnej obraz kontenera zawiera tylko zasoby potrzebne do uruchomienia aplikacji, takich jak kod, środowisko uruchomieniowe do wykonania kodu, określonych bibliotek i ustawień.
 
 Rozwiązanie Kubernetes można użyć:
 
@@ -59,7 +59,11 @@ Aby rozpocząć pracę, upewnij się, że masz odpowiednie uprawnienia, i że us
 ## <a name="create-a-service-principal-in-azure-ad"></a>Tworzenie jednostki usługi w usłudze Azure AD
 
 1. Zaloguj się do globalnej [witryny Azure portal](http://portal.azure.com).
-1. Upewnij się, że możesz zalogować się przy użyciu dzierżawy usługi Azure AD skojarzonego z wystąpieniem usługi Azure Stack.
+
+1. Upewnij się, że możesz zalogować się przy użyciu dzierżawy usługi Azure AD skojarzonego z wystąpieniem usługi Azure Stack. Logowania można przełączać, klikając ikonę filtru na pasku narzędzi platformy Azure.
+
+    ![Wybierz dzierżawę usługi AD](media/azure-stack-solution-template-kubernetes-deploy/tenantselector.png)
+
 1. Utwórz aplikację usługi Azure AD.
 
     a. Wybierz **usługi Azure Active Directory** > **+ rejestracje aplikacji** > **rejestrowanie nowej aplikacji**.
@@ -83,26 +87,25 @@ Aby rozpocząć pracę, upewnij się, że masz odpowiednie uprawnienia, i że us
     c. Wybierz pozycję **Zapisz**. Upewnij się, należy pamiętać, ciąg klucza. Ciąg klucza będą potrzebne podczas tworzenia klastra. Klucz jest określany jako **klucz tajny klienta jednostki usługi**.
 
 
-
 ## <a name="give-the-service-principal-access"></a>Nadaj dostęp do nazwy głównej usługi
 
 Przekazać jednostce usługi dostępu do Twojej subskrypcji, aby podmiot zabezpieczeń można utworzyć zasobów.
 
 1.  Zaloguj się do [portalu Azure Stack](https://portal.local.azurestack.external/).
 
-1. Wybierz **więcej usług** > **subskrypcje**.
+1. Wybierz **wszystkich usług** > **subskrypcje**.
 
-1. Wybierz subskrypcję, który został utworzony.
+1. Wybierz subskrypcję, utworzone przez użytkownika operatora dla przy użyciu klastra Kubernetes.
 
 1. Wybierz **kontrola dostępu (IAM)** > Wybierz **+ Dodaj**.
 
-1. Wybierz **właściciela** roli.
+1. Wybierz **Współautor** roli.
 
 1. Wybierz nazwę aplikacji utworzonych dla usługi podmiotu zabezpieczeń. Może być konieczne w polu wyszukiwania wpisz nazwę.
 
 1. Kliknij pozycję **Zapisz**.
 
-## <a name="deploy-a-kubernetes-cluster"></a>Wdrażanie klastra Kubernetes
+## <a name="deploy-a-kubernetes"></a>Wdrażanie usługi Kubernetes
 
 1. Otwórz [portalu Azure Stack](https://portal.local.azurestack.external).
 
@@ -110,7 +113,7 @@ Przekazać jednostce usługi dostępu do Twojej subskrypcji, aby podmiot zabezpi
 
     ![Wdrażanie szablonu rozwiązań](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
-1. Wybierz **podstawy** w tworzenie klastra Kubernetes.
+1. Wybierz **podstawy** w tworzenie rozwiązania Kubernetes.
 
     ![Wdrażanie szablonu rozwiązań](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
 
@@ -145,7 +148,6 @@ Przekazać jednostce usługi dostępu do Twojej subskrypcji, aby podmiot zabezpi
 
 1. Wprowadź **punktu końcowego usługi Arm dzierżawy**. To jest punkt końcowy usługi Azure Resource Manager, aby Połącz, aby utworzyć grupę zasobów dla klastra Kubernetes. Należy uzyskać od operatora usługi Azure Stack zintegrowany system punktu końcowego. Dla usługi Azure Stack Development Kit (ASDK), można użyć `https://management.local.azurestack.external`.
 
-1. Wprowadź **identyfikator dzierżawy** dla dzierżawy. Jeśli potrzebujesz pomocy w znalezieniu tej wartości, zobacz [uzyskanie Identyfikatora dzierżawy](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#get-tenant-id). 
 
 ## <a name="connect-to-your-cluster"></a>Połącz z klastrem
 
@@ -155,6 +157,6 @@ Można również znaleźć **Helm** Menedżera pakietów jest przydatne w przypa
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Dodaj klaster Kubernetes w portalu Marketplace (dla operatora infrastruktury Azure Stack)](..\azure-stack-solution-template-kubernetes-cluster-add.md)
+[Dodaj rozwiązania Kubernetes w portalu Marketplace (dla operatora infrastruktury Azure Stack)](..\azure-stack-solution-template-kubernetes-cluster-add.md)
 
 [Kubernetes na platformie Azure](https://docs.microsoft.com/azure/container-service/kubernetes/container-service-kubernetes-walkthrough)

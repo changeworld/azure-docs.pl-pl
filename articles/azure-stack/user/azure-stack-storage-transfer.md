@@ -13,12 +13,12 @@ ms.topic: get-started-article
 ms.date: 07/03/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 91ba9b388566cc72f3024943005af499b7c3f3ec
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
-ms.translationtype: MT
+ms.openlocfilehash: 46bc043681bbba37a2dfb6476e1dd0784e1abf10
+ms.sourcegitcommit: b34df37d1ac36161b377ba56c2f7128ba7327f3f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42139734"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46874031"
 ---
 # <a name="use-data-transfer-tools-for-azure-stack-storage"></a>Użyj narzędzia transferu danych dla magazynu usługi Azure Stack
 
@@ -246,7 +246,7 @@ Interfejs wiersza polecenia platformy Azure to środowisko wiersza polecenia pla
 
 Wiersza polecenia platformy Azure jest zoptymalizowany do zarządzania i administrowania zasobami platformy Azure z poziomu wiersza polecenia oraz do tworzenia skryptów automatyzacji działających względem usługi Azure Resource Manager. Udostępnia wiele z tych samych funkcji w portalu usługi Azure Stack, w tym dostęp do zaawansowanych danych.
 
-Usługa Azure Stack wymaga wiersza polecenia platformy Azure w wersji 2.0. Aby uzyskać więcej informacji na temat instalowania i konfigurowania interfejsu wiersza polecenia platformy Azure z usługą Azure Stack, zobacz [Instalowanie i Konfigurowanie interfejsu wiersza polecenia usługi Azure Stack](azure-stack-version-profiles-azurecli2.md). Aby uzyskać więcej informacji o tym, jak wykonać kilka zadań, pracy z zasobami w ramach konta magazynu usługi Azure Stack przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0, zobacz [CLI2.0 platformy Azure przy użyciu usługi Azure storage](../../storage/storage-azure-cli.md)
+Usługa Azure Stack wymaga wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Aby uzyskać więcej informacji na temat instalowania i konfigurowania interfejsu wiersza polecenia platformy Azure z usługą Azure Stack, zobacz [Instalowanie i Konfigurowanie interfejsu wiersza polecenia usługi Azure Stack](azure-stack-version-profiles-azurecli2.md). Aby uzyskać więcej informacji o tym, jak wykonać kilka zadań, pracy z zasobami w ramach konta magazynu usługi Azure Stack przy użyciu wiersza polecenia platformy Azure, zobacz [przy użyciu wiersza polecenia platformy Azure z usługą Azure storage](../../storage/storage-azure-cli.md)
 
 ### <a name="azure-cli-sample-script-for-azure-stack"></a>Usługa Azure przykładowy skrypt interfejsu wiersza polecenia dla usługi Azure Stack
 
