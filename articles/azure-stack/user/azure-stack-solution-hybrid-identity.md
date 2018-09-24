@@ -1,6 +1,6 @@
 ---
-title: Konfiguruj tożsamość w chmurze hybrydowej z aplikacjami platformy Azure i stosu Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować tożsamość w chmurze hybrydowej z aplikacjami platformy Azure i stosu Azure.
+title: Konfigurowanie tożsamości chmury hybrydowej przy użyciu aplikacji Azure i usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować tożsamość w chmurze hybrydowej z aplikacjami platformy Azure i usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -11,65 +11,72 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 05/22/2018
+ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: a57afb4a90da5877879afddc35545e0bfef622a7
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: bed67c0213ed5715b8b3d8fd393d8d856e0ea15b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808166"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964994"
 ---
-# <a name="tutorial-configure-hybrid-cloud-identity-for-azure-and-azure-stack-applications"></a>Samouczek: Skonfiguruj hybrydowych tożsamość w chmurze dla platformy Azure i Azure stosu aplikacji
+# <a name="tutorial-configure-hybrid-cloud-identity-for-azure-and-azure-stack-applications"></a>Samouczek: Konfigurowanie tożsamość w chmurze hybrydowej dla aplikacji platformy Azure i usługi Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Dowiedz się, jak skonfigurować tożsamość w chmurze hybrydowej aplikacji Azure i stosu Azure.
+Dowiedz się, jak skonfigurować tożsamość w chmurze hybrydowej dla aplikacji platformy Azure i usługi Azure Stack.
 
-Masz dwie opcje za udzielanie dostępu do aplikacji w Azure globalnych i stosu Azure.
+Dostępne są dwie opcje do przyznawania dostępu do aplikacji sieci globalnej platformy Azure i usługi Azure Stack.
 
- * Kiedy stos Azure ma stałego połączenia z Internetem, można użyć usługi Azure Active Directory (Azure AD).
- * Gdy stos Azure jest odłączony od Internetu, można użyć usług federacyjnych Azure Directory (AD FS).
+ * Gdy usługi Azure Stack ma stałego połączenia z Internetem, można użyć usługi Azure Active Directory (Azure AD).
+ * W przypadku usługi Azure Stack jest odłączony od Internetu, można użyć usług federacyjnych Azure Directory (AD FS).
 
-Nazwy główne usług umożliwia udzielenie dostępu do aplikacji stosu Azure na potrzeby wdrażania lub konfiguracji przy użyciu usługi Azure Resource Manager w stosie Azure.
+Aby udzielić dostępu do aplikacji usługi Azure Stack na potrzeby wdrożenia lub konfiguracji za pomocą usługi Azure Resource Manager w usłudze Azure Stack jest użycie jednostki usługi.
 
-W tym samouczku utworzysz środowisku próbki do:
+W ramach tego samouczka utworzysz przykładowe środowisku:
 
 > [!div class="checklist"]
-> * Ustanowienia tożsamość hybrydowa w globalnej Azure i stosu Azure
-> * Pobierz token, aby uzyskać dostępu do interfejsu API Azure stosu.
+> - Ustalenia tożsamości hybrydowej w globalnej platformy Azure i usługi Azure Stack
+> - Pobieranie tokenu dostępu do interfejsu API usługi Azure Stack.
 
-Musi mieć uprawnienia operatora stosu Azure instrukcje w tym samouczku.
+Musi mieć uprawnienia operatora usługi Azure Stack, aby uzyskać instrukcje, w tym samouczku.
 
-## <a name="create-a-service-principal-for-azure-ad-in-the-portal"></a>Tworzenie nazwy głównej usługi dla usługi Azure AD w portalu
+> [!Tip]  
+> ![pillars.png hybrydowe](./media/azure-stack-solution-cloud-burst/hybrid-pillars.png)  
+> Microsoft Azure Stack to rozszerzenie platformy Azure. Usługa Azure Stack zapewnia elastyczność i innowacyjność chmury obliczeniowej w środowiska lokalne i włączanie jedyną chmurę hybrydową, która pozwala na tworzenie i wdrażanie aplikacji hybrydowych w dowolnym miejscu.  
+> 
+> Oficjalny dokument [zagadnień projektowych dotyczących aplikacji hybrydowych](https://aka.ms/hybrid-cloud-applications-pillars) przeglądy filary jakości oprogramowania (umieszczania, skalowalności, dostępności, odporności, możliwości zarządzania i zabezpieczeń) dla projektowania, wdrażania i obsługi hybrydowej aplikacje. Zagadnienia dotyczące projektowania pomaga w optymalizacji projekt aplikacji hybrydowych, minimalizując wyzwania w środowiskach produkcyjnych.
 
-Jeśli została wdrożona przy użyciu usługi Azure AD jako magazynu tożsamości stosu Azure, można utworzyć nazwy główne usług, podobnie jak w przypadku usługi Azure. [Tworzenia nazwy główne usług](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals#create-service-principal-for-azure-ad) artykule opisano, jak wykonać kroki za pośrednictwem portalu. Sprawdź, czy masz [wymagane uprawnienia usługi Azure AD](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) przed rozpoczęciem.
 
-## <a name="create-a-service-principal-for-ad-fs-using-powershell"></a>Tworzenie nazwy głównej usługi dla usług AD FS przy użyciu programu PowerShell
+## <a name="create-a-service-principal-for-azure-ad-in-the-portal"></a>Tworzenie jednostki usługi dla usługi Azure AD w portalu
 
-Jeśli wdrożono stosu Azure z usługami AD FS, można użyć programu PowerShell do tworzenia nazwy głównej usługi, Przypisz rolę dostępu i zaloguj się z programu PowerShell przy użyciu tej tożsamości. [Tworzenie nazwy głównej usługi dla usług AD FS](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals#create-service-principal-for-ad-fs) pokazuje, jak wykonać kroki wymagane przy użyciu programu PowerShell.
+Jeśli udało Ci się wdrożyć usługę Azure Stack przy użyciu usługi Azure AD jako magazynu tożsamości, można utworzyć jednostki usługi, podobnie jak w przypadku platformy Azure. [Tworzenie jednostek usługi](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals#create-service-principal-for-azure-ad) artykułu dowiesz się, jak wykonać czynności opisane w portalu. Sprawdź, czy masz [wymagane uprawnienia usługi Azure AD](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-create-service-principal-portal#required-permissions) przed rozpoczęciem.
 
-## <a name="using-the-azure-stack-api"></a>Przy użyciu interfejsu API Azure stosu
+## <a name="create-a-service-principal-for-ad-fs-using-powershell"></a>Tworzenie jednostki usługi dla usług AD FS przy użyciu programu PowerShell
 
-[Interfejsu API Azure stosu](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-rest-api-use) samouczek przeprowadzi Cię przez proces pobierania tokenu na potrzeby dostępu interfejsu API stosu Azure.
+Jeśli wdrożono usługę Azure Stack z usługami AD FS, można użyć programu PowerShell do tworzenia nazwy głównej usługi, Przypisz rolę dostępu i zaloguj się za pomocą programu PowerShell przy użyciu tej tożsamości. [Tworzenie jednostki usługi dla usług AD FS](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-create-service-principals#create-service-principal-for-ad-fs) dowiesz się, jak wykonać kroki wymagane przy użyciu programu PowerShell.
 
-## <a name="connect-to-azure-stack-using-powershell"></a>Połącz stos Azure przy użyciu programu Powershell
+## <a name="using-the-azure-stack-api"></a>Za pomocą usługi Azure Stack interfejsu API
 
-Procedury szybkiego startu [można pobrać i uruchomić przy użyciu programu PowerShell w stosie Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-quickstart) przeprowadzi Cię przez kroki niezbędne do zainstalowania programu Azure PowerShell, a następnie połączyć się z instalacją programu Azure stosu.
+[Interfejsu API usługi Azure Stack](https://docs.microsoft.com/azure/azure-stack/user/azure-stack-rest-api-use) samouczek przeprowadzi Cię przez proces pobierania tokenu dostępu do interfejsu API usługi Azure Stack.
+
+## <a name="connect-to-azure-stack-using-powershell"></a>Nawiązywanie połączenia przy użyciu programu Powershell w usłudze Azure Stack
+
+Samouczek Szybki Start [na rozpoczęcie pracy przy użyciu programu PowerShell w usłudze Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-powershell-configure-quickstart) przeprowadzi Cię przez kroki niezbędne do zainstalowania programu Azure PowerShell, a następnie nawiązać połączenie z instalacji programu Azure Stack.
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-Instalacja stosu Azure połączona z usługą Azure Active Directory z subskrypcją, w których masz dostęp. Jeśli nie masz instalacji stosu Azure, można użyć tych instrukcji do konfigurowania [Azure stosu Development Kit](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy).
+Instalacja usługi Azure Stack jest podłączony do usługi Azure Active Directory z subskrypcją, w których masz dostęp. Jeśli nie masz instalacji usługi Azure Stack, można użyć tych instrukcji do skonfigurowania [Azure Stack Development Kit](https://docs.microsoft.com/azure/azure-stack/asdk/asdk-deploy).
 
-#### <a name="connect-to-azure-stack-using-code"></a>Połącz stos Azure przy użyciu kodu
+#### <a name="connect-to-azure-stack-using-code"></a>Nawiązywanie połączenia usługi Azure Stack przy użyciu kodu
 
-Aby połączyć się przy użyciu kodu stosu Azure, umożliwia punkty końcowe interfejsu API usługi Azure Resource Manager Przełącz uwierzytelniania i wykres punkty końcowe instalację stosu Azure, a następnie uwierzytelniania za pomocą żądań REST. Przykładowa aplikacja klienta można znaleźć na [GitHub](https://github.com/shriramnat/HybridARMApplication).
+Aby połączyć z usługą Azure Stack przy użyciu kodu, umożliwia punkty końcowe interfejsu API usługi Azure Resource Manager uzyskać uwierzytelnianie i punkty końcowe programu graph dla tej instalacji usługi Azure Stack, a następnie uwierzytelniania za pomocą żądania REST. Przykładowa aplikacja kliencka można znaleźć na [GitHub](https://github.com/shriramnat/HybridARMApplication).
 
 >[!Note]
->Jeśli zestaw Azure SDK dla języka wyboru nie obsługuje profile interfejsu API platformy Azure, zestaw SDK może nie działać z stosu Azure. Aby dowiedzieć się więcej na temat profilów interfejsu API platformy Azure, zobacz [zarządzania profilami wersji interfejsu API](https://docs.microsoft.com/da-dk/azure/azure-stack/user/azure-stack-version-profiles) artykułu.
+>Jeśli zestaw Azure SDK dla języka wybranego nie obsługuje profilami interfejsu API platformy Azure, zestawu SDK mogą nie działać z usługą Azure Stack. Aby dowiedzieć się więcej o profilach interfejsu API platformy Azure, zobacz [Zarządzanie profilami wersji interfejsu API](https://docs.microsoft.com/da-dk/azure/azure-stack/user/azure-stack-version-profiles) artykułu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
- - Aby dowiedzieć się więcej na temat sposobu obsługi tożsamości w stosie Azure, zobacz [architektura tożsamości stosu Azure](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-architecture).
- - Aby dowiedzieć się więcej na temat wzorców chmury Azure, zobacz [wzorcach projektowych chmury](https://docs.microsoft.com/azure/architecture/patterns).
+ - Aby dowiedzieć się więcej na temat sposobu obsługi tożsamości w usłudze Azure Stack, zobacz [architektura tożsamości dla usługi Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-identity-architecture).
+ - Aby dowiedzieć się więcej na temat wzorców chmury platformy Azure, zobacz [wzorców projektowych chmury](https://docs.microsoft.com/azure/architecture/patterns).

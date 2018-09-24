@@ -13,20 +13,20 @@ ms.topic: article
 ms.date: 09/08/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: ec3b1f43c7b89a545ee5bb26c4cc0d068a993021
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 59b637e6887a645430d902cd846cacda13b14cfe
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295857"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972814"
 ---
-# <a name="use-api-version-profiles-with-azure-cli-20-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą usługi Azure Stack w wersji 2.0 interfejsu wiersza polecenia platformy Azure
+# <a name="use-api-version-profiles-with-azure-cli-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą interfejsu wiersza polecenia platformy Azure w usłudze Azure Stack
 
 Możesz wykonać kroki opisane w tym artykule, aby ustawić się interfejsu wiersza polecenia platformy Azure (CLI) do zarządzania zasobami Azure Stack Development Kit na platformach klienckich systemu Linux, Mac i Windows.
 
 ## <a name="install-cli"></a>Instalowanie interfejsu wiersza polecenia
 
-Zaloguj się do deweloperskiej stacji roboczej i zainstalować interfejs wiersza polecenia. Usługa Azure Stack wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0. Można to zrobić, korzystając z procedury opisanej w [instalowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) artykułu. Aby sprawdzić, czy instalacja się powiodła, otwórz terminal lub okno wiersza polecenia i uruchom następujące polecenie:
+Zaloguj się do deweloperskiej stacji roboczej i zainstalować interfejs wiersza polecenia. Usługa Azure Stack wymaga wersji 2.0 lub nowszej z wiersza polecenia platformy Azure. Można to zrobić, korzystając z procedury opisanej w [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) artykułu. Aby sprawdzić, czy instalacja się powiodła, otwórz terminal lub okno wiersza polecenia i uruchom następujące polecenie:
 
 ```azurecli
 az --version

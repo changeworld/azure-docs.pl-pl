@@ -16,12 +16,12 @@ ms.workload: na
 ms.date: 09/15/2017
 ms.author: suhuruli
 ms.custom: mvc
-ms.openlocfilehash: 15fcea6ca8f9c66ee4907018a11481b6c714b81a
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 0dc92524843f47b1327af5e9d3f237656cad2a37
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616287"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947538"
 ---
 # <a name="tutorial-create-container-images-on-a-linux-service-fabric-cluster"></a>Samouczek: tworzenie obrazów kontenerów w klastrze usługi Service Fabric systemu Linux
 
@@ -44,7 +44,7 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * Środowisko projektowe systemu Linux skonfigurowane na potrzeby usługi Service Fabric. Postępuj zgodnie z instrukcjami znajdującymi się [tutaj](service-fabric-get-started-linux.md), aby skonfigurować środowisko systemu Linux.
-* Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
+* Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie interfejsu, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 * Wymagana jest również dostępna subskrypcja platformy Azure. Aby uzyskać więcej informacji dotyczących bezpłatnej wersji próbnej, przejdź [tutaj](https://azure.microsoft.com/free/).
 
 ## <a name="get-application-code"></a>Pobieranie kodu aplikacji

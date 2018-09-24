@@ -12,14 +12,18 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: tutorial
 ms.date: 09/21/2017
-ms.openlocfilehash: 2a50350b9ba49d82a20b92804ffb92ec6906186d
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ROBOTS: NOINDEX
+ms.openlocfilehash: cae80408a7440136b504647596c84a459a0d679c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39439904"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971709"
 ---
 # <a name="tutorial-use-azure-machine-learning-workbench-for-advanced-data-preparation-bike-share-data"></a>Samouczek: przygotowanie zaawansowanych danych za pomocą usługi Azure Machine Learning Workbench (dane udostępniania roweru)
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Usługa Azure Machine Learning (wersja zapoznawcza) stanowi zintegrowane, kompleksowe rozwiązanie do nauki o danych i do zaawansowanych analiz przeznaczone dla profesjonalnych analityków. Będą oni korzystać z tego rozwiązania w celu przygotowywania danych, opracowywania eksperymentów i wdrażania modeli na skalę chmury.
 
 W tym samouczku użyjesz usługi Machine Learning (wersja zapoznawcza), aby dowiedzieć się, jak:
@@ -36,7 +40,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Lokalna instalacja usługi Azure Machine Learning Workbench. Aby uzyskać więcej informacji, postępuj zgodnie z [instrukcjami szybkiego startu instalacji](../service/quickstart-installation.md).
+* Lokalna instalacja usługi Azure Machine Learning Workbench. Aby uzyskać więcej informacji, postępuj zgodnie z [instrukcjami szybkiego startu instalacji](quickstart-installation.md).
 * Jeśli nie masz zainstalowanego interfejsu wiersza polecenia platformy Azure, postępuj zgodnie z instrukcjami, aby [zainstalować najnowszą wersję interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 * [Klaster HDInsights Spark](how-to-create-dsvm-hdi.md#create-an-apache-spark-for-azure-hdinsight-cluster-in-azure-portal) utworzony na platformie Azure.
 * Konto usługi Azure Storage.

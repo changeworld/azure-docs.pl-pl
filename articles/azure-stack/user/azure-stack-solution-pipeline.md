@@ -15,11 +15,11 @@ ms.date: 09/24/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
 ms.openlocfilehash: febdb2e3ae4432c36ca839f81ba7a1d333df1a2f
-ms.sourcegitcommit: b34df37d1ac36161b377ba56c2f7128ba7327f3f
-ms.translationtype: HT
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46906073"
+ms.locfileid: "46952005"
 ---
 # <a name="tutorial-deploy-apps-to-azure-and-azure-stack"></a>Samouczek: Wdrażanie aplikacji na platformie Azure i usługi Azure Stack
 

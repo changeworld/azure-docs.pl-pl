@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: anwestg
-ms.openlocfilehash: ae742bbe1e5b751a8a8cabf378afd049728c3b8a
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 69b025a06abb24bfa3b8ff6b692a2559b3947681
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717509"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995276"
 ---
 # <a name="add-an-app-service-resource-provider-to-azure-stack"></a>Dodaj dostawcę zasobów usługi App Service do usługi Azure Stack
 
@@ -27,8 +27,8 @@ ms.locfileid: "44717509"
 
 Użyj się ze wskazówkami w tym artykule, aby wdrożyć usługi App Service w usłudze Azure Stack.
 
->[!IMPORTANT]  
->Zastosowanie aktualizacji 1807 do systemu Azure Stack zintegrowane, lub wdrożyć najnowszą usługi Azure Stack Development Kit (ASDK) przed wdrożeniem usługi Azure App Service 1.3.
+> [!IMPORTANT]  
+> Zastosowanie aktualizacji 1807 do systemu Azure Stack zintegrowane, lub wdrożyć najnowszą usługi Azure Stack Development Kit (ASDK) przed wdrożeniem usługi Azure App Service 1.3.
 
 Zapewnić użytkownikom możliwość tworzenia aplikacji interfejsu API sieci web i. Aby zezwolić użytkownikom na tworzenie tych aplikacji, należy:
 

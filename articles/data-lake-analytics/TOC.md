@@ -8,7 +8,7 @@
 ## [Program Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
 ## [Visual Studio Code](data-lake-analytics-data-lake-tools-for-vscode.md)
 ## [Azure PowerShell](data-lake-analytics-get-started-powershell.md)
-## [Interfejs wiersza polecenia platformy Azure](data-lake-analytics-get-started-cli2.md)
+## [Interfejs wiersza polecenia platformy Azure](data-lake-analytics-get-started-cli.md)
 
 # Instrukcje
 
