@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 270587f484216d130848ee3c7bdc8ae1c1df0afc
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
-ms.translationtype: MT
+ms.openlocfilehash: 68514f1bc569d876f4cf851f97a690ae84cf43a6
+ms.sourcegitcommit: b34df37d1ac36161b377ba56c2f7128ba7327f3f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982157"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46891297"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack
 
@@ -79,8 +79,8 @@ Można znaleźć przykłady kodu, aby pomóc w zintegrowaniu rozwiązania przy u
 
 - **Program PowerShell**  
 Możesz użyć **AzureRM.Bootstrapper** modułu dostępnych za pośrednictwem galerii programu PowerShell, aby uzyskać polecenia cmdlet programu PowerShell, wymagane do pracy z profilami wersji interfejsu API. Aby uzyskać informacje, zobacz [profilami wersji korzystanie z interfejsu API środowiska PowerShell](azure-stack-version-profiles-powershell.md).
-- **Interfejs wiersza polecenia platformy Azure 2.0**  
-Można zaktualizować konfiguracji środowiska do korzystania z określonego profilu wersji interfejsu API usługi Azure Stack. Aby uzyskać informacje, zobacz [korzystanie z interfejsu API w wersji profilów dla interfejsu wiersza polecenia platformy Azure w wersji 2.0](azure-stack-version-profiles-azurecli2.md).
+- **Interfejs wiersza polecenia platformy Azure**  
+Można zaktualizować konfiguracji środowiska do korzystania z określonego profilu wersji interfejsu API usługi Azure Stack. Aby uzyskać informacje, zobacz [korzystanie z interfejsu API w wersji profilów dla wiersza polecenia platformy Azure](azure-stack-version-profiles-azurecli2.md).
 - **GO**  
 W zestawie SDK Przejdź profil jest kombinacją różnych typów zasobów z różnymi wersjami z różnymi usługami. Profile są dostępne w obszarze Profile / ścieżki mają wersję w **RRRR-MM-DD** formatu. Aby uzyskać informacje, zobacz [korzystanie z interfejsu API w wersji profilów dla języka GO](azure-stack-version-profiles-go.md).
 - **Ruby**  
