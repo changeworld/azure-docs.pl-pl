@@ -4,18 +4,18 @@ titleSuffix: Azure
 description: Ten artykuł zawiera keyphrase informacji wstępnie utworzone jednostki w Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 07/09/2018
 ms.author: diberry
-ms.openlocfilehash: 904f327dfe20e3d0864cbf355fd10237659879ee
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 4141c5aea93b308a7149b91001fbf1c88d629d79
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238604"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037987"
 ---
 # <a name="keyphrase-entity"></a>keyPhrase, jednostka
 keyPhrase wyodrębnia szereg frazy kluczowe z wypowiedź. Nie ma potrzeby dodawanie wypowiedzi przykład zawierający keyPhrase do aplikacji. Jednostka keyPhrase jest obsługiwana w [wiele kultur](luis-supported-languages.md#languages-supported) jako część [analizy tekstu](../text-analytics/overview.md) funkcji. 

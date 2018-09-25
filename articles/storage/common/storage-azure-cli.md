@@ -1,6 +1,6 @@
 ---
-title: Przy użyciu wiersza polecenia platformy Azure 2.0 za pomocą usługi Azure Storage | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać interfejsu wiersza polecenia platformy Azure (Azure CLI) w wersji 2.0, za pomocą usługi Azure Storage do tworzenia i zarządzania kontami magazynu i pracy z plikami i obiekty BLOB platformy Azure. Interfejs wiersza polecenia platformy Azure w wersji 2.0 to narzędzie dla wielu platform napisany w języku Python.
+title: Przy użyciu wiersza polecenia platformy Azure z usługą Azure Storage | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać interfejsu wiersza polecenia platformy Azure (Azure CLI) usługi Azure Storage do tworzenia i zarządzania kontami magazynu i pracy z plikami i obiekty BLOB platformy Azure.
 services: storage
 author: roygara
 ms.service: storage
@@ -9,18 +9,18 @@ ms.topic: article
 ms.date: 06/02/2017
 ms.author: rogarana
 ms.component: common
-ms.openlocfilehash: 10b0d475113e5fcd413c7e62f88dcd434fc72a52
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: cd2399e25889cdc9c885b76e002e47415c0629e5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732775"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984392"
 ---
-# <a name="using-the-azure-cli-20-with-azure-storage"></a>Przy użyciu wiersza polecenia platformy Azure 2.0 za pomocą usługi Azure Storage
+# <a name="using-the-azure-cli-with-azure-storage"></a>Używanie interfejsu wiersza polecenia platformy Azure z usługą Azure Storage
 
-Open source, dla wielu platform Azure CLI 2.0 udostępnia zestaw poleceń do pracy z platformą Azure. Zapewnia wiele funkcji w [witryny Azure portal](https://portal.azure.com), łącznie z dostępem do zaawansowanych danych.
+Open source, Międzyplatformowe wiersza polecenia platformy Azure udostępnia zestaw poleceń do pracy z platformą Azure. Zapewnia wiele funkcji w [witryny Azure portal](https://portal.azure.com), łącznie z dostępem do zaawansowanych danych.
 
-W tym przewodniku pokazujemy, jak używać [interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) wykonać kilka czynności, pracy z zasobami w ramach konta usługi Azure Storage. Zaleca się pobrać i zainstalować lub uaktualnić do najnowszej wersji interfejsu wiersza polecenia 2.0, przed rozpoczęciem korzystania z tego przewodnika.
+W tym przewodniku pokazujemy, jak używać [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) wykonać kilka czynności, pracy z zasobami w ramach konta usługi Azure Storage. Zaleca się pobrać i zainstalować lub uaktualnić do najnowszej wersji interfejsu wiersza polecenia, przed rozpoczęciem korzystania z tego przewodnika.
 
 W przykładach w przewodniku założono korzystanie z powłoki Bash w systemie Ubuntu, ale innych platformach, należy wykonać w podobny sposób. 
 
@@ -33,9 +33,9 @@ W tym przewodniku założono, że rozumiesz podstawowe pojęcia dotyczące usłu
 * **Konto platformy Azure**: Jeśli nie masz jeszcze subskrypcji platformy Azure, [Utwórz bezpłatne konto platformy Azure](https://azure.microsoft.com/free/).
 * **Konto magazynu**: zobacz sekcję [Tworzenie konta magazynu](storage-quickstart-create-account.md) w temacie [Informacje o kontach magazynu Azure](storage-create-storage-account.md).
 
-### <a name="install-the-azure-cli-20"></a>Instalacja interfejsu wiersza polecenia platformy Azure 2.0
+### <a name="install-the-azure-cli"></a>Zainstaluj interfejs wiersza polecenia platformy Azure
 
-Pobierz i zainstaluj interfejs wiersza polecenia platformy Azure w wersji 2.0, wykonując instrukcje opisane w temacie [instalowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2).
+Pobierz i zainstaluj wiersza polecenia platformy Azure, wykonując instrukcje opisane w temacie [zainstalować interfejs wiersza polecenia platformy Azure](/cli/azure/install-az-cli2).
 
 > [!TIP]
 > Jeśli masz problemy z instalacją, zapoznaj się z [Rozwiązywanie problemów z instalacją](/cli/azure/install-az-cli2#installation-troubleshooting) części tego artykułu oraz [zainstalować Rozwiązywanie problemów z](https://github.com/Azure/azure-cli/blob/master/doc/install_troubleshooting.md) przewodnik w witrynie GitHub.
@@ -96,9 +96,9 @@ Aby pracować z zasobami w Twojej subskrypcji platformy Azure, musi pierwszego l
   * To nie zadziała za pomocą konta Microsoft lub konta, które korzystają z uwierzytelniania Multi-Factor Authentication.
 * **Zaloguj się przy użyciu nazwy głównej usługi**: `az login --service-principal -u http://azure-cli-2016-08-05-14-31-15 -p VerySecret --tenant contoso.onmicrosoft.com`
 
-## <a name="azure-cli-20-sample-script"></a>Przykładowy skrypt programu Azure CLI 2.0
+## <a name="azure-cli-sample-script"></a>Skrypt przykładowy interfejsu wiersza polecenia platformy Azure
 
-Następnie możemy będziesz pracować skrypt powłoki małe, który wystawia kilka podstawowych poleceń interfejsu wiersza polecenia platformy Azure w wersji 2.0 do interakcji z zasobami usługi Azure Storage. Skrypt najpierw tworzy nowy kontener na koncie magazynu, a następnie przekazuje istniejącego pliku (jako obiekt blob) do tego kontenera. Następnie wyświetla listę wszystkich obiektów blob w kontenerze, a na koniec pobiera plik do miejsca docelowego na komputerze lokalnym, który określisz.
+Następnie możemy będziesz pracować skrypt powłoki małe, który wystawia kilka podstawowych poleceń interfejsu wiersza polecenia platformy Azure do interakcji z zasobami usługi Azure Storage. Skrypt najpierw tworzy nowy kontener na koncie magazynu, a następnie przekazuje istniejącego pliku (jako obiekt blob) do tego kontenera. Następnie wyświetla listę wszystkich obiektów blob w kontenerze, a na koniec pobiera plik do miejsca docelowego na komputerze lokalnym, który określisz.
 
 ```bash
 #!/bin/bash
@@ -519,8 +519,8 @@ Przykładowe dane wyjściowe
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Poniżej przedstawiono niektóre dodatkowe zasoby dotyczące dowiedzieć się więcej na temat pracy z interfejsu wiersza polecenia platformy Azure w wersji 2.0.
+Poniżej przedstawiono niektóre dodatkowe zasoby dotyczące dowiedzieć się więcej na temat pracy z interfejsem wiersza polecenia platformy Azure. 
 
-* [Wprowadzenie do interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
-* [Dokumentacja poleceń interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure)
-* [Interfejs wiersza polecenia Azure 2.0 w witrynie GitHub](https://github.com/Azure/azure-cli)
+* [Rozpoczynanie pracy z interfejsem wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2)
+* [Dokumentacja polecenia interfejsu wiersza polecenia platformy Azure](/cli/azure)
+* [Wiersza polecenia platformy Azure w witrynie GitHub](https://github.com/Azure/azure-cli)

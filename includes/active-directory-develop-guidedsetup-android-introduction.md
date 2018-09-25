@@ -15,16 +15,16 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 7e7e9d078bf9339beb2ad5ac53ea858e843242ce
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: a1cd25012461ae8bb445dcb1de8fe5be49e04760
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46293725"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060351"
 ---
 # <a name="sign-in-users-and-call-the-microsoft-graph-from-an-android-app"></a>Logowania użytkowników i wywoływania usługi Microsoft Graph w aplikacji systemu Android
 
-W tym samouczku dowiesz się, jak utworzyć aplikację dla systemu Android i integrowanie platforma tożsamości firmy Microsoft. Ściślej mówiąc ta aplikacja będzie logowania użytkownika, uzyskania tokenu dostępu do wywołania interfejsu API programu Microsoft Graph i dokonać podstawowego żądania interfejsu API programu Microsoft Graph.  
+W tym samouczku dowiesz się, jak utworzyć aplikację dla systemu Android i zintegrować ją z platformą Microsoft identity. Ściślej mówiąc ta aplikacja będzie logowania użytkownika, uzyskania tokenu dostępu do wywołania interfejsu API programu Microsoft Graph i dokonać podstawowego żądania interfejsu API programu Microsoft Graph.  
 
 Po zakończeniu przewodnika, aplikacja będzie akceptować logowania osobistych kont Microsoft (w tym outlook.com, live.com i inne) i służbowego konta z firmy lub organizacji, która używa usługi Azure Active Directory. 
 

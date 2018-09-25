@@ -9,12 +9,12 @@ ms.date: 06/06/2018
 ms.topic: conceptual
 manager: carmonm
 ms.custom: mvc
-ms.openlocfilehash: 8649b96c9cf95e4a25b24dedf447aef133ef299a
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 5b906b4a90dbceb62c6f2381d0ffa8bc1bee7ef1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865407"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033825"
 ---
 # <a name="onboard-update-management-change-tracking-and-inventory-solutions"></a>Dołączanie rozwiązania Update Management, śledzenia zmian i spisu
 
@@ -102,6 +102,43 @@ Aby włączyć rozwiązanie dla wszystkich dostępnych maszynach i wszystkich pr
 ### <a name="selected-machines"></a>Wybrane maszyny
 
 Aby włączyć rozwiązanie dla co najmniej jednej maszyny, wybierz **Włącz na wybranych maszynach** i kliknij przycisk **Dodaj** obok każdej maszynie, którą chcesz dodać do rozwiązania. To zadanie dodaje nazwy wybranej maszyny do grupy komputerów, zapisane zapytanie wyszukiwania dla rozwiązania.
+
+## <a name="unlink-workspace"></a>Odłączanie obszaru roboczego
+
+Następujące rozwiązania zależą od obszaru roboczego usługi Log Analytics:
+
+* [Zarządzanie aktualizacjami](automation-update-management.md)
+* [Śledzenie zmian](automation-change-tracking.md)
+* [Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu](automation-solution-vm-management.md)
+
+Jeśli zdecydujesz, że już nie chcesz zintegrować konta usługi Automation z usługą Log Analytics, możesz odłączyć konta bezpośrednio w witrynie Azure portal.  Przed kontynuowaniem należy najpierw usunąć rozwiązania, o których wspomniano wcześniej, w przeciwnym razie ten proces nie będzie mógł kontynuować. Zapoznaj się z artykułem dla danego rozwiązania, które zostały zaimportowane, aby zrozumieć kroki wymagane do usunięcia go.
+
+Po usunięciu tych rozwiązań, można wykonać poniższe kroki, aby odłączyć konto usługi Automation.
+
+> [!NOTE]
+> Niektóre rozwiązania, w tym wcześniejsze wersje rozwiązania do monitorowania usługi Azure SQL zostały utworzone zasoby usługi automation i może również muszą zostać usunięte przed odłączanie obszaru roboczego.
+
+1. W witrynie Azure Portal otwórz konto usługi Automation, a na automatyzację konta wybierz stronę **połączony obszar roboczy** sekcji **powiązane zasoby** po lewej stronie.
+
+1. Na stronie odłączania obszaru roboczego kliknij **odłączanie obszaru roboczego**.
+
+   ![Odłącz strona obszaru roboczego](media/automation-onboard-solutions-from-automation-account/automation-unlink-workspace-blade.png).
+
+   Zostanie wyświetlony monit sprawdzający, czy chcesz kontynuować.
+
+1. Gdy usługa Azure Automation usiłuje odłączyć konto obszaru roboczego usługi Log Analytics, możesz śledzić postęp w obszarze **powiadomienia** z menu.
+
+Jeśli używane jest rozwiązanie do zarządzania aktualizacjami, opcjonalnie można usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
+
+* Zaplanowanie aktualizacji — będzie mieć nazwy zgodne utworzonych wdrożeń aktualizacji)
+
+* Grupy hybrydowych procesów roboczych utworzone dla rozwiązania — każda będzie miała podobnie do maszyna1.contoso.com_9ceb8108 - 26 c 9-4051-b6b3-227600d715c8).
+
+Jeśli uruchamianie/zatrzymywanie maszyn wirtualnych jest używana podczas szczytu rozwiązania, opcjonalnie można usunąć następujące elementy, które nie są już potrzebne po usunięciu rozwiązania.
+
+* Uruchamianie i zatrzymywanie maszyn wirtualnych elementu runbook harmonogramy
+* Uruchamianie i zatrzymywanie elementów runbook maszyny Wirtualnej
+* Zmienne
 
 ## <a name="next-steps"></a>Kolejne kroki
 

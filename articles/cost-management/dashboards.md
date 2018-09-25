@@ -1,21 +1,21 @@
 ---
-title: Wyświetlaj kluczowe metryki w pulpitach nawigacyjnych w usłudze Azure Cost Management | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób wyświetlania kluczowych metryk za pomocą pulpitów nawigacyjnych w usłudze Azure Cost Management.
+title: Wyświetlaj kluczowe metryki, za pomocą pulpitów nawigacyjnych Cloudyn na platformie Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób wyświetlania kluczowych metryk za pomocą pulpitów nawigacyjnych w rozwiązaniu Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/12/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 4f51598dd2b026f1c3a4b0d763b1547a44eedc7b
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 1d2b4a0cd78f3d68a76bd9186be4174f2dd1d86c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35644945"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999716"
 ---
 # <a name="view-key-cost-metrics-with-dashboards"></a>Wyświetl klucz koszt metryki za pomocą pulpitów nawigacyjnych
 
@@ -34,7 +34,7 @@ Pulpit nawigacyjny wersji różnią się dla użytkowników, Zarządzanie (MSP),
 
 Pulpit nawigacyjny dostępność zależy od rodzaju konta dostawcy usługi chmury, która jest używana podczas wyświetlania pulpitów nawigacyjnych. Typ danych dostępna i zebrane przez firmę Cloudyn ma wpływ na raporty w pulpitach nawigacyjnych. Na przykład jeśli nie masz konta usługi AWS następnie nie zobaczysz pulpit nawigacyjny śledzenia S3. Podobnie jeśli nie włączysz dostęp usługi Azure Resource Manager do rozwiązania Cloudyn nie można zobaczyć wszelkie informacje specyficzne dla platformy Azure w elementach widget pulpitu nawigacyjnego optymalizatora.
 
-Możesz użyć dowolnej gotowej pulpitów nawigacyjnych lub można utworzyć własny pulpit nawigacyjny zawierający dostosowane raporty. Jeśli znasz raportach usługi Cloudyn, zobacz [raporty użycia Cost Management](use-reports.md).
+Możesz użyć dowolnej gotowej pulpitów nawigacyjnych lub można utworzyć własny pulpit nawigacyjny zawierający dostosowane raporty. Jeśli znasz raportach usługi Cloudyn, zobacz [raporty użycia Cloudyn](use-reports.md).
 
 ## <a name="create-a-custom-dashboard"></a>Tworzenie niestandardowego pulpitu nawigacyjnego
 
@@ -297,4 +297,4 @@ Ten element widget wyróżnia najlepsze mapowania jednostek obliczeniowych elast
 - Kliknij element widget, aby otworzyć raport mapowanie typu wystąpienia.
 
 ## <a name="next-steps"></a>Kolejne kroki
-- Odczyt [raporty użycia Cost Management](use-reports.md) artykuł, aby dowiedzieć się więcej na temat raportów.
+- Odczyt [raporty użycia Cloudyn](use-reports.md) artykuł, aby dowiedzieć się więcej na temat raportów.

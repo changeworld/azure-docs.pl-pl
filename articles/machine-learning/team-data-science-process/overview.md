@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/20/2017
 ms.author: deguhath
-ms.openlocfilehash: 2cce0b883c18a813aed386186c825c26b0e4b674
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: e6e6b8e03102825a15035adbea80ac5e9f3fa404
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303782"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996455"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Co to jest zespołowe przetwarzanie danych dla celów naukowych?
 
@@ -89,10 +89,10 @@ Struktura katalogów mogą być klonowane z [Github](https://github.com/Azure/Az
 
 Przetwarzanie TDSP zawiera zalecenia dotyczące zarządzania udostępnionego analizy i infrastruktury magazynu, takie jak:
 
-- systemy plików w chmurze do przechowywania zestawów danych, 
+- systemy plików w chmurze do przechowywania zestawów danych 
 - bazy danych
 - dane big data klastrów (usługi Hadoop lub Spark) 
-- usługi Machine learning. 
+- Usługa Machine learning 
 
 Infrastruktura analizy i magazynowania można w chmurze lub lokalnie. Jest to, gdzie są przechowywane nieprzetworzone i będą przetwarzane zestawów danych. Infrastruktura ta umożliwia analizę do odtworzenia. Unika również duplikatów, co może doprowadzić do niespójności i zbędnych kosztów infrastruktury. Inicjowanie obsługi administracyjnej zasobów udostępnionych, ich śledzenie i zezwolić na poszczególnych członków zespołu, bezpieczne łączenie do tych zasobów są dostępne narzędzia. Jest również dobrym rozwiązaniem członkowie projektu utworzenia środowiska obliczeniowego spójne. Różni członkowie zespołu można replikować i weryfikowanie eksperymentów.
 

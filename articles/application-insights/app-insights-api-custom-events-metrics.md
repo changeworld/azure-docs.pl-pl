@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/16/2018
 ms.author: mbullwin
-ms.openlocfilehash: 688ed311906754ee390b9a6ccd0ac430f42e8387
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 7ee1dc7a3e3ae6bff6f2084d7290a37dc999dec7
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125412"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040215"
 ---
 # <a name="application-insights-api-for-custom-events-and-metrics"></a>Interfejs API usługi Application Insights dla niestandardowych zdarzeń i metryk
 
@@ -28,7 +28,7 @@ Wstaw kilka wierszy kodu w aplikacji, aby dowiedzieć się, jak użytkownicy kor
 > `TrackMetric()` nie jest już aplikacje oparte na preferowaną metodę wysyłania metryki niestandardowe dla platformy .NET. W [wersji beta 2,60 3](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/CHANGELOG.md#version-260-beta3) zestawu SDK .NET usługi Insights aplikacji nowej metody [ `TelemetryClient.GetMetric()` ](https://docs.microsoft.com/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) została wprowadzona. Począwszy od zestawu SDK .NET usługi Application Insights [wersji 2.72](https://docs.microsoft.com/en-us/dotnet/api/microsoft.applicationinsights.telemetryclient.getmetric?view=azure-dotnet) ta funkcja jest teraz częścią stabilnej wersji.
 
 ## <a name="api-summary"></a>Podsumowanie interfejsu API
-Podstawowego interfejsu API jest jednolita na wszystkich platformach, oprócz kilka zmian, takich jak `GetMetric`(tylko język C#).
+Podstawowego interfejsu API jest jednolita na wszystkich platformach, oprócz kilka zmian, takich jak `GetMetric`(tylko platforma .NET).
 
 | Metoda | Używane dla |
 | --- | --- |
@@ -135,9 +135,6 @@ Jeśli [próbkowania](app-insights-sampling.md) trwa, właściwości: itemCount 
 
 ### <a name="examples"></a>Przykłady:
 
-Poniżej przedstawiono tylko fragment przykłady z większy zbiór samouczki nasi deweloperzy Podsumowując. Pełny plik za pomocą więcej przykładów znajduje się w naszym [repozytorium GitHub platformy .NET](https://github.com/Microsoft/ApplicationInsights-dotnet/blob/develop/Test/Microsoft.ApplicationInsights.Test/Shared/Metrics/MetricsExamples.cs
-).
-
 *C#*
 
 ```csharp
@@ -171,39 +168,6 @@ namespace User.Namespace.Example01
             // To mark this difference, we use a pattern that is similar, but different from the established TrackXxx(..) pattern that sends telemetry right away:
 
             client.GetMetric("CowsSold").TrackValue(42);
-
-            // *** MEASUREMENTS AND ACCUMULATORS ***
-
-            // We support different kinds of aggregation types. For now, we include two: Measurements and Accumulators.
-            // Measurements aggregate tracked values and reduce them to {Count, Sum, Min, Max, StdDev} of all values tracked during each minute. 
-            // They are particularly useful if you are measuring something like the number of items sold, the completion time of an operation, or similar.
-
-            // Accumulators are also sent to the cloud each minute.
-            // But rather than aggregating values across a time period, they aggregate values across their entire life time (or until you reset them).
-            // They are particularly useful when you are counting the number of items in a data structure.
-
-            // By default, metrics are aggregated as Measurements. Here is how you can define a metric to be aggregated as an Accumulator instead:
-
-            // Using the Microsoft.ApplicationInsights.Metrics.Extensions package:
-            // Metric itemsInDatastructure = client.GetMetric("ItemsInDatastructure", MetricConfigurations.Common.Accumulator());
-
-            // Using a private implementation:
-            Metric itemsInDatastructure = client.GetMetric(
-                    "ItemsInDatastructure",
-                    new Microsoft.ApplicationInsights.Metrics.MetricConfiguration(
-                            1000,
-                            100,
-                            new Microsoft.ApplicationInsights.Metrics.TestUtility.MetricSeriesConfigurationForTestingAccumulatorBehavior()));
-
-            int itemsAdded = AddItemsToDataStructure();
-            itemsInDatastructure.TrackValue(itemsAdded);
-            int itemsRemoved = AddItemsToDataStructure();
-            itemsInDatastructure.TrackValue(-itemsRemoved);
-
-            // Here is how you can reset an accumulator:
-            ResetDataStructure();
-
-            itemsInDatastructure.GetAllSeries()[0].Value.ResetAggregation();
 
             // *** MULTI-DIMENSIONAL METRICS ***
 
@@ -259,6 +223,9 @@ namespace User.Namespace.Example01
 ```
 
 ## <a name="trackmetric"></a>TrackMetric
+
+> [!NOTE]
+> Microsoft.ApplicationInsights.TelemetryClient.TrackMetric jest przestarzała w zestawie SDK platformy .NET. Metryki powinny zawsze być wstępnie zagregowane w określonym czasie przed wysłaniem. Użyj jednego z przeciążeń GetMetric(..) można uzyskać dostęp do możliwości wstępnego agregowania SDK metryki obiektu. W przypadku wdrażania własnej logiki wstępnego agregowania można użyć metody (ITelemetry metricTelemetry) śledzenie wysyłać wynikowej wartości zagregowanych. Jeśli aplikacja wymaga wysyłania elementu osobne dane telemetryczne w każdym razem, gdy bez agregacji w czasie, prawdopodobnie masz przypadek użycia dla danych telemetrycznych zdarzeń; Zobacz TelemetryClient.TrackEvent (Microsoft.Applicationlnsights.DataContracts.EventTelemetry).
 
 Usługa Application Insights może wykresu metryki, które nie są dołączone do określonych zdarzeń. Na przykład można monitorować długość kolejki w regularnych odstępach czasu. Za pomocą metryk poszczególnymi pomiarami są mniej odsetek niż odmiany i trendów i wykresy więc statystyczne są.
 

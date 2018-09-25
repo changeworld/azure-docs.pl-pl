@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: 2802a725bca7f63f6956293048b0e854ebfb59b5
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: e92c099d9e0dfacff71c13382059acb06037bb1e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056062"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999872"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Sieć wirtualna platformy Azure — często zadawane pytania (FAQ)
 
@@ -257,5 +257,26 @@ Połączenia komunikacji równorzędnej, przejdź do sieci wirtualnej *Disconnec
 Nie. Przechodnie komunikacja równorzędna nie jest obsługiwana. Należy równorzędne zachodzi komunikacja równorzędna między i oraz tego, została wykonana.
 
 ### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>Czy istnieją jakiekolwiek ograniczenia przepustowości, dla połączenia komunikacji równorzędnej?
-Nie. Wirtualne sieci równorzędne, lokalnych lub globalnych, nie nakłada żadnych ograniczeń przepustowości. Przepustowość jest tylko limites przez zasób maszynę Wirtualną lub obliczeń.
+Nie. Wirtualne sieci równorzędne, lokalnych lub globalnych, nie nakłada żadnych ograniczeń przepustowości. Przepustowość jest tylko limity przez zasób maszynę Wirtualną lub obliczeń.
 
+## <a name="virtual-network-tap"></a>PODSŁUCHU sieci wirtualnej
+
+### <a name="which-azure-regions-are-available-for-virtual-network-tap"></a>Które regiony platformy Azure są dostępne dla PODSŁUCHU sieci wirtualnej?
+W wersji zapoznawczej dla deweloperów ta funkcja jest dostępna w regionie zachodnio-środkowe stany USA. Interfejsy sieciowe monitorowane, NACIŚNIJ zasób sieci wirtualnej i rozwiązania modułu zbierającego lub analiza musi zostać wdrożony w tym samym regionie.
+
+### <a name="does-virtual-network-tap-support-any-filtering-capabilities-on-the-mirrored-packets"></a>Virtual Network TAP obsługuje wszystkie funkcje filtrowania dublowanego pakietów?
+Funkcje filtrowania nie są obsługiwane w wersji zapoznawczej wybierz sieć wirtualną. Podczas konfiguracji wzorca TAP jest dodawana do interfejsu sieciowego głęboką kopię danych przychodzących i ruch wychodzący na interfejs sieciowy jest przesyłany strumieniowo do miejsca docelowego, naciśnij pozycję.
+
+### <a name="can-multiple-tap-configurations-be-added-to-a-monitored-network-interface"></a>Wiele konfiguracji wzorca TAP można dodać do interfejsu sieciowego monitorowanych?
+Interfejs sieciowy monitorowanych może mieć tylko jedną konfigurację wzorca TAP. Skontaktuj się z poszczególnych [rozwiązania partnerskie](virtual-network-tap-overview.md#virtual-network-tap-partner-solutions) dla funkcji do przesyłania strumieniowego wiele kopii ruch wzorca TAP do wybranych przez siebie narzędzi analizy.
+
+### <a name="can-the-same-virtual-network-tap-resource-aggregate-traffic-from-monitored-network-interfaces-in-more-than-one-virtual-network"></a>Ten sam zasób sieci wirtualnej w wzorca TAP agregować ruchu z monitorowanych interfejsów w więcej niż jednej sieci wirtualnej?
+Tak. Tej samej sieci wirtualnej zasobów wzorca TAP może być używany do agregacji ruchu na zdublowanym z monitorowanych interfejsów w równorzędnych sieciach wirtualnych w tej samej subskrypcji lub innej subskrypcji. Moduł równoważenia obciążenia zasobów wybierz sieć wirtualną i docelowy lub docelowy interfejs sieciowy musi być w tej samej subskrypcji. Wszystkie subskrypcje muszą znajdować się pod tą samą dzierżawą usługi Azure Active Directory.
+
+### <a name="are-there-any-performance-considerations-on-production-traffic-if-i-enable-a-virtual-network-tap-configuration-on-a-network-interface"></a>Czy istnieją wszystkie zagadnienia związane z wydajnością na jest przesyłany ruch produkcyjny włączyć Konfiguracja wzorca TAP sieci wirtualnej w interfejsie sieciowym?
+
+Virtual network TAP jest dostępna w wersji zapoznawczej dla deweloperów. W trakcie okresu zapoznawczego nie ma żadnych umowę dotyczącą poziomu usług. Ta funkcja nie należy używać w przypadku obciążeń produkcyjnych. Po włączeniu interfejsu sieciowego maszyny wirtualnej z konfiguracją wzorca TAP tych samych zasobów na hoście platformy azure przydzielone do maszyny wirtualnej do wysyłania ruchu produkcyjnego umożliwia pełnią funkcję dublowania i wysyłania pakietów dublowanego. Wybierz poprawnego [Linux](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [Windows](../virtual-machines/linux/sizes.md?toc=%2fazure%2fvirtual-network%2ftoc.json) rozmiar maszyny wirtualnej, aby upewnić się, że wystarczające zasoby są dostępne dla maszyny wirtualnej do wysyłania ruchu produkcyjnego i dublowanych ruchu.
+
+### <a name="is-accelerated-networking-for-linuxcreate-vm-accelerated-networking-climd-or-windowscreate-vm-accelerated-networking-powershellmd-supported-with-virtual-network-tap"></a>Jest accelerated networking for [Linux](create-vm-accelerated-networking-cli.md) lub [Windows](create-vm-accelerated-networking-powershell.md) obsługiwane z usługą virtual network TAP?
+
+Będzie można dodać wzorca TAP konfigurację interfejsu sieciowego dołączonych do maszyny wirtualnej, w którym włączono z przyspieszoną siecią. Ale wydajności i opóźnień w maszynie wirtualnej będzie miało wpływ na dodawaniu, naciśnij pozycję konfiguracji, ponieważ Odciążanie dublowanie ruch nie jest obecnie obsługiwane przez platformę Azure funkcji przyspieszonej łączności sieciowej.

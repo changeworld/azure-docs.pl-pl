@@ -5,20 +5,20 @@ services: virtual-machines-windows, virtual-machines-linux
 author: dlepow
 ms.service: multiple
 ms.topic: include
-ms.date: 07/06/2018
+ms.date: 09/10/2018
 ms.author: danlep;azcspmt;jonbeck
 ms.custom: include file
-ms.openlocfilehash: 1527ea5fbd97527312600e74417ac444422ab614
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: e9f88a018ba0f40d41bf7ad17a74850a9edf8ae6
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44369372"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47043857"
 ---
 Maszyny Wirtualnej zoptymalizowane pod kątem procesora GPU z jednym lub wieloma procesorami GPU firmy NVIDIA wyspecjalizowane maszyny wirtualne o rozmiarach. Te rozmiary są przeznaczone dla obciążeń intensywnie korzystających z obliczeń, bogatych w elementy graficzne i wizualizacji. Ten artykuł zawiera informacje o liczbie i rodzaju procesorów GPU, procesorów wirtualnych, dysków z danymi i kart sieciowych. Przepustowość przepływności i sieć magazynu dostępne są również dla każdego rozmiaru w tej metodzie grupowania. 
 
-* **NC, NCv2, NCv3 i ND** rozmiarów są zoptymalizowane dla aplikacji z mocy obliczeniowej i intensywnie korzystających z sieci i algorytmów. Niektóre przykłady są CUDA i OpenCL oparte na aplikacje i symulacje, sztucznej Inteligencji i uczenia głębokiego. Seria NC koncentruje się na obciążeń obliczeniowych o wysokiej wydajności, wyposażone w procesor GPU firmy NVIDIA Tesla V100.  Seria ND koncentruje na scenariuszach dotyczących szkolenia i wnioskowania na potrzeby uczenia szczegółowego. W tym przypadku jest używany procesor GPU NVIDIA Tesla P40.
-* **NV** rozmiarów są zoptymalizowane pod kątem i przeznaczone dla zdalnej wizualizacji, przesyłania strumieniowego, gier, kodowania i scenariuszy VDI przy użyciu platform, takich jak OpenGL i DirectX.  Te maszyny wirtualne są wspierane przez procesorów GPU Tesla M60 firmy NVIDIA.
+* **NC, NCv2, NCv3 i ND** rozmiarów są zoptymalizowane dla aplikacji z mocy obliczeniowej i intensywnie korzystających z sieci i algorytmów. Niektóre przykłady są CUDA i OpenCL oparte na aplikacje i symulacje, sztucznej Inteligencji i uczenia głębokiego. Seria NCv3 koncentruje się na obciążeń obliczeniowych o wysokiej wydajności, wyposażone w procesor GPU firmy NVIDIA Tesla V100.  Seria ND koncentruje na scenariuszach dotyczących szkolenia i wnioskowania na potrzeby uczenia szczegółowego. W tym przypadku jest używany procesor GPU NVIDIA Tesla P40.
+* **NV i NVv2** rozmiarów są zoptymalizowane pod kątem i przeznaczone dla zdalnej wizualizacji, przesyłania strumieniowego, gier, kodowania i scenariuszy VDI przy użyciu platform, takich jak OpenGL i DirectX.  Te maszyny wirtualne są wspierane przez procesorów GPU Tesla M60 firmy NVIDIA.
 
 
 ## <a name="nc-series"></a>Seria NC
@@ -125,6 +125,24 @@ Każdy procesor GPU w wystąpieniach NV jest dostarczany z licencją siatki. Ta 
 | Standardowa_NV6 |6 |56 |340 | 1 | 24 | 1 | 1 | 25 |
 | Standardowa_NV12 |12 |112 |680 | 2 | 48 | 2 | 2 | 50 |
 | Standardowa_NV24 |24 |224 |1440 | 4 | 64 | 4 | 4 | 100 |
+
+1 procesor GPU = połowa karty M60.
+
+## <a name="nvv2-series-preview"></a>Seria NVv2 (wersja zapoznawcza)
+
+Usługa Premium Storage: obsługiwane
+
+Buforowanie magazynu Premium: obsługiwane
+
+Maszyn wirtualnych z serii NVv2 są obsługiwane przez [procesory GPU NVIDIA Tesla M60](http://images.nvidia.com/content/tesla/pdf/188417-Tesla-M60-DS-A4-fnl-Web.pdf) NVIDIA oraz technologii NVIDIA GRID technologię Intel Broadwell procesorów. Te maszyny wirtualne są przeznaczone dla procesora GPU accelerated aplikacji graficznych i pulpitów wirtualnych, których klienci chcą wizualizować swoje dane, symulowanie wyników, aby wyświetlić, pracować nad CAD lub renderowania i dane ze strumienia zawartości. Dodatkowo te maszyny wirtualne mogą uruchamiać obciążenia o pojedynczej precyzji, takie jak kodowanie i renderowanie. Maszyny wirtualne NVv2 obsługuje usługi Premium Storage i dołączone dwa razy pamięć systemową (RAM) w porównaniu z jego poprzednika, seria NV.  
+
+Każdy procesor GPU w NVv2 wystąpienia jest powiązana z licencją siatki. Ta licencja zapewnia elastyczność do korzystania z wystąpienia NV jako wirtualnej stacji roboczej dla jednego użytkownika lub 25 współbieżnych użytkownicy mogą łączyć się maszyna wirtualna dla scenariusza aplikacji wirtualnej.
+
+| Rozmiar | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Procesory GPU | Maks. liczba dysków danych | Maksymalna liczba kart sieciowych | Wirtualne stacje robocze | Aplikacje wirtualne | 
+| --- | --- | --- | --- | --- | --- | --- | --- | --- |
+| Standard_NV6s_v2 |6 |112 |320 | 1 | 12 | 4 | 1 | 25 |
+| Standard_NV12s_v2 |12 |224 |640 | 2 | 24 | 8 | 2 | 50 |
+| Standard_NV24s_v2 |24 |448 |1280 | 4 | 32 | 8 | 4 | 100 |
 
 1 procesor GPU = połowa karty M60.
 

@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 09/20/2018
 ms.author: carlrab
-ms.openlocfilehash: a0e0b8e2de3c944698cdbc6b1b11351f70e77276
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: c4f9daa4d9f5d09d4078d29409f116d1e8284f7a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729896"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036749"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-based-purchasing-model"></a>Limity zasobów dla pul elastycznych za pomocą modelu zakupu opartego na jednostkach DTU 
 
@@ -108,7 +108,7 @@ W przypadku pul elastycznych SQL Database w poniższych tabelach wyświetlanie z
 ||||||||
 
 > [!IMPORTANT]
-> Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępna we wszystkich regionach z wyjątkiem następujących: zachodnio-środkowe stany USA, Chiny wschodnie, USDoDCentral, Niemcy środkowe, Południowy Zachód Gov USDoDEast, USA, Niemcy północno-wschodnie, USGov — Iowa, Chin północnych. W pozostałych regionach maksymalna wielkość pamięci w warstwie Premium jest ograniczona do 1 TB. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
+> Więcej niż 1 TB magazynu w warstwie Premium jest obecnie dostępna we wszystkich regionach z wyjątkiem następujących: zachodnio-środkowe stany USA, Chiny wschodnie, USDoDCentral, Niemcy środkowe, Południowy Zachód Gov USDoDEast, USA, Niemcy północno-wschodnie, USGov — Iowa, Chin północnych. W pozostałych regionach maksymalna wielkość pamięci w warstwie Premium jest ograniczona do 1 TB. Więcej informacji można znaleźć na stronie [bieżących ograniczeń poziomów P11–P15](sql-database-dtu-resource-limits-single-databases.md#single-database-limitations-of-p11-and-p15-when-the-maximum-size-greater-than-1-tb).  
 
 Jeśli używane są wszystkie jednostki DTU puli elastycznej, każda baza danych w puli otrzymuje taką samą ilość zasobów do przetwarzania zapytań. Usługa SQL Database zapewnia sprawiedliwe udostępnianie zasobów między bazami danych przez zapewnienie równych okresów czasu obliczeń. Sprawiedliwe udostępnianie zasobów puli elastycznej jest wykonywane oprócz zapewniania dowolnej ilości zasobów w przeciwnym razie gwarantowanej dla każdej bazy danych, gdy minimalna liczba jednostek DTU na bazę danych jest ustawiona na wartość różną od zera.
 

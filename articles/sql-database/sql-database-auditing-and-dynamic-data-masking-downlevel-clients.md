@@ -2,20 +2,22 @@
 title: Tabela inspekcji, przekierowanie TDS i IP punktów końcowych usługi Azure SQL Database | Dokumentacja firmy Microsoft
 description: Dowiedz się więcej o inspekcji TDS przekierowania i adres IP punktu końcowego zmiany podczas wykonywania inspekcji tabel w usłudze Azure SQL Database.
 services: sql-database
-author: giladm
-manager: craigg
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: giladm
 ms.author: giladm
 ms.reviewer: vanto
-ms.openlocfilehash: 9fcb070f41d699cef3ef11ba9b8feb6cdfd83ae5
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 525b699efdbfd2e4e2f8ad7a8b24f20f1d7438d0
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45541220"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063340"
 ---
 # <a name="sql-database----downlevel-clients-support-and-ip-endpoint-changes-for-table-auditing"></a>Obsługa klientów niższych poziomów bazy danych SQL — i punktu końcowego adresu IP zmienia się w przypadku inspekcji tabel
 

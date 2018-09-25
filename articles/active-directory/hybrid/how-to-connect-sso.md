@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/10/2018
+ms.date: 09/24/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: be46933ee77b261107a6d22d26ba81538f0fd9d1
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 4e9292b5932c36d55069ff300bf7c0a99b280fc5
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314524"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47054188"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on"></a>Usługa Azure Active Directory bezproblemowego logowania jednokrotnego
 
@@ -62,16 +62,19 @@ Bezproblemowe logowanie Jednokrotne może być łączone z albo [synchronizacji 
 
 | OS\Browser |Internet Explorer|Brzeg|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Tak\*|Nie|Yes|Tak\*\*|ND
-|Windows 8.1|Tak\*|ND|Yes|Tak\*\*|ND
-|Windows 8|Tak\*|ND|Yes|Tak\*\*|ND
-|Windows 7|Tak\*|ND|Yes|Tak\*\*|ND
-|Mac OS X|ND|ND|Tak\*\*|Tak\*\*|Tak\*
+|Windows 10|Tak\*|Nie|Yes|Tak\*\*\*|ND
+|Windows 8.1|Tak\*|ND|Yes|Tak\*\*\*|ND
+|Windows 8|Tak\*|ND|Yes|Tak\*\*\*|ND
+|Windows 7|Tak\*|ND|Yes|Tak\*\*\*|ND
+|Windows Server 2012 R2 lub nowszy|Tak\*\*|ND|Yes|Tak\*\*\*|ND
+|Mac OS X|ND|ND|Tak\*\*\*|Tak\*\*\*|Tak\*\*\*
 
 
 \*Wymaga programu Internet Explorer w wersji 10 lub nowszy
 
-\*\*Wymaga [dodatkowej konfiguracji](how-to-connect-sso-quick-start.md#browser-considerations)
+\*\*Wymaga programu Internet Explorer w wersji 10 lub nowszej. Wyłącz rozszerzony tryb chroniony
+
+\*\*\*Wymaga [dodatkowej konfiguracji](how-to-connect-sso-quick-start.md#browser-considerations)
 
 >[!NOTE]
 >Dla systemu Windows 10, zaleca się użycie [Azure AD Join](../active-directory-azureadjoin-overview.md) dla optymalnej logowanie jednokrotne z usługą Azure AD.

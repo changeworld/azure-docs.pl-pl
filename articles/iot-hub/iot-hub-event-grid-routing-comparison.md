@@ -8,18 +8,20 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: kgremban
-ms.openlocfilehash: af03f737c082a7fda90104303e018f7b417729b9
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 13cf5861bf39cdd9c192586979b95192a31e9399
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143797"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978679"
 ---
 # <a name="compare-message-routing-and-event-grid-for-iot-hub"></a>Porównanie routingu komunikatów i Event Grid dla Centrum IoT Hub
 
 Usługa Azure IoT Hub umożliwia przesyłanie strumieniowe danych z połączonych urządzeń i integrowanie danych z aplikacji biznesowych. IoT Hub udostępnia dwie metody zdarzeń IoT integrowanie innych usług platformy Azure lub aplikacje biznesowe. W tym artykule omówiono te dwie funkcje, które zapewniają tej funkcji, tak, aby można było wybrać, która opcja jest najlepsza w przypadku danego scenariusza.
 
-* **Routing komunikatów usługi IoT Hub**: funkcja tego Centrum IoT Hub umożliwia użytkownikom [kierowanie komunikatów z urządzenia do chmury](iot-hub-devguide-messages-read-custom.md) do punktów końcowych usługi, takich jak kontenery usługi Azure Storage, usługa Event Hubs, kolejki usługi Service Bus i tematów usługi Service Bus. Reguły routingu zapewniają elastyczność wykonaj tras oparte na zapytaniach. Pozwalają też [alerty krytyczne](iot-hub-devguide-messages-d2c.md) wyzwalać akcje za pomocą zapytań i mogą być oparte na nagłówki komunikatów i treść. 
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
+
+* **[Routing komunikatów usługi IoT Hub](iot-hub-devguide-messages-d2c.md)**: funkcja tego Centrum IoT Hub umożliwia użytkownikom kierowanie komunikatów z urządzenia do chmury do punktów końcowych usług, takich jak kontenery usługi Azure Storage, usługa Event Hubs, kolejki usługi Service Bus i tematów usługi Service Bus. Routing udostępnia również możliwość wykonywanie zapytania do filtrowania danych przed przesłaniem go do punktów końcowych. Oprócz danych telemetrycznych z urządzeń, możesz również wysłać [zdarzenia nietelemetrycznych](iot-hub-devguide-messages-d2c.md#non-telemetry-events) można wyzwalać akcje. 
 * **Integracja usługi IoT Hub przy użyciu usługi Event Grid**: Azure Event Grid to w pełni zarządzanej usługi routingu zdarzeń korzystającej publikowania-subskrypcji modelu. Usługa IoT Hub i Event Grid współpracują ze sobą, aby [integrowanie zdarzeń usługi IoT Hub platformy Azure i spoza tej platformy](iot-hub-event-grid.md), w czasie niemal rzeczywistym. 
 
 ## <a name="similarities-and-differences"></a>Podobieństwa i różnice
@@ -32,8 +34,8 @@ Chociaż routingu komunikatów i Event Grid włączone podczas konfigurowania al
 | **Typ zdarzenia** | Tak, routing komunikatów może zgłaszać bliźniaczej reprezentacji zmiany i zdarzenia cyklu życia urządzenia. | Tak, usługa Event Grid może Raportuj, gdy urządzenia są tworzone, usunięte, połączonych i odłączony od usługi IoT Hub |
 | **Określanie kolejności** | Tak, jest utrzymywany porządkowania zdarzeń.  | Nie, nie jest gwarantowana kolejność zdarzeń. | 
 | **Maksymalny rozmiar komunikatu** | 256 KB, device-to-cloud | 64 KB |
-| **Filtrowanie** | Zaawansowane filtrowanie przy użyciu języka przypominającego SQL obsługuje filtrowanie komunikatów nagłówki i treść. Aby uzyskać przykłady, zobacz [język zapytań usługi IoT Hub](iot-hub-devguide-query-language.md). | Filtrowanie na podstawie sufiksu/prefiks identyfikatory urządzeń, które działa dobrze dla hierarchicznych usług, takich jak magazyn. |
-| **Punkty końcowe** | <ul><li>Event Hubs</li> <li>Obiekt blob magazynu</li> <li>Kolejka magistrali usług</li> <li>Tematy usługi Service Bus</li></ul><br>IoT Hub produktów płatnych (S1, S2 i S3) są ograniczone do 10 niestandardowych punktów końcowych. 100 tras mogą być tworzone dla usługi IoT Hub. | <ul><li>Azure Functions</li> <li>Azure Automation</li> <li>Event Hubs</li> <li>Logic Apps</li> <li>Storage Blob</li> <li>Tematy niestandardowe</li> <li>Usługi innych firm przy użyciu elementów Webhook</li></ul><br>Aby uzyskać najbardziej aktualną listę punktów końcowych, zobacz [procedury obsługi zdarzeń usługi Event Grid](../event-grid/overview.md#event-handlers). |
+| **Filtrowanie** | Zaawansowane filtrowanie właściwości aplikacji komunikatu, komunikat właściwości systemu, treść wiadomości, tagów bliźniaczych reprezentacji urządzeń i urządzeń bliźniacza reprezentacja właściwości. Aby uzyskać przykłady, zobacz [składni zapytań routingu komunikatów](iot-hub-devguide-routing-query-syntax.md). | Filtrowanie na podstawie sufiksu/prefiks identyfikatory urządzeń, które działa dobrze dla hierarchicznych usług, takich jak magazyn. |
+| **Punkty końcowe** | <ul><li>Event Hubs</li> <li>Azure Blob Storage</li> <li>Kolejka magistrali usług</li> <li>Tematy usługi Service Bus</li></ul><br>IoT Hub produktów płatnych (S1, S2 i S3) są ograniczone do 10 niestandardowych punktów końcowych. 100 tras mogą być tworzone dla usługi IoT Hub. | <ul><li>Azure Functions</li> <li>Azure Automation</li> <li>Event Hubs</li> <li>Logic Apps</li> <li>Storage Blob</li> <li>Tematy niestandardowe</li> <li>Usługi innych firm przy użyciu elementów Webhook</li></ul><br>Aby uzyskać najbardziej aktualną listę punktów końcowych, zobacz [procedury obsługi zdarzeń usługi Event Grid](../event-grid/overview.md#event-handlers). |
 | **Koszty** | Nie ma osobnych opłat do rozsyłania wiadomości. Tylko przychodzące dane telemetryczne do Centrum IoT Hub są naliczane opłaty. Na przykład w przypadku wiadomości kierowane do trzech różnych punktów końcowych są rozliczane dla tylko jednej wiadomości. | Nie ma opłat z usługi IoT Hub. Usługa Event Grid oferuje pierwszych 100 000 operacji miesięcznie za darmo, a następnie $: 0,60 za milion operacji później. |
 
 Routing komunikatów usługi IoT Hub i Event Grid mają podobieństwa zbyt, niektóre z nich są szczegółowo opisane w poniższej tabeli:
@@ -52,7 +54,7 @@ Routing komunikatów usługi IoT Hub i integracji usługi IoT Hub przy użyciu u
 
 * **Jakiego rodzaju dane jest wysyłany do punktów końcowych?**
 
-   Użyj routing komunikatów usługi IoT Hub podczas wysyłania danych telemetrycznych z innymi usługami. Komunikat o routingu również umożliwia wysyłanie zapytań dotyczących nagłówki komunikatów i treści wiadomości. 
+   Użyj routing komunikatów usługi IoT Hub podczas wysyłania danych telemetrycznych z innymi usługami. Komunikat o routingu również umożliwia wysyłanie zapytań dotyczących właściwości komunikatu aplikacji i systemu, treści wiadomości, tagów bliźniaczych reprezentacji urządzeń i właściwości bliźniaczych reprezentacji urządzeń.
 
    Integracja usługi IoT Hub przy użyciu usługi Event Grid w programach zdarzeń występujących w usłudze IoT Hub. Te zdarzenia usługi IoT Hub obejmują urządzeń utworzone, usunięte, połączonych i odłączony. 
 
@@ -70,8 +72,7 @@ Routing komunikatów usługi IoT Hub i integracji usługi IoT Hub przy użyciu u
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o [routing komunikatów usługi IoT Hub](iot-hub-devguide-messages-d2c.md) i [punktów końcowych usługi IoT Hub](iot-hub-devguide-endpoints.md).
-
+* Dowiedz się więcej o [Routing komunikatów usługi IoT Hub](iot-hub-devguide-messages-d2c.md) i [punktów końcowych usługi IoT Hub](iot-hub-devguide-endpoints.md).
 * Dowiedz się więcej o [usługi Azure Event Grid](../event-grid/overview.md)
-
+* Aby dowiedzieć się, jak utworzyć trasy wiadomości, zobacz [komunikaty urządzenia do chmury usługi IoT Hub procesu przy użyciu tras](../iot-hub/tutorial-routing.md) samouczka.
 * Wypróbuj integracji usługi Event Grid przez [wysyłanie wiadomości e-mail powiadomień o zdarzeniach usługi Azure IoT Hub przy użyciu aplikacji logiki](../event-grid/publish-iot-hub-events-to-logic-apps.md)

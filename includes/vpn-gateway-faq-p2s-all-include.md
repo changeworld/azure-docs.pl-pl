@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/30/2018
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 7cd19945e316ebc5462642006255103b4631ce29
-ms.sourcegitcommit: 99a6a439886568c7ff65b9f73245d96a80a26d68
-ms.translationtype: HT
+ms.openlocfilehash: 3a4e45aa2c1aca461ef32ebec2cfb50a470037ed
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39361395"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060942"
 ---
 ### <a name="how-many-vpn-client-endpoints-can-i-have-in-my-point-to-site-configuration"></a>Ile punktów końcowych klienta sieci VPN może obejmować konfiguracja punkt-lokacja?
 
@@ -30,8 +30,7 @@ Obsługiwane są następujące systemy operacyjne klientów:
 * Windows Server 2012 R2 (tylko 64-bitowy)
 * Windows Server 2016 (tylko 64-bitowy)
 * Windows 10
-* Mac OS X 10.11 (El Capitan)
-* Mac OS X 10.12 (Sierra)
+* Mac OS X w wersji 10.11 lub nowszy
 * Linux (StrongSwan)
 * iOS
 

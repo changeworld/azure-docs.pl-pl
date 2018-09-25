@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: fc06da3b1ad66aa15237a25d2f50374043c860ba
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: eead4c6a66a317c7404205415cbf04c442ffe8d1
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46293514"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060819"
 ---
 ## <a name="add-the-applications-registration-information-to-your-app"></a>Dodaj informacje o rejestracji aplikacji do aplikacji
 
@@ -31,26 +31,26 @@ W tym kroku należy skonfigurować przekierowywanie adresów URL aplikacji infor
 Konfigurowanie `Redirect URL` pola za pomocą adresu URL strony index.html oparte na serwerze sieci web, a następnie kliknij przycisk *aktualizacji*.
 
 
-> #### <a name="visual-studio-instructions-for-obtaining-redirect-url"></a>Visual Studio dotyczącymi uzyskiwania adres URL przekierowania
-> Aby uzyskać adres URL przekierowania:
-> 1.    W *Eksploratora rozwiązań*, wybierz projekt i przyjrzyj się `Properties` okna (Jeśli nie widzisz okna właściwości, naciśnij klawisz `F4`)
-> 2.    Skopiuj wartości z `URL` do Schowka:<br/> ![Właściwości projektu](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
-> 3.    Wklej wartość jako `Redirect URL` u góry tej strony, następnie kliknij przycisk `Update`
+> #### <a name="visual-studio-instructions-for-obtaining-the-redirect-url"></a>Visual Studio dotyczącymi uzyskiwania adresu URL przekierowania
+> Wykonaj następujące kroki, aby uzyskać adres URL przekierowania:
+> 1.    W **Eksploratora rozwiązań**, wybierz projekt i przyjrzyj się **właściwości** okna. Jeśli nie widzisz **właściwości** naciśnij klawisze **F4**.
+> 2.    Skopiuj wartości z **adresu URL** do Schowka:<br/> ![Właściwości projektu](media/active-directory-develop-guidedsetup-javascriptspa-configure/vs-project-properties-screenshot.png)<br />
+> 3.    Wklej wartość jako **adresu URL przekierowania** u góry tej strony, następnie kliknij przycisk **aktualizacji**
 
 <p/>
 
 > #### <a name="setting-redirect-url-for-node"></a>Adres URL przekierowania ustawienia węzła
-> Dla środowiska Node.js, można ustawić internetowego port serwera w *server.js* pliku. W tym samouczku korzysta z portu 30662 do odwołania, ale możesz użyć dowolnego portu dostępne. W każdym przypadku aby skonfigurować adres URL przekierowania w aplikacji informacje rejestracyjne, wykonaj następujące instrukcje:<br/>
-> Ustaw `http://localhost:30662/` jako `Redirect URL` u góry tej strony lub użyj `http://localhost:[port]/` Jeśli używasz niestandardowego portu TCP (gdzie *[port]* jest niestandardowy numer portu TCP), a następnie kliknij przycisk "Aktualizuj"
+> Dla środowiska Node.js, można ustawić internetowego port serwera w *server.js* pliku. W tym samouczku korzysta z portu 30662 odwołania, ale można użyć dostępny port. Postępuj zgodnie z poniższymi instrukcjami, aby skonfigurować adres URL przekierowania w informacje o rejestracji aplikacji:<br/>
+> Ustaw `http://localhost:30662/` jako **adresu URL przekierowania** u góry tej strony lub użyj `http://localhost:[port]/` Jeśli używasz niestandardowego portu TCP (gdzie *[port]* jest niestandardowy numer portu TCP), a następnie kliknij przycisk  **Aktualizacja**
 
 ### <a name="configure-your-javascript-spa-application"></a>Skonfigurować aplikację JavaScript SPA
 
-1.  Utwórz plik o nazwie `msalconfig.js` zawierający informacje o rejestracji aplikacji. Jeśli używasz programu Visual Studio wybierz projekt (folder główny projektu), kliknij prawym przyciskiem myszy i wybierz opcję: `Add`  >  `New Item`  >  `JavaScript File`. Nadaj mu nazwę `msalconfig.js`
-2.  Dodaj następujący kod, aby Twoje `msalconfig.js` pliku:
+1.  W `index.html` plik utworzony podczas konfiguracji projektu, Dodaj informacje o rejestracji aplikacji. Dodaj następujący kod u góry strony, w ramach `<script></script>` tagów w treści swoje `index.html` pliku:
 
 ```javascript
-var msalconfig = {
+var applicationConfig = {
     clientID: "[Enter the application Id here]",
-    redirectUri: location.origin
+    graphScopes: ["user.read"],
+    graphEndpoint: "https://graph.microsoft.com/v1.0/me"
 };
-``` 
+```

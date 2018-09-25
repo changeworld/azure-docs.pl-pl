@@ -13,12 +13,12 @@ ms.component: user-help
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: lizross
-ms.openlocfilehash: d4ebecd11f4ca3d12a55cf25db31e31d7f528db8
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: b6d548183cfa548f9ad35f06922752c929e318ac
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39343733"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041959"
 ---
 # <a name="set-up-my-account-for-two-step-verification"></a>Skonfiguruj moje konto na potrzeby weryfikacji dwuetapowej
 Weryfikacja dwuetapowa była kroku dodatkowe zabezpieczenia, która pomaga chronić Twoje konto, co utrudnia innym osobom włamanie się. Jeśli czytasz ten artykuł, prawdopodobnie masz wiadomość e-mail od firmowego lub szkolnego administratora o usłudze uwierzytelnianie wieloskładnikowe. Lub może być zalogowania się i stało się komunikat z prośbą do skonfigurowania dodatkowej weryfikacji zabezpieczeń. Jeśli tak jest rzeczywiście, **nie możesz zalogować przed ukończeniem procesu automatycznej rejestracji**.
@@ -47,6 +47,9 @@ Pierwsze pytanie w procesie rejestracji jest o tym, jak chcesz się z Tobą skon
 
 ## <a name="use-a-mobile-app-as-the-contact-method"></a>Korzystanie z aplikacji mobilnej jako metody kontaktu
 Za pomocą tej metody wymaga, zainstaluj aplikację authenticator na telefonie lub tablecie. Kroki opisane w tym artykule opierają się na aplikację Microsoft Authenticator, która jest dostępna dla [Windows Phone](http://go.microsoft.com/fwlink/?Linkid=825071), [Android](http://go.microsoft.com/fwlink/?Linkid=825072), i [iOS](http://go.microsoft.com/fwlink/?Linkid=825073).
+
+>[!NOTE]
+>Nie trzeba korzystać z aplikacji Microsoft Authenticator. Jeśli już używasz innej aplikacji wystawcy uwierzytelnienia, można nadal z niego korzystać.
 
 1. Wybierz **aplikacji mobilnej** z listy rozwijanej.
 2. Wybierz opcję **Odbieraj powiadomienia dotyczące weryfikacji** lub **Użyj kodu weryfikacyjnego**, a następnie wybierz **Konfigurowanie**.

@@ -9,16 +9,16 @@ ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 737cc120877a9d0f06a1f6d209bcf9a233aa7d19
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 39404ff74552b11e982cf5968c0eb131ea642e27
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43091313"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979458"
 ---
-# <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-cli"></a>Usuwanie klastra usługi HDInsight przy użyciu przeglądarki, programu PowerShell lub interfejsu wiersza polecenia platformy Azure
+# <a name="delete-an-hdinsight-cluster-using-your-browser-powershell-or-the-azure-classic-cli"></a>Usuwanie klastra usługi HDInsight przy użyciu przeglądarki, programu PowerShell lub wiersza polecenia platformy Azure Classic
 
-Naliczanie opłat rozpoczyna się w momencie utworzenia klastra usługi HDInsight i kończy się wraz z jego usunięciem. Opłaty są naliczane za minutę, więc jeśli klaster nie jest używany, należy go usunąć. W tym dokumencie dowiesz się, jak usunąć klaster, przy użyciu witryny Azure portal, programu Azure PowerShell i interfejsu wiersza polecenia platformy Azure w wersji 1.0.
+Naliczanie opłat rozpoczyna się w momencie utworzenia klastra usługi HDInsight i kończy się wraz z jego usunięciem. Opłaty są naliczane za minutę, więc jeśli klaster nie jest używany, należy go usunąć. W tym dokumencie dowiesz się, jak usunąć klaster, przy użyciu witryny Azure portal, programu Azure PowerShell i klasycznego wiersza polecenia platformy Azure.
 
 > [!IMPORTANT]
 > Usuwanie klastra usługi HDInsight nie powoduje usunięcia konta usługi Azure Storage lub Data Lake Store skojarzonego z klastrem. Można ponownie użyć danych przechowywanych w tych usług w przyszłości.
@@ -41,13 +41,12 @@ W wierszu polecenia programu PowerShell Użyj następującego polecenia, aby usu
 
 Zastąp **CLUSTERNAME** nazwą klastra usługi HDInsight:
 
-## <a name="azure-cli-10"></a>Interfejs wiersza polecenia platformy Azure CLI w wersji 1.0
+## <a name="azure-classic-cli"></a>Klasyczny interfejs wiersza polecenia Azure
+
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 W wierszu należy użyć następującego Aby usunąć klaster:
 
     azure hdinsight cluster delete CLUSTERNAME
 
 Zastąp **CLUSTERNAME** nazwą klastra usługi HDInsight:
-
-> [!NOTE]
-> Interfejs wiersza polecenia platformy Azure w wersji 2.0 nie obsługuje usuwania klastrów HDInsight w tej chwili (23 października 2017 r.).

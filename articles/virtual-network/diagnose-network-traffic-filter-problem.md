@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: jdial
-ms.openlocfilehash: 67b2babcd19268a61794d123f5aa9780af16976b
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 366ff0b59835ca3a28cafd5de77c0bd645ff58c5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364016"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984232"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Diagnozowanie problemu z filtrowaniem ruchu maszyny wirtualnej sieci
 
@@ -111,7 +111,7 @@ W danych wyjściowych poprzedniej, nazwa interfejsu sieciowego jest *myVMVMNic*.
 
 ## <a name="diagnose-using-azure-cli"></a>Diagnozować przy użyciu wiersza polecenia platformy Azure
 
-Jeśli za pomocą poleceń interfejsu wiersza polecenia platformy Azure (CLI) w celu wykonania zadań w tym artykule albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/bash), lub korzystając z polecenia interfejsu wiersza polecenia na komputerze. Ten artykuł wymaga interfejsu wiersza polecenia Azure w wersji 2.0.32 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, trzeba będzie również uruchomić `az login` i zaloguj się do platformy Azure za pomocą konta mającego [niezbędne uprawnienia](virtual-network-network-interface.md#permissions).
+Jeśli za pomocą poleceń interfejsu wiersza polecenia platformy Azure (CLI) w celu wykonania zadań w tym artykule albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/bash), lub korzystając z polecenia interfejsu wiersza polecenia na komputerze. Ten artykuł wymaga interfejsu wiersza polecenia Azure w wersji 2.0.32 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, trzeba będzie również uruchomić `az login` i zaloguj się do platformy Azure za pomocą konta mającego [niezbędne uprawnienia](virtual-network-network-interface.md#permissions).
 
 Pobierz efektywne reguły zabezpieczeń dla interfejsu sieciowego z [az network nic list — zacznie obowiązywać od — sieciowej grupy zabezpieczeń](/cli/azure/network/nic#az-network-nic-list-effective-nsg). Poniższy przykład pobiera obowiązujących reguł zabezpieczeń dla interfejsu sieciowego o nazwie *myVMVMNic* jest w grupie zasobów o nazwie *myResourceGroup*:
 

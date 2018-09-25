@@ -4,20 +4,20 @@ titleSuffix: Azure Cognitive Services
 description: Aby zwiększyć intencji i jednostek prognozowania przy jednoczesnym zapewnieniu mniej wypowiedzi przykładu, należy użyć wzorców. Wzorzec jest dostarczany za pomocą przykładu wypowiedź szablonu, który zawiera Składnia służąca do identyfikowania jednostki i tekstu można zignorować.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 3b41105a20b765abd084fc387370a49b657d1cba
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: ec006d8941d8832d139a09b1e8af13000ff5a43e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634731"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040707"
 ---
-# <a name="tutorial-3-add-common-utterance-formats"></a>Samouczek 3. Dodaj typowe formaty wypowiedź
+# <a name="tutorial-3-add-common-utterance-formats"></a>Samouczek 3. Dodawanie typowych formatów wypowiedzi
 
 W ramach tego samouczka Aby zwiększyć intencji i jednostek prognozowania przy jednoczesnym zapewnieniu mniej wypowiedzi przykładu należy użyć wzorców. Wzorzec jest dostarczany za pomocą przykładu wypowiedź szablonu, który zawiera Składnia służąca do identyfikowania jednostki i tekstu można zignorować. Wzorzec jest kombinacją Dopasowywanie wyrażeń i uczenia maszynowego.  Przykład wypowiedź szablonu, wraz z intencji wypowiedzi zapewniają LUIS lepiej zrozumieć, z jakiego wypowiedzi Dopasuj intencji. 
 

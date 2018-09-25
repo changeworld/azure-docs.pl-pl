@@ -3,23 +3,26 @@ title: Migracja bazy danych programu SQL Server do usługi Azure SQL Database | 
 description: Dowiedz się więcej na temat migracji bazy danych programu SQL Server do usługi Azure SQL Database w chmurze.
 keywords: migracja bazy danych,migracja bazy danych programu sql server,narzędzia migracji bazy danych,migracja bazy danych,migracja bazy danych sql
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: migrate
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: 88b46fbda3bd459d5ec66b5c9d6eb443e8d275ed
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 65258622c006cc384df24898c18b154b4c523a7f
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735296"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064292"
 ---
 # <a name="sql-server-database-migration-to-azure-sql-database"></a>Migracja bazy danych programu SQL Server do usługi Azure SQL Database
 
-W tym artykule poznasz podstawowe metody migracji programu SQL Server 2005 lub nowszej wersji bazy danych do jednej lub w puli bazy danych w usłudze Azure SQL Database. Aby uzyskać informacje na temat migracji do wystąpienia zarządzanego, zobacz [Przeprowadź migrację do wystąpienia programu SQL Server do bazy danych wystąpienia zarządzanego Azure SQL (wersja zapoznawcza)](sql-database-managed-instance-migrate.md). 
+W tym artykule poznasz podstawowe metody migracji programu SQL Server 2005 lub nowszej wersji bazy danych do jednej lub w puli bazy danych w usłudze Azure SQL Database. Aby uzyskać informacje na temat migracji do wystąpienia zarządzanego, zobacz [Przeprowadź migrację do wystąpienia programu SQL Server do wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance-migrate.md). 
 
 ## <a name="migrate-to-a-single-database-or-a-pooled-database"></a>Migrowanie do pojedynczej bazy danych lub baza danych w puli
 Istnieją dwie podstawowe metody migracji programu SQL Server 2005 lub nowszej wersji bazy danych do jednej lub w puli bazy danych w usłudze Azure SQL Database. Pierwsza metoda jest prostsza, ale wymaga pewnego, prawdopodobnie znaczącego, przestoju podczas migracji. Druga metoda jest bardziej skomplikowana, ale znacznie eliminuje przestój podczas migracji.

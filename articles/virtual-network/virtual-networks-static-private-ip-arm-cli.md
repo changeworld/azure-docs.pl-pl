@@ -16,12 +16,12 @@ ms.workload: infrastructure-services
 ms.date: 02/16/2017
 ms.author: jdial
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f4f6a40fde23ee70391c5057762f17ce1eb44123
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 0ffcf483b2852ec87c263573a97b4508d5b5d39c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38561132"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997475"
 ---
 # <a name="configure-private-ip-addresses-for-a-virtual-machine-using-the-azure-cli"></a>Skonfiguruj prywatne adresy IP dla maszyny wirtualnej przy użyciu wiersza polecenia platformy Azure
 
@@ -42,13 +42,13 @@ W tym artykule opisano model wdrażania usługi Resource Manager. Możesz równi
 
 Aby utworzyć Maszynę wirtualną o nazwie *DNS01* w *frontonu* podsieci sieci wirtualnej o nazwie *TestVNet* za pomocą statycznego prywatnego adresu IP z *192.168.1.101*pełne następujące kroki:
 
-1. Jeśli nie zostało jeszcze, po zainstalowaniu i skonfigurowaniu najnowsze [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2) i zaloguj się do platformy Azure konta przy użyciu [az login](/cli/azure/reference-index#az_login). 
+1. Jeśli nie zostało jeszcze, po zainstalowaniu i skonfigurowaniu najnowsze [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i zaloguj się do platformy Azure konta przy użyciu [az login](/cli/azure/reference-index#az_login).
 
 2. Tworzenie publicznego adresu IP dla maszyny Wirtualnej przy użyciu [tworzenie sieci az public-ip](/cli/azure/network/public-ip#az_network_public_ip_create) polecenia. Lista wyświetlana po danych wyjściowych zawiera opis używanych parametrów.
 
     > [!NOTE]
     > Może chcesz lub konieczność użycia różnych wartości argumenty w tym oraz kolejnych kroków, w zależności od środowiska.
-   
+
     ```azurecli
     az network public-ip create \
     --name TestPIP \
@@ -58,7 +58,7 @@ Aby utworzyć Maszynę wirtualną o nazwie *DNS01* w *frontonu* podsieci sieci w
     ```
 
     Oczekiwane dane wyjściowe:
-   
+
    ```json
    {
         "publicIp": {

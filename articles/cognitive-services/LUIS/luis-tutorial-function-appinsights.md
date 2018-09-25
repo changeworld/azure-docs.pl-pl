@@ -1,24 +1,26 @@
 ---
-title: Dodawanie usługi LUIS danych do usługi Application Insights przy użyciu środowiska Node.js | Dokumentacja firmy Microsoft
-titleSuffix: Azure
+title: Dane usługi Insights aplikacji Luis przy użyciu języka C#
+titleSuffix: Azure Cognitive Services
 description: Twórz Boty zintegrowana z usługą aplikacji LUIS i przy użyciu środowiska Node.js w usłudze Application Insights.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 01/18/2018
+ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 5b65747bea7d2496558c5b3b533bb8420eee6254
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 342c4f98d854d94426c3e4a1eb79bb2a6adffaad
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39236843"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038004"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-web-app-bot"></a>Dodawanie usługi LUIS wyniki do usługi Application Insights z bota aplikacji sieci web
+# <a name="add-luis-results-to-application-insights"></a>Dodawanie usługi LUIS wyniki do usługi Application Insights
 W tym samouczku dodaje informacje do żądania i odpowiedzi usługi LUIS do [usługi Application Insights](https://azure.microsoft.com/services/application-insights/) magazyn danych telemetrycznych. Po utworzeniu tych danych, można tworzyć zapytania po przy użyciu języka Kusto lub usługi Power BI do analizowania, agregowania i tworzyć raporty dotyczące intencje i podmioty wypowiedź w czasie rzeczywistym. Ta analiza pomaga określić, jeśli Dodawanie lub edytowanie intencje i podmioty aplikacją usługi LUIS.
+
+Bot został utworzony za pomocą platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -151,7 +153,7 @@ Usługa Application Insights daje uprawnienia do wykonywania zapytań o dane za 
     ![Najważniejsze celem analizy](./media/luis-tutorial-appinsights/app-insights-top-intent.png)
 
 
-Dowiedz się więcej o [język zapytania Kusto](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-queries) lub [dane są eksportowane do usługi Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
+Dowiedz się więcej o [język zapytania Kusto](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) lub [dane są eksportowane do usługi Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

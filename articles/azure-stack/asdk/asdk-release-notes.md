@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/17/2018
 git ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: 7770f4c45d974e8ce5750dbd3aee0d8393281151
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 1adfef9c679ccbe7a56178a041175713f4932aac
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984445"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056543"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Informacje o wersji usługi Azure Stack Development Kit  
 Ten artykuł zawiera informacje dotyczące ulepszeń, poprawek i znanych problemach w usłudze Azure Stack Development Kit. Jeśli nie masz pewności, której wersji używasz, możesz to zrobić [korzystanie z portalu, aby sprawdzić](.\.\azure-stack-updates.md#determine-the-current-version).
@@ -289,7 +289,7 @@ Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Sta
 
 - <!-- 2368581 - IS. ASDK --> Operatorów usługi Azure Stack, jeśli pojawi się alert małej ilości pamięci, a maszyny wirtualne dzierżawcy nie można wdrożyć za pomocą *błąd podczas tworzenia maszyny Wirtualnej w sieci szkieletowej*, istnieje możliwość, że sygnatury usługi Azure Stack jest mało dostępnej pamięci. Użyj [Planisty wydajności usługi Azure Stack](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) poprawnie dostępnej pojemności dla obciążeń.
 
-- <!-- TBD - IS. ASDK --> Podczas uruchamiania polecenia cmdlet Test-AzureStack w punkcie końcowym uprawnień (program ten), testu wygeneruje komunikat OSTRZEGAJ/niepowodzenie ERCS maszyny wirtualnej. Można nadal używać ASDK.
+- <!-- TBD - IS. ASDK --> Podczas uruchamiania **AzureStack testu** polecenia cmdlet w punkcie końcowym uprzywilejowanego (program ten), **wydajność roli infrastruktury Azure Stack w wystąpienia** test, spowoduje wygenerowanie komunikatu OSTRZEGAJ ERCS maszyny wirtualnej. Możesz bezpiecznie zignorować ten komunikat OSTRZEGAJ i nadal używać ASDK.
 
 #### <a name="compute"></a>Wystąpienia obliczeniowe
 - <!-- 2494144 - IS, ASDK --> Wybierając rozmiar maszyny wirtualnej do wdrażania maszyn wirtualnych, niektóre rozmiary serii F maszyn wirtualnych nie są widoczne jako część selektor rozmiar podczas tworzenia maszyny Wirtualnej. Następujących rozmiarów maszyn wirtualnych nie są wyświetlane w selektorze: *F8s_v2*, *F16s_v2*, *F32s_v2*, i *F64s_v2*.  

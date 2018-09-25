@@ -2,20 +2,22 @@
 title: Usługi Azure SQL Database Data odnajdywanie i klasyfikacja | Dokumentacja firmy Microsoft
 description: Usługi Azure SQL Database Data odnajdywanie i klasyfikacja
 services: sql-database
-author: giladmit
-manager: craigg
-ms.reviewer: vanto
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/10/2018
+author: giladmit
 ms.author: giladm
-ms.openlocfilehash: aca01e67339d5f6d003021cb17f1787093b79eda
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.reviewer: vanto
+manager: craigg
+ms.date: 09/10/2018
+ms.openlocfilehash: d34bb54729fe0adc4b26d213bfaa4ad4fb210ab7
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543966"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064190"
 ---
 # <a name="azure-sql-database-data-discovery-and-classification"></a>Usługi Azure SQL Database Data odnajdywanie i klasyfikacja
 Odnajdywanie i klasyfikacja (obecnie w wersji zapoznawczej) danych zapewnia zaawansowane możliwości wbudowane w usłudze Azure SQL Database dla **odnajdywania**, **klasyfikowania**, **etykietowania**  &  **ochrony** poufnych danych w bazach danych.
@@ -115,9 +117,9 @@ T-SQL umożliwia dodawanie/usuwanie klasyfikacje kolumn, a także pobrać wszyst
 > [!NOTE]
 > Zarządzanie etykiety za pomocą języka T-SQL, nie ma możliwości weryfikacji etykiety dodawane do kolumny istniejące w organizacji zasad usługi information protection (zestaw etykiet, które są wyświetlane w portalu zalecenia). Jest do nich można to sprawdzić.
 
-* Dodawanie/aktualizowanie klasyfikacji co najmniej jedna kolumna: [Dodaj klasyfikacji charakteru](https://docs.microsoft.com/en-us/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
-* Usunąć klasyfikację z co najmniej jedna kolumna: [PORZUCIĆ klasyfikacji charakteru](https://docs.microsoft.com/en-us/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
-* Wyświetl wszystkie klasyfikacje w bazie danych: [sys.sensitivity_classifications](https://docs.microsoft.com/en-us/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+* Dodawanie/aktualizowanie klasyfikacji co najmniej jedna kolumna: [Dodaj klasyfikacji charakteru](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
+* Usunąć klasyfikację z co najmniej jedna kolumna: [PORZUCIĆ klasyfikacji charakteru](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
+* Wyświetl wszystkie klasyfikacje w bazie danych: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 Interfejsów API REST można również użyć do programowego zarządzania klasyfikacje. Opublikowanych interfejsów API REST obsługują następujące operacje:
 * [Tworzenie lub aktualizowanie](https://docs.microsoft.com/rest/api/sql/sensitivitylabels/createorupdate) — tworzy lub aktualizuje etykieta poufności danej kolumny

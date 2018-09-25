@@ -8,12 +8,12 @@ ms.service: container-registry
 ms.topic: article
 ms.date: 08/23/2018
 ms.author: marsma
-ms.openlocfilehash: 6ff83885ba80f0399f7b085970b1191e8e4cd999
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: 4b29804690b951083810d4f75b68ff23fca44a44
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42746512"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039619"
 ---
 # <a name="quickstart-send-container-registry-events-to-event-grid"></a>Szybki Start: Wysyłanie kontenera rejestru zdarzeń do usługi Event Grid
 
@@ -141,20 +141,20 @@ Po zakończeniu subskrypcji powinna wyjściowych podobny do następującego:
 
 ## <a name="trigger-registry-events"></a>Wyzwalacz zdarzenia rejestru
 
-Przykładowa aplikacja jest włączony i uruchomiony i że zasubskrybował w rejestrze, korzystając z usługi Event Grid, możesz generować niektóre zdarzenia. W tej sekcji użyjesz pakietu ACR Build do kompilowanie i wypychanie obrazu kontenera do rejestru. Tworzenie rejestru Azure container Registry to funkcja usługi Azure Container Registry, która pozwala na tworzenie obrazów kontenerów w chmurze, bez konieczności aparat platformy Docker zainstalowany na komputerze lokalnym.
+Przykładowa aplikacja jest włączony i uruchomiony i że zasubskrybował w rejestrze, korzystając z usługi Event Grid, możesz generować niektóre zdarzenia. W tej sekcji używasz zadań usługi ACR do tworzenia i wypchniesz obraz kontenera do rejestru. Zadania usługi ACR jest funkcją usługi Azure Container Registry, która pozwala na tworzenie obrazów kontenerów w chmurze, bez konieczności aparat platformy Docker zainstalowany na komputerze lokalnym.
 
 ### <a name="build-and-push-image"></a>Zbuduj i Wypchnij obraz
 
-Wykonaj następujące polecenie interfejsu wiersza polecenia platformy Azure, aby utworzyć obraz kontenera z zawartości repozytorium GitHub. Domyślnie kompilacji usługi ACR automatycznie wypycha pomyślnie skompilowany obraz do rejestru, która powoduje wygenerowanie `ImagePushed` zdarzeń.
+Wykonaj następujące polecenie interfejsu wiersza polecenia platformy Azure, aby utworzyć obraz kontenera z zawartości repozytorium GitHub. Domyślnie zadania ACR automatycznie wypycha dane pomyślnie skompilowany obraz do rejestru, która powoduje wygenerowanie `ImagePushed` zdarzeń.
 
 ```azurecli-interactive
-az acr build --registry $ACR_NAME --image myimage:v1 https://github.com/Azure-Samples/acr-build-helloworld-node.git
+az acr build --registry $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
 ```
 
-Dane wyjściowe powinny być podobne do następującego podczas kompilacji usługi ACR kompilacji, a następnie wypycha obraz. Następujące przykładowe dane wyjściowe zostały obcięte w celu skrócenia programu.
+Dane wyjściowe powinny być podobne do następującego podczas ACR zadania kompilacji, a następnie wypycha obraz. Następujące przykładowe dane wyjściowe zostały obcięte w celu skrócenia programu.
 
 ```console
-$ az acr build -r $ACR_NAME --image myimage:v1 https://github.com/Azure-Samples/acr-build-helloworld-node.git
+$ az acr build -r $ACR_NAME --image myimage:v1 -f Dockerfile https://github.com/Azure-Samples/acr-build-helloworld-node.git
 Sending build context to ACR...
 Queued a build with build ID: aa2
 Waiting for build agent...
@@ -227,10 +227,10 @@ Odwołanie do schematu komunikatów usługi Azure Container Registry zdarzenia m
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym przewodniku Szybki Start wdrożono rejestru kontenerów, utworzono obraz za pomocą pakietu ACR Build, usunięty oraz użytych w rejestrze zdarzeń z usługi Event Grid, z przykładową aplikacją. Następnie przejdź do samouczka kompilacji usługi ACR do dalszych informacji na temat tworzenia obrazów kontenerów w chmurze, w tym zautomatyzowane kompilacje w aktualizacji obrazów podstawowych:
+W tym przewodniku Szybki Start wdrożono rejestru kontenerów, utworzono obraz rekordu ACR zadania związane z, usunięty oraz użytych w rejestrze zdarzeń z usługi Event Grid, z przykładową aplikacją. Następnie przejdź do samouczka usługi ACR zadania do dalszych informacji na temat tworzenia obrazów kontenerów w chmurze, w tym zautomatyzowane kompilacje w aktualizacji obrazów podstawowych:
 
 > [!div class="nextstepaction"]
-> [Tworzenie obrazów kontenerów w chmurze za pomocą pakietu ACR Build](container-registry-tutorial-quick-build.md)
+> [Kompilowanie obrazów kontenerów w chmurze za pomocą zadań usługi ACR](container-registry-tutorial-quick-task.md)
 
 <!-- IMAGES -->
 [sample-app-01]: ./media/container-registry-event-grid-quickstart/sample-app-01.png

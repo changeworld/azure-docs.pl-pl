@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 09/20/2018
 ms.author: carlrab
-ms.openlocfilehash: 08b7c7f9fe66de2824f28a69ecb23c1a095c2624
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 3e52f007a1baa53eca8ae0b55721e7e3cda8e61e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732977"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033604"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>Limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu opartego na jednostkach DTU 
 
@@ -79,13 +79,13 @@ Dla pojedynczych baz danych w poniższych tabelach Pokaż zasoby dostępne dla p
 
 ## <a name="single-database-change-storage-size"></a>Pojedyncza baza danych: zmiana rozmiaru magazynu
 
-- Cena jednostki DTU dla pojedynczej bazy danych obejmuje określoną ilość pamięci masowej bez ponoszenia dodatkowych kosztów. Dodatkowego magazynu ponad uwzględnioną kwotę można zaaprowizować za dodatkową opłatą maksymalnie limit maksymalnego rozmiaru, w przyrostach o rozmiarze 250 GB do 1 TB, a następnie w przyrostach wynoszących 256 GB ponad 1 TB. Magazyn w pakiecie kwoty i limity maksymalnego rozmiaru, zobacz [pojedynczej bazy danych: magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych](#single-database-storage-sizes-and-performance-levels).
-- Dodatkowy magazyn dla pojedynczej bazy danych mogą być udostępniane przez odpowiednie zwiększenie jego maksymalnego rozmiaru za pomocą [witryny Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [języka Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), [platformy Azure Interfejs wiersza polecenia](/cli/azure/sql/db#az_sql_db_update), lub [interfejsu API REST](/rest/api/sql/databases/update).
+- Cena jednostki DTU dla pojedynczej bazy danych obejmuje określoną ilość pamięci masowej bez ponoszenia dodatkowych kosztów. Dodatkowego magazynu ponad uwzględnioną kwotę można zaaprowizować za dodatkową opłatą maksymalnie limit maksymalnego rozmiaru, w przyrostach o rozmiarze 250 GB do 1 TB, a następnie w przyrostach wynoszących 256 GB ponad 1 TB. Magazyn w pakiecie kwoty i limity maksymalnego rozmiaru, zobacz [pojedynczej bazy danych: magazyn o rozmiarze i rozmiarów wystąpień obliczeniowych](#single-database-storage-sizes-and-compute-sizes).
+- Dodatkowy magazyn dla pojedynczej bazy danych mogą być udostępniane przez odpowiednie zwiększenie jego maksymalnego rozmiaru za pomocą [witryny Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [języka Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), [platformy Azure Interfejs wiersza polecenia](/cli/azure/sql/db#az-sql-db-update), lub [interfejsu API REST](/rest/api/sql/databases/update).
 - Cena dodatkowego magazynu dla pojedynczej bazy danych jest mnożony przez cena jednostkowa dodatkowego magazynu w warstwie usług wielkość dodatkowego magazynu. Szczegółowe informacje na temat cena magazynu dodatkowego, [cennik usługi SQL Database](https://azure.microsoft.com/pricing/details/sql-database/).
 
 ## <a name="single-database-change-dtus"></a>Pojedyncza baza danych: zmiana liczby jednostek Dtu
 
-Po początkowym wybraniu warstwy usług, rozmiar obliczeń i ilość miejsca w magazynie, użytkownik może pojedynczej bazy danych w górę lub dół dynamicznie skalować na podstawie rzeczywistej wydajności przy użyciu [witryny Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [języka Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [ Program PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), [wiersza polecenia platformy Azure](/cli/azure/sql/db#az_sql_db_update), lub [interfejsu API REST](/rest/api/sql/databases/update). 
+Po początkowym wybraniu warstwy usług, rozmiar obliczeń i ilość miejsca w magazynie, użytkownik może pojedynczej bazy danych w górę lub dół dynamicznie skalować na podstawie rzeczywistej wydajności przy użyciu [witryny Azure portal](sql-database-single-databases-manage.md#azure-portal-manage-logical-servers-and-databases), [języka Transact-SQL](/sql/t-sql/statements/alter-database-azure-sql-database#examples), [ Program PowerShell](/powershell/module/azurerm.sql/set-azurermsqldatabase), [wiersza polecenia platformy Azure](/cli/azure/sql/db#az-sql-db-update), lub [interfejsu API REST](/rest/api/sql/databases/update). 
 
 Wideo pokazano, dynamicznie zmieniające się usługa warstwy i obliczenia rozmiaru w celu zwiększenia dostępna liczba jednostek Dtu dla pojedynczej bazy danych.
 

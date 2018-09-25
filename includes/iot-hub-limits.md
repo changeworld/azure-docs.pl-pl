@@ -20,7 +20,7 @@ W poniższej tabeli przedstawiono limity dotyczące zasobów usługi IoT Hub:
 | Maksymalna liczba tożsamości urządzeń<br/> zwróconych w pojedynczym wywołaniu |1000 |
 | Maksymalny okres przechowywania komunikatów usługi IoT Hub dla komunikatów przesyłanych z urządzenia do chmury |7 dni |
 | Maksymalny rozmiar komunikatu przesyłanego z urządzenia do chmury |256 KB |
-| Maksymalny rozmiar partii przesyłanej z urządzenia do chmury |256 KB |
+| Maksymalny rozmiar partii przesyłanej z urządzenia do chmury |Protokół AMQP i HTTP: 256 KB dla całej usługi batch <br/>MQTT: 256 KB dla każdego komunikatu |
 | Maksymalna liczba komunikatów w partii przesyłanej z urządzenia do chmury |500 |
 | Maksymalny rozmiar komunikatu przesyłanego z chmury do urządzenia |64 KB |
 | Maksymalny czas wygaśnięcia komunikatu przesyłanego z chmury do urządzenia |2 dni |

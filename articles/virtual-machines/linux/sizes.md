@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 09/24/2018
 ms.author: jonbeck
-ms.openlocfilehash: 5ee3d29ceada238c5e4a633b501f63ed307ba76e
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 16a9b4118202cb0f796693f8f392c68939e89899
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37900871"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035729"
 ---
 # <a name="sizes-for-linux-virtual-machines-in-azure"></a>Rozmiary maszyn wirtualnych systemu Linux na platformie Azure
 W tym artykule opisano dostępne rozmiary i opcje dla maszyn wirtualnych platformy Azure używane do uruchamiania obciążeń i aplikacji systemu Linux. Zapewnia również zagadnienia dotyczące wdrażania pod uwagę podczas planowania tych zasobów. W tym artykule jest także dostępna dla [maszyn wirtualnych Windows](../windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json).
@@ -32,7 +32,7 @@ W tym artykule opisano dostępne rozmiary i opcje dla maszyn wirtualnych platfor
 | [Optymalizacja pod kątem obliczeń](sizes-compute.md)        | Fsv2, Fs F             | Duża moc procesora CPU w stosunku do pamięci. Dobrze sprawdzają się w przypadku serwerów sieci Web o średnim ruchu, urządzeń sieciowych, procesów wsadowych i serwerów aplikacji.        |
 | [Optymalizacja pod kątem pamięci](sizes-memory.md)         | Esv3 Ev3, M, GS, G, DSv2, Dv2  | Wysoki współczynnik pamięci na Procesor. Świetnie sprawdzają się w przypadku serwerów relacyjnych baz danych, średnich i dużych pamięci podręcznych oraz analizowania w pamięci.                 |
 | [Optymalizacja pod kątem magazynu](sizes-storage.md)        | Ls                | Wysoka przepływność dysku i duża liczba operacji we/wy. Opcja idealna w przypadku danych big data oraz baz danych SQL i NoSQL.                                                         |
-| [Procesor GPU](sizes-gpu.md)            | NV NC, NCv2, NCv3, ND            | Wyspecjalizowane maszyny wirtualne przeznaczone dla intensywnego renderowania grafiki i edytowania materiałów wideo, a także modelowanie szkolenia oraz wnioskowania (ND) przy użyciu uczenia głębokiego. Dostępne za pomocą jednego lub wielu procesorów GPU.       |
+| [Procesor GPU](sizes-gpu.md)            | NV NVv2, NC, NCv2, NCv3, ND            | Wyspecjalizowane maszyny wirtualne przeznaczone dla intensywnego renderowania grafiki i edytowania materiałów wideo, a także modelowanie szkolenia oraz wnioskowania (ND) przy użyciu uczenia głębokiego. Dostępne za pomocą jednego lub wielu procesorów GPU.       |
 | [Obliczenia o wysokiej wydajności](sizes-hpc.md) | H       | Maszyny wirtualne z najszybszymi i najbardziej wydajnymi procesorami CPU oraz, opcjonalnie, interfejsami sieciowymi zapewniającymi wysoką przepływność (RDMA). 
 
 <br>

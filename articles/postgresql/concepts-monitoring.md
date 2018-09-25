@@ -1,26 +1,25 @@
 ---
-title: Monitorowanie w usłudze Azure Database for PostgreSQL
-description: W tym artykule opisano metryki dotyczące monitorowania i alertów dla usługi Azure Database for PostgreSQL, w tym statystyk procesora CPU, Magazyn i połączenia.
+title: Monitorowanie i dostrajanie w usłudze Azure Database for PostgreSQL
+description: W tym artykule opisano, monitorowania i dostrajania funkcji w usłudze Azure Database for PostgreSQL.
 services: postgresql
 author: rachel-msft
 ms.author: raagyema
-manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
-ms.topic: article
-ms.date: 09/17/2018
-ms.openlocfilehash: 17b12514e32ad8d1548d834d72e0f7564fe78143
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.topic: conceptual
+ms.date: 09/24/2018
+ms.openlocfilehash: e29186d07d9a060e45ed051d6f7ed0ac81a5e15b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985783"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982668"
 ---
-# <a name="monitoring-in-azure-database-for-postgresql"></a>Monitorowanie w usłudze Azure Database for PostgreSQL
-Dane dotyczące serwerów monitorowania ułatwia rozwiązywanie problemów i zoptymalizować dla obciążenia. Usługa Azure Database for PostgreSQL udostępnia różne metryki, które zapewniają wgląd w zachowanie zasobach obsługujących serwera PostgreSQL. 
+# <a name="monitor-and-tune"></a>Monitorowanie i dostrajanie
+Dane dotyczące serwerów monitorowania ułatwia rozwiązywanie problemów i zoptymalizować dla obciążenia. 
 
 ## <a name="metrics"></a>Metryki
-Wszystkie metryki usługi Azure mieć częstotliwość co minutę, a wszystkie metryki zapewnia 30 dni historii. Można skonfigurować alerty dotyczące metryk. Aby uzyskać wskazówki krok po kroku, zobacz [jak skonfigurować alerty](howto-alert-on-metric.md). Inne zadania obejmują skonfigurowanie zautomatyzowanych akcji, wykonywanie zaawansowanych analiz i archiwizowanie historii. Aby uzyskać więcej informacji, zobacz [Przegląd metryk usługi Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
+Usługa Azure Database for PostgreSQL udostępnia różne metryki, które zapewniają wgląd w zachowanie zasobach obsługujących serwera PostgreSQL. Wszystkie metryki jest emitowane z częstotliwością co minutę, a także zawiera maksymalnie 30 dni historii. Można skonfigurować alerty dotyczące metryk. Aby uzyskać wskazówki krok po kroku, zobacz [jak skonfigurować alerty](howto-alert-on-metric.md). Inne zadania obejmują skonfigurowanie zautomatyzowanych akcji, wykonywanie zaawansowanych analiz i archiwizowanie historii. Aby uzyskać więcej informacji, zobacz [Przegląd metryk usługi Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md).
 
 ### <a name="list-of-metrics"></a>Listy metryk
 Te metryki są dostępne dla usługi Azure Database for PostgreSQL:
@@ -41,6 +40,14 @@ Te metryki są dostępne dla usługi Azure Database for PostgreSQL:
 |network_bytes_egress|Sieć — wyjście|Bajty|Sieć się między aktywnych połączeń.|
 |network_bytes_ingress|Sieć — wejście|Bajty|Sieć w różnych aktywnych połączeń.|
 
+## <a name="query-store"></a>Magazyn zapytań
+[Query Store](concepts-query-store.md) to funkcja publicznej wersji zapoznawczej, która śledzi zapytania wydajność w tym czasie statystyki czasu wykonywania zapytań i poczekaj zdarzenia. Ta funkcja będzie nadal występować kwerendy informacji o wydajności środowiska uruchomieniowego w systemowej bazie danych o nazwie **azure_sys** w ramach schematu query_store. Można kontrolować zbieranie i przechowywanie danych za pośrednictwem różnych konfiguracji pokrętła.
+
+## <a name="query-performance-insight"></a>Szczegółowe informacje o wydajności zapytań
+[Szczegółowe informacje o wydajności zapytań](concepts-query-performance-insight.md) działa w połączeniu z Query Store umożliwia prezentowanie wizualizacji dostępne w witrynie Azure portal. Te wykresy umożliwiają identyfikowanie zapytań klucza tego obniżenie wydajności. Query Performance Insight w publicznej wersji zapoznawczej i jest dostępny w **pomoc techniczna i rozwiązywanie problemów z** sekcji usługi Azure Database dla serwera PostgreSQL strony portalu.
+
+## <a name="performance-recommendations"></a>Zalecenia dotyczące wydajności
+[Zalecenia dotyczące wydajności](concepts-performance-recommendations.md) funkcji identyfikuje możliwości poprawy wydajność obciążenia. Publiczna wersja zapoznawcza zalecenia dotyczące wydajności zapewnia zaleceń dotyczących tworzenia nowych indeksy, które potencjalnie mogą zwiększyć wydajność obciążeń. Aby uzyskać zalecenia dotyczące indeksu, funkcja bierze pod uwagę różne cechy bazy danych, w tym jego schematu i obciążenia zgłoszonej Query Store. Po zaimplementowaniu żadnych rekomendacji wydajności, klientów należy przetestować wydajność, aby ocenić wpływ tych zmian. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Zobacz [jak skonfigurować alerty](howto-alert-on-metric.md) wskazówki dotyczące tworzenia alertu na metrykę.

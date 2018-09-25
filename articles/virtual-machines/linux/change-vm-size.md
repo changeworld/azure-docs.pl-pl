@@ -1,6 +1,6 @@
 ---
-title: Jak zmienić rozmiar maszyny Wirtualnej systemu Linux, Azure CLI 2.0 | Dokumentacja firmy Microsoft
-description: Jak skalowanie w górę i skalowania maszynę wirtualną systemu Linux przez zmianę rozmiaru maszyny Wirtualnej.
+title: Jak zmienić rozmiar maszyny Wirtualnej systemu Linux przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Jak skalować w górę lub w dół maszynę wirtualną systemu Linux, zmieniając rozmiar maszyny Wirtualnej.
 services: virtual-machines-linux
 documentationcenter: na
 author: mikewasson
@@ -16,27 +16,27 @@ ms.workload: infrastructure-services
 ms.date: 02/10/2017
 ms.author: mwasson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 900c45713541825ea36fe0b2d8684863b8138507
-ms.sourcegitcommit: 828d8ef0ec47767d251355c2002ade13d1c162af
+ms.openlocfilehash: 0b8802c91ceb59d391dc27a71da905de9c15a1dc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/25/2018
-ms.locfileid: "36936646"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993232"
 ---
-# <a name="resize-a-linux-virtual-machine-using-cli-20"></a>Zmień rozmiar maszyny wirtualnej systemu Linux przy użyciu interfejsu wiersza polecenia 2.0
+# <a name="resize-a-linux-virtual-machine-using-azure-cli"></a>Zmień rozmiar maszyny wirtualnej systemu Linux przy użyciu wiersza polecenia platformy Azure 
 
-Po udostępnić maszynę wirtualną (VM), można skalować maszyny Wirtualnej w górę lub w dół, zmieniając [rozmiar maszyny Wirtualnej][vm-sizes]. W niektórych przypadkach należy najpierw cofnąć maszyny Wirtualnej. Musisz cofnąć maszyny Wirtualnej, jeśli wymagany rozmiar jest niedostępny w klastrze sprzętu, który jest hostem maszyny Wirtualnej. W tym artykule szczegółowo sposób zmiany rozmiaru maszyny Wirtualnej systemu Linux, 2.0 interfejsu wiersza polecenia platformy Azure. 
+Po zainicjowaniu maszynę wirtualną (VM) możesz skalować maszynę Wirtualną w górę lub w dół, zmieniając [rozmiar maszyny Wirtualnej][vm-sizes]. W niektórych przypadkach możesz najpierw cofnąć maszyny Wirtualnej. Należy cofnąć przydział maszyny Wirtualnej, jeśli żądany rozmiar jest niedostępny w klastrze sprzętu, który jest hostem maszyny Wirtualnej. W tym artykule opisano, jak zmienić rozmiar maszyny Wirtualnej systemu Linux przy użyciu wiersza polecenia platformy Azure. 
 
 ## <a name="resize-a-vm"></a>Zmienianie rozmiaru maszyny wirtualnej
-Aby zmienić rozmiar maszyny Wirtualnej, należy najnowszej [Azure CLI 2.0](/cli/azure/install-az-cli2) zainstalowane i zalogowany do konta platformy Azure przy użyciu [logowania az](/cli/azure/reference-index#az_login).
+Aby zmienić rozmiar maszyny Wirtualnej, potrzebujesz najnowszej [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
 
-1. Wyświetl listę dostępnych rozmiarów maszyny Wirtualnej w klastrze sprzętu, gdzie jest hostowana maszyna wirtualna z [az maszyny wirtualnej-vm — zmiany rozmiaru — opcje listy](/cli/azure/vm#az_vm_list_vm_resize_options). Poniższy przykład zawiera rozmiarów maszyn wirtualnych dla maszyny Wirtualnej o nazwie `myVM` w grupie zasobów `myResourceGroup` regionu:
+1. Wyświetl listę dostępnych rozmiarów maszyn wirtualnych w klastrze sprzętu, w którym maszyna wirtualna jest hostowana przy użyciu [listy maszyny wirtualnej az-vm-resize-options](/cli/azure/vm#az_vm_list_vm_resize_options). Poniższy przykład wyświetla listę rozmiarów maszyn wirtualnych dla maszyny Wirtualnej o nazwie `myVM` w grupie zasobów `myResourceGroup` regionu:
    
     ```azurecli
     az vm list-vm-resize-options --resource-group myResourceGroup --name myVM --output table
     ```
 
-2. Jeśli żądany rozmiar maszyny Wirtualnej jest wyświetlana, Zmień rozmiar maszyny Wirtualnej z [Zmień rozmiar maszyny wirtualnej az](/cli/azure/vm#az_vm_resize). Poniższy przykład powoduje zmianę rozmiaru maszyny Wirtualnej o nazwie `myVM` do `Standard_DS3_v2` rozmiar:
+2. Jeśli żądany rozmiar maszyny Wirtualnej jest wymieniony, zmienić rozmiar maszyny Wirtualnej przy użyciu [zmienić rozmiar maszyny wirtualnej az](/cli/azure/vm#az_vm_resize). Poniższy przykład zmienia rozmiar maszyny Wirtualnej o nazwie `myVM` do `Standard_DS3_v2` rozmiar:
    
     ```azurecli
     az vm resize --resource-group myResourceGroup --name myVM --size Standard_DS3_v2
@@ -44,7 +44,7 @@ Aby zmienić rozmiar maszyny Wirtualnej, należy najnowszej [Azure CLI 2.0](/cli
    
     Maszyna wirtualna zostanie uruchomiony ponownie w trakcie tego procesu. Po ponownym uruchomieniu są mapowane ponownie z istniejącego systemu operacyjnego i dysków z danymi. Elementy na dysku tymczasowym zostaną utracone.
 
-3. Jeśli żądany rozmiar maszyny Wirtualnej nie ma na liście, należy najpierw cofnąć maszyny Wirtualnej z [deallocate wirtualna az](/cli/azure/vm#az_vm_deallocate). Ten proces umożliwia maszyna wirtualna może następnie być powiększony dostępny rozmiar, że obsługuje region, a następnie uruchomiona. Poniższe kroki cofnięcie przydziału, Zmień rozmiar, a następnie uruchom maszynę Wirtualną o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`:
+3. Jeśli żądany rozmiar maszyny Wirtualnej nie ma na liście, musisz najpierw Cofnij Przydział maszyny Wirtualnej przy użyciu [az vm deallocate](/cli/azure/vm#az_vm_deallocate). Ten proces umożliwia maszynę Wirtualną, aby następnie można zmienić rozmiar do dowolnego rozmiaru, które są dostępne, że obsługuje regionu, a następnie jego uruchomienie. Poniższe kroki cofnięcie przydziału, rozmiar, a następnie uruchom maszynę Wirtualną o nazwie `myVM` w grupie zasobów o nazwie `myResourceGroup`:
    
     ```azurecli
     az vm deallocate --resource-group myResourceGroup --name myVM
@@ -53,10 +53,10 @@ Aby zmienić rozmiar maszyny Wirtualnej, należy najnowszej [Azure CLI 2.0](/cli
     ```
    
    > [!WARNING]
-   > Cofanie przydziału maszyny Wirtualnej zwalnia również dynamiczne adresy IP przypisane do maszyny Wirtualnej. Nie dotyczy systemu operacyjnego i dysków z danymi.
+   > Cofanie przydziału maszyny Wirtualnej również zwalnia dynamiczne adresy IP przypisane do maszyny Wirtualnej. Nie dotyczy systemu operacyjnego i dysków z danymi.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dodatkowe możliwości skalowania uruchamianie wielu wystąpień maszyny Wirtualnej i skalowanie w poziomie. Aby uzyskać więcej informacji, zobacz [automatycznie skalować w zestawie skalowania maszyn wirtualnych systemu Linux maszyny][scale-set]. 
+Dla uzyskania dodatkowej skalowalności uruchomić wiele wystąpień maszyny Wirtualnej, a następnie skalować w poziomie. Aby uzyskać więcej informacji, zobacz [automatyczne skalowanie maszyn z systemem Linux w zestawie skalowania maszyn wirtualnych][scale-set]. 
 
 <!-- links -->
 [boot-diagnostics]: https://azure.microsoft.com/blog/boot-diagnostics-for-virtual-machines-v2/

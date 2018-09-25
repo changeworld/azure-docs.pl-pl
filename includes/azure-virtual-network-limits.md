@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 08/16/2018
 ms.author: jdial
 ms.custom: include file
-ms.openlocfilehash: 4ab574f99f678683497b0f00b36abcda89991f88
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 673faff51c3d06e50941a6982a9f654c28598d86
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "43435609"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47006507"
 ---
 <a name="virtual-networking-limits-classic"></a>Poniższe limity mają zastosowanie tylko w przypadku zasobów sieciowych zarządzanych przy użyciu klasycznego modelu wdrażania, które przypadają na jedną subskrypcję. Dowiedz się, jak [wyświetlić bieżące użycie zasobów względem limitów subskrypcji](../articles/networking/check-usage-against-limits.md).
 
@@ -60,6 +60,8 @@ Następujące limity mają zastosowanie tylko w przypadku zasobów sieciowych za
 | Zdefiniowane przez użytkownika tabele tras |200 |
 | Zdefiniowane przez użytkownika trasy na tabelę tras |400 |
 | Certyfikaty główne typu punkt-lokacja na bramę VPN Gateway |20 |
+| Dotknie sieci wirtualnej |100 |
+| Konfiguracji wzorca TAP interfejsu sieciowego na PODSŁUCHU sieci wirtualnej |100 |
 
 #### <a name="publicip-address"></a>Publiczne ograniczeń adresów IP
 

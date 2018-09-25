@@ -1,6 +1,6 @@
 ---
-title: Wprowadzenie do uwierzytelniania dla aplikacji mobilnej w aplikacji platformy Xamarin Forms | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak korzystać z aplikacji mobilnej uwierzytelniać użytkowników aplikacji platformy Xamarin Forms za pomocą różnych dostawców tożsamości, obejmującej AAD, Google, Facebook, Twitter i Microsoft.
+title: Rozpoczynanie pracy z usługą uwierzytelniania dla aplikacji mobilnych w aplikacji platformy Xamarin Forms | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak używać funkcji Mobile Apps, uwierzytelniać użytkowników aplikacji platformy Xamarin Forms przy użyciu różnych dostawców tożsamości, obejmującej usługi AAD, Google, Facebook, Twitter i Microsoft.
 services: app-service\mobile
 documentationcenter: xamarin
 author: panarasi
@@ -12,63 +12,63 @@ ms.workload: mobile
 ms.tgt_pltfrm: mobile-xamarin
 ms.devlang: dotnet
 ms.topic: article
-ms.date: 08/07/2017
+ms.date: 09/24/2018
 ms.author: panarasi
-ms.openlocfilehash: e3e8c843437558c6d5d3a3c39bed1e647f852b18
-ms.sourcegitcommit: df4ddc55b42b593f165d56531f591fdb1e689686
+ms.openlocfilehash: f7e500fb5856c7eec48a371042244b44dd944779
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/04/2018
-ms.locfileid: "27593402"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063785"
 ---
 # <a name="add-authentication-to-your-xamarin-forms-app"></a>Dodawanie uwierzytelniania do aplikacji platformy Xamarin Forms
 [!INCLUDE [app-service-mobile-selector-get-started-users](../../includes/app-service-mobile-selector-get-started-users.md)]
 
 ## <a name="overview"></a>Przegląd
-W tym temacie przedstawiono, jak uwierzytelniać użytkowników aplikacji usługi Mobile aplikacji z poziomu aplikacji klienta. W tym samouczku Dodawanie uwierzytelniania do projektu szybkiego startu Xamarin Forms przy użyciu dostawcy tożsamości, która jest obsługiwana przez usługę App Service. Po pomyślnie trwa uwierzytelnieniu i autoryzacji w aplikacji mobilnej, jest wyświetlana wartość Identyfikatora użytkownika i będzie można uzyskać dostęp do danych tabeli ograniczone.
+W tym temacie dowiesz się, jak uwierzytelniać użytkowników aplikacji usługi App Service Mobile z aplikacji klienckiej. W tym samouczku dodasz uwierzytelnianie do projektu quickstart narzędzia Xamarin Forms przy użyciu dostawcy tożsamości, która jest obsługiwana przez usługę App Service. Po są pomyślnie uwierzytelniony i autoryzowany przez aplikację Mobile, jest wyświetlana wartość Identyfikatora użytkownika i będzie można uzyskiwać dostęp do danych tabel z ograniczeniami.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby uzyskać najlepsze wyniki z tego samouczka, zaleca się wykonanie [tworzenie aplikacji platformy Xamarin Forms] [ 1] samouczka. Po ukończeniu tego samouczka, konieczne będzie projektu Xamarin Forms aplikacji TodoList wielu platform.
+Najlepszych wyników za pomocą tego samouczka, zaleca się wykonanie [tworzenie aplikacji platformy Xamarin Forms] [ 1] samouczka. Po ukończeniu tego samouczka trzeba będzie projektu Xamarin Forms, który jest aplikację listy zadań dla wielu platform.
 
-Jeśli nie używasz szybki start pobrany Projekt serwera, należy dodać pakietu rozszerzenia uwierzytelniania do projektu. Aby uzyskać więcej informacji na temat pakietów rozszerzenia serwera, zobacz [pracować z serwera wewnętrznej bazy danych .NET SDK usługi Azure Mobile Apps][2].
+Jeśli nie używasz projektu serwera pobranego — szybki start, należy dodać pakiet rozszerzenia uwierzytelnianie do projektu. Aby uzyskać więcej informacji na temat pakietów rozszerzeń serwera, zobacz [pracy z zestawem SDK serwera zaplecza platformy .NET dla usługi Azure Mobile Apps][2].
 
-## <a name="register-your-app-for-authentication-and-configure-app-services"></a>Zarejestrować aplikację do uwierzytelniania i konfigurowanie usługi aplikacji
+## <a name="register-your-app-for-authentication-and-configure-app-services"></a>Rejestrowanie aplikacji do uwierzytelniania i konfigurowanie usług aplikacji
 [!INCLUDE [app-service-mobile-register-authentication](../../includes/app-service-mobile-register-authentication.md)]
 
-## <a name="redirecturl"></a>Dodaj aplikację do dozwolonych przekierowania zewnętrzne adresy URL
+## <a name="redirecturl"></a>Dodawanie aplikacji do adresów URL dozwolonych zewnętrznego przekierowania
 
-Bezpieczne uwierzytelnianie wymaga Zdefiniuj nowy schemat adresu URL dla aplikacji. Dzięki temu system uwierzytelniania przekierować z powrotem do aplikacji po zakończeniu procesu uwierzytelniania. W tym samouczku używamy schemat adresu URL _appname_ w ciągu. Można jednak użyć dowolnego wybranego schematu URL. Powinien być unikatowy w aplikacji mobilnej. Aby włączyć przekierowywanie po stronie serwera:
+Bezpieczne uwierzytelnianie wymaga, zdefiniuj nowy schemat adresu URL dla aplikacji. Dzięki temu system uwierzytelniania przekierować z powrotem do aplikacji po zakończeniu procesu uwierzytelniania. W tym samouczku używamy schemat adresu URL _appname_ w całym. Można jednak użyć dowolnego wybranego schematu URL. Powinien on być unikatowy dla twojej aplikacji mobilnej. Aby włączyć przekierowywanie po stronie serwera:
 
-1. W [portalu Azure][8], wybierz usługę aplikacji.
+1. W [witryny Azure portal][8], wybierz swoją usługę aplikacji.
 
 2. Kliknij przycisk **uwierzytelniania / autoryzacji** opcji menu.
 
-3. W **dozwolone zewnętrznych adresów URL przekierowań**, wprowadź `url_scheme_of_your_app://easyauth.callback`.  **Url_scheme_of_your_app** w tym ciągu jest schemat adresu URL dla aplikacji mobilnej.  Musi on być zgodny normalne Specyfikacja adresu URL dla protokołu (Użyj litery i tylko cyfry i rozpoczyna się od litery).  Należy zanotuj ciąg, który wybrany jako trzeba będzie dostosować kodu aplikacji mobilnej przy użyciu schemat adresu URL w kilku miejscach.
+3. W **dozwolone zewnętrzne adresy URL przekierowania**, wprowadź `url_scheme_of_your_app://easyauth.callback`.  **Url_scheme_of_your_app** w tym ciągu jest schemat adresu URL aplikacji mobilnej.  Powinien on być zgodny z normalnej Specyfikacja adresu URL dla protokołu (litery użytkowania i tylko cyfry oraz rozpoczynać się literą).  Należy zapamiętać, ciąg, który wybierzesz, ponieważ trzeba będzie dostosować kod aplikacji mobilnych za pomocą schemat adresu URL w kilku miejscach.
 
 4. Kliknij przycisk **OK**.
 
 5. Kliknij pozycję **Zapisz**.
 
-## <a name="restrict-permissions-to-authenticated-users"></a>Ogranicz uprawnienia dla uwierzytelnionych użytkowników
+## <a name="restrict-permissions-to-authenticated-users"></a>Ogranicz uprawnienia do uwierzytelnionych użytkowników
 [!INCLUDE [app-service-mobile-restrict-permissions-dotnet-backend](../../includes/app-service-mobile-restrict-permissions-dotnet-backend.md)]
 
 ## <a name="add-authentication-to-the-portable-class-library"></a>Dodawanie uwierzytelniania do biblioteki klas przenośnych
-Aplikacje mobilne używa [LoginAsync] [ 3] — metoda rozszerzenia na [MobileServiceClient] [ 4] do logowania użytkownika z usługi aplikacji uwierzytelniania. W przykładzie użyto przepływ uwierzytelniania serwer zarządzany, który wyświetla dostawcy w interfejsie logowania w aplikacji. Aby uzyskać więcej informacji, zobacz [serwer zarządzany uwierzytelniania][5]. Aby zapewnić lepsze środowisko użytkownika w aplikacji produkcyjnej, należy rozważyć zamiast za pomocą [zarządzanych przez klienta uwierzytelniania][6].
+Używa funkcji Mobile Apps [LoginAsync] [ 3] metody rozszerzenia [MobileServiceClient] [ 4] zalogowania użytkownika przy użyciu usługi App Service uwierzytelnianie. Ta próbka używa przepływu uwierzytelniania serwer zarządzany, który wyświetla interfejsie dostawcy logowania w aplikacji. Aby uzyskać więcej informacji, zobacz [serwer zarządzany uwierzytelniania][5]. Aby zapewnić lepsze środowisko użytkownika w swojej aplikacji w środowisku produkcyjnym, należy wziąć pod uwagę zamiast przy użyciu [zarządzanych przez klienta uwierzytelniania][6].
 
-Do uwierzytelniania za pomocą projektu Xamarin Forms, zdefiniuj **IAuthenticate** interfejsu przenośnej biblioteki klas dla aplikacji. Następnie dodaj **logowania** przycisk interfejsu użytkownika zdefiniowane w przenośną bibliotekę klas kliknij, aby uruchomić uwierzytelniania. Dane są ładowane z zaplecza aplikacji mobilnej po pomyślnym uwierzytelnieniu.
+Aby uwierzytelniać się w projekcie Xamarin Forms, zdefiniuj **IAuthenticate** interfejsu in Portable Class Library dla aplikacji. Następnie dodaj **logowania** przycisku do interfejsu użytkownika zdefiniowane w Portable Class Library, którego kliknięcie pozwala uruchomić uwierzytelniania. Dane są ładowane z zaplecza aplikacji mobilnej po pomyślnym uwierzytelnieniu.
 
 Implementowanie **IAuthenticate** interfejs dla każdej platformy obsługiwane przez aplikację.
 
-1. W programie Visual Studio lub Xamarin Studio Otwórz App.cs z projektu o **przenośne** w nazwie, czyli projektu biblioteki przenośnej klasy, a następnie dodaj następujące `using` instrukcji:
+1. W programie Visual Studio lub Xamarin Studio, otwórz App.cs z projektu za pomocą **przenośne** nazwę, która jest projekt przenośnej biblioteki klas, a następnie dodaj następujący kod `using` instrukcji:
 
         using System.Threading.Tasks;
-2. W App.cs, Dodaj następujący `IAuthenticate` definicji interfejsu bezpośrednio przed `App` definicji klasy.
+2. W App.cs, Dodaj następujący kod `IAuthenticate` definicji interfejsu bezpośrednio przed `App` definicji klasy.
 
         public interface IAuthenticate
         {
             Task<bool> Authenticate();
         }
-3. Można zainicjować interfejsu z implementacją specyficzne dla platformy, należy dodać następujące statyczne elementy członkowskie do **aplikacji** klasy.
+3. Aby zainicjować interfejsu z implementacją specyficzne dla platformy, Dodaj następujące składowe statyczne do **aplikacji** klasy.
 
         public static IAuthenticate Authenticator { get; private set; }
 
@@ -76,17 +76,17 @@ Implementowanie **IAuthenticate** interfejs dla każdej platformy obsługiwane p
         {
             Authenticator = authenticator;
         }
-4. Otwórz TodoList.xaml z projektu biblioteki klas przenośnych, należy dodać następujące **przycisk** element *buttonsPanel* elementu układu po istniejącego przycisku:
+4. Otwórz TodoList.xaml z projektu Portable Class Library, Dodaj następujący kod **przycisk** element *buttonsPanel* elementu układu, po istniejącego przycisku:
 
           <Button x:Name="loginButton" Text="Sign-in" MinimumHeightRequest="30"
             Clicked="loginButton_Clicked"/>
 
-    Ten przycisk wyzwala serwer zarządzany uwierzytelniania za pomocą zaplecza aplikacji mobilnej.
-5. Otwórz TodoList.xaml.cs z projektu biblioteki klas przenośnych, a następnie dodaj poniższe pole, aby `TodoList` klasy:
+    Ten przycisk uruchamia serwer zarządzany uwierzytelniania przy użyciu zaplecza aplikacji mobilnej.
+5. Otwórz TodoList.xaml.cs z projektu Portable Class Library, a następnie dodaj następujące pola `TodoList` klasy:
 
         // Track whether the user has authenticated.
         bool authenticated = false;
-6. Zastąp **OnAppearing** metodę z następującym kodem:
+6. Zastąp **OnAppearing** metoda następującym kodem:
 
         protected override async void OnAppearing()
         {
@@ -104,8 +104,8 @@ Implementowanie **IAuthenticate** interfejs dla każdej platformy obsługiwane p
             }
         }
 
-    Ten kod upewnia się, że tylko odświeżania danych z usługi po Cię uwierzytelniono.
-7. Dodaj następujące obsługę **kliknięto element** zdarzenia **TodoList** klasy:
+    Ten kod sprawdza, czy dane są odświeżane z usługi po użytkownik został uwierzytelniony.
+7. Dodaj następujący program obsługi dla **kliknięciu** zdarzenia **TodoList** klasy:
 
         async void loginButton_Clicked(object sender, EventArgs e)
         {
@@ -116,21 +116,21 @@ Implementowanie **IAuthenticate** interfejs dla każdej platformy obsługiwane p
             if (authenticated == true)
                 await RefreshItems(true, syncItems: false);
         }
-8. Zapisz zmiany i ponownie skompilować projekt przenośnej biblioteki klas weryfikowanie żadne błędy.
+8. Zapisz zmiany i skompiluj ponownie projekt biblioteki klas przenośnych weryfikowanie bez błędów.
 
-## <a name="add-authentication-to-the-android-app"></a>Dodawanie uwierzytelniania do aplikacji systemu Android
-W tej sekcji przedstawiono sposób wykonania **IAuthenticate** interfejs w projekcie aplikacji systemu Android. Pomiń tę sekcję, jeśli urządzenia z systemem Android nie są obsługiwane.
+## <a name="add-authentication-to-the-android-app"></a>Dodawanie uwierzytelniania do aplikacji dla systemu Android
+W tej sekcji pokazano, jak zaimplementować **IAuthenticate** interfejsu w projekcie aplikacji dla systemu Android. Pomiń tę sekcję, jeśli nie są obsługiwane urządzenia z systemem Android.
 
-1. W programie Visual Studio lub Xamarin Studio kliknij prawym przyciskiem myszy **droid** projektu, następnie **Ustaw jako projekt startowy**.
-2. Naciśnij klawisz F5, aby uruchomić projekt w debugerze, a następnie sprawdź, czy wystąpił nieobsługiwany wyjątek przy użyciu kodu stanu 401 (bez autoryzacji) jest wywoływane po uruchomieniu aplikacji. 401 kod jest generowany, ponieważ dostęp do wewnętrznej bazy danych jest ograniczony tylko autoryzowanym użytkownikom.
-3. Otwórz MainActivity.cs w projekcie systemu Android i dodaj następujące `using` instrukcji:
+1. W programie Visual Studio lub Xamarin Studio kliknij prawym przyciskiem myszy **droid** projekt następnie **Ustaw jako projekt startowy**.
+2. Naciśnij klawisz F5, aby uruchomić projekt w debugerze, a następnie sprawdź, czy wystąpił nieobsługiwany wyjątek, kod stanu 401 (bez autoryzacji) jest wywoływane po uruchomieniu aplikacji. 401 kod jest generowany, ponieważ dostęp do wewnętrznej bazy danych jest ograniczony tylko autoryzowanym użytkownikom.
+3. Otwórz MainActivity.cs w projekcie dla systemu Android i dodaj następującą `using` instrukcji:
 
         using Microsoft.WindowsAzure.MobileServices;
         using System.Threading.Tasks;
 4. Aktualizacja **MainActivity** klasy do zaimplementowania **IAuthenticate** interfejsu, w następujący sposób:
 
         public class MainActivity : global::Xamarin.Forms.Platform.Android.FormsApplicationActivity, IAuthenticate
-5. Aktualizacja **MainActivity** klasy, dodając **MobileServiceUser** pola i **Uwierzytelnij** metodę, która jest wymagana przez **IAuthenticate** interfejsu, w następujący sposób:
+5. Aktualizacja **MainActivity** klasy, dodając **MobileServiceUser** pola i **Uwierzytelnij** metody, która jest wymagana przez **IAuthenticate** interfejsu, w następujący sposób:
 
         // Define a authenticated user.
         private MobileServiceUser user;
@@ -165,9 +165,9 @@ W tej sekcji przedstawiono sposób wykonania **IAuthenticate** interfejs w proje
             return success;
         }
 
-    Jeśli używasz dostawcy tożsamości innego niż usługi Facebook, wybierz inną wartość dla [MobileServiceAuthenticationProvider][7].
+    Jeśli używasz dostawcy tożsamości innych niż usługi Facebook, wybierz inną wartość dla [MobileServiceAuthenticationProvider][7].
 
-6. Aktualizacja **AndroidManifest.xml** plików, dodając następujące XML wewnątrz `<application>` elementu:
+6. Aktualizacja **AndroidManifest.xml** pliku, dodając następujący kod XML wewnątrz `<application>` elementu:
 
     ```xml
     <activity android:name="com.microsoft.windowsazure.mobileservices.authentication.RedirectUrlActivity" android:launchMode="singleTop" android:noHistory="true">
@@ -179,28 +179,34 @@ W tej sekcji przedstawiono sposób wykonania **IAuthenticate** interfejs w proje
       </intent-filter>
     </activity>
     ```
-    Zastąp `{url_scheme_of_your_app}` ze schematem adresu URL.
+    Zastąp `{url_scheme_of_your_app}` z schemat adresu URL.
 7. Dodaj następujący kod do **OnCreate** metody **MainActivity** klasy przed wywołaniem do `LoadApplication()`:
 
         // Initialize the authenticator before loading the app.
         App.Init((IAuthenticate)this);
 
-    Ten kod gwarantuje, że wystawca uwierzytelnienia jest inicjowana przed obciążeń aplikacji.
-8. Skompiluj ponownie aplikację, uruchom go, a następnie zaloguj się przy użyciu dostawcy uwierzytelniania wybraną i sprawdź, czy można uzyskać dostępu do danych jako użytkownik uwierzytelniony.
+    Ten kod zapewnia, że wystawcy uwierzytelnienia jest inicjowana przed ładowania aplikacji.
+8. Ponownie skompiluj aplikację, uruchom go, a następnie zaloguj się przy użyciu dostawcy uwierzytelniania została wybrana i upewnij się, że jesteś w stanie uzyskać dostęp do danych jako użytkownik uwierzytelniony.
 
-## <a name="add-authentication-to-the-ios-app"></a>Dodawanie uwierzytelniania do aplikacji systemu iOS
-W tej sekcji przedstawiono sposób wykonania **IAuthenticate** interfejs w projekcie aplikacji systemu iOS. Pomiń tę sekcję, jeśli urządzenia z systemem iOS nie są obsługiwane.
+### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-1. W programie Visual Studio lub Xamarin Studio kliknij prawym przyciskiem myszy **iOS** projektu, następnie **Ustaw jako projekt startowy**.
-2. Naciśnij klawisz F5, aby uruchomić projekt w debugerze, a następnie sprawdź, czy wystąpił nieobsługiwany wyjątek przy użyciu kodu stanu 401 (bez autoryzacji) jest wywoływane po uruchomieniu aplikacji. Odpowiedzi 401 jest generowany, ponieważ dostęp do wewnętrznej bazy danych jest ograniczony tylko autoryzowanym użytkownikom.
-3. Otwórz AppDelegate.cs w projekcie systemu iOS i dodaj następujące `using` instrukcji:
+**Aplikacja uległa awarii, za pomocą `Java.Lang.NoSuchMethodError: No static method startActivity`**
+
+W niektórych przypadkach powoduje konflikt w pakietach pomocy technicznej wyświetlany jako tylko ostrzeżeniem w Visual studio, ale awarii aplikacji za pomocą tego wyjątku w czasie wykonywania. W takim przypadku należy się upewnić, że wszystkie pakiety obsługi, określane w projekcie mają tę samą wersję. [Pakietu NuGet usługi Azure Mobile Apps](https://www.nuget.org/packages/Microsoft.Azure.Mobile.Client/) ma `Xamarin.Android.Support.CustomTabs` zależność dla platformy systemu Android, więc jeśli projekt używa nowszej obsługi pakietów można konieczne zainstalowanie tego pakietu przy użyciu wymaganej wersji bezpośrednio w celu uniknięcia konfliktów.
+
+## <a name="add-authentication-to-the-ios-app"></a>Dodawanie uwierzytelniania do aplikacji dla systemu iOS
+W tej sekcji pokazano, jak zaimplementować **IAuthenticate** interfejsu w projekcie aplikacji dla systemu iOS. Pomiń tę sekcję, jeśli nie są obsługiwane urządzenia z systemem iOS.
+
+1. W programie Visual Studio lub Xamarin Studio kliknij prawym przyciskiem myszy **iOS** projekt następnie **Ustaw jako projekt startowy**.
+2. Naciśnij klawisz F5, aby uruchomić projekt w debugerze, a następnie sprawdź, czy wystąpił nieobsługiwany wyjątek, kod stanu 401 (bez autoryzacji) jest wywoływane po uruchomieniu aplikacji. Odpowiedzi 401 jest generowany, ponieważ dostęp do wewnętrznej bazy danych jest ograniczony tylko autoryzowanym użytkownikom.
+3. Otwórz AppDelegate.cs w projekcie dla systemu iOS i dodaj następującą `using` instrukcji:
 
         using Microsoft.WindowsAzure.MobileServices;
         using System.Threading.Tasks;
-4. Aktualizacja **AppDelegate** klasy do zaimplementowania **IAuthenticate** interfejsu, w następujący sposób:
+4. Aktualizacja **elemencie AppDelegate** klasy do zaimplementowania **IAuthenticate** interfejsu, w następujący sposób:
 
         public partial class AppDelegate : global::Xamarin.Forms.Platform.iOS.FormsApplicationDelegate, IAuthenticate
-5. Aktualizacja **AppDelegate** klasy, dodając **MobileServiceUser** pola i **Uwierzytelnij** metodę, która jest wymagana przez **IAuthenticate** interfejsu, w następujący sposób:
+5. Aktualizacja **elemencie AppDelegate** klasy, dodając **MobileServiceUser** pola i **Uwierzytelnij** metody, która jest wymagana przez **IAuthenticate** interfejsu, w następujący sposób:
 
         // Define a authenticated user.
         private MobileServiceUser user;
@@ -236,42 +242,42 @@ W tej sekcji przedstawiono sposób wykonania **IAuthenticate** interfejs w proje
             return success;
         }
 
-    Jeśli używasz dostawcy tożsamości innego niż usługi Facebook, wybierz inną wartość dla [MobileServiceAuthenticationProvider].
+    Jeśli używasz dostawcy tożsamości innych niż usługi Facebook, wybierz inną wartość dla [MobileServiceAuthenticationProvider].
     
-6. Aktualizacja **AppDelegate** klasy, dodając **OpenUrl** przeciążenia metody, w następujący sposób:
+6. Aktualizacja **elemencie AppDelegate** klasy, dodając **OpenUrl** przeciążenia metody, w następujący sposób:
 
         public override bool OpenUrl(UIApplication app, NSUrl url, NSDictionary options)
         {
             return TodoItemManager.DefaultManager.CurrentClient.ResumeWithURL(url);
         }
    
-7. Dodaj następujący wiersz kodu w celu **FinishedLaunching** metody przed wywołanie `LoadApplication()`:
+7. Dodaj następujący wiersz kodu w celu **FinishedLaunching** metoda przed wywołaniem do `LoadApplication()`:
 
         App.Init(this);
 
-    Ten kod gwarantuje, że wystawca uwierzytelnienia jest zainicjowany przed załadowaniem aplikacji.
+    Ten kod zapewnia, że wystawcy uwierzytelnienia jest zainicjowany przed załadowaniu aplikacji.
 
-8. Otwórz Info.plist i Dodaj **typ URL**. Ustaw **identyfikator** do wybierania, nazwę **Schematy adresów URL** do schemat adresu URL dla aplikacji oraz **roli** None.
+8. Otwórz plik Info.plist i Dodaj **typ adresu URL**. Ustaw **identyfikator** nazwę wybranej, **Schematy adresów URL** na schemat adresu URL dla swojej aplikacji i **roli** None.
 
-9. Skompiluj ponownie aplikację, uruchom go, a następnie zaloguj się przy użyciu dostawcy uwierzytelniania wybraną i sprawdź, czy można uzyskać dostępu do danych jako użytkownik uwierzytelniony.
+9. Ponownie skompiluj aplikację, uruchom go, a następnie zaloguj się przy użyciu dostawcy uwierzytelniania została wybrana i upewnij się, że jesteś w stanie uzyskać dostęp do danych jako użytkownik uwierzytelniony.
 
 ## <a name="add-authentication-to-windows-10-including-phone-app-projects"></a>Dodawanie uwierzytelniania do projektów aplikacji systemu Windows 10 (w tym telefon)
-W tej sekcji przedstawiono sposób wykonania **IAuthenticate** interfejsu w projektach aplikacji systemu Windows 10. Zastosuj te same kroki dla projektów uniwersalnych platformy systemu Windows (UWP), ale przy użyciu **UWP** projektu (ze zmianami dostrzeżone). Pomiń tę sekcję, jeśli urządzenia z systemem Windows nie są obsługiwane.
+W tej sekcji pokazano, jak zaimplementować **IAuthenticate** interfejsu w projektach aplikacji systemu Windows 10. Te same kroki zastosowania dla projektów uniwersalnych platformy Windows (UWP), ale przy użyciu **platformy uniwersalnej systemu Windows** projektu (za pomocą dostrzeżone zmian). Jeśli nie są obsługiwane urządzenia Windows, należy pominąć tę sekcję.
 
-1. W programie Visual Studio, kliknij prawym przyciskiem myszy **UWP** projektu, następnie **Ustaw jako projekt startowy**.
-2. Naciśnij klawisz F5, aby uruchomić projekt w debugerze, a następnie sprawdź, czy wystąpił nieobsługiwany wyjątek przy użyciu kodu stanu 401 (bez autoryzacji) jest wywoływane po uruchomieniu aplikacji. Odpowiedzi 401 odbywa się, ponieważ dostęp do wewnętrznej bazy danych jest ograniczony tylko autoryzowanym użytkownikom.
-3. Otwórz MainPage.xaml.cs dla projektu aplikacji systemu Windows i dodaj następujące `using` instrukcji:
+1. W programie Visual Studio, kliknij prawym przyciskiem myszy **platformy uniwersalnej systemu Windows** projekt następnie **Ustaw jako projekt startowy**.
+2. Naciśnij klawisz F5, aby uruchomić projekt w debugerze, a następnie sprawdź, czy wystąpił nieobsługiwany wyjątek, kod stanu 401 (bez autoryzacji) jest wywoływane po uruchomieniu aplikacji. Odpowiedzi 401 odbywa się, ponieważ dostęp do wewnętrznej bazy danych jest ograniczony tylko autoryzowanym użytkownikom.
+3. Otwórz MainPage.xaml.cs dla projektu aplikacji Windows i Dodaj następujący kod `using` instrukcji:
 
         using Microsoft.WindowsAzure.MobileServices;
         using System.Threading.Tasks;
         using Windows.UI.Popups;
         using <your_Portable_Class_Library_namespace>;
 
-    Zastąp `<your_Portable_Class_Library_namespace>` z przestrzenią nazw biblioteki klas przenośnych.
+    Zastąp `<your_Portable_Class_Library_namespace>` z przestrzenią nazw dla biblioteki klas przenośnych.
 4. Aktualizacja **MainPage** klasy do zaimplementowania **IAuthenticate** interfejsu, w następujący sposób:
 
         public sealed partial class MainPage : IAuthenticate
-5. Aktualizacja **MainPage** klasy, dodając **MobileServiceUser** pola i **Uwierzytelnij** metodę, która jest wymagana przez **IAuthenticate**interfejsu, w następujący sposób:
+5. Aktualizacja **MainPage** klasy, dodając **MobileServiceUser** pola i **Uwierzytelnij** metody, która jest wymagana przez **IAuthenticate**interfejsu, w następujący sposób:
 
         // Define a authenticated user.
         private MobileServiceUser user;
@@ -307,16 +313,16 @@ W tej sekcji przedstawiono sposób wykonania **IAuthenticate** interfejsu w proj
             return success;
         }
 
-    Jeśli używasz dostawcy tożsamości innego niż usługi Facebook, wybierz inną wartość dla [MobileServiceAuthenticationProvider][7].
+    Jeśli używasz dostawcy tożsamości innych niż usługi Facebook, wybierz inną wartość dla [MobileServiceAuthenticationProvider][7].
 
 1. Dodaj następujący wiersz kodu w Konstruktorze **MainPage** klasy przed wywołaniem do `LoadApplication()`:
 
         // Initialize the authenticator before loading the app.
         <your_Portable_Class_Library_namespace>.App.Init(this);
 
-    Zastąp `<your_Portable_Class_Library_namespace>` z przestrzenią nazw biblioteki klas przenośnych.
+    Zastąp `<your_Portable_Class_Library_namespace>` z przestrzenią nazw dla biblioteki klas przenośnych.
 
-3. Jeśli używasz **platformy uniwersalnej systemu Windows**, Dodaj następujący **OnActivated** zastąpienie metody **aplikacji** klasy:
+3. Jeśli używasz **platformy uniwersalnej systemu Windows**, Dodaj następujący kod **OnActivated** zastąpienie metody **aplikacji** klasy:
 
        protected override void OnActivated(IActivatedEventArgs args)
        {
@@ -329,19 +335,19 @@ W tej sekcji przedstawiono sposób wykonania **IAuthenticate** interfejsu w proj
             }
        }
 
-3. Otwórz Package.appxmanifest i Dodaj **protokołu** deklaracji. Ustaw **Nazwa wyświetlana** do wybierania, nazwę i **nazwa** do schemat adresu URL dla aplikacji.
+3. Otwórz Package.appxmanifest i Dodaj **protokołu** deklaracji. Ustaw **nazwę wyświetlaną** nazwę wybranej i **nazwa** na schemat adresu URL dla aplikacji.
 
-4. Skompiluj ponownie aplikację, uruchom go, a następnie zaloguj się przy użyciu dostawcy uwierzytelniania wybraną i sprawdź, czy można uzyskać dostępu do danych jako użytkownik uwierzytelniony.
+4. Ponownie skompiluj aplikację, uruchom go, a następnie zaloguj się przy użyciu dostawcy uwierzytelniania została wybrana i upewnij się, że jesteś w stanie uzyskać dostęp do danych jako użytkownik uwierzytelniony.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz, aby ukończyć w tym samouczku uwierzytelnianie podstawowe, należy wziąć pod uwagę kontynuowanie na jedno z następujących samouczków:
+Teraz, gdy została zakończona w tym samouczku uwierzytelnianie podstawowe, należy wziąć pod uwagę przejściem do jednej z następujących samouczków:
 
 * [Dodawanie powiadomień wypychanych do aplikacji](app-service-mobile-xamarin-forms-get-started-push.md)
 
   Dowiedz się, jak dodać obsługę powiadomień wypychanych do aplikacji i skonfigurować zaplecze Aplikacji mobilnej na potrzeby wysyłania powiadomień wypychanych przy użyciu usługi Azure Notification Hubs.
 * [Włączanie synchronizacji w trybie offline dla aplikacji](app-service-mobile-xamarin-forms-get-started-offline-data.md)
 
-  Dowiedz się, jak dodać aplikację przy użyciu zaplecza aplikacji mobilnej obsługi w trybie offline. Synchronizacja w trybie offline umożliwia użytkownikom końcowym interakcję z aplikacji mobilnej — przeglądanie, dodawanie lub modyfikowanie danych — nawet wtedy, gdy istnieje połączenie sieciowe.
+  Dowiedz się, jak dodać obsługę aplikacji w trybie offline przy użyciu zaplecza aplikacji mobilnej. Synchronizacja w trybie offline umożliwia użytkownikom końcowym interakcję z aplikacją mobilną — wyświetlanie, dodawanie lub modyfikowanie danych — nawet w przypadku braku połączenia sieciowego.
 
 <!-- Images. -->
 

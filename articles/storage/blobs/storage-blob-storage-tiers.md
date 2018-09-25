@@ -1,6 +1,6 @@
 ---
-title: Gorący, chłodny i archiwalny magazyn platformy Azure dla obiektów blob | Microsoft Docs
-description: Gorący, chłodny i archiwalny magazyn dla kont usługi Azure Storage.
+title: Premium, gorąca, chłodna i archiwalna magazynu obiektów blob — usługi Azure Storage
+description: — Wersja Premium, gorąca, chłodna i archiwalny magazyn dla kont usługi Azure storage.
 services: storage
 author: kuhussai
 ms.service: storage
@@ -8,28 +8,64 @@ ms.topic: article
 ms.date: 09/11/2018
 ms.author: kuhussai
 ms.component: blobs
-ms.openlocfilehash: 66c47a97eee6759eb963db43d5c573fb6612bde6
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 6acea70ca929310fe37f36fe98698e6adb76101b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735922"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997832"
 ---
-# <a name="azure-blob-storage-hot-cool-and-archive-storage-tiers"></a>Usługa Azure Blob Storage: warstwy magazynowania Gorąca, Chłodna i Archiwum
+# <a name="azure-blob-storage-premium-preview-hot-cool-and-archive-storage-tiers"></a>Usługa Azure Blob storage: Premium (wersja zapoznawcza), gorąca, chłodna i archiwalna magazynu
 
 ## <a name="overview"></a>Przegląd
 
-Usługa Azure Storage oferuje trzy warstwy magazynowania dla obiektów blob, co pozwala na najbardziej ekonomiczne przechowywanie danych w zależności od sposobu ich używania. **Warstwa magazynu gorącego** platformy Azure została zoptymalizowana pod kątem przechowywania danych, do których często uzyskuje się dostęp. **Warstwa magazynowania Chłodna** platformy Azure została zoptymalizowana pod kątem magazynowania danych używanych od czasu do czasu, które są przechowywane co najmniej przez 30 dni. **Warstwa magazynowania Archiwum** platformy Azure została zoptymalizowana pod kątem magazynowania rzadko używanych danych, przechowywanych co najmniej przez 180 dni, co do których obowiązują elastyczne wymagania dotyczące opóźnień (rzędu kilku godzin). Warstwa magazynowania Archiwum jest dostępna tylko na poziomie obiektu blob. Nie jest ona dostępna na poziomie konta magazynu. Dla danych w warstwie magazynu chłodnego nie ma znaczenia nieco niższa dostępność, ale nadal są wymagane wysoka trwałość oraz podobny czas dostępu i parametry przepływności jak w przypadku gorących danych. W przypadku chłodnych danych umowa SLA zapewniająca nieco niższą dostępność i wyższe koszty dostępu w porównaniu z gorącymi danymi to dopuszczalny kompromis w celu uzyskania niższych kosztów magazynowania. Magazyn Archiwum działa w trybie offline i ma najniższe koszty magazynowania, ale także najwyższe koszty dostępu. Na poziomie konta można ustawić tylko warstwy magazynu Gorąca i Chłodna (nie Archiwum). Wszystkie trzy warstwy można ustawić na poziomie obiektu.
+Usługa Azure storage oferuje warstw innego magazynu, które umożliwiają przechowywanie danych obiektów Blob w sposób najbardziej efektywny. Dostępne warstwy obejmują:
 
-Obecnie ilość danych przechowywanych w chmurze rośnie w tempie wykładniczym. Aby zarządzać kosztami zwiększających się potrzeb dotyczących magazynowania, warto zorganizować dane na podstawie atrybutów, takich jak częstotliwość dostępu i planowany okres przechowywania. Pozwoli to na optymalizację kosztów. Dane przechowywane w chmurze mogą być różne pod względem sposobu ich generowania i przetwarzania oraz uzyskiwania do nich dostępu przez cały okres ich istnienia. Do niektórych danych często uzyskuje się dostęp. Są one również często modyfikowane w trakcie całego okresu istnienia. Do niektórych danych często uzyskuje się dostęp na początkowym etapie istnienia, a z czasem już zdecydowanie rzadziej. Niektóre dane pozostają nieużywane w chmurze i dostęp do nich uzyskuje się rzadko (lub w ogóle) po umieszczeniu ich w magazynie.
+- **Usługa Premium storage (wersja zapoznawcza)** zapewnia wysoką wydajność sprzętu dla danych, z których korzysta się często.
+ 
+- **Gorąco magazynu**: jest zoptymalizowana pod kątem magazynowania danych, z których korzysta się często. 
+
+- **Chłodna magazynu** została zoptymalizowana pod kątem magazynowania danych, które rzadko uzyskuje dostęp i przechowywane przez co najmniej 30 dni.
+ 
+- **Magazyn archiwum** została zoptymalizowana pod kątem magazynowania danych, które rzadko uzyskuje dostęp i przechowywane przez co najmniej 180 dni elastyczne wymagania dotyczące opóźnień (rzędu kilku godzin).
+
+Następujące zagadnienia dotyczące towarzyszyć warstw innego magazynu:
+
+- Warstwa magazynowania Archiwum jest dostępna tylko na poziomie obiektu blob. Nie jest ona dostępna na poziomie konta magazynu.
+ 
+- Dla danych w warstwie magazynu chłodnego nie ma znaczenia nieco niższa dostępność, ale nadal są wymagane wysoka trwałość oraz podobny czas dostępu i parametry przepływności jak w przypadku gorących danych. W przypadku chłodnych danych umowa SLA zapewniająca nieco niższą dostępność i wyższe koszty dostępu w porównaniu z gorącymi danymi to dopuszczalny kompromis w celu uzyskania niższych kosztów magazynowania.
+
+- Magazyn Archiwum działa w trybie offline i ma najniższe koszty magazynowania, ale także najwyższe koszty dostępu.
+ 
+- Na poziomie konta można ustawić tylko warstwy magazynu Gorąca i Chłodna (nie Archiwum).
+ 
+- Wszystkie warstwy można ustawić na poziomie obiektu.
+
+Dane przechowywane w chmurze rośnie w tempie wykładniczym. Aby zarządzać kosztami zwiększających się potrzeb dotyczących magazynowania, warto zorganizować dane na podstawie atrybutów, takich jak częstotliwość dostępu i planowany okres przechowywania. Pozwoli to na optymalizację kosztów. Dane przechowywane w chmurze mogą być różne pod względem sposobu ich generowania i przetwarzania oraz uzyskiwania do nich dostępu przez cały okres ich istnienia. Do niektórych danych często uzyskuje się dostęp. Są one również często modyfikowane w trakcie całego okresu istnienia. Do niektórych danych często uzyskuje się dostęp na początkowym etapie istnienia, a z czasem już zdecydowanie rzadziej. Niektóre dane pozostają nieużywane w chmurze i dostęp do nich uzyskuje się rzadko (lub w ogóle) po umieszczeniu ich w magazynie.
 
 W przypadku każdego z tych scenariuszy dostępu do danych istnieją korzyści płynące z różnych warstw magazynowania, zoptymalizowanych pod kątem określonego wzorca dostępu. Dzięki warstwom magazynowania Gorąca, Chłodna i Archiwum usługa Azure Blob Storage zaspokaja potrzebę korzystania ze zróżnicowanych warstw magazynowania z oddzielnymi modelami cenowymi.
 
 ## <a name="storage-accounts-that-support-tiering"></a>Konta magazynu z obsługą warstw
 
-Dane magazynu obiektów można dzielić między warstwy Gorąca, Chłodna lub Archiwum tylko na kontach usługi Blob Storage lub ogólnego przeznaczenia w wersji 2 (GPv2). Konta ogólnego przeznaczenia w wersji 1 (GPv1) nie obsługują warstw. Klienci mogą jednak łatwo przekształcać istniejące konta GPv1 lub konta usługi Blob Storage w konta GPv2 w ramach prostego procesu uruchamianego jednym kliknięciem w witrynie Azure Portal. Konto GPv2 oferuje nową strukturę cen obiektów blob, plików i kolejek oraz dostęp do różnych nowych funkcji magazynu. Co więcej, w przyszłości niektóre nowe funkcje i rabaty cenowe będą oferowane tylko w przypadku kont GPv2. W związku z tym klienci powinni zastanowić się nad korzystaniem z konta GPv2, ale podjąć taką decyzję mogą tylko po zapoznaniu się z cenami wszystkich usług, ponieważ niektóre obciążenia mogą być droższe na kontach GPv2 niż na kontach GPv1. Aby uzyskać więcej informacji, zobacz [Przegląd konta usługi Azure storage](../common/storage-account-overview.md).
+Dane magazynu obiektów można dzielić między warstwy Gorąca, Chłodna lub Archiwum tylko na kontach usługi Blob Storage lub ogólnego przeznaczenia w wersji 2 (GPv2). Konta ogólnego przeznaczenia w wersji 1 (GPv1) nie obsługują warstw. Klienci mogą jednak łatwo przekształcać istniejące konta GPv1 lub konta usługi Blob Storage w konta GPv2 w ramach prostego procesu uruchamianego jednym kliknięciem w witrynie Azure Portal. Konto GPv2 oferuje nową strukturę cen obiektów blob, plików i kolejek oraz dostęp do różnych nowych funkcji magazynu. Co więcej, w przyszłości niektóre nowe funkcje i rabaty cenowe będą oferowane tylko w przypadku kont GPv2. W związku z tym klienci powinni zastanowić się nad korzystaniem z konta GPv2, ale podjąć taką decyzję mogą tylko po zapoznaniu się z cenami wszystkich usług, ponieważ niektóre obciążenia mogą być droższe na kontach GPv2 niż na kontach GPv1. Aby uzyskać więcej informacji, zobacz [Omówienie konta magazynu platformy Azure](../common/storage-account-overview.md).
 
 Konta usługi Blob Storage i GPv2 ujawniają atrybut **Warstwa dostępu** na poziomie konta, co pozwala na określanie domyślnej warstwy magazynowania jako Gorąca lub Chłodna dla dowolnego obiektu blob na koncie magazynu, które nie ma warstwy ustawionej na poziomie obiektu. W przypadku obiektów z warstwą ustawioną na poziomie obiektu warstwa konta nie będzie stosowana. Warstwę Archiwum można stosować tylko na poziomie obiektu. W dowolnym momencie można przełączać się między tymi warstwami magazynowania.
+
+## <a name="premium-access-tier"></a>Warstwa dostępu — wersja Premium
+
+Dostępna w wersji zapoznawczej jest warstwa dostępu — wersja Premium, co sprawia, że często używane dane dostępne za pośrednictwem sprzętu wysokiej wydajności. Dane przechowywane w tej warstwie znajduje się na dyskach SSD, które są zoptymalizowane pod kątem mniejsze opóźnienie większe transakcyjnych w porównaniu do tradycyjnych dysków twardych. Warstwa dostępu — wersja Premium jest dostępna za pośrednictwem typu konta magazynu blokowych obiektów Blob tylko.
+
+Ta warstwa jest idealny dla obciążeń wymagających czasy reakcji szybkie i spójne. Dane, które obejmuje użytkowników końcowych, takich jak interaktywne wideo edycji statyczne zawartość sieci web, transakcji w trybie online i jak dobrze nadają się dla warstwy dostępu do wersji Premium. Ta warstwa jest przeznaczony dla obciążeń, które wykonują wiele małych transakcji, takich jak przechwytywanie danych telemetrycznych, wiadomości błyskawiczne i transformacji danych.
+
+Aby korzystać z tej warstwy aprowizować nowe konto magazynu blokowych obiektów Blob i rozpocząć tworzenie kontenerów i obiektów blob za pomocą [interfejsu API REST usługi Blob](/rest/api/storageservices/blob-service-rest-api), [AzCopy](/azure/storage/common/storage-use-azcopy), lub [Eksploratora usługi Azure Storage](https://azure.microsoft.com/features/storage-explorer/).
+
+W trakcie okresu zapoznawczego warstwy dostępu do usługi Premium:
+
+- Jest dostępna jako magazyn lokalnie nadmiarowy (LRS)
+- Jest dostępna tylko w następujących regionach: wschodnie stany USA 2, środkowe stany USA i zachodnie stany USA
+- Nie obsługuje automatycznego warstw i zarządzanie cyklem życia danych
+
+Aby dowiedzieć się, jak zarejestrować się w wersji zapoznawczej z warstwy Premium dostępu, zobacz [wprowadzenie do magazynu obiektów Blob platformy Azure — wersja Premium](http://aka.ms/premiumblob).
 
 ## <a name="hot-access-tier"></a>Warstwa dostępu Gorąca
 
@@ -73,6 +109,8 @@ W obrębie jednego konta jest możliwe współistnienie obiektów blob należąc
 
 > [!NOTE]
 > Magazyn Archiwum i funkcja obsługi warstw na poziomie obiektów blob obsługują tylko blokowe obiekty blob. Nie można także zmienić warstwy blokowego obiektu blob, który ma migawki.
+
+Dane przechowywane w warstwie dostępu do wersji Premium nie warstwowe gorąca, chłodna lub archiwum, przy użyciu [Ustawianie warstwy obiektu Blob](/rest/api/storageservices/set-blob-tier) lub za pomocą zarządzania cyklem życia usługi Azure Blob Storage. W celu przeniesienia danych należy synchronicznie skopiować obiekty BLOB z dostępu Premium do korzystania z gorącej [umieścić blok z adresu URL interfejsu API](/rest/api/storageservices/put-block-from-url) lub wersję narzędzia AzCopy, która obsługuje ten interfejs API. *Umieścić blok z adresu URL* API synchronicznie kopiuje dane na serwerze, co oznacza ukończenia wywołania tylko raz wszystkie dane są przenoszone z oryginalnej lokalizacji serwera do lokalizacji docelowej.
 
 ### <a name="blob-lifecycle-management"></a>Zarządzanie cyklem życia obiektów blob
 Zarządzanie cyklem życia magazynu obiektów blob (wersja zapoznawcza) oferuje zaawansowane, oparte na regułach zasadę, która umożliwia przeniesienie danych do najlepszych warstwy dostępu i wygasanie danych na końcu jej cyklu projektowania. Zobacz [Zarządzanie cyklem życia magazynu obiektów Blob platformy Azure](https://docs.microsoft.com/en-us/azure/storage/common/storage-lifecycle-managment-concepts) Aby dowiedzieć się więcej.  
@@ -153,7 +191,7 @@ Wszystkie konta magazynu używają modelu cenowego dla magazynu obiektów Blob o
 
 Zalecamy korzystanie z kont GPv2 zamiast kont usługi Blob Storage na potrzeby obsługi warstw. Konta GPv2 obsługują wszystkie funkcje, które obsługują konta usługi Blob Storage, i wiele innych. Ceny kont usługi Blob Storage i GPv2 są niemal identyczne, ale niektóre nowe funkcje i rabaty cenowe będą dostępne tylko na kontach GPv2. Konta GPv1 nie obsługują warstw.
 
-Struktury cen kont GPv1 i GPv2 są różne, a klienci powinni dokładnie je sprawdzić przed podjęciem decyzji o użyciu kont GPv2. Istniejące konto usługi Blob Storage lub GPv1 można łatwo przekonwertować na konto GPv2 w ramach prostego procesu uruchamianego jednym kliknięciem. Aby uzyskać więcej informacji, zobacz [Przegląd konta usługi Azure storage](../common/storage-account-overview.md).
+Struktury cen kont GPv1 i GPv2 są różne, a klienci powinni dokładnie je sprawdzić przed podjęciem decyzji o użyciu kont GPv2. Istniejące konto usługi Blob Storage lub GPv1 można łatwo przekonwertować na konto GPv2 w ramach prostego procesu uruchamianego jednym kliknięciem. Aby uzyskać więcej informacji, zobacz [Omówienie konta magazynu platformy Azure](../common/storage-account-overview.md).
 
 **Czy mogę przechowywać obiekty we wszystkich trzech warstwach (Gorąca, Chłodna i Archiwum) na tym samym koncie?**
 

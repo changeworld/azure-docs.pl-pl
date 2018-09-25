@@ -1,6 +1,6 @@
 ---
-title: Zdiagnozować problem routingu maszyny wirtualnej platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zdiagnozować problem routingu maszyny wirtualnej wyświetlając skuteczne trasy dla maszyny wirtualnej.
+title: Diagnozowanie problemu z routingiem maszyny wirtualnej platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak diagnozowanie problemu z routingiem maszyny wirtualnej, wyświetlając obowiązujące trasy dla maszyny wirtualnej.
 services: virtual-network
 documentationcenter: na
 author: jimdial
@@ -15,48 +15,48 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: jdial
-ms.openlocfilehash: 07352a5d7c8b465440efab17c654979662a95f8e
-ms.sourcegitcommit: 59fffec8043c3da2fcf31ca5036a55bbd62e519c
+ms.openlocfilehash: 695d5f1507f766cf0a2ad96d7dcd25f45f98c20e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/04/2018
-ms.locfileid: "34702374"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46994721"
 ---
-# <a name="diagnose-a-virtual-machine-routing-problem"></a>Zdiagnozować problem routingu maszyny wirtualnej
+# <a name="diagnose-a-virtual-machine-routing-problem"></a>Diagnozowanie problemu z routingiem maszyny wirtualnej
 
-W tym artykule możesz dowiedzieć się, jak zdiagnozować problem routingu, wyświetlając tras, na których zostaną zastosowane dla karty sieciowej na maszynie wirtualnej (VM). Platforma Azure tworzy kilka tras domyślnych dla każdej podsieci sieci wirtualnej. Definiowanie tras w tabeli tras, a następnie kojarzenie tabeli tras z podsiecią można zastąpić trasy domyślne platformy Azure. Kombinacja tworzenia tras, trasy domyślne platformy Azure i wszelkie tras rozprowadzane z sieci lokalnej za pośrednictwem bramy sieci VPN platformy Azure (jeśli sieci wirtualnej jest podłączony do sieci lokalnej) za pośrednictwem protokołu border gateway protocol (BGP) skuteczne trasy dla wszystkich interfejsów sieciowych w podsieci. Jeśli nie masz doświadczenia w obsłudze sieci wirtualnej, interfejsu sieciowego lub routingu pojęcia, zobacz [omówienie sieci wirtualnej](virtual-networks-overview.md), [interfejsu sieciowego](virtual-network-network-interface.md), i [Omówienie routingu](virtual-networks-udr-overview.md).
+W tym artykule dowiesz się, jak diagnozowanie problemu z routingiem, wyświetlając tras, które obowiązują dla interfejsu sieciowego w maszynie wirtualnej (VM). Platforma Azure tworzy kilka trasy domyślne dla każdej podsieci sieci wirtualnej. Definiowanie tras w tabeli tras, a następnie kojarzenie tabeli tras do podsieci, można zastąpić domyślnych tras platformy. Są kombinacją tworzenia tras domyślnych tras platformy i wszystkie trasy propagowane z sieci lokalnej za pośrednictwem bramy sieci VPN platformy Azure (Jeśli w Twojej sieci wirtualnej jest połączona z siecią lokalną) za pośrednictwem protokołu border gateway protocol (BGP) skuteczne trasy dla wszystkich interfejsów sieciowych w podsieci. Jeśli nie jesteś zaznajomiony z siecią wirtualną, interfejsu sieciowego lub routingu pojęć, zobacz [Omówienie usługi Virtual network](virtual-networks-overview.md), [interfejs sieciowy](virtual-network-network-interface.md), i [Omówienie routingu](virtual-networks-udr-overview.md).
 
 ## <a name="scenario"></a>Scenariusz
 
-Połączenie z maszyną wirtualną, ale połączenie nie powiedzie się. Aby ustalić, dlaczego nie można połączyć się z maszyną Wirtualną, można wyświetlić skuteczne trasy dla interfejsu sieciowego przy użyciu platformy Azure [portal](#diagnose-using-azure-portal), [PowerShell](#diagnose-using-powershell), lub [interfejsu wiersza polecenia Azure](#diagnose-using-azure-cli).
+Połączenie z maszyną wirtualną, ale połączenie nie powiedzie się. Aby ustalić, dlaczego nie można połączyć z maszyną wirtualną, możesz wyświetlić obowiązujące trasy dla interfejsu sieciowego przy użyciu platformy Azure [portal](#diagnose-using-azure-portal), [PowerShell](#diagnose-using-powershell), lub [wiersza polecenia platformy Azure](#diagnose-using-azure-cli).
 
-Czynności, które wykonują przyjęto założenie, że masz istniejącą maszynę Wirtualną, aby wyświetlić skuteczne trasy dla. Jeśli nie masz istniejącej maszyny Wirtualnej, najpierw wdrożyć [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) maszyny Wirtualnej, aby wykonać zadania w tym artykule i. Przykłady w tym artykule odnoszą się do maszyny Wirtualnej o nazwie *myVM* z karty sieciowej o nazwie *myVMVMNic*. Interfejs maszyny Wirtualnej i sieci znajdują się w grupie zasobów o nazwie *myResourceGroup*, a w *wschodnie stany USA* regionu. Zmień kroki odpowiednie dla maszyny Wirtualnej są diagnozowania problemu dla wartości.
+Poniższe kroki przyjęto założenie, że masz istniejącej maszyny Wirtualnej, aby wyświetlić obowiązujące trasy. Jeśli nie masz istniejącej maszyny Wirtualnej, najpierw wdrożyć [Linux](../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [Windows](../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) maszyny Wirtualnej w celu wykonania zadań w tym artykule. Przykłady w niniejszym artykule są dla maszyny Wirtualnej o nazwie *myVM* z interfejsem sieciowym o nazwie *myVMVMNic*. Interfejs maszyny Wirtualnej i sieci znajdują się w grupie zasobów o nazwie *myResourceGroup*, a w *wschodnie stany USA* regionu. Zmień wartości w krokach, odpowiednio do diagnozowania problemów dla maszyny Wirtualnej.
 
-## <a name="diagnose-using-azure-portal"></a>Diagnozowanie za pomocą portalu Azure
+## <a name="diagnose-using-azure-portal"></a>Diagnozować przy użyciu witryny Azure portal
 
-1. Zaloguj się do platformy Azure [portal](https://portal.azure.com) z konta platformy Azure, która ma [niezbędne uprawnienia](virtual-network-network-interface.md#permissions).
-2. W górnej części portalu Azure wprowadź nazwę maszyny wirtualnej, która jest w stanie uruchomienia, w polu wyszukiwania. Gdy nazwa maszyny Wirtualnej pojawi się w wynikach wyszukiwania, zaznacz go.
-3. Wybierz **diagnozowanie i rozwiązywanie problemów**, a następnie w obszarze **zalecane kroki**, wybierz pozycję **skuteczne tras** w pozycji 7, jak pokazano na poniższej ilustracji:
+1. Zaloguj się do platformy Azure [portal](https://portal.azure.com) przy użyciu konta Azure, która ma [niezbędne uprawnienia](virtual-network-network-interface.md#permissions).
+2. W górnej części witryny Azure portal wprowadź nazwę maszyny Wirtualnej, która jest w stanie uruchomienia, w polu wyszukiwania. Gdy nazwa maszyny Wirtualnej pojawi się w wynikach wyszukiwania, wybierz ją.
+3. Wybierz **diagnozowanie i rozwiązywanie problemów**, a następnie w obszarze **zalecane kroki**, wybierz opcję **obowiązujące trasy** w pozycji 7, jak pokazano na poniższej ilustracji:
 
-    ![Widok skuteczne tras](./media/diagnose-network-routing-problem/view-effective-routes.png)
+    ![Wyświetlanie obowiązujących tras](./media/diagnose-network-routing-problem/view-effective-routes.png)
 
-4. Obowiązującą trasy dla karty sieciowej o nazwie **myVMVMNic** przedstawiono na poniższej ilustracji:
+4. Obowiązujących tras dla interfejsu sieciowego o nazwie **myVMVMNic** przedstawiono na poniższej ilustracji:
 
-     ![Widok skuteczne tras](./media/diagnose-network-routing-problem/effective-routes.png)
+     ![Wyświetlanie obowiązujących tras](./media/diagnose-network-routing-problem/effective-routes.png)
 
-    Jeśli istnieje wiele interfejsów sieciowych dołączonych do maszyny Wirtualnej, można wyświetlać skuteczne trasy dla dowolnego interfejsu sieciowego, wybierając go. Ponieważ każdy interfejs sieciowy może być w innej podsieci, każdego interfejsu sieciowego może mieć różne trasy skuteczne.
+    Jeśli istnieje wiele interfejsów sieciowych dołączonych do maszyny Wirtualnej, możesz wyświetlić obowiązujące trasy dla dowolnego interfejsu sieciowego, wybierając ją. Ponieważ każdy interfejs sieciowy może być w innej podsieci, każdy interfejs sieciowy może mieć inną aktywnych tras.
 
-    W tym przykładzie pokazano na rysunku powyżej trasy wymienione na liście są trasy domyślne, które platforma Azure tworzy dla każdej podsieci. Na liście ma co najmniej te trasy, ale mogą mieć dodatkowe trasy, w zależności od możliwości, które zostało włączone dla sieci wirtualnej, takie jak jego połączyć za pomocą z innej sieci wirtualnej lub podłączony do sieci lokalnej za pośrednictwem bramy sieci VPN platformy Azure. Aby dowiedzieć się więcej na temat trasy i innych tras, może zostać wyświetlony dla interfejsu sieciowego, zobacz [routingu ruchu sieciowego wirtualnej](virtual-networks-udr-overview.md). Jeśli lista zawiera wiele tras, może być łatwiej wybrać **Pobierz**, aby pobrać plik CSV zawierający listę trasy.
+    W tym przykładzie pokazano na poprzedniej ilustracji trasy wymienione są trasy domyślne, które platforma Azure tworzy dla każdej podsieci. Na liście ma co najmniej te trasy, ale mogą mieć dodatkowe trasy, w zależności od możliwości, które zostało włączone dla sieci wirtualnej, takie jak jego jest połączona z inną siecią wirtualną lub połączenia z siecią lokalną za pośrednictwem bramy sieci VPN platformy Azure. Aby dowiedzieć się więcej na temat każdej trasy i innych tras, może zostać wyświetlony dla interfejsu sieciowego, zobacz [routing ruchu w sieci wirtualnej](virtual-networks-udr-overview.md). Jeśli lista zawiera dużą liczbę tras, może okazać się łatwiej wybrać **Pobierz**, aby pobrać plik CSV zawierający listę trasy.
 
-Chociaż skuteczne trasy były wyświetlane przy użyciu maszyny Wirtualnej w poprzednich krokach, możesz również wyświetlić skuteczne tras za pomocą:
-- **Interfejs sieciowy z poszczególnych**: Dowiedz się, jak [wyświetlić interfejs sieciowy](virtual-network-network-interface.md#view-network-interface-settings).
-- **Tabela tras poszczególnych**: Dowiedz się, jak [wyświetlić tabelę tras](manage-route-table.md#view-details-of-a-route-table).
+Chociaż obowiązujące trasy były wyświetlane za pomocą maszyny Wirtualnej w poprzednich krokach, można również wyświetlić obowiązujące trasy za pomocą:
+- **Interfejs sieciowy poszczególnych**: Dowiedz się, jak [wyświetlania interfejsu sieciowego](virtual-network-network-interface.md#view-network-interface-settings).
+- **Tabela tras poszczególnych**: Dowiedz się, jak [Wyświetl tabelę tras](manage-route-table.md#view-details-of-a-route-table).
 
 ## <a name="diagnose-using-powershell"></a>Diagnozowanie przy użyciu programu PowerShell
 
-Możesz uruchamiać polecenia, które należy wykonać w [powłoki chmury Azure](https://shell.azure.com/powershell), lub przez uruchomienie programu PowerShell z komputera. Powłoka chmury Azure jest bezpłatne powłoki interakcyjne. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Po uruchomieniu programu PowerShell z komputera, należy *AzureRM* modułu programu PowerShell, wersji 6.0.1 lub nowszej. Uruchom `Get-Module -ListAvailable AzureRM` na komputerze, aby znaleźć zainstalowanej wersji. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, należy uruchomić `Login-AzureRmAccount` do zalogowania się do platformy Azure przy użyciu konta, które ma [niezbędne uprawnienia](virtual-network-network-interface.md#permissions).
+Możesz uruchamiać polecenia, które należy wykonać w [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Azure Cloud Shell to bezpłatna interaktywna powłoka. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Po uruchomieniu programu PowerShell z komputera, należy *AzureRM* moduł programu PowerShell, wersja 6.0.1 lub nowszej. Uruchom `Get-Module -ListAvailable AzureRM` na komputerze, aby znaleźć zainstalowaną wersję. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, trzeba będzie również uruchomić `Login-AzureRmAccount` zalogować się przy użyciu konta które ma [niezbędne uprawnienia](virtual-network-network-interface.md#permissions).
 
-Pobierz skuteczne trasy dla interfejsu sieciowego z [Get-AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable). Poniższy przykład pobiera skuteczne trasy dla karty sieciowej o nazwie *myVMVMNic*, która jest w grupie zasobów o nazwie *myResourceGroup*:
+Pobierz efektywne trasy dla interfejsu sieciowego z [Get AzureRmEffectiveRouteTable](/powershell/module/azurerm.network/get-azurermeffectiveroutetable). Poniższy przykład pobiera obowiązujące trasy dla interfejsu sieciowego o nazwie *myVMVMNic*, która jest w grupie zasobów o nazwie *myResourceGroup*:
 
 ```azurepowershell-interactive
 Get-AzureRmEffectiveRouteTable `
@@ -65,9 +65,9 @@ Get-AzureRmEffectiveRouteTable `
   | Format-Table
 ```
 
-Aby poznać zwracanych w danych wyjściowych informacji, zobacz [Omówienie routingu](virtual-networks-udr-overview.md). Dane wyjściowe są zwracane tylko, jeśli maszyna wirtualna jest w stanie uruchomienia. Jeśli istnieje wiele interfejsów sieciowych dołączonych do maszyny Wirtualnej, można przejrzeć skuteczne trasy dla każdego interfejsu sieciowego. Ponieważ każdy interfejs sieciowy może być w innej podsieci, każdego interfejsu sieciowego może mieć różne trasy skuteczne. Jeśli nadal masz problem z komunikacją, zobacz [dodatkowe diagnostyki](#additional-diagnosis) i [zagadnienia](#considerations).
+Aby poznać informacje zwrócone w danych wyjściowych, zobacz [Omówienie routingu](virtual-networks-udr-overview.md). Dane wyjściowe jest zwracany tylko wtedy, gdy maszyna wirtualna jest w stanie uruchomienia. Jeśli istnieje wiele interfejsów sieciowych dołączonych do maszyny Wirtualnej, możesz przejrzeć obowiązujące trasy dla każdego interfejsu sieciowego. Ponieważ każdy interfejs sieciowy może być w innej podsieci, każdy interfejs sieciowy może mieć inną aktywnych tras. Jeśli nadal masz problem z komunikacją, zobacz [dodatkowe diagnostyki](#additional-diagnosis) i [zagadnienia](#considerations).
 
-Jeśli nie znasz nazwy karty sieciowej, ale znasz nazwę interfejs sieciowy jest dołączony do maszyny wirtualnej, następujące polecenia Zwróć identyfikatory wszystkich interfejsów sieciowych dołączonych do maszyny Wirtualnej:
+Jeśli nie znasz nazwy karty sieciowej, ale znasz nazwy interfejs sieciowy jest podłączony do maszyny wirtualnej, poniższe polecenia Zwróć identyfikatory wszystkich interfejsów sieciowych dołączonych do maszyny Wirtualnej:
 
 ```azurepowershell-interactive
 $VM = Get-AzureRmVM -Name myVM `
@@ -75,7 +75,7 @@ $VM = Get-AzureRmVM -Name myVM `
 $VM.NetworkProfile
 ```
 
-Pojawi się dane wyjściowe podobne do poniższego przykładu:
+Otrzymasz dane wyjściowe podobne do poniższego przykładu:
 
 ```powershell
 NetworkInterfaces
@@ -83,13 +83,13 @@ NetworkInterfaces
 {/subscriptions/<ID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/networkInterfaces/myVMVMNic
 ```
 
-W wyniku poprzedniego Nazwa interfejsu sieciowego jest *myVMVMNic*.
+W danych wyjściowych poprzedniej, nazwa interfejsu sieciowego jest *myVMVMNic*.
 
-## <a name="diagnose-using-azure-cli"></a>Diagnozowanie przy użyciu wiersza polecenia platformy Azure
+## <a name="diagnose-using-azure-cli"></a>Diagnozować przy użyciu wiersza polecenia platformy Azure
 
-Możesz uruchamiać polecenia, które należy wykonać w [powłoki chmury Azure](https://shell.azure.com/bash), lub za pomocą interfejsu wiersza polecenia z tego komputera. W tym artykule wymaga wiersza polecenia platformy Azure w wersji 2.0.32 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia Azure lokalnie, należy uruchomić `az login` i zaloguj się do platformy Azure przy użyciu konta, które ma [niezbędne uprawnienia](virtual-network-network-interface.md#permissions).
+Możesz uruchamiać polecenia, które należy wykonać w [usługi Azure Cloud Shell](https://shell.azure.com/bash), lub korzystając z polecenia interfejsu wiersza polecenia na komputerze. Ten artykuł wymaga interfejsu wiersza polecenia Azure w wersji 2.0.32 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, trzeba będzie również uruchomić `az login` i zaloguj się do platformy Azure za pomocą konta mającego [niezbędne uprawnienia](virtual-network-network-interface.md#permissions).
 
-Pobierz skuteczne trasy dla interfejsu sieciowego z [az sieci karty sieciowej Pokaż obowiązującej--tabeli tras](/cli/azure/network/nic#az-network-nic-show-effective-route-table). Poniższy przykład pobiera skuteczne trasy dla karty sieciowej o nazwie *myVMVMNic* jest w grupie zasobów o nazwie *myResourceGroup*:
+Pobierz efektywne trasy dla interfejsu sieciowego z [az network nic show obowiązywać route-table](/cli/azure/network/nic#az-network-nic-show-effective-route-table). Poniższy przykład pobiera obowiązujące trasy dla interfejsu sieciowego o nazwie *myVMVMNic* jest w grupie zasobów o nazwie *myResourceGroup*:
 
 ```azurecli-interactive
 az network nic show-effective-route-table \
@@ -97,9 +97,9 @@ az network nic show-effective-route-table \
   --resource-group myResourceGroup
 ```
 
-Aby poznać zwracanych w danych wyjściowych informacji, zobacz [Omówienie routingu](virtual-networks-udr-overview.md). Dane wyjściowe są zwracane tylko, jeśli maszyna wirtualna jest w stanie uruchomienia. Jeśli istnieje wiele interfejsów sieciowych dołączonych do maszyny Wirtualnej, można przejrzeć skuteczne trasy dla każdego interfejsu sieciowego. Ponieważ każdy interfejs sieciowy może być w innej podsieci, każdego interfejsu sieciowego może mieć różne trasy skuteczne. Jeśli nadal masz problem z komunikacją, zobacz [dodatkowe diagnostyki](#additional-diagnosis) i [zagadnienia](#considerations).
+Aby poznać informacje zwrócone w danych wyjściowych, zobacz [Omówienie routingu](virtual-networks-udr-overview.md). Dane wyjściowe jest zwracany tylko wtedy, gdy maszyna wirtualna jest w stanie uruchomienia. Jeśli istnieje wiele interfejsów sieciowych dołączonych do maszyny Wirtualnej, możesz przejrzeć obowiązujące trasy dla każdego interfejsu sieciowego. Ponieważ każdy interfejs sieciowy może być w innej podsieci, każdy interfejs sieciowy może mieć inną aktywnych tras. Jeśli nadal masz problem z komunikacją, zobacz [dodatkowe diagnostyki](#additional-diagnosis) i [zagadnienia](#considerations).
 
-Jeśli nie znasz nazwy karty sieciowej, ale znasz nazwę interfejs sieciowy jest dołączony do maszyny wirtualnej, następujące polecenia Zwróć identyfikatory wszystkich interfejsów sieciowych dołączonych do maszyny Wirtualnej:
+Jeśli nie znasz nazwy karty sieciowej, ale znasz nazwy interfejs sieciowy jest podłączony do maszyny wirtualnej, poniższe polecenia Zwróć identyfikatory wszystkich interfejsów sieciowych dołączonych do maszyny Wirtualnej:
 
 ```azurecli-interactive
 az vm show \
@@ -107,14 +107,14 @@ az vm show \
   --resource-group myResourceGroup
 ```
 
-## <a name="resolve-a-problem"></a>Rozwiąż problem
+## <a name="resolve-a-problem"></a>Rozwiązywanie problemów
 
-Rozwiązywanie problemów z routingiem zazwyczaj składa się z:
+Rozwiązywanie problemów z routingiem zwykle składa się z:
 
-- Dodawanie tras niestandardowych, aby zastąpić jedną z tras domyślnych platformy Azure. Dowiedz się, jak [dodać tras niestandardowych](manage-route-table.md#create-a-route).
-- Zmień lub usuń tras niestandardowych, który może powodować routingu do lokalizacji niepożądane. Dowiedz się, jak [zmienić](manage-route-table.md#change-a-route) lub [usunąć](manage-route-table.md#delete-a-route) tras niestandardowych.
-- Zapewnienie, że tabeli tras, która zawiera wszystkie trasy niestandardowe zdefiniowany przez użytkownika jest skojarzona z podsieci, w której znajduje się interfejs sieciowy. Dowiedz się, jak [skojarzyć tabelę tras z podsiecią](manage-route-table.md#associate-a-route-table-to-a-subnet).
-- Sprawdzeniu, czy urządzeń, takich jak sieci VPN platformy Azure bramy lub sieci wirtualnych urządzeń, w których została wdrożona są obsługiwane. Użyj [diagnostyki sieci VPN](../network-watcher/diagnose-communication-problem-between-networks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) możliwości obserwatora sieciowego ustalenie problemów z bramy sieci VPN platformy Azure.
+- Dodawanie tras niestandardowych, aby zastąpić jedną z domyślnych tras platformy. Dowiedz się, jak [dodać trasy niestandardowej](manage-route-table.md#create-a-route).
+- Zmień lub usuń tras niestandardowych, które mogą powodować routingu do lokalizacji niepożądane. Dowiedz się, jak [zmienić](manage-route-table.md#change-a-route) lub [Usuń](manage-route-table.md#delete-a-route) tras niestandardowych.
+- Zapewnienie, że tabelę tras, która zawiera wszystkie trasy niestandardowe zdefiniowany przez użytkownika jest skojarzona z podsiecią, w której znajduje się interfejs sieciowy. Dowiedz się, jak [kojarzenie tabeli tras do podsieci](manage-route-table.md#associate-a-route-table-to-a-subnet).
+- Zapewnienie, że urządzeń, takich jak sieci VPN platformy Azure bramy lub sieci wirtualnych urządzeń, w których wdrożono są obsługiwane. Użyj [diagnostyki sieci VPN](../network-watcher/diagnose-communication-problem-between-networks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) możliwości usługi Network Watcher ustalenie problemów z bramą Azure VPN gateway.
 
 Jeśli nadal występują problemy z komunikacją, zobacz [zagadnienia](#considerations) i [dodatkowe diagnostyki](#additional-dignosis).
 
@@ -122,24 +122,24 @@ Jeśli nadal występują problemy z komunikacją, zobacz [zagadnienia](#consider
 
 Podczas rozwiązywania problemów z komunikacją, należy wziąć pod uwagę następujące kwestie:
 
-- Routing jest oparta na najdłuższe dopasowanie prefiksu (LPM Wybierane) spośród tras czy zdefiniowany przez użytkownika, obramowania gateway protocol (BGP) i systemu trasy. Jeśli istnieje więcej niż jedna trasa z tym samym dopasowaniem LPM, wybór trasy odbywa się w kolejności podanej w [Omówienie routingu](virtual-networks-udr-overview.md#how-azure-selects-a-route). Skuteczne trasy może zobaczyć tylko skuteczne ścieżek, które są dopasowaniem LPM, oparte na dostępnych tras. Wyświetlanie, jak są analizowane trasy dla interfejsu sieciowego w znacznie ułatwia rozwiązywanie problemów z określonej trasy, które mogą mieć wpływ na komunikację z maszyny Wirtualnej.
-- Jeśli zdefiniowano niestandardowe trasy do sieci (NVA), urządzenie wirtualne z *urządzenie wirtualne* jako typ następnego przeskoku upewnij się, że przekazywanie IP jest włączona na NVA odbieranie ruchu lub porzucenia pakietów. Dowiedz się więcej o [umożliwiające przesyłanie dalej IP dla karty sieciowej](virtual-network-network-interface.md#enable-or-disable-ip-forwarding). Ponadto systemu operacyjnego lub aplikacji analizę NVA musi również mieć możliwość przekazywania ruchu sieciowego i można skonfigurować, aby to zrobić.
-- Jeśli po utworzeniu trasę do 0.0.0.0/0, cały ruch wychodzący z Internetu jest kierowany do następnego przeskoku określone, na przykład w ramach bramy NVA lub sieci VPN. Tworzenie takich trasy jest często określane jako wymuszonego tunelowania. Połączenia zdalne za pomocą protokołu RDP lub SSH protokoły z Internetu do maszyny Wirtualnej nie może działać przy użyciu tej trasy, w zależności od tego, jak następny przeskok obsługuje ruch. Tunelowanie wymuszone można włączyć:
-    - Korzystając z sieci VPN typu lokacja lokacja, tworząc trasę z typem następnego przeskoku *bramy sieci VPN*. Dowiedz się więcej o [Konfigurowanie wymuszone tunelowanie](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
-    - Jeśli wartość 0.0.0.0/0 (domyślna) jest anonsowana za pośrednictwem protokołu BGP za pośrednictwem bramy sieci wirtualnej przy użyciu sieci VPN lokacja lokacja lub obwodu usługi expressroute. Dowiedz się więcej o korzystaniu z protokołu BGP z [sieci VPN typu lokacja lokacja](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#ip-addresses-used-for-azure-private-peering).
-- Dla komunikacji równorzędnej ruchu w sieci wirtualnej działają prawidłowo, trasy systemowe z typem następnego przeskoku *sieci wirtualnej komunikacji równorzędnej* musi istnieć dla zakresu prefiksu peered sieci wirtualnej. Jeśli taka trasa nie istnieje, a łącze sieci wirtualnej komunikacji równorzędnej jest **połączony**:
-    - Poczekaj kilka sekund, a następnie spróbuj ponownie. Jeśli jest to nowo utworzonego łącze komunikacji równorzędnej, czasami trwa dłużej propagowania tras dla wszystkich interfejsów sieciowych w podsieci. Aby dowiedzieć się więcej na temat sieci wirtualnej komunikacji równorzędnej, zobacz [komunikacji równorzędnej omówienie sieci wirtualnej](virtual-network-peering-overview.md) i [Zarządzanie sieci wirtualnej komunikacji równorzędnej](virtual-network-manage-peering.md).
-    - Reguły grupy zabezpieczeń sieci może wpływać na komunikację. Aby uzyskać więcej informacji, zobacz [zdiagnozować problem filtru ruchu sieciowego maszyny wirtualnej](diagnose-network-traffic-filter-problem.md).
-- Chociaż Azure przypisuje tras domyślnych do każdego interfejsu sieci platformy Azure, jeśli masz wiele interfejsów sieciowych dołączonych do maszyny Wirtualnej, tylko podstawowy interfejs sieciowy jest przypisany trasa domyślna (0.0.0.0/0) lub bramy, w ramach systemu operacyjnego maszyny Wirtualnej. Dowiedz się, jak utworzyć domyślną trasę dla dodatkowych interfejsów sieciowych dołączonych do [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) lub [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) maszyny Wirtualnej. Dowiedz się więcej o [interfejsów sieciowych podstawowych i pomocniczych](virtual-network-network-interface-vm.md#constraints).
+- Routing jest oparty na dopasowanie najdłuższego prefiksu (LPM) między trasy, zdefiniowany przez użytkownika, trasy bramy obramowania protocol (BGP) i systemu. Jeśli istnieje więcej niż jedna trasa z tym samym dopasowaniem LPM, a następnie trasy jest zaznaczone, pochodzenia w podanej kolejności, w oparciu o [Omówienie routingu](virtual-networks-udr-overview.md#how-azure-selects-a-route). Ze skutecznymi trasami może zobaczyć tylko obowiązujących tras, które spełniają LPM, w oparciu o dostępnych tras. Oglądanie, jak trasy są oceniane pod kątem interfejsu sieciowego w znacznie ułatwia rozwiązywanie problemów z określonej trasy, które mogą mieć wpływ na komunikację z maszyną Wirtualną.
+- Jeśli zdefiniowany przez użytkownika trasy niestandardowe do wirtualnego urządzenia sieciowego (WUS), za pomocą *urządzenie wirtualne* jako typ następnego przeskoku zapewnić, że przesyłanie dalej IP jest włączone na urządzeniu WUS odbierającym ruch, pakiety są porzucane. Dowiedz się więcej o [Włączanie przekazywanie adresów IP dla interfejsu sieciowego](virtual-network-network-interface.md#enable-or-disable-ip-forwarding). Ponadto systemu operacyjnego lub aplikacji w urządzeniu WUS również należy przekazywać dalej ruch sieciowy i być skonfigurowana w tym celu.
+- Jeśli utworzono trasę do 0.0.0.0/0, cały ruch wychodzący z Internetu jest kierowany do następnego przeskoku określonego, np. Brama sieci VPN lub urządzenia WUS. Tworzenie takich trasy jest często określany mianem wymuszonego tunelowania. Połączenia zdalne za pomocą protokołów protokołu RDP lub SSH z Internetu do maszyny Wirtualnej może nie działać z tej trasy, w zależności od tego, jak następny przeskok obsługuje ruch. Można włączyć tunelowania wymuszanego:
+    - Korzystając z sieci VPN typu lokacja lokacja, tworząc trasę z typem następnego przeskoku dla *bramy sieci VPN*. Dowiedz się więcej o [Konfigurowanie wymuszonego tunelowania](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json).
+    - Jeśli 0.0.0.0/0 (trasy domyślnej) jest anonsowane za pośrednictwem protokołu BGP za pośrednictwem bramy sieci wirtualnej, korzystając z sieci VPN lokacja lokacja lub obwodu ExpressRoute. Dowiedz się więcej o korzystaniu z protokołu BGP z [sieci VPN typu lokacja lokacja](../vpn-gateway/vpn-gateway-bgp-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json) lub [ExpressRoute](../expressroute/expressroute-routing.md?toc=%2fazure%2fvirtual-network%2ftoc.json#ip-addresses-used-for-azure-private-peering).
+- Dla komunikacji równorzędnej ruchu w sieci wirtualnej działają prawidłowo, trasa systemowa z typem następnego przeskoku dla *komunikacja równorzędna sieci wirtualnych* musi istnieć w równorzędnej sieci wirtualnej prefiks zakresu. Jeśli takie trasy nie istnieje, a połączenie komunikacji równorzędnej sieci wirtualnej **połączono**:
+    - Odczekaj kilka sekund, a następnie spróbuj ponownie. Jeśli nowo utworzonego linku komunikacji równorzędnej, od czasu do czasu zajmuje więcej czasu na propagację trasy, aby wszystkie interfejsy sieciowe w podsieci. Aby dowiedzieć się więcej na temat komunikacji równorzędnej sieci wirtualnej, zobacz [Omówienie komunikacji równorzędnej sieci wirtualnej](virtual-network-peering-overview.md) i [zarządzanie, wirtualne sieci równorzędne](virtual-network-manage-peering.md).
+    - Reguły sieciowych grup zabezpieczeń może mieć wpływ na komunikację. Aby uzyskać więcej informacji, zobacz [diagnozowanie problemu z filtrowaniem ruchu maszyny wirtualnej sieci](diagnose-network-traffic-filter-problem.md).
+- Jednak platforma Azure przypisuje trasy domyślne do każdego interfejsu sieci platformy Azure, jeśli masz wiele interfejsów sieciowych dołączonych do maszyny Wirtualnej, tylko podstawowy interfejs sieciowy jest przypisany trasy domyślnej (0.0.0.0/0) lub bramy w ramach systemu operacyjnego maszyny Wirtualnej. Dowiedz się, jak utworzyć trasę domyślną dla dodatkowych interfejsów sieciowych dołączonych do [Windows](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) lub [Linux](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json#configure-guest-os-for-multiple-nics) maszyny Wirtualnej. Dowiedz się więcej o [interfejsów sieciowych podstawowych i pomocniczych](virtual-network-network-interface-vm.md#constraints).
 
 ## <a name="additional-diagnosis"></a>Dodatkowe diagnostyki
 
-* Aby uruchomić test szybki, aby określić typ następnego przeskoku ruch kierowany do lokalizacji, należy użyć [następnego przeskoku](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json) możliwości obserwatora sieciowego Azure. Następny przeskok informuje Typ następnego przeskoku jest dla ruchu kierowanego do określonej lokalizacji.
-* Jeśli nie ma tras, co powoduje niepowodzenie komunikacji w sieci maszyny Wirtualnej, problem może wynikać z oprogramowanie zapory działających w systemie operacyjnym maszyny Wirtualnej
-* Jeśli jesteś [wymuszanie tunelowania](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ruchu do lokalnego urządzenia za pośrednictwem bramy sieci VPN lub NVA, nie można nawiązać połączenia z maszyną wirtualną z Internetu, w zależności od tego, jak skonfigurowano routingu dla urządzeń. Upewnij się, że routingu, które zostały skonfigurowane dla urządzenia kieruje ruchem jednej publicznych lub prywatnych adresów IP dla maszyny Wirtualnej.
-* Użyj [Rozwiązywanie problemów z połączenia](../network-watcher/network-watcher-connectivity-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) możliwości obserwatora sieciowego, aby ustalić przyczyny problemów komunikacji wychodzącej routingu, filtrowania i w systemu operacyjnego.
+* Aby uruchomić szybkie testowe, aby określić typ następnego przeskoku dla ruchu kierowanego do lokalizacji, należy użyć [miejsca docelowego następnego skoku](../network-watcher/diagnose-vm-network-routing-problem.md?toc=%2fazure%2fvirtual-network%2ftoc.json) możliwości usługi Azure Network Watcher. Następny przeskok informuje, co to jest typ następnego przeskoku dla ruchu kierowanego do określonej lokalizacji.
+* Jeśli istnieje nie tras, powodując komunikacji sieciowej maszyny Wirtualnej nie powiedzie się, problem może być spowodowane oprogramowanie zapory, w ramach systemu operacyjnego maszyny Wirtualnej
+* Jeśli jesteś [wymuszanie tunelowania](../vpn-gateway/vpn-gateway-forced-tunneling-rm.md?toc=%2fazure%2fvirtual-network%2ftoc.json) ruch do urządzenia w środowisku lokalnym za pośrednictwem bramy sieci VPN lub urządzenia WUS, nie można nawiązać połączenie z maszyną wirtualną z Internetu, w zależności od tego, jak zostały skonfigurowane, routing dla urządzeń. Upewnij się, że routingu, które zostały skonfigurowane dla tego urządzenia kieruje ruch do albo publicznych lub prywatnych adresów IP dla maszyny Wirtualnej.
+* Użyj [Rozwiązywanie problemów z połączeniami](../network-watcher/network-watcher-connectivity-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json) możliwość usługi Network Watcher ustalić routingu, filtrowania i -OS przyczyny problemów komunikacji wychodzącej.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Więcej informacji na temat wszystkich zadań, właściwości i ustawienia [trasy tras i tabeli](manage-route-table.md).
-- Więcej informacji na temat wszystkich [następnego przeskoku typy tras systemowych i jak Azure wybiera trasę](virtual-networks-udr-overview.md).
+- Dowiedz się więcej o wszystkich zadań, właściwości i ustawienia dla [trasy w tabeli i tras](manage-route-table.md).
+- Dowiedz się więcej o wszystkich [następnego przeskoku typy trasy systemowe i jak platforma Azure wybiera trasę](virtual-networks-udr-overview.md).

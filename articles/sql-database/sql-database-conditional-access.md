@@ -2,21 +2,22 @@
 title: Dostęp warunkowy — usługi Azure SQL Database i Data Warehouse | Microsoft docs
 description: Dowiedz się, jak skonfigurować dostęp warunkowy dla usługi Azure SQL Database i Data Warehouse.
 services: sql-database
-author: GithubMirek
-manager: johammer
-ms.custom: security
 ms.service: sql-database
-ms.prod_service: sql-database, sql-data-warehouse
+ms.subservice: security
+ms.custom: sql-data-warehouse
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: GithubMirek
 ms.author: mireks
 ms.reviewer: vanto
-ms.openlocfilehash: 702121c18ade244bce5ab3a9c5a57a0245ad80c6
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: e7386e2f926132f5657bdb17011dafe1e1c7b101
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "35938819"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063085"
 ---
 # <a name="conditional-access-mfa-with-azure-sql-database-and-data-warehouse"></a>Dostęp warunkowy (MFA) przy użyciu usługi Azure SQL Database i Data Warehouse  
 

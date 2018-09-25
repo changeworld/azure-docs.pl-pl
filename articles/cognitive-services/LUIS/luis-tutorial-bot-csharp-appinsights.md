@@ -1,24 +1,26 @@
 ---
-title: Dodawanie usługi LUIS danych do usługi Application Insights przy użyciu języka C# | Dokumentacja firmy Microsoft
-titleSuffix: Azure
+title: Dane usługi Insights aplikacji Luis przy użyciu języka C#
+titleSuffix: Azure Cognitive Services
 description: Twórz Boty zintegrowana z usługą aplikacji LUIS i Application Insights przy użyciu języka C#.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/07/2018
+ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: f1efe305f5659bfab50cee13ac30d56531cc6093
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 83ad70e1242af1e01af06206a3a141f455072a44
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237795"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038956"
 ---
-# <a name="add-luis-results-to-application-insights-from-a-web-app-bot"></a>Dodawanie usługi LUIS wyniki do usługi Application Insights z bota aplikacji sieci web
-W tym samouczku dodaje informacje o odpowiedzi usługi LUIS do [usługi Application Insights](https://azure.microsoft.com/services/application-insights/) magazyn danych telemetrycznych. Po utworzeniu tych danych, można tworzyć zapytania po przy użyciu języka Kusto lub usługi Power BI do analizowania, agregowania i tworzyć raporty dotyczące intencje i podmioty wypowiedź w czasie rzeczywistym. Ta analiza pomaga określić, jeśli Dodawanie lub edytowanie intencje i podmioty aplikacją usługi LUIS.
+# <a name="add-luis-results-to-application-insights"></a>Dodawanie usługi LUIS wyniki do usługi Application Insights
+W tym samouczku dodaje informacje o odpowiedzi usługi LUIS do [usługi Application Insights](https://azure.microsoft.com/services/application-insights/) magazyn danych telemetrycznych. Po utworzeniu tych danych, można tworzyć zapytania po przy użyciu języka Kusto lub usługi Power BI do analizowania, agregowania i tworzyć raporty dotyczące intencje i podmioty wypowiedź w czasie rzeczywistym. Ta analiza pomaga określić, jeśli Dodawanie lub edytowanie intencje i podmioty aplikacją usługi LUIS. 
+
+Bot został utworzony za pomocą platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -231,7 +233,7 @@ Usługa Application Insights daje uprawnienia do wykonywania zapytań o dane za 
     ![Raport analizy niestandardowe](./media/luis-tutorial-bot-csharp-appinsights/analytics-query-2.png)
 
 
-Dowiedz się więcej o [język zapytania Kusto](https://docs.loganalytics.io/docs/Learn/Getting-Started/Getting-started-with-queries) lub [dane są eksportowane do usługi Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
+Dowiedz się więcej o [język zapytania Kusto](https://docs.microsoft.com/azure/log-analytics/query-language/get-started-queries) lub [dane są eksportowane do usługi Power BI](https://docs.microsoft.com/azure/application-insights/app-insights-export-power-bi). 
 
 
 ## <a name="learn-more-about-bot-framework"></a>Dowiedz się więcej na temat platformy Bot Framework

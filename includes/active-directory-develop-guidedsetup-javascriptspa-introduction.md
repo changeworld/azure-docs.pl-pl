@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/17/2018
 ms.author: nacanuma
 ms.custom: include file
-ms.openlocfilehash: b816d94c8d85ad7d28dfc76072627423a30f6704
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 2a4c389d063bb63f2fa2293d54236f99d7035e0e
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46293498"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060545"
 ---
 # <a name="call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Wywołanie interfejsu API programu Microsoft Graph z poziomu pojedynczego JavaScript strony aplikacji (SPA)
 
@@ -47,6 +47,7 @@ W tym przewodniku używane są następujące biblioteki:
 |[msal.js](https://github.com/AzureAD/microsoft-authentication-library-for-js)|Biblioteka Microsoft Authentication Library dla JavaScript (wersja zapoznawcza)|
 
 > [!NOTE]
-> *msal.js* cele *punktu końcowego v2 usługi Azure Active Directory* -umożliwiająca osobistego, służbowego i służbowymi kontami logować się i uzyskać tokeny. *Punktu końcowego v2 usługi Azure Active Directory* ma [pewne ograniczenia](..\articles\active-directory\develop\active-directory-v2-limitations.md). Jeśli interesuje Cię tylko konta służbowe i pracy, użyj *adal.js* i *punktu końcowego V1*. Aby zrozumieć różnice między punktami końcowymi v1 i v2, przeczytaj [Porównanie wersji 1 v2](../articles/active-directory/develop/azure-ad-endpoint-comparison.md).
+> *msal.js* cele *punktu końcowego v2 usługi Azure Active Directory* -umożliwiająca osobistego, służbowego i służbowymi kontami logować się i uzyskać tokeny. *Punktu końcowego v2 usługi Azure Active Directory* ma [pewne ograniczenia](..\articles\active-directory\develop\active-directory-v2-limitations.md).
+> Aby zrozumieć różnice między punktami końcowymi v1 i v2, przeczytaj [Porównanie wersji 1 v2](../articles/active-directory/develop/azure-ad-endpoint-comparison.md).
 
 <!--end-collapse-->

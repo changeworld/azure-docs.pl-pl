@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak migracja do najnowszych interfejsu API do zestawu.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 637bd6f17873dd779f3b12466f8060e98296e721
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: b936b42671c15a77a901f321ed3c51f1ba3639cd
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049315"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036596"
 ---
 # <a name="api-v2-migration-guide"></a>Przewodnik migracji usługi interfejsu API w wersji 2
 Wersja 1 [punktu końcowego](https://aka.ms/v1-endpoint-api-docs) i [tworzenia](https://aka.ms/v1-authoring-api-docs) staną się przestarzałe interfejsy API. Użyj tego przewodnika, aby zrozumieć, jak przeprowadzić migrację do wersji 2 [punktu końcowego](https://aka.ms/luis-endpoint-apis) i [tworzenia](https://aka.ms/luis-authoring-apis) interfejsów API. 

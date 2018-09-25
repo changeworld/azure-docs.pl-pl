@@ -10,17 +10,17 @@ ms.topic: conceptual
 ms.date: 04/29/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 9d24e37642a41e4d60b33f42a60d7e56cb4b35b5
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 9a9a86d445deaea4872615f443ad53f76638a758
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37446728"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056526"
 ---
 #<a name="using-age-gating-in-azure-ad-b2c"></a>Stosowania kontroli wieku w usłudze Azure AD B2C
 
 >[!IMPORTANT]
->Ta funkcja jest dostępna w prywatnej wersji zapoznawczej.  Zobacz nasze [blog usługi](https://blogs.msdn.microsoft.com/azureadb2c/) Aby uzyskać szczegółowe informacje, ponieważ staje się dostępna, lub skontaktuj się z pomocą AADB2CFeedback@microsoft.com.  Nie używaj tego na katalogi w środowisku produkcyjnym, przy użyciu tych nowych funkcji może spowodować utratę danych i może mieć nieoczekiwane zachowanie, dopóki nie możemy przejść do ogólnej dostępności.  
+>Ta funkcja jest dostępna w prywatnej wersji zapoznawczej.  Zobacz nasze [blog usługi](https://blogs.msdn.microsoft.com/azureadb2c/) Aby uzyskać szczegółowe informacje, ponieważ staje się dostępna, lub skontaktuj się z pomocą AADB2CPreview@microsoft.com.  Nie używaj tego na katalogi w środowisku produkcyjnym, przy użyciu tych nowych funkcji może spowodować utratę danych i może mieć nieoczekiwane zachowanie, dopóki nie możemy przejść do ogólnej dostępności.  
 >
 
 ##<a name="age-gating"></a>Wieku
@@ -56,13 +56,3 @@ Przepływy użytkownika, które umożliwia albo Zaloguj się, zaloguj się lub o
 Przepływy użytkownika, które umożliwia albo Zaloguj się, zaloguj się lub oba można zablokować nieletnim bez zgody użytkownika z aplikacji.  Dostępne są dwie opcje do obsługi zablokowanych użytkowników w usłudze Azure AD B2C:
 * Wyślij kod JSON z powrotem do aplikacji — ta opcja zostanie wysłana odpowiedź z powrotem do aplikacji zablokowano pomocnicze.
 * Pokaż stronę błędu - użytkownika pojawi się Strona z informacją o tym, że nie mogą uzyskiwać dostęp do aplikacji
-
-##<a name="known-issues"></a>Znane problemy
-###<a name="format-for-the-response-when-a-minor-is-blocked"></a>Format odpowiedzi, gdy pomocnicza jest zablokowany.
-Odpowiedź aktualnie nie jest poprawnie sformułowany, ten problem zostanie rozwiązany w nadchodzących aktualizacji.
-
-###<a name="deleting-specific-attributes-that-were-added-during-setup-can-make-your-directory-unable-to-use-age-gating"></a>Usuwanie określone atrybuty, które zostały dodane podczas instalacji można wprowadzić katalogu nie można użyć wieku.
-W ramach instalacji wieku, skonfigurować katalogu za pomocą opcji w swojej `Properties`.  W przypadku usunięcia `legalCountry` lub `dateOfBirth` za pośrednictwem programu Graph, katalogiem nie mogą już używać wieku i nie można ponownie utworzyć te właściwości.
-
-###<a name="list-of-countries-is-incomplete"></a>Listę krajów nie została ukończona
-Obecnie listę krajów, dla atrybutów legalCountry nie została ukończona, dodamy pozostałych krajów w nadchodzących aktualizacji.

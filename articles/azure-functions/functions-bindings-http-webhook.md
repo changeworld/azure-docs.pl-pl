@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure powiązania funkcje protokołu HTTP i elementów webhook
-description: Dowiedz się, jak używać protokołu HTTP i elementów webhook wyzwalaczy i powiązań w usłudze Azure Functions.
+title: Usługa Azure Functions HTTP wyzwalaczy i powiązań
+description: Dowiedz się, jak używać protokołu HTTP, wyzwalaczy i powiązań w usłudze Azure Functions.
 services: functions
 documentationcenter: na
 author: ggailey777
@@ -11,18 +11,18 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: eef84e8c5fb67faef99beec934f29e55365ce811
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: a1b34484978ad95f0945e93411ac2e2a74fff238
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715962"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980978"
 ---
-# <a name="azure-functions-http-and-webhook-bindings"></a>Usługa Azure powiązania funkcje protokołu HTTP i elementów webhook
+# <a name="azure-functions-http-triggers-and-bindings"></a>Usługa Azure Functions HTTP wyzwalaczy i powiązań
 
-W tym artykule wyjaśniono, jak pracować z wyzwalaczami HTTP i powiązania danych wyjściowych w usłudze Azure Functions. Wyzwalacze HTTP obsługuje w usłudze Azure Functions i powiązania danych wyjściowych.
+W tym artykule wyjaśniono, jak pracować z wyzwalaczami HTTP i powiązania danych wyjściowych w usłudze Azure Functions.
 
-Wyzwalacz HTTP można dostosować tak, aby odpowiedzieć na [elementów webhook](https://en.wikipedia.org/wiki/Webhook). Wyzwalacza elementu webhook akceptuje ładunek JSON i sprawdza poprawność kodu JSON. Istnieją specjalne wersje wyzwalacza elementu webhook, które ułatwiają Obsługa elementów webhook z niektórych dostawców, takich jak GitHub i Slack.
+Wyzwalacz HTTP można dostosować tak, aby odpowiedzieć na [elementów webhook](https://en.wikipedia.org/wiki/Webhook).
 
 [!INCLUDE [intro](../../includes/functions-bindings-intro.md)]
 
@@ -312,164 +312,6 @@ public HttpResponseMessage<String> hello(@HttpTrigger(name = "req", methods = {"
     }
 }
 ```
-     
-## <a name="trigger---webhook-example"></a>Wyzwalacz — przykład elementu webhook
-
-Zobacz przykład specyficzny dla języka:
-
-* [C#](#webhook---c-example)
-* [Skryptu C# (csx)](#webhook---c-script-example)
-* [F#](#webhook---f-example)
-* [JavaScript](#webhook---javascript-example)
-
-### <a name="webhook---c-example"></a>Element Webhook — przykład w języku C#
-
-W poniższym przykładzie przedstawiono [funkcja języka C#](functions-dotnet-class-library.md) protokołu HTTP 200, wysyła w odpowiedzi na ogólne żądania JSON.
-
-```cs
-[FunctionName("HttpTriggerCSharp")]
-public static HttpResponseMessage Run([HttpTrigger(AuthorizationLevel.Anonymous, WebHookType = "genericJson")] HttpRequestMessage req)
-{
-    return req.CreateResponse(HttpStatusCode.OK);
-}
-```
-
-### <a name="webhook---c-script-example"></a>Element Webhook — przykładowy skrypt w języku C#
-
-W poniższym przykładzie pokazano wyzwalacza elementu webhook, powiązanie w *function.json* pliku i [funkcji skryptu w języku C#](functions-reference-csharp.md) powiązania, który używa. Funkcja rejestruje komentarze problem usługi GitHub.
-
-Oto *function.json* pliku:
-
-```json
-{
-  "bindings": [
-    {
-      "type": "httpTrigger",
-      "direction": "in",
-      "webHookType": "github",
-      "name": "req"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    }
-  ],
-  "disabled": false
-}
-```
-
-[Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
-
-Poniżej przedstawiono kod skryptu języka C#:
-
-```csharp
-#r "Newtonsoft.Json"
-
-using System;
-using System.Net;
-using System.Threading.Tasks;
-using Newtonsoft.Json;
-
-public static async Task<object> Run(HttpRequestMessage req, TraceWriter log)
-{
-    string jsonContent = await req.Content.ReadAsStringAsync();
-    dynamic data = JsonConvert.DeserializeObject(jsonContent);
-
-    log.Info($"WebHook was triggered! Comment: {data.comment.body}");
-
-    return req.CreateResponse(HttpStatusCode.OK, new {
-        body = $"New GitHub comment: {data.comment.body}"
-    });
-}
-```
-
-### <a name="webhook---f-example"></a>Element Webhook — F # przykład
-
-W poniższym przykładzie pokazano wyzwalacza elementu webhook, powiązanie w *function.json* pliku i [funkcja języka F #](functions-reference-fsharp.md) powiązania, który używa. Funkcja rejestruje komentarze problem usługi GitHub.
-
-Oto *function.json* pliku:
-
-```json
-{
-  "bindings": [
-    {
-      "type": "httpTrigger",
-      "direction": "in",
-      "webHookType": "github",
-      "name": "req"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    }
-  ],
-  "disabled": false
-}
-```
-
-[Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
-
-Poniżej przedstawiono kod F #:
-
-```fsharp
-open System.Net
-open System.Net.Http
-open FSharp.Interop.Dynamic
-open Newtonsoft.Json
-
-type Response = {
-    body: string
-}
-
-let Run(req: HttpRequestMessage, log: TraceWriter) =
-    async {
-        let! content = req.Content.ReadAsStringAsync() |> Async.AwaitTask
-        let data = content |> JsonConvert.DeserializeObject
-        log.Info(sprintf "GitHub WebHook triggered! %s" data?comment?body)
-        return req.CreateResponse(
-            HttpStatusCode.OK,
-            { body = sprintf "New GitHub comment: %s" data?comment?body })
-    } |> Async.StartAsTask
-```
-
-### <a name="webhook---javascript-example"></a>Element Webhook — przykład JavaScript
-
-W poniższym przykładzie pokazano wyzwalacza elementu webhook, powiązanie w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) powiązania, który używa. Funkcja rejestruje komentarze problem usługi GitHub.
-
-Oto powiązanie danych w *function.json* pliku:
-
-```json
-{
-  "bindings": [
-    {
-      "type": "httpTrigger",
-      "direction": "in",
-      "webHookType": "github",
-      "name": "req"
-    },
-    {
-      "type": "http",
-      "direction": "out",
-      "name": "res"
-    }
-  ],
-  "disabled": false
-}
-```
-
-[Konfiguracji](#trigger---configuration) sekcji opisano te właściwości.
-
-Poniżej przedstawiono kod JavaScript:
-
-```javascript
-module.exports = function (context, data) {
-    context.log('GitHub WebHook triggered!', data.comment.body);
-    context.res = { body: 'New GitHub comment: ' + data.comment.body };
-    context.done();
-};
-```
 
 ## <a name="trigger---attributes"></a>Wyzwalacz — atrybuty
 
@@ -480,7 +322,7 @@ Można ustawić autoryzację poziomu i dozwolone metody HTTP w Parametry Konstru
 ```csharp
 [FunctionName("HttpTriggerCSharp")]
 public static HttpResponseMessage Run(
-    [HttpTrigger(AuthorizationLevel.Anonymous, WebHookType = "genericJson")] HttpRequestMessage req)
+    [HttpTrigger(AuthorizationLevel.Anonymous)] HttpRequestMessage req)
 {
     ...
 }
@@ -500,7 +342,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 | <a name="http-auth"></a>**authLevel** |  **AuthLevel** |Określa, jakie klucze, musi być obecny na żądanie w celu wywołania funkcji. Poziom autoryzacji, może być jedną z następujących wartości: <ul><li><code>anonymous</code>&mdash;Klucz interfejsu API nie jest wymagana.</li><li><code>function</code>&mdash;Wymagany jest klucz interfejsu API specyficzne dla funkcji. Jeśli nie zostanie podana jest wartość domyślna.</li><li><code>admin</code>&mdash;Klucz główny jest wymagany.</li></ul> Aby uzyskać więcej informacji, zobacz sekcję [autoryzacji klucze](#authorization-keys). |
 | **Metody** |**Metody** | Tablica metod HTTP, na które odpowiada funkcji. Jeśli nie zostanie określony, funkcja odpowiada na wszystkich metod HTTP. Zobacz [Dostosuj punkt końcowy http](#customize-the-http-endpoint). |
 | **trasy** | **trasy** | Definiuje szablon trasy kontrolowanie, do której żądanie adresy URL reaguje funkcji. Jeśli nie zostanie podana wartość domyślna to `<functionname>`. Aby uzyskać więcej informacji, zobacz [Dostosuj punkt końcowy http](#customize-the-http-endpoint). |
-| **webHookType** | **WebHookType** |Konfiguruje wyzwalacza HTTP, która będzie działać jako [elementu webhook](https://en.wikipedia.org/wiki/Webhook) odbiornika dla określonego dostawcy. Nie należy ustawiać `methods` właściwość, jeśli ta właściwość jest ustawiona. Typ elementu webhook, może być jedną z następujących wartości:<ul><li><code>genericJson</code>&mdash;Ogólnego przeznaczenia punktu końcowego elementu webhook bez logiki dla określonego dostawcy. To ustawienie ogranicza żądania tylko te, które przy użyciu protokołu HTTP POST i za pomocą `application/json` typ zawartości.</li><li><code>github</code>&mdash;Funkcja odpowiada [elementy webhook GitHub](https://developer.github.com/webhooks/). Nie używaj _authLevel_ właściwości przy użyciu elementów webhook usługi GitHub. Aby uzyskać więcej informacji zobacz sekcję elementy webhook usługi GitHub, w dalszej części tego artykułu.</li><li><code>slack</code>&mdash;Funkcja odpowiada [Slack elementów webhook](https://api.slack.com/outgoing-webhooks). Nie używaj _authLevel_ właściwości przy użyciu elementów webhook Slack. Aby uzyskać więcej informacji zobacz sekcję Slack elementów webhook w dalszej części tego artykułu.</li></ul>|
+| **webHookType** | **WebHookType** | _Obsługiwane tylko w przypadku środowisko uruchomieniowe 1.x wersji._<br/><br/>Konfiguruje wyzwalacza HTTP, która będzie działać jako [elementu webhook](https://en.wikipedia.org/wiki/Webhook) odbiornika dla określonego dostawcy. Nie należy ustawiać `methods` właściwość, jeśli ta właściwość jest ustawiona. Typ elementu webhook, może być jedną z następujących wartości:<ul><li><code>genericJson</code>&mdash;Ogólnego przeznaczenia punktu końcowego elementu webhook bez logiki dla określonego dostawcy. To ustawienie ogranicza żądania tylko te, które przy użyciu protokołu HTTP POST i za pomocą `application/json` typ zawartości.</li><li><code>github</code>&mdash;Funkcja odpowiada [elementy webhook GitHub](https://developer.github.com/webhooks/). Nie używaj _authLevel_ właściwości przy użyciu elementów webhook usługi GitHub. Aby uzyskać więcej informacji zobacz sekcję elementy webhook usługi GitHub, w dalszej części tego artykułu.</li><li><code>slack</code>&mdash;Funkcja odpowiada [Slack elementów webhook](https://api.slack.com/outgoing-webhooks). Nie używaj _authLevel_ właściwości przy użyciu elementów webhook Slack. Aby uzyskać więcej informacji zobacz sekcję Slack elementów webhook w dalszej części tego artykułu.</li></ul>|
 
 ## <a name="trigger---usage"></a>Wyzwalacz — użycie
 
@@ -508,21 +350,10 @@ Dla funkcji języka C# i F #, można zadeklarować rodzaj wyzwalacza danych wej�
 
 W przypadku funkcji JavaScript środowisko uruchomieniowe usługi Functions zapewnia treści żądania, a nie obiekt żądania. Aby uzyskać więcej informacji, zobacz [przykładowy wyzwalacz JavaScript](#trigger---javascript-example).
 
-### <a name="github-webhooks"></a>Elementy webhook GitHub
-
-Aby reagować na elementy webhook usługi GitHub, najpierw utworzyć funkcję z wyzwalaczem HTTP i ustaw **webHookType** właściwość `github`. Następnie skopiuj jej adres URL i klucz API w **Dodaj element webhook** strony repozytorium GitHub. 
-
-![](./media/functions-bindings-http-webhook/github-add-webhook.png)
-
-Aby zapoznać się z przykładem, zobacz [Tworzenie funkcji wyzwalanej przez element webhook GitHub](functions-create-github-webhook-triggered-function.md).
-
-### <a name="slack-webhooks"></a>Elementy webhook Slack
-
-Slack elementu webhook generuje token dla Ciebie zamiast pozwala określić, dlatego należy skonfigurować klucz właściwe dla funkcji przy użyciu tokenu z Slack. Zobacz [autoryzacji klucze](#authorization-keys).
 
 ### <a name="customize-the-http-endpoint"></a>Dostosuj punkt końcowy HTTP
 
-Domyślnie podczas tworzenia funkcji wyzwalacza HTTP lub elementu WebHook, funkcja jest adresowalnych trasa formularza:
+Domyślnie podczas tworzenia funkcji wyzwalacza HTTP, funkcja jest adresowalnych trasa formularza:
 
     http://<yourapp>.azurewebsites.net/api/<funcname> 
 
@@ -603,10 +434,13 @@ Domyślnie wszystkie trasy funkcji mają prefiks *api*. Można również dostoso
 
 ### <a name="authorization-keys"></a>Klucze autoryzacji
 
-Functions umożliwia utrudnić dostęp do funkcji punktów końcowych HTTP podczas programowania za pomocą klawiszy.  Standardowa wyzwalacza HTTP może wymagać klucza interfejsu API być obecne w żądaniu. Elementy Webhook może autoryzować żądania na różne sposoby w zależności od dostawca obsługuje za pomocą klawiszy.
+Functions umożliwia utrudnić dostęp do funkcji punktów końcowych HTTP podczas programowania za pomocą klawiszy.  Standardowa wyzwalacza HTTP może wymagać klucza interfejsu API być obecne w żądaniu. 
 
 > [!IMPORTANT]
 > Gdy kluczy może pomóc zaciemniania punktów końcowych HTTP podczas tworzenia, nie są one przeznaczone jako sposobu zabezpieczenia wyzwalacza HTTP w środowisku produkcyjnym. Aby dowiedzieć się więcej, zobacz [bezpieczny punkt końcowy HTTP w środowisku produkcyjnym](#secure-an-http-endpoint-in-production).
+
+> [!NOTE]
+> W funkcje środowisko uruchomieniowe 1.x dostawców elementu webhook może autoryzować żądania na różne sposoby w zależności od dostawca obsługuje za pomocą klawiszy. To zagadnienie opisano w [elementów Webhook i klucze](#webhooks-and-keys). Środowisko uruchomieniowe 2.x wersji nie ma wbudowaną obsługę dostawców elementu webhook.
 
 Istnieją dwa typy kluczy:
 
@@ -641,26 +475,45 @@ Możesz zezwolić na anonimowe żądania, które nie wymagają kluczy. Może ró
 > [!NOTE]
 > Podczas uruchamiania funkcji lokalnie, autoryzacja jest wyłączony, bez względu na ustawienie poziomie określonej uwierzytelniania. Po opublikowaniu na platformie Azure, `authLevel` wymuszane jest ustawienie w wyzwalacza.
 
-### <a name="keys-and-webhooks"></a>Klucze i elementy webhook
 
-Autoryzacji elementu Webhook jest obsługiwany przez element webhook składnika odbiorcy, część wyzwalacza HTTP i mechanizm różni się w zależności od typu elementu webhook. Każdy mechanizm polegają na klucz. Domyślnie jest używany klucz funkcji o nazwie "domyślna". Aby użyć innego klucza, należy skonfigurować dostawcę elementu webhook, aby wysłać nazwę klucza z żądaniem w jednym z następujących sposobów:
-
-* **Ciąg zapytania**: dostawca przekazuje nazwę klucza w `clientid` zapytania parametr ciągu, takich jak `https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>`.
-* **Nagłówek żądania**: dostawca przekazuje nazwę klucza w `x-functions-clientid` nagłówka.
-
-Na przykład element webhook zabezpieczone za pomocą klucza zobacz [Tworzenie funkcji wyzwalanej przez element webhook GitHub](functions-create-github-webhook-triggered-function.md).
 
 ### <a name="secure-an-http-endpoint-in-production"></a>Bezpieczny punkt końcowy HTTP w środowisku produkcyjnym
 
 Aby zabezpieczyć pełni funkcję punktów końcowych w środowisku produkcyjnym, należy rozważyć zaimplementowanie jednego z następujących opcji funkcji zabezpieczenia na poziomie aplikacji:
 
-* Włącz autoryzację/uwierzytelniania usługi App Service dla aplikacji funkcji. Platforma usługi App Service umożliwia korzystanie z usługi Azure Active Directory (AAD), uwierzytelnianie jednostki usługi i zaufanych innych dostawców tożsamości do uwierzytelniania użytkowników. Ta funkcja jest włączona tylko uwierzytelnieni użytkownicy mają dostęp do aplikacji funkcji. Aby dowiedzieć się więcej, zobacz [skonfiguruj aplikację usługi App Service, aby używała logowania do usługi Azure Active Directory](../app-service/app-service-mobile-how-to-configure-active-directory-authentication.md).
+* Włącz uwierzytelnianie usługi App Service / autoryzacji dla aplikacji funkcji. Platforma usługi App Service pozwala używać do uwierzytelniania klientów usługi Azure Active Directory (AAD) i wielu dostawców tożsamości innych firm. Służy to do zaimplementowania reguł autoryzacji niestandardowej dla funkcji, a informacje o użytkownikach można pracować z kodu funkcji. Aby dowiedzieć się więcej, zobacz [uwierzytelnianie i autoryzacja w usłudze Azure App Service](../app-service/app-service-authentication-overview.md).
 
 * Użyj usługi Azure API Management (APIM), aby uwierzytelnić żądania. APIM oferuje różnorodne opcje zabezpieczeń interfejsu API dla żądań przychodzących. Aby dowiedzieć się więcej, zobacz [zasady uwierzytelniania usługi API Management](../api-management/api-management-authentication-policies.md). Za pomocą usługi APIM w miejscu można skonfigurować aplikację funkcji w celu umożliwienia akceptowania żądań tylko adres PI swojego wystąpienia usługi APIM. Aby dowiedzieć się więcej, zobacz [ograniczenia adresów IP](ip-addresses.md#ip-address-restrictions).
 
 * Wdróż aplikację funkcji do usługi Azure App Service Environment (ASE). Środowisko ASE zawiera dedykowane Środowisko hostingu, w której chcesz uruchamiać swoje funkcje. Środowisko ASE można konfigurować pojedynczą bramą frontonu, która służy do uwierzytelniania wszystkich żądań przychodzących. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zapory aplikacji sieci Web (WAF) dla środowiska App Service Environment](../app-service/environment/app-service-app-service-environment-web-application-firewall.md).
 
 Korzystając z jednej z następujących metod zabezpieczeń na poziomie aplikacji funkcji, należy skonfigurować uwierzytelnianie funkcji wyzwalanej przez HTTP poziom `anonymous`.
+
+### <a name="webhooks"></a>Elementy webhook
+
+> [!NOTE]
+> Tryb elementu Webhook jest dostępna tylko dla wersji 1.x środowisko uruchomieniowe usługi Functions.
+
+Tryb elementu Webhook zapewnia dodatkową weryfikację ładunków elementu webhook. W wersji 2.x, podstawowy wyzwalacza HTTP nadal działa i jest zalecane podejście do elementów webhook.
+
+#### <a name="github-webhooks"></a>Elementy webhook GitHub
+
+Aby reagować na elementy webhook usługi GitHub, najpierw utworzyć funkcję z wyzwalaczem HTTP i ustaw **webHookType** właściwość `github`. Następnie skopiuj jej adres URL i klucz API w **Dodaj element webhook** strony repozytorium GitHub. 
+
+![](./media/functions-bindings-http-webhook/github-add-webhook.png)
+
+Aby zapoznać się z przykładem, zobacz [Tworzenie funkcji wyzwalanej przez element webhook GitHub](functions-create-github-webhook-triggered-function.md).
+
+#### <a name="slack-webhooks"></a>Elementy webhook Slack
+
+Slack elementu webhook generuje token dla Ciebie zamiast pozwala określić, dlatego należy skonfigurować klucz właściwe dla funkcji przy użyciu tokenu z Slack. Zobacz [autoryzacji klucze](#authorization-keys).
+
+### <a name="webhooks-and-keys"></a>Elementy Webhook i klucze
+
+Autoryzacji elementu Webhook jest obsługiwany przez element webhook składnika odbiorcy, część wyzwalacza HTTP i mechanizm różni się w zależności od typu elementu webhook. Każdy mechanizm polegają na klucz. Domyślnie jest używany klucz funkcji o nazwie "domyślna". Aby użyć innego klucza, należy skonfigurować dostawcę elementu webhook, aby wysłać nazwę klucza z żądaniem w jednym z następujących sposobów:
+
+* **Ciąg zapytania**: dostawca przekazuje nazwę klucza w `clientid` zapytania parametr ciągu, takich jak `https://<yourapp>.azurewebsites.net/api/<funcname>?clientid=<keyname>`.
+* **Nagłówek żądania**: dostawca przekazuje nazwę klucza w `x-functions-clientid` nagłówka.
 
 ## <a name="trigger---limits"></a>Wyzwalacz — limity
 
@@ -692,7 +545,7 @@ W poniższej tabeli opisano właściwości konfiguracji powiązania, które moż
 
 Aby wysłać odpowiedź HTTP, należy użyć wzorców odpowiedzi standard języka. W języku C# lub skrypt języka C#, należy wprowadzić funkcję zwracany typ `HttpResponseMessage` lub `Task<HttpResponseMessage>`. W języku C# atrybut zwracana wartość nie jest wymagana.
 
-Na przykład odpowiedzi, zobacz [przykładowy wyzwalacz](#trigger---example) i [przykład elementu webhook](#trigger---webhook-example).
+Na przykład odpowiedzi, zobacz [przykładowy wyzwalacz](#trigger---example).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

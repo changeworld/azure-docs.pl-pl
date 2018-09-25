@@ -2,21 +2,22 @@
 title: Bazy danych SQL automatycznego, geograficznie nadmiarowych kopii zapasowych Azure | Dokumentacja firmy Microsoft
 description: Bazy danych SQL Database automatycznie tworzy kopię zapasową lokalnej bazy danych co kilka minut i korzysta z platformy Azure magazyn geograficznie nadmiarowy geograficznie nadmiarowości geograficznej.
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.workload: Active
-ms.date: 09/14/2018
+author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 3a9a81154a7ae03b524ca13da3b4576841c3cab3
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 8fd8bf6128d09d6431a8542206430b9bb6df095d
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736771"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063731"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Dowiedz się więcej o automatycznych kopii zapasowych bazy danych SQL
 

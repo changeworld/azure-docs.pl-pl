@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 04/25/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 92ebd399cea88440e0f76ee1f34cb5930d3121d9
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: c4e237af7e85223839b3f26bcc33007f8abb9d0a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578688"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034233"
 ---
 # <a name="automate-resources-in-your-datacenter-or-cloud-by-using-hybrid-runbook-worker"></a>Automatyzuj zasobów w centrum danych lub w chmurze przy użyciu hybrydowego procesu roboczego Runbook
 
@@ -26,11 +26,11 @@ Na poniższym obrazie przedstawiono tę funkcję:
 
 Każdy hybrydowy proces roboczy elementu Runbook jest członkiem grupy hybrydowego procesu roboczego Runbook, który jest określany podczas instalacji agenta. Grupa może obejmować jednego agenta, ale można zainstalować wielu agentów w grupie w celu zapewnienia wysokiej dostępności.
 
-Podczas uruchamiania elementu runbook w hybrydowym procesie roboczym elementu Runbook należy określić grupę, która działa na. Każdemu procesowi roboczemu w tej grupie sonduje usługę Azure Automation, aby sprawdzić, czy wszystkie zadania są dostępne. Jeśli zadanie jest dostępna, to pierwszy proces roboczy, aby zakończyć dane zadanie przełączy go. Nie można określić określonego procesu roboczego.
+Podczas uruchamiania elementu runbook w hybrydowym procesie roboczym elementu Runbook należy określić grupę, która działa na. Każdemu procesowi roboczemu w tej grupie sonduje usługę Azure Automation, aby sprawdzić, czy wszystkie zadania są dostępne. Jeśli zadanie jest dostępna, to pierwszy proces roboczy, aby zakończyć dane zadanie przełączy go. Nie można określić określonego procesu roboczego. Zadanie [limity](../azure-subscription-service-limits.md#automation-limits) zastosowanie zarówno do piaskownic usługi Azure, jak i hybrydowych procesów roboczych Runbook.
 
 ## <a name="install-a-hybrid-runbook-worker"></a>Instalowanie hybrydowego procesu roboczego elementu Runbook
 
-Proces, aby zainstalować hybrydowego procesu roboczego Runbook zależy od systemu operacyjnego. Poniższa tabela zawiera łącza do metod, które można użyć do zainstalowania. 
+Proces, aby zainstalować hybrydowego procesu roboczego Runbook zależy od systemu operacyjnego. Poniższa tabela zawiera łącza do metod, które można użyć do zainstalowania.
 
 Aby zainstalować i skonfigurować Windows hybrydowego procesu roboczego Runbook, można użyć dwóch metod. Zalecaną metodą jest całkowicie zautomatyzować proces konfigurowania komputerów Windows przy użyciu elementu runbook usługi Automation. Druga metoda jest następujące procedury krok po kroku, aby ręcznie zainstalować i skonfigurować rolę. Dla maszyn z systemem Linux możesz uruchomić skrypt języka Python, aby zainstalować agenta na maszynie.
 

@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie zestawami skalowania maszyn wirtualnych przy użyciu wiersza polecenia platformy Azure 2.0 | Dokumentacja firmy Microsoft
-description: Pojemność zestawu typowych poleceń interfejsu wiersza polecenia platformy Azure w wersji 2.0 do zarządzania programem Virtual Machine Scale Sets, takie jak uruchamianie i zatrzymywanie wystąpienia lub zmienianie skali.
+title: Zarządzanie zestawami skalowania maszyn wirtualnych przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Pojemność zestawu typowych poleceń interfejsu wiersza polecenia platformy Azure do zarządzania programem Virtual Machine Scale Sets, takie jak uruchamianie i zatrzymywanie wystąpienia lub zmienianie skali.
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -15,17 +15,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 512dd7c3318022106b721d8f215bff17de51e51d
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 014e6ff2bc769675e47743cfdd4fbf7fc6234974
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42056659"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999838"
 ---
-# <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli-20"></a>Zarządzanie maszyny wirtualnej zestawu skalowania przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
-W całym cyklu życia zestawu skalowania maszyn wirtualnych konieczne może być uruchomienie jednego lub większej liczby zadań zarządzania. Ponadto może pojawić się potrzeba tworzenia skryptów automatyzujących różne zadania cyklu życia. Ten artykuł szczegółowo opisuje niektóre typowe polecenia interfejsu wiersza polecenia platformy Azure w wersji 2.0, które umożliwiają wykonywanie tych zadań.
+# <a name="manage-a-virtual-machine-scale-set-with-the-azure-cli"></a>Zarządzanie maszyny wirtualnej zestawu skalowania przy użyciu wiersza polecenia platformy Azure
+W całym cyklu życia zestawu skalowania maszyn wirtualnych konieczne może być uruchomienie jednego lub większej liczby zadań zarządzania. Ponadto może pojawić się potrzeba tworzenia skryptów automatyzujących różne zadania cyklu życia. Ten artykuł szczegółowo opisuje niektóre typowe polecenia interfejsu wiersza polecenia platformy Azure, które umożliwiają wykonywanie tych zadań.
 
-Aby wykonać te zadania zarządzania, należy najnowsze Azure CLI 2.0. Aby uzyskać informacje, zobacz [zainstalować interfejs wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-azure-cli). Jeśli musisz utworzyć zestaw skalowania maszyn wirtualnych, możesz to zrobić [Tworzenie zestawu skalowania przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0](quick-create-cli.md).
+Aby wykonać te zadania zarządzania, należy najnowszego interfejsu wiersza polecenia platformy Azure. Aby uzyskać informacje, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Jeśli musisz utworzyć zestaw skalowania maszyn wirtualnych, możesz to zrobić [Tworzenie zestawu skalowania przy użyciu wiersza polecenia platformy Azure](quick-create-cli.md).
 
 
 ## <a name="view-information-about-a-scale-set"></a>Wyświetl informacje o zestawie skalowania

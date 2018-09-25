@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: shants
-ms.openlocfilehash: 543c30b4d2c960f3c7453369162a62dc4606d06e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 1ac965896dc3356f33e6461cf390e4345663c3d3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39068631"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982090"
 ---
 # <a name="handling-planned-maintenance-notifications-for-linux-virtual-machines"></a>Obsługa Planned maintenance notifications zaplanowanej dla maszyn wirtualnych systemu Linux
 
@@ -108,7 +108,7 @@ az vm perform-maintenance -g rgName -n vmName
 
 ## <a name="classic-deployments"></a>Klasyczne wdrożenia
 
-Jeśli nadal masz starsze maszyny wirtualne, które zostały wdrożone za pomocą klasycznego modelu wdrażania, możesz korzystanie 1.0 interfejsu wiersza polecenia do wykonywania zapytań w przypadku maszyn wirtualnych i zainicjowanie konserwacji.
+Jeśli nadal masz starsze maszyny wirtualne, które zostały wdrożone za pomocą klasycznego modelu wdrażania, można użyć platformy Azure klasyczny interfejs wiersza polecenia do wykonywania zapytań w przypadku maszyn wirtualnych i zainicjowanie konserwacji.
 
 Upewnij się, że jesteś w trybie poprawne, aby pracować z klasycznej maszyny Wirtualnej, wpisując:
 

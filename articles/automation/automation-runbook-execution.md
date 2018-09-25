@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 05/08/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 6e449c1216fabf64da2b2abb59a7066fa30e332d
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: b577f697f4467656166b83ea78efdfe6d742941f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45982984"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032533"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Wykonanie elementu Runbook w usłudze Azure Automation
 
@@ -145,7 +145,8 @@ To jest ochrona usługi z poziomu elementów runbook uruchomiona przez czas nieo
 
 Jeśli element runbook ma punktów kontrolnych lub zadanie nie osiągnęła pierwszy punkt kontrolny przed zwalniany, następnie jest uruchamiany ponownie od samego początku.
 
-W przypadku długo działających zadań zaleca się użycie [hybrydowego procesu roboczego elementu runbook](automation-hrw-run-runbooks.md#job-behavior). Hybrydowe procesy robocze elementu runbook nie są ograniczone przez odpowiednie udostępnianie i nie mają ograniczenia czasu wykonywania elementu runbook.
+W przypadku długo działających zadań zaleca się użycie [hybrydowego procesu roboczego elementu runbook](automation-hrw-run-runbooks.md#job-behavior). Hybrydowe procesy robocze elementu runbook nie są ograniczone przez odpowiednie udostępnianie i nie mają ograniczenia czasu wykonywania elementu runbook. Inne zadania [limity](../azure-subscription-service-limits.md#automation-limits) zastosowanie zarówno do piaskownic usługi Azure, jak i hybrydowych procesów roboczych Runbook.
+
 
 Jeśli używasz elementu runbook przepływu pracy programu PowerShell w systemie Azure podczas tworzenia elementu runbook, należy upewnić się, czas do uruchomienia żadnych działań między dwoma punktami kontrolnymi nie przekracza 3 godziny. Może być konieczne do dodawania punktów kontrolnych do elementu runbook, aby upewnić się, że nie osiągnięcia tego limitu trzech godzin lub Podziel długich długotrwałych operacji. Na przykład element runbook może wykonywać reindex na dużej bazy danych SQL. Jeśli ta jednej operacji nie została zakończona w wyznaczonym udział, zadanie jest załadowane i uruchomione od początku. W takim przypadku należy podzielić operacji reindex na wiele kroków, takie jak indeksowanie jednej tabeli w czasie i następnie Wstaw punkt kontrolny po zakończeniu każdej operacji, dzięki czemu można wznowić zadania, po ostatniej operacji do wykonania.
 

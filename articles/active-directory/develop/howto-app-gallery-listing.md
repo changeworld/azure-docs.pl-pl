@@ -10,39 +10,30 @@ ms.assetid: 820acdb7-d316-4c3b-8de9-79df48ba3b06
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2018
 ms.author: celested
 ms.reviewer: elisol, bryanla
 ms.custom: aaddev
-ms.openlocfilehash: 6e15a2c940778427c953bd0a3d469ef55f7e3187
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 3d6692808bad2010779323cecc42778def32a38c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632062"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980274"
 ---
-# <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
+# <a name="how-to-list-your-application-in-the-azure-active-directory-application-gallery"></a>Porady: wyświetlanie listy aplikacji w galerii aplikacji usługi Azure Active Directory
 
 ## <a name="what-is-the-azure-ad-application-gallery"></a>Co to jest galerii aplikacji usługi Azure AD?
 
-Azure Active Directory (Azure AD) to oparta na chmurze Usługa zarządzania tożsamościami. [Galerii aplikacji usługi Azure AD](https://azure.microsoft.com/marketplace/active-directory/all/) znajduje się w portalu Azure Marketplace sklepu z aplikacjami, gdzie wszystkie łączniki aplikacji są publikowane do logowania jednokrotnego i aprowizacji użytkowników. Klienci, którzy używają usługi Azure AD jako dostawcy tożsamości znaleźć innego łączników aplikacji SaaS, opublikowane w tym miejscu. Administratorzy IT Dodaj łączniki z galerii aplikacji i następnie konfigurowanie i używanie łączników do logowania jednokrotnego i aprowizacji. Usługi Azure AD obsługuje wszystkie protokoły głównych federacyjnego logowania jednokrotnego, łącznie z języka SAML 2.0, OpenID Connect, OAuth i WS-Fed.
-
-## <a name="what-are-the-benefits-of-listing-an-application-in-the-gallery"></a>Jakie są korzyści z listą aplikacji w galerii?
-
-*  Klienci znaleźć najlepsze możliwe logowania jednokrotnego.
-
-*  Konfiguracja aplikacji jest proste i minimalne.
-
-*  Szybkie wyszukiwanie umożliwia znalezienie aplikacji w galerii.
-
-*  Bezpłatna, podstawowa, i wszystkich klientów usługi Azure AD Premium mogą używać tej integracji.
-
-*  Klienci wzajemnego uzyskać samouczek krok po kroku konfiguracji.
-
-*  Klienci, którzy używają Standard SCIM można użyć, inicjowanie obsługi administracyjnej dla tej samej aplikacji.
+- Klienci znaleźć najlepsze możliwe logowania jednokrotnego.
+- Konfiguracja aplikacji jest proste i minimalne.
+- Szybkie wyszukiwanie umożliwia znalezienie aplikacji w galerii.
+- Bezpłatna, podstawowa, i wszystkich klientów usługi Azure AD Premium mogą używać tej integracji.
+- Klienci wzajemnego uzyskać samouczek krok po kroku konfiguracji.
+- Klienci, którzy używają Standard SCIM można użyć, inicjowanie obsługi administracyjnej dla tej samej aplikacji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -52,9 +43,9 @@ Azure Active Directory (Azure AD) to oparta na chmurze Usługa zarządzania toż
 
 - Dla protokołu SAML 2.0/WS-Fed aplikacja musi mieć możliwość celu integracja logowania jednokrotnego SAML/WS-Fed w trybie SP lub dostawcy tożsamości. Upewnij się, że to działa poprawnie przed przesłaniem żądania.
 
-- Hasło logowania jednokrotnego upewnij się, czy aplikacja obsługuje uwierzytelnianie formularzy tak, aby haseł może odbywać się uzyskać pracy rejestracji jednokrotnej, zgodnie z oczekiwaniami.
+- Hasło logowania jednokrotnego upewnij się, obsługuje uwierzytelnianie przy użyciu formularza w aplikacji, więc haseł może odbywać się uzyskać pracy rejestracji jednokrotnej, zgodnie z oczekiwaniami.
 
-- W przypadku żądań użytkownika automatyczne Inicjowanie obsługi administracyjnej aplikacji powinny figurować w galerii przy użyciu pojedynczego logowania jednokrotnego włączoną funkcję przy użyciu dowolnego protokołu federation opisanych powyżej. Możesz poprosić potrzeby logowania jednokrotnego i Inicjowanie obsługi administracyjnej ze sobą w portalu, jeśli go jeszcze nie znajduje się użytkownik.
+- Automatyczne inicjowanie obsługi użytkowników żądań aplikacji powinny figurować w galerii przy użyciu pojedynczego logowania jednokrotnego włączoną funkcję przy użyciu dowolnego protokołu federation opisanych powyżej. Możesz poprosić potrzeby logowania jednokrotnego i Inicjowanie obsługi administracyjnej ze sobą w portalu, jeśli go jeszcze nie znajduje się użytkownik.
 
 ## <a name="submit-the-request-in-the-portal"></a>Przesyłanie żądania w portalu
 
@@ -79,14 +70,13 @@ Nasz zespół przegląda szczegółowe informacje i umożliwia dostęp do odpowi
 
 ## <a name="implementing-sso-using-federation-protocol"></a>Implementowanie logowania jednokrotnego przy użyciu protokołu federation
 
-Aby wyświetlić listę aplikacji w galerii aplikacji Azure AD, należy najpierw wdrożyć jedną z następujących protokołów Federacji obsługiwane przez usługę Azure AD i Akceptuję warunki galerii aplikacji usługi Azure AD. Przeczytaj warunki i postanowienia galerii aplikacji usługi Azure AD z [tutaj](https://azure.microsoft.com/en-us/support/legal/active-directory-app-gallery-terms/).
+Aby wyświetlić listę aplikacji w galerii aplikacji Azure AD, należy najpierw wdrożyć jedną z następujących protokołów Federacji obsługiwane przez usługę Azure AD i Akceptuję warunki galerii aplikacji usługi Azure AD. Przeczytaj warunki i postanowienia galerii aplikacji usługi Azure AD z [tutaj](https://azure.microsoft.com/support/legal/active-directory-app-gallery-terms/).
 
-*   **OpenID Connect**: Aby zintegrować aplikację z usługą Azure AD przy użyciu protokołu Open ID Connect, wykonaj [instrukcje deweloperów](authentication-scenarios.md).
+- **OpenID Connect**: Aby zintegrować aplikację z usługą Azure AD przy użyciu protokołu Open ID Connect, wykonaj [instrukcje deweloperów](authentication-scenarios.md).
 
     ![Oś czasu wyświetlanie OpenID Connect aplikacji w galerii](./media/howto-app-gallery-listing/openid.png)
 
     * Jeśli chcesz dodać aplikację do listy w galerii przy użyciu protokołu OpenID Connect, wybierz **OpenID Connect i OAuth 2.0** tak jak powyżej.
-
     * Jeśli masz problemy dotyczące dostępu, skontaktuj się z pomocą [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
 *   **SAML 2.0** lub **WS-Fed**: Jeśli aplikacja obsługuje SAML 2.0, można zintegrować go bezpośrednio z dzierżawy usługi Azure AD przy użyciu [instrukcje dotyczące dodawania aplikacji niestandardowej](../active-directory-saas-custom-apps.md).
@@ -94,7 +84,6 @@ Aby wyświetlić listę aplikacji w galerii aplikacji Azure AD, należy najpierw
     ![Oś czasu wyświetlanie protokołu SAML 2.0 i WS-Fed aplikacji w galerii](./media/howto-app-gallery-listing/saml.png)
 
     * Jeśli chcesz dodać aplikację do listy w galerii, używając **SAML 2.0** lub **WS-Fed**, wybierz opcję **SAMl 2.0/WS-Fed** tak jak powyżej.
-
     * Jeśli masz problemy dotyczące dostępu, skontaktuj się z pomocą [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ## <a name="implementing-sso-using-password-sso"></a>Implementowanie logowania jednokrotnego przy użyciu hasła logowania jednokrotnego
@@ -104,21 +93,18 @@ Utwórz aplikację internetową, która zawiera strony logowania HTML do skonfig
 ![Oś czasu wyświetlanie hasło logowania jednokrotnego aplikacji w galerii](./media/howto-app-gallery-listing/passwordsso.png)
 
 * Jeśli chcesz dodać aplikację do listy w galerii przy użyciu logowania jednokrotnego hasła, wybierz **hasło logowania jednokrotnego** tak jak powyżej.
-
 * Jeśli masz problemy dotyczące dostępu, skontaktuj się z pomocą [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>).
 
 ## <a name="updateremove-existing-listing"></a>Aktualizowanie/Usuwanie istniejącej listy
 
 Aby zaktualizować lub usunąć istniejącą aplikację w galerii aplikacji Azure AD, najpierw musisz przesłać żądanie w [Portal sieci aplikacji](https://microsoft.sharepoint.com/teams/apponboarding/Apps). Jeśli masz konto usługi Office 365, używać, aby zalogować się do tego portalu. W przeciwnym razie użyj konta Microsoft (np. Outlook lub Hotmail) do logowania.
 
-* Wybierz odpowiednią opcję z poniżej obrazu
+- Wybierz odpowiednią opcję, jak pokazano na poniższej ilustracji:
 
     ![Oś czasu wyświetlania listy aplikacji saml w galerii](./media/howto-app-gallery-listing/updateorremove.png)
 
     * Jeśli chcesz zaktualizować istniejącą aplikację, wybierz opcję **aktualizacji istniejącej listy aplikacji**.
-
-    * Aby usunąć istniejącą aplikację z galerii usługi Azure AD, należy zaznaczyć **usunięcie istniejącej listy aplikacji**
-
+    * Aby usunąć istniejącą aplikację z galerii usługi Azure AD, należy zaznaczyć **usunięcie istniejącej listy aplikacji**.
     * Jeśli masz problemy dotyczące dostępu, skontaktuj się z pomocą [zespołu integracja logowania jednokrotnego usługi Azure AD](<mailto:SaaSApplicationIntegrations@service.microsoft.com>). 
 
 ## <a name="timelines"></a>Osie czasu

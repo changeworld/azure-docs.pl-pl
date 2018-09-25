@@ -1,6 +1,6 @@
 ---
-title: Klastrze konfiguracji w usłudze Hadoop, Spark, Kafka, HBase i usługi uczenia Maszynowego — Azure HDInsight
-description: Konfigurowanie usługi Hadoop, Kafka, Spark, HBase, usługi ML lub klastry Storm dla HDInsight z przeglądarki, wiersza polecenia platformy Azure, programu Azure PowerShell, REST lub zestawu SDK.
+title: Klastrze konfiguracji w usłudze Hadoop, Spark, Kafka, HBase i R Server — HDInsight platformy Azure
+description: Konfigurowanie klastrów Hadoop, Kafka, Spark, HBase, R Server i Storm dla HDInsight z przeglądarki, klasycznego wiersza polecenia platformy Azure, programu Azure PowerShell, REST lub zestawu SDK.
 keywords: Konfiguracja klastra usługi hadoop, klastra kafka instalacji, konfiguracji klastrów platformy spark, co to jest klaster na platformie hadoop
 services: hdinsight
 author: jasonwhowell
@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 08/27/2018
-ms.openlocfilehash: 0df38e1bd9c4db1cf988beab31b1c3189da4f0c2
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 9eb99c26510475a5db51fa30f1634813b2c377f8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43127911"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46992851"
 ---
 # <a name="set-up-clusters-in-hdinsight-with-hadoop-spark-kafka-and-more"></a>Konfigurowanie klastrów w HDInsight przy użyciu usługi Hadoop, Spark, Kafka i więcej
 
@@ -36,7 +36,7 @@ W poniższej tabeli przedstawiono różne metody, których można użyć do skon
 | --- |:---:|:---:|:---:|:---:|
 | [Azure Portal](hdinsight-hadoop-create-linux-clusters-portal.md) |✔ |&nbsp; |&nbsp; |&nbsp; |
 | [Azure Data Factory](hdinsight-hadoop-create-linux-clusters-adf.md) |✔ |✔ |✔ |✔ |
-| [Interfejs wiersza polecenia platformy Azure (wersja 1.0)](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
+| [Klasyczny interfejs wiersza polecenia Azure](hdinsight-hadoop-create-linux-clusters-azure-cli.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) |&nbsp; |✔ |&nbsp; |&nbsp; |
 | [cURL](hdinsight-hadoop-create-linux-clusters-curl-rest.md) |&nbsp; |✔ |✔ |&nbsp; |
 | [Zestaw SDK platformy .NET](hdinsight-hadoop-create-linux-clusters-dotnet-sdk.md) |&nbsp; |&nbsp; |&nbsp; |✔ |

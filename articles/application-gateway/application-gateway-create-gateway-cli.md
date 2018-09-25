@@ -12,12 +12,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 01/25/2018
 ms.author: victorh
-ms.openlocfilehash: 90c589bce48db11278d034249d1a7a7cc918a074
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: d6bbf6f555afe53b749ac68be38b26eb6980a9aa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42054766"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999600"
 ---
 # <a name="create-an-application-gateway-using-the-azure-cli"></a>Tworzenie bramy aplikacji przy użyciu wiersza polecenia platformy Azure
 
@@ -27,7 +27,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik Szybki start będzie wymagać interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten przewodnik Szybki start będzie wymagać interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Aby dowiedzieć się, jaka wersja jest używana, uruchom polecenie `az --version`. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-resource-group"></a>Tworzenie grupy zasobów
 

@@ -8,50 +8,50 @@ ms.reviewer: carlrab
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 09/20/2018
 ms.author: v-daljep
-ms.openlocfilehash: 9c2bb85d9c0bb02b7eb698dbee07f488c2ad0b62
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b6e619f75ebf6ee58f3c259b665cd38c3546d2ff
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733191"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040639"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Rozwiązywanie problemów z wydajnością usługi Azure SQL Database dzięki inteligentnej analizie
 
-Ta strona zawiera informacje dotyczące problemów z wydajnością usługi Azure SQL Database, które są wykrywane przez [Intelligent Insights](sql-database-intelligent-insights.md) dziennik diagnostyczny wydajności bazy danych. Ten dziennik diagnostyczny mogą być wysyłane do [usługi Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md), [usługi Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [usługi Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), lub rozwiązań innych firm, dla niestandardowych metodyki DevOps, alertów i raportów możliwości.
+Ta strona zawiera informacje dotyczące usługi Azure SQL Database i problemy z wydajnością w wystąpieniu zarządzanym wykrytych za pośrednictwem [Intelligent Insights](sql-database-intelligent-insights.md) dziennik diagnostyczny wydajności bazy danych. Dane telemetryczne dziennik diagnostyczny funkcji może być przesyłany strumieniowo do [usługi Azure Log Analytics](../log-analytics/log-analytics-azure-sql.md), [usługi Azure Event Hubs](../monitoring-and-diagnostics/monitoring-stream-diagnostic-logs-to-event-hubs.md), [usługi Azure Storage](sql-database-metrics-diag-logging.md#stream-into-storage), lub rozwiązania innych firm dotyczące alertów niestandardowych DevOps i funkcje raportowania.
 
 > [!NOTE]
-> Szybkie bazy danych SQL wydajności rozwiązywania problemów przewodnik za pośrednictwem Intelligent Insights, znaleźć w temacie [zalecane Rozwiązywanie problemów z przepływem](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) schematu blokowego, w tym dokumencie.
+> Szybkie wydajności bazy danych SQL przy użyciu Intelligent Insights przewodnik rozwiązywania problemów, zobacz [zalecane Rozwiązywanie problemów z przepływem](sql-database-intelligent-insights-troubleshoot-performance.md#recommended-troubleshooting-flow) schematu blokowego, w tym dokumencie.
 >
 
 ## <a name="detectable-database-performance-patterns"></a>Wzorce wydajności wykrywalna bazy danych
 
-Intelligent Insights automatycznie wykrywa problemy z wydajnością w usłudze SQL Database na podstawie czasy oczekiwania na wykonanie zapytań, błędów lub błędy przekroczenia limitu czasu. Następnie wyświetla wydajności wykryte wzorce do dzienników diagnostycznych. Wzorce wydajności wykrywalny są podsumowane w poniższej tabeli:
+Intelligent Insights automatycznie wykrywa problemy z wydajnością bazy danych SQL i wystąpienie zarządzane bazy danych, na podstawie czasy oczekiwania na wykonanie zapytań, błędów lub błędy przekroczenia limitu czasu. Wyświetla wydajności wykryte wzorce do dzienników diagnostycznych. Wzorce wydajności wykrywalny są podsumowane w poniższej tabeli.
 
-| Wzorce wydajności wykrywalny | Szczegółowe informacje zwrócone |
-| :------------------- | ------------------- |
-| [Osiągnięcia limitów zasobów](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Użycia dostępnych zasobów (Dtu), wątków roboczych bazy danych lub bazy danych sesji logowania jest dostępna w ramach subskrypcji monitorowanych osiągnął limity, co powoduje, że problemy z wydajnością bazy danych SQL. |
-| [Wzrost obciążenia](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | Akumulacja ciągłego obciążenia w bazie danych lub wzrost obciążenia wykryto, co powoduje, że problemy z wydajnością bazy danych SQL. |
-| [Wykorzystanie pamięci](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | Procesy robocze, które zażądał przydziałów pamięci trzeba będzie poczekać dla alokacji pamięci są statystycznie istotne ilości czasu. Lub istnieje nagromadzenia zwiększone pracowników, którzy żądany przydział pamięci, co ma wpływ na wydajność bazy danych SQL. |
-| [Blokowanie](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Blokowanie nadmierne bazy danych zostało wykryte, co ma wpływ na wydajność bazy danych SQL. |
-| [Zwiększona MAXDOP](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | Maksymalny stopień równoległości (MAXDOP)-opcja została zmieniona, a ma to wpływ na wydajność wykonywania zapytań. |
-| [Pagelatch Contention](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Wykryto Pagelatch rywalizacji o zasoby, co ma wpływ na wydajność bazy danych SQL. Wiele wątków jednocześnie próba uzyskania dostępu tej samej strony buforu danych w pamięci. Skutkuje to czasy oczekiwania zwiększona, co ma wpływ na wydajność bazy danych SQL. |
-| [Brakujący indeks](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | Brak problemu indeksu zostało wykryte, co ma wpływ na wydajność bazy danych SQL. |
-| [Nowe zapytanie](sql-database-intelligent-insights-troubleshoot-performance.md#new-query) | Nowe zapytanie zostało wykryte, co ma wpływ na ogólną wydajność bazy danych SQL. |
-| [Statystyka nietypowe oczekiwania](sql-database-intelligent-insights-troubleshoot-performance.md#unusual-wait-statistic) | Czasy oczekiwania nietypowe bazy danych zostały wykryte, co ma wpływ na wydajność bazy danych SQL. |
-| [Bazy danych TempDB rywalizacji o zasoby](sql-database-intelligent-insights-troubleshoot-performance.md#tempdb-contention) | Wiele wątków próbuje dostęp do tych samych zasobów bazy danych tempDB, co powoduje, że "wąskie gardło", który wpływa na wydajność bazy danych SQL. |
-| [Mała liczba jednostek DTU w puli elastycznej](sql-database-intelligent-insights-troubleshoot-performance.md#elastic-pool-dtu-shortage) | Brakiem dostępności jednostki Edtu w puli elastycznej wpływa na wydajność bazy danych SQL. |
-| [Planowanie regresji](sql-database-intelligent-insights-troubleshoot-performance.md#plan-regression) | Nowy plan lub zmiany w obciążeniu istniejący plan wykryto, co ma wpływ na wydajność bazy danych SQL. |
-| [Zmiana wartości w zakresie bazy danych konfiguracji](sql-database-intelligent-insights-troubleshoot-performance.md#database-scoped-configuration-value-change) | Zmiana konfiguracji bazy danych ma wpływ na wydajność bazy danych SQL. |
-| [Powolne klienta](sql-database-intelligent-insights-troubleshoot-performance.md#slow-client) | Klienta powolne aplikacji, który nie może wykorzystać dane wyjściowe z wystarczająco szybko bazy danych SQL zostało wykryte, co ma wpływ na wydajność bazy danych SQL. |
-| [Obniżenie warstwy cenowej](sql-database-intelligent-insights-troubleshoot-performance.md#pricing-tier-downgrade) | Cen akcji obniżenia poziomu warstwy spadły dostępnych zasobów, co ma wpływ na wydajność bazy danych SQL. |
+| Wzorce wydajności wykrywalny | Opis usługi Azure SQL Database i pul elastycznych | Opis dla baz danych w wystąpieniu zarządzanym |
+| :------------------- | ------------------- | ------------------- |
+| [Osiągnięcia limitów zasobów](sql-database-intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) | Użycia dostępnych zasobów (Dtu), wątków roboczych bazy danych lub bazy danych sesji logowania jest dostępna w ramach subskrypcji monitorowanych osiągnął limity. Ma to wpływ na wydajność bazy danych SQL. | Użycie zasobów procesora CPU zbliża się do wystąpienia zarządzanego limitów. Ma to wpływ na wydajność bazy danych. |
+| [Wzrost obciążenia](sql-database-intelligent-insights-troubleshoot-performance.md#workload-increase) | Wykryto akumulacja ciągłego obciążenia w bazie danych lub wzrost obciążenia. Ma to wpływ na wydajność bazy danych SQL. | Wykryto wzrostu obciążenia. Ma to wpływ na wydajność bazy danych. |
+| [Wykorzystanie pamięci](sql-database-intelligent-insights-troubleshoot-performance.md#memory-pressure) | Procesy robocze, które zażądał przydziałów pamięci trzeba będzie poczekać dla alokacji pamięci są statystycznie istotne ilości czasu. Lub nagromadzenia zwiększone pracowników, którzy żądany przydział pamięci nie istnieje. Ma to wpływ na wydajność bazy danych SQL. | Oczekiwania pracowników, którzy zażądali przydział pamięci dla alokacji pamięci na statystycznie znaczną ilość czasu. Ma to wpływ na wydajność bazy danych. |
+| [Blokowanie](sql-database-intelligent-insights-troubleshoot-performance.md#locking) | Blokowanie nadmierne bazy danych zostało wykryte w wpływających na wydajność bazy danych SQL. | Blokowanie nadmierne bazy danych zostało wykryte w wpływających na wydajność bazy danych. |
+| [Zwiększona MAXDOP](sql-database-intelligent-insights-troubleshoot-performance.md#increased-maxdop) | Maksymalny stopień równoległości (MAXDOP)-opcja została zmieniona, wpływających na wydajność wykonywania zapytań. Ma to wpływ na wydajność bazy danych SQL. | Maksymalny stopień równoległości (MAXDOP)-opcja została zmieniona, wpływających na wydajność wykonywania zapytań. Ma to wpływ na wydajność bazy danych. |
+| [Pagelatch Contention](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Wiele wątków jednocześnie próbujesz uzyskać dostęp do tych samych stron buforu danych w pamięci skutkuje czasy oczekiwania zwiększone i powodują, że pagelatch rywalizacji o zasoby. Ma to wpływ na wydajność bazy danych SQL. | Wiele wątków jednocześnie próbujesz uzyskać dostęp do tych samych stron buforu danych w pamięci skutkuje czasy oczekiwania zwiększone i powodują, że pagelatch rywalizacji o zasoby. Ma to wpływ na wydajność bazy danych. |
+| [Brakujący indeks](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | Wykryto brakujący indeks wpływających na wydajność bazy danych SQL. | Wykryto brakujący indeks wpływających na wydajność bazy danych. |
+| [Nowe zapytanie](sql-database-intelligent-insights-troubleshoot-performance.md#new-query) | Nowe zapytanie zostało wykryte, mających wpływ na ogólną wydajność bazy danych SQL. | Nowe zapytanie zostało wykryte, mających wpływ na ogólną wydajność bazy danych. |
+| [Statystyka nietypowe oczekiwania](sql-database-intelligent-insights-troubleshoot-performance.md#unusual-wait-statistic) | Czasy oczekiwania nietypowe bazy danych zostały wykryte wpływających na wydajność bazy danych SQL. | Czasy oczekiwania nietypowe bazy danych zostały wykryte wpływających na wydajność bazy danych. |
+| [Bazy danych TempDB rywalizacji o zasoby](sql-database-intelligent-insights-troubleshoot-performance.md#tempdb-contention) | Wiele wątków próbuje uzyskać dostęp do tego samego zasobu bazy danych TempDB, powodując "wąskie gardło". Ma to wpływ na wydajność bazy danych SQL. | Wiele wątków próbuje uzyskać dostęp do tego samego zasobu bazy danych TempDB, powodując "wąskie gardło". Ma to wpływ na wydajność bazy danych. |
+| [Mała liczba jednostek DTU puli elastycznej](sql-database-intelligent-insights-troubleshoot-performance.md#elastic-pool-dtu-shortage) | Brak dostępnych jednostek Edtu w puli elastycznej ma wpływ na wydajność bazy danych SQL. | Niedostępne dla wystąpienia zarządzanego ponieważ używa ona modelu rdzenia wirtualnego. |
+| [Planowanie regresji](sql-database-intelligent-insights-troubleshoot-performance.md#plan-regression) | Wykryto nowy plan lub zmiany w obciążeniu istniejącego planu. Ma to wpływ na wydajność bazy danych SQL. | Wykryto nowy plan lub zmiany w obciążeniu istniejącego planu. Ma to wpływ na wydajność bazy danych. |
+| [Zmiana wartości w zakresie bazy danych konfiguracji](sql-database-intelligent-insights-troubleshoot-performance.md#database-scoped-configuration-value-change) | Wykryto zmianę konfiguracji w bazie danych SQL wpływających na wydajność bazy danych. | Wykryto zmianę konfiguracji w bazie danych wpływających na wydajność bazy danych. |
+| [Powolne klienta](sql-database-intelligent-insights-troubleshoot-performance.md#slow-client) | Nie może wystarczająco szybko wykorzystać dane wyjściowe z bazy danych jest powolne aplikacji klienta. Ma to wpływ na wydajność bazy danych SQL. | Nie może wystarczająco szybko wykorzystać dane wyjściowe z bazy danych jest powolne aplikacji klienta. Ma to wpływ na wydajność bazy danych. |
+| [Obniżenie warstwy cenowej](sql-database-intelligent-insights-troubleshoot-performance.md#pricing-tier-downgrade) | Ceny akcji obniżenia poziomu warstwy spadły dostępnych zasobów. Ma to wpływ na wydajność bazy danych SQL. | Ceny akcji obniżenia poziomu warstwy spadły dostępnych zasobów. Ma to wpływ na wydajność bazy danych. |
 
 > [!TIP]
 > Aby zoptymalizować wydajność ciągłe bazy danych SQL, należy włączyć [dostrajania automatycznego usługi Azure SQL Database](https://docs.microsoft.com/azure/sql-database/sql-database-automatic-tuning). Ta funkcja unikatowy wbudowane funkcje analizy bazy danych SQL Database stale monitoruje bazę danych SQL, automatycznie Dostraja indeksy i stosuje poprawki planu wykonania zapytania.
 >
 
-W poniższej sekcji opisano wzorców wymienione wcześniej wydajności wykrywalny bardziej szczegółowo.
+W poniższej sekcji opisano wzorców wydajności wykrywalny bardziej szczegółowo.
 
 ## <a name="reaching-resource-limits"></a>Osiągnięcia limitów zasobów
 
@@ -59,11 +59,11 @@ W poniższej sekcji opisano wzorców wymienione wcześniej wydajności wykrywaln
 
 Wzorzec ten wykrywalny wydajność łączy problemy z wydajnością, that are related to osiągnięcia limitów dostępnych zasobów, procesów roboczych ograniczenia i limity sesji. Po wykryciu problemu z wydajnością, pole opisu dziennik diagnostyczny wskazuje, czy problem z wydajnością powiązany zasobów, procesów roboczych lub ograniczenia sesji.
 
-Zasoby w bazie danych SQL są zwykle nazywane [zasobów jednostek DTU](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu). Składają się one z mieszany pomiar procesora CPU i we/wy zasobów (danych i dziennika transakcji we/wy). Wzorzec osiągnięcia limitów zasobów jest rozpoznawany w przypadku wykrycia obniżenia wydajności zapytań jest spowodowany przez żadnego ograniczenia zasobów mierzonego osiągnięcia.
+Zasoby w bazie danych SQL są zwykle określane [jednostek DTU](https://docs.microsoft.com/azure/sql-database/sql-database-what-is-a-dtu) lub [vCore](https://docs.microsoft.com/en-us/azure/sql-database/sql-database-service-tiers-vcore) zasobów. Wzorzec osiągnięcia limitów zasobów jest rozpoznawany w przypadku wykrycia obniżenia wydajności zapytań jest spowodowany przez żadnego ograniczenia zasobów mierzonego osiągnięcia.
 
 Zasób limity sesji wskazuje, że liczba dostępnych współbieżnych logowań w bazie danych SQL. Tego wzorca wydajności został rozpoznany, gdy liczba dostępnych współbieżnych logowań do bazy danych osiągnęła aplikacje, które są podłączone do bazy danych SQL. Jeśli aplikacje próbują używać więcej sesji, niż jest dostępne w bazie danych, ma wpływ wydajności zapytań.
 
-Osiągnięcia limitów proces roboczy jest konkretnym przypadku osiągnięcia limitów zasobów, ponieważ dostępne procesy robocze nie są liczone w użycie jednostek DTU. Osiągnięcia limitów procesu roboczego w bazie danych może spowodować powstanie czasy oczekiwania specyficznych dla zasobów, co powoduje spadek wydajności zapytania.
+Osiągnięcia limitów proces roboczy jest konkretnym przypadku osiągnięcia limitów zasobów, ponieważ dostępne procesy robocze nie są liczone w użycie jednostek DTU i rdzeniach wirtualnych. Osiągnięcia limitów procesu roboczego w bazie danych może spowodować powstanie czasy oczekiwania specyficznych dla zasobów, co powoduje spadek wydajności zapytania.
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
@@ -229,7 +229,7 @@ Dziennik diagnostyczny Wyświetla szczegóły rywalizacji o zasoby bazy danych t
 
 Aby uzyskać więcej informacji, zobacz [wprowadzenie do tabel zoptymalizowanych pod kątem pamięci](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/introduction-to-memory-optimized-tables). 
 
-## <a name="elastic-pool-dtu-shortage"></a>Mała liczba jednostek DTU w puli elastycznej
+## <a name="elastic-pool-dtu-shortage"></a>Mała liczba jednostek DTU puli elastycznej
 
 ### <a name="what-is-happening"></a>Co się dzieje
 
@@ -283,7 +283,7 @@ Zmiany w zakresie bazy danych konfiguracji można ustawić dla każdej pojedyncz
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Diagnostyka dziennika danych wyjściowych o zakresie bazy danych zmian konfiguracji, które wprowadzono niedawno powodujące obniżenie wydajności w porównaniu do poprzedniego zachowania obciążeń siedmiu dni. Możesz przywrócić zmiany konfiguracji do poprzedniej wartości. Możesz również określić wartości przez wartość aż do osiągnięcia rozmiar żądanej obliczeń. Możesz skopiować wartości konfiguracji w zakresie bazy danych, z podobnych bazy danych za pomocą zadowalającą wydajność. Jeśli nie możesz rozwiązywać problemy z wydajnością, Przywróć domyślne wartości domyślne bazy danych SQL, a następnie spróbuj dostrajania, począwszy od tej linii bazowej.
+Diagnostyka dziennika danych wyjściowych o zakresie bazy danych zmian konfiguracji, które wprowadzono niedawno powodujące obniżenie wydajności w porównaniu do poprzedniego zachowania obciążeń siedmiu dni. Możesz przywrócić zmiany konfiguracji do poprzedniej wartości. Możesz również określić wartości przez wartość aż do osiągnięcia poziomu żądaną wydajność. Możesz skopiować wartości konfiguracji w zakresie bazy danych, z podobnych bazy danych za pomocą zadowalającą wydajność. Jeśli nie możesz rozwiązywać problemy z wydajnością, Przywróć domyślne wartości domyślne bazy danych SQL, a następnie spróbuj dostrajania, począwszy od tej linii bazowej.
 
 Aby uzyskać więcej informacji na temat optymalizowania o zakresie bazy danych konfiguracji i składni języka T-SQL na zmiany konfiguracji, zobacz [Alter o zakresie bazy danych konfiguracji (Transact-SQL)](https://msdn.microsoft.com/library/mt629158.aspx).
 

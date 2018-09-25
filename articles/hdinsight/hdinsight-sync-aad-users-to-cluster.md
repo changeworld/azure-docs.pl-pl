@@ -5,36 +5,36 @@ services: hdinsight
 ms.service: hdinsight
 author: ashishthaps
 ms.author: ashishth
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 08/19/2018
-ms.openlocfilehash: 7e002a43c774bd1a6df9cfe46207ddebd02284b3
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.date: 09/24/2018
+ms.openlocfilehash: b63f2566220d556f9695687dc743a7d47e27acf1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104227"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984317"
 ---
 # <a name="synchronize-azure-active-directory-users-to-an-hdinsight-cluster"></a>Synchronizowanie użytkowników usługi Azure Active Directory do klastra usługi HDInsight
 
-[Przyłączone do domeny klastrów HDInsight](hdinsight-domain-joined-introduction.md) można silnego uwierzytelniania za pomocą użytkowników usługi Azure Active Directory (Azure AD), a także używać *kontroli dostępu opartej na rolach* zasady (RBAC). W miarę dodawania użytkowników i grup do usługi Azure AD, można zsynchronizować użytkowników, którzy potrzebują dostępu do klastra.
+[HDInsight clusters przy użyciu pakietu zabezpieczeń przedsiębiorstwa (ESP)](hdinsight-domain-joined-introduction.md) można silnego uwierzytelniania za pomocą użytkowników usługi Azure Active Directory (Azure AD), a także używać *kontroli dostępu opartej na rolach* zasady (RBAC). W miarę dodawania użytkowników i grup do usługi Azure AD, można zsynchronizować użytkowników, którzy potrzebują dostępu do klastra.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Jeśli użytkownik jeszcze nie zrobiono, [Tworzenie klastra HDInsight przyłączone do domeny](hdinsight-domain-joined-configure.md).
+Jeśli użytkownik jeszcze nie zrobiono, [Tworzenie klastra HDInsight z pakietem Enterprise Security](hdinsight-domain-joined-configure.md).
 
 ## <a name="add-new-azure-ad-users"></a>Dodawanie nowej usługi Azure AD użytkownicy
 
 Aby wyświetlić hostów, Otwórz interfejs użytkownika sieci Web Ambari. Każdy węzeł zostanie zaktualizowany o nowe ustawienia uaktualnienia instalacji nienadzorowanej.
 
-1. W [witryny Azure portal](https://portal.azure.com), przejdź do katalogu usługi Azure AD skojarzonego z klastrem przyłączonym do domeny.
+1. W [witryny Azure portal](https://portal.azure.com), przejdź do katalogu usługi Azure AD skojarzonego z klastrem ESP.
 
 2. Wybierz **wszyscy użytkownicy** z menu po lewej stronie, następnie wybierz pozycję **nowego użytkownika**.
 
     ![Wszystkie okienko użytkowników](./media/hdinsight-sync-aad-users-to-cluster/aad-users.png)
 
-3. Wypełnij formularz nowego użytkownika. Wybierz grupy, utworzonego do przypisywania uprawnień opartych na klastrze. W tym przykładzie należy utworzyć grupę o nazwie "HiveUsers", do którego można przypisywać nowych użytkowników. [Przykładowe instrukcje](hdinsight-domain-joined-configure.md) tworzenia klastra przyłączonych do domeny, należą: dodanie dwóch grup `HiveUsers` i `AAD DC Administrators`.
+3. Wypełnij formularz nowego użytkownika. Wybierz grupy, utworzonego do przypisywania uprawnień opartych na klastrze. W tym przykładzie należy utworzyć grupę o nazwie "HiveUsers", do którego można przypisywać nowych użytkowników. [Przykładowe instrukcje](hdinsight-domain-joined-configure.md) do utworzenia klastra ESP, należą: dodanie dwóch grup `HiveUsers` i `AAD DC Administrators`.
 
     ![Nowe okienko użytkownika](./media/hdinsight-sync-aad-users-to-cluster/aad-new-user.png)
 
@@ -148,6 +148,6 @@ Kiedy nowy użytkownik (lub innego użytkownika domeny), o których loguje się 
 
 ## <a name="see-also"></a>Zobacz także
 
-* [Konfigurowanie zasad usługi Hive HDInsight przyłączone do domeny](hdinsight-domain-joined-run-hive.md)
-* [Zarządzanie klastrami HDInsight przyłączone do domeny](hdinsight-domain-joined-manage.md)
+* [Konfigurowanie zasad usługi Hive HDInsight przy użyciu ESP](hdinsight-domain-joined-run-hive.md)
+* [Zarządzanie klastrami HDInsight przy użyciu ESP](hdinsight-domain-joined-manage.md)
 * [Autoryzowanie użytkowników do systemu Ambari](hdinsight-authorize-users-to-ambari.md)

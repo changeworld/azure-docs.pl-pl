@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/30/2018
 ms.author: juliako
-ms.openlocfilehash: a17c08cc66b13a5ec15d32be7e9ec738da73e219
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 698a85244d5341224dd9f513c5617b9086e36844
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129058"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033077"
 ---
 # <a name="scaling-media-processing-overview"></a>Skalowanie przetwarzania multimediów — omówienie
 Ta strona zawiera omówienie, jak i dlaczego skalowanie przetwarzania multimediów. 
@@ -30,12 +30,12 @@ Konto usługi Media Services jest skojarzone z typem jednostki zarezerwowanej ok
 Oprócz określenia typu jednostki zarezerwowanej, można określić aprowizację swojego konta przy użyciu jednostek zarezerwowanych. Liczba zainicjowanych jednostek zarezerwowanych określa liczbę zadań multimedialnych, które mogą być przetwarzane jednocześnie w ramach danego konta. Na przykład jeśli konto ma pięć jednostek zarezerwowanych, a następnie pięć zadań będą uruchomione jednocześnie tak długo, jak istnieją zadania do przetworzenia. Pozostałe zadania będzie oczekiwać w kolejce i będzie pobrać wybrany do przetwarzania sekwencyjnie, po zakończeniu bieżące zadanie. Jeśli konto nie ma żadnych jednostek zarezerwowanych zainicjowano obsługę administracyjną, następnie zadania zostaną pobrane po kolei. W tym przypadku czas oczekiwania między jedno zadanie zostało ukończone, a następnie bazujący będzie zależeć od dostępności zasobów w systemie.
 
 ## <a name="choosing-between-different-reserved-unit-types"></a>Wybieranie między różnych zastrzeżonych typów jednostek
-Poniższa tabela pomaga Ci w podjęciu decyzji, wybierając między różne szybkości kodowania. Również udostępnia kilka przypadków testów porównawczych i zawiera adresy URL sygnatury dostępu Współdzielonego, która umożliwia pobieranie filmów wideo, na których można przeprowadzić własne testy:
+Poniższa tabela pomaga Ci w podjęciu decyzji, wybierając między różne szybkości kodowania. Zawiera także kilka przypadków testów porównawczych na [film wideo, który można pobrać](https://nimbuspmteam.blob.core.windows.net/asset-46f1f723-5d76-477e-a153-3fd0f9f90f73/SeattlePikePlaceMarket_7min.ts?sv=2015-07-08&sr=c&si=013ab6a6-5ebf-431e-8243-9983a6b5b01c&sig=YCgEB8DxYKK%2B8W9LnBykzm1ZRUTwQAAH9QFUGw%2BIWuc%3D&se=2118-09-21T19%3A28%3A57Z) przeprowadzić własne testy:
 
 | Scenariusze | **S1** | **S2** | **S3** |
 | --- | --- | --- | --- |
 | Zamierzone zastosowanie |Pojedyncza szybkość transmisji bitów kodowania. <br/>Pliki SD większa niż rozwiązania, nie raz poufnych, niskich kosztów. |Pojedyncza szybkość transmisji bitów i wielu kodowanie szybkości transmisji bitów.<br/>Normalnego użycia na potrzeby SD i HD kodowania. |Pojedyncza szybkość transmisji bitów i wielu kodowanie szybkości transmisji bitów.<br/>Pełne HD i 4K rozdzielczości wideo. Czas przetwarzania poufnych, szybsze kodowanie. |
-| Test porównawczy dla 5-minutowy klip wideo |Kodowanie do pojedynczego pliku MP4, w tym samym rozdzielczości transmisji bitów trwa około 11 minut. |Za pomocą "Pojedynczy szybkość transmisji bitów H264 720p" ustawienie wstępne kodowania zajmuje około 5 minut.<br/><br/>Kodowanie za pomocą "H264 szybkość transmisji bitów h264 720p" ustawienie wstępne zajmuje około 11,5 minut. |Za pomocą "Pojedynczy szybkość transmisji bitów H264 1080p" ustawienie wstępne kodowania zajmuje około 2.7 minut.<br/><br/>Kodowanie za pomocą "H264 szybkość transmisji bitów h264 1080p" ustawienie wstępne zajmuje około wersji 5.7 minut. |
+| Test porównawczy dla 7-minutowy klip wideo |Kodowanie do pojedynczego pliku MP4, w tym samym rozdzielczości transmisji bitów trwa około 5 minut. |Za pomocą "Pojedynczy szybkość transmisji bitów H264 720p" ustawienie wstępne kodowania zajmuje około 8 minut.<br/><br/>Kodowanie za pomocą "H264 szybkość transmisji bitów h264 720p" ustawienie wstępne zajmuje około 16,8 minut. |Za pomocą "Pojedynczy szybkość transmisji bitów H264 1080p" ustawienie wstępne kodowania zajmuje około 4 minuty.<br/><br/>Kodowanie za pomocą "H264 szybkość transmisji bitów h264 1080p" ustawienie wstępne zajmuje około 8 minut. |
 
 
 ## <a name="considerations"></a>Zagadnienia do rozważenia

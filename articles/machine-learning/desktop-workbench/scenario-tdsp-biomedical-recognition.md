@@ -16,14 +16,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
-ms.openlocfilehash: f6ce43c2d290bacee10e102cc6c382981db9917f
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ROBOTS: NOINDEX
+ms.openlocfilehash: 775d0701f9eeaf7d26a83b814711bea630efb2a6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42057399"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973766"
 ---
 # <a name="biomedical-entity-recognition-using-team-data-science-process-tdsp-template"></a>Rozpoznawanie jednostek biomedycznych przy użyciu szablonu Team Data Science naukowych
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Wyodrębnianie jednostek jest podzadaniem wyodrębniania informacji (znany także jako [rozpoznawania nazwane jednostek (NER)](https://en.wikipedia.org/wiki/Named-entity_recognition), jednostki segmentu i identyfikator jednostki). W tym scenariuszu rzeczywistych ma na celu wyróżnić jak rozwiązywania skomplikowanych zadań przetwarzania języka naturalnego (NLP) takich jak działania funkcji wydobywania podmiotów z tekstu bez struktury za pomocą usługi Azure Machine Learning Workbench:
 
@@ -95,7 +100,7 @@ Oto link do publicznego repozytorium GitHub w ramach rzeczywistych scenariuszy, 
 ## <a name="prerequisites"></a>Wymagania wstępne 
 
 * Azure [subskrypcji](https://azure.microsoft.com/free/)
-* Usługa Azure Machine Learning Workbench. Zobacz [Przewodnik instalacji](../service/quickstart-installation.md). Obecnie Azure Machine Learning Workbench można zainstalować w następujących systemach operacyjnych tylko: 
+* Usługa Azure Machine Learning Workbench. Zobacz [Przewodnik instalacji](quickstart-installation.md). Obecnie Azure Machine Learning Workbench można zainstalować w następujących systemach operacyjnych tylko: 
     * Windows 10 lub Windows Server 2016
     * System macOS Sierra (lub nowszy)
 
@@ -118,7 +123,7 @@ Wszystkie wymagane zależności są definiowane w pliku aml_config/conda_depende
 
 ### <a name="basic-instructions-for-azure-machine-learning-aml-workbench"></a>Podstawowe instrukcje dotyczące usługi Azure Machine Learning (AML) w aplikacji workbench
 * [Omówienie](../service/overview-what-is-azure-ml.md)
-* [Instalacja](../service/quickstart-installation.md)
+* [Instalacja](quickstart-installation.md)
 * [Przy użyciu przetwarzania TDSP](how-to-use-tdsp-in-azure-ml.md)
 * [Jak odczytywać i zapisywać pliki](how-to-read-write-files.md)
 * [Jak używać notesów programu Jupyter](how-to-use-jupyter-notebooks.md)

@@ -17,22 +17,22 @@ ms.date: 06/22/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 815311797e1897259b961debc8a0f81157495570
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 23d041311c33110bf11efc78d162243a4bb25778
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39596504"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997764"
 ---
 # <a name="azure-active-directory-v20-tokens-reference"></a>Dokumentacja tokenów w wersji 2.0 w usłudze Azure Active Directory
+
 Punktu końcowego v2.0 usługi Azure Active Directory (Azure AD) emituje kilka rodzajów tokenów zabezpieczających w każdym [przepływ uwierzytelniania](v2-app-types.md). Ta dokumentacja w tym artykule opisano format, zabezpieczenia właściwości i zawartość każdego typu tokenu.
 
 > [!NOTE]
 > Nie obsługuje punktu końcowego v2.0, wszystkie scenariusze usługi Azure Active Directory i funkcje. Aby ustalić, czy należy używać punktu końcowego v2.0, przeczytaj temat [ograniczenia v2.0](active-directory-v2-limitations.md).
->
->
 
 ## <a name="types-of-tokens"></a>Typy tokenów
+
 Punkt końcowy v2.0 obsługuje [Protokół autoryzacji OAuth 2.0](active-directory-v2-protocols.md), który wykorzystuje tokeny dostępu i tokenów odświeżania. Punkt końcowy v2.0 obsługuje również uwierzytelnianie i logowanie za pomocą [OpenID Connect](active-directory-v2-protocols.md). OpenID Connect wprowadza trzeci typ tokenu, identyfikator tokenu. Każdy z tych tokenów jest reprezentowany jako *elementu nośnego* tokenu.
 
 Token elementu nośnego jest tokenem zabezpieczającym uproszczone, która udziela dostępu elementu nośnego do chronionego zasobu. Elementu nośnego jest każda strona, która może powodować tokenu. Mimo że strona musi uwierzytelniać się z usługą Azure AD, aby otrzymać token elementu nośnego, jeśli kroki nie zostaną podjęte w celu zabezpieczenia tokenu podczas transmisji i przechowywania, można przechwycony i używane przez niezamierzone innych firm. Niektóre tokeny zabezpieczające mają wbudowany mechanizm, aby uniemożliwić ich użycie przez osoby nieupoważnione, ale tokenów elementu nośnego nie obsługują. Musi być transportowane tokenów elementu nośnego bezpiecznego kanału, takie jak transport layer security (HTTPS). Jeśli token elementu nośnego, są przesyłane bez zabezpieczeń tego typu, złośliwa strona wystarczą "atak typu man-in--middle" do uzyskania tokenu i użyć jej do nieautoryzowanego dostępu do chronionego zasobu. Te same zasady zabezpieczeń stosowane, gdy przechowywania lub buforowanie tokenów elementu nośnego do późniejszego użycia. Zawsze upewnij się, że aplikacja bezpiecznie przesyła i przechowuje tokenów elementu nośnego. Aby uzyskać więcej zagadnienia dotyczące zabezpieczeń tokenów elementu nośnego, zobacz [RFC 6750 sekcji 5](http://tools.ietf.org/html/rfc6750).
@@ -40,6 +40,7 @@ Token elementu nośnego jest tokenem zabezpieczającym uproszczone, która udzie
 Wiele tokeny wystawione przez punkt końcowy v2.0 są implementowane jako tokenów sieci Web JSON (tokenów Jwt). Token JWT jest sposób compact, bezpieczny adres URL do przekazywania informacji między dwiema stronami. Informacje przedstawione w token JWT jest nazywany *oświadczenia*. Jest potwierdzenie informacji dotyczących elementu nośnego i podmiotu tokenu. Oświadczenia w token JWT są obiektami JavaScript Object Notation (JSON), które kodowania i serializacji do przesłania. Ponieważ tokenów Jwt wystawione przez punkt końcowy v2.0 jest podpisany, ale nie są szyfrowane, można łatwo sprawdzić zawartość token JWT na potrzeby debugowania. Aby uzyskać więcej informacji na temat tokenów Jwt, zobacz [specyfikacji JWT](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html).
 
 ### <a name="id-tokens"></a>Tokeny Identyfikatora
+
 Identyfikator tokenu jest formą logowania w tokenie zabezpieczającym aplikacja odbiera podczas przeprowadzania uwierzytelniania za pomocą [OpenID Connect](active-directory-v2-protocols.md). Identyfikator tokeny są reprezentowane jako [tokenów Jwt](#types-of-tokens), i mogą zawierać oświadczenia, które można użyć do logowania użytkownika do aplikacji. Można użyć oświadczenia w tokenie identyfikator na różne sposoby. Zazwyczaj Administratorzy korzystają tokeny Identyfikatora, aby wyświetlić informacje o koncie lub podejmowania decyzji dotyczących kontroli dostępu w aplikacji. Punkt końcowy v2.0 wystawia tylko jeden typ tokenu Identyfikacyjnego, która ma spójny zestaw oświadczeń, bez względu na typ użytkownika, który jest zalogowany. Format i zawartość tokenów, identyfikator są takie same dla osobistych użytkowników kont Microsoft i kont służbowych.
 
 Identyfikator tokeny są obecnie podpisana, ale nie jest szyfrowana. Gdy aplikacja otrzymuje identyfikator tokenu, musi ona [zweryfikować podpisu](#validating-tokens) potwierdzenia autentyczności tokenu i weryfikować kilka oświadczenia w tokenie, aby udowodnić, że jego ważności. Oświadczenia zweryfikowany przez aplikację różnią się w zależności od wymagań scenariusza, ale aplikacja musi wykonać niektóre [typowych roszczenie walidacji](#validating-tokens) w każdym scenariuszu.
@@ -47,16 +48,16 @@ Identyfikator tokeny są obecnie podpisana, ale nie jest szyfrowana. Gdy aplikac
 Udostępniamy pełne szczegóły na temat oświadczenia w tokeny Identyfikatora w następujących sekcjach, oprócz tokenu Identyfikacyjnego próbki. Należy pamiętać, że oświadczenia w tokeny Identyfikatora nie są zwracane w określonej kolejności. Ponadto nowe oświadczenia mogą zostać wprowadzone do tokeny Identyfikatora, w dowolnym momencie. Aplikacja nie powinna Przerwij, gdy wprowadzono nowe oświadczenia. Poniższa lista zawiera oświadczenia, które aplikacja aktualnie niezawodne stanie zinterpretować. Można znaleźć więcej szczegółów w [specyfikacją z OpenID Connect](http://openid.net/specs/openid-connect-core-1_0.html).
 
 #### <a name="sample-id-token"></a>Przykładowy identyfikator tokenu
+
 ```
 eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImtpZCI6Ik1uQ19WWmNBVGZNNXBPWWlKSE1iYTlnb0VLWSJ9.eyJhdWQiOiI2NzMxZGU3Ni0xNGE2LTQ5YWUtOTdiYy02ZWJhNjkxNDM5MWUiLCJpc3MiOiJodHRwczovL2xvZ2luLm1pY3Jvc29mdG9ubGluZS5jb20vYjk0MTk4MTgtMDlhZi00OWMyLWIwYzMtNjUzYWRjMWYzNzZlL3YyLjAiLCJpYXQiOjE0NTIyODUzMzEsIm5iZiI6MTQ1MjI4NTMzMSwiZXhwIjoxNDUyMjg5MjMxLCJuYW1lIjoiQmFiZSBSdXRoIiwibm9uY2UiOiIxMjM0NSIsIm9pZCI6ImExZGJkZGU4LWU0ZjktNDU3MS1hZDkzLTMwNTllMzc1MGQyMyIsInByZWZlcnJlZF91c2VybmFtZSI6InRoZWdyZWF0YmFtYmlub0BueXkub25taWNyb3NvZnQuY29tIiwic3ViIjoiTUY0Zi1nZ1dNRWppMTJLeW5KVU5RWnBoYVVUdkxjUXVnNWpkRjJubDAxUSIsInRpZCI6ImI5NDE5ODE4LTA5YWYtNDljMi1iMGMzLTY1M2FkYzFmMzc2ZSIsInZlciI6IjIuMCJ9.p_rYdrtJ1oCmgDBggNHB9O38KTnLCMGbMDODdirdmZbmJcTHiZDdtTc-hguu3krhbtOsoYM2HJeZM3Wsbp_YcfSKDY--X_NobMNsxbT7bqZHxDnA2jTMyrmt5v2EKUnEeVtSiJXyO3JWUq9R0dO-m4o9_8jGP6zHtR62zLaotTBYHmgeKpZgTFB9WtUq8DVdyMn_HSvQEfz-LWqckbcTwM_9RNKoGRVk38KChVJo4z5LkksYRarDo8QgQ7xEKmYmPvRr_I7gvM2bmlZQds2OeqWLB1NSNbFZqyFOCgYn3bAQ-nEQSKwBaA36jYGPOVG2r2Qv1uKcpSOxzxaQybzYpQ
 ```
 
 > [!TIP]
 > Praktyki, aby przeprowadzić inspekcję oświadczenia w tokenie identyfikator próbki, wklej przykładowy identyfikator tokenu do [jwt.ms](http://jwt.ms/).
->
->
 
 #### <a name="claims-in-id-tokens"></a>Oświadczenia w tokeny Identyfikatora
+
 | Name (Nazwa) | Claim | Przykładowa wartość | Opis |
 | --- | --- | --- | --- |
 | Grupy odbiorców |`aud` |`6731de76-14a6-49ae-97bc-6eba6914391e` |Identyfikuje zamierzonym odbiorcą tokenu. W tokenach identyfikator odbiorców jest identyfikator aplikacji, przypisany do aplikacji w portalu rejestracji aplikacji firmy Microsoft. Aplikację należy sprawdzić tę wartość i odrzucenie tokenu, jeśli wartość nie jest zgodny. |
@@ -82,22 +83,25 @@ Punktu końcowego v2.0 aplikacjom innych firm, które są zarejestrowane w usłu
 W przypadku żądania tokenu dostępu z punktu końcowego v2.0, punktu końcowego v2.0 również zwraca metadane dotyczące tokenu dostępu dla aplikacji do użycia. Informacje te obejmują czas wygaśnięcia tokenu dostępu i zakresy, dla których jest on prawidłowy. Aplikacja wykorzystuje te metadane, aby wykonać inteligentne buforowanie tokenów dostępu bez konieczności przeanalizować Otwórz tokenu dostępu, sam.
 
 ### <a name="refresh-tokens"></a>Tokenów odświeżania
+
 Odśwież tokeny są tokeny zabezpieczające, które Twoja aplikacja może użyć w celu uzyskania nowych tokenów dostępu w przepływ OAuth 2.0. Aplikację można użyć tokenów odświeżania do osiągnięcia długoterminowe dostęp do zasobów w imieniu użytkownika bez konieczności interakcji z użytkownikiem.
 
 Tokeny odświeżania są wielu zasobów. Token odświeżania Odebrane żądania tokenu dla jednego zasobu można zrealizować dla tokenów dostępu do zupełnie innego zasobu.
 
 Aby otrzymywać odświeżenia tokenu odpowiedzi, aplikacja musi żądać i otrzymać `offline_access` zakresu. Aby dowiedzieć się więcej na temat `offline_access` zakresu, zobacz [wyrażania zgody i zakresy](v2-permissions-and-consent.md) artykułu.
 
-Tokenów odświeżania są i zawsze będą, całkowicie nieprzezroczysty do swojej aplikacji. One są wydawane przez punktu końcowego v2.0 usługi Azure AD można tylko inspekcji i interpretowane przez punktu końcowego v2.0. Są one długotrwałe, ale aplikacja nie powinna być zapisana można oczekiwać, że token odświeżania jest ważny dla dowolnego okresu czasu. Tokeny odświeżania może zostać unieważnione w każdej chwili z różnych przyczyn — Aby uzyskać szczegółowe informacje, zobacz [token odwołania](v1-id-and-access-tokens.md#token-revocation). Jedynym sposobem dla swojej aplikacji dowiedzieć się, czy token odświeżania jest prawidłowa jest próba Zrealizuj go, wprowadzając żądania tokenu do punktu końcowego v2.0.
+Tokenów odświeżania są i zawsze będą, całkowicie nieprzezroczysty do swojej aplikacji. One są wydawane przez punktu końcowego v2.0 usługi Azure AD można tylko inspekcji i interpretowane przez punktu końcowego v2.0. Są one długotrwałe, ale aplikacja nie powinna być zapisana można oczekiwać, że token odświeżania jest ważny dla dowolnego okresu czasu. Tokeny odświeżania może zostać unieważnione w każdej chwili z różnych przyczyn — Aby uzyskać szczegółowe informacje, zobacz [token odwołania](access-tokens.md#revocation). Jedynym sposobem dla swojej aplikacji dowiedzieć się, czy token odświeżania jest prawidłowa jest próba Zrealizuj go, wprowadzając żądania tokenu do punktu końcowego v2.0.
 
 Po zrealizowaniu token odświeżania, aby uzyskać nowy token dostępu (i jeśli aplikacja została udzielona `offline_access` zakres), masz dostęp do nowego tokena odświeżania na odpowiedzi tokenu. Zapisz token odświeżania nowo wystawione, aby zastąpić ten, który zostanie użyty w żądaniu. Jest to gwarancją tokenów odświeżania i ważność tak długo, jak to możliwe.
 
 ## <a name="validating-tokens"></a>Sprawdzanie poprawności tokenów
+
 Obecnie tylko tokenu weryfikacji, należy potrzebnych do wykonania dla aplikacji jest sprawdzanie poprawności tokenów Identyfikatora. Można zweryfikować tokenu Identyfikacyjnego, aplikację należy zweryfikować podpisu tokenu Identyfikacyjnego i oświadczenia w tokenie identyfikator.
 
 <!-- TODO: Link --> Firma Microsoft udostępnia biblioteki i przykłady kodu, które pokazują, jak i w łatwy sposób spełniaj walidacji tokenów. W następnych sekcjach opisano bazowego procesu. Kilka bibliotek typu open-source innych firm również są dostępne do weryfikacji tokenów JWT. Istnieje co najmniej jedna biblioteka dotycząca prawie każdej platformy i języka.
 
 ### <a name="validate-the-signature"></a>Weryfikowanie podpisu
+
 Token JWT zawiera trzy segmenty, które są oddzielone `.` znaków. Pierwszy segment jest znany jako *nagłówka*, drugi segment jest *treści*, a trzeci segmentu *podpisu*. Segment podpisu może służyć do weryfikowania autentyczności tokenu Identyfikacyjnego, dzięki czemu mogą być zaufane przez aplikację.
 
 Identyfikator tokeny są podpisane za pomocą standardowych asymetrycznych algorytmów, takich jak RSA 256. Nagłówek tokenu Identyfikacyjnego zawiera informacje o metodzie klucza i szyfrowania używany do podpisywania tokenu. Na przykład:
@@ -131,6 +135,7 @@ Ten dokument metadanych jest obiekt JSON, który ma kilka fragmentów przydatne 
 Wykonywanie weryfikacji podpisu wykracza poza zakres tego dokumentu. Wiele bibliotek typu open source są dostępne do udzielenia odpowiedzi na to.
 
 ### <a name="validate-the-claims"></a>Sprawdzanie poprawności oświadczenia
+
 Gdy aplikacja otrzymuje tokenu Identyfikacyjnego podczas logowania użytkownika, go również wykonać kilka kontroli względem oświadczenia w tokenie identyfikator. Obejmują one nie są ograniczone do:
 
 * **odbiorcy** oświadczenia, aby sprawdzić, czy identyfikator tokenu jest przeznaczona do aplikacji
@@ -143,6 +148,7 @@ Aby uzyskać pełną listę sprawdzanie poprawności oświadczenia, które nale�
 Szczegółowe informacje o oczekiwanej wartości te oświadczenia są objęte [tokeny Identyfikatora](# ID tokens) sekcji.
 
 ## <a name="token-lifetimes"></a>Okresy istnienia tokenu
+
 Firma Microsoft oferuje następujące okresów istnienia tokenu wyłącznie w celach informacyjnych. Informacje mogą pomóc podczas tworzenia i debugowania aplikacji. Aplikacje nie powinien być zapisywany można oczekiwać, żadnego z tych okresy istnienia, aby pozostał bez zmian. Token może okresy istnienia i zmieni się w dowolnym momencie.
 
 | Token | Okres istnienia | Opis |

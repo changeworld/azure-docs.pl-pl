@@ -10,16 +10,16 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 08/02/2018
+ms.date: 09/20/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 9a2eb8ab4e3ee65e97de578c825bf106aee1b829
-ms.sourcegitcommit: fc5555a0250e3ef4914b077e017d30185b4a27e6
+ms.openlocfilehash: e418316a74ccf27ec730261957a8b6c64de5d063
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39480344"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040605"
 ---
 # <a name="create-a-dynamic-group-and-check-status"></a>Utworzyć grupę dynamiczną i sprawdzić stan
 
@@ -29,7 +29,7 @@ Ten artykuł szczegółowo opisuje sposób konfigurowania reguły w witrynie Azu
 
 ## <a name="to-create-a-group-membership-rule"></a>Aby utworzyć regułę członkostwa grupy
 
-1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta administratora globalnego lub administratora konta użytkownika.
+1. Zaloguj się do [Centrum administracyjnego usługi Azure AD](https://aad.portal.azure.com) przy użyciu konta należącego do roli administratora globalnego, administratora usługi Intune lub Administrator kont użytkowników w dzierżawie.
 2. Wybierz **grup**.
 3. Wybierz **wszystkich grup**i wybierz **nową grupę**.
 

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Region, w którym możesz opublikować aplikację usługi LUIS odnosi się do regionu lub lokalizacji w witrynie Azure portal podczas tworzenia klucza punktu końcowego usługi LUIS platformy Azure. Po opublikowaniu aplikacji LUIS automatycznie generuje adres URL punktu końcowego dla regionu skojarzonego z kluczem. Aby opublikować więcej niż jeden region z aplikacją usługi LUIS, potrzebujesz co najmniej jeden klucz dla regionu.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: diberry
-ms.openlocfilehash: eb7a6e86dc9628c8e981dbad7678d552d2ea587b
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 205a17a985986aab8039afe824e7e872a9885169
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363536"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039415"
 ---
 # <a name="regions-and-keys"></a>Regiony i klucze
 

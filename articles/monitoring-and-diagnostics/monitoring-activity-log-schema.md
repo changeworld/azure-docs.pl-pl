@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 4/12/2018
 ms.author: dukek
 ms.component: activitylog
-ms.openlocfilehash: 9c1f4699f067ece3108813d28ff834c68f44316d
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: d267ffd5085c27c60e9eb229e2d9026fa83ef848
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003835"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998240"
 ---
 # <a name="azure-activity-log-event-schema"></a>Usługa Azure schemat zdarzeń dziennika aktywności
 **Dziennika aktywności platformy Azure** jest dziennika, który zapewnia wgląd w poziom subskrypcji zdarzeń, które wystąpiły na platformie Azure. W tym artykule opisano schemat zdarzeń dla każdej kategorii danych. Schemat danych różni się zależnie od tego, podczas odczytu danych w portalu, programu PowerShell, interfejsu wiersza polecenia, lub bezpośrednio za pośrednictwem interfejsu API REST i [przesyłania strumieniowego danych w magazynie lub Event Hubs za pomocą profilu dziennika](./monitoring-overview-activity-logs.md#export-the-activity-log-with-a-log-profile). Poniższe przykłady pokazują schematu jako udostępniane za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia i interfejsu API REST. Mapowanie tych właściwości w celu [Azure diagnostyczne dzienniki schematu](./monitoring-diagnostic-logs-schema.md) znajduje się na końcu tego artykułu.
@@ -192,6 +192,95 @@ Ta kategoria zawiera rekord wszelkie zdarzenia kondycji usługi, które miały m
 }
 ```
 Zapoznaj się [usługi powiadomień dotyczących kondycji](./monitoring-service-notifications.md) artykuł dotyczący dokumentacji dotyczącej wartości we właściwościach.
+
+## <a name="resource-health"></a>Kondycja zasobów
+Ta kategoria zawiera rekord wszystkie zdarzenia dotyczące kondycji zasobów, które wystąpiły z zasobami platformy Azure. Przykładem typu zdarzenia, które powinny zostać wyświetlone tej kategorii jest "Zmieniono na niedostępny stan kondycji maszyny wirtualnej." Zdarzenia dotyczące kondycji zasobów może reprezentować jedną z czterech stanów kondycji: dostępna, jest niedostępny, obniżony i nieznany. Ponadto zdarzenia dotyczące kondycji zasobów można sklasyfikować jako są inicjowane platformy lub Zainicjowanie przez użytkownika.
+
+### <a name="sample-event"></a>Zdarzenie próbkowania
+
+```json
+{
+    "channels": "Admin, Operation",
+    "correlationId": "28f1bfae-56d3-7urb-bff4-194d261248e9",
+    "description": "",
+    "eventDataId": "a80024e1-883d-37ur-8b01-7591a1befccb",
+    "eventName": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "category": {
+        "value": "ResourceHealth",
+        "localizedValue": "Resource Health"
+    },
+    "eventTimestamp": "2018-09-04T15:33:43.65Z",
+    "id": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>/events/a80024e1-883d-42a5-8b01-7591a1befccb/ticks/636716720236500000",
+    "level": "Critical",
+    "operationId": "",
+    "operationName": {
+        "value": "Microsoft.Resourcehealth/healthevent/Activated/action",
+        "localizedValue": "Health Event Activated"
+    },
+    "resourceGroupName": "<resource group>",
+    "resourceProviderName": {
+        "value": "Microsoft.Resourcehealth/healthevent/action",
+        "localizedValue": "Microsoft.Resourcehealth/healthevent/action"
+    },
+    "resourceType": {
+        "value": "Microsoft.Compute/virtualMachines",
+        "localizedValue": "Microsoft.Compute/virtualMachines"
+    },
+    "resourceId": "/subscriptions/<subscription Id>/resourceGroups/<resource group>/providers/Microsoft.Compute/virtualMachines/<resource name>",
+    "status": {
+        "value": "Active",
+        "localizedValue": "Active"
+    },
+    "subStatus": {
+        "value": "",
+        "localizedValue": ""
+    },
+    "submissionTimestamp": "2018-09-04T15:36:24.2240867Z",
+    "subscriptionId": "<subscription Id>",
+    "properties": {
+        "stage": "Active",
+        "title": "Virtual Machine health status changed to unavailable",
+        "details": "Virtual machine has experienced an unexpected event",
+        "healthStatus": "Unavailable",
+        "healthEventType": "Downtime",
+        "healthEventCause": "PlatformInitiated",
+        "healthEventCategory": "Unplanned"
+    },
+    "relatedEvents": []
+}
+```
+
+### <a name="property-descriptions"></a>Opisy właściwości
+| Nazwa elementu | Opis |
+| --- | --- |
+| kanały | Zawsze "Admin, operacji" |
+| correlationId | Identyfikator GUID w formacie ciągu. |
+| description |Opis statyczny tekst alertu zdarzenia. |
+| eventDataId |Unikatowy identyfikator zdarzenia alertów. |
+| category | Zawsze "ResourceHealth" |
+| eventTimestamp |Sygnatura czasowa podczas generowania zdarzenia według usługi platformy Azure, przetwarzanie żądania odpowiadające zdarzenie. |
+| poziom |Poziom zdarzenia. Jedną z następujących wartości: "Critical", "Error", "Ostrzeżenie", "Informacyjne" i "Pełne" |
+| operationId |Identyfikator GUID współużytkowane przez zdarzenia, które odpowiadają jednej operacji. |
+| operationName |Nazwa operacji. |
+| resourceGroupName |Nazwa grupy zasobów, która zawiera zasób. |
+| resourceProviderName |Zawsze "Microsoft.Resourcehealth/healthevent/action". |
+| Typ zasobu | Typ zasobu, który miała wpływ zdarzenie kondycji zasobu. |
+| resourceId | Nazwa Identyfikatora zasobu dla zasobu, których to dotyczy. |
+| status |Ciąg opisujący stan zdarzenie kondycji. Możliwe wartości to: aktywne, rozwiązane, w toku, zaktualizowane. |
+| subStatus | Zazwyczaj wartość null dla alertów. |
+| submissionTimestamp |Sygnatura czasowa, gdy zdarzenie stały się dostępne dla zapytań. |
+| subscriptionId |Identyfikator subskrypcji platformy Azure. |
+| properties |Zestaw `<Key, Value>` pary (Słownik), opisujący szczegóły zdarzenia.|
+| Properties.Title | Przyjazny dla użytkownika ciąg opisujący stan kondycji zasobu. |
+| Properties.details | Ciąg przyjazny dla użytkownika, który opisuje dalsze szczegółowe informacje o zdarzeniu. |
+| properties.currentHealthStatus | Bieżący stan kondycji zasobu. Jedną z następujących wartości: "Dostępne", "Niedostępne", "Obniżony" i "Nieznany". |
+| properties.previousHealthStatus | Poprzedni stan kondycji zasobu. Jedną z następujących wartości: "Dostępne", "Niedostępne", "Obniżony" i "Nieznany". |
+| Properties.Type | Opis typu zdarzenia kondycji zasobów. |
+| Properties.cause | Opis przyczyn zdarzenia kondycji zasobów. "UserInitiated" i "PlatformInitiated". |
+
 
 ## <a name="alert"></a>Alerty
 Ta kategoria zawiera rekord wszystkich aktywacje alertów platformy Azure. Jest przykładem typu zdarzenia, które powinny zostać wyświetlone tej kategorii, "procent użycia procesora CPU na myVM została ponad 80 dla ostatnich 5 minut." Z różnych systemów Azure ma koncepcji alertów — możesz zdefiniować regułę jakieś i Otrzymuj powiadomienie, gdy warunki zgodne z tą regułą. Każdym obsługiwanym typem alertów platformy Azure "aktywuje," lub warunki są spełnione, aby wygenerować powiadomienie, rekord aktywacji są również wypychane do tej kategorii dziennika aktywności.

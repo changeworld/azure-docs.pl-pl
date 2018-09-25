@@ -1,21 +1,23 @@
 ---
 title: Monitorowanie wydajności podzielonej na fragmenty wielodostępnych Azure SQL database w aplikacji SaaS z wieloma dzierżawami | Dokumentacja firmy Microsoft
 description: Monitorowanie i zarządzanie wydajnością podzielonej na fragmenty bazy danych Azure SQL wielu dzierżaw w aplikacji SaaS z wieloma dzierżawami
-keywords: samouczek usługi sql database
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: d04fd4202a0544a8549f1729dbba9a829482c2f0
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 873660f362d2ad0002f512f911d4149519092787
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730685"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055949"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Monitorowanie i zarządzanie wydajnością podzielonej na fragmenty bazy danych Azure SQL wielu dzierżaw w aplikacji SaaS z wieloma dzierżawami
 

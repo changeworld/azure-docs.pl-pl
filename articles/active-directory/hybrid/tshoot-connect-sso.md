@@ -9,15 +9,15 @@ ms.assetid: 9f994aca-6088-40f5-b2cc-c753a4f41da7
 ms.service: active-directory
 ms.workload: identity
 ms.topic: article
-ms.date: 09/04/2018
+ms.date: 09/24/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: c2b6bd3b04dfbc7446e92dfcb16db64cc3c693c5
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a020f0f22f16d8aaa959c41a912ca5839be05312
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46315266"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055904"
 ---
 # <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Rozwiązywanie problemów z usługi Azure Active Directory bezproblemowego logowania jednokrotnego
 
@@ -36,7 +36,7 @@ Ten artykuł zawiera informacje dotyczące typowych problemów dotyczących usł
 - Jeśli użytkownik jest częścią zbyt wielu grup w usłudze Active Directory, biletu protokołu Kerberos użytkownika będzie prawdopodobnie zbyt duży, aby przetworzyć, a spowoduje to bezproblemowe logowanie Jednokrotne nie powiedzie się. Usługa Azure AD HTTPS żądań może mieć nagłówki o maksymalnym rozmiarze 50 KB; Bilety protokołu Kerberos, konieczne może być mniejszy niż ten limit, aby pomieścić inne artefakty usługi Azure AD (zwykle 2 – 5 KB), takich jak pliki cookie. Nasze zalecenie jest zmniejszenie członkostwa grupy użytkownika i spróbuj ponownie.
 - Jeśli synchronizacja co najmniej 30 lasów usługi Active Directory, nie można włączyć bezproblemowe logowanie Jednokrotne za pomocą usługi Azure AD Connect. Jako obejście tego problemu, możesz [ręcznie włączyć](#manual-reset-of-the-feature) funkcję w dzierżawie.
 - Dodawanie adresu URL usługi Azure AD (https://autologon.microsoftazuread-sso.com) do strefy Zaufane witryny zamiast lokalnej strefy intranetowej *uniemożliwia użytkownikom logowanie*.
-- Wyłączanie korzystania z **RC4_HMAC_MD5** typ szyfrowania dla protokołu Kerberos w ustawieniach usługi Active Directory spowoduje przerwanie bezproblemowe logowanie Jednokrotne. W narzędziu Edytor zarządzania zasadami grupy upewnij się, że wartość **RC4_HMAC_MD5** w obszarze **Konfiguracja komputera -> Ustawienia Windows -> Ustawienia zabezpieczeń -> Zasady lokalne -> Opcje zabezpieczeń — > "Zabezpieczenia sieciowe: Konfigurowanie typów szyfrowania dozwolonych dla protokołu Kerberos"** jest "włączone".
+- Bezproblemowe logowanie Jednokrotne używa **RC4_HMAC_MD5** typu szyfrowania dla protokołu Kerberos. Wyłączanie korzystania z **RC4_HMAC_MD5** typ szyfrowania w ustawieniach usługi Active Directory spowoduje przerwanie bezproblemowe logowanie Jednokrotne. W narzędziu Edytor zarządzania zasadami grupy upewnij się, że wartość **RC4_HMAC_MD5** w obszarze **Konfiguracja komputera -> Ustawienia Windows -> Ustawienia zabezpieczeń -> Zasady lokalne -> Opcje zabezpieczeń — > "Zabezpieczenia sieciowe: Konfigurowanie typów szyfrowania dozwolonych dla protokołu Kerberos"** jest **włączone**. Ponadto bezproblemowe logowanie Jednokrotne nie może korzystać z innych typów szyfrowania, dlatego upewnij się, że są one **wyłączone**.
 
 ## <a name="check-status-of-feature"></a>Sprawdź stan funkcji
 

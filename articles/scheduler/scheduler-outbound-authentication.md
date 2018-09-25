@@ -1,60 +1,74 @@
 ---
-title: Uwierzytelnianie połączeń wychodzących harmonogramu
-description: Uwierzytelnianie połączeń wychodzących harmonogramu
+title: Uwierzytelnianie danych wychodzących — usługa Azure Scheduler
+description: Dowiedz się, jak skonfigurować lub usunąć uwierzytelnianie połączeń wychodzących usługi Azure Scheduler
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+author: derek1ee
+ms.author: deli
+ms.reviewer: klam
+ms.assetid: 6707f82b-7e32-401b-a960-02aae7bb59cc
 ms.topic: article
 ms.date: 08/15/2016
-ms.author: deli
-ms.openlocfilehash: e345b2e22daae5b24c23645f7d2636f66df630ff
-ms.sourcegitcommit: 6699c77dcbd5f8a1a2f21fba3d0a0005ac9ed6b7
+ms.openlocfilehash: 88f2fe0781bad4b652826b6a8d1961dd39b063e1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/11/2017
-ms.locfileid: "23926508"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993341"
 ---
-# <a name="scheduler-outbound-authentication"></a>Uwierzytelnianie połączeń wychodzących harmonogramu
-Harmonogram zadań może być konieczne wyróżnienia do usług, które wymagają uwierzytelniania. W ten sposób usługa o nazwie może określić, czy zadania harmonogramu dostęp do jej zasobów. Niektóre z tych usług obejmują innych usług platformy Azure, witryny Salesforce.com, Facebook i bezpieczne niestandardowych witryn sieci Web.
+# <a name="outbound-authentication-for-azure-scheduler"></a>Uwierzytelnianie połączeń wychodzących usługi Azure Scheduler
 
-## <a name="adding-and-removing-authentication"></a>Dodawanie i usuwanie uwierzytelniania
-Dodawanie uwierzytelniania do zadania harmonogramu jest proste — dodawanie elementu podrzędnego JSON `authentication` do `request` elementu podczas tworzenia lub aktualizowania zadania. Klucze tajne przekazanych do usługi harmonogramu w żądaniu PUT, PATCH lub POST — jako część `authentication` obiektu — nigdy nie są zwracane w odpowiedzi. W odpowiedzi na tajnych informacji jest ustawiona na wartość null lub nie może mieć publicznych token, który reprezentuje jednostkę uwierzytelniony.
+> [!IMPORTANT]
+> [Usługa Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługi Azure Scheduler, która zostanie wycofana. Aby zaplanować prace, [zamiast tego spróbuj wykonać usługi Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
 
-Aby usunąć uwierzytelniania, umieść lub poprawka zadanie jawnie, ustawienie `authentication` obiektu na wartość null. Nie będą widzieć żadnych właściwości uwierzytelniania w odpowiedzi.
+Zadania usługi Azure Scheduler, może być konieczne wywoływanie usług, które wymagają uwierzytelniania, takiego jak innych usług platformy Azure, Salesforce.com, Facebook i bezpieczne niestandardowych witryn sieci Web. Usługa o nazwie można określić, czy zadanie usługi Scheduler można uzyskiwać dostęp do żądanych zasobów. 
 
-Obecnie są tylko uwierzytelniania obsługiwanych typów `ClientCertificate` modelem (przy użyciu certyfikatów klienta SSL/TLS), `Basic` (dla uwierzytelniania podstawowego) i `ActiveDirectoryOAuth` (dla uwierzytelniania OAuth usługi Active Directory.)
+Usługa Scheduler obsługuje te modele uwierzytelniania: 
 
-## <a name="request-body-for-clientcertificate-authentication"></a>Treść żądania uwierzytelniania ClientCertificate
-Podczas dodawania uwierzytelnianie przy użyciu `ClientCertificate` modelu, określ następujące dodatkowe elementy w treści żądania.  
+* *Certyfikat klienta* uwierzytelniania przy użyciu certyfikatów klientów SSL/TLS
+* *Podstawowe* uwierzytelniania
+* *OAuth usługi Active Directory* uwierzytelniania
 
-| Element | Opis |
-|:--- |:--- |
-| *uwierzytelnianie (element nadrzędny)* |Obiekt uwierzytelniania za pomocą certyfikatu klienta SSL. |
-| *Typ* |Wymagany. Typ uwierzytelniania. Dla certyfikatów klienta SSL, wartość musi być `ClientCertificate`. |
-| *PFX* |Wymagany. Algorytmem Base64 zawartość pliku PFX. |
-| *hasło* |Wymagany. Hasło dostępu do pliku PFX. |
+## <a name="add-or-remove-authentication"></a>Dodawanie lub usuwanie uwierzytelniania
 
-## <a name="response-body-for-clientcertificate-authentication"></a>Treść odpowiedzi ClientCertificate uwierzytelniania
-Po wysłaniu żądania z użyciem uwierzytelniania informacji odpowiedzi zawiera następujące elementy związane z uwierzytelnianiem.
+* Aby dodać uwierzytelnianie do zadania usługi Scheduler, podczas tworzenia lub aktualizacji zadania, `authentication` element podrzędny JavaScript Object Notation (JSON) do `request` elementu. 
 
-| Element | Opis |
-|:--- |:--- |
-| *uwierzytelnianie (element nadrzędny)* |Obiekt uwierzytelniania za pomocą certyfikatu klienta SSL. |
-| *Typ* |Typ uwierzytelniania. Dla certyfikatów klienta SSL, wartość jest `ClientCertificate`. |
-| *certificateThumbprint* |Odcisk palca certyfikatu. |
-| *certificateSubjectName* |Nazwa wyróżniająca podmiotu certyfikatu. |
-| *certificateExpiration* |Data wygaśnięcia certyfikatu. |
+  Odpowiedzi nigdy nie należy zwracać wpisów tajnych, które są przekazywane do usługi Scheduler za pośrednictwem żądania PUT, PATCH lub WPIS w `authentication` obiektu. 
+  Odpowiedzi równa tajnych informacji o wartości null lub użyć publicznego tokenu, który reprezentuje uwierzytelnionego jednostkę. 
 
-## <a name="sample-rest-request-for-clientcertificate-authentication"></a>Przykładowe żądanie REST ClientCertificate uwierzytelniania
-```
-PUT https://management.azure.com/subscriptions/1fe0abdf-581e-4dfe-9ec7-e5cb8e7b205e/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
+* Aby usunąć uwierzytelniania z zadania usługi Scheduler, jawnie uruchom żądanie PUT lub PATCH w zadaniu i ustaw `authentication` obiekt o wartości null. Odpowiedź nie zawiera właściwości uwierzytelniania.
+
+## <a name="client-certificate"></a>Certyfikat klienta
+
+### <a name="request-body---client-certificate"></a>Treść żądania - certyfikatu klienta
+
+Podczas dodawania uwierzytelnianie przy użyciu `ClientCertificate` modelu, należy określić te dodatkowe elementy w treści żądania.  
+
+| Element | Wymagane | Opis |
+|---------|----------|-------------|
+| **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania przy użyciu certyfikatu klienta SSL |
+| **type** | Yes | Typ uwierzytelniania. W przypadku certyfikatów klientów SSL, wartość jest `ClientCertificate`. |
+| **plik PFX** | Yes | Zawartość algorytmem Base64 pliku PFX |
+| **Hasło** | Yes | Hasło do uzyskiwania dostępu do pliku PFX |
+||| 
+
+### <a name="response-body---client-certificate"></a>Treść odpowiedzi - certyfikatu klienta 
+
+Po wysłaniu żądania o informacje dotyczące uwierzytelniania, odpowiedź zawiera te elementy uwierzytelniania.
+
+| Element | Opis | 
+|---------|-------------| 
+| **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania przy użyciu certyfikatu klienta SSL |
+| **type** | Typ uwierzytelniania. W przypadku certyfikatów klientów SSL, wartość jest `ClientCertificate`. |
+| **certificateThumbprint** |Odcisk palca certyfikatu |
+| **CertificateSubjectName** |Nazwa wyróżniająca podmiotu certyfikatu |
+| **certificateExpiration** | Data wygaśnięcia certyfikatu |
+||| 
+
+### <a name="sample-rest-request---client-certificate"></a>Przykładowe żądanie REST - certyfikatu klienta
+
+```json
+PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
 User-Agent: Fiddler
 Host: management.azure.com
 Authorization: Bearer sometoken
@@ -83,15 +97,15 @@ Content-Type: application/json; charset=utf-8
       "endTime": "2016-04-10T08:00:00Z",
       "interval": 1
     },
-    "state": "enabled",
+    "state": "enabled"
   }
 }
 ```
 
-## <a name="sample-rest-response-for-clientcertificate-authentication"></a>Przykładowa odpowiedź REST ClientCertificate uwierzytelniania
-```
-HTTP/1.1 200 OK
-Cache-Control: no-cache
+### <a name="sample-rest-response---client-certificate"></a>Przykładowa odpowiedź REST - certyfikatu klienta
+
+```json
+HTTP/1.1 200 OKCache-Control: no-cache
 Pragma: no-cache
 Content-Length: 858
 Content-Type: application/json; charset=utf-8
@@ -107,7 +121,7 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains
 Date: Wed, 16 Mar 2016 19:04:23 GMT
 
 {
-  "id": "/subscriptions/1fe0abdf-581e-4dfe-9ec7-e5cb8e7b205e/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobCollections/southeastasiajc/jobs/httpjob",
+  "id": "/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobCollections/southeastasiajc/jobs/httpjob",
   "type": "Microsoft.Scheduler/jobCollections/jobs",
   "name": "southeastasiajc/httpjob",
   "properties": {
@@ -144,28 +158,35 @@ Date: Wed, 16 Mar 2016 19:04:23 GMT
 }
 ```
 
-## <a name="request-body-for-basic-authentication"></a>Treść żądania dla uwierzytelniania podstawowego
-Podczas dodawania uwierzytelnianie przy użyciu `Basic` modelu, określ następujące dodatkowe elementy w treści żądania.
+## <a name="basic"></a>Podstawowa
 
-| Element | Opis |
-|:--- |:--- |
-| *uwierzytelnianie (element nadrzędny)* |Obiekt uwierzytelniania dla uwierzytelniania podstawowego. |
-| *Typ* |Wymagany. Typ uwierzytelniania. W przypadku uwierzytelniania podstawowego musi być wartością `Basic`. |
-| *Nazwa użytkownika* |Wymagany. Nazwa użytkownika do uwierzytelniania. |
-| *hasło* |Wymagany. Hasło do uwierzytelniania. |
+### <a name="request-body---basic"></a>Treść — Basic żądania
 
-## <a name="response-body-for-basic-authentication"></a>Treść odpowiedzi dla uwierzytelniania podstawowego
-Po wysłaniu żądania z użyciem uwierzytelniania informacji odpowiedzi zawiera następujące elementy związane z uwierzytelnianiem.
+Podczas dodawania uwierzytelnianie przy użyciu `Basic` modelu, należy określić te dodatkowe elementy w treści żądania.
 
-| Element | Opis |
-|:--- |:--- |
-| *uwierzytelnianie (element nadrzędny)* |Obiekt uwierzytelniania dla uwierzytelniania podstawowego. |
-| *Typ* |Typ uwierzytelniania. W przypadku uwierzytelniania podstawowego jest wartość `Basic`. |
-| *Nazwa użytkownika* |Nazwa użytkownika, uwierzytelnionym. |
+| Element | Wymagane | Opis |
+|---------|----------|-------------|
+| **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania dla uwierzytelniania podstawowego | 
+| **type** | Yes | Typ uwierzytelniania. Uwierzytelnianie podstawowe, wartość jest `Basic`. | 
+| **Nazwa użytkownika** | Yes | Nazwa użytkownika do uwierzytelniania | 
+| **Hasło** | Yes | Hasło do uwierzytelniania |
+|||| 
 
-## <a name="sample-rest-request-for-basic-authentication"></a>Przykładowe żądanie REST dla uwierzytelniania podstawowego
-```
-PUT https://management.azure.com/subscriptions/1d908808-e491-4fe5-b97e-29886e18efd4/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
+### <a name="response-body---basic"></a>Treść odpowiedzi — Basic
+
+Po wysłaniu żądania o informacje dotyczące uwierzytelniania, odpowiedź zawiera te elementy uwierzytelniania.
+
+| Element | Opis | 
+|---------|-------------|
+| **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania dla uwierzytelniania podstawowego |
+| **type** | Typ uwierzytelniania. Uwierzytelnianie podstawowe, wartość jest `Basic`. |
+| **Nazwa użytkownika** | Nazwa uwierzytelnionego użytkownika |
+||| 
+
+### <a name="sample-rest-request---basic"></a>Przykładowe żądania REST — Basic
+
+```json
+PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
 User-Agent: Fiddler
 Host: management.azure.com
 Authorization: Bearer sometoken
@@ -195,13 +216,14 @@ Content-Type: application/json; charset=utf-8
       "endTime": "2016-04-10T08:00:00Z",
       "interval": 1
     },
-    "state": "enabled",
+    "state": "enabled"
   }
 }
 ```
 
-## <a name="sample-rest-response-for-basic-authentication"></a>Przykładowa odpowiedź REST dla uwierzytelniania podstawowego
-```
+### <a name="sample-rest-response---basic"></a>Przykładowa odpowiedź REST - podstawowe
+
+```json
 HTTP/1.1 200 OK
 Cache-Control: no-cache
 Pragma: no-cache
@@ -219,7 +241,7 @@ Strict-Transport-Security: max-age=31536000; includeSubDomains
 Date: Wed, 16 Mar 2016 19:05:06 GMT
 
 {  
-   "id":"/subscriptions/1d908808-e491-4fe5-b97e-29886e18efd4/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobCollections/southeastasiajc/jobs/httpjob",
+   "id":"/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobCollections/southeastasiajc/jobs/httpjob",
    "type":"Microsoft.Scheduler/jobCollections/jobs",
    "name":"southeastasiajc/httpjob",
    "properties":{  
@@ -236,14 +258,14 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
                "type":"Basic"
             }
          },
-         "type":"http"
+         "type":"Http"
       },
       "recurrence":{  
-         "frequency":"minute",
+         "frequency":"Minute",
          "endTime":"2016-04-10T08:00:00Z",
          "interval":1
       },
-      "state":"enabled",
+      "state":"Enabled",
       "status":{  
          "nextExecutionTime":"2016-03-16T19:06:00Z",
          "executionCount":0,
@@ -254,35 +276,39 @@ Date: Wed, 16 Mar 2016 19:05:06 GMT
 }
 ```
 
-## <a name="request-body-for-activedirectoryoauth-authentication"></a>Treść żądania uwierzytelniania ActiveDirectoryOAuth
-Podczas dodawania uwierzytelnianie przy użyciu `ActiveDirectoryOAuth` modelu, określ następujące dodatkowe elementy w treści żądania.
+## <a name="active-directory-oauth"></a>Uwierzytelnianie OAuth usługi Active Directory
+
+### <a name="request-body---active-directory-oauth"></a>Treść — OAuth usługi Active Directory żądania 
+
+Podczas dodawania uwierzytelnianie przy użyciu `ActiveDirectoryOAuth` modelu, należy określić te dodatkowe elementy w treści żądania.
+
+| Element | Wymagane | Opis |
+|---------|----------|-------------|
+| **uwierzytelnianie** (element nadrzędny) | Yes | Obiekt uwierzytelniania dla uwierzytelniania ActiveDirectoryOAuth |
+| **type** | Yes | Typ uwierzytelniania. W przypadku uwierzytelniania ActiveDirectoryOAuth wartością jest `ActiveDirectoryOAuth`. |
+| **dzierżawy** | Yes | Identyfikator dzierżawy dla dzierżawy usługi Azure AD. Aby znaleźć identyfikator dzierżawy dla dzierżawy usługi Azure AD, uruchom `Get-AzureAccount` w programie Azure PowerShell. |
+| **Grupy odbiorców** | Yes | Ta wartość jest równa `https://management.core.windows.net/`. | 
+| **ClientId** | Yes | Identyfikator klienta aplikacji usługi Azure AD | 
+| **Klucz tajny** | Yes | Klucz tajny klienta, który żąda tokenu | 
+|||| 
+
+### <a name="response-body---active-directory-oauth"></a>Treść odpowiedzi - OAuth usługi Active Directory
+
+Po wysłaniu żądania o informacje dotyczące uwierzytelniania, odpowiedź zawiera te elementy uwierzytelniania.
 
 | Element | Opis |
-|:--- |:--- |
-| *uwierzytelnianie (element nadrzędny)* |Obiekt uwierzytelniania dla uwierzytelniania ActiveDirectoryOAuth. |
-| *Typ* |Wymagany. Typ uwierzytelniania. W przypadku uwierzytelniania ActiveDirectoryOAuth wartość musi być `ActiveDirectoryOAuth`. |
-| *dzierżawy* |Wymagany. Identyfikator dzierżawy dla dzierżawy usługi Azure AD. |
-| *grupy odbiorców* |Wymagany. Ta wartość jest równa https://management.core.windows.net/. |
-| *clientId* |Wymagany. Podaj identyfikator klienta aplikacji usługi Azure AD. |
-| *klucz tajny* |Wymagany. Klucz tajny klienta, który żąda tokenu. |
+|---------|-------------|
+| **uwierzytelnianie** (element nadrzędny) | Obiekt uwierzytelniania dla uwierzytelniania ActiveDirectoryOAuth |
+| **type** | Typ uwierzytelniania. W przypadku uwierzytelniania ActiveDirectoryOAuth wartością jest `ActiveDirectoryOAuth`. | 
+| **dzierżawy** | Identyfikator dzierżawy dla dzierżawy usługi Azure AD |
+| **Grupy odbiorców** | Ta wartość jest równa `https://management.core.windows.net/`. |
+| **ClientId** | Identyfikator klienta aplikacji usługi Azure AD |
+||| 
 
-### <a name="determining-your-tenant-identifier"></a>Określanie identyfikatora dzierżawcy
-Dla dzierżawy usługi Azure AD można znaleźć identyfikatora dzierżawcy, uruchamiając `Get-AzureAccount` w programie Azure PowerShell.
+### <a name="sample-rest-request---active-directory-oauth"></a>Przykładowe żądania REST - OAuth usługi Active Directory
 
-## <a name="response-body-for-activedirectoryoauth-authentication"></a>Treść odpowiedzi uwierzytelniania ActiveDirectoryOAuth
-Po wysłaniu żądania z użyciem uwierzytelniania informacji odpowiedzi zawiera następujące elementy związane z uwierzytelnianiem.
-
-| Element | Opis |
-|:--- |:--- |
-| *uwierzytelnianie (element nadrzędny)* |Obiekt uwierzytelniania dla uwierzytelniania ActiveDirectoryOAuth. |
-| *Typ* |Typ uwierzytelniania. Wartość dla uwierzytelniania ActiveDirectoryOAuth jest `ActiveDirectoryOAuth`. |
-| *dzierżawy* |Identyfikator dzierżawy dla dzierżawy usługi Azure AD. |
-| *grupy odbiorców* |Ta wartość jest równa https://management.core.windows.net/. |
-| *clientId* |Identyfikator klienta aplikacji usługi Azure AD. |
-
-## <a name="sample-rest-request-for-activedirectoryoauth-authentication"></a>Przykładowe żądanie REST ActiveDirectoryOAuth uwierzytelniania
-```
-PUT https://management.azure.com/subscriptions/1d908808-e491-4fe5-b97e-29886e18efd4/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
+```json
+PUT https://management.azure.com/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobcollections/southeastasiajc/jobs/httpjob?api-version=2016-01-01 HTTP/1.1
 User-Agent: Fiddler
 Host: management.azure.com
 Authorization: Bearer sometoken
@@ -307,20 +333,21 @@ Content-Type: application/json; charset=utf-8
           "type":"ActiveDirectoryOAuth"
         }
       },
-      "type": "http"
+      "type": "Http"
     },
     "recurrence": {
-      "frequency": "minute",
+      "frequency": "Minute",
       "endTime": "2016-04-10T08:00:00Z",
       "interval": 1
     },
-    "state": "enabled",
+    "state": "Enabled"
   }
 }
 ```
 
-## <a name="sample-rest-response-for-activedirectoryoauth-authentication"></a>Przykładowa odpowiedź REST ActiveDirectoryOAuth uwierzytelniania
-```
+### <a name="sample-rest-response---active-directory-oauth"></a>Przykładowa odpowiedź REST - OAuth usługi Active Directory
+
+```json
 HTTP/1.1 200 OK
 Cache-Control: no-cache
 Pragma: no-cache
@@ -337,59 +364,49 @@ x-ms-routing-request-id: WESTUS:20160316T191003Z:5183bbf4-9fa1-44bb-98c6-6872e3f
 Strict-Transport-Security: max-age=31536000; includeSubDomains
 Date: Wed, 16 Mar 2016 19:10:02 GMT
 
-{  
-   "id":"/subscriptions/1d908808-e491-4fe5-b97e-29886e18efd4/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobCollections/southeastasiajc/jobs/httpjob",
-   "type":"Microsoft.Scheduler/jobCollections/jobs",
-   "name":"southeastasiajc/httpjob",
-   "properties":{  
-      "startTime":"2015-05-14T14:10:00Z",
-      "action":{  
-         "request":{  
-            "uri":"https://mywebserviceendpoint.com",
-            "method":"GET",
-            "headers":{  
-               "x-ms-version":"2013-03-01"
+{
+   "id": "/subscriptions/<Azure-subscription-ID>/resourceGroups/CS-SoutheastAsia-scheduler/providers/Microsoft.Scheduler/jobCollections/southeastasiajc/jobs/httpjob",
+   "type": "Microsoft.Scheduler/jobCollections/jobs",
+   "name": "southeastasiajc/httpjob",
+   "properties": {
+      "startTime": "2015-05-14T14:10:00Z",
+      "action": {  
+         "request": {
+            "uri": "https://mywebserviceendpoint.com",
+            "method": "GET",
+            "headers": {  
+               "x-ms-version": "2013-03-01"
             },
-            "authentication":{  
-               "tenant":"microsoft.onmicrosoft.com",
-               "audience":"https://management.core.windows.net/",
-               "clientId":"dc23e764-9be6-4a33-9b9a-c46e36f0c137",
-               "type":"ActiveDirectoryOAuth"
+            "authentication": {  
+               "tenant": "microsoft.onmicrosoft.com",
+               "audience": "https://management.core.windows.net/",
+               "clientId": "dc23e764-9be6-4a33-9b9a-c46e36f0c137",
+               "type": "ActiveDirectoryOAuth"
             }
          },
-         "type":"http"
+         "type": "Http"
       },
-      "recurrence":{  
-         "frequency":"minute",
-         "endTime":"2016-04-10T08:00:00Z",
-         "interval":1
+      "recurrence": {  
+         "frequency": "minute",
+         "endTime": "2016-04-10T08:00:00Z",
+         "interval": 1
       },
-      "state":"enabled",
-      "status":{  
-         "lastExecutionTime":"2016-03-16T19:10:00.3762123Z",
-         "nextExecutionTime":"2016-03-16T19:11:00Z",
-         "executionCount":5,
-         "failureCount":5,
-         "faultedCount":1
+      "state": "Enabled",
+      "status": {  
+         "lastExecutionTime": "2016-03-16T19:10:00.3762123Z",
+         "nextExecutionTime": "2016-03-16T19:11:00Z",
+         "executionCount": 5,
+         "failureCount": 5,
+         "faultedCount": 1
       }
    }
 }
 ```
 
-## <a name="see-also"></a>Zobacz też
- [Co to jest Scheduler?](scheduler-intro.md)
+## <a name="see-also"></a>Zobacz także
 
- [Pojęcia i terminologia dotyczące usługi Azure Scheduler oraz hierarchia jednostek](scheduler-concepts-terms.md)
-
- [Rozpoczynanie pracy z usługą Scheduler w witrynie Azure Portal](scheduler-get-started-portal.md)
-
- [Plany i rozliczenia w usłudze Azure Scheduler](scheduler-plans-billing.md)
-
- [Dokumentacja interfejsu API REST usługi Azure Scheduler](https://msdn.microsoft.com/library/mt629143)
-
- [Dokumentacja poleceń cmdlet programu PowerShell dla usługi Azure Scheduler](scheduler-powershell-reference.md)
-
- [Wysoka dostępność i niezawodność usługi Azure Scheduler](scheduler-high-availability-reliability.md)
-
- [Limity, wartości domyślne i kody błędów usługi Azure Scheduler](scheduler-limits-defaults-errors.md)
-
+* [Co to jest usługa Azure Scheduler?](scheduler-intro.md)
+* [Pojęcia i terminologia dotyczące usługi Azure Scheduler oraz hierarchia jednostek](scheduler-concepts-terms.md)
+* [Limity, wartości domyślne i kody błędów usługi Azure Scheduler](scheduler-limits-defaults-errors.md)
+* [Interfejs API REST usługi Azure Scheduler](https://msdn.microsoft.com/library/mt629143)
+* [Dokumentacja poleceń cmdlet programu PowerShell dla usługi Azure Scheduler](scheduler-powershell-reference.md)

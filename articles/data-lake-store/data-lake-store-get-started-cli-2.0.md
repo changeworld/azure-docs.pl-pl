@@ -1,6 +1,6 @@
 ---
-title: Rozpoczynanie pracy z usługą Azure Data Lake Storage Gen1 interfejs Użyj wiersza polecenia platformy Azure w wersji 2.0 | Dokumentacja firmy Microsoft
-description: Użyj wiersza polecenia platformy Azure dla wielu platform w wersji 2.0, aby tworzenie konta Data Lake Storage Gen1 i wykonywać podstawowe operacje
+title: Rozpoczynanie pracy przy użyciu usługi Azure Data Lake Storage Gen1 przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Użyj wiersza polecenia platformy Azure do utworzenia konta Data Lake Storage Gen1 i wykonywać podstawowe operacje
 services: data-lake-store
 documentationcenter: ''
 author: nitinme
@@ -10,26 +10,24 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: b75fc3a96ce4e46fbd9efb03aa2ea9c2c4aaa15c
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d8232b1e29a3d2585e79cf56d0f180a5084fd13e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124783"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979070"
 ---
-# <a name="get-started-with-azure-data-lake-storage-gen1-using-azure-cli-20"></a>Rozpoczynanie pracy z usługą Azure Data Lake Storage Gen1 przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
+# <a name="get-started-with-azure-data-lake-store-using-azure-cli"></a>Rozpoczynanie pracy z usługą Azure Data Lake Store, przy użyciu wiersza polecenia platformy Azure
 > [!div class="op_single_selector"]
 > * [Portal](data-lake-store-get-started-portal.md)
 > * [Program PowerShell](data-lake-store-get-started-powershell.md)
-> * [Interfejs wiersza polecenia platformy Azure 2.0](data-lake-store-get-started-cli-2.0.md)
+> * [Interfejs wiersza polecenia platformy Azure](data-lake-store-get-started-cli-2.0.md)
 >
 > 
 
-[!INCLUDE [data-lake-storage-gen1-rename-note.md](../../includes/data-lake-storage-gen1-rename-note.md)]
+Dowiedz się, jak używać interfejsu wiersza polecenia platformy Azure, aby utworzyć konto usługi Azure Data Lake Storage Gen1 i wykonywać podstawowe operacje, takie jak tworzenie folderów, przekazywanie i pobieranie plików danych, usuwanie konta itp. Aby uzyskać więcej informacji na temat Data Lake Storage Gen1 zobacz [przegląd z Data Lake Storage Gen1](data-lake-store-overview.md).
 
-Dowiedz się, jak używać interfejsu wiersza polecenia platformy Azure w wersji 2.0, aby utworzyć konto usługi Azure Data Lake Storage Gen1 i wykonywać podstawowe operacje, takie jak tworzenie folderów, przekazywanie i pobieranie plików danych, usuwanie konta itp. Aby uzyskać więcej informacji na temat Data Lake Storage Gen1 zobacz [przegląd z Data Lake Storage Gen1](data-lake-store-overview.md).
-
-Interfejs wiersza polecenia platformy Azure 2.0 to nowe środowisko wiersza polecenia platformy Azure do zarządzania jej zasobami. Można go używać w systemach macOS, Linux i Windows. Aby uzyskać więcej informacji, zobacz [Overview of Azure CLI 2.0](https://docs.microsoft.com/cli/azure) (Przegląd interfejsu wiersza polecenia platformy Azure 2.0). Można również przeglądać [odwołanie do usługi Azure Data Lake Storage Gen1 interfejsu wiersza polecenia 2.0](https://docs.microsoft.com/cli/azure/dls) pełną listę poleceń i składni.
+Interfejs wiersza polecenia platformy Azure to środowisko wiersza polecenia platformy Azure do zarządzania jej zasobami. Można go używać w systemach macOS, Linux i Windows. Aby uzyskać więcej informacji, zobacz [przegląd z wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure). Można również przeglądać [odwołanie do wiersza polecenia platformy Azure Data Lake Storage Gen1](https://docs.microsoft.com/cli/azure/dls) pełną listę poleceń i składni.
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
@@ -37,7 +35,7 @@ Przed rozpoczęciem korzystania z informacji zawartych w tym artykule należy dy
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/pricing/free-trial/).
 
-* **Interfejs wiersza polecenia platformy Azure 2.0** — instrukcje znajdują się w artykule [Install Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (Instalowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0).
+* **Interfejs wiersza polecenia Azure** — zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj](https://docs.microsoft.com/cli/azure/install-azure-cli) instrukcje.
 
 ## <a name="authentication"></a>Authentication
 
@@ -164,7 +162,7 @@ Dane wyjściowe będą mieć postać podobną do następującej:
 
 ## <a name="work-with-permissions-and-acls-for-a-data-lake-storage-gen1-account"></a>Praca z uprawnieniami i listami kontroli dostępu dla konta Data Lake Storage Gen1
 
-W tej sekcji zawarto informacje o sposobie zarządzania listami kontroli dostępu (ACL) i uprawnieniami przy użyciu interfejsu wiersza polecenia platformy Azure 2.0. Aby uzyskać szczegółowe omówienie dotyczące sposobu implementacji list ACL w usłudze Azure Data Lake magazynu Gen1, zobacz [kontrola dostępu w usługach Azure Data Lake Storage Gen1](data-lake-store-access-control.md).
+W tej sekcji informacje o sposobie zarządzania listy kontroli dostępu i uprawnień przy użyciu wiersza polecenia platformy Azure. Aby uzyskać szczegółowe omówienie dotyczące sposobu implementacji list ACL w usłudze Azure Data Lake magazynu Gen1, zobacz [kontrola dostępu w usługach Azure Data Lake Storage Gen1](data-lake-store-access-control.md).
 
 * **Aby zaktualizować właściciela pliku/folderu**, użyj następującego polecenia:
 

@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4c33466af6e57264e02a7d5c298f7f1f9fbf4ed8
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7e6a897ed0606d8844f66e318b93449d7790e2be
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44717305"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963437"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Ustawia Omówienie automatycznego skalowania przy użyciu skali maszyny wirtualnej platformy Azure
 Zestaw skalowania maszyn wirtualnych platformy Azure może automatycznie zwiększyć lub zmniejszyć liczbę wystąpień maszyn wirtualnych, na których działa Twoja aplikacja. To zachowanie automatycznych i elastycznych zmniejsza koszty zarządzania do monitorowania i optymalizowania wydajności aplikacji. Możesz utworzyć zasady, które określają akceptowalny poziom wydajności dla pozytywnych komfort. Po spełnieniu tych zdefiniowanych progów, reguły skalowania automatycznego podjąć działania w celu dostosowania pojemność zestawu skalowania. Można także zaplanować zdarzeń, aby automatycznie zwiększać lub zmniejszyć pojemność zestawu skalowania o stałej razy. Ten artykuł zawiera omówienie metryk wydajności, które są dostępne i jakie akcje skalowania automatycznego można wykonywać.
@@ -42,7 +42,7 @@ Reguły automatycznego skalowania, które korzystają z metryk opartych na hośc
 
 - [Azure Portal](virtual-machine-scale-sets-autoscale-portal.md)
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
-- [Interfejs wiersza polecenia platformy Azure 2.0](tutorial-autoscale-cli.md)
+- [Interfejs wiersza polecenia platformy Azure](tutorial-autoscale-cli.md)
 - [Szablon platformy Azure](tutorial-autoscale-template.md)
 
 Aby utworzyć reguły automatycznego skalowania, które używają bardziej szczegółowe metryki wydajności, możesz [zainstalować i skonfigurować rozszerzenie diagnostyki platformy Azure](#in-guest-vm-metrics-with-the-azure-diagnostics-extension) na wystąpieniach maszyn wirtualnych lub [konfigurowania używania aplikacji usługi App Insights](#application-level-metrics-with-app-insights).
@@ -139,7 +139,7 @@ Poniższe przykłady są scenariusze, które można przeznaczyć na korzystanie 
 Można utworzyć reguły automatycznego skalowania, korzystających z metryk opartych na hoście przy użyciu jednego z następujących narzędzi:
 
 - [Azure PowerShell](tutorial-autoscale-powershell.md)
-- [Interfejs wiersza polecenia platformy Azure 2.0](tutorial-autoscale-cli.md)
+- [Interfejs wiersza polecenia platformy Azure](tutorial-autoscale-cli.md)
 - [Szablon platformy Azure](tutorial-autoscale-template.md)
 
 W tym omówieniu szczegółowe na temat reguł automatycznego skalowania umożliwia skalowanie w poziomie i zwiększyć lub zmniejszyć *numer* wystąpień maszyn wirtualnych w zestawie skalowania jest ustawiony. Możesz również skalować w pionie do zwiększania lub zmniejszania wystąpienia maszyny Wirtualnej *rozmiar*. Aby uzyskać więcej informacji, zobacz [pionowe skalowania automatycznego za pomocą zestawów skalowania maszyn wirtualnych](virtual-machine-scale-sets-vertical-scale-reprovision.md).

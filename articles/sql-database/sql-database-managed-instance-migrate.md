@@ -9,28 +9,28 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 07/24/2018
+ms.date: 09/20/2018
 ms.author: bonova
-ms.openlocfilehash: cf3f7e131b177634318a6114b4f1efefcb9a9cec
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 5aad6060691c796906232d9625ff00b748616a77
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985664"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038996"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migracja wystąpienia programu SQL Server do wystąpienia zarządzanego Azure SQL Database
 
-W tym artykule dowiesz się o metodach migracji programu SQL Server 2005 lub nowszych wersji do [wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance.md) (wersja zapoznawcza).
+W tym artykule dowiesz się o metodach migracji programu SQL Server 2005 lub nowszych wersji do [wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance.md).
 
 Na wysokim poziomie proces migracji bazy danych wygląda następująco:
 
 ![Proces migracji](./media/sql-database-managed-instance-migration/migration-process.png)
 
-- [Ocena zgodności wystąpienia zarządzanego](sql-database-managed-instance-migrate.md#assess-managed-instance-compatibility)
-- [Wybierz opcję połączenie aplikacji](sql-database-managed-instance-migrate.md#choose-app-connectivity-option)
-- [Wdrażanie do optymalnego rozmiaru wystąpienia zarządzanego](sql-database-managed-instance-migrate.md#deploy-to-an-optimally-sized-managed-instance)
-- [Wybierz metodę migracji, a następnie przeprowadzić migrację](sql-database-managed-instance-migrate.md#select-migration-method-and-migrate)
-- [Monitorowanie aplikacji](sql-database-managed-instance-migrate.md#monitor-applications)
+- [Ocena zgodności wystąpienia zarządzanego](#assess-managed-instance-compatibility)
+- [Wybierz opcję połączenie aplikacji](sql-database-managed-instance-connect-app.md)
+- [Wdrażanie do optymalnego rozmiaru wystąpienia zarządzanego](#deploy-to-an-optimally-sized-managed-instance)
+- [Wybierz metodę migracji, a następnie przeprowadzić migrację](#select-migration-method-and-migrate)
+- [Monitorowanie aplikacji](#monitor-applications)
 
 > [!NOTE]
 > Aby przeprowadzić migrację pojedynczej bazy danych do pojedynczej bazy danych lub elastycznej puli, zobacz [migracji bazy danych programu SQL Server do usługi Azure SQL Database](sql-database-cloud-migrate.md).
@@ -41,7 +41,7 @@ Najpierw Ustal, czy wystąpienie zarządzane jest zgodny z wymagania bazy danych
 
 Użyj [Data Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview) do wykrywania potencjalnych problemy ze zgodnością mogących mieć wpływ na funkcjonalność bazy danych w usłudze Azure SQL Database. Program DMA nie obsługuje jeszcze zarządzane wystąpienia jako lokalizację docelową migracji, ale zalecane do uruchamiania oceny w bazie danych Azure SQL i dokładnie przejrzyj listę zgłoszonych potrafiło i problemy ze zgodnością z dokumentacji produktu. Zobacz [funkcji usługi Azure SQL Database](sql-database-features.md) Aby sprawdzić, czy istnieją niektóre zgłoszone problemy z blokowaniem, nie blokują w wystąpieniu zarządzanym, ponieważ większość blokowania problemy, co uniemożliwia migracji do usługi Azure SQL Database zostały usunięte z zarządzanego Wystąpienie. Dla wystąpienia funkcji, takich jak zapytania wielu baz danych, transakcje między bazami danych w ramach tego samego wystąpienia serwera połączonego innych SQL źródeł, CLR, globalne tabele tymczasowe, widoki poziomu wystąpienia, Usługa Service Broker i podobne są dostępne w wystąpieniach zarządzanych. 
 
-W przypadku niektórych zgłaszane problemy z blokowaniem, które nie są usuwane w wystąpieniu zarządzanym usługi SQL Azure, może być konieczne należy wziąć pod uwagę alternatywnych opcji, takich jak [programu SQL Server na maszynach wirtualnych platformy Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Oto kilka przykładów:
+W przypadku niektórych zgłaszane problemy z blokowaniem, które nie są usuwane w wystąpieniu zarządzanym usługi Azure SQL Database, może być konieczne należy wziąć pod uwagę alternatywnych opcji, takich jak [programu SQL Server na maszynach wirtualnych platformy Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/). Oto kilka przykładów:
 
 - W razie potrzeby bezpośredniego dostępu do systemu operacyjnego lub systemu plików, na przykład instalowanie innych firm lub niestandardowych agentów na tej samej maszyny wirtualnej z programem SQL Server.
 - W przypadku ścisłej zależności od funkcji, które nadal nie są obsługiwane, takich jak typu FileStream / FileTable, PolyBase i transakcje dla wielu wystąpień.
@@ -81,7 +81,7 @@ Wystąpienie zarządzane obsługuje następujące opcje migracji bazy danych (ob
 
 [Usługi Azure Database Migration Service (DMS)](../dms/dms-overview.md) to w pełni zarządzana usługa ustalono, aby umożliwić bezproblemowe migracje z wielu źródłowych baz danych do platformy danych Azure przy minimalnych przestojach. Ta usługa usprawnia zadania wymagane do przenoszenia istniejących innych firm i baz danych programu SQL Server na platformie Azure. Opcje wdrożenia w publicznej wersji zapoznawczej obejmują usługi Azure SQL Database, wystąpienia zarządzanego i programu SQL Server w maszynie wirtualnej platformy Azure. Usługa DMS jest zalecaną metodą migracji obciążenia przedsiębiorstwa. 
 
-Jeśli używasz programu SQL Server Integration Services (SSIS) na program SQL Server w środowisku lokalnym, usługa DMS nie obsługuje jeszcze Migrowanie wykazu usług SSIS (SSISDB), która przechowuje pakietów usług SSIS, ale mogą aprowizować środowiska Azure-SSIS Integration Runtime (IR) w usłudze Azure Data Factory (ADF), których będzie Tworzenie nowej bazy danych SSISDB w usłudze Azure SQL Database/wystąpienia zarządzanego, a następnie ponownie wdrożyć pakiety do niego, zobacz [tworzenie środowiska Azure-SSIS IR w usłudze ADF](https://docs.microsoft.com/en-us/azure/data-factory/create-azure-ssis-integration-runtime).
+Jeśli używasz programu SQL Server Integration Services (SSIS) na program SQL Server w środowisku lokalnym, usługa DMS nie obsługuje jeszcze Migrowanie wykazu usług SSIS (SSISDB), która przechowuje pakietów usług SSIS, ale mogą aprowizować środowiska Azure-SSIS Integration Runtime (IR) w usłudze Azure Data Factory (ADF), których będzie Tworzenie nowej bazy danych SSISDB w usłudze Azure SQL Database/wystąpienia zarządzanego, a następnie ponownie wdrożyć pakiety do niego, zobacz [tworzenie środowiska Azure-SSIS IR w usłudze ADF](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime).
 
 Aby dowiedzieć się więcej na temat tego scenariusza i konfiguracji kroki przez usługę DMS, zobacz [migracji lokalnej bazy danych do wystąpienia zarządzanego przy użyciu usługi DMS](../dms/tutorial-sql-server-to-managed-instance.md).  
 
@@ -103,7 +103,7 @@ Poniższa tabela zawiera więcej informacji dotyczących metod, których można 
 |Przywróć z usługi Azure Storage do wystąpienia zarządzanego|[Przywróć z adresu URL przy użyciu POŚWIADCZEŃ sygnatury dostępu Współdzielonego](sql-database-managed-instance-get-started-restore.md)|
 
 > [!IMPORTANT]
-> - W przypadku migracji bazy danych chronionej przez funkcję [Transparent Data Encryption](transparent-data-encryption-azure-sql.md) do wystąpienia zarządzanego usługi Azure SQL przy użyciu natywnej opcji przywracania, odpowiedni certyfikat z lokalnego programu SQL Server lub programu SQL Server IaaS musi zostać migrowany przed przywróceniem bazy danych. Aby uzyskać szczegółowe instrukcje, zobacz [cert TDE migracji do wystąpienia zarządzanego](sql-database-managed-instance-migrate-tde-certificate.md)
+> - Podczas migracji bazy danych chronionych przez [funkcji Transparent Data Encryption](transparent-data-encryption-azure-sql.md) odpowiedni certyfikat z wdrożenia lokalne czy IaaS programu SQL Server do bazy danych wystąpienia zarządzanego Azure SQL przy użyciu opcji przywracania natywnych, muszą zostać zmigrowane przed przywróceniem bazy danych. Aby uzyskać szczegółowe instrukcje, zobacz [cert TDE migracji do wystąpienia zarządzanego](sql-database-managed-instance-migrate-tde-certificate.md)
 > - Przywracanie bazy danych systemu nie jest obsługiwane. Aby przeprowadzić migrację obiektów na poziomie wystąpienia (przechowywane w bazach danych master i msdb), zaleca się ich skryptu i uruchamianie skryptów T-SQL w wystąpieniu docelowym.
 
 Aby uzyskać szybki start przedstawiający sposób przywracania kopii zapasowej bazy danych do wystąpienia zarządzanego przy użyciu poświadczeń sygnatury dostępu Współdzielonego, zobacz [Przywracanie z kopii zapasowej do wystąpienia zarządzanego](sql-database-managed-instance-get-started-restore.md).

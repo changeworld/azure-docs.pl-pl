@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 08/09/2018
-ms.openlocfilehash: 0b22e51814f79b00257433a7e601349ad25cd2b7
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: d725bbe31de0f93d1b741ffd008bf39086904b61
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104304"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997509"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Informacje dotyczące korzystania z usługi HDInsight w systemie Linux
 
@@ -29,7 +29,7 @@ Wiele z tych kroków w tym dokumencie, użyj następujących narzędzi, które m
 
 * [cURL](https://curl.haxx.se/) — używany do komunikowania się z usług sieci web
 * [jq](https://stedolan.github.io/jq/) — używane do analizowania dokumentów JSON
-* [Interfejs wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) — umożliwia zdalne zarządzanie usługami platformy Azure
+* [Interfejs wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/install-az-cli2) — umożliwia zdalne zarządzanie usługami platformy Azure
 
 ## <a name="users"></a>Użytkownicy
 
@@ -55,7 +55,7 @@ To polecenie zwraca dokument JSON opisujące usługę i następnie jq stosuje ty
 
 ## <a name="remote-access-to-services"></a>Zdalny dostęp do usług
 
-* **Ambari (sieć web)** -https://&lt;nazwa_klastra >. azurehdinsight.net
+* **Ambari (sieć web)** - https://&lt;nazwa_klastra >. azurehdinsight.net
 
     Uwierzytelnianie przy użyciu użytkownika administratora klastra i hasło, a następnie zaloguj się do systemu Ambari.
 
@@ -66,14 +66,14 @@ To polecenie zwraca dokument JSON opisujące usługę i następnie jq stosuje ty
     >
     > Aby użyć pełnej funkcjonalności interfejsu użytkownika sieci web Ambari, użyj tunelu SSH, aby ruch internetowy serwer proxy do węzła głównego klastra. Zobacz [użycie tunelowania SSH do uzyskania dostępu do interfejsu użytkownika sieci web Ambari, ResourceManager, JobHistory, NameNode, Oozie i innych web UI](hdinsight-linux-ambari-ssh-tunnel.md)
 
-* **Ambari (REST)** -https://&lt;nazwa_klastra >.azurehdinsight.net/ambari
+* **Ambari (REST)** - https://&lt;nazwa_klastra >.azurehdinsight.net/ambari
 
     > [!NOTE]
     > Uwierzytelnianie za pomocą użytkownika administratora klastra i hasło.
     >
     > Uwierzytelnianie to zwykły tekst — zawsze używaj protokołu HTTPS, aby mieć pewność, że połączenie jest bezpieczne.
 
-* **WebHCat (Templeton)** -https://&lt;nazwa_klastra >.azurehdinsight.net/templeton
+* **WebHCat (Templeton)** - https://&lt;nazwa_klastra >.azurehdinsight.net/templeton
 
     > [!NOTE]
     > Uwierzytelnianie za pomocą użytkownika administratora klastra i hasło.
@@ -176,7 +176,7 @@ Istnieją różne sposoby dostępu do danych poza klastrem HDInsight. Poniżej p
 
 Jeśli przy użyciu __usługi Azure Storage__, zobacz poniższe linki, aby sposób, że mogą uzyskiwać dostęp do danych:
 
-* [Interfejs wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2): interfejs wiersza polecenia do pracy z platformą Azure. Po zainstalowaniu należy użyć `az storage` polecenie, aby uzyskać pomoc na temat korzystania z magazynu lub `az storage blob` poleceń specyficznych dla obiektów blob.
+* [Interfejs wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/install-az-cli2): interfejs wiersza polecenia do pracy z platformą Azure. Po zainstalowaniu należy użyć `az storage` polecenie, aby uzyskać pomoc na temat korzystania z magazynu lub `az storage blob` poleceń specyficznych dla obiektów blob.
 * [blobxfer.PY](https://github.com/Azure/azure-batch-samples/tree/master/Python/Storage): skryptu języka python do pracy z obiektami BLOB w usłudze Azure Storage.
 * Różnych zestawów SDK:
 
@@ -192,7 +192,7 @@ Jeśli przy użyciu __usługi Azure Data Lake Store__, zobacz poniższe linki, a
 
 * [Przeglądarki sieci Web](../data-lake-store/data-lake-store-get-started-portal.md)
 * [Program PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)
-* [Interfejs wiersza polecenia platformy Azure 2.0](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
+* [Interfejs wiersza polecenia platformy Azure](../data-lake-store/data-lake-store-get-started-cli-2.0.md)
 * [Interfejs API REST WebHDFS](../data-lake-store/data-lake-store-get-started-rest-api.md)
 * [Narzędzia Data Lake Tools for Visual Studio](https://www.microsoft.com/download/details.aspx?id=49504)
 * [.NET](../data-lake-store/data-lake-store-get-started-net-sdk.md)

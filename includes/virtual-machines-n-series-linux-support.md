@@ -5,15 +5,15 @@ services: virtual-machines-linux
 author: dlepow
 ms.service: virtual-machines-linux
 ms.topic: include
-ms.date: 05/29/2018
+ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 1813367a2d143f75fb51a3160dd00219c709c57b
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: dc03f49a684bfeb43ffd8bac9f551a67f034a04f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37935776"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042881"
 ---
 ## <a name="supported-distributions-and-drivers"></a>Obsługiwane dystrybucje i sterowniki
 
@@ -26,11 +26,11 @@ Sterowniki NVIDIA CUDA dla NC, NCv2, NCv3 i maszyny wirtualne z serii ND (opcjon
 
 | Dystrybucja | Sterownik |
 | --- | -- | 
-| Ubuntu 16.04 LTS<br/><br/> Red Hat Enterprise Linux w wersji 7.3 lub wersji 7.4<br/><br/> Opartych na systemie centOS 7.3 lub 7.4, opartych na systemie CentOS 7.4 HPC | NVIDIA CUDA 9.1, gałąź sterownika R390 |
+| Ubuntu 16.04 LTS<br/><br/> Red Hat Enterprise Linux w wersji 7.3 lub wersji 7.4<br/><br/> Opartych na systemie centOS 7.3 lub 7.4, opartych na systemie CentOS 7.4 HPC | NVIDIA CUDA 10.0, gałąź sterownika R410 |
 
 ### <a name="nvidia-grid-drivers"></a>Sterowniki NVIDIA GRID
 
-Microsoft dystrybuuje instalatory sterownik technologii NVIDIA GRID dla maszyn wirtualnych z serii NV, używane jako wirtualnych stacji roboczych lub aplikacje wirtualne. Zainstaluj tylko te sterowniki siatki na maszynach wirtualnych serii NV Azure, tylko na dystrybucje wymienione w poniższej tabeli. Te sterowniki obejmują licencji na program siatki wirtualnej oprogramowania procesora GPU na platformie Azure.
+Microsoft dystrybuuje instalatory sterownik technologii NVIDIA GRID NV i maszyny wirtualne z serii NVv2 używany jako wirtualnych stacji roboczych lub aplikacje wirtualne. Zainstaluj tylko te sterowniki siatki na maszynach wirtualnych serii NV Azure, tylko na dystrybucje wymienione w poniższej tabeli. Te sterowniki obejmują licencji na program siatki wirtualnej oprogramowania procesora GPU na platformie Azure.
 
 | Dystrybucja | Sterownik |
 | --- | -- |

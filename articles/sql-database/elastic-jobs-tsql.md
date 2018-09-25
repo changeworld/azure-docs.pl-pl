@@ -2,18 +2,22 @@
 title: Tworzenie i zarządzanie nimi w usłudze Azure SQL zadania Elastic Database przy użyciu języka Transact-SQL (T-SQL) | Dokumentacja firmy Microsoft
 description: Uruchom skrypty w wielu bazach danych przy użyciu agenta elastycznych zadań bazy danych przy użyciu języka Transact-SQL (T-SQL).
 services: sql-database
-author: jaredmoo
-manager: craigg
 ms.service: sql-database
-ms.topic: article
-ms.date: 06/14/2018
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
 ms.author: jaredmoo
-ms.openlocfilehash: d524f7756c8dd394d8651839a1f6426c512d6a73
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+author: jaredmoo
+ms.reviewer: ''
+manager: craigg
+ms.date: 06/14/2018
+ms.openlocfilehash: 49fe1fc79ac94b798cb257b961c36a6258fb00d9
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023532"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056791"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs"></a>Użyj instrukcji języka Transact-SQL (T-SQL), aby tworzyć i zarządzać nimi zadania Elastic Database
 

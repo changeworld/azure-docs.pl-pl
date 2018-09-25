@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/07/2017
-ms.openlocfilehash: 34fe72087a3de133d65ea4a4737ab5dba45242f4
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 52b02460d444464211fc74c8982379424abebb5c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645037"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965521"
 ---
 # <a name="how-to-use-run-history-and-model-metrics-in-azure-machine-learning-workbench"></a>Sposób użycia historię uruchomień i metryk modelu w aplikacji Azure Machine Learning Workbench
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Usługa Azure Machine Learning Workbench obsługuje eksperymentowania do nauki o danych za pośrednictwem jego **historii uruchamiania** i **metryk modelu** funkcji.
 **Historia uruchamiania** udostępnia środki do śledzenia danych wyjściowych z eksperymentów uczenia maszynowego, a następnie umożliwia filtrowanie oraz porównanie ich wyników.
@@ -27,8 +32,8 @@ W tym artykule opisano sposób efektywny używać tych funkcji, aby zwiększyć 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do wykonania kroków w tym przewodniku, musisz:
-* [Tworzenie i instalowanie usługi Azure Machine Learning](../service/quickstart-installation.md)
-- [Tworzenie projektu](../service/quickstart-installation.md)
+* [Tworzenie i instalowanie usługi Azure Machine Learning](quickstart-installation.md)
+- [Tworzenie projektu](quickstart-installation.md)
 
 
 ## <a name="azure-ml-logging-api-overview"></a>Omówienie interfejsu API rejestrowania uczenie Maszynowe systemu Azure
@@ -51,7 +56,7 @@ logger.log("all values", [5, 6, 7])
 Można łatwo użyć rejestratora w projektach aplikacji Azure ML Workbench, a w tym artykule dowiesz się, jak to zrobić.
 
 ## <a name="create-a-project-in-azure-ml-workbench"></a>Utwórz projekt w aplikacji Azure ML Workbench
-Jeśli nie masz jeszcze projektu, możesz utworzyć je z [tworzenie i instalowanie Szybki Start](../service/quickstart-installation.md) z **pulpit nawigacyjny projektu**, możesz otworzyć **iris_sklearn.py** skryptu () jak pokazano).
+Jeśli nie masz jeszcze projektu, możesz utworzyć je z [tworzenie i instalowanie Szybki Start](quickstart-installation.md) z **pulpit nawigacyjny projektu**, możesz otworzyć **iris_sklearn.py** skryptu () jak pokazano).
 
 ![Uzyskiwanie dostępu do skryptu z karty pliki](media/how-to-use-run-history-model-metrics/how-to-use-run-history-model-metrics-01b.png)
 

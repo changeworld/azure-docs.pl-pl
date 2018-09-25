@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: yeki
-ms.openlocfilehash: 6b20ef98e008d9c5d984ba29eed894b1c5ec8c09
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 935b3ff0fe03984b02dc2e1137f48e53b06ce0c2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39263252"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995112"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-upgrades"></a>Automatyczne uaktualnianie systemu operacyjnego zestawu skalowania maszyn wirtualnych platformy Azure
 
@@ -199,7 +199,7 @@ az policy assignment create --display-name "Enforce automatic OS upgrades with a
 ```
 
 ## <a name="configure-auto-updates"></a>Skonfiguruj aktualizacje automatyczne
-Aby skonfigurować automatyczne uaktualnienia, upewnij się, że *automatyczne uaktualnianie systemu operacyjnego* właściwość jest ustawiona na *true* w zestawu skalowania definicję modelu. Tej właściwości można skonfigurować przy użyciu programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure w wersji 2.0.
+Aby skonfigurować automatyczne uaktualnienia, upewnij się, że *automatyczne uaktualnianie systemu operacyjnego* właściwość jest ustawiona na *true* w zestawu skalowania definicję modelu. Tej właściwości można skonfigurować przy użyciu programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure.
 
 ### <a name="powershell"></a>PowerShell
 W poniższym przykładzie użyto programu Azure PowerShell (4.4.1 lub nowszej) Aby skonfigurować automatyczne uaktualnienia dla zestawu skalowania o nazwie *myVMSS* w grupie zasobów o nazwie *myResourceGroup*:
@@ -223,7 +223,7 @@ az vmss update --name $vmssname --resource-group $rgname --set upgradePolicy.Aut
 
 
 ## <a name="check-the-status-of-an-automatic-os-upgrade"></a>Sprawdź stan automatycznego uaktualniania systemu operacyjnego
-Można sprawdzić status najnowszych uaktualnienia systemu operacyjnego, wykonywane na zestawie skalowania jest ustawiana za pomocą programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub interfejsów API REST.
+Można sprawdzić status najnowszych uaktualnienia systemu operacyjnego, wykonywane na zestawie skalowania jest ustawiana za pomocą programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsów API REST.
 
 ### <a name="powershell"></a>PowerShell
 Poniższy przykład używa programu Azure PowerShell (4.4.1 lub nowszej) można sprawdzić stanu dla zestawu skalowania o nazwie *myVMSS* w grupie zasobów o nazwie *myResourceGroup*:
@@ -232,7 +232,8 @@ Poniższy przykład używa programu Azure PowerShell (4.4.1 lub nowszej) można 
 Get-AzureRmVmssRollingUpgrade -ResourceGroupName myResourceGroup -VMScaleSetName myVMSS
 ```
 
-### <a name="cli-20"></a>Interfejs wiersza polecenia 2.0
+### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
+
 W poniższym przykładzie użyto interfejsu wiersza polecenia platformy Azure (2.0.20 lub nowszej) można sprawdzić stanu dla zestawu skalowania o nazwie *myVMSS* w grupie zasobów o nazwie *myResourceGroup*:
 
 ```azurecli

@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 3/26/2018
-ms.openlocfilehash: 7879cf1891e071da1a0ad3ddfc30f90fc7be8ca5
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: d4cfb7067510ec06df3319035dee5e2195cb2f9d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35649988"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997543"
 ---
 # <a name="customize-the-container-image-used-for-azure-ml-models"></a>Dostosowanie obrazu kontenera, używany dla modeli uczenia Maszynowego Azure
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 W tym artykule opisano sposób dostosowywania obrazu kontenera na potrzeby modeli usługi Azure Machine Learning.  Usługa Azure ML Workbench używa kontenerów do wdrażania modeli uczenia maszynowego. Modele są wdrażane wraz z ich zależnościami i uczenie Maszynowe Azure tworzy obraz z modelu, zależności i skojarzone pliki.
 

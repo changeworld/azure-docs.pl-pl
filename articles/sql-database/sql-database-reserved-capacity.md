@@ -8,14 +8,14 @@ manager: craigg
 ms.service: sql-database
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 09/20/2018
 ms.author: carlrab
-ms.openlocfilehash: e14f65c16706f8285b6ce390e75f95ea1a8bede6
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 59ec4b109c01a027ce440d3f7749d69af3351571
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295513"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037715"
 ---
 # <a name="prepay-for-sql-database-compute-resources-with-azure-sql-database-reserved-capacity"></a>Zapłać z góry za zasoby obliczeniowe bazy danych SQL Database o pojemności usługi Azure SQL Database, zarezerwowane
 
@@ -28,7 +28,7 @@ Możesz kupić pojemność usługi Azure SQL Database, zarezerwowane [witryny Az
 - W przypadku subskrypcji Enterprise, zakup rezerwacji platformy Azure musi być włączona w [portalu EA portal](https://ea.azure.com).
 -  Dla programu Cloud Solution Provider (CSP) tylko agentów administratora lub agentom sprzedaży można kupić pojemność bazy danych SQL zastrzeżone.
 
-Szczegółowe informacje na jak rozliczane są klientów korporacyjnych i klientów płatności za zakupy rezerwacji został omówiony w [— często zadawane pytania](#frequently-asked-questions).
+Zobacz szczegółowe informacje na jak rozliczane są klientów korporacyjnych i klientów płatności za zakupy rezerwacji [zrozumieć użycie platformy Azure rezerwacji dla Twojej rejestracji Enterprise](../billing/billing-understand-reserved-instance-usage-ea.md) i [Understand Azure rezerwacji Użycie subskrypcji z płatnością za rzeczywiste użycie](../billing/billing-understand-reserved-instance-usage.md).
 
 ## <a name="determine-the-right-sql-size-before-purchase"></a>Rozmiar jest określany na prawo SQL przed dokonaniem zakupu
 

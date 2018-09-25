@@ -1,6 +1,6 @@
 ---
-title: Omówienie usługi Azure kontenery monitorowania | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera omówienie różnych metod dostępnej na platformie Azure, aby monitorować kontenerów na platformie Azure, aby szybko poznać klastrów kondycji i dostępności.
+title: Omówienie monitorowania kontenerów platformy Azure | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera omówienie różnych metod dostępnych na platformie Azure na potrzeby monitorowania kontenerów na platformie Azure do szybkiego zrozumienia klastrów kondycji i dostępności.
 services: log-analytics
 documentationcenter: ''
 author: MGoedtel
@@ -12,22 +12,22 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 04/26/2018
+ms.date: 09/24/2018
 ms.author: magoedte
-ms.openlocfilehash: 0d511c1f6dfd482e5754741da15b2852ee77c11e
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: db85f85011154dcc7adfa9d569e9015a9c5c33ca
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33207531"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055065"
 ---
 # <a name="overview-of-monitoring-containers-in-azure"></a>Omówienie monitorowania kontenerów na platformie Azure
-Przy użyciu platformy Azure można efektywnie monitorować i zarządzać nimi obciążeń wdrożonych na Azure kontenery systemem Kubernetes lub Docker. Należy zrozumieć, jak działają kontenery z wieloma aplikacjami mikrousługi w celu dostarczenia niezawodnej usługi na dużą skalę i monitorowanie planu obsługi. Ten artykuł zawiera krótkie omówienie zarządzania i możliwości monitorowania na platformie Azure, aby pomóc zrozumieć każdy i które są odpowiednie zgodnie z wymaganiami.
+Dzięki systemowi Azure można skutecznie monitorować i zarządzać obciążeń wdrożonych na kontenery usługi Azure Kubernetes lub Docker. Należy zrozumieć, jak działają kontenerów przy użyciu wielu aplikacji mikrousług w celu dostarczenia usługi reliable service w dużej skali i usługi monitorowania plan pomocy technicznej. Ten artykuł zawiera krótkie omówienie zarządzania i monitorowania pomagają zrozumieć ich możliwości platformy Azure i które są odpowiednie na podstawie własnych wymagań.
 
-Przy użyciu [kondycji kontenera Azure Monitor](monitoring-container-health.md), możesz wyświetlić wydajność i kondycję infrastruktury kontenera systemu Linux w skrócie i szybko badania problemów. Dane telemetryczne są przechowywane w obszarze roboczym analizy dzienników i zintegrowane w portalu Azure, w którym można sprawdzić, filtrowanie, a segment zagregowanych danych za pomocą pulpitów nawigacyjnych, aby śledzić ogólne informacje dotyczące ładowania, wydajności i kondycji.  
+Za pomocą [usługi Azure Monitor dla kontenerów](monitoring-container-insights-overview.md), możesz wyświetlić wydajności i kondycji infrastruktury kontenera systemu Linux w skrócie i szybko zbadać problemy. Dane telemetryczne są przechowywane w obszarze roboczym usługi Log Analytics i zintegrowane w witrynie Azure portal, gdzie możesz eksplorować, filtrować i segmentu zagregowane dane za pomocą pulpitów nawigacyjnych, aby śledzić obciążenie, wydajności i kondycji.  
 
-Dla kontenerów uruchomiona poza Azure Kubernetes usługi hostowanej, analizy dzienników [systemu Windows i kontener Docker rozwiązania](../log-analytics/log-analytics-containers.md) ułatwia wyświetlanie i zarządzanie nimi hosty kontenera systemu Windows i Docker. Z obszaru roboczego analizy dzienników można wyświetlić szczegóły spisu, wydajności i zdarzeń z węzłów i kontenery w środowisku. Można wyświetlić szczegółowe informacje o inspekcji przedstawiający poleceń używanych przez kontenery, i rozwiązać kontenery wyświetlanie i wyszukując scentralizowane dzienniki bez konieczności zdalny dostęp do hostów Docker lub systemu Windows.
+Dla kontenerów działających poza hostowana usługa Kubernetes usługi Azure, usługi Log Analytics [rozwiązanie Windows i kontener platformy Docker](../log-analytics/log-analytics-containers.md) ułatwia wyświetlanie oraz zarządzanie nimi hostach kontenerów Windows i platformy Docker. Z obszaru roboczego usługi Log Analytics można wyświetlić szczegóły spisu, wydajności i zdarzeń z węzłów i kontenery w środowisku. Możesz wyświetlić szczegółowe informacje o inspekcji polecenia używane z kontenerami pokazywanie i kontenerów można rozwiązać, wyświetlania i przeszukiwania scentralizowanych dzienników bez konieczności uzyskania zdalnego dostępu do hostów platformy Docker lub Windows.
 
-Uzyskanie całościowe lub monitorowania aplikacji end-to-end, wszelkie zależności czy jego platformy Azure lub lokalnie zasobów, powinny być monitorowane Azure Monitor lub analizy dzienników.  Warstwa aplikacji powinny być włączone, aby można było dodać dodatkową warstwę świadomości kondycji, zarówno na poziomie platformy i aplikacji przy użyciu usługi Application Insights. Na poziomie platformy jest Application Insights SDK dla [Kubernetes]( https://github.com/Microsoft/ApplicationInsights-Kubernetes), [Docker](https://hub.docker.com/r/microsoft/applicationinsights/), i [sieci szkieletowej usług](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights). Dla aplikacji mikrousługi jest obsługa [Java](../application-insights/app-insights-java-get-started.md), [Node.js](../application-insights/app-insights-nodejs-quick-start.md), [.Net](../application-insights/app-insights-asp-net.md), [.Net Core](../application-insights/app-insights-asp-net-core.md), a także wiele innych [języków/platform](../application-insights/app-insights-platforms.md). 
+Aby osiągnąć holistycznego lub monitorowania aplikacji end-to-end, wszelkich zależności czy jest on platformy Azure lub lokalnymi zasobami, należy monitorować za pomocą usługi Azure Monitor lub usługi Log Analytics.  Warstwa aplikacji powinny być włączone, aby można było dodać dodatkową warstwę świadomości kondycji, zarówno na poziomie platformy i aplikacji, za pomocą usługi Application Insights. Na poziomie platformy są zestawy SDK usługi Application Insights dla [Kubernetes]( https://github.com/Microsoft/ApplicationInsights-Kubernetes), [Docker](https://hub.docker.com/r/microsoft/applicationinsights/), i [usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-diagnostics-event-analysis-appinsights). Dla aplikacji mikrousług jest obsługa [Java](../application-insights/app-insights-java-get-started.md), [Node.js](../application-insights/app-insights-nodejs-quick-start.md), [.Net](../application-insights/app-insights-asp-net.md), [.Net Core](../application-insights/app-insights-asp-net-core.md), a także wiele innych [języków/platformy](../application-insights/app-insights-platforms.md). 
 
-W przeciwnym razie problemów Przejdź niezidentyfikowanego który może mieć wpływ na dostępność aplikacji i nie zostaną spełnione cele poziomu usługi.  
+W przeciwnym razie problemy zaczną niezidentyfikowanych, może mieć wpływ na dostępność aplikacji i nie zostaną spełnione cele poziomu usługi.  

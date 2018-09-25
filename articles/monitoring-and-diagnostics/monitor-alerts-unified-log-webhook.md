@@ -8,30 +8,30 @@ ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: f20e102ee1d100ea02da53fe460b56f8f8390418
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: f5f8ed885791a648f30790434be56d966bbf2e47
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39426697"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989298"
 ---
 # <a name="webhook-actions-for-log-alert-rules"></a>Akcje elementu Webhook dla reguł alertów dzienników
-Gdy [alert jest tworzony na platformie Azure ](monitor-alerts-unified-usage.md), masz możliwość [konfigurowanie przy użyciu grup akcji](monitoring-action-groups.md) przeprowadzić co najmniej jednej akcji.  W tym artykule opisano akcji różnych elementów webhook, które są dostępne i szczegółowe informacje na temat konfigurowania niestandardowego elementu webhook opartych na formacie JSON.
+Gdy [alertu dziennika jest tworzony na platformie Azure](alert-log.md), masz możliwość [konfigurowanie przy użyciu grup akcji](monitoring-action-groups.md) przeprowadzić co najmniej jednej akcji.  W tym artykule opisano akcji różnych elementów webhook, które są dostępne i szczegółowe informacje na temat konfigurowania niestandardowego elementu webhook opartych na formacie JSON.
 
 
 ## <a name="webhook-actions"></a>Akcje elementu Webhook
 
-Akcje elementu Webhook umożliwiają wywołanie procesu zewnętrznego za pośrednictwem pojedynczego żądania HTTP POST.  Usługi wywołanego należy Obsługa elementów webhook i określić, jak używa dowolnej ładunku odbierze.   Przykłady korzystania z elementu webhook w odpowiedzi na alert jest wysyłany komunikat [Slack](http://slack.com) lub tworzenia zdarzenia w [PagerDuty](http://pagerduty.com/).  
+Akcje elementu Webhook umożliwiają wywołanie procesu zewnętrznego za pośrednictwem pojedynczego żądania HTTP POST.  Usługi wywołanego należy Obsługa elementów webhook i określić, jak używa dowolnej ładunku odbierze.    
 
 Akcje elementu Webhook wymagają właściwości w poniższej tabeli:
 
 | Właściwość | Opis |
 |:--- |:--- |
 | Adres URL elementu webhook |Adres URL elementu webhook. |
-| Niestandardowy ładunek JSON |Niestandardowy ładunek do wysyłania za pomocą elementu webhook, po wybraniu tej opcji podczas tworzenia alertu. Szczegóły dostępne pod adresem [Zarządzanie alertami przy użyciu usługi Azure Alerts ](monitor-alerts-unified-usage.md) |
+| Niestandardowy ładunek JSON |Niestandardowy ładunek do wysyłania za pomocą elementu webhook, po wybraniu tej opcji podczas tworzenia alertu. Szczegóły dostępne pod adresem [Zarządzaj alertów dzienników](alert-log.md) |
 
 > [!NOTE]
-> Testowanie elementu Webhook przycisk obok *Uwzględnij niestandardowy ładunek JSON dla elementu webhook* opcja dla dziennika alertów, wywoła fikcyjnego wywołanie test adresu URL elementu webhook. Nie zawiera rzeczywistych danych i przedstawiciel schematu JSON, używany w przypadku alertów dzienników. 
+> Widok elementu Webhook przycisk obok *Uwzględnij niestandardowy ładunek JSON dla elementu webhook* opcja dla dziennika alertów, spowoduje wyświetlenie przykładowy ładunek elementu webhook do dostosowania podane. Nie zawiera rzeczywistych danych i przedstawiciel schematu JSON, używany w przypadku alertów dzienników. 
 
 Elementy Webhook obejmują adres URL i ładunek zapisany w formacie JSON, które znajdują się dane wysyłane do usługi zewnętrznej.  Domyślny ładunek zawiera wartości w poniższej tabeli: możesz zastąpić ten ładunek niestandardowe samodzielnie.  W takim przypadku służy zmiennych w tabeli dla każdego z parametrów do uwzględnienia ich wartości w niestandardowy ładunek.
 
@@ -54,7 +54,7 @@ Elementy Webhook obejmują adres URL i ładunek zapisany w formacie JSON, które
 | Identyfikator subskrypcji |#subscriptionid |Identyfikator subskrypcji platformy Azure używane z usługą Application Insights. 
 
 > [!NOTE]
-> LinkToSearchResults przekazuje parametry, takie jak SearchQuery, StartTime interwał wyszukiwania i wyszukiwanie koniec interwału czasu w adresie URL do witryny Azure portal pod kątem wyświetlania w sekcji analizy. Witryna Azure portal ma ograniczenie rozmiaru identyfikatora URI w przybliżeniu 2000 znaków i zostanie otwarty, jeśli wartości parametrów przekracza limit wspomniane. Użytkownicy mogą ręcznie wprowadź szczegóły, aby wyświetlić wyniki w portalu analiza, lub użyj [interfejsu API REST Application Insights Analytics](https://dev.applicationinsights.io/documentation/Using-the-API) lub [interfejsu API REST usługi Log Analytics](https://dev.loganalytics.io/reference) programowo pobrać wyniki 
+> LinkToSearchResults przekazuje parametry, takie jak SearchQuery, StartTime interwał wyszukiwania i wyszukiwanie koniec interwału czasu w adresie URL do witryny Azure portal pod kątem wyświetlania w sekcji analizy. Witryna Azure portal udostępnia identyfikatora URI size limit w przybliżeniu 2000 znaków i zostanie *nie* Otwórz link podany w alertach, wartości parametrów przekroczy limit wymienionych. Użytkownicy mogą ręcznie wprowadź szczegóły, aby wyświetlić wyniki w portalu analiza, lub użyj [interfejsu API REST Application Insights Analytics](https://dev.applicationinsights.io/documentation/Using-the-API) lub [interfejsu API REST usługi Log Analytics](https://dev.loganalytics.io/reference) programowo pobrać wyniki 
 
 Na przykład można określić następujące niestandardowy ładunek, który zawiera jeden parametr o nazwie *tekstu*.  Usługa, która wywołuje ten element webhook będzie oczekiwano tego parametru.
 
@@ -198,6 +198,7 @@ Poniżej przedstawiono przykładowy ładunek dla akcji niestandardowej elementu 
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o [alerty dzienników w alertów platformy Azure ](monitor-alerts-unified-log.md)
+- Zrozumienie [managaing alertów dzienników na platformie Azure](alert-log.md)
 - Tworzenie i zarządzanie nimi [grup akcji na platformie Azure](monitoring-action-groups.md)
 - Dowiedz się więcej o [usługi Application Insights](../application-insights/app-insights-analytics.md)
 - Dowiedz się więcej o [usługi Log Analytics](../log-analytics/log-analytics-overview.md). 

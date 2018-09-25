@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: d717737bc2b15e57ae32faffaece96f78a7cc013
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: d75a91ea0925ef0860b8e6dee310156bef21a1ba
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45577824"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056825"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 W tym artykule opisano różne typy danych wyjściowych jest dostępny dla zadania usługi Azure Stream Analytics. Dane wyjściowe pozwalają na przechowywanie i zapisać wyniki zadania usługi Stream Analytics. Można wykonać, korzystając z danych wyjściowych, dalszych analiz biznesowych i danych magazynu danych. 
@@ -63,7 +63,7 @@ Aby odnowić autoryzację, **zatrzymać** zadania > Przejdź do usługi Data Lak
 ![Autoryzuj Data Lake Store](./media/stream-analytics-define-outputs/08-stream-analytics-define-outputs.png)  
 
 ## <a name="sql-database"></a>SQL Database
-[Usługa Azure SQL Database](https://azure.microsoft.com/services/sql-database/) mogą być używane jako dane wyjściowe dla danych relacyjnych z natury lub aplikacje, które są zależne od zawartości jest hostowana w relacyjnej bazie danych. Zadania usługi Stream Analytics zapisu do istniejącej tabeli w bazie danych SQL Azure.  Schemat tabeli musi dokładnie odpowiadać, pola i ich typy, które są dane wyjściowe zadania. [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) można również określić jako dane wyjściowe za pośrednictwem także opcji output bazy danych SQL. Poniższa tabela zawiera listę nazw właściwości i ich opisy tworzenia wyjście bazy danych SQL.
+[Usługa Azure SQL Database](https://azure.microsoft.com/services/sql-database/) mogą być używane jako dane wyjściowe dla danych relacyjnych z natury lub aplikacje, które są zależne od zawartości jest hostowana w relacyjnej bazie danych. Zadania usługi Stream Analytics zapisu do istniejącej tabeli w bazie danych SQL Azure.  Schemat tabeli musi dokładnie odpowiadać, pola i ich typy, które są dane wyjściowe zadania. [Azure SQL Data Warehouse](https://azure.microsoft.com/documentation/services/sql-data-warehouse/) można również określić jako dane wyjściowe za pośrednictwem także opcji output bazy danych SQL. Aby uzyskać informacje dotyczące sposobów na ulepszenie przepływność zapisu, zapoznaj się [usługi Stream Analytics z bazą danych SQL Azure jako dane wyjściowe](stream-analytics-sql-output-perf.md) artykułu. Poniższa tabela zawiera listę nazw właściwości i ich opisy tworzenia wyjście bazy danych SQL.
 
 | Nazwa właściwości | Opis |
 | --- | --- |
@@ -297,7 +297,7 @@ Poniższa tabela zawiera podsumowanie obsługi partycji i liczby modułów zapis
 | Typ wyjścia | Partycjonowanie pomocy technicznej | Klucz partycji  | Liczba modułów zapisywania danych wyjściowych | 
 | --- | --- | --- | --- |
 | Azure Data Lake Store | Yes | Użyj {date} i {time} tokenów w wzorzec prefiksu ścieżki. Wybierz format daty, takich jak RRRR/MM/DD, DD/MM/RRRR, MM-DD-RRRR. HH jest używany dla formatu godziny. | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). | 
-| Azure SQL Database | Nie | Brak | Nie dotyczy. | 
+| Azure SQL Database | Yes | Oparte na klauzuli PARTITION BY w zapytaniu | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). | 
 | Azure Blob Storage | Yes | Użyj {date} i {time} tokeny od pól zdarzeń we wzorcu ścieżki. Wybierz format daty, takich jak RRRR/MM/DD, DD/MM/RRRR, MM-DD-RRRR. HH jest używany dla formatu godziny. Jako część [Podgląd](https://aka.ms/ASAPreview), można podzielić na partycje obiektu blob danych wyjściowych przez atrybut pojedyncze zdarzenie niestandardowe {fieldname} lub {daty/godziny:\<specyfikator >}. | Następuje partycjonowania danych wejściowych dla [zapytań pełni równoległego](stream-analytics-scale-jobs.md). | 
 | Centrum zdarzeń Azure | Yes | Yes | Różni się w zależności od wyrównania partycji.</br> Gdy dane wyjściowe, które Centrum zdarzeń klucza partycji jest równie powiązana z nadrzędnego (poprzednia wersja) krok zapytania, liczba składników zapisywania jest taka sama liczba danych wyjściowych partycji Centrum zdarzeń. Każdy moduł zapisujący korzysta z Centrum EventHub w [klasy EventHubSender](/dotnet/api/microsoft.servicebus.messaging.eventhubsender?view=azure-dotnet) do wysyłania zdarzeń do określonej partycji. </br> Gdy danych wyjściowych Centrum zdarzeń, klucz partycji nie jest wyrównana z nadrzędnego (poprzednia wersja) krok zapytania, liczba składników zapisywania jest taka sama jak liczba partycji w tym w poprzednim kroku. Każdy moduł zapisujący używa EventHubClient [klasy SendBatchAsync](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.eventhubclient.sendasync?view=azure-dotnet) do wysyłania zdarzeń do wszystkich partycji danych wyjściowych. |
 | Power BI | Nie | Brak | Nie dotyczy. | 

@@ -14,14 +14,14 @@ ms.component: studio
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: get-started-article
+ms.topic: conceptual
 ms.date: 06/02/2017
-ms.openlocfilehash: 31676ea43acc495bf0cb6a249901e5b64ef217b7
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
-ms.translationtype: HT
+ms.openlocfilehash: 22d060ca38663f21bef977f5d506f215fd947a50
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782934"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998325"
 ---
 # <a name="azure-machine-learning-frequently-asked-questions-billing-capabilities-limitations-and-support"></a>Azure Machine Learning — często zadawane pytania: rozliczenia, możliwości, ograniczenia i pomoc techniczna
 Przedstawione tutaj często zadawane pytania i odpowiedzi dotyczą usługi Azure Machine Learning, która jest usługą w chmurze przeznaczoną do tworzenia modeli predykcyjnych i rozwiązań operacyjnych za pośrednictwem usług sieci Web. Wśród często zadawanych pytań znajdują się pytania dotyczące korzystania z samej usługi, w tym między innymi na temat modelu rozliczeń, możliwości, ograniczeń i pomocy technicznej.

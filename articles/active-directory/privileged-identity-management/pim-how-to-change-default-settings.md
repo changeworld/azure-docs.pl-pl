@@ -10,15 +10,15 @@ ms.service: active-directory
 ms.topic: conceptual
 ms.workload: identity
 ms.component: pim
-ms.date: 08/27/2018
+ms.date: 09/21/2018
 ms.author: rolyon
 ms.custom: pim
-ms.openlocfilehash: 2d7226f18eb922eaba3c8184656560c33202ef56
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 77a57afda3859de4a246c15d3b5c0b4ba8e2a8c8
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665438"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039005"
 ---
 # <a name="configure-azure-ad-directory-role-settings-in-pim"></a>Konfigurowanie ustawień roli w katalogu usługi Azure AD w usłudze PIM
 
@@ -63,24 +63,23 @@ Użyj **uwierzytelnianie wieloskładnikowe** przełącznik, aby określić, czy 
 * Użytkownicy, którzy mają konta Microsoft dla swoich adresów e-mail (zazwyczaj @outlook.com, ale nie zawsze) nie można zarejestrować usługi Azure MFA. Jeśli chcesz przypisać role do użytkowników z kontami Microsoft, możesz zwiększyć ich administratorów trwałych lub wyłączanie usługi MFA dla tej roli.
 * Nie można wyłączyć uwierzytelnianie wieloskładnikowe dla ról o wysokim poziomie uprawnień dla usługi Azure AD i Office 365. Jest to funkcja bezpieczeństwa, ponieważ te role powinny być dokładnie chronione:  
   
-  * Administrator aplikacji
-  * Administrator serwera Proxy aplikacji
-  * Administrator rozliczeń  
-  * Administrator do spraw zgodności  
+  * Administrator rozliczeń
+  * Administrator aplikacji w chmurze
+  * Administrator zgodności
+  * Administrator dostępu warunkowego
   * Administrator usługi CRM
   * Osoba zatwierdzająca dostęp do skrytki klienta
-  * Składnik zapisywania katalogu  
-  * Administrator programu Exchange  
+  * Zapisywanie katalogów
+  * Administrator programu Exchange
   * Administrator globalny
+  * Administrator usługi Information Protection
   * Administrator usługi Intune
-  * Administrator skrzynki pocztowej  
-  * Pomoc techniczna dla partnerów (warstwa 1)  
-  * Pomoc techniczna dla partnerów (warstwa 2)  
-  * Administrator roli uprzywilejowanej
-  * Administrator zabezpieczeń  
-  * Administrator programu SharePoint  
-  * Administrator programu Skype dla firm  
-  * Administrator kont użytkowników  
+  * Administrator usługi Power BI
+  * Administrator ról uprzywilejowanych
+  * Administrator zabezpieczeń
+  * Administrator usługi programu SharePoint
+  * Administrator programu Skype dla firm
+  * Administrator użytkowników
 
 Aby uzyskać więcej informacji, zobacz [uwierzytelnianie wieloskładnikowe (MFA) i PIM](pim-how-to-require-mfa.md).
 

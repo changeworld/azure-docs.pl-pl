@@ -1,21 +1,23 @@
 ---
 title: Aplikacje z wieloma dzierżawami przy użyciu zabezpieczeń na poziomie wiersza i narzędzi elastycznej bazy danych | Dokumentacja firmy Microsoft
 description: Użyj narzędzi elastycznej bazy danych z zabezpieczeniami na poziomie wiersza do tworzenia aplikacji za pomocą wysoce skalowalną warstwą danych.
-metakeywords: azure sql database elastic tools multi tenant row level security rls
 services: sql-database
-manager: craigg
-author: tmullaney
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: tmullaney
 ms.author: thmullan
-ms.openlocfilehash: 96093ea65452693a999363f6bbad26a4a1904f60
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 94430d3b72bb5b8e8bde0e9e2e9fb2eb2b0c3632
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714957"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056288"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Wielodostępne aplikacje za pomocą narzędzi elastycznych baz danych i zabezpieczenia na poziomie wiersza
 

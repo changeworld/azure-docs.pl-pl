@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 09/20/2018
 ms.author: barbkess
 ms.reviewer: asteen
-ms.openlocfilehash: 2c2dd2208cf910456fa8f94ca739b7ef8875d475
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: df32ed7a6d3bc0c9e349f576f5f48832bf9906dd
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357119"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041926"
 ---
 # <a name="wrong-set-of-users-are-being-provisioned-to-an-azure-ad-gallery-application"></a>Proces aprowizacji obejmuje nieprawidłowy zbiór użytkowników do aplikacji galerii usługi Azure AD
 
@@ -109,7 +109,7 @@ Jeśli Inicjowanie obsługi administracyjnej jest skonfigurowany i uruchomiony d
 >
 >
 
-Jeśli Inicjowanie obsługi administracyjnej grupy jest włączona, należy przejrzeć mapowania atrybutów, aby upewnić się, że odpowiednie pole jest on używany do dopasowywania "ID". Może to być nazwa wyświetlana lub wiadomości e-mail alias, jak grupy i jej elementów członkowskich nie można aprowizować Jeśli dopasowania właściwości jest pusty lub nie wypełnione dla grupy w usłudze Azure AD.
+Jeśli Inicjowanie obsługi administracyjnej grupy jest włączona, należy przejrzeć mapowania atrybutów, aby upewnić się, że odpowiednie pole jest on używany do dopasowywania "ID". Ten identyfikator dopasowania mogą być wyświetlaną nazwę lub alias e-mail. Grupy i jej elementów członkowskich nie są udostępnione, jeśli właściwość dopasowania jest pusty lub nie jest wypełnione dla grupy w usłudze Azure AD.
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Automatyzacja aprowizacji i cofania aprowizacji użytkowników dla aplikacji SaaS przy użyciu usługi Azure Active Directory](user-provisioning.md)

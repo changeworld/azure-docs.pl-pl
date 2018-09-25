@@ -9,43 +9,40 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 5d9391cc486dc868a1a291ccc7095291cddd3e4c
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 73c31c7175bd4dfcb182fb76784937c176ac7702
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858463"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977880"
 ---
 # <a name="call-bing-custom-search-endpoint-nodejs"></a>Wywołanie punktu końcowego usługi Bing Custom Search (Node.js)
 
-Ten przewodnik Szybki Start pokazano, jak żądanie wyniki wyszukiwania z wystąpienia wyszukiwania niestandardowego przy użyciu środowiska Node.js, aby wywołać punkt końcowy wyszukiwania niestandardowego Bing. 
+Ten przewodnik Szybki Start pokazano, jak żądanie wyniki wyszukiwania z wystąpienia wyszukiwania niestandardowego za pomocą środowiska Node.js, aby wywołać punkt końcowy wyszukiwania niestandardowego Bing. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warunki:
 
-- Wystąpienie wyszukiwania niestandardowego. Zobacz [Tworzenie pierwszego wystąpienia wyszukiwania niestandardowego Bing](quick-start.md).
-
+- Wystąpienie wyszukiwania niestandardowego gotowych do użycia. Zobacz [Tworzenie pierwszego wystąpienia wyszukiwania niestandardowego Bing](quick-start.md).
 - [Node.js](https://www.nodejs.org/) zainstalowane.
-
--  [Konto interfejsu API usług cognitive](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsy API wyszukiwania Bing**. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) jest wystarczająca na potrzeby tego przewodnika Szybki Start. Wymagany jest klucz dostępu podany przy wywołaniu metody Aktywuj bezpłatną wersję próbną lub klucz płatnej subskrypcji może używać z pulpitu nawigacyjnego platformy Azure.
+- Klucz subskrypcji. Klucz subskrypcji możesz uzyskać po aktywowaniu usługi [bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search), lub za pomocą klucza płatnej subskrypcji w pulpicie nawigacyjnym platformy Azure (zobacz [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
 
 ## <a name="run-the-code"></a>Uruchamianie kodu
 
-Aby wywołać punkt końcowy wyszukiwania niestandardowego Bing, wykonaj następujące kroki:
+Aby uruchomić ten przykład, wykonaj następujące kroki:
 
-1. Utwórz folder dla kodu.
-
-2. W wierszu polecenia lub terminalu przejdź do folderu, który został utworzony.
-
+1. Utwórz folder dla kodu.  
+  
+2. W wierszu polecenia lub terminalu przejdź do folderu, który został utworzony.  
+  
 3. Zainstaluj **żądania** modułu węzła:
     <pre>
     npm install request
-    </pre>
+    </pre>  
     
-4. Utwórz plik BingCustomSearch.js i skopiuj następujący kod do niego.
-
-5. Zastąp **YOUR-SUBSCRIPTION-KEY** i **YOUR-CUSTOM-CONFIG-ID** za pomocą Identyfikatora klucza i konfiguracji (zobacz krok 1).
-
+4. Utwórz plik o nazwie BingCustomSearch.js w folderze, który został utworzony i skopiuj następujący kod do niego. Zastąp **YOUR-SUBSCRIPTION-KEY** i **YOUR-CUSTOM-CONFIG-ID** klucz subskrypcji i konfiguracji identyfikatora.  
+  
     ``` javascript
     var request = require("request");
     
@@ -74,11 +71,13 @@ Aby wywołać punkt końcowy wyszukiwania niestandardowego Bing, wykonaj następ
             console.log();
         }
     })
-    ```
-6. Uruchom kod za pomocą następującego polecenia.
+    ```  
+  
+6. Uruchom kod za pomocą następującego polecenia:  
+  
     ```    
     node BingCustomSearch.js
-   ``` 
+    ``` 
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Konfigurowanie środowiska obsługiwanego interfejsu użytkownika](./hosted-ui.md)

@@ -10,22 +10,22 @@ ms.service: active-directory
 ms.workload: identity
 ms.component: users-groups-roles
 ms.topic: article
-ms.date: 08/01/2018
+ms.date: 09/20/2018
 ms.author: curtand
 ms.reviewer: krbain
 ms.custom: it-pro
-ms.openlocfilehash: 9c0bb676cc59820d3ae83612893c8920d5d0aebe
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c3121f8b303d9f82ed949d598a942906d0d24f7e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39424375"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041027"
 ---
 # <a name="dynamic-membership-rules-for-groups-in-azure-active-directory"></a>Reguły członkostwa dynamicznego dla grup w usłudze Azure Active Directory
 
 W usłudze Azure Active Directory (Azure AD) można utworzyć złożone zasady oparte na atrybutach, aby włączyć dynamiczne zarządzanie członkostwem w grupach. Dynamiczne członkostwo w grupie zmniejsza narzuty administracyjne, dodawania i usuwania użytkowników. Ten artykuł szczegółowo opisuje właściwości i składnię tworzenia reguły członkostwa dynamicznego dla użytkowników lub urządzeń. Możesz skonfigurować reguły dynamicznego zarządzania członkostwem w grupach zabezpieczeń lub w grupach usługi Office 365.
 
-Po zmianie dowolnych atrybutów użytkownika lub urządzenia, system ocenia wszystkie reguły dynamicznego w grupach w katalogu, aby sprawdzić, czy zmiany będą wyzwalać żadnej grupy dodaje lub usuwa. Jeśli użytkownik lub urządzenie spełnia wymagania zasad grupy, dodawane jest członkiem tej grupy. Jeśli już nie spełniają zasady, są usuwane.
+Po zmianie dowolnych atrybutów użytkownika lub urządzenia, system ocenia wszystkie reguły dynamicznego w grupach w katalogu, aby sprawdzić, czy zmiany będą wyzwalać żadnej grupy dodaje lub usuwa. Jeśli użytkownik lub urządzenie spełnia wymagania zasad grupy, dodawane jest członkiem tej grupy. Jeśli już nie spełniają zasady, są usuwane. Nie można ręcznie dodać lub usunąć element członkowski grupy dynamicznej.
 
 * Można utworzyć grupę dynamiczną w przypadku urządzeń lub użytkowników, ale nie można utworzyć regułę, która zawiera użytkowników i urządzeń.
 * Nie można utworzyć grupę urządzeń, na podstawie atrybutów właścicieli urządzeń. Reguły członkostwa urządzenie może odwoływać się tylko atrybuty urządzenia.

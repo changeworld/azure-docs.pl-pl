@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/18/2017
-ms.openlocfilehash: 58ab1d77218595344c899dff654ba5b7a5bfb0d8
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ROBOTS: NOINDEX
+ms.openlocfilehash: 16c102641321117f4776d761aba6c2148d15f1f5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296640"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995650"
 ---
 # <a name="use-a-git-repo-with-a-machine-learning-workbench-project"></a>Użyj repozytorium Git z projektem aplikacji Machine Learning Workbench
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 Dowiedz się, jak Azure Machine Learning Workbench używa Git, aby zapewnić kontrolę wersji i upewnij się, odtwarzalnych w eksperymencie do nauki o danych. Dowiedz się, jak skojarzyć projekt z repozytorium Git (repozytorium) w chmurze.
 
 Usługa Machine Learning Workbench jest przeznaczona dla integrację z usługą Git. Podczas tworzenia nowego projektu w folderze projektu jest automatycznie "Git zainicjowana" jako lokalne repozytorium Git. Drugi, ukryte lokalnego repozytorium Git, również jest tworzony przy użyciu gałęzi o nazwie AzureMLHistory /\<identyfikator GUID projektu\>. Gałąź przechowuje informacje o zmiany w folderze projektu dla każdego wykonania. 
@@ -42,7 +47,7 @@ Aby rozpocząć korzystanie ze zdalnego repozytorium Git, wykonaj kroki, które 
 > Obecnie usługa Azure Machine Learning obsługuje repozytoria Git tylko na organizacje DevOps platformy Azure.
 
 ## <a name="step-1-create-a-machine-learning-experimentation-account"></a>Krok 1. Tworzenie konta eksperymentowanie w usłudze Machine Learning
-Tworzenie konta eksperymentowanie w usłudze Machine Learning i zainstalować aplikację Azure Machine Learning Workbench. Aby uzyskać więcej informacji, zobacz [Instalowanie i Tworzenie szybkiego startu](../service/quickstart-installation.md).
+Tworzenie konta eksperymentowanie w usłudze Machine Learning i zainstalować aplikację Azure Machine Learning Workbench. Aby uzyskać więcej informacji, zobacz [Instalowanie i Tworzenie szybkiego startu](quickstart-installation.md).
 
 ## <a name="step-2-create-an-azure-devops-project-or-use-an-existing-project"></a>Krok 2. Utwórz projekt DevOps platformy Azure lub użyj istniejącego projektu
 W [witryny Azure portal](https://portal.azure.com/), Utwórz nowy projekt:

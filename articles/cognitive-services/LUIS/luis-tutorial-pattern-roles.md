@@ -4,20 +4,20 @@ titleSuffix: Azure Cognitive Services
 description: Aby wyodrębnić dane z wypowiedź prawidłowo sformatowaną szablonu, należy użyć wzorca. Wypowiedź szablon używa prostego jednostki i role można wyodrębnić powiązanych danych, takie jak lokalizacja pochodzenia i lokalizację docelową.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: f3ddbad350ed42823ca95136ae2a507c46c3c763
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 07fc753f7f60b51fc6b27e43ffb8c181c570bb5a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634544"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032516"
 ---
-# <a name="tutorial-4-extract-contextually-related-patterns"></a>Samouczek 4. Wyodrębnij kontekstowe powiązane wzorów
+# <a name="tutorial-4-extract-contextually-related-patterns"></a>Samouczek 4. Wyodrębnianie wzorców powiązanych kontekstowo
 
 W tym samouczku należy użyć wzorca do wyodrębniania danych z wypowiedź prawidłowo sformatowaną szablonu. Wypowiedź szablon używa prostego jednostki i role można wyodrębnić powiązanych danych, takie jak lokalizacja pochodzenia i lokalizację docelową.  Korzystając z wzorców, potrzebne są mniej wypowiedzi przykład intencji.
 

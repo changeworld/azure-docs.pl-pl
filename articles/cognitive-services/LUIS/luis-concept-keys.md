@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Usługa LUIS używa dwa klucze, tworzenia i punktu końcowego. Podczas tworzenia konta usługi LUIS tworzenia klucza jest tworzony automatycznie. Gdy wszystko jest gotowe do opublikowania z aplikacją usługi LUIS, możesz potrzebne do utworzenia klucza punktu końcowego przypisać go do swojej aplikacji usługi LUIS, a pomocą kwerendy punktu końcowego.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 3049d073c691fca69844f68e8d70234c331ae152
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: a4bd20f9f8a6a8317e161b1d84e948391cd08140
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45629169"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034930"
 ---
 # <a name="keys-in-luis"></a>Klucze usługi LUIS
 Usługa LUIS wykorzystuje dwa klucze: [tworzenia](#programmatic-key) i [punktu końcowego](#endpoint-key). Podczas tworzenia konta usługi LUIS tworzenia klucza jest tworzony automatycznie. Gdy wszystko jest gotowe do opublikowania z aplikacją usługi LUIS, musisz [tworzenia klucza punktu końcowego](luis-how-to-azure-subscription.md#create-luis-endpoint-key), [ją przypisać](luis-how-to-manage-keys.md#assign-endpoint-key) z aplikacją usługi LUIS i [pomocą kwerendy punktu końcowego](#use-endpoint-key-in-query). 

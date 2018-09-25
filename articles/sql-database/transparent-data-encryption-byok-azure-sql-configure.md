@@ -15,15 +15,15 @@ ms.service: sql-database
 ms.tgt_pltfrm: ''
 ms.devlang: azurecli, powershell
 ms.topic: conceptual
-ms.date: 06/28/2018
+ms.date: 09/20/2018
 ms.author: aliceku
 monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 11e190e1a4d0309bdbdcb7a578fccaf84fabb8e3
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 65f9384bb0ceedd6c2bde8ef513040e198ccc4d2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543781"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036375"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-using-your-own-key-from-azure-key-vault"></a>Program PowerShell i interfejs wiersza polecenia: Włączanie funkcji Transparent Data Encryption przy użyciu własnego klucza z usługi Azure Key Vault
 
@@ -35,11 +35,11 @@ W tym artykule przedstawiono sposób użycia klucza z usługi Azure Key Vault dl
 - [Zalecane, ale opcjonalny] Mieć sprzętowego modułu zabezpieczeń (HSM) lub klucza lokalnego magazynu dla tworzenia kopii lokalnej materiału klucza funkcji ochrony TDE.
 - Konieczne jest posiadanie programu Azure PowerShell w wersji 4.2.0 lub nowszej zainstalowany i uruchomiony. 
 - Utwórz usługę Azure Key Vault i klucz do użycia dla funkcji TDE.
-   - [Instrukcje dotyczące programu PowerShell z usługi Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started)
-   - [Instrukcje dotyczące używania sprzętowego modułu zabezpieczeń (HSM) oraz usługi Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started#a-idhsmaif-you-want-to-use-a-hardware-security-module-hsm)
+   - [Instrukcje dotyczące programu PowerShell z usługi Key Vault](../key-vault/key-vault-get-started.md)
+   - [Instrukcje dotyczące używania sprzętowego modułu zabezpieczeń (HSM) oraz usługi Key Vault](../key-vault/key-vault-get-started.md#HSM)
  - Usługi key vault musi mieć następującą właściwość, która ma być używany dla funkcji TDE:
-   - [opcji soft-delete](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
-   - [Jak używać usuwania nietrwałego w usłudze Key Vault z programem PowerShell](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-powershell) 
+   - [opcji soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
+   - [Jak używać usuwania nietrwałego w usłudze Key Vault z programem PowerShell](../key-vault/key-vault-soft-delete-powershell.md) 
 - Klucz musi mieć następujące atrybuty, które ma być używany dla funkcji TDE:
    - Bez daty wygaśnięcia
    - Nie jest wyłączona
@@ -201,11 +201,11 @@ Jeśli problem występuje, sprawdź następujące kwestie:
 - [Zalecane, ale opcjonalny] Mieć sprzętowego modułu zabezpieczeń (HSM) lub klucza lokalnego magazynu dla tworzenia kopii lokalnej materiału klucza funkcji ochrony TDE.
 - Interfejs wiersza polecenia w wersji 2.0 lub nowszej. Aby zainstalować najnowszą wersję i nawiązać połączenie z subskrypcją platformy Azure, zobacz [Instalowanie i Konfigurowanie interfejsu wiersza polecenia dla wielu Platform Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). 
 - Utwórz usługę Azure Key Vault i klucz do użycia dla funkcji TDE.
-   - [Zarządzanie przy użyciu interfejsu wiersza polecenia 2.0 w usłudze Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-manage-with-cli2)
-   - [Instrukcje dotyczące używania sprzętowego modułu zabezpieczeń (HSM) oraz usługi Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-get-started#a-idhsmaif-you-want-to-use-a-hardware-security-module-hsm)
+   - [Zarządzanie przy użyciu interfejsu wiersza polecenia 2.0 w usłudze Key Vault](../key-vault/key-vault-manage-with-cli2.md)
+   - [Instrukcje dotyczące używania sprzętowego modułu zabezpieczeń (HSM) oraz usługi Key Vault](../key-vault/key-vault-get-started.md#HSM)
  - Usługi key vault musi mieć następującą właściwość, która ma być używany dla funkcji TDE:
-   - [opcji soft-delete](https://docs.microsoft.com/azure/key-vault/key-vault-ovw-soft-delete)
-   - [Jak używać usuwania nietrwałego w usłudze Key Vault z interfejsem wiersza polecenia](https://docs.microsoft.com/azure/key-vault/key-vault-soft-delete-cli) 
+   - [opcji soft-delete](../key-vault/key-vault-ovw-soft-delete.md)
+   - [Jak używać usuwania nietrwałego w usłudze Key Vault z interfejsem wiersza polecenia](../key-vault/key-vault-soft-delete-cli.md) 
 - Klucz musi mieć następujące atrybuty, które ma być używany dla funkcji TDE:
    - Bez daty wygaśnięcia
    - Nie jest wyłączona

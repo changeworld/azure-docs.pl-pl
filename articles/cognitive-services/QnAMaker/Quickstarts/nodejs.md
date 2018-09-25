@@ -10,12 +10,12 @@ ms.technology: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: diberry
-ms.openlocfilehash: dc8769d57f7a101bef6bdb456b746d6f485ce117
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 45deea452b9afc5426e6318ae4f8e64f7dab5b63
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720467"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037079"
 ---
 # <a name="quickstart-for-microsoft-qna-maker-api-with-nodejs"></a>Przewodnik Szybki start dotyczący Microsoft usługi QnA Maker API przy użyciu środowiska Node.js 
 <a name="HOLTop"></a>
@@ -37,21 +37,23 @@ W tym artykule dowiesz się, jak używać [interfejsu API programu Microsoft QnA
 - [Uzyskaj bieżący zestaw zmian w programie word.](#GetAlterations)
 - [Zastąp bieżący zestaw zmian w programie word.](#PutAlterations)
 
+[!INCLUDE [Code is available in Azure-Samples Github repo](../../../../includes/cognitive-services-qnamaker-nodejs-repo-note.md)]
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Konieczne będzie [Node.js 6](https://nodejs.org/en/download/) do uruchamiania tego kodu.
 
-Konieczne jest posiadanie [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsu API programu Microsoft QnA Maker**. Konieczne będzie klucza z płatnej licencji usługi [pulpitu nawigacyjnego platformy Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
+Musisz mieć również [konto interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsem API usługi Microsoft QnA Maker**. Będziesz potrzebować klucza płatnej subskrypcji dostępnego na [pulpicie nawigacyjnym platformy Azure](https://portal.azure.com/#create/Microsoft.CognitiveServices).
 
 <a name="Create"></a>
 
 ## <a name="create-knowledge-base"></a>Tworzenie bazy wiedzy
 
-Poniższy kod tworzy bazę danych, przy użyciu nowej wiedzy [Utwórz](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff) metody.
+Poniższy kod tworzy nową bazę wiedzy przy użyciu metody [Create](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff).
 
-1. Utwórz nowy projekt środowiska Node.js w Twoim ulubionym środowisku IDE.
-2. Dodaj kod, przedstawione poniżej.
-3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
+1. Utwórz nowy projekt środowiska Node.js w ulubionym środowisku IDE.
+2. Dodaj kod przedstawiony poniżej.
+3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```nodejs
@@ -208,7 +210,7 @@ create_kb (path, content, function (result) {
 
 **Tworzenie bazy wiedzy knowledge base odpowiedzi**
 
-Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
 ```json
 {
@@ -243,11 +245,11 @@ Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym p
 
 ## <a name="update-knowledge-base"></a>Aktualizowanie bazy wiedzy
 
-Poniższy kod aktualizuje istniejące wiedzy, za pomocą [aktualizacji](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600) metody.
+Poniższy kod aktualizuje istniejącą bazę wiedzy za pomocą metody [Update](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da7600).
 
-1. Utwórz nowy projekt środowiska Node.js w Twoim ulubionym środowisku IDE.
-2. Dodaj kod, przedstawione poniżej.
-3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
+1. Utwórz nowy projekt środowiska Node.js w ulubionym środowisku IDE.
+2. Dodaj kod przedstawiony poniżej.
+3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```nodejs
@@ -408,7 +410,7 @@ update_kb (path, content, function (result) {
 
 **Aktualizowanie bazy wiedzy knowledge base odpowiedzi**
 
-Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
 ```json
 {
@@ -434,9 +436,9 @@ Press any key to continue.
 
 <a name="Status"></a>
 
-## <a name="get-request-status"></a>Pobierz stan żądania
+## <a name="get-request-status"></a>Uzyskiwanie stanu żądania
 
-Możesz wywołać [operacji](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) , aby sprawdzić stan żądania można utworzyć lub zaktualizować wiedzy. Aby zobaczyć, jak ta metoda jest używana, zobacz przykładowy kod dla [Utwórz](#Create) lub [aktualizacji](#Update) metody.
+Istnieje możliwość wywołania metody [Operation](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/operations_getoperationdetails) w celu sprawdzenia stanu żądania utworzenia lub zaktualizowania bazy wiedzy. Aby zobaczyć, jak ta metoda jest używana, zobacz przykładowy kod dla metody [Create](#Create) lub [Update](#Update).
 
 [Powrót do początku](#HOLTop)
 
@@ -444,11 +446,11 @@ Możesz wywołać [operacji](https://westus.dev.cognitive.microsoft.com/docs/ser
 
 ## <a name="publish-knowledge-base"></a>Publikowanie bazy wiedzy
 
-Poniższy kod publikuje istniejących wiedzy, za pomocą [Publikuj](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe) metody.
+Poniższy kod publikuje istniejącą bazę wiedzy za pomocą metody [Publish](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fe).
 
-1. Utwórz nowy projekt środowiska Node.js w Twoim ulubionym środowisku IDE.
-2. Dodaj kod, przedstawione poniżej.
-3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
+1. Utwórz nowy projekt środowiska Node.js w ulubionym środowisku IDE.
+2. Dodaj kod przedstawiony poniżej.
+3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```nodejs
@@ -542,7 +544,7 @@ publish_kb (path, '', function (result) {
 
 **Publikowanie bazy wiedzy knowledge base odpowiedzi**
 
-Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
 ```json
 {
@@ -558,9 +560,9 @@ Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym p
 
 Poniższy kod zastępuje zawartość określonego wiedzy, za pomocą [Zastąp](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_publish) metody.
 
-1. Utwórz nowy projekt środowiska Node.js w Twoim ulubionym środowisku IDE.
-2. Dodaj kod, przedstawione poniżej.
-3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
+1. Utwórz nowy projekt środowiska Node.js w ulubionym środowisku IDE.
+2. Dodaj kod przedstawiony poniżej.
+3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```nodejs
@@ -675,7 +677,7 @@ replace_kb (path, content, function (result) {
 
 **Zastąp odpowiedzi bazy wiedzy**
 
-Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
 ```json
 {
@@ -691,9 +693,9 @@ Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym p
 
 Poniższy kod pobiera zawartość określonej wiedzy, za pomocą [Pobierz wiedzy](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_download) metody.
 
-1. Utwórz nowy projekt środowiska Node.js w Twoim ulubionym środowisku IDE.
-2. Dodaj kod, przedstawione poniżej.
-3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
+1. Utwórz nowy projekt środowiska Node.js w ulubionym środowisku IDE.
+2. Dodaj kod przedstawiony poniżej.
+3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```nodejs
@@ -781,7 +783,7 @@ get_qna (path, function (result) {
 
 **Pobierz odpowiedzi bazy wiedzy**
 
-Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
 ```json
 {
@@ -822,8 +824,8 @@ Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym p
 
 Poniższy kod pobiera odpowiedzi na pytania przy użyciu określonej bazie wiedzy knowledge base, przy użyciu **Generowanie odpowiedzi** metody.
 
-1. Utwórz nowy projekt środowiska Node.js w Twoim ulubionym środowisku IDE.
-1. Dodaj kod, przedstawione poniżej.
+1. Utwórz nowy projekt środowiska Node.js w ulubionym środowisku IDE.
+1. Dodaj kod przedstawiony poniżej.
 1. Zastąp `host` wartość nazwą witryny sieci Web dla Twojej subskrypcji usługi QnA Maker. Aby uzyskać więcej informacji, zobacz [Tworzenie usługi QnA Maker](../How-To/set-up-qnamaker-service-azure.md).
 1. Zastąp `endpoint_key` wartość za pomocą klucza prawidłowego punktu końcowego dla Twojej subskrypcji. Należy pamiętać, że to nie jest taka sama jak klucz subskrypcji. Możesz uzyskać klucze punktu końcowego przy użyciu [Pobieranie kluczy punktu końcowego](#GetKeys) metody.
 1. Zastąp `kb` wartość o identyfikatorze wiedzy, które chcesz zbadać odpowiedzi. Należy pamiętać, tej wiedzy musi już zostały opublikowane za pomocą [Publikuj](#Publish) metody.
@@ -925,7 +927,7 @@ get_answers (method, content, function (result) {
 
 **Uzyskaj odpowiedzi odpowiedzi**
 
-Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
 ```json
 {
@@ -953,9 +955,9 @@ Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym p
 
 Poniższy kod umożliwia pobranie informacji o określonym wiedzy podstawowego tworzonego przy użyciu [uzyskiwanie szczegółowych informacji w bazie wiedzy knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasedetails) metody.
 
-1. Utwórz nowy projekt środowiska Node.js w Twoim ulubionym środowisku IDE.
-2. Dodaj kod, przedstawione poniżej.
-3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
+1. Utwórz nowy projekt środowiska Node.js w ulubionym środowisku IDE.
+2. Dodaj kod przedstawiony poniżej.
+3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```nodejs
@@ -1040,7 +1042,7 @@ get_kb (path, function (result) {
 
 **Uzyskiwanie wiedzy szczegóły odpowiedzi**
 
-Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
 ```json
 {
@@ -1068,9 +1070,9 @@ Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym p
 
 Poniższy kod umożliwia pobranie informacji o wszystkich baz wiedzy dla określonego użytkownika przy użyciu [Pobierz bazy wiedzy dla użytkownika](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_getknowledgebasesforuser) metody.
 
-1. Utwórz nowy projekt środowiska Node.js w Twoim ulubionym środowisku IDE.
-2. Dodaj kod, przedstawione poniżej.
-3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
+1. Utwórz nowy projekt środowiska Node.js w ulubionym środowisku IDE.
+2. Dodaj kod przedstawiony poniżej.
+3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```nodejs
@@ -1152,7 +1154,7 @@ get_kbs (path, function (result) {
 
 **Pobieranie baz wiedzy o odpowiedź użytkownika**
 
-Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
 ```json
 {
@@ -1196,9 +1198,9 @@ Press any key to continue.
 
 Poniższy kod usuwa określony wiedzy, za pomocą [usuwania z bazy wiedzy knowledge base](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/knowledgebases_delete) metody.
 
-1. Utwórz nowy projekt środowiska Node.js w Twoim ulubionym środowisku IDE.
-2. Dodaj kod, przedstawione poniżej.
-3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
+1. Utwórz nowy projekt środowiska Node.js w ulubionym środowisku IDE.
+2. Dodaj kod przedstawiony poniżej.
+3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```nodejs
@@ -1292,7 +1294,7 @@ delete_kb (path, '', function (result) {
 
 **Usuń odpowiedź z bazy wiedzy**
 
-Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
 ```json
 {
@@ -1308,9 +1310,9 @@ Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym p
 
 Poniższy kod pobiera bieżące klucze punktu końcowego przy użyciu [Pobieranie kluczy punktu końcowego](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_getendpointkeys) metody.
 
-1. Utwórz nowy projekt środowiska Node.js w Twoim ulubionym środowisku IDE.
-2. Dodaj kod, przedstawione poniżej.
-3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
+1. Utwórz nowy projekt środowiska Node.js w ulubionym środowisku IDE.
+2. Dodaj kod przedstawiony poniżej.
+3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```nodejs
@@ -1392,7 +1394,7 @@ get_keys (path, function (result) {
 
 **Uzyskaj odpowiedzi klucze punktu końcowego**
 
-Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
 ```json
 {
@@ -1409,9 +1411,9 @@ Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym p
 
 Poniższy kod generuje ponownie bieżące klucze punktu końcowego przy użyciu [odświeżyć klucze punktu końcowego](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/endpointkeys_refreshendpointkeys) metody.
 
-1. Utwórz nowy projekt środowiska Node.js w Twoim ulubionym środowisku IDE.
-2. Dodaj kod, przedstawione poniżej.
-3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
+1. Utwórz nowy projekt środowiska Node.js w ulubionym środowisku IDE.
+2. Dodaj kod przedstawiony poniżej.
+3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```nodejs
@@ -1518,7 +1520,7 @@ refresh_keys (path, content, function (result) {
 
 **Odświeżenie punktu końcowego klucze odpowiedzi**
 
-Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
 ```json
 {
@@ -1535,9 +1537,9 @@ Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym p
 
 Poniższy kod pobiera bieżące zmiany programu word, za pomocą [pobrać zmiany](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fc) metody.
 
-1. Utwórz nowy projekt środowiska Node.js w Twoim ulubionym środowisku IDE.
-2. Dodaj kod, przedstawione poniżej.
-3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
+1. Utwórz nowy projekt środowiska Node.js w ulubionym środowisku IDE.
+2. Dodaj kod przedstawiony poniżej.
+3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```nodejs
@@ -1619,7 +1621,7 @@ get_alterations (path, function (result) {
 
 **Uzyskaj odpowiedzi zmiany programu word**
 
-Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
 ```json
 {
@@ -1642,9 +1644,9 @@ Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym p
 
 Poniższy kod zastępuje bieżące zmiany programu word, za pomocą [Zastąp zmiany](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75fd) metody.
 
-1. Utwórz nowy projekt środowiska Node.js w Twoim ulubionym środowisku IDE.
-2. Dodaj kod, przedstawione poniżej.
-3. Zastąp `key` wartością prawidłowy klucz dostępu dla Twojej subskrypcji.
+1. Utwórz nowy projekt środowiska Node.js w ulubionym środowisku IDE.
+2. Dodaj kod przedstawiony poniżej.
+3. Zastąp wartość `key` kluczem dostępu właściwym dla Twojej subskrypcji.
 4. Uruchom program.
 
 ```nodejs
@@ -1748,7 +1750,7 @@ put_alterations (path, content, function (result) {
 
 **Zastąp odpowiedzi zmiany programu word**
 
-Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym przykładzie: 
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON, jak pokazano w następującym przykładzie: 
 
 ```json
 {
@@ -1761,7 +1763,7 @@ Pomyślnej odpowiedzi jest zwracany w formacie JSON, jak pokazano w poniższym p
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Dokumentacja interfejsu API REST usługi QnA Maker (V4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
+> [QnA Maker (V4) REST API Reference (Dokumentacja interfejsu API REST usługi QnA Maker w wersji 4)](https://westus.dev.cognitive.microsoft.com/docs/services/5a93fcf85b4ccd136866eb37/operations/5ac266295b4ccd1554da75ff)
 
 ## <a name="see-also"></a>Zobacz także 
 

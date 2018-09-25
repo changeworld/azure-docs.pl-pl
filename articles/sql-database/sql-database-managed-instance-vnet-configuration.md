@@ -7,19 +7,19 @@ manager: craigg
 ms.service: sql-database
 ms.custom: managed instance
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 09/20/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: c2caa9ebbc3a4e6b9180466950775524986fd244
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: dfcd61abd9f995a9bb848c23143adb99b0620956
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364571"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042163"
 ---
 # <a name="configure-a-vnet-for-azure-sql-database-managed-instance"></a>Konfigurowanie sieci wirtualnej dla wystąpienie zarządzane usługi Azure SQL Database
 
-Wystąpienie usługi Azure SQL Database Managed (wersja zapoznawcza) musi zostać wdrożony w ramach platformy Azure [sieć wirtualną (VNet)](../virtual-network/virtual-networks-overview.md). To wdrożenie umożliwia następujące scenariusze: 
+Wystąpienie usługi Azure SQL Database Managed musi zostać wdrożony w ramach platformy Azure [sieć wirtualną (VNet)](../virtual-network/virtual-networks-overview.md). To wdrożenie umożliwia następujące scenariusze: 
 - Połączenie do wystąpienia zarządzanego bezpośrednio z siecią lokalną 
 - Nawiązywanie połączenia z wystąpienia zarządzanego połączonego serwera lub innego środowiska lokalnego magazynu danych 
 - Wystąpienie zarządzane nawiązywania połączenia z zasobami platformy Azure  
@@ -34,7 +34,7 @@ Zaplanuj, jak wdrożyć wystąpienie zarządzane w sieci wirtualnej przy użyciu
 
    Jeśli planujesz użyć istniejącej sieci wirtualnej, należy zmodyfikować tej konfiguracji sieci, aby pomieścić wystąpienia zarządzanego. Aby uzyskać więcej informacji, zobacz [zmodyfikować istniejącą sieć wirtualną dla wystąpienia zarządzanego](#modify-an-existing-virtual-network-for-managed-instances). 
 
-   Jeśli zamierzasz utworzyć nową sieć wirtualną, zobacz [Utwórz nową sieć wirtualną dla wystąpienia zarządzanego](#create-a-new-virtual-network-for-managed-instances).
+   Jeśli zamierzasz utworzyć nową sieć wirtualną, zobacz [Utwórz nową sieć wirtualną dla wystąpienia zarządzanego](#create-a-new-virtual-network-for-a-managed-instance).
 
 ## <a name="requirements"></a>Wymagania
 
@@ -84,7 +84,7 @@ Jeśli planujesz wdrożyć wiele wystąpień zarządzanych w tej podsieci i nale
 > [!IMPORTANT]
 > Obliczenie wyświetlane powyżej staną się nieaktualne z dalsze ulepszenia. 
 
-## <a name="create-a-new-virtual-network-for-managed-instance-using-azure-resource-manager-deployment"></a>Utwórz nową sieć wirtualną dla wystąpienia zarządzanego przy użyciu wdrożenia usługi Azure Resource Manager
+## <a name="create-a-new-virtual-network-for-a-managed-instance"></a>Utwórz nową sieć wirtualną dla wystąpienia zarządzanego
 
 Najprostszym sposobem tworzenia i konfigurowania sieci wirtualnej jest użycie szablonu wdrożenia usługi Azure Resource Manager.
 
@@ -143,8 +143,6 @@ Przygotowanie podsieci odbywa się w trzech prostych krokach:
 **Czy masz niestandardowego serwera DNS skonfigurowanego?** 
 
 Jeśli tak, zobacz [Konfigurowanie niestandardowych serwerów DNS](sql-database-managed-instance-custom-dns.md). 
-
-- Tworzenie tabeli tras wymagane i skojarz go: zobacz [Tworzenie tabeli tras wymagane i skojarz go](#create-the-required-route-table-and-associate-it)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

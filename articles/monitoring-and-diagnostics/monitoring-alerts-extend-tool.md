@@ -1,6 +1,6 @@
 ---
-title: Rozszerzanie alerty z Analytcs dziennika na platformie Azure
-description: W tym artykule opisano narzędzia i interfejs API za pomocą którego można rozszerzyć alerty z Analiza dzienników Azure alerty.
+title: Rozszerzanie alertów z Analytcs dziennika do platformy Azure
+description: W tym artykule opisano, narzędzi i interfejsów API za pomocą którego można rozszerzyć alerty z usługą Log Analytics do alertów platformy Azure.
 author: msvijayn
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,57 +8,57 @@ ms.topic: conceptual
 ms.date: 06/04/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 21ba95a7b3efff177afe63d22da3f6ba9848ded2
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d70eecb6a5d6bafbfa6507dbe8b1bcb1cad67191
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35301035"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990250"
 ---
-# <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Rozszerzona z usługi Analiza dzienników Azure alerty Alerty
-Funkcja alerty w Azure Log Analytics jest zastępowany przez Azure alerty. W ramach tego przejścia alerty, które pierwotnie skonfigurowane w analizy dzienników zostanie rozszerzony na platformie Azure. Jeśli nie chcesz czekać na ich automatycznie przeniesione do platformy Azure, możesz zainicjować proces:
+# <a name="extend-alerts-from-log-analytics-into-azure-alerts"></a>Rozszerzanie alertów z usługi Log Analytics do alertów platformy Azure
+Funkcja alertów w usłudze Azure Log Analytics jest zastępowany przez alerty platformy Azure. W ramach tego przejścia alerty, które pierwotnie skonfigurowane w usłudze Log Analytics zostanie rozszerzony na platformę Azure. Jeśli nie chcesz poczekać na ich automatycznie przeniesione na platformę Azure, możesz zainicjować proces:
 
-- Ręcznie w portalu usługi Operations Management Suite. 
-- Programowo, za pomocą interfejsu API AlertsVersion.  
+- Ręcznie z portalu Operations Management Suite. 
+- Programowe korzystając z interfejsu API AlertsVersion.  
 
 > [!NOTE]
-> Microsoft spowoduje automatyczne przedłużenie alertach tworzonych w Analiza dzienników Azure alerty, począwszy od na 14 maja 2018 cykl aż do zakończenia. Harmonogramy Microsoft migracji alerty Azure i w trakcie tego przejścia, alertami można zarządzać z portalu usługi Operations Management Suite i portalu Azure. Ten proces nie jest destrukcyjnego lub interruptive.  
+> Firma Microsoft automatycznie rozszerzy alerty utworzone w wystąpieniach chmury publicznej usługi Log Analytics do alertów platformy Azure od 14 maja 2018 r. w serii cyklicznych do momentu zakończenia. Jeśli masz problemy z tworzeniem [grup akcji](monitoring-action-groups.md), użyj [te czynności zaradczych](monitoring-alerts-extend-tool.md#troubleshooting) można pobrać grup akcji utworzone automatycznie. Te kroki można użyć do 5 lipca 2018 r. *Nie dotyczy rządu platformy Azure i użytkownicy usługi Log Analytics w chmurze Soveriegn*. 
 
-## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>Opcja 1: Inicjowanie z portalu usługi Operations Management Suite
-W poniższych krokach opisano, jak rozszerzyć alerty w obszarze roboczym z portalu usługi Operations Management Suite.  
+## <a name="option-1-initiate-from-the-operations-management-suite-portal"></a>Opcja 1: Zainicjuj z portalu Operations Management Suite
+Poniżej opisano sposób rozszerzyć alerty dla obszaru roboczego z portalu Operations Management Suite.  
 
-1. W portalu Azure wybierz **wszystkie usługi**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
-2. W okienku subskrypcje analizy dzienników, wybierz obszar roboczy, a następnie wybierz **portalu OMS** kafelka.
-![Zrzut ekranu analizy dzienników okienku subskrypcji z wyróżnionym kafelka portalu OMS](./media/monitor-alerts-extend/azure-portal-01.png) 
-3. Po nastąpi przekierowanie do portalu usługi Operations Management Suite, wybierz **ustawienia** ikony.
-![Zrzut ekranu Operations Management Suite portalu, z wyróżnioną pozycją ikonę ustawień](./media/monitor-alerts-extend/oms-portal-settings-option.png) 
-4. Z **ustawienia** wybierz pozycję **alerty**.  
-5. Wybierz **rozszerzona Azure**.
-![Zrzut ekranu Operations Management Suite ustawienia alertu strony portalu, z Rozszerz na platformie Azure wyróżnione](./media/monitor-alerts-extend/ExtendInto.png)
-6. Wyświetlany jest Kreator trzech etapów **alerty** okienka. Zapoznanie się z omówieniem, a następnie wybierz **dalej**.
-![Zrzut ekranu przedstawiający kroku 1 Kreatora](./media/monitor-alerts-extend/ExtendStep1.png)  
-7. W drugim kroku zobaczysz podsumowanie proponowanych zmian listę odpowiednich [grupy akcji](monitoring-action-groups.md) alertów. Jeśli podobne akcje są widoczne w więcej niż jeden alert, Kreator zamierza Skojarz grupę jednej akcji z wszystkich z nich.  Konwencja nazewnictwa jest następująca: *WorkspaceName_AG_ #Number*. Aby kontynuować, wybierz **dalej**.
+1. W witrynie Azure portal wybierz **wszystkich usług**. Na liście zasobów wpisz **Log Analytics**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Wybierz pozycję **Log Analytics**.
+2. W okienku subskrypcji usługi Log Analytics wybierz obszar roboczy, a następnie wybierz **portalu pakietu OMS** kafelka.
+![W okienku subskrypcji zrzut ekranu usługi Log Analytics, za pomocą portalu pakietu OMS kafelka wyróżnione](./media/monitor-alerts-extend/azure-portal-01.png) 
+3. Po użytkownik zostanie przekierowany do portalu Operations Management Suite, wybierz **ustawienia** ikony.
+![Zrzut ekranu z pakietu Operations Management Suite portalu z wyróżnioną ikonę ustawienia](./media/monitor-alerts-extend/oms-portal-settings-option.png) 
+4. Z **ustawienia** wybierz opcję **alerty**.  
+5. Wybierz **rozszerzone na platformę Azure**.
+![Zrzut ekranu z pakietu Operations Management Suite ustawienia alertów strony portalu, za pomocą Rozszerz do platformy Azure z wyróżnioną pozycją](./media/monitor-alerts-extend/ExtendInto.png)
+6. Wyświetlany jest Kreator trzech krokach **alerty** okienka. Zapoznaj się z omówieniem, a następnie wybierz pozycję **dalej**.
+![Zrzut ekranu przedstawiający kreatora w kroku 1](./media/monitor-alerts-extend/ExtendStep1.png)  
+7. W drugim kroku zostanie wyświetlone podsumowanie proponowanych zmian i listę odpowiednich [grup akcji](monitoring-action-groups.md) dla alertów. Jeśli podobnych działań są widoczne w więcej niż jeden alert, proponowanych przez kreatora skojarzyć grupy pojedynczej akcji z wszystkich z nich.  Konwencja nazewnictwa jest następująca: *WorkspaceName_AG_ #Number*. Aby kontynuować, wybierz **dalej**.
 ![Zrzut ekranu przedstawiający krok 2 Kreatora](./media/monitor-alerts-extend/ExtendStep2.png)  
-8. W ostatnim kroku kreatora wybierz **Zakończ**i upewnij się, gdy zostanie wyświetlony monit, aby zainicjować proces. Opcjonalnie można określić adres e-mail, co użytkownik jest powiadamiany o zakończeniu procesu i wszystkie alerty została pomyślnie przeniesiona do alertów Azure.
+8. W ostatnim kroku kreatora wybierz **Zakończ**i upewnij się, gdy zostanie wyświetlony monit, aby zainicjować proces. Opcjonalnie można podać adres e-mail, dzięki czemu otrzymasz powiadomienie, gdy proces zostanie zakończony i wszystkich alertów została pomyślnie przeniesiona do alertów platformy Azure.
 ![Zrzut ekranu przedstawiający krok 3 kreatora](./media/monitor-alerts-extend/ExtendStep3.png)
 
-Po zakończeniu działania kreatora, na **ustawienia alertu** strona, opcję, aby rozszerzyć alerty Azure zostanie usunięta. W tle alerty zostaną przeniesione na platformie Azure, a to może zająć trochę czasu. Podczas operacji nie można wprowadzić zmian na alerty z portalu usługi Operations Management Suite. Widać przy bieżącym stanie z banerze w górnej części portalu. Jeśli wcześniej została podana adres e-mail, otrzymasz wiadomość e-mail po procesie zostało pomyślnie ukończone.  
+Po zakończeniu działania kreatora, na **ustawienia alertów** strona, możliwość rozszerzanie alertów do platformy Azure zostanie usunięta. W tle alerty zostaną przeniesione na platformę Azure, a to może zająć trochę czasu. Podczas operacji nie możesz wprowadzać zmian do alertów z portalu Operations Management Suite. Można wyświetlić bieżący stan z Baner w górnej części portalu. Jeśli adres e-mail podany wcześniej, otrzymasz wiadomość e-mail, gdy proces zostanie pomyślnie zakończony.  
 
 
-Alerty nadal wyświetlane w portalu usługi Operations Management Suite, nawet po zostały przeniesione do platformy Azure.
-![Strona Ustawienia alertu portal zrzut ekranu Operations Management Suite](./media/monitor-alerts-extend/PostExtendList.png)
+Alerty nadal będą wyświetlane w portalu Operations Management Suite, nawet w przypadku, po pomyślnym przeniesieniu ich do platformy Azure.
+![Strona Ustawienia alertów portal zrzut ekranu z pakietu Operations Management Suite](./media/monitor-alerts-extend/PostExtendList.png)
 
 
-## <a name="option-2-use-the-alertsversion-api"></a>Opcja 2: Użycie AlertsVersion interfejsu API
-Interfejs API AlertsVersion analizy dziennika umożliwia rozszerzanie alerty z analizy dzienników do alertów Azure za pomocą dowolnego klienta, który można wywołać interfejsu API REST. Interfejs API mogą korzystać z programu PowerShell, za pomocą [ARMClient](https://github.com/projectkudu/ARMClient), narzędzia wiersza polecenia open source. Można zapisuje wyniki w formacie JSON.  
+## <a name="option-2-use-the-alertsversion-api"></a>Opcja 2: Użycie interfejs API AlertsVersion
+Aby rozszerzyć alerty z usługą Log Analytics do alertów platformy Azure za pomocą dowolnego klienta, który można wywołać interfejs API REST, można użyć interfejsu API AlertsVersion usługi Log Analytics. Możesz uzyskać dostęp interfejsu API z poziomu programu PowerShell przy użyciu [ARMClient](https://github.com/projectkudu/ARMClient), narzędzie wiersza polecenia typu open source. Może zapewniać dane wyjściowe wyniki w formacie JSON.  
 
-Aby korzystać z interfejsu API, należy najpierw utworzyć żądanie GET. Ocenia i zwraca podsumowanie proponowanych zmian przed przystąpieniem do faktycznie rozszerzyć na platformie Azure przy użyciu żądania POST. Wyniki listy alertów i listę proponowanych [grupy akcji](monitoring-action-groups.md), w formacie JSON. Jeśli podobne akcje są widoczne w więcej niż jeden alert, usługa zamierza je wszystkie powiązania z grupą jednej akcji. Konwencja nazewnictwa jest następująca: *WorkspaceName_AG_ #Number*.
+Aby korzystać z interfejsu API, należy najpierw utworzyć żądanie GET. Ocenia i zwraca podsumowanie proponowanych zmian przed podjęciem próby faktycznie rozszerzone na platformę Azure za pomocą żądania POST. Wynikiem jest lista alertów i listę proponowanych [grup akcji](monitoring-action-groups.md), w formacie JSON. Jeśli podobnych działań są widoczne w więcej niż jeden alert, usługa proponuje skojarzyć wszystkich z nich z grupą jednej akcji. Konwencja nazewnictwa jest następująca: *WorkspaceName_AG_ #Number*.
 
 ```
 armclient GET  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupName>/providers/Microsoft.OperationalInsights/workspaces/<workspaceName>/alertsversion?api-version=2017-04-26-preview
 ```
 
-Jeśli żądanie GET zakończy się pomyślnie, kod stanu HTTP 200 jest zwracany, oraz listę alertów i proponowane grupy akcji w danych JSON. Poniżej przedstawiono przykład odpowiedzi:
+Jeśli żądanie GET zakończy się pomyślnie, kod stanu HTTP 200 został zwrócony, wraz z listy alertów, a proponowane grup akcji danych JSON. Poniżej zamieszczono przykładową odpowiedź:
 
 ```json
 {
@@ -115,7 +115,7 @@ Jeśli żądanie GET zakończy się pomyślnie, kod stanu HTTP 200 jest zwracany
 }
 
 ```
-Jeśli określony obszar roboczy nie ma żadnych reguł alertów zdefiniowane, dane JSON zwraca następujące czynności:
+Jeśli określony obszar roboczy nie ma żadnych reguł alertów, które zostały zdefiniowane, dane JSON zwróci następujące czynności:
 
 ```json
 {
@@ -124,7 +124,7 @@ Jeśli określony obszar roboczy nie ma żadnych reguł alertów zdefiniowane, d
 }
 ```
 
-Jeśli wszystkie reguły alertu w obszarze roboczym określonego już zostały rozszerzone na platformie Azure, odpowiedź na żądanie GET jest:
+Jeśli wszystkie reguły alertów w określony obszar roboczy już zostały rozszerzone na platformę Azure, jest odpowiedź na żądanie GET:
 
 ```json
 {
@@ -132,7 +132,7 @@ Jeśli wszystkie reguły alertu w obszarze roboczym określonego już zostały r
 }
 ```
 
-Aby zainicjować migrację alerty na platformie Azure, inicjują odpowiedź POST. Odpowiedź POST potwierdza z celem, a także akceptacji, mieć alerty rozszerzony Analiza dzienników Azure alerty. Działanie zostało zaplanowane i alerty są przetwarzane wskazane, na podstawie wyników podczas wcześniej wykonywanej odpowiedzi GET. Opcjonalnie można udostępnić listę adresów e-mail, do których analizy dzienników wysyła raport po pomyślnym zakończeniu tła zaplanowanego procesu migracji alerty. Można użyć w poniższym przykładzie żądania:
+Aby zainicjować migracji alertów do platformy Azure, zainicjować odpowiedzi na WPIS. W odpowiedzi na WPIS potwierdza swoje przeznaczenie, a także akceptacji, mieć alerty rozszerzonej z usługą Log Analytics do alertów platformy Azure. Zaplanowano działania i alerty są przetwarzane, jak wskazano w oparciu o wyniki podczas wykonywania odpowiedzi GET wcześniej. Opcjonalnie możesz podać listę adresów e-mail, do których usługi Log Analytics wysyła raport po pomyślnym zakończeniu proces w tle zaplanowanej migracji alertów. Można użyć w poniższym przykładzie żądania:
 
 ```
 $emailJSON = “{‘Recipients’: [‘a@b.com’, ‘b@a.com’]}”
@@ -140,9 +140,9 @@ armclient POST  /subscriptions/<subscriptionId>/resourceGroups/<resourceGroupNam
 ```
 
 > [!NOTE]
-> Wynik Migrowanie alerty do alertów Azure może różnić w zależności od podsumowanie podał odpowiedź GET. Podczas planowania alerty w analizy dzienników są tymczasowo niedostępne do modyfikacji w portalu usługi Operations Management Suite. Można jednak utworzyć nowe alerty. 
+> Wynik alerty Migrowanie do alertów platformy Azure może zależeć od podsumowanie podał odpowiedź GET. Podczas planowania alerty w usłudze Log Analytics są tymczasowo niedostępne do modyfikacji w portalu Operations Management Suite. Można jednak utworzyć nowe alerty. 
 
-Jeśli żądanie POST zakończy się pomyślnie, zwraca stan HTTP 200 OK wraz z następującą odpowiedź:
+Jeśli żądanie POST zakończy się pomyślnie, zwraca stan HTTP 200 OK, wraz z następującą odpowiedź:
 
 ```json
 {
@@ -150,7 +150,7 @@ Jeśli żądanie POST zakończy się pomyślnie, zwraca stan HTTP 200 OK wraz z 
 }
 ```
 
-Odpowiedź wskazuje, że alerty zostały pomyślnie rozszerzone do alertów Azure. Właściwość wersja jest tylko do sprawdzania, czy alerty zostały rozszerzone na platformie Azure i nie są powiązane do [interfejsu API Search analizy dziennika](../log-analytics/log-analytics-api-alerts.md). Gdy alerty zostały rozszerzone pomyślnie na platformie Azure, wszelkie adresy e-mail pod warunkiem przy użyciu metody POST żądania są wysyłane raportu. Jeśli wszystkie alerty w obszarze roboczym określonego zaplanowano już zostać rozszerzony, odpowiedzi na żądanie POST jest, że próba zostało zabronione (kod stanu 403). Aby wyświetlić wszelkie komunikaty o błędach lub zrozumieć, jeśli proces jest zablokowana, można przesłać żądanie GET. W przypadku komunikat o błędzie, jest zwracany, wraz z informacjami podsumowania.
+Ta odpowiedź wskazuje, że alerty zostały pomyślnie rozszerzone do alertów platformy Azure. Właściwość wersja jest tylko do sprawdzania, czy alerty zostały rozszerzone do platformy Azure i nie są powiązane do [interfejsu API wyszukiwania usługi Log Analytics](../log-analytics/log-analytics-api-alerts.md). Gdy alerty zostały pomyślnie rozszerzone na platformę Azure, dowolny adresy e-mail pod warunkiem wpis żądania są wysyłane raportu. Jeśli wszystkie alerty w obszarze roboczym określonego są już zaplanowane być rozszerzony, odpowiedzi na żądania POST jest, czy próba zostało zabronione (kod stanu 403). Aby wyświetlić wszelkie komunikaty o błędach lub zrozumieć ten proces jest zatrzymany, możesz przesłać żądanie GET. W przypadku komunikatu o błędzie jest zwracany, wraz z informacjami podsumowania.
 
 ```json
 {
@@ -214,12 +214,12 @@ Odpowiedź wskazuje, że alerty zostały pomyślnie rozszerzone do alertów Azur
 ```
 
 
-## <a name="option-3-use-a-custom-powershell-script"></a>Opcja 3: Użyj niestandardowego skryptu PowerShell
- Jeśli Microsoft nie pomyślnie rozszerzony alerty z portalu usługi Operations Management Suite do platformy Azure, możesz to zrobić ręcznie do 5 lipca 2018. Dwie opcje ręcznego rozszerzenia zostały omówione w poprzednich sekcjach.
+## <a name="option-3-use-a-custom-powershell-script"></a>Opcja 3: Użyj niestandardowego skryptu programu PowerShell
+ Microsoft nie pomyślnie rozszerzony alertów z portalu Operations Management Suite na platformę Azure, należy ręcznie do 5 lipca 2018 r. Dwie opcje ręcznego rozszerzenia zostały omówione w poprzednich sekcjach.
 
-Po 5 lipca 2018 wszystkie alerty z portalu usługi Operations Management Suite zostały rozszerzone na platformie Azure. Użytkownicy, którzy nie wykonać [kroki niezbędne korygowania sugerowane](#troubleshooting) zostaną skojarzone ich alertów uruchomiona bez wyzwalania, akcji lub powiadomień z powodu braku [grupy akcji](monitoring-action-groups.md). 
+Po 5 lipca 2018 r. wszystkie alerty z portalu Operations Management Suite zostały rozszerzone na platformę Azure. Użytkownicy, którzy nie wykonać [czynności niezbędne zaradczych zasugerowanych](#troubleshooting) zostanie skojarzony alerty bez wyzwalania, akcji lub powiadomienia z powodu braku [grup akcji](monitoring-action-groups.md). 
 
-Aby utworzyć [grupy akcji](monitoring-action-groups.md) alertów ręcznie w analizy dzienników, użyj następującego skryptu przykładowego:
+Aby utworzyć [grup akcji](monitoring-action-groups.md) alertów ręcznie w usłudze Log Analytics, użyj następującego skryptu przykładowego:
 ```PowerShell
 ########## Input Parameters Begin ###########
 
@@ -437,47 +437,47 @@ $response = armclient post "/subscriptions/$subscriptionId/resourceGroups/$resou
 ```
 
 
-### <a name="about-the-custom-powershell-script"></a>O niestandardowego skryptu PowerShell 
-Poniżej przedstawiono ważne informacje o używaniu skryptu:
-- Warunkiem wstępnym jest instalacja [ARMclient](https://github.com/projectkudu/ARMClient), narzędzie wiersza polecenia open source, które upraszcza wywoływanie interfejsu API Azure Resource Manager.
+### <a name="about-the-custom-powershell-script"></a>Temat niestandardowego skryptu programu PowerShell 
+Poniżej przedstawiono ważne informacje dotyczące za pomocą skryptu:
+- Warunkiem wstępnym jest instalacja [ARMclient](https://github.com/projectkudu/ARMClient), narzędzie wiersza polecenia typu open source, które upraszcza wywoływanie interfejsu API usługi Azure Resource Manager.
 - Aby uruchomić skrypt, musi mieć rolę współautora lub właściciela w subskrypcji platformy Azure.
 - Należy podać następujące parametry:
-    - $subscriptionId: identyfikator subskrypcji platformy Azure skojarzone z obszaru roboczego Operations Management Suite Log Analytics.
-    - $resourceGroup: Grupa zasobów Azure dla obszaru roboczego Operations Management Suite Log Analytics.
+    - $subscriptionId: identyfikator subskrypcji platformy Azure skojarzone z obszarem roboczym Operations Management Suite Log Analytics.
+    - $resourceGroup: Grupa zasobów platformy Azure dla obszaru roboczego Operations Management Suite Log Analytics.
     - $workspaceName: Nazwa obszaru roboczego Operations Management Suite Log Analytics.
 
-### <a name="output-of-the-custom-powershell-script"></a>Dane wyjściowe skryptu programu PowerShell niestandardowego
-Skrypt jest pełne i wyprowadza kroki podczas jego działania: 
-- Wyświetla podsumowanie, który zawiera informacje dotyczące istniejącego Operations Management Suite Log Analytics alerty w obszarze roboczym. Podsumowanie zawiera również informacje dotyczące grup Azure akcji ma zostać utworzony dla akcji skojarzonych z nimi. 
-- Zostanie wyświetlony monit Przejdź dalej z rozszerzeniem, lub Zamknij po wyświetlania podsumowania.
-- Jeśli hypervreplicavolumesize z rozszerzeniem, tworzenia nowych grup Azure akcji, a wszystkie istniejące alerty są skojarzone z nimi. 
-- Skrypt zakończy pracę, wyświetlając komunikat "Rozszerzenie pełną!" W przypadku niepowodzenia pośredniego skrypt wyświetli kolejne błędy.
+### <a name="output-of-the-custom-powershell-script"></a>Dane wyjściowe niestandardowego skryptu programu PowerShell
+Skrypt jest pełny i generuje czynności, jak działa: 
+- Wyświetla podsumowanie, które zawiera informacje o istniejące alerty programu Operations Management Suite Log Analytics w obszarze roboczym. Podsumowanie zawiera również informacje dotyczące grup akcji platformy Azure, który ma zostać utworzony dla akcji skojarzonych z nimi. 
+- Monit hypervreplicavolumesize rozszerzenia, lub Zamknij po obejrzeniu podsumowania.
+- Jeśli przejdziesz dalej z rozszerzeniem, tworzenia nowych grup akcji platformy Azure, a wszystkie istniejące alerty są skojarzone z nimi. 
+- Skrypt zakończy pracę, wyświetlając komunikat "Pełną rozszerzenia!" W razie błędów pośredniego skrypt wyświetla kolejne błędy.
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów 
-W trakcie rozszerzania alerty problemy mogą uniemożliwić systemu tworzenia wymaganych [grupy akcji](monitoring-action-groups.md). W takich przypadkach zostanie wyświetlony komunikat o błędzie na transparencie w **alertu** sekcji portalu Operations Management Suite lub GET wywołać gotowe do interfejsu API.
+Podczas procesu rozszerzania alertów, problemów może uniemożliwić systemu tworzenia wymaganych [grup akcji](monitoring-action-groups.md). W takiej sytuacji zobaczysz komunikat o błędzie na banerze w **alertu** sekcji portalu Operations Management Suite lub GET wywołać gotowe do interfejsu API.
 
 > [!IMPORTANT]
-> Jeśli przed 5 lipca 2018 nie wykonać następujące kroki korygujące alerty będą działać na platformie Azure, ale nie zostanie wyzwolony żadnych akcji lub powiadomienia. Aby otrzymywać powiadomienia dla alertów, należy ręcznie edytować i dodać [grupy akcji](monitoring-action-groups.md), lub użyj poprzedniego [niestandardowego skryptu PowerShell](#option-3---using-custom-powershell-script).
+> W przypadku chmury publicznej platformy Azure na podstawie użytkowników usługi Log Analytics nie wykonaj następujące kroki korygowania przed 5 lipca 2018 r., alerty zostaną wykonane na platformie Azure, ale nie będą uruchamiane w dowolnej akcji powiadomienia. Aby otrzymywać powiadomienia o alertach, należy ręcznie edytować i Dodaj [grup akcji](monitoring-action-groups.md), lub użyj kroku [niestandardowego skryptu programu PowerShell](#option-3---using-custom-powershell-script).
 
-Poniżej przedstawiono kroki korygujące dla każdego błędu:
-- **Błąd: Zakres blokady jest obecna na poziomie grupy zasobów subskrypcji dla operacji zapisu**: ![zrzut ekranu przedstawiający Operations Management Suite ustawienia alertu strony portalu, zakres blokady komunikat o błędzie wyróżnione](./media/monitor-alerts-extend/ErrorScopeLock.png)
+Poniżej przedstawiono kroki korygowania dla każdego błędu:
+- **Błąd: Blokada zakres jest obecny na poziomie grupy zasobów/subskrypcji dla operacji zapisu**: ![zrzut ekranu przedstawiający pakietu Operations Management Suite ustawienia alertów stronie portalu, zakres blokady komunikat o błędzie wyróżniony](./media/monitor-alerts-extend/ErrorScopeLock.png)
 
-    Gdy zakres blokady jest włączona, funkcja ogranicza wszelkie nowe zmiany w grupie zasobów lub subskrypcji, która zawiera obszar roboczy analizy dzienników (Operations Management Suite). System nie może rozszerzyć alerty na platformie Azure i tworzenie grup niezbędnych działań.
+    Gdy zakres blokady jest włączona, ta funkcja ogranicza wszelkie nowe zmiany w grupie subskrypcji lub zasobu, która zawiera obszar roboczy usługi Log Analytics (Operations Management Suite). System nie mógł rozszerzyć alertów do platformy Azure i utworzyć niezbędnych grup akcji.
     
-    Aby rozwiązać, należy usunąć *tylko do odczytu* blokady w grupie zasobów lub subskrypcji zawierający obszar roboczy. Można to zrobić za pomocą portalu Azure, programu PowerShell, interfejsu wiersza polecenia Azure lub interfejsu API. Aby dowiedzieć się więcej, zobacz [użycia zasobów blokady](../azure-resource-manager/resource-group-lock-resources.md). 
+    Aby rozwiązać problem, Usuń *tylko do odczytu* blokadę dla Twojej subskrypcji lub grupy zasobów, która zawiera obszar roboczy. Można to zrobić za pomocą witryny Azure portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API. Aby dowiedzieć się więcej, zobacz [użycia blokady zasobów](../azure-resource-manager/resource-group-lock-resources.md). 
     
-    Jeśli rozwiązania problemu, wykonaj kroki przedstawione w artykule Operations Management Suite rozszerza alerty na platformie Azure w ramach następnego dnia zaplanowane uruchomienie. Nie trzeba podejmować dalszych działań lub zainicjować żadnych czynności.
+    Po naprawieniu błędu wykonując kroki przedstawione w artykule, pakiet Operations Management Suite rozszerza alertów do platformy Azure w ramach następnego dnia zaplanowane uruchomienie. Nie trzeba podejmować żadnych dalszych akcji lub zainicjować niczego.
 
-- **Błąd: Zasady są obecne na poziomie grupy zasobów subskrypcji**: ![zrzut ekranu strony Operations Management Suite portalu ustawienia alertów, zasad komunikat o błędzie wyróżnione](./media/monitor-alerts-extend/ErrorPolicy.png)
+- **Błąd: Zasady są obecne na poziomie grupy zasobów/subskrypcji**: ![zrzut ekranu przedstawiający pakietu Operations Management Suite ustawienia alertów stronie portalu, zasady komunikat o błędzie wyróżniony](./media/monitor-alerts-extend/ErrorPolicy.png)
 
-    Gdy [zasadami Azure](../azure-policy/azure-policy-introduction.md) jest stosowane, ogranicza wszystkich nowych zasobów w grupie zasobów lub subskrypcji, która zawiera obszar roboczy analizy dzienników (Operations Management Suite). System nie może rozszerzyć alerty na platformie Azure i tworzenie grup niezbędnych działań.
+    Gdy [usługi Azure Policy](../azure-policy/azure-policy-introduction.md) jest stosowany, ogranicza nowego zasobu w grupie subskrypcji lub zasobu, która zawiera obszar roboczy usługi Log Analytics (Operations Management Suite). System nie mógł rozszerzyć alertów do platformy Azure i utworzyć niezbędnych grup akcji.
     
-    Aby rozwiązać, edytować zasad, która powoduje *[RequestDisallowedByPolicy](../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)* błąd, który uniemożliwia tworzenie nowych zasobów w grupie zasobów lub subskrypcji zawierający obszar roboczy. Można to zrobić za pomocą portalu Azure, programu PowerShell, interfejsu wiersza polecenia Azure lub interfejsu API. Można przeprowadzić inspekcję działań, aby znaleźć odpowiednie zasady, która powoduje błąd. Aby dowiedzieć się więcej, zobacz [wyświetlanie działania dzienników inspekcji akcje](../azure-resource-manager/resource-group-audit.md). 
+    Aby rozwiązać problem, Edytuj zasady, które powoduje *[RequestDisallowedByPolicy](../azure-resource-manager/resource-manager-policy-requestdisallowedbypolicy-error.md)* błąd, który uniemożliwia tworzenie nowych zasobów w Twojej subskrypcji lub grupy zasobów, która zawiera obszar roboczy. Można to zrobić za pomocą witryny Azure portal, programu PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API. Można przeprowadzać ich inspekcje działania, aby znaleźć odpowiednie zasady, który jest przyczyną błędu. Aby dowiedzieć się więcej, zobacz [wyświetlanie dzienników aktywności do inspekcji akcji](../azure-resource-manager/resource-group-audit.md). 
     
-    Jeśli rozwiązania problemu, wykonaj kroki przedstawione w artykule Operations Management Suite rozszerza alerty na platformie Azure w ramach następnego dnia zaplanowane uruchomienie. Nie trzeba podejmować dalszych działań lub zainicjować żadnych czynności.
+    Po naprawieniu błędu wykonując kroki przedstawione w artykule, pakiet Operations Management Suite rozszerza alertów do platformy Azure w ramach następnego dnia zaplanowane uruchomienie. Nie trzeba podejmować żadnych dalszych akcji lub zainicjować niczego.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Dowiedz się więcej o nowe [zgłaszać alerty Azure](monitoring-overview-unified-alerts.md).
-* Dowiedz się więcej o [rejestrowania alertów w alertach Azure](monitor-alerts-unified-log.md).
+* Dowiedz się więcej o nowym [środowisko Azure Alerts](monitoring-overview-unified-alerts.md).
+* Dowiedz się więcej o [alerty dzienników w alertach Azure](monitor-alerts-unified-log.md).

@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 68514f1bc569d876f4cf851f97a690ae84cf43a6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: HT
+ms.openlocfilehash: 8bebec23d7a0199d8efbc55b3cde50c628306f01
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46970298"
+ms.locfileid: "47034372"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack
 
@@ -86,7 +86,7 @@ W zestawie SDK Przejdź profil jest kombinacją różnych typów zasobów z ró�
 - **Ruby**  
 Ruby SDK dla usługi Azure Stack Resource Manager oferuje narzędzia ułatwiające tworzenie i zarządzanie infrastrukturą. Dostawcy zasobów w zestawie SDK obejmują obliczeniowych, sieci wirtualnych i magazynu przy użyciu języka Ruby. Aby uzyskać informacje, zobacz [profilami wersji korzystanie z interfejsu API za pomocą języka Ruby](azure-stack-version-profiles-ruby.md)
 - **Python**  
-- Zestaw SDK języka Python obsługuje profilami wersji interfejsu API pod kątem platform inną chmurę, takich jak Azure Stack i globalnej platformy Azure. Można używać profilów interfejsu API w tworzeniu rozwiązań dla chmury hybrydowej. Aby uzyskać informacje, zobacz [profilami wersji korzystanie z interfejsu API za pomocą języka Python](azure-stack-version-profiles-python.md)
+Zestaw SDK języka Python obsługuje profilami wersji interfejsu API pod kątem platform inną chmurę, takich jak Azure Stack i globalnej platformy Azure. Można używać profilów interfejsu API w tworzeniu rozwiązań dla chmury hybrydowej. Aby uzyskać informacje, zobacz [profilami wersji korzystanie z interfejsu API za pomocą języka Python](azure-stack-version-profiles-python.md)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -8,14 +8,14 @@ ms.reviewer: vanto
 ms.service: sql-database
 ms.custom: security
 ms.topic: conceptual
-ms.date: 08/28/2018
+ms.date: 09/20/2018
 ms.author: giladm
-ms.openlocfilehash: 7671b49921799e63b01d0eb85e90a8b75b2d5a48
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 3971d6966088ccb19a35ab938408a1c9dc835d3b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544298"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031819"
 ---
 # <a name="get-started-with-azure-sql-database-managed-instance-auditing"></a>Rozpoczynanie pracy z usługą Azure Managed wystąpienia inspekcji usługi SQL Database
 
@@ -104,7 +104,7 @@ W poniższej sekcji opisano konfigurację inspekcji dla wystąpienia zarządzane
     Jeśli nie zostanie określony, `RETENTION_DAYS` domyślna to 0 (nieograniczone przechowywanie).
 
     Dodatkowe informacje:
-    - [Inspekcja różnice między wystąpienia zarządzanego, bazy danych SQL Azure i programu SQL Server](#subheading-3)
+    - [Inspekcja różnice między wystąpienia zarządzanego, bazy danych SQL Azure i programu SQL Server](#auditing-differences-between-managed-instance-azure-sql-database-and-sql-server)
     - [TWORZENIE INSPEKCJI SERWERA](https://docs.microsoft.com/sql/t-sql/statements/create-server-audit-transact-sql)
     - [INSTRUKCJA ALTER SERVER AUDIT](https://docs.microsoft.com/sql/t-sql/statements/alter-server-audit-transact-sql)
 

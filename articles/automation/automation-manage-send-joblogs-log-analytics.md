@@ -9,15 +9,16 @@ ms.author: gwallace
 ms.date: 06/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 12628b5a552b864784d780e5f2adc00aac579911
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 13ba4d774cbc347830c32385ba4927a0df687159
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39215037"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035474"
 ---
 # <a name="forward-job-status-and-job-streams-from-automation-to-log-analytics"></a>Przekazuj strumienie zadania i stan zadania z usługi Automation do usługi Log Analytics
-Automatyzacja może wysyłać elementu runbook strumieni zadań i stanu zadania do obszaru roboczego usługi Log Analytics. Dzienniki zadań i strumieni zadań są widoczne w witrynie Azure portal lub za pomocą programu PowerShell, dla poszczególnych zadań i to umożliwia wykonywanie prostych dochodzenia. Teraz z usługą Log Analytics można:
+
+Automatyzacja może wysyłać elementu runbook strumieni zadań i stanu zadania do obszaru roboczego usługi Log Analytics. Ten proces nie wiąże się z obszaru roboczego połączeń i jest całkowicie niezależny. Dzienniki zadań i strumieni zadań są widoczne w witrynie Azure portal lub za pomocą programu PowerShell, dla poszczególnych zadań i to umożliwia wykonywanie prostych dochodzenia. Teraz z usługą Log Analytics można:
 
 * Uzyskaj wgląd w zadań usługi Automation.
 * Wyzwalacz poczty e-mail lub alertu oparte na stan zadania elementu runbook (na przykład nie powiodło się lub zawieszone).
@@ -26,12 +27,12 @@ Automatyzacja może wysyłać elementu runbook strumieni zadań i stanu zadania 
 * Wizualizowanie historii zadania, wraz z upływem czasu.
 
 ## <a name="prerequisites-and-deployment-considerations"></a>Wymagania wstępne i zagadnienia dotyczące wdrażania
+
 Aby rozpocząć wysyłanie dzienników usługi Automation do usługi Log Analytics, potrzebne są:
 
 * Listopad 2016 lub nowszej wersji [programu Azure PowerShell](https://docs.microsoft.com/powershell/azureps-cmdlets-docs/) (v2.3.0).
 * Obszar roboczy usługi Log Analytics. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Log Analytics](../log-analytics/log-analytics-get-started.md). 
 * Identyfikator zasobu dla konta usługi Azure Automation.
-
 
 Aby znaleźć identyfikator zasobu dla konta usługi Azure Automation:
 
@@ -159,7 +160,18 @@ Na koniec można wizualizować historię zadania, wraz z upływem czasu. To zapy
 `AzureDiagnostics | where ResourceProvider == "MICROSOFT.AUTOMATION" and Category == "JobLogs" and ResultType != "started" | summarize AggregatedValue = count() by ResultType, bin(TimeGenerated, 1h)`  
 <br> ![Wykres stanu historycznych zadanie analizy dzienników](media/automation-manage-send-joblogs-log-analytics/historical-job-status-chart.png)<br>
 
+## <a name="remove-diagnostic-settings"></a>Usuwanie ustawień diagnostycznych
+
+Aby usunąć ustawienia diagnostyczne konta usługi Automation, uruchom następujące polecenia:
+
+```powershell-interactive
+$automationAccountId = "[resource id of your automation account]"
+
+Remove-AzureRmDiagnosticSetting -ResourceId $automationAccountId
+```
+
 ## <a name="summary"></a>Podsumowanie
+
 Wysyłając automatyzacji zadań stan strumienia danych i do usługi Log Analytics, można uzyskać lepszy wgląd w stan zadań usługi Automation przez:
 + Konfigurowanie alertów, aby otrzymywać powiadomienia, gdy występuje problem.
 + Przy użyciu niestandardowych widoków i zapytania wyszukiwania, aby zwizualizować wyniki elementu runbook, stan zadania elementu runbook i inne powiązane, kluczowe wskaźniki lub metryk.  

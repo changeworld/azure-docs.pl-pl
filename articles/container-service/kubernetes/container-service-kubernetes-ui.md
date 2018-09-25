@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie klastrem Azure Kubernetes z interfejsu użytkownika sieci web
-description: Przy użyciu interfejsu użytkownika sieci web Kubernetes usługi kontenera platformy Azure
+title: Zarządzanie klastrem Kubernetes na platformie Azure przy użyciu interfejsu użytkownika sieci web
+description: Przy użyciu interfejsu użytkownika sieci web rozwiązania Kubernetes w usłudze Azure Container Service
 services: container-service
 author: bburns
 manager: jeconnoc
@@ -9,32 +9,32 @@ ms.topic: article
 ms.date: 02/21/2017
 ms.author: bburns
 ms.custom: mvc
-ms.openlocfilehash: 0680551d3a87c942574a4eac70fa380cc1e9b5d9
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: b5079ddb63f468f924577f61adda6a3056ec8c6c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32163252"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998529"
 ---
-# <a name="using-the-kubernetes-web-ui-with-azure-container-service"></a>Przy użyciu interfejsu użytkownika sieci web Kubernetes z usługi kontenera platformy Azure
+# <a name="using-the-kubernetes-web-ui-with-azure-container-service"></a>Usługa Azure Container Service przy użyciu interfejsu użytkownika sieci web rozwiązania Kubernetes
 
 [!INCLUDE [aks-preview-redirect.md](../../../includes/aks-preview-redirect.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym przewodniku założono, że [utworzony klaster Kubernetes za pomocą usługi kontenera platformy Azure](container-service-kubernetes-walkthrough.md).
+W tym przewodniku przyjęto założenie, iż [utworzone za pomocą usługi Azure Container Service klastra Kubernetes](container-service-kubernetes-walkthrough.md).
 
 
-Założono również, że masz 2.0 interfejsu wiersza polecenia platformy Azure i `kubectl` narzędzia są zainstalowane.
+Zakłada również, że masz wiersza polecenia platformy Azure i `kubectl` narzędzia są zainstalowane.
 
-Możesz przetestować, jeśli masz `az` zainstalowany, uruchamiając narzędzie:
+Można sprawdzić, czy `az` zainstalowane, uruchamiając narzędzie:
 
 ```console
 $ az --version
 ```
 
-Jeśli nie masz `az` narzędzie zainstalowane, nie ma instrukcji [tutaj](https://github.com/azure/azure-cli#installation).
+Jeśli nie masz `az` narzędzie jest zainstalowane, istnieją instrukcje [tutaj](https://github.com/azure/azure-cli#installation).
 
-Możesz przetestować, jeśli masz `kubectl` zainstalowany, uruchamiając narzędzie:
+Można sprawdzić, czy `kubectl` zainstalowane, uruchamiając narzędzie:
 
 ```console
 $ kubectl version
@@ -48,83 +48,83 @@ $ az acs kubernetes install-cli
 
 ## <a name="overview"></a>Przegląd
 
-### <a name="connect-to-the-web-ui"></a>Nawiązania połączenia interfejsu użytkownika sieci web
-Interfejs użytkownika sieci web Kubernetes można uruchomić, uruchamiając:
+### <a name="connect-to-the-web-ui"></a>Nawiązać połączenie z interfejsu użytkownika sieci web
+Możesz uruchomić interfejs użytkownika sieci web rozwiązania Kubernetes, uruchamiając:
 
 ```console
 $ az acs kubernetes browse -g [Resource Group] -n [Container service instance name]
 ```
 
-Należy to otwarcie przeglądarki sieci web skonfigurowana do komunikowania się bezpieczne połączenie komputera lokalnego do interfejsu użytkownika sieci web Kubernetes serwera proxy.
+Powinny to otwarcie przeglądarki sieci web skonfigurowany tak, aby komunikować się z serwera proxy bezpieczne połączenie komputera lokalnego do interfejsu użytkownika sieci web rozwiązania Kubernetes.
 
 ### <a name="create-and-expose-a-service"></a>Utworzyć i uwidocznić usługę
-1. W Kubernetes interfejsu użytkownika sieci web, kliknij przycisk **Utwórz** przycisk w górnym prawym okienku.
+1. W sieci web rozwiązania Kubernetes interfejsu użytkownika, kliknij przycisk **Utwórz** przycisk w prawym górnym oknie po prawej stronie.
 
-    ![Kubernetes Tworzenie interfejsu użytkownika](./media/container-service-kubernetes-ui/create.png)
+    ![Kubernetes tworzenia interfejsu użytkownika](./media/container-service-kubernetes-ui/create.png)
 
-    Zostanie otwarte okno dialogowe której będzie można rozpocząć tworzenie aplikacji.
+    Otwarcie okna dialogowego, gdzie możesz rozpocząć tworzenie aplikacji.
 
-2. Nadaj nazwę `hello-nginx`. Użyj [ `nginx` kontenera z Docker](https://hub.docker.com/_/nginx/) i wdrażanie trzech replik tej usługi sieci web.
+2. Nadaj jej nazwę `hello-nginx`. Użyj [ `nginx` kontenera docker,](https://hub.docker.com/_/nginx/) i wdrażanie trzech replik tej usługi sieci web.
 
-    ![Okno dialogowe Tworzenie Kubernetes Pod](./media/container-service-kubernetes-ui/nginx.png)
+    ![Okno dialogowe Tworzenie zasobnika Kubernetes](./media/container-service-kubernetes-ui/nginx.png)
 
-3. W obszarze **usługi**, wybierz pozycję **zewnętrznych** i wprowadź port 80.
+3. W obszarze **usługi**, wybierz opcję **zewnętrznych** i wprowadź numer portu 80.
 
-    To ustawienie zrównoważenie obciążenia ruchu do trzech replik.
+    To ustawienie równoważy obciążenie ruchu do trzech replik.
 
     ![Okno dialogowe Tworzenie usługi Kubernetes](./media/container-service-kubernetes-ui/service.png)
 
-4. Kliknij przycisk **Wdróż** do wdrażania tych kontenerów i usług.
+4. Kliknij przycisk **Wdróż** na wdrażanie tych kontenerów i usług.
 
-    ![Wdrażanie Kubernetes](./media/container-service-kubernetes-ui/deploy.png)
+    ![Wdrażanie rozwiązania Kubernetes](./media/container-service-kubernetes-ui/deploy.png)
 
-### <a name="view-your-containers"></a>Wyświetl kontenerów
+### <a name="view-your-containers"></a>Wyświetlanie Twoich kontenerów
 Po kliknięciu **Wdróż**, interfejs użytkownika przedstawiono usługi wdrażania:
 
-![Stan Kubernetes](./media/container-service-kubernetes-ui/status.png)
+![Stan usługi Kubernetes](./media/container-service-kubernetes-ui/status.png)
 
-Można wyświetlić stan każdego obiektu Kubernetes okręgu po lewej stronie interfejsu użytkownika, w obszarze **stanowiskami**. Jeśli jest częściowo koło obiektu nadal jest wdrażana. Gdy obiekt pełni zostanie wdrożona, Wyświetla zielony znacznik wyboru:
+Możesz wyświetlić stan każdego obiektu Kubernetes w okręgu w obszarze po lewej stronie interfejsu użytkownika, **zasobników**. Jeśli jest częściowo pełny okrąg, a następnie obiekt jego wdrażanie nadal trwa. Gdy obiekt jest w pełni wdrożony, Wyświetla zielony znacznik wyboru:
 
-![Kubernetes wdrożony](./media/container-service-kubernetes-ui/deployed.png)
+![Wdrożone usługi Kubernetes](./media/container-service-kubernetes-ui/deployed.png)
 
-Gdy wszystko jest uruchomiona, kliknij jeden z Twojej stanowiskami, aby zobaczyć szczegóły dotyczące uruchomionej usługi sieci web.
+Gdy wszystko jest uruchomiona, kliknij jeden z zasobników w taki sposób, aby wyświetlić szczegóły dotyczące uruchomionej usługi sieci web.
 
-![Stanowiskami Kubernetes](./media/container-service-kubernetes-ui/pods.png)
+![Zasobników Kubernetes](./media/container-service-kubernetes-ui/pods.png)
 
-W **stanowiskami** widoku wyświetlane są informacje o kontenery w pod, jak również zasoby Procesora i pamięci używane przez te kontenerów:
+W **zasobników** widoku znajdują się informacje o kontenerach w zasobnik, a także zasoby Procesora i pamięci używane przez tych kontenerów:
 
-![Kubernetes zasobów](./media/container-service-kubernetes-ui/resources.png)
+![Zasoby platformy Kubernetes](./media/container-service-kubernetes-ui/resources.png)
 
-Jeśli nie widzisz zasoby, może być konieczne Poczekaj kilka minut dla danych monitorowania propagacji.
+Jeśli nie widzisz zasobów może być konieczne Poczekaj kilka minut, zanim dane monitorowania do propagowania.
 
-Aby wyświetlić dzienniki dla kontenera sieci, kliknij przycisk **Sprawdź dzienniki**.
+Aby wyświetlić dzienniki dla kontenera usługi, kliknij przycisk **wyświetlanie dzienników**.
 
-![Dzienniki Kubernetes](./media/container-service-kubernetes-ui/logs.png)
+![Dzienniki platformy Kubernetes](./media/container-service-kubernetes-ui/logs.png)
 
 ### <a name="viewing-your-service"></a>Wyświetlanie usługi
-Poza uruchamianiem kontenerów, interfejsu użytkownika Kubernetes utworzył zewnętrzne `Service` który udostępnia usługi równoważenia obciążenia, aby przenieść ruchu kontenery w klastrze.
+Oprócz uruchamiania kontenerów, interfejs użytkownika rozwiązania Kubernetes utworzył zewnętrznego `Service` która aprowizuje modułu równoważenia obciążenia, aby przenieść ruch do kontenerów w klastrze.
 
-W okienku nawigacji po lewej stronie kliknij **usług** Aby wyświetlić wszystkie usługi (powinien istnieć tylko jeden).
+W okienku nawigacji po lewej stronie kliknij **usług** do wyświetlenia wszystkich usług (powinien istnieć tylko jeden).
 
-![Kubernetes usług](./media/container-service-kubernetes-ui/service-deployed.png)
+![Usługi rozwiązania Kubernetes](./media/container-service-kubernetes-ui/service-deployed.png)
 
-W tym widoku powinny być widoczne punkt końcowy zewnętrzne (adres IP), która została przydzielona do usługi.
-Kliknięcie tego adresu IP, powinna zostać wyświetlona z kontener Nginx uruchomiony za usługą równoważenia obciążenia.
+W tym widoku powinny być widoczne zewnętrznego punktu końcowego (adresu IP), która została przydzielona do usługi.
+Kliknięcie tego adresu IP powinien zostać wyświetlony kontener Nginx uruchomiony za modułem równoważenia obciążenia.
 
-![Widok nginx](./media/container-service-kubernetes-ui/nginx-page.png)
+![Widok serwera nginx](./media/container-service-kubernetes-ui/nginx-page.png)
 
 ### <a name="resizing-your-service"></a>Zmiana rozmiaru usługi
-Oprócz wyświetlania obiektów w interfejsie użytkownika, możesz edytować i aktualizowanie obiektów interfejsu API Kubernetes.
+Oprócz wyświetlania obiektów w interfejsie użytkownika, można edytować i aktualizowanie obiektów interfejsu API rozwiązania Kubernetes.
 
-Najpierw kliknij **wdrożeń** w lewym okienku nawigacji do wdrożenia usługi.
+Najpierw kliknij pozycję **wdrożeń** w okienku nawigacji po lewej stronie, aby zobaczyć wdrożenia usługi.
 
-Po przejściu do tego widoku, kliknij zestawu replik, a następnie kliknij przycisk **Edytuj** na pasku nawigacyjnym górny:
+Po otwarciu tego widoku, kliknij pozycję zestawu replik, a następnie kliknij **Edytuj** na pasku nawigacyjnym górny:
 
-![Edytuj Kubernetes](./media/container-service-kubernetes-ui/edit.png)
+![Edytuj platformy Kubernetes](./media/container-service-kubernetes-ui/edit.png)
 
-Edytuj `spec.replicas` ono być `2`i kliknij przycisk **aktualizacji**.
+Edytuj `spec.replicas` pole było `2`i kliknij przycisk **aktualizacji**.
 
-Powoduje to, że liczba replik można usunąć z dwoma usuwając jeden z stanowiskami.
+To powoduje, że liczba replik, można usunąć z dwoma przez usunięcie jednego z zasobników.
 
  
 

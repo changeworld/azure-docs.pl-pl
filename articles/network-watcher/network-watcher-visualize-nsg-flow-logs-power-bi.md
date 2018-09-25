@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: mareat
-ms.openlocfilehash: 8f5bb54e12348fd915b2c4413bbacdc083a2a879
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: bcd67d2e879d199296289dbaef2141ba659b2412
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059716"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032684"
 ---
 # <a name="visualizing-network-security-group-flow-logs-with-power-bi"></a>Dzienniki przepływu visualizing sieciową grupę zabezpieczeń z usługą Power BI
 
@@ -54,7 +54,7 @@ Musi również mieć zainstalowanego na maszynie oraz wystarczającą ilością 
 1. Pobierz i otwórz następujący szablon usługi Power BI w aplikacja Power BI Desktop [szablonu dzienników przepływów sieciowych obserwatora usługi Power BI](https://aka.ms/networkwatcherpowerbiflowlogstemplate)
 1. Podaj wymagane parametry zapytania
     1. **StorageAccountName** — Określa nazwę konta magazynu zawierające dzienniki przepływu sieciowych grup zabezpieczeń, które chcesz załadować i wizualizację.
-    1. **NumberOfLogFiles** — określa liczbę plików dziennika, które chcesz pobrać i wizualizacji w usłudze Power BI. Na przykład, jeśli określono 50 50 najnowszych plików dziennika. FF mamy 2 sieciowych grup zabezpieczeń włączone i skonfigurowane do wysyłania dzienników przepływu sieciowych grup zabezpieczeń do tego konta, a następnie mogą być wyświetlane w ciągu ostatnich 25 godzin dzienników.
+    1. **NumberOfLogFiles** — określa liczbę plików dziennika, które chcesz pobrać i wizualizacji w usłudze Power BI. Na przykład, jeśli określono 50 50 najnowszych plików dziennika. Jeśli będziemy mieć 2 sieciowych grup zabezpieczeń włączone i skonfigurowane do wysyłania dzienników przepływu sieciowych grup zabezpieczeń do tego konta, mogą być wyświetlane w ciągu ostatnich 25 godzin dzienników.
 
     ![główne usługi Power BI][2]
 

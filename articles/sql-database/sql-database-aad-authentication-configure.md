@@ -2,21 +2,22 @@
 title: Konfigurowanie uwierzytelniania usługi Azure Active Directory - SQL | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak połączyć się z bazy danych SQL Database, wystąpienia zarządzanego i SQL Data Warehouse przy użyciu usługi Azure Active Directory Authentication — po skonfigurowaniu usługi Azure AD.
 services: sql-database
-author: GithubMirek
-manager: craigg
 ms.service: sql-database
-ms.prod_service: sql-database, sql-data-warehouse
-ms.custom: security
+ms.subservice: security
+ms.custom: data warehouse
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 03/07/2018
+author: GithubMirek
 ms.author: mireks
-ms.reviewer: vanto
-ms.openlocfilehash: f04846275fbad1673a00d820e8b44adc402b0242
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.reviewer: vanto, carlrab
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: efec5b3d8ac2ec3f757d06e88df65fe5f50aae17
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294207"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064309"
 ---
 # <a name="configure-and-manage-azure-active-directory-authentication-with-sql-database-managed-instance-or-sql-data-warehouse"></a>Konfigurowanie i zarządzanie nimi w usłudze Azure Active Directory uwierzytelnianie przy użyciu bazy danych SQL Database, wystąpienia zarządzanego lub SQL Data Warehouse
 
@@ -195,10 +196,10 @@ Administrator usługi Azure Active Directory można również udostępniać za p
 Można również udostępniać administratora usługi Azure AD, wywołując następujących poleceń interfejsu wiersza polecenia:
 | Polecenie | Opis |
 | --- | --- |
-|[Utwórz az sql server ad administratora](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_create) |Aprowizuje administrator usługi Azure Active Directory dla serwera Azure SQL lub usługi Azure SQL Data Warehouse. (Musi być z bieżącej subskrypcji). |
-|[AZ sql server ad admin delete](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_delete) |Usuwa administratora usługi Azure Active Directory dla serwera Azure SQL lub usługi Azure SQL Data Warehouse. |
-|[AZ sql server administrator usługi ad listy](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_list) |Zwraca informacje o obecnie skonfigurowane dla serwera Azure SQL lub usługi Azure SQL Data Warehouse administratora usługi Azure Active Directory. |
-|[Aktualizacja ad admin az sql server](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az_sql_server_ad_admin_update) |Aktualizuje administratora usługi Active Directory dla serwera Azure SQL lub usługi Azure SQL Data Warehouse. |
+|[Utwórz az sql server ad administratora](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-create) |Aprowizuje administrator usługi Azure Active Directory dla serwera Azure SQL lub usługi Azure SQL Data Warehouse. (Musi być z bieżącej subskrypcji). |
+|[AZ sql server ad admin delete](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-delete) |Usuwa administratora usługi Azure Active Directory dla serwera Azure SQL lub usługi Azure SQL Data Warehouse. |
+|[AZ sql server administrator usługi ad listy](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-list) |Zwraca informacje o obecnie skonfigurowane dla serwera Azure SQL lub usługi Azure SQL Data Warehouse administratora usługi Azure Active Directory. |
+|[Aktualizacja ad admin az sql server](https://docs.microsoft.com/cli/azure/sql/server/ad-admin#az-sql-server-ad-admin-update) |Aktualizuje administratora usługi Active Directory dla serwera Azure SQL lub usługi Azure SQL Data Warehouse. |
 
 Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia, zobacz [SQL — az sql](https://docs.microsoft.com/cli/azure/sql/server).  
 

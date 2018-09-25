@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: hermannd
-ms.openlocfilehash: 5ce80e85f00c4c3542bf61e910baec9ccd635bcd
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 6355a7ce203f2bf75b5c93d225502f961deeee43
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161309"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032088"
 ---
 # <a name="quickstart-manual-installation-of-single-instance-sap-hana-on-azure-vms"></a>Szybki Start: Instalacja ręczna jednego wystąpienia środowiska SAP Hana na maszynach wirtualnych platformy Azure
 ## <a name="introduction"></a>Wprowadzenie
@@ -93,6 +93,11 @@ Azure typy maszyn wirtualnych, które są certyfikowane przez firmę SAP dla opr
 >Integracja SAP, Linux, Azure jest obsługiwana tylko w usłudze Azure Resource Manager i nie klasycznego modelu wdrażania. 
 
 ## <a name="manual-installation-of-sap-hana"></a>Instalacja ręczna oprogramowania SAP Hana
+
+> [!IMPORTANT]
+> Upewnij się, że system operacyjny, należy wybrać w określonych typów maszyn wirtualnych, którego używasz z certyfikatem platformy SAP Hana SAP. Lista oprogramowania SAP HANA certyfikowane typy maszyn wirtualnych i system operacyjny w wersji dla tych można wyszukiwać [platform certyfikowane IaaS programu SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Upewnij się, że kliknij przycisk Szczegóły typu maszyny Wirtualnej, aby uzyskać pełną listę oprogramowania SAP HANA na liście obsługiwanych wersji systemu operacyjnego dla określonego typu maszyny Wirtualnej. Należy pamiętać, że w przykładzie w tym dokumencie użyto wersji systemu operacyjnego w systemie SLES, która nie jest obsługiwana przez firmę SAP dla oprogramowania SAP HANA na maszynach wirtualnych serii M.
+>
+
 Ten przewodnik zawiera opis sposobu ręcznie zainstalować oprogramowanie SAP HANA na maszynach wirtualnych platformy Azure na dwa sposoby:
 
 * Za pomocą Menedżera inicjowania obsługi oprogramowania SAP (SWPM) jako część instalacji rozproszonej NetWeaver w kroku "Instalacja wystąpienia bazy danych"

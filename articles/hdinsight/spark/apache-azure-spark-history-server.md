@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 09/14/2018
-ms.openlocfilehash: 65617aa87ec8f28b13951f1a2196eb2ccedf5c85
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 4627593e4ab96c63423a7afd6152f3a004bc6c3f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729760"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042367"
 ---
 # <a name="use-extended-spark-history-server-to-debug-and-diagnose-spark-applications"></a>Użyj rozszerzonej serwer historii platformy Spark, aby debugowanie i diagnozowanie aplikacji Spark
 
@@ -297,7 +297,7 @@ Do uaktualnienia przy użyciu poprawek, należy użyć poniższego skryptu, któ
 
 **Przykład**:
 
-`upgrade_spark_enhancement.sh https://${account_name}.blob.core.windows.net/packages/jars/spark-enhancement-${version}.tgz` 
+`upgrade_spark_enhancement.sh https://${account_name}.blob.core.windows.net/packages/jars/spark-enhancement-${version}.jar` 
 
 **Aby użyć pliku bash z witryny Azure portal**
 

@@ -1,6 +1,6 @@
 ---
-title: Tworzenie maszyny wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure 1.0 | Microsoft Docs
-description: Tworzenie maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu interfejsu wiersza polecenia platformy Azure 1.0
+title: Tworzenie maszyny Wirtualnej systemu Linux przy użyciu platformy Azure klasyczny interfejs wiersza polecenia | Dokumentacja firmy Microsoft
+description: Tworzenie maszyny Wirtualnej z systemem Linux na platformie Azure przy użyciu platformy Azure klasyczny interfejs wiersza polecenia
 services: virtual-machines-linux
 documentationcenter: ''
 author: vlivech
@@ -14,23 +14,23 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2016
 ms.author: v-livech
-ms.openlocfilehash: ea9eab1a02a29005917848ed54ab8ba160b89b63
-ms.sourcegitcommit: 5b2ac9e6d8539c11ab0891b686b8afa12441a8f3
+ms.openlocfilehash: 94362256dfb5b8deff233f7c575d0720f29eec5c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/06/2018
-ms.locfileid: "30901813"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987856"
 ---
-# <a name="create-a-linux-vm-using-the-azure-cli-10"></a>Tworzenie maszyny wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure 1.0
+# <a name="create-a-linux-vm-using-the-azure-classic-cli"></a>Tworzenie maszyny Wirtualnej systemu Linux przy użyciu platformy Azure klasyczny interfejs wiersza polecenia
 
 Ten artykuł pokazuje, jak szybko wdrożyć maszynę wirtualną systemu Linux na platformie Azure przy użyciu polecenia `azure vm quick-create` w interfejsie wiersza polecenia (CLI) platformy Azure. Polecenie `quick-create` umożliwia wdrożenie maszyny wirtualnej wewnątrz podstawowej, bezpiecznej infrastruktury, której można używać do prototypowania lub szybkiego testowania koncepcji.
 
 > [!NOTE]
-Aby utworzyć maszynę wirtualną przy użyciu interfejsu wiersza polecenia platformy Azure 2.0, zobacz [Tworzenie maszyny wirtualnej za pomocą interfejsu wiersza polecenia platformy Azure](../windows/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Aby utworzyć Maszynę wirtualną przy użyciu wiersza polecenia platformy Azure, zobacz [Utwórz Maszynę wirtualną przy użyciu wiersza polecenia platformy Azure](../windows/quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 Szybkie wdrożenie maszyny wirtualnej z systemem Linux jest możliwe również przy użyciu witryny [Azure Portal](quick-create-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Wymaga artykułu [SSH publiczne i prywatne pliki klucza](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+W artykule [SSH pliki publicznych i prywatnych kluczy](mac-create-ssh-keys.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 

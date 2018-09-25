@@ -9,12 +9,12 @@ services: iot-edge
 ms.topic: conceptual
 ms.date: 08/27/2018
 ms.author: kgremban
-ms.openlocfilehash: 56223b2ed8e9d9b1a08f5313940920113a650bfe
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: f515ddc58a9f9b434e40f44ca7cc50d738ed69f0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128336"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993123"
 ---
 # <a name="install-the-azure-iot-edge-runtime-on-linux-x64"></a>Instalowanie środowiska uruchomieniowego usługi Azure IoT Edge w systemie Linux (x64)
 
@@ -202,6 +202,8 @@ sudo iotedge list
 Uruchomienie poleceń `iotedge` wymaga podniesionych uprawnień. Po zainstalowaniu środowiska uruchomieniowego, wyloguj się z komputera, a następnie zaloguj się ponownie na automatyczne aktualizowanie uprawnień. W międzyczasie użyj **"sudo"** przed dowolnego `iotedge` polecenia.
 
 Na urządzeniach z zasobu ograniczone, zdecydowanie zaleca się ustawienie *OptimizeForPerformance* zmiennej środowiskowej, aby *false* zgodnie z instrukcjami w [przewodnik rozwiązywania problemów ][lnk-trouble].
+
+Jeśli sieci, na którym działa serwer proxy, wykonaj kroki opisane w [skonfigurować urządzenie usługi IoT Edge do komunikowania się za pośrednictwem serwera proxy](how-to-configure-proxy-support.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

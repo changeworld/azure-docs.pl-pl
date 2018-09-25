@@ -3,19 +3,19 @@ title: Uaktualnianie usługi QnA Maker — QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Można uaktualnić poszczególne składniki stosu usługi QnA Maker po pierwszym utworzeniu.
 services: cognitive-services
-author: nstulasi
+author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: saneppal
-ms.openlocfilehash: 6d8940389e72ee3924c036e8d4833a20464d628e
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.author: tulasim
+ms.openlocfilehash: 8542b1f6dfe031de58ea6eeb931027ee03bd81f2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543279"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47030969"
 ---
 # <a name="upgrade-your-qna-maker-service"></a>Uaktualnianie usługi QnA Maker
 Można uaktualnić poszczególne składniki stosu usługi QnA Maker po pierwszym utworzeniu. Zobacz szczegóły dotyczące składników zależnych i wybór jednostki SKU [tutaj](https://aka.ms/qnamaker-docs-capacity).

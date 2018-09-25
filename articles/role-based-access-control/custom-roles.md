@@ -15,12 +15,12 @@ ms.date: 08/07/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 002eb9b70c2f3f9d0f6633b2d81425c688495d19
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 26f696c2f54d9cb8a176fe079101e26384ac0a6e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39714057"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034454"
 ---
 # <a name="custom-roles-in-azure"></a>Role niestandardowe na platformie Azure
 
@@ -100,7 +100,7 @@ Rola niestandardowa ma następujące właściwości.
 | `NotActions` | Nie | Ciąg] | Tablica ciągów, który określa operacje zarządzania, które są wykluczone z dozwolonych `Actions`. Aby uzyskać więcej informacji, zobacz [NotActions](role-definitions.md#notactions). |
 | `DataActions` | Nie | Ciąg] | Tablica ciągów określa operacje danych, dozwolone przez rolę do wykonania na danych w obrębie tego obiektu. Aby uzyskać więcej informacji, zobacz [elementy DataActions (wersja zapoznawcza)](role-definitions.md#dataactions-preview). |
 | `NotDataActions` | Nie | Ciąg] | Tablica ciągów określa operacje danych, które są wykluczone z dozwolonych `DataActions`. Aby uzyskać więcej informacji, zobacz [NotDataActions (wersja zapoznawcza)](role-definitions.md#notdataactions-preview). |
-| `AssignableScopes` | Yes | Ciąg] | Tablica ciągów określa zakresów, że rola niestandardowa jest dostępne do przypisania. Obecnie nie można ustawić na zakres głównego (`"/"`) lub zakres grupy zarządzania. Aby uzyskać więcej informacji, zobacz [AssignableScopes](role-definitions.md#assignablescopes) i [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../azure-resource-manager/management-groups-overview.md#custom-rbac-role-definition-and-assignment). |
+| `AssignableScopes` | Yes | Ciąg] | Tablica ciągów określa zakresów, że rola niestandardowa jest dostępne do przypisania. Obecnie nie można ustawić na zakres głównego (`"/"`) lub zakres grupy zarządzania. Aby uzyskać więcej informacji, zobacz [AssignableScopes](role-definitions.md#assignablescopes) i [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../governance/management-groups/index.md#custom-rbac-role-definition-and-assignment). |
 
 ## <a name="who-can-create-delete-update-or-view-a-custom-role"></a>Kto może tworzyć, usunąć, zaktualizować lub wyświetlić rolę niestandardową
 

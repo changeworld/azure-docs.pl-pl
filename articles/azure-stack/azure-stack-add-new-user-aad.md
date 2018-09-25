@@ -12,40 +12,51 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 02/21/2018
+ms.date: 09/17/2018
 ms.author: jeffgilb
 ms.reviewer: unknown
-ms.openlocfilehash: c312658750c1e9ef024a837ccc16e5cd5be8a5ef
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 9a4d7200a2bc2445fcdfefc0332d67a045b5a2e1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35940552"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038021"
 ---
 # <a name="add-a-new-azure-stack-tenant-account-in-azure-active-directory"></a>Dodaj nowe konto dzierżawy usługi Azure Stack w usłudze Azure Active Directory
+
 Po [wdrażania usługi Azure Stack Development Kit](azure-stack-run-powershell-script.md), musisz mieć konto użytkownika dzierżawy, możesz eksplorować portalu dzierżawcy i przetestować oferty i plany. Można utworzyć konta dzierżawy przez [przy użyciu witryny Azure portal](#create-an-azure-stack-tenant-account-using-the-azure-portal) lub [przy użyciu programu PowerShell](#create-an-azure-stack-tenant-account-using-powershell).
 
 ## <a name="create-an-azure-stack-tenant-account-using-the-azure-portal"></a>Utwórz konto dzierżawy usługi Azure Stack przy użyciu witryny Azure portal
+
 Musisz mieć subskrypcję platformy Azure za pomocą witryny Azure portal.
 
 1. Zaloguj się do [Azure](https://portal.azure.com).
-2. Na pasku nawigacyjnym po lewej stronie Microsoft Azure, kliknij **usługi Active Directory**.
-3. Na liście katalog kliknij katalog, który chcesz użyć dla usługi Azure Stack lub utworzyć nową.
-4. Na tej stronie katalogu kliknij **użytkowników**.
-5. Kliknij pozycję **Dodaj użytkownika**.
-6. W **Dodaj użytkownika** kreatora **typ użytkownika** wybierz **nowy użytkownik w organizacji**.
-7. W **nazwa_użytkownika** wpisz nazwę użytkownika.
-8. W **@** , wybierz odpowiedni wpis.
-9. Kliknij strzałkę dalej.
-10. W **profilu użytkownika** strony kreatora, a typ **imię**, **nazwisko**, i **nazwę wyświetlaną**.
-11. W **roli** wybierz **użytkownika**.
-12. Kliknij strzałkę dalej.
-13. Na **Uzyskaj hasło tymczasowe** kliknij **Utwórz**.
-14. Kopiuj **nowe hasło**.
-15. Zaloguj się do systemu Microsoft Azure przy użyciu nowego konta. Zmień hasło po wyświetleniu monitu.
-16. Zaloguj się do `https://portal.local.azurestack.external` przy użyciu nowego konta, aby wyświetlić portalu dzierżawcy.
+2. Na pasku nawigacyjnym po lewej stronie wybierz **usługi Active Directory** i przejdź do katalogu, którego chcesz użyć dla usługi Azure Stack lub utworzyć nową.
+3. Wybierz **usługi Azure Active Directory** > **użytkowników** > **nowego użytkownika**.
+
+    ![Użytkownicy — Wszyscy użytkownicy strony za pomocą nowego użytkownika z wyróżnioną pozycją](media/azure-stack-add-new-user-aad/new-user-all-users.png)
+
+4. Na **użytkownika** strony, wprowadź wymagane informacje.
+
+    ![Dodawanie nowego użytkownika, strona użytkownika o informacje o użytkowniku](media/azure-stack-add-new-user-aad/new-user-user.png)
+
+    - **Nazwa (wymagane).** Imię i nazwisko nowego użytkownika. Na przykład Joanna Parker.
+    - **Nazwa użytkownika (wymagane).** Nazwa użytkownika nowego użytkownika. Na przykład mary@contoso.com.
+        Składowa domeny nazwa użytkownika, należy użyć albo nazwa wstępnej domyślnej domeny, <_NazwaDomeny_>. onmicrosoft.com lub niestandardową nazwę domeny, taką jak contoso.com. Aby uzyskać więcej informacji na temat tworzenia niestandardowej nazwy domeny, zobacz [sposób dodawania niestandardowej nazwy domeny do usługi Azure Active Directory](../active-directory/fundamentals/add-custom-domain.md).
+    - **Profil.** Opcjonalnie można dodać więcej informacji o użytkowniku. Można również dodać informacje o użytkowniku w późniejszym czasie. Aby uzyskać więcej informacji na temat dodawania informacji o użytkowniku, zobacz [jak dodać lub zmienić informacje o profilu użytkownika](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
+    - **Rola katalogu.**  Wybierz **użytkownika**.
+
+5. Sprawdź **Pokaż hasło** i skopiuj hasło wygenerowane automatycznie w **hasło** pole. To hasło będzie potrzebne dla początkowego procesu logowania.
+
+6. Wybierz pozycję **Utwórz**.
+
+    Użytkownik zostanie utworzony i dodany do dzierżawy usługi Azure AD.
+
+7. Zaloguj się do portalu Microsoft Azure przy użyciu nowego konta. Zmień hasło po wyświetleniu monitu.
+8. Zaloguj się do `https://portal.local.azurestack.external` przy użyciu nowego konta, aby wyświetlić portalu dzierżawcy.
 
 ## <a name="create-an-azure-stack-tenant-account-using-powershell"></a>Utwórz konto dzierżawy usługi Azure Stack przy użyciu programu PowerShell
+
 Jeśli nie masz subskrypcji platformy Azure, nie można użyć witryny Azure portal, aby dodać konto użytkownika dzierżawy. W takim przypadku można zamiast tego użyj usługi Azure Active Directory modułu dla Windows PowerShell.
 
 > [!NOTE]

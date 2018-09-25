@@ -4,7 +4,7 @@ description: Informacje o sposobie tworzenia i debugowania potoków usługi Data
 author: douglaslMS
 ms.author: douglasl
 manager: craigg
-ms.date: 05/14/2018
+ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: data-factory
 services: data-factory
@@ -12,12 +12,12 @@ documentationcenter: ''
 ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.openlocfilehash: a4d3f991dbba8a686c7242aabff11d9228300777
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: ca1ca616fdd097811b3f02285706b3ae8977d737
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865169"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034139"
 ---
 # <a name="iterative-development-and-debugging-with-azure-data-factory"></a>Iteracyjne projektowanie i debugowania przy użyciu usługi Azure Data Factory
 
@@ -40,13 +40,21 @@ Po pomyślnym przebiegu testowego, Dodaj więcej działań do potoku i Kontynuuj
 
 ![Anuluj przebieg testu](media/iterative-development-debugging/iterative-development-image3.png)
 
-Podczas przebiegów testów, nie trzeba opublikować zmiany w usłudze data factory, przed wybraniem **debugowania**. Jest to przydatne w scenariuszach, w którym chcesz upewnić się, czy zmiany działają zgodnie z oczekiwaniami, przed uaktualnieniem przepływ fabryki danych.
+Podczas przebiegów testów, nie trzeba opublikować zmiany w usłudze data factory, przed wybraniem **debugowania**. Ta funkcja jest przydatne w scenariuszach, w którym chcesz upewnić się, czy zmiany działają zgodnie z oczekiwaniami, przed uaktualnieniem przepływ fabryki danych.
 
 ## <a name="more-info-about-debugging"></a>Więcej informacji o debugowaniu
 
 1. Inicjowane z przebiegów testowych **debugowania** możliwości nie są dostępne na liście **Monitor** kartę. Możesz tylko Zobacz uruchamia wyzwalane za pomocą **Wyzwól teraz**, **harmonogram**, lub **okno wirowania** Wyzwalacze w **Monitor** kartę. Możesz zobaczyć ostatnie testu inicjowane za pomocą **debugowania** możliwości są dostępne w **dane wyjściowe** okna na kanwie potoku.
 
 2. Wybieranie **debugowania** faktycznie uruchamia potok. Tak na przykład jeśli potok zawiera działanie kopiowania, przebieg testu kopiuje dane ze źródła do miejsca docelowego. Dlatego zaleca się używać foldery testowego w swoje działania kopiowania i innych działań, podczas debugowania. Po już debugowany potoku, przełącz się do rzeczywiste foldery, w których chcesz użyć w normalnych operacji.
+
+## <a name="visualizing-debug-runs"></a>Uruchamia wizualizowania debugowania
+
+Możesz wizualizować wszystkie przebiegi debugowania, które są w toku dla fabryki danych w jednym miejscu. Wybierz **uruchamia widoku debugowania** w prawym górnym rogu strony. Ta funkcja jest przydatne w scenariuszach, gdzie masz wzorca potoki uruchamiania debugowania uruchomień potoków podrzędnych, i chcesz, aby pojedynczy widok, aby wyświetlić uruchomienia aktywnego debugowania.
+
+![Wybierz ikonę przebiegi debugowania aktywnego widoku](media/iterative-development-debugging/view-debug-runs-image1.png)
+
+![Lista przykładów przebiegów aktywnego debugowania](media/iterative-development-debugging/view-debug-runs-image2.png)
 
 ## <a name="setting-breakpoints-for-debugging"></a>Ustawianie punktów przerwania do debugowania
 

@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/17/2018
 ms.author: cynthn
-ms.openlocfilehash: 2201455477af2bd871f8e8e401536d45af4a02f7
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2ec712dcce1295a91f552176ddcf6572d3f23ecc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294656"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993565"
 ---
 # <a name="log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Zaloguj się do maszyny wirtualnej z systemem Linux na platformie Azure przy użyciu uwierzytelniania usługi Azure Active Directory (wersja zapoznawcza)
 
@@ -59,7 +59,7 @@ Poniższych regionów platformy Azure są obecnie obsługiwane w okresie zapozna
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować i korzystać z interfejsu wiersza polecenia lokalnie, ten samouczek wymaga, czy korzystasz z wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować i korzystać z interfejsu wiersza polecenia lokalnie, ten samouczek wymaga, czy korzystasz z wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 ## <a name="create-a-linux-virtual-machine"></a>Utwórz maszynę wirtualną z systemem Linux
 
@@ -117,7 +117,7 @@ az role assignment create \
 > [!NOTE]
 > Jeśli Twoja domena usługi AAD i domena nazwa użytkownika logowania nie są zgodne, należy określić identyfikator obiektu konta użytkownika z *— assignee-object-id*, nie tylko nazwy użytkownika dla *— assignee*. Możesz uzyskać identyfikator obiektu dla tego konta użytkownika, za pomocą [listy użytkowników usługi ad az](/cli/azure/ad/user#az-ad-user-list).
 
-Aby uzyskać więcej informacji na temat zarządzania dostępem do zasobów subskrypcji platformy Azure przy użyciu kontroli RBAC, zobacz Korzystanie z [interfejsu wiersza polecenia platformy Azure w wersji 2.0](../../role-based-access-control/role-assignments-cli.md), [witryny Azure portal](../../role-based-access-control/role-assignments-portal.md), lub [programu Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
+Aby uzyskać więcej informacji na temat zarządzania dostępem do zasobów subskrypcji platformy Azure przy użyciu kontroli RBAC, zobacz Korzystanie z [wiersza polecenia platformy Azure](../../role-based-access-control/role-assignments-cli.md), [witryny Azure portal](../../role-based-access-control/role-assignments-portal.md), lub [programu Azure PowerShell](../../role-based-access-control/role-assignments-powershell.md).
 
 Można również skonfigurować usługi Azure AD, aby wymagać uwierzytelniania wieloskładnikowego dla określonego użytkownika zalogować się do maszyny wirtualnej systemu Linux. Aby uzyskać więcej informacji, zobacz [Rozpoczynanie pracy z usługą Azure Multi-Factor Authentication w chmurze](../../multi-factor-authentication/multi-factor-authentication-get-started-cloud.md).
 

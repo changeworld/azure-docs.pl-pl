@@ -1,6 +1,6 @@
 ---
 title: Zarządzanie przy użyciu interfejsu wiersza polecenia usługi Azure Key Vault | Dokumentacja firmy Microsoft
-description: Skorzystaj z tego artykułu w celu automatyzacji typowych zadań w usłudze Key Vault przy użyciu interfejsu wiersza polecenia 2.0
+description: Skorzystaj z tego artykułu w celu automatyzacji typowych zadań w usłudze Key Vault przy użyciu wiersza polecenia platformy Azure
 services: key-vault
 documentationcenter: ''
 author: barclayn
@@ -14,18 +14,17 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/28/2018
 ms.author: barclayn
-ms.openlocfilehash: f88e98561a88380fbe40ecc9627ffabe39b0071c
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 00d79462fcaad785820e3879079414c88c958a89
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44295178"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961488"
 ---
-# <a name="manage-key-vault-using-cli-20"></a>Zarządzanie przy użyciu interfejsu wiersza polecenia 2.0 w usłudze Key Vault
+# <a name="manage-key-vault-using-the-azure-cli"></a>Zarządzanie Key Vault przy użyciu wiersza polecenia platformy Azure 
 
-W tym artykule opisano, jak rozpocząć pracę z usługą Azure Key Vault, przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0. Informacje są widoczne na:
+W tym artykule opisano, jak rozpocząć pracę z usługą Azure Key Vault przy użyciu wiersza polecenia platformy Azure.  Informacje są widoczne na:
 
-- Wymagania wstępne
 - Jak utworzyć kontener ze wzmocnionymi zabezpieczeniami (magazyn) na platformie Azure
 - Dodawanie klucza, hasło lub certyfikat do magazynu kluczy
 - Rejestrowanie aplikacji w usłudze Azure Active Directory
@@ -50,7 +49,7 @@ Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpł
 Aby użyć polecenia wiersza polecenia platformy Azure, w tym artykule, musi mieć następujące elementy:
 
 * Subskrypcja platformy Microsoft Azure. Jeśli go nie masz, możesz [utworzyć konto bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial).
-* Interfejs wiersza polecenia w wersji 2.0 lub nowszej. Aby zainstalować najnowszą wersję, zobacz [Instalowanie i Konfigurowanie interfejsu wiersza polecenia dla wielu Platform Azure w wersji 2.0](/cli/azure/install-azure-cli).
+* Interfejs wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Aby zainstalować najnowszą wersję, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli).
 * Aplikacja, która zostanie skonfigurowana do używania klucza lub hasła utworzonego w tym artykule. Przykładowa aplikacja jest dostępna w [Centrum pobierania Microsoft](http://www.microsoft.com/download/details.aspx?id=45343). Aby uzyskać instrukcje zobacz dołączony plik Readme.
 
 ### <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>Uzyskiwanie pomocy przy użyciu interfejsu wiersza polecenia platformy Azure dla wielu Platform
@@ -67,7 +66,7 @@ az account set -h
 Można również przeczytać następujące artykuły, aby zapoznać się z usługą Azure Resource Manager w użyciu interfejsu wiersza polecenia dla wielu Platform Azure:
 
 * [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli)
-* [Wprowadzenie do interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/get-started-with-azure-cli)
+* [Rozpoczynanie pracy z interfejsem wiersza polecenia platformy Azure](/cli/azure/get-started-with-azure-cli)
 
 ## <a name="how-to-create-a-hardened-container-a-vault-in-azure"></a>Jak utworzyć kontener ze wzmocnionymi zabezpieczeniami (magazyn) na platformie Azure
 
@@ -200,7 +199,7 @@ Aplikacje używające magazynu kluczy muszą zostać uwierzytelnione przy użyci
 
 Aby uzyskać token, aplikacja musi przedstawić obie wartości usłudze Azure Active Directory. Jak aplikacja jest skonfigurowana w celu pobrania tokenu będzie zależeć od aplikacji. W przypadku [przykładowej aplikacji usługi Key Vault](https://www.microsoft.com/download/details.aspx?id=45343) właściciel aplikacji ustawia te wartości w pliku app.config.
 
-Aby uzyskać szczegółowe instrukcje dotyczące rejestrowania aplikacji w usłudze Azure Active Directory należy zapoznać się z artykułami pod tytułem [Integrowanie aplikacji z usługą Azure Active Directory](../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md), [w obsłudze portalu, aby utworzyć Azure Active Directory Katalog aplikacji i jednostki usługi, które mogą uzyskiwać dostęp do zasobów](../azure-resource-manager/resource-group-create-service-principal-portal.md), i [Tworzenie jednostki usługi platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/create-an-azure-service-principal-azure-cli).
+Aby uzyskać szczegółowe instrukcje dotyczące rejestrowania aplikacji w usłudze Azure Active Directory należy zapoznać się z artykułami pod tytułem [Integrowanie aplikacji z usługą Azure Active Directory](../active-directory/develop/active-directory-integrating-applications.md), [w obsłudze portalu, aby utworzyć Azure Active Directory Katalog aplikacji i jednostki usługi, które mogą uzyskiwać dostęp do zasobów](../azure-resource-manager/resource-group-create-service-principal-portal.md), i [Tworzenie jednostki usługi platformy Azure przy użyciu wiersza polecenia platformy Azure](/cli/azure/create-an-azure-service-principal-azure-cli).
 
 Aby zarejestrować aplikację w usłudze Azure Active Directory:
 

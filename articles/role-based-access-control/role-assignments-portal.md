@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 09/05/2018
 ms.author: rolyon
 ms.reviewer: bagovind
-ms.openlocfilehash: 14ac23e6b69302ac412aac3ecab06345e5d722fd
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 1cac4e4cee408e5208d2d5d84f81b8ad7a89f03b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296350"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033995"
 ---
 # <a name="manage-access-using-rbac-and-the-azure-portal"></a>Zarządzanie dostępem przy użyciu kontroli RBAC i witryny Azure Portal
 
@@ -207,7 +207,7 @@ Aby użytkownik jest administratorem subskrypcji platformy Azure, należy przypi
 
 1. W **roli** listy rozwijanej, wybierz rolę, takie jak **Współautor grupy zarządzania**.
 
-    Aby uzyskać informacje na temat obsługiwanych akcji na grupy zarządzania dla różnych ról, zobacz [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../azure-resource-manager/management-groups-overview.md#management-group-access).
+    Aby uzyskać informacje na temat obsługiwanych akcji na grupy zarządzania dla różnych ról, zobacz [organizowanie zasobów przy użyciu grup zarządzania platformy Azure](../governance/management-groups/index.md#management-group-access).
 
 1. Z listy **Wybierz** wybierz użytkownika, grupę lub aplikację. Jeśli nie widzisz podmiotu zabezpieczeń na liście, możesz wpisać tekst w polu **Wybierz**, aby wyszukać w katalogu nazwy wyświetlane, adresy e-mail i identyfikatory obiektów.
 

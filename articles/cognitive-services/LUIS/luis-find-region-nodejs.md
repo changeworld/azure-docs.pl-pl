@@ -4,24 +4,24 @@ titleSuffix: Azure Cognitive Services
 description: Programowe wyszukiwanie publikowania w regionie za pomocą klucza punktu końcowego i aplikacji identyfikator usługi LUIS.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 2b978b8459bbf248f7702076c78c1948b036aec6
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 193872d03dde1d5c620acca1b7aba99b60db238d
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44057366"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034080"
 ---
 # <a name="find-endpoint-region-with-nodejs"></a>Znajdź region punktu końcowego przy użyciu środowiska Node.js
 W przypadku usługi LUIS Identyfikatora aplikacji i identyfikator subskrypcji usługi LUIS można znaleźć który region należy używać dla punktu końcowego zapytań.
 
 > [!NOTE] 
-> Kompletne rozwiązanie Node.js jest dostępne z [ **przykłady LUIS** repozytorium Github](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/find-region/nodejs/).
+> Kompletne rozwiązanie Node.js jest dostępne w [repozytorium GitHub **LUIS-Samples**](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/find-region/nodejs/).
 
 ## <a name="luis-endpoint-query-strategy"></a>Strategia kwerendy punktu końcowego usługi LUIS
 Każda kwerenda punktu końcowego usługi LUIS wymaga:

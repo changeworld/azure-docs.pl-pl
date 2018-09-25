@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: 9a214aa51bcd4b7aab7a65cf2989edd9e9dd3dc6
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: ebc4c918745e273700a0efb54db4408bb702c75e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43044895"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991372"
 ---
 # <a name="use-c-user-defined-functions-with-hive-and-pig-streaming-on-hadoop-in-hdinsight"></a>C# funkcje zdefiniowane przez użytkownika za pomocą technologii Hive i Pig przesyłania strumieniowego w usłudze Hadoop w HDInsight
 
@@ -31,7 +31,7 @@ Zarówno Hive i Pig można przekazać danych do aplikacji zewnętrznych do przet
 
     * Użyj dowolnego środowiska IDE ma. Firma Microsoft zaleca [programu Visual Studio](https://www.visualstudio.com/vs) 2015, 2017, lub [programu Visual Studio Code](https://code.visualstudio.com/). W krokach w tym dokumencie używane programu Visual Studio 2017.
 
-* Sposób przekazywania plików .exe do klastra i uruchamianie zadań programów Pig i Hive. Firma Microsoft zaleca narzędzi Data Lake Tools for Visual Studio, programu Azure PowerShell i wiersza polecenia platformy Azure. Kroki opisane w tym dokumencie używane narzędzia Data Lake Tools for Visual Studio, aby przekazać pliki i uruchamiać w przykładzie zapytanie programu Hive.
+* Sposób przekazywania plików .exe do klastra i uruchamianie zadań programów Pig i Hive. Firma Microsoft zaleca narzędzi Data Lake Tools for Visual Studio, programu Azure PowerShell i klasycznego wiersza polecenia platformy Azure. Kroki opisane w tym dokumencie używane narzędzia Data Lake Tools for Visual Studio, aby przekazać pliki i uruchamiać w przykładzie zapytanie programu Hive.
 
     Aby uzyskać informacji na temat innych sposobów, aby uruchomić gałąź rejestru, kwerendy i zadania Pig, zobacz następujące dokumenty:
 

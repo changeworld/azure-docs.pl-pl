@@ -15,12 +15,12 @@ ms.date: 01/31/2018
 ms.author: barbkess
 ms.reviewer: harshja
 ms.custom: it-pro
-ms.openlocfilehash: 85a7b133655a3b1e4ca60c28e695e3057b293fdc
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 91f75fdbe7bc7c66bbe581e9d4b295467acd4cd5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504519"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989672"
 ---
 # <a name="how-to-enable-native-client-apps-to-interact-with-proxy-applications"></a>Jak włączyć aplikacje klienta natywnego do interakcji z serwera proxy aplikacji
 
@@ -30,7 +30,7 @@ Serwer Proxy aplikacji obsługuje aplikacje klienta natywnego przyjmuje usługi 
 
 ![Relacja między użytkownikami końcowymi, usługi Azure Active Directory a opublikowane aplikacje](./media/application-proxy-configure-native-client-application/richclientflow.png)
 
-Azure AD Authentication Library, która zajmuje się uwierzytelnieniem i obsługuje wiele środowisk klienta, należy używać do publikowania aplikacji natywnych. Serwer Proxy aplikacji jest dopasowywana do [natywną aplikację interfejsu API sieci Web scenariusza](../develop/authentication-scenarios.md#native-application-to-web-api). 
+Azure AD Authentication Library, która zajmuje się uwierzytelnieniem i obsługuje wiele środowisk klienta, należy używać do publikowania aplikacji natywnych. Serwer Proxy aplikacji jest dopasowywana do [natywną aplikację interfejsu API sieci Web scenariusza](../develop/native-app.md). 
 
 W tym artykule przedstawiono cztery kroki publikowania aplikacji natywnej za pomocą serwera Proxy aplikacji i Azure AD Authentication Library. 
 
@@ -96,6 +96,6 @@ Po biblioteki ADAL jest edytowany przy użyciu tych parametrów, użytkownicy po
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji o przepływie aplikacja natywna, zobacz [aplikacji natywnej do interfejsu API sieci web](../develop/authentication-scenarios.md#native-application-to-web-api)
+Aby uzyskać więcej informacji o przepływie aplikacja natywna, zobacz [aplikacji natywnej do interfejsu API sieci web](../develop/native-app.md)
 
 Dowiedz się więcej o konfigurowaniu [logowanie jednokrotne dla serwera Proxy aplikacji](application-proxy-single-sign-on.md)

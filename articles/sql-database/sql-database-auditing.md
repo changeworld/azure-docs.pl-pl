@@ -2,20 +2,22 @@
 title: Rozpoczynanie pracy z inspekcją bazy danych Azure SQL | Dokumentacja firmy Microsoft
 description: Użyj opcji inspekcji usługi Azure SQL database, aby śledzić zdarzenia bazy danych w dzienniku inspekcji.
 services: sql-database
-author: giladmit
-manager: craigg
 ms.service: sql-database
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/10/2018
+author: giladmit
 ms.author: giladm
 ms.reviewer: vanto
-ms.openlocfilehash: 935baf791d9244f2fa4f5be9c02d4778244754de
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+manager: craigg
+ms.date: 09/10/2018
+ms.openlocfilehash: dd1672c0cdae243bf6ff19efa22df66239611b44
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543753"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064179"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 Inspekcji usługi Azure SQL database śledzi zdarzenia bazy danych i zapisuje je do inspekcji logowania na koncie magazynu platformy Azure. Inspekcja również:
@@ -98,10 +100,25 @@ W poniższej sekcji opisano konfigurację inspekcji przy użyciu witryny Azure p
 11. Po skonfigurowaniu ustawień inspekcji można włączyć funkcji wykrywania zagrożeń i skonfigurować wiadomości e-mail, aby otrzymywać alerty zabezpieczeń. Korzystając z wykrywania zagrożeń, otrzymujesz alerty proaktywne na nietypowe działania bazy danych, które mogą wskazywać potencjalne zagrożenia bezpieczeństwa. Aby uzyskać więcej informacji, zobacz [wprowadzenie do wykrywania zagrożeń](sql-database-threat-detection-get-started.md). 
 
 ## <a id="subheading-3"></a>Analizowanie dzienników inspekcji i raporty
+W przypadku wybrania tylko zapisywanie dzienników inspekcji usługi Log Analytics:
+- Użyj [witryny Azure portal](https://portal.azure.com).  Otwórz odpowiedniej bazy danych. W górnej części bazy danych **inspekcji** kliknij **Wyświetl dzienniki inspekcji**.
+
+    ![Wyświetl dzienniki inspekcji](./media/sql-database-auditing-get-started/7_auditing_get_started_blob_view_audit_logs.png)
+
+- Następnie, klikając **Otwórz w usłudze OMS** w górnej części **rekordy inspekcji** zostanie otwarta strona Widok dzienników w usłudze Log Analytics, w którym można dostosować zakres czasu i zapytania wyszukiwania.
+
+    ![Otwórz w pakiecie OMS](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
+
+- Alternatywnie można także przejść dzienniki inspekcji w bloku usługi Log Analytics. Otwórz obszar roboczy usługi Log Analytics i w obszarze **ogólne** kliknij **dzienniki**. Można zacząć od prostego zapytania, takie jak: wyszukiwanie *"SQLSecurityAuditEvents"* Aby wyświetlić inspekcji logowania.
+    W tym miejscu możesz również użyć [Operations Management Suite (OMS) Log Analytics](../log-analytics/log-analytics-log-search.md) przeprowadzić zaawansowane wyszukiwanie na dane dziennika inspekcji. Usługa log Analytics udostępnia w czasie rzeczywistym operational insights za pomocą zintegrowanej funkcji wyszukiwania i niestandardowym pulpitom nawigacyjnym umożliwiającym szybkie analizowanie milionów rekordów z wszystkich obciążeń i serwerów. Aby uzyskać dodatkowe przydatne informacje dotyczące języka wyszukiwania usługi Log Analytics pakietu OMS i poleceń, zobacz [usługi Log Analytics Wyszukaj odwołanie](../log-analytics/log-analytics-log-search.md).
+
+W przypadku wybrania tylko zapisywanie dzienników inspekcji w Centrum zdarzeń:
+- Korzystanie z danych dzienników inspekcji z Centrum zdarzeń, należy skonfigurować strumienia na korzystanie ze zdarzeń i zapisywać je do obiektu docelowego. Aby uzyskać więcej informacji, zobacz [dokumentacja usługi Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
+
 Jeśli wybrano zapisywanie dzienników inspekcji na koncie usługi Azure storage, istnieje kilka metod, których można użyć, aby wyświetlić dzienniki:
 - Dzienniki inspekcji są agregowane w ramach konta, który został wybrany podczas instalacji. Możesz zapoznać się z dziennikami inspekcji przy użyciu narzędzia, takie jak [Eksploratora usługi Azure Storage](http://storageexplorer.com/). W usłudze Azure storage, dzienniki inspekcji są zapisywane jako kolekcja plików obiektów blob w kontenerze o nazwie **sqldbauditlogs**. Aby uzyskać więcej informacji o hierarchii folderu przechowywania konwencji nazewnictwa i format dziennika zobacz [odwołanie Format dziennika inspekcji obiektów Blob](https://go.microsoft.com/fwlink/?linkid=829599).
 
-- Użyj [witryny Azure portal](https://portal.azure.com).  Otwórz odpowiedniej bazy danych. W górnej części bazy danych **inspekcji i wykrywania zagrożeń** kliknij **Wyświetl dzienniki inspekcji**.
+- Użyj [witryny Azure portal](https://portal.azure.com).  Otwórz odpowiedniej bazy danych. W górnej części bazy danych **inspekcji** kliknij **Wyświetl dzienniki inspekcji**.
 
     ![Okienko nawigacji][7]
 
@@ -137,16 +154,6 @@ Jeśli wybrano zapisywanie dzienników inspekcji na koncie usługi Azure storage
 
      * Użyj [czytnika zdarzeń rozszerzonych](https://blogs.msdn.microsoft.com/extended_events/2011/07/20/introducing-the-extended-events-reader/) bibliotekę języka C#.
      * [Rozszerzone zdarzenia pliki zapytań](https://sqlscope.wordpress.com/2014/11/15/reading-extended-event-files-using-client-side-tools-only/) przy użyciu programu PowerShell.
-
-W przypadku wybrania tylko zapisywanie dzienników inspekcji usługi Log Analytics:
-- Aby wyświetlić dzienniki inspekcji w usłudze Log Analytics, Otwórz obszar roboczy usługi Log Analytics i w obszarze **wyszukiwanie i analizowanie dzienników**, kliknij przycisk **wyświetlanie dzienników**. W widoku wyszukiwania w dziennikach można uruchomić, klikając **wszystkie zebrane dane**.  
-
-    ![przeszukiwanie dzienników pakietu OMS](./media/sql-database-auditing-get-started/oms_log_search.png)
-
-   W tym miejscu możesz użyć [Operations Management Suite (OMS) Log Analytics](../log-analytics/log-analytics-log-search.md) przeprowadzić zaawansowane wyszukiwanie na dane dziennika inspekcji. Usługa log Analytics udostępnia w czasie rzeczywistym operational insights za pomocą zintegrowanej funkcji wyszukiwania i niestandardowym pulpitom nawigacyjnym umożliwiającym szybkie analizowanie milionów rekordów z wszystkich obciążeń i serwerów. Aby uzyskać dodatkowe przydatne informacje dotyczące języka wyszukiwania usługi Log Analytics pakietu OMS i poleceń, zobacz [usługi Log Analytics Wyszukaj odwołanie](../log-analytics/log-analytics-log-search.md).
-
-W przypadku wybrania tylko zapisywanie dzienników inspekcji w Centrum zdarzeń:
-- Korzystanie z danych dzienników inspekcji z Centrum zdarzeń, należy skonfigurować strumienia na korzystanie ze zdarzeń i zapisywać je do obiektu docelowego. Aby uzyskać więcej informacji, zobacz [dokumentacja usługi Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/).
 
 ## <a id="subheading-5"></a>Rozwiązania w środowisku produkcyjnym
 <!--The description in this section refers to preceding screen captures.-->
@@ -210,16 +217,16 @@ Aby uzyskać przykładowy skrypt, zobacz [skonfigurować inspekcję i wykrywanie
 
 **Interfejs API REST — Inspekcja obiektów Blob**:
 
-* [Utwórz lub zaktualizuj bazę danych obiektów Blob, zasady inspekcji](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/createorupdate)
-* [Utwórz lub zaktualizuj obiektów Blob serwera zasady inspekcji](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/createorupdate)
-* [Pobieranie obiektu Blob bazy danych, zasady inspekcji](https://docs.microsoft.com/en-us/rest/api/sql/database%20auditing%20settings/get)
-* [Pobieranie obiektów Blob serwera zasady inspekcji](https://docs.microsoft.com/en-us/rest/api/sql/server%20auditing%20settings/get)
+* [Utwórz lub zaktualizuj bazę danych obiektów Blob, zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/createorupdate)
+* [Utwórz lub zaktualizuj obiektów Blob serwera zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/createorupdate)
+* [Pobieranie obiektu Blob bazy danych, zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20auditing%20settings/get)
+* [Pobieranie obiektów Blob serwera zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20auditing%20settings/get)
 
 Rozszerzone zasady, z którym klauzuli pomocy technicznej w celu filtrowania dodatkowych:
-* [Utwórz lub zaktualizuj bazę danych *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
-* [Utwórz lub zaktualizuj serwer *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/createorupdate)
-* [Pobierz bazę danych *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/en-us/rest/api/sql/database%20extended%20auditing%20settings/get)
-* [Pobierz serwer *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/en-us/rest/api/sql/server%20extended%20auditing%20settings/get)
+* [Utwórz lub zaktualizuj bazę danych *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/createorupdate)
+* [Utwórz lub zaktualizuj serwer *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20extended%20auditing%20settings/createorupdate)
+* [Pobierz bazę danych *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/database%20extended%20auditing%20settings/get)
+* [Pobierz serwer *rozszerzone* Blob zasady inspekcji](https://docs.microsoft.com/rest/api/sql/server%20extended%20auditing%20settings/get)
 
 <!--Anchors-->
 [Azure SQL Database Auditing overview]: #subheading-1

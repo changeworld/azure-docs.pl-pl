@@ -11,20 +11,24 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 11/16/2017
-ms.openlocfilehash: 0abc5e34d2bfa1cf2a9fc0569831e21ed295891c
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ROBOTS: NOINDEX
+ms.openlocfilehash: 07a9d46dff17b43d01a6b411292cf240c32476f3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296503"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983722"
 ---
 # <a name="roaming-and-collaboration-in-azure-machine-learning-workbench"></a>Roaming i współpraca w usłudze Azure Machine Learning Workbench
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
 W tym artykule opisano, jak można użyć usługi Azure Machine Learning Workbench do ustawiania projektów dla mobilnych między komputerami i Współpracuj z członkami zespołu. 
 
 Podczas tworzenia projektu usługi Azure Machine Learning, który ma zdalnego łącza (repozytorium) repozytorium Git projektu metadanych i migawki są przechowywane w chmurze. Link chmury umożliwia dostęp do projektu za pomocą innego komputera (mobilnych). Możesz także współpracować z członkami zespołu, dając im dostęp do projektu. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-1. Zainstaluj aplikację Workbench uczenia maszynowego. Upewnij się, że masz dostęp do konta eksperymentowanie w usłudze Machine Learning platformy Azure. Aby uzyskać więcej informacji, zobacz [Przewodnik instalacji](../service/quickstart-installation.md).
+1. Zainstaluj aplikację Workbench uczenia maszynowego. Upewnij się, że masz dostęp do konta eksperymentowanie w usłudze Machine Learning platformy Azure. Aby uzyskać więcej informacji, zobacz [Przewodnik instalacji](quickstart-installation.md).
 
 2. Dostęp do [DevOps platformy Azure](https://www.visualstudio.com) , a następnie utwórz projekt do repozytorium. Aby uzyskać więcej informacji, zobacz [przy użyciu repozytorium Git z projektem aplikacji Machine Learning Workbench](using-git-ml-project.md).
 

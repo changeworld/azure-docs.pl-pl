@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/01/2018
 ms.author: lakasa
 ms.component: common
-ms.openlocfilehash: f14ffc7bfbdabdd93e7743c7932dae1af7730e60
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 6b73a802b186e5fcf2380f5f4c80c1bb67d253fa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781568"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981869"
 ---
 # <a name="storage-service-encryption-using-customer-managed-keys-in-azure-key-vault"></a>Szyfrowanie usługi Storage przy użyciu kluczy zarządzanych przez klienta w usłudze Azure Key Vault
 Platforma Microsoft Azure jest zobowiązana do ochrony i chronić dane zgodnie z wymaganiami co do bezpieczeństwa organizacji i zobowiązaniami w zakresie zgodności. Jednym ze sposobów, że platforma Azure storage chroni dane jest za pośrednictwem szyfrowanie usługi Storage (SSE), który szyfruje dane podczas zapisywanie w magazynie i odszyfrowuje dane podczas pobierania go. Szyfrowanie i odszyfrowywanie jest automatyczne, przejrzyste i korzysta z 256-bitowego [szyfrowania AES](https://wikipedia.org/wiki/Advanced_Encryption_Standard), jeden blok najsilniejszych szyfrów.
@@ -31,7 +31,7 @@ Dlaczego warto tworzyć własne klucze? Klucze niestandardowe zapewniają więks
 Aby używać kluczy zarządzanych przez klienta za pomocą funkcji SSE, można utworzyć nowego magazynu kluczy i klucza, lub możesz użyć istniejącego magazynu kluczy i klucz. Konto magazynu i magazynu kluczy musi być w tym samym regionie, ale można je w różnych subskrypcjach. 
 
 ### <a name="step-1-create-a-storage-account"></a>Krok 1: Tworzenie konta magazynu
-Najpierw utwórz konto magazynu, jeśli nie masz jeszcze takiego. Aby uzyskać więcej informacji, zobacz [Utwórz nowe konto magazynu](storage-quickstart-create-account.md).
+Najpierw utwórz konto magazynu, jeśli nie masz jeszcze takiego. Aby uzyskać więcej informacji, zobacz [Tworzenie konta magazynu](storage-quickstart-create-account.md).
 
 ### <a name="step-2-enable-sse-for-blob-and-file-storage"></a>Krok 2: Włączanie SSE dla magazynu obiektów Blob i plików
 Aby włączyć SSE przy użyciu kluczy zarządzanych przez klienta, dwie funkcje ochrony kluczy: usuwanie nietrwałe i przeczyszczanie, musi być także włączona w usłudze Azure Key Vault. Tych ustawień upewnij się, że klucze nie może być przypadkowo lub celowo usuniętymi. Maksymalny okres przechowywania kluczy wynosi 90 dni, chronić użytkowników przed uczestników złośliwych działań lub oprogramowania wymuszającego okup.

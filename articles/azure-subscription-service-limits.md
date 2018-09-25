@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: byvinyal
-ms.openlocfilehash: a24fc56bf455fbc487cb6f93e06678d52e5b1c0b
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c67cc5cb13e2c1112c4752660c82c3ab18360b00
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295769"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056628"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usługi Azure, przydziały i ograniczenia
 W tym dokumencie przedstawiono niektóre typowe limity Microsoft Azure, które są czasami nazywane limity przydziału. Ten dokument obecnie nie obejmuje wszystkich usług platformy Azure. Wraz z upływem czasu lista zostaną rozwinięte i zaktualizowana w celu pokrycia więcej platformy.
@@ -71,6 +71,7 @@ W obszarze poniżej ograniczenia dodano nową tabelę odzwierciedla żadnych ró
 * [DNS](#dns-limits)
 * [Event Hubs](#event-hubs-limits)
 * [Zaporę platformy Azure](#azure-firewall-limits)
+* [Drzwi](#azure-front-door-service-limits)
 * [IoT Hub](#iot-hub-limits)
 * [Usługa IoT Hub Device Provisioning](#iot-hub-device-provisioning-service-limits)
 * [Usługa Key Vault](#key-vault-limits)
@@ -88,6 +89,7 @@ W obszarze poniżej ograniczenia dodano nową tabelę odzwierciedla żadnych ró
 * [Scheduler](#scheduler-limits)
 * [Wyszukiwanie](#search-limits)
 * [Service Bus](#service-bus-limits)
+* [Usługa SignalR](#signalr-service-limits)
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
@@ -156,6 +158,9 @@ W poniższej tabeli przedstawiono funkcje i limity Basic, Standard i Premium [wa
 
 #### <a name="azure-firewall-limits"></a>Limity zapory platformy Azure
 [!INCLUDE [azure-firewall-limits](../includes/firewall-limits.md)]
+
+#### <a name="azure-front-door-service-limits"></a>Limity drzwiami frontowymi usługi platformy Azure
+[!INCLUDE [azure-front-door-service-limits](../includes/front-door-limits.md)]
 
 ### <a name="storage-limits"></a>Limity przestrzeni dyskowej
 <!--like # storage accts -->
@@ -232,9 +237,6 @@ Dla usługi Azure Database for MySQL ograniczeń, zobacz [ograniczenia w usłudz
 
 ### <a name="azure-database-for-postgresql"></a>Azure Database for PostgreSQL
 Dla usługi Azure Database for postgresql w warstwie ograniczeń, zobacz [ograniczenia w usłudze Azure Database for PostgreSQL](postgresql/concepts-limits.md).
-
-### <a name="mobile-engagement-limits"></a>Limity usługi Mobile Engagement
-[!INCLUDE [azure-mobile-engagement-limits](../includes/azure-mobile-engagement-limits.md)]
 
 ### <a name="search-limits"></a>Limity wyszukiwania
 Warstwy cenowe określać pojemność i limity usługi wyszukiwania. Warstwy obejmują:
@@ -315,6 +317,9 @@ Aby dowiedzieć się więcej o limitach na bardziej szczegółowym poziomie, tak
 
 ### <a name="backup-limits"></a>Limity kopii zapasowej
 [!INCLUDE [azure-backup-limits](../includes/azure-backup-limits.md)]
+
+### <a name="signalr-service-limits"></a>Limity usługi SignalR
+[!INCLUDE [signalr-service-limits](../includes/signalr-service-limits.md)]
 
 ### <a name="site-recovery-limits"></a>Limity usługi Site Recovery
 [!INCLUDE [site-recovery-limits](../includes/site-recovery-limits.md)]

@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Wzorce są przeznaczone do zwiększenia dokładności, gdy kilka wypowiedzi są bardzo podobne. Wzorzec pozwala uzyskać większą precyzję dla intencji bez podawania wielu wypowiedzi więcej.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 0a61ec4407a23e8cc515c2343a92bd77460d424b
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 5ade15b3f80d725af4ece31a36ea0b670f5f5147
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631416"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031547"
 ---
 # <a name="patterns-improve-prediction-accuracy"></a>Wzorce zwiększenia dokładności prognozy
 Wzorce są przeznaczone do zwiększenia dokładności, gdy kilka wypowiedzi są bardzo podobne.  Wzorzec pozwala uzyskać większą precyzję dla intencji bez podawania wielu wypowiedzi więcej. 

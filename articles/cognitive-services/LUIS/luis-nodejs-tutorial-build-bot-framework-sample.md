@@ -1,24 +1,25 @@
 ---
-title: Integrowanie usługi LUIS z botem przy użyciu zestawu SDK Bot Builder dla środowiska Node.js na platformie Azure | Dokumentacja firmy Microsoft
+title: Bot usługi LUIS za pomocą środowiska Node.js — Bot aplikacji sieci Web — Bot Framework SDK 3.0
+titleSuffix: Azure Cognitive Services
 description: Twórz Boty zintegrowane z aplikacją usługi LUIS przy użyciu platformy Bot Framework.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 03/06/2018
+ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 6d6937105b11d94138b51660dc9f3c5e682e19bc
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 0bd191da3f2625bc202ee66100e7dac25d9d65de
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39224079"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042333"
 ---
-# <a name="integrate-luis-with-a-bot-using-the-bot-builder-sdk-for-nodejs"></a>Integrowanie usługi LUIS z botem przy użyciu zestawu SDK Bot Builder dla platformy Node.js
+# <a name="luis-bot-in-nodejs"></a>Bot usługi LUIS w środowisku Node.js
 
-Ten samouczek przeprowadzi Cię przez tworzenie botów za pomocą [platformy Bot Framework] [ BotFramework] zintegrowana z aplikacją usługi LUIS.
+Przy użyciu środowiska Node.js, tworzenie czatbot zintegrowana z usługą language understanding (LUIS). Ten czatbot używa wstępnie domeny HomeAutomation można szybko wdrożyć rozwiązanie botów. Bot został utworzony za pomocą platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
@@ -26,7 +27,7 @@ Przed przystąpieniem do tworzenia bota należy wykonać czynności opisane w [t
 
 Bot reaguje na intencje z domeny HomeAutomation, które znajdują się w aplikacji usługi LUIS. Dla każdego z tych opcji aplikacja usługi LUIS zapewnia cel, który mapuje do niego. Bot zapewnia okno dialogowe, które obsługuje cel, który wykrywa usługi LUIS.
 
-| Przeznaczenie | Przykład wypowiedź | Bot funkcji |
+| Intencja | Przykład wypowiedź | Bot funkcji |
 |:----:|:----------:|---|
 | HomeAutomation.TurnOn | Włączenie świateł. | Wywołuje bot `TurnOnDialog` podczas `HomeAutomation.TurnOn` jest wykryty. To okno dialogowe jest, gdzie możesz powodowałoby wywołanie pliku wykonywalnego usługi IoT w celu włączenia na urządzeniu, a następnie poinformuj użytkowników, że urządzenie zostało włączone. |
 | HomeAutomation.TurnOff | Wyłącz światła sypialni. | Wywołuje bot `TurnOffDialog` podczas `HomeAutomation.TurnOff` jest wykryty. To okno dialogowe, gdzie możesz powodowałoby wywołanie pliku wykonywalnego usługi IoT, aby wyłączyć urządzenie i Powiadom użytkownika, że urządzenie zostało wyłączone. |
@@ -45,7 +46,10 @@ Bot reaguje na intencje z domeny HomeAutomation, które znajdują się w aplikac
 3. W **Bot Service** bloku, podaj wymagane informacje, a następnie wybierz pozycję **Utwórz**. To tworzy i wdraża bot service i LUIS aplikacji na platformie Azure. Jeśli chcesz używać [zalewanie mowy](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming), przejrzyj [wymagania region](luis-resources-faq.md#what-luis-regions-support-bot-framework-speech-priming) przed utworzeniem bota. 
     * Ustaw **nazwy aplikacji** nazwę Twój bot. Nazwa jest używana jako domenę podrzędną, gdy Twój bot jest wdrażane w chmurze (na przykład mynotesbot.azurewebsites.net). <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
     * Wybierz subskrypcję, [grupy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), plan usługi App service, a [lokalizacji](https://azure.microsoft.com/regions/).
-    * Wybierz **interpretacji języka (Node.js)** szablon **szablonu Bota** pola.
+    * Aby uzyskać **szablonu Bota**, wybierz opcję:
+        * **Zestaw SDK w wersji 3**
+        * **Node.js**
+        * **Interpretacji języka**
     * Wybierz **lokalizacji aplikacji LUIS**. Jest to, tworzeniem [region] [ LUIS] aplikacja zostanie utworzona w.
     * Zaznacz pole wyboru potwierdzenia prawne. Warunki prawne są wyświetlane poniżej pola wyboru.
 

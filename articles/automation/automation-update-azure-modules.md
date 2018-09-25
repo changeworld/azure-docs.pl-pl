@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/19/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: bee1c5c48242b69ee33fedd358a83e0580d19942
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 278f21713712e346648553642adf0d072c9f1b98
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498055"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063425"
 ---
 # <a name="how-to-update-azure-powershell-modules-in-azure-automation"></a>Jak zaktualizować moduły programu Azure PowerShell w usłudze Azure Automation
 
@@ -30,6 +30,9 @@ Ponieważ moduły są regularnie aktualizowane przez grupę produktu, zmiany mog
 1. Na stronie moduły konta usługi Automation jest dostępna opcja o nazwie **aktualizowania modułów platformy Azure**. Jest zawsze włączona.<br><br> ![Aktualizuj moduły platformy Azure opcja na stronie moduły](media/automation-update-azure-modules/automation-update-azure-modules-option.png)
 
 2. Kliknij przycisk **aktualizowania modułów platformy Azure**, powiadomienie z potwierdzeniem jest wyświetlany, pytaniem, jeśli chcesz kontynuować.<br><br> ![Aktualizuj moduły platformy Azure powiadomień](media/automation-update-azure-modules/automation-update-azure-modules-popup.png)
+
+   > [!NOTE]
+   > **Aktualizowania modułów platformy Azure** przycisk jest dostępny tylko w chmurze publicznej. Nie jest dostępna w [niezależne regiony](https://azure.microsoft.com/global-infrastructure/).
 
 3. Kliknij przycisk **tak** i rozpocznie się proces aktualizacji modułu. Proces aktualizacji trwa około 15 – 20 minut, można zaktualizować następujących modułów:
 

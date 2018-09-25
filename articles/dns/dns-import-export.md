@@ -1,6 +1,6 @@
 ---
-title: Importowanie i eksportowanie pliku strefy domeny do usługi Azure DNS przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0 | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak importować i eksportować plik strefy DNS do usługi Azure DNS przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
+title: Importowanie i eksportowanie pliku strefy domeny do usługi Azure DNS przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak importować i eksportować plik strefy DNS do usługi Azure DNS przy użyciu wiersza polecenia platformy Azure
 services: dns
 documentationcenter: na
 author: vhorne
@@ -13,16 +13,16 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/30/2018
 ms.author: victorh
-ms.openlocfilehash: 7578d078b147b5c4bf42f5343d3fdfdf6f0bc42e
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 5afb607f0410b428d8e67fdff043a4e376dd60a5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171609"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956357"
 ---
-# <a name="import-and-export-a-dns-zone-file-using-the-azure-cli-20"></a>Importowanie i eksportowanie pliku strefy DNS przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0 
+# <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>Importowanie i eksportowanie pliku strefy DNS przy użyciu wiersza polecenia platformy Azure 
 
-W tym artykule przedstawiono sposób importowanie i eksportowanie plików strefy DNS dla usługi Azure DNS przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0.
+W tym artykule przedstawiono sposób importowanie i eksportowanie plików strefy DNS dla usługi Azure DNS przy użyciu wiersza polecenia platformy Azure.
 
 ## <a name="introduction-to-dns-zone-migration"></a>Wprowadzenie do migracji strefy DNS
 
@@ -30,7 +30,7 @@ Plik strefy DNS jest plik tekstowy, który zawiera szczegóły każdego rekordu 
 
 Usługa DNS platformy Azure obsługuje importowanie i eksportowanie plików strefy przy użyciu interfejsu wiersza polecenia (CLI) platformy Azure. Importowanie pliku strefy **nie** obecnie są obsługiwane za pośrednictwem programu Azure PowerShell lub witryny Azure portal.
 
-Interfejs wiersza polecenia platformy Azure w wersji 2.0 to Międzyplatformowe narzędzie wiersza polecenia używane do zarządzania usługami platformy Azure. Jest ona dostępna dla platformy Windows, Mac i Linux z [strony plików do pobrania w usłudze Azure](https://azure.microsoft.com/downloads/). Obsługa wielu platform jest ważne w przypadku importowanie i eksportowanie plików strefy, ponieważ najbardziej typowe oprogramowanie serwera nazw [POWIĄZAĆ](https://www.isc.org/downloads/bind/), zwykle działa w systemie Linux.
+Interfejs wiersza polecenia platformy Azure to Międzyplatformowe narzędzie wiersza polecenia używane do zarządzania usługami platformy Azure. Jest ona dostępna dla platformy Windows, Mac i Linux z [strony plików do pobrania w usłudze Azure](https://azure.microsoft.com/downloads/). Obsługa wielu platform jest ważne w przypadku importowanie i eksportowanie plików strefy, ponieważ najbardziej typowe oprogramowanie serwera nazw [POWIĄZAĆ](https://www.isc.org/downloads/bind/), zwykle działa w systemie Linux.
 
 
 ## <a name="obtain-your-existing-dns-zone-file"></a>Uzyskaj do istniejącego pliku strefy DNS

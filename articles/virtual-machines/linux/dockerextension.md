@@ -1,6 +1,6 @@
 ---
 title: Za pomocą rozszerzenia maszyny Wirtualnej Azure Docker | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak szybko i bezpiecznie wdrożyć w środowisku platformy Docker na platformie Azure przy użyciu szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure w wersji 2.0 za pomocą rozszerzenia maszyny Wirtualnej Docker
+description: Dowiedz się, jak szybko i bezpiecznie wdrożyć w środowisku platformy Docker na platformie Azure przy użyciu szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure za pomocą rozszerzenia maszyny Wirtualnej Docker
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,15 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 44c307a5f21937cd2a3ef345fd4573c67efdaf59
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 59dbbb8374455088d759a5e837b8d3bc22145d3e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928622"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981301"
 ---
 # <a name="create-a-docker-environment-in-azure-using-the-docker-vm-extension"></a>Utwórz środowisko platformy Docker na platformie Azure przy użyciu rozszerzenia maszyny Wirtualnej Docker
-Docker to Zarządzanie kontenerami popularnych i tworzenia obrazu platformy, która pozwala szybko pracować z kontenerami w systemie Linux. Na platformie Azure istnieją różne sposoby, które można wdrożyć platformy Docker zgodnie z potrzebami. Ten artykuł koncentruje się na temat korzystania z rozszerzenia maszyny Wirtualnej Docker i szablonów usługi Azure Resource Manager przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0. 
+
+Docker to Zarządzanie kontenerami popularnych i tworzenia obrazu platformy, która pozwala szybko pracować z kontenerami w systemie Linux. Na platformie Azure istnieją różne sposoby, które można wdrożyć platformy Docker zgodnie z potrzebami. Ten artykuł koncentruje się na temat korzystania z rozszerzenia maszyny Wirtualnej Docker i szablonów usługi Azure Resource Manager przy użyciu wiersza polecenia platformy Azure. 
 
 > [!WARNING]
 > Rozszerzenie maszyny Wirtualnej Azure Docker dla systemu Linux jest przestarzały i zostanie wycofana z użycia listopada 2018 r.
@@ -38,7 +39,7 @@ Aby uzyskać więcej informacji na temat różnych metod wdrażania, w tym przy 
 
 
 ## <a name="deploy-a-template-with-the-azure-docker-vm-extension"></a>Wdrażanie szablonu przy użyciu rozszerzenia maszyny Wirtualnej Azure Docker
-Użyjmy istniejący szablon szybkiego startu, aby utworzyć maszynę Wirtualną Ubuntu, który używa rozszerzenia maszyny Wirtualnej Azure Docker do zainstalowania i skonfigurowania hosta platformy Docker. Można wyświetlić szablon w tym miejscu: [proste wdrożenie maszyny wirtualnej systemu Ubuntu przy użyciu rozwiązania Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Potrzebujesz najnowszej [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
+Użyjmy istniejący szablon szybkiego startu, aby utworzyć maszynę Wirtualną Ubuntu, który używa rozszerzenia maszyny Wirtualnej Azure Docker do zainstalowania i skonfigurowania hosta platformy Docker. Można wyświetlić szablon w tym miejscu: [proste wdrożenie maszyny wirtualnej systemu Ubuntu przy użyciu rozwiązania Docker](https://github.com/Azure/azure-quickstart-templates/tree/master/docker-simple-on-ubuntu). Potrzebujesz najnowszej [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
 
 Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 

@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 62c171381201f3cedee869aba301859a7047f5ce
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: c94fd0bb68a03c64935c20fef1fab7b68c9c2c9b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294917"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032992"
 ---
 # <a name="deploy-a-windows-hybrid-runbook-worker"></a>Wdrażanie Windows hybrydowego procesu roboczego Runbook
 
@@ -49,7 +49,7 @@ Po pomyślnym wdrożeniu procesu roboczego elementu runbook, przejrzyj [uruchami
 
 Wykonaj poniższe kroki, aby zautomatyzować instalację i konfigurację roli Windows hybrydowego procesu roboczego:
 
-1. Pobierz skrypt New OnPremiseHybridWorker.ps1 z [galerii programu PowerShell](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker/DisplayScript) bezpośrednio z komputera z uruchomionym roli hybrydowego procesu roboczego Runbook lub z innego komputera w danym środowisku. Skopiuj skrypt do pracownika.
+1. Pobierz skrypt New OnPremiseHybridWorker.ps1 z [galerii programu PowerShell](https://www.powershellgallery.com/packages/New-OnPremiseHybridWorker) bezpośrednio z komputera z uruchomionym roli hybrydowego procesu roboczego Runbook lub z innego komputera w danym środowisku. Skopiuj skrypt do pracownika.
 
    Skrypt New OnPremiseHybridWorker.ps1 wymaga następujących parametrów podczas wykonywania:
 

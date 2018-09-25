@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 09/20/2018
 ms.author: jeedes
-ms.openlocfilehash: e7a4dd57c7da3350e610b5f005aa59ea9d51dd56
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b825fb1d7f56aae923f6760c4fd6384e03274b7a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45607787"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042061"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rackspace-sso"></a>Samouczek: Integracja usługi Azure Active Directory przy użyciu logowania jednokrotnego Rackspace
 
@@ -49,12 +49,14 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
+
 W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie rejestracji Jednokrotnej Rackspace z galerii
 2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-rackspace-sso-from-the-gallery"></a>Dodawanie rejestracji Jednokrotnej Rackspace z galerii
+
 Aby skonfigurować integrację Rackspace logowania jednokrotnego w usłudze Azure AD, należy dodać Rackspace logowania jednokrotnego z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać Rackspace logowania jednokrotnego z galerii, wykonaj następujące czynności:**
@@ -66,7 +68,7 @@ Aby skonfigurować integrację Rackspace logowania jednokrotnego w usłudze Azur
 2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
     ![W bloku aplikacji przedsiębiorstwa][2]
-    
+
 3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
     ![Nowy przycisk aplikacji][3]
@@ -100,7 +102,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     ![Skonfigurować łącze rejestracji jednokrotnej][4]
 
 2. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
+
     ![Okno dialogowe rejestracji jednokrotnej](./media/rackspacesso-tutorial/tutorial_rackspacesso_samlbase.png)
 
 3. Na **Rackspace logowania jednokrotnego domena i adresy URL** sekcji, wykonaj następujące czynności:
@@ -111,7 +113,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
-    ![Link pobierania certyfikatu](./media/rackspacesso-tutorial/tutorial_rackspacesso_certificate.png) 
+    ![Link pobierania certyfikatu](./media/rackspacesso-tutorial/tutorial_rackspacesso_certificate.png)
 
 5. Kliknij przycisk **Zapisz** przycisku.
 
@@ -150,16 +152,16 @@ Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, 
     c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
 
     d. Kliknij pozycję **Utwórz**.
- 
+
 ### <a name="create-a-rackspace-sso-test-user"></a>Tworzenie użytkownika testowego Rackspace logowania jednokrotnego
 
-W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Rackspace logowania jednokrotnego. Praca z [zespołem pomocy technicznej logowania jednokrotnego Rackspace](https://support.rackspace.com/) Aby dodać użytkowników na platformie Rackspace logowania jednokrotnego. Użytkownicy muszą być tworzone i aktywowana, aby używać logowania jednokrotnego.
+W tej sekcji będzie działać z [zespołem pomocy technicznej logowania jednokrotnego Rackspace](https://support.rackspace.com/) dołączyć konta na platformie Rackspace logowania jednokrotnego.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 
 W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do logowania jednokrotnego Rackspace.
 
-![Przypisanie roli użytkownika][200] 
+![Przypisanie roli użytkownika][200]
 
 **Aby przypisać Britta Simon Rackspace logowania jednokrotnego, wykonaj następujące czynności:**
 
@@ -184,7 +186,7 @@ W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowa
 6. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
 
 7. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
+
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
@@ -196,8 +198,6 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
-
-
 
 <!--Image references-->
 
@@ -212,4 +212,3 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 [201]: ./media/rackspacesso-tutorial/tutorial_general_201.png
 [202]: ./media/rackspacesso-tutorial/tutorial_general_202.png
 [203]: ./media/rackspacesso-tutorial/tutorial_general_203.png
-

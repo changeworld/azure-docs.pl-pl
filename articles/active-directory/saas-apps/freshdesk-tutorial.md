@@ -12,15 +12,15 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/07/2018
+ms.date: 09/17/2018
 ms.author: jeedes
 ms.reviewer: jeedes
-ms.openlocfilehash: db4750e01b62835cf08fd52e3288e94aea539b26
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: ce302db74f831e67b576e4c0001f21473fd7f2e0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161326"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037528"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-freshdesk"></a>Samouczek: Integracja usługi Azure Active Directory z usługi FreshDesk
 
@@ -85,7 +85,7 @@ W tej sekcji służy do konfigurowania i testowanie usługi Azure AD logowanie j
 
 Dla logowania jednokrotnego do pracy usługi Azure AD musi znać użytkownika odpowiednika w usłudze FreshDesk z użytkownikiem w usłudze Azure AD. Innymi słowy relację łącza między użytkownika usługi Azure AD i powiązanych użytkowników w usłudze FreshDesk musi zostać ustanowione.
 
-Ustanowieniu tej relacji łączy, przypisując wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **Username** w usłudze FreshDesk.
+Ustanowieniu tej relacji łączy, przypisując wartość **nazwa_użytkownika** w usłudze Azure AD jako wartość **adres e-mail** w usłudze FreshDesk.
 
 Aby skonfigurować i testowanie usługi Azure AD logowania jednokrotnego z usługi FreshDesk, należy wykonać poniższe bloki konstrukcyjne:
 
@@ -116,47 +116,46 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<tenant-name>.freshdesk.com` lub dowolna inna wartość proponuje usługi Freshdesk.
 
     > [!NOTE]
-    > Należy pamiętać, że nie jest rzeczywistą wartość. Należy zaktualizować wartość z adresem URL rzeczywistej logowania jednokrotnego. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta usługi FreshDesk](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg) aby zyskać tę wartość.  
+    > Należy pamiętać, że nie jest rzeczywistą wartość. Należy zaktualizować wartość z adresem URL rzeczywistej logowania jednokrotnego. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta usługi FreshDesk](https://freshdesk.com/helpdesk-software?utm_source=Google-AdWords&utm_medium=Search-IND-Brand&utm_campaign=Search-IND-Brand&utm_term=freshdesk&device=c&gclid=COSH2_LH7NICFVUDvAodBPgBZg) aby zyskać tę wartość.
 
-4. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
+4. Aplikacja oczekuje twierdzenia SAML w określonym formacie, który wymaga dodania mapowania atrybutów niestandardowych konfiguracji atrybuty tokenu języka SAML. Poniższy zrzut ekranu przedstawia przykład tego. Wartość domyślna **identyfikator użytkownika** jest **user.userprincipalname** , ale **usługi FreshDesk** oczekuje, że to mają być mapowane z adresem e-mail użytkownika. W przypadku którego można użyć **user.mail** atrybutu z listy lub użyj wartości odpowiedni atrybut, na podstawie konfiguracji organizacji.
+
+    ![Konfigurowanie logowania jednokrotnego](./media/freshdesk-tutorial/tutorial_attribute.png)
+
+5. Na **certyfikat podpisywania SAML** kliknij **certyfikat (Base64)** , a następnie zapisz plik certyfikatu na komputerze.
 
     ![Konfigurowanie logowania jednokrotnego](./media/freshdesk-tutorial/tutorial_freshdesk_certificate.png)
 
     > [!NOTE]
     > Jeśli masz problemy, zapoznaj się to [łącze](https://support.freshdesk.com/support/discussions/topics/317543).
 
-5. Kliknij przycisk **Zapisz** przycisku.
+6. Kliknij przycisk **Zapisz** przycisku.
 
     ![Konfigurowanie logowania jednokrotnego](./media/freshdesk-tutorial/tutorial_general_400.png)
 
-6. Zainstaluj **OpenSSL** w systemie, jeśli nie jest zainstalowany w systemie.
+7. Zainstaluj **OpenSSL** w systemie, jeśli nie jest zainstalowany w systemie.
 
-7. Otwórz **polecenia** i uruchom następujące polecenia:
+8. Otwórz **polecenia** i uruchom następujące polecenia:
 
     a. Wprowadź `openssl x509 -inform DER -in FreshDesk.cer -out certificate.crt` wartości w wierszu polecenia.
 
     > [!NOTE]
     > W tym miejscu **FreshDesk.cer** to certyfikat, który został pobrany z witryny Azure portal.
 
-    b. Wprowadź `openssl x509 -noout -fingerprint -sha256 -inform pem -in certificate.crt` wartości w wierszu polecenia. W tym miejscu **certificate.crt** jest certyfikat wyjściowy, który jest generowany w poprzednim kroku.
+    b. Wprowadź `openssl x509 -noout -fingerprint -sha256 -inform pem -in certificate.crt` wartości w wierszu polecenia. 
+    
+    > [!NOTE]
+    > W tym miejscu **certificate.crt** jest certyfikat wyjściowy, który jest generowany w poprzednim kroku.
 
     c. Kopiuj **odcisk palca** wartość i wklej go w Notatniku. Usuń dwukropki z odciskiem palca, a następnie Uzyskaj końcowa wartość odcisku palca.
 
-8. Na **konfiguracji usługi FreshDesk** kliknij **skonfigurować usługi FreshDesk** otworzyć Konfigurowanie logowania jednokrotnego okno. Skopiuj SAML pojedynczego logowania jednokrotnego adres URL usługi i adres URL wylogowania **krótki** sekcji.
+9. Na **konfiguracji usługi FreshDesk** kliknij **skonfigurować usługi FreshDesk** otworzyć Konfigurowanie logowania jednokrotnego okno. Skopiuj SAML pojedynczego logowania jednokrotnego adres URL usługi i adres URL wylogowania **krótki** sekcji.
 
     ![Konfigurowanie logowania jednokrotnego](./media/freshdesk-tutorial/tutorial_freshdesk_configure.png)
 
-9. W oknie przeglądarki internetowej innej Zaloguj się do usługi Freshdesk firmowa witryna, jako administrator.
+10. W oknie przeglądarki internetowej innej Zaloguj się do usługi Freshdesk firmowa witryna, jako administrator.
 
-10. W menu u góry kliknij **administratora**.
-
-    ![Administrator](./media/freshdesk-tutorial/IC776768.png "administratora")
-
-11. W **ustawienia ogólne** kliknij pozycję **zabezpieczeń**.
-  
-    ![Zabezpieczenia](./media/freshdesk-tutorial/IC776769.png "zabezpieczeń")
-
-12. W **zabezpieczeń** sekcji, wykonaj następujące czynności:
+11. Wybierz **ikonę ustawienia** i **zabezpieczeń** sekcji, wykonaj następujące czynności:
 
     ![Logowanie jednokrotne](./media/freshdesk-tutorial/IC776770.png "logowanie jednokrotne")
   
@@ -229,22 +228,19 @@ W przypadku usługi FreshDesk Inicjowanie obsługi administracyjnej jest zadanie
 
    ![Informacji o agencie](./media/freshdesk-tutorial/IC776775.png "informacji o agencie")
 
-   a. W **imię i nazwisko** polu tekstowym wpisz nazwę konta usługi Azure AD, do aprowizowania.
+   a. W **E-mail** polu tekstowym wpisz usługi Azure AD adres e-mail konta usługi Azure AD, do aprowizowania.
 
-   b. W **E-mail** polu tekstowym wpisz usługi Azure AD adres e-mail konta usługi Azure AD, do aprowizowania.
+   b. W **imię i nazwisko** polu tekstowym wpisz nazwę konta usługi Azure AD, do aprowizowania.
 
    c. W **tytuł** polu tekstowym wpisz nazwę konta usługi Azure AD, do aprowizowania.
 
-   d. Wybierz **roli agentów**, a następnie kliknij przycisk **przypisać**.
-
-   e. Kliknij pozycję **Zapisz**.
+   d. Kliknij pozycję **Zapisz**.
 
     >[!NOTE]
     >Właściciel konta usługi Azure AD otrzyma wiadomość e-mail zawierającą link do potwierdzenia konta, zanim zostanie aktywowany.
     >
     >[!NOTE]
-    >Można użyć jakichkolwiek innych usługi Freshdesk użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez usługi Freshdesk do aprowizacji kont użytkowników usługi AAD.
-    do usługi FreshDesk.
+    >Można użyć jakichkolwiek innych usługi Freshdesk użytkownika konta tworzenie narzędzi lub interfejsów API dostarczonych przez usługi Freshdesk do aprowizacji kont użytkowników usługi AAD do usługi FreshDesk.
 
 ### <a name="assigning-the-azure-ad-test-user"></a>Przypisywanie użytkownika testowego usługi Azure AD
 

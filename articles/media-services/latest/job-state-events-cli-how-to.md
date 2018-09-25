@@ -4,19 +4,19 @@ description: Usługa Azure Event Grid, aby subskrybować zdarzenia zmiany stanu 
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 09/20/2018
 ms.author: juliako
-ms.openlocfilehash: e9df0cd24ef890765b78c25a073d671889be10a7
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: e7268a066acf41c454de0c66aa21603199d85a60
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38724064"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034845"
 ---
 # <a name="route-azure-media-services-events-to-a-custom-web-endpoint-using-cli"></a>Kierowanie zdarzeń usługi Azure Media Services do niestandardowego internetowego punktu końcowego przy użyciu interfejsu wiersza polecenia
 
@@ -26,17 +26,14 @@ Zazwyczaj wysyła się zdarzenia do punktu końcowego, który na nie reaguje, ta
 
 Po wykonaniu czynności opisanych w tym artykule dane powinny zostać wysłane do punktu końcowego.
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="prerequisites"></a>Wymagania wstępne
 
-Zaloguj się w witrynie [Azure Portal](http://portal.azure.com), a następnie uruchom usługę **CloudShell**, aby wykonywać polecenia interfejsu wiersza polecenia, jak pokazano w następnych krokach.
+- Mieć aktywną subskrypcję platformy Azure.
+- [Utwórz konto usługi Media Services](create-account-cli-how-to.md).
 
-[!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]
+    Upewnij się, że należy pamiętać, wartości, które były używane nazwy grupy zasobów i nazwę konta usługi Media Services.
 
-Jeśli zdecydujesz się zainstalować interfejs wiersza polecenia i korzystać z niego lokalnie, ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, z jakiej wersji korzystasz. Jeśli potrzebujesz instalacja lub uaktualnienie, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). 
-
-[!INCLUDE [media-services-cli-create-v3-account-include](../../../includes/media-services-cli-create-v3-account-include.md)]
-
-Upewnij się, że należy pamiętać, wartości, które były używane dla nazwy konta usługi Media Services, nazwę magazynu i nazwę zasobu.
+- Zainstaluj [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest). Ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, z jakiej wersji korzystasz. Można również użyć [usługi Azure Cloud Shell](https://shell.azure.com/bash).
 
 ## <a name="enable-event-grid-resource-provider"></a>Włączanie dostawcy zasobów usługi Event Grid
 
@@ -132,7 +129,7 @@ Naciśnij klawisz **Zapisz i uruchom** w górnej części okna.
 
 Możesz zasubskrybować artykuł, aby poinformować usługę Event Grid zdarzenia, które mają być śledzone. Poniższy przykład ilustruje subskrybowanie konta usługi Media Services został utworzony i przekazanie adresu URL od elementu webhook funkcji platformy Azure, utworzony jako punktu końcowego dla powiadomień o zdarzeniach. 
 
-Zastąp `<event_subscription_name>` unikatową nazwę subskrypcji zdarzeń. Jako parametrów `<resource_group_name>` i `<ams_account_name>` użyj utworzonych wcześniej wartości.  Aby uzyskać `<endpoint_URL>` Wklej adres URL punktu końcowego. Usuń *& clientID = default* z adresu URL. Dzięki określeniu punktu końcowego podczas subskrybowania usługa Event Grid obsługuje kierowanie zdarzeń do tego punktu końcowego. 
+Zastąp `<event_subscription_name>` unikatową nazwę subskrypcji zdarzeń. Aby uzyskać `<resource_group_name>` i `<ams_account_name>`, użyj wartości, którego użyto podczas tworzenia konta usługi Media Services. Aby uzyskać `<endpoint_URL>` Wklej adres URL punktu końcowego. Usuń *& clientID = default* z adresu URL. Dzięki określeniu punktu końcowego podczas subskrybowania usługa Event Grid obsługuje kierowanie zdarzeń do tego punktu końcowego. 
 
 ```cli
 amsResourceId=$(az ams account show --name <ams_account_name> --resource-group <resource_group_name> --query id --output tsv)
@@ -145,7 +142,9 @@ az eventgrid event-subscription create \
 
 Wartość identyfikatora zasobu konta usługi Media Services wygląda podobnie do poniższego:
 
-/Subscriptions/81212121-2f4f-4b5d-a3dc-ba0015515f7b/resourceGroups/amsResourceGroup/Providers/Microsoft.Media/mediaservices/amstestaccount
+```
+/subscriptions/81212121-2f4f-4b5d-a3dc-ba0015515f7b/resourceGroups/amsResourceGroup/providers/Microsoft.Media/mediaservices/amstestaccount
+```
 
 ## <a name="test-the-events"></a>Testowanie zdarzenia
 
@@ -153,7 +152,7 @@ Uruchom zadania kodowania. Na przykład, zgodnie z opisem w [Stream pliki wideo]
 
 Zdarzenie zostało wyzwolone, a usługa Event Grid wysłała komunikat do punktu końcowego skonfigurowanego podczas subskrybowania. Przejdź do elementu webhook, która została utworzona wcześniej. Kliknij przycisk **Monitor** i **Odśwież**. Zostanie wyświetlony stan zadania zmieni się zdarzenia: "W kolejce", "Zaplanowane", "Przetwarzania", "Zakończono", "Error", "Anulowane", "Anulowanie".  Aby uzyskać więcej informacji, zobacz [schematów zdarzeń usługi Media Services](media-services-event-schemas.md).
 
-Na przykład:
+Poniższy przykład przedstawia schematu zdarzeń JobStateChange:
 
 ```json
 [{
@@ -172,16 +171,6 @@ Na przykład:
 ```
 
 ![Badanie zdarzeń](./media/job-state-events-cli-how-to/test_events.png)
-
-## <a name="clean-up-resources"></a>Oczyszczanie zasobów
-
-Jeśli zamierzasz kontynuować pracę z tym kontem magazynu i tą subskrypcją zdarzeń, nie usuwaj zasobów utworzonych w tym artykule. Jeśli nie planujesz kontynuowania pracy, użyj poniższego polecenia, aby usunąć zasoby utworzone w ramach tego artykułu.
-
-Zamień `<resource_group_name>` na utworzoną powyżej grupę zasobów.
-
-```azurecli-interactive
-az group delete --name <resource_group_name>
-```
 
 ## <a name="next-steps"></a>Kolejne kroki
 

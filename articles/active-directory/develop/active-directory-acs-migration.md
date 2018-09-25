@@ -1,6 +1,6 @@
 ---
 title: Migrowanie z usługi Azure Access Control service | Dokumentacja firmy Microsoft
-description: Opcje przenoszenia usług i aplikacji z usługi Azure Access Control
+description: Poznaj opcje dotyczące przenoszenia usług i aplikacji z usługi Azure Access Control Service (ACS).
 services: active-directory
 documentationcenter: dev-center-name
 author: CelesteDG
@@ -13,17 +13,17 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/06/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 3120bf36c32a8be42f325ef584bfc8a2c5cd04df
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 59856418adde1ea29a0513a1ca7c0c60531768d8
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055298"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036545"
 ---
-# <a name="migrate-from-the-azure-access-control-service"></a>Migrowanie z usługi Azure Access Control service
+# <a name="how-to-migrate-from-the-azure-access-control-service"></a>Instrukcje: Migrowanie z usługi Azure Access Control service
 
 Microsoft Azure Access Control Service (ACS), usługa Azure Active Directory (Azure AD) zostanie wycofana 7 listopada 2018 r. Aplikacje i usługi, które obecnie korzystanie z kontroli dostępu muszą być w pełni migrowane na inny mechanizm uwierzytelniania, następnie. W tym artykule opisano zalecenia dotyczące obecni klienci, planując wycofana korzystanie z kontroli dostępu. Obecnie nie używasz kontroli dostępu, nie trzeba podejmować żadnych działań.
 
@@ -37,7 +37,7 @@ Przypadki użycia dla kontroli dostępu mogą być podzielone na trzy główne k
 - Dodawanie uwierzytelniania do aplikacji sieci web, to wstępnie spakowane zestawy (np. SharePoint) i niestandardowych. Za pomocą kontroli dostępu "pasywny" uwierzytelnianie, aplikacje sieci web może obsługiwać Zaloguj się przy użyciu konta Microsoft (dawniej identyfikator Live ID) i za pomocą kont Google, Facebook, Yahoo, usługa Azure AD i usługi Active Directory Federation Services (AD FS).
 - Zabezpieczanie usług niestandardowe sieci web za pomocą tokenów wystawionych przez kontrolę dostępu. Przy użyciu uwierzytelniania "active", usług sieci web można upewnić się, czy zezwolić na dostęp tylko znane aplikacje klienckie, które zostały uwierzytelnione przy użyciu kontroli dostępu.
 
-Każda z tych przypadków użycia i ich zalecane migracji, które zostały omówione strategie w poniższych sekcjach. 
+Każda z tych przypadków użycia i ich zalecane migracji, które zostały omówione strategie w poniższych sekcjach.
 
 > [!WARNING]
 > W większości przypadków istotne zmiany kodu są wymagane do migracji istniejących aplikacji i usług do nowszymi technologiami. Firma Microsoft zaleca, aby natychmiast rozpocząć planowanie i wykonywanie migracji w celu uniknięcia potencjalnych przestojów ani przestoje.
@@ -61,6 +61,51 @@ Cała komunikacja z usługą STS i operacje zarządzania są wykonywane tylko po
 Wyjątkiem jest cały ruch do `https://accounts.accesscontrol.windows.net`. Ruch do tego adresu URL jest już obsługiwane przez inną usługę i **nie** wpływ wycofywania kontroli dostępu. 
 
 Aby uzyskać więcej informacji na temat kontroli dostępu, zobacz [usługi 2.0 kontroli dostępu, (zarchiwizowanych)](https://msdn.microsoft.com/library/hh147631.aspx).
+
+## <a name="find-out-which-of-your-apps-will-be-impacted"></a>Dowiedz się, której aplikacji dotyczy problem
+
+Wykonaj kroki opisane w tej sekcji, aby dowiedzieć się, który aplikacji będzie wpływać na wycofanie usługi ACS.
+
+### <a name="download-and-install-acs-powershell"></a>Pobieranie i instalowanie programu PowerShell usługi ACS
+
+1. Przejdź do galerii programu PowerShell i Pobierz [Acs.Namespaces](https://www.powershellgallery.com/packages/Acs.Namespaces/1.0.2).
+1. Zainstaluj moduł, uruchamiając
+
+    ```powershell
+    Install-Module -Name Acs.Namespaces
+    ```
+
+1. Pobierz listę wszystkie możliwe polecenia, uruchamiając
+
+    ```powershell
+    Get-Command -Module Acs.Namespaces
+    ```
+
+    Aby uzyskać pomoc dotyczącą określonego polecenia, uruchom polecenie:
+
+    ```
+     Get-Help [Command-Name] -Full
+    ```
+    
+    gdzie `[Command-Name]` to nazwa polecenia ACS.
+
+### <a name="list-your-acs-namespaces"></a>Lista przestrzeniami nazw usługi ACS
+
+1. Nawiązywanie połączenia przy użyciu usługi ACS **Connect AcsAccount** polecenia cmdlet.
+  
+    Może być konieczne uruchomienie `Set-ExecutionPolicy -ExecutionPolicy Bypass` przed wykonaniem polecenia i zostać administratorem te subskrypcje w celu wykonania polecenia.
+
+1. Lista dostępnych subskrypcji platformy Azure przy użyciu **Get AcsSubscription** polecenia cmdlet.
+1. Listy, używając przestrzeni nazw usługi ACS **Get AcsNamespace** polecenia cmdlet.
+
+### <a name="check-which-applications-will-be-impacted"></a>Sprawdź, które aplikacje będą mieć wpływ na
+
+1. Użyj przestrzeni nazw z poprzedniego kroku, a następnie przejdź do `https://<namespace>.accesscontrol.windows.net`
+
+    Na przykład jeśli jeden z przestrzeni nazw jest contoso-test, przejdź do strony `https://contoso-test.accesscontrol.windows.net`
+
+1. W obszarze **relacje zaufania**, wybierz opcję **aplikacji jednostki uzależnionej** Aby wyświetlić listę aplikacji, które będzie mieć wpływ na wycofanie usługi ACS.
+1. Powtórz kroki 1 i 2 dla wszelkich innych usług ACS namespace (s), masz.
 
 ## <a name="retirement-schedule"></a>Wycofanie harmonogramu
 

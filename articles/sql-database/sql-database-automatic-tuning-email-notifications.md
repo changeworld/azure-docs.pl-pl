@@ -2,20 +2,22 @@
 title: Dostrajanie automatyczne usługi poczty e-mail powiadomień przewodniku z instrukcjami — usługi Azure SQL Database | Dokumentacja firmy Microsoft
 description: Włącz powiadomienia e-mail dostrajania automatycznego zapytań usługi Azure SQL Database.
 services: sql-database
-author: danimir
-manager: craigg
-ms.reviewer: carlrab
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/19/2018
+author: danimir
 ms.author: v-daljep
-ms.openlocfilehash: 546a21c4be13fdd0d06e29253d73c6b67cb8c91c
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 86639be7c4d934929272e6d578485bfc8bfb9cc9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498474"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064105"
 ---
 # <a name="email-notifications-for-automatic-tuning"></a>Powiadomienia e-mail dotyczące automatycznego dostrajania
 
@@ -205,12 +207,12 @@ Następnym krokiem jest można dodać trzy zadania (Tworzenie, Pobierz dane wyj�
 1. Utwórz akcję można wykonać skrypt programu PowerShell, aby uzyskać zalecenia dotyczące dostrajania
 - Wybierz pozycję "**+ nowy krok**", a następnie"**Dodaj akcję**" wewnątrz okienka przepływu cykl
 - W polu wyszukiwania wpisz "**automatyzacji**"i wybierz pozycję"**usługi Azure Automation — Tworzenie zadania**" z wyników wyszukiwania
-- W okienku zadania Utwórz Skonfiguruj właściwości zadania. W przypadku tej konfiguracji należy szczegółowe informacje o Twojej subskrypcji platformy Azure identyfikator, grupy zasobów i konta usługi Automation **wcześniej zapisaną** na **okienku konta automatyzacji**. Aby dowiedzieć się więcej na temat opcji dostępnych w tej sekcji, zobacz [usługi Azure Automation — Utwórz zadanie](https://docs.microsoft.com/connectors/azureautomation/#Create_job).
+- W okienku zadania Utwórz Skonfiguruj właściwości zadania. W przypadku tej konfiguracji należy szczegółowe informacje o Twojej subskrypcji platformy Azure identyfikator, grupy zasobów i konta usługi Automation **wcześniej zapisaną** na **okienku konta automatyzacji**. Aby dowiedzieć się więcej na temat opcji dostępnych w tej sekcji, zobacz [usługi Azure Automation — Utwórz zadanie](https://docs.microsoft.com/connectors/azureautomation/#create-job).
 - Ukończyć tworzenia tej akcji, klikając "**Zapisz przepływ**"
 
 2. Utwórz akcję, aby pobrać dane wyjściowe z wykonany skrypt programu PowerShell
 - Wybierz pozycję "**+ nowy krok**", a następnie"**Dodaj akcję**" wewnątrz okienka przepływu cykl
-- W wyszukiwaniu pola typu "**automatyzacji**"i wybierz pozycję"**usługi Azure Automation — dane wyjściowe zadania Get**" z wyników wyszukiwania. Aby dowiedzieć się więcej na temat opcji dostępnych w tej sekcji, zobacz [usługi Azure Automation — dane wyjściowe zadania Get](https://docs.microsoft.com/connectors/azureautomation/#Get_job_output).
+- W wyszukiwaniu pola typu "**automatyzacji**"i wybierz pozycję"**usługi Azure Automation — dane wyjściowe zadania Get**" z wyników wyszukiwania. Aby dowiedzieć się więcej na temat opcji dostępnych w tej sekcji, zobacz [usługi Azure Automation — dane wyjściowe zadania Get](https://docs.microsoft.com/connectors/azureautomation/#get-job-output).
 - Wypełnij pola wymagana (podobny do poprzedniego zadania tworzenia) — wypełnić Twojej subskrypcji platformy Azure identyfikator, grupy zasobów oraz konta usługi Automation (wprowadzoną w okienku konta automatyzacji)
 - Kliknij wewnątrz pola "**identyfikator zadania**" do "**zawartości dynamicznej**" menu do wyświetlenia. W ramach tego menu, zaznacz opcję "**identyfikator zadania**".
 - Ukończyć tworzenia tej akcji, klikając "**Zapisz przepływ**"

@@ -1,6 +1,6 @@
 ---
-title: Zapisane wyszukiwania i alertów w rozwiązaniach do zarządzania | Dokumentacja firmy Microsoft
-description: Rozwiązania do zarządzania zwykle zawierają zapisane wyszukiwania w analizy dzienników do analizowania danych zebranych przez rozwiązanie.  Mogą również definiować alertów umożliwiających powiadamianie użytkownika lub automatyczne wykonywanie akcji w odpowiedzi na problem krytyczny.  W tym artykule opisano sposób definiowania analizy dzienników zapisane wyszukiwania i alertów w szablonie usługi Resource Manager, aby mogły one zostać uwzględnione w rozwiązaniach do zarządzania.
+title: Zapisane wyszukiwania i alerty w rozwiązaniach do zarządzania | Dokumentacja firmy Microsoft
+description: Rozwiązania do zarządzania zwykle zawierają zapisane wyszukiwania w usłudze Log Analytics do analizowania danych zbieranych przez to rozwiązanie.  Mogą również definiować alerty, aby powiadomić użytkownika lub automatycznie podjąć działania w odpowiedzi na problem krytyczny.  W tym artykule opisano sposób definiowania zapisane wyszukiwania i alerty w szablonie usługi Resource Manager, aby mogły one zostać uwzględnione w rozwiązaniach do zarządzania w usłudze Log Analytics.
 services: monitoring
 documentationcenter: ''
 author: bwren
@@ -14,49 +14,49 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c29d6cb0da2e394912a2584b0d3c3cedf13f054c
-ms.sourcegitcommit: ea5193f0729e85e2ddb11bb6d4516958510fd14c
+ms.openlocfilehash: f03e124aab27292ee86fcd8c28ecebb0ba9cbdcf
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/21/2018
-ms.locfileid: "36304486"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999515"
 ---
-# <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Dodawanie analizy dzienników zapisane wyszukiwania i alerty rozwiązania do zarządzania (wersja zapoznawcza)
+# <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Dodawanie usługi Log Analytics zapisane wyszukiwania i alerty w rozwiązaniu do zarządzania (wersja zapoznawcza)
 
 > [!NOTE]
-> To jest wstępna dokumentacji do tworzenia rozwiązań do zarządzania, które są obecnie w wersji zapoznawczej. Żadnego schematu opisanych poniżej może ulec zmianie.   
+> Jest to wstępne dokumentację dotyczącą tworzenia rozwiązań do zarządzania, które są obecnie dostępne w wersji zapoznawczej. Żadnego schematu opisanych poniżej ulec zmianie.   
 
 
-[Rozwiązania do zarządzania](monitoring-solutions.md) zazwyczaj uwzględnia [zapisane wyszukiwania](../log-analytics/log-analytics-log-searches.md) w analizy dzienników do analizowania danych zebranych przez rozwiązanie.  Mogą również określić [alerty](../log-analytics/log-analytics-alerts.md) powiadamia użytkownika lub automatyczne wykonywanie akcji w odpowiedzi na problem krytyczny.  W tym artykule opisano sposób definiowania analizy dzienników zapisane wyszukiwania i alertów w [szablonu zarządzanie zasobami](../resource-manager-template-walkthrough.md) aby mogły one zostać uwzględnione w [rozwiązań do zarządzania](monitoring-solutions-creating.md).
+[Rozwiązania do zarządzania](monitoring-solutions.md) zwykle zawierają [zapisane wyszukiwania](../log-analytics/log-analytics-log-searches.md) w usłudze Log Analytics do analizowania danych zbieranych przez to rozwiązanie.  Mogą również definiować [alerty](../log-analytics/log-analytics-alerts.md) powiadomić użytkownika lub automatycznie podjąć działania w odpowiedzi na problem krytyczny.  W tym artykule opisano sposób definiowania zapisanego wyszukiwania analizy dzienników i alertów w [szablonu Resource Management](../resource-manager-template-walkthrough.md) , dzięki czemu mogą być zawarte w [rozwiązań do zarządzania](monitoring-solutions-creating.md).
 
 > [!NOTE]
-> Przykłady w tym artykule, użyj parametrów i zmiennych, które są wymagane ani wspólne dla rozwiązań do zarządzania i opisano w [projektowanie i tworzenie rozwiązania do zarządzania na platformie Azure](monitoring-solutions-creating.md)  
+> Przykłady w tym artykule użyć parametrów i zmiennych, które są wymagane lub wspólne dla rozwiązania do zarządzania i opisem w artykule [projektowanie i tworzenie rozwiązania do zarządzania na platformie Azure](monitoring-solutions-creating.md)  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym artykule przyjęto założenie, że znasz już jak [tworzenie rozwiązania do zarządzania](monitoring-solutions-creating.md) i struktura [szablonu usługi Resource Manager](../resource-group-authoring-templates.md) i plik rozwiązania.
+W tym artykule założono, że znasz już sposób [utworzyć to rozwiązanie do zarządzania](monitoring-solutions-creating.md) i struktury [szablonu usługi Resource Manager](../resource-group-authoring-templates.md) i plik rozwiązania.
 
 
 ## <a name="log-analytics-workspace"></a>Obszar roboczy usługi Log Analytics
-Wszystkie zasoby w analizy dzienników znajdują się w [obszaru roboczego](../log-analytics/log-analytics-manage-access.md).  Zgodnie z opisem w [obszaru roboczego analizy dzienników i konto automatyzacji](monitoring-solutions.md#log-analytics-workspace-and-automation-account), obszar roboczy nie jest zawarty w rozwiązaniu do zarządzania, ale musi istnieć przed zainstalowaniem rozwiązania.  Jeśli nie jest dostępny, zainstaluj rozwiązania nie powiedzie się.
+Wszystkie zasoby w usłudze Log Analytics są zawarte w [obszaru roboczego](../log-analytics/log-analytics-manage-access.md).  Zgodnie z opisem w [obszar roboczy usługi Log Analytics i konto usługi Automation](monitoring-solutions.md#log-analytics-workspace-and-automation-account), obszar roboczy nie jest zawarty w rozwiązaniu do zarządzania, ale musi istnieć przed zainstalowaniem rozwiązania.  Jeśli nie jest dostępne, zainstaluj rozwiązania kończy się niepowodzeniem.
 
-Nazwa obszaru roboczego jest nazwy każdego zasobu analizy dzienników.  Ma to rozwiązanie z **obszaru roboczego** parametru, jak w poniższym przykładzie SavedSearch zasobu.
+Nazwa obszaru roboczego jest nazwę każdego zasobu usługi Log Analytics.  Jest to realizowane w rozwiązaniu za pomocą **obszaru roboczego** parametru, jak w poniższym przykładzie zasobów zapisanego wyszukiwania.
 
     "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearchId'))]"
 
-## <a name="log-analytics-api-version"></a>Wersja interfejsu API analizy dzienników
-Wszystkie zasoby analizy dzienników zdefiniowane w szablonie usługi Resource Manager ma właściwości **apiVersion** określający wersję interfejsu API zasobu należy użyć.   
+## <a name="log-analytics-api-version"></a>Wersja interfejsu API analizy dziennika
+Wszystkie zasoby usługi Log Analytics, zdefiniowane w szablonie usługi Resource Manager mają właściwość **apiVersion** definiujący wersję interfejsu API, należy użyć zasobu.   
 
-W poniższej tabeli wymieniono wersja interfejsu API dla zasobów w tym przykładzie.
+Poniższa tabela zawiera listę wersji interfejsu API dla zasobów używanych w tym przykładzie.
 
 | Typ zasobu | Wersja interfejsu API | Zapytanie |
 |:---|:---|:---|
-| savedSearches | 2017-03-15-preview | Zdarzenia &#124; gdzie EventLevelName == "Error"  |
+| savedSearches | 2017-03-15-preview | Zdarzenie &#124; gdzie EventLevelName == "Error"  |
 
 
 ## <a name="saved-searches"></a>Zapisane wyszukiwania
-Obejmują [zapisane wyszukiwania](../log-analytics/log-analytics-log-searches.md) w rozwiązaniu, aby umożliwić użytkownikom zapytania danych zbieranych przez rozwiązania.  Zapisane wyszukiwania są wyświetlane w obszarze **ulubione** w portalu OMS i **zapisane wyszukiwania** w portalu Azure.  Zapisane wyszukiwanie jest również wymagany dla każdego alertu.   
+Obejmują [zapisane wyszukiwania](../log-analytics/log-analytics-log-searches.md) w ramach rozwiązania, aby umożliwić użytkownikom zapytania o dane zebrane przez rozwiązania.  Zapisane wyszukiwania są wyświetlane w obszarze **ulubione** w portalu pakietu OMS i **zapisane wyszukiwania** w witrynie Azure portal.  Zapisane wyszukiwanie jest także wymagane dla każdego alertu.   
 
-[Analiza dzienników zapisane wyszukiwanie](../log-analytics/log-analytics-log-searches.md) zasobów mieć typu `Microsoft.OperationalInsights/workspaces/savedSearches` i ma następującą strukturę.  W tym wspólnych zmiennych i parametrów, aby mogli skopiuj i wklej następujący fragment kodu w pliku rozwiązania i Zmień nazwy parametrów. 
+[Zapisane wyszukiwanie analizy dzienników](../log-analytics/log-analytics-log-searches.md) zasoby mają typ `Microsoft.OperationalInsights/workspaces/savedSearches` i mają następującą strukturę.  W tym wspólnych zmiennych i parametrów, aby można skopiuj i wklej następujący fragment kodu do pliku rozwiązania i Zmień nazwy parametrów. 
 
     {
         "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name)]",
@@ -79,34 +79,34 @@ Każda właściwość zapisanego kryterium wyszukiwania jest opisane w poniższe
 
 | Właściwość | Opis |
 |:--- |:--- |
-| category | Kategoria dla zapisanego wyszukiwania.  Żadnych zapisanych wyszukiwań, w tym samym rozwiązaniu często muszą współdzielić jednej kategorii, więc są pogrupowane w konsoli. |
+| category | Kategoria dla zapisanego wyszukiwania.  Wszystkie zapisane wyszukiwania, w tym samym rozwiązaniu często współużytkują jednej kategorii, dzięki czemu są one zgrupowane razem w konsoli. |
 | Nazwa wyświetlana | Nazwa do wyświetlenia dla zapisanego wyszukiwania w portalu. |
 | query | Zapytanie do uruchomienia. |
 
 > [!NOTE]
-> Może być konieczne użycie znaki specjalne w zapytaniu, jeśli zawiera znaki, które mogą być interpretowane jako JSON.  Na przykład, jeśli zapytanie zostało **typu: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"**, mają być zapisywane w pliku rozwiązania jako **typu: AzureActivity OperationName:\" Microsoft.Compute/virtualMachines/write\"**.
+> Może być konieczne użycie znaków ucieczki w zapytaniu, jeśli zawiera znaki, które może zostać zinterpretowane jako kod JSON.  Na przykład, jeśli zapytanie zostało **typu: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"**, powinny być zapisywane w pliku rozwiązania jako **typu: AzureActivity OperationName:\" Microsoft.Compute/virtualMachines/write\"**.
 
 ## <a name="alerts"></a>Alerty
-[Azure alerty dziennika](../monitoring-and-diagnostics/monitor-alerts-unified-log.md) są tworzone przez reguły alertów Azure, które wykonywania kwerend określony dziennik w regularnych odstępach czasu.  Jeśli wyników zapytania spełniających określone kryteria, tworzony jest rekord alertów i co najmniej jednej akcji są uruchamiane przy użyciu [grupy akcji](../monitoring-and-diagnostics/monitoring-action-groups.md).  
+[Alerty dzienników platformy Azure](../monitoring-and-diagnostics/monitor-alerts-unified-log.md) są tworzone przez reguły alertów platformy Azure, które uruchamiają zapytania określonego dziennika w regularnych odstępach czasu.  Jeśli wyniki zapytania pasują do określonych kryteriów, zostaje utworzony rekord alertu i co najmniej jednej akcji są uruchamiane przy użyciu [grup akcji](../monitoring-and-diagnostics/monitoring-action-groups.md).  
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 wszystkie alerty w obszarze roboczym rozpocznie się automatycznie rozszerzenie na platformie Azure. Przed 14 maja 2018 użytkownika dobrowolnie zainicjować rozszerzanie alerty na platformie Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformie Azure z usługą OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, rozszerzające alertach do platformy Azure akcje teraz są kontrolowane w grupach Azure akcji. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformie Azure, można pobrać lub dodać akcje za pomocą [grupy akcji — szablon Menedżera zasobów Azure](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+> Począwszy od 14 maja 2018 r. wszystkie alerty w wystąpieniu chmury publicznej platformy Azure w obszarze roboczym usługi Log Analytics automatycznie rozpocznie się rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z pakietu OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [grupy akcji — szablon usługi Azure Resource Manager](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 Reguły alertów w rozwiązaniu do zarządzania składają się z następujących trzech różnych zasobów.
 
-- **Zapisane wyszukiwanie.**  Definiuje wyszukiwania dziennika, który jest uruchamiany.  Wiele reguł alertów można udostępniać pojedynczy zapisanego kryterium wyszukiwania.
-- **Harmonogram.**  Określa, jak często jest uruchamiany wyszukiwania dziennika.  Każda reguła alertów ma jeden i tylko jeden harmonogram.
-- **Akcja alertu.**  Każda reguła alertów ma jednej akcji grupy zasobów lub akcji zasób (starsze) z typem **Alert** definiuje szczegóły alertu, takie jak kryteria gdy tworzony jest rekord alertów i ważność alertu. [Grupy akcji](../monitoring-and-diagnostics/monitoring-action-groups.md) zasobów może mieć listy skonfigurowane akcje w sytuacji, gdy alert jest uruchamiany — takich jak połączenie głosowe, programu SMS, wiadomości e-mail, webhook, zarządzanie usługami IT — tool, element runbook automatyzacji, aplikację logiki itp.
+- **Zapisane wyszukiwanie.**  Definiuje przeszukiwania dzienników, która jest uruchamiana.  Wiele reguł alertów można udostępniać pojedynczy zapisanego kryterium wyszukiwania.
+- **Harmonogram.**  Definiuje, jak często wykonywane jest wyszukiwanie w dzienniku.  Każda reguła alertu ma jeden i tylko jeden harmonogram.
+- **Akcja alertu.**  Każda reguła alertu ma jeden zasób grupy akcji lub Akcja zasobu (starsze) z typem **Alert** definiujący szczegóły alertu, takie jak kryteria podczas tworzenia rekordu alertu i ważności alertu. [Grupa akcji](../monitoring-and-diagnostics/monitoring-action-groups.md) zasób może zawierać listę skonfigurowane akcje do wykonania po wyzwoleniu alertu — takich jak połączenie głosowe i wiadomość SMS, wiadomości e-mail, element webhook, narzędziem ITSM, element runbook usługi automation, aplikacja logiki itp.
  
-Zasób akcji (starsze) opcjonalnie definiują odpowiedzi poczty i elementu runbook.
-- **Akcja elementu Webhook (starsze).**  Reguły alertów wywołania elementu webhook, a następnie go wymaga dodatkowych czynności zasobu o typie **Webhook**.    
+Zasób akcji (starsze) opcjonalnie definiują odpowiedzi poczty e-mail i elementów runbook.
+- **Akcja elementu Webhook (starsza wersja).**  Reguła alertu wywołuje element webhook, a następnie wymaga zasób dodatkowych akcji z typem **elementu Webhook**.    
 
-Zapisane wyszukiwania zasobów opisanych powyżej.  Inne zasoby są opisane poniżej.
+Zapisane wyszukiwania, które zasoby są opisane powyżej.  Inne zasoby są opisane poniżej.
 
 
 ### <a name="schedule-resource"></a>Zasób harmonogramu
 
-Zapisane wyszukiwanie może mieć co najmniej jeden harmonogram z każdym harmonogramem reprezentujący oddzielne reguły alertu. Harmonogram Określa, jak często wyszukiwanie jest uruchamiania i przedział czasu, przez który dane są pobierane.  Planowanie zasobów mieć typu `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/` i ma następującą strukturę. W tym wspólnych zmiennych i parametrów, aby mogli skopiuj i wklej następujący fragment kodu w pliku rozwiązania i Zmień nazwy parametrów. 
+Zapisane wyszukiwanie może mieć co najmniej jeden harmonogram z każdym harmonogramie reprezentujący oddzielne reguły alertu. Harmonogram definiuje, jak często wyszukiwanie jest uruchamiania i przedział czasu, przez który dane są pobierane.  Planowanie zasobów mają typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/` i mają następującą strukturę. W tym wspólnych zmiennych i parametrów, aby można skopiuj i wklej następujący fragment kodu do pliku rozwiązania i Zmień nazwy parametrów. 
 
 
     {
@@ -126,32 +126,32 @@ Zapisane wyszukiwanie może mieć co najmniej jeden harmonogram z każdym harmon
 
 
 
-W poniższej tabeli opisano właściwości planowania zasobów.
+Właściwości harmonogramu zasoby są opisane w poniższej tabeli.
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
 | enabled       | Yes | Określa, czy alert jest włączony podczas jego tworzenia. |
-| interval      | Yes | Częstotliwość wykonywania kwerendy w minutach. |
-| queryTimeSpan | Yes | Długość czasu w minutach, przez który ocena wyników. |
+| interval      | Yes | Jak często zapytanie działa w ciągu kilku minut. |
+| queryTimeSpan | Yes | Długość czasu w minutach, względem którego ma zostać ocena wyników. |
 
-Zasób harmonogramu powinien są zależne od zapisanego wyszukiwania, aby przed harmonogram jest tworzona.
+Zasób harmonogramu powinna zależeć od zapisane wyszukiwanie, tak, aby jest tworzony przed harmonogramu.
 
 > [!NOTE]
-> Nazwa harmonogramu musi być unikatowa w danym obszarze roboczym; dwa harmonogramy nie może mieć ten sam identyfikator, nawet jeśli są one skojarzone z inną zapisanych wyszukiwań. Również nazwę wszystkie zapisane wyszukiwania, harmonogramów i utworzonych przy użyciu interfejsu API analizy dziennika akcji musi być pisane małymi literami.
+> Nazwa harmonogramu musi być unikatowa w danym obszarze roboczym; dwa harmonogramy nie może mieć ten sam identyfikator, nawet jeśli są one skojarzone z inną zapisanych wyszukiwań. Również nazwa wszystkie zapisane wyszukiwania, harmonogramów i działań utworzonych za pomocą interfejsu API analizy dziennika musi być pisane małymi literami.
 
 
 ### <a name="actions"></a>Akcje
-Harmonogram może mieć wiele akcji. Akcja może określić jeden lub więcej procesów do wykonywania takich jak wysyłanie wiadomości e-mail lub uruchamianie elementu runbook lub mogą określić próg określający, jeśli wyniki wyszukiwania zgodny pewne kryteria.  Niektóre akcje definiują zarówno tak, aby procesy są wykonywane po spełnieniu wartość progową.
+Harmonogram może mieć wiele akcji. Akcja może zdefiniować jeden lub więcej procesów do wykonywania takich jak wysłanie wiadomości e-mail lub uruchamianie elementu runbook lub mogą definiować, próg, która określa, kiedy wyniki wyszukiwania pasują do kryteriów.  Niektóre akcje definiują zarówno tak, aby procesy są wykonywane po osiągnięciu wartości progowej.
 
-Akcje można zdefiniować przy użyciu zasobów [grupy akcji] lub zasób akcji.
+Akcje mogą być definiowane przy użyciu [grupy akcji] zasobu lub akcji.
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 wszystkie alerty w obszarze roboczym rozpocznie się automatycznie rozszerzenie na platformie Azure. Przed 14 maja 2018 użytkownika dobrowolnie zainicjować rozszerzanie alerty na platformie Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformie Azure z usługą OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, rozszerzające alertach do platformy Azure akcje teraz są kontrolowane w grupach Azure akcji. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformie Azure, można pobrać lub dodać akcje za pomocą [grupy akcji — szablon Menedżera zasobów Azure](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+> Począwszy od 14 maja 2018 r. wszystkie alerty w wystąpieniu chmury publicznej platformy Azure w obszarze roboczym usługi Log Analytics automatycznie rozpocznie się rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z pakietu OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [grupy akcji — szablon usługi Azure Resource Manager](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 
-Istnieją dwa typy akcji zasobu określonego przez **typu** właściwości.  Harmonogram wymaga jednego **Alert** akcji, który definiuje szczegóły reguły alertów i jakie akcje są pobierane, gdy tworzony jest alert. Zasoby akcji mieć typu `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`.  
+Istnieją dwa typy działań zasobu określonego przez **typu** właściwości.  Harmonogram wymaga jednego **Alert** akcji, która definiuje szczegóły reguły alertów i jakie akcje są wykonywane podczas tworzenia alertu. Akcja zasoby mają typ `Microsoft.OperationalInsights/workspaces/savedSearches/schedules/actions`.  
 
-Akcje alertu ma następującą strukturę.  W tym wspólnych zmiennych i parametrów, aby mogli skopiuj i wklej następujący fragment kodu w pliku rozwiązania i Zmień nazwy parametrów. 
+Akcje alertu mają następującą strukturę.  W tym wspólnych zmiennych i parametrów, aby można skopiuj i wklej następujący fragment kodu do pliku rozwiązania i Zmień nazwy parametrów. 
 
 
 ```
@@ -186,35 +186,35 @@ Akcje alertu ma następującą strukturę.  W tym wspólnych zmiennych i paramet
     }
 ```
 
-W poniższych tabelach opisano właściwości zasobów akcji alertu.
+Właściwości dla akcji alertu zasoby są opisane w poniższych tabelach.
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
 | Typ | Yes | Typ akcji.  Jest to **Alert** dla akcje alertu. |
-| Name (Nazwa) | Yes | Nazwa wyświetlana alertu.  Jest to nazwa, która jest wyświetlana w konsoli dla reguł alertów. |
+| Name (Nazwa) | Yes | Nazwa wyświetlana alertu.  Jest to nazwa, która jest wyświetlana w konsoli dla reguły alertu. |
 | Opis | Nie | Opcjonalny opis alertu. |
 | Ważność | Yes | Ważność alertu rekordu z następujących wartości:<br><br> **Krytyczne**<br>**Ostrzeżenie**<br>**Informacyjny**
 
 
 #### <a name="threshold"></a>Próg
-Ta sekcja jest wymagana.  Definiuje właściwości dla wartości progowej alertu.
+Ta sekcja jest wymagana.  Definiuje właściwości próg alertu.
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| Operator | Yes | Operator porównania z następujących wartości:<br><br>**gt = większe<br>lt = mniej niż** |
-| Wartość | Yes | Wartość do porównywania wyników. |
+| Operator | Yes | Operator porównania z następujących wartości:<br><br>**gt = większa niż<br>lt = mniej niż** |
+| Wartość | Yes | Wartość do porównania wyników. |
 
 ##### <a name="metricstrigger"></a>MetricsTrigger
-Ta sekcja jest opcjonalna.  Uwzględnij czynnik dla alertu metryki pomiaru.
+Ta sekcja jest opcjonalna.  Uwzględnij go dla alertu pomiaru metryki.
 
 > [!NOTE]
-> Metryki pomiaru alerty są obecnie w wersji zapoznawczej. 
+> Alerty metryki miary są obecnie dostępne w publicznej wersji zapoznawczej. 
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| TriggerCondition | Yes | Określa, czy próg całkowitą liczbę naruszeń lub kolejnych naruszenia z następujących wartości:<br><br>**Całkowita liczba<br>kolejnych** |
-| Operator | Yes | Operator porównania z następujących wartości:<br><br>**gt = większe<br>lt = mniej niż** |
-| Wartość | Yes | Liczba przypadków, które muszą zostać spełnione kryteria wyzwolenia alertu. |
+| TriggerCondition | Yes | Określa, czy próg całkowitą liczbę naruszeń lub kolejne naruszenia spośród następujących wartości:<br><br>**Łączna liczba<br>kolejnych** |
+| Operator | Yes | Operator porównania z następujących wartości:<br><br>**gt = większa niż<br>lt = mniej niż** |
+| Wartość | Yes | Liczba przypadków, które muszą zostać spełnione kryteria do wyzwolenia alertu. |
 
 
 #### <a name="throttling"></a>Ograniczanie przepływności
@@ -222,40 +222,40 @@ Ta sekcja jest opcjonalna.  W tej sekcji należy uwzględnić, jeśli chcesz pom
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| DurationInMinutes | Tak, jeśli ograniczanie dołączony — element | Liczba minut do pomijania alertów po utworzeniu z tego samego alertu. |
+| DurationInMinutes | Tak, jeżeli ograniczania elementu uwzględnione | Liczba minut do pomijania alertów po utworzeniu jednego z tych samych reguły alertu. |
 
 
-#### <a name="azure-action-group"></a>Grupy akcji Azure
-Wszystkie alerty na platformie Azure, użyj akcji grupy jako domyślnego mechanizmu obsługi akcji. Z grupy akcji można określić czynności użytkownika raz i następnie skojarzyć grupy akcji do wielu alertów — na platformie Azure. Bez konieczności wielokrotnego zadeklarować wielokrotnie te same akcje. Grupy akcji obsługuje wiele działań — w tym wiadomości e-mail, programu SMS, wywołania głosu, zarządzanie usługami IT — połączenie, elementu Runbook automatyzacji, identyfikator URI elementu Webhook i więcej. 
+#### <a name="azure-action-group"></a>Grupa akcji platformy Azure
+Wszystkie alerty na platformie Azure, użyj akcji grupy jako domyślnego mechanizmu do obsługi akcji. Grupy akcji możesz określić swoje działania raz i skojarz grupę akcji do wielu alertów — na platformie Azure. Bez konieczności wielokrotnego wielokrotnie zadeklarować te same akcje. Grupy akcji obsługują wiele akcji — w tym wiadomości e-mail, wiadomości SMS, połączenie głosowe, połączenia narzędzia ITSM, element Runbook usługi Automation, identyfikator URI elementu Webhook i innych. 
 
-Dla użytkownika, przez który rozszerzono alerty na platformie Azure — harmonogram ma teraz szczegółów grupy akcji przekazywane wraz z wartości progowej, aby można było utworzyć alertu. Szczegóły poczty e-mail, adresy URL elementu Webhook szczegóły automatyzacji elementu Runbook i inne akcje, muszą być zdefiniowane w stronie grupy akcji przed tworzenia alertu; można utworzyć [grupy akcji z monitora Azure](../monitoring-and-diagnostics/monitoring-action-groups.md) w portalu lub użyj [akcji grupy - zasobów szablonu](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+Dla użytkownika, który został rozszerzony alerty na platformie Azure — harmonogram powinno zostać udostępnionych szczegółów grupy akcji przekazywane wraz z wartości progowej, aby można było utworzyć alert. Szczegóły wiadomości e-mail, adresy URL elementu Webhook, szczegóły elementu Runbook usługi Automation i innych działań, muszą być zdefiniowane w stronie grupy akcji przed tworzenia alertu; można utworzyć [grupy akcji z usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-action-groups.md) w portalu lub użyj [grupy akcji — szablon zasobu](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| AzNsNotification | Yes | Identyfikator zasobu grupy Azure akcji, które mają być skojarzone z alertem podejmowania niezbędnych działań po spełnieniu kryteriów alertu. |
-| CustomEmailSubject | Nie | Wiersz tematu niestandardowe wiadomości wysyłane na wszystkie adresy określone w grupy skojarzone z akcją. |
-| CustomWebhookPayload | Nie | Ładunek dostosowane do wysłania do wszystkich webhook punktów końcowych zdefiniowanych w grupie skojarzone z akcją. Format zależy od tego, co elementu webhook oczekuje i powinny być poprawne dane JSON serializacji. |
+| AzNsNotification | Yes | Identyfikator zasobu do grupy akcji platformy Azure do skojarzenia z alertem pobierania odpowiednie działania, po spełnieniu kryteriów alertu. |
+| CustomEmailSubject | Nie | Wiersz tematu niestandardowego wiadomości e-mail wysłanych na wszystkie adresy określone w grupie skojarzone z akcją. |
+| CustomWebhookPayload | Nie | Ładunek dostosowane do wysłania do wszystkich elementów webhook punktów końcowych zdefiniowanych w grupie skojarzone z akcją. Format zależy od tego, co element webhook oczekuje i powinna być prawidłowym kodem JSON serializacji. |
 
 
-#### <a name="actions-for-oms-legacy"></a>Akcje dla OMS (starsze)
+#### <a name="actions-for-oms-legacy"></a>Akcje w przypadku pakietu OMS (starsza wersja)
 
-Każdy harmonogram ma jeden **alertu** akcji.  Określa szczegóły alertu, i opcjonalnie działań powiadomień i korygowania.  Powiadomienie o wysyła wiadomość e-mail do co najmniej jeden adres.  Korygowanie uruchamia element runbook automatyzacji Azure, aby podjąć próbę rozwiązania problemu.
+Każdy harmonogram ma jeden **alertu** akcji.  Definiuje szczegóły alertu, i opcjonalnie akcji powiadomienia i korekty.  Powiadomienie wysyła wiadomość e-mail do jednego lub więcej adresów.  Korygowanie uruchamia element runbook w usłudze Azure Automation, aby podjąć próbę rozwiązania wykrytego problemu.
 
 > [!NOTE]
-> Począwszy od 14 maja 2018 wszystkie alerty w obszarze roboczym rozpocznie się automatycznie rozszerzenie na platformie Azure. Przed 14 maja 2018 użytkownika dobrowolnie zainicjować rozszerzanie alerty na platformie Azure. Aby uzyskać więcej informacji, zobacz [rozszerzyć alerty na platformie Azure z usługą OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, rozszerzające alertach do platformy Azure akcje teraz są kontrolowane w grupach Azure akcji. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformie Azure, można pobrać lub dodać akcje za pomocą [grupy akcji — szablon Menedżera zasobów Azure](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
+> Począwszy od 14 maja 2018 r. wszystkie alerty w wystąpieniu chmury publicznej platformy Azure w obszarze roboczym usługi Log Analytics automatycznie rozpocznie się rozszerzone na platformę Azure. Użytkownik dobrowolnie może zainicjować rozszerzanie alertów do platformy Azure przed 14 maja 2018 r. Aby uzyskać więcej informacji, zobacz [rozszerzanie alertów do platformy Azure z pakietu OMS](../monitoring-and-diagnostics/monitoring-alerts-extend.md). Dla użytkowników, którzy rozszerzanie alertów do platformy Azure akcje są obecnie kontrolowane w grup akcji platformy Azure. Gdy obszar roboczy i jego alerty zostały rozszerzone na platformę Azure, można pobrać lub dodać akcje przy użyciu [grupy akcji — szablon usługi Azure Resource Manager](../monitoring-and-diagnostics/monitoring-create-action-group-with-resource-manager-template.md).
 
 ##### <a name="emailnotification"></a>EmailNotification
- Ta sekcja jest opcjonalna Dołącz go, jeżeli alert do wysyłania wiadomości e-mail do co najmniej jednego adresata.
+ Ta sekcja jest opcjonalna dołączyć ją, jeśli chcesz, aby alert ma wysyłać wiadomości e-mail do co najmniej jednego adresata.
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| Adresaci | Yes | Rozdzielana przecinkami lista adresów e-mail, aby wysłać powiadomienie, gdy jest tworzony alert, takich jak w poniższym przykładzie.<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
+| Adresaci | Yes | Rozdzielana przecinkami lista adresów e-mail, aby wysłać powiadomienia, gdy jest tworzony alert, takie jak w poniższym przykładzie.<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
 | Temat | Yes | Wiersz tematu wiadomości e-mail. |
 | Załącznik | Nie | Załączniki nie są obecnie obsługiwane.  Jeśli ten element jest włączone, należy go **Brak**. |
 
 
 ##### <a name="remediation"></a>Korygowanie
-Ta sekcja jest opcjonalna Dołącz ją, jeśli chcesz, aby element runbook można uruchomić w odpowiedzi na alert. |
+Ta sekcja jest opcjonalna dołączyć ją, jeśli chcesz, aby element runbook można uruchomić w odpowiedzi na alert. |
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
@@ -265,9 +265,9 @@ Ta sekcja jest opcjonalna Dołącz ją, jeśli chcesz, aby element runbook możn
 
 ##### <a name="webhook-actions"></a>Akcje elementu Webhook
 
-Akcje elementu Webhook uruchomienia procesu podczas wywoływania adresu URL i opcjonalnie podając ładunku do wysłania. Są one podobne do akcji korygowania, z wyjątkiem są przeznaczone dla elementów webhook, które może wywołać procesy inne niż elementy runbook automatyzacji Azure. Zawierają także dodatkowe opcja podania ładunku mają zostać dostarczone do zdalnego procesu.
+Akcje elementu Webhook Uruchom proces, przez wywołanie adresu URL i opcjonalnie podania ładunku do wysłania. Są one podobne do akcji korygowania, z wyjątkiem są przeznaczone dla elementów webhook, które może wywoływać procesy inne niż elementów runbook usługi Azure Automation. Zapewniają także dodatkowe opcji związanych z udostępnianiem ładunek został dostarczony do zdalnego procesu.
 
-Jeśli alert będzie wywoływać elementu webhook, a następnie konieczne będzie zasób akcji z typem **Webhook** oprócz **Alert** zasób akcji.  
+Jeśli alert będzie wywołanie elementu webhook, a następnie będzie musiała zasób akcji z typem **elementu Webhook** oprócz **Alert** zasób akcji.  
 
     {
       "name": "name": "[concat(parameters('workspaceName'), '/', variables('SavedSearch').Name, '/', variables('Schedule').Name, '/', variables('Webhook').Name)]",
@@ -285,25 +285,25 @@ Jeśli alert będzie wywoływać elementu webhook, a następnie konieczne będzi
       }
     }
 
-Właściwości elementu Webhook akcji zasoby są opisane w poniższych tabelach.
+W poniższych tabelach opisano właściwości zasobów akcji elementu Webhook.
 
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
-| type | Yes | Typ akcji.  Jest to **Webhook** dla Akcje elementu webhook. |
-| name | Yes | Nazwa wyświetlana dla akcji.  Nie jest on wyświetlany w konsoli. |
+| type | Yes | Typ akcji.  Jest to **elementu Webhook** przypadku akcji elementów webhook. |
+| name | Yes | Nazwa wyświetlana dla akcji.  To nie jest wyświetlana w konsoli. |
 | wehookUri | Yes | Identyfikator URI dla elementu webhook. |
-| CustomPayload | Nie | Niestandardowy ładunek do wysłania do elementu webhook. Format zależy od tego, czego oczekuje elementu webhook. |
+| customPayload | Nie | Niestandardowy ładunek do wysłania do elementu webhook. Format zależy od tego, czego oczekuje elementu webhook. |
 
 
 ## <a name="sample"></a>Sample
 
-Poniżej przedstawiono przykładowe rozwiązanie zawierającą obejmuje następujące zasoby:
+Poniżej przedstawiono przykładowe rozwiązanie, które zawiera, zawiera następujące zasoby:
 
 - Zapisane wyszukiwanie
 - Harmonogram
 - Grupa akcji
 
-W przykładzie użyto [parametry standardowego rozwiązania]( monitoring-solutions-solution-file.md#parameters) zmiennych, które służy zwykle do rozwiązania, w przeciwieństwie do wartości hardcoding w definicji zasobu.
+W przykładzie użyto [parametry standardowe rozwiązanie]( monitoring-solutions-solution-file.md#parameters) zmiennych, które często będzie używana w ramach rozwiązania, w przeciwieństwie do wartości hardcoding w definicji zasobu.
 
 ```
     {
@@ -493,5 +493,5 @@ Następujący plik parametrów zawiera przykłady wartości dla tego rozwiązani
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Dodawanie widoków](monitoring-solutions-resources-views.md) do rozwiązania do zarządzania.
-* [Dodaj element runbook usługi Automatyzacja i innych zasobów](monitoring-solutions-resources-automation.md) do rozwiązania do zarządzania.
+* [Dodawanie elementów runbook usługi Automation i innych zasobów](monitoring-solutions-resources-automation.md) do rozwiązania do zarządzania.
 

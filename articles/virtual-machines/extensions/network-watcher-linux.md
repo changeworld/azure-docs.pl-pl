@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: dennisg
-ms.openlocfilehash: efd512395b49d3c274bb5aa409d1cbd527673659
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 35cd773c2a30549dde10a73b2fbe6db1a0c8b34a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781891"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989383"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-linux"></a>Rozszerzenie maszyny wirtualnej agenta obserwatora sieciowe dla systemu Linux
 
@@ -87,7 +87,7 @@ Następujący kod JSON zawiera schemat dla rozszerzenia Agent usługi Network Wa
 
 Można wdrożyć rozszerzeń maszyny Wirtualnej platformy Azure przy użyciu szablonu usługi Azure Resource Manager. Aby wdrożyć rozszerzenie Agent usługi Network Watcher, należy użyć poprzedniego schematu json w szablonie.
 
-## <a name="azure-cli-10-deployment"></a>Wdrożenie usługi Azure CLI 1.0
+## <a name="azure-classic-cli-deployment"></a>Klasycznym wdrożeniu platformy Azure CLI
 
 Poniższy przykład służy do wdrażania rozszerzenia maszyny Wirtualnej Network Watcher agenta do istniejącej maszyny Wirtualnej wdrożone za pośrednictwem klasycznego modelu wdrażania:
 
@@ -96,7 +96,7 @@ azure config mode asm
 azure vm extension set myVM1 NetworkWatcherAgentLinux Microsoft.Azure.NetworkWatcher 1.4
 ```
 
-## <a name="azure-cli-20-deployment"></a>Wdrożenie usługi Azure CLI 2.0
+## <a name="azure-cli-deployment"></a>Wdrażania interfejs wiersza polecenia platformy Azure
 
 Poniższy przykład służy do wdrażania rozszerzenia maszyny Wirtualnej Network Watcher agenta do istniejącej maszyny Wirtualnej wdrożony za pomocą usługi Resource Manager:
 
@@ -110,7 +110,7 @@ az vm extension set --resource-group myResourceGroup1 --vm-name myVM1 --name Net
 
 Możesz pobrać dane dotyczące stanu wdrożeń rozszerzenia za pomocą witryny Azure portal lub interfejsu wiersza polecenia platformy Azure.
 
-Poniższy przykład przedstawia stan wdrażania rozszerzeń maszyny wirtualnej wdrożone za pośrednictwem klasycznego modelu wdrażania przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 1.0:
+Poniższy przykład przedstawia stan wdrażania rozszerzeń maszyny wirtualnej wdrożone za pośrednictwem klasycznego modelu wdrażania przy użyciu platformy Azure klasyczny interfejs wiersza polecenia:
 
 ```azurecli
 azure config mode asm
@@ -122,7 +122,7 @@ Dane wyjściowe wykonywania rozszerzenia jest rejestrowany wpis pliki znajdując
 /var/log/azure/Microsoft.Azure.NetworkWatcher.NetworkWatcherAgentLinux/
 `
 
-Poniższy kod przedstawia rozszerzenia NetworkWatcherAgentLinux stan wdrożenia dla maszyny Wirtualnej wdrożonej przy użyciu usługi Resource Manager przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0:
+Poniższy kod przedstawia rozszerzenia NetworkWatcherAgentLinux stan wdrożenia dla maszyny Wirtualnej wdrożonej przy użyciu usługi Resource Manager przy użyciu wiersza polecenia platformy Azure:
 
 ```azurecli
 az vm extension show --name NetworkWatcherAgentLinux --resource-group myResourceGroup1 --vm-name myVM1

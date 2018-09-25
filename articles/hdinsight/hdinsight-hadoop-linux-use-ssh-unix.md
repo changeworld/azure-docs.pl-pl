@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 04/26/2018
 ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive,hdiseo17may2017
-ms.openlocfilehash: f7e6651e0aa776c4bbcac1fc70017139c21a7512
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 7054bf34fea5b499fdec167667242d918cc01c8e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43105024"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981728"
 ---
 # <a name="connect-to-hdinsight-hadoop-using-ssh"></a>Łączenie się z usługą HDInsight (Hadoop) przy użyciu protokołu SSH
 
@@ -102,7 +102,7 @@ W trakcie procesu tworzenia kluczy zostaną wyświetlone monity o podanie inform
 | ------- | ------- |
 | **Azure Portal** | Usuń zaznaczenie pola __Użyj tego samego hasła podczas logowania do klastra__, a następnie wybierz opcję __Klucz publiczny__ jako typ uwierzytelniania SSH. Na koniec wybierz plik klucza publicznego lub wklej zawartość tekstową pliku w polu __Klucz publiczny SSH__.</br>![Okno dialogowe dotyczące klucza publicznego SSH w procesie tworzenia klastra usługi HDInsight](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-public-key.png) |
 | **Azure PowerShell** | Użyj parametru `-SshPublicKey` polecenia cmdlet `New-AzureRmHdinsightCluster` i przekaż zawartość klucza publicznego jako ciąg.|
-| **Interfejs wiersza polecenia platformy Azure 1.0** | Użyj parametru `--sshPublicKey` polecenia `azure hdinsight cluster create` i przekaż zawartość klucza publicznego jako ciąg. |
+| **Klasyczny interfejs wiersza polecenia Azure** | Użyj parametru `--sshPublicKey` polecenia `azure hdinsight cluster create` i przekaż zawartość klucza publicznego jako ciąg. |
 | **Szablon usługi Resource Manager** | Przykład użycia kluczy SSH razem z szablonem można znaleźć w temacie [Deploy HDInsight on Linux with SSH key](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-publickey/) (Wdrażanie usługi HDInsight w systemie Linux przy użyciu klucza SSH). Element `publicKeys` w pliku [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-publickey/azuredeploy.json) umożliwia przekazanie kluczy do platformy Azure podczas tworzenia klastra. |
 
 ## <a id="sshpassword"></a>Uwierzytelnianie: hasło
@@ -121,7 +121,7 @@ Konta SSH mogą być chronione przy użyciu hasła. Podczas łączenia się z us
 | --------------- | ---------------- |
 | **Azure Portal** | Domyślnie hasło do konta użytkownika SSH jest takie samo jak hasło do konta umożliwiającego logowanie do klastra. Aby użyć innego hasła, usuń zaznaczenie pola __Użyj tego samego hasła podczas logowania do klastra__, a następnie wprowadź hasło w polu __Hasło SSH__.</br>![Okno dialogowe dotyczące hasła SSH w procesie tworzenia klastra usługi HDInsight](./media/hdinsight-hadoop-linux-use-ssh-unix/create-hdinsight-ssh-password.png)|
 | **Azure PowerShell** | Użyj parametru `--SshCredential` polecenia cmdlet `New-AzureRmHdinsightCluster` i przekaż obiekt `PSCredential` zawierający nazwę użytkownika i hasło do konta SSH. |
-| **Interfejs wiersza polecenia platformy Azure 1.0** | Użyj parametru `--sshPassword` polecenia `azure hdinsight cluster create` i podaj hasło. |
+| **Klasyczny interfejs wiersza polecenia Azure** | Użyj parametru `--sshPassword` polecenia `azure hdinsight cluster create` i podaj hasło. |
 | **Szablon usługi Resource Manager** | Przykład użycia hasła razem z szablonem można znaleźć w temacie [Deploy HDInsight on Linux with SSH password](https://azure.microsoft.com/resources/templates/101-hdinsight-linux-ssh-password/) (Wdrażanie usługi HDInsight w systemie Linux przy użyciu hasła SSH). Element `linuxOperatingSystemProfile` w pliku [azuredeploy.json](https://github.com/Azure/azure-quickstart-templates/blob/master/101-hdinsight-linux-ssh-password/azuredeploy.json) umożliwia przekazanie nazwy konta SSH i hasła do platformy Azure podczas tworzenia klastra.|
 
 ### <a name="change-the-ssh-password"></a>Zmienianie hasła SSH

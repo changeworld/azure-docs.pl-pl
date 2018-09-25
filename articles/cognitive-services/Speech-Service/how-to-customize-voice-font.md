@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 35572f046b3702deba56e86819b8ad0cd7ae6e9b
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 042216d03749273c590ce5ba812f7a6d609f8e83
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842474"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987910"
 ---
 # <a name="creating-custom-voice-fonts"></a>Tworzenie niestandardowych voice czcionek
 
@@ -25,7 +25,7 @@ Możesz rozpocząć pracę z małą ilością danych do weryfikacji koncepcji. J
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Funkcja dostosowywania głosu zamiany tekstu na mowę, jest obecnie w prywatnej wersji zapoznawczej. [Wypełnij formularz zgłoszeniowy](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0N8Vcdi8MZBllkZb70o6KdURjRaUzhBVkhUNklCUEMxU0tQMEFPMjVHVi4u) wziąć pod uwagę dostępu.
+**Zamiany tekstu na mowę** funkcja dostosowywania głosu jest obecnie dostępna w prywatnej wersji zapoznawczej. [Wypełnij formularz zgłoszeniowy](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0N8Vcdi8MZBllkZb70o6KdURjRaUzhBVkhUNklCUEMxU0tQMEFPMjVHVi4u) wziąć pod uwagę dostępu.
 
 Należy również konto platformy Azure i subskrypcji usługi mowy. [Utwórz je](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started) Jeśli jeszcze go. Twoja subskrypcja połączyć się z portalu usługi Custom Voice w następujący sposób.
 

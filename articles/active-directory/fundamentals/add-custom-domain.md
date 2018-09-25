@@ -12,15 +12,15 @@ ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: 9098a822aaf244130604493ac74c745f4000ab24
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: dc28263fca5c6854ffad12678b472804f074addd
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368209"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035746"
 ---
 # <a name="how-to-add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Porady: Dodawanie niestandardowej nazwy domeny za pomocą portalu Azure Active Directory
-Każdej nowej usługi Azure AD dzierżawy, który jest dostarczany z początkową nazwę domeny, *nazwa_domeny*. onmicrosoft.com. Nie można zmienić ani usunąć początkowej nazwy domeny, ale nazwy organizacji może dodać do listy. Dodawanie niestandardowych nazw domen, ułatwia utworzenie nazwy użytkownika, które są znane użytkownikom, takie jak _alain@contoso.com_.
+Każdej nowej usługi Azure AD dzierżawy, który jest dostarczany z początkową nazwę domeny, *nazwa_domeny*. onmicrosoft.com. Nie można zmienić ani usunąć początkowej nazwy domeny, ale nazwy organizacji może dodać do listy. Dodawanie niestandardowych nazw domen, ułatwia utworzenie nazwy użytkownika, które są znane użytkownikom, takie jak *alain@contoso.com*.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 Przed dodaniem niestandardowej nazwy domeny, należy utworzyć nazwy domeny za pomocą rejestratora domen. Aby rejestratora domen akredytowanych, zobacz [rejestratorów ICANN-Accredited](https://www.icann.org/registrar-reports/accredited-list.html).

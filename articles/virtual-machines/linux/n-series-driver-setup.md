@@ -1,5 +1,5 @@
 ---
-title: Instalacja sterowników serii N usługi Azure dla systemu Linux | Dokumentacja firmy Microsoft
+title: Instalacja sterowników procesora GPU z serii N usługi Azure dla systemu Linux | Dokumentacja firmy Microsoft
 description: Jak skonfigurować sterowniki procesora GPU NVIDIA dla maszyn wirtualnych serii N z systemem Linux na platformie Azure
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 07/30/2018
+ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3d85bc79ddd08cb051b2e4d978a931f460020c10
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 822261e74f7da941ac89090e5d493c4be18bc307
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364504"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038888"
 ---
 # <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-linux"></a>Instalowanie sterowników procesora GPU NVIDIA na maszynach wirtualnych serii N z systemem Linux
 
@@ -55,7 +55,7 @@ Następnie polecenia uruchamiania instalacji specyficzne dla Twojej dystrybucji.
 
 1. Pobierz i zainstaluj sterowniki CUDA.
   ```bash
-  CUDA_REPO_PKG=cuda-repo-ubuntu1604_9.1.85-1_amd64.deb
+  CUDA_REPO_PKG=cuda-repo-ubuntu1604_10.0.130-1_amd64.deb
 
   wget -O /tmp/${CUDA_REPO_PKG} http://developer.download.nvidia.com/compute/cuda/repos/ubuntu1604/x86_64/${CUDA_REPO_PKG} 
 
@@ -99,7 +99,7 @@ sudo reboot
 
 ### <a name="centos-or-red-hat-enterprise-linux-73-or-74"></a>CentOS i Red Hat Enterprise Linux w wersji 7.3 lub wersji 7.4
 
-1. Zaktualizuj jądro.
+1. Zaktualizuj jądra (zalecane). Jeśli postanowisz nie aktualizować jądra, upewnij się, że wersje `kernel-devel` i `dkms` są odpowiednie dla Twojej jądra.
 
   ```
   sudo yum install kernel kernel-tools kernel-headers kernel-devel
@@ -127,7 +127,7 @@ sudo reboot
 
   sudo yum install dkms
 
-  CUDA_REPO_PKG=cuda-repo-rhel7-9.1.85-1.x86_64.rpm
+  CUDA_REPO_PKG=cuda-repo-rhel7-10.0.130-1.x86_64.rpm
 
   wget http://developer.download.nvidia.com/compute/cuda/repos/rhel7/x86_64/${CUDA_REPO_PKG} -O /tmp/${CUDA_REPO_PKG}
 
@@ -170,9 +170,9 @@ Wdrażanie z obsługą dostępu RDMA maszyny wirtualne z serii N z jednego z obr
 
 * **Opartych na systemie centOS 7.4 HPC** — sterowniki RDMA i Intel MPI 5.1 są zainstalowane na maszynie Wirtualnej.
 
-## <a name="install-grid-drivers-on-nv-series-vms"></a>Zainstaluj sterowniki siatki na maszyny wirtualne z serii NV
+## <a name="install-grid-drivers-on-nv-or-nvv2-series-vms"></a>Zainstaluj sterowniki siatki na serii NV lub maszyny wirtualne z serii NVv2
 
-Aby zainstalować sterowniki NVIDIA GRID na maszyny wirtualne z serii NV, Utwórz połączenie SSH do każdej maszyny Wirtualnej, a następnie postępuj zgodnie z instrukcjami dla Twojej dystrybucji systemu Linux. 
+Aby zainstalować sterowniki NVIDIA GRID NV lub maszyny wirtualne z serii NVv2, Utwórz połączenie SSH do każdej maszyny Wirtualnej, a następnie postępuj zgodnie z instrukcjami dla Twojej dystrybucji systemu Linux. 
 
 ### <a name="ubuntu-1604-lts"></a>Ubuntu 16.04 LTS
 
@@ -189,7 +189,7 @@ Aby zainstalować sterowniki NVIDIA GRID na maszyny wirtualne z serii NV, Utwór
 
   sudo apt-get install build-essential ubuntu-desktop -y
   ```
-3. Wyłącz sterownik jądra Nouveau, który jest niezgodny ze sterownikiem firmy NVIDIA. (Tylko używać sterowników firmy NVIDIA na maszynach wirtualnych z serii NV). Aby to zrobić, Utwórz plik w `/etc/modprobe.d `o nazwie `nouveau.conf` z następującą zawartością:
+3. Wyłącz sterownik jądra Nouveau, który jest niezgodny ze sterownikiem firmy NVIDIA. (Tylko używać sterowników firmy NVIDIA na serii NV lub maszynach wirtualnych NVv2). Aby to zrobić, Utwórz plik w `/etc/modprobe.d `o nazwie `nouveau.conf` z następującą zawartością:
 
   ```
   blacklist nouveau
@@ -232,7 +232,7 @@ Aby zainstalować sterowniki NVIDIA GRID na maszyny wirtualne z serii NV, Utwór
 
 ### <a name="centos-or-red-hat-enterprise-linux"></a>CentOS i Red Hat Enterprise Linux 
 
-1. Zaktualizuj jądro i DKMS.
+1. Zaktualizuj jądro i DKMS (zalecane). Jeśli postanowisz nie aktualizować jądra, upewnij się, że wersje `kernel-devel` i `dkms` są odpowiednie dla Twojej jądra.
  
   ```bash  
   sudo yum update
@@ -244,7 +244,7 @@ Aby zainstalować sterowniki NVIDIA GRID na maszyny wirtualne z serii NV, Utwór
   sudo yum install dkms
   ```
 
-2. Wyłącz sterownik jądra Nouveau, który jest niezgodny ze sterownikiem firmy NVIDIA. (Tylko używać sterowników firmy NVIDIA na maszynach wirtualnych z serii NV). Aby to zrobić, Utwórz plik w `/etc/modprobe.d `o nazwie `nouveau.conf` z następującą zawartością:
+2. Wyłącz sterownik jądra Nouveau, który jest niezgodny ze sterownikiem firmy NVIDIA. (Tylko używać sterowników firmy NVIDIA na serii NV lub maszynach wirtualnych NV2). Aby to zrobić, Utwórz plik w `/etc/modprobe.d `o nazwie `nouveau.conf` z następującą zawartością:
 
   ```
   blacklist nouveau
@@ -304,7 +304,7 @@ Jeśli sterownik jest zainstalowany, pojawi się dane wyjściowe podobne do nast
  
 
 ### <a name="x11-server"></a>X11 serwera
-Jeśli potrzebujesz X11 serwera dla połączeń zdalnych na maszynie Wirtualnej NV [x11vnc](http://www.karlrunge.com/x11vnc/) jest zalecana, ponieważ umożliwia przyspieszanie sprzętowe grafiki. BusID urządzenia M60 należy ręcznie dodać do X11 pliku konfiguracji (zazwyczaj `etc/X11/xorg.conf`). Dodaj `"Device"` podobne do następujących sekcji:
+Jeśli potrzebujesz X11 serwera dla połączeń zdalnych NV lub NVv2 VM [x11vnc](http://www.karlrunge.com/x11vnc/) jest zalecana, ponieważ umożliwia przyspieszanie sprzętowe grafiki. BusID urządzenia M60 należy ręcznie dodać do X11 pliku konfiguracji (zazwyczaj `etc/X11/xorg.conf`). Dodaj `"Device"` podobne do następujących sekcji:
  
 ```
 Section "Device"

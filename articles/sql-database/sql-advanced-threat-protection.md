@@ -2,19 +2,22 @@
 title: Zaawansowana ochrona przed zagrożeniami — usługi Azure SQL Database | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat funkcji Odnajdywanie i klasyfikowanie danych poufnych, zarządzanie swojej bazy danych, luk w zabezpieczeniach i wykrywanie nietypowych działań, które mogą wskazywać na zagrożenie dla usługi Azure SQL database.
 services: sql-database
-author: ronitr
-manager: craigg
 ms.service: sql-database
+ms.subservice: threat-protection
+ms.custom: security
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 05/17/2018
+author: ronitr
 ms.author: ronitr
 ms.reviewer: vanto
-ms.openlocfilehash: 350f43dcb15062b4d44fc537e664b257f77d8e88
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+manager: craigg
+ms.date: 05/17/2018
+ms.openlocfilehash: 90d0784a33b3b80a5b2c78bf4b22dac5654b1450
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497828"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063918"
 ---
 # <a name="advanced-threat-protection-for-azure-sql-database"></a>Zaawansowana ochrona przed zagrożeniami dla bazy danych Azure SQL
 

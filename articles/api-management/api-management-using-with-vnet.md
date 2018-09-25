@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: a74d91ad986b606a36a8040ac849e7fcbec03f16
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 18b9e4eac6b183cd02ad2bb93463b4cc043f303a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093196"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040339"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak używać usługi Azure API Management przy użyciu sieci wirtualnych
 Sieci wirtualne platformy Azure (Vnet) umożliwiają umieszczenie wszystkich zasobów platformy Azure w sieci lecz-internet, która umożliwia kontrolę dostępu do. Te sieci mogą być następnie połączone do sieci w środowisku lokalnym przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej o usłudze Azure Virtual Networks start z informacjami w tym miejscu: [Omówienie usługi Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -109,7 +109,7 @@ Gdy wystąpienie usługi API Management znajduje się w sieci Wirtualnej, są u�
 | Źródło / porty docelowe | Kierunek | Protokół transportowy | Źródłowy / docelowy | Cel (*) | Typ sieci wirtualnej |
 | --- | --- | --- | --- | --- | --- |
 | * / 80, 443 |Przychodzący |TCP |INTERNET / VIRTUAL_NETWORK|Komunikacja klienta z usługi API Management|Zewnętrzne |
-| * / 3443 |Przychodzący |TCP |INTERNET / VIRTUAL_NETWORK|Punkt końcowy zarządzania dla witryny Azure portal i programu Powershell |Zewnętrzne i wewnętrzne |
+| * / 3443 |Przychodzący |TCP |APIMANAGEMENT / VIRTUAL_NETWORK|Punkt końcowy zarządzania dla witryny Azure portal i programu Powershell |Zewnętrzne i wewnętrzne |
 | * / 80, 443 |Wychodzący |TCP |VIRTUAL_NETWORK / INTERNET|**Zależność od usługi Azure Storage**, usługi Azure Service Bus i Azure Active Directory (jeśli dotyczy).|Zewnętrzne i wewnętrzne |
 | * / 1433 |Wychodzący |TCP |VIRTUAL_NETWORK / SQL|**Dostęp do punktów końcowych usługi Azure SQL** |Zewnętrzne i wewnętrzne |
 | * / 5672 |Wychodzący |TCP |VIRTUAL_NETWORK / INTERNET|Zależność dla dziennika do zasad Centrum zdarzeń i agenta monitorowania |Zewnętrzne i wewnętrzne |
@@ -158,8 +158,6 @@ Gdy wystąpienie usługi API Management znajduje się w sieci Wirtualnej, są u�
 * **Aktualizacje przyrostowe**: podczas wprowadzania zmian do sieci, zapoznaj się [NetworkStatus API](https://docs.microsoft.com/rest/api/apimanagement/networkstatus), aby sprawdzić, czy usługa API Management nie utracił dostęp do krytycznych zasobów, których ona zależy. Co 15 minut można zaktualizować stanu łączności.
 
 * **Linki nawigacji zasobu**: podczas wdrażania do podsieci sieci wirtualnej usługi Resource Manager style, usługa API Management rezerwuje podsieci, tworząc Link nawigacji zasobu. Jeśli podsieć zawiera już zasobu z innego dostawcy, wdrożenie będzie **się nie powieść**. Podobnie podczas przenoszenia usługi API Management do innej podsieci lub usuń go, firma Microsoft usunie tego linku nawigacji zasobu.
-
-* **Testowanie interfejsu API w witrynie Azure portal**: podczas testowania interfejsu API z poziomu witryny Azure portal i wystąpienie usługi API Management jest zintegrowany z wewnętrznej sieci wirtualnej, serwery DNS skonfigurowany w sieci wirtualnej będzie służyć do rozpoznawania nazw. Jeśli otrzymasz odpowiedź 404 podczas testowania w witrynie Azure portal, upewnij się, że serwery DNS dla sieci wirtualnej może poprawnie rozpoznać nazwę hosta wystąpienia usługi API Management. 
 
 ## <a name="subnet-size"> </a> Wymagany rozmiar podsieci
 Platforma Azure rezerwuje pewnych adresów IP w każdej podsieci, a nie można użyć tych adresów. Pierwsze i ostatnie adresy IP podsieci są zarezerwowane dla zgodności protokołów, oraz trzy dodatkowe adresy są używane dla usług platformy Azure. Aby uzyskać więcej informacji, zobacz [czy istnieją jakieś ograniczenia dotyczące używania adresów IP w ramach tych podsieci?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets)

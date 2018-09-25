@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/15/2018
+ms.date: 09/13/2018
 ms.author: magattus
-ms.openlocfilehash: c3a20bd4fa1cccdca7cba0de52620f09fe01abc5
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 2468462170f970cd597dd1296417d5b93a88c2ec
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42058493"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997277"
 ---
 # <a name="improve-performance-by-compressing-files-in-azure-cdn"></a>Poprawianie wydajności poprzez kompresowanie plików w usłudze Azure CDN
 Kompresja plików jest prosta i skuteczna metoda zwiększanie szybkości transferu plików i poprawia wydajność ładowania strony, zmniejszając rozmiar tego pliku przed wysłaniem ich z serwera. Kompresja plików można obniżyć koszty przepustowości i zapewnić bardziej dynamiczne środowisko dla użytkowników.
@@ -102,13 +102,14 @@ Sieci CDN warstw standardowa i premium zapewniają taką samą funkcjonalność 
 
 ### <a name="azure-cdn-standard-from-microsoft-profiles"></a>Usługa Azure CDN Standard from profile firmy Microsoft
 
-Aby uzyskać **Azure CDN Standard from Microsoft** profile, wszystkie pliki kwalifikują się do kompresji. Jednak plik musi być typ MIME, który został [skonfigurowany dla kompresji](#enabling-compression).
+Aby uzyskać **Azure CDN Standard from Microsoft** profile, tylko odpowiednie pliki są kompresowane. Kwalifikował się do kompresji, plik musi:-być typ MIME, który został [skonfigurowany dla kompresji](#enabling-compression).
+-Być większe niż 1 KB — być mniejszy niż 8 MB
 
 Te profile obsługują następujące kodowania kompresji:
 - gzip (GNU zip)
 - brotli 
  
-Jeśli żądanie obsługuje więcej niż jeden typ kompresji, te typy kompresji mają pierwszeństwo przed brotli kompresji.
+Jeśli żądanie obsługuje więcej niż jeden typ kompresji, pierwszeństwo ma brotli kompresji.
 
 Podczas żądania zasobu określa kompresję gzip i wyniki żądania to Chybienie pamięci podręcznej, usługa Azure CDN wykonuje kompresję gzip zasobu bezpośrednio na serwer protokołu POP. W efekcie skompresowanego pliku jest obsługiwany z pamięci podręcznej.
 

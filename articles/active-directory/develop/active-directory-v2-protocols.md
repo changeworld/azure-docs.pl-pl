@@ -13,26 +13,26 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 04/22/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 645ce394c09f5cdd9f45b085e8d86cdc07ee9158
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 4245cd4cf1f67007ced190e15d95929d854e303a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591336"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46992749"
 ---
 # <a name="v20-protocols---oauth-20--openid-connect"></a>w wersji 2.0 protokołów: OAuth 2.0 i OpenID Connect
+
 Punkt końcowy v2.0 można używać usługi Azure AD dla tożsamości as-a-service za pomocą ze standardowych protokołów uwierzytelniania OpenID Connect i OAuth 2.0. Gdy usługa jest zgodny ze standardami, może to być niewielkich różnic między implementacjami dwóch tych protokołów. W tym miejscu informacje będą przydatne, jeśli istnieje możliwość pisania kodu przez bezpośrednie wysyłanie i obsługa protokołu HTTP żądania lub 3 biblioteki typu open source innych firm, a nie przy użyciu jednej z naszych [Otwórz źródło biblioteki](reference-v2-libraries.md).
 
 > [!NOTE]
 > Nie wszystkie scenariusze usługi Azure Active Directory i funkcje są obsługiwane przez punkt końcowy w wersji 2.0. Aby ustalić, należy użyć punktu końcowego v2.0, przeczytaj temat [ograniczenia v2.0](active-directory-v2-limitations.md).
->
->
 
-## <a name="the-basics"></a>Podstawowe informacje
+## <a name="the-basics"></a>Podstawy
+
 W prawie wszystkie przepływy OAuth i OpenID Connect istnieją cztery strony związane z programu exchange:
 
 ![Role uwierzytelniania OAuth 2.0](../../media/active-directory-v2-flows/protocols_roles.png)
@@ -52,6 +52,7 @@ Każda aplikacja, która korzysta z punktu końcowego v2.0 będzie muszą być z
 Aby uzyskać więcej szczegółowych informacji, zapoznaj się z procedurą [rejestracji aplikacji](quickstart-v2-register-an-app.md).
 
 ## <a name="endpoints"></a>Punkty końcowe
+
 Po zarejestrowaniu aplikacji komunikuje się z usługą Azure AD, wysyłając żądania do punktu końcowego v2.0:
 
 ```
@@ -71,15 +72,17 @@ Gdzie `{tenant}` może mieć jedną z czterech różnych wartości:
 Aby uzyskać więcej informacji na temat sposobu interakcji z tymi punktami końcowymi wybierz poniżej typ danej aplikacji.
 
 ## <a name="tokens"></a>Tokeny
+
 Implementacja v2.0 OAuth 2.0 i OpenID Connect, należy zwiększone użycie tokenów elementu nośnego, łącznie z tokenów elementu nośnego reprezentowane jako tokenów Jwt. Token elementu nośnego jest tokenem zabezpieczającym uproszczone, która udziela dostępu "bearer" do chronionego zasobu. W tym sensie "bearer" to każda strona, która może powodować tokenu. Chociaż strona muszą najpierw zostać uwierzytelnione za pomocą usługi Azure AD, aby otrzymać token elementu nośnego, jeśli nie podejmuje kroki wymagane do zabezpieczania token w transmisji i przechowywania, można przechwycony i używane przez niezamierzone innych firm. Podczas gdy niektóre tokeny zabezpieczające mają wbudowany mechanizm uniemożliwia ich użycie przez osoby nieupoważnione, tokenów elementu nośnego nie mają ten mechanizm i musi być transportowane bezpiecznego kanału, takie jak transport layer security (HTTPS). Jeśli token elementu nośnego jest przekazywane w zabezpieczeniu, ataków typu man-in środkowej atak może służyć przez złośliwa strona do uzyskania tokenu i użyć jej do nieautoryzowanego dostępu do chronionego zasobu. Te same zasady zabezpieczeń stosowane, gdy przechowywania lub buforowanie tokenów elementu nośnego do późniejszego użycia. Zawsze upewnij się, że Twoja aplikacja przesyła i przechowuje tokenów elementu nośnego w bezpieczny sposób. Aby uzyskać więcej zagadnienia dotyczące zabezpieczeń na tokenów elementu nośnego, zobacz [RFC 6750 sekcji 5](http://tools.ietf.org/html/rfc6750).
 
 Dalsze szczegóły różnego rodzaju tokeny używane w punkcie końcowym v2.0 jest dostępna w [odwołania do tokenu punktu końcowego v2.0](v2-id-and-access-tokens.md).
 
 ## <a name="protocols"></a>Protokoły
+
 Gdy wszystko będzie gotowe wyświetlić niektóre przykładowe żądania, wprowadzenie do jednej z poniższych samouczków. Każdy z nich odnosi się do scenariusza określonego uwierzytelniania. Jeśli potrzebujesz pomocy przy ustaleniu, czyli przepływ odpowiednie dla Ciebie, zapoznaj się z [typy aplikacji, które można skompilować przy użyciu v2.0](v2-app-types.md).
 
-* [Umożliwia tworzenie natywnych aplikacji przy użyciu protokołu OAuth 2.0 i mobilnych](v2-oauth2-auth-code-flow.md)
-* [Twórz Web aplikacje z Open ID Connect](v2-protocols-oidc.md)
-* [Tworzenie aplikacji jednostronicowej przy użyciu niejawnego przepływu OAuth 2.0](v2-oauth2-implicit-grant-flow.md)
-* [Demony kompilacji lub po stronie procesów serwera przy użyciu poświadczeń klienta OAuth 2.0 przepływu](v2-oauth2-client-creds-grant-flow.md)
-* [Uzyskiwanie tokenów Web API za pomocą protokołu OAuth 2.0 w imieniu z przepływu](v2-oauth2-on-behalf-of-flow.md)
+* [Tworzenie aplikacji mobilnych i natywnych przy użyciu protokołu OAuth 2.0](v2-oauth2-auth-code-flow.md)
+* [Tworzenie aplikacji sieci web za pomocą Open ID Connect](v2-protocols-oidc.md)
+* [Tworzenie aplikacji jednostronicowej przy użyciu protokołu OAuth 2.0 niejawny przepływ](v2-oauth2-implicit-grant-flow.md)
+* [Tworzenie demonów i realizowania innych procesów po stronie serwera przy użyciu przepływu poświadczeń klienta w wersji 2.0 OAuth](v2-oauth2-client-creds-grant-flow.md)
+* [Uzyskiwanie tokenów w interfejsie web API za pomocą protokołu OAuth 2.0 w imieniu użytkownika z usługi Flow](v2-oauth2-on-behalf-of-flow.md)

@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/19/2018
 ms.author: danlep
 ms.custom: include file
-ms.openlocfilehash: 4bec8c8ea29c10b8c0d0351a41ebc9183bb45d4f
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 1a9c4dc5a4d21f8837bde171283cd8a070297674
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38944189"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47043864"
 ---
 ## <a name="deployment-considerations"></a>Zagadnienia dotyczące wdrażania
 
@@ -21,11 +21,11 @@ ms.locfileid: "38944189"
 
 * Maszyny wirtualne z serii N można wdrożyć tylko w modelu wdrażania usługi Resource Manager.
 
-* Maszyny wirtualne z serii N różnią się w typie usługi Azure Storage, które obsługują ich dysków. NC i NV maszyn wirtualnych obsługują tylko dyski maszyn wirtualnych, które są wspierane przez standardowy dysk Disk Storage (HDD). NCv2, ND i NCv3 maszyn wirtualnych obsługują tylko dyski maszyn wirtualnych, które są wspierane przez usługi Premium Disk Storage (SSD).
+* Maszyny wirtualne z serii N różnią się w typie usługi Azure Storage, które obsługują ich dysków. NC i NV maszyn wirtualnych obsługują tylko dyski maszyn wirtualnych, które są wspierane przez standardowy dysk Disk Storage (HDD). NCv2, NCv3, ND i NVv2 maszyn wirtualnych obsługują tylko dyski maszyn wirtualnych, które są wspierane przez usługi Premium Disk Storage (SSD).
 
 * Jeśli chcesz wdrożyć więcej niż kilka maszyn wirtualnych serii N, należy wziąć pod uwagę subskrypcji zgodnie z rzeczywistym użyciem lub inne opcje zakupu. Jeśli używasz [bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/), możesz użyć ograniczonej liczby rdzeni obliczeniowych platformy Azure.
 
-* Może być konieczne zwiększyć limit przydziału rdzeni (na region) w ramach subskrypcji platformy Azure i zwiększyć limit przydziału rdzeni NC, NCv2, NCv3, ND lub NV oddzielne. Aby zażądać zwiększenia limitu przydziału [Otwórz żądanie obsługi klienta online](../articles/azure-supportability/how-to-create-azure-support-request.md) bez dodatkowych opłat. Domyślne limity mogą się różnić w zależności od kategorii Twojej subskrypcji.
+* Może być konieczne zwiększyć limit przydziału rdzeni (na region) w ramach subskrypcji platformy Azure i zwiększyć limit przydziału rdzeni NC, NCv2, NCv3, ND, NV lub NVv2 oddzielne. Aby zażądać zwiększenia limitu przydziału [Otwórz żądanie obsługi klienta online](../articles/azure-supportability/how-to-create-azure-support-request.md) bez dodatkowych opłat. Domyślne limity mogą się różnić w zależności od kategorii Twojej subskrypcji.
 
 
 

@@ -1,6 +1,6 @@
 ---
 title: Usługa Azure SQL Database zakupu modeli | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o kupowaniu modelu usługi Azure SQL Database.
+description: Więcej informacji na temat model zakupu modeli, które są dostępne bazy danych w usłudze Azure SQL Database.
 services: sql-database
 author: CarlRabeler
 ms.service: sql-database
@@ -9,18 +9,21 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 manager: craigg
 ms.author: carlrab
-ms.openlocfilehash: 4fe75d8d350ee2d2a97b9d7efb10ff3c1675168d
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 651f80c8b8f4bc5f8aa8cf117e3208f4126e964c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737114"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961080"
 ---
 # <a name="azure-sql-database-purchasing-models-and-resources"></a>Usługa Azure SQL Database zakupu modeli i zasoby 
 
 Usługa Azure SQL Database umożliwia łatwy zakup w pełni zarządzany aparat bazy danych PaaS, który spełnia Twoje potrzeby wydajności i kosztów. W zależności od modelu wdrażania usługi Azure SQL Database można wybrać model zakupu, która spełnia Twoje potrzeby: 
- - [Serwerami logicznymi](sql-database-logical-servers.md) w [usługi Azure SQL Database](sql-database-technical-overview.md) oferuje dwa modele zakupu zasobów obliczeniowych, magazynu i zasoby we/wy: model zakupu jednostek DTU i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md). 
+ - [Serwerami logicznymi](sql-database-logical-servers.md) w [usługi Azure SQL Database](sql-database-technical-overview.md) oferuje dwa modele zakupu zasobów obliczeniowych, magazynu i zasoby we/wy: [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [oparty na rdzeniach wirtualnych model zakupu](sql-database-service-tiers-vcore.md). Ten model zakupu, można wybrać [pojedyncze bazy danych](sql-database-single-databases-manage.md) lub [pul elastycznych](sql-database-elastic-pool.md).
  - [Wystąpienia zarządzane](sql-database-managed-instance.md) w usłudze Azure SQL Database tylko w ramach oferty [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
+
+> [!IMPORTANT]
+> [Bazy danych na dużą skalę (wersja zapoznawcza)](sql-database-hyperscale.md) są dostępne tylko w modelu zakupu opartego na rdzeniach wirtualnych dla pojedynczych baz danych z serwerem logicznym lub w ramach wystąpienia zarządzanego. 
 
 Następujących tabel i wykresów porównania i porównać te dwa modele zakupu.
 
@@ -34,17 +37,12 @@ Następujących tabel i wykresów porównania i porównać te dwa modele zakupu.
 
 ## <a name="vcore-based-purchasing-model"></a>model zakupu w oparciu o rdzeń wirtualny 
 
-Rdzeń wirtualny reprezentuje logiczny Procesor CPU z opcją wyboru generacji sprzętu i cechy fizyczne sprzętu (na przykład liczba rdzeni, pamięć, rozmiar magazynu). Model zakupu opartego na rdzeniach wirtualnych zapewnia Twojej elastyczności, kontroli, przejrzystości użycia poszczególnych zasobów i prostą metodę tłumaczenia wymagań obciążenia w chmurze lokalnie. Ten model umożliwia wybierz obliczeniowych, pamięci i magazynu, w zależności od ich potrzeb obciążenia. W opartych na rdzeniach wirtualnych model zakupu, klienci mogą wybierać między [ogólnego przeznaczenia](sql-database-high-availability.md#standardgeneral-purpose-availability) i [krytyczne dla działania](sql-database-high-availability.md#premiumbusiness-critical-availability) warstwy usług dla obu [pojedyncze bazy danych](sql-database-single-database-scale.md), [wystąpienia zarządzane](sql-database-managed-instance.md), i [pul elastycznych](sql-database-elastic-pool.md). 
+Rdzeń wirtualny reprezentuje logiczny Procesor CPU z opcją wyboru generacji sprzętu i cechy fizyczne sprzętu (na przykład liczba rdzeni, pamięć, rozmiar magazynu). Model zakupu opartego na rdzeniach wirtualnych zapewnia Twojej elastyczności, kontroli, przejrzystości użycia poszczególnych zasobów i prostą metodę tłumaczenia wymagań obciążenia w chmurze lokalnie. Ten model umożliwia wybierz obliczeniowych, pamięci i magazynu, w zależności od ich potrzeb obciążenia. W opartych na rdzeniach wirtualnych model zakupu, można wybrać między [ogólnego przeznaczenia](sql-database-high-availability.md#standardgeneral-purpose-availability) i [krytyczne dla działania](sql-database-high-availability.md#premiumbusiness-critical-availability) warstwy usług dla obu [pojedyncze bazy danych](sql-database-single-database-scale.md), [ wystąpienia zarządzane](sql-database-managed-instance.md), i [pul elastycznych](sql-database-elastic-pool.md). Dla pojedynczych baz danych, można także [(wersja zapoznawcza) na dużą skalę](sql-database-hyperscale.md) warstwy usług.
 
 Model zakupu opartego na rdzeniach wirtualnych umożliwia niezależnie wybrać zasoby obliczeniowe i magazynowe, Dopasuj wydajność środowiska lokalnego i optymalizacja ceny. Oparty na rdzeniach wirtualnych model zakupu klienci płacą za zasoby:
-- Obliczenia (warstwy usług + liczba rdzeni wirtualnych i ilość pamięci i generacji sprzętowy) *
+- Obliczenia (warstwy usług + liczba rdzeni wirtualnych i ilość pamięci i generowanie sprzętu)
 - Typ i ilość miejsca w magazynie danych i dziennika 
-- Liczba operacji We-Wy ** — dotyczy [serwerami logicznymi](sql-database-logical-servers.md) tylko
-- Kopii zapasowej magazynu (RA-GRS) ** 
-
-\* W początkowej publicznej wersji zapoznawczej Gen 4 logiczne procesory CPU są oparte na Intel E5-2673 v3 (Haswell) 2,4 GHz procesorów.
-
-\*\* W trakcie okresu zapoznawczego siedem dni, kopie zapasowe i z systemem IOs są bezpłatne.
+- Magazyn kopii zapasowych (RA-GRS) 
 
 > [!IMPORTANT]
 > Moc obliczeniowa, IOs, dane i Magazyn dzienników są naliczane zgodnie z bazy danych lub elastycznej puli. Magazyn kopii zapasowych jest rozliczane na każdej bazy danych. Aby uzyskać szczegółowe informacje o opłaty za wystąpienia zarządzanego, zapoznaj się [wystąpienia zarządzanego Azure SQL Database](sql-database-managed-instance.md).

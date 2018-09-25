@@ -1,6 +1,6 @@
 ---
-title: Dostosowywanie reguły zapory aplikacji sieci web w brama usługi aplikacji Azure — portalu Azure | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera informacje na temat sposobu dostosowywania sieci web reguły zapory aplikacji w polu Brama aplikacji w portalu Azure.
+title: Dostosowywanie reguł zapory aplikacji sieci web w usłudze Azure Application Gateway — witryna Azure portal | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera informacje na temat sposobu dostosowywania reguł zapory aplikacji internetowych w usłudze Application Gateway przy użyciu witryny Azure portal.
 documentationcenter: na
 services: application-gateway
 author: vhorne
@@ -15,57 +15,57 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 03/28/2017
 ms.author: victorh
-ms.openlocfilehash: ae61e3a8308e95c16ccde71de37fb10666ef0df9
-ms.sourcegitcommit: ca05dd10784c0651da12c4d58fb9ad40fdcd9b10
+ms.openlocfilehash: 30df26dc3a9697d3435779f91c32b2d99a747b88
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/03/2018
-ms.locfileid: "32769124"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990471"
 ---
-# <a name="customize-web-application-firewall-rules-through-the-azure-portal"></a>Dostosowywanie reguły zapory aplikacji sieci web za pośrednictwem portalu Azure
+# <a name="customize-web-application-firewall-rules-through-the-azure-portal"></a>Dostosowywanie reguł zapory aplikacji sieci web za pośrednictwem witryny Azure portal
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](application-gateway-customize-waf-rules-portal.md)
 > * [Program PowerShell](application-gateway-customize-waf-rules-powershell.md)
-> * [Interfejs wiersza polecenia platformy Azure 2.0](application-gateway-customize-waf-rules-cli.md)
+> * [Interfejs wiersza polecenia platformy Azure](application-gateway-customize-waf-rules-cli.md)
 
-Brama aplikacji w usłudze Azure zapory aplikacji sieci web (WAF) zapewnia ochronę dla aplikacji sieci web. Te zabezpieczenia są dostarczane przez Otwórz sieci Web aplikacji zabezpieczeń projektu (OWASP) podstawowe reguły Ustaw (CRS). Niektóre zasady mogą spowodować fałszywych alarmów i zablokowanie ruchu prawdziwe. Z tego powodu bramy aplikacji oferuje możliwość dostosowywania grup reguł i zasad. Aby uzyskać więcej informacji na określonej reguły grup i reguł, zobacz [listy grup reguł CRS zapory aplikacji sieci web i reguł](application-gateway-crs-rulegroups-rules.md).
+Zapora aplikacji sieci web usługi Azure Application Gateway (WAF) zapewnia ochronę aplikacji sieci web. Te zabezpieczenia stosowane są dostarczane przez Otwórz sieci Web aplikacji Security Project (OWASP) podstawowych reguł Ustaw (CRS). Niektóre reguły może spowodować, że wyniki fałszywie dodatnie i blokować ruch rzeczywistych. Z tego powodu Application Gateway oferuje możliwości dostosowywania grup reguł i reguł. Aby uzyskać więcej informacji na temat grup określonych reguł i reguł, zobacz [listę grup reguł CRS zapory aplikacji sieci web i reguły](application-gateway-crs-rulegroups-rules.md).
 
 >[!NOTE]
-> Jeśli bramy aplikacji nie używa warstwy zapory aplikacji sieci Web, opcja uaktualnienia brama aplikacji w warstwie zapory aplikacji sieci Web zostanie wyświetlony w okienku po prawej stronie. 
+> Jeśli Twoja brama application gateway nie korzysta z warstwy zapory aplikacji sieci Web, opcja uaktualnienia bramy aplikacji do warstwy zapory aplikacji sieci Web pojawi się w okienku po prawej stronie. 
 
 ![Włączanie zapory aplikacji sieci Web][fig1]
 
-## <a name="view-rule-groups-and-rules"></a>Widok grup reguł i zasad
+## <a name="view-rule-groups-and-rules"></a>Widok grup reguł i reguł
 
-**Aby wyświetlić grupy reguł i zasad**
-   1. Przejdź na bramie aplikacji, a następnie wybierz **zapory aplikacji sieci Web**.  
-   2. Wybierz **reguły zaawansowanej konfiguracji**.  
-   Ten widok przedstawia tabeli na stronie grupy reguł podaną w zestawie reguł wybrany. Zaznaczono wszystkie pola wyboru reguły.
+**Aby wyświetlić grup reguł i reguł**
+   1. Przejdź do usługi application gateway, a następnie wybierz pozycję **zapory aplikacji sieci Web**.  
+   2. Wybierz **Zaawansowana konfiguracja reguł**.  
+   Ten widok przedstawia tabelę na stronie wszystkie grupy reguł, wyposażone w zestawie reguł wybrany. Wszystkie reguły pola wyboru są zaznaczone.
 
 ![Konfigurowanie reguł wyłączone][1]
 
-## <a name="search-for-rules-to-disable"></a>Wyszukaj regułę do wyłączenia
+## <a name="search-for-rules-to-disable"></a>Wyszukaj reguły, aby wyłączyć
 
-**Aplikacja, ustawienia zapory w sieci Web** bloku umożliwia filtrowanie reguł za pomocą funkcji wyszukiwania tekstu. Wynik wyświetla tylko grupy reguł i reguł, które zawierają tekst, który wyszukiwany.
+**Ustawienia zapory aplikacji internetowych** bloku umożliwia filtrowanie reguł za pomocą funkcji wyszukiwania tekstu. Wynik przedstawia tylko grup reguł i reguł, które zawierają tekst, który wyszukiwany.
 
-![Wyszukaj zasady][2]
+![Wyszukaj reguły][2]
 
-## <a name="disable-rule-groups-and-rules"></a>Wyłącz zasady grupy i zasady
+## <a name="disable-rule-groups-and-rules"></a>Wyłącz grup reguł i reguł
 
-Gdy sieci są wyłączenie reguł, można wyłączyć reguły całej grupy lub określone zasady w co najmniej jedną grupę reguł. 
+Gdy usługi są wyłączając reguły, możesz wyłączyć grupy całej reguły lub określone zasady w co najmniej jedną grupę reguł. 
 
-**Aby wyłączyć grupy reguł lub określone zasady**
+**Aby wyłączyć grup reguł lub określone zasady**
 
-   1. Wyszukiwanie reguły lub grupy reguł, które mają zostać wyłączone.
-   2. Usuń zaznaczenie pola wyboru dla reguł, które mają zostać wyłączone. 
+   1. Wyszukaj reguły lub grupy reguł, które chcesz wyłączyć.
+   2. Usuń zaznaczenie pola wyboru dla reguł, które chcesz wyłączyć. 
    2. Wybierz pozycję **Zapisz**. 
 
 ![Zapisz zmiany][3]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po skonfigurowaniu reguł wyłączonych można poznać sposoby wyświetlania dzienników zapory aplikacji sieci Web. Aby uzyskać więcej informacji, zobacz [diagnostyki bramy aplikacji](application-gateway-diagnostics.md#diagnostic-logging).
+Po skonfigurowaniu reguł wyłączonych, możesz dowiedzieć się, jak wyświetlić dzienniki zapory aplikacji sieci Web. Aby uzyskać więcej informacji, zobacz [diagnostyki usługi Application Gateway](application-gateway-diagnostics.md#diagnostic-logging).
 
 [fig1]: ./media/application-gateway-customize-waf-rules-portal/1.png
 [1]: ./media/application-gateway-customize-waf-rules-portal/figure1.png

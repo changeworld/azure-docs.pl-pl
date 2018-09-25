@@ -11,14 +11,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 09/19/2018
 ms.author: mbullwin
-ms.openlocfilehash: 91c097d2ac661aa4ac9b578b7d9060b97ee6f549
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 093124432314472da06065fad3a7cdff0f558d22
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126177"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999821"
 ---
 # <a name="get-started-with-application-insights-in-a-java-web-project"></a>Wprowadzenie do usługi Application Insights w projekcie sieci Web w języku Java
 
@@ -405,6 +405,30 @@ Liczniki wydajności są widoczne jako metryki niestandardowe w [Eksploratorze m
 ### <a name="unix-performance-counters"></a>Liczniki wydajności sytemu Unix
 * [Zainstaluj program collectd z wtyczką Application Insights](app-insights-java-collectd.md), aby uzyskać szeroką gamę danych na temat systemu i sieci.
 
+## <a name="local-forwarder"></a>Lokalna usługa przesyłania dalej
+
+[Lokalne usługi przesyłania dalej](https://docs.microsoft.com/azure/application-insights/local-forwarder) Agent, który gromadzi informacje o usłudze Application Insights lub [OpenCensus](https://opencensus.io/) dane telemetryczne z różnych zestawów SDK i struktur i kieruje je do usługi Application Insights. Jest w stanie działać w obszarze Windows i Linux.
+
+```xml
+<Channel type="com.microsoft.applicationinsights.channel.concrete.localforwarder.LocalForwarderTelemetryChannel">
+<DeveloperMode>false</DeveloperMode>
+<EndpointAddress><!-- put the hostname:port of your LocalForwarder instance here --></EndpointAddress>
+<!-- The properties below are optional. The values shown are the defaults for each property -->
+<FlushIntervalInSeconds>5</FlushIntervalInSeconds><!-- must be between [1, 500]. values outside the bound will be rounded to nearest bound -->
+<MaxTelemetryBufferCapacity>500</MaxTelemetryBufferCapacity><!-- units=number of telemetry items; must be between [1, 1000] -->
+</Channel>
+```
+
+Jeśli używasz modułu uruchamiającego SpringBoot, Dodaj następujący element do pliku konfiguracji (application.properies):
+
+```yml
+azure.application-insights.channel.local-forwarder.endpoint-address=<!--put the hostname:port of your LocalForwarder instance here-->
+azure.application-insights.channel.local-forwarder.flush-interval-in-seconds=<!--optional-->
+azure.application-insights.channel.local-forwarder.max-telemetry-buffer-capacity=<!--optional-->
+```
+
+Wartości domyślne są takie same w przypadku konfiguracji SpringBoot pliku application.properties i plik applicationinsights.xml.
+
 ## <a name="get-user-and-session-data"></a>Pobieranie danych użytkownika i sesji
 Wysyłasz już telemetrię z serwera sieci Web. Teraz, aby zyskać pełny wgląd w dane aplikacji, możesz dodać więcej opcji monitorowania:
 
@@ -434,7 +458,7 @@ Uzyskasz wykresy czasów odpowiedzi oraz powiadomienia e-mail w razie wyłączen
 ## <a name="questions-problems"></a>Pytania? Problemy?
 [Rozwiązywanie problemów z technologią Java](app-insights-java-troubleshoot.md)
 
-## <a name="video"></a>Video
+## <a name="video"></a>Połączenia wideo
 
 > [!VIDEO https://channel9.msdn.com/events/Connect/2016/100/player]
 
@@ -453,7 +477,7 @@ Uzyskasz wykresy czasów odpowiedzi oraz powiadomienia e-mail w razie wyłączen
 [apiexceptions]: app-insights-api-custom-events-metrics.md#trackexception
 [availability]: app-insights-monitor-web-app-availability.md
 [diagnostic]: app-insights-diagnostic-search.md
-[eclipse]: app-insights-java-eclipse.md
+[eclipse]: /app-insights-java-quick-start.md
 [javalogs]: app-insights-java-trace-logs.md
 [metrics]: app-insights-metrics-explorer.md
 [usage]: app-insights-javascript.md

@@ -1,6 +1,6 @@
 ---
-title: Tworzenie klastrów usługi Hadoop przy użyciu wiersza polecenia — Azure HDInsight
-description: Dowiedz się, jak tworzyć klastry HDInsight przy użyciu interfejsu wiersza polecenia platformy Azure dla wielu platform w wersji 1.0.
+title: Tworzenie klastrów usługi Hadoop za pomocą klasycznego wiersza polecenia platformy Azure — Azure HDInsight
+description: Dowiedz się, jak tworzyć klastry HDInsight przy użyciu dla wielu platform klasycznego wiersza polecenia platformy Azure.
 services: hdinsight
 author: jasonwhowell
 ms.reviewer: jasonh
@@ -9,38 +9,32 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: 523c2a85929d8474c283055a8ae38d489cbd4b12
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 84b352fea0c5b9c98cd3b4e814e448cf8b706402
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43090978"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46992817"
 ---
-# <a name="create-hdinsight-clusters-using-the-azure-cli"></a>Tworzenie klastrów HDInsight za pomocą wiersza polecenia platformy Azure
+# <a name="create-hdinsight-clusters-using-the-azure-classic-cli"></a>Tworzenie klastrów HDInsight za pomocą klasycznego wiersza polecenia platformy Azure
 
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
 
-Kroki opisane w tym przewodniku dokumentu, tworzenie klastra HDInsight 3.5 przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 1.0.
+Kroki opisane w tym przewodniku dokumentu, tworzenie klastra HDInsight 3.5 przy użyciu klasycznego wiersza polecenia platformy Azure.
 
-> [!IMPORTANT]
-> W tym temacie opisano, jak utworzyć klaster usługi HDInsight za pomocą interfejsu wiersza polecenia platformy Azure w wersji 1.0. Ta wersja interfejsu wiersza polecenia jest przestarzała i nie dodano obsługę tworzenia klastrów HDInsight do interfejsu wiersza polecenia platformy Azure w wersji 2.0.
->
-> Można również użyć programu Azure PowerShell do tworzenia i zarządzania klastrami HDInsight. Aby uzyskać więcej informacji, zobacz [HDInsight Tworzenie klastrów przy użyciu programu Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) dokumentu.
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [delete-cluster-warning](../../includes/hdinsight-delete-cluster-warning.md)]
 
-* **Subskrypcja platformy Azure**. Zobacz artykuł [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
+* **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
 
-* **Interfejs wiersza polecenia platformy Azure**. Kroki opisane w tym dokumencie ostatnio zostały przetestowane za pomocą wiersza polecenia platformy Azure w wersji 0.10.14.
-
-    > [!IMPORTANT]
-    > Azure CLI 1.0 jest przestarzały i nie dodano obsługę tworzenia klastrów HDInsight do interfejsu wiersza polecenia platformy Azure w wersji 2.0.
+* **Klasyczny interfejs wiersza polecenia Azure**. Kroki opisane w tym dokumencie ostatnio zostały przetestowane za pomocą klasycznego wiersza polecenia platformy Azure w wersji 0.10.14.
 
 ## <a name="log-in-to-your-azure-subscription"></a>Logowanie się do subskrypcji platformy Azure
 
-Wykonaj kroki opisane w temacie [Nawiązywanie połączenia z subskrypcją platformy Azure za pomocą interfejsu wiersza polecenia platformy Azure (Azure CLI)](/cli/azure/authenticate-azure-cli) i nawiąż połączenie z subskrypcją za pomocą metody **logowania**.
+Wykonaj kroki opisane w temacie [nawiązywanie połączenia z subskrypcją platformy Azure z interfejsu wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli) i nawiąż połączenie z subskrypcją za pomocą **logowania** metody.
 
 ## <a name="create-a-cluster"></a>Tworzenie klastra
 
@@ -50,7 +44,7 @@ Poniższe kroki należy wykonać z poziomu wiersza polecenia, takiego jak progra
 
         azure login
 
-    Monit o podanie swojej nazwy i hasła. Jeśli masz wiele subskrypcji platformy Azure, użyj `azure account set <subscriptionname>` można ustawić subskrypcję, użyj poleceń interfejsu wiersza polecenia platformy Azure.
+    Monit o podanie swojej nazwy i hasła. Jeśli masz wiele subskrypcji platformy Azure, użyj `azure account set <subscriptionname>` można ustawić subskrypcję, która używać klasycznych poleceń interfejsu wiersza polecenia.
 
 2. Włącz tryb usługi Azure Resource Manager za pomocą następującego polecenia:
 
@@ -124,7 +118,7 @@ W razie problemów podczas tworzenia klastrów usługi HDInsight zapoznaj się z
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Teraz, że udało Ci się utworzyć klaster usługi HDInsight przy użyciu wiersza polecenia platformy Azure, należy użyć następującego, aby dowiedzieć się, jak pracować z klastrem:
+Teraz, że udało Ci się utworzyć klaster usługi HDInsight przy użyciu klasyczny interfejs wiersza polecenia, należy użyć następującego, aby dowiedzieć się, jak pracować z klastrem:
 
 ### <a name="hadoop-clusters"></a>Klastry usługi Hadoop
 

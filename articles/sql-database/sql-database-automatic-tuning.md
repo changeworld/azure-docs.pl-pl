@@ -2,20 +2,22 @@
 title: Usługa Azure SQL Database — automatyczne dostrajanie | Dokumentacja firmy Microsoft
 description: Usługa Azure SQL Database analizuje zapytanie SQL i automatycznie dostosowuje się do obciążenia użytkownika.
 services: sql-database
-author: danimir
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: danimir
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: 999ac78427ae1202db584efeb7de538bcc1248c7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 931e0f2c6be51c78187413d638259237f98bd9b0
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714806"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063357"
 ---
 # <a name="automatic-tuning-in-azure-sql-database"></a>Dostrajanie automatyczne w usłudze Azure SQL Database
 

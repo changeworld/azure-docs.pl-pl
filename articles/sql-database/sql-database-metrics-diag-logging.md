@@ -8,28 +8,29 @@ manager: craigg
 ms.service: sql-database
 ms.custom: monitor & tune
 ms.topic: conceptual
-ms.date: 03/16/2018
+ms.date: 09/20/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: aa031b87df51bd9f7dec40a6c3e56023e2d82d96
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 2c848ba87d7f42f6329e7b3166a4410cadbd63a0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579500"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037953"
 ---
 # <a name="azure-sql-database-metrics-and-diagnostics-logging"></a>Metryki usługi Azure SQL Database i rejestrowania diagnostycznego 
-Usługa Azure SQL Database można tworzyć metryki i Diagnostyka dzienników, które ułatwiają monitorowanie. Usługę SQL Database można skonfigurować do przechowywania danych dotyczących użycia zasobów, pracowników i sesji oraz połączeń z jednym z następujących zasobów platformy Azure:
 
-* **Usługa Azure Storage**: używane w celu archiwizowania ogromnych ilości danych telemetrycznych za niewielką cenę.
+Usługa Azure SQL Database, a wystąpienie zarządzane usługi baz danych może emitować metryki i Diagnostyka dzienników, które ułatwiają monitorowanie wydajności. Można skonfigurować bazę danych do użycia zasobów usługi stream, pracowników i sesji oraz połączeń z jednym z następujących zasobów platformy Azure:
+
+* **Usługa Azure SQL Analytics**: używana jako zintegrowane usługi Azure database wydajności inteligentne rozwiązania z raportowania, zgłaszania alertów i łagodzenia możliwości monitorowania.
 * **Usługa Azure Event Hubs**: używane do integracji danych telemetrycznych usługi SQL Database z niestandardowym rozwiązaniem monitorowania lub potokami.
-* **Usługa Azure Log Analytics**: używane do rozwiązania do monitorowania poza pole z raportowania, zgłaszania alertów i łagodzenia możliwości. Jest to funkcja pakietu [Operations Management Suite (OMS)](../operations-management-suite/operations-management-suite-overview.md)
+* **Usługa Azure Storage**: używane w celu archiwizowania ogromnych ilości danych telemetrycznych za niewielką cenę.
 
     ![Architektura](./media/sql-database-metrics-diag-logging/architecture.png)
 
-## <a name="enable-logging"></a>Włącz rejestrowanie
+## <a name="enable-logging-for-a-database"></a>Włącz rejestrowanie dla bazy danych
 
-Metryki i Diagnostyka rejestrowania nie jest włączona domyślnie. Można włączyć i zarządzać metryki i Diagnostyka rejestrowania przy użyciu jednej z następujących metod:
+Metryki i Diagnostyka logowania SQL Database lub wystąpieniu zarządzanym bazy danych nie jest włączona domyślnie. Można włączyć i zarządzać metryki i Diagnostyka danych telemetrycznych rejestrowania w bazie danych przy użyciu jednej z następujących metod:
 
 - Azure Portal
 - PowerShell
@@ -37,40 +38,56 @@ Metryki i Diagnostyka rejestrowania nie jest włączona domyślnie. Można włą
 - Interfejs API REST usługi Azure Monitor 
 - Szablon usługi Azure Resource Manager
 
-Jeśli włączysz rejestrowanie diagnostyczne i metryki, należy określić zasobów platformy Azure, w którym wybrane dane są zbierane. Dostępne opcje obejmują:
+Jeśli włączysz rejestrowanie diagnostyczne i metryki, należy określić zasobów platformy Azure, gdzie będą zbierane wybranych danych. Dostępne opcje obejmują:
 
-- Log Analytics
+- Usługa SQL Analytics
 - Event Hubs
 - Magazyn 
 
-Można uaktywniać nowego zasobu platformy Azure, lub wybierz istniejący zasób. Po wybraniu zasobu magazynu, należy określić dane, które mają być zbierane. Dostępne opcje obejmują:
+Można uaktywniać nowego zasobu platformy Azure, lub wybierz istniejący zasób. Po wybraniu zasobu, korzystając z opcji ustawień diagnostycznych bazy danych należy określić dane, które mają być zbierane. Dostępne opcje, z obsługą bazy danych Azure SQL Database i wystąpienia zarządzanego:
 
-- [Wszystkie metryki](sql-database-metrics-diag-logging.md#all-metrics): procent zawiera jednostki DTU, limit jednostek DTU, procent użycia procesora CPU, danych fizycznych odczytać wartości procentowej, dziennik zapisu procent, Powodzenie/niepowodzenie/blokada połączeń zapory, procent sesji, procent pracowników, magazynu, procent użycia magazynu i procent użycia magazynu XTP.
-- [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): zawiera informacje dotyczące środowiska uruchomieniowego statystyki zapytań, np. czas trwania użycia i zapytanie procesora CPU.
-- [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): zawiera informacje o statystyki oczekiwania zapytań, które informujący o tym, co zapytań oczekiwany, takie jak procesor CPU, DZIENNIKÓW i blokowanie.
-- [Błędy](sql-database-metrics-diag-logging.md#errors-dataset): zawiera informacje na temat błędów programu SQL, które wystąpiły dla tej bazy danych.
-- [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): zawiera informacje, o ile czasu bazy danych poświęcony oczekiwanie na oczekiwania różnych typów.
-- [Limity czasu](sql-database-metrics-diag-logging.md#time-outs-dataset): zawiera informacje dotyczące limitów czasu, który wystąpił w bazie danych.
-- [Bloki](sql-database-metrics-diag-logging.md#blockings-dataset): zawiera informacje o blokowaniu zdarzenia, które wystąpiły w bazie danych.
-- [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): zawiera Intelligent Insights. [Dowiedz się więcej o Intelligent Insights](sql-database-intelligent-insights.md).
-- **Inspekcja** / **SQLSecurityAuditEvents**: obecnie niedostępne.
+| Monitorowanie danych telemetrycznych | Obsługa usługi Azure SQL Database | Bazy danych w wystąpieniu zarządzanym usługi pomocy technicznej |
+| :------------------- | ------------------- | ------------------- |
+| [Wszystkie metryki](sql-database-metrics-diag-logging.md#all-metrics): ograniczenie liczby jednostek DTU/procesora CPU procentowe zawiera jednostki DTU, użycie procesora CPU, procent, procent zapisu dziennika, ilość odczytanych danych fizycznych Powodzenie/niepowodzenie/blokada połączeń zapory, procent sesji, procent pracowników, magazynu, procent użycia magazynu, a Procent użycia magazynu XTP. | Yes | Nie |
+| [QueryStoreRuntimeStatistics](sql-database-metrics-diag-logging.md#query-store-runtime-statistics): zawiera informacje o statystyki czasu wykonywania zapytania, takie są użycie procesora CPU i Statystyki czasu trwania zapytania. | Yes | Yes |
+| [QueryStoreWaitStatistics](sql-database-metrics-diag-logging.md#query-store-wait-statistics): zawiera informacje o statystyki oczekiwania zapytań, które informujący o tym, co zapytań oczekiwany, takie jak procesor CPU, DZIENNIKÓW i blokowanie. | Yes | Yes |
+| [Błędy](sql-database-metrics-diag-logging.md#errors-dataset): zawiera informacje na temat błędów programu SQL, które wystąpiły dla tej bazy danych. | Yes | Nie |
+| [DatabaseWaitStatistics](sql-database-metrics-diag-logging.md#database-wait-statistics-dataset): zawiera informacje, o ile czasu bazy danych poświęcony oczekiwanie na oczekiwania różnych typów. | Yes | Nie |
+| [Limity czasu](sql-database-metrics-diag-logging.md#time-outs-dataset): zawiera informacje dotyczące limitów czasu, który wystąpił w bazie danych. | Yes | Nie |
+| [Bloki](sql-database-metrics-diag-logging.md#blockings-dataset): zawiera informacje o blokowaniu zdarzenia, które wystąpiły w bazie danych. | Yes | Nie |
+| [SQLInsights](sql-database-metrics-diag-logging.md#intelligent-insights-dataset): zawiera inteligentne szczegółowych informacji o wydajności. [Dowiedz się więcej o Intelligent Insights](sql-database-intelligent-insights.md). | Yes | Yes |
+
+**Należy pamiętać,**: Aby użyć dzienniki inspekcji i SQLSecurityAuditEvents, mimo że te opcje są dostępne w ustawieniach diagnostycznych bazy danych, te dzienniki powinien być włączony tylko przez **inspekcji SQL** rozwiązania, aby skonfigurować przesyłanie strumieniowe danych telemetrycznych do usługi Log Analytics, Centrum zdarzeń lub magazyn.
 
 Wybranie Event Hubs lub konta magazynu, można określić zasady przechowywania. Ta zasada usuwa dane starsze niż w wybranym okresie. Jeśli określisz usługi Log Analytics, zasady przechowywania zależy od wybranej warstwy cenowej. Aby uzyskać więcej informacji, zobacz [cen usługi Log Analytics](https://azure.microsoft.com/pricing/details/log-analytics/). 
 
-Dowiedz się, jak włączyć rejestrowanie i zrozumienie kategorii metryk i dzienników, które są obsługiwane przez różne usługi platformy Azure, zalecamy przeczytanie: 
+## <a name="enable-logging-for-elastic-pools-or-managed-instance"></a>Włączanie rejestrowania dla pul elastycznych lub wystąpienia zarządzanego
+
+Metryki i pul elastycznych rejestrowania diagnostyki lub wystąpienia zarządzanego nie jest włączona domyślnie. Można włączyć i zarządzać metryk i rejestrowania danych telemetrycznych diagnostyki dla puli elastycznej lub wystąpienia zarządzanego. Następujące dane są dostępne dla kolekcji:
+
+| Monitorowanie danych telemetrycznych | Obsługa elastycznej puli | Obsługa wystąpienia zarządzanego |
+| :------------------- | ------------------- | ------------------- |
+| [Wszystkie metryki](sql-database-metrics-diag-logging.md#all-metrics) (pul elastycznych): zawiera procent eDTU/użycia procesora CPU, limit jednostek eDTU/procesora CPU, fizycznych procent odczytanych danych, dzienników zapisu procent, procent sesji, procent pracowników, magazynu, procent użycia magazynu, limit przestrzeni dyskowej i procent użycia magazynu XTP . | Yes | ND |
+| [ResourceUsageStats](sql-database-metrics-diag-logging.md#resource-usage-stats) (wystąpienie zarządzane): zawiera liczbę rdzeni wirtualnych, średni procent użycia procesora CPU, we/wy żądań, bajtów odczytanych/zapisanych, zarezerwowane miejsce do magazynowania, użyte miejsce do magazynowania. | ND | Yes |
+
+Aby zrozumieć metryki i zaloguj się kategorie, które są obsługiwane przez różne usługi platformy Azure, zaleca się, należy przeczytać artykuł:
 
 * [Przegląd metryk w systemie Microsoft Azure](../monitoring-and-diagnostics/monitoring-overview-metrics.md)
 * [Przegląd dzienników diagnostyki platformy Azure](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) 
 
 ### <a name="azure-portal"></a>Azure Portal
 
-1. Aby włączyć metryki i Diagnostyka zbieranie dzienników w portalu, przejdź do usługi SQL Database lub strona elastycznej puli, a następnie wybierz **ustawień diagnostycznych**.
+- Aby włączyć metryki i Diagnostyka dzienników kolekcji jako część baz danych SQL Database lub wystąpieniu zarządzanym bazy danych, przejdź do bazy danych, a następnie wybierz **ustawień diagnostycznych**. Wybierz **+ Dodaj ustawienie diagnostyczne** skonfigurować nowe ustawienie lub **Edytuj ustawienie** edytować istniejące ustawienie.
 
    ![Włącz w witrynie Azure portal](./media/sql-database-metrics-diag-logging/enable-portal.png)
 
-2. Utwórz nowe lub Edytuj istniejące ustawienia diagnostyki, wybierając element docelowy i dane telemetryczne.
+- Aby uzyskać **usługi Azure SQL Database** Utwórz nowe lub Edytuj istniejące ustawienia diagnostyki, wybierając element docelowy i dane telemetryczne.
 
    ![Ustawienia diagnostyczne](./media/sql-database-metrics-diag-logging/diagnostics-portal.png)
+
+- Aby uzyskać **wystąpieniu zarządzanym bazy danych** Utwórz nowe lub Edytuj istniejące ustawienia diagnostyki, wybierając element docelowy i dane telemetryczne.
+
+   ![Ustawienia diagnostyczne](./media/sql-database-metrics-diag-logging/diagnostics-portal-mi.png)
 
 ### <a name="powershell"></a>PowerShell
 
@@ -174,7 +191,7 @@ Monitorowanie floty bazy danych SQL Database jest proste z usługą Log Analytic
 
 2. Konfigurowanie bazy danych do rekordów dzienników metryki i Diagnostyka do zasobu usługi Log Analytics, który został utworzony.
 
-3. Zainstaluj **usługi Azure SQL Analytics** rozwiązania z galerii w usłudze Log Analytics.
+3. Zainstaluj **usługi Azure SQL Analytics** rozwiązania w portalu Azure Marketplace.
 
 ### <a name="create-a-log-analytics-resource"></a>Tworzenie zasobu usługi Log Analytics
 
@@ -259,15 +276,52 @@ Dowiedz się, jak [pobieranie metryki i Diagnostyka dzienników z usługi Storag
 
 ## <a name="metrics-and-logs-available"></a>Metryki i dostępnych dzienników
 
-### <a name="all-metrics"></a>Wszystkie metryki
+Można znaleźć szczegółowe monitorowania zawartości telemetrii metryk i dzienników dostępnych dla usługi Azure SQL Database, pul elastycznych, wystąpienia zarządzanego i baz danych w wystąpieniu zarządzanym.
+
+## <a name="all-metrics"></a>Wszystkie metryki
+
+### <a name="all-metrics-for-elastic-pools"></a>Wszystkie metryki dla pul elastycznych
 
 |**Zasób**|**Metryki**|
 |---|---|
-|Database (Baza danych)|Procentowa wartość jednostki DTU, używane jednostki DTU, limit jednostek DTU, procent użycia procesora CPU i procent odczytu danych fizycznych, dziennik zapisu procent, Powodzenie/niepowodzenie/blokada połączeń zapory, procent sesji, procent pracowników, magazynu, procent użycia magazynu, XTP procent użycia magazynu, a zakleszczenia |
 |Pula elastyczna|Procent eDTU używane liczby jednostek eDTU, limitu liczby jednostek eDTU, procent użycia procesora CPU i procent odczytu danych fizycznych, dziennik zapisu procent, procent sesji, procent pracowników, Magazyn, procent użycia magazynu, limit przestrzeni dyskowej, procent użycia magazynu XTP |
-|||
 
-### <a name="logs"></a>Dzienniki
+### <a name="all-metrics-for-azure-sql-database"></a>Wszystkie metryki usługi Azure SQL Database
+
+|**Zasób**|**Metryki**|
+|---|---|
+|Azure SQL Database|Procentowa wartość jednostki DTU, używane jednostki DTU, limit jednostek DTU, procent użycia procesora CPU i procent odczytu danych fizycznych, dziennik zapisu procent, Powodzenie/niepowodzenie/blokada połączeń zapory, procent sesji, procent pracowników, magazynu, procent użycia magazynu, XTP procent użycia magazynu, a zakleszczenia |
+
+## <a name="logs"></a>Dzienniki
+
+### <a name="logs-for-managed-instance"></a>Dzienniki dla wystąpienia zarządzanego
+
+### <a name="resource-usage-stats"></a>Statystyki użycia zasobów
+
+|Właściwość|Opis|
+|---|---|
+|Identyfikator dzierżawy|Twoim identyfikatorem dzierżawy.|
+|SourceSystem|Zawsze: Azure|
+|TimeGenerated [UTC]|Sygnatura czasowa podczas rejestrowania.|
+|Typ|Zawsze: AzureDiagnostics|
+|ResourceProvider|Nazwa dostawcy zasobów. Zawsze: MICROSOFT. SQL|
+|Kategoria|Nazwa kategorii. Zawsze: ResourceUsageStats|
+|Zasób|Nazwa zasobu.|
+|ResourceType|Nazwa typu zasobu. Zawsze: MANAGEDINSTANCES|
+|SubscriptionId|Identyfikator GUID, który bazy danych należy do subskrypcji.|
+|ResourceGroup|Nazwa grupy zasobów, do której należy bazy danych.|
+|LogicalServerName_s|Nazwa wystąpienia zarządzanego.|
+|ResourceId|Identyfikator URI zasobu.|
+|SKU_s|Zarządzane wystąpienia produktu jednostki SKU|
+|virtual_core_count_s|Numver dostępne rdzenie wirtualne|
+|avg_cpu_percent_s|Średni procent użycia procesora CPU|
+|reserved_storage_mb_s|Pojemność magazynu zarezerwowane na wystąpieniu zarządzanym|
+|storage_space_used_mb_s|Magazynu używanych na wystąpieniu zarządzanym|
+|io_requests_s|Liczba operacji We/Wy|
+|io_bytes_read_s|Odczytano bajtów na SEKUNDĘ|
+|io_bytes_written_s|Zapisano bajtów na SEKUNDĘ|
+
+### <a name="logs-for-azure-sql-database-and-managed-instance-database"></a>Dzienniki dla bazy danych Azure SQL Database i wystąpienia zarządzanego
 
 ### <a name="query-store-runtime-statistics"></a>Statystyki środowiska uruchomieniowego Query Store
 

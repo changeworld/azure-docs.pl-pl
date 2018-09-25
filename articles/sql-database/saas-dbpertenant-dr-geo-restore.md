@@ -1,379 +1,381 @@
 ---
-title: Użyj geograficznie nadmiarowego kopie zapasowe bazy danych SQL Azure dla odzyskiwania po awarii aplikacji SaaS | Dokumentacja firmy Microsoft
-description: Dowiedz się, aby odzyskać wielodostępnych aplikacji SaaS w przypadku wystąpienia awarii, użyj geograficznie nadmiarowego kopie zapasowe bazy danych SQL Azure
-keywords: samouczek usługi sql database
+title: Geograficznie nadmiarowych kopii zapasowych usługi Azure SQL Database na użytek odzyskiwania po awarii aplikacji SaaS | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak użyć geograficznie nadmiarowych kopii zapasowych usługi Azure SQL Database, aby odzyskać wielodostępnych aplikacji SaaS w przypadku awarii
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: saas apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/16/2018
+author: AyoOlubeko
 ms.author: ayolubek
-ms.openlocfilehash: fc28622ad6d2569d455f82a30a84c47647baa1e2
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: sstein
+manager: craigg
+ms.date: 04/16/2018
+ms.openlocfilehash: adb3778c723f7c56b5f31381c804e39a8b782709
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645338"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056193"
 ---
-# <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Użyj geograficzne, aby odzyskać wielodostępnych aplikacji SaaS z kopii zapasowej bazy danych
+# <a name="use-geo-restore-to-recover-a-multitenant-saas-application-from-database-backups"></a>Funkcja przywracania geograficznego umożliwia odzyskiwanie wielodostępnych aplikacji SaaS z kopii zapasowych bazy danych
 
-W tym samouczku Eksploruje scenariusza odzyskiwania awaryjnego pełny dla wielodostępnych aplikacji SaaS zaimplementowany przy użyciu bazy danych na model dzierżawy. Możesz użyć [geograficzne](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups) pozwoli na odzyskanie automatycznie utrzymywana geograficznie nadmiarowego kopie zapasowe bazy danych katalogu i dzierżawy w region alternatywny odzyskiwania. Po awarii nie zostanie rozwiązany, należy użyć [— replikacja geograficzna](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) wycofywania zmienione baz danych do ich oryginalnej regionu do.
+W tym samouczku przedstawiono scenariusza odzyskiwania awaryjnego pełny dla wielodostępnych aplikacji SaaS implementowana przy użyciu bazy danych dla każdego modelu dzierżawy. Możesz użyć [geoprzywracanie](https://docs.microsoft.com/azure/sql-database/sql-database-recovery-using-backups) do odzyskania bazy danych wykazu i dzierżawy z automatycznego zapewnienia geograficznie nadmiarowych kopii zapasowych w region odzyskiwanie do alternatywnej. Po awarii nie zostanie rozwiązany, należy użyć [geografickou replikaci](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview) wycofywania zmienione baz danych do ich oryginalnej regionu do.
 
-![Architektura w przypadku przywracania Geo](media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
+![Architektura w przypadku przywracania geograficznego](media/saas-dbpertenant-dr-geo-restore/geo-restore-architecture.png)
 
-Geograficzne jest rozwiązanie do odzyskiwania po awarii najniższy koszt bazy danych SQL Azure. Jednak przywracanie z kopii zapasowej geograficznie nadmiarowego może spowodować utratę danych z maksymalnie jedną godzinę. Można go zająć wiele czasu, zależnie od wielkości każdej bazy danych. 
+Funkcja przywracania geograficznego jest rozwiązanie odzyskiwania po awarii najniższy koszt usługi Azure SQL Database. Jednak przywracaniu z geograficznie nadmiarowych kopii zapasowych może spowodować utratę danych do jednej godziny. Może upłynąć pewien czasu w zależności od rozmiaru każdej bazy danych. 
 
 > [!NOTE]
-> Odzyskać aplikacji o najniższym możliwym RPO i RTO przy użyciu — replikacja geograficzna zamiast przywracaniem geograficznym.
+> Odzyskiwanie aplikacji o najniższym możliwym cel punktu odzyskiwania i cel czasu odzyskiwania przy użyciu replikacji geograficznej zamiast przywracania geograficznego.
 
-W tym samouczku Eksploruje zarówno przywracania i repatriacji przepływów pracy. Omawiane kwestie:
+W tym samouczku przedstawiono przywracania i repatriacji przepływów pracy. Omawiane kwestie:
 > [!div class="checklist"]
 
->* Baza danych usługi synchronizacji i informacje o konfiguracji puli elastycznej do katalogu dzierżawcy.
->* Konfigurowanie środowiska odbicie lustrzane w regionie odzyskiwania obejmuje aplikacji, serwerów i pul.   
->* Odzyskać bazy danych katalogu i dzierżawcy, używając przywracaniem geograficznym.
->* Replikacja geograficzna umożliwia wycofywania katalogu dzierżawcy i baz danych dzierżawy zmienione po awarii.
->* Aktualizuj katalog, ponieważ każda baza danych jest przywrócona (lub zwrócony do kraju macierzystego) do śledzenia bieżącą lokalizację kopii aktywnej bazy danych z każdego dzierżawcy.
->* Upewnij się, że aplikacja i dzierżawcy w bazie danych są zawsze kolokowane w tym samym regionie Azure, aby zmniejszyć opóźnienia. 
+>* Synchronizacji bazy danych i informacji o konfiguracji puli elastycznej do katalogu dzierżawy.
+>* Konfigurowanie środowiska odbicie lustrzane w regionie odzyskiwania, który zawiera aplikacji, serwerów i pul.   
+>* Odzyskiwanie bazy danych wykazu i dzierżawy przy użyciu przywracania geograficznego.
+>* Replikacja geograficzna umożliwia wycofywania katalogu dzierżawy i baz danych dzierżaw zmienione po usunięciu awarii.
+>* Katalog aktualizacji, ponieważ każda baza danych przywrócona (lub zwrócony do kraju macierzystego) do śledzenia bieżącą lokalizację kopii aktywnej bazy danych z każdej dzierżawy.
+>* Upewnij się, że aplikacji i baza danych dzierżawy są zawsze kolokowane w tym samym regionie platformy Azure w celu zmniejszenia opóźnienia. 
  
 
-Przed rozpoczęciem tego samouczka, wykonaj następujące wymagania wstępne:
-* Wdrażania bazy danych SaaS biletów Wingtip każdej dzierżawy aplikacji. Aby wdrożyć w mniej niż 5 minut, zobacz [Wdróż i eksplorowanie Wingtip biletów SaaS bazy danych na aplikację dzierżawy](saas-dbpertenant-get-started-deploy.md). 
+Przed rozpoczęciem tego samouczka należy spełnić następujące wymagania wstępne:
+* Wdrażanie bazy danych SaaS o nazwie Wingtip Tickets dzierżawy aplikacji. Aby wdrożyć w mniej niż pięć minut, zobacz [wdrażanie i eksplorowanie SaaS o nazwie Wingtip Tickets bazy danych dla każdego dzierżawcy aplikacji](saas-dbpertenant-get-started-deploy.md). 
 * Zainstaluj program Azure PowerShell. Aby uzyskać więcej informacji, zobacz [wprowadzenie do programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/get-started-azureps).
 
-## <a name="introduction-to-the-geo-restore-recovery-pattern"></a>Wprowadzenie do wzorca odzyskiwanie geograficzne
+## <a name="introduction-to-the-geo-restore-recovery-pattern"></a>Wprowadzenie do wzorca odzyskiwania chronionej przywracania geograficznego
 
-Odzyskiwania awaryjnego (DR) jest ważną kwestią dla wielu aplikacji, dla zachowania zgodności lub ciągłość prowadzenia działalności biznesowej. W przypadku awarii usługa długimi dobrze przygotowana planu odzyskiwania po awarii można zminimalizować zakłócenia biznesowych. Plan odzyskiwania po awarii A oparty na geograficzne musi realizację kilku celów:
- * Wszystkie niezbędne zdolności rezerwowej w regionie odzyskiwania wybranego tak szybko jak to możliwe, aby upewnić się, że jest ona dostępna do przywrócenia bazy danych dzierżawy.
- * Ustanawiania środowiska odzyskiwania odbicie lustrzane odzwierciedlający oryginalna konfiguracja puli i bazy danych. 
- * Umożliwia anulowanie procesu przywracania w locie pośredniej, jeśli oryginalny region wraca do trybu online.
- * Włącz szybkie Inicjowanie obsługi dzięki nowej dzierżawy przy dołączaniu można ponownie uruchomić jak najszybciej dzierżawy.
- * Zoptymalizowana do przywrócenia dzierżaw w kolejności priorytetu.
- * Zoptymalizowana można pobrać dzierżawcy online tak szybko, jak to możliwe w przypadku, gdy praktyczne, wykonując kroki równolegle.
- * Zapewnienie odporności na uszkodzenia, ponownego uruchamiania i idempotentności.
- * Wycofywania baz danych do ich oryginalnej regionu przy minimalnym wpływie dzierżawcom, po usunięciu awarii.  
+Odzyskiwanie po awarii (DR) jest ważną kwestią w przypadku wielu aplikacji dla zachowania zgodności lub ciągłość prowadzenia działalności biznesowej. W przypadku awarii usługi długotrwały dobrze przygotowany plan odzyskiwania po awarii, można zminimalizować zakłócenia działania firmy. Plan odzyskiwania po awarii A oparty na przywracania geograficznego musi osiągnąć cele kilka:
+ * Zarezerwuj wszystkie niezbędne pojemności w regionie odzyskiwania wybranej tak szybko, jak to możliwe, aby upewnić się, że jest ona dostępna do przywrócenia baz danych dzierżaw.
+ * Ustanów środowisko odzyskiwania obraz odzwierciedlający oryginalną konfigurację puli i bazy danych. 
+ * Umożliwia anulowanie procesu przywracania w środku lotu, jeśli oryginalny region powróci do trybu online.
+ * Włącz dzierżawy szybkiego udostępniania, więc nowej dzierżawy przy dołączaniu można uruchomić ponownie tak szybko, jak to możliwe.
+ * Można zoptymalizować, aby przywrócić dzierżaw w kolejności priorytetów.
+ * Można zoptymalizować uzyskanie dzierżawy w trybie online tak szybko, jak to możliwe, wykonując czynności w sposób równoległy, gdzie jest to praktyczne.
+ * Być odporna na uszkodzenia, ponownego uruchamiania oraz idempotentne.
+ * Wycofywania baz danych do ich oryginalnej regionu z minimalnym wpływem na dzierżaw, po usunięciu awarii.  
 
 > [!NOTE]
-> Aplikacja jest odzyskiwana do sparowanego regionu, regionu, w którym aplikacja jest wdrażana. Aby uzyskać więcej informacji, zobacz [Azure łączyć regionów](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).   
+> Aplikacja jest odzyskiwana na sparowanym regionie regionu, w którym aplikacja jest wdrażana. Aby uzyskać więcej informacji, zobacz [sparowanych regionów platformy Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions).   
 
-W tym samouczku używane funkcje bazy danych SQL Azure i platformy Azure, aby rozwiązać te problemy:
+W tym samouczku używa funkcji usługi Azure SQL Database i platforma Azure, aby rozwiązać te problemy:
 
-* [Szablony usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template), aby zarezerwować wszystkie wymagane pojemności tak szybko jak to możliwe. Szablony usługi Azure Resource Manager służą do udostępniania odbicie lustrzane oryginalnego serwerów i pul elastycznych w regionie odzyskiwania. Oddzielenie serwera i puli są również tworzone dla inicjowania obsługi administracyjnej nowych dzierżaw.
-* [Biblioteka klienta usługi elastycznej bazy danych](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-client-library) (EDCL), można tworzyć i obsługiwać bazy danych wykaz dzierżawy. Rozszerzone catalog zawiera okresowo odświeżyć informacje o konfiguracji puli i bazy danych.
-* [Funkcje odzyskiwania zarządzania niezależnego fragmentu](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-recovery-manager) z EDCL, do obsługi bazy danych lokalizacji wpisów w katalogu podczas odzyskiwania i repatriacji.  
-* [Geograficzne](https://docs.microsoft.com/azure/sql-database/sql-database-disaster-recovery), aby odzyskać bazy danych katalogu i dzierżawy z geograficznie nadmiarowego automatycznie utrzymywana w kopii zapasowej. 
-* [Operacje asynchroniczne przywracania](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations), wysyłane w kolejności priorytetu dzierżawy, są umieszczone w kolejce dla każdej puli przez system i przetwarzane w partiach tak puli nie jest przeciążona. Te operacje mogą zostać anulowane przed lub w trakcie wykonywania, jeśli to konieczne.   
-* [Replikacja geograficzna](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview), aby wycofywania baz danych do oryginalnej regionu po awarii. Brak nie utraty danych i minimalny wpływ na dzierżawcy używania — replikacja geograficzna.
-* [Aliasy programu SQL server DNS](https://docs.microsoft.com/azure/sql-database/dns-alias-overview), aby umożliwić nawiązanie połączenia z katalogiem active, niezależnie od jego lokalizacji procesu synchronizacji katalogu.  
+* [Szablony usługi Azure Resource Manager](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-create-first-template), aby wszystkie potrzebne wydajność rezerwowa w możliwie jak najszybciej. Szablony usługi Azure Resource Manager są używane do obsługi administracyjnej obraz lustrzany oryginalnego serwerów i pul elastycznych w regionie odzyskiwania. Oddzielenie serwera i puli, również są tworzone dla aprowizację nowych dzierżaw.
+* [Biblioteka kliencka elastic Database](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-client-library) EDCL (), aby tworzyć i obsługiwać wykaz baz danych dzierżawy. Wykaz rozszerzonych obejmuje okresowo odświeżane informacje o konfiguracji puli i bazy danych.
+* [Funkcje odzyskiwania zarządzania fragmentami](https://docs.microsoft.com/azure/sql-database/sql-database-elastic-database-recovery-manager) z biblioteki EDCL, aby zachować wpisy lokalizacji bazy danych w katalogu podczas odzyskiwania i repatriacji.  
+* [Przywracanie geograficzne](https://docs.microsoft.com/azure/sql-database/sql-database-disaster-recovery), aby odzyskać bazy danych wykazu i dzierżawy z automatycznego zapewnienia geograficznie nadmiarowych kopii zapasowych. 
+* [Operacje asynchroniczne przywracania](https://docs.microsoft.com/azure/azure-resource-manager/resource-manager-async-operations), wysyłane w kolejności priorytetu dzierżawy, są umieszczane w kolejce dla każdej puli przez system i przetwarzane w partiach, więc puli nie jest przeciążona. Te operacje mogą zostać anulowane, przed lub w trakcie wykonywania, jeśli to konieczne.   
+* [Replikacja geograficzna](https://docs.microsoft.com/azure/sql-database/sql-database-geo-replication-overview), aby wycofywania baz danych do oryginalnej regionu po awarii. Istnieje nie utraty danych i minimalny wpływ na dzierżawy podczas replikacji geograficznej.
+* [Aliasów DNS serwera SQL](https://docs.microsoft.com/azure/sql-database/dns-alias-overview), aby zezwolić procesu synchronizacji katalogu active wykazem niezależnie od jego lokalizacji.  
 
 ## <a name="get-the-disaster-recovery-scripts"></a>Pobierz skrypty odzyskiwania po awarii
 
-Skrypty DR używane w tym samouczku są dostępne w [SaaS biletów Wingtip bazy danych, dla każdego dzierżawcy repozytorium GitHub](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant). Zapoznaj się z [ogólne wskazówki](saas-tenancy-wingtip-app-guidance-tips.md) dla czynności, aby pobrać i odblokować skrypty zarządzania Wingtip biletów.
+Skrypty odzyskiwania po awarii, w tym samouczku używane są dostępne w [SaaS o nazwie Wingtip Tickets bazy danych dla każdego dzierżawcy repozytorium GitHub](https://github.com/Microsoft/WingtipTicketsSaaS-DbPerTenant). Zapoznaj się z [ogólne wskazówki dotyczące](saas-tenancy-wingtip-app-guidance-tips.md) instrukcje pobierania i odblokować Wingtip Tickets skrypty zarządzania.
 
 > [!IMPORTANT]
-> Podobnie jak wszystkie bilety Wingtip zarządzania skrypty skrypty DR są przykładowe jakości i nie powinna być używana w środowisku produkcyjnym.
+> Podobnie jak wszystkie Wingtip Tickets zarządzania skryptów skrypty odzyskiwania po awarii są jakość próbkowania i nie może być używane w środowisku produkcyjnym.
 
-## <a name="review-the-healthy-state-of-the-application"></a>Sprawdź kondycję aplikacji
+## <a name="review-the-healthy-state-of-the-application"></a>Przegląd stanu dobrej kondycji aplikacji
 Przed rozpoczęciem procesu odzyskiwania należy przejrzeć normalnego stanu dobrej kondycji aplikacji.
 
-1. W przeglądarce sieci web Otwórz Centrum zdarzeń Wingtip biletów (http://events.wingtip-dpt.&lt; użytkownika&gt;. trafficmanager.net, Zastąp &lt;użytkownika&gt; z wartością użytkownika danego wdrożenia).
+1. W przeglądarce sieci web Otwórz Centrum zdarzeń o nazwie Wingtip Tickets (http://events.wingtip-dpt.&lt; użytkownika&gt;. trafficmanager.net, Zastąp &lt;użytkownika&gt; wartością użytkownika wdrożenia).
     
-   Przewiń w dół strony i zwróć uwagę, nazwę serwera katalogu i lokalizację w stopce. Lokalizacja jest regionu, w którym aplikacja została wdrożona.    
+   Przewiń do dołu strony i zwróć uwagę, nazwę serwera wykazu i lokalizację w stopce. Lokalizacja jest region, w którym aplikacja została wdrożona.    
 
    > [!TIP]
-   > Umieść kursor myszy nad lokalizacji, aby powiększyć wyświetlania.
+   > Umieść kursor myszy nad lokalizacją, aby powiększyć wyświetlania.
 
-   ![Centrum zdarzeń dobrej kondycji w regionie oryginalnej](media/saas-dbpertenant-dr-geo-restore/events-hub-original-region.png)
+   ![Centrum zdarzeń dobrej kondycji w regionie oryginalny](media/saas-dbpertenant-dr-geo-restore/events-hub-original-region.png)
 
-2. Wybierz dzierżawy Hall porozumieniu Contoso i otwórz jej stronę zdarzeń.
+2. Wybierz dzierżawę firmy Contoso Concert Hall, a następnie otwórz jego stronę zdarzeń.
 
-   W stopce Zwróć uwagę, nazwę serwera dzierżawcy. Lokalizacja jest taka sama jak lokalizacja serwera katalogu.
+   W stopce Zwróć uwagę, nazwę serwera dzierżawcy. Lokalizacja jest taka sama jak lokalizacja serwera wykazu.
 
-   ![Region oryginalnego Hall porozumieniu firmy Contoso](media/saas-dbpertenant-dr-geo-restore/contoso-original-location.png) 
+   ![Firmy Contoso Concert Hall oryginalnego regionu](media/saas-dbpertenant-dr-geo-restore/contoso-original-location.png) 
 
-3. W [portalu Azure](https://portal.azure.com), przejrzyj i otwórz grupę zasobów, w którym aplikacja została wdrożona.
+3. W [witryny Azure portal](https://portal.azure.com), przejrzyj i otwórz grupę zasobów, w którym aplikacja została wdrożona.
 
-   Zwróć uwagę, zasobów i region wdrożone serwery bazy danych SQL i składniki usługi aplikacji.
+   Zwróć uwagę, zasobów i region, wdrożyć składniki usługi aplikacji i serwery usługi SQL Database.
 
-## <a name="sync-the-tenant-configuration-into-the-catalog"></a>Synchronizowanie konfiguracji dzierżawy do katalogu
+## <a name="sync-the-tenant-configuration-into-the-catalog"></a>Synchronizacja z konfiguracją dzierżawy do katalogu
 
-To zadanie służy do uruchamiania procesu synchronizacji konfiguracji serwerów, pule elastyczne i baz danych w katalogu dzierżawcy. Te informacje jest później używane do konfigurowania środowiska odbicie lustrzane w regionie odzyskiwania.
+To zadanie służy do uruchamiania procesu synchronizacji konfiguracji serwerów, pul elastycznych i baz danych do katalogu dzierżawy. Informacja ta jest używany później skonfigurować środowisko odbicie lustrzane w regionie odzyskiwania.
 
 > [!IMPORTANT]
-> Dla uproszczenia procesu synchronizacji i innych odzyskiwania długotrwałe repatriacji procesy zostały wdrożone w te przykłady lokalnego zadania programu PowerShell lub sesji, które Uruchom loginu użytkownika klienta. Tokeny uwierzytelniania wystawiony podczas logowania wygasa po kilku godzinach, a następnie powiedzie zadania. W scenariuszu produkcyjnym procesy długotrwałe powinny zostać wdrożone jako wiarygodnych usług Azure pewnego rodzaju uruchamiania nazwy głównej usługi. Zobacz [użycia programu Azure PowerShell do tworzenia nazwy głównej usługi przy użyciu certyfikatu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal). 
+> Dla uproszczenia procesu synchronizacji i innych odzyskiwania długoterminowych repatriacji procesy są implementowane w tych przykładach jako zadań programu PowerShell lokalnej lub sesji, uruchamianych w ramach swoich danych logowania użytkownika klienta. Tokeny uwierzytelniania wydane po zalogowaniu wygasają po upływie kilku godzin, a zadania, następnie zakończy się niepowodzeniem. W scenariuszu produkcji długotrwałe procesy powinny zostać wdrożone jako niezawodnych usług platformy Azure pewnego rodzaju działających w ramach jednostki usługi. Zobacz [użyciu programu Azure PowerShell utworzyć nazwę główną usługi za pomocą certyfikatu](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-authenticate-service-principal). 
 
-1. W programie PowerShell ISE Otwórz plik Modules\UserConfig.psm1 ...\Learning. Zastąp `<resourcegroup>` i `<user>` w wierszach 10 i 11 o wartości używane w przypadku wdrażania aplikacji. Zapisz plik.
+1. W programie PowerShell ISE Otwórz plik Modules\UserConfig.psm1 ...\Learning. Zastąp `<resourcegroup>` i `<user>` w wierszach, 10 i 11 o wartości podanej podczas wdrażania aplikacji. Zapisz plik.
 
-2. W programie PowerShell ISE Otwórz ...\Learning skryptu ciągłości Modules\Business i Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 po awarii.
+2. Otwórz ...\Learning skryptu Modules\Business ciągłość działalności biznesowej i Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 po awarii w środowisku PowerShell ISE.
 
-    W tym samouczku Uruchom poszczególne scenariusze w tym skrypcie programu PowerShell, dlatego nie zamykaj tego pliku.
+    W ramach tego samouczka możesz uruchamiać scenariusze w tym skrypcie programu PowerShell, więc nie zamykaj tego pliku.
 
-3. Ustaw następujące wartości:
+3. Określ następujące ustawienia:
 
-    $DemoScenario = 1: Uruchom zadanie w tle synchronizowanej serwera dzierżawcy i informacje o konfiguracji puli do katalogu.
+    $DemoScenario = 1: start zadania w tle, synchronizowanej dzierżawy serwera i informacje o konfiguracji puli do katalogu.
 
-4. Aby uruchomić skrypt synchronizacji, wybierz F5. 
+4. Aby uruchomić skrypt synchronizacji, naciśnij klawisz F5. 
 
-    Te informacje jest używana później, aby upewnić się, że recovery tworzy odbicie lustrzane serwerów, pul i baz danych w regionie odzyskiwania.  
+    Te informacje są używane później, aby upewnić się, że odzyskiwanie tworzy obraz lustrzany serwerów, pul i baz danych w regionie odzyskiwania.  
 
     ![Proces synchronizacji](media/saas-dbpertenant-dr-geo-restore/sync-process.png)
 
-Pozostaw okno programu PowerShell działa w tle i kontynuować pozostałej części tego samouczka.
+Pozostaw okno programu PowerShell, uruchomione w tle, a następnie kontynuuj pozostałej części tego samouczka.
 
 > [!NOTE]
-> Proces synchronizacji nawiązuje połączenie z katalogiem za pomocą aliasu DNS. Alias jest modyfikowany podczas przywracania i repatriacji wskaż aktywnego katalogu. Proces synchronizacji będzie zawsze katalogu aktualny i uwzględnia zmiany konfiguracji bazy danych lub puli, wprowadzone w regionie odzyskiwania. Podczas repatriacji zmiany te są stosowane do równoważne zasoby w regionie oryginalnego.
+> Proces synchronizacji łączy do katalogu za pomocą aliasu DNS. Alias jest modyfikowana podczas przywracania i repatriacji, aby wskazywał aktywnego katalogu. Proces synchronizacji katalogu na bieżąco aktualizuje z bazy danych lub puli zmiany konfiguracji wprowadzone w regionie odzyskiwania. Podczas repatriacji zmiany te są stosowane do równoważne zasoby w regionie, oryginalnym.
 
-## <a name="geo-restore-recovery-process-overview"></a>Omówienie procesu odzyskiwania geograficzne
+## <a name="geo-restore-recovery-process-overview"></a>Omówienie procesu odzyskiwania przywracania geograficznego
 
-Proces odzyskiwania geograficzne wdraża aplikację i przywrócenie bazy danych z kopii zapasowych w regionie odzyskiwania.
+Proces odzyskiwania przywracania geograficznego wdraża aplikację i przywrócenie bazy danych z kopii zapasowych w regionie odzyskiwania.
 
 Proces odzyskiwania wykonuje następujące czynności:
 
-1. Powoduje wyłączenie punktu końcowego Menedżera ruchu Azure dla aplikacji sieci web w oryginalnym regionie. Wyłączenie punktu końcowego uniemożliwia użytkownikom łączenie się z aplikacji w nieprawidłowym stanie powinien regionu oryginalnego przejdzie w tryb online podczas odzyskiwania.
+1. Powoduje wyłączenie punktu końcowego usługi Azure Traffic Manager dla aplikacji sieci web w regionie, oryginalnym. Wyłączenie punktu końcowego uniemożliwia użytkownikom połączenie się z aplikacji w nieprawidłowym stanie powinny regionu oryginalnego trybu online podczas odzyskiwania.
 
-2. Przepisy a odzyskiwania katalogu serwera w obszarze odzyskiwania przywraca geograficznie bazy danych katalogu i aktualizuje alias activecatalog, aby wskazywały serwer katalogu przywrócone. Zmiana aliasu katalogu zapewnia, że proces synchronizacji katalogu zawsze synchronizowana z katalogu active.
+2. Przepisy na odzyskiwania baza danych wykazu w katalogu serwera w regionie odzyskiwania, przywracanie geograficzne i aktualizuje alias activecatalog, aby wskazywały serwer wykazu przywróconej. Zmiana aliasu katalogu zapewnia, że proces synchronizacji katalogu zawsze synchronizuje się w katalogu active.
 
-3. Oznacza wszystkie dzierżaw istniejących w wykaz odzyskiwania w trybie offline, aby uniemożliwić dostęp do dzierżawy baz danych, zanim zostaną one przywrócone.
+3. Oznacza wszystkich dzierżaw istniejących w katalogu odzyskiwania w trybie offline, aby uniemożliwić dostęp do baz danych dzierżaw, zanim zostaną one przywrócone.
 
-4. Udostępnia wystąpienie aplikacji w regionie odzyskiwania i konfiguruje się go do korzystania z katalogu przywrócone w tym regionie. Aby zachować czas oczekiwania do minimum, przykładowa aplikacja jest przeznaczona do zawsze połączenia z bazą danych dzierżawy, w tym samym regionie.
+4. Ustanowienie wystąpienia aplikacji w regionie odzyskiwania i konfiguruje go do korzystania z przywróconej katalogu, w tym regionie. Aby zachować czas oczekiwania do minimum, przykładowa aplikacja jest przeznaczona do zawsze łączyć się z bazą danych dzierżawy, w tym samym regionie.
 
-5. Udostępnia serwer i elastyczna pula przydzielania nowych dzierżaw. Tworzenie tych zasobów gwarantuje, że obsługa administracyjna nowi dzierżawcy nie zakłóca odzyskiwania istniejący dzierżawcy.
+5. Inicjuje obsługę serwera i elastycznej puli, w którym są aprowizowane nowych dzierżaw. Tworzenia tych zasobów gwarantuje, że aprowizację nowych dzierżaw nie zakłóca odzyskiwania istniejących dzierżaw.
 
-6. Aktualizuje nowy alias dzierżawy, aby wskazywały serwer dla nowej dzierżawy baz danych w regionie odzyskiwania. Zmiana tego aliasu zapewnia za bazy danych dla dowolnego nowego dzierżawcy w regionie odzyskiwania.
+6. Aktualizuje nowy alias dzierżawy, aby wskazywały serwer dla nowych baz danych dzierżaw w regionie odzyskiwania. Zmiana tego aliasu gwarantuje, że bazy danych dla nowych dzierżawach są aprowizowane w regionie odzyskiwania.
         
-7. Serwery przepisów i pul elastycznych w regionie odzyskiwania do przywrócenia bazy danych dzierżawy. Te serwery i pule są lustrzanego w regionie oryginalnej konfiguracji. Inicjowanie obsługi administracyjnej pul góry rezerwuje zdolności niezbędne do przywrócenia wszystkich baz danych.
+7. Inicjuje obsługę serwerów i pul elastycznych w regionie odzyskiwania do przywrócenia baz danych dzierżaw. Te serwery i pule są lustrzanym konfiguracji w regionie, oryginalnym. Inicjowanie obsługi administracyjnej pule na początku rezerwuje pojemności niezbędne do przywrócenia wszystkich baz danych.
 
-    Awaria w regionie może prowadzić do znaczących wykorzystania zasobów w regionie pary. Jeśli użytkownik korzysta geograficzne do odzyskiwania po awarii, a następnie szybko rezerwacji zasobów jest zalecane. Należy wziąć pod uwagę replikację geograficzną Jeśli bardzo ważne jest odzyskanie aplikacji w określonym regionie. 
+    Awaria w regionie może umieścić znaczne wykorzystanie zasobów w sparowanym regionie. Jeśli użytkownik korzysta funkcja przywracania geograficznego dla odzyskiwania po awarii, a następnie szybko rezerwacji zasobów jest zalecane. Należy wziąć pod uwagę replikację geograficzną jeśli ważne jest odzyskanie aplikacji w określonym regionie. 
 
-8. Umożliwia punktu końcowego Menedżera ruchu dla aplikacji sieci web w regionie odzyskiwania. Włączenie tego punktu końcowego umożliwia aplikacji do obsługi administracyjnej nowych dzierżaw. Na tym etapie nadal w trybie offline to jednak istniejących dzierżawców.
+8. Włącza on punkt końcowy usługi Traffic Manager dla aplikacji sieci web w regionie odzyskiwania. Włączenie tego punktu końcowego umożliwia aplikacjom aprowizowanie nowych dzierżaw. Na tym etapie wciąż w trybie offline to jednak istniejących dzierżawców.
 
-9. Przesyła partie żądania przywrócenia baz danych w kolejności priorytetu. 
+9. Przesyła partie żądania, aby przywrócić bazy danych w kolejności priorytetów. 
 
-    * Partie są zorganizowane tak, Aby baz danych są przywracane jednocześnie we wszystkich pulach.  
+    * Partie są zorganizowane tak, aby bazy danych zostaną przywrócone jednocześnie dla wszystkich pul.  
 
-    * Przywracanie żądań jest przesyłany asynchronicznie, tak aby szybko przesłać i kolejki w celu wykonywania w każdej puli.
+    * Przywracanie żądań jest przesyłany asynchronicznie, dzięki czemu są one przesyłane szybko i w kolejce do wykonania w każdej puli.
 
-    * Ponieważ żądania przywracania są przetwarzane równolegle we wszystkich pul, warto rozpowszechniają ważne dzierżaw wiele pul. 
+    * Ponieważ żądania przywracania są przetwarzane równolegle we wszystkich pulach, to lepiej dystrybuować dzierżawy ważne dla wielu pul. 
 
-10. Monitoruje usługi SQL Database, aby określić przywrócenie bazy danych. Po przywróceniu bazy danych dzierżawy jest oznaczony w katalogu w trybie online, a sumę rowversion dla bazy danych dzierżawy jest rejestrowany. 
+10. Monitoruje usługi SQL Database, aby określić, kiedy są przywracane bazy danych. Po przywróceniu bazy danych dzierżawy jest oznaczony w wykazie w trybie online, a suma rowversion dla bazy danych dzierżawy jest rejestrowany. 
 
-    * Dzierżawy baz danych są dostępne przez aplikację, jak są oznaczone w wykazie online.
+    * Baz danych dzierżawy jest możliwy przez aplikację, tak szybko, jak są oznaczone w trybie online w wykazie.
 
-    * Suma wartości rowversion w bazie danych dzierżawy są przechowywane w katalogu. Suma ta działa jako linii papilarnych, który umożliwia procesu repatriacji, aby określić, czy bazy danych został zaktualizowany w regionie odzyskiwania.       
+    * Suma wartości rowversion w bazie danych dzierżawy jest przechowywany w katalogu. Suma ta działa jako odcisku palca, który umożliwia procesu repatriacji określić, jeśli baza danych została zaktualizowana w regionie odzyskiwania.       
 
-## <a name="run-the-recovery-script"></a>Uruchom skrypt odzyskiwania
+## <a name="run-the-recovery-script"></a>Uruchamianie skryptu odzyskiwania
 
 > [!IMPORTANT]
-> W tym samouczku przywraca baz danych z geograficznie nadmiarowego kopii zapasowych. Chociaż te kopie zapasowe są zwykle dostępne w ciągu 10 minut, może potrwać do godziny. Skrypt wstrzymuje, dopóki nie są one dostępne.
+> W tym samouczku spowoduje przywrócenie bazy danych z geograficznie nadmiarowych kopii zapasowych. Mimo że te kopie zapasowe są zwykle dostępne w ciągu 10 minut, może potrwać do godziny. Skrypt wstrzymuje, dopóki nie są one dostępne.
 
-Załóżmy, że istnieje awaria w regionie, w którym aplikacja jest wdrożona i uruchom skrypt odzyskiwania:
+Załóżmy, że nastąpi awaria w regionie, w którym aplikacja jest wdrożona i uruchom skrypt odzyskiwania:
 
-1. W programie PowerShell ISE ...\Learning skryptu ciągłości Modules\Business i Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 po awarii, należy ustawić następującą wartość:
+1. W środowisku PowerShell ISE ...\Learning skryptu Modules\Business ciągłość działalności biznesowej i Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 po awarii, należy ustawić następującą wartość:
 
-    $DemoScenario = 2: Odzyskiwanie aplikacji do regionu odzyskiwania przez Przywracanie z kopii zapasowej geograficznie nadmiarowy.
+    $DemoScenario = 2: Odzyskiwanie aplikacji w regionie odzyskiwania przez przywrócenie z geograficznie nadmiarowych kopii zapasowych.
 
-2. Aby uruchomić skrypt, wybierz F5.  
+2. Aby uruchomić skrypt, naciśnij klawisz F5.  
 
-    * Skrypt zostanie otwarty w nowym oknie programu PowerShell, a następnie uruchamia zestaw zadań programu PowerShell, które są uruchamiane równolegle. Te zadania przywracania serwerów, pul i baz danych do regionu odzyskiwania.
+    * Skrypt zostanie otwarty w nowym oknie programu PowerShell, a następnie uruchamia zestaw zadań programu PowerShell, które są uruchamiane równolegle. Te zadania przywracania serwerów, pul i baz danych w regionie odzyskiwania.
 
-    * Region odzyskiwania jest sparowanego regionu skojarzonego z region platformy Azure, w której wdrożono aplikację. Aby uzyskać więcej informacji, zobacz [Azure łączyć regionów](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
+    * Region odzyskiwania jest sparowanego regionu skojarzonego z regionu platformy Azure, w których wdrożono aplikację. Aby uzyskać więcej informacji, zobacz [sparowanych regionów platformy Azure](https://docs.microsoft.com/azure/best-practices-availability-paired-regions). 
 
-3. Monitorowanie stanu procesu odzyskiwania, w oknie programu PowerShell.
+3. Monitoruj stan procesu odzyskiwania, w oknie programu PowerShell.
 
     ![Proces odzyskiwania](media/saas-dbpertenant-dr-geo-restore/dr-in-progress.png)
 
 > [!NOTE]
-> Aby zapoznać się z kodu dla zadania odzyskiwania, przejrzyj skryptów programu PowerShell w folderze ...\Learning ciągłości Modules\Business i Recovery\DR-RestoreFromBackup\RecoveryJobs po awarii.
+> Aby poznać kod dla zadania odzyskiwania, należy sprawdzić skryptów programu PowerShell w folderze Modules\Business ciągłość działalności biznesowej i awarii Recovery\DR-RestoreFromBackup\RecoveryJobs ...\Learning.
 
 ## <a name="review-the-application-state-during-recovery"></a>Sprawdź stan aplikacji podczas odzyskiwania
-Gdy punkt końcowy aplikacji jest wyłączone w Menedżerze ruchu, że aplikacja jest niedostępna. Katalog jest przywracany i wszystkich dzierżawców są oznaczone w trybie offline. Punkt końcowy aplikacji w regionie odzyskiwania następnie jest włączona, a aplikacja jest znowu w trybie online. Mimo, że aplikacja jest dostępna, dzierżawcy do momentu przywrócenia ich baz danych są wyświetlane w trybie offline w Centrum zdarzeń. Należy koniecznie Utwórz projekt swojej aplikacji do obsługi baz danych w trybie offline dzierżawy.
+Gdy punkt końcowy aplikacji jest wyłączone w usłudze Traffic Manager, aplikacja jest niedostępna. Katalog jest przywracany i wszystkich dzierżawców są oznaczone w trybie offline. Następnie włączono punkt końcowy aplikacji w regionie odzyskiwania, a aplikacja jest wróci do trybu online. Mimo, że aplikacja jest dostępna, pojawiają się dzierżaw z trybu offline w Centrum zdarzeń, dopóki nie zostaną przywrócone swoich baz danych. Należy tak zaprojektować aplikację do obsługi baz danych dzierżaw w trybie offline.
 
-* Po została odzyskana baza danych katalogu, ale przed dzierżawcy jest znowu w trybie online, Odśwież biletów Wingtip Centrum zdarzeń w przeglądarce sieci web.
+* Po zostało odzyskane bazy danych wykazu, ale przed dzierżawców są wróci do trybu online, Odśwież Centrum zdarzeń Wtp w przeglądarce sieci web.
 
     * W stopce, zwróć uwagę, że nazwa serwera katalogu ma teraz sufiks - odzyskiwania i znajduje się w regionie odzyskiwania.
 
-    * Zwróć uwagę, że dzierżawcami, które nie zostały jeszcze przywrócone została oznaczona jako w trybie offline i nie są można wybierać.   
+    * Należy zauważyć, że dzierżaw, które nie zostały jeszcze przywrócone są oznaczone jako w trybie offline i nie są można wybierać.   
  
     ![Proces odzyskiwania](media/saas-dbpertenant-dr-geo-restore/events-hub-tenants-offline-in-recovery-region.png)    
 
-    * Po otwarciu strony zdarzenia dzierżawy bezpośrednio, gdy dzierżawa jest w trybie offline, zostaje wyświetlona strona dzierżawy powiadomienie w trybie offline. Na przykład, jeśli Hall porozumieniu Contoso jest w trybie offline, spróbuj otworzyć http://events.wingtip-dpt.&lt; użytkownika&gt;.trafficmanager.net/contosoconcerthall.
+    * Po otwarciu strony zdarzenia dzierżawy bezpośrednio dzierżawy jest w trybie offline, strony wyświetli powiadomienie w trybie offline dzierżawy. Na przykład, jeśli firmy Contoso Concert Hall jest w trybie offline, próby otwarcia http://events.wingtip-dpt.&lt; użytkownika&gt;.trafficmanager.net/contosoconcerthall.
 
     ![Proces odzyskiwania](media/saas-dbpertenant-dr-geo-restore/dr-in-progress-offline-contosoconcerthall.png)
 
-## <a name="provision-a-new-tenant-in-the-recovery-region"></a>Udostępnianie nowej dzierżawy w regionie odzyskiwania
-Nawet przed dzierżawy bazy danych zostaną przywrócone, można udostępnić nowych dzierżaw w regionie odzyskiwania. Nowe dzierżawy bazy danych udostępniane w regionie odzyskiwania są zwrócony do kraju macierzystego z odzyskanej bazy danych później.   
+## <a name="provision-a-new-tenant-in-the-recovery-region"></a>Aprowizacja nowej dzierżawy w regionie odzyskiwania
+Nawet w przypadku, zanim zostaną przywrócone baz danych dzierżaw, można udostępnić nowych dzierżaw w regionie odzyskiwania. Nowe aprowizowane w regionie odzyskiwania baz danych dzierżawy są zwrócony do kraju macierzystego odzyskanej bazy danych później.   
 
-1. W programie PowerShell ISE w skrypcie ciągłości Modules\Business i Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 po awarii ...\Learning, Ustaw następującą właściwość:
+1. W środowisku PowerShell ISE w skrypcie Modules\Business ciągłość działalności biznesowej i awarii Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 ...\Learning, Ustaw następującą właściwość:
 
-    $DemoScenario = 3: obsługi administracyjnej nowej dzierżawy w regionie odzyskiwania.
+    $DemoScenario = 3: aprowizacja nowej dzierżawy w regionie odzyskiwania.
 
-2. Aby uruchomić skrypt, wybierz F5.
+2. Aby uruchomić skrypt, naciśnij klawisz F5.
 
-3. Strona zdarzenia Hawthorn Hall otwiera w przeglądarce po zakończeniu obsługi. 
+3. Hawthorn Hall zdarzeń zostanie otwarta strona w przeglądarce po zakończeniu aprowizacji. 
 
-    Zwróć uwagę, że Hawthorn Hall baza danych znajduje się w regionie odzyskiwania.
+    Należy zauważyć, że Hawthorn Hall baza danych znajduje się w regionie odzyskiwania.
 
-    ![Hall hawthorn udostępniane w regionie odzyskiwania](media/saas-dbpertenant-dr-geo-restore/hawthorn-hall-provisioned-in-recovery-region.png)
+    ![Hall hawthorn aprowizowane w regionie odzyskiwania](media/saas-dbpertenant-dr-geo-restore/hawthorn-hall-provisioned-in-recovery-region.png)
 
-4. W przeglądarce Odśwież stronę Centrum zdarzeń Wingtip biletów, tak aby Hawthorn Hall zawarte w temacie. 
+4. W przeglądarce Odśwież na stronie Centrum zdarzeń Wingtip Tickets, aby zobaczyć, że uwzględnione Hawthorn Hall. 
 
-    Alokacji Hawthorn Hall bez oczekiwania na innych dzierżawców do przywrócenia innych dzierżawców może nadal być w trybie offline.
+    Aprowizacji Hawthorn Hall bez oczekiwania na innych dzierżawców można przywrócić pozostałych dzierżaw mogą nadal być w trybie offline.
 
 ## <a name="review-the-recovered-state-of-the-application"></a>Przejrzyj odzyskane stan aplikacji
 
-Po zakończeniu procesu odzyskiwania aplikacji i wszystkich dzierżaw są w pełni funkcjonalne w regionie odzyskiwania. 
+Po zakończeniu procesu odzyskiwania wszystkich dzierżaw i aplikacji są w pełni funkcjonalne w regionie odzyskiwania. 
 
-1. Po wyświetlana w oknie konsoli programu PowerShell oznacza, że wszystkie dzierżaw są odzyskiwane, Odśwież Centrum zdarzeń. 
+1. Po wyświetlana w oknie konsoli programu PowerShell oznacza, że wszystkie dzierżawy mogą zostać odzyskane, Odśwież Centrum zdarzeń. 
 
-    Online, łącznie z nowym dzierżawcą Hawthorn Hall wyświetlane wszystkich dzierżaw.
+    Wszystkie dzierżawy są wyświetlane online, w tym nową dzierżawę, Hawthorn Hall.
 
     ![odzyskane i nowych dzierżaw w Centrum zdarzeń](media/saas-dbpertenant-dr-geo-restore/events-hub-with-hawthorn-hall.png)
 
-2. Kliknij Hall porozumieniu Contoso i otwórz jej stronę zdarzenia. 
+2. Kliknij przycisk firmy Contoso Concert Hall, a następnie otwórz jego stronę zdarzenia. 
 
     W stopce Zwróć uwagę, że baza danych znajduje się na serwerze odzyskiwania znajduje się w regionie odzyskiwania.
 
     ![Firmy Contoso w regionie odzyskiwania](media/saas-dbpertenant-dr-geo-restore/contoso-recovery-location.png)
 
-3. W [portalu Azure](https://portal.azure.com), Otwórz listę grup zasobów.  
+3. W [witryny Azure portal](https://portal.azure.com), Otwórz listę grup zasobów.  
 
-    Zwróć uwagę, grupy zasobów, która została wdrożona, a także grupy zasobów odzyskiwania, z sufiksem - odzyskiwania. Grupa zasobów odzyskiwania zawiera wszystkie zasoby utworzone podczas procesu odzyskiwania oraz nowe zasoby utworzone podczas awarii. 
+    Zwróć uwagę, grupy zasobów, która została wdrożona, a także zasobów odzyskiwania konto należy do grupy przy użyciu sufiksu - odzyskiwania. Grupa zasobów odzyskiwania zawiera wszystkie zasoby utworzone w procesie odzyskiwania oraz nowych zasobów tworzonych podczas awarii. 
 
-4. Otwórz grupę zasobów, odzyskiwania i zwróć uwagę, następujące elementy:
+4. Otwórz grupę zasobów odzyskiwania i zwróć uwagę, następujące elementy:
 
-    * Wersje odzyskiwania serwerów wykazu i tenants1 z sufiksem - odzyskiwania. Przywrócony katalogu i dzierżawcy bazy danych na tych serwerach wszystkie mają nazw używanych w oryginalnym regionie.
+    * Wersje odzyskiwania serwerów wykazu i tenants1 sufiksem odzyskiwania. Przywrócona wykazu i dzierżawy bazy danych na tych serwerach wszystkie mają nazwy używane w regionie, oryginalnym.
 
-    * Tenants2-dpt -&lt;użytkownika&gt;— odzyskiwanie programu SQL server. Ten serwer jest używany do inicjowania obsługi administracyjnej nowych dzierżaw podczas awarii.
+    * Tenants2-dpt -&lt;użytkownika&gt;— odzyskiwanie programu SQL server. Ten serwer jest używany do aprowizacji nowych dzierżaw w czasie awarii.
 
-    * Zdarzenia o nazwie usługi aplikacji — wingtip-dpt -&lt;recoveryregion&gt;-&lt;użytkownika&gt;, który jest wystąpienie odzyskiwania aplikacji zdarzenia.
+    * Usługi app service o nazwie zdarzenia-wingtip-dpt -&lt;recoveryregion&gt;-&lt;użytkownika&gt;, czyli wystąpienie odzyskiwania aplikacji zdarzeń.
 
     ![Zasoby firmy Contoso w regionie odzyskiwania](media/saas-dbpertenant-dr-geo-restore/resources-in-recovery-region.png) 
     
-5. Otwórz tenants2-dpt -&lt;użytkownika&gt;— odzyskiwanie programu SQL server. Zwróć uwagę, że zawiera on hawthornhall bazy danych i Pool1 puli elastycznej. Baza danych hawthornhall jest skonfigurowana jako elastycznej bazy danych w puli elastycznej Pool1.
+5. Otwórz tenants2-dpt -&lt;użytkownika&gt;— odzyskiwanie programu SQL server. Należy zauważyć, że zawiera on hawthornhall bazy danych i elastycznej puli Pool1. Hawthornhall bazy danych jest skonfigurowana jako elastycznej bazy danych w elastycznej puli Pool1.
 
-## <a name="change-the-tenant-data"></a>Zmień dane dzierżawy 
-W tym zadaniu zaktualizuj jednej dzierżawy przywróconej bazy danych. Kopie procesu repatriacji przywrócić bazy danych, które zostały zmienione w regionie oryginalnego. 
+## <a name="change-the-tenant-data"></a>Zmiana danych dzierżawy 
+W tym zadaniu należy zaktualizować jednej z baz danych dzierżawy przywrócona. Kopiuje procesu repatriacji przywrócić bazy danych, które zostały zmienione w regionie oryginalnego. 
 
-1. W przeglądarce Znajdź na liście zdarzeń dla Hall porozumieniu firmy Contoso, przewijać zdarzenia i zwróć uwagę, ostatnie zdarzenie poważnie Strauss.
+1. W przeglądarce Znajdź na liście zdarzeń dla firmy Contoso Concert Hall, przewijać zdarzenia i zwróć uwagę, ostatnie zdarzenie Strauss naszych użytkowników bardzo poważnie.
 
-2. W programie PowerShell ISE ...\Learning skryptu ciągłości Modules\Business i Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 po awarii, należy ustawić następującą wartość:
+2. W środowisku PowerShell ISE ...\Learning skryptu Modules\Business ciągłość działalności biznesowej i Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 po awarii, należy ustawić następującą wartość:
 
-    $DemoScenario = 4: usuwanie zdarzenia dzierżawy w regionie odzyskiwania.
+    $DemoScenario = 4: Usuń zdarzenie z dzierżawy w regionie odzyskiwania.
 
-3. Można wykonać skryptu, wybierz F5.
+3. Aby wykonać skrypt, naciśnij klawisz F5.
 
-4. Odśwież stronę zdarzenia Hall porozumieniu Contoso (http://events.wingtip-dpt.&lt; użytkownika&gt;.trafficmanager.net/contosoconcerthall) i zwróć uwagę, Brak zdarzeń poważnie Strauss.
+4. Odśwież stronę zdarzenia firmy Contoso Concert Hall (http://events.wingtip-dpt.&lt; użytkownika&gt;.trafficmanager.net/contosoconcerthall) i zwróć uwagę, Brak zdarzeń Strauss naszych użytkowników bardzo poważnie.
 
-W tym momencie w samouczku odzyskano aplikacji, która jest teraz uruchomiona w regionie odzyskiwania. Zostały udostępnione nowej dzierżawy w regionie odzyskiwania i modyfikować danych przywróconej dzierżaw.  
+W tym momencie w tym samouczku zostały odzyskane aplikację, która działa teraz w regionie odzyskiwania. Masz nową dzierżawę w regionie odzyskiwania i zmodyfikowane dane jednego z przywróconej dzierżaw.  
 
 > [!NOTE]
-> Innych samouczków w próbce nie są przeznaczone do uruchamiania aplikacji w stanie odzyskiwania. Jeśli chcesz zapoznać się z innych samouczków, należy najpierw wycofywania aplikacji.
+> Inne samouczki w przykładzie nie są przeznaczone do uruchamiania aplikacji w stanie odzyskiwania. Jeśli chcesz zapoznać się z innych samouczków, należy najpierw wycofywania aplikacji.
 
 ## <a name="repatriation-process-overview"></a>Omówienie procesu repatriacji
 
-Proces repatriacji aplikacji i jej baz danych do jej oryginalnej regionu zostanie przywrócona po usunięciu awarii.
+Proces repatriacji aplikacji i jego baz danych do jej oryginalnej regionu zostanie przywrócona po usunięciu awarii.
 
-![Repatriacji geograficzne](media/saas-dbpertenant-dr-geo-restore/geo-restore-repatriation.png) 
+![Przywracanie geograficzne repatriacji](media/saas-dbpertenant-dr-geo-restore/geo-restore-repatriation.png) 
 
 Proces:
 
-1. Zatrzymuje wszystkie działania trwającą przywracania i anuluje wszystkie oczekujące lub locie bazy danych żądania przywracania.
+1. Zatrzymuje dowolne działanie trwającą przywracania i anuluje wszystkie żądania przywracania zaległe lub aktywne bazy danych.
 
-2. Uaktywnia ponownie w oryginalnym region dzierżawy baz danych, które nie zostały zmienione od momentu awarii. Te bazy danych należą te nie jest jeszcze przywrócona i te odzyskane, ale nie można zmienić później. Ponownie uaktywnione baz danych są dokładnie ostatnio uzyskiwał dzierżawcom.
+2. Ponownie uaktywnia te błędy oryginalnego regionu dzierżawy baz danych, które nie zostały zmienione od czasu tej awarii. Te bazy danych obejmują osobami nie jest jeszcze przywrócona i te odzyskana, lecz nie można zmienić później. Ponownie uaktywnione baz danych są dokładnie ostatnio uzyskiwał dzierżawcom.
 
-3. Inicjuje odbicie lustrzane puli serwerem i elastyczne nowej dzierżawy w oryginalnym regionie. Po zakończeniu tej akcji nowy alias dzierżawy zostało zaktualizowane do punktu z tym serwerem. Aktualizacja aliasu powoduje, że nowe dołączania dzierżawy w regionie oryginalnym zamiast region odzyskiwania.
+3. Aprowizuje obraz lustrzany nowej dzierżawy serwera i elastycznej puli w regionie, oryginalnym. Po wykonaniu tej akcji nowy alias dzierżawy jest poinformowani o tym serwerze. Aktualizacja aliasu powoduje, że nowe dołączanie dzierżawy nastąpi w oryginalnej regionie zamiast w regionie odzyskiwania.
 
-3. Używa — replikacja geograficzna, aby przenieść katalogu do oryginalnego region z regionu odzyskiwania.
+3. Używa replikacji geograficznej, aby przenieść katalogu do oryginalnego regionu w regionie odzyskiwania.
 
-4. Konfigurowanie puli aktualizacji w regionie oryginalnej, aby były zgodne ze zmianami, które zostały wprowadzone w regionie odzyskiwania podczas awarii.
+4. Aktualizuje konfigurację puli w regionie, oryginalnym, aby były zgodne ze zmianami, które zostały wprowadzone w regionie odzyskiwania podczas awarii.
 
-5. Tworzy wymagane serwery i pule host żadnych nowych baz danych utworzonych podczas awarii.
+5. Tworzy wymagane serwery oraz pul, aby hostować żadnych nowych baz danych utworzonych podczas awarii.
 
-6. Używa — replikacja geograficzna do dnia wszystkich nowych dzierżawy bazy danych udostępniane w czasie awarii i wycofywania przywrócić dzierżawy, które są wykonywane po przywróceniu baz danych, które zostały zaktualizowane. 
+6. Używa wycofywania, przywrócić wielodostępne wykonywane po przywróceniu bazy danych, które zostały zaktualizowane i wszystkich nowych baz danych dzierżaw wykorzystanych podczas awarii replikacji geograficznej. 
 
 7. Czyści zasoby utworzone w regionie odzyskiwania podczas procesu przywracania.
 
-Aby ograniczyć liczbę baz danych dzierżawy, które muszą zostać zwrócony do kraju macierzystego, niezwłocznie są wykonywane kroki od 1 do 3.  
+Aby ograniczyć liczbę baz danych dzierżaw, które muszą zostać zwrócony do kraju macierzystego, niezwłocznie są wykonywane kroki od 1 do 3.  
 
-Krok 4 odbywa się tylko, jeśli katalog w regionie odzyskiwania został zmodyfikowany podczas awarii. Katalog jest aktualizowana, jeśli są tworzone nowe dzierżawcy lub żadnej konfiguracji bazy danych lub pula zostanie zmieniona w regionie odzyskiwania.
+Krok 4 odbywa się tylko, jeśli katalog w regionie odzyskiwania został zmodyfikowany podczas awarii. Katalog jest aktualizowana w przypadku tworzenia nowych dzierżaw, lub jeśli dowolna Konfiguracja bazy danych lub puli zostaje zmieniony w regionie odzyskiwania.
 
-Jest ważne, czy krok 7 powoduje zakłócenia minimalnego dzierżawcom i nie zostały utracone żadne dane. Na osiągnięcie tego celu, proces używa replikacji geograficznej.
+Jest ważne, czy krok 7 powoduje, że minimalnym zakłóceniu dzierżaw i zostaną utracone żadne dane. Aby osiągnąć ten cel, proces korzysta z replikacji geograficznej.
 
-Przed każdą bazę danych replikacją geograficzną, odpowiednia baza danych w oryginalnej region jest usuwany. Bazy danych w regionie odzyskiwania jest następnie replikacją geograficzną, Tworzenie repliki pomocniczej w oryginalnym regionie. Po zakończeniu replikacji dzierżawcy jest oznaczony jako w trybie offline w katalogu, co spowoduje przerwanie wszystkie połączenia z bazą danych w regionie odzyskiwania. Bazy danych jest następnie Failover, powoduje wszelkie oczekujące transakcji do przetwarzania na serwerze pomocniczym, więc żadne dane nie zostały utracone. 
+Przed replikacją geograficzną każda baza danych bazy danych w regionie, oryginalnym został usunięty. Bazy danych w regionie odzyskiwania jest replikowana geograficznie, tworząc replikę pomocniczą w regionie, oryginalnym. Po zakończeniu replikacji dzierżawy jest oznaczony jako w trybie offline w katalogu, który przerywa wszystkie połączenia z bazą danych w regionie odzyskiwania. Baza danych jest następnie przełączone w tryb failover, powodując wszystkie oczekujące transakcje do przetworzenia na pomocniczym, więc żadne dane nie zostaną utracone. 
 
-W tryb failover są wycofywane ról bazy danych. Pomocniczy w regionie oryginalnego staje się podstawowej bazy danych do odczytu / zapisu, a bazy danych w regionie odzyskiwania staje się pomocniczego tylko do odczytu. Wpis dzierżawy w katalogu jest aktualizowana w celu odwołania w regionie oryginalnej bazy danych, a dzierżawcy jest oznaczony w trybie online. W tym momencie repatriacji bazy danych zostało ukończone. 
+W trybie failover role bazy danych zostały cofnięte. Pomocniczy w regionie, oryginalnym staje się podstawowej bazy danych odczytu i zapisu, a bazy danych w regionie odzyskiwania staje się pomocniczą tylko do odczytu. Wpis dzierżawy w wykazie zostanie zaktualizowany i będzie odwoływać się do bazy danych w regionie, oryginalnym i dzierżawy jest oznaczony w trybie online. W tym momencie repatriacji bazy danych zostało ukończone. 
 
-Aplikacje powinny być zapisywane z logiką ponów próbę, aby upewnić się, że łączą się ponownie automatycznie podczas połączenia są uszkodzone. Jeśli korzystają katalogu do broker ponowne połączenie łączą się z repatriated bazy danych w oryginalnej regionie. Mimo że często nie jest wystąpieniem krótki rozłączenia, możesz wybrać wycofywania baz danych poza godzinami pracy.
+Aplikacje powinny być zapisywane z logikę ponawiania próby, aby upewnić się, że łączą się ponownie automatycznie podczas połączenia zostają przerwane. Jeśli korzystają z katalogu brokera ponowne łączenie, łączą się z repatriated bazy danych w regionie, oryginalnym. Mimo że krótki rozłączenia jest często nie zauważyć, że można wycofywania bazy danych poza godzinami.
 
-Po zwrócony do bazy danych jest kraju macierzystego, dodatkowej bazy danych w regionie odzyskiwania mogą zostać usunięte. Bazy danych w oryginalnej regionie wykorzystuje ponownie przywracaniem geograficznym ochrony odzyskiwania po awarii.
+Po zwrócony do bazy danych jest kraju macierzystego, pomocniczej bazy danych w regionie odzyskiwania mogą zostać usunięte. Bazy danych w regionie, oryginalnym wykorzystuje ponownie funkcja przywracania geograficznego ochrony odzyskiwania po awarii.
 
-W kroku 8 zasobów w regionie odzyskiwania, w tym serwerów odzyskiwania oraz pule, są usuwane.
+W kroku 8 zasobów w regionie odzyskiwania, w tym na serwerach odzyskiwania oraz pule i są usuwane.
 
 ## <a name="run-the-repatriation-script"></a>Uruchom skrypt repatriacji
-Teraz załóżmy awarii jest rozwiązany i uruchom skrypt repatriacji.
+Wyobraźmy sobie awarii jest rozwiązany i uruchom skrypt repatriacji.
 
-Jeśli samouczka zostały wykonane, skrypt natychmiast uaktywnia ponownie klub Jazz Fabrikam i Dojo dereń w regionie oryginalnego ponieważ są one bez zmian. Repatriates następnie nowej dzierżawy Hawthorn Hall i Hall porozumieniu firmy Contoso, ponieważ został on zmodyfikowany. Skrypt repatriates również katalog, który został zaktualizowany po Hawthorn Hall zainicjowano obsługę administracyjną.
+Po wykonaniu tego samouczka skryptu natychmiast ponownie uaktywnia te błędy Fabrikam Jazz Club i Dojo dereń w regionie, oryginalnym ponieważ są one bez zmian. Repatriates następnie nowej dzierżawy Hawthorn Hall i miejsca Contoso Concert Hall, ponieważ została zmodyfikowana. Skrypt repatriates również katalog, który został zaktualizowany, gdy Hawthorn Hall została aprowizowana.
   
-1. W programie PowerShell ISE w ...\Learning ciągłości Modules\Business i Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 po awarii skryptu Sprawdź procesu synchronizacji katalogu nadal działa w jego wystąpienia. Jeśli to konieczne, uruchom go ponownie, ustawiając:
+1. W środowisku ISE programu PowerShell w ...\Learning skryptu Modules\Business ciągłość działalności biznesowej i Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 po awarii Sprawdź, czy Proces synchronizacji katalogu nadal działa w jego wystąpienia. Jeśli to konieczne, uruchom go ponownie, ustawiając:
 
-    $DemoScenario = 1: Rozpocznij synchronizowanie serwera dzierżawy, puli i informacje o konfiguracji bazy danych do katalogu.
+    $DemoScenario = 1: rozpocząć synchronizowanie z serwerem dzierżaw, puli i informacje o konfiguracji bazy danych do katalogu.
 
-    Aby uruchomić skrypt, wybierz F5.
+    Aby uruchomić skrypt, naciśnij klawisz F5.
 
-2.  Następnie można uruchomić procesu repatriacji, należy ustawić:
+2.  Następnie można uruchomić procesu repatriacji, ustaw:
 
-    $DemoScenario = 5: wycofywania aplikacji w jego oryginalnej region.
+    $DemoScenario = 5: wycofywania aplikacji w jego oryginalnym region.
 
-    Aby uruchomić skrypt odzyskiwania w nowym oknie programu PowerShell, wybierz F5. Repatriacji może zająć kilka minut i mogą być monitorowane w oknie programu PowerShell.
+    Aby uruchomić skryptu odzyskiwania w nowym oknie programu PowerShell, naciśnij klawisz F5. Repatriacji w ciągu kilku minut i mogą być monitorowane w oknie programu PowerShell.
 
-3. Skrypt jest uruchomiona, Odśwież stronę Centrum zdarzeń (http://events.wingtip-dpt.&lt; użytkownika&gt;. trafficmanager.net).
+3. Po uruchomieniu skryptu, Odśwież stronę Centrum zdarzeń (http://events.wingtip-dpt.&lt; użytkownika&gt;. trafficmanager.net).
 
-    Zwróć uwagę, że wszystkie dzierżaw są online i jest dostępny w trakcie tego procesu.
+    Należy zauważyć, że wszystkie dzierżawy są online i jest dostępny w trakcie tego procesu.
 
-4. Wybierz klub Jazz firmy Fabrikam, aby go otworzyć. Jeśli nie zmodyfikujesz tej dzierżawy zawiadomienie stopce, czy serwer jest już przywrócone na oryginalnym serwerze.
+4. Wybierz Fabrikam Jazz Club, aby go otworzyć. Jeśli nie zmodyfikujesz tą dzierżawą, powiadomienia w stopce, czy serwer jest już przywrócone na oryginalnym serwerze.
 
-5. Otwórz lub Odśwież stronę zdarzenia Hall porozumieniu Contoso. Zwróć uwagę, ze stopki, początkowo bazy danych jest nadal na serwerze - odzyskiwania. 
+5. Otwórz lub Odśwież stronę firmy Contoso Concert Hall zdarzenia. Należy zauważyć, ze stopki, początkowo bazy danych jest nadal na serwerze — odzyskiwania. 
 
-6. Odśwież po zakończeniu procesu repatriacji strony zdarzenia Hall porozumieniu Contoso i zwróć uwagę, że baza danych jest teraz w danym regionie oryginalnego.
+6. Odśwież stronę wydarzenia firmy Contoso Concert Hall, po zakończeniu procesu repatriacji i zwróć uwagę, że baza danych jest teraz w Twoim regionie oryginalnej.
 
-7. Ponownie Odśwież Centrum zdarzeń, a następnie otwórz Hawthorn Hall. Należy zauważyć, że jego bazy danych również znajduje się w regionie oryginalnego. 
+7. Ponownie Odśwież Centrum zdarzeń, a następnie otwórz Hawthorn Hall. Należy zauważyć, że jego bazy danych znajdują się również w regionie, oryginalnym. 
 
-## <a name="clean-up-recovery-region-resources-after-repatriation"></a>Oczyszczanie zasobów region odzyskiwania po repatriacji
-Po zakończeniu repatriacji jest bezpiecznie usunąć zasoby w regionie odzyskiwania. 
+## <a name="clean-up-recovery-region-resources-after-repatriation"></a>Oczyszczanie zasobów regionu odzyskiwania po repatriacji
+Po zakończeniu repatriacji jest bezpieczne usunąć zasoby w regionie odzyskiwania. 
 
 > [!IMPORTANT]
-> Te zasoby szybko, aby zatrzymać wszystkie rozliczeń dla nich zostaną usunięte.
+> Usunięcie tych zasobów, niezwłocznie po to, aby zatrzymać wszystkie rozliczenia dla nich.
 
-Proces przywracania tworzy wszystkie zasoby odzyskiwania w grupie zasobów odzyskiwania. Procesu oczyszczania usuwa tej grupy zasobów i wszystkie odwołania do zasobów z katalogu. 
+Proces przywracania tworzy recovery zasoby w grupie zasobów odzyskiwania. Proces oczyszczania usuwa tę grupę zasobów i wszystkie odwołania do zasobów z wykazu. 
 
-1. W programie PowerShell ISE w skrypcie ciągłości Modules\Business i Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 po awarii ...\Learning, ustaw:
+1. W środowisku PowerShell ISE w skrypcie Modules\Business ciągłość działalności biznesowej i awarii Recovery\DR-RestoreFromBackup\Demo-RestoreFromBackup.ps1 ...\Learning, ustaw:
     
-    $DemoScenario = 6: przestarzałe zasoby zostaną usunięte z regionu odzyskiwania.
+    $DemoScenario = 6: usuwanie przestarzałych zasobów w regionie odzyskiwania.
 
-2. Aby uruchomić skrypt, wybierz F5.
+2. Aby uruchomić skrypt, naciśnij klawisz F5.
 
-Czyszczenie skryptów, aplikacji po wstecz gdzie jego uruchomienia. W tym momencie możesz ponownie uruchomić skrypt lub wypróbować inne samouczki.
+Czyszczenie skryptów, aplikacji po ponownie gdzie jego uruchomienia. W tym momencie możesz ponownie uruchomić skrypt lub wypróbować inne samouczki.
 
-## <a name="designing-the-application-to-ensure-that-the-app-and-the-database-are-co-located"></a>Projektowanie aplikacji w celu zapewnienia wspólnie bazy danych i aplikacji 
-Aplikacja jest przeznaczona do zawsze łączyć się z wystąpieniem, w tym samym regionie co dzierżawcy w bazie danych. W tym projekcie zmniejsza opóźnienia między aplikacją a bazy danych. Tego rodzaju optymalizacji przyjęto założenie, że interakcji aplikacji w bazie danych jest chattier niż interakcji aplikacji użytkownika.  
+## <a name="designing-the-application-to-ensure-that-the-app-and-the-database-are-co-located"></a>Projektowanie aplikacji, aby upewnić się, że aplikacja i bazy danych wspólnie 
+Aplikacja jest przeznaczona do zawsze łączyć się z wystąpienia w tym samym regionie co baza danych dzierżawy. Ten projekt zmniejsza opóźnienie między aplikacją a bazą danych. Tego rodzaju optymalizacji przyjęto założenie, że interakcji aplikacji w bazie danych jest chattier niż interakcji aplikacji przez użytkownika.  
 
-Bazy danych dzierżawy może było ich rozmieszczenie odzyskiwania i regiony oryginalnego przez pewien czas podczas repatriacji. Dla każdej bazy danych aplikacji wyszukuje regionu, w którym baza danych znajduje się w sposób wyszukiwania DNS dla nazwy serwera dzierżawy. W bazie danych SQL nazwa serwera jest alias. Nazwa aliasu serwera zawiera nazwę regionu. Jeśli aplikacja nie jest w tym samym regionie co baza danych, przekierowuje do wystąpienia, w tym samym regionie co serwer bazy danych. Przekierowywanie do wystąpienia, w tym samym regionie co baza danych zmniejsza opóźnienia między bazy danych i aplikacji.  
+Baz danych dzierżawy mogą znajdować się w odzyskiwania oraz regiony oryginalnego przez pewien czas podczas repatriacji. Dla każdej bazy danych aplikacja wyszukuje region, w którym znajduje się bazy danych, wykonując wyszukiwanie DNS, nazwę serwera dzierżawy. W bazie danych SQL nazwa serwera jest aliasem. Nazwa serwera aliasu zawiera nazwę regionu. Jeśli aplikacja nie znajduje się w tym samym regionie co baza danych, zostanie przekierowany do wystąpienia w tym samym regionie co serwer bazy danych. Trwa przekierowywanie do wystąpienia w tym samym regionie co baza danych minimalizuje opóźnienia między aplikacją a bazą danych.  
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 > [!div class="checklist"]
 
->* Korzystając z wykazu dzierżawy do przechowywania informacji o konfiguracji okresowo odświeżane, dzięki czemu środowisko odzyskiwania odbicie lustrzane ma zostać utworzony w innym regionie.
->* Odzyskiwać bazy danych Azure SQL w regionie odzyskiwania przy użyciu przywracaniem geograficznym.
->* Zaktualizuj katalog dzierżawy, aby odzwierciedlić lokalizacje bazy danych przywróconej dzierżawy. 
->* Użyj aliasu DNS, aby umożliwić nawiązanie połączenia z katalogiem dzierżawy w całym bez ponownej konfiguracji aplikacji.
->* Replikacja geograficzna umożliwia wycofywania odzyskanej bazy danych do ich oryginalnej regionu po awarii.
+>* Używać katalogu dzierżawy do przechowywania informacji o konfiguracji okresowo odświeżane, co pozwala odbicie lustrzane środowisko odzyskiwania do utworzenia w innym regionie.
+>* Odzyskiwanie bazy danych Azure SQL w regionie odzyskiwania przy użyciu przywracania geograficznego.
+>* Zaktualizuj wykaz dzierżaw w celu odzwierciedlenia dzierżawy przywróconej bazy danych lokalizacji. 
+>* Użyj aliasu DNS, aby połączyć się z całym wykaz dzierżaw, bez ponownej konfiguracji aplikacji.
+>* Replikacja geograficzna umożliwia wycofywania odzyskanej bazy danych do ich oryginalnej regionu po usunięciu awarii.
 
-Spróbuj [odzyskiwania po awarii dla wielodostępnych aplikacji SaaS przy użyciu replikacji z bazy danych dla georeplikacji](saas-dbpertenant-dr-geo-replication.md) samouczkiem, aby dowiedzieć się, jak na potrzeby znacznie ograniczyć czas potrzebny do odzyskania dużych aplikacji wielodostępnym — replikacja geograficzna.
+Spróbuj [odzyskiwania po awarii dla wielodostępnych aplikacji SaaS przy użyciu replikacji geograficznej bazy danych](saas-dbpertenant-dr-geo-replication.md) samouczka, aby dowiedzieć się, jak znacznie skrócić czas potrzebny do odzyskania na dużą skalę aplikacji wielodostępnej za pomocą replikacji geograficznej.
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
-[Dodatkowe samouczki, które zależą od aplikacji Wingtip SaaS](https://docs.microsoft.com/azure/sql-database/sql-database-wtp-overview#sql-database-wingtip-saas-tutorials)
+[Dodatkowe samouczki nawiązujące do aplikacji Wingtip SaaS](https://docs.microsoft.com/azure/sql-database/sql-database-wtp-overview#sql-database-wingtip-saas-tutorials)

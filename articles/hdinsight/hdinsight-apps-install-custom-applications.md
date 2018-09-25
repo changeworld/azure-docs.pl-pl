@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: 9df3b20cd72236d7001aac94bae302b5a6f9eb8d
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 5e3194b856766502e4cc8c68ffa4bb936634adfa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110576"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983144"
 ---
 # <a name="install-custom-hadoop-applications-on-azure-hdinsight"></a>Instalowanie niestandardowych aplikacji platformy Hadoop w usłudze Azure HDInsight
 
@@ -66,7 +66,7 @@ Pliki potrzebne do wdrożenia tej aplikacji (Hue):
     Ten przycisk otwiera szablon usługi Resource Manager w witrynie Azure Portal.  Szablon usługi Resource Manager znajduje się w [ https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json ](https://hditutorialdata.blob.core.windows.net/hdinsightapps/create-linux-based-hadoop-cluster-in-hdinsight.json).  Aby dowiedzieć się, jak napisać ten szablon usługi Resource Manager, zobacz [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: instalowanie aplikacji usługi HDInsight).
 2. Postępuj zgodnie z instrukcjami, aby utworzyć klaster i zainstalować aplikację Hue. Aby uzyskać więcej informacji na temat tworzenia klastrów usługi HDInsight, zobacz temat [Tworzenie opartych na systemie Linux klastrów Hadoop w usłudze HDInsight](hdinsight-hadoop-provision-linux-clusters.md).
 
-Oprócz witryny Azure Portal do wywołania szablonów usługi Resource Manager można również użyć programu [Azure PowerShell](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-powershell) oraz [interfejsu wiersza polecenia platformy Azure](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-cli).
+Oprócz witryny Azure portal można również użyć [programu Azure PowerShell](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-powershell) i [klasyczny interfejs wiersza polecenia platformy Azure](hdinsight-hadoop-create-linux-clusters-arm-templates.md#deploy-using-azure-cli) do wywołania szablonów usługi Resource Manager.
 
 ## <a name="validate-the-installation"></a>Sprawdzanie poprawności instalacji
 Możesz zobaczyć stan aplikacji w witrynie Azure Portal, aby sprawdzić poprawność instalacji aplikacji. Ponadto możesz sprawdzić, czy wszystkie punkty końcowe HTTP zostały utworzone zgodnie z oczekiwaniami oraz sprawdzić stronę sieci Web, jeśli istnieje:
@@ -117,8 +117,8 @@ Korzystając z portalu, możesz usunąć klaster lub usunąć grupę zasobów za
 ### <a name="use-azure-powershell"></a>Korzystanie z programu Azure PowerShell
 Przy użyciu programu Azure PowerShell możesz usunąć klaster lub grupę zasobów. Zobacz temat [Usuwanie klastrów przy użyciu programu PowerShell systemu Azure](hdinsight-administer-use-powershell.md#delete-clusters).
 
-### <a name="use-azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-Przy użyciu interfejsu wiersza polecenia platformy Azure możesz usunąć klaster lub grupę zasobów. Zobacz temat [Usuwanie klastrów przy użyciu interfejsu wiersza polecenia platformy Azure](hdinsight-administer-use-command-line.md#delete-clusters).
+### <a name="use-azure-classic-cli"></a>Użyj klasycznego wiersza polecenia platformy Azure
+Za pomocą klasycznego wiersza polecenia platformy Azure, możesz usunąć klaster lub usunąć grupę zasobów. Zobacz [usuwanie klastrów przy użyciu wiersza polecenia platformy Azure Classic](hdinsight-administer-use-command-line.md#delete-clusters).
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [MSDN: Install an HDInsight application](https://msdn.microsoft.com/library/mt706515.aspx) (MSDN: instalowanie aplikacji usługi HDInsight): dowiedz się, jak opracowywać szablony usługi Resource Manager w celu wdrażania aplikacji usługi HDInsight.

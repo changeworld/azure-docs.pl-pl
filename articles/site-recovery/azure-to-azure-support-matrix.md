@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: sujayt
-ms.openlocfilehash: 1fa5451b852a564ef3f0858fdfe0ab0091117508
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 1db54cfd32a0d598d0079ddaec9aab5d6b2f84c1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296028"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039296"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
 
@@ -69,7 +69,7 @@ Poniżej pomocy technicznej jest dostępna w przypadku dowolne obciążenia uruc
 - SUSE Linux Enterprise Server 12 z dodatkiem SP1, SP2, z dodatkiem SP3 [ (obsługiwane wersje jądra)](#supported-suse-linux-enterprise-server-12-kernel-versions-for-azure-virtual-machines)
 - SUSE Linux Enterprise Server 11 SP3
 - SUSE Linux Enterprise Server 11 SP4
-- Oracle Enterprise Linux 6.4, 6.5 systemem Red Hat zgodne jądra lub podzielenie Enterprise jądra wersji 3 (UEK3)
+- Oracle Enterprise Linux 6.4, 6.5, 6.6, 6.7 systemem Red Hat zgodne jądra lub podzielenie Enterprise jądra wersji 3 (UEK3)
 
 (Replikowanie maszyn z systemem SLES 11 z dodatkiem SP3 do SLES 11 z dodatkiem SP4 uaktualnienie nie jest obsługiwane. Jeśli replikowanej maszyny został uaktualniony z systemu SLES 11SP3 do SLES 11 z dodatkiem SP4, należy wyłączyć replikację i ochronę maszyny ponownie po uaktualnieniu.)
 

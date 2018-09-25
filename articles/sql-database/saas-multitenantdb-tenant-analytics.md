@@ -1,22 +1,23 @@
 ---
 title: Uruchamianie zapytań analitycznych dla baz danych Azure SQL | Dokumentacja firmy Microsoft
 description: Zapytania analityczne międzydzierżawowa, przy użyciu danych wyodrębnionych z wielu baz danych Azure SQL Database aplikacji z wieloma dzierżawami.
-keywords: Samouczek usługi SQL
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scenario
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
+author: stevestein
+ms.author: sstein
+ms.reviewer: anjangsh,billgib,genemi
+manager: craigg
 ms.date: 09/19/2018
-ms.author: anjangsh
-ms.reviewer: anjangsh; billgib, genemi
-ms.openlocfilehash: 546cf4fc9a1aec23071b4d1cc69ece34e014da49
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 5de707f3f2e6a82d880363eea91fb8ce644fb3aa
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498389"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055050"
 ---
 # <a name="cross-tenant-analytics-using-extracted-data---multi-tenant-app"></a>Analizować międzydzierżawowa, przy użyciu danych wyodrębnionych - aplikacji wielodostępnej
  

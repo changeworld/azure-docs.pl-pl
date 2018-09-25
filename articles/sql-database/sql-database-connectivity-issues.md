@@ -3,19 +3,22 @@ title: Napraw błąd połączenia SQL, błąd przejściowy | Dokumentacja firmy 
 description: Dowiedz się, jak rozwiązywanie problemów, diagnozowanie i zapobieganie błąd połączenia SQL lub błędu przejściowego w usłudze Azure SQL Database.
 keywords: połączenia z serwerem SQL, parametry połączenia, problemy z łącznością, błąd przejściowy, błąd połączenia
 services: sql-database
-author: dalechen
-manager: craigg
 ms.service: sql-database
-ms.custom: develop apps
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/01/2018
+author: dalechen
 ms.author: ninarn
-ms.openlocfilehash: 1da4e8d94007653a43f187322c1d0e4077e337fa
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 08/01/2018
+ms.openlocfilehash: f381eaad61c98228ea9be2665ebed5878b666317
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398941"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064241"
 ---
 # <a name="troubleshoot-diagnose-and-prevent-sql-connection-errors-and-transient-errors-for-sql-database"></a>Rozwiązywanie problemów, diagnozowanie i unikanie błędów połączenia SQL oraz błędów przejściowych w usłudze SQL Database
 W tym artykule opisano sposób zapobiec, rozwiązywanie problemów, diagnozowanie i rozwiązać błędy połączeń i błędów przejściowych, które Twoja aplikacja kliencka napotka przy współpracuje z usługą Azure SQL Database. Dowiedz się, jak konfigurować logikę ponawiania próby, Utwórz ciąg połączenia i Dostosuj inne ustawienia połączenia.

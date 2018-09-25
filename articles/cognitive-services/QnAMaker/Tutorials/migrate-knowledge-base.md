@@ -3,19 +3,19 @@ title: Migrowanie baz wiedzy (wersja zapoznawcza) — Qna Maker
 titleSuffix: Azure Cognitive Services
 description: Jak importować bazy wiedzy
 services: cognitive-services
-author: nstulasi
+author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: nstulasi
-ms.openlocfilehash: ba883acc0cd74e5252e704cede837a814c17b975
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.author: tulasim
+ms.openlocfilehash: 0cb8a185407c7b180a170f1f9b9d76aa28a24de5
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729947"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031632"
 ---
 # <a name="migrate-a-knowledge-base-using-export-import"></a>Migrowanie bazy wiedzy przy użyciu eksportu / importu
 Narzędzie QnA Maker ogłosiliśmy ogólną dostępność 7 maja 2018 r. w \\\build\ konferencji. Usługa QnA Maker GA ma Nowa architektura oparta na platformie Azure. Baz wiedzy utworzonych za pomocą bezpłatnej wersji zapoznawczej usługi QnA Maker będą musieli przeprowadzić migrację do usługi QnA Maker GA. Usługa QnA Maker w wersji zapoznawczej zostaną wycofane w listopada 2018 r. Aby uzyskać więcej informacji na temat zmian w wersji ogólnie dostępnej usługi QnA Maker, zobacz powiadomienie usługi QnA Maker GA [wpis w blogu](https://aka.ms/qnamakerga-blog).

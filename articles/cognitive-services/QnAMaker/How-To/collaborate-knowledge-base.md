@@ -3,19 +3,19 @@ title: Współpraca w bazie wiedzy knowledge base — Qna Maker
 titleSuffix: Azure Cognitive Services
 description: Usługa QnA Maker umożliwia wielu użytkownikom współpracę nad wiedzy. Ta funkcja jest dostarczany z kontroli dostępu.
 services: cognitive-services
-author: nstulasi
+author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: saneppal
-ms.openlocfilehash: 52cac0d73dd75f400c9777b9cc9c0b3ca101df58
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.author: tulasim
+ms.openlocfilehash: bb074b1f256275c26889a30435dff28c86060a7b
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579806"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035236"
 ---
 # <a name="collaborate-on-your-knowledge-base"></a>Współpracuj nad bazy wiedzy
 

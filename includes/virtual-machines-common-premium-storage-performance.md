@@ -1,3 +1,20 @@
+---
+title: Plik dyrektywy include
+description: Plik dyrektywy include
+services: virtual-machines
+author: roygara
+ms.service: virtual-machines
+ms.topic: include
+ms.date: 09/24/2018
+ms.author: rogarana
+ms.custom: include file
+ms.openlocfilehash: f0ed4b20f9dbfef4824f66eab3ab953a5dbcfaae
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060763"
+---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Usługi Azure Premium Storage: Projektowanie pod kątem wysokiej wydajności
 
 Ten artykuł zawiera wskazówki dotyczące tworzenia aplikacji o wysokiej wydajności przy użyciu usługi Azure Premium Storage. Można użyć w instrukcjach podanych w tym dokumencie, w połączeniu z najlepsze rozwiązania w zakresie wydajności mające zastosowanie do technologii wykorzystywanych przez aplikację. Aby zilustrować wytycznych, użyliśmy SQL Server uruchomiony na usługę Premium Storage, na przykład w tym dokumencie.
@@ -17,16 +34,19 @@ Te wytyczne zostały zamieszczone specjalnie dla usługi Premium Storage, poniew
 Przed przystąpieniem do wykonywania, jeśli jesteś nowym użytkownikiem magazynu w warstwie Premium, najpierw przeczytać artykuł [usługi Premium Storage: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure](../articles/virtual-machines/windows/premium-storage.md) i [usługi Azure Storage cele skalowalności i wydajności](../articles/storage/common/storage-scalability-targets.md)artykułów.
 
 ## <a name="application-performance-indicators"></a>Wskaźniki wydajności aplikacji
+
 Możemy ocenić, czy aplikacja działa dobrze lub nie korzysta z takich jak wskaźniki wydajności, jak szybko aplikacji przetwarza żądanie użytkownika, jak dużo danych aplikacji jest przetwarzanie na żądanie, jak wiele żądań przetwarza aplikacji w konkretnym okres czasu, jak długo użytkownik będzie musiał czekać na uzyskanie odpowiedzi po przesłaniu żądania. Pomoc ze wszystkimi postanowieniami dotyczącymi te wskaźniki wydajności są operacje We/Wy, przepustowości lub przepustowości i opóźnień.
 
 W tej sekcji omówiono typowe wskaźniki wydajności w ramach usługi Premium Storage. W poniższej sekcji wymagania aplikacji zbieranie, dowiesz się, jak mierzyć te wskaźniki wydajności aplikacji. Optymalizowanie wydajności aplikacji w dalszej części dowiesz się o czynniki wpływające na te wskaźniki wydajności i zalecenia dotyczące optymalizowania je.
 
 ## <a name="iops"></a>Operacje wejścia/wyjścia
+
 Operacje We/Wy jest daną liczbą żądań, które aplikacja wysyła do dysków w magazynie w ciągu jednej sekundy. Operacji We/Wy może odczytać lub zapisu sekwencyjnego lub losowych. Przetwarzanie OLTP danych aplikacji, takich jak witryny sieci Web detalicznego handlu online należy natychmiast przetwarza wiele równoczesnych żądań użytkowników. Żądania użytkowników są insert i zaktualizuj transakcji bazy danych, które aplikacja musi przetworzyć szybko. W związku z tym aplikacje OLTP wymagają bardzo wysokiej operacje We/Wy. Takie aplikacje obsługiwać miliony żądań We/Wy małe i losowe. Jeśli masz taką aplikację, należy zaprojektować infrastruktury aplikacji, aby zoptymalizować operacje We/Wy. W dalszej części *Optymalizowanie wydajności aplikacji*, omówimy szczegółowo wszystkich czynników, które należy wziąć pod uwagę uzyskać wysoki operacje We/Wy.
 
 Po dołączeniu dysku magazynu premium do Twojej dużej skali maszyny Wirtualnej, zapisów systemu Azure dla Ciebie gwarantowane liczba operacji We/Wy zgodnie ze specyfikacją dysku. Na przykład dysk P50 aprowizuje 7500 operacji We/Wy. Każdy dużej skali, rozmiar maszyny Wirtualnej ma również określony limit operacji We/Wy, która może kontynuować działanie. Na przykład standardowa maszyna wirtualna GS5 ma 80 000 operacji We/Wy Ogranicz.
 
 ## <a name="throughput"></a>Przepływność
+
 Przepływność lub przepustowości jest ilość danych, który aplikacja wysyła na dyski magazynu w określonym przedziale czasu. Jeśli aplikacja działa operacji wejścia/wyjścia o dużych rozmiarach jednostki we/wy, wymaga wysokiej przepływności. Zwykle aplikacji do magazynu danych do wysyłania skanowania intensywnie wykorzystujących operacje dostępu dużej części danych w czasie i często wykonywały operacje zbiorcze. Innymi słowy takich aplikacji wymaga większej przepływności. Jeśli masz taką aplikację, należy zaprojektować swoją infrastrukturę, aby zoptymalizować przepływność. W następnej sekcji omówiono szczegółowo czynników należy dostosować do osiągnięcia tego.
 
 Po dołączeniu dysku magazynu premium na dużą skalę maszyny Wirtualnej, przepływność zapisów systemu Azure zgodnie z specyfikacją tego dysku. Na przykład dysk P50 aprowizuje 250 MB na drugi dysk przepływności. Każdy dużej skali, rozmiar maszyny Wirtualnej ma również jako określony limit przepustowości, który może kontynuować działanie. Na przykład standardowa maszyna wirtualna GS5 zawiera maksymalnie 2000 MB na sekundę. 
@@ -38,18 +58,20 @@ Brak relacji między przepływność i operacje We/Wy, jak pokazano na poniższe
 W związku z tym jest ważne jest określenie optymalnej wartości przepustowości i operacji We/Wy, wymagane przez aplikację. Przy próbie optymalizacji, jeden, druga pobiera dotyczy także. W dalszej części tego tematu *Optymalizowanie wydajności aplikacji*, omówimy bardziej szczegółowo o optymalizacji operacji We/Wy i przepływność.
 
 ## <a name="latency"></a>Opóźnienie
+
 Opóźnienie to czas potrzebny aplikacji do odbierania pojedynczego żądania, wyślij go do dyski magazynu i czy wysłać odpowiedź do klienta. Jest to krytyczne miary wydajności aplikacji, oprócz operacje We/Wy i przepływność. Opóźnienie dysku magazynu premium to czas potrzebny do pobrania informacji dla żądania i przekazuje ją do swojej aplikacji. Usługa Premium Storage zapewnia stale niskimi opóźnieniami. Jeśli zostanie włączone buforowanie na dyskach magazynu premium hosta tylko do odczytu, możesz uzyskać znacznie mniejsze opóźnienie odczytu. Omówimy buforowania dysku bardziej szczegółowo w dalszej części tego tematu na *Optymalizowanie wydajności aplikacji*.
 
 Podczas optymalizacji aplikacji w taki sposób, aby uzyskać wyższą operacje We/Wy i przepływność ma wpływ na opóźnienia w aplikacji. Po dostrajanie wydajności aplikacji, zawsze należy przeprowadzić ocenę opóźnienie aplikacji, aby uniknąć zachowania nieoczekiwany duże opóźnienie.
 
 ## <a name="gather-application-performance-requirements"></a>Zebranie wymagań w zakresie wydajności aplikacji
+
 Pierwszym krokiem w projektowaniu aplikacji o wysokiej wydajności, w systemie Azure Premium Storage jest, aby zrozumieć wymagania dotyczące wydajności aplikacji. Po zebraniu wymagań dotyczących wydajności, można zoptymalizować aplikację, aby uzyskać najbardziej optymalną wydajność.
 
 W poprzedniej sekcji firma Microsoft opisano typowe wskaźniki wydajności operacji We/Wy, przepustowości i opóźnień. Należy określić, które te wskaźniki wydajności są kluczowe znaczenie dla aplikacji w taki sposób, aby zapewnić obsługę odpowiedniego użytkownika. Na przykład wysoką operacje We/Wy dla Ciebie ważne aplikacje OLTP przetwarzanie milionów transakcji na sekundę. Wysoka przepływność jest krytyczne dla magazynu danych aplikacji, przetwarzania dużych ilości danych na sekundę. Bardzo małe opóźnienia jest kluczowa dla aplikacji w czasie rzeczywistym, takich jak wideo na żywo, przesyłanie strumieniowe witryn sieci Web.
 
 Następnie zmierz wymagania maksymalną wydajność aplikacji w taki sposób, w okresie swojego istnienia. Użyj poniższej listy kontrolnej przykładowe jako rozpoczęcia. Zarejestruj wymogi maksymalną wydajność podczas normalnego, szczycie i poza godzinami szczytu okresów obciążenia. Identyfikując wymagania dla wszystkich poziomów obciążeń, można określić ogólne wymagania dotyczące działania aplikacji. Na przykład zwykłe obciążenie pracą w witrynie sieci Web handlu elektronicznego będzie transakcje, które służy ona większość dni w roku. Szczytowego obciążenia w witrynie sieci Web będzie transakcje, które służy ona podczas navaneetha krishnan lub specjalne sprzedaży zdarzenia. Szczytowego obciążenia jest zazwyczaj doświadczonym przez ograniczony okres, ale mogą wymagać od aplikacji do skalowania dwa lub więcej razy, jego normalnego działania. Dowiedz się, 50. percentyl, 90. percentyl i wymagania 99. percentylu. Dzięki temu odfiltrować jakiekolwiek elementy odstające w wymagania dotyczące wydajności i możesz skoncentrować się na dotyczące optymalizacji dla prawej wartości.
 
-**Lista kontrolna wymagania dotyczące wydajności aplikacji**
+### <a name="application-performance-requirements-checklist"></a>Lista kontrolna wymagania dotyczące wydajności aplikacji
 
 | **Wymagania dotyczące wydajności** | **50. percentyl** | **90. percentyl** | **99. percentylu** |
 | --- | --- | --- | --- |
@@ -71,14 +93,13 @@ Następnie zmierz wymagania maksymalną wydajność aplikacji w taki sposób, w 
 
 > [!NOTE]
 > Należy rozważyć skalowanie te liczby, oparte na oczekiwany przyszłego rozwoju aplikacji. Jest dobrze się Planowanie wzrostu wyprzedzeniem, ponieważ może on być trudniejsze do zmiany infrastruktura dla poprawy wydajności później.
->
->
 
 Jeśli masz istniejącą aplikację i chcesz przenieść do usługi Premium Storage, należy najpierw utworzyć z listy kontrolnej zawierającej ponad istniejących aplikacji. Następnie tworzenie prototypów aplikacji w magazynie Premium Storage i projektowania aplikacji, w oparciu o wytycznymi opisany w *Optymalizowanie wydajności aplikacji* w dalszej części tego dokumentu. W następnej sekcji opisano narzędzia, których można użyć w celu zbierania miar wydajności.
 
 Utwórz listę kontrolną podobne do istniejących aplikacji prototypu. Za pomocą narzędzi Benchmarking można symulować obciążenia i mierzenie wydajności aplikacji prototypu. Zobacz sekcję dotyczącą [Benchmarking](#benchmarking) Aby dowiedzieć się więcej. Wykonując, dzięki czemu można określić, czy Usługa Premium Storage można dopasować lub pozwoliło wymagań dotyczących wydajności aplikacji. Następnie można zaimplementować te same wytyczne dla aplikacji produkcyjnych.
 
 ### <a name="counters-to-measure-application-performance-requirements"></a>Licznik do pomiaru wymagań dotyczących wydajności aplikacji
+
 Jest najlepszym sposobem, aby zmierzyć wymagań dotyczących wydajności aplikacji, za pomocą narzędzi monitorowania wydajności, dostarczone przez system operacyjny serwera. Można użyć Monitora wydajności dla Windows i iostat dla systemu Linux. Te narzędzia przechwytują liczniki odpowiadający Każda miara wyjaśniono w powyższej sekcji. Gdy aplikacja jest uruchomiona, jej normalny, obciążeń w szczycie i poza godzinami szczytu konieczne jest przechwycenie wartości z tych liczników.
 
 Liczniki Monitora wydajności są dostępne dla procesora, pamięci, a każdy dysk logiczny w systemie i dysku fizycznego serwera. Korzystając z dysków magazynu premium storage z maszyną Wirtualną, są liczniki dysku fizycznego dla każdego dysku magazynu premium, a dysk logiczny w systemie liczniki są dla każdego woluminu, utworzone na dyskach magazynu premium storage. Konieczne jest przechwycenie wartości dla dysków, które hostują obciążenia aplikacji. Jeśli istnieje mapowanie jeden-do-jednego między dysków logicznych i fizycznych, może odnosić się do liczników dysków fizycznych; w przeciwnym razie można znaleźć liczniki dysk logiczny w systemie. W systemie Linux polecenie iostat generuje raport o wykorzystaniu Procesora i dysku. Raport o wykorzystaniu dysku zapewnia statystyk na urządzenie fizyczne lub partycji. Jeśli masz serwer bazy danych przy użyciu jego danych i dziennika na oddzielnych dyskach, zbierać dane dla obu dyskach. Poniższej tabeli opisano liczniki dla dysków, procesora i pamięci:
@@ -97,6 +118,7 @@ Liczniki Monitora wydajności są dostępne dla procesora, pamięci, a każdy dy
 Dowiedz się więcej o [iostat](https://linux.die.net/man/1/iostat) i [monitora wydajności](https://msdn.microsoft.com/library/aa645516.aspx).
 
 ## <a name="optimizing-application-performance"></a>Optymalizacja wydajności aplikacji
+
 Główne czynniki wpływające na wydajność aplikacji uruchomionych na magazyn w warstwie Premium są charakter z operacji We/Wy żądania, rozmiar maszyny Wirtualnej, rozmiaru dysku, liczby dysków, dysk pamięci podręcznej, wielowątkowość i głębokość kolejki. Za pomocą pokrętła podał systemu, można kontrolować niektóre z tych czynników. Większość aplikacji może nie zapewniają możliwość bezpośrednio zmieniać rozmiar operacji We/Wy i głębokość kolejki. Na przykład jeśli używasz programu SQL Server, nie możesz wybrać głębokość rozmiar i kolejki we/wy. SQL Server wybiera optymalną we/wy rozmiar i kolejki głębokość wartości w celu uzyskania większość wydajności. Ważne jest zrozumienie wpływu oba rodzaje czynniki na wydajność aplikacji, aby aprowizować odpowiednich zasobów w celu spełnienia wymagań dotyczących wydajności.
 
 W tej sekcji dotyczą Lista kontrolna wymagań aplikacji, który został utworzony, aby zidentyfikować, ile należy zoptymalizować wydajność aplikacji. Oparte na tym, będzie możliwe ustalenie, jakie czynniki w tej sekcji należy dostosować. Aby Monitor wpływ każdy czynnik na wydajność aplikacji, należy uruchomić narzędzi porównawczych w ustawieniach aplikacji. Zapoznaj się [Benchmarking](#Benchmarking) sekcji na końcu tego artykułu kroków wspólnych narzędzi porównawczych systemem Windows i maszyn wirtualnych systemu Linux.
@@ -122,6 +144,7 @@ Aby uzyskać więcej informacji na temat rozmiarów maszyn wirtualnych i operacj
 | **Głębokość kolejki** |Głębokość kolejki większej daje wyższe operacje We/Wy. |Głębokość kolejki większej daje większą przepływność. |Głębokość kolejki mniejszych daje mniejsze opóźnienia. |
 
 ## <a name="nature-of-io-requests"></a>Rodzaj żądań We/Wy
+
 Żądanie operacji We/Wy jest jednostką operacji wejścia/wyjścia, która będzie wykonywać aplikacji. Identyfikowanie charakter żądań We/Wy, losowych lub sekwencyjnych, odczytu lub zapisu, małych i dużych, pomoże określić wymagania dotyczące wydajności aplikacji. Jest to bardzo ważne zrozumieć charakter żądań We/Wy, aby podejmować właściwe decyzje podczas projektowania infrastruktury aplikacji.
 
 Rozmiar we/wy jest jednym z bardziej ważne czynniki. Rozmiar operacji We/Wy jest rozmiar żądania operacji wejścia/wyjścia wygenerowane przez aplikację. Rozmiar operacji We/Wy ma znaczący wpływ na wydajność, zwłaszcza na operacje We/Wy i przepustowości, która aplikacja jest w stanie osiągnąć. Następująca formuła przedstawiono relacje między operacje We/Wy, rozmiar operacji We/Wy i przepustowość/przepływność.  
@@ -152,12 +175,11 @@ Aby uzyskać operacje We/Wy i przepustowości jest większa niż maksymalna wart
 
 > [!NOTE]
 > Zwiększenie operacje We/Wy lub innych również zwiększa przepływność, upewnij się, że nie trafisz przepływności lub limity operacji We/Wy dysku lub maszyny Wirtualnej podczas zwiększenie jeden.
->
->
 
 Aby Monitor wpływ rozmiar operacji We/Wy na wydajność aplikacji, można uruchomić narzędzi porównawczych na maszyna wirtualna i dyski. Tworzenie wielu przebiegów testowych i użyj innego rozmiaru operacji We/Wy dla każdego uruchomienia, aby zobaczyć wpływ. Zapoznaj się [Benchmarking](#Benchmarking) sekcji na końcu tego artykułu, aby uzyskać więcej informacji.
 
 ## <a name="high-scale-vm-sizes"></a>Rozmiary maszyn wirtualnych w dużej skali
+
 Podczas projektowania aplikacji, jedną z pierwszych czynności w celu jest, wybierz Maszynę wirtualną do hostowania aplikacji. Usługa Premium Storage jest dostarczany z rozmiarami wysokiej skali maszyn wirtualnych, które można uruchomić aplikacji wymagających większej mocy obliczeniowej i o wysokiej wydajności We/Wy dysku lokalnym. Te maszyny wirtualne zapewniają szybsze procesory, wyższy stopień pamięć rdzeń i Solid-State dyskach półprzewodnikowych (SSD) na dysku lokalnym. Przykłady wysokiej skali maszyny wirtualne obsługujące usługę Premium Storage to maszyny wirtualne serii DS, DSv2 i GS.
 
 Wysokiej skali maszyn wirtualnych są dostępne w różnych rozmiarach z różną liczbę rdzeni procesora CPU, pamięci, systemu operacyjnego i rozmiar dysku tymczasowego. Rozmiar każdej maszyny Wirtualnej ma również maksymalna liczba dysków z danymi, które można dołączyć do maszyny Wirtualnej. W związku z tym wybrany rozmiar maszyny Wirtualnej będzie miało wpływ na ile przetwarzania, pamięci i pojemność magazynu jest dostępny dla twojej aplikacji. Wpływa to również na zasoby obliczeniowe i kosztów magazynowania. Na przykład poniżej przedstawiono specyfikacji największy rozmiar maszyny Wirtualnej serii DS, DSv2 serii i serii GS:
@@ -196,14 +218,14 @@ Azure Premium Storage umożliwia skorzystanie z takiego samego poziomu wydajnoś
 Podczas uruchamiania systemu Linux dzięki usłudze Premium Storage, należy sprawdzić najnowsze aktualizacje dotyczące wymaganych sterowników, aby zapewnić wysoką wydajność.
 
 ## <a name="premium-storage-disk-sizes"></a>Rozmiary dysków magazynu Premium
-Usługa Azure Premium Storage oferuje ośmiu dysków o rozmiarach obecnie. Rozmiar każdego dysku ma limit skalowania różne operacje We/Wy, przepustowości i magazynu. Wybierz rozmiar dysku magazynu Premium, w zależności od wymagań aplikacji i dużej skali rozmiaru maszyny Wirtualnej po prawej stronie. W poniższej tabeli przedstawiono rozmiary ośmiu dysków i ich funkcji. Rozmiary P4 P6 i P15 są obecnie obsługiwane tylko w przypadku dysków zarządzanych.
 
-| Typ magazynu dysków Premium  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | 
-|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Rozmiar dysku           | 32 GB | 64 GB | 128 GB| 256 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 
-| Przepływność na dysk | 25 MB na sekundę  | 50 MB na sekundę  | 100 MB na sekundę |125 MB na sekundę | 150 MB na sekundę | 200 MB na sekundę | 250 MB na sekundę | 250 MB na sekundę | 
+Usługa Azure Premium Storage oferuje osiem rozmiary dysków GA i trzech rozmiarach dysków, które są obecnie dostępne w wersji zapoznawczej. Rozmiar każdego dysku ma limit skalowania różne operacje We/Wy, przepustowości i magazynu. Wybierz rozmiar dysku magazynu Premium, w zależności od wymagań aplikacji i dużej skali rozmiaru maszyny Wirtualnej po prawej stronie. W poniższej tabeli przedstawiono rozmiary dysków jedenaście i ich funkcji. Rozmiary P4, P6, P15 P60, P70 i P80 są obecnie obsługiwane tylko w przypadku dysków zarządzanych.
 
+| Typ magazynu dysków Premium  | P4    | P6    | P10   | P15 | P20   | P30   | P40   | P50   | P60   | P70   | P80   |
+|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|-------|
+| Rozmiar dysku           | 32 GiB | 64 GiB | 128 GiB| 256 GiB| 512 GB            | 1024 giB (1 TiB)    | 2048 giB (2 TiB)    | 4095 giB (4 TiB)    | 8192 giB (8 TiB)    | 16 384 giB (16 TiB)    | 32 767 giB (32 GiB)    |
+| Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500   | 1100 | 2300              | 5000              | 7500              | 7500              | 12 500              | 15 000              | 20,000              |
+| Przepływność na dysk | 25 MiB na sekundę  | 50 MiB na sekundę  | MiB 100 na sekundę |125 MiB na sekundę | 150 MiB na sekundę | 200 MiB na sekundę | 250 MiB na sekundę | 250 MiB na sekundę | 480 MiB na sekundę | 750 MiB na sekundę | 750 MiB na sekundę |
 
 Jak wiele dysków, możesz wybrać, zależy od dysku rozmiar wybrane. Można użyć pojedynczego dysku P50 lub wiele dysków P10, zgodnie z wymaganiami aplikacji. Należy uwzględnić wymienione poniżej, dokonując wyboru uwagi dotyczące konta.
 
@@ -216,8 +238,6 @@ Na przykład, jeśli wymagania aplikacji jest maksymalnie 250 MB/s przepływnoś
 > Odczyty obsłużone przez pamięć podręczną nie są uwzględnione w operacji We/Wy dysku i przepływności, dlatego nie podlega limity dysku. Pamięć podręczna ma oddzielne limit operacji We/Wy i przepływność na maszynę Wirtualną.
 >
 > Na przykład początkowo swoje odczyty i zapisy są 60MB/s i 40MB/s. Wraz z upływem czasu pamięci podręcznej warms i obsługują coraz większym odczyty z pamięci podręcznej. Następnie zapisu wyższej przepływności można uzyskać z dysku.
->
->
 
 *Liczba dysków*  
 Określ liczbę dysków, które mają być przez ocenę wymagań aplikacji. Każdego rozmiaru maszyny Wirtualnej jest również objęta limitem liczby dysków, które można dołączyć do maszyny Wirtualnej. Zazwyczaj jest dwa razy liczba rdzeni. Upewnij się, że rozmiar maszyny Wirtualnej, którą wybierzesz może obsługiwać liczbę dysków potrzebne.
@@ -225,12 +245,12 @@ Określ liczbę dysków, które mają być przez ocenę wymagań aplikacji. Każ
 Należy pamiętać, że dyski magazynu Premium mają wyższe możliwości wydajność w porównaniu do dysków magazynu w warstwie standardowa. W związku z tym jeśli aplikacja są migrowane z maszyny Wirtualnej IaaS platformy Azure przy użyciu magazynu w warstwie standardowa do usługi Premium Storage, potrzebne będą prawdopodobnie mniejszą liczbę dysków w warstwie premium do osiągnięcia tej samej lub większej wydajności aplikacji.
 
 ## <a name="disk-caching"></a>Buforowanie dysku
+
 Wysoka skalowania maszyn wirtualnych korzystających z usługi Azure Premium Storage ma wielowarstwowych technologii buforowania, o nazwie BlobCache. BlobCache używa kombinacji maszyny wirtualnej ilość pamięci RAM i lokalny dysk SSD do buforowania. Ta pamięć podręczna jest dostępna dla stałych dysków usługi Premium Storage i dysków lokalnych maszyn wirtualnych. Domyślnie to ustawienie pamięci podręcznej ma wartość do odczytu/zapisu dla dysków systemu operacyjnego i tylko do odczytu dla dysków z danymi w serwisie usługi Premium Storage. Za pomocą dysku pamięci podręcznej, włączone na dysków usługi Premium Storage, dużej skali maszyn wirtualnych można uzyskać bardzo wysoki poziom wydajności, które przekraczają podstawowej wydajności dysków.
 
 > [!WARNING]
+> Buforowanie dysku jest obsługiwana tylko dla rozmiarów dysków do 4 TiB.
 > Zmienianie ustawień pamięci podręcznej dysku platformy Azure powoduje odłączenie i ponowne dołączenie dysku docelowego. Jeśli jest to dysk systemu operacyjnego, maszyna wirtualna zostanie ponownie uruchomiona. Zatrzymaj wszystkie aplikacje/usługi, które mogą mieć wpływ to zakłóceń, zanim zmienisz to ustawienie pamięci podręcznej dysku.
->
->
 
 Aby dowiedzieć się więcej o tym, jak działa BlobCache, należy zapoznać się z wewnątrz [usługi Azure Premium Storage](https://azure.microsoft.com/blog/azure-premium-storage-now-generally-available-2/) wpis w blogu.
 
@@ -267,6 +287,7 @@ Na przykład można zastosować następujących wytycznych programu SQL Server u
    a.  Pliki dziennika mają głównie operacje zapisu obciążenie. W związku z tym że nie korzystają z pamięci podręcznej tylko do odczytu.
 
 ## <a name="disk-striping"></a>Rozkładanie
+
 Przy dużej skali, które maszyna wirtualna jest połączona z kilku stałych dysków magazynu premium storage, dyski można paski ze sobą, aby agregować ich operacje We/Wy, przepustowości i pojemność magazynu.
 
 W Windows umożliwia funkcji miejsca do magazynowania dysków stripe razem. Należy skonfigurować jedną kolumnę dla każdego dysku w puli. W przeciwnym razie może być krótszy niż oczekiwano z powodu nierówna Dystrybucja ruchu między dyskami ogólną wydajność woluminu rozłożonego.
@@ -284,10 +305,9 @@ W zależności od typu obciążenia aplikacja jest uruchomiona, wybierz rozmiar 
 
 > [!NOTE]
 > Można można ze sobą stripe maksymalnie 32 dyski magazynu premium na maszyny Wirtualnej serii DS i 64 dysków magazynu premium storage na dla maszyny Wirtualnej serii GS.
->
->
 
 ## <a name="multi-threading"></a>Wielowątkowości
+
 Azure został zaprojektowany tak platformy usługi Premium Storage jako równoległe na wielką skalę. W związku z tym aplikacji wielowątkowych zapewnia znacznie wyższą wydajność niż aplikacja jednowątkowa. Aplikacji wielowątkowych rozróżniane jego zadań podrzędnych w wielu wątkach i zwiększa wydajność pracy przy użyciu zasobów maszyny Wirtualnej i dysku, do maksymalnej liczby.
 
 Na przykład jeśli aplikacja jest uruchomiona na jeden rdzeń maszyny Wirtualnej przy użyciu dwa wątki, procesora CPU można przełączać się między dwoma wątkami w celu osiągnięcia wydajności. Gdy jeden wątek oczekuje na dysku we/wy, aby zakończyć, Procesor przełączyć się do innego wątku. W ten sposób dwoma wątkami można wykonać więcej niż jednego wątku będą. Jeśli maszyna wirtualna ma więcej niż jednego rdzenia, dodatkowo zmniejsza czas działania od każdego rdzenia równolegle, można uruchomić zadania.
@@ -301,6 +321,7 @@ Na przykład załóżmy, że swoją aplikację przy użyciu programu SQL Server 
 Dowiedz się więcej o [stopni równoległości](https://technet.microsoft.com/library/ms188611.aspx) w programie SQL Server. Dowiedz się, takie ustawienia, które wpływają na wielowątkowości w aplikacji i ich konfiguracji w celu zoptymalizowania wydajności.
 
 ## <a name="queue-depth"></a>Głębokość kolejki
+
 Głębokość kolejki lub długość kolejki lub rozmiar kolejki jest liczba oczekujących żądań We/Wy w systemie. Wartość głębokości kolejki określa, ile operacji We/Wy aplikacji można wyrównać, który będzie przetwarzać dyski magazynu. Ma to wpływ na wszystkich trzech aplikacji wskaźniki wydajności, które omówiono w tym artykule tj, operacje We/Wy, przepustowości i opóźnień.
 
 Kolejki głębi i wielowątkowości są ściśle powiązane. Głębokość kolejki wartość wskazuje, ile wielowątkowości mogą być osiągnięte przez aplikację. W przypadku dużych głębokości kolejki, aplikacja może wykonać więcej operacji współbieżnie, oznacza to, bardziej wielowątkowości. Jeśli głębokość kolejki jest mała, nawet jeśli aplikacja jest wielowątkowa, nie będzie wystarczającej liczby żądań wyrównana do wykonania.
@@ -327,9 +348,11 @@ Dla woluminu rozłożonego Obsługa głębokości kolejki wystarczająco wysoka,
     ![](media/premium-storage-performance/image7.png)
 
 ## <a name="throttling"></a>Ograniczanie przepływności
+
 Zapisów systemu Azure Premium Storage określona liczba operacji We/Wy i Przepływność w zależności od rozmiarów maszyn wirtualnych i rozmiarach dysków, które wybierzesz. W dowolnym momencie Twoja aplikacja próbuje dysku na SEKUNDĘ lub przepływności powyżej tych limitów co maszyna wirtualna lub dysk może obsługiwać, będzie ograniczać usługi Premium Storage. To sytuacji, w postaci pogorszenie wydajności w aplikacji. To oznacza wyższe opóźnienie, obniżyć przepływności lub obniżyć operacje We/Wy. Jeśli Usługa Premium Storage nie ograniczać, aplikacji całkowicie może się nie powieść przekroczenia, co jej zasoby są w stanie osiągnięcia. Tak aby uniknąć problemów z wydajnością z powodu dławienia, zawsze aprowizować wystarczających zasobów dla aplikacji. Uwzględnia Omówiliśmy w sekcjach rozmiary dysków powyżej i rozmiarów maszyn wirtualnych. Analiza porównawcza to najlepszy sposób, aby zorientować się, jakie zasoby potrzebne do hostowania aplikacji.
 
 ## <a name="benchmarking"></a>Benchmarking
+
 Analiza porównawcza jest proces symulowanie różnych obciążeń w swojej aplikacji i pomiaru wydajności aplikacji dla poszczególnych obciążeń. Kroki opisane w wcześniejszej sekcji zostały zebrane wymagań dotyczących wydajności aplikacji. Uruchamiając narzędzi porównawczych dla maszyn wirtualnych hostujących aplikację, należy określić poziomów wydajności, które aplikacja może osiągnąć dzięki usłudze Premium Storage. W tej sekcji udostępniamy przykłady testów porównawczych standardowa DS14 maszyny Wirtualnej z systemem aprowizowane przy użyciu dysków usługi Premium Storage dla platformy Azure.
 
 Odpowiednio użyliśmy typowych narzędzi porównawczych Iometer i FIO, Windows i Linux. Te narzędzia zduplikować wiele wątków, symulując produkcji, takich jak obciążenia, a zadaniem jest mierzenie wydajności systemu. Za pomocą narzędzi można również skonfigurować parametry, takie jak głębokość bloku rozmiaru i kolejki, które normalnie nie można zmienić dla aplikacji. Zapewnia większą elastyczność w przypadku dysków maksymalnej wydajności na dużą skalę maszyny Wirtualnej obsługiwane za pomocą dysków w warstwie premium dla różnego rodzaju obciążeń aplikacji. Aby dowiedzieć się więcej na temat każdego z narzędzi porównawczych odwiedź [Iometer](http://www.iometer.org/) i [FIO](http://freecode.com/projects/fio).
@@ -341,10 +364,9 @@ Dysk z buforowania hosta tylko do odczytu będzie mógł przekazać wyższym ope
 
 > **Ważne:**  
 > Przed uruchomieniem testów porównawczych, za każdym razem, gdy maszyna wirtualna jest uruchamiana ponownie, musisz rozgrzewki pamięci podręcznej.
->
->
 
 #### <a name="iometer"></a>Iometer
+
 [Pobierz narzędzie Iometer](http://sourceforge.net/projects/iometer/files/iometer-stable/2006-07-27/iometer-2006.07.27.win32.i386-setup.exe/download) na maszynie Wirtualnej.
 
 *Plik testu*  
@@ -414,6 +436,7 @@ Poniżej przedstawiono zrzuty ekranu przedstawiające Iometer wyniki testu dla p
 ![](media/premium-storage-performance/image10.png)
 
 ### <a name="fio"></a>FIO
+
 FIO to popularne narzędzie do magazynu testów porównawczych na maszynach wirtualnych z systemem Linux. Ma wybrać różne rozmiary we/wy, sekwencyjnych lub losowych operacji odczytu i zapisu. Jej spowoduje utworzenie wątków roboczych i realizowania innych procesów do wykonywania określonej operacji We/Wy. Można określić typ operacji We/Wy każdego wątku roboczego należy wykonać przy użyciu plików zadania. Utworzyliśmy jeden plik zadania na scenariusz pokazano w poniższych przykładach. Możesz zmienić specyfikacji w tych plikach zadania przeprowadzenie testu porównawczego różnych obciążeń uruchomionych na usługę Premium Storage. W przykładach użyto standardowego DS 14 w maszyny Wirtualnej z systemem **Ubuntu**. Użyj tej samej konfiguracji opisanych na początku [testów porównawczych sekcji](#Benchmarking) i rozgrzewanie pamięci podręcznej przed uruchomieniem testów porównawczych.
 
 Przed przystąpieniem do wykonywania [Pobierz FIO](https://github.com/axboe/fio) i zainstaluj go na maszynie wirtualnej.
@@ -567,6 +590,7 @@ Podczas wykonywania testu, będzie można zobaczyć liczbę połączonych odczyt
 Aby uzyskać maksymalną połączone odczytu i zapisu przepływności, większy rozmiar bloku i dużych głębokości za pomocą wielu wątków, wykonywanie operacji odczytu i zapisu. Można użyć blok o rozmiarze 64 KB i głębokości kolejki wynoszącej 128.
 
 ## <a name="next-steps"></a>Następne kroki
+
 Dowiedz się więcej na temat usługi Azure Premium Storage:
 
 * [Premium Storage: magazyn o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure](../articles/virtual-machines/windows/premium-storage.md)  

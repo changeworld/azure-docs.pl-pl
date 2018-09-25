@@ -4,18 +4,18 @@ titleSuffix: Azure
 description: Dokumentacja ze wstępnie utworzonych domen, które są wstępnie kolekcjami intencje i podmioty z Language Understanding Intelligent Services (LUIS).
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 06/20/2018
 ms.author: diberry
-ms.openlocfilehash: 36e527f9afdce58475ca4c3c6e54ce393c48c983
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: f424abd339bda6c29079e3d286cbe96593f16f52
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238900"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040044"
 ---
 # <a name="prebuilt-domain-reference"></a>Dokumentacja wstępnie utworzonych domen
 Ta dokumentacja zawiera informacje na temat [ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md), które są wstępnie utworzonych kolekcji intencje i podmioty, które są oferowane usługi LUIS.
@@ -180,7 +180,7 @@ Domena zdarzeń zapewnia intencje i jednostki związane z rezerwacji biletów dl
 | Adres | Lokalizacja zdarzenia lub adres. |Palo Alto<br/>300 112th Ave SE <br/> Seattle |
 | Name (Nazwa) | Nazwa zdarzenia.|Szekspir w Park|
 | PlaceName| Nazwa lokalizacji zdarzenia.|Louvre<br/>Opera DOM<br/>Broadway|
-| PlaceType | Typ lokalizacji wydarzenie odbędzie się w.|Cafe<br/>Teatralną<br/>Biblioteka|
+| PlaceType | Typ lokalizacji wydarzenie odbędzie się w.|Kawiarnia<br/>Teatralną<br/>Biblioteka|
 | Typ | Typ zdarzenia.|Koncert<br/>Gry sportowe|
 
 ## <a name="fitness"></a>Przydatności 
@@ -197,7 +197,7 @@ Domeny przydatności zapewnia intencje i podmioty, związane z przydatności dzi
 ### <a name="entities"></a>Jednostki
 | Nazwa jednostki | Opis | Przykłady |
 | ---------------- |-----------------------|----|
-| Właściwości ActivityType | Typ działania do śledzenia. |Uruchom polecenie<br/>Zapoznaj się z<br/>Toru<br/>Cykl |
+| Właściwości ActivityType | Typ działania do śledzenia. |Uruchom polecenie<br/>Marsz<br/>Toru<br/>Cykl |
 | Żywność | Typ żywności do śledzenia w przydatności aplikacji. |Banany<br/>Łososia<br/>Wstrząsnąć białka|
 | MealType| Typ posiłku do śledzenia w kondycji lub przydatności aplikacji.|Śniadanie<br/>Obiad<br/>Obiad<br/>Supper|
 | Miara| Typ miary dla czasu, odległości lub waga do użycia w przydatności lub kondycji aplikacji.|Kilometrów<br/>Miles<br/>Minuty<br/>Kilogramów|
@@ -234,7 +234,7 @@ Domeny HomeAutomation zapewnia intencje i podmioty, związane z kontrolowanie in
 | Nazwa jednostki | Opis | Przykłady |
 | ---------------- |-----------------------|----|
 | Urządzenie | Typ urządzenia, które można włączyć lub wyłączyć.|Twórca kawy<br/>Termostat<br/>światła|
-| Operacja | Stan urządzenia.|Blokady<br/>otwórz<br/>włączone<br/>wyłączone|
+| Operacja | Stan urządzenia.|Blokady<br/>open<br/>włączone<br/>wyłączone|
 | Miejsca | Lokalizacja lub miejsca, w której znajduje się urządzenie.|Salon<br/>sypialni<br/>kuchenne|
 
 ## <a name="movietickets"></a>MovieTickets 
@@ -417,7 +417,7 @@ At what time does Safeway close?
 |Selectitem —|Wybierz element z listy wyborów odnoszących się do miejsca lub miejsc.|Wybierz drugą<br/>Zaznacz pierwszą pozycję|
 |ShowMap|Pokaż mapę obszaru.|Pokaż mapę dla drugiej<br/>Pokaż mapę<br/>Znajdź San Francisco na mapie|
 |ShowNext|Pokaż następny element w serii.|Pokaż następny<br/>Przejdź do następnej strony|
-|ShowPrevious|Pokaż poprzedni element w serii.|Pokaż poprzedni<br/>wstecz<br/>Przejdź do poprzedniego|
+|ShowPrevious|Pokaż poprzedni element w serii.|Pokaż poprzedni<br/>poprzedni<br/>Przejdź do poprzedniego|
 |StartOver|Ponowne uruchomienie aplikacji lub Rozpocznij nową sesję.|Zacznij od nowa<br/>Nowej sesji<br/>
 restart|
 |TakesReservations|Zapytaj, czy miejsce akceptuje rezerwacji.|Galerii sztuki akceptować rezerwacje<br/>Czy jest możliwe rezerwację w ogrodzie oliwek
@@ -430,13 +430,13 @@ restart|
 | Atmosfery | Atmosfery miejsce.|przyjazne dla dzieci<br/>zwykłych restauracji<br/>Sporty|
 | Cuisine | Cuisine miejsca. |Śródziemnego<br/>Włoski<br/>Rupia|
 | DestinationAddress| Lokalizacja docelowa lub adres.|Palo Alto<br/>300 112th Ave SE<br/>Seattle|
-| DestinationPlaceName| Nazwa miejsca docelowego, które jest biznesowych, restauracji, publiczne przyciągania lub instytucji.|park środkowa<br/>safeway<br/>walmart|
-| DestinationPlaceType | Typ lokalizacji docelowej, która jest lokalnych firmach, restauracji, publiczne przyciągania lub instytucji. |Restauracji<br/>Opera<br/>kinowych|
+| DestinationPlaceName| Nazwa miejsca docelowego, które jest biznesowych, restauracji, publiczne przyciągania lub instytucji.|park środkowa<br/>Safeway<br/>Walmart|
+| DestinationPlaceType | Typ lokalizacji docelowej, która jest lokalnych firmach, restauracji, publiczne przyciągania lub instytucji. |Restauracja<br/>Opera<br/>kinowych|
 | Odległość | Odległość w miejscu.|15 mil.<br/>5 miles<br/>10 mil stąd nigdzie|
 | MealType | Typ posiłku, takich jak śniadanie lub obiad. |Śniadanie<br/>Obiad<br/>Obiad<br/>Supper|
 | OpenStatus | Wskazuje, czy miejsce jest otwarte lub zamknięte.|Otwarty<br/>Zamknięte<br/>Otwieranie|
 | PlaceName | Nazwa miejsca.|Fabryka cheesecake|
-| PlaceType | Typ miejsce.|Cafe<br/>Teatralną<br/>Biblioteka|
+| PlaceType | Typ miejsce.|Kawiarnia<br/>Teatralną<br/>Biblioteka|
 | PreferredRoute | Trasą preferowaną, określone przez użytkownika. | 101 <br/>202 <br/>Trasy 401|
 | Product (Produkt) | Produkt, oferowane przez miejsce. | Odzież<br/>Aparaty cyfrowe usługi ASR<br/>Świeży ryb | 
 | PublicTransportationRoute | Nazwa trasy transport publiczny, który wyszukuje użytkownika. | Północno-wschodniej korytarza szkolenie<br/>Tras 3 X |
@@ -494,7 +494,7 @@ Table for 3 in Palo Alto at 7
 | Cuisine | Typ żywności, cuisine lub cuisine przynależność. |Chiński<br/>Włoski<br/>Peso|
 | MealType | Typ posiłku skojarzone z rezerwacji.|Śniadanie<br/>Obiad<br/>Obiad<br/>Supper|
 | PlaceName | Nazwa lokalnych firmach, restauracji, publiczne przyciągania lub instytucji.|IHOP<br/>Fabryka cheesecake<br/>Louvre|
-| PlaceType | Typ lokalnych firmach, restauracji, publiczne przyciągania lub instytucji.|restauracji<br/>Opera<br/>kinowych|
+| PlaceType | Typ lokalnych firmach, restauracji, publiczne przyciągania lub instytucji.|Restauracji<br/>Opera<br/>kinowych|
 | Ocena | Ocena miejsca lub restauracji.|5 gwiazdek<br/>3 gwiazdek<br/>4 gwiazdek|
 
 ## <a name="taxi"></a>Taksówek 
@@ -521,9 +521,9 @@ Cancel my Uber
 | Adres| Adres skojarzony z rezerwacji taksówek. |Palo Alto<br/>300 112th Ave SE<br/>Seattle|
 | DestinationAddress| Lokalizacja docelowa lub adres. |Palo Alto<br/>300 112th Ave SE<br/>Seattle|
 | DestinationPlaceName | Nazwa miejsca docelowego, które jest lokalnych firmach, restauracji, publiczne przyciągania lub instytucji. |Park środkowa<br/>Safeway<br/>Walmart|
-| DestinationPlaceType | Typ lokalizacji docelowej, która jest lokalnych firmach, restauracji, publiczne przyciągania lub instytucji. |Restauracji<br/>Opera<br/>kinowych|
+| DestinationPlaceType | Typ lokalizacji docelowej, która jest lokalnych firmach, restauracji, publiczne przyciągania lub instytucji. |Restauracja<br/>Opera<br/>kinowych|
 | PlaceName | Nazwa lokalnych firmach, restauracji, publiczne przyciągania lub instytucji. |Park środkowa<br/>Safeway<br/>Walmart|
-| PlaceType| Typ miejsca w żądaniu, aby zarezerwować taksówek.|Restauracji<br/>Opera<br/>kinowych|
+| PlaceType| Typ miejsca w żądaniu, aby zarezerwować taksówek.|Restauracja<br/>Opera<br/>kinowych|
 | TransportationCompany | Nazwa dostawcy transportu.|Amtrak<br/>Acela<br/>Greyhound|
 | TransportationType | Typ transportu.|Service Bus<br/>Szkolenie<br/>Jazda samochodem|
 

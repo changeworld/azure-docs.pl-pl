@@ -1,24 +1,25 @@
 ---
-title: Przy użyciu języka C#, Integrowanie usługi LUIS z botem przy użyciu Bot Builder — zestaw SDK usług Azure Cognitive Services | Dokumentacja firmy Microsoft
+title: Bot usługi LUIS w języku C# — aplikacji sieci Web Bot — Bot Framework SDK 3.0
+titleSuffix: Azure Cognitive Services
 description: Przy użyciu języka C#, twórz czatbot zintegrowana z usługą language understanding (LUIS). Ten czatbot używa wstępnie domeny HomeAutomation można szybko wdrożyć rozwiązanie botów.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 08/13/2018
+ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: d0010ccf51fc688fa66e1be82c735ae38455509b
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: 0ad95d5683ea10803c2f3986be97617051f191cf
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "41988478"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032278"
 ---
-# <a name="web-app-bot-using-the-luis-template-for-c"></a>Web Apps przy użyciu szablonu usługi LUIS dla języka C#
+# <a name="luis-bot-in-c"></a>Bot usługi LUIS w języku C#
 
-Przy użyciu języka C#, twórz czatbot zintegrowana z usługą language understanding (LUIS). Ten czatbot używa wstępnie domeny HomeAutomation można szybko wdrożyć rozwiązanie botów. 
+Przy użyciu języka C#, twórz czatbot zintegrowana z usługą language understanding (LUIS). Ten czatbot używa wstępnie domeny HomeAutomation można szybko wdrożyć rozwiązanie botów. Bot został utworzony za pomocą platformy Bot Framework bota aplikacji sieci Web platformy Azure i 3.x.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 
@@ -26,7 +27,7 @@ Przy użyciu języka C#, twórz czatbot zintegrowana z usługą language underst
 
 ## <a name="luis-homeautomation-intents"></a>Usługa LUIS HomeAutomation intencji
 
-| Przeznaczenie | Przykład wypowiedź | Bot funkcji |
+| Intencja | Przykład wypowiedź | Bot funkcji |
 |:----:|:----------:|---|
 | HomeAutomation.TurnOn | Włączenie świateł. | Gdy celem usługi LUIS `HomeAutomation.TurnOn` zostanie wykryte, bot wywołuje `OnIntent` okno obsługi. To okno dialogowe jest, gdzie możesz wywołać usługi IoT w celu włączenia na urządzeniu, a następnie poinformuj użytkowników, że urządzenie zostało włączone. |
 | HomeAutomation.TurnOff | Wyłącz światła sypialni. | Gdy celem usługi LUIS `HomeAutomation.TurnOff` zostanie wykryte, bot wywołuje `OffIntent` okno obsługi. To okno dialogowe jest, gdzie możesz wywołać usługi IoT, aby wyłączyć urządzenie i poinformuj użytkownika, że urządzenie zostało wyłączone. |
@@ -46,7 +47,10 @@ Przy użyciu języka C#, twórz czatbot zintegrowana z usługą language underst
 4. W **Bot Service**, podaj wymagane informacje i kliknij przycisk **Utwórz**. To tworzy i wdraża bot service i LUIS aplikacji na platformie Azure. Jeśli chcesz używać [zalewanie mowy](https://docs.microsoft.com/bot-framework/bot-service-manage-speech-priming), przejrzyj [wymagania region](luis-resources-faq.md#what-luis-regions-support-bot-framework-speech-priming) przed utworzeniem bota. 
     * Ustaw **nazwy aplikacji** nazwę Twój bot. Nazwa jest używana jako domenę podrzędną, gdy Twój bot jest wdrażane w chmurze (na przykład mynotesbot.azurewebsites.net). <!-- This name is also used as the name of the LUIS app associated with your bot. Copy it to use later, to find the LUIS app associated with the bot. -->
     * Wybierz subskrypcję, [grupy zasobów](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview), plan usługi App service, a [lokalizacji](https://azure.microsoft.com/regions/).
-    * Wybierz **interpretacji języka (C#)** szablon **szablonu Bota** pola.
+    * Aby uzyskać **szablonu Bota**, wybierz opcję:
+        * **Zestaw SDK w wersji 3**
+        * **C#**
+        * **Interpretacji języka**
     * Wybierz **lokalizacji aplikacji LUIS**. Jest to, tworzeniem [region](luis-reference-regions.md) aplikacja zostanie utworzona w.
     * Zaznacz pole wyboru potwierdzenia prawne. Warunki prawne są wyświetlane poniżej pola wyboru.
 

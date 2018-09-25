@@ -12,14 +12,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 10/17/2017
-ms.openlocfilehash: a8c258a9bc8e006d5bbae4b7bbb61c7ef6e95412
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ROBOTS: NOINDEX
+ms.openlocfilehash: 83d6f529330a05e6a7c46ad45b19f0338f93bfc7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45605950"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995095"
 ---
 # <a name="image-classification-using-azure-machine-learning-workbench"></a>Klasyfikacja obrazów przy użyciu usługi Azure Machine Learning Workbench
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Metody klasyfikacji obrazów, można rozwiązać wiele problemów przetwarzania obrazów.
 Należą do budowania modeli, które odpowiedzi na pytania takie jak: *jest OBIEKTEM obecnych w obrazie?* gdzie obiekt może być na przykład *pies*, *samochodu*, lub  *Dostarczaj*. Lub bardziej złożone pytania, takie jak: *jakie klasy oka choroby ważności jest evinced przez skanowanie retinal to pacjenta?*.
@@ -51,7 +56,7 @@ Doświadczenia dzięki uczeniu maszynowemu i CNTK nie jest wymagana, ale jest po
 Wymagania wstępne dotyczące uruchamiania w tym przykładzie są następujące:
 
 1. [Konta platformy Azure](https://azure.microsoft.com/free/) (bezpłatne wersje próbne są dostępne).
-2. [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) następujące [przewodnika Szybki start dotyczącego instalacji](../service/quickstart-installation.md) zainstalować ten program i utworzyć obszar roboczy.  
+2. [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) następujące [przewodnika Szybki start dotyczącego instalacji](quickstart-installation.md) zainstalować ten program i utworzyć obszar roboczy.  
 3. Maszyna Windows. System operacyjny Windows jest konieczne, ponieważ Workbench obsługuje tylko Windows i MacOS, podczas firmy Microsoft, Cognitive Toolkit (które zostaną wykorzystane jako biblioteka uczenia głębokiego) obsługuje tylko Windows i Linux.
 4. Dedykowanego procesora GPU nie jest wymagane do wykonywania szkolenia SVM w części 1, jednak jest to potrzebne dla rafinacja z systemu DNN opisane w części 2. Jeśli nie mają silnego procesora GPU, aby uczyć się na wielu procesorach GPU lub nie masz maszyny Windows rozważyć, przy użyciu maszyna wirtualna do uczenia głębokiego platformy Azure z systemem operacyjnym Windows. Zobacz [tutaj](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.dsvm-deep-learning) Przewodnik wdrożenia 1 kliknięcia. Po wdrożeniu łączenie z maszyną Wirtualną za pośrednictwem połączenia pulpitu zdalnego, zainstaluj środowisko robocze istnieje i wykonywania kodu lokalnie z maszyny Wirtualnej.
 5. Różnych bibliotek języka Python, takich jak biblioteki OpenCV muszą być zainstalowane. Kliknij przycisk *Otwórz wiersz polecenia* z *pliku* menu w aplikacji Workbench i uruchom następujące polecenia, aby zainstalować te zależności:  

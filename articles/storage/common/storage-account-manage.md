@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: tamram
-ms.openlocfilehash: 5237be9fd75edc8abf5c5fa043574e8c2deb79e9
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 768fd4a715d4c0df154f823d159fd63898c9715b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45740712"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981335"
 ---
 # <a name="manage-storage-account-settings-in-the-azure-portal"></a>Zarządzanie ustawieniami konta magazynu w witrynie Azure portal
 
@@ -26,6 +26,14 @@ Usługa Azure Storage obsługuje uwierzytelnianie przy użyciu usługi Azure Act
 
 > [!NOTE]
 > Uwierzytelnianie użytkowników lub aplikacji przy użyciu poświadczeń usługi Azure AD udostępnia doskonałe zabezpieczenia i łatwość użycia w porównaniu z innej metody autoryzacji. Gdy możesz kontynuować klucza wspólnego autoryzacji za pomocą aplikacji, za pomocą usługi Azure AD zmierzone konieczności przechowywania klucza dostępu do konta za pomocą kodu. Nadal m ożna również udzielić szczegółową kontrolę dostępu do zasobów na koncie magazynu przy użyciu sygnatury dostępu współdzielonego (SAS), ale usługa Azure AD oferuje podobne możliwości bez konieczności zarządzania tokeny sygnatur dostępu Współdzielonego ani martwić się o odwołaniu ze złamanymi zabezpieczeniami sygnatury dostępu Współdzielonego. 
+
+## <a name="tags"></a>Tagi
+
+Usługa Azure Storage obsługuje tagi usługi Azure Resource Manager służący do organizowania zasobów platformy Azure dostosowanych taksonomii. Znaczniki można dodawać do swoich kont magazynu, dzięki czemu grupy w ramach Twojej subskrypcji w logiczny sposób. 
+
+W przypadku kont magazynu Nazwa tagu jest ograniczona do 128 znaków, a wartość tagu jest ograniczona do 256 znaków.
+
+Aby uzyskać więcej informacji, zobacz [organizowania zasobów platformy Azure za pomocą tagów](../../azure-resource-manager/resource-group-using-tags.md).
 
 ## <a name="access-keys"></a>Klawisze dostępu
 

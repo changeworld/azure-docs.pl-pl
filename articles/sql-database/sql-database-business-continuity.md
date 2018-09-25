@@ -3,21 +3,22 @@ title: Ciągłość działalności biznesowej w chmurze — odzyskiwanie bazy da
 description: Dowiedz się, w jaki sposób usługa Azure SQL Database obsługuje ciągłość działalności biznesowej w chmurze i odzyskiwanie bazy danych oraz pomaga zapewnić działanie aplikacji o kluczowym znaczeniu w chmurze.
 keywords: business continuity,cloud business continuity,database disaster recovery,database recovery
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.workload: On Demand
-ms.date: 09/19/2018
+author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 803dddd13ab3b18b6f161be9c0004d18c8d69f1e
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: 320489f27a3c00cf4d13f7db37c6eb9fda39f5f1
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364200"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064137"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Omówienie zagadnień dotyczących ciągłości działalności biznesowej zapewnianej przez usługę Azure SQL Database
 

@@ -1,5 +1,5 @@
 ---
-title: Usługi Azure Cognitive Services, Cognitive Services — zestaw SDK interfejsu API rozpoznawania mowy dokumentacja — samouczki i dokumentacja interfejsu API
+title: Usługi Azure Cognitive Services, interfejsu API usług Cognitive Services mowy SDK dokumentacja — samouczki i dokumentacja interfejsu API
 description: Dowiedz się, jak utworzyć i twórz aplikacje z zestawem SDK mowy usług Cognitive
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
@@ -9,16 +9,16 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 06/07/2018
 ms.author: wolfma
-ms.openlocfilehash: 65ff0e47cf7a53d519bfd0c50ea4c3ebd09a5766
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: b920b7bcb86d94b2948ed0a9bf783cee1282b33f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "41987467"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47041079"
 ---
-# <a name="shipping-an-application"></a>Wysyłanie aplikacji
+# <a name="ship-an-application"></a>Dostarczanie aplikacji
 
-Sprawdź [licencja pakietu SDK rozpoznawania mowy](license.md), jak również [uwagi dotyczące oprogramowania innych firm](third-party-notices.md) podczas dystrybucji Cognitive Services SDK rozpoznawania mowy. Ponadto przejrzyj [zasady zachowania poufności informacji firmy Microsoft](https://aka.ms/csspeech/privacy).
+Obserwuj [licencja pakietu SDK rozpoznawania mowy](license.md), także [uwagi dotyczące innych firm](third-party-notices.md) dystrybucji Azure Cognitive Services SDK rozpoznawania mowy. Ponadto przejrzyj [zasady zachowania poufności informacji firmy Microsoft](https://aka.ms/csspeech/privacy).
 
 W zależności od platformy różnych składników zależnych istnieje uruchomić aplikację.
 
@@ -33,9 +33,9 @@ Cognitive Services SDK mowy wymaga [Microsoft Visual C++ Redistributable for Vis
 
 Jeśli aplikacja korzysta z kodu zarządzanego, `.NET Framework 4.6.1` lub nowszy jest wymagany na komputerze docelowym.
 
-Dane wejściowe mikrofonu Media Foundation biblioteki muszą być zainstalowane. Biblioteki te są częścią systemu Windows 10 i Windows Server 2016. Istnieje możliwość używania zestawu SDK mowy bez tych bibliotek, tak długo, jak mikrofon nie jest używana jako urządzenie wejściowe audio.
+Dla danych wejściowych mikrofonu muszą być zainstalowane biblioteki platformy Media Foundation. Biblioteki te są częścią systemu Windows 10 i Windows Server 2016. Istnieje możliwość używania zestawu SDK mowy bez tych bibliotek, tak długo, jak mikrofon nie jest używana jako urządzenie wejściowe audio.
 
-W tym samym katalogu co aplikację można wdrożyć wymagane pliki zestawów SDK rozpoznawania mowy. Dzięki temu aplikacja można uzyskać dostęp do biblioteki. Upewnij się, że wybierz poprawną wersję — Win32/x64 64 dopasowania aplikacji.
+W tym samym katalogu co aplikację można wdrożyć wymagane pliki zestawów SDK rozpoznawania mowy. Dzięki temu aplikacja można uzyskać dostęp do biblioteki. Upewnij się, że Wybierz prawidłową wersję — Win32/x64 64, który odpowiada aplikacji.
 
 | Name (Nazwa) | Funkcja
 |:-----|:----|
@@ -45,15 +45,15 @@ W tym samym katalogu co aplikację można wdrożyć wymagane pliki zestawów SDK
 
 ## <a name="linux"></a>Linux
 
-Dla natywnych aplikacji, musisz wysłać biblioteki zestawu SDK rozpoznawania mowy `libMicrosoft.CognitiveServices.Speech.core.so`.
-Upewnij się, zostanie wybrana wersja (x86, x64) Dopasowywanie aplikacji. W zależności od wersji systemu Linux może być również konieczne obejmują następujące zależności:
+Aplikację natywną, musisz wysłać biblioteki zestawu SDK rozpoznawania mowy, `libMicrosoft.CognitiveServices.Speech.core.so`.
+Upewnij się, że wybrano wersję (x86, x64), która jest zgodna z aplikacji. W zależności od wersji systemu Linux, również może być konieczne obejmują następujące zależności:
 
-* Biblioteki udostępnione biblioteki C GNU (łącznie z biblioteki programowania wątków POSIX `libpthreads`)
+* Biblioteki udostępnione biblioteki GNU C (łącznie z biblioteki programowania wątków POSIX `libpthreads`)
 * Biblioteki OpenSSL (`libssl.so.1.0.0`)
 * Biblioteka programu cURL (`libcurl.so.4`)
 * Biblioteki udostępnionej dla aplikacji ALSA (`libasound.so.2`)
 
-Na Ubuntu 16.04 na przykład bibliotek GNU C powinno być już zainstalowane domyślnie. Trzy ostatnie można zainstalować przy użyciu następujących poleceń:
+Na Ubuntu 16.04 na przykład bibliotek GNU C powinno być już zainstalowane domyślnie. Trzy ostatnie można zainstalować za pomocą poniższych poleceń:
 
 ```sh
 sudo apt-get update

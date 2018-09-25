@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 07/06/2018
+ms.date: 09/24/2018
 ms.author: jonbeck
-ms.openlocfilehash: ab3ccd981514225a003b07bafbb73db11aaa21e2
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 222f131e92a6018b4f70c65476cc2c47fb1d1dd5
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903734"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038566"
 ---
 # <a name="gpu-optimized-virtual-machine-sizes"></a>Rozmiarów maszyn wirtualnych zoptymalizowanych pod kątem procesora GPU
 

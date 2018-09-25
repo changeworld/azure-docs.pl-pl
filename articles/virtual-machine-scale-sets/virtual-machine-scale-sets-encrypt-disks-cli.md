@@ -1,6 +1,6 @@
 ---
 title: Szyfrowanie dysków dla zestawów skalowania platformy Azure przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać interfejsu wiersza polecenia platformy Azure w wersji 2.0 do szyfrowania wystąpień maszyn wirtualnych i dołączonych dysków w zestawie skalowania maszyn wirtualnych systemu Linux
+description: Dowiedz się, jak używać interfejsu wiersza polecenia platformy Azure do szyfrowania wystąpień maszyn wirtualnych i dołączonych dysków w zestawie skalowania maszyn wirtualnych systemu Linux
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: cynthn
@@ -15,14 +15,14 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: cynthn
-ms.openlocfilehash: a01a0ae09b91b550af4617a46f7c0d8647a5f4be
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: fecf7e121b1c0404f1ec67d46cc88008250b9d68
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38704559"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981063"
 ---
-# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli-20-preview"></a>Szyfrowanie systemu operacyjnego i dołączonych dysków z danymi w maszynie wirtualnej zestawu skalowania przy użyciu interfejsu wiersza polecenia platformy Azure 2.0 (wersja zapoznawcza)
+# <a name="encrypt-os-and-attached-data-disks-in-a-virtual-machine-scale-set-with-the-azure-cli-preview"></a>Szyfrowanie systemu operacyjnego i dołączonych dysków z danymi w maszynie wirtualnej zestawu skalowania przy użyciu wiersza polecenia platformy Azure (wersja zapoznawcza)
 
 Aby chronić pliki i chronić dane magazynowane przy użyciu technologii szyfrowania standardowych w branży, zestawy skalowania maszyn wirtualnych obsługują szyfrowania dysków Azure (ADE). Szyfrowanie można włączyć dla maszyny wirtualnej systemu Linux i Windows zestawów skalowania. Aby uzyskać więcej informacji, zobacz [usługi Azure Disk Encryption dla systemu Linux i Windows](../security/azure-security-disk-encryption.md).
 
@@ -38,7 +38,7 @@ Zestaw maszyn wirtualnych odtworzenia z obrazu i uaktualniania, operacje skalowa
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Jeśli zdecydujesz się zainstalować i korzystać z interfejsu wiersza polecenia lokalnie, ten samouczek wymaga, czy korzystasz z wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli).
+Jeśli zdecydujesz się zainstalować i korzystać z interfejsu wiersza polecenia lokalnie, ten samouczek wymaga, czy korzystasz z wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli).
 
 ## <a name="register-for-disk-encryption-preview"></a>Rejestrowanie na potrzeby szyfrowania dysku w wersji zapoznawczej
 
@@ -180,6 +180,6 @@ az vmss encryption disable --resource-group myResourceGroup --name myScaleSet
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W tym artykule interfejsu wiersza polecenia platformy Azure w wersji 2.0 jest używany do szyfrowania zestawu skalowania maszyn wirtualnych. Można również użyć [programu Azure PowerShell](virtual-machine-scale-sets-encrypt-disks-ps.md) lub szablonów dla [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) lub [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox).
+W tym artykule wiersza polecenia platformy Azure jest używany do szyfrowania zestawu skalowania maszyn wirtualnych. Można również użyć [programu Azure PowerShell](virtual-machine-scale-sets-encrypt-disks-ps.md) lub szablonów dla [Windows](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-windows-jumpbox) lub [Linux](https://github.com/Azure/azure-quickstart-templates/tree/master/201-encrypt-vmss-linux-jumpbox).
 
 Przykład pliku wsadowego end-to-end do szyfrowania dysku danych zestaw skalowania systemu Linux można znaleźć [tutaj](https://gist.githubusercontent.com/ejarvi/7766dad1475d5f7078544ffbb449f29b/raw/03e5d990b798f62cf188706221ba6c0c7c2efb3f/enable-linux-vmss.bat). W tym przykładzie tworzy grupę zasobów, zestaw skalowania systemu Linux, instaluje dysk 5 GB danych oraz szyfruje zestawu skalowania maszyn wirtualnych.

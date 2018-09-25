@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Dowiedz się, jak używać wersji do zarządzania zmianami w Language Understanding (LUIS)
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: dd8c521d4f9e76026d4651be24d784c3115d4856
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 5d78172ae441300cdc39df8b911fd7ecaa42df9f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632700"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032699"
 ---
 # <a name="versions"></a>Wersje
 Utwórz różne modele taką samą aplikację na [wersji](luis-how-to-manage-versions.md). 

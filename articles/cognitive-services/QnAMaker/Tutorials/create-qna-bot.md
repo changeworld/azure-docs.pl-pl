@@ -2,22 +2,22 @@
 title: Bot pytań i odpowiedzi z usługi Azure Bot Service — QnA Maker
 titleSuffix: Azure Cognitive Services
 services: cognitive-services
-author: nstulasi
+author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: nstulasi
-ms.openlocfilehash: 0c6feb67b273ec30afba89f2d4d9b59a8a9f5acf
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.author: tulasim
+ms.openlocfilehash: 74c7bc5c601cd36a8dd2454506745406bc00dac0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45731420"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031292"
 ---
-# <a name="create-a-qna-bot-with-azure-bot-service"></a>Utwórz Bota pytań i odpowiedzi z usługi Azure Bot Service
-Ten samouczek przeprowadzi Cię przez tworzenie bota pytań i odpowiedzi, przy użyciu usługi Azure Bot service w witrynie Azure portal.
+# <a name="create-a-qna-bot-with-azure-bot-service-v3"></a>Utwórz Bota pytań i odpowiedzi z usługi Azure Bot Service w wersji 3
+Ten samouczek przeprowadzi Cię przez tworzenie bota pytań i odpowiedzi, przy użyciu usługi Azure Bot service w wersji 3 w witrynie Azure portal.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
 Przed utworzeniem, wykonaj kroki opisane w [tworzenie bazy wiedzy](../How-To/create-knowledge-base.md) Aby utworzyć usługę QnA Maker za pomocą pytań i odpowiedzi.
@@ -33,16 +33,24 @@ Bot odpowiada na pytania z bazy wiedzy, który został utworzony, za pośrednict
 
     ![Wybieranie usługi BOT](../media/qnamaker-tutorials-create-bot/bot-service-selection.png)
 
-3. W **bloku Bot Service**, podaj wymagane informacje i wybierz **Utwórz**. To tworzy i wdraża usługi botów za pomocą QnAMakerDialog na platformie Azure.
+3. W **bloku Bot Service**, podaj wymagane informacje:
 
     - Ustaw **nazwy aplikacji** nazwę Twój bot. Nazwa jest używana jako domenę podrzędną, gdy Twój bot jest wdrażane w chmurze (na przykład mynotesbot.azurewebsites.net).
     - Wybierz subskrypcję, grupy zasobów, plan usługi App service i lokalizacji.
-    - Wybierz **pytanie i odpowiedź** szablonu (Node.js lub C#) dla pola szablonu Bota.
-    - Zaznacz pole wyboru potwierdzenia prawne. Warunki prawne są wyświetlane poniżej pola wyboru.
 
-        ![Wybieranie usługi BOT](../media/qnamaker-tutorials-create-bot/bot-service-qna-template.PNG)
+4. Aby wyświetlić instrukcje dotyczące tworzenia bota pytań i odpowiedzi za pomocą zestawu SDK w wersji 4 — zobacz [szablonu bota w wersji 4 pytań i odpowiedzi](https://aka.ms/qna-bot-v4). Aby użyć szablonów w wersji 3, wybierz wersję zestawu SDK **zestawu SDK w wersji 3** i zestawu SDK języka **C#** lub **Node.js**.
 
-4. Upewnij się, czy usługa bot service został pomyślnie wdrożony.
+    ![Bot ustawień zestawu sdk](../media/qnamaker-tutorials-create-bot/bot-v3.png)
+
+5. Wybierz **pytanie i odpowiedź** szablonu w polu szablonu Bota, a następnie Zapisz ustawienia szablonu, wybierając **wybierz**.
+
+    ![Wybieranie usługi BOT](../media/qnamaker-tutorials-create-bot/bot-v3-template.png)
+
+6. Przejrzyj ustawienia, a następnie wybierz **Utwórz**. To tworzy i wdraża usługi botów za pomocą QnAMakerDialog na platformie Azure.
+
+    ![Wybieranie usługi BOT](../media/qnamaker-tutorials-create-bot/bot-blade-settings-v3.png)
+
+7. Upewnij się, czy usługa bot service został pomyślnie wdrożony.
 
     - Wybierz **powiadomienia** (ikonę dzwonka, który znajduje się wzdłuż górnej krawędzi w witrynie Azure Portal). Powiadomienie zmieni się z **Wdrażanie rozpoczęte** do **wdrażanie zakończyło się pomyślnie**.
     - Po powiadomienie zmieni się na **wdrażanie zakończyło się pomyślnie**, wybierz opcję **przejdź do zasobu** na powiadomienia.

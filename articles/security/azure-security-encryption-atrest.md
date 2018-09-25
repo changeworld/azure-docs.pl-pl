@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/20/2018
 ms.author: barclayn
-ms.openlocfilehash: 2be65ba185ebc1ad8bde0cdf33f264351301d45a
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 71351a979e8bb443864c975b91539c527bea7f2a
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44051412"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033434"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Usługa Azure Data szyfrowanie w spoczynku
 
@@ -261,7 +261,7 @@ Szyfrowanie po stronie klienta, danych usługi Azure SQL Database jest świadczo
 | **Magazynowi i bazom danych**        |                    |                    |                    |                    |                    |
 | Dysk (IaaS)                      | -                  | Tak, RSA 2048-bitowe  | Yes               | -                  |
 | Program SQL Server (IaaS)                | Yes                | Tak, RSA 2048-bitowe  | Yes                | Yes                |
-| Usługa Azure SQL Database (PaaS)        | Yes                | Tak, RSA 2048-bitowe  | -                  | Yes                |
+| Usługi Azure SQL (baza danych/Data Warehouse) | Yes                | Tak, RSA 2048-bitowe  | -                  | Yes                |
 | Usługa Azure Storage (Blokuj/stronicowych obiektów blob) | Yes                | Tak, RSA 2048-bitowe  | -                  | Yes                |
 | Usługa Azure Storage (pliki)            | Yes                | Tak, RSA 2048-bitowe  | -                  | -                  |
 | Usługa Azure Storage (tabele, kolejki)   | Yes                | -                  | -                  | Yes                |

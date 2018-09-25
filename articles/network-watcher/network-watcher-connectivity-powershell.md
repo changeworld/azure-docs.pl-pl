@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z połączeniami z obserwatora sieciowego Azure - PowerShell | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak korzystać z połączenia Rozwiązywanie problemów z możliwości obserwatora sieciowego Azure przy użyciu programu PowerShell.
+title: Rozwiązywanie problemów z połączeniami w usłudze Azure Network Watcher — PowerShell | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak korzystać z połączenia Rozwiązywanie problemów z możliwości usługi Azure Network Watcher przy użyciu programu PowerShell.
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -13,34 +13,34 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: jdial
-ms.openlocfilehash: 7e8c04fd2284a3a00d4847f39fd34982a543cc29
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: aac23f616cb9d7c3fb29e516cfa2daa47c00e8e2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32181865"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989264"
 ---
-# <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Rozwiązywanie problemów z połączeniami z obserwatora sieciowego Azure przy użyciu programu PowerShell
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Rozwiązywanie problemów z połączeniami w usłudze Azure Network Watcher przy użyciu programu PowerShell
 
 > [!div class="op_single_selector"]
 > - [Portal](network-watcher-connectivity-portal.md)
 > - [Program PowerShell](network-watcher-connectivity-powershell.md)
-> - [Interfejs wiersza polecenia 2.0](network-watcher-connectivity-cli.md)
-> - [Interfejs API Azure REST](network-watcher-connectivity-rest.md)
+> - [Interfejs wiersza polecenia platformy Azure](network-watcher-connectivity-cli.md)
+> - [Interfejs API REST platformy Azure](network-watcher-connectivity-rest.md)
 
 Dowiedz się, jak używać połączenia Rozwiązywanie problemów, aby sprawdzić, czy można nawiązać bezpośrednie połączenie TCP z maszyny wirtualnej do danego punktu końcowego.
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-* Wystąpienie obserwatora sieciowego w regionie rozwiązywania problemów z połączeniem.
+* Wystąpienie usługi Network Watcher w regionie, do których użytkownik chce Rozwiązywanie problemów z połączeniem.
 * Rozwiązywanie problemów z połączeniami z maszyn wirtualnych.
 
 > [!IMPORTANT]
-> Rozwiązywanie problemów z połączenia wymaga, aby rozwiązać z maszyny Wirtualnej miało `AzureNetworkWatcherExtension` zainstalowane rozszerzenia maszyny Wirtualnej. Instalowanie rozszerzenia na maszynie Wirtualnej systemu Windows można znaleźć [rozszerzenie maszyny wirtualnej Azure sieci obserwatorów agenta dla systemu Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i dla maszyny Wirtualnej systemu Linux, odwiedź [rozszerzenie maszyny wirtualnej Azure sieci obserwatorów agenta dla systemu Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozszerzenie nie jest wymagany dla docelowego punktu końcowego.
+> Rozwiązywanie problemów z połączeniami wymaga, że maszyna wirtualna, rozwiązywanie problemów z z ma `AzureNetworkWatcherExtension` zainstalowane rozszerzenie maszyny Wirtualnej. Instalowanie rozszerzenia na maszynie Wirtualnej Windows można znaleźć [Agent usługi Azure Network Watcher rozszerzenie maszyny wirtualnej dla Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i maszyny Wirtualnej systemu Linux można znaleźć pod adresem [Agent usługi Azure Network Watcher rozszerzenie maszyny wirtualnej dla systemu Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozszerzenie nie jest wymagany dla docelowego punktu końcowego.
 
-## <a name="check-connectivity-to-a-virtual-machine"></a>Sprawdź połączenie z maszyną wirtualną
+## <a name="check-connectivity-to-a-virtual-machine"></a>Sprawdź łączność z maszyną wirtualną
 
-W tym przykładzie sprawdza połączenie do docelowej maszyny wirtualnej za pośrednictwem portu 80. W tym przykładzie wymaga obserwatora sieciowego włączony w regionie zawierający źródłowej maszyny Wirtualnej.  
+Ten przykład umożliwia sprawdzenie połączenia do docelowej maszyny wirtualnej za pośrednictwem portu 80. W tym przykładzie wymaga usługi Network Watcher włączone w regionie, zawierającą źródłowej maszyny Wirtualnej.  
 
 ### <a name="example"></a>Przykład
 
@@ -62,7 +62,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>Odpowiedź
 
-Następujące odpowiedzi jest z poprzedniego przykładu.  W tej odpowiedzi `ConnectionStatus` jest **informujący**. Widać, że wszystkie sond wysyłane nie powiodło się. Połączenie nie powiodło się na urządzenie wirtualne z powodu użytkownik skonfigurował `NetworkSecurityRule` o nazwie **UserRule_Port80**, jest skonfigurowany do blokowania ruchu przychodzącego na porcie 80. Te informacje mogą służyć do badania problemów z połączeniem.
+Jest następującą odpowiedź z poprzedniego przykładu.  W tej odpowiedzi `ConnectionStatus` jest **informujący**. Widać, że wszystkie sondy wysyłane nie powiodło się. Połączenie nie powiodło się na urządzenie wirtualne, ze względu na skonfigurowane przez użytkownika `NetworkSecurityRule` o nazwie **UserRule_Port80**, jest skonfigurowana do blokowania ruchu przychodzącego na porcie 80. Te informacje mogą służyć do badania problemów z połączeniem.
 
 ```
 ConnectionStatus : Unreachable
@@ -133,9 +133,9 @@ Hops             : [
                    ]
 ```
 
-## <a name="validate-routing-issues"></a>Sprawdź poprawność routingu problemów
+## <a name="validate-routing-issues"></a>Sprawdź poprawność problemów z routingiem
 
-W tym przykładzie sprawdza łączność między maszyną wirtualną i zdalny punkt końcowy. W tym przykładzie wymaga obserwatora sieciowego włączony w regionie zawierający źródłowej maszyny Wirtualnej.  
+W tym przykładzie służy do sprawdzania łączności między maszyną wirtualną i zdalnego punktu końcowego. W tym przykładzie wymaga usługi Network Watcher włączone w regionie, zawierającą źródłowej maszyny Wirtualnej.  
 
 ### <a name="example"></a>Przykład
 
@@ -154,7 +154,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>Odpowiedź
 
-W poniższym przykładzie `ConnectionStatus` jest wyświetlany jako **informujący**. W `Hops` uzyskać szczegółowe informacje, widoczny w obszarze `Issues` ruch został zablokowany ze względu na `UserDefinedRoute`. 
+W poniższym przykładzie `ConnectionStatus` jest przedstawiana w postaci **informujący**. W `Hops` uzyskać więcej informacji, możesz zobaczyć w obszarze `Issues` ruch został zablokowany ze względu na `UserDefinedRoute`. 
 
 ```
 ConnectionStatus : Unreachable
@@ -197,9 +197,9 @@ Hops             : [
                    ]
 ```
 
-## <a name="check-website-latency"></a>Sprawdź czas oczekiwania witryny sieci Web
+## <a name="check-website-latency"></a>Czas oczekiwania na sprawdzenie witryny sieci Web
 
-Poniższy przykład służy do sprawdzania łączności z witryną sieci Web. W tym przykładzie wymaga obserwatora sieciowego włączony w regionie zawierający źródłowej maszyny Wirtualnej.  
+Poniższy przykład służy do sprawdzania łączności z witryną sieci Web. W tym przykładzie wymaga usługi Network Watcher włączone w regionie, zawierającą źródłowej maszyny Wirtualnej.  
 
 ### <a name="example"></a>Przykład
 
@@ -219,7 +219,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>Odpowiedź
 
-W poniższych odpowiedzi, zobacz `ConnectionStatus` jest pokazywana jako **osiągalne**. Gdy połączenie zostanie nawiązane, znajdują się wartości opóźnienia.
+Następującą odpowiedź zawiera `ConnectionStatus` jest wyświetlany jako **osiągalne**. Gdy połączenie zostanie nawiązane, znajdują się wartości czasu oczekiwania.
 
 ```
 ConnectionStatus : Reachable
@@ -252,7 +252,7 @@ Hops             : [
 
 ## <a name="check-connectivity-to-a-storage-endpoint"></a>Sprawdź łączność z punktu końcowego magazynu
 
-Poniższy przykład służy do sprawdzania łączności z maszyny wirtualnej na blogu konto magazynu. W tym przykładzie wymaga obserwatora sieciowego włączony w regionie zawierający źródłowej maszyny Wirtualnej.  
+Poniższy przykład służy do sprawdzania łączności z maszyny wirtualnej na koncie magazynu w blogu. W tym przykładzie wymaga usługi Network Watcher włączone w regionie, zawierającą źródłowej maszyny Wirtualnej.  
 
 ### <a name="example"></a>Przykład
 
@@ -272,7 +272,7 @@ Test-AzureRmNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId
 
 ### <a name="response"></a>Odpowiedź
 
-Następujący kod json jest przykład odpowiedzi z uruchomienie poprzedniego polecenia cmdlet. Jako miejsce docelowe jest osiągalny, `ConnectionStatus` właściwość pokazuje, jak **osiągalne**.  Podano szczegółowe informacje dotyczące liczby przeskoków niezbędnych do magazynu obiektów blob i opóźnień.
+Następujący kod json jest przykładową odpowiedź uruchomienie poprzedniego polecenia cmdlet. Zgodnie z miejscem docelowym jest osiągalny, `ConnectionStatus` właściwości jest wyświetlana jako **osiągalne**.  Znajdują się szczegółowe informacje dotyczące liczby przeskoków wymagany do osiągnięcia obiektem blob storage i opóźnienie.
 
 ```json
 ConnectionStatus : Reachable
@@ -305,6 +305,6 @@ Hops             : [
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Określić, czy niektórych ruch jest dozwolony w lub z maszyny Wirtualnej, przechodząc [Sprawdź przepływ Sprawdź IP](diagnose-vm-network-traffic-filtering-problem.md).
+Określić, czy niektóre ruch jest dozwolony do lub z maszyny Wirtualnej, odwiedzając [weryfikowanie przepływu protokołu IP z Sprawdź](diagnose-vm-network-traffic-filtering-problem.md).
 
-Jeśli ruch jest blokowane i nie należy, zobacz [Zarządzaj grupami zabezpieczeń sieci](../virtual-network/manage-network-security-group.md) śledzić reguły zabezpieczeń sieciowych grupy i zabezpieczeń zdefiniowane.
+Jeśli ruch jest blokowany, i nie powinny być, zobacz [Zarządzanie sieciowymi grupami zabezpieczeń](../virtual-network/manage-network-security-group.md) ułatwiają śledzenie reguły zabezpieczeń sieci grupy i zabezpieczeń, które są zdefiniowane.

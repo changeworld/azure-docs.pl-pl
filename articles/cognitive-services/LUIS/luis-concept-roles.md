@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Role są podtypy nazwanych, kontekstowych podmiotu używana tylko we wzorcach. Na przykład Kup wypowiedź biletu z nowego Jorku do Londynu, zarówno w Nowym Jorku, jak i w Londynie są miast, ale każda ma inne znaczenie w zdaniu. Nowy Jork jest miasto źródła i Londyn jest miasta docelowego.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: aabd3a22498e0e33993d715e7a5882dde7aacf37
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 033e5e5e054b0a29961ad60e72b1466b51d1df0c
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632487"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035202"
 ---
 # <a name="entity-roles-in-patterns-are-contextual-subtypes"></a>Role jednostki we wzorcach są podtypy kontekstowych
 Role są podtypy nazwanych, kontekstowych podmiotu używana tylko w [wzorców](luis-concept-patterns.md).

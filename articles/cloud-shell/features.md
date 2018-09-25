@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: 1321645d97e7f6ff2faed1e61ddb608afcb7b413
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 5087b8a1d675fb6fb2bbfb2b46a09c215bf5e9ae
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42057534"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998767"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkcje i narzędzia dla usługi Azure Cloud Shell
 
@@ -31,7 +31,7 @@ Usługa Azure Cloud Shell jest uruchamiany na `Ubuntu 16.04 LTS`.
 
 ### <a name="secure-automatic-authentication"></a>Bezpieczne uwierzytelnianie automatyczne
 
-Usługa cloud Shell bezpiecznie i automatycznie przeprowadza uwierzytelnianie dostępu do konta dla interfejsu wiersza polecenia platformy Azure w wersji 2.0 i programu Azure PowerShell.
+Usługa cloud Shell bezpiecznie i automatycznie przeprowadza uwierzytelnianie dostępu do konta dla wiersza polecenia platformy Azure i programu Azure PowerShell.
 
 ### <a name="home-persistence-across-sessions"></a>Trwałości $Home między sesjami
 
@@ -60,7 +60,7 @@ Usługa cloud Shell oferuje wstępnie skonfigurowane uwierzytelnianie dla narzę
 |Kategoria   |Name (Nazwa)   |
 |---|---|
 |Narzędzia systemu Linux            |Bash<br> zsh<br> SH<br> tmux<br> Postaraj się<br>               |
-|Narzędzia platformy Azure            |[Azure CLI 2.0](https://github.com/Azure/azure-cli) i [1.0](https://github.com/Azure/azure-xplat-cli)<br> [Narzędzie AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Interfejs wiersza polecenia usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) |
+|Narzędzia platformy Azure            |[Interfejs wiersza polecenia Azure](https://github.com/Azure/azure-cli) i [klasycznego wiersza polecenia platformy Azure](https://github.com/Azure/azure-xplat-cli)<br> [Narzędzie AzCopy](https://docs.microsoft.com/azure/storage/storage-use-azcopy)<br> [Interfejs wiersza polecenia usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cli) |
 |Edytory tekstu           |vim<br> nano<br> emacs:       |
 |Kontrola źródła         |git                    |
 |Narzędzia do kompilacji            |Wprowadź<br> Narzędzia maven<br> npm<br> Narzędzie PIP         |
@@ -82,5 +82,5 @@ Usługa cloud Shell oferuje wstępnie skonfigurowane uwierzytelnianie dla narzę
 ## <a name="next-steps"></a>Kolejne kroki
 [Powłoka bash w przewodniku Szybki Start Cloud Shell](quickstart.md) <br>
 [Program PowerShell w przewodniku Szybki Start Cloud Shell (wersja zapoznawcza)](quickstart-powershell.md) <br>
-[Więcej informacji na temat interfejsu wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/) <br>
+[Dowiedz się więcej o wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/) <br>
 [Więcej informacji na temat programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/) <br>

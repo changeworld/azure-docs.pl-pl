@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Language Understanding (LUIS) oferuje ze wstępnie utworzonych domen, które są wstępnie utworzone zestawy intencje i podmioty, które współpracują ze sobą w przypadku domen lub wspólnych kategorii aplikacji klienckich. Ze wstępnie utworzonych domen wstępnie przeszkolonych i są gotowe do dodania z aplikacją usługi LUIS.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: diberry
-ms.openlocfilehash: 80a83fdb1e2b84ac03d0ae0cf969f1635f00cca0
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 1aa7e1bf9c1a584803a60a5061b4ae4cc8664ff4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053727"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037375"
 ---
 # <a name="use-prebuilt-domains-in-luis-apps"></a>Użyj wstępnie utworzonych domen w aplikacjach usługi LUIS  
 
@@ -26,7 +26,7 @@ Przeglądaj **ze wstępnie utworzonych domen** kartę, aby zobaczyć inne ze wst
 > [!TIP]
 > Znajduje się pełna lista ze wstępnie utworzonych domen w [odwołania ze wstępnie utworzonych domen](./luis-reference-prebuilt-domains.md).
 
-![Dodawanie wbudowanych domeny](./media/luis-how-to-prebuilt-domain-entities/add-prebuilt-domain.png)
+![Dodawanie wstępnie utworzonej domeny](./media/luis-how-to-prebuilt-domain-entities/add-prebuilt-domain.png)
 
 
 ## <a name="add-a-prebuilt-domain"></a>Dodawanie wstępnie utworzonej domeny

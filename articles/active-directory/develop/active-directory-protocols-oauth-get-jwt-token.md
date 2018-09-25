@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 06/12/2018
 ms.author: routlaw
 ms.custom: aaddev
-ms.openlocfilehash: eb26101229ad60abae7a8a84f8dfa496488e84ba
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: d77af898d5baef4fa7970132b0eb8deddb8f68cb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39579007"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981801"
 ---
 # <a name="request-an-access-token-using-oauth-20-to-access-web-apis-and-applications-secured-by-azure-active-directory"></a>Żądanie tokenu dostępu, dostęp do interfejsów API sieci web i aplikacji zabezpieczonej przez usługi Azure Active Directory przy użyciu protokołu OAuth 2.0
 
@@ -59,7 +59,7 @@ Wymagane są następujące nagłówki:
 | redirect_uri  | wymagane              | Taką samą wartość redirect_uri, który został użyty do uzyskania authorization_code.                                                                                                                                                                                                                                                                                                                                                             |
 | client_secret | wymagane dla aplikacji sieci web | Klucz tajny aplikacji, utworzonego w portalu rejestracji aplikacji dla aplikacji. Nie należy używać w aplikacji natywnej, ponieważ client_secrets nie mogą być w niezawodny sposób będą przechowywane na urządzeniach. Jest ona wymagana dla aplikacji sieci web i interfejsów API, które mają możliwość bezpiecznie przechowywać wartość client_secret po stronie serwera sieci web.  Wpisy tajne klienta musi być zakodowane w adresie URL przed wysłaniem.                                                                                 |
 | wartość parametru code_verifier | opcjonalne              | Tym samym wartość parametru code_verifier użytego do uzyskania authorization_code. Wymagane, jeśli PKCE został użyty w żądaniu grant kod autoryzacji. Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636)                                                                                                                                                                                                                                                                                             |
-## <a name="handle-the-response"></a>Dojście do odpowiedzi
+## <a name="handle-the-response"></a>Obsługa odpowiedzi
 
 Odpowiedź oznaczająca Powodzenie tokenu będzie zawierać JWT token i będzie wyglądać następująco:
 
@@ -75,12 +75,12 @@ Odpowiedź oznaczająca Powodzenie tokenu będzie zawierać JWT token i będzie 
 ```
 | Parametr     | Opis                                                                                                                                                                                                                                                                                                                                                                                                                                              |
 |---------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| access_token  | Token żądanego dostępu. Aplikacja może używać tego tokenu do uwierzytelniania zabezpieczonych zasobów, takich jak interfejs API sieci web.                                                                                                                                                                                                                                                                                                                                    |
+| access_token  | Żądany [token dostępu](access-tokens.md). Aplikacja może używać tego tokenu do uwierzytelniania zabezpieczonych zasobów, takich jak interfejs API sieci web.                                                                                                                                                                                                                                                                                                                                    |
 | token_type    | Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest elementu nośnego                                                                                                                                                                                                                                                                                                                                                                           |
 | expires_in    | Jak długo token dostępu jest prawidłowy (w sekundach).                                                                                                                                                                                                                                                                                                                                                                                                       |
 | scope         | Access_token nadaje się do zakresów.                                                                                                                                                                                                                                                                                                                                                                                                         |
-| refresh_token | Token odświeżania OAuth 2.0. Aplikacja może używać tego tokenu uzyskiwanie tokenów dostępu dodatkowe, po upływie bieżącego tokenu dostępu. Refresh_tokens są długotrwałe i pozwala zachować dostęp do zasobów przez dłuższy czas. Aby uzyskać więcej szczegółów, zobacz [odwołania do tokenu v2.0](v2-id-and-access-tokens.md). <br> **Uwaga:** tylko wtedy, jeśli podana `offline_access` zażądano zakresu.                                               |
-| id_token      | Niepodpisane JSON Web Token (JWT). Aplikację można dekodować segmentów tego tokenu na żądanie informacji o użytkowniku, który jest zalogowany. Wartości w pamięci podręcznej i ich wyświetlenie aplikacji, ale nie należy polegać na nich autoryzacji lub granice zabezpieczeń. Aby uzyskać więcej informacji na temat id_tokens zobacz [token odwołania do punktu końcowego v2.0](v2-id-and-access-tokens.md). <br> **Uwaga:** tylko wtedy, jeśli podana `openid` zażądano zakresu. |
+| refresh_token | Token odświeżania OAuth 2.0. Aplikacja może używać tego tokenu uzyskiwanie tokenów dostępu dodatkowe, po upływie bieżącego tokenu dostępu. Refresh_tokens są długotrwałe i pozwala zachować dostęp do zasobów przez dłuższy czas. Aby uzyskać więcej szczegółów, zobacz [kodu v2.0 udzielić odwołanie](v2-oauth2-auth-code-flow.md#refresh-the-access-token). <br> **Uwaga:** tylko wtedy, jeśli podana `offline_access` zażądano zakresu.                                               |
+| id_token      | Niepodpisane JSON Web Token (JWT). Aplikację można dekodować segmentów tego tokenu na żądanie informacji o użytkowniku, który jest zalogowany. Wartości w pamięci podręcznej i ich wyświetlenie aplikacji, ale nie należy polegać na nich autoryzacji lub granice zabezpieczeń. Aby uzyskać więcej informacji na temat id_tokens zobacz [ `id_token reference` ](id-tokens.md). <br> **Uwaga:** tylko wtedy, jeśli podana `openid` zażądano zakresu. |
 
 
 

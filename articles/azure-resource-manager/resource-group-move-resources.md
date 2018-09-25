@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/07/2018
 ms.author: tomfitz
-ms.openlocfilehash: 2448b1f799c5253b36a18f108af1ff2de8b6ced3
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: e79419c764229e7dc52a32389b8b1116668dddfc
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127452"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039739"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -204,6 +204,7 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Log Analytics
 * Logic Apps
 * Machine Learning — Machine Learning Studio, usług sieci web mogą zostać przeniesione do grupy zasobów w tej samej subskrypcji, ale nie w ramach innej subskrypcji. Inne zasoby usługi Machine Learning można przenosić między subskrypcjami.
+* Managed Disks — zobacz [ograniczenia maszyn wirtualnych dla ograniczeń](#virtual-machines-limitations)
 * Tożsamość zarządzana — przypisanych przez użytkownika
 * Media Services
 * Mobile Engagement
@@ -254,7 +255,6 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, których ni
 * Włączono Lab Services — przejście do nowej grupy zasobów w tej samej subskrypcji, ale przenoszenie między subskrypcjami nie jest włączona.
 * Moduły równoważenia obciążenia — zobacz [ograniczenia modułu równoważenia obciążenia](#lb-limitations)
 * Aplikacje zarządzane
-* Managed Disks — zobacz [ograniczenia maszyn wirtualnych](#virtual-machines-limitations)
 * Microsoft Genomics
 * NetApp
 * Publiczny adres IP — Zobacz [ograniczenia publicznego adresu IP](#pip-limitations)
@@ -267,22 +267,36 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, których ni
 
 ## <a name="virtual-machines-limitations"></a>Ograniczenia dotyczące maszyn wirtualnych
 
-Dyski zarządzane nie obsługuje przenoszenia. To ograniczenie oznacza, że kilka powiązanych zasobów nie można przenieść za. Nie można przenieść:
+Dyski zarządzane są obsługiwane w przypadku przeniesienia od 24 września 2018 r. Musisz zarejestrować, aby włączyć tę funkcję
 
-* Dyski zarządzane
+#### <a name="powershell"></a>PowerShell
+`Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute`
+#### <a name="cli"></a>Interfejs wiersza polecenia
+`az feature register Microsoft.Compute ManagedResourcesMove`
+
+
+Oznacza to, że można również przenosić:
+
 * Maszyny wirtualne z dyskami zarządzanymi
-* Obrazów utworzonych przy użyciu dysków zarządzanych
-* Migawek utworzonych z dyskami zarządzanymi
+* Zarządzane obrazów
+* Zarządzane migawki
 * Zestawy dostępności mające maszyny wirtualne z dyskami zarządzanymi
 
-Mimo że nie można przenieść dysk zarządzany, można utworzyć kopię i następnie utworzyć nową maszynę wirtualną z istniejącego dysku zarządzanego. Aby uzyskać więcej informacji, zobacz:
+Oto ograniczenia, które nie są jeszcze obsługiwane
 
-* Kopiowanie dysków zarządzanych w ramach tej samej subskrypcji lub w innej subskrypcji przy użyciu [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-copy-managed-disks-to-same-or-different-subscription.md) lub [wiersza polecenia platformy Azure](../virtual-machines/scripts/virtual-machines-linux-cli-sample-copy-managed-disks-to-same-or-different-subscription.md)
-* Utwórz maszynę wirtualną przy użyciu istniejącego zarządzanego dysku systemu operacyjnego za pomocą [PowerShell](../virtual-machines/scripts/virtual-machines-windows-powershell-sample-create-vm-from-managed-os-disks.md) lub [wiersza polecenia platformy Azure](../virtual-machines/scripts/virtual-machines-linux-cli-sample-create-vm-from-managed-os-disks.md).
+* Maszyn wirtualnych przy użyciu certyfikatu przechowywanego w usłudze Key Vault można przenieść do nowej grupy zasobów w tej samej subskrypcji, ale nie w subskrypcjach.
+* Maszyny wirtualne skonfigurowane przy użyciu usługi Azure Backup. Użyj poniższych obejście, aby przenieść te maszyny wirtualne
+  * Znajdź lokalizację maszyny wirtualnej.
+  * Znajdź grupę zasobów, z następującym wzorcem nazewnictwa: "AzureBackupRG_<location of your VM>_1" AzureBackupRG_westus2_1 np.
+  * Jeśli komputer znajduje się w witrynie Azure Portal, a następnie sprawdź "Pokaż ukryte typy"
+  * Jeśli w programie PowerShell użyj `Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` polecenia cmdlet
+  * Jeśli w interfejsu wiersza polecenia, użyj `az resource list -g AzureBackupRG_<location of your VM>_1`
+  * Teraz zlokalizować zasobu o typie `Microsoft.Compute/restorePointCollections` zawierający wzorzec nazewnictwa `AzureBackup_<name of your VM that you're trying to move>_###########`
+  * Usunąć ten zasób
+  * Po zakończeniu usuwania będzie można przenieść maszynę wirtualną
+* Nie można przenieść Virtual Machine Scale Sets przy użyciu standardowych jednostek SKU modułu równoważenia obciążenia lub standardowego publicznego adresu IP jednostki SKU
+* Utworzona na podstawie zasobów w portalu Marketplace z planami dołączone maszyny wirtualne nie można przenosić między grupami zasobów lub subskrypcji. Anulowanie aprowizacji maszyny wirtualnej w bieżącej subskrypcji i Wdróż ponownie w nowej subskrypcji.
 
-Utworzona na podstawie zasobów w portalu Marketplace z planami dołączone maszyny wirtualne nie można przenosić między grupami zasobów lub subskrypcji. Anulowanie aprowizacji maszyny wirtualnej w bieżącej subskrypcji i Wdróż ponownie w nowej subskrypcji.
-
-Maszyn wirtualnych przy użyciu certyfikatu przechowywanego w usłudze Key Vault można przenieść do nowej grupy zasobów w tej samej subskrypcji, ale nie w subskrypcjach.
 
 ## <a name="virtual-networks-limitations"></a>Wirtualne sieci ograniczenia
 

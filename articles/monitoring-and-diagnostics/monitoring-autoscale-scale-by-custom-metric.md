@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 05/07/2017
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 97836c4160349b8095ba2095176783ae17b46e82
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
+ms.openlocfilehash: 9df587d92b9e35db496c787186ff2945db7965ce
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39216203"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987819"
 ---
 # <a name="get-started-with-auto-scale-by-custom-metric-in-azure"></a>Rozpoczynanie pracy z usługą automatyczne skalowanie według metryki niestandardowe na platformie Azure
 W tym artykule opisano sposób skalowania zasobu przez Metryka niestandardowa w witrynie Azure portal.
 
-Skalowanie automatyczne usługi Azure Monitor dotyczy tylko zestawów skalowania maszyn wirtualnych (VMSS), cloud services, plany usługi app service i środowisk usługi app service. 
+Skalowanie automatyczne platformy Azure Monitor ma zastosowanie tylko do [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [usług w chmurze](https://azure.microsoft.com/services/cloud-services/), [App Service — Web Apps](https://azure.microsoft.com/services/app-service/web/), i [usługi API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
 # <a name="lets-get-started"></a>Umożliwia rozpoczęcie pracy
 W tym artykule założono, że aplikacja sieci web za pomocą usługi application insights skonfigurowane. Jeśli nie masz jeszcze, możesz to zrobić [Konfigurowanie usługi Application Insights dla witryny sieci Web ASP.NET][1]
