@@ -10,12 +10,13 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 024f359362aba3f7d4f99b7dd36954a755c4d1f2
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ROBOTS: NOINDEX
+ms.openlocfilehash: c4fb331076f88d4f14f56201aa31a00160f395aa
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366084"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995350"
 ---
 # <a name="get-started-with-the-speech-recognition-api-in-javascript"></a>Wprowadzenie do interfejsu API rozpoznawania mowy w języku JavaScript
 

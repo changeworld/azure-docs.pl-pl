@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 08/16/2018
 ms.author: sedusch
-ms.openlocfilehash: dfcb5c7c0b487b8379d89a9b285bae1ca1a9c774
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: e2e76e3cd058e5798b0159923118b050f38d077e
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634527"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034641"
 ---
 # <a name="high-availability-of-sap-hana-on-azure-vms-on-suse-linux-enterprise-server"></a>Wysoka dostępność programu SAP HANA na maszynach wirtualnych platformy Azure w systemie SUSE Linux Enterprise Server
 
@@ -68,6 +68,7 @@ Najpierw przeczytaj następujące uwagi SAP i dokumenty:
 * Uwaga SAP [1984787] zawiera ogólne informacje o systemie SUSE Linux Enterprise Server 12.
 * Uwaga SAP [1999351] zawiera dodatkowe informacje dotyczące rozwiązywania problemów rozszerzenia platformy Azure Enhanced Monitoring dla rozwiązania SAP.
 * [WIKI społeczności SAP](https://wiki.scn.sap.com/wiki/display/HOME/SAPonLinuxNotes) ma wszystkie wymagane informacje o SAP dla systemu Linux.
+* [Oprogramowanie SAP HANA certyfikowane platform IaaS](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)
 * [Azure maszyny wirtualne, planowania i implementacji dla rozwiązania SAP w systemie Linux] [ planning-guide] przewodnik.
 * [Wdrażania maszyn wirtualnych platformy Azure dla rozwiązania SAP w systemie Linux] [ deployment-guide] (w tym artykule).
 * [Wdrażania systemu DBMS na maszynach wirtualnych platformy Azure dla rozwiązania SAP w systemie Linux] [ dbms-guide] przewodnik.
@@ -114,6 +115,10 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
 
 ### <a name="manual-deployment"></a>Ręczne wdrażanie
 
+> [!IMPORTANT]
+> Upewnij się, że system operacyjny, należy wybrać w określonych typów maszyn wirtualnych, którego używasz z certyfikatem platformy SAP Hana SAP. Lista oprogramowania SAP HANA certyfikowane typy maszyn wirtualnych i system operacyjny w wersji dla tych można wyszukiwać [platform certyfikowane IaaS programu SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Upewnij się, że kliknij przycisk Szczegóły typu maszyny Wirtualnej, aby uzyskać pełną listę oprogramowania SAP HANA na liście obsługiwanych wersji systemu operacyjnego dla określonego typu maszyny Wirtualnej
+>  
+
 1. Utwórz grupę zasobów.
 1. Utwórz sieć wirtualną.
 1. Tworzenie zestawu dostępności.
@@ -121,12 +126,10 @@ Aby wdrożyć szablon, wykonaj następujące kroki:
 1. Utwórz moduł równoważenia obciążenia (wewnętrzny).
    - Wybierz sieć wirtualną, utworzony w kroku 2.
 1. Tworzenie maszyny wirtualnej 1.
-   - Użyj co najmniej SLES4SAP 12 z dodatkiem SP1. W tym przykładzie użyto obrazu SLES4SAP 12 z dodatkiem SP2 https://ms.portal.azure.com/#create/SUSE.SUSELinuxEnterpriseServerforSAPApplications12SP2PremiumImage-ARM.
-   - Użyj systemu SLES dla rozwiązania SAP 12 z dodatkiem SP2 (Premium).
+   - Używanie obrazu SLES4SAP w galerii systemu Azure, która jest obsługiwana w przypadku oprogramowania SAP HANA na wybranego typu maszyny Wirtualnej.
    - Wybierz zestaw dostępności utworzonego w kroku 3.
 1. Tworzenie maszyny wirtualnej 2.
-   - Użyj co najmniej SLES4SAP 12 z dodatkiem SP1. W tym przykładzie użyto obrazu SLES4SAP 12 z dodatkiem SP1 BYOS https://ms.portal.azure.com/#create/SUSE.SUSELinuxEnterpriseServerforSAPApplications12SP2PremiumImage-ARM.
-   - Użyj systemu SLES dla rozwiązania SAP 12 z dodatkiem SP2 (Premium).
+   - Używanie obrazu SLES4SAP w galerii systemu Azure, która jest obsługiwana w przypadku oprogramowania SAP HANA na wybranego typu maszyny Wirtualnej.
    - Wybierz zestaw dostępności utworzonego w kroku 3. 
 1. Dodawanie dysków danych.
 1. Konfigurowanie modułu równoważenia obciążenia. Najpierw Utwórz pulę adresów IP frontonu:
@@ -676,6 +679,9 @@ crm resource cleanup msl_SAPHana_<b>HN1</b>_HDB<b>03</b> <b>hn1-db-0</b>
 </code></pre>
 
 ### <a name="suse-tests"></a>Testy SUSE
+
+> [!IMPORTANT]
+> Upewnij się, że system operacyjny, należy wybrać w określonych typów maszyn wirtualnych, którego używasz z certyfikatem platformy SAP Hana SAP. Lista oprogramowania SAP HANA certyfikowane typy maszyn wirtualnych i system operacyjny w wersji dla tych można wyszukiwać [platform certyfikowane IaaS programu SAP HANA](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure). Upewnij się, że kliknij przycisk Szczegóły typu maszyny Wirtualnej, aby uzyskać pełną listę oprogramowania SAP HANA na liście obsługiwanych wersji systemu operacyjnego dla określonego typu maszyny Wirtualnej
 
 Uruchom wszystkie przypadki testowe, które są wymienione w przewodniku zoptymalizowane pod kątem scenariuszy SAP HANA SR wydajności lub SAP HANA SR koszt zoptymalizowane pod kątem scenariusza, w zależności od danego przypadku użycia. Przewodniki programu można znaleźć na [SLES for SAP najlepszych praktyk strony][sles-for-sap-bp].
 

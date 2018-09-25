@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 1a5df1081edeb8b8e7520064a71534f70a9a9d33
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 575326ee3bd2cb64b2cb65168f23f7fe97dad029
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39344304"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954402"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Słownik terminów usługi IoT Hub
 W tym artykule wymieniono niektóre typowe terminy używane w artykułach usługi IoT Hub.
@@ -21,17 +21,17 @@ W tym artykule wymieniono niektóre typowe terminy używane w artykułach usług
 ## <a name="advanced-message-queueing-protocol"></a>Protokół Kolejkowanie komunikatów zaawansowane
 [Zaawansowane komunikat Kolejkowanie Protocol (AMQP)](https://www.amqp.org/) jest jedną z wiadomości, protokoły [usługi IoT Hub](#iot-hub) obsługuje do komunikowania się z urządzeniami. Aby uzyskać więcej informacji na temat protokołów obsługi komunikatów, obsługiwanych przez usługę IoT Hub, zobacz [wysyłania i odbierania komunikatów za pomocą usługi IoT Hub](iot-hub-devguide-messaging.md).
 
-## <a name="automatic-device-management"></a>Zarządzanie urządzeniami automatyczne
+## <a name="automatic-device-management"></a>Automatyczne zarządzanie urządzeniami
 Automatyczne zarządzanie urządzeniami w usłudze Azure IoT Hub automatyzuje wiele powtarzających się i złożonych zadań zarządzania flot duże urządzenia względem całej ich cykle życia. Za pomocą automatycznego zarządzania urządzeniami można docelowe zbiór urządzeń, na podstawie ich właściwości, zdefiniuj wymaganą konfiguracją i umożliwić usługi IoT Hub aktualizowania urządzenia, które pochodzą one do zakresu.  Składa się z [konfiguracji urządzeń automatycznego](iot-hub-auto-device-config.md) i [automatycznego wdrożenia usługi IoT Edge](../iot-edge/how-to-deploy-monitor.md).
 
 ## <a name="automatic-device-configuration"></a>Konfiguracja urządzenia automatycznego
 Można użyć w zapleczu rozwiązania [konfiguracji urządzeń automatycznego](iot-hub-auto-device-config.md) można przypisać żądanych właściwości z zestawem [bliźniaczych reprezentacji urządzeń](#device-twin) i stan raportu przy użyciu metryk systemu i metryki niestandardowe. 
 
-## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
-[Wiersza polecenia platformy Azure](../cli-install-nodejs.md) to narzędzie dla wielu platform, typu open source, opartych na powłoce poleceń do tworzenia i zarządzania zasobami na platformie Microsoft Azure. Ta wersja interfejsu wiersza polecenia jest implementowany przy użyciu środowiska Node.js.
+## <a name="azure-classic-cli"></a>Klasyczny interfejs wiersza polecenia Azure
+[Klasycznego wiersza polecenia platformy Azure](../cli-install-nodejs.md) to narzędzie dla wielu platform, typu open source, opartych na powłoce poleceń do tworzenia i zarządzania zasobami na platformie Microsoft Azure. Ta wersja interfejsu wiersza polecenia powinny służyć do tylko w przypadku wdrożeń klasycznych.
 
-## <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
-[Interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2) to narzędzie dla wielu platform, typu open source, opartych na powłoce poleceń do tworzenia i zarządzania zasobami na platformie Microsoft Azure. Ta wersja zapoznawcza interfejsu wiersza polecenia jest implementowany przy użyciu języka Python.
+## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
+[Wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-az-cli2) to narzędzie dla wielu platform, typu open source, opartych na powłoce poleceń do tworzenia i zarządzania zasobami na platformie Microsoft Azure.
 
 
 ## <a name="azure-iot-device-sdks"></a>Zestawy SDK platformy Azure w zakresie urządzeń IoT
@@ -185,8 +185,8 @@ Możesz użyć [interfejsu API REST zasobów usługi IoT Hub](https://docs.micro
 ## <a name="iot-solution-accelerators"></a>Akceleratory rozwiązań IoT
 Akceleratory rozwiązań Azure IoT pakietu ze sobą wiele usług platformy Azure do rozwiązań. Rozwiązania te umożliwiają szybkie rozpoczynanie pracy z implementacjami end-to-end typowych scenariuszy IoT. Aby uzyskać więcej informacji, zobacz [co to są Akceleratory rozwiązań Azure IoT?](../iot-accelerators/about-iot-accelerators.md)
 
-## <a name="the-iot-extension-for-azure-cli-20"></a>Rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure w wersji 2.0
-[Rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://github.com/Azure/azure-iot-cli-extension) to narzędzie dla wielu platform, wiersza polecenia. To narzędzie umożliwia zarządzanie urządzeniami w [rejestr tożsamości](#identity-registry), wysyłanie i odbieranie wiadomości i plików z urządzeń i monitorowanie operacji centrum IoT.
+## <a name="the-iot-extension-for-azure-cli"></a>Rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure 
+[Rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-iot-cli-extension) to narzędzie dla wielu platform, wiersza polecenia. To narzędzie umożliwia zarządzanie urządzeniami w [rejestr tożsamości](#identity-registry), wysyłanie i odbieranie wiadomości i plików z urządzeń i monitorowanie operacji centrum IoT.
 
 ## <a name="job"></a>Zadanie
 Można użyć w zapleczu rozwiązania [zadań](iot-hub-devguide-jobs.md) do planowania i śledzenia działań na zestawie urządzeń zarejestrowanych za pomocą usługi IoT hub. Działania obejmują aktualizacji bliźniaczej reprezentacji urządzenia [żądane właściwości](#desired-properties), zaktualizować bliźniaczą reprezentację urządzenia [tagi](#tags)i wywoływanie [metody bezpośrednie](#direct-method). [Usługa IoT Hub](#iot-hub) używa również do [zaimportować i wyeksportować](iot-hub-devguide-identity-registry.md#import-and-export-device-identities) z [rejestr tożsamości](#identity-registry).
