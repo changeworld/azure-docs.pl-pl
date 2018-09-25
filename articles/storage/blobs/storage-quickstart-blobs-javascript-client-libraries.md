@@ -9,19 +9,19 @@ ms.service: storage
 ms.author: cshoe
 ms.date: 04/06/2018
 ms.topic: quickstart
-ms.openlocfilehash: c4af99055753a11a8258a4347a885e0d60e3d286
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: b7230b5fdc519809463e3ee176aa14fa1553a48d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39399111"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960315"
 ---
 <!-- Customer intent: As a web application developer I want to interface with Azure Blob storage entirely on the client so that I can build a SPA application that is able to upload and delete files on blob storage. -->
 
 # <a name="quickstart-upload-list-and-delete-blobs-using-javascripthtml-in-the-browser"></a>Szybki start: przekazywanie, usuwanie oraz wyświetlanie listy obiektów blob przy użyciu języka JavaScript/HTML w przeglądarce
 Ten przewodnik Szybki start opisuje zarządzanie obiektami blob z poziomu kodu uruchamianego w całości w przeglądarce. Podejście użyte w tym miejscu pokazuje, jak użyć wymaganych środków zabezpieczeń do zapewnienia chronionego dostępu do konta magazynu obiektów blob. Do wykonania kroków tego przewodnika Szybki start jest potrzebna [subskrypcja platformy Azure](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-[!INCLUDE [storage-quickstart-tutorial-create-account-portal](../../../includes/storage-quickstart-tutorial-create-account-portal.md)]
+[!INCLUDE [storage-create-account-portal-include](../../../includes/storage-create-account-portal-include.md)]
 
 ## <a name="setting-up-storage-account-cors-rules"></a>Konfigurowanie reguł CORS konta magazynu 
 Aby aplikacja internetowa mogła uzyskać dostęp do magazynu obiektów blob z klienta, na koncie musi być włączone [współużytkowanie zasobów między źródłami](https://docs.microsoft.com/rest/api/storageservices/cross-origin-resource-sharing--cors--support-for-the-azure-storage-services) (CORS, cross-origin resource sharing). 

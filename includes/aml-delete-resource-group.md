@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 07/27/2018
-ms.openlocfilehash: 2ce7e083444eb6c4e02f04f36eb0810ea37d8ae7
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: dcd2854585e2c776f361aa4718af6b99d8cbb593
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39513911"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47002080"
 ---
 >[!IMPORTANT]
 >Utworzone zasoby mogą być używane jako wstępnie wymagane składniki w innych samouczkach usługi Azure Machine Learning i artykułach z instrukcjami. 
@@ -32,4 +32,4 @@ Jeśli nie zamierzasz używać elementów utworzonych w tym miejscu, usuń zasob
 
 1. Wpisz nazwę grupy zasobów, a następnie wybierz pozycję **Usuń**.
 
-   Jeśli wystąpi błąd„Aby można było usunąć zasób, należy usunąć zagnieżdżone zasoby”, najpierw należy usunąć wszelkie zagnieżdżone zasoby. [Zapoznaj się z tą sekcją rozwiązywania problemów](../articles/machine-learning/service/known-issues-and-troubleshooting-guide.md#cant-delete-experimentation-account), aby uzyskać szczegółowe informacje. 
+   Jeśli wystąpi błąd„Aby można było usunąć zasób, należy usunąć zagnieżdżone zasoby”, najpierw należy usunąć wszelkie zagnieżdżone zasoby. [Zapoznaj się z tą sekcją rozwiązywania problemów](../articles/machine-learning/desktop-workbench/known-issues-and-troubleshooting-guide.md#cant-delete-experimentation-account), aby uzyskać szczegółowe informacje. 
