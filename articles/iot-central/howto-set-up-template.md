@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: 1cff44e8430af0a544da948b33a15439fae56d8e
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: a076ee5275a4d053613902a1980542590263385c
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735654"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034281"
 ---
 # <a name="set-up-a-device-template"></a>Konfigurowanie szablonu urządzenia
 
@@ -74,6 +74,9 @@ Na przykład można dodać nowej miary telemetrii temperatury:
 
 Po wybraniu **gotowe**, **temperatury** miary, który pojawia się na liście pomiarów. Operator widzą wizualizacji dane dotyczące temperatury, która gromadzi urządzenia.
 
+> [!NOTE]
+  Typ danych miary telemetrii jest podwójny.
+
 ### <a name="create-an-event-measurement"></a>Tworzenie miary zdarzeń
 Aby dodać nowe miary zdarzenia, wybierz **Edytuj szablon**, a następnie kliknij przycisk **+ nowej miary** przycisku. Wybierz **zdarzeń** jako wartość typu, a następnie wprowadź szczegóły **Utwórz zdarzenie** formularza.
 
@@ -91,6 +94,8 @@ Aby wyświetlić więcej szczegółów na temat zdarzenia, wybierz ikonę zdarze
 
 ![Szczegóły dotyczące zdarzeń "Wentylator Motor Error"](./media/howto-set-up-template/eventmeasurementsdetail.png)
 
+> [!NOTE]
+  Typ danych miary zdarzeń jest ciągiem.
 
 ### <a name="create-a-state-measurement"></a>Tworzenie miary stanu
 Aby dodać nowe miary stanu, wybierz **Edytuj szablon**, a następnie kliknij przycisk **+ nowej miary** przycisku. Wybierz **stanu** jako wartość typu, a następnie wprowadź szczegóły **stanu Utwórz** formularza.
@@ -106,6 +111,9 @@ Po wybraniu **gotowe**, **tryb wentylator** pomiaru stanu, który pojawia się n
 ![Wykres stanu pomiaru](./media/howto-set-up-template/statemeasurementschart.png)
 
 Jeśli urządzenie wysyła nadmiar punktów danych w małych czas trwania, pomiar stanu pojawia się z inną wizualizację, jak pokazano na poniższym zrzucie ekranu. Po kliknięciu na wykresie wszystkie punkty danych, w tym okresie są wyświetlane w porządku chronologicznym. Można również zawęzić zakres czasu, aby zobaczyć pomiaru wykreślić na wykresie.
+
+> [!NOTE]
+  Typ danych miary stanu jest ciągiem.
 
 ## <a name="settings"></a>Ustawienia
 

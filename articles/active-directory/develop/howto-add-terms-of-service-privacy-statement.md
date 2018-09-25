@@ -9,19 +9,19 @@ editor: ''
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 05/23/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviwer: lenalepa, sureshja
 ms.custom: aaddev
-ms.openlocfilehash: cb05139241f92eb930a99c387e2f06cabac35caf
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: 21cd4990e2117cef2d36fa2607a601afd1a4c4e4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581468"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990505"
 ---
 # <a name="terms-of-service-and-privacy-statement-for-registered-azure-active-directory-apps"></a>Warunków użytkowania usługi i zasady zachowania poufności dla zarejestrowanych aplikacji usługi Azure Active Directory
 
@@ -54,12 +54,14 @@ Przykłady: `https://myapp.com/terms-of-service` i `https://myapp.com/privacy-st
 ## <a name="adding-links-to-the-terms-of-service-and-privacy-statement"></a>Dodawanie linków do warunków usługi i zasady zachowania poufności
 
 Jeśli warunki usługi i zasady zachowania poufności są gotowe, można dodać łącza do tych dokumentów, w swojej aplikacji za pomocą jednej z następujących metod:
+
 * [W witrynie Azure portal](#registered-in-azure-portal)
 * [W portalu rejestracji aplikacji lub Centrum deweloperów](#registered-in-app-reg-portal)
 * [Za pomocą aplikacji obiektu JSON](#app-object-json)
 * [Za pomocą programu MSGraph beta interfejsu API REST](#msgraph-beta-rest-api)
 
 ### <a name="registered-in-azure-portal"></a>Jeśli aplikacja jest zarejestrowana w witrynie Azure portal
+
 Jeśli aplikacja jest zarejestrowana w witrynie Azure portal, wykonaj następujące kroki.
 
 1. Zaloguj się do [witryny Azure portal](https://portal.azure.com/).
@@ -68,9 +70,10 @@ Jeśli aplikacja jest zarejestrowana w witrynie Azure portal, wykonaj następuj�
 4. Wypełnij **URL warunki usługi** i **adres URL zasad zachowania poufności informacji** pola.
 5. Zapisz zmiany.
 
-![Sekcja właściwości aplikacji z warunkami adresy URL poufności informacji usług i ochrony prywatności](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
+    ![Sekcja właściwości aplikacji z warunkami adresy URL poufności informacji usług i ochrony prywatności](./media/howto-add-terms-of-service-privacy-statement/azure-portal-terms-service-privacy-statement-urls.png)
 
 ### <a name="registered-in-app-reg-portal"></a>Jeśli aplikacja jest zarejestrowana w portalu rejestracji aplikacji
+
 Wykonaj następujące kroki, jeśli aplikacja jest zarejestrowana w portalu rejestracji aplikacji lub Centrum deweloperów.
 
 1. Zaloguj się do [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/).
@@ -78,9 +81,10 @@ Wykonaj następujące kroki, jeśli aplikacja jest zarejestrowana w portalu reje
 3. Wypełnij **URL warunki usługi** i **adres URL zasad zachowania poufności informacji** pola.
 4. Zapisz zmiany.
 
-![Sekcji profilu aplikacji z warunkami usługi i ochrona prywatności adresów URL, instrukcja](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)
+    ![Sekcji profilu aplikacji z warunkami usługi i ochrona prywatności adresów URL, instrukcja](./media/howto-add-terms-of-service-privacy-statement/app-registration-portal-profile-terms-service-privacy-statement-urls.png)
 
 ### <a name="app-object-json"></a>Za pomocą aplikacji obiektu JSON
+
 Jeśli wolisz bezpośrednio zmodyfikować obiekt aplikacji JSON umożliwia Edytor manifestu w witrynie Azure portal lub portalu rejestracji aplikacji zawierają łącza do aplikacji warunków usługi i zasady zachowania poufności.
 
 ```json
@@ -91,6 +95,7 @@ Jeśli wolisz bezpośrednio zmodyfikować obiekt aplikacji JSON umożliwia Edyto
 ```
 
 ### <a name="msgraph-beta-rest-api"></a>Za pomocą programu MSGraph beta interfejsu API REST
+
 Programowe aktualizację wszystkich aplikacji, można użyć MSGraph wersji beta interfejsu API REST można zaktualizować wszystkie Twoje aplikacje zawierają linki do warunków usługi i ochrony prywatności dokumentów instrukcji.
 
 ```

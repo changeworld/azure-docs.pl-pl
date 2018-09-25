@@ -1,6 +1,6 @@
 ---
-title: 'Uaktualnianie aplikacji: parametry uaktualnienia | Dokumentacja firmy Microsoft'
-description: W tym artykule opisano parametry dotyczące uaktualniania aplikacji usługi Service Fabric, w tym kontroli kondycji do wykonania i zasad, aby automatycznie cofania operacji uaktualniania.
+title: 'Uaktualnianie aplikacji: parametry uaktualniania | Dokumentacja firmy Microsoft'
+description: W tym artykule opisano parametry uaktualniania aplikacji usługi Service Fabric, w tym kontrole kondycji do wykonania i zasady, aby automatycznie Cofnij uaktualnienia.
 services: service-fabric
 documentationcenter: .net
 author: mani-ramaswamy
@@ -12,65 +12,85 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 2/23/2018
+ms.date: 9/17/2018
 ms.author: subramar
-ms.openlocfilehash: eb319b0f4e910163572ee62d8bdee735f27be592
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: f3f381fddee9c1830202854f02556f73b5aeed23
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34212623"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055581"
 ---
 # <a name="application-upgrade-parameters"></a>Parametry uaktualniania aplikacji
-W tym artykule opisano różne parametry, które są stosowane podczas uaktualniania aplikacji sieci szkieletowej usług Azure. Parametry zawierają nazwę i wersję aplikacji. Są one pokrętła określające limity czasu i kontroli kondycji, które są stosowane podczas uaktualniania, a określają zasady, które należy zastosować w przypadku niepowodzenia uaktualnienia.
+W tym artykule opisano różne parametry, które są stosowane podczas uaktualniania aplikacji usługi Azure Service Fabric. Parametry uaktualniania aplikacji kontrolować limity czasu i kontroli kondycji, które są stosowane podczas uaktualniania, a określają zasady, które można zastosować, uaktualnienie nie powiedzie się.
 
-<br>
+Parametry aplikacji mają zastosowanie do uaktualnienia przy użyciu programu PowerShell lub programu Visual Studio. Wymagane i opcjonalne parametry programu PowerShell i/lub programu Visual Studio są opisane w tabelach parametrów wymaganych i opcjonalnych parametrów.
 
-| Parametr | Opis |
-| --- | --- |
-| ApplicationName |Nazwa aplikacji, który jest uaktualniany. Przykłady: fabric: / VisualObjects, fabric: / ClusterMonitor |
-| TargetApplicationTypeVersion |Typ wersji aplikacji, które cele uaktualniania. |
-| FailureAction |Akcję wykonywaną przez sieć szkieletowa usług w przypadku nieudanego uaktualnienia. Aplikacja może zostać przywrócona do wersji poprzedzającej wersję update (wycofywania) lub uaktualnienia może być zatrzymana w bieżącej domenie uaktualnienia. W drugim przypadku tryb uaktualniania jest również zmienić ręcznie. Dozwolone wartości to wycofywania i ręczne. |
-| HealthCheckWaitDurationSec |Czas oczekiwania (w sekundach), po zakończeniu uaktualnienia w domenie uaktualnienia przed sieci szkieletowej usług ocenia kondycję aplikacji. Ten czas trwania również można uznać za czas, które aplikacja powinna być uruchomiona, zanim mogą zostać uwzględnione dobrej kondycji. Jeśli sprawdzenie kondycji zakończy się pomyślnie, proces uaktualniania przechodzi do następnej domeny uaktualnienia.  W przypadku niepowodzenia sprawdzania kondycji sieci szkieletowej usług czeka na interwał (UpgradeHealthCheckInterval) przed ponowną próbą wykonania sprawdzenia kondycji ponownie aż do osiągnięcia HealthCheckRetryTimeout. Domyślną i zalecaną wartością jest 0 sekund. |
-| HealthCheckRetryTimeoutSec |Czas trwania (w sekundach) tej sieci szkieletowej usług kontynuuje wykonywanie oceny kondycji przed zadeklarowaniem uaktualniania, ponieważ nie powiodło się. Wartość domyślna to 600 sekund. Ten czas trwania rozpoczyna się po osiągnięciu HealthCheckWaitDuration. W tym HealthCheckRetryTimeout sieci szkieletowej usług może być sprawdzana jest wiele kondycji kondycji aplikacji. Wartość domyślna to 10 minut i należy odpowiednio dostosować aplikacji. |
-| HealthCheckStableDurationSec |Czas trwania (w sekundach), aby sprawdzić, czy aplikacja jest stabilna przed przejście do następnej domeny uaktualnienia lub zakończeniu uaktualniania. Ten czas trwania oczekiwania jest używany do chronienia wykryte zmiany kondycji prawej, po wykonaniu sprawdzania kondycji. Wartość domyślna to 120 sekund i należy odpowiednio dostosować aplikacji. |
-| UpgradeDomainTimeoutSec |Maksymalny czas (w sekundach) dla uaktualnienia pojedynczej domeny uaktualnienia. Po osiągnięciu tego limitu czasu uaktualnienia zatrzymuje i jest przeprowadzane zgodnie z ustawieniem dla UpgradeFailureAction. Wartość domyślna to nigdy nie (Infinite) i należy odpowiednio dostosować aplikacji. |
-| UpgradeTimeout |Limit (w sekundach), która ma zastosowanie do całego uaktualnienia. Po osiągnięciu tego limitu czasu uaktualnienia przerywa działanie i UpgradeFailureAction zostanie wywołany. Wartość domyślna to nigdy nie (Infinite) i należy odpowiednio dostosować aplikacji. |
-| UpgradeHealthCheckInterval |Częstotliwość, że odbywa się sprawdzenie stanu kondycji. Ten parametr jest określony w sekcji ClusterManager *klastra* *manifestu*i nie jest określony jako część polecenia cmdlet uaktualnienia. Wartość domyślna to 60 sekund. |
+Uaktualnienia aplikacji są inicjowane przy użyciu jednej z trzech trybów uaktualnienia wybierane przez użytkownika. Każdego trybu ma swój własny zestaw parametrów aplikacji:
+- Monitorowane
+- Niemonitorowane automatycznie
+- Niemonitorowane ręczne
 
-<br>
+Uaktualnianie aplikacji usługi Service Fabric przy użyciu programu PowerShell [Start ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade) polecenia. Tryb uaktualniania jest zaznaczone, przekazując albo **monitorowanej**, **UnmonitoredAuto**, lub **UnmonitoredManual** parametr [ Start-ServiceFabricApplicationUpgrade](https://docs.microsoft.com/powershell/module/servicefabric/start-servicefabricapplicationupgrade).
 
-## <a name="service-health-evaluation-during-application-upgrade"></a>Oceny kondycji usługi podczas uaktualniania aplikacji
-<br>
-Kryteria oceny kondycji są opcjonalne. Jeśli po uruchomieniu uaktualniania nie określono kryteriów oceny kondycji, sieci szkieletowej usług używa zasady dotyczące kondycji aplikacji, które są określone w pliku ApplicationManifest.xml wystąpienia aplikacji.
+Visual Studio usługi Service Fabric aplikacji uaktualnienia parametrów są ustawiane za pomocą okna dialogowego uaktualnienia ustawienia programu Visual Studio. Tryb uaktualniania programu Visual Studio jest zaznaczone, przy użyciu **tryb uaktualniania** pole listy rozwijanej, aby albo **monitorowanej**, **UnmonitoredAuto**, lub **UnmonitoredManual** . Aby uzyskać więcej informacji, zobacz [Konfigurowanie uaktualniania aplikacji usługi Service Fabric w programie Visual Studio](service-fabric-visualstudio-configure-upgrade.md).
 
-<br>
+## <a name="required-parameters"></a>Wymagane parametry
+(PS = programu PowerShell, a = programu Visual Studio)
 
-| Parametr | Opis |
-| --- | --- |
-| Elementów ConsiderWarningAsError |Wartość domyślna to False. Traktuj ostrzeżenia kondycji aplikacji jako błędy podczas oceny kondycji aplikacji podczas uaktualniania. Domyślnie usługa sieci szkieletowej nie może oszacować kondycji ostrzeżenia, aby uaktualnianie mógł kontynuować, nawet jeśli istnieją ostrzeżenia, należy błędów (błędy). |
-| MaxPercentUnhealthyDeployedApplications |Domyślną i zalecaną wartością jest 0. Określ maksymalną liczbę wdrożonych aplikacji (zobacz [sekcji kondycji](service-fabric-health-introduction.md)) które może być nieprawidłowy, przed aplikacja jest określana jako zła i niepowodzenia uaktualnienia. Ten parametr określa kondycji aplikacji w węźle, co ułatwia wykrywanie problemów podczas uaktualniania. Zazwyczaj replik aplikacji Pobierz równoważeniem obciążenia na inny węzeł, który umożliwia aplikacji są wyświetlane w dobrej kondycji, dzięki czemu Uaktualnij, aby przejść. Określając strict kondycji MaxPercentUnhealthyDeployedApplications usługi sieć szkieletowa można wykrycie problem z pakietem aplikacji szybko i utworzyć błędu szybkiego uaktualnienia. |
-| MaxPercentUnhealthyServices |Domyślną i zalecaną wartością jest 0. Określ maksymalną liczbę usług w wystąpienia aplikacji, które mogą być zła, zanim aplikacja jest określana jako zła i niepowodzenia uaktualnienia. |
-| MaxPercentUnhealthyPartitionsPerService |Domyślną i zalecaną wartością jest 0. Określ maksymalną liczbę partycji usługi, który może być nieprawidłowy, zanim usługa jest określana jako zła. |
-| MaxPercentUnhealthyReplicasPerPartition |Domyślną i zalecaną wartością jest 0. Określ maksymalną liczbę replik partycji, który może być nieprawidłowy, zanim partycji jest określana jako zła. |
-| UpgradeReplicaSetCheckTimeout |<p>**Usługi bezstanowej**— w ramach pojedynczej domeny uaktualnienia, próbuje upewnij się, że dostępne są dodatkowe wystąpienia usługi sieć szkieletowa usług. Jeśli liczba wystąpień docelowych jest więcej niż jeden, Service Fabric czeka na więcej niż jedno wystąpienie, które mają być dostępne do wartości maksymalnej limitu czasu. Ten limit czasu został określony przy użyciu właściwości UpgradeReplicaSetCheckTimeout. Po przekroczeniu limitu czasu, usługa sieć szkieletowa kontynuuje uaktualnienia, niezależnie od liczby wystąpień usługi. Jeśli liczba wystąpień docelowych, usługi Service Fabric nie oczekuje i natychmiast będzie kontynuowana po uaktualnieniu.</p><p>**Usługi stanowej**— w ramach pojedynczej domeny uaktualnienia sieci szkieletowej usług próbuje upewnij się, że zestawu replik ma kworum. Sieć szkieletowa usług czeka kworum mają być dostępne do wartości maksymalnej limitu czasu (określoną przez właściwość UpgradeReplicaSetCheckTimeout). Po przekroczeniu limitu czasu, usługa sieć szkieletowa kontynuuje uaktualnienia, niezależnie od kworum. To ustawienie jest zestaw jak nigdy (infinite) stopniowych do przodu i 1200 sekund po wycofanie.</p> |
-| ForceRestart |Po aktualizacji konfiguracji lub danych pakietu bez aktualizowania kodu usługi ponownym uruchomieniu usługi tylko wtedy, gdy właściwość ForceRestart jest ustawiona na true. Po ukończeniu aktualizacji sieci szkieletowej usług powiadamia usługę pakiet konfiguracji lub pakiet danych jest dostępna. Usługa jest odpowiedzialna za zastosowania zmian. Jeśli to konieczne, usługi można ponownie uruchomić się. |
+| Parametr | Dotyczy | Opis |
+| --- | --- | --- |
+ApplicationName |PS| Nazwa aplikacji, która jest uaktualniana. Przykłady: Service fabric: / VisualObjects, Service fabric: / ClusterMonitor. |
+ApplicationTypeVersion|PS|Typ wersji aplikacji, które cele uaktualniania. |
+FailureAction |PS VS|Dozwolone wartości to **nieprawidłowy**, **wycofywania**, i **ręczne**. Akcja podjęte przez usługę Service Fabric, w przypadku nieudanego uaktualnienia. Aplikacja może zostać przywrócona przed aktualizacją wersja (Wycofaj) lub uaktualnienia mogą zostać zatrzymany w bieżącej domenie uaktualnienia. W tym ostatnim przypadku tryb uaktualniania również jest zmieniana na **ręczne**.|
+Monitorowane |PS|Wskazuje, czy tryb uaktualniania jest monitorowany. Po zakończeniu pracy uaktualnienie domeny uaktualnienia, polecenia cmdlet, jeśli kondycję domeny uaktualnienia klastra, spełniają zasady dotyczące kondycji, które definiujesz, Usługa Service Fabric uaktualnia następnej domeny uaktualnienia. Jeśli domena uaktualnienia lub klastra nie spełnia zasad dotyczących kondycji, uaktualnienie nie powiedzie się i usługi Service Fabric powoduje wycofanie uaktualnienie dla domeny uaktualnień lub powraca do trybu ręcznego zgodnie z zasadami określony. To jest zalecanym trybem uaktualnień aplikacji w środowisku produkcyjnym. |
+Element UpgradeMode | VS | Dozwolone wartości to **monitorowanej** (ustawienie domyślne), **UnmonitoredAuto**, lub **UnmonitoredManual**. Zobacz parametry programu PowerShell dla każdego trybu, w tym artykule, aby uzyskać szczegółowe informacje. |
+UnmonitoredAuto | PS | Wskazuje, że tryb uaktualniania jest automatycznie monitorowany. Po uaktualnieniu domeny uaktualnienia usługi Service Fabric Service Fabric uaktualnia następnej domeny uaktualnienia, niezależnie od tego, stan kondycji aplikacji. Ten tryb nie jest zalecane w środowisku produkcyjnym i jest przydatna tylko podczas tworzenia aplikacji. |
+UnmonitoredManual | PS | Wskazuje, że tryb uaktualniania jest monitorowany ręczne. Po uaktualnieniu domeny uaktualnienia usługi Service Fabric czeka do uaktualnienia następnej domeny uaktualnienia przy użyciu *ServiceFabricApplicationUpgrade Wznów* polecenia cmdlet. |
 
-<br>
-<br>
-Kryteria MaxPercentUnhealthyServices, MaxPercentUnhealthyPartitionsPerService i MaxPercentUnhealthyReplicasPerPartition może być określona dla typu usługi dla wystąpienia aplikacji. Umożliwia ustawienie tych parametrów dla usługi do zawiera typy różnych usług z różnych wersji ewaluacyjnej zasadami aplikacji. Na przykład typ usługi bezstanowej bramy może mieć MaxPercentUnhealthyPartitionsPerService, który jest inny niż typ usługi stanowej aparat wystąpienie aplikacji.
+## <a name="optional-parameters"></a>Następujące parametry opcjonalne
+
+Parametry oceny kondycji są opcjonalne. Jeśli nie zostały określone kryteria oceny kondycji, po rozpoczęciu uaktualnienia, Usługa Service Fabric używa zasady dotyczące kondycji aplikacji, które są określone w ApplicationManifest.xml wystąpienia aplikacji.
+
+Użyj poziomy pasek przewijania w dolnej części tabeli, aby wyświetlić pełen opis pola.
+
+(PS = programu PowerShell, a = programu Visual Studio)
+
+| Parametr | Dotyczy | Opis |
+| --- | --- | --- |
+| ApplicationParameter |PS VS| Określa przesłonięcia dla parametry aplikacji.<br>Parametry applcation programu PowerShell są określane jako tablica skrótów par nazwa/wartość. Na przykład @{"VotingData_MinReplicaSetSize" = "3"; "VotingData_PartitionCount" = "1"}.<br>Parametry aplikacji w usłudze Visual Studio można określić w oknie dialogowym Publikowanie aplikacji usługi Service Fabric w **plik parametrów aplikacji** pola.
+| Potwierdź |PS| Dozwolone wartości to **True** i **False**. Monituje o potwierdzenie przed uruchomieniem polecenia cmdlet. |
+| ConsiderWarningAsError |PS VS |Dozwolone wartości to **True** i **False**. Wartość domyślna to **False**. Zdarzenia kondycji ostrzeżenia dla aplikacji należy traktować jako błędy podczas oceny kondycji aplikacji podczas uaktualniania. Domyślnie Usługa Service Fabric nie może oszacować zdarzenia kondycji ostrzeżeń jako błędów (błędy), aby kontynuować uaktualnianie nawet jeśli występują ostrzeżenia. |
+| DefaultServiceTypeHealthPolicy | PS VS |Określa zasady kondycji domyślny typ usługi do użycia podczas uaktualniania monitorowanych w formacie MaxPercentUnhealthyPartitionsPerService, MaxPercentUnhealthyReplicasPerPartition, MaxPercentUnhealthyServices. Na przykład 5,10,15 wskazuje następujące wartości: MaxPercentUnhealthyPartitionsPerService = 5, MaxPercentUnhealthyReplicasPerPartition = 10, MaxPercentUnhealthyServices = 15. |
+| Wymuś | PS VS | Dozwolone wartości to **True** i **False**. Wskazuje, że proces uaktualniania pomija komunikat ostrzegawczy i wymuszenie uaktualnienia, nawet wtedy, gdy jest to numer wersji nie zmienił. To jest przydatne w przypadku lokalnego testowania, ale nie jest zalecane do użytku w środowisku produkcyjnym, ponieważ wymaga usunięcia istniejącego wdrożenia, co powoduje, że czas przestoju i potencjalnych utracie. |
+| ForceRestart |PS VS |Po aktualizacji konfiguracji lub danych pakietu bez aktualizowania kodu usługi tylko wtedy, gdy właściwość ForceRestart jest ustawiona na ponownym uruchomieniu usługi **True**. Po zakończeniu aktualizacji usługi Service Fabric powiadamia usługę nowy pakiet konfiguracji lub pakiet danych jest dostępna. Usługa jest odpowiedzialna za zastosowania zmian. Jeśli to konieczne, usługa może uruchamia się ponownie. |
+| HealthCheckRetryTimeoutSec |PS VS |Czas trwania (w sekundach) tej usługi Service Fabric w dalszym ciągu wykonywać ocenę kondycji przed zadeklarowaniem uaktualnienia, ponieważ nie powiodło się. Wartość domyślna to 600 sekund. Ten czas trwania rozpoczyna się po *HealthCheckWaitDurationSec* zostanie osiągnięty. W ramach tej *HealthCheckRetryTimeout*, Usługa Service Fabric może działać wiele kontrole kondycji kondycji aplikacji. Wartość domyślna to 10 minut i powinien zostać dostosowany odpowiednio do aplikacji. |
+| HealthCheckStableDurationSec |PS VS |Czas trwania (w sekundach) aby sprawdzić, czy aplikacja jest stabilna przed przeniesieniem do następnej domeny uaktualnienia lub ukończeniu procesu uaktualniania. Ten czas oczekiwania używany w celu zapobiegania niewykrytym zmianom kondycji bezpośrednio po sprawdzeniu kondycji. Wartość domyślna to 120 sekund i powinien zostać dostosowany odpowiednio do aplikacji. |
+| HealthCheckWaitDurationSec |PS VS | Czas oczekiwania (w sekundach), po zakończeniu uaktualniania w domenie uaktualnień przed usługi Service Fabric ocenia kondycję aplikacji. Ten czas można również uważana za czas, który aplikacja powinna działać, zanim mogą być uznane za dobrej kondycji. Jeśli sprawdzenie kondycji zakończy się pomyślnie, proces uaktualniania przechodzi do następnej domeny uaktualnienia.  W przypadku niepowodzenia sprawdzania kondycji usługi Service Fabric czeka [UpgradeHealthCheckInterval](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-fabric-settings#clustermanager) przed ponowną próbą kondycji Sprawdź ponownie do czasu *HealthCheckRetryTimeoutSec* zostanie osiągnięty. Domyślna i zalecana wartość wynosi 0 sekund. |
+| MaxPercentUnhealthyDeployedApplications|PS VS |Domyślnej i zalecanej wartości to 0. Określ maksymalną liczbę wdrożonych aplikacji (zobacz [sekcji kondycji](service-fabric-health-introduction.md)), które można złej kondycji przed aplikacja jest uznawana za złą i niepowodzenia uaktualnienia. Ten parametr określa kondycji aplikacji w węźle, co ułatwia wykrywanie problemów podczas uaktualniania. Zazwyczaj replik ją pobrać ze zrównoważonym obciążeniem na inny węzeł, który umożliwia aplikacji są wyświetlane w dobrej kondycji, umożliwiając w ten sposób uaktualnienia kontynuować. Określając strict *MaxPercentUnhealthyDeployedApplications* kondycji usługi Service Fabric można szybko wykryć problem z pakietem aplikacji i utworzyć awarii szybkie uaktualnienia. |
+| MaxPercentUnhealthyServices |PS VS |Parametr *DefaultServiceTypeHealthPolicy* i *ServiceTypeHealthPolicyMap*. Domyślnej i zalecanej wartości to 0. Określ maksymalną liczbę usług w wystąpienie aplikacji, które może być nieprawidłowy, zanim aplikacja jest uznawana za złą i niepowodzenia uaktualnienia. |
+| MaxPercentUnhealthyPartitionsPerService|PS VS |Domyślnej i zalecanej wartości to 0. Określ maksymalną liczbę partycji w usłudze, która może być nieprawidłowy, zanim usługa jest uznawana za złą. |
+| MaxPercentUnhealthyReplicasPerPartition|PS VS |Domyślnej i zalecanej wartości to 0. Określ maksymalną liczbę replik partycji, który może być nieprawidłowy, zanim partycji jest określana jako zła. |
+| ServiceTypeHealthPolicyMap | PS VS | Reprezentuje zasad dotyczących kondycji używane do oceny kondycji usług należące do typu usługi. Przyjmuje dane wejściowe z tabeli skrótu w następującym formacie: @ {"ServiceTypeName": "MaxPercentUnhealthyServices MaxPercentUnhealthyPartitionsPerService, MaxPercentUnhealthyReplicasPerPartition,"} na przykład: @{"ServiceTypeName01" = "5,10,5"; "ServiceTypeName02" = "5,5,5"} |
+| TimeoutSec | PS VS | Określa wartość limitu czasu w sekundach dla tej operacji. |
+| UpgradeDomainTimeoutSec |PS VS |Maksymalny czas (w sekundach) dla uaktualnienie pojedynczej domeny uaktualnienia. Po osiągnięciu tego limitu czasu uaktualnienia zatrzymuje i jest przeprowadzane zgodnie z ustawieniem dla *FailureAction*. Wartość domyślna to nigdy nie (nieograniczony) i należy odpowiednio dostosować dla aplikacji. |
+| UpgradeReplicaSetCheckTimeoutSec |PS VS |**Usługa bezstanowa**— w jednej domenie uaktualnienia program próbuje upewnij się, że dostępne są dodatkowe wystąpienia usługi Service Fabric. Jeśli liczba wystąpień docelowego jest więcej niż jeden, Usługa Service Fabric czeka na więcej niż jedno wystąpienie, które mają być dostępne, maksymalnie maksymalną wartość limitu czasu. Ten limit czasu jest określony za pomocą *UpgradeReplicaSetCheckTimeoutSec* właściwości. Przekroczeniu limitu czasu usługi Service Fabric będzie kontynuowana po uaktualnieniu, bez względu na liczbę wystąpień usługi. Jeśli docelowa liczba wystąpień, usługi Service Fabric czeka i natychmiast kontynuacją uaktualnienia przez.<br><br>**Usługa stanowa**— w pojedynczej domenie uaktualnienia usługi Service Fabric próbuje upewnij się, że zestawu replik ma kworum. Usługa Service Fabric czeka kworum udostępnienie maksymalnie maksymalną wartość limitu czasu (określony przez *UpgradeReplicaSetCheckTimeoutSec* właściwości). Przekroczeniu limitu czasu usługi Service Fabric będzie kontynuowana po uaktualnieniu, niezależnie od kworum. To ustawienie jest ustawiony jako nigdy nie (z bez ograniczeń czasowych), podczas wdrażania do przodu, 1200 sekund podczas wycofywania. |
+| UpgradeTimeoutSec |PS VS |Czasu (w sekundach), która ma zastosowanie do całej uaktualnienia. Po osiągnięciu tego limitu czasu zatrzymuje uaktualnienia i *FailureAction* zostanie wywołany. Wartość domyślna to nigdy nie (nieograniczony) i należy odpowiednio dostosować dla aplikacji. |
+| WhatIf | PS | Dozwolone wartości to **True** i **False**. Pokazuje, co się stanie po uruchomieniu polecenia cmdlet. Polecenie cmdlet nie jest uruchomione. |
+
+*MaxPercentUnhealthyServices*, *MaxPercentUnhealthyPartitionsPerService*, i *MaxPercentUnhealthyReplicasPerPartition* kryteria może być określona dla Typ usługi dla wystąpienia aplikacji. Ustawienia te parametry za daną usługę umożliwia aplikacji zawierają typy różnych usług za pomocą różnych oceny zasad. Na przykład można mieć typ usługi bramy o bezstanowa *MaxPercentUnhealthyPartitionsPerService* różni się od typu usługi stanowej aparatu w przypadku wystąpienie aplikacji.
 
 ## <a name="next-steps"></a>Kolejne kroki
-[Uaktualnianie aplikacji za pomocą Visual Studio](service-fabric-application-upgrade-tutorial.md) przeprowadzi Cię przez proces uaktualnienia aplikacji przy użyciu programu Visual Studio.
+[Uaktualnienie z aplikacji przy użyciu programu Visual Studio](service-fabric-application-upgrade-tutorial.md) przeprowadzi uaktualnienie aplikacji przy użyciu programu Visual Studio.
 
-[Uaktualnienie z aplikacji przy użyciu programu Powershell](service-fabric-application-upgrade-tutorial-powershell.md) przeprowadzi Cię przez proces uaktualnienia aplikacji przy użyciu programu PowerShell.
+[Uaktualnienie z aplikacji przy użyciu programu Powershell](service-fabric-application-upgrade-tutorial-powershell.md) przeprowadzi uaktualnienie aplikacji przy użyciu programu PowerShell.
 
-[Uaktualnianie aplikacji w systemie Linux przy użyciu interfejsu wiersza polecenia usługi sieć szkieletowa](service-fabric-application-lifecycle-sfctl.md#upgrade-application) przeprowadzi Cię przez proces uaktualnienia aplikacji przy użyciu interfejsu wiersza polecenia usługi sieci szkieletowej.
+[Uaktualnianie aplikacji przy użyciu interfejsu wiersza polecenia usługi Service Fabric w systemie Linux](service-fabric-application-lifecycle-sfctl.md#upgrade-application) przeprowadzi uaktualnienie aplikacji przy użyciu interfejsu wiersza polecenia usługi Service Fabric.
 
-[Uaktualnianie aplikacji za pomocą wtyczki Eclipse sieci szkieletowej usług](service-fabric-get-started-eclipse.md#upgrade-your-service-fabric-java-application)
+[Uaktualnianie aplikacji przy użyciu wtyczki środowiska Eclipse usługi Service Fabric](service-fabric-get-started-eclipse.md#upgrade-your-service-fabric-java-application)
 
-Uzyskania uaktualnień aplikacji zgodnych przez poznanie [szeregowanie danych](service-fabric-application-upgrade-data-serialization.md).
+Uzyskania uaktualnień aplikacji zgodnych poznanie sposobu używania [serializacja danych](service-fabric-application-upgrade-data-serialization.md).
 
 Dowiedz się, jak korzystać z zaawansowanych funkcji podczas uaktualniania aplikacji, odwołując się do [Tematy zaawansowane](service-fabric-application-upgrade-advanced.md).
 
-Rozwiązywania typowych problemów w uaktualnień aplikacji, korzystając z procedury opisanej w [Rozwiązywanie problemów z uaktualnieniami aplikacji](service-fabric-application-upgrade-troubleshooting.md).
+Rozwiązywanie typowych problemów podczas uaktualniania aplikacji korzystając z procedury opisanej w [Rozwiązywanie problemów z uaktualnieniami aplikacji](service-fabric-application-upgrade-troubleshooting.md).

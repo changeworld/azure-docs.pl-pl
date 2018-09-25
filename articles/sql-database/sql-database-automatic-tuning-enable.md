@@ -2,20 +2,21 @@
 title: Włączanie automatycznego dostrajania dla usługi Azure SQL Database | Dokumentacja firmy Microsoft
 description: Można włączyć dostrajania automatycznego usługi Azure SQL Database łatwe.
 services: sql-database
-author: danimir
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
 ms.author: v-daljep
 ms.reviewer: carlrab
-ms.openlocfilehash: d825ddd75bfc829aa82bab4cede0381dda2d36da
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 4f043cfc9c85513abe16bde38c5cac6e16e34af9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45575302"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063323"
 ---
 # <a name="enable-automatic-tuning"></a>Włączanie automatycznego dostrajania
 
@@ -86,7 +87,7 @@ Aby skonfigurować indywidualne opcje dostrajania automatycznego za pomocą jęz
    
 Ustawienie dla poszczególnych opcję dostrajania, zastąpić ustawienie wszystkie dziedziczone bazy danych i włącz opcję dostrajania. Ustawienie go na wartość OFF, będą również zastąpienia ustawienia dowolnej dziedziczone bazy danych i wyłącz opcję dostrajania. Opcję dostrajania automatycznego, dla którego domyślne ustawienie jest określone, będzie dziedziczyć konfiguracji automatycznego dostrajania ustawienie poziomie bazy danych.  
 
-Znajdź więcej naszych dotyczący języka T-SQL umożliwiające konfigurowanie dostrajania automatycznego, zobacz [opcje ALTER DATABASE SET (Transact-SQL) dla serwera logicznego SQL Database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=sql-server-2017&tabs=sqldbls#arguments-1).
+Znajdź więcej naszych dotyczący języka T-SQL umożliwiające konfigurowanie dostrajania automatycznego, zobacz [opcje ALTER DATABASE SET (Transact-SQL) dla serwera logicznego SQL Database](https://docs.microsoft.com/sql/t-sql/statements/alter-database-transact-sql-set-options?view=azuresqldb-current).
 
 ## <a name="disabled-by-the-system"></a>Wyłączone przez system
 Automatyczne dostrajanie monitorowania wszystkie akcje, jaki zajmuje w bazie danych, a w niektórych przypadkach może ustalić dostrajanie automatyczne nie może poprawnie działać w bazie danych. W takiej sytuacji opcji strojenia zostaną wyłączone przez system. W większości przypadków zdarza się, ponieważ nie włączono Query Store lub jest w stanie tylko do odczytu w określonej bazie danych.

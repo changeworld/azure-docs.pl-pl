@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Po utworzeniu klucza punktu końcowego usługi LUIS w witrynie Azure portal, przypisać klawisz do aplikacji usługi LUIS i uzyskać adres URL właściwego punktu końcowego. Użyj tego adresu URL punktu końcowego, aby pobrać LUIS prognozy.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 6d3f487fd64744fa390291d7e23d95cd9632cd23
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 62081f96e2081833eb705992914899a6764bd792
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45634938"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033213"
 ---
 # <a name="add-an-azure-luis-resource-to-app"></a>Dodawanie zasobu usługi LUIS platformy Azure do aplikacji
 

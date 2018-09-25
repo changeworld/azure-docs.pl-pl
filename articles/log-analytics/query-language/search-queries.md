@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 2ccef960378190f10e64318f91039871657a1a46
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 250eddb043ccf9fa0b1bb92a298900f8ad820140
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603757"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46992273"
 ---
 # <a name="search-queries-in-log-analytics"></a>Zapytania wyszukiwania w usłudze Log Analytics
 
@@ -36,7 +36,7 @@ Zapytania w oparciu o tabelę początek zakresu zapytania i dlatego zwykle bardz
 ## <a name="search-a-term"></a>Szuka terminu
 **Wyszukiwania** polecenie jest zwykle używane do wyszukiwania określonego wyrażenia. W poniższym przykładzie wszystkich kolumn wszystkich tabel są skanowane pod kątem termin "error":
 
-```KQL
+```Kusto
 search "error"
 | take 100
 ```
@@ -46,13 +46,13 @@ Gdy są one łatwe w użyciu, niewystępującego w zakresie zapytania, tak jak p
 ### <a name="table-scoping"></a>Wyznaczanie zakresu tabeli
 Aby wyszukać termin w określonej tabeli, należy dodać `in (table-name)` tuż za **wyszukiwania** operator:
 
-```KQL
+```Kusto
 search in (Event) "error"
 | take 100
 ```
 
 lub w wielu tabelach:
-```KQL
+```Kusto
 search in (Event, SecurityEvent) "error"
 | take 100
 ```
@@ -60,7 +60,7 @@ search in (Event, SecurityEvent) "error"
 ### <a name="table-and-column-scoping"></a>Tabela i kolumna określać ich zakresy.
 Domyślnie **wyszukiwania** oszacuje wszystkie kolumny w zestawie danych. Aby wyszukać tylko określone kolumny, użyj następującej składni:
 
-```KQL
+```Kusto
 search in (Event) Source:"error"
 | take 100
 ```
@@ -71,7 +71,7 @@ search in (Event) Source:"error"
 ## <a name="case-sensitivity"></a>Uwzględnianie wielkości liter
 Domyślnie termin wyszukiwania jest bez uwzględniania wielkości liter, dzięki czemu wyszukiwanie "dns" wygeneruje wyniki, takie jak "DNS", "dns" lub "Dns". Aby wprowadzić wyszukiwania jest uwzględniana wielkość liter, należy użyć `kind` opcji:
 
-```KQL
+```Kusto
 search kind=case_sensitive in (Event) "DNS"
 | take 100
 ```
@@ -80,26 +80,26 @@ search kind=case_sensitive in (Event) "DNS"
 **Wyszukiwania** polecenie obsługuje symbole wieloznaczne, początek, koniec lub bliski termin.
 
 Aby wyszukać warunki, rozpoczynające się od "win":
-```KQL
+```Kusto
 search in (Event) "win*"
 | take 100
 ```
 
 Aby wyszukać warunki, które kończą się ".com":
-```KQL
+```Kusto
 search in (Event) "*.com"
 | take 100
 ```
 
 Aby wyszukać warunki, które zawierają "www":
-```KQL
+```Kusto
 search in (Event) "*www*"
 | take 100
 ```
 
 Warunki wyszukiwania, rozpoczyna się od "corp", które kończy się na ".com", takich jak "corp.mydomain.com" "
 
-```KQL
+```Kusto
 search in (Event) "corp*.com"
 | take 100
 ```
@@ -112,21 +112,21 @@ Można również uzyskać wszystko, co w tabeli za pomocą właśnie jest symbol
 ## <a name="add-and--or-to-search-queries"></a>Dodaj *i* / *lub* wyszukiwania zapytania
 Użyj **i** można wyszukiwać rekordy, które zawierają wiele wersji warunków:
 
-```KQL
+```Kusto
 search in (Event) "error" and "register"
 | take 100
 ```
 
 Użyj **lub** Aby uzyskać rekordy, które zawierają co najmniej jeden z warunków:
 
-```KQL
+```Kusto
 search in (Event) "error" or "register"
 | take 100
 ```
 
 Jeśli masz wielu warunków wyszukiwania, można połączyć je do tego samego zapytania przy użyciu nawiasów:
 
-```KQL
+```Kusto
 search in (Event) "error" and ("register" or "marshal*")
 | take 100
 ```
@@ -136,7 +136,7 @@ Wyniki w tym przykładzie będzie rekordów, które zawierają termin "error", a
 ## <a name="pipe-search-queries"></a>Zapytania wyszukiwania potoku
 Podobnie jak inne polecenia **wyszukiwania** mogą być przesyłane potokiem tak, aby wyniki wyszukiwania można filtrować, sortować i agregować. Na przykład, aby uzyskać liczbę *zdarzeń* rekordy, które zawierają "win":
 
-```KQL
+```Kusto
 search in (Event) "win"
 | count
 ```
@@ -146,4 +146,4 @@ search in (Event) "win"
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Zobacz więcej samouczków w [lokacji języka zapytań usługi Log Analytics](https://docs.loganalytics.io)
+- Zobacz więcej samouczków w [lokacji języka zapytań usługi Log Analytics](https://aka.ms/LogAnalyticsLanguage).

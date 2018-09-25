@@ -1,27 +1,27 @@
 ---
-title: Konfigurowanie kont magazynu usługi Azure Cost Management | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób konfigurowania konta magazynu platformy Azure i AWS magazyn zasobników dla usługi Azure Cost Management.
+title: Konfigurowanie kont magazynu na platformie Cloudyn na platformie Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób konfigurowania konta usługi Azure storage i zasobników magazynu AWS na platformie Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: carmonm
 ms.custom: ''
-ms.openlocfilehash: dab7100c97fab7e086352916ec222ec70a0d0400
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: 829995d40a73dc181a28a467e4d16fef0bdeb454
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42060959"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990658"
 ---
-# <a name="configure-storage-accounts-for-cost-management"></a>Konfigurowanie kont magazynu usługi Cost Management
+# <a name="configure-storage-accounts-for-cloudyn"></a>Konfigurowanie kont magazynu na platformie Cloudyn
 
-<!--- intent: As a Cost Management user, I want to configure Cost Management to use my cloud service provider storage account to store my reports. -->
+<!--- intent: As a Cloudyn user, I want to configure Cloudyn to use my cloud service provider storage account to store my reports. -->
 
-W portalu Cloudyn, usługa Azure storage lub zasobników magazynu AWS, możesz zapisać raportów rozwiązania Cost Management. Zapisywanie raportów w portalu Cloudyn jest bezpłatne. Jednak zapisywanie raportów magazynu dostawcy usług chmury jest opcjonalna i spowoduje naliczenie dodatkowych kosztów. Ten artykuł pomoże Ci skonfigurować konto magazynu Azure i Amazon Web Services (AWS) zasobników magazynu do przechowywania raportów.
+Raporty usługi Cloudyn można zapisać w portalu Cloudyn, usługi Azure storage lub usług AWS magazyn zasobników. Zapisywanie raportów w portalu Cloudyn jest bezpłatne. Jednak zapisywanie raportów magazynu dostawcy usług chmury jest opcjonalna i spowoduje naliczenie dodatkowych kosztów. Ten artykuł pomoże Ci skonfigurować konto magazynu Azure i Amazon Web Services (AWS) zasobników magazynu do przechowywania raportów.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -33,7 +33,7 @@ Jeśli nie masz usługi AWS simple storage service (S3) zasobnik, należy ją ut
 
 ## <a name="configure-your-azure-storage-account"></a>Konfigurowanie konta usługi Azure storage
 
-Możesz konfigurowania usługi Azure storage do użycia przez usługę Cost Management jest bardzo proste. Zbieranie informacji o koncie magazynu, a następnie skopiuj je w portalu Cloudyn.
+Możesz konfigurowania usługi Azure storage na potrzeby używania przez firmę Cloudyn jest bardzo proste. Zbieranie informacji o koncie magazynu, a następnie skopiuj je w portalu Cloudyn.
 
 1. Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
 2. Kliknij przycisk **wszystkich usług**, wybierz opcję **kont magazynu**, przewiń do konta magazynu, który chcesz użyć, a następnie wybierz konto.
@@ -163,4 +163,4 @@ Raporty można zapisać teraz w usłudze Azure storage. W dowolnym raporcie klik
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Przegląd [Understanding cost raporty zarządzania](understanding-cost-reports.md) informacje na temat podstawowej struktury i funkcje raportów rozwiązania cost management.
+- Przegląd [Cloudyn zrozumienia raporty](understanding-cost-reports.md) informacje na temat podstawowej struktury oraz funkcji Raporty usługi Cloudyn.

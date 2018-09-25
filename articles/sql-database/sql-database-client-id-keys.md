@@ -1,26 +1,29 @@
 ---
-title: Pobiera wartości do uwierzytelniania aplikacji, usługi Azure SQL Database | Dokumentacja firmy Microsoft
-description: Tworzenie nazwy głównej usługi do uzyskiwania dostępu do bazy danych SQL z kodu.
+title: Pobieranie wartości do uwierzytelniania aplikacji — Azure SQL Database | Dokumentacja firmy Microsoft
+description: Tworzenie jednostki usługi do uzyskiwania dostępu do bazy danych SQL z poziomu kodu.
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: develop apps
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: f6d3599425669a6717a58bb1e5ac0af4b291d4d6
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: f9b66a430e1ca5b24853a5ff31ce13393b12b0c5
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646338"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063792"
 ---
-# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Pobiera wartości wymagane do uwierzytelniania aplikacji dostęp do bazy danych SQL z kodu
-Tworzenie i zarządzanie nimi bazy danych SQL z kodu, należy zarejestrować aplikację w domenie usługi Azure Active Directory (AAD) w subskrypcji, gdzie zostały utworzone zasobów platformy Azure.
+# <a name="get-the-required-values-for-authenticating-an-application-to-access-sql-database-from-code"></a>Pobieranie wymaganych wartości do uwierzytelniania aplikacji dostęp do bazy danych SQL z kodu
+Tworzenie i zarządzanie usługą SQL Database z kodu, należy zarejestrować aplikację w domenie usługi Azure Active Directory (AAD) w ramach subskrypcji, w której zostały utworzone zasoby platformy Azure.
 
-## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Tworzenie nazwy głównej usługi dostępu do zasobów z aplikacji
-Musisz mieć najnowszej [programu Azure PowerShell](https://msdn.microsoft.com/library/mt619274.aspx) zainstalowana i uruchomiona. Aby uzyskać szczegółowe informacje, zobacz artykuł [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Instalowanie i konfigurowanie programu Azure PowerShell).
+## <a name="create-a-service-principal-to-access-resources-from-an-application"></a>Tworzenie jednostki usługi dostępu do zasobów z aplikacji
+Musisz mieć najnowsze [programu Azure PowerShell](https://msdn.microsoft.com/library/mt619274.aspx) zainstalowana i uruchomiona. Aby uzyskać szczegółowe informacje, zobacz artykuł [How to install and configure Azure PowerShell](/powershell/azureps-cmdlets-docs) (Instalowanie i konfigurowanie programu Azure PowerShell).
 
 Poniższy skrypt środowiska PowerShell tworzy aplikację usługi Active Directory (AD) oraz jednostkę usługi wymaganą do uwierzytelnienia aplikacji w języku C#. Skrypt generuje wartości wyjściowe potrzebne w poprzednim przykładzie w języku C#. Aby uzyskać szczegółowe informacje, zobacz [Tworzenie usługi podmiotu używanej do uzyskiwania dostępu do zasobów przy użyciu programu Azure PowerShell](../azure-resource-manager/resource-group-authenticate-service-principal.md).
 

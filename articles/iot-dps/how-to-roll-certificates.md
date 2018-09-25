@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: a8ba667e6af316620d7a8530f29a6640edada13d
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: a40f4489e63c30a101dd708b5a175c25788fb04b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42059264"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976758"
 ---
 # <a name="how-to-roll-x509-device-certificates"></a>Jak wdrożyć certyfikaty urządzeń X.509
 
@@ -41,7 +41,7 @@ Certyfikaty na urządzeniu zawsze powinny być przechowywane w bezpiecznym miejs
 
 Jeśli masz certyfikatów od innych firm, musisz sprawdzić w sposób ich wdrażania w swoich certyfikatów. Ten proces może być zawarta w swojej rozmieszczenie z nimi lub może być osobną usługą, jakie oferują. 
 
-W przypadku zarządzania certyfikatami urządzeń, musisz utworzyć potok na aktualizowanie certyfikatów. Upewnij się, że zarówno certyfikaty liścia stare i nowe mają tę samą nazwę pospolitą (CN). Dzięki tej samej nazwy Pospolitej, urządzenie można ponownie udostępnić sam bez tworzenia rekordu rejestracji duplikatów.
+W przypadku zarządzania certyfikatami urządzeń, musisz utworzyć potok na aktualizowanie certyfikatów. Upewnij się, że zarówno certyfikaty liścia stare i nowe mają tę samą nazwę pospolitą (CN). Dzięki tej samej nazwy Pospolitej, urządzenie można ponownie udostępnić sam bez tworzenia rekordu rejestracji duplikatów. 
 
 
 ## <a name="roll-the-certificate-in-the-iot-hub"></a>Przerzucenie certyfikatu w usłudze IoT hub
@@ -78,10 +78,13 @@ Jeśli jest stopniowe certyfikaty w reakcji na naruszenie zabezpieczeń, należy
 
     ![Zarządzanie rejestracje indywidualne](./media/how-to-roll-certificates/manage-individual-enrollments-portal.png)
 
-3. Po których bezpieczeństwo zostało naruszone certyfikat został usunięty z usługi aprowizacji, przejdź do Centrum IoT hub i Usuń rejestrację urządzenia skojarzonego z certyfikatem, których bezpieczeństwo zostało naruszone.     
+3. Po których bezpieczeństwo zostało naruszone certyfikat został usunięty z usługi aprowizacji, certyfikat nadal można nawiązywać połączenia urządzenia usługi IoT hub, tak długo, jak rejestracji urządzenia, jego istnieje. Można to rozwiązać dwa sposoby: 
+
+    Pierwszy sposób byłoby ręcznie przejdź do Centrum IoT hub, a następnie natychmiast usunąć rejestrację urządzenia skojarzonego z certyfikatem, których bezpieczeństwo zostało naruszone. Następnie po urządzenia aprowizuje ponownie przy użyciu zaktualizowany certyfikat, zostanie utworzony nowej rejestracji urządzenia.     
 
     ![Usuwanie rejestracji urządzeń usługi IoT hub](./media/how-to-roll-certificates/remove-hub-device-registration.png)
 
+    Druga metoda byłoby użycie reprovisioning pomocy technicznej, aby ponownie udostępnić urządzenia do tej samej usługi IoT hub. To podejście można zastąpić certyfikat rejestracji urządzeń w usłudze IoT hub. Aby uzyskać więcej informacji, zobacz [sposób ponownie udostępnić urządzeń](how-to-reprovision.md).
 
 ## <a name="individual-enrollments-and-certificate-expiration"></a>Rejestracje indywidualne i wygaśnięcia certyfikatu
 
@@ -118,9 +121,14 @@ Aby zaktualizować rejestrację grupową w reakcji na naruszenie zabezpieczeń, 
 
     ![Wybierz nowy certyfikat głównego urzędu certyfikacji](./media/how-to-roll-certificates/select-new-root-cert.png)
 
-6. Po których bezpieczeństwo zostało naruszone certyfikat został usunięty z usługi aprowizacji, przejdź do połączone Centrum IoT, który zawiera rejestracji urządzenie ze złamanymi zabezpieczeniami i usuwania rejestracji skojarzony z certyfikatem ze złamanymi zabezpieczeniami.
+6. Po których bezpieczeństwo zostało naruszone certyfikat został usunięty z usługi aprowizacji, certyfikat nadal można nawiązać połączenia urządzenia do usługi IoT hub, tak długo, jak istnieje rejestracje urządzeń. Można to rozwiązać dwa sposoby: 
+
+    Pierwszy sposób byłoby ręcznie przejdź do Centrum IoT hub, a następnie natychmiast usunąć rejestrację urządzenia skojarzonego z certyfikatem, których bezpieczeństwo zostało naruszone. Następnie po urządzenia ponownie udostępnić zaktualizowane certyfikaty, nowej rejestracji urządzenia zostaną utworzone dla każdej z nich.     
 
     ![Usuwanie rejestracji urządzeń usługi IoT hub](./media/how-to-roll-certificates/remove-hub-device-registration.png)
+
+    Druga metoda byłoby użycie reprovisioning pomocy technicznej, aby ponownie udostępnić swoje urządzenia do tej samej usługi IoT hub. To podejście można zamienić certyfikatów rejestracji urządzeń w usłudze IoT hub. Aby uzyskać więcej informacji, zobacz [sposób ponownie udostępnić urządzeń](how-to-reprovision.md).
+
 
 
 #### <a name="update-compromised-intermediate-certificates"></a>Aktualizuj certyfikaty pośrednie, których bezpieczeństwo zostało naruszone
@@ -134,9 +142,13 @@ Aby zaktualizować rejestrację grupową w reakcji na naruszenie zabezpieczeń, 
     ![Zarządzanie rejestracje indywidualne](./media/how-to-roll-certificates/enrollment-group-delete-intermediate-cert.png)
 
 
-3. Po których bezpieczeństwo zostało naruszone certyfikat został usunięty z usługi aprowizacji, przejdź do połączone Centrum IoT, który zawiera rejestracji urządzeń i Usuń rejestrację skojarzonego z certyfikatem, których bezpieczeństwo zostało naruszone.
+3. Po których bezpieczeństwo zostało naruszone certyfikat został usunięty z usługi aprowizacji, certyfikat nadal można nawiązać połączenia urządzenia do usługi IoT hub, tak długo, jak istnieje rejestracje urządzeń. Można to rozwiązać dwa sposoby: 
+
+    Pierwszy sposób byłoby ręcznie przejdź do Centrum IoT hub, a następnie natychmiast usunąć rejestrację urządzenia skojarzonego z certyfikatem, których bezpieczeństwo zostało naruszone. Następnie po urządzenia ponownie udostępnić zaktualizowane certyfikaty, nowej rejestracji urządzenia zostaną utworzone dla każdej z nich.     
 
     ![Usuwanie rejestracji urządzeń usługi IoT hub](./media/how-to-roll-certificates/remove-hub-device-registration.png)
+
+    Druga metoda byłoby użycie reprovisioning pomocy technicznej, aby ponownie udostępnić swoje urządzenia do tej samej usługi IoT hub. To podejście można zamienić certyfikatów rejestracji urządzeń w usłudze IoT hub. Aby uzyskać więcej informacji, zobacz [sposób ponownie udostępnić urządzeń](how-to-reprovision.md).
 
 
 ## <a name="enrollment-groups-and-certificate-expiration"></a>Grupy rejestracji i wygaśnięcia certyfikatu

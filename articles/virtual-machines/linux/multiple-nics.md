@@ -1,6 +1,6 @@
 ---
 title: Tworzenie maszyny Wirtualnej z systemem Linux na platformie Azure z wieloma kartami sieciowymi | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć Maszynę wirtualną systemu Linux z wieloma kartami sieciowymi, dołączono do niego przy użyciu szablonów interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub usługi Resource Manager.
+description: Dowiedz się, jak utworzyć Maszynę wirtualną systemu Linux z wieloma kartami sieciowymi, dołączono do niego przy użyciu szablonów interfejsu wiersza polecenia platformy Azure lub usługi Resource Manager.
 services: virtual-machines-linux
 documentationcenter: ''
 author: iainfoulds
@@ -14,21 +14,20 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/07/2018
 ms.author: iainfou
-ms.openlocfilehash: 77feb52a4ba2013bd6ec0afcd30a20f05227031e
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 4982de352af2ce33f4dbf6dba00ff9296cc9b873
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42060946"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999755"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-in-azure-with-multiple-network-interface-cards"></a>Jak utworzyć maszynę wirtualną systemu Linux na platformie Azure z sieci wielu kart interfejsu
-Można utworzyć maszynę wirtualną (VM) na platformie Azure, która ma wiele interfejsów sieci wirtualnej (NIC) podłączone do niego. Typowym scenariuszem jest zapewnienie różnych podsieci frontonu i zaplecza łączności lub sieci z rozwiązaniem monitorowania lub tworzenia kopii zapasowych w wersji dedykowanej. Ten artykuł szczegółowo opisuje sposób tworzenia maszyny Wirtualnej z wieloma kartami sieciowymi, dołączono do niego oraz jak dodawanie i usuwanie kart sieciowych z istniejącej maszyny Wirtualnej. Różne [rozmiarów maszyn wirtualnych](sizes.md) obsługi różną liczbę kart sieciowych, więc odpowiednio rozmiaru maszyny Wirtualnej.
 
-Ten artykuł szczegółowo opisuje sposób tworzenia maszyny Wirtualnej z wieloma kartami sieciowymi przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0. Czynności te można również wykonać przy użyciu [interfejsu wiersza polecenia platformy Azure w wersji 1.0](multiple-nics-nodejs.md).
 
+Ten artykuł szczegółowo opisuje sposób tworzenia maszyny Wirtualnej z wieloma kartami sieciowymi przy użyciu wiersza polecenia platformy Azure.
 
 ## <a name="create-supporting-resources"></a>Utwórz zasoby pomocnicze
-Zainstaluj najnowszą wersję [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2) i zaloguj się do platformy Azure konta przy użyciu [az login](/cli/azure/reference-index#az_login).
+Zainstaluj najnowszą wersję [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) i zaloguj się do platformy Azure konta przy użyciu [az login](/cli/azure/reference-index#az_login).
 
 W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru uwzględnione *myResourceGroup*, *mystorageaccount*, i *myVM*.
 
@@ -104,7 +103,7 @@ az vm create \
 Dodaj tabele routingu do systemu operacyjnego gościa, wykonując kroki opisane w [Konfigurowanie systemu operacyjnego gościa dla wielu kart sieciowych](#configure-guest-os-for- multiple-nics).
 
 ## <a name="add-a-nic-to-a-vm"></a>Dodaj kartę Sieciową do maszyny Wirtualnej
-W poprzednich krokach utworzono maszynę Wirtualną z wieloma kartami sieciowymi. Karty sieciowe można również dodać do istniejącej maszyny Wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0. Różne [rozmiarów maszyn wirtualnych](sizes.md) obsługi różną liczbę kart sieciowych, więc odpowiednio rozmiaru maszyny Wirtualnej. Jeśli to konieczne, możesz [zmienić rozmiar maszyny Wirtualnej](change-vm-size.md).
+W poprzednich krokach utworzono maszynę Wirtualną z wieloma kartami sieciowymi. Karty sieciowe można również dodać do istniejącej maszyny Wirtualnej przy użyciu wiersza polecenia platformy Azure. Różne [rozmiarów maszyn wirtualnych](sizes.md) obsługi różną liczbę kart sieciowych, więc odpowiednio rozmiaru maszyny Wirtualnej. Jeśli to konieczne, możesz [zmienić rozmiar maszyny Wirtualnej](change-vm-size.md).
 
 Utwórz inną kartą Sieciową z [tworzenie az sieciowego](/cli/azure/network/nic#az_network_nic_create). Poniższy przykład tworzy kartę Sieciową o nazwie *myNic3* podłączony do wewnętrznej podsieci i sieciowej grupy zabezpieczeń utworzone w poprzednich krokach:
 

@@ -7,14 +7,14 @@ manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
 ms.topic: conceptual
-ms.date: 09/07/2018
+ms.date: 09/20/2018
 ms.author: carlrab
-ms.openlocfilehash: f30d15c70b33200565f1933a4d8ebe8ed654638c
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 87015521ee67cc66f2a0f11ad6c8a32c9224af46
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055237"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034896"
 ---
 # <a name="azure-sql-database-logical-servers-and-their-management"></a>Serwerami logicznymi usługi Azure SQL Database i zarządzanie nimi
 
@@ -111,25 +111,25 @@ Tworzenie i zarządzanie nimi, Azure SQL server, baz danych i zapory za pomocą 
 
 | Polecenie cmdlet | Opis |
 | --- | --- |
-|[az sql db create](/cli/azure/sql/db#az_sql_db_create) |Tworzy bazę danych|
-|[AZ sql db list](/cli/azure/sql/db#az_sql_db_list)|Wyświetla listę wszystkich baz danych i magazyny danych na serwerze lub wszystkich baz danych w puli elastycznej|
-|[AZ sql db list wersje](/cli/azure/sql/db#az_sql_db_list_editions)|Cele i limity przestrzeni dyskowej, usługi dostępne listy|
-|[polecenia az sql db list-usages](/cli/azure/sql/db#az_sql_db_list_usages)|Zwraca bazy danych użycia|
-|[AZ sql db show](/cli/azure/sql/db#az_sql_db_show)|Pobiera bazy danych ani na magazyn danych|
-|[az sql db update](/cli/azure/sql/db#az_sql_db_update)|Aktualizuje bazę danych|
-|[AZ sql db delete](/cli/azure/sql/db#az_sql_db_delete)|Usuwa bazę danych|
-|[az group create](/cli/azure/group#az_group_create)|Tworzy grupę zasobów|
-|[az sql server create](/cli/azure/sql/server#az_sql_server_create)|Tworzy serwer|
-|[AZ sql server list](/cli/azure/sql/server#az_sql_server_list)|Listy serwerów|
-|[polecenia az sql server list-usages](/cli/azure/sql/server#az_sql_server_list_usages)|Zwraca użycia serwera|
-|[AZ sql server show](/cli/azure/sql/server#az_sql_server_show)|Pobiera serwera|
-|[Aktualizacja az sql server](/cli/azure/sql/server#az_sql_server_update)|Serwer aktualizacji|
-|[AZ sql server delete](/cli/azure/sql/server#az_sql_server_delete)|Usuwa serwer|
-|[Utwórz az sql server — reguły zapory](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|Tworzy regułę zapory serwera|
-|[AZ sql server reguły zapory na liście](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|Wyświetla listę reguł zapory na serwerze|
-|[Pokaż reguły zapory serwera sql az](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|Wyświetla szczegóły reguły zapory|
-|[Aktualizacja reguły zapory az sql server](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|Aktualizuje regułę zapory|
-|[Usuń regułę zapory serwera sql az](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|Usuwa reguły zapory|
+|[az sql db create](/cli/azure/sql/db#az-sql-db-create) |Tworzy bazę danych|
+|[AZ sql db list](/cli/azure/sql/db#az-sql-db-list)|Wyświetla listę wszystkich baz danych i magazyny danych na serwerze lub wszystkich baz danych w puli elastycznej|
+|[AZ sql db list wersje](/cli/azure/sql/db#az-sql-db-list-editions)|Cele i limity przestrzeni dyskowej, usługi dostępne listy|
+|[polecenia az sql db list-usages](/cli/azure/sql/db#az-sql-db-list-usages)|Zwraca bazy danych użycia|
+|[AZ sql db show](/cli/azure/sql/db#az-sql-db-show)|Pobiera bazy danych ani na magazyn danych|
+|[az sql db update](/cli/azure/sql/db#az-sql-db-update)|Aktualizuje bazę danych|
+|[AZ sql db delete](/cli/azure/sql/db#az-sql-db-delete)|Usuwa bazę danych|
+|[az group create](/cli/azure/group#az-group-create)|Tworzy grupę zasobów|
+|[az sql server create](/cli/azure/sql/server#az-sql-server-create)|Tworzy serwer|
+|[AZ sql server list](/cli/azure/sql/server#az-sql-server-list)|Listy serwerów|
+|[polecenia az sql server list-usages](/cli/azure/sql/server#az-sql-server-list-usages)|Zwraca użycia serwera|
+|[AZ sql server show](/cli/azure/sql/server#az-sql-server-show)|Pobiera serwera|
+|[Aktualizacja az sql server](/cli/azure/sql/server#az-sql-server-update)|Serwer aktualizacji|
+|[AZ sql server delete](/cli/azure/sql/server#az-sql-server-delete)|Usuwa serwer|
+|[Utwórz az sql server — reguły zapory](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Tworzy regułę zapory serwera|
+|[AZ sql server reguły zapory na liście](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Wyświetla listę reguł zapory na serwerze|
+|[Pokaż reguły zapory serwera sql az](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|Wyświetla szczegóły reguły zapory|
+|[Aktualizacja reguły zapory az sql server](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Aktualizuje regułę zapory|
+|[Usuń regułę zapory serwera sql az](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Usuwa reguły zapory|
 
 > [!TIP]
 > W przewodniku Szybki Start wiersza polecenia platformy Azure, zobacz [tworzenie pojedynczej bazy danych Azure SQL przy użyciu wiersza polecenia platformy Azure](sql-database-cli-samples.md). W przypadku skryptów przykład wiersza polecenia platformy Azure, zobacz [użycia interfejsu wiersza polecenia do tworzenia pojedynczej bazy danych Azure SQL i konfigurowanie reguły zapory](scripts/sql-database-create-and-configure-database-cli.md) i [użycia interfejsu wiersza polecenia do monitorowania i skalowania pojedynczej bazy danych SQL](scripts/sql-database-monitor-and-scale-database-cli.md).

@@ -1,29 +1,31 @@
 ---
-title: Użyj raportów rozwiązania Cost Management w usłudze Azure Cost Management | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób używania różnych raportów rozwiązania Cost Management w portalu Cloudyn.
+title: Użyj raportach usługi Cloudyn na platformie Azure | Dokumentacja firmy Microsoft
+description: W tym artykule opisano, jak używać raportów w portalu Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/06/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 055584bd27c978fb71e6c09995c28be7348acda8
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 8267401a0dade0ca7cfb1dbf69d2fdfd6786f1df
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37908273"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976791"
 ---
-# <a name="use-cost-management-reports"></a>Korzystanie z raportów rozwiązania Cost Management
+# <a name="use-cloudyn-reports"></a>Raporty usługi Cloudyn
 
-W tym artykule opisano celem raportów rozwiązania cost management, które znajdują się w portalu Cloudyn. Opisano również, jak skutecznie używać raportów. Większość raportów są intuicyjne i jednolity wygląd i sposób działania. Większość działań, które można wykonać w jednym raporcie, możesz również wykonać w innych raportach. Aby uzyskać ogólne informacje o sposobie używania raportów rozwiązania cost management, jak zapisywać i dostosowywać lub aby zaplanować raporty, w tym temacie [omówienie raportów kosztów](understanding-cost-reports.md).
+W tym artykule opisano celem raporty Cloudyn, które znajdują się w portalu Cloudyn. Opisano również, jak skutecznie używać raportów. Większość raportów są intuicyjne i jednolity wygląd i sposób działania. Większość działań, które można wykonać w jednym raporcie, możesz również wykonać w innych raportach. Aby uzyskać ogólne informacje o sposobie raporty usługi Cloudyn, jak zapisywać i dostosowywać lub aby zaplanować raporty, w tym temacie [omówienie raportów kosztów](understanding-cost-reports.md).
+
+Usługa Azure Cost Management oferuje podobne funkcje do rozwiązania Cloudyn. Usługa Azure Cost Management to rozwiązanie do zarządzania natywnych kosztów platformy Azure. Pomaga analizując koszty, tworzenie i zarządzanie budżetów, eksportować dane i zapoznaj się i działają zgodnie z zaleceniami optymalizacji, aby zaoszczędzić pieniądze. Aby uzyskać więcej informacji, zobacz [usługi Azure Cost Management](overview-cost-mgt.md).
 
 ## <a name="report-types"></a>Typy raportów
 
-Istnieją trzy typy raportów rozwiązania cost management:
+Istnieją trzy typy raportów Cloudyn:
 
 - Raporty nadmiernego czasu. Na przykład raport kosztu w czasie. Pokazywanie danych szeregów czasowych przedziałach zaznaczonego rozwiązanie problemu dotyczącego wstępnie zdefiniowanych i raportów w czasie nadmiernego, w którym zostanie wyświetlane rozdzielczość co tydzień ostatnich dwóch miesięcy. Grupowanie i filtrowanie można użyć, aby powiększyć do różnych punktów danych.
   - Czas nadmiernego Raporty ułatwiają wyświetlanie trendów i wykrywanie wzrostów lub anomalii.
@@ -49,7 +51,7 @@ _Analiza kosztów_ raporty wyświetlania danych rozliczeń od dostawców rozwią
 
 Niektóre _analiza kosztów_ raportów nie Grupuj kosztów według tagów zasobów. I informacje rozliczeniowe opartej tylko w raportach nie widać po przydzielania kosztów przez tworzenie modelu kosztów za pomocą [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs).
 
-_Alokacja kosztów_ raporty są dostępne po utworzeniu modelu kosztów przy użyciu [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs). Zarządzanie kosztami przetwarza kosztów i danych dotyczących rozliczeń i _odpowiada_ dane użycia i tag dane konta w chmurze. Aby dopasować dane, Cost Management wymaga dostępu do danych użycia. W przypadku kont, których brakuje poświadczeń są oznaczone jako _nieskategoryzowanych zasobów_.
+_Alokacja kosztów_ raporty są dostępne po utworzeniu modelu kosztów przy użyciu [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs). Cloudyn przetwarza dane kosztów i rozliczeń oraz _odpowiada_ dane użycia i tag dane konta w chmurze. Aby dopasować dane, Cloudyn wymaga dostępu do danych użycia. W przypadku kont, których brakuje poświadczeń są oznaczone jako _nieskategoryzowanych zasobów_.
 
 ## <a name="dashboards"></a>Pulpity nawigacyjne
 
@@ -57,7 +59,7 @@ Pulpity nawigacyjne w Cloudy przedstawia ogólny widok raportów. Pulpity nawiga
 
 ## <a name="budget-information-in-reports"></a>Informacje dotyczące budżetu w raportach
 
-Wiele kosztów zarządzania raportami show budżetu po został ręcznie utworzony. Aby raporty nie zawierają informacje budżetu, dopóki nie zostanie utworzony budżetu. Aby uzyskać więcej informacji, zobacz [budżetu ustawienia](#budget-settings).
+Wiele raportów Cloudyn Pokaż budżetu informacji po został ręcznie utworzony. Aby raporty nie zawierają informacje budżetu, dopóki nie zostanie utworzony budżetu. Aby uzyskać więcej informacji, zobacz [budżetu ustawienia](#budget-settings).
 
 ## <a name="reports-and-reporting-features"></a>Raporty i funkcji raportowania
 
@@ -81,7 +83,7 @@ Raport analizy kosztów jest obliczanie przewidywanych kosztów i obciążeń zw
 
 Zasady skonfigurowane [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) są używane w analizy kosztów raportu i wyniki są następnie łączone w przy użyciu informacji z danych pierwotnych dostawcą chmury.
 
-Jak obliczana jest ten raport? Usługa Cost Management zachowuje alokacji integralności każdego połączonego konta usługi, stosując _konta koligacji_. Koligacja gwarantuje, że konto, który nie używa określonej usługi nie ma żadnych kosztów tej usługi, przydzielone do niego. Koszty są naliczane w tym konta pozostają w ramach tego konta i nie są obliczane przy użyciu zasad alokacji. Na przykład Niewykluczone, że pięć połączone konta. Jeśli tylko trzy z nich korzystać z usług magazynu koszt usługi storage tylko jest przydzielany przez tagów w trzech kont.
+Jak obliczana jest ten raport? Usługa Cloudyn zachowuje alokacji integralności każdego połączonego konta usługi, stosując _konta koligacji_. Koligacja gwarantuje, że konto, który nie używa określonej usługi nie ma żadnych kosztów tej usługi, przydzielone do niego. Koszty są naliczane w tym konta pozostają w ramach tego konta i nie są obliczane przy użyciu zasad alokacji. Na przykład Niewykluczone, że pięć połączone konta. Jeśli tylko trzy z nich korzystać z usług magazynu koszt usługi storage tylko jest przydzielany przez tagów w trzech kont.
 
 Raport analizy kosztów do:
 
@@ -147,7 +149,7 @@ Ten zestaw zamortyzowany koszt raporty pokazuje linearized bez użycia na podsta
 - Opłaty za zakupu wystąpień zarezerwowanych
 - Niektóre elementy w portalu Azure Marketplace
 
-W pliku rozliczeń, jednorazowe opłaty są określony podczas korzystania z usług początek i koniec daty (sygnatura czasowa) mają równe wartości. Usługa Cost Management następnie rozpoznaje je jako jednorazowe opłaty, które są amortyzowanego. Nie są amortyzowanego innych usług na podstawie użycia kosztów użytkowania na żądanie.
+W pliku rozliczeń, jednorazowe opłaty są określony podczas korzystania z usług początek i koniec daty (sygnatura czasowa) mają równe wartości. Usługa Cloudyn następnie rozpoznaje je jako jednorazowe opłaty, które są amortyzowanego. Nie są amortyzowanego innych usług na podstawie użycia kosztów użytkowania na żądanie.
 
 Raporty amortyzowanego kosztu obejmują:
 
@@ -158,9 +160,9 @@ Raporty amortyzowanego kosztu obejmują:
 
 Raport analizy kosztów zapewnia wgląd w wykorzystanie z chmury i wydatków w zadanym przedziale czasu. Zasady skonfigurowane [Cost Allocation 360](tutorial-manage-costs.md#use-custom-tags-to-allocate-costs) są używane w raporcie analizy kosztów.
 
-Jak Cost Management obliczyć ten raport?
+Jak rozwiązanie Cloudyn obliczyć ten raport?
 
-Usługa Cost Management zachowuje alokacji integralności każdego połączonego konta usługi, stosując _konta koligacji_. Koligacja gwarantuje, że konto, który nie używa określonej usługi również nie ma żadnych kosztów tej usługi, przydzielone do niego. Koszty są naliczane w tym konta pozostają w ramach tego konta i nie są obliczane przy użyciu zasad alokacji. Na przykład Niewykluczone, że pięć połączone konta. Jeśli tylko trzy z nich korzystać z usług magazynu koszt usługi storage tylko jest przydzielany przez tagów w trzech kont.
+Cloudyn zachowuje alokacji integralności każdego połączonego konta usługi, stosując _konta koligacji_. Koligacja gwarantuje, że konto, który nie używa określonej usługi również nie ma żadnych kosztów tej usługi, przydzielone do niego. Koszty są naliczane w tym konta pozostają w ramach tego konta i nie są obliczane przy użyciu zasad alokacji. Na przykład Niewykluczone, że pięć połączone konta. Jeśli tylko trzy z nich korzystać z usług magazynu koszt usługi storage tylko jest przydzielany przez tagów w trzech kont.
 
 Raport analizy kosztów do:
 
@@ -206,7 +208,7 @@ Opłaty niestandardowe są wyświetlane w raportach kosztów. Na przykład otwor
 
 Cost Allocation 360 umożliwia tworzenie modeli alokacji kosztów niestandardowe można przypisać kosztów do wykorzystywanych zasobów w chmurze. Wiele raportów zawierają informacje z modeli kosztów niestandardowych, utworzonych przy użyciu modeli kosztów niestandardowych. Ponadto niektóre raporty zawierają tylko informacje o po jej utworzeniu niestandardowy model kosztów przy użyciu alokacji kosztów.
 
-Aby uzyskać więcej informacji na temat tworzenia modeli kosztów niestandardowych, zobacz [samouczek: Zarządzanie kosztami przy użyciu usługi Azure Cost Management](tutorial-manage-costs.md).
+Aby uzyskać więcej informacji na temat tworzenia modeli kosztów niestandardowych, zobacz [samouczek: Zarządzanie kosztami przy użyciu platformy Cloudyn](tutorial-manage-costs.md).
 
 ### <a name="cost-vs-budget-over-time-report"></a>Usługa Cost vs. Raport budżetu względem czasu
 
@@ -248,11 +250,11 @@ Po zakończeniu swój budżet jest wyświetlany w raportach analizy kosztów i C
 
 ### <a name="azure-resource-explorer-report"></a>Raport usługi Azure Resource Explorer
 
-Raport usługi Azure Resource Explorer pokazuje listę zbiorcze wszystkich zasobów platformy Azure dostępne w Cost Management. Aby wydajnie korzystać z raportu, kont systemu Azure należy rozszerzyć włączone metryki. Rozszerzonych metryk zapewniają dostęp Cost Management na maszynach wirtualnych platformy Azure. Aby uzyskać więcej informacji, zobacz [Dodawanie rozszerzonych metryk dla maszyn wirtualnych platformy Azure](azure-vm-extended-metrics.md).
+Raport usługi Azure Resource Explorer pokazuje listę zbiorcze wszystkich zasobów platformy Azure dostępne w rozwiązaniu Cloudyn. Aby wydajnie korzystać z raportu, kont systemu Azure należy rozszerzyć włączone metryki. Rozszerzonych metryk zapewniają dostęp do rozwiązania Cloudyn na maszynach wirtualnych platformy Azure. Aby uzyskać więcej informacji, zobacz [Dodawanie rozszerzonych metryk dla maszyn wirtualnych platformy Azure](azure-vm-extended-metrics.md).
 
 ### <a name="azure-resources-over-time-report"></a>Raport usługi Azure zasobów w czasie
 
-Zasoby platformy Azure względem czasu przedstawia podział wszystkich zasobów w określonym okresie. Aby wydajnie korzystać z raportu, kont systemu Azure należy rozszerzyć włączone metryki. Rozszerzonych metryk zapewniają dostęp Cost Management na maszynach wirtualnych platformy Azure. Aby uzyskać więcej informacji, zobacz [Dodawanie rozszerzonych metryk dla maszyn wirtualnych platformy Azure](azure-vm-extended-metrics.md).
+Zasoby platformy Azure względem czasu przedstawia podział wszystkich zasobów w określonym okresie. Aby wydajnie korzystać z raportu, kont systemu Azure należy rozszerzyć włączone metryki. Rozszerzonych metryk zapewniają dostęp do rozwiązania Cloudyn na maszynach wirtualnych platformy Azure. Aby uzyskać więcej informacji, zobacz [Dodawanie rozszerzonych metryk dla maszyn wirtualnych platformy Azure](azure-vm-extended-metrics.md).
 
 ### <a name="instance-explorer-report"></a>Raport Explorer wystąpienia
 
@@ -355,7 +357,7 @@ Trzy opcje płatności za wystąpienia zarezerwowane, będące ponoszonych z gó
 - Nie z góry - w której koszt wystąpienia Zarezerwowanego jest płatną w miesięcznych ratach w czasie trwania wystąpienia zarezerwowanego oferty najniższy rabatu
 - Partial ponoszonych z góry kosztów, w których ¼ - ½, ceny czy płatna na początku, a pozostałe w miesięcznych ratach, z rabatu, która jest mniejsza, ale zamknąć, współczynnikowi ponoszonych z góry wszystkie
 
-Usługa Cost Management ocenia czas pracy każdego komputera w ciągu ostatnich 30 dni. Usługa Cost Management zaleca kupowania wystąpienia zarezerwowane, gdy jest bardziej opłacalna, aby uruchomić maszynę z wystąpienia Zarezerwowanego na bieżącym poziomie przestojów.
+Cloudyn ocenia czas pracy każdego komputera w ciągu ostatnich 30 dni. Cloudyn zaleca kupowania wystąpienia zarezerwowane, gdy jest bardziej opłacalna, aby uruchomić maszynę z wystąpienia Zarezerwowanego na bieżącym poziomie przestojów.
 
 Ten raport prezentuje uzasadnienie odpowiednie zalecenia zaoszczędzić pieniądze większość w ciągu roku. Zalecenia sugerują, zastępując wystąpienia zarezerwowane wystąpienia na żądanie. Możesz kupić wystąpienia zarezerwowane, bezpośrednio z raportu.
 
@@ -363,9 +365,9 @@ Każda karta otwiera się jako pełny raport. Istotne sekcje na kartach obejmuj�
 
 - **Wpływ zakupu wystąpień Zarezerwowanych usługi EC2** — w tej części przedstawiono symulacji różnicy między wystąpieniami zarezerwowanymi na żądanie w programie vs. Kliknij przycisk **powiększyć**, aby wyświetlić pełny raport wpływ zakupu wystąpień Zarezerwowanych usługi EC2 z filtrami już zdefiniowane swoje zalecenia. Ten raport przedstawia wpływ zakupu wszystkich potencjalnych zakupów wystąpień Zarezerwowanych. Oczekiwano Średni czas pracy się możliwość zapisywania w momencie zakupu wystąpień zarezerwowanych usługi EC2, można dostosować.
 
-- **Zapisywanie analizy** -tej sekcji przedstawiono potencjalne oszczędności osiągnąć oraz miesiąca oszczędności są actualized podczas zgodnie z zaleceniami Cost Management. Rzeczywiste oszczędności i procent zapisywane są wyróżnione kolorem czerwonym.
+- **Zapisywanie analizy** -tej sekcji przedstawiono potencjalne oszczędności osiągnąć oraz miesiąca oszczędności są actualized w trakcie wypełniania Cloudyn, zalecenia. Rzeczywiste oszczędności i procent zapisywane są wyróżnione kolorem czerwonym.
 
-- **Porównanie typów wystąpień Zarezerwowanych usługi EC2** — w tej sekcji kładzie nacisk wyróżnienia zwrot z inwestycji w zalecane wdrożenie Cost Management, w tym wszystkie odpowiednie opcje. Wyniki w tym raporcie przyjęto założenie, że na maszynie jest uruchomiony w 100% czasu. Kliknij przycisk **Powiększ** aby otworzyć raport szczegółowy.
+- **Porównanie typów wystąpień Zarezerwowanych usługi EC2** — w tej sekcji kładzie nacisk wyróżnienia zwrot z inwestycji w zalecane wdrożenie firmy Cloudyn, w tym wszystkie odpowiednie opcje. Wyniki w tym raporcie przyjęto założenie, że na maszynie jest uruchomiony w 100% czasu. Kliknij przycisk **Powiększ** aby otworzyć raport szczegółowy.
 
 - **Wystąpienia względem czasu** — w tej sekcji przedstawia podział wszystkie wystąpienia skojarzone z zaleceń, na żądanie, Reserved Instances i miejscu. Kliknij przycisk **Powiększ** aby otworzyć raport szczegółowy.
 - **Punkty Breakeven** — w tej sekcji Wyświetla spis wszystkich możliwych zalecane wdrożenia i zwrot z inwestycji i miesiąc, gdy wystąpi zwrot z inwestycji. Kliknij przycisk **Powiększ** aby otworzyć raport szczegółowy.
@@ -394,7 +396,7 @@ Raport zalecenia zakupu wystąpień Zarezerwowanych usług pulpitu zdalnego zale
 Każda karta otwiera się jako pełny raport. Istotne sekcje na kartach obejmują:
 
 - **Wpływ zakupu wystąpień Zarezerwowanych usług pulpitu zdalnego** — ta sekcja zawiera symulacji różnicy między żądanie zarezerwowanych wystąpieniach programu vs. Kliknij przycisk **powiększyć** Aby wyświetlić pełny raport wpływ zakupu wystąpień Zarezerwowanych usług pulpitu zdalnego z filtrami już zdefiniowane swoje zalecenia. Ten raport umożliwia wszystkich potencjalnych zakupów wystąpień Zarezerwowanych w rozgrywkach zakupu.  Można dopasować oczekiwanego Średni czas pracy i zobacz możliwości zapisywania, kupując wystąpienia zarezerwowane.
-- **Zapisywanie analizy** — ta sekcja zawiera potencjalne oszczędności osiągnąć i miesiąc oszczędności są actualized podczas zgodnie z zaleceniami Cost Management. Rzeczywiste oszczędności i procent zapisywane są wyróżnione kolorem czerwonym.
+- **Zapisywanie analizy** — ta sekcja zawiera potencjalne oszczędności osiągnąć i miesiąc oszczędności są actualized w trakcie wypełniania Cloudyn, zalecenia. Rzeczywiste oszczędności i procent zapisywane są wyróżnione kolorem czerwonym.
 
 - **Porównanie typów wystąpień Zarezerwowanych usług pulpitu zdalnego** — w tej sekcji kładzie nacisk wyróżnienia zwrot z inwestycji w zalecane wdrożenie, w tym wszystkie odpowiednie opcje. Wyniki w tym raporcie przyjęto założenie, że na maszynie jest uruchomiony w 100% czasu. Kliknij przycisk **Powiększ** aby otworzyć raport szczegółowy dla wybranej maszyny.
 - **Wystąpienia względem czasu** — w tej sekcji przedstawia podział wszystkie wystąpienia skojarzone z zaleceń, na żądanie, Reserved Instances i miejscu. Kliknij przycisk **Powiększ** aby otworzyć raport szczegółowy.
@@ -417,7 +419,7 @@ Nie można pobrać listy wystąpienia identyfikatorów, które są zalecane do d
 
 Rozważmy następujący przykład redukcję zatrudnienia:
 
-Masz sześć m3.xlarge uruchamianych wystąpień. Analiza kosztów zarządzania pokazuje, że mają pięć ich niskiego poziomu wykorzystania Procesora. Rozważ zmniejszenie rozmiaru je.
+Masz sześć m3.xlarge uruchamianych wystąpień. Analiza Cloudyn pokazuje, że pięć z nich ma niskiego poziomu wykorzystania Procesora. Rozważ zmniejszenie rozmiaru je.
 
 W wpływu na koszt wpływ na koszt jest obliczany. W tym przykładzie, rozwijając element wiersza widać, że bieżąca cena dla jednego wystąpienia m3.xlarge (Linux/Unix) kosztuje $0.266 na godzinę i m3.large jednego wystąpienia (Linux/Unix) koszty 0.133 $ / godz. Roczny koszt jest więc 11,651 $ pięć wystąpień m3.xlarge uruchomione w 100% wykorzystania. Roczny koszt jest 5,825 $ pięć wystąpień m3.large uruchomione w 100% wykorzystania. Potencjalne oszczędności są 5,825 $.
 
@@ -425,7 +427,7 @@ Aby wyświetlić wymiarowania efektywnego kosztowo uzasadnienia, kliknij i rozwi
 
 - **Uzasadnienie zalecenie** sekcja Wyświetla bieżącego wdrożenia i liczbę wystąpień, zaleca się downsize.
 - **Wpływu na koszt** sekcja wyświetla obliczanie, aby ustalić potencjalne oszczędności.
-- **Potencjalne oszczędności roczne** sekcja wyświetla potencjalne oszczędności roczne, gdy zmniejszenie rozmiaru na zalecenie Cost Management.
+- **Potencjalne oszczędności roczne** sekcja wyświetla potencjalne oszczędności roczne, gdy zmniejszenie rozmiaru na zalecenia firmy Cloudyn.
 
 ### <a name="all-sizing-recommendations-report"></a>Wszystkie zalecenia wymiarowania efektywnego raportu
 
@@ -483,11 +485,11 @@ Aby wyświetlić metryki konkretnego wystąpienia wraz z upływem czasu:
 
 ### <a name="rds-sizing-recommendations-report"></a>Raport zalecenia wymiarowania efektywnego usług pulpitu zdalnego
 
-Raport zalecenia wymiarowania efektywnego usług pulpitu zdalnego zawiera zmiany rozmiaru zalecenia, aby zoptymalizować użycie chmury usług pulpitu zdalnego. Zawiera on listę niedostatecznie używanych wystąpień, które są kandydatami do downsize. Zalecenia dotyczące kosztów zarządzania są oparte na danych użycia i wydajności w ciągu ostatnich 30 dni. Zalecenia wg nazwy konta, regionu, typu wystąpienia i stanu można filtrować.
+Raport zalecenia wymiarowania efektywnego usług pulpitu zdalnego zawiera zmiany rozmiaru zalecenia, aby zoptymalizować użycie chmury usług pulpitu zdalnego. Zawiera on listę niedostatecznie używanych wystąpień, które są kandydatami do downsize. Cloudyn, zalecenia są oparte na danych użycia i wydajności w ciągu ostatnich 30 dni. Zalecenia wg nazwy konta, regionu, typu wystąpienia i stanu można filtrować.
 
 ### <a name="sizing-threshold-manager-report"></a>Menedżer próg rozmiaru raportu
 
-Zalecenia dotyczące rozmiaru wbudowanych usługa Cost Management są obliczane przy użyciu algorytmu złożonych Zasugeruj dokładne zmiany rozmiaru. Można dostosować progi redukcję zatrudnienia zaleceń.
+Zalecenia dotyczące wbudowanych odpowiedniego rozmiaru firmy Cloudyn są obliczane przy użyciu algorytmu złożonych Zasugeruj dokładne zmiany rozmiaru. Można dostosować progi redukcję zatrudnienia zaleceń.
 
 Aby ręcznie dostosować zalecenia wymiarowania efektywnego progu:
 

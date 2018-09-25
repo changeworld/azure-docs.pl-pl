@@ -9,14 +9,14 @@ ms.service: sql-database
 ms.prod_service: sql-database, sql-data-warehouse
 ms.custom: security
 ms.topic: conceptual
-ms.date: 09/07/2018
+ms.date: 09/20/2018
 ms.author: vanto
-ms.openlocfilehash: 118911687326bfa938c7276337377e3d3cb66bf2
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 698014c24d6a3af3fb79980a07e25483554b1007
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715401"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042435"
 ---
 # <a name="azure-sql-database-and-sql-data-warehouse-firewall-rules"></a>Reguły zapory usługi Azure SQL Database i SQL Data Warehouse 
 
@@ -75,7 +75,7 @@ Aby umożliwić aplikacjom z platformy Azure łączenie się z serwerem Azure SQ
 > 
 
 ## <a name="creating-and-managing-firewall-rules"></a>Tworzenie i zarządzanie regułami zapory
-Pierwsze ustawienie zapory na poziomie serwera mogą być tworzone za pomocą [witryny Azure portal](https://portal.azure.com/) lub programowo przy użyciu [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql), [wiersza polecenia platformy Azure](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create), lub [ Interfejs API REST](https://docs.microsoft.com/rest/api/sql/firewallrules). Kolejne reguły zapory na poziomie serwera mogą być tworzone i zarządzane przy użyciu tych metod oraz za pomocą języka Transact-SQL. 
+Pierwsze ustawienie zapory na poziomie serwera mogą być tworzone za pomocą [witryny Azure portal](https://portal.azure.com/) lub programowo przy użyciu [programu Azure PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql), [wiersza polecenia platformy Azure](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create), lub [ Interfejs API REST](https://docs.microsoft.com/rest/api/sql/firewallrules). Kolejne reguły zapory na poziomie serwera mogą być tworzone i zarządzane przy użyciu tych metod oraz za pomocą języka Transact-SQL. 
 
 > [!IMPORTANT]
 > Reguły zapory na poziomie bazy danych tylko mogą być tworzone i zarządzane przy użyciu języka Transact-SQL. 
@@ -167,11 +167,11 @@ New-AzureRmSqlServerFirewallRule -ResourceGroupName "myResourceGroup" `
 ## <a name="manage-firewall-rules-using-azure-cli"></a>Zarządzanie regułami zapory za pomocą wiersza polecenia platformy Azure
 | Polecenie cmdlet | Poziom | Opis |
 | --- | --- | --- |
-|[Utwórz az sql server — reguły zapory](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_create)|Serwer|Tworzy regułę zapory serwera|
-|[AZ sql server reguły zapory na liście](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_list)|Serwer|Wyświetla listę reguł zapory na serwerze|
-|[Pokaż reguły zapory serwera sql az](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_show)|Serwer|Wyświetla szczegóły reguły zapory|
-|[Aktualizacja reguły zapory az sql server](/cli/azure/sql/server/firewall-rule##az_sql_server_firewall_rule_update)|Serwer|Aktualizuje regułę zapory|
-|[Usuń regułę zapory serwera sql az](/cli/azure/sql/server/firewall-rule#az_sql_server_firewall_rule_delete)|Serwer|Usuwa reguły zapory|
+|[Utwórz az sql server — reguły zapory](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-create)|Serwer|Tworzy regułę zapory serwera|
+|[AZ sql server reguły zapory na liście](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-list)|Serwer|Wyświetla listę reguł zapory na serwerze|
+|[Pokaż reguły zapory serwera sql az](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-show)|Serwer|Wyświetla szczegóły reguły zapory|
+|[Aktualizacja reguły zapory az sql server](/cli/azure/sql/server/firewall-rule##az-sql-server-firewall-rule-update)|Serwer|Aktualizuje regułę zapory|
+|[Usuń regułę zapory serwera sql az](/cli/azure/sql/server/firewall-rule#az-sql-server-firewall-rule-delete)|Serwer|Usuwa reguły zapory|
 
 W poniższym przykładzie ustawiono regułę zapory na poziomie serwera przy użyciu wiersza polecenia platformy Azure: 
 

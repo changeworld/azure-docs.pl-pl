@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 06/25/2018
 ms.author: mahender
-ms.openlocfilehash: 5d058059f523d3567817cad8ac11e837fb4a0a49
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: fb9b50ecb16bd37d005403a14ea11c6d89f50dfe
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714255"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983651"
 ---
 # <a name="how-to-use-managed-identities-for-app-service-and-azure-functions"></a>Jak używać zarządzanych tożsamości dla usługi App Service i Azure Functions
 
@@ -52,7 +52,7 @@ Aby skonfigurować tożsamość zarządzana przy użyciu wiersza polecenia platf
 
 - Użyj [usługi Azure Cloud Shell](../cloud-shell/overview.md) w witrynie Azure portal.
 - Użyj osadzonego usługi Azure Cloud Shell za pomocą "Try It" przycisk znajdujący się w prawym górnym rogu każdego bloku kodu poniżej.
-- [Zainstaluj najnowszą wersję interfejsu wiersza polecenia 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 lub nowszej), jeśli wolisz używać lokalnej konsoli interfejsu wiersza polecenia. 
+- [Zainstaluj najnowszą wersję interfejsu wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) (2.0.31 lub nowszej), jeśli wolisz używać lokalnej konsoli interfejsu wiersza polecenia. 
 
 Poniższe kroki przeprowadzi Cię przez proces tworzenia aplikacji sieci web i przypisywanie jej tożsamości przy użyciu interfejsu wiersza polecenia:
 
@@ -157,7 +157,7 @@ Brak prostego protokołu REST w celu uzyskania tokenu w usłudze App Service i A
 
 ### <a name="asal"></a>Korzystanie z biblioteki Microsoft.Azure.Services.AppAuthentication dla platformy .NET
 
-Dla aplikacji platformy .NET i funkcji najprostszy sposób pracy z tożsamości zarządzanej jest za pośrednictwem pakietu Microsoft.Azure.Services.AppAuthentication. Ta biblioteka będzie można również do testowania kodu lokalnie na komputerze deweloperskim, przy użyciu konta użytkownika z programu Visual Studio [interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure?view=azure-cli-latest), lub zintegrowane uwierzytelnianie usługi Active Directory. Aby uzyskać więcej informacji na temat opcji lokalny rozwój za pomocą tej biblioteki, zobacz [Odwołanie Microsoft.Azure.Services.AppAuthentication]. W tej sekcji dowiesz się, jak rozpocząć pracę z biblioteką w kodzie.
+Dla aplikacji platformy .NET i funkcji najprostszy sposób pracy z tożsamości zarządzanej jest za pośrednictwem pakietu Microsoft.Azure.Services.AppAuthentication. Ta biblioteka będzie można również do testowania kodu lokalnie na komputerze deweloperskim, przy użyciu konta użytkownika z programu Visual Studio [wiersza polecenia platformy Azure](/cli/azure), lub zintegrowane uwierzytelnianie usługi Active Directory. Aby uzyskać więcej informacji na temat opcji lokalny rozwój za pomocą tej biblioteki, zobacz [Odwołanie Microsoft.Azure.Services.AppAuthentication]. W tej sekcji dowiesz się, jak rozpocząć pracę z biblioteką w kodzie.
 
 1. Dodaj odwołania do [Microsoft.Azure.Services.AppAuthentication](https://www.nuget.org/packages/Microsoft.Azure.Services.AppAuthentication) i [Microsoft.Azure.KeyVault](https://www.nuget.org/packages/Microsoft.Azure.KeyVault) pakiety NuGet do aplikacji.
 

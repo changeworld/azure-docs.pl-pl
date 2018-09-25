@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/5/2018
 ms.author: terrylan
-ms.openlocfilehash: bc6226d462bac7e9c50ce3f348007023bf861ec3
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 3c198ea44953c0b2e72a544cd0e83b6592d9a81f
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162295"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032082"
 ---
 # <a name="setting-security-policies-in-security-center-or-in-azure-policy"></a>Ustawianie zasad zabezpieczeń w usłudze Security Center lub usługa Azure Policy
 
@@ -111,7 +111,7 @@ Aby uzyskać informacje o definicjach zasad dostępnych w ramach domyślnych zas
 Jeśli Twoja organizacja ma wiele subskrypcji, możesz potrzebować sposobu na wydajne zarządzanie dostępem, zasadami i zgodnością dla tych subskrypcji. Grupy zarządzania platformy Azure zapewniają poziom zakresu powyżej subskrypcji. Subskrypcje są organizowane w kontenerach nazywanych „grupami zarządzania”, do których należy zastosować swoje zasady nadzoru. Wszystkie subskrypcje w grupie zarządzania automatycznie dziedziczą zasady zastosowane do tej grupy zarządzania. Do każdego katalogu jest przypisywana grupa zarządzania najwyższego poziomu nazywana „główną” grupą zarządzania. Główna grupa zarządzania jest wbudowana w hierarchię, aby wszystkie grupy zarządzania i subskrypcje pod nią podlegały. Główna grupa zarządzania umożliwia stosowanie zasad globalnych i przypisań RBAC na poziomie katalogu. Aby skonfigurować używanie grup zarządzania w usłudze Azure Security Center, postępuj zgodnie z instrukcjami w artykule [Gain tenant-wide visibility for Azure Security Center](security-center-management-groups.md) (Uzyskiwanie wglądu na poziomie dzierżawy w usłudze Azure Security Center). 
 
 > [!NOTE]
-> Ważne jest, aby poznać hierarchię grup zarządzania i subskrypcji. Zobacz [Organize your resources with Azure Management Groups](../azure-resource-manager/management-groups-overview.md#root-management-group-for-each-directory) (Organizowanie zasobów za pomocą grup zarządzania platformy Azure), aby dowiedzieć się więcej na temat grup zarządzania, zarządzania grupą główną i dostępu do grup zarządzania.
+> Ważne jest, aby poznać hierarchię grup zarządzania i subskrypcji. Zobacz [Organize your resources with Azure Management Groups](../governance/management-groups/index.md#root-management-group-for-each-directory) (Organizowanie zasobów za pomocą grup zarządzania platformy Azure), aby dowiedzieć się więcej na temat grup zarządzania, zarządzania grupą główną i dostępu do grup zarządzania.
 >
 >
 

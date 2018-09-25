@@ -1,9 +1,9 @@
-Azure CLI 2.0 umożliwia tworzenie i zarządzanie zasobami Azure na macOS, Linux i Windows. W tym artykule szczegółowo niektóre z najczęściej używanych poleceń, aby utworzyć i zarządzać maszynach wirtualnych (VM).
+Interfejs wiersza polecenia platformy Azure umożliwia tworzenie i zarządzanie zasobami platformy Azure w systemach macOS, Linux i Windows. Ten artykuł szczegółowo opisuje niektóre z najczęściej używanych poleceń, aby utworzyć i zarządzać maszyn wirtualnych (VM).
 
-W tym artykule wymaga wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Można również użyć [powłoki chmury](/azure/cloud-shell/quickstart) z przeglądarki.
+Ten artykuł wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.4 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli musisz uaktualnić, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj](/cli/azure/install-azure-cli). Można również użyć [Cloud Shell](/azure/cloud-shell/quickstart) z poziomu przeglądarki.
 
 ## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Podstawowe polecenia usługi Azure Resource Manager w interfejsie wiersza polecenia platformy Azure
-Bardziej szczegółowe pomocy z przełącznikami określonego wiersza polecenia i opcjami, wpisując można użyć Pomocy online polecenia i opcje `az <command> <subcommand> --help`.
+Aby uzyskać bardziej szczegółową pomoc dotyczącą konkretnych przełączników wiersza polecenia i opcji, wpisując można użyć Pomocy online dotyczącej poleceń i opcji `az <command> <subcommand> --help`.
 
 ### <a name="create-vms"></a>Tworzenie maszyn wirtualnych
 | Zadanie | Polecenia interfejsu wiersza polecenia platformy Azure |
@@ -30,17 +30,17 @@ Bardziej szczegółowe pomocy z przełącznikami określonego wiersza polecenia 
 | Używanie zasobów maszyny wirtualnej | `az vm list-usage --location eastus` |
 | Pobieranie wszystkich rozmiarów maszyn wirtualnych | `az vm list-sizes --location eastus` |
 
-## <a name="disks-and-images"></a>Dyski i obrazów
+## <a name="disks-and-images"></a>Dyski i obrazy
 | Zadanie | Polecenia interfejsu wiersza polecenia platformy Azure |
 | --- | --- |
 | Dodawanie dysku danych do maszyny wirtualnej | `az vm disk attach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk --size-gb 128 --new ` |
 | Usuwanie dysku danych z maszyny wirtualnej | `az vm disk detach --resource-group myResourceGroup --vm-name myVM --disk myDataDisk` |
 | Zmienianie rozmiaru dysku | `az disk update --resource-group myResourceGroup --name myDataDisk --size-gb 256` |
 | Tworzenie migawki dysku | `az snapshot create --resource-group myResourceGroup --name mySnapshot --source myDataDisk` |
-| Tworzenie obrazu maszyny wirtualnej | `az image create --resource-group myResourceGroup --source myVM --name myImage` |
-| Tworzenie maszyny Wirtualnej z obrazu | `az vm create --resource-group myResourceGroup --name myNewVM --image myImage` |
+| Tworzenie obrazu maszyny Wirtualnej | `az image create --resource-group myResourceGroup --source myVM --name myImage` |
+| Tworzenie maszyny Wirtualnej na podstawie obrazu | `az vm create --resource-group myResourceGroup --name myNewVM --image myImage` |
 
 
-## <a name="next-steps"></a>Następne kroki
-Aby uzyskać dodatkowe przykłady poleceń interfejsu wiersza polecenia, zobacz [tworzenie i zarządzanie maszyn wirtualnych systemu Linux z wiersza polecenia platformy Azure](../articles/virtual-machines/linux/tutorial-manage-vm.md) samouczka.
+## <a name="next-steps"></a>Kolejne kroki
+Aby uzyskać dodatkowe przykłady poleceń interfejsu wiersza polecenia, zobacz [tworzenie i zarządzanie maszynami wirtualnymi systemu Linux przy użyciu wiersza polecenia platformy Azure](../articles/virtual-machines/linux/tutorial-manage-vm.md) samouczka.
 

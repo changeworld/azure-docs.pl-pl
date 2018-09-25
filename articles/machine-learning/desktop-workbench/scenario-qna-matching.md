@@ -12,14 +12,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
-ms.openlocfilehash: 33d95e0c17e8b9b18313cb0854532337ec76cfd1
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ROBOTS: NOINDEX
+ms.openlocfilehash: e0f6148e1fb28838bf99c63fbfbfbfe8cd127c8c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056061"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973210"
 ---
 #  <a name="q--a-matching-using-azure-machine-learning-workbench"></a>Pytania i zgodne, za pomocą usługi Azure Machine Learning workbench
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 Odpowiadanie na pytania Zakończono open jest trudne i często wymaga ręcznej pracy od ekspertów z danej dziedziny (msp). Aby zmniejszyć zapotrzebowanie na wewnętrzny MSP, firm często tworzyć listy często zadawanych pytań (FAQ) jako sposób wspomaganie użytkowników. W tym przykładzie przedstawiono różne metody learning skuteczne maszyny do dopasowania Otwórz Zakończono zapytań do istniejących wcześniej — często zadawane pytania/odpowiedzi na pytania pary. W przykładzie pokazano ułatwiający projektowanie procesu tworzenia rozwiązania przy użyciu usługi Azure Machine Learning Workbench. 
 
 ## <a name="link-to-the-gallery-github-repository"></a>Połącz z repozytorium GitHub galerii
@@ -42,7 +47,7 @@ Kluczowe kroki wymagane do dostarczenia tego rozwiązania są następujące:
 Wymagania wstępne dotyczące uruchamiania w tym przykładzie są następujące:
 
 1. [Konta platformy Azure](https://azure.microsoft.com/free/) (bezpłatne wersje próbne są dostępne).
-2. Zainstalowana kopia programu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) następujące [przewodnika Szybki start dotyczącego instalacji](../service/quickstart-installation.md) zainstalować ten program i utworzyć obszar roboczy.
+2. Zainstalowana kopia programu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) następujące [przewodnika Szybki start dotyczącego instalacji](quickstart-installation.md) zainstalować ten program i utworzyć obszar roboczy.
 3. W tym przykładzie, może uruchomić w dowolnym kontekście obliczeniowym. Jednak zaleca się ją uruchomić na maszynie wielordzeniowych z co najmniej 16GB pamięci RAM i miejsca na dysku 5GB.
 
 ## <a name="create-a-new-workbench-project"></a>Utwórz nowy projekt aplikacji workbench

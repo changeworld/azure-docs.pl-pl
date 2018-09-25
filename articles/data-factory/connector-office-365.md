@@ -11,14 +11,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/19/2018
+ms.date: 09/21/2018
 ms.author: jingwang
-ms.openlocfilehash: 3783bc6ccda7a559e749a84005f20d860ab56755
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: a077c7d154235205126d77e5523c0acd96e70ad5
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368812"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031615"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Kopiowanie danych z usługi Office 365 na platformie Azure przy użyciu usługi Azure Data Factory (wersja zapoznawcza) 
 
@@ -46,7 +46,6 @@ Aby skopiować dane z usługi Office 365 na platformie Azure, musisz wykonać na
     - Identyfikator dzierżawy.  Aby uzyskać instrukcje, zobacz [uzyskanie Identyfikatora dzierżawy](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-tenant-id).
     - Klucz Identyfikatora aplikacji i aplikacji.  Aby uzyskać instrukcje, zobacz [Get aplikacji Identyfikatora i klucza uwierzytelniania](../azure-resource-manager/resource-group-create-service-principal-portal.md#get-application-id-and-authentication-key).
 - Dodaj tożsamość użytkownika, który powoduje ustawienie żądania dostępu do danych jako właściciel aplikacji sieci web usługi Azure AD (aplikacji internetowej z usługi Azure AD > Ustawienia > właścicieli > Dodaj właściciela).
-- _(Zalecane)_  [Zasady przypisywania Azure](../azure-policy/assign-policy-definition.md) do szyfrowania danych z magazynami danych. Informacje o zasadach zgodności, będą wyświetlane do osób zatwierdzających danych jako część żądania danych. Po zasad przydziału dla każdego uruchomienia, działania kopiowania usługi ADF sprawdzi, upewnij się, że przypisania zasad jest wymuszany. Zapoznaj się [tutaj](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/Capabilities#policies) pełną listę obsługiwanych zasadach.
 
 ## <a name="approving-new-data-access-requests"></a>Zatwierdzanie żądań dostępu do nowych danych
 
@@ -54,9 +53,23 @@ Jeśli po raz pierwszy są wnioskujące o udostępnienie danych dla tego konteks
 
 Zapoznaj się [tutaj](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/Approving-a-data-access-request) na jak osoba zatwierdzająca mogą zatwierdzać dostęp do żądania danych, a można znaleźć [tutaj](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/On-boarding) objaśnienia na ogólną integrację z usługa Privileged Access Management, w tym sposób konfigurowania danych Grupa osoba zatwierdzająca dostęp.
 
+## <a name="policy-validation"></a>Sprawdzanie poprawności zasad
+
+Jeśli przypisań zasad platformy Azure są dokonywane na zasoby w grupie zasobów zarządzania usługi ADF jest tworzony w ramach zarządzaną aplikację, następnie dla każdego uruchomienia, działania kopiowania usługi ADF sprawdzi, upewnij się, że przypisania zasad są wymuszane. Zapoznaj się [tutaj](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki/Capabilities#policies) Aby uzyskać listę obsługiwanych zasadach.
+
 ## <a name="getting-started"></a>Wprowadzenie
 
-Utworzysz potok za pomocą działania kopiowania przy użyciu zestawu .NET SDK, zestaw SDK języka Python, programu Azure PowerShell, interfejsu API REST lub szablonu usługi Azure Resource Manager. Zobacz [samouczka działania kopiowania](quickstart-create-data-factory-dot-net.md) instrukcje krok po kroku utworzyć potok z działaniem kopiowania.
+>[!TIP]
+>Aby zapoznać się z przewodnikiem za pomocą łącznika usługi Office 365, zobacz [ładowanie danych z usługi Office 365](load-office-365-data.md) artykułu.
+
+Aby utworzyć potok za pomocą działania kopiowania, przy użyciu jednej z następujących narzędzi lub zestawów SDK. Wybierz łącze, aby przejść do samouczka krok po kroku instrukcje tworzenia potoku za pomocą działania kopiowania. 
+
+- [Azure Portal](quickstart-create-data-factory-portal.md)
+- [Zestaw SDK platformy .NET](quickstart-create-data-factory-dot-net.md)
+- [Zestaw SDK dla języka Python](quickstart-create-data-factory-python.md)
+- [Azure PowerShell](quickstart-create-data-factory-powershell.md)
+- [Interfejs API REST](quickstart-create-data-factory-rest-api.md)
+- [Szablon usługi Azure Resource Manager](quickstart-create-data-factory-resource-manager-template.md). 
 
 Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, które są używane do definiowania jednostek usługi fabryka danych określonej do łącznika usługi Office 365.
 

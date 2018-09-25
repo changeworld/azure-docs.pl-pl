@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/27/2018
 ms.author: kumud
-ms.openlocfilehash: ea8e8ae9b0f487481ac2f25d4e2b9c5733e15431
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 24eec3b1f3c85384f80823b82962038c235b6dac
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842259"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036994"
 ---
 # <a name="outbound-connections-in-azure"></a>Połączenia wychodzące na platformie Azure
 
@@ -69,7 +69,7 @@ Efemeryczne porty frontonu adres IP publicznego modułu równoważenia obciąże
 
 Są wstępnie przydzielonych portów SNAT, zgodnie z opisem w [SNAT zrozumienie i osobisty token dostępu](#snat) sekcji. Są one ograniczone zasób, który może wyczerpać. Jest ważne zrozumieć, jak są one [używane](#pat). Aby dowiedzieć się, jak zaprojektować za to użycie i ograniczać zgodnie z potrzebami, zapoznaj się z [wyczerpania Zarządzanie SNAT](#snatexhaust).
 
-Podczas [wiele adresów IP (publicznego) są skojarzone z podstawowego modułu równoważenia obciążenia](load-balancer-multivip-overview.md), dowolne z publicznym adresem IP na te adresy są [Release candidate programu przepływy wychodzące](#multivipsnat), a jeden jest wybrany.  
+Gdy [wiele publicznych adresów IP skojarzonych z podstawowego modułu równoważenia obciążenia](load-balancer-multivip-overview.md), dowolne z publicznym adresem IP na te adresy są [Release candidate programu przepływy wychodzące](#multivipsnat), a jeden losowo wybrany.  
 
 Aby monitorować kondycję połączenia wychodzące z podstawowego modułu równoważenia obciążenia, możesz użyć [usługi Log Analytics dla usługi Load Balancer](load-balancer-monitor-log.md) i [alertów dzienników zdarzeń](load-balancer-monitor-log.md#alert-event-log) do monitorowania komunikatów wyczerpanie portów SNAT.
 

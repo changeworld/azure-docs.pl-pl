@@ -16,18 +16,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/06/2016
 ms.author: rclaus
-ms.openlocfilehash: 10e39a205950d50794169e9bedaa65f480f1e9b5
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 91e9cb6b436cc78a0c5bd4769d38622abda4c04d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35756043"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977574"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Optymalizowanie maszyny wirtualnej systemu Linux na platformie Azure
 Tworzenia maszyny wirtualnej systemu Linux (VM) to łatwo zrobić z wiersza polecenia lub w portalu. Ten samouczek pokazuje, jak upewnić się, po skonfigurowaniu go w celu zoptymalizowania wydajności na platformie Microsoft Azure. Ten temat używa maszyny Wirtualnej z systemem Ubuntu Server, ale można również utworzyć maszynę wirtualną systemu Linux przy użyciu [własnych obrazów jako szablony](create-upload-generic.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).  
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-W tym temacie założono, masz już działającą subskrypcji platformy Azure ([bezpłatnej wersji próbnej rejestracji](https://azure.microsoft.com/pricing/free-trial/)) i już przeprowadzono aprowizację maszyny Wirtualnej w ramach subskrypcji platformy Azure. Upewnij się, że masz najnowszy [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2) zainstalowane i zalogować się do subskrypcji platformy Azure za pomocą [az login](/cli/azure/reference-index#az_login) przed [Utwórz Maszynę wirtualną](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+W tym temacie założono, masz już działającą subskrypcji platformy Azure ([bezpłatnej wersji próbnej rejestracji](https://azure.microsoft.com/pricing/free-trial/)) i już przeprowadzono aprowizację maszyny Wirtualnej w ramach subskrypcji platformy Azure. Upewnij się, że masz najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do subskrypcji platformy Azure za pomocą [az login](/cli/azure/reference-index#az_login) przed [Utwórz Maszynę wirtualną](quick-create-cli.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
 ## <a name="azure-os-disk"></a>Dysk systemu operacyjnego platformy Azure
 Po utworzeniu maszyny Wirtualnej z systemem Linux na platformie Azure ma dwa dyski skojarzone z nią. **/ dev/sda** jest dysk systemu operacyjnego, **/dev/sdb** jest dysku tymczasowego.  Nie używaj głównego dysku systemu operacyjnego (**/dev/sda**) dla wszystkich elementów, z wyjątkiem systemu operacyjnego jest zoptymalizowana pod kątem szybkiego czasu rozruchu maszyny Wirtualnej i nie zapewnia dobrą wydajność dla obciążeń. Aby dołączyć co najmniej jeden dysk do maszyny Wirtualnej, aby pobrać trwałe i zoptymalizowane pod kątem magazynowania danych. 
@@ -42,7 +42,7 @@ Aby osiągnąć najwyższą operacje We/Wy na dysków usługi Premium Storage, g
 * Jeśli używasz **XFS**, wyłącz barier za pomocą opcji instalacji `nobarrier` (włączania bariery, użyj opcji `barrier`)
 
 ## <a name="unmanaged-storage-account-considerations"></a>Uwagi dotyczące konta magazynu niezarządzanego
-Domyślna akcja podczas tworzenia maszyny Wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0 jest użycie usługi Azure Managed Disks.  Te dyski są obsługiwane przez platformę Azure, a nie są wymagane żadne przygotowanie ani lokalizacja, do ich przechowywania.  Usługa Unmanaged disks wymagają konta magazynu i mają pewne zagadnienia wyższą wydajność.  Aby uzyskać więcej informacji o dyskach zarządzanych, zobacz [Omówienie usługi Azure Managed Disks](../windows/managed-disks-overview.md).  W poniższej sekcji przedstawiono zagadnienia związane z wydajnością, tylko wtedy, gdy używasz dysków niezarządzanych.  Ponownie, domyślna i rozwiązanie do magazynowania zalecane jest używanie dysków zarządzanych.
+Domyślna akcja podczas tworzenia maszyny Wirtualnej przy użyciu wiersza polecenia platformy Azure jest użycie usługi Azure Managed Disks.  Te dyski są obsługiwane przez platformę Azure, a nie są wymagane żadne przygotowanie ani lokalizacja, do ich przechowywania.  Usługa Unmanaged disks wymagają konta magazynu i mają pewne zagadnienia wyższą wydajność.  Aby uzyskać więcej informacji o dyskach zarządzanych, zobacz [Omówienie usługi Azure Managed Disks](../windows/managed-disks-overview.md).  W poniższej sekcji przedstawiono zagadnienia związane z wydajnością, tylko wtedy, gdy używasz dysków niezarządzanych.  Ponownie, domyślna i rozwiązanie do magazynowania zalecane jest używanie dysków zarządzanych.
 
 Jeśli tworzysz Maszynę wirtualną z dyskami niezarządzanymi, upewnij się, dołączenia dysków z konta magazynu znajdujące się w tym samym regionie jako maszyny Wirtualnej, aby zapewnić bliskość Zamknij i zminimalizować opóźnienie sieci.  Każde konto magazynu w warstwie standardowa może zawierać maksymalnie 20 k operacje We/Wy i rozmiar pojemności 500 TB.  Ten limit ustali do około 40 intensywnie używanych dysków, w tym dysk systemu operacyjnego i wszelkich dysków z danymi, które można utworzyć. Dla kont usługi Premium Storage nie ma żadnego limitu maksymalnej operacje We/Wy, ale ma limitu rozmiaru 32 TB. 
 

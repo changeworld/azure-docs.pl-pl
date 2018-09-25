@@ -8,12 +8,12 @@ services: iot-accelerators
 ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
-ms.openlocfilehash: d2f5ce97ee81deaf590771f4794af4adf0fdbd1b
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 737a76ba313dddaa58c302f1df501f16a5c4e9e8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248591"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966561"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Często zadawane pytania dotyczące akcelerator rozwiązania połączonej fabryki
 
@@ -111,7 +111,7 @@ Symulacja samodzielnie rejestruje następujące urządzenia:
 * publisher.rio.corp.contoso
 * publisher.seattle.corp.contoso
 
-Za pomocą [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) lub [rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://github.com/Azure/azure-iot-cli-extension) narzędzie, można sprawdzić, które urządzenia są zarejestrowane w usłudze IoT hub, Twoje rozwiązanie używa. Aby użyć Eksplorator urządzeń, należy parametry połączenia dla Centrum IoT hub w danym wdrożeniu. Aby użyć rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure w wersji 2.0, należy nazwę Centrum IoT Hub.
+Za pomocą [DeviceExplorer](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer) lub [rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-iot-cli-extension) narzędzie, można sprawdzić, które urządzenia są zarejestrowane w usłudze IoT hub, Twoje rozwiązanie używa. Aby użyć Eksplorator urządzeń, należy parametry połączenia dla Centrum IoT hub w danym wdrożeniu. Aby użyć rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure, konieczne jest nazwa Twojego Centrum IoT.
 
 ### <a name="how-can-i-get-log-data-from-the-simulation-components"></a>Jak uzyskać dane dzienników z składniki symulacji?
 

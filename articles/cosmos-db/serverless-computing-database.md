@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: sngun
-ms.openlocfilehash: b54a302c022a8af84c1964c13ffadc52b45c4ca4
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: b7908f9f9aef51857f0ffb07102e1df245b7a259
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696823"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064462"
 ---
 # <a name="azure-cosmos-db-serverless-database-computing-using-azure-functions"></a>Azure Cosmos DB: Bezserwerowa baza danych przetwarzanie za pomocą usługi Azure Functions
 
@@ -110,15 +110,12 @@ We wszystkich tych zastosowań, ponieważ funkcja ma odłączone samej aplikacji
 ## <a name="tooling"></a>Narzędzia
 
 Natywna integracja pomiędzy usługą Azure Cosmos DB i Azure Functions jest dostępna w witrynie Azure portal i programu Visual Studio 2017.
-* W portalu usługi Azure Functions można utworzyć wyzwalacza usługi Azure Cosmos DB. Przewodnik Szybki Start instrukcje można znaleźć [Tworzenie wyzwalacza usługi Azure Cosmos DB w witrynie Azure portal](https://aka.ms/cosmosdbtriggerportalfunc) ![Tworzenie wyzwalacza usługi Azure Cosmos DB w portalu usługi Azure Functions](./media/serverless-computing-database/azure-function-cosmos-db-trigger.png) 
-* W portalu usługi Azure Functions można również dodać do innych typów wyzwalaczy usługi Azure Cosmos DB, powiązania danych wejściowych i powiązania danych wyjściowych. Przewodnik Szybki Start instrukcje można znaleźć [Store danych niestrukturalnych przy użyciu usługi Azure Functions i Cosmos DB](../azure-functions/functions-integrate-store-unstructured-data-cosmosdb.md).
-    ![Tworzenie wyzwalacza usługi Azure Cosmos DB w portalu usługi Azure Functions](./media/serverless-computing-database/function-portal-input-binding.png)
-*   W portalu usługi Azure Cosmos DB można dodać wyzwalacza usługi Azure Cosmos DB do istniejącej aplikacji funkcji platformy Azure w tej samej grupie zasobów.
-    ![Tworzenie wyzwalacza usługi Azure Cosmos DB w portalu usługi Azure Functions](./media/serverless-computing-database/cosmos-db-portal.png)
-* W programie Visual Studio 2017 można utworzyć wyzwalacza usługi Azure Cosmos DB przy użyciu zintegrowanego szablonu:
+
+* W portalu usługi Azure Functions można utworzyć wyzwalacza usługi Azure Cosmos DB. Przewodnik Szybki Start instrukcje można znaleźć [Tworzenie wyzwalacza usługi Azure Cosmos DB w witrynie Azure portal](https://aka.ms/cosmosdbtriggerportalfunc).
+* W portalu usługi Azure Cosmos DB można dodać wyzwalacza usługi Azure Cosmos DB do istniejącej aplikacji funkcji platformy Azure w tej samej grupie zasobów.
+* W programie Visual Studio 2017 można utworzyć wyzwalacza usługi Azure Cosmos DB przy użyciu [narzędzi usługi Azure Functions dla programu Visual Studio 2017](../azure-functions/functions-develop-vs.md):
 
     >[!VIDEO https://www.youtube.com/embed/iprndNsUeeg]
-
 
 ## <a name="why-choose-azure-functions-integration-for-serverless-computing"></a>Dlaczego warto wybrać integracji usługi Azure Functions do obliczeń bez użycia serwera?
 
@@ -152,7 +149,6 @@ Teraz Połączmy rzeczywistym z usługi Azure Cosmos DB i Azure Functions:
 
 * [Tworzenie wyzwalacza usługi Azure Cosmos DB w witrynie Azure portal](https://aka.ms/cosmosdbtriggerportalfunc)
 * [Tworzenie wyzwalacza HTTP funkcje platformy Azure przy użyciu powiązania danych wejściowych usługi Azure Cosmos DB](https://aka.ms/cosmosdbinputbind)
-* [Store danych niestrukturalnych przy użyciu usługi Azure Functions i Cosmos DB](../azure-functions/functions-integrate-store-unstructured-data-cosmosdb.md)
 * [Azure Cosmos DB, powiązania i wyzwalacze](../azure-functions/functions-bindings-cosmosdb.md)
 
 

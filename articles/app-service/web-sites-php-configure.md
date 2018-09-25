@@ -13,12 +13,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 04/11/2018
 ms.author: msangapu
-ms.openlocfilehash: 028a8f35b6ffc4b429725e91045e70112f2bdabd
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 39c40482017ae0c0dedcfb1b65ff3767c4e45169
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42059223"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999192"
 ---
 # <a name="configure-php-in-azure-app-service-web-apps"></a>Konfigurowanie obsługi języka PHP w usłudze Azure App Service Web Apps
 
@@ -58,9 +58,9 @@ PHP 5.6 jest domyślnie, jest zainstalowana i natychmiast dostępny do użycia p
 
         PS C:\> Get-AzureWebsite -Name {app-name} | findstr PhpVersion
 
-### <a name="azure-cli-20-linux-mac-windows"></a>Azure CLI 2.0 (Linux, Mac i Windows)
+### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure 
 
-Aby użyć interfejsu wiersza polecenia platformy Azure, musisz mieć [instalowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) na tym komputerze.
+Aby użyć interfejsu wiersza polecenia platformy Azure, musisz mieć [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest) na tym komputerze.
 
 1. Otwórz okno terminalu i zaloguj się do swojego konta.
 

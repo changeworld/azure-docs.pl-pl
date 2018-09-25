@@ -8,12 +8,12 @@ ms.date: 06/06/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: af4a831c084ae10b381b8e08fd0ce4798b21b394
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: a65eb029dbf10b194bd28bf7ad82f5aa839338a2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382175"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990624"
 ---
 # <a name="learn-how-to-use-deployment-manifests-to-deploy-modules-and-establish-routes"></a>Dowiedz się, jak wdrażać moduły oraz ustalenia tras za pomocą manifestów wdrożenia
 
@@ -125,10 +125,10 @@ Trasy są deklarowane w **$edgeHub** żądane właściwości przy użyciu nastę
 Każdy wymaga źródła i ujścia, ale warunek jest opcjonalne, można użyć do filtrowania wiadomości. 
 
 
-### <a name="source"></a>Źródło
+### <a name="source"></a>Element źródłowy
 Źródło Określa, skąd pochodzą komunikaty. Może być dowolną z następujących wartości:
 
-| Źródło | Opis |
+| Element źródłowy | Opis |
 | ------ | ----------- |
 | `/*` | Wszystkie komunikaty urządzenie chmura z każdego urządzenia lub modułu |
 | `/messages/*` | Wszystkie komunikaty z urządzenia do chmury wysyłane przez urządzenie, czy moduł niektórych lub dane wyjściowe |
@@ -148,7 +148,7 @@ Można tworzyć zapytania dotyczące wszystkich trzech parametrów przy użyciu 
 * Właściwości aplikacji: `<propertyName>`
 * Właściwości treści: `$body.<propertyName>` 
 
-Przykłady o sposobach tworzenia zapytań dotyczących właściwości wiadomości, zobacz [komunikatów z urządzenia do chmury trasy wyrażeniach zapytań](../iot-hub/iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions).
+Przykłady o sposobach tworzenia zapytań dotyczących właściwości wiadomości, zobacz [komunikatów z urządzenia do chmury trasy wyrażeniach zapytań](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
 
 Przykładem, które są specyficzne dla usługi IoT Edge jest, jeśli chcesz filtrować pod kątem komunikatów, które dotarły urządzenie bramy z urządzenia typu liść. Komunikaty, które pochodzą z modułów zawierają właściwość systemu o nazwie **connectionModuleId**. Dlatego jeśli chcesz routing komunikatów z urządzeń liścia bezpośrednio do usługi IoT Hub umożliwia Następująca trasa wyłączenia modułu wiadomości:
 
@@ -265,7 +265,7 @@ Ten przykład dokumentem JSON manifestu wdrażania.
 * Teraz, gdy wiesz, jak są używane moduły usługi IoT Edge, [zrozumieć wymagania i narzędzia do tworzenia modułów usługi IoT Edge][lnk-module-dev].
 
 [lnk-deploy]: module-deployment-monitoring.md
-[lnk-iothub-query]: ../iot-hub/iot-hub-devguide-query-language.md
+[lnk-iothub-query]: ../iot-hub/iot-hub-devguide-routing-query-syntax.md
 [lnk-docker-create-options]: https://docs.docker.com/engine/api/v1.32/#operation/ContainerCreate
 [lnk-docker-logging-options]: https://docs.docker.com/engine/admin/logging/overview/
 [lnk-module-dev]: module-development.md

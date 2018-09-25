@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie rekordami systemu DNS w usłudze Azure DNS przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0 | Dokumentacja firmy Microsoft
-description: Zarządzanie zestawami rekordów DNS i rekordów w usłudze Azure DNS podczas hosting domeny w usłudze Azure DNS. Wszystkie polecenia interfejsu wiersza polecenia 2.0 dla operacji na zestawy rekordów i rekordy.
+title: Zarządzanie rekordami systemu DNS w usłudze Azure DNS przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Zarządzanie zestawami rekordów DNS i rekordów w usłudze Azure DNS podczas hosting domeny w usłudze Azure DNS.
 services: dns
 documentationcenter: na
 author: vhorne
@@ -14,23 +14,23 @@ ms.custom: H1Hack27Feb2017
 ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: victorh
-ms.openlocfilehash: 41366f29ecf5dcd6ffe23148acd61100681620df
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 1f1ee4f69cc1ab656df04ed30cae6f4c3e55bfa7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39174388"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963819"
 ---
-# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli-20"></a>Zarządzanie rekordami systemu DNS i zestawów rekordów w usłudze Azure DNS przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
+# <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>Zarządzanie rekordami systemu DNS i zestawów rekordów w usłudze Azure DNS przy użyciu wiersza polecenia platformy Azure
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](dns-operations-recordsets-portal.md)
-> * [Interfejs wiersza polecenia platformy Azure 2.0](dns-operations-recordsets-cli.md)
+> * [Interfejs wiersza polecenia platformy Azure](dns-operations-recordsets-cli.md)
 > * [Program PowerShell](dns-operations-recordsets.md)
 
-W tym artykule pokazano, jak zarządzać rekordami DNS dla strefy DNS przy użyciu interfejsu wiersza polecenia platformy Azure dla wielu platform (interfejs wiersza polecenia) w wersji 2.0, który jest dostępny dla systemów Windows, Mac i Linux. Można również zarządzać rekordami DNS przy użyciu [programu Azure PowerShell](dns-operations-recordsets.md) lub [witryny Azure portal](dns-operations-recordsets-portal.md).
+W tym artykule pokazano, jak zarządzać rekordami DNS dla strefy DNS przy użyciu interfejsu wiersza polecenia Azure dla wielu platform, który jest dostępny dla systemów Windows, Mac i Linux. Można również zarządzać rekordami DNS przy użyciu [programu Azure PowerShell](dns-operations-recordsets.md) lub [witryny Azure portal](dns-operations-recordsets-portal.md).
 
-W przykładach w tym artykule założono, że już [zainstalowano Azure CLI 2.0, zalogowano się i utworzono strefę DNS](dns-operations-dnszones-cli.md).
+W przykładach w tym artykule założono, że już [zainstalowano interfejsu wiersza polecenia Azure, zalogowano się i utworzono strefę DNS](dns-operations-dnszones-cli.md).
 
 ## <a name="introduction"></a>Wprowadzenie
 

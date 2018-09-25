@@ -1,9 +1,9 @@
 ---
-title: Przewodnik Szybki start dotyczący usługi Azure AD interfejsu API programu Graph | Dokumentacja firmy Microsoft
-description: Azure Active Directory interfejsu API programu Graph zapewnia dostęp programistyczny do usługi Azure AD za pośrednictwem punktów końcowych interfejsu API REST protokołu OData. Aplikacje mogą używać interfejsu API usługi Azure AD Graph do wykonywania tworzenia, odczytu, aktualizacji i usuwania (CRUD) operacje na danych i obiektów katalogu.
+title: Jak używać interfejsu API programu Graph usługi Azure AD
+description: Interfejs API programu Graph usługi Azure Active Directory (Azure AD) zapewnia dostęp programistyczny do usługi Azure AD za pośrednictwem punktów końcowych interfejsu API REST protokołu OData. Aplikacje mogą używać interfejsu API usługi Azure AD Graph do wykonywania tworzenia, odczytu, aktualizacji i usuwania (CRUD) operacje na danych i obiektów katalogu.
 services: active-directory
 documentationcenter: n/a
-author: mtillman
+author: CelesteDG
 manager: mtillman
 editor: ''
 tags: ''
@@ -11,28 +11,29 @@ ms.assetid: 9dc268a9-32e8-402c-a43f-02b183c295c5
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/02/2018
-ms.author: mtillman
+ms.date: 09/24/2018
+ms.author: celested
+ms.reviewer: sureshja
 ms.custom: aaddev
-ms.openlocfilehash: 3298b39fc92f6e5867900ed151149ff936e2733c
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 7b7f2133634a91b828d7e978c9041b12873fa3a1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39492633"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46997220"
 ---
-# <a name="quickstart-for-the-azure-ad-graph-api"></a>Przewodnik Szybki start dotyczący usługi Azure AD interfejsu API programu Graph
-Interfejs API programu Graph usługi Azure Active Directory (AD) zapewnia dostęp programistyczny do usługi Azure AD za pośrednictwem punktów końcowych interfejsu API REST protokołu OData. Aplikacje mogą używać interfejsu API usługi Azure AD Graph do wykonywania tworzenia, odczytu, aktualizacji i usuwania (CRUD) operacje na danych i obiektów katalogu. Na przykład, można użyć interfejsu API usługi Azure AD Graph, aby utworzyć nowego użytkownika, wyświetlić lub zaktualizować właściwości użytkownika, zmiany hasła użytkownika, sprawdź członkostwo w grupie na potrzeby dostępu opartego na rolach wyłączyć lub usunąć użytkownika. Aby uzyskać więcej informacji na temat funkcji interfejsu API programu Graph usługi Azure AD i scenariuszy aplikacji, zobacz [interfejsu API usługi Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) i [wymagania wstępne programu Azure AD Graph API](https://msdn.microsoft.com/library/hh974476.aspx). 
+# <a name="how-to-use-the-azure-ad-graph-api"></a>Porady: Użyj usługi Azure AD interfejsu API programu Graph
+
+Interfejs API programu Graph usługi Azure Active Directory (Azure AD) zapewnia dostęp programistyczny do usługi Azure AD za pośrednictwem punktów końcowych interfejsu API REST protokołu OData. Aplikacje mogą używać interfejsu API usługi Azure AD Graph do wykonywania tworzenia, odczytu, aktualizacji i usuwania (CRUD) operacje na danych i obiektów katalogu. Na przykład, można użyć interfejsu API usługi Azure AD Graph, aby utworzyć nowego użytkownika, wyświetlić lub zaktualizować właściwości użytkownika, zmiany hasła użytkownika, sprawdź członkostwo w grupie na potrzeby dostępu opartego na rolach wyłączyć lub usunąć użytkownika. Aby uzyskać więcej informacji na temat funkcji interfejsu API programu Graph usługi Azure AD i scenariuszy aplikacji, zobacz [interfejsu API usługi Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog) i [wymagania wstępne programu Azure AD Graph API](https://msdn.microsoft.com/library/hh974476.aspx).
 
 > [!IMPORTANT]
 > Zdecydowanie zalecamy uzyskiwanie dostępu do zasobów usługi Azure Active Directory za pomocą programu [Microsoft Graph](https://developer.microsoft.com/graph) zamiast interfejsu API funkcji Azure AD Graph. Obecnie koncentrujemy nasze działania deweloperskie na programie Microsoft Graph i nie planujemy żadnych dodatkowych rozszerzeń dla interfejsu API funkcji Azure AD Graph. Istnieje bardzo ograniczona liczba scenariuszy, w których można używać interfejsu API funkcji Azure AD Graph. Więcej informacji można znaleźć we wpisie w blogu [Microsoft Graph or the Azure AD Graph](https://dev.office.com/blogs/microsoft-graph-or-azure-ad-graph) w Centrum deweloperów pakietu Office.
-> 
-> 
 
 ## <a name="how-to-construct-a-graph-api-url"></a>Jak skonstruować adres URL interfejsu API programu Graph
+
 W interfejsie API programu Graph dostęp do danych katalogu i obiekty (innymi słowy, zasoby lub jednostek), wobec których chcesz wykonać operacje CRUD, można użyć adresów URL na podstawie protokołu Open Data (OData). Adresy URL używane w interfejsie API programu Graph składają się z czterech głównych części: usługi katalogu głównego, identyfikator dzierżawy, ścieżka zasobu i opcje ciągu zapytania: `https://graph.windows.net/{tenant-identifier}/{resource-path}?[query-parameters]`. Przykładowy następującego adresu URL: `https://graph.windows.net/contoso.com/groups?api-version=1.6`.
 
 * **Element główny usługi**: W interfejsu API programu Graph usługi Azure AD, główny usługi jest zawsze https://graph.windows.net.
@@ -41,12 +42,15 @@ W interfejsie API programu Graph dostęp do danych katalogu i obiekty (innymi s�
 * **Parametry zapytania**: znak zapytania (?) oddziela sekcji Ścieżka zasobu z sekcji parametrów zapytania. Parametr zapytania "api-version" jest wymagana dla wszystkich żądań w interfejsie API programu Graph usługi Azure AD. Usługa Azure AD Graph API obsługuje również następujące opcje zapytania OData: **$filter**, **$orderby**, **$expand**, **$top**i **$format**. Następujące opcje zapytania nie są obecnie obsługiwane: **$count**, **$inlinecount**, i **$skip**. Aby uzyskać więcej informacji, zobacz [obsługiwane zapytania, filtry i opcje stronicowania w interfejsie API programu Graph usługi Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options).
 
 ## <a name="graph-api-versions"></a>Wersje interfejsu API programu Graph
+
 Określasz wersji dla żądania interfejsu API programu Graph w parametrze zapytania "api-version". W wersji 1.5 lub nowszej Użyj wartości liczbowe wersji; Interfejs API-version = 1.6. W starszych wersjach należy użyć ciągu daty, która jest zgodna z formatem RRRR-MM-DD; na przykład parametru api-version = 2013-11-08. Dla funkcji w wersji zapoznawczej należy użyć ciągu "beta"; na przykład parametru api-version = beta. Aby uzyskać więcej informacji na temat różnic między wersjami interfejsu API programu Graph, zobacz [przechowywanie wersji interfejsu API programu Graph usługi Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-versioning).
 
 ## <a name="graph-api-metadata"></a>Metadane interfejsu API programu Graph
+
 Zwraca plik metadanych interfejsu API programu Graph usługi Azure AD, należy dodać segment "$metadata" po identyfikator dzierżawy w przykładzie adres URL dla, następujący adres URL zwraca metadane dla firmy Pokaz: `https://graph.windows.net/GraphDir1.OnMicrosoft.com/$metadata?api-version=1.6`. Możesz wprowadzić ten adres URL w pasku adresu przeglądarki sieci web, aby wyświetlić metadane. Dokument metadanych CSDL, które są zwracane w tym artykule opisano jednostek i typów złożonych, ich właściwości i funkcje i udostępnianych przez wersję interfejsu API programu Graph żądanej akcji. Pominięcie parametru api-version zwraca metadane dla najnowszej wersji.
 
 ## <a name="common-queries"></a>Typowe zapytania
+
 [Azure AD Graph typowych zapytań do interfejsu API](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-supported-queries-filters-and-paging-options#CommonQueries) zawiera listę typowych zapytań, które mogą być używane z usługi Azure AD Graph, w tym reguł zapytań, które mogą służyć do dostępu do zasobów najwyższego poziomu w katalogu i zapytania w celu wykonywania operacji w katalogu.
 
 Na przykład `https://graph.windows.net/contoso.com/tenantDetails?api-version=1.6` zwraca firmy informacji dla domeny contoso.com w katalogu.
@@ -75,6 +79,7 @@ Należy zwrócić uwagę, następujące funkcje i ograniczenia dotyczące Eksplo
 * Brak obsługi wyświetlania lub przekazywanie miniatury zdjęcia.
 
 ## <a name="using-fiddler-to-write-to-the-directory"></a>Za pomocą narzędzia Fiddler do zapisu do katalogu
+
 Na potrzeby tego przewodnika Szybki Start można użyć debugera w sieci Web programu Fiddler rozwiązanie polegające na wykonywanie operacji względem katalogu usługi Azure AD "write". Na przykład możesz pobrać i przekaż zdjęcie w profilu użytkownika (co nie jest możliwe za pomocą Eksploratora usługi Azure AD Graph). Aby uzyskać więcej informacji i zainstaluj program Fiddler, zobacz [ http://www.telerik.com/fiddler ](http://www.telerik.com/fiddler).
 
 W poniższym przykładzie umożliwia debuger sieci Web programu Fiddler Utwórz nową grupę zabezpieczeń "MyTestGroup" w katalogu usługi Azure AD.
@@ -89,8 +94,7 @@ W poniższym przykładzie umożliwia debuger sieci Web programu Fiddler Utwórz 
    
    > [!NOTE]
    > {Mytenantdomain} należy zastąpić nazwą domeny w katalogu usługi Azure AD.
-   > 
-   > 
+
 4. W polu bezpośrednio pod rozwijanego wpis należy wpisać następujący nagłówek HTTP:
    
     ```
@@ -101,8 +105,7 @@ W poniższym przykładzie umożliwia debuger sieci Web programu Fiddler Utwórz 
    
    > [!NOTE]
    > Zastąp swoje &lt;tokenu dostępu&gt; przy użyciu tokenu dostępu dla katalogu usługi Azure AD.
-   > 
-   > 
+
 5. W **treść żądania** wpisz następujący kod JSON:
    
     ```
@@ -119,6 +122,6 @@ W poniższym przykładzie umożliwia debuger sieci Web programu Fiddler Utwórz 
 Więcej informacji na temat usługi Azure AD, jednostek i typy, które są udostępniane przez usługę Graph i informacji na temat operacji, które można wykonywać na nich za pomocą programu Graph, zobacz [dokumentacja interfejsu API REST usługi Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog).
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 * Dowiedz się więcej o [interfejsu API usługi Azure AD Graph](https://msdn.microsoft.com/Library/Azure/Ad/Graph/api/api-catalog)
 * Dowiedz się więcej o [zakresów uprawnień interfejsu API programu Graph usługi Azure AD](https://msdn.microsoft.com/Library/Azure/Ad/Graph/howto/azure-ad-graph-api-permission-scopes)
-

@@ -15,16 +15,17 @@ ms.workload: big-compute
 ms.date: 04/05/2018
 ms.author: danlep
 ms.custom: ''
-ms.openlocfilehash: 85bda9e1a936f19a37be2f2c1c42f948cab727d6
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 98bd088d4995bd1444b059531dc5b19d0283f551
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122471"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965538"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Metryki usługi Batch, alerty i dzienniki diagnostyczne oceny i monitorowania
 
-W tym artykule wyjaśniono, jak monitorować konto usługi Batch przy użyciu funkcji [usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md). Usługa Azure Monitor umożliwia zbieranie informacji o [metryki](../monitoring-and-diagnostics/monitoring-overview-metrics.md) i [dzienniki diagnostyczne](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) zasobów na koncie usługi Batch. Zbieranie i używanie tych danych na wiele sposobów na monitorowanie konta usługi Batch i diagnozować problemy. Można również skonfigurować [alertów dotyczących metryk](../monitoring-and-diagnostics/monitoring-overview-alerts.md#alerts-on-azure-monitor-data) Aby otrzymywać powiadomienia, gdy Metryka osiągnie określoną wartość. 
+ 
+W tym artykule wyjaśniono, jak monitorować konto usługi Batch przy użyciu funkcji [usługi Azure Monitor](../azure-monitor/overview.md). Usługa Azure Monitor umożliwia zbieranie informacji o [metryki](../monitoring/monitoring-data-collection.md#metrics) i [dzienniki diagnostyczne](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) zasobów na koncie usługi Batch. Zbieranie i używanie tych danych na wiele sposobów na monitorowanie konta usługi Batch i diagnozować problemy. Można również skonfigurować [alertów dotyczących metryk](../monitoring-and-diagnostics/monitoring-overview-alerts.md) Aby otrzymywać powiadomienia, gdy Metryka osiągnie określoną wartość. 
 
 ## <a name="batch-metrics"></a>Metryki usługi Batch
 
@@ -64,7 +65,8 @@ Aby skonfigurować alert metryki w portalu:
 2. W obszarze **monitorowanie**, kliknij przycisk **reguły alertów** > **Dodaj alert dotyczący metryki**.
 3. Wybierz metrykę, warunek alertu (na przykład gdy Metryka przekracza określoną wartość w okresie) i co najmniej jedno powiadomienie.
 
-Możesz również skonfigurować, niemal w czasie rzeczywistym alertu przy użyciu [interfejsu API REST](https://docs.microsoft.com/rest/api/monitor/). Aby uzyskać więcej informacji, zobacz [Użyj nowszych alertów metryk dla usług platformy Azure w witrynie Azure portal](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md)
+Możesz również skonfigurować, niemal w czasie rzeczywistym alertu przy użyciu [interfejsu API REST](https://docs.microsoft.com/rest/api/monitor/). Aby uzyskać więcej informacji, zobacz [Przegląd alertów](../monitoring-and-diagnostics/monitoring-overview-alerts.md)
+
 ## <a name="batch-diagnostics"></a>Diagnostyka usługi Batch
 
 Dzienniki diagnostyczne zawierają informacje, o których wyemitowane przez zasoby platformy Azure, które opisują działania każdego zasobu. Dla usługi Batch można zebrać następujące dzienniki:

@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 661ff7c07ba2bb17eb5830b38bb39e1c3e80bb55
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 288af0eae50634f44d6af8c787b56112bb3119ff
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45602912"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46998597"
 ---
 # <a name="advanced-aggregations-in-log-analytics-queries"></a>Zaawansowane agregacji w zapytań usługi Log Analytics
 
@@ -34,7 +34,7 @@ W tym artykule opisano niektóre bardziej zaawansowane opcje agregacji, dostępn
 ## <a name="generating-lists-and-sets"></a>Generowanie listy i zestawy
 Możesz użyć `makelist` z danymi obrotu przez kolejność wartości w określonej kolumnie. Można na przykład, zapoznaj się z najbardziej typowych kolejność zdarzeń miejsce na maszynach. Zasadniczo można przestawiać danych przez kolejność EventIDs na każdym komputerze. 
 
-```KQL
+```Kusto
 Event
 | where TimeGenerated > ago(12h)
 | order by TimeGenerated desc
@@ -50,7 +50,7 @@ Event
 
 Jest to również przydatne do tworzenia listy tylko unikatowe wartości. Jest to nazywane _ustaw_ i mogą być generowane z `makeset`:
 
-```KQL
+```Kusto
 Event
 | where TimeGenerated > ago(12h)
 | order by TimeGenerated desc
@@ -67,11 +67,12 @@ Podobnie jak `makelist`, `makeset` również współpracuje z uporządkowane dan
 ## <a name="expanding-lists"></a>Rozwijanie listy
 Odwróconą operacją `makelist` lub `makeset` jest `mvexpand`, który rozwija listę wartości do rozdzielania wierszy. Można go rozszerzyć w dowolnej liczbie kolumn dynamiczne, zarówno w formacie JSON, jak i w tablicy. Na przykład, można sprawdzić *pulsu* tabeli dla rozwiązań wysyłanie danych z komputerów, które wysłali pulsu w ciągu ostatniej godziny:
 
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > ago(1h)
 | project Computer, Solutions
 ```
+
 | Computer (Komputer) | Rozwiązania | 
 |--------------|----------------------|
 | KOMPUTER1 | "zabezpieczenia", "aktualizacje", "śledzenia zmian" |
@@ -81,23 +82,28 @@ Heartbeat
 
 Użyj `mvexpand` pokazanie każdej wartości w osobnym wierszu zamiast rozdzielana przecinkami lista:
 
-Puls | gdzie TimeGenerated > ago(1h) | Projekt komputera, Podziel (rozwiązania, ",") | mvexpand rozwiązania
+```Kusto
+Heartbeat
+| where TimeGenerated > ago(1h)
+| project Computer, split(Solutions, ",")
+| mvexpand Solutions
 ```
-| Computer | Solutions | 
+
+| Computer (Komputer) | Rozwiązania | 
 |--------------|----------------------|
-| computer1 | "security" |
-| computer1 | "updates" |
-| computer1 | "changeTracking" |
-| computer2 | "security" |
-| computer2 | "updates" |
-| computer3 | "antiMalware" |
-| computer3 | "changeTracking" |
-| ... | ... | ... |
-```
+| KOMPUTER1 | "zabezpieczenia" |
+| KOMPUTER1 | "aktualizacji" |
+| KOMPUTER1 | "śledzenia zmian" |
+| KOMPUTER2 | "zabezpieczenia" |
+| KOMPUTER2 | "aktualizacji" |
+| KOMPUTER3 | "ochrony przed złośliwym kodem" |
+| KOMPUTER3 | "śledzenia zmian" |
+| Przyciski ... | Przyciski ... | Przyciski ... |
+
 
 Następnie można użyć `makelist` ponownie do grupowania elementów ze sobą, a teraz wyświetlić listę komputerów, na rozwiązanie:
 
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > ago(1h)
 | project Computer, split(Solutions, ",")
@@ -115,7 +121,7 @@ Heartbeat
 ## <a name="handling-missing-bins"></a>Obsługa brakujących pojemników
 Przydatne stosowania `mvexpand` potrzeby wypełnij wartości domyślne dla brakujących pojemniki. Na przykład załóżmy, że szukasz czas działania określonego komputera, eksplorując pulsu. Chcesz zobaczyć źródło pulsu, która jest również _kategorii_ kolumny. Zwykle, możemy użyć prostego Podsumuj instrukcji w następujący sposób:
 
-```KQL
+```Kusto
 Heartbeat
 | where TimeGenerated > ago(12h)
 | summarize count() by Category, bin(TimeGenerated, 1h)
@@ -131,7 +137,7 @@ Heartbeat
 
 Te wyniki do zasobnika skojarzony z "2017-06-06T19:00:00Z" Brak, ponieważ nie ma żadnych danych pulsu dla danej godziny. Użyj `make-series` funkcję, aby przypisać wartość domyślną do pustych zasobników. Spowoduje to wygenerowanie wiersz dla każdej kategorii, zawierającą dwie kolumny tablicy dodatkowe: jeden dla wartości i jeden dla zgodnego przedziałów czasu:
 
-```KQL
+```Kusto
 Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 ```
@@ -143,7 +149,7 @@ Heartbeat
 
 Trzeci element *count_* tablicy to 0, zgodnie z oczekiwaniami i jest zgodne sygnatura czasowa "2017-06-06T19:00:00.0000000Z" w _TimeGenerated_ tablicy. Ten format tablicy jest trudne do odczytania, mimo że. Użyj `mvexpand` rozwiń tablice i generuje ten sam format danych wyjściowych wygenerowanych przez `summarize`:
 
-```KQL
+```Kusto
 Heartbeat
 | make-series count() default=0 on TimeGenerated in range(ago(1d), now(), 1h) by Category 
 | mvexpand TimeGenerated, count_
@@ -165,7 +171,7 @@ Heartbeat
 Typowym scenariuszem jest wybierz nazwy niektórych konkretnych jednostek, w oparciu o określone kryteria, a następnie przeprowadź filtrowanie inny zestaw danych do tego zestawu jednostek. Na przykład możesz znaleźć komputery, które są znane brakujące aktualizacje i identyfikowania adresów IP, że te komputery przestawione do:
 
 
-```KQL
+```Kusto
 let ComputersNeedingUpdate = toscalar(
     Update
     | summarize makeset(Computer)

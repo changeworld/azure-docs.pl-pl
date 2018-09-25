@@ -1,5 +1,5 @@
 ---
-title: Usługa Azure N-series driver Setup for Konfiguracja Windows | Dokumentacja firmy Microsoft
+title: Usługa Azure GPU N-series driver Setup for Konfiguracja Windows | Dokumentacja firmy Microsoft
 description: Jak skonfigurować sterowniki procesora GPU NVIDIA dla maszyn wirtualnych serii N z systemem Windows Server lub Windows na platformie Azure
 services: virtual-machines-windows
 documentationcenter: ''
@@ -13,17 +13,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
-ms.date: 06/19/2018
+ms.date: 09/24/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 50d9ea88afc0e7d96d71b2ab26c8a8489ae41fee
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: a4d259c7f9a139b3c31d96e75d588c7be162189c
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38719657"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47033264"
 ---
-# <a name="set-up-gpu-drivers-for-n-series-vms-running-windows"></a>Konfigurowanie sterowników procesora GPU dla maszyn wirtualnych serii N z systemem Windows 
+# <a name="install-nvidia-gpu-drivers-on-n-series-vms-running-windows"></a>Instalowanie sterowników procesora GPU NVIDIA na maszynach wirtualnych serii N z systemem Windows 
+
 Aby skorzystać z możliwości procesora GPU platformy Azure serii N maszyn wirtualnych z systemem Windows, muszą być zainstalowane sterowniki procesora GPU firmy NVIDIA. [Rozszerzenia sterowników procesora GPU NVIDIA](../extensions/hpccompute-gpu-windows.md) instaluje odpowiednie sterowniki NVIDIA CUDA lub siatki na maszynie Wirtualnej serii N. Zainstaluj lub zarządzać rozszerzenia za pomocą witryny Azure portal lub narzędzi, takich jak szablony programu Azure PowerShell lub usługi Azure Resource Manager. Zobacz [dokumentację dotyczącą rozszerzeń sterowników procesora GPU NVIDIA](../extensions/hpccompute-gpu-windows.md) dla obsługiwanych systemów operacyjnych i kroki związane z wdrażaniem.
 
 Jeśli zdecydujesz się zainstalować sterowniki procesora GPU ręcznie, ten artykuł zawiera obsługiwane systemy operacyjne, sterowników i kroki instalacji i weryfikacji. Informacje o konfiguracji ręcznej sterownik jest również dostępna dla [maszyn wirtualnych systemu Linux](../linux/n-series-driver-setup.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -38,7 +39,7 @@ Specyfikacje podstawowych, pojemności magazynu i szczegóły dysku, zobacz [roz
 
 2. Pobierz, Wyodrębnij i zainstaluj obsługiwany sterownik w systemie operacyjnym Windows.
 
-Na maszynach wirtualnych Azure NV, wymagane jest ponowne uruchomienie po zakończeniu instalacji sterowników. Na maszynach wirtualnych kontrolera sieci ponowne uruchomienie komputera nie jest wymagane.
+Po zakończeniu instalacji sterowników siatki na maszynie Wirtualnej ponowne uruchomienie jest wymagane. Po zakończeniu instalacji sterownik CUDA ponowne uruchomienie komputera nie jest wymagane.
 
 ## <a name="verify-driver-installation"></a>Weryfikacja instalacji sterowników
 
@@ -64,7 +65,7 @@ Aby zainstalować najnowszą wersję 1.1 rozszerzenia HpcVMDrivers obsługą dos
   ```
   Aby uzyskać więcej informacji, zobacz [rozszerzeń maszyn wirtualnych i funkcji dla Windows](extensions-features.md?toc=%2fazure%2fvirtual-machines%2fwindows%2fclassic%2ftoc.json).
 
-Sieć RDMA obsługuje ruch interfejsu przekazywania komunikatów (MPI) dla aplikacji uruchamianych przy użyciu [Microsoft MPI](https://msdn.microsoft.com/library/bb524831(v=vs.85).aspx) lub Intel MPI 5.x. 
+Sieć RDMA obsługuje ruch interfejsu przekazywania komunikatów (MPI) dla aplikacji uruchamianych przy użyciu [Microsoft MPI](https://docs.microsoft.com/message-passing-interface/microsoft-mpi) lub Intel MPI 5.x. 
 
 
 ## <a name="next-steps"></a>Kolejne kroki

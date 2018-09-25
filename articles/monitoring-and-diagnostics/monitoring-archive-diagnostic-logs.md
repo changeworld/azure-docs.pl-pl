@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 1686c283b0aa9f0713317b22e2ef2abd16e6b187
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: caa8f1a10652c16e181c47fbbe4f9f0c815cfd67
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579916"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983688"
 ---
 # <a name="archive-azure-diagnostic-logs"></a>Archiwizuj dzienniki diagnostyczne platformy Azure
 
@@ -81,7 +81,7 @@ Set-AzureRmDiagnosticSetting -ResourceId /subscriptions/s1id1234-5679-0123-4567-
 | Retentionenable |Nie |Wartość logiczna wskazująca, czy zasady przechowywania są włączone dla tego zasobu. |
 | RetentionInDays |Nie |Liczba dni, dla których ma być przechowywana zdarzeń, od 1 do 2147483647. Dzienniki na wartość zero są przechowywane w nieskończoność. |
 
-## <a name="archive-diagnostic-logs-via-the-azure-cli-20"></a>Archiwizowanie dzienników diagnostycznych za pomocą interfejsu wiersza polecenia platformy Azure w wersji 2.0
+## <a name="archive-diagnostic-logs-via-the-azure-cli"></a>Archiwizowanie dzienników diagnostycznych za pomocą wiersza polecenia platformy Azure
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \

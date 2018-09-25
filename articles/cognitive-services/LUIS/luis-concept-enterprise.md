@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Omówienie pojęć dotyczących projektowania w przypadku dużych aplikacji usługi LUIS.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 80d73620d11312a386a406d9a49d9223295b42f3
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 3782874ac69b299e24cf1555b290a9d2d86b6285
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631382"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038344"
 ---
 # <a name="enterprise-strategies-for-a-luis-app"></a>Strategie Enterprise aplikacją usługi LUIS
 Przejrzyj te Strategie projektowania dla aplikacji przedsiębiorstwa.

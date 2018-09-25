@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Wypowiedzi są dane wejściowe użytkownika, że Twoja aplikacja wymaga, aby zinterpretować. Zbieraj fraz, które uważasz, że użytkownicy będą mogli wprowadzać. Dołącz wypowiedzi, które oznaczają to samo, ale są konstruowane inaczej długość słowa i rozmieszczenie programu word.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: c455296348e3b4378a2912fa5388098b206b3ea4
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 39c99cc35f4c2549efc9c20af0680b77483325c5
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632317"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038939"
 ---
 # <a name="utterances-in-luis"></a>Wypowiedzi w usługi LUIS
 

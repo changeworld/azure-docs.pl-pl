@@ -2,20 +2,22 @@
 title: ActiveDirectoryInteractive łączy do bazy danych SQL | Dokumentacja firmy Microsoft
 description: Przykład kodu w języku C#, wraz z wyjaśnieniem, łączenie z usługą Azure SQL Database przy użyciu trybu SqlAuthenticationMethod.ActiveDirectoryInteractive.
 services: sql-database
-author: GithubMirek
-manager: craigg
 ms.service: sql-database
+ms.subservice: security
 ms.custom: active directory
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/06/2018
+author: GithubMirek
 ms.author: MirekS
 ms.reviewer: GeneMi
-ms.openlocfilehash: 3d6eb70b3ce9072dc2c51220af89549022b5dacf
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.date: 04/06/2018
+manager: craigg
+ms.openlocfilehash: 80944e73f21d75943d4fa71c7ac9500e47bab250
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39238272"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055530"
 ---
 # <a name="use-activedirectoryinteractive-mode-to-connect-to-azure-sql-database"></a>Użyj trybu ActiveDirectoryInteractive, aby nawiązać połączenie z bazą danych SQL Azure
 
@@ -122,13 +124,13 @@ Program C# opiera się na przestrzeń nazw **Microsoft.IdentityModel.Clients.Act
 
 Jednej przestrzeni nazw, które opiera się na przykład C# jest **System.Data.SqlClient**. Szczególnie ważne jest wyliczenia **SqlAuthenticationMethod**. To wyliczenie ma następujące wartości:
 
-- **SqlAuthenticationMethod.ActiveDirectory*Interactive ***:&nbsp; za pomocą to nazwa użytkownika usługi Azure AD, do osiągnięcia uwierzytelnianie wieloskładnikowe MFA.
+- **SqlAuthenticationMethod.ActiveDirectory * Interactive ***:&nbsp; za pomocą to nazwa użytkownika usługi Azure AD, do osiągnięcia uwierzytelnianie wieloskładnikowe MFA.
     - Ta wartość jest celem niniejszego artykułu. Tworzy środowisko interaktywne, wyświetlając okien dialogowych dla hasła użytkownika, a następnie do weryfikacji uwierzytelniania Wieloskładnikowego, jeśli uwierzytelnianie wieloskładnikowe nakłada się na tego użytkownika.
     - Ta wartość jest dostępnych w programie .NET Framework w wersji 4.7.2.
 
-- **SqlAuthenticationMethod.ActiveDirectory*zintegrowany ***:&nbsp; użyjemy dla *federacyjnych* konta. Dla kont federacyjnych nazwa użytkownika jest znany do domeny Windows. Ta metoda nie obsługuje uwierzytelniania Wieloskładnikowego.
+- **SqlAuthenticationMethod.ActiveDirectory * zintegrowany ***:&nbsp; użyjemy dla *federacyjnych* konta. Dla kont federacyjnych nazwa użytkownika jest znany do domeny Windows. Ta metoda nie obsługuje uwierzytelniania Wieloskładnikowego.
 
-- **SqlAuthenticationMethod.ActiveDirectory*hasło ***:&nbsp; używane dla uwierzytelniania, który wymaga użytkownika usługi Azure AD i hasło użytkownika. Usługa Azure SQL Database przeprowadza uwierzytelnianie. Ta metoda nie obsługuje uwierzytelniania Wieloskładnikowego.
+- **SqlAuthenticationMethod.ActiveDirectory * hasła ***:&nbsp; używane dla uwierzytelniania, który wymaga użytkownika usługi Azure AD i hasło użytkownika. Usługa Azure SQL Database przeprowadza uwierzytelnianie. Ta metoda nie obsługuje uwierzytelniania Wieloskładnikowego.
 
 
 

@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: big-compute
 ms.date: 08/02/2018
 ms.author: danlep
-ms.openlocfilehash: 50ed5a6b57c3c994f636db5cc975ad1908e50c7d
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 753a36eb6fb7a0c007c62bbab7fe7390e706b1f5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493437"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964296"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>Użyj szablonów interfejsu wiersza polecenia usługi Azure Batch i transferu plików
 
@@ -47,7 +47,7 @@ Na przykład [ffmpeg](http://ffmpeg.org/) jest popularnych aplikacji, która prz
 
 ## <a name="installation"></a>Instalacja
 
-Rozszerzenie interfejsu wiersza polecenia usługi Azure Batch, należy najpierw zainstalować [instalowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-azure-cli), lub uruchomić z wiersza polecenia platformy Azure w [usługi Azure Cloud Shell](../cloud-shell/overview.md).
+Rozszerzenie interfejsu wiersza polecenia usługi Azure Batch, należy najpierw zainstalować [zainstalować interfejs wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-azure-cli), lub uruchomić z wiersza polecenia platformy Azure w [usługi Azure Cloud Shell](../cloud-shell/overview.md).
 
 Zainstaluj najnowszą wersję rozszerzenia usługi Batch za pomocą następującego polecenia wiersza polecenia platformy Azure:
 
