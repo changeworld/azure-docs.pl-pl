@@ -16,11 +16,11 @@ ms.date: 06/08/2018
 ms.author: brenduns
 ms.reviewer: ''
 ms.openlocfilehash: 57869de8a99c65810da0c75f81c75d93eac88412
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35998505"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47090820"
 ---
 # <a name="validate-azure-registration"></a>Sprawdź poprawność rejestracji platformy Azure 
 Aby sprawdzić, czy Twoja subskrypcja platformy Azure jest gotowa do użycia z usługą Azure Stack, należy użyć narzędzia narzędzie do sprawdzania gotowości usługi Azure Stack (AzsReadinessChecker). Sprawdź poprawność rejestracji przed rozpoczęciem wdrażania usługi Azure Stack. Narzędzie sprawdzania gotowości weryfikuje:

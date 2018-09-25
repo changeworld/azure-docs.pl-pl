@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 5134722ab2467d7bb63d76bd83c263457ec8284a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948123"
 documentType: LandingData
 title: Dokumentacja usługi Azure Event Grid
 metadata:
@@ -13,12 +19,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 08/10/2017
   ms.author: carolz
-  ms.openlocfilehash: 494cd1b862169998a15786b70a6c7d88f830613e
-  ms.sourcegitcommit: 9d317dabf4a5cca13308c50a10349af0e72e1b7e
-  ms.translationtype: HT
-  ms.contentlocale: pl-PL
-  ms.lasthandoff: 02/01/2018
-  ms.locfileid: "28921773"
 abstract:
   description: Usługa Azure Event Grid to w pełni zarządzana usługa inteligentnego routingu zdarzeń, która umożliwia ujednolicone używanie zdarzeń za pomocą modelu opartego na publikowaniu i subskrybowaniu. Usługa Azure Event Grid pozwala reagować na istotne zdarzenia w usługach platformy Azure oraz spoza tej platformy w czasie niemal rzeczywistym. Dowiedz się, jak używać usługi Azure Event Grid, korzystając z przewodników Szybki start, samouczków i przykładów.
 sections:
@@ -64,6 +64,19 @@ sections:
     - html: <a href="/azure/event-grid/monitor-virtual-machine-changes-event-grid-logic-app">Monitorowanie zmian dotyczących maszyn wirtualnych za pomocą aplikacji logiki</a>
     - html: <a href="/azure/event-grid/resize-images-on-storage-blob-upload-event">Zmienianie rozmiaru przekazanych obrazów</a>
     - html: <a href="/azure/event-grid/ensure-tags-exists-on-new-virtual-machines">Integrowanie usługi Azure Automation z usługą Event Grid</a>
+- title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Wybieranie modelu obsługi komunikatów na platformie Azure w celu luźnego łączenia usług
+      href: /learn/modules/choose-a-messaging-model-in-azure-to-connect-your-services/
+      image:
+        src: /learn/achievements/choose-a-messaging-model-in-azure-to-connect-your-services.svg
+        href: /learn/modules/choose-a-messaging-model-in-azure-to-connect-your-services/
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-event-grid">Więcej interakcyjnych zasobów szkoleniowych...</a>
 - title: Dokumentacja
   items:
   - type: list

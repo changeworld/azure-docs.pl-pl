@@ -1,0 +1,70 @@
+### YamlMime:YamlDocument
+ms.openlocfilehash: 1c25ae1acb112221047876ea6dd360c6d3bb2817
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946242"
+documentType: LandingData
+title: Zarządzanie platformą Azure — ład
+metadata:
+  title: Zarządzanie platformą Azure — ład
+  description: Zapoznaj się z pojęciami i dostępnymi usługami platformy Azure związanymi ze spójnym zarządzaniem środowiskiem za pośrednictwem jawnego projektu i reguł oraz dowiedz się jak przeprowadzać inspekcję zgodności.
+  services: governance
+  author: DCtheGeek
+  manager: carmonm
+  ms.service: governance
+  ms.topic: landing-page
+  ms.date: 09/18/2018
+  ms.author: dacoulte
+abstract:
+  description: Ład na platformie Azure to zbiór pojęć i usług umożliwiających zarządzanie różnymi zasobami platformy Azure na dużą skalę. Te usługi umożliwiają między innymi organizowanie i strukturyzowanie subskrypcji w logiczny sposób, tworzenie i wdrażanie pakietów zasobów natywnych dla platformy Azure i wielokrotnego użytku, a także definiowanie zasobów oraz poddawanie ich inspekcji i korygowaniu. Ta strona pozwala dowiedzieć się więcej na temat tych pojęć i usług oraz tego, jak już dziś włączyć je i używać ich we własnym środowisku.
+sections:
+- title: Składniki i usługi
+- items:
+  - type: list
+    style: cards
+    className: cardsD
+    columns: 2
+    items:
+    - href: ./management-groups/overview
+      html: <p>Dowiedz się, jak grupować i organizować subskrypcje w logicznej hierarchii obsługującej wdrażanie innych usług ładu w sposób ustrukturyzowany.<br /></p>
+      image:
+        src: ./media/management-groups-illustration.svg
+      title: Grupy zarządzania
+    - href: ./resource-graph/
+      html: <p>Szybko twórz zapytania sprawdzające złożone informacje szczegółowe dotyczące zasobów platformy Azure za pomocą zaawansowanego narzędzia wiersza polecenia (z obsługą interfejsu wiersza polecenia platformy Azure i modułu Azure PowerShell). Znajduj i ujawniaj informacje, których odnajdowanie na dużą skalę wymagało wcześniej złożonych i iteracyjnych skryptów.</p>
+      image:
+        src: ./media/resource-graph-illustration.svg
+      title: Wykres zasobów
+    - href: ./policy/
+      html: <p>Definiuj i stosuj standardy do zasobów w swoim środowisku. Zapobiegaj tworzeniu niepożądanych zasobów, rozszerzaj nowe zasoby za pomocą dodatkowych elementów, a także poddawaj inspekcji i korygowaniu zasoby już istniejące w Twoim środowisku.</p>
+      image:
+        src: ./media/policy-illustration.svg
+      title: Zasady
+    - href: ./blueprints/
+      html: <p>Utwórz zawierający <i>artefakty</i> (m.in. grupy zasobów, zasady, przypisania ról i szablony usługi Resource Manager) pakiet natywny platformy Azure, który można dynamicznie wdrażać w subskrypcjach, aby tworzyć spójne, powtarzalne środowiska.</p>
+      image:
+        src: ./media/blueprints-illustration.svg
+      title: Strategie
+- title: Implementacje
+- items:
+  - type: list
+    style: cards
+    className: cardsZ
+    columns: 3
+    items:
+    - href: /azure/architecture/cloud-adoption/governance/what-is-governance?toc=/azure/governance/toc.json
+      html: <p>W przeszłości przedsiębiorstwa były właścicielami wszystkich poziomów technologii od infrastruktury po oprogramowanie i brały za nie odpowiedzialność. Obecnie chmura umożliwia transformację sposobu wykorzystywania technologii w przedsiębiorstwach przez aprowizowanie i używanie zasobów w zależności od potrzeb.</p>
+      title: Wdrożenie rozwiązania Enterprise Cloud
+    - href: /azure/architecture/cloud-adoption/appendix/azure-scaffold?toc=/azure/governance/toc.json
+      html: <p>Umożliwia administratorom zadbanie o to, aby obciążenia spełniały wymagania minimalne ładu organizacji, bez utrudniania grupom biznesowym i deweloperom szybkiego osiągania ich własnych celów.<br /><br /></p>
+      title: Szkielet dla przedsiębiorstw
+- title: Dokumentacja
+  items:
+  - type: list
+    style: cards
+    className: cardsD
+    items:
+    - title: Zasady
+      html: <p>Wiersz polecenia<ul><li><a href="/cli/azure/policy">Interfejs wiersza polecenia platformy Azure</a></li></ul></p><p>PowerShell<ul><li><a href="/powershell/module/azurerm.resources/#policies">Azure PowerShell</a></li></ul></p><p>Interfejs API REST<ul><li><a href="/rest/api/policy-insights/policyevents">Zdarzenia</a></li><li><a href="/rest/api/policy-insights/policystates">Stany</a></li><li><a href="/rest/api/resources/policyassignments">Przypisania</a></li><li><a href="/rest/api/resources/policydefinitions">Definicje zasad</a></li><li><a href="/rest/api/resources/policysetdefinitions">Definicje inicjatyw</a></li></ul></p>

@@ -1,47 +1,57 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: cad92cb36f3e5e038186e9b97f30bed9525e2fea
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978747"
 documentType: LandingData
 title: Dokumentacja dotycząca rozwiązania Azure Cost Management
 metadata:
   title: Dokumentacja dotycząca rozwiązania Azure Cost Management — samouczki i dokumentacja interfejsu API | Microsoft Docs
-  description: Azure Cost Management to rozwiązanie do zarządzania kosztami wielu chmur, które ułatwia korzystanie z platformy Azure i innych zasobów w chmurze. Dowiedz się, jak przeglądać dane użycia i kosztów, aktywnie zarządzać kosztami, prognozować wydatki i optymalizować koszty, zapoznając się z naszymi przewodnikami Szybki start i samouczkami.
+  description: Azure Cost Management to rozwiązanie do zarządzania kosztami, które ułatwia monitorowanie i kontrolowanie wydatków na platformę Azure oraz optymalizowanie wykorzystania zasobów. Z naszych przewodników Szybki start i samouczków dowiesz się, jak analizować koszty, tworzyć budżety i zarządzać nimi, eksportować dane, a także zapoznawać się z zaleceniami i wdrażać je.
   services: cost-management
   author: bandersmsft
-  manager: carmonm
+  manager: dougeby
   ms.service: cost-management
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 02/27/2018
+  ms.date: 09/14/2019
   ms.author: banders
-  ms.openlocfilehash: d6fa2486944fdecab67996bd7a8c7f656ffb2e72
-  ms.sourcegitcommit: 8aab1aab0135fad24987a311b42a1c25a839e9f3
-  ms.translationtype: HT
-  ms.contentlocale: pl-PL
-  ms.lasthandoff: 03/16/2018
-  ms.locfileid: "29935336"
 abstract:
-  description: Usługa Azure Cost Management licencjonowana przez firmę Cloudyn (podmiot zależny od firmy Microsoft) to rozwiązanie do zarządzania kosztami wielu chmur, które ułatwia najwydajniejsze korzystanie z platformy Azure i innych zasobów w chmurze oraz zarządzanie nimi. Dowiedz się, jak przeglądać dane użycia i kosztów, aktywnie zarządzać kosztami, prognozować wydatki i optymalizować koszty, zapoznając się z naszymi przewodnikami Szybki start i samouczkami.
+  description: Azure Cost Management to rozwiązanie do zarządzania kosztami, które ułatwia monitorowanie i kontrolowanie wydatków na platformę Azure oraz optymalizowanie wykorzystania zasobów. Z naszych przewodników Szybki start i samouczków dowiesz się, jak analizować koszty, tworzyć budżety i zarządzać nimi, eksportować dane, a także zapoznawać się z zaleceniami i wdrażać je.
 sections:
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph
-    text: Dowiedz się, jak zarejestrować informacje dotyczące subskrypcji lub umowy związanej z platformą Azure przy użyciu rozwiązania Cost Management, a następnie rozpocząć przeglądanie danych kosztów.
+    text: Dowiedz się, jak rozpocząć pracę z usługą Azure Cost Management w celu analizowania kosztów swojej organizacji.
   - type: list
     style: icon48
     items:
     - image:
         src: https://docs.microsoft.com/media/common/i_portal.svg
-      text: Wyświetlanie danych kosztów
-      href: quick-register-azure-sub
+      text: Analizowanie kosztów
+      href: quick-acm-cost-analysis
 - title: Samouczki krok po kroku
   items:
   - type: paragraph
-    text: Dowiedz się, jak przeglądać dane użycia i kosztów, aktywnie zarządzać kosztami, prognozować wydatki i optymalizować koszty przy użyciu rozwiązania Cost Management.
+    text: Dowiedz się, jak za pomocą usługi Cost Management tworzyć budżety, eksportować dane, a także zapoznawać się z zaleceniami i wdrażać je.
   - type: list
     style: ordered
     items:
-    - html: <a href="tutorial-review-usage">Przeglądanie użycia i kosztów w celu wykrycia anomalii i wydajności</a>
-    - html: <a href="tutorial-forecast-spending">Prognozowanie wydatków w przyszłości</a>
-    - html: <a href="tutorial-manage-costs">Zarządzanie kosztami przy użyciu alokacji kosztów oraz raportów przewidywanych kosztów i obciążeń zwrotnych</a>
-    - html: <a href="tutorial-optimize-reserved-instances">Optymalizacja wystąpień zarezerwowanych</a>
-    - html: <a href="tutorial-user-access">Przypisywanie dostępu do danych rozwiązania Cost Management</a>
+    - html: <a href="tutorial-acm-create-budgets">Tworzenie budżetów i zarządzanie nimi</a>
+    - html: <a href="tutorial-export-acm-data">Eksportowanie danych</a>
+    - html: <a href="tutorial-acm-opt-recommendations">Zapoznawanie się z zaleceniami dotyczącymi optymalizacji i ich wdrażanie</a>
+- title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Przewidywanie kosztów i optymalizowanie wydatków na platformę Azure
+      href: /learn/modules/predict-costs-and-optimize-spending/
+      image:
+        src: /learn/achievements/predict-costs-and-optimize-spending.svg
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-cost-management">Więcej interakcyjnych zasobów szkoleniowych...</a>

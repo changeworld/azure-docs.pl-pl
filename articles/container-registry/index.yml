@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: 02c604489d8db48a50598f99f6722d555e357f67
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951070"
 documentType: LandingData
 title: Dokumentacja usługi Azure Container Registry
 metadata:
@@ -13,12 +19,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 07/26/2017
   ms.author: carolz
-  ms.openlocfilehash: be041068388fffc0a5333370c76c4d6f59f318ba
-  ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
-  ms.translationtype: HT
-  ms.contentlocale: pl-PL
-  ms.lasthandoff: 05/07/2018
-  ms.locfileid: "33767958"
 abstract:
   description: Usługa Azure Container Registry umożliwia kompilowanie i przechowywanie obrazów wdrożeń kontenerów dowolnego typu oraz zarządzanie nimi. Dowiedz się, jak używać usługi Azure Container Registry, korzystając z tych przewodników Szybki start, samouczków i przykładów.
 sections:
@@ -54,6 +54,19 @@ sections:
     - html: <a href="/azure/container-instances/container-instances-tutorial-prepare-app">Usługa Container Registry z usługą Azure Container Instances</a>
     - html: <a href="/azure/aks/tutorial-kubernetes-prepare-app">Usługa Container Registry z usługą Azure Kubernetes Service (AKS)</a>
     - html: <a href="/azure/service-fabric/service-fabric-tutorial-create-container-images">Usługa Container Registry z usługą Service Fabric</a>
+- title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Tworzenie i przechowywanie obrazów kontenerów za pomocą usługi Azure Container Registry
+      href: /learn/modules/build-and-store-container-images/
+      image:
+        src: /learn/achievements/build-and-store-container-images.svg
+        href: /learn/modules/build-and-store-container-images/
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-container-registry">Więcej interakcyjnych zasobów szkoleniowych...</a>
 - title: Dokumentacja
   items:
   - type: list

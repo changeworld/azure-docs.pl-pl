@@ -1,0 +1,122 @@
+items:
+- name: Azure DB for MariaDB — dokumentacja
+  href: index.yml
+- name: Omówienie
+  items:
+  - name: Azure DB for MariaDB
+    href: overview.md
+- name: Przewodniki Szybki start
+  items:
+  - name: Tworzenie bazy danych — portal
+    href: quickstart-create-mariadb-server-database-using-azure-portal.md
+  - name: Tworzenie bazy danych — interfejs wiersza polecenia platformy Azure
+    href: quickstart-create-mariadb-server-database-using-azure-cli.md
+  - name: Nawiązywanie połączeń i wykonywanie zapytań
+    items:
+    - name: MySQL Workbench
+      href: connect-workbench.md
+  expanded: true
+- name: Samouczki
+  items:
+  - name: 1 — Projektowanie bazy danych
+    items:
+    - name: Azure Portal
+      href: tutorial-design-database-using-portal.md
+- name: Pojęcia
+  items:
+  - name: Bazy danych i serwery
+    items:
+    - name: Serwery
+      href: concepts-servers.md
+    - name: Obsługiwane wersje
+      href: concepts-supported-versions.md
+    - name: Dzienniki serwera
+      href: concepts-server-logs.md
+    - name: Wysoka dostępność
+      href: concepts-high-availability.md
+  - name: Zasoby
+    items:
+    - name: Warstwy cenowe
+      href: concepts-pricing-tiers.md
+    - name: Limity
+      href: concepts-limits.md
+  - name: Bezpieczeństwo i dostęp do danych
+    items:
+    - name: Reguły zapory
+      href: concepts-firewall-rules.md
+    - name: Konfigurowanie protokołu SSL
+      href: concepts-ssl-connection-security.md
+  - name: Ciągłość działalności biznesowej
+    items:
+    - name: Omówienie
+      href: concepts-business-continuity.md
+    - name: Tworzenie kopii zapasowej i przywracanie
+      href: concepts-backup.md
+  - name: Replikacja
+    items:
+    - name: Replikacja wejściowa danych
+      href: concepts-data-in-replication.md
+- name: Przewodniki z instrukcjami
+  items:
+  - name: Reguły zapory
+    items:
+    - name: Azure Portal
+      href: howto-manage-firewall-portal.md
+  - name: Przywracanie serwera
+    items:
+    - name: Azure Portal
+      href: howto-restore-server-portal.md
+  - name: Migrowanie bazy danych
+    items:
+    - name: Zrzucanie i przywracanie
+      href: howto-migrate-dump-restore.md
+  - name: Łączenie aplikacji
+    items:
+    - name: Tworzenie użytkowników
+      href: howto-create-users.md
+    - name: Parametry połączeń
+      href: howto-connection-string.md
+    - name: Konfigurowanie protokołu SSL
+      href: howto-configure-ssl.md
+  - name: Konfigurowanie parametrów serwera
+    items:
+    - name: Azure Portal
+      href: howto-server-parameters.md
+  - name: Dzienniki dostępu serwera
+    items:
+    - name: Azure Portal
+      href: howto-configure-server-logs-portal.md
+  - name: Replikacja
+    items:
+    - name: Konfigurowanie replikacji wejściowej danych
+      href: howto-data-in-replication.md
+- name: Dokumentacja
+  items:
+  - name: Interfejs API REST
+    href: /rest/api/mariadb
+  - name: Procedury składowane replikacji wejściowej danych
+    href: reference-data-in-stored-procedures.md
+- name: Zasoby
+  items:
+  - name: Szablony wdrażania
+    href: https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Dbformariadb
+  - name: Harmonogram działania dla platformy Azure
+    href: https://azure.microsoft.com/roadmap/?category=databases
+  - name: Cennik
+    href: https://azure.microsoft.com/pricing/details/mariadb/
+  - name: Forum MSDN
+    href: https://social.msdn.microsoft.com/forums/en-US/home?forum=AzureDatabaseforMariaDB
+  - name: Stack Overflow
+    href: http://stackoverflow.com/questions/tagged/azure-database-mariadb
+  - name: Prośba o funkcję
+    href: https://feedback.azure.com/forums/597982-azure-database-for-mysql
+  - name: Dostępność w danym regionie
+    href: https://azure.microsoft.com/regions/services/
+  - name: Opcje pomocy technicznej
+    href: https://azure.microsoft.com/support/options/
+ms.openlocfilehash: a1b24ca3800866f00a97647d59e1f7353a0bdcc9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958496"

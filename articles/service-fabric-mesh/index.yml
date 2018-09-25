@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: e7347b521bf490f1148fb1c7ca7e94d502be9019
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 3425a7b65ce81ca3d45a0ccdfe613ffdfef4f90f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39281735"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953620"
 documentType: LandingData
 title: Dokumentacja usługi Azure Service Fabric Mesh
 metadata:
@@ -40,11 +40,11 @@ sections:
 - title: Samouczki krok po kroku
   items:
   - type: paragraph
-    text: Dowiedz się, jak utworzyć, debugować i wdrożyć aplikację usługi Azure Service Fabric Mesh dla wielu usług.
+    text: Dowiedz się, jak utworzyć i wdrożyć aplikację usługi Mesh za pomocą programu Visual Studio.
   - type: list
     style: unordered
     items:
-    - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore">Tworzenie, debugowanie i wdrażanie aplikacji internetowej usługi Service Fabric Mesh dla wielu usług</a>
+    - html: <a href="/azure/service-fabric-mesh/service-fabric-mesh-tutorial-create-dotnetcore">Tworzenie, debugowanie, wdrażanie i uaktualnianie aplikacji internetowej usługi Service Fabric Mesh dla wielu usług</a>
 - title: Dokumentacja
   items:
   - type: list

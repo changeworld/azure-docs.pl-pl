@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 00484fd11d1bf7a25b5e6cd8029366794e44c16c
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: a798b64e0b6b8b90ce902d99b779f31e6558f90e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43695299"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947401"
 documentType: LandingData
 title: Dokumentacja komunikatów usługi Azure Service Bus
 metadata:
@@ -61,6 +61,18 @@ sections:
     - html: <a href="/azure/service-bus-messaging/service-bus-tutorial-topics-subscriptions-cli">Aktualizowanie asortymentu zapasów za pomocą tematów i subskrypcji — interfejs wiersza polecenia platformy Azure</a>
     - html: <a href="/azure/service-bus-messaging/service-bus-tutorial-topics-subscriptions-portal">Aktualizowanie asortymentu zapasów za pomocą tematów i subskrypcji — Azure Portal</a>
     - html: <a href="/azure/service-bus-messaging/service-bus-tutorial-topics-subscriptions-powershell">Aktualizowanie asortymentu zapasów za pomocą tematów i subskrypcji — Azure PowerShell</a>
+- title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Implementowanie przepływów pracy komunikacji opartej na komunikatach za pomocą usługi Azure Service Bus
+      href: /learn/modules/implement-message-workflows-with-service-bus/
+      image:
+        src: /learn/achievements/implement-message-workflows-with-service-bus.svg
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-service-bus">Więcej interakcyjnych zasobów szkoleniowych...</a>
 - title: Bezpłatne szkolenie wideo firmy PluralSight
   items:
   - type: list

@@ -25,7 +25,7 @@ items:
     href: app-service-web-get-started-java.md
   - name: Tworzenie statycznej witryny HTML
     href: app-service-web-get-started-html.md
-  - name: Uruchamianie niestandardowego kontenera systemu Windows
+  - name: Uruchamianie kontenera systemu Windows
     href: app-service-web-get-started-windows-container.md
   expanded: true
 - name: Samouczki
@@ -42,6 +42,8 @@ items:
       href: app-service-web-tutorial-nodejs-mongodb-app.md
     - name: Java z bazą danych MySQL
       href: app-service-web-tutorial-java-mysql.md
+  - name: Dostosowywanie systemu Windows (kontener)
+    href: app-service-web-tutorial-windows-containers-custom-fonts.md
   - name: Bezpieczne uzyskiwanie dostępu do bazy danych SQL
     href: app-service-web-tutorial-connect-msi.md
   - name: Hostowanie interfejsu API RESTful
@@ -207,6 +209,8 @@ items:
     href: /rest/api/appservice/
 - name: Zasoby
   items:
+  - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+    href: /learn/browse/
   - name: Harmonogram działania dla platformy Azure
     href: https://azure.microsoft.com/roadmap/
   - name: Cennik
@@ -283,9 +287,9 @@ items:
       href: ip-address-change-outbound.md
     - name: Adres SSL
       href: ip-address-change-ssl.md
-ms.openlocfilehash: 76411487d956b107097453a157993351c2ca8b1d
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9fe97e720ed1f4807a9eb00ae88633bff7cbeaf1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715248"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980325"

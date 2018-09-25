@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: c28879b840a5952501339b73c7741b28a1116c5c
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 43c6d96c98ed9ec0451eedfc8848405658904dff
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41927259"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951054"
 documentType: LandingData
 title: Dokumentacja usługi Azure Functions
 metadata:
@@ -48,10 +48,6 @@ sections:
       text: Czasomierz
       href: /azure/azure-functions/functions-create-scheduled-function
     - image:
-        src: media/index/octokitty.svg
-      text: Element webhook GitHub
-      href: /azure/azure-functions/functions-create-github-webhook-triggered-function
-    - image:
         src: media/index/cosmosdb.svg
       text: Azure Cosmos DB
       href: /azure/azure-functions/functions-create-cosmos-db-triggered-function
@@ -92,6 +88,29 @@ sections:
     items:
     - html: <a href="/azure/azure-functions/functions-cli-samples">Interfejs wiersza polecenia platformy Azure</a>
     - html: <a href="/sandbox/functions-recipes/">Azure Functions — przepisy</a>
+- title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Tworzenie logiki bezserwerowej za pomocą usługi Azure Functions
+      href: /learn/modules/create-serverless-logic-with-azure-functions/
+      image:
+        src: /learn/achievements/create-serverless-logic-with-azure-functions.svg
+        href: /learn/modules/create-serverless-logic-with-azure-functions/
+    - title: Wykonywanie funkcji platformy Azure przy użyciu wyzwalaczy
+      href: /learn/modules/execute-azure-function-with-triggers/
+      image:
+        src: /learn/achievements/execute-azure-function-with-triggers.svg
+        href: /learn/modules/execute-azure-function-with-triggers/
+    - title: Łączenie usługi Azure Functions i danych za pomocą powiązań wejściowych i wyjściowych
+      href: /learn/modules/chain-azure-functions-data-using-bindings/
+      image:
+        src: /learn/achievements/chain-azure-functions-data-using-bindings.svg
+        href: /learn/modules/chain-azure-functions-data-using-bindings/
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-functions">Więcej interakcyjnych zasobów szkoleniowych...</a>
 - title: Dokumentacja
   items:
   - type: list
@@ -103,4 +122,4 @@ sections:
     - title: REST
       html: <p><a href="/azure/azure-functions/functions-api-definition">OpenAPI</a></p>
     - title: Powiązania
-      html: <p><a href="/azure/azure-functions/functions-bindings-storage-blob">Blob Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-documentdb">Azure Cosmos DB</a></p><p><a href="/azure/azure-functions/functions-bindings-event-hubs">Centrum zdarzeń</a></p><p><a href="/azure/azure-functions/functions-bindings-external-file">Plik zewnętrzny</a></p><p><a href="/azure/azure-functions/functions-bindings-http-webhook">HTTP i elementy webhook</a></p><p><a href="/azure/azure-functions/functions-bindings-mobile-apps">Mobile Apps</a></p><p><a href="/azure/azure-functions/functions-bindings-notification-hubs">Notification Hubs</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-queue">Queue Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-sendgrid">SendGrid</a></p><p><a href="/azure/azure-functions/functions-bindings-service-bus">Service Bus</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-table">Table Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-timer">Czasomierz</a></p><p><a href="/azure/azure-functions/functions-bindings-twilio">Powiązanie danych wyjściowych usługi Twilio</a></p>
+      html: <p><a href="/azure/azure-functions/functions-bindings-storage-blob">Blob Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-documentdb">Azure Cosmos DB</a></p><p><a href="/azure/azure-functions/functions-bindings-event-hubs">Centrum zdarzeń</a></p><p><a href="/azure/azure-functions/functions-bindings-external-file">Plik zewnętrzny</a></p><p><a href="/azure/azure-functions/functions-bindings-http-webhook">HTTP i elementy webhook</a></p><p><a href="/azure/azure-functions/functions-bindings-mobile-apps">Mobile Apps</a></p><p><a href="/azure/azure-functions/functions-bindings-notification-hubs">Notification Hubs</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-queue">Queue Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-sendgrid">SendGrid</a></p><p><a href="/azure/azure-functions/functions-bindings-service-bus">Service Bus</a></p><p><a href="/azure/azure-functions/functions-bindings-signalr-service">SignalR Service</a></p><p><a href="/azure/azure-functions/functions-bindings-storage-table">Table Storage</a></p><p><a href="/azure/azure-functions/functions-bindings-timer">Czasomierz</a></p><p><a href="/azure/azure-functions/functions-bindings-twilio">Powiązanie danych wyjściowych usługi Twilio</a></p>

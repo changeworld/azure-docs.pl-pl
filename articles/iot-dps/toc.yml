@@ -41,6 +41,10 @@ items:
         href: quick-create-simulated-device-x509-node.md
       - name: Python
         href: quick-create-simulated-device-x509-python.md
+    - name: Zaświadczanie klucza symetrycznego
+      items:
+      - name: C
+        href: quick-create-simulated-device-symm-key.md
   - name: Rejestrowanie urządzenia przy użyciu interfejsów API usług aprowizowania
     items:
     - name: Poświadczanie za pomocą modułu TPM
@@ -84,6 +88,8 @@ items:
   items:
   - name: Automatyczne aprowizowanie
     href: concepts-auto-provisioning.md
+  - name: Ponowne aprowizowanie
+    href: concepts-device-reprovision.md
   - name: Urządzenia
     href: concepts-device.md
   - name: Bezpieczeństwo
@@ -92,6 +98,8 @@ items:
     href: concepts-service.md
   - name: Poświadczanie za pomocą modułu TPM
     href: concepts-tpm-attestation.md
+  - name: Zaświadczanie klucza symetrycznego
+    href: concepts-symmetric-key-attestation.md
 - name: Przewodniki z instrukcjami
   items:
   - name: Łączenie zestawu deweloperskiego IoT MXChip z usługą IoT Hub
@@ -106,6 +114,8 @@ items:
       href: how-to-verify-certificates.md
     - name: Wdrażanie certyfikatów urządzeń
       href: how-to-roll-certificates.md
+    - name: Ponowne aprowizowanie urządzeń
+      href: how-to-reprovision.md
     - name: Zarządzanie wyrejestrowywaniem
       href: how-to-revoke-device-access-portal.md
     - name: Zarządzanie anulowaniem aprowizacji
@@ -126,6 +136,12 @@ items:
       maintainContext: true
   - name: Korzystanie z mechanizmów zaświadczania za pomocą zestawu SDK
     href: use-hsm-with-sdk.md
+  - name: Aprowizowanie pod kątem wielu dzierżaw
+    href: how-to-provision-multitenant.md
+  - name: Korzystanie z niestandardowych zasad alokacji
+    href: how-to-use-custom-allocation-policies.md
+  - name: Korzystanie z kluczy symetrycznych na starszych urządzeniach
+    href: how-to-legacy-device-symm-key.md
   - name: Korzystanie z narzędzi zestawu SDK do programowania
     href: how-to-use-sdk-tools.md
 - name: Dokumentacja
@@ -210,9 +226,9 @@ items:
     href: https://microsoft.github.io/techcasestudies/#technology=IoT&sortBy=featured
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=iot-hub
-ms.openlocfilehash: 0a4369214f26622c2a30136a814b8e788e187144
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 7c662941bc72a9650cd40bd1361a6d43c11a4c5b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "41927060"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989400"

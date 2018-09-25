@@ -1,6 +1,6 @@
 items:
 - name: Dokumentacja usług Azure Cognitive Services
-  href: index.yml
+  href: index.md
 - name: Omówienie
   items:
   - name: Co to są usługi poznawcze Cognitive Services?
@@ -12,20 +12,20 @@ items:
   items:
   - name: Tworzenie konta
     href: cognitive-services-apis-create-account.md
-  - name: Tworzenie klasyfikatora obrazów
-    href: ./custom-vision-service/getting-started-build-a-classifier.md
-  - name: Tworzenie aplikacji do automatyzacji domu
-    href: ./luis/luis-get-started-create-app.md
-  - name: Tworzenie aplikacji .NET do analizy tekstu
-    href: ./text-analytics/quickstarts/csharp.md
 - name: Samouczki
   items:
-  - name: Strona internetowa z funkcją wyszukiwania niestandardowego
-    href: ./bing-custom-search/tutorials/custom-search-web-page.md
-  - name: Aplikacja LUIS
-    href: ./luis/luis-nodejs-tutorial-build-bot-framework-sample.md
-  - name: Zwiększanie dokładności wykrywania intencji dla poleceń
-    href: ./luis/luis-tutorial-batch-testing.md
+  - name: Projektowanie aplikacji przy użyciu funkcji przetwarzania obrazów
+    href: ./Computer-vision/tutorials/csharptutorial.md
+  - name: Rozpoznawanie intencji przy użyciu zestawu SDK rozpoznawania mowy i usługi LUIS
+    href: ./speech-service/how-to-recognize-intents-from-speech-csharp.md
+  - name: Tworzenie aplikacji usługi LUIS
+    href: ./luis/luis-quickstart-intents-only.md
+  - name: Analiza tekstu przy użyciu usługi Power BI
+    href: ./Text-Analytics/tutorials/tutorial-power-bi-key-phrases.md
+  - name: Tworzenie aplikacji wyszukiwania w sieci Web Bing
+    href: ./bing-web-search/tutorial-bing-web-search-single-page-app.md
+  - name: Tworzenie aplikacji wyszukiwania obrazów Bing
+    href: ./bing-image-search/tutorial-bing-image-search-single-page-app.md
 - name: Zasoby
   items:
   - name: Harmonogram działania dla platformy Azure
@@ -42,9 +42,9 @@ items:
     href: http://go.microsoft.com/fwlink/?LinkId=698895
   - name: Baza wiedzy
     href: https://cognitive.uservoice.com/knowledgebase
-ms.openlocfilehash: 8bd7984fd713a2acbb1ca2cc66e3d64bd49ef5a4
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 233a9bb508c8e6d02fd3e95cb8176f56bc9726b9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023829"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972630"

@@ -1,63 +1,112 @@
+items:
 - name: Dokumentacja dotycząca rozwiązania Azure Cost Management
   href: index.yml
-- name: Omówienie
   items:
+  - name: Omówienie
+    items:
     - name: Co to jest rozwiązanie Cost Management?
-      href: overview.md
-- name: Przewodniki Szybki start
-  expanded: true
-  items:
-    - name: Wyświetlanie danych kosztów
-      href: quick-register-azure-sub.md
-    - name: Wyświetlanie danych kosztów — EA
-      href: quick-register-ea.md
-    - name: Wyświetlanie danych kosztów — CSP
-      href: quick-register-csp.md
-- name: Samouczki
-  items:
-    - name: 1 — Przegląd użycia i kosztów
-      href: tutorial-review-usage.md
-    - name: 2 — Prognozowanie wydatków
-      href: tutorial-forecast-spending.md
-    - name: 3 — Zarządzanie kosztami
-      href: tutorial-manage-costs.md
-    - name: 4 — Optymalizacja wystąpień zarezerwowanych
-      href: tutorial-optimize-reserved-instances.md
-    - name: 5 — Kontrola dostępu do danych
-      href: tutorial-user-access.md
-- name: Pojęcia
-  items:
-    - name: Omówienie raportów kosztów
-      href: understanding-cost-reports.md
-- name: Przewodniki z instrukcjami
-  items:
-    - name: Aktywowanie subskrypcji i kont platformy Azure
-      href: activate-subs-accounts.md
-    - name: Dodawanie rozszerzonych metryk dla maszyn wirtualnych
-      href: azure-vm-extended-metrics.md
-    - name: Łączenie z kontem Google
-      href: connect-google-account.md
-    - name: Łączenie z kontem usług AWS
-      href: connect-aws-account.md
-    - name: Konfigurowanie kont magazynu
-      href: storage-accounts.md
-    - name: Korzystanie z raportów rozwiązania Cost Management
-      href: use-reports.md
-    - name: Korzystanie z pulpitów nawigacyjnych
-      href: dashboards.md
-    - name: Zarządzanie budżetami
-      href: manage-budgets.md
-- name: Zasoby
-  items:
-    - name: Wideo na temat rozwiązania Cost Management
-      href: ref-videos.md
+      href: overview-cost-mgt.md
+  - name: Przewodniki Szybki start
+    items:
+    - name: Rozpoczynanie analizowania kosztów
+      href: quick-acm-cost-analysis.md
+    expanded: true
+  - name: Samouczki
+    items:
+    - name: 1 — Tworzenie budżetów i zarządzanie nimi
+      href: tutorial-acm-create-budgets.md
+    - name: 2 — Eksportowanie danych
+      href: tutorial-export-acm-data.md
+    - name: 3 — Zalecenia dotyczące optymalizacji
+      href: tutorial-acm-opt-recommendations.md
+  - name: Pojęcia
+    items:
+    - name: Najlepsze rozwiązania dotyczące usługi Azure Cost Management
+      href: cost-mgt-best-practices.md
+  - name: Dokumentacja
+    items:
+    - name: Przegląd interfejsu API użycia platformy Azure
+      href: ../billing/billing-consumption-api-overview.md
+      items:
+      - name: Interfejs API REST użycia platformy Azure
+        href: https://docs.microsoft.com/rest/api/consumption
     - name: Harmonogram działania dla platformy Azure
-      href: 'https://azure.microsoft.com/roadmap/'
+      href: https://azure.microsoft.com/roadmap/
+  - name: Zasoby
+    items:
+    - name: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+      href: /learn/browse/?products=azure-cost-management
+    - name: Harmonogram działania dla platformy Azure
+      href: https://azure.microsoft.com/roadmap/
     - name: Cennik
-      href: 'https://azure.microsoft.com/pricing/details/cost-management'
+      href: https://azure.microsoft.com/pricing/details/cost-management
     - name: Dostępność regionalna
-      href: 'https://azure.microsoft.com/en-us/regions/services/'
-    - name: Często zadawane pytania
-      href: cost-mgt-faq.md
-    - name: Kontakt z pomocą techniczną
-      href: support-request-cost-management.md
+      href: https://azure.microsoft.com/regions/services/
+  - name: Cloudyn
+    items:
+    - name: Omówienie
+      items:
+      - name: Co to jest platforma Cloudyn?
+        href: overview.md
+    - name: Przewodniki Szybki start
+      items:
+      - name: Wyświetlanie danych kosztów
+        href: quick-register-azure-sub.md
+      - name: Wyświetlanie danych kosztów — EA
+        href: quick-register-ea.md
+      - name: Wyświetlanie danych kosztów — CSP
+        href: quick-register-csp.md
+    - name: Samouczki
+      items:
+      - name: 1 — Przegląd użycia i kosztów
+        href: tutorial-review-usage.md
+      - name: 2 — Prognozowanie wydatków
+        href: tutorial-forecast-spending.md
+      - name: 3 — Zarządzanie kosztami
+        href: tutorial-manage-costs.md
+      - name: 4 — Optymalizacja wystąpień zarezerwowanych
+        href: tutorial-optimize-reserved-instances.md
+      - name: 5 — Kontrola dostępu do danych
+        href: tutorial-user-access.md
+    - name: Pojęcia
+      items:
+      - name: Omówienie raportów kosztów
+        href: understanding-cost-reports.md
+    - name: Przewodniki z instrukcjami
+      items:
+      - name: Aktywowanie subskrypcji i kont platformy Azure
+        href: activate-subs-accounts.md
+      - name: Dodawanie rozszerzonych metryk dla maszyn wirtualnych
+        href: azure-vm-extended-metrics.md
+      - name: Łączenie z kontem Google
+        href: connect-google-account.md
+      - name: Łączenie z kontem usług AWS
+        href: connect-aws-account.md
+      - name: Konfigurowanie kont magazynu
+        href: storage-accounts.md
+      - name: Raporty platformy Cloudyn
+        href: use-reports.md
+      - name: Korzystanie z pulpitów nawigacyjnych
+        href: dashboards.md
+      - name: Zarządzanie budżetami
+        href: manage-budgets.md
+    - name: Zasoby
+      items:
+      - name: Filmy wideo dotyczące platformy Cloudyn
+        href: ref-videos.md
+      - name: Harmonogram działania dla platformy Azure
+        href: https://azure.microsoft.com/roadmap/
+      - name: Cennik platformy Cloudyn
+        href: https://azure.microsoft.com/pricing/details/cost-management
+      - name: Dostępność regionalna usługi Clouydn
+        href: https://azure.microsoft.com/regions/services/
+      - name: Cloudyn — często zadawane pytania
+        href: cost-mgt-faq.md
+      - name: Skontaktuj się z pomocą techniczną platformy Cloudyn
+        href: support-request-cost-management.md
+ms.openlocfilehash: 8bce54dbde8acd8fb8d03479036c934242d434cf
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972457"

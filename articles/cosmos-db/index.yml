@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: b00d2c68748372c644a0966d76d5adb8e430e2d5
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: b5fa216c561340402b1b60a65402491c9256ec5e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053605"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965039"
 documentType: LandingData
 title: Dokumentacja usługi Azure Cosmos DB
 metadata:
@@ -101,7 +101,7 @@ sections:
       values:
       - href: /azure/cosmos-db/create-sql-api-java
       - href: /azure/cosmos-db/create-sql-api-dotnet
-      - href: /azure/cosmos-db/create-sql-api-nodejs-preview
+      - href: /azure/cosmos-db/create-sql-api-nodejs
       - href: /azure/cosmos-db/create-sql-api-python
       - href: 
       - href: 
@@ -155,6 +155,29 @@ sections:
     - html: Globalna replikacja bazy danych za pomocą usługi Azure Cosmos DB&#58; <a href="/azure/cosmos-db/tutorial-global-distribution-sql-api">SQL</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-mongodb">MongoDB</a> | <a href="/azure/cosmos-db/tutorial-global-distribution-table">Tabela</a>
     - html: <a href="local-emulator">Lokalne programowanie aplikacji z użyciem emulatora</a>
     - html: <a href="/azure/cosmos-db/tutorial-functions-http-trigger">Tworzenie wyzwalacza protokołu HTTP przy użyciu powiązania danych wejściowych usługi Azure Cosmos DB</a>
+- title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: " Tworzenie bazy danych usługi Azure Cosmos DB przeznaczonej do skalowania"
+      href: /learn/modules/create-cosmos-db-for-scale/
+      image:
+        src: /learn/achievements/create-cosmos-db-for-scale.svg
+        href: /learn/modules/create-cosmos-db-for-scale/
+    - title: Wstawianie danych w bazie danych Azure Cosmos DB i badanie ich za pomocą zapytań
+      href: /learn/modules/access-data-with-cosmos-db-and-sql-api/
+      image:
+        src: /learn/achievements/access-data-with-cosmos-db-and-sql-api.svg
+        href: /learn/modules/access-data-with-cosmos-db-and-sql-api/
+    - title: Tworzenie aplikacji .NET Core dla usługi Azure Cosmos DB w programie Visual Studio Code
+      href: /learn/modules/build-cosmos-db-app-with-vscode
+      image:
+        src: /learn/achievements/build-cosmos-db-app-with-vscode.svg
+        href: /learn/modules/build-cosmos-db-app-with-vscode
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-cosmos-db">Więcej interakcyjnych zasobów szkoleniowych...</a>
 - title: Dokumentacja
   items:
   - type: list

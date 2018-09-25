@@ -1,4 +1,10 @@
 ### YamlMime:YamlDocument
+ms.openlocfilehash: abf4aa9210b0d497b1f93361e05e2188d1ef3f6a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976625"
 documentType: LandingData
 title: Dokumentacja zestawów skalowania maszyn wirtualnych
 metadata:
@@ -12,12 +18,6 @@ metadata:
   ms.topic: landing-page
   ms.date: 03/14/2018
   ms.author: carolz
-  ms.openlocfilehash: ea8437adf7224c4605f31ccdea281669b89bb7c9
-  ms.sourcegitcommit: a1e1b5c15cfd7a38192d63ab8ee3c2c55a42f59c
-  ms.translationtype: HT
-  ms.contentlocale: pl-PL
-  ms.lasthandoff: 07/10/2018
-  ms.locfileid: "37949734"
 abstract:
   description: Zestawy skalowania maszyn wirtualnych platformy Azure umożliwiają tworzenie grup identycznych maszyn wirtualnych z równoważeniem obciążenia i skalowaniem automatycznym oraz zarządzanie tymi grupami. Dowiedz się, jak tworzyć, konfigurować i automatycznie skalować zestawy skalowania maszyn wirtualnych oraz zarządzać nimi, korzystając z przewodników Szybki start, samouczków i przykładów.
 sections:
@@ -34,7 +34,7 @@ sections:
       href: /azure/virtual-machine-scale-sets/quick-create-portal
     - image:
         src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/cli.svg
-      text: Interfejs wiersza polecenia platformy Azure 2.0
+      text: Interfejs wiersza polecenia platformy Azure
       href: /azure/virtual-machine-scale-sets/quick-create-cli
     - image:
         src: https://docs.microsoft.com/azure/virtual-machines/linux/media/index/logo_powershell.svg
@@ -47,11 +47,11 @@ sections:
   - type: list
     style: ordered
     items:
-    - html: Tworzenie zestawu skalowania i zarządzanie nim przy użyciu <a href="/azure/virtual-machine-scale-sets/tutorial-create-and-manage-cli">interfejsu wiersza polecenia platformy Azure w wersji 2.0</a> lub <a href="/azure/virtual-machine-scale-sets/tutorial-create-and-manage-powershell">programu Azure PowerShell</a>
-    - html: Korzystanie z dysków danych przy użyciu <a href="/azure/virtual-machine-scale-sets/tutorial-use-disks-cli">interfejsu wiersza polecenia platformy Azure w wersji 2.0</a> lub <a href="/azure/virtual-machine-scale-sets/tutorial-use-disks-powershell">programu Azure PowerShell</a>
-    - html: Korzystanie z niestandardowego obrazu maszyny wirtualnej przy użyciu <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-cli">interfejsu wiersza polecenia platformy Azure w wersji 2.0</a> lub <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-powershell">programu Azure PowerShell</a>
-    - html: Wdrażanie aplikacji w zestawie skalowania przy użyciu <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-cli">interfejsu wiersza polecenia platformy Azure w wersji 2.0</a> lub <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-powershell">programu Azure PowerShell</a>
-    - html: Automatyczne skalowanie zestawu skalowania przy użyciu <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-cli">interfejsu wiersza polecenia platformy Azure w wersji 2.0</a> lub <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-powershell">programu Azure PowerShell</a>
+    - html: Tworzenie zestawu skalowania i zarządzanie nim przy użyciu <a href="/azure/virtual-machine-scale-sets/tutorial-create-and-manage-cli">interfejsu wiersza polecenia platformy Azure</a> lub <a href="/azure/virtual-machine-scale-sets/tutorial-create-and-manage-powershell">programu Azure PowerShell</a>
+    - html: Korzystanie z dysków danych przy użyciu <a href="/azure/virtual-machine-scale-sets/tutorial-use-disks-cli">interfejsu wiersza polecenia platformy Azure</a> lub <a href="/azure/virtual-machine-scale-sets/tutorial-use-disks-powershell">programu Azure PowerShell</a>
+    - html: Korzystanie z niestandardowego obrazu maszyny wirtualnej przy użyciu <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-cli">interfejsu wiersza polecenia platformy Azure</a> lub <a href="/azure/virtual-machine-scale-sets/tutorial-use-custom-image-powershell">programu Azure PowerShell</a>
+    - html: Wdrażanie aplikacji w zestawie skalowania przy użyciu <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-cli">interfejsu wiersza polecenia platformy Azure</a> lub <a href="/azure/virtual-machine-scale-sets/tutorial-install-apps-powershell">programu Azure PowerShell</a>
+    - html: Automatyczne skalowanie zestawu skalowania przy użyciu <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-cli">interfejsu wiersza polecenia platformy Azure</a> lub <a href="/azure/virtual-machine-scale-sets/tutorial-autoscale-powershell">programu Azure PowerShell</a>
 - title: Przykłady
   items:
   - type: paragraph
@@ -60,5 +60,5 @@ sections:
     style: unordered
     className: spaced noBullet
     items:
-    - html: <a href="/azure/virtual-machine-scale-sets/cli-samples">Interfejs wiersza polecenia platformy Azure 2.0</a>
+    - html: <a href="/azure/virtual-machine-scale-sets/cli-samples">Interfejs wiersza polecenia platformy Azure</a>
     - html: <a href="/azure/virtual-machine-scale-sets/powershell-samples">Azure PowerShell</a>

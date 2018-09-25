@@ -1,34 +1,53 @@
+items:
 - name: Dokumentacja wirtualnej sieci WAN
   href: index.yml
 - name: Omówienie
   items:
-    - name: Informacje o wirtualnej sieci WAN
-      href: virtual-wan-about.md
+  - name: Informacje o wirtualnej sieci WAN
+    href: virtual-wan-about.md
 - name: Samouczki
   items:
-    - name: Tworzenie połączenia typu lokacja-lokacja
-      href: virtual-wan-site-to-site-portal.md
+  - name: Tworzenie połączenia typu lokacja-lokacja
+    href: virtual-wan-site-to-site-portal.md
+  - name: Tworzenie połączenia usługi ExpressRoute
+    href: virtual-wan-expressroute-portal.md
+  - name: Tworzenie połączenia typu punkt-lokacja
+    href: virtual-wan-point-to-site-portal.md
+- name: Pojęcia
+  items:
+  - name: Lokalizacje i partnerzy
+    href: virtual-wan-locations-partners.md
+  - name: Płaszczyzna kontroli usługi Office 365 w wirtualnej sieci WAN
+    href: virtual-wan-office365-overview.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Konfigurowanie automatyzacji — partnerzy sieci WAN
-      href: virtual-wan-configure-automation-providers.md
+  - name: Partnerzy ds. wirtualnej sieci WAN — automatyzacja
+    href: virtual-wan-configure-automation-providers.md
+  - name: Kierowanie ruchem z koncentratora wirtualnego do wirtualnego urządzenia sieciowego
+    href: virtual-wan-route-table.md
 - name: Dokumentacja
   items:
-    - name: REST
-      href: /rest/api/azure
+  - name: REST
+    href: /rest/api/azure
 - name: Zasoby
   items:
-    - name: Często zadawane pytania
-      href: virtual-wan-faq.md
-    - name: Harmonogram działania dla platformy Azure
-      href: 'https://azure.microsoft.com/roadmap/?category=networking'
-    - name: Blog
-      href: 'https://azure.microsoft.com/blog/topics/networking'
-    - name: Limity usług i subskrypcji
-      href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
-    - name: Cennik
-      href: 'https://azure.microsoft.com/pricing/details/vpn-gateway'
-    - name: Kalkulator cen
-      href: 'https://azure.microsoft.com/pricing/calculator/'
-    - name: Umowa SLA
-      href: 'https://azure.microsoft.com/support/legal/sla'
+  - name: Często zadawane pytania
+    href: virtual-wan-faq.md
+  - name: Harmonogram działania dla platformy Azure
+    href: https://azure.microsoft.com/roadmap/?category=networking
+  - name: Blog
+    href: https://azure.microsoft.com/blog/topics/networking
+  - name: Limity usług i subskrypcji
+    href: ../azure-subscription-service-limits.md?toc=%2fazure%2fvpn-gateway%2ftoc.json
+  - name: Cennik
+    href: https://azure.microsoft.com/pricing/details/vpn-gateway
+  - name: Kalkulator cen
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: Umowa SLA
+    href: https://azure.microsoft.com/support/legal/sla
+ms.openlocfilehash: a8b9bf44a68e389547e08055e5036562457f6175
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957384"

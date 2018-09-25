@@ -1,36 +1,63 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: bec19b959aa2ce99a7237894a50c49666341827b
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.openlocfilehash: 460c0708bf51966bd1b6862445a6541436723688
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42440167"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952294"
 documentType: LandingData
-title: Usługa i zestaw SDK rozpoznawania mowy (wersja zapoznawcza)
+title: Dokumentacja zestawu SDK usługi Speech Service
 metadata:
-  title: Dokumentacja usługi rozpoznawania mowy — samouczki, przewodniki Szybki start i dokumentacja interfejsu API — Cognitive Services | Microsoft Docs
+  title: Dokumentacja zestawu SDK usługi Speech Service — samouczki, przewodniki Szybki start i dokumentacja interfejsu API — Cognitive Services | Microsoft Docs
   meta.description: >
     The Speech Service provides developers an easy way to add powerful speech-enabled features to their applications.
 
     Examples include&#58; voice command control & dialog, natural speech conversation, speech transcription & dictation, and speech translation.
   services: cognitive-services
-  author: noellelacharite
-  manager: nolachar
+  author: nitinme
+  manager: cgronlun
   layout: LandingPage
   ms.service: cognitive-services
   ms.component: speech-service
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 07/16/2018
-  ms.author: nolachar
+  ms.date: 09/24/2018
+  ms.author: nitinme
 abstract:
-  description: >
-    Za pomocą naszego zestawu SDK <a href="overview">usługa rozpoznawania mowy</a> pomaga deweloperom dodawać funkcje z możliwością rozpoznawania mowy do aplikacji.
-
-    Funkcje te obejmują&#58; <i>zamianę mowy na tekst</i> (rozpoznawanie mowy), <i>intencję</i>, <i>tłumaczenie</i> i <i>zamianę tekstu na mowę</i> (TTS).
+  description: Dowiedz się, jak korzystać z funkcji usługi Speech Service i jej zestawu SDK w celu dodawania funkcji rozpoznawania mowy do aplikacji. Zestaw SDK rozpoznawania mowy umożliwia dodawanie do aplikacji funkcji <i>zamiany mowy na tekst</i> (rozpoznawanie mowy/SR) <i>intencji</i>, <i>tłumaczenia</i>, i <i>zamiany tekstu na mowę</i> (TTS). Usługa Speech Service ma również interfejs API REST współpracujący z dowolnym językiem programowania, który może wysyłać żądania HTTP.
+  aside:
+    image:
+      alt: 
+      height: 110
+      src: ../media/index/speech-landing-page-video.png
+      width: 250
+    title: Omówienie usługi Speech Service (10:34)
+    href: https://azure.microsoft.com/resources/videos/connect-2017-microsoft-cognitive-services-overview-of-advanced-speech-capabilities/
+    width: 250
 sections:
-- title: 5-minutowy przewodnik Szybki start i pobieranie zestawu SDK
+- items:
+  - type: list
+    style: cards
+    className: cardsM
+    columns: 3
+    items:
+    - href: /azure/cognitive-services/speech-service/overview
+      html: <p>Dowiedz się więcej o usłudze Azure Speech Service.</p>
+      image:
+        src: ../media/index/i_overview.svg
+      title: Co to jest usługa Speech Service?
+    - href: /azure/cognitive-services/speech-service/get-started
+      html: <p>Dowiedz się, jak zarejestrować się bezpłatnie w usłudze Speech Service.</p>
+      image:
+        src: ../media/index/i_get-started.svg
+      title: Rejestracja w usłudze Speech Service
+    - href: /azure/cognitive-services/speech-service/speech-devices-sdk
+      html: <p>Więcej informacji na temat odwołań do sprzętu w systemach z obsługą mowy.</p>
+      image:
+        src: ../media/index/i_guidelines.svg
+      title: Zestaw Speech Devices SDK
+- title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph
     text: Dowiedz się, jak pobierać i instalować zestaw oraz używać go, klikając wybrany link ze strzałką <img src="media/index/link.jpg" height="15" width="15"></img> poniżej.
@@ -48,6 +75,10 @@ sections:
     - image:
         src: media/index/logo_java.jpg
     - image:
+        src: media/index/logo_objc.jpg
+    - image:
+        src: media/index/logo_js.svg
+    - image:
         src: media/index/logo_rest_sr.svg
     - image:
         src: media/index/logo_rest_tts.svg
@@ -61,12 +92,16 @@ sections:
       - href: quickstart-java-jre
       - href: 
       - href: 
+      - href: 
+      - href: 
     - title: Windows 10 (x86)
       values:
       - href: quickstart-csharp-uwp
       - href: quickstart-csharp-windows
       - href: quickstart-cpp-windows
       - href: quickstart-csharp-dotnetcore-windows
+      - href: 
+      - href: 
       - href: 
       - href: 
       - href: 
@@ -79,11 +114,15 @@ sections:
       - href: quickstart-java-jre
       - href: 
       - href: 
+      - href: 
+      - href: 
     - title: Linux (x86)
       values:
       - href: 
       - href: 
       - href: quickstart-cpp-linux
+      - href: 
+      - href: 
       - href: 
       - href: 
       - href: 
@@ -97,6 +136,8 @@ sections:
       - href: quickstart-java-android
       - href: 
       - href: 
+      - href: 
+      - href: 
     - title: Zestaw SDK urządzeń (ARM64)
       values:
       - href: 
@@ -106,6 +147,19 @@ sections:
       - href: speech-devices-sdk
       - href: 
       - href: 
+      - href: 
+      - href: 
+    - title: iOS (ARM64)
+      values:
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: 
+      - href: quickstart-objectivec-ios
+      - href: 
+      - href: 
+      - href: 
     - title: Sieć Web
       values:
       - href: 
@@ -113,49 +167,51 @@ sections:
       - href: 
       - href: 
       - href: 
+      - href: 
+      - href: quickstart-js-browser
       - href: rest-apis
       - href: rest-apis
-- title: Przykłady i dokumentacja zestawu SDK rozpoznawania mowy
+- title: Samouczki krok po kroku
+  items:
+  - type: paragraph
+    text: 'Dowiedz się, jak programować aplikacje przy użyciu usługi Speech Service:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="speech-to-text-sample.md">Zamiana mowy na tekst (SR)</a><br/>
+    - html: <a href="intent.md">Rozpoznawanie intencji mowy</a><br/>
+    - html: <a href="translation.md">Tłumaczenie</a>
+- title: Przykłady
+  items:
+  - type: paragraph
+    text: 'Znajdź przykłady dotyczące usługi Speech Service w serwisie Github:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="https://github.com/Azure-Samples/cognitive-services-speech-sdk">Przykłady zestawów SDK usług</a><br/>
+    - html: <a href="https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK">Przykłady zestawów SDK urządzeń</a><br/>
+- title: Dokumentacja
   items:
   - type: list
     style: cards
     className: cardsD
     items:
-    - title: Przykłady
+    - title: Dokumentacja zestawu SDK
       html: >
-        &nbsp;&#8226; <a href="speech-to-text-sample.md">Zamiana mowy na tekst</a><br/>
+        <p><a href="https://aka.ms/csspeech/csharpref">Interfejs API w języku C# (platformy UWP i .NET)</a></p>
 
-        &nbsp;&#8226; <a href="intent.md">Rozpoznawanie intencji mowy</a><br/>
+        <p><a href="https://aka.ms/csspeech/cppref">Interfejs API w języku C++</a></p>
 
-        &nbsp;&#8226; <a href="translation.md">Tłumaczenie</a>
-    - title: Dokumentacja interfejsu API
+        <p><a href="https://aka.ms/csspeech/javaref">Interfejs API języka Java</a></p>
+
+        <p><a href="https://aka.ms/csspeech/objectivecref">Interfejs API w języku Objective-C</a></p>
+
+        <p><a href="https://aka.ms/csspeech/javascript">Interfejs API języka JavaScript</a></p>
+    - title: Interfejs API REST
       html: >
-        &nbsp;&#8226;<a href="https://aka.ms/csspeech/csharpref">Interfejs API języka C# (platformy UWP i .NET)</a><br/>
-
-        &nbsp;&#8226; <a href="https://aka.ms/csspeech/cppref">Interfejs API języka C++</a><br/>
-
-        &nbsp;&#8226; <a href="https://aka.ms/csspeech/javaref">Interfejs API języka Java</a>
-    - title: Często zadawane pytania
+        <p><a href="https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis">Interfejs API REST</a></p>
+    - title: PowerShell
       html: >
-        &nbsp;&#8226; <a href="faq-stt">Zamiana mowy na tekst</a><br/>
-
-        &nbsp;&#8226; <a href="faq-text-to-speech">Zamiana tekstu na mowę</a><br/>
-
-        &nbsp;&#8226; <a href="https://www.microsoft.com/translator/faq.aspx">Tłumaczenie</a>
-  - type: paragraph
-    text: Powyższych przykładów i interfejsu API należy użyć ze swoim kluczem subskrypcji (zobacz <a href="get-started.md">Wypróbuj bezpłatnie usługę rozpoznawania mowy</a>).
-- title: Dostosowywanie rozpoznawania mowy przy użyciu własnych danych
-  items:
-  - type: paragraph
-    text: >
-      Nasza usługa rozpoznawania mowy umożliwia również dostosowywanie modeli w celu dopasowania do specjalistycznego słownictwa, hałaśliwych środowisk i różnych sposobów mówienia.<br/>
-
-      &nbsp;&#8226;<a href="how-to-customize-speech-models">Dostosowana zamiana mowy na tekst</a><br/>
-
-      &nbsp;&#8226;<a href="https://www.microsoft.com/translator/customization.aspx">Dostosowane tłumaczenie mowy</a><br/>
-
-      &nbsp;&#8226;<a href="https://cris.ai/Home/customvoice">Dostosowana zamiana tekstu na mowę</a>
-- title: Sprzęt z włączonym rozpoznawaniem mowy — projekt referencyjny
-  items:
-  - type: paragraph
-    text: Osoby, które chcą tworzyć nowy sprzęt urządzenia z obsługą rozpoznawania mowy, mogą zapoznać się z opisem urządzenia referencyjnego w temacie dotyczącym zestawu <a href='https://docs.microsoft.com/azure/cognitive-services/speech-service/speech-devices-sdk'>Speech Devices SDK</a>.
+        <p><a href=https://docs.microsoft.com/powershell/module/azurerm.cognitiveservices/?view=azurermps-4.4.1#cognitive_services">Azure PowerShell</a></p>
+    - title: Interfejs wiersza polecenia
+      html: <p><a href="https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list">Interfejs wiersza polecenia platformy Azure</a></p>

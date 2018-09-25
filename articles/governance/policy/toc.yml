@@ -1,0 +1,225 @@
+items:
+- name: Dokumentacja usługi Azure Policy
+  href: index.yml
+- name: Omówienie
+  items:
+  - name: Omówienie zasad platformy Azure
+    href: overview.md
+- name: Przewodniki Szybki start
+  items:
+  - name: Przypisywanie zasad — portal
+    href: assign-policy-portal.md
+  - name: Przypisywanie zasad — program PowerShell
+    href: assign-policy-powershell.md
+  - name: Przypisywanie zasad — interfejs wiersza polecenia platformy Azure
+    href: assign-policy-azurecli.md
+  expanded: true
+- name: Samouczki
+  items:
+  - name: Tworzenie zasad platformy Azure i zarządzanie nimi
+    href: ./tutorials/create-and-manage.md
+- name: Przykłady
+  href: ./samples/index.md
+  items:
+  - name: Ogólne
+    items:
+    - name: Nazewnictwo
+      items:
+      - name: Zezwalanie na wiele wzorców nazw
+        href: samples/allow-multiple-name-patterns.md
+      - name: Wymaganie wzorca podobieństwa
+        href: samples/enforce-like-pattern.md
+      - name: Wymaganie wzorca zgodności
+        href: samples/enforce-match-pattern.md
+      - name: Wymaganie wzorca zgodności z tagiem
+        href: samples/enforce-tag-match-pattern.md
+    - name: Tagi
+      items:
+      - name: Stosowanie tagu i jego wartości domyślnej
+        href: samples/apply-tag-def-val.md
+      - name: Inicjatywa zasad tagów rozliczeń
+        href: samples/billing-tags-policy-init.md
+      - name: Enforce tag and its value (Wymuś tag i jego wartość)
+        href: samples/enforce-tag-val.md
+      - name: Wymuszanie tagu i jego wartości na grupach zasobów
+        href: samples/enforce-tag-rg.md
+    - name: Lokalizacje
+      items:
+      - name: Dozwolone lokalizacje
+        href: samples/allowed-locs.md
+    - name: Typy zasobów
+      items:
+      - name: Dozwolone typy zasobów
+        href: samples/allowed-res-types.md
+      - name: Niedozwolone typy zasobów
+        href: samples/not-allowed-res-type.md
+  - name: Wystąpienia obliczeniowe
+    items:
+    - name: Maszyny wirtualne
+      items:
+      - name: Zezwalanie na korzystanie z niestandardowego obrazu maszyny wirtualnej pochodzącego z grupy zasobów
+        href: samples/allow-custom-vm-image.md
+      - name: Dozwolone jednostki SKU dla kont magazynu i maszyn wirtualnych
+        href: samples/allowed-skus-storage.md
+      - name: Zatwierdzone obrazy maszyn wirtualnych
+        href: samples/allowed-custom-images.md
+      - name: Sprawdzanie, czy rozszerzenie nie istnieje
+        href: samples/audit-ext-not-exist.md
+      - name: Niedozwolone rozszerzenia maszyny wirtualnej
+        href: samples/not-allowed-vm-ext.md
+    - name: Zestawy skalowania maszyn wirtualnych
+      items:
+      - name: Sprawdzanie, czy maszyna wirtualna nie używa dysku zarządzanego
+        href: samples/create-vm-managed-disk.md
+      - name: Tworzenie maszyny wirtualnej używającej dysku zarządzanego
+        href: samples/use-managed-disk-vm.md
+      - name: Uniemożliwianie użycia korzyści użycia hybrydowego
+        href: samples/deny-hybrid-use.md
+      - name: Zezwalanie tylko na obraz określonej platformy maszyn wirtualnych
+        href: samples/allow-certain-vm-image.md
+  - name: Data Lake
+    items:
+    - name: Wymuszanie szyfrowania w usłudze Data Lake Store
+      href: samples/enforce-datalakestore-encryption.md
+  - name: Monitorowanie
+    items:
+    - name: Przeprowadzanie inspekcji ustawienia diagnostyki
+      href: samples/audit-diag-setting.md
+  - name: Sieć
+    items:
+    - name: Interfejsy sieciowe
+      items:
+      - name: Sieciowa grupa zabezpieczeń X na każdej karcie sieciowej
+        href: samples/nsg-on-nic.md
+      - name: Używanie zatwierdzonej podsieci dla interfejsów sieciowych maszyny wirtualnej
+        href: samples/use-approved-subnet-vm-nics.md
+      - name: Używanie zatwierdzonej sieci wirtualnej dla interfejsów sieciowych maszyny wirtualnej
+        href: samples/use-approved-vnet-vm-nics.md
+    - name: Sieci wirtualne
+      items:
+      - name: Dozwolone jednostki SKU bramy aplikacji
+        href: samples/allowed-app-gate-sku.md
+      - name: Uniemożliwianie korzystania z sieci równorzędnych w sieci ER
+        href: samples/no-peering-er-net.md
+      - name: Uniemożliwianie używania tabeli tras zdefiniowanej przez użytkownika
+        href: samples/no-user-def-route-table.md
+      - name: Sieciowa grupa zabezpieczeń X w każdej podsieci
+        href: samples/nsg-on-subnet.md
+      - name: Używanie zatwierdzonej podsieci dla interfejsów sieciowych maszyny wirtualnej
+        href: samples/use-approved-subnet-vm-nics.md
+      - name: Używanie zatwierdzonej sieci wirtualnej dla interfejsów sieciowych maszyny wirtualnej
+        href: samples/use-approved-vnet-vm-nics.md
+    - name: Grupy zabezpieczeń sieci
+      items:
+      - name: Sieciowa grupa zabezpieczeń X na każdej karcie sieciowej
+        href: samples/nsg-on-nic.md
+      - name: Sieciowa grupa zabezpieczeń X w każdej podsieci
+        href: samples/nsg-on-subnet.md
+    - name: Ekspresowe trasy
+      items:
+      - name: Dozwolona przepustowość usługi Express Route
+        href: samples/allowed-er-band.md
+      - name: Dozwolone jednostki SKU usługi Express Route
+        href: samples/allowed-er-skus.md
+      - name: Dozwolona lokalizacja komunikacji równorzędnej dla usługi Express Route
+        href: samples/allowed-peering-er.md
+    - name: Obserwatorzy sieciowi
+      items:
+      - name: Przeprowadzanie inspekcji stanu włączenia usług Network Watcher w danym regionie
+        href: samples/net-watch-not-enabled.md
+    - name: Bramy aplikacji
+      items:
+      - name: Dozwolone jednostki SKU bramy aplikacji
+        href: samples/allowed-app-gate-sku.md
+  - name: SQL
+    items:
+    - name: Serwery SQL Server
+      items:
+      - name: Sprawdzanie, czy nie skonfigurowano konta administratora usługi Azure Active Directory
+        href: samples/audit-no-aad-admin.md
+      - name: Przeprowadzanie inspekcji ustawienia wykrywania zagrożeń na poziomie serwera
+        href: samples/audit-sql-ser-threat-det-setting.md
+      - name: Przeprowadzanie inspekcji ustawień inspekcji programu SQL Server
+        href: samples/sql-server-audit.md
+      - name: Przeprowadzanie inspekcji ustawień inspekcji na poziomie programu SQL Server
+        href: samples/audit-sql-ser-leve-audit-setting.md
+      - name: Require SQL Server Version 12.0 (Wymagaj programu SQL Server w wersji 12.0)
+        href: samples/req-sql-12.md
+    - name: Bazy danych SQL
+      items:
+      - name: Dozwolone jednostki SKU usługi SQL DB
+        href: samples/allowed-sql-db-skus.md
+      - name: Przeprowadzanie inspekcji ustawienia wykrywania zagrożeń na poziomie usługi SQL DB
+        href: samples/audit-db-threat-det-setting.md
+      - name: Przeprowadzanie inspekcji szyfrowania usługi SQL DB
+        href: samples/sql-database-encryption-audit.md
+      - name: Przeprowadzanie inspekcji ustawień inspekcji na poziomie usługi SQL Database
+        href: samples/audit-sql-db-audit-setting.md
+      - name: Inspekcja stanu przezroczystego szyfrowania danych
+        href: samples/audit-trans-data-enc-status.md
+  - name: Magazyn
+    items:
+    - name: Dozwolone jednostki SKU dla konta magazynu i maszyn wirtualnych
+      href: samples/allowed-skus-storage.md
+    - name: Dozwolone jednostki SKU konta magazynu
+      href: samples/allowed-stor-acct-skus.md
+    - name: Uniemożliwianie użycia warstwy dostępu Chłodna dla kont magazynu
+      href: samples/deny-cool-access-tiering.md
+    - name: Zapewnianie używania tylko ruchu HTTPS dla konta magazynu
+      href: samples/ensure-https-stor-acct.md
+    - name: Zapewnianie szyfrowania plików w magazynie
+      href: samples/ensure-store-file-enc.md
+    - name: Wymaganie szyfrowania konta magazynu
+      href: samples/req-store-acct-enc.md
+- name: Pojęcia
+  items:
+  - name: Struktura definicji zasad platformy Azure
+    href: ./concepts/definition-structure.md
+  - name: Interpretacja efektów działania zasad
+    href: ./concepts/effects.md
+- name: Przewodniki z instrukcjami
+  items:
+  - name: Programowe tworzenie zasad
+    href: ./how-to/programmatically-create.md
+  - name: Pobieranie danych dotyczących zgodności
+    href: ./how-to/getting-compliance-data.md
+  - name: Korygowanie niezgodnych zasobów
+    href: ./how-to/remediate-resources.md
+- name: Dokumentacja
+  items:
+  - name: Interfejs wiersza polecenia platformy Azure
+    href: /cli/azure/policy
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.resources/#policies
+  - name: Interfejs API REST
+    items:
+    - name: Zdarzenia
+      href: /rest/api/policy-insights/policyevents
+    - name: Stany
+      href: /rest/api/policy-insights/policystates
+    - name: Przypisania
+      href: /rest/api/resources/policyassignments
+    - name: Definicje zasad
+      href: /rest/api/resources/policydefinitions
+    - name: Definicje inicjatyw
+      href: /rest/api/resources/policysetdefinitions
+- name: Zasoby
+  items:
+  - name: GitHub — przykłady dla usługi Azure Policy
+    href: https://github.com/Azure/azure-policy
+  - name: Klip wideo — konferencja Build 2018
+    href: https://channel9.msdn.com/events/Build/2018/THR2030
+  - name: Klip wideo — konferencja Ignite 2017
+    href: https://myignite.microsoft.com/videos/54781
+  - name: Harmonogram działania dla platformy Azure
+    href: https://azure.microsoft.com/roadmap/
+  - name: Kalkulator cen
+    href: https://azure.microsoft.com/pricing/calculator/
+  - name: UserVoice
+    href: https://feedback.azure.com/forums/915958-azure-governance
+ms.openlocfilehash: edae8729cc6089c61261b1e388512d5cbd856574
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47054714"

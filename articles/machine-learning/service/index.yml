@@ -1,51 +1,65 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 15863679b42962d414493804f234c9fde46172ea
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: c3120d4fb8fb9377d43cdd2df780810bb4634e52
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43781162"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985033"
 documentType: LandingData
-title: Dokumentacja usług Azure Machine Learning (wersja zapoznawcza)
+title: Dokumentacja usługi Azure Machine Learning (wersja zapoznawcza)
 metadata:
-  title: Dokumentacja usług Azure Machine Learning (wersja zapoznawcza)
-  meta.description: Learn how to use Azure Machine Learning services (preview).
+  title: Dokumentacja usługi Azure Machine Learning (wersja zapoznawcza) — samouczki i dokumentacja interfejsu API | Microsoft Docs
+  meta.description: Learn how to build intelligent algorithms into apps and websites. Use Scikit-learn, Tensorflow, Pytorch or any other Python-based framework to build your machine learning model and train it locally or in the cloud. Tutorials, quickstarts, API references, and examples show you how.
   services: machine-learning
-  author: garyericson
+  author: j-martens
   manager: jhubbard
   ms.service: machine-learning
   ms.component: core
   ms.tgt_pltfrm: na
   ms.devlang: na
   ms.topic: landing-page
-  ms.date: 01/18/2018
-  ms.author: garye
+  ms.date: 09/24/2018
+  ms.author: jmartens
 abstract:
-  description: Usługi Azure Machine Learning (wersja zapoznawcza) umożliwiają tworzenie i wdrażanie modeli uczenia maszynowego oraz sztucznej inteligencji i zarządzanie nimi przy użyciu dowolnych bibliotek i narzędzi języka Python. Można używać różnorodnych usług obliczeniowych i dotyczących danych na platformie Azure w celu przechowywania i przetwarzania danych.
+  description: Dowiedz się, jak wbudowywać w aplikacje i witryny internetowe inteligentne algorytmy. Skorzystaj z Scikit-learn, Tensorflow, Pytorch lub innej opartej na języku Python struktury do utworzenia modelu uczenia maszynowego oraz do szkolenia go lokalnie lub w chmurze. Samouczki, przewodniki Szybki start, dokumentacja interfejsu API i przykłady przedstawiają, jak to zrobić.
 sections:
+- items:
+  - type: list
+    style: cards
+    className: cardsB
+    columns: 1
+    items:
+    - html: <p>Szkol i wdrażaj modele uczenia maszynowego w usłudze w chmurze platformy Azure. <a href="overview-what-is-azure-ml.md">Dowiedz się więcej o usłudze...</a></p>
+      image:
+        src: /azure/machine-learning/media/index/i_machine-learning.svg
+      title: Usługa Azure Machine Learning
 - title: 5-minutowe przewodniki Szybki start
   items:
   - type: paragraph
-    text: Tworzenie pierwszego projektu usługi Machine Learning
+    text: Skonfiguruj zasoby umożliwiające korzystanie z usługi Azure Machine Learning.
   - type: list
     style: unordered
     items:
-    - html: <a href="quickstart-installation.md">Instalowanie i tworzenie</a>
+    - html: <a href="quickstart-get-started.md">Rozpoczynanie pracy w witrynie Azure Portal </a>
 - title: Samouczki krok po kroku
   items:
   - type: paragraph
-    text: Dowiedz się, jak przygotować dane, skonfigurować eksperyment i obsługiwać operacje modeli
+    text: Dowiedz się, jak skonfigurować eksperyment i obsługiwać operacje modeli.
   - type: list
-    style: ordered
+    style: unordered
     items:
-    - html: <a href="../desktop-workbench/tutorial-classifying-iris-part-1">Zapoznaj się z podstawami usług Machine Learning (wersja zapoznawcza)</a>
-    - html: <a href="../desktop-workbench/tutorial-classifying-iris-part-2">Użyj środowiska roboczego usługi Machine Learning, aby utworzyć model przy użyciu zestawu danych dotyczących irysów</a>
-    - html: <a href="../desktop-workbench/tutorial-classifying-iris-part-3">Dowiedz się, jak wdrożyć model uczenia maszynowego</a>
-    - html: <a href="../desktop-workbench/tutorial-bikeshare-dataprep">Użyj środowiska roboczego usługi Azure Machine Learning na potrzeby zaawansowanego przygotowywania danych</a>
-- title: Więcej technologii usługi Azure Machine Learning
+    - html: <a href="tutorial-train-models-with-aml">Szkolenie własnego modelu uczenia maszynowego</a>
+    - html: <a href="tutorial-auto-train-models">Automatyczne generowanie i dostrajanie modelu</a>
+    - html: <a href="tutorial-deploy-models-with-aml">Wdrażanie modelu jako usługi sieci Web</a>
+- title: Dokumentacja
   items:
-  - type: paragraph
-    text: 'Inne technologie dostępne w usłudze Azure Machine Learning:'
+  - type: list
+    style: unordered
+    items:
+    - html: <a href="http://aka.ms/aml-sdk">Zestaw SDK usługi Azure Machine Learning dla języka Python (główny zestaw SDK)</a>
+    - html: <a href="https://docs.microsoft.com/python/api/overview/azure/dataprep?view=azure-dataprep-py">Zestaw SDK przygotowywania danych usługi Azure Machine Learning</a>
+- title: Inne technologie usługi Azure Machine Learning
+  items:
   - type: list
     style: cards
     className: cardsFTitle
@@ -60,15 +74,3 @@ sections:
       image:
         src: media/index/virtual-machines.svg
         href: /azure/machine-learning/data-science-virtual-machine/
-- title: Dokumentacja
-  items:
-  - type: list
-    style: cards
-    className: cardsD
-    items:
-    - title: Pakiety
-      html: <p><a href="reference-python-package-overview#amlpcv">Przetwarzanie obrazów</a></p><p><a href="reference-python-package-overview#amlpf">Prognozowanie</a></p><p><a href="reference-python-package-overview#amlrealtimeai">Akceleracja FPGA</a></p><p><a href="reference-python-package-overview#amlpta">Analiza tekstu</a></p>
-    - title: Języki
-      html: <p><a href="https://azure.microsoft.com/develop/python/">Python</a></p>
-    - title: REST
-      html: <p><a href="https://docs.microsoft.com/rest/api/machinelearning/">Interfejsy API zarządzania — REST</a></p>

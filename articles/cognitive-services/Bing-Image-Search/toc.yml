@@ -1,10 +1,11 @@
 items:
-- name: Dokumentacja funkcji wyszukiwania obrazów Bing
+- name: Dokumentacja interfejsu API wyszukiwania obrazów Bing
   href: index.yml
 - name: Omówienie
   items:
   - name: Czym jest funkcja wyszukiwania obrazów Bing?
     href: overview.md
+  expanded: true
 - name: Przewodniki Szybki start
   items:
   - name: Wysyłanie zapytań wyszukiwania przy użyciu interfejsu API REST
@@ -21,7 +22,6 @@ items:
       href: quickstarts/python.md
     - name: Korzystanie z języka Ruby
       href: quickstarts/ruby.md
-    expanded: true
   - name: Wyszukiwanie obrazów przy użyciu zestawu SDK
     items:
     - name: Przy użyciu języka C#
@@ -68,9 +68,9 @@ items:
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v7-reference
   - name: Interfejs API wyszukiwania obrazów Bing v5
     href: https://docs.microsoft.com/rest/api/cognitiveservices/bing-images-api-v5-reference
-  - name: Azure Cognitive Services — dokumentacja programu PowerShell
+  - name: Dokumentacja programu Azure PowerShell
     href: https://aka.ms/azure-powershell-cognitiveservices
-  - name: Azure Cognitive Services — dokumentacja interfejsu wiersza polecenia
+  - name: Dokumentacja interfejsu wiersza polecenia platformy Azure
     href: https://docs.microsoft.com/cli/azure/cognitiveservices?view=azure-cli-latest#az_cognitiveservices_list
 - name: Zasoby
   items:
@@ -100,9 +100,9 @@ items:
     href: UseAndDisplayRequirements.md
   - name: Dane analityczne na potrzeby interfejsu API wyszukiwania obrazów Bing
     href: bing-image-stats.md
-ms.openlocfilehash: 74cc9f56aa4d559c7e2644fc6866ae3d97f158f6
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 2b7b4bc8fb79687d032de52e3ac2ecbe4e944a8c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46296298"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967357"

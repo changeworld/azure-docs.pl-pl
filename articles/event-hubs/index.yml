@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: cb280602f48504069e5ac5e89a470d154cc855fc
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: 5ed6a94eb0a8737cc8a6a7d5b26d3aa7e84ef1e1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "41927258"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952532"
 documentType: LandingData
 title: Dokumentacja usługi Azure Event Hubs
 metadata:
@@ -57,6 +57,19 @@ sections:
     style: unordered
     items:
     - html: <a href="https://docs.microsoft.com/en-us/azure/event-hubs/event-hubs-tutorial-visualize-anomalies">Read a stream of Event Hubs data with Azure Stream Analytics and visualize the anomalies (Odczyt strumienia danych usługi Event Hubs za pomocą usługi Azure Stream Analytics i wizualizowanie anomalii)</a>
+- title: Rozwijanie umiejętności dzięki środowisku Microsoft Learn
+  items:
+  - type: list
+    style: cards
+    className: cardsFTitle
+    items:
+    - title: Włączanie niezawodnej obsługi komunikatów dla aplikacji przetwarzających dane big data przy użyciu usługi Azure Event Hubs
+      href: /learn/modules/enable-reliable-messaging-for-big-data-apps-using-event-hubs/
+      image:
+        src: /learn/achievements/enable-reliable-messaging-for-big-data-apps-using-azure-event-hubs.svg
+        href: /learn/modules/enable-reliable-messaging-for-big-data-apps-using-event-hubs/
+  - type: paragraph
+    text: <a href="/learn/browse/?products=azure-event-hubs">Więcej interakcyjnych zasobów szkoleniowych...</a>
 - title: Bezpłatne szkolenie wideo firmy PluralSight
   items:
   - type: list

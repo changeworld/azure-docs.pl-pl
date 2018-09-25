@@ -1,76 +1,88 @@
+items:
 - name: Dokumentacja kontroli dostępu opartej na rolach
   href: index.yml
-  items: null
 - name: Omówienie
   items:
-    - name: Co to jest kontrola dostępu oparta na rolach?
-      href: overview.md
-    - name: Omówienie różnych ról
-      href: rbac-and-directory-admin-roles.md
+  - name: Co to jest kontrola dostępu oparta na rolach?
+    href: overview.md
+  - name: Omówienie różnych ról
+    href: rbac-and-directory-admin-roles.md
 - name: Przewodniki Szybki start
   items:
-    - name: Udzielanie dostępu użytkownikowi
-      href: quickstart-assign-role-user-portal.md
+  - name: Udzielanie dostępu użytkownikowi
+    href: quickstart-assign-role-user-portal.md
 - name: Samouczki
   items:
-    - name: Udzielanie dostępu użytkownikowi — PowerShell
-      href: tutorial-role-assignments-user-powershell.md
-    - name: Udzielanie dostępu grupie — PowerShell
-      href: tutorial-role-assignments-group-powershell.md
-    - name: Tworzenie roli niestandardowej — PowerShell
-      href: tutorial-custom-role-powershell.md
-    - name: Tworzenie roli niestandardowej — interfejs wiersza polecenia
-      href: tutorial-custom-role-cli.md
+  - name: Udzielanie dostępu użytkownikowi — PowerShell
+    href: tutorial-role-assignments-user-powershell.md
+  - name: Udzielanie dostępu grupie — PowerShell
+    href: tutorial-role-assignments-group-powershell.md
+  - name: Tworzenie roli niestandardowej — PowerShell
+    href: tutorial-custom-role-powershell.md
+  - name: Tworzenie roli niestandardowej — interfejs wiersza polecenia
+    href: tutorial-custom-role-cli.md
 - name: Pojęcia
   items:
-    - name: Omówienie definicji ról
-      href: role-definitions.md
-    - name: Usługa Privileged Identity Management (PIM) dla Kontroli dostępu opartej na rolach
-      href: pim-azure-resource.md
-    - name: Dostęp warunkowy do zarządzania platformy Azure
-      href: conditional-access-azure-management.md
+  - name: Omówienie definicji ról
+    href: role-definitions.md
+  - name: Opis przypisań odmowy
+    href: deny-assignments.md
+  - name: Usługa Privileged Identity Management (PIM) dla Kontroli dostępu opartej na rolach
+    href: pim-azure-resource.md
+  - name: Dostęp warunkowy do zarządzania platformy Azure
+    href: conditional-access-azure-management.md
 - name: Przewodniki z instrukcjami
   items:
-    - name: Zarządzanie dostępem
-      items:
-        - name: Portal
-          href: role-assignments-portal.md
-        - name: PowerShell
-          href: role-assignments-powershell.md
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: role-assignments-cli.md
-        - name: Interfejs API REST
-          href: role-assignments-rest.md
-        - name: Szablon
-          href: role-assignments-template.md
-    - name: Role niestandardowe
-      href: custom-roles.md
-      items:
-        - name: PowerShell
-          href: custom-roles-powershell.md
-        - name: Interfejs wiersza polecenia platformy Azure
-          href: custom-roles-cli.md
-        - name: Interfejs API REST
-          href: custom-roles-rest.md
-    - name: Wyświetlanie dzienników aktywności
-      href: change-history-report.md
-    - name: Podnoszenie poziomu uprawnień dostępu dla administratora globalnego
-      href: elevate-access-global-admin.md
-    - name: Zarządzanie dostępem dla użytkowników zewnętrznych
-      href: role-assignments-external-users.md
-    - name: Rozwiązywanie problemów
-      href: troubleshooting.md
+  - name: Zarządzanie dostępem
+    items:
+    - name: Portal
+      href: role-assignments-portal.md
+    - name: PowerShell
+      href: role-assignments-powershell.md
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: role-assignments-cli.md
+    - name: Interfejs API REST
+      href: role-assignments-rest.md
+    - name: Szablon
+      href: role-assignments-template.md
+  - name: Odmowa dostępu
+    items:
+    - name: Interfejs API REST
+      href: deny-assignments-rest.md
+  - name: Role niestandardowe
+    href: custom-roles.md
+    items:
+    - name: PowerShell
+      href: custom-roles-powershell.md
+    - name: Interfejs wiersza polecenia platformy Azure
+      href: custom-roles-cli.md
+    - name: Interfejs API REST
+      href: custom-roles-rest.md
+  - name: Wyświetlanie dzienników aktywności
+    href: change-history-report.md
+  - name: Podnoszenie poziomu uprawnień dostępu dla administratora globalnego
+    href: elevate-access-global-admin.md
+  - name: Zarządzanie dostępem dla użytkowników zewnętrznych
+    href: role-assignments-external-users.md
+  - name: Rozwiązywanie problemów
+    href: troubleshooting.md
 - name: Dokumentacja
   items:
-    - name: Wbudowane role
-      href: built-in-roles.md
-    - name: Operacje dostawcy zasobów
-      href: resource-provider-operations.md
-    - name: Limity kontroli dostępu opartej na rolach
-      href: '../azure-subscription-service-limits.md#role-based-access-control-limits'
-    - name: Azure PowerShell
-      href: /powershell/module/azurerm.resources
-    - name: Interfejs wiersza polecenia platformy Azure
-      href: /cli/azure/role?view=azure-cli-latest
-    - name: Interfejs API REST
-      href: /rest/api/authorization/
+  - name: Wbudowane role
+    href: built-in-roles.md
+  - name: Operacje dostawcy zasobów
+    href: resource-provider-operations.md
+  - name: Limity kontroli dostępu opartej na rolach
+    href: ../azure-subscription-service-limits.md#role-based-access-control-limits
+  - name: Azure PowerShell
+    href: /powershell/module/azurerm.resources
+  - name: Interfejs wiersza polecenia platformy Azure
+    href: /cli/azure/role?view=azure-cli-latest
+  - name: Interfejs API REST
+    href: /rest/api/authorization/
+ms.openlocfilehash: 8a113e60cd9af0e7f9c0f192bc20ca674c56c0f8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982787"
