@@ -9,12 +9,12 @@ ms.tgt_pltfrm: vm-linux
 ms.topic: article
 ms.date: 05/09/2017
 ms.author: agaiha
-ms.openlocfilehash: a51e4e61b8d0a9f9a80acc513dbba32c74372f5e
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: ac09754876d52798add58d9e0752d776ca29f247
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44348858"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46994806"
 ---
 # <a name="use-linux-diagnostic-extension-to-monitor-metrics-and-logs"></a>Użyj rozszerzenia diagnostycznego systemu Linux do monitorowania metryk i dzienników
 
@@ -54,7 +54,7 @@ Konfiguracja do pobrania jest tylko przykładowe; Zmodyfikuj go do swoich potrze
 ### <a name="prerequisites"></a>Wymagania wstępne
 
 * **Agent systemu Linux platformy Azure w wersji 2.2.0 lub nowszej**. Większość obrazów w galerii Azure VM Linux zawierają wersję 2.2.7 lub nowszej. Uruchom `/usr/sbin/waagent -version` aby upewnić się, wersja zainstalowana na maszynie Wirtualnej. Jeśli maszyna wirtualna jest uruchomiona starsza wersja agenta gościa, postępuj zgodnie z [w instrukcjach](https://docs.microsoft.com/azure/virtual-machines/linux/update-agent) ją zaktualizować.
-* **Interfejs wiersza polecenia platformy Azure**. [Konfigurowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) środowiska na swojej maszynie.
+* **Interfejs wiersza polecenia platformy Azure**. [Konfigurowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) środowiska na swojej maszynie.
 * Polecenia wget, jeśli nie jeszcze: Uruchom `sudo apt-get install wget`.
 * Istniejącej subskrypcji platformy Azure i istniejące konto magazynu w niej do przechowywania danych.
 * Znajduje się na liście obsługiwanych dystrybucjach systemu Linux https://github.com/Azure/azure-linux-extensions/tree/master/Diagnostic#supported-linux-distributions
