@@ -5,18 +5,18 @@ services: azure-policy
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 05/17/2018
+ms.date: 09/18/2018
 ms.author: dacoulte
 ms.custom: include file
-ms.openlocfilehash: 2e976e933b2f4f16cffd2176f8e0d63158036acc
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: bdc2eec30c44ddd9512ffdb33210a6b287d3debf
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34664542"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47003829"
 ---
 ## <a name="data-lake"></a>Data Lake
 
 |  |  |
 |---------|---------|
-| [Enforce Data Lake Store encryption](../articles/azure-policy/scripts/enforce-datalakestore-encryption.md) (Wymuszanie szyfrowania w usłudze Data Lake Store) | Uniemożliwia korzystanie z kont usługi Data Lake Store, które nie mają włączonego szyfrowania. |
+| [Enforce Data Lake Store encryption](../articles/governance/policy/samples/enforce-datalakestore-encryption.md) (Wymuszanie szyfrowania w usłudze Data Lake Store) | Uniemożliwia korzystanie z kont usługi Data Lake Store, które nie mają włączonego szyfrowania. |

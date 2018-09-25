@@ -11,12 +11,12 @@ ms.devlang: dotnet
 ms.topic: tutorial
 ms.date: 08/16/2017
 ms.author: sngun
-ms.openlocfilehash: a02d723d01eca5ea4d4312146bbb938179331fd3
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 40a80a049e6eb94390bab0b47e1f5ed49b4606b9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44161564"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991204"
 ---
 # <a name="azure-cosmos-db-sql-api-getting-started-tutorial"></a>Azure Cosmos DB: rozpoczynanie pracy z interfejsem API SQL — samouczek
 
@@ -26,7 +26,6 @@ ms.locfileid: "44161564"
 > * [Java](sql-api-java-get-started.md)
 > * [Java (asynchroniczny)](sql-api-async-java-get-started.md)
 > * [Node.js](sql-api-nodejs-get-started.md)
-> * [Node.js 2](sql-api-nodejs-get-started-preview.md) 
 > 
 
 Witamy w samouczku ułatwiającym rozpoczęcie pracy z interfejsem API SQL w usłudze Azure Cosmos DB! W ramach tego samouczka zostanie utworzona aplikacja konsolowa, która tworzy zasoby usługi Azure Cosmos DB i wykonuje dla nich zapytania.

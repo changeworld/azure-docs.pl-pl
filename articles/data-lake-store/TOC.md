@@ -11,8 +11,7 @@
 # Rozpoczęcie pracy
 ## [Korzystanie z witryny Azure Portal](data-lake-store-get-started-portal.md)
 ## [Korzystanie z programu Azure PowerShell](data-lake-store-get-started-powershell.md)
-## [Korzystanie z interfejsu wiersza polecenia platformy Azure 2.0](data-lake-store-get-started-cli-2.0.md)
-
+## [Korzystanie z interfejsu wiersza polecenia platformy Azure](data-lake-store-get-started-cli-2.0.md)
 
 # Instrukcje
 ## Ładowanie i przenoszenie danych
