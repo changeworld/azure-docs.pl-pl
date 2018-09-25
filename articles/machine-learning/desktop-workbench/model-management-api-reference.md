@@ -13,14 +13,17 @@ ms.workload: data-services
 ms.devlang: na
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: c0f51e47038737d6aa743be718ad6b28c161c766
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 07f8a31244acca48a0bbae8ad26b0c5b509f0c0a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35649394"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959584"
 ---
 # <a name="azure-machine-learning-model-management-account-api-reference"></a>Dokumentacja usługi Azure Machine Learning Model zarządzania konta API
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 Aby uzyskać informacji na temat konfigurowania środowiska wdrażania, zobacz [Konfiguracja konta zarządzania modelami](deployment-setup-configuration.md).
 
@@ -34,7 +37,7 @@ Azure Machine Learning Model zarządzania konta API implementuje są następują
 Ten obraz umożliwia tworzenie usługi internetowej albo lokalnie lub na zdalny klaster usługi kontenera platformy Azure lub innym z obsługą platformy Docker wybranym środowisku.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Upewnij się, że wykonano już kroki instalacji w [Instalowanie i Tworzenie szybkiego startu](../service/quickstart-installation.md) dokumentu.
+Upewnij się, że wykonano już kroki instalacji w [Instalowanie i Tworzenie szybkiego startu](quickstart-installation.md) dokumentu.
 
 Wymagane jest spełnienie następujących przed kontynuowaniem:
 1. Model, aprowizacja kont zarządzania

@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 639eff5806ef84c526ae8d0d0ed55ca790bdac08
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 67624e7ad21e6c3526b3ca47ff4b8e2df3b6ae54
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498032"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962270"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Omówienie usługi Azure Cloud Shell
 Usługa Azure Cloud Shell jest powłoką interaktywne, dostępny w przeglądarce do zarządzania zasobami platformy Azure.
@@ -48,7 +48,7 @@ Użytkownicy systemu Linux użyć narzędzia Bash w usłudze Cloud Shell, podcza
 ![Program PowerShell w usłudze Cloud Shell (wersja zapoznawcza)](media/overview/overview-ps-pic.png)
 
 ### <a name="authenticated-and-configured-azure-workstation"></a>Uwierzytelniony i skonfigurowane Azure stacji roboczej
-Usługa cloud Shell jest zarządzany przez firmę Microsoft, więc pochodzi ona z obsługą języka i popularnych narzędzi wiersza polecenia. Aby uzyskać natychmiastowy dostęp do zasobów przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub programu Azure PowerShell polecenia cmdlet usługi cloud Shell jednocześnie możliwość bezpiecznego uwierzytelnia automatycznie.
+Usługa cloud Shell jest zarządzany przez firmę Microsoft, więc pochodzi ona z obsługą języka i popularnych narzędzi wiersza polecenia. Aby uzyskać natychmiastowy dostęp do zasobów przy użyciu wiersza polecenia platformy Azure lub programu Azure PowerShell polecenia cmdlet usługi cloud Shell jednocześnie możliwość bezpiecznego uwierzytelnia automatycznie.
 
 Wyświetlić pełne [listę narzędzia zainstalowane w usłudze Cloud Shell.](features.md#tools)
 
@@ -61,7 +61,7 @@ Usługa cloud Shell oferuje zintegrowane graficzny Edytor oparty na edytorze Mon
 Usługa cloud Shell jest elastyczne narzędzie, które mogą być używane:
 * [portal.azure.com](https://portal.azure.com)
 * [shell.azure.com](https://shell.azure.com)
-* [Dokumentacja usługi Azure CLI 2.0 "Wypróbuj"](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)
+* [Dokumentacja "Wypróbuj" interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure?view=azure-cli-latest)
 * [Aplikacja mobilna platformy Azure](https://azure.microsoft.com/features/azure-portal/mobile-app/)
 * [Rozszerzenie kodu Azure Account programu VS](https://marketplace.visualstudio.com/items?itemName=ms-vscode.azure-account)
 

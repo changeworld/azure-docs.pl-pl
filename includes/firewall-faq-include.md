@@ -5,37 +5,35 @@ services: firewall
 author: vhorne
 ms.service: ''
 ms.topic: include
-ms.date: 8/13/2018
+ms.date: 9/14/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: a63a12658bd0a4b4d018d51824af9814691a3cbf
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.openlocfilehash: 4c6aaea836302732b1af3d22923c965575cfc9d2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "40183907"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47020476"
 ---
 ### <a name="what-is-azure-firewall"></a>Co to jest usługa Azure Firewall?
 
-Azure Firewall to zarządzana, sieciowa usługa zabezpieczeń oparta na chmurze, która zabezpiecza zasoby usługi Azure Virtual Network. Jest w pełni stanowych zapory jako — usługa wbudowaną wysoką dostępność i skalowalność chmury bez ograniczeń. Możesz centralnie tworzyć, wymuszać i rejestrować zasady łączności aplikacji i sieci w subskrypcjach i sieciach wirtualnych. Zaporę platformy Azure jest obecnie w publicznej wersji zapoznawczej.
+Azure Firewall to zarządzana, sieciowa usługa zabezpieczeń oparta na chmurze, która zabezpiecza zasoby usługi Azure Virtual Network. Jest w pełni stanowych zapory jako — usługa wbudowaną wysoką dostępność i skalowalność chmury bez ograniczeń. Możesz centralnie tworzyć, wymuszać i rejestrować zasady łączności aplikacji i sieci w subskrypcjach i sieciach wirtualnych.
 
-### <a name="which-capabilities-are-supported-in-the-azure-firewall-public-preview-release"></a>Które funkcje są obsługiwane w wersji zapoznawczej zapory usługi Azure?  
+### <a name="what-capabilities-are-supported-in-azure-firewall"></a>Jakie funkcje są obsługiwane przez zaporę usługi Azure?  
 
 * Zapora stanowa jako usługa
 * Wbudowana wysoka dostępność z nieograniczoną skalowalnością w chmurze
-* Filtrowanie według nazw FQDN 
+* Filtrowanie według nazw FQDN
+* Nazwa FQDN tagów
 * Reguły filtrowania ruchu sieciowego
 * Obsługa translacji adresów sieciowych źródła (SNAT) dla ruchu wychodzącego
-* Centralnie tworzenie, wymuszanie i dziennika aplikacji i sieci zasad łączności różnych subskrypcji platformy Azure i sieci wirtualnych
-* Pełna integracja z usługą Azure Monitor, rejestrowania i analizy 
-
-### <a name="how-can-i-join-the-azure-firewall-public-preview"></a>Jak dołączyć Azure zapory publicznej wersji zapoznawczej?
-
-Zaporę platformy Azure jest obecnie zarządzane publicznej wersji zapoznawczej, które możesz dołączyć za pomocą polecenia programu PowerShell element Register-AzureRmProviderFeature. To polecenie zostało wyjaśnione w dokumentacji zapory usługi Azure w publicznej wersji zapoznawczej.
+* Obsługuje DNAT dla ruchu przychodzącego
+* Centralnie tworzenie, wymuszanie i dziennika aplikacji i sieci zasad łączności różnych subskrypcji platformy Azure z sieciami wirtualnymi
+* Pełna integracja z usługą Azure Monitor na potrzeby rejestrowania i analizy 
 
 ### <a name="what-is-the-pricing-for-azure-firewall"></a>Co to jest cennik dla zapory usługi Azure?
 
-Zaporę platformy Azure jest kosztowne stałe i zmienne. Ceny są następujące i dalszych są obniżone o 50% w publicznej wersji zapoznawczej.
+Zaporę platformy Azure ma koszt stały + koszty zmiennej:
 
 * Stała opłata: $1.25/firewall/hour
 * Zmiennej opłaty: 0,03 USD/GB przetworzonych przez zapory (ruch przychodzący lub wychodzący)
@@ -59,7 +57,7 @@ Istnieją dwa rodzaje kolekcji reguł:
 
 ### <a name="does-azure-firewall-support-inbound-traffic-filtering"></a>Zaporę usługi Azure obsługuje filtrowanie ruchu przychodzącego?
 
-Zapora publicznej wersji zapoznawczej witryny Azure obsługuje tylko wychodzącego filtrowania. Ogólna dostępność zapory usługi Azure planowana jest wstępnie ochrony dla ruchu przychodzącego dla protokołów innych niż HTTP/S (na przykład protokołu RDP, SSH lub FTP)  
+Zaporę platformy Azure obsługuje filtrowanie przychodzącego i wychodzącego. Ochrona dla ruchu przychodzącego jest protokołów innych niż HTTP/Https. Na przykład protokoły RDP, SSH i FTP.
  
 ### <a name="which-logging-and-analytics-services-are-supported-by-the-azure-firewall"></a>Jakie usługi rejestrowania i analizy są obsługiwane przez zaporę usługi Azure?
 
@@ -110,3 +108,11 @@ Set-AzureRmFirewall -AzureFirewall $azfw
 * Wystąpienia zapory platformy Azure, która działa w centralnej sieci wirtualnej ma wirtualnej sieci równorzędnej ograniczenia z maksymalnie 50 sieci wirtualne będące szprychami.  
 * Zaporę platformy Azure nie działa z globalnej komunikacji równorzędnej, więc powinien mieć co najmniej jedno wdrożenie zapory na region.
 * Zaporę platformy Azure obsługuje 10 k stosowanie reguł i reguł sieci usługi 10 tys.
+
+### <a name="can-azure-firewall-in-a-hub-virtual-network-forward-and-filter-network-traffic-between-two-spoke-virtual-networks"></a>Można zapory usługi Azure w sieci wirtualnej koncentratora i do przodu i filtrowanie ruchu sieciowego między dwiema sieciami wirtualnymi szprychy?
+
+Tak, można użyć zapory usługi Azure, w centralnej sieci wirtualnej trasy i filtrowanie ruchu między siecią wirtualną dwóch szprychy. Podsieci w każdej sieci wirtualne będące szprychami muszą mieć Routing zdefiniowany przez użytkownika wskazuje zapory platformy Azure jako brama domyślna, w tym scenariuszu do poprawnego działania.
+
+### <a name="can-azure-firewall-forward-and-filter-network-traffic-between-subnets-in-the-same-virtual-network"></a>Do przodu może zapory usługi Azure i filtrowanie ruchu sieciowego między podsieciami w tej samej sieci wirtualnej?
+
+Ruch między podsieciami w tej samej sieci wirtualnej lub w wirtualnej sieci równorzędnej bezpośrednio jest kierowany bezpośrednio nawet wtedy, gdy trasa zdefiniowana przez użytkownika wskazuje zapory platformy Azure jako brama domyślna. Zalecaną metodą segmentacji sieci wewnętrznej jest przy użyciu grup zabezpieczeń sieci. Aby wysyłać ruch podsieci do sieci do zapory, w tym scenariuszu, trasa zdefiniowana przez użytkownika musi zawierać prefiks docelowy podsieci sieci jawnie na obie podsieci.

@@ -1,83 +1,87 @@
 ---
-title: Plany i rozliczenia w usłudze Azure Scheduler
-description: Plany i rozliczenia w usłudze Azure Scheduler
+title: Plany i rozliczenia — usługa Azure Scheduler
+description: Dowiedz się więcej o planach i rozliczeń dla usługi Azure Scheduler
 services: scheduler
-documentationcenter: .NET
-author: derek1ee
-manager: kevinlam1
-editor: ''
-ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
 ms.service: scheduler
-ms.workload: infrastructure-services
-ms.tgt_pltfrm: na
-ms.devlang: dotnet
+author: derek1ee
+ms.author: deli
+ms.reviewer: klam
+ms.assetid: 13a2be8c-dc14-46cc-ab7d-5075bfd4d724
 ms.topic: article
 ms.date: 08/18/2016
-ms.author: deli
-ms.openlocfilehash: 03f335634b7ce1fe4aa6251d6ec21922ed9b84c8
-ms.sourcegitcommit: 11321f26df5fb047dac5d15e0435fce6c4fde663
+ms.openlocfilehash: 74f13628b62d53a84b4d19255a30a6bc4a7367ec
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37887491"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974293"
 ---
-# <a name="plans-and-billing-in-azure-scheduler"></a>Plany i rozliczenia w usłudze Azure Scheduler
+# <a name="plans-and-billing-for-azure-scheduler"></a>Plany i rozliczanie dla usługi Azure Scheduler
+
+> [!IMPORTANT]
+> [Usługa Azure Logic Apps](../logic-apps/logic-apps-overview.md) zastępuje usługi Azure Scheduler, która zostanie wycofana. Aby zaplanować prace, [zamiast tego spróbuj wykonać usługi Azure Logic Apps](../scheduler/migrate-from-scheduler-to-logic-apps.md). 
+
 ## <a name="job-collection-plans"></a>Plany kolekcji zadań
-Kolekcje zadań to płatne jednostki w usłudze Azure Scheduler. Kolekcje zadań zawierają liczbę zadań i są dostępne w trzech planów — Standard, P10 Premium i P20 Premium —, które są opisane poniżej.
 
-| **Planu kolekcji zadań** | **Maksymalna liczba zadań na kolekcję zadań** | **Maks. cykl** | **Kolekcje zadań Max na subskrypcję** | **Limity** |
+W usłudze Azure Scheduler kolekcja zadań zawiera określoną liczbę zadań. Kolekcja zadań jest płatna jednostka i jest dostępna w planach Standard, P10 Premium i P20 Premium, które są opisane poniżej: 
+
+| Planu kolekcji zadań | Maksymalna liczba zadań na kolekcję | Maks. cykl | Maksymalna liczba kolekcji zadań na subskrypcję | Limity | 
 |:--- |:--- |:--- |:--- |:--- |
-| **Standardowa** |50 zadań na kolekcję zadań |Raz na minutę. Nie można wykonać zadania częściej niż raz na minutę |Subskrypcja jest dozwolony do 100 kolekcji zadań standardowe |Dostęp do pełny zestaw funkcji usługi Scheduler |
-| **P10 Premium** |50 zadań na kolekcję zadań |Raz na minutę. Nie można wykonać zadania częściej niż raz na minutę |Subskrypcja jest dozwolony do 10 000 kolekcji zadań P10 Premium. <a href="mailto:wapteams@microsoft.com">Skontaktuj się z nami</a> Aby uzyskać więcej informacji. |Dostęp do pełny zestaw funkcji usługi Scheduler |
-| **P20 Premium** |1000 zadań na kolekcję zadań |Raz na minutę. Nie można wykonać zadania częściej niż raz na minutę |Subskrypcja jest dozwolony do 10 000 kolekcji zadań P20 Premium. <a href="mailto:wapteams@microsoft.com">Skontaktuj się z nami</a> Aby uzyskać więcej informacji. |Dostęp do pełny zestaw funkcji usługi Scheduler |
-
-## <a name="upgrades-and-downgrades-of-job-collection-plans"></a>Uaktualnienia i zmiany na starszą wersję plany kolekcji zadań
-Może uaktualnić lub obniżyć wersję planu kolekcji zadań w dowolnym czasie między planami Standard, P10 Premium i P20 Premium.
-
-## <a name="billing-and-azure-plans"></a>Pomoc dotycząca rozliczeń i Azure plany
-Jeśli masz więcej niż 100 kolekcji zadań standard (10 standardowych jednostek rozliczeniowych), to lepszą ofertę, aby wszystkie kolekcje zadań w plan w warstwie premium.
-
-Jeśli masz jedną kolekcję zadań standard i premium jednej kolekcji zadań są rozliczane co standardowa jednostka rozliczeniowa *i* jednej jednostki do rozliczeń — wersja premium. W ramach usługi Scheduler na podstawie liczby kolekcji zadań, które są ustawione na standardowy lub premium; jest to wyjaśnione bardziej szczegółowo w dwóch następnych sekcjach.
-
-## <a name="standard-billable-units"></a>Standardowe jednostki do rozliczenia
-Standardowa naliczaną na jednostkę płatną może zawierać maksymalnie 10 kolekcji zadań standardowych. Ponieważ kolekcja zadań standardowych mogą mieć maksymalnie 50 zadań na kolekcji zadań, co standardowa jednostka rozliczeniowa umożliwia subskrypcji można mieć maksymalnie 500 zadania — maksymalnie prawie 22 milionom osób wykonań zadań miesięcznie.
-
-Jeśli między 1 a 10 kolekcji zadań standardowa, opłata jest naliczana dla jednego standardowa jednostka rozliczeniowa. Jeśli masz między 11 i kolekcje 20 standardowych zadań, opłata jest naliczana dla dwóch standardowych jednostek rozliczeniowych. Jeśli od 21 do kolekcji 30 zadań standardowa, opłata jest naliczana dla trzech standardowych jednostek rozliczeniowych i tak dalej.
-
-## <a name="p10-premium-billable-units"></a>P10 Jednostki do rozliczenia — wersja Premium
-P10 premium naliczaną na jednostkę płatną, może zawierać maksymalnie 10 000 kolekcji zadań — wersja premium P10. Ponieważ kolekcja zadań P10 premium mogą mieć maksymalnie 50 zadań na kolekcji zadań, co jednostka rozliczeniowa — wersja premium umożliwia subskrypcji można mieć maksymalnie 500 000 zadania — maksymalnie prawie 22 MLD wykonań zadań miesięcznie.
-
-Jeśli wynosi od 1 do 10 000 kolekcji zadań — wersja premium, opłata jest naliczana dla jednej jednostki rozliczeń — wersja premium P10. Jeśli masz między 10,001 i premium 20 000 kolekcji zadań, zostanie naliczona opłata za 2 jednostki rozliczeń — wersja premium P10 i tak dalej.
-
-W związku z tym kolekcje zadań w warstwie premium P10 mają taką samą funkcjonalność jak kolekcji standardowych zadań, ale zapewnia podział cen, w przypadku, gdy aplikacja wymaga wielu kolekcji zadań.
-
-## <a name="p20-premium-billable-units"></a>P20 Jednostki do rozliczenia — wersja Premium
-Jednostka płatnych premium P20 może zawierać maksymalnie 5000 kolekcji zadań — wersja premium P20. Ponieważ kolekcja zadań premium P20 mogą mieć maksymalnie 1000 zadań na kolekcji zadań, co jednostka rozliczeniowa — wersja premium umożliwia subskrypcji można mieć maksymalnie 5 000 000 zadania — maksymalnie prawie 220 MLD wykonań zadań miesięcznie.
-
-Kolekcje zadań w warstwie premium p20 zapewnia te same możliwości jak kolekcje zadań w warstwie premium P10, ale obsługuje również większa liczba zadań na kolekcji zadań i większą łączną liczbę zadań ogólny niż premium P10, co umożliwia większą skalowalność.
-
-## <a name="billing-and-active-status"></a>Stan rozliczeń i aktywne
-Kolekcje zadań są zawsze aktywne, chyba że cały subskrypcji włożono w niektórych tymczasowa wyłączone z powodu problemów z rozliczeniami. Jest jedynym sposobem, aby upewnić się, że kolekcja zadań nie są naliczane za można usunąć kolekcji zadań.
-
-Mimo że można wyłączyć wszystkie zadania w obrębie kolekcji zadań w ramach jednej operacji, nie powoduje zmiany rozliczeń stan kolekcji zadań — kolekcja zadań będzie *nadal* jest naliczana. Podobnie kolekcji zadań puste są traktowane jako aktywny i będą naliczane.
+| **Standardowa** | 50 zadań na kolekcję | Jeden na minutę. Nie można uruchomić zadania częściej niż jeden raz na minutę. | Każda subskrypcja platformy Azure może mieć maksymalnie 100 kolekcji zadań standardowych. | Dostęp do usługi Scheduler pełny zestaw funkcji | 
+| **P10 Premium** | 50 zadań na kolekcję | Jeden na minutę. Nie można uruchomić zadania częściej niż jeden raz na minutę. | Każda subskrypcja platformy Azure może mieć maksymalnie 10 000 kolekcji zadań P10 Premium. Aby uzyskać więcej kolekcji <a href="mailto:wapteams@microsoft.com">skontaktuj się z nami</a>. | Dostęp do usługi Scheduler pełny zestaw funkcji |
+| **P20 Premium** | 1000 zadań na kolekcję | Jeden na minutę. Nie można uruchomić zadania częściej niż jeden raz na minutę. | Każda subskrypcja platformy Azure może mieć maksymalnie 5000 kolekcji zadań P20 Premium. Aby uzyskać więcej kolekcji <a href="mailto:wapteams@microsoft.com">skontaktuj się z nami</a>. | Dostęp do usługi Scheduler pełny zestaw funkcji |
+|||||| 
 
 ## <a name="pricing"></a>Cennik
+
 Aby uzyskać szczegółowe informacje o cenach, zobacz [cennik usługi Scheduler](https://azure.microsoft.com/pricing/details/scheduler/).
 
-## <a name="see-also"></a>Zobacz też
- [Co to jest Scheduler?](scheduler-intro.md)
+## <a name="upgrade-or-downgrade-plans"></a>Uaktualnić lub obniżyć jej poziom plany
 
- [Pojęcia i terminologia dotyczące usługi Azure Scheduler oraz hierarchia jednostek](scheduler-concepts-terms.md)
+W dowolnym momencie można uaktualnić lub obniżyć wersję planu kolekcji zadań w planach Standard, P10 Premium i P20 Premium.
 
- [Rozpoczynanie pracy z usługą Scheduler w witrynie Azure Portal](scheduler-get-started-portal.md)
+## <a name="active-status-and-billing"></a>Stan aktywny i rozliczenia
 
- [Dokumentacja interfejsu API REST usługi Azure Scheduler](https://msdn.microsoft.com/library/mt629143)
+Kolekcje zadań są zawsze aktywne, chyba że subskrypcji platformy Azure z całego przechodzi w stan tymczasowy wyłączone z powodu problemów z rozliczeniami. I mimo że można ją wyłączyć wszystkie zadania w kolekcji zadań, za pomocą jednej operacji i tej akcji nie zmienia stan rozliczeń kolekcji zadań, aby kolekcja zadań jest *nadal* rozliczane. Kolekcje zadań puste są traktowane jako aktywny i są rozliczane.
 
- [Dokumentacja poleceń cmdlet programu PowerShell dla usługi Azure Scheduler](scheduler-powershell-reference.md)
+Aby upewnić się, że kolekcja zadań nie są naliczane, należy usunąć tę kolekcję zadań.
 
- [Wysoka dostępność i niezawodność usługi Azure Scheduler](scheduler-high-availability-reliability.md)
+## <a name="standard-billable-units"></a>Standardowe jednostki do rozliczenia
 
- [Limity, wartości domyślne i kody błędów usługi Azure Scheduler](scheduler-limits-defaults-errors.md)
+Jednostka standardowego płatnych może mieć maksymalnie 10 kolekcji zadań standardowych. Ponieważ kolekcja zadań standardowych mogą mieć maksymalnie 50 zadań na kolekcję, co standardowa jednostka rozliczeniowa umożliwia Twojej subskrypcji platformy Azure, zawierać maksymalnie 500 zadań lub maksymalnie prawie 22 *mln* zadania do wykonania na miesiąc. Ta lista wyjaśniono, jak są naliczane za oparte na różne liczby kolekcji standardowych zadań:
 
- [Uwierzytelnianie połączeń wychodzących usługi Azure Scheduler](scheduler-outbound-authentication.md)
+* Jeśli masz zakresu od 1 do kolekcji 10 standardowych zadań naliczane standardowe jednostki rozliczeń. 
 
+* Jeśli masz między 11 i kolekcje 20 standardowych zadań, naliczane dla dwóch standardowych jednostek rozliczeniowych. 
+
+* Jeśli masz od 21 do kolekcji 30 standardowych zadań, opłaty są naliczane dla trzech standardowych jednostek rozliczeniowych i tak dalej.
+
+## <a name="p10-premium-billable-units"></a>Jednostki do rozliczenia — wersja premium P10
+
+P10 premium naliczaną na jednostkę płatną, może mieć maksymalnie 10 000 kolekcji zadań P10 Premium. Ponieważ kolekcja zadań P10 Premium mogą mieć maksymalnie 50 zadań na kolekcję, jedną jednostką rozliczeniową P10 premium umożliwia Twojej subskrypcji platformy Azure, zawierać maksymalnie 500 000 zadań lub maksymalnie prawie 22 *MLD* zadania do wykonania na miesiąc. 
+
+Kolekcje zadań P10 Premium zapewniają takie same możliwości jak kolekcji standardowych zadań, ale oferują podziału ceny dla aplikacji, które wymagają wielu kolekcji zadań i zapewnia lepszą skalowalność. Ta lista wyjaśniono, jak są naliczane za oparte na różne liczby kolekcji zadań P10 Premium:
+
+* Jeśli wynosi od 1 do 10 000 kolekcji zadań P10 Premium, naliczane dla jednej jednostki rozliczeń — wersja premium P10. 
+
+* Jeśli masz między 10,001 i 20 000 kolekcji zadań P10 Premium opłaty są naliczane za 2 jednostki rozliczeń — wersja premium P10 i tak dalej.
+
+## <a name="p20-premium-billable-units"></a>Jednostki do rozliczenia — wersja premium p20
+
+Jednostka płatnych premium P20 może mieć maksymalnie 5000 kolekcji zadań P20 Premium. Ponieważ kolekcja zadań P20 Premium mogą mieć maksymalnie 1000 zadań na kolekcji zadań, co jednostka rozliczeniowa premium P20 umożliwia Twojej subskrypcji platformy Azure, mieć do 5 000 000 zadań lub do niemal 220 *MLD* zadania do wykonania na miesiąc.
+
+Kolekcje zadań p20 Premium zapewnia te same możliwości jak kolekcje zadań P10 Premium, ale również obsługiwać większą liczbę zadań na kolekcję i większą łączną liczbę zadań ogólny niż Premium P10, zapewniając lepszą skalowalność.
+
+## <a name="plan-comparison"></a>Porównanie planów
+
+* Jeśli masz więcej niż 100 kolekcji zadań Standard (10 standardowych jednostek rozliczeniowych), można uzyskać lepszą ofertę przez wszystkie kolekcje zadań w ramach planu Premium.
+
+* Jeśli masz jedną kolekcję standardowych zadań i jedna kolekcja zadań — wersja Premium, a następnie opłaty są naliczane standardowe jednostki rozliczeń *i* jednej jednostki do rozliczeń — wersja premium.
+
+  Rachunki usługi Scheduler na podstawie liczby kolekcji aktywnego zadania, które są standardowa lub premium.
+
+## <a name="see-also"></a>Zobacz także
+
+* [Co to jest usługa Azure Scheduler?](scheduler-intro.md)
+* [Pojęcia i terminologia dotyczące usługi Azure Scheduler oraz hierarchia jednostek](scheduler-concepts-terms.md)
+* [Limity, wartości domyślne i kody błędów usługi Azure Scheduler](scheduler-limits-defaults-errors.md)

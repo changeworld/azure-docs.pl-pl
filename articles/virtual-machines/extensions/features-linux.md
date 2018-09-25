@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: e172b9d6a59f14f741a09450d31602b0d2d9ee5a
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 66c3da4f14141bdb5c357dbabfaec5dabf0ab521
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412631"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971386"
 ---
 # <a name="virtual-machine-extensions-and-features-for-linux"></a>Rozszerzenia maszyn wirtualnych i funkcji dla systemu Linux
 
@@ -83,7 +83,7 @@ Rozszerzenia maszyn wirtualnych platformy Azure, uruchom na istniejących maszyn
 
 Następujące metody może służyć do uruchamiania rozszerzenie istniejącej maszyny Wirtualnej.
 
-### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
+### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
 Rozszerzenia maszyn wirtualnych platformy Azure mogą być uruchamiane względem istniejącej maszyny Wirtualnej za pomocą [zestaw rozszerzeń maszyn wirtualnych az](/cli/azure/vm/extension#az-vm-extension-set) polecenia. W poniższym przykładzie uruchamiane rozszerzenie niestandardowego skryptu dla maszyny Wirtualnej o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup*:
 

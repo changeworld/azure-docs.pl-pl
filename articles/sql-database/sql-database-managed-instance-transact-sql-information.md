@@ -10,16 +10,16 @@ ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: jovanpop
 manager: craigg
-ms.openlocfilehash: 73e046c153af5c69ab343a90d1f9027b84b4deb1
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: c23fbf0af7d1a15b0efee8af123150feb42c708e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498457"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966910"
 ---
 # <a name="azure-sql-database-managed-instance-t-sql-differences-from-sql-server"></a>Różnice w usługi Azure SQL Database zarządzane wystąpienia języka T-SQL z programu SQL Server 
 
-Wystąpienie usługi Azure SQL Database Managed (wersja zapoznawcza) zapewnia wysoką zgodność z aparatem bazy danych serwera SQL w środowisku lokalnym. Większość funkcji aparatu bazy danych programu SQL Server są obsługiwane w wystąpieniu zarządzanym. Ponieważ nadal istnieją pewne różnice w składnią i zachowaniem, ten artykuł zawiera podsumowanie i opisano te różnice.
+Wystąpienie usługi Azure SQL Database Managed zapewnia wysoką zgodność z aparatem bazy danych serwera SQL w środowisku lokalnym. Większość funkcji aparatu bazy danych programu SQL Server są obsługiwane w wystąpieniu zarządzanym. Ponieważ nadal istnieją pewne różnice w składnią i zachowaniem, ten artykuł zawiera podsumowanie i opisano te różnice.
  - [Różnice w języku T-SQL i nieobsługiwane funkcje](#Differences)
  - [Funkcje, które mają różne zachowanie w wystąpieniu zarządzanym](#Changes)
  - [Tymczasowe ograniczenia i znane problemy](#Issues)
@@ -89,7 +89,7 @@ Wystąpienia zarządzanego nie można uzyskać dostępu udziałów plików i fol
  
 ### <a name="certificates"></a>Certyfikaty 
 
-Wystąpienia zarządzanego nie można uzyskać dostępu udziałów plików i folderów Windows, więc obowiązują następujące ograniczenia: 
+Wystąpienie zarządzane nie może uzyskiwać dostępu do udziałów plików i folderów systemu Windows, dlatego obowiązują następujące ograniczenia: 
 - `CREATE FROM`/`BACKUP TO` plik nie jest obsługiwany w przypadku certyfikatów
 - `CREATE`/`BACKUP` certyfikat od `FILE` / `ASSEMBLY` nie jest obsługiwane. Nie można użyć plików kluczy prywatnych.  
  
@@ -106,7 +106,7 @@ WITH PRIVATE KEY ( <private_key_options> )
  
 ### <a name="clr"></a>CLR 
 
-Wystąpienia zarządzanego nie można uzyskać dostępu udziałów plików i folderów Windows, więc obowiązują następujące ograniczenia: 
+Wystąpienie zarządzane nie może uzyskiwać dostępu do udziałów plików i folderów systemu Windows, dlatego obowiązują następujące ograniczenia: 
 - Tylko `CREATE ASSEMBLY FROM BINARY` jest obsługiwana. Zobacz [tworzenia zestawu z danych](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).  
 - `CREATE ASSEMBLY FROM FILE` nie jest obsługiwane. Zobacz [tworzenie zestawów z pliku](https://docs.microsoft.com/sql/t-sql/statements/create-assembly-transact-sql).
 - `ALTER ASSEMBLY` Nie można odwoływać się do plików. Zobacz [zmiana zestawu](https://docs.microsoft.com/sql/t-sql/statements/alter-assembly-transact-sql).
@@ -415,15 +415,58 @@ Upewnij się, usunięcie wiodących `?` z klucza sygnatury dostępu Współdziel
 
 SQL Server Management Studio i SQL Server Data Tools, może być pewne problemy podczas uzyskiwania dostępu do wystąpienia zarządzanego. Wszystkie problemy narzędzia zostaną rozwiązane przed ogólnie dostępne.
 
-### <a name="incorrect-database-names"></a>Nazwy niepoprawne baz danych
+### <a name="incorrect-database-names-in-some-views-logs-and-messages"></a>Nieprawidłowa baza danych nazw w niektórych widoków, dzienników i komunikatów
 
-Wystąpienie zarządzane może wyświetlać wartość identyfikatora guid, zamiast nazwy bazy danych, podczas przywracania lub niektóre komunikaty o błędach. Te problemy zostaną poprawione przed ogólnie dostępne.
+Kilka widoków systemowych, liczniki wydajności, komunikaty o błędach, XEvents i wpisów dziennika błędów Wyświetl identyfikator GUID identyfikatory bazy danych zamiast nazwy bazy danych. Nie należy polegać na tych identyfikatorów GUID, ponieważ ich zostanie zamienione nazwy bazy danych w przyszłości.
 
 ### <a name="database-mail-profile"></a>Profil poczty bazy danych
 Może istnieć tylko jedna baza danych profilu poczty i musi zostać wywołana `AzureManagedInstance_dbmail_profile`. To tymczasowe ograniczenie, które zostaną wkrótce usunięte.
+
+### <a name="error-logs-are-not-persisted"></a>Dzienniki błędów są utrwalane nie
+Dzienniki błędów, które są dostępne w przypadku wystąpienia zarządzanego nie są zachowywane, a ich rozmiar jest niedostępna w limit maksymalnego rozmiaru magazynu. Dzienniki błędów może automatycznie usuwane w przypadku pracy awaryjnej.
+
+### <a name="error-logs-are-verbose"></a>Dzienniki błędów są pełne
+Wystąpienie zarządzane umieszcza pełne informacje w dziennikach błędów i wiele z nich nie są istotne. W przyszłości będzie można zmniejszyć ilość informacji w dziennikach błędów.
+
+**Obejście**: niestandardowe procedury do odczytywania dzienników błędów, które filtru w poziomie niektóre-odpowiednie wpisy. Aby uzyskać więcej informacji, zobacz [DB wystąpienia zarządzanego Azure SQL — sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/).
+
+### <a name="transaction-scope-on-two-databases-within-the-same-instance-is-not-supported"></a>Zakres transakcji na dwie bazy danych w ramach tego samego wystąpienia nie jest obsługiwana.
+`TransactionScope` Klasa na platformie .net nie działa, jeśli dwa zapytania są wysyłane do dwóch baz danych w ramach tego samego wystąpienia w ramach tego samego zakresu transakcji:
+
+```C#
+using (var scope = new TransactionScope())
+{
+    using (var conn1 = new SqlConnection("Server=quickstartbmi.neu15011648751ff.database.windows.net;Database=b;User ID=myuser;Password=mypassword;Encrypt=true"))
+    {
+        conn1.Open();
+        SqlCommand cmd1 = conn1.CreateCommand();
+        cmd1.CommandText = string.Format("insert into T1 values(1)");
+        cmd1.ExecuteNonQuery();
+    }
+
+    using (var conn2 = new SqlConnection("Server=quickstartbmi.neu15011648751ff.database.windows.net;Database=b;User ID=myuser;Password=mypassword;Encrypt=true"))
+    {
+        conn2.Open();
+        var cmd2 = conn2.CreateCommand();
+        cmd2.CommandText = string.Format("insert into b.dbo.T2 values(2)");        cmd2.ExecuteNonQuery();
+    }
+
+    scope.Complete();
+}
+
+```
+
+Mimo że ten kod działa z danymi w ramach tego samego wystąpienia wymagane usługi MSDTC.
+
+**Obejście**: Użyj [SqlConnection.ChangeDatabase(String)](https://docs.microsoft.com/dotnet/api/system.data.sqlclient.sqlconnection.changedatabase) używać innej bazy danych w kontekście połączenia, zamiast korzystać z dwóch połączeń.
+
+### <a name="clr-modules-and-linked-servers-sometime-cannot-reference-local-ip-address"></a>Moduły środowiska CLR i połączone serwery jakiś czas nie mogą odwoływać się lokalny adres IP
+Moduły środowiska CLR, znajduje się w wystąpieniu zarządzanym i połączonych serwerów/rozproszonych zapytań, które odwołują się do pewnego czasu bieżącego wystąpienia nie można rozpoznać adresu IP lokalnego wystąpienia. Jest to błąd przejściowy.
+
+**Obejście**: Użyj połączenia kontekstu w module środowiska CLR, jeśli to możliwe.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać szczegółowe informacje o wystąpieniu zarządzanym, zobacz [co to jest wystąpienie zarządzane?](sql-database-managed-instance.md)
 - Dla funkcji i listy porównanie, zobacz [typowe funkcje SQL](sql-database-features.md).
-- Aby uzyskać samouczek omawiający Tworzenie nowego wystąpienia zarządzanego, zobacz [tworzenia wystąpienia zarządzanego](sql-database-managed-instance-get-started.md).
+- Aby uzyskać szybki start omawiający Tworzenie nowego wystąpienia zarządzanego, zobacz [tworzenia wystąpienia zarządzanego](sql-database-managed-instance-get-started.md).

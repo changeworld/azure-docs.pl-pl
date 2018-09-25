@@ -11,14 +11,17 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: a68e7cfe2966592861f3fb58c99327c5849a6004
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 6b5a45bfcfc02c6b313e868fb3ba037ce3ba48c9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721606"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967578"
 ---
 # <a name="mobile-apps-bindings-for-azure-functions"></a>Powiązania funkcji Mobile Apps dla usługi Azure Functions 
+
+> [!NOTE]
+> Powiązania funkcji Mobile Apps usługi Azure są dostępne tylko dla usługi Azure Functions 1.x. Nie są obsługiwane w usłudze Azure Functions 2.x.
 
 W tym artykule wyjaśniono, jak pracować z [usługi Azure Mobile Apps](../app-service-mobile/app-service-mobile-value-prop.md) powiązań w usłudze Azure Functions. Usługi Azure Functions obsługuje danych wejściowych i wyjściowych powiązania funkcji Mobile Apps.
 
@@ -31,12 +34,6 @@ Powiązania funkcji Mobile Apps pozwalają na odczytywanie i aktualizowanie tabe
 Powiązania funkcji Mobile Apps znajdują się w [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) pakietu NuGet w wersji 1.x. Kod źródłowy dla pakietu znajduje się w [zestawu sdk rozszerzenia, usługi azure webjobs w-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/v2.x/src/WebJobs.Extensions.MobileApps/) repozytorium GitHub.
 
 [!INCLUDE [functions-package](../../includes/functions-package.md)]
-
-## <a name="packages---functions-2x"></a>Pakiety — funkcje 2.x
-
-Powiązania funkcji Mobile Apps znajdują się w [Microsoft.Azure.WebJobs.Extensions.MobileApps](http://www.nuget.org/packages/Microsoft.Azure.WebJobs.Extensions.MobileApps) pakietu NuGet w wersji 3.x. Kod źródłowy dla pakietu znajduje się w [zestawu sdk rozszerzenia, usługi azure webjobs w-](https://github.com/Azure/azure-webjobs-sdk-extensions/blob/master/src/WebJobs.Extensions.MobileApps/) repozytorium GitHub.
-
-[!INCLUDE [functions-package-v2](../../includes/functions-package-v2.md)]
 
 ## <a name="input"></a>Dane wejściowe
 

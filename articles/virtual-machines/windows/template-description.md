@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/18/2017
 ms.author: cynthn
-ms.openlocfilehash: 18a9709893533c2c0b606077a126437282f9195e
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: eb88501c5daf0b79d22f4407a372c4606a173db1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "42060824"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987700"
 ---
 # <a name="virtual-machines-in-an-azure-resource-manager-template"></a>Maszyny wirtualne w szablonie usługi Azure Resource Manager
 
@@ -164,7 +164,7 @@ Użyj tych możliwości w celu uzyskania najnowszej wersji interfejsu API:
 
 - Interfejs API REST — [listy wszystkich dostawców zasobów](https://docs.microsoft.com/rest/api/resources/providers#Providers_List)
 - PowerShell - [Get-AzureRmResourceProvider](/powershell/module/azurerm.resources/get-azurermresourceprovider)
-- Azure CLI 2.0 — [az provider show](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
+- Interfejs wiersza polecenia Azure - [az provider show](https://docs.microsoft.com/cli/azure/provider#az_provider_show)
 
 ## <a name="parameters-and-variables"></a>Parametry i zmienne
 
@@ -442,7 +442,7 @@ Można wyświetlić stan zainstalowanych rozszerzeń z ustawień rozszerzenia w 
 
 ![Pobierz stan rozszerzenia](./media/template-description/virtual-machines-show-extensions.png)
 
-Można również uzyskać informacji o rozszerzeniu za pomocą **Get-AzureRmVMExtension** polecenia programu PowerShell **get rozszerzenia maszyny wirtualnej** polecenia interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub **uzyskiwanie informacji o rozszerzeniu** INTERFEJS API REST.
+Można również uzyskać informacji o rozszerzeniu za pomocą **Get-AzureRmVMExtension** polecenia programu PowerShell **get rozszerzenia maszyny wirtualnej** polecenia wiersza polecenia platformy Azure lub **uzyskiwanie informacji o rozszerzeniu**Interfejsu API REST.
 
 ## <a name="deployments"></a>Wdrożenia
 

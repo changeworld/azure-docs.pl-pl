@@ -1,5 +1,5 @@
 ---
-title: Zależności śledzenia w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
+title: Zależność śledzenia w usłudze Azure Application Insights | Dokumentacja firmy Microsoft
 description: Analizowanie użycia, dostępności i wydajności aplikacji lokalnej lub aplikacji internetowej na platformie Microsoft Azure za pomocą usługi Application Insights.
 services: application-insights
 documentationcenter: .net
@@ -13,129 +13,129 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.author: mbullwin
-ms.openlocfilehash: f2ebd2a021d3803b6e3f7d805b9253d181cb16c3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: f1a1c0bd759a88b2e84584f1d52458ac6f56d97f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35293643"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46999706"
 ---
-# <a name="set-up-application-insights-dependency-tracking"></a>Skonfiguruj usługę Application Insights: Śledzenie zależności
-A *zależności* jest składnik zewnętrzny, który jest wywoływany przez aplikację. Usługa ta jest zazwyczaj wywoływana przy użyciu protokołu HTTP, lub bazy danych lub systemu plików. [Usługa Application Insights](app-insights-overview.md) mierzy czas oczekiwania zależności aplikacji i jak często wywołanie zależności nie powiedzie się. Zbadaj określonych wywołań i dotyczą żądań i wyjątki.
+# <a name="set-up-application-insights-dependency-tracking"></a>Konfigurowanie usługi Application Insights: Śledzenie zależności
+A *zależności* jest składnik zewnętrzny, która jest wywoływana przez aplikację. Zazwyczaj jest wywoływany przy użyciu protokołu HTTP lub bazy danych lub systemu plików usługi. [Usługa Application Insights](app-insights-overview.md) mierzy czas oczekiwania zależności aplikacji i jak często wywołanie zależności nie powiedzie się. Można zbadać określonych wywołań i dotyczą żądań i wyjątków.
 
 ![przykładowe wykresy](./media/app-insights-asp-net-dependencies/10-intro.png)
 
-Monitor zależności poza pole raportów obecnie wywołań do tych typów zależności:
+Monitor zależności poza pole zgłasza aktualnie wywołań do tych typów zależności:
 
 * Serwer
   * Bazy danych SQL
-  * Sieci web ASP.NET i usługi WCF, które używają powiązania oparte na protokole HTTP
-  * Lokalne lub zdalne wywołania HTTP
-  * Azure DB rozwiązania Cosmos, tabeli magazynu obiektów blob i kolejki
+  * Sieci web platformy ASP.NET i usługi WCF, które korzystają z powiązań oparty na protokole HTTP
+  * Lokalnych lub zdalnych połączeń HTTP
+  * Usługa Azure Cosmos DB, tabeli, magazynu obiektów blob i kolejki
 * Strony sieci Web
   * Wywołania AJAX
 
-Monitorowanie działania za pomocą [Instrumentacji kodu bajtów](https://msdn.microsoft.com/library/z9z62c29.aspx) wokół wybrane metody zostaną usunięte. Obciążenie jest minimalne.
+Monitorowanie działania z zastosowaniem [Instrumentacji kodu bajtów](https://msdn.microsoft.com/library/z9z62c29.aspx) wokół wybranych metod. Obciążenie jest minimalne.
 
-Można również napisać własny wywołania SDK do monitorowania innych zależności, zarówno w kodzie klienta i serwera przy użyciu [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency).
+Można również napisać własne wywołania SDK, aby monitorować inne zależności, zarówno w kodzie klienta i serwera przy użyciu [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency).
 
 ## <a name="set-up-dependency-monitoring"></a>Konfigurowanie monitorowania zależności
-Informacje o zależnościach częściowe są zbierane automatycznie przez [zestaw SDK usługi Application Insights](app-insights-asp-net.md). Aby uzyskać pełne dane, zainstalowanie odpowiedniego agenta dla serwera hosta.
+Informacje o zależnościach częściowe są zbierane automatycznie przez [zestawu SDK usługi Application Insights](app-insights-asp-net.md). Aby uzyskać kompletne dane, zainstaluj odpowiedniego agenta dla serwera hosta.
 
 | Platforma | Instalowanie |
 | --- | --- |
-| Serwer usług IIS |Albo [Zainstaluj Monitor stanu na serwerze](app-insights-monitor-performance-live-website-now.md) lub [uaktualnić aplikacji .NET Framework 4.6 lub nowszy](http://go.microsoft.com/fwlink/?LinkId=528259) i zainstaluj [zestaw SDK usługi Application Insights](app-insights-asp-net.md) w aplikacji. |
-| Aplikacja sieci Web platformy Azure |W Panelu sterowania aplikacji sieci web [otwarcie bloku usługi Application Insights w Panelu sterowania aplikacji sieci web](app-insights-azure-web-apps.md) i wybierz opcję instalacji, jeśli zostanie wyświetlony monit. |
-| Usługi w chmurze Azure |[Zadanie uruchamiania użyj](app-insights-cloudservices.md) lub [zainstalowania środowiska .NET framework 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
+| Serwer usług IIS |Albo [Zainstaluj Monitor stanu na serwerze](app-insights-monitor-performance-live-website-now.md) lub [uaktualnić aplikację .NET Framework 4.6 lub nowszy](http://go.microsoft.com/fwlink/?LinkId=528259) i zainstaluj [zestawu SDK usługi Application Insights](app-insights-asp-net.md) w swojej aplikacji. |
+| Aplikacja sieci Web platformy Azure |W Panelu sterowania aplikacji sieci web [otworzyć bloku usługi Application Insights w Panelu sterowania aplikacji sieci web](app-insights-azure-web-apps.md) i wybierz opcję instalacji, jeśli zostanie wyświetlony monit. |
+| Usługa w chmurze platformy Azure |[Zadanie uruchamiania użyj](app-insights-cloudservices.md) lub [Instalowanie programu .NET framework 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
 
-## <a name="where-to-find-dependency-data"></a>Gdzie można znaleźć danych zależności
-* [Mapowanie aplikacji](#application-map) wizualizuje zależności między aplikacji i składników sąsiednich.
-* [Bloki wydajności, przeglądarki oraz Niepowodzenie](#performance-and-blades) przedstawiono dane zależności serwera.
-* [Blok przeglądarki](#ajax-calls) pokazuje wywołania AJAX z przeglądarki użytkownika.
-* [Kliknij go, z powolnym działaniem lub nieudanych żądań](#diagnose-slow-requests) do sprawdzania ich zależności wywołania.
-* [Analiza](#analytics) można wykonać zapytania o dane zależności.
+## <a name="where-to-find-dependency-data"></a>Gdzie można znaleźć dane zależności
+* [Mapa aplikacji](#application-map) wizualizuje zależności między aplikacji i składników sąsiednich.
+* [Wydajność, przeglądarki i błędów bloków](#performance-and-blades) Pokaż dane zależności serwera.
+* [Blok przeglądarki](#ajax-calls) przedstawia wywołania AJAX z przeglądarek użytkowników.
+* [Przejść przez wolne lub zakończone niepowodzeniem żądania](#diagnose-slow-requests) do sprawdzenia ich zależności wywołań.
+* [Analiza](#analytics) może służyć do zależności zapytania o dane.
 
 ## <a name="application-map"></a>Mapa aplikacji
-Mapowanie aplikacji działa jako pomoc wizualną odnajdywanie zależności między składnikami aplikacji. Jest automatycznie generowany na podstawie danych telemetrycznych z aplikacji. Ten przykład przedstawia wywołania AJAX ze skryptów przeglądarki i wywołania REST z aplikacji serwera do dwóch usług zewnętrznych.
+Mapa aplikacji działa jako pomoc wizualną odnajdywanie zależności między składnikami aplikacji. Jest automatycznie generowany na podstawie danych telemetrycznych z Twojej aplikacji. Ten przykład przedstawia wywołania AJAX ze skryptów przeglądarki i wywołania REST z aplikacji serwera, z dwoma usługami zewnętrznymi.
 
 ![Mapa aplikacji](./media/app-insights-asp-net-dependencies/08.png)
 
-* **Przejdź z pól** do odpowiednich zależności i innych wykresów.
-* **Przypnij mapę** do [pulpitu nawigacyjnego](app-insights-dashboards.md), gdzie będzie pełną funkcjonalność.
+* **Przejdź z pól** odpowiednie zależności i inne wykresy.
+* **Przypnij mapę** do [pulpit nawigacyjny](app-insights-dashboards.md), gdzie będzie można w pełni funkcjonalne.
 
 [Dowiedz się więcej](app-insights-app-map.md).
 
-## <a name="performance-and-failure-blades"></a>Wydajność i niepowodzenie bloków
-Blok wydajności przedstawia czas trwania wywołania zależności za pomocą aplikacji serwera. Brak podsumowania wykres i tabelę segmentowanych przez wywołanie.
+## <a name="performance-and-failure-blades"></a>Bloki wydajności i błędów
+Blok wydajność pokazuje czas trwania wywołania zależności za pomocą aplikacji serwera. Brak podsumowania wykres i tabelę segmentowanych przez wywołanie.
 
 ![Wykresy zależności bloku wydajności](./media/app-insights-asp-net-dependencies/dependencies-in-performance-blade.png)
 
-Kliknij wykresy podsumowań lub elementów tabeli wyszukiwania raw wystąpień tych wywołań.
+Klikaj elementy wykresów podsumowujących lub elementy tabeli wyszukiwania pierwotne wystąpień tych wywołań.
 
-![Wystąpienia wywołanie zależności](./media/app-insights-asp-net-dependencies/dependency-call-instance.png)
+![Wystąpienia wywołania zależności](./media/app-insights-asp-net-dependencies/dependency-call-instance.png)
 
-**Liczba awarii** są wyświetlane na **błędów** bloku. Błąd jest kod powrotny, który nie znajduje się w zakresie 200 – 399, lub nieznany.
+**Liczba awarii** są wyświetlane w **błędy** bloku. Błąd jest zwracany kod, który nie znajduje się w zakresie 200-399, lub nieznany.
 
 > [!NOTE]
-> **100% błędów?** -Prawdopodobnie oznacza to są dane z częściowa zależności tylko pierwsze. Musisz [Konfigurowanie zależności monitorowania odpowiednią dla danej platformy](#set-up-dependency-monitoring).
+> **100% niepowodzeń?** -Prawdopodobnie wskazuje tylko otrzymujesz dane częściowe zależności. Musisz [skonfigurować monitorowanie zależności odpowiednie dla danej platformy](#set-up-dependency-monitoring).
 >
 >
 
 ## <a name="ajax-calls"></a>Wywołania AJAX
-Blok przeglądarki przedstawia współczynnik czas trwania i Niepowodzenie wywołania AJAX z [JavaScript na stronach sieci web](app-insights-javascript.md). Są wyświetlane jako zależności.
+Blok przeglądarki przedstawia współczynnik czas trwania i niepowodzeń wywołań AJAX z [JavaScript na stronach sieci web](app-insights-javascript.md). Są one wyświetlane jako zależności.
 
-## <a name="diagnosis"></a> Diagnozowanie powolne żądań
-Każde zdarzenie żądania jest skojarzony z wywołania zależności, wyjątków i inne zdarzenia, które są śledzone podczas przetwarzania żądania aplikacji. Dlatego niektórych żądań są wykonywane nieprawidłowo, można ustalić czy jest ze względu na wolne odpowiedzi z zależności.
+## <a name="diagnosis"></a> Diagnozowanie wolne żądania
+Każde zdarzenie żądania jest skojarzony z wywołania zależności, wyjątki i inne zdarzenia, które są śledzone podczas przetwarzania żądania przez aplikację. Dlatego nieprawidłowo w inny sposób wykonywania niektórych żądań, możesz dowiedzieć się czy jest ono spowodowane powolne odpowiedzi od zależności.
 
-Przejdźmy przykład tego.
+Przejdźmy teraz przez przykład.
 
-### <a name="tracing-from-requests-to-dependencies"></a>Śledzenie żądań zależności
-Otwarcie bloku wydajności i przyjrzyj się siatki żądania:
+### <a name="tracing-from-requests-to-dependencies"></a>Śledzenie za pomocą żądań do zależności
+Otwórz blok wydajność i spójrz na siatce żądań:
 
 ![Lista żądań ze średnimi lub liczby](./media/app-insights-asp-net-dependencies/02-reqs.png)
 
-Elementem najwyższego trwa bardzo długo. Zobaczmy, jeśli firma Microsoft można ustalić, gdzie jest zużywany czas.
+Co najważniejsze trwa bardzo długo. Zobaczmy, jeśli firma Microsoft może Dowiedz się, gdzie jest zużywany.
 
-Kliknij ten wiersz, aby wyświetlić poszczególne żądania zdarzenia:
+Kliknij ten wiersz, aby wyświetlić pojedynczego żądania zdarzenia:
 
-![Lista wystąpień żądania](./media/app-insights-asp-net-dependencies/03-instances.png)
+![Lista wystąpień na żądanie](./media/app-insights-asp-net-dependencies/03-instances.png)
 
-Kliknij pozycję dowolnego wystąpienia długotrwałe, aby sprawdzić dodatkowe, a następnie przewiń w dół do połączenia zdalnego zależności powiązane z tym żądaniem:
+Kliknij dowolne wystąpienie długotrwałych sprawdź go dalej i przewiń w dół do wywołania zdalnej zależności związane z tym żądaniem:
 
-![Znajdź wywołania zależności zdalnych, zidentyfikuj nietypowe czas trwania](./media/app-insights-asp-net-dependencies/04-dependencies.png)
+![Znajdź wywołania zależności zdalnych, identyfikowanie nietypowego czas trwania](./media/app-insights-asp-net-dependencies/04-dependencies.png)
 
-Wygląda jak większość obsługi czasu poświęconego tego żądania podczas wywołania usługi lokalnej.
+Wygląda na to najbardziej obsługi czas, który tego żądania spędzono w wywołaniu do lokalnej usługi.
 
 Wybierz ten wiersz, aby uzyskać więcej informacji:
 
-![Kliknij go, że zdalnego zależności do identyfikowania dziedziczonej z istotnymi elementami](./media/app-insights-asp-net-dependencies/05-detail.png)
+![Klikaj elementy tej zdalnego zależności, aby zidentyfikować Przyczyna nadmiernego](./media/app-insights-asp-net-dependencies/05-detail.png)
 
-Wygląda na to, gdzie jest problem. Firma Microsoft już przeprowadzana na ten problem, więc teraz możemy just należy dowiedzieć się, dlaczego tego wywołania trwa tak długo.
+Wygląda na to, gdzie jest problem. Firma Microsoft została przeprowadzana na ten problem, więc teraz możemy po prostu musisz dowiedzieć się, dlaczego to wywołanie jest trwa tak długo.
 
-### <a name="request-timeline"></a>Oś czasu żądania
-W przypadku różnych nie ma żadnych wywołanie zależności, które są szczególnie długie. Jednak przełączyć do widoku osi czasu, możemy stwierdzić, gdzie wystąpił opóźnienie w naszym wewnętrzne przetwarzanie:
+### <a name="request-timeline"></a>Osi czasu żądania
+W przypadku różnych ma Brak wywołania zależności, który jest wyjątkowo długie. Jednak, przełączając się widok osi czasu, okaże się, gdy opóźnienie podczas naszego wewnętrznego przetwarzania:
 
-![Znajdź wywołania zależności zdalnych, zidentyfikuj nietypowe czas trwania](./media/app-insights-asp-net-dependencies/04-1.png)
+![Znajdź wywołania zależności zdalnych, identyfikowanie nietypowego czas trwania](./media/app-insights-asp-net-dependencies/04-1.png)
 
-Wydaje się duży odstęp po pierwszej zależności wywołać, dlatego należy przyjrzymy się naszego kodu, aby zobaczyć, dlaczego jest.
+Prawdopodobnie duży odstęp po pierwszą zależnością wywołać, więc należy przyjrzymy się naszego kodu, aby zobaczyć, dlaczego jest.
 
 ### <a name="profile-your-live-site"></a>Profil witryny na żywo
 
-Nie wiadomo, gdzie przechodzi czas? [Profilera usługi Application Insights](app-insights-profiler.md) najdłużej trwało śladów HTTP wywołań witryny na żywo i zawiera funkcje, które w kodzie.
+Nie wiadomo, gdzie przejdzie czasu? [Profiler usługi Application Insights](app-insights-profiler.md) ślady protokołu HTTP wywołania witryny na żywo i dowiesz się, jakie funkcje w kodzie trwało najdłużej.
 
 ## <a name="failed-requests"></a>Żądania zakończone niepowodzeniem
-Żądań zakończonych niepowodzeniem może też być skojarzone z niepowodzeniem wywołania zależności. Firma Microsoft ponownie, kliknij go, można wykrywać problem.
+Żądania zakończone niepowodzeniem, może być również skojarzona z zakończonymi niepowodzeniem wywołaniami do zależności. Ponownie firma Microsoft może kliknij, aby śledzić problem.
 
-![Kliknij wykres nieudanych żądań](./media/app-insights-asp-net-dependencies/06-fail.png)
+![Kliknij wykres, żądań zakończonych niepowodzeniem](./media/app-insights-asp-net-dependencies/06-fail.png)
 
-Kliknij, aby wystąpienie nieudanych żądań i przyjrzyj się jego skojarzonego zdarzenia.
+Kliknij, aby wystąpienia żądań zakończonych niepowodzeniem i spójrz na jego powiązanych zdarzeń.
 
-![Kliknij typ żądania, kliknij wystąpienia, aby uzyskać dostęp do innego widoku tego samego wystąpienia, kliknij go, aby uzyskać szczegóły wyjątku.](./media/app-insights-asp-net-dependencies/07-faildetail.png)
+![Kliknij typ żądania, kliknij wystąpienie aby przejść do innego widoku tego samego wystąpienia, kliknij je, aby uzyskać szczegóły wyjątku.](./media/app-insights-asp-net-dependencies/07-faildetail.png)
 
 ## <a name="analytics"></a>Analiza
-Można śledzić zależności w [języka zapytań usługi Analiza dzienników](https://docs.loganalytics.io/). Oto kilka przykładów.
+Możesz śledzić zależności w [języka zapytań usługi Log Analytics](https://aka.ms/LogAnalyticsLanguage). Oto kilka przykładów.
 
-* Znajdź wszystkie wywołania zależności nie powiodło się:
+* Znajdź wszystkie nieudane wywołania zależności:
 
 ```
 
@@ -149,7 +149,7 @@ Można śledzić zależności w [języka zapytań usługi Analiza dzienników](h
     dependencies | where client_Type == "Browser" | take 10
 ```
 
-* Znajdź związanych z żądaniami wywołania zależności:
+* Znajdź wywołania zależności związanych z żądaniami:
 
 ```
 
@@ -160,7 +160,7 @@ Można śledzić zależności w [języka zapytań usługi Analiza dzienników](h
 ```
 
 
-* Znajdź wywołania AJAX skojarzone z wyświetleń strony:
+* Znajdź wywołania AJAX skojarzone z wyświetleń stron:
 
 ```
 
@@ -173,11 +173,11 @@ Można śledzić zależności w [języka zapytań usługi Analiza dzienników](h
 
 
 ## <a name="custom-dependency-tracking"></a>Niestandardowe śledzenia zależności
-Standardowy moduł śledzenia zależności automatycznie odnajduje zależności zewnętrzne, takie jak bazy danych i interfejsów API REST. Jednak może być niektóre dodatkowe składniki należy traktować w taki sam sposób.
+Standardowy moduł śledzenia zależności automatycznie odnajduje zależności zewnętrznych, takich jak bazy danych i interfejsów API REST. Można jednak pewne dodatkowe składniki, aby być traktowane w taki sam sposób.
 
-Można napisać kod, który wysyła informacje o zależnościach, korzystającej z tego samego [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency) używany przez standardowe moduły.
+Można napisać kod, który wysyła informacje o zależnościach, korzystając z tych samych [TrackDependency API](app-insights-api-custom-events-metrics.md#trackdependency) używanego przez standardowe moduły.
 
-Na przykład jeśli kod jest kompilacji z zestawu, który nie jest pisana samodzielnie, można czasu wszystkie wywołania, aby dowiedzieć się, jakie wkład zgłasza Twoje czasy odpowiedzi. Te dane wyświetlane na wykresach zależności w usłudze Application Insights, aby wysyłać go za pomocą `TrackDependency`.
+Na przykład kompilowania kodu z zestawu, który nie zostały napisane samodzielnie, można czas wszystkie wywołania, aby dowiedzieć się, jakie wkład kieruje do Twoje czasy odpowiedzi. Aby uzyskać te dane wyświetlane na wykresach zależności w usłudze Application Insights, wyślij go za pomocą `TrackDependency`.
 
 ```csharp
 
@@ -196,20 +196,20 @@ Na przykład jeśli kod jest kompilacji z zestawu, który nie jest pisana samodz
             }
 ```
 
-Jeśli chcesz wyłączyć modułu śledzenia zależności standardowe, Usuń odwołanie do DependencyTrackingTelemetryModule w [ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md).
+Jeśli chcesz wyłączyć modułu śledzenia zależności standardowe, Usuń odwołanie do DependencyTrackingTelemetryModule w [plik ApplicationInsights.config](app-insights-configuration-with-applicationinsights-config.md).
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
-*Powodzenie zależności Flaga zawsze wyświetla wartość PRAWDA lub FAŁSZ.*
+*Powodzenie zależności zawsze Flaga pokazuje wartość PRAWDA lub FAŁSZ.*
 
 *Zapytania SQL nie są wyświetlane w całości.*
 
-Sprawdź informacje w poniższej tabeli i upewnić się, że wybrano prawidłowej konfiguracji, aby włączyć monitorowanie zależności aplikacji.
+Zapoznaj się z poniższej tabeli, a następnie upewnij się, że wybrano prawidłowej konfiguracji, aby włączyć monitorowanie zależności aplikacji.
 
 | Platforma | Instalowanie |
 | --- | --- |
-| Serwer usług IIS |Albo [Zainstaluj Monitor stanu na serwerze](app-insights-monitor-performance-live-website-now.md). Lub [uaktualnić aplikacji .NET Framework 4.6 lub nowszy](http://go.microsoft.com/fwlink/?LinkId=528259) i zainstaluj [zestaw SDK usługi Application Insights](app-insights-asp-net.md) w aplikacji. |
-| Aplikacja sieci Web platformy Azure |W Panelu sterowania aplikacji sieci web [otwarcie bloku usługi Application Insights w Panelu sterowania aplikacji sieci web](app-insights-azure-web-apps.md) i wybierz opcję instalacji, jeśli zostanie wyświetlony monit. |
-| Usługi w chmurze Azure |[Zadanie uruchamiania użyj](app-insights-cloudservices.md) lub [zainstalowania środowiska .NET framework 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
+| Serwer usług IIS |Albo [Zainstaluj Monitor stanu na serwerze](app-insights-monitor-performance-live-website-now.md). Lub [uaktualnić aplikację .NET Framework 4.6 lub nowszy](http://go.microsoft.com/fwlink/?LinkId=528259) i zainstaluj [zestawu SDK usługi Application Insights](app-insights-asp-net.md) w swojej aplikacji. |
+| Aplikacja sieci Web platformy Azure |W Panelu sterowania aplikacji sieci web [otworzyć bloku usługi Application Insights w Panelu sterowania aplikacji sieci web](app-insights-azure-web-apps.md) i wybierz opcję instalacji, jeśli zostanie wyświetlony monit. |
+| Usługa w chmurze platformy Azure |[Zadanie uruchamiania użyj](app-insights-cloudservices.md) lub [Instalowanie programu .NET framework 4.6 +](../cloud-services/cloud-services-dotnet-install-dotnet.md) |
 
 ## <a name="video"></a>Połączenia wideo
 

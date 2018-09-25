@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 31bfe954a58d232408fd66a1f98911e079824fb0
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 3e9907450680d6984a644b43014ba90b1a9d987e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715214"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991933"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Próbki głosu rekord do utworzenia niestandardowych voice
 
@@ -106,10 +106,10 @@ Na szczęście istnieje możliwość całkowicie uniknąć tych problemów. Dost
 |Tekst źródłowy|Opis|
 |-|-|
 |[Korpus Combat CMU](http://festvox.org/cmu_arctic/)|Około 1100 zdania wybrana w zaufanym działa poza o prawach autorskich przeznaczone dla projektów synteza mowy. Doskonałe punkt początkowy.|
-|Już nie działa<br>w ramach praw autorskich|Zazwyczaj działa opublikowane przed 1923. Dla języka angielskiego [Gutenberg projektu](https://www.gutenberg.org/) udostępnia dziesiątki tysięcy takiego działania. Możesz skupić się na nowsze działa, ponieważ język będzie bliżej nowoczesny język angielski.|
-|Dla instytucji rządowych&nbsp;działa|Działania, które są tworzone przez Rząd Stanów Zjednoczonych są nie chronionych prawem autorskim należących w Stanach Zjednoczonych, mimo że Rząd może oświadczenia praw autorskich w innych krajach.|
-|W domenie publicznej|Działa w przypadku jawnie disclaimed które prawa autorskie lub które zostały wyposażone w dedykowane do domeny publicznej. (Może nie być możliwe do odstąpienia od praw autorskich w całości na niektóre jurysdykcje.)|
-|Permissively licencjonowane działa|Rozpowszechniane na mocy licencji, takich jak firma Creative Commons lub licencji dokumentacji bezpłatna (GFDL) GNU działa. Wikipedia używa GFDL. Dlatego niektórych licencji, jednak może nakładać ograniczenia dotyczące wydajności licencjonowane zawartości, która może mieć wpływ na tworzenie modelu niestandardowego głosu, należy uważnie przeczytać licencji.|
+|Już nie działa<br>w ramach praw autorskich|Zazwyczaj działa opublikowane przed 1923. Dla języka angielskiego [Gutenberg projektu](https://www.gutenberg.org/) udostępnia dziesiątki tysięcy takiego działania. Możesz skoncentrować się na nowsze działa jako język będzie bliżej nowoczesny język angielski.|
+|Dla instytucji rządowych&nbsp;działa|Działania utworzone przez Rząd Stanów Zjednoczonych są nie chronionych prawem autorskim należących w Stanach Zjednoczonych, jednak dla instytucji rządowych mogą oświadczenia praw autorskich w innych krajach.|
+|W domenie publicznej|Działa w przypadku jawnie disclaimed które prawa autorskie lub które zostały wyposażone w dedykowane do domeny publicznej. (Może nie istnieć możliwość odstąpić od praw autorskich w całości na niektóre jurysdykcje.)|
+|Permissively licencjonowane działa|Firma Creative Commons lub licencji dokumentacji bezpłatna (GFDL) GNU, takich jak działa rozpowszechniane na mocy licencji. Wikipedia używa GFDL. Dlatego niektórych licencji, jednak może nałożyć ograniczenia dotyczące wydajności licencjonowane zawartości, która może mieć wpływ na tworzenie modelu niestandardowego głosu, należy uważnie przeczytać licencji.|
 
 ## <a name="recording-your-script"></a>Rejestrowanie skryptu
 
@@ -150,7 +150,7 @@ W tym miejscu jest używany przez większość zakresu (wysokość), ale najwyż
 
 Rekord bezpośrednio do komputera przy użyciu interfejsu audio wysokiej jakości lub USB port, w zależności od mic używasz. Dla analogowy, proste łańcucha audio: Sprawdzanie integralności komunikatu, preamp, interfejs audio, komputer. Możesz licencjonować zarówno [Avid narzędzi dla specjalistów](http://www.avid.com/en/pro-tools) i [Adobe Audition](https://www.adobe.com/products/audition.html) miesięcznych kosztów uzasadnione. W przypadku bardzo ścisłej swój budżet, wypróbuj bezpłatne [Audacity](https://www.audacityteam.org/).
 
-Rejestrowanie w 44.1-KHz 16-bitowych monophonic (jakość CD) lub Lepsza. Stan techniki to 48-KHz 24-bitowego, jeśli sprzęt obsługuje tę funkcję. Wykonasz próbkowanie audio do 16-KHz 16-bitowych przed przesłaniem jej do portalu usługi Custom Voice. Jednak warto korzystać z wysokiej jakości oryginalne nagranie w przypadku, gdy są potrzebne zmiany.
+Zarejestruj monophonic do 44,1 kHz 16-bitowego (jakością ciągłego wdrażania) lub Lepsza. Bieżący stan systemu — najnowocześniejsze to 48 kHz 24-bitowego, jeśli sprzęt obsługuje tę funkcję. Użytkownik będzie obniżenie częstotliwości próbkowania audio do 16 kHz 16-bitowych przed przesłaniem jej do portalu usługi Custom Voice. Jednak warto korzystać z wysokiej jakości oryginalne nagranie w przypadku zmiany są potrzebne.
 
 Najlepiej, jeśli mają różne osoby, które pełnią role dyrektora, inżynier i talent. Nie należy próbować robić wszystko samodzielnie. W uszczypnięcia jedna osoba może być zarówno dyrektor, jak i odtwarzania.
 
@@ -198,7 +198,7 @@ Podjąć podziały regularnych i zapewniają spożywczy ułatwiające Twojego g�
 
 ### <a name="after-the-session"></a>Po zakończeniu
 
-Rejestrowanie nowoczesnych studios uruchamiane na komputerach. Na końcu sesji pojawi się jeden lub więcej plików audio, nie taśmy. Te pliki będą prawdopodobnie być w formacie WAV lub AIFF jakości CD (44,1 KHz 16-bitowa) lub Lepsza. 48 kHz 24-bitowego to typowe i pożądane. Większe częstotliwości próbkowania, takich jak 96 KHz, zazwyczaj nie są potrzebne.
+Rejestrowanie nowoczesnych studios uruchamiane na komputerach. Na końcu sesji pojawi się jeden lub więcej plików audio, nie taśmy. Te pliki będą prawdopodobnie być w formacie WAV lub AIFF jakości CD (44,1 kHz 16-bitowa) lub Lepsza. 48 kHz 24-bitowego to typowe i pożądane. Większe częstotliwości próbkowania, takich jak 96 kHz, zazwyczaj nie są potrzebne.
 
 Portal Custom Voice wymaga każdego wypowiedź podana w jej własnym pliku. Każdy plik dźwiękowy dostarczanych przez studio zawiera wiele wypowiedzi. Głównym zadaniem poprodukcyjnych więc podzielić nagrania i przygotować je do przesłania. Inżynier rejestrowania może mieć umieścić znaczniki w pliku (lub oddzielnych wskaźnika do listy) aby wskazać, gdzie rozpoczyna się każdego wypowiedź.
 
@@ -208,7 +208,7 @@ Pozostaw tylko przez około 0,2 sekund wyciszenia na początku i końcu każdego
 
 Posłuchaj dokładnie do każdego pliku. Na tym etapie można edytować małych niechciane dźwięki, które zdarzyło Ci się przeoczyć podczas nagrywania, takich jak smack nieznaczne lip, przed wierszem, ale należy uważać, aby nie usunąć wszystkie rzeczywiste mowy. Jeśli nie można naprawić plik, usuń go z zestawu danych i należy pamiętać, że zostało to zrobione.
 
-Konwertuj na 16 bitów i częstotliwość próbkowania, 16 kHz każdego pliku, można było zapisać go i, jeśli zarejestrował studio chatter, usuń drugi kanał. Zapisz każdego pliku w formacie WAV, a nazwy plików, łącznie z numerem wypowiedź ze skryptu.
+Konwertuj każdy plik do 16 bitów i częstotliwość próbkowania, 16 kHz przed zapisaniem, a jeśli zapisane studio chatter Usuń drugiego kanału. Zapisz każdego pliku w formacie WAV, nazw plików z liczbą wypowiedź ze skryptu.
 
 Na koniec Utwórz *transkrypcji* który kojarzy każdy plik WAV z to tekstowa wersja odpowiedniego wypowiedź. [Tworzenie niestandardowych voice czcionki](how-to-customize-voice-font.md) zawiera szczegółowe informacje z wymaganym formatem. Możesz skopiować tekst bezpośrednio ze skryptu. Następnie utwórz plik Zip plików WAV i transkrypcji tekstu.
 

@@ -16,16 +16,19 @@ ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 3e6b431ee55ee73b4f5a69471cca3cc16270198c
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 33b0b2b4148a8cfbe97413bf3cdec23d375206bb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37930243"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983892"
 ---
 # <a name="how-to-create-a-linux-virtual-machine-with-azure-resource-manager-templates"></a>Jak utworzyć maszynę wirtualną z systemem Linux przy użyciu szablonów usługi Azure Resource Manager
-W tym artykule pokazano, jak szybko wdrożyć maszynę wirtualną systemu Linux (VM) za pomocą szablonów usługi Azure Resource Manager i interfejsu wiersza polecenia platformy Azure. 
 
+W tym artykule pokazano, jak szybko wdrożyć maszynę wirtualną systemu Linux (VM) za pomocą szablonów usługi Azure Resource Manager i interfejsu wiersza polecenia platformy Azure. Można również wykonać te czynności przy użyciu [klasycznego wiersza polecenia platformy Azure](create-ssh-secured-vm-from-template-nodejs.md).
+
+
+W tym artykule pokazano, jak szybko wdrożyć maszynę wirtualną systemu Linux (VM) za pomocą szablonów usługi Azure Resource Manager i interfejsu wiersza polecenia platformy Azure. 
 
 ## <a name="templates-overview"></a>Przegląd szablonów
 Szablony usługi Azure Resource Manager są plikami JSON definiującymi infrastruktury i konfiguracji rozwiązania platformy Azure. Dzięki szablonowi można wielokrotnie wdrażać rozwiązanie w całym jego cyklu życia z gwarancją spójnego stanu zasobów po każdym wdrożeniu. Aby dowiedzieć się więcej o formacie szablonu i sposobie jego konstruowania, zobacz [Tworzenie pierwszego szablonu usługi Azure Resource Manager](../../azure-resource-manager/resource-manager-create-first-template.md). Aby wyświetlić składnię JSON dla typów zasobów, zobacz [Define resources in Azure Resource Manager templates](/azure/templates/) (Definiowanie zasobów w szablonach usługi Azure Resource Manager).

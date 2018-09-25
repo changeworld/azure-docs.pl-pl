@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: d0720c23e0831b446a92855383fab06b0bfacbc7
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e66d896a7df48645dad39b5b978c4f7c2f8d8cb9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39525471"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954555"
 ---
 # <a name="how-to-disenroll-a-device-from-azure-iot-hub-device-provisioning-service"></a>Jak disenroll urządzenia z usługi Azure IoT Hub Device Provisioning Service
 
@@ -34,9 +34,12 @@ Aby tymczasowo niedozwolonych urządzeń, wyłączając jej wpisu rejestracji:
 2. Na liście zasobów wybierz usługę aprowizacji, który chcesz utworzyć listę niedozwolonych urządzenia z.
 3. Z Twoją usługą aprowizacji, wybierz **Zarządzanie rejestracjami**, a następnie wybierz pozycję **rejestracje indywidualne** kartę.
 4. Wybierz wpis rejestracji dla urządzenia, które chcesz utworzyć listę niedozwolonych. 
-5. Przewiń w dół, a następnie wybierz pozycję **wyłączyć** na **Włącz wpis** przełącznika, a następnie wybierz **Zapisz**.  
 
-   [![Wyłącz wpis rejestracji indywidualnej w portalu](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png#lightbox)  
+    ![Wybierz swoje rejestracji indywidualnej](./media/how-to-revoke-device-access-portal/select-individual-enrollment.png)
+
+5. Na stronie rejestracji, przewiń w dół, a następnie wybierz pozycję **wyłączyć** dla **Włącz wpis** przełącznika, a następnie wybierz **Zapisz**.  
+
+   ![Wyłącz wpis rejestracji indywidualnej w portalu](./media/how-to-revoke-device-access-portal/disable-individual-enrollment.png)
 
 Aby trwale niedozwolonych urządzenia przez usunięcie jego wpis rejestracji:
 
@@ -47,7 +50,8 @@ Aby trwale niedozwolonych urządzenia przez usunięcie jego wpis rejestracji:
 5. Wybierz **Usuń** w górnej części okna, a następnie wybierz pozycję **tak** aby upewnić się, że chcesz usunąć rejestrację. 
 
    ![Usuwanie wpisu rejestracji indywidualnej w portalu](./media/how-to-revoke-device-access-portal/delete-individual-enrollment.png)
-    
+
+
 Po zakończeniu procedury, powinien zostać wyświetlony wpis usunięty z listy rejestracje indywidualne.  
 
 ## <a name="blacklist-an-x509-intermediate-or-root-ca-certificate-by-using-an-enrollment-group"></a>Utworzyć listę niedozwolonych X.509 pośredni lub główny certyfikat urzędu certyfikacji za pomocą grupy rejestracji
@@ -91,14 +95,18 @@ Aby utworzyć listę niedozwolonych poszczególnych urządzeń, w grupie rejestr
 1. Zaloguj się w witrynie Azure portal i wybierz **wszystkie zasoby** menu po lewej stronie.
 2. Z listy zasobów wybierz usługę aprowizacji, który zawiera grupę rejestracji dla urządzenia, które chcesz utworzyć listę niedozwolonych.
 3. Z Twoją usługą aprowizacji, wybierz **Zarządzanie rejestracjami**, a następnie wybierz pozycję **rejestracje indywidualne** kartę.
-4. Wybierz **Dodaj** znajdujący się u góry. 
-5. Wybierz **X.509** jako mechanizmu zaświadczania urządzenia i przekaż certyfikat urządzenia. Jest to certyfikat jednostki końcowej podpisem zainstalowane na urządzeniu. Urządzenie używa ich do generowania certyfikatów dla uwierzytelniania.
-6. Aby uzyskać **identyfikator urządzenia usługi IoT Hub**, wprowadź identyfikator urządzenia. 
-7. Wybierz **wyłączyć** na **Włącz wpis** przełącznika, a następnie wybierz **Zapisz**. 
+4. Wybierz **Dodaj rejestrację indywidualną** znajdujący się u góry. 
+5. Na **Dodaj rejestracji** wybierz opcję **X.509** zaświadczania **mechanizm** dla tego urządzenia.
+
+    Przekaż certyfikat urządzenia, a następnie wprowadź identyfikator urządzenia urządzenie jest na czarnej liście. Dla certyfikatu należy użyć certyfikatu podpisanego jednostki końcowej zainstalowane na urządzeniu. Urządzenie używa certyfikatu z podpisem jednostki końcowej dla uwierzytelniania.
+
+    ![Ustaw właściwości urządzenia dla urządzenia zabronione](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group-1.png)
+
+6. Przewiń do dołu **Dodaj rejestracji** strony i wybierz **wyłączyć** na **Włącz wpis** przełącznika, a następnie wybierz **Zapisz**. 
 
     [![Używanie wyłączone wpisu rejestracji indywidualnej, aby wyłączyć urządzenie z grupy rejestracji w portalu](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png)](./media/how-to-revoke-device-access-portal/disable-individual-enrollment-in-enrollment-group.png#lightbox)
 
-Po pomyślnym utworzeniu rejestracji, powinien zostać wyświetlony urządzenia są wyświetlane na **rejestracje indywidualne** kartę.
+Po pomyślnym utworzeniu rejestracji, rejestracja wyłączono urządzenie wymienione na powinien zostać wyświetlony **rejestracje indywidualne** kartę. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

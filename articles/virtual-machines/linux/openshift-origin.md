@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: ''
 ms.author: haroldw
-ms.openlocfilehash: 0d3a9f05802bef7d6dfc99fcfae6668044f214c8
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 75a02e61adf3e5477b9945afc778e867d5d9c88c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43190308"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958139"
 ---
 # <a name="deploy-okd-in-azure"></a>Wdrażanie OKD na platformie Azure
 
@@ -99,7 +99,7 @@ Poniższy przykład tworzy plik parametrów o nazwie azuredeploy.parameters.json
 
 
 > [!NOTE] 
-> Poniższe polecenie wymaga interfejsu wiersza polecenia Azure 2.0.8 lub nowszej. Możesz sprawdzić wersję interfejsu wiersza polecenia przy użyciu `az --version` polecenia. Aby zaktualizować wersję interfejsu wiersza polecenia, zobacz [instalowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+> Poniższe polecenie wymaga CLI.8 platformy Azure lub nowszej. Możesz sprawdzić wersję interfejsu wiersza polecenia przy użyciu `az --version` polecenia. Aby zaktualizować wersję interfejsu wiersza polecenia, zobacz [interfejsu wiersza polecenia platformy Azure Zainstaluj](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 
 Poniższy przykład służy do wdrażania klastra OKD i wszystkie powiązane zasoby w grupie zasobów o nazwie myResourceGroup, o nazwie wdrożenia myOpenShiftCluster. Szablon odwołuje się bezpośrednio z repozytorium GitHub przy użyciu pliku parametrów lokalnych o nazwie azuredeploy.parameters.json.
 

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: 9a48b3ff9769e2757ac7930feb14d6537d96fae3
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 4cf516550e9f9852ec50981932c2df8f236d0358
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109242"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961318"
 ---
 # <a name="create-hadoop-clusters-in-hdinsight-by-using-resource-manager-templates"></a>Tworzenie klastrów Hadoop w HDInsight przy użyciu szablonów usługi Resource Manager
 [!INCLUDE [selector](../../includes/hdinsight-create-linux-cluster-selector.md)]
@@ -27,7 +27,7 @@ W tym artykule dowiesz się kilka sposobów tworzenia klastrów usługi Azure HD
 Postępuj zgodnie z instrukcjami w tym artykule, potrzebne są:
 
 * [Subskrypcji platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* Interfejs wiersza polecenia platformy Azure — program PowerShell i/lub platformy Azure.
+* Program Azure PowerShell i/lub Azure klasyczny interfejs wiersza polecenia.
 
 ### <a name="resource-manager-templates"></a>Szablony usługi Resource Manager
 Szablon usługi Resource Manager ułatwia tworzenie następujących resoruces dla aplikacji w jednej, skoordynowanej operacji:
@@ -49,7 +49,7 @@ Usługi Resource Manager umożliwia wyeksportowanie szablonu usługi Resource Ma
 
 - Witryna Azure portal: zobacz [Eksportowanie szablonu usługi Azure Resource Manager z istniejących zasobów](../azure-resource-manager/resource-manager-export-template.md).
 - Program Azure PowerShell: Zobacz [szablony eksportu usługi Azure Resource Manager przy użyciu programu PowerShell](../azure-resource-manager/resource-manager-export-template-powershell.md).
-- Interfejs wiersza polecenia platformy Azure: Zobacz [szablonów eksportu usługi Azure Resource Manager przy użyciu wiersza polecenia platformy Azure](../azure-resource-manager/resource-manager-export-template-cli.md).
+- Klasyczny Portal Azure CLI: Zobacz [szablonów eksportu usługi Azure Resource Manager za pomocą klasycznego wiersza polecenia platformy Azure](../azure-resource-manager/resource-manager-export-template-cli.md).
 
 
 ## <a name="deploy-using-the-portal"></a>Wdrażanie przy użyciu portalu
@@ -60,9 +60,9 @@ Możesz wdrożyć szablon usługi Resource Manager przy użyciu witryny Azure po
 
 Możesz wdrożyć szablon usługi Resource Manager przy użyciu programu Azure PowerShell. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i programu Azure PowerShell](../azure-resource-manager/resource-group-template-deploy.md) i [wdrażanie prywatnego szablonu usługi Resource Manager przy użyciu tokenu sygnatury dostępu Współdzielonego i programu Azure PowerShell](../azure-resource-manager/resource-manager-powershell-sas-token.md).
 
-## <a name="deploy-using-cli"></a>Wdrażanie przy użyciu interfejsu wiersza polecenia
+## <a name="deploy-using-azure-cli"></a>Wdrażanie przy użyciu wiersza polecenia platformy Azure
 
-Możesz wdrożyć szablon usługi Resource Manager przy użyciu wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia Azure](../azure-resource-manager/resource-group-template-deploy-cli.md) i [wdrażanie prywatnego szablonu usługi Resource Manager przy użyciu tokenu sygnatury dostępu Współdzielonego i wiersza polecenia platformy Azure](../azure-resource-manager/resource-manager-cli-sas-token.md).
+Możesz wdrożyć szablon usługi Resource Manager przy użyciu klasyczny interfejs wiersza polecenia. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów za pomocą szablonów usługi Resource Manager i interfejsu wiersza polecenia Azure](../azure-resource-manager/resource-group-template-deploy-cli.md) i [wdrażanie prywatnego szablonu usługi Resource Manager przy użyciu tokenu sygnatury dostępu Współdzielonego i wiersza polecenia platformy Azure](../azure-resource-manager/resource-manager-cli-sas-token.md).
 
 ## <a name="deploy-using-the-rest-api"></a>Wdrażanie przy użyciu interfejsu API REST
 Możesz wdrożyć szablon usługi Resource Manager przy użyciu interfejsu API REST. Aby uzyskać więcej informacji, zobacz [wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i interfejsu REST API usługi Resource Manager](../azure-resource-manager/resource-group-template-deploy-rest.md).

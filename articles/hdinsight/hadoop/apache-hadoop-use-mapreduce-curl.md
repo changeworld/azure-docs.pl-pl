@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: f497184b05432d6e32883bb3470f7e4da5fe550f
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 9941f442ad546155f58967fb3414eb2e7b7c3647
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047189"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973715"
 ---
 # <a name="run-mapreduce-jobs-with-hadoop-on-hdinsight-using-rest"></a>Uruchamianie zadań MapReduce z usługą Hadoop w HDInsight przy użyciu usługi REST
 
@@ -141,7 +141,7 @@ Dowiedz się, jak uruchamiać zadania MapReduce w usłudze Hadoop w klastrze HDI
 
 6. Gdy stan zadania został zmieniony na `SUCCEEDED`, możesz pobrać wyniki zadania z usługi Azure Blob storage. `statusdir` Parametr, który jest przekazywany z zapytaniem zawiera lokalizację pliku wyjściowego. W tym przykładzie lokalizacja to `/example/curl`. Ten adres przechowuje dane wyjściowe zadania w klastrach domyślnego magazynu w `/example/curl`.
 
-Można wyświetlić listę i pobierać te pliki przy użyciu [interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). Aby uzyskać więcej informacji na temat pracy z obiektami blob z wiersza polecenia platformy Azure, zobacz [z usługą Azure Storage przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0](../../storage/common/storage-azure-cli.md#create-and-manage-blobs) dokumentu.
+Można wyświetlić listę i pobierać te pliki przy użyciu [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). Aby uzyskać więcej informacji na temat pracy z obiektami blob z wiersza polecenia platformy Azure, zobacz [przy użyciu wiersza polecenia platformy Azure z usługą Azure Storage](../../storage/common/storage-azure-cli.md#create-and-manage-blobs) dokumentu.
 
 ## <a id="nextsteps"></a>Następne kroki
 

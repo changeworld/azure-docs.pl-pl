@@ -4,20 +4,31 @@ description: Informacje o wersji — co zmieniło się w najnowszych wersjach
 titleSuffix: Microsoft Cognitive Services
 services: cognitive-services
 author: wolfma61
-manager: onano
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 08/16/2018
+ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 5862b119ceee4ace0d51691851dc53a9729ac68e
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: cfc8f973ac9bced9396a081f7fb2ab6a4a1b2f7f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46363398"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963087"
 ---
 # <a name="release-notes"></a>Informacje o wersji
+
+## <a name="cognitive-services-speech-sdk-100-2018-september-release"></a>Services cognitive mowy wersji zestawu SDK 1.0.0: września 2018 r.
+
+**Nowe funkcje**
+
+* Obsługa języka Objective-C w systemie iOS. Zapoznaj się z naszym [języka Objective-C Przewodnik Szybki Start dla systemu iOS](quickstart-objectivec-ios.md).
+* Obsługa języka JavaScript w przeglądarce. Zapoznaj się z naszym [Szybki Start JavaScript](quickstart-js-browser.md).
+
+**Fundamentalne zmiany**
+
+* W tej wersji wprowadzono szereg istotnych zmian.
+  Sprawdź, czy [na tej stronie](https://aka.ms/csspeech/breakingchanges_1_0_0) Aby uzyskać szczegółowe informacje.
 
 ## <a name="cognitive-services-speech-sdk-060-2018-august-release"></a>Services cognitive mowy wersji zestawu SDK 0.6.0: sierpnia 2018 r.
 

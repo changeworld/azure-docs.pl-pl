@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: jdial;anavin
-ms.openlocfilehash: 4883791a32a65746a72afb63755ecf608dc840d9
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 01e8b5c518931411ba6e2d75168de6753bf55260
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39503829"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971726"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Utworzyć komunikację równorzędną sieci wirtualnej — różne modele wdrażania i subskrypcje
 
@@ -97,18 +97,17 @@ Ten samouczek używa różnych kont, dla każdej subskrypcji. Jeśli używasz ko
 
 ## <a name="cli"></a>Utworzyć komunikację równorzędną — interfejs wiersza polecenia platformy Azure
 
-Ten samouczek używa różnych kont, dla każdej subskrypcji. Jeśli używasz konta mającego uprawnienia do obu subskrypcji, możesz używać tego samego konta dla wszystkich kroków, pomiń kroki rejestrowania możliwości platformy Azure i Usuń wiersze skryptu, które tworzenie przypisań ról użytkownika. Zastąp UserA@azure.com i UserB@azure.com we wszystkich następujących skryptów za pomocą nazw użytkowników, używasz osoby Użytkownik_a i Użytkownik_b. 
+Ten samouczek używa różnych kont, dla każdej subskrypcji. Jeśli używasz konta mającego uprawnienia do obu subskrypcji, możesz używać tego samego konta dla wszystkich kroków, pomiń kroki rejestrowania możliwości platformy Azure i Usuń wiersze skryptu, które tworzenie przypisań ról użytkownika. Zastąp UserA@azure.com i UserB@azure.com we wszystkich następujących skryptów za pomocą nazw użytkowników, używasz osoby Użytkownik_a i Użytkownik_b. Wykonaj poniższe kroki, które są za pomocą platformy Azure klasyczny interfejs wiersza polecenia i interfejsu wiersza polecenia platformy Azure. Możesz wykonać kroki z usługi Azure Cloud Shell, po prostu wybierając **wypróbuj** przycisk w dowolnym z następujących czynności lub dzięki zainstalowaniu [klasyczny interfejs wiersza polecenia](/cli/azure/install-cli-version-1.0.md?toc=%2fazure%2fvirtual-network%2ftoc.json) i [interfejsu wiersza polecenia](/cli/azure/install-azure-cli.md?toc=%2fazure%2fvirtual-network%2ftoc.json) i uruchamianie polecenia na komputerze lokalnym.
 
-1. [Zainstaluj](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json) 1.0 interfejsu wiersza polecenia platformy Azure można utworzyć sieci wirtualnej (model klasyczny).
-2. Otwórz sesję programu interfejsu wiersza polecenia, a następnie zaloguj się do platformy Azure, używając Użytkownik_b `azure login` polecenia. Zaloguj się przy użyciu konta musi mieć uprawnienia niezbędne do tworzenia wirtualnej sieci równorzędnej. Aby uzyskać listę uprawnień, zobacz [wirtualnych sieci równorzędnych uprawnienia](virtual-network-manage-peering.md#permissions).
-3. Uruchom interfejs wiersza polecenia w trybie zarządzania usługami, wprowadzając `azure config mode asm` polecenia.
-4. Wprowadź następujące polecenie, aby utworzyć sieć wirtualną (klasyczny):
- 
+1. Jeśli używasz powłoki Cloud, przejdź do kroku 2, ponieważ w usłudze Cloud Shell automatycznie zaloguje Cię na platformie Azure. Otwórz sesję programu polecenia, a następnie zaloguj się do platformy Azure za pomocą `azure login` polecenia.
+2. Uruchomić klasyczny interfejs wiersza polecenia w trybie zarządzania usługami, wprowadzając `azure config mode asm` polecenia.
+3. Wprowadź następujące polecenie klasyczny interfejs wiersza polecenia do tworzenia sieci wirtualnej (model klasyczny):
+
     ```azurecli
     azure network vnet create --vnet myVnetB --address-space 10.1.0.0 --cidr 16 --location "East US"
     ```
-5. Pozostałe kroki należy wykonać przy użyciu powłoki bash, skorupach przy użyciu wiersza polecenia platformy Azure 2.0.4 lub nowszej [zainstalowane](/cli/azure/install-azure-cli?toc=%2fazure%2fvirtual-network%2ftoc.json), lub za pomocą usługi Azure Cloud Shell. Usługa Azure Cloud Shell jest bezpłatną powłoką Bash, którą można uruchamiać bezpośrednio w witrynie Azure Portal. Ma ona wstępnie zainstalowany interfejs wiersza polecenia platformy Azure skonfigurowany do użycia z Twoim kontem. Kliknij przycisk **wypróbuj** przycisk w skryptach poniżej, co spowoduje otwarcie Cloud Shell, która rejestruje Cię do konta platformy Azure. Dla opcji na uruchamianie programu bash skryptami interfejsu wiersza polecenia na komputerze klienckim Windows, zobacz [zainstalować interfejs wiersza polecenia platformy Azure na Windows](/cli/azure/install-azure-cli-windows). 
-6. Skopiuj poniższy skrypt do edytora tekstów na komputerze. Zastąp `<SubscriptionB-Id>` przy użyciu identyfikatora subskrypcji. Jeśli nie znasz Twojego identyfikatora subskrypcji, wprowadź `az account show` polecenia. Wartość **identyfikator** w danych wyjściowych jest identyfikator subskrypcji Skopiuj skrypt zmodyfikowane, wklej ją w sesji środowiska interfejsu wiersza polecenia 2.0, a następnie naciśnij `Enter`. 
+4. Pozostałe kroki należy wykonać przy użyciu powłoki bash przy użyciu wiersza polecenia platformy Azure (nie klasyczny interfejs wiersza polecenia).
+5. Skopiuj poniższy skrypt do edytora tekstów na komputerze. Zastąp `<SubscriptionB-Id>` przy użyciu identyfikatora subskrypcji. Jeśli nie znasz Twojego identyfikatora subskrypcji, wprowadź `az account show` polecenia. Wartość **identyfikator** w danych wyjściowych jest identyfikator subskrypcji Skopiuj skrypt zmodyfikowane, wklej ją w sesji środowiska interfejsu wiersza polecenia i naciśnij klawisz `Enter`.
 
     ```azurecli-interactive
     az role assignment create \
@@ -118,8 +117,8 @@ Ten samouczek używa różnych kont, dla każdej subskrypcji. Jeśli używasz ko
     ```
 
     Podczas tworzenia sieci wirtualnej (model klasyczny) w kroku 4, Azure utworzyć sieć wirtualną w *domyślnej sieci* grupy zasobów.
-7. Zaloguj się Użytkownik_b spoza platformy Azure i zaloguj się jako użytkownik a interfejsu wiersza polecenia w wersji 2.0.
-8. Utwórz grupę zasobów i sieci wirtualnej (Resource Manager). Skopiuj poniższy skrypt, wklej ją w sesji środowiska interfejsu wiersza polecenia i naciśnij klawisz `Enter`. 
+6. Zaloguj się Użytkownik_b spoza platformy Azure i zaloguj się jako użytkownik, a w interfejsie wiersza polecenia.
+7. Utwórz grupę zasobów i sieci wirtualnej (Resource Manager). Skopiuj poniższy skrypt, wklej ją w sesji środowiska interfejsu wiersza polecenia i naciśnij klawisz `Enter`.
 
     ```azurecli-interactive
     #!/bin/bash
@@ -153,7 +152,7 @@ Ten samouczek używa różnych kont, dla każdej subskrypcji. Jeśli używasz ko
       --scope $vNetAId
     ```
 
-9. Tworzenie sieci wirtualnej komunikacji równorzędnej między dwiema sieciami wirtualnymi utworzonymi za pomocą różnych modeli wdrażania. Skopiuj poniższy skrypt do edytora tekstów na komputerze. Zastąp `<SubscriptionB-id>` ze swoją subskrypcją identyfikatora. Jeśli nie znasz Twojego identyfikatora subskrypcji, wprowadź `az account show` polecenia. Wartość **identyfikator** w danych wyjściowych jest identyfikator subskrypcji Azure utworzona sieć wirtualna (klasyczna) został utworzony w kroku 4 w grupie zasobów o nazwie *domyślnej sieci*. Wklej zmodyfikowany skrypt sesję interfejsu wiersza polecenia, a następnie naciśnij klawisz `Enter`.
+8. Tworzenie sieci wirtualnej komunikacji równorzędnej między dwiema sieciami wirtualnymi utworzonymi za pomocą różnych modeli wdrażania. Skopiuj poniższy skrypt do edytora tekstów na komputerze. Zastąp `<SubscriptionB-id>` ze swoją subskrypcją identyfikatora. Jeśli nie znasz Twojego identyfikatora subskrypcji, wprowadź `az account show` polecenia. Wartość **identyfikator** w danych wyjściowych jest identyfikator subskrypcji Azure utworzona sieć wirtualna (klasyczna) został utworzony w kroku 4 w grupie zasobów o nazwie *domyślnej sieci*. Wklej zmodyfikowany skrypt sesję interfejsu wiersza polecenia, a następnie naciśnij klawisz `Enter`.
 
     ```azurecli-interactive
     # Peer VNet1 to VNet2.
@@ -165,7 +164,7 @@ Ten samouczek używa różnych kont, dla każdej subskrypcji. Jeśli używasz ko
       --allow-vnet-access
     ```
 
-10. Po wykonaniu skryptu, przejrzyj komunikacji równorzędnej sieci wirtualnej (Resource Manager). Skopiuj poniższy skrypt, a następnie wklej go w sesji programu interfejsu wiersza polecenia:
+9. Po wykonaniu skryptu, przejrzyj komunikacji równorzędnej sieci wirtualnej (Resource Manager). Skopiuj poniższy skrypt, a następnie wklej go w sesji programu interfejsu wiersza polecenia:
 
     ```azurecli-interactive
     az network vnet peering list \
@@ -177,8 +176,8 @@ Ten samouczek używa różnych kont, dla każdej subskrypcji. Jeśli używasz ko
 
     Zasoby platformy Azure, który zostanie utworzony w dowolnej sieci wirtualnej mogą teraz komunikować się ze sobą za pomocą ich adresów IP. Jeśli używasz rozpoznawania nazw platformy Azure w domyślnej dla sieci wirtualnych, zasoby w sieciach wirtualnych nie będą mogli rozpoznawania nazw w sieciach wirtualnych. Rozpoznawanie nazw między sieciami wirtualnymi w komunikacji równorzędnej, możesz utworzyć własnego serwera DNS. Dowiedz się, jak skonfigurować [rozpoznawanie nazw przy użyciu własnego serwera DNS](virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server).
 
-11. **Opcjonalnie**: Chociaż nie jest objęty tworzenia maszyn wirtualnych w ramach tego samouczka, można utworzyć maszynę wirtualną w każdej sieci wirtualnej i nawiązać połączenie z jednej maszyny wirtualnej do drugiej strony, aby zweryfikować połączenie.
-12. **Opcjonalnie**: Aby usunąć zasoby, które tworzysz w ramach tego samouczka, wykonaj kroki opisane w [usunąć zasoby](#delete-cli) w tym artykule.
+10. **Opcjonalnie**: Chociaż nie jest objęty tworzenia maszyn wirtualnych w ramach tego samouczka, można utworzyć maszynę wirtualną w każdej sieci wirtualnej i nawiązać połączenie z jednej maszyny wirtualnej do drugiej strony, aby zweryfikować połączenie.
+11. **Opcjonalnie**: Aby usunąć zasoby, które tworzysz w ramach tego samouczka, wykonaj kroki opisane w [usunąć zasoby](#delete-cli) w tym artykule.
 
 ## <a name="powershell"></a>Utworzyć komunikację równorzędną — PowerShell
 
@@ -284,45 +283,45 @@ Po ukończeniu tego samouczka, możesz chcieć usunąć zasoby utworzone w tym s
 
 ### <a name="delete-cli"></a>Wiersza polecenia platformy Azure
 
-1. Zaloguj się do platformy Azure przy użyciu interfejsu wiersza polecenia 2.0, można usunąć sieci wirtualnej (Resource Manager) za pomocą następującego polecenia:
+1. Zaloguj się do platformy Azure przy użyciu interfejsu wiersza polecenia, można usunąć sieci wirtualnej (Resource Manager) za pomocą następującego polecenia:
 
-    ```azurecli-interactive
-    az group delete --name myResourceGroupA --yes
-    ```
+   ```azurecli-interactive
+   az group delete --name myResourceGroupA --yes
+   ```
 
-2. Zaloguj się do platformy Azure przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 1.0 można usunąć sieci wirtualnej (klasycznej) za pomocą następujących poleceń:
+2. Zaloguj się do platformy Azure przy użyciu klasyczny interfejs wiersza polecenia, aby usunąć sieć wirtualna (klasyczna), za pomocą następujących poleceń:
 
-    ```azurecli
-    azure config mode asm 
+   ```azurecli-interactive
+   azure config mode asm
 
-    azure network vnet delete --vnet myVnetB --quiet
-    ```
+   azure network vnet delete --vnet myVnetB --quiet
+   ```
 
 ### <a name="delete-powershell"></a>PowerShell
 
 1. W wierszu polecenia programu PowerShell wprowadź następujące polecenie, aby usunąć sieci wirtualnej (Resource Manager):
 
-    ```powershell
-    Remove-AzureRmResourceGroup -Name myResourceGroupA -Force
-    ```
+   ```powershell
+   Remove-AzureRmResourceGroup -Name myResourceGroupA -Force
+   ```
 
 2. Można usunąć sieci wirtualnej (model klasyczny) przy użyciu programu PowerShell, należy zmodyfikować istniejący plik konfiguracji sieci. Dowiedz się, jak [eksportu, aktualizowanie i importowanie plików konfiguracyjnych sieci](virtual-networks-using-network-configuration-file.md). Usuń następujący element VirtualNetworkSite dla sieci wirtualnej używane w tym samouczku:
 
-    ```xml
-    <VirtualNetworkSite name="myVnetB" Location="East US">
-      <AddressSpace>
-        <AddressPrefix>10.1.0.0/16</AddressPrefix>
-      </AddressSpace>
-      <Subnets>
-        <Subnet name="default">
-          <AddressPrefix>10.1.0.0/24</AddressPrefix>
-        </Subnet>
-      </Subnets>
-    </VirtualNetworkSite>
-    ```
+   ```xml
+   <VirtualNetworkSite name="myVnetB" Location="East US">
+     <AddressSpace>
+       <AddressPrefix>10.1.0.0/16</AddressPrefix>
+     </AddressSpace>
+     <Subnets>
+       <Subnet name="default">
+         <AddressPrefix>10.1.0.0/24</AddressPrefix>
+       </Subnet>
+     </Subnets>
+   </VirtualNetworkSite>
+   ```
 
-    > [!WARNING]
-    > Importowanie pliku konfiguracyjnego sieci zmienione mogą powodować zmiany w istniejących sieciach wirtualnych (klasyczne) w ramach subskrypcji. Upewnij się, tylko Usuń poprzednie sieci wirtualnej, a nie zmienić lub usunąć innych istniejących sieci wirtualnych z subskrypcji. 
+   > [!WARNING]
+   > Importowanie pliku konfiguracyjnego sieci zmienione mogą powodować zmiany w istniejących sieciach wirtualnych (klasyczne) w ramach subskrypcji. Upewnij się, tylko Usuń poprzednie sieci wirtualnej, a nie zmienić lub usunąć innych istniejących sieci wirtualnych z subskrypcji. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

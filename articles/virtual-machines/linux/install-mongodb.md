@@ -1,6 +1,6 @@
 ---
 title: Instalowanie bazy danych MongoDB na maszynie Wirtualnej systemu Linux przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zainstalować i skonfigurować bazy danych MongoDB na iusing maszyny wirtualnej systemu Linux interfejsu wiersza polecenia platformy Azure w wersji 2.0
+description: Dowiedz się, jak zainstalować i skonfigurować bazy danych MongoDB na iusing maszyny wirtualnej systemu Linux wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,15 +14,16 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/15/2017
 ms.author: cynthn
-ms.openlocfilehash: d066b412fb722318824a408861fe7d9595c71537
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: a6228290eb5f35d687c26042c87551471462ab85
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928237"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987836"
 ---
 # <a name="how-to-install-and-configure-mongodb-on-a-linux-vm"></a>Jak zainstalować i skonfigurować bazy danych MongoDB na maszynie Wirtualnej systemu Linux
-[Bazy danych MongoDB](http://www.mongodb.org) to popularne typu open source, wysokiej wydajności baza danych NoSQL. W tym artykule przedstawiono sposób instalowania i konfigurowania bazy danych MongoDB na maszynie Wirtualnej systemu Linux przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0. Przykłady są wyświetlane szczegóły tego jak do:
+
+[Bazy danych MongoDB](http://www.mongodb.org) to popularne typu open source, wysokiej wydajności baza danych NoSQL. W tym artykule przedstawiono sposób instalowania i konfigurowania bazy danych MongoDB na maszynie Wirtualnej systemu Linux przy użyciu wiersza polecenia platformy Azure. Przykłady są wyświetlane szczegóły tego jak do:
 
 * [Ręcznie zainstaluj i skonfiguruj podstawowe wystąpienie bazy danych MongoDB](#manually-install-and-configure-mongodb-on-a-vm)
 * [Tworzenie podstawowego wystąpienia bazy danych MongoDB przy użyciu szablonu usługi Resource Manager](#create-basic-mongodb-instance-on-centos-using-a-template)
@@ -30,7 +31,7 @@ ms.locfileid: "37928237"
 
 
 ## <a name="manually-install-and-configure-mongodb-on-a-vm"></a>Ręcznie zainstaluj i skonfiguruj bazy danych MongoDB na maszynie Wirtualnej
-Bazy danych MongoDB [zapewniają instrukcje dotyczące instalacji](https://docs.mongodb.com/manual/administration/install-on-linux/) dla dystrybucje systemu Linux, w tym Red Hat / CentOS, SUSE, Ubuntu i Debian. Poniższy przykład tworzy *CentOS* maszyny Wirtualnej. Do utworzenia tego środowiska, potrzebujesz najnowszej [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
+Bazy danych MongoDB [zapewniają instrukcje dotyczące instalacji](https://docs.mongodb.com/manual/administration/install-on-linux/) dla dystrybucje systemu Linux, w tym Red Hat / CentOS, SUSE, Ubuntu i Debian. Poniższy przykład tworzy *CentOS* maszyny Wirtualnej. Do utworzenia tego środowiska, potrzebujesz najnowszej [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
 
 Utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
@@ -120,7 +121,7 @@ Podstawowe wystąpienie bazy danych MongoDB można tworzyć na jednej maszynie W
 
 * [Podstawowe wystąpienie bazy danych MongoDB na CentOS](https://github.com/Azure/azure-quickstart-templates/tree/master/mongodb-on-centos) - https://raw.githubusercontent.com/Azure/azure-quickstart-templates/master/mongodb-on-centos/azuredeploy.json
 
-Do utworzenia tego środowiska, potrzebujesz najnowszej [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login). Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
+Do utworzenia tego środowiska, potrzebujesz najnowszej [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login). Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus
@@ -171,7 +172,7 @@ Można utworzyć złożone klastra podzielonej na fragmenty bazy danych MongoDB 
 > [!WARNING]
 > Wdrożenie tego złożonych klastra podzielonej na fragmenty bazy danych MongoDB wymaga więcej niż 20 rdzeni, który jest zazwyczaj domyślna liczba rdzeni na region na subskrypcję. Otwórz żądanie pomocy technicznej platformy Azure, aby zwiększyć swoje liczba rdzeni.
 
-Do utworzenia tego środowiska, potrzebujesz najnowszej [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login). Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
+Do utworzenia tego środowiska, potrzebujesz najnowszej [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login). Najpierw utwórz grupę zasobów za pomocą polecenia [az group create](/cli/azure/group#az_group_create). W poniższym przykładzie pokazano tworzenie grupy zasobów o nazwie *myResourceGroup* w lokalizacji *eastus*:
 
 ```azurecli
 az group create --name myResourceGroup --location eastus

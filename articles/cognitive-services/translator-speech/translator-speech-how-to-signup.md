@@ -10,12 +10,13 @@ ms.component: translator-speech
 ms.topic: conceptual
 ms.date: 3/5/2018
 ms.author: v-jansko
-ms.openlocfilehash: 3261115cbb6bb00d3496b2f1a955e6cd94dc6acb
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ROBOTS: NOINDEX
+ms.openlocfilehash: 9a448f150e5dbd7bb3a0ba787d8af68032deecb6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45981732"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966957"
 ---
 # <a name="how-to-sign-up-for-the-translator-speech-api"></a>Jak zarejestrować się do interfejsu API tłumaczenia mowy
 

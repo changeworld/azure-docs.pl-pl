@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 8/21/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: e4bbf86c6cb7e827672fe279e86c8d3fd76e8e8b
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 18c0f8176a85eef79000fff8ed717ad7e57f20d8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43049128"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954844"
 ---
 # <a name="stream-azure-monitoring-data-to-an-event-hub-for-consumption-by-an-external-tool"></a>Stream danych monitorowania platformy Azure do Centrum zdarzeń do użycia przez narzędzie zewnętrzne
 
@@ -76,7 +76,7 @@ Zasoby platformy Azure tworzą dwa rodzaje danych monitorowania:
 Oba typy danych są wysyłane do Centrum zdarzeń za pomocą ustawienie diagnostyczne zasobu. [Postępuj zgodnie z tego przewodnika](./monitoring-stream-diagnostic-logs-to-event-hubs.md) skonfigurować ustawienie diagnostyczne zasobu definiuje od określonego zasobu. Ustaw ustawienie diagnostyczne zasobu dla każdego zasobu, z której chcesz zbierać dzienniki.
 
 > [!TIP]
-> Można użyć usługi Azure Policy, aby upewnić się, że każdy zasób w określonym zakresie zawsze skonfigurowano ustawienie diagnostyczne [przy użyciu efektu DeployIfNotExists w regule zasad](../azure-policy/policy-definition.md#policy-rule). Już dziś DeployIfNotExists jest obsługiwana tylko na wbudowane zasady.
+> Można użyć usługi Azure Policy, aby upewnić się, że każdy zasób w określonym zakresie zawsze skonfigurowano ustawienie diagnostyczne [przy użyciu efektu DeployIfNotExists w regule zasad](../governance/policy/concepts/definition-structure.md#policy-rule).
 
 ## <a name="guest-os-data"></a>Dane systemu operacyjnego gościa
 

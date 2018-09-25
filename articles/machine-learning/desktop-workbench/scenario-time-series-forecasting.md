@@ -16,14 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: anta
-ms.openlocfilehash: 3f32c9048c4b2002e7672b46a4f39e86ffa7b98e
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 934d37783165c2e57dcabd0ff764747e1ab4b65e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35647616"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946868"
 ---
 # <a name="energy-demand-time-series-forecasting"></a>Prognozowanie szeregów czasowych zapotrzebowania energii
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 
 Prognozowanie serii czasu jest zadaniem prognozowania przyszłych wartości w uporządkowanej w czasie sekwencji uwag. Jest to powszechny problem i ma aplikacji w wielu branżach. Na przykład sprzedaży detalicznej, firmy muszą prognozować sprzedaż przyszłych produktów, dzięki czemu mogą efektywnie organizować ich łańcuchami dostaw w celu spełnienia określonych wymagań. Podobnie pakiet dostarczania firmy muszą oszacować popyt na swoje usługi, dzięki czemu można zaplanować wymagania pracowników i tras dostaw wcześniej. W wielu przypadkach ryzyka finansowego niedokładne prognoz mogą być znaczące. W związku z tym funkcja prognozowania jest często krytyczne działanie firmy.
@@ -57,7 +62,7 @@ W tym scenariuszu przedstawiono konstrukcji rozwiązanie do prognozowania zapotr
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - [Konta platformy Azure](https://azure.microsoft.com/free/) (bezpłatne wersje próbne są dostępne).
-- Zainstalowana kopia programu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) następujące [przewodnika Szybki start dotyczącego instalacji](../service/quickstart-installation.md) zainstalować ten program i utworzyć obszar roboczy.
+- Zainstalowana kopia programu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) następujące [przewodnika Szybki start dotyczącego instalacji](quickstart-installation.md) zainstalować ten program i utworzyć obszar roboczy.
 - W tym przykładzie przyjęto założenie, że są uruchomione usługi Azure ML Workbench w systemie Windows 10 za pomocą [aparat platformy Docker](https://www.docker.com/) zainstalowane lokalnie. Jeśli używasz systemu macOS instrukcje są w dużym stopniu takie same.
 - Azure maszyny Learning operacjonalizacji oprogramowania zainstalowane przy użyciu środowiska lokalnego wdrażania, konfigurowania oraz konta zarządzania modelami utworzona zgodnie z opisem w tym [przewodnik](./model-management-configuration.md).
 - Ten przykładowy skrypt wymaga zaktualizowania instalacji Pandas do wersji 0.20.3 lub nowszej i zainstalować pakiet matplotlib. Kliknij przycisk *Otwórz wiersz polecenia* z *pliku* menu w aplikacji Workbench i uruchom następujące polecenia, aby zainstalować te zależności:

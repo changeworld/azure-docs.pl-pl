@@ -16,24 +16,24 @@ ms.workload: infrastructure-services
 ms.date: 06/23/2017
 ms.author: genli
 ms.custom: ''
-ms.openlocfilehash: 57ad5541bb7b61f8d26002168bb069fad3058965
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.openlocfilehash: 5267ce5c50e8a57843f0bc54165289b38013ad91
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43339079"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986119"
 ---
 # <a name="configure-a-virtual-network-classic-using-a-network-configuration-file"></a>Skonfiguruj sieć wirtualna (klasyczna) przy użyciu pliku konfiguracji sieci
 > [!IMPORTANT]
 > Platforma Azure ma dwa różne modele wdrażania do tworzenia i pracy z zasobami: [usługi Resource Manager i Model Klasyczny](../resource-manager-deployment-model.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Ten artykuł dotyczy klasycznego modelu wdrożenia. Firma Microsoft zaleca się, że większości nowych wdrożeń korzystać z modelu wdrażania usługi Resource Manager.
 
-Możesz można tworzyć i konfigurować sieci wirtualne (klasyczne) przy użyciu pliku konfiguracji sieci przy użyciu interfejsu wiersza polecenia platformy Azure (CLI) 1.0 lub programu Azure PowerShell. Nie można utworzyć lub zmodyfikować sieci wirtualnej za pomocą modelu wdrażania usługi Azure Resource Manager przy użyciu pliku konfiguracji sieci. Nie można użyć witryny Azure portal do tworzenia lub modyfikowania sieć wirtualna (klasyczna) przy użyciu pliku konfiguracji sieci, jednak można użyć witryny Azure portal można utworzyć sieci wirtualnej (wersja klasyczna), bez użycia pliku konfiguracyjnego sieci.
+Możesz można tworzyć i konfigurować sieci wirtualne (klasyczne) przy użyciu pliku konfiguracji sieci przy użyciu platformy Azure klasyczny interfejs wiersza polecenia (CLI) lub programu Azure PowerShell. Nie można utworzyć lub zmodyfikować sieci wirtualnej za pomocą modelu wdrażania usługi Azure Resource Manager przy użyciu pliku konfiguracji sieci. Nie można użyć witryny Azure portal do tworzenia lub modyfikowania sieć wirtualna (klasyczna) przy użyciu pliku konfiguracji sieci, jednak można użyć witryny Azure portal można utworzyć sieci wirtualnej (wersja klasyczna), bez użycia pliku konfiguracyjnego sieci.
 
 Tworzenie i konfigurowanie sieci wirtualnej (klasycznej) z plikiem konfiguracyjnym sieci wymaga eksportowania, zmieniania i importowania pliku.
 
 ## <a name="export"></a>Eksportuj plik konfiguracji sieci
 
-Aby wyeksportować plik konfiguracji sieci, można użyć programu PowerShell lub interfejsu wiersza polecenia platformy Azure. PowerShell eksportuje plik XML, gdy wiersza polecenia platformy Azure eksportuje plik w formacie json.
+Aby wyeksportować plik konfiguracji sieci, można użyć programu PowerShell lub Azure klasyczny interfejs wiersza polecenia. Środowiska PowerShell eksportuje plik XML, natomiast Azure klasyczny interfejs wiersza polecenia eksportuje plik w formacie json.
 
 ### <a name="powershell"></a>PowerShell
  
@@ -44,9 +44,9 @@ Aby wyeksportować plik konfiguracji sieci, można użyć programu PowerShell lu
     Get-AzureVNetConfig -ExportToFile c:\azure\networkconfig.xml
     ```
 
-### <a name="azure-cli-10"></a>Interfejs wiersza polecenia platformy Azure CLI w wersji 1.0
+### <a name="azure-classic-cli"></a>Klasyczny interfejs wiersza polecenia Azure
 
-1. [Zainstaluj interfejs wiersza polecenia Azure 1.0](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Wykonaj pozostałe kroki w wierszu polecenia interfejsu wiersza polecenia platformy Azure w wersji 1.0.
+1. [Instalowanie platformy Azure klasyczny interfejs wiersza polecenia](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Wykonaj pozostałe kroki z klasycznego wiersza polecenia.
 2. Zaloguj się do platformy Azure, wprowadzając `azure login` polecenia.
 3. Upewnij się, znajdujesz się w trybie asm, wprowadzając `azure config mode asm` polecenia.
 4. Zmień katalog (i upewnij się, istnieje) i nazwę pliku w następującym poleceniu zgodnie z potrzebami, następnie uruchom polecenie, aby wyeksportować plik konfiguracji sieci:
@@ -57,7 +57,7 @@ Aby wyeksportować plik konfiguracji sieci, można użyć programu PowerShell lu
 
 ## <a name="create-or-modify-a-network-configuration-file"></a>Utwórz lub zmodyfikuj plik konfiguracji sieci
 
-Plik konfiguracji sieci jest plik XML (w przypadku używania programu PowerShell) lub plik w formacie json (w przypadku używania wiersza polecenia platformy Azure). Możesz edytować plik w dowolnej tekstu lub edytorze XML/json. [Ustawienia schemat pliku konfiguracji sieci](https://msdn.microsoft.com/library/azure/jj157100.aspx) artykułu zawiera szczegółowe informacje dla wszystkich ustawień. Aby uzyskać dodatkowe opisy ustawień, zobacz [wyświetlić sieci wirtualnych i ustawienia](manage-virtual-network.md#view-virtual-networks-and-settings). Zmiany wprowadzone do pliku:
+Plik konfiguracji sieci jest plik XML (w przypadku używania programu PowerShell) lub plik w formacie json (w przypadku używania klasyczny interfejs wiersza polecenia). Możesz edytować plik w dowolnej tekstu lub edytorze XML/json. [Ustawienia schemat pliku konfiguracji sieci](https://msdn.microsoft.com/library/azure/jj157100.aspx) artykułu zawiera szczegółowe informacje dla wszystkich ustawień. Aby uzyskać dodatkowe opisy ustawień, zobacz [wyświetlić sieci wirtualnych i ustawienia](manage-virtual-network.md#view-virtual-networks-and-settings). Zmiany wprowadzone do pliku:
 
 - Muszą być zgodne z schemat lub importowania, który plik konfiguracji sieci zakończy się niepowodzeniem.
 - Zastąp wszystkie istniejące ustawienia sieci dla Twojej subskrypcji, a więc należy zachować wyjątkową ostrożność podczas wprowadzania zmian. Na przykład odwołanie przykład pliki konfiguracji sieci, które należy wykonać. Powiedz, oryginalnym plik zawiera dwa **VirtualNetworkSite** wystąpień i możesz zmienić, jak pokazano w przykładach. Podczas importowania pliku Azure usuwa sieć wirtualną dla **VirtualNetworkSite** wystąpienia, które zostały usunięte w pliku. W tym scenariuszu uproszczone przyjmuje, nie zasoby były w sieci wirtualnej, jak w przypadku, nie można usunąć sieci wirtualnej i importowania może zakończyć się niepowodzeniem.
@@ -92,7 +92,7 @@ Poniższy przykładowy plik konfiguracji sieci tworzy sieć wirtualną o nazwie 
 
 Plik konfiguracji sieci, który został wyeksportowany zawiera zawartość nie, można skopiować kod XML w poprzednim przykładzie i wkleić go do nowego pliku.
 
-### <a name="example-json-for-use-with-the-azure-cli-10"></a>Przykładowy plik JSON do użytku z interfejsu wiersza polecenia platformy Azure w wersji 1.0
+### <a name="example-json-for-use-with-the-classic-cli"></a>Przykładowy plik JSON do użytku z programem klasyczny interfejs wiersza polecenia
 
 Poniższy przykładowy plik konfiguracji sieci tworzy sieć wirtualną o nazwie *myVirtualNetwork* z przestrzeni adresowej *10.0.0.0/16* w *wschodnie stany USA* platformy Azure region. Sieć wirtualna zawiera jedną podsieć o nazwie *mySubnet* z prefiksem adresu *10.0.0.0/24*.
 
@@ -121,7 +121,7 @@ Plik konfiguracji sieci, który został wyeksportowany zawiera zawartość nie, 
 
 ## <a name="import"></a>Importuj plik konfiguracji sieci
 
-Aby zaimportować plik konfiguracji sieci, można użyć programu PowerShell lub interfejsu wiersza polecenia platformy Azure. PowerShell importuje plik XML, gdy wiersza polecenia platformy Azure importuje plik w formacie json. Jeśli import zakończy się niepowodzeniem, upewnij się, że plik spełnia [schemat konfiguracji sieci](https://msdn.microsoft.com/library/azure/jj157100.aspx). 
+Aby zaimportować plik konfiguracji sieci, można użyć programu PowerShell lub klasyczny interfejs wiersza polecenia. PowerShell importuje plik XML, gdy klasyczny interfejs wiersza polecenia importuje plik w formacie json. Jeśli import zakończy się niepowodzeniem, upewnij się, że plik spełnia [schemat konfiguracji sieci](https://msdn.microsoft.com/library/azure/jj157100.aspx). 
 
 ### <a name="powershell"></a>PowerShell
  
@@ -132,9 +132,9 @@ Aby zaimportować plik konfiguracji sieci, można użyć programu PowerShell lub
     Set-AzureVNetConfig  -ConfigurationPath c:\azure\networkconfig.xml
     ```
 
-### <a name="azure-cli-10"></a>Interfejs wiersza polecenia platformy Azure CLI w wersji 1.0
+### <a name="azure-classic-cli"></a>Klasyczny interfejs wiersza polecenia Azure
 
-1. [Zainstaluj interfejs wiersza polecenia Azure 1.0](../cli-install-nodejs.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Wykonaj pozostałe kroki w wierszu polecenia interfejsu wiersza polecenia platformy Azure w wersji 1.0.
+1. [Instalowanie platformy Azure klasyczny interfejs wiersza polecenia](/cli/azure/install-cli-version-1.0.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Wykonaj pozostałe kroki z klasycznego wiersza polecenia.
 2. Zaloguj się do platformy Azure, wprowadzając `azure login` polecenia.
 3. Upewnij się, znajdujesz się w trybie asm, wprowadzając `azure config mode asm` polecenia.
 4. Zmień katalog i nazwę pliku, w poniższym poleceniu zgodnie z potrzebami, następnie uruchom polecenie, aby zaimportować plik konfiguracji sieci:

@@ -9,16 +9,16 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 0df08eaa2de27dbcc1ea93db1e040d81d071bf80
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: ac117994140f96ec993e4fed739626f736ad7efc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126007"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965283"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Użyj alertów do wyzwalania elementu runbook usługi Azure Automation
 
-Możesz użyć [usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md?toc=%2fazure%2fautomation%2ftoc.json) monitorować metryki na poziomie podstawowym i dzienników dla większości usług platformy Azure. Elementy runbook usługi Azure Automation można wywoływać za pomocą [grup akcji](../monitoring-and-diagnostics/monitoring-action-groups.md?toc=%2fazure%2fautomation%2ftoc.json) lub za pomocą alertów klasycznych do automatyzowania zadań na podstawie alertów. W tym artykule przedstawiono sposób konfigurowania i uruchamiania elementu runbook za pomocą alertów.
+Możesz użyć [usługi Azure Monitor](../azure-monitor/overview.md?toc=%2fazure%2fautomation%2ftoc.json) monitorować metryki na poziomie podstawowym i dzienników dla większości usług platformy Azure. Elementy runbook usługi Azure Automation można wywoływać za pomocą [grup akcji](../monitoring-and-diagnostics/monitoring-action-groups.md?toc=%2fazure%2fautomation%2ftoc.json) lub za pomocą alertów klasycznych do automatyzowania zadań na podstawie alertów. W tym artykule przedstawiono sposób konfigurowania i uruchamiania elementu runbook za pomocą alertów.
 
 ## <a name="alert-types"></a>Typy alertów
 
@@ -32,8 +32,8 @@ Jeśli alert wywołuje element runbook, to rzeczywiste wywołanie jest wysłanie
 |Alerty  |Opis|Ładunek schematu  |
 |---------|---------|---------|
 |[Klasycznego alertu metryki](../monitoring-and-diagnostics/insights-alerts-portal.md?toc=%2fazure%2fautomation%2ftoc.json)    |Wysyła powiadomienie, gdy dowolnej metryce poziom platformy spełnia określony warunek. Na przykład, gdy wartość **procent użycia procesora CPU** na maszynie Wirtualnej jest większa niż **90** ostatnich 5 minut.| [Schemat ładunku alertu metryki klasy](../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)         |
-|[Alert dziennika aktywności](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Wysyła powiadomienie, gdy wszystkie nowe zdarzenie w dzienniku aktywności platformy Azure jest zgodna z określonych warunków. Na przykład, gdy `Delete VM` operacja odbywa się w **myProductionResourceGroup** lub gdy nowe zdarzenie kondycji usługi platformy Azure za pomocą **Active** zostanie wyświetlony stan.| [Schemat ładunku alertu dziennika aktywności](../monitoring-and-diagnostics/insights-auditlog-to-webhook-email.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)        |
-|[Niemal w czasie rzeczywistym alertu metryki](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Wysyła powiadomienie szybciej niż alertów dotyczących metryk, gdy co najmniej jedną metrykę poziom platformy spełniają określone warunki. Na przykład, gdy wartość **procent użycia procesora CPU** na maszynie Wirtualnej jest większa niż **90**, a następnie jego wartość **sieci w** jest większa niż **500 MB** w ciągu ostatnich 5 minuty.| [Niemal w czasie rzeczywistym ładunku alertu metryki schematu](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)          |
+|[Alert dziennika aktywności](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Wysyła powiadomienie, gdy wszystkie nowe zdarzenie w dzienniku aktywności platformy Azure jest zgodna z określonych warunków. Na przykład, gdy `Delete VM` operacja odbywa się w **myProductionResourceGroup** lub gdy nowe zdarzenie kondycji usługi platformy Azure za pomocą **Active** zostanie wyświetlony stan.| [Schemat ładunku alertu dziennika aktywności](../monitoring-and-diagnostics/monitoring-activity-log-alerts-webhook.md)        |
+|[Niemal w czasie rzeczywistym alertu metryki](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md?toc=%2fazure%2fautomation%2ftoc.json)    |Wysyła powiadomienie szybciej niż alertów dotyczących metryk, gdy co najmniej jedną metrykę poziom platformy spełniają określone warunki. Na przykład, gdy wartość **procent użycia procesora CPU** na maszynie Wirtualnej jest większa niż **90**, a następnie jego wartość **sieci w** jest większa niż **500 MB** w ciągu ostatnich 5 minuty.| [Niemal w czasie rzeczywistym ładunku alertu metryki schematu](../monitoring-and-diagnostics/insights-webhooks-alerts.md?toc=%2fazure%2fautomation%2ftoc.json#payload-schema)          |
 
 Ponieważ dane, które są dostarczane przez każdy typ alertu jest inny, każdego typu alertu odbywa się inaczej. W następnej sekcji dowiesz się, jak utworzyć element runbook w celu obsługi różnych typów alertów.
 

@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/06/2017
-ms.openlocfilehash: 4a49ccff68003cf7b81a7d945176992a2893d1ac
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ROBOTS: NOINDEX
+ms.openlocfilehash: c01198a78a32c460bd147e1e160358271b80eef5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972635"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950635"
 ---
 # <a name="consuming-web-services"></a>Korzystanie z usług internetowych
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 Po wdrożeniu modelu jako usługi sieci web w czasie rzeczywistym można przesyła dane i uzyskiwać prognozy z różnych platform i aplikacji. Usługa sieci web w czasie rzeczywistym uwidacznia interfejs API REST w celu uzyskania prognozy. Umożliwia wysyłanie danych do usługi sieci web w formacie jednego lub wielu wierszy można pobrać co najmniej jeden prognozy w danym momencie.
 
 Za pomocą [usługi Azure Machine Learning w sieci Web](model-management-service-deploy.md), aplikacja zewnętrzna synchronicznie komunikuje się z model predykcyjny przez wywołania HTTP POST na adres URL usługi. Aby wywołać usługę sieci web, aplikacja kliencka musi określić klucz interfejsu API, który jest tworzony podczas wdrożenia przewidywanie i dane żądania są umieszczane w treści żądania POST.

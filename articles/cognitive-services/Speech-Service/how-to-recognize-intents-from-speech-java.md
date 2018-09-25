@@ -8,14 +8,14 @@ author: wolfma61
 ms.service: cognitive-services
 ms.technology: Speech
 ms.topic: article
-ms.date: 07/16/2018
+ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 80c672526c0a93f9ee346415298a25b25ae3fb77
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: cc83c05f4e4183fd7c945cec831d905781b92e6f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144300"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991831"
 ---
 # <a name="recognize-intents-from-speech-by-using-the-speech-sdk-for-java"></a>Rozpoznawanie intencji z wypowiedzi za pomocą mowy zestawu SDK dla języka Java
 

@@ -10,12 +10,13 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 906b71f8312db843745f2e49fd211b010d8a6c83
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 6ee61a38615ac8cbf4c4fcf6b8d631c5f9a8f7d1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368242"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962780"
 ---
 # <a name="bing-speech-websocket-protocol"></a>Protokół WebSocket rozpoznawania mowy Bing
 

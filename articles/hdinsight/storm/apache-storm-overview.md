@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 02/27/2018
 ms.author: jasonh
-ms.openlocfilehash: 3446488a5dc2bdd1bb01b39bc25b60137fcbc331
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 353ab846c576a9b133cf640bbc856ec6eddf73f4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43040051"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982903"
 ---
 # <a name="what-is-apache-storm-on-azure-hdinsight"></a>Co to jest Apache Storm w usłudze Azure HDInsight?
 
@@ -84,7 +84,7 @@ Nowy klaster Storm można utworzyć w usłudze HDInsight w ciągu kilku minut. A
 
   Aby uzyskać więcej informacji, zobacz następujące artykuły: [Manage HDInsight using the Ambari Web UI](../hdinsight-hadoop-manage-ambari.md) (Zarządzanie usługą HDInsight przy użyciu interfejsu webowego Ambari) i [Monitor and manage using the Storm UI](apache-storm-deploy-monitor-topology-linux.md#monitor-and-manage-storm-ui) (Monitorowanie i zarządzanie przy użyciu interfejsu Storm).
 
-* __Program Azure PowerShell i interfejs wiersza polecenia platformy Azure__: program Azure PowerShell i interfejs wiersza polecenia platformy Azure udostępniają narzędzia wiersza polecenia, których można używać w systemie klienta do pracy z usługą HDInsight i innymi usługami platformy Azure.
+* __Klasyczny interfejs wiersza polecenia platformy Azure i programu PowerShell Azure__: programu PowerShell i klasyczny interfejs wiersza polecenia, które są zarówno udostępniają narzędzia wiersza polecenia, których można w systemie klienta do pracy z HDInsight i innymi usługami platformy Azure.
 
 * __Integracja z programem Visual Studio__: narzędzia Azure Data Lake Tools for Visual Studio obejmują szablony projektów umożliwiające tworzenie topologii Storm języka C# przy użyciu platformy SCP.Net. Narzędzia Data Lake Tools oferują również umożliwiające wdrażanie i monitorowanie rozwiązań systemu Storm w usłudze HDInsight oraz zarządzanie nimi.
 

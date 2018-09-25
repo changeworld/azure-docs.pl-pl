@@ -1,6 +1,6 @@
 ---
-title: Obsługiwane ustawienia regionalne i języki w niestandardowej usługi rozpoznawania mowy na platformie Azure | Dokumentacja firmy Microsoft
-description: Przegląd obsługiwanych języków usługi mowy niestandardowe w usługach kognitywnych.
+title: Obsługiwane ustawienia regionalne i strony języków w usłudze Custom Speech Service na platformie Azure | Dokumentacja firmy Microsoft
+description: Omówienie obsługiwanych języków Custom Speech Service w usługach Cognitive Services.
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
@@ -9,26 +9,27 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 02/08/2017
 ms.author: panosper
-ms.openlocfilehash: c378fd951f9cd04884f44fbec5accb5d9a886bfe
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 1f186681c7e46d2e47ed7eee55c8f61290c48fcb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346888"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987530"
 ---
-# <a name="supported-locales-in-custom-speech-service"></a>Obsługiwanych ustawień regionalnych w niestandardowej usługi rozpoznawania mowy
-Usługa mowy niestandardowe obecnie obsługuje dostosowywania modeli w następujących lokalizacjach:
+# <a name="supported-locales-in-custom-speech-service"></a>Obsługiwane ustawienia regionalne w usłudze Custom Speech Service
+Custom Speech Service obecnie obsługuje dostosowywania modeli w następujących lokalizacjach:
 
 | Typ modelu | Obsługa języków |
 |----|-----|
-| Modele akustycznego | Angielski (US) (en US) |
-| Modele języka | Angielski (US) (en US), chiński (zh-CN) |
+| Modeli akustycznych | Angielski (US) (en US) |
+| Modele językowe | Angielski (US) (en US), chiński (zh-CN) |
 
-Dostosowywanie modelu akustycznego jest obsługiwana tylko w US English, ale importowanie danych akustycznych chińskiej wersji językowej jest obsługiwane na potrzeby testowania w trybie offline niestandardowych modeli języka chińskiego.
+Dostosowanie modelu akustycznego jest tylko obsługiwana w US English, importowanie chińskich dane akustyczne jest obsługiwane na potrzeby testowania niestandardowych modeli języka chińskiego w trybie offline.
 
-Przed podjęciem działania należy wybrać odpowiednie ustawienia regionalne. Bieżące ustawienia regionalne jest wskazane tytułu tabeli dla wszystkich danych, modelu i strony. Aby zmienić ustawienia regionalne, kliknij przycisk "Zmień ustawienia regionalne" znajdujący się pod tytułem tabeli. Spowoduje to przejście do strony potwierdzenia ustawień regionalnych. Kliknij przycisk "OK", aby powrócić do tabeli.
+Przed podjęciem jakiegokolwiek działania należy wybrać odpowiednie ustawienia regionalne. Bieżące ustawienia regionalne są wskazywane w tytule tabeli na wszystkich stronach danych, modelu i wdrożenia. Aby zmienić ustawienia regionalne, kliknij przycisk "Zmień ustawienia regionalne" znajdujący się pod tytułem tabeli. Spowoduje to przejście do strony potwierdzenia ustawień regionalnych. Kliknij przycisk OK, aby powrócić do tabeli.
 
-Należy stosować kolejne kroki
-* Dowiedz się [sposób tworzenia niestandardowych modelu akustycznego](cognitive-services-custom-speech-create-acoustic-model.md) aby poprawić dokładność rozpoznawania
-* Dowiedz się [sposobu tworzenia modelu języków niestandardowych](cognitive-services-custom-speech-create-language-model.md) zwiększające szybkość rozpoznawania
-* Postępuj zgodnie z [wytyczne przekształcania](cognitive-services-custom-speech-transcription-guidelines.md) przygotowania danych
+Należy stosować do następnych kroków
+* Dowiedz się, [jak utworzyć niestandardowy model akustyczny](cognitive-services-custom-speech-create-acoustic-model.md) w celu zwiększenia dokładności rozpoznawania
+* Dowiedz się, [sposobu tworzenia modelu języka niestandardowego](cognitive-services-custom-speech-create-language-model.md) można zwiększyć szybkość rozpoznawania
+* Postępuj zgodnie z [wytycznych transkrypcji](cognitive-services-custom-speech-transcription-guidelines.md) do przygotowania danych

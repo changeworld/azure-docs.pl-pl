@@ -13,14 +13,19 @@ ms.custom: mvc
 ms.devlang: ''
 ms.topic: article
 ms.date: 11/22/2017
-ms.openlocfilehash: 83e1f14db317f59ab2063a9d020adbdb6fe78e5f
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5d52433a32d8dc764c7535dacf5872e55f0082ac
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35650455"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995520"
 ---
 # <a name="deep-learning-for-predictive-maintenance-real-world-scenarios"></a>Uczenie głębokie dla konserwacji predykcyjnej scenariuszy w rzeczywistych warunkach
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Uczenie głębokie jest jednym z najbardziej popularnych trendy w usłudze machine learning i aplikacjami do wielu obszarów, takich jak:
 - Samochody korzystania i związane z robotyką.
@@ -75,7 +80,7 @@ To polecenie dostarcza klucz uwierzytelniania, który będzie używany przy uży
 az ml experiment prepare --target docker --run-configuration docker
 ```
 
-Zaleca się uruchamiania na [Data Science Virtual Machine (dsvm dystrybucji) dla systemu Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) dla wymagania dotyczące pamięci i dysku. Po skonfigurowaniu maszyny DSVM przygotować zdalnym środowisku platformy Docker przy użyciu dwóch następujących poleceń:
+Zaleca się uruchamiania na [Data Science Virtual Machine (dsvm dystrybucji) dla systemu Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) dla wymagania dotyczące pamięci i dysku. Po skonfigurowaniu maszyny DSVM przygotować zdalnym środowisku platformy Docker przy użyciu dwóch następujących poleceń:
 
 ```
 az ml computetarget attach remotedocker --name [Connection_Name] --address [VM_IP_Address] --username [VM_Username] --password [VM_UserPassword]

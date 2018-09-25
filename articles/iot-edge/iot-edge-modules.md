@@ -8,12 +8,12 @@ ms.date: 02/15/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 9064e0da6dde6c4b30235adf771f06a4f25d709a
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 76b0bab0f2eb34d7283d38eb0442f4f2f2083db3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42061366"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995386"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Omówienie modułów usługi Azure IoT Edge
 
@@ -67,7 +67,7 @@ Twin twin = await client.GetTwinAsync();
 
 ## <a name="offline-capabilities"></a>Możliwości w trybie offline
 
-Usługa Azure IoT Edge obsługuje operacje w trybie offline na urządzeniach usługi IoT Edge. Te możliwości są ograniczone teraz i opracowywane są dodatkowe scenariusze. 
+Usługa Azure IoT Edge obsługuje operacje w trybie offline na urządzeniach usługi IoT Edge. Te możliwości są ograniczone do teraz. 
 
 Moduły usługi IoT Edge może być w trybie offline przez dłuższy czas, tak długo, jak są spełnione następujące wymagania: 
 
@@ -75,6 +75,8 @@ Moduły usługi IoT Edge może być w trybie offline przez dłuższy czas, tak d
 * **Moduły nie ma potrzeby ponownego uwierzytelnienia za pomocą usługi IoT Edge hub w trybie offline**. Moduły mogą tylko uwierzytelniać z koncentratorami Edge, które mają aktywne połączenie z usługą IoT hub. Moduły muszą zostać ponownie uwierzytelniony, jeśli ponownym jakiegokolwiek powodu. Moduły nadal może wysyłać komunikaty do Centrum usługi Edge, po upływie ich tokenu sygnatury dostępu Współdzielonego. Po wznowieniu działania łączności, Centrum usługi Edge żądania nowy token z modułu i zweryfikuje go z usługą IoT hub. Jeśli to się powiedzie, Centrum usługi Edge przekazuje komunikaty modułu, który ma być przechowywany, nawet wiadomości, które zostały wysłane, gdy wygasł token modułu. 
 * **Moduł, który wysyłane wiadomości w trybie offline nadal działa po wznowieniu działania łączności**. Po połączeniu usługi IoT Hub, Centrum usługi Edge wymagane jest sprawdzenie nowy token modułu (Jeśli poprzedni wygasła) przed można przesyłać dalej wiadomości modułu. Jeśli moduł nie jest w stanie udzielić nowego tokenu, Centrum usługi Edge nie może działać na modułu przechowywanych wiadomości. 
 * **Centrum usługi Edge miejscem na dysku do przechowywania wiadomości**. Domyślnie komunikaty są przechowywane w kontenerze Centrum usługi Edge w systemie plików. Brak opcji konfiguracji, aby określić zainstalowany wolumin do przechowywania komunikatów, zamiast tego. W obu przypadkach musi istnieć miejsca do przechowywania komunikatów odroczonego dostarczanie do usługi IoT Hub.  
+
+Dodatkowe możliwości w trybie offline są dostępne w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [opis rozszerzony możliwości w trybie offline dla usługi IoT Edge, urządzeń, moduły i urządzeń podrzędnych](offline-capabilities.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
  - [Omówienie środowiska uruchomieniowego usługi Azure IoT Edge oraz jej architektury][lnk-runtime]

@@ -1,6 +1,6 @@
 ---
 title: Konfigurowanie pliku wymiany na Maszynę wirtualną systemu Linux za pomocą pakietu cloud-init | Dokumentacja firmy Microsoft
-description: Jak używać pakietu cloud-init do Konfigurowanie pliku wymiany w maszynie Wirtualnej systemu Linux podczas tworzenia przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
+description: Jak konfigurowanie pliku wymiany w maszynie Wirtualnej systemu Linux podczas tworzenia przy użyciu wiersza polecenia platformy Azure za pomocą pakietu cloud-init
 services: virtual-machines-linux
 documentationcenter: ''
 author: rickstercdn
@@ -14,12 +14,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 11/29/2017
 ms.author: rclaus
-ms.openlocfilehash: d58795182e432ef75604e4db18d05e8d2231e215
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 2a5a878b7c8c3b6126d90b978241fbcb237d8db7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35755822"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946310"
 ---
 # <a name="use-cloud-init-to-configure-a-swapfile-on-a-linux-vm"></a>Konfigurowanie pliku wymiany na Maszynę wirtualną systemu Linux za pomocą pakietu cloud-init
 W tym artykule dowiesz się, jak używać [pakietu cloud-init](https://cloudinit.readthedocs.io) na konfigurowanie pliku wymiany w różnych dystrybucjach systemu Linux. Swapfile tradycyjnie zostało skonfigurowane przez Linux Agent (WALA) oparte na które dystrybucji wymagany jeden.  W tym dokumencie opisują proces tworzenia pliku wymiany na żądanie w czasie inicjowania obsługi administracyjnej za pomocą pakietu cloud-init.  Aby uzyskać więcej informacji o tym, jak pakietu cloud-init działa natywnie na platformie Azure i obsługiwane dystrybucje systemu Linux, zobacz [Omówienie pakietu cloud-init](using-cloud-init.md)

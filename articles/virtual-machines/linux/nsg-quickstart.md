@@ -1,6 +1,6 @@
 ---
-title: Otwieranie portów dla maszyny Wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0 | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak otworzyć port / utworzyć punkt końcowy do maszyny Wirtualnej systemu Linux przy użyciu modelu wdrażania usługi Azure resource manager i interfejsu wiersza polecenia platformy Azure w wersji 2.0
+title: Otwieranie portów dla maszyny Wirtualnej z systemem Linux przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak otworzyć port / utworzyć punkt końcowy do maszyny Wirtualnej systemu Linux przy użyciu modelu wdrażania usługi Azure resource manager i interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -14,17 +14,19 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: cynthn
-ms.openlocfilehash: 7125523b051441a2547560ff3af650ccd91f07a0
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 4244520fa30fece53e1d01e50044cfeca496066c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37928893"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973341"
 ---
 # <a name="open-ports-and-endpoints-to-a-linux-vm-with-the-azure-cli"></a>Otwórz porty i punkty końcowe do maszyny Wirtualnej z systemem Linux przy użyciu wiersza polecenia platformy Azure
-Otwieranie portu lub utworzenie punktu końcowego, na maszynę wirtualną (VM) na platformie Azure przez utworzenie filtru sieciowego w podsieci lub interfejsu sieciowego maszyny Wirtualnej. Te filtry, które kontroli ruchu przychodzącego i wychodzącego, możesz umieścić na sieciowej grupy zabezpieczeń, który jest dołączony do zasobu, który odbiera ruch. Użyjmy typowym przykładem ruchu w sieci web na porcie 80. W tym artykule pokazano, jak otworzyć port do maszyny Wirtualnej przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0. 
 
-Aby utworzyć sieciową grupę zabezpieczeń i reguł, potrzebujesz najnowszej [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
+Otwieranie portu lub utworzenie punktu końcowego, na maszynę wirtualną (VM) na platformie Azure przez utworzenie filtru sieciowego w podsieci lub interfejsu sieciowego maszyny Wirtualnej. Te filtry, które kontroli ruchu przychodzącego i wychodzącego, możesz umieścić na sieciowej grupy zabezpieczeń, który jest dołączony do zasobu, który odbiera ruch. Użyjmy typowym przykładem ruchu w sieci web na porcie 80. W tym artykule pokazano, jak otworzyć port do maszyny Wirtualnej przy użyciu wiersza polecenia platformy Azure. 
+
+
+Aby utworzyć sieciową grupę zabezpieczeń i reguł, potrzebujesz najnowszej [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
 
 W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru zawierają *myResourceGroup*, *myNetworkSecurityGroup*, i *myVnet*.
 

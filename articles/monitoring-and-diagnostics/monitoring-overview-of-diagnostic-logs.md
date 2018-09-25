@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 9d2a20ce681ea7e7c4ff2f9b492653e9d9a57b2b
-ms.sourcegitcommit: 156364c3363f651509a17d1d61cf8480aaf72d1a
+ms.openlocfilehash: 630c8e5f48ba475755c3c9ffe632fcba086437e4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39248170"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983122"
 ---
 # <a name="collect-and-consume-log-data-from-your-azure-resources"></a>Zbieranie i używanie dane dzienników z zasobów platformy Azure
 
@@ -45,7 +45,7 @@ Oto kilka rzeczy, które można zrobić za pomocą dzienników diagnostycznych:
 Można użyć konta magazynu lub przestrzeni nazw usługi Event Hubs, która nie znajduje się w tej samej subskrypcji co emitowane dzienniki. Użytkownik, który konfiguruje ustawienie, musi mieć odpowiedni dostęp RBAC do obu subskrypcji.
 
 > [!NOTE]
->  Obecnie nie można zarchiwizować dane do magazynu konta, do którego za zabezpieczonej sieci wirtualnej.
+>  Obecnie nie można zarchiwizować dzienniki przepływu sieciowych do magazynu konta, do którego za zabezpieczonej sieci wirtualnej.
 
 > [!WARNING]
 > Od 1 listopada 2018 r. format danych dzienników na koncie magazynu zmieni się na JSON Lines. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./monitor-diagnostic-logs-append-blobs.md) 
@@ -145,9 +145,9 @@ Można połączyć te parametry, aby włączyć wiele opcji danych wyjściowych.
 
 Obecnie nie można skonfigurować dzierżawy ustawień diagnostycznych przy użyciu programu Azure PowerShell.
 
-### <a name="enable-collection-of-resource-diagnostic-logs-via-azure-cli-20"></a>Włączanie zbierania dzienników diagnostycznych zasobów za pomocą interfejsu wiersza polecenia platformy Azure w wersji 2.0
+### <a name="enable-collection-of-resource-diagnostic-logs-via-the-azure-cli"></a>Włączanie zbierania dzienników diagnostycznych zasobów za pomocą wiersza polecenia platformy Azure
 
-Aby włączyć zbieranie dzienników diagnostycznych zasobów za pomocą interfejsu wiersza polecenia platformy Azure w wersji 2.0, należy użyć [tworzenie az monitor diagnostic-settings](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) polecenia.
+Aby włączyć zbieranie dzienników diagnostycznych zasobów za pomocą wiersza polecenia platformy Azure, należy użyć [tworzenie az monitor diagnostic-settings](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) polecenia.
 
 Aby włączyć magazyn dzienników diagnostycznych w ramach konta magazynu:
 

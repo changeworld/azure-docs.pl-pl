@@ -1,31 +1,31 @@
 ---
-title: Często zadawane pytania dotyczące usługi Azure Cost Management | Dokumentacja firmy Microsoft
-description: Zawiera odpowiedzi na niektóre często zadawane pytania dotyczące usługi Azure Cost Management.
+title: Często zadawane pytania dotyczące platformy Cloudyn na platformie Azure | Dokumentacja firmy Microsoft
+description: Zawiera odpowiedzi na niektóre często zadawane pytania dotyczące platformy Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 07/20/2018
+ms.date: 09/18/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 255056390cdbdbee49eba47f8168618929b386c8
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: 2126875a18d4a6581629ea1c8362236242a666a8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187261"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961029"
 ---
-# <a name="frequently-asked-questions-for-azure-cost-management"></a>Często zadawane pytania dotyczące usługi Azure Cost Management
+# <a name="frequently-asked-questions-for-cloudyn"></a>Często zadawane pytania dotyczące platformy Cloudyn
 
-W tym artykule opisano często zadawane pytania dotyczące usługi Azure Cost Management (znana też jako Cloudyn). Jeśli masz pytania dotyczące zarządzania kosztami, możesz poprosić je na [często zadawane pytania dotyczące usługi Azure Cost Management](https://social.msdn.microsoft.com/Forums/en-US/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn).
+W tym artykule opisano często zadawane pytania dotyczące platformy Cloudyn. Jeśli masz pytania dotyczące platformy Cloudyn, można zadawać w [często zadawane pytania dotyczące platformy Cloudyn](https://social.msdn.microsoft.com/Forums/231bf072-2c71-4121-8339-ac9d868137b9/faqs-for-azure-cost-management-by-cloudyn?forum=Cloudyn).
 
 ## <a name="how-can-i-resolve-common-indirect-enterprise-setup-problems"></a>Jak można rozwiązać typowe problemy z instalacją pośrednich enterprise?
 
 Przy pierwszym użyciu portalu Cloudyn, może pojawić się następujące komunikaty, jeśli jesteś użytkownikiem Enterprise Agreement, Cloud Solution Provider (CSP):
 
-- "Określony klucz interfejsu API nie jest kluczem najwyższego poziomu rejestrowania" wyświetlana w **Ustaw zapasowych usługi Azure Cost Management** kreatora.
+- "Określony klucz interfejsu API nie jest kluczem najwyższego poziomu rejestrowania" wyświetlana w **Ustaw Cloudyn** kreatora.
 - "Rejestracja bezpośrednia — nie" wyświetlana w portalu Enterprise Agreement.
 - "Brak danych użycia został znaleziony w ciągu ostatnich 30 dni. Skontaktuj się z dystrybutora, aby upewnić się, że znaczników został włączony dla Twojego konta platformy Azure"wyświetlana w portalu Cloudyn.
 
@@ -35,9 +35,9 @@ Oto sposoby rozwiązywania tych problemów:
 
 1. Odsprzedawca musi włączyć _znaczniki_ dla Twojego konta. Aby uzyskać instrukcje, zapoznaj się z dokumentem [Indirect Customer Onboarding Guide (Przewodnik dołączania klienta pośredniego)](https://ea.azure.com/api/v3Help/v2IndirectCustomerOnboardingGuide).
 
-2. Możesz wygenerować klucz Enterprise Agreement platformy Azure do użycia z usługą Cloudyn. Aby uzyskać instrukcje, zobacz [Dodawanie Your Azure EA](https://support.cloudyn.com/hc/en-us/articles/210429585-Adding-Your-AZURE-EA) lub [jak znaleźć swój identyfikator rejestracji EA i klucz interfejsu API](https://youtu.be/u_phLs_udig).
+2. Możesz wygenerować klucz Enterprise Agreement platformy Azure do użycia z usługą Cloudyn. Aby uzyskać instrukcje, zobacz [Dodawanie Your Azure EA](https://support.cloudyn.com/hc/articles/210429585-Adding-Your-AZURE-EA) lub [jak znaleźć swój identyfikator rejestracji EA i klucz interfejsu API](https://youtu.be/u_phLs_udig).
 
-Tylko administrator usług platformy Azure może włączyć usługę Cost Management. Uprawnienia współadministratora są niewystarczające.
+Tylko administrator usługi platformy Azure można włączyć rozwiązania Cloudyn. Uprawnienia współadministratora są niewystarczające.
 
 Przed wygenerowaniem klucza interfejsu API usługi Azure Enterprise Agreement do skonfigurowania Cloudyn, należy włączyć interfejs API rozliczeń platformy Azure, postępując zgodnie z instrukcjami w temacie:
 
@@ -74,7 +74,7 @@ Po wykonaniu powyższych kroków, możesz wyświetlić zalecenia optymalizator w
 
 Najpierw Przyjrzyjmy się najbardziej typowy scenariusz, który powoduje, że konta użytkowników uzyskać *initiallySuspended*.
 
-> Admin1 może być użytkownikiem dostawcy rozwiązań w chmurze firmy Microsoft lub umowy Enterprise Agreement. Jego organizacja jest gotowy do uruchomienia przy użyciu zarządzania kosztami.  Użytkownik rejestruje się w witrynie Azure portal i zaloguje się do portalu Cloudyn. Jako osoba, która rejestruje usługę Cost Management i loguje się do portalu Cloudyn, staje się on *głównych administratorów*. Admin1 nie utworzyć kont użytkowników. Jednak przy użyciu portalu Cloudyn, on tworzenia konta platformy Azure i konfiguruje hierarchii jednostek. Admin1 informuje Admin2, administrator dzierżawy, który musi zarejestrować w usłudze Cost Management i zaloguj się do portalu Cloudyn.
+> Admin1 może być użytkownikiem dostawcy rozwiązań w chmurze firmy Microsoft lub umowy Enterprise Agreement. Jego organizacja jest gotowy rozpocząć korzystanie z platformy Cloudyn.  Użytkownik rejestruje się w witrynie Azure portal i zaloguje się do portalu Cloudyn. Jako osoba, która rejestruje usługi Cloudyn i loguje się do portalu Cloudyn, staje się on *głównych administratorów*. Admin1 nie utworzyć kont użytkowników. Jednak przy użyciu portalu Cloudyn, on tworzenia konta platformy Azure i konfiguruje hierarchii jednostek. Admin1 informuje Admin2, administrator dzierżawy, który musi zarejestrować w usłudze Cloudyn i zaloguj się do portalu Cloudyn.
 
 > Admin2 rejestruje się w witrynie Azure portal. Jednak gdy próbuje zalogować się do portalu Cloudyn, emitowany błąd informujący o tym, jego konto jest **zawieszone**. Administrator podstawowy Admin1, jest powiadamiany o zawieszenie konta. Admin1 musi aktywować firmy Admin2 konto i przyznać *dostęp do jednostki administracyjnej* dla odpowiednich jednostek i umożliwia użytkownika zarządzania dostępem i aktywne konta użytkownika.
 
@@ -94,13 +94,13 @@ Jeśli zmienisz swój adres e-mail w rozwiązaniu Cloudyn z domyślny adres na p
 
 Firma Microsoft zaleca utworzenie co najmniej dwóch kont administratorów platformy Cloudyn, w przypadku, gdy jedno z kont zostanie zablokowane.
 
-Jeśli nie można zalogować się do portalu Cloudyn, upewnij się, że używasz poprawny adres URL zarządzania kosztami platformy Azure do logowania się na platformie Cloudyn. Użyj [ https://azure.cloudyn.com ](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
+Jeśli nie można zalogować się do portalu Cloudyn, upewnij się, że używasz prawidłowego adresu URL do logowania się na platformie Cloudyn. Użyj [ https://azure.cloudyn.com ](https://ms.portal.azure.com/#blade/Microsoft_Azure_CostManagement/CloudynMainBlade).
 
 Należy unikać bezpośredniego adresu URL Cloudyn https://app.cloudyn.com.
 
 ## <a name="how-do-i-activate-unactivated-accounts-with-azure-credentials"></a>Jak uaktywnić nieaktywowani kont przy użyciu poświadczeń platformy Azure?
 
-Jak najszybciej kont systemu Azure są wykrywane przez firmę Cloudyn, danych rozwiązania cost natychmiast znajduje się w raportów na podstawie kosztów. Jednak na platformie Cloudyn dostarczający dane użycia i wydajności, należy zarejestrować swoje poświadczenia platformy Azure dla kont. Aby uzyskać instrukcje, zobacz [Dodawanie usługi Azure Resource Manager](https://support.cloudyn.com/hc/en-us/articles/212784085-Adding-Azure-Resource-Manager).
+Jak najszybciej kont systemu Azure są wykrywane przez firmę Cloudyn, danych rozwiązania cost natychmiast znajduje się w raportów na podstawie kosztów. Jednak na platformie Cloudyn dostarczający dane użycia i wydajności, należy zarejestrować swoje poświadczenia platformy Azure dla kont. Aby uzyskać instrukcje, zobacz [Dodawanie usługi Azure Resource Manager](https://support.cloudyn.com/hc/articles/212784085-Adding-Azure-Resource-Manager).
 
 Aby dodać poświadczenia platformy Azure dla konta w portalu Cloudyn, wybierz symbol edycji z prawej strony nazwy konta, a nie w ramach subskrypcji.
 
@@ -110,8 +110,8 @@ Dopóki poświadczenia platformy Azure zostaną dodane do rozwiązania Cloudyn, 
 
 Dodatkowe jednostki są używane do dodawania dodatkowych umowy Enterprise z subskrypcją platformy Cloudyn. Poniższe linki zawierają opis sposobu dodawania dodatkowych jednostek:
 
-- [Dodawanie jednostki](https://support.cloudyn.com/hc/en-us/articles/212016145-Adding-an-Entity) artykułu
-- [Definiowanie hierarchii przy użyciu jednostek kosztów](https://support.cloudyn.com/hc/en-us/articles/115005142529-Video-Defining-your-hierarchy-with-Cost-Entities) wideo
+- [Dodawanie jednostki](https://support.cloudyn.com/hc/articles/212016145-Adding-an-Entity) artykułu
+- [Definiowanie hierarchii przy użyciu jednostek kosztów](https://support.cloudyn.com/hc/articles/115005142529-Video-Defining-your-hierarchy-with-Cost-Entities) wideo
 
 Dla dostawców usług kryptograficznych:
 
@@ -141,7 +141,7 @@ Jeśli występuje opóźnienie wysyłania danych z platformy Azure do rozwiązan
 
 ## <a name="cost-fluctuations-in-cloudyn-cost-reports"></a>Koszt wahania w raportach kosztów Cloudyn
 
-Raportach kosztów może być wahania kosztów, zawsze wtedy, gdy dostawców usług w chmurze wysyłania zaktualizowanych plików rozliczeń. Koszty obsługi wystąpić, gdy nowe pliki są odbierane z dostawcy usług w chmurze poza zwykłe codziennie lub co miesiąc, raportowanie harmonogramu. Koszt zmiany nie są wynikiem ponowne obliczenie Cloudyn. 
+Raportach kosztów może być wahania kosztów, zawsze wtedy, gdy dostawców usług w chmurze wysyłania zaktualizowanych plików rozliczeń. Koszty obsługi wystąpić, gdy nowe pliki są odbierane z dostawcy usług w chmurze poza zwykłe codziennie lub co miesiąc, raportowanie harmonogramu. Koszt zmiany nie są wynikiem ponowne obliczenie Cloudyn.
 
 W ciągu miesiąca wszystkie pliki rozliczeń wysyłane przez dostawcę usługi w chmurze znajdują się szacowanie codziennego koszty. Czasami dane są często aktualizowane — od czasu do czasu kilka razy dziennie. Aktualizacje są za pomocą usług AWS częściej niż platformy Azure. Całkowite koszty powinny być trwałe, po zakończeniu obliczeń rozliczenia dla poprzedniego miesiąca i ostateczną rozliczeń została odebrana. Zazwyczaj przez 10 dnia miesiąca.
 
@@ -155,7 +155,7 @@ Aby uzyskać instrukcje, zobacz [skonfigurować bezpośredni dostęp do programu
 
 Po dodaniu dostęp do usługi Azure Resource Manager i dane są zbierane, powinien zostać wyświetlony **Optymalizator** opcji. Aby aktywować dostęp do usługi Azure Resource Manager, zobacz [jak aktywować nieaktywowani kont przy użyciu poświadczeń platformy Azure?](#how-do-i-activate-unactivated-accounts-with-azure-credentials)
 
-## <a name="is-cost-managementcloudyn-agent-based"></a>Oparte na agentach zarządzania kosztami/platformy Cloudyn
+## <a name="is-cloudyn-agent-based"></a>Oparte na agentach Cloudyn
 
 Nie. Agenci nie są używane. Dane metryk maszyny wirtualnej platformy Azure dla maszyn wirtualnych są zbierane z interfejsu API usługi Microsoft Insights. Jeśli chcesz zbierać dane metryk z maszyn wirtualnych platformy Azure muszą mieć włączonych ustawień diagnostycznych.
 

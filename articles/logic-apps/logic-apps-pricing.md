@@ -1,70 +1,77 @@
 ---
-title: Cennik i rozliczenia — usługi Azure Logic Apps | Dokumentacja firmy Microsoft
+title: Ceny i rozliczanie — Azure Logic Apps | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak działa cennik i rozliczenia dla usługi Azure Logic Apps
 services: logic-apps
-author: kevinlam1
-manager: jeconnoc
-editor: ''
-documentationcenter: ''
-ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
 ms.service: logic-apps
-ms.workload: logic-apps
-ms.tgt_pltfrm: ''
-ms.devlang: ''
-ms.topic: article
-ms.date: 05/11/2018
+ms.suite: logic-apps
+author: kevinlam1
 ms.author: klam
-ms.openlocfilehash: e1702de42be8510412a6479b594a198a84d15ae2
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.reviewer: estfan, LADocs
+ms.assetid: f8f528f5-51c5-4006-b571-54ef74532f32
+ms.topic: article
+ms.date: 09/24/2018
+ms.openlocfilehash: b75fba2ba0e9fa922b1252378e0bab326cada7d2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35299260"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974310"
 ---
-# <a name="logic-apps-pricing-model"></a>Model cen aplikacji logiki
+# <a name="pricing-model-for-azure-logic-apps"></a>Model cen usługi Azure Logic Apps
 
-Można utworzyć i uruchomić zautomatyzowanych skalowalnej integracji przepływów pracy w chmurze za pomocą usługi Azure Logic Apps. Poniżej przedstawiono szczegółowe informacje o rozliczeniach i cenach dla usługi Logic Apps. 
+Można tworzyć i uruchamiać przepływy pracy zautomatyzowanych skalowalnych integracji w chmurze z usługą Azure Logic Apps. Poniżej przedstawiono szczegółowe informacje o współdziałaniu rozliczeniach i cenach dla usługi Logic Apps. 
 
-## <a name="consumption-pricing-model"></a>Użycie modelu cenowego
+<a name="consumption-pricing"></a>
 
-Dzięki aplikacjom logiki nowo utworzony płaci się tylko w przypadku należy użyć. Nowe aplikacje logiki Użyj planu zużycia i modelu cenowego, co oznacza, że są naliczane wykonania działania wykonywane przez wystąpienie aplikacji logiki. Każdy krok w definicji aplikacji logiki jest akcji, która zawiera wyzwalacze, kroki przepływu sterowania wywołania akcje wbudowane i wywołania łączników. Aby uzyskać więcej informacji, zobacz [cennik aplikacje logiki](https://azure.microsoft.com/pricing/details/logic-apps).
+## <a name="consumption-pricing-model"></a>Użycie modelu cen
+
+W przypadku nowych aplikacji logiki, które tworzysz przy użyciu usługi Logic Apps publicznego lub "global" płacisz tylko za rzeczywiste użycie. Te aplikacje logiki użyć, na podstawie użycia planu i modelu cen, co oznacza, że opłaty są naliczane każdą akcję wykonaną przez aplikację logiki. Każdy krok w definicji aplikacji logiki jest akcję, która zawiera wyzwalacze, kroki przepływu sterowania, wywołania wbudowane akcje i wywołań łączników. Aby uzyskać więcej informacji, zobacz [Logic Apps — cennik](https://azure.microsoft.com/pricing/details/logic-apps).
+
+<a name="fixed-pricing"></a>
+
+## <a name="fixed-pricing-model"></a>Naprawiono modelu cen
+
+> [!NOTE]
+> Środowisko usługi integracji znajduje się w *prywatnej wersji zapoznawczej*. Aby zażądać dostępu, [utworzyć Twoje żądanie dołączenia do tutaj](https://aka.ms/iseprivatepreview).
+
+W przypadku nowych aplikacji logiki, które utworzyłeś z [ *środowisko usługi integracji* (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), czyli prywatny izolowane wystąpienie aplikacji logiki, korzystającą z dedykowanych zasobów, płatność stałą cenę miesięczną dla wbudowane akcje i łączniki standardowe etykietą ISE. Twoje ISE zawiera jeden łącznik przedsiębiorstwa bez dodatkowych opłat, podczas gdy dodatkowe łączniki dla przedsiębiorstw są naliczane na podstawie których cena za użycie przedsiębiorstwa. Aby uzyskać więcej informacji, zobacz [Logic Apps — cennik](https://azure.microsoft.com/pricing/details/logic-apps).
 
 <a name="triggers"></a>
 
 ## <a name="triggers"></a>Wyzwalacze
 
-Wyzwalacze są specjalne działania, które Utwórz wystąpienie aplikacji logiki w przypadku określonego zdarzenia. Wyzwalacze pełniących różne sposoby, które mają wpływ na sposób taryfowych aplikacji logiki.
+Wyzwalacze to stosowanie specjalnych działań, które utworzyć wystąpienie aplikacji logiki w przypadku określonego zdarzenia. Wyzwalacze działają w różny sposób, co wpływa na sposób aplikacja logiki jest taryfowe.
 
-* **Wyzwalacz sondowania** — tego wyzwalacza stale sprawdza punktu końcowego dla wiadomości, które spełniają kryteria służące do tworzenia wystąpienia aplikacji logiki i uruchamianie przepływu pracy. Każde żądanie sondowania zlicza jak wykonanie i są naliczane nawet wtedy, gdy jest tworzone żadne wystąpienie aplikacji logiki. Aby określić interwał sondowania, należy skonfigurować za pomocą projektanta aplikacji logiki wyzwalacza.
+* **Wyzwalacz sondowania** — ten wyzwalacz sprawdza stale punkt końcowy dla komunikatów, które spełniają kryteria służące do tworzenia wystąpienie aplikacji logiki i uruchamiania przepływu pracy. Każde żądanie sondowania jest liczone jako środowisko wykonawcze i są naliczane nawet wtedy, gdy nie wystąpienie aplikacji logiki jest tworzony. Aby określić interwał sondowania, należy skonfigurować wyzwalacz za pomocą projektanta aplikacji logiki.
 
   [!INCLUDE [logic-apps-polling-trigger-non-standard-metering](../../includes/logic-apps-polling-trigger-non-standard-metering.md)]
 
-* **Wyzwalacz Webhook** — tego wyzwalacza czeka na klienta wysłać żądania do określonego punktu końcowego. Zlicza każde żądanie wysłane do punktu końcowego elementu webhook jak wykonanie akcji. Na przykład wyzwalacz żądania i HTTP elementu Webhook są obie wyzwalaczy elementu webhook.
+* **Wyzwalacza elementu Webhook** — ten wyzwalacz czeka na klienta wysłać żądanie do określonego punktu końcowego. Każdego żądania wysyłanego do punktu końcowego elementu webhook jest liczone jako środowisko wykonawcze akcji. Na przykład wyzwalacz żądania i element Webhook protokołu HTTP są oba wyzwalaczy elementu webhook.
 
-* **Wyzwalacz cyklu** — tego wyzwalacza tworzy wystąpienie aplikacji logiki oparte na interwał cyklu, skonfigurowanego w wyzwalaczu. Na przykład można ustawić górę wyzwalacz cyklu co trzy dni lub bardziej złożonych zgodnie z harmonogramem.
+* **Wyzwalacz cykliczny** — ten wyzwalacz tworzy wystąpienie aplikacji logiki na podstawie skonfigurowanego w wyzwalaczu interwału cyklu. Na przykład można ustawić górę wyzwalacz cykliczny, które jest uruchamiane co trzy dni lub bardziej złożone zgodnie z harmonogramem.
 
-Wyzwalacz wykonaniami można znaleźć w okienku przeglądu aplikację logiki w sekcji historii wyzwalacza.
+W okienku przeglądu aplikacji logiki w sekcji historii wyzwalania, można znaleźć wykonań wyzwalacza.
 
 ## <a name="actions"></a>Akcje
 
-Wbudowane akcje, takie jak akcje wywołać HTTP, funkcje platformy Azure lub interfejsu API zarządzania, a także sterować przepływem kroki są mierzone jako działania natywnego, które mają ich odpowiednich typów. Akcje, które wywołują [łączniki](https://docs.microsoft.com/connectors) ma typ "ApiConnection". Te łączniki są sklasyfikowane jako standard lub enterprise łączników, które są naliczane oparte na odpowiednich [cennik][pricing]. 
+Wbudowane akcje, takie jak akcje wywołania HTTP, usługi Azure Functions lub usługa API Management, a także kontrolować przepływ kroków są mierzone jako natywny akcje, które mają ich odpowiednich typów. Akcje, które wywołują [łączników](https://docs.microsoft.com/connectors) mieć typu "ApiConnection". Te łączniki są klasyfikowane jako standard lub enterprise łączniki, które są oparte na odpowiednich [ceny][pricing]. 
 
-Wszystkie akcje pomyślnie i niepomyślnie wykonywania są zliczane i mierzone jako wykonania akcji. Jednak akcje, które są pomijane, ze względu na warunki unmet lub akcje, które nie działają, ponieważ aplikacji logiki przerwane przed ukończeniem, nie są liczone jak wykonania akcji. Aplikacje logiki wyłączone nie można utworzyć wystąpienia nowych wystąpień, więc ich nie są naliczane opłaty, gdy są one wyłączone.
+Wszystkie akcje pomyślnie i niepomyślnie wykonywania są liczone i naliczane jako wykonania akcji. Jednak akcje, które są pomijane, z powodu niewypełnienia warunków ani akcji, które nie działają, ponieważ aplikacja logiki przerwane przed ukończeniem, nie są traktowane jako wykonania akcji. Aplikacje logiki wyłączone nie można utworzyć wystąpienia nowe wystąpienia, więc one za nie są naliczane, gdy są one wyłączone.
 
 > [!NOTE]
-> Po wyłączeniu aplikacji logiki, wszystkie uruchomione wystąpienia może potrwać pewien czas, zanim całkowicie zatrzymać.
+> Po wyłączeniu aplikację logiki obecnie uruchomione wystąpienia może potrwać pewien czas, zanim całkowite zatrzymanie.
 
-Akcje, które są uruchamiane wewnątrz pętli są liczone każdy cykl w pętli. Na przykład jednej akcji w pętli "for each", który przetwarza listę 10 elementu jest liczony mnożąc liczbę elementów listy (10) przez liczbę akcji w pętli (1) plus jeden uruchamiania pętli. Tak, na przykład obliczenie jest (10 * 1) + 1, co prowadzi do 11 wykonania akcji.
+Akcje, które są uruchamiane wewnątrz pętli są liczone na każdy cykl w pętli. Na przykład jako jedna akcja w pętli "for each", która przetwarza listę 10 elementów jest liczony mnożąc liczbę elementów listy (10) przez liczbę działań w pętli (1) plus jeden do uruchamiania w pętli. Na przykład obliczenie jest więc (10 * 1) + 1, co skutkuje 11 wykonania akcji.
 
 ## <a name="integration-account-usage"></a>Użycie konta integracji
 
-Na podstawie zużycia użycia obejmuje [konta integracji](logic-apps-enterprise-integration-create-integration-account.md) gdzie można eksplorować, opracowanie i przetestowanie [B2B/EDI](logic-apps-enterprise-integration-b2b.md) i [przetwarzania XML](logic-apps-enterprise-integration-xml.md) funkcje w aplikacjach logiki na nie dodatkowych kosztów. Można wybrać jedno konto integracji według regionu i magazynu do konkretnego [liczby artefakty](../logic-apps/logic-apps-limits-and-config.md), na przykład partnerami handlowymi EDI i umowy, map, schematów, zestawy, certyfikaty i konfiguracje partii.
+Obejmuje użycie na podstawie użycia [konta integracji](logic-apps-enterprise-integration-create-integration-account.md) gdzie możesz eksplorować, opracowywania i testowania [B2B/EDI](logic-apps-enterprise-integration-b2b.md) i [przetwarzania XML](logic-apps-enterprise-integration-xml.md) bez funkcji Logic Apps dodatkowych kosztów. Może mieć jedno konto integracji na region i magazynu do określonych [liczby artefaktów](../logic-apps/logic-apps-limits-and-config.md), takie jak partnerzy handlowi EDI i umowy, mapy, schematów, zestawy, certyfikatów i konfiguracji partii.
 
-Logic Apps oferuje również konta integracji basic i standard z obsługiwanych SLA aplikacji logiki. Możesz użyć kont podstawową integrację, gdy użytkownik ma być używany tylko obsługa komunikatów lub działa jako partner małych firm, która ma relację handlowym partnera z większą jednostki biznesowe. Konta standardowe integracji obsługuje bardziej złożonych relacji B2B i zwiększyć liczbę obiektów, którymi można zarządzać. Aby uzyskać więcej informacji, zobacz [cennik platformy Azure](https://azure.microsoft.com/pricing/details/logic-apps).
+Usługa Logic Apps oferuje również kont integracji podstawowa i standardowa obsługiwanych SLA aplikacji logiki. Możesz użyć kont integracji w warstwie podstawowa, albo ma być używany tylko komunikatów lub działa jako partner małych firm, która ma relację partnerów handlowych z większych jednostkach biznesowych. Konta integracji w warstwie standardowa obsługują bardziej złożone relacje B2B i zwiększyć liczbę jednostek, którymi można zarządzać. Aby uzyskać więcej informacji, zobacz [cennik usługi Azure](https://azure.microsoft.com/pricing/details/logic-apps).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Dowiedz się więcej o aplikacjach Logic Apps][whatis]
+* [Dowiedz się więcej o usłudze Logic Apps][whatis]
 * [Tworzenie pierwszej aplikacji logiki][create]
 
 [pricing]: https://azure.microsoft.com/pricing/details/logic-apps/

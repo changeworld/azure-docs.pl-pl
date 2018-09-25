@@ -9,14 +9,15 @@ ms.topic: article
 ms.date: 11/15/2017
 ms.author: rogarana
 ms.component: disks
-ms.openlocfilehash: 4fa8341b4d1953e3c59d345f45853f4c9a4a2941
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 8f5c33a63fd932bedd7f1de3d3ae47306b3ea3e4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715458"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954487"
 ---
 # <a name="about-disks-storage-for-azure-windows-vms"></a>Magazyn dysków dla maszyn wirtualnych Windows Azure — informacje
+
 Podobnie jak dowolny inny komputer maszyn wirtualnych na platformie Azure używać dysków jako miejsce do przechowywania systemu operacyjnego, aplikacji i danych. Wszystkie maszyny wirtualne platformy Azure ma co najmniej dwa dyski — dysk systemu operacyjnego Windows oraz dyski tymczasowe. Dysk systemu operacyjnego jest tworzone na podstawie obrazu, a dysk systemu operacyjnego i obrazu są wirtualne dyski twarde (VHD) przechowywane na koncie usługi Azure storage. Maszyny wirtualne mogą także mieć co najmniej jeden dysk danych, które również są przechowywane jako wirtualne dyski twarde. 
 
 W tym artykule firma Microsoft będzie omówiono różne sposoby zastosowania dysków, a następnie omówiono różnych typów dysków można tworzyć i używać. W tym artykule jest także dostępna dla [maszyn wirtualnych systemu Linux](../linux/about-disks-and-vhds.md).
@@ -28,22 +29,23 @@ W tym artykule firma Microsoft będzie omówiono różne sposoby zastosowania dy
 Przyjrzyjmy, jak dyski są używane przez maszyny wirtualne.
 
 ### <a name="operating-system-disk"></a>Dysk systemu operacyjnego
-Do każdej maszyny wirtualnej ma jeden dysk dołączony systemu operacyjnego. Ma zarejestrowany jako dysk SATA i oznaczone jako dysk C: domyślnie. Ten dysk ma maksymalną pojemność wynoszącą 2048 gigabajtów (GB). 
+
+Do każdej maszyny wirtualnej ma jeden dysk dołączony systemu operacyjnego. Ma zarejestrowany jako dysk SATA i oznaczone jako dysk C: domyślnie. Ten dysk ma maksymalną pojemność wynoszącą 2048 gigabajtów (GB).
 
 ### <a name="temporary-disk"></a>Dysk tymczasowy
+
 Każda maszyna wirtualna zawiera dyski tymczasowe. Dysk tymczasowy udostępnia krótkoterminowy magazyn dla aplikacji i procesów i jest przeznaczone do przechowywania tylko dane, takie jak stronicowania lub plik wymiany. Dane na dysku tymczasowym mogą zostać utracone podczas [zdarzeń związanych z konserwacją](manage-availability.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json#understand-vm-reboots---maintenance-vs-downtime) lub po użytkownik [ponowne wdrożenie maszyny Wirtualnej](redeploy-to-new-node.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json). Podczas pomyślnego standardowa ponowny rozruch maszyny wirtualnej zostanie utrzymany danych na dysku tymczasowego. 
 
 Dysk tymczasowy jest oznaczony jako dysku D: domyślnie i używany do przechowywania pagefile.sys. Aby ponownie zamapować dysk inną literę dysku, zobacz [zmienić literę dysku tymczasowego Windows](change-drive-letter.md). Rozmiar dysku tymczasowego zależy od rozmiaru maszyny wirtualnej. Aby uzyskać więcej informacji, zobacz [maszyn wirtualnych rozmiary dla Windows](sizes.md).
 
 Aby uzyskać więcej informacji o używaniu platformy Azure na dysk tymczasowy, zobacz [opis dysku tymczasowego na Microsoft Azure Virtual Machines](https://blogs.msdn.microsoft.com/mast/2013/12/06/understanding-the-temporary-drive-on-windows-azure-virtual-machines/)
 
-
 ### <a name="data-disk"></a>Dysk z danymi
-Dysk danych to wirtualny dysk twardy, który jest dołączony do maszyny wirtualnej do przechowywania danych aplikacji lub innymi danymi, które należy zachować. Dyski danych są rejestrowane jako dyski SCSI i są oznaczone literą, który wybierzesz. Każdy dysk z danymi ma maksymalną pojemność wynoszącą 4095 GB. Rozmiar maszyny wirtualnej Określa, jak wiele dysków z danymi można dołączać i typ magazynu służy do obsługi dysków.
+
+Dysk danych to wirtualny dysk twardy, który jest dołączony do maszyny wirtualnej do przechowywania danych aplikacji lub innymi danymi, które należy zachować. Dyski danych są rejestrowane jako dyski SCSI i są oznaczone literą, który wybierzesz. Każdy dysk z danymi ma maksymalną pojemność wynoszącą 4095 GB, dyski zarządzane ma maksymalną pojemność wynoszącą 32 767 TiB. Rozmiar maszyny wirtualnej Określa, jak wiele dysków z danymi można dołączać i typ magazynu służy do obsługi dysków.
 
 > [!NOTE]
 > Aby uzyskać więcej informacji na temat pojemności maszyn wirtualnych, zobacz [maszyn wirtualnych rozmiary dla Windows](sizes.md).
-> 
 
 Platforma Azure utworzy dysk systemu operacyjnego, podczas tworzenia maszyny wirtualnej z obrazu. Jeśli używasz obrazu, który zawiera dyski danych, platforma Azure utworzy również dyski z danymi podczas tworzenia maszyny wirtualnej. W przeciwnym razie możesz dodać dyski z danymi, po utworzeniu maszyny wirtualnej.
 
@@ -52,12 +54,11 @@ Można dodać dysków z danymi do maszyny wirtualnej w dowolnym momencie przez *
 
 [!INCLUDE [storage-about-vhds-and-disks-windows-and-linux](../../../includes/storage-about-vhds-and-disks-windows-and-linux.md)]
 
-## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>Jedno zalecenie ostatniego: Użyj TRIM z niezarządzanych dysków w warstwie standardowa 
+## <a name="one-last-recommendation-use-trim-with-unmanaged-standard-disks"></a>Jedno zalecenie ostatniego: Użyj TRIM z niezarządzanych dysków w warstwie standardowa
 
-Jeśli używasz niezarządzanych dysków w warstwie standardowa (HDD), należy włączyć PRZYCINANIE. TRIM odrzuca nieużywanych bloków na dysku, dzięki czemu możesz naliczana tylko za rzeczywiście używasz magazynu. To zmniejszyć koszty Jeśli utworzysz dużych plików, a następnie je usunąć. 
+Jeśli używasz niezarządzanych dysków w warstwie standardowa (HDD), należy włączyć PRZYCINANIE. TRIM odrzuca nieużywanych bloków na dysku, dzięki czemu możesz naliczana tylko za rzeczywiście używasz magazynu. To zmniejszyć koszty Jeśli utworzysz dużych plików, a następnie je usunąć.
 
 Można uruchomić to polecenie, aby sprawdzić ustawienie PRZYCINANIA. Otwórz wiersz polecenia na maszynie Wirtualnej Windows i wpisz:
-
 
 ```
 fsutil behavior query DisableDeleteNotify

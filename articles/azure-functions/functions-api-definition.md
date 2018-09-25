@@ -10,15 +10,18 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.author: alkarche
-ms.openlocfilehash: 68077e576fe3451627d8a5c8e1ff1b26d06d96b7
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 93e6b8c606c0a6d7abebeb515b938a45001757c1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44091850"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950373"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>Obsługa metadanych interfejsu OpenAPI 2.0 w usłudze Azure Functions (wersja zapoznawcza)
 Standard OpenAPI 2.0 (dawniej Swagger) Obsługa metadanych w usłudze Azure Functions jest funkcją w wersji zapoznawczej, która służy do pisania definicji interfejsu OpenAPI 2.0 w aplikacji funkcji. Ten plik może być następnie hostować przy użyciu aplikacji funkcji.
+
+> [!IMPORTANT]
+> Funkcja w wersji zapoznawczej interfejsu OpenAPI jest dostępna tylko obecnie w środowisku uruchomieniowym 1.x. Informacje na temat tworzenia aplikacji funkcji 1.x [można znaleźć tutaj](./functions-versions.md#creating-1x-apps).
 
 [Metadanych interfejsu OpenAPI](http://swagger.io/) umożliwia funkcji, który jest hostem interfejsu API REST do użycia przez cały szereg innych programów. Oprogramowanie zawiera oferty firmy Microsoft, takich jak usługi PowerApps i [funkcji API Apps w usłudze Azure App Service](../app-service/app-service-web-overview.md), narzędzi deweloperskich innych firm, takich jak [Postman](https://www.getpostman.com/docs/importing_swagger), i [wiele innych pakietów](http://swagger.io/tools/).
 

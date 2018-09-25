@@ -15,15 +15,15 @@ ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 42b157a63b76474f6c9482da75072878fe9291e0
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: b91b906db1307343a50ffc3be07d562091f2e335
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46466000"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978799"
 ---
 # <a name="log-analytics-data-security"></a>Bezpieczeństwo danych analizy dziennika
-Ten dokument jest przeznaczony do dostarczania informacji usługi Azure Log Analytics do uzupełnienia informacji o [Centrum zaufania systemu Azure](../security/security-microsoft-trust-center.md).  
+Ten dokument jest przeznaczony do dostarczają informacje charakterystyczne do usługi Log Analytics, która jest funkcją usługi Azure monitor, aby uzupełnić informacje na [Centrum zaufania systemu Azure](../security/security-microsoft-trust-center.md).  
 
 W tym artykule wyjaśniono, jak dane są zbierane, przetwarzane i zabezpieczane przez usługę Log Analytics. Korzystania z agentów, aby nawiązać połączenie z usługą sieci web, użyć programu System Center Operations Manager do zbierania danych operacyjnych lub pobierać dane z usługi Diagnostyka Azure do użycia przez usługę Log Analytics. 
 

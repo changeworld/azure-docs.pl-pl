@@ -17,12 +17,12 @@ ms.date: 02/08/2017
 ms.author: celested
 ms.reviewer: nacanuma
 ms.custom: aaddev
-ms.openlocfilehash: 8f7c6c2bef747d00188cac2c3601fdad739b92a8
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: eb43589b04be8b2b9c3be45d33c94592e97d308e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581547"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948268"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Wywołania Usługa do usługi przy użyciu poświadczeń klienta (wspólne hasło lub certyfikat)
 OAuth 2.0 przepływ przyznawania poświadczeń klienta pozwala usługi sieci web (*poufne klienta*) na potrzeby własne poświadczenia, zamiast personifikacji użytkownika, uwierzytelniania podczas wywoływania innej usługi sieci web. W tym scenariuszu klient jest zazwyczaj usługą sieci web warstwy środkowej, usługą demona lub witryny sieci web. Wyższy poziom gwarancji usługa Azure AD umożliwia również wywoływania usługi do użycia certyfikatu (zamiast wspólny klucz tajny) jako poświadczenie.
@@ -61,7 +61,7 @@ Korzystając z wspólny klucz tajny, żądania tokenu dostępu do usługi zawier
 | zasób |wymagane |Wprowadź identyfikator URI aplikacji na odbieranie usługi sieci web. Aby znaleźć identyfikator URI aplikacji w witrynie Azure portal, kliknij **usługi Azure Active Directory**, kliknij przycisk **rejestracje aplikacji**, kliknij aplikacji usługi, a następnie kliknij przycisk **ustawienia** i  **Właściwości**. |
 
 #### <a name="example"></a>Przykład
-W następującym WPISIE HTTP żądania tokenu dostępu dla https://service.contoso.com/ usługi sieci web. `client_id` Identyfikuje usługę sieci web, który żąda tokenu dostępu.
+Następujące żądania HTTP POST [token dostępu](access-tokens.md) dla https://service.contoso.com/ usługi sieci web. `client_id` Identyfikuje usługę sieci web, który żąda tokenu dostępu.
 
 ```
 POST /contoso.com/oauth2/token HTTP/1.1

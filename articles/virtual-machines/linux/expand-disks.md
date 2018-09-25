@@ -1,6 +1,6 @@
 ---
 title: Rozwiń wirtualnych dysków twardych na Maszynę wirtualną systemu Linux na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak rozszerzyć wirtualnych dysków twardych na Maszynę wirtualną systemu Linux przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
+description: Dowiedz się, jak rozszerzyć wirtualnych dysków twardych na Maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: roygara
@@ -14,21 +14,22 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/13/2017
 ms.author: rogarana
-ms.openlocfilehash: 96d50260663f00f5ae2e9b2e0495c91ecb5da4b2
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 0c2d4d1413b6cfd0b5e457e720b59c6c7b575092
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39421192"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974548"
 ---
 # <a name="how-to-expand-virtual-hard-disks-on-a-linux-vm-with-the-azure-cli"></a>Sposobu rozszerzania wirtualnych dysków twardych na Maszynę wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure
-Domyślny rozmiar wirtualnego dysku twardego systemu operacyjnego (OS) jest zazwyczaj 30 GB miejsca na maszynie wirtualnej systemu Linux (VM) na platformie Azure. Możesz [dodawanie dysków danych](add-disk.md) zapewnienie dodatkowego miejsca do magazynowania, ale może też chcesz rozszerzyć istniejący dysk danych. Ten artykuł szczegółowo opisuje sposobu rozszerzania dysków zarządzanych dla maszyny Wirtualnej systemu Linux przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0. 
+
+Domyślny rozmiar wirtualnego dysku twardego systemu operacyjnego (OS) jest zazwyczaj 30 GB miejsca na maszynie wirtualnej systemu Linux (VM) na platformie Azure. Możesz [dodawanie dysków danych](add-disk.md) zapewnienie dodatkowego miejsca do magazynowania, ale może też chcesz rozszerzyć istniejący dysk danych. Ten artykuł szczegółowo opisuje sposobu rozszerzania dysków zarządzanych dla maszyny Wirtualnej systemu Linux przy użyciu wiersza polecenia platformy Azure. 
 
 > [!WARNING]
 > Zawsze upewnij się, że utworzono kopię zapasową danych przed wykonaniem dysku zmiany rozmiaru operacji. Aby uzyskać więcej informacji, zobacz [tworzenie kopii zapasowych maszyn wirtualnych systemu Linux na platformie Azure](tutorial-backup-vms.md).
 
 ## <a name="expand-azure-managed-disk"></a>Rozwiń dyskach zarządzanych platformy Azure
-Upewnij się, że masz najnowszy [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
+Upewnij się, że masz najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
 
 Ten artykuł wymaga istniejącej maszyny Wirtualnej na platformie Azure przy użyciu co najmniej jeden dysk danych dołączony i przygotowane. Jeśli nie masz jeszcze maszyny Wirtualnej, którego można używać, zobacz [Utwórz i przygotuj Maszynę wirtualną z dyskami danych](tutorial-manage-disks.md#create-and-attach-disks).
 

@@ -1,6 +1,6 @@
 ---
-title: Tworzenie zestawu Azure skali, który używa niskiego priorytetu maszyny wirtualne (wersja zapoznawcza) | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć zestawy skalowania maszyny wirtualnej platformy Azure, które umożliwia kosztów maszyn wirtualnych o niskim priorytecie
+title: Tworzenie zestawu skalowania na platformie Azure, który używa maszyn wirtualnych o niskim priorytecie (wersja zapoznawcza) | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć zestawy skalowania maszyn wirtualnych platformy Azure, które umożliwia zaoszczędzić na kosztach maszyny wirtualne o niskim priorytecie
 services: virtual-machine-scale-sets
 documentationcenter: ''
 author: mmccrory
@@ -15,45 +15,45 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: memccror
-ms.openlocfilehash: 5c0726ea0da288d5306e28b101e4d3b59605b443
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: c0b4e3e0a924c1353f7732737670dee7ed45a62a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33894911"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953876"
 ---
-# <a name="low-priority-vms-on-scale-sets-preview"></a>Maszyny wirtualne niskiego priorytetu na zestawy skalowania (wersja zapoznawcza)
+# <a name="low-priority-vms-on-scale-sets-preview"></a>Maszyny wirtualne o niskim priorytecie, na zestawach skalowania (wersja zapoznawcza)
 
-Za pomocą niskiego priorytetu maszyny wirtualne na zestawy skalowania umożliwia można wykorzystać możliwości unutilized na znaczne oszczędności. W dowolnym momencie w czasie, gdy platforma Azure wymaga pojemność wstecz infrastruktury platformy Azure Wyklucz niskiego priorytetu maszyn wirtualnych. W związku z tym niskiego priorytetu maszyny wirtualne są doskonałe rozwiązanie dla obciążeń, które może obsłużyć przerw w działaniu jak przetwarzania zadań, środowiska i testowania, obliczeń dużych obciążeń i wsadowego.
+Przy użyciu maszyn wirtualnych o niskim priorytecie na zestawach skalowania pozwala wykorzystać możliwości unutilized na znaczne oszczędności. W dowolnym momencie w czasie, gdy platforma Azure wymaga pojemności ponownie infrastruktury platformy Azure Wyklucz maszyny wirtualne o niskim priorytecie. W związku z tym maszyny wirtualne o niskim priorytecie są doskonałe dla obciążeń, które może obsłużyć przerwy, takich jak wsadowo zadania, środowiska deweloperskie i testowe, obciążeń dużych obliczeń i.
 
-Ilość dostępnej pojemności unutilized mogą się różnić w zależności od rozmiaru, region, godzinę i. Podczas wdrażania maszyn wirtualnych niskiego priorytetu na skali ustawia Azure przydzielić maszyn wirtualnych, jeśli jest dostępna pojemność, ale nie istnieje żadne umowy SLA dla tych maszyn wirtualnych. Zestaw skali niskiego priorytetu jest wdrożony w domenie pojedynczej awarii i oferuje gwarancje nie wysokiej dostępności.
+Ilość dostępnej pojemności unutilized może się różnić w zależności od rozmiaru, region, godzinę i. Podczas wdrażania maszyn wirtualnych o niskim priorytecie w skali ustawia Azure przydzielić maszyn wirtualnych, jeśli jest dostępna pojemność, ale nie ma umowy SLA dla tych maszyn wirtualnych. Zestaw skalowania o niskim priorytecie jest wdrożony w domenie pojedynczej awarii i oferuje gwarancje nie wysokiej dostępności.
 
-## <a name="eviction-policy"></a>Zasady wykluczania
+## <a name="eviction-policy"></a>Zasady eksmisji
 
-Podczas tworzenia zestawy skalowania o niskim priorytecie, można ustawić zasady wykluczenia, *Deallocate* (ustawienie domyślne) lub *usunąć*. 
+Podczas tworzenia zestawów skalowania o niskim priorytecie, można ustawić zasady eksmisji, *Deallocate* (ustawienie domyślne) lub *Usuń*. 
 
-*Deallocate* zasad przenosi wykluczonym maszyn wirtualnych do zatrzymana alokację stanu, co umożliwia wdrożenie wykluczonym wystąpień. Jednak nie ma gwarancji, że przydział powiedzie się. Deallocated maszyn wirtualnych zostanie zaliczony limitu przydziału wystąpienia zestawu skali i zostanie naliczona dla podstawowych dysków. 
+*Deallocate* zasad przenosi wykluczonym maszyn wirtualnych do stanu zatrzymana bez alokacji, umożliwiając ponowne wdrażanie wystąpień wykluczone. Jednak nie ma żadnej gwarancji, że alokacji zostanie wykonana pomyślnie. Cofnięto alokację maszyny wirtualne będą uwzględniane w limicie przydziału wystąpienia zestawu skalowania, a opłata wyniesie dla podstawowych dysków. 
 
-Jeśli chcesz maszyn wirtualnych w Twojej zestaw ma zostać usunięty, gdy są one wykluczaniu skalowania niskiego priorytetu, możesz ustawić zasady wykluczania *usunąć*. Usuń zasady wykluczenia można utworzyć nowych maszyn wirtualnych, zwiększając właściwość count wystąpienia zestawu skali. Wykluczone maszyn wirtualnych zostaną usunięte wraz z ich odpowiednie dyski i dlatego użytkownik nie zostanie obciążona dla magazynu. Umożliwia także funkcję skalowania automatycznego skalowania zestawów automatycznie spróbuj i kompensacji wykluczonym maszyn wirtualnych, jednak nie ma gwarancji, że przydział powiedzie się. Zaleca się, że tylko funkcja automatycznego skalowania na zestawy skalowania niskiego priorytetu podczas ustawiania zasady wykluczania Usuń, aby uniknąć kosztów dysków i naciśnięcie klawisza limity przydziału. 
+Jeśli chcesz maszyn wirtualnych w zestawie do usunięcia, gdy są one wykluczona skalowania o niskim priorytecie, można ustawić zasady eksmisji *Usuń*. Usuń zasady eksmisji można tworzyć nowe maszyny wirtualne, zwiększając właściwości liczba wystąpień zestawu skalowania. Wykluczone maszyny wirtualne zostaną usunięte wraz z ich odpowiednie dyski i w związku z tym użytkownik nie zostanie obciążona do przechowywania. Umożliwia także funkcja automatycznego skalowania, zestawów skalowania i automatycznie spróbuj kompensuje wykluczonym maszyn wirtualnych, jednak nie ma żadnej gwarancji, że alokacji zostanie wykonana pomyślnie. Zalecane jest, że używasz tylko z funkcji automatycznego skalowania na zestawach skalowania o niskim priorytecie po ustawieniu zasady eksmisji, można usunąć, aby uniknąć kosztów na dyskach i osiągnięcia limitów przydziału. 
 
 > [!NOTE]
-> Podczas udostępniania wersji zapoznawczej, można ustawić zasady wykluczania przy użyciu [portalu Azure](#use-the-azure-portal) i [szablonów usługi Azure Resource Manager](#use-azure-resource-manager-templates). 
+> W trakcie okresu zapoznawczego, można skonfigurować zasady eksmisji przy użyciu [witryny Azure portal](#use-the-azure-portal) i [szablonów usługi Azure Resource Manager](#use-azure-resource-manager-templates). 
 
-## <a name="deploying-low-priority-vms-on-scale-sets"></a>Wdrażanie maszyn wirtualnych niskiego priorytetu na skali ustawia
+## <a name="deploying-low-priority-vms-on-scale-sets"></a>Ustawia wdrażania maszyn wirtualnych o niskim priorytecie w skali
 
-Aby wdrożyć niskiego priorytetu maszyny wirtualne na zestawy skalowania, można ustawić nowy *priorytet* flaga *małej*. Wszystkie maszyny wirtualne w zestawie skali zostanie ustawiona do niskiego priorytetu. Aby utworzyć skali Ustawianie niskiego priorytetu maszyn wirtualnych, użyj jednej z następujących metod:
+Aby wdrożyć o niskim priorytecie maszyn wirtualnych w zestawach skalowania, można ustawić nowy *priorytet* flaga *niski*. Wszystkie maszyny wirtualne w zestawie skalowania ustawi o niskim priorytecie. Aby utworzyć zestaw skalowania z maszyn wirtualnych o niskim priorytecie, użyj jednej z następujących metod:
 - [Azure Portal](#use-the-azure-portal)
-- [Interfejs wiersza polecenia platformy Azure 2.0](#use-the-azure-cli-20)
+- [Interfejs wiersza polecenia platformy Azure](#use-the-azure-cli-20)
 - [Azure PowerShell](#use-azure-powershell)
 - [Szablony usługi Azure Resource Manager](#use-azure-resource-manager-templates)
 
 ## <a name="use-the-azure-portal"></a>Korzystanie z witryny Azure Portal
 
-Proces tworzenia zestawu skali, który używa niskiego priorytetu maszyn wirtualnych jest taka sama, jak określono w [wprowadzenie artykułu](quick-create-portal.md). Wdrażając zestaw skali, można ustawić flagi niskiego priorytetu i zasady wykluczania: ![tworzenia skali Ustawianie niskiego priorytetu maszyn wirtualnych](media/virtual-machine-scale-sets-use-low-priority/vmss-low-priority-portal.png)
+Proces tworzenia zestawu skalowania, który używa maszyn wirtualnych o niskim priorytecie jest taka sama, zgodnie z opisem w [wprowadzenie artykułu](quick-create-portal.md). W przypadku wdrażania zestawu skalowania, można ustawić flagi o niskim priorytecie i zasady eksmisji: ![Tworzenie zestawu skalowania przy użyciu maszyn wirtualnych o niskim priorytecie](media/virtual-machine-scale-sets-use-low-priority/vmss-low-priority-portal.png)
 
-## <a name="use-the-azure-cli-20"></a>Użyj Azure CLI 2.0
+## <a name="use-the-azure-cli"></a>Używanie interfejsu wiersza polecenia platformy Azure
 
-Proces tworzenia skali Ustawianie niskiego priorytetu maszyn wirtualnych jest taka sama, jak określono w [wprowadzenie artykułu](quick-create-cli.md). Po prostu Dodaj "--priorytet" Parametr interfejsu wiersza polecenia wywołania i ustaw ją na *małej* jak pokazano w poniższym przykładzie:
+Proces, aby utworzyć zestaw skalowania z maszyn wirtualnych o niskim priorytecie jest taki sam, zgodnie z opisem w [wprowadzenie artykułu](quick-create-cli.md). Wystarczy dodać atrybut "--priorytet" parametr dla interfejsu wiersza polecenia wywołania i ustaw ją na *niski* jak pokazano w poniższym przykładzie:
 
 ```azurecli
 az vmss create \
@@ -68,8 +68,8 @@ az vmss create \
 
 ## <a name="use-azure-powershell"></a>Korzystanie z programu Azure PowerShell
 
-Proces tworzenia skali Ustawianie niskiego priorytetu maszyn wirtualnych jest taka sama, jak określono w [wprowadzenie artykułu](quick-create-powershell.md).
-Po prostu Dodaj "-priorytet" parametr [AzureRmVmssConfig nowy](/powershell/module/azurerm.compute/new-azurermvmssconfig) i ustaw ją na *małej* jak pokazano w poniższym przykładzie:
+Proces, aby utworzyć zestaw skalowania z maszyn wirtualnych o niskim priorytecie jest taki sam, zgodnie z opisem w [wprowadzenie artykułu](quick-create-powershell.md).
+Wystarczy dodać atrybut "— priorytet" parametr [polecenia New-AzureRmVmssConfig](/powershell/module/azurerm.compute/new-azurermvmssconfig) i ustaw ją na *niski* jak pokazano w poniższym przykładzie:
 
 ```powershell
 $vmssConfig = New-AzureRmVmssConfig `
@@ -82,11 +82,11 @@ $vmssConfig = New-AzureRmVmssConfig `
 
 ## <a name="use-azure-resource-manager-templates"></a>Użyj szablonów usługi Azure Resource Manager
 
-Proces tworzenia zestawu skali, który używa niskiego priorytetu maszyn wirtualnych jest taka sama, zgodnie z opisem w artykule Rozpoczęto pobieranie dla [Linux](quick-create-template-linux.md) lub [Windows](quick-create-template-windows.md). Dodaj właściwość 'priority' do *Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile* zasobów, wpisz w szablonie i określ *małej* jako wartość. Należy użyć *2018-03-01* wersja interfejsu API lub nowszej. 
+Proces tworzenia zestawu skalowania, który używa maszyn wirtualnych o niskim priorytecie jest taka sama, zgodnie z opisem w artykule wprowadzającym dla [Linux](quick-create-template-linux.md) lub [Windows](quick-create-template-windows.md). Dodaj właściwość "priority" do *Microsoft.Compute/virtualMachineScaleSets/virtualMachineProfile* zasobów, wpisz w szablonie i określ *niski* jako wartość. Należy użyć *2018-03-01* wersji interfejsu API lub nowszej. 
 
-Aby skonfigurować zasady wykluczania do usunięcia, Dodaj parametr "evictionPolicy" i ustaw ją na *usunąć*.
+Aby ustawić zasady eksmisji do usunięcia, Dodaj parametr "evictionPolicy" i ustaw ją na *Usuń*.
 
-Poniższy przykład tworzy zestaw o nazwie skalowania niskiego priorytetu Linux *myScaleSet* w *zachodnie środkowe stany*, który będzie *usunąć* maszyn wirtualnych w skali ustawiać wykluczenia:
+Poniższy przykład tworzy systemu Linux o niskim priorytecie zestawu skalowania o nazwie *myScaleSet* w *zachodnio-środkowe stany USA*, który będzie *Usuń* maszyn wirtualnych w zestawie na eksmisji skalowania:
 
 ```json
 {
@@ -128,22 +128,22 @@ Poniższy przykład tworzy zestaw o nazwie skalowania niskiego priorytetu Linux 
 ```
 ## <a name="faq"></a>Często zadawane pytania
 
-### <a name="can-i-convert-existing-scale-sets-to-low-priority-scale-sets"></a>Czy mogę przekonwertować istniejące zestawy skalowania do zestawów skalowania o niskim priorytecie
-Nie, ustawienie flagi niskiego priorytetu jest obsługiwana tylko w czasie tworzenia.
+### <a name="can-i-convert-existing-scale-sets-to-low-priority-scale-sets"></a>Czy mogę przekonwertować istniejące zestawy skalowania do zestawów skalowania o niskim priorytecie?
+Nie, ustawienie flagi o niskim priorytecie jest obsługiwana tylko w czasie jego tworzenia.
 
-### <a name="can-i-create-a-scale-set-with-both-regular-vms-and-low-priority-vms"></a>Czy mogę tworzyć skali ustawić z regularnych maszyn wirtualnych i maszyn wirtualnych o niskim priorytecie
-Nie, zestaw skalowania nie może obsługiwać więcej niż jeden typ priorytet.
+### <a name="can-i-create-a-scale-set-with-both-regular-vms-and-low-priority-vms"></a>Można utworzyć zestaw skalowania z zarówno zwykłymi maszynami wirtualnymi, jak i maszyny wirtualne o niskim priorytecie?
+Nie, zestaw skalowania nie może obsługiwać więcej niż jeden typ priorytetu.
 
-### <a name="how-is-quota-managed-for-low-priority-vms"></a>Sposób zarządzania limitu przydziału dla maszyn wirtualnych niskiego priorytetu?
-Niskiego priorytetu maszyny wirtualne i regularne maszyn wirtualnych korzystają z tej samej puli przydziału. 
+### <a name="how-is-quota-managed-for-low-priority-vms"></a>Jak odbywa się limitu przydziału dla maszyn wirtualnych o niskim priorytecie?
+Maszyny wirtualne o niskim priorytecie i zwykłymi maszynami wirtualnymi używają tej samej puli limitu przydziału. 
 
-### <a name="can-i-use-autoscale-with-low-priority-scale-sets"></a>Czy można użyć automatycznego skalowania zestawów skalowania o niskim priorytecie?
-Tak, można ustawić Skalowanie automatyczne reguły w zestawie skalowania o niskim priorytecie. Jeśli maszyny wirtualne są usunięty, skalowania automatycznego spróbować utworzyć nowe niskiego priorytetu maszyny wirtualne. Należy pamiętać, że nie ma gwarancji tej pojemności jednak. 
+### <a name="can-i-use-autoscale-with-low-priority-scale-sets"></a>Czy można używać automatycznego skalowania, za pomocą zestawów skalowania o niskim priorytecie?
+Tak, można ustawiać reguły skalowania automatycznego zestawu skalowania o niskim priorytecie. Jeśli Twoje maszyny wirtualne są usunięty, automatycznego skalowania spróbować tworzyć nowe maszyny wirtualne o niskim priorytecie. Należy pamiętać, że w tej pojemności nie są gwarantowane jednak. 
 
-### <a name="does-autoscale-work-with-both-eviction-policies-deallocate-and-delete"></a>Funkcja automatycznego skalowania działa z obie zasady wykluczania (deallocate i Usuń)?
-Zalecane jest, aby ustawić zasady wykluczenia, aby usunąć przy użyciu automatycznego skalowania. Jest to spowodowane deallocated wystąpienia są uwzględniane w zestawie skali liczba pojemności. Podczas korzystania z automatycznego skalowania, prawdopodobnie nastąpi trafienie Twojej liczba wystąpień docelowych szybko z powodu wystąpienia deallocated, wykluczone. 
+### <a name="does-autoscale-work-with-both-eviction-policies-deallocate-and-delete"></a>Działa automatyczne skalowanie w usłudze obie zasady eksmisji (Cofnij przydział i Usuń)?
+Zaleca się, że są ustawione zasady eksmisji, aby usunąć podczas korzystania ze skalowania automatycznego. Jest to spowodowane cofnięto alokację wystąpień są przeliczane względem liczba Twoich pojemności w zestawie skalowania. Podczas korzystania ze skalowania automatycznego, prawdopodobnie nastąpi trafienie usługi docelowej liczby wystąpień szybko z powodu wystąpienia przydział zostanie cofnięty, wykluczone. 
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz, po utworzeniu skali Ustawianie niskiego priorytetu maszyn wirtualnych, spróbuj wdrożyć naszych [automatycznego skalowania szablonu przy użyciu niskiego priorytetu](https://github.com/Azure/vm-scale-sets/tree/master/preview/lowpri).
+Teraz, po utworzeniu zestawu skalowania przy użyciu maszyn wirtualnych o niskim priorytecie, spróbuj wdrożyć nasze [szablonu skalowania automatycznego za pomocą o niskim priorytecie](https://github.com/Azure/vm-scale-sets/tree/master/preview/lowpri).
 
-Zapoznaj się z [zestaw skali maszyny wirtualnej cennikiem](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) Aby uzyskać szczegółowe informacje o cenach.
+Zapoznaj się z [zestawu skalowania maszyn wirtualnych stronę z cennikiem](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) szczegółowy cennik.

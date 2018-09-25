@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 2acdc2cc7397e169a32a0257c0fc6020338c944f
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 6ac697fa12b56840e5dc361500f81e2b7e2ce11a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604488"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950254"
 ---
 # <a name="working-with-strings-in-log-analytics-queries"></a>Praca z ciągami zapytań usługi Log Analytics
 
@@ -38,13 +38,13 @@ Każdy znak w ciągu ma numer indeksu, zgodnie z jego lokalizacją. Pierwszy zna
 ## <a name="strings-and-escaping-them"></a>Ciągi i ich anulowania zapewnianego element
 Wartości ciągu są ujęte w nawiasy przy użyciu znaków cudzysłowu pojedynczym lub podwójnym. Ukośnik odwrotny (\) służy do znaki ucieczki znak następujący przykład \t dla karty, \n dla nowego wiersza, i \" sam znak cudzysłowu.
 
-```KQL
+```Kusto
 print "this is a 'string' literal in double \" quotes"
 ```
 
 Aby zapobiec "\\" z działającym jako znak ucieczki, należy dodać "@" jako prefiksu parametry:
 
-```KQL
+```Kusto
 print @"C:\backslash\not\escaped\with @ prefix"
 ```
 
@@ -108,7 +108,7 @@ Liczba przypadków, które można dopasować ciągu wyszukiwania w kontenerze. Z
 
 #### <a name="plain-string-matches"></a>Zwykły ciąg znaków dopasowania
 
-```KQL
+```Kusto
 print countof("The cat sat on the mat", "at");  //result: 3
 print countof("aaa", "a");  //result: 3
 print countof("aaaa", "aa");  //result: 3 (not 2!)
@@ -118,7 +118,7 @@ print countof("ababa", "aba");  //result: 2
 
 #### <a name="regex-matches"></a>Pasuje do wyrażenia regularnego
 
-```KQL
+```Kusto
 print countof("The cat sat on the mat", @"\b.at\b", "regex");  //result: 3
 print countof("ababa", "aba", "regex");  //result: 1
 print countof("abcabc", "a.c", "regex");  // result: 2
@@ -131,7 +131,7 @@ Pobiera pasuje do wyrażenia regularnego z ciągu. Opcjonalnie również konwert
 
 ### <a name="syntax"></a>Składnia
 
-```KQL
+```Kusto
 extract(regex, captureGroup, text [, typeLiteral])
 ```
 
@@ -149,7 +149,7 @@ Jeśli nie zostanie odnaleziony odpowiednik lub konwersja typu nie powiedzie si�
 ### <a name="examples"></a>Przykłady
 
 Poniższy przykład wyodrębnia ostatni oktet *ComputerIP* z rekordu pulsu:
-```KQL
+```Kusto
 Heartbeat
 | where ComputerIP != "" 
 | take 1
@@ -157,7 +157,7 @@ Heartbeat
 ```
 
 Poniższy przykład wyodrębnia ostatni oktet, rzutuje na *rzeczywistych* wpisz (number), a następnie oblicza wartość dalej IP
-```KQL
+```Kusto
 Heartbeat
 | where ComputerIP != "" 
 | take 1
@@ -167,7 +167,7 @@ Heartbeat
 ```
 
 W przykładzie poniżej ciąg *śledzenia* jest wyszukiwana w definicji "Czasu trwania". Dopasowanie jest rzutowany na *rzeczywistych* i pomnożona przez stałą czasu (1 s) *który rzutuje czasu trwania typu timespan*.
-```KQL
+```Kusto
 let Trace="A=12, B=34, Duration=567, ...";
 print Duration = extract("Duration=([0-9.]+)", 1, Trace, typeof(real));  //result: 567
 print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) * time(1s);  //result: 00:09:27
@@ -181,14 +181,14 @@ print Duration_seconds =  extract("Duration=([0-9.]+)", 1, Trace, typeof(real)) 
 
 ### <a name="syntax"></a>Składnia
 
-```
+```Kusto
 isempty(value)
 isnotempty(value)
 ```
 
 ### <a name="examples"></a>Przykłady
 
-```KQL
+```Kusto
 print isempty("");  // result: true
 
 print isempty("0");  // result: false
@@ -213,7 +213,7 @@ parseurl(urlstring)
 
 ### <a name="examples"></a>Przykłady
 
-```KQL
+```Kusto
 print parseurl("http://user:pass@contoso.com/icecream/buy.aspx?a=1&b=2#tag")
 ```
 
@@ -253,7 +253,7 @@ Tekst, który po zastąpieniu wszystkie dopasowania wyrażenia regularnego ocen 
 
 ### <a name="examples"></a>Przykłady
 
-```KQL
+```Kusto
 SecurityEvent
 | take 1
 | project Activity 
@@ -284,7 +284,7 @@ split(source, delimiter [, requestedIndex])
 
 ### <a name="examples"></a>Przykłady
 
-```KQL
+```Kusto
 print split("aaa_bbb_ccc", "_");    // result: ["aaa","bbb","ccc"]
 print split("aa_bb", "_");          // result: ["aa","bb"]
 print split("aaa_bbb_ccc", "_", 1); // result: ["bbb"]
@@ -303,7 +303,7 @@ strcat("string1", "string2", "string3")
 ```
 
 ### <a name="examples"></a>Przykłady
-```KQL
+```Kusto
 print strcat("hello", " ", "world") // result: "hello world"
 ```
 
@@ -318,7 +318,7 @@ strlen("text_to_evaluate")
 ```
 
 ### <a name="examples"></a>Przykłady
-```KQL
+```Kusto
 print strlen("hello")   // result: 5
 ```
 
@@ -339,7 +339,7 @@ substring(source, startingIndex [, length])
 - `length` -Opcjonalnym parametrem, który może służyć do określania Żądana długość zwracany ciąg podrzędny.
 
 ### <a name="examples"></a>Przykłady
-```KQL
+```Kusto
 print substring("abcdefg", 1, 2);   // result: "bc"
 print substring("123456", 1);       // result: "23456"
 print substring("123456", 2, 2);    // result: "34"
@@ -358,7 +358,7 @@ toupper("value")
 ```
 
 ### <a name="examples"></a>Przykłady
-```KQL
+```Kusto
 print tolower("HELLO"); // result: "hello"
 print toupper("hello"); // result: "HELLO"
 ```

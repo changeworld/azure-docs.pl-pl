@@ -12,14 +12,19 @@ ms.workload: data-services
 ms.custom: mvc, reference
 ms.topic: article
 ms.date: 09/14/2017
-ms.openlocfilehash: 5fe292b92557b4786d638ac21c7adb1f50566feb
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 3edf49484e5bc05a297b8d8969632fb902aa1714
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35650263"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953739"
 ---
 # <a name="split-column-by-example-transformation"></a>Podziel kolumnę według przykładu przekształcania
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 Ta transformacja predictively dzieli zawartość kolumny w granicach znaczących bez wprowadzania danych przez użytkownika. Algorytm podziału wybiera granice po przeanalizowaniu zawartość kolumny. Te granice można zdefiniować przez
 * Naprawiono ogranicznika
 * Wiele ograniczników dowolnego znajdujących się w szczególności kontekstów, lub
@@ -182,4 +187,4 @@ W poniższym przykładzie chcemy oddzielić wartości wag od jednostki miary. Po
 
 ## <a name="technical-notes"></a>Uwagi techniczne
 
-Funkcja transformacji podziału opiera się na **predykcyjne syntezy Program** techniki. W tej metodzie programów przekształcania danych są rozpoznawane automatycznie w oparciu o dane wejściowe. Te programy są przekształcony w języku specyficznym dla domeny. Język DSL opiera się na ograniczniki i pola, które występują w szczególności kontekstów wyrażenia regularnego. Więcej informacji na temat tej technologii można znaleźć w [ostatnie publikacji na ten temat](https://www.microsoft.com/en-us/research/publication/automated-data-extraction-using-predictive-program-synthesis/). 
+Funkcja transformacji podziału opiera się na **predykcyjne syntezy Program** techniki. W tej metodzie programów przekształcania danych są rozpoznawane automatycznie w oparciu o dane wejściowe. Te programy są przekształcony w języku specyficznym dla domeny. Język DSL opiera się na ograniczniki i pola, które występują w szczególności kontekstów wyrażenia regularnego. Więcej informacji na temat tej technologii można znaleźć w [ostatnie publikacji na ten temat](https://www.microsoft.com/research/publication/automated-data-extraction-using-predictive-program-synthesis/). 

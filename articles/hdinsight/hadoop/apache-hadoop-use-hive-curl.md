@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: jasonh
-ms.openlocfilehash: d8816965fb1ab870d7bd93cd1ace45c4e6e57de6
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8a9dd45a8d5ebf506899c733107ff2fd01b08a2c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43040917"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964534"
 ---
 # <a name="run-hive-queries-with-hadoop-in-hdinsight-using-rest"></a>Uruchamianie zapytań Hive z usługą Hadoop w HDInsight przy użyciu usługi REST
 
@@ -171,7 +171,7 @@ W tym dokumencie używa również środowiska Windows PowerShell i [Jq](http://s
 
 6. Gdy stan zadania został zmieniony na **Powodzenie**, możesz pobrać wyniki zadania z usługi Azure Blob storage. `statusdir` Parametr przekazany z zapytaniem zawiera lokalizację pliku wyjściowego; w tym przypadku `/example/rest`. Ten adres są przechowywane dane wyjściowe w `example/curl` katalogu w klastrach domyślny magazyn.
 
-    Można wyświetlić listę i pobierać te pliki przy użyciu [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). Aby uzyskać więcej informacji na temat korzystania z wiersza polecenia platformy Azure z usługą Azure Storage, zobacz [użycia Azure CLI 2.0 z usługą Azure Storage](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs) dokumentu.
+    Można wyświetlić listę i pobierać te pliki przy użyciu [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). Aby uzyskać więcej informacji na temat korzystania z wiersza polecenia platformy Azure z usługą Azure Storage, zobacz [wiersza polecenia platformy Azure w użycia z usługą Azure Storage](https://docs.microsoft.com/azure/storage/storage-azure-cli#create-and-manage-blobs) dokumentu.
 
 ## <a id="nextsteps"></a>Następne kroki
 

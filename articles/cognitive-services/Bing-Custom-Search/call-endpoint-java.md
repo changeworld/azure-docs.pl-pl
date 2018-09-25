@@ -1,6 +1,6 @@
 ---
-title: Punkt końcowy wywołanie za pomocą usług kognitywnych Java — wyszukiwanie niestandardowe Bing - Microsoft
-description: Ta opcja szybkiego startu pokazano, jak żądania wyniki wyszukiwania z wystąpienia wyszukiwania niestandardowego za pomocą języka Java do wywołania punktu końcowego niestandardowe wyszukiwania usługi Bing.
+title: Wywoływanie punktu końcowego za pomocą języka Java — wyszukiwanie niestandardowe Bing — Microsoft Cognitive Services
+description: Ten przewodnik Szybki Start pokazano, jak żądanie wyniki wyszukiwania z wystąpienia wyszukiwania niestandardowego przy użyciu platformy Java, aby wywołać punkt końcowy wyszukiwania niestandardowego Bing.
 services: cognitive-services
 author: brapel
 manager: ehansen
@@ -9,34 +9,34 @@ ms.component: bing-custom-search
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 03d622e3c7a3315238f2bceedae529bbe06af299
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 7ef4de749d5b9152bbe043a26d3c60fe7f09f869
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "35349777"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951818"
 ---
-# <a name="call-bing-custom-search-endpoint-java"></a>Wywołanie wyszukiwania usługi Bing niestandardowe punktu końcowego (Java)
+# <a name="call-bing-custom-search-endpoint-java"></a>Wywołanie punktu końcowego usługi Bing Custom Search (Java)
 
-Ta opcja szybkiego startu pokazano, jak żądania wyniki wyszukiwania z wystąpienia wyszukiwania niestandardowego za pomocą języka Java do wywołania punktu końcowego niestandardowe wyszukiwania usługi Bing. 
+Ten przewodnik Szybki Start pokazano, jak żądanie wyniki wyszukiwania z wystąpienia wyszukiwania niestandardowego za pomocą języka Java, aby wywołać punkt końcowy wyszukiwania niestandardowego Bing. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warunki:
-- Wystąpienie wyszukiwania niestandardowego. Zobacz [Tworzenie pierwszego wystąpienia wyszukiwania usługi Bing niestandardowe](quick-start.md).
 
+- Wystąpienie wyszukiwania niestandardowego gotowych do użycia. Zobacz [Tworzenie pierwszego wystąpienia wyszukiwania niestandardowego Bing](quick-start.md).
 - [Java](https://www.java.com) zainstalowane.
-
-- A [kognitywnych interfejsu API usług konta](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsy API wyszukiwania usługi Bing**. [Bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) jest wystarczająca dla tego przewodnika Szybki Start. Należy klucz dostępu podany przy wywołaniu metody aktywacji bezpłatną wersję próbną lub może używać klucza płatnej subskrypcji z pulpitu nawigacyjnego platformy Azure.
+- Klucz subskrypcji. Klucz subskrypcji możesz uzyskać po aktywowaniu usługi [bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search), lub za pomocą klucza płatnej subskrypcji w pulpicie nawigacyjnym platformy Azure (zobacz [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
 
 ## <a name="run-the-code"></a>Uruchamianie kodu
 
-Aby wywołać punktu końcowego wyszukiwania usługi Bing niestandardowe, wykonaj następujące kroki:
+Aby uruchomić ten przykład, wykonaj następujące kroki:
 
-1. Za pomocą programu IDE języka Java wyboru Utwórz pakiet.
-2. Utwórz plik CustomSrchJava.java i skopiuj następujący kod do niego.
-3. Zastąp **YOUR SUBSKRYPCJI klucza** i **YOUR-niestandardowe-CONFIG-ID** z identyfikatorem klucza i konfiguracji.
-
-    ``` Java
+1. Za pomocą środowiska IDE Java wybranego, Utwórz pakiet.  
+  
+2. Utwórz plik o nazwie CustomSrchJava.java w pakiecie i skopiuj następujący kod do niego. Zastąp **YOUR-SUBSCRIPTION-KEY** i **YOUR-CUSTOM-CONFIG-ID** klucz subskrypcji i konfiguracji identyfikatora.  
+  
+    ```java
     import java.io.InputStream;
     import java.net.URL;
     import java.net.URLEncoder;
@@ -58,9 +58,9 @@ Aby wywołać punktu końcowego wyszukiwania usługi Bing niestandardowe, wykona
         static String subscriptionKey = "YOUR-SUBSCRIPTION-KEY"; 
         static String customConfigId = "YOUR-CUSTOM-CONFIG-ID";  
     
-        static String searchTerm = "Microsoft";  // Replace with search term specific to your defined sources.
+        static String searchTerm = "Microsoft";  // Replace with search term specific to your search scenario.
     
-        public static SearchResults SearchImages (String searchQuery) throws Exception {
+        public static SearchResults SearchWeb (String searchQuery) throws Exception {
             // construct URL of search request (endpoint + query string)
             URL url = new URL(host + path + "?q=" +  URLEncoder.encode(searchTerm, "UTF-8") + "&CustomConfig=" + customConfigId);
             HttpsURLConnection connection = (HttpsURLConnection)url.openConnection();
@@ -96,15 +96,15 @@ Aby wywołać punktu końcowego wyszukiwania usługi Bing niestandardowe, wykona
     
         public static void main (String[] args) {
             if (subscriptionKey.length() != 32) {
-                System.out.println("Invalid Bing Search API subscription key!");
+                System.out.println("Invalid Custom Search subscription key!");
                 System.out.println("Please paste yours into the source code.");
                 System.exit(1);
             }
     
             try {
-                System.out.println("Searching the Web for: " + searchTerm);
+                System.out.println("Searching your slice of the Web for: " + searchTerm);
     
-                SearchResults result = SearchImages(searchTerm);
+                SearchResults result = SearchWeb(searchTerm);
     
                 System.out.println("\nRelevant HTTP Headers:\n");
                 for (String header : result.relevantHeaders.keySet())
@@ -130,11 +130,11 @@ Aby wywołać punktu końcowego wyszukiwania usługi Bing niestandardowe, wykona
         }
     
     }
-    
-    ```
+    ```  
+  
 4. Uruchom program.
     
 ## <a name="next-steps"></a>Kolejne kroki
-- [Konfigurowanie środowiska hostowanej interfejsu użytkownika](./hosted-ui.md)
-- [Umożliwia znaczników decoration wyróżnianie tekstu](./hit-highlighting.md)
+- [Konfigurowanie środowiska obsługiwanego interfejsu użytkownika](./hosted-ui.md)
+- [Korzystanie ze znaczników dekoracji, aby wyróżnić tekst](./hit-highlighting.md)
 - [Strona stron sieci Web](./page-webpages.md)

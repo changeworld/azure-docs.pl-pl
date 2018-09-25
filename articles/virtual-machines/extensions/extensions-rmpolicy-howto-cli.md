@@ -13,18 +13,18 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/23/2018
 ms.author: roiyz;cynthn
-ms.openlocfilehash: f11d08e56fe1970aa7a0d82f368eb73589ece2fe
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 08fcb244ada319dccf62c134a0155dd117e79184
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412303"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977047"
 ---
 # <a name="use-azure-policy-to-restrict-extensions-installation-on-linux-vms"></a>Ograniczanie instalacji rozszerzeń na maszynach wirtualnych z systemem Linux za pomocą usługi Azure Policy
 
 Jeśli chcesz uniemożliwić używanie lub instalacji niektórych rozszerzeń na maszynach wirtualnych systemu Linux, możesz utworzyć usługi Azure policy, aby ograniczyć rozszerzenia dla maszyn wirtualnych w grupie zasobów przy użyciu interfejsu wiersza polecenia. 
 
-W tym samouczku korzysta z interfejsu wiersza polecenia w ramach usługi Azure Cloud Shell, które są stale aktualizowane do najnowszej wersji. Jeśli chcesz uruchomić z wiersza polecenia platformy Azure lokalnie, musisz zainstalować wersję 2.0.26 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
+W tym samouczku korzysta z interfejsu wiersza polecenia w ramach usługi Azure Cloud Shell, które są stale aktualizowane do najnowszej wersji. Jeśli chcesz uruchomić z wiersza polecenia platformy Azure lokalnie, musisz zainstalować wersję 2.0.26 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli). 
 
 ## <a name="create-a-rules-file"></a>Utwórz plik reguł
 

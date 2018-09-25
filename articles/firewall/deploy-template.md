@@ -8,24 +8,20 @@ ms.service: firewall
 ms.topic: article
 ms.date: 7/11/2018
 ms.author: victorh
-ms.openlocfilehash: 1a732e22d72c36afe11030e42bae529baa35df1a
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: d32e6e29c287d140c28206743e36dc025b26158b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991379"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991338"
 ---
 # <a name="deploy-azure-firewall-using-a-template"></a>Wdrażanie zapory platformy Azure przy użyciu szablonu
 
-[!INCLUDE [firewall-preview-notice](../../includes/firewall-preview-notice.md)]
+Ten szablon umożliwia utworzenie zapory i sieci środowiska testowego. Sieć ma jednej sieci wirtualnej, z trzema podsieciami: *AzureFirewallSubnet*, *ServersSubnet*, a *JumpboxSubnet*. Podsieci ServersSubnet i JumpboxSubnet obejmują po jednej 2-rdzeniowej maszynie z systemem Windows Server.
 
-Przykłady w artykułach zapory usługi Azure założono włączonego zapory usługi Azure w wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [Włącz zaporę usługi Azure w wersji zapoznawczej](public-preview.md).
+Zapora znajduje się w podsieci AzureFirewallSubnet i jest w niej skonfigurowana kolekcja reguł aplikacji z pojedynczą regułą zezwalającą na dostęp do witryny www.microsoft.com.
 
-Ten szablon umożliwia utworzenie zapory i sieci środowiska testowego. Sieć ma jednej sieci wirtualnej, z trzema podsieciami: *AzureFirewallSubnet*, *ServersSubnet*, a *JumpboxSubnet*. ServersSubnet, jak i JumpboxSubnet ma jeden 2-rdzeniowej systemu Windows Server w nich.
-
-Zapora jest AzureFirewallSubnet i skonfigurowano kolekcji reguł aplikacji przy użyciu jednej reguły, które zezwalają na dostęp do www.microsoft.com.
-
-Tworzony jest trasy zdefiniowanej przez użytkownika, który wskazuje ruch sieciowy z ServersSubnet przez zaporę, w których stosowane są reguły zapory.
+Tworzona jest trasa zdefiniowana przez użytkownika, która kieruje ruch sieciowy z podsieci ServersSubnet przez zaporę, gdzie są stosowane reguły zapory.
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -48,5 +44,5 @@ Remove-AzureRmResourceGroup -Name myResourceGroup
 
 Następnie można monitorować dzienniki zapory platformy Azure:
 
-- [Samouczek: Monitorowanie Azure dzienniki zapory](./tutorial-diagnostics.md)
+- [Samouczek: monitorowanie dzienników usługi Azure Firewall](./tutorial-diagnostics.md)
 

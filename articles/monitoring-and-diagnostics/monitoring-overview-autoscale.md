@@ -1,121 +1,122 @@
 ---
-title: Omówienie automatycznego skalowania maszyn wirtualnych, usługi w chmurze i aplikacje sieci Web
-description: Skalowania automatycznego na platformie Microsoft Azure. Ma zastosowanie do maszyn wirtualnych, zestawy skalowania maszyny wirtualnej, Cloud Services i aplikacji sieci Web.
+title: Omówienie automatycznego skalowania maszyn wirtualnych, usług w chmurze i aplikacji sieci Web
+description: Automatyczne skalowanie na platformie Microsoft Azure. Ma zastosowanie do maszyn wirtualnych, Virtual machine Scale sets, usługi w chmurze i aplikacji sieci Web.
 author: rboucher
 services: azure-monitor
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 03/02/2016
+ms.date: 09/24/2018
 ms.author: robb
 ms.component: autoscale
-ms.openlocfilehash: 4eeca81e08a0ecae9ba41ccdd2bf8a2f395f579c
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: fe63ce931da9fbe94b47d00805820affddfb1bc1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264674"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946990"
 ---
-# <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Omówienie automatycznego skalowania w maszynach wirtualnych platformy Azure firmy Microsoft, usługi w chmurze i aplikacje sieci Web
-W tym artykule opisano, jakie skalowania automatycznego Microsoft Azure, jego zalety i sposobu rozpocząć korzystanie z jej.  
+# <a name="overview-of-autoscale-in-microsoft-azure-virtual-machines-cloud-services-and-web-apps"></a>Omówienie automatycznego skalowania w Microsoft Azure Virtual Machines, Cloud Services i Web Apps
+W tym artykule opisano, jakie Microsoft Azure Skalowanie automatyczne to, jego zalety i sposób rozpoczynania korzystania z niego.  
 
-Azure Monitor skalowania automatycznego ma zastosowanie tylko do [zestawy skalowania maszyny wirtualnej](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [usługi w chmurze](https://azure.microsoft.com/services/cloud-services/), i [usługi aplikacji — aplikacje sieci Web](https://azure.microsoft.com/services/app-service/web/).
+Skalowanie automatyczne platformy Azure Monitor ma zastosowanie tylko do [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [usług w chmurze](https://azure.microsoft.com/services/cloud-services/), [App Service — Web Apps](https://azure.microsoft.com/services/app-service/web/), i [usługi API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
 > [!NOTE]
-> Platforma Azure ma dwie metody automatycznego skalowania. Starsza wersja programu skalowania automatycznego ma zastosowanie do maszyn wirtualnych (zestawy dostępności). Ta funkcja ma ograniczony pomocy technicznej i rekomendujemy migrację do zestawy skalowania maszyny wirtualnej do obsługi skalowania automatycznego szybszy i bardziej niezawodny. Łącze dotyczące sposobu używania starszej technologii znajduje się w tym artykule.  
+> Platforma Azure ma dwie metody automatycznego skalowania. Starszą wersję automatycznego skalowania ma zastosowanie do maszyn wirtualnych (zestawy dostępności). Ta funkcja ma ograniczoną obsługę i zalecamy przeprowadzić migrację do zestawów skalowania maszyn wirtualnych, obsługi automatycznego skalowania szybszy i bardziej niezawodny. Łącze dotyczące sposobu używania starszych technologiach znajduje się w tym artykule.  
 >
 >
 
 ## <a name="what-is-autoscale"></a>Co to jest funkcja automatycznego skalowania?
-Funkcja automatycznego skalowania umożliwia ma jednostkom zasoby z uruchomionym do obsługi obciążenia aplikacji. Umożliwia dodawanie zasobów obsługujące wzrost obciążenia, a także oszczędzić pieniądze przez usunięcie zasobów, które są obecne bezczynności. Należy określić minimalną i maksymalną liczbę wystąpień do uruchomienia i dodawanie lub usuwanie maszyn wirtualnych, automatycznie na podstawie zestawu reguł. O minimalnej sprawia, że czy aplikacja zawsze działa nawet w przypadku obciążenia. O maksymalnej ogranicza łącznym możliwy koszt co godzinę. Automatycznie skalować między te dwie wartości graniczne przy użyciu utworzone reguły.
+Automatyczne skalowanie pozwala mieć odpowiednią ilość zasobów do obsługi obciążenia w swojej aplikacji. Umożliwia dodawanie zasobów do obsługi zwiększenia obciążenia, a także Oszczędzaj pieniądze, usuwając zasoby, które są obecne bezczynności. Możesz określić minimalną i maksymalną liczbą wystąpień do uruchamiania i dodawanie lub usuwanie maszyn wirtualnych automatycznie na podstawie zestawu reguł. O minimalnej sprawia, że się, że Twoja aplikacja zawsze działa nawet przy braku obciążenia. Mającą co najwyżej ogranicza możliwości całkowity koszt na godzinę. Automatyczne skalowanie między tymi dwoma skrajnymi poziomami przy użyciu reguł, które można utworzyć.
 
  ![Wyjaśniono skalowania automatycznego. Dodawanie i usuwanie maszyn wirtualnych](./media/monitoring-overview-autoscale/AutoscaleConcept.png)
 
-Gdy warunki reguły są spełnione, co najmniej jednej akcji skalowania automatycznego są wyzwalane. Można dodać i usunąć maszyny wirtualnej lub wykonywać inne akcje. Poniższy diagram koncepcyjny przedstawia tego procesu.  
+Po spełnieniu warunków reguły, co najmniej jednej akcji skalowania automatycznego są wyzwalane. Możesz dodać i usunąć maszyny wirtualne lub wykonywania innych akcji. Poniższy diagram koncepcyjny przedstawia ten proces.  
 
- ![Diagram przepływu skalowania automatycznego](./media/monitoring-overview-autoscale/Autoscale_Overview_v4.png)
+ ![Diagram przepływu automatycznego skalowania](./media/monitoring-overview-autoscale/Autoscale_Overview_v4.png)
 
-Wyjaśnienia poniżej dotyczą części poprzedni diagram.   
+Wyjaśnienia poniżej mają zastosowanie do rodzajów poprzedniego diagramu.   
 
-## <a name="resource-metrics"></a>Metryki dla zasobu
-Zasoby Emituj metryki, te metryki są później przetwarzane przez zasady. Metryki dostarczane za pomocą różnych metod.
-Zestawy skalowania maszyny wirtualnej Użyj danych telemetrycznych z agentów diagnostyki Azure, natomiast dane telemetryczne dla aplikacji sieci Web i usługi w chmurze pochodzi bezpośrednio z infrastruktury platformy Azure. Niektóre często używane dane statystyczne obejmują użycie procesora CPU, pamięć liczników wątków, długość kolejki i użycie dysku. Aby uzyskać listę danych telemetrycznych można użyć, zobacz [wspólnej metryki automatycznego skalowania](insights-autoscale-common-metrics.md).
+## <a name="resource-metrics"></a>Metryki zasobów
+Zasoby emitują metryki, te metryki są później przetwarzane przez zasady. Metryki są dostarczane za pośrednictwem różnych metod.
+Zestawy skalowania maszyn wirtualnych Użyj danych telemetrycznych z agentów dla diagnostyki platformy Azure, natomiast dane telemetryczne dla aplikacji sieci Web i usług w chmurze pochodzi bezpośrednio z infrastruktury platformy Azure. Niektóre powszechnie używane statystyki obejmują użycie procesora CPU, użycie pamięci, liczby wątków, długość kolejki i użycie dysku. Aby uzyskać listę danych telemetrycznych, jakie można użyć, zobacz [typowe metryki automatycznego skalowania](insights-autoscale-common-metrics.md).
 
 ## <a name="custom-metrics"></a>Metryki niestandardowe
-Można również wykorzystać własne niestandardowe metryki, które mogą być emitowanie Twojej aplikacji. Jeśli Twoje aplikacje przesyłają metryk usługi Application Insights mogą korzystać z tych metryk przy podejmowaniu decyzji, czy można skalować lub nie zostały skonfigurowane. 
+Można też skorzystać z własnych metryki niestandardowe, że Twoje aplikacje mogą emitowania. Jeśli zostały skonfigurowane w Twojej aplikacji na wysyłanie metryk do usługi Application Insights mogą korzystać z tych metryk przy podejmowaniu decyzji, czy wykonać skalowanie, czy nie.
 
 ## <a name="time"></a>Time
-Reguły na podstawie harmonogramu są oparte na czas UTC. Należy poprawnie ustawić strefy czasowej podczas konfigurowania reguł.  
+Reguły na podstawie harmonogramu są oparte na czasie UTC. Musisz prawidłowo swoją strefę czasową, podczas konfigurowania reguł.  
 
 ## <a name="rules"></a>Reguły
-Na diagramie przedstawiono tylko jedną regułę automatycznego skalowania, ale można mieć wiele z nich. Można utworzyć złożone zasady nakładające się odpowiednio do potrzeb.  Typy reguł  
+Na diagramie przedstawiono tylko jedna reguła skalowania automatycznego, ale można mieć wiele z nich. Można utworzyć złożone nakładających się reguły, zgodnie z potrzebami w danej sytuacji.  Obejmują typy reguł  
 
-* **Na podstawie Metryka** — na przykład, wykonaj tę akcję, gdy wykorzystanie Procesora jest powyżej 50%.
-* **Na podstawie czasu** — na przykład wyzwalacza elementu webhook co 8 am w sobotę danego strefy czasowej.
+* **Opartą na metryce** — na przykład, wykonaj tę akcję, gdy użycie Procesora przekracza 50%.
+* **Na podstawie czasu** — na przykład wyzwalacza elementu webhook co 8: 00 w sobotę w danej strefie czasowej.
 
-Reguły metryki pomiaru obciążenia aplikacji i Dodaj lub usuń maszyny wirtualne oparte na tym obciążenia. Zasady oparte na harmonogramie umożliwiają skalowane, gdy Zobacz wzorce czasu w obciążenia i skalowania przed wzrostu obciążenia można lub zmniejszenie.  
+Reguły na podstawie metryki pomiaru obciążenia aplikacji, a następnie dodaj lub usuń maszyny wirtualne na podstawie tego obciążenia. Reguły na podstawie harmonogramu umożliwiają skalowanie, gdy widać wzorce czasu w obciążenia i skalowania przed wzrost obciążenia możliwe lub występuje spadek.  
 
-## <a name="actions-and-automation"></a>Akcje i automatyzacji
-Reguły może wyzwolić co najmniej jeden typ akcji.
+## <a name="actions-and-automation"></a>Akcje i automatyzacja
+Zasady można uruchomić co najmniej jeden typ akcji.
 
-* **Skala** -VMs skali przychodzący lub wychodzący
-* **Wiadomości e-mail** — Wyślij wiadomość e-mail do administratorów subskrypcji, co Administratorzy i/lub dodatkowy adres e-mail użytkownika
-* **Zautomatyzować za pomocą elementów webhook** -Wywołaj elementów webhook, co może uruchamiać wiele złożonych akcji wewnątrz lub na zewnątrz Azure. Wewnątrz Azure można uruchomić elementu runbook usługi Automatyzacja Azure, funkcji platformy Azure lub aplikacji logiki platformy Azure. Przykładowy adres URL innych firm poza Azure obejmują usług takich jak zapas czasu i usługi Twilio.
+* **Skala** -skalowania maszyn wirtualnych, wewnątrz lub na zewnątrz
+* **Adres e-mail** — Wyślij wiadomość e-mail do administratorów subskrypcji, co Administratorzy i/lub określony adres e-mail dodatkowe
+* **Automatyzacja za pośrednictwem elementów webhook** — wywoływanie elementów webhook, co może wyzwolić wiele akcji złożonych wewnątrz lub na zewnątrz platformy Azure. Wewnątrz platformy Azure można uruchomić elementu runbook usługi Azure Automation, funkcja platformy Azure lub aplikacji logiki platformy Azure. Przykładowy adres URL firm poza systemem Azure obejmują usług, takich jak Slack i Twilio.
 
 ## <a name="autoscale-settings"></a>Ustawienia skalowania automatycznego
-Funkcja automatycznego skalowania użyć następujących terminologii i struktury.
+Funkcja automatycznego skalowania, użyj poniższe terminy i struktury.
 
-- **Ustawieniu skalowania automatycznego** jest do odczytu przez aparat skalowania automatycznego w celu ustalenia, czy można skalować w górę lub w dół. Zawiera jeden lub więcej profilów, informacje dotyczące zasobu docelowego, a ustawienia powiadomień.
+- **Ustawienie skalowania automatycznego** jest odczytywany przez aparat skalowania automatycznego, aby określić, czy wykonać skalowanie w górę lub w dół. Zawiera on jeden lub więcej profilów, informacje dotyczące zasobu docelowego i ustawień powiadomień.
 
-    - **Profilów skalowania automatycznego** jest kombinacją a:
+    - **Profilu skalowania automatycznego** jest kombinacją Odp.:
 
-        - **Ustawienia pojemności**, które określa minimalne, maksymalne i domyślne wartości dla wielu wystąpień.
-        - **zestaw reguł**, z których każdy zawiera wyzwalacz (czas lub Metryka) oraz akcję skalowania (w górę lub w dół).
-        - **Cykl**, co oznacza, że podczas skalowania automatycznego powinien obowiązywać tego profilu.
+        - **Ustawienia pojemności**, co oznacza, minimalna, maksymalna i wartości domyślne dla liczby wystąpień.
+        - **zestaw reguł**, z których każdy zawiera wyzwalacz (czas lub metryki) oraz akcję skalowania (górę lub w dół).
+        - **Cykl**, co oznacza, że po umieszczeniu tego profilu w życie skalowania automatycznego.
 
-        Może mieć wiele profilów, które umożliwiają zajmie się innymi wymaganiami nakładające się. Program może profilów skalowania automatycznego różne dla różnych porach dnia lub dni tygodnia, na przykład.
+        Może mieć wiele profilów, które pozwalają zadbać o różnych wymaganiach nakładających się. Istnieje możliwość użycia profile automatycznego skalowania różne dla różnych porach dnia lub dni tygodnia, na przykład.
 
-    - A **ustawienie powiadomień o** definiuje, jakie powiadomień powinna wystąpić, gdy wystąpi zdarzenie skalowania automatycznego oparte na spełniające kryteria profile w ustawieniu skalowania automatycznego. Automatycznego skalowania może powiadomić co najmniej jeden adres e-mail lub wykonywania wywołań do co najmniej jeden element webhook.
+    - A **ustawienie powiadomień** definiuje, jakie powiadomienia mają być powinny być wykonywane, gdy wystąpi zdarzenie automatyczne skalowanie zależnie od spełniające kryteria profile ustawienie skalowania automatycznego. Skalowanie automatyczne można powiadomienie co najmniej jeden adres e-mail lub wykonywanie wywołań do jednego lub więcej elementów webhook.
 
 
-![Ustawienia skalowania automatycznego Azure, profilu i struktury reguły](./media/monitoring-overview-autoscale/AzureResourceManagerRuleStructure3.png)
+![Ustawienie skalowania automatycznego platformy Azure, profilu i struktury reguły](./media/monitoring-overview-autoscale/AzureResourceManagerRuleStructure3.png)
 
-Pełną listę można konfigurować pól i opisy jest dostępna w [interfejsu API REST skalowania automatycznego](https://msdn.microsoft.com/library/dn931928.aspx).
+Pełną listę można konfigurować pola i opisy jest dostępna w [interfejsu API REST skalowania automatycznego](https://msdn.microsoft.com/library/dn931928.aspx).
 
 Aby uzyskać przykłady kodu zobacz
 
-* [Zestawy skalowania maszyny Wirtualnej za pomocą szablonów usługi Resource Manager konfiguracji zaawansowanej skalowania automatycznego](insights-advanced-autoscale-virtual-machine-scale-sets.md)  
-* [Interfejs API REST skalowania automatycznego](https://msdn.microsoft.com/library/dn931953.aspx)
+* [Zaawansowanej konfiguracji skalowania automatycznego dla zestawów skalowania maszyn wirtualnych przy użyciu szablonów usługi Resource Manager](insights-advanced-autoscale-virtual-machine-scale-sets.md)  
+* [Interfejs API REST automatycznego skalowania](https://msdn.microsoft.com/library/dn931953.aspx)
 
-## <a name="horizontal-vs-vertical-scaling"></a>Pionowy skalowanie w poziomie vs
-Skalowania automatycznego tylko skalowanie w poziomie, wzrost ("out") lub spadek ("") w liczbie wystąpień maszyn wirtualnych.  Poziomy jest bardziej elastyczna w sytuacji, w chmurze, ponieważ pozwala na uruchamianie potencjalnie tysiące maszyn wirtualnych do obsługi obciążenia.
+## <a name="horizontal-vs-vertical-scaling"></a>Skalowanie w pionie poziomy vs
+Tylko skalowania automatycznego w poziomie, jest to wzrost ("out") lub spadek ("") w liczbie wystąpień maszyn wirtualnych.  W poziomie jest bardziej elastyczna w sytuacji, w chmurze, ponieważ pozwala ono potencjalnie uruchomienia tysięcy maszyn wirtualnych do obsługi obciążenia.
 
-Z kolei skalowanie w pionie różni się. Zachowuje tę samą liczbę maszyn wirtualnych, ale powoduje, że maszyny wirtualne więcej ("w górę") lub mniej ("wyłączone") zaawansowane. Power jest mierzony w pamięci, szybkości Procesora, miejsca na dysku itp.  Skalowanie w pionie ma więcej ograniczeń. Jest on zależny od dostępności sprzętu większych i szybko trafienia górny limit i zależą od regionu. Skalowanie w pionie również zwykle wymaga maszyny Wirtualnej, aby zatrzymać i uruchomić ponownie.
+Z kolei skalowanie w pionie jest inny. Zapewnia taką samą liczbę maszyn wirtualnych, ale sprawia, że maszyny wirtualne więcej ("do góry") lub mniej ("nie działa") zaawansowane. Moc jest mierzony w pamięci, szybkości Procesora, miejsca na dysku itp.  Skalowanie w pionie ma więcej ograniczeń. Jest on zależny od dostępności sprzętu większych i szybko osiągnie górny limit i może różnić między regionami. Skalowanie w pionie również zwykle wymaga maszyny Wirtualnej w celu zatrzymania i ponownego uruchomienia.
 
-Aby uzyskać więcej informacji, zobacz [skalowanie w pionie maszyny wirtualnej platformy Azure w usłudze Automatyzacja Azure](../virtual-machines/linux/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
+Aby uzyskać więcej informacji, zobacz [skalowanie w pionie maszyn wirtualnych platformy Azure z usługą Azure Automation](../virtual-machines/linux/vertical-scaling-automation.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-## <a name="methods-of-access"></a>Metody dostępu
-Możesz skonfigurować automatycznego skalowania za pomocą
+## <a name="methods-of-access"></a>Metod dostępu
+Możesz skonfigurować automatyczne skalowanie za pomocą
 
 * [Azure Portal](insights-how-to-scale.md)
 * [Program PowerShell](insights-powershell-samples.md#create-and-manage-autoscale-settings)
-* [Interfejs wiersza polecenia i platform (CLI)](insights-cli-samples.md#autoscale)
-* [Interfejs API REST Azure monitora](https://msdn.microsoft.com/library/azure/dn931953.aspx)
+* [Międzyplatformowy interfejs wiersza polecenia (CLI)](insights-cli-samples.md#autoscale)
+* [Interfejs API REST usługi Azure Monitor](https://msdn.microsoft.com/library/azure/dn931953.aspx)
 
-## <a name="supported-services-for-autoscale"></a>Obsługiwane usługi do skalowania automatycznego
-| Usługa | Schemat & dokumentów |
+## <a name="supported-services-for-autoscale"></a>Obsługiwane usługi dotyczące automatycznego skalowania
+| Usługa | Schemat i dokumenty |
 | --- | --- |
 | Web Apps |[Skalowanie aplikacji sieci Web](insights-how-to-scale.md) |
-| Cloud Services |[Funkcja automatycznego skalowania usługi w chmurze](../cloud-services/cloud-services-how-to-scale-portal.md) |
-| Maszyny wirtualne: klasycznym |[Skalowanie zestawów dostępności klasyczne maszyny wirtualnej](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
-| Maszyn wirtualnych: Zestawy skalowania systemu Windows |[Ustawia skalowanie skalowania maszyny wirtualnej w systemie Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) |
-| Maszyn wirtualnych: Ustawia Linux skalowania |[Ustawia skalowanie skalowania maszyny wirtualnej w systemie Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) |
-| Maszyny wirtualnej: Przykład systemu Windows |[Zestawy skalowania maszyny Wirtualnej za pomocą szablonów usługi Resource Manager konfiguracji zaawansowanej skalowania automatycznego](insights-advanced-autoscale-virtual-machine-scale-sets.md) |
+| Cloud Services |[Automatyczne skalowanie usługi w chmurze](../cloud-services/cloud-services-how-to-scale-portal.md) |
+| Maszyny wirtualne: klasyczny |[Skalowanie zestawów dostępności klasycznej maszyny wirtualnej](https://blogs.msdn.microsoft.com/kaevans/2015/02/20/autoscaling-azurevirtual-machines/) |
+| Virtual Machines: Zestawy skalowania Windows |[Skalowanie skalowania maszyn wirtualnych zestawów w Windows](../virtual-machine-scale-sets/virtual-machine-scale-sets-windows-autoscale.md) |
+| Maszyny wirtualne: Zestawy skalowania systemu Linux |[Skalowanie skalowania maszyn wirtualnych ustawia w systemie Linux](../virtual-machine-scale-sets/virtual-machine-scale-sets-linux-autoscale.md) |
+| Virtual Machines: Przykład Windows |[Zaawansowanej konfiguracji skalowania automatycznego dla zestawów skalowania maszyn wirtualnych przy użyciu szablonów usługi Resource Manager](insights-advanced-autoscale-virtual-machine-scale-sets.md) |
+| Usługi API Management|[Automatyczne skalowanie wystąpienia usługi Azure API Management](https://docs.microsoft.com/azure/api-management/api-management-howto-autoscale)
 
-## <a name="next-steps"></a>Następne kroki
-Aby dowiedzieć się więcej na temat skalowania automatycznego, użyj wskazówki dotyczące skalowania automatycznego wymienionymi wcześniej, lub można znaleźć w następujących zasobach:
+## <a name="next-steps"></a>Kolejne kroki
+Aby dowiedzieć się więcej na temat automatycznego skalowania, użyj wskazówki dotyczące skalowania automatycznego wymienionych powyżej, lub zobacz następujące zasoby:
 
-* [Azure metryki wspólnej skalowania automatycznego monitora](insights-autoscale-common-metrics.md)
-* [Najlepsze praktyki dotyczące skalowania automatycznego Azure Monitor](insights-autoscale-best-practices.md)
-* [Użyj akcji skalowania automatycznego do wysyłania wiadomości e-mail i elementu webhook powiadomień o alertach](insights-autoscale-to-webhook-email.md)
-* [Interfejs API REST skalowania automatycznego](https://msdn.microsoft.com/library/dn931953.aspx)
-* [Rozwiązywania problemów skalowania automatycznego zestawy skalowania maszyny wirtualnej](../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)
+* [Usługa Azure Monitor skalowania automatycznego często używane metryki](insights-autoscale-common-metrics.md)
+* [Najlepsze rozwiązania dotyczące skalowania automatycznego usługi Azure Monitor](insights-autoscale-best-practices.md)
+* [Użyj akcji skalowania automatycznego, aby wysyłać wiadomości e-mail i elementy webhook powiadomienia o alertach](insights-autoscale-to-webhook-email.md)
+* [Interfejs API REST automatycznego skalowania](https://msdn.microsoft.com/library/dn931953.aspx)
+* [Rozwiązywania problemów automatyczne skalowanie zestawów skalowania maszyn wirtualnych](../virtual-machine-scale-sets/virtual-machine-scale-sets-troubleshoot.md)

@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 12/11/2017
 ms.author: jasonh
-ms.openlocfilehash: 7e8f4900143372f9030e157cfd71dd7d84eabd80
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: db2c4281f23685c00e63058a5cfd8caaf663b0fb
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093845"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948744"
 ---
 # <a name="install-and-use-hue-on-hdinsight-hadoop-clusters"></a>Instalowanie i korzystanie z rozwiązania Hue w klastrach usługi HDInsight Hadoop
 
@@ -48,7 +48,7 @@ Skrypt instalowanie aplikacji Hue w klastrze HDInsight opartych na systemie Linu
 Ta sekcja zawiera instrukcje dotyczące używania skryptu podczas aprowizowania klastra przy użyciu witryny Azure portal.
 
 > [!NOTE]
-> Program Azure PowerShell, interfejsu wiersza polecenia platformy Azure, zestawu .NET SDK HDInsight lub szablonów usługi Azure Resource Manager można również zastosować akcji skryptu. Można również zastosować akcji skryptu na już działające klastry. Aby uzyskać więcej informacji, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptów](hdinsight-hadoop-customize-cluster-linux.md).
+> Program Azure PowerShell, wiersza polecenia platformy Azure Classic, zestawu .NET SDK HDInsight lub szablonów usługi Azure Resource Manager można również zastosować akcji skryptu. Można również zastosować akcji skryptu na już działające klastry. Aby uzyskać więcej informacji, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptów](hdinsight-hadoop-customize-cluster-linux.md).
 >
 >
 

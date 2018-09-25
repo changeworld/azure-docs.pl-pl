@@ -1,10 +1,9 @@
-
 Aby uzyskać więcej informacji o dyskach, zobacz [About Disks and VHDs for Virtual Machines](../articles/virtual-machines/linux/about-disks-and-vhds.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) (Informacje o dyskach i wirtualnych dyskach twardych dla maszyn wirtualnych).
 
 <a id="attachempty"></a>
 
 ## <a name="attach-an-empty-disk"></a>Dołączanie pustego dysku
-1. Otwórz interfejs wiersza polecenia platformy Azure 1.0 i [połącz się ze swoją subskrypcją platformy Azure](/cli/azure/authenticate-azure-cli). Upewnij się, że jesteś w trybie usługi Azure Service Management (`azure config mode asm`).
+1. Otwórz klasyczny wiersza polecenia platformy Azure i [nawiązać połączenie z subskrypcją platformy Azure](/cli/azure/authenticate-azure-cli). Upewnij się, że jesteś w trybie usługi Azure Service Management (`azure config mode asm`).
 2. Wprowadź polecenie `azure vm disk attach-new`, aby utworzyć i dołączyć nowy dysk, jak pokazano to w następującym przykładzie. Zastąp ciąg *myVM* nazwą swojej maszyny wirtualnej z systemem Linux i określ rozmiar dysku w GB, który w tym przykładzie wynosi *100 GB*:
 
     ```azurecli
@@ -37,7 +36,7 @@ Aby uzyskać więcej informacji o dyskach, zobacz [About Disks and VHDs for Virt
 ## <a name="attach-an-existing-disk"></a>Dołączanie istniejącego dysku
 Dołączanie istniejącego dysku wymaga pliku vhd dostępnego na koncie magazynu.
 
-1. Otwórz interfejs wiersza polecenia platformy Azure 1.0 i [połącz się ze swoją subskrypcją platformy Azure](/cli/azure/authenticate-azure-cli). Upewnij się, że jesteś w trybie usługi Azure Service Management (`azure config mode asm`).
+1. Otwórz klasyczny wiersza polecenia platformy Azure i [nawiązać połączenie z subskrypcją platformy Azure](/cli/azure/authenticate-azure-cli). Upewnij się, że jesteś w trybie usługi Azure Service Management (`azure config mode asm`).
 2. Sprawdź, czy wirtualny dysk twardy, który chcesz dołączyć, został już przekazany do Twojej subskrypcji platformy Azure:
    
     ```azurecli

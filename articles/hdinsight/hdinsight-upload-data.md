@@ -1,6 +1,6 @@
 ---
 title: Przekazywanie danych dla zadań Hadoop w usłudze HDInsight
-description: Dowiedz się, jak przekazywać i uzyskać dostęp do danych dla zadań Hadoop w HDInsight przy użyciu wiersza polecenia platformy Azure, Eksplorator usługi Azure Storage, programu Azure PowerShell, wiersza polecenia usługi Hadoop lub narzędzia Sqoop.
+description: Dowiedz się, jak przekazywać i uzyskać dostęp do danych dla zadań Hadoop w HDInsight przy użyciu platformy Azure klasyczny interfejs wiersza polecenia, Eksplorator usługi Azure Storage, programu Azure PowerShell, wiersza polecenia usługi Hadoop lub narzędzia Sqoop.
 keywords: hadoop etl, pobieranie danych do platformy hadoop, hadoop ładowanie danych
 services: hdinsight
 author: jasonwhowell
@@ -10,12 +10,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 838444898500ce7127e1a9e999d0b5ee7b1e3687
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 44aaccee436011bd7d27bec87515fde0e898732e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051828"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985983"
 ---
 # <a name="upload-data-for-hadoop-jobs-in-hdinsight"></a>Przekazywanie danych dla zadań Hadoop w usłudze HDInsight
 
@@ -38,22 +38,22 @@ Firma Microsoft udostępnia następujące narzędzia do pracy z usługą Azure S
 
 | Narzędzie | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Interfejs wiersza polecenia platformy Azure][azurecli] |✔ |✔ |✔ |
+| [Klasyczny interfejs wiersza polecenia Azure][azurecli] |✔ |✔ |✔ |
 | [Azure PowerShell][azure-powershell] | | |✔ |
 | [AzCopy][azure-azcopy] |✔ | |✔ |
 | [Polecenia usługi Hadoop](#commandline) |✔ |✔ |✔ |
 
 > [!NOTE]
-> Gdy wiersza polecenia platformy Azure, programu Azure PowerShell i AzCopy mogą wszystkie zostać użyte spoza platformy Azure, polecenia Hadoop jest dostępna tylko w klastrze HDInsight. I to polecenie może składać się podczas ładowania danych z lokalnego systemu plików do usługi Azure Storage.
+> Gdy klasyczny interfejs wiersza polecenia platformy Azure, programu Azure PowerShell i AzCopy mogą wszystkie zostać użyte spoza platformy Azure, polecenia Hadoop jest dostępna tylko w klastrze HDInsight. I to polecenie może składać się podczas ładowania danych z lokalnego systemu plików do usługi Azure Storage.
 >
 >
 
-#### <a id="xplatcli"></a>Wiersza polecenia platformy Azure
-Wiersza polecenia platformy Azure jest narzędziem dla wielu platform, które umożliwia zarządzanie usługami platformy Azure. Poniższe kroki umożliwiają przekazywanie danych do usługi Azure Storage:
+#### <a id="xplatcli"></a>Klasyczny interfejs wiersza polecenia Azure
+Klasycznego wiersza polecenia platformy Azure jest narzędziem dla wielu platform, które umożliwia zarządzanie usługami platformy Azure. Poniższe kroki umożliwiają przekazywanie danych do usługi Azure Storage:
 
-[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
-1. [Instalowanie i Konfigurowanie interfejsu wiersza polecenia platformy Azure dla systemów Mac, Linux i Windows](../cli-install-nodejs.md).
+1. [Instalowanie i Konfigurowanie interfejsu wiersza polecenia do klasycznego Azure dla systemów Mac, Linux i Windows](../cli-install-nodejs.md).
 2. Otwórz wiersz polecenia, bash lub innego powłoki i służą do uwierzytelniania w Twojej subskrypcji platformy Azure.
 
     ```cli

@@ -16,14 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
 ms.author: miprasad
-ms.openlocfilehash: 7c7b50098cfd1bcac534156dd905b37affab80bd
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0210e65c0859b00caac0fe66baa1c73063f644c8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35648221"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947945"
 ---
 # <a name="customer-churn-prediction-using-azure-machine-learning"></a>Przewidywanie zmienności klientów za pomocą usługi Azure Machine Learning
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Średnio utrzymanie obecnych klientów jest pięciokrotnie tańsze niż rekrutacji nowe. W rezultacie kierownicy ds. marketingu często stawia próbują oszacować prawdopodobieństwo odpływu klientów i znajdowania odpowiednie działania, aby zminimalizować współczynnik zmian danych.
 
@@ -61,7 +66,7 @@ W tym rozwiązaniu użyto konkretny przykład tworzenia postęp dokonany w model
 
 * [Konta platformy Azure](https://azure.microsoft.com/free/) (bezpłatne wersje próbne są dostępne)
 
-* Zainstalowana kopia programu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) następujące [przewodnika Szybki start dotyczącego instalacji](../service/quickstart-installation.md) zainstalować ten program i utworzyć obszar roboczy
+* Zainstalowana kopia programu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) następujące [przewodnika Szybki start dotyczącego instalacji](quickstart-installation.md) zainstalować ten program i utworzyć obszar roboczy
 
 * Operacjonalizacji najlepiej w przypadku aparat platformy Docker zainstalowany i uruchomiony lokalnie. W przeciwnym razie użyj opcji klastra, ale należy pamiętać, że uruchamianie usługi Azure Container Service (ACS) może być kosztowne.
 

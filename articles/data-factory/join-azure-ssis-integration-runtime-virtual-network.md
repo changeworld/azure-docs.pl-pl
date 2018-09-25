@@ -13,19 +13,19 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: d89abfd0ec2ae5de8366a12bb38d9358aa8ab76d
-ms.sourcegitcommit: 744747d828e1ab937b0d6df358127fcf6965f8c8
+ms.openlocfilehash: a9a4b7728eff3057b9677d12df51cc8c477744ca
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42054993"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953943"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Dołącz do środowiska Azure-SSIS integration runtime do sieci wirtualnej
 Dołącz do środowiska Azure-SSIS integration runtime (IR) z siecią wirtualną platformy Azure w następujących scenariuszach: 
 
 - Chcesz połączyć się z lokalnymi magazynami danych z pakietów usług SSIS działającymi w środowisku Azure SSIS Integration Runtime. 
 
-- Hostujesz bazę danych wykazu programu SQL Server Integration Services (SSIS) w usłudze Azure SQL Database za pomocą punktów końcowych usługi sieci wirtualnej/zarządzanego wystąpienia (wersja zapoznawcza). 
+- Hostują bazy danych wykazu usług SQL Server Integration Services (SSIS) w usłudze Azure SQL Database za pomocą punktów końcowych usługi sieci wirtualnej/zarządzanego wystąpienia. 
 
  Usługa Azure Data Factory umożliwia dołączenie środowiska Azure-SSIS integration runtime do sieci wirtualnej utworzonej za pomocą klasycznego modelu wdrażania lub modelu wdrażania usługi Azure Resource Manager. 
 
@@ -42,11 +42,11 @@ Poniżej przedstawiono kilka ważne punkty, które należy zwrócić uwagę:
  
 - W przypadku istniejącej usługi Azure Resource Manager sieć wirtualna połączona z siecią lokalną w innej lokalizacji z środowiska IR Azure-SSIS, można najpierw utworzyć [sieci wirtualnej usługi Azure Resource Manager](../virtual-network/quick-create-portal.md##create-a-virtual-network) dla środowiska Azure-SSIS Środowisko IR do przyłączenia. Następnie należy skonfigurować połączenia sieci wirtualnej usługi Azure Resource Manager do usługi Azure Resource Manager. Lub można utworzyć [klasycznej sieci wirtualnej](../virtual-network/virtual-networks-create-vnet-classic-pportal.md) dla środowiska IR Azure-SSIS do przyłączenia. Następnie należy skonfigurować [sieci wirtualnej klasycznego do usługi Azure Resource Manager](../vpn-gateway/vpn-gateway-connect-different-deployment-models-portal.md) połączenia. 
 
-## <a name="host-the-ssis-catalog-database-in-azure-sql-database-with-virtual-network-service-endpointsmanaged-instance-preview"></a>Bazę danych wykazu usług SSIS w usłudze Azure SQL Database za pomocą punktów końcowych usługi sieci wirtualnej/zarządzanego wystąpienia (wersja zapoznawcza)
-Jeśli katalog usług SSIS jest hostowana w usłudze Azure SQL Database za pomocą punktów końcowych usługi sieci wirtualnej lub wystąpienia zarządzanego (wersja zapoznawcza), można przyłączyć środowiska IR Azure-SSIS do: 
+## <a name="host-the-ssis-catalog-database-in-azure-sql-database-with-virtual-network-service-endpointsmanaged-instance"></a>Bazę danych wykazu usług SSIS w usłudze Azure SQL Database za pomocą punktów końcowych usługi sieci wirtualnej/zarządzanego wystąpienia
+Jeśli katalog usług SSIS jest hostowana w usłudze Azure SQL Database za pomocą punktów końcowych usługi sieci wirtualnej lub wystąpienia zarządzanego, można przyłączyć środowiska IR Azure-SSIS do: 
 
 - Tej samej sieci wirtualnej 
-- Inną sieć wirtualną, który jest podłączony do sieci, z tą, która jest używana dla usługi Azure SQL Database za pomocą punktów końcowych usługi sieci wirtualnej/zarządzanego wystąpienia (wersja zapoznawcza) 
+- Inną sieć wirtualną, który jest podłączony do sieci, z tą, która jest używana dla usługi Azure SQL Database za pomocą punktów końcowych usługi sieci wirtualnej/zarządzanego wystąpienia 
 
 Jeśli dołączysz do środowiska Azure-SSIS IR do tej samej sieci wirtualnej jako wystąpienia zarządzanego, upewnij się, że Azure-SSIS IR znajduje się w innej podsieci niż wystąpienia zarządzanego. Jeśli dołączysz do środowiska Azure-SSIS IR do sieci wirtualnej inną niż wystąpienie zarządzane, firma Microsoft zaleca komunikacji równorzędnej sieci wirtualnej (który jest ograniczona do tego samego regionu) lub sieci wirtualnej do połączenia sieci wirtualnej. Zobacz [połączyć aplikację z wystąpienia zarządzanego Azure SQL Database](../sql-database/sql-database-managed-instance-connect-app.md).
 
@@ -72,7 +72,7 @@ Więcej szczegółów można znaleźć w poniższych sekcjach.
 
 -   Upewnij się, że podsieć, którą wybierzesz ma wystarczającą ilość miejsca dostępnego adresu na platformie Azure-SSIS IR do użycia. Pozostaw co najmniej 2 * liczba węzłów IR w dostępnych adresów IP. Platforma Azure rezerwuje pewnych adresów IP w każdej podsieci, a nie można użyć tych adresów. Pierwsze i ostatnie adresy IP podsieci są zarezerwowane dla zgodności protokołów, oraz trzy dodatkowe adresy są używane dla usług platformy Azure. Aby uzyskać więcej informacji, zobacz [czy istnieją jakieś ograniczenia dotyczące używania adresów IP w ramach tych podsieci?](../virtual-network/virtual-networks-faq.md#are-there-any-restrictions-on-using-ip-addresses-within-these-subnets). 
 
--   Nie używaj podsieci, która wyłącznie jest zajęta przez inne usługi platformy Azure (na przykład, wystąpienia zarządzanego SQL Database (wersja zapoznawcza), usługa App Service, itp.). 
+-   Nie używaj podsieci, która wyłącznie jest zajęta przez inne usługi platformy Azure (na przykład wystąpienie zarządzane usługi SQL Database, usługi App Service, itp.). 
 
 ### <a name="dns_server"></a> Serwer usługi nazw domen 
 Jeśli musisz użyć własnego serwera usługi nazw domen (DNS, Domain Name System) w sieci wirtualnej, która jest dołączane za pomocą środowiska Azure-SSIS integration runtime, upewnij się, może rozpoznać nazwy hosta z publicznej platformy Azure (na przykład nazwę usługi Azure Storage blob, `<your storage account>.blob.core.windows.net`). 
@@ -92,7 +92,7 @@ Jeśli musisz wdrożyć sieciową grupę zabezpieczeń (NSG) dla podsieci używa
 |---|---|---|---|---|---|---|
 | Przychodzący | TCP | Internet | * | VirtualNetwork | 29876, 29877 (Jeśli dołączysz środowiska IR do sieci wirtualnej usługi Azure Resource Manager) <br/><br/>10100, 20100, 30100 (jeśli Podczerwieni przyłączyć się do klasycznej sieci wirtualnej)| Usługa Data Factory używa tych portów do komunikacji z węzłami Twojego środowiska Azure-SSIS integration runtime w sieci wirtualnej. <br/><br/> Czy tworzysz sieciowa grupa zabezpieczeń poziomu podsieci, czy nie, Data Factory zawsze konfiguruje sieciowej grupy zabezpieczeń na poziomie kart interfejsu sieciowego (NIC) dołączonych do maszyn wirtualnych, które hostują Azure-SSIS IR. Tylko dla ruchu przychodzącego ruchu z adresów IP fabryki danych w określonych portów jest dozwolone przy tym poziomie karty Sieciowej, sieciowej grupy zabezpieczeń. Nawet jeśli otworzysz te porty dla ruchu internetowego na poziomie podsieci, ruch z adresów IP, które nie są adresami IP fabryki danych jest zablokowany na poziomie karty Sieciowej. |
 | Wychodzący | TCP | VirtualNetwork | * | Internet | 443 | Ten port jest używany przez węzły Twojego środowiska Azure-SSIS integration Runtime w sieci wirtualnej na dostęp do usług platformy Azure, takich jak Azure Storage i Azure Event Hubs. |
-| Wychodzący | TCP | VirtualNetwork | * | Internet lub Sql | 1433, 11000 11999, 14000 14999 | Węzły Twojego środowiska Azure-SSIS integration Runtime w sieci wirtualnej użycie tych portów do dostępu do bazy danych SSISDB hostowanych przez serwer usługi Azure SQL Database — w tym celu nie ma zastosowania do danych SSISDB hostowaną przez wystąpienia zarządzanego (wersja zapoznawcza). |
+| Wychodzący | TCP | VirtualNetwork | * | Internet lub Sql | 1433, 11000 11999, 14000 14999 | Węzły Twojego środowiska Azure-SSIS integration Runtime w sieci wirtualnej użycie tych portów do dostępu do bazy danych SSISDB hostowanych przez serwer usługi Azure SQL Database — w tym celu nie ma zastosowania do danych SSISDB hostowaną przez wystąpienia zarządzanego. |
 ||||||||
 
 ### <a name="route"></a> Za pomocą usługi Azure ExpressRoute lub trasa zdefiniowana przez użytkownika
@@ -357,6 +357,6 @@ To polecenie wymaga 20 do 30 minut na zakończenie.
 Aby uzyskać więcej informacji na temat środowiskiem uruchomieniowym usług SSIS na platformie Azure zobacz następujące tematy: 
 - [Środowisko Azure-SSIS integration runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime). Ten artykuł zawiera informacje o pojęciach dotyczących środowiska integration Runtime ogólnie rzecz biorąc, w tym Azure-SSIS IR. 
 - [Samouczek: Wdrażanie pakietów usług SSIS na platformie Azure](tutorial-create-azure-ssis-runtime-portal.md). Ten artykuł zawiera szczegółowe instrukcje dotyczące tworzenia środowiska Azure-SSIS IR. Używa usługi Azure SQL Database do hostowania wykazu usług SSIS. 
-- [Create an Azure-SSIS integration runtime (Tworzenie środowiska Azure-SSIS Integration Runtime)](create-azure-ssis-integration-runtime.md) Ten artykuł stanowi rozszerzenie samouczka i zawiera instrukcje dotyczące usługi Azure SQL Database za pomocą punktów końcowych usługi sieci wirtualnej/zarządzanego wystąpienia (wersja zapoznawcza) do hostowania wykazu usług SSIS i dołączania środowiska IR do sieci wirtualnej. 
+- [Create an Azure-SSIS integration runtime (Tworzenie środowiska Azure-SSIS Integration Runtime)](create-azure-ssis-integration-runtime.md) Ten artykuł stanowi rozszerzenie samouczka i zawiera instrukcje dotyczące usługi Azure SQL Database za pomocą punktów końcowych usługi sieci wirtualnej/zarządzanego wystąpienia do hostowania wykazu usług SSIS i dołączania środowiska IR do sieci wirtualnej. 
 - [Monitor an Azure-SSIS IR (Monitorowanie środowiska Azure-SSIS IR)](monitor-integration-runtime.md#azure-ssis-integration-runtime). W tym artykule przedstawiono sposób pobierania informacji o środowisku Azure-SSIS IR i opisów stanów w pobranych informacjach. 
 - [Manage an Azure-SSIS IR (Zarządzanie środowiskiem Azure-SSIS IR)](manage-azure-ssis-integration-runtime.md). W tym artykule przedstawiono sposób zatrzymywania, uruchamiania lub usuwania środowiska Azure-SSIS IR. On również pokazano, jak skalowanie środowiska IR Azure-SSIS, dodając węzły. 

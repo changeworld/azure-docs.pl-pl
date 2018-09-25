@@ -9,12 +9,12 @@ ms.author: mattfarm
 ms.reviewer: jonfan, estfan, LADocs
 ms.topic: article
 ms.date: 06/15/2018
-ms.openlocfilehash: 7081c9e4f6e6deee196255f04180a8f2cc792876
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 5ed6fa9f514bae3ea651edba6702714e2680091f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43122499"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955949"
 ---
 # <a name="simple-enterprise-integration-architecture"></a>Architektura integracji przedsiębiorstw prosty
 
@@ -162,7 +162,7 @@ Usługa API Management zarządza wpisy tajne przy użyciu obiektów o nazwie *na
 
 ## <a name="diagnostics-and-monitoring"></a>Diagnostyka i monitorowanie
 
-Możesz użyć [usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md) operacyjnej monitorowania w obu [usługi API Management](../api-management/api-management-howto-use-azure-monitor.md) i [Logic Apps](../logic-apps/logic-apps-monitor-your-logic-apps.md). Usługa Azure Monitor udostępnia informacje na podstawie metryk skonfigurowane dla każdej usługi i jest domyślnie włączona.
+Możesz użyć [usługi Azure Monitor](../azure-monitor/overview.md) operacyjnej monitorowania w obu [usługi API Management](../api-management/api-management-howto-use-azure-monitor.md) i [Logic Apps](../logic-apps/logic-apps-monitor-your-logic-apps.md). Usługa Azure Monitor udostępnia informacje na podstawie metryk skonfigurowane dla każdej usługi i jest domyślnie włączona.
 
 Każda usługa ma również następujące opcje:
 

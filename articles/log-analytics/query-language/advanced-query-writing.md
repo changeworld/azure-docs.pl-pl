@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/16/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: f7594b7d1eb7d41508be435cdd0a6203433727c1
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 2f9868abd0eb8bf96928aeba6f96c10bcb91c4e2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603060"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958561"
 ---
 # <a name="writing-advanced-queries-in-log-analytics"></a>Zapisywanie zaawansowanych zapytań w usłudze Log Analytics
 
@@ -32,7 +32,7 @@ ms.locfileid: "45603060"
 ## <a name="reusing-code-with-let"></a>Ponowne użycie kodu przy użyciu let
 Użyj `let` przypisać wyniki do zmiennej i odwoływać się do niego później w zapytaniu:
 
-```KQL
+```Kusto
 // get all events that have level 2 (indicates warning level)
 let warning_events=
 Event
@@ -44,7 +44,7 @@ warning_events
 
 Można także przypisać stałe wartości do zmiennych. Ułatwia to metoda do ustawiania parametrów dla pól, które należy zmienić za każdym razem, aby wykonać zapytanie. Modyfikowanie tych parametrów, zgodnie z potrzebami. Na przykład do obliczania wolnego miejsca na dysku i wolnej pamięci (w percentylach) w danym przedziale czasowym:
 
-```KQL
+```Kusto
 let startDate = datetime(2018-08-01T12:55:02);
 let endDate = datetime(2018-08-02T13:21:35);
 let FreeDiskSpace =
@@ -65,7 +65,7 @@ Dzięki temu można łatwo zmienić początek czas zakończenia przy następnym 
 ### <a name="local-functions-and-parameters"></a>Funkcje lokalne i parametry
 Użyj `let` instrukcje, aby tworzyć funkcje, które mogą być używane w jednym zapytaniu. Na przykład zdefiniować funkcję, która przyjmuje pola daty/godziny (w formacie UTC) i konwertuje je do standardowego formatu Stanów Zjednoczonych. 
 
-```KQL
+```Kusto
 let utc_to_us_date_format = (t:datetime)
 {
   strcat(getmonth(t), "/", dayofmonth(t),"/", getyear(t), " ",
@@ -80,7 +80,7 @@ Event
 ## <a name="functions"></a>Funkcje
 Można zapisać zapytania alias funkcji, dzięki czemu mogą być przywoływane przez inne zapytania. Na przykład następujące standardowe zapytanie zwraca wszystkie brakujące aktualizacje zabezpieczeń, zgłaszane w ciągu ostatniego dnia:
 
-```KQL
+```Kusto
 Update
 | where TimeGenerated > ago(1d) 
 | where Classification == "Security Updates" 
@@ -89,7 +89,7 @@ Update
 
 Można zapisać to zapytanie jako funkcja i nadaj aliasem, takie jak _security_updates_last_day_. Następnie można go do innego zapytania wyszukiwania związanych z SQL niezbędnych aktualizacji zabezpieczeń:
 
-```KQL
+```Kusto
 security_updates_last_day | where Title contains "SQL"
 ```
 
@@ -102,7 +102,7 @@ Aby zapisać zapytanie jako funkcję, wybierz pozycję **Zapisz** przycisku w po
 ## <a name="print"></a>Drukowanie
 `print` zwraca tabelę z jedną kolumnę i pojedynczego wiersza, jako wynik obliczeń. Jest to często używane w sytuacjach wymagających calcuation proste. Na przykład, aby znaleźć bieżącą godzinę w PST, a następnie dodaj kolumnę z EST:
 
-```KQL
+```Kusto
 print nowPst = now()-8h
 | extend nowEst = nowPst+3h
 ```
@@ -110,7 +110,7 @@ print nowPst = now()-8h
 ## <a name="datatable"></a>Elementu DataTable
 `datatable` Umożliwia zdefiniowanie zestawu danych. Schemat i zbiór wartości, a następnie przekazać tabeli na inne elementy zapytania. Na przykład aby utworzyć tabelę użycie pamięci RAM i Oblicz ich średnia wartość na godzinę:
 
-```KQL
+```Kusto
 datatable (TimeGenerated: datetime, usage_percent: double)
 [
   "2018-06-02T15:15:46.3418323Z", 15.5,
@@ -127,7 +127,7 @@ datatable (TimeGenerated: datetime, usage_percent: double)
 
 Konstrukcje DataTable również są bardzo przydatne podczas tworzenia tabeli odnośników. Na przykład, aby zamapować tabeli danych, takich jak identyfikatory zdarzeń z _SecurityEvent_ tabeli, aby typy zdarzeń wymienionych w innym miejscu, tworzenie tabeli wyszukiwania za pomocą typów zdarzeń przy użyciu `datatable` i Dołącz do tego elementu datatable przy użyciu  _SecurityEvent_ danych:
 
-```KQL
+```Kusto
 let eventCodes = datatable (EventID: int, EventType:string)
 [
     4625, "Account activity",

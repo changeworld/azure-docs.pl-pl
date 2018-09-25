@@ -7,16 +7,16 @@ author: CarlRabeler
 manager: craigg
 ms.service: sql-database
 ms.custom: DBs & servers
-ms.date: 08/01/2018
+ms.date: 09/20/2018
 ms.author: ninarn
 ms.topic: conceptual
 ms.reviewer: carlrab
-ms.openlocfilehash: 4c5bb0ab3431fa951871e64d7bdd8a3a313f480f
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: ab37a714635b716a80bd869cffd2d5a37d76aff0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721504"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040367"
 ---
 # <a name="create-and-manage-elastic-pools-in-azure-sql-database"></a>Tworzenie i zarządzanie elastycznymi pulami w usłudze Azure SQL Database
 
@@ -70,12 +70,12 @@ Aby utworzyć i zarządzać elastycznymi pulami SQL Database za pomocą [wiersza
 
 | Polecenie cmdlet | Opis |
 | --- | --- |
-|[Utwórz az sql elastic-pool](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_create)|Tworzy pulę elastyczną.|
-|[AZ sql elastic-pool list](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list)|Zwraca listę pule elastyczne na serwerze.|
-|[AZ sql elastic-pool list-baz danych](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list_dbs)|Zwraca listę baz danych w puli elastycznej.|
-|[AZ sql elastic-pool list wersje](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_list_editions)|Zawiera również ustawień jednostek DTU dostępnej puli, limity przestrzeni dyskowej i ustawienia poszczególnych baz danych. W celu zmniejszenia poziomu szczegółowości, limity dodatkowego miejsca do magazynowania i na bazę danych ustawienia są domyślnie ukryte.|
-|[AZ sql elastic-pool update](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_update)|Aktualizuje puli elastycznej.|
-|[AZ sql elastic-pool delete](/cli/azure/sql/elastic-pool#az_sql_elastic_pool_delete)|Usuwa puli elastycznej.|
+|[Utwórz az sql elastic-pool](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-create)|Tworzy pulę elastyczną.|
+|[AZ sql elastic-pool list](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list)|Zwraca listę pule elastyczne na serwerze.|
+|[AZ sql elastic-pool list-baz danych](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list-dbs)|Zwraca listę baz danych w puli elastycznej.|
+|[AZ sql elastic-pool list wersje](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-list-editions)|Zawiera również ustawień jednostek DTU dostępnej puli, limity przestrzeni dyskowej i ustawienia poszczególnych baz danych. W celu zmniejszenia poziomu szczegółowości, limity dodatkowego miejsca do magazynowania i na bazę danych ustawienia są domyślnie ukryte.|
+|[AZ sql elastic-pool update](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-update)|Aktualizuje puli elastycznej.|
+|[AZ sql elastic-pool delete](/cli/azure/sql/elastic-pool#az-sql-elastic-pool-delete)|Usuwa puli elastycznej.|
 
 ## <a name="transact-sql-manage-pooled-databases"></a>Języka Transact-SQL: Zarządzanie bazy danych w puli
 

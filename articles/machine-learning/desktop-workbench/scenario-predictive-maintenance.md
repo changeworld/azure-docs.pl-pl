@@ -12,14 +12,19 @@ ms.workload: data-services
 ms.topic: article
 ms.custom: mvc
 ms.date: 10/05/2017
-ms.openlocfilehash: a5531ae256a263f1c34496819ac435ce67156b49
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: c154b0124acb5bee93211adb611356555526d2c0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35649334"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996217"
 ---
 # <a name="predictive-maintenance-for-real-world-scenarios"></a>Konserwacja zapobiegawcza na potrzeby scenariuszy w rzeczywistych warunkach
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Niezaplanowane przestoje sprzętu mogą mieć niekorzystny wpływ na każdą firmę. Warto zachować pola urządzenia uruchomione, aby zmaksymalizować wykorzystanie oraz wydajność oraz zminimalizować kosztownych i nieplanowanych przestojów. Wczesnej identyfikacji problemów może pomóc przydzielić zasoby ograniczone konserwacji w ekonomiczny sposób i poprawić jakość i procesy łańcucha dostaw. 
 
@@ -41,10 +46,10 @@ Problem biznesowy symulowanych danych pozostaje możliwość przewidzenia proble
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Konta platformy Azure](https://azure.microsoft.com/free/) (bezpłatne wersje próbne są dostępne).
-* Zainstalowana kopia programu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Postępuj zgodnie z [Przewodnik instalacji szybkiego startu](../service/quickstart-installation.md) zainstalować ten program i utworzyć obszar roboczy.
+* Zainstalowana kopia programu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Postępuj zgodnie z [Przewodnik instalacji szybkiego startu](quickstart-installation.md) zainstalować ten program i utworzyć obszar roboczy.
 * Azure Machine Learning Operacjonalizacji wymaga środowiska lokalnego wdrażania oraz [konto Zarządzanie modelami w usłudze Azure Machine Learning](model-management-overview.md).
 
-W tym przykładzie jest uruchamiany w dowolnym kontekście obliczeniowym Machine Learning Workbench. Jednak zaleca się uruchamiania przykładu z co najmniej 16 GB pamięci. Ten scenariusz był tworzone i testowane na komputerze systemu Windows 10 z systemem zdalnym standard DS4_V2 [Data Science Virtual Machine (dsvm dystrybucji) dla systemu Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu).
+W tym przykładzie jest uruchamiany w dowolnym kontekście obliczeniowym Machine Learning Workbench. Jednak zaleca się uruchamiania przykładu z co najmniej 16 GB pamięci. Ten scenariusz był tworzone i testowane na komputerze systemu Windows 10 z systemem zdalnym standard DS4_V2 [Data Science Virtual Machine (dsvm dystrybucji) dla systemu Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu).
 
 Operacjonalizacja modelu było to przy użyciu wersji 0.1.0a22 z interfejsu wiersza polecenia usługi Azure Machine Learning.
 
@@ -71,7 +76,7 @@ To polecenie dostarcza klucza uwierzytelniania za pomocą protokołu https:\\aka
 az ml experiment prepare --target docker --run-configuration docker
 ```
 
-Zaleca się uruchamiania na [nauki dla systemu Linux (Ubuntu)](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) dla wymagania dotyczące pamięci i dysku. Po skonfigurowaniu maszyny DSVM przygotować zdalnym środowisku platformy Docker przy użyciu dwóch następujących poleceń:
+Zaleca się uruchamiania na [nauki dla systemu Linux (Ubuntu)](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.linux-data-science-vm-ubuntu) dla wymagania dotyczące pamięci i dysku. Po skonfigurowaniu maszyny DSVM przygotować zdalnym środowisku platformy Docker przy użyciu dwóch następujących poleceń:
 
 ```
 az ml computetarget attach remotedocker --name [Connection_Name] --address [VM_IP_Address] --username [VM_Username] --password [VM_UserPassword]

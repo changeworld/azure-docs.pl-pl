@@ -1,5 +1,5 @@
 ---
-title: Dysk wymiany systemu operacyjnego dla maszyny Wirtualnej platformy Azure przy użyciu interfejsu wiersza polecenia | Dokumentacja firmy Microsoft
+title: Dysk wymiany systemu operacyjnego na Maszynie wirtualnej platformy Azure przy użyciu interfejsu wiersza polecenia | Dokumentacja firmy Microsoft
 description: Zmień dysk systemu operacyjnego używany przez maszynę wirtualną platformy Azure przy użyciu interfejsu wiersza polecenia.
 services: virtual-machines-linux
 documentationcenter: ''
@@ -15,26 +15,26 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/24/2018
 ms.author: cynthn
-ms.openlocfilehash: 1732b60ee135b765cdeea43f981bcef9575ff32c
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: 983c2e6d03735ba26f7660fc07dcf1a05ef88189
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32196210"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960400"
 ---
-# <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>Zmień dysk systemu operacyjnego używany przez maszyny Wirtualnej platformy Azure przy użyciu interfejsu wiersza polecenia
+# <a name="change-the-os-disk-used-by-an-azure-vm-using-the-cli"></a>Zmień dysk systemu operacyjnego używany przez Maszynę wirtualną platformy Azure przy użyciu interfejsu wiersza polecenia
 
 
-Jeśli masz istniejącą maszynę Wirtualną, ale chcesz wymienić dysk kopii zapasowej dysku lub innego dysku systemu operacyjnego, można użyć interfejsu wiersza polecenia Azure, można zamienić na dyskach systemu operacyjnego. Nie masz usunięcie i ponowne utworzenie maszyny Wirtualnej. Nawet służy dysków zarządzanych w innej grupie zasobów, jak długo nie znajduje się już w użyciu.
+Jeśli masz istniejącą maszynę Wirtualną, ale chcesz zamienić na dysku dla dysku kopii zapasowej lub inny dysk systemu operacyjnego, można użyć wiersza polecenia platformy Azure o zamianę dysków systemu operacyjnego. Nie masz usunięcie i ponowne utworzenie maszyny Wirtualnej. Nawet służy dysku zarządzanego w innej grupie zasobów, tak długo, jak go nie jest już używana.
 
-Maszyna wirtualna musi być stopped\deallocated, a następnie identyfikator zasobu zarządzanego dysku można zastąpić identyfikator zasobu zarządzanego inny dysk. 
+Maszyna wirtualna musi być stopped\deallocated, a następnie identyfikator zasobu dysku zarządzanego można zastąpić o identyfikatorze zasobu z innego dysku zarządzanego. 
 
-Upewnij się, że typu rozmiaru i magazynu maszyny Wirtualnej są zgodne z dysku, który chcesz dołączyć. Na przykład jeśli dysk, który ma być używany jest magazyn w warstwie Premium, następnie maszyny Wirtualnej musi być w stanie magazyn w warstwie Premium (takich jak rozmiar z serii DS).
+Upewnij się, że typ rozmiaru i magazynu maszyny Wirtualnej są zgodne z dysku, który chcesz dołączyć. Na przykład w przypadku dysku, którego chcesz użyć w usłudze Premium Storage, maszyny Wirtualnej musi być w stanie magazynu w warstwie Premium (na przykład rozmiar serii DS).
 
-W tym artykule wymaga wiersza polecenia platformy Azure w wersji 2.0.25 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0]( /cli/azure/install-azure-cli). 
+Ten artykuł wymaga interfejsu wiersza polecenia Azure w wersji 2.0.25 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure]( /cli/azure/install-azure-cli). 
 
 
-Użyj [Lista dysków az](/cli/azure/disk#list) spowoduje wyświetlenie listy dysków w grupie zasobów.
+Użyj [listy dysków az](/cli/azure/disk#list) w celu uzyskania listy dysków w grupie zasobów.
 
 ```azurecli-interactive
 az disk list \
@@ -44,7 +44,7 @@ az disk list \
 ```
 
 
-Użyj [zatrzymania maszyny wirtualnej az](/cli/azure/vm#stop) do stop\deallocate przed wymiany dyski maszyny Wirtualnej.
+Użyj [az vm stop](/cli/azure/vm#stop) do stop\deallocate maszyny Wirtualnej przed zamianą na dyskach.
 
 ```azurecli-interactive
 az vm stop \
@@ -53,7 +53,7 @@ az vm stop \
 ```
 
 
-Użyj [aktualizację maszyny wirtualnej az](/cli/azure/vm#az-vm-update) z pełny identyfikator zasobu dla nowego dysku `--osdisk` parametru 
+Użyj [az vm update](/cli/azure/vm#az-vm-update) z pełny identyfikator zasobu nowego dysku dla `--osdisk` parametru 
 
 ```azurecli-interactive 
 az vm update \
@@ -62,7 +62,7 @@ az vm update \
    --os-disk /subscriptions/<subscription ID>/resourceGroups/swap/providers/Microsoft.Compute/disks/myDisk 
    ```
    
-Uruchom ponownie maszynę Wirtualną przy użyciu [uruchomienia maszyny wirtualnej az](/cli/azure/vm#start).
+Uruchom ponownie maszynę Wirtualną przy użyciu [az vm start](/cli/azure/vm#start).
 
 ```azurecli-interactive
 az vm start \
@@ -73,4 +73,4 @@ az vm start \
    
 **Następne kroki**
 
-Aby utworzyć kopię dysku, zobacz [migawki dysku](snapshot-copy-managed-disk.md).
+Aby utworzyć kopię dysku, zobacz [Tworzenie migawki dysku](snapshot-copy-managed-disk.md).

@@ -16,12 +16,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 09/14/2017
 ms.author: hermannd
-ms.openlocfilehash: cc4438a770a8092275373ccf8da9cc9951a1f906
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 8a16fa9f639a6a4a17d6904d6bc9a0e31f774e0c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37858616"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950050"
 ---
 # <a name="running-sap-netweaver-on-microsoft-azure-suse-linux-vms"></a>Uruchamianie środowiska SAP NetWeaver na maszynach wirtualnych systemu SUSE Linux na platformie Microsoft Azure
 W tym artykule opisano różne kwestii, które należy wziąć pod uwagę podczas pracy w oprogramowanie SAP NetWeaver na maszynach wirtualnych Microsoft Azure w systemie SUSE Linux (VM). Począwszy od 19 maja 2016 r. oprogramowanie SAP NetWeaver jest oficjalnie obsługiwany na maszynach wirtualnych systemu SUSE Linux na platformie Azure. Wszystkie szczegółowe informacje dotyczące wersji systemu Linux, wersje jądra SAP i inne wymagania wstępne znajdują się w 1928533 Uwaga SAP "aplikacji SAP na platformie Azure: obsługiwane produkty i typy maszyn wirtualnych platformy Azure".
@@ -119,7 +119,7 @@ Za pomocą plików szablonu JSON w nowym modelu usługi Azure Resource Manager, 
    ```
 Aby uzyskać więcej informacji na temat plików szablonów JSON, zobacz [tworzenia usługi Azure Resource Manager](../../../resource-group-authoring-templates.md) i [szablony szybkiego startu platformy](https://azure.microsoft.com/documentation/templates/).
 
-Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia i usługi Azure Resource Manager, zobacz [użyć wiersza polecenia platformy Azure dla systemów Mac, Linux i Windows za pomocą usługi Azure Resource Manager](../../../xplat-cli-azure-resource-manager.md).
+Aby uzyskać więcej informacji na temat klasycznego wiersza polecenia platformy Azure i usługi Azure Resource Manager, zobacz [Użyj klasycznego wiersza polecenia platformy Azure dla systemów Mac, Linux i Windows za pomocą usługi Azure Resource Manager](../../../xplat-cli-azure-resource-manager.md).
 
 ## <a name="sap-license-and-hardware-key"></a>Klucz licencji i sprzętu SAP
 Kwalifikację SAP do platformy Azure nowy mechanizm został wprowadzony do obliczania klucz sprzętu SAP, który jest używany do licencji na oprogramowanie SAP. Jądra SAP musiały zostać dostosowane, aby użyć nowego algorytmu. Wcześniejsze wersje jądra SAP dla systemu Linux nie zawiera tej zmiany kodu. W związku z tym, w niektórych sytuacjach (na przykład maszyny Wirtualnej platformy Azure zmiany rozmiaru), zmienić klucza sprzętowego SAP i SAP licencja została przestanie działać. To rozwiązanie jest dostarczana z nowszą jądra systemu Linux SAP.  Szczegółowe poprawki jądra SAP są udokumentowane w Uwaga SAP 1928533.

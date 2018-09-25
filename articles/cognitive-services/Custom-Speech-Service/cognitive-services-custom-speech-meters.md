@@ -1,6 +1,6 @@
 ---
-title: Przydziały na platformie Azure i usługi mowy liczników niestandardowych | Dokumentacja firmy Microsoft
-description: Informacje o liczników i przydziały niestandardowe mowy usługi na platformie Azure.
+title: Niestandardowe liczniki usługa rozpoznawania mowy i przydziały na platformie Azure | Dokumentacja firmy Microsoft
+description: Informacje o liczniki i przydziały Custom Speech Service na platformie Azure.
 services: cognitive-services
 author: PanosPeriorellis
 manager: onano
@@ -9,44 +9,45 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/08/2017
 ms.author: panosper
-ms.openlocfilehash: d2225dec818c600febfad2f9ebc42594f6ac09ac
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ROBOTS: NOINDEX
+ms.openlocfilehash: 0ddd6274051fed5de86a88270a0dcc2e8288d885
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346932"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974531"
 ---
-# <a name="custom-speech-service-meters-and-quotas"></a>Liczniki usługi mowy i przydziałów niestandardowych
+# <a name="custom-speech-service-meters-and-quotas"></a>Niestandardowe liczniki usługa rozpoznawania mowy i przydziały
 
-Za pomocą niestandardowych mowy usługę w chmurze można dostosowywać mowy modeli przekształcania mowy na tekst.
+Za pomocą opartej na chmurze usłudze Custom Speech Service możesz dostosować modele mowy na tekst zamiany mowy na tekst.
 
-Aby rozpocząć korzystanie z usługi rozpoznawania mowy niestandardowych, przejdź do [portalu niestandardowe mowy](https://cris.ai).
+Aby rozpocząć korzystanie z Custom Speech Service, przejdź do [portal usługi Custom Speech Service](https://cris.ai).
 
-Bieżącego cennika liczników, przejdź do [cennik usług kognitywnych niestandardowej usługi rozpoznawania mowy](https://azure.microsoft.com/pricing/details/cognitive-services/custom-speech-service/) strony.
+Dla bieżącego liczniki, przejdź do cen [cen usług Cognitive Services, usługę Custom Speech Service](https://azure.microsoft.com/pricing/details/cognitive-services/custom-speech-service/) strony.
 
 ## <a name="tiers-explained"></a>Wyjaśniono warstw
-Testowanie i prototypu tylko Sugerujemy użyć warstwę bezpłatna F0. Dla systemów produkcyjnych Sugerujemy używać warstwy S2. Za pomocą warstwy S2 można skalować wdrożenia liczby jednostek skalowania (SUs), które są wymagane w danym scenariuszu.
+Do testowania i tylko prototypu Sugerujemy korzystać z bezpłatnej warstwy F0. Dla systemów produkcyjnych proponujemy przy użyciu warstwy S2. Przy użyciu warstwy S2 możesz skalować liczbę jednostek skalowania (SUs), które dany scenariusz wymaga wdrożenia.
 
 > [!NOTE]
-> Możesz *nie* migracja między warstwą F0 a warstwą S2.
+> Możesz *nie* migracja między warstwami F0 i S2.
 >
 
-## <a name="meters-explained"></a>Wyjaśniono liczników
+## <a name="meters-explained"></a>Liczniki wyjaśniono
 
 ### <a name="scale-out"></a>Skalowanie w poziomie
-Skaluj w poziomie jest nową funkcją, które firma Microsoft wydała z nowego modelu cenowego. Za pomocą Skaluj w poziomie, można kontrolować liczbę jednoczesnych żądań, jaką może przetworzyć modelu.
+Skalowanie w poziomie jest nową funkcję, która udostępniliśmy nowy model cen. Za pomocą skalowanie w poziomie, można kontrolować liczbę żądań, które może przetworzyć modelu.
 
-Można ustawić równoczesnych żądań przy użyciu miary SU w **tworzenia modelu wdrażania** widoku. Aby uzyskać więcej informacji, zobacz [Tworzenie niestandardowych końcowego mowy na tekst](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-endpoint.md). W zależności od ilości ruchu, który należy przewidzieć wykorzystywanie modelu można wybrać odpowiednią liczbę SUs. 
+Współbieżnych żądań można ustawić za pomocą polecenia SU Miara na platformie **Utwórz wdrożenie modelu** widoku. Aby uzyskać więcej informacji, zobacz [utworzyć niestandardowy punkt końcowy rozpoznawania mowy na tekst](CustomSpeech-How-to-Topics/cognitive-services-custom-speech-create-endpoint.md). W zależności od ilości ruchu, który można przewidzieć używania modelu można wybrać odpowiednią liczbę SUs. 
 
 > [!NOTE]
-> Każdą jednostką skalowania gwarantuje 5 współbieżnych żądań. Możesz kupić 1 lub więcej SUs, zależnie od potrzeb. Ponieważ liczba SUs zwiększa się o 1, liczbę jednoczesnych żądań dotrą do przyrost 5.
+> Każda jednostka skalowania gwarantuje 5 współbieżnych żądań. Możesz kupić SUs co najmniej 1, zgodnie z potrzebami. Ponieważ zwiększa liczbę SUs z przyrostem równym 1, liczbę jednoczesnych żądań gwarantowane zwiększać z przyrostem równym 5.
 >
 
-### <a name="log-management"></a>Zarządzanie dziennikiem
-Możesz wybrać opcję Wyłącz audio śledzenia dla nowo wdrożonym modelu ponoszenia dodatkowych kosztów. Niestandardowej usługi rozpoznawania mowy nie rejestruje żądania audio i zapisy modelu.
+### <a name="log-management"></a>Zarządzanie dziennikami
+Możesz zdecydować się na wyłączyć ślady audio w nowo wdrożonym modelu za dodatkową opłatą. Usługa Custom Speech Service nie rejestruje żądań audio i zapisy tego modelu.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać więcej informacji o sposobie korzystania z usługi rozpoznawania mowy niestandardowych, przejdź do [portalu niestandardowe mowy](https://cris.ai).
+Aby uzyskać więcej informacji o sposobie używania Custom Speech Service, przejdź do [portal usługi Custom Speech Service](https://cris.ai).
 
 * [Wprowadzenie](cognitive-services-custom-speech-get-started.md)
 * [Często zadawane pytania](cognitive-services-custom-speech-faq.md)

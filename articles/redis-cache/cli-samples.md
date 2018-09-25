@@ -1,6 +1,6 @@
 ---
 title: Przykłady pamięci podręcznej Redis interfejsu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Przykładów dla platformy Azure CLI dla pamięci podręcznej Redis Azure.
+description: Przykłady interfejsu wiersza polecenia platformy Azure dla usługi Azure Redis Cache.
 services: redis-cache
 documentationcenter: ''
 author: wesmc7777
@@ -14,28 +14,28 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 04/14/2017
 ms.author: wesmc
-ms.openlocfilehash: 4450a8f7f16e3503626c9ee0ca125fc2b1ed9052
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 01773e1ec24e6ab7d1899df6774230b7ce5b5676
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27909843"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957901"
 ---
-# <a name="azure-cli-samples-for-azure-redis-cache"></a>Pamięć podręczna Redis Azure CLI przykładów dla platformy Azure
+# <a name="azure-cli-samples-for-azure-redis-cache"></a>Przykłady wiersza polecenia platformy Azure dla usługi Azure Redis Cache
 
-Poniższa tabela zawiera linki do bash skrypty utworzone przy użyciu wiersza polecenia platformy Azure.
+Poniższa tabela zawiera linki do skryptów bash utworzonych za pomocą interfejsu wiersza polecenia platformy Azure.
 
 | | |
 |---|---|
 |**Tworzenie pamięci podręcznej**||
-| [Tworzenie pamięci podręcznej](./scripts/create-cache.md) | Tworzy grupę zasobów i podstawowa warstwa pamięć podręczna Redis Azure. |
-| [Tworzenie pamięci podręcznej premium z klastra](./scripts/create-premium-cache-cluster.md) | Tworzy grupę zasobów i pamięć podręczna warstwy premium z włączoną funkcją klastrowania.|
-| [Uzyskiwanie szczegółowych informacji w pamięci podręcznej](./scripts/show-cache.md) | Pobiera Szczegóły wystąpienia pamięci podręcznej Redis Azure, w tym stanu udostępniania. |
-| [Pobierz nazwę hosta, portów i kluczy](./scripts/cache-keys-ports.md) | Pobiera nazwę hosta, portów i klucze dla wystąpienia pamięci podręcznej Redis Azure. |
-|**Aplikacja sieci Web oraz pamięci podręcznej**||
-| [Łączenie aplikacji sieci web z pamięci podręcznej redis](./../app-service/scripts/app-service-cli-app-service-redis.md) | Tworzy aplikację sieci web platformy Azure i pamięci podręcznej redis, a następnie dodaje szczegóły połączenia redis do ustawień aplikacji. |
-|**Usunięcie pamięci podręcznej**||
-| [Usunięcie pamięci podręcznej](./scripts/delete-cache.md) | Usuwa wystąpienie pamięci podręcznej Redis Azure  |
+| [Tworzenie pamięci podręcznej](./scripts/create-cache.md) | Tworzy grupę zasobów i warstwa podstawowa usługi Azure Redis Cache. |
+| [Tworzenie pamięci podręcznej — wersja premium z klastrowaniem](./scripts/create-premium-cache-cluster.md) | Tworzy grupę zasobów i pamięć podręczna warstwy premium przy włączonym klastrowaniu.|
+| [Uzyskiwanie szczegółowych informacji z pamięci podręcznej](./scripts/show-cache.md) | Pobiera Szczegóły wystąpienia usługi Azure Redis Cache, w tym stan aprowizacji. |
+| [Pobierz nazwę hosta, portów i kluczy](./scripts/cache-keys-ports.md) | Pobiera nazwę hosta, porty i klucze dla wystąpienia usługi Azure Redis Cache. |
+|**Aplikacja sieci Web oraz pamięć podręczną**||
+| [Łączenie aplikacji internetowej z pamięcią podręczną redis](./../app-service/scripts/app-service-cli-app-service-redis.md) | Tworzy aplikację internetową platformy Azure i usługi redis cache, a następnie dodaje szczegóły połączenia redis do ustawień aplikacji. |
+|**Usuń pamięć podręczną**||
+| [Usuń pamięć podręczną](./scripts/delete-cache.md) | Usuwa wystąpienie usługi Azure Redis Cache  |
 | | |
 
-Aby uzyskać więcej informacji na temat 2.0 interfejsu wiersza polecenia Azure, zobacz [zainstalować Azure CLI 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli) i [wprowadzenie Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).
+Aby uzyskać więcej informacji na temat interfejsu wiersza polecenia platformy Azure, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) i [Rozpoczynanie pracy z interfejsem wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli).

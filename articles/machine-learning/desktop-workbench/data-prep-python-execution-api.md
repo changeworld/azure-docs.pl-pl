@@ -13,14 +13,19 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 02/01/2018
-ms.openlocfilehash: 9f15f949ba76240da2788c1a01e7086ba3b42fd1
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5280ed4143ef2ee980300cebe234de7f2020a14f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35648938"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968105"
 ---
 # <a name="execute-data-sources-and-data-preparations-packages-from-python"></a>Wykonanie pakietów źródeł danych i przygotowywanie danych za pomocą języka Python
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Umożliwia użycie pakietu źródeł danych programu Azure Machine Learning lub Azure Machine Learning danych przygotowań w języku Python:
 

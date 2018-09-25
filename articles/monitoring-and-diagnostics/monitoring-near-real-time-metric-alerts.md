@@ -1,6 +1,6 @@
 ---
-title: Zasoby obsługiwane dla nowszych alertów metryk usługi Azure Monitor
-description: Dokumentacja na temat pomocy technicznej, metryk i dzienników dla nowszej platformy Azure, niemal w czasie rzeczywistym alertów dotyczących metryk.
+title: Obsługiwane zasobów dla alertów dotyczących metryk w usłudze Azure Monitor
+description: Dokumentacja na temat pomocy technicznej, metryk i dzienników dla alertów dotyczących metryk w usłudze Azure Monitor
 author: snehithm
 services: monitoring
 ms.service: azure-monitor
@@ -8,17 +8,18 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 019f245a7cc1feedcbd520c336f53a60ed1e9ddc
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 102f087f31aa304aaaee49e0e39ff8c6874127b4
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45579093"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966803"
 ---
-# <a name="supported-resources-for-newer-azure-monitor-metric-alerts"></a>Zasoby obsługiwane dla nowszych alertów metryk usługi Azure Monitor
-Platforma Azure obsługuje teraz Monitor [nowego typu alertu Metryka](monitoring-overview-unified-alerts.md) mającego znaczące korzyści w starszej wersji [klasycznego alertów dotyczących metryk](insights-alerts-portal.md). Metryki są dostępne dla [obszerne listy usług systemu Azure](monitoring-supported-metrics.md). Nowszych alertów obsługuje podzbiór (rosnący) typów zasobów. W tym artykule wymieniono tego podzbioru. 
+# <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Obsługiwane zasobów dla alertów dotyczących metryk w usłudze Azure Monitor
 
-Umożliwia także nowszych alertów metryk dotyczących popularnych dzienników usługi Log Analytics, wyodrębnić jako metryki jako część metryk z dzienników (wersja zapoznawcza)  
+Platforma Azure obsługuje teraz Monitor [nowego typu alertu Metryka](monitoring-overview-unified-alerts.md) mającego znaczące korzyści w starszej wersji [klasycznego alertów dotyczących metryk](insights-alerts-portal.md). Metryki są dostępne dla [obszerne listy usług systemu Azure](monitoring-supported-metrics.md). Nowszych alertów obsługuje podzbiór (rosnący) typów zasobów. W tym artykule wymieniono tego podzbioru.
+
+Umożliwia także nowszych alertów metryk popularnych dzienników usługi Log Analytics, wyodrębnić jako metryki jako część metryk z dzienników 
 - [Liczniki wydajności](../log-analytics/log-analytics-data-sources-performance-counters.md) maszyn Windows i Linux
 - [Rekordy pulsu dla kondycji agenta](../operations-management-suite/oms-solution-agenthealth.md)
 - [Zarządzanie aktualizacjami](../operations-management-suite/oms-solution-update-management.md) rekordów
@@ -28,7 +29,7 @@ Umożliwia także nowszych alertów metryk dotyczących popularnych dzienników 
 > Określone metryki i/lub wymiaru będą wyświetlane tylko jeśli dane dla niego istnieje w wybranym okresie. Te metryki są dostępne dla klientów korzystających z obszarów roboczych usługi Azure Log Analytics, w regionie wschodnie stany USA, zachodnio-środkowe stany USA i Europa Zachodnia. Metryki z usługi Log Analytics jest obecnie w publicznej wersji zapoznawczej i może ulec zmianie.
 
 ## <a name="portal-powershell-cli-rest-support"></a>Portal, programu PowerShell, interfejsu wiersza polecenia, REST pomocy technicznej
-Obecnie można tworzyć nowszych alertów metryk, tylko w witrynie Azure portal, [interfejsu API REST](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate) lub [szablonów usługi Resource Manager](monitoring-create-metric-alerts-with-templates.md). Obsługa konfigurowania nowszych alertów przy użyciu programu PowerShell i interfejsu wiersza polecenia platformy Azure (interfejs wiersza polecenia platformy Azure w wersji 2.0) będzie dostępna wkrótce.
+Obecnie można tworzyć nowszych alertów metryk, tylko w witrynie Azure portal, [interfejsu API REST](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate) lub [szablonów usługi Resource Manager](monitoring-create-metric-alerts-with-templates.md). Wkrótce zostanie udostępniona Obsługa konfigurowania nowszych alertów przy użyciu programu PowerShell i wiersza polecenia platformy Azure w wersji 2.0 lub nowszej.
 
 ## <a name="metrics-and-dimensions-supported"></a>Metryki i wymiary obsługiwane
 Nowszych alertów metryk obsługuje alerty dotyczące metryk, używanego przez wymiary. Wymiarów można użyć do filtrowania swoje metryki na odpowiedni poziom. Wszystkie obsługiwane metryki wraz z odpowiednich wymiarów można przeglądać i wizualizować z [usługi Azure Monitor — Eksplorator metryk (wersja zapoznawcza)](monitoring-metric-charts.md).
@@ -66,7 +67,9 @@ Poniżej przedstawiono pełną listę źródeł metryk usługi Azure monitor, ob
 |Microsoft.Storage/storageAccounts/services     |     Yes    | [Obiekt blob usługi](monitoring-supported-metrics.md#microsoftstoragestorageaccountsblobservices), [usługi plików](monitoring-supported-metrics.md#microsoftstoragestorageaccountsfileservices), [kolejki usług](monitoring-supported-metrics.md#microsoftstoragestorageaccountsqueueservices) i [tabeli usług](monitoring-supported-metrics.md#microsoftstoragestorageaccountstableservices)|
 |Microsoft.StreamAnalytics/streamingjobs     |  ND       | [Stream Analytics](monitoring-supported-metrics.md#microsoftstreamanalyticsstreamingjobs)|
 | Microsoft.Web/serverfarms | Yes | [Plany usługi App Service](monitoring-supported-metrics.md#microsoftwebserverfarms)  |
-|Microsoft.OperationalInsights/workspaces (wersja zapoznawcza) | Yes|[Obszary robocze usługi log Analytics](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces)|
+| Microsoft.Web/sites | Yes | [App Services](monitoring-supported-metrics.md#microsoftwebsites-excluding-functions) i [funkcji](monitoring-supported-metrics.md#microsoftwebsites-functions)|
+| Microsoft.Web/sites/slots | Yes | [Miejsca usługi App Service](monitoring-supported-metrics.md#microsoftwebsitesslots)|
+|Microsoft.OperationalInsights/workspaces| Yes|[Obszary robocze usługi log Analytics](monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces)|
 
 
 

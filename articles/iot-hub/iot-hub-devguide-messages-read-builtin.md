@@ -1,6 +1,6 @@
 ---
 title: Zrozumienie wbudowany punkt końcowy usługi Azure IoT Hub | Dokumentacja firmy Microsoft
-description: Przewodnik dewelopera — w tym artykule opisano sposób używania wbudowanych, komunikaty z urządzenia do chmury toread punktu końcowego zgodnego z Centrum zdarzeń.
+description: Przewodnik dewelopera — w tym artykule opisano jak odczytywanie komunikatów z urządzenia do chmury za pomocą wbudowanego, punktu końcowego zgodnego z Centrum zdarzeń.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: 767c91e4926e553b63b8331ac99edcd7823d2c13
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 02624b4f3b0fceb1816f4f43b1f435356f8d5235
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055019"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984045"
 ---
 # <a name="read-device-to-cloud-messages-from-the-built-in-endpoint"></a>Odczytywanie komunikatów przesyłanych z urządzeń do chmury z wbudowanego punktu końcowego
 
@@ -26,7 +26,7 @@ Domyślnie komunikaty są kierowane do wbudowany punkt końcowy przeznaczonych d
 
 Usługa IoT Hub umożliwia także zarządzanie grupy konsumentów na wbudowane urządzenia do chmury otrzymywać punktu końcowego.
 
-Domyślnie wszystkie komunikaty, które nie są jawnie zgodne regułę routingu wiadomości są zapisywane w wbudowany punkt końcowy. Jeśli wyłączysz tę trasę rezerwowy, wiadomości, które nie są jawnie zgodne żadnych reguł rozsyłania komunikatów są porzucane.
+Jeśli używasz [routing komunikatów](iot-hub-devguide-messages-d2c.md) i [rezerwowego trasy](iot-hub-devguide-messages-d2c.md#fallback-route) jest włączone, wszystkie komunikaty, które nie są zgodne z zapytaniem na wszystkie trasy są zapisywane wbudowany punkt końcowy. Jeśli wyłączysz tę trasę rezerwowy, wiadomości, które nie są zgodne z dowolnego zapytania są porzucane.
 
 Możesz zmodyfikować czas przechowywania albo programowo przy użyciu [dostawcy zasobów usługi IoT Hub interfejsów API REST][lnk-resource-provider-apis], lub za pomocą [witryny Azure portal] [ lnk-management-portal].
 
@@ -39,9 +39,8 @@ Kiedy używasz [usługi Azure Service Bus SDK dla platformy .NET] [ lnk-serviceb
 Kiedy używasz zestawów SDK (lub integracji produktu) rozpoznaje usługi IoT Hub, musisz pobrać punktu końcowego zgodnego z Centrum zdarzeń i nazwę zgodną z Centrum zdarzeń:
 
 1. Zaloguj się do [witryny Azure portal] [ lnk-management-portal] i przejdź do Centrum IoT hub.
-1. Kliknij przycisk **Punkty końcowe**.
-1. W **wbudowanych punktach końcowych** kliknij **zdarzenia**. 
-1. Zostanie otwarta strona właściwości, która zawiera następujące wartości: **punktu końcowego zgodnego z Centrum zdarzeń**, **nazwę zgodną z Centrum zdarzeń**, **partycje**,  **Czas przechowywania**, i **grupy konsumentów**.
+1. Kliknij przycisk **wbudowanych punktach końcowych**.
+1. **Zdarzenia** sekcja zawiera następujące wartości: **punktu końcowego zgodnego z Centrum zdarzeń**, **nazwę zgodną z Centrum zdarzeń**, **partycje**, **Czas przechowywania**, i **grupy konsumentów**.
 
     ![Ustawienia komunikacji między urządzeniem i chmurą][img-eventhubcompatible]
 
@@ -63,11 +62,9 @@ Zestawy SDK i integracji, korzystające z punktów końcowych zgodnych z Centrum
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji na temat punktów końcowych usługi IoT Hub, zobacz [punktów końcowych usługi IoT Hub][lnk-endpoints].
-
-[Przewodników Szybki Start] [ lnk-get-started] pokazują, jak wysyłać komunikaty urządzenie chmura z symulowanych urządzeń i odczytu komunikatów z wbudowanego punktu końcowego. Aby uzyskać więcej informacji, zobacz [komunikaty urządzenia do chmury usługi IoT Hub procesu przy użyciu tras] [ lnk-d2c-tutorial] samouczka.
-
-Jeśli chcesz przekierowywać komunikatów przesyłanych z chmury do urządzenia do niestandardowych punktów końcowych, zobacz [trasy wiadomość i niestandardowe punkty końcowe na użytek komunikatów z urządzenia do chmury][lnk-custom].
+* Aby uzyskać więcej informacji na temat punktów końcowych usługi IoT Hub, zobacz [punktów końcowych usługi IoT Hub][lnk-endpoints].
+* [Przewodników Szybki Start] [ lnk-get-started] pokazują, jak wysyłać komunikaty urządzenie chmura z symulowanych urządzeń i odczytu komunikatów z wbudowanego punktu końcowego. Aby uzyskać więcej informacji, zobacz [komunikaty urządzenia do chmury usługi IoT Hub procesu przy użyciu tras] [ lnk-d2c-tutorial] samouczka.
+* Jeśli chcesz przekierowywać komunikatów przesyłanych z chmury do urządzenia do niestandardowych punktów końcowych, zobacz [trasy wiadomość i niestandardowe punkty końcowe na użytek komunikatów z urządzenia do chmury][lnk-custom].
 
 [img-eventhubcompatible]: ./media/iot-hub-devguide-messages-read-builtin/eventhubcompatible.png
 

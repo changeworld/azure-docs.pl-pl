@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 06/26/2018
 ms.author: tamram
 ms.component: blobs
-ms.openlocfilehash: 5fd823e9105157f8292d5a9554850b0f4338a392
-ms.sourcegitcommit: d4c076beea3a8d9e09c9d2f4a63428dc72dd9806
+ms.openlocfilehash: beacb39752b2af51aba4ddeb41c9bff68803df1b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39398856"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954776"
 ---
 # <a name="configure-a-custom-domain-name-for-your-azure-storage-account"></a>Konfigurowanie niestandardowej nazwy domeny dla konta usługi Azure Storage
 
@@ -118,7 +118,7 @@ W witrynie Azure portal, aby usunąć ustawienia domeny niestandardowej, wykonaj
 
 Domena niestandardowa została usunięta pomyślnie, zobaczysz powiadomienie portalu z informacją, że konto magazynu zostało pomyślnie zaktualizowane.
 
-### <a name="azure-cli-20"></a>Interfejs wiersza polecenia platformy Azure 2.0
+### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
 Użyj [aktualizacja konta magazynu az](https://docs.microsoft.com/cli/azure/storage/account#az_storage_account_update) interfejsu wiersza polecenia polecenie i wprowadź pusty ciąg (`""`) dla `--custom-domain` wartość argumentu do usunięcia rejestracji domeny niestandardowej.
 

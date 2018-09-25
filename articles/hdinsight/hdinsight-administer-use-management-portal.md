@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 05/25/2017
 ms.author: jasonh
 ROBOTS: NOINDEX
-ms.openlocfilehash: 7b39724c3d382637a048dc4fb9a3436ac1dbeae8
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 130f684b69a9cfa1936c2a9aa5175f3d5a7631ac
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108028"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970281"
 ---
 # <a name="manage-windows-based-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Zarządzanie klastrami Hadoop z systemem Windows w HDInsight przy użyciu witryny Azure portal
 
@@ -207,7 +207,7 @@ Istnieje wiele sposobów, można programować procesu:
 
 * Użytkownik usługi Azure Data Factory. Zobacz [połączona usługa HDInsight Azure](../data-factory/compute-linked-services.md) i [transformacji i analizy przy użyciu usługi Azure Data Factory](../data-factory/transform-data.md) HDInsight na żądanie i samodzielnie określonych połączonej usługi.
 * Używanie programu Azure PowerShell.  Zobacz [analizowanie danych dotyczących opóźnień lotów](hdinsight-analyze-flight-delay-data.md).
-* Użyj wiersza polecenia platformy Azure. Zobacz [HDInsight Zarządzanie klastrami przy użyciu wiersza polecenia platformy Azure](hdinsight-administer-use-command-line.md).
+* Użyj klasycznego wiersza polecenia platformy Azure. Zobacz [HDInsight Zarządzanie klastrami przy użyciu klasyczny interfejs wiersza polecenia platformy Azure](hdinsight-administer-use-command-line.md).
 * Użyj zestawu .NET SDK HDInsight. Zobacz [zadań Hadoop przesłać](hadoop/submit-apache-hadoop-jobs-programmatically.md).
 
 Aby uzyskać informacje o cenach, zobacz [ceny HDInsight](https://azure.microsoft.com/pricing/details/hdinsight/). Aby usunąć klaster z poziomu portalu, zobacz [usuwać klastry](#delete-clusters)
@@ -364,7 +364,7 @@ Na poprzednim zrzucie ekranu Nazwa folderu ma numer wersji usługi Hadoop, któr
 W tym artykule wiesz, jak utworzyć klaster usługi HDInsight przy użyciu portalu i jak otworzyć narzędzia wiersza polecenia usługi Hadoop. Aby dowiedzieć się więcej, zobacz następujące artykuły:
 
 * [Administrowanie przy użyciu programu PowerShell usługi Azure HDInsight](hdinsight-administer-use-powershell.md)
-* [Administrowanie przy użyciu wiersza polecenia platformy Azure HDInsight](hdinsight-administer-use-command-line.md)
+* [Administrowanie przy użyciu klasycznego wiersza polecenia platformy Azure HDInsight](hdinsight-administer-use-command-line.md)
 * [Tworzenie klastrów HDInsight](hdinsight-hadoop-provision-linux-clusters.md)
 * [Przesyłanie zadań Hadoop programowe](hadoop/submit-apache-hadoop-jobs-programmatically.md)
 * [Rozpoczynanie pracy z usługą Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)

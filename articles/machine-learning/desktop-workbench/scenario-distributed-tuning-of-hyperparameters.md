@@ -11,14 +11,19 @@ ms.author: dmpechyo
 manager: mwinkle
 ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.date: 09/20/2017
-ms.openlocfilehash: 920b019640df9d2da174101e2b1b90dfd4da6f56
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ROBOTS: NOINDEX
+ms.openlocfilehash: f74889cdf727bc132723d16df295849769001ce9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578739"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951971"
 ---
 # <a name="distributed-tuning-of-hyperparameters-using-azure-machine-learning-workbench"></a>Rozproszone Dostosowywanie hiperparametrów przy użyciu usługi Azure Machine Learning Workbench
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 W tym scenariuszu pokazano, jak używać usługi Azure Machine Learning Workbench do skalowania w poziomie Dostosowywanie hiperparametrów algorytmów uczenia maszynowego, które implementują scikit-Dowiedz się, interfejsu API. Przedstawiono sposób konfigurowania i używania zdalnym kontenerze platformy Docker i klaster Spark jako zaplecza wykonywania dostrojenia hiperparametrów.
 
@@ -38,7 +43,7 @@ Wyszukiwanie w siatce, używając krzyżowego sprawdzania poprawności może by�
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 * [Konta platformy Azure](https://azure.microsoft.com/free/) (bezpłatne wersje próbne są dostępne).
-* Zainstalowana kopia programu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) następujące [Instalowanie i Tworzenie szybkiego startu](../service/quickstart-installation.md) do zainstalowania aplikacji Workbench, a następnie utwórz konta.
+* Zainstalowana kopia programu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) następujące [Instalowanie i Tworzenie szybkiego startu](quickstart-installation.md) do zainstalowania aplikacji Workbench, a następnie utwórz konta.
 * W tym scenariuszu przyjęto założenie, że działasz aplikacji Azure ML Workbench w systemie Windows 10 lub MacOS przy użyciu aparatu platformy Docker zainstalowany lokalnie. 
 * Można uruchomić scenariusza z zdalnym kontenerze platformy Docker, aprowizować Ubuntu danych do analizy maszyny wirtualnej (DSVM), postępując zgodnie z [instrukcje](https://docs.microsoft.com/azure/machine-learning/machine-learning-data-science-provision-vm). Firma Microsoft zaleca używanie maszyny wirtualnej z co najmniej 8 rdzeni i 28 Gb pamięci. D4 wystąpień maszyn wirtualnych mają takie pojemności. 
 * Aby uruchomić ten scenariusz przy użyciu klastra Spark, inicjowania obsługi klastra HDInsight Spark wykonując te [instrukcje](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-provision-linux-clusters). Zaleca się posiadanie klastra przy użyciu następującej konfiguracji w węzłach zarówno nagłówka, jak i procesu roboczego:

@@ -1,6 +1,6 @@
 ---
 title: Odłączanie dysku danych z maszyny Wirtualnej systemu Linux — Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się odłączyć dysk danych z maszyny wirtualnej na platformie Azure przy użyciu interfejsu wiersza polecenia w wersji 2.0 lub witryny Azure portal.
+description: Dowiedz się odłączyć dysk danych z maszyny wirtualnej na platformie Azure przy użyciu wiersza polecenia platformy Azure lub w portalu Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/18/2018
 ms.author: cynthn
-ms.openlocfilehash: 0225c6605109489c4b9b599918dc09983ae25ac8
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: b087040e5d219941ec0b2ee0f58dfe0058a1ad04
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39144078"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968356"
 ---
 # <a name="how-to-detach-a-data-disk-from-a-linux-virtual-machine"></a>Jak odłączyć dysk z danymi od maszyny wirtualnej systemu Linux
 
@@ -99,7 +99,7 @@ sudo umount /dev/sdc1 /datadrive
 ```
 
 
-## <a name="detach-a-data-disk-using-cli-20"></a>Odłączanie dysku danych przy użyciu interfejsu wiersza polecenia 2.0
+## <a name="detach-a-data-disk-using-azure-cli"></a>Odłączanie dysku danych przy użyciu wiersza polecenia platformy Azure 
 
 Ten przykład umożliwia odłączenie dysku *myDataDisk* dysk od maszyny Wirtualnej o nazwie *myVM* w *myResourceGroup*.
 

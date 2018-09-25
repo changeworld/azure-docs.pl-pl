@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2018
 ms.author: cynthn
-ms.openlocfilehash: 5e79cfa2c428323d8531bec7eab875a2dace4ff2
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: aa1891ecec139746d6051dcabdb3c9db4f6062c6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37934752"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996353"
 ---
 # <a name="install-and-configure-remote-desktop-to-connect-to-a-linux-vm-in-azure"></a>Instalowanie i konfigurowanie pulpitu zdalnego, aby nawiązać połączenie z maszyny Wirtualnej z systemem Linux na platformie Azure
 Maszyny wirtualne systemu Linux (VM) na platformie Azure odbywa się zwykle z wiersza polecenia przy użyciu połączenia protokołu secure shell (SSH). Jeśli nowe z systemem Linux lub scenariuszach szybkiego rozwiązywania problemów, korzystanie z pulpitu zdalnego może być łatwiejsze. W tym artykule opisano, jak zainstalować i skonfigurować środowisko pulpitu ([xfce](https://www.xfce.org)) i usług pulpitu zdalnego ([xrdp](http://www.xrdp.org)) dla maszyny Wirtualnej systemu Linux przy użyciu modelu wdrażania usługi Resource Manager.
@@ -28,7 +28,7 @@ Maszyny wirtualne systemu Linux (VM) na platformie Azure odbywa się zwykle z wi
 ## <a name="prerequisites"></a>Wymagania wstępne
 Ten artykuł wymaga istniejącej Ubuntu 16.04 LTS maszyny Wirtualnej na platformie Azure. Jeśli musisz utworzyć Maszynę wirtualną, użyj jednej z następujących metod:
 
-- [Wiersza polecenia platformy Azure 2.0](quick-create-cli.md)
+- [Wiersza polecenia platformy Azure](quick-create-cli.md)
 - [Azure Portal](quick-create-portal.md)
 
 
@@ -86,7 +86,7 @@ sudo passwd azureuser
 ## <a name="create-a-network-security-group-rule-for-remote-desktop-traffic"></a>Utwórz regułę sieciowej grupy zabezpieczeń dla ruchu pulpitu zdalnego
 Aby zezwolić na ruch pulpitu zdalnego do maszyny Wirtualnej systemu Linux, zabezpieczenia sieci grupy reguł musi utworzyć, która umożliwia TCP na porcie 3389 nawiązać połączenie z maszyną Wirtualną. Aby uzyskać więcej informacji na temat reguł sieciowych grup zabezpieczeń, zobacz [co to jest sieciowa grupa zabezpieczeń?](../../virtual-network/security-overview.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) Możesz również [umożliwia utworzenie reguły sieciowej grupy zabezpieczeń w witrynie Azure portal](../windows/nsg-quickstart-portal.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
 
-Poniższy przykład tworzy reguły sieciowej grupy zabezpieczeń z [az vm open-port](/cli/azure/vm#az-vm-open-port) na porcie *3389*. Korzystając z interfejsu wiersza polecenia platformy Azure 2.0 nie sesję SSH z maszyną wirtualną, otwórz następujące reguły sieciowej grupy zabezpieczeń:
+Poniższy przykład tworzy reguły sieciowej grupy zabezpieczeń z [az vm open-port](/cli/azure/vm#az-vm-open-port) na porcie *3389*. Z wiersza polecenia platformy Azure nie sesję SSH z maszyną wirtualną, otwórz następujące reguły sieciowej grupy zabezpieczeń:
 
 ```azurecli
 az vm open-port --resource-group myResourceGroup --name myVM --port 3389

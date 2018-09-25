@@ -9,28 +9,28 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: jasonh
-ms.openlocfilehash: 1988593fa7cb0d84baffc4264147d350962bb6bc
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: d036922d68116689d1c54c2c3e89be5accedb533
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093071"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983490"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrowanie do narzędzi programistycznych opartych na usłudze Azure Resource Manager w celu obsługi klastrów HDInsight
 
-HDInsight wycofano narzędzi opartych na usłudze Azure Service Manager ASM for HDInsight. Jeśli masz doświadczenie z programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub zestawu .NET SDK HDInsight do pracy z klastrami HDInsight, zachęcamy do używania w wersjach usługi Azure Resource Manager programu PowerShell, interfejsu wiersza polecenia i zestawu SDK platformy .NET w przyszłości. Ten artykuł zawiera wskaźniki dotyczące sposobu przeprowadzenia migracji do nowego podejścia opartego na usłudze Resource Manager. Wszędzie tam, gdzie ma to zastosowanie, w tym dokumencie wyróżniono różnice między metodami ASM i usługą Resource Manager dla HDInsight.
+HDInsight wycofano narzędzi opartych na usłudze Azure Service Manager ASM for HDInsight. Jeśli masz doświadczenie z programu Azure PowerShell, klasyczny interfejs wiersza polecenia platformy Azure lub zestawu .NET SDK HDInsight do pracy z klastrami HDInsight, zachęcamy do używania w wersjach usługi Azure Resource Manager programu PowerShell, interfejsu wiersza polecenia i zestawu SDK platformy .NET w przyszłości. Ten artykuł zawiera wskaźniki dotyczące sposobu przeprowadzenia migracji do nowego podejścia opartego na usłudze Resource Manager. Wszędzie tam, gdzie ma to zastosowanie, w tym dokumencie wyróżniono różnice między metodami ASM i usługą Resource Manager dla HDInsight.
 
 > [!IMPORTANT]
 > Pomoc techniczna dotycząca usługi ASM na podstawie programu PowerShell, interfejsu wiersza polecenia, i zestawu .NET SDK zostanie wycofana **1 stycznia 2017**.
 > 
 > 
 
-## <a name="migrating-azure-cli-to-azure-resource-manager"></a>Migrowanie wiersza polecenia platformy Azure do usługi Azure Resource Manager
+## <a name="migrating-azure-classic-cli-to-azure-resource-manager"></a>Migrowanie klasycznej wiersza polecenia platformy Azure do usługi Azure Resource Manager
 
 > [!IMPORTANT]
-> Interfejs wiersza polecenia platformy Azure w wersji 2.0 nie zapewnia pomocy technicznej do pracy z klastrami HDInsight. Nadal za pomocą interfejsu wiersza polecenia platformy Azure w wersji 1.0 HDInsight, jednak interfejs wiersza polecenia platformy Azure w wersji 1.0 jest przestarzały.
+> Wiersza polecenia platformy Azure nie zapewnia pomocy technicznej do pracy z klastrami HDInsight. Nadal za pomocą klasyczny interfejs wiersza polecenia usługi Azure HDInsight, jednak klasyczny interfejs wiersza polecenia platformy Azure jest przestarzały.
 
-Poniżej przedstawiono podstawowe polecenia do pracy z HDInsight za pomocą interfejsu wiersza polecenia platformy Azure w wersji 1.0:
+Poniżej przedstawiono podstawowe polecenia do pracy z HDInsight za pośrednictwem klasycznego wiersza polecenia platformy Azure:
 
 * `azure hdinsight cluster create` -Tworzy nowy klaster HDInsight
 * `azure hdinsight cluster delete` -Usuwa istniejący klaster HDInsight

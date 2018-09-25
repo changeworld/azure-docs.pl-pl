@@ -10,12 +10,13 @@ ms.component: bing-speech
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: zhouwang
-ms.openlocfilehash: 1c7755e3949cc3b7cfafddf3a822528c1bae0225
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ROBOTS: NOINDEX
+ms.openlocfilehash: 5b85a548d692b06a6da009432678d9c02242cb50
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367155"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996829"
 ---
 # <a name="quickstart-use-the-bing-speech-recognition-api-in-c35-for-net-on-windows"></a>Szybki Start: Używanie rozpoznawania mowy Bing interfejsu API w języku C&#35; dla platformy .NET w Windows
 

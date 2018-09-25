@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/19/2018
 ms.author: victorh
-ms.openlocfilehash: 59f76d4c06a2a60cb513fc37a9ca3e27e13820b9
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 2cdf6ea0a992c996f4aeeb117c440e94b55ff8a8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173612"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961964"
 ---
 # <a name="how-to-manage-dns-zones-using-powershell"></a>Jak zarządzać strefami DNS przy użyciu programu PowerShell
 
 > [!div class="op_single_selector"]
 > * [Portal](dns-operations-dnszones-portal.md)
 > * [Program PowerShell](dns-operations-dnszones.md)
-> * [Interfejs wiersza polecenia platformy Azure 1.0](dns-operations-dnszones-cli-nodejs.md)
-> * [Interfejs wiersza polecenia platformy Azure 2.0](dns-operations-dnszones-cli.md)
+> * [Klasyczny interfejs wiersza polecenia Azure](dns-operations-dnszones-cli-nodejs.md)
+> * [Interfejs wiersza polecenia platformy Azure](dns-operations-dnszones-cli.md)
 
 W tym artykule pokazano, jak zarządzać strefami DNS przy użyciu programu Azure PowerShell. Można również zarządzać stref DNS przy użyciu dla wielu platform [wiersza polecenia platformy Azure](dns-operations-dnszones-cli.md) lub witrynie Azure portal.
 

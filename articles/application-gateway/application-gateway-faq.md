@@ -9,12 +9,12 @@ ms.topic: article
 ms.workload: infrastructure-services
 ms.date: 9/6/2018
 ms.author: victorh
-ms.openlocfilehash: e180f0912bdb9145f3d36492fb9bcdcb551037f0
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 56c66418b9f47e0ae0d345cd6e8a7d3ef2914b82
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022920"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46986680"
 ---
 # <a name="frequently-asked-questions-for-application-gateway"></a>Często zadawane pytania dotyczące usługi Application Gateway
 
@@ -360,6 +360,12 @@ Dzienniki inspekcji są dostępne w usłudze Application Gateway. W portalu, kli
 **PYTANIA I ODPOWIEDZI. Można ustawić alerty z usługą Application Gateway?**
 
 Tak, usługa Application Gateway obsługuje alerty, alerty są konfigurowane poza metryki. Usługa Application Gateway ma obecnie metryki "przepływności", którego można skonfigurować alert. Aby dowiedzieć się więcej o alertach, odwiedź stronę [otrzymywanie powiadomień o alertach](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+
+**PYTANIA I ODPOWIEDZI. Jak analizować statystyki ruchu w usłudze Application Gateway?**
+
+Można wyświetlać i analizować Dzienniki dostępu za pośrednictwem szereg mechanizmów, takich jak Azure Log Analytics, Excel, Power BI itp.
+
+Opublikowane dotychczas również szablon usługi Resource Manager, która jest instalowana i uruchamiana popularnej [GoAccess](https://goaccess.io/) dziennik analizatora, aby uzyskać dostęp do dzienników usługi Application Gateway. GoAccess udostępnia cenne statystyki ruch HTTP, takie jak unikatowych osób odwiedzających, żądane pliki, hosty, systemy operacyjne, przeglądarki, kody stanu HTTP i nie tylko. Aby uzyskać więcej informacji, zobacz [pliku Readme w folderu szablonu usługi Resource Manager w usłudze GitHub](https://aka.ms/appgwgoaccessreadme).
 
 **PYTANIA I ODPOWIEDZI. Kondycja wewnętrznej bazy danych zwraca stan nieznany w poznaniu przyczyny tego stanu?**
 

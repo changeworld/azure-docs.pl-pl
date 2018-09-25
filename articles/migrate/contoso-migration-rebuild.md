@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/06/2018
+ms.date: 09/20/2018
 ms.author: raynew
-ms.openlocfilehash: 58ea0859af42f7614e69d1693bbd9f8e3a17ccb8
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: f0dc199f8a91ac06993f4ccbc9dff7dfad9f8a19
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44300549"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042486"
 ---
 # <a name="contoso-migration-rebuild-an-on-premises-app-to-azure"></a>Migracja Contoso: ponownie skompilować aplikację w środowisku lokalnym na platformie Azure
 
@@ -55,7 +55,7 @@ Zespół chmury firmy Contoso ma przypięte wymagania aplikacji dotyczące tej m
  - Aplikacja nie należy używać składników modelu IaaS. Wszystko, co powinny zostać skompilowane do użycia PaaS lub bez użycia serwera usług.
  - Kompilacje aplikacji powinno być ono uruchomione usługi w chmurze i kontenery powinien znajdować się w rejestrze kontenerów dla przedsiębiorstw prywatnych w chmurze.
  - Usługa interfejsu API, używana do zdjęć pet powinien być dokładne i niezawodne w świecie rzeczywistym, ponieważ decyzje podjęte przez aplikację muszą honorowane w ich hotels. Wszelkie pet udzielić, że dostęp jest dozwolony na bieżąco w hotelach.
- - Aby spełnić wymagania dla potoku metodyki DevOps, Contoso użyje Visual Studio Team Services (VSTS) dla źródła zarządzania kodu (SCM), korzystając z repozytoriów Git.  Zautomatyzowane kompilacje i wydania będzie służyć do tworzenia kodu, a następnie wdrożyć ją do usługi Azure Web Apps, Azure Functions i usługi AKS.
+ - Aby spełnić wymagania dla potoku metodyki DevOps, Contoso użyje DevOps platformy Azure dla źródła zarządzania kodu (SCM), korzystając z repozytoriów Git.  Zautomatyzowane kompilacje i wydania będzie służyć do tworzenia kodu, a następnie wdrożyć ją do usługi Azure Web Apps, Azure Functions i usługi AKS.
  - Różne potoków ciągłej integracji/ciągłego wdrażania są wymagane dla mikrousług do wewnętrznej bazy danych i dla witryny sieci web we frontonie.
  - Usługi wewnętrznej bazy danych ma inną wersję cyklu z aplikacji sieci web frontonu.  Aby spełnić to wymaganie, wdrożysz dwie różne potoków metodyki DevOps.
  - Firma Contoso potrzebuje zatwierdzenia zarządzania dla wszystkich wdrożenia witryny sieci Web frontonu i potoku ciągłej integracji/ciągłego wdrażania należy podać to.
@@ -81,7 +81,7 @@ Po przypięciu dół celami i wymaganiami, Contoso projektuje i przejrzyj rozwi�
 - Funkcja pet zdjęcie korzysta z interfejsu API przetwarzania Cognitive Services i bazy danych cosmos DB.
 - Zaplecza lokacji została stworzona przy użyciu mikrousług. Będą one wdrażane kontenery zarządzane w usłudze Azure Kubernetes service (AKS).
 - Kontenery zostaną utworzone przy użyciu usługi Azure DevOps i wypchnięte do usługi Azure Container Registry (ACR).
-- Na razie Contoso ręcznego wdrażania kodu aplikacji i funkcji sieci Web przy użyciu programu Visual Studio.
+- Na razie Contoso będzie ręcznego wdrażania kodu aplikacji i funkcji sieci Web przy użyciu programu Visual Studio
 - Mikrousługi zostanie wdrożony przy użyciu skryptu programu PowerShell, który wywołuje narzędzia wiersza polecenia usługi Kubernetes.
 
     ![Architektura scenariusza](./media/contoso-migration-rebuild/architecture.png) 
@@ -224,15 +224,15 @@ Contoso tworzy projekt DevOps platformy Azure i konfiguruje kompilacji ciągłej
     ![Azure DevOps](./media/contoso-migration-rebuild/vsts1.png) 
 
 
-3. Zaimportowali repozytorium GitHub.
+3. Zaimportowali [repozytorium GitHub](https://github.com/Microsoft/SmartHotel360-Azure-backend.git).
 
     ![Azure DevOps](./media/contoso-migration-rebuild/vsts2.png)
     
-4. W **kompilowania i wydawania**, tworzą nowy potok za pomocą usługi Azure repozytoriów Git jako źródło, z zaimportowanych **smarthotel** repozytorium. 
+4. W **potoki**, klikając **kompilacji**i Utwórz nowy potok za pomocą usługi Azure repozytoriów Git jako źródło, z repozytorium. 
 
     ![Azure DevOps](./media/contoso-migration-rebuild/vsts3.png)
 
-6. Należy wybrać, aby uruchomić z pustym potoku.
+6. Należy wybrać, aby rozpoczynać zadanie puste.
 
     ![Azure DevOps](./media/contoso-migration-rebuild/vsts4.png)  
 
@@ -252,7 +252,7 @@ Contoso tworzy projekt DevOps platformy Azure i konfiguruje kompilacji ciągłej
 
     ![Azure DevOps](./media/contoso-migration-rebuild/vsts8.png)
 
-9. Określ ich ścieżki **docket compose.yaml** pliku w **src** folderu repozytorium. Należy wybrać, aby skompilować obrazy usługi i zawierają najnowsze tagu. Jeśli akcja zmiany **skompilować obrazy usługi**, nazwa zadania usługi Azure DevOps zmienia się na **automatyczne tworzenie usług**
+9. Określ ich ścieżki **docker compose.yaml** pliku w **src** folderu repozytorium. Należy wybrać, aby skompilować obrazy usługi i zawierają najnowsze tagu. Jeśli akcja zmiany **skompilować obrazy usługi**, nazwa zadania usługi Azure DevOps zmienia się na **automatyczne tworzenie usług**
 
     ![Azure DevOps](./media/contoso-migration-rebuild/vsts9.png)
 
@@ -303,7 +303,7 @@ Teraz Administratorzy firmy Contoso, wykonaj następujące czynności:
 
 - Wdrażanie kontrolera danych przychodzących NGINX, aby zezwolić na ruch przychodzący do usług.
 - Wdrażanie mikrousług w klastrze AKS.
-- Pierwszym krokiem ich potrzeby zaktualizuj ciągi połączeń do mikrousług przy użyciu usługi VSTS. Następnie skonfiguruj ich nowy potok wersji usługi VSTS do wdrażania mikrousług.
+- Pierwszym krokiem ich potrzeby zaktualizuj ciągi połączeń do mikrousług przy użyciu DevOps platformy Azure. Następnie skonfiguruj ich nowy potok wersji DevOps platformy Azure do wdrażania mikrousług.
 - Instrukcje w tej sekcji użyto [rozwiązania SmartHotel360-Azure-Backend](https://github.com/Microsoft/SmartHotel360-Azure-backend) repozytorium.
 - Należy pamiętać, że niektóre ustawienia konfiguracji (na przykład Active Directory B2C) nie są omówione w tym artykule. Przeczytaj więcej informacji na temat tych ustawień w repozytorium.
 
@@ -313,17 +313,14 @@ Tworzą potok:
 
     ![Połączenia bazy danych](./media/contoso-migration-rebuild/back-pipe1.png)
 
-2. Otwórz usługę VSTS, a w SmartHotel360 projektu w **wersji**, klikając **+ nowy potok**.
+2. Otwórz DevOps platformy Azure i w SmartHotel360 projektu w **wersji**, klikając **+ nowy potok**.
 
     ![Nowy potok](./media/contoso-migration-rebuild/back-pipe2.png)
 
 3. Polecenie **puste zadanie** można uruchomić potok, który nie ma szablonu.
+4. Zapewniają one nazwy potoku i etap.
 
-    ![Pusty zadania](./media/contoso-migration-rebuild/back-pipe3.png)
-
-4. Zapewniają one nazwy środowiska i potoku.
-
-      ![Nazwa środowiska](./media/contoso-migration-rebuild/back-pipe4.png)
+      ![Nazwa etapu](./media/contoso-migration-rebuild/back-pipe4.png)
 
       ![Nazwa potoku](./media/contoso-migration-rebuild/back-pipe5.png)
 
@@ -465,18 +462,18 @@ W witrynie Azure portal Administratorzy Contoso Inicjowanie obsługi administrac
 
 Administratorzy firmy Contoso tworzyć dwóch różnych projektów frontonu witryny. 
 
-1. W usłudze VSTS, mogą utworzyć projekt **SmartHotelFrontend**.
+1. W metodyce DevOps platformy Azure, mogą utworzyć projekt **SmartHotelFrontend**.
 
     ![Frontonu projektu](./media/contoso-migration-rebuild/function-app1.png)
 
 2. Zaimportowali [rozwiązania SmartHotel360 frontonu](https://github.com/Microsoft/SmartHotel360-public-web.git) repozytorium Git do nowego projektu.
-3. Dla aplikacji funkcji, Utwórz innego projektu usługi VSTS (SmartHotelPetChecker) i zaimportuj [PetChecker](https://github.com/Microsoft/SmartHotel360-PetCheckerFunction ) repozytorium Git do tego projektu.
+3. Dla aplikacji funkcji, Utwórz innego projektu DevOps platformy Azure (SmartHotelPetChecker) i zaimportuj [PetChecker](https://github.com/Microsoft/SmartHotel360-PetCheckerFunction ) repozytorium Git do tego projektu.
 
 ### <a name="configure-the-web-app"></a>Konfigurowanie aplikacji sieci Web
 
 Teraz Administratorzy Contoso skonfigurować aplikacji sieci Web, aby korzystać z zasobów firmy Contoso.
 
-1. Połącz się z projektem usługi VSTS i sklonuj repozytorium lokalnie na komputerze deweloperskim.
+1. Połącz się z projektem DevOps platformy Azure i sklonuj repozytorium lokalnie na komputerze deweloperskim.
 2. W programie Visual Studio one Otwórz folder, aby wyświetlić wszystkie pliki w repozytorium.
 
     ![Pliki w repozytorium](./media/contoso-migration-rebuild/configure-webapp1.png)
@@ -513,52 +510,45 @@ Teraz Administratorzy Contoso skonfigurować aplikacji sieci Web, aby korzystać
 Contoso Administratorzy mogą teraz publikować w witrynie sieci Web.
 
 
-1. Otworzą usługi VSTS, a następnie w **SmartHotelFrontend** projektu w **kompilacje i wydania**, klikając **+ nowy potok**.
-2. Wybierają **Git programu VSTS** jako źródło.
-
-    ![Nowy potok](./media/contoso-migration-rebuild/vsts-publishfront1.png)
-
+1. Otworzą DevOps platformy Azure, a następnie w **SmartHotelFrontend** projektu w **kompilacje i wydania**, klikając **+ nowy potok**.
+2. Wybierają **DevOps Git platformy Azure** jako źródło.
 3. Wybierają **platformy ASP.NET Core** szablonu.
 4. Przejrzyj potoku i sprawdź, czy **publikowanie projektów sieci Web** i **Zip projektów opublikowane** są zaznaczone.
 
     ![Ustawienia potoku](./media/contoso-migration-rebuild/vsts-publishfront2.png)
 
-5. W **wyzwalaczy**, Włącz ciągłą integrację i Dodaj gałęzi głównej. Daje to gwarancję, że każdy tim rozwiązanie ma nowego kodu do gałęzi głównej, potok kompilacji rozpoczyna się.
+5. W **wyzwalaczy**, Włącz ciągłą integrację i Dodaj gałęzi głównej. Daje to gwarancję, że zawsze rozwiązanie ma nowego kodu do gałęzi głównej potoku kompilacji rozpoczyna się.
 
-    ![Ciągła integracja](./media/contoso-migration-rebuild/vsts-publishfront3.png)
+    ![Integracja ciągła](./media/contoso-migration-rebuild/vsts-publishfront3.png)
 
 6. Polecenie **Zapisz k & olejką** do uruchomienia kompilacji.
 7. Po zakończeniu kompilacji, ich konfigurowania potoku wersji przy użyciu **wdrożenie usługi aplikacji Azure**.
-8. Zapewniają one Nazwa środowiska **przemieszczania**.
+8. Zapewniają one Nazwa etapu **przemieszczania**.
 
     ![Nazwa środowiska](./media/contoso-migration-rebuild/vsts-publishfront4.png)
 
-9. Dodawanie artefaktu i wybierz kompilację, które są skonfigurowane.
+9. One dodawanie artefaktu i wybierz kompilację, które są skonfigurowane.
 
      ![Dodawanie artefaktu](./media/contoso-migration-rebuild/vsts-publishfront5.png)
 
-6. Kliknij ikonę pioruna na artifcat i włączyć wdrażanie ciągłe.
+10. Kliknij ikonę pioruna w artefakcie i włączyć wdrażanie ciągłe.
 
     ![Ciągłe wdrażanie](./media/contoso-migration-rebuild/vsts-publishfront6.png)
-
-7. W **środowiska**, klikając **fazy 1, 1 zadanie** w obszarze **przemieszczania**.
-8. Po wybraniu subskrypcji i nazwę aplikacji, otwarciu **wdrożenia usługi Azure App Service** zadania. Wdrożenie jest skonfigurowane do użycia **przemieszczania** miejsce wdrożenia. Automatycznie powoduje to skompilowanie kodu do przeglądu i zatwierdzania, w tym gnieździe.
+11. W **środowiska**, klikając **zadanie 1, 1 zadanie** w obszarze **przemieszczania**.
+12. Po wybraniu subskrypcji i nazwę aplikacji, otwarciu **wdrożenia usługi Azure App Service** zadania. Wdrożenie jest skonfigurowane do użycia **przemieszczania** miejsce wdrożenia. Automatycznie powoduje to skompilowanie kodu do przeglądu i zatwierdzania, w tym gnieździe.
 
      ![Gniazdo](./media/contoso-migration-rebuild/vsts-publishfront7.png)
 
-9. W **potoku wydania nowe**, dodawane są nowe środowisko.
+13. W **potoku**, dodają nowy etap.
 
     ![Nowe środowisko](./media/contoso-migration-rebuild/vsts-publishfront8.png)
 
-10. Wybierają **wdrożenia usługi Azure App Service z gniazdem**i nadaj środowisku **Prod**.
-
-    ![Nazwa środowiska](./media/contoso-migration-rebuild/vsts-publishfront9.png)
-
-11. Kliknięciu **fazy 1, 2 zadania**i wybierz subskrypcję, nazwa usługi app service, a **przemieszczania** miejsca.
+14. Wybierają **wdrożenia usługi Azure App Service z gniazdem**i nadaj środowisku **Prod**.
+15. Kliknięciu **zadanie 1, 2 zadania**i wybierz subskrypcję, nazwa usługi app service, a **przemieszczania** miejsca.
 
     ![Nazwa środowiska](./media/contoso-migration-rebuild/vsts-publishfront10.png)
 
-12. Usuwają **wdrożenia usługi Azure App Service do gniazda** z potoku. Niezaktualizowanym dostępne w poprzednich krokach.
+16. Usuwają **wdrożenia usługi Azure App Service do gniazda** z potoku. Niezaktualizowanym dostępne w poprzednich krokach.
 
     ![Usuń z potoku](./media/contoso-migration-rebuild/vsts-publishfront11.png)
 
@@ -571,8 +561,8 @@ Contoso Administratorzy mogą teraz publikować w witrynie sieci Web.
     ![Po wdrożeniu zatwierdzenia](./media/contoso-migration-rebuild/vsts-publishfront13.png)
 
 15. W potoku kompilacji ich ręcznie uruchamiał kompilację. Spowoduje to wyzwolenie nowego potoku tworzenia wersji wdraża lokacji do miejsca przejściowego. "Contoso", adres URL dla gniazda jest **https://smarthotelcontoso-staging.azurewebsites.net/**.
-16. Po kompilacja zakończy się, a wydanie wdraża do miejsca, usługa VSTS wiadomości e-mail dev potencjalnego klienta do zatwierdzenia.
-17. Kliknięć potencjalny klient dev **wyświetlić zatwierdzenie**i może zatwierdzić lub odrzucić żądanie w portalu usługi VSTS.
+16. Po kompilacja zakończy się, a wydanie wdraża do miejsca, DevOps platformy Azure w wiadomości e-mail dev potencjalnego klienta do zatwierdzenia.
+17. Kliknięć potencjalny klient dev **wyświetlić zatwierdzenie**i może zatwierdzić lub odrzucić żądanie w witrynie portal DevOps platformy Azure.
 
     ![Wiadomość e-mail dotyczącą zatwierdzenia](./media/contoso-migration-rebuild/vsts-publishfront14.png)
 
@@ -591,19 +581,19 @@ Contoso Administratorzy mogą teraz publikować w witrynie sieci Web.
 
 Administratorzy firmy Contoso wdrożyć aplikację w następujący sposób.
 
-1. One sklonować repozytorium lokalnie na komputerze deweloperskim przez nawiązanie połączenia w projekcie usługi VSTS.
+1. One sklonuj repozytorium lokalnie na komputerze deweloperskim, łącząc się z projektu DevOps platformy Azure.
 2. W programie Visual Studio one Otwórz folder, aby wyświetlić wszystkie pliki w repozytorium.
 3. Adresat otworzy **src/PetCheckerFunction/local.settings.json** pliku i dodaj ustawienia aplikacji dla magazynu, bazy danych Cosmos i interfejs API przetwarzania obrazów.
 
     ![Wdrażanie funkcji](./media/contoso-migration-rebuild/function5.png)
 
-4. Zatwierdź kod i zsynchronizować ją z powrotem do usługi VSTS, wypychanie ich zmiany.
-5. Dodaj nowy potok kompilacji i wybierz **Git programu VSTS** źródła.
+4. Zatwierdź kod i synchronizować ją DevOps platformy Azure, wypychanie ich zmiany.
+5. Dodaj nowy potok kompilacji i wybierz **DevOps Git platformy Azure** źródła.
 6. Wybierają **platformy ASP.NET Core (.NET Framework)** szablonu.
 7. One zaakceptuj wartości domyślne dla szablonu.
 8. W **wyzwalaczy**, a następnie wybierz, aby **Włącz ciągłą integrację**i kliknij przycisk **Zapisz k & Olejką** do uruchomienia kompilacji.
 9. Po pomyślnym kompilacji tworzą potok tworzenia wersji do dodawania **wdrożenia usługi Azure App Service z gniazdem**.
-10. Ich nazwy środowiska **Prod**i wybierz subskrypcję. Ustawiają **typ aplikacji** do **Ap funkcji**, a nazwa usługi app service jako **smarthotelpetchecker**.
+10. Ich nazwy środowiska **Prod**i wybierz subskrypcję. Ustawiają **typ aplikacji** do **aplikacji funkcji**, a nazwa usługi app service jako **smarthotelpetchecker**.
 
     ![Aplikacja funkcji](./media/contoso-migration-rebuild/petchecker2.png)
 

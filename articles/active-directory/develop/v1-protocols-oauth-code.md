@@ -16,14 +16,15 @@ ms.date: 07/23/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 6dc156e94ee8b30bef8c25b3dcaa1d70f76e26e5
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: bd9d3a677d9fea54331200258d4b9b8e07a54312
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581604"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956901"
 ---
 # <a name="authorize-access-to-azure-active-directory-web-applications-using-the-oauth-20-code-grant-flow"></a>Autoryzowanie dostępu do aplikacji sieci web usługi Azure Active Directory przy użyciu przepływie przyznawania kodu OAuth 2.0
+
 Azure Active Directory (Azure AD) używa protokołu OAuth 2.0 umożliwia autoryzowanie dostępu do aplikacji internetowych i internetowych interfejsów API w dzierżawie usługi Azure AD. Ten przewodnik jest niezależny od języka i opisano, jak wysyłać i odbierać komunikaty HTTP bez użycia jakichkolwiek naszych [bibliotek typu open-source](active-directory-authentication-libraries.md).
 
 Przepływ kodu autoryzacji OAuth 2.0 opisano w [sekcji 4.1 specyfikacji protokołu OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.1). Jest on używany do wykonywania uwierzytelniania i autoryzacji w większości typów aplikacji, w tym aplikacje sieci web i natywnie zainstalowanych aplikacji.
@@ -31,11 +32,13 @@ Przepływ kodu autoryzacji OAuth 2.0 opisano w [sekcji 4.1 specyfikacji protoko�
 [!INCLUDE [active-directory-protocols-getting-started](../../../includes/active-directory-protocols-getting-started.md)]
 
 ## <a name="oauth-20-authorization-flow"></a>Przepływ autoryzacji OAuth 2.0
+
 Na wysokim poziomie przepływu autoryzacji całej aplikacji wygląda nieco następująco:
 
 ![Przepływ kodu autoryzacji OAuth](./media/v1-protocols-oauth-code/active-directory-oauth-code-flow-native-app.png)
 
 ## <a name="request-an-authorization-code"></a>Żądanie zwróciło kod autoryzacji
+
 Przepływ kodu autoryzacji zaczyna się od klienta kierowanie użytkowników do `/authorize` punktu końcowego. W tym żądaniu klient wskazuje uprawnienia niezbędne do uzyskania przez użytkownika. Punkt końcowy autoryzacji OAuth 2.0 można uzyskać dzierżawy, wybierając **rejestracji aplikacji > punkty końcowe** w witrynie Azure portal.
 
 ```
@@ -56,15 +59,15 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | client_id |wymagane |Identyfikator aplikacji przypisany do aplikacji podczas rejestrowania za pomocą usługi Azure AD. To można znaleźć w witrynie Azure Portal. Kliknij przycisk **usługi Azure Active Directory** na pasku bocznym usługi kliknij **rejestracje aplikacji**i wybierz aplikację. |
 | response_type |wymagane |Musi zawierać `code` dla przepływ kodu autoryzacji. |
 | redirect_uri |Zalecane |Redirect_uri aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Dokładnie musi odpowiadać jednej z redirect_uris, zarejestrowanych w portalu, z wyjątkiem musi być zakodowane w adresie url. W przypadku aplikacji natywnych i mobilne, należy używać wartość domyślną `urn:ietf:wg:oauth:2.0:oob`. |
-| response_mode |Zalecane |Określa metodę, które mają być używane do wysyłania wynikowy token wstecz do swojej aplikacji. Może być `query`, `fragment`, lub `form_post`. `query` zawiera kod jako parametr ciągu zapytania identyfikatora URI przekierowania. W przypadku żądania tokenu Identyfikatora, przy użyciu niejawnego przepływu, nie można użyć `query` określonej [Specyfikacja OpenID](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Jeśli masz żądania tylko kod, możesz użyć `query`, `fragment`, lub `form_post`. `form_post` wykonuje WPIS zawierający kod, aby identyfikator URI przekierowania. |
+| response_mode |opcjonalne |Określa metodę, które mają być używane do wysyłania wynikowy token wstecz do swojej aplikacji. Może być `query`, `fragment`, lub `form_post`. `query` zawiera kod jako parametr ciągu zapytania identyfikatora URI przekierowania. W przypadku żądania tokenu Identyfikatora, przy użyciu niejawnego przepływu, nie można użyć `query` określonej [Specyfikacja OpenID](https://openid.net/specs/oauth-v2-multiple-response-types-1_0.html#Combinations). Jeśli masz żądania tylko kod, możesz użyć `query`, `fragment`, lub `form_post`. `form_post` wykonuje WPIS zawierający kod, aby identyfikator URI przekierowania. Wartość domyślna to `query` przepływu kodu.  |
 | state |Zalecane |Wartość uwzględnione w żądaniu, która jest także zwracany w odpowiedzi tokenu. Losowo generowany unikatową wartość jest zwykle używany podczas [zapobieganie atakom na fałszerstwo żądania międzywitrynowego](http://tools.ietf.org/html/rfc6749#section-10.12). Stan również jest używany do kodowania informacje o stanie użytkownika w aplikacji, zanim żądanie uwierzytelniania wystąpił, takich jak strony lub widoku, które znajdowały się w. |
 | zasób | Zalecane |Identyfikator URI Identyfikatora aplikacji docelowej internetowego interfejsu API (zabezpieczono zasób). Aby znaleźć identyfikator URI aplikacji w witrynie Azure Portal, kliknij **usługi Azure Active Directory**, kliknij przycisk **rejestracje aplikacji**, Otwórz aplikację **ustawienia** stronie, a następnie kliknij przycisk  **Właściwości**. Może to być również zasób zewnętrzny, takie jak `https://graph.microsoft.com`. Jest to wymagane w jedno autoryzacji lub żądania tokenu. Do zapewnienia uwierzytelniania mniejszą liczbę monitów umieść go w żądaniu autoryzacji, aby upewnić się, że otrzymaniu zgody przez użytkownika. |
 | scope | **ignorowane** | W przypadku aplikacji usługi Azure AD w wersji 1, zakresy muszą być skonfigurowane statycznie w witrynie Azure Portal w obszarze aplikacje **ustawienia**, **wymagane uprawnienia**. |
 | wiersz |opcjonalne |Wskazuje typ interakcji z użytkownikiem, który jest wymagany.<p> Prawidłowe wartości to: <p> *Zaloguj się*: monitowany o ponowne uwierzytelnianie. <p> *select_account*: użytkownik jest monitowany o wybranie konta przerywania logowania jednokrotnego na. Użytkownik może wybrać istniejące konto zalogowanego, wprowadź swoje poświadczenia dla konta zapamiętanych lub chce użyć całkowicie innego konta. <p> *zgoda*: zgody użytkownika przyznano, ale musi zostać zaktualizowany. Użytkownik powinien monit o zgodę. <p> *admin_consent*: administrator powinien być monitowany o zgody w imieniu wszystkich użytkowników w organizacji |
 | login_hint |opcjonalne |Można wstępnie wypełnić pola Adres e-mail/nazwy użytkownika strony logowania dla użytkownika, jeśli znasz swoją nazwę użytkownika, wcześniej. Aplikacje często tego parametru należy użyć podczas ponownego uwierzytelniania, mających już wyodrębnione nazwy użytkownika z poprzedniego logowania za pomocą `preferred_username` oświadczenia. |
 | Element domain_hint |opcjonalne |Zawiera wskazówki dotyczące dzierżawy lub domeny, które użytkownik powinien używać do logowania. Element domain_hint wartość zarejestrowanej domeny dla dzierżawy. Jeśli dzierżawa jest sfederowana do katalogu lokalnego, AAD przekierowuje do określonej dzierżawy serwera federacyjnego. |
-| code_challenge_method | opcjonalne    | Metoda użyta do zakodowania `code_verifier` dla `code_challenge` parametru. Może być jednym z `plain` lub `S256`. Jeśli wykluczone, `code_challenge` przyjęto, że będzie mieć postać zwykłego tekstu, jeśli `code_challenge` jest dołączony. Obsługuje platformy Azure 1.0 w usłudze AAD, zarówno `plain` i `S256`. Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
-| code_challenge        | opcjonalne    | Wykorzystywany do zabezpieczenia przydziałów kod autoryzacji za pomocą klucza dowód kod programem Exchange (PKCE) od klienta macierzystego lub publicznej. Jeśli wymagane `code_challenge_method` jest dołączony. Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| code_challenge_method | Zalecane    | Metoda użyta do zakodowania `code_verifier` dla `code_challenge` parametru. Może być jednym z `plain` lub `S256`. Jeśli wykluczone, `code_challenge` przyjęto, że będzie mieć postać zwykłego tekstu, jeśli `code_challenge` jest dołączony. Obsługuje platformy Azure 1.0 w usłudze AAD, zarówno `plain` i `S256`. Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
+| code_challenge        | Zalecane    | Wykorzystywany do zabezpieczenia przydziałów kod autoryzacji za pomocą klucza dowód kod programem Exchange (PKCE) od klienta macierzystego lub publicznej. Jeśli wymagane `code_challenge_method` jest dołączony. Aby uzyskać więcej informacji, zobacz [PKCE RFC](https://tools.ietf.org/html/rfc7636). |
 
 > [!NOTE]
 > Jeśli użytkownik jest częścią organizacji, administrator organizacji może wyrazić zgodę odrzucić w imieniu użytkownika lub zezwolić na użytkownika o zgodę. Użytkownik może wskazać opcja zgody tylko wtedy, gdy administrator to umożliwia.
@@ -149,7 +152,7 @@ grant_type=authorization_code
 Aby znaleźć identyfikator URI aplikacji w witrynie Azure Portal, kliknij **usługi Azure Active Directory**, kliknij przycisk **rejestracje aplikacji**, Otwórz aplikację **ustawienia** stronie, a następnie kliknij przycisk  **Właściwości**.
 
 ### <a name="successful-response"></a>Odpowiedź oznaczająca Powodzenie
-Usługa Azure AD zwraca token dostępu po pomyślnej odpowiedzi. Aby zminimalizować wywołań sieci z aplikacji klienckiej i ich skojarzone opóźnienia, aplikacja kliencka powinna tokeny dostępu pamięci podręcznej na okres istnienia tokenu, który jest określony w odpowiedzi OAuth 2.0. Aby określić czas życia tokenu, należy użyć `expires_in` lub `expires_on` wartości parametrów.
+Usługa Azure AD zwraca [token dostępu](access-tokens.md) po pomyślnej odpowiedzi. Aby zminimalizować wywołań sieci z aplikacji klienckiej i ich skojarzone opóźnienia, aplikacja kliencka powinna tokeny dostępu pamięci podręcznej na okres istnienia tokenu, który jest określony w odpowiedzi OAuth 2.0. Aby określić czas życia tokenu, należy użyć `expires_in` lub `expires_on` wartości parametrów.
 
 Jeśli zasobu internetowego interfejsu API zwraca `invalid_token` kodu błędu, może to oznaczać, że zasób stwierdził wygasł token. Jeśli czas zegara klienta i zasobów są różne (nazywane "niesymetryczność czasu"), zasób, warto rozważyć token wygasł, zanim token jest usuwane z pamięci podręcznej klienta. Jeśli ten problem wystąpi, wyczyść tokenu z pamięci podręcznej, nawet jeśli jest nadal w obliczeniowej okresie swojego istnienia.
 
@@ -171,59 +174,16 @@ Odpowiedź oznaczająca Powodzenie może wyglądać następująco:
 
 | Parametr | Opis |
 | --- | --- |
-| access_token |Token dostępu żądanego jako podpisem JSON Web Token (JWT). Aplikacja może używać tego tokenu do uwierzytelniania zabezpieczonych zasobów, takich jak interfejs API sieci web. |
+| access_token |Żądany [token dostępu](access-tokens.md) jako podpisem JSON Web Token (JWT). Aplikacja może używać tego tokenu do uwierzytelniania zabezpieczonych zasobów, takich jak interfejs API sieci web. |
 | token_type |Wskazuje typ tokenu. Jedynym typem, który obsługuje usługi Azure AD jest elementu nośnego. Aby uzyskać więcej informacji na temat tokenów elementu nośnego, zobacz [ramy autoryzacji OAuth 2.0: użycie tokenu elementu nośnego (RFC 6750)](http://www.rfc-editor.org/rfc/rfc6750.txt) |
 | expires_in |Jak długo token dostępu jest prawidłowy (w sekundach). |
 | expires_on |Czas wygaśnięcia tokenu dostępu. Data jest reprezentowana jako liczbę sekund od 1970-01-01T0:0:0Z UTC do czasu wygaśnięcia. Ta wartość jest używana do określenia okres istnienia tokenów buforowanych. |
 | zasób |Identyfikator URI Identyfikatora aplikacji internetowego interfejsu API (zabezpieczono zasób). |
 | scope |Personifikacja uprawnienia do aplikacji klienckiej. Domyślne uprawnienia `user_impersonation`. Właściciel zabezpieczono zasób można zarejestrować dodatkowych wartości w usłudze Azure AD. |
 | refresh_token |Token odświeżania OAuth 2.0. Aplikacja może używać tego tokenu, można uzyskać tokenów dodatkowych dostępu po wygaśnięciu bieżącego tokenu dostępu. Odśwież tokeny są długotrwałe i pozwala zachować dostęp do zasobów przez dłuższy czas. |
-| id_token |Niepodpisane JSON Web Token (JWT). Aplikacji base64Url może zdekodować segmentów tego tokenu na żądanie informacji o użytkowniku, który jest zalogowany. Wartości w pamięci podręcznej i ich wyświetlenie aplikacji, ale nie należy polegać na nich autoryzacji lub granice zabezpieczeń. |
+| id_token |Niepodpisane reprezentujący tokenu Web JSON (JWT) [tokenu Identyfikacyjnego](id-tokens.md). Aplikacji base64Url może zdekodować segmentów tego tokenu na żądanie informacji o użytkowniku, który jest zalogowany. Wartości w pamięci podręcznej i ich wyświetlenie aplikacji, ale nie należy polegać na nich autoryzacji lub granice zabezpieczeń. |
 
-### <a name="jwt-token-claims"></a>Rozszerzenie JWT Token oświadczeń
-Token JWT wartości `id_token` parametru może zostać odczytany na następujących oświadczenia:
-
-```
-{
- "typ": "JWT",
- "alg": "none"
-}.
-{
- "aud": "2d4d11a2-f814-46a7-890a-274a72a7309e",
- "iss": "https://sts.windows.net/7fe81447-da57-4385-becb-6de57f21477e/",
- "iat": 1388440863,
- "nbf": 1388440863,
- "exp": 1388444763,
- "ver": "1.0",
- "tid": "7fe81447-da57-4385-becb-6de57f21477e",
- "oid": "68389ae2-62fa-4b18-91fe-53dd109d74f5",
- "upn": "frank@contoso.com",
- "unique_name": "frank@contoso.com",
- "sub": "JWvYdCWPhhlpS1Zsf7yYUxShUwtUm5yzPmw_-jX3fHY",
- "family_name": "Miller",
- "given_name": "Frank"
-}.
-```
-
-Aby uzyskać więcej informacji na temat tokenów sieci web JSON, zobacz [Specyfikacja wersji roboczej JWT IETF](http://go.microsoft.com/fwlink/?LinkId=392344). Aby uzyskać więcej informacji o typach tokenów i oświadczeń, przeczytaj [obsługiwane tokenu i typy oświadczeń](v1-id-and-access-tokens.md)
-
-`id_token` Parametr zawiera następujące typy oświadczeń:
-
-| Typ oświadczenia | Opis |
-| --- | --- |
-| AUD |Odbiorcy tokenu. Token jest wystawiony dla aplikacji klienckiej, odbiorców jest `client_id` klienta. |
-| EXP |Czas wygaśnięcia. Czas, po wygaśnięciu ważności tokenu. Aby token był prawidłowy, bieżąca data/godzina musi być mniejsza lub równa `exp` wartość. Czas jest reprezentowany jako sekundach od 1 stycznia 1970 r. (1970-01-01T0:0:0Z) UTC do czasu wygaśnięcia ważności tokenu.|
-| family_name |Użytkownika imienia lub nazwisko. Aplikację można wyświetlić tę wartość. |
-| given_name |Imię użytkownika. Aplikację można wyświetlić tę wartość. |
-| IAT |Wygenerowane w czasie. Czas, kiedy wydano tokenu JWT. Czas jest reprezentowany jako sekundach od 1 stycznia 1970 r. (1970-01-01T0:0:0Z) UTC do czasu jego token został wystawiony. |
-| iss |Identyfikuje wystawcy tokenów |
-| nbf |Nie wcześniej niż czas. Czas, gdy token zaczyna obowiązywać. Aby uzyskać token był prawidłowy bieżąca data/godzina musi być większa lub równa wartości Nbf. Czas jest reprezentowany jako sekundach od 1 stycznia 1970 r. (1970-01-01T0:0:0Z) UTC do czasu jego token został wystawiony. |
-| Identyfikator OID |Identyfikator obiektu użytkownika w usłudze Azure AD. |
-| Sub |Identyfikator podmiotu tokenu. Jest trwałe i niezmienne identyfikator dla użytkownika, który opisuje tokenu. Użyj tej wartości w pamięci podręcznej logiki. |
-| identyfikatora TID |Dzierżawy, identyfikator dzierżawy Azure AD, który wystawił token. |
-| unique_name |Unikatowy identyfikator, który może być wyświetlany użytkownikowi. Jest to zazwyczaj główna nazwa użytkownika (UPN). |
-| nazwy UPN |Główna nazwa użytkownika użytkownika. |
-| VER |Wersja. Wersja token JWT, zwykle 1.0. |
+Aby uzyskać więcej informacji na temat tokenów sieci web JSON, zobacz [Specyfikacja wersji roboczej JWT IETF](http://go.microsoft.com/fwlink/?LinkId=392344).   Aby dowiedzieć się więcej na temat `id_tokens`, zobacz [przepływ protokołu OpenID Connect 1.0](v1-protocols-openid-connect-code.md).
 
 ### <a name="error-response"></a>Odpowiedzi na błąd
 Błędy punktu końcowego wystawiania tokenów są kody błędów HTTP, ponieważ klient wywołuje punkt końcowy wystawiania tokenu bezpośrednio. Oprócz kod stanu HTTP punktu końcowego wystawiania tokenu usługi Azure AD zwraca dokument JSON z obiektami, które opisuje błąd.
@@ -313,6 +273,7 @@ Specyfikacja RFC 6750 definiuje następujące błędy dotyczące zasobów, korzy
 | 403 |insufficient_access |Temat ten token nie ma uprawnienia, które są wymagane do dostępu do zasobu. |Monituj użytkownika, użyj innego konta lub zażądać uprawnień do określonego zasobu. |
 
 ## <a name="refreshing-the-access-tokens"></a>Odświeżanie tokenów dostępu
+
 Tokeny dostępu są krótkotrwałe i muszą zostać odświeżone po ich wygaśnięciu, aby nadal mieć dostęp do zasobów. Możesz odświeżyć `access_token` przesyłając innego `POST` limit czasu żądania `/token` punktu końcowego, ale ten czas, zapewniając `refresh_token` zamiast `code`.
 
 Odświeżanie tokenów nie mają określonego okresy istnienia. Zazwyczaj okresy istnienia tokenów odświeżania są stosunkowo długo. Jednak w niektórych przypadkach, tokeny odświeżania wygaśnie, zostaną odwołane lub braku wystarczających uprawnień do żądanej akcji. Aplikacja musi się spodziewać i obsługiwać błędy zwrócone przez punkt końcowy wystawiania tokenu poprawnie.

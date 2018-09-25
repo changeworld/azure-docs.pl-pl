@@ -1,51 +1,51 @@
 ---
-title: Tworzenie żądania pomocy technicznej dla zarządzania kosztami Azure | Dokumenty Microsoft
-description: W tym artykule przedstawiono kroki niezbędne do utworzenia żądania pomocy technicznej dla zarządzania kosztami.
+title: Utwórz żądanie obsługi na platformie Cloudyn na platformie Azure | Dokumentacja firmy Microsoft
+description: W tym artykule przedstawiono kroki niezbędne do utworzenia żądania obsługi na platformie Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 09/18/2018
 ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 35d3153cb485f11fe17689f1ff1d3d88961878d3
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: d074b263d11c6b12a4283d2ff479a5b3dc1d6908
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296695"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952447"
 ---
-# <a name="create-a-support-request-for-cost-management"></a>Tworzenie żądania pomocy technicznej dla zarządzania kosztami
+# <a name="create-a-support-request-for-cloudyn"></a>Utwórz żądanie pomocy technicznej dla platformy Cloudyn
 
-Jeśli nie znajdziesz potrzebnych informacji, których szukasz, możesz otworzyć żądanie pomocy technicznej. Lub, jeśli istnieje podejrzenie, że problem jest przerw w działaniu usługi lub usterki. Po otwarciu Pomocy technicznej, upewnij się, że otwieranie jednego problemu. Czy tak pomaga szybko rozesłać zgłoszonych problemów.
+Jeśli nie możesz znaleźć informacje, których szukasz, możesz otworzyć żądania pomocy technicznej. Lub, jeśli istnieje podejrzenie, że problem jest przerw w działaniu usługi lub błędem. Po otwarciu biletu pomocy technicznej, upewnij się, który otworzyć ją do pojedynczego problemu. Należy tak pomaga szybko kierować zgłoszonego problemu.
 
 ## <a name="open-a-support-ticket"></a>Otwórz bilet pomocy technicznej
 
-1. Zaloguj się do portalu Azure (https://portal.azure.com).
+1. Zaloguj się do witryny Azure portal (https://portal.azure.com).
 2. Na górnym pasku nawigacyjnym, kliknij przycisk **pomocy**.
-3. W **Pomoc** menu, kliknij przycisk **Pomoc i wsparcie**.
-4. W pomocy + obsługi menu w okresie pomocy technicznej, kliknij przycisk **New obsługuje żądania**.
-5. W obszarze podstawy typu problemu, zaznacz **technicznej**.
-6. W obszarze subskrypcji wybierz wszystkie wymienione subskrypcji. Subskrypcja, wybranego przez użytkownika nie jest używane do routowania problem.
-7. W obszarze usługi wybierz **wszystkie usługi** a następnie wybierz **Cloudyn** z listy.
-8. Zgodnie z planem obsługi technicznej, wybierz Plan pomocy technicznej Azure, a następnie kliknij przycisk **dalej**.  
-    ![Nowe żądanie pomocy technicznej - obszar — informacje podstawowe](./media/support-request-cost-management/support-request01.png)
-9. W obszarze Problem, wybierz **ważności** poziomu, aby określić czas reakcji.
-10. Wybierz **typ problemu**, a następnie wybierz **kategorii**.
-11. W **tytuł** wprowadź tytuł opisujący Twoje żądanie.
-12. W **szczegóły** polu, wpisanie dodatkowych informacji.
-13. Dla **kiedy problem został uruchomiony**, wybierz przybliżoną datę i czas, a następnie kliknij **dalej**.  
-    ![Nowe żądanie pomocy technicznej - obszar problemu](./media/support-request-cost-management/support-request02.png)
-14. W **informacji o kontakcie** obszarze, wybierz swój preferowany sposób kontaktu i informacje kontaktowe, a następnie kliknij **tworzenie**.  
-    ![Nowe żądanie pomocy technicznej - powierzchnia styku](./media/support-request-cost-management/support-request03.png)
+3. W **pomocy** menu, kliknij przycisk **Pomoc i obsługa techniczna**.
+4. W pomocy i obsługi menu w ramach pomocy technicznej, kliknij przycisk **nowe żądanie obsługi**.
+5. W obszarze podstawy w obszarze Typ problemu wybierz **techniczne**.
+6. W ramach subskrypcji wybierz żadnej z wymienionych subskrypcji. Subskrypcję, możesz wybrać nie jest używany do routingu problem.
+7. W obszarze usługa wybierz **wszystkich usług** , a następnie wybierz **Cloudyn** z listy.
+8. W ramach planu pomocy technicznej, wybierz Plan pomocy technicznej platformy Azure, a następnie kliknij przycisk **dalej**.  
+    ![Nowe żądanie obsługi — podstawy obszaru](./media/support-request-cost-management/support-request01.png)
+9. W obszarze Problem, wybierz **ważność** poziomu, aby określić czas odpowiedzi.
+10. Wybierz **typ problemu**, a następnie wybierz pozycję **kategorii**.
+11. W **tytuł** wprowadź tytuł, który opisuje Twoje żądanie.
+12. W **szczegóły** polu dodatkowe informacje o typie.
+13. Aby uzyskać **kiedy problem zaczął występować**, wybierz przybliżony datę i godzinę dla, a następnie kliknij przycisk **dalej**.  
+    ![Nowe żądanie obsługi — obszar problemu](./media/support-request-cost-management/support-request02.png)
+14. W **informacje kontaktowe** obszaru, wybierz preferowany metoda kontaktu i podaj swoje informacje kontaktowe, a następnie kliknij przycisk **Utwórz**.  
+    ![Nowe żądanie obsługi — skontaktuj się z pomocą obszaru](./media/support-request-cost-management/support-request03.png)
 
-Po utworzeniu pomocy technicznej jest dodawany do kolejki zgłoszeń pomocy technicznej. Zmienia się czas reakcji na podstawie planów pomocy technicznej i (wpływu na działalność) powagi sytuacji. Aby uzyskać więcej informacji, zobacz [obsługuje zakres i czas reakcji](https://azure.microsoft.com/support/plans/response/).
+Po utworzeniu biletu pomocy technicznej jest to dodane do kolejki pomocy technicznej. Czas odpowiedzi różni się w oparciu o Plan pomocy technicznej i ważności (wpływ na działalność) problem. Aby uzyskać więcej informacji, zobacz [zakres i szybkość reakcji pomocy technicznej](https://azure.microsoft.com/support/plans/response/).
 
-Aby sprawdzić stan incydentu, który został złożony, zobacz [obsługuje wszystkie żądania](../azure-supportability/how-to-create-azure-support-request.md#all-support-requests).
+Aby sprawdzić stan zdarzenie, które zostały wprowadzone, zobacz [wszystkie żądania obsługi](../azure-supportability/how-to-create-azure-support-request.md#all-support-requests).
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się więcej na temat usługi Azure koszt zarządzania, w dalszym ciągu [Przejrzyj użycia i koszty](tutorial-review-usage.md) samouczka kosztów zarządzania.
+- Aby dowiedzieć się więcej na temat platformy Cloudyn, przejdź do [przeglądanie użycia i kosztów](tutorial-review-usage.md) samouczek dotyczący platformy Cloudyn.

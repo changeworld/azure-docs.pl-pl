@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 7fe4fdbf6c6b3cbbd6d01ef5309699c3d3991d53
-ms.sourcegitcommit: d0ea925701e72755d0b62a903d4334a3980f2149
+ms.openlocfilehash: 3a74450ca8025f07b00dc18c9b81b147afa7439c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40003818"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46975302"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Dodawanie, zmienianie lub usuwanie adresów IP dla interfejsu sieci platformy Azure
 
@@ -35,7 +35,7 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 - Jeśli nie masz jeszcze konta platformy Azure, należy zasubskrybować [konto bezpłatnej wersji próbnej](https://azure.microsoft.com/free).
 - Jeśli przy użyciu portalu, otwórz https://portal.azure.comi zaloguj się przy użyciu konta platformy Azure.
 - Jeśli za pomocą poleceń programu PowerShell w celu wykonania zadań w tym artykule, albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Dla tego samouczka jest wymagany moduł Azure PowerShell w wersji 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Login-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
-- Jeśli za pomocą poleceń interfejsu wiersza polecenia platformy Azure (CLI) w celu wykonania zadań w tym artykule albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/bash), lub korzystając z polecenia interfejsu wiersza polecenia na komputerze. Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, trzeba będzie również uruchomić `az login` do utworzenia połączenia z platformą Azure.
+- Jeśli za pomocą poleceń interfejsu wiersza polecenia platformy Azure (CLI) w celu wykonania zadań w tym artykule albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/bash), lub korzystając z polecenia interfejsu wiersza polecenia na komputerze. Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.31 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, trzeba będzie również uruchomić `az login` do utworzenia połączenia z platformą Azure.
 
 Konta, zaloguj się do lub łączenie z platformą Azure za pomocą, muszą być przypisane do [Współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) przypisany odpowiednie działania, które są wymienione w [sieci Interfejs uprawnienia](virtual-network-network-interface.md#permissions).
 
@@ -92,7 +92,7 @@ Możesz usunąć [prywatnej](#private) i [publicznych](#public) adresy IP z inte
 1. W polu zawierającym tekst *Wyszukaj zasoby* w górnej części witryny Azure portal, wpisz polecenie *interfejsy sieciowe*. Gdy **interfejsy sieciowe** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz interfejs sieciowy, który chcesz usunąć adresy IP z listy.
 3. W obszarze **ustawienia**, wybierz opcję **konfiguracje adresów IP**.
-4. Po prawej stronie wybierz [dodatkowej](#secondary) konfigurację adresu IP (nie można usunąć [podstawowego](#primary) konfiguracji), którą chcesz usunąć, wybierz pozycję **Usuń**, a następnie wybierz ** Tak**, aby potwierdzić usunięcie. Jeśli konfiguracja była publicznego zasobu adresu IP, powiązany, zasobu jest oddzielona od konfigurację adresu IP, ale zasób nie zostanie usunięta.
+4. Po prawej stronie wybierz [dodatkowej](#secondary) konfigurację adresu IP (nie można usunąć [podstawowego](#primary) konfiguracji), którą chcesz usunąć, wybierz pozycję **Usuń**, a następnie wybierz  **Tak**, aby potwierdzić usunięcie. Jeśli konfiguracja była publicznego zasobu adresu IP, powiązany, zasobu jest oddzielona od konfigurację adresu IP, ale zasób nie zostanie usunięta.
 
 **Polecenia**
 
@@ -188,7 +188,7 @@ Każdy interfejs sieciowy musi mieć jeden [podstawowego](#primary) konfiguracj�
 Możesz przypisać zero lub jeden prywatny [IPv6](#ipv6) adres jedną konfigurację adresu IP pomocniczego interfejsu sieciowego. Interfejs sieciowy nie może mieć żadnych istniejących konfiguracje pomocniczych adresów IP. Nie można dodać konfiguracji adresu IP przy użyciu adresu IPv6 przy użyciu portalu. Użyj programu PowerShell lub interfejsu wiersza polecenia, aby dodać konfigurację adresu IP za pomocą prywatnego adresu IPv6 do istniejącego interfejsu sieciowego. Nie można dołączyć interfejsu sieciowego do istniejącej maszyny Wirtualnej.
 
 > [!NOTE]
-> Chociaż można utworzyć interfejsu sieciowego przy użyciu adresu IPv6 przy użyciu portalu, nie możesz dodać istniejący interfejs sieciowy do nowej lub istniejącej maszyny wirtualnej przy użyciu portalu. Użyj programu PowerShell lub interfejsu wiersza polecenia platformy Azure w wersji 2.0, aby utworzyć interfejs sieciowy z prywatnym adresem IPv6, a następnie dołączyć interfejsu sieciowego, podczas tworzenia maszyny wirtualnej. Nie można dołączyć interfejsu sieciowego za pomocą prywatnego adresu IPv6 przypisany do istniejącej maszyny wirtualnej. Nie można dodać z prywatnym adresem IPv6 w konfiguracji adresu IP dla każdy interfejs sieciowy dołączony do maszyny wirtualnej przy użyciu dowolnych narzędzi (portal, interfejsu wiersza polecenia lub programu PowerShell).
+> Chociaż można utworzyć interfejsu sieciowego przy użyciu adresu IPv6 przy użyciu portalu, nie możesz dodać istniejący interfejs sieciowy do nowej lub istniejącej maszyny wirtualnej przy użyciu portalu. Użyj programu PowerShell lub interfejsu wiersza polecenia platformy Azure, aby utworzyć interfejs sieciowy z prywatnym adresem IPv6, a następnie dołączyć interfejsu sieciowego, podczas tworzenia maszyny wirtualnej. Nie można dołączyć interfejsu sieciowego za pomocą prywatnego adresu IPv6 przypisany do istniejącej maszyny wirtualnej. Nie można dodać z prywatnym adresem IPv6 w konfiguracji adresu IP dla każdy interfejs sieciowy dołączony do maszyny wirtualnej przy użyciu dowolnych narzędzi (portal, interfejsu wiersza polecenia lub programu PowerShell).
 
 Nie można przypisać publiczny adres IPv6 w podstawowej lub pomocniczej konfiguracji adresu IP.
 

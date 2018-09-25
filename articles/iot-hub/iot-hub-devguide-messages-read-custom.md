@@ -1,6 +1,6 @@
 ---
-title: Zrozumienie niestandardowe punkty końcowe Centrum IoT Azure | Dokumentacja firmy Microsoft
-description: Przewodnik dewelopera — korzystanie z reguł routingu do kierowania wiadomości urządzenia do chmury do niestandardowe punkty końcowe.
+title: Zrozumienie niestandardowe punkty końcowe usługi Azure IoT Hub | Dokumentacja firmy Microsoft
+description: Przewodnik dewelopera — przy użyciu zapytań routingu do kierowania komunikatów z urządzenia do chmury do niestandardowych punktów końcowych.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,60 +8,54 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.author: dobett
-ms.openlocfilehash: b035c7ef6dfe56c4b4534e081e70d95ea7c14847
-ms.sourcegitcommit: 6cf20e87414dedd0d4f0ae644696151e728633b6
+ms.openlocfilehash: af0b819c6c60835089c174a1f9f7c3a6215e362c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/06/2018
-ms.locfileid: "34808030"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956965"
 ---
-# <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Urządzenia do chmury wiadomości wysyłanych tras wiadomości i niestandardowe punkty końcowe
+# <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Użyj trasy wiadomość i niestandardowe punkty końcowe dla komunikatów z urządzenia do chmury
 
-Centrum IoT umożliwia trasy [wiadomości urządzenia do chmury] [ lnk-device-to-cloud] do punktów końcowych usługi połączonej Centrum IoT na podstawie właściwości komunikatu. Reguły routingu zapewniają elastyczność do wysyłania wiadomości gdy muszą przejść bez konieczności stosowania dodatkowych usług lub kodu niestandardowego. Reguł routingu, które można skonfigurować ma następujące właściwości:
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
+
+Usługa IoT Hub [Routing komunikatów](iot-hub-devguide-routing-query-syntax.md) umożliwia kierowanie komunikatów z urządzenia do chmury do punktów końcowych przeznaczonych dla usługi. Routing udostępnia również możliwość wykonywanie zapytania do filtrowania danych przed przesłaniem go do punktów końcowych. Każda kwerenda routingu, które można skonfigurować ma następujące właściwości:
 
 | Właściwość      | Opis |
 | ------------- | ----------- |
-| **Nazwa**      | Unikatowa nazwa identyfikuje reguły. |
-| **Źródło**    | Pochodzenie strumień danych, które będą używane. Na przykład telemetrii urządzenia. |
-| **Warunek** | Wyrażenia zapytania dla reguły routingu, który jest uruchamiany przed nagłówki i treści wiadomości i określa, czy dopasowanie dla punktu końcowego. Aby uzyskać więcej informacji na temat tworzenia warunku trasy, zobacz [odwołanie - zapytania języka twins urządzenia i zadania][lnk-devguide-query-language]. |
-| **punkt końcowy**  | Nazwa punktu końcowego, w którym Centrum IoT wysyła komunikaty, które są zgodne z warunkiem. Punkty końcowe musi należeć do tego samego regionu Centrum IoT, w przeciwnym razie może być wymagana dla regionu między zapisów. |
+| **Nazwa**      | Unikatowa nazwa identyfikująca zapytania. |
+| **Element źródłowy**    | Pochodzenie strumień danych, aby zostać podjęte. Na przykład danych telemetrycznych z urządzenia. |
+| **Warunek** | Wyrażenie zapytania dla zapytania routingu, które jest uruchamiane właściwości aplikacji wiadomości, właściwości systemu, treści wiadomości, tagów bliźniaczych reprezentacji urządzeń i właściwości bliźniaczych reprezentacji urządzeń w celu ustalenia, czy jest dopasowanie dla punktu końcowego. Aby uzyskać więcej informacji na temat tworzenia zapytania znajduje się w [komunikat o składni zapytań routingu](iot-hub-devguide-routing-query-syntax.md) |
+| **Punkt końcowy**  | Nazwa punktu końcowego, gdzie Centrum IoT Hub wysyła komunikaty, które pasujących do zapytania. Firma Microsoft zaleca, wybierz punkt końcowy w tym samym regionie, co Centrum IoT hub. |
 
-Pojedynczy komunikat może zgodne z warunkiem na wielu reguł routingu, w których przypadku Centrum IoT dostarcza wiadomość do punktu końcowego skojarzone z każdą regułę dopasowany. Centrum IoT automatycznie deduplicates dostarczanie komunikatów, więc jeśli wiadomość pasuje do wielu reguł, które mają tego samego miejsca docelowego, jest ona tylko zapisywana raz do tego miejsca docelowego.
+Pojedynczy komunikat może odpowiadać warunku w wielu zapytań routingu, w których przypadku usługi IoT Hub dostarcza wiadomość do endpoint skojarzone z każdym zapytaniem dopasowane. Centrum IoT automatycznie deduplicates dostarczanie komunikatów, więc jeśli komunikat jest zgodny z wielu zapytań, które mają tego samego miejsca docelowego, są tylko zapisywane jeden raz do tego miejsca docelowego.
 
 ## <a name="endpoints-and-routing"></a>Punkty końcowe i routingu
 
-Centrum IoT ma wartość domyślną [wbudowanym punktem końcowym][lnk-built-in]. Można tworzyć niestandardowe punkty końcowe do wyznaczania tras wiadomościom przez połączenie innych usług w Twojej subskrypcji do koncentratora. Centrum IoT obecnie obsługuje kontenery magazynu Azure, usługa Event Hubs, kolejek usługi Service Bus i tematów usługi Service Bus jako niestandardowe punkty końcowe.
+Centrum IoT hub jest powiązana wartość domyślna [wbudowany punkt końcowy][lnk-built-in]. Możesz utworzyć niestandardowe punkty końcowe do wyznaczania tras, łącząc innych usług w Twojej subskrypcji do Centrum. Usługa IoT Hub obsługuje obecnie kontenery usługi Azure Storage, usługa Event Hubs, kolejki usługi Service Bus i tematów usługi Service Bus jako niestandardowe punkty końcowe.
 
-Gdy używasz routingu i niestandardowe punkty końcowe wiadomości tylko są dostarczane do wbudowanym punktem końcowym, jeśli nie odpowiadają regułom. Na potrzeby dostarczania wiadomości do wbudowanych punktu końcowego również dotyczące niestandardowych punktu końcowego, Dodaj trasę, która wysyła komunikaty do **zdarzenia** punktu końcowego.
+Gdy używasz routingu, jak i niestandardowe punkty końcowe, wiadomości tylko są dostarczane do wbudowany punkt końcowy, jeśli nie są zgodne dowolnego zapytania. Aby dostarcza komunikaty do wbudowanego punktu końcowego również do niestandardowego punktu końcowego, należy dodać trasę, która wysyła komunikaty do **zdarzenia** punktu końcowego.
 
 > [!NOTE]
-> Centrum IoT obsługuje tylko zapisywania danych do usługi Azure Storage kontenery jako obiekty BLOB.
+> Usługa IoT Hub obsługuje tylko zapisywanie danych w kontenerach usługi Azure Storage jako obiekty BLOB.
 
 > [!WARNING]
-> Usługa Service Bus kolejek i tematów z **sesji** lub **wykrywania duplikatów** włączone nie są obsługiwane jako niestandardowe punkty końcowe.
+> Kolejki usługi Service Bus i tematów za pomocą **sesje** lub **wykrywania duplikatów** włączone nie są obsługiwane jako niestandardowe punkty końcowe.
 
-Aby uzyskać więcej informacji na temat tworzenia niestandardowych punktów końcowych w Centrum IoT, zobacz [punkty końcowe Centrum IoT][lnk-devguide-endpoints].
+Aby uzyskać więcej informacji na temat tworzenia niestandardowych punktów końcowych w usłudze IoT Hub, zobacz [punktów końcowych usługi IoT Hub][lnk-devguide-endpoints].
 
-Aby uzyskać więcej informacji na temat odczytu z niestandardowe punkty końcowe zobacz:
+Aby uzyskać więcej informacji na temat odczytywanie ich z niego niestandardowe punkty końcowe zobacz:
 
-* Odczytywanie z [kontenery magazynu Azure][lnk-getstarted-storage].
+* Odczytywanie z [kontenery usługi Azure Storage][lnk-getstarted-storage].
 * Odczytywanie z [usługi Event Hubs][lnk-getstarted-eh].
 * Odczytywanie z [kolejek usługi Service Bus][lnk-getstarted-queue].
 * Odczytywanie z [tematów usługi Service Bus][lnk-getstarted-topic].
 
-## <a name="latency"></a>Opóźnienie
-
-Podczas rozsyłania wiadomości telemetrii urządzenia do chmury przy użyciu wbudowanych punkty końcowe po utworzeniu pierwszego trasy jest niewielki wzrost opóźnienia end-to-end.
-
-W większości przypadków Średni czas oczekiwania jest mniej niż jednej sekundzie. Można monitorować przy użyciu opóźnienia **d2c.endpoints.latency.builtIn.events** [Metryka Centrum IoT](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics). Tworzenie lub usuwanie żadnej trasy po pierwsza z nich nie wpływa na czas oczekiwania na trasie.
-
 ### <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji na temat punkty końcowe Centrum IoT, zobacz [punkty końcowe Centrum IoT][lnk-devguide-endpoints].
-
-Aby uzyskać więcej informacji na temat języka zapytań, służy do definiowania reguł routingu, zobacz [Centrum IoT zapytania języka twins urządzenia, zadania i rozsyłania wiadomości][lnk-devguide-query-language].
-
-[Centrum IoT procesu wiadomości urządzenia do chmury, za pomocą trasy] [ lnk-d2c-tutorial] samouczek pokazuje, jak używać reguł routingu oraz niestandardowe punkty końcowe.
+* Aby uzyskać więcej informacji na temat punktów końcowych usługi IoT Hub, zobacz [punktów końcowych usługi IoT Hub][lnk-devguide-endpoints].
+* Aby uzyskać więcej informacji na temat język zapytań, służą do definiowania zapytań routingu, zobacz [składni zapytań routingu komunikatów](iot-hub-devguide-routing-query-syntax.md).
+* [Komunikaty urządzenia do chmury usługi IoT Hub procesu przy użyciu tras] [ lnk-d2c-tutorial] samouczek pokazuje, jak używać zapytań routingu i niestandardowe punkty końcowe.
 
 [lnk-built-in]: iot-hub-devguide-messages-read-builtin.md
 [lnk-device-to-cloud]: iot-hub-devguide-messages-d2c.md

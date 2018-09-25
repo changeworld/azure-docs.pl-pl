@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: cynthn
-ms.openlocfilehash: 7297633b5a8954eb39e0a40bfd45b02d3838a734
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: 18d9a2dade271e61fa3db423da610a7f982aa47b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42056764"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949676"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Tworzenie zestawu skalowania maszyn wirtualnych, który używa strefy dostępności
 
@@ -65,7 +65,7 @@ Podczas tworzenia zestawu skalowania w jednej strefie, Ty określasz, która str
 Do korzystania ze stref dostępności, należy utworzyć zestaw skalowania w [obsługiwanym regionie platformy Azure](../availability-zones/az-overview.md#regions-that-support-availability-zones). Można utworzyć zestaw skalowania, który używa strefach dostępności przy użyciu jednego z następujących metod:
 
 - [Azure Portal](#use-the-azure-portal)
-- [Interfejs wiersza polecenia platformy Azure 2.0](#use-the-azure-cli-20)
+- [Interfejs wiersza polecenia platformy Azure](#use-the-azure-cli-20)
 - [Azure PowerShell](#use-azure-powershell)
 - [Szablony usługi Azure Resource Manager](#use-azure-resource-manager-templates)
 
@@ -77,7 +77,7 @@ Proces, aby utworzyć zestaw skalowania, który używa strefy dostępności jest
 
 Zestaw skalowania i obsługi zasobów, takich jak usługa Azure load balancer i publicznego adresu IP są tworzone w jednej strefie, które określisz.
 
-## <a name="use-the-azure-cli-20"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure 2.0
+## <a name="use-the-azure-cli"></a>Używanie interfejsu wiersza polecenia platformy Azure
 
 Proces, aby utworzyć zestaw skalowania, który używa strefy dostępności jest taki sam, zgodnie z opisem w [wprowadzenie artykułu](quick-create-cli.md). Aby korzystać ze stref dostępności, musisz utworzyć skalowania jest ustawiana w obsługiwanym regionie platformy Azure.
 

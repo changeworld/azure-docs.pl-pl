@@ -1,22 +1,22 @@
 ---
-title: Apache Hadoop Oozie przepływy klastry przyłączone do domeny usługi Azure HDInsight
-description: Użyj Oozie usługi Hadoop w HDInsight opartych na systemie Linux przyłączonych do domeny pakiet Enterprise Security. Dowiedz się, jak zdefiniować przepływ pracy programu Oozie i przesłać zadanie usługi Oozie.
+title: Przepływy Apache Oozie usługi Hadoop w klastrach usługi Azure HDInsight z pakietem Enterprise Security
+description: Używanie technologii Oozie z usługi Hadoop, w pakiecie zabezpieczeń opartych na systemie Linux Enterprise HDInsight. Dowiedz się, jak zdefiniować przepływ pracy programu Oozie i przesłać zadanie usługi Oozie.
 services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 06/26/2018
-ms.openlocfilehash: 69bf885ad5d6244997c7ce9cf61bdee9e05c1826
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 09/24/2018
+ms.openlocfilehash: 563a4c14d78b7edd228c998817f44c6b3f14efe7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43048978"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947502"
 ---
-# <a name="run-apache-oozie-in-domain-joined-hdinsight-hadoop-clusters"></a>Uruchamiaj klastry Apache Oozie w przyłączonym do domeny usługi HDInsight Hadoop
+# <a name="run-apache-oozie-in-hdinsight-hadoop-clusters-with-enterprise-security-package"></a>Uruchamiaj Apache Oozie w usłudze HDInsight Hadoop klastry z pakietem Enterprise Security
 Oozie jest systemem przepływu pracy i koordynacji, który zarządza zadaniami na platformie Hadoop. Oozie jest zintegrowany ze stosem platformy Hadoop i obsługuje następujące zadania:
 - Apache MapReduce
 - Apache Pig
@@ -26,12 +26,12 @@ Oozie jest systemem przepływu pracy i koordynacji, który zarządza zadaniami n
 Można również użyć programu Oozie do planowania zadań, które są specyficzne dla systemu, np. programów Java lub skryptów powłoki.
 
 ## <a name="prerequisite"></a>Wymagania wstępne
-- Klaster usługi Azure HDInsight Hadoop przyłączonych do domeny. Zobacz [Konfigurowanie przyłączonych do domeny klastrów HDInsight](./apache-domain-joined-configure-using-azure-adds.md).
+- Klaster usługi Azure HDInsight Hadoop przy użyciu pakietu zabezpieczeń przedsiębiorstwa (ESP). Zobacz [HDInsight konfigurowanie klastrów przy użyciu ESP](./apache-domain-joined-configure-using-azure-adds.md).
 
     > [!NOTE]
-    > Aby uzyskać szczegółowe instrukcje na temat korzystania z technologii Oozie na klastry przyłączone do bezdomenowe, zobacz [przepływy Użyj Hadoop Oozie opartych na systemie Linux usługi Azure HDInsight](../hdinsight-use-oozie-linux-mac.md).
+    > Aby uzyskać szczegółowe instrukcje na temat korzystania z technologii Oozie na klastrach-ESP, zobacz [przepływy Użyj Hadoop Oozie opartych na systemie Linux usługi Azure HDInsight](../hdinsight-use-oozie-linux-mac.md).
 
-## <a name="connect-to-a-domain-joined-cluster"></a>Nawiąż połączenie z klastrem przyłączonym do domeny
+## <a name="connect-to-an-esp-cluster"></a>Łączenie z klastrem ESP
 
 Aby uzyskać więcej informacji na Secure Shell (SSH), zobacz [nawiązywanie połączenia z HDInsight (Hadoop) przy użyciu protokołu SSH](../hdinsight-hadoop-linux-use-ssh-unix.md).
 
@@ -166,7 +166,7 @@ nano workflow.xml
  ```
 4. Zastąp `clustername` nazwą klastra. 
 
-5. Aby zapisać plik, wybierz klawisze Ctrl + X. Wprowadź `Y`. Następnie wybierz pozycję **Enter**.
+5. Aby zapisać plik, wybierz klawisze Ctrl + X. Wprowadź polecenie `Y`. Następnie wybierz pozycję **Enter**.
 
     Przepływ pracy jest podzielony na dwie części:
     *   **Sekcja poświadczeń.** W tej sekcji przyjmuje poświadczenia, które są używane do uwierzytelniania Oozie akcje:
@@ -262,7 +262,7 @@ Można utworzyć dwa skrypty Hive, Hive server 1 i Hive server 2, jak pokazano w
     ```
 
 ## <a name="submit-oozie-jobs"></a>Przesyłanie zadań programu Oozie
-Przesyłanie zadań Oozie dla przyłączonych do domeny klastrów jest podobne do przesyłania zadań programu Oozie w klastry przyłączone do bezdomenowe.
+Przesyłanie zadań programu Oozie w przypadku klastrów ESP jest podobne do przesyłania zadań programu Oozie w klastrach-ESP.
 
 Aby uzyskać więcej informacji, zobacz [Użyj Oozie z usługą Hadoop, aby zdefiniować i uruchomić przepływ pracy na opartą na systemie Linux usługi Azure HDInsight](../hdinsight-use-oozie-linux-mac.md).
 
@@ -311,7 +311,7 @@ Aby uzyskać więcej informacji, zobacz [Oozie instalacja i Konfiguracja](https:
 Dla składników, takich jak Hive server 1, w której Ranger wtyczki nie jest dostępna lub nie jest obsługiwany możliwe jest tylko gruboziarnistych autoryzacji systemu plików HDFS. Autoryzacja szczegółowych jest dostępna wyłącznie za pośrednictwem wtyczek platformy Ranger.
 
 ## <a name="get-the-oozie-web-ui"></a>Pobierz interfejs użytkownika sieci web programu Oozie
-Interfejs użytkownika sieci web programu Oozie zapewnia widok stanu zadań Oozie opartych na sieci web w klastrze. Aby uzyskać interfejs użytkownika sieci web, wykonaj następujące czynności w klastry przyłączone do domeny:
+Interfejs użytkownika sieci web programu Oozie zapewnia widok stanu zadań Oozie opartych na sieci web w klastrze. Aby uzyskać interfejs użytkownika sieci web, wykonaj następujące kroki w klastrach ESP:
 
 1. Dodaj [węzła brzegowego](../hdinsight-apps-use-edge-node.md) i włączyć [uwierzytelnianie SSH Kerberos](../hdinsight-hadoop-linux-use-ssh-unix.md).
 

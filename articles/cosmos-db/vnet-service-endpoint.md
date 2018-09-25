@@ -1,6 +1,6 @@
 ---
-title: Bezpieczny dostęp do konta bazy danych rozwiązania Cosmos Azure przy użyciu punktu końcowego usługi Azure Virtual Network | Dokumentacja firmy Microsoft
-description: W tym dokumencie opisano kroki wymagane do instalacji punkt końcowy usługi sieci wirtualnej dla bazy danych Azure rozwiązania Cosmos.
+title: Bezpieczny dostęp do konta usługi Azure Cosmos DB przy użyciu punktu końcowego usługi Azure Virtual Network | Dokumentacja firmy Microsoft
+description: W tym dokumencie opisano kroki wymagane do instalacji punktu końcowego usługi sieci wirtualnej dla usługi Azure Cosmos DB.
 services: cosmos-db
 author: kanshiG
 manager: kfile
@@ -9,104 +9,101 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/07/2018
 ms.author: govindk
-ms.openlocfilehash: e6b263c1eb9fe3b151f0a51b5da9a92b8ced4549
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: a4758e5597876112fa7a85850786491e22af8c83
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37109746"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47037144"
 ---
-# <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Bezpieczny dostęp do konta bazy danych rozwiązania Cosmos Azure przy użyciu punktu końcowego usługi Azure Virtual Network
+# <a name="secure-access-to-an-azure-cosmos-db-account-by-using-azure-virtual-network-service-endpoint"></a>Bezpieczny dostęp do konta usługi Azure Cosmos DB przy użyciu punktu końcowego usługi Azure Virtual Network
 
-Aby zezwolić na dostęp tylko z określonej podsieci sieci wirtualnej platformy Azure można skonfigurować konta CosmosDB Azure. Przez włączenie [punktu końcowego usługi](../virtual-network/virtual-network-service-endpoints-overview.md) dla CosmosDB Azure z sieci wirtualnej i jej podsieci, ruch jest zapewniona optymalnego i bezpiecznego trasy do bazy danych rozwiązania Cosmos Azure.  
+Konta usługi Azure cosmos DB można skonfigurować w taki sposób, aby umożliwić dostęp tylko z określonej podsieci sieci wirtualnej platformy Azure. Po włączeniu [punktu końcowego usługi](../virtual-network/virtual-network-service-endpoints-overview.md) dla usługi Azure CosmosDB z sieci wirtualnej i jej podsieci, ruch jest zapewniony optymalnego i bezpiecznego trasy do usługi Azure Cosmos DB.  
 
-Azure Cosmos DB to usługa globalnie dystrybuowanej, wielomodelowej bazy danych. Dane konta bazy danych rozwiązania Cosmos Azure można replikować do wielu regionach. Po skonfigurowaniu bazy danych Azure rozwiązania Cosmos z punktem końcowym usługi sieci wirtualnej każdej sieci wirtualnej zezwala na dostęp z adresów IP, który należy do podsieci specicifc. Na poniższej ilustracji przedstawiono ilustrację bazy danych rozwiązania Cosmos platformy Azure, która ma włączony punkt końcowy usługi sieci wirtualnej:
+Azure Cosmos DB to usługa globalnie dystrybuowanej, wielomodelowej bazy danych. Dane na koncie usługi Azure Cosmos DB można replikować do wielu regionów. Po skonfigurowaniu usługi Azure Cosmos DB z punktem końcowym usługi sieci wirtualnej w każdej sieci wirtualnej umożliwia dostęp z adresów IP, który należy do podsieci specicifc. Na poniższej ilustracji przedstawiono ilustrację usługi Azure Cosmos DB, która ma włączonego punktu końcowego usługi sieci wirtualnej:
 
-![Architektura punkt końcowy usługi sieci wirtualnej](./media/vnet-service-endpoint/vnet-service-endpoint-architecture.png)
+![Architektura punktu końcowego usługi sieci wirtualnej](./media/vnet-service-endpoint/vnet-service-endpoint-architecture.png)
 
-Po skonfigurowaniu konta bazy danych Azure rozwiązania Cosmos punkt końcowy usługi sieci wirtualnej, jest możliwy tylko z określonej podsieci, dostęp do wszystkich publicznych/Internetu jest usuwany. Aby dowiedzieć się w szczegółowych o punktów końcowych usługi, odwoływać się do platformy Azure [Omówienie punktów końcowych usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md) artykułu.
+Po skonfigurowaniu konta usługi Azure Cosmos DB z punktem końcowym usługi sieci wirtualnej są dostępne tylko z określonej podsieci, publiczne/internet dostęp zostanie usunięty. Dowiedz się na szczegółowe na temat punktów końcowych usługi, zapoznaj się na platformie Azure [Omówienie punktów końcowych usługi sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md) artykułu.
 
-> [!NOTE]
-> Obecnie można skonfigurować dla interfejsu API Azure rozwiązania Cosmos bazy danych SQL lub kont funkcji Mongo API punktów końcowych usługi sieci wirtualnej. Możliwość konfigurowania punktów końcowych usługi dla innych interfejsów API i suwerennych chmury, takich jak platformy Azure w Niemczech lub Azure dla instytucji rządowych będzie wkrótce dostępna. Jeśli masz istniejące zapory IP skonfigurowanych dla tego konta bazy danych Azure rozwiązania Cosmos Uwaga konfigurację zapory, Usuń zapory IP, a następnie skonfiguruj listy ACL punktu końcowego usługi. Po skonfigurowaniu punktu końcowego usługi można ponownie włączyć zapory IP, jeśli to konieczne.
-
-## <a name="configure-service-endpoint-by-using-azure-portal"></a>Konfigurowanie punktu końcowego usługi za pomocą portalu Azure
+## <a name="configure-service-endpoint-by-using-azure-portal"></a>Konfigurowanie punktu końcowego usługi za pomocą witryny Azure portal
 ### <a name="configure-service-endpoint-for-an-existing-azure-virtual-network-and-subnet"></a>Skonfiguruj punkt końcowy usługi dla istniejącej sieci wirtualnej platformy Azure i podsieci
 
-1. Z **wszystkie zasoby** bloku sieci wirtualnej można znaleźć chcesz skonfigurować punkt końcowy usługi dla bazy danych Azure rozwiązania Cosmos. Przejdź do **punkty końcowe usługi** bloku i upewnij się, że podsieci sieci wirtualnej została włączona dla punktu końcowego usługi "Azure.CosmosDB".  
+1. Z **wszystkie zasoby** bloku sieci wirtualnej, możesz znaleźć chcesz skonfigurować punkt końcowy usługi dla usługi Azure Cosmos DB. Przejdź do **punkty końcowe usługi** bloku i upewnij się, że podsieć sieci wirtualnej został włączony dla punktu końcowego usługi "Azure.CosmosDB".  
 
-   ![Potwierdź włączony punkt końcowy usługi](./media/vnet-service-endpoint/confirm-service-endpoint-enabled.png)
+   ![Upewnij się, włączonego punktu końcowego usługi](./media/vnet-service-endpoint/confirm-service-endpoint-enabled.png)
 
-2. Z **wszystkie zasoby** bloku Azure DB rozwiązania Cosmos konta można znaleźć chcesz zabezpieczyć.  
+2. Z **wszystkie zasoby** bloku konta usługi Azure Cosmos DB, możesz znaleźć chcesz zabezpieczyć.  
 
-3. Przed włączeniem punkt końcowy usługi sieci wirtualnej, skopiuj informacje o zaporze IP skojarzonych z Twoim kontem platformy Azure DB rozwiązania Cosmos do użytku w przyszłości. IP zapory można ponownie włączyć po skonfigurowaniu punktu końcowego usługi.  
+3. Przed włączeniem punkt końcowy usługi sieci wirtualnej, należy skopiować informacje zapory adresów IP skojarzonych z Twoim kontem usługi Azure Cosmos DB do użycia w przyszłości. Po skonfigurowaniu punktu końcowego usługi, można ponownie włączyć zapory adresów IP.  
 
-4. Wybierz **zapory i sieci wirtualne** z menu ustawień i wybierz pozycję Zezwalaj na dostęp z **wybrane sieci**.  
+4. Wybierz **zapory i sieci wirtualne** z poziomu menu ustawień i wybierz dostęp z **wybrane sieci**.  
 
-3. Aby udzielić dostępu do istniejącej sieci wirtualnej dla podsieci w sieci wirtualnej, zaznacz **Dodaj istniejącej sieci wirtualnej platformy Azure**.  
+3. Aby udzielić dostępu do istniejącej sieci wirtualnej w podsieci, w ramach sieci wirtualnej, wybierz **Dodaj istniejącą sieć wirtualną platformy Azure**.  
 
-4. Wybierz **subskrypcji** z której chcesz dodać sieci wirtualnej platformy Azure. Wybierz platformy Azure **sieci wirtualnych** i **podsieci** chcesz zapewnić dostęp do Twojego konta bazy danych Azure rozwiązania Cosmos. Następnie wybierz **włączyć** włączyć wybranych sieci z punktów końcowych usługi dla "Microsoft.AzureCosmosDB". Po zakończeniu wybierz **Dodaj**.  
+4. Wybierz **subskrypcji** z którego chcesz dodać sieci wirtualnej platformy Azure. Wybierz pozycję Azure **sieci wirtualne** i **podsieci** chcesz zapewnić dostęp do konta usługi Azure Cosmos DB. Następnie wybierz pozycję **Włącz** można włączyć wybranych sieci za pomocą punktów końcowych usługi dla "Microsoft.AzureCosmosDB". Po zakończeniu wybierz **Dodaj**.  
 
    ![Wybierz sieć wirtualną i podsieć](./media/vnet-service-endpoint/choose-subnet-and-vnet.png)
 
    > [!NOTE]
-   > Jeśli punkt końcowy usługi dla bazy danych Azure rozwiązania Cosmos wcześniej nie jest skonfigurowany dla wybranej sieci wirtualnych platformy Azure i podsieci, można skonfigurować w ramach tej operacji. Włączanie dostępu potrwa do 15 minut. Jest bardzo ważne, aby wyłączyć zapory IP po zauważyć w dół zawartość zapory ACL renabling je później. 
+   > Jeśli punktu końcowego usługi dla usługi Azure Cosmos DB wcześniej nie skonfigurowano dla wybranych sieci wirtualnych platformy Azure i podsieci, może zostać skonfigurowany jako część tej operacji. Włączanie dostępu potrwa do 15 minut. Jest to bardzo ważne wyłączyć zapory adresów IP po zanotowaną zawartość zapory listy ACL dla renabling je później. 
 
-   ![sieć wirtualna i podsieć został pomyślnie skonfigurowany](./media/vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
+   ![sieć wirtualną i podsieć został pomyślnie skonfigurowany](./media/vnet-service-endpoint/vnet-and-subnet-configured-successfully.png)
 
-Teraz konto bazy danych Azure rozwiązania Cosmos tylko będzie zezwalać na ruch z to wybrany podsieci. Jeśli wcześniej miała włączone IP zapory, należy ponownie włączyć za pomocą wcześniejszych informacji.
+Teraz Twoje konto usługi Azure Cosmos DB będzie zezwalać tylko na ruch z tego wybrana podsieć. Jeśli wcześniej było włączone zapory adresów IP, ponownie włącz je za pomocą wcześniejszych informacji.
 
 ### <a name="configure-service-endpoint-for-a-new-azure-virtual-network-and-subnet"></a>Skonfiguruj punkt końcowy usługi dla nowej sieci wirtualnej platformy Azure i podsieci
 
-1. Z **wszystkie zasoby** bloku Azure DB rozwiązania Cosmos konta można znaleźć chcesz zabezpieczyć.  
+1. Z **wszystkie zasoby** bloku konta usługi Azure Cosmos DB, możesz znaleźć chcesz zabezpieczyć.  
 
 > [!NOTE]
-> Jeśli masz istniejące zapory IP skonfigurowanych dla tego konta bazy danych rozwiązania Cosmos Azure należy pamiętać, konfigurację zapory, Usuń zapory IP, a następnie włącz punktu końcowego usługi. Po włączeniu punktu końcowego usługi bez disbling zapory ruchu z tego zakresu ip spowoduje utratę tożsamość wirtualnego adresu IP i zostanie usunięte z komunikatem o błędzie filtru IP. Tak, aby uniknąć tego błędu zawsze należy wyłączyć reguły zapory, skopiuj je, włączyć punkt końcowy usługi z podsieci i na koniec listy ACL podsieci z rozwiązania Cosmos bazy danych. Po skonfigurowaniu punktu końcowego usługi i Dodaj listę kontroli dostępu można ponownie włączyć zapory IP ponownie w razie potrzeby.
+> Jeśli masz istniejące zapory adresów IP, które są skonfigurowane dla konta usługi Azure Cosmos DB, należy pamiętać, konfigurację zapory, Usuń zapory adresów IP, a następnie włączyć punkt końcowy usługi. Po włączeniu punktu końcowego usługi bez disbling zapory, ruchu z tego zakresu adresów ip, utracisz tożsamości wirtualnego adresu IP i dlatego jest porzucany IP filtr komunikatu o błędzie. Tak, aby uniknąć tego błędu zawsze należy wyłączyć reguły zapory, skopiuj je, należy włączyć punkt końcowy usługi z podsieci, a na koniec listy ACL podsieci z usługi Cosmos DB. Po skonfigurowaniu punktu końcowego usługi i dodać listy ACL można ponownie włączyć zapory adresów IP ponownie w razie potrzeby.
 
-2. Przed włączeniem punkt końcowy usługi sieci wirtualnej, skopiuj informacje o zaporze IP skojarzonych z Twoim kontem platformy Azure DB rozwiązania Cosmos do użytku w przyszłości. IP zapory można ponownie włączyć po skonfigurowaniu punktu końcowego usługi.  
+2. Przed włączeniem punkt końcowy usługi sieci wirtualnej, należy skopiować informacje zapory adresów IP skojarzonych z Twoim kontem usługi Azure Cosmos DB do użycia w przyszłości. Po skonfigurowaniu punktu końcowego usługi, można ponownie włączyć zapory adresów IP.  
 
-3. Wybierz **zapory i sieci wirtualnych platformy Azure** z menu ustawień i wybierz pozycję Zezwalaj na dostęp z **wybrane sieci**.  
+3. Wybierz **zapory i sieci wirtualne platformy Azure** z poziomu menu ustawień i wybierz dostęp z **wybrane sieci**.  
 
-4. Aby udzielić dostępu do nowych Azure sieci wirtualnej, w sieci wirtualnej, wybierz **Dodaj nową sieć wirtualną**.  
+4. Aby udzielić dostępu do nowej sieci wirtualnej platformy Azure, w ramach sieci wirtualnej, wybierz **Dodaj nową sieć wirtualną**.  
 
-5. Podaj szczegóły wymagane do utworzenia nowej sieci wirtualnej, a następnie wybierz opcję Utwórz. Podsieć zostanie utworzona z punktem końcowym usługi dla "Microsoft.AzureCosmosDB" jest włączona.
+5. Podaj szczegóły wymagane do utworzenia nowej sieci wirtualnej, a następnie wybierz pozycję Utwórz. Podsieć zostanie utworzona z punktem końcowym usługi dla "Microsoft.AzureCosmosDB" włączone.
 
    ![Wybierz sieć wirtualną i podsieć dla nowej sieci wirtualnej](./media/vnet-service-endpoint/choose-subnet-and-vnet-new-vnet.png)
 
-## <a name="allow-access-from-azure-portal"></a>Zezwalaj na dostęp z portalu Azure
+## <a name="allow-access-from-azure-portal"></a>Zezwalaj na dostęp z witryny Azure portal
 
-Po włączeniu punktów końcowych usługi sieci wirtualnej platformy Azure dla konta bazy danych Azure DB rozwiązania Cosmos dostęp z portalu lub innych usług platformy Azure jest domyślnie wyłączona. Dostęp do bazy danych Azure rozwiązania Cosmos konta bazy danych z maszyn poza skonfigurowanym podsieci są zablokowane, łącznie z dostępem z portalu.
+Po włączeniu punktów końcowych usługi sieci wirtualnej platformy Azure dla Twojego konta bazy danych Azure Cosmos DB dostęp z portalu lub innych usług platformy Azure jest domyślnie wyłączona. Dostęp do Twojego konta bazy danych Azure Cosmos DB z maszyn spoza podsieci skonfigurowane są blokowane, łącznie z dostępem z portalu.
 
 ![Zezwalaj na dostęp z portalu](./media/vnet-service-endpoint/allow-access-from-portal.png)
 
-Jeśli konta bazy danych Azure rozwiązania Cosmos jest używane przez inne usługi Azure, takich jak usługi Azure Search lub uzyskać dostępu do usługi analiza strumienia lub usługi Power BI, zezwolisz na dostęp przez sprawdzenie **zezwolić na dostęp do usług Azure**.
+Jeśli konto usługi Azure Cosmos DB jest używany przez inne usługi platformy Azure, takich jak usługa Azure Search lub dostępne z usługi Stream analytics lub Power BI, możesz zezwolić na dostęp, sprawdzając **zezwolić na dostęp do usług platformy Azure**.
 
-Aby upewnić się, masz dostęp do bazy danych Azure rozwiązania Cosmos metryki z portalu, należy włączyć **zezwolić na dostęp do portalu Azure** opcje. Aby dowiedzieć się więcej o tych opcjach, zobacz [połączenia z portalu Azure](firewall-support.md#connections-from-the-azure-portal) i [połączeń z usług Azure PaaS](firewall-support.md#connections-from-global-azure-datacenters-or-azure-paas-services) sekcje. Po wybraniu dostępu, wybierz **zapisać** Aby zapisać ustawienia.
+Aby upewnić się, masz dostęp do metryk usługi Azure Cosmos DB z portalu, musisz włączyć **zezwolić na dostęp do witryny Azure portal** opcje. Aby dowiedzieć się więcej o tych opcjach, zobacz [połączenia z witryny Azure portal](firewall-support.md#connections-from-the-azure-portal) i [połączeń z usług PaaS platformy Azure](firewall-support.md#connections-from-global-azure-datacenters-or-azure-paas-services) sekcje. Po wybraniu dostępu, wybierz **Zapisz** Aby zapisać ustawienia.
 
-## <a name="remove-a-virtual-network-or-subnet"></a>Usuwanie podsieci lub sieci wirtualnej 
+## <a name="remove-a-virtual-network-or-subnet"></a>Usuwanie sieci wirtualnej lub podsieci 
 
-1. Z **wszystkie zasoby** bloku, Znajdź Azure DB rozwiązania Cosmos konto, dla którego jest przypisane punktów końcowych usługi.  
+1. Z **wszystkie zasoby** bloku, konto Znajdź usługa Azure Cosmos DB, dla którego jest przypisane punkty końcowe usługi.  
 
-2. Wybierz **zapory i sieci wirtualne** z menu ustawień.  
+2. Wybierz **zapory i sieci wirtualne** z poziomu menu ustawień.  
 
-3. Aby usunąć reguły podsieci lub sieci wirtualnej, wybierz pozycję "..." obok sieci wirtualnej lub podsieci i wybierz **Usuń**.
+3. Aby usunąć sieci wirtualnej lub podsieci reguły, wybierz pozycję "..." obok sieci wirtualnej lub podsieci i wybierz **Usuń**.
 
-   ![Usuń sieć wirtualną](./media/vnet-service-endpoint/remove-a-vnet.png)
+   ![Usuwanie sieci wirtualnej](./media/vnet-service-endpoint/remove-a-vnet.png)
 
-4.  Kliknij przycisk **zapisać** Aby zastosować zmiany.
+4.  Kliknij przycisk **Zapisz** Aby zastosować zmiany.
 
 ## <a name="configure-service-endpoint-by-using-azure-powershell"></a>Konfigurowanie punktu końcowego usługi za pomocą programu Azure PowerShell 
 
-Aby skonfigurować punkt końcowy usługi do konta bazy danych Azure rozwiązania Cosmos przy użyciu programu Azure PowerShell, wykonaj następujące kroki:  
+Aby skonfigurować punkt końcowy usługi konta usługi Azure Cosmos DB przy użyciu programu Azure PowerShell, wykonaj następujące kroki:  
 
-1. Zainstaluj najnowszą [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) i [logowania](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  Upewnij się, należy pamiętać, ustawienia zapory IP i całkowicie usunąć zapory IP przed włączeniem punkt końcowy usługi dla konta.
+1. Zainstaluj najnowszą wersję [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps) i [logowania](https://docs.microsoft.com/powershell/azure/authenticate-azureps).  Upewnij się, należy pamiętać, ustawienia zapory adresów IP i całkowicie usunąć zapory adresów IP przed włączeniem punkt końcowy usługi dla konta.
 
 
 > [!NOTE]
-> Jeśli masz istniejące zapory IP skonfigurowanych dla tego konta bazy danych rozwiązania Cosmos Azure należy pamiętać, konfigurację zapory, Usuń zapory IP, a następnie włącz punktu końcowego usługi. Po włączeniu punktu końcowego usługi bez disbling zapory ruchu z tego zakresu ip spowoduje utratę tożsamość wirtualnego adresu IP i zostanie usunięte z komunikatem o błędzie filtru IP. Tak, aby uniknąć tego błędu zawsze należy wyłączyć reguły zapory, skopiuj je, włączyć punkt końcowy usługi z podsieci i na koniec listy ACL podsieci z rozwiązania Cosmos bazy danych. Po skonfigurowaniu punktu końcowego usługi i Dodaj listę kontroli dostępu można ponownie włączyć zapory IP ponownie w razie potrzeby.
+> Jeśli masz istniejące zapory adresów IP, które są skonfigurowane dla konta usługi Azure Cosmos DB, należy pamiętać, konfigurację zapory, Usuń zapory adresów IP, a następnie włączyć punkt końcowy usługi. Po włączeniu punktu końcowego usługi bez disbling zapory, ruchu z tego zakresu adresów ip, utracisz tożsamości wirtualnego adresu IP i dlatego jest porzucany IP filtr komunikatu o błędzie. Tak, aby uniknąć tego błędu zawsze należy wyłączyć reguły zapory, skopiuj je, należy włączyć punkt końcowy usługi z podsieci, a na koniec listy ACL podsieci z usługi Cosmos DB. Po skonfigurowaniu punktu końcowego usługi i dodać listy ACL można ponownie włączyć zapory adresów IP ponownie w razie potrzeby.
 
-2. Przed włączeniem punkt końcowy usługi sieci wirtualnej, skopiuj informacje o zaporze IP skojarzonych z Twoim kontem platformy Azure DB rozwiązania Cosmos do użytku w przyszłości. Zapora IP będzie ponownie włączyć po skonfigurowaniu punktu końcowego usługi.  
+2. Przed włączeniem punkt końcowy usługi sieci wirtualnej, należy skopiować informacje zapory adresów IP skojarzonych z Twoim kontem usługi Azure Cosmos DB do użycia w przyszłości. Spowoduje ponowne włączenie zapory adresów IP, po skonfigurowaniu punktu końcowego usługi.  
 
-3. Włącz punkt końcowy usługi na istniejącą podsieć sieci wirtualnej.  
+3. Włączanie punktu końcowego usługi dla istniejącej podsieci sieci wirtualnej.  
 
    ```powershell
    $rgname= "<Resource group name>"
@@ -122,14 +119,14 @@ Aby skonfigurować punkt końcowy usługi do konta bazy danych Azure rozwiązani
     -ServiceEndpoint "Microsoft.AzureCosmosDB" | Set-AzureRmVirtualNetwork
    ```
 
-4. Przygotowanie do włączenia listy kontroli dostępu na koncie CosmosDB upewniając się, że sieć wirtualna i podsieć mają włączone dla bazy danych Azure rozwiązania Cosmos punktu końcowego usługi.
+4. Przygotuj się do włączenia listy kontroli dostępu na koncie usługi CosmosDB, upewniając się, że sieć wirtualną i podsieć ma usługi włączonego punktu końcowego usługi Azure Cosmos DB.
 
    ```powershell
    $vnProp = Get-AzureRmVirtualNetwork `
      -Name $vnName  -ResourceGroupName $rgName
    ```
 
-5. Pobierz właściwości konta bazy danych Azure rozwiązania Cosmos, uruchamiając następujące polecenie cmdlet:  
+5. Pobierz właściwości konta usługi Azure Cosmos DB, uruchamiając następujące polecenie cmdlet:  
 
    ```powershell
    $apiVersion = "2015-04-08"
@@ -141,7 +138,7 @@ Aby skonfigurować punkt końcowy usługi do konta bazy danych Azure rozwiązani
      -Name $acctName
    ```
 
-6. Inicjowanie zmiennych do użycia w przyszłości. Skonfigurować wszystkie zmienne z istniejącej definicji konta, jeśli masz wiele lokalizacji, należy dodać je jako część tablicy. W tym kroku należy również skonfigurować punkt końcowy usługi sieci wirtualnej przez ustawienie zmiennej "accountVNETFilterEnabled" na wartość "True". Ta wartość jest później przypisane do parametru "isVirtualNetworkFilterEnabled".  
+6. Inicjowanie zmiennych do użycia w przyszłości. Skonfigurować wszystkie zmienne z istniejącej definicji konto, jeśli masz wiele lokalizacji, należy dodać je jako część tablicy. W tym kroku skonfigurujesz również punkt końcowy usługi sieci wirtualnej przez ustawienie zmiennej "accountVNETFilterEnabled" na "True". Ta wartość jest później przypisane do parametru "isVirtualNetworkFilterEnabled".  
 
    ```powershell
    $locations = @(@{})
@@ -167,7 +164,7 @@ Aby skonfigurować punkt końcowy usługi do konta bazy danych Azure rozwiązani
    $databaseAccountOfferType = $cosmosDBConfiguration.Properties.databaseAccountOfferType
    ```
 
-7. Aktualizowanie właściwości konta bazy danych rozwiązania Cosmos Azure przy użyciu nowej konfiguracji, uruchamiając następujące polecenia cmdlet: 
+7. Aktualizowanie właściwości konta usługi Azure Cosmos DB przy użyciu nowej konfiguracji, uruchamiając następujące polecenia cmdlet: 
 
    ```powershell
    $cosmosDBProperties['databaseAccountOfferType'] = $databaseAccountOfferType
@@ -183,7 +180,7 @@ Aby skonfigurować punkt końcowy usługi do konta bazy danych Azure rozwiązani
      -Name $acctName -Properties $CosmosDBProperties
    ```
 
-8. Uruchom następujące polecenie, aby sprawdzić, czy Twoje konto bazy danych Azure rozwiązania Cosmos jest zaktualizowane z punktem końcowym usługi sieci wirtualnej, skonfigurowanym w poprzednim kroku:
+8. Uruchom następujące polecenie, aby zweryfikować, że konto usługi Azure Cosmos DB został zaktualizowany o punkt końcowy usługi sieci wirtualnej, który został skonfigurowany w poprzednim kroku:
 
    ```powershell
    $UpdatedcosmosDBConfiguration = Get-AzureRmResource `
@@ -195,88 +192,88 @@ Aby skonfigurować punkt końcowy usługi do konta bazy danych Azure rozwiązani
    $UpdatedcosmosDBConfiguration.Properties
    ```
 
-## <a name="add-virtual-network-service-endpoint-for-an-azure-cosmos-db-account-that-has-ip-firewall-enabled"></a>Dodaj punkt końcowy usługi sieci wirtualnej jest włączona Zapora IP konta bazy danych Azure rozwiązania Cosmos
+## <a name="add-virtual-network-service-endpoint-for-an-azure-cosmos-db-account-that-has-ip-firewall-enabled"></a>Dodaj punkt końcowy usługi sieci wirtualnej dla konta usługi Azure Cosmos DB, które ma zapory adresów IP włączone
 
-1. Należy najpierw wyłączyć IP zapory dostęp do konta bazy danych Azure rozwiązania Cosmos.  
+1. Najpierw wyłączyć IP zapory dostęp do konta usługi Azure Cosmos DB.  
 
-2. Włącz konto bazy danych Azure rozwiązania Cosmos punktu końcowego sieci wirtualnej przy użyciu jednej z metod opisanych w poprzednich sekcjach.  
+2. Włączanie punktu końcowego sieci wirtualnej do konta usługi Azure Cosmos DB przy użyciu jednej z metod opisanych w poprzednich sekcjach.  
 
-3. Ponownie włączyć dostęp zapory IP. 
+3. Ponownie włączyć dostęp zapory adresów IP. 
 
 ## <a name="test-the-access"></a>Testowanie dostępu
 
-Aby sprawdzić, czy punkty końcowe usługi dla bazy danych Azure rozwiązania Cosmos są skonfigurowane zgodnie z oczekiwaniami, wykonaj następujące kroki:
+Aby sprawdzić, czy punkty końcowe usługi dla usługi Azure Cosmos DB są skonfigurowane zgodnie z oczekiwaniami, wykonaj następujące kroki:
 
-* Skonfigurować dwie podsieci w sieci wirtualnej frontonu i wewnętrznej bazy danych, należy włączyć punkt końcowy usługi DB rozwiązania Cosmos podsieci wewnętrznej bazy danych.  
+* Skonfigurować dwie podsieci w sieci wirtualnej frontonu i zaplecza, należy włączyć punkt końcowy usługi Cosmos DB podsieci wewnętrznej bazy danych.  
 
-* Włączenie dostępu w ramach konta bazy danych rozwiązania Cosmos podsieci wewnętrznej bazy danych.  
+* Włącz dostęp w ramach konta usługi Cosmos DB podsieci wewnętrznej bazy danych.  
 
-* Utwórz dwie maszyny wirtualne-do-jednego w podsieci wewnętrznej bazy danych i drugą w podsieci frontonu.  
+* Utwórz dwie maszyny wirtualne — w podsieci wewnętrznej bazy danych, a drugi w podsieci frontonu.  
 
-* Spróbuj dostęp do konta bazy danych Azure rozwiązania Cosmos z obu maszyn wirtualnych. Można się połączyć z maszyną wirtualną utworzoną w podsieci wewnętrznej bazy danych, ale nie z utworzonym w podsieci frontonu. Żądanie zostanie błąd 404 się podczas próby połączenia z podsieci frontonu, który potwierdza, że dostęp do bazy danych Azure rozwiązania Cosmos jest zabezpieczone przy użyciu punkt końcowy usługi sieci wirtualnej. Maszyny w podsieci wewnętrznej bazy danych będzie funkcjonować prawidłowo.
+* Wypróbuj, uzyskiwanie dostępu do konta usługi Azure Cosmos DB z obu maszyn wirtualnych. Można nawiązać połączenie z maszyny wirtualnej utworzonej w podsieci wewnętrznej bazy danych, ale nie z utworzonym w podsieci frontonu. Żądanie zgłosi błąd z 404, podczas nawiązywania połączenia z podsieci frontonu, która potwierdza, że dostęp do usługi Azure Cosmos DB jest zabezpieczony przy użyciu punktu końcowego usługi sieci wirtualnej. Maszyny w podsieci wewnętrznej bazy danych będzie działać prawidłowo.
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-### <a name="what-happens-when-you-access-an-azure-cosmos-db-account-that-has-virtual-network-access-control-list-acl-enabled"></a>Co się stanie, gdy uzyskujesz dostęp do konta z bazy danych Azure rozwiązania Cosmos sieć wirtualną, której włączono listy kontroli dostępu (ACL)?  
+### <a name="what-happens-when-you-access-an-azure-cosmos-db-account-that-has-virtual-network-access-control-list-acl-enabled"></a>Co się stanie, gdy uzyskujesz dostęp do konta Azure Cosmos DB, która ma sieci wirtualnej, listy kontroli dostępu (ACL) jest włączona?  
 
-HTTP 404 zwracany jest błąd.  
+HTTP 404 zostanie zwrócony błąd.  
 
-### <a name="are-subnets-of-a-virtual-network-created-in-different-regions-allowed-to-access-an-azure-cosmos-db-account-in-another-region-for-example-if-azure-cosmos-db-account-is-in-west-us-or-east-us-and-virtual-networks-are-in-multiple-regions-can-the-virtual-network-access-azure-cosmos-db"></a>Czy podsieci sieci wirtualnej utworzonej w różnych regionach, mogą uzyskiwać dostęp do konta bazy danych Azure rozwiązania Cosmos w innym regionie? Na przykład jeśli konto bazy danych Azure rozwiązania Cosmos zachodnie stany USA, wschodnie stany USA a sieci wirtualnej są w wielu regionach, można sieci wirtualnej dostęp do bazy danych rozwiązania Cosmos Azure?  
+### <a name="are-subnets-of-a-virtual-network-created-in-different-regions-allowed-to-access-an-azure-cosmos-db-account-in-another-region-for-example-if-azure-cosmos-db-account-is-in-west-us-or-east-us-and-virtual-networks-are-in-multiple-regions-can-the-virtual-network-access-azure-cosmos-db"></a>Czy na podsieci sieci wirtualnej utworzonej w różnych regionach, które mogą uzyskać dostęp do konta usługi Azure Cosmos DB w innym regionie? Na przykład jeśli konto usługi Azure Cosmos DB znajduje się w regionie zachodnie stany USA lub wschodnie stany USA i sieci wirtualnej są w wielu regionach, sieć wirtualną dostęp usługi Azure Cosmos DB?  
 
-Tak, sieci wirtualne utworzone w różnych regionach dostęp można uzyskać nową funkcję. 
+Tak, sieciami wirtualnymi utworzonymi w różnych regionach jest dostępna po nowe możliwości. 
 
-### <a name="can-an-azure-cosmos-db-account-have-both-virtual-network-service-endpoint-and-a-firewall"></a>Konto bazy danych Azure rozwiązania Cosmos mają zarówno punkt końcowy usługi sieci wirtualnej i zapory?  
+### <a name="can-an-azure-cosmos-db-account-have-both-virtual-network-service-endpoint-and-a-firewall"></a>Konto usługi Azure Cosmos DB możliwy punkt końcowy usługi sieci wirtualnej i zapory?  
 
-Tak, punkt końcowy usługi sieci wirtualnej i zapory mogą współistnieć. Ogólnie rzecz biorąc upewnij się, że dostęp do portalu jest zawsze włączona przed skonfigurowaniem punktu końcowego sieci wirtualnej do umożliwiają wyświetlanie metryki skojarzone z kontenera.
+Tak, usługa sieci wirtualnych punktu końcowego i zapory mogą współistnieć. Ogólnie rzecz biorąc należy zagwarantować, że dostęp do portalu jest zawsze włączona przed skonfigurowaniem punktu końcowego usługi sieci wirtualnej umożliwia wyświetlanie metryk skojarzonych z danym kontenerem.
 
-### <a name="can-i-allow-access-to-other-azure-services-from-a-given-azure-region-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>I "umożliwiają dostęp do innych usług platformy Azure w danym regionie Azure" podczas dostępu do punktu końcowego usługi jest włączona dla bazy danych rozwiązania Cosmos Azure?  
+### <a name="can-i-allow-access-to-other-azure-services-from-a-given-azure-region-when-service-endpoint-access-is-enabled-for-azure-cosmos-db"></a>Można I "Zezwalaj na dostęp do innych usług platformy Azure w danym regionie platformy Azure" po włączeniu dostępu do punktu końcowego usługi dla usługi Azure Cosmos DB?  
 
-Jest to wymagane, tylko kiedy zechcesz, konto bazy danych Azure rozwiązania Cosmos być dostępne dla innych Azure pierwszej strony usług takich jak fabryki danych Azure, Azure Search lub dowolnej usługi, które zostało wdrożone w podany region platformy Azure.
+Jest to wymagane tylko, aby Twoje konto usługi Azure Cosmos DB można uzyskać dostęp przez inne platformy Azure do pierwszej strony usług takich jak usługi Azure Data factory, usługa Azure Search lub dowolnej usługi, która jest wdrażana w danym regionie platformy Azure.
 
-### <a name="how-many-virtual-network-service-endpoints-are-allowed-for-azure-cosmos-db"></a>Jak wiele punktów końcowych usługi sieci wirtualnej są dozwolone w przypadku bazy danych rozwiązania Cosmos Azure?  
+### <a name="how-many-virtual-network-service-endpoints-are-allowed-for-azure-cosmos-db"></a>Ile punktów końcowych usługi sieci wirtualnej są dozwolone w przypadku usługi Azure Cosmos DB?  
 
-64 punktów końcowych usługi sieci wirtualnej są dozwolone dla konta bazy danych Azure rozwiązania Cosmos.
+64 punkty końcowe usługi sieci wirtualnej są dozwolone dla konta usługi Azure Cosmos DB.
 
-### <a name="what-is-the-relationship-between-service-endpoint-and-network-security-group-nsg-rules"></a>Co to jest relacja między reguły punktu końcowego usługi i grupy zabezpieczeń sieci (NSG)?  
+### <a name="what-is-the-relationship-between-service-endpoint-and-network-security-group-nsg-rules"></a>Jaki jest związek między regułami punktem końcowym usługi oraz grupy zabezpieczeń sieci (NSG)?  
 
-Reguły NSG w usłudze Azure DB rozwiązania Cosmos pozwalają ograniczyć dostęp do określonego zakresu adresów IP DB rozwiązania Cosmos platformy Azure. Jeśli chcesz zezwolić na dostęp do wystąpienia bazy danych Azure rozwiązania Cosmos, który znajduje się w określonej [region](https://azure.microsoft.com/global-infrastructure/regions/), można określić region w następującym formacie: 
+Reguły sieciowej grupy zabezpieczeń w usłudze Azure Cosmos DB pozwalają ograniczyć dostęp do określonego zakresu adresów IP programu usługi Azure Cosmos DB. Jeśli chcesz zezwolić na dostęp do wystąpienia usługi Azure Cosmos DB, który znajduje się w konkretnym [region](https://azure.microsoft.com/global-infrastructure/regions/), możesz określić region, w następującym formacie: 
 
     AzureCosmosDB.<region name>
 
-Aby dowiedzieć się więcej na temat NSG tagów, zobacz [tagi usługi sieci wirtualnej](../virtual-network/security-overview.md#service-tags) artykułu. 
+Aby dowiedzieć się więcej na temat sieciowych grup zabezpieczeń tagów zobacz [tagi usługi sieci wirtualnej](../virtual-network/security-overview.md#service-tags) artykułu. 
   
-### <a name="what-is-relationship-between-an-ip-firewall-and-virtual-network-service-endpoint-capability"></a>Co to jest relacja między IP zapory i możliwości punkt końcowy usługi sieci wirtualnej?  
+### <a name="what-is-relationship-between-an-ip-firewall-and-virtual-network-service-endpoint-capability"></a>Co to jest relacja między zapory adresów IP i możliwości punktu końcowego usługi sieci wirtualnej?  
 
-Te dwie funkcje uzupełniają do zapewnienia izolacji bazy danych Azure rozwiązania Cosmos zasoby i zabezpieczenia. Przy użyciu protokołu IP zapory zapewnia, że statyczne adresy IP dostęp do konta bazy danych Azure rozwiązania Cosmos.  
+Te dwie funkcje uzupełniają się wzajemnie w celu zapewnienia izolacji zasobów usługi Azure Cosmos DB oraz je zabezpieczyć. Przy użyciu protokołu IP zapory gwarantuje, że statyczne adresy IP mają dostęp do konta usługi Azure Cosmos DB.  
 
-### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gatewayvpn-or-express-route-gateway-access-azure-cosmos-db-account"></a>Adres IP urządzenia lokalnego, który jest połączony za pośrednictwem sieci wirtualnej Azure gateway(VPN) lub Express route bramy masz dostęp do konta platformy Azure DB rozwiązania Cosmos?  
+### <a name="can-an-on-premises-devices-ip-address-that-is-connected-through-azure-virtual-network-gatewayvpn-or-express-route-gateway-access-azure-cosmos-db-account"></a>Adres IP lokalnego urządzenia, która jest połączona za pomocą usługi Azure Virtual Network gateway(VPN) lub brama usługi Express route dostęp do usługi Azure Cosmos DB konta?  
 
-Adres IP lub zakres adresów IP lokalnego urządzenia powinien można dodać do listy statyczne adresy IP w celu uzyskania dostępu do konta bazy danych Azure rozwiązania Cosmos.  
+Adres IP lub zakresu adresów IP lokalnego urządzenia należy dodać do listy statyczne adresy IP, aby uzyskać dostęp do konta usługi Azure Cosmos DB.  
 
-### <a name="what-happens-if-you-delete-a-virtual-network-that-has-service-endpoint-setup-for-azure-cosmos-db"></a>Co się stanie, jeśli usuniesz siecią wirtualną, która ma ustawienia punktu końcowego usługi dla bazy danych rozwiązania Cosmos Azure?  
+### <a name="what-happens-if-you-delete-a-virtual-network-that-has-service-endpoint-setup-for-azure-cosmos-db"></a>Co się stanie, jeśli usuniesz sieć wirtualna, zawierający ustawienia punktu końcowego usługi dla usługi Azure Cosmos DB?  
 
-Usunięcie sieci wirtualnej informacje listy ACL skojarzone z bazy danych Azure rozwiązania Cosmos jest usuwany, a usuwa interakcji między siecią wirtualną i konto bazy danych Azure rozwiązania Cosmos. 
+Podczas usuwania sieci wirtualnej informacje listy ACL skojarzonych z czy Azure Cosmos DB zostanie usunięty, i usuwa interakcji między siecią wirtualną, a konto usługi Azure Cosmos DB. 
 
-### <a name="what-happens-if-an-azure-cosmos-db-account-that-has-virtual-network-service-endpoint-enabled-is-deleted"></a>Co się stanie w przypadku bazy danych Azure rozwiązania Cosmos konta, które ma włączone punkt końcowy usługi sieci wirtualnej jest usuwany?
+### <a name="what-happens-if-an-azure-cosmos-db-account-that-has-virtual-network-service-endpoint-enabled-is-deleted"></a>Co się stanie, jeśli konto usługi Azure Cosmos DB, która ma włączonego punktu końcowego usługi sieci wirtualnej zostanie usunięty?
 
-Metadane skojarzone z określonego konta bazy danych Azure rozwiązania Cosmos jest usuwany z podsieci. I jest odpowiedzialny za użytkownika końcowego można usunąć podsieci i sieci wirtualne używane.
+Metadane skojarzone z określonego konta usługi Azure Cosmos DB jest usuwany z podsieci. I odpowiada za użytkownika końcowego można usunąć podsieci i sieci wirtualnej używane.
 
-### <a name="can-i-use-a-peered-virtual-network-to-create-service-endpoint-for-azure-cosmos-db"></a>Aby utworzyć punkt końcowy usługi dla bazy danych rozwiązania Cosmos Azure można używać peered sieci wirtualnej?  
+### <a name="can-i-use-a-peered-virtual-network-to-create-service-endpoint-for-azure-cosmos-db"></a>Aby utworzyć punkt końcowy usługi dla usługi Azure Cosmos DB mogą używać wirtualnej sieci równorzędnej?  
 
-Nie tylko bezpośredniego sieci wirtualnej i ich podsieci można utworzyć punktami końcowymi usług Azure DB rozwiązania Cosmos.
+Nie tylko bezpośredniego sieci wirtualnej i ich podsieci można utworzyć punktów końcowych usługi Azure Cosmos DB.
 
-### <a name="what-happens-to-the-source-ip-address-of-resource-like-virtual-machine-in-the-subnet-that-has-azure-cosmos-db-service-endpoint-enabled"></a>Co się dzieje źródłowy adres IP zasobów, takich jak maszyny wirtualnej w podsieci, która ma włączony punkt końcowy usługi bazy danych rozwiązania Cosmos Azure?
+### <a name="what-happens-to-the-source-ip-address-of-resource-like-virtual-machine-in-the-subnet-that-has-azure-cosmos-db-service-endpoint-enabled"></a>Co stanie się źródłowy adres IP zasobu, takich jak maszyny wirtualne w podsieci, która ma włączonego punktu końcowego usługi Azure Cosmos DB?
 
-Po włączeniu punktów końcowych usługi sieci wirtualnej źródłowych adresów IP zasobów w podsieci sieci wirtualnej zostanie przełączona z używania publicznych adresów IPV4 do prywatnych adresów sieci wirtualnej platformy Azure dla ruchu do bazy danych Azure rozwiązania Cosmos.
+Po włączeniu punktów końcowych usługi sieci wirtualnej, źródłowe adresy IP zasobów w podsieci sieci wirtualnej będzie przełączają się z używania publicznych adresów IPV4 na użycie prywatnych adresów sieci wirtualnej platformy Azure dla ruchu do usługi Azure Cosmos DB.
 
-### <a name="does-azure-cosmos-db-reside-in-the-azure-virtual-network--provided-by-the-customer"></a>Bazy danych rozwiązania Cosmos Azure znajdują się w sieci wirtualnej platformy Azure, podana przez klienta?  
+### <a name="does-azure-cosmos-db-reside-in-the-azure-virtual-network--provided-by-the-customer"></a>Usługi Azure Cosmos DB znajdują się w sieci wirtualnej platformy Azure, udostępniane przez klienta?  
 
-Azure DB rozwiązania Cosmos jest usługę wielodostępną z publicznym adresem IP. Jeśli ograniczysz dostęp do podsieci sieci wirtualnej platformy Azure przy użyciu funkcji punktu końcowego usługi Dostęp jest ograniczony dla Twojego konta bazy danych rozwiązania Cosmos Azure za pośrednictwem danej sieci wirtualnej platformy Azure i jej podsieci.  Konto platformy Azure DB rozwiązania Cosmos nie znajduje się w tej sieci wirtualnej platformy Azure. 
+Usługa Azure Cosmos DB to usługa dla wielu dzierżawców z publicznym adresem IP. Jeśli ograniczysz dostęp do podsieci sieci wirtualnej platformy Azure przy użyciu funkcji punktu końcowego usługi Dostęp jest ograniczony do konta usługi Azure Cosmos DB przy użyciu danej sieci wirtualnej platformy Azure i jej podsieci.  Konto usługi Azure Cosmos DB nie znajduje się w tej sieci wirtualnej platformy Azure. 
 
-### <a name="what-if-anything-will-be-logged-in-log-analyticsoms-if-it-is-enabled"></a>Co zrobić, jeśli niczego będą rejestrowane w dzienniku analiza/OMS. Jeśli jest włączone?  
+### <a name="what-if-anything-will-be-logged-in-log-analyticsoms-if-it-is-enabled"></a>Co zrobić, jeśli nic będą rejestrowane w Log Analytics/OMS. Jeśli jest włączone?  
 
-Azure DB rozwiązania Cosmos przeprowadzi wypychanie dzienniki z adresu IP (bez ostatni oktet) ze stanem 403 dla żądania zablokowana z powodu listy ACL.  
+Usługa Azure Cosmos DB będzie umożliwiać wypychanie powiadomień dzienników za pomocą adresu IP (bez ostatni oktet) ze stanem 403 żądanie zablokowane przez listy kontroli dostępu.  
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby skonfigurować zaporę bazy danych Azure rozwiązania Cosmos znajduje się w temacie [zapory Obsługa](firewall-support.md) artykułu.
+Konfigurowanie zapory dla usługi Azure Cosmos DB, zobacz [zapory pomocy technicznej](firewall-support.md) artykułu.
 

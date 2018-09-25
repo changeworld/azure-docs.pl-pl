@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/22/2018
-ms.openlocfilehash: e83d51a18c7ab5861699114e4622bda167dab41d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a90ec3102f3ce821193d58b6d14ca119f6d7e916
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042101"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959686"
 ---
 # <a name="use-interactive-query-with-hdinsight"></a>Używanie zapytania interakcyjnego z HDInsight
 Zapytania interakcyjnego (nazywane również funkcji LLAP programu Hive, lub [Niskie opóźnienie analitycznego przetwarzania](https://cwiki.apache.org/confluence/display/Hive/LLAP)) jest usługi Azure HDInsight [typ klastra](../hdinsight-hadoop-provision-linux-clusters.md#cluster-types). Zapytanie interakcyjne obsługuje buforowanie w pamięci, co sprawia, że zapytania programu Hive, szybsze i bardziej interaktywny.
@@ -24,7 +24,7 @@ Zapytania interakcyjnego (nazywane również funkcji LLAP programu Hive, lub [Ni
 Klaser zapytania interaktywnego różni się od klastra usługi Hadoop. Zawiera on tylko usługi Hive. 
 
 > [!NOTE]
-> Możesz uzyskać dostęp do usługi Hive, w to klastra zapytania interakcyjnego tylko przy użyciu widoku Hive narzędzia Ambari, z usługi Beeline i sterownika Microsoft Hive Open Database Connectivity (ODBC programu Hive). Nie masz dostępu do jego za pośrednictwem konsoli programu Hive, Templeton, narzędzie wiersza polecenia platformy Azure (Azure CLI) lub programu Azure PowerShell. 
+> Możesz uzyskać dostęp do usługi Hive, w to klastra zapytania interakcyjnego tylko przy użyciu widoku Hive narzędzia Ambari, z usługi Beeline i sterownika Microsoft Hive Open Database Connectivity (ODBC programu Hive). Nie masz dostępu do jego za pośrednictwem konsoli programu Hive, Templeton, klasyczny interfejs wiersza polecenia platformy Azure lub programu Azure PowerShell. 
 > 
 > 
 

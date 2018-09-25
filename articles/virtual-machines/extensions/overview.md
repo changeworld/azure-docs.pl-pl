@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 03/30/2018
 ms.author: roiyz
-ms.openlocfilehash: ec201f7f82aea97b9927b85a6b185fad51f6081d
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: c54bcc1239c2d8b8a88d5e30b06f8856b73b47ae
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412604"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960689"
 ---
 # <a name="azure-virtual-machine-extensions-and-features"></a>Rozszerzenia maszyny wirtualnej platformy Azure i funkcji
 Rozszerzenia maszyn wirtualnych (VM) to małych aplikacji, które zapewniają po wdrożeniu konfiguracji oraz zadania automatyzacji na maszynach wirtualnych platformy Azure, możesz użyć istniejących obrazów i następnie dostosuj je, jako część wdrożenia, uzyskiwanie działalność niestandardowe Tworzenie obrazu.
@@ -41,7 +41,7 @@ Rozszerzenia dołączone nowe wdrożenie maszyny Wirtualnej. Na przykład można
 Dostępnych rozszerzeń można wyświetlić w bloku maszyny Wirtualnej w portalu w obszarze rozszerzenia, jest to po prostu niewielkie, aby uzyskać pełną listę, użyj narzędzi interfejsu wiersza polecenia, zobacz [odnajdywania rozszerzeń maszyn wirtualnych dla systemu Linux](features-linux.md) i [ Odnajdywanie rozszerzeń maszyn wirtualnych dla Windows](features-windows.md).
 
 ## <a name="how-can-i-install-an-extension"></a>Jak zainstalować rozszerzenie?
-Rozszerzenia maszyn wirtualnych platformy Azure mogą być zarządzane przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0, programu Azure PowerShell, szablony usługi Azure Resource Manager i witryny Azure portal. Aby wypróbować rozszerzenia, możesz można przejdź do witryny Azure portal, wybierz opcję rozszerzenia niestandardowego skryptu, a następnie przekazać za pomocą polecenia / skrypt i uruchomić rozszerzenia.
+Rozszerzenia maszyn wirtualnych platformy Azure mogą być zarządzane przy użyciu wiersza polecenia platformy Azure, programu Azure PowerShell, szablony usługi Azure Resource Manager i witryny Azure portal. Aby wypróbować rozszerzenia, możesz można przejdź do witryny Azure portal, wybierz opcję rozszerzenia niestandardowego skryptu, a następnie przekazać za pomocą polecenia / skrypt i uruchomić rozszerzenia.
 
 Jeśli chcesz samo rozszerzenie, które zostały dodane w portalu przez szablon interfejsu wiersza polecenia lub usługi Resource Manager znajdują się inne rozszerzenie dokumentacji, takie jak [Windows niestandardowego rozszerzenia skryptu](custom-script-windows.md) i [Linux niestandardowego rozszerzenia skryptu](custom-script-linux.md).
 

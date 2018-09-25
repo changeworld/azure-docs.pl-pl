@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 4b584dfa49c42328a44fff0645dcdec2504abaa2
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.openlocfilehash: 78578197c5f764c8e197d3426506cb1eb13b838f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37904224"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956800"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Tworzenie, zmienianie lub usuwanie interfejsu sieciowego
 
@@ -35,7 +35,7 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
 - Jeśli nie masz jeszcze konta platformy Azure, należy zasubskrybować [konto bezpłatnej wersji próbnej](https://azure.microsoft.com/free).
 - Jeśli przy użyciu portalu, otwórz https://portal.azure.comi zaloguj się przy użyciu konta platformy Azure.
 - Jeśli za pomocą poleceń programu PowerShell w celu wykonania zadań w tym artykule, albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/powershell), lub korzystając z polecenia programu PowerShell na komputerze. Usługa Azure Cloud Shell to bezpłatna interaktywna powłoka, której możesz używać do wykonywania kroków opisanych w tym artykule. Udostępnia ona wstępnie zainstalowane i najczęściej używane narzędzia platformy Azure, które są skonfigurowane do użycia na koncie. Ten samouczek wymaga programu Azure PowerShell module w wersji 5.4.1 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
-- Jeśli za pomocą poleceń interfejsu wiersza polecenia platformy Azure (CLI) w celu wykonania zadań w tym artykule albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/bash), lub korzystając z polecenia interfejsu wiersza polecenia na komputerze. Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.28 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, trzeba będzie również uruchomić `az login` do utworzenia połączenia z platformą Azure.
+- Jeśli za pomocą poleceń interfejsu wiersza polecenia platformy Azure (CLI) w celu wykonania zadań w tym artykule albo Uruchom polecenia [usługi Azure Cloud Shell](https://shell.azure.com/bash), lub korzystając z polecenia interfejsu wiersza polecenia na komputerze. Ten samouczek wymaga interfejsu wiersza polecenia platformy Azure w wersji 2.0.28 lub nowszej. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest zainstalowana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Jeśli używasz interfejsu wiersza polecenia platformy Azure lokalnie, trzeba będzie również uruchomić `az login` do utworzenia połączenia z platformą Azure.
 
 Konta, zaloguj się do lub łączenie z platformą Azure za pomocą, muszą być przypisane do [Współautor sieci](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) roli lub [roli niestandardowej](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) przypisany odpowiednie działania, które są wymienione w [uprawnień ](#permissions).
 
@@ -164,7 +164,7 @@ Można zmienić podsieci, ale nie sieci wirtualnej, przypisana do karty sieciowe
 Możesz tylko dodawać do interfejsu sieciowego lub usuwania karty sieciowej grupy zabezpieczeń aplikacji przy użyciu portalu, jeśli interfejs sieciowy jest podłączony do maszyny wirtualnej. Użyj programu PowerShell lub interfejsu wiersza polecenia platformy Azure, aby dodać do interfejsu sieciowego lub usuwania karty sieciowej grupy zabezpieczeń aplikacji, czy interfejs sieciowy jest podłączony do maszyny wirtualnej, czy nie. Dowiedz się więcej o [grupy zabezpieczeń aplikacji](security-overview.md#application-security-groups) oraz sposób [Tworzenie grupy zabezpieczeń aplikacji](manage-network-security-group.md#create-an-application-security-group).
 
 1. W *Szukaj zasobów, usług i dokumentów* w górnej części portalu, zacznij pisać nazwę maszyny wirtualnej, która ma interfejs sieciowy, który chcesz dodać do lub usuwanie z grupy zabezpieczeń aplikacji. Gdy nazwa maszyny Wirtualnej pojawi się w wynikach wyszukiwania, wybierz ją.
-2. W obszarze **ustawienia**, wybierz opcję **sieć**.  Wybierz **. Konfigurowanie grup zabezpieczeń aplikacji**, wybierz grup zabezpieczeń aplikacji, które chcesz dodać interfejsu sieciowego lub usuń zaznaczenie grupy zabezpieczeń aplikacji, które chcesz usunąć interfejs sieciowy, a następnie wybierz **Zapisz**. Tylko te interfejsy sieciowe, które istnieją w tej samej sieci wirtualnej można dodać do tej samej grupy zabezpieczeń aplikacji. Grupy zabezpieczeń aplikacji muszą istnieć w tej samej lokalizacji co interfejs sieciowy.
+2. W obszarze **USTAWIENIA** wybierz pozycję **Sieć**.  Wybierz **. Konfigurowanie grup zabezpieczeń aplikacji**, wybierz grup zabezpieczeń aplikacji, które chcesz dodać interfejsu sieciowego lub usuń zaznaczenie grupy zabezpieczeń aplikacji, które chcesz usunąć interfejs sieciowy, a następnie wybierz **Zapisz**. Tylko te interfejsy sieciowe, które istnieją w tej samej sieci wirtualnej można dodać do tej samej grupy zabezpieczeń aplikacji. Grupy zabezpieczeń aplikacji muszą istnieć w tej samej lokalizacji co interfejs sieciowy.
 
 **Polecenia**
 

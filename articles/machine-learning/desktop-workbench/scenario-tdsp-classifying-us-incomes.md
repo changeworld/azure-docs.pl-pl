@@ -16,14 +16,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2017
-ms.openlocfilehash: edc3fc5e2a625a14bcb48b03f32cd99069a0ad53
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8533023a16cb350828127d0603e6add0876b37a8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42058271"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948853"
 ---
 # <a name="income-classification-with-team-data-science-process-tdsp-project"></a>Klasyfikacja dochodu z projektem zespołu Data Science naukowych
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 ## <a name="introduction"></a>Wprowadzenie
 
@@ -55,7 +60,7 @@ Zobacz [zespołu cykl życia naukowych (TDSP) do nauki o danych](https://github.
 1. Azure [subskrypcji](https://azure.microsoft.com). Możesz uzyskać [bezpłatnej subskrypcji](https://azure.microsoft.com/free/?v=17.16&WT.srch=1&WT.mc_id=AID559320_SEM_cZGgGOIg) można również wykonać w tym przykładzie.
 2. [Azure danych do analizy maszyny wirtualnej (DSVM) systemu Windows Server 2016](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-ads.windows-data-science-vm), (rozmiar maszyny Wirtualnej: [DS3_V2](https://docs.microsoft.com/azure/virtual-machines/windows/sizes)z 4 procesory wirtualne i 14 Gb pamięci RAM). Mimo że przetestowane na DSVM platformy Azure, prawdopodobnie działać na dowolnym komputerze z systemem Windows 10.
 3. Zapoznaj się z dokumentacją usługi Azure Machine Learning i jej powiązane usługi (poniżej podano linki).
-4. Upewnij się, że poprawnie zainstalowano usługi Azure Machine Learning, [przewodnika Szybki start dotyczącego instalacji](../service/quickstart-installation.md).
+4. Upewnij się, że poprawnie zainstalowano usługi Azure Machine Learning, [przewodnika Szybki start dotyczącego instalacji](quickstart-installation.md).
 
 Zestaw danych dla tego przykładu jest z repozytorium ML UCI [[łącze]](https://archive.ics.uci.edu/ml/datasets/adult). On jest pobierana z bazy danych spisu nam 1994 r. i zawiera informacje o około 50 000 użytkowników indywidualnych spisu i przychody. Jest to ze strukturą zestaw danych o wartości liczbowych, funkcjami podzielonych na kategorie i docelowej podzielonych na kategorie, składający się z dwóch kategorii dochodu ("> 50 tys" lub "< = 50 K"). 
 
@@ -65,7 +70,7 @@ Jeśli chcesz zapisać i wersji projektu i jego zawartość, musisz mieć repozy
 ### <a name="informational-about-azure-machine-learning"></a>Komunikat informacyjny: O usłudze Azure Machine Learning
 * [Często zadawane pytania — jak rozpocząć pracę](frequently-asked-questions.md)
 * [Omówienie](../service/overview-what-is-azure-ml.md)
-* [Instalacja](../service/quickstart-installation.md)
+* [Instalacja](quickstart-installation.md)
 * [Wykonanie](experimentation-service-configuration.md)
 * [Przy użyciu przetwarzania TDSP](https://aka.ms/how-to-use-tdsp-in-aml)
 * [Odczytywanie i zapisywanie plików](how-to-read-write-files.md)

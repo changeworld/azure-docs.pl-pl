@@ -6,25 +6,25 @@ author: rboucher
 ms.service: azure-monitor
 ms.devlang: dotnet
 ms.topic: reference
-ms.date: 06/20/2018
+ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: d9d61762a2e7956c95356cb4e884675e38deeb1b
-ms.sourcegitcommit: 727a0d5b3301fe20f20b7de698e5225633191b06
+ms.openlocfilehash: a1f6aae69580f2afe5aceabd70cfe8e6fd3151b8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39145387"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977948"
 ---
 # <a name="azure-diagnostics-13-and-later-configuration-schema"></a>Azure Diagnostyka 1.3 i nowsze schemat konfiguracji
 > [!NOTE]
 > Rozszerzenie diagnostyki platformy Azure to składnik używany do zbierania liczników wydajności i innych danych statystycznych od:
-> - Azure Virtual Machines 
+> - Azure Virtual Machines
 > - Zestawy skali maszyn wirtualnych
-> - Service Fabric 
-> - Cloud Services 
+> - Service Fabric
+> - Cloud Services
 > - Grupy zabezpieczeń sieci
-> 
+>
 > Ta strona ma zastosowanie tylko jeśli używasz jednej z tych usług.
 
 Ta strona jest prawidłowy dla wersji 1.3 i nowsze (zestaw Azure SDK 2.4 i nowszych). Aby pokazać, w jakiej wersji zostały dodane są ujęte w nowszych sekcji konfiguracji.  
@@ -53,7 +53,7 @@ Aby uzyskać więcej informacji o korzystaniu z usługi Azure Diagnostics, zobac
     <WadCfg>  
       <DiagnosticMonitorConfiguration overallQuotaInMB="10000">  
 
-        <PerformanceCounters scheduledTransferPeriod="PT1M">  
+        <PerformanceCounters scheduledTransferPeriod="PT1M", sinks="AzureMonitorSink">  
           <PerformanceCounterConfiguration counterSpecifier="\Processor(_Total)\% Processor Time" sampleRate="PT1M" unit="percent" />  
         </PerformanceCounters>  
 
@@ -105,13 +105,19 @@ Aby uzyskać więcej informacji o korzystaniu z usługi Azure Diagnostics, zobac
           <CrashDumpConfiguration processName="badapp.exe"/>  
         </CrashDumps>  
 
-        <DockerSources> <!-- Added in 1.9 --> 
+        <DockerSources> <!-- Added in 1.9 -->
           <Stats enabled="true" sampleRate="PT1M" scheduledTransferPeriod="PT1M" />
         </DockerSources>
 
       </DiagnosticMonitorConfiguration>  
 
       <SinksConfig>   <!-- Added in 1.5 -->  
+        <Sink name="AzureMonitorSink">
+            <AzureMonitor> <!-- Added in 1.11 -->
+                <resourceId>{insert resourceId}</ResourceId> <!-- Parameter only needed for classic VMs and Classic Cloud Services, exclude VMSS and Resource Manager VMs-->
+                <Region>{insert Azure region of resource}</Region> <!-- Parameter only needed for classic VMs and Classic Cloud Services, exclude VMSS and Resource Manager VMs -->
+            </AzureMonitor>
+        </Sink>
         <Sink name="ApplicationInsights">   
           <ApplicationInsights>{Insert InstrumentationKey}</ApplicationInsights>   
           <Channels>   
@@ -139,11 +145,18 @@ Aby uzyskać więcej informacji o korzystaniu z usługi Azure Diagnostics, zobac
   <PrivateConfig>  <!-- Added in 1.3 -->  
     <StorageAccount name="" key="" endpoint="" sasToken="{sas token}"  />  <!-- sasToken in Private config added in 1.8.1 -->  
     <EventHub Url="https://myeventhub-ns.servicebus.windows.net/diageventhub" SharedAccessKeyName="SendRule" SharedAccessKey="{base64 encoded key}" />
-   
+
+    <AzureMonitorAccount>
+        <ServicePrincipalMeta> <!-- Added in 1.11; only needed for classic VMs and Classic cloud services -->
+            <PrincipalId>{Insert service principal clientId}</PrincipalId>
+            <Secret>{Insert service principal client secret}</Secret>
+        </ServicePrincipalMeta>
+    </AzureMonitorAccount>
+
     <SecondaryStorageAccounts>
        <StorageAccount name="secondarydiagstorageaccount" key="{base64 encoded key}" endpoint="https://core.windows.net" sasToken="{sas token}" />
     </SecondaryStorageAccounts>
-   
+
     <SecondaryEventHubs>
        <EventHub Url="https://myeventhub-ns.servicebus.windows.net/secondarydiageventhub" SharedAccessKeyName="SendRule" SharedAccessKey="{base64 encoded key}" />
     </SecondaryEventHubs>
@@ -153,10 +166,14 @@ Aby uzyskać więcej informacji o korzystaniu z usługi Azure Diagnostics, zobac
 </DiagnosticsConfiguration>  
 
 ```  
+> [!NOTE]
+> Publiczne config definicji ujścia usługi Azure Monitor ma dwie właściwości, resourceId i region. Są to tylko wymagane dla klasycznych maszyn wirtualnych i klasycznych usług w chmurze. Te właściwości nie powinny być używane dla maszyn wirtualnych usługi Resource Manager lub zestawów skalowania maszyn wirtualnych.
+> Istnieje również dodatkowy element konfiguracji prywatnej ujścia usługi Azure Monitor, który przekazuje jednostki identyfikatora i klucza tajnego. Jest to tylko wymagane dla klasycznych maszyn wirtualnych i klasycznej usługi w chmurze. Dla maszyn wirtualnych usługi Resource Manager i zestawu skalowania maszyn wirtualnych usługi Azure Monitor definicji w elemencie konfiguracji prywatnej można wykluczyć.
+>
 
-Poprzednie plik konfiguracyjny XML w przeliczeniu na formacie JSON. 
+Poprzednie plik konfiguracyjny XML w przeliczeniu na formacie JSON.
 
-PublicConfig i PrivateConfig są rozdzielone, ponieważ w większości przypadków użycia formatu json, są przekazywane jako różne zmienne. Te przypadki obejmują szablony usługi Resource Manager, zestawu skalowania maszyn wirtualnych programu PowerShell i programu Visual Studio. 
+PublicConfig i PrivateConfig są rozdzielone, ponieważ w większości przypadków użycia formatu json, są przekazywane jako różne zmienne. Te przypadki obejmują szablony usługi Resource Manager, zestawu skalowania maszyn wirtualnych programu PowerShell i programu Visual Studio.
 
 ```json
 "PublicConfig" {
@@ -168,6 +185,7 @@ PublicConfig i PrivateConfig są rozdzielone, ponieważ w większości przypadk�
             },
             "PerformanceCounters": {
                 "scheduledTransferPeriod": "PT1M",
+                "sinks": "AzureMonitorSink",
                 "PerformanceCounterConfiguration": [
                     {
                         "counterSpecifier": "\\Processor(_Total)\\% Processor Time",
@@ -278,6 +296,14 @@ PublicConfig i PrivateConfig są rozdzielone, ponieważ w większości przypadk�
         "SinksConfig": {
             "Sink": [
                 {
+                    "name": "AzureMonitorSink",
+                    "AzureMonitor":
+                    {
+                        "ResourceId": "{insert resourceId if a classic VM or cloud service, else property not needed}",
+                        "Region": "{insert Azure region of resource if a classic VM or cloud service, else property not needed}"
+                    }
+                },
+                {
                     "name": "ApplicationInsights",
                     "ApplicationInsights": "{Insert InstrumentationKey}",
                     "Channels": {
@@ -324,6 +350,11 @@ PublicConfig i PrivateConfig są rozdzielone, ponieważ w większości przypadk�
 }
 ```
 
+> [!NOTE]
+> Publiczne config definicji ujścia usługi Azure Monitor ma dwie właściwości, resourceId i region. Są to tylko wymagane dla klasycznych maszyn wirtualnych i klasycznych usług w chmurze.
+> Te właściwości nie powinny być używane dla maszyn wirtualnych usługi Resource Manager lub zestawów skalowania maszyn wirtualnych.
+>
+
 ```json
 "PrivateConfig" {
     "storageAccountName": "diagstorageaccount",
@@ -334,6 +365,12 @@ PublicConfig i PrivateConfig są rozdzielone, ponieważ w większości przypadk�
         "Url": "https://myeventhub-ns.servicebus.windows.net/diageventhub",
         "SharedAccessKeyName": "SendRule",
         "SharedAccessKey": "{base64 encoded key}"
+    },
+    "AzureMonitorAccount": {
+        "ServicePrincipalMeta": {
+            "PrincipalId": "{Insert service principal client Id}",
+            "Secret": "{Insert service principal client secret}"
+        }
     },
     "SecondaryStorageAccounts": {
         "StorageAccount": [
@@ -357,6 +394,11 @@ PublicConfig i PrivateConfig są rozdzielone, ponieważ w większości przypadk�
 }
 
 ```
+
+> [!NOTE]
+> Istnieje dodatkowy element konfiguracji prywatnej ujścia usługi Azure Monitor, który przekazuje jednostki identyfikatora i klucza tajnego. Jest to tylko wymagane dla klasycznych maszyn wirtualnych i klasycznej usługi w chmurze. Dla maszyn wirtualnych usługi Resource Manager i zestawu skalowania maszyn wirtualnych usługi Azure Monitor definicji w elemencie konfiguracji prywatnej można wykluczyć.
+>
+
 
 ## <a name="reading-this-page"></a>Czytanie tej strony  
  Znaczniki po około znajdują się w kolejności przedstawionej w poprzednim przykładzie.  Jeśli nie widzisz pełny opis, których oczekujesz, wyszukaj strony elementu lub atrybutu.  
@@ -396,14 +438,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 ## <a name="wadcfg-element"></a>WadCFG Element  
  *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG*
- 
+
  Identyfikuje i konfiguruje dane telemetryczne, które mają być zbierane.  
 
 
-## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration Element 
+## <a name="diagnosticmonitorconfiguration-element"></a>DiagnosticMonitorConfiguration Element
  *Drzewa: DiagnosticMonitorConfiguration PublicConfig - WadCFG - głównego - DiagnosticsConfiguration-*
 
- Wymagane 
+ Wymagane
 
 |Atrybuty|Opis|  
 |----------------|-----------------|  
@@ -422,14 +464,14 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**EtwProviders**|Zobacz opis w innym miejscu na tej stronie.|  
 |**Metryki**|Zobacz opis w innym miejscu na tej stronie.|  
 |**PerformanceCounters**|Zobacz opis w innym miejscu na tej stronie.|  
-|**WindowsEventLog**|Zobacz opis w innym miejscu na tej stronie.| 
-|**DockerSources**|Zobacz opis w innym miejscu na tej stronie. | 
+|**WindowsEventLog**|Zobacz opis w innym miejscu na tej stronie.|
+|**DockerSources**|Zobacz opis w innym miejscu na tej stronie. |
 
 
 
 ## <a name="crashdumps-element"></a>Element zrzutów awaryjnych  
  *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - zrzutów awaryjnych*
- 
+
  Włączanie zbierania zrzutów awaryjnych.  
 
 |Atrybuty|Opis|  
@@ -442,7 +484,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |--------------------|-----------------|  
 |**CrashDumpConfiguration**|Wymagany. Definiuje wartości konfiguracji dla każdego procesu.<br /><br /> Następujący atrybut jest również wymagane:<br /><br /> **processName** — nazwa procesu ma diagnostyki Azure do zbierania zrzutu awaryjnego dla.|  
 
-## <a name="directories-element"></a>Element katalogów 
+## <a name="directories-element"></a>Element katalogów
  *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - katalogów*
 
  Umożliwia zbieranie zawartości katalogu, dzienniki żądania dostępu do usług IIS nie powiodło się i/lub dzienniki programu IIS.  
@@ -453,7 +495,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |--------------------|-----------------|  
 |**IISLogs**|W konfiguracji w tym ten element umożliwia zbieranie dzienników usług IIS:<br /><br /> **containerName** — nazwa kontenera obiektów blob na koncie usługi Azure Storage ma być używany do przechowywania dzienników usług IIS.|   
 |**FailedRequestLogs**|W konfiguracji w tym ten element umożliwia zbieranie dzienników dotyczących żądań zakończonych niepowodzeniem do witryny usług IIS lub aplikacji. Należy również włączyć śledzenie opcji w obszarze **systemu. Serwer sieci Web** w **Web.config**.|  
-|**Źródła danych**|Lista katalogów, do monitorowania.| 
+|**Źródła danych**|Lista katalogów, do monitorowania.|
 
 
 
@@ -541,14 +583,15 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 
 |Element podrzędny|Opis|  
 |-------------------|-----------------|  
-|**PerformanceCounterConfiguration**|Wymagane są następujące atrybuty:<br /><br /> - **counterSpecifier** — nazwę licznika wydajności. Na przykład `\Processor(_Total)\% Processor Time`. Aby uzyskać listę liczników wydajności na hoście, uruchom polecenie `typeperf`.<br /><br /> - **sampleRate** — częstotliwość próbkowania licznika.<br /><br /> Opcjonalny atrybut:<br /><br /> **Jednostka** — jednostki miary licznika.|  
+|**PerformanceCounterConfiguration**|Wymagane są następujące atrybuty:<br /><br /> - **counterSpecifier** — nazwę licznika wydajności. Na przykład `\Processor(_Total)\% Processor Time`. Aby uzyskać listę liczników wydajności na hoście, uruchom polecenie `typeperf`.<br /><br /> - **sampleRate** — częstotliwość próbkowania licznika.<br /><br /> Opcjonalny atrybut:<br /><br /> **Jednostka** — jednostki miary licznika.|
+|**Wychwytywanie** | Dodane w wersji 1.5. Opcjonalny. Wskazuje lokalizację obiektu sink, można również wysyłać dane diagnostyczne. Na przykład usługa Azure Monitor lub centrów zdarzeń.|    
 
 
 
 
 ## <a name="windowseventlog-element"></a>WindowsEventLog Element
  *Drzewo: Root - DiagnosticsConfiguration - PublicConfig - WadCFG - DiagnosticMonitorConfiguration - WindowsEventLog*
- 
+
  Umożliwia zbieranie dzienników zdarzeń systemu Windows.  
 
  Opcjonalnie **okres zaplanowanego transferu** atrybutu. Zobacz opis wcześniej.  
@@ -632,7 +675,7 @@ http://schemas.microsoft.com/ServiceHosting/2010/10/DiagnosticsConfiguration
 |**Nazwa**|**ciąg**|Unikatowa nazwa kanału do odwoływania się do|  
 
 
-## <a name="privateconfig-element"></a>PrivateConfig Element 
+## <a name="privateconfig-element"></a>PrivateConfig Element
  *Drzewa: PrivateConfig główny - DiagnosticsConfiguration-*
 
  Dodane w wersji 1.3.  

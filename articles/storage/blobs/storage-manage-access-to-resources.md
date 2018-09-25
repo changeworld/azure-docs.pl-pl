@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 04/26/2017
 ms.author: tamram
-ms.openlocfilehash: bf7dabc1c3765d86e7a0f87acaa6f06a68d3d530
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: e27be86a7a14a38c5083949a1a7255574d2d0dc6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782012"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956085"
 ---
 # <a name="manage-anonymous-read-access-to-containers-and-blobs"></a>Zarządzanie dostępem anonimowym w trybie odczytu do kontenerów i obiektów blob
 Można włączyć anonimowego, publiczny dostęp do odczytu do kontenera i jego obiektów blob w usłudze Azure Blob storage. Dzięki temu można przyznać dostęp tylko do odczytu do tych zasobów, bez udostępniania klucz konta, a także bez konieczności sygnatury dostępu współdzielonego (SAS).
@@ -32,7 +32,7 @@ Następujące służy do ustawiania uprawnień kontenera:
 
 * [Azure Portal](https://portal.azure.com)
 * [Azure PowerShell](../common/storage-powershell-guide-full.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
-* [Interfejs wiersza polecenia platformy Azure 2.0](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-and-manage-blobs)
+* [Interfejs wiersza polecenia platformy Azure](../common/storage-azure-cli.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json#create-and-manage-blobs)
 * Programowo używając jednej z bibliotek klienta usługi storage lub interfejsu API REST
 
 ### <a name="set-container-permissions-in-the-azure-portal"></a>Ustaw uprawnienia do kontenera w witrynie Azure portal

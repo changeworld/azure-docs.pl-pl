@@ -5,15 +5,15 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: article
-ms.date: 09/14/2018
+ms.date: 09/20/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: e9e47214ffed94f45a1a44a19234484f13ba452e
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 984185febf770ae10a021d129b0ef6c43da4d0f1
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632198"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032771"
 ---
 # <a name="use-an-azure-ad-identity-to-access-azure-storage-with-cli-or-powershell-preview"></a>Tożsamości usługi Azure AD umożliwia dostęp do usługi Azure Storage przy użyciu interfejsu wiersza polecenia lub programu PowerShell (wersja zapoznawcza)
 
@@ -56,35 +56,45 @@ Zmienna środowiskowa skojarzone z `--auth-mode` parametr `AZURE_STORAGE_AUTH_MO
 
 ## <a name="call-powershell-commands-with-an-azure-ad-identity"></a>Wywołania poleceń programu PowerShell przy użyciu tożsamości usługi Azure AD
 
+Program Azure PowerShell obsługuje logowanie się przy użyciu tożsamości usługi Azure AD przy użyciu jednego z następujących modułów w wersji zapoznawczej tylko: 
+
+- 4.4.0-Preview 
+- 4.4.1-Preview 
+
 Aby zalogować się przy użyciu tożsamości usługi Azure AD za pomocą programu Azure PowerShell:
 
-1. Upewnij się, że masz najnowszą wersję zainstalowanego modułu PowerShellGet. Uruchom następujące polecenie, aby zainstalować najnowszy:
+1. Odinstaluj wszystkie poprzednie instalacje programu Azure PowerShell:
+
+    - Usuń wszystkie poprzednie instalacje programu Azure PowerShell z Windows przy użyciu **aplikacje i funkcje** w obszarze **ustawienia**.
+    - Usuń wszystkie **Azure*** modułów z `%Program Files%\WindowsPowerShell\Modules`.
+
+1. Upewnij się, że masz najnowszą wersję zainstalowanego modułu PowerShellGet. Otwórz okno programu Windows PowerShell i uruchom następujące polecenie, aby zainstalować najnowszą wersję:
  
     ```powershell
     Install-Module PowerShellGet –Repository PSGallery –Force
     ```
+1. Zamknij i Otwórz okno programu PowerShell po zainstalowaniu modułu PowerShellGet. 
 
-2. Odinstaluj wszystkie poprzednie instalacje programu Azure PowerShell.
-3. Zainstaluj usługi AzureRM:
+1. Zainstaluj usługi AzureRM:
 
     ```powershell
     Install-Module AzureRM –Repository PSGallery –AllowClobber
     ```
 
-4. Instalowanie modułu (wersja zapoznawcza):
+1. Zainstaluj jeden z modułów (wersja zapoznawcza):
 
     ```powershell
-    Install-Module -Name Azure.Storage -AllowPrerelease –AllowClobber -RequiredVersion "4.4.1-preview" 
+    Install-Module Azure.Storage –Repository PSGallery -RequiredVersion 4.4.1-preview  –AllowPrerelease –AllowClobber –Force 
     ```
+1. Zamknij i Otwórz okno programu PowerShell.
+1. Wywołaj [poleceniem New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext) polecenia cmdlet, aby utworzyć kontekst i obejmują `-UseConnectedAccount` parametru. 
+1. Aby wywoływać polecenia cmdlet przy użyciu tożsamości usługi Azure AD, należy przekazać nowo utworzony kontekst do polecenia cmdlet.
 
-5. Wywołaj [poleceniem New-AzureStorageContext](https://docs.microsoft.com/powershell/module/azure.storage/new-azurestoragecontext) polecenia cmdlet, aby utworzyć kontekst i obejmują `-UseConnectedAccount` parametru. 
-6. Aby wywoływać polecenia cmdlet przy użyciu tożsamości usługi Azure AD, należy przekazać kontekst do polecenia cmdlet.
-
-Poniższy przykład przedstawia listę obiektów blob w kontenerze za pomocą programu Azure PowerShell za pomocą tożsamości usługi Azure AD: 
+Poniższy przykład przedstawia listę obiektów blob w kontenerze za pomocą programu Azure PowerShell za pomocą tożsamości usługi Azure AD. Koniecznie Zastąp symbol zastępczy nazwy konta i kontenera przy użyciu własnych wartości: 
 
 ```powershell
-$ctx = New-AzureStorageContext -StorageAccountName $storageAccountName -UseConnectedAccount 
-Get-AzureStorageBlob -Container $sample-container -Context $ctx 
+$ctx = New-AzureStorageContext -StorageAccountName storagesamples -UseConnectedAccount 
+Get-AzureStorageBlob -Container sample-container -Context $ctx 
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/21/2018
 ms.author: jasonh
-ms.openlocfilehash: 1569b5931a24048fa7a88c4a546bbf88547208d1
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: b9ac9c49e633906e47244eedcb18a4cda4a6228d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109620"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978957"
 ---
 # <a name="install-and-use-presto-on-hdinsight-hadoop-clusters"></a>Instalowanie i używanie Presto w klastrach usługi HDInsight Hadoop
 
@@ -61,7 +61,7 @@ Ta sekcja zawiera instrukcje dotyczące sposobu używania przykładowy skrypt, p
 4. Kontynuuj, inicjowania obsługi klastra zgodnie z opisem w [opartych na systemie Linux Provision HDInsight clusters](hdinsight-hadoop-create-linux-clusters-portal.md).
 
     > [!NOTE]
-    > Program Azure PowerShell, interfejsu wiersza polecenia platformy Azure, zestawu .NET SDK HDInsight lub szablonów usługi Azure Resource Manager można również zastosować akcji skryptu. Można również zastosować akcji skryptu na już działające klastry. Aby uzyskać więcej informacji, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptów](hdinsight-hadoop-customize-cluster-linux.md).
+    > Program Azure PowerShell, wiersza polecenia platformy Azure Classic, zestawu .NET SDK HDInsight lub szablonów usługi Azure Resource Manager można również zastosować akcji skryptu. Można również zastosować akcji skryptu na już działające klastry. Aby uzyskać więcej informacji, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptów](hdinsight-hadoop-customize-cluster-linux.md).
     > 
     > 
 

@@ -1,6 +1,6 @@
 ---
-title: Tworzenie środowiska systemu Linux za pomocą interfejsu wiersza polecenia platformy Azure w wersji 2.0 | Dokumentacja firmy Microsoft
-description: Utwórz magazyn, maszyny Wirtualnej z systemem Linux, sieci wirtualnej i podsieci, modułu równoważenia obciążenia, kartę Sieciową, publiczny adres IP i sieciową grupę zabezpieczeń, wszystkie od podstaw przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0.
+title: Tworzenie środowiska systemu Linux za pomocą wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Utwórz magazyn, maszyny Wirtualnej z systemem Linux, sieci wirtualnej i podsieci, modułu równoważenia obciążenia, kartę Sieciową, publiczny adres IP i sieciową grupę zabezpieczeń, wszystkie od podstaw przy użyciu wiersza polecenia platformy Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,17 +15,17 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 12/14/2017
 ms.author: cynthn
-ms.openlocfilehash: c566c747d393dbfa3225faf6f8ad78fa8abfa3ac
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e618bce78a3a3ce080b6c24cc34a27c2f5fb39e9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929709"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977557"
 ---
 # <a name="create-a-complete-linux-virtual-machine-with-the-azure-cli"></a>Utwórz pełną maszyny wirtualnej systemu Linux przy użyciu wiersza polecenia platformy Azure
 Aby szybko utworzyć maszynę wirtualną (VM) na platformie Azure, można użyć jednego polecenia wiersza polecenia platformy Azure, która używa domyślnych wartości, aby utworzyć wszystkie wymagane zasoby pomocnicze. Zasoby, takie jak sieć wirtualną, publiczny adres IP i reguły sieciowej grupy zabezpieczeń są tworzone automatycznie. Aby uzyskać większą kontrolę środowiska w środowisku produkcyjnym należy użyć, możesz utworzyć te zasoby, które wcześniej i następnie dodać maszyny wirtualne do nich. Ten artykuł przeprowadzi Cię przez tworzenie maszyny Wirtualnej, a każdy z pomocnicze zasoby pojedynczo.
 
-Upewnij się, że zainstalowano najnowszy [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2) i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
+Upewnij się, że zainstalowano najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
 
 W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru zawierają *myResourceGroup*, *myVnet*, i *myVM*.
 

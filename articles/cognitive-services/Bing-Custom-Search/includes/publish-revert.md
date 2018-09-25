@@ -1,4 +1,4 @@
 ## <a name="publish-or-revert"></a>Publikowanie lub Przywróć
-Zmiany wprowadzone do wystąpienia wyszukiwanie niestandardowe **konfiguracji** karcie, aby móc weryfikować zmiany. Po zakończeniu wprowadzania zmian i gotowe do publikowania, kliknij przycisk **publikowania**. Zmiany zostaną odzwierciedlone punktów końcowych przy użyciu produkcyjnego publikowania.
+Zmiany wprowadzone do wystąpienia wyszukiwania niestandardowego **konfiguracji** kartę, aby umożliwić zweryfikowanie zmian. Po zakończeniu wprowadzania zmian i są gotowe do opublikowania, kliknij przycisk **Publikuj**. Zmiany nie są widoczne w środowisku produkcyjnym punktów końcowych do czasu opublikowania.
 
-Przed opublikowaniem, jeśli zdecydujesz, że nie chcesz zachować zmiany zostały wprowadzone, kliknij przycisk **Przywróć**. Po przywróceniu zmiany niezmieniona konfiguracji stanu na żywo i na karcie Konfiguracja zostanie przywrócony do stanu na żywo.
+Przed opublikowaniem, jeśli zdecydujesz, że nie chcesz zachować zmiany wprowadzone, kliknij przycisk **Przywróć**. Po przywróceniu zmian konfiguracji na żywo stanu pozostaje niezmieniony i **konfiguracji** karta zostanie przywrócona do stanu na żywo.

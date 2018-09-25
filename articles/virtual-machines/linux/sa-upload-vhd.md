@@ -1,6 +1,6 @@
 ---
-title: Przekazywanie niestandardowego dysku systemu Linux przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0 | Dokumentacja firmy Microsoft
-description: Tworzenie i przekazywanie wirtualnego dysku twardego (VHD) na platformie Azure przy użyciu modelu wdrażania usługi Resource Manager i interfejsu wiersza polecenia platformy Azure w wersji 2.0
+title: Przekazywanie niestandardowego dysku systemu Linux przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Tworzenie i przekazywanie wirtualnego dysku twardego (VHD) na platformie Azure przy użyciu modelu wdrażania usługi Resource Manager i interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,22 +15,23 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/10/2017
 ms.author: cynthn
-ms.openlocfilehash: 4b05c4c7db1e1c1953af2466d2c6a277baa07082
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 1926f0bcf7efca786e97bd973601888e5a8d4463
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737349"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966507"
 ---
-# <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Przekazywanie i tworzenie maszyny Wirtualnej z systemem Linux z niestandardowego dysku przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
-W tym artykule pokazano, jak przekazać wirtualny dysk twardy (VHD) do konta usługi Azure storage przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0 i Tworzenie maszyn wirtualnych systemu Linux z niestandardowego dysku. Ta funkcja pozwala zainstalować i skonfigurować dystrybucja systemu Linux, wymagań, a następnie użyć tego wirtualnego dysku twardego do szybkiego tworzenia maszyn wirtualnych (VM).
+# <a name="upload-and-create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Przekazywanie i tworzenie maszyny Wirtualnej z systemem Linux z niestandardowego dysku przy użyciu wiersza polecenia platformy Azure
+
+W tym artykule pokazano, jak przekazać wirtualny dysk twardy (VHD) do konta usługi Azure storage przy użyciu wiersza polecenia platformy Azure i Tworzenie maszyn wirtualnych systemu Linux z niestandardowego dysku. Ta funkcja pozwala zainstalować i skonfigurować dystrybucja systemu Linux, wymagań, a następnie użyć tego wirtualnego dysku twardego do szybkiego tworzenia maszyn wirtualnych (VM).
 
 Ten temat używa konta magazynu dla końcowego wirtualnych dysków twardych, ale można również wykonać te kroki przy użyciu [usługi managed disks](upload-vhd.md). 
 
 ## <a name="quick-commands"></a>Szybkie polecenia
 Jeśli chcesz szybko wykonać zadania w poniższej sekcji opisano szczegółowo base polecenia do przekazania dysku VHD na platformie Azure. Więcej szczegółowych informacji i kontekst dla każdego kroku można znaleźć pozostałej części dokumentu, [uruchamianie tutaj](#requirements).
 
-Upewnij się, że masz najnowszy [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
+Upewnij się, że masz najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
 
 W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru uwzględnione `myResourceGroup`, `mystorageaccount`, i `mydisks`.
 
@@ -96,7 +97,7 @@ Aby wykonać następujące kroki, potrzebne są:
   * Tworzenie konta magazynu i kontener do przechowywania zarówno niestandardowego dysku, jak i utworzonych maszyn wirtualnych
   * Po utworzeniu wszystkich maszyn wirtualnych, można bezpiecznie usunąć dysku
 
-Upewnij się, że masz najnowszy [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
+Upewnij się, że masz najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
 
 W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru uwzględnione `myResourceGroup`, `mystorageaccount`, i `mydisks`.
 

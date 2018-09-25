@@ -7,14 +7,14 @@ author: v-jerkin
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 05/07/2018
+ms.date: 09/08/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 2bcba37d5bf0e508c1f9aa1ad30ab1c039cff83f
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 776b8496ea3f46287e2eeec7c150b8d60ca3e553
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497760"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964108"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Użyj "Tekst na mowę" usługi mowy
 
@@ -47,12 +47,12 @@ Zamiana tekstu na mowę HTTP żądania w trybie WPIS z tekstem wymawiane w treś
 Nagłówek|Wartości|Komentarze
 -|-|-
 |`Content-Type` | `application/ssml+xml` | Format tekstu wejściowego.
-|`X-Microsoft-OutputFormat`|     `raw-16khz-16bit-mono-pcm`<br>`audio-16khz-16kbps-mono-siren`<br>`riff-16khz-16kbps-mono-siren`<br>`riff-16khz-16bit-mono-pcm`<br>`audio-16khz-128kbitrate-mono-mp3`<br>`audio-16khz-64kbitrate-mono-mp3`<br>`audio-16khz-32kbitrate-mono-mp3`<br>`raw-24khz-16bit-mono-pcm`<br>`riff-24khz-16bit-mono-pcm`<br>`audio-24khz-160kbitrate-mono-mp3`<br>`audio-24khz-96kbitrate-mono-mp3`<br>`audio-24khz-48kbitrate-mono-mp3` | Format danych wyjściowych audio.
+|`X-Microsoft-OutputFormat`|     `raw-16khz-16bit-mono-pcm`<br>`riff-16khz-16bit-mono-pcm`<br>`raw-8khz-8bit-mono-mulaw`<br>`riff-8khz-8bit-mono-mulaw`<br>`audio-16khz-128kbitrate-mono-mp3`<br>`audio-16khz-64kbitrate-mono-mp3`<br>`audio-16khz-32kbitrate-mono-mp3`<br>`raw-24khz-16bit-mono-pcm`<br>`riff-24khz-16bit-mono-pcm`<br>`audio-24khz-160kbitrate-mono-mp3`<br>`audio-24khz-96kbitrate-mono-mp3`<br>`audio-24khz-48kbitrate-mono-mp3` | Format danych wyjściowych audio.
 |`User-Agent`   |Nazwa aplikacji | Nazwa aplikacji jest wymagany i musi zawierać mniej niż 255 znaków.
 | `Authorization`   | Token autoryzacji uzyskane poprzez przedstawienie klucz subskrypcji do usługi tokenu. Każdy token jest ważny przez 10 minut. Zobacz [interfejsów API REST: uwierzytelnianie](rest-apis.md#authentication).
 
 > [!NOTE]
-> Jeśli wybrany głosu i format danych wyjściowych inne szybkości transmisji bitów, audio jest próbkowany zgodnie z potrzebami. nie obsługują głosów 24khz `audio-16khz-16kbps-mono-siren` i `riff-16khz-16kbps-mono-siren` formaty danych wyjściowych. 
+> Jeśli wybrany głosu i format danych wyjściowych inne szybkości transmisji bitów, audio jest próbkowany zgodnie z potrzebami.
 
 Poniżej przedstawiono przykładowe żądanie.
 
@@ -87,7 +87,8 @@ Jeśli wystąpi błąd, używane są poniższe kody stanu. Treść odpowiedzi b�
 |-|-|-|
 400 |Nieprawidłowe żądanie |Wymagany parametr jest Brak, pusta lub równa null. Lub wartość przekazana do każdego wymaganego lub opcjonalnego parametru jest nieprawidłowa. Typowym problemem jest nagłówkiem, który jest za długi.
 401|Brak autoryzacji |Żądanie nie jest autoryzowany. Zaznacz, aby upewnić się, że klucz subskrypcji lub token jest prawidłowy.
-413|Jednostka żądania jest zbyt duża|Dane wejściowe SSML jest dłuższa niż 1024 znaki.
+413|Jednostka żądania jest zbyt duża|SSML danych wejściowych jest za duży lub zawiera więcej niż 3 `<voice>` elementów.
+429|Zbyt wiele żądań|Przekroczono limit przydziału lub liczbę żądań dozwoloną przez subskrypcję.
 |502|Zła brama    | Problem z siecią lub po stronie serwera. Może również oznaczać nieprawidłowy nagłówek.
 
 Aby uzyskać więcej informacji na tekście interfejsu API REST usługi rozpoznawania mowy, zobacz [interfejsów API REST](rest-apis.md#text-to-speech).

@@ -1,6 +1,6 @@
 ---
 title: Tworzenie i zarządzanie maszynami wirtualnymi w usłudze DevTest Labs przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać usługi Azure DevTest Labs do tworzenia i zarządzania maszynami wirtualnymi za pomocą interfejsu wiersza polecenia platformy Azure w wersji 2.0
+description: Dowiedz się, jak utworzyć i zarządzać maszynami wirtualnymi przy użyciu wiersza polecenia platformy Azure za pomocą usługi Azure DevTest Labs
 services: devtest-lab,virtual-machines,lab-services
 documentationcenter: na
 author: spelluru
@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 5e50bc3c6804a6f3d3dafd07b2918605c4cbc6ab
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: ccf9b08856fcc652e3ad4b2b31587d43d7ef9cca
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39434683"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995958"
 ---
 # <a name="create-and-manage-virtual-machines-with-devtest-labs-using-the-azure-cli"></a>Tworzenie i zarządzanie maszynami wirtualnymi za pomocą usługi DevTest Labs przy użyciu wiersza polecenia platformy Azure
 Ten przewodnik Szybki start przeprowadzi Cię przez tworzenie, uruchamianie, łączenie, aktualizowanie i czyszczenie komputera deweloperskiego z systemem w środowisku laboratoryjnym. 
@@ -27,7 +27,7 @@ Przed rozpoczęciem:
 
 * Jeśli nie utworzono laboratorium, instrukcje można znaleźć [tutaj](devtest-lab-create-lab.md).
 
-* [Zainstaluj interfejs wiersza polecenia 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). Aby rozpocząć, uruchom logowania az, aby utworzyć połączenie z platformą Azure. 
+* [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). Aby rozpocząć, uruchom logowania az, aby utworzyć połączenie z platformą Azure. 
 
 ## <a name="create-and-verify-the-virtual-machine"></a>Utwórz i Zweryfikuj maszynę wirtualną 
 Utwórz Maszynę wirtualną z obrazu z witryny marketplace za pomocą protokołu ssh uwierzytelniania.

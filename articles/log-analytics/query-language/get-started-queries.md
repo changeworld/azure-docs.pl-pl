@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 548c94ce502da8c6a8d208daafb5b0fb624de1e1
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b56a75074af239f60b82edbe1d074c6384c4aef1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45603941"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982988"
 ---
 # <a name="get-started-with-queries-in-log-analytics"></a>Wprowadzenie do zapytań w usłudze Log Analytics
 
@@ -50,7 +50,7 @@ Zapytania można zacząć od jednej nazwy tabeli lub *wyszukiwania* polecenia. N
 ### <a name="table-based-queries"></a>Zapytania w oparciu o tabeli
 Usługa Azure Log Analytics służy do organizowania danych w tabelach, każdy składa się z wielu kolumn. Wszystkie tabele i kolumny są wyświetlane w okienku schematu w portalu usługi analiza. Określ tabelę interesują, a następnie zapoznaj się z bitu danych:
 
-```KQL
+```Kusto
 SecurityEvent
 | take 10
 ```
@@ -66,7 +66,7 @@ Firma Microsoft może faktycznie uruchomić zapytanie, nawet bez dodawania `| ta
 ### <a name="search-queries"></a>Zapytania wyszukiwania
 Zapytania wyszukiwania są mniej ze strukturą i zazwyczaj bardziej odpowiednie do znajdowania rekordy, które zawierają określone wartości we wszystkich kolumn:
 
-```KQL
+```Kusto
 search in (SecurityEvent) "Cryptographic"
 | take 10
 ```
@@ -79,7 +79,7 @@ To zapytanie wyszukuje *SecurityEvent* tabeli rekordy, które zawierają frazę 
 ## <a name="sort-and-top"></a>Sortuj i z góry
 Gdy **zająć** jest przydatne uzyskać kilka rekordów, wyniki są zaznaczone i wyświetlane w losowej kolejności. Aby uzyskać uporządkowane widok, można wykonać następujące akcje **sortowania** przez preferowany kolumny:
 
-```
+```Kusto
 SecurityEvent   
 | sort by TimeGenerated desc
 ```
@@ -88,7 +88,7 @@ Który może zwrócić jednak zbyt wiele wyników, a także może zająć troch�
 
 Najlepszy sposób pozyskania najnowszych 10 rekordów jest użycie **górnej**, która sortuje całą tabelę po stronie serwera, a następnie zwraca pierwszych rekordów:
 
-```KQL
+```Kusto
 SecurityEvent
 | top 10 by TimeGenerated
 ```
@@ -103,7 +103,7 @@ Filtry, wskazane przez ich nazw, filtrować dane według określonego warunku. J
 
 Aby dodać filtr do kwerendy, należy użyć **gdzie** operator następuje co najmniej jeden warunek. Na przykład, następujące zapytanie zwraca tylko *SecurityEvent* rekordy, w których _poziom_ jest równa _8_:
 
-```KQL
+```Kusto
 SecurityEvent
 | where Level == 8
 ```
@@ -119,14 +119,14 @@ Podczas pisania warunków filtrowania, można użyć następujących wyrażeń:
 
 Aby filtrować według wielu warunków, można użyć **i**:
 
-```KQL
+```Kusto
 SecurityEvent
 | where Level == 8 and EventID == 4672
 ```
 
 lub przekazać wiele **gdzie** elementy pojedynczo po drugiej:
 
-```KQL
+```Kusto
 SecurityEvent
 | where Level == 8 
 | where EventID == 4672
@@ -146,7 +146,7 @@ Selektor godziny znajduje się w lewym górnym rogu, co oznacza, że firma Micro
 ### <a name="time-filter-in-query"></a>Filtr czasu w zapytaniu
 Można także zdefiniować zakres czasu, dodając filtr czasu do zapytania. Warto umieścić filtr czasu natychmiast po Nazwa tabeli: 
 
-```KQL
+```Kusto
 SecurityEvent
 | where TimeGenerated > ago(30m) 
 | where toint(Level) >= 10
@@ -158,7 +158,7 @@ W powyższym filtr czasu `ago(30m)` oznacza "30 minut temu", dlatego to zapytani
 ## <a name="project-and-extend-select-and-compute-columns"></a>Projektów i rozszerzanie: Wybierz, a kolumny obliczeniowe
 Użyj **projektu** aby wybrać określone kolumny, które mają zostać objęte wyniki:
 
-```KQL
+```Kusto
 SecurityEvent 
 | top 10 by TimeGenerated 
 | project TimeGenerated, Computer, Activity
@@ -175,7 +175,7 @@ Można również użyć **projektu** zmiana nazw kolumn i definiowania nowych. W
 * Utwórz nową kolumnę o nazwie *EventCode*. **Substring()** funkcja jest używana do pobierania tylko pierwsze cztery znaki z pola działania.
 
 
-```KQL
+```Kusto
 SecurityEvent
 | top 10 by TimeGenerated 
 | project Computer, TimeGenerated, EventDetails=Activity, EventCode=substring(Activity, 0, 4)
@@ -183,7 +183,7 @@ SecurityEvent
 
 **Rozszerzanie** zachowuje wszystkie kolumny oryginalnego zestawu wyników i definiuje także dodatkowe. Następujące zapytanie używa **rozszerzyć** dodać *localtime* kolumny, która zawiera zlokalizowaną wartość TimeGenerated.
 
-```KQL
+```Kusto
 SecurityEvent
 | top 10 by TimeGenerated
 | extend localtime = TimeGenerated-8h
@@ -193,7 +193,7 @@ SecurityEvent
 Użyj **Podsumuj** do identyfikowania grup rekordów, zgodnie z co najmniej jedną kolumnę agregacji ich dotyczą. Najczęściej używać systemu operacyjnego **Podsumuj** jest *liczba*, która zwraca liczbę wyników w każdej grupie.
 
 Następujące zapytanie sprawdza wszystkie *wydajności* grup rekordów z ostatniej godziny, ich według *ObjectName*i zlicza rekordy w każdej grupie: 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1h)
 | summarize count() by ObjectName
@@ -201,7 +201,7 @@ Perf
 
 Czasami warto zdefiniować grupy przez wielu wymiarów. Każda unikatowa kombinacja tych wartości definiuje osobnej grupy:
 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1h)
 | summarize count() by ObjectName, CounterName
@@ -209,7 +209,7 @@ Perf
 
 Innym typowym zastosowaniem jest wykonywanie obliczeń matematycznych lub statystycznych w każdej grupie. Na przykład, następujące oblicza średnią *CounterValue* dla każdego komputera:
 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1h)
 | summarize avg(CounterValue) by Computer
@@ -217,7 +217,7 @@ Perf
 
 Niestety wyniki tego zapytania są bez znaczenia, ponieważ firma Microsoft łączyć ze sobą różnych liczników wydajności. Aby wprowadzić bardziej opisową, należy obliczyć średnią osobno dla każdej kombinacji *CounterName* i *komputera*:
 
-```KQL
+```Kusto
 Perf
 | where TimeGenerated > ago(1h)
 | summarize avg(CounterValue) by Computer, CounterName
@@ -228,7 +228,7 @@ Grupowanie wyników można również opierać się na kolumnę czasu lub wartoś
 
 Aby utworzyć grupy na podstawie wartości ciągłej, najlepiej podziału zakresu w jednostki zarządzane przy użyciu **bin**. Następujące zapytanie analizuje *wydajności* rekordy, które mierzą wolnej pamięci (*dostępnej ilości megabajtów*) na określonym komputerze. Obliczana średnia wartość dla każdego okresu Jeśli 1 godzinę w ciągu ostatnich 2 dni:
 
-```KQL
+```Kusto
 Perf 
 | where TimeGenerated > ago(2d)
 | where Computer == "ContosoAzADDS2" 

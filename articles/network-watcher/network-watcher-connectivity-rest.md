@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z połączeniami z obserwatora sieciowego Azure - interfejsu API REST Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak korzystać z połączenia Rozwiązywanie problemów z możliwości obserwatora sieciowego Azure przy użyciu interfejsu API REST Azure.
+title: Rozwiązywanie problemów z połączeniami przy użyciu usługi Azure Network Watcher — interfejs API REST platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak korzystać z połączenia Rozwiązywanie problemów z możliwości usługi Azure Network Watcher przy użyciu interfejsu API REST platformy Azure.
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -13,20 +13,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: jdial
-ms.openlocfilehash: 848db5d0df63707eece4f9f7a2a69135bed2d389
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: d04340c340a7285b62ccc68eed4e70f7c4b43bc8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32187355"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990029"
 ---
-# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Rozwiązywanie problemów z połączeniami z obserwatora sieciowego Azure przy użyciu interfejsu API REST Azure
+# <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Rozwiązywanie problemów z połączeniami w usłudze Azure Network Watcher przy użyciu interfejsu API REST platformy Azure
 
 > [!div class="op_single_selector"]
 > - [Portal](network-watcher-connectivity-portal.md)
 > - [Program PowerShell](network-watcher-connectivity-powershell.md)
-> - [Interfejs wiersza polecenia 2.0](network-watcher-connectivity-cli.md)
-> - [Interfejs API Azure REST](network-watcher-connectivity-rest.md)
+> - [Interfejs wiersza polecenia platformy Azure](network-watcher-connectivity-cli.md)
+> - [Interfejs API REST platformy Azure](network-watcher-connectivity-rest.md)
 
 Dowiedz się, jak używać połączenia Rozwiązywanie problemów, aby sprawdzić, czy można nawiązać bezpośrednie połączenie TCP z maszyny wirtualnej do danego punktu końcowego.
 
@@ -34,15 +34,15 @@ Dowiedz się, jak używać połączenia Rozwiązywanie problemów, aby sprawdzi�
 
 W tym artykule przyjęto założenie, że masz następujące zasoby:
 
-* Wystąpienie obserwatora sieciowego w regionie rozwiązywania problemów z połączeniem.
+* Wystąpienie usługi Network Watcher w regionie, do których użytkownik chce Rozwiązywanie problemów z połączeniem.
 * Rozwiązywanie problemów z połączeniami z maszyn wirtualnych.
 
 > [!IMPORTANT]
-> Rozwiązywanie problemów z połączenia wymaga, aby rozwiązać z maszyny Wirtualnej miało `AzureNetworkWatcherExtension` zainstalowane rozszerzenia maszyny Wirtualnej. Instalowanie rozszerzenia na maszynie Wirtualnej systemu Windows można znaleźć [rozszerzenie maszyny wirtualnej Azure sieci obserwatorów agenta dla systemu Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i dla maszyny Wirtualnej systemu Linux, odwiedź [rozszerzenie maszyny wirtualnej Azure sieci obserwatorów agenta dla systemu Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozszerzenie nie jest wymagany dla docelowego punktu końcowego.
+> Rozwiązywanie problemów z połączeniami wymaga, że maszyna wirtualna, rozwiązywanie problemów z z ma `AzureNetworkWatcherExtension` zainstalowane rozszerzenie maszyny Wirtualnej. Instalowanie rozszerzenia na maszynie Wirtualnej Windows można znaleźć [Agent usługi Azure Network Watcher rozszerzenie maszyny wirtualnej dla Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) i maszyny Wirtualnej systemu Linux można znaleźć pod adresem [Agent usługi Azure Network Watcher rozszerzenie maszyny wirtualnej dla systemu Linux](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). Rozszerzenie nie jest wymagany dla docelowego punktu końcowego.
 
-## <a name="log-in-with-armclient"></a>Zaloguj się za pomocą ARMClient
+## <a name="log-in-with-armclient"></a>Zaloguj się przy użyciu ARMClient
 
-Zaloguj się do armclient przy użyciu poświadczeń platformy Azure.
+Zaloguj się do armclient przy użyciu swoich poświadczeń platformy Azure.
 
 ```PowerShell
 armclient login
@@ -50,11 +50,11 @@ armclient login
 
 ## <a name="retrieve-a-virtual-machine"></a>Pobieranie maszyny wirtualnej
 
-Uruchom następujący skrypt, aby wrócić do maszyny wirtualnej. Te informacje są potrzebne do uruchomienia połączenia. 
+Uruchom następujący skrypt, aby przywrócić maszynę wirtualną. Te informacje są potrzebne do uruchomienia połączenia. 
 
 Poniższy kod wymaga wartości dla następujących zmiennych:
 
-- **Identyfikator subskrypcji** — identyfikator subskrypcji do użycia.
+- **subscriptionId** — identyfikator subskrypcji do użycia.
 - **resourceGroupName** — Nazwa grupy zasobów, która zawiera maszyny wirtualne.
 
 ```powershell
@@ -64,7 +64,7 @@ $resourceGroupName = '<resource group name>'
 armclient get https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Compute/virtualMachines?api-version=2015-05-01-preview
 ```
 
-Z następujących danych wyjściowych identyfikator maszyny wirtualnej jest używany w następującym przykładzie:
+Z poziomu następujące dane wyjściowe identyfikator maszyny wirtualnej jest używana w następującym przykładzie:
 
 ```json
 ...
@@ -79,7 +79,7 @@ Z następujących danych wyjściowych identyfikator maszyny wirtualnej jest uży
 }
 ```
 
-## <a name="check-connectivity-to-a-virtual-machine"></a>Sprawdź połączenie z maszyną wirtualną
+## <a name="check-connectivity-to-a-virtual-machine"></a>Sprawdź łączność z maszyną wirtualną
 
 W tym przykładzie służy do sprawdzania łączności do docelowej maszyny wirtualnej za pośrednictwem portu 80.
 
@@ -108,7 +108,7 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Ponieważ ta operacja jest długa uruchomiony, identyfikator URI wynik zostanie zwrócony w nagłówku odpowiedzi, jak pokazano w poniższych odpowiedzi:
+Ponieważ ta operacja jest długa uruchomiony, identyfikator URI wynik zostanie zwrócony w nagłówku odpowiedzi, jak pokazano w poniższym odpowiedzi:
 
 **Ważne wartości**
 
@@ -133,7 +133,7 @@ null
 
 ### <a name="response"></a>Odpowiedź
 
-Następujące odpowiedzi jest z poprzedniego przykładu.  W tej odpowiedzi `ConnectionStatus` jest **informujący**. Widać, że wszystkie sond wysyłane nie powiodło się. Połączenie nie powiodło się na urządzenie wirtualne z powodu użytkownik skonfigurował `NetworkSecurityRule` o nazwie **UserRule_Port80**, jest skonfigurowany do blokowania ruchu przychodzącego na porcie 80. Te informacje mogą służyć do badania problemów z połączeniem.
+Jest następującą odpowiedź z poprzedniego przykładu.  W tej odpowiedzi `ConnectionStatus` jest **informujący**. Widać, że wszystkie sondy wysyłane nie powiodło się. Połączenie nie powiodło się na urządzenie wirtualne, ze względu na skonfigurowane przez użytkownika `NetworkSecurityRule` o nazwie **UserRule_Port80**, jest skonfigurowana do blokowania ruchu przychodzącego na porcie 80. Te informacje mogą służyć do badania problemów z połączeniem.
 
 ```json
 {
@@ -195,9 +195,9 @@ Następujące odpowiedzi jest z poprzedniego przykładu.  W tej odpowiedzi `Conn
 }
 ```
 
-## <a name="validate-routing-issues"></a>Sprawdź poprawność routingu problemów
+## <a name="validate-routing-issues"></a>Sprawdź poprawność problemów z routingiem
 
-Przykład służy do sprawdzania łączności między maszyną wirtualną i zdalny punkt końcowy.
+Przykład służy do sprawdzania łączności między maszyną wirtualną i zdalnego punktu końcowego.
 
 ### <a name="example"></a>Przykład
 
@@ -224,7 +224,7 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Ponieważ ta operacja jest długa uruchomiony, identyfikator URI wynik zostanie zwrócony w nagłówku odpowiedzi, jak pokazano w poniższych odpowiedzi:
+Ponieważ ta operacja jest długa uruchomiony, identyfikator URI wynik zostanie zwrócony w nagłówku odpowiedzi, jak pokazano w poniższym odpowiedzi:
 
 **Ważne wartości**
 
@@ -249,7 +249,7 @@ null
 
 ### <a name="response"></a>Odpowiedź
 
-W poniższym przykładzie `connectionStatus` jest wyświetlany jako **informujący**. W `hops` uzyskać szczegółowe informacje, widoczny w obszarze `issues` ruch został zablokowany ze względu na `UserDefinedRoute`.
+W poniższym przykładzie `connectionStatus` jest przedstawiana w postaci **informujący**. W `hops` uzyskać więcej informacji, możesz zobaczyć w obszarze `issues` ruch został zablokowany ze względu na `UserDefinedRoute`.
 
 ```json
 {
@@ -291,7 +291,7 @@ W poniższym przykładzie `connectionStatus` jest wyświetlany jako **informują
 }
 ```
 
-## <a name="check-website-latency"></a>Sprawdź czas oczekiwania witryny sieci Web
+## <a name="check-website-latency"></a>Czas oczekiwania na sprawdzenie witryny sieci Web
 
 Poniższy przykład służy do sprawdzania łączności z witryną sieci Web.
 
@@ -320,7 +320,7 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Ponieważ ta operacja jest długa uruchomiony, identyfikator URI wynik zostanie zwrócony w nagłówku odpowiedzi, jak pokazano w poniższych odpowiedzi:
+Ponieważ ta operacja jest długa uruchomiony, identyfikator URI wynik zostanie zwrócony w nagłówku odpowiedzi, jak pokazano w poniższym odpowiedzi:
 
 **Ważne wartości**
 
@@ -345,7 +345,7 @@ null
 
 ### <a name="response"></a>Odpowiedź
 
-W poniższych odpowiedzi, zobacz `connectionStatus` jest pokazywana jako **osiągalne**. Gdy połączenie zostanie nawiązane, znajdują się wartości opóźnienia.
+Następującą odpowiedź zawiera `connectionStatus` jest wyświetlany jako **osiągalne**. Gdy połączenie zostanie nawiązane, znajdują się wartości czasu oczekiwania.
 
 ```json
 {
@@ -380,7 +380,7 @@ W poniższych odpowiedzi, zobacz `connectionStatus` jest pokazywana jako **osią
 
 ## <a name="check-connectivity-to-a-storage-endpoint"></a>Sprawdź łączność z punktu końcowego magazynu
 
-Poniższy przykład służy do sprawdzania łączności z maszyny wirtualnej na blogu konto magazynu.
+Poniższy przykład służy do sprawdzania łączności z maszyny wirtualnej na koncie magazynu w blogu.
 
 ### <a name="example"></a>Przykład
 
@@ -407,7 +407,7 @@ $requestBody = @"
 $response = armclient post "https://management.azure.com/subscriptions/${subscriptionId}/ResourceGroups/${resourceGroupName}/providers/Microsoft.Network/networkWatchers/${networkWatcherName}/connectivityCheck?api-version=2017-03-01" $requestBody
 ```
 
-Ponieważ ta operacja jest długa uruchomiony, identyfikator URI wynik zostanie zwrócony w nagłówku odpowiedzi, jak pokazano w poniższych odpowiedzi:
+Ponieważ ta operacja jest długa uruchomiony, identyfikator URI wynik zostanie zwrócony w nagłówku odpowiedzi, jak pokazano w poniższym odpowiedzi:
 
 **Ważne wartości**
 
@@ -432,7 +432,7 @@ null
 
 ### <a name="response"></a>Odpowiedź
 
-Poniższy przykład jest odpowiedź z poprzedniego wywołania interfejsu API. Jak sprawdzenie zakończy się pomyślnie, `connectionStatus` właściwość pokazuje, jak **osiągalne**.  Podano szczegółowe informacje dotyczące liczby przeskoków niezbędnych do magazynu obiektów blob i opóźnień.
+Poniższy przykład jest odpowiedź na uruchamianie poprzedniego wywołania interfejsu API. Jak kontrola zakończy się pomyślnie, `connectionStatus` właściwości jest wyświetlana jako **osiągalne**.  Znajdują się szczegółowe informacje dotyczące liczby przeskoków wymagany do osiągnięcia obiektem blob storage i opóźnienie.
 
 ```json
 {
@@ -467,9 +467,9 @@ Poniższy przykład jest odpowiedź z poprzedniego wywołania interfejsu API. Ja
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Dowiedz się, jak można zautomatyzować przechwytywania pakietów z alertami maszyny wirtualnej, wyświetlając [utworzyć przechwytywania alertów wyzwalanych pakietów](network-watcher-alert-triggered-packet-capture.md).
+Informacje o automatyzowaniu przechwytywania pakietów przy użyciu alertów maszyny wirtualnej, wyświetlając [tworzenie przechwytywania pakietów wyzwolonych alertów](network-watcher-alert-triggered-packet-capture.md).
 
-Znajdź, jeśli niektórych ruch jest dozwolony w lub z maszyny Wirtualnej, odwiedzając [Sprawdź przepływ Sprawdź IP](diagnose-vm-network-traffic-filtering-problem.md).
+Dowiedz się, czy niektóre jest dozwolony ruch do lub z maszyny Wirtualnej, odwiedzając [weryfikowanie przepływu protokołu IP z Sprawdź](diagnose-vm-network-traffic-filtering-problem.md).
 
 
 

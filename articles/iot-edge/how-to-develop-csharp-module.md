@@ -9,12 +9,12 @@ ms.author: xshi
 ms.date: 09/04/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 7fec050f43ed6facef548ea19d1d67030458fbb1
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: b4e1e01d54f6e0043709e0dadef41d7ea513a9b6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380254"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963291"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-c-modules-for-azure-iot-edge"></a>Używanie programu Visual Studio Code do tworzenia i debugowania modułów języka C# dla usługi Azure IoT Edge
 
@@ -48,7 +48,7 @@ Aby przetestować modułu na urządzeniu, należy aktywnym Centrum IoT przy uży
 
 ## <a name="create-a-new-solution-with-c-module"></a>Utwórz nowe rozwiązanie za pomocą modułu C#
 
-Wykonaj następujące czynności, aby utworzyć moduł usługi IoT Edge, oparte na programie .NET Core 2.0 przy użyciu programu Visual Studio Code i rozszerzenia usługi Azure IoT Edge. Najpierw należy utworzyć rozwiązanie, a następnie wygenerować pierwszego modułu w ramach tego rozwiązania. Każdy roztwór może zawierać więcej niż jeden moduł. 
+Wykonaj następujące czynności, aby utworzyć moduł usługi IoT Edge, w oparciu o platformy .NET Core 2.1 przy użyciu programu Visual Studio Code i rozszerzenia usługi Azure IoT Edge. Najpierw należy utworzyć rozwiązanie, a następnie wygenerować pierwszego modułu w ramach tego rozwiązania. Każdy roztwór może zawierać więcej niż jeden moduł. 
 
 1. W programie Visual Studio Code wybierz **widoku** > **zintegrowany Terminal**.
 3. Wybierz **widoku** > **polecenia palety**. 

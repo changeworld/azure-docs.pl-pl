@@ -16,19 +16,19 @@ ms.workload: infrastructure
 ms.date: 02/28/2018
 ms.author: danlep
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f1091b9d252f32086c237e7c62f11c166eb558a6
-ms.sourcegitcommit: 30fd606162804fe8ceaccbca057a6d3f8c4dd56d
+ms.openlocfilehash: 33ffb9d1685f3d76e884ae0d90545f659b5ec87c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/30/2018
-ms.locfileid: "39345161"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953353"
 ---
 # <a name="how-to-find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Jak znaleźć obrazy maszyny Wirtualnej systemu Linux w witrynie Azure Marketplace przy użyciu wiersza polecenia platformy Azure
-W tym temacie opisano sposób użycia interfejsu wiersza polecenia platformy Azure w wersji 2.0 do obrazów maszyn wirtualnych można znaleźć w witrynie Azure Marketplace. Te informacje służą do określania obrazu z witryny Marketplace, gdy programowo utworzyć Maszynę wirtualną przy użyciu interfejsu wiersza polecenia, szablonów usługi Resource Manager lub innych narzędzi.
+W tym temacie opisano sposób używania interfejsu wiersza polecenia platformy Azure do obrazów maszyn wirtualnych można znaleźć w witrynie Azure Marketplace. Te informacje służą do określania obrazu z witryny Marketplace, gdy programowo utworzyć Maszynę wirtualną przy użyciu interfejsu wiersza polecenia, szablonów usługi Resource Manager lub innych narzędzi.
 
 Również przeglądać dostępne obrazy i ofert przy użyciu [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/) storefront, [witryny Azure portal](https://portal.azure.com), lub [programu Azure PowerShell](../windows/cli-ps-findimage.md). 
 
-Upewnij się, że jest zainstalowana najnowsza wersja [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2) i zalogować się do konta platformy Azure (`az login`).
+Upewnij się, że jest zainstalowana najnowsza wersja [wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i zalogować się do konta platformy Azure (`az login`).
 
 [!INCLUDE [virtual-machines-common-image-terms](../../../includes/virtual-machines-common-image-terms.md)]
 

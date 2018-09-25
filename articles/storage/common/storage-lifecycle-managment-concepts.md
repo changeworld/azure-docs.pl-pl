@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 04/30/2018
 ms.author: yzheng
 ms.component: common
-ms.openlocfilehash: 6b7a361213a0236d71fe41566ba71c28b2958cd7
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 25e6fba6ac8aa34c0c30fd61f5fe297b94720439
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736346"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983671"
 ---
 # <a name="managing-the-azure-blob-storage-lifecycle-preview"></a>Zarządzanie cyklem życia z magazynu obiektów Blob platformy Azure (wersja zapoznawcza)
 
@@ -54,7 +54,7 @@ Get-AzureRmProviderFeature -FeatureName DLM -ProviderNamespace Microsoft.Storage
 ```
 Jeśli funkcja jest zatwierdzona poprawnie zarejestrowane, powinny pojawić się w stanie "Zarejestrowane".
 
-### <a name="cli-20"></a>Interfejs wiersza polecenia 2.0
+### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
 
 Aby przesłać żądanie: 
 ```cli

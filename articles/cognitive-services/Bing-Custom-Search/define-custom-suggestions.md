@@ -9,39 +9,81 @@ ms.technology: bing-custom-search
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: e7a62a79bdc2e486fb6bfca34eb4addeba2bde0e
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 11d3b1c2d98caa8d6527c52bec1cc65ba22c6c3b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158317"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958751"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>Konfigurowanie środowiska funkcję niestandardowego automatycznego sugerowania
-Jeśli masz subskrypcję do wyszukiwania niestandardowego na odpowiednim poziomie (zobacz [stronach z cennikami](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)), można dostosować sugestie dotyczące wyszukiwania w środowisko wyszukiwania niestandardowego. Funkcję niestandardowego automatycznego sugerowania zwraca listę proponowanych zapytań na podstawie ciągu zapytania częściowego, zapewniająca przez użytkownika. Za pomocą niestandardowego automatycznego sugerowania możesz podać odpowiednie środowiska wyszukiwania sugestie wyszukiwania niestandardowego. Należy określić, czy zwracać tylko niestandardowych sugestii, czy też zawierają sugestie Bing. Jeśli dodasz sugestie Bing, niestandardowych sugestii występować przed sugestie Bing. Sugestie Bing są ograniczone do kontekstu wystąpienia wyszukiwania niestandardowego.
 
-## <a name="configure-custom-autosuggest"></a>Konfigurowanie niestandardowego automatycznego sugerowania
-Skorzystaj z poniższych instrukcji, aby skonfigurować niestandardowego automatycznego sugerowania wystąpienia wyszukiwania niestandardowego.
+Funkcję niestandardowego automatycznego sugerowania zwraca listę ciągów zapytania sugerowane wyszukiwania, które mają zastosowanie do środowiska wyszukiwania. Ciągi zapytań sugerowane są oparte na ciąg zapytania częściowego, który użytkownik udostępnia w polu wyszukiwania. Lista będzie zawierać maksymalnie 10 sugestie. 
 
-1.  Zaloguj się do [wyszukiwania niestandardowego](https://customsearch.ai).
-2.  Kliknij wystąpienie wyszukiwania niestandardowego. Aby utworzyć wystąpienie, zobacz [Tworzenie pierwszego wystąpienia wyszukiwania niestandardowego Bing](quick-start.md).
-3.  Kliknij przycisk **automatycznego sugerowania** kartę.
+Należy określić, czy zwracać tylko niestandardowych sugestii, czy też zawierają sugestie Bing. Jeśli dodasz sugestie Bing, niestandardowych sugestii występować przed sugestie Bing. Jeśli podasz za mało istotne sugestie, istnieje możliwość, zwracana lista sugestii będzie zawiera sugestie Bing. Sugestie Bing są zawsze w kontekście wystąpienia wyszukiwania niestandardowego. 
+
+Aby skonfigurować sugestie dotyczące zapytań wyszukiwania dla swojego wystąpienia, kliknij **automatycznego sugerowania** kartę.  
+
+> [!NOTE]
+> Aby użyć tej funkcji, należy zasubskrybować wyszukiwania niestandardowego na odpowiednim poziomie (zobacz [ceny](https://azure.microsoft.com/pricing/details/cognitive-services/bing-custom-search/)).
+
+Może upłynąć do 24 godzin sugestie, które zostaną odzwierciedlone w punkcie końcowym obsługująca (interfejs API lub hostowanej interfejsu użytkownika).
 
 ## <a name="enable-bing-suggestions"></a>Włącz sugestie Bing
+
 Aby włączyć sugestie Bing, Przełącz **sugestie automatyczne Bing** suwak w pozycji. Suwak staje się niebieski.
 
-## <a name="add-suggestions"></a>Dodawanie sugestii
-Aby dodać sugestię, wprowadź go w polu tekstowym. Naciśnij klawisz enter lub kliknij przycisk **+** ikony. Sugestie niestandardowe mogą znajdować się w dowolnym języku i pojawi się przed sugestie Bing.
+## <a name="add-your-own-suggestions"></a>Dodać własne sugestie
+
+Aby dodać własne sugestie ciągu zapytania, należy dodać je do listy w obszarze **zdefiniowanych przez użytkownika sugestie**. Po dodaniu sugestii na liście, naciśnij klawisz enter lub kliknij przycisk **+** ikony. Możesz określić sugestię w dowolnym języku. Możesz dodać maksymalnie 5000 sugestie ciągu zapytania.
 
 ## <a name="upload-suggestions"></a>Przekazywanie sugestii
-Możesz przekazać listę sugestii pochodzących z pliku. Umieść każdy sugestię w osobnym wierszu. Kliknij ikonę przekazywania i wybierz swój plik.
+
+Opcjonalnie możesz przekazać listę sugestii pochodzących z pliku. Plik musi zawierać jeden ciąg zapytania wyszukiwania dla każdego wiersza. Aby przekazać plik, kliknij ikonę przekazywania i wybierz plik do przekazania. Usługa wyodrębnia sugestie z pliku i dodaje je do listy.
 
 ## <a name="remove-suggestions"></a>Usuń sugestie
-Aby usunąć sugestię, kliknij ikonę Usuń obok sugestii, który chcesz usunąć.
 
-[!INCLUDE [publish or revert](./includes/publish-revert.md)]
+Aby usunąć sugestię ciągu zapytania, kliknij ikonę Usuń obok sugestii, który chcesz usunąć.
 
-  >[!NOTE]  
-  >Może upłynąć do 24 godzin niestandardowego automatycznego sugerowania zmiany konfiguracji zostały wprowadzone.
+## <a name="block-suggestions"></a>Blokuj sugestie
+
+Jeśli dodasz sugestie Bing, można dodać listę ciągów zapytania wyszukiwania nie chcesz, aby Bing do zwrócenia. Aby dodać ciągów zablokowanych zapytania, kliknij **Pokaż zablokowane sugestie**. Dodaj ciąg zapytania do listy i naciśnij klawisz enter lub kliknij przycisk **+** ikony. Możesz dodać maksymalnie 50 ciągi zablokowanych zapytań.
+
+
+
+[!INCLUDE[publish or revert](./includes/publish-revert.md)]
+
+>[!NOTE]  
+>Może upłynąć do 24 godzin niestandardowego automatycznego sugerowania zmiany konfiguracji zostały wprowadzone.
+
+
+## <a name="enabling-autosuggest-in-hosted-ui"></a>Włączanie automatycznego sugerowania w interfejsie użytkownika usług hostowanych
+
+Aby włączyć podpowiedzi dla ciągu zapytania dla obsługiwanego interfejsu użytkownika, kliknij przycisk **hostowanych interfejsu użytkownika**. Przewiń w dół do **dodatkowych czynności konfiguracyjnych** sekcji. W obszarze **wyszukiwania w Internecie**, wybierz opcję **na** dla **włączenie automatycznego sugerowania**. Aby włączyć automatyczne sugerowanie, musisz wybrać układ, który zawiera pole wyszukiwania.
+
+
+## <a name="calling-the-autosuggest-api"></a>Wywołanie API automatycznego sugerowania
+
+Aby uzyskać ciągów sugerowane zapytania za pomocą interfejsu API wyszukiwania niestandardowego Bing, Wyślij `GET` żądanie następujący punkt końcowy.
+
+```
+GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/Suggestions 
+```
+
+Odpowiedź zawiera listę `SearchAction` obiektów zawierających ciągi zapytań sugerowane.
+
+```
+        {  
+            "displayText" : "sailing lessons seattle",  
+            "query" : "sailing lessons seattle",  
+            "searchKind" : "CustomSearch"  
+        },  
+```
+
+Obejmuje każdego sugestii `displayText` i `query` pola. `displayText` Pole zawiera ciąg sugerowane zapytania, których używasz do wypełnienia listy rozwijanej pole wyszukiwania.
+
+Jeśli użytkownik wybierze ciąg sugerowane zapytania z listy rozwijanej, użyj ciągu zapytania w `query` pola podczas wywoływania [interfejs API wyszukiwania niestandardowego Bing](overview.md).
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

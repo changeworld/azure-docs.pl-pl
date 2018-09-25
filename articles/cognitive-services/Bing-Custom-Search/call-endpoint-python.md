@@ -9,45 +9,43 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 88bf82805ba46abf79b7899e0428a83485062302
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: 3666e92372e9bed80e5c0c7991dcac730cebb588
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39504971"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967596"
 ---
 # <a name="call-bing-custom-search-endpoint-python"></a>Wywołanie punktu końcowego usługi Bing Custom Search (Python)
 
-Ten przewodnik Szybki Start pokazano, jak żądanie wyniki wyszukiwania z wystąpienia wyszukiwania niestandardowego przy użyciu języka Python do wywoływania punktu końcowego usługi Bing Custom Search. 
+Ten przewodnik Szybki Start pokazano, jak żądanie wyniki wyszukiwania z wystąpienia wyszukiwania niestandardowego za pomocą języka Python, aby wywołać punkt końcowy wyszukiwania niestandardowego Bing. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
+
 Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warunki:
 
-- Wystąpienie wyszukiwania niestandardowego. Zobacz [Tworzenie pierwszego wystąpienia wyszukiwania niestandardowego Bing](quick-start.md).
+- Wystąpienie wyszukiwania niestandardowego gotowych do użycia. Zobacz [Tworzenie pierwszego wystąpienia wyszukiwania niestandardowego Bing](quick-start.md).
+- [Python](https://www.python.org/) zainstalowane.
+- Klucz subskrypcji. Klucz subskrypcji możesz uzyskać po aktywowaniu usługi [bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search), lub za pomocą klucza płatnej subskrypcji w pulpicie nawigacyjnym platformy Azure (zobacz [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
 
--  [Python](https://www.python.org/) zainstalowane.
-
-- A [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsy API wyszukiwania Bing**. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) jest wystarczająca na potrzeby tego przewodnika Szybki Start. Wymagany jest klucz dostępu podany przy wywołaniu metody Aktywuj bezpłatną wersję próbną lub klucz płatnej subskrypcji może używać z pulpitu nawigacyjnego platformy Azure. 
 
 ## <a name="run-the-code"></a>Uruchamianie kodu
 
-Aby wywołać punkt końcowy wyszukiwania niestandardowego Bing, wykonaj następujące kroki:
+Aby uruchomić ten przykład, wykonaj następujące kroki:
 
-1. Utwórz folder dla kodu.
-
-2. Z wiersza polecenia administratora lub terminalu przejdź do folderu, który został utworzony.
-
-3. Zainstaluj **żądań** modułu python:
-
+1. Utwórz folder dla kodu.  
+  
+2. Z wiersza polecenia administratora lub terminalu przejdź do folderu, który został utworzony.  
+  
+3. Zainstaluj **żądań** modułu python:  
+  
     <pre>
     pip install pipenv
     pipenv install requests
-    </pre>
-    
-7. Utwórz plik BingCustomSearch.py i skopiuj następujący kod do niego.
-
-8. Zastąp **YOUR-SUBSCRIPTION-KEY** i **YOUR-CUSTOM-CONFIG-ID** za pomocą Identyfikatora klucza i konfiguracji (zobacz krok 1).
-
+    </pre>  
+      
+4. Utwórz plik o nazwie BingCustomSearch.py w folderze, który został utworzony i skopiuj następujący kod do niego. Zastąp **YOUR-SUBSCRIPTION-KEY** i **YOUR-CUSTOM-CONFIG-ID** z kluczem subscriptioin i konfiguracji identyfikatora.  
+  
     ``` Python
     import json
     import requests
@@ -59,8 +57,10 @@ Aby wywołać punkt końcowy wyszukiwania niestandardowego Bing, wykonaj następ
     url = 'https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search?q=' + searchTerm + '&customconfig=' + customConfigId
     r = requests.get(url, headers={'Ocp-Apim-Subscription-Key': subscriptionKey})
     print(r.text)
-    ```
-9. Uruchom kod za pomocą następującego polecenia.
+    ```  
+  
+7. Uruchom kod za pomocą następującego polecenia.  
+  
     ```
     python BingCustomSearch.py
     ```

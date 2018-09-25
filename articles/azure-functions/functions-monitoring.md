@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: glenga
-ms.openlocfilehash: 89f222d28a284abff50e60b12c691be2f8691255
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: fb9de98a80d348c3ba1e84ae19551c7ca080628b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718954"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966847"
 ---
 # <a name="monitor-azure-functions"></a>Monitorowanie usługi Azure Functions
 
@@ -530,9 +530,9 @@ Nawet wtedy, gdy **Monitor** karta przedstawia dane usługi Application Insights
 
 ### <a name="real-time-monitoring"></a>Monitorowanie w czasie rzeczywistym
 
-Można przesyłać strumieniowo pliki dziennika w celu sesji wiersza polecenia na lokalnej stacji roboczej za pomocą [interfejsu wiersza polecenia platformy Azure (CLI) w wersji 2.0](/cli/azure/install-azure-cli) lub [programu Azure PowerShell](/powershell/azure/overview).  
+Można przesyłać strumieniowo pliki dziennika w celu sesji wiersza polecenia na lokalnej stacji roboczej za pomocą [interfejsu wiersza polecenia platformy Azure (CLI)](/cli/azure/install-azure-cli) lub [programu Azure PowerShell](/powershell/azure/overview).  
 
-Dla platformy Azure CLI 2.0 Użyj następujących poleceń, aby zalogować się, wybierz subskrypcję i przesyłanie strumieniowe plików dziennika:
+Wiersza polecenia platformy Azure Użyj następujących poleceń, aby zalogować się, wybierz subskrypcję i przesyłanie strumieniowe plików dziennika:
 
 ```
 az login

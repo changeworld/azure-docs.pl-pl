@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.workload: identity
 ms.date: 08/04/2017
 ms.author: bryanla
-ms.openlocfilehash: 0554e2e184ce3f3140d3b9e90eb33c20774ed789
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 73ece43c26c3957a1b7dba02a673099f7d35e8d6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44303008"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46951784"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-cli"></a>Jak używać usuwania nietrwałego w usłudze Key Vault z interfejsem wiersza polecenia
 
@@ -25,9 +25,9 @@ Funkcja usuwania nietrwałego w usłudze Azure Key Vault umożliwia odzyskiwanie
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Azure CLI 2.0 — Jeśli nie masz tej instalacji dla danego środowiska, zobacz [Zarządzanie Key Vault przy użyciu interfejsu wiersza polecenia 2.0](key-vault-manage-with-cli2.md).
+- Wiersza polecenia platformy Azure — Jeśli nie masz, to skonfigurować w danym środowisku, zobacz [Zarządzanie Key Vault przy użyciu wiersza polecenia platformy Azure](key-vault-manage-with-cli2.md).
 
-Dla usługi Key Vault szczegółowe informacje dotyczące interfejsu wiersza polecenia, zobacz [odwołanie do usługi Key Vault Azure CLI 2.0](https://docs.microsoft.com/cli/azure/keyvault).
+Dla usługi Key Vault szczegółowe informacje dotyczące interfejsu wiersza polecenia, zobacz [odwołanie do magazynu kluczy interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/keyvault).
 
 ## <a name="required-permissions"></a>Wymagane uprawnienia
 

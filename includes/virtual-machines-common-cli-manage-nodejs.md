@@ -5,11 +5,12 @@ Jeśli jeszcze nie zainstalowano interfejsu wiersza polecenia platformy Azure i 
 ## <a name="cli-versions-to-complete-the-task"></a>Wersje interfejsu wiersza polecenia umożliwiające wykonanie zadania
 Zadanie można wykonać przy użyciu jednej z następujących wersji interfejsu wiersza polecenia:
 
-- Interfejs wiersza polecenia platformy Azure w wersji 10 — nasz interfejs wiersza polecenia dla klasycznego modelu wdrażania i modelu wdrażania na potrzeby zarządzania zasobami (w tym artykule)
-- [Interfejs wiersza polecenia platformy Azure w wersji 2.0](../articles/virtual-machines/linux/cli-manage.md) — nasz interfejs wiersza polecenia nowej generacji dla modelu wdrażania na potrzeby zarządzania zasobami
+- Klasyczny interfejs wiersza polecenia Azure — Nasz interfejs wiersza polecenia dla klasycznego i zasobów zarządzania modeli wdrażania (w tym artykule)
+- [Interfejs wiersza polecenia Azure](../articles/virtual-machines/linux/cli-manage.md) — naszej nowej generacji interfejsu wiersza polecenia dla modelu wdrażania usługi resource management
 
-## <a name="basic-azure-resource-manager-commands-in-azure-cli"></a>Podstawowe polecenia usługi Azure Resource Manager w interfejsie wiersza polecenia platformy Azure
-W tym artykule omówiono podstawowe polecenia w interfejsie wiersza polecenia platformy Azure służące do interakcji z zasobami (głównie maszynami wirtualnymi) i zarządzania nimi w subskrypcji platformy Azure.  Aby uzyskać bardziej szczegółową pomoc dotyczącą konkretnych przełączników wiersza polecenia i opcji, możesz użyć pomocy online dotyczącej poleceń i opcji, wpisując polecenie `azure <command> <subcommand> --help` lub `azure help <command> <subcommand>`.
+## <a name="basic-azure-resource-manager-commands-in-azure-classic-cli"></a>Podstawowe polecenia usługi Azure Resource Manager w klasycznym wiersza polecenia platformy Azure
+
+W tym artykule omówiono podstawowe polecenia, które mają za pomocą klasycznego wiersza polecenia platformy Azure do zarządzania i interakcji z zasobami (głównie maszynami wirtualnymi) w ramach subskrypcji platformy Azure.  Aby uzyskać bardziej szczegółową pomoc dotyczącą konkretnych przełączników wiersza polecenia i opcji, możesz użyć pomocy online dotyczącej poleceń i opcji, wpisując polecenie `azure <command> <subcommand> --help` lub `azure help <command> <subcommand>`.
 
 > [!NOTE]
 > Te przykłady nie obejmują operacji opartych na szablonach, które są zazwyczaj zalecane w przypadku wdrożeń maszyn wirtualnych w usłudze Resource Manager. Aby uzyskać informacje, zobacz [Używanie interfejsu wiersza polecenia platformy Azure z usługą Resource Manager](../articles/xplat-cli-azure-resource-manager.md) i [Wdrażanie maszyn wirtualnych i zarządzanie nimi przy użyciu szablonów usługi Azure Resource Manager i interfejsu wiersza polecenia platformy Azure](../articles/virtual-machines/linux/create-ssh-secured-vm-from-template.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).
@@ -40,5 +41,5 @@ W tym artykule omówiono podstawowe polecenia w interfejsie wiersza polecenia pl
 | Używanie zasobów maszyny wirtualnej |`azure vm list-usage [options] <location>` |
 | Pobieranie wszystkich rozmiarów maszyn wirtualnych |`azure vm sizes [options]` |
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 * Aby zapoznać się w dodatkowymi przykładami poleceń interfejsu wiersza polecenia wykraczającymi poza podstawy zarządzana maszynami wirtualnymi, zobacz [Używanie interfejsu wiersza polecenia platformy Azure z usługą Azure Resource Manager](../articles/virtual-machines/azure-cli-arm-commands.md).

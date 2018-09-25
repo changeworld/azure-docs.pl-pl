@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie pamięcią podręczną Redis Azure za pomocą wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak zainstalować wiersza polecenia platformy Azure na dowolnej platformie, jak z niego korzystać do łączenia się z kontem platformy Azure i sposobu tworzenia i zarządzania nimi pamięci podręcznej Redis z wiersza polecenia platformy Azure.
+title: Zarządzanie usługi Azure Redis Cache za pomocą klasycznego wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak zainstalować klasyczne wiersza polecenia platformy Azure na dowolnej platformie, jak z niej korzystać, aby nawiązać połączenie z kontem platformy Azure i jak tworzyć i zarządzać pamięci podręcznej Redis z klasyczny interfejs wiersza polecenia.
 services: redis-cache
 documentationcenter: ''
 author: wesmc7777
@@ -14,58 +14,56 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/23/2017
 ms.author: wesmc
-ms.openlocfilehash: fdb0989af2215166b69f10474a0d22aab7b4d593
-ms.sourcegitcommit: 2a70752d0987585d480f374c3e2dba0cd5097880
+ms.openlocfilehash: 0e8bbaad920f35028c51641779a3272f73f81f37
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 01/19/2018
-ms.locfileid: "27911282"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978441"
 ---
-# <a name="how-to-create-and-manage-azure-redis-cache-using-the-azure-command-line-interface-azure-cli"></a>Jak utworzyć i zarządzać pamięcią podręczną Redis Azure za pomocą interfejsu wiersza polecenia platformy Azure (Azure CLI)
+# <a name="how-to-create-and-manage-azure-redis-cache-using-the-azure-classic-cli"></a>Jak tworzyć i zarządzać nimi w usłudze Azure Redis Cache za pomocą klasycznego wiersza polecenia platformy Azure
 > [!div class="op_single_selector"]
 > * [Program PowerShell](cache-howto-manage-redis-cache-powershell.md)
-> * [Interfejs wiersza polecenia platformy Azure](cache-manage-cli.md)
->
+> * [Klasyczny interfejs wiersza polecenia Azure](cache-manage-cli.md)
 >
 
-Azure CLI jest doskonałym sposobem zarządzających infrastrukturą platformy Azure z dowolną platformą. W tym artykule przedstawiono sposób tworzenia i zarządzania nimi z wystąpień pamięci podręcznej Redis Azure za pomocą wiersza polecenia platformy Azure.
+Klasyczny interfejs wiersza polecenia Azure jest doskonałym sposobem na zarządzanie infrastrukturą platformy Azure z dowolnej platformy. W tym artykule przedstawiono sposób tworzenia i zarządzania nimi swoich wystąpień usługi Azure Redis Cache za pomocą klasycznego wiersza polecenia platformy Azure.
 
+[!INCLUDE [outdated-cli-content](../../includes/contains-classic-cli-content.md)]
 > [!NOTE]
-> Ten artykuł dotyczy poprzedniej wersji interfejsu wiersza polecenia Azure. Uzyskać najnowsze Azure CLI 2.0 przykładowe skrypty, zobacz [przykłady pamięci podręcznej Azure CLI Redis](cli-samples.md).
-> 
-> 
+> Aby uzyskać najnowsze wiersza polecenia platformy Azure przykładowe skrypty, zobacz [przykłady użycia pamięci podręcznej Redis interfejsu wiersza polecenia platformy Azure](cli-samples.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Tworzenie i zarządzanie nimi wystąpień pamięci podręcznej Redis Azure za pomocą interfejsu wiersza polecenia Azure, wykonaj następujące kroki.
+Do tworzenia i zarządzania jego wystąpieniami usługi Azure Redis Cache za pomocą klasycznego wiersza polecenia platformy Azure, wykonaj następujące kroki.
 
-* Musi mieć konto platformy Azure. Jeśli nie masz, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) za kilka minut.
-* [Instalowanie interfejsu wiersza polecenia platformy Azure](../cli-install-nodejs.md).
-* Połącz instalacji wiersza polecenia platformy Azure z osobistego konta Azure lub z firmowego lub szkolnego konta platformy Azure i zaloguj z wiersza polecenia platformy Azure przy użyciu `azure login` polecenia. Aby poznać różnice, a następnie wybierz pozycję, zobacz [Połącz z subskrypcją platformy Azure z interfejsu wiersza polecenia platformy Azure (Azure CLI)](/cli/azure/authenticate-azure-cli).
-* Przed uruchomieniem dowolne z poniższych poleceń, przełącznik wiersza polecenia platformy Azure w trybie Menedżera zasobów, uruchamiając `azure config mode arm` polecenia. Aby uzyskać więcej informacji, zobacz [użyć wiersza polecenia platformy Azure do zarządzania zasobami Azure i grup zasobów](../xplat-cli-azure-resource-manager.md).
+* Musisz mieć konto platformy Azure. Jeśli nie masz, możesz utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/) za kilka minut.
+* [Instalowanie platformy Azure klasyczny interfejs wiersza polecenia](../cli-install-nodejs.md).
+* Połącz instalacji wiersza polecenia platformy Azure przy użyciu osobistego konta platformy Azure lub przy użyciu służbowego lub służbowe konto platformy Azure i zaloguj się z klasycznym przy użyciu interfejsu wiersza polecenia `azure login` polecenia.
+* Przed uruchomieniem dowolne z następujących poleceń, Przełącz klasyczny interfejs wiersza polecenia w trybie Menedżera zasobów, uruchamiając `azure config mode arm` polecenia. Aby uzyskać więcej informacji, zobacz [użycie platformy Azure klasyczny interfejs wiersza polecenia do zarządzania zasobami i grupami zasobów platformy Azure](../xplat-cli-azure-resource-manager.md).
 
 ## <a name="redis-cache-properties"></a>Właściwości pamięci podręcznej redis
 Następujące właściwości są używane podczas tworzenia i aktualizowania wystąpienia pamięci podręcznej Redis.
 
 | Właściwość | Przełącznik | Opis |
 | --- | --- | --- |
-| name |-n, — nazwa |Nazwa pamięci podręcznej Redis. |
+| name |-n,--name |Nazwa pamięci podręcznej Redis. |
 | grupa zasobów |-g,--grupy zasobów |Nazwa grupy zasobów. |
-| location |-l, — lokalizacja |Lokalizacja, w celu tworzenia pamięci podręcznej. |
+| location |-l,--lokalizacji |Lokalizacja, aby utworzyć pamięć podręczną. |
 | rozmiar |-z, — rozmiar |Rozmiar pamięci podręcznej Redis. Prawidłowe wartości: [C0 C1, C2, C3, C4, C5, C6, P1, P2, P3, P4] |
-| sku |-x, --sku |W pamięci podręcznej redis jednostki SKU. Powinien być jednym z: [Basic, Standard, Premium] |
-| EnableNonSslPort |-e, - enable bez protokołu ssl portu |Właściwość EnableNonSslPort pamięci podręcznej Redis. Dodaj tę flagę, aby włączyć Port bez protokołu SSL dla pamięci podręcznej |
-| Redis konfiguracji |-c,--konfiguracja pamięci podręcznej redis |W pamięci podręcznej redis konfiguracji. Wprowadź ciąg w formacie JSON konfiguracji kluczy i wartości w tym miejscu. Format: "{" ":""," ":" "}" |
-| Redis konfiguracji |-f, — plik w przypadku konfiguracji pamięci podręcznej redis |W pamięci podręcznej redis konfiguracji. Wprowadź ścieżkę pliku zawierającego konfiguracji kluczy i wartości w tym miejscu. Wpis w pliku formatu: {"": "","": ""} |
-| Liczba niezależnych |-r--niezależnego fragmentu-, count, liczba |Liczba fragmentów, aby utworzyć na pamięć podręczna Premium klastrowania z klastra. |
-| Virtual Network |-v, — sieci wirtualnej |Odnośnie do hostowania pamięci podręcznej w sieci Wirtualnej, określa dokładne ARM identyfikator zasobu sieci wirtualnej do pamięci podręcznej redis w wdrożenia. Przykładowy format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
-| Typ klucza |-t, — typ klucza |Typ klucza do odnowienia. Prawidłowe wartości: [podstawową, dodatkowej] |
-| StaticIP |-p,--static ip < static ip > |Podczas obsługi pamięci podręcznej w sieci Wirtualnej, określa unikatowy adres IP w podsieci dla pamięci podręcznej. Jeśli nie zostanie podana, co zostanie wybrany dla Ciebie podsieci. |
-| Podsieć |t, --subnet <subnet> |Podczas obsługi pamięci podręcznej w sieci Wirtualnej, określa nazwę podsieci, w której chcesz wdrożyć w pamięci podręcznej. |
-| VirtualNetwork |-v, — sieci wirtualnej <-sieci wirtualnej > |Odnośnie do hostowania pamięci podręcznej w sieci Wirtualnej, określa dokładne ARM identyfikator zasobu sieci wirtualnej do pamięci podręcznej redis w wdrożenia. Przykładowy format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
-| Subskrypcja |-s, - subskrypcji |Identyfikator subskrypcji. |
+| sku |-x, --sku |Usługa redis jednostki SKU. Powinien być jednym z: [podstawowa, standardowa, Premium] |
+| EnableNonSslPort |-e,--enable bez protokołu ssl — portu |Właściwość EnableNonSslPort pamięci podręcznej Redis. Dodaj tę flagę, jeśli chcesz włączyć Port bez protokołu SSL dla pamięci podręcznej |
+| Konfigurowanie pamięci podręcznej redis |-c, — konfiguracja pamięci podręcznej redis |Konfigurowanie pamięci podręcznej redis. Wprowadź ciąg formatu JSON konfiguracji kluczy i wartości w tym miejscu. Format: "{" ":""," ":" "}" |
+| Konfigurowanie pamięci podręcznej redis |-f, — plik w przypadku konfiguracji pamięci podręcznej redis |Konfigurowanie pamięci podręcznej redis. Wprowadź ścieżkę pliku zawierającego kluczy i wartości w tym miejscu konfiguracji. Format wpisu pliku: {"": "","": ""} |
+| Liczba fragmentów |-r,--liczba fragmentów |Liczba fragmentów, aby utworzyć na Cache klaster w warstwie Premium z usługą klastrowania. |
+| Virtual Network |-v,--sieci wirtualnej |W przypadku hostowania w sieci Wirtualnej pamięci podręcznej, określa dokładną ARM identyfikator zasobu sieci wirtualnej do wdrożenia pamięci podręcznej redis w. Przykładowy format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| Typ klucza |-t, — typ klucza |Typ klucza do odnowienia. Prawidłowe wartości: [podstawowego, pomocniczego] |
+| StaticIP |-p,--static ip < static ip > |W przypadku hostowania w sieci Wirtualnej pamięci podręcznej, określa unikatowy adres IP w podsieci dla pamięci podręcznej. Jeśli nie zostanie podana, jeden jest wybierany automatycznie z podsieci. |
+| Podsieć |t, — podsieci <subnet> |W przypadku hostowania w sieci Wirtualnej pamięci podręcznej, określa nazwę podsieci, w której ma zostać wdrożony w pamięci podręcznej. |
+| VirtualNetwork |-v,--sieci wirtualnej <-sieci wirtualnej > |W przypadku hostowania w sieci Wirtualnej pamięci podręcznej, określa dokładną ARM identyfikator zasobu sieci wirtualnej do wdrożenia pamięci podręcznej redis w. Przykładowy format: /subscriptions/{subid}/resourceGroups/{resourceGroupName}/Microsoft.ClassicNetwork/VirtualNetworks/vnet1 |
+| Subskrypcja |-s,--subskrypcji |Identyfikator subskrypcji. |
 
-## <a name="see-all-redis-cache-commands"></a>Zobacz wszystkie polecenia pamięci podręcznej Redis
-Aby wyświetlić wszystkie polecenia pamięci podręcznej Redis i ich parametry, użyj `azure rediscache -h` polecenia.
+## <a name="see-all-redis-cache-commands"></a>Zobacz wszystkie polecenia Redis Cache
+Aby wyświetlić wszystkie polecenia Redis Cache i ich parametrów, należy użyć `azure rediscache -h` polecenia.
 
     C:\>azure rediscache -h
     help:    Commands to manage your Azure Redis Cache(s)
@@ -97,7 +95,7 @@ Aby wyświetlić wszystkie polecenia pamięci podręcznej Redis i ich parametry,
     help:    Current Mode: arm (Azure Resource Management)
 
 ## <a name="create-a-redis-cache"></a>Tworzenie pamięci podręcznej Redis Cache
-Aby utworzyć pamięci podręcznej Redis, użyj następującego polecenia:
+Aby utworzyć pamięć podręczną Redis, użyj następującego polecenia:
 
     azure rediscache create [--name <name> --resource-group <resource-group> --location <location> [options]]
 
@@ -129,7 +127,7 @@ Aby uzyskać więcej informacji na temat tego polecenia, uruchom `azure rediscac
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="delete-an-existing-redis-cache"></a>Usuń istniejące pamięci podręcznej Redis
+## <a name="delete-an-existing-redis-cache"></a>Usuń istniejące pamięć podręczną Redis
 Aby usunąć pamięci podręcznej Redis, użyj następującego polecenia:
 
     azure rediscache delete [--name <name> --resource-group <resource-group> ]
@@ -152,8 +150,8 @@ Aby uzyskać więcej informacji na temat tego polecenia, uruchom `azure rediscac
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="list-all-redis-caches-within-your-subscription-or-resource-group"></a>Wyświetl listę wszystkich pamięci podręczne Redis w ramach Twojej subskrypcji lub grupy zasobów
-Aby wyświetlić listę wszystkich pamięci podręczne Redis w ramach Twojej subskrypcji lub grupy zasobów, użyj następującego polecenia:
+## <a name="list-all-redis-caches-within-your-subscription-or-resource-group"></a>Lista wszystkich Redis Cache w ramach Twojej subskrypcji lub grupy zasobów
+Aby wyświetlić listę wszystkich Redis Cache w ramach Twojej subskrypcji lub grupy zasobów, użyj następującego polecenia:
 
     azure rediscache list [options]
 
@@ -175,7 +173,7 @@ Aby uzyskać więcej informacji na temat tego polecenia, uruchom `azure rediscac
     help:    Current Mode: arm (Azure Resource Management)
 
 ## <a name="show-properties-of-an-existing-redis-cache"></a>Pokaż właściwości istniejącej pamięci podręcznej Redis
-Aby wyświetlić właściwości istniejącej pamięci podręcznej Redis, użyj następującego polecenia:
+Aby wyświetlić właściwości istniejącej pamięci podręcznej redis cache, użyj następującego polecenia:
 
     azure rediscache show [--name <name> --resource-group <resource-group>]
 
@@ -199,7 +197,7 @@ Aby uzyskać więcej informacji na temat tego polecenia, uruchom `azure rediscac
 
 <a name="scale"></a>
 
-## <a name="change-settings-of-an-existing-redis-cache"></a>Zmień ustawienia istniejących pamięci podręcznej Redis
+## <a name="change-settings-of-an-existing-redis-cache"></a>Zmień ustawienia istniejącej pamięci podręcznej Redis
 Aby zmienić ustawienia istniejących pamięci podręcznej Redis, użyj następującego polecenia:
 
     azure rediscache set [--name <name> --resource-group <resource-group> --redis-configuration <redis-configuration>/--redis-configuration-file <redisConfigurationFile>]
@@ -224,8 +222,8 @@ Aby uzyskać więcej informacji na temat tego polecenia, uruchom `azure rediscac
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="renew-the-authentication-key-for-an-existing-redis-cache"></a>Odnawianie klucz uwierzytelniania dla istniejącej pamięci podręcznej Redis
-Aby odnowić klucz uwierzytelniania dla istniejącej pamięci podręcznej Redis, użyj następującego polecenia:
+## <a name="renew-the-authentication-key-for-an-existing-redis-cache"></a>Odnów klucz uwierzytelniania dla istniejącej pamięci podręcznej Redis
+Aby odnowić klucz uwierzytelniania dla istniejącej pamięci podręcznej redis cache, użyj następującego polecenia:
 
     azure rediscache renew-key [--name <name> --resource-group <resource-group> --key-type <key-type>]
 
@@ -250,8 +248,8 @@ Aby uzyskać więcej informacji na temat tego polecenia, uruchom `azure rediscac
     help:
     help:    Current Mode: arm (Azure Resource Management)
 
-## <a name="list-primary-and-secondary-keys-of-an-existing-redis-cache"></a>Lista podstawowe i pomocnicze klucze istniejącej pamięci podręcznej Redis
-Lista podstawowe i pomocnicze klucze istniejącej pamięci podręcznej Redis Użyj następującego polecenia:
+## <a name="list-primary-and-secondary-keys-of-an-existing-redis-cache"></a>Lista podstawowe i pomocnicze klucze istniejąca pamięć podręczna Redis
+Na liście podstawowe i pomocnicze klucze istniejącej pamięci podręcznej redis Cache Użyj następującego polecenia:
 
     azure rediscache list-keys [--name <name> --resource-group <resource-group>]
 

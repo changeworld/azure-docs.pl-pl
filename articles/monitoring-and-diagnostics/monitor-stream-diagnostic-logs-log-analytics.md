@@ -8,16 +8,16 @@ ms.topic: conceptual
 ms.date: 04/04/2018
 ms.author: johnkem
 ms.component: logs
-ms.openlocfilehash: 134c33ac28c6a094bdc50deb7206db95bf4436fc
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: c419a3c44a38f72d56f2b7b362c62e683fc20c7f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574535"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993021"
 ---
 # <a name="stream-azure-diagnostic-logs-to-log-analytics"></a>Stream dzienniki diagnostyczne platformy Azure do usługi Log Analytics
 
-**[Dzienniki diagnostyczne platformy Azure](monitoring-overview-of-diagnostic-logs.md)**  może być przesyłany strumieniowo w czasie zbliżonym do rzeczywistego usługą Azure Log Analytics przy użyciu portalu, poleceń cmdlet programu PowerShell lub interfejsu wiersza polecenia platformy Azure w wersji 2.0.
+**[Dzienniki diagnostyczne platformy Azure](monitoring-overview-of-diagnostic-logs.md)**  może być przesyłany strumieniowo w czasie zbliżonym do rzeczywistego usługą Azure Log Analytics przy użyciu portalu, poleceń cmdlet programu PowerShell lub wiersza polecenia platformy Azure.
 
 ## <a name="what-you-can-do-with-diagnostics-logs-in-log-analytics"></a>Co można zrobić przy użyciu diagnostyki dzienników w usłudze Log Analytics
 
@@ -73,9 +73,9 @@ Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -WorkspaceID [resour
 
 Należy pamiętać, że właściwość workspaceID przyjmuje identyfikator zasobu pełnej platformy Azure nie obszaru roboczego klucz/Identyfikatora wyświetlane w portalu usługi Log Analytics w obszarze roboczym.
 
-### <a name="via-azure-cli-20"></a>Za pomocą interfejsu wiersza polecenia platformy Azure 2.0
+### <a name="via-azure-cli"></a>Za pomocą wiersza polecenia platformy Azure
 
-Do przesyłania strumieniowego za pośrednictwem [interfejsu wiersza polecenia platformy Azure w wersji 2.0](insights-cli-samples.md), możesz użyć [tworzenie az monitor diagnostic-settings](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) polecenia.
+Do przesyłania strumieniowego za pośrednictwem [wiersza polecenia platformy Azure](insights-cli-samples.md), możesz użyć [tworzenie az monitor diagnostic-settings](/cli/azure/monitor/diagnostic-settings#az-monitor-diagnostic-settings-create) polecenia.
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \

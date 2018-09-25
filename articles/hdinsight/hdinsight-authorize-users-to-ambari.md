@@ -1,6 +1,6 @@
 ---
 title: Autoryzowanie użytkowników na potrzeby widoków Ambari — Azure HDInsight
-description: Jak zarządzać uprawnieniami użytkowników i grup dla przyłączonych do domeny klastrów HDInsight Ambari.
+description: Jak zarządzać uprawnieniami użytkowników i grup Ambari do HDInsight klastrów przy użyciu ESP włączone.
 services: hdinsight
 author: maxluk
 ms.reviewer: jasonh
@@ -9,23 +9,23 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/26/2017
 ms.author: maxluk
-ms.openlocfilehash: f1aa80ec9df8faee4cf5ea98910e28cfc11a7920
-ms.sourcegitcommit: e2348a7a40dc352677ae0d7e4096540b47704374
+ms.openlocfilehash: 4e05d4ff9c090fac0242921e15ef16439d3ed27f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43782131"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954453"
 ---
 # <a name="authorize-users-for-ambari-views"></a>Autoryzowanie użytkowników na potrzeby widoków Ambari
 
-[Przyłączone do domeny klastrów HDInsight](./domain-joined/apache-domain-joined-introduction.md) zapewniają możliwości przeznaczonych dla przedsiębiorstw, w tym uwierzytelniania opartego na usłudze Azure Active Directory. Możesz [Synchronizowanie nowych użytkowników](hdinsight-sync-aad-users-to-cluster.md) dodane do grup usługi Azure AD, które zostały dołączone do dostępu do klastra, pozwalając określonych wykonywać niektórych akcji. Praca z użytkowników, grup i uprawnień w Ambari jest obsługiwane zarówno w przypadku klastra HDInsight przyłączone do domeny, jak i klaster HDInsight w warstwie standardowa.
+[Pakiet zabezpieczeń przedsiębiorstwa (ESP) włączone klastry HDInsight](./domain-joined/apache-domain-joined-introduction.md) zapewniają możliwości przeznaczonych dla przedsiębiorstw, w tym uwierzytelniania opartego na usłudze Azure Active Directory. Możesz [Synchronizowanie nowych użytkowników](hdinsight-sync-aad-users-to-cluster.md) dodane do grup usługi Azure AD, które zostały dołączone do dostępu do klastra, pozwalając określonych wykonywać niektórych akcji. Praca z użytkowników, grup i uprawnień w Ambari jest obsługiwane zarówno w klastry HDInsight ESP, jak i w klastrach HDInsight w warstwie standardowa.
 
 Użytkownicy usługi Active Directory mogą logować się do węzłów klastra przy użyciu swoich poświadczeń domeny. One służy również swoich poświadczeń domeny do uwierzytelniania interakcje klastra za pomocą innych zatwierdzonych punktów końcowych, takich jak Hue, widoków Ambari, ODBC, JDBC, PowerShell i interfejsów API REST.
 
 > [!WARNING]
 > Nie zmieniaj hasła strażnika Ambari (hdinsightwatchdog) w klastrze usługi HDInsight opartych na systemie Linux. Zmienianie hasła przerywa możliwość użyj akcji skryptu, lub wykonywać operacje skalowania na potrzeby klastra.
 
-Jeśli jeszcze tego nie zrobiono, wykonaj [w instrukcjach](./domain-joined/apache-domain-joined-configure.md) zainicjować nowy klaster przyłączony do domeny.
+Jeśli jeszcze tego nie zrobiono, wykonaj [w instrukcjach](./domain-joined/apache-domain-joined-configure.md) do nowego klastra ESP aprowizacji.
 
 ## <a name="access-the-ambari-management-page"></a>Dostęp do strony zarządzania Ambari
 
@@ -116,7 +116,7 @@ Widok listy zawiera szybkie możliwości edycji w dwie kategorie: użytkowników
 
     ![Widok — Użytkownicy listy ról](./media/hdinsight-authorize-users-to-ambari/roles-list-view-users.png)
 
-* Kategoria grupy w widoku listy wyświetla wszystkich grup i ról przypisanych do każdej grupy. W naszym przykładzie lista grup jest zsynchronizowany z grup usługi Azure AD, określone w **dostęp do grupy użytkowników** właściwości ustawienia domeny klastra. Zobacz [Tworzenie klastra HDInsight przyłączone do domeny](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-domain-joined-hdinsight-cluster).
+*  Kategoria grupy w widoku listy wyświetla wszystkich grup i ról przypisanych do każdej grupy. W naszym przykładzie lista grup jest zsynchronizowany z grup usługi Azure AD, określone w **dostęp do grupy użytkowników** właściwości ustawienia domeny klastra. Zobacz [Tworzenie klastra HDInsight z ESP włączone](./domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-a-hdinsight-cluster-with-esp).
 
     ![Widok — grup listy ról](./media/hdinsight-authorize-users-to-ambari/roles-list-view-groups.png)
 
@@ -136,7 +136,7 @@ Firma Microsoft przypisano użytkowników domeny usługi Azure AD "hiveuser2" *u
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Konfigurowanie zasad usługi Hive HDInsight przyłączone do domeny](./domain-joined/apache-domain-joined-run-hive.md)
-* [Zarządzanie klastrami HDInsight przyłączone do domeny](./domain-joined/apache-domain-joined-manage.md)
+* [Konfigurowanie zasad usługi Hive HDInsight przy użyciu ESP](./domain-joined/apache-domain-joined-run-hive.md)
+* [Zarządzanie klastrami HDInsight ESP](./domain-joined/apache-domain-joined-manage.md)
 * [Korzystanie z widoku Hive z usługą Hadoop w HDInsight](hadoop/apache-hadoop-use-hive-ambari-view.md)
 * [Synchronizowanie użytkowników usługi Azure AD do klastra](hdinsight-sync-aad-users-to-cluster.md)

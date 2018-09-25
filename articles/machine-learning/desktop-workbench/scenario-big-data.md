@@ -16,14 +16,17 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/15/2017
 ms.author: daden
-ms.openlocfilehash: 7a13cafd3dcfb4637a5deae2c678c518019ad168
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 8f3bd4e62aa85c69a0bfafeacf13bc3e472136d5
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39460247"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964705"
 ---
 # <a name="server-workload-forecasting-on-terabytes-of-data"></a>Prognozowanie obciążenia serwera pod kątem terabajtów danych
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 W tym artykule opisano, jak analitycy danych za pomocą usługi Azure Machine Learning Workbench opracowywania rozwiązań, które korzystają z danych big data. Można zacząć od przykładowych dużych zestawów danych, iterację przygotowywania danych, technicznego opracowywania funkcji oraz uczenie maszynowe i następnie rozszerzyć proces całego dużych zestawów danych. 
 
@@ -49,11 +52,11 @@ W tym scenariuszu możesz skoncentrować się na straty obciążenia dla każdej
 Wymagania wstępne dotyczące uruchamiania w tym przykładzie są następujące:
 
 * [Konta platformy Azure](https://azure.microsoft.com/free/) (bezpłatne wersje próbne są dostępne).
-* Zainstalowana kopia programu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Aby zainstalować ten program i utworzyć obszar roboczy, zobacz [Przewodnik instalacji szybkiego startu](../service/quickstart-installation.md). Jeśli masz wiele subskrypcji, możesz to zrobić [ustaw odpowiednią subskrypcję do bieżącej subskrypcji active](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az-account-set).
+* Zainstalowana kopia programu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md). Aby zainstalować ten program i utworzyć obszar roboczy, zobacz [Przewodnik instalacji szybkiego startu](quickstart-installation.md). Jeśli masz wiele subskrypcji, możesz to zrobić [ustaw odpowiednią subskrypcję do bieżącej subskrypcji active](https://docs.microsoft.com/cli/azure/account?view=azure-cli-latest#az_account_set).
 * Windows 10 (zgodnie z instrukcjami w tym przykładzie są generalnie takie same dla systemów macOS).
 * Data Science Virtual Machine (dsvm dystrybucji) dla systemu Linux (Ubuntu), najlepiej w regionie wschodnie stany USA, w którym znajduje się dane. Możesz aprowizować DSVM Ubuntu, postępując zgodnie z [w instrukcjach](https://docs.microsoft.com/azure/machine-learning/data-science-virtual-machine/dsvm-ubuntu-intro). Można również wyświetlić [ten przewodnik Szybki Start](https://ms.portal.azure.com/#create/microsoft-ads.linux-data-science-vm-ubuntulinuxdsvmubuntu). Firma Microsoft zaleca używanie maszyny wirtualnej z co najmniej 8 rdzeni i pamięci równym 32 GB. 
 
-Postępuj zgodnie z [instrukcji](../service/known-issues-and-troubleshooting-guide.md#remove-vm-execution-error-no-tty-present) Aby włączyć dostęp bez hasła sudoer na maszynie Wirtualnej AML aplikacji Workbench.  Możesz użyć [uwierzytelniania opartego na kluczach SSH dotyczące tworzenia i używania maszyny Wirtualnej w aplikacji Workbench AML](experimentation-service-configuration.md#using-ssh-key-based-authentication-for-creating-and-using-compute-targets). W tym przykładzie używamy hasła do dostępu do maszyny Wirtualnej.  Zapisz Poniższa tabela z informacjami o TRENINGU do dalszych etapów:
+Postępuj zgodnie z [instrukcji](../desktop-workbench/known-issues-and-troubleshooting-guide.md#remove-vm-execution-error-no-tty-present) Aby włączyć dostęp bez hasła sudoer na maszynie Wirtualnej AML aplikacji Workbench.  Możesz użyć [uwierzytelniania opartego na kluczach SSH dotyczące tworzenia i używania maszyny Wirtualnej w aplikacji Workbench AML](experimentation-service-configuration.md#using-ssh-key-based-authentication-for-creating-and-using-compute-targets). W tym przykładzie używamy hasła do dostępu do maszyny Wirtualnej.  Zapisz Poniższa tabela z informacjami o TRENINGU do dalszych etapów:
 
  Nazwa pola| Wartość |  
  |------------|------|

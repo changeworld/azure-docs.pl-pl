@@ -10,12 +10,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: 57e83376747b9a3e2d30dec37d4a378a167580e5
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 66ed36ea3d7b38166b9214e36289e32119659856
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733114"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965467"
 ---
 # <a name="choose-a-cloud-sql-server-option-azure-sql-paas-database-or-sql-server-on-azure-vms-iaas"></a>Wybieranie opcji programu SQL Server w chmurze: usługa Azure SQL Database (PaaS) lub program SQL Server na maszynach wirtualnych Azure (IaaS)
 
@@ -24,17 +24,15 @@ Na platformie Azure może mieć obciążeń programu SQL Server, działające w 
 - [Usługa Azure SQL Database](https://azure.microsoft.com/services/sql-database/): aparatu bazy danych SQL, w oparciu o Enterprise programu SQL Server, który jest zoptymalizowany pod kątem tworzenia nowoczesnych aplikacji. Usługa Azure SQL Database oferuje kilka opcji wdrażania:
   - Możesz wdrożyć pojedynczą bazę danych do [serwer logiczny](sql-database-logical-servers.md).
   - Można wdrożyć w [puli elastycznej](sql-database-elastic-pool.md) na [serwer logiczny](sql-database-logical-servers.md) udostępnianie zasobów i obniżyć koszty. 
+  - Można wdrożyć na [wystąpieniach zarządzanych bazy danych SQL Azure](sql-database-managed-instance.md). 
+      
+   Poniższa ilustracja przedstawia te opcje wdrażania:
 
-      > [!NOTE]
-      > Zawierający pojedynczy i puli baz danych Azure SQL Database oferuje większość funkcji o zakresie bazy danych programu SQL Server.
+     ![deployment-options](./media/sql-database-technical-overview/deployment-options.png) 
 
-      Poniższa ilustracja przedstawia te opcje wdrażania:
+     > [!NOTE]
+     > Za pomocą wszystkich trzech wersjach bazy danych SQL Azure dodaje dodatkowe funkcje, które nie są dostępne w programie SQL Server, takie jak wbudowana funkcja analizy i zarządzania. Serwer logiczny, zawierający pojedynczy i puli baz danych oferuje większość funkcji o zakresie bazy danych programu SQL Server. W usłudze Azure SQL Database Managed Instance Azure SQL Database oferuje zasoby udostępnione dla baz danych i dodatkowych funkcji należących do zakresu wystąpienia. Wystąpienie usługi Azure SQL Database Managed obsługuje migrację bazy danych, korzystając z minimalnym bez zmian w bazie danych. 
 
-      ![deployment-options](./media/sql-database-technical-overview/deployment-options.png) 
-  - Można wdrożyć na [usługi Azure SQL wystąpieniach zarządzanych bazy danych (wersja zapoznawcza)](sql-database-managed-instance.md). 
-
-      > [!NOTE]
-      > Obie wersje bazy danych SQL Azure dodaje dodatkowe funkcje, które nie są dostępne w programie SQL Server, takie jak wbudowana funkcja analizy i zarządzania. Wraz z pierwszą wersję z bazy danych wystąpienia zarządzanego Azure SQL, Azure SQL Database oferuje zasoby udostępnione dla baz danych i dodatkowych funkcji należących do zakresu wystąpienia. Wystąpienie usługi Azure SQL Database Managed obsługuje migrację bazy danych, korzystając z minimalnym bez zmian w bazie danych.
 - [Program SQL Server na maszynach wirtualnych Azure](https://azure.microsoft.com/services/virtual-machines/sql-server/): SQL Server zainstalowany i hostowany w chmurze w systemie Windows Server lub Linux maszyn wirtualnych (VM) na platformie Azure, znany również jako infrastruktura jako usługa (IaaS). Program SQL Server na maszynach wirtualnych platformy Azure to dobra opcja w przypadku migracji lokalnych baz danych programu SQL Server i aplikacje bez zmiany bazy danych. Wszystkie najnowsze wersje i wydania programu SQL Server są dostępne do zainstalowania na maszynie wirtualnej IaaS. Najbardziej znaczący różnica z bazy danych SQL polega na tym, że maszyny wirtualne SQL Server umożliwia pełną kontrolę nad aparatem bazy danych. Można wybrać podczas konserwacji/poprawianie rozpocznie się, aby zmienić model odzyskiwania prostego lub niepełnym dziennikiem umożliwia szybsze ładowanie mniej dziennika, aby wstrzymać lub uruchomić aparatu w razie potrzeby, i można w pełni dostosować aparatu bazy danych programu SQL Server. Dołączono dodano odpowiedzialność za zarządzanie maszynami wirtualnymi za pomocą tej kontrolki dodatkowe.
 
 Dowiedz się, jak każdej opcji wdrażania dopasowuje się do platformy danych firmy Microsoft i Uzyskaj pomoc przy dopasowaniu odpowiedniej opcji do wymagań biznesowych. Niezależnie od tego, czy priorytetem jest oszczędność, czy ograniczenie administracji do minimum, artykuł ten może pomóc zdecydować, które rozwiązanie pozwoli spełnić wymagania związane z działalnością biznesową, na których zależy Ci najbardziej.
@@ -74,7 +72,7 @@ Poniższa tabela zawiera podsumowanie głównych cech usługi SQL Database i pro
 | **Najlepsze dla:** |Nowych aplikacji zaprojektowanych w chmurze, które mają być użyj najnowszej stabilnej programu SQL Server funkcji andhave czas ograniczenia w zakresie projektowania i marketingu. | Nowe aplikacje lub istniejących aplikacji lokalnych, które ma być używana najnowsza stabilna funkcje programu SQL Server i które są migrowane do chmury przy minimalnych zmianach.  | Istniejące aplikacje, które wymagają szybkiej migracji do chmury przy minimalnych zmianach lub jedynie minimalnych zmianach. Scenariusze szybkiego tworzenia i testowania, gdy nie chcesz kupować lokalnego nieprodukcyjnego sprzętu dla programu SQL Server. |
 |  | Zespoły, które wymagają wbudowanej wysokiej dostępności, odzyskiwania po awarii i uaktualniania bazy danych. | Taka sama jak baza danych SQL. | Zespoły, które można skonfigurować prawidłowo dostrajania, dostosowywanie i zarządzanie wysokiej dostępności, odzyskiwania po awarii i stosowanie poprawek dla programu SQL Server. Niektóre dostępne funkcje automatyczne znacznie to upraszczają. | |
 |  | Zespoły, które nie chcą zarządzać podstawowymi ustawieniami systemu operacyjnego i konfiguracji. | Taka sama jak baza danych SQL. | Potrzebne jest dostosowane środowisko z pełnymi prawami administracyjnymi. | |
-|  | Bazy danych o rozmiarze do 4 TB lub większych baz danych, które mogą być [partycjonowane poziomo lub pionowo](sql-database-elastic-scale-introduction.md#horizontal-and-vertical-scaling) przy użyciu wzorca skalowalnego w poziomie. | Taka sama jak baza danych SQL. | Wystąpienia programu SQL Server z maksymalnie 64 TB przestrzeni dyskowej. Wystąpienie może obsługiwać dowolną liczbę baz danych zależnie od potrzeb. |
+|  | Bazy danych o rozmiarze do 100 TB. | Taka sama jak baza danych SQL. | Wystąpienia programu SQL Server z maksymalnie 64 TB przestrzeni dyskowej. Wystąpienie może obsługiwać dowolną liczbę baz danych zależnie od potrzeb. |
 | **Zgodność** | Obsługuje większość funkcji poziomu bazy danych w środowisku lokalnym. | Obsługuje prawie wszystkie lokalne funkcje na poziomie wystąpienia i poziomu bazy danych. | Obsługuje wszystkie funkcje w środowisku lokalnym. |
 | **Zasoby:** | Nie chcesz używać zasobów IT do konfiguracji podstawowej infrastruktury i zarządzania nią, ale chcesz skupić się na warstwie aplikacji. | Taka sama jak baza danych SQL. | Masz niektóre zasoby informatyczne do konfiguracji i zarządzania. Niektóre dostępne funkcje automatyczne znacznie to upraszczają. |
 | **Całkowity koszt posiadania:** | Eliminuje koszty sprzętu i ogranicza koszty administracyjne. | Taka sama jak baza danych SQL. | Eliminuje koszty sprzętu. |
@@ -138,20 +136,6 @@ W przypadku **programu SQL Server uruchomionego na maszynach wirtualnych platfor
 **Wystąpienie zarządzane usługi SQL Database** znacznie upraszcza migrację istniejących aplikacji do usługi Azure SQL Database, co umożliwia przenoszenie zmigrowana baza danych aplikacji, aby szybko wprowadzać na rynek na platformie Azure.
 
 **Program SQL Server działający na maszynach wirtualnych Azure** jest doskonałym rozwiązaniem, jeśli istniejące lub nowe aplikacje wymagają dużych baz danych lub uzyskać dostęp do wszystkich funkcji programu SQL Server lub Windows/Linux, aby uniknąć na czas i koszt uzyskiwania nowy sprzęt lokalny. Jest również odpowiedni, jeśli chcesz przeprowadzić migrację istniejących lokalnych aplikacji i baz danych na platformie Azure jako-to - w przypadkach, gdy wystąpienia zarządzanego Azure SQL Database jest dobrym rozwiązaniem. Ponieważ nie musisz wprowadzać zmian w prezentacji, aplikacji i warstwach danych, jeśli rezygnujesz z ponownego projektowania istniejącego rozwiązania, oszczędzasz czas i pieniądze. Zamiast tego możesz skoncentrować się na migracji wszystkich rozwiązań do platformy Azure i przeprowadzeniu optymalizacji wydajności, których może wymagać platforma Azure. Więcej informacje zawiera artykuł [Performance Best Practices for SQL Server on Azure Virtual Machines](../virtual-machines/windows/sql/virtual-machines-windows-sql-performance.md) (Najlepsze praktyki dotyczące wydajności dla programu SQL Server w usłudze Azure Virtual Machines).
-
-## <a name="summary"></a>Podsumowanie
-W tym artykule omówiono usługę SQL Database i program SQL Server w usłudze Azure Virtual Machines oraz względy biznesowe, które mogą mieć wpływ na wybór jednego z tych rozwiązań. Poniżej znajduje się podsumowanie sugestii, które należy wziąć pod uwagę:
-
-Wybierz usługę **Azure SQL Database**, jeśli:
-
-* Tworzysz nowe aplikacje oparte na chmurze, aby skorzystać z oszczędności kosztów i optymalizacji wydajności, które zapewniają usługi w chmurze. Takie rozwiązanie zapewnia korzyści w pełni zarządzanej usługi w chmurze, pomaga skrócić początkowy czas wprowadzenia na rynek i pozwala uzyskać długoterminową optymalizację kosztów.
-* Chcesz, aby firma Microsoft wykonywała zwyczajowe operacje zarządzania na bazach danych i potrzebujesz umów SLA gwarantujących wyższą dostępność baz danych.
-* Chcesz przeprowadzić migrację istniejącej aplikacji jako — jest do wystąpienia zarządzanego Azure SQL Database i korzystać z dodatkowych parzystości przy użyciu programu SQL Server i/lub zaawansowanych zabezpieczeń i sieci. Wystąpienie zarządzane to dobry wybór dla istniejących i nowych aplikacji.
-
-Wybierz rozwiązanie **SQL Server na maszynach wirtualnych Azure**, jeśli:
-
-* Masz istniejące aplikacje lokalne, które chcesz zmigrować lub rozszerzyć w chmurze, lub jeśli chcesz tworzyć aplikacje dla przedsiębiorstw większy niż 4 TB. To podejście zapewnia korzyści zalety korzystania z wersji programu SQL Server i wersję usługi wybór, dużej pojemności bazy danych, pełną kontrolę nad programu SQL Server i systemem Windows/Linux oraz bezpiecznego tunelowania do środowiska lokalnego. To podejście minimalizuje koszty tworzenia i modyfikowania istniejących aplikacji.
-* Masz istniejące zasoby IT i możesz ostatecznie samodzielnie zarządzać poprawkami, kopiami zapasowymi i wysoką dostępnością bazy danych. Należy zauważyć, że niektóre funkcje automatyczne umożliwiają znaczne uproszczenie tych operacji. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

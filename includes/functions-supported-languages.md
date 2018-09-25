@@ -6,27 +6,27 @@ author: tdykstra
 manager: cfowler
 ms.service: functions
 ms.topic: include
-ms.date: 05/03/2018
+ms.date: 08/29/2018
 ms.author: tdykstra
 ms.custom: include file
-ms.openlocfilehash: 1df19bd70713b9da0bc894b372655ed8057948d1
-ms.sourcegitcommit: 870d372785ffa8ca46346f4dfe215f245931dae1
+ms.openlocfilehash: 9407ba43dc154bcfaf4d0a3894a99bc3a3d52e92
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/08/2018
-ms.locfileid: "33901248"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47019728"
 ---
 |Język                                 |1.x         |2.x|
 |-----------------------------------------|------------|---|
-|[C#](../articles/azure-functions/functions-reference-csharp.md)|Ogólna dostępność|Wersja zapoznawcza|
-|[JavaScript](../articles/azure-functions/functions-reference-node.md)|Ogólna dostępność|Wersja zapoznawcza|
-|[F#](../articles/azure-functions/functions-reference-fsharp.md)|Ogólna dostępność|Wersja zapoznawcza|
-|[Java](../articles/azure-functions/functions-reference-java.md)|ND|Wersja zapoznawcza|
+|[C#](../articles/azure-functions/functions-reference-csharp.md)|Ogólna dostępność (.NET Framework 4.7)|Ogólna dostępność (.NET Core 2)|
+|[JavaScript](../articles/azure-functions/functions-reference-node.md)|Ogólna dostępność (węzeł 6)|Ogólna dostępność (Node 8 i 10)|
+|[F#](../articles/azure-functions/functions-reference-fsharp.md)|Ogólna dostępność (.NET Framework 4.7)|Ogólna dostępność (.NET Core 2)|
+|[Java](../articles/azure-functions/functions-reference-java.md)|ND|W wersji zapoznawczej (Java 8)|
 |Python              |Eksperymentalne|ND|
+|TypeScript          |Eksperymentalne|W wersjach zapoznawczych transpiling języka JavaScript|
 |PHP                 |Eksperymentalne|ND|
-|TypeScript          |Eksperymentalne|ND|
 |Batch (.cmd, .bat)  |Eksperymentalne|ND|
 |Bash                |Eksperymentalne|ND|
 |PowerShell          |Eksperymentalne|ND|
 
-Informacje o planowanych zmian do obsługi języków, zobacz [Azure plan](https://azure.microsoft.com/roadmap/?tag=functions).
+Dla informacji na temat planowanych zmian do obsługi języków, zobacz [plan Azure](https://azure.microsoft.com/roadmap/?tag=functions).

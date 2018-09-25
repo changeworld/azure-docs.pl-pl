@@ -1,6 +1,6 @@
 ---
-title: Azure Eksploratora metryk monitora
-description: Więcej informacji na temat nowych funkcji w Eksploratorze metryk Monitor Azure
+title: Eksplorator metryk usługi Azure Monitor
+description: Informacje o nowych funkcjach w Eksploratorze metryk usługi Azure Monitor
 author: vgorbenko
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,149 +8,119 @@ ms.topic: conceptual
 ms.date: 09/17/2017
 ms.author: vitaly.gorbenko
 ms.component: metrics
-ms.openlocfilehash: a2611f89d9eef1ec6bac34389fa4db833aecc087
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 21b0029ff12915c8416ad2366fbf6c45ddfaa288
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35264092"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978427"
 ---
-# <a name="azure-monitor-metrics-explorer"></a>Azure Monitor Eksploratora metryk
+# <a name="azure-monitor-metrics-explorer"></a>Eksplorator metryk usługi Azure Monitor
 
-Porada tego opisano dalej generowania metryki Monitor Azure wykresów środowisko znajdującego się w publicznej wersji zapoznawczej. Nowe środowisko obsługuje renderowanie wykresy metryki wielowymiarowej i podstawowe metryki z nie wymiarów. Można wykreślić wykresy nakładki metryki z różnych typów zasobów, wiele grup zasobów i subskrypcje. Wykresy metryki wielowymiarowej można dostosować przy zastosowaniu filtrów wymiarów, a także grupowanie. Dowolnego wykresu, w tym dostosowane wykresy można przypiąć do pulpitów nawigacyjnych.
+Niniejszy instruktaż opisano następnej generacji metryk usługi Azure Monitor wykresów środowisko, jest obecnie dostępna w publicznej wersji zapoznawczej. Nowe środowisko obsługuje renderowanie wykresów dla metryk wielowymiarowych i podstawowe metryki z żadnych wymiarów. Możliwe będzie wykreślanie wykresów, które nakładki metryk z różnych typów zasobów, subskrypcji i wiele grup zasobów. Wykresy metryk wielowymiarowych można dostosować przez zastosowanie filtrów wymiaru, a także grupowania. Dowolny wykres, w tym dostosowane wykresy można przypiąć do pulpitów nawigacyjnych.
 
-Jeśli szukasz informacji na temat starego środowisko, który obsługuje tylko podstawowe metryki o wymiarach nie można znaleźć części pod tytułem "Dostęp do metryk za pośrednictwem portalu" w [przewodnik Przegląd metryki usługi Microsoft Azure](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
+Jeśli szukasz informacji na temat stare środowisko, który obsługuje tylko podstawowe metryki z żadnych wymiarów, zobacz sekcję zatytułowaną "Uzyskiwać dostęp do metryk za pośrednictwem portalu" w [przewodnik Przegląd usługi Microsoft Azure metryki](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-overview-metrics).
 
-## <a name="what-is-azure-monitor-metrics-explorer"></a>Co to jest Eksploratora metryk Monitor Azure?
+## <a name="what-is-azure-monitor-metrics-explorer"></a>Co to jest Eksploratora metryk usługi Azure Monitor?
 
-Azure Eksploratora metryk Monitor wchodzi w skład portalu Microsoft Azure, który umożliwia kreślenia wykresy, wizualnie korelowanie trendów i badania wzrostów i DIP w wartości metryk. Eksploratora metryk jest niezbędny punkt początkowy badania różnych wydajności i dostępności problemów z aplikacjami i infrastruktury hostowana na platformie Azure lub monitorowane przez usługi Azure monitora. 
+Eksplorator metryk usługi Azure Monitor to składnik systemu Microsoft Azure portal, która umożliwia wykreślanie wykresów, wizualne korelowanie trendów i badanie wzrostów i spadki wartości metryk. Eksplorator metryk jest istotne punkt początkowy, badania różne problemy z wydajnością i dostępności przy użyciu aplikacji i infrastruktury hostowany na platformie Azure lub monitorowane przez usługi Azure Monitor. 
 
 ## <a name="what-are-metrics-in-azure"></a>Co to są metryki na platformie Azure?
 
-Metryki na platformie Microsoft Azure są serii mierzonych i liczb, które są zbierane i są przechowywane wraz z upływem czasu. Brak metryki standard (lub "platformy") i metryki niestandardowe. Standardowa metryki są dostarczane przez platformę Azure, sama. Standardowa metryki odzwierciedlają statystyki kondycji i użycia zasobów platformy Azure. Podczas gdy metryki niestandardowe są wysyłane na platformie Azure przez aplikacje przy użyciu [aplikacji interfejsu API Insights dla niestandardowych zdarzeń](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Metryki niestandardowe są przechowywane w zasobów usługi Application Insights wraz z innych aplikacji określonych metryk.
+Metryki w systemie Microsoft Azure są szeregu mierzonych i liczniki, które są zbierane i przechowywane wraz z upływem czasu. Brak metryk standardowa (lub "platforma") i metryki niestandardowe. Metryki standardowe są dostarczane przez samą platformę Azure. Standardowa metryki odzwierciedlają statystyki użycia i kondycji zasobów platformy Azure. Natomiast metryki niestandardowe są wysyłane do platformy Azure przy użyciu aplikacji przy użyciu [interfejsu API usługi Application Insights dla niestandardowych zdarzeń](https://docs.microsoft.com/azure/application-insights/app-insights-api-custom-events-metrics). Metryki niestandardowe są przechowywane w zasoby usługi Application Insights wraz z innymi metrykami określonych aplikacji.
 
-## <a name="what-are-multi-dimensional-metrics"></a>Co to są metryki wielowymiarowej?
 
-Udostępnianie wielu zasobów platformy Azure teraz metryki wielowymiarowej. Te metryki śledzić wielu serii wartości dla jednego lub wielu wymiarów nazwanego. Na przykład metryka "dostępnego miejsca na dysku" może mieć wymiar o nazwie "Dysk" o wartości "C:", "D:", który umożliwi wyświetlanie albo dostępnego miejsca na dysku na wszystkich dyskach lub dla każdego dysku pojedynczo. 
-
-W poniższym przykładzie przedstawiono dwa zestawy danych dla metryki hipotetyczny o nazwie "Przepływność sieci". Pierwszego zestawu danych nie ma żadnych wymiarów. Drugi zestaw danych zawiera wartości z dwóch wymiarów "Adres IP" i "Direction":
-
-### <a name="network-throughput"></a>Przepustowość sieci
-(Ta metryka nie ma żadnych wymiarów)
-
- |Sygnatura czasowa        | Wartość metryki | 
-   | ------------- |:-------------| 
-   | 8/9/2017 8:14 | 1,331.8 Kb/s | 
-   | 8/9/2017 8:15 | 1,141.4 Kb/s |
-   | 8/9/2017 8:16 | 1,110.2 Kb/s |
-
-Ta metryka-wymiarowej może jedynie odpowiedzi podstawowe pytanie, takich jak "jaki był Moje przepływność sieci w danym momencie?"
-
-### <a name="network-throughput--two-dimensions-ip-and-direction"></a>Przepustowość sieci + dwóch wymiarów ("Adres IP" i "Direction")
-
-| Sygnatura czasowa          | Wymiar "Adres IP" | Wymiar "Direction" | Wartość metryki| 
-   | ------------- |:-----------------|:------------------- |:-----------|  
-   | 8/9/2017 8:14 | IP = "192.168.5.2" | Kierunek = "Wyślij"    | 646.5 kb/s |
-   | 8/9/2017 8:14 | IP = "192.168.5.2" | Kierunek = "Otrzymywać" | 420.1 KB/s |
-   | 8/9/2017 8:14 | IP = "10.24.2.15"  | Kierunek = "Wyślij"    | 150.0 kb/s | 
-   | 8/9/2017 8:14 | IP = "10.24.2.15"  | Kierunek = "Otrzymywać" | 115.2 Kb/s |
-   | 8/9/2017 8:15 | IP = "192.168.5.2" | Kierunek = "Wyślij"    | 515.2 Kb/s |
-   | 8/9/2017 8:15 | IP = "192.168.5.2" | Kierunek = "Otrzymywać" | 371.1 KB/s |
-   | 8/9/2017 8:15 | IP = "10.24.2.15"  | Kierunek = "Wyślij"    | 155.0 kb/s |
-   | 8/9/2017 8:15 | IP = "10.24.2.15"  | Kierunek = "Otrzymywać" | 100.1 KB/s |
-
-Ta metryka pozwala uzyskać odpowiedzi na pytania, takie jak "jaki był przepływności sieci dla każdego adresu IP?" i "ile dane zostały wysłane i odebrane?" Metryki wielowymiarowej przenoszenia dodatkowe wartości analityczne i diagnostyki w porównaniu-wymiarowej metryki. 
 
 ## <a name="how-do-i-create-a-new-chart"></a>Jak utworzyć nowy wykres?
 
    > [!NOTE]
-   > Niektóre funkcje środowisko metryki starego nie są jeszcze dostępne w nowych Eksploratora metryk. Nowe środowisko jest w wersji zapoznawczej, możesz kontynuować korzystanie z stary (z systemem innym niż wielowymiarowych) widok metryki monitora Azure. 
+   > Niektóre funkcje stare środowisko metryki nie są jeszcze dostępne w nowym Eksploratorze metryk. Nowe środowisko jest w wersji zapoznawczej, możesz kontynuować używanie stary (innych niż wymiarowe) widok metryk usługi Azure Monitor. 
 
-1. Otwórz Azure portal
-2. Przejdź do nowego **Monitor** , a następnie wybierz **metryki (wersja zapoznawcza)**.
+1. Otwórz witrynę Azure portal
+2. Przejdź do nowego **Monitor** , a następnie wybierz pozycję **metryki (wersja zapoznawcza)**.
 
-   ![Metryki podglądu](./media/monitoring-metric-charts/001.png)
+   ![Obraz podglądu metryki](./media/monitoring-metric-charts/0001.png)
 
-3. **Metryki selektora** zostanie automatycznie otwarte dla Ciebie. Wybierz zasób z listy, aby wyświetlić jego skojarzony metryki. Na liście są wyświetlane tylko zasoby z metryki.
+3. **Metryki selektor** zostanie automatycznie otwarte dla Ciebie. Wybierz zasób z listy, aby wyświetlić jego skojarzonych z nimi metryk. Tylko zasoby z metryki są wyświetlane na liście.
 
-   ![Metryki podglądu](./media/monitoring-metric-charts/002.png)
-
-   > [!NOTE]
-   >Jeśli masz więcej niż jedną subskrypcją platformy Azure, Eksploratora metryk ściąga limit zasobów między wszystkie subskrypcje, które są wybrane w ustawieniach portalu -> filtru przez listę subskrypcji. Aby go zmienić, kliknij ikonę Koło zębate ustawień portalu u góry ekranu i wybierz subskrypcje, które chcesz użyć.
-
-4. W przypadku niektórych typów zasobów (np. konta magazynu i maszyn wirtualnych), przed wybraniem metrykę musisz wybrać **usługi Sub**. Każda usługa sub niesie własny zestaw miar, które mają zastosowanie do tej usługi sub, a nie do innych usług sub.
-
-   Na przykład każdy magazyn Azure ma metryki dla subservices "Blob", "Files", "Kolejki" i "Tabele", które są wszystkie części konta magazynu. Jednak metryki "liczba wiadomości w kolejce" dotyczy naturalnie subservice "Kolejki", a nie inne subservices konta magazynu.
-
-   ![Metryki podglądu](./media/monitoring-metric-charts/003.png)
-
-5. Wybierz metrykę, z listy. Jeśli znasz częściowa nazwa metryki, które mają można uruchomić wpisywać go, aby wyświetlić listę filtrowane dostępne metryki:
-
-   ![Metryki podglądu](./media/monitoring-metric-charts/004.png)
-
-6. Po wybraniu metrykę, spowoduje, że wykres z agregacją domyślny dla wybranych metryki. W tym momencie wystarczy kliknąć od **selektora metryki** go zamknąć. Wykres można również przełączyć się do różnych agregacji. Dla niektórych metryki przełączania agregacji można wybrać wartości, które mają być wyświetlane na wykresie. Na przykład można przełączać się między wartość średnią, minimalną i maksymalną. 
-
-7. Klikając ikonę dodać metrykę ![Ikona metryki](./media/monitoring-metric-charts/icon001.png) i powtórzyć kroki 3 – 6 można dodać więcej metryki na tym samym wykresie.
+   ![Obraz podglądu metryki](./media/monitoring-metric-charts/0002.png)
 
    > [!NOTE]
-   > Zwykle nie mają metryki różne jednostki miary (tj. "MS" i "kilobajtów") lub różnią się w skali na jeden wykres. Zamiast tego należy wziąć pod uwagę przy użyciu wielu wykresów. Kliknij przycisk Dodaj wykresu, aby utworzyć wiele wykresów w Eksploratorze metryk.
+   >Jeśli masz więcej niż jedną subskrypcję platformy Azure, Eksplorator metryk ściąga się z zasobami we wszystkich subskrypcjach, które są wybrane w ustawieniach portalu -> filtru według listy subskrypcji. Aby je zmienić, kliknij ikonę koła zębatego ustawień portalu na górze ekranu i wybierz pozycję subskrypcje, które chcesz użyć.
 
-## <a name="how-do-i-apply-filters-to-the-charts"></a>Jak zastosować filtry wykresy?
+4. W przypadku niektórych typów zasobów (czyli konta magazynu i maszyn wirtualnych), przed wybraniem metrykę, musisz wybrać **Namespace**. Każda przestrzeń nazw zawiera swój własny zestaw metryk, które mają zastosowanie tylko w tej przestrzeni nazw, a nie inne przestrzenie nazw.
 
-Filtry można stosować do wykresy pokazujące metryki z wymiarów. Na przykład, jeśli Metryka "Liczba transakcji" ma wymiar, "Typ odpowiedzi", który wskazuje, czy odpowiedź z transakcji powodzeniem lub niepowodzeniem, następnie filtrowanie, w tym wymiarze czy wykreślenia wykresu wiersz dla tylko pomyślnie (lub tylko nie powiodła się) transakcji. 
+   Na przykład każdej usługi Azure Storage ma metryki subservices "Blob", "Files", "Kolejki" i "Tabele", które są wszystkie elementy na koncie magazynu. Jednak metryki "Liczba komunikatów w kolejce" dotyczy naturalnie Usługa "W kolejce", a nie innych subservices konta magazynu.
+
+   ![Obraz podglądu metryki](./media/monitoring-metric-charts/0003.png)
+
+5. Wybierz metrykę, z listy. Jeśli znasz część nazwy metryki, które chcesz, możesz zacząć wpisywać go w będzie filtrowana lista dostępnych metryk:
+
+   ![Obraz podglądu metryki](./media/monitoring-metric-charts/0004.png)
+
+6. Po wybraniu metrykę, wykres będą renderowane przy użyciu domyślna agregacja dla wybranej metryki. W tym momencie możesz po prostu kliknąć opuszczenie **selektor metryki** go zamknąć. Wykres można również opcjonalnie przełączyć się do różnych agregacji. Niektóre metryki agregacji przełączanie umożliwia można wybrać wartość, która mają być wyświetlane na wykresie. Na przykład można przełączać się między wartość średnią, minimalną i maksymalną. 
+
+7. Klikając ikonę Dodaj metrykę ![Ikona metryk](./media/monitoring-metric-charts/icon001.png) i powtórzyć kroki od 3 do 6 możesz dodać więcej metryk na tym samym wykresie.
+
+   > [!NOTE]
+   > Zwykle nie chcesz mieć metryki różne jednostki miary (np. "milisekund" i "kilobajtów") lub z znacząco odmiennych skalowania na jeden wykres. Zamiast tego należy wziąć pod uwagę przy użyciu wielu wykresów. Kliknij przycisk Dodaj wykres, aby utworzyć wiele wykresów w Eksploratorze metryk.
+
+## <a name="how-do-i-apply-filters-to-the-charts"></a>Jak zastosować filtry do wykresów?
+
+Filtry można stosować do wykresów przedstawiających metryk z wymiarami. Na przykład, jeśli metryki "Liczba transakcji" ma wymiar, "Typ odpowiedzi", który wskazuje, czy odpowiedź z transakcji zakończyło się pomyślnie lub nie powiodło się, następnie filtrowanie tego wymiaru będzie wykreślanie wiersz wykresów dla tylko pomyślne (lub tylko nie powiodło się) transakcji. 
 
 ### <a name="to-add-a-filter"></a>Aby dodać filtr:
 
-1. Kliknij ikonę Dodaj filtr ![ikona filtru](./media/monitoring-metric-charts/icon002.png) powyżej wykresu
+1. Kliknij ikonę Dodaj filtr ![ikona filtru](./media/monitoring-metric-charts/icon002.png) nad wykresem
 
-2. Wybierz, który wymiar (właściwości), do których chcesz filtrować
+2. Wybierz, który wymiar (właściwość), do których chcesz filtrować
 
-   ![metryki obrazu](./media/monitoring-metric-charts/006.png)
+   ![metryki obrazu](./media/monitoring-metric-charts/0006.png)
 
-3. Wybierz wartości wymiaru, które mają zostać uwzględnione podczas kreślenia wykresu (w tym przykładzie przedstawiono filtrowanie transakcji magazynu powiodło się):
+3. Wybierz wartości wymiarów, które mają zostać uwzględnione podczas wykreślania wykresu (w tym przykładzie przedstawiono filtrowanie transakcje magazynowe pomyślnych):
 
-   ![metryki obrazu](./media/monitoring-metric-charts/007.png)
+   ![metryki obrazu](./media/monitoring-metric-charts/0007.png)
 
-4. Po wybraniu wartości filtru, kliknij poza selektor filtrów, aby je zamknąć. Teraz wykres pokazuje liczbę transakcji magazynowych nie powiodło się:
+4. Po wybraniu wartości filtru, kliknij poza selektor filtrów, aby je zamknąć. Teraz wykres pokazuje, ile transakcji magazynu nie powiodło się:
 
-   ![metryki obrazu](./media/monitoring-metric-charts/008.png)
+   ![metryki obrazu](./media/monitoring-metric-charts/0008.png)
 
-5. Można Powtórz kroki 1 – 4 do zastosowanie wielu filtrów do tej samej schematów.
+5. Możesz powtórzyć kroki 1 – 4, aby zastosować wiele filtrów do tych samych wykresów.
 
-## <a name="how-do-i-segment-a-chart"></a>Jak segment wykresu?
+## <a name="how-do-i-segment-a-chart"></a>Jak podzielić wykres?
 
-Podział metrykę według wymiaru do wizualizacji segmentów jak różne metryki porównania względem siebie i zidentyfikować odległe mniejsze segmenty wymiaru. 
+Podziel metryki według wymiaru, aby zwizualizować segmentów jak różne metryki porównania między nimi i zidentyfikować odległe mniejsze segmenty wymiaru. 
 
-### <a name="to-segment-a-chart"></a>Segment wykresu:
+### <a name="to-segment-a-chart"></a>Aby podzielić wykres:
 
-1. Kliknij ikonę Dodaj grupowania  ![metryki obrazu](./media/monitoring-metric-charts/icon003.png) powyżej wykresu.
+1. Kliknij ikonę Dodawanie grupowania  ![metryki obrazu](./media/monitoring-metric-charts/icon003.png) nad wykresem.
  
    > [!NOTE]
-   > Może mieć wielu filtrów, ale tylko jedno grupowanie na pojedynczego wykresu.
+   > Wiele filtrów, ale tylko jedna grupa może mieć na dowolnym pojedynczym wykresie.
 
-2. Wybierz wymiaru, na którym chcesz podzielić wykresu: 
+2. Wybierz wymiar, na którym chcesz podzielić wykresu: 
 
-   ![metryki obrazu](./media/monitoring-metric-charts/010.png)
+   ![metryki obrazu](./media/monitoring-metric-charts/0010.png)
 
    Teraz wykres zawiera teraz wiele wierszy, po jednym dla każdego segmentu wymiaru:
 
-   ![metryki obrazu](./media/monitoring-metric-charts/012.png)
+   ![metryki obrazu](./media/monitoring-metric-charts/0012.png)
 
-3. Kliknij przycisk od **selektora grupowania** go zamknąć.
+3. Kliknij przycisk opuszczenie **selektor grupowania** go zamknąć.
 
    > [!NOTE]
-   > Używać filtrowanie i grupowania dotyczących tego samego wymiaru, aby ukryć segmentów, które nie mają znaczenia dla danego scenariusza i ułatwić wykresy.
+   > Umożliwia filtrowanie i grupowanie w oparciu o ten sam wymiar Ukryj segmentów, które są nieodpowiednie dla danego scenariusza i była łatwiejsza do odczytania wykresy.
 
-## <a name="how-do-i-pin-charts-to-dashboards"></a>Jak Przypnij wykresy, aby pulpity nawigacyjne?
+## <a name="how-do-i-pin-charts-to-dashboards"></a>Jak przypiąć wykresów do pulpitów nawigacyjnych?
 
-Po skonfigurowaniu wykresy, można dodać go do pulpitów nawigacyjnych, dzięki czemu można go ponownie wyświetlić, prawdopodobnie w kontekście innych monitorowania telemetrii lub udostępnienia zespołowi. 
+Po skonfigurowaniu wykresów, warto dodać do pulpitów nawigacyjnych, aby można go wyświetlić, prawdopodobnie w kontekście innych telemetrii monitorowania, lub udostępnienia swojemu zespołowi. 
 
-Aby przypiąć wykres skonfigurowanych do pulpitu nawigacyjnego:
+Aby przypiąć wykres skonfigurowanego do pulpitu nawigacyjnego:
 
-Po skonfigurowaniu wykresu, kliknij **akcje wykresu** menu w prawym rogu wykresu z góry, a następnie kliknij przycisk **Przypnij do pulpitu nawigacyjnego**.
+Po skonfigurowaniu wykresu, wybierz polecenie **akcje wykresu** menu w prawym rogu wykresu top, a następnie kliknij przycisk **Przypnij do pulpitu nawigacyjnego**.
 
-   ![metryki obrazu](./media/monitoring-metric-charts/013.png)
+   ![metryki obrazu](./media/monitoring-metric-charts/0013.png)
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
-  Odczyt [Tworzenie niestandardowych pulpitów nawigacyjnych KPI](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards) Aby dowiedzieć się więcej o najlepszych rozwiązaniach do tworzenia pulpitów nawigacyjnych można wykonać z metryki.
+  Odczyt [Tworzenie niestandardowych pulpitów nawigacyjnych wskaźników KPI](https://docs.microsoft.com/azure/application-insights/app-insights-tutorial-dashboards) Aby dowiedzieć się więcej na temat najlepszych rozwiązań do tworzenia pulpitów nawigacyjnych informacje z możliwością działania za pomocą metryk.

@@ -2,28 +2,28 @@
 author: wolfma61
 ms.service: cognitive-services
 ms.topic: include
-ms.date: 07/27/2018
+ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: a4accb0846ec9cf5efc5ca5aa00c731edd41d4d4
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: 3508f809ab89188e46145df064cbb53ca78c8f9f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43143900"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47021707"
 ---
 <!-- N.B. no header, language-agnostic -->
 
 Microsoft Cognitive Services [zestaw SDK rozpoznawania mowy](~/articles/cognitive-services/speech-service/speech-sdk.md) zapewnia sposób, rozpoznawał **intencji z wypowiedzi** i jest obsługiwany przez usług Cognitive Services [Language Understanding Intelligent service (LUIS)](https://www.luis.ai/home).
 
-1. Utwórz fabrykę mowy z kluczem subskrypcji usługi LUIS i [region](~/articles/cognitive-services/speech-service/regions.md#regions-for-intent-recognition) jako parametry. Klucz subskrypcji usługi LUIS jest nazywany **klucza punktu końcowego** w dokumentacji usługi. Nie można użyć usługa LUIS tworzenia klucza. (Zobacz uwagi w dalszej części tej sekcji).
+1. Utwórz konfigurację mowy z kluczem subskrypcji usługi LUIS i [region](~/articles/cognitive-services/speech-service/regions.md#regions-for-intent-recognition) jako parametry. Klucz subskrypcji usługi LUIS jest nazywany **klucza punktu końcowego** w dokumentacji usługi. Nie można użyć usługa LUIS tworzenia klucza. (Zobacz uwagi w dalszej części tej sekcji).
 
-1. Uzyskaj intencji rozpoznawania z fabryki mowy. Aparat rozpoznawania służy mikrofon domyślnego urządzenia, strumień audio lub dźwięk z pliku.
+1. Utwórz rozpoznawania intencji na podstawie konfiguracji mowy. Podaj audio konfiguracji, jeśli chcesz, aby rozpoznać ze źródła innego niż mikrofon domyślne (na przykład strumienia audio lub plik audio).
 
 1. Pobierz model interpretacji języka, który opiera się na swoje **AppId**. Dodawanie intencji, które są wymagane. 
 
 1. Blokując zdarzenia dla operacji asynchronicznej, jeśli to konieczne. Aparat rozpoznawania następnie wywołuje inne programy obsługi zdarzeń, gdy ma ona wyniki tymczasowe i końcowe (z uwzględnieniem intencje). Jeśli nie blokowały zdarzeń, aplikacji otrzymuje tylko wynik końcowy transkrypcji.
 
-1. Uruchom rozpoznawanie intencji. Rozpoznawanie pojedynczego zrzutu, takich jak rozpoznawanie polecenie lub zapytanie, można użyć `RecognizeAsync()` metody. Ta metoda zwraca pierwszy wypowiedź rozpoznane. Rozpoznawanie długotrwałych, można użyć `StartContinuousRecognitionAsync()` metody. Umożliwia powiązanie zdarzenia asynchroniczne rozpoznawanie wyników.
+1. Uruchom rozpoznawanie intencji. Rozpoznawanie pojedynczego zrzutu, takich jak rozpoznawanie polecenie lub zapytanie, można użyć `RecognizeOnceAsync()` metody. Ta metoda zwraca pierwszy wypowiedź rozpoznane. Rozpoznawanie długotrwałych, można użyć `StartContinuousRecognitionAsync()` metody. Umożliwia powiązanie zdarzenia asynchroniczne rozpoznawanie wyników.
 
 Zobacz poniższe fragmenty kodu w przypadku scenariuszy rozpoznawanie intencji, które zestaw SDK rozpoznawania mowy. Zastąp wartości w próbce własny klucz subskrypcji usługi LUIS (klucza punktu końcowego) [region subskrypcji](~/articles/cognitive-services/speech-service/regions.md#regions-for-intent-recognition)i **AppId** intencji modelu.
 

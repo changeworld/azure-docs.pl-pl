@@ -1,6 +1,6 @@
 ---
-title: Przechwytywanie obrazu maszyny Wirtualnej z systemem Linux na platformie Azure przy użyciu interfejsu wiersza polecenia w wersji 2.0 | Dokumentacja firmy Microsoft
-description: Przechwytywanie obrazu maszyny Wirtualnej platformy Azure na potrzeby wdrożeń pamięci masowej, przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0.
+title: Przechwytywanie obrazu maszyny Wirtualnej z systemem Linux na platformie Azure przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Przechwytywanie obrazu maszyny Wirtualnej platformy Azure na potrzeby wdrożeń pamięci masowej, przy użyciu wiersza polecenia platformy Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,12 +15,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 03/22/2018
 ms.author: cynthn
-ms.openlocfilehash: ea202cad06130cfaaa134cad94ac08bede2f41a9
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: 98d98c1337830ce54c7ff96c19812169be129584
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37867705"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946820"
 ---
 # <a name="how-to-create-an-image-of-a-virtual-machine-or-vhd"></a>Jak utworzyć obraz maszyny wirtualnej lub wirtualnego dysku twardego
 
@@ -38,7 +38,7 @@ Upewnij się, że spełniasz następujące wymagania wstępne:
 
 * Należy Maszynie wirtualnej platformy Azure utworzone w modelu wdrażania usługi Resource Manager korzystają z dysków zarządzanych. Jeśli jeszcze nie utworzono Maszynę wirtualną systemu Linux, możesz użyć [portal](quick-create-portal.md), [wiersza polecenia platformy Azure](quick-create-cli.md), lub [szablonów usługi Resource Manager](create-ssh-secured-vm-from-template.md). Konfigurowanie maszyny Wirtualnej, zgodnie z potrzebami. Na przykład [dodawanie dysków danych](add-disk.md), stosowania aktualizacji i zainstalować aplikacje. 
 
-* Musisz również mieć najnowsze [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
+* Musisz również mieć najnowsze [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
 
 ## <a name="quick-commands"></a>Szybkie polecenia
 
@@ -62,7 +62,7 @@ Możesz anulować aprowizację maszyny Wirtualnej przy użyciu agenta maszyny Wi
 4. Po wykonaniu polecenia, wpisz **wyjść**. Ten krok powoduje zamknięcie klienta SSH.
 
 ## <a name="step-2-create-vm-image"></a>Krok 2: Tworzenie obrazu maszyny Wirtualnej
-Oznaczanie maszyny Wirtualnej jako uogólnionej i przechwycić obraz, należy użyć interfejsu wiersza polecenia platformy Azure w wersji 2.0. W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru zawierają *myResourceGroup*, *myVnet*, i *myVM*.
+Oznaczanie maszyny Wirtualnej jako uogólnionej i przechwycić obraz, należy użyć wiersza polecenia platformy Azure. W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru zawierają *myResourceGroup*, *myVnet*, i *myVM*.
 
 1. Cofnij Przydział maszyny Wirtualnej, która zostanie anulowanie aprowizacji przy użyciu [az vm deallocate](/cli//azure/vm#deallocate). Poniższy przykład powoduje cofnięcie przydziału maszyny Wirtualnej o nazwie *myVM* w grupie zasobów o nazwie *myResourceGroup*:
    
@@ -146,4 +146,4 @@ Możesz utworzyć wiele maszyn wirtualnych za pomocą obrazu maszyny Wirtualnej 
 - Wykonaj kroki ponownie, aby anulować aprowizację, cofnięcie przydziału, Uogólnij i utworzyć obraz.
 - Użyj nowego obrazu do przyszłych wdrożeń. Jeśli to konieczne, należy usunąć oryginalny obraz.
 
-Aby uzyskać więcej informacji na temat zarządzania maszyn wirtualnych przy użyciu interfejsu wiersza polecenia, zobacz [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure).
+Aby uzyskać więcej informacji na temat zarządzania maszyn wirtualnych przy użyciu interfejsu wiersza polecenia, zobacz [wiersza polecenia platformy Azure](/cli/azure).

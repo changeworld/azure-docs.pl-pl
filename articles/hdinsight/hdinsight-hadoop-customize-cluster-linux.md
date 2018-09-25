@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/01/2018
 ms.author: jasonh
-ms.openlocfilehash: e12379dbb63e57ee12e1cebb1761f0b103d50ef1
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: e9662a0a0def91fa2cace1eb47dceffed5ff1ae6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43110531"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978033"
 ---
 # <a name="customize-linux-based-hdinsight-clusters-using-script-actions"></a>Dostosowywanie klastrów HDInsight opartych na systemie Linux za pomocą akcji skryptu
 
@@ -89,7 +89,7 @@ Akcja skryptu jest skrypt powłoki Bash, działającego w węzłach w klastrze u
 
 * Uruchom z **głównego poziomu uprawnień** w węzłach klastra.
 
-* Mogą być używane za pośrednictwem **witryny Azure portal**, **programu Azure PowerShell**, **wiersza polecenia platformy Azure w wersji 1.0**, lub **HDInsight .NET SDK**
+* Mogą być używane za pośrednictwem **witryny Azure portal**, **programu Azure PowerShell**, **klasyczny interfejs wiersza polecenia platformy Azure**, lub **HDInsight .NET SDK**
 
 Klaster przechowuje historię wszystkie skrypty, które zostały uruchomione. Historia jest przydatne, gdy trzeba znaleźć Identyfikatora skryptu dla operacji podwyższenia poziomu lub obniżania poziomu.
 
@@ -147,7 +147,7 @@ Można używać skryptów akcji skryptu za pomocą następujących narzędzi:
 
 * Azure Portal
 * Azure PowerShell
-* Wiersza polecenia platformy Azure w wersji 1.0
+* Klasyczny interfejs wiersza polecenia Azure
 * Zestaw SDK dla platformy .NET usługi HDInsight
 
 HDInsight zapewnia skrypty dopasowane do zainstalowania następujących składników w klastrach HDInsight:
@@ -292,10 +292,9 @@ Po zakończeniu operacji otrzymasz informacje podobne do następującego tekstu:
 
 ### <a name="apply-a-script-action-to-a-running-cluster-from-the-azure-cli"></a>Zastosuj akcję skryptu do działającego klastra z wiersza polecenia platformy Azure
 
-Przed kontynuowaniem upewnij się, że masz zainstalowany i skonfigurowany interfejs wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [zainstalować interfejs wiersza polecenia platformy Azure w wersji 1.0](../cli-install-nodejs.md).
+Przed kontynuowaniem upewnij się, że masz zainstalowany i skonfigurowany interfejs wiersza polecenia platformy Azure. Aby uzyskać więcej informacji, zobacz [zainstalować interfejs wiersza polecenia platformy Azure Classic](../cli-install-nodejs.md).
 
-> [!IMPORTANT]
-> HDInsight wymaga interfejsu wiersza polecenia platformy Azure w wersji 1.0. Obecnie interfejs wiersza polecenia platformy Azure w wersji 2.0 nie zapewnia polecenia do pracy z HDInsight.
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 1. Aby włączyć tryb usługi Azure Resource Manager, wpisz następujące polecenie w wierszu polecenia:
 
@@ -380,7 +379,7 @@ Następujący skrypt przykładowy pokazuje, podwyższanie poziomu, a następnie 
 
 [!code-powershell[main](../../powershell_scripts/hdinsight/use-script-action/use-script-action.ps1?range=123-140)]
 
-### <a name="using-the-azure-cli"></a>Korzystanie z interfejsu wiersza polecenia platformy Azure
+### <a name="using-the-azure-classic-cli"></a>Za pomocą klasycznego wiersza polecenia platformy Azure
 
 | Użyj następującego polecenia... | Aby... |
 | --- | --- |

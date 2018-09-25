@@ -1,31 +1,33 @@
 ---
-title: Zarządzanie budżetów w usłudze Azure Cost Management | Dokumentacja firmy Microsoft
-description: Ten artykuł ułatwia tworzenie i zarządzanie nimi budżetów kosztów zarządzania.
+title: Zarządzanie budżetów Cloudyn na platformie Azure | Dokumentacja firmy Microsoft
+description: Ten artykuł ułatwia tworzenie i zarządzanie nimi budżetów w rozwiązaniu Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/25/2018
+ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 106e8f082d148ed9a8c58313177be81ee074a2c3
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: bbd232c819a11de691c4d3c3209273b064eddf62
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578467"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963440"
 ---
 # <a name="manage-budgets"></a>Zarządzanie budżetami
 
-Ustawienie zapasowej budżetów i oparte na budżecie alerty pomocy, aby ulepszyć swoje nadzoru na chmurę i odpowiedzialności. Ten artykuł ułatwia szybkie tworzenie budżetów i rozpocząć zarządzanie nimi w Cost Management.
+Ustawienie zapasowej budżetów i oparte na budżecie alerty pomocy, aby ulepszyć swoje nadzoru na chmurę i odpowiedzialności. Ten artykuł ułatwia szybkie tworzenie budżetów i rozpocząć zarządzanie nimi w rozwiązaniu Cloudyn.
 
 Jeśli masz konto przedsiębiorstwa lub MSP, można użyć strukturę hierarchiczną koszt jednostki na potrzeby przypisywania miesięczne przydziały budżetu różne jednostki biznesowe, działów lub innych jednostek kosztów. Jeśli masz konto magazynu Premium, można użyć funkcji zarządzania budżetem, co jest następnie stosowane do Twojego wydatków całej chmurze. Wszystkich budżetów ręczne są przypisane.
 
 Na podstawie przypisanej budżetów, można ustawić alerty progu na podstawie procentu budżetu, który jest używany i zdefiniuj ważność każdego progu.
 
 Budżet Raporty zawierają przypisane budżetu. Użytkownicy mogą wyświetlać, po ich wydatków za pośrednictwem, w obszarze lub w wartości nominalnej z ich użycia wraz z upływem czasu. Po wybraniu **Pokaż/Ukryj pola** u góry raportu budżetu, można wyświetlić kosztów, budżet, skumulowany koszt lub Łączny budżet.
+
+Usługa Azure Cost Management oferuje podobne funkcje do rozwiązania Cloudyn. Usługa Azure Cost Management to rozwiązanie do zarządzania natywnych kosztów platformy Azure. Pomaga analizując koszty, tworzenie i zarządzanie budżetów, eksportować dane i zapoznaj się i działają zgodnie z zaleceniami optymalizacji, aby zaoszczędzić pieniądze. Aby uzyskać więcej informacji dotyczących budżetów kosztów zarządzania, zobacz [tworzenie i zarządzanie nimi budżetów](tutorial-acm-create-budgets.md).
 
 ## <a name="create-budgets"></a>Tworzenie budżetów
 
@@ -83,5 +85,5 @@ W porównaniu z kosztami. Budżetu w czasie — raport, kliknij przycisk **akcje
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Jeśli nie została już zakończona pierwszego samouczka dotyczącego usługi Cost Management, zapoznaj się z adresem [przeglądanie użycia i kosztów](https://docs.microsoft.com/azure/cost-management/tutorial-review-usage).
-- Dowiedz się więcej o [raportów dostępnych w Cost Management](use-reports.md).
+- Jeśli nie została już zakończona pierwszego samouczka dotyczącego na platformie Cloudyn, zapoznaj się z adresem [przeglądanie użycia i kosztów](tutorial-review-usage.md).
+- Dowiedz się więcej o [raportów dostępnych w rozwiązaniu Cloudyn](use-reports.md).

@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/08/2017
 ms.author: glenga
-ms.openlocfilehash: ef7eae503eaf8194b287b9f080d8f635d9b3a485
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 2c78e1d39227153dd65f145512fab4769b09e5c0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094786"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966575"
 ---
 # <a name="azure-event-hubs-bindings-for-azure-functions"></a>Usługa Azure powiązania usługi Event Hubs dla usługi Azure Functions
 
@@ -129,14 +129,15 @@ public static void Run([EventHubTrigger("samples-workitems", Connection = "Event
 
 W poniższym przykładzie pokazano wyzwalacz Centrum zdarzeń, powiązanie w *function.json* pliku i [funkcji skryptu w języku C#](functions-reference-csharp.md) powiązania, który używa. Funkcja rejestruje treść wyzwalacz Centrum zdarzeń.
 
-W poniższych przykładach pokazano danych powiązania usługi Event Hubs w *function.json* pliku. Pierwszy przykład jest dla funkcji 1.x i drugim jest funkcji 2.x. 
+W poniższych przykładach pokazano danych powiązania usługi Event Hubs w *function.json* pliku. Pierwszy przykład jest dla funkcji 2.x, a drugi to funkcji 1.x. 
+
 
 ```json
 {
   "type": "eventHubTrigger",
   "name": "myEventHubMessage",
   "direction": "in",
-  "path": "MyEventHub",
+  "eventHubName": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -145,7 +146,7 @@ W poniższych przykładach pokazano danych powiązania usługi Event Hubs w *fun
   "type": "eventHubTrigger",
   "name": "myEventHubMessage",
   "direction": "in",
-  "eventHubName": "MyEventHub",
+  "path": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -203,14 +204,15 @@ public static void Run(string[] eventHubMessages, TraceWriter log)
 
 W poniższym przykładzie pokazano wyzwalacz Centrum zdarzeń, powiązanie w *function.json* pliku i [funkcja języka F #](functions-reference-fsharp.md) powiązania, który używa. Funkcja rejestruje treść wyzwalacz Centrum zdarzeń.
 
-W poniższych przykładach pokazano danych powiązania usługi Event Hubs w *function.json* pliku. Pierwszy przykład jest dla funkcji 1.x i drugim jest funkcji 2.x. 
+W poniższych przykładach pokazano danych powiązania usługi Event Hubs w *function.json* pliku. Pierwszy przykład jest dla funkcji 2.x, a drugi to funkcji 1.x. 
+
 
 ```json
 {
   "type": "eventHubTrigger",
   "name": "myEventHubMessage",
   "direction": "in",
-  "path": "MyEventHub",
+  "eventHubName": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -219,7 +221,7 @@ W poniższych przykładach pokazano danych powiązania usługi Event Hubs w *fun
   "type": "eventHubTrigger",
   "name": "myEventHubMessage",
   "direction": "in",
-  "eventHubName": "MyEventHub",
+  "path": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -235,14 +237,15 @@ let Run(myEventHubMessage: string, log: TraceWriter) =
 
 W poniższym przykładzie pokazano wyzwalacz Centrum zdarzeń, powiązanie w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) powiązania, który używa. Funkcja odczytuje [metadanych zdarzenia](#trigger---event-metadata) i rejestruje wiadomość.
 
-W poniższych przykładach pokazano danych powiązania usługi Event Hubs w *function.json* pliku. Pierwszy przykład jest dla funkcji 1.x i drugim jest funkcji 2.x. 
+W poniższych przykładach pokazano danych powiązania usługi Event Hubs w *function.json* pliku. Pierwszy przykład jest dla funkcji 2.x, a drugi to funkcji 1.x. 
+
 
 ```json
 {
   "type": "eventHubTrigger",
   "name": "myEventHubMessage",
   "direction": "in",
-  "path": "MyEventHub",
+  "eventHubName": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -251,7 +254,7 @@ W poniższych przykładach pokazano danych powiązania usługi Event Hubs w *fun
   "type": "eventHubTrigger",
   "name": "myEventHubMessage",
   "direction": "in",
-  "eventHubName": "MyEventHub",
+  "path": "MyEventHub",
   "connection": "myEventHubReadConnectionAppSetting"
 }
 ```
@@ -269,14 +272,14 @@ module.exports = function (context, eventHubMessage) {
 };
 ```
 
-Aby odbierać zdarzenia w zadaniu wsadowym, należy ustawić `cardinality` do `many` w *function.json* pliku, jak pokazano w poniższych przykładach. Pierwszy przykład jest dla funkcji 1.x i drugim jest funkcji 2.x. 
+Aby odbierać zdarzenia w zadaniu wsadowym, należy ustawić `cardinality` do `many` w *function.json* pliku, jak pokazano w poniższych przykładach. Pierwszy przykład jest dla funkcji 2.x, a drugi to funkcji 1.x. 
 
 ```json
 {
   "type": "eventHubTrigger",
   "name": "eventHubMessages",
   "direction": "in",
-  "path": "MyEventHub",
+  "eventHubName": "MyEventHub",
   "cardinality": "many",
   "connection": "myEventHubReadConnectionAppSetting"
 }
@@ -286,7 +289,7 @@ Aby odbierać zdarzenia w zadaniu wsadowym, należy ustawić `cardinality` do `m
   "type": "eventHubTrigger",
   "name": "eventHubMessages",
   "direction": "in",
-  "eventHubName": "MyEventHub",
+  "path": "MyEventHub",
   "cardinality": "many",
   "connection": "myEventHubReadConnectionAppSetting"
 }
@@ -426,13 +429,13 @@ public static string Run([TimerTrigger("0 */5 * * * *")] TimerInfo myTimer, Trac
 
 W poniższym przykładzie pokazano wyzwalacz Centrum zdarzeń, powiązanie w *function.json* pliku i [funkcji skryptu w języku C#](functions-reference-csharp.md) powiązania, który używa. Funkcja zapisuje komunikat do Centrum zdarzeń.
 
-W poniższych przykładach pokazano danych powiązania usługi Event Hubs w *function.json* pliku. Pierwszy przykład jest dla funkcji 1.x i drugim jest funkcji 2.x. 
+W poniższych przykładach pokazano danych powiązania usługi Event Hubs w *function.json* pliku. Pierwszy przykład jest dla funkcji 2.x, a drugi to funkcji 1.x. 
 
 ```json
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
-    "path": "myeventhub",
+    "eventHubName": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -441,7 +444,7 @@ W poniższych przykładach pokazano danych powiązania usługi Event Hubs w *fun
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
-    "eventHubName": "myeventhub",
+    "path": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -476,13 +479,13 @@ public static void Run(TimerInfo myTimer, ICollector<string> outputEventHubMessa
 
 W poniższym przykładzie pokazano wyzwalacz Centrum zdarzeń, powiązanie w *function.json* pliku i [funkcja języka F #](functions-reference-fsharp.md) powiązania, który używa. Funkcja zapisuje komunikat do Centrum zdarzeń.
 
-W poniższych przykładach pokazano danych powiązania usługi Event Hubs w *function.json* pliku. Pierwszy przykład jest dla funkcji 1.x i drugim jest funkcji 2.x. 
+W poniższych przykładach pokazano danych powiązania usługi Event Hubs w *function.json* pliku. Pierwszy przykład jest dla funkcji 2.x, a drugi to funkcji 1.x. 
 
 ```json
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
-    "path": "myeventhub",
+    "eventHubName": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -491,7 +494,7 @@ W poniższych przykładach pokazano danych powiązania usługi Event Hubs w *fun
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
-    "eventHubName": "myeventhub",
+    "path": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -510,13 +513,13 @@ let Run(myTimer: TimerInfo, outputEventHubMessage: byref<string>, log: TraceWrit
 
 W poniższym przykładzie pokazano wyzwalacz Centrum zdarzeń, powiązanie w *function.json* pliku i [funkcji JavaScript](functions-reference-node.md) powiązania, który używa. Funkcja zapisuje komunikat do Centrum zdarzeń.
 
-W poniższych przykładach pokazano danych powiązania usługi Event Hubs w *function.json* pliku. Pierwszy przykład jest dla funkcji 1.x i drugim jest funkcji 2.x. 
+W poniższych przykładach pokazano danych powiązania usługi Event Hubs w *function.json* pliku. Pierwszy przykład jest dla funkcji 2.x, a drugi to funkcji 1.x. 
 
 ```json
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
-    "path": "myeventhub",
+    "eventHubName": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }
@@ -525,7 +528,7 @@ W poniższych przykładach pokazano danych powiązania usługi Event Hubs w *fun
 {
     "type": "eventHub",
     "name": "outputEventHubMessage",
-    "eventHubName": "myeventhub",
+    "path": "myeventhub",
     "connection": "MyEventHubSendAppSetting",
     "direction": "out"
 }

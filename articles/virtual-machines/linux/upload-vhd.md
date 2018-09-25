@@ -1,6 +1,6 @@
 ---
-title: Przekazywanie lub skopiuj niestandardową maszynę Wirtualną systemu Linux przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0 | Dokumentacja firmy Microsoft
-description: Przekazywanie lub skopiuj niestandardową maszynę wirtualną przy użyciu modelu wdrażania usługi Resource Manager i interfejsu wiersza polecenia platformy Azure w wersji 2.0
+title: Przekazywanie lub skopiuj niestandardową maszynę Wirtualną systemu Linux przy użyciu wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Przekazywanie lub skopiuj dostosowany maszyny wirtualnej z wykorzystaniem modelu wdrażania usługi Resource Manager i interfejsu wiersza polecenia platformy Azure
 services: virtual-machines-linux
 documentationcenter: ''
 author: cynthn
@@ -15,14 +15,14 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/06/2017
 ms.author: cynthn
-ms.openlocfilehash: 3fb6957cf6af5c09a355b61c7c2440a929d1b837
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b5df02c9f07549aec406cf449bb0ae49ee9e280a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45736677"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957435"
 ---
-# <a name="create-a-linux-vm-from-custom-disk-with-the-azure-cli-20"></a>Tworzenie maszyny Wirtualnej z systemem Linux z niestandardowego dysku przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
+# <a name="create-a-linux-vm-from-custom-disk-with-the-azure-cli"></a>Tworzenie maszyny Wirtualnej z systemem Linux z niestandardowego dysku przy użyciu wiersza polecenia platformy Azure
 
 <!-- rename to create-vm-specialized -->
 
@@ -57,7 +57,7 @@ Aby wykonać następujące kroki, potrzebne są:
 > 
 
 
-* Upewnij się, że masz najnowszy [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
+* Upewnij się, że masz najnowszy [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2) zainstalowane i zalogować się do konta platformy Azure przy użyciu [az login](/cli/azure/reference-index#az_login).
 
 W poniższych przykładach należy zastąpić własnymi wartościami przykładowe nazwy parametru. Przykładowe nazwy parametru uwzględnione *myResourceGroup*, *mystorageaccount*, i *mydisks*.
 

@@ -6,21 +6,21 @@ author: rboucher
 ms.service: azure-monitor
 ms.devlang: dotnet
 ms.topic: conceptual
-ms.date: 07/13/2018
+ms.date: 09/20/2018
 ms.author: robb
 ms.component: diagnostic-extension
-ms.openlocfilehash: b00d774ec59755288b8660d238c7b8dfc9a89eab
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: ef1422db799db6d635ad9f03908e3a34f312e408
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39089897"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974242"
 ---
 # <a name="what-is-azure-diagnostics-extension"></a>Co to jest rozszerzenie diagnostyki platformy Azure
-Rozszerzenie diagnostyki platformy Azure jest agenta w systemie Azure umożliwia zbieranie danych diagnostycznych na rozmieszczonej aplikacji. Rozszerzenie diagnostyki można użyć z wielu różnych źródeł. Obecnie obsługiwane wartości to usługa w chmurze (klasyczne) w sieci Web i ról procesów roboczych, maszyny wirtualne, zestawy skalowania maszyn wirtualnych i Service Fabric. Inne usługi platformy Azure jest diagnostyki różnych metod. Zobacz [monitorowania na platformie Azure — omówienie](monitoring-overview.md). 
+Rozszerzenie diagnostyki platformy Azure jest agenta w systemie Azure umożliwia zbieranie danych diagnostycznych na rozmieszczonej aplikacji. Rozszerzenie diagnostyki można użyć z wielu różnych źródeł. Obecnie obsługiwane wartości to usługa w chmurze (klasyczne) w sieci Web i ról procesów roboczych, maszyny wirtualne, zestawy skalowania maszyn wirtualnych i Service Fabric. Inne usługi platformy Azure jest diagnostyki różnych metod. Zobacz [monitorowania na platformie Azure — omówienie](monitoring-overview.md).
 
 ## <a name="linux-agent"></a>Agent systemu Linux
-A [wersji systemu Linux rozszerzenie](../virtual-machines/linux/diagnostic-extension.md) dostępnej dla maszyn wirtualnych z systemem Linux. Dane statystyczne zebrane i zachowanie różnią się od wersji Windows. 
+A [wersji systemu Linux rozszerzenie](../virtual-machines/linux/diagnostic-extension.md) dostępnej dla maszyn wirtualnych z systemem Linux. Dane statystyczne zebrane i zachowanie różnią się od wersji Windows.
 
 ## <a name="data-you-can-collect"></a>Dane, które można zebrać
 Rozszerzenie diagnostyki platformy Azure można zebrać następujące typy danych:
@@ -37,13 +37,20 @@ Rozszerzenie diagnostyki platformy Azure można zebrać następujące typy danyc
 | Dzienniki błędów niestandardowych |Dzienniki utworzone przez aplikację lub usługę |
 | Dzienniki infrastruktury diagnostyki platformy Azure |Informacje o diagnostyce sam |
 
-(1) Aby uzyskać listę dostawców ETW, uruchom `c:\Windows\System32\logman.exe query providers` w oknie konsoli, na komputerze, na które chcesz zebrać informacje z. 
+(1) Aby uzyskać listę dostawców ETW, uruchom `c:\Windows\System32\logman.exe query providers` w oknie konsoli, na komputerze, na które chcesz zebrać informacje z.
 
 ## <a name="data-storage"></a>Magazyn danych
-Rozszerzenie zapisuje dane w [konta usługi Azure Storage](azure-diagnostics-storage.md) określonym przez użytkownika. 
+Rozszerzenie zapisuje dane w [konta usługi Azure Storage](azure-diagnostics-storage.md) określonym przez użytkownika.
 
-Można również wysłać go do [usługi Application Insights](../application-insights/app-insights-cloudservices.md). Innym rozwiązaniem jest przesyłanie strumieniowe do [Centrum zdarzeń](../event-hubs/event-hubs-what-is-event-hubs.md), który następnie pozwala wysyłać je do usługi montoring spoza platformy Azure. 
+Można również wysłać go do [usługi Application Insights](../application-insights/app-insights-cloudservices.md). Innym rozwiązaniem jest przesyłanie strumieniowe do [Centrum zdarzeń](../event-hubs/event-hubs-what-is-event-hubs.md), który następnie pozwala wysyłać je do usługi montoring spoza platformy Azure.
 
+### <a name="azure-monitor"></a>Azure Monitor
+Istnieje również możliwość wysyłania danych do usługi Azure Monitor. W tej chwili zlew ma zastosowanie tylko do liczników wydajności. Umożliwia wysyłanie liczniki wydajności zebrane na maszynie Wirtualnej, zestawu skalowania maszyn wirtualnych, lub w chmurze Usługa do usługi Azure Monitor jako metryki niestandardowe. Obsługuje ujścia usługi Azure Monitor:
+* Pobieranie wszystkich liczników wydajności wysyłane do usługi Azure Monitor za pośrednictwem [metryk usługi Azure Monitor interfejsów API.](https://docs.microsoft.com/rest/api/monitor/)
+* Alertów dla wszystkich liczników wydajności wysyłane do usługi Azure Monitor w nowej witrynie [ujednolicone środowisko alertów](monitoring-overview-unified-alerts.md) w usłudze Azure Monitor
+* Traktowanie operator symbolu wieloznacznego w liczniki wydajności jako wymiar "Wystąpienie" w swoje metryki.  Na przykład, gdy zostały zebrane "dysk logiczny (\*) / DiskWrites na sekundę" licznik będzie mieć możliwość filtrowania i podział wymiaru "Wystąpienie" do kreślenia lub alertu na zapisy dysku/s dla każdego dysku logicznego na maszynie Wirtualnej (C: D:, itp.)
+
+Aby dowiedzieć się więcej na temat konfigurowania tego obiektu sink, zapoznaj się [dokumentacji schemat usługi Diagnostyka Azure.](azure-diagnostics-schema-1dot3-and-later.md)
 
 ## <a name="versioning-and-configuration-schema"></a>Schemat przechowywania wersji i konfiguracji
 Zobacz [schemat i Historia wersji usługi Diagnostyka Azure](azure-diagnostics-versioning-history.md).

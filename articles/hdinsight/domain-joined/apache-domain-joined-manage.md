@@ -1,23 +1,23 @@
 ---
-title: Zarządzanie klastrami HDInsight przyłączone do domeny — Azure
-description: Dowiedz się, jak zarządzać klastrami HDInsight przyłączone do domeny
+title: Zarządzanie klastrami HDInsight przy użyciu zabezpieczeń Enterprise, Enterprise - Azure
+description: Dowiedz się, jak zarządzać klastrami HDInsight z pakietem Enterprise Security.
 services: hdinsight
 ms.service: hdinsight
 author: omidm1
 ms.author: omidm
-ms.reviewer: jasonh
+ms.reviewer: mamccrea
 ms.custom: hdinsightactive
 ms.topic: conceptual
-ms.date: 04/17/2018
-ms.openlocfilehash: 494049cffe77e23c33528747e04bf96065fac2e2
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.date: 08/24/2018
+ms.openlocfilehash: 02a77ef9589a42a6f33087ba7e22efc3144a8f2c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43051608"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46973562"
 ---
-# <a name="manage-domain-joined-hdinsight-clusters"></a>Zarządzanie klastrami HDInsight przyłączone do domeny
-Dowiedz się, użytkownicy i role w HDInsight przyłączone do domeny i zarządzanie klastrami HDInsight przyłączone do domeny.
+# <a name="manage-hdinsight-clusters-with-enterprise-security-package"></a>Zarządzanie klastrami HDInsight z pakietem Enterprise Security
+Dowiedz się, użytkownicy i role w HDInsight Enterprise Security pakietu (ESP) oraz sposób zarządzania klastrami ESP.
 
 ## <a name="use-vscode-to-link-to-domain-joined-cluster"></a>Łączenie z klastrem przyłączonym do domeny za pomocą programu VSCode
 
@@ -140,12 +140,12 @@ Aby znaleźć nazwę FQDN węzła głównego, skorzystaj z informacji w zarządz
 
 
 
-## <a name="users-of-domain-joined-hdinsight-clusters"></a>Użytkownicy z klastrami HDInsight przyłączone do domeny
-Klaster usługi HDInsight, który nie jest przyłączony do domeny ma dwa konta użytkownika, które są tworzone podczas tworzenia klastra:
+## <a name="users-of-hdinsight-clusters-with-esp"></a>Użytkownicy z klastrami HDInsight przy użyciu ESP
+Klaster HDInsight bez ESP ma dwa konta użytkownika, które są tworzone podczas tworzenia klastra:
 
 * **Administrator systemu Ambari**: to konto jest także znana jako *użytkownika usługi Hadoop* lub *użytkownika HTTP*. To konto może służyć do logowania do systemu Ambari pod https://&lt;nazwa_klastra >. azurehdinsight.net. Jego można również uruchamiać zapytania dotyczące widoków Ambari, wykonywanie zadania za pomocą narzędzia zewnętrzne (na przykład programu PowerShell, Templeton, Visual Studio) i uwierzytelnianie za pomocą sterownika ODBC programu Hive i narzędzi do analizy Biznesowej (na przykład programu Excel usługi Power Bi i Tableau).
 
-Klaster HDInsight przyłączone do domeny ma trzy nowi użytkownicy, oprócz administratora Ambari.
+Klaster HDInsight przy użyciu ESP ma trzy nowi użytkownicy, oprócz administratora Ambari.
 
 * **Administratora platformy ranger**: to konto jest lokalne konto administratora platformy Apache Ranger. Nie jest użytkownikiem domeny usługi active directory. To konto, można skonfigurować zasady i innych użytkowników, administratorów lub administratora delegowanego (tak, aby zasadami można zarządzać tymi użytkownikami). Domyślnie, nazwa użytkownika jest *administratora* , a hasło to takie same jak hasło administratora Ambari. Hasło może zostać zaktualizowana na stronie Ustawienia w platformy Ranger.
 * **Użytkownik domeny administratora klastra**: to konto jest wyznaczony jako administratora klastra usługi Hadoop, w tym Ambari i Ranger użytkownika domeny usługi active directory. Podczas tworzenia klastra, musisz podać poświadczenia tego użytkownika. Ten użytkownik nie ma następujące uprawnienia:
@@ -159,8 +159,8 @@ Klaster HDInsight przyłączone do domeny ma trzy nowi użytkownicy, oprócz adm
     Istnieje kilka punktów końcowych w ramach klastra (na przykład Templeton), które nie są zarządzane przez Ranger i dlatego nie są bezpieczne. Te punkty końcowe są zablokowane dla wszystkich użytkowników z wyjątkiem użytkownika domeny administratora klastra.
 * **Regularne**: podczas tworzenia klastra, możesz podać wiele grup usługi active directory. Użytkownicy w tych grupach są synchronizowane z usługą platformy Ranger i Ambari. Ci użytkownicy są użytkownikami domeny i mieć dostęp do tylko zarządzane platformy Ranger punktów końcowych (na przykład serwera Hiveserver2). Wszystkie zasady RBAC i inspekcji będą mieć zastosowanie do tych użytkowników.
 
-## <a name="roles-of-domain-joined-hdinsight-clusters"></a>Role z klastrów HDInsight przyłączone do domeny
-HDInsight przyłączone do domeny mają następujące role:
+## <a name="roles-of-hdinsight-clusters-with-esp"></a>Role z klastrami HDInsight przy użyciu ESP
+Pakiet zabezpieczeń przedsiębiorstwa HDInsight ma następujące role:
 
 * Administrator klastra
 * Operator klastra
@@ -174,7 +174,7 @@ HDInsight przyłączone do domeny mają następujące role:
 2. W menu po lewej stronie kliknij **role**.
 3. Kliknij niebieski znak zapytania, aby wyświetlić uprawnienia:
 
-    ![Przyłączone do domeny uprawnienia ról HDInsight](./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
+    ![Uprawnienia ról HDInsight ESP](./media/apache-domain-joined-manage/hdinsight-domain-joined-roles-permissions.png)
 
 ## <a name="open-the-ambari-management-ui"></a>Otwórz przystawkę Zarządzanie Ambari interfejsu użytkownika
 
@@ -184,43 +184,43 @@ HDInsight przyłączone do domeny mają następujące role:
 4. Zaloguj się przy użyciu nazwy użytkownika domeny administratora klastra i hasło Ambari.
 5. Kliknij przycisk **administratora** menu rozwijane w górnym prawym rogu, a następnie kliknij **Zarządzanie Ambari**.
 
-    ![HDInsight przyłączone do domeny zarządzania Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
+    ![HDInsight ESP Zarządzanie systemu Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-manage-ambari.png)
 
     Interfejs użytkownika wygląda następująco:
 
-    ![Zarządzanie HDInsight Ambari przyłączone do domeny interfejs użytkownika](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
+    ![Interfejs użytkownika zarządzania ESP HDInsight Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui.png)
 
 ## <a name="list-the-domain-users-synchronized-from-your-active-directory"></a>Utwórz listę użytkowników domeny, synchronizowane z usługi Active Directory
 1. Otwórz przystawkę Zarządzanie Ambari interfejsu użytkownika.  Zobacz [Otwórz interfejs użytkownika zarządzania Ambari](#open-the-ambari-management-ui).
 2. W menu po lewej stronie kliknij **użytkowników**. Zostanie wyświetlona wszystkich użytkowników, które są synchronizowane z usługi Active Directory do klastra HDInsight.
 
-    ![Przyłączone do domeny systemu HDInsight Ambari zarządzania interfejsu użytkownika lista użytkowników](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
+    ![Użytkownicy listy interfejsu użytkownika zarządzania ESP HDInsight Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-users.png)
 
 ## <a name="list-the-domain-groups-synchronized-from-your-active-directory"></a>Wyświetlanie listy grup domeny synchronizowane z usługi Active Directory
 1. Otwórz przystawkę Zarządzanie Ambari interfejsu użytkownika.  Zobacz [Otwórz interfejs użytkownika zarządzania Ambari](#open-the-ambari-management-ui).
 2. W menu po lewej stronie kliknij **grup**. Zobaczysz wszystkie grupy, które są synchronizowane z usługi Active Directory do klastra HDInsight.
 
-    ![Przyłączone do domeny grup listy interfejsu użytkownika zarządzania HDInsight Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
+    ![Grupy lista interfejsu użytkownika zarządzania ESP HDInsight Ambari](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-groups.png)
 
 ## <a name="configure-hive-views-permissions"></a>Skonfiguruj uprawnienia widoki Hive
 1. Otwórz przystawkę Zarządzanie Ambari interfejsu użytkownika.  Zobacz [Otwórz interfejs użytkownika zarządzania Ambari](#open-the-ambari-management-ui).
 2. W menu po lewej stronie kliknij **widoków**.
 3. Kliknij przycisk **HIVE** Aby wyświetlić jego szczegóły.
 
-    ![Przyłączone do domeny zarządzania HDInsight Ambari widoki Hive interfejsu użytkownika](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
+    ![Zarządzanie ESP HDInsight Ambari widoki Hive interfejsu użytkownika](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views.png)
 4. Kliknij przycisk **Hive View** link, aby skonfigurować widoki Hive.
 5. Przewiń w dół do **uprawnienia** sekcji.
 
-    ![Przyłączone do domeny zarządzania HDInsight Ambari widoki Hive interfejsu użytkownika konfigurowania uprawnień](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
+    ![Widoki Hive interfejsu użytkownika ESP HDInsight Ambari zarządzania konfigurowania uprawnień](./media/apache-domain-joined-manage/hdinsight-domain-joined-ambari-management-ui-hive-views-permissions.png)
 6. Kliknij przycisk **Dodaj użytkownika** lub **Dodaj grupę**, a następnie określ użytkowników lub grupy, które mogą używać widoki Hive.
 
 ## <a name="configure-users-for-the-roles"></a>Konfigurowanie użytkowników dla ról
- Aby wyświetlić listę ról i uprawnień, zobacz [klastry HDInsight przyłączone do ról domeny](#roles-of-domain---joined-hdinsight-clusters).
+ Aby wyświetlić listę ról i uprawnień, zobacz [role HDInsight klastrów przy użyciu ESP](#roles-of-domain---joined-hdinsight-clusters).
 
 1. Otwórz przystawkę Zarządzanie Ambari interfejsu użytkownika.  Zobacz [Otwórz interfejs użytkownika zarządzania Ambari](#open-the-ambari-management-ui).
 2. W menu po lewej stronie kliknij **role**.
 3. Kliknij przycisk **Dodaj użytkownika** lub **Dodaj grupę** można przypisać użytkowników i grup dla różnych ról.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby skonfigurować przyłączony do domeny klaster usługi HDInsight, zobacz [Configure Domain-joined HDInsight clusters](apache-domain-joined-configure.md) (Konfigurowanie przyłączonych do domeny klastrów usługi HDInsight).
-* Aby znaleźć informacje na temat konfigurowania zasad Hive i uruchamiania kwerend Hive, zobacz [Konfigurowanie zasad usługi Hive dla przyłączonych do domeny klastrów usługi HDInsight](apache-domain-joined-run-hive.md).
+* Do konfigurowania klastra HDInsight z pakietem Enterprise Security, zobacz [HDInsight konfigurowanie klastrów przy użyciu ESP](apache-domain-joined-configure.md).
+* Do konfigurowania zasad usługi Hive i uruchamiania kwerend Hive, zobacz [Konfigurowanie zasad usługi Hive dla HDInsight klastrów przy użyciu ESP](apache-domain-joined-run-hive.md).

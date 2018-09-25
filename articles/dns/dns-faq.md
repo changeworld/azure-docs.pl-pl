@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/06/2017
+ms.date: 9/25/2018
 ms.author: victorh
-ms.openlocfilehash: 747b2e2499a9bafcf7a7b03bc2ce144828c55c75
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 66e04e7f0b272f19788e79805ef06d11e2eda572
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172504"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948030"
 ---
 # <a name="azure-dns-faq"></a>Usługa DNS platformy Azure — często zadawane pytania
 
@@ -26,11 +26,11 @@ ms.locfileid: "39172504"
 
 ### <a name="what-is-azure-dns"></a>Co to jest system DNS platformy Azure?
 
-System nazw domen lub DNS, odpowiada za tłumaczenia (lub rozpoznawanie) nazwę witryny sieci Web lub usługi na jej adres IP. System DNS Azure jest usługa hostingowa przeznaczona dla domen DNS, która umożliwia rozpoznawanie nazw przy użyciu infrastruktury Microsoft Azure. Dzięki hostowaniu swoich domen na platformie Azure możesz zarządzać rekordami DNS z zastosowaniem tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń co w przypadku innych usług platformy Azure.
+System nazw domen lub DNS, odpowiada za tłumaczenia (lub rozpoznawanie) nazwę witryny sieci Web lub usługi na jej adres IP. Azure DNS to usługa hostingowa przeznaczona dla domen DNS, która umożliwia rozpoznawanie nazw przy użyciu infrastruktury platformy Microsoft Azure. Dzięki hostowaniu swoich domen na platformie Azure możesz zarządzać rekordami DNS z zastosowaniem tych samych poświadczeń, interfejsów API, narzędzi i rozliczeń co w przypadku innych usług platformy Azure.
 
-Domeny DNS w usłudze Azure DNS znajdują się w globalnej sieci serwerów nazw DNS platformy Azure. Ta metoda korzysta najbliższych tak, aby każde zapytanie DNS jest odbierane przez najbliższego dostępnego serwera DNS. Usługa DNS platformy Azure zapewnia wysoką wydajność i wysoką dostępność domeny.
+W usłudze Azure DNS domeny DNS są hostowane w globalnej sieci serwerów nazw DNS na platformie Azure. Ta metoda korzysta najbliższych tak, aby każde zapytanie DNS jest odbierane przez najbliższego dostępnego serwera DNS. Usługa DNS platformy Azure zapewnia wysoką wydajność i wysoką dostępność domeny.
 
-Usługa DNS platformy Azure jest oparta na usłudze Resource Manager. W efekcie firma korzysta z zalet funkcji Menedżera zasobów, takich jak kontrola dostępu oparta na rolach, dzienniki inspekcji i blokowanie zasobów. Twoich domen i rekordów mogą być zarządzane za pośrednictwem witryny Azure portal, poleceń cmdlet programu Azure PowerShell i wiersza polecenia platformy Azure dla wielu platform. Aplikacji wymagających automatycznego zarządzania usługą DNS można zintegrować z usługą za pomocą interfejsu API REST i zestawów SDK.
+Usługa Azure DNS jest oparta na usłudze Azure Resource Manager. W efekcie firma korzysta z zalet funkcji Menedżera zasobów, takich jak kontrola dostępu oparta na rolach, dzienniki inspekcji i blokowanie zasobów. Twoich domen i rekordów mogą być zarządzane za pośrednictwem witryny Azure portal, poleceń cmdlet programu Azure PowerShell i wiersza polecenia platformy Azure dla wielu platform. Aplikacji wymagających automatycznego zarządzania usługą DNS można zintegrować z usługą za pomocą interfejsu API REST i zestawów SDK.
 
 ### <a name="how-much-does-azure-dns-cost"></a>Ile kosztuje usługa Azure DNS
 
@@ -63,6 +63,10 @@ Należy zakupić nazwę domeny, jeśli chcesz połączyć swoją strefę DNS z g
 
 ## <a name="azure-dns-features"></a>Funkcje usługi Azure DNS
 
+### <a name="are-there-any-restrictions-when-using-alias-records-for-a-domain-name-apex-with-traffic-manager"></a>Czy istnieją jakieś ograniczenia w przypadku używania rekordów aliasów dla wierzchołku nazwy domeny usługi Traffic Manager?
+
+Tak. Statyczne publiczne adresy IP należy użyć z usługą Traffic Manager. Konfigurowanie **zewnętrzny punkt końcowy** przy użyciu statycznego adresu IP. 
+
 ### <a name="does-azure-dns-support-dns-based-traffic-routing-or-endpoint-failover"></a>Usługa Azure DNS obsługuje trybu failover routingu lub punktu końcowego ruchu oparte na systemie DNS?
 
 Tryb failover routingu i punktu końcowego ruchu oparte na systemie DNS są dostarczane przez usługę Azure Traffic Manager. Usługa Azure Traffic Manager jest osobną usługą platformy Azure, który może być używane razem z usługi Azure DNS. Aby uzyskać więcej informacji, zobacz [Traffic Manager — omówienie](../traffic-manager/traffic-manager-overview.md).
@@ -71,7 +75,7 @@ Usługa DNS platformy Azure obsługuje tylko hostowanie domen DNS "static", w kt
 
 ### <a name="does-azure-dns-support-domain-name-registration"></a>Usługa DNS platformy Azure obsługuje rejestracji nazwy jej domeny?
 
-Nie. Usługa Azure DNS nie obsługuje aktualnie możliwości zakupu nazw domen. Aby zakupić domenę, należy użyć Rejestratora nazw domen innej firmy. Rejestrator zwykle opłaty za niewielką opłatą roczną. Następnie domeny mogą być hostowane w usłudze Azure DNS do zarządzania rekordami DNS. Zobacz [delegować domenę do usługi Azure DNS](dns-domain-delegation.md) Aby uzyskać szczegółowe informacje.
+Nie. Usługa Azure DNS nie obsługuje aktualnie możliwości zakupu nazw domen. Aby zakupić domenę, należy użyć Rejestratora nazw domen innej firmy. Rejestrator zwykle opłaty za niewielką opłatą roczną. Następnie domeny mogą być hostowane w usłudze Azure DNS do zarządzania rekordami DNS. Aby uzyskać szczegółowe informacje, zobacz [Delegowanie domeny do usługi Azure DNS](dns-domain-delegation.md).
 
 Kup domeny jest funkcją jest śledzony w zaległości platformy Azure. Można użyć witrynę opinii do [zarejestrować działu pomocy technicznej dla tej funkcji](https://feedback.azure.com/forums/217313-networking/suggestions/4996615-azure-should-be-its-own-domain-registrar).
 
@@ -93,13 +97,41 @@ Nie. Adres URL przekierowania usług nie są faktycznie usługi DNS — działaj
 
 Funkcja Przekierowywanie adresu URL jest śledzony na liście prac w usłudze Azure DNS. Można użyć witrynę opinii do [zarejestrować działu pomocy technicznej dla tej funkcji](https://feedback.azure.com/forums/217313-networking/suggestions/10109736-provide-a-301-permanent-redirect-service-for-ape).
 
-### <a name="does-azure-dns-support-extended-ascii-encoding-8-bit-set-for-txt-recordset-"></a>Usługa Azure DNS obsługuje rozszerzone ASCII (8-bitowa) zestawu dla zestawu rekordów TXT kodowania?
+### <a name="does-azure-dns-support-extended-ascii-encoding-8-bit-set-for-txt-recordset"></a>Usługa Azure DNS obsługuje rozszerzone ASCII (8-bitowa) zestawu dla zestawu rekordów TXT kodowania?
 
 Tak. Usługa DNS platformy Azure obsługuje rozszerzonego zestawu kodowanie ASCII dla zestawów rekordów TXT, jeśli używasz najnowszej wersji interfejsów API REST platformy Azure, zestawy SDK, program PowerShell i interfejsu wiersza polecenia (wersje starsze niż 2017-10-01 lub czy SDK 2.1 obsługuje rozszerzonego zestawu ASCII). Na przykład, jeśli użytkownik udostępnia ciąg jako wartość dla rekordu TXT, który ma rozszerzone \128 znaków ASCII (na przykład: "abcd\128efgh"), system DNS Azure użyje wartości bajtu tego znaku (czyli 128) w wewnętrznej reprezentacji. W czasie rozpoznawania nazw DNS także tę wartość bajtu zostaną zwrócone w odpowiedzi. Należy również zauważyć, "abc" i "\097\098\099" czy zamienne chodzi rozwiązania jest. 
 
 Wykonamy [ze standardem RFC 1035](https://www.ietf.org/rfc/rfc1035.txt) strefa reguły ucieczki wzorca format pliku dla rekordów TXT. Na przykład "\" teraz faktycznie wszystko, czego zgodnie z RFC specjalne. Jeśli określisz "A\B." jako wartości rekordu TXT będą reprezentowane i rozwiązać jak właśnie "AB". Jeśli naprawdę rekord TXT mieć "A\B.", rozdzielczością należy jako znak ucieczki "\" ponownie, tj. Określ jako "A\\B". 
 
-Pamiętaj, że ta funkcja jest obecnie niedostępna dla rekordów TXT utworzone w witrynie Azure Portal. 
+Ta funkcja jest obecnie dostępna dla rekordów TXT utworzone w witrynie Azure portal. 
+
+## <a name="alias-records"></a>Rekordów aliasów
+
+### <a name="what-are-some-scenarios-where-alias-records-are-useful"></a>Co to są sytuacje, w którym rekordów aliasów są przydatne?
+Zobacz scenariusze w temacie [Azure alias DNS rekordów — omówienie](dns-alias.md).
+
+### <a name="what-record-types-are-supported-for-alias-record-sets"></a>Jakie typy rekordów są obsługiwane dla zestawów rekordów alias?
+Alias zestawów rekordów są obsługiwane w przypadku następujących typów rekordów w strefie usługi Azure DNS: A i AAAA, CNAME. 
+
+### <a name="what-resources-are-supported-as-targets-for-alias-record-sets"></a>Jakie zasoby są obsługiwane jako elementy docelowe dla aliasu zestawy rekordów?
+- **Wskazywać na zasób publicznego adresu IP z usługi DNS zestawu rekordów A/AAAA**. Tworzenie zestawu rekordów A/AAAA i ułatwiają alias zestawu rekordów, aby wskazywać na zasób publicznego adresu IP.
+- **Wskaż profil usługi Traffic Manager z zestawu rekordów DNS A/AAAA/CNAME**. Oprócz możliwości, aby wskazywał CNAME profilu usługi Traffic Manager (na przykład: contoso.trafficmanager.net) z zestawu rekordów CNAME w systemie DNS, można teraz również wskazać profilu usługi Traffic Manager, który ma zewnętrzne punkty końcowe z zestawu rekordów A lub AAAA w systemie DNS strefa.
+- **Wskaż inny rekordów DNS w ramach tej samej strefie**. Alias rekordy mogą odwoływać się do innych zestawów rekordów tego samego typu. Na przykład masz zestaw rekordów CNAME w systemie DNS jest aliasem innej rekordów CNAME tego samego typu. Jest to przydatne, jeśli chcesz mieć niektóre zestawy rekordów można aliasów, a niektóre jako innych aliasów pod kątem zachowania.
+
+### <a name="can-i-create-and-update-alias-records-from-the-azure-portal"></a>Czy mogę tworzyć i aktualizować alias rekordów w witrynie Azure portal?
+Tak. Rekordów aliasów mogą być tworzone lub zarządzane w witrynie Azure portal, oprócz interfejsów API REST platformy Azure, programu Azure PowerShell, interfejsu wiersza polecenia i zestawy SDK.
+
+### <a name="will-alias-records-help-ensure-my-dns-record-set-is-deleted-when-the-underlying-public-ip-is-deleted"></a>Rekordów aliasów pomoże upewnij się, że mojego zestawu rekordów DNS zostanie usunięty po usunięciu podstawowej publiczny adres IP?
+Tak. W rzeczywistości jest to jedna z podstawowymi możliwościami rekordów aliasów. Ułatwiają one uniknięcia potencjalnych przestojów dla użytkowników końcowych w aplikacji.
+
+### <a name="will-alias-records-help-ensure-my-dns-record-set-is-updated-to-the-correct-ip-address-when-the-underlying-public-ip-address-changes"></a>Alias rekordów pomoże upewnij się, że mojego zestawu rekordów DNS zostały zaktualizowane do prawidłowego adresu IP po zmianie podstawowy publiczny adres IP?
+Tak. Jak poprzednie pytanie to jest jednym z podstawowych możliwości rekordów aliasów i pomaga uniknąć potencjalnych awarii lub zagrożenia dla bezpieczeństwa aplikacji.
+
+### <a name="are-there-any-restrictions-when-using-alias-record-sets-for-an-a-or-aaaa-records-to-point-to-traffic-manager"></a>Czy istnieją jakieś ograniczenia w przypadku zestawów za pomocą rekordu aliasu dla rekordów A lub AAAA wskazywały do usługi Traffic Manager?
+Tak. Jeśli chcesz wskazać profilu usługi Traffic Manager jako alias z zestaw rekordów A lub AAAA, upewnij się, że profil usługi Traffic Manager używa tylko zewnętrzne punkty końcowe. Tworząc zewnętrzne punkty końcowe w usłudze Traffic Manager, upewnij się, że zapewnia rzeczywistego adresy IP punktów końcowych.
+
+### <a name="is-there-an-additional-charge-for-using-alias-records"></a>Czy istnieje dodatkowa opłata za pomocą aliasu rekordów?
+Rekordów aliasów są kwalifikacji na prawidłowe rekordów DNS, a nie ma żadnych dodatkowych rozliczeń dla rekordów aliasów.
 
 ## <a name="using-azure-dns"></a>Za pomocą usługi Azure DNS
 
@@ -179,7 +211,7 @@ Nie. Strefy prywatne działają w połączeniu z sieciami wirtualnymi i umożliw
 Tak. Klientów można skojarzyć maksymalnie 10 sieciami wirtualnymi rozpoznawania ze strefą prywatną jednego.
 
 ### <a name="can-a-virtual-network-that-belongs-to-a-different-subscription-be-added-as-a-resolution-virtual-network-to-a-private-zone"></a>Sieć wirtualną należącą do innej subskrypcji dodaniem jako sieć wirtualną rozpoznawania do stref prywatnych? 
-Tak, jak długo użytkownik ma uprawnienia do zapisu operacji na obydwu sieci wirtualnych, a także strefy prywatnej DNS. Należy pamiętać, że uprawnienia do zapisu mogą zostać przypisane do wielu ról RBAC. Na przykład rola klasycznego RBAC Współautor sieci ma uprawnienia do zapisu w sieciach wirtualnych. Aby uzyskać więcej informacji na temat ról RBAC, zobacz [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md)
+Tak, jak długo użytkownik ma uprawnienia do zapisu operacji na obydwu sieci wirtualnych, a także strefy prywatnej DNS. Uprawnienie do zapisu może być przydzielona do wielu ról RBAC. Na przykład rola klasycznego RBAC Współautor sieci ma uprawnienia do zapisu w sieciach wirtualnych. Aby uzyskać więcej informacji na temat ról RBAC, zobacz [kontroli dostępu opartej na rolach](../role-based-access-control/overview.md)
 
 ### <a name="will-the-automatically-registered-virtual-machine-dns-records-in-a-private-zone-be-automatically-deleted-when-the-virtual-machines-are-deleted-by-the-customer"></a>Rekordy DNS maszyny wirtualnej automatycznie zarejestrowane w prywatnej strefy automatycznie usunie usunięcie maszyn wirtualnych przez klienta?
 Tak. Jeśli usuniesz maszynę wirtualną w ramach sieci wirtualnych rejestracji, firma Microsoft automatycznie spowoduje usunięcie rekordów DNS, które zostały zarejestrowane do strefy ze względu na tym, że sieć wirtualną rejestracji. 
@@ -190,21 +222,21 @@ Nie. W tej chwili rekordy DNS maszyny wirtualnej, które są automatycznie rejes
 ### <a name="what-happens-when-we-attempt-to-manually-create-a-new-dns-record-into-a-private-zone-that-has-the-same-hostname-as-an-automatically-registered-existing-virtual-machine-in-a-registration-virtual-network"></a>Co się stanie w przypadku próby ręcznego utworzenia nowego rekordu DNS do prywatnej strefy o tej samej nazwy hosta jako (automatycznie zarejestrowane) istniejącej maszyny wirtualnej w sieci wirtualnej rejestracji? 
 Jeśli spróbujesz ręcznie utworzyć nowego rekordu DNS do strefy prywatnej, o tej samej nazwy hosta jako istniejącej maszyny wirtualnej (automatycznie zarejestrowane) w sieci wirtualnej rejestracji umożliwi możemy nowego rekordu DNS zastąpić automatycznie zarejestrowane rekord maszyny wirtualnej. Ponadto Jeśli spróbujesz później usunąć ten utworzone ręcznie rekord DNS w strefie, Usuń zakończy się powodzeniem i automatycznej rejestracji nastąpi ponownie (rekord DNS będzie ponownie tworzone automatycznie w strefie) tak długo, jak długo maszyny wirtualnej nadal istnieje i ma prywatny adres IP dołączony do niego. 
 
-### <a name="what-happens-when-we-unlink-a-registration-virtual-network-from-a-private-zone--would-the-automatically-registered-virtual-machine-records-from-the-virtual-network-be-removed-from-the-zone-as-well"></a>Co się stanie, gdy firma Microsoft Odłącz sieć wirtualną rejestracji z prywatnej strefy? Ze strefy, jak również zostaną usunięte rekordy automatycznie zarejestrowane maszyny wirtualnej z sieci wirtualnej?
+### <a name="what-happens-when-we-unlink-a-registration-virtual-network-from-a-private-zone-would-the-automatically-registered-virtual-machine-records-from-the-virtual-network-be-removed-from-the-zone-as-well"></a>Co się stanie, gdy firma Microsoft Odłącz sieć wirtualną rejestracji z prywatnej strefy? Ze strefy, jak również zostaną usunięte rekordy automatycznie zarejestrowane maszyny wirtualnej z sieci wirtualnej?
 Tak. Sieć wirtualna rejestracji (Zaktualizuj strefę DNS, aby usunąć sieć wirtualną rejestracji skojarzony) Odłącz się od prywatnej strefy, Azure usunie wszystkie rekordy automatycznie zarejestrowane maszyny wirtualnej ze strefy. 
 
-### <a name="what-happens-when-we-delete-a-registration-or-resolution-virtual-network-that-is-linked-to-a-private-zone--do-we-have-to-manually-update-the-private-zone-to-un-link-the-virtual-network-as-a-registration-or-resolution--virtual-network-from-the-zone"></a>Co się stanie, gdy usuwamy rejestracji (bądź rozpoznawanie nazw) sieci wirtualnej, która jest połączona z prywatnej strefy? Czy mamy ręcznie zaktualizować ze strefy prywatnej strefy un-łącze sieci wirtualnej w sieci wirtualnej co rejestracji (bądź rozpoznawanie nazw)?
+### <a name="what-happens-when-we-delete-a-registration-or-resolution-virtual-network-that-is-linked-to-a-private-zone-do-we-have-to-manually-update-the-private-zone-to-unlink-the-virtual-network-as-a-registration-or-resolution--virtual-network-from-the-zone"></a>Co się stanie, gdy usuwamy rejestracji (bądź rozpoznawanie nazw) sieci wirtualnej, która jest połączona z prywatnej strefy? Czy mamy ręcznie zaktualizować prywatnej strefy można odłączyć sieci wirtualnej sieci wirtualnej co rejestracji (bądź rozpoznawanie nazw) ze strefy?
 Tak. Po usunięciu sieć wirtualną rejestracji (bądź rozpoznawanie nazw) bez odłączenie go z prywatnej strefy najpierw, Azure umożliwi operacja usuwania została wykonana pomyślnie, ale sieć wirtualna nie jest automatycznie niepołączone z prywatnej strefy ewentualne. Musisz ręcznie Odłącz sieć wirtualną z prywatnej strefy. Z tego powodu zaleca się najpierw odłączyć sieci wirtualnej z prywatnej strefy przed jego usunięciem.
 
 ### <a name="would-dns-resolution-using-the-default-fqdn-internalcloudappnet-still-work-even-when-a-private-zone-for-example-contosolocal-is-linked-to-a-virtual-network"></a>Czy rozpoznawanie nazw DNS przy użyciu domyślnego FQDN (internal.cloudapp.net) nadal działać, nawet w przypadku stref prywatnych (na przykład: contoso.local) jest połączona z siecią wirtualną? 
-Tak. Funkcja stref prywatnych nie zastępuje domyślne rozwiązania DNS przy użyciu strefy internal.cloudapp.net platformy Azure i jest oferowana jako dodatkowe możliwości lub rozszerzenie. W obu przypadkach (czy polegania na internal.cloudapp.net platformy Azure lub na strefy prywatne) zalecane jest używana nazwa FQDN strefy mają być rozpoznane względem. 
+Tak. Funkcja stref prywatnych nie zastępuje domyślne rozwiązania DNS przy użyciu strefy internal.cloudapp.net platformy Azure i jest oferowana jako dodatkowe możliwości lub rozszerzenie. Dla obu przypadków (czy polegania na internal.cloudapp.net platformy Azure lub na strefy prywatne), zalecane jest używana nazwa FQDN strefy mają być rozpoznane względem. 
 
 ### <a name="would-the-dns-suffix-on-virtual-machines-within-a-linked-virtual-network-be-changed-to-that-of-the-private-zone"></a>Aby w przypadku stref prywatnych zostaną zmienione sufiks DNS na maszynach wirtualnych w ramach połączonych sieci wirtualnej? 
 Nie. W tej chwili sufiks DNS na maszynach wirtualnych w sieci wirtualnej połączonej pozostanie jako domyślny sufiks platformy Azure ("*. internal.cloudapp.net"). Można jednak ręcznie zmienić ten sufiks DNS na maszynach wirtualnych, na który prywatnej strefy. 
 
 ### <a name="are-there-any-limitations-for-private-zones-during-this-preview"></a>Czy istnieją jakiekolwiek ograniczenia w przypadku stref prywatnych w tej wersji zapoznawczej?
 Tak. W publicznej wersji zapoznawczej istnieją następujące ograniczenia:
-* 1 sieci wirtualnych rejestracji na stref prywatnych
+* Jednej sieci wirtualnych rejestracji na stref prywatnych
 * Sieci wirtualne maksymalnie 10 rozpoznawanie poszczególnych stref prywatnych
 * Danej sieci wirtualnej mogą być łączone tylko z jednej prywatnej strefy jako sieć wirtualną rejestracji
 * Danej sieci wirtualnej mogą być połączone z maksymalnie 10 Private Zones jako sieć wirtualną rozpoznawania

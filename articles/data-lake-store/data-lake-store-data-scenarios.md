@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: nitinme
-ms.openlocfilehash: c492709ca3da0f9f3ab4b1457be34dd5d6fc7b35
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 64c7985508ed7f03b32340cbb2c78de61242f7e1
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391239"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46984283"
 ---
 # <a name="using-azure-data-lake-storage-gen1-for-big-data-requirements"></a>Za pomocą usługi Azure Data Lake Storage Gen1 dla wymagających danych big Data
 
@@ -40,7 +40,7 @@ Ta pozycja reprezentuje mniejszych zestawów danych, które są używane do twor
 
 | Źródło danych | Za pomocą pozyskiwania |
 | --- | --- |
-| Komputer lokalny |<ul> <li>[Azure Portal](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Dla wielu platform wiersza polecenia platformy Azure 2.0](data-lake-store-get-started-cli-2.0.md)</li> <li>[Przy użyciu narzędzi Data Lake Tools for Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
+| Komputer lokalny |<ul> <li>[Azure Portal](data-lake-store-get-started-portal.md)</li> <li>[Azure PowerShell](data-lake-store-get-started-powershell.md)</li> <li>[Interfejs wiersza polecenia platformy Azure](data-lake-store-get-started-cli-2.0.md)</li> <li>[Przy użyciu narzędzi Data Lake Tools for Visual Studio](../data-lake-analytics/data-lake-analytics-data-lake-tools-get-started.md) </li></ul> |
 | Azure Storage Blob |<ul> <li>[Azure Data Factory](../data-factory/connector-azure-data-lake-store.md)</li> <li>[Narzędzia AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[Uruchomione w klastrze HDInsight narzędzia DistCp](data-lake-store-copy-data-wasb-distcp.md)</li> </ul> |
 
 ### <a name="streamed-data"></a>Dane przesyłane strumieniowo
@@ -61,7 +61,7 @@ Można również źródła danych z relacyjnej bazy danych. W okresie czasu rela
 ### <a name="web-server-log-data-upload-using-custom-applications"></a>Dane dzienników serwera sieci Web (przy użyciu niestandardowych aplikacji przekazywania)
 Ten typ zestawu danych zwrócono szczególną ponieważ analizy danych dziennika serwera sieci web jest typowy przypadek użycia dla aplikacji przetwarzających dane big Data i wymaga dużych woluminów, plików dziennika do przesłania do Data Lake Storage Gen1. Jedną z następujących narzędzi umożliwia pisanie własnego skryptu lub aplikacji do przekazania takich danych.
 
-* [Dla wielu platform wiersza polecenia platformy Azure 2.0](data-lake-store-get-started-cli-2.0.md)
+* [Interfejs wiersza polecenia platformy Azure](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
 * [Zestaw .NET SDK usługi Azure Data Lake Storage Gen1](data-lake-store-get-started-net-sdk.md)
 * [Azure Data Factory](../data-factory/copy-activity-overview.md)
@@ -81,7 +81,7 @@ Duże ilości danych mogą być przechowywane w istniejących klastrów usługi 
 | Podejście | Szczegóły | Zalety | Zagadnienia do rozważenia |
 | --- | --- | --- | --- |
 | Kopiowanie danych bezpośrednio z klastrami usługi Hadoop do usługi Azure Data Lake Storage Gen1 za pomocą usługi Azure Data Factory (ADF) |[ADF obsługuje system plików HDFS jako źródło danych](../data-factory/connector-hdfs.md) |ADF zapewnia obsługę poza pole dla systemu plików HDFS oraz najwyższej klasy end-to-end, zarządzania i monitorowania |Wymaga bramy zarządzania danymi do wdrożenia lokalnie lub w modelu IaaS klastra |
-| Eksportowanie danych z usługi Hadoop, co pliki. Następnie skopiuj pliki do usługi Azure Data Lake Storage Gen1 przy użyciu odpowiedniego mechanizmu. |Można kopiować pliki do korzystania z usługi Azure Data Lake Storage Gen1: <ul><li>[Program Azure PowerShell dla systemu operacyjnego Windows](data-lake-store-get-started-powershell.md)</li><li>[Dla wielu platform Azure CLI 2.0 OS innych niż Windows](data-lake-store-get-started-cli-2.0.md)</li><li>Niestandardowej aplikacji przy użyciu dowolnego zestawu SDK Gen1 usługi Data Lake Storage</li></ul> |Szybkie rozpoczęcie pracy. Można wykonać przekazywanie niestandardowe |Wieloetapowy proces, który obejmuje wiele technologii. Zarządzanie i monitorowanie zostanie powiększona i stanowić wyzwanie, wraz z upływem czasu, ze względu na charakter dostosowanych narzędzi |
+| Eksportowanie danych z usługi Hadoop, co pliki. Następnie skopiuj pliki do usługi Azure Data Lake Storage Gen1 przy użyciu odpowiedniego mechanizmu. |Można kopiować pliki do korzystania z usługi Azure Data Lake Storage Gen1: <ul><li>[Program Azure PowerShell dla systemu operacyjnego Windows](data-lake-store-get-started-powershell.md)</li><li>[Interfejs wiersza polecenia platformy Azure](data-lake-store-get-started-cli-2.0.md)</li><li>Niestandardowej aplikacji przy użyciu dowolnego zestawu SDK Gen1 usługi Data Lake Storage</li></ul> |Szybkie rozpoczęcie pracy. Można wykonać przekazywanie niestandardowe |Wieloetapowy proces, który obejmuje wiele technologii. Zarządzanie i monitorowanie zostanie powiększona i stanowić wyzwanie, wraz z upływem czasu, ze względu na charakter dostosowanych narzędzi |
 | Kopiowanie danych z usługi Hadoop do usługi Azure Storage za pomocą narzędzia Distcp. Następnie skopiuj dane z usługi Azure Storage Data Lake Storage Gen1 przy użyciu odpowiedniego mechanizmu. |Możesz skopiować dane z usługi Azure Storage, Data Lake Storage Gen1 za pomocą: <ul><li>[Azure Data Factory](../data-factory/copy-activity-overview.md)</li><li>[Narzędzia AdlCopy](data-lake-store-copy-data-azure-storage-blob.md)</li><li>[Apache DistCp uruchamianie w klastrach HDInsight](data-lake-store-copy-data-wasb-distcp.md)</li></ul> |Można użyć narzędzi typu open source. |Wieloetapowy proces, który obejmuje wiele technologii |
 
 ### <a name="really-large-datasets"></a>Bardzo dużych zestawów danych
@@ -121,7 +121,7 @@ W takich przypadkach można użyć dowolnej z następujących opcji:
 
 Można również użyć następujących metod napisać własny skrypt/aplikację do pobierania danych z programu Data Lake Storage Gen1.
 
-* [Dla wielu platform wiersza polecenia platformy Azure 2.0](data-lake-store-get-started-cli-2.0.md)
+* [Interfejs wiersza polecenia platformy Azure](data-lake-store-get-started-cli-2.0.md)
 * [Azure PowerShell](data-lake-store-get-started-powershell.md)
 * [Zestaw .NET SDK usługi Azure Data Lake Storage Gen1](data-lake-store-get-started-net-sdk.md)
 

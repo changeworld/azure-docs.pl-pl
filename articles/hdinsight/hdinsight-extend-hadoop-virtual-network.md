@@ -8,14 +8,16 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/26/2018
-ms.openlocfilehash: 659c33ec0e989003e68b5165fab70f50c607868c
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 98c62f54e2413bd67600db182c452d0d5965f239
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591885"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972185"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozszerzenie usługi Azure HDInsight przy użyciu usługi Azure Virtual Network
+
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 Dowiedz się, jak używać HDInsight przy użyciu [Azure Virtual Network](../virtual-network/virtual-networks-overview.md). Korzystanie z usługi Azure Virtual Network umożliwia następujące scenariusze:
 
@@ -70,7 +72,7 @@ Wykonaj kroki w tej sekcji, aby dowiedzieć się, jak dodać nowe HDInsight do i
 
     HDInsight obsługuje wiele usług, które korzystają z różnych portów. Nie blokuje ruchu skierowanego do tych portów. Aby uzyskać listę portów, aby umożliwić przez urządzenie wirtualne zapory, zobacz [zabezpieczeń](#security) sekcji.
 
-    Aby znaleźć istniejącej konfiguracji zabezpieczeń, użyj następujących poleceń programu Azure PowerShell lub wiersza polecenia platformy Azure:
+    Aby znaleźć istniejącej konfiguracji zabezpieczeń, użyj następujących poleceń programu Azure PowerShell lub klasyczny interfejs wiersza polecenia platformy Azure:
 
     * Grupy zabezpieczeń sieci
 
@@ -107,7 +109,7 @@ Wykonaj kroki w tej sekcji, aby dowiedzieć się, jak dodać nowe HDInsight do i
 
     * [Create HDInsight using the Azure portal](hdinsight-hadoop-create-linux-clusters-portal.md) (Tworzenie klastrów usługi HDInsight za pomocą usługi Azure Portal)
     * [Create HDInsight using Azure PowerShell](hdinsight-hadoop-create-linux-clusters-azure-powershell.md) (Tworzenie klastrów usługi HDInsight przy użyciu programu Azure PowerShell)
-    * [Utwórz HDInsight przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 1.0](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
+    * [Tworzenie przy użyciu klasyczny interfejs wiersza polecenia usługi Azure HDInsight](hdinsight-hadoop-create-linux-clusters-azure-cli.md)
     * [Utwórz HDInsight przy użyciu szablonu usługi Azure Resource Manager](hdinsight-hadoop-create-linux-clusters-arm-templates.md)
 
   > [!IMPORTANT]
@@ -441,7 +443,7 @@ $vnet | Set-AzureRmVirtualNetwork
 > Add-AzureRmNetworkSecurityRuleConfig -Name "SSH" -Description "SSH" -Protocol "*" -SourcePortRange "*" -DestinationPortRange "22" -SourceAddressPrefix "*" -DestinationAddressPrefix "VirtualNetwork" -Access Allow -Priority 306 -Direction Inbound
 > ```
 
-### <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
+### <a name="azure-classic-cli"></a>Klasyczny interfejs wiersza polecenia Azure
 
 Wykonaj następujące kroki, aby utworzyć sieć wirtualną, która ogranicza ruch przychodzący, ale zezwala na ruch z adresów IP związanej z HDInsight.
 
@@ -510,7 +512,7 @@ W tym przykładzie sprawia, że następujące założenia:
 
 Na niestandardowego serwera DNS w sieci wirtualnej:
 
-1. Użyj programu Azure PowerShell lub wiersza polecenia platformy Azure, aby znaleźć sufiks DNS w sieci wirtualnej:
+1. Aby znaleźć sufiks DNS w sieci wirtualnej przy użyciu programu Azure PowerShell lub klasyczny interfejs wiersza polecenia platformy Azure:
 
     ```powershell
     $resourceGroupName = Read-Input -Prompt "Enter the resource group that contains the virtual network used with HDInsight"
@@ -592,7 +594,7 @@ W tym przykładzie sprawia, że następujące założenia:
 
 * [Powiąż](https://www.isc.org/downloads/bind/) jest zainstalowany na niestandardowych serwerów DNS.
 
-1. Użyj programu Azure PowerShell lub wiersza polecenia platformy Azure, aby znaleźć sufiks DNS obie sieci wirtualne:
+1. Aby znaleźć sufiks DNS w obu sieciach wirtualnych przy użyciu programu Azure PowerShell lub klasyczny interfejs wiersza polecenia platformy Azure:
 
     ```powershell
     $resourceGroupName = Read-Input -Prompt "Enter the resource group that contains the virtual network used with HDInsight"

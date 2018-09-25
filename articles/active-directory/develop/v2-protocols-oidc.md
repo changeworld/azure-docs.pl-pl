@@ -13,16 +13,16 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 07/12/2018
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 4c7b46972a8c07675e1318a900c1f07043beb3de
-ms.sourcegitcommit: 1f0587f29dc1e5aef1502f4f15d5a2079d7683e9
+ms.openlocfilehash: 51c7bacbfa30a74aef89abba133e48c483375032
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/07/2018
-ms.locfileid: "39591939"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971454"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory w wersji 2.0 i protokołu OpenID Connect
 
@@ -139,7 +139,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 
 | Parametr | Opis |
 | --- | --- |
-| id_token |Identyfikator tokenu, który zażądał aplikacji. Możesz użyć `id_token` parametru, aby zweryfikować tożsamość użytkownika i rozpocząć sesję z użytkownikiem. Aby uzyskać więcej informacji o identyfikatorze tokeny i ich zawartość, zobacz [punktu końcowego v2.0 tokenów odwołanie](v2-id-and-access-tokens.md). |
+| id_token |Identyfikator tokenu, który zażądał aplikacji. Możesz użyć `id_token` parametru, aby zweryfikować tożsamość użytkownika i rozpocząć sesję z użytkownikiem. Aby uzyskać więcej informacji o identyfikatorze tokeny i ich zawartość, zobacz [ `id_tokens` odwołania](id-tokens.md). |
 | state |Jeśli `state` parametru jest uwzględnione w żądaniu, tę samą wartość powinna zostać wyświetlona w odpowiedzi. Aplikację należy sprawdzić, czy wartości stanu żądania i odpowiedzi są identyczne. |
 
 ### <a name="error-response"></a>Odpowiedzi na błąd
@@ -175,20 +175,18 @@ W poniższej tabeli opisano kody błędów, które mogą być zwracane w `error`
 
 ## <a name="validate-the-id-token"></a>Sprawdzanie poprawności tokenu Identyfikacyjnego
 
-Odbieranie tokenu Identyfikacyjnego nie wystarcza do uwierzytelnienia użytkownika. Należy sprawdzić poprawności podpisu tokenu Identyfikacyjnego i weryfikować oświadczenia w tokenie na wymagania dotyczące Twojej aplikacji. Korzysta z punktu końcowego v2.0 [tokenów sieci Web JSON (tokenów Jwt)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) i kryptografii klucza publicznego do podpisywania tokenów i sprawdź, czy są prawidłowe.
+Po prostu odbiera id_token nie wystarcza do uwierzytelnienia użytkownika; należy sprawdzić poprawności podpisu id_token i weryfikować oświadczenia w tokenie na wymagania dotyczące Twojej aplikacji. Korzysta z punktu końcowego v2.0 [tokenów sieci Web JSON (tokenów Jwt)](http://self-issued.info/docs/draft-ietf-oauth-json-web-token.html) i kryptografii klucza publicznego do podpisywania tokenów i sprawdź, czy są prawidłowe.
 
-Można przeprowadzić walidacji tokenu Identyfikatora w kodzie klienta, ale powszechną praktyką jest, aby wysłać tokenu Identyfikacyjnego do serwerów zaplecza i wykonać sprawdzanie poprawności. Po zweryfikowaniu podpis tokenu Identyfikacyjnego, należy sprawdzić kilka oświadczeń. Aby uzyskać więcej informacji, tym więcej o [sprawdzanie poprawności tokenów](v2-id-and-access-tokens.md#validating-tokens) i [ważne informacje na temat Przerzucanie klucza podpisywania](v2-id-and-access-tokens.md#validating-tokens), zobacz [v2.0 tokenów odwołanie](v2-id-and-access-tokens.md). Firma Microsoft zaleca, aby przeanalizować i weryfikować tokeny przy użyciu biblioteki. Ma co najmniej jeden z tych bibliotek dostępnej dla większości platform i języków.
+Można wybrać sprawdzić poprawność `id_token` w kliencie kod, ale powszechną praktyką jest wysłanie `id_token` do serwera wewnętrznej bazy danych i zweryfikować istnieje. Po zweryfikowaniu podpis id_token, istnieje kilka oświadczenia, które będzie trzeba zweryfikować. Zobacz [ `id_token` odwołania](id-tokens.md) uzyskać więcej informacji, w tym [sprawdzania poprawności tokenów](id-tokens.md#validating-idtokens) i [ważnych informacji dotyczących podpisywania Przerzucanie klucza](active-directory-signing-key-rollover.md). Firma Microsoft zaleca korzystające z biblioteki do analizowania i sprawdzanie poprawności tokenów — Brak co najmniej jeden dostępny dla większości platform i języków.
 <!--TODO: Improve the information on this-->
 
-Można również sprawdzić dodatkowe oświadczenia, zależnie od scenariusza. Niektórych typowych operacji sprawdzania poprawności obejmują:
+Możesz również sprawdzić dodatkowe oświadczenia w zależności od scenariusza. Niektórych typowych operacji sprawdzania poprawności obejmują:
 
-* Upewnij się, że użytkownika lub organizacja zarejestrowała się w aplikacji.
-* Upewnij się, że użytkownik ma wymagane uprawnienia lub autoryzacji.
-* Upewnij się, że niektóre siły uwierzytelniania wystąpił, takie jak uwierzytelnianie wieloskładnikowe.
+* Zapewnienie użytkownika/organizacja po zarejestrowaniu w aplikacji.
+* Zapewnienie użytkownika ma odpowiednie zezwolenia/uprawnień
+* Zapewnienie siły uwierzytelniania wystąpił, takie jak uwierzytelnianie wieloskładnikowe.
 
-Aby uzyskać więcej informacji na temat oświadczenia w tokenie identyfikator zobacz [punktu końcowego v2.0 tokenów odwołanie](v2-id-and-access-tokens.md).
-
-Po zweryfikowaniu tokenu Identyfikacyjnego, można rozpocząć sesji z użytkownikiem. Użyj oświadczenia w tokenie identyfikator, aby uzyskać informacje o użytkowniku w swojej aplikacji. Te informacje można użyć do wyświetlania, rekordy, autoryzacji i tak dalej.
+Po zweryfikowaniu całkowicie id_token, można rozpocząć sesji z użytkownikiem i korzystanie z oświadczeń id_token, aby uzyskać informacje o użytkowniku w swojej aplikacji. Te informacje mogą służyć do wyświetlania rekordów, personalizacji itp.
 
 ## <a name="send-a-sign-out-request"></a>Wyślij żądanie wylogowania
 
@@ -257,7 +255,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 
 | Parametr | Opis |
 | --- | --- |
-| id_token |Identyfikator tokenu, który zażądał aplikacji. Identyfikator tokenu można użyć do zweryfikowania tożsamości użytkownika i rozpocząć sesję z użytkownikiem. Znajdziesz więcej szczegółów na temat tokeny Identyfikatora i ich zawartość w [punktu końcowego v2.0 tokenów odwołanie](v2-id-and-access-tokens.md). |
+| id_token |Identyfikator tokenu, który zażądał aplikacji. Identyfikator tokenu można użyć do zweryfikowania tożsamości użytkownika i rozpocząć sesję z użytkownikiem. Znajdziesz więcej szczegółów na temat tokeny Identyfikatora i ich zawartość w [ `id_tokens` odwołania](id-tokens.md). |
 | Kod |Kod autoryzacji, który zażądał aplikacji. Aplikacja może używać kodu autoryzacji do żądania tokenu dostępu dla zasobu docelowego. Kod autoryzacji jest bardzo krótkotrwałe. Zazwyczaj kod autoryzacji wygaśnie po upływie około 10 minut. |
 | state |Jeśli parametr Stan jest uwzględniony w żądaniu, tę samą wartość powinna pojawić się w odpowiedzi. Aplikację należy sprawdzić, czy wartości stanu żądania i odpowiedzi są identyczne. |
 
@@ -280,4 +278,4 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 Aby uzyskać opis możliwe kody błędów i opartej na zalecanym kliencie odpowiedzi, zobacz [kody błędów dla błędów punktu końcowego autoryzacji](#error-codes-for-authorization-endpoint-errors).
 
-Jeśli masz kod autoryzacji i identyfikator tokenu, można zalogować użytkownika i uzyskiwanie tokenów dostępu w ich imieniu. Do logowania użytkownika, musisz zweryfikować tokenu Identyfikacyjnego [dokładnie zgodnie z opisem](#validate-the-id-token). Uzyskiwanie tokenów dostępu, wykonaj czynności opisane w [dokumentacji protokołu OAuth](v2-oauth2-auth-code-flow.md#request-an-access-token).
+Jeśli masz kod autoryzacji i identyfikator tokenu, można zalogować użytkownika i uzyskiwanie tokenów dostępu w ich imieniu. Do logowania użytkownika, musisz zweryfikować tokenu Identyfikacyjnego [dokładnie zgodnie z opisem](id-tokens.md#validating-idtokens). Uzyskiwanie tokenów dostępu, wykonaj czynności opisane w [dokumentacji przepływu kodu OAuth](v2-oauth2-auth-code-flow.md#request-an-access-token).

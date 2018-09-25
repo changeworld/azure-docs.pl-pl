@@ -6,14 +6,14 @@ author: mahilleb-msft
 ms.service: cognitive-services
 ms.technology: speech
 ms.topic: article
-ms.date: 06/28/2018
+ms.date: 09/24/2018
 ms.author: mahilleb
-ms.openlocfilehash: d2c40935504f6c2d477eae1830e58bf782d28b11
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 8485caeff3a7c96ed8f7403befac0026fae16e90
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366204"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46987564"
 ---
 # <a name="regions-of-the-speech-service"></a>Regiony usługi mowy
 
@@ -29,8 +29,7 @@ Zobacz [interfejsów API REST](rest-apis.md) Aby uzyskać szczegółowe informac
 
 ## <a name="speech-sdk"></a>Zestaw SDK rozpoznawania mowy
 
-W [zestaw SDK rozpoznawania mowy](speech-sdk.md), regiony są określane jako ciąg.
-Przykładem jest jako parametr do [SpeechFactory.FromSubscription](https://docs.microsoft.com/dotnet/api/microsoft.cognitiveservices.speech.speechfactory.fromsubscription) mowy zestawu SDK dla języka C#.
+W [zestaw SDK rozpoznawania mowy](speech-sdk.md), regiony są określane jako ciąg (na przykład, jako parametr do `SpeechConfig.FromSubscription` mowy zestawu SDK dla języka C#).
 
 ### <a name="regions-for-speech-recognition-and-translation"></a>Regiony usługi rozpoznawania mowy i tłumaczenia
 

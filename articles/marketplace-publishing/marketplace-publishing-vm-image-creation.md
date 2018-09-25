@@ -14,12 +14,12 @@ ms.tgt_pltfrm: Azure
 ms.workload: na
 ms.date: 01/05/2017
 ms.author: hascipio; v-divte
-ms.openlocfilehash: bf2ba6d31c170715a52b84439276c45665293c35
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 893b0ee70f577d9240d577e76062eea36b704058
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056142"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989876"
 ---
 # <a name="guide-to-create-a-virtual-machine-image-for-the-azure-marketplace"></a>Przewodnik, aby utworzyć obraz maszyny wirtualnej w portalu Azure Marketplace
 W tym artykule **kroku 2**, przeprowadzi Cię przez przygotowywania wirtualnych dysków twardych (VHD), które zostanie wdrożone w portalu Azure Marketplace. Twoje dyski VHD są podstawą dla jednostki SKU. Ten proces różni się w zależności od tego, czy udostępniasz opartych na systemie Linux lub Windows, na podstawie jednostki SKU. W tym artykule opisano oba scenariusze. Ten proces można wykonać równolegle z [o tworzeniu konta i rejestracji][link-acct-creation].
@@ -189,9 +189,9 @@ Aby dowiedzieć się więcej na temat obrazów maszyn wirtualnych, przejrzyj nas
 * [Jak program PowerShell obrazu maszyny Wirtualnej](https://azure.microsoft.com/blog/vm-image-powershell-how-to-blog-post/)
 * [Informacje o obrazach maszyn wirtualnych na platformie Azure](https://msdn.microsoft.com/library/azure/dn790290.aspx)
 
-### <a name="set-up-the-necessary-tools-powershell-and-azure-cli"></a>Konfigurowanie niezbędne narzędzia programu PowerShell i wiersza polecenia platformy Azure
+### <a name="set-up-the-necessary-tools-powershell-and-azure-classic-cli"></a>Konfigurowanie niezbędne narzędzia programu PowerShell i klasycznego wiersza polecenia platformy Azure
 * [Jak skonfigurować program PowerShell](/powershell/azure/overview)
-* [Jak skonfigurować interfejs wiersza polecenia platformy Azure](../cli-install-nodejs.md)
+* [Jak skonfigurować klasycznego wiersza polecenia platformy Azure](../cli-install-nodejs.md)
 
 ### <a name="41-create-a-user-vm-image"></a>4.1 tworzenia obrazu maszyny Wirtualnej użytkownika
 #### <a name="capture-vm"></a>Przechwytywanie maszyny Wirtualnej
@@ -427,11 +427,13 @@ Poniżej przedstawiono kroki do generowania adresu URL sygnatury dostępu Wspó�
 
 11. Powtórz te czynności dla każdego wirtualnego dysku twardego w ramach jednostki SKU.
 
-**Wiersza polecenia platformy Azure (zalecane dla innych niż Windows i ciągłej integracji)**
+**Klasyczny interfejs wiersza polecenia Azure (zalecane dla Non-Windows & ciągłej integracji)**
 
-Poniżej przedstawiono kroki do generowania adresu URL sygnatury dostępu Współdzielonego przy użyciu wiersza polecenia platformy Azure
+Poniżej przedstawiono kroki do generowania adresu URL sygnatury dostępu Współdzielonego za pomocą klasycznego wiersza polecenia platformy Azure
 
-1.  Pobierz interfejs wiersza polecenia Microsoft Azure, z [tutaj](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/). Możesz również znaleźć różne linki dla **[Windows](http://aka.ms/webpi-azure-cli)** i  **[systemu MAC OS](http://aka.ms/mac-azure-cli)**.
+[!INCLUDE [outdated-cli-content](../../includes/contains-classic-cli-content.md)]
+
+1.  Pobierz klasycznego wiersza polecenia platformy Azure z [tutaj](https://azure.microsoft.com/en-in/documentation/articles/xplat-cli-install/). Możesz również znaleźć różne linki dla **[Windows](http://aka.ms/webpi-azure-cli)** i  **[systemu MAC OS](http://aka.ms/mac-azure-cli)**.
 
 2.  Po jej pobraniu, zainstaluj
 
@@ -447,9 +449,9 @@ Poniżej przedstawiono kroki do generowania adresu URL sygnatury dostępu Wspó�
 
     b. **`<Storage Account Key>`**: Podać klucz konta magazynu
 
-    c. **`<Permission Start Date>`**: Aby chronić czasu UTC, wybierz dzień przed bieżącą datą. Na przykład, jeśli bieżąca data to 26 października 2016 roku, następnie wartość powinna być 2016-10-25. Jeśli używasz interfejsu wiersza polecenia platformy Azure w wersji 2.0 (polecenie az), podaj datę i godzinę w daty rozpoczęcia i zakończenia, na przykład: 10-25-2016T00:00:00Z.
+    c. **`<Permission Start Date>`**: Aby chronić czasu UTC, wybierz dzień przed bieżącą datą. Na przykład, jeśli bieżąca data to 26 października 2016 roku, następnie wartość powinna być 2016-10-25. Jeśli przy użyciu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej, podaj datę i godzinę rozpoczęcia oraz datę zakończenia, na przykład: 10-25-2016T00:00:00Z.
 
-    d. **`<Permission End Date>`**: Wybierz datę, która jest co najmniej 3 tygodnie po **Data rozpoczęcia**. Wartość powinna być **2016-11-02**. Jeśli używasz interfejsu wiersza polecenia platformy Azure w wersji 2.0 (polecenie az), podaj datę i godzinę w daty rozpoczęcia i zakończenia, na przykład: 11-02-2016T00:00:00Z.
+    d. **`<Permission End Date>`**: Wybierz datę, która jest co najmniej 3 tygodnie po **Data rozpoczęcia**. Wartość powinna być **2016-11-02**. Jeśli przy użyciu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej, podaj datę i godzinę rozpoczęcia oraz datę zakończenia, na przykład: 11-02-2016T00:00:00Z.
 
     Poniżej przedstawiono przykładowy kod po zaktualizowaniu odpowiednie parametry
 
@@ -520,7 +522,7 @@ Po utworzeniu oferty i jednostki SKU należy wprowadzić szczegółowe informacj
 |Wystąpił błąd podczas kopiowania obrazów — "sp = rl" nie w url sygnatury dostępu Współdzielonego|Błąd: Kopiowanie obrazów. Nie można pobrać obiektu blob przy użyciu podany identyfikator Uri sygnatury dostępu Współdzielonego|Zaktualizuj adres Url sygnatury dostępu Współdzielonego z uprawnieniami ustawionymi jako "Odczyt" i "Lista|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 |Wystąpił błąd podczas kopiowania obrazów — adres url sygnatury dostępu Współdzielonego mają białych znaków w nazwie wirtualnego dysku twardego|Błąd: Kopiowanie obrazów. Nie można pobrać obiekt blob przy użyciu podany identyfikator Uri sygnatury dostępu Współdzielonego.|Aktualizacja adresu Url sygnatury dostępu Współdzielonego bez białych znaków|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 |Wystąpił błąd podczas kopiowania obrazów — błąd Autoryzacja adresów Url sygnatury dostępu Współdzielonego|Błąd: Kopiowanie obrazów. Nie można pobrać obiektu blob ze względu na błąd autoryzacji|Ponowne generowanie adresu Url sygnatury dostępu Współdzielonego|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
-|Wystąpił błąd podczas kopiowania obrazów — adres Url sygnatury dostępu Współdzielonego "st" i "se" parametry bez specyfikacji pełnej daty i godziny|Błąd: Kopiowanie obrazów. Nie można pobrać obiektu blob ze względu na nieprawidłowy adres Url sygnatury dostępu Współdzielonego |Uruchom adres Url sygnatury dostępu Współdzielonego i Data zakończenia parametry ("st", "se") muszą mieć specyfikację pełnej daty i godziny, takich jak 11-02-2017T00:00:00Z, a nie tylko datę lub skróconą wersji po raz. Użytkownik może wystąpić ten scenariusz przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0 (polecenie az). Pamiętaj podać specyfikację pełnej daty i godziny lub ponownie wygenerować adresu Url sygnatury dostępu Współdzielonego.|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
+|Wystąpił błąd podczas kopiowania obrazów — adres Url sygnatury dostępu Współdzielonego "st" i "se" parametry bez specyfikacji pełnej daty i godziny|Błąd: Kopiowanie obrazów. Nie można pobrać obiektu blob ze względu na nieprawidłowy adres Url sygnatury dostępu Współdzielonego |Uruchom adres Url sygnatury dostępu Współdzielonego i Data zakończenia parametry ("st", "se") muszą mieć specyfikację pełnej daty i godziny, takich jak 11-02-2017T00:00:00Z, a nie tylko datę lub skróconą wersji po raz. Użytkownik może wystąpić ten scenariusz przy użyciu wiersza polecenia platformy Azure w wersji 2.0 lub nowszej. Pamiętaj podać specyfikację pełnej daty i godziny lub ponownie wygenerować adresu Url sygnatury dostępu Współdzielonego.|[https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/](https://azure.microsoft.com/documentation/articles/storage-dotnet-shared-access-signature-part-1/)|
 
 ## <a name="next-step"></a>Następny krok
 Po wykonaniu szczegółów jednostki SKU, możesz przejść do [portalu Azure Marketplace Przewodnik po zawartości marketingowej][link-pushstaging]. W tym kroku proces publikowania, zapewniasz zawartości marketingowej, cennik i inne informacje, które są niezbędne w systemach wcześniejszych niż **krok 3: testowanie maszyny Wirtualnej oferty w środowisku tymczasowym**, który testować różne scenariusze przypadków użycia przed wdrożeniem oferty portalu Azure Marketplace dla publicznej widoczności i zakupu.  

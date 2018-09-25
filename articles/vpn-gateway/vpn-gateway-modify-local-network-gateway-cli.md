@@ -1,6 +1,6 @@
 ---
 title: Zmodyfikuj prefiksy adresów IP bramy sieci lokalnej i adres IP bramy sieci VPN | Azure | INTERFEJS WIERSZA POLECENIA | Dokumentacja firmy Microsoft
-description: W tym artykule przedstawiono zmiana prefiksów adresów IP dla bramy sieci lokalnej przy użyciu wiersza polecenia platformy Azure.
+description: Ten artykuł przeprowadzi zmiana prefiksy adresów IP dla bramy sieci lokalnej przy użyciu wiersza polecenia platformy Azure.
 services: vpn-gateway
 documentationcenter: na
 author: cherylmc
@@ -15,19 +15,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 11/29/2017
 ms.author: cherylmc
-ms.openlocfilehash: d62fa14ea24a9b62e793ef7022a761897984df32
-ms.sourcegitcommit: b5c6197f997aa6858f420302d375896360dd7ceb
+ms.openlocfilehash: a8f0c95acf872431fe7538acbd4ff1023c1496c0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 12/21/2017
-ms.locfileid: "25990626"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46961233"
 ---
-# <a name="modify-local-network-gateway-settings-using-the-azure-cli"></a>Zmodyfikuj ustawienia bramy sieci lokalnej przy użyciu wiersza polecenia platformy Azure
+# <a name="modify-local-network-gateway-settings-using-the-azure-cli"></a>Modyfikowanie ustawień lokalnej bramy sieci przy użyciu wiersza polecenia platformy Azure
 
-Czasami zmienić ustawienia dla bramy sieci lokalnej prefiks adresu lub adres IP bramy. W tym artykule przedstawiono sposób zmodyfikować ustawienia bramy sieci lokalnej. Można również zmodyfikować te ustawienia przy użyciu innej metody, wybierając inną opcję z poniższej listy:
+Czasami zmienić ustawienia dla bramy sieci lokalnej, prefiks adresu lub adres IP bramy. W tym artykule przedstawiono sposób modyfikowania ustawień bramy sieci lokalnej. Można również zmodyfikować te ustawienia przy użyciu innej metody, wybierając inną opcję z następującej listy:
 
 > [!div class="op_single_selector"]
-> * [Azure portal](vpn-gateway-modify-local-network-gateway-portal.md)
+> * [Azure Portal](vpn-gateway-modify-local-network-gateway-portal.md)
 > * [Program PowerShell](vpn-gateway-modify-local-network-gateway.md)
 > * [Interfejs wiersza polecenia platformy Azure](vpn-gateway-modify-local-network-gateway-cli.md)
 >
@@ -35,19 +35,19 @@ Czasami zmienić ustawienia dla bramy sieci lokalnej prefiks adresu lub adres IP
 
 ## <a name="before"></a>Przed rozpoczęciem
 
-Zainstaluj najnowszą wersję polecenia interfejsu wiersza polecenia (2.0 lub nowszej). Aby uzyskać informacje o instalowaniu poleceń interfejsu wiersza polecenia, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Zainstaluj najnowszą wersję poleceń interfejsu wiersza polecenia (2.0 lub nowszą). Aby uzyskać informacje o instalowaniu poleceń interfejsu wiersza polecenia, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 [!INCLUDE [CLI-login](../../includes/vpn-gateway-cli-login-include.md)]
 
-## <a name="ipaddprefix"></a>Zmodyfikuj prefiksy adresów IP
+## <a name="ipaddprefix"></a>Modyfikowanie prefiksów adresów IP
 
 [!INCLUDE [modify-prefix](../../includes/vpn-gateway-modify-ip-prefix-cli-include.md)]
 
-## <a name="gwip"></a>Zmodyfikuj adres IP bramy
+## <a name="gwip"></a>Modyfikowanie adresu IP bramy
 
 [!INCLUDE [modify-gateway-IP](../../includes/vpn-gateway-modify-lng-gateway-ip-cli-include.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Można sprawdzić połączenie bramy. Zobacz [sprawdzić połączenie bramy](vpn-gateway-verify-connection-resource-manager.md).
+Można sprawdzić połączenie bramy. Zobacz [Weryfikowanie połączenia z bramą](vpn-gateway-verify-connection-resource-manager.md).
 

@@ -1,5 +1,5 @@
 
-1. Zaloguj się do subskrypcji platformy Azure, wykonując kroki opisane w temacie [Connect to Azure from the Azure CLI 1.0](/cli/azure/authenticate-azure-cli) (Łączenie z platformą Azure z interfejsu wiersza polecenia platformy Azure w wersji 1.0).
+1. Zaloguj się do subskrypcji platformy Azure, wykonując kroki opisane w [Połącz z platformą Azure z platformy Azure klasyczny interfejs wiersza polecenia](/cli/azure/authenticate-azure-cli).
 
 2. Upewnij się, że pracujesz w trybie klasycznym wdrożenia, w następujący sposób:
 
@@ -52,5 +52,5 @@
     ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Szczegółowe informacje na temat wszystkich poleceń maszyny wirtualnej interfejsu wiersza polecenia platformy Azure w wersji 1.0 można znaleźć w temacie [Using the Azure CLI 1.0 with the Classic deployment API](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2) (Korzystanie z interfejsu wiersza polecenia platformy Azure w wersji 1.0 przy użyciu interfejsu API wdrożenia klasycznego).
+Aby uzyskać szczegółowe informacje dotyczące wszystkich tych poleceń platformy Azure klasycznego interfejsu wiersza polecenia maszyny wirtualnej, przeczytaj [przy użyciu klasycznego wiersza polecenia platformy Azure przy użyciu wdrażania klasycznego interfejsu API](https://docs.microsoft.com/cli/azure/get-started-with-az-cli2).
 

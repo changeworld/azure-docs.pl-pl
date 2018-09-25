@@ -8,16 +8,16 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 8f01130d46bce1e3b3e0b37f26e25d552c6002e5
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: 6758cd658daf75beeea93bf9c719508cd271c8be
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498117"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032431"
 ---
 # <a name="speech-service-rest-apis"></a>Usługa rozpoznawania mowy interfejsów API REST
 
-Interfejsy API REST, ujednolicone usługi mowy są podobne do interfejsów API dostarczonych przez [modułu Speech API Bing](https://docs.microsoft.com/azure/cognitive-services/Speech). Punktów końcowych, które różnią się od punktów końcowych używanych przez usługę rozpoznawania mowy Bing. Regionalne punkty końcowe są dostępne i trzeba użyć klucza subskrypcji odpowiadający punktu końcowego, którego używasz.
+Interfejsy API REST usługi Azure Cognitive Services unified mowy usługi są podobne do interfejsów API dostarczonych przez [modułu Speech API Bing](https://docs.microsoft.com/azure/cognitive-services/Speech). Punktów końcowych, które różnią się od punktów końcowych używanych przez usługę rozpoznawania mowy Bing. Regionalne punkty końcowe są dostępne i trzeba użyć klucza subskrypcji, która odnosi się do punktu końcowego, którego używasz.
 
 ## <a name="speech-to-text"></a>Zamiana mowy na tekst
 
@@ -28,11 +28,11 @@ Punktów końcowych rozpoznawania mowy, interfejsu API REST usługi tekstowe są
 > [!NOTE]
 > Jeśli dostosowany model akustyczny lub model języka lub wymowa, należy użyć niestandardowego punktu końcowego.
 
-Ten interfejs API obsługuje tylko krótkie wypowiedzi. Żądania może zawierać maksymalnie 10 sekund audio i ostatnie 14 sekundy ogólnej. Interfejs API REST zwraca tylko wyników końcowych nie przejściowym lub częściowe wyniki. Usługa rozpoznawania mowy ma również [batch transkrypcji](batch-transcription.md) interfejsu API, które można wykonać transkrypcji audio dłużej.
+Ten interfejs API obsługuje tylko krótkie wypowiedzi. Żądania może zawierać maksymalnie 10 sekund audio i ostatnie 14 sekundy ogólnej. Interfejs API REST zwraca wyniki tylko końcowej, nie przejściowym lub częściowe wyniki. Usługa rozpoznawania mowy ma również [batch transkrypcji](batch-transcription.md) interfejsu API, które można wykonać transkrypcji audio dłużej.
 
 ### <a name="query-parameters"></a>Parametry zapytania
 
-Następujące parametry mogą być zawarte w ciągu zapytania żądania REST.
+Mogą zostać dołączone następujące parametry ciągu zapytania żądania REST.
 
 |Nazwa parametru|Wymagane/opcjonalne|Znaczenie|
 |-|-|-|
@@ -51,11 +51,11 @@ Następujące pola są wysyłane w nagłówku żądania HTTP.
 |`Content-type`|W tym artykule opisano format i kodera-dekodera audio danych. Obecnie ta wartość musi być `audio/wav; codec=audio/pcm; samplerate=16000`.|
 |`Transfer-Encoding`|Opcjonalny. Jeśli podana, musi być `chunked` umożliwia danych audio w celu ich wysłania w wielu małych fragmentów zamiast pojedynczego pliku.|
 |`Expect`|Jeśli używasz fragmentaryczne transferu, Wyślij `Expect: 100-continue`. Usługa rozpoznawania mowy potwierdza żądanie początkowe i czeka na dodatkowe dane.|
-|`Accept`|Opcjonalny. Jeśli podano, musi zawierać `application/json`, jak usługa mowy udostępnia wyniki w formacie JSON. (Niektóre struktury żądania sieci Web Podaj wartość domyślną niezgodne, jeśli nie zostanie określony, dzięki czemu jest dobrym rozwiązaniem jest zawsze zawierać `Accept`)|
+|`Accept`|Opcjonalny. Jeśli podano, musi zawierać `application/json`, jak usługa mowy udostępnia wyniki w formacie JSON. (Niektóre struktury żądania sieci Web Podaj wartość domyślną niezgodne, jeśli nie zostanie określony, dzięki czemu jest dobrym rozwiązaniem jest zawsze zawierać `Accept`.)|
 
 ### <a name="audio-format"></a>Audio format
 
-Dźwięku w treści HTTP `PUT` żądania i powinna być w formacie WAV PCM pojedynczy kanał (mono) na 16 KHz 16-bitowych.
+Dźwięku w treści HTTP `PUT` żądania. Należy go w formacie WAV PCM pojedynczy kanał (mono) na 16 KHz 16-bitowych.
 
 ### <a name="chunked-transfer"></a>Fragmentaryczne transferu
 
@@ -139,6 +139,7 @@ Wyniki są zwracane w formacie JSON. `simple` Format obejmuje tylko następując
 > [!NOTE]
 > Jeśli audio składa się tylko z wulgaryzmów i `profanity` parametr zapytania ma wartość `remove`, usługa nie zwróciła wynik mowy. 
 
+
 `detailed` Format obejmuje te same pola jako `simple` formacie wraz z `NBest` pola. `NBest` Pola znajduje się lista alternatywnych interpretacji tych samych mowy, randze spośród wszystkich dokumentów z największym prawdopodobieństwem najmniej prawdopodobne. Pierwszy wpis jest taki sam jak wynik rozpoznawania głównego. Każdy wpis zawiera następujące pola:
 
 |Nazwa pola|Zawartość|
@@ -217,12 +218,12 @@ Następujące pola są wysyłane w nagłówku żądania HTTP.
 |`X-Microsoft-OutputFormat`|Format danych wyjściowych audio. Zobacz następną tabelę.|
 |`User-Agent`|Nazwa aplikacji. Wymagane; musi zawierać mniej niż 255 znaków.|
 
-Formaty danych wyjściowych audio dostępne (`X-Microsoft-OutputFormat`) szybkości transmisji bitów i kodowania.
+Formaty danych wyjściowych audio dostępne (`X-Microsoft-OutputFormat`) na szybkość transmisji bitów i kodowania.
 
 |||
 |-|-|
-`raw-16khz-16bit-mono-pcm`         | `audio-16khz-16kbps-mono-siren`
-`riff-16khz-16kbps-mono-siren`     | `riff-16khz-16bit-mono-pcm`
+`raw-16khz-16bit-mono-pcm`         | `raw-8khz-8bit-mono-mulaw`
+`riff-8khz-8bit-mono-mulaw`     | `riff-16khz-16bit-mono-pcm`
 `audio-16khz-128kbitrate-mono-mp3` | `audio-16khz-64kbitrate-mono-mp3`
 `audio-16khz-32kbitrate-mono-mp3`  | `raw-24khz-16bit-mono-pcm`
 `riff-24khz-16bit-mono-pcm`        | `audio-24khz-160kbitrate-mono-mp3`
@@ -266,23 +267,23 @@ Kod HTTP|Znaczenie|Możliwa przyczyna
 413|Jednostka żądania jest zbyt duża|Dane wejściowe SSML jest dłuższa niż 1024 znaki.
 |502|Zła brama    | Problem z siecią lub po stronie serwera. Może również oznaczać nieprawidłowy nagłówek.
 
-W przypadku stanu HTTP `200 OK`, treść odpowiedzi zawiera plik audio w formacie żądanej. Ten plik może odtwarzać jest przekazywane lub zapisany do buforu lub nowszej odtwarzania lub inne użycie w pliku.
+W przypadku stanu HTTP `200 OK`, treść odpowiedzi zawiera plik audio w formacie żądanej. Mogą być odtwarzane tego pliku, ponieważ przeniesione lub zapisany do buforu lub nowszej odtwarzania lub inne użycie w pliku.
 
 ## <a name="authentication"></a>Authentication
 
-Wysyła żądanie do interfejsu API REST usługi mowy wymaga klucza subskrypcji albo tokenu dostępu. Ogólnie rzecz biorąc najłatwiej bezpośrednio; wysyłać klucz subskrypcji Usługa rozpoznawania mowy następnie uzyskuje token dostępu dla Ciebie. Jednakże aby zminimalizować czas odpowiedzi, możesz zamiast tego użyj tokenu dostępu.
+Wysyła żądanie do interfejsu API REST usługi mowy wymaga klucza subskrypcji albo tokenu dostępu. Ogólnie rzecz biorąc najłatwiej jest bezpośrednio wysyłać klucz subskrypcji. Usługa rozpoznawania mowy następnie uzyskuje token dostępu dla Ciebie. Aby zminimalizować czas odpowiedzi, możesz chcieć użyć tokenu dostępu.
 
-Uzyskać token z uwzględnieniem klucz subskrypcji regionalnej usługi mowy `issueToken` punktu końcowego, co pokazano w poniższej tabeli. Użycie punktu końcowego, który odpowiada Twoim regionie subskrypcji.
+Do uzyskania tokenu, przedstawia swój klucz subskrypcji z usługą mowy regionalnych `issueToken` punktu końcowego, jak pokazano w poniższej tabeli. Użycie punktu końcowego, który odpowiada Twoim regionie subskrypcji.
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-token-service.md)]
 
-Każdy token dostępu jest ważny przez 10 minut. W dowolnym momencie można uzyskać nowy token — w tym, jeśli chcesz, tuż przed wywołaniem każdego żądania interfejsu API REST mowy. Aby zminimalizować ruch sieciowy i czas oczekiwania, jednak zalecamy używanie tego samego tokenu na dziewięć minut.
+Każdy token dostępu jest ważny przez 10 minut. W dowolnym momencie można uzyskać nowy token. Jeśli chcesz można uzyskać tokenu po prostu przed każdym żądaniem Speech REST API. Aby zminimalizować ruch sieciowy i opóźnienia, zaleca się przy użyciu tego samego tokenu na dziewięć minut.
 
 W poniższych sekcjach opisano, jak uzyskać token i jak z niej korzystać w żądaniu.
 
-### <a name="getting-a-token-http"></a>Uzyskanie tokenu: HTTP
+### <a name="get-a-token-http"></a>Pobierz token: HTTP
 
-Poniżej przedstawiono przykładowe żądanie HTTP, do uzyskania tokenu. Zastąp `YOUR_SUBSCRIPTION_KEY` z kluczem subskrypcji usługi mowy. Jeśli Twoja subskrypcja nie jest w regionie zachodnie stany USA, należy zastąpić `Host` nagłówka z nazwą hosta w Twoim regionie.
+Poniższy przykład przedstawia przykładowe żądanie HTTP, do uzyskania tokenu. Zastąp `YOUR_SUBSCRIPTION_KEY` z kluczem subskrypcji usługi mowy. Jeśli Twoja subskrypcja nie znajduje się w regionie zachodnie stany USA, należy zastąpić `Host` nagłówek o nazwie hosta w Twoim regionie.
 
 ```
 POST /sts/v1.0/issueToken HTTP/1.1
@@ -294,9 +295,9 @@ Content-Length: 0
 
 Treść odpowiedzi do tego żądania jest token dostępu w formacie Java tokenu sieci Web (JWT).
 
-### <a name="getting-a-token-powershell"></a>Uzyskanie tokenu: PowerShell
+### <a name="get-a-token-powershell"></a>Pobierz token: PowerShell
 
-Poniższy skrypt programu Windows PowerShell ilustruje sposób uzyskania tokenu dostępu. Zastąp `YOUR_SUBSCRIPTION_KEY` z kluczem subskrypcji usługi mowy. Jeśli Twoja subskrypcja nie jest dostępne w regionie zachodnie stany USA, należy odpowiednio zmienić nazwę hosta danego identyfikatora URI.
+Poniższy skrypt programu Windows PowerShell ilustruje sposób uzyskania tokenu dostępu. Zastąp `YOUR_SUBSCRIPTION_KEY` z kluczem subskrypcji usługi mowy. Jeśli Twoja subskrypcja nie znajduje się w regionie zachodnie stany USA, należy odpowiednio zmienić nazwę hosta dla danego identyfikatora URI.
 
 ```Powershell
 $FetchTokenHeader = @{
@@ -313,12 +314,12 @@ $OAuthToken
 
 ```
 
-### <a name="getting-a-token-curl"></a>Uzyskanie tokenu: cURL
+### <a name="get-a-token-curl"></a>Pobierz token: cURL
 
-cURL to narzędzie wiersza polecenia dostępne w systemie Linux (i podsystem Windows dla systemu Linux). Poniższe polecenie cURL ilustruje sposób uzyskania tokenu dostępu. Zastąp `YOUR_SUBSCRIPTION_KEY` z kluczem subskrypcji usługi mowy. Jeśli Twoja subskrypcja nie jest dostępne w regionie zachodnie stany USA, należy odpowiednio zmienić nazwę hosta danego identyfikatora URI.
+cURL to narzędzie wiersza polecenia dostępne w systemie Linux (i podsystem Windows dla systemu Linux). Następujące polecenie cURL ilustruje sposób uzyskania tokenu dostępu. Zastąp `YOUR_SUBSCRIPTION_KEY` z kluczem subskrypcji usługi mowy. Jeśli Twoja subskrypcja nie znajduje się w regionie zachodnie stany USA, należy odpowiednio zmienić nazwę hosta dla danego identyfikatora URI.
 
 > [!NOTE]
-> Polecenie jest wyświetlane w wielu wierszach, aby zwiększyć czytelność, ale powinny być wprowadzane w jednym wierszu w wierszu polecenia powłoki.
+> Polecenie jest wyświetlane w wielu wierszach, aby zwiększyć czytelność, ale wprowadź go w jednym wierszu w wierszu polecenia powłoki.
 
 ```
 curl -v -X POST 
@@ -328,9 +329,9 @@ curl -v -X POST
  -H "Ocp-Apim-Subscription-Key: YOUR_SUBSCRIPTION_KEY"
 ```
 
-### <a name="getting-a-token-c"></a>Uzyskanie tokenu: C#
+### <a name="get-a-token-c"></a>Pobierz token: C#
 
-Klasa C# poniżej pokazano, jak można uzyskać tokenu dostępu. Podczas tworzenia wystąpienia klasy, należy przekazać swój klucz subskrypcji usługi mowy. Jeśli Twoja subskrypcja nie jest w regionie zachodnie stany USA, Zmień nazwę hosta `FetchTokenUri` odpowiednio.
+Następujące klasy C# ilustruje sposób uzyskania tokenu dostępu. Podczas tworzenia wystąpienia klasy, należy przekazać swój klucz subskrypcji usługi mowy. Jeśli Twoja subskrypcja nie znajduje się w regionie zachodnie stany USA, Zmień nazwę hosta `FetchTokenUri` odpowiednio.
 
 ```cs
 /*
@@ -369,9 +370,9 @@ public class Authentication
 }
 ```
 
-### <a name="using-a-token"></a>Za pomocą tokenu
+### <a name="use-a-token"></a>Użyj tokenu
 
-Aby użyć tokenu żądania interfejsu API REST, podaj je w `Authorization` nagłówka, po słowie `Bearer`. Na przykład Oto przykład tekstu do żądania REST mowy, zawierający tokenu. Podstaw rzeczywiste token dla `YOUR_ACCESS_TOKEN` i używa poprawne nazwy hosta w `Host` nagłówka.
+Aby użyć tokenu żądania interfejsu API REST, podaj je w `Authorization` nagłówka, po słowie `Bearer`. Oto przykład tekstu do żądania REST mowy, który zawiera token. Podstaw rzeczywiste token dla `YOUR_ACCESS_TOKEN`. Użyj poprawną nazwę hosta w `Host` nagłówka.
 
 ```xml
 POST /cognitiveservices/v1 HTTP/1.1
@@ -387,14 +388,14 @@ Connection: Keep-Alive
 </voice></speak>
 ```
 
-### <a name="renewing-authorization"></a>Odnawianie autoryzacji
+### <a name="renew-authorization"></a>Odnów autoryzację
 
-Token autoryzacji wygasa po upływie 10 minut. Odnów autoryzację dzięki uzyskaniu nowego tokenu, przed jego wygaśnięciem — na przykład po dziewięciu minut. 
+Token autoryzacji wygasa po upływie 10 minut. Odnów autoryzację dzięki uzyskaniu nowego tokenu, przed jego wygaśnięciem. Na przykład można uzyskać nowy token po dziewięciu minut.
 
 Poniższy kod C# jest zamiennikiem dla klasy przedstawiony wcześniej. `Authentication` Klasy automatycznie uzyskuje nowy token dostępu co dziewięć minut za pomocą czasomierza. Takie podejście zapewnia, że prawidłowy token jest zawsze dostępny podczas działania programu.
 
 > [!NOTE]
-> Zamiast używać czasomierza, można przechowywać sygnaturę czasową, gdy ostatni token zostały pobrane, a następnie poprosić o nowe tylko wtedy, gdy jest bliski wygaśnięcia. Ta metoda pozwala uniknąć niepotrzebnego żądanie nowych tokenów i może być bardziej odpowiednie dla programów, które rzadko żądaniami funkcji rozpoznawania mowy.
+> Zamiast używać czasomierza, można przechowywać sygnaturę czasową po ostatni token został uzyskany. Następnie możesz zażądać nowego tylko wtedy, gdy jest bliski wygaśnięcia. Ta metoda pozwala uniknąć niepotrzebnego żądanie nowych tokenów i może być bardziej odpowiednie dla programów, które rzadko żądaniami funkcji rozpoznawania mowy.
 
 Tak jak poprzednio, upewnij się, że `FetchTokenUri` wartość odpowiada regionie Twojej subskrypcji. Podczas tworzenia wystąpienia klasy, należy przekazać swój klucz subskrypcji.
 

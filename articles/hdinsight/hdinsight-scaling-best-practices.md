@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 02/02/2018
 ms.author: ashish
-ms.openlocfilehash: d554cdf5e89898874811ea113985fac4b332fac6
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 93eb6fb0da86909dfc880db2a9bb2331abe4418a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109935"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948132"
 ---
 # <a name="scale-hdinsight-clusters"></a>Skaluj klastry HDInsight
 
@@ -28,11 +28,13 @@ Na przykład jeśli masz jakieś operacje przetwarzania wsadowego tak się stani
     Set-AzureRmHDInsightClusterSize -ClusterName <Cluster Name> -TargetInstanceCount <NewSize>
     ```
     
-* Skalowanie klastra za pośrednictwem [wiersza polecenia platformy Azure](hdinsight-administer-use-command-line.md):
+* Skalowanie klastra za pośrednictwem [klasyczny interfejs wiersza polecenia platformy Azure](hdinsight-administer-use-command-line.md):
 
     ```
     azure hdinsight cluster resize [options] <clusterName> <Target Instance Count>
     ```
+
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
     
 * Skalowanie klastra za pośrednictwem [witryny Azure portal](https://portal.azure.com), otwórz okienko klastra usługi HDInsight, wybierz **Skaluj klaster** w menu po lewej stronie, a następnie w okienku skalowania klastra, wpisz liczbę węzłów procesu roboczego i Wybierz pozycję Zapisz.
 

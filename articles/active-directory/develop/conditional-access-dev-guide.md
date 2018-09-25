@@ -5,22 +5,21 @@ services: active-directory
 keywords: ''
 author: CelesteDG
 manager: mtillman
-editor: PatAltimore
 ms.author: celested
 ms.reviewer: dadobali
-ms.date: 07/19/2017
+ms.date: 09/24/2018
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.openlocfilehash: ab6936d62aac5502d70239bacfbfd15bd6b793ab
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 229f74367262e07128fa9ea6c895d448b854ae0a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42056203"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958258"
 ---
 # <a name="developer-guidance-for-azure-active-directory-conditional-access"></a>Wskazówki dla deweloperów na potrzeby dostępu warunkowego usługi Azure Active Directory
 
@@ -40,9 +39,9 @@ Znajomości [pojedynczego](quickstart-v1-integrate-apps-with-azure-ad.md) i [wie
 
 ### <a name="app-types-impacted"></a>Typy aplikacji wpływ
 
-W typowych przypadkach dostępu warunkowego nie powoduje zmiany zachowania aplikacji lub wymaga zmiany od dewelopera. W przypadku aplikacji, pośrednio lub w trybie cichym żąda tokenu dla usługi tylko w niektórych przypadkach aplikacja wymaga zmiany kodu do obsługi dostępu warunkowego "wyzwania". Może to być proste i polega na wykonywanie interaktywne żądanie logowania. 
+W typowych przypadkach dostępu warunkowego nie powoduje zmiany zachowania aplikacji lub wymaga zmiany od dewelopera. W przypadku aplikacji, pośrednio lub w trybie cichym żąda tokenu dla usługi tylko w niektórych przypadkach aplikacja wymaga zmiany kodu do obsługi dostępu warunkowego "wyzwania". Może to być proste i polega na wykonywanie interaktywne żądanie logowania.
 
-W szczególności następujące scenariusze wymagają kod służący do obsługi dostępu warunkowego "wyzwania": 
+W szczególności następujące scenariusze wymagają kod służący do obsługi dostępu warunkowego "wyzwania":
 
 * Uzyskiwanie dostępu do programu Microsoft Graph Apps
 * Wykonywanie przepływu w imieniu użytkownika z aplikacji
@@ -147,7 +146,7 @@ Aby uzyskać przykłady kodu, które pokazują, jak obsługiwać żądania oświ
 
 ## <a name="scenario-app-performing-the-on-behalf-of-flow"></a>Scenariusz: Aplikacja wykonywania w imieniu użytkownika z usługi flow
 
-W tym scenariuszu, w jaki sposób za pośrednictwem przypadek, w którym aplikacja natywna wywołania API/usługi sieci web. Z kolei ta usługa jest [przepływ "w imieniu z"](authentication-scenarios.md#application-types-and-scenarios) do wywołania usługi podrzędne. W naszym przypadku możemy zostały zastosowane nasze zasady dostępu warunkowego w usłudze podrzędnego (Web API 2) i korzysta z aplikacji natywnej, a nie aplikacji demona/na serwerze. 
+W tym scenariuszu, w jaki sposób za pośrednictwem przypadek, w którym aplikacja natywna wywołania API/usługi sieci web. Z kolei ta usługa jest [he "w imieniu z" przepływ do wywołania usługi podrzędne. W naszym przypadku możemy zostały zastosowane nasze zasady dostępu warunkowego w usłudze podrzędnego (Web API 2) i korzysta z aplikacji natywnej, a nie aplikacji demona/na serwerze. 
 
 ![Diagram przepływu w imieniu z wykonywania aplikacji](./media/conditional-access-dev-guide/app-performing-on-behalf-of-scenario.png)
 
@@ -190,7 +189,7 @@ claims={"access_token":{"polids":{"essential":true,"Values":["<GUID>"]}}}
 
 Jeśli aplikacja używa biblioteki ADAL, awarii w celu uzyskania tokenu zawsze zostanie ponowiony interaktywnie. W przypadku wystąpienia tego interaktywnego żądania użytkownika końcowego ma możliwość wykonania przy użyciu dostępu warunkowego. Dotyczy to żądanie jest `AcquireTokenSilentAsync` lub `PromptBehavior.Never` w takim przypadku aplikacja musi wykonać interaktywną ```AcquireToken``` żądania, aby umożliwić użytkowania końcowego jest zgodne z zasadami. 
 
-## <a name="scenario-single-page-app-spa-using-adaljs"></a>Scenariusz: Jednej strony aplikacji (SPA) przy użyciu ADAL.js
+## <a name="scenario-single-page-app-spa-using-adaljs"></a>Scenariusz: Aplikacja jednostronicowa (SPA) przy użyciu ADAL.js
 
 W tym scenariuszu przeanalizujemy przypadku gdy otrzymamy aplikacji jednostronicowej (SPA) przy użyciu ADAL.js wywołać warunkowego dostępu do chronionego internetowego interfejsu API. To jest architektura proste, ale ma niektóre różnice, które należy wziąć pod uwagę, opracowując wokół dostępu warunkowego.
 
@@ -202,7 +201,7 @@ W ADAL.js, istnieje kilka funkcji, które uzyskiwania tokenów: `login()`, `acqu
 
 Gdy aplikacja potrzebuje tokenu dostępu do wywoływania interfejsu API sieci Web, próbuje `acquireToken(…)`. Jeśli token sesja wygasła lub musimy jest zgodne z zasadami dostępu warunkowego, a następnie *acquireToken* funkcja kończy się niepowodzeniem, a ta aplikacja używa `acquireTokenPopup()` lub `acquireTokenRedirect()`.
 
-![Aplikacji jednostronicowej przy użyciu biblioteki ADAL diagramu przepływu](./media/conditional-access-dev-guide/spa-using-adal-scenario.png)
+![Aplikacja jednostronicowa, za pomocą biblioteki ADAL diagramu przepływu](./media/conditional-access-dev-guide/spa-using-adal-scenario.png)
 
 Przejdźmy teraz przez przykład z naszym scenariuszu dostępu warunkowego. Użytkownik końcowy po prostu otwarta w lokacji i nie ma sesji. Wykonamy `login()` wywołanie, Uzyskaj identyfikator tokenu z pominięciem usługi Multi-Factor authentication. Następnie użytkownik naciśnie przycisk, który wymaga aplikacji, aby dane żądania z internetowego interfejsu API. Aplikacja próbuje wykonać `acquireToken()` wywołanie ale nie powiedzie się, ponieważ użytkownik nie wykonał jeszcze uwierzytelnianie wieloskładnikowe i musi być zgodne z zasadami dostępu warunkowego.
 

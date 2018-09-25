@@ -1,6 +1,6 @@
 ---
-title: Rozwiązywanie problemów z bramy sieci wirtualnej platformy Azure i połączenia — interfejs wiersza polecenia platformy Azure 2.0 | Dokumentacja firmy Microsoft
-description: Tej stronie wyjaśniamy, jak używać usługi Azure Network Watcher Rozwiązywanie problemów z interfejsu wiersza polecenia platformy Azure w wersji 2.0
+title: Rozwiązywanie problemów z bramy sieci wirtualnej platformy Azure i połączenia — interfejs wiersza polecenia Azure | Dokumentacja firmy Microsoft
+description: Tej stronie wyjaśniamy, jak używać usługi Azure Network Watcher Rozwiązywanie problemów z wiersza polecenia platformy Azure
 services: network-watcher
 documentationcenter: na
 author: jimdial
@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/19/2017
 ms.author: jdial
-ms.openlocfilehash: 5f843b42a108968e2fbefacddcd22f331a04691e
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+ms.openlocfilehash: 5a8ac32f43ecadb8908582fa853fc3f2bec7ac55
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39091105"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970995"
 ---
-# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli-20"></a>Rozwiązywanie problemów z bramy sieci wirtualnej i połączeń przy użyciu usługi Azure sieci obserwatora Azure CLI 2.0
+# <a name="troubleshoot-virtual-network-gateway-and-connections-using-azure-network-watcher-azure-cli"></a>Rozwiązywanie problemów z bramy sieci wirtualnej i połączeń przy użyciu wiersza polecenia platformy Azure sieci obserwatora platformy Azure
 
 > [!div class="op_single_selector"]
 > - [Portal](diagnose-communication-problem-between-networks.md)
@@ -31,9 +31,7 @@ ms.locfileid: "39091105"
 
 Usługa Network Watcher udostępnia wiele możliwości, w odniesieniu do zrozumienia zasobów sieciowych na platformie Azure. Jedną z tych funkcji jest zasobem rozwiązywania problemów. Rozwiązywanie problemów z zasobu może być wywoływany za pośrednictwem portalu, programu PowerShell, interfejsu wiersza polecenia lub interfejsu API REST. Po wywołaniu usługi Network Watcher sprawdza kondycję bramy sieci wirtualnej lub połączenie i zwraca jej ustaleń.
 
-W tym artykule używa naszej nowej generacji interfejsu wiersza polecenia dla modelu wdrażania zarządzania zasobów, Azure CLI 2.0, który jest dostępny dla systemów Windows, Mac i Linux.
-
-Aby wykonać kroki opisane w tym artykule, musisz [instalowanie interfejsu wiersza polecenia platformy Azure dla systemów Mac, Linux i Windows (Azure CLI)](https://docs.microsoft.com/cli/azure/install-az-cli2).
+Aby wykonać kroki opisane w tym artykule, musisz [zainstalować interfejs wiersza polecenia platformy Azure dla systemów Mac, Linux i Windows (CLI)](/cli/azure/install-azure-cli).
 
 ## <a name="before-you-begin"></a>Przed rozpoczęciem
 

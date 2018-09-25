@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: johnkem
 ms.component: activitylog
-ms.openlocfilehash: 51cc4c37ba661feb63880c138e98200c981f6054
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 5288dc508c35c72f3c1996ce665ccf83a84a4ea3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918485"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948969"
 ---
 # <a name="monitor-subscription-activity-with-the-azure-activity-log"></a>Monitorowanie aktywności subskrypcji z dziennika aktywności platformy Azure
 
@@ -43,11 +43,12 @@ Umożliwia wyświetlenie poniższego klipu wideo wprowadzenie do dziennika aktyw
 Dziennik aktywności zawiera kilka kategorii danych. Aby uzyskać szczegółowe informacje o wypełniana z tych kategorii [znajduje się w artykule](monitoring-activity-log-schema.md). Należą do nich:
 * **Administracyjne** — ta kategoria zawiera rekord wszystkich tworzenia, aktualizowania, usuwania i akcji operacje wykonywane przy użyciu usługi Resource Manager. Typy zdarzeń, które powinny zostać wyświetlone tej kategorii należą "Tworzenie maszyny wirtualnej" i "Usuń sieciową grupę zabezpieczeń" każdej akcji podjętej przez użytkownika lub aplikacji przy użyciu usługi Resource Manager ma formę operacji na określonego typu zasobu. W przypadku typu operacji zapisu, usuń lub akcję, rekordy początkowego i powodzenie lub niepowodzenie tej operacji są rejestrowane w kategorii administracyjnej. Kategoria administracyjna także wszelkie zmiany do kontroli dostępu opartej na rolach w ramach subskrypcji.
 * **Kondycja usługi** — ta kategoria zawiera rekord wszelkie zdarzenia kondycji usługi, które miały miejsce w systemie Azure. Jest przykładem typu zdarzenia, które powinny zostać wyświetlone tej kategorii, "SQL Azure w regionie wschodnie stany USA występuje Przestój." Zdarzenia usługi Service health są dostępne w pięciu odmian: wymagana akcja, wspomagana odzyskiwania, zdarzenia, konserwacji, informacje lub zabezpieczeń i są wyświetlane tylko w przypadku zasobów w subskrypcji, która będzie mieć wpływ na zdarzenie.
+* **Usługa Resource Health** — ta kategoria zawiera rekord wszystkie zdarzenia dotyczące kondycji zasobów, które wystąpiły z zasobami platformy Azure. Przykładem typu zdarzenia, które powinny zostać wyświetlone tej kategorii jest "Zmieniono na niedostępny stan kondycji maszyny wirtualnej." Zdarzenia dotyczące kondycji zasobów może reprezentować jedną z czterech stanów kondycji: dostępna, jest niedostępny, obniżony i nieznany. Ponadto zdarzenia dotyczące kondycji zasobów można sklasyfikować jako są inicjowane platformy lub Zainicjowanie przez użytkownika.
 * **Alert** — ta kategoria zawiera rekord wszystkich aktywacje alertów platformy Azure. Jest przykładem typu zdarzenia, które powinny zostać wyświetlone tej kategorii, "procent użycia procesora CPU na myVM została ponad 80 dla ostatnich 5 minut." Z różnych systemów Azure ma koncepcji alertów — możesz zdefiniować regułę jakieś i Otrzymuj powiadomienie, gdy warunki zgodne z tą regułą. Każdym obsługiwanym typem alertów platformy Azure "aktywuje," lub warunki są spełnione, aby wygenerować powiadomienie, rekord aktywacji są również wypychane do tej kategorii dziennika aktywności.
 * **Automatyczne skalowanie** — ta kategoria zawiera rekord wszystkie zdarzenia związane z działaniem aparat skalowania automatycznego na podstawie ustawień automatycznego skalowania, wszelkie zdefiniowane w ramach subskrypcji. Przykładem typu zdarzenia, które powinny zostać wyświetlone tej kategorii jest "Skalowania automatycznego skalowania w górę akcja nie powiodła się". Przy użyciu skalowania automatycznego, możesz automatycznie skalować w poziomie lub skalowanie liczby wystąpień w obsługiwany typ zasobu na podstawie czasu dzień danych i/lub obciążenia (metryk) przy użyciu ustawienia automatycznego skalowania. Po spełnieniu warunków do skalowania w górę lub w dół, start i zakończyło się powodzeniem lub niepowodzeniem zdarzenia są rejestrowane w tej kategorii.
 * **Zalecenie** — ta kategoria zawiera zdarzenia zalecenia z usługi Azure Advisor.
 * **Zabezpieczenia** — ta kategoria zawiera rekord wszystkie alerty wygenerowane przez usługę Azure Security Center. Przykładem typu zdarzenia, które powinny zostać wyświetlone tej kategorii są ""podejrzane podwójne rozszerzenie pliku wykonywane.
-* **Zasady i kondycję zasobów** -tych kategorii nie zawierają żadnych zdarzeń; są one zarezerwowane do użytku w przyszłości.
+* **Zasady** — ta kategoria zawiera wszystkie zdarzenia; jest zarezerwowany do użytku w przyszłości. 
 
 ## <a name="event-schema-per-category"></a>Schemat zdarzeń według kategorii
 [Zobacz ten artykuł, aby zrozumieć schemat zdarzeń dziennika aktywności dla każdej kategorii.](monitoring-activity-log-schema.md)
@@ -106,7 +107,7 @@ Możesz użyć magazynu konta lub event hub przestrzeni nazw, która nie znajduj
 >  Obecnie nie można zarchiwizować dane do magazynu konta, do którego za zabezpieczonej sieci wirtualnej.
 
 > [!WARNING]
-> Format danych dziennika w ramach konta magazynu zmieni się na wiersze JSON od 1 listopada 2018 r. [Zobacz, w tym artykule, aby uzyskać opis wpływu i aktualizacji narzędzi do obsługi nowego formatu.](./monitor-diagnostic-logs-append-blobs.md) 
+> Od 1 listopada 2018 r. format danych dzienników na koncie magazynu zmieni się na JSON Lines. [W tym artykule znajdziesz opis skutków tej zmiany oraz instrukcje aktualizacji narzędzi w celu zapewnienia obsługi nowego formatu.](./monitor-diagnostic-logs-append-blobs.md) 
 >
 > 
 
@@ -158,7 +159,7 @@ Add-AzureRmLogProfile -Name my_log_profile -StorageAccountId /subscriptions/s1/r
 Remove-AzureRmLogProfile -name my_log_profile
 ```
 
-### <a name="configure-log-profiles-using-the-azure-cli-20"></a>Konfigurowanie profilów dziennika przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
+### <a name="configure-log-profiles-using-the-azure-cli"></a>Konfigurowanie profilów dziennika przy użyciu wiersza polecenia platformy Azure
 
 #### <a name="get-existing-log-profile"></a>Pobieranie istniejącego profilu dziennika
 

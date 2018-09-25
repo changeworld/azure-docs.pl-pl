@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/18/2018
 ms.author: dobett
-ms.openlocfilehash: bf23046b8a80b02bc1667f647cb1d475503a8feb
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: e6b4ee3425f6a490f33f998cab4f33734b23df22
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39125780"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46982107"
 ---
 # <a name="reference---iot-hub-endpoints"></a>Odwołanie - punktów końcowych usługi IoT Hub
 
@@ -61,7 +61,7 @@ Użyj wszystkich punktów końcowych usługi IoT Hub [TLS] [ lnk-tls] protokołu
 
 ## <a name="custom-endpoints"></a>Niestandardowe punkty końcowe
 
-Możesz połączyć istniejące usługi platformy Azure w ramach subskrypcji, do usługi IoT hub jako punkty końcowe do rozsyłania wiadomości. Te punkty końcowe działają jako punkty końcowe usługi i są używane jako ujścia dla trasy wiadomości. Urządzenia nie można zapisać bezpośrednio dodatkowe punkty końcowe. Aby dowiedzieć się więcej na temat trasy wiadomości, zobacz wpis przewodnik dla deweloperów na [wysyłanie i odbieranie komunikatów za pomocą usługi IoT hub][lnk-devguide-messaging].
+Możesz połączyć istniejące usługi platformy Azure w ramach subskrypcji, do usługi IoT hub jako punkty końcowe do rozsyłania wiadomości. Te punkty końcowe działają jako punkty końcowe usługi i są używane jako ujścia dla trasy wiadomości. Urządzenia nie można zapisać bezpośrednio dodatkowe punkty końcowe. Dowiedz się więcej o [routing komunikatów](../iot-hub/iot-hub-devguide-messages-d2c.md).
 
 Usługa IoT Hub obsługuje obecnie następujących usług platformy Azure jako dodatkowe punkty końcowe:
 
@@ -70,32 +70,7 @@ Usługa IoT Hub obsługuje obecnie następujących usług platformy Azure jako d
 * Kolejki usługi Service Bus
 * Tematy dotyczące usługi Service Bus
 
-Usługa IoT Hub wymaga dostępu do tych punktów końcowych usługi zapisu do rozsyłania wiadomości do pracy. Jeśli skonfigurujesz punktów końcowych za pośrednictwem witryny Azure portal, niezbędne uprawnienia są dodawane. Upewnij się, że konfigurowanie usługi do obsługi oczekiwanej przepływności. Podczas pierwszej konfiguracji rozwiązania IoT, może być konieczne monitorowanie dodatkowych punktów końcowych i wprowadź wymagane zmiany dotyczące rzeczywistego obciążenia.
-
-Jeśli komunikat zgodne kieruje wiele wskazujące do tego samego punktu końcowego, IoT Hub dostarczy komunikatu do określonego punktu końcowego tylko raz. W związku z tym nie ma potrzeby konfigurowania deduplikacji tematu lub kolejki usługi Service Bus. Partycjonowane kolejki koligacji partycji gwarantuje, kolejność komunikatów.
-
 Limity liczby punktów końcowych, możesz dodać, zobacz [przydziałów i dławienia][lnk-devguide-quotas].
-
-### <a name="when-using-azure-storage-containers"></a>Podczas korzystania z kontenerów usługi Azure Storage
-
-Usługa IoT Hub obsługuje tylko, zapisywanie danych w kontenerach usługi Azure Storage jako obiekty BLOB w [Apache Avro](http://avro.apache.org/) formatu. Usługa IoT Hub partii komunikatów i zapisuje dane do obiektu blob zawsze wtedy, gdy:
-
-* Zadanie wsadowe osiągnie określony rozmiar.
-* Lub upłynął określoną ilość czasu.
-
-Usługi IoT Hub będzie zapisywać do pustego obiektu blob, jeśli nie ma żadnych danych do zapisu.
-
-Usługa IoT Hub wartością domyślną jest następująca Konwencja nazewnictwa pliku:
-
-```
-{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
-```
-
-Możesz użyć dowolnych nazw plików Konwencji, którą chcesz, jednak należy użyć listy wszystkich tokenów.
-
-### <a name="when-using-service-bus-queues-and-topics"></a>Podczas korzystania z tematów i kolejek usługi Service Bus
-
-Kolejki usługi Service Bus i tematy, używane jako punktów końcowych usługi IoT Hub nie może mieć **sesje** lub **wykrywania duplikatów** włączone. Jeśli jedno z tych opcji są włączone, punkt końcowy jest wyświetlany jako **informujący** w witrynie Azure portal.
 
 ## <a name="field-gateways"></a>Bram działających w terenie
 

@@ -12,12 +12,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 10/12/2017
 ms.author: glenga
-ms.openlocfilehash: d97766b0a8c0df3b414d78f563406530f67c313b
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 38d73f38a5e04a42ee15c9206ce760936e3e10c9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46125378"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46980308"
 ---
 # <a name="azure-functions-developers-guide"></a>Przewodnik dla deweloperów usługi Azure Functions
 W usłudze Azure Functions określonych funkcji udostępniania kilka podstawowych pojęć technicznych i składniki, niezależnie od języka lub powiązania, którego używasz. Zanim przejdziesz do nauki szczegóły specyficzne dla danego języka lub powiązania, koniecznie zapoznaj się z tego omówienia, która ma zastosowanie do wszystkich z nich.
@@ -55,12 +55,15 @@ Ustaw `disabled` właściwość `true` aby zapobiec wykonywane przez funkcję.
 | `name` |ciąg |Nazwa która jest używana do powiązanych danych w funkcji. Dla języka C# jest to nazwa argumentu; dla języka JavaScript to klucz na liście kluczy/wartości. |
 
 ## <a name="function-app"></a>Aplikacja funkcji
-Aplikacja funkcji składa się z co najmniej jeden poszczególnych funkcji, które są ze sobą zarządzane przez usługę Azure App Service. Wszystkie funkcje w aplikacji funkcji Udostępnianie tego samego planu cenowego i ciągłe Wdrażanie wersji środowiska uruchomieniowego. Funkcje napisanych w wielu językach mogą udostępniać ta sama aplikacja funkcji. Aplikacja funkcji można traktować jako sposób organizowania i zbiorczo zarządzania funkcjami. 
+Aplikacja funkcji zapewnia kontekst wykonania na platformie Azure, w którym funkcje są uruchomione. Aplikacja funkcji składa się z co najmniej jeden poszczególnych funkcji, które są ze sobą zarządzane przez usługę Azure App Service. Wszystkie funkcje w aplikacji funkcji Udostępnianie tego samego planu cenowego i ciągłe Wdrażanie wersji środowiska uruchomieniowego. Aplikacja funkcji można traktować jako sposób organizowania i zbiorczo zarządzania funkcjami. 
 
-## <a name="runtime-script-host-and-web-host"></a>Środowisko uruchomieniowe (host skryptów i hosta sieci web)
-Środowisko uruchomieniowe lub host skryptów jest odpowiedniego hosta zestaw SDK zadań Webjob, która nasłuchuje zdarzeń, zbiera i przesyła dane i ostatecznie uruchamia kod. 
+> [!NOTE]
+> Począwszy od [wersji 2.x](functions-versions.md) środowiska uruchomieniowego usługi Azure Functions, wszystkie funkcje w aplikacji funkcji musi zostać utworzona w tym samym języku.
 
-W celu ułatwienia wyzwalaczy HTTP, jest również hosta sieci web, który jest przeznaczony do siedzieć przed host skryptów w scenariuszach produkcyjnych. Masz dwa hosty pomaga wyizolować host skryptów z przodu kończy ruch zarządzana przez hosta sieci web.
+## <a name="runtime"></a>Środowisko uruchomieniowe
+Środowisko uruchomieniowe usługi Azure Functions lub host skryptów jest odpowiedniego hosta, który będzie nasłuchiwać pod kątem zdarzeń, zbiera i przesyła dane i ostatecznie uruchamia kod. Tego samego hosta jest używana przez zestaw SDK zadań Webjob.
+
+Istnieje również hosta sieci web, który obsługuje żądania wyzwalacza HTTP dla środowiska uruchomieniowego. Masz dwa hosty pomaga wyizolować środowisko uruchomieniowe z przodu kończy ruch zarządzana przez hosta sieci web.
 
 ## <a name="folder-structure"></a>Struktura folderów
 [!INCLUDE [functions-folder-structure](../../includes/functions-folder-structure.md)]
@@ -75,21 +78,12 @@ Edytor funkcji wbudowanych w witrynie Azure portal umożliwia uaktualnienie *fun
 
 Aplikacje funkcji są tworzone w usłudze App Service, więc wszystkie [opcje wdrażania dostępne dla aplikacji sieci web standard](../app-service/app-service-deploy-local-git.md) są również dostępne dla aplikacji funkcji. Poniżej przedstawiono niektóre metody, które służy do przekazywania lub aktualizowanie plików aplikacji funkcji. 
 
-#### <a name="to-use-app-service-editor"></a>Aby użyć Edytor usługi App Service
-1. W portalu usługi Azure Functions kliknij **funkcje platformy**.
-2. W **narzędzia PROGRAMISTYCZNE** kliknij **Edytor usługi App Service**.   
-   Po załadowaniu Edytor usługi App Service, zobaczysz *host.json* plików i funkcja foldery w *wwwroot*. 
-5. Otwórz pliki do ich edytowania lub przeciągnij i upuść z komputera deweloperskiego do przekazywania plików.
-
-#### <a name="to-use-the-function-apps-scm-kudu-endpoint"></a>Aby używać punktu końcowego aplikacji funkcji SCM (Kudu)
-1. Przejdź do: `https://<function_app_name>.scm.azurewebsites.net`.
-2. Kliknij przycisk **Debug Console > CMD**.
-3. Przejdź do `D:\home\site\wwwroot\` można zaktualizować *host.json* lub `D:\home\site\wwwroot\<function_name>` do aktualizacji plików funkcji.
-4. Przeciąganie i upuszczanie plików, które chcesz przekazać do odpowiedniego folderu w siatce pliku. Istnieją dwa obszary, w siatce pliku, gdy usuniesz plik. Aby uzyskać *zip* pliki, zostanie wyświetlone okno z etykietą "Przeciągnij tutaj, aby przekazać i Rozpakuj go." Dla innych typów plików należy porzucić w siatce pliku, ale poza pole "rozpakowywania".
+#### <a name="use-local-tools-and-publishing"></a>Korzystaj z narzędzi lokalnych i publikowania
+Aplikacje funkcji można tworzyć i publikować przy użyciu różnych narzędzi, takich jak [programu Visual Studio](./functions-develop-vs.md), [programu Visual Studio Code](functions-create-first-function-vs-code.md), [IntelliJ](./functions-create-maven-intellij.md), [Eclipse](./functions-create-maven-eclipse.md)i [narzędzia Core usługi Azure Functions](./functions-develop-local.md). Aby uzyskać więcej informacji, zobacz [kodu i testowanie usługi Azure Functions lokalnie](./functions-develop-local.md).
 
 <!--NOTE: I've removed documentation on FTP, because it does not sync triggers on the consumption plan --glenga -->
 
-#### <a name="to-use-continuous-deployment"></a>Przy użyciu ciągłego wdrażania
+#### <a name="continuous-deployment"></a>Ciągłe wdrażanie
 Postępuj zgodnie z instrukcjami w temacie [ciągłe wdrażanie dla usługi Azure Functions](functions-continuous-deployment.md).
 
 ## <a name="parallel-execution"></a>Wykonywanie równoległe
@@ -97,7 +91,7 @@ Gdy wiele wyzwalająca zdarzenia występują szybciej niż jednowątkowe funkcji
 
 ## <a name="functions-runtime-versioning"></a>Przechowywanie wersji środowiska uruchomieniowego funkcji
 
-Można skonfigurować wersję przy użyciu środowiska uruchomieniowego funkcji `FUNCTIONS_EXTENSION_VERSION` ustawienia aplikacji. Na przykład wartość "~ 1" wskazuje, że aplikacja funkcji będzie używać 1 jako jego wersji głównej. Aplikacje funkcji są uaktualniane do każda nowa wersja pomocnicza, po ich wydaniu. Aby uzyskać więcej informacji, jak wyświetlić dokładną wersję aplikacji funkcji, w tym temacie [sposobu kierowania wersje środowiska uruchomieniowego usługi Azure Functions](set-runtime-version.md).
+Można skonfigurować wersję przy użyciu środowiska uruchomieniowego funkcji `FUNCTIONS_EXTENSION_VERSION` ustawienia aplikacji. Na przykład wartość "~ 2" wskazuje, czy aplikacja funkcji będzie używać 2.x jako jego wersji głównej. Aplikacje funkcji są uaktualniane do każda nowa wersja pomocnicza, po ich wydaniu. Aby uzyskać więcej informacji, jak wyświetlić dokładną wersję aplikacji funkcji, w tym temacie [sposobu kierowania wersje środowiska uruchomieniowego usługi Azure Functions](set-runtime-version.md).
 
 ## <a name="repositories"></a>Repozytoria
 Kod dla usługi Azure Functions jest typu open source i przechowywane w repozytoriach usługi GitHub:

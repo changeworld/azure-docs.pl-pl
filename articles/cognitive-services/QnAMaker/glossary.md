@@ -3,19 +3,19 @@ title: Słownik — QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Słownik
 services: cognitive-services
-author: nstulasi
-manager: cgronlun
+author: tulasim88
+manager: cjgronlund
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
-ms.author: nstulasi
-ms.openlocfilehash: e4c0af68911ed25d4c07ef2050d0b74c435488ab
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.author: tulasim
+ms.openlocfilehash: 65f2aea6ca7b92a1f7d58c607138bbd3388ad30a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45540801"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954572"
 ---
 # <a name="glossary"></a>Słownik
 

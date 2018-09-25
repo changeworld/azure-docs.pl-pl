@@ -1,6 +1,6 @@
 ---
 title: Typowe metryki automatycznego skalowania
-description: Dowiedz się, metryk, które są często używane do skalowania automatycznego usługi w chmurze, maszyn wirtualnych i aplikacji sieci Web.
+description: Dowiedz się, jaką metrykę są często używane do automatycznego skalowania usługi w chmurze, maszyny wirtualne i aplikacje sieci Web.
 author: anirudhcavale
 services: azure-monitor
 ms.service: azure-monitor
@@ -8,86 +8,86 @@ ms.topic: conceptual
 ms.date: 12/6/2016
 ms.author: ancav
 ms.component: autoscale
-ms.openlocfilehash: 7b6f454a8d4c8794b8c56494fd9ed573f8b79852
-ms.sourcegitcommit: 1b8665f1fff36a13af0cbc4c399c16f62e9884f3
+ms.openlocfilehash: 48c53b1b0c037e6bcfea3be49fdd2110e1e694b3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35262243"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970706"
 ---
-# <a name="azure-monitor-autoscaling-common-metrics"></a>Azure metryki wspólnej Skalowanie automatyczne monitora
-Azure Monitor Skalowanie automatyczne umożliwia skalowanie liczby wystąpień uruchomione, na podstawie danych telemetrycznych (metryk). W tym dokumencie opisano typowe metryki, które możesz chcieć użyć. W portalu Azure dla farmy serwerów i usług w chmurze można wybrać metryki zasobu skalowanie przez. Jednak możesz również wszystkie metryki z skalowanie przez inny zasób.
+# <a name="azure-monitor-autoscaling-common-metrics"></a>Usługa Azure Monitor autoscaling często używane metryki
+Usługa Azure Monitor autoscaling umożliwia skalowanie liczby wystąpień uruchomionych w górę lub w dół, na podstawie danych telemetrycznych (metryki). W tym dokumencie opisano typowe metryki, które prawdopodobnie chcą używać. W witrynie Azure portal można wybrać metryki zasobu, aby przeskalować. Jednak możesz również dowolnej metryce z skalowanie przez inny zasób.
 
-Azure Monitor skalowania automatycznego ma zastosowanie tylko do [zestawy skalowania maszyny wirtualnej](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [usługi w chmurze](https://azure.microsoft.com/services/cloud-services/), i [usługi aplikacji — aplikacje sieci Web](https://azure.microsoft.com/services/app-service/web/). Innymi usługami Azure, użyj metod skalowania.
+Skalowanie automatyczne platformy Azure Monitor ma zastosowanie tylko do [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [usług w chmurze](https://azure.microsoft.com/services/cloud-services/), [App Service — Web Apps](https://azure.microsoft.com/services/app-service/web/), i [usługi API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts). Inne usługi platformy Azure, użyj metod skalowania.
 
-## <a name="compute-metrics-for-resource-manager-based-vms"></a>Obliczanie metryki dla maszyn wirtualnych w Menedżerze zasobów
-Domyślnie maszyn wirtualnych z systemem Resource Manager i zestawy skalowania maszyny wirtualnej Emituj podstawowe metryki (poziomie hosta). Ponadto podczas konfigurowania funkcji zbierania danych diagnostycznych dla maszyny Wirtualnej platformy Azure i VMSS rozszerzenie diagnostyki Azure również emituje liczników wydajności systemu operacyjnego gościa (często nazywana "Systemu operacyjnego gościa metryki").  Za pomocą tych metryk w reguł skalowania automatycznego.
+## <a name="compute-metrics-for-resource-manager-based-vms"></a>Obliczenia metryk dla maszyn wirtualnych opartych na programie Resource Manager
+Domyślnie maszyn wirtualnych opartych na usłudze Resource Manager i Virtual Machine Scale Sets emituje metryki podstawowe (host poziomie). Ponadto podczas konfigurowania funkcji zbierania danych diagnostyki dla maszyny Wirtualnej platformy Azure i zestawu skalowania maszyn wirtualnych, rozszerzenie diagnostyki platformy Azure również emituje liczników wydajności systemu operacyjnego gościa (powszechnie znane jako "Systemu operacyjnego gościa metryki").  Te metryki są używane w reguł skalowania automatycznego.
 
-Można użyć `Get MetricDefinitions` interfejsu API/PoSH/CLI, aby wyświetlić dostępne dla zasobu VMSS metryki.
+Możesz użyć `Get MetricDefinitions` interfejsu API/PoSH/CLI, aby wyświetlić metryki dostępności zasobu zestawu skalowania maszyn wirtualnych.
 
-Jeśli używasz zestawy skalowania maszyny Wirtualnej i nie widzisz określonej metryki na liście, a następnie prawdopodobnie *wyłączone* Twojego rozszerzenia diagnostyki.
+Jeśli używasz usługi VM scale sets i nie widzisz określonej metryki na liście, a następnie prawdopodobnie *wyłączone* w rozszerzenie diagnostyki.
 
-Jeśli nie jest określonej metryki próbkowany lub przenoszony z częstotliwością chcesz umożliwić aktualizację konfiguracji diagnostyki.
+Jeśli w określonej metryki nie jest próbkowany lub przenoszony z częstotliwością, chcesz, aby umożliwić aktualizację konfiguracji diagnostyki.
 
-W przypadku obu powyższych przypadkach ma wartość true, następnie przejrzyj [Użyj programu PowerShell, aby włączyć na maszynie wirtualnej z systemem Windows Azure Diagnostics](../virtual-machines/windows/ps-extensions-diagnostics.md) dotyczące programu PowerShell do konfigurowania i aktualizowania Twoje rozszerzenie diagnostyki maszyny Wirtualnej Azure, aby włączyć metryki. Ten artykuł zawiera także przykładowy plik konfiguracyjny diagnostyki.
+Jeśli albo poprzednim przypadku ma wartość true, następnie przejrzyj [Diagnostyka Azure maszyny wirtualnej z systemem Windows w programie PowerShell](../virtual-machines/windows/ps-extensions-diagnostics.md) dotyczące programu PowerShell do konfigurowania i aktualizacji Twojego rozszerzenia diagnostyki maszyny Wirtualnej platformy Azure, aby włączyć metryki. Ten artykuł zawiera również przykładowy plik konfiguracji diagnostyki.
 
-### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>Metryki hosta dla Menedżera zasobów systemu Windows i maszyn wirtualnych systemu Linux
-Następujące metryki poziomu hosta są emitowane domyślnie dla maszyny Wirtualnej platformy Azure i VMSS w systemach Windows i Linux wystąpień. Te metryki pokazują maszyny Wirtualnej Azure, ale są zbierane z hosta maszyny Wirtualnej Azure, a nie za pośrednictwem agent został zainstalowany na maszynie Wirtualnej gościa. Możesz użyć tych metryk w regułach Skalowanie automatyczne.
+### <a name="host-metrics-for-resource-manager-based-windows-and-linux-vms"></a>Metryki hosta Windows opartych na usłudze Resource Manager i maszyn wirtualnych systemu Linux
+Następujące metryki na poziomie hosta są emitowane przez domyślną dla maszyny Wirtualnej platformy Azure i zestawu skalowania maszyn wirtualnych w wystąpieniach systemów Windows i Linux. Te metryki pokazują maszynę Wirtualną platformy Azure, ale są zbierane z hosta maszyny Wirtualnej platformy Azure, a nie za pośrednictwem agenta zainstalowanego na maszynie Wirtualnej gościa. Te metryki może używać reguł skalowania automatycznego.
 
-- [Metryki hosta dla Menedżera zasobów systemu Windows i maszyn wirtualnych systemu Linux](monitoring-supported-metrics.md#microsoftcomputevirtualmachines)
-- [Metryki hosta dla Menedżera zasobów systemu Windows i zestawy skalowania maszyny Wirtualnej systemu Linux](monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)
+- [Metryki hosta Windows opartych na usłudze Resource Manager i maszyn wirtualnych systemu Linux](monitoring-supported-metrics.md#microsoftcomputevirtualmachines)
+- [Metryki hosta opartego na usłudze Resource Manager Windows i Linux VM Scale Sets](monitoring-supported-metrics.md#microsoftcomputevirtualmachinescalesets)
 
-### <a name="guest-os-metrics-resource-manager-based-windows-vms"></a>Metryki systemu operacyjnego gościa maszyn wirtualnych Menedżera zasobów systemu Windows
-Po utworzeniu maszyny Wirtualnej na platformie Azure diagnostics jest włączona przy użyciu rozszerzenia diagnostyki. Rozszerzenia diagnostyki emituje zestawu metryki pobranych z wewnątrz maszyny Wirtualnej. Oznacza to, że skalowanie automatyczne wylogowuje metryki, które nie są emitowane przez domyślny.
+### <a name="guest-os-metrics-resource-manager-based-windows-vms"></a>Metryki systemu operacyjnego gościa opartego na usłudze Resource Manager VMs Windows
+Po utworzeniu maszyny Wirtualnej na platformie Azure diagnostics jest włączone za pomocą rozszerzenia diagnostyki. Rozszerzenie diagnostyki emituje zestaw metryk pobranych z wewnątrz maszyny Wirtualnej. Oznacza to, że można automatycznego skalowania poza metryki, które nie są generowane domyślnie.
 
-Za pomocą następującego polecenia programu PowerShell, można wygenerować listy metryki.
+Aby wygenerować listę metryk, należy za pomocą następującego polecenia programu PowerShell.
 
 ```
 Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
-Można utworzyć alertu dotyczącego następujące metryki:
+Można utworzyć alertu dla następujących metryk:
 
 | Nazwa metryki | Jednostka |
 | --- | --- |
 | \Processor(_Total)\% Processor Time |Procent |
 | \Processor(_Total)\% czas uprzywilejowany |Procent |
 | \Processor(_Total)\% czas użytkownika |Procent |
-| Częstotliwość \Processor informacji (_Total) \Processor |Licznik |
+| Częstotliwość \Processor informacji (%) (_łącznie) \Processor |Licznik |
 | \System\Processes |Licznik |
-| Liczba \Thread \Process (_Total) |Licznik |
-| Liczba \Handle \Process (_Total) |Licznik |
-| \Memory\% Zadeklarowane bajty w użyciu |Procent |
+| Liczba \Thread \Process (%) (_łącznie) |Licznik |
+| Liczba \Handle \Process (%) (_łącznie) |Licznik |
+| \Memory\% przydzielonych bajtów w użyciu |Procent |
 | \Memory\Available Bytes |Bajty |
 | \Memory\Committed bajtów |Bajty |
 | \Memory\Commit limit |Bajty |
-| \Memory\Pool stronicowanej |Bajty |
-| \Memory\Pool puli niestronicowanej |Bajty |
-| \PhysicalDisk(_Total)\% czas na dysku |Procent |
+| Bajty stronicowanej \Memory\Pool |Bajty |
+| \Memory\Pool niestronicowanej |Bajty |
+| \PhysicalDisk(_Total)\% dysku w czasie |Procent |
 | \PhysicalDisk(_Total)\% czas odczytu z dysku |Procent |
 | \PhysicalDisk(_Total)\% czas zapisu na dysku |Procent |
-| Transfery \Disk \PhysicalDisk (_Total) na sekundę |CountPerSecond |
-| Odczyty \Disk \PhysicalDisk (_Total) na sekundę |CountPerSecond |
-| Zapisy \Disk \PhysicalDisk (_Total) na sekundę |CountPerSecond |
-| \Disk \PhysicalDisk (_Total) bajty/s |Bajty na sekundę |
-| Bajty odczytane/s \Disk \PhysicalDisk (_Total) |Bajty na sekundę |
-| Bajty zapisu \Disk \PhysicalDisk (_Total) / s |Bajty na sekundę |
-| \Avg \PhysicalDisk (_Total) Długość kolejki dysku |Licznik |
-| \Avg \PhysicalDisk (_Total) Długość kolejki odczytu dysku |Licznik |
-| \Avg \PhysicalDisk (_Total) Długość kolejki dysku zapisu |Licznik |
+| Transfery \Disk \PhysicalDisk (%) (_łącznie) na sekundę |CountPerSecond |
+| Odczyty \Disk \PhysicalDisk (%) (_łącznie) na sekundę |CountPerSecond |
+| Zapisy \Disk \PhysicalDisk (%) (_łącznie) na sekundę |CountPerSecond |
+| \Disk \PhysicalDisk (%) (_łącznie) bajty/s |Bajty na sekundę |
+| \Disk \PhysicalDisk (%) (_łącznie) Odczytane bajty/s |Bajty na sekundę |
+| Bajty zapisu \Disk \PhysicalDisk (%) (_łącznie) / s |Bajty na sekundę |
+| \Avg \PhysicalDisk (%) (_łącznie). Długość kolejki dysku |Licznik |
+| \Avg \PhysicalDisk (%) (_łącznie). Długość kolejki odczytu dysku |Licznik |
+| \Avg \PhysicalDisk (%) (_łącznie). Długość kolejki zapisu dysku |Licznik |
 | \LogicalDisk(_Total)\% wolnego miejsca |Procent |
-| Megabajtów \Free \LogicalDisk (_Total) |Licznik |
+| Megabajtów \Free \LogicalDisk (%) (_łącznie) |Licznik |
 
-### <a name="guest-os-metrics-linux-vms"></a>Metryki systemu operacyjnego gościa maszyn wirtualnych systemu Linux
-Po utworzeniu maszyny Wirtualnej na platformie Azure diagnostics jest domyślnie włączona przy użyciu rozszerzenia diagnostyki.
+### <a name="guest-os-metrics-linux-vms"></a>Metryki systemu operacyjnego gościa, maszyny wirtualne systemu Linux
+Po utworzeniu maszyny Wirtualnej na platformie Azure diagnostics jest domyślnie włączona, przy użyciu rozszerzenia diagnostyki.
 
-Za pomocą następującego polecenia programu PowerShell, można wygenerować listy metryki.
+Aby wygenerować listę metryk, należy za pomocą następującego polecenia programu PowerShell.
 
 ```
 Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
- Można utworzyć alertu dotyczącego następujące metryki:
+ Można utworzyć alertu dla następujących metryk:
 
 | Nazwa metryki | Jednostka |
 | --- | --- |
@@ -130,17 +130,17 @@ Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property N
 | \NetworkInterface\TotalTxErrors |Licznik |
 | \NetworkInterface\TotalCollisions |Licznik |
 
-## <a name="commonly-used-web-server-farm-metrics"></a>Często używane metryki sieci Web (farmy serwerów)
-Można także przeprowadzić automatycznego skalowania oparte na wspólnej metryki serwera sieci web, takie jak długość kolejki Http. Nazwa metryki jego jest **HttpQueueLength**.  W poniższej sekcji przedstawiono metryki farmy (aplikacje sieci Web) dostępnego serwera.
+## <a name="commonly-used-web-server-farm-metrics"></a>Często używane metryki sieci Web (farma serwerów)
+Można również wykonać automatyczne skalowanie, oparte na typowych metryk serwera sieci web, takie jak długość kolejki Http. Nazwa metryki jego jest **HttpQueueLength**.  W poniższej sekcji przedstawiono metryki farmy (aplikacje sieci Web) dostępnego serwera.
 
 ### <a name="web-apps-metrics"></a>Metryki aplikacji sieci Web
-Można wygenerować listy metryki aplikacji sieci Web za pomocą następującego polecenia programu PowerShell.
+Można generować listę metryk aplikacji sieci Web za pomocą następującego polecenia programu PowerShell.
 
 ```
 Get-AzureRmMetricDefinition -ResourceId <resource_id> | Format-Table -Property Name,Unit
 ```
 
-Możesz alert po wystąpieniu lub skalowania przez te metryki.
+Można alert po wystąpieniu lub przez te metryki.
 
 | Nazwa metryki | Jednostka |
 | --- | --- |
@@ -152,11 +152,11 @@ Możesz alert po wystąpieniu lub skalowania przez te metryki.
 | Żądania |Bajty |
 
 ## <a name="commonly-used-storage-metrics"></a>Często używane metryki magazynu
-Możesz skalować długości kolejki magazynu, który jest liczba komunikatów w kolejce magazynu. Długość kolejki magazynu to specjalne metryki i próg jest liczba komunikatów dla każdego wystąpienia. Na przykład jeśli istnieją dwa wystąpienia, a próg wynosi 100, skalowanie występuje, gdy łączna liczba wiadomości w kolejce to 200. Który może być 100 komunikaty dla każdego wystąpienia, 120 i 80 lub wszelkie inne kombinacje dodające maksymalnie 200 lub więcej.
+Możesz skalować, długość kolejki magazynu, który jest liczba komunikatów w kolejce magazynu. Długość kolejki magazynu to specjalne metryki i próg jest liczba komunikatów na wystąpienie. Na przykład jeśli istnieją dwa wystąpienia i próg jest ustawiony na 100, skalowanie występuje, gdy łączna liczba komunikatów w kolejce wynosi 200. Który może być 100 wiadomości dla każdego wystąpienia, 120 i 80 lub wszelkie inne kombinacje dodającego maksymalnie 200 lub więcej.
 
-Skonfiguruj to ustawienie w portalu Azure w **ustawienia** bloku. W przypadku zestawy skalowania maszyny Wirtualnej, można aktualizować w szablonie usługi Resource Manager do używania w ustawieniu skalowania automatycznego *metricName* jako *ApproximateMessageCount* i podaj identyfikator kolejki magazynu jako *metricResourceUri*.
+To ustawienie jest skonfigurowane w witrynie Azure portal w **ustawienia** bloku. Dla zestawów skalowania maszyn wirtualnych, możesz zaktualizować ustawienie automatycznego skalowania w szablonie usługi Resource Manager, aby użyć *metricName* jako *ApproximateMessageCount* i przekaż identyfikator kolejki magazynu jako  *metricResourceUri*.
 
-Na przykład z kontem magazynu Classic metricTrigger Ustawienia skalowania automatycznego zadania obejmują:
+Na przykład przy użyciu klasycznego konta magazynu metricTrigger ustawienie skalowania automatycznego obejmuje:
 
 ```
 "metricName": "ApproximateMessageCount",
@@ -164,7 +164,7 @@ Na przykład z kontem magazynu Classic metricTrigger Ustawienia skalowania autom
  "metricResourceUri": "/subscriptions/SUBSCRIPTION_ID/resourceGroups/RES_GROUP_NAME/providers/Microsoft.ClassicStorage/storageAccounts/STORAGE_ACCOUNT_NAME/services/queue/queues/QUEUE_NAME"
  ```
 
-Konto magazynu (z systemem innym niż klasyczne) metricTrigger zadania obejmują:
+W przypadku konta magazynu (inne niż wersja klasyczna) metricTrigger zadania obejmują:
 
 ```
 "metricName": "ApproximateMessageCount",
@@ -173,9 +173,9 @@ Konto magazynu (z systemem innym niż klasyczne) metricTrigger zadania obejmują
 ```
 
 ## <a name="commonly-used-service-bus-metrics"></a>Często używane metryki usługi Service Bus
-Możesz skalować według długość kolejki usługi Service Bus, która jest liczba komunikatów w kolejki usługi Service Bus. Długość kolejki usługi Service Bus jest specjalne metryki i próg jest liczba komunikatów dla każdego wystąpienia. Na przykład jeśli istnieją dwa wystąpienia, a próg wynosi 100, skalowanie występuje, gdy łączna liczba wiadomości w kolejce to 200. Który może być 100 komunikaty dla każdego wystąpienia, 120 i 80 lub wszelkie inne kombinacje dodające maksymalnie 200 lub więcej.
+Możesz skalować, długość kolejki usługi Service Bus, która jest liczba komunikatów w kolejce usługi Service Bus. Długość kolejki usługi Service Bus to specjalne metryki i próg jest liczba komunikatów na wystąpienie. Na przykład jeśli istnieją dwa wystąpienia i próg jest ustawiony na 100, skalowanie występuje, gdy łączna liczba komunikatów w kolejce wynosi 200. Który może być 100 wiadomości dla każdego wystąpienia, 120 i 80 lub wszelkie inne kombinacje dodającego maksymalnie 200 lub więcej.
 
-W przypadku zestawy skalowania maszyny Wirtualnej, można aktualizować w szablonie usługi Resource Manager do używania w ustawieniu skalowania automatycznego *metricName* jako *ApproximateMessageCount* i podaj identyfikator kolejki magazynu jako *metricResourceUri*.
+Dla zestawów skalowania maszyn wirtualnych, możesz zaktualizować ustawienie automatycznego skalowania w szablonie usługi Resource Manager, aby użyć *metricName* jako *ApproximateMessageCount* i przekaż identyfikator kolejki magazynu jako  *metricResourceUri*.
 
 ```
 "metricName": "MessageCount",
@@ -184,6 +184,6 @@ W przypadku zestawy skalowania maszyny Wirtualnej, można aktualizować w szablo
 ```
 
 > [!NOTE]
-> Dla usługi Service Bus koncepcji grupy zasobów nie istnieje, ale usługi Azure Resource Manager tworzy domyślną grupę zasobów dla regionu. Grupa zasobów jest zwykle w formacie "Default - magistrali usług — [region]". Na przykład "Domyślne-magistrali usług-EastUS", "Domyślne-magistrali usług-WestUS", "Domyślne-magistrali usług-AustraliaEast" itp.
+> Dla usługi Service Bus nie istnieje pojęcie grup zasobów, ale usługi Azure Resource Manager tworzy domyślną grupę zasobów, na region. Grupa zasobów ma zazwyczaj format "Default - ServiceBus-[region]". Na przykład "Domyślne-ServiceBus-EastUS", "Domyślna-ServiceBus-WestUS", "Domyślne-ServiceBus-AustraliaEast" itp.
 >
 >

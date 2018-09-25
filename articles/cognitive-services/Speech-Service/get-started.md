@@ -7,14 +7,14 @@ author: v-jerkin
 ms.service: cognitive-services
 ms.component: speech-service
 ms.topic: article
-ms.date: 05/17/2018
+ms.date: 09/24/2018
 ms.author: v-jerkin
-ms.openlocfilehash: cbb73b199255af7e7a91b1586b331acde035bfd7
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 601588e0c7257fc939f884b2e9b2774ab12ea872
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124516"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950843"
 ---
 # <a name="try-the-speech-service-for-free"></a>Wypróbuj bezpłatnie usługę rozpoznawania mowy
 
@@ -36,7 +36,7 @@ Aby zarejestrować się w 30-dniowej bezpłatnej wersji próbnej:
 
    ![Karta usługi mowy](media/index/try-speech-api-free-trial1.png)
    
-1. W obszarze **usług przetwarzania mowy <sup>Podgląd</sup>**, wybierz opcję **Uzyskaj klucz interfejsu API** przycisku.
+1. W obszarze **usług przetwarzania mowy**, wybierz opcję **Uzyskaj klucz interfejsu API** przycisku.
 
    ![Klucz interfejsu API](media/index/try-speech-api-free-trial2.png)
 
@@ -75,11 +75,11 @@ Aby dodać zasób usługi mowy (w warstwie bezpłatna lub płatna) do konta plat
 
 1. W **New** okna, wyszukaj **mowy**.
 
-1. W wynikach wyszukiwania wybierz **Speech (wersja zapoznawcza)**.
+1. W wynikach wyszukiwania wybierz **mowy**.
 
-    ![Wybierz Speech (wersja zapoznawcza)](media/index/try-speech-api-create-speech2.png)
+    ![Wybierz opcję rozpoznawania mowy](media/index/try-speech-api-create-speech2.png)
 
-1. W obszarze **Speech (wersja zapoznawcza)**, kliknij przycisk **Utwórz** przycisku.
+1. W obszarze **mowy**, wybierz opcję **Utwórz** przycisku.
 
     ![Kliknij przycisk Utwórz](media/index/try-speech-api-create-speech3.png)
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 10/25/2017
 ms.author: cbrooks
 ms.component: common
-ms.openlocfilehash: 05a7dda67ca9747c5d6205952bc9337af628de8f
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: ff382becb71f187ac38b0ef5d31c1b29c43f3fe7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296741"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972559"
 ---
 # <a name="configure-azure-storage-firewalls-and-virtual-networks"></a>Konfigurowanie zapór usługi Azure Storage i sieci wirtualnych
 Usługa Azure Storage udostępnia model zabezpieczeń warstwowych, dzięki czemu możesz do zabezpieczania konta magazynu do określonego zestawu dozwolonych sieci.  Po skonfigurowaniu reguł sieci tylko aplikacje z dozwolonych sieci można uzyskiwać dostęp do konta magazynu.  Podczas wywoływania z dozwolonych sieci, aplikacje w dalszym ciągu wymagają właściwej zezwolenia (prawidłowy klucz dostępu lub tokenu sygnatury dostępu Współdzielonego) dostęp do konta magazynu.
@@ -70,7 +70,7 @@ Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" 
 ```    
 
 #### <a name="cliv2"></a>CLIv2
-1. [Zainstaluj interfejs wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli) i [logowania](/cli/azure/authenticate-azure-cli).
+1. [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i [logowania](/cli/azure/authenticate-azure-cli).
 2. Wyświetl stan reguły domyślne dla konta magazynu.
 ```azurecli
 az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.defaultAction
@@ -152,7 +152,7 @@ Remove-AzureRmStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Na
 >
 
 #### <a name="cliv2"></a>CLIv2
-1. [Zainstaluj interfejs wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli) i [logowania](/cli/azure/authenticate-azure-cli).
+1. [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i [logowania](/cli/azure/authenticate-azure-cli).
 2. Lista reguł sieci wirtualnej
 ```azurecli
 az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query virtualNetworkRules
@@ -243,7 +243,7 @@ Remove-AzureRMStorageAccountNetworkRule -ResourceGroupName "myresourcegroup" -Ac
 >
 
 #### <a name="cliv2"></a>CLIv2
-1. [Zainstaluj interfejs wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli) i [logowania](/cli/azure/authenticate-azure-cli).
+1. [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i [logowania](/cli/azure/authenticate-azure-cli).
 2. Reguły sieci IP list
 ```azurecli
 az storage account network-rule list --resource-group "myresourcegroup" --account-name "mystorageaccount" --query ipRules
@@ -290,7 +290,9 @@ Gdy jest włączony wyjątek "Zaufanych usług firmy Microsoft", następujące u
 |Azure Event Grid|Microsoft.EventGrid|Włączanie publikowania zdarzeń usługi Blob Storage.  [Dowiedz się więcej](https://docs.microsoft.com/azure/event-grid/overview).|
 |Azure Event Hubs|Microsoft.EventHub|Archiwizowanie danych za pomocą usługi Event Hubs Capture.  [Dowiedz się więcej](https://docs.microsoft.com/azure/event-hubs/event-hubs-capture-overview).|
 |Sieci systemu Azure|Microsoft.Networking|Store i analizowanie dzienników ruchu sieciowego.  [Dowiedz się więcej](https://docs.microsoft.com/azure/network-watcher/network-watcher-packet-capture-overview).|
-||||
+|Azure Monitor|Microsoft.Insights| Umożliwia zapisywanie danych do konta storaage zabezpieczonej monitorowania [więcej](https://docs.microsoft.com/azure/monitoring-and-diagnostics/monitoring-roles-permissions-security#monitoring-and-secured-Azure-storage-and-networks).|
+|
+
 
 ### <a name="storage-analytics-data-access"></a>Dostęp do danych analizy magazynu
 W niektórych przypadkach dostęp do odczytu, dzienniki diagnostyczne i metryki z jest wymagana poza granicami sieci.  Aby zezwolić na dostęp do odczytu do przechowywania plików dziennika konta, tabulky metrik lub oba można udzielić wyjątki od zasad sieci. [Dowiedz się więcej na temat pracy z usługą storage analytics.](/azure/storage/storage-analytics)
@@ -327,7 +329,7 @@ Update-AzureRmStorageAccountNetworkRuleSet -ResourceGroupName "myresourcegroup" 
 >
 
 #### <a name="cliv2"></a>CLIv2
-1. [Zainstaluj interfejs wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli) i [logowania](/cli/azure/authenticate-azure-cli).
+1. [Instalowanie interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) i [logowania](/cli/azure/authenticate-azure-cli).
 2. Wyświetl wyjątków dla reguły sieci konta magazynu.
 ```azurecli
 az storage account show --resource-group "myresourcegroup" --name "mystorageaccount" --query networkRuleSet.bypass

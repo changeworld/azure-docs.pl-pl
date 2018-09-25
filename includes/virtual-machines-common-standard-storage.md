@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 06/05/2018
 ms.author: yuemlu
 ms.custom: include file
-ms.openlocfilehash: ab085d6a5cb38c46cf46a51da6d294732e2fd879
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: e3d904358282f303a2d1ab35cf4fdc8026d7db55
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45979033"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060507"
 ---
 # <a name="cost-effective-standard-storage-and-unmanaged-and-managed-azure-vm-disks"></a>Ekonomicznego magazynu w warstwie standardowa oraz zarządzane i niezarządzane dyski maszyny Wirtualnej platformy Azure
 
@@ -25,7 +25,7 @@ Ten artykuł koncentruje się na korzystanie z dysków SSD i HDD w warstwie stan
 
 Istnieją dwa sposoby tworzenia dysków w warstwie standardowa dla maszyn wirtualnych platformy Azure:
 
-**Niezarządzane dyski**: ten typ dysku jest oryginalnej metody, w których zarządzasz konta magazynu używany do przechowywania plików wirtualnego dysku twardego, które odpowiadają na dyskach maszyny Wirtualnej. Pliki VHD są przechowywane jako stronicowe obiekty BLOB na kontach magazynu. Usługa Unmanaged disks można dołączyć do dowolnego rozmiaru maszyny Wirtualnej platformy Azure, w tym o maszynach wirtualnych, które przede wszystkim używasz usługi Premium Storage, takich jak seria DSv2 i GS. Maszyny wirtualne platformy Azure obsługuje dołączanie wielu dyski w warstwie standardowa, co do 256 TB magazynu na maszynę Wirtualną.
+**Niezarządzane dyski**: ten typ dysku jest oryginalnej metody, w których zarządzasz konta magazynu używany do przechowywania plików wirtualnego dysku twardego, które odpowiadają na dyskach maszyny Wirtualnej. Pliki VHD są przechowywane jako stronicowe obiekty BLOB na kontach magazynu. Usługa Unmanaged disks można dołączyć do dowolnego rozmiaru maszyny Wirtualnej platformy Azure, w tym o maszynach wirtualnych, które przede wszystkim używasz usługi Premium Storage, takich jak seria DSv2 i GS. Maszyny wirtualne platformy Azure obsługują dołączanie kilka dyski w warstwie standardowa, umożliwiając 256 PiB magazynu na maszynę Wirtualną. Jeśli używasz rozmiary dysków (wersja zapoznawcza), możesz mieć maksymalnie około 2 PiB magazynu na maszynę Wirtualną. 
 
 [**Usługa Azure Managed Disks**](../articles/virtual-machines/windows/managed-disks-overview.md): Ta funkcja zarządza kont magazynu dla dysków maszyn wirtualnych dla Ciebie. Określ typ (w warstwie Premium SSD, SSD w warstwie standardowa lub standardowych dysków Twardych) i rozmiar dysku należy i platforma Azure utworzy i zarządza dysku. Nie trzeba martwić się o umieszczenie dysków na wielu kontach magazynu w celu zapewnienia przekroczysz limity skalowalności konta magazynu — Azure sobie z nimi poradzi dla Ciebie.
 
@@ -36,15 +36,15 @@ Aby rozpocząć korzystanie z usługi Azure Standard Storage, odwiedź stronę [
 Aby uzyskać informacje dotyczące sposobu tworzenia maszyny Wirtualnej z usługą Managed Disks zobacz jeden z następujących artykułów.
 
 * [Tworzenie maszyny wirtualnej przy użyciu usługi Resource Manager i programu PowerShell](../articles/virtual-machines/windows/quick-create-powershell.md)
-* [Tworzenie maszyny wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure 2.0](../articles/virtual-machines/linux/quick-create-cli.md)
+* [Create a Linux VM using the Azure CLI](../articles/virtual-machines/linux/quick-create-cli.md) (Tworzenie maszyny wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure)
 
-## <a name="standard-storage-features"></a>Funkcje magazynu w warstwie standardowa 
+## <a name="standard-storage-features"></a>Funkcje magazynu w warstwie standardowa
 
 Spójrzmy na niektóre funkcje magazynu w warstwie standardowa. Aby uzyskać więcej informacji, zobacz [wprowadzenie do usługi Azure Storage](../articles/storage/common/storage-introduction.md).
 
 **Magazynu w warstwie standardowa**: usługi Azure Standard Storage obsługuje usługi Azure Disks, obiektów blob platformy Azure, Azure Files, tabele platformy Azure i kolejek platformy Azure. Aby korzystać z usług magazynu w warstwie standardowa, zacznij od [Tworzenie konta usługi Azure Storage](../articles/storage/common/storage-quickstart-create-account.md).
 
-**Dyski SSD w warstwie standardowa:** dysków SSD w warstwie standardowa zapewnia bardziej niezawodną wydajność niż dyski standardowe dyski TWARDE i są obecnie dostępne w wersji zapoznawczej. Aby dowiedzieć się więcej o dostępność w poszczególnych regionach dysków SSD w warstwie standardowa, zobacz [dostępność regionów dla dysków SSD w warstwie standardowa (wersja zapoznawcza)](../articles/virtual-machines/windows/faq-for-disks.md#standard-ssds-azure-regions).
+**Dyski SSD w warstwie standardowa:** dysków SSD w warstwie standardowa zapewnia bardziej niezawodną wydajność niż dyski standardowe dyski TWARDE i są obecnie dostępne. Aby dowiedzieć się więcej o dostępność w poszczególnych regionach dysków SSD w warstwie standardowa, zobacz [dostępność regionów dla dysków SSD w warstwie standardowa](../articles/virtual-machines/windows/faq-for-disks.md#standard-ssds-azure-regions).
 
 **Standardowe dyski HDD:** dysków standardowych dysków Twardych mogą być dołączane do wszystkich maszyn wirtualnych platformy Azure, w tym maszyny wirtualne z serii rozmiar używane dzięki usłudze Premium Storage, takich jak seria DSv2 i GS. Dysk standardowy dysk twardy można powiązać tylko z jednej maszyny Wirtualnej. Jednakże można dołączyć co najmniej jeden z tych dysków do maszyny Wirtualnej, maksymalna liczba dysków maksymalna, zdefiniowanych dla tego rozmiaru maszyny Wirtualnej. W poniższej sekcji Standard Storage dotyczące skalowalności i cele wydajności opisujemy specyfikacje bardziej szczegółowo.
 
@@ -81,11 +81,11 @@ W przeciwieństwie do dysków w warstwie Premium nie są udostępnione operacji 
 
 | **Warstwa maszyny Wirtualnej**            | **Maszyna wirtualna w warstwie podstawowa** | **Maszyna wirtualna w warstwie standardowa** |
 |------------------------|-------------------|----------------------|
-| Rozmiar maksymalny dysku          | 4095 GB           | 4095 GB              |
-| Maksymalna liczba 8 KB operacje We/Wy na dysk | Maksymalnie 300         | Maks. 500            |
-| Maksymalna przepustowość na dysku | Do 60 MB/s     | Do 60 MB/s        |
+| Rozmiar maksymalny dysku          | 32 767 giB           | 32 767 giB        |
+| Maksymalna liczba 8 KB operacje We/Wy na dysk | Do 2000         | Do 2000        |
+| Maksymalna przepustowość na dysku | Maks. 500 MB/s     | Maks. 500 MB/s      |
 
-Jeśli obciążenie wymaga obsługę przez dyski o wysokiej wydajności i niskich opóźnieniach, należy rozważyć użycie magazynu Premium Storage. Aby dowiedzieć się więcej korzyści z magazynu Premium, odwiedź stronę [High-Performance Premium Storage i dyski maszyn wirtualnych platformy Azure](../articles/virtual-machines/windows/premium-storage.md). 
+Jeśli obciążenie wymaga obsługę przez dyski o wysokiej wydajności i niskich opóźnieniach, należy rozważyć użycie magazynu Premium Storage. Aby dowiedzieć się więcej korzyści z magazynu Premium, odwiedź stronę [High-Performance Premium Storage i dyski maszyn wirtualnych platformy Azure](../articles/virtual-machines/windows/premium-storage.md).
 
 ## <a name="snapshots-and-copy-blob"></a>Migawki i obiektu blob kopiowania
 
@@ -121,9 +121,9 @@ Korzystając z magazynu w warstwie standardowa, zastosuj następujące zagadnien
 
 **Usługa Managed disks:** rozliczeń dla dysków zarządzanych w warstwie standardowa zależy od rozmiaru aprowizowanego dysku. Usługi Azure maps zaprowizowany rozmiar (z zaokrągleniem) do najbliższej opcji dysków Managed Disks w określonych w poniższych tabelach. Każdy dysk zarządzany mapowany na jeden z obsługiwanych rozmiarów elastycznie i jest rozliczana w związku z tym. Na przykład jeśli Tworzenie dysku zarządzanego standardowe i określ aprowizowanego rozmiaru 200 GiB, są rozliczane zgodnie z cennikiem typ dysku S15.
 
-| **Standardowy dysk twardy zarządzane <br>typ dysku** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** |
-|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------| 
-| Rozmiar dysku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TiB) | 2048 giB (2 TiB) | 4095 giB (4 TiB) | 
+| **Standardowy dysk twardy zarządzane <br>typ dysku** | **S4** | **S6** | **S10** | **S15** | **S20** | **S30** | **S40** | **S50** | **S60** | **S70** | **S80** |
+|------------------|---------|---------|--------|--------|--------|----------------|----------------|----------------|----------------|----------------|----------------|
+| Rozmiar dysku        | 32 GiB  | 64 GiB  | 128 GiB | 256 GiB | 512 GiB | 1024 giB (1 TiB) | 2048 giB (2 TiB) | 4095 giB (4 TiB) | 8192 giB (8 TiB) | 16,385 giB (16 TiB) | 32 767 giB (32 TiB) |
 
 
 **Migawki**: migawek dysków w warstwie standardowa są naliczane za dodatkową pojemność posługują się migawki. Aby uzyskać informacji na temat migawek, zobacz [Tworzenie migawki obiektu Blob](/rest/api/storageservices/Creating-a-Snapshot-of-a-Blob).
@@ -138,7 +138,7 @@ Aby uzyskać szczegółowe informacje na temat cen magazynu w warstwie standardo
 * [Ceny maszyn wirtualnych](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * [Ceny usługi Managed Disks](https://azure.microsoft.com/pricing/details/managed-disks)
 
-## <a name="azure-backup-service-support"></a>Pomoc techniczna usługi kopii zapasowej platformy Azure 
+## <a name="azure-backup-service-support"></a>Pomoc techniczna usługi kopii zapasowej platformy Azure
 
 Maszyny wirtualne z dyskami niezarządzanymi utworzeniem kopii zapasowej za pomocą usługi Azure Backup. [Więcej szczegółów](../articles/backup/backup-azure-vms-first-look-arm.md).
 
@@ -154,4 +154,4 @@ Za pomocą usługi Azure Backup i dyski Managed Disks do utworzenia zadania twor
 
 * [Tworzenie maszyny wirtualnej przy użyciu usługi Resource Manager i programu PowerShell](../articles/virtual-machines/windows/quick-create-powershell.md)
 
-* [Tworzenie maszyny wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure 2.0](../articles/virtual-machines/linux/quick-create-cli.md)
+* [Create a Linux VM using the Azure CLI](../articles/virtual-machines/linux/quick-create-cli.md) (Tworzenie maszyny wirtualnej z systemem Linux przy użyciu interfejsu wiersza polecenia platformy Azure)

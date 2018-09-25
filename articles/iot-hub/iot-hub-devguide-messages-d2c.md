@@ -1,89 +1,93 @@
 ---
-title: Omówienie obsługi komunikatów urządzenie chmura usługi Azure IoT Hub | Dokumentacja firmy Microsoft
-description: Przewodnik dla deweloperów — jak korzystać z urządzenia do chmury, obsługa komunikatów za pomocą usługi IoT Hub. Zawiera informacje na temat wysyłania danych telemetrii i innych telemtry i przy użyciu routingu w celu dostarczania komunikatów.
-author: dominicbetts
-manager: timlt
+title: Poznanie routingu komunikatów usługi Azure IoT Hub | Dokumentacja firmy Microsoft
+description: Przewodnik dla deweloperów — jak wysyłać komunikaty urządzenie chmura z za pomocą routingu komunikatów. Zawiera informacje na temat wysyłania danych telemetrycznych i innych telemtry danych.
+author: ash2017
+manager: briz
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
-ms.date: 07/18/2018
-ms.author: dobett
-ms.openlocfilehash: be87b00f27f0d0b25cd77a0634ab1c653a85e5ac
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.date: 08/13/2018
+ms.author: asrastog
+ms.openlocfilehash: 7c36ab2f0d4d3e5c772f8ef62c13161a2649362f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126446"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966745"
 ---
-# <a name="send-device-to-cloud-messages-to-iot-hub"></a>Wysyłanie komunikatów z urządzenia do chmury do Centrum IoT Hub
+# <a name="use-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Umożliwia routing komunikatów wysyłać komunikaty urządzenie chmura do różnych punktów końcowych
 
-Wysyłać szeregów czasowych telemetrię i alerty z urządzeń w zapleczu rozwiązania, wysyłanie komunikatów z urządzenia do chmury z urządzenia do usługi IoT hub. Aby uzyskać omówienie inne opcje urządzenia do chmury, obsługiwane przez usługę IoT Hub, zobacz [wskazówki dotyczące komunikacji z urządzenia do chmury][lnk-d2c-guidance].
+[!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Wysyłanie komunikatów z urządzenia do chmury za pośrednictwem punktu końcowego dostępnego z urządzenia (**/devices/ {deviceId} / komunikaty/zdarzenia**). Reguły routingu, a następnie kierować wiadomości do jednego z punktów końcowych przeznaczonych dla usługi w usłudze IoT hub. Reguły routingu Użyj nagłówki i treść komunikatów z urządzenia do chmury, aby ustalić, gdzie można je rozesłać. Domyślnie komunikaty są kierowane do wbudowany punkt końcowy przeznaczonych dla usługi (**komunikaty/zdarzenia**), która jest zgodna z [usługi Event Hubs][lnk-event-hubs]. W związku z tym, można użyć standardowego [integracji usługi Event Hubs i zestawy SDK] [ lnk-compatible-endpoint] do odbierania komunikatów z urządzenia do chmury w w zapleczu rozwiązania.
+Routing komunikatów umożliwia wysyłanie komunikatów z urządzenia do usług w chmurze w sposób zautomatyzowanych, skalowalnych i niezawodnych. Routing komunikatów może służyć do: 
 
-IoT Hub zaimplementowano urządzenia do chmury komunikatów przy użyciu wzorca obsługi wiadomości przesyłanych strumieniowo. Przypominają komunikatów przesyłanych z chmury do urządzenia usługi IoT Hub [usługi Event Hubs] [ lnk-event-hubs] *zdarzenia* niż [usługi Service Bus] [ lnk-servicebus] *wiadomości* , istnieje duża liczba zdarzeń przekazywanych przez usługę, który może zostać odczytany przez czytniki wielu.
+* **Wysyłanie messsages telemetrii urządzenia, a także zdarzenia** , zdarzenia cyklu życia urządzenia i zdarzenia zmian do wbudowanych-endpoint i niestandardowych punktów końcowych bliźniaczej reprezentacji urządzenia. Dowiedz się więcej o [routingu punktów końcowych](##routing-endpoints).
 
-Obsługa komunikatów za pomocą usługi IoT Hub urządzenia do chmury ma następującą charakterystykę:
+* **Filtrowanie danych przed przesłaniem go do różnych punktów końcowych** przez zastosowanie zaawansowanych zapytań. Routing komunikatów umożliwia zapytania właściwości wiadomości oraz treść wiadomości, a także tagów bliźniaczych reprezentacji urządzeń i właściwości bliźniaczych reprezentacji urządzeń. Dowiedz się więcej o korzystaniu z [zapytania w routingu komunikatów](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
 
-* Komunikaty z urządzenia do chmury są trwałe i zachowane w domyślnej usługi IoT hub **komunikaty/zdarzenia** punktu końcowego dla maksymalnie siedem dni.
-* Komunikaty z urządzenia do chmury może być co najwyżej 256 KB i mogą być grupowane w partiach, aby zoptymalizować wysyła. Partie może mieć co najwyżej 256 KB.
-* Jak wyjaśniono w [kontrolować dostęp do usługi IoT Hub] [ lnk-devguide-security] sekcji usługi IoT Hub umożliwia na urządzenia uwierzytelniania i kontroli dostępu.
-* Usługa IoT Hub umożliwia tworzenie maksymalnie 10 niestandardowych punktów końcowych. Komunikaty są dostarczane do punktów końcowych, oparte na trasach skonfigurowane w usłudze IoT hub. Aby uzyskać więcej informacji, zobacz [reguły routingu](iot-hub-devguide-query-language.md#device-to-cloud-message-routes-query-expressions).
-* Usługa IoT Hub udostępnia milionów równocześnie połączonych urządzeń (zobacz [przydziałów i dławienia][lnk-quotas]).
-* Usługi IoT Hub nie zezwala na dowolne partycjonowania. Komunikaty z urządzenia do chmury są podzielone na partycje oparte na ich pochodzące **deviceId**.
+Usługa IoT Hub wymaga dostępu do tych punktów końcowych usługi zapisu do rozsyłania wiadomości do pracy. Jeśli skonfigurujesz punktów końcowych za pośrednictwem witryny Azure portal, niezbędne uprawnienia są dodawane. Upewnij się, że konfigurowanie usługi do obsługi oczekiwanej przepływności. Podczas pierwszej konfiguracji rozwiązania IoT, może być konieczne monitorowanie dodatkowych punktów końcowych i wprowadź wymagane zmiany dotyczące rzeczywistego obciążenia.
 
-Aby uzyskać więcej informacji na temat różnic między centrum IoT Hub i Event Hubs, zobacz [porównanie usługi Azure IoT Hub i Azure Event Hubs][lnk-comparison].
+Definiuje usługę IoT Hub [typowego formatu](../iot-hub/iot-hub-devguide-messages-construct.md) dla wszystkich urządzeń do chmury, obsługi wiadomości dla interoperatbility różnych protokołów. Jeśli komunikat pasuje wiele tras, które wskazują na ten sam punkt końcowy, IoT Hub dostarczy komunikatu do określonego punktu końcowego tylko raz. W związku z tym nie trzeba polecenia Konfiguruj deduplikację na tematu lub kolejki usługi Service Bus. Partycjonowane kolejki koligacji partycji gwarantuje, kolejność komunikatów. Użyj tego samouczka, aby dowiedzieć się, jak [Konfigurowanie routingu komunikatów] (https://docs.microsoft.com/azure/iot-hub/tutorial-routing).
 
-## <a name="send-non-telemetry-traffic"></a>Wysyłaj ruch nietelemetrycznych
+## <a name="routing-endpoints"></a>Punkty końcowe routingu
 
-Często oprócz telemetrii, urządzenia wysyłają komunikaty i żądania, które wymagają wykonywania oddzielnych i obsługa w zapleczu rozwiązania. Na przykład alertów krytycznych, musi wyzwalać określonej akcji w zapleczu. Można napisać [reguły routingu] [ lnk-devguide-custom] do wysłania tego rodzaju wiadomości do punktu końcowego przeznaczone do przetwarzania, ich na podstawie nagłówka wiadomości lub wartością w treści komunikatu.
+Centrum IoT hub ma domyślnego wbudowanych-w-punktu końcowego (**komunikaty/zdarzenia**) jest zgodna z usługą Event Hubs. Możesz utworzyć [niestandardowe punkty końcowe](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-endpoints#custom-endpoints) do wyznaczania tras, łącząc innych usług w Twojej subskrypcji do Centrum IoT. Usługa IoT Hub obecnie obsługuje następujące usługi jako niestandardowe punkty końcowe:
 
-Aby uzyskać więcej informacji na temat najlepszym sposobem przetwarzania tego rodzaju wiadomości zobacz [samouczek: jak przetwarzać komunikaty z urządzenia do chmury usługi IoT Hub] [ lnk-d2c-tutorial] samouczka.
+### <a name="built-in-endpoint"></a>Wbudowany punkt końcowy
+Można użyć standardowego [integracji usługi Event Hubs i zestawy SDK](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-read-builtin) do odbierania komunikatów z urządzenia do chmury z wbudowanego punktu końcowego (**komunikaty/zdarzenia**). Należy pamiętać, że po utworzeniu trasy dane przestaną docierać do wbudowanych-w-punktu końcowego, chyba że zostanie utworzona trasa tego punktu końcowego.
 
-## <a name="route-device-to-cloud-messages"></a>Kierowanie komunikatów z urządzenia do chmury
+### <a name="azure-blob-storage"></a>Azure Blob Storage
+Usługa IoT Hub obsługuje tylko, zapisywanie danych w usłudze Azure Blob Storage w [Apache Avro](http://avro.apache.org/) formatu. Usługa IoT Hub partii komunikatów i zapisuje dane do obiektu blob, zawsze, gdy zadanie wsadowe osiągnie określony rozmiar lub upłynął określoną ilość czasu.
 
-Masz dwie opcje służącą do rozesłania wiadomości z urządzenia do chmury do aplikacji zaplecza:
-
-* Użyj wbudowanych [punktu końcowego zgodnego z Centrum zdarzeń] [ lnk-compatible-endpoint] aby umożliwić aplikacji zaplecza, aby odczytywać komunikaty urządzenie chmura odbierane przez Centrum. Aby dowiedzieć się więcej na temat wbudowany punkt końcowy zgodny z Centrum zdarzeń, zobacz [odczytywanie komunikatów z urządzenia do chmury z wbudowanego punktu końcowego][lnk-devguide-builtin].
-* Użyj reguł routingu do wysyłania komunikatów do niestandardowych punktów końcowych w usłudze IoT hub. Niestandardowe punkty końcowe umożliwiają aplikacji zaplecza do odczytywania komunikatów z urządzenia do chmury przy użyciu usługi Event Hubs, kolejki usługi Service Bus lub tematów usługi Service Bus. Aby dowiedzieć się więcej na temat routingu i niestandardowych punktów końcowych, zobacz [użyć niestandardowych punktów końcowych i reguł routingu dla komunikatów z urządzenia do chmury][lnk-devguide-custom].
-
-## <a name="anti-spoofing-properties"></a>Ochrona przed fałszowaniem właściwości
-
-Aby uniknąć urządzenia fałszowanie w komunikatów z urządzenia do chmury, usługi IoT Hub sygnatury wszystkie komunikaty z następującymi właściwościami:
-
-* **ConnectionDeviceId**
-* **ConnectionDeviceGenerationId**
-* **ConnectionAuthMethod**
-
-Zawiera dwa pierwsze **deviceId** i **generationId** urządzenia źródłowego zgodnie [właściwości tożsamości urządzenia][lnk-device-properties].
-
-**ConnectionAuthMethod** właściwość zawiera obiekt serializacji JSON z następującymi właściwościami:
-
-```json
-{
-  "scope": "{ hub | device }",
-  "type": "{ symkey | sas | x509 }",
-  "issuer": "iothub"
-}
+Usługa IoT Hub wartością domyślną jest następująca Konwencja nazewnictwa pliku:
+```
+{iothub}/{partition}/{YYYY}/{MM}/{DD}/{HH}/{mm}
 ```
 
+Może używać dowolnego konwencję nazewnictwa plików, jednak należy użyć listy wszystkich tokenów. Usługi IoT Hub będzie zapisywać do pustego obiektu blob, jeśli nie ma żadnych danych do zapisu.
+
+### <a name="service-bus-queues-and-service-bus-topics"></a>Kolejki usługi Service Bus i tematów usługi Service Bus
+Kolejki usługi Service Bus i tematy, używane jako punktów końcowych usługi IoT Hub nie może mieć **sesje** lub **wykrywania duplikatów** włączone. Jeśli jedno z tych opcji są włączone, punkt końcowy jest wyświetlany jako **informujący** w witrynie Azure portal.
+
+### <a name="event-hubs"></a>Event Hubs
+Oprócz wbudowanych — Event Hubs punkt końcowy zgodny można również kierować dane do niestandardowych punktów końcowych typu Event Hubs. 
+
+Gdy używasz routingu, jak i niestandardowe punkty końcowe, wiadomości tylko są dostarczane do wbudowany punkt końcowy, jeśli nie pasują do żadnych reguł. W celu dostarczenia komunikatu do endpoint wbudowane i niestandardowe punkty końcowe, Dodaj trasę, która wysyła komunikaty do endpoint zdarzenia.
+
+## <a name="reading-data-that-has-been-routed"></a>Odczyt danych, który został przesłany
+Można skonfigurować trasę, postępując zgodnie z dokumentem [samouczek](https://docs.microsoft.com/azure/iot-hub/tutorial-routing).
+
+Użyj następujących samouczków dowiesz się, jak odczytać wiadomość z punktu końcowego.
+
+* Odczytywanie z [wbudowanych-endpoint](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-node)
+* Odczytywanie z [magazynu obiektów Blob](https://docs.microsoft.com/azure/storage/blobs/storage-blob-event-quickstart)
+* Odczytywanie z [usługi Event Hubs](https://docs.microsoft.com/azure/event-hubs/event-hubs-dotnet-standard-getstarted-send)
+* Odczytywanie z [kolejki usługi Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-dotnet-get-started-with-queues)
+* Odczytywanie [tematy usługi Service Bus](https://docs.microsoft.com/azure/service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions)
+
+## <a name="fallback-route"></a>Rezerwowy trasy
+Rezerwowy trasa wysyła wszystkie komunikaty, które nie spełniają warunki zapytania na dowolnym istniejące trasy do wbudowanych w — Event Hubs (**komunikaty/zdarzenia**), która jest zgodna z [usługi Event Hubs](https://docs.microsoft.com/azure/event-hubs/). Routing komunikatów jest włączona, po włączeniu możliwości rezerwowego trasy. Należy pamiętać, że po utworzeniu trasy dane przestaną docierać do wbudowanych-w-punktu końcowego, chyba że zostanie utworzona trasa tego punktu końcowego. Jeśli nie ma żadnych tras do wbudowanych-w-punktu końcowego i rezerwowego trasy jest włączona, tylko komunikaty, które nie są zgodne wszelkie warunki zapytania na trasach, będą wysyłane do wbudowanych-w-punktu końcowego. Również usunięcie wszystkich istniejących tras rezerwowego trasy musi mieć możliwość odbierania wszystkie dane w wbudowanych-w-punkcie końcowym. 
+
+Możesz włączyć/wyłączyć rezerwowego trasy w witrynie Azure Portal -> Routing komunikatów bloku. Można również użyć usługi Azure Resource Manager dla [FallbackRouteProperties](https://docs.microsoft.com/rest/api/iothub/iothubresource/createorupdate#fallbackrouteproperties) do użycia niestandardowego punktu końcowego dla trasy rezerwowego.
+
+## <a name="non-telemetry-events"></a>Zdarzenia inne niż telemetrii
+Oprócz danych telemetrycznych z urządzenia routing komunikatów umożliwia także wysyłanie zdarzeń zmiany bliźniaczych reprezentacji urządzeń i zdarzenia cyklu życia urządzenia. Na przykład, jeśli trasa jest tworzony ze źródłem danych, ustaw **zdarzenia zmiany w bliźniaczej reprezentacji urządzenia**, usługi IoT Hub wysyła wiadomości do punktu końcowego, które zawierają zmiany w bliźniaczej reprezentacji urządzenia. Podobnie jeśli trasa jest tworzony ze źródłem danych, ustaw **zdarzenia cyklu życia urządzenia**, usługi IoT Hub będzie wysyłać komunikat wskazujący, czy urządzenia został usunięty lub utworzony. 
+[Usługa IoT Hub integruje się również z usługi Azure Event Grid](iot-hub-event-grid.md) publikowanie zdarzenia urządzenia w celu obsługi integracji w czasie rzeczywistym i automatyzacji przepływów pracy na podstawie tych zdarzeń. Klucz [różnice między routing komunikatów i Event Grid](iot-hub-event-grid-routing-comparison.md) Aby dowiedzieć się, w której działa najlepiej dla danego scenariusza.
+
+## <a name="testing-routes"></a>Testowanie trasy
+Podczas tworzenia nowej trasy lub Edytuj istniejącą trasę, należy przetestować zapytania trasy z przykładowy komunikat. Można przetestować indywidualnych tras lub przetestuj wszystkie trasy tylko raz, a żadne komunikaty są kierowane do punktów końcowych podczas testu. Azure Portal, usługi Azure Resource Manager, programu Azure PowerShell i wiersza polecenia platformy Azure może służyć do testowania. Wyniki pomagają ustalić, czy przykładowy komunikat wynik kwerendy, komunikat jest niezgodna z zapytania lub nie przebiegu testu, ponieważ składnia komunikatu lub zapytanie przykładowe są niepoprawne. Aby dowiedzieć się więcej, zobacz [trasy testu](https://docs.microsoft.com/rest/api/iothub/iothubresource/testroute) i [Testuj wszystkie trasy](https://docs.microsoft.com/rest/api/iothub/iothubresource/testallroutes).
+
+## <a name="latency"></a>Opóźnienie
+Podczas rozsyłania komunikatów telemetrycznych przesyłanych z urządzenia do chmury za pomocą wbudowanych punktach końcowych po utworzeniu pierwszego trasy jest niewielki wzrost opóźnienia end-to-end.
+
+W większości przypadków Średni czas oczekiwania jest mniej niż 500 MS. Można monitorować za pomocą opóźnienie **routingu: komunikat o opóźnieniu komunikaty/zdarzenia** lub **d2c.endpoints.latency.builtIn.events** metryki usługi IoT Hub. Tworzenie lub usuwanie jakiejkolwiek trasy po pierwszy z nich nie ma wpływu na opóźnienie end-to-end.
+
+## <a name="monitoring-and-troubleshooting"></a>Monitorowanie i rozwiązywanie problemów
+IoT Hub udostępnia kilka routingu i punktu końcowego powiązane metryki, aby Przegląd kondycji Centrum i wysłane wiadomości. Możesz połączyć informacje z wielu metryk, aby odkryć ich główną przyczynę problemów. Na przykład użyj metryki **routingu: porzucone komunikaty telemetryczne** lub **d2c.telemetry.egress.dropped** do identyfikowania liczbę wiadomości, które zostały usunięte, gdy nie odpowiadają one zapytań na żadnej trasy a trasy rezerwowego zostało wyłączone. [Metryki usługi IoT Hub](https://docs.microsoft.com/azure/iot-hub/iot-hub-metrics) Wyświetla listę wszystkich metryk, które są domyślnie włączone dla usługi IoT Hub.
+
+Za pomocą **trasy** dzienników diagnostycznych w usłudze Azure Monitor [ustawień diagnostycznych](https://docs.microsoft.com/azure/iot-hub/iot-hub-monitor-resource-health), możesz śledzi błędy podczas oceny routingu zapytania i punktu końcowego kondycji wyobrażenia Centrum IoT, na przykład gdy punkt końcowy nie istnieje. Te dzienniki diagnostyczne mogą być wysyłane do usługi Log Analytics, usługi Event Hubs lub usługi Azure Storage do niestandardowego przetwarzania.
+
 ## <a name="next-steps"></a>Kolejne kroki
-
-Aby uzyskać informacje dotyczące zestawów SDK, służy do wysyłania komunikatów urządzenie chmura, zobacz [Azure IoT SDKs][lnk-sdks].
-
-[Przewodników Szybki Start] [ lnk-get-started] dowiesz się, jak wysyłać komunikaty urządzenie chmura z symulowanych urządzeń. Aby uzyskać więcej informacji, zobacz [komunikaty urządzenia do chmury usługi IoT Hub procesu przy użyciu tras] [ lnk-d2c-tutorial] samouczka.
-
-[lnk-devguide-builtin]: iot-hub-devguide-messages-read-builtin.md
-[lnk-devguide-custom]: iot-hub-devguide-messages-read-custom.md
-[lnk-comparison]: iot-hub-compare-event-hubs.md
-[lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
-[lnk-get-started]: quickstart-send-telemetry-node.md
-
-[lnk-event-hubs]: http://azure.microsoft.com/documentation/services/event-hubs/
-[lnk-servicebus]: http://azure.microsoft.com/documentation/services/service-bus/
-[lnk-quotas]: iot-hub-devguide-quotas-throttling.md
-[lnk-sdks]: iot-hub-devguide-sdks.md
-[lnk-compatible-endpoint]: iot-hub-devguide-messages-read-builtin.md
-[lnk-device-properties]: iot-hub-devguide-identity-registry.md#device-identity-properties
-[lnk-devguide-security]: iot-hub-devguide-security.md
-[lnk-d2c-tutorial]: tutorial-routing.md
+* Aby dowiedzieć się, jak utworzyć trasy wiadomości, zobacz [komunikaty urządzenia do chmury usługi IoT Hub procesu przy użyciu tras](../iot-hub/tutorial-routing.md) samouczka.
+* [Przewodników Szybki Start](https://docs.microsoft.com/azure/iot-hub/quickstart-send-telemetry-node) dowiesz się, jak wysyłać komunikaty urządzenie chmura z symulowanych urządzeń.
+* Aby uzyskać informacje dotyczące zestawów SDK, służy do wysyłania komunikatów urządzenie chmura, zobacz [Azure IoT SDKs](../iot-hub/iot-hub-devguide-sdks.md).

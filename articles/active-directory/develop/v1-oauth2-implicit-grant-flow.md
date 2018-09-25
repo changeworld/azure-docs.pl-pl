@@ -13,21 +13,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 11/15/2016
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jmprieur
 ms.custom: aaddev
-ms.openlocfilehash: 22413684678cddc1a86f6acbe203b0041a4c6818
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
+ms.openlocfilehash: acdc3417643484fa98b16c4be1b83a44a8b73fc6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581583"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963003"
 ---
 # <a name="understanding-the-oauth2-implicit-grant-flow-in-azure-active-directory-ad"></a>Opis przepływu przyznawanie niejawne protokołu OAuth2 w usłudze Azure Active Directory (AD)
+
 Przyznawanie niejawne protokołu OAuth2 jest odpowiedzialne za są grant najdłuższy listę obawy związane z bezpieczeństwem w specyfikacji OAuth2. I jeszcze, to podejście implementowany przez ADAL JS i jeden, zaleca się podczas pisania aplikacji SPA. Co zapewnia? Jest przedmiotem wady i zalety: i jak okazuje się przyznawania niejawnego jest najlepszym rozwiązaniem, które można wykonywać w przypadku aplikacji korzystających z interfejsu API sieci Web, przy użyciu języka JavaScript w przeglądarce.
 
 ## <a name="what-is-the-oauth2-implicit-grant"></a>Przyznawanie niejawne protokołu OAuth2 co to jest?
+
 Quintessential [przyznawania kodu autoryzacji OAuth2](https://tools.ietf.org/html/rfc6749#section-1.3.1) jest autoryzację, który używa dwa oddzielne punkty końcowe. Punkt końcowy autoryzacji jest używany w fazie interakcji użytkownika, co skutkuje kod autoryzacji. Punkt końcowy tokenu jest następnie używany przez klienta kodu dla tokenu dostępu, a często także tokenu odświeżania do wymiany. Aplikacje sieci Web są wymagane do przedstawienia poświadczeń własnych aplikacji do punktu końcowego tokenu, tak, aby serwer autoryzacji można uwierzytelnić klienta.
 
 [Przyznawanie niejawne protokołu OAuth2](https://tools.ietf.org/html/rfc6749#section-1.3.2) jest wariant innych przydziałów autoryzacji. Umożliwia klienta w celu uzyskania tokenu dostępu (i id_token, korzystając z [OpenId Connect](http://openid.net/specs/openid-connect-core-1_0.html)) bezpośrednio z punktu końcowego autoryzacji bez nawiązywania kontaktu z punktu końcowego tokenu, ani uwierzytelniania klienta. Ten wariant zaprojektowano dla aplikacji uruchamianych w przeglądarce sieci Web oparte na języku JavaScript: w pierwotną specyfikację OAuth2 tokeny są zwracane w fragmentu identyfikatora URI. Który udostępnia tokenu usługi bits do kodu JavaScript w kliencie, ale gwarantuje, że nie będą uwzględniane w przekierowuje do serwera. Zwracanie tokenów za pośrednictwem przeglądarki przekierowuje bezpośrednio z punktu końcowego autoryzacji. Ma tę zaletę, eliminując wszelkie wymagania dotyczące wielu wywołań pochodzenia, które są niezbędne, jeśli wymagane jest wprowadzenie do kontaktowania się z punktu końcowego tokenu aplikacji JavaScript.
@@ -35,9 +37,10 @@ Quintessential [przyznawania kodu autoryzacji OAuth2](https://tools.ietf.org/htm
 Ważną cechą przyznawanie niejawne protokołu OAuth2 jest fakt, że takie przepływy tokenów odświeżania nigdy nie jest zwracana do klienta. Następna sekcja pokazuje, jak nie jest to konieczne, a w rzeczywistości wynosi problem z zabezpieczeniami.
 
 ## <a name="suitable-scenarios-for-the-oauth2-implicit-grant"></a>Odpowiednie scenariusze przyznawanie niejawne protokołu OAuth2
+
 Specyfikację OAuth2 deklaruje, że przyznawanie niejawne został zaprojektowany na włączyć agenta użytkownika aplikacji, to znaczy aplikacji JavaScript wykonywania w przeglądarce. Definiujące cechy charakterystyczne dla takich aplikacji jest, że kod JavaScript jest używany do uzyskiwania dostępu do zasobów serwera (zwykle internetowego interfejsu API) i w związku z tym aktualizowania interfejsu użytkownika aplikacji. Reakcji aplikacji, takich jak usługi Gmail lub programu Outlook Web Access: po wybraniu wiadomości ze skrzynki odbiorczej panel wizualizacji komunikatów zmian do wyświetlenia nowe zaznaczenie w pozostałej części strony pozostaje niezmieniona. Cecha ta jest w przeciwieństwie do tradycyjnych przekierowania aplikacji opartych na sieci Web, gdzie każdy interakcja użytkownika powoduje odświeżenie strony Cała strona i renderowania pełnej stronie w odpowiedzi na nowy serwer.
 
-Aplikacje jednostronicowe lub aplikacji jednostronicowych noszą nazwę aplikacji, które podejścia języku JavaScript do jego extreme: chodzi o to, że te aplikacje tylko obsługiwać początkowej strony HTML i JavaScript skojarzona z wszystkie kolejne interakcje prowadzone przez interfejs API sieci Web wywołania wykonywane przy użyciu języka JavaScript. Jednak podejścia hybrydowych, gdzie aplikacja jest przede wszystkim, oparte na odświeżenie strony, ale wykonuje okazjonalne wywołania JS, nie są niczym niezwykłym — dyskusję na temat użycia niejawny przepływ jest odpowiedni dla osób, także.
+Aplikacje, które podejścia języku JavaScript do jego extreme noszą nazwę jednej strony aplikacji lub aplikacji jednostronicowych. Chodzi o to, że te aplikacje tylko obsługiwać początkowej strony HTML i JavaScript skojarzona z wszystkie kolejne interakcje wykonania prowadzone przez wywołania interfejsu API sieci Web przy użyciu języka JavaScript. Jednak podejścia hybrydowych, gdzie aplikacja jest przede wszystkim, oparte na odświeżenie strony, ale wykonuje okazjonalne wywołania JS, nie są niczym niezwykłym — dyskusję na temat użycia niejawny przepływ jest odpowiedni dla osób, także.
 
 Aplikacje oparte na przekierowaniu, zwykle bezpieczne ich żądania za pomocą plików cookie, ale które podejście nie działa także dla aplikacji JavaScript. Pliki cookie działać wyłącznie względem domeny, do których one zostały wygenerowane, gdy wywołania języka JavaScript, mogą być kierowane do innych domen. W rzeczywistości, które często jest to możliwe: reakcji aplikacji, wywoływanie interfejsu API Microsoft Graph, interfejs API pakietu Office, interfejsu API platformy Azure — wszystkie znajdujące się poza domeną, w którym aplikacja jest obsługiwany. Rosnący trend dla aplikacji JavaScript jest nie wewnętrznej bazy danych, jednostki uzależnionej 100% na innej interfejsów API sieci Web, aby zaimplementować ich funkcji biznesowych.
 
@@ -55,6 +58,7 @@ Jednak aplikacji w języku JavaScript ma inny mechanizm dyspozycji odnowienia to
 Ten model umożliwia aplikacji JavaScript niezależnie odnowić tokenów dostępu, a nawet uzyskać nowe dla nowego interfejsu API (pod warunkiem, że użytkownik wyraził zgodę wcześniej dla nich. Umożliwia to uniknięcie dodano obciążeń, pobieranie, utrzymywania i chronienia artefaktu o wysokiej wartości, takich jak token odświeżania. Artefakt, który sprawia, że dyskretnej odnowienie jest możliwe, pliku cookie sesji usługi Azure AD jest zarządzany poza aplikacją. Inną zaletą tego podejścia jest użytkownikiem można wylogować się z usługi Azure AD przy użyciu dowolnej aplikacji zalogowali się do usługi Azure AD, uruchamiania we wszystkich kartach przeglądarki. Powoduje to usunięcie tego pliku cookie sesji usługi Azure AD i aplikacji JavaScript automatycznie spowoduje utratę możliwości odnowienia tokenów dla podpisanych się użytkownika.
 
 ## <a name="is-the-implicit-grant-suitable-for-my-app"></a>Przyznawanie niejawne nadaje się do mojej aplikacji?
+
 Przyznawanie niejawne przedstawia zagrożenia więcej niż inne przyznaje i obszarów, należy zwrócić uwagę na to dobrze udokumentowane. Na przykład [niewłaściwe korzystanie z tokenu dostępu do personifikacji właściciela zasobu w niejawny przepływ] [ OAuth2-Spec-Implicit-Misuse] i [zagadnienia dotyczące zabezpieczeń i OAuth 2.0 zagrożeń modelu] [ OAuth2-Threat-Model-And-Security-Implications]). Jednak wyższy profil ryzyka jest głównie fakt, że jest przeznaczona do umożliwiają aplikacjom, które są wykonywane active kodu, obsługiwane przez zasób zdalny do przeglądarki. Jeśli planowane jest architektura SPA ma żadnych składników wewnętrznej bazy danych lub zamierzane było wywołanie interfejsu API sieci Web, przy użyciu języka JavaScript, zalecane jest użycie niejawny przepływ dla tokenu.
 
 Jeśli aplikacja jest klient natywny, niejawny przepływ jest doskonałym rozwiązaniem. Brak pliku cookie sesji usługi Azure AD w kontekście klient natywny pozbawia aplikacji oznacza, że obsługi długotrwałych sesji. Oznacza to aplikacja wielokrotnie będzie monitował użytkownika podczas uzyskiwania tokenów dostępu dla nowych zasobów.
@@ -62,6 +66,7 @@ Jeśli aplikacja jest klient natywny, niejawny przepływ jest doskonałym rozwi�
 Jeśli tworzysz aplikację internetową, która obejmuje wewnętrznej bazy danych i korzystanie z interfejsu API z poziomu kodu zaplecza niejawny przepływ również nie jest dobrym rozwiązaniem. Inne przyznaje dają znacznie większe możliwości. Na przykład przyznanie poświadczenia klienta protokołu OAuth2 zapewnia możliwość uzyskiwania tokenów, które odzwierciedlają uprawnienia przypisane do aplikacji, w przeciwieństwie do delegacji użytkownika. Oznacza to, że klient ma możliwość utrzymywania programowy dostęp do zasobów, nawet gdy użytkownik nie jest aktywnie zaangażowane w sesji i tak dalej. Nie, ale takie przyznaje zapewniają wyższy gwarancje bezpieczeństwa. Na przykład tokeny dostępu nigdy nie przesyłania za pośrednictwem przeglądarki użytkownika, nie o podwyższonym ryzyku są zapisywane w historii przeglądania i tak dalej. Aplikacja kliencka można również wykonać silne uwierzytelnianie, gdy żądania tokenu.
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 * Aby uzyskać pełną listę zasobów dla deweloperów dla protokołów i autoryzacji OAuth2 podejmowania przepływów przez usługę Azure AD, w tym informacje dotyczą [— przewodnik dewelopera usługi Azure AD][AAD-Developers-Guide]
 * Zobacz [sposobu integrowania aplikacji z usługą Azure AD] [ ACOM-How-To-Integrate] dla głębokości dodatkowe na temat procesu integracji aplikacji.
 

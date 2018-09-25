@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 10/16/2017
 ms.author: glenga
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 9fe8b2cc09c7a08ab6d897a0fe1f1204d1903eca
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: dbb21e63a25d6e357287f2f91181f2326850a898
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44090867"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952855"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Optymalizuj wydajność i niezawodność usługi Azure Functions
 
@@ -73,6 +73,10 @@ Wykorzystaj środki obrony poprawiał dla składników, których używasz na pla
 ## <a name="scalability-best-practices"></a>Najlepsze rozwiązania w zakresie skalowalności
 
 Istnieje wiele czynników, mogących mieć wpływ na sposób skalować wystąpienia aplikacji funkcji. Szczegółowe informacje znajdują się w dokumentacji dotyczącej [funkcja skalowania](functions-scale.md).  Poniżej przedstawiono niektóre najlepsze rozwiązania zapewniające optymalne skalowalność aplikacji funkcji.
+
+### <a name="share-and-manage-connections"></a>Udostępnianie połączeń i zarządzanie nimi
+
+Ponowne używanie połączenia z zasobami zewnętrznymi, jeśli to możliwe.  Zobacz [sposób zarządzania połączeniami w usłudze Azure Functions](./manage-connections.md).
 
 ### <a name="dont-mix-test-and-production-code-in-the-same-function-app"></a>Nie można mieszać testowych i produkcyjnych kod w tej samej aplikacji funkcji
 

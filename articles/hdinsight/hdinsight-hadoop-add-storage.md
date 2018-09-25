@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 04/23/2018
 ms.author: jasonh
 ms.custom: H1Hack27Feb2017,hdinsightactive
-ms.openlocfilehash: 7d37a60ad3ae3bea8490006bdd35dc47d728b88e
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: bdf4c7527e2c0056b2de2321fbae280e9008cb1b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43103858"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46990677"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>Dodawanie kolejnych kont magazynu do HDInsight
 
@@ -58,7 +58,7 @@ __Wymagania dotyczące__:
 
 ## <a name="to-use-the-script"></a>Aby użyć skryptu
 
-Ten skrypt można używać z witryny Azure portal, programu Azure PowerShell lub interfejsu wiersza polecenia platformy Azure w wersji 1.0. Aby uzyskać więcej informacji, zobacz [HDInsight opartych na systemie Linux z Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) dokumentu.
+Ten skrypt może służyć z witryny Azure portal, programu Azure PowerShell lub interfejsu wiersza polecenia do klasycznego Azure. Aby uzyskać więcej informacji, zobacz [HDInsight opartych na systemie Linux z Dostosowywanie klastrów za pomocą akcji skryptu](hdinsight-hadoop-customize-cluster-linux.md#apply-a-script-action-to-a-running-cluster) dokumentu.
 
 > [!IMPORTANT]
 > Podczas korzystania z krokami opisanymi w dokumencie dostosowywania, aby zastosować ten skrypt należy użyć następujące informacje:
@@ -71,7 +71,7 @@ Ten skrypt można używać z witryny Azure portal, programu Azure PowerShell lub
 
 ### <a name="storage-accounts-not-displayed-in-azure-portal-or-tools"></a>Konta magazynu, które nie są wyświetlane w witrynie Azure portal lub narzędzi
 
-Podczas przeglądania klastra HDInsight w witrynie Azure portal, wybierając __kont magazynu__ wpis w __właściwości__ kont magazynu dodanego przez tę akcję skryptu nie są wyświetlane. Azure PowerShell i wiersza polecenia platformy Azure nie są wyświetlane dodatkowe konto magazynu albo.
+Podczas przeglądania klastra HDInsight w witrynie Azure portal, wybierając __kont magazynu__ wpis w __właściwości__ kont magazynu dodanego przez tę akcję skryptu nie są wyświetlane. Klasyczny interfejs wiersza polecenia platformy Azure i programu PowerShell Azure nie są wyświetlane dodatkowe konto magazynu albo.
 
 Informacje dotyczące magazynu nie jest wyświetlany, ponieważ skrypt modyfikuje tylko konfigurację core-site.xml klastra. Te informacje nie są używane podczas pobierania informacji klastra, za pomocą interfejsów API zarządzania platformy Azure.
 

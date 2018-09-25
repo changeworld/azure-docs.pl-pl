@@ -12,12 +12,12 @@ ms.author: josack
 ms.suite: sql
 ms.prod_service: sql-database
 ms.component: data-movement
-ms.openlocfilehash: 7cad09a3fc02d0c25f164f7e45974019ff9bbb71
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: b34aca8d8aaf9e2c7dbdd092e14a1ebe1e04963d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46367920"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46985823"
 ---
 # <a name="new-dba-in-the-cloud--managing-your-database-in-azure-sql-database"></a>Nowe DBA w chmurze — zarządzania bazą danych w usłudze Azure SQL Database
 
@@ -170,7 +170,7 @@ Expressroute umożliwia również serii maksymalnie 2 x limit przepustowości, z
 - [Przepływy pracy](../expressroute/expressroute-workflows.md)
 
 ### <a name="is-sql-database-compliant-with-any-regulatory-requirements-and-how-does-that-help-with-my-own-organizations-compliance"></a>Jest bazą danych SQL spełniają wszelkie wymagania prawne i jak, pomaga przy użyciu własnego organizacji zgodności?
-Baza danych SQL jest zgodna z szeroką gamę zachowania zgodności z przepisami prawnymi. Aby wyświetlić najnowszy zestaw zachowania zgodności prawnymi, które zostały spełnione, odwiedź stronę [Microsoft Trust Center](https://microsoft.com/en-us/trustcenter/compliance/complianceofferings) i przechodzenie do zachowania zgodności prawnymi, które są istotne dla Twojej organizacji, aby zobaczyć, jeśli baza danych SQL znajduje się w obszarze zgodnych usług systemu Azure. Należy pamiętać, że mimo że bazy danych SQL może być zakwalifikowany jako zgodnej usługi, go pomaga zgodności organizacji usługi, ale nie automatycznie gwarantuje on jest.
+Baza danych SQL jest zgodna z szeroką gamę zachowania zgodności z przepisami prawnymi. Aby wyświetlić najnowszy zestaw zachowania zgodności prawnymi, które zostały spełnione, odwiedź stronę [Microsoft Trust Center](https://microsoft.com/trustcenter/compliance/complianceofferings) i przechodzenie do zachowania zgodności prawnymi, które są istotne dla Twojej organizacji, aby zobaczyć, jeśli baza danych SQL znajduje się w obszarze zgodnych usług systemu Azure. Należy pamiętać, że mimo że bazy danych SQL może być zakwalifikowany jako zgodnej usługi, go pomaga zgodności organizacji usługi, ale nie automatycznie gwarantuje on jest.
 
 ## <a name="intelligent-database-monitoring-and-maintenance-after-migration"></a>Inteligentna baza danych monitorowania i konserwacji po migracji
 

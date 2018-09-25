@@ -8,12 +8,12 @@ ms.service: event-grid
 ms.topic: conceptual
 ms.date: 08/13/2018
 ms.author: babanisa
-ms.openlocfilehash: ce0e766a07fd19f523f1f35b9a3cbc865cfb8c71
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: 257f7cbd20d21903f4cf7daf68b5f185d0af10bc
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42054569"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965459"
 ---
 # <a name="event-grid-security-and-authentication"></a>Event Grid zabezpieczeń i uwierzytelniania 
 
@@ -39,7 +39,7 @@ Jeśli używasz dowolnego typu punktu końcowego, takie jak wyzwalacz HTTP na po
 
 2. **Uzgadnianie ValidationURL (ręczne uzgadnianie)**: W niektórych przypadkach, może nie mieć kontroli kodu źródłowego punktu końcowego, aby można było zaimplementować uzgadnianie ValidationCode na podstawie. Na przykład, jeśli używasz usługi innych firm (np. [Zapier](https://zapier.com) lub [IFTTT](https://ifttt.com/)), nie może być stanie odpowiedzieć programowo z powrotem kod sprawdzania poprawności. W związku z tym począwszy od wersji 2018-05-01-preview EventGrid obsługuje teraz uzgadniania ręcznej weryfikacji. W przypadku tworzenia subskrypcji zdarzeń za pomocą narzędzi zestawu SDK/korzystających z tego nowego wysyła EventGrid (2018-05-01-preview), wersja interfejsu API `validationUrl` właściwości (oprócz `validationCode` właściwości) jako część część danych zdarzeń sprawdzania poprawności subskrypcji. Aby ukończyć uzgadnianie, po prostu GET żądania na ten adres URL, za pomocą klienta REST lub przy użyciu przeglądarki sieci web. Adres URL podany sprawdzania poprawności jest prawidłowy tylko w przypadku około 10 minut. W tym czasie jest stan aprowizacji subskrypcji zdarzeń `AwaitingManualAction`. Jeśli nie wykonasz ręcznej weryfikacji w ciągu 10 minut, stanu aprowizacji jest równa `Failed`. Trzeba będzie ponownie Tworzenie subskrypcji zdarzeń, przed podjęciem próby wykonaj ponownie ręcznej weryfikacji.
 
-Ten mechanizm ręcznej weryfikacji jest w wersji zapoznawczej. Aby jej użyć, musisz zainstalować [rozszerzenie usługi Event Grid](/cli/azure/azure-cli-extensions-list) dla [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-azure-cli). Instalację można wykonać za pomocą polecenia `az extension add --name eventgrid`. Jeśli korzystasz z interfejsu API REST, upewnij się, że używasz wersji `api-version=2018-05-01-preview`.
+Ten mechanizm ręcznej weryfikacji jest w wersji zapoznawczej. Aby jej użyć, musisz zainstalować [rozszerzenie usługi Event Grid](/cli/azure/azure-cli-extensions-list) dla [interfejsu wiersza polecenia platformy Azure](/cli/azure/install-azure-cli). Instalację można wykonać za pomocą polecenia `az extension add --name eventgrid`. Jeśli korzystasz z interfejsu API REST, upewnij się, że używasz wersji `api-version=2018-05-01-preview`.
 
 ### <a name="validation-details"></a>Szczegóły sprawdzania poprawności
 

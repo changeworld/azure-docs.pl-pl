@@ -16,14 +16,18 @@ ms.workload: identity
 ms.date: 04/20/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: cd6cf2e94b032408fd6c3b298294d84837e102a6
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 4afd4ce5b8a0ab4c076ebc3c587605dfe1204b8a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024752"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46966388"
 ---
 # <a name="call-microsoft-graph-api-from-a-universal-windows-platform-application-xaml"></a>Wywołanie interfejsu API Microsoft Graph z poziomu aplikacji platformy uniwersalnej Windows (XAML)
+
+
+> [!div renderon="docs"]
+> [!INCLUDE [active-directory-develop-applies-v2-msal](../../../includes/active-directory-develop-applies-v2-msal.md)]
 
 W tym przewodniku wyjaśniono, jak żądania tokenu dostępu i następnie wywoływania interfejsu API programu Microsoft Graph natywnych aplikacji uniwersalnych platformy Windows (UWP). Przewodnik ma zastosowanie także do innych interfejsów API, które wymagają tokenów dostępu z punktu końcowego usługi Azure Active Directory w wersji 2.
 

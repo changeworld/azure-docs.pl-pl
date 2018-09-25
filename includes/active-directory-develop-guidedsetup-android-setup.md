@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 09/13/2018
 ms.author: andret
 ms.custom: include file
-ms.openlocfilehash: 2e23a15a6bff81f0b48b703e516de8a1a1820972
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 02b36d8f8c8c9be2532b440bd9858766e8b524ca
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46293558"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060331"
 ---
 ## <a name="set-up-your-project"></a>Konfigurowanie projektu
 
@@ -47,7 +47,7 @@ Czy chcesz zamiast tego Pobierz ten przykładowy projekt programu Android Studio
 <!--start-collapse-->
 ### <a name="about-this-package"></a>O tym pakiecie
 
-W poprzednim kodzie pakiet Biblioteka Microsoft Authentication Library. Biblioteka MSAL obsługuje wszystkie operacje tokenu, w tym pobieranie, buforowanie, odświeżanie i usuwanie.  Dostęp do interfejsów API chroniony przez platforma tożsamości firmy Microsoft, potrzebne są tokeny.
+W poprzednim kodzie pakiet Biblioteka Microsoft Authentication Library. Biblioteka MSAL obsługuje wszystkie operacje tokenu, w tym pobieranie, buforowanie, odświeżanie i usuwanie.  Dostęp do interfejsów API chroniony przez platforma tożsamości usługi Microsoft potrzebne są tokeny.
 <!--end-collapse-->
 
 ## <a name="create-the-apps-ui"></a>Tworzenie aplikacji interfejsu użytkownika

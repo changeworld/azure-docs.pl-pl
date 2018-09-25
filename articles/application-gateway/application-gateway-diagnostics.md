@@ -1,6 +1,6 @@
 ---
-title: Monitoruj dzienniki dostęp, Dzienniki wydajności kondycji zaplecza i metryki bramy aplikacji
-description: Dowiedz się, jak włączyć i zarządzać Dzienniki wydajności i dzienników dostępu bramy aplikacji
+title: Monitor uzyskiwanie dostępu do dzienników, Dzienniki wydajności, kondycja zaplecza i metryki dla usługi Application Gateway
+description: Dowiedz się, jak włączyć i zarządzać Dzienniki wydajności i uzyskiwanie dostępu do dzienników w usłudze Application Gateway
 services: application-gateway
 author: amitsriva
 manager: rossort
@@ -12,53 +12,53 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 6/20/2018
 ms.author: amitsriva
-ms.openlocfilehash: 256eac99feacc18a51e45c3f07cdceb7d687cacf
-ms.sourcegitcommit: 1438b7549c2d9bc2ace6a0a3e460ad4206bad423
+ms.openlocfilehash: 563194ea0b3e4bda2021c75c544d068f00d74ba7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/20/2018
-ms.locfileid: "36293625"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963836"
 ---
-# <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Kondycji zaplecza, dzienniki diagnostyczne i metryki bramy aplikacji
+# <a name="back-end-health-diagnostic-logs-and-metrics-for-application-gateway"></a>Kondycja zaplecza, dzienniki diagnostyczne i metryki dla usługi Application Gateway
 
-Korzystając z bramy aplikacji Azure, możesz monitorować zasobów w następujący sposób:
+Za pomocą usługi Azure Application Gateway, można monitorować zasoby w następujący sposób:
 
-* [Kondycja zaplecza](#back-end-health): bramy aplikacji umożliwia monitorowanie kondycji serwerów w puli zaplecza za pośrednictwem portalu Azure i przy użyciu programu PowerShell. Można również znaleźć kondycję pul zaplecza za pośrednictwem dzienników diagnostycznych wydajności.
+* [Kondycja zaplecza](#back-end-health): Usługa Application Gateway zapewnia możliwość monitorowania kondycji serwerów w puli zaplecza za pośrednictwem witryny Azure portal i za pomocą programu PowerShell. Można również znaleźć kondycję pul zaplecza za pomocą dzienników diagnostycznych wydajności.
 
-* [Dzienniki](#diagnostic-logging): dzienniki umożliwiają wydajność, dostępu i innych danych, które mają być zapisywane lub używane z zasobu do celów monitorowania.
+* [Dzienniki](#diagnostic-logging): dzienniki umożliwiają wydajności, dostępu i inne dane, które mają być zapisane lub używane z zasobu do celów monitorowania.
 
-* [Metryki](#metrics): bramy aplikacji ma obecnie siedem metryki, aby wyświetlić liczniki wydajności.
+* [Metryki](#metrics): Usługa Application Gateway ma obecnie siedem metryki, aby wyświetlić liczniki wydajności.
 
 ## <a name="back-end-health"></a>Kondycja zaplecza
 
-Brama aplikacji umożliwia monitorowanie kondycji poszczególnych członków pul zaplecza za pośrednictwem portalu, programu PowerShell i interfejsu wiersza polecenia (CLI). Możesz również znaleźć zagregowane kondycji podsumowania pul zaplecza za pośrednictwem dzienników diagnostycznych wydajności. 
+Usługa Application Gateway zapewnia możliwość monitorowania kondycji poszczególnych elementów członkowskich pul zaplecza za pośrednictwem portalu, programu PowerShell i interfejsu wiersza polecenia (CLI). Możesz również znaleźć kondycji zagregowane podsumowanie pule zaplecza za pomocą dzienników diagnostycznych wydajności. 
 
-Raport o kondycji zaplecza odzwierciedla dane wyjściowe do wystąpień zaplecza sondy kondycji bramy aplikacji. Podczas badania zakończy się pomyślnie i wewnętrznej mogą odbierać dane, jest on uznawany za dobrej kondycji. W przeciwnym razie jego jest określana jako zła.
+Raport o kondycji zaplecza odzwierciedla dane wyjściowe sondę kondycji bramy Application Gateway do wystąpień zaplecza. Podczas badania zakończy się pomyślnie i zaplecza mogą odbierać dane, jest uznawane za dobrej kondycji. W przeciwnym razie jego jest określana jako zła.
 
 > [!IMPORTANT]
-> Jeśli istnieje grupa zabezpieczeń sieci (NSG) w podsieci bramy aplikacji, otwórz zakresy portów 65503 65534 podsieci bramy aplikacji dla ruchu przychodzącego. Ten zakres portów jest wymagana do komunikacji z infrastrukturą systemu Azure. Są one zabezpieczone (zablokowane) z użyciem certyfikatów Azure. Bez prawidłowego certyfikatów jednostek zewnętrznych, w tym klientów w tych bramach będzie nie można zainicjować wszelkie zmiany w tych punktach końcowych.
+> Jeśli w podsieci bramy Application Gateway istnieje sieciowa grupa zabezpieczeń (NSG), otwórz zakresów portów 65503 65534 w podsieci bramy Application Gateway dla ruchu przychodzącego. Zakres tego portu jest wymagany do komunikacji infrastruktury platformy Azure. Są one zabezpieczone (zablokowane) z użyciem certyfikatów Azure. Bez prawidłowych certyfikatów podmioty zewnętrzne, w tym klienci tych bram, nie będzie można zainicjować wszelkie zmiany w tych punktach końcowych.
 
 
 ### <a name="view-back-end-health-through-the-portal"></a>Wyświetl kondycję zaplecza za pośrednictwem portalu
 
-W portalu wewnętrzną kondycji znajduje się automatycznie. Wybierz istniejącą bramę aplikacji **monitorowanie** > **kondycji zaplecza**. 
+W witrynie portal kondycja zaplecza znajduje się automatycznie. W istniejącej bramie aplikacji, wybierz **monitorowanie** > **kondycję wewnętrznej bazy danych**. 
 
-Każdy element członkowski w puli zaplecza znajduje się na tej stronie (czy jest ona karty Sieciowej, adresu IP lub FQDN). Nazwa puli zaplecza, portu, nazwy ustawienia HTTP zaplecza i stan kondycji są wyświetlane. Prawidłowe wartości stanu kondycji to **dobra kondycja**, **niezdrowego**, i **nieznany**.
+Każdy element członkowski w puli zaplecza znajduje się na tej stronie (czy jest kart Sieciowych, adresów IP lub nazwa FQDN). Nazwa puli zaplecza, portów, Nazwa ustawienia HTTP zaplecza i stan kondycji są wyświetlane. Prawidłowe wartości dla stanu kondycji **dobra kondycja**, **zła**, i **nieznany**.
 
 > [!NOTE]
-> Jeśli zostanie wyświetlony stan kondycji zaplecza **nieznany**, upewnij się, że dostęp do wewnętrznych nie jest blokowane przez reguły NSG, trasy zdefiniowane przez użytkownika (przez) lub niestandardowe DNS w sieci wirtualnej.
+> Jeśli zostanie wyświetlony stan kondycji zaplecza **nieznany**, upewnij się, że dostęp do zaplecza nie jest blokowany przez reguły sieciowej grupy zabezpieczeń, trasa zdefiniowana przez użytkownika (UDR) lub niestandardowego systemu DNS w sieci wirtualnej.
 
 ![Kondycja zaplecza][10]
 
 ### <a name="view-back-end-health-through-powershell"></a>Wyświetl kondycję zaplecza za pomocą programu PowerShell
 
-Poniższy kod programu PowerShell pokazano, jak wyświetlić kondycję zaplecza przy użyciu `Get-AzureRmApplicationGatewayBackendHealth` polecenia cmdlet:
+Następujący kod programu PowerShell pokazuje, jak wyświetlić kondycja zaplecza przy użyciu `Get-AzureRmApplicationGatewayBackendHealth` polecenia cmdlet:
 
 ```powershell
 Get-AzureRmApplicationGatewayBackendHealth -Name ApplicationGateway1 -ResourceGroupName Contoso
 ```
 
-### <a name="view-back-end-health-through-azure-cli-20"></a>Wyświetl kondycję zaplecza za pośrednictwem 2.0 interfejsu wiersza polecenia platformy Azure
+### <a name="view-back-end-health-through-azure-cli"></a>Wyświetl kondycję zaplecza za pośrednictwem wiersza polecenia platformy Azure
 
 ```azurecli
 az network application-gateway show-backend-health --resource-group AdatumAppGatewayRG --name AdatumAppGateway
@@ -95,93 +95,93 @@ Poniższy fragment kodu przedstawia przykład odpowiedzi:
 
 ## <a name="diagnostic-logging"></a>Dzienniki diagnostyczne
 
-Różne typy dzienników Azure umożliwia zarządzanie i rozwiązywanie problemów z bramy aplikacji. Niektóre z tych dzienników dostępne za pośrednictwem portalu. Wszystkie dzienniki można wyodrębnić z magazynu obiektów Blob platformy Azure i wyświetlane w różnych narzędzi, takich jak [analizy dzienników](../log-analytics/log-analytics-azure-networking-analytics.md), Excel i Power BI. Użytkownik może więcej informacji na temat różnych typów dzienników z poniższej listy:
+Różne typy dzienników platformy Azure umożliwia zarządzanie i rozwiązywanie problemów z bram application Gateway. Niektóre z tych dzienników są dostępne za pośrednictwem portalu. Wszystkie dzienniki można wyodrębnić z usługi Azure Blob storage i wyświetlane w różnych narzędzi, takich jak [usługi Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md), Excel i Power BI. Możesz dowiedzieć się więcej o różnych typach dzienniki z następującej listy:
 
-* **Dziennik aktywności**: można użyć [Dzienniki aktywności Azure](../monitoring-and-diagnostics/insights-debugging-with-events.md) (wcześniej znane jako dzienniki inspekcji i operacyjne dzienniki) aby wyświetlić wszystkie operacje, które są przesyłane do Twojej subskrypcji platformy Azure i ich stan. Wpisy dziennika aktywności są zbierane domyślnie i można je wyświetlić w portalu Azure.
-* **Dziennik dostępu**: ten dziennik służy do wyświetlania wzorce dostępu bramy aplikacji i analizowania ważne informacje, w tym adresu IP, żądanego adresu URL wywołującego, czas oczekiwania na odpowiedź, kod powrotny i bajtów i wylogowanie. Dziennik dostępu są gromadzone co 300 sekund. Ten dziennik zawiera jeden rekord dla każdego wystąpienia bramy aplikacji. Wystąpienie bramy aplikacji mogą zostać zidentyfikowane na podstawie właściwość instanceId.
-* **Dziennik wydajności**: ten dziennik służy do wyświetlania, jak działają wystąpieniach bramy aplikacji. Ten dziennik zawiera informacje o wydajności dla każdego wystąpienia, w tym całkowita liczba żądań obsłużonych, przepływność w bajtach, całkowita liczba żądań obsłużonych, liczba nieudanych żądań, a liczba wystąpień zaplecza dobrej kondycji i złej kondycji. Dziennik wydajności są zbierane co 60 sekund.
-* **Dziennik zapory**: ten dziennik służy do wyświetlania żądań, które są rejestrowane za pomocą wykrywania i zapobiegania tryb bramę aplikacji, który jest skonfigurowany z zapory aplikacji sieci web.
+* **Dziennik aktywności**: możesz użyć [Dzienniki aktywności platformy Azure](../monitoring-and-diagnostics/insights-debugging-with-events.md) (znanego wcześniej pod nazwą operacyjne dzienniki i dzienników inspekcji) aby wyświetlić wszystkie operacje, które są przesyłane do Twojej subskrypcji platformy Azure i ich stan. Wpisy dziennika aktywności są zbierane domyślnie i można je wyświetlać w witrynie Azure Portal.
+* **Dziennik dostępu**: ten dziennik służy do wyświetlania wzorce dostępu do bramy aplikacji i analizowania ważne informacje o IP obiektu wywołującego, żądany adres URL, opóźnienie odpowiedzi, kod powrotny i bajtów i pomniejszać. Dziennik dostępu są gromadzone co 300 sekund. Ten dziennik zawiera jeden rekord dla każdego wystąpienia bramy aplikacji. Wystąpienia bramy aplikacji można zidentyfikować za pomocą właściwości identyfikator wystąpienia.
+* **Dziennik wydajności**: ten dziennik służy do wyświetlania, jak działają wystąpień bramy Application Gateway. Ten dziennik zawiera informacje o wydajności dla każdego wystąpienia, łączna liczba żądań obsługiwanych, w tym przepływność w bajtach, łączna liczba żądań obsługiwana liczba żądań zakończonych niepowodzeniem, a liczba zdrowe i niezdrowe wystąpień zaplecza. Dziennik wydajności są zbierane co 60 sekund.
+* **Dziennik zapory**: ten dziennik służy do wyświetlania żądań, które są rejestrowane w trybie wykrywania i zapobiegania usługi application gateway, który jest skonfigurowany przy użyciu zapory aplikacji sieci web.
 
 > [!NOTE]
-> Dzienniki są dostępne tylko dla zasobów wdrożone w modelu wdrażania usługi Azure Resource Manager. Nie można używać dzienników zasobów w klasycznym modelu wdrażania. Aby lepiej zrozumieć dwa modele, zobacz [wdrożenia Understanding Resource Manager oraz wdrażania klasycznego](../azure-resource-manager/resource-manager-deployment-model.md) artykułu.
+> Dzienniki są dostępne tylko dla zasobów wdrożonych w modelu wdrażania usługi Azure Resource Manager. Nie można używać dzienników zasobów w klasycznym modelu wdrażania. W celu lepszego zrozumienia dwóch modeli, zobacz [wdrażania Understanding Resource Manager oraz wdrażania klasycznego](../azure-resource-manager/resource-manager-deployment-model.md) artykułu.
 
-Są trzy opcje do przechowywania dzienników:
+Masz trzy opcje przechowywania dzienników:
 
-* **Konto magazynu**: konta magazynu są najlepiej nadaje się do dzienników podczas dzienniki są przechowywane przez dłuższy czas i sprawdzić, w razie potrzeby.
-* **Centra zdarzeń**: Event hubs to doskonałe rozwiązanie dla integracji z innych informacji o zabezpieczeniach i narzędzi do zarządzania zdarzenia (SEIM) można pobrać alertów dotyczących zasobów.
-* **Zaloguj się Analytics**: analizy dzienników najlepiej nadaje się do ogólnego monitorowania w czasie rzeczywistym aplikacji lub analizowania trendów.
+* **Konto magazynu**: konta magazynu najlepiej sprawdzają się w przypadku dzienników przechowywanych przez dłuższy czas i przeglądanych w razie potrzeby.
+* **Event Hubs**: usługa Event Hubs to doskonałe rozwiązanie umożliwiające integrację z innymi narzędziami do zarządzania informacjami i zdarzeniami zabezpieczeń (SIEM, Security Information and Event Management), aby otrzymywać alerty dotyczące zasobów.
+* **Log Analytics**: usługa Log Analytics najlepiej nadaje się do ogólnego monitorowania aplikacji w czasie rzeczywistym lub przyglądania się trendom.
 
-### <a name="enable-logging-through-powershell"></a>Włącz rejestrowanie za pomocą programu PowerShell
+### <a name="enable-logging-through-powershell"></a>Włączanie rejestrowania przy użyciu programu PowerShell
 
-Rejestrowanie aktywności jest automatycznie włączona dla każdego zasobu usługi Resource Manager. Należy włączyć dostęp i rejestrowania w celu rozpoczęcia zbierania danych dostępne za pośrednictwem tych dzienników wydajności. Aby włączyć rejestrowanie, wykonaj następujące kroki:
+Rejestrowanie aktywności jest automatycznie włączone dla wszystkich zasobów usługi Resource Manager. Należy włączyć dostępu i logowania do rozpoczęcia zbierania danych dostępne za pośrednictwem tych dzienników wydajności. Aby włączyć rejestrowanie, wykonaj następujące kroki:
 
-1. Należy zwrócić uwagę identyfikatorów zasobów konta magazynu, w którym są przechowywane dane dziennika. Ta wartość ma postać: /subscriptions/\<subscriptionId\>/resourceGroups/\<Nazwa grupy zasobów\>/providers/Microsoft.Storage/storageAccounts/\<nazwy konta magazynu\>. Można użyć dowolnego konta magazynu w ramach subskrypcji. Azure portal umożliwia znalezienie tych informacji.
+1. Zanotuj identyfikator zasobu konta magazynu, w ramach którego są przechowywane dane dzienników. Ta wartość ma postać: /subscriptions/\<subscriptionId\>/resourceGroups/\<nazwy grupy zasobów\>/providers/Microsoft.Storage/storageAccounts/\<Nazwakontausługistorage\>. Użyć możesz dowolnego konta magazynu w ramach subskrypcji. Te informacje możesz znaleźć w witrynie Azure Portal.
 
     ![Portalu: identyfikator zasobu dla konta magazynu](./media/application-gateway-diagnostics/diagnostics1.png)
 
-2. Należy pamiętać, dla którego włączono rejestrowanie identyfikator zasobu bramy aplikacji. Ta wartość ma postać: /subscriptions/\<subscriptionId\>/resourceGroups/\<Nazwa grupy zasobów\>/providers/Microsoft.Network/applicationGateways/\<nazwa bramy aplikacji \>. Portal umożliwia znalezienie tych informacji.
+2. Należy pamiętać, dla której jest włączone rejestrowanie identyfikator zasobu bramy aplikacji. Ta wartość ma postać: /subscriptions/\<subscriptionId\>/resourceGroups/\<nazwy grupy zasobów\>/providers/Microsoft.Network/applicationGateways/\<nazwa bramy aplikacji \>. Te informacje możesz znaleźć w portalu.
 
-    ![Portalu: identyfikator zasobu bramy aplikacji](./media/application-gateway-diagnostics/diagnostics2.png)
+    ![Portal: identyfikator zasobu usługi application gateway](./media/application-gateway-diagnostics/diagnostics2.png)
 
-3. Za pomocą następującego polecenia cmdlet programu PowerShell, należy włączyć rejestrowanie diagnostyczne:
+3. Włącz rejestrowanie diagnostyczne przy użyciu następującego polecenia cmdlet programu PowerShell:
 
     ```powershell
     Set-AzureRmDiagnosticSetting  -ResourceId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Network/applicationGateways/<application gateway name> -StorageAccountId /subscriptions/<subscriptionId>/resourceGroups/<resource group name>/providers/Microsoft.Storage/storageAccounts/<storage account name> -Enabled $true     
     ```
     
 > [!TIP] 
->Dzienniki aktywności nie wymagają oddzielnego konta magazynu. Użycie magazynu dla dostępu do rejestrowania i wydajności wiąże opłaty za usługę.
+>Dzienniki aktywności nie wymagają oddzielnego konta magazynu. Użycie magazynu na potrzeby rejestrowania danych o dostępie i wydajności powoduje naliczenie opłat za usługę.
 
-### <a name="enable-logging-through-the-azure-portal"></a>Włącz rejestrowanie za pośrednictwem portalu Azure
+### <a name="enable-logging-through-the-azure-portal"></a>Włączanie rejestrowania za pośrednictwem witryny Azure Portal
 
-1. W portalu Azure Znajdź zasobu, a następnie kliknij przycisk **dzienniki diagnostyczne**.
+1. W witrynie Azure portal Znajdź zasób, a następnie kliknij przycisk **dzienniki diagnostyczne**.
 
-   Brama aplikacji dostępne są trzy dzienniki:
+   W usłudze Application Gateway dostępne są trzy dzienniki:
 
    * Dziennik dostępu
-   * Dziennika wydajności
+   * Dziennik wydajności
    * Dziennik zapory
 
-2. Aby rozpocząć, zbieranie danych, kliknij przycisk **Włącz diagnostykę**.
+2. Aby rozpocząć zbieranie danych, kliknij pozycję **Włącz diagnostykę**.
 
    ![Włączanie diagnostyki][1]
 
-3. **Ustawień diagnostycznych** blok zawiera ustawienia dla dzienników diagnostycznych. W tym przykładzie analizy dzienników są przechowywane dzienniki. Kliknij przycisk **Konfiguruj** w obszarze **analizy dzienników** do skonfigurowania swojego obszaru roboczego. Aby zapisać dzienników diagnostycznych, można użyć centra zdarzeń i konto magazynu.
+3. **Ustawień diagnostycznych** blok zawiera ustawienia dla dzienników diagnostycznych. W tym przykładzie usługi Log Analytics są przechowywane dzienniki. Kliknij przycisk **Konfiguruj** w obszarze **usługi Log Analytics** do skonfigurowania obszaru roboczego. Na potrzeby zapisywania dzienników diagnostycznych można także skorzystać z usługi Event Hubs i konta magazynu.
 
-   ![Uruchamia proces konfiguracji][2]
+   ![Uruchamianie procesu konfiguracji][2]
 
-4. Wybierz istniejący obszar roboczy analizy dzienników lub Utwórz nową. W tym przykładzie użyto jednego z istniejących.
+4. Wybierz istniejący obszar roboczy usługi Log Analytics lub Utwórz nową. W tym przykładzie użyto istniejącą grupę.
 
-   ![Opcje dla obszarów roboczych analizy dzienników][3]
+   ![Opcje dla obszarów roboczych usługi Log Analytics][3]
 
-5. Potwierdź ustawienia, a następnie kliknij przycisk **zapisać**.
+5. Potwierdź ustawienia, a następnie kliknij przycisk **Zapisz**.
 
-   ![Blok ustawień diagnostycznych z zaznaczenia][4]
+   ![Blok ustawień diagnostycznych przy użyciu opcji][4]
 
 ### <a name="activity-log"></a>Dziennik aktywności
 
-Domyślnie Azure generuje dziennik aktywności. Dzienniki są zachowywane przez 90 dni w magazynie Azure dzienniki zdarzeń. Dowiedz się więcej o tych dzienników, odczytując [wyświetlanie zdarzeń i dziennika aktywności](../monitoring-and-diagnostics/insights-debugging-with-events.md) artykułu.
+Domyślnie Azure generuje dziennik aktywności. Dzienniki są zachowywane przez 90 dni w magazynie Azure dzienniki zdarzeń. Dowiedz się więcej na temat tych dzienników, zapoznając [wyświetlanie zdarzeń i dzienników aktywności](../monitoring-and-diagnostics/insights-debugging-with-events.md) artykułu.
 
 ### <a name="access-log"></a>Dziennik dostępu
 
-Dziennik dostępu jest generowany tylko wtedy, gdy włączono na każde wystąpienie bramy aplikacji, zgodnie z opisem w poprzedniej procedurze. Dane są przechowywane w określonej po włączeniu rejestrowania konta magazynu. Każdy dostęp brama aplikacji jest rejestrowany w formacie JSON, jak pokazano w poniższym przykładzie:
+Dziennik dostępu jest generowany tylko wtedy, gdy włączono w każdym wystąpieniu bramy aplikacji, zgodnie z opisem w poprzednich krokach. Dane są przechowywane na koncie magazynu, który określiłeś, gdy włączono rejestrowanie. Każdy dostęp do usługi Application Gateway jest rejestrowany w formacie JSON, jak pokazano w poniższym przykładzie:
 
 
 |Wartość  |Opis  |
 |---------|---------|
-|instanceId     | Wystąpienie bramy aplikacji, który obsłużył żądanie.        |
+|instanceId     | Wystąpienia bramy aplikacji, który obsłużył żądanie.        |
 |clientIP     | Źródłowy adres IP dla żądania.        |
 |clientPort     | Port źródłowy dla żądania.       |
 |HttpMethod     | Metoda HTTP używana przez żądanie.       |
 |requestUri     | Identyfikator URI odebrane żądanie.        |
-|RequestQuery     | **Serwer routingu**: wystąpienie puli zaplecza, którego wysłano żądanie.</br>**X-AzureApplicationGateway-dziennika-ID**: Identyfikator korelacji użytej w żądaniu. Może służyć do rozwiązywania problemów ruchu na serwerach wewnętrznych. </br>**Stan serwera**: kod odpowiedzi HTTP o bramy aplikacji otrzymanych od wewnętrznej.       |
-|UserAgent     | Agent użytkownika z nagłówka żądania HTTP.        |
-|httpStatus     | Kod stanu HTTP zwrócona do klienta z bramy aplikacji.       |
-|Wersja_http     | Wersja protokołu HTTP żądania.        |
-|ReceivedBytes     | Rozmiar pakietów otrzymanych w bajtach.        |
-|SentBytes| Rozmiar pakietu wysłane w bajtach.|
-|Właściwość timeTaken| Długość czas (w milisekundach) przetwarzania żądania i odpowiedzi mają być wysyłane. To jest obliczany jako wartość interwału od czasu, gdy brama aplikacji w odbiera pierwszy bajt żądania HTTP do czasu podczas wysyłania zakończenie operacji w odpowiedzi. Należy pamiętać, że pole Time-Taken zwykle zawiera godzinę, o której żądanie i odpowiedź pakiety są przesyłane przez sieć. |
-|SSL| Czy komunikacji z pul zaplecza używać protokołu SSL. Prawidłowe wartości to on i off.|
+|RequestQuery     | **Serwer routingu**: wystąpienie puli zaplecza, które zostało wysłane żądanie.</br>**X-AzureApplicationGateway-LOG-ID**: Identyfikator korelacji użyta dla żądania. Może służyć do rozwiązywania problemów ruch na serwerach zaplecza. </br>**Stan serwera**: kod odpowiedzi HTTP, odebrania przez bramę aplikacji z zaplecza.       |
+|UserAgent     | Agent użytkownika w nagłówku żądania HTTP.        |
+|httpStatus     | Kod stanu HTTP zwracany do klienta z bramy aplikacji.       |
+|httpVersion     | Wersja protokołu HTTP żądania.        |
+|ReceivedBytes     | Rozmiar pakietu odebranych w bajtach.        |
+|SentBytes| Rozmiar pakietów wysyłanych w bajtach.|
+|Właściwość timeTaken| Długość czasu (w milisekundach) potrzebny do przetworzenia żądania i odpowiedzi przez punkt końcowy do wysłania. To jest obliczana jako interwału od czasu, gdy usługa Application Gateway odbiera pierwszy bajt żądania HTTP do chwili, gdy odpowiedź wysyłania zakończy operację. Należy zauważyć, że pole Time-Taken zawiera zwykle czas żądania i odpowiedzi pakiety są przesyłane przez sieć. |
+|Włączono| Czy komunikacji z pul zaplecza używany protokół SSL. Prawidłowe wartości to włączać i wyłączać.|
 ```json
 {
     "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/PEERINGTEST/PROVIDERS/MICROSOFT.NETWORK/APPLICATIONGATEWAYS/{applicationGatewayName}",
@@ -206,20 +206,20 @@ Dziennik dostępu jest generowany tylko wtedy, gdy włączono na każde wystąpi
 }
 ```
 
-### <a name="performance-log"></a>Dziennika wydajności
+### <a name="performance-log"></a>Dziennik wydajności
 
-Dziennik wydajności jest generowany tylko wtedy, gdy włączono na każde wystąpienie bramy aplikacji, zgodnie z opisem w poprzedniej procedurze. Dane są przechowywane w określonej po włączeniu rejestrowania konta magazynu. Dane dzienników wydajności jest generowana w 1-minutowych interwałach. Rejestrowane są następujące dane:
+Dziennik wydajności jest generowany tylko wtedy, gdy została włączona w każdym wystąpieniu bramy aplikacji, zgodnie z opisem w poprzednich krokach. Dane są przechowywane na koncie magazynu, który określiłeś, gdy włączono rejestrowanie. Dane dziennika wydajności są generowane w 1-minutowych interwałach. Rejestrowane są następujące dane:
 
 
 |Wartość  |Opis  |
 |---------|---------|
-|instanceId     |  Dla wydajności, które dane są generowane wystąpienia bramy aplikacji. Brama aplikacji w wielu wystąpień jest jeden wiersz dla każdego wystąpienia.        |
-|healthyHostCount     | Liczba hostów dobrej kondycji w puli zaplecza.        |
+|instanceId     |  Dla wydajności, które dane są generowane wystąpienia bramy aplikacji. Dla bramy aplikacji z wieloma wystąpieniami ma jeden wiersz dla każdego wystąpienia.        |
+|healthyHostCount     | Liczba hosty o dobrej kondycji w puli zaplecza.        |
 |unHealthyHostCount     | Liczba hostów złej kondycji w puli zaplecza.        |
-|RequestCount     | Liczba żądań obsłużonych.        |
-|opóźnienie | Czas oczekiwania (w milisekundach) żądań z wystąpienia zaplecza, która służy do żądania. |
+|RequestCount     | Liczba żądań, które są obsługiwane.        |
+|opóźnienie | Czas oczekiwania (w milisekundach) dla żądań z wystąpienia do zaplecza, która służy do żądania. |
 |failedRequestCount| Liczba żądań zakończonych niepowodzeniem.|
-|Przepływność| Średnia przepustowość od czasu ostatniego dziennika, mierzony w bajtach na sekundę.|
+|Przepływność| Średnia przepływność od czasu ostatniego dziennika, mierzone w bajtach na sekundę.|
 
 ```json
 {
@@ -241,29 +241,29 @@ Dziennik wydajności jest generowany tylko wtedy, gdy włączono na każde wyst�
 ```
 
 > [!NOTE]
-> Czas oczekiwania jest obliczana na podstawie czasu, po odebraniu pierwszy bajt żądania HTTP do momentu wysłania ostatniego bajtu odpowiedzi HTTP. Jest to suma czasu przetwarzania bramy aplikacji oraz koszty sieci wewnętrznej, a także czas, jaki wewnętrznej potrzebny do przetwarzania żądania.
+> Czas oczekiwania jest obliczany od momentu, gdy odbiera pierwszy bajt żądania HTTP do chwili, gdy ostatni bajt odpowiedzi HTTP są wysyłane. Jest to suma czasu przetwarzania Application Gateway plus koszt sieci wewnętrznej, a także czas zaplecza przyjmuje przetwarzania żądania.
 
 ### <a name="firewall-log"></a>Dziennik zapory
 
-Dziennik zapory jest generowany tylko wtedy, gdy włączono dla każdej bramy aplikacji, zgodnie z opisem w poprzedniej procedurze. Ten dziennik wymaga również, czy Zapora aplikacji sieci web jest skonfigurowany dla bramy aplikacji. Dane są przechowywane w określonej po włączeniu rejestrowania konta magazynu. Rejestrowane są następujące dane:
+Dziennik zapory jest generowany tylko wtedy, gdy włączono dla każdej bramy aplikacji, zgodnie z opisem w poprzednich krokach. Ten dziennik wymaga również, że Zapora aplikacji sieci web jest skonfigurowany w bramie aplikacji. Dane są przechowywane na koncie magazynu, który określiłeś, gdy włączono rejestrowanie. Rejestrowane są następujące dane:
 
 
 |Wartość  |Opis  |
 |---------|---------|
-|instanceId     | Zapory, które dane są generowane wystąpienia bramy aplikacji. Brama aplikacji w wielu wystąpień jest jeden wiersz dla każdego wystąpienia.         |
+|instanceId     | Zapory, które dane są generowane wystąpienia bramy aplikacji. Dla bramy aplikacji z wieloma wystąpieniami ma jeden wiersz dla każdego wystąpienia.         |
 |clientIp     |   Źródłowy adres IP dla żądania.      |
 |clientPort     |  Port źródłowy dla żądania.       |
 |requestUri     | Adres URL odebrane żądanie.       |
 |ruleSetType     | Typ zestawu reguł. Dostępne wartości to OWASP.        |
 |ruleSetVersion     | Wersja używanego zestawu reguł. Dostępne wartości to 2.2.9 i 3.0.     |
-|ruleId     | Identyfikator reguły wyzwalająca zdarzenia.        |
-|message     | Przyjazny komunikat wyzwalająca zdarzenia. Bardziej szczegółowe informacje znajdują się w sekcji szczegółów.        |
-|action     |  Działania podjęte w żądaniu. Dostępne wartości to zablokowany, a dozwolone.      |
-|witryna     | Witryna, dla którego wygenerowano dziennika. Obecnie tylko Global jest na liście, ponieważ reguły są globalne.|
-|szczegóły     | Szczegóły wyzwalająca zdarzenia.        |
+|ruleId     | Identyfikator reguły wyzwalającą zdarzenie.        |
+|message     | Przyjazny dla użytkownika komunikat wyzwalająca zdarzenia. Szczegółowe informacje znajdują się w sekcji szczegółów.        |
+|akcja     |  Nie wykonano akcji na żądanie. Dostępne wartości są zablokowane i dozwolone.      |
+|witryna     | Witryna, dla której został wygenerowany dziennik. Obecnie tylko globalne jest wyświetlany, ponieważ reguły są globalne.|
+|szczegóły     | Szczegółowe informacje o zdarzeniu wyzwalającym.        |
 |details.Message     | Opis reguły.        |
-|details.Data     | Znaleziono żądania, które pasowało reguły określone dane.         |
-|details.File     | Plik konfiguracji zawiera reguły.        |
+|details.Data     | Odnaleziony w żądaniu, który jest zgodny z reguły określonych danych.         |
+|details.File     | Plik konfiguracji, który zawierał reguły.        |
 |details.Line     | Numer wiersza w pliku konfiguracji, który wywołał zdarzenie.       |
 
 ```json
@@ -296,88 +296,92 @@ Dziennik zapory jest generowany tylko wtedy, gdy włączono dla każdej bramy ap
 
 ### <a name="view-and-analyze-the-activity-log"></a>Wyświetlanie i analizowanie dziennika aktywności
 
-Można wyświetlać i analizować dane dzienników działania przy użyciu dowolnej z następujących metod:
+Dane dziennika aktywności można wyświetlać i analizować przy użyciu dowolnej z następujących metod:
 
-* **Narzędzia Azure**: pobieranie informacji z dziennika aktywności za pomocą programu Azure PowerShell, interfejsu wiersza polecenia Azure, interfejsu API REST Azure lub portalu Azure. Instrukcje krok po kroku dla każdej metody wyszczególnione w [operacji działania za pomocą Menedżera zasobów](../azure-resource-manager/resource-group-audit.md) artykułu.
-* **Power BI**: Jeśli nie masz jeszcze [usługi Power BI](https://powerbi.microsoft.com/pricing) konta, możesz spróbować ją bezpłatnie. Za pomocą [Dzienniki aktywności Azure zawartości pakietu dla usługi Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/), można analizować danych za pomocą wstępnie skonfigurowanych pulpity nawigacyjne, które można użyć jako jest lub dostosować je.
+* **Narzędzia platformy Azure**: pobierz informacje z dziennika aktywności przy użyciu programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure, interfejsu API REST platformy Azure lub witryny Azure Portal. Instrukcje krok po kroku dla każdej metody są szczegółowo opisane w artykule [Activity operations with Resource Manager (Operacje działań przy użyciu usługi Resource Manager)](../azure-resource-manager/resource-group-audit.md).
+* **Usługa Power BI**: jeśli nie masz jeszcze konta usługi [Power BI](https://powerbi.microsoft.com/pricing), możesz ją wypróbować bezpłatnie. Korzystając z [pakietu zawartości dzienników aktywności platformy Azure dla usługi Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-content-pack-azure-audit-logs/), możesz analizować dane przy użyciu wstępnie skonfigurowanych pulpitów nawigacyjnych, których możesz używać bez zmian lub po dostosowaniu.
 
-### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>Wyświetlanie i analizowanie dostępu, wydajności i dzienniki zapory
+### <a name="view-and-analyze-the-access-performance-and-firewall-logs"></a>Wyświetlanie i analizowanie dostępu, wydajność i dzienniki zapory
 
-Azure [analizy dzienników](../log-analytics/log-analytics-azure-networking-analytics.md) może zbierać pliki dziennika zdarzeń i liczników z konta magazynu obiektów Blob. Obejmuje on wizualizacji oraz możliwości wyszukiwania zaawansowanego do analizowania dzienników.
+Azure [usługi Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md) może zbierać pliki liczników i dziennik zdarzeń z konta usługi Blob storage. Obejmuje ona wizualizacje oraz zaawansowane możliwości wyszukiwania na potrzeby analizowania dzienników.
 
-Można również nawiązać połączenia z kontem magazynu i pobrać JSON wpisów dziennika dla dzienników dostępu i wydajności. Po pobraniu pliki w formacie JSON można przekonwertować je do pliku CSV i wyświetlić je w programie Excel, usłudze Power BI lub innych narzędzi wizualizacji danych.
+Ponadto możesz połączyć się z kontem magazynu i pobrać wpisy dziennika JSON dotyczące dostępu i wydajności. Po pobraniu plików JSON możesz je przekonwertować do formatu CSV i wyświetlać w programie Excel, usłudze Power BI lub innym narzędziu do wizualizacji danych.
 
 > [!TIP]
-> Jeśli znasz podstawowe koncepcje zmiany wartości stałych i zmiennych w języku C# i Visual Studio, możesz użyć [dziennika narzędzia konwertera](https://github.com/Azure-Samples/networking-dotnet-log-converter) dostępne w serwisie GitHub.
+> Jeśli znasz program Visual Studio oraz podstawowe pojęcia dotyczące zmiany wartości stałych i zmiennych w języku C#, możesz skorzystać z [konwerterów dzienników](https://github.com/Azure-Samples/networking-dotnet-log-converter) dostępnych w witrynie GitHub.
 > 
 > 
+
+#### <a name="analyzing-access-logs-through-goaccess"></a>Analizowanie dzienników dostępu za pośrednictwem GoAccess
+
+Opublikowane dotychczas szablonu usługi Resource Manager, która jest instalowana i uruchamiana popularnej [GoAccess](https://goaccess.io/) dziennik analizatora, aby uzyskać dostęp do dzienników usługi Application Gateway. GoAccess udostępnia cenne statystyki ruch HTTP, takie jak unikatowych osób odwiedzających, żądane pliki, hosty, systemy operacyjne, przeglądarki, kody stanu HTTP i nie tylko. Aby uzyskać więcej informacji, zobacz [pliku Readme w folderu szablonu usługi Resource Manager w usłudze GitHub](https://aka.ms/appgwgoaccessreadme).
 
 ## <a name="metrics"></a>Metryki
 
-Metryki są funkcją dla niektórych zasobów platformy Azure, w którym liczniki wydajności można przeglądać w portalu. Brama aplikacji dostępne są następujące metryki:
+Metryki są funkcją dla niektórych zasobów platformy Azure, w którym można wyświetlać liczniki wydajności w portalu. W usłudze Application Gateway dostępne są następujące metryki:
 
 - **Bieżąca liczba połączeń**
-- **Żądań zakończonych niepowodzeniem**
-- **Liczba hosta dobrej kondycji**
+- **Żądania zakończone niepowodzeniem**
+- **Liczba hostów w dobrej kondycji**
 
-   Można filtrować według poszczególnych puli wewnętrznej bazy danych do wyświetlenia w puli zaplecza określonych dobrej kondycji/zła hostów.
+   Można filtrować według poszczególnych puli wewnętrznej bazy danych do wyświetlenia hostów w dobrej kondycji/złej kondycji w puli zaplecza określone.
 
 
 - **Stan odpowiedzi**
 
-   Dystrybucji kod stanu odpowiedzi można następnie podzielone do wyświetlenia odpowiedzi na 2xx, 3xx 4xx i 5xx kategorii.
+   Dystrybucja kodów stanu odpowiedzi może następnie podzielone do wyświetlania odpowiedzi w 2xx, 3xx, 4xx i 5xx kategorii.
 
 - **Przepływność**
-- **Całkowita liczba żądań**
-- **Zła liczba hosta**
+- **Łączna liczba żądań**
+- **Liczba hostów w złej kondycji**
 
-   Można filtrować według poszczególnych puli wewnętrznej bazy danych do wyświetlenia w puli zaplecza określonych dobrej kondycji/zła hostów.
+   Można filtrować według poszczególnych puli wewnętrznej bazy danych do wyświetlenia hostów w dobrej kondycji/złej kondycji w puli zaplecza określone.
 
-Przejdź do bramy aplikacji w obszarze **monitorowanie** kliknij **metryki**. Zaznacz, aby wyświetlić dostępne wartości **METRYKA** listy rozwijanej.
+Przejdź do bramy aplikacji w obszarze **monitorowanie** kliknij **metryki**. Zaznacz, aby wyświetlić dostępne wartości **METRYKI** listy rozwijanej.
 
-Na poniższej ilustracji Zobacz przykład z trzech metryki wyświetlane w ciągu ostatnich 30 minut:
+Na poniższej ilustracji możesz zobaczyć przykład, za pomocą trzech metryk dla ostatnich 30 minut:
 
-[![](media/application-gateway-diagnostics/figure5.png "Metryki widoku")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
+[![](media/application-gateway-diagnostics/figure5.png "Wyświetl metryki")](media/application-gateway-diagnostics/figure5-lb.png#lightbox)
 
-Aby wyświetlić bieżącą listę metryki, zobacz [obsługiwane metryki z monitorem Azure](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
+Aby wyświetlić bieżącą listę metryk, zobacz [metryki obsługiwane z usługą Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md).
 
 ### <a name="alert-rules"></a>Reguły alertów
 
-Można uruchomić reguły alertów w oparciu metryki dla zasobu. Na przykład alert można wywołać elementu webhook lub wiadomości e-mail administratora, jeśli przepływność bramy aplikacji jest powyżej, poniżej lub w wartości progowej przez określony czas.
+Można uruchomić reguły alertów w oparciu o metryki dla zasobu. Na przykład alert może wywoływania elementu webhook lub wiadomości e-mail administratora, jeśli przepływność bramy application gateway jest powyżej, poniżej lub w wartości progowej przez określony okres.
 
-Poniższy przykład przeprowadzi Cię przez proces tworzenia reguły alertu, który wysyła wiadomość e-mail do administratora po naruszeń przepływność a próg:
+Poniższy przykład przeprowadzi Cię przez tworzenie reguły alertu, który wysyła wiadomość e-mail do administratora po naruszeń przepływności próg:
 
-1. Kliknij przycisk **Dodaj alert metryki** otworzyć **Dodaj regułę** bloku. Zapewnia także łączność tego bloku z bloku metryki.
+1. Kliknij przycisk **Dodaj alert dotyczący metryki** otworzyć **Dodaj regułę** bloku. Możesz również połączyć tego bloku, w bloku metryk.
 
-   ![Przycisk "Dodaj metryki alert"][6]
+   ![Przycisk "Dodaj alert dotyczący metryki"][6]
 
-2. Na **Dodaj regułę** bloku, wypełnij nazwę warunku, powiadom sekcje i kliknij przycisk **OK**.
+2. Na **Dodaj regułę** bloku, wypełnij nazwę warunku sekcji Powiadom i kliknij przycisk **OK**.
 
-   * W **warunku** selektora, wybierz jedną z czterech wartości: **większe**, **większy lub równy**, **mniej niż**, lub **Mniejsze niż lub równe**.
+   * W **warunek** selektor, wybierz jedną z czterech wartości: **większa**, **większy lub równy**, **mniej niż**, lub **Mniejsze niż lub równe**.
 
-   * W **okres** selektora, wybierz okres od 5 do sześciu godzin.
+   * W **okres** selektor, wybierz okres, w ciągu pięciu minut do 6 godzin.
 
-   * W przypadku wybrania **E-mail właściciele, współautorzy i czytelnicy**, wiadomości e-mail może być dynamiczny oparta na użytkownikach, którzy mają dostęp do tego zasobu. W przeciwnym razie możesz podać rozdzielana przecinkami lista użytkowników w **email(s) dodatkowe administratora** pole.
+   * Jeśli wybierzesz **właściciele, współautorzy i czytelnicy poczty E-mail**, wiadomości e-mail może być dynamiczny na podstawie użytkowników, którzy mają dostęp do tego zasobu. W przeciwnym razie możesz podać listę rozdzielanych przecinkami użytkowników w **email(s) dodatkowego administratora** pole.
 
-   ![Dodaj regułę bloku][7]
+   ![Dodawanie bloku reguły][7]
 
-W przypadku naruszenia progu dociera do wiadomości e-mail, który jest podobny do przedstawionego na poniższej ilustracji:
+W przypadku włamania się progu, zostanie odebrana wiadomość e-mail, który jest podobny do przedstawionego na poniższym obrazie:
 
-![Wiadomości e-mail w przypadku naruszenia progu][8]
+![Adres e-mail naruszenia progu][8]
 
-Po utworzeniu metryki alert zostanie wyświetlona lista alertów. Zapewnia przegląd wszystkich reguł alertów.
+Po utworzeniu alertu dotyczącego metryki, zostanie wyświetlona lista alertów. Zapewnia przegląd wszystkich reguł alertów.
 
-![Lista alertów i reguł][9]
+![Lista reguł i alertów][9]
 
-Aby dowiedzieć się więcej na temat powiadomień o alertach, zobacz [otrzymywać powiadomienia o alertach](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
+Aby dowiedzieć się więcej na temat powiadomień o alertach, zobacz [otrzymywanie powiadomień o alertach](../monitoring-and-diagnostics/insights-receive-alert-notifications.md).
 
-Aby dowiedzieć się więcej o elementów webhook i sposobie ich użycia z alertami, odwiedź stronę [skonfigurować elementu webhook na alert metryki Azure](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
+Aby dowiedzieć się więcej na temat elementów webhook i jak ich używać z alertami, odwiedź stronę [Konfigurowanie elementu webhook dla alertu dotyczącego metryki Azure](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Wizualizuj w dziennikach zdarzeń i liczników przy użyciu [analizy dzienników](../log-analytics/log-analytics-azure-networking-analytics.md).
-* [Wizualizuj dziennik aktywności platformy Azure z usługi Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) wpis w blogu.
-* [Przeglądać i analizować Dzienniki aktywności platformy Azure w usłudze Power BI i nie tylko](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) wpis w blogu.
+* Wizualizuj dzienniki zdarzeń i liczników przy użyciu [usługi Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md).
+* [Wizualizuj dziennik aktywności platformy Azure z usługą Power BI](http://blogs.msdn.com/b/powerbi/archive/2015/09/30/monitor-azure-audit-logs-with-power-bi.aspx) wpis w blogu.
+* [Wyświetlanie i analizowanie dzienników aktywności platformy Azure w usłudze Power BI i nie tylko](https://azure.microsoft.com/blog/analyze-azure-audit-logs-in-powerbi-more/) wpis w blogu.
 
 [1]: ./media/application-gateway-diagnostics/figure1.png
 [2]: ./media/application-gateway-diagnostics/figure2.png

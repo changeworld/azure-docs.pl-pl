@@ -19,7 +19,7 @@ Wykonaj następujące kroki, aby zainstalować i skonfigurować narzędzie `kube
 > 
 
 ### <a name="install-kubectl"></a>Instalowanie narzędzia kubectl
-Jednym ze sposobów instalacji tego narzędzia jest użycie polecenia `az acs kubernetes install-cli` interfejsu wiersza polecenia platformy Azure 2.0. Upewnij się, że aby uruchomić to polecenie, użytkownik [zainstalowane](/cli/azure/install-az-cli2) najnowsze Azure CLI 2.0 i zalogowany do konta platformy Azure (`az login`).
+Jednym ze sposobów instalacji tego narzędzia jest użycie `az acs kubernetes install-cli` polecenia wiersza polecenia platformy Azure. Uruchom następujące polecenie, upewnij się, że możesz [zainstalowane](/cli/azure/install-az-cli2) najnowszą wersję interfejsu wiersza polecenia platformy Azure i jest zalogowany na koncie platformy Azure (`az login`).
 
 ```azurecli
 # Linux or macOS

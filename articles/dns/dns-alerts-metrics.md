@@ -14,19 +14,19 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/17/2018
 ms.author: victorh
-ms.openlocfilehash: 17541cdc0fd017cf762c4af55e0a6be25dead9f1
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: de29c24556522abeaff8d942edc027c7444c3ed3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171868"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46965029"
 ---
 # <a name="azure-dns-metrics-and-alerts"></a>Alerty i metryki DNS platformy Azure
 System DNS Azure jest usługą hostingu dla domen DNS, która umożliwia rozpoznawanie nazw przy użyciu infrastruktury Microsoft Azure. W tym artykule opisano, metryk i alertów w usłudze DNS platformy Azure.
 
 ## <a name="azure-dns-metrics"></a>Metryki usługi Azure DNS
 
-Usługa DNS platformy Azure generuje dane pomiarowe dla klientów umożliwić im monitorowania określonych aspektów ich tych hostowanych w usłudze DNS. Ponadto za pomocą metryk usługi Azure DNS można skonfigurować i otrzymywać alerty na podstawie warunków zainteresowania. Metryki są udostępniane za pośrednictwem [usługi Azure Monitor](../monitoring-and-diagnostics/index.yml). Usługa DNS platformy Azure zawiera następujące metryki za pomocą usługi Azure Monitor dla stref DNS:
+Usługa DNS platformy Azure generuje dane pomiarowe dla klientów umożliwić im monitorowania określonych aspektów ich tych hostowanych w usłudze DNS. Ponadto za pomocą metryk usługi Azure DNS można skonfigurować i otrzymywać alerty na podstawie warunków zainteresowania. Metryki są udostępniane za pośrednictwem [usługi Azure Monitor](../azure-monitor/index.yml). Usługa DNS platformy Azure zawiera następujące metryki za pomocą usługi Azure Monitor dla stref DNS:
 
 -   QueryVolume
 -   RecordSetCount

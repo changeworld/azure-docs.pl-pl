@@ -9,12 +9,12 @@ ms.custom: DBs & servers
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: carlrab
-ms.openlocfilehash: ca6d36a4f06865b630e869623752bc5d488b6251
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 46789f5f3449baead12133522997936c8a992d3b
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732944"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964773"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pojedynczej bazy danych
 
@@ -84,7 +84,7 @@ Dla pojedynczych baz danych w poniższych tabelach Pokaż zasoby dostępne dla p
 |Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
 |Rdzenie wirtualne|1|2|4|8|16|24|
 |Pamięć (GB)|7|14|28|56|112|168|
-|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|
+|Obsługa magazynu kolumn|ND|ND|ND|ND|ND|ND|
 |Pojemność magazynu OLTP w pamięci (GB)|1|2|4|8|20|36|
 |Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
 |Maksymalny rozmiar danych (GB)|1024|1024|1024|1024|1024|1024|
@@ -122,8 +122,52 @@ Dla pojedynczych baz danych w poniższych tabelach Pokaż zasoby dostępne dla p
 |Uwzględniony magazyn kopii zapasowych|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|1 X DB rozmiar|
 |||
 
+### <a name="hyperscale-service-tier-preview"></a>Warstwy usług na dużą skalę (wersja zapoznawcza)
+
+#### <a name="generation-4-compute-platform"></a>Platforma obliczeniowa generacja 4
+|Poziom wydajności|HS_Gen4_1|HS_Gen4_2|HS_Gen4_4|HS_Gen4_8|HS_Gen4_16|HS_Gen4_24|
+|:--- | --: |--: |--: |--: |--: |--: |--: |
+|Generowanie H: odczytu i zapisu|4|4|4|4|4|4|
+|Rdzenie wirtualne|1|2|4|8|16|24|
+|Pamięć (GB)|7|14|28|56|112|168|
+|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|
+|Pojemność magazynu OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|
+|Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
+|Maksymalny rozmiar danych (TB)|100 |100 |100 |100 |100 |100 |
+|Maksymalny rozmiar dziennika (TB)|1 |1 |1 |1 |1 |1 |
+|Rozmiar bazy danych TempDB (GB)|32|64|128|256|384|384|
+|Docelowy operacji We/Wy (64 KB)|Określone|Określone|Określone|Określone|Określone|Określone|
+|We/Wy, czas oczekiwania (w przybliżeniu)|Określone|Określone|Określone|Określone|Określone|Określone|
+|Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|800|1600|3200|4800|
+|Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|
+|Liczba replik|2|2|2|2|2|2|
+|Multi-AZ|ND|ND|ND|ND|ND|ND|
+|Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|
+|Uwzględniony magazyn kopii zapasowych|7|7|7|7|7|7|
+|||
+### <a name="generation-5-compute-platform"></a>Platforma obliczeniowa generowania 5
+|Poziom wydajności|HS_Gen5_2|HS_Gen5_4|HS_Gen5_8|HS_Gen5_16|HS_Gen5_24|HS_Gen5_32|HS_Gen5_40|HS_Gen5_80|
+|:--- | --: |--: |--: |--: |---: | --: |--: |--: |--: |--: |--: |--: |--: |
+|Generowanie H: odczytu i zapisu|5|5|5|5|5|5|5|5|
+|Rdzenie wirtualne|2|4|8|16|24|32|40|80|
+|Pamięć (GB)|11|22|44|88|132|176|220|440|
+|Obsługa magazynu kolumn|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Pojemność magazynu OLTP w pamięci (GB)|ND|ND|ND|ND|ND|ND|ND|ND|
+|Typ magazynu|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|Lokalny dysk SSD|
+|Maksymalny rozmiar danych (TB)|100 |100 |100 |100 |100 |100 |100 |100 |
+|Maksymalny rozmiar dziennika (TB)|1 |1 |1 |1 |1 |1 |1 |1 |
+|Rozmiar bazy danych TempDB (GB)|64|128|256|384|384|384|384|384|
+|Docelowy operacji We/Wy (64 KB)|Określone|Określone|Określone|Określone|Określone|Określone|Określone|Określone|
+|We/Wy, czas oczekiwania (w przybliżeniu)|Określone|Określone|Określone|Określone|Określone|Określone|Określone|Określone|
+|Maksymalna liczba współbieżnych procesów roboczych (żądań)|200|400|800|1600|2400|3200|4000|8000|
+|Maksymalny dopuszczalny sesji|30000|30000|30000|30000|30000|30000|30000|30000|
+|Liczba replik|2|2|2|2|2|2|2|2|
+|Multi-AZ|ND|ND|ND|ND|ND|ND|ND|ND|
+|Przeczytaj skalowalnego w poziomie|Yes|Yes|Yes|Yes|Yes|Yes|Yes|Yes|
+|Uwzględniony magazyn kopii zapasowych (limit: wersja zapoznawcza)|7|7|7|7|7|7|7|7|
+|||
+
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Zobacz [— często zadawane pytania dla bazy danych SQL](sql-database-faq.md) odpowiedzi na często zadawane pytania.
-- Zobacz [limity zasobów Omówienie usługi Azure SQL Database](sql-database-resource-limits.md) uzyskać informacji dotyczących ograniczeń na poziomach serwera i subskrypcji.
 - Aby uzyskać informacji na temat ogólne limity platformy Azure, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md).

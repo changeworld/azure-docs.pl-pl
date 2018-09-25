@@ -1,21 +1,26 @@
 ---
 title: Pakiet FPGA przyspieszanie sprzętowe dla usługi Azure Machine Learning
 description: Więcej informacji na temat pakietów języka python, dostępne dla użytkowników usługi Azure Machine Learning.
+services: machine-learning
 ms.service: machine-learning
 ms.component: core
-ms.topic: conceptual
+ms.topic: reference
 ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
 ms.date: 05/07/2018
-ms.openlocfilehash: a81f5f811058f3c7940da79419b9801225716e6b
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4f23e8987a3abd9cdace85b0a3dc52ca464245df
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42061722"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995435"
 ---
 # <a name="azure-machine-learning-hardware-acceleration-package"></a>Pakiet Azure Machine Learning sprzętowego przyspieszania
+
+>[!Note]
+>**W tym artykule jest przestarzały.** Ten pakiet FPGA została zakończona. Obsługa tej funkcji został dodany do zestawu SDK usługi Azure ML. Obsługa tego pakietu zakończy się przyrostowo. [Wyświetl oś czasu pomocy technicznej](overview-what-happened-to-workbench.md#timeline). Dowiedz się więcej o aktualizacji [obsługi FPGA](concept-accelerate-with-fpgas.md).
 
 Pakiet Azure Machine Learning sprzętowego przyspieszania jest rozszerzeniem do zainstalowania narzędzia pip języka Python dla usługi Azure Machine Learning, która umożliwia analitykom danych i deweloperom sztucznej Inteligencji szybko:
 
@@ -29,7 +34,7 @@ Pakiet Azure Machine Learning sprzętowego przyspieszania jest rozszerzeniem do 
 
 1. Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-1. Musisz utworzyć konto usługi Zarządzanie modelami w usłudze Azure Machine Learning. Aby uzyskać więcej informacji na temat tworzenia konta, zobacz [instalacji usługi Azure Machine Learning Przewodnik Szybki Start i aplikacja Workbench](../service/quickstart-installation.md) dokumentu. 
+1. Musisz utworzyć konto usługi Zarządzanie modelami w usłudze Azure Machine Learning. Aby uzyskać więcej informacji na temat tworzenia konta, zobacz [instalacji usługi Azure Machine Learning Przewodnik Szybki Start i aplikacja Workbench](../desktop-workbench/quickstart-installation.md) dokumentu. 
 
 1. Musi być zainstalowany pakiet. 
 

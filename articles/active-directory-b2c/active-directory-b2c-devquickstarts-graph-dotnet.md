@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/07/2017
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: ce2c92f984f835c8e8f49ec94d65a9f3390812f9
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: 013fd019771fb9994c87e363c78eae36431f91de
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39493126"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953229"
 ---
 # <a name="azure-ad-b2c-use-the-azure-ad-graph-api"></a>Usługa Azure AD B2C: Użyj usługi Azure AD interfejsu API programu Graph
 
@@ -27,7 +27,7 @@ Zwykle dzierżaw usługi Azure Active Directory (Azure AD) B2C bardzo duże. Ozn
 W przypadku dzierżaw B2C są dostępne dwa tryby głównej komunikowania się z interfejsu API programu Graph.
 
 * Interaktywny, jednokrotnego uruchamiania zadań powinna działać jako konto administratora dzierżawy usługi B2C należy wykonać zadania. Ten tryb wymaga administrator, aby zalogować się przy użyciu poświadczeń, zanim administratora mogą wykonywać wszelkie wywołania interfejsu API programu Graph.
-* Ciągłego, zautomatyzowanych zadań należy użyć jakiegoś rodzaju konta usługi udostępnić uprawnienia niezbędne do wykonywania zadań administracyjnych. W usłudze Azure AD możesz to zrobić, rejestrowanie aplikacji i uwierzytelniania w usłudze Azure AD. Jest to wykonywane przy użyciu **identyfikator aplikacji** , który używa [przyznawanie poświadczeń klienta OAuth 2.0](../active-directory/develop/authentication-scenarios.md#daemon-or-server-application-to-web-api). W takim przypadku aplikacja działa w swoim imieniu, nie jako użytkownik, do wywołania interfejsu API programu Graph.
+* Ciągłego, zautomatyzowanych zadań należy użyć jakiegoś rodzaju konta usługi udostępnić uprawnienia niezbędne do wykonywania zadań administracyjnych. W usłudze Azure AD możesz to zrobić, rejestrowanie aplikacji i uwierzytelniania w usłudze Azure AD. Jest to wykonywane przy użyciu **identyfikator aplikacji** , który używa [przyznawanie poświadczeń klienta OAuth 2.0](../active-directory/develop/service-to-service.md). W takim przypadku aplikacja działa w swoim imieniu, nie jako użytkownik, do wywołania interfejsu API programu Graph.
 
 W tym artykule dowiesz się, jak przeprowadzić przypadek użycia automatycznego. Będziesz tworzyć .NET 4.5 `B2CGraphClient` wykonująca użytkownika tworzenie, Odczyt, aktualizowanie i usuwanie operacji (CRUD). Klient będzie mieć interfejs wiersza polecenia Windows (interfejs wiersza polecenia), który umożliwia wykonywanie różnych metod. Jednak kod jest zapisywany zachowują się w sposób nie interaktywnego, zautomatyzowane.
 

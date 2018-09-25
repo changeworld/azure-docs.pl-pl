@@ -1,6 +1,6 @@
 ---
-title: Tworzenie bramy aplikacji platformy Azure — interfejs wiersza polecenia platformy Azure 1.0 | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć bramę aplikacji przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 1.0 w usłudze Resource Manager
+title: Tworzenie usługi Azure Application Gateway — klasyczny interfejs wiersza polecenia Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak utworzyć bramę aplikacji przy użyciu klasycznego wiersza polecenia platformy Azure w usłudze Resource Manager
 services: application-gateway
 documentationcenter: na
 author: vhorne
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/31/2017
 ms.author: victorh
-ms.openlocfilehash: 29eec4ad1883db9d824b416bdfc7e984a5af4fbe
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: e834b1633f17ecec74ae17e962de445ad8d6dccd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35648985"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974429"
 ---
 # <a name="create-an-application-gateway-by-using-the-azure-cli"></a>Tworzenie bramy aplikacji przy użyciu wiersza polecenia platformy Azure
 
@@ -29,8 +29,8 @@ ms.locfileid: "35648985"
 > * [Azure Resource Manager — program PowerShell](application-gateway-create-gateway-arm.md)
 > * [Klasyczny portal Azure — program PowerShell](application-gateway-create-gateway.md)
 > * [Szablon usługi Azure Resource Manager](application-gateway-create-gateway-arm-template.md)
-> * [Interfejs wiersza polecenia platformy Azure 1.0](application-gateway-create-gateway-cli.md)
-> * [Interfejs wiersza polecenia platformy Azure 2.0](application-gateway-create-gateway-cli.md)
+> * [Klasyczny interfejs wiersza polecenia Azure](application-gateway-create-gateway-cli.md)
+> * [Interfejs wiersza polecenia platformy Azure](application-gateway-create-gateway-cli.md)
 > 
 > 
 
@@ -38,7 +38,7 @@ Usługa Azure Application Gateway to moduł równoważenia obciążenia warstwy 
 
 ## <a name="prerequisite-install-the-azure-cli"></a>Wymagania wstępne: Instalacja interfejsu wiersza polecenia platformy Azure
 
-Aby wykonać kroki opisane w tym artykule, musisz [instalowanie interfejsu wiersza polecenia platformy Azure dla systemów Mac, Linux i Windows (Azure CLI)](../xplat-cli-install.md) i trzeba [Zaloguj się do platformy Azure](/cli/azure/authenticate-azure-cli). 
+Aby wykonać kroki opisane w tym artykule, musisz [zainstalować interfejs wiersza polecenia platformy Azure](../xplat-cli-install.md) i trzeba [Zaloguj się do platformy Azure](/cli/azure/authenticate-azure-cli). 
 
 > [!NOTE]
 > Jeśli nie masz konta platformy Azure, możesz je utworzyć. Zarejestruj się, aby skorzystać z [bezpłatnego demo](../active-directory/fundamentals/sign-up-organization.md).

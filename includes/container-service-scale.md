@@ -1,6 +1,6 @@
 Po [wdrożeniu klastra usługi Azure Container Service](../articles/container-service/dcos-swarm/container-service-deployment.md) być może trzeba będzie zmienić liczbę węzłów agenta. Możesz na przykład potrzebować więcej agentów, aby uruchamiać więcej wystąpień lub aplikacji kontenera. 
 
-Możesz zmienić liczbę węzłów agenta w klastrze DC/OS, Docker Swarm lub Kubernetes za pomocą witryny Azure Portal lub interfejsu wiersza polecenia platformy Azure w wersji 2.0. 
+Możesz zmienić liczbę węzłów agenta w klastrze DC/OS, Docker Swarm lub Kubernetes za pomocą witryny Azure portal lub interfejsu wiersza polecenia platformy Azure. 
 
 ## <a name="scale-with-the-azure-portal"></a>Skalowanie w witrynie Azure Portal
 
@@ -12,9 +12,9 @@ Możesz zmienić liczbę węzłów agenta w klastrze DC/OS, Docker Swarm lub Kub
 
 4. Aby zapisać konfigurację, kliknij pozycję **Zapisz**.
 
-## <a name="scale-with-the-azure-cli-20"></a>Skalowanie przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
+## <a name="scale-with-the-azure-cli"></a>Skalowanie przy użyciu wiersza polecenia platformy Azure
 
-Upewnij się, że możesz [zainstalowane](/cli/azure/install-az-cli2) najnowszy interfejs wiersza polecenia Azure 2.0 i zalogowano do konta platformy Azure (`az login`).
+Upewnij się, że możesz [zainstalowane](/cli/azure/install-az-cli2) najnowszego interfejsu wiersza polecenia platformy Azure i zalogowano się do konta platformy Azure (`az login`).
 
 ### <a name="see-the-current-agent-count"></a>Sprawdzanie bieżącej liczby agentów
 Aby wyświetlić bieżącą liczbę agentów w klastrze, uruchom polecenie `az acs show`. Przedstawia ono konfigurację klastra. Na przykład następujące polecenie przedstawia konfigurację usługi kontenera o nazwie `containerservice-myACSName` w grupie zasobów `myResourceGroup`:
@@ -34,7 +34,7 @@ Aby na przykład zmienić liczbę agentów w poprzednim klastrze na 10, wpisz na
 az acs scale -g myResourceGroup -n containerservice-myACSName --new-agent-count 10
 ```
 
-Interfejs wiersza polecenia platformy Azure 2.0 zwraca ciąg JSON reprezentujący nową konfigurację usługi kontenera, w tym nową liczbę agentów.
+Interfejs wiersza polecenia platformy Azure zwraca ciąg JSON reprezentujący nową konfigurację usługi kontenera, w tym nową liczbę agentów.
 
 Aby uzyskać więcej opcji poleceń, uruchom polecenie `az acs scale --help`.
 
@@ -50,6 +50,6 @@ Aby uzyskać więcej opcji poleceń, uruchom polecenie `az acs scale --help`.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Zobacz [więcej przykładów](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) używania poleceń interfejsu wiersza polecenia platformy Azure 2.0 z usługą Azure Container Service.
+* Zobacz [więcej przykładów](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) używania poleceń interfejsu wiersza polecenia platformy Azure z usługą Azure Container Service.
 * Dowiedz się więcej o [pulach agentów platformy DC/OS](../articles/container-service/dcos-swarm/container-service-dcos-agents.md) w usłudze Azure Container Service.
 

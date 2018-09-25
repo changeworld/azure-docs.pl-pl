@@ -1,6 +1,6 @@
 ---
-title: Azure Usługa sieci szkieletowej programowe skalowanie | Dokumentacja firmy Microsoft
-description: Skalowanie klastra usługi sieć szkieletowa usług Azure lub programistycznie, zgodnie z wyzwalaczy niestandardowych
+title: Azure Service Fabric programowe skalowania | Dokumentacja firmy Microsoft
+description: Skalowanie klastra usługi Azure Service Fabric lub programowo, zgodnie z niestandardowych wyzwalaczy
 services: service-fabric
 documentationcenter: .net
 author: mjrousos
@@ -14,28 +14,28 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/23/2018
 ms.author: mikerou
-ms.openlocfilehash: dcf4721012fb8ec39bcd1de02c294747357b3539
-ms.sourcegitcommit: eb75f177fc59d90b1b667afcfe64ac51936e2638
+ms.openlocfilehash: ff02f79321823e42c25897e9de30dfbb6fac46b0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/16/2018
-ms.locfileid: "34213065"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949623"
 ---
-# <a name="scale-a-service-fabric-cluster-programmatically"></a>Programowo skalowanie klastra sieci szkieletowej usług 
+# <a name="scale-a-service-fabric-cluster-programmatically"></a>Programowe skalowania klastra usługi Service Fabric 
 
-Klastrów sieci szkieletowej usług działających na platformie Azure są wbudowane zestawy skalowania maszyny wirtualnej.  [Skalowanie klastra](./service-fabric-cluster-scale-up-down.md) w tym artykule opisano, jak mogą być skalowane klastrów sieci szkieletowej usług ręcznie lub przy użyciu reguł automatycznego skalowania. W tym artykule opisano sposób zarządzania poświadczeniami i skalowania klastra w lub wychodzących za pomocą fluent Azure obliczeniowe zestaw SDK, który jest bardziej zaawansowanym scenariuszu. Aby uzyskać ogólne informacje, przeczytaj [metod programistycznych koordynacji Azure skalowanie operacji](service-fabric-cluster-scaling.md#programmatic-scaling). 
+Klastry usługi Service Fabric działających na platformie Azure są tworzone na podstawie zestawów skalowania maszyn wirtualnych.  [Skalowanie klastra](./service-fabric-cluster-scale-up-down.md) w tym artykule opisano, jak klastry usługi Service Fabric można skalować ręcznie lub za pomocą reguł automatycznego skalowania. W tym artykule opisano, jak Zarządzanie poświadczeniami i skalować w klastrze na platformie lub się przy użyciu fluent Azure compute zestaw SDK, który jest bardziej zaawansowanym scenariuszu. Aby uzyskać przegląd, przeczytaj [metody programowe koordynacji operacji skalowania Azure](service-fabric-cluster-scaling.md#programmatic-scaling). 
 
 ## <a name="manage-credentials"></a>Zarządzanie poświadczeniami
-Jednym z wyzwań zapisywania usługi do obsługi skalowania jest, że usługi musi być możliwy dostęp do zasobów zestawu skali maszyny wirtualnej bez logowania interakcyjnego. Uzyskiwanie dostępu do klastra usługi sieć szkieletowa jest proste, jeśli skalowania usługi modyfikuje własnej aplikacji usługi Service Fabric, ale poświadczenia są wymagane do zestawu skalowania. Aby zalogować się, można użyć [nazwy głównej usługi](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) utworzone za pomocą [Azure CLI 2.0](https://github.com/azure/azure-cli).
+Jednym z wyzwań pisania usługi do obsługi skalowania jest, czy usługa musi umożliwiać dostęp do zasobów zestawu skalowania maszyn wirtualnych bez logowania interakcyjnego. Uzyskiwanie dostępu do klastra usługi Service Fabric jest łatwe, jeśli usługa skalowania modyfikuje własną aplikację usługi Service Fabric, ale poświadczenia są wymagane do dostępu do zestawu skalowania. Aby zalogować się, można użyć [nazwy głównej usługi](https://docs.microsoft.com/cli/azure/create-an-azure-service-principal-azure-cli) utworzone za pomocą [wiersza polecenia platformy Azure](https://github.com/azure/azure-cli).
 
-Nazwy głównej usługi mogą być tworzone z następujących kroków:
+Nazwy głównej usługi można utworzyć wykonując następujące kroki:
 
-1. Zaloguj się do wiersza polecenia platformy Azure (`az login`) jako użytkownik z dostępem do skalowania maszyny wirtualnej ustawić
-2. Tworzenie nazwy głównej z usługi `az ad sp create-for-rbac`
-    1. Zanotuj identyfikator aplikacji (nazywane "identyfikator klienta" w innym miejscu), nazwa, hasło i dzierżawy w celu późniejszego użycia.
-    2. Należy również identyfikator subskrypcji można wyświetlić w programie `az account list`
+1. Zaloguj się do wiersza polecenia platformy Azure (`az login`) jako użytkownik z uprawnieniami do skalowania maszyn wirtualnych zestawu
+2. Tworzenie jednostki za pomocą usługi `az ad sp create-for-rbac`
+    1. Zanotuj identyfikator aplikacji (nazywane "identyfikator klienta" w innym miejscu), nazwy, hasła i dzierżawy w celu późniejszego użycia.
+    2. Należy również Identyfikatora subskrypcji, które można przeglądać za pomocą `az account list`
 
-Biblioteka fluent obliczeń zalogować się przy użyciu tych poświadczeń w następujący sposób (należy pamiętać, że fluent Azure typów podstawowych, takich jak `IAzure` w [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) pakietu):
+Biblioteki fluent obliczeń może zalogować się przy użyciu tych poświadczeń w następujący sposób (należy pamiętać, że podstawowych fluent typów platformy Azure, takich jak `IAzure` znajdują się w [Microsoft.Azure.Management.Fluent](https://www.nuget.org/packages/Microsoft.Azure.Management.Fluent/) pakietu):
 
 ```csharp
 var credentials = new AzureCredentials(new ServicePrincipalLoginInformation {
@@ -54,10 +54,10 @@ else
 }
 ```
 
-Po zalogowaniu, liczba wystąpień zestawu skali można tworzyć zapytania za pomocą `AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId).Capacity`.
+Po zalogowaniu, liczba wystąpień zestawu skalowania można wykonywać zapytania za pomocą `AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId).Capacity`.
 
 ## <a name="scaling-out"></a>Skalowanie w poziomie
-Przy użyciu fluent Azure obliczeniowe zestawu SDK, wystąpień, mogą być dodawane do zestaw z kilku wywołania - skalowania maszyny wirtualnej
+Za pomocą fluent Azure compute zestawu SDK, wystąpienia mogą być dodawane do maszyny wirtualnej zestawu skalowania przy użyciu zaledwie kilku wywołań-
 
 ```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
@@ -65,15 +65,15 @@ var newCapacity = (int)Math.Min(MaximumNodeCount, scaleSet.Capacity + 1);
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ``` 
 
-Alternatywnie rozmiaru zestawu skali maszyny wirtualnej, można też zarządzać za pomocą poleceń cmdlet programu PowerShell. [`Get-AzureRmVmss`](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) można pobrać obiektu zestawu skali maszyny wirtualnej. Pojemność bieżąca jest dostępna za pośrednictwem `.sku.capacity` właściwości. Po zmianie pojemność na żądaną wartość, skalowania maszyny wirtualnej w usłudze Azure można zaktualizować za pomocą [ `Update-AzureRmVmss` ](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) polecenia.
+Alternatywnie rozmiar zestawu skalowania maszyn wirtualnych, można też zarządzać przy użyciu poleceń cmdlet programu PowerShell. [`Get-AzureRmVmss`](https://docs.microsoft.com/powershell/module/azurerm.compute/get-azurermvmss) można pobrać obiektu zestawu skalowania maszyn wirtualnych. Bieżąca pojemność jest dostępna za pośrednictwem `.sku.capacity` właściwości. Po zmianie pojemność na żądaną wartość, można zaktualizować zestawu na platformie Azure skalowania maszyn wirtualnych za pomocą [ `Update-AzureRmVmss` ](https://docs.microsoft.com/powershell/module/azurerm.compute/update-azurermvmss) polecenia.
 
-Podczas dodawania węzła ręcznie, dodając wystąpienia zestawu skalowania powinny być wszystkie punkty, które ma potrzebne do uruchomienia nowego węzła sieci szkieletowej usług, ponieważ szablon zestawu skalowania obejmują rozszerzenia automatycznie dołączy do klastra usługi sieć szkieletowa nowych wystąpień. 
+Podczas ręcznego dodawania węzła, dodając wystąpienia zestawu skalowania powinny być wszystko, co jest potrzebne do rozpoczęcia nowego węzła usługi Service Fabric, ponieważ szablon zestawu skalowania obejmuje rozszerzenia automatycznie dołączy nowe wystąpienia w klastrze usługi Service Fabric. 
 
 ## <a name="scaling-in"></a>Skalowanie w
 
-Skalowanie w jest podobny do skalowania. Rzeczywiste zestawu skalowania maszyn wirtualnych zmiany praktycznie są takie same. Jednak jak został już wcześniej, usługa sieć szkieletowa tylko automatycznie oczyszcza usuniętych węzłów trwałości Gold lub Silver. Tak, w tym trwałości brązowa skalowania w przypadku należy interakcje z klastrem usługi sieć szkieletowa można zamknąć węzeł ma zostać usunięty, a następnie usunąć jego stanu.
+Skalowanie w jest podobny do skalowania w poziomie. Rzeczywiste zestawu skalowania maszyn wirtualnych zmiany są praktycznie takie same. Jednak ponieważ została omówiony wcześniej, usługi Service Fabric tylko automatycznie oczyszcza usuniętych węzłów z trwałością Gold i Silver. Dlatego w trwałości brązowa skalowania w przypadku jest niezbędne do interakcji z klastrem usługi Service Fabric, aby zamknąć węzeł, który ma zostać usunięty a następnie usunąć jego stan.
 
-Przygotowanie węzła dla zamknięcia polega na znajdowaniu węzeł, który ma być usunięty (ostatnio dodane wystąpienie maszyny wirtualnej skali zestawu) i dezaktywowanie go. Wystąpienia zestawu skali maszyny wirtualnej są numerowane w kolejności, są one dodawane, więc węzłów nowszej można znaleźć na podstawie porównania ilości numer sufiks nazwy tych węzłów (które dopasowania podstawowej zestawu skalowania maszyn wirtualnych nazw wystąpień). 
+Przygotowanie węzła dla zamykania polega na znajdowaniu węzeł, który ma zostać usunięty (ostatnio dodane maszyny wirtualnej wystąpienia w zestawie skalowania) i dezaktywowanie go. Wystąpienia zestawu skalowania maszyn wirtualnych są numerowane w kolejności, w której są dodawane, więc nowszej węzłów można znaleźć, porównując sufiks liczbowy w nazwach węzłów (które dopasowanie podstawowego zestawu skalowania maszyn wirtualnych nazwy wystąpień). 
 
 ```csharp
 using (var client = new FabricClient())
@@ -90,7 +90,7 @@ using (var client = new FabricClient())
         .FirstOrDefault();
 ```
 
-Po znalezieniu węzeł ma zostać usunięty, można dezaktywować i usunąć korzystającej z tego samego `FabricClient` wystąpienia i `IAzure` wystąpienie z wcześniej.
+Po znalezieniu węzeł, który ma zostać usunięty, można dezaktywować i usunąć, korzystając z tych samych `FabricClient` wystąpienia i `IAzure` wystąpienie z wcześniej.
 
 ```csharp
 var scaleSet = AzureClient.VirtualMachineScaleSets.GetById(ScaleSetId);
@@ -115,7 +115,7 @@ var newCapacity = (int)Math.Max(MinimumNodeCount, scaleSet.Capacity - 1); // Che
 scaleSet.Update().WithCapacity(newCapacity).Apply(); 
 ```
 
-Jako ze skalowania poleceń cmdlet programu PowerShell modyfikowania skalowania maszyny wirtualnej zestawu pojemności można także tutaj Jeśli skryptów podejście jest bardziej pożądane. Po usunięciu wystąpienie maszyny wirtualnej, można usunąć stan węzła sieci szkieletowej usług.
+Jako przy użyciu skalowania w poziomie, poleceń cmdlet programu PowerShell do modyfikowania skalowania maszyn wirtualnych pojemności zestawu można również w tym miejscu Jeśli skryptów podejście jest preferowane. Po usunięciu wystąpienia maszyny wirtualnej można usunąć stanu węzła usługi Service Fabric.
 
 ```csharp
 await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
@@ -123,8 +123,8 @@ await client.ClusterManager.RemoveNodeStateAsync(mostRecentLiveNode.NodeName);
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby rozpocząć wdrażanie własną logikę automatyczne skalowanie, należy zapoznać się z przydatne interfejsów API i następujące kwestie:
+Aby rozpocząć implementowanie własnej logiki automatyczne skalowanie, zapoznać się z następujących pojęć i interfejsy API przydatne:
 
-- [Skalowanie ręcznie lub przy użyciu reguł automatycznego skalowania](./service-fabric-cluster-scale-up-down.md)
-- [Fluent biblioteki zarządzania platformy Azure dla platformy .NET](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (przydatne w przypadku interakcji z podstawowej zestawy skalowania maszyny wirtualnej w klastrze usługi sieć szkieletowa)
-- [System.Fabric.FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (przydatne w przypadku interakcji z klastra sieci szkieletowej usług i jego węzły)
+- [Skalowanie ręcznie lub za pomocą reguł skalowania automatycznego](./service-fabric-cluster-scale-up-down.md)
+- [Fluent bibliotek zarządzania platformy Azure dla platformy .NET](https://github.com/Azure/azure-sdk-for-net/tree/Fluent) (przydatne w przypadku interakcji z podstawowych zestawów skalowania maszyn wirtualnych w klastrze usługi Service Fabric)
+- [System.Fabric.FabricClient](https://docs.microsoft.com/dotnet/api/system.fabric.fabricclient) (przydatne w przypadku interakcji z klastrem usługi Service Fabric i jego węzły)

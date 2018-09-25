@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 5e4d96df7d6a43418aad92fdf6509a5ca7ec623a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 4eaf615de712715d35021aa2ba9eba4141d41e51
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734664"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952498"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Połącz aplikację z wystąpieniem zarządzanym usługi Azure SQL Database
 
@@ -22,7 +22,7 @@ Obecnie masz wiele opcji do wyboru podczas podejmowania decyzji o sposób i miej
  
 Istnieje możliwość hostowania aplikacji w chmurze, przy użyciu usługi Azure App Service lub niektórych opcji sieć wirtualną (VNet), zintegrowane platformy Azure, takich jak zestaw skalowania maszyn wirtualnych w usłudze Azure App Service Environment, maszyny wirtualnej. Można również wykonać chmura hybrydowa i zachować swoje aplikacje w środowisku lokalnym. 
  
-Niezależnie od wyboru, które zostały wprowadzone, można połączyć go do wystąpienia zarządzanego (wersja zapoznawcza).  
+Niezależnie od wyboru, które zostały wprowadzone, możesz połączyć ją do wystąpienia zarządzanego.  
 
 ![Wysoka dostępność](./media/sql-database-managed-instance/application-deployment-topologies.png)  
 ## <a name="connect-an-application-inside-the-same-vnet"></a>Łączenie aplikacji w tej samej sieci wirtualnej 
@@ -136,7 +136,7 @@ Jeśli chcesz nawiązać połączenie z wystąpieniem zarządzanym, zaleca się 
 |Sterownik JDBC    | 6.4.0 |
 |Sterownik node.js | 2.1.1 |
 |Sterownik OLEDB   | 18.0.2.0 |
-|SSMS   | 17.8.1 lub [wyższy](https://docs.microsoft.com/en-us/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) |
+|SSMS   | 17.8.1 lub [wyższy](https://docs.microsoft.com/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-2017) |
 
 ## <a name="next-steps"></a>Kolejne kroki
 

@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 07/07/2017
 ms.author: rajram
 ms.component: autoscale
-ms.openlocfilehash: b303632c236e492bbf57ee60d5e7b0cc7b2f9e5c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e96e3abc05353aa3ea134b7d11256a29fe64c300
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39448972"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989230"
 ---
 # <a name="get-started-with-autoscale-in-azure"></a>Rozpoczynanie pracy z funkcją automatycznego skalowania na platformie Azure
 W tym artykule opisano sposób konfigurowania ustawienia automatycznego skalowania dla zasobu w portalu Microsoft Azure.
 
-Skalowanie automatyczne monitorowanie platformy Azure dotyczy tylko zestawów skalowania maszyn wirtualnych, usług w chmurze, planów usługi Azure App Service i środowiska usługi App Service. 
+Skalowanie automatyczne platformy Azure Monitor ma zastosowanie tylko do [Virtual Machine Scale Sets](https://azure.microsoft.com/services/virtual-machine-scale-sets/), [usług w chmurze](https://azure.microsoft.com/services/cloud-services/), [App Service — Web Apps](https://azure.microsoft.com/services/app-service/web/), i [usługi API Management](https://docs.microsoft.com/azure/api-management/api-management-key-concepts).
 
 ## <a name="discover-the-autoscale-settings-in-your-subscription"></a>Odkryj ustawień automatycznego skalowania w ramach subskrypcji
 Może odnajdywać wszystkie zasoby, których Skalowanie automatyczne dotyczy w usłudze Azure Monitor. Aby uzyskać instrukcje krok po kroku przewodnik, wykonaj następujące czynności:
@@ -47,8 +47,8 @@ Przejdźmy teraz przechodzić przez proste przewodnik krok po kroku, aby utworzy
 1. Podaj nazwę dla ustawienia skalowania, a następnie kliknij przycisk **Dodaj regułę**. Zapoznaj się z opcjami reguły skalowania, które Uruchom jako w okienku kontekstowym po prawej stronie. Domyślnie to ustawienie opcji skalować swoje liczbę wystąpień o 1, jeśli procent użycia procesora CPU zasobu przekracza 70 procent. Pozostaw wartości domyślne, a następnie kliknij przycisk **Dodaj**.
   ![Tworzenie Ustawienia skalowania dla aplikacji sieci web][6]
 1. Teraz utworzyłeś swoją pierwszą regułę skalowania. Pamiętaj, że środowiska użytkownika zaleca najlepsze rozwiązania i informacją, że "zaleca się mieć co najmniej jeden skalowania w regule." W tym celu:
-  
-    a. Kliknij przycisk **Dodaj regułę**. 
+
+    a. Kliknij przycisk **Dodaj regułę**.
 
     b. Ustaw **Operator** do **mniej niż**.
 
@@ -62,7 +62,7 @@ Przejdźmy teraz przechodzić przez proste przewodnik krok po kroku, aby utworzy
 
 Gratulacje! Pomyślnie utworzono usługi pierwsze ustawienie skalowania automatycznego skalowania aplikacji sieci web na podstawie użycia procesora CPU.
 
-> [!NOTE] 
+> [!NOTE]
 > Te same kroki mają zastosowanie do rozpocząć korzystanie z zestawu skalowania maszyn wirtualnych lub roli usługi w chmurze.
 
 ## <a name="other-considerations"></a>Inne zagadnienia
@@ -105,8 +105,8 @@ Może to być razy, gdy zachodzi potrzeba wyłączenia bieżące ustawienia skal
 Kliknij przycisk **wyłączyć automatyczne skalowanie** znajdujący się u góry.
 ![Wyłączanie skalowania automatycznego][13]
 
-> [!NOTE] 
-> Ta opcja powoduje wyłączenie konfigurację. Jednak możesz wrócić do niego po ponownie włączyć Skalowanie automatyczne. 
+> [!NOTE]
+> Ta opcja powoduje wyłączenie konfigurację. Jednak możesz wrócić do niego po ponownie włączyć Skalowanie automatyczne.
 
 Można teraz ustawić liczbę wystąpień, które chcesz, aby możliwe było skalowanie ręczne.
 
@@ -133,4 +133,3 @@ Zawsze możesz wrócić do automatycznego skalowania, klikając **włączyć Ska
 [12]: ./media/monitoring-autoscale-get-started/scale-definition-json.png
 [13]: ./media/monitoring-autoscale-get-started/disable-autoscale.png
 [14]: ./media/monitoring-autoscale-get-started/set-manualscale.png
-

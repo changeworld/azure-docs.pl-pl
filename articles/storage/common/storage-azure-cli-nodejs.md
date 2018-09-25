@@ -1,6 +1,6 @@
 ---
-title: Za pomocą usługi Azure Storage przy użyciu wiersza polecenia platformy Azure 1.0 | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać interfejsu wiersza polecenia platformy Azure (Azure CLI) 1.0, za pomocą usługi Azure Storage do tworzenia i zarządzania kontami magazynu i pracy z plikami i obiekty BLOB platformy Azure. Interfejs wiersza polecenia platformy Azure to narzędzie dla wielu platform
+title: Za pomocą klasycznego wiersza polecenia platformy Azure z usługą Azure Storage | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak za pomocą platformy Azure klasyczny interfejs wiersza polecenia (CLI) usługi Azure Storage do tworzenia i zarządzania kontami magazynu i pracy z plikami i obiekty BLOB platformy Azure.
 services: storage
 author: seguler
 ms.service: storage
@@ -8,31 +8,31 @@ ms.topic: article
 ms.date: 01/30/2017
 ms.author: seguler
 ms.component: common
-ms.openlocfilehash: f406f12b3313670e8e2d89296f7c24478bb58c6c
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: e563c7000b600bed917f42d8ffb87df883564ef8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39521510"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979332"
 ---
-# <a name="using-the-azure-cli-10-with-azure-storage"></a>Za pomocą usługi Azure Storage przy użyciu wiersza polecenia platformy Azure 1.0
+# <a name="using-the-azure-classic-cli-with-azure-storage"></a>Za pomocą klasycznego wiersza polecenia platformy Azure z usługą Azure Storage
 
 ## <a name="overview"></a>Przegląd
 
-Interfejs wiersza polecenia platformy Azure udostępnia zestaw typu "open source", międzyplatformowych poleceń do pracy z platformą Azure. Zapewnia wiele funkcji w [witryny Azure portal](https://portal.azure.com) również jako zaawansowanych danych dostęp do funkcji.
+Klasyczny interfejs wiersza polecenia Azure udostępnia zestaw typu "open source", międzyplatformowych poleceń do pracy z platformą Azure. Zapewnia wiele funkcji w [witryny Azure portal](https://portal.azure.com) również jako zaawansowanych danych dostęp do funkcji.
 
-W tym przewodniku pokażemy, jak używać [interfejsu wiersza polecenia platformy Azure (Azure CLI)](../../cli-install-nodejs.md) wykonywać różne zadania programowania i administracji wraz z usługą Azure Storage. Zaleca się pobrać i zainstalować lub uaktualnić do najnowszego interfejsu wiersza polecenia platformy Azure, przed rozpoczęciem korzystania z tego przewodnika.
+W tym przewodniku pokażemy, jak używać [klasycznego wiersza polecenia platformy Azure](../../cli-install-nodejs.md) wykonywać różne zadania programowania i administracji wraz z usługą Azure Storage. Firma Microsoft zaleca, aby pobrać i zainstalować lub uaktualnić do najnowszej klasyczny interfejs wiersza polecenia przed rozpoczęciem korzystania z tego przewodnika.
 
-W tym przewodniku założono, że rozumiesz podstawowe pojęcia dotyczące usługi Azure Storage. Przewodnik zawiera szereg skryptów, aby zademonstrować użycie wiersza polecenia platformy Azure z usługą Azure Storage. Pamiętaj zaktualizować zmienne skryptu na podstawie konfiguracji przed uruchomieniem każdego skryptu.
+W tym przewodniku założono, że rozumiesz podstawowe pojęcia dotyczące usługi Azure Storage. Przewodnik zawiera szereg skryptów, aby zademonstrować użycie klasyczny interfejs wiersza polecenia za pomocą usługi Azure Storage. Pamiętaj zaktualizować zmienne skryptu na podstawie konfiguracji przed uruchomieniem każdego skryptu.
 
 > [!NOTE]
-> Przewodnik zawiera przykłady poleceń i skryptów wiersza polecenia platformy Azure, klasycznych kont magazynu. Zobacz [przy użyciu wiersza polecenia platformy Azure dla systemów Mac, Linux i Windows za pomocą usługi Azure Resource Management](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects) dla poleceń interfejsu wiersza polecenia platformy Azure dla kont magazynu usługi Resource Manager.
+> Przewodnik przykłady Azure klasycznego interfejsu wiersza polecenia polecenia i skryptu klasycznych kont magazynu. Zobacz [przy użyciu wiersza polecenia platformy Azure dla systemów Mac, Linux i Windows za pomocą usługi Azure Resource Management](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects) dla platformy Azure classic interfejsu wiersza polecenia dla kont magazynu usługi Resource Manager.
 >
 >
 
 [!INCLUDE [storage-cli-versions](../../../includes/storage-cli-versions.md)]
 
-## <a name="get-started-with-azure-storage-and-the-azure-cli-in-5-minutes"></a>Rozpoczynanie pracy z usługą Azure Storage lub interfejsu wiersza polecenia platformy Azure w ciągu 5 minut
+## <a name="get-started-with-azure-storage-and-the-azure-classic-cli-in-5-minutes"></a>Rozpoczynanie pracy z usługą Azure Storage i Azure klasyczny interfejs wiersza polecenia w ciągu 5 minut
 W tym przewodniku używane Ubuntu przykłady, ale innych platform systemów operacyjnych należy wykonać w podobny sposób.
 
 **Jesteś nowym użytkownikiem platformy Azure:** subskrypcji Microsoft Azure i konta Microsoft skojarzonego z posiadaną subskrypcją. Aby uzyskać informacje na temat opcji zakupu platformy Azure, zobacz [bezpłatnej wersji próbnej](https://azure.microsoft.com/pricing/free-trial/), [opcjami zakupu](https://azure.microsoft.com/pricing/purchase-options/), i [oferty dla subskrybentów](https://azure.microsoft.com/pricing/member-offers/) (dla uczestników programu MSDN, Microsoft Partner Network czy BizSpark, i inne programy firmy Microsoft).
@@ -41,12 +41,12 @@ Zobacz [przypisywanie ról administratorów w usłudze Azure Active Directory (A
 
 **Po utworzeniu subskrypcji Microsoft Azure i konto:**
 
-1. Pobierz i zainstaluj interfejs wiersza polecenia Azure, wykonując instrukcje opisane w temacie [zainstalować interfejs wiersza polecenia platformy Azure](../../cli-install-nodejs.md).
-2. Po zainstalowaniu interfejsu wiersza polecenia platformy Azure można użyć polecenia platformy azure z poziomu interfejsu wiersza polecenia (powłoki Bash, Terminal, wiersza polecenia), aby uzyskać dostęp do poleceń interfejsu wiersza polecenia platformy Azure. Typ _azure_ polecenia i powinien zostać wyświetlony następujące dane wyjściowe.
+1. Pobierz i zainstaluj klasycznego wiersza polecenia platformy Azure zgodnie z instrukcjami, opisane w temacie [zainstalować Azure klasyczny interfejs wiersza polecenia](../../cli-install-nodejs.md).
+2. Po zainstalowaniu klasyczny interfejs wiersza polecenia można uzyskać dostęp do klasycznego poleceń interfejsu wiersza polecenia za pomocą polecenia platformy azure, z poziomu interfejsu wiersza polecenia (powłoki Bash, Terminal, wiersza polecenia). Typ _azure_ polecenia i powinien zostać wyświetlony następujące dane wyjściowe.
 
     ![Dane wyjściowe polecenia platformy Azure](./media/storage-azure-cli/azure_command.png)   
-3. W interfejsie wiersza polecenia, wpisz `azure storage` Aby wyświetlić listę wszystkich poleceń usługi azure storage i Pobierz pierwsze wrażenie funkcji wiersza polecenia platformy Azure udostępnia. Możesz wpisać nazwę polecenia za pomocą **-h** parametrów (na przykład `azure storage share create -h`) aby wyświetlić szczegółowe informacje o składni polecenia.
-4. Teraz przedstawimy prosty skrypt, który pokazuje podstawowe polecenia wiersza polecenia platformy Azure na dostęp do usługi Azure Storage. Skrypt najpierw zapyta, aby ustawić dwie zmienne dla konta magazynu i klucza. Następnie skrypt tworzeniu nowego kontenera, w tym nowe konto magazynu i przekazać istniejący pliku obrazu (blob) do tego kontenera. Po skrypt zawiera listę wszystkich obiektów blob w kontenerze, pobierze plik obrazu do katalogu docelowego, która istnieje na komputerze lokalnym.
+3. W interfejsie wiersza polecenia, wpisz `azure storage` Aby wyświetlić listę wszystkich poleceń usługi azure storage i pierwsze wrażenie funkcji klasyczny interfejs wiersza polecenia zawiera. Możesz wpisać nazwę polecenia za pomocą **-h** parametrów (na przykład `azure storage share create -h`) aby wyświetlić szczegółowe informacje o składni polecenia.
+4. Teraz przedstawimy prosty skrypt, który przedstawia podstawowe klasycznego interfejsu wiersza polecenia dostępu do magazynu Azure. Skrypt najpierw zapyta, aby ustawić dwie zmienne dla konta magazynu i klucza. Następnie skrypt tworzeniu nowego kontenera, w tym nowe konto magazynu i przekazać istniejący pliku obrazu (blob) do tego kontenera. Po skrypt zawiera listę wszystkich obiektów blob w kontenerze, pobierze plik obrazu do katalogu docelowego, która istnieje na komputerze lokalnym.
 
     ```azurecli
     #!/bin/bash
@@ -88,9 +88,9 @@ Zobacz [przypisywanie ról administratorów w usłudze Azure Active Directory (A
 
 Po uruchomieniu skryptu, powinny mieć folderu lokalne miejsce docelowe, który zawiera plik pobrany obraz.
 
-## <a name="manage-storage-accounts-with-the-azure-cli"></a>Zarządzanie kontami magazynu przy użyciu wiersza polecenia platformy Azure
+## <a name="manage-storage-accounts-with-the-azure-classic-cli"></a>Zarządzanie kontami magazynu przy użyciu usługi Azure klasyczny interfejs wiersza polecenia
 ### <a name="connect-to-your-azure-subscription"></a>Nawiązywanie połączenia z subskrypcją platformy Azure
-Chociaż większość poleceń magazynu będzie działać bez subskrypcji platformy Azure, firma Microsoft zaleca nawiązywanie połączenia z subskrypcją z wiersza polecenia platformy Azure. Aby skonfigurować interfejs wiersza polecenia platformy Azure do pracy z subskrypcją, wykonaj kroki opisane w [Połącz z subskrypcją platformy Azure z wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli).
+Chociaż większość poleceń magazynu będzie działać bez subskrypcji platformy Azure, firma Microsoft zaleca nawiązywanie połączenia z subskrypcją w klasyczny interfejs wiersza polecenia.
 
 ### <a name="create-a-new-storage-account"></a>Tworzenie nowego konta magazynu
 Aby użyć usługi Azure storage, konieczne będzie konto magazynu. Można utworzyć nowe konto usługi Azure storage, po skonfigurowaniu komputera, aby nawiązać połączenie z subskrypcją.
@@ -102,7 +102,7 @@ azure storage account create <account_name>
 Nazwa konta magazynu musi mieć długość od 3 do 24 znaków długości i używać wyłącznie cyfry i małe litery.
 
 ### <a name="set-a-default-azure-storage-account-in-environment-variables"></a>Ustaw domyślne konto usługi Azure storage w zmiennych środowiskowych
-Może mieć wielu kont magazynu w ramach subskrypcji. Można wybrać jedną z nich i ustaw go w zmiennych środowiskowych dla wszystkich poleceń magazynu w tej samej sesji. Dzięki temu można uruchomić polecenia magazynu wiersza polecenia platformy Azure bez określania konta magazynu i klucz jawnie.
+Może mieć wielu kont magazynu w ramach subskrypcji. Można wybrać jedną z nich i ustaw go w zmiennych środowiskowych dla wszystkich poleceń magazynu w tej samej sesji. Dzięki temu można uruchomić polecenia do magazynu klasycznego interfejsu wiersza polecenia bez określania konta magazynu i klucza jawnie.
 
 ```azurecli
 export AZURE_STORAGE_ACCOUNT=<account_name>
@@ -177,7 +177,7 @@ azure storage blob delete mycontainer myBlockBlob2
 ```
 
 ## <a name="create-and-manage-file-shares"></a>Tworzenie i Zarządzanie udziałami plików
-Usługa Azure Files oferuje współużytkowany magazyn dla aplikacji używających standardowego protokołu SMB. Maszyny wirtualne Microsoft Azure i usług w chmurze, jak również aplikacje lokalne mogą współużytkować dane plików, za pośrednictwem zainstalowanych udziałów. Możesz zarządzać udziałami plików i danych plików za pomocą wiersza polecenia platformy Azure. Aby uzyskać więcej informacji na temat usługi Azure Files, zobacz [wprowadzenie do usługi Azure Files](../files/storage-files-introduction.md).
+Usługa Azure Files oferuje współużytkowany magazyn dla aplikacji używających standardowego protokołu SMB. Maszyny wirtualne Microsoft Azure i usług w chmurze, jak również aplikacje lokalne mogą współużytkować dane plików, za pośrednictwem zainstalowanych udziałów. Możesz zarządzać udziałami plików i danych plików za pośrednictwem klasyczny interfejs wiersza polecenia. Aby uzyskać więcej informacji na temat usługi Azure Files, zobacz [wprowadzenie do usługi Azure Files](../files/storage-files-introduction.md).
 
 ### <a name="create-a-file-share"></a>Tworzenie udziału plików
 Udział plików platformy Azure jest udziałem plików SMB na platformie Azure. Wszystkie pliki i katalogi, należy utworzyć w udziale plików. Konto może zawierać nieograniczoną liczbę udziałów, a udział może przechowywać nieograniczoną liczbę plików, nieprzekraczającą limitów pojemności konta magazynu. Poniższy przykład tworzy udział plików o nazwie **myshare**.
@@ -214,7 +214,7 @@ azure storage file list myshare myDir
 Należy pamiętać, że nazwa katalogu jest opcjonalna dla operacji listy. Jeśli argument jest pominięty, polecenie wyświetla zawartość katalogu głównego udziału.
 
 ### <a name="copy-files"></a>Kopiowanie plików
-Począwszy od wersji 0.9.8 wiersza polecenia platformy Azure, można skopiować pliku do innego pliku, pliki do obiektu blob oraz obiekty blob do pliku. Poniżej przedstawiamy sposób wykonywania tych operacji kopiowania za pomocą interfejsu wiersza polecenia. Aby skopiować plik do nowego katalogu:
+Począwszy od wersji 0.9.8 klasyczny interfejs wiersza polecenia, można skopiować pliku do innego pliku, pliki do obiektu blob oraz obiekty blob do pliku. Poniżej przedstawiamy sposób wykonywania tych operacji kopiowania za pomocą interfejsu wiersza polecenia. Aby skopiować plik do nowego katalogu:
 
 ```azurecli
 azure storage file copy start --source-share srcshare --source-path srcdir/hello.txt --dest-share destshare
@@ -230,9 +230,9 @@ azure storage file copy start --source-container srcctn --source-blob hello2.txt
 
 ## <a name="next-steps"></a>Następne kroki
 
-Dokumentacja poleceń interfejsu wiersza polecenia platformy Azure w wersji 1.0 można znaleźć do pracy z zasobami magazynu w tym miejscu:
+Dokumentacja poleceń interfejsu wiersza polecenia klasycznej platformy Azure można znaleźć do pracy z zasobami magazynu w tym miejscu:
 
-* [Poleceń interfejsu wiersza polecenia platformy Azure w trybie usługi Resource Manager](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)
-* [Poleceń interfejsu wiersza polecenia platformy Azure w trybie Azure Service Management](../../cli-install-nodejs.md)
+* [Azure classic interfejsu wiersza polecenia w trybie usługi Resource Manager](../../virtual-machines/azure-cli-arm-commands.md#azure-storage-commands-to-manage-your-storage-objects)
+* [Azure classic interfejsu wiersza polecenia w trybie Azure Service Management](../../cli-install-nodejs.md)
 
-Może również chcesz spróbować [interfejsu wiersza polecenia platformy Azure w wersji 2.0](../storage-azure-cli.md), nasz interfejs wiersza polecenia następnej generacji napisany w języku Python, do użycia przy użyciu modelu wdrażania usługi Resource Manager.
+Może również chcesz ponownie najnowszą wersję [wiersza polecenia platformy Azure](../storage-azure-cli.md), do użycia przy użyciu modelu wdrażania usługi Resource Manager.

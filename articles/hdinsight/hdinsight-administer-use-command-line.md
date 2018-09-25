@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie klastrami usługi Hadoop za pomocą wiersza polecenia platformy Azure — Azure HDInsight
-description: Dowiedz się, jak zarządzać klastrami Hadoop w usłudze Azure HDInsight przy użyciu interfejsu wiersza polecenia platformy Azure. Interfejs wiersza polecenia platformy Azure działa w Windows, Mac i Linux.
+title: Zarządzanie klastrami usługi Hadoop za pomocą klasycznego wiersza polecenia platformy Azure — Azure HDInsight
+description: Dowiedz się, jak używać platformy Azure klasyczny interfejs wiersza polecenia do zarządzania klastrami Hadoop w usłudze Azure HDInsight.
 services: hdinsight
 ms.reviewer: jasonh
 author: jasonwhowell
@@ -9,32 +9,32 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/14/2018
 ms.author: jasonh
-ms.openlocfilehash: 8d77f6f902ad0d1f6ee2b3dd1da5a38364f1da9b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 2586b9219eb145b2033fe2d8fc64b8ae72f34eda
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43103748"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958292"
 ---
-# <a name="manage-hadoop-clusters-in-hdinsight-using-the-azure-cli"></a>Zarządzanie klastrami Hadoop w HDInsight przy użyciu wiersza polecenia platformy Azure
+# <a name="manage-hadoop-clusters-in-hdinsight-using-the-azure-classic-cli"></a>Zarządzanie klastrami Hadoop w HDInsight przy użyciu klasycznego wiersza polecenia platformy Azure
 [!INCLUDE [selector](../../includes/hdinsight-portal-management-selector.md)]
 
-Dowiedz się, jak używać [interfejsu wiersza polecenia platformy Azure](../cli-install-nodejs.md) do zarządzania klastrami Hadoop w usłudze Azure HDInsight. Interfejs wiersza polecenia platformy Azure został zaimplementowany w środowisku Node.js. Można go używać na dowolnej platformie, która obsługuje środowisko Node.js, w tym w systemie Windows, Mac i Linux. Obecnie nie obsługuje HDInsight [interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure).
+Dowiedz się, jak używać [klasyczny interfejs wiersza polecenia platformy Azure](../cli-install-nodejs.md) do zarządzania klastrami Hadoop w usłudze Azure HDInsight. Klasyczny interfejs wiersza polecenia jest zaimplementowana w środowisku Node.js. Można go używać na dowolnej platformie, która obsługuje środowisko Node.js, w tym w systemie Windows, Mac i Linux.
 
-W tym artykule opisano tylko przy użyciu wiersza polecenia platformy Azure przy użyciu HDInsight. Aby uzyskać ogólne wskazówki dotyczące sposobu używania wiersza polecenia platformy Azure, zobacz [Instalowanie i Konfigurowanie interfejsu wiersza polecenia platformy Azure][azure-command-line-tools].
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed rozpoczęciem korzystania z informacji zawartych w tym artykule należy dysponować następującymi elementami:
 
 * **Subskrypcja platformy Azure**. Zobacz temat [Uzyskiwanie bezpłatnej wersji próbnej platformy Azure](https://azure.microsoft.com/documentation/videos/get-azure-free-trial-for-testing-hadoop-in-hdinsight/).
-* **Interfejs wiersza polecenia platformy Azure** — informacje na temat instalacji i konfiguracji można znaleźć w temacie [Instalowanie i konfigurowanie interfejsu wiersza polecenia platformy Azure](../cli-install-nodejs.md).
+* **Klasyczny interfejs wiersza polecenia Azure** — zobacz [Instalowanie i Konfigurowanie interfejsu wiersza polecenia platformy Azure Classic](../cli-install-nodejs.md) informacji o instalacji i konfiguracji.
 * **Łączenie z platformą Azure**, używając następującego polecenia:
 
     ```cli
     azure login
     ```
   
-    Więcej informacji na temat uwierzytelniania za pomocą konta służbowego lub szkolnego znajdziesz w temacie [Połączenie z subskrypcją platformy Azure z poziomu interfejsu wiersza polecenia platformy Azure](/cli/azure/authenticate-azure-cli).
+    Aby uzyskać więcej informacji na temat uwierzytelniania, przy użyciu konta służbowego lub szkolnego, zobacz [Połącz z subskrypcją platformy Azure z wiersza polecenia platformy Azure Classic](/cli/azure/authenticate-azure-cli).
 * **Przełączenie w tryb usługi Azure Resource Manager** przy użyciu następującego polecenia:
   
     ```cli
@@ -48,7 +48,7 @@ azure hdinsight cluster create -h
 ```
 
 ## <a name="create-clusters-with-the-cli"></a>Tworzenie klastrów przy użyciu interfejsu wiersza polecenia
-Zobacz [Tworzenie klastrów w HDInsight przy użyciu wiersza polecenia platformy Azure](hdinsight-hadoop-create-linux-clusters-azure-cli.md).
+Zobacz [Tworzenie klastrów w HDInsight przy użyciu wiersza polecenia platformy Azure Classic](hdinsight-hadoop-create-linux-clusters-azure-cli.md).
 
 ## <a name="list-and-show-cluster-details"></a>Listy i wyświetlaniu szczegółów klastra
 Aby wyświetlić listę i szczegóły klastra, użyj następujących poleceń:
@@ -101,7 +101,7 @@ W tym artykule mają przedstawiono sposób wykonywania różnych zadań administ
 * [Administrowanie HDInsight za pomocą witryny Azure Portal][hdinsight-admin-portal]
 * [Administrowanie HDInsight za pomocą programu Azure PowerShell][hdinsight-admin-powershell]
 * [Wprowadzenie do usługi Azure HDInsight][hdinsight-get-started]
-* [Jak używać interfejsu wiersza polecenia platformy Azure][azure-command-line-tools]
+* [Jak używać klasycznego wiersza polecenia platformy Azure][azure-command-line-tools]
 
 [azure-command-line-tools]: ../cli-install-nodejs.md
 [azure-create-storageaccount]:../storage/common/storage-create-storage-account.md

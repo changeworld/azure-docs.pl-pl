@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 05/30/2018
 ms.author: jasonh
-ms.openlocfilehash: cb2ca9ac3be0034f5a90add58249a2c2043975d0
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: ee97d2005752c9e0cd40de238d1f4a946bb9ee3d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43094088"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46948421"
 ---
 # <a name="migrate-from-a-windows-based-hdinsight-cluster-to-a-linux-based-cluster"></a>Migracja z klastra HDInsight z systemem Windows do klastra opartego na systemie Linux
 
@@ -97,7 +97,7 @@ Alternatywnie, możesz chcieć użyć `Start-AzureStorageBlobCopy` polecenia cmd
 
 ## <a name="client-side-technologies"></a>Technologie po stronie klienta
 
-Technologie po stronie klienta, takie jak [poleceń cmdlet programu Azure PowerShell](/powershell/azureps-cmdlets-docs), [wiersza polecenia platformy Azure](../cli-install-nodejs.md), lub [zestawu .NET SDK dla platformy Hadoop](https://hadoopsdk.codeplex.com/) nadal działały w klastrach opartych na systemie Linux. Technologie te opierają się na interfejsach API REST, które są takie same w przypadku obu typów klastra systemu operacyjnego.
+Technologie po stronie klienta, takie jak [poleceń cmdlet programu Azure PowerShell](/powershell/azureps-cmdlets-docs), [klasyczny interfejs wiersza polecenia platformy Azure](../cli-install-nodejs.md), lub [zestawu .NET SDK dla platformy Hadoop](https://hadoopsdk.codeplex.com/) nadal działały w klastrach opartych na systemie Linux. Technologie te opierają się na interfejsach API REST, które są takie same w przypadku obu typów klastra systemu operacyjnego.
 
 ## <a name="server-side-technologies"></a>Technologie serwerowe
 
@@ -106,7 +106,7 @@ Poniższa tabela zawiera wskazówki dotyczące migrowania składniki po stronie 
 | Jeśli używasz tej technologii... | Wykonanie tej czynności... |
 | --- | --- |
 | **Program PowerShell** (skrypty po stronie serwera, w tym akcji skryptu, używane podczas tworzenia klastra) |Napisać ponownie jako skrypty powłoki Bash. Dla akcji skryptu, zobacz [HDInsight opartych na systemie Linux z dostosować za pomocą akcji skryptów](hdinsight-hadoop-customize-cluster-linux.md) i [opracowywanie akcji dla HDInsight opartych na systemie Linux skryptu](hdinsight-hadoop-script-actions-linux.md). |
-| **Interfejs wiersza polecenia Azure** (skrypty po stronie serwera) |Natomiast wiersza polecenia platformy Azure jest dostępny w systemie Linux, go nie są zainstalowane w głównymi węzłami klastra HDInsight. Aby uzyskać więcej informacji na temat instalowania interfejsu wiersza polecenia platformy Azure, zobacz [Rozpoczynanie pracy z usługą Azure CLI 2.0](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli). |
+| **Klasyczny interfejs wiersza polecenia Azure** (skrypty po stronie serwera) |Natomiast klasycznego wiersza polecenia platformy Azure jest dostępny w systemie Linux, go nie są zainstalowane w głównymi węzłami klastra HDInsight. Aby uzyskać więcej informacji na temat instalowania interfejsu wiersza polecenia Azure Classic zobacz [Rozpoczynanie pracy z usługą Azure klasyczny interfejs wiersza polecenia](https://docs.microsoft.com/cli/azure/get-started-with-azure-cli). |
 | **Składniki .NET** |.NET jest obsługiwany w HDInsight opartych na systemie Linux za pomocą [Mono](https://mono-project.com). Aby uzyskać więcej informacji, zobacz [.NET Migrowanie rozwiązania HDInsight opartych na systemie Linux](hdinsight-hadoop-migrate-dotnet-to-linux.md). |
 | **Składniki systemu Win32 lub inne technologie tylko Windows** |Wskazówki dotyczące zależy od tego, składnika lub technologii. Dzięki temu można znaleźć wersji, która jest zgodna z systemem Linux. W przeciwnym razie należy znaleźć rozwiązanie alternatywne lub napisz ponownie tego składnika. |
 

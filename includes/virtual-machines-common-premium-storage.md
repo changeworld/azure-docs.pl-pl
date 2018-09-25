@@ -5,26 +5,26 @@ services: storage
 author: ramankumarlive
 ms.service: storage
 ms.topic: include
-ms.date: 06/05/2018
+ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: e6a2493b0bc9e2b4c9695e29ae0c175dac9814fe
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: ea312002a9a1a39505cd4748864ca9dfc1da43dd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "40237492"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47060337"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Magazyn w warstwie Premium o wysokiej wydajności i dysków zarządzanych dla maszyn wirtualnych
+
 Usługa Azure Premium Storage zapewnia obsługę przez dyski o wysokiej wydajności i niskich opóźnieniach dla maszyn wirtualnych (VM) przy użyciu wejścia/wyjścia (We/Wy)-intensywnych obciążeń. Dyski maszyny Wirtualnej, korzystających z usługi Premium Storage umożliwia przechowywanie danych na dyskach półprzewodnikowych (SSD). Aby móc korzystać z szybkości i wydajności dysków usługi premium storage, należy przeprowadzić migrację istniejących dysków maszyny Wirtualnej do usługi Premium Storage.
 
-Na platformie Azure do maszyny Wirtualnej można dołączyć kilka dysków usługi premium storage. Używanie wielu dysków zapewnia aplikacji do 256 TB magazynu na maszynę Wirtualną. Dzięki usłudze Premium Storage aplikacje mogą osiągnąć 80 000 operacji wejścia/wyjścia na sekundę (IOPS) na maszynę Wirtualną i przepływność dysków, maksymalnie 2000 MB na sekundę (MB/s) na maszynę Wirtualną. Operacje odczytu umożliwiają bardzo małe wartości opóźnienia.
+Na platformie Azure do maszyny Wirtualnej można dołączyć kilka dysków usługi premium storage. Używanie wielu dysków zapewnia aplikacji do 256 TB magazynu na maszynę Wirtualną, jeśli używasz rozmiarów (wersja zapoznawcza), Twoja aplikacja może mieć maksymalnie około 2 PiB magazynu na maszynę Wirtualną. Dzięki usłudze Premium Storage aplikacje mogą osiągnąć 80 000 operacji wejścia/wyjścia na sekundę (IOPS) na maszynę Wirtualną i przepływność dysków, maksymalnie 2000 MB na sekundę (MB/s) na maszynę Wirtualną. Operacje odczytu umożliwiają bardzo małe wartości opóźnienia.
 
 Dzięki usłudze Premium Storage platforma Azure oferuje możliwość naprawdę lift-and-shift wymagających aplikacji przedsiębiorstwa takich jak Dynamics AX, Dynamics CRM, Exchange Server, SAP Business Suite i programu SharePoint farmy serwerów w chmurze. Możesz uruchamiać obciążenia intensywnie bazy danych w aplikacji, takich jak SQL Server, Oracle, MongoDB, MySQL i Redis, wymagających spójnej wysokiej wydajności i małym opóźnieniu.
 
 > [!NOTE]
 > Uzyskać najlepszą wydajność aplikacji zaleca się migracji dysku maszyny Wirtualnej, który wymaga wysokiej operacje We/Wy do magazynu Premium Storage. Jeśli dysk nie wymaga wysokiego operacje We/Wy, może pomóc koszty limit, przechowując go w magazynie standard Storage platformy Azure. W magazynie standard storage dane dysku maszyny Wirtualnej są przechowywane dyski twarde (HDD) zamiast na dyskach SSD.
-> 
 
 Platforma Azure oferuje dwa sposoby tworzenia dysków magazynu premium storage dla maszyn wirtualnych:
 
@@ -44,7 +44,6 @@ Aby uzyskać informacje na temat migracji istniejących maszyn wirtualnych do us
 
 > [!NOTE]
 > Usługa Premium Storage jest dostępna w większości regionów. Aby uzyskać listę dostępnych regionów, zobacz wiersz dotyczący **Magazyn dyskowy** w [Azure dostępność produktów według regionów](https://azure.microsoft.com/regions/#services).
-> 
 
 ## <a name="features"></a>Funkcje
 
@@ -52,7 +51,7 @@ Poniżej przedstawiono niektóre funkcje usługi Premium Storage:
 
 * **Dysków magazynu Premium storage**
 
-    Usługa Premium Storage obsługuje dyski maszyn wirtualnych, które mogą być dołączane do określonego rozmiaru maszyny wirtualne. Usługa Premium Storage obsługuje szeroką gamę maszyn wirtualnych platformy Azure. Masz do wyboru siedmiu dysków o rozmiarach: P4 (32 GB), P6 (64 GB), P10 (128 GB), P15 (256 GB), P20 (512 GB), P30 (1024 GB), P40 (2048 GB), P50 (4095 GB). P4 i rozmiary dysków P6 są jeszcze obsługiwane tylko dla dysków Managed Disks. Rozmiar każdego dysku ma swój własny specyfikacje wydajności. W zależności od wymagań aplikacji możesz dołączyć co najmniej jeden dysk do maszyny Wirtualnej. Opisujemy specyfikacje bardziej szczegółowo w [cele dotyczące skalowalności i wydajności Usługa Premium Storage](#scalability-and-performance-targets).
+    Usługa Premium Storage obsługuje dyski maszyn wirtualnych, które mogą być dołączane do określonego rozmiaru maszyny wirtualne. Usługa Premium Storage obsługuje szeroką gamę maszyn wirtualnych platformy Azure. Masz do wyboru osiem rozmiary dysków GA: P4 (32 GiB) P6 (64 GiB) P10 (128 GiB) P15 (256 GiB), P20 (512 GiB) P30 (1024 GiB) P40 (2048 GiB) P50 (4095 GiB). Także w trzech rozmiarach dysków w wersji zapoznawczej: P60 8192 GiB (8 TiB) P70 16,348 GiB (16 TiB) P80 32 767 GiB (32 TiB). Rozmiary dysków P4 P6, P60, P70 i P80 są obecnie obsługiwane tylko w przypadku dysków zarządzanych. Rozmiar każdego dysku ma swój własny specyfikacje wydajności. W zależności od wymagań aplikacji możesz dołączyć co najmniej jeden dysk do maszyny Wirtualnej. Opisujemy specyfikacje bardziej szczegółowo w [cele dotyczące skalowalności i wydajności Usługa Premium Storage](#scalability-and-performance-targets).
 
 * **Stronicowe obiekty BLOB w warstwie Premium**
 
@@ -152,16 +151,11 @@ Jeśli używasz kont usługi premium storage dla dysków niezarządzanych aplika
 ### <a name="premium-storage-disk-limits"></a>Limity dysku usługi Premium Storage
 Podczas aprowizowania dysku magazynu premium rozmiar dysku określa maksymalny operacje We/Wy i przepływność (przepustowość). Platforma Azure oferuje osiem typów dysków magazynu premium storage: P4 (Managed Disks tylko) P6 (zarządzane tylko dysków), P10, P15, P20, P30, P40 i P50. Każdy typ dysku magazynu premium storage ma określone limity dla operacji We/Wy i przepływność. W poniższej tabeli opisano limity dla typów dysków:
 
-| Typ magazynu dysków Premium  | P4    | P6    | P10   | P15   | P20   | P30   | P40   | P50   | 
-|---------------------|-------|-------|-------|-------|-------|-------|-------|-------|
-| Rozmiar dysku           | 32 GB| 64 GB| 128 GB| 256 GB| 512 GB            | 1024 GB (1 TB)    | 2048 GB (2 TB)    | 4095 GB (4 TB)    | 
-| Liczba operacji wejścia/wyjścia na sekundę na dysk       | 120   | 240   | 500   | 1100   | 2300              | 5000              | 7500              | 7500              | 
-| Przepływność na dysk | 25 MB na sekundę  | 50 MB na sekundę  | 100 MB na sekundę | 125 MB na sekundę | 150 MB na sekundę | 200 MB na sekundę | 250 MB na sekundę | 250 MB na sekundę | 
+| Dyski Premium z typu | P4 | POZIOM P6 ODPOWIADA | P10 | P15 | P20 | P30 | P40 | P50 | P60 | P70 | P80 | |---|---|---|---|---|---|---|---|---|| -------|| -------|| -------| | Rozmiar dysku jest | 32 giB | 64 giB | 128 giB | 256 giB | 512 giB | 1024 giB (1 TiB) | 2048 giB (2 TiB) | 4095 giB (4 TiB) | 8192 giB (8 TiB) | 16 384 giB (16 TiB) | 32 767 giB (32 TiB) || Operacje We/Wy na dysk | 120 | 240 | 500 | 1100 | 2300 | 5000 | 7500 | 7500 | 12 500 | 15 000 | 20 000 || Przepływność na dysk | 25 MB na sekundę | 50 MB na sekundę | 100 MB na sekundę | 125 MB na sekundę | 150 MB na sekundę | 200 MB na sekundę | 250 MB na sekundę | 250 MB na sekundę | 480 MB na sekundę | 750 MB na sekundę | 750 MB na sekundę |
 
 > [!NOTE]
 > Upewnij się, że wystarczającą przepustowość jest dostępna na maszynie Wirtualnej, aby ruch dyskowy dysku, zgodnie z opisem w [Usługa Premium Storage jest obsługiwana na maszynach wirtualnych](#premium-storage-supported-vms). W przeciwnym razie swoje przepływność dysku i operacje We/Wy jest ograniczony do niższych wartości. Maksymalna przepływność i operacje We/Wy są oparte na limity maszyn wirtualnych, nie na limity dysku, opisano w powyższej tabeli.  
-> 
-> 
+> Azure został zaprojektowany tak platformy usługi Premium Storage jako równoległe na wielką skalę. Projektowanie aplikacji wielowątkowych pomogą osiągnąć wartości docelowej o wysokiej wydajności, oferowany w większych rozmiarów dysków.
 
 Poniżej przedstawiono niektóre ważne kwestie, aby dowiedzieć się o cele dotyczące skalowalności i wydajności Usługa Premium Storage:
 
@@ -172,11 +166,10 @@ Poniżej przedstawiono niektóre ważne kwestie, aby dowiedzieć się o cele dot
 * **Rozmiar dysku**
 
     Usługi Azure maps rozmiar dysku (z zaokrągleniem) do najbliższej premium storage dysku opcji określonych w tabeli w poprzedniej sekcji. Na przykład dysk o rozmiarze 100 GB jest klasyfikowany jako opcję P10. Można wykonywać maksymalnie 500 operacji We/Wy z maksymalnie 100-MB/s przepływności. Podobnie dysk o rozmiarze, który 400 GB zostanie sklasyfikowany jako P20. Można wykonywać maksymalnie 2300 operacje We/Wy, za pomocą 150-MB/s przepływności.
-    
+
     > [!NOTE]
     > Można łatwo zwiększyć rozmiaru istniejących dysków. Na przykład można zwiększyć rozmiar dysku 30 GB do 128 GB lub nawet do 1 TB. Możesz też przekonwertować dysku P20 na dysk P30, ponieważ będzie potrzebny więcej pojemności lub więcej operacji We/Wy i przepływność. 
-    > 
- 
+
 * **Rozmiar operacji We/Wy**
 
     Rozmiar operacji We/Wy to 256 KB. Transferowanych danych jest mniejsza niż 256 KB, jest uznawane za 1 jednostkę operacji We/Wy. Większego rozmiaru operacji We/Wy są liczone jako wiele operacji We/Wy o rozmiarze 256 KB. Na przykład KB 1100 operacji We/Wy jest traktowana jako 5 jednostek we/wy.
@@ -193,9 +186,10 @@ Poniżej przedstawiono niektóre ważne kwestie, aby dowiedzieć się o cele dot
 
 * **Trafienia w pamięci podręcznej**
 
-    Trafienia w pamięci podręcznej nie są ograniczone przez przydzielonego na SEKUNDĘ lub przepływności dysku. Na przykład, kiedy używać dysk z danymi **tylko do odczytu** ustawienie pamięci podręcznej na maszynie Wirtualnej, która jest obsługiwana przez usługę Premium Storage odczytów, które są udostępniane z pamięci podręcznej nie podlegają operacji We/Wy i przepływność limity dysku. Jeśli obciążenie dysku jest przeważnie odczyty, możesz otrzymać bardzo wysokiej przepływności. Pamięć podręczna jest obowiązywać osobne operacje We/Wy i ograniczeniami przepływność na maszynę Wirtualną poziomu, na podstawie rozmiaru maszyny Wirtualnej. Maszyny wirtualne z serii DS ma około 4000 operacje We/Wy i 33-MB/s przepływności na rdzeń procesora, pamięci podręcznej i lokalny dysk SSD operacji We/Wy. Maszyny wirtualne z serii GS mają limit 5000 operacji We/Wy i 50-MB/s przepływności na rdzeń procesora, pamięci podręcznej i lokalny dysk SSD operacji We/Wy. 
+    Trafienia w pamięci podręcznej nie są ograniczone przez przydzielonego na SEKUNDĘ lub przepływności dysku. Na przykład, kiedy używać dysk z danymi **tylko do odczytu** ustawienie pamięci podręcznej na maszynie Wirtualnej, która jest obsługiwana przez usługę Premium Storage odczytów, które są udostępniane z pamięci podręcznej nie podlegają operacji We/Wy i przepływność limity dysku. Jeśli obciążenie dysku jest przeważnie odczyty, możesz otrzymać bardzo wysokiej przepływności. Pamięć podręczna jest obowiązywać osobne operacje We/Wy i ograniczeniami przepływność na maszynę Wirtualną poziomu, na podstawie rozmiaru maszyny Wirtualnej. Maszyny wirtualne z serii DS ma około 4000 operacje We/Wy i 33-MB/s przepływności na rdzeń procesora, pamięci podręcznej i lokalny dysk SSD operacji We/Wy. Maszyny wirtualne z serii GS mają limit 5000 operacji We/Wy i 50-MB/s przepływności na rdzeń procesora, pamięci podręcznej i lokalny dysk SSD operacji We/Wy.
 
 ## <a name="throttling"></a>Ograniczanie przepływności
+
 Ograniczanie mogą wystąpić, jeśli Twoja aplikacja na SEKUNDĘ lub przepływności przekracza limit przydzielonego dysku magazynu w warstwie premium. Także ograniczenie może wystąpić, jeśli ruch sieciowy całkowitego miejsca na dysku dla wszystkich dysków na maszynie Wirtualnej przekracza limit przepustowości dysku dostępne dla maszyny Wirtualnej. Aby uniknąć ograniczania przepustowości, zaleca się ograniczenie liczby oczekujących żądań We/Wy dysku. Użyj limit na podstawie cele dotyczące skalowalności i wydajności dla dysku, które zostały aprowizowane i przepustowości dysku dostępne dla maszyny Wirtualnej.  
 
 Aplikację można osiągnąć najniższe opóźnienie, podczas zaprojektowano w celu uniknięcia ograniczania przepustowości. Jednakże, jeśli liczba oczekujących żądań We/Wy na dysku jest za mały, aplikacji nie mogą korzystać z maksymalna liczba IOPS i poziomów przepływności, które są dostępne dla dysku.
@@ -203,17 +197,19 @@ Aplikację można osiągnąć najniższe opóźnienie, podczas zaprojektowano w 
 W poniższych przykładach pokazano sposób obliczania ograniczania poziomów. Wszystkie obliczenia są oparte na rozmiar jednostki we/wy wynoszący 256 KB.
 
 ### <a name="example-1"></a>Przykład 1
+
 W ciągu jednej sekundy na dysku P10, aplikacji został przetworzony 495 jednostki we/wy o rozmiarze 16 KB. Jednostki We/Wy są liczone jako 495 operacje We/Wy. Jeśli spróbujesz drugi 2 MB operacji We/Wy w tym samym, łączna liczba operacji We/Wy jednostek jest równa 495 + 8 operacje We/Wy. Jest to spowodowane 2 MB operacji We/Wy = 256 KB-2048 KB = 8 operacji We/Wy, jednostki, gdy rozmiar jednostki we/wy to 256 KB. Ponieważ sumę 495 + 8 limit 500 operacji We/Wy dysku, ograniczanie występuje.
 
 ### <a name="example-2"></a>Przykład 2
+
 Aplikacja została przetworzona 400 jednostek we/wy o rozmiarze 256 KB na dysku P10. Jest całkowitej przepustowości (400 &#215; 256) / 1024 KB = 100 MB/s. Dysku P10 ma limit przepustowości 100 MB/s. Jeśli Twoja aplikacja próbuje wykonać więcej operacji We/Wy w tym sekundy, jest ograniczona, ponieważ przekracza on limit przydzielone.
 
 ### <a name="example-3"></a>Przykład 3
+
 Masz maszynę Wirtualną DS4 dwa dyski P30 dołączone. Każdy dysk P30 jest zdolny do 200-MB/s przepływności. Jednak DS4 maszyny Wirtualnej ma pojemność przepustowości całkowitego miejsca na dysku wynoszący 256 MB/s. Nie może sterować obydwa dyski dołączone do maksymalnej przepływności na tej maszynie Wirtualnej DS4 w tym samym czasie. Aby rozwiązać ten problem, może wytrzymać ruchu 200 MB/s na dysk i 56 MB/s na innym dysku. Jeśli suma dysku ruch sieciowy przechodzi przez 256 MB/s, jest ograniczany ruch dyskowy.
 
 > [!NOTE]
 > Jeśli ruch sieciowy dysku składa się przede wszystkim małych rozmiarów operacji We/Wy, prawdopodobnie aplikacja osiągnie limit operacji We/Wy przed limit przepływności. Jednak jeśli ruch dyskowy składa się przede wszystkim rozmiarów operacji We/Wy, prawdopodobnie aplikacja osiągnie limit przepływności po pierwsze, zamiast limit operacji We/Wy. Za pomocą optymalny rozmiar operacji We/Wy, mogą maksymalizować aplikacji operacje We/Wy i przepływność. Ponadto można ograniczyć liczbę oczekujących żądań We/Wy dysku.
-> 
 
 Aby uzyskać więcej informacji na temat Projektowanie pod kątem wysokiej wydajności przy użyciu usługi Premium Storage, zobacz [projektowanie pod kątem wydajności Usługa Premium Storage](../articles/virtual-machines/windows/premium-storage-performance.md).
 
@@ -312,11 +308,12 @@ Aby uzyskać szczegółowe informacje na temat cen usługi Premium Storage, Usł
 * [Ceny maszyn wirtualnych](https://azure.microsoft.com/pricing/details/virtual-machines/)
 * [Ceny usługi Managed disks](https://azure.microsoft.com/pricing/details/managed-disks/)
 
-## <a name="azure-backup-support"></a>Obsługa usługi Azure Backup 
+## <a name="azure-backup-support"></a>Obsługa usługi Azure Backup
 
 Do odzyskiwania po awarii regionalnej możesz należy wykonać kopię zapasową dysków maszyn wirtualnych w różnych regionach za pomocą [kopia zapasowa Azure](../articles/backup/backup-introduction-to-azure-backup.md) i konto magazynu GRS jako magazyn kopii zapasowych.
 
 Aby utworzyć zadanie tworzenia kopii zapasowej z kopii zapasowych opartych na czasie, łatwe przywracanie maszyny Wirtualnej i zasad przechowywania kopii zapasowych, użyj usługi Azure Backup. Narzędzie Kopia zapasowa służy zarówno z dysków niezarządzanych i zarządzanych. Aby uzyskać więcej informacji, zobacz [usługi Azure Backup dla maszyn wirtualnych z dyskami niezarządzanymi](../articles/backup/backup-azure-vms-first-look-arm.md) i [usługi Azure Backup dla maszyn wirtualnych z dyskami zarządzanymi](../articles/backup/backup-introduction-to-azure-backup.md#using-managed-disk-vms-with-azure-backup). 
 
 ## <a name="next-steps"></a>Kolejne kroki
+
 Aby uzyskać więcej informacji o usłudze Premium Storage zobacz następujące artykuły.

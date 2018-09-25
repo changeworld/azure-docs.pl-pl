@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: c0d028b2e6f5e759b46293bc3e1cbef6902ea8ea
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: b942b85c954bb765833426f3f9a010a66f016a90
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45740852"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972321"
 ---
 # <a name="azure-storage-account-overview"></a>Przegląd konta usługi Azure storage
 
@@ -94,8 +94,8 @@ Podczas określania nazwy konta magazynu należy pamiętać o następujących re
 
 Kont magazynu ogólnego przeznaczenia można skonfigurować dla jednej z następujących warstw wydajności:
 
-* Warstwę wydajności magazynu w warstwie standardowa do przechowywania obiektów blob, plików, tabel, kolejek i dysków maszyny wirtualnej platformy Azure.
-* Warstwę wydajności magazynu premium do przechowywania tylko dysków maszyny wirtualnej platformy Azure. Zobacz temat [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](../../virtual-machines/windows/premium-storage.md) (Premium Storage: usługa Storage o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure), aby uzyskać szczegółowe informacje o usłudze Premium Storage.
+* Warstwa wydajności warstwy standardowa do przechowywania obiektów blob, plików, tabel, kolejek i dysków maszyny wirtualnej platformy Azure.
+* Warstwa wydajności premium do przechowywania tylko dysków maszyny wirtualnej platformy Azure. Zobacz temat [Premium Storage: High-Performance Storage for Azure Virtual Machine Workloads](../../virtual-machines/windows/premium-storage.md) (Premium Storage: usługa Storage o wysokiej wydajności dla obciążeń maszyn wirtualnych platformy Azure), aby uzyskać szczegółowe informacje o usłudze Premium Storage.
 
 ## <a name="access-tiers-for-block-blob-data"></a>Warstwy dostępu dla bloku danych obiektu blob
 
@@ -107,12 +107,15 @@ Są warstwy dostępu:
 * **Chłodna** warstwy dostępu, które jest zoptymalizowane pod kątem przechowywania dużych ilości danych, które rzadko uzyskuje dostęp i przechowywane przez co najmniej 30 dni. Przechowywanie danych w warstwie chłodna jest bardziej opłacalna, ale dostęp do tych danych może być nieco bardziej kosztowne niż dostęp do danych w warstwie gorąca.
 * **Archiwum** warstwę, która jest dostępna tylko dla poszczególnych blokowych obiektów blob. Warstwę archiwum jest zoptymalizowany pod kątem danych, które mogą tolerować kilka godzin opóźnienia w pobieraniu i pozostaną w warstwie archiwum przez co najmniej 180 dni. Warstwę archiwum jest najbardziej ekonomiczna opcja do przechowywania danych, ale dostęp do tych danych jest droższe niż dostęp do danych w gorących i chłodnych warstwach. 
 
+> [!NOTE]
+> [Dostępu w warstwie Premium](../blobs/storage-blob-storage-tiers.md#premium-access-tier) jest dostępna w ograniczonej wersji zapoznawczej jako konto magazyn lokalnie nadmiarowy (LRS) w regionach: Europa Północna, wschodnie stany USA 2, środkowe stany USA i zachodnie stany USA. Aby dowiedzieć się, jak zarejestrować się w wersji zapoznawczej, zobacz [wprowadzenie do magazynu obiektów Blob platformy Azure — wersja Premium](http://aka.ms/premiumblob).
+
 W przypadku zmiany wzorca użycia danych można przełączać się między tymi warstwami dostępu w dowolnym momencie. 
 
 > [!IMPORTANT]
 > Zmiana warstwy dostępu dla istniejącego konta magazynu lub obiektu blob może spowodować naliczenie dodatkowych opłat.
 
-Aby uzyskać więcej informacji na temat warstw dostępu, zobacz [usługi Azure Blob storage: gorąca, chłodna i archiwalna magazynu](../blobs/storage-blob-storage-tiers.md).
+Aby uzyskać więcej informacji na temat warstw dostępu, zobacz [usługi Azure Blob storage: Premium (wersja zapoznawcza), gorąca, chłodna i archiwalna magazynu](../blobs/storage-blob-storage-tiers.md).
 
 ## <a name="replication"></a>Replikacja
 

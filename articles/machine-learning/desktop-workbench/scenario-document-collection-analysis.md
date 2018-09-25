@@ -11,14 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/20/2017
-ms.openlocfilehash: 29f493449d48df26919a98452fa7f832d653d45e
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ROBOTS: NOINDEX
+ms.openlocfilehash: 762955103aeb48eb8a9b62f4e3ffe193bba71a38
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37861786"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947221"
 ---
 # <a name="document-collection-analysis"></a>Analiza kolekcji dokumentów
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 W tym scenariuszu pokazano, jak sumować i analizować duży zbiór dokumentów, łącznie z technik, takich jak learning frazy, tematu, modelowanie i analizy modelu tematu przy użyciu aplikacji Azure ML Workbench. Usługa Azure Machine Learning Workbench umożliwia łatwe skalowanie dla kolekcji bardzo dużych dokumentów i udostępnia mechanizmy do nauczenia i dostrajania modeli w ramach różnych konteksty obliczeniowe, od lokalnego obliczeń do maszyn wirtualnych do nauki o danych do klastra Spark. Łatwe projektowanie jest oferowana w ramach notesów programu Jupyter w usłudze Azure Machine Learning Workbench.
 
@@ -60,7 +65,7 @@ To algorytmów uczenia maszynowego technik/używaną w tym scenariuszu:
 
 Wymagania wstępne dotyczące uruchamiania w tym przykładzie są następujące:
 
-* Upewnij się, że poprawnie zainstalowano [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) postępując zgodnie z [Instalowanie i Tworzenie szybkiego startu](../service/quickstart-installation.md).
+* Upewnij się, że poprawnie zainstalowano [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) postępując zgodnie z [Instalowanie i Tworzenie szybkiego startu](quickstart-installation.md).
 
 * W tym przykładzie, może uruchomić w dowolnym kontekście obliczeniowym. Jednak zaleca się ją uruchomić na maszynie wielordzeniowych z co najmniej 16GB pamięci RAM i miejsca na dysku 5GB.
 

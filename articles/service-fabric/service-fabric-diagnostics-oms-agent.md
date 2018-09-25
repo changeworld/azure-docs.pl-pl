@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 04/16/2018
 ms.author: srrengar
-ms.openlocfilehash: b97a32e2e859a5bb370873bfbdc5c6b4dffa1ac1
-ms.sourcegitcommit: 194789f8a678be2ddca5397137005c53b666e51e
+ms.openlocfilehash: 3d7cf50bd2c845764aa2c3ac3b3db6891ff5c8d8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/25/2018
-ms.locfileid: "39237846"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46993854"
 ---
 # <a name="performance-monitoring-with-log-analytics"></a>Monitorowanie wydajności za pomocą usługi Log Analytics
 
@@ -30,7 +30,7 @@ W tym artykule opisano kroki, aby dodać agenta usługi Log Analytics, ponieważ
 
 ## <a name="add-the-agent-extension-via-azure-cli"></a>Dodaj rozszerzenie agenta za pomocą wiersza polecenia platformy Azure
 
-Najlepszym sposobem, aby dodać agenta usługi Log Analytics do klastra za pośrednictwem skalowania maszyn wirtualnych jest ustawiana interfejsami API dostępnymi z wiersza polecenia platformy Azure. Jeśli nie masz jeszcze skonfigurowane interfejsu wiersza polecenia platformy Azure, przejdź do witryny Azure portal i otworzyć [Cloud Shell](../cloud-shell/overview.md) wystąpienia lub [instalowanie interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli).
+Najlepszym sposobem, aby dodać agenta usługi Log Analytics do klastra za pośrednictwem skalowania maszyn wirtualnych jest ustawiana interfejsami API dostępnymi z wiersza polecenia platformy Azure. Jeśli nie masz jeszcze skonfigurowane interfejsu wiersza polecenia platformy Azure, przejdź do witryny Azure portal i otworzyć [Cloud Shell](../cloud-shell/overview.md) wystąpienia lub [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli).
 
 1. Gdy wymagane są usługi Cloud Shell, upewnij się, że pracujesz w tej samej subskrypcji co zasób. Sprawdź to za pomocą `az account show` i upewnij się, wartości "name" zgodne z subskrypcji usługi klastra.
 

@@ -1,6 +1,6 @@
 ---
-title: Jak wdrożyć model jako usługę sieci web na układu FPGA przy użyciu usługi Azure Machine Learning
-description: Dowiedz się, jak wdrożyć usługę sieci web z modelem systemem układu FPGA przy użyciu usługi Azure Machine Learning.
+title: Wdrażanie modelu jako usługi sieci web na FPGA za pomocą usługi Azure Machine Learning
+description: Dowiedz się, jak wdrożyć usługę sieci web przy użyciu modelu z systemem FPGA za pomocą usługi Azure Machine Learning.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -8,166 +8,212 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
-ms.date: 05/07/2018
-ms.openlocfilehash: f3237980a1ad1969b5cf8d42d547ddf96608dd97
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.date: 09/24/2018
+ms.openlocfilehash: ee67585a523ab96b1442d9eee3e9dfd55a758d32
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33789397"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971488"
 ---
-# <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning"></a>Wdróż model jako usługę sieci web na układu FPGA przy użyciu usługi Azure Machine Learning
+# <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning"></a>Wdrażanie modelu jako usługi sieci web na FPGA za pomocą usługi Azure Machine Learning
 
-W tym dokumencie zostanie przedstawiony sposób konfigurowania środowiska stacji roboczej i wdrożyć ten model jako usługę sieci web na [pola Tablice bramek programowane (układu FPGA)](concept-accelerate-with-fpgas.md). Usługa sieci web używa Brainwave projektu do uruchamiania na układu FPGA modelu.
+Model można wdrożyć jako usługę sieci web, na [pola Tablice bramek programowane (układów FPGA)](concept-accelerate-with-fpgas.md).  Za pomocą układów FPGA zapewnia wnioskowania niezwykle małych opóźnień, nawet w przypadku rozmiar jednej partii.   
 
-Używanie FPGAs zapewnia inferencing bardzo niskim opóźnieniem, nawet w przypadku pojedynczej partii o rozmiarze.
+## <a name="prerequisites"></a>Wymagania wstępne
 
-## <a name="create-an-azure-machine-learning-model-management-account"></a>Tworzenie konta usługi Azure Machine Learning Model zarządzania
+- Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-1. Przejdź do strony tworzenia konta zarządzania modelu w [Azure Portal](https://aka.ms/aml-create-mma).
+- Obszar roboczy usługi Azure Machine Learning i Azure Machine Learning SDK dla język Python jest zainstalowany. Dowiedz się, jak uzyskać te wymagania wstępne przy użyciu [sposób konfigurowania środowiska deweloperskiego](how-to-configure-environment.md) dokumentu.
+ 
+  - Obszar roboczy musi być zapisana w *wschodnie stany USA 2* regionu.
 
-2. W portalu, Utwórz konto zarządzania modelu w **wschodnie stany USA 2** regionu.
+  - Zainstaluj dodatkowe contrib:
 
-   ![Obraz ekranu Utwórz konto zarządzania modelu](media/how-to-deploy-fpga-web-service/azure-portal-create-mma.PNG)
+    ```shell
+    pip install --upgrade azureml-sdk[contrib]
+    ```  
 
-3. Nadaj nazwę konta Model zarządzania, wybierz subskrypcję i wybierz grupę zasobów.
+## <a name="create-and-deploy-your-model"></a>Tworzenie i wdrażanie modelu
+Tworzenie potoku w celu wstępnego przetworzenia obrazu wejściowego cechowanie go za pomocą siecią ResNet-50 na FPGA, a następnie uruchom funkcji, za pośrednictwem classifer skonfigurowanych pod kątem w zestawie danych sieci ImageNet.
 
-   >[!IMPORTANT]
-   >Lokalizacja, musisz wybrać **wschodnie stany USA 2** jako obszar.  Nie inne regiony są obecnie dostępne.
+Postępuj zgodnie z instrukcjami, aby:
 
-4. Wybierz warstwę cenową (S1 jest wystarczająca, ale również działać S2 i S3).  Warstwa DevTest nie jest obsługiwana.  
-
-5. Kliknij przycisk **wybierz** o potwierdzenie warstwę cenową.
-
-6. Kliknij przycisk **Utwórz** Zarządzanie modelu uczenia Maszynowego po lewej stronie.
-
-## <a name="get-model-management-account-information"></a>Uzyskaj informacje o koncie Model zarządzania
-
-Aby uzyskać informacje o Twojej modelu administracyjnego konta (MMA), kliknij przycisk __konto zarządzania modelu__ w portalu Azure.
-
-Skopiuj wartości z następujących elementów:
-
-+ Nazwa konta zarządzania modelu (w w lewym górnym rogu)
-+ Nazwa grupy zasobów
-+ Identyfikator subskrypcji
-+ Lokalizacja (Użyj "eastus2")
-
-![Informacje o koncie zarządzania modelu](media/how-to-deploy-fpga-web-service/azure-portal-mma-info.PNG)
-
-## <a name="set-up-your-machine"></a>Konfigurowanie komputera
-
-Aby skonfigurować stację roboczą do układu FPGA wdrożenia, wykonaj następujące kroki:
-
-1. Pobierz i zainstaluj najnowszą wersję [Git](https://git-scm.com/downloads).
-
-2. Zainstaluj [Anaconda (Python 3,6)](https://conda.io/miniconda.html).
-
-3. Aby pobrać środowiska Anaconda, użyj następującego polecenia w wierszu Git:
-
-    ```
-    git clone https://aka.ms/aml-real-time-ai
-    ```
-
-4. Aby utworzyć środowisko, otwórz **wiersza Anaconda** (Brak monitów Azure Machine Learning Workbench) i uruchom następujące polecenie:
-
-    > [!IMPORTANT]
-    > `environment.yml` Plik znajduje się w repozytorium git sklonowany w poprzednim kroku. Zmień ścieżkę, w razie potrzeby, aby wskazać plik na stację roboczą.
-
-    ```
-    conda env create -f environment.yml
-    ```
-
-5. Aby aktywować środowiska, użyj następującego polecenia:
-
-    ```
-    conda activate amlrealtimeai
-    ```
-
-6. Aby uruchomić serwera notesu Jupyter, użyj następującego polecenia:
-
-    ```
-    jupyter notebook
-    ```
-
-    Dane wyjściowe tego polecenia jest podobny do następującego tekstu:
-
-    ```text
-    Copy/paste this URL into your browser when you connect for the first time, to login with a token:
-        http://localhost:8888/?token=bb2ce89cc8ae931f5df50f96e3a6badfc826ff4100e78075
-    ```
-
-    > [!TIP]
-    > Inny token zostanie wyświetlony każdorazowo po uruchomieniu polecenia.
-
-    Jeśli przeglądarka nie zostanie automatycznie uruchomiony z notesem Jupyter, użyj adresu URL HTTP zwrócony przez poprzednie polecenie, aby otworzyć stronę.
-
-    ![Obraz strony sieci web notesu Jupyter](./media/how-to-deploy-fpga-web-service/jupyter-notebook.png)
-
-## <a name="deploy-your-model"></a>Wdróż model
-
-Z notesu Jupyter Otwórz `00_QuickStart.ipynb` notesu z `notebooks/resnet50` katalogu. Postępuj zgodnie z instrukcjami w notesie do:
-
-* Zdefiniuj usługę
+* Zdefiniuj potoku modelu
 * Wdrażanie modelu
-* Korzystanie z wdrożonym modelu
-* Usunięcie wdrożonych usług
+* Używanie wdrożonego modelu
+* Usuwanie wdrożonych usług
 
 > [!IMPORTANT]
-> Aby zoptymalizować opóźnienia i przepływności, stacji roboczej powinna być w tym samym regionie Azure jako punktu końcowego.  Obecnie interfejsy API są tworzone w regionie wschodnie nam Azure.
+> W celu zoptymalizowania opóźnienia i przepływności, klienta należy w tym samym regionie platformy Azure jako punktu końcowego.  Obecnie interfejsy API są tworzone w regionie wschodnie stany USA Azure.
 
-## <a name="ssltls-and-authentication"></a>SSL/TLS i uwierzytelniania
+### <a name="get-the-notebook"></a>Pobieranie notesu
 
-Usługa Azure Machine Learning zapewnia obsługę protokołu SSL i uwierzytelniania opartego na kluczach. Dzięki temu można ograniczyć dostęp do usługi i zabezpieczonych danych przesyłanych przez klientów.
+Dla wygody w tym samouczku jest dostępna jako notesu programu Jupyter. Użyj jednej z tych metod do uruchamiania `project-brainwave/project-brainwave-quickstart.ipynb` Notes:
 
-> [!NOTE]
-> Kroki opisane w tej sekcji dotyczą tylko Azure Machine Learning sprzętu przyspieszony modeli. Dotyczących standardowych usług Azure Machine Learning, zobacz [jak skonfigurować protokół SSL dla usługi Azure Machine Learning obliczeniowe](https://docs.microsoft.com/azure/machine-learning/preview/how-to-setup-ssl-on-mlc) dokumentu.
+[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
+
+### <a name="preprocess-image"></a>Wstępne przetwarzanie obrazu
+Pierwszy etap potoku jest przetwarzanie wstępne obrazów.
+
+```python
+import os
+import tensorflow as tf
+
+# Input images as a two-dimensional tensor containing an arbitrary number of images represented a strings
+import azureml.contrib.brainwave.models.utils as utils
+in_images = tf.placeholder(tf.string)
+image_tensors = utils.preprocess_array(in_images)
+print(image_tensors.shape)
+```
+### <a name="add-featurizer"></a>Dodaj Featurized
+Inicjowanie modelu i Pobierz punkt kontrolny TensorFlow wykonywanie kwantyzowanych wersji ResNet50 ma być używany jako featurized.
+
+```python
+from azureml.contrib.brainwave.models import QuantizedResnet50, Resnet50
+model_path = os.path.expanduser('~/models')
+model = QuantizedResnet50(model_path, is_frozen = True)
+feature_tensor = model.import_graph_def(image_tensors)
+print(model.version)
+print(feature_tensor.name)
+print(feature_tensor.shape)
+```
+
+### <a name="add-classifier"></a>Dodaj klasyfikatora
+Po zapoznaniu to klasyfikatora na zestawie danych sieci ImageNet.
+
+```python
+classifier_input, classifier_output = Resnet50.get_default_classifier(feature_tensor, model_path)
+```
+
+### <a name="create-service-definition"></a>Tworzenie definicji usługi
+Teraz, gdy masz zdefiniowanego wstępnego przetwarzania obrazu, featurized i klasyfikatora, który jest uruchamiany w usłudze, można utworzyć definicji usługi. Definicja usługi to zbiór plików wygenerowany na podstawie modelu, który jest wdrożony w usłudze FPGA. Definicja usługi składa się z potoku. Potok jest serię etapów, które są uruchamiane w kolejności.  Etapy TensorFlow, Keras etapów i etapy BrainWave są obsługiwane.  Etapy są uruchamiane w kolejności od usługi, z danymi wyjściowymi wprowadzania danych wejściowych każdego etapu w kolejnym etapie.
+
+Aby utworzyć etapu TensorFlow, określ sesję zawierający wykres (w tym przypadku wykres domyślne są używane) i dane wejściowe i wyjściowe tensors na tym etapie.  Te informacje jest używany, aby zapisać wykres, dzięki czemu mogą być uruchamiane w usłudze.
+
+```python
+from azureml.contrib.brainwave.pipeline import ModelDefinition, TensorflowStage, BrainWaveStage
+
+save_path = os.path.expanduser('~/models/save')
+model_def_path = os.path.join(save_path, 'service_def.zip')
+
+model_def = ModelDefinition()
+with tf.Session() as sess:
+    model_def.pipeline.append(TensorflowStage(sess, in_images, image_tensors))
+    model_def.pipeline.append(BrainWaveStage(sess, model))
+    model_def.pipeline.append(TensorflowStage(sess, classifier_input, classifier_output))
+    model_def.save(model_def_path)
+    print(model_def_path)
+```
+
+### <a name="deploy-model"></a>Wdrażanie modelu
+Tworzenie usługi na podstawie definicji usługi.  Obszar roboczy musi znajdować się w lokalizacji wschodnie stany USA 2.
+
+```python
+from azureml.core import Workspace
+
+ws = Workspace.from_config()
+print(ws.name, ws.resource_group, ws.location, ws.subscription_id, sep = '\n')
+
+from azureml.core.model import Model
+model_name = "resnet-50-rtai"
+registered_model = Model.register(ws, model_def_path, model_name)
+
+from azureml.core.webservice import Webservice
+from azureml.exceptions import WebserviceException
+from azureml.contrib.brainwave import BrainwaveWebservice, BrainwaveImage
+service_name = "imagenet-infer"
+service = None
+try:
+    service = Webservice(ws, service_name)
+except WebserviceException:
+    image_config = BrainwaveImage.image_configuration()
+    deployment_config = BrainwaveWebservice.deploy_configuration()
+    service = Webservice.deploy_from_model(ws, service_name, [registered_model], image_config, deployment_config)
+    service.wait_for_deployment(true)
+```
+
+### <a name="test-the-service"></a>Testowanie usługi
+Wysyłanie obrazu do interfejsu API i testowanie odpowiedzi, należy dodać mapowanie z Identyfikatorem klasy danych wyjściowych do sieci ImageNet nazwy klasy.
+
+```python
+import requests
+classes_entries = requests.get("https://raw.githubusercontent.com/Lasagne/Recipes/master/examples/resnet50/imagenet_classes.txt").text.splitlines()
+```
+
+Wywołanie usługi i zastąp nazwę pliku "your image.jpg" poniżej obrazu z Twojego komputera. 
+
+```python
+with open('your-image.jpg') as f:
+    results = service.run(f)
+# map results [class_id] => [confidence]
+results = enumerate(results)
+# sort results by confidence
+sorted_results = sorted(results, key=lambda x: x[1], reverse=True)
+# print top 5 results
+for top in sorted_results[:5]:
+    print(classes_entries[top[0]], 'confidence:', top[1])
+``` 
+
+### <a name="clean-up-service"></a>Czyszczenie usługi
+Usuń usługę.
+
+```python
+service.delete()
+    
+registered_model.delete()
+```
+
+## <a name="secure-fpga-web-services"></a>Zabezpieczania usług sieci web FPGA
+
+Azure modeli usługi Machine Learning systemem układów FPGA zapewniają obsługę protokołu SSL i uwierzytelniania opartego na kluczu. Dzięki temu można ograniczyć dostęp do swojej usługi i zabezpieczanie danych przesyłanych przez klientów.
 
 > [!IMPORTANT]
-> Uwierzytelnianie jest włączone tylko dla usług, które zostały podane certyfikat i klucz. 
+> Uwierzytelnianie jest włączona tylko dla usług, które zostały podane certyfikat i klucz. 
 >
-> Jeśli protokół SSL nie jest włączone, każdy użytkownik w Internecie będzie do nawiązywania połączeń z usługą.
+> Jeśli protokół SSL nie jest włączona, każdy użytkownik w Internecie będzie do nawiązywania połączeń z usługą.
 >
-> Jeśli włączenie protokołu SSL i uwierzytelniania jest wymagany w przypadku uzyskiwania dostępu do usługi.
+> Po włączeniu protokołu SSL i klucz uwierzytelniania jest wymagany podczas uzyskiwania dostępu do usługi.
 
-Protokół SSL szyfruje dane przesyłane między klientem a usługą. On również używany przez klienta, aby sprawdzić tożsamość serwera.
+Protokół SSL, są szyfrowane dane przesyłane między klientem a usługą. On również używany przez klienta, aby zweryfikować tożsamość serwera.
 
-Możesz wdrożyć usługę z włączonym protokołem SSL lub zaktualizować już wdrożonej usługi, aby je włączyć. Kroki są takie same:
+Wdrażanie usługi z włączonym protokołem SSL lub zaktualizować już wdrożonej usługi, aby ją włączyć. Kroki są takie same:
 
-1. Uzyskać nazwę domeny.
+1. Uzyskuje nazwę domeny.
 
-2. Należy uzyskać certyfikat SSL.
+2. Uzyskaj certyfikat protokołu SSL.
 
-3. Wdrożeniem lub aktualizację usługi z włączonym protokołem SSL.
+3. Wdrażanie lub zaktualizuj usługę z włączonym protokołem SSL.
 
-4. Zaktualizuj systemie DNS, aby wskazywał usługi.
+4. Zaktualizuj serwer DNS, aby wskazać usługę.
 
-### <a name="acquire-a-domain-name"></a>Uzyskanie nazwy domeny
+### <a name="acquire-a-domain-name"></a>Uzyskiwanie nazwy domeny
 
-Jeśli nie ma już nazwę domeny, możesz kupić ją od __rejestratora nazw domen__. Proces jest różny od rejestratorów, tak jak w przypadku kosztów. Rejestratora także udostępnia narzędzia do zarządzania nazwy domeny. Te narzędzia są używane do mapowania w pełni kwalifikowaną nazwą domeny (np. www.contoso.com) do usługi hostowanej na adres IP.
+Jeśli nie jesteś już właścicielem nazwy domeny, możesz kupić jeden z __rejestratora nazw domen__. Ten proces różni się między rejestratorów, tak jak koszt. Rejestrator również udostępnia narzędzia do zarządzania nazwy domeny. Te narzędzia są używane do mapowania w pełni kwalifikowaną nazwę domeny (np. www.contoso.com) do usługi jest hostowana na adres IP.
 
-### <a name="acquire-an-ssl-certificate"></a>Uzyskanie certyfikatu SSL.
+### <a name="acquire-an-ssl-certificate"></a>Uzyskaj certyfikat protokołu SSL
 
-Istnieje wiele sposobów, aby uzyskać certyfikat SSL. Najbardziej typowe ma kupić ją od __urzędu certyfikacji__ (CA). Niezależnie od tego, gdzie można uzyskać certyfikat potrzebne są następujące pliki:
+Istnieje wiele sposobów, aby uzyskać certyfikat SSL. Najczęściej jest nabyć jeden z __urzędu certyfikacji__ (CA). Niezależnie od tego, gdzie można uzyskać certyfikat potrzebne są następujące pliki:
 
-* A __certyfikatu__. Certyfikat musi zawierać łańcucha certyfikatów pełne i musi być zakodowany w formacie PEM.
-* A __klucza__. Klucz musi być zakodowany w formacie PEM.
+* A __certyfikatu__. Certyfikat musi zawierać łańcucha certyfikatów pełnego i musi być zakodowany w formacie PEM.
+* A __klucz__. Klucz musi być zakodowany w formacie PEM.
 
 > [!TIP]
-> Jeśli urząd certyfikacji nie może dostarczyć certyfikat i klucz jako pliki zakodowane w formacie PEM, można użyć narzędzia takie jak [OpenSSL](https://www.openssl.org/) zmienić format.
+> Jeśli urząd certyfikacji nie może dostarczyć certyfikat i klucz jako pliki zakodowane w formacie PEM, możesz użyć narzędzia takie jak [OpenSSL](https://www.openssl.org/) zmian w formacie.
 
 > [!IMPORTANT]
-> Certyfikaty z podpisem własnym używanego tylko do tworzenia. Ich nie można używać w środowisku produkcyjnym.
+> Certyfikaty z podpisem własnym należy używać tylko w celach deweloperskich. Nie powinny one być używane w środowisku produkcyjnym.
 >
-> Jeśli używasz certyfikatu z podpisem własnym, zobacz [korzystających z tych usług z certyfikatów z podpisem własnym](#self-signed) sekcji, aby uzyskać szczegółowe instrukcje.
+> Jeśli używasz certyfikatu z podpisem własnym, zobacz [korzystanie z usług z certyfikatami z podpisem własnym](#self-signed) sekcji, aby uzyskać szczegółowe instrukcje.
 
 > [!WARNING]
-> Podczas żądania certyfikatu, podaj w pełni kwalifikowaną nazwę (FQDN) adresu, który planujesz używać usługi. Na przykład www.contoso.com. Adres oznaczony do certyfikatu i adres używany przez klientów są porównywane podczas weryfikowania tożsamości usługi.
+> Podczas żądania certyfikatu, podaj w pełni kwalifikowana nazwa domeny (FQDN) adresu, który ma być używany dla usługi. Na przykład www.contoso.com. Adres, który został oznaczony do certyfikatu i adres używany przez klientów, są porównywane podczas weryfikowania tożsamości usługi.
 >
-> Jeśli adres nie są zgodne, klienci spowoduje wystąpienie błędu. 
+> Jeśli adresy różnią się od siebie, klienci spowoduje wystąpienie błędu. 
 
 ### <a name="deploy-or-update-the-service-with-ssl-enabled"></a>Wdrożeniem lub aktualizację usługi z włączonym protokołem SSL
 
-Aby wdrożyć usługę z włączonym protokołem SSL, należy ustawić `ssl_enabled` parametr `True`. Ustaw `ssl_certificate` parametru z wartością __certyfikatu__ pliku i `ssl_key` wartość __klucza__ pliku. W poniższym przykładzie pokazano wdrażania usługi z włączonym protokołem SSL:
+Aby wdrożyć usługę z włączonym protokołem SSL, ustaw `ssl_enabled` parametr `True`. Ustaw `ssl_certificate` parametru na wartość __certyfikatu__ pliku i `ssl_key` wartość __klucz__ pliku. W poniższym przykładzie pokazano wdrażanie usługi z włączonym protokołem SSL:
 
 ```python
 from amlrealtimeai import DeploymentClient
@@ -189,20 +235,20 @@ with open('cert.pem','r') as cert_file:
         service = deployment_client.create_service(service_name, model_id, ssl_enabled=True, ssl_certificate=cert, ssl_key=key)
 ```
 
-Odpowiedź `create_service` operacji zawiera adres IP usługi. Adres IP jest używany podczas mapowania nazw DNS na adres IP usługi.
+Odpowiedź `create_service` operacja zawiera adres IP usługi. Adres IP jest używany, gdy mapowanie nazwy DNS na adres IP usługi.
 
-Odpowiedź zawiera także __klucza podstawowego__ i __klucza pomocniczego__ służące do korzystania z usługi.
+Odpowiedź zawiera również __klucza podstawowego__ i __klucz pomocniczy__ służące do korzystania z usługi.
 
-### <a name="update-your-dns-to-point-to-the-service"></a>Zaktualizuj systemie DNS, aby wskazywał usługi
+### <a name="update-your-dns-to-point-to-the-service"></a>Zaktualizuj serwer DNS, aby wskazać usługę
 
-Korzystania z narzędzi dostarczanych przez rejestratora nazw domen do zaktualizowania rekordu DNS dla nazwy domeny. Rekord musi wskazywać na adres IP usługi.
+Użyj narzędzi dostarczanych przez rejestratora nazw domen, aby zaktualizować rekord DNS dla nazwy domeny. Rekord musi wskazywać na adres IP usługi.
 
 > [!NOTE]
-> W zależności od rejestratora i czas wygaśnięcia (TTL) skonfigurowany dla nazwy domeny, może upłynąć kilka minut do kilku godzin, zanim klienci mogą rozpoznać nazwę domeny.
+> W zależności od Rejestrator i czas wygaśnięcia (TTL) skonfigurowany dla nazwy domeny, może upłynąć kilka minut do kilku godzin, zanim klienci mogą rozpoznać nazwę domeny.
 
-### <a name="consuming-authenticated-services"></a>Korzystające usługi uwierzytelnionego
+### <a name="consume-authenticated-services"></a>Używanie usług uwierzytelnionego
 
-W poniższych przykładach pokazano, jak korzystać z usługi uwierzytelniony przy użyciu języka Python i C#:
+W poniższych przykładach pokazano, jak używać usługi uwierzytelnionego przy użyciu języka Python i C#:
 
 > [!NOTE]
 > Zastąp `authkey` kluczem podstawowym lub pomocniczym zwrócony podczas tworzenia usługi.
@@ -224,9 +270,9 @@ using (var content = File.OpenRead(image))
     }
 ```
 
-Innym klientom gRPC może uwierzytelnić żądania przez ustawienie Nagłówek uwierzytelnienia. Ogólne podejście jest utworzenie `ChannelCredentials` obiekt, który łączy `SslCredentials` z `CallCredentials`. To jest dodawany do nagłówku autoryzacji żądania. Aby uzyskać więcej informacji na obsługę nagłówkach określonej implementacji, zobacz [ https://grpc.io/docs/guides/auth.html ](https://grpc.io/docs/guides/auth.html).
+Inni klienci gRPC można uwierzytelnić żądania, ustawiając nagłówka autoryzacji. Ogólne podejście jest utworzenie `ChannelCredentials` obiekt, który łączy `SslCredentials` z `CallCredentials`. To jest dodawany do nagłówka autoryzacji żądania. Aby uzyskać więcej informacji dotyczących implementowania pomocy technicznej dla Twojego określonych nagłówków, zobacz [ https://grpc.io/docs/guides/auth.html ](https://grpc.io/docs/guides/auth.html).
 
-Poniższe przykłady pokazują, jak można ustawić nagłówka w języku C#, a następnie przejść:
+W poniższych przykładach pokazano, jak ustawić nagłówek w języku C# i przejdź do sekcji:
 
 ```csharp
 creds = ChannelCredentials.Create(baseCreds, CallCredentials.FromInterceptor(
@@ -259,15 +305,15 @@ func (c *authCreds) RequireTransportSecurity() bool {
 }
 ```
 
-### <a id="self-signed"></a>Korzystanie z usług za pomocą certyfikatów z podpisem własnym
+### <a id="self-signed"></a>Korzystanie z usług z certyfikatami z podpisem własnym
 
-Istnieją dwa sposoby klienta do uwierzytelniania na serwerze zabezpieczone przy użyciu certyfikatu z podpisem własnym:
+Istnieją dwa sposoby, aby umożliwić klientowi uwierzytelniać się na serwerze, zabezpieczonego przy użyciu certyfikatu z podpisem własnym:
 
-* W systemie klienckim ustawiona `GRPC_DEFAULT_SSL_ROOTS_FILE_PATH` zmiennej środowiskowej, aby wskazać plik certyfikatu w systemie klienta.
+* W systemie klienta ustaw `GRPC_DEFAULT_SSL_ROOTS_FILE_PATH` zmiennej środowiskowej, aby wskazać plik certyfikatu w systemie klienta.
 
-* Podczas konstruowania `SslCredentials` obiektu, do konstruktora przekazać zawartość pliku certyfikatu.
+* Podczas tworzenia `SslCredentials` obiektów, Przekaż zawartość pliku certyfikatu do konstruktora.
 
-Przy użyciu jednej z metod powoduje, że gRPC do używania certyfikatu jako certyfikatu głównego.
+Przy użyciu jednej z metod powoduje, że gRPC użyć certyfikatu jako certyfikatu głównego.
 
 > [!IMPORTANT]
-> gRPC nie akceptuje certyfikatów niezaufanych. Za pomocą niezaufanego certyfikatu kończy się niepowodzeniem z `Unavailable` kod stanu. Szczegóły dotyczące błędu zawierają `Connection Failed`.
+> gRPC Akceptuj niezaufane certyfikaty. Za pomocą niezaufanego certyfikatu zakończy się niepowodzeniem z `Unavailable` kod stanu. Szczegóły dotyczące błędu zawierają `Connection Failed`.

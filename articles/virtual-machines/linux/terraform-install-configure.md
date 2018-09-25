@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 06/19/2018
 ms.author: echuvyrov
-ms.openlocfilehash: 1af96b686a1502d638b4335e22259b79169d1065
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 0943bd1bffb3df7beda97ea0619f1aced4ca3a41
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39173251"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946786"
 ---
 # <a name="install-and-configure-terraform-to-provision-vms-and-other-infrastructure-into-azure"></a>Instalowanie i konfigurowanie programu Terraform w celu aprowizowania maszyn wirtualnych i innych infrastruktury na platformie Azure
  
@@ -65,17 +65,17 @@ Teraz możesz utworzyć nazwę główną usługi do użycia przy użyciu program
 az ad sp create-for-rbac --role="Contributor" --scopes="/subscriptions/${SUBSCRIPTION_ID}"
 ```
 
-Twoje *appId*, *hasło*, *sp_name*, i *dzierżawy* są zwracane. Zwróć uwagę na wartości *appId* i *password*.
+Twoje `appId`, `password`, `sp_name`, i `tenant` są zwracane. Zwróć uwagę na `appId` i `password`.
 
 ## <a name="configure-terraform-environment-variables"></a>Konfigurowanie zmiennych środowiskowych narzędzia Terraform
 
 Aby skonfigurować narzędzie Terraform w celu użyć jednostki usługi Azure AD, ustaw następujące zmienne środowiskowe, które są następnie używane przez [modułów Azure Terraform](https://registry.terraform.io/modules/Azure). Można również ustawić środowiska pracy w chmurze platformy Azure innych niż publicznej platformy Azure.
 
-- ARM_SUBSCRIPTION_ID
-- ARM_CLIENT_ID
-- ARM_CLIENT_SECRET
-- ARM_TENANT_ID
-- ARM_ENVIRONMENT
+- `ARM_SUBSCRIPTION_ID`
+- `ARM_CLIENT_ID`
+- `ARM_CLIENT_SECRET`
+- `ARM_TENANT_ID`
+- `ARM_ENVIRONMENT`
 
 Poniższy przykładowy skrypt powłoki służy do ustawiania tych zmiennych:
 

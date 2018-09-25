@@ -3,19 +3,19 @@ title: Źródła danych obsługiwane — QnA Maker
 titleSuffix: Azure Cognitive Services
 description: Usługa QnA Maker automatycznie wyodrębniać pary pytań i odpowiedzi z typowych lub częściową strukturą zawartości formatów, takich jak często zadawane pytania i podręczniki. Zawartości mogą być również dodawane do bazy wiedzy z plików ze strukturą.
 services: cognitive-services
-author: nstulasi
+author: tulasim88
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: qna-maker
 ms.topic: article
-ms.date: 09/12/2018
-ms.author: saneppal
-ms.openlocfilehash: 0436d5015ee4b369aeead7691f87ef313259d391
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.date: 09/24/2018
+ms.author: tulasim
+ms.openlocfilehash: b9214d44061edad967212a1f904c2cdb6687dba2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544000"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039058"
 ---
 # <a name="data-sources"></a>Źródła danych 
 Usługa QnA Maker automatycznie wyodrębniać pary pytań i odpowiedzi z typowych lub częściową strukturą zawartości formatów, takich jak często zadawane pytania i podręczniki. Zawartości mogą być również dodawane do bazy wiedzy z plików ze strukturą.
@@ -71,7 +71,7 @@ Jeśli nie masz już istniejącą zawartość do wypełniania bazy wiedzy knowle
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Konfigurowanie usługi QnA Maker](../How-To/set-up-qnamaker-service-azure.md)
+> [Dodawanie użytkownika do odpowiedzi za pomocą czatu chit osób](../How-To/chit-chat-knowledge-base.md)
 
 ## <a name="see-also"></a>Zobacz także 
 

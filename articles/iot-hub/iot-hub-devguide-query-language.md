@@ -8,19 +8,19 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: f6959e0fec77ff046e4db86bad30502259775a49
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 2e4b356fec642e06e3223700967eeacd19f1c49c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022843"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952481"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Język zapytań usługi IoT Hub dla bliźniaczych reprezentacji urządzeń i modułów, zadań i routingu wiadomości
 
 IoT Hub udostępnia zaawansowane podobnego do SQL języka można pobrać informacji dotyczących [bliźniaczych reprezentacji urządzeń] [ lnk-twins] i [zadania][lnk-jobs]i [routing komunikatów][lnk-devguide-messaging-routes]. Ten artykuł przedstawia:
 
 * Wprowadzenie do najważniejszych funkcji języka zapytań usługi IoT Hub, a
-* Szczegółowy opis języka.
+* Szczegółowy opis języka. Aby uzyskać szczegółowe informacje dotyczące języka zapytania do rozsyłania wiadomości, zobacz [zapytania w routingu komunikatów](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
@@ -305,126 +305,6 @@ Obecnie zapytanie na **devices.jobs** nie obsługują:
 * Warunki, które odwołują się do bliźniaczej reprezentacji urządzenia, oprócz właściwości zadania (zobacz poprzednią sekcję).
 * Wykonuje agregacje, takie jak liczba, avg, Grupuj według.
 
-## <a name="device-to-cloud-message-routes-query-expressions"></a>Trasy wiadomości z urządzenia do chmury, wyrażeniach zapytań
-
-Za pomocą [trasy urządzenia do chmury][lnk-devguide-messaging-routes], można skonfigurować usługę IoT Hub do wysyłania komunikatów urządzenie chmura do różnych punktów końcowych. Wysyła opiera się na wyrażeniach obliczone dla poszczególnych wiadomości.
-
-Trasa [warunek] [ lnk-query-expressions] używa składni języka zapytań usługi IoT Hub, zgodnie z warunkami zapytań bliźniaczych reprezentacji i zadań, ale tylko podzbiór funkcji są dostępne. Warunki trasy są oceniane w nagłówkach wiadomości oraz treść. Routing wyrażeniu zapytania może obejmować tylko nagłówki wiadomości, tylko treści wiadomości, lub oba komunikatu nagłówki i treść komunikatu. Usługi IoT Hub zakłada określonego schematu dla nagłówki i treść wiadomości w celu kierowanie komunikatów w postaci, a w poniższych sekcjach opisano, co jest wymagane dla usługi IoT Hub prawidłowo trasy.
-
-### <a name="routing-on-message-headers"></a>Routing w nagłówkach wiadomości
-
-Usługa IoT Hub zakłada następującą reprezentację JSON nagłówków wiadomości do rozsyłania wiadomości:
-
-```json
-{
-  "message": {
-    "systemProperties": {
-      "contentType": "application/json",
-      "contentEncoding": "utf-8",
-      "iothub-message-source": "deviceMessages",
-      "iothub-enqueuedtime": "2017-05-08T18:55:31.8514657Z"
-    },
-    "appProperties": {
-      "processingPath": "<optional>",
-      "verbose": "<optional>",
-      "severity": "<optional>",
-      "testDevice": "<optional>"
-    },
-    "body": "{\"Weather\":{\"Temperature\":50}}"
-  }
-}
-```
-
-Właściwości systemu komunikat mają prefiks `'$'` symboli.
-Właściwości użytkownika są zawsze dostępne przy użyciu ich nazw. Jeśli nazwa właściwości użytkownika pokrywa się z właściwością systemu (takich jak `$contentType`), właściwości użytkownika jest pobierany za pomocą `$contentType` wyrażenia.
-Zawsze dostęp do właściwości systemu, używając nawiasów `{}`: na przykład można użyć wyrażenia `{$contentType}` do dostępu do właściwości systemu `contentType`. Nazwy właściwości w nawiasach kwadratowych zawsze pobierają odpowiednie właściwości systemu.
-
-Należy pamiętać, że nazwy właściwości jest rozróżniana wielkość liter.
-
-> [!NOTE]
-> Wszystkie właściwości wiadomości są ciągami. Właściwości systemu, zgodnie z opisem w [przewodnik dla deweloperów][lnk-devguide-messaging-format], nie są obecnie dostępne do użycia w zapytaniach.
->
-
-Na przykład, jeśli używasz `messageType` właściwości, możesz chcieć przekierować wszystkie dane telemetryczne jeden punkt końcowy, a wszystkie alerty do innego punktu końcowego. Można napisać następujące wyrażenie, aby kierować dane telemetryczne:
-
-```sql
-messageType = 'telemetry'
-```
-
-I następujące wyrażenie, aby kierować komunikaty alertów:
-
-```sql
-messageType = 'alert'
-```
-
-Wyrażenia logiczne i funkcje są również obsługiwane. Ta funkcja umożliwia rozróżnianie między poziom ważności, na przykład:
-
-```sql
-messageType = 'alerts' AND as_number(severity) <= 2
-```
-
-Zapoznaj się [wyrażeń i warunków] [ lnk-query-expressions] sekcji, aby uzyskać pełną listę obsługiwanych operatorów i funkcji.
-
-### <a name="routing-on-message-bodies"></a>Routing w treści wiadomości
-
-Usługa IoT Hub tylko umożliwia kierowanie oparte na treść komunikatu zawartość, jeśli treść jest poprawnie sformułowany JSON zakodowane w formacie UTF-8, UTF-16 i UTF-32. Ustaw typ zawartości komunikatu do `application/json`. Ustaw zawartość, kodowanie obsługiwane kodowania UTF w nagłówkach wiadomości. Jeśli jeden z nagłówków nie zostanie określony, usługi IoT Hub nie próbuje obliczyć dowolne wyrażenie zapytania obejmujące treści dla komunikatu. Jeśli wiadomość nie jest komunikat JSON lub komunikat nie określa typu zawartości i kodowania zawartości, nadal umożliwia routing komunikatów do rozsyłania wiadomości, oparte na nagłówki wiadomości.
-
-Poniższy przykład pokazuje, jak utworzyć wiadomości z poprawnie sformułowane i zakodowany treść kodu JSON:
-
-```csharp
-string messageBody = @"{ 
-                            ""Weather"":{ 
-                                ""Temperature"":50, 
-                                ""Time"":""2017-03-09T00:00:00.000Z"", 
-                                ""PrevTemperatures"":[ 
-                                    20, 
-                                    30, 
-                                    40 
-                                ], 
-                                ""IsEnabled"":true, 
-                                ""Location"":{ 
-                                    ""Street"":""One Microsoft Way"", 
-                                    ""City"":""Redmond"", 
-                                    ""State"":""WA"" 
-                                }, 
-                                ""HistoricalData"":[ 
-                                    { 
-                                    ""Month"":""Feb"", 
-                                    ""Temperature"":40 
-                                    }, 
-                                    { 
-                                    ""Month"":""Jan"", 
-                                    ""Temperature"":30 
-                                    } 
-                                ] 
-                            } 
-                        }"; 
- 
-// Encode message body using UTF-8 
-byte[] messageBytes = Encoding.UTF8.GetBytes(messageBody); 
- 
-using (var message = new Message(messageBytes)) 
-{ 
-    // Set message body type and content encoding. 
-    message.ContentEncoding = "utf-8"; 
-    message.ContentType = "application/json"; 
- 
-    // Add other custom application properties.  
-    message.Properties["Status"] = "Active";    
- 
-    await deviceClient.SendEventAsync(message); 
-}
-```
-
-Możesz użyć `$body` w wyrażeniu zapytania do rozsyłania wiadomości. Treść proste odwołanie, odwołanie do tablicy treści lub wiele odwołań treść można użyć w wyrażeniu zapytania. Wyrażenie zapytania, można także połączyć odwołanie treści z odwołaniem do nagłówka komunikatu. Na przykład poniżej przedstawiono wszystkie wyrażenia prawidłowe zapytanie:
-
-```sql
-$body.Weather.HistoricalData[0].Month = 'Feb'
-$body.Weather.Temperature = 50 AND $body.Weather.IsEnabled
-length($body.Weather.Location.State) = 2
-$body.Weather.Temperature = 50 AND Status = 'Active'
-```
-
 ## <a name="basics-of-an-iot-hub-query"></a>Podstawowe informacje dotyczące zapytań usługi IoT Hub
 Składa się każdego zapytania usługi IoT Hub, wybierz opcję i z klauzul, w której opcjonalne oraz klauzule GROUP BY. Każdego zapytania jest uruchamiane na kolekcji dokumentów JSON, na przykład bliźniaczych reprezentacji urządzeń. Klauzula FROM wskazuje kolekcji dokumentów, należy powtórzyć w (**urządzeń** lub **devices.jobs**). Następnie jest stosowany filtr w klauzuli WHERE. Za pomocą agregacji są pogrupowane wyniki tego kroku określone w klauzuli GROUP BY. Dla każdej grupy jest generowany wiersz jak określono w klauzuli SELECT.
 
@@ -614,8 +494,7 @@ Dowiedz się, jak wykonywać zapytania w aplikacjach przy użyciu [Azure IoT SDK
 [lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
 [lnk-devguide-quotas]: iot-hub-devguide-quotas-throttling.md
 [lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-[lnk-devguide-messaging-routes]: iot-hub-devguide-messages-read-custom.md
+[lnk-devguide-messaging-routes]: iot-hub-devguide-messages-d2c.md
 [lnk-devguide-messaging-format]: iot-hub-devguide-messages-construct.md
-[lnk-devguide-messaging-routes]: ./iot-hub-devguide-messages-read-custom.md
 
 [lnk-hub-sdks]: iot-hub-devguide-sdks.md

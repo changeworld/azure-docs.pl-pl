@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 2c35d71d127903a67dce2280b2d0ab335079b480
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 3bcc5368a99dc7c7c32381ca0226119d81fc2c0a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604471"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978203"
 ---
 # <a name="get-started-with-log-analytics-in-the-azure-portal"></a>Rozpoczynanie pracy z usługą Log Analytics w witrynie Azure portal
 
@@ -47,7 +47,7 @@ Strona usługi Log Analytics jest w sieci web narzędzie służące do zapisu i 
 ## <a name="basic-queries"></a>Podstawowe zapytania
 Zapytania mogą służyć do terminy wyszukiwania, identyfikację trendów, analizować wzorce i wiele innych informacji na podstawie danych. Uruchom przy użyciu podstawowego zapytania:
 
-```KQL
+```Kusto
 Event | search "error"
 ```
 
@@ -57,7 +57,7 @@ Zapytania można zacząć od jednej nazwy tabeli lub **wyszukiwania** polecenia.
 
 Innym sposobem pisania tego samego zapytania będą:
 
-```KQL
+```Kusto
 search in (Event) "error"
 ```
 
@@ -81,7 +81,7 @@ W każdej tabeli dane są organizowane w kolumnach zawierających różne typy d
 ## <a name="filter-the-results"></a>Filtrowanie wyników
 Od zebrania wszystko _zdarzeń_ tabeli.
 
-```KQL
+```Kusto
 Event
 ```
 
@@ -135,7 +135,7 @@ Jeśli zapytanie zawiera jawnie filtr _TimeGenerated_, czas selektora tytuł zos
 ## <a name="charts"></a>Wykresy
 Oprócz zwracania wyników w tabeli, wyniki zapytania mogą być przedstawiane na formaty wizualne. Użyj następującego zapytania, na przykład:
 
-```KQL
+```Kusto
 Event 
 | where EventLevelName == "Error" 
 | where TimeGenerated > ago(1d) 

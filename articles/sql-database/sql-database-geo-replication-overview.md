@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: c3d8ec77275024b6d959a15ee716a02b0dc2738a
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 2e052c34834ae2ebe99b3329d312f03846e9beb0
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985834"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977761"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Przegląd: Aktywnej grupy replikacji geograficznej i automatyczny tryb failover
 
@@ -121,7 +121,7 @@ Podczas projektowania usługi za pomocą ciągłość prowadzenia działalności
 - **Przygotowanie do utraty danych**: w przypadku wykrycia awarii SQL automatyczne wyzwolenie trybu failover odczytu / zapisu, jeśli ma zerową utratę danych, najlepiej naszej wiedzy. W przeciwnym razie oczekiwania przez czas określony przez **GracePeriodWithDataLossHours**. Jeśli określono **GracePeriodWithDataLossHours**, można przygotować utraty danych. Ogólnie rzecz biorąc podczas awarii, Azure preferuje dostępności. Jeśli nie możesz zakupić utraty danych, upewnij się, że ustawiony **GracePeriodWithDataLossHours** wystarczająco dużą liczbę, takich jak 24 godziny. 
 
 > [!IMPORTANT]
-> Elastycznymi pulami za pomocą 800 lub mniej jednostek Dtu i ponad 250 baz danych, przy użyciu replikacji geograficznej mogą wystąpić problemy, w tym już planowanego przejścia w tryb failover i pogorszenie wydajności.  Te problemy są najbardziej prawdopodobne w przypadku obciążeń intensywnie korzystających z zapisu podczas replikacji geograficznej punkty końcowe są znacznie oddalonych od siebie według lokalizacji geograficznej lub wiele dodatkowych punktów końcowych są używane dla każdej bazy danych.  Objawy te problemy są wskazane, gdy opóźnienia replikacji geograficznej zwiększa się wraz z upływem czasu.  To opóźnienie można monitorować za pomocą [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Jeśli te problemy występują, środki zaradcze obejmują zwiększenie liczby jednostek Dtu puli lub zmniejszenie liczby replikacji geograficznej bazy danych w tej samej puli.
+> Elastycznymi pulami za pomocą 800 lub mniejszej liczby jednostek Dtu i ponad 250 baz danych, przy użyciu replikacji geograficznej mogą wystąpić problemy, w tym już planowanego przejścia w tryb failover i pogorszenie wydajności.  Te problemy są najbardziej prawdopodobne w przypadku obciążeń intensywnie korzystających z zapisu podczas replikacji geograficznej punkty końcowe są znacznie oddalonych od siebie według lokalizacji geograficznej lub wiele dodatkowych punktów końcowych są używane dla każdej bazy danych.  Objawy te problemy są wskazane, gdy opóźnienia replikacji geograficznej zwiększa się wraz z upływem czasu.  To opóźnienie można monitorować za pomocą [sys.dm_geo_replication_link_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-geo-replication-link-status-azure-sql-database).  Jeśli te problemy występują, środki zaradcze obejmują zwiększenie liczby jednostek Dtu puli lub zmniejszenie liczby replikacji geograficznej bazy danych w tej samej puli.
 
 ## <a name="failover-groups-and-network-security"></a>Grupy trybu failover i bezpieczeństwo sieci 
 

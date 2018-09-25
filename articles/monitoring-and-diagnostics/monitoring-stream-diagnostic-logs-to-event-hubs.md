@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 07/25/2018
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: dde8881fc446eef0dd6ca0735e5e23a5a19328fa
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 19f066bea9de580cf1245aec74fbe563bf8ba449
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578373"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46996557"
 ---
 # <a name="stream-azure-diagnostic-logs-to-an-event-hub"></a>Stream dzienniki diagnostyczne platformy Azure do Centrum zdarzeń
-**[Dzienniki diagnostyczne platformy Azure](monitoring-overview-of-diagnostic-logs.md)**  może być przesyłany strumieniowo w czasie zbliżonym do rzeczywistego do dowolnej aplikacji przy użyciu wbudowanych opcji "Eksportuj do usługi Event Hubs" w portalu lub przez włączenie identyfikator reguły autoryzacji Centrum zdarzeń w ustawieniu diagnostycznym za pośrednictwem platformy Azure Polecenia cmdlet programu PowerShell lub Azure CLI 2.0.
+**[Dzienniki diagnostyczne platformy Azure](monitoring-overview-of-diagnostic-logs.md)**  może być przesyłany strumieniowo w czasie zbliżonym do rzeczywistego do dowolnej aplikacji przy użyciu wbudowanych opcji "Eksportuj do usługi Event Hubs" w portalu lub przez włączenie identyfikator reguły autoryzacji Centrum zdarzeń w ustawieniu diagnostycznym za pośrednictwem platformy Azure Polecenia cmdlet programu PowerShell lub Azure interfejsu wiersza polecenia.
 
 ## <a name="what-you-can-do-with-diagnostics-logs-and-event-hubs"></a>Co można zrobić za pomocą dzienników diagnostyki i usługi Event Hubs
 Oto kilka sposobów, można na przykład możliwość przesyłania strumieniowego dla dzienników diagnostycznych:
@@ -91,9 +91,9 @@ Set-AzureRmDiagnosticSetting -ResourceId [your resource ID] -EventHubAuthorizati
 
 Identyfikator reguły autoryzacji Centrum zdarzeń jest ciągiem o następującym formacie: `{Event Hub namespace resource ID}/authorizationrules/{key name}`, na przykład `/subscriptions/{subscription ID}/resourceGroups/{resource group}/providers/Microsoft.EventHub/namespaces/{Event Hub namespace}/authorizationrules/RootManageSharedAccessKey`. Nie można obecnie wybierz nazwę Centrum określonego zdarzenia przy użyciu programu PowerShell.
 
-### <a name="via-azure-cli-20"></a>Za pomocą interfejsu wiersza polecenia platformy Azure 2.0
+### <a name="via-azure-cli"></a>Za pomocą wiersza polecenia platformy Azure
 
-Do przesyłania strumieniowego za pośrednictwem [interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest), możesz użyć [tworzenie az monitor diagnostic-settings](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) polecenia.
+Do przesyłania strumieniowego za pośrednictwem [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/monitor?view=azure-cli-latest), możesz użyć [tworzenie az monitor diagnostic-settings](https://docs.microsoft.com/cli/azure/monitor/diagnostic-settings?view=azure-cli-latest#az-monitor-diagnostic-settings-create) polecenia.
 
 ```azurecli
 az monitor diagnostic-settings create --name <diagnostic name> \

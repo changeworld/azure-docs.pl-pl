@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/08/2018
 ms.author: marsma
-ms.openlocfilehash: d2f7769469c9f3ebdbef5fc6ee1f09b1acd573ef
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: c9ade4d61a1b95d5041a13f9436f0d02a7951758
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39715833"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46981670"
 ---
 # <a name="authenticate-with-azure-container-registry-from-azure-kubernetes-service"></a>Uwierzytelnianie za pomocą usługi Azure Container Registry z usługi Azure Kubernetes Service
 
@@ -21,7 +21,7 @@ Podczas korzystania z usługi Azure Container Registry (ACR) przy użyciu usług
 
 ## <a name="grant-aks-access-to-acr"></a>AKS udzielanie dostępu do usługi ACR
 
-Podczas tworzenia klastra usługi AKS Azure tworzy również usługę jednostki do obsługi klastra sprawność działania, za pomocą innych zasobów platformy Azure. Ta jednostka usługi generowanych automatycznie służy do uwierzytelniania za pomocą rejestru ACR. Aby to zrobić, należy utworzyć usługę Azure AD [przypisania roli](../role-based-access-control/overview.md#role-assignment) która przyznaje klastra jednostce usługi dostępu do rejestru kontenerów.
+Podczas tworzenia klastra usługi AKS Azure tworzy również usługę jednostki do obsługi klastra sprawność działania, za pomocą innych zasobów platformy Azure. Ta jednostka usługi generowanych automatycznie służy do uwierzytelniania za pomocą rejestru ACR. Aby to zrobić, należy utworzyć usługę Azure AD [przypisania roli](../role-based-access-control/overview.md#role-assignments) która przyznaje klastra jednostce usługi dostępu do rejestru kontenerów.
 
 Użyj następującego skryptu, aby przyznać jednostce generowanych przez usługi AKS usługi dostępu do usługi Azure container registry. Modyfikowanie `AKS_*` i `ACR_*` zmiennych w danym środowisku przed uruchomieniem skryptu.
 

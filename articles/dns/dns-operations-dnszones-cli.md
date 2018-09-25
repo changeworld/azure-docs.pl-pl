@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie strefami DNS w usłudze Azure DNS — interfejs wiersza polecenia platformy Azure w wersji 2.0 | Dokumentacja firmy Microsoft
-description: Możesz zarządzać strefami DNS przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0. W tym artykule przedstawiono sposób aktualizowanie, usuwanie i tworzenie strefy DNS na usługę Azure DNS.
+title: Zarządzanie strefami DNS w usłudze Azure DNS — interfejs wiersza polecenia platformy Azure | Dokumentacja firmy Microsoft
+description: Możesz zarządzać strefami DNS przy użyciu wiersza polecenia platformy Azure. W tym artykule przedstawiono sposób aktualizowanie, usuwanie i tworzenie strefy DNS na usługę Azure DNS.
 services: dns
 documentationcenter: na
 author: vhorne
@@ -13,30 +13,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/27/2017
 ms.author: victorh
-ms.openlocfilehash: c81d8add7ae37e03a98da0ad86deaa1d9d7ec8e0
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 7f132c513354a87b4f1bd37db4c6c6ed8e0fd041
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39172623"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46949965"
 ---
-# <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli-20"></a>Jak zarządzać strefami systemu DNS w usłudze Azure DNS przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0
+# <a name="how-to-manage-dns-zones-in-azure-dns-using-the-azure-cli"></a>Jak zarządzać strefami systemu DNS w usłudze Azure DNS przy użyciu wiersza polecenia platformy Azure
 
 > [!div class="op_single_selector"]
 > * [Portal](dns-operations-dnszones-portal.md)
 > * [Program PowerShell](dns-operations-dnszones.md)
-> * [Interfejs wiersza polecenia platformy Azure 2.0](dns-operations-dnszones-cli.md)
+> * [Interfejs wiersza polecenia platformy Azure](dns-operations-dnszones-cli.md)
 
 
 Ten przewodnik pokazuje, jak zarządzać strefami DNS przy użyciu interfejsu wiersza polecenia Azure dla wielu platform, który jest dostępny dla systemów Windows, Mac i Linux. Można również zarządzać przy użyciu stref DNS [programu Azure PowerShell](dns-operations-dnszones.md) lub witrynie Azure portal.
 
-Ten przewodnik dotyczy w szczególności publicznymi strefami DNS. Aby uzyskać informacji o zarządzaniu stref prywatnych w usłudze Azure DNS za pomocą wiersza polecenia platformy Azure, zobacz [Rozpoczynanie pracy z usługą Azure DNS Private Zones przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0](private-dns-getstarted-cli.md).
+Ten przewodnik dotyczy w szczególności publicznymi strefami DNS. Aby uzyskać informacji o zarządzaniu stref prywatnych w usłudze Azure DNS za pomocą wiersza polecenia platformy Azure, zobacz [Rozpoczynanie pracy z usługą Azure DNS Private Zones przy użyciu wiersza polecenia platformy Azure](private-dns-getstarted-cli.md).
 
 ## <a name="introduction"></a>Wprowadzenie
 
 [!INCLUDE [dns-create-zone-about](../../includes/dns-create-zone-about-include.md)]
 
-## <a name="set-up-azure-cli-20-for-azure-dns"></a>Konfigurowanie interfejsu wiersza polecenia platformy Azure 2.0 dla usługi Azure DNS
+## <a name="set-up-azure-cli-for-azure-dns"></a>Konfigurowanie interfejsu wiersza polecenia platformy Azure dla usługi Azure DNS
 
 ### <a name="before-you-begin"></a>Przed rozpoczęciem
 
@@ -44,7 +44,7 @@ Przed rozpoczęciem konfiguracji sprawdź, czy dysponujesz następującymi eleme
 
 * Subskrypcja platformy Azure. Jeśli nie masz jeszcze subskrypcji platformy Azure, możesz aktywować [korzyści dla subskrybentów MSDN](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) lub utworzyć [bezpłatne konto](https://azure.microsoft.com/pricing/free-trial/).
 
-* Zainstaluj najnowszą wersję 2.0 interfejsu wiersza polecenia platformy Azure, dostępny dla Windows, Linux i MAC. Więcej informacji znajduje się w temacie [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/install-az-cli2).
+* Zainstaluj najnowszą wersję interfejsu wiersza polecenia platformy Azure, który jest dostępny dla systemów Windows, Linux i MAC. Więcej informacji znajduje się w temacie [Instalowanie interfejsu wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-az-cli2).
 
 ### <a name="sign-in-to-your-azure-account"></a>Zaloguj się do swojego konta platformy Azure
 
@@ -86,7 +86,7 @@ az group create --name myresourcegroup --location "West US"
 
 ## <a name="getting-help"></a>Uzyskiwanie pomocy
 
-Wszystkie polecenia interfejsu wiersza polecenia 2.0, odnoszące się do usługi Azure DNS, rozpoczynać `az network dns`. Pomoc jest dostępna dla każdego polecenia za pomocą `--help` opcji (skrócona forma `-h`).  Na przykład:
+Wszystkie polecenia wiersza polecenia platformy Azure, odnoszące się do usługi Azure DNS, rozpoczynać `az network dns`. Pomoc jest dostępna dla każdego polecenia za pomocą `--help` opcji (skrócona forma `-h`).  Na przykład:
 
 ```azurecli
 az network dns --help

@@ -11,12 +11,12 @@ ms.topic: article
 ms.workload: na
 ms.date: 04/05/2018
 ms.author: danlep
-ms.openlocfilehash: 5a321ef7dca86993a913a283fe7b9b076c127d94
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 885deca5efbd72b3d641c8c94837851340d752b9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171259"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957833"
 ---
 # <a name="monitor-batch-solutions"></a>Monitorowanie rozwiązań usługi Batch
 
@@ -34,7 +34,7 @@ Jednym ze sposobów, aby pobrać zdarzenia z dziennika aktywności jest za pomoc
 
 ## <a name="batch-account-level-monitoring"></a>Monitorowanie na poziomie konta usługi Batch
 
-Każde konto usługi Batch za pomocą funkcji monitorowania [usługi Azure Monitor](../monitoring-and-diagnostics/monitoring-overview-azure-monitor.md). Usługa Azure Monitor umożliwia zbieranie informacji o [metryki](../monitoring-and-diagnostics/monitoring-overview-metrics.md) i opcjonalnie [dzienniki diagnostyczne](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) zasobów należących do zakresu na poziomie konta usługi Batch, takie jak pule, zadania i zadania. Zbieranie i używanie tych danych, ręcznie lub programowo do monitorowania działań na koncie usługi Batch i diagnozowanie problemów. Aby uzyskać więcej informacji, zobacz [Batch metryki, alerty i dzienniki diagnostyczne oceny i monitorowania](batch-diagnostics.md).
+Każde konto usługi Batch za pomocą funkcji monitorowania [usługi Azure Monitor](../azure-monitor/overview.md). Usługa Azure Monitor umożliwia zbieranie informacji o [metryki](../monitoring/monitoring-data-collection.md#metrics) i opcjonalnie [dzienniki diagnostyczne](../monitoring-and-diagnostics/monitoring-overview-of-diagnostic-logs.md) zasobów należących do zakresu na poziomie konta usługi Batch, takie jak pule, zadania i zadania. Zbieranie i używanie tych danych, ręcznie lub programowo do monitorowania działań na koncie usługi Batch i diagnozowanie problemów. Aby uzyskać więcej informacji, zobacz [Batch metryki, alerty i dzienniki diagnostyczne oceny i monitorowania](batch-diagnostics.md).
  
 > [!NOTE]
 > Metryki są dostępne, domyślnie na koncie usługi Batch bez dodatkowej konfiguracji i mają 30-dniową historię stopniowe. Należy włączyć rejestrowanie diagnostyczne dla konta usługi Batch i może pociągnąć za sobą dodatkowe koszty przechowywania lub przetwarzania danych dzienników diagnostycznych. 

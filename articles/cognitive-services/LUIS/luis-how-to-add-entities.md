@@ -4,18 +4,18 @@ titleSuffix: Azure Cognitive Services
 description: Dodaj jednostki (kluczowe dane w domenie aplikacji) w aplikacjach Language Understanding (LUIS).
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 3fe76afca2eb8b14641589e4e29fc20b5d3de7fa
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: e82955da24e127e5536c2e40ad2cccf07c5fa173
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45632289"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032006"
 ---
 # <a name="manage-entities"></a>Zarządzanie jednostkami
 Po zidentyfikowaniu aplikacji [intencji](luis-concept-intent.md), musisz [etykiety wypowiedzi przykład](luis-concept-utterance.md) z [jednostek](luis-concept-entity-types.md). Jednostki są ważnych elementów pytanie lub polecenia i mogą być istotne dla aplikacji klienckiej do wykonywania swoich zadań. 

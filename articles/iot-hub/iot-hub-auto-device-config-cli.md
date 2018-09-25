@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.author: chrisgre
-ms.openlocfilehash: f81ef3c231874f314d6fe023ba247a0bcff61e90
-ms.sourcegitcommit: a2ae233e20e670e2f9e6b75e83253bd301f5067c
+ms.openlocfilehash: 6535eee93b0fcaa2c0888fc6b647811c21e564d9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/13/2018
-ms.locfileid: "42060809"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971913"
 ---
 # <a name="configure-and-monitor-iot-devices-at-scale-using-the-azure-cli"></a>Konfigurowanie i monitorowanie urządzeń IoT na dużą skalę przy użyciu wiersza polecenia platformy Azure
 
@@ -34,8 +34,8 @@ Działanie konfiguracji urządzenia automatycznego aktualizowania zbiór bliźni
 ## <a name="cli-prerequisites"></a>Wymagania wstępne dotyczące interfejsu wiersza polecenia
 
 * [Usługi IoT hub](../iot-hub/iot-hub-create-using-cli.md) w subskrypcji platformy Azure. 
-* Zainstalowany w środowisku [interfejs wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli). Potrzebujesz co najmniej interfejsu wiersza polecenia platformy Azure 2.0 w wersji 2.0.24 lub nowszej. Użyj polecenia `az –-version` w celu przeprowadzenia weryfikacji. Ta wersja obsługuje polecenia rozszerzenia az i wprowadza platformę poleceń Knack. 
-* [Rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://github.com/Azure/azure-iot-cli-extension).
+* [Interfejs wiersza polecenia Azure](https://docs.microsoft.com/cli/azure/install-azure-cli) w danym środowisku. Co najmniej z wiersza polecenia platformy Azure musi być w wersji 2.0.24 lub nowszej. Użyj polecenia `az –-version` w celu przeprowadzenia weryfikacji. Ta wersja obsługuje polecenia rozszerzenia az i wprowadza platformę poleceń Knack. 
+* [Rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-iot-cli-extension).
 
 ## <a name="implement-device-twins-to-configure-devices"></a>Implementowanie bliźniaczych reprezentacji urządzeń w celu skonfigurowania urządzeń
 
@@ -56,7 +56,7 @@ Zanim będzie można utworzyć konfiguracji, należy określić urządzeń, któ
 
 ## <a name="define-the-target-content-and-metrics"></a>Zdefiniuj Adresuj zawartość i metryki
 
-Adresuj zawartość i metryk zapytań są zdefiniowane w bliźniaczej reprezentacji dokumentów JSON, które opisują urządzenia, żądanych właściwości jako zestawu i zgłaszanych właściwości do zmierzenia.  Aby utworzyć konfigurację urządzenia automatycznego przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 2.0, Zapisz Adresuj zawartość i metryki lokalnie jako pliki txt. Używasz ścieżki plików w dalszej części tego tematu dalej po uruchomieniu polecenia, aby zastosować konfigurację do Twojego urządzenia. 
+Adresuj zawartość i metryk zapytań są zdefiniowane w bliźniaczej reprezentacji dokumentów JSON, które opisują urządzenia, żądanych właściwości jako zestawu i zgłaszanych właściwości do zmierzenia.  Aby utworzyć konfigurację urządzenia automatycznego przy użyciu wiersza polecenia platformy Azure, Zapisz Adresuj zawartość i metryki lokalnie jako pliki txt. Ścieżki plików zostaną użyte w dalszej części tego tematu dalej, po uruchomieniu polecenia, aby zastosować konfigurację do Twojego urządzenia. 
 
 Oto przykład zawartości podstawowe docelowej:
 

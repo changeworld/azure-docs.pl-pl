@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/29/2018
 ms.author: nitinme
-ms.openlocfilehash: feb35336681376f6f4bd262418146d931f3d1e83
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: b74696be433b00a5afb3416295b6317975aa6873
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294887"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967663"
 ---
 # <a name="authentication-with-azure-data-lake-storage-gen1-using-azure-active-directory"></a>Uwierzytelnianie za pomocą usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Active Directory
 
@@ -35,7 +35,7 @@ W poniższej tabeli przedstawiono, jak i mechanizmów uwierzytelniania service t
 * Puste komórki oznaczają, że opcja uwierzytelniania nie jest obsługiwany.
 
 
-|Użyj tej opcji uwierzytelniania za pomocą...                   |.NET         |Java     |PowerShell |Interfejs wiersza polecenia 2.0 | Python   |REST     |
+|Użyj tej opcji uwierzytelniania za pomocą...                   |.NET         |Java     |PowerShell |Interfejs wiersza polecenia platformy Azure | Python   |REST     |
 |:---------------------------------------------|:------------|:--------|:----------|:-------------|:---------|:--------|
 |Użytkownik końcowy (bez uwierzytelniania Wieloskładnikowego **)                        |   ✔ |    ✔    |    ✔      |       ✔      |    **[✔ *](data-lake-store-end-user-authenticate-python.md#end-user-authentication-without-multi-factor-authentication)**(przestarzałe)     |    **[✔*](data-lake-store-end-user-authenticate-rest-api.md)**    |
 |Użytkownik końcowy (za pomocą usługi MFA)                           |    **[✔*](data-lake-store-end-user-authenticate-net-sdk.md)**        |    **[✔*](data-lake-store-end-user-authenticate-java-sdk.md)**     |    ✔      |       **[✔*](data-lake-store-get-started-cli-2.0.md)**      |    **[✔*](data-lake-store-end-user-authenticate-python.md#end-user-authentication-with-multi-factor-authentication)**     |    ✔    |

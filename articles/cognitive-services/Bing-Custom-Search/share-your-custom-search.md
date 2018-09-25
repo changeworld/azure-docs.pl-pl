@@ -9,21 +9,30 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 09/28/2017
 ms.author: v-brapel
-ms.openlocfilehash: 7e513b3e565e5edf06dae8f11404203b4154e182
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 4a9761ce0671b57d802fe332c92e32d1f410fa6f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347853"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46960961"
 ---
-# <a name="share-your-custom-search-instance"></a>Udostępnianie wystąpienia wyszukiwanie niestandardowe
-Możesz udostępniać wystąpienia wyszukiwanie niestandardowe inni użytkownicy właśnie swój adres e-mail. Udostępnianie umożliwia innym użytkownikom modyfikowanie swoich wystąpień wyszukiwanie niestandardowe. Zaloguj się do [wyszukiwanie niestandardowe](https://customsearch.ai), wybierz wystąpienie wyszukiwanie niestandardowe i kliknij ikonę ustawień (pojawia się jako koło zębate). W **udostępnić Twoje wystąpienie** wprowadź adres e-mail osoby, do udziału wystąpienia z, a następnie kliknij przycisk **udostępnianie**. Adres e-mail jest widoczny na liście zatytułowany **wystąpienie udostępniane innym**. Powtórz dla każdej osoby, które chcesz udostępnić niestandardowe wyszukiwania z. 
+# <a name="share-your-custom-search-instance"></a>Udostępnianie swojego wystąpienia wyszukiwania niestandardowego
 
-Aby dodać innego użytkownika wiadomości e-mail do listy, nie jest niezbędne do konta wyszukiwanie niestandardowe. Należy założyć wyszukiwanie niestandardowe przed wprowadzeniem zmian w konfiguracji. Po udostępnieniu wystąpienia osobie one zostanie wyświetlone na liście wystąpień wyszukiwanie niestandardowe. Tylko jedna osoba może zmodyfikować wystąpienie naraz. Jeśli użytkownik próbuje zmodyfikować wystąpienie ktoś edytuje, wyświetlane jest ostrzeżenie. Wystąpienie może być udostępniane innym maksymalnie 10 użytkowników.
+Łatwo można zezwolić na współpracy, edycji i testowania wystąpienia usługi przez udostępnianie członkom zespołu. Możesz udostępniać wystąpienie z dowolnymi osobami za pomocą samego adresu e-mail. Aby udostępnić wystąpienie:
+
+- Zaloguj się do [wyszukiwania niestandardowego](https://customsearch.ai)
+- Wybierz wystąpienie wyszukiwania niestandardowego
+- Kliknij ikonę ustawień (pojawia się jako koło zębate). 
+- W obszarze **udostępnić swój wystąpienia**, wprowadź adres e-mail osoby, które można udostępniać wystąpienia z, a następnie kliknij przycisk **udostępnianie**. 
+
+Po dodaniu adresu e-mail, zostanie dodany do **wystąpienie udostępniane** listy. Powtórz te czynności dla każdej osoby, które chcesz udostępnić swoje wystąpienie z. 
+
+Aby dodać adres e-mail osoby, do listy, nie jest niezbędne do konta wyszukiwania niestandardowego. Należy zasubskrybować wyszukiwania niestandardowego, zanim jednak oni wprowadzić zmiany konfiguracji. Po udostępnieniu wystąpienie z osobą, zobaczą go na liście wystąpień wyszukiwania niestandardowego. Tylko jedna osoba, można zmodyfikować wystąpienie w danym momencie. Jeśli spróbujesz zmodyfikować wystąpienie, które jest edytowany przez kogoś innego, zostanie wyświetlone ostrzeżenie. Wystąpienia mogą być udostępniane w maksymalnie 10 użytkowników.
 
 ## <a name="stop-sharing"></a>Zatrzymaj udostępnianie
-Aby zatrzymać udostępnianie wystąpienia innej osobie, użyj ikony Usuń, aby usunąć swój adres e-mail z listy.
+
+Aby zatrzymać udostępnianie wystąpienie z osobą, użyj ikony Usuń, aby usunąć swój adres e-mail z listy. Powoduje to również usunięcie wystąpienia z ich listę wystąpień.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Konfigurowanie środowiska automatycznego sugerowania niestandardowe](define-custom-suggestions.md)
+- [Konfigurowanie środowiska niestandardowego automatycznego sugerowania](define-custom-suggestions.md)

@@ -1,6 +1,6 @@
 ---
-title: Dostosowywanie reguły zapory aplikacji sieci web w brama usługi aplikacji Azure — PowerShell | Dokumentacja firmy Microsoft
-description: Ten artykuł zawiera informacje na temat sposobu dostosowywania reguł zapory aplikacji sieci web w aplikacji bramy przy użyciu programu PowerShell.
+title: Dostosowywanie reguł zapory aplikacji sieci web w usłudze Azure Application Gateway — PowerShell | Dokumentacja firmy Microsoft
+description: Ten artykuł zawiera informacje na temat sposobu Dostosowywanie reguł zapory aplikacji sieci web w usłudze Application Gateway przy użyciu programu PowerShell.
 documentationcenter: na
 services: application-gateway
 author: vhorne
@@ -14,35 +14,35 @@ ms.custom: ''
 ms.workload: infrastructure-services
 ms.date: 07/26/2017
 ms.author: victorh
-ms.openlocfilehash: f992fbf9ab223e18c24c27ce0577b1af2017281a
-ms.sourcegitcommit: c47ef7899572bf6441627f76eb4c4ac15e487aec
+ms.openlocfilehash: 7dce3657656effd3765f77ae957c1cfc4d3f4316
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/04/2018
-ms.locfileid: "33201372"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46964409"
 ---
-# <a name="customize-web-application-firewall-rules-through-powershell"></a>Dostosowywanie reguły zapory aplikacji sieci web za pomocą programu PowerShell
+# <a name="customize-web-application-firewall-rules-through-powershell"></a>Dostosowywanie reguł zapory aplikacji sieci web za pomocą programu PowerShell
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](application-gateway-customize-waf-rules-portal.md)
 > * [Program PowerShell](application-gateway-customize-waf-rules-powershell.md)
-> * [Interfejs wiersza polecenia platformy Azure 2.0](application-gateway-customize-waf-rules-cli.md)
+> * [Interfejs wiersza polecenia platformy Azure](application-gateway-customize-waf-rules-cli.md)
 
-Brama aplikacji w usłudze Azure zapory aplikacji sieci web (WAF) zapewnia ochronę dla aplikacji sieci web. Te zabezpieczenia są dostarczane przez Otwórz sieci Web aplikacji zabezpieczeń projektu (OWASP) podstawowe reguły Ustaw (CRS). Niektóre zasady mogą spowodować fałszywych alarmów i zablokowanie ruchu prawdziwe. Z tego powodu bramy aplikacji oferuje możliwość dostosowywania grup reguł i zasad. Aby uzyskać więcej informacji na określonej reguły grup i reguł, zobacz [listy grup CRS reguły zapory aplikacji sieci web i reguł](application-gateway-crs-rulegroups-rules.md).
+Zapora aplikacji sieci web usługi Azure Application Gateway (WAF) zapewnia ochronę aplikacji sieci web. Te zabezpieczenia stosowane są dostarczane przez Otwórz sieci Web aplikacji Security Project (OWASP) podstawowych reguł Ustaw (CRS). Niektóre reguły może spowodować, że wyniki fałszywie dodatnie i blokować ruch rzeczywistych. Z tego powodu Application Gateway oferuje możliwości dostosowywania grup reguł i reguł. Aby uzyskać więcej informacji na temat grup określonych reguł i reguł, zobacz [listę grup reguł CRS zapory aplikacji sieci web i reguły](application-gateway-crs-rulegroups-rules.md).
 
-## <a name="view-rule-groups-and-rules"></a>Widok grup reguł i zasad
+## <a name="view-rule-groups-and-rules"></a>Widok grup reguł i reguł
 
-W poniższych przykładach kodu przedstawiają sposób wyświetlania reguły i zasady grupy, które są konfigurowane na bramie aplikacji z obsługą zapory aplikacji sieci Web.
+W poniższych przykładach kodu pokazano, jak wyświetlić reguły i grup reguł, które można skonfigurować na bramie aplikacji z obsługą zapory aplikacji sieci Web.
 
-### <a name="view-rule-groups"></a>Grupy reguł widoku
+### <a name="view-rule-groups"></a>Wyświetl reguły grupy
 
-Poniższy przykład przedstawia sposób wyświetlania grup reguł:
+Poniższy przykład pokazuje sposób wyświetlania grup reguł:
 
 ```powershell
 Get-AzureRmApplicationGatewayAvailableWafRuleSets
 ```
 
-Następujące dane wyjściowe jest skróconą odpowiedzi z poprzedniego przykładu:
+Poniższe dane wyjściowe są obcięte odpowiedzi z poprzedniego przykładu:
 
 ```
 OWASP (Ver. 3.0):
@@ -80,7 +80,7 @@ OWASP (Ver. 2.2.9):
             ...        ...
 ```
 
-## <a name="disable-rules"></a>Wyłącz reguły
+## <a name="disable-rules"></a>Wyłączanie reguł
 
 Poniższy przykład powoduje wyłączenie reguł `910018` i `910017` na bramę aplikacji:
 
@@ -91,7 +91,7 @@ Set-AzureRmApplicationGatewayWebApplicationFirewallConfiguration -ApplicationGat
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Po skonfigurowaniu reguł wyłączonych można poznać sposoby wyświetlania dzienników zapory aplikacji sieci Web. Aby uzyskać więcej informacji, zobacz [diagnostyki bramy aplikacji](application-gateway-diagnostics.md#diagnostic-logging).
+Po skonfigurowaniu reguł wyłączonych, możesz dowiedzieć się, jak wyświetlić dzienniki zapory aplikacji sieci Web. Aby uzyskać więcej informacji, zobacz [diagnostyki bramy aplikacji](application-gateway-diagnostics.md#diagnostic-logging).
 
 [fig1]: ./media/application-gateway-customize-waf-rules-portal/1.png
 [1]: ./media/application-gateway-customize-waf-rules-portal/figure1.png

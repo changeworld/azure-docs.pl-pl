@@ -10,18 +10,18 @@ ms.custom: scale out apps
 ms.topic: conceptual
 ms.date: 06/14/2018
 ms.author: sstein
-ms.openlocfilehash: 3fc9ab0505fda84464ead01b4937756707993cf0
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 21cd1b171f25d5abdaa89f631ac5bab8e4a351af
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35649148"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968879"
 ---
 # <a name="managing-scaled-out-cloud-databases"></a>Zarządzanie bazami danych w chmurze skalowanych w poziomie
 
 [!INCLUDE [elastic-database-jobs-deprecation](../../includes/sql-database-elastic-jobs-deprecate.md)]
 
-**Zadania elastic Database** jest hostowana przez klienta usługa w chmurze umożliwiający wykonywanie zapytań ad-hoc i zaplanowane zadania administracyjne, które są nazywane **zadań**. Za pomocą zadań można łatwo i niezawodne zarządzanie dużymi grupami baz danych SQL platformy Azure dzięki uruchamianiu skryptów języka Transact-SQL, aby wykonywać operacje administracyjne. 
+**Zadania elastic Database** jest hostowana przez klienta usługa w chmurze umożliwiający wykonywanie zapytań ad-hoc i zaplanowane zadania administracyjne, które są nazywane **zadań**. Za pomocą zadań można łatwo i niezawodne zarządzanie dużymi grupami baz danych Azure SQL Database dzięki uruchamianiu skryptów języka Transact-SQL, aby wykonywać operacje administracyjne. 
 
 Do zarządzania bazami danych podzielonych na fragmenty skalowanych w poziomie, **zadania Elastic Database** funkcji (wersja zapoznawcza) umożliwia niezawodne wykonywanie skryptów języka Transact-SQL (T-SQL) w grupie baz danych, w tym:
 
@@ -33,7 +33,7 @@ Do zarządzania bazami danych podzielonych na fragmenty skalowanych w poziomie, 
 * [Zainstaluj składniki zadania Elastic Database](sql-database-elastic-jobs-service-installation.md). 
 * [Wprowadzenie do zadań elastycznych baz danych](sql-database-elastic-jobs-getting-started.md).
 * [Tworzenie zadań i zarządzanie nimi przy użyciu programu PowerShell](sql-database-elastic-jobs-powershell.md).
-* [Tworzenie i zarządzanie nimi skalowanych w poziomie bazy danych SQL Azure](sql-database-elastic-jobs-getting-started.md)
+* [Tworzenie i zarządzanie nimi skalowanych w poziomie bazy danych Azure SQL](sql-database-elastic-jobs-getting-started.md)
 
 
 
@@ -46,11 +46,11 @@ Do zarządzania bazami danych podzielonych na fragmenty skalowanych w poziomie, 
 
 **Raporty**
 
-Zagregowane dane z kolekcji baz danych SQL Azure do tabeli w jednym miejscu.
+Agregowanie danych z kolekcji baz danych Azure SQL w pojedynczej tabeli docelowej.
 
 **Zmniejszyć obciążenie**
 
-Zazwyczaj należy niezależnie nawiązywać połączenie z każdą bazą danych w celu uruchamiania instrukcji języka Transact-SQL lub wykonywania innych zadań administracyjnych. Zadanie obsługuje logowanie do każdej bazy danych w grupie docelowej. Możesz również zdefiniować, obsługa i utrwalić skryptów języka Transact-SQL do wykonania w grupie baz danych SQL Azure.
+Zazwyczaj należy niezależnie nawiązywać połączenie z każdą bazą danych w celu uruchamiania instrukcji języka Transact-SQL lub wykonywania innych zadań administracyjnych. Zadanie obsługuje logowanie do każdej bazy danych w grupie docelowej. Możesz również definiować, obsługiwać i utrwalać skrypty języka Transact-SQL do wykonania w ramach grupy baz danych Azure SQL.
 
 **Ewidencjonowanie aktywności**
 
@@ -58,7 +58,7 @@ Zadania uruchamiania skryptu i rejestrować stan wykonania dla każdej bazy dany
 
 **Elastyczność**
 
-Zdefiniuj niestandardowe grupy baz danych SQL Azure, a następnie zdefiniować harmonogramy uruchamiania zadania.
+Definiowanie niestandardowych grup baz danych Azure SQL Database oraz określanie harmonogramów uruchamiania zadania.
 
 > [!NOTE]
 > W witrynie Azure portal zmniejszenie zbiór funkcji do maksymalnie pule elastyczne SQL Azure jest dostępna. Dostęp do pełnego zestawu funkcji bieżącego przy użyciu interfejsów API środowiska PowerShell.

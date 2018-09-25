@@ -11,12 +11,13 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/29/2017
-ms.openlocfilehash: d2fe951a97b18c95e647b45d799843a982100367
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 094fd6d8c6c6d647533cf5409d1a85283c71c80e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35941216"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953246"
 ---
 # <a name="find-runs-with-the-best-accuracy-and-lowest-duration"></a>Znaleźć przebiegi z najlepszą dokładnością i najkrótszym czasem trwania
 Biorąc pod uwagę wiele przebiegów, jeden przypadek użycia jest znaleźć przebiegi z najlepszą dokładnością. Jedno z podejść jest użycie interfejsu wiersza polecenia (CLI) za pomocą [JMESPath](http://jmespath.org/) zapytania. Aby uzyskać więcej informacji o sposobie używania JMESPath w interfejsie wiersza polecenia platformy Azure, zobacz [z wiersza polecenia platformy Azure zapytań JMESPath użyj](https://docs.microsoft.com/cli/azure/query-azure-cli?view=azure-cli-latest). W poniższym przykładzie cztery uruchomienia są tworzone przy użyciu wartości dokładności 0 "," 0,98 "," 1 "i" 1. Przebiegi są odfiltrowywane, jeśli są one w zakresie `[MaxAccuracy-Threshold, MaxAccuracy]` gdzie `Threshold = .03`.

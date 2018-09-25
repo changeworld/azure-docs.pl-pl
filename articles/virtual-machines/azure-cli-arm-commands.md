@@ -1,6 +1,6 @@
 ---
-title: Azure polecenia interfejsu wiersza polecenia w trybie usługi Resource Manager | Dokumentacja firmy Microsoft
-description: Polecenia Azure interfejsu wiersza polecenia (CLI), aby zarządzać zasobami w modelu wdrażania usługi Resource Manager
+title: Poleceń interfejsu wiersza polecenia platformy Azure w trybie usługi Resource Manager | Dokumentacja firmy Microsoft
+description: Polecenia interfejsu wiersza polecenia platformy Azure (CLI) do zarządzania zasobami w modelu wdrażania usługi Resource Manager
 services: virtual-machines-linux,virtual-machines-windows,virtual-network,mobile-services,cloud-services
 documentationcenter: ''
 author: dlepow
@@ -15,43 +15,43 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/18/2017
 ms.author: danlep
-ms.openlocfilehash: 8a2bae12fae6a1bf8f5ecbdb2ae01dea5260f3cb
-ms.sourcegitcommit: 6fcd9e220b9cd4cb2d4365de0299bf48fbb18c17
+ms.openlocfilehash: 5aecb218b66c06c87446e35e5c7c9ca8108b956c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/05/2018
-ms.locfileid: "30839148"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995554"
 ---
-# <a name="azure-cli-commands-in-resource-manager-mode"></a>Azure polecenia interfejsu wiersza polecenia w trybie Menedżera zasobów
-Ten artykuł zawiera składnię i opcje dla poleceń Azure interfejsu wiersza polecenia (CLI), który jest powszechnie stosowany do tworzenia i zarządzania zasobami Azure w modelu wdrażania usługi Azure Resource Manager. Możesz uzyskać dostępu do tych poleceń za pomocą interfejsu wiersza polecenia w trybie usługi Resource Manager (arm). To nie jest pełną dokumentację i wersji interfejsu wiersza polecenia mogą być wyświetlane nieco inne polecenia lub parametrów. Ogólne omówienie zasobów platformy Azure i grup zasobów, zobacz [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).  
+# <a name="azure-cli-commands-in-resource-manager-mode"></a>Poleceń interfejsu wiersza polecenia platformy Azure w trybie usługi Resource Manager
+Ten artykuł zawiera składnię i opcje dla poleceń interfejsu wiersza polecenia platformy Azure (CLI), które są często używane do tworzenia i zarządzania zasobami platformy Azure w modelu wdrażania usługi Azure Resource Manager. Możesz uzyskać dostęp do tych poleceń, uruchamiając interfejs wiersza polecenia w trybie usługi Resource Manager (arm). To nie jest pełną dokumentację i używanej wersji interfejsu wiersza polecenia mogą być wyświetlane nieco poleceń lub parametrów. Aby uzyskać ogólne omówienie zasobami i grupami zasobów platformy Azure, zobacz [Omówienie usługi Azure Resource Manager](../azure-resource-manager/resource-group-overview.md).  
 
 > [!NOTE]
-> Ten artykuł zawiera Resource Manager tryb polecenia w wiersza polecenia platformy Azure, jest czasami nazywany Azure CLI w wersji 1.0. Aby pracować w modelu usługi Resource Manager, możesz również spróbować [Azure CLI 2.0](/cli/azure/install-az-cli2), naszych następnej generacji obejmującego wiele platform interfejsu wiersza polecenia.
->Dowiedz się więcej o [CLIs Azure stary i nowy](/cli/azure/old-and-new-clis).
+> Artykuł zawiera usługi Resource Manager trybu w polecenia wiersza polecenia platformy Azure to czasem nazywane klasycznego wiersza polecenia platformy Azure. Aby pracować w modelu usługi Resource Manager, możesz też spróbować [wiersza polecenia platformy Azure](/cli/azure/install-az-cli2), nasze Następna generacja wieloplatformowego interfejsu wiersza polecenia.
+>Dowiedz się więcej o [stare i nowe Azure interfejsów wiersza polecenia](/cli/azure/old-and-new-clis).
 >
 
-Aby rozpocząć, najpierw [instalowanie interfejsu wiersza polecenia Azure](../cli-install-nodejs.md) i [nawiązać połączenia z subskrypcją platformy Azure](/cli/azure/authenticate-azure-cli).
+Aby rozpocząć pracę, najpierw [zainstalować interfejs wiersza polecenia platformy Azure](../cli-install-nodejs.md) i [nawiązać połączenie z subskrypcją platformy Azure](/cli/azure/authenticate-azure-cli).
 
-Dla bieżącego składni poleceń i opcji wiersza polecenia w trybie Menedżera zasobów, wpisz `azure help` lub, aby wyświetlić Pomoc dotyczącą danego polecenia, `azure help [command]`. Również znaleźć przykłady interfejsu wiersza polecenia w dokumentacji do tworzenia i zarządzania określonych usług platformy Azure.
+Bieżący składni poleceń i opcji w wierszu polecenia w trybie Menedżera zasobów, wpisz `azure help` lub, aby wyświetlić Pomoc dotyczącą określonego polecenia `azure help [command]`. Również znaleźć przykłady interfejsu wiersza polecenia w dokumentacji programu do tworzenia i zarządzania określonych usług platformy Azure.
 
-Parametry opcjonalne są wyświetlane w nawiasach kwadratowych (na przykład `[parameter]`). Wszystkie inne parametry są wymagane.
+Następujące parametry opcjonalne są wyświetlane w nawiasach kwadratowych (na przykład `[parameter]`). Wszystkie inne parametry są wymagane.
 
-Oprócz opisanych tutaj parametry opcjonalne specyficzne dla danego polecenia istnieją trzy parametry opcjonalne, które mogą służyć do wyświetlenia szczegółowych danych wyjściowych, takich jak opcje żądania i kodów stanu. `-v` Parametru zapewnia pełne dane wyjściowe i `-vv` parametru zapewnia jeszcze bardziej szczegółowe pełne dane wyjściowe. `--json` Opcja wyświetla wyniki w formacie raw json.
+Oprócz specyficznych dla polecenia parametrów opcjonalnych opisane tutaj istnieją trzy parametry opcjonalne, które mogą służyć do wyświetlania szczegółowych danych wyjściowych, takich jak opcje żądania i kodów stanu. `-v` Parametru zapewnia pełne dane wyjściowe oraz `-vv` parametru zapewnia jeszcze bardziej szczegółowe pełne dane wyjściowe. `--json` Opcja wyświetla wyniki w formacie niesformatowanej strukturze json.
 
-## <a name="setting-the-resource-manager-mode"></a>Ustawianie trybu Resource Manager
-Użyj następującego polecenia, aby włączyć polecenia w trybie Menedżera zasobów Azure CLI.
+## <a name="setting-the-resource-manager-mode"></a>Ustawienie trybu usługi Resource Manager
+Użyj następującego polecenia, aby włączyć polecenia w trybie Menedżera zasobów interfejsu wiersza polecenia platformy Azure.
 
     azure config mode arm
 
 > [!NOTE]
-> Tryb usługi Azure Resource Manager i tryb zarządzania usługą Azure CLI wzajemnie się wykluczają. Oznacza to, że zasoby utworzone w trybie jednego nie można zarządzać z innych trybu.
+> Tryb usługi Azure Resource Manager i trybie Azure Service Management interfejsu wiersza polecenia wzajemnie się wykluczają. Oznacza to, że zasobów utworzonych w jednym trybie nie można zarządzać z innego trybu.
 > 
 > 
 
 ## <a name="azure-account-manage-your-account-information"></a>Konto platformy Azure: Zarządzanie informacje o Twoim koncie
 Informacje o subskrypcji platformy Azure jest używany przez narzędzie do łączenia się z kontem.
 
-**Lista importowanych subskrypcji**
+**Wyświetl zaimportowane subskrypcje**
 
     account list [options]
 
@@ -63,11 +63,11 @@ Informacje o subskrypcji platformy Azure jest używany przez narzędzie do łąc
 
     account set [options] <subscriptionNameOrId>
 
-**Usuń środowisku lub subskrypcji, lub wyczyść wszystkie przechowywane informacje o konta i środowiska**  
+**Usuń środowisku lub subskrypcji, lub wyczyść wszystkie przechowywane informacje dotyczące konta i środowiska**  
 
     account clear [options]
 
-**Polecenia do zarządzania używanym środowiskiem konta**  
+**Polecenia, aby zarządzać środowiskiem konta**  
 
     account env list [options]
     account env show [options] [environment]
@@ -75,8 +75,8 @@ Informacje o subskrypcji platformy Azure jest używany przez narzędzie do łąc
     account env set [options] [environment]
     account env delete [options] [environment]
 
-## <a name="azure-ad-commands-to-display-active-directory-objects"></a>usługi Azure ad: poleceń, aby wyświetlić obiekty usługi Active Directory
-**Polecenia, aby wyświetlić aplikacje w usłudze active directory**
+## <a name="azure-ad-commands-to-display-active-directory-objects"></a>Usługa Azure ad: polecenia, aby wyświetlić obiekty usługi Active Directory
+**Polecenia, aby wyświetlić aplikacje usługi active directory**
 
     ad app create [options]
     ad app delete [options] <object-id>
@@ -86,7 +86,7 @@ Informacje o subskrypcji platformy Azure jest używany przez narzędzie do łąc
     ad group list [options]
     ad group show [options]
 
-**Polecenia, aby podać informacje o usłudze active directory w sub grupy lub elementu członkowskiego**
+**Polecenia, aby zapewnić informacje o usłudze active directory w sub grupy lub elementu członkowskiego**
 
     ad group member list [options] [objectId]
 
@@ -102,8 +102,8 @@ Informacje o subskrypcji platformy Azure jest używany przez narzędzie do łąc
     ad user list [options]
     ad user show [options]
 
-## <a name="azure-availset-commands-to-manage-your-availability-sets"></a>Azure availset: polecenia do zarządzania z zestawów dostępności
-**Tworzy dostępności w grupie zasobów**
+## <a name="azure-availset-commands-to-manage-your-availability-sets"></a>Usługa Azure availset: polecenia do zarządzania swoje zestawy dostępności
+**Tworzy zestaw w grupie zasobów dostępności**
 
     availset create [options] <resource-group> <name> <location> [tags]
 
@@ -111,15 +111,15 @@ Informacje o subskrypcji platformy Azure jest używany przez narzędzie do łąc
 
     availset list [options] <resource-group>
 
-**Pobiera dostępności w grupie zasobów**
+**Pobiera zestaw w grupie zasobów co dostępności**
 
     availset show [options] <resource-group> <name>
 
-**Usuwa dostępności w grupie zasobów**
+**Usuwa zestaw w grupie zasobów co dostępności**
 
     availset delete [options] <resource-group> <name>
 
-## <a name="azure-config-commands-to-manage-your-local-settings"></a>Azure config: poleceń, aby zarządzać ustawieniami lokalnego
+## <a name="azure-config-commands-to-manage-your-local-settings"></a>Konfiguracja platformy Azure: polecenia, aby zarządzać ustawieniami lokalne
 **Ustawienia konfiguracji interfejsu wiersza polecenia Azure listy**
 
     config list [options]
@@ -128,34 +128,34 @@ Informacje o subskrypcji platformy Azure jest używany przez narzędzie do łąc
 
     config delete [options] <name>
 
-**Zaktualizuj ustawienia konfiguracji**
+**Aktualizowanie ustawienia konfiguracji**
 
     config set <name> <value>
 
-**Ustawia tryb pracy interfejsu wiersza polecenia Azure albo `arm` lub `asm`**
+**Ustawia tryb pracy wiersza polecenia platformy Azure albo `arm` lub `asm`**
 
     config mode [options] <modename>
 
 
-## <a name="azure-feature-commands-to-manage-account-features"></a>Funkcja platformy Azure: polecenia do zarządzania funkcjami konta
+## <a name="azure-feature-commands-to-manage-account-features"></a>Funkcja Azure: polecenia do zarządzania funkcjami konta
 **Wyświetlanie listy wszystkich funkcji dostępnych dla Twojej subskrypcji**
 
     feature list [options]
 
-**Pokazuje funkcji**
+**Pokazuje, funkcja**
 
     feature show [options] <providerName> <featureName>
 
-**Rejestruje funkcję przeglądanego dostawcy zasobów**
+**Rejestruje funkcję traktuje dostawcy zasobów**
 
     feature register [options] <providerName> <featureName>
 
-## <a name="azure-group-commands-to-manage-your-resource-groups"></a>grupy Azure: polecenia do zarządzania grupami zasobów
+## <a name="azure-group-commands-to-manage-your-resource-groups"></a>Grupa usługi Azure: polecenia do zarządzania grupami zasobów
 **Tworzy grupę zasobów**
 
     group create [options] <name> <location>
 
-**Ustaw tagi do grupy zasobów**
+**Ustawianie tagów do grupy zasobów**
 
     group set [options] <name> <tags>
 
@@ -163,11 +163,11 @@ Informacje o subskrypcji platformy Azure jest używany przez narzędzie do łąc
 
     group delete [options] <name>
 
-**Wyświetla listę grup zasobów dla Twojej subskrypcji**
+**Wyświetla listę grup zasobów dla subskrypcji**
 
     group list [options]
 
-**Zawiera grupę zasobów dla Twojej subskrypcji**
+**Przedstawia grupę zasobów dla subskrypcji**
 
     group show [options] <name>
 
@@ -175,21 +175,21 @@ Informacje o subskrypcji platformy Azure jest używany przez narzędzie do łąc
 
     group log show [options] [name]
 
-**Polecenia do zarządzania wdrożenia w grupie zasobów**
+**Polecenia do zarządzania wdrożenie w grupie zasobów**
 
     group deployment create [options] [resource-group] [name]
     group deployment list [options] <resource-group> [state]
     group deployment show [options] <resource-group> [deployment-name]
     group deployment stop [options] <resource-group> [deployment-name]
 
-**Polecenia do zarządzania lokalnego lub galerii szablonu grupy zasobów**
+**Polecenia do zarządzania szablonu grupy zasobów lokalnych ani galerii**
 
     group template list [options]
     group template show [options] <name>
     group template download [options] [name] [file]
     group template validate [options] <resource-group>
 
-## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>Usługa Azure hdinsight: polecenia do zarządzania z klastrami HDInsight
+## <a name="azure-hdinsight-commands-to-manage-your-hdinsight-clusters"></a>Usługa Azure hdinsight: polecenia do zarządzania klastry usługi HDInsight
 **Polecenia, aby utworzyć lub dodać do pliku konfiguracji klastra**
 
     hdinsight config create [options] <configFilePath> <overwrite>
@@ -221,7 +221,7 @@ Przykład: Tworzenie klastra przy użyciu akcji skryptu
     + Submitting the request to create cluster...
     info:    hdinsight cluster create command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                                                 output usage information
     -v, --verbose                                              use verbose output
@@ -279,11 +279,11 @@ Wartość parametru opcje:
 
     hdinsight cluster delete [options] <clusterName>
 
-**Polecenie w celu wyświetlenia szczegółów klastra**
+**Polecenie, aby wyświetlić szczegóły klastra**
 
     hdinsight cluster show [options] <clusterName>
 
-**Aby wyświetlić listę wszystkich klastrach (w określonej grupy zasobów, jeśli zostanie podana)**
+**Polecenie, aby wyświetlić listę wszystkich klastrów (w określonej grupie zasobów, jeśli podano)**
 
     hdinsight cluster list [options]
 
@@ -291,7 +291,7 @@ Wartość parametru opcje:
 
     hdinsight cluster resize [options] <clusterName> <targetInstanceCount>
 
-**Polecenie, aby włączyć dostęp HTTP dla klastra**
+**Polecenie, aby umożliwić dostęp HTTP dla klastra**
 
     hdinsight cluster enable-http-access [options] <clusterName> <userName> <password>
 
@@ -299,7 +299,7 @@ Wartość parametru opcje:
 
     hdinsight cluster disable-http-access [options] <clusterName>
 
-**Polecenie, aby włączyć dostępu RDP dla klastra**
+**Polecenie, aby umożliwić dostęp RDP dla klastra**
 
     hdinsight cluster enable-rdp-access [options] <clusterName> <rdpUserName> <rdpPassword> <rdpExpiryDate>
 
@@ -307,21 +307,21 @@ Wartość parametru opcje:
 
     hdinsight cluster disable-rdp-access [options] <clusterName>
 
-## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>Usługa Azure insights: polecenia związane z monitorowaniem Insights (zdarzenia, reguły alertów, ustawienia skalowania automatycznego, metryki)
-**Pobierz dzienniki operacji dla subskrypcji, correlationId, grupy zasobów, zasobów lub dostawcy zasobów**
+## <a name="azure-insights-commands-related-to-monitoring-insights-events-alert-rules-autoscale-settings-metrics"></a>usługi Azure insights: polecenia powiązane z monitorowaniem Insights (zdarzenia reguły alertu, ustawienia automatycznego skalowania, metryki)
+**Pobieranie dzienników operacji dla subskrypcji, identyfikator korelacji, grupy zasobów, zasobów lub dostawcy zasobów**
 
     insights logs list [options]
 
 ## <a name="azure-location-commands-to-get-the-available-locations-for-all-resource-types"></a>Lokalizacja platformy Azure: poleceń, aby uzyskać dostępne lokalizacje dla wszystkich typów zasobów
-**Wyświetl listę dostępnych lokalizacji**
+**Listę dostępnych lokalizacji**
 
     location list [options]
 
-## <a name="azure-network-commands-to-manage-network-resources"></a>sieć platformy Azure: polecenia do zarządzania zasobami sieci
-**Polecenia do zarządzania sieciami wirtualnymi**
+## <a name="azure-network-commands-to-manage-network-resources"></a>sieć platformy Azure: polecenia do zarządzania zasobami sieciowymi
+**Polecenia umożliwiające zarządzanie sieciami wirtualnymi**
 
     network vnet create [options] <resource-group> <name> <location>
-Tworzy sieć wirtualną. W poniższym przykładzie mamy utworzyć sieć wirtualną o nazwie newvnet myresourcegroup grupy zasobów w regionie zachodnie stany USA.
+Tworzy sieć wirtualną. W poniższym przykładzie, możemy utworzyć sieć wirtualną o nazwie newvnet grupa zasobów myresourcegroup w regionie zachodnie stany USA.
 
     azure network vnet create myresourcegroup newvnet "west us"
     info:    Executing command network vnet create
@@ -342,7 +342,7 @@ Tworzy sieć wirtualną. W poniższym przykładzie mamy utworzyć sieć wirtualn
     info:    network vnet create command OK
 
 
-Wartość parametru opcje:
+Opcje parametrów:
 
      -h, --help                                 output usage information
      -v, --verbose                              use verbose output
@@ -385,7 +385,7 @@ Aktualizuje konfigurację sieci wirtualnej, w grupie zasobów.
     data:
     info:    network vnet set command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
        -h, --help                                 output usage information
        -v, --verbose                              use verbose output
@@ -412,7 +412,7 @@ Wartość parametru opcje:
 
     network vnet list [options] <resource-group>
 
-Polecenie wyświetla listę wszystkich sieci wirtualnych w grupie zasobów.
+Polecenie wyświetla wszystkie sieci wirtualne w grupie zasobów.
 
     C:\>azure network vnet list myresourcegroup
 
@@ -426,7 +426,7 @@ Polecenie wyświetla listę wszystkich sieci wirtualnych w grupie zasobów.
     wvnet   newvnet   westus    10.0.0.0/8
     info:    network vnet list command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
       -h, --help                             output usage information
       -v, --verbose                          use verbose output
@@ -458,7 +458,7 @@ Polecenie wyświetla właściwości sieci wirtualnej w grupie zasobów.
 <BR>
 
     network vnet delete [options] <resource-group> <name>
-Polecenie usuwa sieci wirtualnej.
+Polecenie usuwa sieć wirtualną.
 
     azure network vnet delete myresourcegroup newvnetX
 
@@ -468,7 +468,7 @@ Polecenie usuwa sieci wirtualnej.
     + Deleting virtual network "newvnetX"
     info:    network vnet delete command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
      -h, --help                             output usage information
      -v, --verbose                          use verbose output
@@ -483,7 +483,7 @@ Wartość parametru opcje:
 
     network vnet subnet create [options] <resource-group> <vnet-name> <name>
 
-Dodaje innej podsieci do istniejącej sieci wirtualnej.
+Dodaje inną podsieć do istniejącej sieci wirtualnej.
 
     azure network vnet subnet create -g myresourcegroup --vnet-name newvnet -n subnet --address-prefix 10.0.1.0/24
 
@@ -498,7 +498,7 @@ Dodaje innej podsieci do istniejącej sieci wirtualnej.
     data:    Address prefix:            10.0.1.0/24
     info:    network vnet subnet create command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
      -h, --help                                                       output usage information
      -v, --verbose                                                    use verbose output
@@ -516,7 +516,7 @@ Wartość parametru opcje:
 
     network vnet subnet set [options] <resource-group> <vnet-name> <name>
 
-Ustawia podsieć sieci wirtualnej określonej w grupie zasobów.
+Ustawia podsieci określonej sieci wirtualnej w grupie zasobów.
 
     C:\>azure network vnet subnet set -g myresourcegroup --vnet-name newvnet -n subnet1
 
@@ -565,7 +565,7 @@ Wyświetla właściwości podsieci sieci wirtualnej
     data:    Address prefix:            10.0.1.0/24
     info:    network vnet subnet show command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -587,7 +587,7 @@ Usuwa podsieć z istniejącej sieci wirtualnej.
     + Deleting subnet "subnet1"
     info:    network vnet subnet delete command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
      -h, --help                             output usage information
      -v, --verbose                          use verbose output
@@ -598,10 +598,10 @@ Wartość parametru opcje:
      -s, --subscription <subscription>      the subscription identifier
      -q, --quiet                            quiet mode, do not ask for delete confirmation
 
-**Polecenia do zarządzania usługi równoważenia obciążenia**
+**Polecenia do zarządzania modułami równoważenia obciążenia**
 
     network lb create [options] <resource-group> <name> <location>
-Tworzy zestaw usługi równoważenia obciążenia.
+Tworzy zestaw modułu równoważenia obciążenia.
 
     azure network lb create -g myresourcegroup -n mylb -l westus
 
@@ -616,7 +616,7 @@ Tworzy zestaw usługi równoważenia obciążenia.
     data:    Provisioning state:           Succeeded
     info:    network lb create command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -631,7 +631,7 @@ Wartość parametru opcje:
 <BR>
 
     network lb list [options] <resource-group>
-Zawiera listę zasobów usługi równoważenia obciążenia w grupie zasobów.
+Wyświetla listę zasobów modułu równoważenia obciążenia w grupie zasobów.
 
     azure network lb list myresourcegroup
 
@@ -642,7 +642,7 @@ Zawiera listę zasobów usługi równoważenia obciążenia w grupie zasobów.
     data:    mylb  westus
     info:    network lb list command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -653,7 +653,7 @@ Wartość parametru opcje:
 
     network lb show [options] <resource-group> <name>
 
-Wyświetla załadować informacji o usłudze równoważenia usługi równoważenia obciążenia określonego w grupie zasobów
+Wyświetla załadować informacje o usłudze równoważenia określonej usługi load Balancer w grupie zasobów
 
     azure network lb show myresourcegroup mylb -v
 
@@ -666,7 +666,7 @@ Wyświetla załadować informacji o usłudze równoważenia usługi równoważen
     data:    Provisioning state:           Succeeded
     info:    network lb show command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -679,7 +679,7 @@ Wartość parametru opcje:
 
     network lb delete [options] <resource-group> <name>
 
-Usuwanie zasobów usługi równoważenia obciążenia.
+Usuwanie zasobów modułu równoważenia obciążenia.
 
     azure network lb delete  myresourcegroup mylb
 
@@ -689,7 +689,7 @@ Usuwanie zasobów usługi równoważenia obciążenia.
     + Deleting load balancer "mylb"
     info:    network lb delete command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
      -h, --help                             output usage information
      -v, --verbose                          use verbose output
@@ -703,7 +703,7 @@ Wartość parametru opcje:
 
     network lb probe create [options] <resource-group> <lb-name> <name>
 
-Utwórz konfigurację sondowania stanu kondycji w usłudze równoważenia obciążenia. Należy pamiętać, aby uruchomić to polecenie, moduł równoważenia obciążenia wymaga zasób adresu ip frontonu (Sprawdź polecenie "ip frontonu sieci platformy azure", aby przypisać adres ip do modułu równoważenia obciążenia).
+Utwórz konfigurację sondowania dla stanu kondycji w module równoważenia obciążenia. Należy pamiętać, aby uruchomić to polecenie, moduł równoważenia obciążenia wymaga zasób adresu ip frontonu (zapoznaj się polecenie "frontend-ip sieci platformy azure", aby przypisać adres ip do modułu równoważenia obciążenia).
 
     azure network lb probe create -g myresourcegroup --lb-name mylb -n mylbprobe --protocol tcp --port 80 -i 300
 
@@ -712,7 +712,7 @@ Utwórz konfigurację sondowania stanu kondycji w usłudze równoważenia obcią
     + Updating load balancer "mylb"
     info:    network lb probe create command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
      -h, --help                             output usage information
      -v, --verbose                          use verbose output
@@ -731,7 +731,7 @@ Wartość parametru opcje:
 
     network lb probe set [options] <resource-group> <lb-name> <name>
 
-Aktualizuje istniejącą sondę modułu równoważenia obciążenia nowych wartości dla niego.
+Aktualizuje istniejący sondy modułu równoważenia obciążenia z nowymi wartościami dla niego.
 
     azure network lb probe set -g myresourcegroup -l mylb -n mylbprobe -p mylbprobe1 -p TCP -o 443 -i 300
 
@@ -759,7 +759,7 @@ Opcje parametrów
 
     network lb probe list [options] <resource-group> <lb-name>
 
-Lista właściwości sondowania dla zestawu usługi równoważenia obciążenia.
+Lista właściwości sondy zestawu modułu równoważenia obciążenia.
 
     C:\>azure network lb probe list -g myresourcegroup -l mylb
 
@@ -770,7 +770,7 @@ Lista właściwości sondowania dla zestawu usługi równoważenia obciążenia.
     data:    mylbprobe  Tcp       443         300       2
     info:    network lb probe list command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -781,7 +781,7 @@ Wartość parametru opcje:
 
 
     network lb probe delete [options] <resource-group> <lb-name> <name>
-Usuwa sondę tworzonych dla modułu równoważenia obciążenia.
+Usuwa sondę utworzoną dla modułu równoważenia obciążenia.
 
     azure network lb probe delete -g myresourcegroup -l mylb -n mylbprobe
 
@@ -791,10 +791,10 @@ Usuwa sondę tworzonych dla modułu równoważenia obciążenia.
     + Updating load balancer "mylb"
     info:    network lb probe delete command OK
 
-**Polecenia do zarządzania konfiguracji ip frontonu modułu równoważenia obciążenia**
+**Polecenia do zarządzania konfiguracje protokołu ip frontonu modułu równoważenia obciążenia**
 
     network lb frontend-ip create [options] <resource-group> <lb-name> <name>
-Tworzy konfiguracji IP frontonu do istniejącego zestawu usługi równoważenia obciążenia.
+Tworzy konfigurację adresu IP frontonu do istniejącego zestawu modułu równoważenia obciążenia.
 
     azure network lb frontend-ip create -g myresourcegroup --lb-name mylb -n myfrontendip -o Dynamic -e subnet -m newvnet
 
@@ -822,7 +822,7 @@ Tworzy konfiguracji IP frontonu do istniejącego zestawu usługi równoważenia 
 
     network lb frontend-ip set [options] <resource-group> <lb-name> <name>
 
-Aktualizuje istniejącą konfigurację IP frontonu. Poniższe polecenie dodaje o nazwie mypubip5 do IP frontonu istniejące usługi równoważenia obciążenia o nazwie myfrontendip publicznego adresu IP.
+Aktualizuje istniejącą konfigurację IP frontonu. Poniższe polecenie dodaje publiczny adres IP o nazwie mypubip5 do istniejących IP frontonu modułu równoważenia obciążenia, na o nazwie myfrontendip.
 
     azure network lb frontend-ip set -g myresourcegroup --lb-name mylb -n myfrontendip -i mypubip5
 
@@ -845,7 +845,7 @@ Aktualizuje istniejącą konfigurację IP frontonu. Poniższe polecenie dodaje o
     data:
     info:    network lb frontend-ip set command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                                                         output usage information
     -v, --verbose                                                      use verbose output
@@ -872,7 +872,7 @@ Wartość parametru opcje:
 
     network lb frontend-ip list [options] <resource-group> <lb-name>
 
-Wyświetla listę wszystkich zasobów adresu IP frontonu skonfigurowane dla usługi równoważenia obciążenia.
+Wyświetla listę wszystkich zasobów adresu IP frontonu, skonfigurowane dla modułu równoważenia obciążenia.
 
     azure network lb frontend-ip list -g myresourcegroup -l mylb
 
@@ -883,7 +883,7 @@ Wyświetla listę wszystkich zasobów adresu IP frontonu skonfigurowane dla usł
     data:    myprivateip  Succeeded           Dynamic
     info:    network lb frontend-ip list command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -894,7 +894,7 @@ Wartość parametru opcje:
 <BR>
 
     network lb frontend-ip delete [options] <resource-group> <lb-name> <name>
-Usuwa obiekt IP frontonu skojarzonego z modułu równoważenia obciążenia
+Usuwa obiekt adresu IP frontonu, które są skojarzone z modułem równoważenia obciążenia
 
     network lb frontend-ip delete -g myresourcegroup -l mylb -n myfrontendip
     info:    Executing command network lb frontend-ip delete
@@ -902,7 +902,7 @@ Usuwa obiekt IP frontonu skojarzonego z modułu równoważenia obciążenia
     Delete frontend ip configuration "myfrontendip"? [y/n] y
     + Updating load balancer "mylb"
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -913,11 +913,11 @@ Wartość parametru opcje:
     -q, --quiet                            quiet mode, do not ask for delete confirmation
     -s, --subscription <subscription>      the subscription identifier
 
-**Polecenia do zarządzania pul adresów zaplecza modułu równoważenia obciążenia**
+**Polecenia do zarządzania pule adresów zaplecza modułu równoważenia obciążenia**
 
     network lb address-pool create [options] <resource-group> <lb-name> <name>
 
-Utwórz pulę adresów zaplecza usługi równoważenia obciążenia.
+Utwórz pulę adresów zaplecza dla modułu równoważenia obciążenia.
 
     azure network lb address-pool create -g myresourcegroup --lb-name mylb -n myaddresspool
 
@@ -934,7 +934,7 @@ Utwórz pulę adresów zaplecza usługi równoważenia obciążenia.
     data:
     info:    network lb address-pool create command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -948,7 +948,7 @@ Wartość parametru opcje:
 
     network lb address-pool list [options] <resource-group> <lb-name>
 
-Lista zakresu puli adresów IP zaplecza dla określonej grupy zasobów
+Lista zakresu puli adresów IP zaplecza dla konkretnej grupy zasobów
 
     azure network lb address-pool list -g myresourcegroup -l mylb
 
@@ -959,7 +959,7 @@ Lista zakresu puli adresów IP zaplecza dla określonej grupy zasobów
     data:    mybackendpool  Succeeded
     info:    network lb address-pool list command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
      -h, --help                             output usage information
      -v, --verbose                          use verbose output
@@ -969,9 +969,9 @@ Wartość parametru opcje:
      -s, --subscription <subscription>      the subscription identifier
 
 <BR>
-    [opcje] < grupa zasobów >< lb-name > usunąć puli adresów sieciowych równoważeniem obciążenia <name>
+    Pula adresów sieciowych modułu równoważenia obciążenia Usuń [opcje] < grupa zasobów >< lb-name > <name>
 
-Usuwa zasób zakres puli IP wewnętrznej bazy danych z usługi równoważenia obciążenia.
+Usuwa zasób zakres puli adresów IP wewnętrznej bazy danych z modułu równoważenia obciążenia.
 
     azure network lb address-pool delete -g myresourcegroup -l mylb -n mybackendpool
 
@@ -981,7 +981,7 @@ Usuwa zasób zakres puli IP wewnętrznej bazy danych z usługi równoważenia ob
     + Updating load balancer "mylb"
     info:    network lb address-pool delete command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -995,11 +995,11 @@ Wartość parametru opcje:
 **Reguły modułu równoważenia obciążenia polecenia do zarządzania**
 
     network lb rule create [options] <resource-group> <lb-name> <name>
-Utwórz reguły modułu równoważenia obciążenia.
+Tworzenie reguły modułu równoważenia obciążenia.
 
-Można utworzyć reguły modułu równoważenia obciążenia, Konfigurowanie punktu końcowego frontonu dla usługi równoważenia obciążenia i zakres puli adresów zaplecza do odbierania przychodzącego ruchu sieciowego. Ustawienia obejmują również portów dla punktu końcowego adresu IP frontonu i portów dla zakresu puli adresów zaplecza.
+Można utworzyć reguły modułu równoważenia obciążenia, Konfigurowanie punktu końcowego serwera sieci Web dla usługi równoważenia obciążenia i zakres puli adresów zaplecza do odbierania przychodzącego ruchu sieciowego. Ustawienia obejmują również porty dla punktu końcowego adresu IP frontonu i porty dla zakresu puli adresów zaplecza.
 
-Poniższy przykład przedstawia sposób tworzenia reguły modułu równoważenia obciążenia, punkt końcowy serwera sieci Web nasłuchiwanie na porcie 80 TCP ruchu i równoważeniu obciążenia sieci wysyłanie do portu 8080 dla zakresu puli adresów zaplecza.
+Poniższy przykład pokazuje, jak utworzyć regułę modułu równoważenia obciążenia, punktu końcowego serwera sieci Web nasłuchiwanie na porcie 80 protokołu TCP i ładowania równoważenia ruchu sieciowego, wysyłając do portu 8080 dla zakresu puli adresów zaplecza.
 
     azure network lb rule create -g myresourcegroup -l mylb -n mylbrule -p tcp -f 80 -b 8080 -i 10
 
@@ -1027,7 +1027,7 @@ Poniższy przykład przedstawia sposób tworzenia reguły modułu równoważenia
 
     network lb rule set [options] <resource-group> <lb-name> <name>
 
-Aktualizuje istniejącą regułę modułu równoważenia obciążenia w określonej grupy zasobów. W poniższym przykładzie możemy zmienić nazwy reguły z mylbrule na mynewlbrule.
+Aktualizuje istniejące reguły modułu równoważenia obciążenia w określonej grupie zasobów. W poniższym przykładzie zmieniliśmy nazwę reguły z mylbrule do mynewlbrule.
 
     azure network lb rule set -g myresourcegroup -l mylb -n mylbrule -r mynewlbrule -p tcp -f 80 -b 8080 -i 10 -t myfrontendip -o mybackendpool
 
@@ -1050,7 +1050,7 @@ Aktualizuje istniejącą regułę modułu równoważenia obciążenia w określo
     data:
     info:    network lb rule set command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                                         output usage information
     -v, --verbose                                      use verbose output
@@ -1072,7 +1072,7 @@ Wartość parametru opcje:
 
     network lb rule list [options] <resource-group> <lb-name>
 
-Wyświetla wszystkie obciążenia reguły modułu równoważenia skonfigurowane dla usługi równoważenia obciążenia w określonej grupy zasobów.
+Wyświetla wszystkie obciążenia równoważenia skonfigurowanych reguł dla modułu równoważenia obciążenia w określonej grupie zasobów.
 
     azure network lb rule list -g myresourcegroup -l mylb
 
@@ -1083,7 +1083,7 @@ Wyświetla wszystkie obciążenia reguły modułu równoważenia skonfigurowane 
     data:    mynewlbrule  Succeeded           Tcp       80             8080          false               10                       /subscriptions/###############################/resourceGroups/myresourcegroup/providers/Microsoft.Network/loadBalancers/mylb/backendAddressPools/mybackendpool
     info:    network lb rule list command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -1094,7 +1094,7 @@ Wartość parametru opcje:
 
     network lb rule delete [options] <resource-group> <lb-name> <name>
 
-Usuwa regułę równoważenia obciążenia.
+Usuwa regułę modułu równoważenia obciążenia.
 
     azure network lb rule delete -g myresourcegroup -l mylb -n mynewlbrule
 
@@ -1104,7 +1104,7 @@ Usuwa regułę równoważenia obciążenia.
     + Updating load balancer "mylb"
     info:    network lb rule delete command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -1115,12 +1115,12 @@ Wartość parametru opcje:
     -q, --quiet                            quiet mode, do not ask for delete confirmation
     -s, --subscription <subscription>      the subscription identifier
 
-**Polecenia do zarządzania usługi równoważenia obciążenia reguły NAT dla ruchu przychodzącego**
+**Reguły NAT ruchu przychodzącego polecenia do zarządzania usługi równoważenia obciążenia**
 
     network lb inbound-nat-rule create [options] <resource-group> <lb-name> <name>
-Tworzy regułę NAT ruchu przychodzącego dla modułu równoważenia obciążenia.
+Tworzy regułę ruchu przychodzącego translatora adresów Sieciowych dla równoważenia obciążenia.
 
-W poniższym przykładzie utworzono regułę NAT z adresu IP frontonu (który poprzednio został zdefiniowany przy użyciu polecenia "ip frontonu sieci platformy azure") z portów nasłuchiwania przychodzących i wychodzących port, który używa modułu równoważenia obciążenia do wysyłania ruchu sieciowego.
+W poniższym przykładzie utworzyliśmy reguły translatora adresów Sieciowych z adresu IP frontonu, (który został uprzednio zdefiniowany, za pomocą polecenia "frontend-ip sieci platformy azure") za pomocą portów nasłuchiwania ruchu przychodzącego i wychodzącego port, który korzysta z modułu równoważenia obciążenia do wysyłania ruchu sieciowego.
 
     azure network lb inbound-nat-rule create -g myresourcegroup -l mylb -n myinboundnat -p tcp -f 80 -b 8080 -i myfrontendip
 
@@ -1140,7 +1140,7 @@ W poniższym przykładzie utworzono regułę NAT z adresu IP frontonu (który po
     data:    Enable floating IP         false
     info:    network lb inbound-nat-rule create command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                                     output usage information
     -v, --verbose                                  use verbose output
@@ -1162,7 +1162,7 @@ Wartość parametru opcje:
 <BR>
 
     network lb inbound-nat-rule set [options] <resource-group> <lb-name> <name>
-Aktualizuje istniejącą regułę nat dla ruchu przychodzącego. W poniższym przykładzie możemy zmienić przychodzący port nasłuchujący z 80 do 81.
+Aktualizuje istniejącą regułę nat dla ruchu przychodzącego. W poniższym przykładzie zmieniliśmy przychodzący port nasłuchujący od 80 do 81.
 
     azure network lb inbound-nat-rule set -g group-1 -l mylb -n myinboundnat -p tcp -f 81 -b 8080 -i myfrontendip
 
@@ -1182,7 +1182,7 @@ Aktualizuje istniejącą regułę nat dla ruchu przychodzącego. W poniższym pr
     data:    Enable floating IP         false
     info:    network lb inbound-nat-rule set command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                                     output usage information
     -v, --verbose                                  use verbose output
@@ -1218,7 +1218,7 @@ Wyświetla listę wszystkich reguł nat dla ruchu przychodzącego dla modułu r�
 
     info:    network lb inbound-nat-rule list command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -1230,7 +1230,7 @@ Wartość parametru opcje:
 
     network lb inbound-nat-rule delete [options] <resource-group> <lb-name> <name>
 
-Usuwa reguły NAT modułu równoważenia obciążenia w określonej grupy zasobów.
+Usuwa regułę NAT modułu równoważenia obciążenia w określonej grupie zasobów.
 
     azure network lb inbound-nat-rule delete -g myresourcegroup -l mylb -n myinboundnat
 
@@ -1240,7 +1240,7 @@ Usuwa reguły NAT modułu równoważenia obciążenia w określonej grupy zasob�
     + Updating load balancer "mylb"
     info:    network lb inbound-nat-rule delete command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -1251,10 +1251,10 @@ Wartość parametru opcje:
     -q, --quiet                            quiet mode, do not ask for delete confirmation
     -s, --subscription <subscription>      the subscription identifier
 
-**Polecenia do zarządzania publiczny adres ip**
+**Polecenia do zarządzania publicznych adresów ip**
 
     network public-ip create [options] <resource-group> <name> <location>
-Tworzy zasób publicznego adresu ip. Utworzysz zasobów publicznego adresu ip i skojarzyć z nazwą domeny.
+Umożliwia utworzenie zasobu publicznego adresu ip. Utworzysz zasób publicznego adresu ip i skojarzyć z nazwą domeny.
 
     azure network public-ip create -g myresourcegroup -n mytestpublicip1 -l eastus -d azureclitest -a "Dynamic"
     info:    Executing command network public-ip create
@@ -1273,7 +1273,7 @@ Tworzy zasób publicznego adresu ip. Utworzysz zasobów publicznego adresu ip i 
     info:    network public-ip create command OK
 
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                                   output usage information
     -v, --verbose                                use verbose output
@@ -1294,7 +1294,7 @@ Wartość parametru opcje:
 <br>
 
     network public-ip set [options] <resource-group> <name>
-Aktualizuje właściwości istniejącego zasobu publicznego adresu ip. W poniższym przykładzie możemy zmienić publicznego adresu IP z dynamicznego jako statyczny.
+Aktualizuje właściwości istniejącego zasobu publicznego adresu ip. W poniższym przykładzie zmieniliśmy publiczny adres IP z dynamicznej na statyczną.
 
     azure network public-ip set -g group-1 -n mytestpublicip1 -d azureclitest -a "Static"
     info:    Executing command network public-ip set
@@ -1313,7 +1313,7 @@ Aktualizuje właściwości istniejącego zasobu publicznego adresu ip. W poniżs
     data:    FQDN:                 azureclitest.eastus.cloudapp.azure.com
     info:    network public-ip set command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                                   output usage information
     -v, --verbose                                use verbose output
@@ -1333,7 +1333,7 @@ Wartość parametru opcje:
     -s, --subscription <subscription>            the subscription identifier
 
 <br>
-    Lista sieci ip publiczny [opcje] < grupa zasobów > wyświetla wszystkie zasoby publicznych adresów IP w ramach grupy zasobów.
+    sieć public-ip list [opcje] < grupa zasobów > wyświetla wszystkie zasoby publicznych adresów IP w obrębie grupy zasobów.
 
     azure network public-ip list -g myresourcegroup
 
@@ -1346,7 +1346,7 @@ Wartość parametru opcje:
     data:    mytestpublicip   eastus    Dynamic                   4             "domain name".eastus.cloudapp.azure.com
     data:    mytestpublicip1  eastus   Static (Static IP address) 4             azureclitest.eastus.cloudapp.azure.com
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -1354,9 +1354,9 @@ Wartość parametru opcje:
     -g, --resource-group <resource-group>  the name of the resource group
     -s, --subscription <subscription>      the subscription identifier
 <BR>
-    sieć publiczna ip Pokaż [opcje] < grupa zasobów > <name>
+    sieć public-ip show [opcje] < grupa zasobów > <name>
 
-Wyświetla właściwości publicznego adresu ip zasobu publicznego adresu ip w ramach grupy zasobów.
+Wyświetla właściwości publicznego adresu ip zasobu publicznego adresu ip w obrębie grupy zasobów.
 
     azure network public-ip show -g myresourcegroup -n mytestpublicip
 
@@ -1374,7 +1374,7 @@ Wyświetla właściwości publicznego adresu ip zasobu publicznego adresu ip w r
     data:    FQDN:                 azureclitest.eastus.cloudapp.azure.com
     info:    network public-ip show command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -1395,7 +1395,7 @@ Usuwa zasób publicznego adresu ip.
     + Deleting public ip address "mypublicipname"
     info:    network public-ip delete command OK
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                             output usage information
     -v, --verbose                          use verbose output
@@ -1406,10 +1406,10 @@ Wartość parametru opcje:
     -s, --subscription <subscription>      the subscription identifier
 
 
-**Polecenia do zarządzania interfejsy sieciowe**
+**Polecenia umożliwiające zarządzanie interfejsami sieciowymi**
 
     network nic create [options] <resource-group> <name> <location>
-Tworzy zasób o nazwie interfejsu sieciowego (NIC), które mogą być używane dla usług równoważenia obciążenia lub skojarzony z maszyną wirtualną.
+Tworzy zasób o nazwie interfejsu sieciowego (NIC), który może służyć do modułów równoważenia obciążenia lub skojarz maszynę wirtualną.
 
     azure network nic create -g myresourcegroup -l eastus -n testnic1 --subnet-name subnet-1 --subnet-vnet-name myvnet
 
@@ -1430,7 +1430,7 @@ Tworzy zasób o nazwie interfejsu sieciowego (NIC), które mogą być używane d
     data:       Private IP Allocation Method: Dynamic
     data:       Subnet:                       /subscriptions/c4a17ddf-aa84-491c-b6f9-b90d882299f7/resourceGroups/group-1/providers/Microsoft.Network/virtualNetworks/myVNET/subnets/Subnet-1
 
-Wartość parametru opcje:
+Opcje parametrów:
 
     -h, --help                                                       output usage information
     -v, --verbose                                                    use verbose output
@@ -1469,7 +1469,7 @@ Wartość parametru opcje:
     network nic show [options] <resource-group> <name>
     network nic delete [options] <resource-group> <name>
 
-**Polecenia do zarządzania sieciowej grupy zabezpieczeń**
+**Polecenia do zarządzania sieciowe grupy zabezpieczeń**
 
     network nsg create [options] <resource-group> <name> <location>
     network nsg set [options] <resource-group> <name>
@@ -1477,7 +1477,7 @@ Wartość parametru opcje:
     network nsg show [options] <resource-group> <name>
     network nsg delete [options] <resource-group> <name>
 
-**Zasady grupy zabezpieczeń sieci polecenia do zarządzania**
+**Polecenia do zarządzania reguł grupy zabezpieczeń sieciowych**
 
     network nsg rule create [options] <resource-group> <nsg-name> <name>
     network nsg rule set [options] <resource-group> <nsg-name> <name>
@@ -1485,7 +1485,7 @@ Wartość parametru opcje:
     network nsg rule show [options] <resource-group> <nsg-name> <name>
     network nsg rule delete [options] <resource-group> <nsg-name> <name>
 
-**Polecenia do zarządzania profilu Menedżera ruchu**
+**Polecenia do zarządzania profilu usługi traffic manager**
 
     network traffic-manager profile create [options] <resource-group> <name>
     network traffic-manager profile set [options] <resource-group> <name>
@@ -1494,39 +1494,39 @@ Wartość parametru opcje:
     network traffic-manager profile delete [options] <resource-group> <name>
     network traffic-manager profile is-dns-available [options] <resource-group> <relative-dns-name>
 
-**Polecenia do zarządzania punkty końcowe Menedżera ruchu**
+**Polecenia, aby zarządzać punktami końcowymi Menedżera ruchu**
 
     network traffic-manager profile endpoint create [options] <resource-group> <profile-name> <name> <endpoint-location>
     network traffic-manager profile endpoint set [options] <resource-group> <profile-name> <name>
     network traffic-manager profile endpoint delete [options] <resource-group> <profile-name> <name>
 
-**Polecenia do zarządzania wirtualnego bram sieci**
+**Polecenia do zarządzania wirtualne bram sieci**
 
     network gateway list [options] <resource-group>
 
 ## <a name="azure-provider-commands-to-manage-resource-provider-registrations"></a>Dostawca usługi Azure: polecenia do zarządzania rejestracji dostawcy zasobów
-**Lista dostawców zarejestrowanych w programie Menedżer zasobów**
+**Lista obecnie zarejestrowanych dostawców w usłudze Resource Manager**
 
     provider list [options]
 
-**Pokaż szczegółowe informacje o dostawcy żądana przestrzeń nazw**
+**Pokaż szczegółowe informacje o przestrzeni nazw żądanego dostawcy**
 
     provider show [options] <namespace>
 
-**Zarejestruj dostawcę z subskrypcją**
+**Procedura Rejestruj dostawcę z subskrypcją**
 
     provider register [options] <namespace>
 
-**Wyrejestrowanie dostawcy z subskrypcją**
+**Wyrejestruj dostawcę z subskrypcją**
 
     provider unregister [options] <namespace>
 
-## <a name="azure-resource-commands-to-manage-your-resources"></a>zasobów platformy Azure: polecenia do zarządzania zasobami
+## <a name="azure-resource-commands-to-manage-your-resources"></a>zasób platformy Azure: polecenia do zarządzania zasobami
 **Tworzy zasób w grupie zasobów**
 
     resource create [options] <resource-group> <name> <resource-type> <location> <api-version>
 
-**Aktualizuje zasób w grupie zasobów bez parametrów lub szablonów**
+**Aktualizuje zasób w grupie zasobów, bez żadnych szablonów lub parametrów**
 
     resource set [options] <resource-group> <name> <resource-type> <properties> <api-version>
 
@@ -1542,12 +1542,12 @@ Wartość parametru opcje:
 
     resource delete [options] <resource-group> <name> <resource-type> <api-version>
 
-## <a name="azure-role-commands-to-manage-your-azure-roles"></a>Rola platformy Azure: polecenia do zarządzania rolami Azure
-**Pobierz wszystkie definicje dostępną rolę**
+## <a name="azure-role-commands-to-manage-your-azure-roles"></a>ról platformy Azure: polecenia do zarządzania roli platformy Azure
+**Pobierz wszystkie definicje ról dostępnych**
 
     role list [options]
 
-**Pobierz definicję dostępną rolę**
+**Pobierz definicję roli dostępne**
 
     role show [options] [name]
 
@@ -1558,7 +1558,7 @@ Wartość parametru opcje:
     role assignment delete [options] [objectId] [upn] [mail] [spn] [role] [scope] [resource-group] [resource-type] [resource-name]
 
 ## <a name="azure-storage-commands-to-manage-your-storage-objects"></a>Usługa Azure storage: polecenia do zarządzania obiektów magazynu
-**Polecenia do zarządzania kont magazynu**
+**Polecenia w celu zarządzania kontami magazynu**
 
     storage account list [options]
     storage account show [options] <name>
@@ -1575,7 +1575,7 @@ Wartość parametru opcje:
 
     storage account connectionstring show [options] <name>
 
-**Polecenia do zarządzania kontenerów magazynu**
+**Polecenia do zarządzania kontenerami usługi Storage**
 
     storage container list [options] [prefix]
     storage container show [options] [container]
@@ -1583,11 +1583,11 @@ Wartość parametru opcje:
     storage container delete [options] [container]
     storage container set [options] [container]
 
-**Polecenia do zarządzania udostępnionego dostęp podpisów z kontenera magazynu**
+**Polecenia do zarządzania udostępnionego dostęp do sygnatur kontener magazynu**
 
     storage container sas create [options] [container] [permissions] [expiry]
 
-**Polecenia do zarządzania przechowywanych dostęp zasady z kontenera magazynu**
+**Polecenia do zarządzania przechowywanych dostępu zgodnie z zasadami kontener magazynu**
 
     storage container policy create [options] [container] [name]
     storage container policy show [options] [container] [name]
@@ -1595,7 +1595,7 @@ Wartość parametru opcje:
     storage container policy set [options] [container] [name]
     storage container policy delete [options] [container] [name]
 
-**Polecenia do zarządzania z magazynu obiektów blob**
+**Polecenia umożliwiające zarządzanie magazynu obiektów blob**
 
     storage blob list [options] [container] [prefix]
     storage blob show [options] [container] [blob]
@@ -1603,24 +1603,24 @@ Wartość parametru opcje:
     storage blob upload [options] [file] [container] [blob]
     storage blob download [options] [container] [blob] [destination]
 
-**Operacje kopiowania polecenia do zarządzania z obiektu blob**
+**Operacje kopiowania polecenia do zarządzania obiektu blob**
 
     storage blob copy start [options] [sourceUri] [destContainer]
     storage blob copy show [options] [container] [blob]
     storage blob copy stop [options] [container] [blob] [copyid]
 
-**Polecenia do zarządzania udostępnionego dostęp podpisu z obiektu blob magazynu**
+**Polecenia do zarządzania udostępnionego dostępu podpis obiektu blob magazynu**
 
     storage blob sas create [options] [container] [blob] [permissions] [expiry]
 
-**Polecenia do zarządzania z udziałów plików magazynu**
+**Polecenia do zarządzania udziałów plików magazynu**
 
     storage share create [options] [share]
     storage share show [options] [share]
     storage share delete [options] [share]
     storage share list [options] [prefix]
 
-**Polecenia do zarządzania plików magazynu**
+**Polecenia, aby zarządzać plikami magazynu**
 
     storage file list [options] [share] [path]
     storage file delete [options] [share] [path]
@@ -1632,18 +1632,18 @@ Wartość parametru opcje:
     storage directory create [options] [share] [path]
     storage directory delete [options] [share] [path]
 
-**Polecenia do zarządzania z magazynu kolejek**
+**Polecenia do zarządzania Twojej kolejki magazynu**
 
     storage queue create [options] [queue]
     storage queue list [options] [prefix]
     storage queue show [options] [queue]
     storage queue delete [options] [queue]
 
-**Polecenia do zarządzania udostępnionego dostęp podpisów kolejki magazynu**
+**Polecenia do zarządzania udostępnionego dostępu sygnatury z kolejką magazynu**
 
     storage queue sas create [options] [queue] [permissions] [expiry]
 
-**Polecenia do zarządzania przechowywanych dostęp zasady kolejki magazynu**
+**Polecenia do zarządzania przechowywanych dostępu zasady z kolejką magazynu**
 
     storage queue policy create [options] [queue] [name]
     storage queue policy show [options] [queue] [name]
@@ -1651,28 +1651,28 @@ Wartość parametru opcje:
     storage queue policy set [options] [queue] [name]
     storage queue policy delete [options] [queue] [name]
 
-**Polecenia, aby zarządzać właściwościami rejestrowania Twojego magazynu**
+**Polecenia do zarządzania właściwości rejestrowania magazynu**
 
     storage logging show [options]
     storage logging set [options]
 
-**Polecenia do zarządzania właściwości metryki magazynu**
+**Polecenia, aby zarządzać właściwościami metryk usługi Storage**
 
     storage metrics show [options]
     storage metrics set [options]
 
-**Polecenia do zarządzania tabel do przechowywania**
+**Polecenia do zarządzania tabel magazynu**
 
     storage table create [options] [table]
     storage table list [options] [prefix]
     storage table show [options] [table]
     storage table delete [options] [table]
 
-**Polecenia do zarządzania udostępnionego dostęp podpisów tabeli magazynu**
+**Polecenia do zarządzania udostępnionego dostęp do sygnatur tabeli magazynu**
 
     storage table sas create [options] [table] [permissions] [expiry]
 
-**Polecenia do zarządzania przechowywane zasady tabeli magazynu dostępu**
+**Polecenia do zarządzania przechowywanych dostęp do tabeli magazynu zgodnie z zasadami**
 
     storage table policy create [options] [table] [name]
     storage table policy show [options] [table] [name]
@@ -1680,16 +1680,16 @@ Wartość parametru opcje:
     storage table policy set [options] [table] [name]
     storage table policy delete [options] [table] [name]
 
-## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>Azure tag: polecenia do zarządzania oznakowanie Menedżera zasobów
+## <a name="azure-tag-commands-to-manage-your-resource-manager-tag"></a>tag platformy Azure: polecenia do zarządzania tag Menedżera zasobów
 **Dodaj tag**
 
     tag create [options] <name> <value>
 
-**Usuń całą tagu lub wartość tagu**
+**Usuń cały tag lub wartość tagu**
 
     tag delete [options] <name> <value>
 
-**Zawiera informacje znaczników**
+**Wyświetla informacje dotyczące tagu**
 
     tag list [options]
 
@@ -1697,25 +1697,25 @@ Wartość parametru opcje:
 
     tag show [options] [name]
 
-## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>Maszyna wirtualna platformy Azure: polecenia do zarządzania maszyn wirtualnych platformy Azure
+## <a name="azure-vm-commands-to-manage-your-azure-virtual-machines"></a>Maszyna wirtualna platformy Azure: polecenia do zarządzania usługi Azure Virtual Machines
 **Tworzenie maszyny Wirtualnej**
 
     vm create [options] <resource-group> <name> <location> <os-type>
 
-**Utwórz maszynę Wirtualną z domyślnych zasobów**
+**Tworzenie maszyny Wirtualnej przy użyciu domyślnych zasobów**
 
     vm quick-create [options] <resource-group> <name> <location> <os-type> <image-urn> <admin-username> <admin-password
 
 > [!TIP]
-> Począwszy od wersji 0.10 CLI, można podać krótki aliasu, takie jak "UbuntuLTS" lub "Win2012R2Datacenter" jako `image-urn` dla niektórych popularnych obrazów w witrynie Marketplace. Uruchom `azure help vm quick-create` opcji. Ponadto, począwszy od wersji 0.10, `azure vm quick-create` domyślnie używa magazyn w warstwie premium, jeśli jest on dostępny w wybranym regionie.
+> Począwszy od interfejsu wiersza polecenia w wersji 0.10, można podać krótki aliasu, takie jak "UbuntuLTS" lub "Win2012R2Datacenter" jako `image-urn` dla niektórych popularnych obrazów z witryny Marketplace. Uruchom `azure help vm quick-create` opcji. Ponadto, począwszy od wersji 0.10, `azure vm quick-create` domyślnie używa magazynu w warstwie premium, jeśli jest on dostępny w wybranym regionie.
 > 
 > 
 
-**Wyświetl listę maszyn wirtualnych w ramach konta**
+**Listę maszyn wirtualnych w ramach konta usługi**
 
     vm list [options]
 
-**Pobierz maszyny wirtualne w grupie zasobów**
+**Pobieranie jednej maszyny wirtualnej w grupie zasobów**
 
     vm show [options] <resource-group> <name>
 
@@ -1723,7 +1723,7 @@ Wartość parametru opcje:
 
     vm delete [options] <resource-group> <name>
 
-**Zamykania maszyn wirtualnych w grupie zasobów**
+**Zamykanie maszyn wirtualnych w grupie zasobów**
 
     vm stop [options] <resource-group> <name>
 
@@ -1731,11 +1731,11 @@ Wartość parametru opcje:
 
     vm restart [options] <resource-group> <name>
 
-**Uruchom jedną maszynę wirtualną w grupie zasobów**
+**Uruchomić jedną maszynę wirtualną w grupie zasobów**
 
     vm start [options] <resource-group> <name>
 
-**Zamknięcie jednej maszyny wirtualnej w ramach grupy zasobów i zwalnia zasoby obliczeniowe**
+**Zamykanie maszyn wirtualnych w ramach grupy zasobów i zwalnia zasoby obliczeniowe**
 
     vm deallocate [options] <resource-group> <name>
 
@@ -1747,7 +1747,7 @@ Wartość parametru opcje:
 
     vm capture [options] <resource-group> <name> <vhd-name-prefix>
 
-**Ustaw stan maszyny wirtualnej na Uogólniono**
+**Ustaw stan maszyny Wirtualnej uogólniono**
 
     vm generalize [options] <resource-group> <name>
 
@@ -1755,21 +1755,21 @@ Wartość parametru opcje:
 
     vm get-instance-view [options] <resource-group> <name>
 
-**Pozwala na zresetowanie ustawień dostępu zdalnego pulpitu lub SSH na maszynie wirtualnej i zresetuj hasło dla konta, które ma uprawnienia administratora lub sudo urzędu**
+**Pozwalają na Resetowanie ustawień dostępu zdalnego pulpitu lub protokołu SSH na maszynie wirtualnej i można zresetować hasła dla konta, które ma uprawnienia administratora lub urząd "sudo"**
 
     vm reset-access [options] <resource-group> <name>
 
-**Aktualizacja maszyny Wirtualnej z nowymi danymi**
+**Aktualizowanie maszyny Wirtualnej za pomocą nowych danych**
 
     vm set [options] <resource-group> <name>
 
-**Polecenia do zarządzania dysków danych maszyny wirtualnej**
+**Polecenia do zarządzania dyskami danych maszyny wirtualnej**
 
     vm disk attach-new [options] <resource-group> <vm-name> <size-in-gb> [vhd-name]
     vm disk detach [options] <resource-group> <vm-name> <lun>
     vm disk attach [options] <resource-group> <vm-name> [vhd-url]
 
-**Polecenia do zarządzania rozszerzeń zasobów maszyny Wirtualnej**
+**Polecenia do zarządzania rozszerzeń zasobu maszyny Wirtualnej**
 
     vm extension set [options] <resource-group> <vm-name> <name> <publisher-name> <version>
     vm extension get [options] <resource-group> <vm-name>

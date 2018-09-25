@@ -1,8 +1,7 @@
 ---
 title: Wybieranie algorytmów uczenia maszynowego | Dokumentacja firmy Microsoft
-description: Jak wybrać Azure Machine Learning algorytmów uczenie nadzorowane i nienadzorowane w eksperymentach klaster, klasyfikacji lub regresji.
+description: Jak wybrać algorytmy Azure Machine Learning Studio uczenie nadzorowane i nienadzorowane w eksperymentach klastrowania, klasyfikacji lub regresji.
 services: machine-learning
-documentationcenter: ''
 author: pakalra
 ms.author: pakalra
 manager: cgronlun
@@ -11,230 +10,247 @@ tags: ''
 ms.assetid: a3b23d7f-f083-49c4-b6b1-3911cd69f1b4
 ms.service: machine-learning
 ms.component: studio
-ms.devlang: na
 ms.topic: article
-ms.tgt_pltfrm: na
-ms.workload: data-services
 ms.date: 12/18/2017
-ms.openlocfilehash: 79b2cc3951fa8a48282f42f7180ec831050508f8
-ms.sourcegitcommit: 944d16bc74de29fb2643b0576a20cbd7e437cef2
+ms.openlocfilehash: 92db2a86f5f698945cd2252476e951d658dc75ac
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/07/2018
-ms.locfileid: "34834386"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959210"
 ---
-# <a name="how-to-choose-algorithms-for-microsoft-azure-machine-learning"></a>Wybór algorytmów dla usługi Microsoft Azure Machine Learning
-Odpowiedź na pytanie "Jakie Algorytm uczenia maszynowego należy używać?" jest zawsze "Zależy." To zależy od rozmiaru, jakości i charakter danych. To zależy co chcesz zrobić z odpowiedzią. To zależy jak matematyczne algorytmu był przekształcić instrukcje dla komputera, którego używasz. I jest ono zależne na czas, jaki ma. Nawet najbardziej doświadczeni analityków danych nie wiadomo, który algorytm będzie wykonywać najlepiej przed podjęciem próby je.
+# <a name="how-to-choose-algorithms-for-azure-machine-learning-studio"></a>Jak wybierać algorytmy w usłudze Azure Machine Learning Studio
+
+Odpowiedź na pytanie "Jaki algorytmu uczenia maszynowego należy użyć?" jest zawsze "To zależy." To zależy od rozmiaru, jakości i charakter danych. To zależy od co chcesz zrobić z odpowiedzią. To zależy od sposobu matematyczne algorytmu zostało przetłumaczone na instrukcje dla komputera, którego używasz. I to zależy na czas, jaki masz. Nawet najbardziej doświadczonych analityków danych nie wiadomo, który algorytm będzie wykonywać najlepiej przed podjęciem próby ich.
 
 ## <a name="the-machine-learning-algorithm-cheat-sheet"></a>Algorytm uczenia maszynowego Ściągawka
-**Microsoft Azure Machine Learning algorytmu Cheat arkusza** pomaga wybrać prawa komputera Algorytm uczenia dla rozwiązań analizy predykcyjnej z biblioteki Microsoft Azure Machine Learning algorytmów.
-W tym artykule przedstawiono sposób jego użycia.
+
+**Microsoft Azure uczenie algorytmu da się oszukać arkuszu maszyny** pomaga wybrać właściwą machine algorytmu uczenia dla rozwiązań analizy predykcyjnej z biblioteki usługi Azure Machine Learning Studio algorytmów.
+W tym artykule przedstawiono sposób użycia.
 
 > [!NOTE]
-> Aby pobrać przydatną ściągawkę i skorzystać z tego artykułu, przejdź do [Machine learning arkusz ze wskazówkami dotyczącymi algorytmu dla programu Microsoft Azure Machine Learning Studio](algorithm-cheat-sheet.md).
+> Aby pobrać cheat-sheet i skorzystać z tego artykułu, przejdź do [usługi Machine learning algorithm cheat-sheet for Microsoft Azure Machine Learning Studio](algorithm-cheat-sheet.md).
 > 
 > 
 
-Ten arkusz ze wskazówkami dotyczącymi ma odbiorców bardzo na uwadze: początku danych naukowca przy użyciu poziomu Absolwenci bez tytułu machine learning, próby wybrać algorytm zacząć w usłudze Azure Machine Learning Studio. Oznacza to ułatwia niektóre generalizacji i oversimplifications, że jego punktów w kierunku bezpieczne. Oznacza to również, że istnieje wiele algorytmów niewymienione w tym miejscu. Wraz z rozwojem usługi Azure Machine Learning na pełniejsze zbiór dostępnych metod, dodamy je.
+Ta ściągawka zawiera bardzo określonej grupy odbiorców na uwadze: wydobywania danych początku przy użyciu uczenia maszynowego poziom Absolwenci bez tytułu, próby wybieranie algorytmu zaczynać w usłudze Azure Machine Learning Studio. Oznacza to, że to sprawia, że niektóre generalizacji i oversimplifications, ale jego punktów w kierunku bezpieczne. Oznacza to również, że dostępnych jest wiele algorytmów niewymienione w tym miejscu. Wraz z rozwojem obejmowania bardziej kompletny zestaw dostępnych metod znajduje się w usłudze Azure Machine Learning polega na dodaniu je.
 
-Te zalecenia są skompilowane opinii i porad z wielu analityków danych, a machine learning ekspertów. Nie możemy zaakceptować wszystkie, ale podejmowano próby ujednolicenie opinie naszych do nierównej konsensu. Większość instrukcji zastrzeżeń rozpoczynać się od "Zależy..."
+Te zalecenia stanowią skompilowany opinie i porady od wielu analityków danych i machine learning ekspertów. Nie zgadzamy się wszystkiego, co jednak podejmowano próby ujednolicenie naszych opinie do nierównej zgodne. Większość instrukcji zastrzeżeń zaczynają się od "Jest to uzależnione..."
 
-### <a name="how-to-use-the-cheat-sheet"></a>Jak używać arkusz ze wskazówkami
-Przeczytaj ścieżkę i algorytmu etykiet na wykresie jako "dla  *&lt;etykieta ścieżki&gt;*, użyj  *&lt;algorytm&gt;*." Na przykład "dla *szybkości*, użyj *dwie klasy Regresja logistyczna*." Czasami więcej niż jedna gałąź ma zastosowanie.
-Czasami żaden z nich nie jest dokładne dopasowanie. Są one przeznaczone do można reguły z thumb zalecenia, nie martw się o dokładnie.
-Kilka analityków danych, które I zawsze mówię z wymienionych które tylko się sposobem znaleźć bardzo najlepsze algorytm jest spróbuj je wszystkie.
+### <a name="how-to-use-the-cheat-sheet"></a>Jak używać — ściągawka
 
-Oto przykład z [galerii Azure AI](http://gallery.cortanaintelligence.com/) eksperymentu, która próbuje kilka algorytmów na tych samych danych i porównanie wyników: [porównania klasyfikatory wielu klas: list rozpoznawania](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
+Przeczytaj ścieżkę i algorytmu etykiet na wykresie jako "dla  *&lt;etykieta ścieżki&gt;*, użyj  *&lt;algorytm&gt;*." Na przykład "dla *szybkość*, użyj *dwie klasy regresji logistycznej*." Czasami może być więcej niż jedna gałąź ma zastosowanie.
+Czasami żadna z nich są idealnym rozwiązaniem. Są one przeznaczone do reguły z thumb zaleceń, więc nie martw się o nim są dokładne.
+Wielu analityków danych, które I Rozmawialiśmy o wspomniane, które jedynym pewnym sposobem znalezienia bardzo najlepszy algorytm jest do wypróbowania wszystkich z nich.
+
+Oto przykład z [Galeria sztucznej Inteligencji platformy](http://gallery.cortanaintelligence.com/) z eksperymentu, który próbuje kilku algorytmów na tych samych danych i porównanie wyników: [porównania klasyfikatorów wieloklasowej: litera rozpoznawania](http://gallery.cortanaintelligence.com/Details/a635502fc98b402a890efe21cec65b92).
 
 > [!TIP]
 > Aby pobrać i wydrukować diagram, który zawiera przegląd możliwości usługi Machine Learning Studio, zobacz [Diagram przeglądowy możliwości usługi Azure Machine Learning Studio](studio-overview-diagram.md).
 > 
 > 
 
-## <a name="flavors-of-machine-learning"></a>Odmian uczenia maszynowego
-### <a name="supervised"></a>Nadzorowane
-Algorytmy uczenia nadzorowanego tworzenia prognoz na podstawie zestawu przykładów. Na przykład historycznych giełdowych może służyć do zagrożenia prób w przyszłości. Każdy przykład używany do trenowania etykietą wartości istotnej — w takim przypadku giełdowy. Algorytm uczenia nadzorowanego wyszukuje wzorce w etykiety tych wartości. Można używać żadnych informacji, które mogą być użyteczne — dzień tygodnia, sezonu, danych finansowych firmy, Typ branży, destrukcyjne zdarzenia geograficznymi — oraz każdy algorytm szuka różnego rodzaju wzorce. Po algorytm znalazł najlepsze wzorzec można go, używa tego wzorca do tworzenia prognoz dotyczących bez etykiety danych testowych — ceny w przyszłości.
+## <a name="flavors-of-machine-learning"></a>Odmian usługi machine learning
 
-Uczenia nadzorowanego jest typem popularnych i przydatne uczenia maszynowego. Z jednym wyjątkiem wszystkie moduły w usłudze Azure Machine Learning są uczenia nadzorowanego algorytmów. Istnieje kilka określonych typów uczenia nadzorowanego, które są przedstawiane w ramach usługi Azure Machine Learning: wykrywania anomalii, klasyfikacji i regresji.
+### <a name="supervised"></a>W trybie nadzorowanym
 
-* **Klasyfikacja**. Gdy dane są używane do prognozowania kategorii, uczenia nadzorowanego jest również nazywany klasyfikacji. Dotyczy to podczas przypisywania obrazu jako obraz "kot" lub "dog". Gdy istnieją tylko dwa wybory, jest nazywany **dwuklasowych** lub **dwumianu klasyfikacji**. Jeśli ma więcej kategorii jako podczas przewidywania wygrał użytkownik z turnieju Madness marca NCAA, ten problem jest nazywany **klasyfikacji wielu klasy**.
-* **Regresja**. Gdy jest on przewidzieć wartości podobnie jak w przypadku giełdowych, uczenia nadzorowanego nosi nazwę regresji.
-* **Wykrywanie anomalii**. Czasami celem jest zidentyfikowanie punktów danych, które są po prostu niezwykłe. W wykrywaniu oszukańczych transakcji na przykład wszystkie wzorce wydatków wyjątkowa karty kredytowej są podejrzane. Ewentualne zmiany są tak wiele i wygląda tak kilka, że nie jest to możliwe, aby dowiedzieć się, jakie działanie fałszywych przykłady szkolenia. Podejście, które przyjmuje wykrywania anomalii jest po prostu Dowiedz się, jakie normalne działanie wygląda (przy użyciu transakcji fałszywych historii) i zidentyfikować wszystko, co znacznie różni się.
+Algorytmy uczenia nadzorowanego prognozowania na podstawie zestawu przykładów. Na przykład historycznych cen akcji może służyć do zagrożenia prób w przyszłości. Każdy przykład używane na potrzeby szkolenia ma etykietę o wartości zainteresowania — w tym przypadku cena akcji. Algorytm uczenia nadzorowanego szuka wzorce w tych etykiety wartości. Można użyć, wszystkie informacje, które mogą być istotne — dzień tygodnia, porą roku, danych finansowych firmy, Typ branży, obecności szkodliwe zdarzenia geopolitycznych — i dla różnych typów deseni każdego algorytmu. Po algorytm wykryła wzorzec najlepsze jest to możliwe, używa tego wzorca do tworzenia prognoz dotyczących bez etykiety danych testowych — ceny w przyszłości.
+
+Uczenia nadzorowanego jest popularne i przydatne rodzaj usługi machine learning. Z jednym wyjątkiem są nadzorowane wszystkie moduły w usłudze Azure Machine Learning, algorytmów uczenia. Istnieje kilka określonych typów uczenia nadzorowanego, które są reprezentowane w ramach usługi Azure Machine Learning: klasyfikacji, regresji i wykrywanie anomalii.
+
+* **Klasyfikacja**. Gdy dane są używane do prognozowania kategorii, uczenia nadzorowanego jest również nazywany klasyfikacji. Dotyczy to podczas przypisywania obrazu jako obraz dog lub cat. W przypadku tylko dwie opcje jest nazywany **dwuklasowych** lub **dwumianowego klasyfikacji**. Jeśli ma więcej kategorii, jako podczas Prognozowanie zwycięzca TURNIEJU March Madness ncaa, ten problem jest znany jako **klasyfikacji wieloklasowej**.
+* **Regresja**. Wartość przewiduje się, że, podobnie jak w przypadku cen akcji, uczenia nadzorowanego jest nazywany regresji.
+* **Wykrywanie anomalii**. Czasami celem jest zidentyfikowanie punktów danych, które są po prostu niezwykłe. W wykrywaniu oszukańczych transakcji na przykład wszystkie wzorce wydatków wyjątkowej karty kredytowej są podejrzane. Ewentualne zmiany są tak wiele, a więc kilku, że nie jest to możliwe, aby dowiedzieć się, jakie działanie fałszywe przykłady szkolenia wygląda następująco. Podejście, które przyjmuje wykrywania anomalii jest po prostu Dowiedz się, jakie normalne działanie wygląda jak (przy użyciu transakcji — fałszywe historii) i zidentyfikować wszystko, co znacznie różni się.
 
 ### <a name="unsupervised"></a>Nienadzorowane
-Uczenie nienadzorowane punktów danych, musi bez etykiet skojarzonych z nimi. Zamiast tego celem Algorytm uczenia nienadzorowanych jest organizowania danych w określony sposób lub do opisania jego struktury. Oznacza to, grupowanie go w klastrach lub znajdowania różne sposoby patrzeć dane złożone, aby był wyświetlany prostszy i bardziej zorganizowany.
 
-### <a name="reinforcement-learning"></a>Wzmocnienie learning
-W wzmocnienie uczenia algorytm pobiera wybierz akcję w odpowiedzi na każdym punkcie danych. Algorytm uczenia również odbiera sygnał opłatą przez krótki czas później, wskazującą, jaka była decyzji.
-Na podstawie tych, algorytm modyfikuje strategią aby osiągnąć najwyższą osób trzecich. Obecnie nie ma żadnych wzmocnienie learning algorithm moduły w usłudze Azure Machine Learning. Wzmocnienie learning jest typowe w przypadku robotics, gdzie zbiór odczyty czujników w jednym punkcie w czasie jest punkt danych, a algorytm należy wybrać robota następnej akcji. Jest to również fizyczną nadające się do Internet rzeczy aplikacji.
+Uczenie nienadzorowane punktów danych, musi bez etykiet skojarzonych z nimi. Zamiast tego celem algorytmu uczenia nienadzorowanych jest do organizowania danych, które w jakiś sposób, lub do opisania jego struktury. Oznacza to grupowanie go w klastrach lub znajdowania spojrzenie na złożonych danych, tak aby była wyświetlana, prostsze lub bardziej zorganizowane na różne sposoby.
+
+### <a name="reinforcement-learning"></a>Uczenia przez wzmacnianie
+
+W przypadku uczenia przez wzmacnianie algorytm pobiera wybierz akcję w odpowiedzi na każdy punkt danych. Algorytm uczenia otrzymuje również sygnał nagradzania przez krótki czas później, wskazującą, jak dobra była decyzji.
+Na tej podstawie algorytm modyfikuje podstawę strategii w celu uzyskania najwyższej nagrody. Aktualnie nie istnieją żadne wzmocnienie uczenie algorytmu moduły w usłudze Azure Machine Learning. Uczenia przez wzmacnianie jest często używany w związane z robotyką, gdzie zestaw odczyty czujników w jednym punkcie w czasie jest punkt danych, a algorytm należy wybrać następne działanie robota. Jest to również fizyczną dopasowania dla Internetu rzeczy aplikacji.
 
 ## <a name="considerations-when-choosing-an-algorithm"></a>Zagadnienia dotyczące wybierania algorytmów
+
 ### <a name="accuracy"></a>Dokładność
-Pobieranie możliwe najdokładniejszych odpowiedzi nie zawsze jest konieczne.
-Czasami zbliżenia jest odpowiednia, w zależności od tego, co ma być używany dla. Jeśli tak jest, może być znacznie Wytnij czas przetwarzania przez spełni więcej metod przybliżonej. Inną zaletą więcej metod przybliżonej jest, że naturalnie charakteryzują się uniknąć [overfitting](https://youtu.be/DQWI1kvmwRg).
+
+Pobieranie możliwych najdokładniejszą odpowiedź nie zawsze jest konieczne.
+Czasami przybliżeniem jest odpowiednia, w zależności od tego, co chcesz stosować. Jeśli tak jest rzeczywiście, może być znacznie Wytnij czasu przetwarzania przez wyobrazić metodami przybliżony więcej. Inną zaletą więcej metod przybliżony jest, że naturalnie charakteryzują się uniknąć [overfitting](https://youtu.be/DQWI1kvmwRg).
 
 ### <a name="training-time"></a>Czas szkolenia
-Liczba minut lub godziny niezbędne do uczenia modelu znacznie różni się między algorytmów. Uczenie czasu jest często ściśle związany dokładność — jeden zwykle dołączony innych. Ponadto niektóre algorytmy są bardziej podatna na liczbę punktów danych niż inne.
-Gdy czas jest ograniczona można dysku wybór algorytmu, szczególnie w przypadku, gdy zestaw danych jest duży.
+
+Liczba minut lub godzin niezbędne do nauczenia modelu różni się znacznie między algorytmów. Szkolenie czasu jest często ściśle związane z tym dokładność — jeden dołączony zazwyczaj drugiego. Ponadto niektóre algorytmy są bardziej wrażliwe na liczbę punktów danych od innych.
+Gdy czas jest ograniczona pomogą rozwinąć wybór algorytmu, szczególnie w przypadku, gdy zestaw danych jest duży.
 
 ### <a name="linearity"></a>Liniowości
-Wiele algorytmów uczenia maszynowego, należy użyć liniowości. Algorytmy liniowej klasyfikacji założono, że klasy mogą być oddzielone prostej (lub jej wielowymiarowego analogowy). Te obejmują Regresja logistyczna i obsługuje wektor maszyny (zgodnie z implementacją w usłudze Azure Machine Learning).
-Algorytmy regresji liniowej przyjęto założenie, skorzystaj z prostej trendów w danych. Te wartości domyślne nie są nieprawidłowe dla niektórych problemów, ale na innych dokładność one Przenieś w dół.
 
-![Klasa inne niż liniowy granic][1]
+Wiele algorytmów uczenia maszynowego, należy użyć liniowości. Algorytmy liniowej klasyfikacji przyjęto założenie, że klasy mogą być oddzielone prostej (lub jego wyższej wymiarowej analogowy). Te obejmują regresji logistycznej i obsługują maszyny wektora (co jest zaimplementowane w usłudze Azure Machine Learning).
+Algorytmy regresji liniowej przyjęto założenie, wykonać prostą trendów danych. Tych założeń są negatywnie wpływać na niektórych problemów, ale na innych użytkowników mogą obniżyć dokładności.
 
-***Granicą liniową inne niż klasa*** *-zależne algorytm klasyfikacji liniowej spowodowałoby niski dokładności*
+![Klasy liniowe bez granic][1]
 
-![Dane z rożne trend][2]
+***Klasa niż liniowy granic*** *— opierając się na to algorytm klasyfikacji liniowej mogłoby spowodować niski dokładności*
 
-***Dane z rożne trend*** *— za pomocą metody regresji liniowej wygenerowanie dużo błędów większe niż to konieczne*
+![Dane z trendem nieliniowych][2]
 
-Niezależnie od ich zagrożenia liniowej algorytmy są bardzo popularny jako pierwszy wiersz ataku. Mają zwykle algorithmically proste i szybkie do uczenia.
+***Dane z trendem nieliniowych*** *-metodą regresji liniowej wygeneruje wiele błędów większe niż to konieczne*
+
+Niezależnie od ich zagrożeniami liniowej algorytmy są bardzo popularne jako pierwsza linia ataku. Mają zwykle algorithmically prosty i szybki do nauczenia.
 
 ### <a name="number-of-parameters"></a>Liczba parametrów
-Parametry są pokręteł, które pobiera naukowca danych, aby włączyć podczas konfigurowania algorytmu. Są one numery, które wpływają na działanie tego algorytmu, na przykład błąd uszkodzenia lub liczby iteracji lub opcji między wariantów zachowania algorytm. Czas szkolenia i dokładność algorytmu czasami mogą być bardzo czułe na wprowadzenie odpowiednich ustawień. Zwykle algorytmów z dużą liczbą parametrów wymagają większości prób i błędów można znaleźć dobrej kombinacji.
 
-Alternatywnie istnieje [kominów parametru](algorithm-parameters-optimize.md) blok modułu z usługi Azure Machine Learning, która automatycznie podejmie wszystkie kombinacje parametrów o dowolnym możesz wybrać. Jest to dobry sposób na upewnij się, że zostały objęte miejsca parametr, czas wymagany do uczenia modelu zwiększa wykładniczo z liczbą parametrów.
+Parametry są pokrętła, które pobiera analitykiem danych, aby włączyć podczas konfigurowania algorytm. Są one numery, które mają wpływ na zachowanie tego algorytmu, takie jak błąd uszkodzenia lub liczba iteracji lub opcje między warianty zachowania algorytm. Czas szkolenia i dokładność algorytmu czasami może być bardzo czułe na wprowadzenie odpowiednich ustawień. Zazwyczaj algorytmów przy użyciu parametrów dużą wymagają większość prób i błędów można znaleźć dobre połączenie.
 
-Odwróć jest, że mających wiele parametrów zwykle oznacza, że algorytm ma większą elastyczność. Często można uzyskać bardzo dobre dokładności. Pod warunkiem, że można znaleźć odpowiednie połączenie ustawienia parametru.
+Alternatywnie ma [zaczynają parametr](algorithm-parameters-optimize.md) bloku modułu w usłudze Azure Machine Learning, która automatycznie próbuje wszystkie kombinacje parametrów na poziom szczegółowości, niezależnie od wybranej. To doskonały sposób upewnij się, że zostały objęte miejsca parametr, czas wymagany do nauczenia modelu zwiększa się wykładniczo wraz z liczbą parametrów.
+
+Wzrost jest, że zwykle o wiele parametrów oznacza, że algorytm ma większą elastyczność. Często można to osiągnąć bardzo dobre dokładności. Pod warunkiem, że można znaleźć odpowiedniej kombinacji ustawień parametrów.
 
 ### <a name="number-of-features"></a>Wiele funkcji
-Dla niektórych typów danych liczbę funkcji mogą być bardzo duże w porównaniu do liczby punktów danych. Jest to często w przypadku danych tekstowych lub genetyka. Duża liczba funkcji można bog dół niektórych algorytmów uczenia, co szkolenia czasu unfeasibly długo. Obsługa wektor maszyny są szczególnie dobrze nadają się do tego przypadku (patrz poniżej).
+
+W przypadku niektórych typów danych, wiele funkcji mogą być bardzo duże w porównaniu do liczby punktów danych. Jest to często w przypadku danych tekstowych lub genetyka. Dużej liczby funkcji może przeciążyć pewnych algorytmów uczenia, dzięki czemu czas unfeasibly długich szkoleń. Obsługa wektor maszyny są szczególnie dobrze nadają się do tego przypadku (patrz poniżej).
 
 ### <a name="special-cases"></a>Specjalne przypadki
-Niektóre algorytmów uczenia zakładają określonej struktury danych lub zakładanych wyników. Jeśli znajdziesz taki, który odpowiada potrzebom użytkownika, jego możesz nadać bardziej przydatne wyniki, dokładniejszych prognoz lub szybsze szkolenia.
+
+Niektóre algorytmów uczenia zakładają określonej struktury danych lub zakładanych wyników. Jeśli znajdziesz taki, który spełnia Twoje potrzeby, oferuje więcej przydatnych wyników, dokładniejszych prognoz lub krótszy czas szkolenia.
 
 | **Algorytm** | **Accuracy** | **Czas szkolenia** | **Liniowości** | **Parametry** | **Uwagi** |
 | --- |:---:|:---:|:---:|:---:| --- |
-| **Klasyfikacja dwa — klasa** | | | | | |
+| **Klasyfikacja dwuklasowych** | | | | | |
 | [Regresja logistyczna](https://msdn.microsoft.com/library/azure/dn905994.aspx) | |● |● |5 | |
-| [decyzja lasu](https://msdn.microsoft.com/library/azure/dn906008.aspx) |● |○ | |6 | |
-| [Dżungla decyzji](https://msdn.microsoft.com/library/azure/dn905976.aspx) |● |○ | |6 |Mało pamięci |
-| [drzewo decyzyjne boosted](https://msdn.microsoft.com/library/azure/dn906025.aspx) |● |○ | |6 |Zużycie pamięci |
-| [sieć neuronowa](https://msdn.microsoft.com/library/azure/dn905947.aspx) |● | | |9 |[Możliwe jest dodatkowe dostosowanie](http://go.microsoft.com/fwlink/?LinkId=402867) |
-| [perceptron uśrednionej](https://msdn.microsoft.com/library/azure/dn906036.aspx) |○ |○ |● |4 | |
-| [Obsługa maszyny wektora](https://msdn.microsoft.com/library/azure/dn905835.aspx) | |○ |● |5 |Nadaje się do funkcji dużych zestawów |
-| [Obsługa lokalnie głębokie wektor maszyny](https://msdn.microsoft.com/library/azure/dn913070.aspx) |○ | | |8 |Nadaje się do funkcji dużych zestawów |
+| [las decyzyjny](https://msdn.microsoft.com/library/azure/dn906008.aspx) |● |○ | |6 | |
+| [Dżungla decyzji](https://msdn.microsoft.com/library/azure/dn905976.aspx) |● |○ | |6 |Zużycie małej ilości pamięci |
+| [wzmocnione drzewo decyzyjnego](https://msdn.microsoft.com/library/azure/dn906025.aspx) |● |○ | |6 |Zużycie pamięci |
+| [sieć neuronowa](https://msdn.microsoft.com/library/azure/dn905947.aspx) |● | | |9 |[Możliwe jest dostosowanie dodatkowe](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [uśrednionej perceptron](https://msdn.microsoft.com/library/azure/dn906036.aspx) |○ |○ |● |4 | |
+| [Obsługa maszyny wektora](https://msdn.microsoft.com/library/azure/dn905835.aspx) | |○ |● |5 |Dobre dla funkcji dużych zestawów |
+| [lokalnie dogłębnej obsłudze wektor maszyny](https://msdn.microsoft.com/library/azure/dn913070.aspx) |○ | | |8 |Dobre dla funkcji dużych zestawów |
 | [Maszyna punktu Bayesa](https://msdn.microsoft.com/library/azure/dn905930.aspx) | |○ |● |3 | |
-| **Klasa usługi klasyfikacji** | | | | | |
+| **Wieloklasowej klasyfikacji** | | | | | |
 | [Regresja logistyczna](https://msdn.microsoft.com/library/azure/dn905853.aspx) | |● |● |5 | |
-| [decyzja lasu](https://msdn.microsoft.com/library/azure/dn906015.aspx) |● |○ | |6 | |
-| [Dżungla decyzji ](https://msdn.microsoft.com/library/azure/dn905963.aspx) |● |○ | |6 |Mało pamięci |
-| [sieć neuronowa](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[Możliwe jest dodatkowe dostosowanie](http://go.microsoft.com/fwlink/?LinkId=402867) |
-| [one-v-all](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |Zobacz właściwości wybrano metodę dwa — klasa |
+| [las decyzyjny](https://msdn.microsoft.com/library/azure/dn906015.aspx) |● |○ | |6 | |
+| [Dżungla decyzji ](https://msdn.microsoft.com/library/azure/dn905963.aspx) |● |○ | |6 |Zużycie małej ilości pamięci |
+| [sieć neuronowa](https://msdn.microsoft.com/library/azure/dn906030.aspx) |● | | |9 |[Możliwe jest dostosowanie dodatkowe](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [one-v-all](https://msdn.microsoft.com/library/azure/dn905887.aspx) |- |- |- |- |Zobacz właściwości wybrano metodę dwuklasowych |
 | **Regression** | | | | | |
-| [liniowy](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
-| [Estymacja Bayesian liniowy](https://msdn.microsoft.com/library/azure/dn906022.aspx) | |○ |● |2 | |
-| [decyzja lasu](https://msdn.microsoft.com/library/azure/dn905862.aspx) |● |○ | |6 | |
-| [drzewo decyzyjne boosted](https://msdn.microsoft.com/library/azure/dn905801.aspx) |● |○ | |5 |Zużycie pamięci |
-| [kwantyl szybkiego lasu](https://msdn.microsoft.com/library/azure/dn913093.aspx) |● |○ | |9 |Zamiast prognoz punktu dystrybucji |
-| [sieć neuronowa](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[Możliwe jest dodatkowe dostosowanie](http://go.microsoft.com/fwlink/?LinkId=402867) |
-| [Poissona](https://msdn.microsoft.com/library/azure/dn905988.aspx) | | |● |5 |Technicznie dziennika liniowej. Do przewidywania liczby |
-| [{numer porządkowy](https://msdn.microsoft.com/library/azure/dn906029.aspx) | | | |0 |Do przewidywania porządkowanie ranga |
+| [Liniowy](https://msdn.microsoft.com/library/azure/dn905978.aspx) | |● |● |4 | |
+| [Bayesowskie liniowy](https://msdn.microsoft.com/library/azure/dn906022.aspx) | |○ |● |2 | |
+| [las decyzyjny](https://msdn.microsoft.com/library/azure/dn905862.aspx) |● |○ | |6 | |
+| [wzmocnione drzewo decyzyjnego](https://msdn.microsoft.com/library/azure/dn905801.aspx) |● |○ | |5 |Zużycie pamięci |
+| [kwantyl szybkie lasu](https://msdn.microsoft.com/library/azure/dn913093.aspx) |● |○ | |9 |Zamiast prognozy punktu dystrybucji |
+| [sieć neuronowa](https://msdn.microsoft.com/library/azure/dn905924.aspx) |● | | |9 |[Możliwe jest dostosowanie dodatkowe](http://go.microsoft.com/fwlink/?LinkId=402867) |
+| [Poissona](https://msdn.microsoft.com/library/azure/dn905988.aspx) | | |● |5 |Z technicznego punktu widzenia dziennika liniowych. Do prognozowania liczby |
+| [Liczba porządkowa](https://msdn.microsoft.com/library/azure/dn906029.aspx) | | | |0 |Do przewidywania porządkowanie ranga |
 | **Wykrywanie anomalii** | | | | | |
-| [Obsługa maszyny wektora](https://msdn.microsoft.com/library/azure/dn913103.aspx) |○ |○ | |2 |Szczególnie przydatne dla funkcji dużych zestawów |
-| [Wykrywanie anomalii oparte na PCA](https://msdn.microsoft.com/library/azure/dn913102.aspx) | |○ |● |3 | |
-| [K-średnich](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/) | |○ |● |4 |Algorytm klastrowanie |
+| [Obsługa maszyny wektora](https://msdn.microsoft.com/library/azure/dn913103.aspx) |○ |○ | |2 |Szczególnie przydatne podczas zestawy funkcji duże |
+| [Wykrywanie anomalii oparte na analizie PCA](https://msdn.microsoft.com/library/azure/dn913102.aspx) | |○ |● |3 | |
+| [K-średnich](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/) | |○ |● |4 |Algorytmu klastrowania |
 
 **Właściwości algorytmu:**
 
-**●** -pokazuje znakomity dokładność, szkolenia szybkiego godziny i użyj liniowości
+**●** — pokazuje doskonałą dokładności, szybkie szkolenia razy i użytkowania liniowości
 
-**(○)** — przedstawia dobrą dokładność i czasy umiarkowane szkolenia
+**○** — pokazuje dobrą dokładność i szkolenia Średni czas
 
 ## <a name="algorithm-notes"></a>Uwagi dotyczące algorytmu
+
 ### <a name="linear-regression"></a>Regresja liniowa
-Jak wspomniano wcześniej, [regresji liniowej](https://msdn.microsoft.com/library/azure/dn905978.aspx) dopasowuje linii (lub płaszczyzny lub hyperplane) do zestawu danych. Jest najważniejszą metodą roboczą, proste i szybkie, ale może być nadmiernie simplistic dla niektórych problemów.
-Wyszukaj tutaj [samouczek regresji liniowej](linear-regression-in-azure.md).
 
-![Dane z trendu liniowego][3]
+Jak wspomniano wcześniej, [regresji liniowej](https://msdn.microsoft.com/library/azure/dn905978.aspx) pasuje do zestawu danych wiersza (lub płaszczyzny lub hyperplane). Jest najważniejszą metodą roboczą, prosty i szybki, ale może być zbyt uproszczony dla niektórych problemów.
+Sprawdź tutaj [regresji liniowej w ramach samouczka](linear-regression-in-azure.md).
 
-***Dane z trendu liniowego***
+![Dane za pomocą trendów liniowych][3]
+
+***Dane za pomocą trendów liniowych***
 
 ### <a name="logistic-regression"></a>Regresja logistyczna
-Mimo że uwzględnia złudzenia "regresji" w nazwie, Regresja logistyczna jest rzeczywiście zaawansowane narzędzie [dwuklasowych](https://msdn.microsoft.com/library/azure/dn905994.aspx) i [multiklasa](https://msdn.microsoft.com/library/azure/dn905853.aspx) klasyfikacji. To szybki i prosty. Fakt, że używa tego "-kształcie krzywej zamiast prostej ułatwia fizycznych dopasowanie rozdzielania danych w grupach. Regresja logistyczna zapewnia liniowej klasy granice, więc gdy jest używany, upewnij się, że liniowej zbliżenia się coś, co może współdziałać z.
 
-![Regresja logistyczna dwuklasowych danych z tylko jedną funkcję][4]
+Mimo że obejmuje złudzenia "regresji" w nazwie, regresję logistyczną jest faktycznie zaawansowane narzędzie do [dwuklasowych](https://msdn.microsoft.com/library/azure/dn905994.aspx) i [kontra](https://msdn.microsoft.com/library/azure/dn905853.aspx) klasyfikacji. Jest szybka i prosta. Fakt, że używa firmy "-ukształtowane krzywej zamiast prostej sprawia, że naturalnym wyborem w przypadku dzielenia danych pomiędzy grup. Granice liniowej klasy zapewnia regresji logistycznej, więc gdy jest używany, upewnij się, że zbliżenia liniowy jest coś, co może współdziałać z.
 
-***Regresja logistyczna dwuklasowych danych z tylko jedną funkcję*** *-granic klasy jest punkt, w którym logistyczna krzywej jest właśnie maksymalnie zbliżony obie klasy*
+![Regresja logistyczna do dwóch klas danych za pomocą tylko jednej funkcji][4]
+
+***Regresja logistyczna do dwóch klas danych za pomocą tylko jednej funkcji*** *-granica klasy jest logistycznej krzywej jest po prostu maksymalnie zbliżone do obu klas moment*
 
 ### <a name="trees-forests-and-jungles"></a>Drzewa, lasów i dżungle
-Decyzja lasów ([regresji](https://msdn.microsoft.com/library/azure/dn905862.aspx), [dwuklasowych](https://msdn.microsoft.com/library/azure/dn906008.aspx), i [multiklasa](https://msdn.microsoft.com/library/azure/dn906015.aspx)), decyzja dżungle ([dwuklasowych](https://msdn.microsoft.com/library/azure/dn905976.aspx) i [ multiklasa](https://msdn.microsoft.com/library/azure/dn905963.aspx)), a boosted drzew decyzyjnych ([regresji](https://msdn.microsoft.com/library/azure/dn905801.aspx) i [dwuklasowych](https://msdn.microsoft.com/library/azure/dn906025.aspx)) są wszystkie na podstawie drzew decyzyjnych, maszynę podstawowych koncepcji learning. Istnieje wiele odmian drzew decyzyjnych, ale wszystkie one tak samo postąpić — podzielić miejsca funkcji w regionach przede wszystkim taką samą etykietę. Mogą to być regionów spójne kategorii lub stałą wartość, w zależności od tego, czy podczas klasyfikacji lub regresji.
+
+Decyzja w lasach ([regresji](https://msdn.microsoft.com/library/azure/dn905862.aspx), [dwuklasowych](https://msdn.microsoft.com/library/azure/dn906008.aspx), i [kontra](https://msdn.microsoft.com/library/azure/dn906015.aspx)), decision dżungle ([dwuklasowych](https://msdn.microsoft.com/library/azure/dn905976.aspx) i [ kontra](https://msdn.microsoft.com/library/azure/dn905963.aspx)) i wzmocnione drzewa decyzyjne ([regresji](https://msdn.microsoft.com/library/azure/dn905801.aspx) i [dwuklasowych](https://msdn.microsoft.com/library/azure/dn906025.aspx)) są wszystkie na podstawie drzew decyzyjnych, podstawowe usługi machine learning koncepcji. Istnieje wiele wariantów drzewa decyzyjne, ale wszystkie te same czynności wykonasz — podziału miejsca funkcji na regiony z przede wszystkim tę samą etykietę. Mogą to być regionów spójne kategorii lub stałą wartością, w zależności od tego, czy macie klasyfikacji lub regresji.
 
 ![Drzewo decyzyjne dzieli obszar funkcji][5]
 
-***Drzewo decyzyjne dzieli miejsca funkcji w regionach około uniform wartości***
+***Drzewo decyzyjne dzielący regionów około jednolitego wartości obszar funkcji***
 
-Ponieważ miejsca funkcji można podzielić na arbitralnie małych regionów, to proste nam sobie wyobrazić, dzielenie go wystarczająco precyzyjne, aby mieć jeden punkt danych na region. Jest to przykład extreme overfitting. Aby tego uniknąć, dużych zestawów drzew opracowano przy szczególną matematyczne podjęte nie skorelowanych drzewa. Średnia tego "lasu decyzji" jest drzewa, który pozwala uniknąć overfitting. Lasy decyzji mogą za pomocą dużej ilości pamięci. Dżungle decyzyjne są variant, który zużywa mniej pamięci kosztem nieco dłużej szkolenia.
+Ponieważ obszar funkcji może zostać podzielona na arbitralnie małej regionów, to proste wyobrazić sobie wystarczająco precyzyjnie podzielenie go mieć jeden punkt danych na region. To jest przykładem extreme overfitting. Aby tego uniknąć, szerokiej gamy drzewa są konstruowane przy użyciu szczególną matematyczne wykonywane nie skorelowanych drzewa. Średnia to "las decyzyjny z" jest drzewa, która pozwala uniknąć overfitting. Decyzja lasów można używać dużej ilości pamięci. Dżungle decyzyjne są wariant, który zużywa mniej pamięci kosztem nieco dłużej szkolenia.
 
-Drzewa decyzyjne boosted uniknąć overfitting poprzez ograniczenie, ile razy można podzielić one i jak najmniejszej liczby punktów danych są dozwolone w każdym regionie. Algorytm tworzy sekwencję drzew, z których każdy uzyskuje informacje o kompensacji błąd w drzewie przed. Wynik jest bardzo dokładne uczeń, który zwykle używać dużej ilości pamięci. Aby uzyskać pełny opis techniczny, zapoznaj się z [Friedman w oryginalnym papieru](http://www-stat.stanford.edu/~jhf/ftp/trebst.pdf).
+Aby uniknąć overfitting drzewa decyzyjnego ograniczenie ile razy oni podzielić i jak najmniejszej liczby punktów danych są dozwolone w każdym regionie. Algorytm tworzy sekwencję drzewa, z których każdy uczy się kompensacji błąd w drzewie przed. Wynik jest bardzo dokładny uczeń, która zwykle używa dużej ilości pamięci. Aby uzyskać pełny opis techniczny, zapoznaj się [oryginalny dokument firmy Friedman](http://www-stat.stanford.edu/~jhf/ftp/trebst.pdf).
 
-[Szybkie regresji kwantyl lasu](https://msdn.microsoft.com/library/azure/dn913093.aspx) jest odmianą drzew decyzyjnych w przypadku specjalne, które chcesz wiedzieć, nie tylko typowe wartość (mediany) danych w regionie, ale jej dystrybucji w postaci quantiles.
+[Szybkie regresji kwantyl lasu](https://msdn.microsoft.com/library/azure/dn913093.aspx) jest odmianą drzew decyzyjnych w specjalnym przypadku, w którym chcesz wiedzieć, nie tylko Typowa wartość (Mediana) danych w regionie, ale również jego dystrybucji postać quantiles.
 
-### <a name="neural-networks-and-perceptrons"></a>Sieci neuronowe i perceptrons
-Sieci neuronowe są inteligencji inspirowana obejmujące algorytmów uczenia [multiklasa](https://msdn.microsoft.com/library/azure/dn906030.aspx), [dwuklasowych](https://msdn.microsoft.com/library/azure/dn905947.aspx), i [regresji](https://msdn.microsoft.com/library/azure/dn905924.aspx) problemów. Pochodzą nieskończone różne, ale sieci neuronowe w usłudze Azure Machine Learning znajdują się w postaci ukierunkowanej acykliczne wykresy. Oznacza to, że wejściowy funkcji są przekazywane do przodu (nigdy nie wstecz) sekwencję warstwy przed są przekształcane w danych wyjściowych. W każdej warstwie dane wejściowe są liczone w różnych kombinacjach, sumowane i przekazywane do następnej warstwy. Możliwość informacje pozornie magic klasy zaawansowane trendów granic i danych, powoduje to połączenie prostych obliczeń. Wielu warstw sieci tego rodzaju wykonania "głębokiego learning" który paliwa w związku z czym duża techniczna raportowania i fikcja nauki.
+### <a name="neural-networks-and-perceptrons"></a>Sieci neuronowych i perceptrons
 
-Ten wysokiej wydajności nie zawiera bezpłatnie, ale. Sieci neuronowe może zająć dużo czasu do uczenia, szczególnie w przypadku dużych zestawów danych z dużą ilością funkcji. Mają one również więcej parametrów niż większość algorytmy, które oznacza, że parametr kominów znacznie rozszerza czasu szkolenia.
+Sieci neuronowych są mózg inspirowanej obejmujące algorytmów uczenia [kontra](https://msdn.microsoft.com/library/azure/dn906030.aspx), [dwuklasowych](https://msdn.microsoft.com/library/azure/dn905947.aspx), i [regresji](https://msdn.microsoft.com/library/azure/dn905924.aspx) problemów. Pochodzą one w najróżniejsze, ale są sieci neuronowych, w ramach usługi Azure Machine Learning, wszystko w postaci ukierunkowanych grafy acykliczne. Oznacza to, że funkcje wejściowe są przekazywane do przodu (nigdy nie do tyłu) za pośrednictwem sekwencji warstwy przed są przekształcane w danych wyjściowych. W każdej warstwie dane wejściowe są liczone w różnych kombinacjach, sumy i przekazywane do następnej warstwy. Ta kombinacja prostych obliczeń powoduje możliwość klasy złożone granic i dane trendów pozornie przez magic. Wielowarstwowe z wielu sieci tego rodzaju wykonaj "uczenia głębokiego" który paliwa bardzo tech raportowania oraz science-fiction.
+
+Ta o wysokiej wydajności nie darmowe, mimo że. Sieci neuronowych może zająć dużo czasu na nauczenie, szczególnie w przypadku dużych zestawów danych z dużą liczbą funkcji. Mają również więcej parametrów niż większość algorytmy, które oznacza, że parametr zaczynają znacznie rozszerza czasu szkoleń.
 I dla tych overachievers, którzy chcą [określić własne struktury sieci](http://go.microsoft.com/fwlink/?LinkId=402867), możliwości są inexhaustible.
 
-![Granice rozpoznawane przez sieci neuronowe][6]
-***granice rozpoznawane przez sieci neuronowe może być złożona i nieregularne***
+![Granice rozpoznawane przez sieci neuronowych][6]
+***granice rozpoznawane przez sieci neuronowych mogą być złożone i nieregularne***
 
-[Dwuklasowych średnio perceptron](https://msdn.microsoft.com/library/azure/dn906036.aspx) jest odpowiedzi sieci neuronowe niebotycznych godziny szkolenia. Struktura sieci, która zapewnia granice liniowej klasy jest używany. Jest prawie pierwotnych przez obecnie standardów, ale w przeszłości dużo pracy niezawodnie i jest mały, aby szybko dowiedzieć się więcej.
+[Dwuklasowych uśredniane perceptron](https://msdn.microsoft.com/library/azure/dn906036.aspx) jest odpowiedź sieci neuronowych ogromne razy szkolenia. Używa on strukturę sieci, która zapewnia granice liniowej klasy. Jest prawie pierwotnych przez obowiązujących obecnie standardów, ale od dawna pracy niezawodnie i jest wystarczająco mała, aby szybko dowiedzieć się więcej.
 
 ### <a name="svms"></a>SVMs
-Obsługa wektor maszyny (SVMs) znaleźć granicy oddziela klasy przez jako szeroki margines, jak to możliwe. Gdy dwie klasy nie może być wyraźnie oddzielone, algorytmy znaleźć najlepsze granicę, którą można ich. Podczas zapisywania w usłudze Azure Machine Learning [SVM dwuklasowych](https://msdn.microsoft.com/library/azure/dn905835.aspx) robi to tylko prosta linia. (W SVM mowy używa on liniowej jądra). Ponieważ pozwala to zbliżenia liniowego, jest w stanie uruchomić stosunkowo szybko. Gdzie naprawdę źródło jest za pomocą funkcji intensywny danych, takich jak tekst lub genomicznej. W takich przypadkach mogą SVMs do rozdzielania klas szybciej i przy overfitting mniej niż większość inne algorytmy, oprócz wymagające niewielkie ilości pamięci.
+
+Maszyny wektor pomocy technicznej (SVMs) znaleźć granic, oddzielający klasy według jako szerokiego zakresu margines, jak to możliwe. Gdy dwie klasy nie może być wyraźnie rozdzielone, algorytmy Znajdź najlepsze granicę, którą mogą oni. Podczas zapisywania w usłudze Azure Machine Learning [SVM dwuklasowych](https://msdn.microsoft.com/library/azure/dn905835.aspx) robi to za pomocą prostej tylko. (W SVM mowy, używa ona liniowej jądra). Ponieważ sprawia, że zbliżaniu liniowego, jest w stanie przeprowadzić dość szybko. Gdzie go ujawniają jest intensywna funkcji danych, takich jak tekst lub genomu. W takich przypadkach SVMs są możliwe do rozdzielania klas, szybciej i z mniejszą overfitting niż większość inne algorytmy oprócz wymagające niewielkie ilości pamięci.
 
 ![Wektor granicę klasy pomocy technicznej][7]
 
-***Margin oddzielenie dwie klasy maksymalizuje granicę techniczną wektor maszyny — klasa***
+***Granicę techniczną wektor maszyny klasy maksymalizuje margines oddzielenie dwóch klas***
 
-Innego produktu Microsoft Research [SVM lokalnie głębokie dwuklasowych](https://msdn.microsoft.com/library/azure/dn913070.aspx) jest-liniowej wariant SVM, który zachowuje większość szybkość i pamięci wydajności liniowej wersji. Jest idealny dla przypadków gdzie liniowej podejście nie zapewniają wystarczająco dokładne odpowiedzi. Deweloperzy przechowywane fast dzieląc problem do licznych drobne problemy SVM liniowej. Odczyt [pełny opis](http://proceedings.mlr.press/v28/jose13.html) szczegółowe informacje dotyczące sposobu pobierane poza ta procedura.
+Inny produkt Microsoft Research [SVM lokalnie głębokiego dwuklasowych](https://msdn.microsoft.com/library/azure/dn913070.aspx) jest inny niż liniowy wariant SVM, które zachowuje większość efektywności szybkość i pamięć liniowej wersji. To idealne rozwiązanie w przypadkach, gdzie podejście liniowy nie zapewnia wystarczająco dokładnych odpowiedzi. Deweloperzy przechowywane szybko dzieląc problem na wiele małych liniowej problemów SVM. Odczyt [pełny opis](http://proceedings.mlr.press/v28/jose13.html) Aby uzyskać szczegółowe informacje w sposób pobierany off ta procedura.
 
-Przy użyciu inteligentne rozszerzenia rożne SVMs [SVM jednej klasy](https://msdn.microsoft.com/library/azure/dn913103.aspx) rysuje obramowanie ściśle przedstawiono cały zestaw danych. Jest to przydatne w przypadku wykrywania anomalii. Nietypowe za warte wymienienia są wszystkie nowe punkty danych należących do tej pory poza tę granicę.
+Przy użyciu Sprytne rozszerzenia nieliniowych SVMs [SVM jednej klasy](https://msdn.microsoft.com/library/azure/dn913103.aspx) rysuje granic, zawierający ściśle całego zestawu danych. Jest to przydatne do wykrywania anomalii. Wszystkie nowe punkty danych mieszczące się daleko poza tę granicę są nietypowe być warte zauważenia.
 
-### <a name="bayesian-methods"></a>Metody Estymacja Bayesian
-Metody Estymacja Bayesian mają pożądane wysokiej jakości: eliminują overfitting. One to robić przez założenie wcześniej o prawdopodobnie dystrybucji odpowiedzi. Inny byproduct tego podejścia jest, że bardzo mało parametrów. Usługa Azure Machine Learning zawiera oba algorytmy Estymacja Bayesian zarówno klasyfikacji ([maszyna punktu Bayesa Two-class](https://msdn.microsoft.com/library/azure/dn905930.aspx)) i regresji ([regresji liniowej Estymacja Bayesian](https://msdn.microsoft.com/library/azure/dn906022.aspx)).
-Należy pamiętać, że te wniosku, że dane można podzielić lub dopasowania z prostej.
+### <a name="bayesian-methods"></a>Metody Bayesowskie
 
-Na notatkę historycznych maszyny punktu Bayesa zostały opracowane w Microsoft Research. Mają one niektóre wyjątkowo doskonałych Praca teoretyczna za nimi. Planuje uczniów zostaje skierowany do [oryginalny artykuł w JMLR](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf) i [interesującego blogu przez Bishop Krzysztof](http://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx).
+Metody Bayesowskie mają bardzo pożądane jakości: Unikaj ich overfitting. One to robić przez założenie wcześniej o prawdopodobnie dystrybucji odpowiedzi. Inny byproduct tego podejścia jest bardzo mało parametrów. Usługa Azure Machine Learning ma obu algorytmów Bayesowskie zarówno klasyfikacji ([maszyna punktu Bayesa Two-class](https://msdn.microsoft.com/library/azure/dn905930.aspx)) i regresji ([regresji liniowej Bayesowskie](https://msdn.microsoft.com/library/azure/dn906022.aspx)).
+Pamiętaj, że te przyjęto założenie, że dane mogą być podziału lub mieści się przy użyciu prostej.
 
-### <a name="specialized-algorithms"></a>Algorytmy specjalne
-Jeśli masz bardzo określonego celu, który może być szczęście. W kolekcji usługi Azure Machine Learning istnieją algorytmów specialize w:
+Na notatkę historycznych maszyn punktu Bayesa zostały opracowywane w dziale Microsoft Research. Mają one część wyjątkowo piękne prac teoretyczne za ich. Zainteresowane uczniów zostaje skierowany do [oryginalny artykuł w JMLR](http://jmlr.org/papers/volume1/herbrich01a/herbrich01a.pdf) i [wnikliwe blog, Chris Bishop](http://blogs.technet.com/b/machinelearning/archive/2014/10/30/embracing-uncertainty-probabilistic-inference.aspx).
 
-- Rank — prognozowania ([Regresja porządkowa](https://msdn.microsoft.com/library/azure/dn906029.aspx)),
+### <a name="specialized-algorithms"></a>Dołączanie specjalizowanych algorytmów
+Jeśli masz bardzo specyficznym celem może być szczęście. W tej kolekcji usługi Azure Machine Learning są algorytmy, które specjalizują się w:
+
+- prognoz porządkowały ([regresji porządkowej](https://msdn.microsoft.com/library/azure/dn906029.aspx)),
 - Liczba prognozowania ([regresji Poissona](https://msdn.microsoft.com/library/azure/dn905988.aspx)),
-- wykrywanie anomalii (jedną na podstawie [analizy głównych składników](https://msdn.microsoft.com/library/azure/dn913102.aspx) i jeden na podstawie [maszyny wektorowa obsługa](https://msdn.microsoft.com/library/azure/dn913103.aspx)s)
-- klaster ([K-średnich](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/))
+- wykrywanie anomalii (jedną na podstawie [analizy głównych komponentów](https://msdn.microsoft.com/library/azure/dn913102.aspx) i jeden na podstawie [obsługuje wektor maszyn](https://msdn.microsoft.com/library/azure/dn913103.aspx))
+- klastrowanie ([K-średnich](https://msdn.microsoft.com/library/azure/5049a09b-bd90-4c4e-9b46-7c87e3a36810/))
 
-![Wykrywanie anomalii oparte na PCA][8]
+![Wykrywanie anomalii oparte na analizie PCA][8]
 
-***Wykrywanie anomalii oparte na PCA*** *-większość danych należy do dystrybucji stereotypical; punkty różniących się znacząco od dystrybucji są podejrzane*
+***Wykrywanie anomalii oparte na analizie PCA*** *— większość danych uczciwy stereotypical dystrybucji; punktów różniących się znacznie od dystrybucji są podejrzane*
 
-![Zestaw danych zgrupowane za pomocą K-średnich][9]
+![Zestaw danych, grupowane, za pomocą K-średnich][9]
 
-***Zestaw danych są grupowane w pięciu klastrów za pomocą K-średnich***
+***Zestaw danych są pogrupowane w pięciu klastrów za pomocą K-średnich***
 
-Jest również zespół [wieloklasowej klasyfikatora jedna v wszystkie](https://msdn.microsoft.com/library/azure/dn905887.aspx), która dzieli problemu klasyfikacji N klasa na N-1 dwuklasowych klasyfikacji problemów. Dokładność, czas szkolenia i właściwości liniowości są określane przez klasyfikatory dwie klasy używane.
+Istnieje również zespołu [klasyfikatora wieloklasowej jeden v wszystkie](https://msdn.microsoft.com/library/azure/dn905887.aspx), która dzieli problemu klasyfikacji N klasy na problemy klasyfikacji dwuklasowych n-1. Dokładność, czasu szkoleń i właściwości liniowości są określane przez klasyfikatorów dwuklasowych używane.
 
-![Klasyfikatory klasy dwa połączone tworzą klasyfikatora trzech — klasa][10]
+![Klasyfikatorów dwuklasowych połączone, tworząc klasyfikatora trzy — klasa][10]
 
-***Para klasyfikatory dwuklasowych połączenie umożliwia tworzą klasyfikatora trzech — klasa***
+***Para klasyfikatorów dwuklasowych są łączone w celu tworzą klasyfikatora trzy — klasa***
 
-Azure Machine Learning obejmuje również dostęp do uczenia maszynowego zaawansowaną strukturę pod tytułem [Vowpal Wabbit](https://msdn.microsoft.com/library/azure/8383eb49-c0a3-45db-95c8-eb56a1fef5bf).
-VW powinny kategoryzacji, ponieważ mogą dowiedzieć się, zarówno klasyfikacji i regresji problemów, a nawet można uzyskać z częściowo bez etykiety danych. Można skonfigurować, aby zastosować dowolną liczbę szkoleniowe dotyczące algorytmów, funkcje utraty i algorytmy optymalizacji. Została zaprojektowana od podstaw się być wydajne, równoległe i bardzo szybkiego działania. Obsługuje on funkcji było bardzo dużych zestawów przy minimalnym nakładzie pracy oczywista.
-Uruchomiona i przez Microsoft Research jego własnej Jan Langford, VW jest formuła jednego wpisu w polu algorytmów samochodu zapasów. Nie każdy problem pasujące VW, ale jeśli nie należy do Ciebie, może być zdobycie pokonać nauki na interfejsie. Jest również dostępny jako [kod autonomicznej typu open source](https://github.com/JohnLangford/vowpal_wabbit) w wielu językach.
+Usługę Azure Machine Learning obejmuje również dostęp do struktury uczenia maszynowego zaawansowane pod tytułem [Vowpal Wabbit](https://msdn.microsoft.com/library/azure/8383eb49-c0a3-45db-95c8-eb56a1fef5bf).
+VW powinny kategoryzacji, w tym miejscu, ponieważ można znaleźć klasyfikacji i regresji problemy, a nawet można uzyskać z poziomu danych częściowo bez etykiety. Można skonfigurować, aby użyć jednego z wielu funkcji utraty, algorytmy optymalizacji i algorytmów uczenia. Została zaprojektowana od samych podstaw się to wydajne, równoległe i bardzo szybkie. Obsługuje on zestawy funkcji bardzo duża przy minimalnym nakładzie pracy jawnego.
+Pracę i prowadzone przez Microsoft Research własnych John Langford, VW jest formuły jednego wpisu w polu samochodu stock algorytmów. Nie każdy problem pasuje VW, ale jeśli należy do Ciebie, może być zdobycie pokonywania krzywą uczenia się na interfejsie. Jest również dostępny jako [kodu autonomicznego typu open source](https://github.com/JohnLangford/vowpal_wabbit) w kilku językach.
 
-## <a name="more-help-with-algorithms"></a>Więcej informacji o algorytmy
-* Aby infographic do pobrania, opisujący algorytmów i przykłady, zobacz [Infographic do pobrania: Machine learning podstawy wraz z przykładami algorytmu](basics-infographic-with-algorithm-examples.md).
-* Aby uzyskać listę według kategorii wszystkich algorytmów uczenia maszynowego dostępnych w usłudze Azure Machine Learning Studio, zobacz [zainicjować modelu] [ initialize-model] Machine Learning Studio algorytmu i pomóc w Module.
-* Aby uzyskać alfabetyczną listę wszystkich algorytmów i modułów w usłudze Azure Machine Learning Studio, zobacz [A — Z listy modułów usługi Machine Learning Studio] [ a-z-list] algorytmu Studio uczenia maszynowego i pomóc w Module.
-* Aby pobrać i wydrukować diagram, który zawiera przegląd możliwości usługi Azure Machine Learning Studio, zobacz [diagram przeglądowy możliwości usługi Azure Machine Learning Studio](studio-overview-diagram.md).
+## <a name="next-steps"></a>Następne kroki
 
+* Aby uzyskać informacyjna do pobrania, opisujący algorytmów i przykłady, zobacz [grafika informacyjna do pobrania: podstawy uczenia maszynowego z algorytmami](basics-infographic-with-algorithm-examples.md).
 
-<!-- Reference links -->
-[initialize-model]: https://msdn.microsoft.com/library/azure/dn905812.aspx
-[a-z-list]: https://msdn.microsoft.com/library/azure/dn906033.aspx
+* Aby uzyskać listę według kategorii wszystkich algorytmów uczenia maszynowego dostępnych w usłudze Machine Learning Studio, zobacz [zainicjować modelu](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/machine-learning-initialize-model) algorytmu Studio uczenia maszynowego i pomóc w Module.
+
+* Aby uzyskać pełną listę alfabetyczną algorytmów i modułów w usłudze Machine Learning Studio, zobacz [A-Z listy modułów usługi Machine Learning Studio](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/a-z-module-list) algorytmu Studio uczenia maszynowego i pomóc w Module.
+
+* Aby pobrać i wydrukować diagram, który zawiera przegląd możliwości usługi Machine Learning Studio, zobacz [Diagram przeglądowy możliwości usługi Azure Machine Learning Studio](studio-overview-diagram.md).
 
 <!-- Media -->
 

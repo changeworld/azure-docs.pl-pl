@@ -16,14 +16,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/20/2018
 ms.author: miprasad
-ms.openlocfilehash: 97e3a621e291935db2e0c70eb2b596e77c7bffb7
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: e2fbb0b7b0dede198be0e57ffcd2b58a7da7fce7
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35650287"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46947775"
 ---
 # <a name="sentiment-analysis-using-deep-learning-with-azure-machine-learning"></a>Analiza tonacji za pomocą uczenia głębokiego przy użyciu usługi Azure Machine Learning
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 
 Analiza tonacji jest dobrze znanych zadania w obszarze przetwarzania języka naturalnego. Biorąc pod uwagę zestaw teksty, celem jest określenie tonacji ten tekst. Celem tego rozwiązania jest na potrzeby uczenia głębokiego Prognozowanie tonacji z recenzje filmu.
 
@@ -45,7 +50,7 @@ Można pobrać wartości z analizy tonacji, firmy musi mieć możliwość analiz
 
 * [Konta platformy Azure](https://azure.microsoft.com/free/) (bezpłatne wersje próbne są dostępne).
 
-* Zainstalowana kopia programu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) następujące [przewodnika Szybki start dotyczącego instalacji](../service/quickstart-installation.md) zainstalować ten program i utworzyć obszar roboczy.
+* Zainstalowana kopia programu [Azure Machine Learning Workbench](../service/overview-what-is-azure-ml.md) następujące [przewodnika Szybki start dotyczącego instalacji](quickstart-installation.md) zainstalować ten program i utworzyć obszar roboczy.
 
 * Operacjonalizacji najlepiej w przypadku aparat platformy Docker zainstalowany i uruchomiony lokalnie. W przeciwnym razie możesz użyć opcji klastra. Jednak uruchamiania usługi Azure Container Service (ACS) może być kosztowne.
 

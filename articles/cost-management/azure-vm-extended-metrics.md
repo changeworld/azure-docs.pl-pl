@@ -5,33 +5,33 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/12/2018
+ms.date: 08/07/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: b7e4665dc3579f357ce1e28bf34be35c931736bd
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 9c09f473f5d8b399c4fb1b1ad449c783c797f4dd
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35647672"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968513"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Dodawanie rozszerzonych metryk dla maszyn wirtualnych platformy Azure
 
-Usługa Cost Management wykorzystuje metryki danych platformy Azure z maszynami wirtualnymi portalu Azure, aby pokazać szczegółowe informacje na temat ich zasobów. Dane metryk, nazywany również liczników wydajności, jest używany przez usługę Cost Management do generowania raportów. Jednak Cost Management nie automatycznie zbierać wszystkie dane metryk platformy Azure z maszyny wirtualnej gościa, należy włączyć zbieranie metryk. Ten artykuł ułatwia włączanie i konfigurowanie diagnostyki dodatkowych metryk dla maszyn wirtualnych platformy Azure.
+Rozwiązanie Cloudyn korzysta metryki danych platformy Azure z maszynami wirtualnymi portalu Azure, aby pokazać, że szczegółowe informacje na temat ich zasobów. Dane metryk, nazywany również liczników wydajności, jest używany przez firmę Cloudyn do generowania raportów. Jednak Cloudyn nie automatycznie zbierać wszystkie dane metryk platformy Azure z maszyny wirtualnej gościa, należy włączyć zbieranie metryk. Ten artykuł ułatwia włączanie i konfigurowanie diagnostyki dodatkowych metryk dla maszyn wirtualnych platformy Azure.
 
 Po włączeniu zbierania metryk, możesz wykonywać następujące czynności:
 
 - Wiadomo, kiedy maszyny wirtualne zbliżają się ich pamięci, dysku i limity procesora CPU.
 - Wykrywanie trendów użycia i anomalii.
 - Kontrolować ponoszone koszty według rozmiaru, od użycia.
-- Uzyskaj koszt skuteczne, ustalanie rozmiaru optymalizacji zaleceń usługi Cost Management.
+- Uzyskaj koszt skuteczne, ustalanie rozmiaru zaleceń optymalizacji Cloudyn.
 
 Na przykład możesz chcieć Monitoruj procent użycia procesora CPU i procent pamięci w maszynach wirtualnych platformy Azure. Metryki maszyny Wirtualnej platformy Azure odpowiadają _[Host] procentowe użycie procesora CPU_ i _procent pamięci [gościa]_.
 
 > [!NOTE]
-> Zbieranie rozszerzonych danych metryk jest obsługiwany tylko przy użyciu funkcji platformy Azure monitorowania na poziomie gościa. Usługa Cost Management nie jest zgodny z rozszerzenia maszyny Wirtualnej programu Log Analytics.
+> Zbieranie rozszerzonych danych metryk jest obsługiwany tylko przy użyciu funkcji platformy Azure monitorowania na poziomie gościa. Cloudyn nie jest zgodny z rozszerzenia maszyny Wirtualnej programu Log Analytics.
 
 ## <a name="verify-that-metrics-are-enabled-on-vms"></a>Sprawdź, czy metryki są włączone na maszynach wirtualnych
 
@@ -68,7 +68,7 @@ Podczas tworzenia nowych maszyn wirtualnych, upewnij się, że wybrano **Diagnos
 
 ## <a name="resource-manager-credentials"></a>Poświadczenia usługi Resource Manager
 
-Po włączeniu rozszerzonych metryk, upewnij się, że Cost Management firmy ma dostęp do Twojego [poświadczenia usługi Resource Manager](activate-subs-accounts.md). Poświadczenia są wymagane do zarządzania kosztami umożliwiają zbieranie i wyświetlanie danych wydajności dla maszyn wirtualnych. Są również używane do tworzenia zaleceń dotyczących optymalizacji kosztów. Usługa Cost Management wymaga co najmniej trzy dni danych dotyczących wydajności z wystąpienia, aby ustalić, czy jest kandydatem do zalecenia redukcję zatrudnienia.
+Po włączeniu rozszerzonych metryk, upewnij się, że Cloudyn ma dostęp do Twojego [poświadczenia usługi Resource Manager](activate-subs-accounts.md). Poświadczenia są wymagane do rozwiązania Cloudyn do zbierania i przedstawia dane wydajności dla maszyn wirtualnych. Są również używane do tworzenia zaleceń dotyczących optymalizacji kosztów. Cloudyn musi mieć co najmniej trzy dni danych dotyczących wydajności z wystąpienia, aby ustalić, czy jest kandydatem do zalecenia redukcję zatrudnienia.
 
 ## <a name="enable-vm-metrics-with-a-script"></a>Włącz metryki maszyny Wirtualnej przy użyciu skryptu
 

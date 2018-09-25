@@ -8,7 +8,6 @@ ms.author: deguhath
 manager: cgronlun
 editor: cgronlun
 ms.assetid: ''
-ms.reviewer: garyericson, jasonwhowell, mldocs
 ms.service: machine-learning
 ms.component: core
 ms.workload: data-services
@@ -16,17 +15,19 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/16/2017
-ms.openlocfilehash: 05cb2a62cf0f001012f5faa022de233d7cbdce97
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2fd0fe55b975010a1eaafeb455d61a6cb3ebff77
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42059618"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46970927"
 ---
 # <a name="structure-projects-with-the-team-data-science-process-template"></a>Tworzenie struktury projektów za pomocą szablonu procesu do nauki o danych zespołu
 
-Niniejszy dokument zawiera instrukcje dotyczące sposobu tworzenia projektów do nauki o danych w usłudze Azure Machine Learning za pomocą szablonów Team Data Science naukowych. Te szablony ułatwiają tworzenie struktury projektów do współpracy i powtarzalności. 
+Niniejszy dokument zawiera instrukcje dotyczące sposobu tworzenia projektów do nauki o danych w starszej wersji usługi Azure Machine Learning za pomocą szablonów Team Data Science naukowych. Te szablony ułatwiają tworzenie struktury projektów do współpracy i powtarzalności. 
 
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
 
 ## <a name="what-is-the-team-data-science-process"></a>Co to jest zespołowe przetwarzanie danych dla celów naukowych?
 Przetwarzania TDSP jest agile, iteracji, danych dla celów naukowych wykonywania i dostarczanie zaawansowanych rozwiązań analizy. Został zaprojektowany tak, aby poprawić współpracę i wydajności zespołów do nauki o danych w przedsiębiorstwach. Obsługuje ona te cele przy użyciu czterech kluczowych składników:
@@ -52,7 +53,7 @@ Sprawdź następujące elementy *przed* Tworzenie nowego projektu:
 * Przejrzyj uczenia maszynowego przetwarzania TDSP [szablonu](https://aka.ms/tdspamlgithubrepo).
 * Zawartość (inne niż co znajduje się już w folderze "dokumenty") są wymagane do mniej niż 25 MB rozmiar. Zobacz uwagi poniżej tej listy.
 * Przykład\_folderu danych jest tylko w przypadku małych plików danych (mniej niż 5 MB) za pomocą których można przetestować kod lub rozpocząć projektowanie wcześniejsze.
-* Przechowywanie plików, takich jak Word i pliki programu PowerPoint, można znacznie zwiększyć rozmiar folderu "docs". Zaleca się, że znajdowanie współpracy witrynę typu Wiki, [SharePoint](https://products.office.com/en-us/sharepoint/collaboration), lub innego zasobu współpracy do przechowywania tych plików.
+* Przechowywanie plików, takich jak Word i pliki programu PowerPoint, można znacznie zwiększyć rozmiar folderu "docs". Zaleca się, że znajdowanie współpracy witrynę typu Wiki, [SharePoint](https://products.office.com/sharepoint/collaboration), lub innego zasobu współpracy do przechowywania tych plików.
 * Aby dowiedzieć się, jak do obsługi dużych plików i danych wyjściowych w usłudze Machine Learning, przeczytaj [utrwalania zmian i rozwiązywania problemów związanych z dużymi plikami](http://aka.ms/aml-largefiles).
 
 > [!NOTE]

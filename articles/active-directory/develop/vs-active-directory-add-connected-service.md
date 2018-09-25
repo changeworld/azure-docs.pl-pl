@@ -13,12 +13,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: ghogen
-ms.openlocfilehash: 2e446bad042965e8466e74b9b1abd8661ea88f8b
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: 9b61362525962c5e01d7fef6d317cf9861dfd0a3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055830"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977897"
 ---
 # <a name="adding-an-azure-active-directory-by-using-connected-services-in-visual-studio"></a>Dodawanie usługi Azure Active Directory przy użyciu usług połączonych programu Visual Studio
 
@@ -35,7 +35,7 @@ Obecnie usługa Active Directory połączone nie obsługuje aplikacje platformy 
 
 ### <a name="connect-to-azure-active-directory-using-the-connected-services-dialog"></a>Nawiązać połączenie z usługi Azure Active Directory za pomocą okna dialogowego podłączone usługi
 
-1. W programie Visual Studio Utwórz lub Otwórz projekt składnika ASP.NET MVC lub projekt interfejsu API sieci Web platformy ASP.NET. Można użyć MVC, interfejs API sieci Web, aplikacji jednostronicowej aplikacji interfejsu API platformy Azure, aplikacji mobilnej platformy Azure i szablonów usług Azure Mobile.
+1. W programie Visual Studio Utwórz lub Otwórz projekt składnika ASP.NET MVC lub projekt interfejsu API sieci Web platformy ASP.NET. Można użyć MVC, interfejsu API sieci Web, aplikacji jednostronicowej aplikacji interfejsu API platformy Azure, aplikacji mobilnej platformy Azure i szablonów usług Azure Mobile.
 
 1. Wybierz **Projekt > Dodaj podłączoną usługę...**  polecenie menu lub kliknij dwukrotnie plik **podłączone usługi** nie znaleziono węzła w projekcie w Eksploratorze rozwiązań.
 

@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 09/14/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: b7e18d943bea179cb6163d7f91a0761311ecf38e
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 15cac40e743f44ea7e0954c94683674ad9372a7a
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985247"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962951"
 ---
 # <a name="supported-metrics-with-azure-monitor"></a>Obsługiwane metryki z usługą Azure Monitor
 Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wykresy je w portalu, uzyskując dostęp do nich za pośrednictwem interfejsu API REST lub ich zapytań przy użyciu programu PowerShell lub interfejsu wiersza polecenia. Oto Pełna lista wszystkich metryk jest obecnie dostępna z potoku metryk usługi Azure Monitor. Inne metryki mogą być dostępne w portalu lub przy użyciu starszej wersji interfejsów API. Ta lista poniżej zawiera tylko metryk przy użyciu skonsolidowany potoku metryk usługi Azure Monitor. Użyj kwerendy i dostępem tych metryk [2018-01-01-api-version](https://docs.microsoft.com/rest/api/monitor/metricdefinitions)
@@ -520,6 +520,24 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |WriteRequests|Żądania zapisu|Licznik|Łącznie|Liczba danych liczbę żądań zapisu do konta.|Nie wymiarów|
 |ReadRequests|Żądania odczytu|Licznik|Łącznie|Liczba danych odczytu żądań do konta.|Nie wymiarów|
 
+## <a name="microsoftdbformariadbservers"></a>Microsoft.DBforMariaDB/servers
+
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|cpu_percent|Procent użycia Procesora|Procent|Średnia|Procent użycia Procesora|Nie wymiarów|
+|memory_percent|Procent pamięci|Procent|Średnia|Procent pamięci|Nie wymiarów|
+|io_consumption_percent|% Operacji We/Wy|Procent|Średnia|% Operacji We/Wy|Nie wymiarów|
+|storage_percent|Procent pamięci masowej|Procent|Średnia|Procent pamięci masowej|Nie wymiarów|
+|storage_used|Użyty magazyn|Bajty|Średnia|Użyty magazyn|Nie wymiarów|
+|storage_limit|Limit magazynu|Bajty|Średnia|Limit magazynu|Nie wymiarów|
+|serverlog_storage_percent|Procent magazynu dziennika serwera|Procent|Średnia|Procent magazynu dziennika serwera|Nie wymiarów|
+|serverlog_storage_usage|Używany Magazyn dzienników serwera|Bajty|Średnia|Używany Magazyn dzienników serwera|Nie wymiarów|
+|serverlog_storage_limit|Limit magazynu dziennika serwera|Bajty|Średnia|Limit magazynu dziennika serwera|Nie wymiarów|
+|active_connections|Aktywne połączenia|Licznik|Średnia|Aktywne połączenia|Nie wymiarów|
+|connections_failed|Połączenia zakończone niepowodzeniem|Licznik|Łącznie|Połączenia zakończone niepowodzeniem|Nie wymiarów|
+|network_bytes_egress|Sieć — wyjście|Bajty|Łącznie|Sieć się między aktywnych połączeń|Nie wymiarów|
+|network_bytes_ingress|Sieć — wejście|Bajty|Łącznie|W sieci, między aktywnych połączeń|Nie wymiarów|
+
 ## <a name="microsoftdbformysqlservers"></a>Microsoft.DBforMySQL/servers
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
@@ -748,6 +766,41 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |ObservedCapacity|Zaobserwowana wydajność|Licznik|Średnia|Wydajność zgłoszona do automatycznego skalowania podczas jego wykonywania.|Nie wymiarów|
 |ScaleActionsInitiated|Zainicjowane akcje skalowania|Licznik|Łącznie|Kierunek operacji skalowania.|ScaleDirection|
 
+## <a name="microsoftinsightscomponents"></a>Microsoft.Insights/Components
+(Publiczna wersja zapoznawcza)
+
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|availabilityResults/czas trwania|Czas trwania testu|MS|Średnia|Czas trwania testu|availabilityResult/name, availabilityResult/lokalizacji, availabilityResult/Powodzenie|
+|billingMeters/telemetryCount|Liczba punktów danych|Licznik|Łącznie|Liczba punktów danych wysłanych do tego zasobu usługi Application Insights. Ta metryka jest przetwarzana z opóźnieniem do dwóch godzin.|rozliczenia/telemetryItemType, rozliczenia/telemetryItemSource|
+|billingMeters/telemetrySize|Ilość punktów danych|Bajty|Łącznie|Ilość danych wysłanych do tego zasobu usługi Application Insights. Ta metryka jest przetwarzana z opóźnieniem do dwóch godzin.|rozliczenia/telemetryItemType, rozliczenia/telemetryItemSource|
+|browserTimings/networkDuration|Czas połączenia sieciowego podczas ładowania strony|MS|Średnia|Czas od użytkownika żądania i połączenie sieciowe. Obejmuje DNS wyszukiwania i połączenie transportu.|Nie wymiarów|
+|browserTimings/processingDuration|Czas przetwarzania klienta|MS|Średnia|Czas między odebraniem ostatniego bajtu dokumentu, do momentu załadowania modelu DOM. Żądania asynchroniczne mogą nadal być przetwarzane.|Nie wymiarów|
+|browserTimings/receiveDuration|Czas odpowiedzi odbierania|MS|Średnia|Czas między pierwszym i ostatnim bajtem lub czas do zakończenia połączenia.|Nie wymiarów|
+|browserTimings/sendDuration|Czas żądania wysyłania|MS|Średnia|Czas między nawiązaniem połączenia sieciowego i odebraniem pierwszego bajtu.|Nie wymiarów|
+|browserTimings/totalDuration|Czas ładowania strony przeglądarki|MS|Średnia|Czas od wysłania żądania użytkownika do załadowania modelu DOM, arkuszy stylów, skryptów i obrazów.|Nie wymiarów|
+|zależności/liczby|Wywołania zależności|Licznik|Licznik|Liczba wywołań zasobów zewnętrznych wykonanych przez aplikację.|zależności/typu zależności/performanceBucket, zależności/Powodzenie, operacji/syntetycznych, chmura/roleInstance, chmury/roleName|
+|zależności/czas trwania|Czas trwania zależności|MS|Średnia|Czas trwania wywołań zasobów zewnętrznych wykonanych przez aplikację.|zależności/typu zależności/performanceBucket, zależności/Powodzenie, operacji/syntetycznych, chmura/roleInstance, chmury/roleName|
+|zależności lub nie powiodła się|Awarie zależności|Licznik|Licznik|Liczba wywołań zależności zasobów zewnętrznych zakończonych niepowodzeniem wykonanych przez aplikację.|Typ zależności/zależności/performanceBucket, operacji/syntetycznych, chmury/roleInstance, chmury/roleName|
+|Liczba/wyświetleń stron|Wyświetlenia strony|Licznik|Licznik|Liczba wyświetleń strony.|Operacja/syntetycznych|
+|wyświetleń stron/czas trwania|Wyświetlenie strony — czas ładowania|MS|Średnia|Wyświetlenie strony — czas ładowania|Operacja/syntetycznych|
+|liczniki wydajności/requestExecutionTime|Czas wykonywania żądania HTTP|MS|Średnia|Czas wykonywania najnowszego żądania.|Chmura/roleInstance|
+|liczniki wydajności/requestsInQueue|Żądania HTTP w kolejce aplikacji|Licznik|Średnia|Długość kolejki żądań aplikacji.|Chmura/roleInstance|
+|liczniki wydajności/requestsPerSecond|Liczba żądań HTTP|CountPerSecond|Średnia|Liczba wszystkich żądań wysłanych do aplikacji z platformy ASP.NET na sekundę.|Chmura/roleInstance|
+|liczniki wydajności/exceptionsPerSecond|Częstotliwość występowania wyjątków|CountPerSecond|Średnia|Liczba obsługiwanych i nieobsługiwanych wyjątków zgłoszonych w systemie Windows, łącznie z wyjątkami platformy .NET i niezarządzanymi wyjątkami przekonwertowanymi na wyjątki platformy .NET.|Chmura/roleInstance|
+|liczniki wydajności/processIOBytesPerSecond|Liczba operacji we/wy procesu|Bajty na sekundę|Średnia|Łączna liczba bajtów odczytanych i zapisanych w ciągu sekundy w plikach i sieci oraz na urządzeniach.|Chmura/roleInstance|
+|liczniki wydajności/processCpuPercentage|Procesy — procesor CPU|Procent|Średnia|Procent minionego czasu wszystkich wątków procesów używały procesora w celu wykonania instrukcji. To może się różnić od 0 do 100. Ta Metryka wskazuje wydajność samego procesu w3wp.|Chmura/roleInstance|
+|liczniki wydajności/processorCpuPercentage|Czas procesora|Procent|Średnia|Procent czasu poświęconego przez procesor na aktywne wątki.|Chmura/roleInstance|
+|liczniki wydajności/memoryAvailableBytes|Dostępna pamięć|Bajty|Średnia|Pamięć fizyczna dostępna natychmiast do przydzielenia do procesu lub do użycia przez system.|Chmura/roleInstance|
+|liczniki wydajności/processPrivateBytes|Prywatne bajty procesu|Bajty|Średnia|Pamięć przypisana wyłącznie do procesów monitorowanej aplikacji.|Chmura/roleInstance|
+|żądania/czas trwania|Czas odpowiedzi serwera|MS|Średnia|Czas między odebraniem żądania HTTP i zakończeniem wysyłania odpowiedzi.|żądanie/performanceBucket żądania/resultCode, operacji/syntetycznych, chmura/roleInstance, Powodzenie/na żądanie, chmury/roleName|
+|żądania/liczby|Żądania serwera|Licznik|Licznik|Liczba ukończonych żądań HTTP.|żądanie/performanceBucket żądania/resultCode, operacji/syntetycznych, chmura/roleInstance, Powodzenie/na żądanie, chmury/roleName|
+|żądania lub nie powiodła się|Żądania zakończone niepowodzeniem|Licznik|Licznik|Liczba HTTP żądania oznaczone jako zakończone niepowodzeniem. W większości przypadków są to żądania z kodem odpowiedzi > = 400 i innym niż 401.|żądanie/performanceBucket żądania/resultCode, operacji/syntetycznych, chmura/roleInstance, chmury/roleName|
+|Wyjątki/liczby|Wyjątki|Licznik|Łącznie|Łączna liczba wszystkich nieprzechwyconych wyjątków.|Chmura/roleName, chmura/roleInstance, typu/klienta|
+|Wyjątki/przeglądarki|Wyjątki przeglądarki|Licznik|Łącznie|Liczba nieprzechwyconych wyjątków zgłoszonych w przeglądarce.|Nie wymiarów|
+|Wyjątki serwera|Wyjątki serwera|Licznik|Łącznie|Liczba nieprzechwyconych wyjątków zgłoszonych w aplikacji serwera.|Chmura/roleName, chmura/roleInstance|
+|dane śledzenia/liczby|Liczba śladów|Licznik|Łącznie|Liczba dokumentów śladów|trace/severityLevel, operacji/syntetycznych, roleName/chmura, chmura/roleInstance|
+
 ## <a name="microsoftkeyvaultvaults"></a>Microsoft.KeyVault/vaults
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
@@ -755,6 +808,20 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |ServiceApiHit|Całkowita liczba trafień interfejsu API usługi|Licznik|Licznik|Całkowita liczba trafień interfejsu API usługi|ActivityType, ActivityName|
 |ServiceApiLatency|Ogólny czas oczekiwania żądań interfejsu API usługi|Milisekundy|Średnia|Ogólny czas oczekiwania żądań interfejsu API usługi|Właściwości ActivityType, ActivityName, StatusCode|
 |ServiceApiResult|Całkowita liczba wyników interfejsu API usługi|Licznik|Licznik|Całkowita liczba wyników interfejsu API usługi|Właściwości ActivityType, ActivityName, StatusCode|
+
+## <a name="microsoftkustoclusters"></a>Microsoft.Kusto/Clusters
+
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|ClusterDataCapacityFactor|Wykorzystanie pamięci podręcznej|Procent|Średnia|Poziom użycia w zakresie klastra|Nie wymiarów|
+|QueryDuration|Czas trwania zapytania|Milisekundy|Średnia|Zapytania czas w sekundach|QueryStatus|
+|IngestionsLoadFactor|Wykorzystanie pozyskiwania|Procent|Średnia|Współczynnik miejsc pozyskiwania używanych w klastrze|Nie wymiarów|
+|IsEngineAnsweringQuery|Podtrzymanie|Licznik|Średnia|Sprawdzanie poprawnością wskazuje respondes klastra do zapytań|Nie wymiarów|
+|IngestCommandOriginalSizeInMb|Pozyskiwanie woluminu (w MB)|Licznik|Łącznie|Łączna ilość pozyskiwanych danych do klastra (w MB)|Nie wymiarów|
+|EventAgeSeconds|Opóźnienia w pozyskiwaniu danych (w sekundach)|Sekundy|Średnia|Czas wprowadzania od źródła (np. komunikat jest w Centrum zdarzeń) do klastra w ciągu kilku sekund|Nie wymiarów|
+|EventRecievedFromEventHub|Zdarzenia przetwarzane (dla usługi Event Hubs)|Licznik|Łącznie|Liczba zdarzeń przetwarzany przez klaster, gdy wprowadzane z Centrum zdarzeń|Nie wymiarów|
+|IngestionResult|Wynik pozyskiwania|Licznik|Licznik|Liczby operacji pozyskiwania|IngestionResultDetails|
+|EngineCPU|Procesor CPU|Procent|Średnia|Poziom użycia procesora CPU|Nie wymiarów|
 
 ## <a name="microsoftlocationbasedservicesaccounts"></a>Microsoft.LocationBasedServices/accounts
 
@@ -963,6 +1030,19 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |ProbesFailedPercent|% Sondy nie powiodło się|Procent|Średnia|% łączności sondy monitorujące nie powiodło się.|Nie wymiarów|
 |AverageRoundtripMs|Średni Czas obustronnej konwersji (ms)|MS|Średnia|Czas błądzenia średni sieci (ms) dla łączności przesyłane między źródłowym i docelowym sondy monitorujące|Nie wymiarów|
 
+## <a name="microsoftnetworkfrontdoors"></a>Microsoft.Network/frontdoors
+
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|RequestCount|Liczba żądań|Licznik|Łącznie|Liczba żądań klientów obsługiwanych przez serwer proxy HTTP/S|HttpStatus, ClientCountry HttpStatusGroup, ClientRegion,|
+|RequestSize|Rozmiar żądania|Bajty|Łącznie|Liczba bajtów wysłanych jako żądania od klientów z serwerem proxy HTTP/S|HttpStatus, ClientCountry HttpStatusGroup, ClientRegion,|
+|ResponseSize|Rozmiar odpowiedzi|Bajty|Łącznie|Liczba bajtów wysłanych jako odpowiedzi z serwera proxy HTTP/Https na klientach|HttpStatus, ClientCountry HttpStatusGroup, ClientRegion,|
+|BackendRequestCount|Liczba żądań wewnętrznej bazy danych|Licznik|Łącznie|Liczba żądań wysyłanych z serwera proxy HTTP/Https do zaplecza|HttpStatus, HttpStatusGroup, wewnętrznej bazy danych|
+|BackendRequestLatency|Opóźnienia żądania wewnętrznej bazy danych|MS|Średnia|Czas obliczonym na podstawie Jeśli żądanie zostało wysłane przez serwer proxy HTTP/Https do wewnętrznej bazy danych do momentu otrzymania przez serwer proxy HTTP/Https ostatni bajt odpowiedzi z wewnętrznej bazy danych|Zaplecze|
+|TotalLatency|Całkowity czas oczekiwania|MS|Średnia|Czas obliczonym na podstawie żądań klienta otrzymania przez serwer proxy HTTP/Https momentu klient potwierdzenia ostatni bajt odpowiedzi z serwera proxy HTTP/S|HttpStatus, ClientCountry HttpStatusGroup, ClientRegion,|
+|BackendHealthPercentage|Wartość procentowa kondycję wewnętrznej bazy danych|Procent|Średnia|Procent pomyślnych kondycji sondy z serwera proxy HTTP/Https do zaplecza|Wewnętrznej bazy danych, ustawień|
+|WebApplicationFirewallRequestCount|Liczba żądań zapory aplikacji sieci Web|Licznik|Łącznie|Liczba żądań klienta przetwarzanych przez zaporę aplikacji sieci Web|PolicyName, Nazwa_reguły, akcja|
+
 ## <a name="microsoftnotificationhubsnamespacesnotificationhubs"></a>Microsoft.NotificationHubs/Namespaces/NotificationHubs
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
@@ -1031,72 +1111,80 @@ Usługa Azure Monitor zapewnia kilka sposobów na korzystanie z metryk, w tym wy
 |Incoming.all.failedrequests|Wszystkie nieudane żądania przychodzące|Licznik|Łącznie|Łączna liczba nieudanych żądań przychodzących dla centrum powiadomień|Nie wymiarów|
 
 ## <a name="microsoftoperationalinsightsworkspaces"></a>Microsoft.OperationalInsights/workspaces
-(Publiczna wersja zapoznawcza)
 
 |Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
 |---|---|---|---|---|---|
-Average_ % wolnych węzłów i|% Wolnych węzłów i|Licznik|Średnia|Average_ % wolnych węzłów i|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_ % wolnego miejsca|% Wolnego miejsca|Licznik|Średnia|Average_ % wolnego miejsca|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_ % użytych węzłów i|% Użytych węzłów i|Licznik|Średnia|Average_ % użytych węzłów i|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Używany obszar Average_ %|Procent wykorzystania miejsca|Licznik|Średnia|Używany obszar Average_ %|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Disk Odczytane bajty/s|Bajty odczytu z dysku/s|Licznik|Średnia|Average_Disk Odczytane bajty/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Disk odczyty/s|Odczyty dysku/s|Licznik|Średnia|Average_Disk odczyty/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Disk dyskowe/s|Transfery dyskowe/s|Licznik|Średnia|Average_Disk dyskowe/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Disk zapisane bajty/s|Bajty zapisu na dysku/s|Licznik|Średnia|Average_Disk zapisane bajty/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Disk zapisy/s|Zapisy dysku/s|Licznik|Średnia|Average_Disk zapisy/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Free (MB)|Wolne megabajty|Licznik|Średnia|Average_Free (MB)|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Logical Bajty dysku/s|Bajty dysku logicznego/s|Licznik|Średnia|Average_Logical Bajty dysku/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_ % dostępnej pamięci|% Dostępnej pamięci.|Licznik|Średnia|Average_ % dostępnej pamięci|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_ % dostępnego obszaru wymiany|% Dostępnego obszaru wymiany|Licznik|Średnia|Average_ % dostępnego obszaru wymiany|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_ procent wykorzystania pamięci|Procent wykorzystania pamięci|Licznik|Średnia|Average_ procent wykorzystania pamięci|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Używany obszar wymiany Average_ %|Używany obszar wymiany %|Licznik|Średnia|Używany obszar wymiany Average_ %|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Pamięć (MB) Average_Available|Dostępna pamięć (MB)|Licznik|Średnia|Pamięć (MB) Average_Available|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Available obszar wymiany|Dostępny obszar wymiany|Licznik|Średnia|Average_Available obszar wymiany|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Page odczyty/s|Odczyty stron/s|Licznik|Średnia|Average_Page odczyty/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Page zapisy/s|Zapisy stron/s|Licznik|Średnia|Average_Page zapisy/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Pages na sekundę|Strony/s|Licznik|Średnia|Average_Pages na sekundę|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Obszar wymiany (MB) Average_Used|Dostępna pamięć (MB)|Licznik|Średnia|Obszar wymiany (MB) Average_Used|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Used pamięć (MB)|Dostępny obszar wymiany|Licznik|Średnia|Average_Used pamięć (MB)|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Total Bajty przesłane|Całkowita liczba przesłanych bajtów|Licznik|Średnia|Average_Total Bajty przesłane|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Odebrane bajty Average_Total|Całkowita liczba odebranych bajtów|Licznik|Średnia|Odebrane bajty Average_Total|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Total bajtów|Całkowita liczba bajtów|Licznik|Średnia|Average_Total bajtów|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Total pakiety przesyłane|Wszystkie pakiety przesyłane|Licznik|Średnia|Average_Total pakiety przesyłane|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Odebrane pakiety Average_Total|Łączna liczba odebranych pakietów|Licznik|Średnia|Odebrane pakiety Average_Total|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Błędy Rx Average_Total|Rx łączna liczba błędów|Licznik|Średnia|Błędy Rx Average_Total|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Błędy Tx Average_Total|Tx łączna liczba błędów|Licznik|Średnia|Błędy Tx Average_Total|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Total kolizji|Łączna liczba konfliktów|Licznik|Średnia|Average_Total kolizji|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Avg. Czas dysku w s/Odczyt|Średni Czas dysku w s/Odczyt|Licznik|Średnia|Average_Avg. Czas dysku w s/Odczyt|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Avg. Dysku w s/Transfer|Średni Dysku w s/Transfer|Licznik|Średnia|Average_Avg. Dysku w s/Transfer|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Avg. Dysku w s/Zapis|Średni Dysku w s/Zapis|Licznik|Średnia|Average_Avg. Dysku w s/Zapis|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Physical Bajty dysku/s|Bajty dysku fizycznego/s|Licznik|Średnia|Average_Physical Bajty dysku/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Czas uprzywilejowany Average_Pct|Czas uprzywilejowany PCT|Licznik|Średnia|Czas uprzywilejowany Average_Pct|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Czas użytkownika Average_Pct|Czas użytkownika protokołu PCT|Licznik|Średnia|Czas użytkownika Average_Pct|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-KB pamięci Average_Used|Używana pamięć (KB pamięci)|Licznik|Średnia|KB pamięci Average_Used|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Pamięć współużytkowaną Average_Virtual|Wirtualnej pamięci wspólnej|Licznik|Średnia|Pamięć współużytkowaną Average_Virtual|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_ czas DPC (%)|Czas DPC (%)|Licznik|Średnia|Average_ czas DPC (%)|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Czas bezczynności (%) Average_|Czas bezczynności (%)|Licznik|Średnia|Czas bezczynności (%) Average_|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_ czas przerwań (%)|Czas przerwań (%)|Licznik|Średnia|Average_ czas przerwań (%)|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Czas oczekiwania operacji We/Wy dla % Average_|Czas oczekiwania operacji We/Wy %|Licznik|Średnia|Czas oczekiwania operacji We/Wy dla % Average_|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Czas nieuprzywilejowany (%) Average_|Czas nieuprzywilejowany (%)|Licznik|Średnia|Czas nieuprzywilejowany (%) Average_|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Czas uprzywilejowany Average_ %|Czas uprzywilejowany %|Licznik|Średnia|Czas uprzywilejowany Average_ %|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_ czas procesora (%)|Czas procesora (%)|Licznik|Średnia|Average_ czas procesora (%)|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Czas użytkownika % Average_|Czas użytkownika (%)|Licznik|Średnia|Czas użytkownika % Average_|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Pamięć fizyczna Average_Free|Wolna pamięć fizyczna|Licznik|Średnia|Pamięć fizyczna Average_Free|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Free miejsce w plikach stronicowania|Wolne miejsce w plikach stronicowania|Licznik|Średnia|Average_Free miejsce w plikach stronicowania|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Free pamięci wirtualnej|Wolna pamięć wirtualna|Licznik|Średnia|Average_Free pamięci wirtualnej|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Processes|Procesy|Licznik|Średnia|Average_Processes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Size przechowywane w plikach stronicowania|Rozmiar zapisanych w plikach stronicowania|Licznik|Średnia|Average_Size przechowywane w plikach stronicowania|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Uptime|Czas pracy|Licznik|Średnia|Average_Uptime|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Users|Użytkownicy|Licznik|Średnia|Average_Users|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Długość kolejki dysku Average_Current|Bieżąca długość kolejki dysku|Licznik|Średnia|Długość kolejki dysku Average_Current|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Available pamięć (MB)|Dostępna pamięć (MB)|Licznik|Średnia|Average_Available pamięć (MB)|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_ % Zadeklarowane bajty w użyciu|% Przydzielonych bajtów w użyciu|Licznik|Średnia|Average_ % Zadeklarowane bajty w użyciu|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Bytes odebrane/s|Bajty odebrane/s|Licznik|Średnia|Average_Bytes odebrane/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Bytes wysłane/s|Bajty wysłane/s|Licznik|Średnia|Average_Bytes wysłane/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Average_Bytes liczba bajtów/s|Całkowita liczba bajtów/s|Licznik|Średnia|Average_Bytes liczba bajtów/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
-Puls|Puls|Licznik|Średnia|Puls|Computer, OSType, Version, SourceComputerId|
-Aktualizacja|Aktualizacja|Licznik|Średnia|Aktualizacja|Komputer, produktów, klasyfikacji, UpdateState, opcjonalnie, zatwierdzone|
-Wydarzenie|Wydarzenie|Licznik|Średnia|Wydarzenie|Źródło dziennika zdarzeń, komputer, EventCategory, EventLevel EventLevelName, identyfikator zdarzenia|
+|Average_ % wolnych węzłów i|% Wolnych węzłów i|Licznik|Średnia|Average_ % wolnych węzłów i|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_ % wolnego miejsca|% Wolnego miejsca|Licznik|Średnia|Average_ % wolnego miejsca|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_ % użytych węzłów i|% Użytych węzłów i|Licznik|Średnia|Average_ % użytych węzłów i|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Używany obszar Average_ %|Procent wykorzystania miejsca|Licznik|Średnia|Używany obszar Average_ %|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Disk Odczytane bajty/s|Bajty odczytu z dysku/s|Licznik|Średnia|Average_Disk Odczytane bajty/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Disk odczyty/s|Odczyty dysku/s|Licznik|Średnia|Average_Disk odczyty/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Disk dyskowe/s|Transfery dyskowe/s|Licznik|Średnia|Average_Disk dyskowe/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Disk zapisane bajty/s|Bajty zapisu na dysku/s|Licznik|Średnia|Average_Disk zapisane bajty/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Disk zapisy/s|Zapisy dysku/s|Licznik|Średnia|Average_Disk zapisy/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Free (MB)|Wolne megabajty|Licznik|Średnia|Average_Free (MB)|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Logical Bajty dysku/s|Bajty dysku logicznego/s|Licznik|Średnia|Average_Logical Bajty dysku/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_ % dostępnej pamięci|% Dostępnej pamięci.|Licznik|Średnia|Average_ % dostępnej pamięci|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_ % dostępnego obszaru wymiany|% Dostępnego obszaru wymiany|Licznik|Średnia|Average_ % dostępnego obszaru wymiany|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_ procent wykorzystania pamięci|Procent wykorzystania pamięci|Licznik|Średnia|Average_ procent wykorzystania pamięci|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Używany obszar wymiany Average_ %|Używany obszar wymiany %|Licznik|Średnia|Używany obszar wymiany Average_ %|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Pamięć (MB) Average_Available|Dostępna pamięć (MB)|Licznik|Średnia|Pamięć (MB) Average_Available|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Available obszar wymiany|Dostępny obszar wymiany|Licznik|Średnia|Average_Available obszar wymiany|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Page odczyty/s|Odczyty stron/s|Licznik|Średnia|Average_Page odczyty/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Page zapisy/s|Zapisy stron/s|Licznik|Średnia|Average_Page zapisy/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Pages na sekundę|Strony/s|Licznik|Średnia|Average_Pages na sekundę|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Obszar wymiany (MB) Average_Used|Miejsce używany obszar wymiany (MB)|Licznik|Średnia|Obszar wymiany (MB) Average_Used|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Used pamięć (MB)|Używana pamięć (MB)|Licznik|Średnia|Average_Used pamięć (MB)|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Total Bajty przesłane|Całkowita liczba przesłanych bajtów|Licznik|Średnia|Average_Total Bajty przesłane|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Odebrane bajty Average_Total|Całkowita liczba odebranych bajtów|Licznik|Średnia|Odebrane bajty Average_Total|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Total bajtów|Całkowita liczba bajtów|Licznik|Średnia|Average_Total bajtów|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Total pakiety przesyłane|Wszystkie pakiety przesyłane|Licznik|Średnia|Average_Total pakiety przesyłane|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Odebrane pakiety Average_Total|Łączna liczba odebranych pakietów|Licznik|Średnia|Odebrane pakiety Average_Total|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Błędy Rx Average_Total|Rx łączna liczba błędów|Licznik|Średnia|Błędy Rx Average_Total|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Błędy Tx Average_Total|Tx łączna liczba błędów|Licznik|Średnia|Błędy Tx Average_Total|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Total kolizji|Łączna liczba konfliktów|Licznik|Średnia|Average_Total kolizji|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Avg. Czas dysku w s/Odczyt|Średni Czas dysku w s/Odczyt|Licznik|Średnia|Average_Avg. Czas dysku w s/Odczyt|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Avg. Dysku w s/Transfer|Średni Dysku w s/Transfer|Licznik|Średnia|Average_Avg. Dysku w s/Transfer|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Avg. Dysku w s/Zapis|Średni Dysku w s/Zapis|Licznik|Średnia|Average_Avg. Dysku w s/Zapis|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Physical Bajty dysku/s|Bajty dysku fizycznego/s|Licznik|Średnia|Average_Physical Bajty dysku/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Czas uprzywilejowany Average_Pct|Czas uprzywilejowany PCT|Licznik|Średnia|Czas uprzywilejowany Average_Pct|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Czas użytkownika Average_Pct|Czas użytkownika protokołu PCT|Licznik|Średnia|Czas użytkownika Average_Pct|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|KB pamięci Average_Used|Używana pamięć (KB pamięci)|Licznik|Średnia|KB pamięci Average_Used|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Pamięć współużytkowaną Average_Virtual|Wirtualnej pamięci wspólnej|Licznik|Średnia|Pamięć współużytkowaną Average_Virtual|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_ czas DPC (%)|Czas DPC (%)|Licznik|Średnia|Average_ czas DPC (%)|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Czas bezczynności (%) Average_|Czas bezczynności (%)|Licznik|Średnia|Czas bezczynności (%) Average_|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_ czas przerwań (%)|Czas przerwań (%)|Licznik|Średnia|Average_ czas przerwań (%)|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Czas oczekiwania operacji We/Wy dla % Average_|Czas oczekiwania operacji We/Wy %|Licznik|Średnia|Czas oczekiwania operacji We/Wy dla % Average_|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Czas nieuprzywilejowany (%) Average_|Czas nieuprzywilejowany (%)|Licznik|Średnia|Czas nieuprzywilejowany (%) Average_|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Czas uprzywilejowany Average_ %|Czas uprzywilejowany %|Licznik|Średnia|Czas uprzywilejowany Average_ %|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_ czas procesora (%)|Czas procesora (%)|Licznik|Średnia|Average_ czas procesora (%)|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Czas użytkownika % Average_|Czas użytkownika (%)|Licznik|Średnia|Czas użytkownika % Average_|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Pamięć fizyczna Average_Free|Wolna pamięć fizyczna|Licznik|Średnia|Pamięć fizyczna Average_Free|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Free miejsce w plikach stronicowania|Wolne miejsce w plikach stronicowania|Licznik|Średnia|Average_Free miejsce w plikach stronicowania|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Free pamięci wirtualnej|Wolna pamięć wirtualna|Licznik|Średnia|Average_Free pamięci wirtualnej|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Processes|Procesy|Licznik|Średnia|Average_Processes|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Size przechowywane w plikach stronicowania|Rozmiar zapisanych w plikach stronicowania|Licznik|Średnia|Average_Size przechowywane w plikach stronicowania|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Uptime|Czas pracy|Licznik|Średnia|Average_Uptime|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Users|Użytkownicy|Licznik|Średnia|Average_Users|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Avg. Czas dysku w s/Odczyt|Średni Czas dysku w s/Odczyt|Licznik|Średnia|Average_Avg. Czas dysku w s/Odczyt|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Avg. Dysku w s/Zapis|Średni Dysku w s/Zapis|Licznik|Średnia|Average_Avg. Dysku w s/Zapis|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Długość kolejki dysku Average_Current|Bieżąca długość kolejki dysku|Licznik|Średnia|Długość kolejki dysku Average_Current|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Disk odczyty/s|Odczyty dysku/s|Licznik|Średnia|Average_Disk odczyty/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Disk dyskowe/s|Transfery dyskowe/s|Licznik|Średnia|Average_Disk dyskowe/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Disk zapisy/s|Zapisy dysku/s|Licznik|Średnia|Average_Disk zapisy/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Free (MB)|Wolne megabajty|Licznik|Średnia|Average_Free (MB)|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_ % wolnego miejsca|% Wolnego miejsca|Licznik|Średnia|Average_ % wolnego miejsca|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Available pamięć (MB)|Dostępna pamięć (MB)|Licznik|Średnia|Average_Available pamięć (MB)|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_ % Zadeklarowane bajty w użyciu|% Przydzielonych bajtów w użyciu|Licznik|Średnia|Average_ % Zadeklarowane bajty w użyciu|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Bytes odebrane/s|Bajty odebrane/s|Licznik|Średnia|Average_Bytes odebrane/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Bytes wysłane/s|Bajty wysłane/s|Licznik|Średnia|Average_Bytes wysłane/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_Bytes liczba bajtów/s|Całkowita liczba bajtów/s|Licznik|Średnia|Average_Bytes liczba bajtów/s|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Average_ czas procesora (%)|Czas procesora (%)|Licznik|Średnia|Average_ czas procesora (%)|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Długość kolejki Average_Processor|Długość kolejki procesora|Licznik|Średnia|Długość kolejki Average_Processor|Computer, ObjectName, InstanceName, CounterPath, SourceSystem|
+|Puls|Puls|Licznik|Łącznie|Puls|Computer, OSType, Version, SourceComputerId|
+|Aktualizacja|Aktualizacja|Licznik|Średnia|Aktualizacja|Komputer, produktów, klasyfikacji, UpdateState, opcjonalnie, zatwierdzone|
+|Wydarzenie|Wydarzenie|Licznik|Średnia|Wydarzenie|Źródło dziennika zdarzeń, komputer, EventCategory, EventLevel EventLevelName, identyfikator zdarzenia|
 
 
 ## <a name="microsoftpowerbidedicatedcapacities"></a>Microsoft.PowerBIDedicated/capacities
@@ -1205,6 +1293,18 @@ Wydarzenie|Wydarzenie|Licznik|Średnia|Wydarzenie|Źródło dziennika zdarzeń, 
 |eDTU_used|używane jednostki eDTU|Licznik|Średnia|używane jednostki eDTU|Nie wymiarów|
 |storage_used|Użyty magazyn|Bajty|Średnia|Użyty magazyn|Nie wymiarów|
 |xtp_storage_percent|Procent magazynu OLTP w pamięci|Procent|Średnia|Procent magazynu OLTP w pamięci|Nie wymiarów|
+
+## <a name="microsoftsqlmanagedinstances"></a>Microsoft.Sql/managedInstances
+
+|Metryka|Nazwa wyświetlana metryki|Jednostka|Typ agregacji|Opis|Wymiary|
+|---|---|---|---|---|---|
+|virtual_core_count|Liczba rdzeni wirtualnych|Licznik|Średnia|Liczba rdzeni wirtualnych|Nie wymiarów|
+|avg_cpu_percent|Średni procent użycia procesora CPU|Procent|Średnia|Średni procent użycia procesora CPU|Nie wymiarów|
+|reserved_storage_mb|Zarezerwowane miejsce do magazynowania|Licznik|Średnia|Zarezerwowane miejsce do magazynowania|Nie wymiarów|
+|storage_space_used_mb|Używane miejsce w magazynie|Licznik|Średnia|Używane miejsce w magazynie|Nie wymiarów|
+|io_requests|Liczba żądań We/Wy|Licznik|Średnia|Liczba żądań We/Wy|Nie wymiarów|
+|io_bytes_read|Bajty We/Wy odczytu|Bajty|Średnia|Bajty We/Wy odczytu|Nie wymiarów|
+|io_bytes_written|Zapisano bajtów we/wy|Bajty|Średnia|Zapisano bajtów we/wy|Nie wymiarów|
 
 ## <a name="microsoftstoragestorageaccounts"></a>Microsoft.Storage/storageAccounts
 

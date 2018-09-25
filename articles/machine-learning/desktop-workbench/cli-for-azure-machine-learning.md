@@ -11,16 +11,19 @@ ms.component: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 03/10/2018
-ms.openlocfilehash: 0e37e1839d2248507a30de08e2ac4c975bd3b859
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 06e85845d41b240638a5b5b4d75d64fd460a99bf
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35648285"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953331"
 ---
 # <a name="install-and-use-the-machine-learning-cli-for-top-tasks-in-azure-machine-learning"></a>Instalowanie i używanie machine learning interfejs wiersza polecenia dla najważniejszych zadań w usłudze Azure Machine Learning
 
-Usługi Azure Machine Learning to zintegrowane, end-to-end danych do analizy i zaawansowanego rozwiązania do analizy. Profesjonalnych analityków, można użyć usługi Azure Machine Learning do przygotowywania danych, opracowywania eksperymentów i wdrażania modeli na skalę chmury. 
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
+Usługa Azure Machine Learning to zintegrowane, end-to-end danych do analizy i zaawansowanego rozwiązania do analizy. Profesjonalnych analityków, można użyć usługi Azure Machine Learning do przygotowywania danych, opracowywania eksperymentów i wdrażania modeli na skalę chmury. 
 
 Usługa Azure Machine Learning udostępnia interfejs wiersza polecenia (CLI) za pomocą którego można:
 + Zarządzaj obszaru roboczego i projektów
@@ -39,7 +42,7 @@ W tym artykule opisano niektóre z najczęściej używanych poleceń interfejsu 
 Potrzebny jest dostęp współpracowników do subskrypcji platformy Azure lub grupę zasobów, w którym można wdrożyć swoje modele. Ponadto należy zainstalować aplikację Azure Machine Learning Workbench, aby uruchomić interfejs wiersza polecenia. 
 
 >[!IMPORTANT]
->Interfejs wiersza polecenia dostarczane za pomocą usługi Azure Machine Learning różni się od [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), który jest używany do zarządzania zasobami platformy Azure.
+>Interfejs wiersza polecenia są dostarczane z usługą Azure Machine Learning, usługi różni się od [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/?view=azure-cli-latest), który jest używany do zarządzania zasobami platformy Azure.
 
 ## <a name="get-and-start-cli"></a>Pobierz i uruchom interfejs wiersza polecenia
 
@@ -201,7 +204,7 @@ az ml env set -n <environment name> -g <resource group name>
 ## <a name="next-steps"></a>Kolejne kroki
 
 Rozpoczynanie pracy z jednym z następujących artykułów: 
-+ [Instalowanie i rozpocząć korzystanie z usługi Azure Machine Learning](../service/quickstart-installation.md)
++ [Instalowanie i rozpocząć korzystanie z usługi Azure Machine Learning](quickstart-installation.md)
 + [Klasyfikowanie irysów danych samouczek: Część 1](tutorial-classifying-iris-part-1.md)
 
 Szczegółowe informacje z jednym z następujących artykułów:

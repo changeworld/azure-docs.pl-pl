@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: 027204065429a9eebd2e8121cbac8bc18b9d9ce6
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 91be34468dae0fb1c24080fbe53c3c8056e8c1a3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43091439"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46967852"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Korzystanie z usługi Azure Storage w połączeniu z klastrami usługi Azure HDInsight
 
@@ -133,11 +133,11 @@ Po [zainstalowaniu i skonfigurowaniu programu Azure PowerShell][powershell-insta
     $destContext = New-AzureStorageContext -StorageAccountName $storageAccountName -StorageAccountKey $storageAccountKey  
     New-AzureStorageContainer -Name $containerName -Context $destContext
 
-### <a name="use-azure-cli"></a>Interfejs wiersza polecenia platformy Azure
+### <a name="use-azure-classic-cli"></a>Użyj klasycznego wiersza polecenia platformy Azure
 
-[!INCLUDE [use-latest-version](../../includes/hdinsight-use-latest-cli.md)]
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
-Jeśli masz [zainstalowany i skonfigurowany interfejs wiersza polecenia platformy Azure](../cli-install-nodejs.md), możesz zastosować następujące polecenie do konta magazynu i kontenera.
+Jeśli masz [zainstalowany i skonfigurowany interfejs wiersza polecenia Azure Classic](../cli-install-nodejs.md), następujące polecenie może służyć do konta magazynu i kontener.
 
     azure storage account create <storageaccountname> --type LRS
 
@@ -264,24 +264,24 @@ $clusterName = "<HDInsightClusterName>"
 
     Invoke-AzureRmHDInsightHiveJob -Defines $defines -Query "dfs -ls wasb://$undefinedContainer@$undefinedStorageAccount.blob.core.windows.net/;"
 
-### <a name="use-azure-cli"></a>Interfejs wiersza polecenia platformy Azure
+### <a name="use-azure-classic-cli"></a>Użyj klasycznego wiersza polecenia platformy Azure
 Użyj następującego polecenia, aby wyświetlić listę poleceń związanych z obiektami blob:
 
     azure storage blob
 
-**Przykład użycia interfejsu wiersza polecenia platformy Azure, aby przekazać plik**
+**Przykład użycia klasyczny interfejs wiersza polecenia platformy Azure, aby przekazać plik**
 
     azure storage blob upload <sourcefilename> <containername> <blobname> --account-name <storageaccountname> --account-key <storageaccountkey>
 
-**Przykład użycia interfejsu wiersza polecenia platformy Azure, aby pobrać plik**
+**Przykład użycia klasyczny interfejs wiersza polecenia platformy Azure, aby pobrać plik**
 
     azure storage blob download <containername> <blobname> <destinationfilename> --account-name <storageaccountname> --account-key <storageaccountkey>
 
-**Przykład użycia interfejsu wiersza polecenia platformy Azure, aby usunąć plik**
+**Przykład użycia klasyczny interfejs wiersza polecenia platformy Azure, aby usunąć plik**
 
     azure storage blob delete <containername> <blobname> --account-name <storageaccountname> --account-key <storageaccountkey>
 
-**Przykład użycia interfejsu wiersza polecenia platformy Azure, aby wyświetlić listę plików**
+**Przykład użycia klasyczny interfejs wiersza polecenia platformy Azure, aby wyświetlić listę plików**
 
     azure storage blob list <containername> <blobname|prefix> --account-name <storageaccountname> --account-key <storageaccountkey>
 

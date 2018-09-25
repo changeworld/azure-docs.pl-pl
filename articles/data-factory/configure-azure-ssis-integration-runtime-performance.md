@@ -1,6 +1,6 @@
 ---
-title: Skonfiguruj wydajność środowiska uruchomieniowego integracji usług SSIS Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak skonfigurować właściwości środowiska uruchomieniowego integracji usług SSIS Azure o wysokiej wydajności
+title: Konfigurowanie wydajności środowiska Azure-SSIS Integration Runtime | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak skonfigurować właściwości środowiska Azure-SSIS Integration Runtime, dla wysoko wydajnych
 services: data-factory
 ms.date: 01/10/2018
 ms.topic: conceptual
@@ -10,23 +10,23 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: ac53e1a8a7c6c1b2c2959b92e14c7911065aed6d
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: 2592c81947f48c10891fe920647612d5c30af64f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37052032"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46989086"
 ---
-# <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurowanie środowiska uruchomieniowego integracji usług SSIS Azure o wysokiej wydajności
+# <a name="configure-the-azure-ssis-integration-runtime-for-high-performance"></a>Konfigurowanie środowiska Azure-SSIS Integration Runtime, dla wysoko wydajnych
 
-W tym artykule opisano sposób konfigurowania usług SSIS Azure integrację środowiska uruchomieniowego (IR) o wysokiej wydajności. IR Azure SSIS umożliwia wdrażanie i uruchamianie pakietów programu SQL Server Integration Services (SSIS) na platformie Azure. Aby uzyskać więcej informacji na temat IR Azure SSIS, zobacz [integrację środowiska uruchomieniowego](concepts-integration-runtime.md#azure-ssis-integration-runtime) artykułu. Aby uzyskać informacje dotyczące wdrażania i uruchamiania pakietów SSIS na platformie Azure, zobacz [przyrostu i shift obciążeń usług integracji programu SQL Server do chmury](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
+W tym artykule opisano sposób konfigurowania środowiska Azure-SSIS Integration Runtime (IR) zapewniające wysoką wydajność. Azure-SSIS IR umożliwia wdrażanie i uruchamianie pakietów usług SQL Server Integration Services (SSIS) na platformie Azure. Aby uzyskać więcej informacji na temat środowiska Azure-SSIS IR, zobacz [środowiska Integration runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime) artykułu. Aby uzyskać informacje o wdrażanie i uruchamianie pakietów SSIS na platformie Azure, zobacz [Lift- and -shift obciążeń programu SQL Server Integration Services chmurze](/sql/integration-services/lift-shift/ssis-azure-lift-shift-ssis-packages-overview).
 
 > [!IMPORTANT]
-> Ten artykuł zawiera wyniki wydajności i uwagi z wewnętrznych testowania wykonywane przez członków zespołu deweloperów SSIS. Wyniki mogą być różne. Do testowania przed finalize ustawień konfiguracji, które wpływają na wydajność i koszty.
+> Ten artykuł zawiera wyniki dotyczące wydajności i uwagi z testów wewnętrznych wykonywane przez członków zespołu rozwoju usług SSIS. Wyniki mogą się różnić. Samodzielnie przeprowadzić testy przed finalize ustawień konfiguracji, które mają wpływ na wydajność i koszt.
 
-## <a name="properties-to-configure"></a>Właściwości do skonfigurowania
+## <a name="properties-to-configure"></a>Właściwości, aby skonfigurować
 
-Następujące części skryptu konfiguracji zawiera właściwości, które można skonfigurować podczas tworzenia środowiska uruchomieniowego integracji usług SSIS Azure. Ukończ skrypt programu PowerShell i opis, zobacz [pakiety wdrażania programu SQL Server Integration Services na platformie Azure](tutorial-deploy-ssis-packages-azure-powershell.md).
+Następujące części skryptu konfiguracji zawiera właściwości, które można skonfigurować podczas tworzenia środowiska Azure-SSIS Integration Runtime. Aby uzyskać kompletny skrypt programu PowerShell i opis, zobacz [pakiety wdrażania programu SQL Server Integration Services na platformę Azure](tutorial-deploy-ssis-packages-azure-powershell.md).
 
 ```powershell
 $SubscriptionName = "<Azure subscription name>"
@@ -51,77 +51,77 @@ $AzureSSISMaxParallelExecutionsPerNode = 2
 $SSISDBServerEndpoint = "<Azure SQL server name>.database.windows.net"
 $SSISDBServerAdminUserName = "<Azure SQL server - user name>"
 $SSISDBServerAdminPassword = "<Azure SQL server - user password>"
-# Remove the SSISDBPricingTier variable if you are using Azure SQL Managed Instance (Preview)
+# Remove the SSISDBPricingTier variable if you are using Azure SQL Database Managed Instance
 # This parameter applies only to Azure SQL Database. For the basic pricing tier, specify "Basic", not "B". For standard tiers, specify "S0", "S1", "S2", 'S3", etc.
 $SSISDBPricingTier = "<pricing tier of your Azure SQL server. Examples: Basic, S0, S1, S2, S3, etc.>"
 ```
 
 ## <a name="azuressislocation"></a>AzureSSISLocation
-**AzureSSISLocation** to lokalizacja, w węźle integracji środowiska wykonawczego procesu roboczego. Z węzłem procesu roboczego przechowuje stałe połączenie z bazą danych usług SSIS katalogu (SSISDB) w bazie danych Azure SQL. Ustaw **AzureSSISLocation** w tej samej lokalizacji co serwer bazy danych SQL, który jest hostem bazy danych SSISDB, który umożliwia integrację środowiska uruchomieniowego działa jak najbardziej wydajny.
+**AzureSSISLocation** znajdują się węzeł procesu roboczego środowiska integration runtime. Węzeł procesu roboczego obsługuje stałe połączenie z bazą danych wykazu usług SSIS (SSISDB) na bazę danych Azure SQL database. Ustaw **AzureSSISLocation** w tej samej lokalizacji co serwer bazy danych SQL, który jest hostem bazy danych SSISDB, co pozwoli środowiska integration runtime do pracy w jak najbardziej wydajny.
 
 ## <a name="azuressisnodesize"></a>AzureSSISNodeSize
-Fabryka danych, w tym IR Azure SSIS obsługuje następujące opcje:
--   Standardowe\_A4\_v2
--   Standardowe\_A8\_v2
--   Standardowe\_D1\_v2
--   Standardowe\_D2\_v2
--   Standardowe\_D3\_v2
--   Standardowe\_D4\_v2.
+Usługa Data Factory, Azure-SSIS IR, w tym obsługuje następujące opcje:
+-   Standardowa\_A4\_v2
+-   Standardowa\_A8\_v2
+-   Standardowa\_D1\_v2
+-   Standardowa\_D2\_v2
+-   Standardowa\_D3\_v2
+-   Standardowa\_D4\_v2.
 
-Testami nieoficjalny wewnętrznych przez zespół inżynieryjny SSIS, serii D wydaje się być bardziej odpowiednie dla wykonanie pakietu usług SSIS niż serii A.
+W nieoficjalny wewnętrznych testowania przez zespół inżynierów SSIS, seria D wydaje się być bardziej odpowiednie dla wykonanie pakietu SSIS niż seria A.
 
--   Współczynnik wydajności ceny serii D jest wyższa niż serii A.
--   Przepływność serii D jest wyższa niż serii A w tej samej cenie.
+-   Współczynnik wydajności/cena serii D jest wyższa niż seria A.
+-   Przepływność dla serii D jest wyższa niż seria A w tej samej cenie.
 
-### <a name="configure-for-execution-speed"></a>Konfigurowanie szybkości wykonywania
-Jeśli masz wiele pakietów do uruchomienia, i chcesz pakietów, aby szybko uruchomić, skorzystaj z informacji w poniższej tabeli, aby wybrać odpowiednie dla danego scenariusza typ maszyny wirtualnej.
+### <a name="configure-for-execution-speed"></a>Konfigurowanie dla szybkości wykonywania
+Jeśli masz wiele pakietów do uruchomienia i chcesz, aby pakiety do szybkiego uruchamiania, skorzystaj z informacji w poniższej tabeli, aby wybrać odpowiednie dla danego scenariusza typ maszyny wirtualnej.
 
-Te dane reprezentuje wykonanie pojedynczy pakiet, w węźle pojedynczego procesu roboczego. Pakiet ładuje 10 miliony rekordów o nazwie pierwszy i ostatni nazwa kolumny z magazynu obiektów Blob platformy Azure, generuje kolumny Pełna nazwa i zapisuje rekordy, które mają pełną nazwę dłuższa niż 20 znaków do magazynu obiektów Blob Azure.
+Wykonanie pojedynczy pakiet, w węźle pojedynczego procesu roboczego reprezentują te dane. Ten pakiet ładuje 10 milionów rekordów o nazwie pierwszej i ostatniej kolumny z magazynu obiektów Blob platformy Azure, generuje kolumny Imię i nazwisko i zapisuje rekordy, które mają pełną nazwę w więcej niż 20 znaków w usłudze Azure Blob Storage.
 
-![Szybkość wykonywania pakietu środowiska uruchomieniowego integracji usług SSIS](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speed.png)
+![Szybkość wykonywania pakietów SSIS Integration Runtime](media/configure-azure-ssis-integration-runtime-performance/ssisir-execution-speed.png)
 
-### <a name="configure-for-overall-throughput"></a>Konfigurowanie dla ogólną przepustowość
+### <a name="configure-for-overall-throughput"></a>Konfigurowanie dla ogólną przepływność
 
-Jeśli masz wiele pakietów do uruchomienia, a najbardziej Cię interesują ogólną przepustowość, skorzystaj z informacji w poniższej tabeli, aby wybrać odpowiednie dla danego scenariusza typ maszyny wirtualnej.
+Jeśli masz wiele pakietów do uruchomienia, a najbardziej interesujących Cię ogólną przepływność, skorzystaj z informacji w poniższej tabeli, aby wybrać odpowiednie dla danego scenariusza typ maszyny wirtualnej.
 
-![Środowisko uruchomieniowe integracji usług SSIS ogólną przepustowość maksymalna](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughput.png)
+![Środowiska SSIS Integration Runtime, ogólną przepustowość](media/configure-azure-ssis-integration-runtime-performance/ssisir-overall-throughput.png)
 
 ## <a name="azuressisnodenumber"></a>AzureSSISNodeNumber
 
-**AzureSSISNodeNumber** dostosowuje skalowalność środowiska uruchomieniowego integracji. Przepływność środowiska uruchomieniowego integracji jest proporcjonalny do **AzureSSISNodeNumber**. Ustaw **AzureSSISNodeNumber** małej wartości na początku, monitorować wydajność środowiska uruchomieniowego integracji, a następnie Dostosuj wartość dla danego scenariusza. Aby zmienić konfigurację liczba węzłów procesu roboczego, zobacz [Zarządzanie środowiska uruchomieniowego integracji usług SSIS Azure](manage-azure-ssis-integration-runtime.md).
+**AzureSSISNodeNumber** dostosowuje skalowalność produktu integration runtime. Przepływność środowiska integration runtime jest proporcjonalna do **AzureSSISNodeNumber**. Ustaw **AzureSSISNodeNumber** małej wartości na początku, monitorowanie przepływności środowiska integration runtime, a następnie dostosować wartości dla danego scenariusza. Aby ponownie skonfigurować liczby węzłów procesu roboczego, zobacz [Zarządzanie środowiska Azure-SSIS integration runtime](manage-azure-ssis-integration-runtime.md).
 
 ## <a name="azuressismaxparallelexecutionspernode"></a>AzureSSISMaxParallelExecutionsPerNode
 
-Jeśli już korzystasz z węzłem procesu roboczego zaawansowane do uruchamiania pakietów, zwiększenie **AzureSSISMaxParallelExecutionsPerNode** może zwiększyć ogólną przepustowość środowiska uruchomieniowego integracji. Dla węzłów Standard_D1_v2 1-4 wykonaniami równoległego na węzeł są obsługiwane. Dla wszystkich innych typów węzłów 1 – 8 wykonaniami równoległego na węzeł są obsługiwane.
-Można oszacować odpowiednią wartość, na podstawie jej kosztu pakietu i następujące konfiguracje węzłów procesu roboczego. Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych ogólnego przeznaczenia](../virtual-machines/windows/sizes-general.md).
+Jeśli już korzystasz z węzłem procesu roboczego wydajne uruchamianie pakietów, zwiększając **AzureSSISMaxParallelExecutionsPerNode** może zwiększyć ogólną przepływność środowiska integration Runtime. Maszyna wirtualna Standard_D1_v2 węzłów 1 – 4 równoległych wykonań na węzeł są obsługiwane. Dla wszystkich innych typów węzłów 1-8 równoległych wykonań na węzeł są obsługiwane.
+Można oszacować odpowiednią wartość na podstawie jej kosztu pakietu i konfiguracje dla węzłów procesu roboczego. Aby uzyskać więcej informacji, zobacz [rozmiarów maszyn wirtualnych ogólnego przeznaczenia](../virtual-machines/windows/sizes-general.md).
 
 | Rozmiar             | Procesor wirtualny | Pamięć: GiB | Magazyn tymczasowy (SSD): GiB | Maksymalna przepływność magazynu tymczasowego: operacje we/wy na sek. / odczyt MB/s / zapis MB/s | Maksymalna liczba dysków danych / przepływność: liczba operacji we/wy na sekundę | Maksymalna liczba kart sieciowych/oczekiwana wydajność sieci (Mb/s) |
 |------------------|------|-------------|------------------------|------------------------------------------------------------|-----------------------------------|------------------------------------------------|
-| Standardowe\_D1\_v2 | 1    | 3,5         | 50                     | 3000 / 46 / 23                                             | 2 / 2 x 500                         | 2 / 750                                        |
-| Standardowe\_D2\_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 4 / 4 x 500                         | 2 / 1500                                       |
-| Standardowe\_D3\_v2 | 4    | 14          | 200                    | 12000 / 187 / 93                                           | 8 / 8 x 500                         | 4 / 3000                                       |
-| Standardowe\_D4\_v2 | 8    | 28          | 400                    | 24000 / 375 / 187                                          | 16 / 16 x 500                       | 8 / 6000                                       |
-| Standardowe\_A4\_v2 | 4    | 8           | 40                     | 4000 / 80 / 40                                             | 8 / 8 x 500                         | 4 / 1000                                       |
-| Standardowe\_A8\_v2 | 8    | 16          | 80                     | 8000 / 160 / 80                                            | 16 / 16 x 500                       | 8 / 2000                                       |
+| Standardowa\_D1\_v2 | 1    | 3,5         | 50                     | 3000 / 46 / 23                                             | 2 / 2 x 500                         | 2 / 750                                        |
+| Standardowa\_D2\_v2 | 2    | 7           | 100                    | 6000 / 93 / 46                                             | 4 / 4 x 500                         | 2 / 1500                                       |
+| Standardowa\_D3\_v2 | 4    | 14          | 200                    | 12000 / 187 / 93                                           | 8 / 8 x 500                         | 4 / 3000                                       |
+| Standardowa\_D4\_v2 | 8    | 28          | 400                    | 24000 / 375 / 187                                          | 16 / 16 x 500                       | 8 / 6000                                       |
+| Standardowa\_A4\_v2 | 4    | 8           | 40                     | 4000 / 80 / 40                                             | 8 / 8 x 500                         | 4 / 1000                                       |
+| Standardowa\_A8\_v2 | 8    | 16          | 80                     | 8000 / 160 / 80                                            | 16 / 16 x 500                       | 8 / 2000                                       |
 
-Poniżej przedstawiono wskazówki dotyczące ustawiania wartości prawo **AzureSSISMaxParallelExecutionsPerNode** właściwości: 
+Poniżej przedstawiono wskazówki dotyczące ustawiania odpowiednie wartości dla **AzureSSISMaxParallelExecutionsPerNode** właściwości: 
 
 1. Ustaw ją na małej wartości na początku.
-2. Zwiększyć jej niewielkie, aby sprawdzić, czy poprawia ogólną przepustowość.
-3. Zatrzymaj, zwiększenie wartości, gdy ogólną przepustowość osiągnie wartość maksymalna.
+2. Stopniowe zwiększanie on małą ilością do sprawdzenia, czy została udoskonalona ogólną przepływność.
+3. Zatrzymaj, zwiększenie wartości, gdy ogólną przepływność osiągnie wartość maksymalna.
 
 ## <a name="ssisdbpricingtier"></a>SSISDBPricingTier
 
-**SSISDBPricingTier** jest warstwę cenową dla wykazu SSIS bazy danych (SSISDB) w bazie danych Azure SQL. To ustawienie wpływa na maksymalną liczbę pracowników w wystąpieniu IR, szybkość do kolejki wykonywania pakietu i szybkość załadować dziennika wykonywania.
+**SSISDBPricingTier** jest warstwę cenową dla bazy danych wykazu usług SSIS (SSISDB) na bazę danych Azure SQL database. To ustawienie wpływa na maksymalną liczbę procesów roboczych w wystąpienie środowiska IR, szybkość wykonywania pakietów w kolejce oraz szybkość załadować dziennika wykonywania.
 
--   Jeśli nie interesują o szybkości wykonywania pakietu kolejki i załadować dziennik wykonywania, można wybrać najniższej warstwy cenowej bazy danych. Baza danych SQL Azure z podstawowe ceny obsługuje 8 pracowników w wystąpieniu środowiska uruchomieniowego integracji.
+-   Jeśli nie dba o szybkość wykonywania pakietów kolejki i załaduj dziennik wykonywania, można wybierać najniższej warstwy cenowej bazy danych. Usługa Azure SQL Database dzięki cenom podstawowych obsługuje 8 procesów roboczych w wystąpienie infrastruktury integration runtime.
 
--   Wybierz bardziej zaawansowanych bazy danych niż podstawowy, jeśli liczba procesu roboczego jest więcej niż 8 lub liczby rdzeni jest więcej niż 50. W przeciwnym razie wąskie gardło będące przyczyną wystąpienia środowiska uruchomieniowego integracji rozmiaru bazy danych i negatywny wpływ na ogólną wydajność.
+-   Wybierz bazę danych bardziej wydajne niż wersja podstawowa, czy liczba procesów roboczych jest więcej niż 8, liczba rdzeni wynosi więcej niż 50. W przeciwnym razie bazy danych staje się wąskim gardłem wystąpienia środowiska uruchomieniowego integracji i ogólną wydajność jest obniżona.
 
-Można również dostosować bazy danych na podstawie warstwy cenowej [jednostka transakcji bazy danych](../sql-database/sql-database-what-is-a-dtu.md) (bazy danych DTU) informacje o użyciu dostępne w portalu Azure.
+Można również dostosować bazy danych na podstawie warstwy cenowej [jednostek transakcji bazy danych](../sql-database/sql-database-what-is-a-dtu.md) (DTU) informacje o użyciu w witrynie Azure portal.
 
 ## <a name="design-for-high-performance"></a>Projektowanie pod kątem wysokiej wydajności
-Projektowanie pakietu SSIS do uruchamiania na platformie Azure różni się od projektowania pakietu w celu wykonania lokalnego. Zamiast łączenie wielu niezależnych zadań w tym samym pakiecie, podzielone na kilka pakietów efektywniejsze wykonywanie w podczerwieni Azure SSIS. Utwórz wykonanie pakietu dla każdego pakietu, dzięki czemu nie trzeba czekać dla pozostałych do zakończenia. Ta metoda korzysta z skalowalność środowiska uruchomieniowego integracji usług SSIS Azure i zwiększa ogólną przepustowość.
+Projektowanie pakietu usług SSIS na platformie Azure różni się od projektowania pakietu do wykonania w środowisku lokalnym. Zamiast łączenie wielu niezależnych zadań, w tym samym pakiecie podzielone na kilka pakietów, aby uzyskać bardziej wydajne wykonywanie w programie Azure-SSIS IR. Wykonanie pakietu dla każdego pakietu, należy utworzyć tak, aby nie musieli czekać na siebie, aby zakończyć. Ta metoda korzysta ze skalowania środowiska Azure-SSIS integration runtime i zwiększa ogólną przepustowość.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się więcej na temat środowiska uruchomieniowego integracji usług SSIS Azure. Zobacz [środowiska uruchomieniowego integracji usług SSIS Azure](concepts-integration-runtime.md#azure-ssis-integration-runtime).
+Dowiedz się więcej o usłudze Azure-SSIS Integration Runtime. Zobacz [Azure-SSIS Integration Runtime](concepts-integration-runtime.md#azure-ssis-integration-runtime).

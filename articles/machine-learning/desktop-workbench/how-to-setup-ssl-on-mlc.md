@@ -12,14 +12,18 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 01/24/2018
-ms.openlocfilehash: 982a6807ccaf393c3aea42f39f7e60bb7e0d3ac3
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: 2a7733468ec082c8954f623f3ebe2cea1fbad561
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35649153"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46976237"
 ---
 # <a name="enable-ssl-on-an-azure-machine-learning-compute-mlc-cluster"></a>Włączanie protokołu SSL na klastrze usługi Azure Machine Learning obliczeń (MLC) 
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 
 Instrukcje te umożliwiają konfigurowanie protokołu SSL do oceniania wywołań w klastrze Machine Learning obliczeń (MLC). 
 
@@ -51,7 +55,7 @@ az ml env create -c -g <resource group name> -n <cluster name> --cert-cname <CNA
 
 Jeśli klaster, który został utworzony bez zastosowania protokołu SSL, można dodać certyfikatu przy użyciu poleceń cmdlet programu Azure PowerShell.
 
-Musisz podać klucz i certyfikatu w formacie nieprzetworzonym PEM. Można je odczytać w zmiennych środowiska PowerShell:
+Należy podać klucz i certyfikatu w formacie nieprzetworzonym PEM. Można je odczytać w zmiennych środowiska PowerShell:
 
 ```
 $keyValueInPemFormat = [IO.File]::ReadAllText('<path to key.pem file>')
@@ -65,7 +69,7 @@ Set-AzureRmMlOpCluster -ResourceGroupName my-rg -Name my-cluster -SslStatus Enab
 
 ## <a name="map-the-cname-and-the-ip-address"></a>Mapuj rekord CNAME i adres IP
 
-Utwórz mapowanie między CNAME wybrane w wymaganiach wstępnych i adres IP w czasie rzeczywistym frontonu (FE). Aby odnaleźć adres IP FE, uruchom poniższe polecenie. Dane wyjściowe wyświetla pole o nazwie "publicIpAddress", który zawiera adres IP frontonu klastra w czasie rzeczywistym. Zapoznaj się z instrukcjami dostawcy usługi DNS, aby skonfigurować rekord z z nazwą FQDN używaną w CNAME publiczny adres IP.
+Utwórz mapowanie między CNAME wybrane w wymaganiach wstępnych i adres IP w czasie rzeczywistym frontonu (FE). Aby odnaleźć adres IP FE, uruchom poniższe polecenie. Dane wyjściowe wyświetla pole o nazwie "publiczny adres IP", który zawiera adres IP frontonu klastra w czasie rzeczywistym. Zapoznaj się z instrukcjami dostawcy usługi DNS, aby skonfigurować rekord z z nazwą FQDN używaną w CNAME publiczny adres IP.
 
 
 

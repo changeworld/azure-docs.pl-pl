@@ -10,12 +10,12 @@ ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 02/28/2018
-ms.openlocfilehash: 57b72ded77484dc1c8ca4c62811b62e171365db4
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: e3940f07ab97eb2ad03c347c39bf2412a8497f5e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423461"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978458"
 ---
 # <a name="configure-and-access-server-logs-by-using-azure-cli"></a>Konfigurowanie i dostęp do dzienników serwera przy użyciu wiersza polecenia platformy Azure
 Azure Database for MySQL, dzienniki serwera można pobrać przy użyciu wiersza polecenia platformy Azure, narzędzie wiersza polecenia platformy Azure.
@@ -23,7 +23,7 @@ Azure Database for MySQL, dzienniki serwera można pobrać przy użyciu wiersza 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do wykonania kroków w tym przewodniku, potrzebne są:
 - [Azure Database dla serwera MySQL](quickstart-create-mysql-server-database-using-azure-cli.md)
-- [Interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-azure-cli) lub usługi Azure Cloud Shell w przeglądarce
+- [Wiersza polecenia platformy Azure](/cli/azure/install-azure-cli) lub usługi Azure Cloud Shell w przeglądarce
 
 ## <a name="configure-logging-for-azure-database-for-mysql"></a>Konfigurowanie rejestrowania dla usługi Azure Database for MySQL
 Można skonfigurować serwer do dostępu do dzienników wolnych zapytań MySQL, wykonując następujące czynności:

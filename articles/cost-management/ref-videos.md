@@ -1,69 +1,69 @@
 ---
-title: Uczenie wideo dotyczące usługi Azure Management koszt | Dokumentacja firmy Microsoft
-description: Wideo szkolenia dotyczące usługi Azure Management koszt umożliwia przeprowadzenie pobierania uruchomiona i używać jej funkcji.
+title: Szkolenia wideo na platformie Cloudyn na platformie Azure | Dokumentacja firmy Microsoft
+description: Szkoleniowe filmy wideo na platformie Cloudyn prowadzą użytkownika przez proces pracę i używania jej funkcji.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 04/26/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
-ms.openlocfilehash: 197eac4b6904bbbf55e7233e113e64e3af528b3e
-ms.sourcegitcommit: e2adef58c03b0a780173df2d988907b5cb809c82
+ms.openlocfilehash: fb20661ddf8a92ac0f5ba4141c28111b117c85a6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/28/2018
-ms.locfileid: "32163337"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972219"
 ---
-# <a name="cost-management-training-videos"></a>Koszt zarządzania szkolenia wideo
+# <a name="cloudyn-training-videos"></a>Filmy szkoleniowe Cloudyn
 
-Następujące filmy wideo Podaj pokazów zawiera wprowadzenie do zarządzania kosztów i używać jej funkcji. Koszt zarządzania obsługuje śledzenie chmury wielu kosztów i optymalizacji tym Microsoft Azure, Amazon Web Services i usługi Google Cloud Platform.
+Następujące filmy zawierające pokazów przeprowadzi Cię przez wprowadzenie do korzystania z platformy Cloudyn i używania jej funkcji. Cloudyn obsługuje kosztami wielu chmur, śledzenie i optymalizację, m.in. Microsoft Azure, Amazon Web Services i Google Cloud Platform.
 
-[Wprowadzenie do zarządzania kosztów platformy Azure](https://youtu.be/NWIRny6Wpsk)
+[Wprowadzenie do rozwiązania Cloudyn](https://youtu.be/NWIRny6Wpsk)
 
 >[!VIDEO https://www.youtube.com/embed/NWIRny6Wpsk]
 
-[Analizowanie danych rozliczeń chmury, a czas z usługą Azure Management koszt](https://youtu.be/7LsVPHglM0g)
+[Analizowanie danych rozliczeń chmury, a razem z platformy Cloudyn](https://youtu.be/7LsVPHglM0g)
 
 >[!VIDEO https://www.youtube.com/embed/7LsVPHglM0g]
 
-[Dodawanie użytkowników do kosztów zarządzania platformy Azure](https://youtu.be/Nzn7GLahx30)
+[Dodawanie użytkowników do rozwiązania Cloudyn](https://youtu.be/Nzn7GLahx30)
 
 >[!VIDEO https://www.youtube.com/embed/Nzn7GLahx30?ecver=1]
 
-[Tworzenie hierarchii jednostek kosztów w kosztów zarządzania platformy Azure](https://youtu.be/dAd9G7u0FmU)
+[Tworzenie hierarchii jednostek kosztów w rozwiązaniu Cloudyn](https://youtu.be/dAd9G7u0FmU)
 
 >[!VIDEO https://www.youtube.com/embed/dAd9G7u0FmU?ecver=1]
 
-[Optymalizacja rozmiar maszyny Wirtualnej w kosztów zarządzania platformy Azure](https://youtu.be/1xaZBNmV704)
+[Optymalizacja rozmiaru maszyny Wirtualnej w rozwiązaniu Cloudyn](https://youtu.be/1xaZBNmV704)
 
 >[!VIDEO https://www.youtube.com/embed/1xaZBNmV704?ecver=1]
 
-[Definiowanie modelu alokacji kosztów w kosztów zarządzania platformy Azure](https://youtu.be/FJzof_agKHY)
+[Definiowanie Model przydzielania kosztów w rozwiązaniu Cloudyn](https://youtu.be/FJzof_agKHY)
 
 >[!VIDEO https://www.youtube.com/embed/FJzof_agKHY?ecver=1]
 
-[Definiowanie niestandardowego opłat w kosztów zarządzania platformy Azure](https://youtu.be/3HcgkGPQjXE)
+[Definiowanie opłaty niestandardowe w rozwiązaniu Cloudyn](https://youtu.be/3HcgkGPQjXE)
 
 >[!VIDEO https://www.youtube.com/embed/3HcgkGPQjXE?ecver=1]
 
-[Jak znaleźć swój identyfikator rejestracji EA i klucz interfejsu API do użycia w Azure koszt zarządzania](https://youtu.be/u_phLs_udig)
+[Jak znaleźć swój identyfikator rejestracji EA i klucz interfejsu API do użytku w rozwiązaniu Cloudyn](https://youtu.be/u_phLs_udig)
 
 >[!VIDEO https://www.youtube.com/embed/u_phLs_udig?ecver=1]
 
-[Znajdowanie użytkownika katalogu identyfikator GUID i identyfikator szybkość do użycia w Azure koszt zarządzania](https://youtu.be/PaRjnyaNGMI)
+[Znajdowanie Twojego identyfikatora GUID katalogu i Identyfikatora stawki do użytku w rozwiązaniu Cloudyn](https://youtu.be/PaRjnyaNGMI)
 
 >[!VIDEO https://www.youtube.com/embed/PaRjnyaNGMI?ecver=1]
 
-[Przypisywanie konta i subskrypcji do jednostek kosztów zarządzania platformy Azure](https://youtu.be/d9uTWSdoQYo)
+[Przypisywanie kont i subskrypcji do jednostek w rozwiązaniu Cloudyn](https://youtu.be/d9uTWSdoQYo)
 
 >[!VIDEO https://www.youtube.com/embed/d9uTWSdoQYo?ecver=1]
 
-[Połączenie do usługi Azure Resource Manager z kosztów zarządzania platformy Azure](https://youtu.be/oCIwvfBB6kk)
+[Połączenie do usługi Azure Resource Manager z usługą Cloudyn](https://youtu.be/oCIwvfBB6kk)
 
 >[!VIDEO https://www.youtube.com/embed/oCIwvfBB6kk?ecver=1]
 
-[Analizowanie danych rozliczeń chmury za pomocą usługi Azure Management koszt](https://youtu.be/G0pvI3iLH-Y)
+[Analizowanie danych rozliczeń w chmurze z usługą Cloudyn](https://youtu.be/G0pvI3iLH-Y)
 
 >[!VIDEO https://www.youtube.com/embed/G0pvI3iLH-Y?ecver=1]

@@ -1,5 +1,5 @@
 ---
-title: Azure Cosmos DB powiązania funkcji 2.x (wersja zapoznawcza)
+title: Azure Cosmos DB powiązania funkcji 2.x
 description: Dowiedz się, jak używać usługi Azure Cosmos DB, wyzwalaczy i powiązań w usłudze Azure Functions.
 services: functions
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: ea1403ed8afe6e84a3118d891e8c2d34b390d158
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: d39c27614fd4d534db36df1af61b2d419493c4d3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44093434"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953484"
 ---
-# <a name="azure-cosmos-db-bindings-for-azure-functions-2x-preview"></a>Azure Cosmos DB powiązania usługi Azure Functions 2.x (wersja zapoznawcza)
+# <a name="azure-cosmos-db-bindings-for-azure-functions-2x"></a>Azure Cosmos DB powiązania usługi Azure Functions 2.x
 
 > [!div class="op_single_selector" title1="Select the version of the Azure Functions runtime you are using: "]
 > * [Wersja 1 — ogólnie dostępna](functions-bindings-cosmosdb.md)
@@ -27,7 +27,7 @@ ms.locfileid: "44093434"
 W tym artykule wyjaśniono, jak pracować z [usługi Azure Cosmos DB](..\cosmos-db\serverless-computing-database.md) powiązań w usłudze Azure Functions 2.x. Usługi Azure Functions obsługuje wyzwalanie, dane wejściowe i wyjściowe powiązań usługi Azure Cosmos DB.
 
 > [!NOTE]
-> Ten artykuł jest przeznaczony dla [usługi Azure Functions w wersji 2.x](functions-versions.md), która jest dostępna w wersji zapoznawczej.  Aby uzyskać informacje o sposobie używania tych powiązań w funkcjach 1.x, zobacz [powiązań usługi Azure Cosmos DB dla usługi Azure Functions 1.x](functions-bindings-cosmosdb.md).
+> Ten artykuł jest przeznaczony dla [usługi Azure Functions w wersji 2.x](functions-versions.md).  Aby uzyskać informacje o sposobie używania tych powiązań w funkcjach 1.x, zobacz [powiązań usługi Azure Cosmos DB dla usługi Azure Functions 1.x](functions-bindings-cosmosdb.md).
 >
 > To powiązanie pierwotnie nosiła nazwę bazy danych DocumentDB. W funkcji w wersji 2.x, wyzwalacz, powiązania i pakietu są wszystkie o nazwie usługi Cosmos DB.
 

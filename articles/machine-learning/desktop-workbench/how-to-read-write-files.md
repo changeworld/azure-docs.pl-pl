@@ -11,14 +11,18 @@ ms.component: core
 ms.workload: data-services
 ms.topic: article
 ms.date: 09/10/2017
-ms.openlocfilehash: 5a772f8792c02139e45977e207b5be4bebc63a9c
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ROBOTS: NOINDEX
+ms.openlocfilehash: 4a2dff4dd57bdb0b010bbb4568d796f1e197a728
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37908238"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46971505"
 ---
 # <a name="persisting-changes-and-working-with-large-files"></a>Utrwalanie zmian i Praca z dużymi plikami
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
+
 Usługa eksperymentowanie w usłudze Machine Learning Azure można skonfigurować szereg celów wykonania. Niektóre cele są lokalne, np. komputera lokalnego lub kontenerze platformy Docker na komputerze lokalnym. Inne są zdalnej, np. kontenerze platformy Docker na komputerze zdalnym lub klaster usługi HDInsight. Aby uzyskać więcej informacji, zobacz [Omówienie usługi Azure Machine Learning wypróbować usługę wykonywania](experimentation-service-configuration.md). 
 
 Zanim będzie możliwe wykonanie w miejscu docelowym, należy skopiować folder projektu, do obliczeniowego elementu docelowego. Należy wykonać, nawet w przypadku lokalnego wykonywania, który używa lokalnego folderu tymczasowego dla tego celu. 
@@ -48,6 +52,9 @@ Typowe przypadki użycia to:
 * Uczenie modelu
 * Tworzenie zestawu danych
 * Kreślenia wykresu jako pliku obrazu, w ramach szkoleń modelowych wykonywanie 
+
+>[!Note]
+> Maksymalny rozmiar rejestrowanych pliku w folderze danych wyjściowych po uruchomieniu jest 512 MB. Oznacza to, jeśli skrypt generuje plik przekracza 512 MB w folderze danych wyjściowych, go nie są zbierane istnieje. 
 
 Ponadto które chcesz porównać dane wyjściowe we wszystkich przebiegach aktualizacji, wybierz plik wyjściowy (na przykład model), który został utworzony przez poprzednie uruchomienia, a następnie użyj go dla kolejnych zadań (na przykład oceniania).
 

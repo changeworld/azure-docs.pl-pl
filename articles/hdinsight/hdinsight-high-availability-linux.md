@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 03/22/2018
 ms.author: jasonh
-ms.openlocfilehash: c10ff022d54510c4fb81bf1f922aeaaf4e9036bb
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 33458794ad74b367f1278364d7b4ace30f7d13a8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43104858"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46953593"
 ---
 # <a name="availability-and-reliability-of-hadoop-clusters-in-hdinsight"></a>Dostępność i niezawodność klastrów Hadoop w usłudze HDInsight
 
@@ -208,13 +208,13 @@ Z poziomu interfejsu użytkownika sieci Web Ambari wybierz usługę, którą chc
 
 Rozmiar węzła można wybrać tylko podczas tworzenia klastra. Można znaleźć listę dostępnych rozmiarów maszyn wirtualnych różnych HDInsight na [HDInsight stronę z cennikiem](https://azure.microsoft.com/pricing/details/hdinsight/).
 
-Podczas tworzenia klastra, można określić rozmiar węzłów. Poniższe informacje znajdują się wskazówki dotyczące sposobu określania rozmiaru, za pomocą [witryny Azure portal][preview-portal], [programu Azure PowerShell][azure-powershell]i [Wiersza polecenia platformy azure][azure-cli]:
+Podczas tworzenia klastra, można określić rozmiar węzłów. Poniższe informacje znajdują się wskazówki dotyczące sposobu określania rozmiaru, za pomocą [witryny Azure portal][preview-portal], [programu Azure PowerShell][azure-powershell]i [Klasycznego wiersza polecenia platformy azure][azure-cli]:
 
 * **Witryna Azure portal**: podczas tworzenia klastra, można ustawić rozmiar węzłów, używane przez klaster:
 
     ![Obraz przedstawiający Kreatora tworzenia klastra przy użyciu wybór rozmiaru węzła](./media/hdinsight-high-availability-linux/headnodesize.png)
 
-* **Interfejs wiersza polecenia Azure**: korzystając z `azure hdinsight cluster create` polecenia, należy określić rozmiar head, procesu roboczego i węzły dozorcy przy użyciu `--headNodeSize`, `--workerNodeSize`, i `--zookeeperNodeSize` parametrów.
+* **Klasyczny interfejs wiersza polecenia Azure**: korzystając z `azure hdinsight cluster create` polecenia, należy określić rozmiar head, procesu roboczego i węzły dozorcy przy użyciu `--headNodeSize`, `--workerNodeSize`, i `--zookeeperNodeSize` parametrów.
 
 * **Program Azure PowerShell**: korzystając z `New-AzureRmHDInsightCluster` polecenia cmdlet, należy określić rozmiar head, procesu roboczego i węzły dozorcy przy użyciu `-HeadNodeVMSize`, `-WorkerNodeSize`, i `-ZookeeperNodeSize` parametrów.
 
@@ -223,7 +223,7 @@ Podczas tworzenia klastra, można określić rozmiar węzłów. Poniższe inform
 Użyj następujących łączy, aby dowiedzieć się więcej na temat czynności opisane w tym dokumencie.
 
 * [Dokumentacja REST systemu Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [Instalowanie i Konfigurowanie interfejsu wiersza polecenia platformy Azure](../cli-install-nodejs.md)
+* [Instalowanie i Konfigurowanie interfejsu wiersza polecenia Azure Classic](../cli-install-nodejs.md)
 * [Zainstaluj i skonfiguruj program Azure PowerShell](/powershell/azure/overview)
 * [Zarządzanie HDInsight przy użyciu narzędzia Ambari](hdinsight-hadoop-manage-ambari.md)
 * [Obsługa administracyjna klastrów HDInsight opartych na systemie Linux](hdinsight-hadoop-provision-linux-clusters.md)

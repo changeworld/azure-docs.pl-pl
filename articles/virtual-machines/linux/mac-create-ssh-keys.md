@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 4b86749f8a2e68dd5bae11ae440db4d6524e3a91
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 63a7602deee402bed056937c8465fd87c8256cd8
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44713769"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46962850"
 ---
 # <a name="quick-steps-create-and-use-an-ssh-public-private-key-pair-for-linux-vms-in-azure"></a>Szybkie kroki: tworzenie i używanie pary kluczy publiczny prywatny SSH dla maszyn wirtualnych systemu Linux na platformie Azure
 
@@ -45,7 +45,7 @@ Następujące polecenie tworzy parę kluczy SSH przy użyciu szyfrowania RSA i d
 ssh-keygen -t rsa -b 2048
 ```
 
-Jeśli używasz [interfejsu wiersza polecenia platformy Azure w wersji 2.0](/cli/azure) tworzysz maszynę Wirtualną za pomocą [tworzenie az vm](/cli/azure/vm#az-vm-create) polecenia i może opcjonalnie generować SSH pliki publicznych i prywatnych kluczy przy użyciu `--generate-ssh-keys` opcji. Pliki kluczy są przechowywane w katalogu ~/.ssh, chyba że określono inaczej, za pomocą `--ssh-dest-key-path` opcji. `--generate-ssh-keys` Opcja nie spowoduje zastąpienie istniejących plików kluczy, w zamian zwróci błąd. W poniższym poleceniu zastąp *VMname* i *RGname* własnymi wartościami:
+Jeśli używasz [wiersza polecenia platformy Azure](/cli/azure) tworzysz maszynę Wirtualną za pomocą [tworzenie az vm](/cli/azure/vm#az-vm-create) polecenia i może opcjonalnie generować SSH pliki publicznych i prywatnych kluczy przy użyciu `--generate-ssh-keys` opcji. Pliki kluczy są przechowywane w katalogu ~/.ssh, chyba że określono inaczej, za pomocą `--ssh-dest-key-path` opcji. `--generate-ssh-keys` Opcja nie spowoduje zastąpienie istniejących plików kluczy, w zamian zwróci błąd. W poniższym poleceniu zastąp *VMname* i *RGname* własnymi wartościami:
 
 ```azurecli
 az vm create --name VMname --resource-group RGname --generate-ssh-keys 

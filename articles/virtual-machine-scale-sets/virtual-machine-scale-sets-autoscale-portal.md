@@ -15,21 +15,21 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: a93467404232b0fff51136cb7648d84a81165bdb
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: 4ae9d8053f7463c069a7305bbd07a91a387e31d2
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38697963"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972304"
 ---
 # <a name="automatically-scale-a-virtual-machine-scale-set-in-the-azure-portal"></a>Automatyczne skalowanie maszyn wirtualnych zestawu skalowania w witrynie Azure portal
 Podczas tworzenia zestawu skalowania musisz zdefiniować liczbę wystąpień maszyn wirtualnych, które chcesz uruchamiać. W odpowiedzi na zmieniające się zapotrzebowanie aplikacji możesz automatycznie zwiększać lub zmniejszać liczbę wystąpień maszyn wirtualnych. Skalowanie automatyczne pozwala spełniać potrzeby klientów lub reagować na zmiany wydajności aplikacji w całym cyklu jej życia.
 
-W tym artykule przedstawiono sposób tworzenia reguły automatycznego skalowania w portalu Azure, monitorowanie wydajności wystąpień maszyn wirtualnych w zestawie skalowania. Te reguły skalowania automatycznego zwiększać lub zmniejszać liczbę wystąpień maszyn wirtualnych w odpowiedzi na te metryki wydajności. Można również wykonać te czynności przy użyciu [programu Azure PowerShell](tutorial-autoscale-powershell.md) lub [interfejsu wiersza polecenia platformy Azure w wersji 2.0](tutorial-autoscale-cli.md).
+W tym artykule przedstawiono sposób tworzenia reguły automatycznego skalowania w portalu Azure, monitorowanie wydajności wystąpień maszyn wirtualnych w zestawie skalowania. Te reguły skalowania automatycznego zwiększać lub zmniejszać liczbę wystąpień maszyn wirtualnych w odpowiedzi na te metryki wydajności. Można również wykonać te czynności przy użyciu [programu Azure PowerShell](tutorial-autoscale-powershell.md) lub [wiersza polecenia platformy Azure](tutorial-autoscale-cli.md).
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Aby utworzyć reguły skalowania automatycznego, należy istniejącej maszyny wirtualnej zestawu skalowania. Można utworzyć zestaw skalowania z [witryny Azure portal](quick-create-portal.md), [programu Azure PowerShell](quick-create-powershell.md), lub [interfejsu wiersza polecenia platformy Azure w wersji 2.0](quick-create-cli.md).
+Aby utworzyć reguły skalowania automatycznego, należy istniejącej maszyny wirtualnej zestawu skalowania. Można utworzyć zestaw skalowania z [witryny Azure portal](quick-create-portal.md), [programu Azure PowerShell](quick-create-powershell.md), lub [wiersza polecenia platformy Azure](quick-create-cli.md).
 
 
 ## <a name="create-a-rule-to-automatically-scale-out"></a>Tworzenie reguły do automatycznego dowolnego skalowania w poziomie
@@ -52,7 +52,7 @@ Wraz ze wzrostem zapotrzebowania aplikacji zwiększa się obciążenie wystąpie
     | *Agregacja czasu*     | Określa sposób agregacji metryk zebranych do celów analizy.                                                | Średnia        |
     | *Nazwa metryki*          | Metryka wydajności, która jest monitorowana i na której są stosowane akcje zestawu skalowania.                                                   | Procentowe użycie procesora CPU |
     | *Statystyka ziarna czasu* | Definiuje, jak powinna zostać zagregowana w każdym ziarno czasu agregacji metryk zebranych do analizy.                             | Średnia        |
-    | *Operator*             | Operator używany do porównywania danych metryki z wartością progową.                                                     | Więcej niż   |
+    | *Operator*             | Operator używany do porównywania danych metryki z wartością progową.                                                     | Większe niż   |
     | *Próg*            | Wartość procentowa, która powoduje wyzwolenie akcji przez regułę skalowania automatycznego.                                                 | 70             |
     | *Czas trwania*             | Przedział czasu monitorowania, po którym wartość metryki jest porównywana z wartością progową.                                   | 10 minut     |
     | *Operacja*            | Określa, czy zestaw skalowania powinny być skalowane w górę lub w dół, gdy ta reguła ma zastosowanie i z jakich przyrostem                        | Zwiększ wartość procentową o |

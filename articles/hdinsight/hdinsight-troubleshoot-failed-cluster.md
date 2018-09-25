@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
-ms.openlocfilehash: f18e667e86c310e4d2950ba195911307aec5426d
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 6c9e980e4f448f705743b2e6dce268c671ffe9b6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43047029"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46950719"
 ---
 # <a name="troubleshoot-a-slow-or-failing-hdinsight-cluster"></a>Rozwiązywanie problemów dotyczących powolnego działania lub awarii klastra usługi HDInsight
 
@@ -57,12 +57,13 @@ Witryna Azure portal można podać te informacje:
 
 ![Portal HDInsight Azure informacji](./media/hdinsight-troubleshoot-failed-cluster/portal.png)
 
-Można także użyć wiersza polecenia platformy Azure:
+Można również użyć klasycznego wiersza polecenia platformy Azure:
 
 ```
     azure hdinsight cluster list
     azure hdinsight cluster show <ClusterName>
 ```
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 Innym rozwiązaniem jest przy użyciu programu PowerShell. Aby uzyskać więcej informacji, zobacz [Zarządzanie klastrów usługi Hadoop w HDInsight przy użyciu programu Azure PowerShell](hdinsight-administer-use-powershell.md).
 
@@ -100,7 +101,7 @@ Porównaj z najnowszą wersją HDInsight w wersji klastra. Każda wersja HDInsig
 
 #### <a name="restart-your-cluster-services"></a>Uruchom ponownie usługi klastrowania
 
-Jeśli napotykasz spowolnienie w klastrze, należy rozważyć ponowne uruchamianie usługi za pośrednictwem interfejsu użytkownika Ambari lub wiersza polecenia platformy Azure. Klaster mogą występować błędy przejściowe i ponowne uruchomienie jest najszybszym sposobem na stabilizowaniu środowiska i być może zwiększyć wydajność.
+Jeśli spowolnienie występują w klastrze, należy rozważyć ponowne uruchamianie usługi za pośrednictwem interfejsu użytkownika Ambari lub klasycznego wiersza polecenia platformy Azure. Klaster mogą występować błędy przejściowe i ponowne uruchomienie jest najszybszym sposobem na stabilizowaniu środowiska i być może zwiększyć wydajność.
 
 ## <a name="step-3-view-your-clusters-health"></a>Krok 3: Wyświetlić kondycję sieci klastra
 

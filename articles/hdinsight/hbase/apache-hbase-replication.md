@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: 0d675b3efa165f36b93d791975a8007a68b02e12
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: cfc71f34f4b1d8027714c9fb610beebf8cd3be47
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734762"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46978543"
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Konfigurowanie replikacji klaster bazy danych HBase w sieci wirtualnej platformy Azure
 
@@ -277,7 +277,7 @@ Aby utworzyć **kontakty** tabeli i wstawić dane w tabeli, postępuj zgodnie z 
 
 ## <a name="enable-replication"></a>Włączanie replikacji
 
-Poniżej opisano sposób wywoływania akcji skryptu skrypt z witryny Azure portal. Aby uzyskać informacje o uruchamianiu akcji skryptu za pomocą programu Azure PowerShell i narzędzia wiersza polecenia platformy Azure (Azure CLI), zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md).
+Poniżej opisano sposób wywoływania akcji skryptu skrypt z witryny Azure portal. Aby dowiedzieć się, jak uruchamianie akcji skryptu za pomocą programu Azure PowerShell i klasycznego wiersza polecenia platformy Azure, zobacz [HDInsight Dostosowywanie klastrów za pomocą akcji skryptu](../hdinsight-hadoop-customize-cluster-linux.md).
 
 **Aby włączyć replikację bazy danych HBase w witrynie Azure portal**
 

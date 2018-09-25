@@ -13,12 +13,12 @@ ms.devlang: azurecli
 ms.topic: article
 ms.date: 07/11/2018
 ms.author: cynthn
-ms.openlocfilehash: 224f017decc3f48a23cb3fbf14f9a4e744bfaded
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 9fbbbb4f73b5295b648008878c8145fe926fbaad
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39007009"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974395"
 ---
 # <a name="create-a-snapshot"></a>Utwórz migawkę 
 
@@ -26,7 +26,7 @@ Utworzenie migawki dysku systemu operacyjnego lub dane kopii zapasowej lub rozwi
 
 ## <a name="use-azure-cli"></a>Interfejs wiersza polecenia platformy Azure 
 
-Poniższy przykład wymaga użycia [Cloud Shell](https://shell.azure.com/bash) lub masz zainstalowany interfejs wiersza polecenia platformy Azure w wersji 2.0. Aby odnaleźć wersję, uruchom polecenie **az --version**. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli). 
+Poniższy przykład wymaga użycia [Cloud Shell](https://shell.azure.com/bash) lub zainstalować interfejs wiersza polecenia platformy Azure.
 
 Poniższe kroki pokazują, jak wykonać migawkę przy użyciu **Tworzenie migawki az** polecenia **— dysk źródłowy** parametru. W poniższym przykładzie założono, że istnieje Maszynę wirtualną o nazwie *myVM* w *myResourceGroup* grupy zasobów.
 
@@ -69,7 +69,7 @@ az snapshot list \
 5. Wybierz istniejącą grupę zasobów lub wpisz nazwę dla nowego. 
 7. Aby uzyskać **dysku źródłowego**, wybierz dysku zarządzanego do migawki.
 8. Wybierz **typ konta** służące do przechowywania migawki. Użyj **standardowych dysków Twardych** chyba że potrzebne w udziale o wysokiej wydajności dysków SSD.
-9. Kliknij przycisk **Utwórz**.
+9. Kliknij pozycję **Utwórz**.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -11,14 +11,19 @@ ms.custom: ''
 ms.devlang: ''
 ms.topic: article
 ms.date: 05/09/2018
-ms.openlocfilehash: a713f5fcde31e0e25de080a65b71209011ef551d
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ROBOTS: NOINDEX
+ms.openlocfilehash: eceeeb30331031c51e5208e301441d17096b4a00
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35649598"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46972984"
 ---
 # <a name="data-preparations-python-extensions"></a>Rozszerzenia języka Python przygotowywanie danych
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)] 
+
+
 Jako sposób wypełnianie luki między wbudowane funkcje usługi Azure Machine Learning danych przygotowań obejmuje rozszerzalności na różnych poziomach. W tym dokumencie możemy konturu rozszerzalności za pośrednictwem skryptu języka Python. 
 
 ## <a name="custom-code-steps"></a>Kroki kod niestandardowy 

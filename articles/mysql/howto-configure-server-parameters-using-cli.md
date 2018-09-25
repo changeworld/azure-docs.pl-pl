@@ -10,12 +10,12 @@ ms.service: mysql
 ms.devlang: azure-cli
 ms.topic: article
 ms.date: 07/18/2018
-ms.openlocfilehash: 61fee0771d6847a0ec56de656057409bbcdcba16
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: b45975bc019da2859da87a40e46970d849312e38
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433754"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46957061"
 ---
 # <a name="customize-server-configuration-parameters-by-using-azure-cli"></a>Dostosowywanie parametrów konfiguracji serwera przy użyciu wiersza polecenia platformy Azure
 Można wyświetlać, pokazać i zaktualizować parametry konfiguracji dla serwera Azure Database for MySQL przy użyciu wiersza polecenia platformy Azure, narzędzie wiersza polecenia platformy Azure. Podzbiór aparatu konfiguracji jest narażony na poziomie serwera i może być modyfikowany. 
@@ -23,7 +23,7 @@ Można wyświetlać, pokazać i zaktualizować parametry konfiguracji dla serwer
 ## <a name="prerequisites"></a>Wymagania wstępne
 Do wykonania kroków w tym przewodniku, potrzebne są:
 - [Serwer Azure Database for MySQL](quickstart-create-mysql-server-database-using-azure-cli.md)
-- [Interfejs wiersza polecenia platformy Azure w wersji 2.0](/cli/azure/install-azure-cli) narzędzie wiersza polecenia lub użyj usługi Azure Cloud Shell w przeglądarce.
+- [Interfejs wiersza polecenia Azure](/cli/azure/install-azure-cli) narzędzie wiersza polecenia lub użyj usługi Azure Cloud Shell w przeglądarce.
 
 ## <a name="list-server-configuration-parameters-for-azure-database-for-mysql-server"></a>Lista parametrów konfiguracji serwera dla usługi Azure Database dla serwera MySQL
 Aby wyświetlić listę wszystkich parametrów można modyfikować w serwera i ich wartości, należy uruchomić [az mysql server configuration list](/cli/azure/mysql/server/configuration#az-mysql-server-configuration-list) polecenia.

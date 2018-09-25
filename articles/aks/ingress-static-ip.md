@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/30/2018
 ms.author: iainfou
-ms.openlocfilehash: 9bcfa7996b301ea5ff26464315b16a08e054ba60
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 71a2409f91927b7584aef629109a6da363857f62
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357102"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036647"
 ---
 # <a name="create-an-ingress-controller-with-a-static-public-ip-address-in-azure-kubernetes-service-aks"></a>Tworzenie kontrolera danych przychodzących za pomocą statyczny publiczny adres IP w usłudze Azure Kubernetes Service (AKS)
 
@@ -52,7 +52,7 @@ az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eas
 Teraz wdrożyć *ruch przychodzący serwera nginx* wykresu za pomocą narzędzia Helm. Dodaj `--set controller.service.loadBalancerIP` parametru i Podaj własny publiczny adres IP utworzony w poprzednim kroku.
 
 > [!TIP]
-> W poniższym przykładzie instalowana kontroler danych przychodzących w `kube-system` przestrzeni nazw. Jeśli to konieczne, można określić innej przestrzeni nazw dla Twojego środowiska. Jeśli klaster AKS nie jest włączone RBAC, Dodaj `--set rbac.create=false` poleceń.
+> Poniższe przykłady instalowania kontrolera danych przychodzących i certyfikaty w `kube-system` przestrzeni nazw. Jeśli to konieczne, można określić innej przestrzeni nazw dla Twojego środowiska. Ponadto jeśli klastra usługi AKS nie jest włączone RBAC, Dodaj `--set rbac.create=false` poleceń.
 
 ```console
 helm install stable/nginx-ingress --namespace kube-system --set controller.service.loadBalancerIP="40.121.63.72"
@@ -99,16 +99,20 @@ Kontroler danych przychodzących NGINX obsługuje kończenie żądań protokołu
 > [!NOTE]
 > W tym artykule wykorzystano `staging` środowiska umożliwia szyfrowanie. W przypadku wdrożeń produkcyjnych, użyj `letsencrypt-prod` i `https://acme-v02.api.letsencrypt.org/directory` w definicjach zasobów, a podczas instalowania wykresu Helm.
 
-Aby zainstalować kontroler Menedżera certyfikatów w klastrze z włączoną funkcją RBAC, należy użyć następującego `helm install` polecenia:
+Aby zainstalować kontroler Menedżera certyfikatów w klastrze z włączoną funkcją RBAC, należy użyć następującego `helm install` polecenia. Ponownie, jeśli to konieczne, zmień `--namespace` na coś innego niż *systemu kubernetes*:
 
 ```console
-helm install stable/cert-manager --set ingressShim.defaultIssuerName=letsencrypt-staging --set ingressShim.defaultIssuerKind=ClusterIssuer
+helm install stable/cert-manager \
+  --namespace kube-system \
+  --set ingressShim.defaultIssuerName=letsencrypt-staging \
+  --set ingressShim.defaultIssuerKind=ClusterIssuer
 ```
 
 Jeśli klaster nie jest włączone RBAC, zamiast tego użyj następującego polecenia:
 
 ```console
 helm install stable/cert-manager \
+  --namespace kube-system \
   --set ingressShim.defaultIssuerName=letsencrypt-staging \
   --set ingressShim.defaultIssuerKind=ClusterIssuer \
   --set rbac.create=false \

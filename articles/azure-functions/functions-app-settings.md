@@ -8,20 +8,20 @@ keywords: ''
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: conceptual
-ms.date: 09/16/2018
+ms.date: 09/22/2018
 ms.author: glenga
-ms.openlocfilehash: f7299b9193c5ab24431feb9c73a0a3cf97596da3
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 4e40a731530e9423c7be6f2e2449aad970bb327c
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734945"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040248"
 ---
 # <a name="app-settings-reference-for-azure-functions"></a>Dokumentacja ustawień aplikacji dla usługi Azure Functions
 
 Ustawienia aplikacji w aplikacji funkcji zawiera opcje konfiguracji globalne, które mają wpływ na wszystkie funkcje dla tej aplikacji funkcji. Po uruchomieniu lokalnie, te ustawienia dotyczą w zmiennych środowiskowych. W tym artykule wymieniono ustawienia aplikacji, które są dostępne w aplikacji funkcji.
 
-[! Dołącz [ustawień aplikacji funkcji] (.. /.. /includes/Functions-App-Settings.MD]
+[!INCLUDE [Function app settings](../../includes/functions-app-settings.md)]
 
 Istnieją inne opcje konfiguracji globalnej w [host.json](functions-host-json.md) pliku i [local.settings.json](functions-run-local.md#local-settings-file) pliku.
 
@@ -40,6 +40,9 @@ Parametry połączenia konta opcjonalne magazynu do przechowywania dzienników i
 |Klucz|Wartość przykładowa|
 |---|------------|
 |AzureWebJobsDashboard|DefaultEndpointsProtocol = https; AccountName = [nazwa]; AccountKey = [klucz]|
+
+> [!TIP]
+> Wydajność i środowisko jest zalecane na potrzeby monitorowania zamiast AzureWebJobsDashboard APPINSIGHTS_INSTRUMENTATIONKEY i App Insights
 
 ## <a name="azurewebjobsdisablehomepage"></a>AzureWebJobsDisableHomepage
 
@@ -111,11 +114,19 @@ Prawidłowe wartości to "readwrite" i "readonly".
 
 ## <a name="functionsextensionversion"></a>FUNKCJE\_ROZSZERZENIA\_WERSJI
 
-Wersja środowiska uruchomieniowego usługi Azure Functions do użycia w tej aplikacji funkcji. Tylda za pomocą wersji głównej oznacza, użyj najnowszej wersji tej wersji głównej (na przykład, "~ 1"). Jeśli dla tej samej wersji głównej są dostępne nowe wersje, są instalowane automatycznie w aplikacji funkcji. Aby przypiąć ją do określonej wersji, należy użyć pełny numer wersji (na przykład "1.0.12345"). Domyślna to "~ 1".
+Wersja środowiska uruchomieniowego usługi Azure Functions do użycia w tej aplikacji funkcji. Tylda za pomocą wersji głównej oznacza, użyj najnowszej wersji tej wersji głównej (na przykład, "~ 2"). Jeśli dla tej samej wersji głównej są dostępne nowe wersje, są instalowane automatycznie w aplikacji funkcji. Aby przypiąć ją do określonej wersji, należy użyć pełny numer wersji (na przykład "2.0.12345"). Domyślna to "~ 2".
 
 |Klucz|Wartość przykładowa|
 |---|------------|
-|FUNKCJE\_ROZSZERZENIA\_WERSJI|~1|
+|FUNKCJE\_ROZSZERZENIA\_WERSJI|~ 2|
+
+## <a name="functionsworkerruntime"></a>FUNKCJE\_PROCESU ROBOCZEGO\_ŚRODOWISKA URUCHOMIENIOWEGO
+
+Proces roboczy CLR do załadowania w aplikacji funkcji.  Odpowiada to język używany w aplikacji (na przykład "dotnet"). Dla funkcji w wielu językach, musisz opublikować je w wiele aplikacji, z których każdy z odpowiedniej wartości środowiska uruchomieniowego procesu roboczego.  Prawidłowe wartości to `dotnet`, `node`, i `java`.
+
+|Klucz|Wartość przykładowa|
+|---|------------|
+|FUNKCJE\_PROCESU ROBOCZEGO\_ŚRODOWISKA URUCHOMIENIOWEGO|polecenia DotNet|
 
 ## <a name="websitecontentazurefileconnectionstring"></a>WEBSITE_CONTENTAZUREFILECONNECTIONSTRING
 
@@ -138,19 +149,19 @@ W przypadku planów zużycie tylko. Ścieżka pliku kodu aplikacji funkcji i kon
 Maksymalna liczba wystąpień, które aplikacji funkcji można skalować do. Domyślnie nie ma żadnych ograniczeń.
 
 > [!NOTE]
-> To ustawienie dotyczy funkcja w wersji zapoznawczej.
+> To ustawienie jest w wersji zapoznawczej funkcja — i tylko wtedy, niezawodne Jeśli ustawiona na wartość < = 5
 
 |Klucz|Wartość przykładowa|
 |---|------------|
-|WITRYNY SIECI WEB\_MAX\_DYNAMICZNE\_APLIKACJI\_SKALOWANIA\_OUT|10|
+|WITRYNY SIECI WEB\_MAX\_DYNAMICZNE\_APLIKACJI\_SKALOWANIA\_OUT|5|
 
 ## <a name="websitenodedefaultversion"></a>WITRYNY SIECI WEB\_WĘZŁA\_DEFAULT_VERSION
 
-Wartością domyślną jest "6.5.0".
+Wartością domyślną jest "8.11.1".
 
 |Klucz|Wartość przykładowa|
 |---|------------|
-|WITRYNY SIECI WEB\_WĘZŁA\_DEFAULT_VERSION|6.5.0|
+|WITRYNY SIECI WEB\_WĘZŁA\_DEFAULT_VERSION|8.11.1|
 
 ## <a name="websiterunfrompackage"></a>WITRYNY SIECI WEB\_URUCHOM\_FROM\_PAKIETU
 

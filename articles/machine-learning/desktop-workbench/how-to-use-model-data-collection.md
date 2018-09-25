@@ -12,14 +12,17 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 09/12/2017
-ms.openlocfilehash: 5c1a884ebe6216c4e8099f2ada2182ccff68b63e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ROBOTS: NOINDEX
+ms.openlocfilehash: 435ef29192682f1bf19a9a53923dd043676256ab
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39449785"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46954946"
 ---
 # <a name="collect-model-data-by-using-data-collection"></a>Zbieranie danych modelu za pomocą kolekcji danych
+
+[!INCLUDE [workbench-deprecated](../../../includes/aml-deprecating-preview-2017.md)]
 
 Funkcji zbierania danych modelu w usłudze Azure Machine Learning służy do archiwizowania danych wejściowych i modelu za pomocą usługi sieci web.
 
@@ -105,7 +108,7 @@ Aby wyświetlić zebrane dane w magazynie obiektów blob:
 Dane mogą być używane z obiektów blob platformy Azure na różne sposoby, za pomocą oprogramowania firmy Microsoft i narzędzi typu open source. Oto kilka przykładów:
 - Usługa Azure Machine Learning Workbench: Otwórz plik CSV w usłudze Azure Machine Learning Workbench, dodając plik CSV jako źródło danych.
 - Excel: Otwórz dzienne pliki CSV jako arkusz kalkulacyjny.
-- [Usługa Power BI](https://powerbi.microsoft.com/en-us/documentation/powerbi-azure-and-power-bi/): twórz wykresy zawierające dane pobierane z danych CSV w obiektach blob.
+- [Usługa Power BI](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/): twórz wykresy zawierające dane pobierane z danych CSV w obiektach blob.
 - [Platforma Spark](https://docs.microsoft.com/azure/hdinsight/hdinsight-apache-spark-overview): Utwórz ramkę danych zawierającą dużą część danych CSV.
     ```python
     var df = spark.read.format("com.databricks.spark.csv").option("inferSchema","true").option("header","true").load("wasb://modeldata@<storageaccount>.blob.core.windows.net/<subscription_id>/<resource_group_name>/<model_management_account_name>/<webservice_name>/<model_id>-<model_name>-<model_version>/<identifier>/<year>/<month>/<date>/*")

@@ -9,44 +9,45 @@ ms.component: bing-custom-search
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-brapel
-ms.openlocfilehash: 32644fe0cf0a6e1666d2d1ee6efb826bf753f001
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.openlocfilehash: ed00b75fa956d0197d3672d84b097f99ec3c35ec
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42814867"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46956390"
 ---
 # <a name="call-bing-custom-search-endpoint-c"></a>Wywołanie punktu końcowego usługi Bing Custom Search (C#)
 
-Ten przewodnik Szybki Start pokazano, jak żądanie wyniki wyszukiwania z wystąpienia wyszukiwania niestandardowego przy użyciu języka C# do wywoływania punktu końcowego usługi Bing Custom Search. 
+Ten przewodnik Szybki Start pokazano, jak żądanie wyniki wyszukiwania z wystąpienia wyszukiwania niestandardowego za pomocą języka C# wywołać punkt końcowy wyszukiwania niestandardowego Bing. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
--  Wystąpienie wyszukiwania niestandardowego gotowych do użycia. Zobacz [Tworzenie pierwszego wystąpienia wyszukiwania niestandardowego Bing](quick-start.md).
--  [.Net Core](https://www.microsoft.com/net/download/core) zainstalowane.
-- A [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account) z **interfejsy API wyszukiwania Bing**. [Bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search) jest wystarczająca na potrzeby tego przewodnika Szybki Start. Wymagany jest klucz dostępu podany przy wywołaniu metody Aktywuj bezpłatną wersję próbną lub klucz płatnej subskrypcji może używać z pulpitu nawigacyjnego platformy Azure.  
+Aby ukończyć ten przewodnik Szybki Start, musisz spełnić następujące warunki:
 
-  >[!NOTE]  
-  >Istniejących klientów wyszukiwania niestandardowego Bing, którzy mają klucz w wersji zapoznawczej aprowizowane w lub przed 15 października 2017 r. będzie można korzystać ze swoich kluczy do 30 listopada 2017 r. lub do momentu ich wyczerpano maksymalną liczbę zapytań dozwolone. Później muszą oni migrować do ogólnie dostępnej wersji na platformie Azure. 
- 
+- Wystąpienie wyszukiwania niestandardowego gotowych do użycia. Zobacz [Tworzenie pierwszego wystąpienia wyszukiwania niestandardowego Bing](quick-start.md).
+- [.Net Core](https://www.microsoft.com/net/download/core) zainstalowane.
+- Klucz subskrypcji. Klucz subskrypcji możesz uzyskać po aktywowaniu usługi [bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-custom-search), lub za pomocą klucza płatnej subskrypcji w pulpicie nawigacyjnym platformy Azure (zobacz [konta interfejsu API usług Cognitive Services](https://docs.microsoft.com/azure/cognitive-services/cognitive-services-apis-create-account)).    
+
+
 ## <a name="run-the-code"></a>Uruchamianie kodu
 
 Aby uruchomić ten przykład, wykonaj następujące kroki:
 
-1. Utwórz folder dla kodu.
-2. W wierszu polecenia lub terminalu przejdź do folderu, który został utworzony.
+1. Utwórz folder dla kodu.  
+  
+2. W wierszu polecenia lub terminalu przejdź do folderu, który został utworzony.  
+  
 3. Uruchom następujące polecenia:
     ```
     dotnet new console -o BingCustomSearch
     cd BingCustomSearch
     dotnet add package Newtonsoft.Json
     dotnet restore
-   ```
+    ```
+  
+4. Skopiuj następujący kod do pliku Program.cs. Zastąp **YOUR-SUBSCRIPTION-KEY** i **YOUR-CUSTOM-CONFIG-ID** klucz subskrypcji i konfiguracji identyfikatora.
 
-4. Skopiuj następujący kod do pliku Program.cs.
-5. Zastąp **YOUR-SUBSCRIPTION-KEY** i **YOUR-CUSTOM-CONFIG-ID** za pomocą identyfikatora klucza i konfiguracji.
-
-    ``` CSharp
+    ```csharp
     using System;
     using System.Net.Http;
     using System.Web;
@@ -118,13 +119,13 @@ Aby uruchomić ten przykład, wykonaj następujące kroki:
         }
     }
     ```
-6. Tworzenie aplikacji przy użyciu następującego polecenia. Zanotuj ścieżkę biblioteki dll, które odwołują się dane wyjściowe polecenia.
+6. Tworzenie aplikacji przy użyciu następującego polecenia. Zanotuj ścieżkę biblioteki DLL, które odwołują się dane wyjściowe polecenia.
 
     <pre>
     dotnet build 
     </pre>
     
-7. Uruchom aplikację za pomocą polecenia następujących, zastępując **ŚCIEŻKA danych wyjściowych** ze ścieżką odwołuje się krok kompilacji.
+7. Uruchom aplikację za pomocą polecenia następujących, zastępując **ŚCIEŻKA danych wyjściowych** z ścieżka biblioteki DLL, do którego odwołuje się krok 6.
 
     <pre>    
     dotnet **PATH TO OUTPUT**

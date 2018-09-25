@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/16/2017
 ms.author: monicar
-ms.openlocfilehash: b262f42fffdbfd00f0c57c987e36346957f0f25c
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: e62910cc760a200abba6d56e4fa1eb87973285ec
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35648823"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46963598"
 ---
 # <a name="microsoft-azure-glossary-a-dictionary-of-cloud-terminology-on-the-azure-platform"></a>Słownik programu Microsoft Azure: słownik terminologii chmury na platformie Azure
 
@@ -47,7 +47,7 @@ Zobacz [Zarządzanie dostępnością maszyn wirtualnych Windows](virtual-machine
 Jeden z dwóch [modeli wdrażania](resource-manager-deployment-model.md) służące do wdrażania zasobów na platformie Azure (nowy model jest usługi Azure Resource Manager). Niektórych usług platformy Azure obsługują tylko model wdrażania usługi Resource Manager, niektóre obsługują tylko klasycznego modelu wdrażania, a niektóre obsługują oba. Dokumentacja dla każdej usługi platformy Azure Określa modele obsługują.
 
 ## <a name="cli"></a>Interfejs wiersza polecenia platformy Azure (CLI)
-Interfejs wiersza polecenia, który może służyć do zarządzania usługami platformy Azure z Windows, macOS i Linux.  Niektóre usługi i funkcje mogą być zarządzane tylko za pomocą programu PowerShell lub interfejsu wiersza polecenia. Zobacz [wiersza polecenia platformy Azure 2.0](/cli/azure)
+Interfejs wiersza polecenia, który może służyć do zarządzania usługami platformy Azure z Windows, macOS i Linux.  Niektóre usługi i funkcje mogą być zarządzane tylko za pomocą programu PowerShell lub interfejsu wiersza polecenia. Zobacz [wiersza polecenia platformy Azure](/cli/azure)
 
 ## <a name="powershell"></a>Azure PowerShell
 Interfejs wiersza polecenia do zarządzania usługami platformy Azure za pomocą wiersza polecenia z komputerów z systemem Windows. Niektóre usługi i funkcje mogą być zarządzane tylko za pomocą programu PowerShell lub interfejsu wiersza polecenia.

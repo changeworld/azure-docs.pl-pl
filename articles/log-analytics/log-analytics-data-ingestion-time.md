@@ -11,23 +11,21 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/12/2018
+ms.date: 09/14/2018
 ms.author: bwren
-ms.openlocfilehash: 97cf5c06372d416037b875078809aebb7e633456
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: f40c8ed7eb6bfae958b3b57c4b7d525963ab9741
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542841"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46955261"
 ---
 # <a name="data-ingestion-time-in-log-analytics"></a>Czas wprowadzania danych w usłudze Log Analytics
-Usługa Azure Log Analytics to usługa danych dużej skali, która obsługuje tysiące klientów wysyłania terabajtów danych każdego miesiąca w tempie rosnącą. Są często zadawane pytania dotyczące czasu, jaki zajmuje dane staną się dostępne w usłudze Log Analytics po ich zebraniu. W tym artykule opisano różne czynniki, które wpływają na ten czas oczekiwania.
+Usługa Azure Log Analytics to usługa danych dużej skali w usłudze Azure Monitor, pełniącą tysiące klientów wysyłania terabajtów danych każdego miesiąca w tempie rosnącą. Są często zadawane pytania dotyczące czasu, jaki zajmuje dane staną się dostępne w usłudze Log Analytics po ich zebraniu. W tym artykule opisano różne czynniki, które wpływają na ten czas oczekiwania.
 
 ## <a name="typical-latency"></a>Typowy czas oczekiwania
 Opóźnienie odnosi się do danych jest tworzona w monitorowanym systemie czas i czas, który jest dostarczany poddać analizie w usłudze Log Analytics. Typowe opóźnienia w celu pozyskiwania danych w usłudze Log Analytics to od 2 do 5 minut. Określone opóźnienie dla dowolnych danych określonego różnią się w zależności od różnych czynników, które zostało opisane poniżej.
 
-## <a name="sla-for-log-analytics"></a>Umowa SLA dla usługi Log Analytics
-[Umowy poziomu usług (SLA) Log Analytics](https://azure.microsoft.com/support/legal/sla/log-analytics/v1_1/) prawne wiążącej umowy definiujący po Microsoft zwroty klientów, gdy usługa nie spełnia wymagań swoje cele. To nie jest ustalane na podstawie typowej wydajność systemu, ale jego najgorszym zanotowano potencjalnych sytuacji krytycznego.
 
 ## <a name="factors-affecting-latency"></a>Czynniki wpływające na opóźnienie
 Czas całkowity pozyskiwania dla określonego zestawu danych można podzielić na następujących kategoriach wysokiego poziomu. 

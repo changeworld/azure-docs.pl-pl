@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/29/2018
 ms.author: cynthn
-ms.openlocfilehash: 25773124fcd479489f5d2d544cc5b6e3b11e325a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 86bb231a4eb9468ccc92c182b099714950b2a81c
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301144"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46979447"
 ---
 # <a name="deploy-your-application-on-virtual-machine-scale-sets"></a>Wdrażanie aplikacji na zestawach skalowania maszyn wirtualnych
 Aby uruchamiać aplikacje na wystąpieniach maszyn wirtualnych w zestawie skalowania, musisz najpierw zainstalować składniki aplikacji i wymagane pliki. W tym artykule przedstawiono sposoby tworzenia niestandardowego obrazu maszyny Wirtualnej dla wystąpień w skalowania zestawu lub skryptów instalacji automatycznie są uruchamiane w istniejących wystąpieniach maszyn wirtualnych. Poznasz również sposób zarządzania aplikacji lub aktualizacji systemu operacyjnego w zestawie skalowania.
@@ -31,14 +31,14 @@ Korzystając z jednego z obrazów platformy Azure do tworzenia wystąpień w zes
 
 Aby ograniczyć Zarządzanie konfiguracją i raz, aby aprowizować maszynę Wirtualną, możesz utworzyć niestandardowego obrazu maszyny Wirtualnej, który jest gotowy do uruchomienia zaraz zostanie zainicjowane wystąpienie aplikacji w zestawie skalowania. Aby uzyskać więcej informacji na temat tworzenia i używania niestandardowego obrazu maszyny Wirtualnej o skali zestawu, zobacz następujące samouczki:
 
-- [Interfejs wiersza polecenia platformy Azure 2.0](tutorial-use-custom-image-cli.md)
+- [Interfejs wiersza polecenia platformy Azure](tutorial-use-custom-image-cli.md)
 - [Azure PowerShell](tutorial-use-custom-image-powershell.md)
 
 
 ## <a name="already-provisioned"></a>Instalowanie aplikacji przy użyciu rozszerzenia niestandardowego skryptu
 Rozszerzenie niestandardowego skryptu pobiera i wykonuje skrypty na maszynach wirtualnych platformy Azure. To rozszerzenie jest przydatne w przypadku konfiguracji po wdrożeniu, instalowania oprogramowania lub każdego innego zadania związanego z konfiguracją lub zarządzaniem. Skrypty można pobrać z usługi Azure Storage lub GitHub bądź można je dostarczyć do witryny Azure Portal w czasie wykonywania rozszerzenia. Aby uzyskać więcej informacji na temat tworzenia i używania niestandardowego obrazu maszyny Wirtualnej o skali zestawu, zobacz następujące samouczki:
 
-- [Interfejs wiersza polecenia platformy Azure 2.0](tutorial-install-apps-cli.md)
+- [Interfejs wiersza polecenia platformy Azure](tutorial-install-apps-cli.md)
 - [Azure PowerShell](tutorial-install-apps-powershell.md)
 - [Szablon usługi Azure Resource Manager](tutorial-install-apps-template.md)
 

@@ -12,27 +12,32 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 08/27/2018
+ms.topic: conceptual
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: jesakowi, justhu
 ms.custom: aaddev
-ms.openlocfilehash: 735c5a3645f5e2e0f31bac4d4b2f61d73dfe069e
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 93bc3db2b7cf3002efc93f1e8006c5362eddab9f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128783"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46959975"
 ---
-# <a name="permissions-in-azure-active-directory"></a>Uprawnienia w usłudze Azure Active Directory
+# <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Uprawnienia i zgody w punkcie końcowym usługi Azure Active Directory w wersji 1.0
 
-Usługa Azure Active Directory (Azure AD) szeroko wykorzystuje użycie uprawnień dla przepływów OAuth i OIDC (OpenID Connect). Po odebraniu przez aplikację tokenu dostępu od usługi Azure AD aplikacja uwzględnia oświadczenia z opisami uprawnień, które aplikacja ma w odniesieniu do określonego zasobu. Uprawnienia, znane również jako zakresy, ułatwiają autoryzację zasobu, ponieważ zasób musi jedynie sprawdzić, czy token zawiera odpowiednie uprawnienie do dowolnego interfejsu API wywoływanego przez aplikację. 
+[!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
+
+Usługa Azure Active Directory (Azure AD) szeroko wykorzystuje użycie uprawnień dla przepływów OAuth i OIDC (OpenID Connect). Po odebraniu przez aplikację tokenu dostępu od usługi Azure AD aplikacja uwzględnia oświadczenia z opisami uprawnień, które aplikacja ma w odniesieniu do określonego zasobu.
+
+*Uprawnienia*, znane również jako *zakresy*, ułatwić autoryzacji dla zasobu, ponieważ zasób musi się tylko do sprawdzenia, że token zawiera odpowiednie uprawnienia, niezależnie od interfejsu API to wywołanie aplikacji.
 
 ## <a name="types-of-permissions"></a>Typy uprawnień
 
-W usłudze Azure AD zdefiniowano dwa rodzaje uprawnień: 
-* **Uprawnienia delegowane** — są używane przez aplikacje, w których użytkownik jest obecnie zalogowany. W przypadku takich aplikacji zgodę na uprawnienia żądane przez aplikację może wyrazić użytkownik lub administrator. Podczas wywołań interfejsu API do aplikacji są delegowane uprawnienia do działania w roli zalogowanego użytkownika. W zależności od interfejsu API użytkownik może nie mieć możliwości wyrażenia bezpośrednio zgody w interfejsie i zamiast tego może [poprosić administratora o udzielenie „zgody administratora”.](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent)
-* **Uprawnienia aplikacji** — są używane przez aplikacje i nie wymagają zalogowanego użytkownika. Są to np. aplikacje działające jako usługi w tle lub demony. Uprawnienia aplikacji mogą być [nadane wyłącznie przez administratora](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant), ponieważ stanowią potężne narzędzia i umożliwiają dostęp do danych przekraczający granice użytkownika lub dotyczą danych, dostęp do których byłby w przeciwnym razie ograniczony do administratorów. 
+W usłudze Azure AD zdefiniowano dwa rodzaje uprawnień:
+
+* **Uprawnienia delegowane** — są używane przez aplikacje, w których użytkownik jest obecnie zalogowany. W przypadku takich aplikacji zgodę na uprawnienia żądane przez aplikację może wyrazić użytkownik lub administrator. Podczas wywołań interfejsu API do aplikacji są delegowane uprawnienia do działania w roli zalogowanego użytkownika. W zależności od interfejsu API, użytkownik może okazać się niemożliwe do wyrażenia zgody na interfejsie API bezpośrednio i zamiast tego będzie [wymagają administrator, aby zapewnić "zgoda administratora"](/azure/active-directory/develop/active-directory-devhowto-multi-tenant-overview#understanding-user-and-admin-consent).
+* **Uprawnienia aplikacji** — są używane przez aplikacje i nie wymagają zalogowanego użytkownika. Są to np. aplikacje działające jako usługi w tle lub demony. Uprawnienia aplikacji mogą być [nadane wyłącznie przez administratora](/azure/active-directory/develop/active-directory-v2-scopes#requesting-consent-for-an-entire-tenant), ponieważ stanowią potężne narzędzia i umożliwiają dostęp do danych przekraczający granice użytkownika lub dotyczą danych, dostęp do których byłby w przeciwnym razie ograniczony do administratorów.
 
 Czynne uprawnienia to uprawnienia, które aplikacja będzie posiadać podczas wysyłania żądań do interfejsu API. 
 

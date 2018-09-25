@@ -5,14 +5,14 @@ services: site-recovery
 author: rayne-wiselman
 ms.service: site-recovery
 ms.topic: conceptual
-ms.date: 09/03/2018
+ms.date: 09/20/2018
 ms.author: raynew
-ms.openlocfilehash: d42839bb744d3ed09feb482d09946ccee2f691e7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 39444b20dfefd947abb2f2bc00a9945398996dd0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44297404"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47040537"
 ---
 # <a name="contoso-migration-refactor-an-on-premises-app-to-an-azure-web-app-and-azure-sql-database"></a>Migracja Contoso: Refaktoryzacja lokalnych aplikacji z bazą danych Azure SQL i aplikacji sieci Web platformy Azure
 
@@ -57,7 +57,7 @@ Zespół chmury firmy Contoso ma przypięte dół cele tej migracji. Te cele zos
 **Aplikacja** | Aplikacji na platformie Azure będą obowiązywać tak ważne, ponieważ jest już dziś.<br/><br/> Powinien on te same możliwości wydajności, jak obecnie w środowisku programu VMWare<br/><br/> Zespół nie chcesz inwestować w aplikacji. Na razie Administratorzy zostanie przesunięty aplikacji bezpieczne w chmurze.<br/><br/> Zespół chce polegająca na wyłączeniu obsługi systemu Windows Server 2008 R2, na którym aktualnie jest uruchomiona aplikacja.<br/><br/> Zespół chce również na nowoczesnej platformie PaaS bazy danych, minimalizuje potrzebę zarządzania odbiegać od programu SQL Server 2008 R2.<br/><br/> Firma Contoso ma wykorzystywać swoich inwestycji w Licencjonowanie programu SQL Server i pakietem Software Assurance, jeśli jest to możliwe.<br/><br/> Ponadto firma Contoso chce ograniczyć pojedynczym punktem awarii w warstwie sieci web.
 **Ograniczenia** | Aplikacja składa się z aplikacji platformy ASP.NET i usługi WCF uruchomionych na tej samej maszyny Wirtualnej. Firma chce podzielić to na dwie aplikacje internetowe przy użyciu usługi Azure App Service. 
 **Azure** | Firma Contoso chce, aby przenieść aplikację na platformę Azure, ale nie ma zostać uruchomiony na maszynach wirtualnych. Firma Contoso chce korzystać z usług PaaS platformy Azure w przypadku usługi sieci web i danych. 
-**Metodyka DevOps** | Firma Contoso chce przenieść do modelu DevOps przy użyciu programu Visual Studio Team Services (VSTS) dla ich kompilacji i potoki wersji.
+**Metodyka DevOps** | Firma Contoso chce przenieść do modelu metodyki DevOps, używając DevOps platformy Azure dla swoich kompilacji i wydawania potoków.
 
 ## <a name="solution-design"></a>Projekt rozwiązania
 
@@ -80,7 +80,7 @@ Po przypięciu dół celami i wymaganiami, Contoso projektuje i przejrzyj rozwi�
     - Z pakietem Software Assurance Contoso mogą wymieniać istniejących licencji do korzystania z taryf rabatowych w usłudze SQL Database za pomocą korzyści użycia hybrydowego platformy Azure dla programu SQL Server. Może to zapewnić oszczędności nawet do 30%.
     - SQL Database oferuje pewną liczbę funkcji zabezpieczeń, takich jak zawsze zaszyfrowane dane dynamiczne maskowanie i wykrywanie zagrożeń zabezpieczeń poziomu wierszy.
 - W przypadku warstwy aplikacji sieci web firmy Contoso scrumowy zdecydował się korzystać z usługi Azure App Service. Ta usługa PaaS umożliwia, aby wdrożyć aplikację za pomocą tylko kilku zmian w konfiguracji. Contoso wprowadzić zmiany, przy użyciu programu Visual Studio i wdrażanie dwóch aplikacji sieci web. Jeden dla witryny sieci Web i jeden dla usługi WCF.
-- Aby spełnić wymagania dla potoku metodyki DevOps, Contoso został wybrany do użycia usługi VSTS. One wdrażana usługi VSTS dla zarządzania kodu źródłowego (SCM) z repozytoriami Git. Zautomatyzowane kompilacje i wydania będzie służyć do tworzenia kodu, a następnie wdrożyć ją w usłudze Azure Web Apps.
+- Aby spełnić wymagania dla potoku metodyki DevOps, Contoso został wybrany za pomocą DevOps platformy Azure do zarządzania kodu źródłowego (SCM) repozytoria Git. Zautomatyzowane kompilacje i wydania będzie służyć do tworzenia kodu, a następnie wdrożyć ją w usłudze Azure Web Apps.
   
 ### <a name="solution-review"></a>Przegląd rozwiązania
 Contoso ocenia swoich konstrukcjach proponowanych przez zestawiania listę zalet i wad.
@@ -109,6 +109,7 @@ Contoso ocenia swoich konstrukcjach proponowanych przez zestawiania listę zalet
 [Database Migration Assistant (DMA)](https://docs.microsoft.com/sql/dma/dma-overview?view=ssdt-18vs2017) | Contoso użyje DMA do oceny i wykrycia problemów ze zgodnością, które mogą mieć wpływ na ich funkcje bazy danych na platformie Azure. Program DMA ocenia równoważność funkcji między źródłami SQL i elementy docelowe i zaleca wydajności i niezawodności. | Narzędzie to można pobrać bezpłatnie.
 [Azure SQL Database](https://azure.microsoft.com/services/sql-database/) | Inteligentna, w pełni zarządzana usługa relacyjnej w chmurze bazy danych. | Koszt na podstawie funkcji, przepływności i rozmiaru. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/sql-database/managed/).
 [Usługa Azure App Services — aplikacje sieci Web](https://docs.microsoft.com/azure/app-service/app-service-web-overview) | Tworzenie zaawansowanych aplikacji chmurowych przy użyciu w pełni zarządzana platforma | Koszt oparte na czas trwania rozmiar, lokalizację i użycia. [Dowiedz się więcej](https://azure.microsoft.com/pricing/details/app-service/windows/).
+[Usługa Azure DevOps](https://docs.microsoft.com/azure/azure-portal/tutorial-azureportal-devops) | Zapewnia ciągłą integrację i potok ciągłego wdrażania (CI/CD) do tworzenia aplikacji. Potok rozpoczyna się od repozytorium Git na potrzeby zarządzania kodu aplikacji, system kompilacji na potrzeby tworzenia pakietów i innych artefaktów kompilacji i system zarządzania wydaniami, aby wdrożyć zmiany w deweloperów, testerów i środowisk produkcyjnych. 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -128,9 +129,9 @@ Poniżej przedstawiono, jak Uruchom migrację w Contoso:
 > * **Krok 1: Aprowizowanie wystąpienia bazy danych SQL na platformie Azure**: Contoso Inicjuje obsługę wystąpienie serwera SQL na platformie Azure. Po aplikacji witryny sieci Web jest Migrowanie na platformę Azure, aplikacji sieci web WCF service będzie wskazywać tego wystąpienia.
 > * **Krok 2: Migrację bazy danych za pomocą programu DMA**: Contoso przeprowadza migrację bazy danych aplikacji przy użyciu Asystenta migracji bazy danych.
 > * **Krok 3: Aprowizowanie Web Apps**: Contoso przepisy dwóch aplikacji sieci web.
-> * **Krok 4: Konfigurowanie usługi VSTS**: Contoso tworzy nowy projekt usługi VSTS i importuje repozytorium Git.
+> * **Krok 4: Konfigurowanie usługi Azure DevOps**: Contoso tworzy nowy projekt DevOps platformy Azure i importuje repozytorium Git.
 > * **Krok 5: Konfiguracja parametrów połączenia**: Contoso konfiguruje parametry połączenia tak, aby aplikacji sieci web warstwy sieci web, aplikacji sieci web usługi WCF i wystąpieniem serwera SQL może komunikować się.
-> * **Krok 6: Konfigurowanie kompilacji i wydawania potoki w usłudze VSTS**: W ostatnim kroku Contoso konfiguruje kompilacji i wydania potoków do utworzenia aplikacji i wdraża je do dwóch oddzielnych aplikacji sieci Web platformy Azure.
+> * **Krok 6: Konfigurowanie kompilacji i wydawania potoki**: W ostatnim kroku Contoso konfiguruje kompilacji i wydania potoków do utworzenia aplikacji i wdraża je do dwóch oddzielnych aplikacji sieci Web platformy Azure.
 
 
 ## <a name="step-1-provision-an-azure-sql-database"></a>Krok 1: Aprowizowanie bazy danych Azure SQL
@@ -236,26 +237,26 @@ Z bazą danych migracji Administratorzy Contoso obecnie uaktywnienie dwóch apli
 4. Po tych czynności przejdź na adres aplikacji w celu sprawdzenia, czy zostały one pomyślnie utworzony.
 
 
-## <a name="step-4-set-up-vsts"></a>Krok 4: Konfigurowanie usługi VSTS
+## <a name="step-4-set-up-azure-devops"></a>Krok 4: Konfigurowanie DevOps platformy Azure
 
 
-Firma Contoso potrzebuje do tworzenia infrastruktury DevOps i potoki pod kątem aplikacji.  Aby to zrobić, Administratorzy Contoso Tworzenie nowego projektu usługi VSTS, zaimportuj kod, ustaw kompilację i potoki wersji.
+Firma Contoso potrzebuje do tworzenia infrastruktury DevOps i potoki pod kątem aplikacji.  Aby to zrobić, Administratorzy Contoso Utwórz nowy projekt DevOps, zaimportuj kod, ustaw kompilację i potoki wersji.
 
-1.   W ramach konta usługi VSTS firmy Contoso tworzą nowy projekt (**ContosoSmartHotelRefactor**) i wybierz **Git** kontroli wersji.
+1.   W ramach konta Contoso DevOps platformy Azure tworzą nowy projekt (**ContosoSmartHotelRefactor**) i wybierz **Git** kontroli wersji.
 
     ![Nowy projekt](./media/contoso-migration-refactor-web-app-sql/vsts1.png)
-
 2. Zaimportowali repozytorium Git, zawierający kod aplikacji. Jest on [publicznego repozytorium](https://github.com/Microsoft/SmartHotel360-internal-booking-apps) i można go pobrać.
 
     ![Pobieranie kodu aplikacji](./media/contoso-migration-refactor-web-app-sql/vsts2.png)
-
+    
 3. Po zaimportowaniu kod będzie łączenie programu Visual Studio do repozytorium i klonowanie kodu za pomocą programu Team Explorer.
 
-    ![Połączyć się z repozytorium](./media/contoso-migration-refactor-web-app-sql/vsts3.png)
+    ![Połącz się z projektem](./media/contoso-migration-refactor-web-app-sql/devops1.png)
 
 4. Po repozytorium zostanie sklonowany maszyny dewelopera, ich otworzyć plik rozwiązania dla aplikacji. Usługi wcf i aplikacji sieci web każda z nich ma oddzielić projektu w pliku.
 
     ![Plik rozwiązania](./media/contoso-migration-refactor-web-app-sql/vsts4.png)
+    
 
 ## <a name="step-5-configure-connection-strings"></a>Krok 5: Konfiguracja parametrów połączenia
 
@@ -277,15 +278,15 @@ Administratorzy firmy Contoso, musisz upewnić się, aplikacje sieci web i bazy 
 5. Po zmiany w kodzie, Administratorzy muszą zatwierdzić zmiany. Za pomocą programu Team Explorer w programie Visual Studio, one commmit i synchronizacji.
 
 
-## <a name="step-6-set-up-build-and-release-pipelines-in-vsts"></a>Krok 6: Konfigurowanie kompilacji i wydawania potoki w usłudze VSTS
+## <a name="step-6-set-up-build-and-release-pipelines-in-azure-devops"></a>Krok 6: Konfigurowanie kompilacji i wydawania potoków w DevOps platformy Azure
 
-Administratorzy firmy Contoso teraz skonfigurować usługi VSTS do wykonywania kompilacji i procesu tworzenia wersji do akcji, metodykę DevOps.
+Administratorzy firmy Contoso teraz skonfigurować DevOps platformy Azure, aby wykonać kompilację i procesu tworzenia wersji.
 
-1. W usłudze VSTS, kliknij przycisk **kompilowania i wydawania** > **nowy potok**.
+1. W metodyce DevOps platformy Azure, kliknij przycisk **kompilowania i wydawania** > **nowy potok**.
 
     ![Nowy potok](./media/contoso-migration-refactor-web-app-sql/pipeline1.png)
 
-2. Wybierają **Git programu VSTS** i odpowiedniego repozytorium.
+2. Wybierają **Azure repozytoriów Git** i odpowiedniego repozytorium.
 
     ![Git i repozytorium](./media/contoso-migration-refactor-web-app-sql/pipeline2.png)
 
@@ -293,15 +294,15 @@ Administratorzy firmy Contoso teraz skonfigurować usługi VSTS do wykonywania k
 
      ![Szablon platformy ASP.NET](./media/contoso-migration-refactor-web-app-sql/pipeline3.png)
     
-4. Określ nazwę ContosoSmartHotelRefactor — ASP.NET — ciągłej integracji kompilacji i kliknij przycisk **Zapisz k & Olejką**.
+4. Nazwa **ContosoSmartHotelRefactor — ASP.NET — ciągła Integracja** jest używany dla kompilacji. Polecenie **Zapisz k & Olejką**.
 
      ![Zapisz i kolejki](./media/contoso-migration-refactor-web-app-sql/pipeline4.png)
 
-5. Dotyczącego ich pierwszym kompilacji. Kliknięciu numer kompilacji, aby obejrzeć ten proces. Po zakończeniu mogą zobaczyć opinii procesu.
+5. Dotyczącego pierwsza kompilacja. Kliknięciu numer kompilacji, aby obejrzeć ten proces. Po zakończeniu ich Zobacz opinie proces i kliknij przycisk **artefaktów** Aby przejrzeć wyniki kompilacji.
 
-    ![Opinia](./media/contoso-migration-refactor-web-app-sql/pipeline5.png)
+    ![Przegląd](./media/contoso-migration-refactor-web-app-sql/pipeline5.png)
 
-6. Po pomyślnej kompilacji, a następnie otwórz kompilacji i kliknij polecenie **artefaktów**. Ten folder zawiera wyniki kompilacji
+6. Folder **porzucić** zawiera wyniki kompilacji.
 
     - Pliki zip dwa są pakiety zawierające aplikacje.
     - Te pliki są używane w potoku wydań we wdrożeniach w usłudze Azure Web Apps
@@ -316,11 +317,11 @@ Administratorzy firmy Contoso teraz skonfigurować usługi VSTS do wykonywania k
 
     ![Szablon usługi Azure App Service](./media/contoso-migration-refactor-web-app-sql/pipeline8.png)
 
-9. Ich nazwy potoku tworzenia wersji **ContosoSmartHotelRefactor**i określ nazwę aplikacji sieci web WCF (SHWCF EUS2) Nazwa środowiska.
+9. Ich nazwy potoku tworzenia wersji **ContosoSmartHotel360Refactor**i określ nazwę aplikacji sieci web WCF (SHWCF EUS2) **etapu** nazwy.
 
     ![Środowisko](./media/contoso-migration-refactor-web-app-sql/pipeline9.png)
 
-10. W tym środowisku, kliknij przycisk **fazy 1, 1 zadanie** Aby skonfigurować wdrożenie usługi WCF.
+10. W obszarze etapy, kliknij przycisk **zadanie 1, 1 zadanie** Aby skonfigurować wdrożenie usługi WCF.
 
     ![Wdrażanie usługi WCF](./media/contoso-migration-refactor-web-app-sql/pipeline10.png)
 
@@ -328,7 +329,7 @@ Administratorzy firmy Contoso teraz skonfigurować usługi VSTS do wykonywania k
 
      ![Wybierz usługi app service](./media/contoso-migration-refactor-web-app-sql/pipeline11.png)
 
-12. W **artefaktów**, wybierają **+ Dodaj artefakt**, a następnie wybierz pozycję tworzenia za pomocą **ContosoSmarthotelRefactor — ASP.NET — ciągła Integracja** potoku.
+12. W potoku > **artefaktów**, wybierają **+ Dodaj artefakt**, a następnie wybierz pozycję tworzenia za pomocą **ContosoSmarthotel360Refactor** potoku.
 
      ![Kompilacja](./media/contoso-migration-refactor-web-app-sql/pipeline12.png)
 
@@ -336,11 +337,11 @@ Administratorzy firmy Contoso teraz skonfigurować usługi VSTS do wykonywania k
 
      ![Błyskawicy](./media/contoso-migration-refactor-web-app-sql/pipeline13.png)
 
-16. Ponadto należy pamiętać, że wyzwalacz ciągłego wdrażania, powinien być ustawiony na **włączone**.
+16. Wyzwalacz ciągłego wdrażania, powinien być ustawiony na **włączone**.
 
    ![Ciągłe wdrażanie włączone](./media/contoso-migration-refactor-web-app-sql/pipeline14.png) 
 
-17. Teraz kliknij aby **wdrożenia usługi Azure App Service**.
+17. Teraz, ich przenieść z powrotem do zadania etap 1 I zadań i kliknij przycisk **wdrożenia usługi Azure App Service**.
 
     ![Wdrażanie usługi app service](./media/contoso-migration-refactor-web-app-sql/pipeline15.png)
 
@@ -348,7 +349,7 @@ Administratorzy firmy Contoso teraz skonfigurować usługi VSTS do wykonywania k
 
     ![Zapisz WCF](./media/contoso-migration-refactor-web-app-sql/pipeline16.png)
 
-19. Polecenie **potoku** >**+ Dodaj**, aby dodać środowiska na potrzeby **SHWEB EUS2**, wybierając inne wdrożenie w usłudze Azure App Service.
+19. Polecenie **potoku** > **etapów** **+ Dodaj**, aby dodać środowiska na potrzeby **SHWEB EUS2**. Użytkownik wybrać inne wdrożenie w usłudze Azure App Service.
 
     ![Dodanie środowiska](./media/contoso-migration-refactor-web-app-sql/pipeline17.png)
 
@@ -368,7 +369,7 @@ Administratorzy firmy Contoso teraz skonfigurować usługi VSTS do wykonywania k
 
     ![Zapisz potoku](./media/contoso-migration-refactor-web-app-sql/pipeline21.png)
 
-24. Administratorzy firmy Contoso można wykonać kompilacji i wersji procesie potoku z usługi VSTS. Po zakończeniu kompilacji, rozpocznie się wydania.
+24. Administratorzy firmy Contoso można postępuj zgodnie z kompilacji i wydania procesie potoku z DevOps platformy Azure. Po zakończeniu kompilacji, rozpocznie się wydania.
 
     ![Kompilowania i wydawania aplikacji](./media/contoso-migration-refactor-web-app-sql/pipeline22.png)
 

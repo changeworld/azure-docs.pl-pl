@@ -1,77 +1,77 @@
 ---
-title: Konto usługi Google Cloud Platform połączyć z usługą Azure koszt Management | Dokumentacja firmy Microsoft
-description: Połącz konta usługi Google Cloud Platform, aby wyświetlić kosztów i repots danych użycia w kosztów zarządzania.
+title: Połącz konto Google Cloud Platform do rozwiązania Cloudyn na platformie Azure | Dokumentacja firmy Microsoft
+description: Połącz konto Google Cloud Platform, aby wyświetlić kosztów i użycia danych w raportach usługi Cloudyn.
 services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 06/07/2018
+ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: d4b906bd966da66659d23b935f7dbbd44b33899a
-ms.sourcegitcommit: 6f6d073930203ec977f5c283358a19a2f39872af
+ms.openlocfilehash: 09035146fe3211f9fc46d3ad51326a6e76921b7d
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/11/2018
-ms.locfileid: "35296445"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46977302"
 ---
-# <a name="connect-a-google-cloud-platform-account"></a>Połącz z kontem usługi Google Cloud Platform
+# <a name="connect-a-google-cloud-platform-account"></a>Nawiązać połączenie z kontem Google Cloud Platform
 
-Możesz połączyć istniejącego konta usługi Google Cloud Platform do usługi Azure Management kosztów. Po nawiązaniu połączenia koszt zarządzania kontem kosztów i dane użycia jest dostępne w raportach kosztów zarządzania. Ten artykuł pomaga skonfigurować i Połącz konto Google z kosztów zarządzania.
+Do rozwiązania Cloudyn można połączyć z istniejącym kontem usługi Google Cloud Platform. Po połączeniu konta platformy Cloudyn dane kosztów i użycia są dostępne w raportach usługi Cloudyn. Ten artykuł pomaga skonfigurować i połączyć z kontem Google z usługą Cloudyn.
 
 ## <a name="collect-project-information"></a>Zbieranie informacji o projekcie
 
-Należy rozpocząć od zbieranie informacji o projekcie.
+Należy rozpocząć od zbierania informacji o projekcie.
 
-1. Zaloguj się do konsoli usługi Google Cloud Platform pod adresem [ https://console.cloud.google.com ](https://console.cloud.google.com).
-2. Przejrzyj informacje projektu do których chcesz dołączyć kosztów zarządzania i Uwaga **Nazwa projektu** i **identyfikator projektu**. Zachowaj informacje przydatne do wykonania kolejnych kroków.  
-    ![Konsola usługi Google Cloud Platform](./media/connect-google-account/gcp-console01.png)
-3. Jeśli rozliczeń nie jest włączone i połączone z projektu, należy utworzyć konta rozliczeniowego. Aby uzyskać więcej informacji, zobacz [Utwórz nowe konto rozliczeniowe](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create\_a\_new\_billing\_account).
+1. Zaloguj się do konsoli usługi Google Cloud Platform na [ https://console.cloud.google.com ](https://console.cloud.google.com).
+2. Przejrzyj informacje o projekcie, który chcesz dołączyć do rozwiązania Cloudyn i zanotuj **Nazwa projektu** i **identyfikator projektu**. Zachowaj informacje przydatne do wykonania kolejnych kroków.  
+    ![Konsolę Google Cloud Platform](./media/connect-google-account/gcp-console01.png)
+3. Jeśli rozliczeń nie jest włączone i połączone z projektem, należy utworzyć konta rozliczeniowego. Aby uzyskać więcej informacji, zobacz [Utwórz nowe konto rozliczeniowe](https://cloud.google.com/billing/docs/how-to/manage-billing-account#create\_a\_new\_billing\_account).
 
 ## <a name="enable-storage-bucket-billing-export"></a>Włącz eksportowanie rozliczeń zasobnika magazynu
 
-Kosztów zarządzania pobiera programu Google rozliczeń danych z zasobnika magazynu. Zachowaj **nazwa pakietu** i **prefiks raport** informacje przydatne do późniejszego użytku podczas rejestracji kosztów zarządzania.
+Cloudyn pobiera Twoich danych rozliczeniowych Google z zasobnika magazynu. Zachowaj **Nazwa zasobnika** i **przedrostek raportu** informacji do późniejszego użycia podczas rejestracji rozwiązania Cloudyn.
 
-Przy użyciu usługi Google Cloud magazynu do przechowywania raportów użycia wiąże się z minimalnym opłat. Aby uzyskać więcej informacji, zobacz [cennik magazynu w chmurze](https://cloud.google.com/storage/pricing).
+Za pomocą usłudze Google Cloud Storage do przechowywania raportów użycia spowoduje naliczenie opłaty minimalnej. Aby uzyskać więcej informacji, zobacz [cennik magazynu w chmurze](https://cloud.google.com/storage/pricing).
 
-1. Jeśli rozliczeń Eksport do pliku nie jest włączone, wykonaj instrukcje w [włączania rozliczeń Eksport do pliku](https://cloud.google.com/billing/docs/how-to/export-data-file#how_to_enable_billing_export_to_a_file). Można użyć rozliczeniowego JSON lub CSV format eksportu.
-2. W przeciwnym razie przejdź w konsoli usługi Google Cloud Platform do **rozliczeń** > **eksportu rozliczeń**. Należy zwrócić uwagę rozliczeniowego **nazwa pakietu** i **prefiks raport**.  
-    ![Eksport rozliczeń](./media/connect-google-account/billing-export.png)
+1. Jeśli nie włączono rozliczeń Eksport do pliku, postępuj zgodnie z instrukcjami w artykule [włączania rozliczeń Eksport do pliku](https://cloud.google.com/billing/docs/how-to/export-data-file#how_to_enable_billing_export_to_a_file). Można użyć JSON lub CSV rozliczeń format eksportu.
+2. W przeciwnym razie w konsoli usługi Google Cloud Platform, przejdź do **rozliczeń** > **eksportu rozliczeń**. Należy pamiętać, rozliczeniami **Nazwa zasobnika** i **przedrostek raportu**.  
+    ![Eksportowanie rozliczeń](./media/connect-google-account/billing-export.png)
 
-## <a name="enable-google-cloud-platform-apis"></a>Włącz interfejsy API programu Google Cloud Platform
+## <a name="enable-google-cloud-platform-apis"></a>Włącz interfejsy API platformy Google Cloud
 
-Aby zebrać informacje o użyciu i zasobów, kosztów wymagania w zakresie zarządzania Google Cloud Platform API włączone:
+Aby zebrać informacje użycia i zasobów, Cloudyn musi następujące Google Cloud Platform interfejsy API włączone:
 
 - BigQuery interfejsu API
 - Google Cloud SQL
-- Magazyn danych usługi Google Cloud interfejsu API
-- Magazyn w chmurze Google
-- Magazyn w chmurze Google JSON API
-- Interfejs API aparatu obliczeń Google
+- Usługa Google Cloud Datastore interfejsu API
+- Usługa Google Cloud Storage
+- Interfejsu API JSON usługi Google Cloud Storage
+- Google Compute Engine interfejsu API
 
-### <a name="enable-or-verify-apis"></a>Włączanie lub sprawdź interfejsów API
+### <a name="enable-or-verify-apis"></a>Włącz lub upewnij się, interfejsów API
 
-1. W konsoli usługi Google Cloud Platform wybierz projekt, który chcesz zarejestrować w usłudze zarządzania kosztów.
+1. W konsoli usługi Google Cloud Platform wybierz projekt, który ma zostać zarejestrowany w rozwiązaniu cloudyn.
 2. Przejdź do **interfejsów API i usługi** > **biblioteki**.
-3. Wyszukiwania można używać, aby znaleźć każdego wymienionego powyżej interfejsu API.
-4. Dla każdego interfejsu API, upewnij się, że **interfejsu API włączone** jest wyświetlany. W przeciwnym razie kliknij przycisk **włączyć**.
+3. Użyj funkcji wyszukiwania można znaleźć każdą wcześniej wymienione interfejsu API.
+4. Dla każdego interfejsu API upewnij się, że **włączony interfejs API** jest wyświetlany. W przeciwnym razie kliknij przycisk **Włącz**.
 
-## <a name="add-a-google-cloud-account-to-cost-management"></a>Dodaj konto Google Cloud do zarządzania koszt
+## <a name="add-a-google-cloud-account-to-cloudyn"></a>Dodawanie konta usługi Google Cloud do rozwiązania Cloudyn
 
-1. Otwórz Cloudyn portal z portalu Azure lub przejdź do [ https://azure.cloudyn.com ](https://azure.cloudyn.com/) i zaloguj się.
-2. Kliknij przycisk **ustawienia** (symbol koło zębate), a następnie wybierz **kont chmury**.
-3. W **Zarządzanie kontami**, wybierz pozycję **kont Google** a następnie kliknij pozycję **Dodaj nowy +**.
-4. W **nazwa konta Google**, wprowadź adres e-mail dla konta rozliczeniowego, a następnie kliknij przycisk **dalej**.
-5. W oknie dialogowym uwierzytelniania Google, wybierz lub wprowadź konto Google, a następnie **Zezwalaj** cloudyn.com dostęp do Twojego konta.
-6. Dodaj informacje o projekcie żądania była poprzedniej zauważyć. Obejmują one **identyfikator projektu**, **projektu** nazwa **rozliczeń** nazwa pakietu i **rozliczeń pliku** raport prefiksu, a następnie kliknij przycisk  **Zapisz**.  
-    ![Dodawanie projektu Google](./media/connect-google-account/add-project.png)
+1. Otwórz Cloudyn portal z witryny Azure portal lub przejdź do [ https://azure.cloudyn.com ](https://azure.cloudyn.com/) i zaloguj się.
+2. Kliknij przycisk **ustawienia** (symbol koła zębatego), a następnie wybierz **kont w chmurze**.
+3. W **Zarządzanie kontami**, wybierz opcję **kont Google** kartę, a następnie kliknij przycisk **Dodaj nowe +**.
+4. W **nazwa konta Google**, wprowadź adres e-mail konta rozliczeniowego, a następnie kliknij przycisk **dalej**.
+5. W oknie dialogowym uwierzytelniania Google, wybierz lub wprowadź konto Google i następnie **Zezwalaj** cloudyn.com dostęp do Twojego konta.
+6. Dodaj informacje o projekcie żądania zauważyć, że mamy poprzedniego. Obejmują one **identyfikator projektu**, **projektu** nazwy **rozliczeń** Nazwa zasobnika i **rozliczeń pliku** prefiks raportu, a następnie kliknij przycisk  **Zapisz**.  
+    ![Dodaj projekt Google](./media/connect-google-account/add-project.png)
 
-Konto Google pojawi się na liście kont i powinny przekazać komunikat **uwierzytelniany**. W obszarze, swoją nazwę projektu Google i identyfikator powinien się i mające zielony znacznik wyboru. Stan konta zostanie wyświetlony komunikat **Ukończono**.
+Konto Google, który pojawia się na liście kont i powinna być widoczna nazwa **uwierzytelniony**. Znajdujący się w nim swoją nazwę projektu Google i identyfikator należy pojawiają się i ma zielony znacznik wyboru. Stan konta powinna być widoczna nazwa **Ukończono**.
 
-W ciągu kilku godzin koszt zarządzania raporty zawierają informacje kosztów i użyciu Google.
+W ciągu kilku godzin Cloudyn raporty zawierają informacje dotyczące kosztów i użycia Google.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Aby dowiedzieć się więcej na temat usługi Azure koszt zarządzania, w dalszym ciągu [Przejrzyj użycia i koszty](./tutorial-review-usage.md) samouczka kosztów zarządzania.
+- Aby dowiedzieć się więcej na temat platformy Cloudyn, przejdź do [przeglądanie użycia i kosztów](./tutorial-review-usage.md) samouczek dotyczący platformy Cloudyn.

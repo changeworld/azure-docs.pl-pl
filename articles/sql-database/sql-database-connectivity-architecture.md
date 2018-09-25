@@ -2,19 +2,22 @@
 title: Architektura łączności usługi Azure SQL Database | Dokumentacja firmy Microsoft
 description: W tym dokumencie wyjaśniono Azure SQLDB architektura łączności z w obrębie platformy Azure lub z spoza platformy Azure.
 services: sql-database
-author: DhruvMsft
-manager: craigg
 ms.service: sql-database
-ms.custom: DBs & servers
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 01/24/2018
+author: DhruvMsft
 ms.author: dhruv
-ms.openlocfilehash: 6066462d0a7f31698745275c3c6d65c4e09d9cc5
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 01/24/2018
+ms.openlocfilehash: 66f558db713ab951864fe694f27f2e60d52e875a
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364147"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47064150"
 ---
 # <a name="azure-sql-database-connectivity-architecture"></a>Architektura łączności bazy danych Azure SQL 
 
@@ -163,10 +166,10 @@ $body = @{properties=@{connectionType=$connectionType}} | ConvertTo-Json
 Invoke-RestMethod -Uri "https://management.azure.com/subscriptions/$subscriptionId/resourceGroups/$resourceGroupName/providers/Microsoft.Sql/servers/$serverName/connectionPolicies/Default?api-version=2014-04-01-preview" -Method PUT -Headers $authHeader -Body $body -ContentType "application/json"
 ```
 
-## <a name="script-to-change-connection-settings-via-azure-cli-20"></a>Skrypt, aby zmienić ustawienia połączenia za pośrednictwem interfejsu wiersza polecenia platformy Azure w wersji 2.0
+## <a name="script-to-change-connection-settings-via-azure-cli"></a>Skrypt, aby zmienić ustawienia połączenia za pośrednictwem wiersza polecenia platformy Azure
 
 > [!IMPORTANT]
-> Ten skrypt wymaga [interfejsu wiersza polecenia platformy Azure w wersji 2.0](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
+> Ten skrypt wymaga [wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest).
 >
 
 Poniższy skrypt interfejsu wiersza polecenia pokazuje, jak zmienić zasady połączenia.

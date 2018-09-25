@@ -1,6 +1,6 @@
 ---
-title: Tworzenie kompletnego środowiska systemu Linux za pomocą interfejsu wiersza polecenia platformy Azure 1.0 | Dokumentacja firmy Microsoft
-description: Utwórz magazyn, maszyny Wirtualnej z systemem Linux, sieci wirtualnej i podsieci, modułu równoważenia obciążenia, kartę Sieciową, publiczny adres IP i sieciową grupę zabezpieczeń, wszystkie od podstaw przy użyciu interfejsu wiersza polecenia platformy Azure w wersji 1.0.
+title: Tworzenie kompletnego środowiska systemu Linux za pomocą wiersza polecenia platformy Azure Classic | Dokumentacja firmy Microsoft
+description: Tworzenie magazynu, Maszynę wirtualną systemu Linux, sieci wirtualnej i podsieci, modułu równoważenia obciążenia, kartę Sieciową, publiczny adres IP i sieciową grupę zabezpieczeń, wszystkie od podstaw przy użyciu klasycznego wiersza polecenia platformy Azure.
 services: virtual-machines-linux
 documentationcenter: virtual-machines
 author: cynthn
@@ -15,14 +15,14 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
 ms.date: 02/09/2017
 ms.author: cynthn
-ms.openlocfilehash: 1fb5542af77fbb584effca24a74b9e233359cf0e
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: 560d1c55b159ed817c0b080171862c28ebe73f3e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37932348"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46952804"
 ---
-# <a name="create-a-complete-linux-environment-with-the-azure-cli-10"></a>Tworzenie kompletnego środowiska systemu Linux za pomocą interfejsu wiersza polecenia platformy Azure w wersji 1.0
+# <a name="create-a-complete-linux-environment-with-the-azure-classic-cli"></a>Tworzenie kompletnego środowiska systemu Linux za pomocą klasycznego wiersza polecenia platformy Azure
 W tym artykule firma Microsoft tworzy prostą sieć przy użyciu modułu równoważenia obciążenia i pary maszyn wirtualnych, które są przydatne do tworzenia i przetwarzania proste. Części omówimy proces polecenia przez polecenie, dopóki nie uzyskasz dwa działa, bezpieczne maszyn wirtualnych systemu Linux do których możesz połączyć z dowolnego miejsca w Internecie. Następnie możesz przejść do bardziej złożonych sieci i środowisk.
 
 Po drodze poznasz hierarchii zależności, zapewnia modelu wdrażania usługi Resource Manager i o ile włączenie go zawiera. Gdy zobaczysz, jak zbudowane jest systemu, można ponownie utworzyć jej znacznie szybciej za pomocą [szablonów usługi Azure Resource Manager](../../resource-group-authoring-templates.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json). Ponadto po dowiesz się, jak części środowiska współdziałają ze sobą, tworzenie szablonów, aby je zautomatyzować staje się łatwiejsze.
@@ -33,20 +33,20 @@ Po drodze poznasz hierarchii zależności, zapewnia modelu wdrażania usługi Re
 * Moduł równoważenia obciążenia z regułą równoważenia obciążenia na porcie 80.
 * Reguły sieciowej grupy zabezpieczeń (NSG) do ochrony maszyny Wirtualnej z niepożądanym ruchem.
 
-Do utworzenia tego środowiska niestandardowego, potrzebujesz najnowszej [interfejsu wiersza polecenia platformy Azure w wersji 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) w trybie Menedżera zasobów (`azure config mode arm`). Należy również narzędzia analizy JSON. W tym przykładzie użyto [jq](https://stedolan.github.io/jq/).
+Do utworzenia tego środowiska niestandardowego, potrzebujesz najnowszej [klasyczny interfejs wiersza polecenia platformy Azure](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) w trybie Menedżera zasobów (`azure config mode arm`). Należy również narzędzia analizy JSON. W tym przykładzie użyto [jq](https://stedolan.github.io/jq/).
 
 
 ## <a name="cli-versions-to-complete-the-task"></a>Wersje interfejsu wiersza polecenia umożliwiające wykonanie zadania
 Zadanie można wykonać przy użyciu jednej z następujących wersji interfejsu wiersza polecenia:
 
-- [Azure CLI 1.0](#quick-commands) — Nasz interfejs wiersza polecenia dla klasycznego i zasobów zarządzania modeli wdrażania (w tym artykule)
-- [Interfejs wiersza polecenia platformy Azure w wersji 2.0](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) — nasz interfejs wiersza polecenia nowej generacji dla modelu wdrażania na potrzeby zarządzania zasobami
+- [Klasyczny interfejs wiersza polecenia Azure](#quick-commands) — Nasz interfejs wiersza polecenia dla klasycznego i zasobów zarządzania modeli wdrażania (w tym artykule)
+- [Interfejs wiersza polecenia Azure](create-cli-complete.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) — naszej nowej generacji interfejsu wiersza polecenia dla modelu wdrażania usługi resource management
 
 
 ## <a name="quick-commands"></a>Szybkie polecenia
 Jeśli chcesz szybko wykonać zadania w poniższej sekcji opisano szczegółowo base polecenia do przekazania Maszynę wirtualną na platformie Azure. Bardziej szczegółowe informacje i kontekst dla każdego kroku można znaleźć w pozostałej części dokumentu, uruchamianie [tutaj](#detailed-walkthrough).
 
-Upewnij się, że masz [interfejsu wiersza polecenia platformy Azure w wersji 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) zalogowany i korzystania z trybu usługi Resource Manager:
+Upewnij się, że masz [wiersza polecenia platformy Azure Classic](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) zalogowany i korzystania z trybu usługi Resource Manager:
 
 ```azurecli
 azure config mode arm
@@ -270,7 +270,7 @@ azure group export myResourceGroup
 ## <a name="detailed-walkthrough"></a>Szczegółowy przewodnik
 Szczegółowy opis kroków, które należy wykonać wyjaśniają, każde polecenie czynności jak tworzysz swoje środowisko. Te pojęcia są przydatne podczas tworzenia niestandardowego środowiska programowania lub produkcji.
 
-Upewnij się, że masz [interfejsu wiersza polecenia platformy Azure w wersji 1.0](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) zalogowany i korzystania z trybu usługi Resource Manager:
+Upewnij się, że masz [wiersza polecenia platformy Azure Classic](../../cli-install-nodejs.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json) zalogowany i korzystania z trybu usługi Resource Manager:
 
 ```azurecli
 azure config mode arm

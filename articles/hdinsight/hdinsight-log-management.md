@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 01/11/2018
 ms.author: ashishth
-ms.openlocfilehash: aab5be7f98f5fdf6e7304485c3d1fc5ddb7afdba
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 339d5d39c637369420e197acf65df802cefd5cb9
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106921"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46988496"
 ---
 # <a name="manage-logs-for-an-hdinsight-cluster"></a>Zarządzanie dziennikami klastra usługi HDInsight
 
@@ -43,12 +43,13 @@ Poniższe szczegóły klastra są przydatne w ułatwienia do zebrania informacji
 * Stan klastra, łącznie ze szczegółami dotyczącymi Ostatnia zmiana stanu
 * Typ i liczbę wystąpień HDInsight określony dla głównego, core oraz węzły zadania
 
-Możesz uzyskać większość z tych informacji najwyższego poziomu za pomocą witryny Azure portal.  Alternatywnie można użyć wiersza polecenia platformy Azure, aby uzyskać informacje na temat klastry usługi HDInsight:
+Możesz uzyskać większość z tych informacji najwyższego poziomu za pomocą witryny Azure portal.  Alternatywnie można użyć klasycznego wiersza polecenia platformy Azure, aby uzyskać informacje na temat klastry usługi HDInsight:
 
 ```
     azure hdinsight cluster list
     azure hdinsight cluster show <ClusterName>
 ```
+[!INCLUDE [classic-cli-warning](../../includes/requires-classic-cli.md)]
 
 Można również użyć programu PowerShell Aby wyświetlić te informacje.  Aby uzyskać więcej informacji, zobacz [klastrów zarządzania Hadoop w HDInsight przy użyciu programu Azure PowerShell](hdinsight-administer-use-powershell.md).
 
