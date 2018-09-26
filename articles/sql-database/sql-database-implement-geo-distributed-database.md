@@ -2,19 +2,22 @@
 title: Implementacja rozproszonego geograficznie rozwiązania usługi Azure SQL Database | Microsoft Docs
 description: Dowiedz się, jak skonfigurować usługę Azure SQL Database i aplikację pod kątem przechodzenia w tryb failover do zreplikowanej bazy danych i jak testować tryb failover.
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc,business continuity
-ms.topic: tutorial
-ms.date: 04/01/2018
-ms.author: carlrab
-ms.openlocfilehash: fbd239c3c8c11b1907a6d28eb95d2c0ad26cfe61
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
-ms.translationtype: HT
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: anosov1960
+ms.author: sashan
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/07/2018
+ms.openlocfilehash: 65cf954f5d91176715181620671f620264069bdc
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31416623"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166268"
 ---
 # <a name="implement-a-geo-distributed-database"></a>Implementowanie rozproszonej geograficznie bazy danych
 
@@ -38,8 +41,8 @@ Do wykonania zadań opisanych w tym samouczku niezbędne jest spełnienie nastę
 - Zainstalowano usługę Azure SQL Database. W tym samouczku jest używana przykładowa baza danych AdventureWorksLT o nazwie **mySampleDatabase** z jednego z następujących przewodników Szybki start:
 
    - [Tworzenie bazy danych — portal](sql-database-get-started-portal.md)
-   - [Tworzenie bazy danych — interfejs wiersza polecenia](sql-database-get-started-cli.md)
-   - [Tworzenie bazy danych — PowerShell](sql-database-get-started-powershell.md)
+   - [Tworzenie bazy danych — interfejs wiersza polecenia](sql-database-cli-samples.md)
+   - [Tworzenie bazy danych — PowerShell](sql-database-powershell-samples.md)
 
 - Zidentyfikowano metodę wykonywania skryptów SQL względem bazy danych. Możesz użyć jednego z następujących narzędzi do obsługi zapytań:
    - Edytor zapytań w [witrynie Azure Portal](https://portal.azure.com). Aby uzyskać więcej informacji na temat używania edytora zapytań w witrynie Azure Portal, zobacz [Nawiązywanie połączenia i odpytywanie za pomocą edytora zapytań](sql-database-get-started-portal.md#query-the-sql-database).
@@ -54,7 +57,7 @@ Nawiąż połączenie z bazą danych i utwórz konta użytkowników przy użyciu
 - SQL Server Management Studio
 - Visual Studio Code
 
-Te konta użytkowników są automatycznie replikowane na serwer pomocniczy (i synchronizowane). Aby można było użyć programu SQL Server Management Studio lub Visual Studio Code, może być konieczne skonfigurowanie reguły zapory w przypadku łączenia się z klienta pod adresem, dla którego nie skonfigurowano jeszcze zapory. Aby uzyskać szczegółowe instrukcje, zobacz [Tworzenie reguły zapory na poziomie serwera](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).
+Te konta użytkowników są automatycznie replikowane na serwer pomocniczy (i synchronizowane). Aby można było użyć programu SQL Server Management Studio lub Visual Studio Code, może być konieczne skonfigurowanie reguły zapory w przypadku łączenia się z klienta pod adresem, dla którego nie skonfigurowano jeszcze zapory. Aby uzyskać szczegółowe instrukcje, zobacz [Tworzenie reguły zapory na poziomie serwera](sql-database-get-started-portal-firewall.md).
 
 - W oknie zapytania wykonaj następujące zapytanie, aby utworzyć dwa konta użytkownika w bazie danych. Ten skrypt umożliwia udzielenie uprawnień **db_owner** dla konta **app_admin** oraz uprawnień **SELECT** i **UPDATE** dla konta **app_user**. 
 
@@ -70,7 +73,7 @@ Te konta użytkowników są automatycznie replikowane na serwer pomocniczy (i sy
 
 ## <a name="create-database-level-firewall"></a>Tworzenie zapory na poziomie bazy danych
 
-Utwórz [regułę zapory na poziomie bazy danych](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) dla bazy danych SQL. Ta reguła zapory na poziomie bazy danych jest automatycznie replikowana na serwer pomocniczy utworzony w tym samouczku. Dla uproszczenia (na potrzeby tego samouczka) użyj publicznego adresu IP komputera, na którym są wykonywane kroki opisane w tym samouczku. Aby określić adres IP używany na potrzeby reguły zapory na poziomie serwera dla bieżącego komputera, zobacz [Tworzenie zapory na poziomie serwera](sql-database-get-started-portal.md#create-a-server-level-firewall-rule).  
+Utwórz [regułę zapory na poziomie bazy danych](https://docs.microsoft.com/sql/relational-databases/system-stored-procedures/sp-set-database-firewall-rule-azure-sql-database) dla bazy danych SQL. Ta reguła zapory na poziomie bazy danych jest automatycznie replikowana na serwer pomocniczy utworzony w tym samouczku. Dla uproszczenia (na potrzeby tego samouczka) użyj publicznego adresu IP komputera, na którym są wykonywane kroki opisane w tym samouczku. Aby określić adres IP używany na potrzeby reguły zapory na poziomie serwera dla bieżącego komputera, zobacz [Tworzenie zapory na poziomie serwera](sql-database-get-started-portal-firewall.md).  
 
 - W otwartym oknie zapytania zastąp poprzednie zapytanie następującym zapytaniem, zamieniając adresy IP na adresy IP odpowiednie dla używanego środowiska.  
 
@@ -379,7 +382,7 @@ Zainstaluj rozwiązanie [Maven](https://maven.apache.org/download.cgi) za pomoc�
    $fileovergroup.ReplicationRole
    ```
 
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 W ramach tego samouczka przedstawiono konfigurowanie usługi Azure SQL Database i aplikacji pod kątem przechodzenia w tryb failover do zdalnego regionu, a następnie przetestowano plan trybu failover.  W tym samouczku omówiono: 
 
@@ -390,8 +393,8 @@ W ramach tego samouczka przedstawiono konfigurowanie usługi Azure SQL Database 
 > * Tworzenie i kompilowanie aplikacji w języku Java na potrzeby odpytywania usługi Azure SQL Database
 > * Wykonywanie próbnego odzyskiwania po awarii
 
-Przejdź do następnego samouczka, aby dowiedzieć się, jak utworzyć wystąpienie zarządzane.
+Przejdź do następnego samouczka, aby migrować program SQL Server do bazy danych wystąpienia zarządzanego Azure SQL przy użyciu usługi DMS.
 
 > [!div class="nextstepaction"]
->[Tworzenie wystąpienia zarządzanego](sql-database-managed-instance-create-tutorial-portal.md)
+>[Migracja programu SQL Server do wystąpienia zarządzanego usługi Azure SQL Database przy użyciu usługi DMS](../dms/tutorial-sql-server-to-managed-instance.md)
 

@@ -2,19 +2,22 @@
 title: Migracja bazy danych SQL Server do usługi Azure SQL Database przy użyciu usługi DMA | Microsoft Docs
 description: Dowiedz się, jak przeprowadzić migrację bazy danych SQL Server do usługi Azure SQL Database przy użyciu usługi DMA.
 services: sql-database
-author: sachinpMSFT
-manager: craigg
 ms.service: sql-database
-ms.custom: mvc,migrate
-ms.topic: tutorial
-ms.date: 07/02/2018
-ms.author: carlrab
-ms.openlocfilehash: 1d8ec772293354c059f21aaae8006f5c40540058
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
-ms.translationtype: HT
+ms.subservice: data-movement
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
+author: sachinpMSFT
+ms.author: sachinp
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 58016636dad24b9b7d5278ce89643e6cd8d5be9e
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050208"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162866"
 ---
 # <a name="migrate-your-sql-server-database-to-azure-sql-database-using-dma"></a>Migracja bazy danych SQL Server do usługi Azure SQL Database przy użyciu usługi DMA
 
@@ -246,11 +249,11 @@ Nawiąż połączenie z serwerem Azure SQL Database za pomocą programu [SQL Ser
 
 ## <a name="change-database-properties"></a>Zmienianie właściwości bazy danych
 
-Warstwę usługi, poziom wydajności i poziom zgodności można zmienić przy użyciu programu SQL Server Management Studio. Podczas fazy importu zalecamy importowanie do bazy danych na wyższej warstwie wydajności, co pozwoli uzyskać najlepszą wydajność, a po zakończeniu importowania zalecamy przeprowadzenie skalowania w dół w celu zaoszczędzenia pieniędzy, dopóki wszystko nie będzie gotowe do aktywnego używania zaimportowanej bazy danych. Zmiana poziomu zgodności może dać w wyniku lepszą wydajność i dostęp do najnowszych funkcji usługi Azure SQL Database. Podczas migracji starszej bazy danych jej poziom zgodności jest utrzymywany na najniższym obsługiwanym poziomie, który jest zgodny z importowaną bazą danych. Aby uzyskać więcej informacji, zobacz [Improved query performance with compatibility Level 130 in Azure SQL Database](sql-database-compatibility-level-query-performance-130.md) (Zwiększenie wydajności zapytań za pomocą poziomu zgodności 130 w usłudze Azure SQL Database).
+Możesz zmienić warstwę usługi, obliczenia rozmiaru i poziom zgodności przy użyciu programu SQL Server Management Studio. Podczas fazy importu zalecamy importowanie do wyższej warstwy usługi, lub obliczenia rozmiaru, aby uzyskać najlepszą wydajność, ale skalowanie w dół po zakończeniu importowania w celu zaoszczędzenia pieniędzy, dopóki nie będziesz gotowy do aktywnego używania zaimportowanej bazy danych. Zmiana poziomu zgodności może dać w wyniku lepszą wydajność i dostęp do najnowszych funkcji usługi Azure SQL Database. Podczas migracji starszej bazy danych jej poziom zgodności jest utrzymywany na najniższym obsługiwanym poziomie, który jest zgodny z importowaną bazą danych. Aby uzyskać więcej informacji, zobacz [Improved query performance with compatibility Level 130 in Azure SQL Database](sql-database-compatibility-level-query-performance-130.md) (Zwiększenie wydajności zapytań za pomocą poziomu zgodności 130 w usłudze Azure SQL Database).
 
 1. W Eksploratorze obiektów kliknij prawym przyciskiem myszy pozycję **mySampleDatabase**, a następnie kliknij polecenie **Nowe zapytanie**. Zostanie otwarte okno zapytania połączone z Twoją bazą danych.
 
-2. Wykonaj następujące polecenie, aby ustawić warstwę usług **Standardowa** i poziom wydajności **S1**.
+2. Wykonaj następujące polecenie, aby ustawić warstwę usług **standardowa** i rozmiaru obliczeń **S1**.
 
     ```sql
     ALTER DATABASE mySampleDatabase 
@@ -262,7 +265,7 @@ Warstwę usługi, poziom wydajności i poziom zgodności można zmienić przy u�
     );
     ```
 
-## <a name="next-steps"></a>Następne kroki 
+## <a name="next-steps"></a>Kolejne kroki 
 W niniejszym samouczku zawarto informacje na temat wykonywania następujących czynności:
 
 > * Tworzenie pustej bazy danych usługi Azure SQL Database w witrynie Azure Portal 
