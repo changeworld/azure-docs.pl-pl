@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: landing-page
 ms.date: 05/24/2018
 ms.author: cwatson
-ms.openlocfilehash: 40070acab5f656cab7f3034e3b35c113c0ff6051
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: e06ee851209d48185b3b20cd6f1169af81b58013
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43300815"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034828"
 ---
 # <a name="azure-billing-and-cost-management-documentation"></a>Dokumentacja dotycząca rozliczeń i zarządzania kosztami na platformie Azure
 
@@ -52,9 +52,10 @@ Dowiedz się, jak interpretować rozliczenia platformy Azure, jak monitorować u
                         <h3>Zarządzanie kosztami</h3>
                         <p>
                         <a href="/azure/billing/billing-getting-started">Zapobieganie powstawaniu nieoczekiwanych kosztów</a><br/>
-                        <a href="/azure/billing/billing-set-up-alerts">Ustawianie alertów dotyczących rozliczeń</a><br/>
-                        <a href="https://azure.microsoft.com/pricing/calculator/">Obliczanie cen</a><br/>
-                        <a href="/azure/azure-resource-manager/resource-group-using-tags?toc=/azure/billing/TOC.json">Korzystanie z tagów zasobów</a>
+                        <a href="/azure/azure-resource-manager/resource-group-using-tags?toc=/azure/billing/TOC.json">Korzystanie z tagów zasobów</a><br/>
+                        <a href="/azure/cost-management/quick-acm-cost-analysis?toc=/azure/billing/TOC.json">Rozpoczynanie analizowania kosztów — tylko umowa EA </a><br/>
+                        <a href="/azure/cost-management/tutorial-acm-create-budgets?toc=/azure/billing/TOC.json">Tworzenie budżetów i zarządzanie nimi — tylko umowa EA</a><br/>
+                        <a href="/azure/cost-management/tutorial-acm-opt-recommendations?toc=/azure/billing/TOC.json">Optymalizowanie zaleceń — tylko umowa EA</a>
                         </p>
                     </div>
                 </div>

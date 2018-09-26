@@ -1,62 +1,64 @@
 ---
-title: Testowanie odzyskiwania po awarii bazy danych SQL | Dokumentacja firmy Microsoft
-description: Dowiedz się, wskazówki i najlepsze rozwiązania dotyczące używania bazy danych SQL Azure, aby wykonać testowanie odzyskiwania po awarii.
+title: SQL Database odzyskiwanie po awarii | Dokumentacja firmy Microsoft
+description: Dowiedz się, wskazówki i najlepsze rozwiązania dotyczące usługi Azure SQL Database, aby wykonać odzyskiwanie po awarii.
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 52973758404faa4158afe81a92079c1acdb4cfd7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: c861163670b05b01c9c6d64b81f6e83c979a2af8
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645467"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163039"
 ---
-# <a name="performing-disaster-recovery-drill"></a>Wykonywanie wyszczególniania odzyskiwania po awarii
-Zalecane jest okresowo wykonywać weryfikacji aplikacja jest gotowa do przepływu pracy odzyskiwania. Weryfikowanie zachowanie aplikacji oraz wpływ utraty danych i/lub przerw w działaniu obejmuje czy tryb failover jest dobrym rozwiązaniem engineering. Również jest wymagane przez większość standardy branżowe w ramach certyfikacji ciągłości biznesowej.
+# <a name="performing-disaster-recovery-drill"></a>Wykonywanie próbnego odzyskiwania po awarii
+Zalecane jest, okresowo wykonywać sprawdzanie poprawności gotowość aplikacji do przepływu pracy odzyskiwania. Weryfikowanie zachowanie aplikacji oraz wpływ utraty danych i/lub zakłócenie polega na tryb failover jest dobrą praktykę. Jest również wymagane przez większość standardy branżowe w ramach certyfikacji ciągłości biznesowej.
 
-Obejmuje wykonywania wyszczególniania odzyskiwania po awarii:
+Wykonywanie próbnego odzyskiwania po awarii składa się z:
 
-* Symulowanie symulacje awarii warstwy danych
+* Symulowanie awarii warstwy danych
 * Odzyskiwanie
-* Sprawdź poprawność odzyskiwania post integralności aplikacji
+* Sprawdź poprawność odzyskiwania wpis integralność aplikacji
 
-W zależności od tego, jak możesz [przeznaczony dla ciągłość prowadzenia działalności biznesowej aplikacji](sql-database-business-continuity.md), przepływu pracy można wykonać drążenie może się różnić. W tym artykule opisano najważniejsze wskazówki dotyczące przeprowadzania wyszczególniania odzyskiwania po awarii, w kontekście bazy danych SQL Azure.
+Zależności od tego, jak możesz [zaprojektowane aplikacji w celu zachowania ciągłości](sql-database-business-continuity.md), przepływ pracy do wykonania testowania odzyskiwania po awarii mogą się różnić. W tym artykule opisano najlepsze rozwiązania dotyczące przeprowadzanie próbnego odzyskiwania po awarii, w ramach usługi Azure SQL Database.
 
 ## <a name="geo-restore"></a>Przywracanie geograficzne
-Aby zapobiec utracie danych podczas przeprowadzania wyszczególniania odzyskiwania po awarii, należy wykonać drążenie, tworząc kopię w środowisku produkcyjnym i użycie go do sprawdzenia przepływu pracy awaryjnej aplikacji przy użyciu środowiska testowego.
+Aby zapobiec utracie danych podczas przeprowadzania odzyskiwania po awarii, należy wykonać testowania odzyskiwania po awarii przy użyciu środowiska testowego, tworząc kopię w środowisku produkcyjnym i użycie go do sprawdzenia aplikacji trybu failover w przepływie pracy.
 
-#### <a name="outage-simulation"></a>Symulacji awarii
-Aby symulować awarii, można zmienić nazwy źródłowej bazy danych. Powoduje to błędów łączności aplikacji.
+#### <a name="outage-simulation"></a>Symulacja awarii
+Symulowanie awarii, można zmienić nazwy źródłowej bazy danych. Powoduje to błędów łączności aplikacji.
 
 #### <a name="recovery"></a>Odzyskiwanie
-* Wykonać geograficznie przywracania bazy danych na innym serwerze, zgodnie z opisem [tutaj](sql-database-disaster-recovery.md).
-* Zmień konfigurację aplikacji, aby nawiązać połączenie odzyskanej bazy danych i postępuj zgodnie z [skonfigurować bazę danych po odzyskaniu](sql-database-disaster-recovery.md) przewodniku, aby zakończyć odzyskiwanie.
+* Wykonaj Przywracanie geograficzne bazy danych na innym serwerze, zgodnie z opisem [tutaj](sql-database-disaster-recovery.md).
+* Zmień konfigurację aplikacji, aby nawiązać połączenie z odzyskanej bazy danych i postępuj zgodnie z [skonfigurować bazę danych po odzyskaniu](sql-database-disaster-recovery.md) przewodniku w celu ukończenia odzyskiwania.
 
 #### <a name="validation"></a>Walidacja
-* Zakończ Drąż weryfikowanie odzyskiwania post integralności aplikacji (w tym parametry połączenia, logowania, podstawowych funkcji testowania lub innych operacji sprawdzania poprawności część procedur signoffs standardowej aplikacji).
+* Wykonaj testowania odzyskiwania po awarii, upewniając się, odzyskiwanie po integralność aplikacji (w tym parametry połączenia, logowania, podstawowe funkcje testowania lub innych operacji sprawdzania poprawności część procedury signoffs standardowej aplikacji).
 
 ## <a name="failover-groups"></a>Grupy trybu failover
-Dla bazy danych, która jest chroniona przy użyciu grup trybu failover wykonywania Przechodzenie do szczegółów obejmuje planowany tryb failover na serwer pomocniczy. Planowany tryb failover zapewnia, że podstawowej i pomocniczej bazy danych w grupie trybu failover pozostają zsynchronizowane podczas przełączania ról. Inaczej niż w przypadku nieplanowanego trybu failover ta operacja nie powoduje utraty danych, więc Drąż mogą być wykonywane w środowisku produkcyjnym.
+Dla bazy danych, który jest chroniony za pomocą grupy trybu failover w tym ćwiczeniu testowania odzyskiwania po awarii obejmuje planowany tryb failover na serwer pomocniczy. Planowanego trybu failover gwarantuje, że podstawowe i pomocnicze bazy danych w grupie trybu failover pozostają zsynchronizowane podczas przełączania ról. Inaczej niż w przypadku nieplanowanego trybu failover ta operacja nie powoduje utraty danych, dzięki czemu testowania odzyskiwania po awarii mogą być wykonywane w środowisku produkcyjnym.
 
-#### <a name="outage-simulation"></a>Symulacji awarii
-Aby symulować awarii, można wyłączyć maszyny wirtualnej, połączony z bazą danych lub aplikacji sieci web. W efekcie awarie połączenia dla klientów sieci web.
+#### <a name="outage-simulation"></a>Symulacja awarii
+Symulowanie awarii, można wyłączyć aplikacji sieci web lub maszyna wirtualna połączona z bazą danych. Skutkuje to błędy łączności dla klientów sieci web.
 
 #### <a name="recovery"></a>Odzyskiwanie
-* Sprawdź konfigurację aplikacji w punktach region DR byłego dodatkowej, która staje się dostępny w pełni nową podstawową.
-* Zainicjuj [planowanego trybu failover](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) grupy trybu failover z serwera pomocniczego.
-* Postępuj zgodnie z [skonfigurować bazę danych po odzyskaniu](sql-database-disaster-recovery.md) przewodniku, aby zakończyć odzyskiwanie.
+* Upewnij się, że konfiguracja aplikacji w punktach regionu odzyskiwania po awarii przez byłego pomocniczego, która staje się nową podstawową dla w pełni dostępne.
+* Zainicjuj [zaplanowanym powrocie po awarii](scripts/sql-database-setup-geodr-and-failover-database-powershell.md) grupy trybu failover z serwera pomocniczego.
+* Postępuj zgodnie z [skonfigurować bazę danych po odzyskaniu](sql-database-disaster-recovery.md) przewodniku w celu ukończenia odzyskiwania.
 
 #### <a name="validation"></a>Walidacja
-Zakończ Drąż weryfikowanie odzyskiwania post integralności aplikacji (w tym łączności, podstawowych funkcji testowania lub innych operacji sprawdzania poprawności wymaganego dla signoffs Przechodzenie do szczegółów).
+Ukończ testowania odzyskiwania po awarii, upewniając się, odzyskiwanie po integralność aplikacji (w tym łączności, podstawowe funkcje testowania lub innych operacji sprawdzania poprawności wymagane dla signoffs testowania odzyskiwania po awarii).
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Aby dowiedzieć się więcej o scenariuszach ciągłości biznesowej, zobacz [scenariusze ciągłości](sql-database-business-continuity.md).
-* Aby dowiedzieć się więcej na temat usługi Azure SQL bazy danych automatycznego tworzenia kopii zapasowych, zobacz [bazy danych SQL automatycznego tworzenia kopii zapasowych](sql-database-automated-backups.md)
-* Aby dowiedzieć się więcej o używaniu kopie zapasowe automatycznego odzyskiwania, zobacz [przywrócić bazę danych z kopii zapasowych inicjowane przez usługę](sql-database-recovery-using-backups.md).
-* Informacje na temat opcji odzyskiwania szybsze, zobacz [aktywnych grup — replikacja geograficzna i pracy awaryjnej](sql-database-geo-replication-overview.md).  
+* Aby dowiedzieć się o ciągłość działania — scenariusze, zobacz [ciągłość działania — scenariusze](sql-database-business-continuity.md).
+* Aby dowiedzieć się więcej na temat usługi Azure SQL Database automatyczne kopie zapasowe, zobacz [bazy danych SQL, automatyczne kopie zapasowe](sql-database-automated-backups.md)
+* Aby dowiedzieć się więcej o korzystaniu z automatycznych kopii zapasowych do odzyskania, zobacz [przywrócić bazę danych z kopii zapasowych zainicjowanych przez usługę](sql-database-recovery-using-backups.md).
+* Aby dowiedzieć się o szybsze opcje odzyskiwania, zobacz [aktywna replikacja geograficzna i grupy trybu failover](sql-database-geo-replication-overview.md).  

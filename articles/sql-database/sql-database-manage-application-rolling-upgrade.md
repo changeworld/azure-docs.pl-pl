@@ -2,19 +2,22 @@
 title: Stopniowe uaktualnienia aplikacji — Azure SQL Database | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak za pomocą replikacji geograficznej usługi Azure SQL Database obsługuje uaktualnień aplikacji w chmurze w trybie online.
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 08/23/2018
+author: anosov1960
 ms.author: sashan
-ms.openlocfilehash: 37960995c89c2b30d90ac45dcd8cc44d80088398
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 08/23/2018
+ms.openlocfilehash: 4d518c959943184c38ed78cc8eb5449b306c8b04
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42818620"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162308"
 ---
 # <a name="managing-rolling-upgrades-of-cloud-applications-using-sql-database-active-geo-replication"></a>Zarządzanie przeprowadzania uaktualnienia równoległych aplikacji w chmurze przy użyciu aktywnej replikacji geograficznej bazy danych SQL
 > [!NOTE]

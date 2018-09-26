@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 9/17/2018
 ms.author: subramar
-ms.openlocfilehash: f3f381fddee9c1830202854f02556f73b5aeed23
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 3f321775ba112471760e627e6b43ed17ff8c5b6b
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055581"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182879"
 ---
 # <a name="application-upgrade-parameters"></a>Parametry uaktualniania aplikacji
 W tym artykule opisano różne parametry, które są stosowane podczas uaktualniania aplikacji usługi Azure Service Fabric. Parametry uaktualniania aplikacji kontrolować limity czasu i kontroli kondycji, które są stosowane podczas uaktualniania, a określają zasady, które można zastosować, uaktualnienie nie powiedzie się.
@@ -42,7 +42,7 @@ Visual Studio usługi Service Fabric aplikacji uaktualnienia parametrów są ust
 | --- | --- | --- |
 ApplicationName |PS| Nazwa aplikacji, która jest uaktualniana. Przykłady: Service fabric: / VisualObjects, Service fabric: / ClusterMonitor. |
 ApplicationTypeVersion|PS|Typ wersji aplikacji, które cele uaktualniania. |
-FailureAction |PS VS|Dozwolone wartości to **nieprawidłowy**, **wycofywania**, i **ręczne**. Akcja podjęte przez usługę Service Fabric, w przypadku nieudanego uaktualnienia. Aplikacja może zostać przywrócona przed aktualizacją wersja (Wycofaj) lub uaktualnienia mogą zostać zatrzymany w bieżącej domenie uaktualnienia. W tym ostatnim przypadku tryb uaktualniania również jest zmieniana na **ręczne**.|
+FailureAction |PS VS|Dozwolone wartości to **wycofywania**, **ręczne**, i **nieprawidłowy**. Wyrównującej akcję do wykonania, kiedy *monitorowanej* uaktualnienia napotka monitorowania zasad lub kondycji naruszenia zasad. <br>**Wycofywanie** Określa, czy uaktualnienie będzie automatycznie konieczne przywrócenie początkowej wersji sprzed uaktualnienia. <br>**Ręczne** wskazuje, że uaktualnienie przełączą się do *UnmonitoredManual* tryb uaktualniania. <br>**Nieprawidłowy** wskazuje, że akcja błędu jest nieprawidłowa.|
 Monitorowane |PS|Wskazuje, czy tryb uaktualniania jest monitorowany. Po zakończeniu pracy uaktualnienie domeny uaktualnienia, polecenia cmdlet, jeśli kondycję domeny uaktualnienia klastra, spełniają zasady dotyczące kondycji, które definiujesz, Usługa Service Fabric uaktualnia następnej domeny uaktualnienia. Jeśli domena uaktualnienia lub klastra nie spełnia zasad dotyczących kondycji, uaktualnienie nie powiedzie się i usługi Service Fabric powoduje wycofanie uaktualnienie dla domeny uaktualnień lub powraca do trybu ręcznego zgodnie z zasadami określony. To jest zalecanym trybem uaktualnień aplikacji w środowisku produkcyjnym. |
 Element UpgradeMode | VS | Dozwolone wartości to **monitorowanej** (ustawienie domyślne), **UnmonitoredAuto**, lub **UnmonitoredManual**. Zobacz parametry programu PowerShell dla każdego trybu, w tym artykule, aby uzyskać szczegółowe informacje. |
 UnmonitoredAuto | PS | Wskazuje, że tryb uaktualniania jest automatycznie monitorowany. Po uaktualnieniu domeny uaktualnienia usługi Service Fabric Service Fabric uaktualnia następnej domeny uaktualnienia, niezależnie od tego, stan kondycji aplikacji. Ten tryb nie jest zalecane w środowisku produkcyjnym i jest przydatna tylko podczas tworzenia aplikacji. |

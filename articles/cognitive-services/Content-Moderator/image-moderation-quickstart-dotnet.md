@@ -9,12 +9,12 @@ ms.component: content-moderator
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: sajagtap
-ms.openlocfilehash: 1cccd12b7a0676da8db61ba1f02e199f2a086ee0
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9c662558d21bf52b6e9e5c9e781fee7121493ea2
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719107"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182012"
 ---
 # <a name="moderate-images-using-net"></a>Umiarkowany obrazów przy użyciu platformy .NET
 
@@ -104,7 +104,7 @@ Dodaj następujący kod, aby utworzyć pakiet Content Moderator klienta dla Twoj
             // Create and initialize an instance of the Content Moderator API wrapper.
             ContentModeratorClient client = new ContentModeratorClient(new ApiKeyServiceClientCredentials(CMSubscriptionKey));
 
-            client.BaseUrl = AzureBaseURL;
+            client.Endpoint = AzureBaseURL;
             return client;
         }
     }

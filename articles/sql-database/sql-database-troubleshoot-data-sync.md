@@ -2,19 +2,22 @@
 title: Rozwiązywanie problemów z usługi Azure SQL Data Sync | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak rozwiązywać typowe problemy z usługą Azure SQL Data Sync.
 services: sql-database
-ms.date: 07/16/2018
-ms.topic: conceptual
 ms.service: sql-database
+ms.subservice: data-movement
+ms.custom: data sync
+ms.devlang: ''
+ms.topic: conceptual
 author: allenwux
 ms.author: xiwu
+ms.reviewer: douglasl
 manager: craigg
-ms.custom: data-sync
-ms.openlocfilehash: 8ba4b32f45dd978439b08650e498c3030c618aab
-ms.sourcegitcommit: 35ceadc616f09dd3c88377a7f6f4d068e23cceec
+ms.date: 07/16/2018
+ms.openlocfilehash: 0f836a857d6f9748416fda1526a1957af4fc51e4
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39618713"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163600"
 ---
 # <a name="troubleshoot-issues-with-sql-data-sync"></a>Rozwiązywanie problemów z usługą SQL Data Sync
 
@@ -245,7 +248,7 @@ Jeśli lokalny punkt końcowy (czyli bazy danych) zarejestrowana w usłudze SQL 
     b. W wynikach wyszukiwania, kliknij dwukrotnie **usług**.  
   1. Zatrzymaj **SQL Data Sync** usługi.
   1. Uruchom ponownie **SQL Data Sync** usługi.  
-  1. Otwórz ponownie aplikację.
+  1. Otwórz ponownie tę aplikację.
 
 ## <a name="setup-and-maintenance-issues"></a>Problemy dotyczące instalacji i konserwacji
 

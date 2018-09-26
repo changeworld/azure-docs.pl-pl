@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: kakampf
-ms.openlocfilehash: 2f6ced6603c6736200f4474fbb1dc9b0ef1535d9
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: dc1f076a6450a7b6fa33a959e79b0fd5a68a99d4
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056808"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162395"
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Jakie są składniki i wersje dostępne z HDInsight?
 
@@ -31,7 +31,7 @@ Wersje składników skojarzone z wersji klastra HDInsight są wymienione w poni�
 > [!NOTE]
 > Wersja domyślna dla usługi HDInsight mogą ulec zmianie bez powiadomienia. Jeśli masz zależność wersji, wersji HDInsight można określić podczas tworzenia klastrów za pomocą zestawu SDK platformy .NET przy użyciu programu Azure PowerShell i klasycznego wiersza polecenia platformy Azure.
 
-| Składnik | HDInsight 4.0 | HDInsight 3.6 (ustawienie domyślne) | HDInsight 3.5 | HDInsight 3.4 | HDInsight 3.3 | HDInsight 3.2 | HDInsight 3.1 | HDInsight 3.0 |
+| Składnik | HDInsight 4.0 (wersja zapoznawcza) | HDInsight 3.6 (ustawienie domyślne) | HDInsight 3.5 | HDInsight 3.4 | HDInsight 3.3 | HDInsight 3.2 | HDInsight 3.1 | HDInsight 3.0 |
 | --- | --- | --- | --- | --- | --- | --- | --- |--- |
 | Hortonworks Data Platform |3.0 |2.6 |2.5 |2.4 |2.3 |2.2 |2.1.7 |2.0 |
 | Apache Hadoop i YARN |2.9.1 |2.7.3 |2.7.3 |2.7.1 |2.7.1 |2.6.0 |2.4.0 |2.2.0 |
@@ -78,7 +78,7 @@ W poniższej tabeli wymieniono wersje HDInsight, które są dostępne w witrynie
 
 | HDInsight w wersji | Wersja HDP | VM OS | Data wydania | Data wygaśnięcia pomocy technicznej | Data wygaśnięcia | Wysoka dostępność |  Dostępność w witrynie Azure portal | 
 | --- | --- | --- | --- | --- | --- | --- | --- |
-| HDInsight 4.0 |HDP 3.0 |Ubuntu 16.0.4 LTS |24 września 2018 r. | | |Yes |Yes |
+| HDInsight 4.0 <br> (Wersja zapoznawcza) |HDP 3.0 |Ubuntu 16.0.4 LTS |24 września 2018 r. | | |Yes |Yes |
 | HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |4 kwietnia 2017 r. | | |Yes |Yes |
 
 > [!NOTE]

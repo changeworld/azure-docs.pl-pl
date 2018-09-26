@@ -10,12 +10,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 09/29/2017
 ms.author: azfuncdf
-ms.openlocfilehash: 6a9ecbcc5161f47a192d5bf3a893a42b3ee9ce2f
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 10e6c440fe669f4bc8a18eb0a7a0f833675ab923
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379506"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182218"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Powiązania dla funkcje trwałe (usługa Azure Functions)
 
@@ -143,7 +143,7 @@ Wewnętrznie tego powiązania wyzwalacza sonduje kolejkę w domyślne konto maga
 Poniżej przedstawiono niektóre uwagi dotyczące działania wyzwalacza:
 
 * **Wątkowość** — w przeciwieństwie do wyzwalacza aranżacji wyzwalaczy działania nie mają zastosowanie jakiekolwiek ograniczenia wokół wątkowości lub we/wy. Mogą one być traktowane funkcji regularnych.
-* **Obsługa komunikatów poising** — nie obsługuje zarządzanie skażonymi komunikatami w wyzwalaczach działania.
+* **Obsługa komunikatów poison** — nie obsługuje zarządzanie skażonymi komunikatami w wyzwalaczach działania.
 * **Komunikat o widoczności** -działania wyzwalacza wiadomości są usuwane z kolejki i przechowywane niewidoczne czas można skonfigurować. Widoczność tych komunikatów jest odnawiany automatycznie, tak długo, jak aplikacja funkcji jest uruchomiony i działa prawidłowo.
 * **Wartości zwracane** — zwracane wartości są serializować do notacji JSON i utrwalone w tabeli historii aranżacji w usłudze Azure Table storage.
 

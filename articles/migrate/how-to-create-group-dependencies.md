@@ -4,14 +4,14 @@ description: W tym artykule opisano, jak uzyskiwać dokładniejsze oceny za pomo
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: article
-ms.date: 09/17/2018
+ms.date: 09/25/2018
 ms.author: raynew
-ms.openlocfilehash: 4f5ab4565191b38c07b2071609a57db2525860e3
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 9f95ffe47275cfda77efa294ca6e8ccebe0070eb
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733418"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158618"
 ---
 # <a name="refine-a-group-using-group-dependency-mapping"></a>Uściślanie zawartości grupy za pomocą mapowania zależności grupy
 
@@ -101,5 +101,5 @@ Jeśli chcesz sprawdzić zależności określonej maszyny, która pojawia się n
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-
-[Dowiedz się więcej](concepts-assessment-calculation.md) na temat sposobu obliczania ocen.
+- [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization) temat — często zadawane pytania na wizualizacji zależności.
+- [Dowiedz się więcej](concepts-assessment-calculation.md) na temat sposobu obliczania ocen.

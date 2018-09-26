@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 9/20/2018
 ms.author: anandh
-ms.openlocfilehash: 587540430dc4089973186c2862f402ccde73df65
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f79be44d33a327f3ead8d950885cb5d47ce3a015
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47048094"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163810"
 ---
 # <a name="performance-diagnostics-for-azure-virtual-machines"></a>Diagnostyka wydajności maszyn wirtualnych platformy Azure
 
@@ -35,15 +35,15 @@ System Windows 10, Windows 8, Windows 8 Enterprise, Windows 8 Pro, Windows 8.1, 
 
 ## <a name="install-and-run-performance-diagnostics-on-your-vm"></a>Zainstaluj i uruchom funkcję diagnostyki wydajności na maszynie Wirtualnej
 Diagnostyka wydajności instaluje rozszerzenia maszyny Wirtualnej, które jest uruchamiane narzędzie Diagnostyka, który nosi nazwę [program PerfInsights](https://aka.ms/perfinsights). Aby zainstalować i uruchomić diagnostyki wydajności, wykonaj następujące kroki:
-1)  W lewej kolumnie zaznacz **maszyn wirtualnych**.
-2)  Z listy nazw maszyn wirtualnych wybierz maszynę Wirtualną, którą chcesz uruchomić diagnostykę.
-3)  W prawej kolumnie zaznacz **Diagnostyka wydajności**.
+1.  W lewej kolumnie zaznacz **maszyn wirtualnych**.
+1.  Z listy nazw maszyn wirtualnych wybierz maszynę Wirtualną, którą chcesz uruchomić diagnostykę.
+1.  W prawej kolumnie zaznacz **Diagnostyka wydajności**.
 
     ![Zrzut ekranu usługi Azure portal, z wyróżnionym przyciskiem diagnostyki wydajności instalacji](media/performance-diagnostics/performance-diagnostics-install.png)
 
     > [!NOTE]
     > Na tym zrzucie ekranu jest ukryty bloku nazw maszyn wirtualnych.
-4) Wybierz konto magazynu (opcjonalnie)
+1. Wybierz konto magazynu (opcjonalnie)
 
     Jeśli chcesz używać jednego konta magazynu do przechowywania wyników diagnostyki wydajności dla wielu maszyn wirtualnych, można wybrać konto magazynu, klikając **ustawienia** przycisku na pasku narzędzi. Kliknij przycisk **OK** przycisku po wybraniu konta magazynu.
 
@@ -53,8 +53,8 @@ Diagnostyka wydajności instaluje rozszerzenia maszyny Wirtualnej, które jest u
 
     ![Zrzut ekranu przedstawiający wybór konta magazynu z bloku ustawień diagnostyki wydajności](media/performance-diagnostics/select-storage-account.png)
 
-5) Wybierz **zainstalować Diagnostyka wydajności** przycisku.
-6) Wybierz **Uruchom diagnostykę** pole wyboru, jeśli chcesz uruchomić diagnostyki, po zakończeniu instalacji. Jeśli wprowadzisz zaznacz to pole wyboru, będzie można wybrać scenariuszowi analizy wydajności i powiązane opcje.
+1. Wybierz **zainstalować Diagnostyka wydajności** przycisku.
+1. Wybierz **Uruchom diagnostykę** pole wyboru, jeśli chcesz uruchomić diagnostyki, po zakończeniu instalacji. Jeśli wprowadzisz zaznacz to pole wyboru, będzie można wybrać scenariuszowi analizy wydajności i powiązane opcje.
 
     ![Zrzut ekranu wydajności diagnostyki przycisk Zainstaluj](media/performance-diagnostics/install-diagnostics-button.png)
 
@@ -148,13 +148,13 @@ Możesz otworzyć bilet pomocy technicznej firmy Microsoft, jest ważne, aby udo
 
 **Opcja 2:** wygenerować sygnaturę dostępu współdzielonego dla diagnostyki raportu skompresowany plik  
 Link do skompresowanego pliku raportów może udostępniać za pomocą sygnatur dostępu współdzielonego. W tym celu wykonaj następujące kroki: 
-1)  W witrynie Azure portal przejdź do konta magazynu, w którym przechowywane są dane diagnostyczne.
-2)  Wybierz **obiektów blob** w obszarze **usługi Blob service** sekcji. 
-3)  Wybierz **azdiagextnresults** kontenera.
-4)  Wybierz wydajności diagnostyki skompresowany plik wyjściowy, którą chcesz udostępnić.
-5)  Na **Generowanie sygnatury dostępu Współdzielonego** , a następnie wybierz kryteria do udostępniania. 
-6)  Kliknij przycisk **generowania tokenu sygnatury dostępu Współdzielonego obiektów blob i adres URL**.
-7)  Kopiuj **adresu URL sygnatury dostępu Współdzielonego obiektu Blob**i udostępnij je ze specjalistą pomocy technicznej. 
+1.  W witrynie Azure portal przejdź do konta magazynu, w którym przechowywane są dane diagnostyczne.
+1.  Wybierz **obiektów blob** w obszarze **usługi Blob service** sekcji. 
+1.  Wybierz **azdiagextnresults** kontenera.
+1.  Wybierz wydajności diagnostyki skompresowany plik wyjściowy, którą chcesz udostępnić.
+1.  Na **Generowanie sygnatury dostępu Współdzielonego** , a następnie wybierz kryteria do udostępniania. 
+1.  Kliknij przycisk **generowania tokenu sygnatury dostępu Współdzielonego obiektów blob i adres URL**.
+1.  Kopiuj **adresu URL sygnatury dostępu Współdzielonego obiektu Blob**i udostępnij je ze specjalistą pomocy technicznej. 
 
 **Opcja 3:** pobrać raport z konta magazynu
 
@@ -162,8 +162,8 @@ Możesz również znaleźć skompresowany plik raportu diagnostyki wydajności, 
 
 ### <a name="how-do-i-capture-the-diagnostics-data-at-the-correct-time"></a>Jak przechwycić dane diagnostyczne w odpowiednim czasie?
 Każdy Diagnostyka wydajności uruchamiania ma dwa etapy: 
-1)  Instalowanie lub aktualizowanie Diagnostyka wydajności rozszerzenia maszyny Wirtualnej.
-2)  Uruchamianie diagnostyki dla określonego czasu trwania.
+1.  Instalowanie lub aktualizowanie Diagnostyka wydajności rozszerzenia maszyny Wirtualnej.
+1.  Uruchamianie diagnostyki dla określonego czasu trwania.
 
 Obecnie nie istnieje łatwy sposób dowiedzieć się, kiedy instalacja rozszerzenia maszyny Wirtualnej zostało zakończone. Zwykle trwa około 45 sekund do 1 minuty, można zainstalować rozszerzenia maszyny Wirtualnej. Po zainstalowaniu rozszerzenia maszyny Wirtualnej możesz uruchomić kroków odtwarzania mieć Diagnostyka wydajności przechwycenia odpowiednich zestawów danych do rozwiązywania problemów. 
 

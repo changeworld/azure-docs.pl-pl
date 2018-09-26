@@ -11,18 +11,18 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/21/2018
+ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: 0732fe06db77ab96c909c5f84f69825036fedf4e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 63c193b4757c28f809a33b917058df36467d4db4
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031598"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163022"
 ---
 # <a name="load-balancer-outbound-rules"></a>Reguły ruchu wychodzącego modułu równoważenia obciążenia
 
-Usługa Azure Load Balancer zapewnia łączność wychodząca z sieci wirtualnej, oprócz ruchu przychodzącego.  Reguły ruchu wychodzącego ułatwiają konfigurowanie publicznych [Balancer w warstwie standardowa](load-balancer-standard-overview.md)firmy translatora adresów sieciowych wychodzących (NAT).  Masz deklaratywne pełną kontrolę nad łączności wychodzącej do skalowania i dostosować tę możliwość do konkretnych potrzeb.
+Usługa Azure Load Balancer zapewnia łączność wychodząca z sieci wirtualnej, oprócz ruchu przychodzącego.  Reguły ruchu wychodzącego ułatwiają konfigurowanie publicznych [Balancer w warstwie standardowa](load-balancer-standard-overview.md)firmy translatora adresów sieciowych wychodzących.  Masz deklaratywne pełną kontrolę nad łączności wychodzącej do skalowania i dostosować tę możliwość do konkretnych potrzeb.
 
 ![Reguły ruchu wychodzącego modułu równoważenia obciążenia](media/load-balancer-outbound-rules-overview/load-balancer-outbound-rules.png)
 
@@ -213,4 +213,5 @@ Korzystając z wewnętrznego standardowego modułu równoważenia obciążenia, 
 
 - Dowiedz się więcej o korzystaniu z [modułu równoważenia obciążenia dla połączeń wychodzących](load-balancer-outbound-connections.md).
 - Dowiedz się więcej o [standardowego modułu równoważenia obciążenia](load-balancer-standard-overview.md).
-- Dowiedz się więcej o [dwukierunkowe TCP Reset na limit czasu bezczynności](https://aka.ms/lbtcpreset).
+- Dowiedz się więcej o [dwukierunkowe TCP Reset na limit czasu bezczynności](load-balancer-tcp-reset.md).
+- [Konfigurowanie reguł ruchu wychodzącego za pomocą interfejsu wiersza polecenia platformy Azure w wersji 2.0](configure-load-balancer-outbound-cli.md).

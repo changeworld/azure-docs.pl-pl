@@ -1,6 +1,6 @@
 ---
-title: Filtry w widokach Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Filtr w widoku analizy dzienników umożliwia filtrowanie danych w widoku przez wartość określonej właściwości bez modyfikowania samego widoku.  W tym artykule opisano sposób używania filtru i dodaj je do widoku niestandardowego.
+title: Filtry w widokach w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Filtr w widoku do usługi Log Analytics umożliwia użytkownikom do filtrowania danych w widoku przez wartość określonej właściwości bez modyfikowania samego widoku.  W tym artykule opisano sposób użycia filtr i dodaj je do widoku niestandardowego.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -15,32 +15,32 @@ ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: 0ad22562bd1f36bba7c0ab99fe504e82645033d3
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.openlocfilehash: dcdc84f100ce534ea517f0201b0c090c3059a318
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131414"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160933"
 ---
-# <a name="filters-in-log-analytics-views"></a>Filtry w widokach analizy dzienników
-A **filtru** w [wyświetlić analizy dzienników](log-analytics-view-designer.md) umożliwia filtrowanie danych w widoku przez wartość określonej właściwości bez modyfikowania samego widoku.  Na przykład może pozwolić użytkownikom widoku, aby filtrować widok danych tylko z określonego komputera lub zestawu komputerów.  Można utworzyć wiele filtrów w jednym widoku pozwoli użytkownikom na filtrowanie przez wiele właściwości.  W tym artykule opisano sposób używania filtru i dodaj je do widoku niestandardowego.
+# <a name="filters-in-log-analytics-views"></a>Filtry w widokach usługi Log Analytics
+A **filtru** w [usługi Log Analytics przeglądać](log-analytics-view-designer.md) umożliwia użytkownikom do filtrowania danych w widoku przez wartość określonej właściwości bez modyfikowania samego widoku.  Na przykład możesz zezwolić użytkownikom widoku filtrowanie widoku danych tylko z określonego komputera lub zestawu komputerów.  Można utworzyć wiele filtrów w jednym widoku, który użytkownicy mogą filtrować według wielu właściwości.  W tym artykule opisano sposób użycia filtr i dodaj je do widoku niestandardowego.
 
 ## <a name="using-a-filter"></a>Przy użyciu filtru
-Kliknij zakres czasu danych u góry widoku, aby otworzyć listy rozwijanej, którym można zmienić zakres czasu danych widoku.
+Kliknij zakres czasu danych, u góry widoku, aby otworzyć rozwijanego którym można zmienić zakres czasu danych widoku.
 
 ![Przykład filtru](media/log-analytics-view-designer/filters-example-time.png)
 
-Kliknij przycisk **+** Aby dodać filtr przy użyciu filtrów niestandardowych, które są zdefiniowane dla widoku. Z listy rozwijanej lub wpisz wartość, albo wybrać wartość filtru. Dodaj filtry, klikając w dalszym ciągu **+**. 
+Kliknij przycisk **+** Aby dodać filtr, za pomocą filtrów niestandardowych, które są zdefiniowane dla widoku. Z listy rozwijanej lub wpisz wartość, albo wybierz wartość dla filtru. Dodaj filtry, klikając przycisk w dalszym ciągu **+**. 
 
 
 ![Przykład filtru](media/log-analytics-view-designer/filters-example-custom.png)
 
-Jeśli usuniesz wszystkie wartości filtru tego filtru nie będzie można zastosować.
+Jeśli usuniesz wszystkie wartości filtru, a następnie z filtrem nie zostaną zastosowane.
 
 
 ## <a name="creating-a-filter"></a>Utworzenie filtru
 
-Utwórz filtr z **filtry** karcie kiedy [Edytowanie widoku](log-analytics-view-designer.md).  Filtr jest globalne dla widoku i ma zastosowanie do wszystkich części w widoku.  
+Utwórz filtr z **filtry** kartę, kiedy [widoku do edycji](log-analytics-view-designer.md).  Filtr jest globalne dla widoku i dotyczy wszystkich części widoku.  
 
 ![Ustawienia filtra](media/log-analytics-view-designer/filters-settings.png)
 
@@ -48,37 +48,37 @@ W poniższej tabeli opisano ustawienia filtru.
 
 | Ustawienie | Opis |
 |:---|:---|
-| Nazwa pola | Nazwa pola używanego podczas filtrowania.  Musi on być zgodny z pola podsumowanie w **zapytanie o wartości**. |
-| Zapytanie o wartości | Kwerendy do wypełnienia listy rozwijanej filtru dla użytkownika.  To należy użyć [Podsumuj](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) lub [różne](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/distinct-operator) zapewniają unikatowe wartości określonego pola, a musi być zgodna **Nazwa pola**.  Można użyć [sortowania](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/sort-operator) Aby posortować wartości, które są wyświetlane dla użytkownika. |
-| Tag | Nazwa pola, które jest używane w zapytaniach obsługujące filtr i jest wyświetlany użytkownikowi. |
+| Nazwa pola | Nazwa pola używane do filtrowania.  To musi odpowiadać polu Podsumowanie w **zapytanie o wartości**. |
+| Zapytanie o wartości | Zapytanie, aby uruchomić, aby wypełnić listę rozwijaną Filtr dla użytkownika.  To należy użyć [Podsumuj](/azure/kusto/query/summarizeoperator) lub [distinct](/azure/kusto/query/distinctoperator) zapewnienie unikatowe wartości dla określonego pola, a musi być zgodna **nazwę pola**.  Możesz użyć [sortowania](/azure/kusto/query/sortoperator) Aby posortować wartości, które są wyświetlane użytkownikowi. |
+| Tag | Nazwa pola, które jest używany w zapytaniach obsługujące filtr i jest wyświetlany użytkownikowi. |
 
 ### <a name="examples"></a>Przykłady
 
-W poniższej tabeli przedstawiono kilka przykładów typowych filtrów.  
+Poniższa tabela zawiera kilka przykładów typowych filtrów.  
 
 | Nazwa pola | Zapytanie o wartości | Tag |
 |:--|:--|:--|
-| Computer (Komputer)   | Puls &#124; distinct Computer &#124; Sortuj według asc komputera | Komputery |
-| EventLevelName | Zdarzenia &#124; EventLevelName różne | Ważność |
-| Poziom ważności | SYSLOG &#124; różne poziom ważności | Ważność |
-| SvcChangeType | Zmianakonfiguracji &#124; svcChangeType różne | ChangeType |
+| Computer (Komputer)   | Puls &#124; distinct Computer &#124; sortowania przez usługę asc komputera | Komputery |
+| EventLevelName | Zdarzenie &#124; EventLevelName odrębne | Ważność |
+| SeverityLevel | SYSLOG &#124; SeverityLevel odrębne | Ważność |
+| SvcChangeType | Zmianakonfiguracji &#124; svcChangeType odrębne | ChangeType |
 
 
-## <a name="modify-view-queries"></a>Zmodyfikuj widok kwerendy
+## <a name="modify-view-queries"></a>Modyfikowanie widoku zapytań
 
-Filtr, aby zostały uwzględnione należy zmodyfikować żadnych zapytań w widoku, aby filtrować według wybranych wartości.  Jeśli nie zmodyfikujesz żadnych zapytań w widoku wartości, które użytkownik wybierze odniesie żadnego skutku.
+Filtr, aby mieć żadnego efektu należy zmodyfikować wszelkie zapytania w widoku do filtrowania na podstawie wybranych wartości.  Jeśli użytkownik nie należy modyfikować żadnych zapytań w widoku wszystkie wartości, które użytkownik wybierze odniesie żadnego skutku.
 
-Składnia przy użyciu wartości filtru w zapytaniu jest: 
+Składnia przy użyciu wartości filtru w zapytaniu jest następująca: 
 
     where ${filter name}  
 
-Na przykład jeśli widok ma zapytanie zwraca zdarzeń i używa filtru o nazwie komputery, można użyć następujących czynności.
+Na przykład jeśli widok ma zapytanie zwraca zdarzeń, używa filtru o nazwie komputery można następujące czynności.
 
     Event | where ${Computers} | summarize count() by EventLevelName
 
-Jeśli dodano inny filtr o nazwie ważność można Użyj następującego zapytania, używać obu filtrów.
+Jeśli dodano inny filtr o nazwie ważności można Użyj następującego zapytania, używać obu filtrów.
 
     Event | where ${Computers} | where ${Severity} | summarize count() by EventLevelName
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [części wizualizacji](log-analytics-view-designer-parts.md) można dodać do niego.
+* Dowiedz się więcej o [części wizualizacji](log-analytics-view-designer-parts.md) można dodać do widoku niestandardowego.

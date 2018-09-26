@@ -1,55 +1,58 @@
 ---
-title: Publiczny zestawów danych w celu wykonania analizy Azure | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat publicznej zestawów danych można użyć prototypem i testowanie usługi Azure analizy i rozwiązania.
+title: Publiczne zestawy danych dla analiz platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o publicznych zestawach danych można używać do prototypowania i testowanie usługi analiz platformy Azure i rozwiązań.
 services: sql-database
-author: douglaslMS
-manager: craigg
-ms.custom: reference
 ms.service: sql-database
-ms.topic: conceptual
-ms.date: 04/01/2018
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
+ms.topic: reference
+author: douglaslMS
 ms.author: douglasl
-ms.openlocfilehash: be93dbff39c47ed1d8834efa3ef6c033525b4bea
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 6977995fb33d221b48a633076f61d3ee39d6ba40
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34648918"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160421"
 ---
-# <a name="public-data-sets-for-testing-and-prototyping"></a>Zestawy danych publicznych, testowanie i tworzenie prototypów
+# <a name="public-data-sets-for-testing-and-prototyping"></a>Publiczne zestawy danych do testowania i tworzenia prototypów
 
-Przeglądaj tej listy publicznego zestawy danych na dane, które służy do usług magazynu i analiza prototypu i testu i rozwiązania.
+Przeglądaj tej listy publicznych zestawach danych dla danych, które umożliwia prototypów i testowania usług magazynu i analizy i rozwiązań.
 
-## <a name="us-government-and-agency-data"></a>Federalna Danych agencji i dla instytucji rządowych
+## <a name="us-government-and-agency-data"></a>Federalna Dane dla instytucji rządowych i agencji
 
 | Źródło danych | Informacje o danych | Informacje o plikach |
 |---|---|---|
-| [Dane dla instytucji rządowych USA](https://www.census.gov/data.html) | Ponad 190,000 zestawów danych obejmujących rolnictwa, klimatem, odbiorców, ekosystemami edukacji, energii, finance kondycji, lokalnej produkcyjnym morskiego, Oceanu, bezpieczeństwa publicznego i nauki i badania w Stanach Zjednoczonych | Pliki o różnych rozmiarach w różnych formatach, w tym HTML, XML, CSV, JSON, Excel i wielu innych. Dostępne zestawy danych można filtrować według formatu pliku. |
-| [Dane spisu stany USA](https://www.census.gov/data.html) | Dane statystyczne dotyczące populacji Stanów Zjednoczonych | Zestawy danych znajdują się w różnych formatach. |
-| [Dane NASA nauki ziemi.](https://earthdata.nasa.gov/) | Zbiory danych niż 32 000 obejmujące rolnictwa, atmosfery, biosfery, klimatem, cryosphere, wymiary ludzi, hydrosfery, powierzchni ziemi, oceanów, interakcje sun ziemi i więcej. | Zestawy danych znajdują się w różnych formatach. |
-| [Opóźnienia transmitowane linii lotniczych i innych danych transportu](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "USA Stanowych przez Biuro statystyki transportu (BTS) śledzi wydajność na czas krajowych lotach obsługiwane przez nośniki dużych lotniczego (KROPKĄ). Podsumowanie liczby lotach na czas, opóźnione, anulowanych i kierunku pojawi się... w tabelach podsumowania zamieszczony na tej witrynie sieci Web." | Pliki są w formacie CSV. |
-| [Ruch zgonów - US Fatality analizy raportowania systemu (FARS)](http://www.nhtsa.gov/FARS) | "FARS jest krajowego spisu, zapewniając NHTSA, Kongresu, i American publicznego roczne dane dotyczące krytyczny uszkodzenia poniesione w motoryzacyjnego ruchu awarii (Crash)." | "Tworzenie własnych danych fatality Uruchom online przy użyciu systemu FARS zapytania. Lub pobrać wszystkich danych FARS z 1975 do prezentowania z witryny FTP." |
-| [Toksyczne chemicznych danych - warunkowy EPA toksyczności typu (ToxCast™)](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | "EPA toksyczności wysokiej przepustowości najnowszych, publicznie dostępnych danych na tysiącach chemikaliów. Te dane jest generowany przez wysiłków badawczych ToxCast EPA". | Zestawy danych są dostępne w różnych formatach, takich jak arkusze kalkulacyjne, pakiety języka R i pliki bazy danych MySQL. |
-| [Dane chemicznych toksyczne — NIH Tox21 danych żądania 2014](https://tripod.nih.gov/tox21/challenge/) | "Żądanie danych Tox21 2014 ułatwia zrozumienie możliwości chemikaliów i związki testowane za pośrednictwem Toxicology inicjatywy 21 wieku zakłócić biologicznych ścieżek z metod, które mogą skutkować toksycznych służące." | Zestawy danych są dostępne w UŚMIECHY i SDF formatów. Udostępnia dane "Analiza dane o aktywności i struktur chemicznych w kolekcji Tox21 związków ~ 10 000 (Tox21 10K)." |
-| [Dane biotechnologii i genomu z NCBI](https://www.ncbi.nlm.nih.gov/guide/data-software/) | Obejmujące genów, genomy i białek wiele zestawów danych. | Zestawy danych znajdują się w text, XML, wielkich i innych formatach. Aplikacja wielkich jest dostępna. |
+| [Dane dla instytucji rządowych USA](https://www.census.gov/data.html) | Ponad 190,000 zestawów danych obejmujących rolnictwa klimatu, konsumenta, ekosystemów, edukacja, energii, finance kondycji, lokalnych instytucji rządowych, produkcji morskie, ocean, organizacje bezpieczeństwa publicznego i nauki i badań w Stanach Zjednoczonych | Pliki o różnych rozmiarach w różnych formatach, w tym HTML, XML, CSV, JSON, Excel i wiele innych. Dostępne zestawy danych można filtrować według formatu pliku. |
+| [Dane spisu Stanów Zjednoczonych](https://www.census.gov/data.html) | Dane statystyczne dotyczące populacji Stanów Zjednoczonych | Zestawy danych są w różnych formatach. |
+| [Dane do nauki o ziemi z NASA](https://earthdata.nasa.gov/) | Kolekcje ponad 32000 danych obejmujące rolnictwo, atmosfery, biosfery, klimatu, cryosphere, wymiary ludzi, hydrosfery, powierzchni ziemi, oceanów, interakcje sun ziemi i więcej. | Zestawy danych są w różnych formatach. |
+| [Linie lotnicze powodujących opóźnienia lotów i inne dane transportu](https://www.transtats.bts.gov/OT_Delay/OT_DelayCause1.asp) | "Stanów Zjednoczonych Departamentu transportu przez Biuro statystyki transportu (BTS) śledzi punktualności lotów połączeniach krajowych obsługiwane przez duże przewoźników (kropka). Podsumowanie informacji o numerze lotów na czas, opóźnione, anulowanych i kierunku pojawia się... w tabelach podsumowania opublikowane w tej witrynie sieci Web." | Pliki są w formacie CSV. |
+| [Ruch zgonów - nam Fatality analizy raportowania systemu (FARS)](http://www.nhtsa.gov/FARS) | "FARS jest krajowego spisu, zapewniając NHTSA, Kongres, i American publicznych roczne dane dotyczące krytyczny kontuzje poniesione w awarie ruchu drogowego". | "Tworzenie własnych danych fatality działać w trybie online za pomocą systemu FARS zapytania. Lub Pobierz wszystkie dane FARS od 1975, aby przedstawić z witryny FTP." |
+| [Toksyczne chemicznych dane — warunkowy EPA toksyczności typu (ToxCast™)](https://www.epa.gov/chemical-research/toxicity-forecaster-toxcasttm-data) | "EPA najaktualniejszego, które są dostępne publicznie toksyczności o wysokiej przepływności danych na tysiącach chemiczne. Tych danych jest generowany za pośrednictwem wysiłków badawczych ToxCast EPA." | Zestawy danych są dostępne w różnych formatach, łącznie z arkuszy kalkulacyjnych, pakiety R i pliki bazy danych MySQL. |
+| [Dane chemicznych toksyczne — NIH Tox21 danych wyzwanie 2014](https://tripod.nih.gov/tox21/challenge/) | "Żądanie danych Tox21 2014 ułatwia zrozumienie potencjał chemiczne i związki testowana za pośrednictwem Toxicology XXI wieku siła inicjatywy w celu zakłócania biologicznych szlaki w sposób, który może spowodować toksycznych analityków." | Zestawy danych są dostępne w radosną TWARZ i SDF formatów. Udostępnia dane "Analiza, dane o aktywności i chemicznych struktur w kolekcji Tox21 związków ~ 10 000 (Tox21 10K)." |
+| [Dane biotechnologii i genome z NCBI](https://www.ncbi.nlm.nih.gov/guide/data-software/) | Wiele zestawów danych obejmujące genów, genomów i białek. | Zestawy danych są w tekst, XML, RAŻENIA i innych formatach. Aplikacja RAŻENIA jest dostępna. |
 
 ## <a name="other-statistical-and-scientific-data"></a>Inne dane statystyczne i naukowe
 
 | Źródło danych | Informacje o danych | Informacje o plikach |
 |---|---|---|
-| [Dane taksówki nowego Jorku](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "Rekordy podróży taksówki obejmują pola Przechwytywanie odbiór i przyjmowania daty/godziny, lokalizacje pobrania i przyjmowania, odległości podróży, wyszczególnione opłat, szybkość typów, typy płatności i liczby pasażerów zgłaszane przez sterownik." | Zbiory danych, to w plikach CSV według miesięcy. |
-| [Zestawy danych Microsoft Research — "Danych nauki Research"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | Zestawy danych wielu obejmujące komputer człowieka interakcji, audio i wideo, dane wyszukiwania/pobieranie informacji dotyczących, / lokalizacja, przetwarzania języka naturalnego i wizji robotics i komputera. | Zestawy danych znajdują się w różnych formatach, pliki z rozszerzeniem zip do pobrania. |
-| [Publiczny genomu danych](http://www.completegenomics.com/public-data/) | "Różnorodnych danych ludzkiej genomów są dostępne bezpłatnie do użytku publicznego w celu zwiększenia wszelkie genomiczne badania..." Dostawca, pełną genomika jest prywatny corporation nastawionym na osiąganie zysku. | Zestawy danych po wyodrębniania, są w formacie systemu UNIX. Dostępne są również narzędzia do analizy. |
-| [Otwórz dane analizy danych w chmurze](https://www.opensciencedatacloud.org/) | "Chmury Otwórz danych nauki zapewnia naukowych community z zasobów do przechowywania, udostępniania oraz analizowanie terabajtów i skali petabajt zestawów danych naukowych".| Zestawy danych znajdują się w różnych formatach. |
-| [Dane globalne klimatyzacja — WorldcLIM](http://worldclim.org/) | "WorldClim jest zestaw warstw klimatyzacja globalnego (gridded klimatyzacja danych) z przestrzenny km2 około 1. Tych danych może służyć do mapowania i modelowanie przestrzennych." | Te pliki zawierają dane geograficzne. Aby uzyskać więcej informacji, zobacz [format danych](http://worldclim.org/formats1). |
-| [Dane dotyczące społeczności ludzkiej - GDELT projektu](http://www.gdeltproject.org/data.html) | "Projektu GDELT jest największy, najbardziej kompleksowy i największa rozpoznawania otworzyć bazy danych społeczeństwa ludzi, tworzenia". | Pliki nieprzetworzone dane są w formacie CSV. |
-| [Reklamy kliknij danych przewidywania dla usługi machine learning z Criteo](http://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "Największy kiedykolwiek publicznie wydanych ML zestawu danych." Aby uzyskać więcej informacji, zobacz [Criteo na 1 TB kliknij prognozowania Dataset](https://blogs.technet.microsoft.com/machinelearning/2015/04/01/now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |
-| [Zestaw danych wyszukiwania tekstu ClueWeb09 z Lemur projektu](http://www.lemurproject.org/clueweb09.php/) | "ClueWeb09 zestaw danych został utworzony obsługiwanych badania w pobierania informacji i technologii pokrewnych języka człowieka. Składa się z około 1 miliard stron sieci web w 10 językach, które zostały zebrane w styczniu i lutego 2009." | Zobacz [informacji zestawu danych](http://www.lemurproject.org/clueweb09/datasetInformation.php).|
+| [Dane taksówek w Nowym Jorku](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "Rekordy podróży taksówek obejmują pola przechwytywania odbiór i nadania daty/godziny, pobrania i nadania lokalizacje, odległości podróży, opłaty dla pozycji, szybkość typy, typy płatności i liczby pasażerów zgłaszane przez sterownik." | Zestawy danych są w plikach CSV według miesiąca. |
+| [Microsoft Research zestawów danych — "Data Science Research"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | Zestawy wielu danych, obejmujące interakcji-komputer, audio/wideo, danych wyszukiwania/pobieranie informacji dotyczących, dane geograficzne/lokalizacji, przetwarzanie języka naturalnego i związane z robotyką/komputerowej. | Zestawy danych są w różnych formatach, zip do pobrania. |
+| [Danych dotyczących genomu publiczne](http://www.completegenomics.com/public-data/) | "Zróżnicowany zestaw danych ludzkiej genomów są dostępne bezpłatnie do użytku publicznego zwiększyć wszelkich badań dotyczących genomu..." Dostawca, pełną Genomics jest prywatny corporation nastawionym na osiąganie zysku. | Zestawy danych, po wyodrębniania, są w formacie tekstowym systemu UNIX. Dostępne są również narzędzia do analizy. |
+| [Otwórz dane do analizy danych w chmurze](https://www.opensciencedatacloud.org/) | "Otwórz danych do analizy w chmurze zapewnia środowiska nauki z zasobami na potrzeby przechowywania, udostępnianie i analizowanie zestawów terabajtów i petabajtów danych naukowych".| Zestawy danych są w różnych formatach. |
+| [Dane globalne klimatu — WorldcLIM](http://worldclim.org/) | "WorldClim to zbiór klimatycznych warstwy (gridded klimatu danych) z przestrzenny km2 około 1. Tych danych może służyć do mapowania i modelowanie przestrzennych." | Te pliki zawierają dane geograficzne. Aby uzyskać więcej informacji, zobacz [format danych](http://worldclim.org/formats1). |
+| [Dane dotyczące społeczności ludzkiej - GDELT projektu](http://www.gdeltproject.org/data.html) | "Projekt GDELT jest największy, najbardziej kompleksowy i najwyższą rozkład otworzyć bazy danych społeczeństwa ludzi, jakie kiedykolwiek było". | Pliki nieprzetworzone dane są w formacie CSV. |
+| [Reklamy kliknij danymi przewidywań uczenia maszynowego z Criteo](http://labs.criteo.com/2013/12/download-terabyte-click-logs/) | "Największą kiedykolwiek publicznie wydana ML zestawu danych." Aby uzyskać więcej informacji, zobacz [firmy Criteo 1 TB kliknij prognozowania Dataset](https://blogs.technet.microsoft.com/machinelearning/2015/04/01/now-available-on-azure-ml-criteos-1tb-click-prediction-dataset/). | |
+| [Zestaw danych ClueWeb09 tekst wyszukiwania z projektu Lemur](http://www.lemurproject.org/clueweb09.php/) | "ClueWeb09 zestawu danych został utworzony w celu obsługi badań pobierania informacji i technologii pokrewnych języka ludzi. Składa się z około 1 miliard stron sieci web w 10 językach, które zostały zebrane w styczniu i lutego 2009." | Zobacz [informacji zestawu danych](http://www.lemurproject.org/clueweb09/datasetInformation.php).|
 
 ## <a name="online-service-data"></a>Dane usługi online
 
 | Źródło danych | Informacje o danych | Informacje o plikach |
 |---|---|---|
-| [Archiwum GitHub](https://www.githubarchive.org/) | "Archiwum GitHub jest projektu do zapisywania publicznego GitHub osi czasu [zdarzenia], archiwizować i był łatwy do dalszej analizy." | Pobierz JSON encloded archiwa zdarzenia w formacie .gz (Gzip) z klienta sieci web. |
-| [Dane o aktywności GitHub z GHTorrent projektu](http://ghtorrent.org/) | "Projektu GHTorrent [jest] ułatwia tworzenie skalowalnych, kolejność, w trybie offline dublowania danych dostępna za pośrednictwem interfejsu API REST usługi GitHub. GHTorrent monitoruje osi czasu zdarzeń publicznego GitHub. Dla każdego zdarzenia pobierania zawartości oraz ich zależności wyczerpujący." | Zrzuty bazy danych MySQL są w formacie CSV. |
-| [Zrzut danych przepełnienie stosu](https://archive.org/details/stackexchange) | "Jest anonimowe zrzutu całą zawartość zamieszczone przez użytkownika w sieci Exchange stosu [tym przepełnienie stosu]". | "Każdej lokacji [np. przepełnienie stosu] jest w formacie zip oddzielne archiwum, składające się z plikami XML za pomocą 7-zip przy użyciu bzip2 kompresji. Archiwum każdej lokacji obejmuje: wpisów, użytkowników, głosy, komentarze, PostHistory i PostLinks." |
+| [Archiwum usługi GitHub](https://www.githubarchive.org/) | "GitHub archiwum jest projekt do rejestrowania publicznych GitHub oś czasu [zdarzenia], archiwizować i był łatwy dostęp do dalszej analizy". | Pobierz JSON encloded archiwa zdarzenia w formacie .gz (Gzip) z klienta sieci web. |
+| [Dane o aktywności usługi GitHub z GHTorrent projektu](http://ghtorrent.org/) | "Projekt GHTorrent [jest] starań, aby utworzyć duplikat skalowalne, możliwością tworzenia zapytań w trybie offline danych oferowana za pośrednictwem interfejsu API REST usługi GitHub. GHTorrent monitoruje oś czasu zdarzenie publiczne usługi GitHub. Dla każdego zdarzenia pobiera jego zawartość i ich zależności wyczerpująco." | Zrzuty bazy danych MySQL, są w formacie CSV. |
+| [Zrzut danych przepełnienie stosu](https://archive.org/details/stackexchange) | "Jest anonimowe zrzutu całą zawartość zamieszczaną przez użytkownika w sieci Stack Exchange [tym Stack Overflow]". | "Każdej lokacji [przykład przepełnienie stosu] sformatowane jako osobne archiwum, składający się z plikami XML zip za pośrednictwem przy użyciu bzip2 kompresji zip 7. Archiwum w każdej lokacji zawiera: wpisów, użytkownicy, głosy, komentarze, PostHistory i PostLinks." |

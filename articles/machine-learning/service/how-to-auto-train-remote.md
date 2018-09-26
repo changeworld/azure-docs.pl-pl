@@ -10,26 +10,26 @@ ms.component: core
 ms.workload: data-services
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 80a227b57c8df157890337f0e207519c71ae5bd6
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 2ec0dea7e50747f8af337874c8f12463cecb8df7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034624"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163481"
 ---
 # <a name="train-models-with-automated-machine-learning-in-the-cloud"></a>Szkolenie modeli za pomocą automatycznych machine learning w chmurze
 
-W usłudze Azure Machine Learning możesz uczyć modelu na różnego rodzaju zasobów obliczeniowych, którymi zarządzasz. Obliczeniowego elementu docelowego może być komputerze lokalnym lub w chmurze. 
+W usłudze Azure Machine Learning możesz uczyć modelu na różnego rodzaju zasobów obliczeniowych, którymi zarządzasz. Obliczeniowego elementu docelowego może być komputerze lokalnym lub w chmurze.
 
 Możesz łatwo skalować w górę lub skalowania w poziomie eksperymentu usługi machine learning, dodając dodatkowe obliczeniowych elementów docelowych, takich jak oparta na systemie Ubuntu Data Science Virtual Machine (dsvm dystrybucji) lub usługi Azure Batch AI. Maszyny DSVM jest dostosowany obraz maszyny Wirtualnej w chmurze Microsoft Azure, przeznaczony do nauki o danych. Ma wiele popularnych danych do analizy i inne narzędzia, wstępnie zainstalowanych i skonfigurowanych.  
 
-W tym artykule dowiesz się, jak tworzyć modele korzystające z uczenia Maszynowego z automatycznego na maszyny DSVM.  
+W tym artykule dowiesz się, jak tworzyć modele korzystające z automatycznych uczenia Maszynowego na maszyny DSVM. Można znaleźć przykłady użycia usługi Azure Batch AI w [te notesy przykładowych w usłudze GitHub](https://aka.ms/aml-notebooks).  
 
 ## <a name="how-does-remote-differ-from-local"></a>Czym różni się zdalne z lokalnego?
 
-Samouczek "[Wytrenuj model klasyfikacji z automatycznego ML](tutorial-auto-train-models.md)" dowiesz się, jak używać komputera lokalnego do nauczenia modelu za pomocą zautomatyzowanego uczenia Maszynowego.  Przepływ pracy podczas szkolenia lokalnie ma zastosowanie również do celów zdalnego, a także. Za pomocą zdalnego mocy obliczeniowej iteracjami eksperymentów uczenia Maszynowego z automatycznego są wykonywane asynchronicznie. Dzięki temu, że anulujesz konkretnej iteracji, wyrażeń kontrolnych stanu wykonywania i kontynuować pracę na innych komórek w notesie Jupyter. To w opracowywaniu zdalnie, należy najpierw utworzyć cel obliczenia zdalnego takich jak Azure, maszyny wirtualnej DSVM, jest skonfigurowana i przesyłać tam kod.
+Samouczek "[Wytrenuj model klasyfikacji przy użyciu uczenia maszynowego automatycznych](tutorial-auto-train-models.md)" dowiesz się, jak używać komputera lokalnego do uczenia modelu z automatycznych ML.  Przepływ pracy podczas szkolenia lokalnie ma zastosowanie również do celów zdalnego, a także. Jednak za pomocą zdalnego mocy obliczeniowej, zautomatyzowane iteracjami eksperymentów uczenia Maszynowego są wykonywane asynchronicznie. Dzięki temu można anulować konkretnej iteracji, obejrzyj stan wykonania lub kontynuować pracę na innych komórek w notesie Jupyter. To w opracowywaniu zdalnie, należy najpierw utworzyć zdalnego obliczeniowego elementu docelowego, takich jak Azure, maszyny wirtualnej DSVM.  Następnie skonfiguruj zasób zdalny i przesyłać tam kod.
 
-Ten artykuł przedstawia dodatkowe kroki potrzebne do uruchomienia zautomatyzowane ML Wypróbuj zdalnego maszyny wirtualnej DSVM.  Obiekt workspace `ws`, w tym samouczku jest używana w całym kodzie, w tym miejscu.
+Ten artykuł przedstawia dodatkowe kroki wymagane do uruchamiania automatycznych eksperymentu uczenia Maszynowego na zdalnego maszyny wirtualnej DSVM.  Obiekt workspace `ws`, w tym samouczku jest używana w całym kodzie, w tym miejscu.
 
 ```python
 ws = Workspace.from_config()
@@ -50,6 +50,7 @@ try:
     print('found existing dsvm.')
 except:
     print('creating new dsvm.')
+    # Below is using a VM of SKU Standard_D2_v2 which is 2 core machine. You can check Azure virtual machines documentation for additional SKUs of VMs.
     dsvm_config = DsvmCompute.provisioning_configuration(vm_size = "Standard_D2_v2")
     dsvm_compute = DsvmCompute.create(ws, name = dsvm_name, provisioning_configuration = dsvm_config)
     dsvm_compute.wait_for_completion(show_output = True)
@@ -69,10 +70,12 @@ Ograniczenia dotyczące nazwy maszyny wirtualnej DSVM obejmują:
 >    1. Zakończ bez faktycznie tworzenia maszyny Wirtualnej
 >    1. Uruchom ponownie kod tworzenia
 
+Ten kod nie tworzy nazwy użytkownika lub hasła dla maszyny wirtualnej DSVM, dla którego zainicjowano. Jeśli chcesz nawiązać bezpośrednie połączenie maszyny Wirtualnej, przejdź do strony [witryny Azure portal](https://portal.azure.com) aprowizować poświadczenia.  
 
-## <a name="access-data-using-get-data-file"></a>Dostęp do danych przy użyciu pliku pobieranie danych
 
-Podaj zasób zdalny dostęp do danych szkoleniowych. Dla automatycznego ML eksperymentów, systemem zdalnym obliczeń dane mają zostać pobrane, za pomocą `get_data()` funkcji.  
+## <a name="access-data-using-getdata-file"></a>Dostęp do danych przy użyciu pliku get_data
+
+Podaj zasób zdalny dostęp do danych szkoleniowych. Eksperymenty uczenia maszynowego automatycznych systemem zdalnym obliczeń, aby uzyskać dane mają zostać pobrane, za pomocą `get_data()` funkcji.  
 
 Aby zapewnić dostęp, musisz mieć:
 + Tworzenie pliku get_data.py zawierającego `get_data()` — funkcja 
@@ -81,7 +84,7 @@ Aby zapewnić dostęp, musisz mieć:
 Należy hermetyzować kod, aby odczytać dane z magazynu obiektów blob lub dysk lokalny, w pliku get_data.py. W poniższym przykładzie kodu dane pochodzą z pakietu skryptu sklearn.
 
 >[!Warning]
->Jeśli używasz zdalnego obliczeniowych, a następnie należy użyć `get_data()` do wykonania przekształceń danych.
+>Jeśli używasz zdalnego obliczeniowych, a następnie należy użyć `get_data()` gdzie przekształceń danych są wykonywane. Jeśli musisz zainstalować dodatkowe biblioteki do przekształcenia danych jako część get_data(), istnieją dodatkowe kroki, które należy stosować. Zapoznaj się [notesu auto-ml — przygotowania danych przykładowych](https://aka.ms/aml-auto-ml-data-prep ) Aby uzyskać szczegółowe informacje.
 
 
 ```python
@@ -105,7 +108,7 @@ def get_data():
     return { "X" : X_digits, "y" : y_digits }
 ```
 
-## <a name="configure-automated-machine-learning-experiment"></a>Konfigurowanie automatycznych eksperymentu uczenia maszynowego
+## <a name="configure-experiment"></a>Konfigurowanie eksperymentu
 
 Określ ustawienia `AutoMLConfig`.  (Zobacz [pełną listę parametrów]() i ich możliwe wartości.)
 
@@ -136,7 +139,7 @@ automl_config = AutoMLConfig(task='classification',
                             )
 ```
 
-## <a name="submit-automated-machine-learning-training-experiment"></a>Przesyłanie automatycznych eksperymentu uczenia maszynowego, szkolenia
+## <a name="submit-training-experiment"></a>Przesyłanie eksperymentu szkolenia
 
 Teraz przesłać konfiguracji do automatycznego wybierania algorytmów, parametry hyper i trenowanie modelu. (Dowiedz się, [więcej informacji o ustawieniach]() dla `submit` metody.)
 

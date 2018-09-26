@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 54812ed8b53143d8fa156149bfb2c7adff7da98d
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: b731b280b3e97076014f609571766a07a3dde1ea
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381553"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159894"
 ---
 # <a name="string-claims-transformations"></a>Ciąg oświadczeń przekształcenia
 
@@ -150,7 +150,7 @@ Służy to oświadczeń przekształcenia, aby ustawić ciąg wartości oświadcz
 
 ## <a name="compareclaims"></a>CompareClaims
 
-Ustal, czy jedno oświadczenie ciągu jest równy innemu. Wynik jest nowe, logiczna boolean oświadczenia o wartości `true` lub `false`.
+Ustal, czy jedno oświadczenie ciągu jest równy innemu. Wynik jest nowy logiczna typu oświadczenia o wartości `true` lub `false`.
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |

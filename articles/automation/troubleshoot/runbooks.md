@@ -8,12 +8,12 @@ ms.date: 07/13/2018
 ms.topic: conceptual
 ms.service: automation
 manager: carmonm
-ms.openlocfilehash: 1954393c9fe544c33919c8f9fb8ee04e430e7639
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: b02f1b04756f1e3f01426e58c5f8c625cb746f05
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542569"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163906"
 ---
 # <a name="troubleshoot-errors-with-runbooks"></a>Rozwiązywanie problemów z elementami runbook
 
@@ -93,11 +93,18 @@ Ten błąd występuje, jeśli nazwa subskrypcji jest nieprawidłowa lub użytkow
 
 Aby ustalić, czy zostały prawidłowo uwierzytelnione na platformie Azure i mieć dostęp do subskrypcji, którą chcesz wybrać, wykonaj następujące czynności:  
 
-1. Upewnij się, że uruchomieniu **Add-AzureAccount** przed uruchomieniem **Select-AzureSubscription** polecenia cmdlet.  
-2. Jeśli nadal widzisz ten komunikat o błędzie, należy zmodyfikować kod, dodając **Get-AzureSubscription** następujące polecenia cmdlet **Add-AzureAccount** polecenia cmdlet, a następnie wykonaj kod. Teraz sprawdzić, czy dane wyjściowe Get-AzureSubscription zawiera szczegóły subskrypcji.  
+1. Upewnij się, że uruchomieniu **Add-AzureAccount** zanim uruchomisz polecenie cmdlet **Select-AzureSubscription** polecenia cmdlet.  
+2. Jeśli nadal widzisz ten komunikat o błędzie, należy zmodyfikować kod, dodając **- AzureRmContext** następujący parametr **Add-AzureAccount** polecenia cmdlet, a następnie wykonaj kod.
 
-   * Jeśli nie widzisz żadnych szczegółów subskrypcji, w danych wyjściowych, oznacza to, że subskrypcja nie jest jeszcze zainicjowana.  
-   * Jeśli widzisz Szczegóły subskrypcji w danych wyjściowych, upewnij się, czy używany poprawną subskrypcję nazwę lub identyfikator z **Select-AzureSubscription** polecenia cmdlet.
+   ```powershell
+   $Conn = Get-AutomationConnection -Name AzureRunAsConnection
+   Connect-AzureRmAccount -ServicePrincipal -Tenant $Conn.TenantID `
+-ApplicationID $Conn.ApplicationID -CertificateThumbprint $Conn.CertificateThumbprint
+
+   $context = Get-AzureRmContext
+
+   Get-AzureRmVM -ResourceGroupName myResourceGroup -AzureRmContext $context
+   ```
 
 ### <a name="auth-failed-mfa"></a>Scenariusz: Uwierzytelnianie nie powiodło się, ponieważ włączono uwierzytelnianie wieloskładnikowe Azure
 
@@ -151,7 +158,7 @@ Podrzędny element runbook nie używa poprawny kontekst podczas uruchamiania.
 
 #### <a name="resolution"></a>Rozwiązanie
 
-Podczas pracy z wieloma subskrypcjami kontekstu subskrypcji mogą zostać utracone podczas wywoływania podrzędnych elementów runbook. Aby upewnić się, że kontekstu subskrypcji jest przekazywany do podrzędnych elementów runbook, należy dodać `DefaultProfile` parametru do polecenia cmdlet i przekazać kontekst do niego.
+Podczas pracy z wieloma subskrypcjami kontekstu subskrypcji mogą zostać utracone podczas wywoływania podrzędnych elementów runbook. Aby upewnić się, że kontekstu subskrypcji jest przekazywany do podrzędnych elementów runbook, należy dodać `AzureRmContext` parametru do polecenia cmdlet i przekazać kontekst do niego.
 
 ```azurepowershell-interactive
 # Connect to Azure with RunAs account
@@ -171,7 +178,7 @@ Start-AzureRmAutomationRunbook `
     –AutomationAccountName 'MyAutomationAccount' `
     –Name 'Test-ChildRunbook' `
     -ResourceGroupName 'LabRG' `
-    -DefaultProfile $AzureContext `
+    -AzureRmContext $AzureContext `
     –Parameters $params –wait
 ```
 

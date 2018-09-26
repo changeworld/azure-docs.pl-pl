@@ -11,11 +11,11 @@ ms.topic: article
 ms.date: 06/06/2017
 ms.author: KumudD
 ms.openlocfilehash: 1fac461c3af4ea0a2e1f2257256969c47bc3d134
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35650006"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47094472"
 ---
 # <a name="get-load-balancer-utilization-metrics-using-the-rest-api"></a>Pobierz metryki użycia modułu równoważenia obciążenia przy użyciu interfejsu API REST
 
@@ -56,7 +56,7 @@ Wymagane są następujące nagłówki:
 
 Nie treści żądania jest wymagana dla tej operacji.
 
-## <a name="handle-the-response"></a>Dojście do odpowiedzi
+## <a name="handle-the-response"></a>Obsługa odpowiedzi
 
 Pomyślnie zwrócona lista wartości metryk zwracany jest kod stanu 200. Pełną listę kodów błędów jest dostępna w [dokumentację referencyjną](/rest/api/monitor/metrics/list#errorresponse).
 

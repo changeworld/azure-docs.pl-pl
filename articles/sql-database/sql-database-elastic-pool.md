@@ -1,22 +1,23 @@
 ---
 title: Zarządzanie wielu baz danych SQL za pomocą elastycznych pul platformy Azure | Dokumentacja firmy Microsoft
 description: Zarządzanie i skalowania wielu baz danych SQL — setki oraz tysięcy - wykorzystujących pule elastyczne. Jedna cena zasoby, które można rozpowszechniać w razie potrzeby.
-keywords: wiele baz danych zasobów bazy danych, wydajność bazy danych
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.subservice: elastic-pool
-ms.custom: DBs & servers
-ms.date: 09/14/2018
-ms.author: ninarn
+subservice: elastic-pool
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.openlocfilehash: 39c127569ea3ea5339c90554e1e899212f1b3f6a
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+author: oslake
+ms.author: moslake
+ms.reviewer: ninarn, carlrab
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 71269b4888d1b5c9724248ac91f0818d7f8f5bf5
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735516"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162359"
 ---
 # <a name="elastic-pools-help-you-manage-and-scale-multiple-azure-sql-databases"></a>Pul elastycznych pozwalają na zarządzanie i skalowania wielu baz danych Azure SQL
 

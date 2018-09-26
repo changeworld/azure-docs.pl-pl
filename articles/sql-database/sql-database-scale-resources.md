@@ -2,19 +2,22 @@
 title: Usługi Azure SQL Database skalowanie zasobów | Dokumentacja firmy Microsoft
 description: W tym artykule opisano sposób Skaluj bazę danych, dodając lub usuwając przydzielone zasoby.
 services: sql-database
-author: jovanpop-msft
-ms.reviewer: carlrab
 ms.service: sql-database
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/20/2018
+author: jovanpop-msft
 ms.author: jovanpop
+ms.reviewer: carlrab
 manager: craigg
-ms.openlocfilehash: 4972d00c978797a5c3d9bfe2e430276cafdcb698
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.date: 09/20/2018
+ms.openlocfilehash: cd0653cf1920bd62621b89410b8cd2de2570fae3
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032108"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162922"
 ---
 # <a name="scale-database-resources"></a>Skalowanie zasobów bazy danych
 

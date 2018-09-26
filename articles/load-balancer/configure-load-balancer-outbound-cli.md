@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: dd549005776656bb755b78fc0ca73d24edcc77bd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a6d442452fe5ffc61648b3c004c03f1756f8f57e
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973749"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160659"
 ---
 # <a name="configure-load-balancing-and-outbound-rules-in-standard-load-balancer-using-azure-cli"></a>Konfigurowanie równoważenia obciążenia i reguł dla ruchu wychodzącego w standardowego modułu równoważenia obciążenia przy użyciu wiersza polecenia platformy Azure
 
@@ -155,6 +155,9 @@ az network lb outbound-rule create \
  --outbound-ports 10000 \
  --address-pool bepool
 ```
+
+W tym momencie można przystąpić do dodawania maszyny Wirtualnej do puli zaplecza *bepool* , aktualizując konfiguracji IP odpowiednie zasoby karty Sieciowej.
+
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Gdy grupa zasobów nie będzie już potrzebna, możesz użyć polecenia [az group delete](/cli/azure/group#az-group-delete), aby usunąć grupę zasobów, moduł równoważenia obciążenia oraz wszystkie pokrewne zasoby.

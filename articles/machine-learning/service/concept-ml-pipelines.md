@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: sanpil
 author: sanpil
 ms.date: 09/24/2018
-ms.openlocfilehash: d9f34345275efbb8aec422e5fa14234c7d6a61a5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e1181d07ed51b1edf5da68d759d871703bd1540f
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997849"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162784"
 ---
 # <a name="pipelines-and-azure-machine-learning"></a>Potoki i usługi Azure Machine Learning
 
@@ -34,7 +34,7 @@ Na poniższym diagramie przedstawiono przykład potoku:
 
 ## <a name="why-build-pipelines-with-azure-machine-learning"></a>Dlaczego warto tworzyć potoki za pomocą usługi Azure Machine Learning?
 
-Zestaw Azure Machine Learning SDK for Python może służyć do tworzenia potoków uczenia Maszynowego w również przesłać i śledzić uruchomienia potoku poszczególnych.
+[Azure Machine Learning SDK dla języka Python](#the-python-sdk-for-pipelines) umożliwiają tworzenie potoków uczenia Maszynowego, jak również przesłać i śledzić uruchomienia potoku poszczególnych.
 
 W przypadku potoków można zoptymalizować przepływ pracy prostotę, szybkość, przenoszenia i ponownego użycia. Podczas kompilowania potoków przy użyciu usługi Azure Machine Learning, można skoncentrować się na najlepiej znasz &mdash; uczenia maszynowego &mdash; zamiast infrastruktury.
 
@@ -42,7 +42,7 @@ Przy użyciu etapy umożliwia ponowne uruchamianie tylko kroki, których potrzeb
 
 Gdy potok został zaprojektowany, jest często więcej dostrajanie wokół pętli szkolenia potoku. Kiedy ponowne uruchomienie potoku wykonywania przechodzi do czynności, które konieczne będzie ponowne uruchomienie, takich jak skrypt szkolenia zaktualizowane i pomija, co się nie zmienił. Tym samym modelu dotyczy niezmienione skrypty używane do wykonywania tego kroku. 
 
-Za pomocą usługi Azure Machine Learning można użyć różnych zestawów narzędzi i platform, takich jak Microsoft Cognitive Toolkit lub TensorFlow dla każdego kroku w potoku. Współrzędne platformy Azure między różnymi [celów obliczeń](concept-azure-machine-learning-architecture.md) używać tak, aby pośrednie dane mogą być udostępniane podrzędnego obliczeniowych elementów docelowych łatwe. 
+Za pomocą usługi Azure Machine Learning używając różnych zestawów narzędzi i platform, takich jak Microsoft Cognitive Toolkit lub TensorFlow dla każdego kroku w potoku. Współrzędne platformy Azure między różnymi [celów obliczeń](concept-azure-machine-learning-architecture.md) używać tak, aby pośrednie dane mogą być udostępniane podrzędnego obliczeniowych elementów docelowych łatwe. 
 
 ## <a name="key-advantages"></a>Najważniejsze zalety
 
@@ -63,7 +63,7 @@ Dane deklaratywne zależności można zoptymalizować swoje zadania. Zestaw SDK 
 
 Potoki mogą być zapisywane jako szablony i którą można wdrożyć do punktu końcowego REST, dzięki czemu można zaplanować zadania wsadowe ocenianie przez lub ponownego trenowania.
 
-Zapoznaj się z [dokumentacja zestawu SDK języka Python dla potoków](http://aka.ms/aml-sdk).
+Zapoznaj się z [dokumentacja zestawu SDK języka Python dla potoków](http://aka.ms/aml-sdk) i Notes w następnej sekcji, aby dowiedzieć się, jak tworzyć własne.
 
 ## <a name="example-notebooks"></a>Przykład notesów
  

@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/15/2018
 ms.author: abnarain
-ms.openlocfilehash: 7cd5fc965a57052323d4b916f0f2b7dbc0feb7b3
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: e22d26850114162c6dbd38797071120d388ac6b0
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715418"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162274"
 ---
 # <a name="how-to-create-and-configure-self-hosted-integration-runtime"></a>Jak utworzyć i skonfigurować własne środowisko IR
 Integration Runtime (IR) to infrastruktura obliczeniowa używana przez usługę Azure Data Factory w celu zapewnienia możliwości integracji danych w różnych środowiskach sieciowych. Aby uzyskać szczegółowe informacje o środowisku IR, zobacz [Omówienie środowiska Integration Runtime](concepts-integration-runtime.md).
@@ -187,18 +187,20 @@ W usłudze Data Factory, w którym zostały przyznane uprawnienia,
 
 1. Domyślna liczba połączonych IR, które mogą być tworzone w ramach pojedynczego własne środowisko IR to **20**. Jeśli potrzebujesz więcej, a następnie skontaktuj się z pomocą techniczną. 
 
-2. Połączone środowisko IR ma zostać utworzony fabryki danych musi mieć Instalatora MSI ([tożsamości usługi zarządzanej](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)). Domyślnie fabryk danych utworzone w portalu Ibiza lub poleceń cmdlet programu PowerShell będą tworzone niejawnie MSI. Jednak w niektórych przypadkach, po utworzeniu fabryki danych przy użyciu szablonu Menedżera zasobów Azure lub zestawu SDK "**tożsamości**" **musi być ustawiona właściwość** jawnie, aby upewnić się, Menedżer zasobów platformy Azure do tworzenia fabryki danych zawierającego Instalatora MSI. 
+2. Połączone środowisko IR ma zostać utworzony fabryki danych musi mieć Instalatora MSI ([tożsamości usługi zarządzanej](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)). Domyślnie fabryk danych utworzone w witrynie Azure portal lub poleceń cmdlet programu PowerShell będą tworzone niejawnie MSI. Jednak w niektórych przypadkach, po utworzeniu fabryki danych przy użyciu szablonu Menedżera zasobów Azure lub zestawu SDK "**tożsamości**" **musi być ustawiona właściwość** jawnie, aby upewnić się, Menedżer zasobów platformy Azure do tworzenia fabryki danych zawierającego Instalatora MSI. 
 
 3. Wersja Self-Hosted IR musi być równa lub większa niż 3.8.xxxx.xx. Proszę [Pobierz najnowszą wersję](https://www.microsoft.com/download/details.aspx?id=39717) o własne środowisko IR
 
-4. Połączone środowisko IR ma zostać utworzony fabryki danych musi mieć Instalatora MSI ([tożsamości usługi zarządzanej](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)). Domyślnie, fabryk danych utworzone w portalu Ibiza lub poleceń cmdlet programu PowerShell ma tożsamości usługi Zarządzanej ([tożsamości usługi zarządzanej](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)).
-tworzone w sposób niejawny fabryki danych, utworzonych za pomocą szablonu usługi Azure Resource Manager (ARM) lub zestaw SDK wymaga jednak właściwość "Tożsamość" należy ustawić upewnij się, że Instalator MSI jest tworzony.
+4. Połączone środowisko IR ma zostać utworzony fabryki danych musi mieć Instalatora MSI ([tożsamości usługi zarządzanej](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)). Domyślnie, fabryk danych utworzone w witrynie Azure portal lub poleceń cmdlet programu PowerShell ma tożsamości usługi Zarządzanej ([tożsamości usługi zarządzanej](https://docs.microsoft.com/azure/active-directory/managed-service-identity/overview)).
+  tworzone w sposób niejawny fabryki danych, utworzonych za pomocą szablonu usługi Azure Resource Manager lub zestaw SDK wymaga jednak "**tożsamości**" właściwość należy ustawić, aby upewnić się, Instalator MSI jest tworzona.
 
 5. Zestaw ADF .net SDK, które obsługują tę funkcję, jest w wersji > = 1.1.0
 
 6. Azure PowerShell, które obsługują tę funkcję jest w wersji > = 6.6.0 (AzureRM.DataFactoryV2 > = 0.5.7 pakietu)
 
-7. Aby udzielić uprawnień, użytkownik będzie wymagać roli "Właściciel" lub dziedziczone "Owner" w fabryce danych, w której istnieje środowisko IR udostępnione. 
+7. Aby udzielić uprawnień, użytkownik będzie wymagać "**właściciela**" roli lub dziedziczone "**właściciela**" roli w usłudze Data Factory, w której istnieje środowisko IR udostępnione. 
+
+8. Usługi Active Directory  **[użytkowników-gości](https://docs.microsoft.com/azure/active-directory/governance/manage-guest-access-with-access-reviews)**, funkcja wyszukiwania (wyświetlanie listy wszystkich fabryk danych przy użyciu słowa kluczowe do wyszukania) w interfejsie użytkownika [nie działa](https://msdn.microsoft.com/library/azure/ad/graph/howto/azure-ad-graph-api-permission-scopes#SearchLimits). Ale tak długo, jak użytkownik-Gość to "**właściciela**"usługi Data Factory, mogą oni udostępnić środowisko IR bez funkcji wyszukiwania bezpośrednio, wpisując tożsamości usługi zarządzane usługi Data Factory za pomocą którego środowiska IR musi być udostępniona w"**Przypisać Pemission**"pole tekstowe i wybierając polecenie"**Dodaj**"w interfejsie użytkownika usługi ADF. 
 
   > [!NOTE]
   > Ta funkcja jest dostępna tylko w usłudze Azure Data Factory w wersji 2 

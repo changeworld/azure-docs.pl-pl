@@ -1,25 +1,28 @@
 ---
-title: Przenoszenie danych między bazami danych w chmurze skalowalnych w poziomie | Dokumentacja firmy Microsoft
-description: Wyjaśniono, jak do manipulowania odłamków i przenoszenia danych za pośrednictwem usługi hostowania samoobsługowego przy użyciu interfejsów API elastycznej bazy danych.
+title: Przenoszenie danych między bazami danych w chmurze skalowanych w poziomie | Dokumentacja firmy Microsoft
+description: Wyjaśnia, jak do manipulowania fragmentów i przenoszenie danych za pomocą samodzielnie hostowanej usługi przy użyciu elastycznych baz danych interfejsów API.
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 3c68b18a96ae79cd32cd3059eab837e6051847dd
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 518d7659df603ed0fcab4aebf5f35c3b92e75ccf
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647422"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162632"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Przenoszenie danych między skalowanymi bazami danych w chmurze
-Jeśli jesteś oprogramowania jako deweloper usługi, i nagle aplikacji ulega ogromne żądanie, należy uwzględnić rozwój. Dlatego należy dodać więcej baz danych (odłamków). Jak wszystkie dane do nowych baz danych bez zakłócania integralność danych Użyj **narzędzia do scalania podziału** do przenoszenia danych z baz danych ograniczone do nowych baz danych.  
+To oprogramowanie, usługi dla deweloperów i nagle ulega ogromne popytu w swojej aplikacji, musisz uwzględnić rozwój. Dlatego należy dodać większej liczby baz danych (fragmentami). Sposób rozpowszechniania danych do nowych baz danych bez zakłócania integralność danych Użyj **narzędzie do dzielenia i scalania** do przenoszenia danych z baz danych, ograniczone do nowych baz danych.  
 
-Narzędzia do scalania podziału działa jako usługa sieci web platformy Azure. Administratorem lub deweloperem używa narzędzia do przenoszenia shardlets (dane z niezależnego fragmentu) między różnych baz danych (odłamków). Narzędzie wykorzystuje niezależnego fragmentu mapy zarządzania do obsługi bazy danych metadanych usługi i zapewnić spójne mapowania.
+Narzędzie do dzielenia i scalania działa jako usługa sieci web platformy Azure. Administratorem lub deweloperem używa narzędzia do przenoszenia podfragmentów (dane z fragmentu) między różnych baz danych (fragmentami). Narzędzie wykorzystuje procesu zarządzania mapą fragmentów obsługa bazy danych metadanych usługi w celu zapewnienia spójnego mapowania.
 
 ![Przegląd][1]
 
@@ -27,63 +30,63 @@ Narzędzia do scalania podziału działa jako usługa sieci web platformy Azure.
 [Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Service.SplitMerge/)
 
 ## <a name="documentation"></a>Dokumentacja
-1. [Samouczek narzędzi elastycznej bazy danych scalania podziału](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
-2. [Konfiguracja zabezpieczeń scalania podziału](sql-database-elastic-scale-split-merge-security-configuration.md)
-3. [Zagadnienia dotyczące zabezpieczeń scalania podziału](sql-database-elastic-scale-split-merge-security-configuration.md)
+1. [Samouczek dotyczący narzędzi elastycznej bazy danych dzielenia i scalania](sql-database-elastic-scale-configure-deploy-split-and-merge.md)
+2. [Konfiguracja zabezpieczenia dzielenia i scalania](sql-database-elastic-scale-split-merge-security-configuration.md)
+3. [Zagadnienia dotyczące zabezpieczeń dzielenia i scalania](sql-database-elastic-scale-split-merge-security-configuration.md)
 4. [Zarządzanie mapami fragmentów](sql-database-elastic-scale-shard-map-management.md)
-5. [Migrowanie istniejących baz danych do skalowalnego w poziomie](sql-database-elastic-convert-to-use-elastic-tools.md)
-6. [Narzędzi elastycznej bazy danych](sql-database-elastic-scale-introduction.md)
-7. [Elastyczne słownik Narzędzia bazy danych](sql-database-elastic-scale-glossary.md)
+5. [Migrowanie istniejących baz danych do skalowania w poziomie](sql-database-elastic-convert-to-use-elastic-tools.md)
+6. [Narzędzia elastycznych baz danych](sql-database-elastic-scale-introduction.md)
+7. [Słownik narzędzi usługi elastycznych baz danych](sql-database-elastic-scale-glossary.md)
 
-## <a name="why-use-the-split-merge-tool"></a>Dlaczego warto używać narzędzia do scalania podziału?
+## <a name="why-use-the-split-merge-tool"></a>Dlaczego warto używać narzędzia do dzielenia i scalania?
 **Elastyczność**
 
-Aplikacje muszą stretch elastycznie poza granicami pojedynczej bazy danych bazy danych SQL Azure. Użyj narzędzia do przenoszenia danych, w razie potrzeby do nowych baz danych, przy zachowaniu integralności.
+Aplikacje muszą przeprowadzić rozciąganie elastycznie poza granicami pojedynczej bazy danych Azure SQL DB. Użyj narzędzia do przenoszenia danych, zgodnie z potrzebami do nowych baz danych przy zachowaniu integralności.
 
-**Podziel się rozrastać** 
+**Podzielona na rozwój** 
 
-Należy zwiększyć ogólną wydajność obsługi dynamiczny rozwój. Aby to zrobić, należy utworzyć jej większą pojemność dzielenia na fragmenty danych oraz dystrybucję w przyrostowo więcej baz danych, dopóki nie są spełnione wymagana pojemność. To jest przykład głównym funkcji "podział". 
+Chcesz zwiększyć ogólną pojemności umożliwiającej obsługę szybkiego wzrostu liczby użytkowników. Aby to zrobić, należy utworzyć dodatkową pojemność przez fragmentowania danych i ich dystrybucję w przyrostowo większej liczby baz danych, dopóki nie są spełnione potrzeby związane z pojemnością. Jest to podstawowy przykład funkcji "podziału". 
 
-**Scal, aby zmniejszyć rozmiar**
+**Scal do zmniejszania**
 
-Pojemność musi zmniejszać ze względu na specyfikę okresach przedsiębiorstwa. Narzędzie pozwala skali mniejszej liczby jednostek skalowania podczas spowalnia biznesowych. Funkcja "merge" w usłudze scalania podziału elastycznego skalowania obejmuje to wymaganie. 
+Pojemność musi zmniejszyć ze względu na charakter sezonowej działalności biznesowej. Narzędzie pozwala skalować w dół do mniejszej liczby jednostek skalowania podczas spowalnia biznesowych. Funkcja "merge", elastyczne skalowanie usługi dzielenia i scalania obejmuje to wymaganie. 
 
-**Zarządzanie punktami HotSpot przenosząc shardlets**
+**Zarządzanie hotspotami, przenosząc podfragmentów**
 
-Z wieloma dzierżawcami na bazę danych Alokacja shardlets do odłamków może prowadzić do wąskich gardeł wydajności na niektórych fragmentów. Wymaga to ponowne przydzielanie shardlets lub przeniesienie zajęty shardlets do nowych lub mniej wykorzystywanych fragmentów. 
+Z wieloma dzierżawami na bazę danych Alokacja podfragmentów do fragmentów może spowodować wąskie gardła wydajności na niektórych fragmentów. Wymagane jest ponowne przydzielanie podfragmentów, lub przenoszenia zajęty podfragmentów do nowych lub mniej wykorzystywanych fragmentów. 
 
-## <a name="concepts--key-features"></a>Pojęcia dotyczące & najważniejsze funkcje
-**Obsługiwana w środowisku klienta usługi**
+## <a name="concepts--key-features"></a>Pojęcia i kluczowe funkcje
+**Usługi hostowane przez klienta**
 
-Scalanie podziału jest dostarczana jako usługa hostowana przez klienta. Należy wdrożyć i obsługi usługi w subskrypcji platformy Microsoft Azure. Pakiet, który można pobrać z NuGet zawiera szablon konfiguracji do ukończenia wraz z informacjami dla określonego wdrożenia. Zobacz [samouczek scalania podziału](sql-database-elastic-scale-configure-deploy-split-and-merge.md) szczegółowe informacje. Ponieważ usługa jest uruchamiana w Twojej subskrypcji platformy Azure, można kontrolować i skonfigurować większość ustawień zabezpieczeń usługi. Szablon domyślny zawiera opcje, aby skonfigurować protokół SSL, uwierzytelnianie klienta oparte na certyfikatach, szyfrowania przechowywanych poświadczeń, ochrona systemu DoS i ograniczenia adresów IP. Więcej informacji na temat aspekty zabezpieczeń można znaleźć w następującym dokumencie [konfiguracji zabezpieczeń scalania podziału](sql-database-elastic-scale-split-merge-security-configuration.md).
+Dzielenia i scalania są dostarczane jako usługa hostowana przez klienta. Należy wdrożyć i Hostuj usługi w Twojej subskrypcji Microsoft Azure. Pakiet, który możesz pobrać z pakietów NuGet zawiera szablon konfiguracji, aby ukończyć informacjami dla określonego wdrożenia. Zobacz [samouczek dzielenia i scalania](sql-database-elastic-scale-configure-deploy-split-and-merge.md) Aby uzyskać szczegółowe informacje. Ponieważ ta usługa działa w ramach subskrypcji platformy Azure, można kontrolować i skonfigurować większość ustawień zabezpieczeń usługi. Szablon domyślny zawiera opcje służące do konfigurowania protokołu SSL, uwierzytelnianie klienta oparte na certyfikatach, szyfrowanie przechowywanych poświadczeń, ochrona systemu DoS i ograniczenia adresów IP. Więcej informacji na temat aspekty zabezpieczeń można znaleźć w następującym dokumencie [konfiguracji zabezpieczenia dzielenia i scalania](sql-database-elastic-scale-split-merge-security-configuration.md).
 
-Wartość domyślna wdrożona usługa działa z jednego procesu roboczego i jedną rolę sieci web. Rozmiar maszyna wirtualna A1 każdego używa usługi w chmurze Azure. Gdy nie można zmodyfikować te ustawienia podczas wdrażania pakietu, można je zmienić po pomyślnym wdrożeniu w uruchomionej usługi chmury (za pośrednictwem portalu Azure). Należy pamiętać, że roli proces roboczy nie mogą być skonfigurowane dla więcej niż jednego wystąpienia przyczyn technicznych. 
+Wartość domyślna wdrożyć uruchomienia usługi za pomocą jednego procesu roboczego i jednej roli sieci web. Rozmiar maszyn wirtualnych A1 każdej używane w usługach Azure Cloud Services. Chociaż nie można zmodyfikować te ustawienia podczas wdrażania pakietu, można je zmienić, po pomyślnym wdrożeniu w usłudze działającej w chmurze, (za pośrednictwem witryny Azure portal). Należy pamiętać, że rola procesu roboczego nie musi być skonfigurowany dla więcej niż jedno wystąpienie przyczyn technicznych. 
 
-**Identyfikator niezależnego fragmentu integracji mapy**
+**Integracja mapy fragmentów**
 
-Usługa scalania podziału współdziała z mapy niezależnych aplikacji. Podczas korzystania z usługi podziału scalania, aby dzielenie i scalanie zakresów lub shardlets między odłamków, usługa automatycznie aktualizuje mapy niezależnego fragmentu aktualne. Aby to zrobić, usługa łączy do bazy danych Menedżera mapy niezależnych aplikacji i przechowuje zakresy i mapowania postęp żądań move podziału/merge. Dzięki temu, że mapy niezależnego fragmentu zawsze przedstawia aktualny widok podczas operacji scalania podziału będą. Podzielić, operacje przenoszenia scalania i shardlet są implementowane przez przeniesienie partii shardlets z niezależnych źródła do niezależnych docelowej. Podczas operacji przenoszenia shardlet shardlets może ulec bieżącej partii są oznaczone w trybie offline w mapie niezależnego fragmentu i są dostępne na potrzeby połączeń routingu zależne od danych za pomocą **OpenConnectionForKey** interfejsu API. 
+Usługi dzielenia i scalania wchodzi w interakcję z mapą fragmentów w aplikacji. Korzystając z usługi dzielenia i scalania do dzielenia lub łączenia zakresów lub podfragmentów między fragmentami, usługa automatycznie aktualizuje mapowania fragmentów aktualne. Aby to zrobić, usługa nawiązanie połączenia z bazy danych Menedżera mapowań fragmentów aplikacji i przechowuje zakresów i mapowania postęp żądań split/scalania/przenoszenia. Daje to gwarancję, że mapowania fragmentów zawsze przedstawia aktualny widok, podczas operacji dzielenia i scalania są przesyłane. Podziel, scalania i podfragmentów operacje przenoszenia są implementowane, przenosząc partii podfragmentów z fragmentu źródła do docelowego fragmentu. Podczas operacji przenoszenia podfragmentu podfragmentów z zastrzeżeniem bieżącej partii są oznaczone w trybie offline, w ramach mapowania fragmentów i nie są dostępne dla połączeń routingu zależnego od danych przy użyciu **OpenConnectionForKey** interfejsu API. 
 
-**Spójne shardlet połączeń**
+**Spójne podfragmentu połączeń**
 
-Po uruchomieniu przenoszenie danych do nowej partii shardlets wszystkie podane mapowanie niezależnych zależne od danych routingu połączenia niezależnych przechowywania shardlet są zabitych i kolejnych połączeń z mapy niezależnego fragmentu interfejsów API do powyższej shardlets są blokowane podczas przenoszenia danych jest w toku, aby uniknąć niespójności. Połączenia z innymi shardlets na sam identyfikator niezależnego fragmentu również pobrać skasowane, ale powiedzie się ponownie od razu przy ponownej próbie. Po przeniesieniu partii shardlets oznaczonych jako online ponownie dla niezależnych docelowego, a źródło danych zostanie usunięta z niezależnych źródła. Usługa przechodzi przez te czynności dla każdej partii, dopóki wszystkie shardlets zostały przeniesione. To spowoduje kilka operacji kill połączenia w trakcie ukończenia operacji podziału/merge/przeniesienia.  
+Po uruchomieniu przepływu danych dla nowej partii podfragmentów wszystkie mapowania fragmentów, pod warunkiem połączenia routingu zależnego od danych do przechowywania fragmentów są zabite podfragmentu i kolejnych połączeń z mapy fragmentów, które interfejsy API w celu podfragmentach są blokowane podczas przenoszenia danych w toku, aby uniknąć niespójności. Połączenia podfragmenty na tym samym fragmencie również pobrać zabite, ale zostanie wykonana pomyślnie ponownie natychmiast po ponowieniu. Po przeniesieniu partii podfragmentach są oznaczone w trybie online ponownie fragmentu docelowego i źródła danych zostanie usunięty z fragmentu źródła. Usługa przechodzi przez te kroki dla każdej partii, dopóki wszystkie podfragmentów zostały przeniesione. Spowoduje to kilka operacji kill połączenie w trakcie ukończenia operacji podziału/scalania/przenoszenia.  
 
-**Zarządzanie shardlet dostępności**
+**Zarządzanie dostępnością podfragmentu**
 
-Ograniczanie połączenia skasowanie do bieżącej partii shardlets zgodnie z powyższym opisem ogranicza zakres niedostępności jednej partii shardlets naraz. Jest to preferowany nad rozwiązaniem gdzie pełny identyfikator niezależnego fragmentu pozostanie w trybie offline dla wszystkich jego shardlets w trakcie operacji dzielenie i scalanie. Rozmiar wsadu zdefiniowany jako liczbę unikatowych shardlets przenosić w czasie, jest parametru konfiguracji. Może być zdefiniowana dla każdej operacji dzielenie i scalanie w zależności od potrzeb dostępności i wydajności aplikacji. Należy pamiętać, że zakres, który jest zablokowany na mapie niezależnych może być większy niż określony rozmiar partii. Jest to spowodowane usługi wybiera rozmiar zakresu w taki sposób, że rzeczywista liczba wartości kluczy dzielenia na fragmenty danych około dopasowuje rozmiar partii. Jest to ważne do zapamiętania w szczególności kluczy słabo wypełnione dzielenia na fragmenty. 
+Ograniczanie połączenia zabijanie do bieżącej partii podfragmentów zgodnie z powyższym opisem ogranicza zakres niedostępność jednej partii podfragmentów w danym momencie. To jest preferowana nad podejście gdzie pełną fragment może pozostawać w trybie offline dla wszystkich jego podfragmentów w trakcie operacji dzielenia ani scalania. Rozmiar partii, zdefiniowane jako liczba różnych podfragmentów można przenieść w czasie, jest parametru konfiguracji. Mogą być definiowane dla każdej operacji dzielenia i scalania, w zależności od potrzeb dostępność i wydajność aplikacji. Należy zauważyć, że zakres, który jest zablokowany w ramach mapowania fragmentów może być większy niż określony rozmiar partii. Jest to spowodowane usługi wybiera rozmiar zakresu w taki sposób, że rzeczywista liczba wartości klucza fragmentowania danych odpowiada około rozmiar partii. Jest to w szczególności pamiętać kluczy fragmentowania słabo wypełnionych. 
 
 **Magazynu metadanych**
 
-Usługa scalania podziału korzysta z bazy danych, aby zachować stan i zachować dzienniki podczas przetwarzania żądania. Użytkownik tworzy tej bazy danych w swoich subskrypcji i zawiera parametry połączenia dla niego w pliku konfiguracji wdrożenia usługi. Administratorzy z organizacji użytkownika umożliwia też łączność z tej bazy danych, aby sprawdzić postęp żądania i do sprawdzania, czy szczegółowe informacje dotyczące potencjalnych błędów.
+Usługi dzielenia i scalania korzysta z bazy danych, aby zachować stan i na potrzeby przechowywania dzienników podczas przetwarzania żądania. Użytkownik tworzy tę bazę danych w ramach swojej subskrypcji i zawiera parametry połączenia dla niego w pliku konfiguracji dla wdrożenia usługi. Administratorzy z organizacji użytkownika można także nawiązać tej bazy danych, aby sprawdzić postęp żądań i do badania szczegółowe informacje dotyczące potencjalnych awarii.
 
 **Rozpoznawanie dzielenia na fragmenty**
 
-Usługa scalania podziału oddzieli (1) podzielonej tabel, tabele odwołań (2) i (3) normalne tabel. Semantyka operacji przenoszenia podziału/merge są zależne od typu tabeli użyte i są zdefiniowane w następujący sposób: 
+Usługi dzielenia i scalania rozróżnia między (1) podzielonej na fragmenty tabel, tabele odwołań (2) i (3) normalnych tabel. Semantyka operacji podziału/scalania/Przenieś zależą od typu Tabela używana i są definiowane w następujący sposób: 
 
-* **Tabele podzielonej**: podziału, scalania i operacji przenoszenia Przenieś shardlets ze źródła do docelowego niezależnego fragmentu. Po pomyślnym ukończeniu ogólną żądania shardlets te nie są już dostępne w źródle. Należy pamiętać, że tabel docelowych musi istnieć na docelowy identyfikator niezależnego fragmentu i nie może zawierać danych w zakresie docelowego przed wykonania operacji. 
-* **Tabele odwołań dla**: tabele odwołań, podziału, Scal i przenieść operacje skopiować dane ze źródła do docelowego identyfikator niezależnego fragmentu. Należy jednak pamiętać, że żadne zmiany wystąpić na niezależnych docelowy dla danej tabeli, jeśli każdy wiersz znajduje się już w tej tabeli w elemencie docelowym. Tabela ma być puste dla operacji kopiowania tabeli wszelkie odwołania do przetworzenie.
-* **Inne tabele**: inne tabele mogą być obecne na źródłowy lub docelowy operacji dzielenie i scalanie. Usługa scalania podziału pomija te tabele operacje kopiowania lub przenoszenia danych. Należy jednak pamiętać, że może zakłócać te operacje, w przypadku ograniczenia.
+* **Tabele podzielonej na fragmenty**: dzielenie, scalanie i operacji przenoszenia przenieść podfragmentów ze źródła do docelowego fragmentu. Po pomyślnym zakończeniu żądania ogólnego podfragmentów te nie są już dostępne w źródle. Należy pamiętać, że tabel docelowych musi istnieć na docelowym fragmencie i nie mogą zawierać dane w zakresie docelowym, przed wykonania operacji. 
+* **Odwoływać się do tabel**: tabele odwołań, podziału, scalania i przenieść operacje kopiowanie danych ze źródła do docelowego fragmentu. Należy jednak pamiętać, że żadne zmiany wystąpić na fragmentu docelowy dla danej tabeli, jeśli dowolnego wiersza znajduje się już w tej tabeli w elemencie docelowym. Tabela ma być pusta dla operacji kopiowania tabeli wszelkie odwołania do są przetwarzane.
+* **Inne tabele**: inne tabele mogą być obecne na źródłowy lub docelowy operacji dzielenia i scalania. Usługi dzielenia i scalania pomija te tabele wszelkie operacje kopiowania lub przenoszenia danych. Należy jednak pamiętać, że może zakłócać tych operacji w przypadku ograniczenia.
 
-Informacje w odwołaniu a podzielonej tabele są udostępniane przez **SchemaInfo** interfejsów API na mapie niezależnego fragmentu. Poniższy przykład przedstawia użycie tych interfejsów API danego niezależnych Mapa menedżera obiektu smm: 
+Informacje dla odwołania, a tabele podzielonej na fragmenty są udostępniane przez **może** interfejsów API w ramach mapowania fragmentów. Poniższy przykład ilustruje użycie tych interfejsów API na smm obiektu danego fragmentu mapy manager: 
 
     // Create the schema annotations 
     SchemaInfo schemaInfo = new SchemaInfo(); 
@@ -99,57 +102,57 @@ Informacje w odwołaniu a podzielonej tabele są udostępniane przez **SchemaInf
     // Publish 
     smm.GetSchemaInfoCollection().Add(Configuration.ShardMapName, schemaInfo); 
 
-Tabele "region" i "uprzywilejowania" są zdefiniowane jako tabele odwołań i zostaną skopiowane z operacji przenoszenia podziału/merge. "klient" i "zamówienia" z kolei są definiowane jako podzielonej tabel. C_CUSTKEY i O_CUSTKEY służyć jako klucz dzielenia na fragmenty. 
+Tabele "region" i "kraj" są zdefiniowane jako tabele odwołań i zostaną skopiowane z operacji dzielenia/scalania/przenoszenia. "klient" i "orders" z kolei są definiowane jako tabele podzielonej na fragmenty. C_CUSTKEY i O_CUSTKEY służy jako klucz fragmentowania. 
 
-**Integralność referencyjna**
+**Integralność referencyjną**
 
-Usługa scalania podziału analizuje zależności między tabelami i używa relacje klucza obcego klucza podstawowego, aby przemieścić operacji przenoszenia tabele odwołań i shardlets. Ogólnie rzecz biorąc tabele odwołań są kopiowane najpierw w kolejności zależności, a następnie shardlets są kopiowane w kolejności ich zależności w ramach każdej partii. Jest to konieczne, dzięki czemu ograniczenia klucza podstawowego klucza Obcego niezależnych docelowej są honorowane jako nadejścia nowych danych. 
+Usługi dzielenia i scalania analizuje zależności między tabelami i używa relacje klucza obcego klucz podstawowy do przygotowania operacji przenoszenia tabele odwołań i podfragmentów. Ogólnie rzecz biorąc tabele odwołań są najpierw kopiowane w kolejności wg zależności, a następnie podfragmentów są kopiowane w kolejności ich zależności w ramach każdej partii. Jest to konieczne, tak aby ograniczenia klucza Obcego PK fragmentu docelowej są honorowane w miarę nadchodzenia nowych danych. 
 
-**Spójność mapy niezależnego fragmentu i ostatecznego zakończenia**
+**Spójność mapy fragmentów i ostateczną uzupełniania**
 
-Obecności awarie usługi scalania podziału wznawia działania po awarii dowolnego i ma na celu wykonywania w toku żądania. Jednak sytuacjach może być nieodwracalny, np. gdy niezależnych docelowy zostanie utracony lub naruszony naprawić. W tych warunkach niektórych shardlets, które były zaplanowane do przeniesienia może nadal znajdować się na niezależnych źródła. Usługę gwarantuje, że shardlet mapowania są aktualizowane wyłącznie po niezbędnych danych zostały pomyślnie skopiowane do obiektu docelowego. Shardlets są usuwane tylko w źródle po wszystkich swoich danych został skopiowany do obiektu docelowego i odpowiednie mapowania zostały pomyślnie zaktualizowane. Operacji usuwania odbywa się w tle, gdy zakres jest w trybie online na docelowy identyfikator niezależnego fragmentu. Usługi scalania podziału zawsze zapewnia poprawność mapowania przechowywane w mapie niezależnego fragmentu.
+Obecności błędy usługi dzielenia i scalania Wznawia operacje po ewentualnej awarii i ma na celu wykonaj dowolny w żądaniach postępu. Jednak mogą wystąpić nieodwracalny sytuacje, np. przypadku utracenia lub naruszony naprawienia fragmentu docelowego. W tych okolicznościach podfragmenty, które zostały powinien zostać przeniesiona może nadal znajdować się na fragmentu źródła. Usługa gwarantuje, że podfragmentu mapowania są aktualizowane tylko po niezbędnych danych zostały pomyślnie skopiowane do docelowego. Podfragmentów tylko zostaną usunięte w źródle, gdy wszystkie swoje dane zostały skopiowane do obiektu docelowego i odpowiednie mapowania zostały pomyślnie zaktualizowane. Operacji usuwania odbywa się w tle, gdy zakres jest w trybie online na fragmentu docelowego. Usługi dzielenia i scalania zawsze gwarantuje poprawność mapowania przechowywanych w ramach mapowania fragmentów.
 
-## <a name="the-split-merge-user-interface"></a>Interfejs użytkownika scalania podziału
-Pakiet usługi scalania podziału obejmuje rolę procesu roboczego oraz roli sieci web. Rola sieci web jest używana do przesyłania żądań podziału scalania w sposób interaktywny. Główne składniki interfejsu użytkownika są następujące:
+## <a name="the-split-merge-user-interface"></a>Interfejs użytkownika dzielenia i scalania
+Pakiet usługi dzielenia i scalania obejmuje rolę procesu roboczego oraz roli sieci web. Rola sieci web jest używana do przesyłania żądań dzielenia i scalania w sposób interaktywny. Główne składniki interfejsu użytkownika są następujące:
 
-* Typ operacji: Typ operacji jest przycisku radiowego, który określa rodzaj operacji wykonywanych przez usługę dla tego żądania. Można wybrać podziału, scalanie i Przenieś scenariuszy. Można również anulować operację wcześniej zostało przesłane. Można użyć podziału, Scal i Przenieś żądania zakresu niezależnego fragmentu mapowania. Lista niezależnych mapuje tylko operacji przenoszenia pomocy technicznej.
-* Mapa niezależnego fragmentu: W następnej sekcji Parametry żądania obejmują informacje dotyczące mapowania niezależnego fragmentu i hosting mapy niezależnego fragmentu bazy danych. W szczególności należy podać nazwę serwera bazy danych SQL Azure i obsługi shardmap, poświadczenia do połączenia z bazą danych mapowania niezależnego fragmentu, a na końcu Nazwa mapy niezależnego fragmentu bazy danych. Obecnie operację akceptuje tylko jednego zestawu poświadczeń. Wymagane są poświadczenia mają wystarczające uprawnienia do wykonania na odłamków zmiany do mapy niezależnego fragmentu, jak również danych użytkownika.
-* Zakres źródła (dzielenie i scalanie): operacja dzielenie i scalanie przetwarza zakresu, używając swojego klucza niski i wysoki. Aby określić operację z niepowiązany wysoka wartość klucza, zaznacz pole wyboru "max jest wysoka wartość klucza" i pozostaw puste pole klucza wysoki. Podane wartości klucza zakresu musi być dokładnie zgodny mapowania i jego granice na mapie niezależnego fragmentu. Jeśli nie określono żadnych granic zakresu na wszystkich usługi wywnioskuje najbliższego zakresu można automatycznie. Skrypt programu GetMappings.ps1 PowerShell umożliwia pobrać bieżące mapowania na mapie danego niezależnego fragmentu.
-* Zachowanie źródła podziału (podział): dla operacji podziału zdefiniować punkt podziału zakresu źródła. Aby to zrobić, podając klucza dzielenia na fragmenty, w miejscu podziału występuje. Użyj przycisku radiowego Określ, czy chcesz dolnej części zakresu (z wyjątkiem klucza podziału) przenieść lub czy ma górnej części, aby przenieść (w tym kluczu podziału).
-* Źródło Shardlet (przenoszenia): Przenieś operacji różnią się od dzielenie i scalanie operacji ponieważ nie wymagają one zakres do opisywania źródła. Źródło przenoszenia po prostu jest identyfikowany przez wartość klucza dzielenia na fragmenty, który ma zostać przeniesiona.
-* Docelowy identyfikator niezależnego fragmentu (podział): po informacji podano w źródle operacji podziału, należy określić, gdzie danych ma zostać skopiowany na, podając nazwę serwera i bazy danych bazy danych SQL Azure dla elementu docelowego.
-* Zakres docelowy (scalanie): operacji scalania Przenieś shardlets do istniejących niezależnego fragmentu. Należy określić istniejącą niezależnego fragmentu zapewniając granice zakresu istniejących zakresu, który chcesz scalić z.
-* Wielkość partii: Wielkość partii określa liczbę shardlets, które przechodzą w tryb offline w czasie przenoszenia danych. Jest wartością całkowitą, których można użyć mniejsze wartości po wrażliwe na długie okresy przestojów w przypadku shardlets. Większe wartości zwiększy się czas danego shardlet w trybie offline, ale może zwiększyć wydajność.
-* Identyfikator operacji (anulować): Jeśli masz wykonywana operacja, która nie jest już potrzebne, można anulować operację, podając jego identyfikator operacji w tym polu. Identyfikator operacji można pobrać z tabeli stan żądania (zobacz sekcja 8.1) lub z danych wyjściowych w przeglądarce sieci web, w której zostało przesłane żądanie.
+* Typ operacji: Typ operacji jest przycisku radiowego, który określa rodzaj operacji wykonywanych przez usługę dla tego żądania. Możesz wybrać między podziału, scalania i Przenieś scenariuszy. Można również anulować operację wcześniej przesłane. Możesz użyć podziału, scalania i przenieść żądań dotyczących mapowań fragmentów w postaci zakresu. Lista dzielenie map na tylko obsługi operacji przenoszenia.
+* Mapowanie fragmentów w postaci: Następnej sekcji Parametry żądania obejmuje informacji na temat mapowania fragmentów i bazę danych hostingu mapy fragmentów. W szczególności musisz podać nazwę serwera Azure SQL Database i obsługi shardmap, poświadczenia do połączenia z bazy danych mapowań fragmentów, a na końcu nazwę mapowania fragmentów bazy danych. Obecnie operację akceptuje tylko jeden zestaw poświadczeń. Te poświadczenia muszą mieć wystarczające uprawnienia do wykonywania zmian do mapy fragmentów, jak również do danych użytkownika na fragmenty.
+* Zakres źródłowy (dzielenie i scalanie): Operacja dzielenia i scalania przetwarza zakresu, używając swojego klucza niski i wysoki. Aby określić operację z niepowiązanych wysoka wartość klucza, zaznacz pole wyboru "wysoka wartość klucza jest maksymalna" i pozostaw puste pole klucza wysokiej. Zakres wartości klucza, należy określić, które nie są dokładnie dopasowana do mapowania i jego granic na mapie fragmentu. Jeśli nie określisz granice z zakresem w ogóle usługi zakres najbliższej dla Ciebie automatycznie wywnioskuje. Można użyć skryptu programu GetMappings.ps1 PowerShell można pobrać bieżących mapowań w mapie danego fragmentu.
+* Zachowanie źródła podziału (podział): w przypadku operacji podziału zdefiniować punkt podziału zakresu źródłowego. Można to zrobić, podając klucz fragmentowania, w którym ma być podziału wystąpić. Użyj przycisku radiowego Określ, czy użytkownik zamierza dolnej części zakresu (z wyjątkiem klucza podziału) przenieść lub czy ma być górnej części, aby przenieść (w tym klucza podziału).
+* Źródło Podfragmentu (przenoszenie): przenoszenie operacje różnią się od operacji dzielenia ani scalania, ponieważ nie wymagają zakres opisujący źródła. Źródło do przeniesienia jest po prostu identyfikowany przez wartość klucza fragmentowania, która ma zostać przeniesiona.
+* Docelowa fragmentów (podział): po podaniu informacji w źródle operacji podziału, należy zdefiniować, którego dane mają być kopiowane do, podając nazwę serwera i bazy danych Azure SQL Db dla obiektu docelowego.
+* Zakres docelowy (scalenie): operacji scalania przenieść podfragmentów do istniejących fragmentu. Możesz zidentyfikować istniejące fragmentów, zapewniając granice zakresu istniejącego zakresu, który ma zostać scalony z.
+* Rozmiar partii: Wielkość partii określa liczbę podfragmentów, który będzie przejdą w tryb offline w momencie podczas przenoszenia danych. Jest wartością całkowitą z zakresu, gdzie można użyć mniejszej wartości, gdy wszystko jest wrażliwa na długie okresy przestojów podfragmentów. Większe wartości spowoduje zwiększenie czasu, która jest dany podfragment w trybie offline, ale może zwiększyć wydajność.
+* Identyfikator operacji (anulować): Jeśli masz trwającą operacją, która nie jest już potrzebny, można anulować operację, podając jego identyfikator operacji, w tym polu. Identyfikator operacji można pobrać z tabeli stan żądania (patrz sekcja 8.1) lub z danych wyjściowych w przeglądarce sieci web, do którego zostały przesłane żądanie.
 
 ## <a name="requirements-and-limitations"></a>Wymagania i ograniczenia
-Bieżąca implementacja usługi scalania podziału podlega następujące wymagania i ograniczenia: 
+Bieżąca implementacja usługi dzielenia i scalania podlega następujące wymagania i ograniczenia: 
 
-* Odłamków muszą znajdować i być zarejestrowane w mapie niezależnego fragmentu, zanim będzie można wykonać operacji scalania podziału na tych fragmentów. 
-* Usługa nie tworzy tabele lub inne obiekty bazy danych, które automatycznie w ramach operacji. To oznacza, że schemat dla podzielonej wszystkie tabele i tabele odwołań muszą istnieć na niezależnych docelowy wyewidencjonowywany przed każdą operacją podziału/merge/przeniesienia. Tabele podzielonej w szczególności muszą być w zakresie, gdzie mają być dodawane przez operację podziału/merge/przeniesienia shardlets nowy pusty. W przeciwnym razie operacja zakończy się niepowodzeniem Sprawdzanie spójności początkowej w niezależnych docelowej. Należy również zauważyć tego odwołania, które dane są kopiowane tylko, jeśli odwołanie tabela jest pusta, i czy nie występują żadne gwarancje spójności w odniesieniu do innych równoczesnych operacje zapisu w tabeli odniesienia. Jest to zalecane: podczas uruchamiania operacji podziału/merge, żadne inne operacje zapisu zmianę tabele odwołań.
-* Usługa zależy od tożsamości wiersza unikatowy indeks lub klucz, który zawiera klucz dzielenia na fragmenty, aby zwiększyć wydajność i niezawodność shardlets duże. Dzięki temu usługa przenoszenia danych w jeszcze bardziej szczegółowy od tylko wartości klucza dzielenia na fragmenty. Pozwala to zmniejszyć maksymalną ilość miejsca w dzienniku blokad, które są wymagane podczas operacji. Należy rozważyć utworzenie unikatowego indeksu lub klucza podstawowego, w tym klucz dzielenia na fragmenty w danej tabeli, jeśli chcesz użyć tej tabeli z żądaniami podziału/merge/przeniesienia. Ze względu na wydajność klucz dzielenia na fragmenty powinien być wiodące kolumny klucza lub indeksu.
-* W trakcie przetwarzania żądania niektóre dane shardlet mogą występować zarówno na serwerze źródłowym i docelowym identyfikator niezależnego fragmentu. Jest to konieczne chronić przed awariami podczas przemieszczania shardlet. Integracja podziału scalanie z mapą niezależnego fragmentu upewnia się, że połączenia w danych zależnych routingu interfejsów API przy użyciu **OpenConnectionForKey** metody na mapie niezależnego fragmentu nie ma żadnych niespójne pośrednich stanów. Jednak podczas nawiązywania połączenia źródłowy lub docelowy odłamków bez użycia **OpenConnectionForKey** metody niespójne pośrednich stanów mogą być widoczne, gdy będą żądań move podziału/merge. Połączenia te mogą być wyświetlane wyniki częściowe lub zduplikowane w zależności od czas lub fragmentacji, połączenie znajdujące się poniżej. To ograniczenie zawiera obecnie połączeń elastycznego skalowania kilku-Shard-zapytania.
-* Bazy danych metadanych dla usługi podziału scalania nie może być udostępniany między różne role. Na przykład rola usługi scalania podziału uruchomiona w przejściowym musi wskazywać różnych metadanych bazy danych niż roli produkcji.
+* Fragmenty muszą się znajdować i być zarejestrowane w ramach mapowania fragmentów, przed wykonaniem operacji dzielenia i scalania, na tych fragmentach. 
+* Usługa nie tworzy tabele lub innych obiektów bazy danych, które automatycznie jako część jej operacji. Oznacza to, że schematu dla wszystkich podzielonych tabel i tabele odwołań musi istnieć na fragmentu docelowej przed każdą operacją split/scalania/przenoszenia. Tabele podzielonej na fragmenty w szczególności muszą być pusty w zakresie, gdzie nowe podfragmenty mają być dodawane przez operację podziału/scalania/przenoszenia. W przeciwnym razie operacja zakończy się niepowodzeniem Sprawdzanie spójności początkowej w docelowym fragmencie. Należy również zauważyć, że odwołanie, które dane zostaną skopiowane tylko, jeśli odwołanie tabela jest pusta, i że nie istnieją żadne gwarancje spójności, w odniesieniu do innych równoczesnych operacje zapisu w tabelach odwołań. Jest to zalecane: podczas uruchamiania operacji dzielenia i scalania, inne operacje zapisu dokonać zmian w tabelach odwołań.
+* Usługa zależy od tożsamość wiersza ustanowione przez unikatowego indeksu lub klucza, który zawiera klucz fragmentowania tak, aby zwiększyć wydajność i niezawodność dużych podfragmentów. Dzięki temu usługi do przenoszenia danych dokładniej nawet niż tylko wartości klucza fragmentowania. Pozwala to zmniejszyć maksymalną ilość miejsca w dzienniku i blokad, które są wymagane podczas operacji. Należy rozważyć utworzenie unikatowego indeksu lub klucza podstawowego, w tym klucz fragmentowania na danej tabeli, jeśli chcesz używać tej tabeli z żądaniami split/scalania/przenoszenia. Ze względu na wydajność klucz fragmentowania powinien być wiodących kolumny klucza lub indeksu.
+* W trakcie przetwarzania żądania niektórych danych podfragmentu może występować zarówno na źródłowym i docelowym fragmencie. Jest to konieczne zapewnić ochronę przed awariami podczas przemieszczania podfragmentu. Integracja dzielenia i scalania z mapą fragmentów, masz pewność, że połączenia za pośrednictwem dane zależne routingu interfejsów API za pomocą **OpenConnectionForKey** metody w ramach mapowania fragmentów nie ma żadnych niespójne pośrednich stanów. Jednak podczas nawiązywania połączenia źródła lub fragmenty docelowej bez użycia **OpenConnectionForKey** metody niespójne pośrednich stanów mogą być widoczne, gdy żądania podziału/scalania/Przenieś przechodzenia. Połączenia te mogą być wyświetlane wyniki częściowe lub zduplikowane w zależności od czas lub fragmentu połączenie znajdujące się poniżej. To ograniczenie obecnie dotyczy to połączeń elastycznego skalowania wielu-Shard — zapytania.
+* Baza danych metadanych dla usługi dzielenia i scalania nie może być udostępniany między różne role. Na przykład rola usługi dzielenia i scalania, uruchomiony w środowisku tymczasowym musi wskazywać innych metadanych bazy danych niż roli w środowisku produkcyjnym.
 
 ## <a name="billing"></a>Rozliczenia
-Usługa podziału scalania działa jako usługa w chmurze w ramach subskrypcji Microsoft Azure. W związku z tym dla usługi w chmurze opłaty do Twojego wystąpienia usługi. Jeśli często wykonać operacji przenoszenia podziału/merge, zaleca się usunąć usługi w chmurze podziału scalania. Zapisuje kosztów uruchomiona albo wdrożyć wystąpienia usługi chmury. Można ponownie wdrożyć i rozpocząć konfigurację łatwo do uruchomienia, zawsze, gdy trzeba wykonać dzielenie i scalanie operacji. 
+Usługi dzielenia i scalania działa jako usługa w chmurze w Twojej subskrypcji Microsoft Azure. W związku z tym dla usług w chmurze opłaty do swojego wystąpienia usługi. Chyba że często wykonywania operacji podziału/scalania/przenoszenia, zalecamy usuwanie usługi w chmurze dzielenia i scalania. Które zmniejszyć koszty do uruchomienia lub wdrożonych wystąpień usług w chmurze. Można ponownie wdrożyć i uruchomić konfigurację łatwo możliwy do uruchomienia w każdym przypadku, gdy trzeba wykonać operacji dzielenia ani scalania. 
 
 ## <a name="monitoring"></a>Monitorowanie
 ### <a name="status-tables"></a>Stan tabel
-Udostępnia usługi scalania podziału **stan żądania** tabeli w bazie danych magazynu metadanych do monitorowania została zakończona i bieżących żądań. W tabeli wymieniono wiersz dla każdego żądania podziału scalania, który został przesłany do tego wystąpienia usługi scalania podziału. Udostępnia następujące informacje dla każdego żądania:
+Udostępnia usługi dzielenia i scalania **stanem żądania** tabeli w bazie danych magazynu metadanych do monitorowania ukończone i bieżących żądań. W tabeli podano wierszy dla każdego żądania dzielenia i scalania, który został przesłany do tego wystąpienia usługi dzielenia i scalania. Daje ona następujące informacje dla każdego żądania:
 
-* **Sygnatura czasowa**: godzinę i datę rozpoczęcia żądania.
-* **OperationId**: A identyfikator GUID, który unikatowo identyfikuje żądania. To żądanie może również anulować operację, gdy jest nadal uruchomione.
-* **Stan**: bieżący stan żądania. Bieżące żądania również wyświetlane Bieżąca faza, w którym jest żądanie.
+* **Sygnatura czasowa**: Data i godzina rozpoczęcia żądania.
+* **OperationId**: identyfikator GUID, który unikatowo identyfikuje żądanie. To żądanie może również anulować operację, gdy są one postępujące.
+* **Stan**: bieżący stan żądania. Trwającą żądań zawiera również listę Bieżąca faza, w którym jest żądanie.
 * **CancelRequest**: flagę wskazującą, czy żądanie zostało anulowane.
-* **Postęp**: oszacowanie przez procent wykonania operacji. Wartość 50 wskazuje, że operacja jest wykonano około 50%.
-* **Szczegóły**: wartości XML, która zapewnia bardziej szczegółowy raport postępu. Raport dotyczący postępu jest okresowo aktualizowany jako zestawy wierszy są kopiowane z źródłowego do docelowego. W przypadku awarii lub wyjątki ta kolumna zawiera bardziej szczegółowe informacje o awarii.
+* **Postęp**: Szacowany procent ukończenia operacji. Wartość 50 wskazuje, czy operacja się około 50% ukończone.
+* **Szczegóły**: wartości XML, który zawiera bardziej szczegółowy raport o postępie. Raport postęp jest okresowo aktualizowany, ponieważ zestawy wierszy są kopiowane ze źródła do docelowego. W razie błędów lub wyjątków ta kolumna zawiera bardziej szczegółowe informacje o błędzie.
 
 ### <a name="azure-diagnostics"></a>Diagnostyka Azure
-Usługa scalania podziału używa diagnostyki Azure oparte na 2.5 zestawu SDK platformy Azure, monitorowania i diagnostyki. Konfiguracją diagnostyki opisane tutaj: [Włączanie diagnostyki w usług Azure Cloud Services i maszyn wirtualnych](../cloud-services/cloud-services-dotnet-diagnostics.md). Pakiet do pobrania zawiera dwie konfiguracje diagnostyki — jeden dla roli sieci web i jeden dla roli proces roboczy. Te konfiguracje diagnostyki dla usługi, postępuj zgodnie ze wskazówkami [podstawy usługi w chmurze w systemie Microsoft Azure](https://code.msdn.microsoft.com/windowsazure/Cloud-Service-Fundamentals-4ca72649). Zawiera definicje, aby rejestrować liczniki wydajności, dzienniki programu IIS, dzienniki zdarzeń systemu Windows i dzienniki zdarzeń aplikacji podziału scalania. 
+Usługi dzielenia i scalania korzysta z usługi Azure Diagnostics opartego na platformie Azure SDK 2.5 dla monitorowania i diagnostyki. Zgodnie z opisem w tym miejscu możesz kontrolować konfiguracji diagnostyki: [Włączanie diagnostyki w usługach Azure Cloud Services i Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). Pakiet pobierania zawiera dwie konfiguracje Diagnostyka — jeden dla roli sieci web i jeden dla roli procesu roboczego. Te konfiguracje diagnostyki usługi postępuj zgodnie ze wskazówkami [podstawy usługi w chmurze w systemie Microsoft Azure](https://code.msdn.microsoft.com/windowsazure/Cloud-Service-Fundamentals-4ca72649). Zawiera definicje służące do logowania, liczniki wydajności, dzienniki usług IIS, Windows, dzienniki zdarzeń i dzienniki zdarzeń aplikacji dzielenia i scalania. 
 
 ## <a name="deploy-diagnostics"></a>Wdrażanie diagnostyki
-Aby włączyć, monitorowania i diagnostyki za pomocą konfiguracji diagnostycznych dla ról sieci web i proces roboczy udostępniane przez pakiet NuGet, uruchom następujące polecenia przy użyciu programu Azure PowerShell: 
+Aby włączyć monitorowania i diagnostyki przy użyciu konfiguracji diagnostycznych dla ról sieć web i proces roboczy, dostarczone przez pakiet NuGet, uruchom następujące polecenia, za pomocą programu Azure PowerShell: 
 
     $storage_name = "<YourAzureStorageAccount>" 
 
@@ -171,38 +174,38 @@ Aby włączyć, monitorowania i diagnostyki za pomocą konfiguracji diagnostyczn
 
     Set-AzureServiceDiagnosticsExtension -StorageContext $storageContext -DiagnosticsConfigurationPath $config_path -ServiceName $service_name -Slot Production -Role "SplitMergeWorker" 
 
-Można znaleźć więcej informacji na temat Konfigurowanie i wdrażanie ustawień diagnostycznych tutaj: [Włączanie diagnostyki w usług Azure Cloud Services i maszyn wirtualnych](../cloud-services/cloud-services-dotnet-diagnostics.md). 
+Można znaleźć więcej informacji na temat sposobu konfigurowania i wdrażania ustawień diagnostyki, w tym miejscu: [Włączanie diagnostyki w usługach Azure Cloud Services i Virtual Machines](../cloud-services/cloud-services-dotnet-diagnostics.md). 
 
-## <a name="retrieve-diagnostics"></a>Pobrać diagnostyki
-Diagnostycznej mogli łatwo uzyskiwać dostęp z Eksploratora serwera Visual Studio w Azure części drzewa Eksploratora serwera. Otwórz wystąpienie programu Visual Studio, a na pasku menu kliknij widok i Eksploratora serwera. Kliknij ikonę platformy Azure, aby nawiązać połączenia z subskrypcją platformy Azure. Następnie przejdź do usługi Azure -> magazynu -> <your storage account> -> WADLogsTable -> tabel. Aby uzyskać więcej informacji, zobacz [przeglądanie zasobami magazynu za pomocą Eksploratora serwera](http://msdn.microsoft.com/library/azure/ff683677.aspx). 
+## <a name="retrieve-diagnostics"></a>Pobieranie diagnostyki
+Diagnostycznej można łatwo uzyskać dostęp z poziomu programu Visual Studio Eksploratora serwera w usłudze Azure części drzewa Eksploratora serwera. Otwórz wystąpienie programu Visual Studio, a na pasku menu kliknij widok i Eksploratora serwera. Kliknij ikonę platformy Azure, nawiązać połączenia z subskrypcją platformy Azure. Następnie przejdź do usługi Azure -> Storage -> <your storage account> -> tabel -> WADLogsTable. Aby uzyskać więcej informacji, zobacz [przeglądanie zasobów magazynu za pomocą Eksploratora serwera](http://msdn.microsoft.com/library/azure/ff683677.aspx). 
 
 ![WADLogsTable][2]
 
-WADLogsTable wyróżnione na rysunku powyżej zawiera szczegółowe zdarzenia z dziennika aplikacji usługi podziału scalania. Należy pamiętać, że domyślna konfiguracja pobranego pakietu jest przeznaczone dla wdrożenia produkcyjnego. W związku z tym interwał, jaką dzienniki i liczniki są pobierane z wystąpień usługi jest duża (5 minut). Badań i rozwoju niższym interwał dostosowując ustawienia diagnostyki sieci web lub roli procesu roboczego do własnych potrzeb. Kliknij prawym przyciskiem myszy rolę w Eksploratorze serwera usługi Visual Studio (zobacz powyżej), a następnie Dostosuj okres transferu w oknie dialogowym ustawień konfiguracji diagnostyki: 
+WADLogsTable wyróżnione na rysunku powyżej zawiera szczegółowe zdarzenia z dziennika aplikacji usługi dzielenia i scalania. Należy pamiętać, że domyślna konfiguracja pobranego pakietu jest skierowana do wdrożenia produkcyjnego. W związku z tym interwał, w którym dzienniki i liczniki są ściągane z wystąpienia usługi jest duży (5 minut). Do projektowania i testowania zmniejszyć interwał przez dostosowanie ustawień diagnostyki sieci web lub roli procesu roboczego do Twoich potrzeb. Kliknij prawym przyciskiem myszy rolę w Eksploratorze serwera usługi Visual Studio (zobacz powyżej), a następnie Dostosuj okres transferu w oknie dialogowym ustawień konfiguracji diagnostyki: 
 
 ![Konfigurowanie][3]
 
 ## <a name="performance"></a>Wydajność
-Ogólnie rzecz biorąc lepszą wydajność ma z tym wyższy więcej wydajności warstw usług w bazie danych SQL Azure. Wyższy alokacji we/wy, Procesor i pamięć dla wyższych warstw usługi korzystać kopiowania zbiorczego i usuwanie operacji używane przez usługę podziału scalania. Z tego powodu należy zwiększyć warstwy usługi tylko dla tych baz danych zdefiniowana, ograniczony okres czasu.
+Ogólnie rzecz biorąc lepszej wydajności jest można oczekiwać od im większa więcej wydajne warstwy usług w usłudze Azure SQL Database. Wyższe alokacje We/Wy i procesora CPU i pamięci dla wyższej warstwy usługi dodatkowe korzyści kopiowania masowego i Usuń operacje, których używa usługi dzielenia i scalania. Z tego powodu należy zwiększyć warstwy usług, tylko dla tych baz danych zdefiniowana, ograniczony okres czasu.
 
-Usługa również wykonuje zapytania weryfikacji w ramach normalnych operacji. Te zapytania weryfikacji sprawdzić nieoczekiwany obecności danych w zakresie docelowego i upewnij się, że wszelkie operacje podziału/merge/przeniesienia zaczyna się w spójnym stanie. Te wszystkie zapytania pracować nad dzielenia na fragmenty zakresami kluczy zdefiniowane w zakresie operacji i rozmiar partii w ramach definicji żądania. Te zapytania wykonywane najlepiej, gdy indeks jest obecnie z kluczem dzielenia na fragmenty jako wiodących kolumn. 
+Usługa wykonuje również weryfikacji zapytań w ramach normalnych operacji. Te zapytania weryfikacji sprawdzić obecność nieoczekiwane dane w zakresie docelowym i upewnij się, że każdej operacji podziału/scalania/Przenieś zaczyna się w spójnym stanie. Tych zapytań, wszystkie pracować nad zakresów kluczy fragmentowania, definiowane przez zakres operacji i rozmiar partii w ramach definicji żądania. Te zapytania działają najlepiej, gdy indeks jest obecny, który ma klucz fragmentowania jako wiodących kolumn. 
 
-Ponadto przy użyciu klucza wiodące kolumny dzielenia na fragmenty właściwość unikatowości umożliwi usługi do zoptymalizowane metody, która ogranicza zużycie zasobów w zakresie miejsca w dzienniku i pamięci. Ta właściwość unikatowości musi przenieść rozmiary dużej ilości danych (zazwyczaj ponad 1GB). 
+Ponadto właściwość unikatowości o klucz fragmentowania jako kolumna wiodących umożliwi usługi w celu używania zoptymalizowanego podejście, który ogranicza zużycie zasobów w zakresie miejsca w dzienniku i pamięci. Ta właściwość unikatowości jest wymagany do przenoszenia dużych ilości danych (zwykle ponad 1GB). 
 
 ## <a name="how-to-upgrade"></a>Jak uaktualnić
-1. Postępuj zgodnie z instrukcjami [wdrożyć usługę scalania podziału](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
-2. Zmienianie pliku konfiguracji usługi chmury dla danego wdrożenia podziału scalania uwzględnić nowe parametry konfiguracji. Informacje o certyfikat używany do szyfrowania jest nowy parametr wymagany. Prosty sposób, w tym celu jest do porównania nowy plik szablonu konfiguracji z pobierania względem istniejącej konfiguracji. Upewnij się, że możesz dodać ustawienia "DataEncryptionPrimaryCertificateThumbprint" i "DataEncryptionPrimary" dla sieci web i roli proces roboczy.
-3. Przed wdrożeniem aktualizacji na platformie Azure, upewnij się, że wszystkie operacje aktualnie uruchomione podziału scalanie zostało ukończone. Można łatwo tym badając stan żądania i PendingWorkflows tabele w bazie danych metadanych scalania podziału bieżących żądań.
-4. Zaktualizowanie istniejącego wdrożenia usługi podziału scalanie w Twojej subskrypcji platformy Azure chmury o nowy pakiet i zaktualizowany plik konfiguracji.
+1. Postępuj zgodnie z instrukcjami w [wdrażanie usługi dzielenia i scalania](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
+2. Zmienianie pliku konfiguracji usługi chmury dla danego wdrożenia dzielenia i scalania odzwierciedlić nowe parametry konfiguracji. Nowy parametr wymagane to informacje o certyfikat używany do szyfrowania. Prosty sposób, w tym celu jest porównanie nowy plik szablonu konfiguracji z pobrania względem istniejącej konfiguracji. Upewnij się, że należy dodać ustawienia "DataEncryptionPrimaryCertificateThumbprint" i "DataEncryptionPrimary" dla sieci web i roli procesu roboczego.
+3. Przed wdrożeniem aktualizacji na platformie Azure, upewnij się, że wszystkie operacje uruchomioną obecnie dzielenia i scalania została zakończona. Możesz to łatwo zrobić, badając stan żądania i PendingWorkflows tabele w bazie danych metadanych dzielenia i scalania dla bieżących żądań.
+4. Zaktualizuj istniejące wdrożenie usługi dzielenia i scalania w ramach subskrypcji Azure cloud przy użyciu nowego pakietu i zaktualizowanego pliku konfiguracji.
 
-Nie należy do udostępnienia nowej bazy danych metadanych scalania podziału do uaktualnienia. Nowej wersji automatycznie zaktualizuje istniejące bazy danych metadanych do nowej wersji. 
+Nie trzeba aprowizować nową bazę danych metadanych do dzielenia i scalania uaktualnić. Nowa wersja zostanie automatycznie uaktualniona istniejących metadanych bazy danych do nowej wersji. 
 
-## <a name="best-practices--troubleshooting"></a>Najlepsze rozwiązania i rozwiązywanie problemów
-* Zdefiniuj dzierżawcą testowym i wykonuje operacje podziału/merge/przeniesienia najważniejszych z dzierżawcą testowym między kilka fragmentów. Upewnij się, że wszystkie metadane jest zdefiniowany poprawnie na mapie niezależnego fragmentu i operacje nie naruszają ograniczeń lub klucze obce.
-* Zachowaj dzierżawcą testowym problemy związane z rozmiar danych powyżej maksymalnego rozmiaru danych dzierżawy największy, aby upewnić się, pojawiły się nie rozmiar danych. Dzięki temu można ocenić górna granica na czas potrzebny do przenoszenia pojedynczej dzierżawy. 
-* Upewnij się, że schemat zezwala na usuwanie. Usługa podziału scalania wymaga możliwość usunięcia danych z niezależnych źródła, gdy dane zostały pomyślnie skopiowane do obiektu docelowego. Na przykład **Usuwanie wyzwalaczy** można zapobiec usuwania danych w źródle i może spowodować niepowodzenie operacji.
-* Klucz dzielenia na fragmenty należy wiodących kolumn w kluczu podstawowym lub definicji unikatowego indeksu. Dzięki temu najlepszą wydajność zapytań weryfikacji dzielenie i scalanie i rzeczywiste dane przenoszenie i usuwanie operacji zawsze działających na zakresami kluczy dzielenia na fragmenty.
-* W ten sposób rozmieszczać usługi podziału scalania w centrum danych i regionu, gdzie znajdują się bazy danych. 
+## <a name="best-practices--troubleshooting"></a>Najlepsze praktyki i rozwiązywanie problemów
+* Zdefiniuj dzierżawcą testowym i wykonywania operacji podziału/scalania/Przenieś najważniejszych z dzierżawcą testowym kilka fragmentów. Upewnij się, że wszystkie metadane jest zdefiniowany poprawnie za mapy fragmentów i że operacje naruszają ograniczenia lub klucze obce.
+* Zachowaj dzierżawcą testowym problemów dotyczących rozmiaru danych powyżej maksymalną wielkość największego dzierżawy upewnij się, nie występują rozmiar danych. Dzięki temu można ocenić górną granicę na czas potrzebny do przenoszenia pojedynczej dzierżawy. 
+* Upewnij się, że schemat zezwala na usunięcia. Usługi dzielenia i scalania wymaga możliwości danych przed usunięcie fragmentów źródła danych zostały pomyślnie skopiowane do obiektu docelowego. Na przykład **Usuń wyzwalacze** może uniemożliwić usłudze usuwania danych w źródle i może spowodować niepowodzenie operacji.
+* Klucz fragmentowania należy wiodących kolumn klucza podstawowego lub unikatowego indeksu definicji. Dzięki temu najlepszą wydajność zapytań weryfikacji dzielenia ani scalania i rzeczywiste dane przenoszenie i usuwanie działań, które zawsze działają na zakresach klucza fragmentowania.
+* W ten sposób rozmieszczać usługi dzielenia i scalania w centrum danych i region, gdzie znajdują się bazy danych. 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

@@ -10,14 +10,14 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: c49ebcf31df950920574af05a9411e463b908bad
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 65b34a49006e6a2f9be003414498d9a8fc9955ae
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381458"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161828"
 ---
-# <a name="userjourneys"></a>Podróży użytkowników
+# <a name="userjourneys"></a>UserJourneys
 
 [!INCLUDE [active-directory-b2c-advanced-audience-warning](../../includes/active-directory-b2c-advanced-audience-warning.md)]
 
@@ -173,8 +173,8 @@ Krok aranżacji typu `ClaimsProviderSelection` lub `CombinedSignInAndSignUp` mog
 
 | Atrybut | Wymagane | Opis |
 | --------- | -------- | ----------- |
-| TargetClaimsExchangeId | Nie | Identyfikator programu exchange oświadczenia, który jest wykonywany w następnym kroku aranżacji wyboru dostawcy oświadczeń. Ten atrybut atrybutu ValidationClaimsExchangeId musi być określony. | 
-| ValidationClaimsExchangeId | Nie | Identyfikator programu exchange oświadczenia, który jest wykonywany w bieżącego kroku aranżacji w celu zweryfikowania wyboru dostawcy oświadczeń. Ten atrybut atrybutu TargetClaimsExchangeId musi być określony. |
+| TargetClaimsExchangeId | Nie | Identyfikator programu exchange oświadczenia, który jest wykonywany w następnym kroku aranżacji wyboru dostawcy oświadczeń. Ten atrybut lub atrybut ValidationClaimsExchangeId musi być określony, ale nie oba. | 
+| ValidationClaimsExchangeId | Nie | Identyfikator programu exchange oświadczenia, który jest wykonywany w bieżącego kroku aranżacji w celu zweryfikowania wyboru dostawcy oświadczeń. Ten atrybut lub atrybut TargetClaimsExchangeId musi być określony, ale nie oba. |
 
 ### <a name="claimsproviderselection-example"></a>Przykład elemencie ClaimsProviderSelection
 

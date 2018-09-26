@@ -9,11 +9,11 @@ ms.date: 04/17/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 8c7dc256b92252793545336ffc45a987054a5509
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "35648782"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096381"
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-github-enterprise"></a>Scenariusz automatyzacji platformy Azure — Integracja kontroli źródła usługi Automation z usługą GitHub Enterprise
 

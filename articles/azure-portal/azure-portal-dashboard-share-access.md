@@ -15,11 +15,11 @@ ms.workload: na
 ms.date: 08/01/2016
 ms.author: tomfitz
 ms.openlocfilehash: c07a9d92cac13d6325e66f44426f1a64e8ac53cb
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35938708"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47096204"
 ---
 # <a name="share-azure-dashboards-by-using-role-based-access-control"></a>Udostępnianie pulpitów nawigacyjnych platformy Azure przy użyciu kontroli dostępu opartej na rolach
 Po skonfigurowaniu pulpitu nawigacyjnego, można opublikować ją i udostępniać je innym użytkownikom w organizacji. Zezwalaj na inne osoby do wyświetlania pulpitu nawigacyjnego, korzystając z platformy Azure [kontroli dostępu opartej na rolach](../role-based-access-control/role-assignments-portal.md). Przypisywanie użytkownika lub grupę użytkowników do roli, a ta rola definiuje, czy tych użytkowników, można wyświetlać lub modyfikować opublikowany pulpit nawigacyjny. 

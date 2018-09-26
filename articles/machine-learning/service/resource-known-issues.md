@@ -9,29 +9,32 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 27e73bc75c5f04190bad3dab49c1d46782982a18
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d84040dc440c373ae9bae6dbac7a95109a387ba7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034145"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162750"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Znane problemy i rozwiązywania problemów z usługi Azure Machine Learning
  
 Ten artykuł ułatwia znajdowanie i poprawić błędy lub błędów napotkanych podczas korzystania z usługi Azure Machine Learning. 
 
 
-## <a name="databricks-and-azure-machine-learning"></a>Databricks i Azure Machine Learning
+## <a name="databricks"></a>Usługa Databricks
 
-**Zalecenie klastra usługi Databricks:** 
+Problemy z usługi Databricks i Azure Machine Learning.
 
-Tworzenie klastra usługi Azure Databricks jako v4.x za pomocą języka Python 3. Firma Microsoft zaleca klastra wysokiej współbieżności.
+1. Zalecenie klastra usługi Databricks:
+   
+   Tworzenie klastra usługi Azure Databricks jako v4.x za pomocą języka Python 3. Firma Microsoft zaleca klastra wysokiej współbieżności.
  
-**Zestaw SDK AML błąd instalacji w usłudze Databricks podczas instalowania dodatkowych pakietów** niektórych pakietów, takich jak `psutil upgrade libs`, mogą powodować konflikty. Aby uniknąć błędów instalacji, należy zainstalować pakiety zamrożenia wersji lib. Ten problem jest powiązane z usługi Databricks i nie dotyczą AML zestawu SDK. Przykład:
-```
-pstuil cryptography==1.5 pyopenssl==16.0.0 ipython=2.2.0
-```
+1. Po zainstalowaniu dodatkowych pakietów, błąd w usłudze Databricks instalacji zestawu SDK AML.
 
+   Niektóre pakiety, takich jak `psutil upgrade libs`, mogą powodować konflikty. Aby uniknąć błędów instalacji, należy zainstalować pakiety zamrożenia wersji lib. Ten problem jest powiązane z usługi Databricks i nie dotyczą AML zestawu SDK. Przykład:
+   ```python
+   pstuil cryptography==1.5 pyopenssl==16.0.0 ipython=2.2.0
+   ```
 
 ## <a name="gather-diagnostics-information"></a>Zbierz informacje diagnostyczne
 Czasami może być przydatne Jeśli podasz informacje diagnostyczne podczas pytania o pomoc. Oto, miejsca zamieszkania pliki dziennika:

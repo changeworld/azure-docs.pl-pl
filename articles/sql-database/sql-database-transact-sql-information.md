@@ -2,19 +2,22 @@
 title: Rozpoznawanie języka T-SQL różnice migracji usługi Azure SQL Database | Dokumentacja firmy Microsoft
 description: Instrukcje języka Transact-SQL, które nie są w pełni obsługiwane w usłudze Azure SQL Database
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: migrate
+ms.subservice: ''
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: 440605806915d515d2a60556a9c298b29e0fca8c
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: dfff51d7541ffdc2d279b238a6d993d5e29515f0
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45735432"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160711"
 ---
 # <a name="resolving-transact-sql-differences-during-migration-to-sql-database"></a>Rozstrzyganie różnic języka Transact-SQL podczas migracji do usługi SQL Database   
 Gdy [migracji bazy danych](sql-database-cloud-migrate.md) z programu SQL Server do usługi Azure SQL Server, użytkownik może stwierdzić, że baza danych wymaga pewnej reorganizacji przed można poddać migracji programu SQL Server. Ten artykuł zawiera wskazówki, które ułatwiają wykonywanie ponownego zaprojektowania i zrozumienie podstawowej przyczyny, dlaczego ponownego projektowania jest konieczna. Aby wykrywać niezgodności, należy użyć [Data Migration Assistant (DMA)](https://www.microsoft.com/download/details.aspx?id=53595).

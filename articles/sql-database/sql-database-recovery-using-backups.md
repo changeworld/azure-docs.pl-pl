@@ -2,20 +2,22 @@
 title: Przywróć bazę danych Azure SQL database z kopii zapasowej | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat przywracania w momencie, która umożliwia przywracanie usługi Azure SQL Database do wcześniejszego punktu w czasie (do 35 dni).
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: bcb533fbaa788498734776147c9bd053d35bef60
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 4c9edd60ffa1cd9ed5d95b37592fa49f44117818
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45733586"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161339"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Odzyskiwanie bazy danych Azure SQL za pomocą bazy danych automatycznych kopii zapasowych
 SQL Database oferuje następujące opcje odzyskiwania bazy danych przy użyciu [automatyczne kopie zapasowe bazy danych](sql-database-automated-backups.md) i [kopii zapasowych podlegających długoterminowemu przechowywaniu](sql-database-long-term-retention.md). Można przywrócić z kopii zapasowej bazy danych, aby:

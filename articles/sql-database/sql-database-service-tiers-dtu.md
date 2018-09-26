@@ -2,19 +2,22 @@
 title: Warstwy usługi SQL Database platformy Azure — jednostek DTU | Dokumentacja firmy Microsoft
 description: Więcej informacji na temat warstw usług dla pojedynczej puli baz danych i do rozmiarów wystąpień obliczeniowych i rozmiaru magazynu.
 services: sql-database
-author: sachinpMSFT
 ms.service: sql-database
-ms.custom: DBs & servers
+ms.subservice: ''
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+author: sachinpMSFT
+ms.author: sachinp
+ms.reviewer: carlrab
 manager: craigg
-ms.author: carlrab
-ms.openlocfilehash: 27e6e12efc28bb8ee1cdaa9ec62d7ca8c4c68f38
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.date: 09/14/2018
+ms.openlocfilehash: 2f9362a6d771df3cdb11855844025bc8d9ea732e
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729743"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162376"
 ---
 # <a name="choosing-a-dtu-based-service-tier-compute-size-and-storage-resources"></a>Wybieranie warstwy usług oparte na jednostkach DTU, obliczenia rozmiaru i zasobów magazynu 
 

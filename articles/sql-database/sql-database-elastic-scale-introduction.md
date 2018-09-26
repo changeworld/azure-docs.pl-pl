@@ -2,19 +2,22 @@
 title: Skalowanie w poziomie za pomocą usługi Azure SQL Database | Dokumentacja firmy Microsoft
 description: Oprogramowanie deweloperów usługi (SaaS) można łatwo utworzyć elastyczne, skalowalne bazy danych w chmurze za pomocą tych narzędzi
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: b28b61dc9faf94c21854a73f99af47e302c8d153
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: ab787e8f659d2f57f23bb87397608736e7f6848a
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45729930"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164917"
 ---
 # <a name="scaling-out-with-azure-sql-database"></a>Scaling out with Azure SQL Database (Skalowanie w poziomie za pomocą usługi Azure SQL Database)
 Można łatwo skalować w poziomie baz danych Azure SQL przy użyciu **Elastic Database** narzędzia. Te narzędzia i funkcje pozwalają korzystać z zasobów bazy danych **usługi Azure SQL Database** nad tworzeniem rozwiązań dla obciążeń transakcyjnych, a szczególnie oprogramowanie jako usługa (SaaS) aplikacji. Funkcje elastycznej bazy danych składają się:

@@ -2,20 +2,22 @@
 title: Store kopie zapasowe bazy danych SQL platformy Azure przez maksymalnie 10 lat | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak Azure SQL Database obsługuje przechowywania tworzenia pełnych kopii zapasowych dla maksymalnie 10 lat.
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 07/16/2018
+author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 8edf66d8ee61b2d0896ed8249ea286b0f3de7de5
-ms.sourcegitcommit: e32ea47d9d8158747eaf8fee6ebdd238d3ba01f7
+manager: craigg
+ms.date: 07/16/2018
+ms.openlocfilehash: b2d4166c25014416efbb7392acda3f3f028b4fa9
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39093136"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162050"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Store kopie zapasowe bazy danych SQL platformy Azure przez maksymalnie 10 lat
 

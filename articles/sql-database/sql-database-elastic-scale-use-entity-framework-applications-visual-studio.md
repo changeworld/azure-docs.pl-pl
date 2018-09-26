@@ -1,82 +1,85 @@
 ---
-title: Korzystanie z biblioteki klienta elastycznej bazy danych z programu Entity Framework | Dokumentacja firmy Microsoft
-description: Użyj kodowania bazy danych biblioteki klienta elastycznej bazy danych i strukturą Entity Framework
+title: Za pomocą biblioteki klienckiej elastycznej bazy danych za pomocą platformy Entity Framework | Dokumentacja firmy Microsoft
+description: Na użytek Biblioteka klienta elastycznej bazy danych i Entity Framework programowania baz danych
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 2eafd4b23da8f21f1a4b3ffcf29e50b65882d6c0
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 695da176d2bc86fd67608cc28d14cf15a7728980
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34646766"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161492"
 ---
-# <a name="elastic-database-client-library-with-entity-framework"></a>Biblioteka klienta usługi elastycznej bazy danych z programu Entity Framework
-Ten dokument przedstawia zmiany w aplikacji programu Entity Framework, które są potrzebne do integracji z [narzędzi elastycznej bazy danych](sql-database-elastic-scale-introduction.md). Koncentruje się na tworzenie [zarządzania mapy niezależnego fragmentu](sql-database-elastic-scale-shard-map-management.md) i [routingu zależne od danych](sql-database-elastic-scale-data-dependent-routing.md) z programu Entity Framework **Code First** podejście. [Najpierw - Code nową bazę danych](http://msdn.microsoft.com/data/jj193542.aspx) samouczek dotyczący EF służy jako przykład uruchomionych w tym dokumencie. Przykładowy kod towarzyszące ten dokument jest częścią narzędzi elastycznej bazy danych, ustaw próbek w przykładach kodu programu Visual Studio.
+# <a name="elastic-database-client-library-with-entity-framework"></a>Biblioteka kliencka elastic Database przy użyciu platformy Entity Framework
+Ten dokument przedstawia zmiany w aplikacji Entity Framework, które są wymagane w celu integracji z [narzędzi elastycznej bazy danych](sql-database-elastic-scale-introduction.md). Koncentruje się na tworzenie [procesu zarządzania mapą fragmentów](sql-database-elastic-scale-shard-map-management.md) i [routingu zależnego od danych](sql-database-elastic-scale-data-dependent-routing.md) z platformą Entity Framework **Code First** podejście. [Kod najpierw — Nowa baza danych](http://msdn.microsoft.com/data/jj193542.aspx) samouczek dla platformy EF służy jako przykład uruchomionych w tym dokumencie. Przykładowy kod, towarzyszący ten dokument jest częścią narzędzi elastycznej bazy danych zestaw przykładów w Visual Studio Code Samples.
 
-## <a name="downloading-and-running-the-sample-code"></a>Pobieranie i uruchamianie przykładowy kod
-Aby pobrać kod w tym artykule:
+## <a name="downloading-and-running-the-sample-code"></a>Pobieranie i uruchamianie przykładowego kodu
+Aby pobrać kod, w tym artykule:
 
 * Visual Studio 2012 lub nowszy jest wymagany. 
-* Pobierz [elastyczne narzędzia bazy danych dla bazy danych SQL Azure — przykładowy Entity Framework integracji](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-bae904ba) w witrynie MSDN. Rozpakuj próbki lokalizacji wybrane.
+* Pobierz [narzędzia elastyczne bazy danych Azure SQL — przykład Entity Framework integracji](https://code.msdn.microsoft.com/windowsapps/Elastic-Scale-with-Azure-bae904ba) z witryny MSDN. Rozpakuj próbki do wybranej lokalizacji.
 * Uruchom program Visual Studio. 
 * W programie Visual Studio wybierz Plik -> Otwórz projekt/rozwiązanie. 
-* W **Otwórz projekt** okno dialogowe, przejdź do przykładowej został pobrany i wybierz **EntityFrameworkCodeFirst.sln** otworzyć próbki. 
+* W **Otwórz projekt** okno dialogowe, przejdź do przykładu został pobrany, a następnie wybierz pozycję **EntityFrameworkCodeFirst.sln** można otworzyć plik. 
 
-Aby uruchomić próbki, należy utworzyć trzy pusty bazy danych w bazie danych SQL Azure:
+Aby uruchomić przykład, musisz utworzyć trzy pustych baz danych w usłudze Azure SQL Database:
 
-* Bazy danych Menedżera Map niezależnego fragmentu
-* 1 niezależnego fragmentu bazy danych
-* 2 niezależnego fragmentu bazy danych
+* Bazy danych Menedżera mapowań fragmentów
+* Bazy danych fragmentów 1
+* Bazy danych fragmentów 2
 
-Po utworzeniu tych baz danych, wypełnij posiadaczy miejsce w **Program.cs** o nazwę serwera bazy danych SQL Azure, nazwy bazy danych i poświadczeń do nawiązania połączenia bazy danych. Skompiluj rozwiązanie w programie Visual Studio. Visual Studio pobierze wymagane pakiety NuGet biblioteki klienta elastycznej bazy danych, Entity Framework i wystąpienia błędu przejściowego obsługi jako część procesu kompilacji. Upewnij się, że trwa przywracanie pakietów NuGet jest włączona dla rozwiązania. To ustawienie zostanie włączone, klikając prawym przyciskiem myszy plik rozwiązania w Eksploratorze rozwiązań programu Visual Studio. 
+Po utworzeniu tych baz danych, wypełnij posiadaczy miejsce w **Program.cs** przy użyciu nazwy serwera bazy danych SQL Azure, nazwy baz danych i swoje poświadczenia, aby nawiązać połączenie z bazy danych. Skompiluj rozwiązanie w programie Visual Studio. Program Visual Studio pobierze wymagane pakiety NuGet dla biblioteki klienckiej elastycznej bazy danych, platformy Entity Framework i obsługa jako część procesu kompilacji błędu przejściowego. Upewnij się, że trwa przywracanie pakietów NuGet jest włączony dla Twojego rozwiązania. To ustawienie zostanie włączone, klikając prawym przyciskiem myszy plik rozwiązania w Eksploratorze rozwiązań programu Visual Studio. 
 
 ## <a name="entity-framework-workflows"></a>Przepływy pracy programu Entity Framework
-Entity Framework deweloperzy polegać na jednym z następujących czterech przepływy pracy do tworzenia aplikacji i zapewnienia trwałości dla obiektów aplikacji: 
+Entity Framework deweloperzy opierają się na jednym z następujących czterech przepływy pracy umożliwiające tworzenie aplikacji i zapewnienie trwałości obiektów w aplikacji: 
 
-* **Code First (Nowa baza danych)**: developer EF tworzy model w kodzie aplikacji, a następnie EF generuje bazy danych z niego. 
-* **Code First (istniejącej bazy danych)**: dewelopera umożliwia EF generowanie kodu aplikacji dla modelu na podstawie istniejącej bazy danych.
-* **Model pierwszy**: dewelopera tworzy model w programie EF designer, a następnie EF utworzy bazę danych z modelu.
-* **Baza danych pierwszej**: projektanta używa EF narzędzi w celu uwzględnienia modelu z istniejącej bazy danych. 
+* **Kod pierwszy (Nowa baza danych)**: EF deweloperów tworzy modelu w kodzie aplikacji, a następnie EF generuje bazy danych z niego. 
+* **Kod pierwszy (istniejącej bazy danych)**: dewelopera umożliwia generowanie kodu aplikacji, dla modelu na podstawie istniejącej bazy danych programu EF.
+* **Pierwszy model**: deweloper tworzy model w Projektancie platformy EF, a następnie EF tworzy bazy danych z modelu.
+* **Baza danych pierwszy**: programistka używa EF narzędzia na potrzeby wnioskowania dotyczącego modelu z istniejącej bazy danych. 
 
-Tych sposobów zależne od klasy DbContext niewidocznie Zarządzanie połączenia bazy danych i schemat bazy danych dla aplikacji. Różne konstruktory w klasie podstawowej DbContext umożliwiają różne poziomy kontroli nad Tworzenie połączenia, uruchamianie bazy danych i tworzenie schematu. Wyzwania wynikają głównie z faktu, że zarządzanie połączenia bazy danych, które są zapewniane przez EF przecina z funkcjami zarządzania połączenia interfejsów routingu zależne od danych dostarczanych przez biblioteki klienta elastycznej bazy danych. 
+Te metody zależy od klasy DbContext w sposób niewidoczny dla użytkownika zarządzać połączeniami bazy danych i schemat bazy danych dla aplikacji. Różne Konstruktory klasy bazowej typu DbContext pozwalają na różne poziomy kontroli nad połączenia tworzenie, uruchamianie bazy danych i tworzenia schematu. Wyzwania powstać przede wszystkim z faktu, że zarządzanie połączenia bazy danych, które są zapewniane przez EF przecina z funkcjami zarządzania połączenia interfejsów routingu zależnego od danych zapewnianych przez Biblioteka kliencka elastic database. 
 
 ## <a name="elastic-database-tools-assumptions"></a>Założenia narzędzi elastycznej bazy danych
-Aby uzyskać definicje terminów, zobacz [słownik narzędzi elastycznej bazy danych](sql-database-elastic-scale-glossary.md).
+Aby uzyskać definicje terminów, zobacz [słownik narzędzi elastycznych baz danych](sql-database-elastic-scale-glossary.md).
 
-Z biblioteki klienta elastycznej bazy danych należy zdefiniować partycji o nazwie shardlets danych aplikacji. Shardlets są identyfikowane za pomocą klucza dzielenia na fragmenty i są mapowane na konkretnych baz danych. Aplikacja może mieć dowolną liczbę baz danych, zgodnie z potrzebami i dystrybuować shardlets jest zapewnienie wystarczającej ilości pojemności lub wydajności danego bieżące wymagania biznesowe. Mapowanie dzielenia na fragmenty wartości klucza do bazy danych jest przechowywany przez mapy niezależnego fragmentu pochodzącymi z interfejsów API klienta elastycznej bazy danych. Ta funkcja jest wywoływana **zarządzania mapy niezależnego fragmentu**, lub SMM skrócie. Mapa niezależnego fragmentu służy również jako broker połączeń z bazą danych dla żądań zawierających klucz dzielenia na fragmenty. Ta funkcja jest nazywany **routingu zależne od danych**. 
+Za pomocą biblioteki klienckiej elastycznej bazy danych należy zdefiniować partycje dane Twoich aplikacji o nazwie podfragmentów. Podfragmentów są identyfikowane przez klucz fragmentowania tak i są mapowane do określonych baz danych. Aplikacja może mieć dowolną liczbę baz danych zgodnie z potrzebami i dystrybuować podfragmentów w celu zapewnienia wystarczającej liczby pojemność i wydajność, biorąc pod uwagę bieżące wymagania biznesowe. Mapowanie wartości klucza fragmentowania do baz danych są przechowywane przez mapowania fragmentów w postaci dostarczone przez interfejsów API klienta elastycznej bazy danych. Ta funkcja jest wywoływana **procesu zarządzania mapą fragmentów**, lub SMM w skrócie. Mapowania fragmentów służy również jako broker połączeń z bazą danych dla żądań, które zawierają klucz fragmentowania. Ta możliwość jest znana jako **routingu zależnego od danych**. 
 
-Menedżer mapy niezależnego fragmentu chroni użytkowników z widoków niespójne w shardlet dane, które mogą wystąpić, gdy są wykonywane operacje zarządzania równoczesnych shardlet (np. przenoszenie danych z jednego niezależnego fragmentu do innego). Aby to zrobić, mapy niezależnego fragmentu zarządzane przez brokera biblioteki klienta połączenia bazy danych dla aplikacji. Dzięki temu funkcja mapy niezależnego fragmentu automatycznie kill połączenia z bazą danych podczas operacji zarządzania niezależnego fragmentu może mieć wpływ na shardlet, który został utworzony dla połączenia. Tej metody należy zintegrować z niektórych funkcji EF firmy, takich jak tworzenie nowych połączeń z jednego z istniejących, aby sprawdzić, czy baza danych. Ogólnie rzecz biorąc naszych obserwacji została działanie standardowe tylko pracy niezawodnie dla połączenia zamkniętego bazy danych, które można bezpiecznie sklonować dla EF konstruktorów typu DbContext. Zamiast tego projektu zasady elastycznej bazy danych jest tylko broker otwarte połączenia. Jeden wydaje się, że zamknięcie połączenia obsługiwane przez brokera w bibliotece klienta przed przekazaniem ich do EF DbContext może rozwiązać ten problem. Jednak połączenie jest zamykane i zależne EF otworzyć go ponownie, co foregoes sprawdzania poprawności i sprawdzanie spójności wykonywana przez bibliotekę. Funkcje migracji w EF, jednak używa tych połączeń do zarządzania podstawowy schemat bazy danych w sposób niewidoczny dla aplikacji. W idealnym przypadku będzie zachowują i połączyć wszystkie te funkcje z biblioteki klienta elastycznej bazy danych i EF w tej samej aplikacji. W poniższej sekcji omówiono te właściwości i wymagania bardziej szczegółowo. 
+Menedżera mapowań fragmentów uniemożliwia użytkownikom niespójne widoków w dane podfragmentu może wystąpić, gdy występują podfragmentu równoczesnych operacji zarządzania (np. przenoszenie danych z jednego fragmentu do drugiego). Aby to zrobić, mapowań fragmentów w postaci zarządza brokera bibliotekę klienta połączenia bazy danych dla aplikacji. Dzięki temu funkcji mapy fragmentów automatycznie kill połączenie z bazą danych, podczas operacji zarządzania fragmentami może mieć wpływ na podfragmentu, że połączenie zostało utworzone dla. Takie podejście wymaga integracji z niektórych funkcji EF firmy, takich jak tworzenie nowych połączeń z istniejącą pod kątem istnienia bazy danych. Ogólnie rzecz biorąc nasze obserwacji zostało działanie standardowe konstruktory DbContext tylko działają niezawodnie dla połączeń zamknięte bazy danych, które można bezpiecznie sklonować na platformie EF. Zasady projektowania elastycznej bazy danych zamiast tego jest tylko brokera otwarte połączenia. Jeden wydaje się, że zamknięcie połączenia obsługiwane przez brokera bibliotekę klienta w przed przekazaniem ich do typu DbContext EF może rozwiązać ten problem. Jednak połączenie jest zamykane, a opieranie się na EF, aby otworzyć go ponownie, jeden foregoes sprawdzania poprawności i sprawdzanie spójności wykonywane przez bibliotekę. Funkcje migracji w programie EF, jednak używa tych połączeń do zarządzania podstawowy schemat bazy danych w sposób niewidoczny dla aplikacji. W idealnym przypadku będzie zachowują i połącz wszystkie te funkcje z biblioteki klienta elastycznej bazy danych i EF w tej samej aplikacji. W poniższej sekcji omówiono te właściwości i wymagania, które bardziej szczegółowo. 
 
 ## <a name="requirements"></a>Wymagania
-Podczas pracy z biblioteki klienta elastycznej bazy danych i interfejsów API programu Entity Framework, ma zostać zachowany następujące właściwości: 
+Pracując z biblioteki klienta elastycznej bazy danych i interfejsów API programu Entity Framework, aby zachować następujące właściwości: 
 
-* **Skalowalny w poziomie**: Aby dodać lub usunąć baz danych z aplikacji podzielonej odpowiednio do potrzeb pojemność aplikacji warstwy danych. Oznacza to, kontrolę nad tworzeniem i usuwaniem baz danych i zarządzanie baz danych i mapowania shardlets za pomocą Menedżera map niezależnego fragmentu elastycznej bazy danych interfejsów API. 
-* **Spójność**: aplikacja wykorzystuje dzielenia na fragmenty i korzysta z funkcji routingu zależne od danych biblioteki klienta. Aby uniknąć uszkodzenia lub wyników zapytania niewłaściwy, połączeń są przeprowadzana za pośrednictwem Menedżera map niezależnego fragmentu. Zachowuje również sprawdzania poprawności i spójność.
-* **"Code First"**: zachowania wygodę EF przez kod pierwszego modelu. W pierwszym kod klasy w aplikacji są mapowane niewidocznie podstawowej struktury bazy danych. Kod aplikacji współdziała z DbSets, który zamaskować większością aspektów przetwarzania podstawowej bazy danych.
-* **Schemat**: Entity Framework obsługuje tworzenie schematu bazy danych początkowej i kolejnych schematu zmiany za pomocą migracji. Zachowując te możliwości dostosowywania aplikacji jest łatwe w miarę rozwoju środowisko danych. 
+* **Skalowalny w poziomie**: Dodawanie i usuwanie baz danych z warstwy danych aplikacji podzielonej na fragmenty stosownie do potrzeb pojemności w aplikacji. Oznacza to, kontrolę nad tworzeniem i usuwaniem baz danych i za pomocą elastycznej bazy danych Menedżera mapowań fragmentów interfejsów API do zarządzania bazami danych i mapowania podfragmentów. 
+* **Spójność**: aplikacja wykorzystuje dzielenia na fragmenty i korzysta z możliwości routingu zależnego od danych biblioteki klienta. Aby uniknąć uszkodzenia lub wyniki kwerendy problem, połączenia jest przeprowadzana za pośrednictwem Menedżera mapowań fragmentów. Zachowuje również sprawdzania poprawności i spójność.
+* **Kod pierwszy**: zachować wygody paradygmat pierwszy kod firmy EF. W Code First klas w aplikacji są mapowane przezroczyste podstawowe struktury bazy danych. Kod aplikacji współdziała z DbSets, który maski większością aspektów przetwarzania podstawowej bazy danych.
+* **Schemat**: Entity Framework obsługuje tworzenie schematu początkowej bazy danych i rozwój kolejnych schematu za pomocą migracji. Przy zachowaniu możliwości, dostosowanie aplikacji jest łatwe jak ewoluuje danych. 
 
-Poniższe wskazówki nakazuje jak spełnia wymagania Code First aplikacji za pomocą narzędzi elastycznej bazy danych. 
+Poniższe wskazówki powoduje, że sposób spełniają te wymagania aplikacji Code First, za pomocą narzędzi elastycznych baz danych. 
 
-## <a name="data-dependent-routing-using-ef-dbcontext"></a>Dane zależne od routingu przy użyciu EF DbContext
-Połączenia bazy danych z programu Entity Framework zwykle są zarządzane przez podklasy **DbContext**. Utworzyć te podklasy pochodny **DbContext**. Jest to, gdzie został zdefiniowany z **DbSets** implementują kolekcje kopii bazy danych obiektu CLR dla aplikacji. W kontekście routingu zależne od danych można określić kilka właściwości pomocne, które nie posiadają niekoniecznie dla innych pierwszy scenariuszy aplikacji EF kodu: 
+## <a name="data-dependent-routing-using-ef-dbcontext"></a>Dane zależne od routing przy użyciu programu EF DbContext
+Połączenia z bazą danych przy użyciu platformy Entity Framework zwykle odbywa się za pośrednictwem podklasy **DbContext**. Utwórz następujące podklasy, wynikające z **DbContext**. Jest to, gdzie należy zdefiniować swoje **DbSets** implementują kopii bazy danych kolekcji obiektów CLR dla aplikacji. W kontekście routingu zależnego od danych można określić kilka przydatne właściwości, które nie posiadają niekoniecznie innych pierwszy scenariuszach aplikacji EF kodu: 
 
-* Baza danych już istnieje i został zarejestrowany w mapie niezależnego fragmentu elastycznej bazy danych. 
-* Schemat aplikacji zostało już wdrożone w bazie danych (co omówiono poniżej). 
-* Zależne od danych routingu połączeń z bazą danych jest przeprowadzana przez niezależnego fragmentu mapy. 
+* Baza danych już istnieje i został zarejestrowany w ramach mapowania fragmentów elastycznej bazy danych. 
+* Schemat aplikacji została już wdrożona w bazie danych (opisana poniżej). 
+* Routing zależny od danych połączeń z bazą danych są obsługiwane przez brokera przez mapowanie fragmentów. 
 
 Aby zintegrować **DbContexts** zależne od danych routingu dla skalowalnego w poziomie:
 
-1. Utwórz połączenia fizycznej bazy danych za pośrednictwem interfejsów klienta elastycznej bazy danych Menedżera mapy niezależnego fragmentu, 
-2. Zawijaj połączenie z **DbContext** podklasy
-3. Przekaż połączenie w dół do **DbContext** podstawowa klasy, aby upewnić się, wszystkie przetwarzania po stronie EF się stanie, a także. 
+1. Tworzenie połączeń fizycznej bazy danych za pośrednictwem interfejsów klienta elastycznej bazy danych Menedżera mapowań fragmentów 
+2. OPAKOWYWANIE połączenie z **DbContext** podklasy
+3. Przekazanie połączenia w dół do **DbContext** podstawowej klasy, aby upewnić się, wszystkie przetwarzanie po stronie EF odbywa się w także. 
 
-Poniższy przykład kodu pokazuje tej metody. (Ten kod jest również towarzyszący projektu programu Visual Studio)
+Poniższy przykład kodu ilustruje takie podejście. (Ten kod jest również w towarzyszącej projektu programu Visual Studio)
 
     public class ElasticScaleContext<T> : DbContext
     {
@@ -110,19 +113,19 @@ Poniższy przykład kodu pokazuje tej metody. (Ten kod jest również towarzysz�
         }    
 
 ## <a name="main-points"></a>Główne punkty
-* Nowy Konstruktor zastępuje konstruktora domyślnego w podklasy DbContext 
-* Nowy Konstruktor przyjmuje argumenty, które są wymagane dla routingu zależne od danych za pomocą biblioteki klienta elastycznej bazy danych:
+* Nowy Konstruktor zastępuje konstruktora domyślnego w podklasą typu DbContext 
+* Nowy Konstruktor przyjmuje liczbę argumentów, które są wymagane do routingu zależnego od danych za pomocą biblioteki klienckiej elastycznej bazy danych:
   
-  * Mapa niezależnych można uzyskać dostępu do interfejsów routingu zależne od danych
-  * klucz dzielenia na fragmenty, aby zidentyfikować shardlet,
-  * Parametry połączenia przy użyciu poświadczeń dla połączenia routingu zależne od danych niezależnego fragmentu. 
-* Wywołanie konstruktora klasy podstawowej uwzględnia przekierowania statyczną metodę, która wykonuje wszystkie kroki niezbędne do routingu zależne od danych. 
+  * mapowania fragmentów, aby dostęp do interfejsów routingu zależnego od danych
+  * klucz fragmentowania tak, aby zidentyfikować podfragmentu,
+  * ciąg połączenia przy użyciu poświadczeń dla połączenia routingu zależnego od danych do fragmentu. 
+* Wywołanie konstruktora klasy bazowej uwzględnia przekierowania statycznej metody, która wykonuje wszystkie kroki niezbędne do routingu zależnego od danych. 
   
-  * Używa wywołania OpenConnectionForKey interfejsów klienta elastycznej bazy danych na mapie niezależnego fragmentu ustanowienie otwartego połączenia.
-  * Mapa niezależnego fragmentu tworzy Otwieranie połączenia z niezależnego fragmentu, przechowujący shardlet klucza danego dzielenia na fragmenty.
-  * To połączenie otwarte jest przekazywane z powrotem do konstruktora klasy podstawowej typu DbContext, aby wskazać, czy to połączenie jest używane przez EF zamiast czekać na EF automatycznie Utwórz nowe połączenie. W ten sposób połączenia zostały oznakowane przez interfejs API klienta elastycznej bazy danych, dzięki czemu może zagwarantować spójności w operacjach zarządzania mapy niezależnego fragmentu.
+  * Używa wywołań OpenConnectionForKey interfejsów klienta elastycznej bazy danych na mapie fragmentu do nawiązania połączenia.
+  * Mapowania fragmentów tworzy otwartego połączenia do przechowujący podfragmentu klucza fragmentowania danego fragmentu.
+  * Ta otwarcia połączenia jest przekazywany do konstruktora klasy bazowej typu DbContext, aby wskazać, czy to połączenie jest używane przez EF samodzielny EF automatycznie Utwórz nowe połączenie. W ten sposób połączenia zostały otagowane przez interfejs API klienta elastycznej bazy danych, dzięki czemu można zagwarantować spójności w ramach operacji zarządzania mapy fragmentów.
 
-Użyj nowego konstruktora dla Twojego podklasy DbContext zamiast domyślnego konstruktora w kodzie. Oto przykład: 
+Użyj nowego konstruktora dla Twojego podklasą typu DbContext zamiast domyślnego konstruktora w kodzie. Oto przykład: 
 
     // Create and save a new blog.
 
@@ -145,12 +148,12 @@ Użyj nowego konstruktora dla Twojego podklasy DbContext zamiast domyślnego kon
      … 
     }
 
-Nowy Konstruktor otwiera połączenie niezależnego fragmentu, przechowujący dane dla shardlet zidentyfikowane przez wartość **tenantid1**. Kod w **przy użyciu** bloku pozostanie bez zmian, aby uzyskać dostęp do **DbSet** dla blogów za pomocą EF na niezależnych dla **tenantid1**. Spowoduje to zmianę semantyki dla kodu za pomocą zablokować taki, że wszystkie operacje bazy danych obecnie ograniczone do jednego niezależnego fragmentu gdzie **tenantid1** jest przechowywany. Na przykład zapytania LINQ za pośrednictwem blogów **DbSet** zwróci tylko blogi przechowywane na bieżący identyfikator niezależnego fragmentu, ale nie te przechowywane na inne niezależne.  
+Nowy Konstruktor otwiera połączenie fragmentów, która przechowuje dane dla podfragmentu identyfikowane przez wartość **tenantid1**. Kod w **przy użyciu** bloku pozostaje bez zmian, aby uzyskać dostęp do **DbSet** dla blogów przy użyciu programu EF na fragmentu dla **tenantid1**. Spowoduje to zmianę semantyki dla kodu za pomocą zablokować takie, że wszystkie operacje bazy danych teraz są ograniczone do jednego fragmentu gdzie **tenantid1** są przechowywane. Na przykład zapytanie LINQ na blogach **DbSet** zwróci tylko blogi przechowywanych w bieżącym fragmencie, ale nie te, przechowywane w innych fragmentach.  
 
 #### <a name="transient-faults-handling"></a>Obsługa błędów przejściowych
-Zespół Microsoft Patterns & wskazówki opublikowane [przejściowy błąd obsługi aplikacji bloku](https://msdn.microsoft.com/library/dn440719.aspx). Biblioteka jest używany z biblioteki klienta elastycznej skali w połączeniu z EF. Jednak zapewnić zwracanych do miejsca, w którym można zapewnić, że nowy konstruktor jest używany po błędu przejściowego tak, aby wszystkie nowe połączenia podejmowana jest używanie konstruktorów, które można tweaked przejściowej wyjątku. W przeciwnym razie połączenie z poprawną niezależnego fragmentu nie jest gwarantowana i nie ma żadnych gwarancji, połączenie jest obsługiwane w chwili wystąpienia zmian do mapy niezależnego fragmentu. 
+Opublikowane przez zespół Microsoft Patterns i praktyki [przejściowych błędów obsługi blok aplikacji](https://msdn.microsoft.com/library/dn440719.aspx). Biblioteka jest używana przy użyciu biblioteki klienckiej skalowania elastycznego w połączeniu z programem EF. Jednak upewnij się, że każdy wyjątek przejściowy zwraca do miejsca, w którym można zapewnić, że nowego konstruktora jest używany po błędów przejściowych, aby wszystkie nowe połączenia podejmowana jest używanie konstruktorów, które możesz tweaked. W przeciwnym razie połączenie prawidłowy fragment nie ma żadnej gwarancji, a nie ma żadnych zapewnień, połączenie jest obsługiwane, wraz ze zmianami do mapy fragmentów. 
 
-Poniższy przykładowy kod przedstawia sposób używania zasady ponawiania SQL wokół nowe **DbContext** podklas: 
+Poniższy przykład kodu ilustruje, jak można używać dla zasad ponawiania SQL wokół nowy **DbContext** konstruktory podklasy: 
 
     SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() => 
     { 
@@ -166,35 +169,35 @@ Poniższy przykładowy kod przedstawia sposób używania zasady ponawiania SQL w
             } 
         }); 
 
-**SqlDatabaseUtils.SqlRetryPolicy** w powyższym kodzie jest zdefiniowany jako **SqlDatabaseTransientErrorDetectionStrategy** z liczbą ponowień równą 10 i 5 sekund oczekiwania czasu między kolejnymi próbami. Ta metoda jest podobna do wskazówek dotyczących EF i transakcji inicjowanych przez użytkownika (zobacz [ograniczenia strategiami ponowną próbą wykonania (EF6 i jego nowszych wersjach)](http://msdn.microsoft.com/data/dn307226). Obu sytuacjach wymagają, że program aplikacji steruje zakresu, do którego zwraca wyjątek przejściowej: Aby ponownie otworzyć transakcji albo (jak pokazano) odtworzyć kontekstu z prawidłowego konstruktora, który używa biblioteki klienta elastycznej bazy danych.
+**SqlDatabaseUtils.SqlRetryPolicy** w powyższym kodzie jest zdefiniowany jako **SqlDatabaseTransientErrorDetectionStrategy** z liczbą ponowień równą 10 i 5 sekund czas między ponownymi próbami oczekiwania. Ta metoda jest podobna do wskazówek dotyczących EF i transakcje zainicjowanego przez użytkownika (zobacz [ograniczenia dotyczące ponawiania strategii wykonywania (od wersji EF6)](http://msdn.microsoft.com/data/dn307226). Zarówno sytuacje wymagają, że program aplikacji określa zakres, do którego funkcja zwraca wyjątek przejściowy: Aby ponownie otworzyć transakcji albo (jak pokazano) ponownie utwórz kontekst od prawidłowego konstruktora, który używa Biblioteka kliencka elastic database.
 
-Potrzeba kontroli w przypadku gdy wyjątki przejściowej podjąć nam w zakresie także wyklucza stosowanie wbudowanych **klasy SqlAzureExecutionStrategy** dołączony EF. **Klasy SqlAzureExecutionStrategy** będzie ponownie otworzyć połączenie, ale nie używać **OpenConnectionForKey** ominięcie walidacji utworzonej w ramach **OpenConnectionForKey**wywołania. Zamiast tego przykładowy kod używa wbudowanej **DefaultExecutionStrategy** również dołączony EF. W przeciwieństwie do **klasy SqlAzureExecutionStrategy**, działa on prawidłowo w połączeniu z zasady ponawiania z obsługi błędów przejściowych. Zasady wykonywania jest ustawiony **ElasticScaleDbConfiguration** klasy. Należy pamiętać, że zdecydowaliśmy nie należy używać **DefaultSqlExecutionStrategy** ponieważ sugeruje, za pomocą **klasy SqlAzureExecutionStrategy** Jeśli wystąpią wyjątki przejściowy — która może spowodować nieprawidłowe zachowanie zgodnie z opisem. Aby uzyskać więcej informacji na zasady ponawiania różnych i EF, zobacz [połączenia odporność EF](http://msdn.microsoft.com/data/dn456835.aspx).     
+Potrzeba kontroli, gdzie przejściowych wyjątków zająć USA w zakresie także wyklucza stosowanie wbudowanych **SqlAzureExecutionStrategy** dostarczany z programem EF. **SqlAzureExecutionStrategy** będzie ponownie otworzyć połączenie, ale używa **OpenConnectionForKey** ominięcie weryfikacji, które jest wykonywane jako część **OpenConnectionForKey**wywołania. Zamiast tego przykład kodu używa wbudowanej **DefaultExecutionStrategy** również dostarczany z programem EF. W przeciwieństwie do **SqlAzureExecutionStrategy**, działa prawidłowo w połączeniu z zasady ponawiania z obsługi błędów przejściowych. Zasady wykonywania jest ustawiony **ElasticScaleDbConfiguration** klasy. Należy zauważyć, że podjęliśmy decyzję o nie należy używać **DefaultSqlExecutionStrategy** ponieważ sugeruje, za pomocą **SqlAzureExecutionStrategy** przypadku przejściowych wyjątków — które mogłyby prowadzić do nieprawidłowego zachowania zgodnie z opisem. Aby uzyskać więcej informacji na temat zasad ponawiania różnych i EF, zobacz [odporności połączenia w programie EF](http://msdn.microsoft.com/data/dn456835.aspx).     
 
 #### <a name="constructor-rewrites"></a>Konstruktor modyfikacji oprogramowania
-Powyższe przykłady kodu przedstawiono domyślny konstruktor ponownie zapisuje wymagane dla aplikacji, aby można było korzystać z routingu zależne od danych z programu Entity Framework. Poniższa tabela stanowi uogólnienie takie podejście do innych konstruktorów. 
+Powyższe przykłady kodu ilustrują, domyślny konstruktor ponownie zapisuje wymaganej dla aplikacji, aby można było używać routingu zależnego od danych z programu Entity Framework. Poniższa tabela stanowi uogólnienie takie podejście do innych konstruktorów. 
 
-| Bieżący Konstruktor | Konstruktor nowych danych | Konstruktora podstawowego | Uwagi |
+| Bieżący Konstruktor | Konstruktor nowych danych | Konstruktora bazowego | Uwagi |
 | --- | --- | --- | --- |
-| MyContext() |ElasticScaleContext(ShardMap, TKey) |DbContext (DbConnection, wartość logiczna) |Połączenie musi być funkcją mapy niezależnego fragmentu i klucza routingu zależne od danych. Trzeba obejścia połączenia automatycznego tworzenia przez EF i zamiast tego użyć mapy niezależnego fragmentu do broker połączenia. |
-| MyContext(string) |ElasticScaleContext(ShardMap, TKey) |DbContext (DbConnection, wartość logiczna) |Połączenie jest funkcją mapy niezależnego fragmentu i klucz routingu zależne od danych. Stałej bazy danych nazwa lub parametry połączenia nie działa jako ich obejścia weryfikacji przez niezależnego fragmentu mapy. |
-| MyContext(DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, model DbCompiledModel, wartość logiczna) |Połączenie pobiera utworzone dla danego niezależnych klucza mapy i dzielenia na fragmenty za pomocą modelu podane. Skompilowany modelu są przekazywane do podstawowej c'tor. |
-| MyContext (DbConnection, wartość logiczna) |ElasticScaleContext (ShardMap, TKey, wartość logiczna) |DbContext (DbConnection, wartość logiczna) |Połączenie musi można wywnioskować na podstawie mapowania niezależnego fragmentu i klucz. Nie można podać jako dane wejściowe, (chyba że te dane wejściowe korzystał już z mapy niezależnych oraz klucz). Wartość logiczna są przekazywane. |
-| MyContext(string, DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |DbContext (DbConnection, model DbCompiledModel, wartość logiczna) |Połączenie musi można wywnioskować na podstawie mapowania niezależnego fragmentu i klucz. Nie można podać jako dane wejściowe, (chyba że te dane wejściowe używał mapy niezależnych oraz klucz). Skompilowany modelu są przekazywane. |
-| MyContext (ObjectContext, wartość logiczna) |ElasticScaleContext (ShardMap TKey, ObjectContext, wartość logiczna) |DbContext (ObjectContext, wartość logiczna) |Nowy Konstruktor musi upewnić, że wszystkie połączenia w obiekcie ObjectContext przekazany jako dane wejściowe jest przekierowane do połączenia zarządza elastycznego skalowania. Szczegółowe omówienie ObjectContexts wykracza poza zakres tego dokumentu. |
-| MyContext (DbConnection, model DbCompiledModel, wartość logiczna) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel, bool) |DbContext (DbConnection, model DbCompiledModel, wartość logiczna); |Połączenie musi można wywnioskować na podstawie mapowania niezależnego fragmentu i klucz. Połączenie nie można podać jako danych wejściowych (chyba że te dane wejściowe korzystał już z mapy niezależnych oraz klucz). Model i wartość logiczną są przekazywane do konstruktora klasy podstawowej. |
+| MyContext() |ElasticScaleContext(ShardMap, TKey) |Kontekst DbContext (DbConnection, wartość logiczna) |Połączenie musi być funkcją mapowania fragmentów i klucz routingu zależnego od danych. Potrzebne do utworzenia połączenia automatycznego pomijania przez EF i zamiast tego użyć mapy fragmentów brokera połączenia. |
+| MyContext(string) |ElasticScaleContext(ShardMap, TKey) |Kontekst DbContext (DbConnection, wartość logiczna) |Połączenie jest funkcją mapowania fragmentów i klucz routingu zależnego od danych. Bazy danych nazwa lub parametry połączenia nie działa jako ich pomijania weryfikacji przez mapowanie fragmentów. |
+| MyContext(DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |Kontekst DbContext (DbConnection, DbCompiledModel, wartość logiczna) |Za pomocą modelu podane dla klucza fragmentu danej mapy i dzielenie na fragmenty pobiera utworzyć połączenia. Skompilowany modelu jest przekazywane do podstawowej c'tor. |
+| MyContext (DbConnection, wartość logiczna) |ElasticScaleContext (ShardMap, TKey, wartość logiczna) |Kontekst DbContext (DbConnection, wartość logiczna) |Połączenie wymaga był wywnioskowany z mapy fragmentów i klucza. Nie można podać jako dane wejściowe, (chyba że te dane wejściowe już używał mapowania fragmentów i klucz). Wartość logiczna jest przekazywany. |
+| MyContext(string, DbCompiledModel) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel) |Kontekst DbContext (DbConnection, DbCompiledModel, wartość logiczna) |Połączenie wymaga był wywnioskowany z mapy fragmentów i klucza. Nie można podać jako dane wejściowe, (chyba że te dane wejściowe używał mapowania fragmentów i klucz). Skompilowany modelu są przekazywane. |
+| MyContext (ObjectContext, wartość logiczna) |ElasticScaleContext (ShardMap TKey, ObjectContext, wartość logiczna) |Kontekst DbContext (ObjectContext, wartość logiczna) |Nowego konstruktora musi upewnij się, że każde połączenie w obiekcie ObjectContext przekazany jako dane wejściowe ponownie przekierowane do połączenia zarządza elastycznego skalowania. Szczegółowe omówienie ObjectContexts wykracza poza zakres tego dokumentu. |
+| MyContext (DbConnection, DbCompiledModel, wartość logiczna) |ElasticScaleContext(ShardMap, TKey, DbCompiledModel, bool) |Kontekst DbContext (DbConnection, DbCompiledModel, wartość logiczna); |Połączenie wymaga był wywnioskowany z mapy fragmentów i klucza. Połączenie nie można podać jako dane wejściowe (chyba że te dane wejściowe już używał mapowania fragmentów i klucz). Atrybut typu wartość logiczna i model są przekazywane do konstruktora klasy bazowej. |
 
-## <a name="shard-schema-deployment-through-ef-migrations"></a>Identyfikator niezależnego fragmentu wdrożenia schematu za pomocą migracji EF
-Zarządzanie automatyczne schematu jest udogodnienie pochodzącymi z programu Entity Framework. W kontekście aplikacji przy użyciu narzędzi elastycznej bazy danych ma zostać zachowany tej możliwości, aby automatycznie udostępniać schemat odłamków nowo utworzone po dodaniu bazy danych podzielonej aplikacji. Pierwotnym zastosowaniem jest zwiększenie pojemności w warstwie danych podzielonej aplikacji za pomocą EF. Zależne EF jego możliwości zarządzania schematu zmniejsza nakład pracy administracyjnej bazy danych z aplikacją podzielonej oparty na EF. 
+## <a name="shard-schema-deployment-through-ef-migrations"></a>Wdrożenie schematu fragmentów za pomocą migracji EF
+Zarządzanie schematami automatyczne jest wygodne, dostarczane przez program Entity Framework. W kontekście aplikacji za pomocą narzędzi elastycznych baz danych chcesz zachować tej możliwości, aby automatycznie aprowizować schematu do nowo utworzonego fragmentów, gdy bazy danych zostaną dodane do aplikacji podzielonej na fragmenty. Głównym zastosowaniem jest zwiększenie pojemności w warstwie danych dla aplikacji podzielonej na fragmenty, przy użyciu programu EF. Opierając się na możliwości firmy EF Zarządzanie schematami zmniejsza nakład pracy administracyjnej bazy danych za pomocą aplikacji podzielonej na fragmenty, w oparciu o EF. 
 
-Wdrożenia schematu za pomocą migracji EF najlepiej **bez otwierania połączenia**. Dzięki temu nie trzeba scenariusz routingu zależne od danych, który polega na otwarte połączenie udostępniane przez interfejs API klienta elastycznej bazy danych. Inna różnica polega na wymaganie spójności: podczas pożądane w celu zapewnienia spójności dla wszystkich połączeń routingu zależne od danych do ochrony przed manipulowania mapy równoczesnych niezależnego fragmentu nie jest problemem za pomocą początkowego wdrożenia schemat na nowe bazy danych ma jeszcze nie został zarejestrowany w mapie niezależnego fragmentu i jeszcze nie została przydzielona do przechowywania shardlets. W związku z tym polega na połączenia zwykłej bazy danych dla tego scenariusza, w przeciwieństwie zależne od danych routingu.  
+Wdrożenie schematu za pomocą migracji EF, sprawdza się najlepiej w **bez otwierania połączenia**. Jest to w przeciwieństwie do scenariusz routingu zależnego od danych, która opiera się na otwarte połączenia, udostępniane przez interfejs API klienta elastycznej bazy danych. Inna różnica polega na wymaganie spójności: podczas pożądane w celu zapewnienia spójności dla wszystkich połączeń routingu zależnego od danych do ochrony przed manipulowania mapy fragmentów współbieżnych, nie jest to niepożądane, za pomocą początkowego wdrażania schematu nowej bazy danych ma jeszcze nie został zarejestrowany w ramach mapowania fragmentów i jeszcze nie została przydzielona do przechowywania podfragmentów. W związku z tym polega na połączenia regularne bazy danych dla tego scenariusza, w przeciwieństwie do routingu zależnego od danych.  
 
-Prowadzi to do podejście gdzie wdrożenia schematu za pomocą migracji EF jest ściśle powiązane z rejestracją nową bazę danych jako niezależnego fragmentu w mapie niezależnych aplikacji. To opiera się na następujące wymagania wstępne: 
+Prowadzi to do podejście gdzie wdrażania schematu za pomocą migracji EF jest ściśle powiązany z rejestracją nową bazę danych jako fragmentów w mapowania fragmentów w aplikacji. To zależy od następujących wymagań wstępnych: 
 
-* Bazy danych już istnieje. 
-* Baza danych jest pusta — posiada nie użytkowników schematu i danych użytkownika.
-* Bazy danych nie są jeszcze dostępne za pośrednictwem interfejsów API klienta elastycznej bazy danych dla routingu zależne od danych. 
+* Baza danych już istnieje. 
+* Baza danych jest pusta — przechowuje żaden schemat użytkownika i żadnych danych użytkownika.
+* Bazy danych nie są jeszcze dostępne za pośrednictwem interfejsów API klienta elastycznej bazy danych routingu zależnego od danych. 
 
-O spełnieniu tych wymaganiach wstępnych, można utworzyć zwykły bez otwartego **SqlConnection** można rozpocząć poza EF migracji wdrożenia schematu. Poniższy przykładowy kod przedstawia tej metody. 
+Te warunki wstępne są spełnione, można utworzyć wyrażenie otwartych niezaznaczone **SqlConnection** Konferencję migracji EF dla wdrażania schematu. To podejście pokazano w następującym przykładzie kodu. 
 
         // Enter a new shard - i.e. an empty database - to the shard map, allocate a first tenant to it  
         // and kick off EF intialization of the database to deploy schema 
@@ -224,7 +227,7 @@ O spełnieniu tych wymaganiach wstępnych, można utworzyć zwykły bez otwarteg
         } 
 
 
-W tym przykładzie pokazano metodę **RegisterNewShard** który rejestruje niezależnego fragmentu w mapie niezależnego fragmentu, wdraża schematu za pomocą migracji EF i przechowuje mapowanie klucz dzielenia na fragmenty, aby niezależnego fragmentu. Zależy od konstruktora **DbContext** podklasy (**ElasticScaleContext** w próbce) pobierającej parametrów połączenia SQL jako dane wejściowe. Kod tego konstruktora jest proste, jak przedstawiono na poniższym przykładzie: 
+W tym przykładzie pokazano metodę **RegisterNewShard** , rejestruje fragmentu w ramach mapowania fragmentów, wdraża schematu za pomocą migracje EF i przechowuje mapowanie klucz fragmentowania tak do fragmentu. Opiera się na Konstruktor obiektu **DbContext** podklasy (**ElasticScaleContext** w przykładzie), pobiera parametry połączenia SQL jako dane wejściowe. Kod ten konstruktor jest proste, jak w poniższym przykładzie pokazano: 
 
         // C'tor to deploy schema and migrations to a new shard 
         protected internal ElasticScaleContext(string connectionString) 
@@ -242,17 +245,17 @@ W tym przykładzie pokazano metodę **RegisterNewShard** który rejestruje nieza
             return connnectionString; 
         } 
 
-Co najmniej jedna może być używana wersja konstruktora dziedziczona z klasy podstawowej. Jednak kod musi zapewnić, że inicjator domyślne EF jest używana podczas łączenia. Dlatego krótkim przekierować do metody statycznej przed wywołaniem do konstruktora klasy podstawowej z parametrami połączenia. Należy pamiętać, że rejestracja odłamków powinno być ono uruchomione w innej domeny aplikacji lub proces, aby upewnić się, czy ustawienia inicjatora EF nie są w konflikcie. 
+Jedna może być używana wersja konstruktora dziedziczone z klasy podstawowej. Jednak kod wymaga upewnić się, że domyślny inicjator dla platformy EF jest używany podczas nawiązywania połączenia. Dlatego krótkim przekierować do metody statycznej przed wywołaniem do konstruktora klasy bazowej, przy użyciu parametrów połączenia. Należy pamiętać, że rejestracja fragmentów powinny być uruchamiane w domenie innej aplikacji lub proces, aby upewnić się, że ustawienia inicjatora EF nie wchodzą w konflikt. 
 
 ## <a name="limitations"></a>Ograniczenia
 Metod opisanych w tym dokumencie pociąga za sobą kilka ograniczeń: 
 
-* EF aplikacji, które używają **LocalDb** najpierw należy przeprowadzić migrację do zwykłej bazy danych programu SQL Server przed rozpoczęciem korzystania z biblioteki klienta elastycznej bazy danych. Skalowania aplikacji za pośrednictwem dzielenia na fragmenty o elastycznego skalowania nie jest możliwe za pomocą **LocalDb**. Należy pamiętać, że programowanie można nadal używać **LocalDb**. 
-* Wszelkie zmiany do aplikacji, które oznacza zmiany schematu bazy danych muszą przejść przez migracje EF na wszystkich fragmentów. Przykładowy kod dla tego dokumentu nie pokazują, jak to zrobić. Przy użyciu polecenia Update-Database z parametrem ConnectionString iteracja wszystkich odłamków; lub Wyodrębnij skryptu T-SQL oczekujące migracji, za pomocą Update-Database skrypt opcji i dotyczą skryptu T-SQL z fragmentów.  
-* Biorąc pod uwagę na żądanie, zakłada się, że wszystkie jego przetwarzanie bazy danych znajduje się w obrębie jednego niezależnego fragmentu określonej za pomocą klucza dzielenia na fragmenty udostępnionego przez żądanie. Jednak to założenie nie zawsze ma wartość true. Na przykład, gdy go nie jest możliwe do udostępnienia klucza dzielenia na fragmenty. Aby rozwiązać ten problem, udostępnia biblioteki klienckiej **MultiShardQuery** klasa implementująca abstrakcji połączenia, na potrzeby zapytań przez kilka fragmentów. Nauka korzystania **MultiShardQuery** w połączeniu z EF wykracza poza zakres tego dokumentu
+* Aplikacje platformy EF, które używają **LocalDb** najpierw należy przeprowadzić migrację do zwykłej bazy danych programu SQL Server przed rozpoczęciem korzystania z biblioteki klienta elastycznej bazy danych. Skalowanie aplikacji za pomocą fragmentowania przy użyciu elastycznej skali nie jest możliwe dzięki **LocalDb**. Należy pamiętać, że rozwoju można nadal używać **LocalDb**. 
+* Wszelkie zmiany w aplikacji, które oznaczają zmiany schematu bazy danych muszą przechodzić przez migracje EF na wszystkich fragmentów. Przykładowy kod dla tego dokumentu nie pokazują, jak to zrobić. Należy rozważyć użycie bazy danych aktualizacji za pomocą parametru ConnectionString Iterowanie wszystkich fragmentów; lub wyodrębnienia skryptu T-SQL, w związku z migracją oczekujące przy użyciu bazy danych aktualizacji za pomocą skryptu opcji, a następnie zastosować skrypt języka T-SQL do Twojej fragmentów.  
+* Biorąc pod uwagę na żądanie, zakłada się, że wszystkie jego przetwarzania bazy danych znajduje się w ramach jednego fragmentu identyfikowanego przez klucz fragmentowania dostarczonej przez żądanie. Jednak to założenie nie zawsze ma wartość true. Na przykład, jeśli go nie jest możliwe udostępnić klucz fragmentowania. Aby rozwiązać ten problem, Biblioteka klienta zapewnia **MultiShardQuery** klasę, która implementuje abstrakcji połączenie, podczas wykonywania zapytań w wielu fragmentach. Nauka korzystania **MultiShardQuery** w połączeniu z programem EF wykracza poza zakres tego dokumentu
 
 ## <a name="conclusion"></a>Podsumowanie
-Kroki opisane w niniejszym dokumencie EF aplikacje mogą używać biblioteki klienta elastycznej bazy danych możliwości zależne od danych routingu w ramach refaktoryzacji elementu konstruktorów **DbContext** używane w aplikacji EF podklasy. To ogranicza zmiany wymagane do tych miejscach gdzie **DbContext** klasy już istnieje. Ponadto aplikacje EF można nadal korzystać z wdrażania automatycznego schematu łącząc kroki, które wywołują migracji konieczne EF z rejestracją nowych fragmentów i mapowania na mapie niezależnego fragmentu. 
+Kroki opisane w niniejszym dokumencie EF aplikacjom możliwość Biblioteka kliencka elastic database zależne od danych routingu w ramach refaktoryzacji elementu konstruktory **DbContext** podklasy używanych w aplikacji EF. Ogranicza to zmiany wymagane do tych miejscach gdzie **DbContext** klasy już istnieją. Ponadto EF aplikacje mogą w dalszym ciągu korzystać z wdrażania automatycznego schematu, łącząc kroki, które wywołują niezbędne migracje EF z rejestracją nowych fragmentów i mapowania w ramach mapowania fragmentów. 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 09/25/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: a6e1acf3b9e69f32a8c175310134c534dbf8c561
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 89c72e21733b01a3e42c0e58d65cb7877e47d374
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977540"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163498"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Wdrażanie rozwiązania Kubernetes do usługi Azure Stack
 
@@ -28,7 +28,7 @@ ms.locfileid: "46977540"
 > [!Note]  
 > Rozwiązanie Kubernetes w usłudze Azure Stack jest w wersji zapoznawczej. Operator usługi Azure Stack musisz poprosić o dostęp do elementu portalu Marketplace klastra Kubernetes potrzebne do wykonania instrukcji w tym artykule.
 
-Następujący artykuł patrzy na przy użyciu szablonu rozwiązania usługi Azure Resource Manager do wdrażania i przydzielanie zasobów dla rozwiązania Kubernetes w jednej, skoordynowanej operacji. Możesz należy do zebrania wymaganych informacji dotyczących instalacji usługi Azure Stack, Generowanie szablonu, a następnie wdrożyć do chmury. Należy pamiętać, że szablon nie jest taka sama zarządzana usługa AKS, oferowana w globalnej platformy Azure, ale bliżej usługi ACS.
+Następujący artykuł patrzy na przy użyciu szablonu rozwiązania usługi Azure Resource Manager do wdrażania i przydzielanie zasobów dla rozwiązania Kubernetes w jednej, skoordynowanej operacji. Możesz należy do zebrania wymaganych informacji dotyczących instalacji usługi Azure Stack, Generowanie szablonu, a następnie wdrożyć do chmury. Uwaga szablonu nie jest tego samego zarządzanych usług AKS oferowanych na platformie Azure globalnego.
 
 ## <a name="kubernetes-and-containers"></a>Kubernetes i kontenery
 
@@ -54,7 +54,7 @@ Aby rozpocząć pracę, upewnij się, że masz odpowiednie uprawnienia, i że us
 
 1. Sprawdź, czy masz ważnej subskrypcji w portalu dzierżawcy usługi Azure Stack, i że masz wystarczająco dużo publiczny adres IP adresów dostępnych do dodania nowych aplikacji.
 
-    Nie można wdrożyć klaster do usługi Azure Stack **administratora** subskrypcji. Należy użyć subskrypcji użytkownika **. 
+    Nie można wdrożyć klaster do usługi Azure Stack **administratora** subskrypcji. Należy użyć **użytkownika** subskrypcji. 
 
 ## <a name="create-a-service-principal-in-azure-ad"></a>Tworzenie jednostki usługi w usłudze Azure AD
 
@@ -113,9 +113,23 @@ Przekazać jednostce usługi dostępu do Twojej subskrypcji, aby podmiot zabezpi
 
     ![Wdrażanie szablonu rozwiązań](media/azure-stack-solution-template-kubernetes-deploy/01_kub_market_item.png)
 
-1. Wybierz **podstawy** w tworzenie rozwiązania Kubernetes.
+### <a name="1-basics"></a>1. Podstawy
+
+1. Wybierz **podstawy** w tworzenie klastra Kubernetes.
 
     ![Wdrażanie szablonu rozwiązań](media/azure-stack-solution-template-kubernetes-deploy/02_kub_config_basic.png)
+
+1. Wybierz swoje **subskrypcji** identyfikatora.
+
+1. Wprowadź nazwę nowej grupy zasobów lub wybierz istniejącą grupę zasobów. Nazwa zasobu musi być alfanumeryczne i małe litery.
+
+1. Wybierz **lokalizacji** grupy zasobów. Jest to region, w wybranym dla instalacji programu Azure Stack.
+
+### <a name="2-kubernetes-cluster-settings"></a>2. Ustawienia klastra Kubernetes
+
+1. Wybierz **ustawienia klastra Kubernetes** w tworzenie klastra Kubernetes.
+
+    ![Wdrażanie szablonu rozwiązań](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings.png)
 
 1. Wprowadź **nazwa użytkownika administratora maszyny Wirtualnej systemu Linux**. Nazwa użytkownika dla maszyn wirtualnych systemu Linux, które są częścią klastra Kubernetes i Menedżer DVM.
 
@@ -126,28 +140,29 @@ Przekazać jednostce usługi dostępu do Twojej subskrypcji, aby podmiot zabezpi
     > [!Note]  
     > Dla każdego klastra użyj prefiks DNS nowych i unikatowych głównym profilu.
 
-1. Wprowadź **liczba profil puli agentów**. Liczba zawiera liczbę agentów w klastrze. Może być z zakresu od 1 do 4.
+1. Wybierz **liczba profil puli wzorców Kubernetes**. Liczba zawiera liczbę węzłów w puli wzorca. Może być z zakresu od 1 do 7. Ta wartość powinna być nieparzysta.
 
-1. Wprowadź **ClientId nazwy głównej usługi** jest on używany przez dostawcę chmury Kubernetes Azure.
+1. Wybierz **VMSize głównych maszyn wirtualnych Kubernetes**.
 
-1. Wprowadź **klucz tajny klienta jednostki usługi** utworzonego podczas tworzenia aplikacji nazwy głównej usługi.
+1. Wybierz **liczba profil puli węzłów rozwiązania Kubernetes**. Liczba zawiera liczbę agentów w klastrze. 
+
+1. Wybierz **profil magazynu**. Możesz wybrać **obiektu Blob dysku** lub **dysku zarządzanego**. To ustawienie określa maszyn wirtualnych węzła rozmiar maszyny Wirtualnej z platformy Kubernetes. 
+
+1. Wprowadź **ClientId nazwy głównej usługi** jest on używany przez dostawcę chmury Kubernetes Azure. Identyfikator klienta zidentyfikowane jako identyfikator aplikacji podczas Twojej utworzone jednostki usługi.
+
+1. Wprowadź **klucz tajny klienta jednostki usługi** utworzony podczas tworzenia jednostki usługi.
 
 1. Wprowadź **wersja dostawcy chmury Kubernetes Azure**. To jest wersja dostawcy usługi Kubernetes Azure. Usługa Azure Stack zwalnia niestandardowej kompilacji rozwiązania Kubernetes dla każdej wersji usługi Azure Stack.
 
-1. Wybierz swoje **subskrypcji** identyfikatora.
+### <a name="3-summary"></a>3. Podsumowanie
 
-1. Wprowadź nazwę nowej grupy zasobów lub wybierz istniejącą grupę zasobów. Nazwa zasobu musi być alfanumeryczne i małe litery.
+1. Wybierz pozycję podsumowanie. Blok wyświetla komunikat sprawdzania poprawności ustawień konfiguracji klastra Kubernetes.
 
-1. Wybierz **lokalizacji** grupy zasobów. Jest to region, w wybranym dla instalacji programu Azure Stack.
+    ![Wdrażanie szablonu rozwiązań](media/azure-stack-solution-template-kubernetes-deploy/04_preview.png)
 
-### <a name="specify-the-azure-stack-settings"></a>Określanie ustawień usługi Azure Stack
+2. Przejrzyj ustawienia.
 
-1. Wybierz **ustawienia sygnatury usługi Azure Stack**.
-
-    ![Wdrażanie szablonu rozwiązań](media/azure-stack-solution-template-kubernetes-deploy/03_kub_config_settings.png)
-
-1. Wprowadź **punktu końcowego usługi Arm dzierżawy**. To jest punkt końcowy usługi Azure Resource Manager, aby Połącz, aby utworzyć grupę zasobów dla klastra Kubernetes. Należy uzyskać od operatora usługi Azure Stack zintegrowany system punktu końcowego. Dla usługi Azure Stack Development Kit (ASDK), można użyć `https://management.local.azurestack.external`.
-
+3. Wybierz **OK** do wdrożenia klastra.
 
 ## <a name="connect-to-your-cluster"></a>Połącz z klastrem
 

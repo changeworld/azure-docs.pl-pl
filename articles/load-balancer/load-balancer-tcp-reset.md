@@ -1,5 +1,5 @@
 ---
-title: Obciążenia równoważenia TCP Reset na limit czasu bezczynności | Dokumentacja firmy Microsoft
+title: Obciążenia równoważenia TCP resetowany bezczynności | Dokumentacja firmy Microsoft
 description: Moduł równoważenia obciążenia za pomocą dwukierunkowych TCP RST pakietów na limit czasu bezczynności
 services: load-balancer
 documentationcenter: na
@@ -13,16 +13,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/21/2018
+ms.date: 09/24/2018
 ms.author: kumud
-ms.openlocfilehash: b33c701bde082404ea86c9882dcb7bf50d1f1df9
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 212212d4650fe25b4ced591d4d4f1ee184e3fc44
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036183"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163328"
 ---
-# <a name="load-balancer-with-tcp-reset-on-idle-timeout-public-preview"></a>Moduł równoważenia obciążenia z TCP Reset na limit czasu bezczynności (publiczna wersja zapoznawcza)
+# <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Moduł równoważenia obciążenia za pomocą funkcji resetowania TCP w stanie bezczynności (publiczna wersja zapoznawcza)
 
 Możesz użyć [Balancer w warstwie standardowa](load-balancer-standard-overview.md) do tworzenia bardziej przewidywalne zachowanie aplikacji dla swoich scenariuszy za pomocą dwukierunkowych TCP resetuje (pakiet TCP RST) dla każdego można skonfigurować limit czasu bezczynności.  Zachowanie domyślne równoważenia obciążenia jest dyskretnie pomijać przepływów, po osiągnięciu limitu czasu bezczynności przepływu.
 
@@ -75,6 +75,7 @@ Ten parametr jest obecnie obowiązujące w następujących regionach.  W regiona
 
 | Region |
 |---|
+| Azja Południowo-Wschodnia |
 | Wschodnie stany USA 2 |
 | Północne stany USA |
 | Zachodnie stany USA |
@@ -89,4 +90,4 @@ W tej tabeli zostaną zaktualizowane zgodnie z wersji zapoznawczej jest rozwini�
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Dowiedz się więcej o [standardowego modułu równoważenia obciążenia](load-balancer-standard-overview.md).
-- Dowiedz się więcej o [reguł dla ruchu wychodzącego](https://aka.ms/lboutboundrules).
+- Dowiedz się więcej o [reguł dla ruchu wychodzącego](load-balancer-outbound-rules-overview.md).

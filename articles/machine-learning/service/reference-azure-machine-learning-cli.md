@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: jordane
 author: jpe316
 ms.date: 09/24/2018
-ms.openlocfilehash: 7e430d1b590413f497c851b687abcaa98e04d0e4
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: f8dae6de835173181430a98c19c7dd1fb3ebaa9f
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47053865"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158907"
 ---
 # <a name="what-is-the-azure-machine-learning-cli"></a>Co to jest interfejsu wiersza polecenia usługi Azure Machine Learning?
 
@@ -56,6 +56,8 @@ Przykłady:
 Analitycy danych, zaleca się używania zestawu SDK usługi Azure ML.
 
 ## <a name="common-machine-learning-cli-commands"></a>Typowe usługi machine learning poleceń interfejsu wiersza polecenia
+> [!NOTE]
+> Przykładowe pliki, można użyć, aby pomyślnie wykonać poniższych poleceń można znaleźć [tutaj.](https://github.com/Azure/MachineLearningNotebooks/tree/cli/cli)
 
 Bogaty zestaw `az ml` polecenia, aby korzystać z usługi w dowolnym środowisku wiersza polecenia, w tym Azure portal usługa cloud shell.
 
@@ -73,7 +75,7 @@ Poniżej przedstawiono przykładowe Typowe polecenia:
    az configure --defaults aml_workspace=myworkspace group=myresourcegroup
    ```
 
-+ Szkolenie modeli, należy utworzyć maszyny wirtualnej DSVM (maszyny Wirtualnej analizy danych). Można również utworzyć klastrów BatchAI dla rozproszonego szkolenia.
++ Tworzenie maszyny wirtualnej DSVM (maszyny Wirtualnej analizy danych). Można również utworzyć klastrów BatchAI dla rozproszonego szkolenia lub klastry usługi AKS na potrzeby wdrożenia.
   ```AzureCLI
   az ml computetarget setup dsvm -n mydsvm
   ```
@@ -84,7 +86,7 @@ Poniżej przedstawiono przykładowe Typowe polecenia:
   az ml project attach --experiment-name myhistory
   ```
 
-+ Przysyłanie eksperymentu korzystająca z usługi Azure Machine Learning w elemencie docelowym obliczeniowych wybranych przez użytkownika. W tym przykładzie wykonuje przeciwko środowisku obliczeniowym lokalnego. Można znaleźć przykładowy skrypt train.py [tutaj](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/train.py).
++ Przysyłanie eksperymentu korzystająca z usługi Azure Machine Learning w elemencie docelowym obliczeniowych wybranych przez użytkownika. W tym przykładzie będą wykonywane względem środowisku obliczeniowym lokalnego. Upewnij się, że plik środowiska conda przechwytuje zależności języka python.
 
   ```AzureCLI
   az ml run submit -c local train.py
@@ -99,17 +101,17 @@ az ml history list
 
 + Zarejestruj model za pomocą usługi Azure Machine Learning.
   ```AzureCLI
-  az ml model register -n mymodel -m mymodel.pkl  -w myworkspace -g myresourcegroup
+  az ml model register -n mymodel -m sklearn_regression_model.pkl
   ```
 
 + Utwórz obraz zawiera Twoje modelu uczenia maszynowego i zależności. 
   ```AzureCLI
-  az ml image create -n myimage -r python -m mymodel.pkl -f score.py -c myenv.yml
+  az ml image create container -n myimage -r python -m mymodel:1 -f score.py -c myenv.yml
   ```
 
 + Spakowane model jest wdrażany elementów docelowych, łącznie z usługami ACI i AKS.
   ```AzureCLI
-  az ml service create aci -n myaciservice -i myimage:1
+  az ml service create aci -n myaciservice --image-id myimage:1
   ```
     
 ## <a name="full-command-list"></a>Pełne polecenie listy

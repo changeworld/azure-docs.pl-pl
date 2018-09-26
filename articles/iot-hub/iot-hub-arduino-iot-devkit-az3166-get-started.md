@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 08/27/2018
 ms.author: rangv
-ms.openlocfilehash: 6ecddefd264bf4a6f57dd7fcd09c3a8cc10ec54a
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 55901d6f3bcbf5511b6921939fdcba03972efed3
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377315"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182845"
 ---
 # <a name="connect-iot-devkit-az3166-to-azure-iot-hub"></a>IoT DevKit az3166 usługi nawiązać połączenie z usługi Azure IoT Hub
 
@@ -128,29 +128,34 @@ Wykonaj następujące kroki, aby przygotować środowisko programistyczne dla Mx
     * **System macOS**: przeciągnij i upuść wyodrębnione **Arduino.app** do `/Applications` folderu.
     * **Ubuntu**: takie jak Rozpakuj go do folderu `$HOME/Downloads/arduino-1.8.5`
 
-1. Zainstaluj [programu Visual Studio Code](https://code.visualstudio.com/), Edytor kodu źródłowego dla wielu platform, za pomocą zaawansowanych deweloperów narzędzi, takich jak uzupełniania kodu IntelliSense i debugowania.
+2. Zainstaluj [programu Visual Studio Code](https://code.visualstudio.com/), Edytor kodu źródłowego dla wielu platform, za pomocą zaawansowanych deweloperów narzędzi, takich jak uzupełniania kodu IntelliSense i debugowania.
 
-1. Poszukaj **usługi Azure IoT Workbench** rynku rozszerzenia i zainstalować ją.
+3. Poszukaj **usługi Azure IoT Workbench** rynku rozszerzenia i zainstalować ją.
     ![Zainstaluj aplikację Azure IoT Workbench](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-workbench.png) wraz z aplikacji IoT Workbench, inne rozszerzenia zależne zostaną zainstalowane.
 
-1. Otwórz **Plik > Preferencje > Ustawienia** i dodaj następujące wiersze do skonfigurowania Arduino.
+4. Otwórz **Plik > Preferencje > Ustawienia** i dodaj następujące wiersze do skonfigurowania Arduino.
     * **Windows**:
-    ```javascript
+
+    ```json
     "arduino.path": "C:\\Program Files (x86)\\Arduino",
     "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
     ```
+
     * **System macOS**:
-    ```javascript
+
+    ```json
     "arduino.path": "/Applications",
     "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
     ```
+
     * **Ubuntu**:
-    ```javascript
+
+    ```json
     "arduino.path": "/home/{username}/Downloads/arduino-1.8.5",
     "arduino.additionalUrls": "https://raw.githubusercontent.com/VSChina/azureiotdevkit_tools/master/package_azureboard_index.json"
     ```
 
-1. Kliknij przycisk `F1` aby otworzyć paletę poleceń, typ i wybierz **Arduino: Menedżer tablicy**. Wyszukaj **az3166 usługi** i zainstaluj najnowszą wersję.
+5. Kliknij przycisk `F1` aby otworzyć paletę poleceń, typ i wybierz **Arduino: Menedżer tablicy**. Wyszukaj **az3166 usługi** i zainstaluj najnowszą wersję.
     ![Zainstaluj zestaw SDK Mxchip](media/iot-hub-arduino-devkit-az3166-get-started/getting-started/install-sdk.png)
 
 ### <a name="install-st-link-drivers"></a>Zainstaluj sterowniki łącze ST

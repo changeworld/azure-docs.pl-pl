@@ -13,12 +13,12 @@ ms.topic: conceptual
 ms.date: 04/10/2018
 ms.reviewer: daviste
 ms.author: mbullwin
-ms.openlocfilehash: 2157af8d6c3b8eea372c060a70c78559d8ffe6ad
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: 30ef00fa1bfd2933df5e5c966cb8266d7c598a47
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35645002"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162172"
 ---
 # <a name="application-insights-cohorts"></a>Application Insights kohorty
 
@@ -110,7 +110,7 @@ Poprzednie dwa kohorty zostały zdefiniowane przy użyciu list rozwijanych. Ale 
 
     * Sekcja zapytań, gdzie kohorty możesz definiować za pomocą zapytania usługi analytics.
 
-    W sekcji zapytania możesz [napisać zapytanie analizy](https://docs.loganalytics.io/index). Zapytanie wybiera niektórych zestawu wierszy, które opisują kohorty, które chcesz zdefiniować. W narzędziu kohorty niejawnie dodaje "| Podsumowanie, definiując pole user_Id"klauzula zapytania. Tych danych jest przeglądany poniżej zapytania w tabeli, dzięki czemu możesz upewnić się, że zapytanie zwraca wyniki.
+    W sekcji zapytania możesz [napisać zapytanie analizy](/azure/kusto/query). Zapytanie wybiera niektórych zestawu wierszy, które opisują kohorty, które chcesz zdefiniować. W narzędziu kohorty niejawnie dodaje "| Podsumowanie, definiując pole user_Id"klauzula zapytania. Tych danych jest przeglądany poniżej zapytania w tabeli, dzięki czemu możesz upewnić się, że zapytanie zwraca wyniki.
 
     > [!NOTE]
     > Jeśli nie widzisz zapytania, spróbuj zmienić rozmiar sekcji, aby wprowadzić na wyższy i ujawniają ukryte fakty zapytania. Animowany obraz GIF na początku tej sekcji przedstawiono zmiany rozmiaru zachowanie.

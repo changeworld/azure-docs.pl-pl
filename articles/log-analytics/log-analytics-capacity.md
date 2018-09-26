@@ -1,6 +1,6 @@
 ---
-title: Pojemność i wydajność rozwiązania Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Użyj rozwiązania pojemność i wydajność w analizy dzienników ułatwią zrozumienie wydajności serwerów funkcji Hyper-V.
+title: Rozwiązanie pojemność i wydajność w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Użyj rozwiązanie pojemność i wydajność w usłudze Log Analytics, aby ułatwić zrozumienie wydajności serwerów funkcji Hyper-V.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -14,34 +14,34 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: e9163b3c29fd304c80eff46426a30c4fa0ce3b15
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 0244673d50e22124e8a0678e202004f06b0bca00
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130347"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182624"
 ---
-# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Planowanie pojemności maszyn wirtualnych funkcji Hyper-V z rozwiązaniem pojemność i wydajność (wersja zapoznawcza)
+# <a name="plan-hyper-v-virtual-machine-capacity-with-the-capacity-and-performance-solution-preview"></a>Planowanie pojemności maszyn wirtualnych funkcji Hyper-V za pomocą rozwiązania pojemność i wydajność (wersja zapoznawcza)
 
 ![Symbol pojemność i wydajność](./media/log-analytics-capacity/capacity-solution.png)
 
 > [!NOTE]
-> Pojemność i wydajność rozwiązania jest przestarzała.  Klienci, którzy zainstalowali rozwiązania można nadal z niego korzystać, ale pojemność i wydajność, nie można dodać do żadnych nowych obszarów roboczych.
+> Rozwiązanie pojemność i wydajność jest przestarzała.  Klienci, którzy już zainstalowano rozwiązania można nadal z niego korzystać, ale pojemności i wydajności nie można dodać do żadnych nowych obszarów roboczych.
 
-Rozwiązanie pojemność i wydajność w analizy dzienników umożliwia pomaga w zrozumieniu wydajności serwerów funkcji Hyper-V. Rozwiązanie zapewnia wgląd w środowisku funkcji Hyper-V, pokazując całkowitego wykorzystania (Procesora, pamięci i dysku) z hostów i maszyn wirtualnych uruchomionych na tych hostach funkcji Hyper-V. Metryki są zbierane dla Procesora, pamięci i dysków we wszystkich hostów i maszyn wirtualnych uruchomionych na tych.
+Rozwiązanie pojemność i wydajność w usłudze Log Analytics można użyć, aby ułatwić zrozumienie wydajności serwerów funkcji Hyper-V. Rozwiązanie zapewnia wgląd w środowisku funkcji Hyper-V, pokazując ogólnego użycia (procesor CPU, pamięci i dysku) hostów i maszyn wirtualnych uruchomionych na tych hostach funkcji Hyper-V. Metryki są zbierane dla procesora CPU, pamięci i dysków na wszystkie hosty i maszyny wirtualne uruchomione na nich.
 
 Rozwiązanie:
 
--   Pokazuje hostów o najwyższej i najniższej wykorzystanie Procesora i pamięci
--   Pokazuje maszyn wirtualnych o najwyższej i najniższej wykorzystanie Procesora i pamięci
--   Pokazuje maszyn wirtualnych o najwyższej i najniższej wykorzystanie IOPS i przepływności
--   Które maszyny wirtualne są uruchomione na hostach, które zawiera
--   Pokazuje top dysków o wysokiej przepływności, IOPS i opóźnienia w udostępnionych woluminów klastra
-- Umożliwia dostosowywanie i filtrowanie na podstawie grup
+-   Pokazuje hostów przy użyciu najwyższej i najniższej wykorzystanie Procesora i pamięci
+-   Przedstawia maszyny wirtualne z najwyższej i najniższej wykorzystanie Procesora i pamięci
+-   Przedstawia maszyny wirtualne z najwyższej i najniższej wykorzystanie operacji We/Wy i przepływność
+-   Pokazuje, które maszyny wirtualne są uruchomione na hostach, które
+-   Zawiera najważniejsze dysków o wysokiej przepływności, operacje We/Wy i opóźnienia w udostępnionych woluminów klastra
+- Pozwala na dostosowywanie i filtrowanie na podstawie grup
 
 > [!NOTE]
-> Poprzednia wersja pojemność i wydajność rozwiązania o nazwie Zarządzanie wydajnością wymagane zarówno System Center Operations Manager i System Center Virtual Machine Manager. To rozwiązanie zaktualizowany nie ma tych zależności.
+> Poprzednia wersja rozwiązanie pojemność i wydajność, o nazwie Zarządzanie wydajnością wymagane zarówno System Center Operations Manager, jak i System Center Virtual Machine Manager. To rozwiązanie zaktualizowany nie ma tych zależności.
 
 
 ## <a name="connected-sources"></a>Połączone źródła
@@ -50,92 +50,92 @@ W poniższej tabeli opisano połączone źródła, które obsługuje to rozwiąz
 
 | Połączone źródło | Pomoc techniczna | Opis |
 |---|---|---|
-| [Agenci dla systemu Windows](log-analytics-windows-agent.md) | Yes | Rozwiązania zbiera informacje o danych pojemność i wydajność z agentów systemu Windows. |
-| [Agenci dla systemu Linux](log-analytics-linux-agents.md) | Nie    | Rozwiązanie nie zbiera pojemność i wydajność, informacje o danych z bezpośredniej agentów systemu Linux.|
-| [Grupa zarządzania programu SCOM](log-analytics-om-agents.md) | Yes |Rozwiązania zbiera dane pojemność i wydajność z agentów w podłączonej grupy zarządzania SCOM. Bezpośrednie połączenie z agenta programu SCOM Log Analytics nie jest wymagane.|
-| [Konto usługi Azure Storage](log-analytics-azure-storage.md) | Nie | Usługa Azure storage nie zawiera danych pojemność i wydajność.|
+| [Agenci dla systemu Windows](log-analytics-windows-agent.md) | Yes | Rozwiązanie zbiera informacje o danych pojemność i wydajność z agentów dla Windows. |
+| [Agenci dla systemu Linux](log-analytics-linux-agents.md) | Nie    | Rozwiązania nie zbiera informacje o danych pojemności i wydajności z bezpośrednich agentów systemu Linux.|
+| [Grupy zarządzania SCOM](log-analytics-om-agents.md) | Yes |Rozwiązanie zbiera dane dotyczące pojemności i wydajności z agentów w połączonej grupie zarządzania programu SCOM. Bezpośrednie połączenie agenta programu SCOM do usługi Log Analytics nie jest wymagane.|
+| [Konto usługi Azure Storage](log-analytics-azure-storage.md) | Nie | Usługa Azure storage nie obejmuje dane dotyczące pojemności i wydajności.|
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- W systemie Windows Server 2012 lub nowszej hosty funkcji Hyper-V, nie maszyny wirtualne muszą zostać zainstalowane z systemem Windows lub agenty programu Operations Manager.
+- Windows lub agentów programu Operations Manager musi być zainstalowany w systemie Windows Server 2012 lub wyższy hosty funkcji Hyper-V, nie maszyn wirtualnych.
 
 
 ## <a name="configuration"></a>Konfigurowanie
 
-Wykonaj następujący krok, aby dodać pojemność i wydajność rozwiązania do swojego obszaru roboczego.
+Wykonaj następujący krok, aby dodać rozwiązanie pojemność i wydajność do obszaru roboczego.
 
-- Dodaj rozwiązanie pojemność i wydajność do obszaru roboczego analizy dzienników przy użyciu procesu opisanego w [rozwiązań dodać analizy dzienników z galerii rozwiązań](log-analytics-add-solutions.md).
+- Dodaj rozwiązanie pojemność i wydajność do obszaru roboczego usługi Log Analytics przy użyciu procesu opisanego w [rozwiązań Dodaj usługi Log Analytics z galerii rozwiązań](log-analytics-add-solutions.md).
 
 ## <a name="management-packs"></a>Pakiety administracyjne
 
-Jeśli grupę zarządzania programu SCOM jest podłączony do swojego obszaru roboczego analizy dzienników, następnie następujące pakiety administracyjne będą instalowani w SCOM po dodaniu tego rozwiązania. Nie jest wymagana żadna konfiguracja ani obsługa tych pakietów administracyjnych.
+Jeśli grupę zarządzania programu SCOM jest połączony z obszarem roboczym usługi Log Analytics, następnie następujące pakiety administracyjne zostanie zainstalowany w SCOM po dodaniu tego rozwiązania. Nie jest wymagana żadna konfiguracja ani obsługa tych pakietów administracyjnych.
 
 - Microsoft.IntelligencePacks.CapacityPerformance
 
-Podobne zdarzenia 1201:
+Zdarzenie 1201 podobny:
 
 
 ```
 New Management Pack with id:"Microsoft.IntelligencePacks.CapacityPerformance", version:"1.10.3190.0" received.
 ```
 
-Po zaktualizowaniu pojemność i wydajność rozwiązania zmieni się numer wersji.
+Po zaktualizowaniu rozwiązanie pojemność i wydajność, zmieni się numer wersji.
 
 Aby uzyskać więcej informacji na temat aktualizowania pakietów administracyjnych rozwiązania, zobacz artykuł [Connect Operations Manager to Log Analytics](log-analytics-om-agents.md) (Połączenie programu Operations Manager z usługą Log Analytics).
 
 ## <a name="using-the-solution"></a>Użycie rozwiązania
 
-Po dodaniu pojemność i wydajność rozwiązania do swojego obszaru roboczego pojemność i wydajność, jest dodawana do pulpitu nawigacyjnego przeglądu. Ten Kafelek jest wyświetlana liczba Liczba aktywnych hostów funkcji Hyper-V i wybrana liczba aktywnych maszyn wirtualnych, monitorowane w danym okresie.
+Po dodaniu rozwiązanie pojemność i wydajność do swojego obszaru roboczego pojemności i wydajności jest dodawany do pulpitu nawigacyjnego przeglądu. Ten Kafelek zawiera liczbę aktywnych hostów funkcji Hyper-V, a wybrana liczba aktywnych maszyn wirtualnych, które były monitorowane w danym okresie.
 
 ![Kafelek pojemność i wydajność](./media/log-analytics-capacity/capacity-tile.png)
 
 
 ### <a name="review-utilization"></a>Przegląd wykorzystania
 
-Kliknij Kafelek pojemność i wydajność, aby otworzyć pulpit nawigacyjny pojemność i wydajność. Na pulpicie nawigacyjnym znajdują się kolumny wymienione w poniższej tabeli. Każda kolumna zawiera do dziesięciu elementów spełniających jej kryteria dla podanego zakresu i przedziału czasu. Można uruchomić wyszukiwanie w dzienniku, które zwróci wszystkie rekordy. W tym celu kliknij przycisk **Zobacz wszystko** na dole kolumny lub kliknij nagłówek kolumny.
+Kliknij Kafelek pojemności i wydajności, aby otworzyć pulpit nawigacyjny pojemności i wydajności. Na pulpicie nawigacyjnym znajdują się kolumny wymienione w poniższej tabeli. Każda kolumna zawiera do dziesięciu elementów spełniających jej kryteria dla podanego zakresu i przedziału czasu. Można uruchomić wyszukiwanie w dzienniku, które zwróci wszystkie rekordy. W tym celu kliknij przycisk **Zobacz wszystko** na dole kolumny lub kliknij nagłówek kolumny.
 
 - **Hosty**
-    - **Użycie procesora CPU hosta** zawiera graficzny trend wykorzystania procesora CPU hostów oraz listę hostów, w oparciu o wybrany okres czasu. Umieść wskaźnik myszy wykres liniowy, aby wyświetlić szczegóły dla określonego punktu w czasie. Kliknij na wykresie, aby wyświetlić więcej szczegółów w dzienniku wyszukiwania. Kliknij dowolną nazwę hosta Otwórz dziennik wyszukiwania i Wyświetl szczegóły licznika procesora CPU dla obsługiwanych maszyn wirtualnych.
-    - **Użycie pamięci hosta** zawiera graficzny trend wykorzystania pamięci hostów oraz listę hostów, w oparciu o wybrany okres czasu. Umieść wskaźnik myszy wykres liniowy, aby wyświetlić szczegóły dla określonego punktu w czasie. Kliknij na wykresie, aby wyświetlić więcej szczegółów w dzienniku wyszukiwania. Kliknij dowolną nazwę hosta, można otworzyć dziennika wyszukiwania oraz szczegóły licznika pamięci dla maszyn wirtualnych w hostowanej.
+    - **Użycie procesora CPU hosta** pokazuje sposób graficzny trend wykorzystania procesora CPU komputerów-hostów oraz listę hostów, w oparciu o wybrany okres czasu. Umieść kursor nad wykres liniowy, aby wyświetlić szczegóły dotyczące określonego punktu w czasie. Kliknij wykres, aby wyświetlić więcej szczegółów podczas wyszukiwania dziennika. Kliknij dowolną nazwę hosta, aby otworzyć wyszukiwanie w dzienniku i wyświetlić szczegóły licznika procesora CPU dla maszyn wirtualnych w hostowanej.
+    - **Wykorzystanie pamięci hosta** pokazuje sposób graficzny trend wykorzystania pamięci komputerów-hostów oraz listę hostów, w oparciu o wybrany okres czasu. Umieść kursor nad wykres liniowy, aby wyświetlić szczegóły dotyczące określonego punktu w czasie. Kliknij wykres, aby wyświetlić więcej szczegółów podczas wyszukiwania dziennika. Kliknij dowolną nazwę hosta, aby otworzyć wyszukiwanie w dzienniku i wyświetlić szczegóły licznika pamięci dla maszyn wirtualnych hostowanych.
 - **Virtual Machines**
-    - **Użycie procesora CPU VM** zawiera graficzny trend wykorzystania procesora CPU maszyn wirtualnych oraz listę maszyn wirtualnych w wybranym okresie. Umieść wskaźnik myszy wykres liniowy, aby wyświetlić szczegóły dla określonego punktu w czasie top 3 maszyn wirtualnych. Kliknij na wykresie, aby wyświetlić więcej szczegółów w dzienniku wyszukiwania. Kliknij dowolną nazwę maszyny Wirtualnej do otwierania dziennik wyszukiwania i przeglądania zagregowane szczegóły licznika Procesora dla maszyny Wirtualnej.
-    - **Użycie pamięci maszyny Wirtualnej** zawiera graficzny trend wykorzystania pamięci maszyn wirtualnych oraz listę maszyn wirtualnych w wybranym okresie. Umieść wskaźnik myszy wykres liniowy, aby wyświetlić szczegóły dla określonego punktu w czasie top 3 maszyn wirtualnych. Kliknij na wykresie, aby wyświetlić więcej szczegółów w dzienniku wyszukiwania. Kliknij dowolną nazwę maszyny Wirtualnej, aby otworzyć dziennika wyszukiwania i wyświetlić szczegóły licznika zagregowane pamięci dla maszyny Wirtualnej.
-    - **Całkowita liczba IOPS dysku maszyny Wirtualnej** zawiera graficzny trend dysku łączna wartość IOPS dla maszyn wirtualnych oraz listę maszyn wirtualnych z IOPS dla poszczególnych usług, oparte na wybrany okres czasu. Umieść wskaźnik myszy wykres liniowy, aby wyświetlić szczegóły dla określonego punktu w czasie top 3 maszyn wirtualnych. Kliknij na wykresie, aby wyświetlić więcej szczegółów w dzienniku wyszukiwania. Kliknij dowolną nazwę maszyny Wirtualnej, można otworzyć dziennika wyszukiwania i widoku zagregowane dysku IOPS licznika szczegółów dla maszyny Wirtualnej.
-    - **Całkowita liczba przepływność dysku maszyny Wirtualnej** zawiera graficzny trend przepływność dysku dla maszyn wirtualnych oraz listę maszyn wirtualnych o przepływności dysku dla każdego z nich, oparte na wybrany okres czasu. Umieść wskaźnik myszy wykres liniowy, aby wyświetlić szczegóły dla określonego punktu w czasie top 3 maszyn wirtualnych. Kliknij na wykresie, aby wyświetlić więcej szczegółów w dzienniku wyszukiwania. Kliknij dowolną nazwę maszyny Wirtualnej, aby otworzyć dziennika wyszukiwania i wyświetlić szczegóły licznika przepływności zagregowanych całkowita dysku dla maszyny Wirtualnej.
+    - **Użycie procesora CPU maszyny Wirtualnej** pokazuje sposób graficzny trend wykorzystania procesora CPU maszyny wirtualne oraz listę maszyn wirtualnych, w oparciu o wybrany okres czasu. Umieść kursor nad wykres liniowy, aby wyświetlić szczegóły dotyczące określonego punktu w czasie dla najważniejszych 3 maszyn wirtualnych. Kliknij wykres, aby wyświetlić więcej szczegółów podczas wyszukiwania dziennika. Kliknij dowolną nazwę maszyny Wirtualnej, aby otworzyć wyszukiwanie w dzienniku i wyświetlić zagregowane szczegóły licznika Procesora dla maszyny Wirtualnej.
+    - **Wykorzystanie pamięci maszyny Wirtualnej** pokazuje sposób graficzny trend wykorzystania pamięci maszyn wirtualnych oraz listę maszyn wirtualnych, w oparciu o wybrany okres czasu. Umieść kursor nad wykres liniowy, aby wyświetlić szczegóły dotyczące określonego punktu w czasie dla najważniejszych 3 maszyn wirtualnych. Kliknij wykres, aby wyświetlić więcej szczegółów podczas wyszukiwania dziennika. Kliknij dowolną nazwę maszyny Wirtualnej, aby otworzyć wyszukiwanie w dzienniku i wyświetlić szczegóły licznika zagregowane pamięci dla maszyny Wirtualnej.
+    - **Łączna liczba IOPS dysku maszyny Wirtualnej** pokazuje sposób graficzny trend całkowitego miejsca na dysku na SEKUNDĘ dla maszyn wirtualnych oraz listę maszyn wirtualnych przy użyciu operacji We/Wy dla każdego, oparte na wybrany okres czasu. Umieść kursor nad wykres liniowy, aby wyświetlić szczegóły dotyczące określonego punktu w czasie dla najważniejszych 3 maszyn wirtualnych. Kliknij wykres, aby wyświetlić więcej szczegółów podczas wyszukiwania dziennika. Kliknij dowolną nazwę maszyny Wirtualnej, aby otworzyć wyszukiwanie w dziennikach i widoku zagregowane dysku, operacje We/Wy licznik szczegóły dla maszyny Wirtualnej.
+    - **Łączna przepływność dysku maszyny Wirtualnej** pokazuje sposób graficzny trend przepływności całkowitego miejsca na dysku dla maszyn wirtualnych oraz listę maszyn wirtualnych z przepływnością całkowitego miejsca na dysku dla każdego, oparte na wybrany okres czasu. Umieść kursor nad wykres liniowy, aby wyświetlić szczegóły dotyczące określonego punktu w czasie dla najważniejszych 3 maszyn wirtualnych. Kliknij wykres, aby wyświetlić więcej szczegółów podczas wyszukiwania dziennika. Kliknij dowolną nazwę maszyny Wirtualnej, aby otworzyć wyszukiwanie w dzienniku i wyświetlić szczegóły licznika przepływności zagregowane całkowitego miejsca na dysku dla maszyny Wirtualnej.
 - **Udostępnione woluminy klastra**
-    - **Łączna liczba przepływności** zawiera sumę zarówno odczytuje i zapisuje na udostępnione woluminy klastra.
-    - **Łączna liczba IOPS** zawiera sumę liczby operacji wejścia/wyjścia na sekundę na udostępnione woluminy klastra.
-    - **Całkowity czas oczekiwania** przedstawia całkowity czas oczekiwania na udostępnione woluminy klastra.
-- **Host gęstość** górny Kafelek zawiera całkowitą liczbę hostów i maszyn wirtualnych dostępne do rozwiązania. Kliknij przycisk najwyższego kafelka w celu wyświetlenia dodatkowych szczegółów w wyszukiwania dziennika. Zawiera także listę wszystkich hostów oraz liczbę maszyn wirtualnych, które są obsługiwane. Kliknij hosta, aby przejść do szczegółów w wyniki wyszukiwania dziennika do maszyny Wirtualnej.
+    - **Łączna przepływność** zawiera sumę operacje odczytu i zapisu na udostępnione woluminy klastra.
+    - **Łączna liczba operacji We/Wy** przedstawia sumę operacji wejścia/wyjścia na sekundę na udostępnione woluminy klastra.
+    - **Łączny czas oczekiwania** przedstawia całkowity czas oczekiwania na udostępnione woluminy klastra.
+- **Gęstość hosta** górny Kafelek Pokazuje łączną liczbą hosty i maszyny wirtualne dostępne do rozwiązania. Kliknij górny Kafelek, aby wyświetlić dodatkowe informacje podczas wyszukiwania dziennika. Zawiera również listę wszystkich hostów i liczbę maszyn wirtualnych, które znajdują się. Kliknij wybranego hosta, aby przejść do szczegółów wyników maszyny Wirtualnej podczas wyszukiwania dziennika.
 
 
-![pulpit nawigacyjny hostów bloku](./media/log-analytics-capacity/dashboard-hosts.png)
+![Blok hosty pulpitu nawigacyjnego](./media/log-analytics-capacity/dashboard-hosts.png)
 
-![pulpit nawigacyjny bloku maszyny wirtualne](./media/log-analytics-capacity/dashboard-vms.png)
+![Blok maszyny wirtualne pulpitu nawigacyjnego](./media/log-analytics-capacity/dashboard-vms.png)
 
 
 ### <a name="evaluate-performance"></a>Ocena wydajności
 
-Środowiska obliczeniowe o produkcyjnym znacznie z jednej organizacji różnią się od innego. Ponadto pojemność i wydajność obciążeń może być zależna od jak maszyny wirtualne są uruchomione, i co należy wziąć pod uwagę normalne. Szczegółowe procedury ułatwiające miar wydajności prawdopodobnie nie będą miały zastosowania w danym środowisku. Dlatego więcej uogólniony przetestowanego wskazówki lepiej nadaje się do pomocy. Firma Microsoft publikuje wiele artykułów wskazówki ułatwiające pomiaru wydajności.
+Produkcja środowisk przetwarzania różnią się znacznie od jednej z organizacji do innego. Ponadto pojemność i wydajność obciążeń może zależeć od jak maszyny wirtualne są uruchomione, i co należy wziąć pod uwagę normalny. Konkretne procedury, aby zmierzyć wydajność, prawdopodobnie nie będzie dotyczyć środowiska użytkownika. Dlatego uogólniony więcej normatywnych wskazówki lepiej nadaje się do pomocy. Firma Microsoft publikuje wiele artykułów wskazówki ułatwiające pomiaru wydajności.
 
-Podsumowując, rozwiązania zbiera dane pojemności i wydajności z różnych źródeł, łącznie z liczników wydajności. Użyć tych danych pojemność i wydajność w różnych powierzchni w rozwiązaniu i porównaj wyniki do tych na [pomiaru wydajności w ramach funkcji Hyper-V](https://msdn.microsoft.com/library/cc768535.aspx) artykułu. Mimo że artykuł opublikowano pewien czas temu, metryki zagadnienia oraz wskazówki są nadal ważne. Ten artykuł zawiera łącza do inne przydatne zasoby.
+Aby podsumować, rozwiązanie zbiera dane dotyczące pojemności i wydajności z różnych źródeł takich jak liczniki wydajności. Te dane pojemności i wydajności znajdujące się w różnych powierzchniach w rozwiązaniu i porównać wyniki do tych w [pomiaru wydajności funkcji Hyper-v](https://msdn.microsoft.com/library/cc768535.aspx) artykułu. Mimo że artykuł został opublikowany pewien czas temu, metryki, zagadnienia i wytyczne są nadal ważne. Ten artykuł zawiera linki do innych przydatnych zasobów.
 
 
 ## <a name="sample-log-searches"></a>Przykładowe wyszukiwania dzienników
 
-W poniższej tabeli przedstawiono przykładowy dziennik wyszukuje pojemność i wydajność danych zebranych i obliczana na podstawie tego rozwiązania.
+Poniższa tabela zawiera przykładowe wyszukiwania dzienników dla danych pojemności i wydajności, zebranych i obliczana na podstawie tego rozwiązania.
 
 
 | Zapytanie | Opis |
 |:--- |:--- |
-| Wszystkie konfiguracje pamięci hosta | Wydajności &#124; gdzie ObjectName == "Pojemności i wydajności" i CounterName == "Hosta przypisane pamięć (MB)" &#124; Podsumuj MB = avg(CounterValue) przez InstanceName |
-| Wszystkie konfiguracje pamięci maszyny Wirtualnej | Wydajności &#124; gdzie ObjectName == "Pojemności i wydajności" i CounterName == "MB pamięci przypisana maszyny Wirtualnej" &#124; Podsumuj MB = avg(CounterValue) przez InstanceName |
-| Podział całkowita IOPS dysku na wszystkich maszynach wirtualnych | Wydajności &#124; gdzie ObjectName == "Pojemności i wydajności" i (CounterName == "Wirtualnego dysku twardego odczyty/s" albo CounterName == "Wirtualnego dysku twardego zapisy/s") &#124; Podsumuj AggregatedValue = avg(CounterValue) przez bin (TimeGenerated, 1 godz.), CounterName, InstanceName |
-| Podział całkowitą przepływność dysku na wszystkich maszynach wirtualnych | Wydajności &#124; gdzie ObjectName == "Pojemności i wydajności" i (CounterName == "Wirtualnego dysku twardego odczytu MB/s" albo CounterName == "MB/s zapisu dysku VHD") &#124; Podsumuj AggregatedValue = avg(CounterValue) przez bin (TimeGenerated, 1 godz.), CounterName, InstanceName |
-| Podział całkowita IOPS przez wszystkie woluminy CSV | Wydajności &#124; gdzie ObjectName == "Pojemności i wydajności" i (CounterName == "CSV odczyty/s" albo CounterName == "CSV zapisy/s") &#124; Podsumuj AggregatedValue = avg(CounterValue) przez bin (TimeGenerated, 1 godz.), CounterName, InstanceName |
-| Podział ogólnej przepustowości przez wszystkie woluminy CSV | Wydajności &#124; gdzie ObjectName == "Pojemności i wydajności" i (CounterName == "CSV odczyty/s" albo CounterName == "CSV zapisy/s") &#124; Podsumuj AggregatedValue = avg(CounterValue) przez bin (TimeGenerated, 1 godz.), CounterName, InstanceName |
-| Podział łączny czas oczekiwania przez wszystkie woluminy CSV | Wydajności &#124; gdzie ObjectName == "Pojemności i wydajności" i (CounterName == "Opóźnienie odczytu CSV" lub CounterName == "Opóźnienie zapisu CSV") &#124; Podsumuj AggregatedValue = avg(CounterValue) przez bin (TimeGenerated, 1 godz.), CounterName, InstanceName |
+| Wszystkie konfiguracje pamięci hosta | Perf &#124; gdzie ObjectName == "Pojemności i wydajności" i CounterName == "MB pamięci przypisana hosta" &#124; Podsumuj MB avg(CounterValue), InstanceName = |
+| Wszystkie konfiguracje pamięci maszyn wirtualnych | Perf &#124; gdzie ObjectName == "Pojemności i wydajności" i CounterName == "MB pamięci przypisana maszyny Wirtualnej" &#124; Podsumuj MB = avg(CounterValue) przez InstanceName |
+| Podział łączna liczba IOPS na dysk na wszystkich maszynach wirtualnych | Perf &#124; gdzie ObjectName == "Pojemności i wydajności" i (CounterName == "Wirtualnego dysku twardego odczyty/s" albo CounterName == "Wirtualnego dysku twardego operacje zapisu/s") &#124; summarize AggregatedValue = avg(CounterValue) przez bin (TimeGenerated, 1 godz.), CounterName, InstanceName |
+| Podział łącznej przepływności dysków na wszystkich maszynach wirtualnych | Perf &#124; gdzie ObjectName == "Pojemności i wydajności" i (CounterName == "Wirtualnego dysku twardego odczyt MB/s" albo CounterName == "Wirtualnego dysku twardego zapisu MB/s") &#124; summarize AggregatedValue = avg(CounterValue) przez bin (TimeGenerated, 1 godz.), CounterName, InstanceName |
+| Podział łączna liczba operacji We/Wy na wszystkie woluminy CSV | Perf &#124; gdzie ObjectName == "Pojemności i wydajności" i (CounterName == "CSV odczyty/s" albo CounterName == "CSV operacje zapisu/s") &#124; summarize AggregatedValue = avg(CounterValue) przez bin (TimeGenerated, 1 godz.), CounterName, InstanceName |
+| Podział łącznej przepływności na wszystkie woluminy CSV | Perf &#124; gdzie ObjectName == "Pojemności i wydajności" i (CounterName == "CSV odczyty/s" albo CounterName == "CSV operacje zapisu/s") &#124; summarize AggregatedValue = avg(CounterValue) przez bin (TimeGenerated, 1 godz.), CounterName, InstanceName |
+| Podział łącznego opóźnienia na wszystkie woluminy CSV | Perf &#124; gdzie ObjectName == "Pojemności i wydajności" i (CounterName == "Opóźnienie odczytu CSV" lub CounterName == "Opóźnienie zapisu CSV") &#124; summarize AggregatedValue = avg(CounterValue) przez bin (TimeGenerated, 1 godz.), CounterName, InstanceName |
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Użyj [Zaloguj wyszukiwania analizy dzienników](log-analytics-log-search.md) Aby wyświetlić szczegółowe dane pojemność i wydajność.
+* Użyj [przeszukiwanie dzienników w usłudze Log Analytics](log-analytics-log-search.md) do wyświetlania szczegółowych danych o pojemności i wydajności.

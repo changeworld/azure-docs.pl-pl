@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/19/2017
 ms.author: daveba
-ms.openlocfilehash: 77953884253002c6da7b0151151d97bb65a6c659
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: b73a79676be559ad491bd7bb16691369dd8fa271
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44377092"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158635"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-vm-using-the-azure-portal"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie Wirtualnej przy użyciu witryny Azure portal
 
@@ -46,10 +46,15 @@ W tej sekcji dowiesz się, jak włączanie i wyłączanie przypisany systemowo t
 
 ### <a name="enable-system-assigned-managed-identity-during-creation-of-a-vm"></a>Włącz przypisany systemowo tożsamości zarządzanej podczas tworzenia maszyny Wirtualnej
 
-Obecnie witryna Azure portal nie obsługuje Włączanie tożsamości przypisanych przez system podczas tworzenia maszyny Wirtualnej. Zamiast tego zobacz następujące artykuły Szybki Start tworzenia maszyny Wirtualnej, aby najpierw utworzyć Maszynę wirtualną, a następnie przejść do następnej sekcji, aby uzyskać szczegółowe informacje na temat włączania tożsamości przypisanych przez system na maszynie Wirtualnej:
+Aby włączyć przypisany systemowo tożsamości zarządzanej podczas tworzenia maszyny Wirtualnej, w obszarze **zarządzania** karcie **tożsamości** sekcji, przełącz się **tożsamości usługi zarządzanej** do  **Na**.  
 
-- [Utwórz maszynę wirtualną Windows za pomocą witryny Azure portal](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine)
-- [Utwórz maszynę wirtualną systemu Linux w witrynie Azure portal](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)  
+![Włączanie tożsamości przypisanych przez system podczas tworzenia maszyny Wirtualnej](./media/msi-qs-configure-portal-windows-vm/enable-system-assigned-identity-vm-creation.png)
+
+Zapoznaj się z następujących przewodników Szybki Start tworzenie maszyny Wirtualnej: 
+
+- [Utwórz maszynę wirtualną Windows za pomocą witryny Azure portal](../../virtual-machines/windows/quick-create-portal.md#create-virtual-machine) 
+- [Utwórz maszynę wirtualną systemu Linux w witrynie Azure portal](../../virtual-machines/linux/quick-create-portal.md#create-virtual-machine)
+
 
 ### <a name="enable-system-assigned-managed-identity-on-an-existing-vm"></a>Włącz przypisany systemowo tożsamość zarządzaną istniejącej maszyny wirtualnej
 

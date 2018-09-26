@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: aad6aa788e9d7c7ca2c438bdeb63e77e91e4791a
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 496f411224a8d7424f85fed6e5eb105369863791
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714480"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161254"
 ---
 # <a name="about-technical-profiles-in-azure-active-directory-b2c-custom-policies"></a>Informacje o profilach techniczne w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -55,12 +55,10 @@ Wszystkie typy profile techniczne współużytkować tę samą koncepcję. Wysy�
     - Podczas wysyłania parametry jako InputClaims i pobieranie informacji o zwrotnym w formie OutputClaims, należy wywołać interfejs API REST.
     - Utwórz lub zaktualizuj konto użytkownika.
     - Wysyła i weryfikuje wiadomości SMS usługi MFA.
-4. **ValidationTechnicalProfiles** — [własnym potwierdzone profilu technicznego](self-asserted-technical-profile.md), można wywołać dane wejściowe [profilu technicznego weryfikacji](validation-technical-profile.md). Profil techniczny sprawdzania poprawności weryfikuje ona dane dostarczone przez użytkownika i zwraca komunikat o błędzie, lub przycisk Ok, z lub bez oświadczeń danych wyjściowych. Na przykład zanim usługa Azure AD B2C utworzy nowe konto, sprawdza czy użytkownik istnieje już w usługach katalogowych. Możesz wywołać profilu technicznego interfejsu API REST, aby dodać własną logiką biznesową.
-5. **OutputClaims** -oświadczeń jest zwracany do zbioru oświadczeń. Możesz użyć tych oświadczeń w następnych krokach aranżacji lub danych wyjściowych oświadczeń przekształcenia.
-6. **OutputClaimsTransformations** — danych wejściowych oświadczeń co przekształcania oświadczeń dane wyjściowe są pobierane ze zbioru oświadczeń. Oświadczeń danych wyjściowych profilu technicznego z poprzedniego kroku, a także oświadczeń danych wyjściowych przekształcenia oświadczeń wejściowych z pierwszego kroku może być oświadczeń wejściowych przekształcenia oświadczeń danych wyjściowych. Po wykonaniu oświadczeń danych wyjściowych są ponownie umieszczane w zbiorze oświadczeń. Oświadczeń danych wyjściowych przekształcania oświadczeń danych wyjściowych może być również oświadczeń wejściowych przekształcania oświadczeń kolejne dane wyjściowe.
-7. **ValidationTechnicalProfiles** — [samodzielnie określonych profilu technicznego](self-asserted-technical-profile.md), można wywołać dane wejściowe [profilu technicznego weryfikacji](validation-technical-profile.md). Profil techniczny weryfikacji sprawdza poprawność danych profilowanych przez użytkownika i zwraca komunikat o błędzie, lub przycisk Ok, z lub bez oświadczeń danych wyjściowych. Na przykład zanim usługa Azure AD B2C utworzy nowe konto, sprawdza czy użytkownik istnieje już w usługach katalogowych. Możesz wywołać profilu technicznego interfejsu API REST, aby dodać własną logiką biznesową.
-8. **OutputClaims** -oświadczeń jest zwracany do zbioru oświadczeń. Możesz użyć tych oświadczeń w następnym kroku aranżacji lub przekształcenia oświadczeń danych wyjściowych.
-9. **OutputClaimsTransformations** -wejściowych roszczenia, każdy danych wyjściowych [przekształcania oświadczeń](claimstransformations.md) są pobierane ze zbioru oświadczeń. Oświadczeń danych wyjściowych profilu technicznego z poprzednich kroków może być oświadczeń wejściowych przekształcenia oświadczeń danych wyjściowych. Po wykonaniu oświadczeń danych wyjściowych są ponownie umieszczane w zbiorze oświadczeń. Oświadczeń danych wyjściowych przekształcania oświadczeń danych wyjściowych może być również oświadczeń wejściowych przekształcania oświadczeń kolejne dane wyjściowe.
+4. **ValidationTechnicalProfiles** — [samodzielnie określonych profilu technicznego](self-asserted-technical-profile.md), można wywołać dane wejściowe [profilu technicznego weryfikacji](validation-technical-profile.md). Profil techniczny weryfikacji sprawdza poprawność danych profilowanych przez użytkownika i zwraca komunikat o błędzie, lub przycisk Ok, z lub bez oświadczeń danych wyjściowych. Na przykład zanim usługa Azure AD B2C utworzy nowe konto, sprawdza czy użytkownik istnieje już w usługach katalogowych. Możesz wywołać profilu technicznego interfejsu API REST, aby dodać własną logiką biznesową.<p>Zakres oświadczeń danych wyjściowych profilu technicznego sprawdzania poprawności jest ograniczony do profilu technicznego, który wywołuje profilu technicznego sprawdzania poprawności i inne sprawdzania poprawności profile techniczne w ramach tego samego profilu technicznego. Korzystanie z oświadczeń danych wyjściowych w następnym kroku aranżacji, musisz dodać oświadczeń danych wyjściowych do profilu technicznego, wywołująca profilu technicznego sprawdzania poprawności.
+5. **OutputClaims** -oświadczeń jest zwracany do zbioru oświadczeń. Możesz użyć tych oświadczeń w następnym kroku aranżacji lub przekształcenia oświadczeń danych wyjściowych.
+6. **OutputClaimsTransformations** -wejściowych roszczenia, każdy danych wyjściowych [przekształcania oświadczeń](claimstransformations.md) są pobierane ze zbioru oświadczeń. Oświadczeń danych wyjściowych profilu technicznego z poprzednich kroków może być oświadczeń wejściowych przekształcenia oświadczeń danych wyjściowych. Po wykonaniu oświadczeń danych wyjściowych są ponownie umieszczane w zbiorze oświadczeń. Oświadczeń danych wyjściowych przekształcania oświadczeń danych wyjściowych może być również oświadczeń wejściowych przekształcania oświadczeń kolejne dane wyjściowe.
+7. **Single Zarządzanie sesjami logowania jednokrotnego (SSO)** - [Zarządzanie sesjami logowania jednokrotnego](active-directory-b2c-reference-sso-custom.md) kontrolki interakcji z użytkownikiem, po użytkownik już uwierzytelniony. Na przykład administrator może kontrolować, czy ma być wyświetlana wyboru dostawcy tożsamości lub tego, czy szczegóły konta lokalnego muszą zostać wprowadzone ponownie.
 
 Profil techniczny może dziedziczyć z innego profilu technicznego, aby zmienić ustawienia, lub Dodaj nowe funkcje.  **IncludeTechnicalProfile** element jest odwołanie do bazowej profilu technicznego, z którego pochodzi profilu technicznego.  
 

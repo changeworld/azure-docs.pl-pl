@@ -11,13 +11,13 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 8fd8bf6128d09d6431a8542206430b9bb6df095d
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.date: 09/25/2018
+ms.openlocfilehash: 5c6ebfcb7eae52915af24fc67e9b3c774656149d
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063731"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181145"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Dowiedz się więcej o automatycznych kopii zapasowych bazy danych SQL
 
@@ -83,6 +83,10 @@ Aby uzyskać więcej informacji, zobacz [długoterminowego przechowywania kopii 
 ## <a name="are-backups-encrypted"></a>Kopie zapasowe są szyfrowane?
 
 Jeśli baza danych jest szyfrowana za pomocą funkcji TDE, kopie zapasowe są automatycznie szyfrowane w stanie spoczynku w tym kopie zapasowe od lewej do prawej. Gdy funkcja TDE jest włączona dla usługi Azure SQL database, tworzenie kopii zapasowych również są szyfrowane. Wszystkie nowe bazy danych Azure SQL są skonfigurowane za pomocą funkcji TDE jest domyślnie włączone. Aby uzyskać więcej informacji na temat funkcji TDE, zobacz [funkcji Transparent Data Encryption z usługą Azure SQL Database](/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql).
+
+## <a name="how-does-microsoft-ensure-backup-integrity"></a>Jak usługa Microsoft zabezpiecza integralność kopii zapasowej
+
+Na bieżąco zespół inżynierów usługi Azure SQL Database automatycznie testy przywracania automatycznych kopii zapasowych baz danych w usłudze. Podczas przywracania bazy danych uzyskują również sprawdzania integralności za pomocą polecenia DBCC CHECKDB. Problemy znalezione podczas sprawdzania integralności spowoduje alert do zespołu inżynieryjnego. Aby uzyskać więcej informacji o funkcji integralność danych w usłudze Azure SQL Database, zobacz [integralność danych w usłudze Azure SQL Database](https://azure.microsoft.com/blog/data-integrity-in-azure-sql-database/).
 
 ## <a name="how-do-automated-backups-impact-my-compliance"></a>Jak automatycznie tworzonymi kopiami zapasowymi wpływ na Moje zgodności?
 

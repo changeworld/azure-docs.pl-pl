@@ -1,49 +1,51 @@
 ---
-title: Elastyczne skalowanie Azure SQL — często zadawane pytania | Dokumentacja firmy Microsoft
-description: Często zadawane pytania dotyczące elastycznego skalowania bazy danych Azure SQL.
+title: Funkcja elastyczne skalowanie SQL platformy Azure — często zadawane pytania | Dokumentacja firmy Microsoft
+description: Często zadawane pytania dotyczące usługi Azure SQL Database funkcja elastyczne skalowanie.
 services: sql-database
-documentationcenter: ''
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 94ae9549bb5e09c80703a7db316675bff1272372
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: afa442897637e6c7255335798dc45b48aedb2b2a
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647480"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158585"
 ---
-# <a name="elastic-database-tools-faq"></a>Często zadawane pytania dotyczące narzędzi elastycznej bazy danych
-#### <a name="if-i-have-a-single-tenant-per-shard-and-no-sharding-key-how-do-i-populate-the-sharding-key-for-the-schema-info"></a>Jak wypełnić klucza dzielenia na fragmenty informacji schematu posiadający pojedynczej dzierżawy na niezależnych i żaden klucz dzielenia na fragmenty?
-Obiekt informacji schematu służy tylko do dzielenia scenariusze scalania. Jeśli aplikacja jest z założenia pojedynczej dzierżawy, nie jest wymagane narzędzie podziału scalania i w związku z tym nie jest konieczne do wypełniania obiektu informacji schematu.
+# <a name="elastic-database-tools-faq"></a>Narzędzia elastycznych baz danych — często zadawane pytania
+#### <a name="if-i-have-a-single-tenant-per-shard-and-no-sharding-key-how-do-i-populate-the-sharding-key-for-the-schema-info"></a>Jak wypełnić klucz fragmentowania tak, aby uzyskać informacje o schemacie jeśli korzystam z jedną dzierżawą za fragmentów, a nie klucza fragmentowania?
+Obiekt informacji schematu tylko jest używany do dzielenia scenariuszy scalania. Jeśli aplikacja jest natury pojedynczej dzierżawy, nie wymaga Split-Merge tool i związku z tym nie ma potrzeby do wypełnienia obiektu informacji o schemacie.
 
-#### <a name="ive-provisioned-a-database-and-i-already-have-a-shard-map-manager-how-do-i-register-this-new-database-as-a-shard"></a>Zostały udostępnionych bazy danych i Menedżera Map niezależnego fragmentu mają już, jak zarejestrować tej nowej bazy danych jako niezależnych?
-Zobacz  **[Dodawanie niezależnych do aplikacji za pomocą biblioteki klienta elastycznej bazy danych](sql-database-elastic-scale-add-a-shard.md)**. 
+#### <a name="ive-provisioned-a-database-and-i-already-have-a-shard-map-manager-how-do-i-register-this-new-database-as-a-shard"></a>Po aprowizowaniu bazy danych i Menedżera mapowań fragmentów mają już, jak zarejestrować z tej nowej bazy danych jako fragmentów?
+Zobacz  **[dodanie fragmentu do aplikacji za pomocą biblioteki klienckiej elastic database](sql-database-elastic-scale-add-a-shard.md)**. 
 
 #### <a name="how-much-do-elastic-database-tools-cost"></a>Ile koszt narzędzi elastycznej bazy danych?
-Za pomocą biblioteki klienta elastycznej bazy danych nie wpływa negatywnie kosztów. Koszty są naliczane tylko w przypadku baz danych Azure SQL używających odłamków i Manager mapy niezależnego fragmentu, jak również ról sieć web/proces roboczy, do których udostępniania dla narzędzia do scalania podziału.
+Za pomocą biblioteki klienckiej elastycznej bazy danych nie spowoduje naliczenia żadnych kosztów. Koszty są naliczane tylko w przypadku baz danych Azure SQL, używanych do fragmentów i Menedżera mapowań fragmentów, jak również ról sieć web/proces roboczy, do których aprowizowany dla Split-Merge tool.
 
-#### <a name="why-are-my-credentials-not-working-when-i-add-a-shard-from-a-different-server"></a>Dlaczego moje poświadczenia nie działają po dodaniu niezależnego fragmentu z innego serwera?
-Nie należy używać poświadczeń w formie "Nazwa użytkownika =username@servername", po prostu użyć zamiast tego "identyfikator użytkownika = nazwa użytkownika".  Upewnij się również, że nazwa logowania "nazwa_użytkownika" ma uprawnienia na niezależnego fragmentu.
+#### <a name="why-are-my-credentials-not-working-when-i-add-a-shard-from-a-different-server"></a>Dlaczego są moje poświadczenia nie działa po dodaniu fragmentu z innego serwera?
+Nie używaj poświadczeń w formie "Nazwa użytkownika =username@servername", zamiast tego po prostu użyć "identyfikator użytkownika = nazwa użytkownika".  Upewnij się również, czy nazwa logowania "username" ma uprawnienia na fragmentu.
 
-#### <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Należy utworzyć Menedżera Map niezależnego fragmentu i wypełnić odłamków w każdym uruchomieniu aplikacje?
-Nie — tworzenie Menedżera Map niezależnego fragmentu (na przykład  **[ShardMapManagerFactory.CreateSqlShardMapManager](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) jest to jednorazowa operacja.  Aplikacja powinna używać wywołania **[ShardMapManagerFactory.TryGetSqlShardMapManager()](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)** w momencie uruchamiania aplikacji.  Ma takich tylko jedno wywołanie dla domeny aplikacji.
+#### <a name="do-i-need-to-create-a-shard-map-manager-and-populate-shards-every-time-i-start-my-applications"></a>Należy utworzyć Menedżera mapowań fragmentów i wypełnić fragmentów, za każdym razem, gdy mogę uruchomić Moje aplikacje?
+Nie — tworzenie Menedżera mapowań fragmentów (na przykład  **[ShardMapManagerFactory.CreateSqlShardMapManager](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.createsqlshardmapmanager.aspx)**) jest to jednorazowa operacja.  Aplikacja powinna używać wywołania **[ShardMapManagerFactory.TryGetSqlShardMapManager()](http://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx)** w momencie uruchamiania aplikacji.  Ma tylko jedno takie wywołanie dla domeny aplikacji.
 
-#### <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>Pytania dotyczące korzystania z narzędzi elastycznej bazy danych, jak ich odpowiedzi uzyskać?
-Sprawdź dotrzeć do nas na [forum usługi Azure SQL Database](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted).
+#### <a name="i-have-questions-about-using-elastic-database-tools-how-do-i-get-them-answered"></a>Mam pytania dotyczące korzystania z narzędzi elastycznych baz danych, jak je odpowiedzi uzyskać?
+Skontaktuj się z nami na [forum usługi Azure SQL Database](https://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted).
 
-#### <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>Gdy otrzymam połączenie z bazą danych przy użyciu klucza dzielenia na fragmenty mogę nadal danych zapytania dla pozostałych kluczy dzielenia na fragmenty na sam identyfikator niezależnego fragmentu.  To jest celowe?
-Interfejsy API elastycznego skalowania umożliwiają połączenie z poprawną bazą danych klucza dzielenia na fragmenty, ale nie dostarcza klucza filtrowania dzielenia na fragmenty.  Dodaj **gdzie** klauzul do zapytania, aby ograniczyć zakres do klucza dostarczonego dzielenia na fragmenty, jeśli to konieczne.
+#### <a name="when-i-get-a-database-connection-using-a-sharding-key-i-can-still-query-data-for-other-sharding-keys-on-the-same-shard--is-this-by-design"></a>Gdy pojawia się połączenie z bazą danych przy użyciu klucza fragmentowania, nadal można zapytania o dane dla innych kluczy fragmentowania na tym samym fragmencie.  To jest celowe?
+Interfejsy API elastycznego skalowania umożliwiają połączenie z odpowiednią bazą danych dla swojego klucza fragmentowania, ale nie zapewniają filtrowanie klucza fragmentowania.  Dodaj **gdzie** klauzule zapytania w taki sposób, aby ograniczyć zakres klucz fragmentowania podany, jeśli to konieczne.
 
-#### <a name="can-i-use-a-different-azure-database-edition-for-each-shard-in-my-shard-set"></a>Czy można użyć innej wersji bazy danych platformy Azure dla każdego niezależnego fragmentu w zestawu niezależnego fragmentu?
-Tak, niezależnych jest jedna baza danych, a w związku z tym jednego niezależnego fragmentu może być wersji Premium innego być Standard edition. Ponadto wersji niezależnych można skalować w górę lub w dół wiele razy w ciągu okresu istnienia niezależnego fragmentu.
+#### <a name="can-i-use-a-different-azure-database-edition-for-each-shard-in-my-shard-set"></a>Czy można użyć innej wersji usługi Azure Database dla każdego fragmentu w Mój zestaw fragmentów?
+Tak, fragment jest poszczególnych baz danych, a zatem jednego fragmentu może być w wersji Premium, choć innej wersji standardowej. Ponadto wersja fragmentu skalować w górę lub w dół wiele razy w okresie istnienia fragmentu.
 
-#### <a name="does-the-split-merge-tool-provision-or-delete-a-database-during-a-split-or-merge-operation"></a>Czy udostępnić narzędzia do scalania podziału (lub usunąć) bazy danych podczas operacji dzielenie i scalanie?
-Nie. Aby uzyskać **podzielić** operacje, musi istnieć z odpowiedniego schematu docelowej bazy danych i być zarejestrowane przy użyciu Menedżera Map niezależnego fragmentu.  Aby uzyskać **scalania** operacje, musisz usunąć niezależnego fragmentu z Menedżera mapy niezależnego fragmentu, a następnie usunąć bazę danych.
+#### <a name="does-the-split-merge-tool-provision-or-delete-a-database-during-a-split-or-merge-operation"></a>Jest zapewnienie narzędzie do dzielenia scalania (lub usuwać) bazy danych podczas operacji dzielenia ani scalania?
+Nie. Aby uzyskać **podziału** operacje, musi istnieć przy użyciu odpowiedniego schematu docelowej bazy danych i być zarejestrowane przy użyciu Menedżera mapowań fragmentów.  Aby uzyskać **scalania** operacji, należy usunąć fragment z Menedżera map fragmentów, a następnie usunąć bazy danych.
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

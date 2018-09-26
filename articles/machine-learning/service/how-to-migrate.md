@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: haining
 author: haining
 ms.date: 09/24/2018
-ms.openlocfilehash: 2182a39836f02596d22168722e6ece7a2872dccc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0c5cfcee65b176147125dd2edbff2497b1eee70b
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969488"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47158568"
 ---
 # <a name="migrate-to-the-latest-version-of-azure-machine-learning-service"></a>Migracja do najnowszej wersji usługi Azure Machine Learning 
 
@@ -54,13 +54,13 @@ Zasoby, takie jak konta eksperymentowanie w usłudze, konta zarządzania modelam
 
 Rozpocznij pracę z najnowszą wersją, tworząc Azure obszaru roboczego uczenia maszynowego w [witryny Azure portal](quickstart-get-started.md). Pulpit nawigacyjny z obszaru roboczego portalu jest obsługiwana na tylko w przeglądarkach Edge, Chrome i Firefox.
 
-Ten nowy obszar roboczy jest zasobem najwyższego poziomu usługi i umożliwia korzystanie ze wszystkich najnowszych funkcji usługi Azure Machine Learning. [Dowiedz się więcej na temat tego obszaru roboczego i architektura](concept-azure-machine-learning-architecture.md).
+Ten nowy obszar roboczy jest zasobem najwyższego poziomu usługi i umożliwia korzystanie ze wszystkich najnowszych funkcji usługi Azure Machine Learning. Dowiedz się więcej na ten temat [obszar roboczy i architektura](concept-azure-machine-learning-architecture.md).
 
 <a name="projects"></a>
 
 ## <a name="projects"></a>Projekty
 
-Zamiast projektów w obszarze roboczym w chmurze, projekty są teraz katalogów na komputerze lokalnym w najnowszej wersji. [Zobacz diagram architektury najnowsze](concept-azure-machine-learning-architecture.md). 
+Zamiast projektów w obszarze roboczym w chmurze, projekty są teraz katalogów na komputerze lokalnym w najnowszej wersji. Wyświetlany diagram [najnowsza architektura](concept-azure-machine-learning-architecture.md). 
 
 Aby nadal korzystać z lokalnego katalogu zawierającego pliki i skrypty, należy określić nazwę katalogu w ["experiment.submit"](http://docs.microsoft.com/python/api/azureml-core/azureml.core.experiment.experiment?view=azure-ml-py) polecenia języka Python lub za pomocą polecenia interfejsu wiersza polecenia "az ml projektu Dołącz".
 

@@ -10,14 +10,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/07/2018
+ms.date: 09/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: e79419c764229e7dc52a32389b8b1116668dddfc
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 0970f5d4e61a40df7454cc850e59d86708d4aa1c
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039739"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47159107"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -220,14 +220,14 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, które mog�
 * Service Bus
 * Service Fabric
 * Usługa Service Fabric siatki
-* Usługa SignalR
+* SignalR Service
 * Nie można przenieść magazyn — konta magazynu w różnych regionach, w tej samej operacji. Zamiast tego należy użyć oddzielnych operacji dla każdego regionu.
 * Magazyn (klasyczny) — zobacz [ograniczenia wdrożenia klasycznego](#classic-deployment-limitations)
 * Stream Analytics — Stream Analytics, zadania nie można przenieść uruchamianego w stanie.
 * Bazy danych programu SQL server — bazy danych i serwera musi znajdować się w tej samej grupie zasobów. Gdy przesuniesz programu SQL server, jego baz danych są również przenoszone. To zachowanie ma zastosowanie do baz danych Azure SQL Database i Azure SQL Data Warehouse.
 * Time Series Insights
 * Traffic Manager
-* Nie można przenieść maszyny wirtualne — maszyny wirtualne z dyskami zarządzanymi. Zobacz [ograniczenia maszyn wirtualnych](#virtual-machines-limitations)
+* Virtual Machines — w przypadku maszyn wirtualnych przy użyciu dysków zarządzanych, zobacz [ograniczenia maszyn wirtualnych](#virtual-machines-limitations)
 * Maszyny wirtualne (klasyczne) — zobacz [ograniczenia wdrożenia klasycznego](#classic-deployment-limitations)
 * Zestawy skalowania maszyn wirtualnych — zobacz [ograniczenia maszyn wirtualnych](#virtual-machines-limitations)
 * Sieci wirtualne — Zobacz [ograniczenia sieci wirtualnych](#virtual-networks-limitations)
@@ -267,28 +267,30 @@ Poniższa lista zawiera podsumowanie ogólne usług platformy Azure, których ni
 
 ## <a name="virtual-machines-limitations"></a>Ograniczenia dotyczące maszyn wirtualnych
 
-Dyski zarządzane są obsługiwane w przypadku przeniesienia od 24 września 2018 r. Musisz zarejestrować, aby włączyć tę funkcję
+Dyski zarządzane są obsługiwane w przypadku przeniesienia od 24 września 2018 r. Musisz zarejestrować, aby włączyć tę funkcję.
 
-#### <a name="powershell"></a>PowerShell
-`Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute`
-#### <a name="cli"></a>Interfejs wiersza polecenia
-`az feature register Microsoft.Compute ManagedResourcesMove`
+```azurepowershell-interactive
+Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
+```
 
+```azurecli-interactive
+az feature register Microsoft.Compute ManagedResourcesMove
+```
 
-Oznacza to, że można również przenosić:
+Ta obsługa oznacza, że można również przenosić:
 
 * Maszyny wirtualne z dyskami zarządzanymi
 * Zarządzane obrazów
 * Zarządzane migawki
 * Zestawy dostępności mające maszyny wirtualne z dyskami zarządzanymi
 
-Oto ograniczenia, które nie są jeszcze obsługiwane
+Ograniczenia, które nie są jeszcze obsługiwane są następujące:
 
 * Maszyn wirtualnych przy użyciu certyfikatu przechowywanego w usłudze Key Vault można przenieść do nowej grupy zasobów w tej samej subskrypcji, ale nie w subskrypcjach.
 * Maszyny wirtualne skonfigurowane przy użyciu usługi Azure Backup. Użyj poniższych obejście, aby przenieść te maszyny wirtualne
   * Znajdź lokalizację maszyny wirtualnej.
-  * Znajdź grupę zasobów, z następującym wzorcem nazewnictwa: "AzureBackupRG_<location of your VM>_1" AzureBackupRG_westus2_1 np.
-  * Jeśli komputer znajduje się w witrynie Azure Portal, a następnie sprawdź "Pokaż ukryte typy"
+  * Znajdź grupę zasobów, z następującym wzorcem nazewnictwa: `AzureBackupRG_<location of your VM>_1` AzureBackupRG_westus2_1 np.
+  * Jeśli komputer znajduje się w witrynie Azure portal, a następnie sprawdź "Pokaż ukryte typy"
   * Jeśli w programie PowerShell użyj `Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` polecenia cmdlet
   * Jeśli w interfejsu wiersza polecenia, użyj `az resource list -g AzureBackupRG_<location of your VM>_1`
   * Teraz zlokalizować zasobu o typie `Microsoft.Compute/restorePointCollections` zawierający wzorzec nazewnictwa `AzureBackup_<name of your VM that you're trying to move>_###########`

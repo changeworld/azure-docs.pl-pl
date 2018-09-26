@@ -16,11 +16,11 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: adpick
 ms.openlocfilehash: 094bfe041ae04e52b6d998ccfd1d964abf192d6a
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35943477"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47095103"
 ---
 # <a name="set-up-billing-or-credit-alerts-for-your-microsoft-azure-subscriptions"></a>Ustawianie alertów dotyczących rozliczeń lub środków dla subskrypcji Microsoft Azure
 Jeśli jesteś administratorem konta dla subskrypcji platformy Azure, można użyć usługa alertu dotyczącego rozliczeń platformy Azure, aby tworzyć niestandardowe alerty dotyczące rozliczeń, które ułatwiają monitorowanie i zarządzanie nią działania rozliczeniowe dla kont systemu Azure.

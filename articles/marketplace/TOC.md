@@ -7,6 +7,7 @@
 #### [Rejestracja w Centrum deweloperów](./register-dev-center.md) 
 #### [Opcje rozliczeń w witrynie Azure Marketplace](./billing-options-azure-marketplace.md)  
 #### [Udział partnera w zakresie użycia platformy Azure przez klienta](./azure-partner-customer-usage-attribution.md)
+#### [Zarządzanie potencjalnymi klientami dla platformy handlowej w chmurze](./lead-management-for-cloud-marketplace.md)
 
 ### [Sklepy](./comparing-appsource-azure-marketplace.md)  
 

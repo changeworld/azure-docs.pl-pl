@@ -12,21 +12,21 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 09/24/2018
 ms.author: magoedte
-ms.openlocfilehash: c8a8598640e31f59476b5b3351fdb2eab7b66a6c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5c9211486fa40e49afd91eba7c432990b0ee860b
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952923"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160625"
 ---
 # <a name="understand-the-health-of-your-azure-virtual-machines-with-azure-monitor-for-vms"></a>Poznanie kondycji maszynach wirtualnych platformy Azure z usługą Azure Monitor dla maszyn wirtualnych
 Azure obejmuje wiele usług, wykonujących indywidualnie określonej roli lub zadania w obszarze monitorowania, ale dostarczanie perspektywy szczegółowe kondycji systemu operacyjnego, hostowane na maszynach wirtualnych platformy Azure nie była dostępna.  Chociaż można monitorować różne warunki przy użyciu usługi Log Analytics lub Azure Monitor, nie zostało zaprojektowane do modelowania i reprezentują kondycji podstawowych składników lub ogólną kondycję maszyny wirtualnej.  Dzięki usłudze Azure Monitor dla funkcji kondycji maszyn wirtualnych proaktywnie monitoruje dostępność i wydajność, Windows lub Linux systemu operacyjnego gościa za pomocą modelu, reprezentujące najważniejsze składniki oraz ich relacji, kryteria, które określa, jak mierzyć kondycję tych składniki i wysyłania alertów, gdy zostanie wykryty warunek złej kondycji.  
 
 Wyświetlanie ogólną kondycję maszyn wirtualnych platformy Azure i bazowych systemu operacyjnego, można zaobserwować z dwóch perspektyw z usługą Azure Monitor dla kondycji maszyn wirtualnych, bezpośrednio z maszyny wirtualnej lub wszystkich maszyn wirtualnych w grupie zasobów z usługi Azure Monitor.
 
-Ten artykuł pomoże Ci zrozumieć, jak szybko ocenić, badania i rozwiązywania wykrytych problemów kondycji.
+Ten artykuł pomoże Ci zrozumieć, jak można szybko ocenić, badania i rozwiązywania wykrytych problemów kondycji.
 
 Aby uzyskać informacje o konfigurowaniu usługi Azure Monitor do maszyn wirtualnych, zobacz [włączyć usługi Azure Monitor dla maszyn wirtualnych](monitoring-vminsights-onboard.md).
 
@@ -99,11 +99,11 @@ Stany kondycji zdefiniowane dla maszyny Wirtualnej są następujące:
 * **Ostrzeżenie** — co najmniej jeden problem, są wykrywane, które muszą być kierowane lub stan kondycji może stać się krytyczna.  
 * **Nieznany** — Jeśli usługa nie był w stanie nawiązać połączenie z maszyną Wirtualną, a jego stan zmieni się stan nieznany.  
 
-Wybieranie **Wyświetl diagnostykę kondycji** spowoduje otwarcie strony, przedstawiający wszystkie składniki maszyny wirtualnej skojarzonej kondycji kryteria, zmian stanu i innych istotnych problemów napotykanych przez monitorowanie składników powiązane z maszyną wirtualną. Zapoznaj się [Diagnostyka kondycji](#health-diagnostics) Aby uzyskać więcej informacji. 
+Wybieranie **Wyświetl diagnostykę kondycji** spowoduje otwarcie strony, przedstawiający wszystkie składniki maszyny Wirtualnej, kryteriów skojarzonej kondycji, zmian stanu i innych istotnych problemów napotykanych przez monitorowanie składników powiązane z maszyną wirtualną. Aby uzyskać więcej informacji, zobacz [Diagnostyka kondycji](#health-diagnostics). 
 
 W obszarze **kondycja składnika** sekcji tabeli pojawi się stan kondycji zbiorczy kategorii podstawowej wydajności monitorowanych przez kryteria kondycji dla tych obszarów, w szczególności **Procesora**,  **Pamięć**, **dysku**, i **sieci**.  Wybranie któregokolwiek ze składników powoduje otwarcie strony z listą wszystkich kryterium kondycji poszczególnych monitorowania aspekty tego składnika i stan kondycji odpowiednimi każdego z nich.  
 
-Podczas uzyskiwania dostępu do kondycji, w maszynie Wirtualnej platformy Azure z systemem operacyjnym Windows, stan kondycji 5 pierwszych podstawowych usług Windows są wyświetlane w sekcji **podstawowych usług kondycji**.  Wybranie jednej z usług powoduje otwarcie strony z listą kryteria kondycji monitorowania tego składnika, a jej stan kondycji.  Kliknięcie nazwy kryteria kondycji zostanie otwarty w okienku właściwości, a w tym miejscu możesz przejrzeć szczegóły konfiguracji, w tym przypadku kryteria kondycji ma odpowiedni alert usługi Azure Monitor zdefiniowane. Aby dowiedzieć się więcej na ten temat, zobacz [Diagnostyka kondycji i Praca z kryteria kondycji](#health-diagnostics).  
+Podczas uzyskiwania dostępu do kondycji, w maszynie Wirtualnej platformy Azure z systemem operacyjnym Windows, stan kondycji 5 pierwszych podstawowych usług Windows są wyświetlane w sekcji **podstawowych usług kondycji**.  Wybranie jednej z usług powoduje otwarcie strony z listą kryteria kondycji monitorowania tego składnika, a jej stan kondycji.  Kliknięcie nazwy kryteria kondycji zostanie otwarty w okienku właściwości, a w tym miejscu możesz przejrzeć szczegóły konfiguracji, w tym przypadku kryteria kondycji ma odpowiedni alert usługi Azure Monitor zdefiniowane. Aby dowiedzieć się więcej, zobacz [Diagnostyka kondycji i Praca z kryteria kondycji](#health-diagnostics).  
 
 ## <a name="aggregate-virtual-machine-perspective"></a>Perspektywa agregacji maszyny wirtualnej
 Aby wyświetlić kondycji zbieranie danych dla wszystkich maszyn wirtualnych w grupie zasobów, z listy nawigacji w portalu wybierz **usługi Azure Monitor** , a następnie wybierz **maszyny wirtualne (wersja zapoznawcza)**.  
@@ -175,7 +175,7 @@ Diagnostyka kondycji porządkuje informacje o kondycji na następujące kategori
  
 Wszystkie kryteria kondycji zdefiniowane dla wybranego obiektu docelowego wyświetla się w odpowiedniej kategorii. 
 
-Stan kondycji kryteria kondycji jest definiowany przez jeden z trzech stanów — *krytyczny*, *ostrzeżenie* i *dobra kondycja*. Istnieje inny stan *nieznany*, który nie jest skojarzony ze stanem kondycji, ale reprezentuje stan monitorowania znane przez funkcję.  
+Stan kondycji kryteria kondycji jest definiowany przez jeden z trzech stanów — *krytyczny*, *ostrzeżenie*, i *dobra kondycja*. Istnieje inny stan *nieznany*, który nie jest skojarzony ze stanem kondycji, ale reprezentuje stan monitorowania znane przez funkcję.  
 
 Poniższa tabela zawiera szczegółowe informacje o stanach kondycji reprezentowane w diagnostyce kondycji.
 
@@ -197,18 +197,18 @@ Strona Diagnostyka kondycji zawiera trzema głównymi sekcjami:
 ### <a name="component-model"></a>Model składników
 Kolumna skrajnie po lewej stronie Diagnostyka kondycji jest model składnika. Wszystkie składniki i odnalezionych wystąpień, które są skojarzone z maszyną Wirtualną, są wyświetlane w tej kolumnie. 
 
-W poniższym przykładzie składniki odkryte to dysk, dysk logiczny w systemie, procesora, pamięci i systemu operacyjnego. Wiele wystąpień tych składników są wykrywane i wyświetlane w tej kolumnie, za pomocą dwóch wystąpień dysku logicznego **/**, **/rozruchu**, i   **/mnt/zasobów**, jedno wystąpienie karty sieciowej **eth0**, dwa wystąpienia dysku **sda** i **sdb**, dwa wystąpienia procesora **0 i 1**i **Red Hat Enterprise Linux Server w wersji 7.4 (Maipo) (System operacyjny)**. 
+W poniższym przykładzie składniki odkryte to dysk, dysk logiczny w systemie, procesora, pamięci i systemu operacyjnego. Wiele wystąpień tych składników są wykrywane i wyświetlane w tej kolumnie, za pomocą dwóch wystąpień dysku logicznego **/**, **/rozruchu**, i   **/mnt/zasobów**, jedno wystąpienie karty sieciowej **eth0**, dwa wystąpienia dysku **sda** i **sdb**, dwa wystąpienia procesora **0 i 1**, a **Red Hat Enterprise Linux Server w wersji 7.4 (Maipo) (System operacyjny)**. 
 
 ![Przykładowy model składnika prezentowane w diagnostyce kondycji](./media/monitoring-vminsights-health/health-diagnostics-page-component.png)
 
 ### <a name="health-criteria"></a>Kryteria kondycji
-W środkowej kolumnie na stronie Diagnostyka kondycji jest **kryteria kondycji** kolumny. Model kondycji zdefiniowane dla maszyny Wirtualnej jest wyświetlany w formie drzewa hierarchicznego. Model kondycji dla maszyny Wirtualnej składają się z jednostki, zależności i kryteria kondycji agregacji.  
+W środkowej kolumnie na stronie Diagnostyka kondycji jest **kryteria kondycji** kolumny. Model kondycji zdefiniowane dla maszyny Wirtualnej jest wyświetlany w formie drzewa hierarchicznego. Model kondycji dla maszyny Wirtualnej składa się z jednostki, zależności i kryteria kondycji agregacji.  
 
 ![Kryteria kondycji przykład przedstawiony w diagnostyce kondycji](./media/monitoring-vminsights-health/health-diagnostics-page-healthcriteria.png)
 
 Kryterium kondycji mierzy kondycję monitorowanego wystąpienia przy użyciu kryteriów, których może to być wartość progową lub stan jednostki itp. Kryterium kondycji ma dwa lub trzy stany kondycji, zgodnie z opisem w powyższej sekcji. W dowolnym danym momencie kryterium kondycji może być tylko jednego ze swoich potencjalnych stanów. 
 
-Ogólna kondycja obiektu docelowego jest określana na podstawie kondycji każdego z jego kryteria kondycji zdefiniowane w modelu kondycji. Są to kombinacja kryteria kondycji ukierunkowanych bezpośrednio na elemencie docelowym kryteria kondycji przeznaczone dla składników rzutowanie do elementu docelowego przy użyciu kryterium kondycji zależności. Taka hierarchia jest zaprezentowana w **kryteria kondycji** sekcji na stronie Diagnostyka kondycji. Zasady agregowania kondycji wchodzą jest częścią konfiguracji kryteria kondycji agregacji i zależności. Można znaleźć listy domyślny zestaw kryteria kondycji uruchomiona w ramach tej funkcji w sekcji [szczegóły konfiguracji monitorowania](#monitoring-configuration-details).  
+Ogólna kondycja obiektu docelowego jest określana na podstawie kondycji każdego z jego kryteria kondycji zdefiniowane w modelu kondycji. Są to kombinacja kryteria kondycji ukierunkowanych bezpośrednio na elemencie docelowym kryteria kondycji przeznaczone dla składników rzutowanie do elementu docelowego przy użyciu kryterium kondycji zależności. Taka hierarchia jest zaprezentowana w **kryteria kondycji** sekcji na stronie Diagnostyka kondycji. W zasadach zestawienia kondycji jest częścią konfiguracji kryteria kondycji agregacji i zależności. Można znaleźć listy domyślny zestaw kryteria kondycji uruchomiona w ramach tej funkcji w sekcji [szczegóły konfiguracji monitorowania](#monitoring-configuration-details).  
 
 W poniższym przykładzie kryterium agregacji kondycji **zestawienie usług Windows Core** oparte na Windows maszyny wirtualnej ocenia kondycję najważniejszych usług Windows, w oparciu o kryteria kondycji poszczególnych usług. Stan poszczególnych usług, takich jak DNS, DHCP, itp., są obliczane i kondycji zbiorczej odpowiedni pakiet zbiorczy kondycji kryterium (jak pokazano poniżej).  
 
@@ -228,7 +228,8 @@ W okienku konfiguracja kryteriów wybranych kondycji, w tym przykładzie **dysku
 
 ![Konfigurowanie kryteria kondycji w przykładzie monitora jednostki](./media/monitoring-vminsights-health/health-diagnostics-linuxvm-example-04.png)
 
-
+Jeśli chcesz dowiedzieć się więcej o wskaźnika kondycji, artykuły merytoryczne są uwzględniane które pozwala zidentyfikować problemy, przyczyny i rozwiązania.  Kliknij pozycję **służy do wyświetlania informacji** łącze na stronie zostanie otwarta nowa karta w przeglądarce, przedstawiający artykułu merytorycznego określone.  W dowolnym momencie można przejrzeć wszystkie artykuły wiedzy kryterium kondycji dołączone do usługi Azure Monitor kondycji maszyn wirtualnych funkcji [tutaj](https://docs.microsoft.com/azure/monitoring/infrastructure-health/).
+  
 ### <a name="state-changes"></a>Zmiany stanu
 Kolumna najdalej z prawej strony na stronie Diagnostyka kondycji jest **zmiany stanu**. Wyświetla listę wszystkich zmian stanu skojarzonych z kryteria kondycji, które wybrano w **kryteria kondycji** sekcji lub Zmień stan maszyny wirtualnej w przypadku maszyny Wirtualnej została wybrana w zaufanym **składnika modelu** lub **Kryteria kondycji** kolumnie tabeli. 
 
@@ -256,14 +257,14 @@ Ten widok można filtrować, wybierając wartości w menu rozwijanych w górnej 
 
 |Kolumna |Opis | 
 |-------|------------| 
-|Subskrypcja |Wybierz subskrypcje platformy Azure. Tylko w wybranej subskrypcji są uwzględniane alerty w widoku. | 
+|Subskrypcja |Wybierz subskrypcję platformy Azure. Tylko w wybranej subskrypcji są uwzględniane alerty w widoku. | 
 |Grupa zasobów |Wybierz pojedynczą grupę zasobów. Tylko alerty z usługą obiektów docelowych w wybranej grupie zasobów znajdują się w widoku. | 
 |Typ zasobu |Wybierz jeden lub więcej typów zasobów. Tylko alerty o celach wybranego typu znajdują się w widoku. W tej kolumnie jest dostępna tylko po określono grupę zasobów. | 
 |Zasób |Wybierz zasób. Tylko alerty o zasobu jako obiekt docelowy znajdują się w widoku. W tej kolumnie jest dostępna tylko po został określony jako typ zasobu. | 
 |Ważność |Wybiera alert o ważności lub wybierz *wszystkich* obejmujący alerty wszystkie poziomy ważności. | 
 |Stan monitora |Wybierz warunek monitora, aby filtrować alerty, jeśli zostały one *Fired* przez system lub *rozwiązane* przez system, jeśli warunek nie jest już aktywna. Lub wybierz *wszystkich* obejmujący alerty wszystkie warunki. | 
 |Stan alertu |Wybierz stan alertu *New*, *potwierdzonym*, *zamknięte*, lub wybierz *wszystkich* obejmujący alerty wszystkich stanów. | 
-|Monitorowanie usługi |Wybierz usługę, lub wybierz *wszystkich* obejmujący wszystkie usługi. Tylko alerty z Infrastructure Insights jest obsługiwana dla tej funkcji. | 
+|Monitorowanie usługi |Wybierz usługę, lub wybierz *wszystkich* obejmujący wszystkie usługi. Tylko alerty z Infrastructure Insights są obsługiwane przez tę funkcję. | 
 |Przedział czasu| Tylko alerty wyzwalane w przedziale czasu wybranego znajdują się w widoku. Obsługiwane wartości to ostatniej godziny, ostatnich 24 godzin, w ciągu ostatnich 7 dni i ostatnich 30 dni. | 
 
 **Alert szczegółów** zostanie wyświetlona strona, po wybraniu alertu, który udostępnia szczegółowe informacje o alercie, dzięki czemu można zmienić jego stan. Aby dowiedzieć się więcej na temat pracy z regułami alertów i Zarządzanie alertami, zobacz [Utwórz, Wyświetl, alerty i zarządzaj nimi przy użyciu usługi Azure Monitor](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md).
@@ -273,4 +274,4 @@ Ten widok można filtrować, wybierając wartości w menu rozwijanych w górnej 
 Zgłoś alert, również można zmienić stanu dla jednego lub wielu alertów, wybierając je, a następnie wybierając **zmiany stanu** z **wszystkie alerty** strony, w lewym górnym rogu. Na **Zmień stan alertu** okienku wybierz jedną z państw, Dodaj opis zmian w **komentarz** pola, a następnie kliknij przycisk **Ok** aby zatwierdzić zmiany. Podczas weryfikowania informacji i zmiany zostaną zastosowane, możesz śledzić postęp w sekcji **powiadomienia** z menu.  
 
 ## <a name="next-steps"></a>Kolejne kroki
-Do identyfikowania wąskich gardeł i ogólnego użycia za pomocą wydajność maszyn wirtualnych, zobacz [wydajność maszyny Wirtualnej platformy Azure widoku](monitoring-vminsights-performance.md), lub aby obejrzeć zależności odnalezionych aplikacji, zobacz [widok usługi Azure Monitor dla maszyn wirtualnych mapy](monitoring-vminsights-maps.md). 
+Aby zidentyfikować wąskie gardła i ogólnego użycia za pomocą wydajność maszyn wirtualnych, zobacz [wydajność maszyny Wirtualnej platformy Azure w widoku](monitoring-vminsights-performance.md), lub aby obejrzeć zależności odnalezionych aplikacji, zobacz [widok usługi Azure Monitor dla maszyn wirtualnych jest mapowany](monitoring-vminsights-maps.md). 

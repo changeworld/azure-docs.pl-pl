@@ -9,18 +9,18 @@ ms.topic: article
 ms.component: speech-service
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: 6e5f3128a6a62ef27bdc0d24ddda0afc54d78b03
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9a56b50e8bd01c8eab9e8935b0d250f1b0da59bc
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994755"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181848"
 ---
 # <a name="microsoft-software-license-termsbrmicrosoft-cognitive-services-speech-sdk"></a>POSTANOWIENIA LICENCYJNE DOTYCZĄCE OPROGRAMOWANIA FIRMY MICROSOFT<br>ZESTAW SDK ROZPOZNAWANIA MOWY USŁUG COGNITIVE SERVICES FIRMY MICROSOFT
 
 **JEŚLI MIESZKA (LUB SĄ DZIAŁALNOŚCI Z MIEJSCA JEDNOSTKI PRACY W) STANY ZJEDNOCZONE, PRZECZYTAJ SEKCJĘ "ARBITRAŻU I WNIESIENIA POZWU" PONIŻEJ. DOTYCZY ONA ROZSTRZYGANIA SPORÓW.**
 
-Niniejsze postanowienia licencyjne stanowią umowę między użytkownikiem a firmą Microsoft (lub jeden z jej podmiotów stowarzyszonych). Odnoszą się do wskazanej powyżej oprogramowanie w wersji zapoznawczej i wszelkie aktualizacje usługi lub oprogramowania firmy Microsoft (z wyjątkiem w zakresie aktualizacji lub usług towarzyszą nowe lub dodatkowe postanowienia, w tym przypadku te inne postanowienia Zastosuj zaktualizowaniem i nie należy zmieniać swoje lub Firmy Microsoft prawa dotyczące wstępnie zaktualizowanego oprogramowania lub usług). ILE BĘDZIE PRZESTRZEGAĆ POSTANOWIEŃ LICENCYJNYCH JEST UZYSKANIE PONIŻSZYCH PRAW. KORZYSTANIE Z TEGO OPROGRAMOWANIA OZNACZA AKCEPTACJĘ NINIEJSZYCH POSTANOWIEŃ.
+Niniejsze postanowienia licencyjne stanowią umowę między użytkownikiem a firmą Microsoft (lub jeden z jej podmiotów stowarzyszonych). Postanowienia dotyczą oprogramowania określonego powyżej oraz wszelkie aktualizacje usługi lub oprogramowania firmy Microsoft (z wyjątkiem w zakresie aktualizacji lub usług towarzyszą nowe lub dodatkowe postanowienia, w tym przypadku te inne postanowienia Zastosuj zaktualizowaniem i nie należy zmieniać swoje lub Firmy Microsoft prawa dotyczące wstępnie zaktualizowanego oprogramowania lub usług). ILE BĘDZIE PRZESTRZEGAĆ POSTANOWIEŃ LICENCYJNYCH JEST UZYSKANIE PONIŻSZYCH PRAW.  KORZYSTANIE Z TEGO OPROGRAMOWANIA OZNACZA AKCEPTACJĘ NINIEJSZYCH POSTANOWIEŃ.
 
 ## <a name="1-installation-and-use-rights"></a>1. PRAWA DO INSTALACJI I UŻYTKOWANIA
 

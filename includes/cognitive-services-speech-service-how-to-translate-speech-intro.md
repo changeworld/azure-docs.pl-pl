@@ -4,12 +4,12 @@ ms.service: cognitive-services
 ms.topic: include
 ms.date: 09/24/2018
 ms.author: wolfma
-ms.openlocfilehash: dc2e025cdd9fcc153f3cb81988a9ca3ec729c934
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ab4795325f733d15403b53f027daa4fb8c824cc6
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47021145"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47185883"
 ---
 <!-- N.B. no header, language-agnostic -->
 
@@ -18,7 +18,7 @@ Zestaw SDK udostępnia pełną funkcjonalność usługi. Podstawowy proces podcz
 
 1. Utwórz konfigurację tłumaczenia mowy i podać klucz subskrypcji usługi mowy (lub token autoryzacji) i [region](~/articles/cognitive-services/speech-service/regions.md) jako parametry. Zmień konfigurację, zgodnie z potrzebami. Na przykład możesz można skonfigurować języków tłumaczeń źródłowym i docelowym, a także określić, czy dane wyjściowe tekstu i mowy.
 
-1. Utwórz rozpoznawania tłumaczenia z fabryki mowy. Podaj audio konfiguracji, jeśli chcesz, aby rozpoznać ze źródła innego niż mikrofon domyślne (na przykład strumienia audio lub plik audio).
+1. Utwórz rozpoznawania tłumaczenia na podstawie konfiguracji tłumaczenia mowy. Podaj audio konfiguracji, jeśli chcesz, aby rozpoznać ze źródła innego niż mikrofon domyślne (na przykład strumienia audio lub plik audio).
 
 1. Blokując zdarzenia dla operacji asynchronicznej, jeśli to konieczne. Aparat rozpoznawania następnie wywołuje inne programy obsługi zdarzeń, gdy ma ona wyniki tymczasowe i końcowe, a także zdarzeń syntezy, opcjonalny danych wyjściowych audio. W przeciwnym razie aplikacja odbiera tylko wynik końcowy transkrypcji.
 

@@ -9,11 +9,11 @@ ms.date: 05/30/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: 55920b6c147626f68f51b9e0479949330c71a748
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "38756430"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47103008"
 ---
 > [!div class="op_single_selector"]
 > * [C w systemie Windows](../articles/iot-suite/iot-suite-v1-connecting-devices.md)

@@ -1,73 +1,81 @@
+items:
 - name: Dokumentacja maszyn wirtualnych do analizy danych
   href: index.yml
-  items: null
 - name: Omówienie
-  expanded: true
   items:
-    - name: Co to jest maszyna wirtualna do analizy danych?
-      href: overview.md
-    - name: Co to jest maszyna wirtualna do uczenia głębokiego?
-      href: deep-learning-dsvm-overview.md
-    - name: Co to jest maszyna wirtualna analizy danych geograficznych ze sztuczną inteligencją?
-      href: geo-ai-dsvm-overview.md
+  - name: Co to jest maszyna wirtualna do analizy danych?
+    href: overview.md
+  - name: Co to jest maszyna wirtualna do uczenia głębokiego?
+    href: deep-learning-dsvm-overview.md
+  - name: Co to jest maszyna wirtualna analizy danych geograficznych ze sztuczną inteligencją?
+    href: geo-ai-dsvm-overview.md
+  expanded: true
 - name: Rozpoczęcie pracy
   items:
-    - name: Tworzenie maszyny wirtualnej do analizy danych z systemem Windows
-      href: provision-vm.md
-    - name: Tworzenie maszyny wirtualnej do analizy danych z systemem Ubuntu
-      href: dsvm-ubuntu-intro.md
-    - name: Tworzenie maszyny wirtualnej do analizy danych z systemem CentOS
-      href: linux-dsvm-intro.md
-    - name: Tworzenie maszyny wirtualnej do uczenia głębokiego
-      href: provision-deep-learning-dsvm.md
-    - name: Tworzenie maszyny wirtualnej analizy danych geograficznych ze sztuczną inteligencją
-      href: provision-geo-ai-dsvm.md
+  - name: Tworzenie maszyny wirtualnej do analizy danych z systemem Windows
+    href: provision-vm.md
+  - name: Tworzenie maszyny wirtualnej do analizy danych z systemem Ubuntu
+    href: dsvm-ubuntu-intro.md
+  - name: Tworzenie maszyny wirtualnej do analizy danych z systemem CentOS
+    href: linux-dsvm-intro.md
+  - name: Tworzenie maszyny wirtualnej do uczenia głębokiego
+    href: provision-deep-learning-dsvm.md
+  - name: Tworzenie maszyny wirtualnej analizy danych geograficznych ze sztuczną inteligencją
+    href: provision-geo-ai-dsvm.md
 - name: Instrukcje
   items:
-    - name: Używanie maszyny wirtualnej do analizy danych z systemem Windows
-      href: vm-do-ten-things.md
-    - name: Używanie maszyny wirtualnej do analizy danych z systemem Linux
-      href: linux-dsvm-walkthrough.md
-    - name: Używanie maszyny wirtualnej do uczenia głębokiego
-      href: use-deep-learning-dsvm.md
-    - name: Używanie maszyny wirtualnej analizy danych geograficznych ze sztuczną inteligencją
-      href: use-geo-ai-dsvm.md
+  - name: Używanie maszyny wirtualnej do analizy danych z systemem Windows
+    href: vm-do-ten-things.md
+  - name: Używanie maszyny wirtualnej do analizy danych z systemem Linux
+    href: linux-dsvm-walkthrough.md
+  - name: Używanie maszyny wirtualnej do uczenia głębokiego
+    href: use-deep-learning-dsvm.md
+  - name: Używanie maszyny wirtualnej analizy danych geograficznych ze sztuczną inteligencją
+    href: use-geo-ai-dsvm.md
 - name: Wskazówki dla przedsiębiorstw
   items:
-    - name: Omówienie
-      href: dsvm-enterprise-overview.md
-    - name: Skalowanie
-      href: dsvm-pools.md
-    - name: Integracja z usługą Active Directory
-      href: dsvm-common-identity.md
-    - name: Poświadczenia na potrzeby bezpiecznego dostępu do zasobów
-      href: dsvm-secure-access-keys.md
+  - name: Omówienie
+    href: dsvm-enterprise-overview.md
+  - name: Skalowanie
+    href: dsvm-pools.md
+  - name: Integracja z usługą Active Directory
+    href: dsvm-common-identity.md
+  - name: Poświadczenia na potrzeby bezpiecznego dostępu do zasobów
+    href: dsvm-secure-access-keys.md
 - name: Dokumentacja
-  expanded: true
   items:
-    - name: Odnajdywanie maszyny wirtualnej do analizy danych
-      href: dsvm-tools-overview.md
-    - name: Platformy sztucznej inteligencji i uczenia głębokiego
-      href: dsvm-deep-learning-ai-frameworks.md
-    - name: Narzędzia ML i nauki o danych
-      href: dsvm-ml-data-science-tools.md
-    - name: Języki
-      href: dsvm-languages.md
-    - name: Narzędzia programistyczne
-      href: dsvm-tools-development.md
-    - name: Narzędzia do wprowadzania danych
-      href: dsvm-tools-ingestion.md
-    - name: Narzędzia do eksploracji i wizualizacji danych
-      href: dsvm-tools-explore-and-visualize.md
-    - name: Platformy danych
-      href: dsvm-data-platforms.md
-    - name: Przykłady i przewodniki
-      href: dsvm-samples-and-walkthroughs.md
+  - name: Odnajdywanie maszyny wirtualnej do analizy danych
+    href: dsvm-tools-overview.md
+  - name: Platformy sztucznej inteligencji i uczenia głębokiego
+    href: dsvm-deep-learning-ai-frameworks.md
+  - name: Narzędzia ML i nauki o danych
+    href: dsvm-ml-data-science-tools.md
+  - name: Języki
+    href: dsvm-languages.md
+  - name: Narzędzia programistyczne
+    href: dsvm-tools-development.md
+  - name: Narzędzia do wprowadzania danych
+    href: dsvm-tools-ingestion.md
+  - name: Narzędzia do eksploracji i wizualizacji danych
+    href: dsvm-tools-explore-and-visualize.md
+  - name: Platformy danych
+    href: dsvm-data-platforms.md
+  - name: Przykłady i przewodniki
+    href: dsvm-samples-and-walkthroughs.md
+  expanded: true
 - name: Zasoby
   items:
-    - name: Blog
-      href: 'https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/'
-    - name: Forum MSDN
-      href: 'https://social.microsoft.com/Forums/en-US/home?forum=dsvm'
-    - name: Stack Overflow
-      href: 'https://stackoverflow.com/search?q=dsvm'
+  - name: Przewodnik dewelopera
+    href: ../r-developers-guide.md
+  - name: Blog
+    href: https://blogs.technet.microsoft.com/machinelearning/tag/dsvm/
+  - name: Forum MSDN
+    href: https://social.microsoft.com/Forums/en-US/home?forum=dsvm
+  - name: Stack Overflow
+    href: https://stackoverflow.com/search?q=dsvm
+ms.openlocfilehash: e1617f3f5c36a5b006003e2f375dfac4143af7cd
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47032568"

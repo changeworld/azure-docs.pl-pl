@@ -13,12 +13,12 @@ ms.topic: article
 ms.date: 09/17/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: 8bebec23d7a0199d8efbc55b3cde50c628306f01
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1b63a75a2505ecbd82896932018ef4f0936b9b37
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034372"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182896"
 ---
 # <a name="manage-api-version-profiles-in-azure-stack"></a>Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack
 
@@ -77,6 +77,7 @@ Deweloperzy mogą skoncentrować się na pisaniu rozwiązania. Zamiast badanie, 
 
 Można znaleźć przykłady kodu, aby pomóc w zintegrowaniu rozwiązania przy użyciu preferowanego języka dzięki usłudze Azure Stack przy użyciu profilów. Obecnie wskazówki i przykłady można znaleźć w następujących językach:
 
+- **.NET** może użyć profilu interfejsu API platformy .NET, aby pobrać najnowsze, najbardziej stabilny wersję każdego typu zasobu w pakiecie dostawcy zasobów. Aby uzyskać więcej informacji, zobacz [profilami wersji korzystanie z interfejsu API przy użyciu platformy .NET w usłudze Azure Stack](azure-stack-version-profiles-net.md).
 - **Program PowerShell**  
 Możesz użyć **AzureRM.Bootstrapper** modułu dostępnych za pośrednictwem galerii programu PowerShell, aby uzyskać polecenia cmdlet programu PowerShell, wymagane do pracy z profilami wersji interfejsu API. Aby uzyskać informacje, zobacz [profilami wersji korzystanie z interfejsu API środowiska PowerShell](azure-stack-version-profiles-powershell.md).
 - **Interfejs wiersza polecenia platformy Azure**  

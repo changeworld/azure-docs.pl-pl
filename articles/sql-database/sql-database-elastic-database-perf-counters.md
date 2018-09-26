@@ -1,60 +1,63 @@
 ---
 title: Liczniki wydajności dla menedżera map fragmentów
-description: ShardMapManager klas i danych zależnych routingu liczniki wydajności
+description: ShardMapManager klas i danych zależnych routingu liczników wydajności
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scale-out
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 9c134ee96f7749529ab665df041cfc51c979acde
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 03/31/2018
+ms.openlocfilehash: d4ecfe700c90beb94455e3607cee4ea30227bd0e
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647327"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166240"
 ---
 # <a name="performance-counters-for-shard-map-manager"></a>Liczniki wydajności dla menedżera map fragmentów
-Można przechwycić wydajność [menedżera map niezależnego fragmentu](sql-database-elastic-scale-shard-map-management.md), zwłaszcza w przypadku korzystania [danych zależnych routingu](sql-database-elastic-scale-data-dependent-routing.md). Liczniki są tworzone za pomocą metod klasy Microsoft.Azure.SqlDatabase.ElasticScale.Client.  
+Możesz przechwycić wydajności [Menedżera mapowań fragmentów](sql-database-elastic-scale-shard-map-management.md), zwłaszcza w przypadku korzystania [routing zależny od danych](sql-database-elastic-scale-data-dependent-routing.md). Liczniki są tworzone za pomocą metod klasy Microsoft.Azure.SqlDatabase.ElasticScale.Client.  
 
-Liczniki są używane do śledzenia wydajności [danych zależnych routingu](sql-database-elastic-scale-data-dependent-routing.md) operacji. Te liczniki są dostępne w Monitorze wydajności, w kategorii "Zarządzanie bazą danych niezależnego fragmentu: elastycznej".
+Liczniki są używane do śledzenia wydajności [routing zależny od danych](sql-database-elastic-scale-data-dependent-routing.md) operacji. Te liczniki są dostępne w Monitorze wydajności, w obszarze kategoria ""elastycznej bazy danych: fragmentu Zarządzanie.
 
-**Aby uzyskać najnowszą wersję:** przejdź do [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). Zobacz też [uaktualnić aplikację do korzystania z najnowszych biblioteki klienta elastycznej bazy danych](sql-database-elastic-scale-upgrade-client-library.md).
+**Aby uzyskać najnowszą wersję:** przejdź do [Microsoft.Azure.SqlDatabase.ElasticScale.Client](https://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/). Zobacz też [uaktualnić aplikację do korzystania z najnowszych Biblioteka kliencka elastic database](sql-database-elastic-scale-upgrade-client-library.md).
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-* Aby utworzyć kategorii wydajności i liczniki, użytkownik musi być częścią lokalnej **Administratorzy** grupy na komputerze hostującym aplikacji.  
-* Aby utworzyć wystąpienie licznika wydajności i liczniki aktualizacji, użytkownik musi być członkiem albo **Administratorzy** lub **Użytkownicy monitora wydajności** grupy. 
+* Aby utworzyć kategorii wydajności i liczników, użytkownik musi być częścią lokalnej **Administratorzy** grupy na komputerze hostującym aplikację.  
+* Aby utworzyć wystąpienie licznika wydajności i zaktualizować liczników, użytkownik musi być członkiem **Administratorzy** lub **Użytkownicy monitora wydajności** grupy. 
 
-## <a name="create-performance-category-and-counters"></a>Tworzenie kategorii wydajności i liczniki
-Aby utworzyć liczników, należy wywołać metodę CreatePeformanceCategoryAndCounters [ShardMapManagmentFactory klasy](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.aspx). Tylko administrator może wykonać metody: 
+## <a name="create-performance-category-and-counters"></a>Tworzenie kategorii wydajności i liczników
+Aby utworzyć liczników, wywołaj metodę CreatePeformanceCategoryAndCounters [klasy ShardMapManagmentFactory](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.aspx). Tylko administrator może wykonać metodę: 
 
     ShardMapManagerFactory.CreatePerformanceCategoryAndCounters()  
 
-Można również użyć [to](https://gallery.technet.microsoft.com/scriptcenter/Elastic-DB-Tools-for-Azure-17e3d283) skrypt programu PowerShell, można wykonać metody. Ta metoda tworzy następujące liczniki wydajności:  
+Można również użyć [to](https://gallery.technet.microsoft.com/scriptcenter/Elastic-DB-Tools-for-Azure-17e3d283) skrypt programu PowerShell, aby wykonać metodę. Ta metoda tworzy następujące liczniki wydajności:  
 
-* **Buforowane mapowania**: liczba buforowanych mapy niezależnego fragmentu mapowania.
-* **Operacje DDR na sekundę**: szybkości danych zależnych operacji routingu mapy niezależnego fragmentu. Ten licznik jest aktualizowany po wywołaniu [OpenConnectionForKey()](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx) wynikiem połączenia z programem niezależnych docelowego. 
-* **Mapowanie trafienia pamięci podręcznej wyszukiwania na sekundę**: szybkość przeprowadzania operacji wyszukiwania pomyślne pamięci podręcznej dla mapowania na mapie niezależnego fragmentu. 
-* **Chybienia pamięci podręcznej wyszukiwania na sekundę mapowania**: liczba operacji wyszukiwania w pamięci podręcznej nie powiodło się dla mapowania na mapie niezależnego fragmentu.
-* **Mapowania dodane lub zaktualizowane w pamięci podręcznej na sekundę**: szybkości mapowania, które są dodawane lub zaktualizowane w pamięci podręcznej mapy niezależnego fragmentu. 
-* **Mapowania usuwane z pamięci podręcznej na sekundę**: szybkość z jaką mapowania są usuwane z pamięci podręcznej mapy niezależnego fragmentu. 
+* **Buforowane mapowania**: liczba mapowań mapowania fragmentów w pamięci podręcznej.
+* **Rekord DDR OP./s**: liczba zależne routingu operacje na danych dla mapowania fragmentów. Ten licznik jest aktualizowany po wywołaniu [OpenConnectionForKey()](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmap.openconnectionforkey.aspx) skutkuje udane połączenie do fragmentu docelowego. 
+* **Mapowanie trafień w pamięci podręcznej wyszukiwania na sekundę**: szybkość przeprowadzania operacji wyszukiwania pomyślne pamięci podręcznej do mapowania w ramach mapowania fragmentów. 
+* **Mapowanie chybień w pamięci podręcznej wyszukiwania na sekundę**: liczba operacji wyszukiwania w pamięci podręcznej nie powiodło się dla mapowania w ramach mapowania fragmentów.
+* **Mapowania dodane lub zaktualizowane w pamięci podręcznej na sekundę**: stawka mapowania, które zostaną dodane lub zaktualizowane w pamięci podręcznej dla mapowania fragmentów. 
+* **Mapowania usuwane z pamięci podręcznej na sekundę**: szybkość jaką mapowania są usuwane z pamięci podręcznej dla mapowania fragmentów. 
 
-Liczniki wydajności są tworzone dla każdej mapy niezależnych pamięci podręcznej na proces.  
+Liczniki wydajności są tworzone dla każdego fragmentu pamięci podręcznej jest mapowany na proces.  
 
 ## <a name="notes"></a>Uwagi
 Następujące zdarzenia wyzwolić tworzenie liczników wydajności:  
 
-* Inicjowanie [ShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) z [wczesny ładowania](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerloadpolicy.aspx), jeśli ShardMapManager zawiera wszystkie mapy niezależnego fragmentu. Obejmują one [GetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx?f=255&MSPPError=-2147217396#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerFactory.GetSqlShardMapManager%28System.String,Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerLoadPolicy%29) i [TryGetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx) metody.
-* Pomyślne wyszukiwania mapy niezależnego fragmentu (przy użyciu [GetShardMap()](https://msdn.microsoft.com/library/azure/dn824215.aspx), [GetListShardMap()](https://msdn.microsoft.com/library/azure/dn824212.aspx) lub [GetRangeShardMap()](https://msdn.microsoft.com/library/azure/dn824173.aspx)). 
-* Pomyślnym utworzeniu przy użyciu CreateShardMap() mapy niezależnego fragmentu.
+* Inicjowanie [ShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanager.aspx) z [wczesne ładowanie](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerloadpolicy.aspx), jeśli ShardMapManager zawiera żadnych mapowań fragmentów. Obejmują one [GetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.getsqlshardmapmanager.aspx?f=255&MSPPError=-2147217396#M:Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerFactory.GetSqlShardMapManager%28System.String,Microsoft.Azure.SqlDatabase.ElasticScale.ShardManagement.ShardMapManagerLoadPolicy%29) i [TryGetSqlShardMapManager](https://msdn.microsoft.com/library/azure/microsoft.azure.sqldatabase.elasticscale.shardmanagement.shardmapmanagerfactory.trygetsqlshardmapmanager.aspx) metody.
+* Pomyślne wyszukiwania mapowania fragmentów w postaci (przy użyciu [GetShardMap()](https://msdn.microsoft.com/library/azure/dn824215.aspx), [GetListShardMap()](https://msdn.microsoft.com/library/azure/dn824212.aspx) lub [GetRangeShardMap()](https://msdn.microsoft.com/library/azure/dn824173.aspx)). 
+* Pomyślne utworzenie mapy fragmentów za pomocą CreateShardMap().
 
-Liczniki wydajności zostaną zaktualizowane przez wszystkie operacje pamięci podręcznej wykonanych na mapie niezależnego fragmentu i mapowania. Pomyślne usunięcie mapy niezależnego fragmentu usunięcie wystąpienia liczników wydajności przy użyciu DeleteShardMap reults ().  
+Liczniki wydajności zostaną zaktualizowane, wszystkie operacje pamięci podręcznej wykonać mapowania fragmentów i mapowania. Pomyślne usunięcie mapy fragmentów za pomocą reults () DeleteShardMap usunięcie wystąpienia liczników wydajności.  
 
 ## <a name="best-practices"></a>Najlepsze praktyki
-* Tworzenie kategorii wydajności i liczniki powinny być wykonywane tylko raz, przed utworzeniem obiektu ShardMapManager. Co wykonanie polecenia CreatePerformanceCategoryAndCounters() czyści poprzednie liczniki (utraty danych przekazywanych przez wszystkie wystąpienia) i tworzy nowe.  
-* Wystąpienia licznika wydajności są tworzone na proces. Awarii aplikacji ani usuwania mapy niezależnego fragmentu z pamięci podręcznej spowoduje usunięcie wystąpienia liczników wydajności.  
+* Tworzenie kategorii wydajności i liczniki powinny być wykonywane tylko raz przed tworzeniem ShardMapManager obiektu. Każdego wykonania polecenia CreatePerformanceCategoryAndCounters() czyści poprzednie liczniki (utraty danych przekazywanych przez wszystkie wystąpienia) i tworzy nowe.  
+* Wystąpienia licznika wydajności są tworzone na proces. Wszelkie awarię aplikacji lub usunięcie mapowania fragmentów w postaci z pamięci podręcznej spowoduje usunięcie wystąpienia liczników wydajności.  
 
 ### <a name="see-also"></a>Zobacz także
 [Elastic Database features overview (Omówienie funkcji Elastic Database)](sql-database-elastic-scale-introduction.md)  

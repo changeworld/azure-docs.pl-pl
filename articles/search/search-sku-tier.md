@@ -7,34 +7,59 @@ manager: cgronlun
 tags: azure-portal
 ms.service: search
 ms.topic: conceptual
-ms.date: 06/19/2018
+ms.date: 09/25/2018
 ms.author: heidist
-ms.openlocfilehash: 140daf4903c64d734182545cd4dc58db60274852
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: d86fc1930f1d7b29dc3ce57e9b4d28e053bb44a0
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576124"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181893"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Wybierz warstwę cenową dla usługi Azure Search
 
-W usłudze Azure Search [usługa jest aprowizowana](search-create-service-portal.md) określonej warstwy cenowej lub jednostek SKU. Opcje obejmują **bezpłatna**, **podstawowe**, lub **standardowa**, gdzie **standardowa** jest dostępna w wielu konfiguracjach i pojemności. 
+W usłudze Azure Search [usługa jest aprowizowana](search-create-service-portal.md) stałej warstwy cenowej lub jednostek SKU: **bezpłatna**, **podstawowe**, lub **standardowa**, gdzie  **Standardowa** jest dostępna w wielu konfiguracjach i pojemności. Większość klientów zaczyna od **bezpłatna** warstwy do oceny, a następnie stopniowo rozwiązanie do **standardowa** do tworzenia aplikacji. Możesz wykonać wszystkie przewodników Szybki Start i samouczków w **bezpłatna** warstwy, w tym przypadku usługa cognitive search dużej ilości zasobów. 
 
-Ten artykuł ma na celu pomóc Ci wybrać warstwę. Uzupełnia artykuł [stronę z cennikiem](https://azure.microsoft.com/pricing/details/search/) i [limity](search-limits-quotas-capacity.md) strony Podsumowanie rozliczeń pojęcia i wzorce zużycia skojarzone z różnych warstw. Zalecane jest również metody iteracyjnej dla zrozumienia, która warstwa, które najlepiej odpowiada Twoim potrzebom. 
+Warstwy określić wydajność, nie funkcji za pomocą zróżnicowaniu:
 
-Warstwy określić wydajność, nie funkcji. Jeśli pojemność warstwy okaże się zbyt niska, będzie trzeba aprowizować nową usługę w wyższej warstwie i następnie [ponowne ładowanie indeksów](search-howto-reindex.md). Nie istnieje żadne uaktualnienia w miejscu, samej usługi z jedną jednostką SKU do innego.
++ Liczba indeksów, które można utworzyć
++ Rozmiar i prędkość partycje (magazynu fizycznego)
 
-Dostępność funkcji nie wchodzi w warstwie podstawowej. Wszystkie warstwy, w tym **bezpłatna** warstwy, oferują równoważności funkcji, z wyjątkiem indeksatora obsługę S3HD. Jednak ograniczenia indeksowania i zasobów skutecznie ograniczyć zakres użycie funkcji. Na przykład [wyszukiwania kognitywnego](cognitive-search-concept-intro.md) indeksowanie ma umiejętności długotrwałych ten limit czasu to bezpłatna usługa chyba, że zestaw danych stanie się być bardzo mała.
+Mimo że wszystkich warstwach, w tym **bezpłatna** warstwie, zwykle oferują równoważności funkcji większe obciążenia można dyktowanie wymagania dla wyższej warstwy. Na przykład [wyszukiwania kognitywnego](cognitive-search-concept-intro.md) indeksowanie ma umiejętności długotrwałych ten limit czasu to bezpłatna usługa chyba, że zestaw danych stanie się być bardzo mała.
 
-> [!TIP]
-> Większość klientów zaczyna od **bezpłatna** warstwy do oceny, a następnie stopniowo rozwiązanie do **standardowa** do tworzenia aplikacji. Po wybraniu warstwy i [aprowizować usługę wyszukiwania](search-create-service-portal.md), możesz [zwiększenie liczby replik i partycji](search-capacity-planning.md) dotyczące dostosowywania wydajności. Aby uzyskać więcej informacji na temat kiedy i dlaczego może dostosować pojemność zobacz [zagadnienia dotyczące wydajności i optymalizacji](search-performance-optimization.md).
+> [!NOTE] 
+> Równoważność funkcji istnieje w warstwach, z wyjątkiem produktów [indeksatory](search-indexer-overview.md), który nie jest dostępny na S3HD.
 >
 
-## <a name="billing-concepts"></a>Pojęcia dotyczące rozliczeń
+W obrębie warstwy, możesz [Dopasowywanie zasobów replik i partycji](search-capacity-planning.md) dotyczące dostosowywania wydajności. Dlatego możesz zacząć od dwóch lub trzech każdego z nich, można tymczasowo zwiększyć poziom zasobów duże obciążenia indeksowania. Możliwość dostrojenia poziomów zasobów w ramach warstwy zwiększa elastyczność, ale również lekko komplikuje analizy. Może być konieczne Sprawdź, czy niższej warstwy z wyższym zasobów/replikami oferuje lepszą wartość i wydajność niż wyższego poziomu z niższym zasoby. Aby dowiedzieć się, kiedy i dlaczego może dostosować pojemność, zobacz [zagadnienia dotyczące wydajności i optymalizacji](search-performance-optimization.md).
 
-Pojęcia, które należy zrozumieć znaczenie dla wyboru warstwy zawierają definicje pojemności, limity usług i jednostki usługi. 
+> [!Important] 
+> Mimo że szacowania przyszłe potrzeby indeksów i przechowywania może sprawiać wrażenie wątpliwości, warto zrobić. Jeśli pojemność warstwy okaże się zbyt niska, będzie trzeba aprowizować nową usługę w wyższej warstwie i następnie [ponowne ładowanie indeksów](search-howto-reindex.md). Nie istnieje żadne uaktualnienia w miejscu, samej usługi z jedną jednostką SKU do innego.
+>
 
-### <a name="capacity"></a>Pojemność
+<!---
+The purpose of this article is to help you choose a tier. It supplements the [pricing page](https://azure.microsoft.com/pricing/details/search/) and [Service Limits](search-limits-quotas-capacity.md) page with a digest of billing concepts and consumption patterns associated with various tiers. It also recommends an iterative approach for understanding which tier best meets your needs. 
+--->
+
+## <a name="how-billing-works"></a>Sposób działania rozliczeń
+
+W usłudze Azure Search jest najważniejszym rozliczeń pojęciem *jednostek wyszukiwania* (SU). Ponieważ usługi Azure Search jest zależna od replik i partycji do funkcji, nie ma sensu do rozliczania za tylko jednej z nich. Zamiast tego są naliczane złożonego obu tych elementów. 
+
+Formulaically, SU jest wynikiem *repliki* i *partycje* używanych przez usługę: **`(R X P = SU)`**
+
+Co najmniej do każdej usługi, który rozpoczyna się od 1 jednostka wyszukiwania (jedna replika pomnożona przez jedną partycję), ale w przypadku większych obciążeń bardziej realistyczny model może być repliki 3, 3 partycji usługi rozliczane jako 9 SUs. 
+
+Stawka rozliczeniowa jest **godzinowe za SU**, z każdą warstwą o coraz wyższego współczynnika. Wyższe warstwy pochodzą z partycjami większych i szybszej mające wpływ na ogólną wyższa stawka godzinowa dla tej warstwy. Według stawek dla poszczególnych warstw można znaleźć na [— szczegóły cennika](https://azure.microsoft.com/pricing/details/search/). 
+
+Mimo że każda warstwa oferuje coraz większej pojemności, może przynieść *część* z łączna pojemność w tryb online, zawierający pozostałe w rezerwie. W zakresie rozliczeń, jest liczba partycji i replik przenieść online, obliczeniowe przy użyciu formuły SU, która określa, co faktycznie opłaty są naliczane.
+
+### <a name="tips-for-lowering-the-bill"></a>Porady dotyczące obniżenie rachunku
+
+Nie można zamknąć usługę, aby zmniejszyć rachunek. Dedykowane zasoby na partycje i repliki są operacyjnej 24-7, przechowywane w rezerwie do Twojej wyłącznego użytku przez okres istnienia usługi. Jedynym sposobem, aby zmniejszyć rachunek jest zmniejszenie replik i partycji do najniższego poziomu, który nadal zapewnia akceptowalny poziom wydajności. 
+
+Inny poziom jest Wybieranie warstwy przy użyciu niższe stawki godzinowej. Stawki godzinowe S1 jest niższa od stawek godzinowych za S2 lub S3. Można aprowizować usługę w dolnym końcem swoich projekcje, a następnie Jeśli możesz wykraczają poza możliwości, Utwórz drugą większych usługę warstwowe, ponowną kompilację indeksów w tej drugiej usługi, a następnie usuń pierwszy z nich.
+
+### <a name="capacity-drill-down"></a>Pojemność Przechodzenie do szczegółów
 
 Pojemność ma strukturę *replik* i *partycje*. 
 
@@ -45,15 +70,7 @@ Pojemność ma strukturę *replik* i *partycje*.
 > [!NOTE]
 > Wszystkie **standardowa** warstwy pomocy technicznej [partycje i repliki elastyczne kombinacje](search-capacity-planning.md#chart) aby można było [wagi systemu dla szybkości lub magazynu](search-performance-optimization.md) , zmieniając równowagi. **Podstawowe** zapewnia trzy repliki dla wysokiej dostępności, ale ma tylko jedną partycję. **Bezpłatne** warstwy są oferowane dedykowanych zasobów: przetwarzanie zasoby są współużytkowane przez wiele bezpłatnych usług.
 
-### <a name="search-units"></a>Jednostki wyszukiwania
-
-Najważniejsze rozliczeń pojęciem jest *jednostek wyszukiwania* (SU), czyli jednostka rozliczeniowa usługi Azure Search. Ponieważ usługi Azure Search jest zależna od replik i partycji do funkcji, nie ma sensu do rozliczania według jednej lub drugiej. Zamiast tego są naliczane złożonego obu tych elementów. Formulaically, SU jest wynikiem replik i partycji, używanych przez usługę: (R X P = SU). Co najmniej do każdej usługi, który rozpoczyna się od 1 jednostka wyszukiwania (jedna replika pomnożona przez jednej partycji), ale bardziej realistyczny model może być repliki 3, 3 partycji usługi rozliczane jako 9 SUs. 
-
-Mimo że każda warstwa oferuje stopniowo lepszą wydajność, można przenieść część całkowitą pojemność w trybie online, zawierający pozostałe w rezerwie. W zakresie rozliczeń, jest liczba partycji i replik przenieść online, obliczeniowe przy użyciu formuły SU, która określa, co faktycznie opłaty są naliczane.
-
-Naliczania jest co godzinę na polecenia SU, z każdą warstwą mających różne stawki. Według stawek dla poszczególnych warstw można znaleźć na [— szczegóły cennika](https://azure.microsoft.com/pricing/details/search/).
-
-### <a name="limits"></a>Limity
+### <a name="more-about-service-limits"></a>Więcej informacji na temat limity usługi
 
 Usług zasobów hosta, takich jak indeksy, indeksatory i tak dalej. Każda warstwa nakłada [limitów usług](search-limits-quotas-capacity.md) ilości zasobów, możesz utworzyć. W efekcie limit liczby indeksów (i innych obiektów) jest druga funkcja różnicujący w warstwach. Podczas przeglądania każdej opcji w portalu, należy pamiętać, limity liczby indeksów. Inne zasoby, takie jak indeksatorów, źródła danych i dokładniejsze, jest ustalana na podstawie limitów indeksu.
 

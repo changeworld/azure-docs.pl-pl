@@ -5,15 +5,15 @@ services: load balancer
 author: KumudD
 ms.service: load-balancer
 ms.topic: include
-ms.date: 8/8/2018
+ms.date: 9/24/2018
 ms.author: kumud
 ms.custom: include file
-ms.openlocfilehash: c3b35666a4340818fa9fcabea25541cd5d27c13b
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: f5eb4b630039401fa6947ab6734274051f290a94
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060935"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47185204"
 ---
 | | Standardowy SKU | Podstawowy SKU |
 | --- | --- | --- |
@@ -25,7 +25,7 @@ ms.locfileid: "47060935"
 | Diagnostyka | Usługa Azure Monitor metryk wielowymiarowych łącznie bajtów i pakietów liczników, kondycja sondowania stanu, próby nawiązania połączenia (TCP SYN), kondycja połączenia wychodzące (SNAT udane i nieudane przepływami), pomiarów płaszczyzny danych active | Usługa Azure Log Analytics dla publicznej usługi Load Balancer tylko alert wyczerpania SNAT, liczba kondycji puli zaplecza. |
 | Zaświadczanie o kondycji portów | Wewnętrzny moduł równoważenia obciążenia | Niedostępne |
 | Zabezpieczanie domyślnie | Domyślne zamknięte dla publicznych punktów końcowych adresów IP i równoważenia obciążenia i sieciowej grupy zabezpieczeń należy jawnie dozwolonych dla ruchu do przepływu. | Otwórz domyślna sieciowa grupa zabezpieczeń jest opcjonalne. |
-| [Połączenia wychodzące](../articles/load-balancer/load-balancer-outbound-connections.md) | Wiele frontonów za pomocą poszczególnych rezygnacji reguły równoważenia obciążenia. Scenariusz wychodzącego _musi_ jawnie tworzyć dla maszyny wirtualnej można było korzystać z łączności wychodzącej.  Punkty końcowe usługi sieci wirtualnej jest osiągalna bez łączności wychodzącej i są wliczane przetworzonych danych.  Wszystkie publiczne adresy IP, łącznie z usługami PaaS platformy Azure nie jest dostępna jako punkty końcowe usługi sieci wirtualnej, musi być dostępny za pośrednictwem połączenia wychodzącego i liczba kierunku przetworzonych danych. Połączenia wychodzące przy użyciu domyślnego SNAT tylko wewnętrznego modułu równoważenia obciążenia działa jako maszynę wirtualną, nie są dostępne. Wychodzące programowania SNAT jest protokół transportowy określonych oparta na protokole reguły równoważenia obciążenia dla ruchu przychodzącego. | Fronton pojedynczego wybranych losowo, jeśli podano wiele frontonów.  Gdy tylko wewnętrznego modułu równoważenia obciążenia działa jako maszyna wirtualna, używana jest domyślna SNAT. |
+| [Połączenia wychodzące](../articles/load-balancer/load-balancer-outbound-connections.md) | Można jawnie zdefiniować oparte na pulę NAT dla ruchu wychodzącego z [reguł dla ruchu wychodzącego](../articles/load-balancer/load-balancer-outbound-rules-overview.md). Można użyć wielu frontonów przy użyciu na obciążenia równoważenia reguły zrezygnować. Scenariusz wychodzącego _musi_ jawnie tworzyć dla maszyny wirtualnej można było korzystać z łączności wychodzącej.  Punkty końcowe usługi sieci wirtualnej jest osiągalna bez łączności wychodzącej i są wliczane przetworzonych danych.  Wszystkie publiczne adresy IP, łącznie z usługami PaaS platformy Azure nie jest dostępna jako punkty końcowe usługi sieci wirtualnej, musi być dostępny za pośrednictwem połączenia wychodzącego i liczba kierunku przetworzonych danych. Tylko wewnętrznego modułu równoważenia obciążenia działa jako maszyna wirtualna, połączenia wychodzące przy użyciu domyślnego SNAT nie są dostępne; Użyj [reguł dla ruchu wychodzącego](../articles/load-balancer/load-balancer-outbound-rules-overview.md) zamiast tego. Wychodzące programowania SNAT jest protokół transportowy określonych oparta na protokole reguły równoważenia obciążenia dla ruchu przychodzącego. | Fronton pojedynczego wybranych losowo, jeśli podano wiele frontonów.  Gdy tylko wewnętrznego modułu równoważenia obciążenia działa jako maszyna wirtualna, używana jest domyślna SNAT. |
 | [Reguły ruchu wychodzącego](../articles/load-balancer/load-balancer-outbound-rules-overview.md) | Deklaratywne wychodzącego Konfiguracja translatora adresów Sieciowych, łącznie z której publiczne adresy IP: lub publicznego adresu IP prefiksy, można konfigurować wychodzącego limit czasu bezczynności SNAT niestandardowych portów alokacji | Niedostępne |
 |  [Resetowanie TCP w stanie bezczynności](../articles/load-balancer/load-balancer-tcp-reset.md) | Włączanie protokołu TCP (TCP RST) zresetowanie limitu czasu bezczynności na żadną regułę | Niedostępne |
 | [Wiele frontonów](../articles/load-balancer/load-balancer-multivip-overview.md) | Dla ruchu przychodzącego i [ruchu wychodzącego](../articles/load-balancer/load-balancer-outbound-connections.md) | Tylko transfer przychodzący |

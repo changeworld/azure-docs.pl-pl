@@ -2,23 +2,22 @@
 title: Przezroczyste szyfrowanie danych dla usługi Azure SQL Database i Data Warehouse | Dokumentacja firmy Microsoft
 description: Przegląd przezroczyste szyfrowanie danych dla bazy danych SQL Database i Data Warehouse. Dokument obejmuje jego zalety i opcje konfiguracji, która zawiera zarządzane przez usługę przezroczyste szyfrowanie danych i własnego klucza.
 services: sql-database
-author: becczhang
-manager: craigg
-ms.prod: ''
-ms.reviewer: vanto
-ms.prod_service: sql-database, sql-data-warehouse
 ms.service: sql-database
-ms.tgt_pltfrm: ''
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 07/09/2018
+author: becczhang
 ms.author: aliceku
-monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 8c1db822c1c0e7b91843687fdc1e6f6808cf60c1
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.reviewer: vanto
+manager: craigg
+ms.date: 07/09/2018
+ms.openlocfilehash: 50b433c65dec1f667f32aaf60148a6e393c67320
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544166"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165930"
 ---
 # <a name="transparent-data-encryption-for-sql-database-and-data-warehouse"></a>Przezroczyste szyfrowanie danych dla bazy danych SQL i magazynu danych
 

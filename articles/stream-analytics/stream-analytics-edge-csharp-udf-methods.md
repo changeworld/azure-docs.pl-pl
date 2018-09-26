@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 9aa61e95eb808c38646fa9b8cefd4004f5477ee6
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2b6dfe7c8f8ac8d7207659b848abecd04f56c232
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46974667"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47181446"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-edge-jobs-preview"></a>Programowanie .NET Standard funkcje zdefiniowane przez użytkownika dla zadania usługi Azure Stream Analytics Edge (wersja zapoznawcza)
 
@@ -31,7 +31,7 @@ Istnieją trzy sposoby, aby zaimplementować funkcje zdefiniowane przez użytkow
 
 ## <a name="package-path"></a>Ścieżka do pakietu
 
-Format dowolny pakiet funkcji zdefiniowanej przez użytkownika ma ścieżkę `/UserCustomCode/CLR/*`. Biblioteka dołączana dynamicznie (dll) i zasoby, które są kopiowane w ramach `/UserCustomCode/CLR/*` folderu, co pomaga wykrywać dll użytkownika z systemu i Azure Stream Analytics z biblioteki dll.
+Format dowolny pakiet funkcji zdefiniowanej przez użytkownika ma ścieżkę `/UserCustomCode/CLR/*`. Biblioteka dołączana dynamicznie (dll) i zasoby, które są kopiowane w ramach `/UserCustomCode/CLR/*` folderu, co pomaga wykrywać dll użytkownika z systemu i Azure Stream Analytics z biblioteki dll. Ta ścieżka pakietu jest używana dla wszystkich funkcji, niezależnie od metody używanej do nich stosować.
 
 ## <a name="supported-types-and-mapping"></a>Obsługiwane typy i mapowanie
 
@@ -59,10 +59,10 @@ Aby odwołać się do lokalnego projektu:
 
 1. Utwórz nową bibliotekę klas w rozwiązaniu.
 2. Zapisz kod w klasie. Należy pamiętać, że klasy musi być zdefiniowany jako *publicznych* i obiekty muszą być zdefiniowane jako *statyczne publiczne*. 
-3. Skompiluj projekt.
+3. Skompiluj projekt. Narzędzia będzie spakować wszystkich artefaktów na folder bin do pliku zip i przekaż plik zip do konta magazynu. Dla odwołania zewnętrzne należy użyć odwołania do zestawu, zamiast pakietu NuGet.
 4. Odwołanie do nowej klasy w projekcie usługi Azure Stream Analytics.
 5. Dodaj nową funkcję w projekcie usługi Azure Stream Analytics.
-6. Skonfiguruj ścieżkę zestawu w pliku konfiguracyjnym zadania `EdgeJobConfig.json`.
+6. Skonfiguruj ścieżkę zestawu w pliku konfiguracyjnym zadania `JobConfig.json`. Ustaw ścieżkę zestawu **odwołanie do lokalnego projektu lub pliku CodeBehind**.
 7. Ponownie skompiluj projekt funkcji i projekt usługi Azure Stream Analytics.  
 
 ### <a name="example"></a>Przykład
@@ -109,19 +109,19 @@ Można tworzyć .NET Standard funkcje zdefiniowane przez użytkownika w dowolnym
 
 Gdy zestaw pakietów zip zostały przekazane do konta usługi Azure storage, można użyć funkcji w zapytaniach usługi Azure Stream Analytics. To wszystko, co należy zrobić, zawierają informacje dotyczące magazynu w konfiguracji zadania usługi Stream Analytics Edge. Nie można przetestować tę funkcję lokalnie przy użyciu tej opcji, ponieważ narzędzia programu Visual Studio nie będą pobierane do pakietu. Ścieżka pakietu jest analizowany bezpośrednio do usługi. 
 
-Aby skonfigurować ścieżkę zestawu w pliku konfiguracyjnym zadania "EdgeJobConfig.json":
+Aby skonfigurować ścieżkę zestawu w pliku konfiguracyjnym zadania `JobConfig.json`:
 
 Rozwiń **User-defined kodu konfiguracji** sekcji, a następnie wypełnij konfiguracji za pomocą następujących sugerowane wartości:
 
  |**Ustawienie**  |**Sugerowana wartość**  |
  |---------|---------|
- |Źródło zestawu  |  Odwołanie do lokalnego projektu lub pliku CodeBehind   |
+ |Źródło zestawu  | Istniejące pakiety zestawu z chmury    |
  |Zasób  |  Wybierz dane z bieżącego konta   |
  |Subskrypcja  |  Wybierz subskrypcję.   |
  |Konto magazynu  |  Wybierz konto magazynu.   |
  |Kontener  |  Wybierz kontener, utworzonego w ramach konta magazynu.   |
 
-    ![Azure Stream Analytics Edge job configuration in Visual Studio](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-job-config.png)
+![Usługa Azure Stream Analytics krawędzi konfiguracji zadania w programie Visual Studio](./media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-job-config.png)
 
 ## <a name="limitations"></a>Ograniczenia
 Wersja zapoznawcza funkcji zdefiniowanej przez użytkownika aktualnie ma następujące ograniczenia:

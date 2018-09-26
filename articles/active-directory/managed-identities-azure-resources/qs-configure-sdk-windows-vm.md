@@ -15,11 +15,11 @@ ms.workload: identity
 ms.date: 09/28/2017
 ms.author: daveba
 ms.openlocfilehash: 3b485fd0f655588ec5ae7941bcb6a43ca7728134
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160952"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47107009"
 ---
 # <a name="configure-a-vm-with-managed-identities-for-azure-resources-using-an-azure-sdk"></a>Konfigurowanie maszyny Wirtualnej z zarządzanych tożsamości dla zasobów platformy Azure przy użyciu zestawu Azure SDK
 

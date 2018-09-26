@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/13/2018
 ms.author: juluk
-ms.openlocfilehash: 5087b8a1d675fb6fb2bbfb2b46a09c215bf5e9ae
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2184d006bb99d57f50e71c0096d68b7a0b69a219
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46998767"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162291"
 ---
 # <a name="features--tools-for-azure-cloud-shell"></a>Funkcje i narzędzia dla usługi Azure Cloud Shell
 
@@ -44,7 +44,7 @@ Pliki poza `$Home` i stan maszyny nie są zachowywane między sesjami. W przypad
 
 ### <a name="azure-drive-azure"></a>Dysk Azure (Azure:)
 
-Program PowerShell w usłudze Cloud Shell (wersja zapoznawcza) rozpoczyna się na dysku platformy Azure (`Azure:`).
+Program PowerShell w usłudze Cloud Shell rozpoczyna się na dysku platformy Azure (`Azure:`).
 Dysk Azure umożliwia łatwe odnajdowanie i nawigacji zasobów platformy Azure, takich jak obliczeniowych, sieci, Magazyn itp. podobne do nawigacji systemu plików.
 Możesz użyć znanej [poleceń cmdlet programu Azure PowerShell](https://docs.microsoft.com/powershell/azure) do zarządzania tymi zasobami, niezależnie od dysku znajdują się w.
 Wszelkie zmiany wprowadzone do zasobów platformy Azure, albo bezpośrednio w witrynie Azure portal lub za pomocą poleceń cmdlet programu Azure PowerShell są odzwierciedlane na dysku platformy Azure.  Możesz uruchomić `dir -Force` odświeżyć swoje zasoby.
@@ -81,6 +81,6 @@ Usługa cloud Shell oferuje wstępnie skonfigurowane uwierzytelnianie dla narzę
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Powłoka bash w przewodniku Szybki Start Cloud Shell](quickstart.md) <br>
-[Program PowerShell w przewodniku Szybki Start Cloud Shell (wersja zapoznawcza)](quickstart-powershell.md) <br>
-[Dowiedz się więcej o wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/) <br>
+[Program PowerShell w przewodniku Szybki Start Cloud Shell](quickstart-powershell.md) <br>
+[Więcej informacji na temat interfejsu wiersza polecenia platformy Azure 2.0](https://docs.microsoft.com/cli/azure/) <br>
 [Więcej informacji na temat programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/) <br>

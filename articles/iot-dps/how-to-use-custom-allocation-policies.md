@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
 manager: timlt
-ms.openlocfilehash: 503a8026fe11d1cdb3d0fc0c2680d8d545a1c992
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 89cb44366d4752052d990a1506482c9108cde103
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46955251"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161710"
 ---
 # <a name="how-to-use-custom-allocation-policies"></a>Jak używać zasad niestandardowych alokacji
 
 
-Zasady alokacji niestandardowy zapewnia większą kontrolę nad sposób przypisywania urządzeń do usługi IoT hub. Jest to realizowane za pomocą kodu niestandardowego w [funkcji platformy Azure](../azure-functions/functions-overview.md) przypisywanie urządzeń do Centrum IoT hub. Usługi device provisioning wywołuje kodzie funkcji platformy Azure, zapewniając grupy Centrum IoT. Kod funkcji zwraca informacje o Centrum IoT do aprowizacji urządzenia.
+Zasady alokacji niestandardowy zapewnia większą kontrolę nad sposób przypisywania urządzeń do usługi IoT hub. Jest to realizowane za pomocą kodu niestandardowego w [funkcji platformy Azure](../azure-functions/functions-overview.md) przypisywanie urządzeń do Centrum IoT hub. Usługi device provisioning wywołuje kod funkcji platformy Azure zawierającą wszystkie istotne informacje o urządzeniu i rejestracji. Kod funkcji jest wykonywane i zwraca informacje Centrum IoT, które są używane do aprowizacji urządzenia.
 
 Za pomocą zasad niestandardowych alokacji należy zdefiniować własne zasady alokacji gdy zasady udostępniane przez usługi Device Provisioning Service nie spełniają wymagania danego scenariusza.
 
@@ -107,7 +107,9 @@ W tej sekcji utworzysz nową grupę rejestracji, która używa zasady niestandar
     ![Dodaj niestandardowe alokacji grupę rejestracji dla zaświadczenia klucza symetrycznego](./media/how-to-use-custom-allocation-policies/create-custom-allocation-enrollment.png)
 
 
-4. Na **Dodaj grupę rejestracji**, kliknij przycisk **Link nowego centrum IoT hub** połączyć oba nowych oddziałów centrów iot Hub.
+4. Na **Dodaj grupę rejestracji**, kliknij przycisk **Link nowego centrum IoT hub** połączyć oba nowych oddziałów centrów iot Hub. 
+
+    Ten krok należy wykonać zarówno z działów centra IoT Hub.
 
     **Subskrypcja**: Jeśli masz wiele subskrypcji, wybierz subskrypcję, w której utworzono wydzielonych centra IoT Hub.
 
@@ -278,9 +280,9 @@ W tej sekcji utworzysz nową grupę rejestracji, która używa zasady niestandar
 
 W tej sekcji utworzysz dwa klucze unikatowe urządzenia. Jeden klucz będzie używany przez urządzenie symulowane tostera. Drugi klucz będzie używany przez urządzenie symulowane pompy ciepła.
 
-Aby wygenerować klucz urządzenia, należy użyć **klucza podstawowego** zanotowanej wcześniej do obliczenia [HMAC SHA256](https://wikipedia.org/wiki/HMAC) identyfikatora rejestracji urządzeń dla każdego urządzenia i przekonwertować wynik w formacie Base64.
+Aby wygenerować klucz urządzenia, którego użyjesz **klucza podstawowego** zanotowanej wcześniej do obliczenia [HMAC SHA256](https://wikipedia.org/wiki/HMAC) identyfikatora rejestracji urządzeń dla każdego urządzenia i przekonwertować wynik w formacie Base64. Aby uzyskać więcej informacji na temat tworzenia kluczy pochodnych urządzenia przy użyciu grup rejestracji, zobacz sekcję rejestracji grupy [zaświadczenie klucza symetrycznego](concepts-symmetric-key-attestation.md).
 
-Użyj następujących identyfikatorów rejestracji dwóch urządzeń i zasobów obliczeniowych klucz urządzenia, dla obu urządzeń. Oba identyfikatory rejestracji ma prawidłowy sufiks do pracy z przykładowym kodem zasady alokacji niestandardowe:
+Na przykład w tym artykule Użyj następujących identyfikatorów rejestracji urządzenia dwóch obliczeniowych i klucz urządzenia, dla obu urządzeń. Oba identyfikatory rejestracji ma prawidłowy sufiks do pracy z przykładowym kodem zasady alokacji niestandardowe:
 
 - **breakroom499-contoso-tstrsd-007**
 - **mainbuilding167-contoso-hpsd-088**
@@ -289,53 +291,53 @@ Użyj następujących identyfikatorów rejestracji dwóch urządzeń i zasobów 
 
 Jeśli używasz stacja robocza z systemem Linux umożliwia openssl Generowanie kluczy pochodnych urządzeń jak pokazano w poniższym przykładzie.
 
-Zastąp wartość **klucz** z **klucz podstawowy** zanotowany wcześniej.
+1. Zastąp wartość **klucz** z **klucz podstawowy** zanotowany wcześniej.
 
-```bash
-KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==
+    ```bash
+    KEY=oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA==
 
-REG_ID1=breakroom499-contoso-tstrsd-007
-REG_ID2=mainbuilding167-contoso-hpsd-088
+    REG_ID1=breakroom499-contoso-tstrsd-007
+    REG_ID2=mainbuilding167-contoso-hpsd-088
 
-keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
-devkey1=$(echo -n $REG_ID1 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
-devkey2=$(echo -n $REG_ID2 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
+    keybytes=$(echo $KEY | base64 --decode | xxd -p -u -c 1000)
+    devkey1=$(echo -n $REG_ID1 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
+    devkey2=$(echo -n $REG_ID2 | openssl sha256 -mac HMAC -macopt hexkey:$keybytes -binary | base64)
 
-echo -e $"\n\n$REG_ID1 : $devkey1\n$REG_ID2 : $devkey2\n\n"
-```
+    echo -e $"\n\n$REG_ID1 : $devkey1\n$REG_ID2 : $devkey2\n\n"
+    ```
 
-```bash
-breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
-mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
-```
+    ```bash
+    breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
+    mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
+    ```
 
 
 #### <a name="windows-based-workstations"></a>Stacje robocze z systemem Windows
 
 Jeśli używasz stację roboczą z systemem Windows można użyć programu PowerShell do wygenerowanie własnego klucza pochodnego urządzenia, jak pokazano w poniższym przykładzie.
 
-Zastąp wartość **klucz** z **klucz podstawowy** zanotowany wcześniej.
+1. Zastąp wartość **klucz** z **klucz podstawowy** zanotowany wcześniej.
 
-```PowerShell
-$KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
+    ```PowerShell
+    $KEY='oiK77Oy7rBw8YB6IS6ukRChAw+Yq6GC61RMrPLSTiOOtdI+XDu0LmLuNm11p+qv2I+adqGUdZHm46zXAQdZoOA=='
 
-$REG_ID1='breakroom499-contoso-tstrsd-007'
-$REG_ID2='mainbuilding167-contoso-hpsd-088'
+    $REG_ID1='breakroom499-contoso-tstrsd-007'
+    $REG_ID2='mainbuilding167-contoso-hpsd-088'
 
-$hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
-$hmacsha256.key = [Convert]::FromBase64String($key)
-$sig1 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID1))
-$sig2 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID2))
-$derivedkey1 = [Convert]::ToBase64String($sig1)
-$derivedkey2 = [Convert]::ToBase64String($sig2)
+    $hmacsha256 = New-Object System.Security.Cryptography.HMACSHA256
+    $hmacsha256.key = [Convert]::FromBase64String($key)
+    $sig1 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID1))
+    $sig2 = $hmacsha256.ComputeHash([Text.Encoding]::ASCII.GetBytes($REG_ID2))
+    $derivedkey1 = [Convert]::ToBase64String($sig1)
+    $derivedkey2 = [Convert]::ToBase64String($sig2)
 
-echo "`n`n$REG_ID1 : $derivedkey1`n$REG_ID2 : $derivedkey2`n`n"
-```
+    echo "`n`n$REG_ID1 : $derivedkey1`n$REG_ID2 : $derivedkey2`n`n"
+    ```
 
-```PowerShell
-breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
-mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
-```
+    ```PowerShell
+    breakroom499-contoso-tstrsd-007 : JC8F96eayuQwwz+PkE7IzjH2lIAjCUnAa61tDigBnSs=
+    mainbuilding167-contoso-hpsd-088 : 6uejA9PfkQgmYylj8Zerp3kcbeVrGZ172YLa7VSnJzg=
+    ```
 
 
 Symulowane urządzenia będzie używać kluczy pochodnych urządzenia przy użyciu każdego Identyfikatora rejestracji zaświadczenie klucza symetrycznego.

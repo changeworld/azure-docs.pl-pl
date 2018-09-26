@@ -1,20 +1,23 @@
 ---
 title: Wystąpienie usługi Azure SQL Database Managed łączenie aplikacji | Dokumentacja firmy Microsoft
 description: W tym artykule omówiono sposób łączenia aplikacji z wystąpienia zarządzanego Azure SQL Database.
+services: sql-database
 ms.service: sql-database
-author: srdan-bozovic-msft
-manager: craigg
-ms.custom: managed instance
+ms.subservice: managed-instance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 4eaf615de712715d35021aa2ba9eba4141d41e51
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 2228f4664acc8fd63c781897ef77ccd0197c0d7d
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952498"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161464"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Połącz aplikację z wystąpieniem zarządzanym usługi Azure SQL Database
 

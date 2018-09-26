@@ -2,19 +2,22 @@
 title: Jak zwiększyć wydajność aplikacji usługi Azure SQL Database za pomocą adapterów przetwarzania wsadowego
 description: W temacie przedstawiono dowód tej operacji przetwarzania wsadowego w bazie danych znacznie imroves szybkość i skalowalność aplikacji usługi Azure SQL Database. Mimo że techniki te przetwarzania wsadowego działać dla dowolnej bazy danych programu SQL Server, artykuł koncentruje się na platformie Azure.
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: develop apps
+ms.subservice: development
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/20/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 92640eeb068b8e9a95dbe1209b2c8834e5f29da8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.reviewer: genemi
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: 21dc28658f7f6f31bc7536df739a70238a3bcb8f
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036103"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47160812"
 ---
 # <a name="how-to-use-batching-to-improve-sql-database-application-performance"></a>Jak zwiększyć wydajność aplikacji bazy danych SQL za pomocą adapterów przetwarzania wsadowego
 Przetwarzanie wsadowe operacji do usługi Azure SQL Database w znacznie zwiększa wydajność i skalowalność aplikacji. Aby zrozumieć korzyści, w pierwszej części tego artykułu opisano niektóre przykładowe wyniki testów są porównywane wsadowej i sekwencyjny żądań do usługi SQL Database. W dalszej części artykułu pokazuje techniki, scenariusze i zagadnienia pomogą pomyślnie partie w aplikacjach systemu Azure.

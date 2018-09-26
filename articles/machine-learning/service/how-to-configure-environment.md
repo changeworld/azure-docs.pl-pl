@@ -9,12 +9,12 @@ ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
 ms.date: 8/6/2018
-ms.openlocfilehash: 7796accffb7041e567c5e18857d09e105b5268ce
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 87b3bc4128d800e4f76d71dc5f9d081dffa0e3a7
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961573"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47163447"
 ---
 # <a name="how-to-configure-a-development-environment-for-the-azure-machine-learning-service"></a>Jak skonfigurować środowisko projektowe służące do usługi Azure Machine Learning
 
@@ -39,17 +39,31 @@ Zalecanym podejściem jest użycie pakietu Anaconda firmy Continuum [wirtualnych
 
 Plik konfiguracji obszaru roboczego jest używana przez zestaw SDK do komunikowania się z obszarem roboczym usługi Azure Machine Learning.  Istnieją dwa sposoby uzyskania tego pliku:
 
-* Po zakończeniu [Szybki Start](quickstart-get-started.md), plik `config.json` zostanie utworzony w notesach platformy Azure.  Ten plik zawiera informacje o konfiguracji dla obszaru roboczego.  Pobierz ją w tym samym katalogu co skryptów lub notesów, które ją przywołują.
+* Wykonaj [Szybki Start](quickstart-get-started.md) do utworzenia obszaru roboczego i pliku konfiguracji. Plik `config.json` zostanie utworzony w notesach platformy Azure.  Ten plik zawiera informacje o konfiguracji dla obszaru roboczego.  Pobierz lub skopiuj go do tego samego katalogu skryptów lub notesów, które ją przywołują.
+
 
 * Utwórz plik konfiguracyjny samodzielnie z następujących czynności:
 
     1. Otwieranie obszaru roboczego w [witryny Azure portal](https://portal.azure.com). Kopiuj __nazwa obszaru roboczego__, __grupy zasobów__, i __identyfikator subskrypcji__. Te wartości są używane do tworzenia pliku konfiguracji.
 
-       Pulpit nawigacyjny z obszaru roboczego portalu jest obsługiwana na tylko w przeglądarkach Edge, Chrome i Firefox.
-    
         ![Azure Portal](./media/how-to-configure-environment/configure.png) 
     
-    3. W edytorze tekstów Utwórz plik o nazwie **config.json**.  Dodaj następującą zawartość do tego pliku, wstawianie wartości z portalu:
+    1. Utwórz plik przy użyciu tego kodu języka Python. Uruchom kod w tym samym katalogu co skryptów lub notesów odwołujące się do obszaru roboczego:
+        ```
+        from azureml.core import Workspace
+
+        subscription_id ='<subscription-id>'
+        resource_group ='<resource-group>'
+        workspace_name = '<workspace-name>'
+        
+        try:
+           ws = Workspace(subscription_id = subscription_id, resource_group = resource_group, workspace_name = workspace_name)
+           ws.write_config()
+           print('Library configuration succeeded')
+        except:
+           print('Workspace not found')
+        ```
+        Zapisuje to następujące `aml_config/config.json` pliku: 
     
         ```json
         {
@@ -58,12 +72,11 @@ Plik konfiguracji obszaru roboczego jest używana przez zestaw SDK do komunikowa
         "workspace_name": "<workspace-name>"
         }
         ```
-    
-        >[!NOTE] 
-        >W dalszej części kodu możesz przeczytać ten plik przy użyciu:  `ws = Workspace.from_config()`
-    
-    4. Pamiętaj zapisać **config.json** w tym samym katalogu co skryptów lub notesów, które ją przywołują.
-    
+        Możesz skopiować `aml_config` katalogu lub po prostu `config.json` pliku do innego katalogu, który odwołuje się do obszaru roboczego.
+
+>[!NOTE] 
+>Inne skrypty lub notesów, w tym samym katalogu lub poniżej załaduje obszar roboczy z `ws=Workspace.from_config()`
+
 ## <a name="azure-notebooks-and-data-science-virtual-machine"></a>Notesy platformy Azure oraz maszynę wirtualną do nauki o danych
 
 Azure notesów i maszyn wirtualnych usługi Azure Data Science dsvm (dystrybucji) są wstępnie skonfigurowane do pracy z usługą Azure Machine Learning. Wymagane składniki, takie jak Azure Machine Learning zestawu SDK są wstępnie zainstalowane w tych środowiskach.
@@ -98,7 +111,7 @@ Przykład za pomocą notesów usługi Azure za pomocą usługi Azure Machine Lea
 3. Aby zainstalować zestaw SDK usługi Azure Machine Learning za pomocą notesu dodatki, użyj następującego polecenia:
 
      ```shell
-    pip install --upgrade azureml-sdk[notebooks,automl,contrib]
+    pip install --upgrade azureml-sdk[notebooks,automl]
     ```
 
     Może potrwać kilka minut, aby zainstalować zestaw SDK.
@@ -155,7 +168,7 @@ Przykład za pomocą notesów usługi Azure za pomocą usługi Azure Machine Lea
 2. Aby zainstalować zestaw SDK usługi Azure Machine Learning, użyj następującego polecenia:
  
     ```shell
-    pip install --upgrade azureml-sdk[automl,contrib]
+    pip install --upgrade azureml-sdk[automl]
     ```
 
 4. Aby zainstalować narzędzia Visual Studio code dla sztucznej Inteligencji, zobacz wpis witryny marketplace programu Visual Studio dla [Tools for AI](https://marketplace.visualstudio.com/items?itemName=ms-toolsai.vscode-ai). 
