@@ -5,26 +5,28 @@ items:
   items:
   - name: Omówienie
     href: apache-domain-joined-introduction.md
-  - name: Planowanie pod kątem klastrów przyłączonych do domeny
+  - name: Planowanie klastrów ESP
     href: apache-domain-joined-architecture.md
-  - name: Konfigurowanie przyłączonych do domeny klastrów za pomocą usługi Azure AD DS
+  - name: Konfigurowanie klastrów ESP za pomocą usługi Azure AD DS
     href: apache-domain-joined-configure-using-azure-adds.md
   - name: Synchronizowanie użytkowników usługi Azure AD z klastrem usługi HDInsight
     href: ../hdinsight-sync-aad-users-to-cluster.md
     maintainContext: true
   - name: Konfigurowanie zasad technologii
     href: apache-domain-joined-run-hive.md
+  - name: Konfigurowanie zasad platformy Kafka
+    href: apache-domain-joined-run-kafka.md
     maintainContext: true
-  - name: Łączenie z klastrem przyłączonym do domeny za pomocą programu VSCode
+  - name: Łączenie z klastrem ESP przy użyciu VSCode
     href: ../hdinsight-for-vscode.md
     maintainContext: true
-  - name: Łączenie z klastrem przyłączonym do domeny za pomocą środowiska IntelliJ
+  - name: Łączenie z klastrem ESP przy użyciu IntelliJ
     href: ../spark/apache-spark-intellij-tool-plugin.md
     maintainContext: true
-  - name: Łączenie z klastrem przyłączonym do domeny za pomocą programu Eclipse
+  - name: Łączenie z klastrem ESP przy użyciu Eclipse
     href: ../spark/apache-spark-eclipse-tool-plugin.md
     maintainContext: true
-  - name: Korzystanie z systemu Oozie w klastrach przyłączonych do domeny
+  - name: Używanie technologii Oozie w klastrach ESP
     href: hdinsight-use-oozie-domain-joined-clusters.md
 - name: Zabezpieczanie danych
   href: ../hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md
@@ -60,8 +62,14 @@ items:
     href: https://azure.microsoft.com/en-us/resources/samples/?service=hdinsight
   - name: Azure PowerShell
     href: /powershell/module/azurerm.hdinsight
-  - name: .NET (Hadoop)
-    href: https://docs.microsoft.com/dotnet/api/overview/azure/hd-insight?view=azure-dotnet
+  - name: Zestaw SDK .NET
+    href: https://docs.microsoft.com/dotnet/api/overview/azure/hdinsight?view=azure-dotnet
+  - name: Zestaw SDK dla języka Python
+    href: https://docs.microsoft.com/python/api/overview/azure/hdinsight?view=azure-python
+  - name: Zestaw SDK Java
+    href: https://docs.microsoft.com/java/api/overview/azure/hdinsight?view=azure-java-preview
+  - name: Zestaw SDK dla języka Go
+    href: ../hdinsight-go-sdk-overview.md
   - name: .NET (HBase)
     href: https://www.nuget.org/packages/Microsoft.HBase.Client/
   - name: .NET (Avro)
@@ -92,9 +100,9 @@ items:
   - name: Narzędzia systemu Windows dla usługi HDInsight
     href: ../hdinsight-hadoop-windows-tools.md
     maintainContext: true
-ms.openlocfilehash: 130ff5525a19a6ea08c99c5ccce7ea8888477743
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: a4ebcb8f7beac49568e533fab0d1798933a45cad
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "41927376"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47039330"

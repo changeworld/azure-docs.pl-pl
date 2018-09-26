@@ -32,13 +32,13 @@ Dodatkowe informacje można znaleźć w naszych [zasadach wsparcia dla kontener�
 
 Aby utworzyć parę kluczy publicznych i prywatnych SSH RSA na potrzeby uwierzytelniania względem maszyn wirtualnych z systemem Linux dla klastra, możesz skorzystać ze standardowych narzędzi dostępnych w systemie operacyjnym. Informacje dotyczące kroków do wykonania można znaleźć we wskazówkach dotyczących systemów [OS X i Linux](../articles/virtual-machines/linux/mac-create-ssh-keys.md) lub [Windows](../articles/virtual-machines/linux/ssh-from-windows.md). 
 
-Jeśli używasz [poleceń interfejsu wiersza polecenia Azure 2.0](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) do wdrażania klastra usługi kontenera, klucze SSH dla klastra mogą być generowane automatycznie.
+Jeśli używasz [poleceń interfejsu wiersza polecenia Azure](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) do wdrażania klastra usługi kontenera, klucze SSH dla klastra mogą być generowane automatycznie.
 
 ### <a name="how-do-i-create-a-service-principal-for-my-kubernetes-cluster"></a>Jak mogę utworzyć nazwę główną usługi dla mojego klastra Kubernetes?
 
 Do utworzenia klastra Kubernetes w usłudze Azure Container Service wymagany jest również identyfikator i hasło nazwy głównej usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [About the service principal for a Kubernetes cluster](../articles/container-service/kubernetes/container-service-kubernetes-service-principal.md) (Informacje o nazwie głównej usługi dla klastra Kubernetes).
 
-Jeśli używasz [poleceń interfejsu wiersza polecenia Azure 2.0](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) do wdrażania klastra Kubernetes, poświadczenia nazwy głównej usługi dla klastra mogą być generowane automatycznie.
+Jeśli używasz [poleceń interfejsu wiersza polecenia Azure](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md) do wdrażania klastra Kubernetes, poświadczenia nazwy głównej usługi dla klastra mogą być generowane automatycznie.
 
 ### <a name="how-large-a-cluster-can-i-create"></a>Jak duży klaster mogę utworzyć?
 Możesz utworzyć klaster z 1, 3 lub 5 węzłami głównymi. Możesz wybrać maksymalnie 100 węzłów agentów.
@@ -105,4 +105,4 @@ Istnieją znane problemy z usługą DNS w systemie Windows, dla których poprawk
 ## <a name="next-steps"></a>Następne kroki
 
 * [Dowiedz się więcej](../articles/container-service/kubernetes/container-service-intro-kubernetes.md) o usłudze Azure Container Service.
-* Wdrażanie klastra usługi kontenera przy użyciu [portalu](../articles/container-service/dcos-swarm/container-service-deployment.md) lub [interfejsu wiersza polecenia platformy Azure w wersji 2.0](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md).
+* Wdrażanie klastra usługi kontenera przy użyciu [portalu](../articles/container-service/dcos-swarm/container-service-deployment.md) lub [interfejsu wiersza polecenia platformy Azure](../articles/container-service/dcos-swarm/container-service-create-acs-cluster-cli.md).

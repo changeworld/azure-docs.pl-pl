@@ -1,10 +1,10 @@
 ### YamlMime:YamlDocument
-ms.openlocfilehash: 1c25ae1acb112221047876ea6dd360c6d3bb2817
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b2ee21b77fc3bb26a1ca449ede198f8873a090c0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946242"
+ms.locfileid: "47036851"
 documentType: LandingData
 title: Zarządzanie platformą Azure — ład
 metadata:
@@ -19,6 +19,15 @@ metadata:
   ms.author: dacoulte
 abstract:
   description: Ład na platformie Azure to zbiór pojęć i usług umożliwiających zarządzanie różnymi zasobami platformy Azure na dużą skalę. Te usługi umożliwiają między innymi organizowanie i strukturyzowanie subskrypcji w logiczny sposób, tworzenie i wdrażanie pakietów zasobów natywnych dla platformy Azure i wielokrotnego użytku, a także definiowanie zasobów oraz poddawanie ich inspekcji i korygowaniu. Ta strona pozwala dowiedzieć się więcej na temat tych pojęć i usług oraz tego, jak już dziś włączyć je i używać ich we własnym środowisku.
+  aside:
+    image:
+      alt: 
+      height: 225
+      src: ./media/video.png
+      width: 250
+    title: Uzyskaj prędkość i kontrolę nad zasobami dzięki usłudze Azure Governance (1:47)
+    href: https://www.youtube.com/watch?v=MhGbKjlmuRs
+    width: 250
 sections:
 - title: Składniki i usługi
 - items:

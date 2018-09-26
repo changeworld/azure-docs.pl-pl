@@ -18,26 +18,34 @@ items:
   items:
   - name: Zapobieganie powstawaniu nieoczekiwanych kosztów
     href: billing-getting-started.md
-  - name: Ustawianie alertów dotyczących rozliczeń
-    href: billing-set-up-alerts.md
-  - name: Obliczanie cen
-    href: https://azure.microsoft.com/pricing/calculator/
   - name: Korzystanie z tagów zasobów
     href: ../azure-resource-manager/resource-group-using-tags.md?toc=/azure/billing/TOC.json
+  - name: Rozpoczynanie analizowania kosztów — tylko umowa EA
+    href: ../cost-management/quick-acm-cost-analysis.md?toc=/azure/billing/TOC.json
+  - name: Tworzenie budżetów i zarządzanie nimi — tylko umowa EA
+    href: ../cost-management/tutorial-acm-create-budgets.md?toc=/azure/billing/TOC.json
+  - name: Optymalizowanie zaleceń — tylko umowa EA
+    href: ../cost-management/tutorial-acm-opt-recommendations.md?toc=/azure/billing/TOC.json
+  - name: Obliczanie cen
+    href: https://azure.microsoft.com/pricing/calculator/
   - name: Omówienie limitu wydatków
     href: billing-spending-limit.md
+  - name: Ustawianie alertów dotyczących rozliczeń
+    href: billing-set-up-alerts.md
   - name: Oszczędzanie dzięki usłudze Azure Reservations
     items:
     - name: Co to jest Azure Reservations?
       href: billing-save-compute-costs-reservations.md
     - name: Kupowanie rezerwacji
       items:
-      - name: Maszyna wirtualna
-        href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
+      - name: Cosmos DB
+        href: ../cosmos-db/cosmos-db-reserved-capacity.md?toc=/azure/billing/TOC.json
       - name: SQL Database
         href: ../sql-database/sql-database-reserved-capacity.md?toc=/azure/billing/TOC.json
       - name: Oprogramowanie SUSE Linux
         href: ../virtual-machines/linux/prepay-suse-software-charges.md?toc=/azure/billing/TOC.json
+      - name: Maszyna wirtualna
+        href: ../virtual-machines/windows/prepay-reserved-vm-instances.md?toc=/azure/billing/TOC.json
     - name: Sposób udzielania rabatów
       items:
       - name: Wystąpienia zarezerwowane maszyn wirtualnych
@@ -172,9 +180,9 @@ items:
     items:
     - name: Interfejs API REST raportowania korporacyjnego
       href: https://docs.microsoft.com/rest/api/billing/enterprise/billing-enterprise-api-balance-summary
-ms.openlocfilehash: 2ef6d1445b444b7816a7a652f052c169cf0d78ec
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0090b62d3738804877687e2071d96b13f7c9dd13
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969567"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47063561"
