@@ -273,10 +273,10 @@ items:
   - name: Dyski
     href: /azure/templates/Microsoft.Compute/disks
     maintainContext: true
-  - name: Galerie
+  - name: Galeria obrazów udostępnionych
     href: /azure/templates/Microsoft.Compute/galleries
     items:
-    - name: Obrazy
+    - name: Definicja obrazu
       href: /azure/templates/Microsoft.Compute/galleries/images
       items:
       - name: Wersje
@@ -974,22 +974,6 @@ items:
   - name: Usługi wyszukiwania
     href: /azure/templates/Microsoft.Search/searchServices
     maintainContext: true
-- name: Zarządzanie serwerem
-  items:
-  - name: Bramy
-    href: /azure/templates/Microsoft.ServerManagement/gateways
-    maintainContext: true
-  - name: Węzły
-    href: /azure/templates/Microsoft.ServerManagement/nodes
-    items:
-    - name: Sesje
-      href: /azure/templates/Microsoft.ServerManagement/nodes/sessions
-      items:
-      - name: Sesje PS
-        href: /azure/templates/Microsoft.ServerManagement/nodes/sessions/features/pssessions
-        maintainContext: true
-      maintainContext: true
-    maintainContext: true
 - name: Service Bus
   items:
   - name: Przestrzenie nazw
@@ -1040,18 +1024,77 @@ items:
   - name: Serwery
     href: /azure/templates/Microsoft.Sql/servers
     items:
+    - name: Administratorzy
+      href: /azure/templates/Microsoft.Sql/servers/administrators
+      maintainContext: true
+    - name: Doradcy
+      href: /azure/templates/Microsoft.Sql/servers/advisors
+      maintainContext: true
+    - name: Zasady inspekcji
+      href: /azure/templates/Microsoft.Sql/servers/auditingPolicies
+      maintainContext: true
+    - name: Magazyny do długoterminowego przechowywania kopii zapasowych
+      href: /azure/templates/Microsoft.Sql/servers/backupLongTermRetentionVaults
+      maintainContext: true
+    - name: Linki do komunikacji
+      href: /azure/templates/Microsoft.Sql/servers/communicationLinks
+      maintainContext: true
+    - name: Zasady łączenia
+      href: /azure/templates/Microsoft.Sql/servers/connectionPolicies
+      maintainContext: true
     - name: Bazy danych
       href: /azure/templates/Microsoft.Sql/servers/databases
       items:
+      - name: Doradcy
+        href: /azure/templates/Microsoft.Sql/servers/databases/advisors
+        maintainContext: true
+      - name: Zasady inspekcji
+        href: /azure/templates/Microsoft.Sql/servers/databases/auditingPolicies
+        maintainContext: true
       - name: Ustawienia inspekcji
         href: /azure/templates/Microsoft.Sql/servers/databases/auditingSettings
         maintainContext: true
       - name: Zasady przechowywania długoterminowego kopii zapasowych
         href: /azure/templates/Microsoft.Sql/servers/databases/backupLongTermRetentionPolicies
         maintainContext: true
+      - name: Zasady łączenia
+        href: /azure/templates/Microsoft.Sql/servers/databases/connectionPolicies
+        maintainContext: true
+      - name: Zasady maskowania danych
+        href: /azure/templates/Microsoft.Sql/servers/databases/dataMaskingPolicies
+        items:
+        - name: Reguły
+          href: /azure/templates/Microsoft.Sql/servers/databases/dataMaskingPolicies/rules
+          maintainContext: true
+        maintainContext: true
+      - name: Rozszerzone ustawienia inspekcji
+        href: /azure/templates/Microsoft.Sql/servers/databases/extendedAuditingSettings
+        maintainContext: true
+      - name: Rozszerzenia
+        href: /azure/templates/Microsoft.Sql/servers/databases/extensions
+        maintainContext: true
+      - name: Zasady geograficznej kopii zapasowej
+        href: /azure/templates/Microsoft.Sql/servers/databases/geoBackupPolicies
+        maintainContext: true
+      - name: Zasady alertów zabezpieczeń
+        href: /azure/templates/Microsoft.Sql/servers/databases/securityAlertPolicies
+        maintainContext: true
+      - name: Grupy synchronizacji
+        href: /azure/templates/Microsoft.Sql/servers/databases/syncGroups
+        items:
+        - name: Elementy członkowskie synchronizacji
+          href: /azure/templates/Microsoft.Sql/servers/databases/syncGroups/syncMembers
+          maintainContext: true
+        maintainContext: true
       - name: Niewidoczne szyfrowanie danych
         href: /azure/templates/Microsoft.Sql/servers/databases/transparentDataEncryption
         maintainContext: true
+      maintainContext: true
+    - name: Konfiguracja odzyskiwania po awarii
+      href: /azure/templates/Microsoft.Sql/servers/disasterRecoveryConfiguration
+      maintainContext: true
+    - name: Aliasy DNS
+      href: /azure/templates/Microsoft.Sql/servers/dnsAliases
       maintainContext: true
     - name: Pule elastyczne
       href: /azure/templates/Microsoft.Sql/servers/elasticPools
@@ -1059,14 +1102,43 @@ items:
     - name: Funkcja ochrony szyfrowania
       href: /azure/templates/Microsoft.Sql/servers/encryptionProtector
       maintainContext: true
+    - name: Rozszerzone ustawienia inspekcji
+      href: /azure/templates/Microsoft.Sql/servers/extendedAuditingSettings
+      maintainContext: true
     - name: Grupy trybu failover
       href: /azure/templates/Microsoft.Sql/servers/failoverGroups
       maintainContext: true
     - name: Reguły zapory
       href: /azure/templates/Microsoft.Sql/servers/firewallRules
       maintainContext: true
+    - name: Agenci zadań
+      href: /azure/templates/Microsoft.Sql/servers/jobAgents
+      items:
+      - name: Poświadczenia
+        href: /azure/templates/Microsoft.Sql/servers/jobAgents/credentials
+        maintainContext: true
+      - name: Zadania
+        href: /azure/templates/Microsoft.Sql/servers/jobAgents/jobs
+        items:
+        - name: Wykonania
+          href: /azure/templates/Microsoft.Sql/servers/jobAgents/jobs/executions
+          maintainContext: true
+        - name: Kroki
+          href: /azure/templates/Microsoft.Sql/servers/jobAgents/jobs/steps
+          maintainContext: true
+        maintainContext: true
+      - name: Grupy docelowe
+        href: /azure/templates/Microsoft.Sql/servers/jobAgents/targetgroups
+        maintainContext: true
+      maintainContext: true
     - name: Klucze
       href: /azure/templates/Microsoft.Sql/servers/keys
+      maintainContext: true
+    - name: Zasady alertów zabezpieczeń
+      href: /azure/templates/Microsoft.Sql/servers/securityAlertPolicies
+      maintainContext: true
+    - name: Agenci synchronizacji
+      href: /azure/templates/Microsoft.Sql/servers/syncAgents
       maintainContext: true
     - name: Reguły sieci wirtualnej
       href: /azure/templates/Microsoft.Sql/servers/virtualNetworkRules
@@ -1232,9 +1304,9 @@ items:
         maintainContext: true
       maintainContext: true
     maintainContext: true
-ms.openlocfilehash: f54d4b1a72752571605a894a3be94025e8fce451
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: b635a83e709da5ea4ff91d5bb4d6914059ea23a8
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45984428"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166116"
