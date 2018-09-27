@@ -9,12 +9,12 @@ ms.devlang: python
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.author: kgremban
-ms.openlocfilehash: 316a8cd9ebf58e06ba39ba18fa19ede4b6a62229
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: cab3e5ee64ced59e9eb861e468f7a3c1dc600e8e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39187302"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220742"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-python"></a>Wysyłanie komunikatów z chmury do urządzeń z usługą IoT Hub (Python)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -317,6 +317,5 @@ Aby dowiedzieć się więcej na temat opracowywania rozwiązań usługi IoT Hub,
 [Centrum deweloperów Azure IoT]: http://www.azure.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
-[Transient Fault Handling]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure Portal]: https://portal.azure.com
 [Akcelerator rozwiązań IoT zdalnego monitorowania platformy Azure]: https://azure.microsoft.com/documentation/suites/iot-suite/

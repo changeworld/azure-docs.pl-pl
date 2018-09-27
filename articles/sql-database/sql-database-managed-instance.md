@@ -2,21 +2,22 @@
 title: Usługa Azure SQL Database Managed Przegląd instancji | Dokumentacja firmy Microsoft
 description: W tym temacie opisano wystąpienia usługi Azure SQL Database Managed oraz wyjaśniono, jak to działa, i jak jest inny niż pojedynczej bazy danych w usłudze Azure SQL Database.
 services: sql-database
-author: bonova
-ms.reviewer: carlrab
-manager: craigg
 ms.service: sql-database
 ms.subservice: managed-instance
-ms.custom: DBs & servers
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+author: bonova
 ms.author: bonova
-ms.openlocfilehash: 711a076409ed1d90c197bbf97a6e15144c0a4d38
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 09/26/2018
+ms.openlocfilehash: 626dd362248027831c78d1505662ca12d2ff334d
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956629"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392826"
 ---
 # <a name="what-is-a-managed-instance"></a>Co to jest wystąpienie zarządzane?
 
@@ -205,7 +206,10 @@ Zarządzane wystąpienia obiektów docelowych scenariusze dotyczące użytkownik
 Podejście do migracji wykorzystuje kopii zapasowych SQL w usłudze Azure blob storage. Kopie zapasowe przechowywane w obiekcie blob usługi Azure storage może bezpośrednio przywrócony do wystąpienia zarządzanego przy użyciu [polecenia języka T-SQL RESTORE](https://docs.microsoft.com/sql/t-sql/statements/restore-statements-transact-sql?view=azuresqldb-mi-current). 
   - Aby uzyskać szybki start przedstawiający sposób przywracania Wide World Importers — Standard pliku kopii zapasowej, zobacz [przywrócić pliku kopii zapasowej do wystąpienia zarządzanego](sql-database-managed-instance-get-started-restore.md). Ten przewodnik Szybki Start pokazuje, że trzeba przekazać plik kopii zapasowej do magazynu w blogu dotyczącym platformy Azure i bezpieczne, za pomocą klucza podpisu (SAS) dostępu współdzielonego.
   - Aby uzyskać informacji na temat przywracania z adresu URL, zobacz [natywnych przywracania z adresu URL](sql-database-managed-instance-migrate.md#native-restore-from-url).
-  
+
+> [!IMPORTANT]
+> Kopie zapasowe z wystąpienia zarządzanego można przywrócić tylko do innego wystąpienia zarządzanego. Nie można przywrócić do lokalnego programu SQL Server lub usługi Azure SQL Database serwer logiczny pojedyncze lub zbiorcze bazy danych.
+
 ### <a name="data-migration-service"></a>Data Migration Service
 
 Azure Database Migration Service to w pełni zarządzana usługa zaprojektowana w celu umożliwienia bezproblemową migrację z wielu źródłowych baz danych na danych na platformę Azure przy minimalnych przestojach. Ta usługa usprawnia zadania wymagane do przenoszenia istniejących innych firm i baz danych programu SQL Server na platformie Azure. Opcje wdrażania obejmują usługi Azure SQL Database, wystąpienia zarządzanego i programu SQL Server w maszynie Wirtualnej platformy Azure w publicznej wersji zapoznawczej. Zobacz [jak przeprowadzić migrację z lokalnej bazy danych do wystąpienia zarządzanego przy użyciu usługi DMS](https://aka.ms/migratetoMIusingDMS).
@@ -233,7 +237,7 @@ Korzyści z wystąpienia zarządzanego nie zawsze w górę — od początku w ch
 
 ### <a name="managed-instance-administration-features"></a>Zarządzane funkcji administrowania wystąpienia  
 
-Zarządzane wystąpienia Włącz administratorowi systemu skupić się na co najistotniejsze dla firm. Wiele działań administratora/administrator systemu nie są wymagane lub są one proste. Na przykład system operacyjny / RDBMS instalacji i wdrażania poprawek, dynamiczne wystąpienia zmiany rozmiaru i konfiguracji, tworzenia kopii zapasowych, replikacja bazy danych (w tym systemowych baz danych), konfiguracja wysokiej dostępności i konfigurację danych monitorowania kondycji i wydajności strumieni. 
+Zarządzane wystąpienia Włącz administratorowi systemu skupić się na co najistotniejsze dla firm. Wiele działań administratora/administrator systemu nie są wymagane lub są one proste. Na przykład system operacyjny / RDBMS instalacji i wdrażania poprawek, dynamiczne wystąpienie zmiana rozmiaru i konfiguracja, tworzenie kopii zapasowych, [replikacji bazy danych](replication-with-sql-database-managed-instance.md) (w tym systemowych baz danych), konfiguracja wysokiej dostępności i konfiguracji kondycji i strumienie danych monitorowania wydajności. 
 
 > [!IMPORTANT]
 > Aby uzyskać listę obsługiwanych, częściowo obsługiwane i nieobsługiwane funkcje, zobacz [funkcji usługi SQL Database](sql-database-features.md). Aby uzyskać listę różnic języka T-SQL w wystąpieniach zarządzanych w stosunku do programu SQL Server, zobacz [różnice języka T-SQL wystąpienia zarządzanego z programu SQL Server](sql-database-managed-instance-transact-sql-information.md)

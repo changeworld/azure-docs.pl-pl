@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: genli
-ms.openlocfilehash: e2985882b2e72b6e2f23945aa54c7a282137ce4e
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.author: cwatson
+ms.openlocfilehash: f0cdfef50c07674a08766933f2f7edfc946462a4
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918986"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395019"
 ---
 # <a name="download-or-view-your-azure-billing-invoice-and-daily-usage-data"></a>Pobieranie i wyświetlanie Azure faktury i dane dotyczące dziennego wykorzystania
 Możesz pobrać fakturę z [witryny Azure portal](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) lub wysłać w wiadomości e-mail. Aby pobrać z dziennym użyciem, przejdź do [Centrum konta platformy Azure](https://account.azure.com/Subscriptions). Tylko określone role, które ma uprawnienia do faktury i informacje o użyciu, takich jak konto administratora. Aby dowiedzieć się więcej na temat uzyskiwania dostępu do informacji dotyczących rozliczeń, zobacz [Manage access to Azure billing using roles (Zarządzanie dostępem do rozliczeń platformy Azure przy użyciu ról)](billing-manage-access.md).
@@ -30,7 +30,7 @@ W tym artykule nie ma zastosowania do klientów z umową Enterprise Agreement (E
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 > [!div class="nextstepaction"]
-> [Pomóż nam w usprawnianiu dokumentacja rozliczeń platformy Azure](https://go.microsoft.com/fwlink/p/?linkid=2010091)
+> [Pomoc w ulepszaniu dokumentów rozliczeniowych platformy Azure](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="get-your-invoice-in-email-pdf"></a>Pobierz fakturę w wiadomości e-mail (PDF)
 Można włączyć i skonfigurować dodatkowych adresatów otrzymujących subskrypcji platformy Azure faktury w wiadomości e-mail. Ta funkcja nie może być dostępna dla niektórych subskrypcji, takie jak oferty pomocy technicznej, umowy Enterprise Agreement lub Azure in Open.

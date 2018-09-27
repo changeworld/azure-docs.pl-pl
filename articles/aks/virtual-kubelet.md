@@ -8,12 +8,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 08/14/2018
 ms.author: iainfou
-ms.openlocfilehash: 6ff28443dda65e91fa69fececaff95aa8e872603
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: f613fb9bd3e9cf6d070b34403bab617e23261c56
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604254"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226452"
 ---
 # <a name="use-virtual-kubelet-with-azure-kubernetes-service-aks"></a>Rozwiązania Virtual Kubelet za pomocą usługi Azure Kubernetes Service (AKS)
 
@@ -36,7 +36,7 @@ Aby zainstalować rozwiązania Virtual Kubelet [Helm](https://docs.helm.sh/using
 
 ### <a name="for-rbac-enabled-clusters"></a>W przypadku klastrów z obsługą kontroli RBAC
 
-W przypadku klastra usługi AKS z obsługą funkcji RBAC, należy utworzyć konta usługi i roli powiązania do użycia z Tiller. Aby uzyskać więcej informacji, zobacz [kontroli dostępu opartej na rolach Helm][helm-rbac]. Aby utworzyć konto usługi i powiązania roli, Utwórz plik o nazwie *rbac virtualkubelet.yaml* i wklej następującą definicję:
+W przypadku klastra usługi AKS z obsługą funkcji RBAC, należy utworzyć konta usługi i roli powiązania do użycia z Tiller. Aby uzyskać więcej informacji, zobacz [kontroli dostępu opartej na rolach Helm][helm-rbac]. Aby utworzyć konto usługi i powiązania roli, Utwórz plik o nazwie *rbac wirtualnego — kubelet.yaml* i wklej następującą definicję:
 
 ```yaml
 apiVersion: v1
@@ -59,7 +59,7 @@ subjects:
     namespace: kube-system
 ```
 
-Zastosuj konta usługi i powiązania z [zastosować kubectl] [ kubectl-apply] i określ swoje *rbac virtualkubelet.yaml* pliku, jak pokazano w poniższym przykładzie:
+Zastosuj konta usługi i powiązania z [zastosować kubectl] [ kubectl-apply] i określ swoje *rbac wirtualnego — kubelet.yaml* pliku, jak pokazano w poniższym przykładzie:
 
 ```
 $ kubectl apply -f rbac-virtual-kubelet.yaml
@@ -158,7 +158,7 @@ NAME                                READY     STATUS    RESTARTS   AGE       IP 
 aci-helloworld-2559879000-8vmjw     1/1       Running   0          39s       52.179.3.180   virtual-kubelet-virtual-kubelet-linux
 ```
 
-## <a name="run-windows-container"></a>Uruchamianie kontenerów Windows
+## <a name="run-windows-container"></a>Uruchamianie kontenera systemu Windows
 
 Utwórz plik o nazwie `virtual-kubelet-windows.yaml` i skopiuj do poniższego kodu YAML. Zastąp `kubernetes.io/hostname` wartości o nazwie węzła rozwiązania Virtual Kubelet Windows. Zwróć uwagę, że [nodeSelector] [ node-selector] i [toleration] [ toleration] są używane do zaplanowania kontenerów w węźle.
 
@@ -182,7 +182,9 @@ spec:
       nodeSelector:
         kubernetes.io/hostname: virtual-kubelet-virtual-kubelet-win
       tolerations:
-      - key: azure.com/aci
+      - key: virtual-kubelet.io/provider
+        operator: Equal
+        value: azure
         effect: NoSchedule
 ```
 

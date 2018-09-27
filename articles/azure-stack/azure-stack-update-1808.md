@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 09/26/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 686d911c7a59fa33508d130382a3fda4af28e665
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: f1541a0523ce0178ad3616a956d5188ef7df0ded
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46466068"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395716"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizacja usługi Azure Stack 1808
 
@@ -146,6 +146,8 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 
 ### <a name="portal"></a>Portal
 
+- Dokumentacja techniczna usługi Azure Stack koncentruje się na najnowszej wersji. Z powodu portalu zmian między wersjami Zobacz podczas przy użyciu portali usługi Azure Stack mogą różnić się od wyświetlanych w dokumentacji. 
+
 - <!-- TBD - IS ASDK --> Możesz zobaczyć pustego pulpitu nawigacyjnego w portalu. Aby odzyskać pulpitu nawigacyjnego, kliknij **Edytuj pulpit nawigacyjny**, a następnie kliknij prawym przyciskiem myszy i wybierz **przywrócony stan domyślny**.
 
 - <!-- 2930718 - IS ASDK --> W portalu administratora przy uzyskiwaniu dostępu do szczegółów dowolnej subskrypcji użytkownika po zamknięciu bloku i klikając **ostatnie**, nie jest wyświetlana Nazwa subskrypcji użytkownika.
@@ -217,6 +219,8 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 - <!-- 2724873 - IS --> Korzystając z polecenia cmdlet programu PowerShell **Start AzsScaleUnitNode** lub **Stop AzsScaleunitNode** Zarządzanie jednostek skalowania, pierwsza próba uruchomienia lub zatrzymania jednostki skalowania może zakończyć się niepowodzeniem. Jeśli polecenie cmdlet nie powiedzie się przy pierwszym uruchomieniu, należy uruchomić polecenie cmdlet po raz drugi. Drugiego przebiegu ma być pomyślnie wykonane do ukończenia tej operacji. 
 
 - <!-- TBD - IS ASDK --> Po utworzeniu maszyny wirtualne w portalu użytkowników usługi Azure Stack portal zawiera nieprawidłową liczbę dysków z danymi, które można dołączyć do maszyny Wirtualnej serii DS. Maszyny wirtualne z serii DS może obsłużyć tyle dysków z danymi konfiguracji platformy Azure.
+
+- <!-- TBD - IS ASDK --> Jeśli używasz środowiska z wieloma dzierżawami aprowizacji maszyny Wirtualnej w przypadku dysków zarządzanych w ramach subskrypcji, które nie należą do domyślnej dzierżawy kończy się niepowodzeniem z następującego błędu: *operacja dotycząca zasobu zakończyła ze stanem inicjowania obsługi terminalu "Niepowodzenie".*
 
 - <!-- TBD - IS ASDK --> Jeśli aprowizacja rozszerzenia na wdrożenie maszyny Wirtualnej trwa zbyt długo, użytkownicy pozwolić limit czasu inicjowania obsługi administracyjnej zamiast próby zatrzymania procesu cofnięcie przydziału lub Usuń maszynę Wirtualną.  
 

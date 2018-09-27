@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/19/2018
 ms.author: tamram
-ms.openlocfilehash: 31bfcd99e23cc7fe0575a293e3dc22507dbd9e13
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ec8ad5a509b4fd4b6fd59212ac0df17f98f417fd
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973273"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222441"
 ---
 # <a name="enable-azure-active-directory-authentication-over-smb-for-azure-files-preview"></a>Włącz uwierzytelnianie usługi Azure Active Directory za pośrednictwem protokołu SMB dla usługi Azure Files (wersja zapoznawcza)
 
@@ -103,8 +103,6 @@ Set-AzureRmStorageAccount -ResourceGroupName "<resource-group-name>" `
 ```
 
 **Interfejs wiersza polecenia**
-
-"Musisz najpierw dodać rozszerzenie magazynu w wersji zapoznawczej, a następnie wykonaj bNiski przykładu. Pamiętaj, aby zastąpić symbole zastępcze własnymi wartościami. Zapoznaj się z tym artykułem, aby uzyskać więcej informacji na temat dodawania rozszerzeń interfejsu wiersza polecenia platformy Azure."
 
 Aby włączyć uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB z interfejsu wiersza polecenia platformy Azure w wersji 2.0, należy najpierw zainstalować *magazynu w wersji zapoznawczej* rozszerzenia:
 
@@ -274,7 +272,7 @@ Następnie użyj następującego polecenia, aby zainstalować udział plików pl
 net use <desired-drive-letter>: \\<storage-account-name>.file.core.windows.net\<share-name>
 ```
 
-Teraz pomyślnie włączone uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB i przypisać rolę niestandardową, która zapewnia dostęp do udziału plików do tożsamości usługi Azure AD. Aby udzielić dostępu do udziału plików do dodatkowych użytkowników, postępuj zgodnie z instrukcjami w kroku 2.
+Teraz pomyślnie włączone uwierzytelnianie usługi Azure AD przy użyciu protokołu SMB i przypisać rolę niestandardową, która zapewnia dostęp do udziału plików do tożsamości usługi Azure AD. Aby udzielić dostępu do udziału plików do dodatkowych użytkowników, postępuj zgodnie z instrukcjami w kroku 2 i 3.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

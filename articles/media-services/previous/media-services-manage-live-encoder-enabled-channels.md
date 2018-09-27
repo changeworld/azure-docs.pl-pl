@@ -4,7 +4,7 @@ description: 'W tym temacie opisano sposób konfigurowania kanału, który odbie
 services: media-services
 documentationcenter: ''
 author: anilmur
-manager: cfowler
+manager: femila
 editor: ''
 ms.assetid: 30ce6556-b0ff-46d8-a15d-5f10e4c360e2
 ms.service: media-services
@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/20/2018
 ms.author: juliako;anilmur
-ms.openlocfilehash: 008fac84eedfd58cbcfe563504a50bc19d519382
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: ada5f55cf356ca79efb7cb45c76a4812804400c5
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42056517"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222067"
 ---
 # <a name="live-streaming-using-azure-media-services-to-create-multi-bitrate-streams"></a>Transmisja strumieniowa na żywo korzystająca z usługi Azure Media Services do tworzenia strumieni o różnej szybkości transmisji bitów
 
@@ -166,7 +166,7 @@ Kanał oferuje wejściowy punkt końcowy (adres URL pozyskiwania) określisz w k
 
 Po utworzeniu kanału możesz uzyskać adresy URL pozyskiwania. Aby uzyskać te adresy URL, kanał nie muszą znajdować się w **systemem** stanu. Gdy wszystko jest gotowe rozpocząć wypychanie danych do kanału, musi być w **systemem** stanu. Po uruchomieniu kanału dane wprowadzane można wyświetlać podgląd strumienia za pomocą adresu URL w wersji zapoznawczej.
 
-Istnieje możliwość wprowadzania pofragmentowany plik MP4 (Smooth Streaming) transmisji strumieniowej na żywo za pośrednictwem połączenia SSL. Pozyskanie za pośrednictwem protokołu SSL, upewnij się zaktualizować adres URL pozyskiwania protokołu HTTPS. Należy pamiętać, że obecnie usługi AMS nie obsługuje protokołu SSL z zastosowaniem domen niestandardowych.  
+Istnieje możliwość wprowadzania pofragmentowany plik MP4 (Smooth Streaming) transmisji strumieniowej na żywo za pośrednictwem połączenia SSL. Pozyskanie za pośrednictwem protokołu SSL, upewnij się zaktualizować adres URL pozyskiwania protokołu HTTPS. Obecnie usługa AMS nie obsługuje protokołu SSL z zastosowaniem domen niestandardowych.  
 
 ### <a name="allowed-ip-addresses"></a>Dozwolone adresy IP
 Można zdefiniować adresy IP, które mogą publikować pliki wideo do tego kanału. Dozwolone IP adresów może być określony jako albo pojedynczy adres IP adresów (na przykład "10.0.0.1"), zakresu adresów IP przy użyciu adresu IP i maski podsieci CIDR (na przykład "10.0.0.1/22") lub adres IP zakresu (na przykład przy użyciu adresu IP i maski podsieci dziesiętna kropkowana , "10.0.0.1(255.255.252.0)').

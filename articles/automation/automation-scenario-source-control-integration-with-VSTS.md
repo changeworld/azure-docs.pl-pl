@@ -9,12 +9,12 @@ ms.service: automation
 ms.component: process-automation
 ms.topic: conceptual
 ms.date: 03/19/2017
-ms.openlocfilehash: 022fca09b9e748c030df6b5fc944f7930942a6f7
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: ef21060e98972dd7bc561f9a4311fa0c4bdec3b4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44302412"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227065"
 ---
 # <a name="azure-automation-scenario---automation-source-control-integration-with-azure-devops"></a>Scenariusz automatyzacji platformy Azure — Integracja kontroli źródła usługi Automation przy użyciu infrastruktury DevOps platformy Azure
 
@@ -47,7 +47,7 @@ Tworzenie [bezpiecznego zmiennej](automation-variables.md) na koncie usługi aut
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSTokenVariable.png)
 
-Zaimportuj element runbook, który przeprowadza synchronizację z elementów runbook lub konfiguracji do konta usługi automation. Możesz użyć [DevOps platformy Azure przykładowego elementu runbook](https://www.powershellgallery.com/packages/Sync-VSTS/1.0/DisplayScript) lub [DevOps platformy Azure za pomocą narzędzia Git przykładowego elementu runbook](https://www.powershellgallery.com/packages/Sync-VSTSGit/1.0/DisplayScript) z PowerShellGallery.com w zależności od tego, jeśli używasz kontroli źródła DevOps platformy Azure lub DevOps platformy Azure przy użyciu narzędzia Git i Wdrażanie na Twoim koncie usługi automation.
+Zaimportuj element runbook, który przeprowadza synchronizację z elementów runbook lub konfiguracji do konta usługi automation. Możesz użyć [DevOps platformy Azure przykładowego elementu runbook](https://www.powershellgallery.com/packages/Sync-VSTS) lub [DevOps platformy Azure za pomocą narzędzia Git przykładowego elementu runbook](https://www.powershellgallery.com/packages/Sync-VSTSGit) z [galerii programu PowerShell](https://www.powershellgallery.com) zależności od tego, jeśli używasz źródła DevOps platformy Azure formant lub DevOps platformy Azure przy użyciu narzędzia Git i wdrażania do konta usługi automation.
 
 ![](media/automation-scenario-source-control-integration-with-VSTS/VSTSPowerShellGallery.png)
 

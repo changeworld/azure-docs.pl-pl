@@ -9,41 +9,38 @@ ms.reviewer: jmartens
 author: hjerez
 ms.author: hjerez
 ms.date: 09/24/2018
-ms.openlocfilehash: 634f33b6d4ed6e272dfb3d1443b0afc63f822d43
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: d3e0b63d42ad8c6d4765f5120c26c5dfdf5ad6fb
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055887"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166541"
 ---
 # <a name="manage-deploy-and-monitor-models-with-azure-machine-learning"></a>Zarządzanie, wdrażanie i monitorowanie modeli przy użyciu usługi Azure Machine Learning
 
 W tym artykule możesz dowiedzieć się, jak wdrażanie, zarządzanie i monitorowanie swoje modele, aby nieustannie podnosić je za pomocą usługi Azure Machine Learning. Można wdrażać modele, które możesz skonfigurowanych pod kątem korzystania z usługi Azure Machine Learning na komputerze lokalnym lub z innych źródeł. 
 
-[!["Usługa azure Machine Learning ciągłej integracji/ciągłego wdrażania (CI/CD) cyklu"](media/concept-model-management-and-deployment/model-ci-cd.png)](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
+Na poniższym diagramie przedstawiono przepływ pracy całego procesu wdrażania: [ ![wdrażanie przepływu pracy dla usługi Azure Machine Learning](media/concept-model-management-and-deployment/deployment-pipeline.png) ](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
 
-## <a name="deployment-workflow"></a>Wdrażanie przepływu pracy
-
-Przepływ pracy wdrożenia polega na: 
+Przepływ pracy wdrożenia obejmuje następujące kroki:
 1. **Zarejestruj model** w rejestrze hostowanych w obszarze roboczym usługi Azure Machine Learning
 1. **Zarejestruj obrazu** pary, model zawierający skrypt oceniania i zależności w kontenerze przenośny 
 1. **Wdrażanie** obraz jako usługi sieci web w chmurze lub na urządzeniach brzegowych
-1. **Monitorowanie i gromadzenie danych**
+1. **Monitorowanie i zbieranie danych**
 
-Możesz tworzyć każdego kroku, niezależnie od siebie lub jako część polecenia pojedynczego wdrożenia. 
+Poszczególne kroki można wykonać niezależnie lub jako część polecenia pojedynczego wdrożenia. Ponadto można zintegrować wdrożenie do **przepływu pracy ciągłej integracji/ciągłego Dostarczania** jak pokazano na poniższej ilustracji.
 
-Na poniższym diagramie przedstawiono potok całego procesu wdrażania:
+[ !["Usługa azure Machine Learning ciągłej integracji/ciągłego wdrażania (CI/CD) cyklu"](media/concept-model-management-and-deployment/model-ci-cd.png) ](media/concept-model-management-and-deployment/model-ci-cd.png#lightbox)
 
-[![Potok ciągłego wdrażania](media/concept-model-management-and-deployment/deployment-pipeline.png)](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
 
-## <a name="step-1-model-registration"></a>Krok 1: Rejestracja modelu
+## <a name="step-1-register-model"></a>Krok 1: Zarejestruj modelu
 
 Rejestr modelu przechowuje informacje o wszystkich modeli w obszarze roboczym usługi Azure Machine Learning.
 Modele są identyfikowane przez nazwę i wersję. Zawsze należy zarejestrować model o takiej samej nazwie jak innego istniejącego rejestru zwiększa numer wersji. Możesz także podać dodatkowe metadane tagów podczas rejestracji, który może służyć podczas wyszukiwania dla modeli.
 
 Nie można usunąć modeli, które są używane przez obraz.
 
-## <a name="step-2-image-registration"></a>Krok 2: Obraz rejestracji
+## <a name="step-2-register-image"></a>Krok 2: Rejestr obrazów
 
 Obrazy umożliwiają niezawodny model wdrażania, oraz wszystkie składniki wymagane do używania tego modelu. Obraz zawiera następujące elementy:
 
@@ -59,24 +56,24 @@ Usługa Azure Machine Learning obsługuje najbardziej popularnych struktur, ale 
 Podczas tworzenia obszaru roboczego, więc były inne kilka innych zasobów platformy Azure używane przez tego obszaru roboczego.
 Wszystkie obiekty, które są używane do tworzenia obrazu są przechowywane na koncie magazynu platformy Azure, w obszarze roboczym. Obraz, który jest tworzony i zapisywany w usłudze Azure Container Registry. Podczas tworzenia obrazu, które są także przechowywane przez rejestr obrazów i może być odpytywana można znaleźć obrazu, możesz podać dodatkowe metadane tagów.
 
-## <a name="step-3-deployment"></a>Krok 3: Wdrażanie
+## <a name="step-3-deploy-image"></a>Krok 3: Wdrażanie obrazów
 
 W chmurze lub na urządzeniach brzegowych, mogą wdrażać obrazy zarejestrowane. Proces wdrażania tworzy wszystkie zasoby niezbędne do monitorowania, równoważenie obciążenia i automatycznego skalowania modelu. Dostęp do wdrożonych usług mogą być chronione przy użyciu uwierzytelniania opartego na certyfikatach, zapewniając zasoby zabezpieczeń podczas wdrażania. Możesz również uaktualnić istniejące wdrożenie, aby użyć nowszej obrazu.
 
 Wdrożeń usług internetowych są również można wyszukiwać. Na przykład możesz wyszukać wszystkie wdrożenia określonego modelu lub obrazu.
 
-Obrazy można wdrażać w następujących lokalizacjach docelowych w chmurze:
+[ ![Obiekty docelowe wnioskowania](media/concept-model-management-and-deployment/inferencing-targets.png) ](media/concept-model-management-and-deployment/inferencing-targets.png#lightbox)
+
+Obrazy można wdrożyć dla następujących [celów wdrażania](how-to-deploy-and-where.md) w chmurze:
 
 * Wystąpienie kontenera platformy Azure
 * Azure Kubernetes Service
 * FPGA maszyn
 * Urządzenia w usłudze Azure IoT Edge
 
-[Dowiedz się więcej o którym można wdrożyć](how-to-deploy-and-where.md).
+Jak usługa zostanie wdrożona, żądanie wnioskowania jest automatycznie równoważeniem obciążenia i klaster będzie skalowany w celu zaspokojenia jakiekolwiek skoki na żądanie. [Dane telemetryczne o usłudze](https://docs.microsoft.com/python/api/azureml-telemetry/azureml.telemetry?view=azure-ml-py) mogą być przechwytywane w usłudze Azure Application Insights skojarzone z obszarem roboczym.
 
-Jak usługa zostanie wdrożona, żądanie wnioskowania jest automatycznie równoważeniem obciążenia i klaster będzie skalowany w celu zaspokojenia jakiekolwiek skoki na żądanie. Dane telemetryczne dotyczące usługi są przechwytywane do usługi Azure Application Insights skojarzone z obszarem roboczym.
-
-## <a name="step-4-monitoring-models-and-data-collection"></a>Krok 4: Modele monitorowania i zbierania danych
+## <a name="step-4-monitor-models-and-collect-data"></a>Krok 4: Modele monitorowanie i zbieranie danych
 
 Zestaw SDK do przechwycenia danych i rejestrowania modelu jest dostępna, aby można było monitorować danych wejściowych, danych wyjściowych i inne odpowiednie dane z modelu. Dane są przechowywane jako obiekt blob w ramach konta usługi Azure Storage dla obszaru roboczego.
 

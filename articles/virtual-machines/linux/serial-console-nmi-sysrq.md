@@ -1,6 +1,6 @@
 ---
 title: Usługa Azure konsoli szeregowej wywołań SysRq i NMI | Dokumentacja firmy Microsoft
-description: Za pomocą konsoli szeregowej dla SysRq i NMI wywołuje w maszynach wirtualnych platformy Azure.
+description: Za pomocą konsoli szeregowej SysRq i NMI wywołuje w maszynach wirtualnych platformy Azure.
 services: virtual-machines-linux
 documentationcenter: ''
 author: asinn826
@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: alsin
-ms.openlocfilehash: 7129525f4d33648caa6c9e4594b0a0489254418a
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: ac3e01756ad66dcb44869556bb103eb20bc2658c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379821"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221489"
 ---
 # <a name="use-serial-console-for-sysrq-and-nmi-calls"></a>Użyj konsoli szeregowej wywołań SysRq i NMI
 

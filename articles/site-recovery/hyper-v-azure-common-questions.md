@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.date: 09/12/2018
 ms.topic: conceptual
 ms.author: raynew
-ms.openlocfilehash: 16c4ab4601dbe57e014bfcb06ff9b35d02c60cfa
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 7600fc81d0d3e3607f2185ad2c793255a0c68634
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721912"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227303"
 ---
 # <a name="common-questions---hyper-v-to-azure-replication"></a>Często zadawane pytania — funkcji Hyper-V replikacja usługi Azure
 
@@ -104,7 +104,7 @@ Można replikować dowolną aplikację lub Obciążenie uruchomionej maszyny Wir
 
 ### <a name="whats-the-replication-process"></a>Co to jest proces replikacji?
 
-1. Po wyzwoleniu replikacji początkowej migawka migawki maszyny Wirtualnej funkcji Hyper-V zostanie utworzona.
+1. Po wyzwoleniu replikacji początkowej migawka maszyny Wirtualnej funkcji Hyper-V zostanie utworzona.
 2. Wirtualne dyski twarde na maszynie Wirtualnej są replikowane pojedynczo, dopóki nie zostaną wszystkie skopiowane na platformę Azure. Może to potrwać kilka minut w zależności od rozmiaru maszyny Wirtualnej i przepustowości sieci. Dowiedz się, jak zwiększyć przepustowość sieci.
 3. Jeśli zmiany dysku podczas replikacji początkowej jest w toku, funkcji Hyper-V Replica Replication Tracker śledzi zmiany jako dzienniki replikacji funkcji Hyper-V (hrl). Te pliki dziennika znajdują się w tym samym folderze co dyski. Każdy dysk ma skojarzony plik hrl wysyłanego do magazynu pomocniczego. Pliki migawki i dziennika zużywają zasoby dysku w trakcie replikacji początkowej.
 4. Po zakończeniu replikacji początkowej migawka maszyny wirtualnej jest usuwana.

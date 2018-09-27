@@ -9,12 +9,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 09/15/2018
-ms.openlocfilehash: cfc71f34f4b1d8027714c9fb610beebf8cd3be47
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 51f5f3b9742de45b1b72104c8cf08079d0719763
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978543"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224385"
 ---
 # <a name="set-up-hbase-cluster-replication-in-azure-virtual-networks"></a>Konfigurowanie replikacji klaster bazy danych HBase w sieci wirtualnej platformy Azure
 
@@ -109,6 +109,7 @@ Aby zainstalować powiązania, yon, należy znaleźć publiczny adres IP z dwóc
 2. Otwórz DNS maszyny wirtualnej, wybierając **grupy zasobów > [Nazwa grupy zasobów] > [vnet1DNS]**.  Nazwa grupy zasobów jest ten, który zostanie utworzony w poprzedniej procedurze. Domyślne nazwy maszyny wirtualnej DNS są *vnet1DNS* i *vnet2NDS*.
 3. Wybierz **właściwości** aby otworzyć stronę właściwości sieci wirtualnej.
 4. Zapisz **publiczny adres IP**, a także sprawdzić **prywatny adres IP**.  Prywatny adres IP jest **10.1.0.4** dla vnet1DNS i **10.2.0.4** dla vnet2DNS.  
+5. Zmień serwery DNS dla obu sieci wirtualnych do korzystania z serwerów domyślne (DNS platformy Azure) umożliwia dostęp ruchu przychodzącego i wychodzącego pobrać pakiety do zainstalowania powiązania w poniższych krokach.
 
 Aby zainstalować Bind, użyj następującej procedury:
 
@@ -217,7 +218,7 @@ Aby zainstalować Bind, użyj następującej procedury:
 
     ```bash
     sudo apt install dnsutils
-    nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net 10.2.0.4
+    nslookup vnet2dns.v5ant3az2hbe1edzthhvwwkcse.bx.internal.cloudapp.net
     ```
 
     > [!IMPORTANT]

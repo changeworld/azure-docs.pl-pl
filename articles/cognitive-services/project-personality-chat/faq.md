@@ -1,35 +1,37 @@
 ---
-title: Często zadawane pytania dotyczące charakteru rozmów - kognitywnych usług platformy Azure | Dokumentacja firmy Microsoft
-description: Często zadawane pytania dotyczące charakteru rozmowy
+title: Często zadawane pytania — osobowość rozmowy
+titlesuffix: Azure Cognitive Services
+description: Często zadawane pytania na osobowość rozmowy
 services: cognitive-services
 author: noellelacharite
-manager: nolachar
+manager: cgronlun
 ms.service: cognitive-services
+ms.component: personality-chat
 ms.topic: faq
 ms.date: 05/07/2018
 ms.author: nolachar
 comment: As a bot developer, I want my bot to be able to handle small talk in a consistent tone so that my bot appears more complete and conversational.
-ms.openlocfilehash: 5304b25672f9951e004876dfd19af75ea7d86502
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 274b232f321b3ad739d18a8580b4a178dbde633e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35349701"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219825"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-## <a name="why-doesnt-this-answer-every-question-i-ask-it-like-other-chat-bots"></a>Dlaczego nie to odpowiedzi na każde pytanie, które żądanie, podobnie jak inne robotów rozmów?
+## <a name="why-doesnt-this-answer-every-question-i-ask-it-like-other-chat-bots"></a>Dlaczego nie to odpowiadać na każde pytanie, na które zadać, podobnie jak inne Boty czatu?
 
-Rozmowa charakteru projektu zwiększy robotów z typowych dyskretne małych ilustrację charakteru i tworzy bardziej szczegółowy środowisko użytkownika. Nie zostało zaprojektowane do przenoszenia na długi konwersacje tematy, które nie są istotne dla podstawowej funkcji bot. Podczas jego może odpowiedzieć na wszystkie konwersacje, ograniczył — w wersji beta — do wspólnego domen dyskretne mała liczba godzin.
+Rozmowa osobowość projektu ulepszenie botów za pomocą wspólnego Rozmowa małych prezentuje osobowości, która tworzy bardziej kompleksowe środowisko użytkownika. Nie ustalono, aby prowadzić długie konwersacje tematy, które nie są istotne dla podstawowej funkcji botów. Może ona odpowiedzieć na wszystkie konwersacje, ograniczył, w wersji beta, mały wspólnej mówić domen.
 
-## <a name="how-can-i-customize-the-personality-to-suit-my-brand"></a>Jak można dostosować charakteru do własnych Moje marki?
+## <a name="how-can-i-customize-the-personality-to-suit-my-brand"></a>Jak dostosować osobowość do potrzeb mojej marki?
 
-Wybierz najbliższą osoba z osoby dostępnych domyślnych. Obecnie można podjąć redakcyjne biblioteki i edytować odpowiedzi, aby lepiej dopasować oznakowanie. Można w przyszłości, Przekaż przykładowe zbiór zniesławiających z wybranym Ci i znaleźć jej najbliższego wersji identyfikator osoby. Istnieją również sposoby ponownie ucz i dostosowywanie modelu.
+Wybierz najbliższą osoby z osób dostępnych domyślnych. Obecnie można podjąć biblioteki redakcyjnych i edytować odpowiedzi, aby lepiej dopasować się do Twojej marki. W przyszłości możesz przekazać Przykładowy zestaw wypowiedzi z wybranym Ci i znaleźć jego najbliższej wersji identyfikator osoby. Istnieją również sposoby wytrenujesz i dostosować model.
 
-## <a name="is-this-service-powering-existing-intelligent-agents-such-as-zo"></a>Ta usługa jest włączanie istniejących inteligentnego agentów, takie jak Zo?
+## <a name="is-this-service-powering-existing-intelligent-agents-such-as-zo"></a>Jest to usługa zapewniająca istniejących agentów inteligentne, takie jak Zo?
 
-Włączanie Zo Cortana i rozmowę charakteru projektu usługi udostępniania niektórych podobnych technik, ale są różne stosy. Ma ona włączone learnings z doświadczenia z Zo i Cortana.
+Usługi, zapewniająca Zo, Cortana i porozmawiaj osobowość projektu udostępniania niektórych podobne techniki, ale są różnych stosów. Ma ona włączone wnioski dotyczące z doświadczeń z Zo i Cortana.
 
-## <a name="can-this-service-lead-to-bad-customer-experiences"></a>Ta usługa może prowadzić do środowiska użytkownika zły?
+## <a name="can-this-service-lead-to-bad-customer-experiences"></a>Ta usługa może prowadzić do klientów?
 
-Aby zapewnić bardziej rozbudowane środowisko, rozmowę charakteru generować odpowiedzi wykraczających poza w redakcyjne zestawu danych, i próbuje interpretować wszystkie dane wejściowe użytkownika. Tak możliwe jest odpowiedź nie będzie wydawać prawa w kontekście. Liczba formantów zostały wprowadzone w celu uniemożliwienia odpowiedzi niekorzystne, opierając się na wiedzy z inteligentnego czynników, takich jak Zo. Rozmowa charakteru projektu jest domyślnie odpowiedzieć wyłącznie intencje rozpoznanym użytkownikiem. Możesz sprawdzić, czy rozmowę charakteru projektu jest odpowiednie dla Twojej sytuacji. Twoja opinia jest powitalny, jeśli zostanie wyświetlony wszystko, co wymaga dalszych szkoleń. Jeśli używasz tej usługi z klientami w przyszłości, zaleca się należy wziąć pod uwagę anonimowe rejestrowanie, aby zidentyfikować problemy z interakcji użytkowników na żywo.
+Aby zapewnić rozbudowane środowisko, rozmowy osobowość może generować odpowiedzi wykraczających redakcyjnych zestawu danych, a następnie próbuje interpretować wszystkie dane wejściowe użytkownika. Tak istnieje możliwość, odpowiedź nie będzie prawdopodobnie odpowiednie w kontekście. W celu uniemożliwienia odpowiedzi niekorzystne, opierając się na wiedzy z agentów inteligentne, takie jak Zo szeregu kontroli, którym nadano. Domyślnie rozmowy osobowość projektu ustawiono odpowiadającej wyłącznie na intencje rozpoznanym użytkownikiem. Można sprawdzić, czy Chat osobowość projektu nadaje się do swojej sytuacji. Twoja opinia jest powitalnej, jeśli zostanie wyświetlony wszystko, co wymaga dalszych szkoleń. Jeśli używasz tej usługi z klientami w przyszłości, zalecamy należy wziąć pod uwagę zanonimizowana, aby pomóc w identyfikowaniu problemów dotyczących interakcje użytkownika na żywo.

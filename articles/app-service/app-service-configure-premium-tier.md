@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/25/2018
 ms.author: cephalin
-ms.openlocfilehash: 04996e772c2989be89ce551bfa45c57154de7b2d
-ms.sourcegitcommit: cfff72e240193b5a802532de12651162c31778b6
+ms.openlocfilehash: 59e5825554843ef7265cbccdd9a63db0426891fa
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39307793"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226313"
 ---
 # <a name="configure-premiumv2-tier-for-azure-app-service"></a>Konfigurowanie warstwy PremiumV2 dla usługi Azure App Service
 
@@ -55,7 +55,7 @@ Wybierz **produkcji**, a następnie wybierz **P1V2**, **P2V2**, lub **P3V2**, na
 ![](media/app-service-configure-premium-tier/scale-up-tier-select.png)
 
 > [!IMPORTANT] 
-> Jeśli nie widzisz **P1V2**, **P2V2**, i **P3V2** jako opcje, lub jeśli opcje są wyszarzone out następnie **PremiumV2** prawdopodobnie nie jest dostępna w podstawowe wdrożenie usługi App Service zawiera plan usługi App Service. Zobacz zobacz [skalowanie w górę z kombinacji grupy i regionu nieobsługiwanych](#unsupported) Aby uzyskać więcej informacji.
+> Jeśli nie widzisz **P1V2**, **P2V2**, i **P3V2** jako opcje, lub jeśli opcje są wyszarzone out następnie **PremiumV2** prawdopodobnie nie jest dostępna w podstawowe wdrożenie usługi App Service zawiera plan usługi App Service. Zobacz [skalowanie w górę z kombinacji grupy i regionu nieobsługiwanych](#unsupported) Aby uzyskać więcej informacji.
 
 ## <a name="scale-up-an-existing-app-to-premiumv2-tier"></a>Skalowanie w górę do warstwy PremiumV2 istniejącej aplikacji
 

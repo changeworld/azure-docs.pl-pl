@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/27/2018
+ms.date: 09/26/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 60b4658d18d39797d30055e86cb21689cfb661fa
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 5224829b59e7ad425fb01a242a702e0d4cad8657
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45631668"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392384"
 ---
 # <a name="azure-stack-1805-update"></a>Aktualizacja usługi Azure Stack 1805
 
@@ -91,6 +91,9 @@ Po zakończeniu instalacji 1805 Zainstaluj wszystkie odpowiednie poprawki. Uzysk
 Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 
 ### <a name="portal"></a>Portal  
+
+- Dokumentacja techniczna usługi Azure Stack koncentruje się na najnowszej wersji. Z powodu portalu zmian między wersjami Zobacz podczas przy użyciu portali usługi Azure Stack mogą różnić się od wyświetlanych w dokumentacji. 
+
 - <!-- 2931230 – IS  ASDK --> Plany, które są dodawane do subskrypcji użytkownika, ponieważ nie można usunąć planu dodatku, nawet wtedy, gdy usuniesz plan z subskrypcji użytkownika. Plan pozostanie, dopóki odwołujące się do planu dodatku subskrypcje zostaną również usunięte. 
 
 - <!-- TBD - IS ASDK --> Nie można zastosować aktualizacje sterowników za pomocą pakietu rozszerzenia producenta OEM w tej wersji usługi Azure Stack.  Nie ma sposobu obejścia tego problemu.

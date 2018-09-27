@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 10/10/2017
 ms.author: harijayms
-ms.openlocfilehash: ccaa6e79d9a24409b8c905561b265c70ea781dc2
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d7917ad65b3e3fd1abacdb624a03b3f62c7fc07f
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44022579"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221558"
 ---
 # <a name="azure-instance-metadata-service"></a>Usługa Azure Instance Metadata service
 
@@ -384,7 +384,7 @@ curl -H Metadata:true "http://169.254.169.254/metadata/instance/compute?api-vers
 
 ### <a name="getting-azure-environment-where-the-vm-is-running"></a>Wprowadzenie środowisko platformy Azure, w którym maszyna wirtualna jest uruchomiona 
 
-Platforma Azure oferuje różne chmury soverign, takich jak [Azure dla instytucji rządowych](https://azure.microsoft.com/overview/clouds/government/) , czasami zachodzi potrzeba do środowiska Azure podjąć pewne decyzje dotyczące środowiska uruchomieniowego. Poniższy przykład przedstawia sposób można to osiągnąć
+Platforma Azure oferuje różne chmur suwerennych, takich jak [Azure dla instytucji rządowych](https://azure.microsoft.com/overview/clouds/government/). Czasami konieczne jest środowisko platformy Azure do podejmowania decyzji dotyczących niektórych środowiska uruchomieniowego. Poniższy przykład pokazuje, jak można to osiągnąć.
 
 **Żądanie**
 
@@ -449,7 +449,7 @@ Puppet | https://github.com/keirans/azuremetadata
    * Tak Metadata service jest dostępna dla wystąpień zestawu skalowania. 
 8. Jak uzyskać pomoc techniczną dla usługi?
    * Aby uzyskać pomoc techniczną dla usługi, utworzyć problemu wymagającego pomocy technicznej w witrynie Azure portal dla maszyny Wirtualnej, której nie jesteś można uzyskać odpowiedź metadanych długie ponowne próby 
-9. Pojawia się dla mojego wywołania Przekroczono limit czasu żądania usługi?
+9. Uzyskać żądań przekroczyła limit czasu dla mojego wywołanie usługi?
    * Wywołania metadanych musi nastąpić z podstawowego adresu IP przypisane do karty sieciowej maszyny wirtualnej, ponadto w przypadku, gdy zmieniono trasy musi być trasę dla adresu 169.254.0.0/16 poza karty sieciowej.
 10. Czy mogę zaktualizować Moje znaczniki w zestawie skalowania maszyny wirtualnej, ale nie są wyświetlane w przypadkach, w przeciwieństwie do maszyn wirtualnych?
    * Obecnie dla ScaleSets tagi zawierają tylko do maszyny Wirtualnej na ponowne uruchomienie/odtworzenia z obrazu/lub dyskiem zmiany do wystąpienia. 

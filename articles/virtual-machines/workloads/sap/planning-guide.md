@@ -17,12 +17,12 @@ ms.workload: infrastructure-services
 ms.date: 09/06/2018
 ms.author: sedusch
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6257f1f9c237422174d695489b8ed39c7c37ebe2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b190e539c411811e8e77b39e7b0738e9d7c3c8c6
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969159"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227609"
 ---
 # <a name="azure-virtual-machines-planning-and-implementation-for-sap-netweaver"></a>Azure Virtual Machines, planowania i implementacji środowiska SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -450,7 +450,7 @@ Należy pamiętać, że maszyny wirtualne we wszystkich zestawów, które muszą
 ### <a name="f5b3b18c-302c-4bd8-9ab2-c388f1ab3d10"></a>Między środowiskami lokalnymi - wdrażania jednego lub wielu SAP maszyn wirtualnych na platformie Azure z wymaganiami w pełni zintegrowane sieci lokalnej
 ![Sieć VPN z połączeniem lokacja-lokacja (cross-premises)][planning-guide-figure-300]
 
-Ten scenariusz jest scenariusz między środowiskami lokalnymi przy użyciu wielu wzorców możliwe wdrożenie rozwiązania. Można go opisać jako uruchamiania niektórych części SAP landscape w środowisku lokalnym i innymi częściami SAP landscape na platformie Azure. Wszystkie aspekty fakt, że część składniki SAP działają na platformie Azure powinny być przezroczyste dla użytkowników końcowych. Dlatego SAP transportu korekcji systemu (STMS), komunikacja RFC, drukowanie, zabezpieczeń (takich jak logowanie Jednokrotne), itp. współpracują bezproblemowo systemów SAP na platformie Azure. Ale scenariusza obejmującego również w tym artykule opisano scenariusz, w którym działa pełne środowisko SAP na platformie Azure z domeną klienta i DNS rozszerzony na platformę Azure.
+Ten scenariusz jest scenariusz między środowiskami lokalnymi przy użyciu wielu wzorców możliwe wdrożenie rozwiązania. Można go opisać jako uruchamiania niektórych części SAP pozioma lokalnych i innych części środowisko SAP na platformie Azure. Wszystkie aspekty fakt, że część składniki SAP działają na platformie Azure powinny być przezroczyste dla użytkowników końcowych. Dlatego SAP transportu korekcji systemu (STMS), komunikacja RFC, drukowanie, zabezpieczeń (takich jak logowanie Jednokrotne), itp. współpracują bezproblemowo systemów SAP na platformie Azure. Ale scenariusza obejmującego również w tym artykule opisano scenariusz, w którym działa pełne środowisko SAP na platformie Azure z domeną klienta i DNS rozszerzony na platformę Azure.
 
 > [!NOTE]
 > Jest to scenariusz wdrażania, który jest obsługiwany w przypadku uruchamiania systemów SAP produktywności.

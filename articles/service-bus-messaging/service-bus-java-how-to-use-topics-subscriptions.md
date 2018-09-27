@@ -12,14 +12,14 @@ ms.workload: tbd
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 10/17/2017
+ms.date: 09/17/2018
 ms.author: spelluru
-ms.openlocfilehash: 0dc0ebd94abaa9dacd685034a46da1a7f204bfff
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 0be5f9842cd3aa90d82f3efe44451e624ed5d371
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700075"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395682"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-java"></a>Jak korzystać z subskrypcji i tematów usługi Service Bus przy użyciu języka Java
 
@@ -32,9 +32,9 @@ Tematy i subskrypcje usługi Service Bus obsługują model komunikacji z użycie
 
 ![TopicConcepts](./media/service-bus-java-how-to-use-topics-subscriptions/sb-topics-01.png)
 
-W przeciwieństwie do kolejek usługi Service Bus, w których każdy komunikat jest przetwarzany przez jednego konsumenta, tematy i subskrypcje zapewniają formę komunikacji „jeden do wielu” z użyciem wzorca publikowania/subskrypcji. Istnieje możliwość zarejestrowania wielu subskrypcji danego tematu. Po wysłaniu komunikatu do tematu jest on następnie udostępniany poszczególnym subskrypcjom w celu niezależnej obsługi lub niezależnego przetworzenia.
+W przeciwieństwie do kolejek usługi Service Bus, w których każdy komunikat jest przetwarzany przez jednego konsumenta, tematy i subskrypcje zapewniają formę komunikacji przy użyciu wzorca publikowania/subskrybowania, jeden do wielu. Istnieje możliwość zarejestrowania wielu subskrypcji danego tematu. Po wysłaniu komunikatu do tematu jest on następnie udostępniany poszczególnym subskrypcjom w celu niezależnej obsługi lub niezależnego przetworzenia.
 
-Subskrypcja tematu przypomina wirtualną kolejkę, która odbiera kopie komunikatów wysłanych do tematu. Opcjonalnie można zarejestrować reguły filtrów dla tematu na podstawie każdej subskrypcji, co pozwala na filtr/ograniczyć zakres komunikatów w temacie odbieranych przez określone subskrypcje tematów.
+Subskrypcja tematu przypomina wirtualną kolejkę, która odbiera kopie komunikatów wysłanych do tematu. Opcjonalnie można zarejestrować reguły filtrów dla tematu na podstawie każdej subskrypcji, co pozwala na filtrowanie, lub ograniczyć zakres komunikatów w temacie odbieranych przez określone subskrypcje tematów.
 
 Subskrypcji i tematów usługi Service Bus umożliwiają skalowanie do przetwarzania dużej liczby komunikatów na dużą liczbę użytkowników i aplikacji.
 
@@ -103,7 +103,7 @@ Możesz użyć **listTopics** metody **ServiceBusContract** obiekty do sprawdzen
 Subskrypcje do tematów, również są tworzone za pomocą **ServiceBusService** klasy. Subskrypcje są nazywane i mogą zawierać opcjonalny filtr, który ogranicza zestaw komunikatów przesyłany do wirtualnej kolejki subskrypcji.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Tworzenie subskrypcji z filtrem domyślnym (MatchAll)
-Filtr **MatchAll** jest filtrem domyślnym, który jest używany, gdy podczas tworzenia nowej subskrypcji nie został określony żaden filtr. Gdy **MatchAll** filtr jest stosowany, wszystkie komunikaty opublikowane do tematu są umieszczane w wirtualnej kolejce subskrypcji. Poniższy przykład tworzy subskrypcję o nazwie „AllMessages” i używa domyślnego filtru **MatchAll**.
+Filtr **MatchAll** jest filtrem domyślnym, który jest używany, gdy podczas tworzenia nowej subskrypcji nie został określony żaden filtr. Gdy **MatchAll** filtr jest stosowany, wszystkie komunikaty opublikowane do tematu są umieszczane w wirtualnej kolejce subskrypcji. Poniższy przykład tworzy subskrypcję o nazwie `AllMessages` i używa domyślnego `MatchAll` filtru.
 
 ```java
 SubscriptionInfo subInfo = new SubscriptionInfo("AllMessages");
@@ -233,11 +233,11 @@ catch (Exception e) {
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Sposób obsługi awarii aplikacji i komunikatów niemożliwych do odczytania
-Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w razie błędów w aplikacji lub trudności z przetwarzaniem komunikatu. Jeśli aplikacja odbiorcy nie może przetworzyć komunikatu z jakiegoś powodu, wówczas może wywołać **unlockMessage** metody dla odebranego komunikatu (zamiast **deleteMessage** metody). Powoduje to odblokowanie komunikatu w ramach tematu i udostępnić go do ponownego odbioru, tę samą lub inną odbierającą aplikację usługę Service Bus.
+Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w razie błędów w aplikacji lub trudności z przetwarzaniem komunikatu. Jeśli aplikacja odbiorcy nie może przetworzyć komunikatu z jakiegoś powodu, wówczas może wywołać **unlockMessage** metody dla odebranego komunikatu (zamiast **deleteMessage** metody). Wywołanie tej metody powoduje to odblokowanie komunikatu w ramach tematu i udostępnić go do ponownego odbioru, tę samą lub inną odbierającą aplikację usługę Service Bus.
 
 Istnieje również limit czasu skojarzony z komunikatem zablokowanym w ramach tematu, a jeśli aplikacja nie może przetworzyć komunikatu przed blokady upłynie limit czasu (na przykład jeśli wystąpiła awaria aplikacji), Usługa Service Bus automatycznie odblokowuje komunikat i sprawia, że dostępne do ponownego odbioru.
 
-W przypadku, gdy aplikacja przestaje działać po przetworzeniu komunikatu, lecz przed **deleteMessage** wystawić żądania, a następnie wiadomości są przed przeniesieniem do aplikacji po jej ponownym uruchomieniu. Ten proces jest często nazywany **przetwarzaniem co najmniej raz**; oznacza, że każdy komunikat jest przetwarzany co najmniej raz, ale w pewnych sytuacjach ten sam komunikat może być dostarczony ponownie. Jeśli scenariusz nie toleruje dwukrotnego przetwarzania, deweloperzy aplikacji powinni dodać dodatkową logikę do swojej aplikacji w celu obsługi dwukrotnego dostarczania komunikatów. Jest to często osiągane przy użyciu **getMessageId** metoda wiadomości, która pozostaje stała między kolejnymi próbami dostarczenia.
+W przypadku, gdy aplikacja przestaje działać po przetworzeniu komunikatu, lecz przed **deleteMessage** wystawić żądania, a następnie wiadomości są przed przeniesieniem do aplikacji po jej ponownym uruchomieniu. Ten proces jest często nazywany **co najmniej raz przetwarzania**, oznacza to, że każdy komunikat jest przetwarzany co najmniej raz, ale w pewnych sytuacjach ten sam komunikat może być dostarczony ponownie. Jeśli scenariusz nie toleruje dwukrotnego przetwarzania, deweloperzy aplikacji powinni dodać dodatkową logikę do swojej aplikacji w celu obsługi dwukrotnego dostarczania komunikatów. Możesz to zrobić za pomocą **getMessageId** metoda wiadomości, która pozostaje stała między kolejnymi próbami dostarczenia.
 
 ## <a name="delete-topics-and-subscriptions"></a>Usuwanie tematów i subskrypcji
 Podstawowym sposobem usuwanie tematów i subskrypcji jest użycie **ServiceBusContract** obiektu. Usunięcie tematu powoduje również usunięcie subskrypcji, które są zarejestrowane z tematem. Subskrypcje mogą być również usuwane niezależnie.
@@ -253,7 +253,7 @@ service.deleteTopic("TestTopic");
 ```
 
 ## <a name="next-steps"></a>Następne kroki
-Teraz, kiedy znasz już podstawy kolejek usługi Service Bus, zobacz [kolejek usługi Service Bus, tematy i subskrypcje] [ Service Bus queues, topics, and subscriptions] Aby uzyskać więcej informacji.
+Aby uzyskać więcej informacji, zobacz [kolejek usługi Service Bus, tematy i subskrypcje] [ Service Bus queues, topics, and subscriptions] Aby uzyskać więcej informacji.
 
 [Azure SDK for Java]: http://azure.microsoft.com/develop/java/
 [Azure Toolkit for Eclipse]: ../azure-toolkit-for-eclipse.md

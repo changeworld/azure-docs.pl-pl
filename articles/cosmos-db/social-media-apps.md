@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: maquaran
-ms.openlocfilehash: a67d0a6387201362199c0f96fba3f338d906bbda
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 5c916f847bf5098145c3ed14fad87c7669d916c8
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44052097"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222696"
 ---
 # <a name="going-social-with-azure-cosmos-db"></a>Azure Cosmos DB w zastosowaniach społecznościowych
 Mieszkających w wysoce wzajemnie połączonych społeczeństwa oznacza, że w pewnym momencie w życiu staje się częścią **sieci społecznościowej**. Używasz sieci społecznościowych, Utrzymuj znajomych, współpracowników, rodziny lub czasami udostępniać swoją pasję osoby o wspólnych zainteresowaniach.
@@ -39,7 +39,7 @@ Dlaczego SQL w tym scenariuszu najlepszy wybór? Przyjrzyjmy się struktury poje
 Można oczywiście Użyj wystąpienia SQL, inwestują z wystarczająco dużo mocy rozwiązania tysiące zapytań za pomocą tych wielu sprzężeń, aby obsługiwać zawartość, ale naprawdę, dlaczego chcesz, gdy istnieje prostszy rozwiązania?
 
 ## <a name="the-nosql-road"></a>Drogowa NoSQL
-Ten artykuł przeprowadzi Cię do modelowania danych platform społecznościowych dzięki bazie danych NoSQL Azure [usługi Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) w ekonomiczny sposób, korzystając z innych usługi Azure Cosmos DB funkcje, takie jak [interfejs API Gremlin języka Gremlin ](../cosmos-db/graph-introduction.md). Za pomocą [NoSQL](https://en.wikipedia.org/wiki/NoSQL) podejście, przechowywania danych w formacie JSON i stosowanie [denormalizacja](https://en.wikipedia.org/wiki/Denormalization), wcześniej skomplikowane wpis mogą zostać przekształcone w jednym [dokumentu](https://en.wikipedia.org/wiki/Document-oriented_database):
+Ten artykuł przeprowadzi Cię do modelowania danych platform społecznościowych dzięki bazie danych NoSQL Azure [usługi Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) w ekonomiczny sposób, korzystając z innych usługi Azure Cosmos DB funkcje, takie jak [interfejs API Gremlin](../cosmos-db/graph-introduction.md). Za pomocą [NoSQL](https://en.wikipedia.org/wiki/NoSQL) podejście, przechowywania danych w formacie JSON i stosowanie [denormalizacja](https://en.wikipedia.org/wiki/Denormalization), wcześniej skomplikowane wpis mogą zostać przekształcone w jednym [dokumentu](https://en.wikipedia.org/wiki/Document-oriented_database):
 
 
     {

@@ -1,6 +1,6 @@
 ---
-title: Ciągła integracja i wdrażanie w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak używać ciągłej integracji i ciągłego wdrażania, aby przenieść potoków usługi Data Factory z jednego środowiska (rozwoju, testowania, produkcji).
+title: Ciągła integracja i ciągłe dostarczanie w usłudze Azure Data Factory | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak przenieść potoków usługi Data Factory z jednego środowiska (rozwoju, testowania, produkcji) do innego za pomocą ciągłej integracji i ciągłego dostarczania.
 services: data-factory
 documentationcenter: ''
 author: douglaslMS
@@ -10,20 +10,20 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 09/26/2018
 ms.author: douglasl
-ms.openlocfilehash: 94c4a3fbd1c854401c42af5787c22db0e5dd6083
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 587c4c0804de809431bf9e731e7533f0d75770d9
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364988"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392622"
 ---
-# <a name="continuous-integration-and-deployment-in-azure-data-factory"></a>Ciągła integracja i wdrażanie w usłudze Azure Data Factory
+# <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Ciągła integracja i dostarczanie (CI/CD) w usłudze Azure Data Factory
 
-Ciągła Integracja jest rozwiązaniem polegającym na każdej ze zmian gotowe do testowania Twojej bazy kodu i automatycznie możliwie jak najszybciej. Ciągłe wdrażanie następuje, testy, które będzie się działo podczas ciągłej integracji i wypychanie zmian do systemu przejściowych lub produkcyjnych.
+Ciągła Integracja jest rozwiązaniem polegającym na każdej ze zmian gotowe do testowania Twojej bazy kodu i automatycznie możliwie jak najszybciej. Ciągłe dostarczanie poniżej, testy, które będzie się działo podczas ciągłej integracji i wypychanie zmian do systemu przejściowych lub produkcyjnych.
 
-Usługi Azure Data Factory ciągłej integracji i ciągłego wdrażania oznacza, że przenoszenie potoków usługi Data Factory z jednego środowiska (rozwoju, testowania, produkcji) do innego. Celu ciągłej integracji i ciągłego wdrażania umożliwia integrację interfejs użytkownika usługi Data Factory przy użyciu szablonów usługi Azure Resource Manager. Interfejs użytkownika usługi Data Factory można wygenerować szablonu usługi Resource Manager, po wybraniu **szablonu ARM** opcje. Po wybraniu **szablonu ARM wyeksportować**, portalu generuje szablonu usługi Resource Manager dla usługi data factory i pliku konfiguracji, który zawiera wszystkie ciągi połączeń i innych parametrów. Następnie należy utworzyć jeden plik konfiguracji dla poszczególnych środowisk (tworzenia, testowania, produkcji). Główny plik szablonu usługi Resource Manager pozostaje taka sama dla wszystkich środowisk.
+Usługi Azure Data Factory ciągła integracja i dostarczanie oznacza, że przenoszenie potoków usługi Data Factory z jednego środowiska (rozwoju, testowania, produkcji) do innego. Celu ciągłej integracji i dostarczania umożliwia integrację interfejs użytkownika usługi Data Factory przy użyciu szablonów usługi Azure Resource Manager. Interfejs użytkownika usługi Data Factory można wygenerować szablonu usługi Resource Manager, po wybraniu **szablonu ARM** opcje. Po wybraniu **szablonu ARM wyeksportować**, portalu generuje szablonu usługi Resource Manager dla usługi data factory i pliku konfiguracji, który zawiera wszystkie ciągi połączeń i innych parametrów. Następnie należy utworzyć jeden plik konfiguracji dla poszczególnych środowisk (tworzenia, testowania, produkcji). Główny plik szablonu usługi Resource Manager pozostaje taka sama dla wszystkich środowisk.
 
 Wprowadzenie dziewięć minutę i pokaz działania tej funkcji Obejrzyj poniższy film wideo:
 
@@ -53,9 +53,9 @@ Wybierz **Załaduj plik** wybierz wyeksportowany szablon usługi Resource Manage
 ![Otwórz widok kodu, aby wyświetlić parametry połączenia](media/continuous-integration-deployment/continuous-integration-codeview.png)
 
 ## <a name="continuous-integration-lifecycle"></a>Cykl życia ciągłej integracji
-Oto dla całego cyklu życia ciągłej integracji i ciągłego wdrażania, którego można używać po włączeniu integrację z usługą Azure DevOps usługi GIT w interfejs użytkownika usługi Data Factory:
+Oto całego cyklu życia dla ciągłej integracji i dostarczania, którego można używać po włączeniu integrację z usługą Azure repozytoriów Git w interfejs użytkownika usługi Data Factory:
 
-1.  Konfigurowanie tworzenia fabryki danych dzięki usługom DevOps platformy Azure, w którym wszystkie deweloperzy mogą tworzyć zasoby usługi Data Factory, takie jak potoki, zestawy danych i tak dalej.
+1.  Konfigurowanie tworzenia fabryki danych, korzystając z repozytoriów platformy Azure, w którym wszystkie deweloperzy mogą tworzyć zasoby usługi Data Factory, takie jak potoki, zestawy danych i tak dalej.
 
 1.  Następnie deweloperzy mogą zmodyfikować zasoby, takie jak potoki. Ponieważ oni wprowadzić swoje zmiany, można wybrać **debugowania** aby zobaczyć, jak potok jest uruchamiany przy użyciu najnowszych zmian.
 
@@ -67,23 +67,23 @@ Oto dla całego cyklu życia ciągłej integracji i ciągłego wdrażania, któr
 
 1.  Wyeksportowany szablon usługi Resource Manager można wdrożyć z różnymi plikami parametrów fabryki testu i fabryki produkcji.
 
-## <a name="automate-continuous-integration-with-azure-devops-services-releases"></a>Automatyzowanie ciągłej integracji z wersjami usługi DevOps platformy Azure
+## <a name="automate-continuous-integration-with-azure-pipelines-releases"></a>Automatyzowanie ciągła Integracja z usługą Azure potoki wydań
 
-Poniżej przedstawiono kroki, aby skonfigurować to wersja usługi DevOps platformy Azure, więc można zautomatyzować wdrażanie fabryki danych w wielu środowiskach.
+Poniżej przedstawiono procedurę konfigurowania wersji potoki usługi Azure, więc można zautomatyzować wdrażanie fabryki danych w wielu środowiskach.
 
-![Diagram przedstawiający ciągłej integracji z usługami DevOps platformy Azure](media/continuous-integration-deployment/continuous-integration-image12.png)
+![Diagram przedstawiający ciągłej integracji z potokiem, Azure](media/continuous-integration-deployment/continuous-integration-image12.png)
 
 ### <a name="requirements"></a>Wymagania
 
--   Subskrypcji platformy Azure, połączone z Team Foundation Server lub usługom DevOps platformy Azure przy użyciu [ *punktu końcowego usługi Azure Resource Manager*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
+-   Subskrypcji platformy Azure, połączone z Team Foundation Server lub repozytoriów platformy Azure przy użyciu [ *punktu końcowego usługi Azure Resource Manager*](https://docs.microsoft.com/azure/devops/pipelines/library/service-endpoints#sep-azure-rm).
 
--   Fabrykę danych za pomocą usługi Git DevOps platformy Azure, skonfigurować.
+-   Data Factory z skonfigurowano integrację z Git repozytoriów platformy Azure.
 
 -   [Usługi Azure Key Vault](https://azure.microsoft.com/services/key-vault/) zawierające wpisy tajne.
 
-### <a name="set-up-an-azure-devops-services-release"></a>Ustawianie wersji usługi DevOps platformy Azure
+### <a name="set-up-an-azure-pipelines-release"></a>Ustawianie wersji potoki usługi Azure
 
-1.  Przejdź do strony usługi usługom DevOps platformy Azure, w tym samym projekcie jako skonfigurowane za pomocą usługi Data Factory.
+1.  Przejdź do strony usługi repozytoriów platformy Azure, w tym samym projekcie jako skonfigurowane za pomocą usługi Data Factory.
 
 1.  Kliknij menu u góry **potoki Azure** &gt; **wersji** &gt; **Tworzenie definicji wydania**.
 
@@ -121,7 +121,7 @@ Poniżej przedstawiono kroki, aby skonfigurować to wersja usługi DevOps platfo
 
 ### <a name="optional---get-the-secrets-from-azure-key-vault"></a>Opcjonalnie — Pobierz wpisy tajne z usługi Azure Key Vault
 
-W przypadku wpisów tajnych, aby przekazać szablonu usługi Azure Resource Manager zaleca się wraz z wydaniem usługom DevOps platformy Azure przy użyciu usługi Azure Key Vault.
+W przypadku wpisów tajnych, aby przekazać szablonu usługi Azure Resource Manager zaleca się wraz z wydaniem potoki platformy Azure przy użyciu usługi Azure Key Vault.
 
 Istnieją dwa sposoby, aby obsłużyć wpisy tajne:
 
@@ -156,13 +156,13 @@ Istnieją dwa sposoby, aby obsłużyć wpisy tajne:
 
     ![](media/continuous-integration-deployment/continuous-integration-image8.png)
 
-### <a name="grant-permissions-to-the-azure-devops-services-agent"></a>Udziel uprawnień do agenta usługom DevOps platformy Azure
-Zadanie usługi Azure Key Vault może zakończyć się niepowodzeniem z powodu błędu dostępu po raz pierwszy. Pobieranie dzienników w wersji, a następnie zlokalizuj `.ps1` plików za pomocą polecenia można nadać uprawnienia do agenta usługom DevOps platformy Azure. Polecenie można uruchomić bezpośrednio lub możesz skopiować identyfikator podmiotu zabezpieczeń z pliku i ręcznie dodać zasad dostępu w witrynie Azure portal. (*Uzyskać* i *listy* są minimalne uprawnienia wymagane).
+### <a name="grant-permissions-to-the-azure-pipelines-agent"></a>Udziel uprawnień do agenta potoki usługi Azure
+Zadanie usługi Azure Key Vault może zakończyć się niepowodzeniem z powodu błędu dostępu po raz pierwszy. Pobieranie dzienników w wersji, a następnie zlokalizuj `.ps1` plików za pomocą polecenia można nadać uprawnienia do agenta potoki usługi Azure. Polecenie można uruchomić bezpośrednio lub możesz skopiować identyfikator podmiotu zabezpieczeń z pliku i ręcznie dodać zasad dostępu w witrynie Azure portal. (*Uzyskać* i *listy* są minimalne uprawnienia wymagane).
 
 ### <a name="update-active-triggers"></a>Aktualizacja aktywnej wyzwalaczy
 Wdrażanie może zakończyć się niepowodzeniem, jeśli zostanie podjęta próba aktualizacji active wyzwalaczy. Aby zaktualizować active wyzwalaczy, musisz ręcznie je uruchamiać i zatrzymywać ich po wdrożeniu. W tym celu można dodać zadania programu Azure Powershell, jak pokazano w poniższym przykładzie:
 
-1.  Na karcie zadania w tej wersji usługi Azure DevOps Wyszukaj **programu Azure Powershell** i dodaj go.
+1.  Na karcie zadania w tej wersji, wyszukaj **programu Azure Powershell** i dodaj go.
 
 1.  Wybierz **usługi Azure Resource Manager** jako połączenie typu, a następnie wybierz swoją subskrypcję.
 
@@ -180,7 +180,7 @@ Można wykonać podobne kroki i użyć podobny kod (z `Start-AzureRmDataFactoryV
 
 ## <a name="sample-deployment-template"></a>Przykładowy szablon wdrożenia
 
-Poniżej przedstawiono przykładowy szablon wdrożenia, który można zaimportować w usługom DevOps platformy Azure.
+Poniżej przedstawiono przykładowy szablon wdrożenia, który można zaimportować w potokach platformy Azure.
 
 ```json
 {

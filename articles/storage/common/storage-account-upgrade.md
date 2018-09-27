@@ -7,12 +7,12 @@ ms.service: storage
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: tamram
-ms.openlocfilehash: 8a0b823a12178df56417b05de28c2125ec155829
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 6e77c4836531a7efd0b52b9a411ac40ff6a613fa
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45740817"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224498"
 ---
 # <a name="upgrade-to-a-general-purpose-v2-storage-account"></a>Uaktualnienie do konta magazynu ogólnego przeznaczenia w wersji 2
 

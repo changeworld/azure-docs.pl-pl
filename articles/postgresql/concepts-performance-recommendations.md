@@ -6,20 +6,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 25ab2f735cfd4b0870729cb86992665fa8984580
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 09/26/2018
+ms.openlocfilehash: 6de302dbcfa9d6d1d2b311f41b03d8e54aeb63f6
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46976380"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395444"
 ---
 # <a name="performance-recommendations-in-azure-database-for-postgresql"></a>Zalecenia dotyczące wydajności w bazie danych Azure database for PostgreSQL
 
 **Dotyczy:** Azure Database for postgresql w warstwie 9.6 i 10
 
 > [!IMPORTANT]
-> Zalecenia dotyczące wydajności znajduje się w publicznej wersji zapoznawczej.
+> Zalecenia dotyczące wydajności znajduje się w publicznej wersji zapoznawczej w ograniczonej liczbie regionów.
 
 Zalecenia dotyczące wydajności funkcji identyfikuje najważniejsze indeksy, które mogą być tworzone w usługi Azure Database for postgresql w warstwie serwera w celu zwiększenia wydajności. Aby uzyskać zalecenia dotyczące indeksu, funkcja bierze pod uwagę różne cechy bazy danych, w tym jego schematu i obciążenia zgłoszonej Query Store. Po zaimplementowaniu żadnych rekomendacji wydajności, klientów należy przetestować wydajność, aby ocenić wpływ tych zmian. 
 

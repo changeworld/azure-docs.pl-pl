@@ -1,25 +1,25 @@
 ---
-title: Wyszukiwanie w sieci web dla trendów wideo | Dokumentacja firmy Microsoft
-description: Przedstawia sposób użycia interfejsu API wyszukiwania usługi Bing wideo, aby wyszukać w sieci web trendów wideo.
+title: Wyszukiwanie w sieci web dla popularnych klipów wideo — wyszukiwania wideo Bing
+titlesuffix: Azure Cognitive Services
+description: Pokazuje, jak używać interfejsu API wyszukiwania wideo Bing do wyszukiwania popularnych klipów wideo w sieci web.
 services: cognitive-services
 author: swhite-msft
-manager: ehansen
-ms.assetid: 897A28A3-0980-484E-814F-FFE1D5C885E6
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-video-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/15/2017
 ms.author: scottwhi
-ms.openlocfilehash: 8db7fcf77042631260b4b165bd3d44053827f3ce
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 8a6ccc9ea8cf9468d7638360c9db8131bc6dc5be
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35346896"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222050"
 ---
-# <a name="get-trending-videos"></a>Pobierz trendów wideo  
+# <a name="get-trending-videos"></a>Pobieranie popularnych wideo  
 
-Aby uzyskać współczesnych trendów wideo, Wyślij następujące żądania GET:  
+Aby uzyskać bieżącą popularnych klipów wideo, Wyślij następujące żądanie GET:  
   
 ```
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/trending?mkt=en-us HTTP/1.1
@@ -31,24 +31,24 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com  
 ```
 
-Następujące rynkach obsługuje trendów wideo.  
+Następujące rynki obsługuje popularne wideo.  
  
 -   EN-AU (angielski, Australia)  
 -   EN-CA (angielski, Kanada)  
--   en-GB (angielski, Polska)  
--   EN-ID (angielski, Indonezji)  
--   EN-IE (w języku angielskim, Irlandii)  
+-   en-GB (angielski, Wielka Brytania)  
+-   EN-ID (angielski, Indonezja)  
+-   EN-IE (angielski, Irlandia)  
 -   EN-IN (angielski, Indie)  
 -   NZ en (angielski, Nowa Zelandia)  
--   CIĄG en (angielski, Filipiny)  
--   EN-SG (angielski, Singapuru)  
+-   PH en (angielski, Filipiny)  
+-   SG en (angielski, Singapur)  
 -   EN US (angielski, Stany Zjednoczone)  
--   EN TT (angielski cały świat agregacji kodu)  
--   EN-ZA-(angielski, Republika Południowej Afryki)  
--   zh-CN (chińskim, Chiny)
+-   EN-WW (angielski, cały świat agregacji kodu)  
+-   ZA en (angielski, Republika Południowej Afryki)  
+-   nazwy zh-CN (chińskim, Chiny)
 
   
-W poniższym przykładzie przedstawiono odpowiedzi, która zawiera trendów wideo.  
+Poniższy przykład przedstawia odpowiedź, która zawiera popularnych klipów wideo.  
 
 ```  
 {  
@@ -113,7 +113,7 @@ W poniższym przykładzie przedstawiono odpowiedzi, która zawiera trendów wide
 }  
   
 ```  
-Odpowiedź zawiera listę plików wideo według kategorii i podkategorii. Na przykład jeden z jej podkategorie jest górnej kategorii Muzyka, filmy zawarte na liście kategorii, można utworzyć kategorii Top muzyka wideo w środowiska użytkownika. Następnie można użyć `thumbnailUrl`, `displayText`, i `webSearchUrl` pola, aby utworzyć aktywne kafelka w każdej kategorii (na przykład pierwszych muzyka wideo). Po kliknięciu kafelka one jest przekierowanie do usługi Bing w przeglądarce wideo gdzie odtwarzania wideo.
+Odpowiedź zawiera listę wideo według kategorii i podkategorii. Na przykład jeśli jeden z jej podkategorie był górnej kategorii Muzyka, filmy wideo znajdujących się na liście kategorii, można utworzyć kategorii górnej muzyczne, filmy wideo w środowiska użytkownika. Następnie można użyć `thumbnailUrl`, `displayText`, i `webSearchUrl` pól w celu utworzenia możesz klikać kafelka w każdej kategorii (na przykład pierwszych muzyczne filmy wideo). Po kliknięciu kafelka one nastąpi przekierowanie do przeglądarki wideo Bing gdzie jest odtwarzany film wideo.
 
-Odpowiedź zawiera również transparent wideo, które są najbardziej popularnych wideo trendów. Filmy wideo transparent mogą pochodzić z jednego lub więcej kategorii.  
+Odpowiedź zawiera również Baner wideo, które są najbardziej popularne popularnych klipów wideo. Transparent filmy wideo mogą pochodzić z jednego lub więcej kategorii.  
   

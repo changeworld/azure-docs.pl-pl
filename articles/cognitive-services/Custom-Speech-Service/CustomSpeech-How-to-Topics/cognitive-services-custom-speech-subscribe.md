@@ -1,21 +1,22 @@
 ---
-title: Uzyskiwanie kluczy subskrypcji usługę Custom Speech Service na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można pobrać kluczy subskrypcji dla wywołań Custom Speech Service w usługach Cognitive Services.
+title: Uzyskiwanie kluczy subskrypcji — Custom Speech Service
+titlesuffix: Azure Cognitive Services
+description: Dowiedz się, jak można pobrać kluczy subskrypcji dla wywołań Custom Speech Service.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/08/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: e5cac34a9aead209bec90cfd5f89e94a005a1995
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e4694928baf98bdb0d6aacead8dffec6bb73d6f7
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980359"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224776"
 ---
 # <a name="obtain-subscription-keys"></a>Uzyskiwanie kluczy subskrypcji
 Aby rozpocząć pracę, przy użyciu usługi Azure Custom Speech Service, należy najpierw połączyć konto użytkownika z subskrypcją platformy Azure. Dostępnych subskrypcji bezpłatnych i płatnych warstw. Aby uzyskać informacje na temat warstw, zobacz [stronę z cennikiem](https://www.microsoft.com/cognitive-services/en-us/pricing).

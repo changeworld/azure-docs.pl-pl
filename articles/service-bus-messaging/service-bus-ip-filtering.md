@@ -1,6 +1,6 @@
 ---
-title: Filtry połączenia IP magistrali usługi Azure | Dokumentacja firmy Microsoft
-description: Jak używać IP filtrowania bloku połączeń z określonych adresów IP do usługi Azure Service Bus.
+title: Azure filtry połączenia usługi Service Bus IP | Dokumentacja firmy Microsoft
+description: Jak używać filtrowania z określonych adresów IP do usługi Azure Service Bus w celu połączenia bloków adresów IP.
 services: service-bus
 documentationcenter: ''
 author: clemensv
@@ -8,44 +8,44 @@ manager: timlt
 ms.service: service-bus
 ms.devlang: na
 ms.topic: article
-ms.date: 06/26/2018
+ms.date: 09/26/2018
 ms.author: clemensv
-ms.openlocfilehash: e009bb9120fafc6edf60b68fab3336b9d1add507
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: ccb759a9151d734aa99a6f6b9c68e6072874dd84
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37036066"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394832"
 ---
-# <a name="use-ip-filters"></a>Używanie filtrów IP
+# <a name="use-ip-filters"></a>Użyj filtrów IP
 
-W scenariuszach, w których usługi Azure Service Bus jest dostępna tylko w pewnych dobrze znanych witryn *filtrów IP* funkcja umożliwia konfigurowanie reguł odrzucenia lub akceptowania ruchu pochodzącego z określonych adresów IPv4. Na przykład te adresy można te firmy bramy translatora adresów Sieciowych.
+W scenariuszach, w których usługi Azure Service Bus jest dostępna tylko w pewnych dobrze znanych witryn *filtru IP* funkcja umożliwia skonfigurowanie reguł dla odrzuca lub akceptowanie ruchu pochodzącego z określonych adresów IPv4. Na przykład te adresy może być udostępnianych przez firmy bramy translatora adresów Sieciowych.
 
 ## <a name="when-to-use"></a>Kiedy stosować
 
-Istnieją dwa przypadków użycia określonego, w których jest przydatna do blokowania punktów końcowych usługi Service Bus dla określonych adresów IP:
+Istnieją dwa przypadki użycia określonych, w których jest przydatne blokowanie punktów końcowych usługi Service Bus na potrzeby niektórych adresów IP:
 
-- Usługi Service Bus powinny odbierać dane tylko z określonego zakresu adresów IP i odrzucić wszystkie inne elementy. Na przykład używasz usługi Service Bus z [Azure Express Route] [ express-route] do tworzenia prywatnej połączeń z infrastruktury lokalnej.
-- Należy odrzucić ruch sieciowy z adresów IP, które zostały zidentyfikowane jako podejrzane przez administratora usługi Service Bus.
+- Service Bus powinny odbierać ruch tylko z określonego zakresu adresów IP i odrzucić wszystkie inne elementy. Na przykład używasz usługi Service Bus za pomocą [Azure Express Route] [ express-route] na tworzenie prywatnych połączeń w infrastrukturze lokalnej.
+- Należy odrzucić ruch z adresów IP, które zostały zidentyfikowane jako podejrzane przez administratora usługi Service Bus.
 
 ## <a name="how-filter-rules-are-applied"></a>Sposób stosowania reguły filtrowania
 
-Reguły filtru IP są stosowane na poziomie przestrzeni nazw usługi Service Bus. W związku z tym zasady stosowane do wszystkich połączeń z klientami za pomocą obsługiwanych protokołów.
+Reguły filtrowania adresów IP są stosowane na poziomie przestrzeni nazw usługi Service Bus. W związku z tym zasady stosowane do wszystkich połączeń z klientami przy użyciu dowolnego obsługiwanego protokołu.
 
-Każda próba połączenia z nieautoryzowanym dopasowań odrzucenia wydzielenia reguły IP w przestrzeni nazw usługi Service Bus jako adres IP. Odpowiedź nie mogą zawierać reguły IP.
+Każda próba połączenia z adresu IP, który nieautoryzowane dopasowania, odrzucenia jako regułę wydzielenia adresów IP w przestrzeni nazw usługi Service Bus. Odpowiedź nie mogą zawierać reguły adresów IP.
 
 ## <a name="default-setting"></a>Ustawienie domyślne
 
-Domyślnie **filtrów IP** siatki w portalu dla usługi Service Bus jest pusta. To ustawienie domyślne oznacza, że przestrzeń nazw akceptuje połączenia dowolnego adresu IP. To domyślne ustawienie jest odpowiednikiem regułę, która akceptuje 0.0.0.0/0 zakres adresów IP.
+Domyślnie **filtru IP** siatki w portalu usługi Service Bus jest pusty. To ustawienie domyślne oznacza, że przestrzeń nazw akceptuje połączenia z dowolnego adresu IP. To ustawienie domyślne jest odpowiednikiem regułę, która akceptuje zakres adresów IP 0.0.0.0/0.
 
-## <a name="ip-filter-rule-evaluation"></a>Szacowanie reguły filtru adresu IP
+## <a name="ip-filter-rule-evaluation"></a>Ocenę reguł filtrowania adresów IP
 
-Reguły filtru IP są stosowane w kolejności, pierwszej reguły, który odpowiada adresowi IP określa akcji Zaakceptuj lub Odrzuć.
+Reguły filtrowania adresów IP są stosowane w kolejności i pierwszej reguły, który jest zgodny z adresem IP określa akcję Zaakceptuj lub Odrzuć.
 
-Na przykład jeśli chcesz zaakceptować adresów w zakresie 70.37.104.0/24 i odrzucić wszystkie inne pierwszą regułę w siatce powinna obsługiwać 70.37.104.0/24 zakresu adresów. Reguły następnej Odrzuć wszystkie adresy przy użyciu 0.0.0.0/0 zakresu.
+Na przykład jeśli chcesz zaakceptować adresów w 70.37.104.0/24 zakresu i odrzucić wszystkie inne elementy, pierwszą regułę w siatce powinna obsługiwać 70.37.104.0/24 zakresu adresów. Następną regułę należy odrzucić wszystkie adresy, używając 0.0.0.0/0 zakresu.
 
 > [!NOTE]
-> Odrzucanie adresów IP można zapobiec interakcji z usługą Service Bus innymi usługami Azure (np. Azure Stream Analytics, maszynach wirtualnych platformy Azure lub Explorer urządzenia w portalu).
+> Odrzuca adresy IP można zapobiec interakcji z usługą Service Bus innych usług platformy Azure (np. usługi Azure Stream Analytics, Azure Virtual Machines lub Device Explorer w portalu).
 
 ### <a name="creating-a-virtual-network-rule-with-azure-resource-manager-templates"></a>Tworzenie reguły sieci wirtualnej przy użyciu szablonów usługi Azure Resource Manager
 
@@ -53,9 +53,9 @@ Następujący szablon usługi Resource Manager umożliwia dodanie reguły sieci 
 
 Parametry szablonu:
 
-- **ipFilterRuleName** musi być unikatowy, bez uwzględniania wielkości liter, alfanumeryczne ciągu maksymalnie 128 znaków.
-- **ipFilterAction** jest **Odrzuć** lub **Akceptuj** jako akcja w celu zastosowania reguły filtru adresu IP.
-- **ipMask** jest pojedynczy adres IPv4 lub blok adresów IP w notacji CIDR. Na przykład w CIDR 70.37.104.0/24 notacji reprezentuje 256 adresy IPv4 z 70.37.104.0 70.37.104.255 z 24 wskazującą liczbę bitów znaczących prefiks zakresu.
+- **ipFilterRuleName** musi być unikatowy, bez uwzględniania wielkości liter, alfanumerycznego ciągu maksymalnie 128 znaków.
+- **ipFilterAction** jest **Odrzuć** lub **Akceptuj** jako akcję do zastosowania dla tej reguły filtru adresu IP.
+- **ipMask** jest pojedynczy adres IPv4 lub bloku adresów IP w notacji CIDR. Na przykład w CIDR 70.37.104.0/24 notacji reprezentuje 256 adresów IPv4 z 70.37.104.0 70.37.104.255 z 24 określającą liczbę bitów znaczące prefiks dla zakresu.
 
 ```json
 {  
@@ -103,11 +103,11 @@ Parametry szablonu:
 }
 ```
 
-Aby wdrożyć szablon, postępuj zgodnie z instrukcjami dla [usługi Azure Resource Manager][lnk-deploy].
+Aby wdrożyć szablon, postępuj zgodnie z instrukcjami dotyczącymi [usługi Azure Resource Manager][lnk-deploy].
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Ograniczanie dostępu do usługi Service Bus do sieci wirtualnych platformy Azure zobacz następujące łącze:
+Ograniczanie dostępu do usługi Service Bus, sieciami wirtualnymi platformy Azure zobacz następujące łącze:
 
 - [Punkty końcowe usługi sieci wirtualnej dla usługi Service Bus][lnk-vnet]
 

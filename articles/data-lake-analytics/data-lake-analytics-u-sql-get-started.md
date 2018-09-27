@@ -9,12 +9,12 @@ ms.assetid: 57143396-ab86-47dd-b6f8-613ba28c28d2
 ms.service: data-lake-analytics
 ms.topic: conceptual
 ms.date: 06/23/2017
-ms.openlocfilehash: 1822ac9b539aa196601c6c07ccc8d0544fd5f3dd
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: daef00bc7b39326b79e5f56bf803dc6aad1ac0ff
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042432"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221949"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Wprowadzenie do języka U-SQL w usłudze Azure Data Lake Analytics
 U-SQL jest językiem, który łączy deklaratywne SQL za pomocą imperatywne C# umożliwia przetwarzanie danych w dowolnej skali. Za pomocą funkcji skalowalnych, rozproszonych zapytań U-SQL można efektywnie analizować dane w magazynach relacyjnych, takich jak Azure SQL Database. Przy użyciu języka U-SQL może przetwarzać dane bez określonej struktury, stosując schematu przy odczycie oraz Wstawianie niestandardowej logiki i funkcji zdefiniowanych przez użytkownika. Ponadto U-SQL zawiera rozszerzalności, który zapewnia precyzyjną kontrolę nad jak wykonać na dużą skalę. 
@@ -226,4 +226,4 @@ W przypadku scenariuszy zaawansowanych agregacji, zobacz dokumentację referency
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Omówienie usługi Microsoft Azure Data Lake Analytics](data-lake-analytics-overview.md)
-* [Tworzenie skryptów U-SQL przy użyciu narzędzi Data Lake Tools dla Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)
+* [Tworzenie skryptów U-SQL przy użyciu narzędzi Data Lake Tools for Visual Studio](data-lake-analytics-data-lake-tools-get-started.md)

@@ -11,18 +11,18 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 09/26/2018
 ms.author: jingwang
-ms.openlocfilehash: a077c7d154235205126d77e5523c0acd96e70ad5
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: dc5f6c8c12dc10d135eaaf26d83236b2287bf059
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47031615"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223122"
 ---
 # <a name="copy-data-from-office-365-into-azure-using-azure-data-factory-preview"></a>Kopiowanie danych z usługi Office 365 na platformie Azure przy użyciu usługi Azure Data Factory (wersja zapoznawcza) 
 
-Usługa Azure Data Factory pozwala przenieść bogate dane organizacji w usługi Office 365 dzierżawy na platformę Azure w sposób skalowalny i kompilowanie aplikacji do analizowania i wyodrębnić szczegółowe informacje, w oparciu o te zasoby cennych danych. Integracja z usługą Privileged Access Management zapewnia kontrolę bezpiecznego dostępu do cennych danych nadzorowanych w usłudze Office 365.  Więcej informacji na temat zarządzany dostęp do programu Microsoft Graph w wersji zapoznawczej usługi Microsoft Azure, można znaleźć [ten link](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki).
+Usługa Azure Data Factory pozwala przenieść bogate dane organizacji w usługi Office 365 dzierżawy na platformę Azure w sposób skalowalny i kompilowanie aplikacji do analizowania i wyodrębnić szczegółowe informacje, w oparciu o te zasoby cennych danych. Integracja z usługą Privileged Access Management zapewnia kontrolę bezpiecznego dostępu do cennych danych nadzorowanych w usłudze Office 365.  Aby uzyskać więcej informacji dotyczących danych programu Microsoft Graph connect, zapoznaj się [ten link](https://github.com/OfficeDev/ManagedAccessMSGraph/wiki).
 
 W tym artykule opisano sposób używania działania kopiowania w usłudze Azure Data Factory do kopiowania danych z usługi Office 365. Opiera się na [omówienie działania kopiowania](copy-activity-overview.md) artykułu, który przedstawia ogólne omówienie działania kopiowania.
 

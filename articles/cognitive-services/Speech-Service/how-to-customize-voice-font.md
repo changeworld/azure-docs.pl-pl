@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 042216d03749273c590ce5ba812f7a6d609f8e83
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4219878673bbb3560ca13f09eb0fde940b2b17e3
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987910"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222764"
 ---
 # <a name="creating-custom-voice-fonts"></a>Tworzenie niestandardowych voice czcionek
 
@@ -25,9 +25,7 @@ Możesz rozpocząć pracę z małą ilością danych do weryfikacji koncepcji. J
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-**Zamiany tekstu na mowę** funkcja dostosowywania głosu jest obecnie dostępna w prywatnej wersji zapoznawczej. [Wypełnij formularz zgłoszeniowy](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbR0N8Vcdi8MZBllkZb70o6KdURjRaUzhBVkhUNklCUEMxU0tQMEFPMjVHVi4u) wziąć pod uwagę dostępu.
-
-Należy również konto platformy Azure i subskrypcji usługi mowy. [Utwórz je](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started) Jeśli jeszcze go. Twoja subskrypcja połączyć się z portalu usługi Custom Voice w następujący sposób.
+Konieczne będzie konto platformy Azure i subskrypcji usługi mowy. [Utwórz je](https://docs.microsoft.com/azure/cognitive-services/speech-service/get-started) Jeśli jeszcze go. Twoja subskrypcja połączyć się z portalu usługi Custom Voice w następujący sposób.
 
 1. Zaloguj się do [portal Custom Voice](https://customvoice.ai) przy użyciu tego samego konta Microsoft, służy do zastosowania do uzyskiwania dostępu.
 
@@ -35,16 +33,13 @@ Należy również konto platformy Azure i subskrypcji usługi mowy. [Utwórz je]
 
     ![Subskrypcje](media/custom-voice/subscriptions.png)
 
-3. Na stronie "Subskrypcje" wybierz pozycję "Połącz istniejącą subskrypcję".
+3. Na stronie "Subskrypcje" wybierz pozycję "Połącz istniejącą subskrypcję". Należy pamiętać, że usługi mowy obsługują różnych regionach. Sprawdź region, w którym został utworzony klucz subskrypcji i upewnij się, że klucz jest połączenie z poprawną portalem podrzędnych.  
 
 4. Wklej swój klucz subskrypcji do tabeli, jak pokazano poniżej. Każda subskrypcja ma dwa klucze i mogą korzystać z każdej z nich.
 
      ![Dodaj subskrypcję](media/custom-voice/add-subscription.png)
 
 Jesteś gotowy!
-
-> [!IMPORTANT]
-> Na etapie prywatnej wersji zapoznawczej subskrypcji musi być umieszczona na białej liście, aby korzystać z funkcji głosowych niestandardowe. Postępuj zgodnie z instrukcjami na stronie można pobrać listy dozwolonych Twojej subskrypcji.
 
 ## <a name="prepare-recordings-and-transcripts"></a>Przygotowania, nagrania i transkrypcje
 
@@ -232,4 +227,4 @@ Dostosowanie głos jest dostępna dla US English (en US), kontynent, chiński (z
 ## <a name="next-steps"></a>Kolejne kroki
 
 - [Pobierz subskrypcję usługi mowy w wersji próbnej](https://azure.microsoft.com/try/cognitive-services/)
-- [Rozpoznawanie mowy w języku C#](quickstart-csharp-dotnet-windows.md)
+- [Zarejestruj swoje próbki głosu](record-custom-voice-samples.md)

@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: billgib, sstein
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: b9009452ada6ebfb7626532b1fac406563704ef3
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: eff6859dda771bfc2ca2e709578983b6113c6057
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056685"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227490"
 ---
 # <a name="multi-tenant-saas-database-tenancy-patterns"></a>Wielodostępne SaaS baza danych dzierżawy wzorców
 
@@ -138,7 +138,7 @@ W poniżej, za pomocą modelu wielodostępnym podzielonej na fragmenty, elastycz
 
 ## <a name="f-multi-tenant-app-with-a-single-multi-tenant-database"></a>F. Aplikacji wielodostępnej za pomocą jednej wielodostępnej bazie danych
 
-Najprostszy wzorzec wielodostępną bazą danych używa pojedynczego pojedynczej bazy danych do przechowywania danych dla wszystkich dzierżaw.  Po dodaniu więcej dzierżaw bazy danych jest skalowany w górę więcej zasobów magazynu i mocy obliczeniowej.  Skalowanie w górę może być wszystko, co jest potrzebne, mimo że zawsze jest limit skalowania ultimate.  Jednak długo przed osiągnięciu tego limitu bazy danych staje się one nieporęczne za zarządzanie.
+Najprostszy wzorzec wielodostępną bazą danych używa pojedynczej bazy danych do przechowywania danych dla wszystkich dzierżaw.  Po dodaniu więcej dzierżaw bazy danych jest skalowany w górę więcej zasobów magazynu i mocy obliczeniowej.  Skalowanie w górę może być wszystko, co jest potrzebne, mimo że zawsze jest limit skalowania ultimate.  Jednak długo przed osiągnięciu tego limitu bazy danych staje się one nieporęczne za zarządzanie.
 
 Operacje zarządzania, które koncentrują się na poszczególnych dzierżaw są bardziej złożone, aby zaimplementować w wielodostępnej bazie danych.  I na dużą skalę te operacje mogą stać się zbyt wolno.  Przykładem jest w momencie przywracania danych dla tylko jednej dzierżawy.
 

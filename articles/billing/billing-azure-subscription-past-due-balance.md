@@ -1,6 +1,6 @@
 ---
 title: Minął termin płatności saldo e-mail z platformy Azure | Dokumentacja firmy Microsoft
-description: Opisuje sposób uregulować płatność Jeśli subskrypcji platformy Azure ma przeszłości należności saldo
+description: Opisuje sposób dokonać płatności jeśli Twoja subskrypcja platformy Azure ma przeszłych płatności salda
 services: ''
 documentationcenter: ''
 author: genlin
@@ -14,40 +14,40 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: genli
-ms.openlocfilehash: 5e5d8849e59d95640b490d29bf1233135980486c
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.author: cwatson
+ms.openlocfilehash: fbc1f906812c0fb40a173fd90eac315753c893ef
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34159224"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393235"
 ---
-# <a name="resolve-past-due-balance-for-your-azure-subscription-after-getting-an-email-from-azure"></a>Rozwiąż zaległe saldo dla Twojej subskrypcji platformy Azure po otrzymaniu wiadomości e-mail z platformy Azure
+# <a name="resolve-past-due-balance-for-your-azure-subscription-after-getting-an-email-from-azure"></a>Rozwiąż zaległe saldo subskrypcji platformy Azure po otrzymaniu wiadomości e-mail z platformy Azure
 
-Jeśli płatność nie otrzymano lub nie można przetworzyć Twojej płatności, może otrzymasz wiadomość e-mail lub wyświetlony alert w portalu Centrum konta lub Azure. Wiadomość może być takich jak:
+Nie otrzyma płatności lub nie można przetworzyć płatności, mogą otrzymywać wiadomość e-mail lub wyświetlony alert w portalu Centrum konta lub na platformie Azure. Komunikat może być np.:
 
-**Firma Microsoft mógł obciążenia Twojej karty kredytowej dla Twojej subskrypcji. Aby uniknąć przerw, zaktualizuj informacje o płatności.**
+**Firma Microsoft nie mogły do obciążenia karty kredytowej dla subskrypcji. Aby uniknąć przerw, zaktualizuj informacje o płatności.**
 
-Wykonaj kroki opisane w artykule, aby rozwiązać przeszłości saldo ukończenia.
+Postępuj zgodnie z instrukcjami w artykule, aby rozwiązać przeszłości saldo ukończenia.
 
-## <a name="resolve-the-past-due-balance"></a>Rozwiąż przeszłości saldo ukończenia
+## <a name="resolve-the-past-due-balance"></a>Rozwiąż przeszłości saldo termin
 
-* Jeśli karty kredytowej jest odrzucona lub wygasła, [zmienić karty kredytowej do realizacji płatności subskrypcji](billing-how-to-change-credit-card.md) lub skontaktuj się z banku Aby rozwiązać ten problem. Po zaktualizowaniu formę płatności Azure natychmiast przetwarza płatności dla wszystkich zaległych opłat. Płatności również są przetwarzane dla innych usług firmy Microsoft, gdzie masz zaległych opłat.
+* Jeśli karta kredytowa jest odrzucone lub uznawane za wygasłe, [zmienić karty kredytowej użytej do zapłacenia za subskrypcję](billing-how-to-change-credit-card.md) lub skontaktuj się z Bankiem, aby rozwiązać ten problem. Po zaktualizowaniu metodę płatności Azure natychmiast przetwarza płatności dla wszystkich zaległych opłat. Płatności są również przetwarzane dla innych usług firmy Microsoft, w którym masz zaległych opłat.
 
-* Jeśli jesteś w trybie faktury płatności, Wyślij płatność do lokalizacji podanej w dolnej części faktury. Jeśli potrzebujesz pomocy, skontaktuj się z [pomocą techniczną platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+* Jeśli użytkownik pracuje na invoice mode of payment płatności, Wyślij płatność do lokalizacji wskazanej na dole faktury. Jeśli potrzebujesz pomocy, skontaktuj się z [pomocy technicznej systemu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-* Jeśli nie widzisz rachunek ponieważ opuścił administratora konta firmy lub zmienione ról, skontaktuj się z [pomocą techniczną platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Aby rozwiązać ten problem.
+* Jeśli nie zostanie wyświetlony rachunek, ponieważ Administrator konta opuścił firmę lub zmiany jego roli, skontaktuj się z [pomocy technicznej systemu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade) Aby rozwiązać ten problem.
 
-* Jeśli znasz płatność została przetworzona, ale nadal wyłączenia subskrypcji, skontaktuj się z [pomocą techniczną platformy Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
+* Jeśli znasz przetworzeniu płatności, ale Twoja subskrypcja nadal jest wyłączona, skontaktuj się z [pomocy technicznej systemu Azure](https://portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
 
-## <a name="not-getting-billing-email-notifications"></a>Nie występują rozliczeń powiadomienia e-mail?
+## <a name="not-getting-billing-email-notifications"></a>Nie otrzymuje powiadomienia e-mail rozliczeń?
 
-Jeśli jesteś administratorem konta [sprawdzić, jakie adres e-mail jest używany dla powiadomienia](billing-how-to-change-azure-account-profile.md). Zaleca się, że używasz adresu e-mail, który regularnie sprawdzać. Jeśli adres e-mail jest odpowiednia, sprawdź folder wiadomości-śmieci.
+Jeśli jesteś administratorem konta [sprawdzić, jakiego adresu e-mail jest używany dla powiadomień](billing-how-to-change-azure-account-profile.md). Zaleca się, że używasz adresu e-mail, które regularnie sprawdzać. Jeśli adres e-mail jest odpowiednia, sprawdź folder wiadomości-śmieci.
 
-## <a name="if-i-forget-to-pay-what-happens"></a>Jeśli nie pamiętam płatności, co się stanie?
+## <a name="if-i-forget-to-pay-what-happens"></a>Jeśli nie pamiętam płatności, co się dzieje?
 
-Usługa została anulowana i zasobów nie są już dostępne. Azure dane zostaną usunięte 90 dni od usługi zostało zakończone. Aby dowiedzieć się więcej, zobacz [Microsoft Center Trust — jak możemy zarządzać danymi](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
+Usługa została anulowana i zasobami nie będą już dostępne. Twoje dane platformy Azure jest usunięte 90 dni po usługi zostanie zakończony. Aby dowiedzieć się więcej, zobacz [Microsoft Trust Center — jak Zarządzamy danych](https://go.microsoft.com/fwLink/p/?LinkID=822930&clcid=0x409).
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
 
-Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać szybkie rozwiązanie problemu.
+Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.

@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: efdded28fa4554bf58399d997bf663781a08755e
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 9e180e15801a7100349c7334a2452adfeab95500
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714705"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394489"
 ---
 # <a name="about-the-speech-to-text-api"></a>Zamiana mowy na tekst interfejsu API — informacje
 
@@ -26,7 +26,7 @@ ms.locfileid: "44714705"
 
 - W czasie rzeczywistym rozpoznawania ciągłe. **Zamiana mowy na tekst** umożliwia użytkownikom wykonać transkrypcji audio na tekst w czasie rzeczywistym. Obsługuje ona również otrzymywać wyniki pośrednie wyrazów, które zostały rozpoznane do tej pory. Usługa automatycznie rozpoznaje koniec mowy. Użytkownicy mogą także wybrać dodatkowych opcji formatowania, w tym wielkość liter i znaków interpunkcyjnych, wulgaryzmów maskowania i normalizacji odwrotność tekstu.
 
-- Zoptymalizowane pod kątem **zamiana mowy na tekst** wyniki konwersacji interactive i dyktowanie scenariuszy. 
+- Zoptymalizowane pod kątem **zamiana mowy na tekst** wyniki konwersacji interactive i dyktowanie scenariuszy. Rozpoznane wyniki są zwracane w formularzach zarówno Lexical, jak i wyświetlania (leksykalne wyników, zobacz DetailedSpeechRecognitionResult w przykładach lub interfejsu API).
 
 - Obsługa wielu języków i dialekty. Aby uzyskać pełną listę obsługiwanych języków w trybie rozpoznawania, zobacz [obsługiwane języki](supported-languages.md#speech-to-text).
 

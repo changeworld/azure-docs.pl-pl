@@ -11,15 +11,15 @@ ms.service: active-directory
 ms.component: fundamentals
 ms.workload: identity
 ms.topic: conceptual
-ms.date: 06/27/2018
+ms.date: 09/24/2018
 ms.author: lizross
 ms.reviewer: dhanyahk
-ms.openlocfilehash: ab0162c6c38b2abef840836114d33f3d92efe1a8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: d39cfddc42ea0e03f6b0f6c8d1c0160839742518
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47042503"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393914"
 ---
 # <a name="whats-new-in-azure-active-directory"></a>What's new in Azure Active Directory?
 
@@ -36,6 +36,192 @@ Usługa Azure AD odbiera ulepszenia w sposób ciągły. Aby uzyskać najnowsze i
 Ta strona jest aktualizowany co miesiąc, więc ponownie regularnie.
 
 ---
+## <a name="september-2018"></a>Września 2018 r.
+ 
+### <a name="updated-administrator-role-permissions-for-dynamic-groups"></a>Uprawnienia roli administrator zaktualizowane grup dynamicznych
+
+**Typ:** stałej  
+**Kategoria usług:** Zarządzanie grupami  
+**Możliwości produktu:** współpracy
+
+Rozwiązaliśmy problem, więc teraz tworzyć i aktualizować reguły członkostwa dynamicznego, bez potrzeby bycia właściciela grupy ról określonego administratora.
+
+Dostępne są następujące role:
+
+- Administrator globalny lub zapisywania firmy
+
+- Administrator usługi Intune
+
+- Administrator kont użytkowników
+
+Aby uzyskać więcej informacji, zobacz [utworzyć grupę dynamiczną i sprawdzić stan](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule)
+
+---
+
+### <a name="simplified-single-sign-on-sso-configuration-settings-for-some-third-party-apps"></a>Uproszczone ustawienia konfiguracji pojedynczego logowania jednokrotnego (SSO) w przypadku niektórych aplikacji innych firm
+
+**Typ:** nowa funkcja  
+**Kategoria usług:** aplikacje dla przedsiębiorstw  
+**Możliwości produktu:** logowania jednokrotnego
+
+Zdajemy sobie sprawę, że ustawienia zapasowej pojedynczego logowania jednokrotnego (SSO) dla oprogramowania jako usługi (SaaS) aplikacji może być trudne, ze względu na unikatowy charakter każdej konfiguracji aplikacji. Mamy skompilowane środowisko uproszczona konfiguracja, aby automatycznie wypełnić ustawień konfiguracji logowania jednokrotnego dla następujących aplikacji SaaS innych firm:
+
+- Zendesk
+
+- Komponent ArcGis Online
+
+- Narzędzie Jamf Pro
+
+Aby rozpocząć korzystanie z tego środowiska jednym kliknięciem, przejdź do **witryny Azure portal** > **konfiguracji logowania jednokrotnego** strony aplikacji. Aby uzyskać więcej informacji, zobacz [integracji aplikacji SaaS w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/saas-apps/tutorial-list)
+
+---
+
+### <a name="azure-active-directory---where-is-your-data-located-page"></a>Usługa Azure Active Directory — Twoje dane lokalizacji? Strona
+
+**Typ:** nowa funkcja  
+**Kategoria usług:** innych  
+**Możliwości produktu:** GoLocal
+
+Wybierz region, firmy z **usługi Azure Active Directory — Twoje dane lokalizacji** strony do widoku, w którym Centrum danych Azure przechowuje dane usługi Azure AD w spoczynku dla wszystkich usług Azure AD. Informacje można filtrować według określonej usługi Azure AD dla regionu w firmie.
+
+Aby skorzystać z tej funkcji i uzyskać więcej informacji, zobacz [usługi Azure Active Directory — Twoje dane lokalizacji](http://aka.ms/AADDataMap).
+
+---
+
+### <a name="new-deployment-plan-available-for-the-my-apps-access-panel"></a>Nowy plan wdrażania dostępne do panelu dostępu usługi Moje aplikacje
+
+**Typ:** nowa funkcja  
+**Kategoria usług:** Moje aplikacje  
+**Możliwości produktu:** logowania jednokrotnego
+
+Sprawdź nowy plan wdrożenia, dostępnej w panelu Moje aplikacjom dostępu (http://aka.ms/deploymentplans).
+Panel Moje dostępu aplikacji zapewnia użytkownikom z jednego miejsca można znaleźć i uzyskać dostęp do swoich aplikacji. Ten portal zapewnia również użytkownikom możliwości samoobsługi, takie jak żądania dostępu do aplikacji i grup oraz zarządzanie dostępem do tych zasobów w imieniu innych użytkowników.
+
+Aby uzyskać więcej informacji, zobacz [co to jest portal Moje aplikacje?](https://docs.microsoft.com/azure/active-directory/user-help/active-directory-saas-access-panel-introduction)
+
+---
+
+### <a name="new-troubleshooting-and-support-tab-on-the-sign-ins-logs-page-of-the-azure-portal"></a>Karta nowe Rozwiązywanie problemów i pomocy technicznej na stronie dzienniki operacji logowania w witrynie Azure Portal
+
+**Typ:** nowa funkcja  
+**Kategoria usług:** raportowania  
+**Możliwości produktu:** monitorowanie i raportowanie
+
+Nowy **Rozwiązywanie problemów i pomoc techniczna** karcie **logowania** strony Azure portal, mają na celu ułatwienie administratorom i pracowników działu pomocy technicznej, rozwiązywania problemów związanych z logowania usługi Azure AD. Ta nowa karta zawiera kod błędu, komunikat o błędzie i zaleceniami związanymi z korygowaniem (jeśli istnieje) Aby rozwiązać ten problem. Jeśli nie uda się rozwiązać ten problem, również udostępniamy nowy sposób tworzenia biletu pomocy technicznej przy użyciu **Kopiuj do Schowka** środowisko, które wypełnia **identyfikator żądania** i **Data (UTC)** pól pliku dziennika w biletu pomocy technicznej.  
+
+![Dzienniki logowania z nowej karty](media/whats-new/troubleshooting-and-support.png)
+
+---
+
+### <a name="enhanced-support-for-custom-extension-properties-used-to-create-dynamic-membership-rules"></a>Rozszerzona obsługa właściwości niestandardowe rozszerzenie użyte do utworzenia reguły członkostwa dynamicznego
+
+**Typ:** zmieniono funkcji  
+**Kategoria usług:** Zarządzanie grupami  
+**Możliwości produktu:** współpracy
+
+Dzięki tej aktualizacji można teraz kliknąć **pobieranie właściwości niestandardowego rozszerzenia** link z konstruktora reguły grupy dynamiczne użytkownika, wprowadź swój identyfikator aplikacji unikatowymi i otrzymywać pełną listę właściwości niestandardowego rozszerzenia do użycia podczas tworzenia dynamiczny reguły członkostwa dla użytkowników. Tej listy można odświeżać w taki sposób, aby uzyskać nowe właściwości rozszerzenia niestandardowego dla danej aplikacji.
+
+Aby uzyskać więcej informacji o używaniu właściwości rozszerzenia niestandardowe reguły członkostwa dynamicznego, zobacz [rozszerzenia i właściwości niestandardowego rozszerzenia](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-dynamic-membership#extension-properties-and-custom-extension-properties)
+
+---
+
+### <a name="new-approved-client-apps-for-azure-ad-app-based-conditional-access"></a>Nowe zatwierdzonych aplikacji klienckich dla dostępu warunkowego opartego na aplikacji usługi Azure AD
+
+**Typ:** Planowanie zmian  
+**Kategoria usług:** dostępu warunkowego  
+**Możliwości produktu:** tożsamość, zabezpieczenia i ochrona
+
+Następujące aplikacje są na liście [zatwierdzonych aplikacji klienckich](https://docs.microsoft.com/azure/active-directory/conditional-access/technical-reference.md#approved-client-app-requirement):
+
+- Microsoft To-Do
+
+- Microsoft Stream
+
+Aby uzyskać więcej informacji, zobacz:
+
+- [Usługa Azure AD oparty na aplikacji dostępu warunkowego](https://docs.microsoft.com/azure/active-directory/conditional-access/app-based-conditional-access)
+
+---
+
+### <a name="new-support-for-self-service-password-reset-from-the-windows-7881-lock-screen"></a>Nowa funkcja obsługi samoobsługowego resetowania hasła na ekranie blokady 7/8/8.1 Windows
+
+**Typ:** nowa funkcja  
+**Kategoria usług:** samoobsługowego resetowania HASEŁ  
+**Możliwości produktu:** uwierzytelnianie użytkownika
+
+Po skonfigurowaniu tej nowej funkcji użytkownikom zostanie wyświetlony link do zresetowania swojego hasła z **blokady** ekranu urządzenia z systemem Windows 7, Windows 8 lub Windows 8.1. Klikając ten link, użytkownik jest przeprowadzany przez sam przepływ resetowania hasła jako za pośrednictwem przeglądarki sieci web.
+
+Aby uzyskać więcej informacji, zobacz [jak włączyć funkcję resetowania z Windows 7, 8 i 8.1 hasła](https://aka.ms/ssprforwindows78)
+
+---
+
+### <a name="change-notice-authorization-codes-will-no-longer-be-available-for-reuse"></a>Zmień powiadomienie: kody autoryzacji nie będzie już dostępny do ponownego wykorzystania 
+
+**Typ:** Planowanie zmian  
+**Kategoria usług:** uwierzytelnienia (logowania)  
+**Możliwości produktu:** uwierzytelnianie użytkownika
+
+10 października 2018 r. usługi Azure AD będzie akceptować kody poprzednio używanych uwierzytelniania dla aplikacji. Ta zmiana zabezpieczeń pomaga do usługi Azure AD zgodnie ze specyfikacją protokołu OAuth i będzie wymuszany w punktach końcowych v1 i v2.
+
+Jeśli aplikacja używa kody autoryzacji uzyskiwanie tokenów dla wielu zasobów, zalecamy Użyj kodu, aby uzyskać token odświeżania, a następnie używać tego tokenu odświeżania w celu pobrania dodatkowe tokeny dla innych zasobów. Kody autoryzacji należy używać tylko raz, ale tokenów odświeżania mogą być wielokrotnie używane w wielu zasobach. Każdej aplikacji, która podejmuje próbę ponownego użycia kodu uwierzytelniania podczas przepływu kodu OAuth otrzymają komunikat o błędzie invalid_grant.
+
+>[!Note]
+>W celu ułatwienia zminimalizowania uszkodzone aplikacje, aplikacje, zależą od tego wzorca, które mają więcej niż 10 logowań na dobę, zostały zapewniają wyjątek.
+
+Ta i inne zmiany dotyczące protokołów, zobacz [pełną listę Nowości dla uwierzytelniania](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes).
+
+---
+
+### <a name="new-federated-apps-available-in-azure-ad-app-gallery---september-2018"></a>Nowe aplikacje federacyjne dostępne w galerii aplikacji usługi Azure AD — września 2018 r.
+
+**Typ:** nowa funkcja  
+**Kategoria usług:** aplikacje dla przedsiębiorstw  
+**Możliwości produktu:** 3rd integracji innych firm
+ 
+W września 2018 Dodaliśmy obsługę 16 nowych aplikacjach z Federacją w galerii aplikacji:
+
+[Uberflip](https://docs.microsoft.com/azure/active-directory/saas-apps/uberflip-tutorial), [Comeet rekrutacji oprogramowania](https://docs.microsoft.com/azure/active-directory/saas-apps/comeetrecruitingsoftware-tutorial), [Workteam](https://docs.microsoft.com/azure/active-directory/saas-apps/workteam-tutorial), [ArcGIS Enterprise](https://docs.microsoft.com/azure/active-directory/saas-apps/arcgisenterprise-tutorial), [Nuclino](https://docs.microsoft.com/azure/active-directory/saas-apps/nuclino-tutorial), [ Chmura JDA](https://docs.microsoft.com/azure/active-directory/saas-apps/jdacloud-tutorial), [Snowflake](https://docs.microsoft.com/azure/active-directory/saas-apps/snowflake-tutorial), NavigoCloud, [Figma](https://docs.microsoft.com/azure/active-directory/saas-apps/figma-tutorial), join.me, [ZephyrSSO](https://docs.microsoft.com/azure/active-directory/saas-apps/zephyrsso-tutorial), [Silverback](https://docs.microsoft.com/azure/active-directory/saas-apps/silverback-tutorial), Riverbed Xirrus EasyPass, [logowania jednokrotnego Rackspace](https://docs.microsoft.com/azure/active-directory/saas-apps/rackspacesso-tutorial), Enlyft Usługa rejestracji Jednokrotnej dla platformy Azure, usługę SurveyMonkey na [Convene](https://docs.microsoft.com/azure/active-directory/saas-apps/convene-tutorial), [dmarcian](https://docs.microsoft.com/azure/active-directory/saas-apps/dmarcian-tutorial)
+
+Aby uzyskać więcej informacji o aplikacjach, zobacz [integracji aplikacji SaaS w usłudze Azure Active Directory](https://aka.ms/appstutorial). Aby uzyskać więcej informacji o ofercie swoją aplikację w galerii aplikacji Azure AD, zobacz [umieść swoją aplikację w galerii aplikacji usługi Azure Active Directory](https://aka.ms/azureadapprequest).
+
+---
+
+### <a name="support-for-additional-claims-transformations-methods"></a>Obsługa dodatkowych oświadczeń przekształcenia metod
+
+**Typ:** nowa funkcja  
+**Kategoria usług:** aplikacje dla przedsiębiorstw  
+**Możliwości produktu:** logowania jednokrotnego
+
+Dodaliśmy nowe metody przekształcania oświadczeń ToLower() i ToUpper(), które mogą być stosowane na tokeny SAML z opartej na SAML **konfiguracji rejestracji jednokrotnej** strony.
+
+Aby uzyskać więcej informacji, zobacz [Dostosowywanie oświadczeń wystawionych w tokenie języka SAML dla aplikacji dla przedsiębiorstw w usłudze Azure AD](https://docs.microsoft.com/azure/active-directory/develop/active-directory-saml-claims-customization)
+
+---
+
+### <a name="updated-saml-based-app-configuration-ui-preview"></a>Zaktualizowano konfigurację aplikacji opartej na SAML interfejsu użytkownika (wersja zapoznawcza)
+
+**Typ:** zmieniono funkcji  
+**Kategoria usług:** aplikacje dla przedsiębiorstw  
+**Możliwości produktu:** logowania jednokrotnego
+
+W ramach naszego interfejsu użytkownika konfiguracji zaktualizowanej aplikacji opartej na SAML uzyskasz:
+
+- Środowisko zaktualizowano wskazówki dotyczące konfigurowania aplikacji opartej na SAML.
+
+- Widoczność o nowościach brakujące lub nieprawidłowe w konfiguracji.
+
+- Możliwość dodawania wielu adresów e-mail, aby uzyskać powiadomienie o wygaśnięciu certyfikatu.
+
+- Nowe metody przekształcania oświadczeń, ToLower() i ToUpper() i inne.
+
+- Sposób przekazać własny token podpisywania certyfikatu dla aplikacji przedsiębiorstwa.
+
+- Sposób, aby ustawić Format identyfikatora NameID dla aplikacji SAML i sposób można ustawić wartości identyfikatora NameID jako rozszerzenia katalogów.
+
+Aby włączyć ten zaktualizowany widok, kliknij przycisk **wypróbować nasze nowe środowisko** link u góry **logowania jednokrotnego** strony. Aby uzyskać więcej informacji, zobacz [samouczek: opartej na SAML skonfigurować logowanie jednokrotne dla aplikacji w usłudze Azure Active Directory](https://docs.microsoft.com/azure/active-directory/manage-apps/configure-single-sign-on-portal).
+
+---
+
 ## <a name="august-2018"></a>Sierpień 2018 r.
 
 ### <a name="changes-to-azure-active-directory-ip-address-ranges"></a>Zmiany do zakresów adresów adresów IP platformy Azure Active Directory
@@ -61,12 +247,15 @@ Zdecydowanie zaleca się nie usuwa starych zakresów adresów IP, dopóki wszyst
 **Typ:** Planowanie zmian  
 **Kategoria usług:** uwierzytelnienia (logowania)  
 **Możliwości produktu:** uwierzytelnianie użytkownika
- 
-10 października 2018 r. usługi Azure AD będzie akceptować kody wcześniej używane do uwierzytelniania w przypadku nowych aplikacji. Każda aplikacja utworzona przed 10 października 2018 r. nadal będzie można ponownie użyć kody uwierzytelniania. Ta zmiana zabezpieczeń pomaga do usługi Azure AD zgodnie ze specyfikacją protokołu OAuth i będzie wymuszany w punktach końcowych v1 i v2.
 
-Jeśli aplikacja używa kody autoryzacji uzyskiwanie tokenów dla wielu zasobów, zalecamy Użyj kodu, aby uzyskać token odświeżania, a następnie używać tego tokenu odświeżania w celu pobrania dodatkowe tokeny dla innych zasobów. Kody autoryzacji należy używać tylko raz, ale tokenów odświeżania mogą być wielokrotnie używane w wielu zasobach. Nowa aplikacja, która podejmuje próbę ponownego użycia kodu uwierzytelniania podczas przepływu kodu uwierzytelniania OAuth otrzyma błąd invalid_grant, odwołaniu poprzedniej token odświeżania, który został uzyskany przy użyciu tego kodu zduplikowanego.
+10 października 2018 r. usługi Azure AD będzie akceptować kody poprzednio używanych uwierzytelniania dla aplikacji. Ta zmiana zabezpieczeń pomaga do usługi Azure AD zgodnie ze specyfikacją protokołu OAuth i będzie wymuszany w punktach końcowych v1 i v2.
 
-Aby uzyskać więcej informacji na temat tokeny odświeżania, zobacz [odświeżanie tokenów dostępu](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code#refreshing-the-access-tokens).
+Jeśli aplikacja używa kody autoryzacji uzyskiwanie tokenów dla wielu zasobów, zalecamy Użyj kodu, aby uzyskać token odświeżania, a następnie używać tego tokenu odświeżania w celu pobrania dodatkowe tokeny dla innych zasobów. Kody autoryzacji należy używać tylko raz, ale tokenów odświeżania mogą być wielokrotnie używane w wielu zasobach. Każdej aplikacji, która podejmuje próbę ponownego użycia kodu uwierzytelniania podczas przepływu kodu OAuth otrzymają komunikat o błędzie invalid_grant.
+
+>[!Note]
+>W celu ułatwienia zminimalizowania uszkodzone aplikacje, aplikacje, zależą od tego wzorca, które mają więcej niż 10 logowań na dobę, zostały zapewniają wyjątek.
+
+Ta i inne zmiany dotyczące protokołów, zobacz [pełną listę Nowości dla uwierzytelniania](https://docs.microsoft.com/azure/active-directory/develop/reference-breaking-changes).
  
 ---
 
@@ -92,7 +281,7 @@ Jest to zgłoszenie zgody na uczestnictwo w publicznej wersji zapoznawczej. Admi
 
 Dostępne jest nowe ustawienie o nazwie, **plików cookie HTTP-Only** w aplikacjach serwer Proxy aplikacji. To ustawienie zapewnia dodatkowe zabezpieczenia, dołączając flagi HTTPOnly w nagłówku odpowiedzi HTTP, zarówno serwer Proxy aplikacji dostępu i sesji plików cookie, zatrzymanie dostępu do pliku cookie. pochodzące ze skryptu po stronie klienta i uniemożliwia dalsze akcje, takie jak kopiowanie lub Modyfikowanie pliku cookie. Chociaż ta flaga nie został wcześniej użyty, pliki cookie były zawsze szyfrowane, a następnie przesyłane przy użyciu połączenia SSL w celu zabezpieczenia przed Niepoprawne modyfikacje.
 
-To ustawienie nie jest zgodna z aplikacjami korzystającymi z kontrolki ActiveX, takich jak pulpitu zdalnego. Jeśli jesteś w takiej sytuacji zaleca się wyłączenie tego ustawienia.
+To ustawienie nie jest zgodna z aplikacjami korzystającymi z kontrolki ActiveX, takich jak pulpitu zdalnego. Jeśli jesteś w takiej sytuacji firma Microsoft zaleca, wyłącz to ustawienie.
 
 Aby uzyskać więcej informacji na temat ustawień plików cookie HTTP-Only zobacz [publikowania aplikacji przy użyciu serwera Proxy aplikacji usługi Azure AD](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-publish-azure-portal).
 
@@ -154,7 +343,7 @@ Aby uzyskać więcej informacji na temat naszych natywną obsługę Tableau, zob
 **Kategoria usług:** B2B  
 **Możliwości produktu:** B2B/B2C
 
-Przez skonfigurowanie Federacji za pomocą usługi Google w Twojej organizacji, można pozwolić zaproszeni użytkownicy usługi Gmail, zaloguj się do udostępnionych aplikacji i zasobów przy użyciu istniejącego konta Google, bez konieczności tworzenia osobistych Account Microsoft (MSA) lub konta usługi Azure AD.
+Przez skonfigurowanie Federacji za pomocą usługi Google w Twojej organizacji, można pozwolić zaproszonego logowania użytkowników usługi Gmail udostępnionych aplikacji i zasobów przy użyciu istniejącego konta Google, bez konieczności tworzenia osobistych Account Microsoft (MSA) lub konta usługi Azure AD.
 
 Jest to zgłoszenie zgody na uczestnictwo w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji na temat Federacji Google zobacz [Dodaj Google jako dostawcy tożsamości dla użytkowników-gości B2B](https://docs.microsoft.com/azure/active-directory/b2b/google-federation).
 
@@ -356,7 +545,7 @@ Jest to zgłoszenie zgody na uczestnictwo w publicznej wersji zapoznawczej. Admi
 **Kategoria usług:** samoobsługowego resetowania HASEŁ  
 **Możliwości produktu:** uwierzytelnianie użytkownika
 
-Ta funkcja pozwala użytkowników innych niż administratorzy zweryfikować swoją tożsamość podczas resetowania hasła przy użyciu powiadomienia lub kodu z Microsoft Authenticator (lub dowolną inną aplikację). Po Administratorzy włączenia samoobsługi metody na użytkowników, którzy zarejestrowali się do aplikacji mobilnej za pośrednictwem aka.ms/mfasetup resetowania hasła lub aka.ms/setupsecurityinfo za pomocą aplikacji mobilnej jako metody weryfikacji podczas resetowania hasła.
+Ta funkcja pozwala użytkowników innych niż administratorzy zweryfikować swoją tożsamość podczas resetowania hasła przy użyciu powiadomienia lub kodu z Microsoft Authenticator (lub dowolną inną aplikację). Po Administratorzy, Włącz ten samoobsługowego resetowania haseł — metoda, użytkownicy, którzy zarejestrowali się do aplikacji mobilnej za pośrednictwem aka.ms/mfasetup lub aka.ms/setupsecurityinfo można użyć aplikacji mobilnej jako metody weryfikacji podczas resetowania hasła.
 
 Tylko powiadomienia aplikacji mobilnej może zostać włączona w ramach zasad, które wymagają dwóch metod, aby zresetować hasło.
 
@@ -1637,7 +1826,7 @@ Aby uzyskać więcej informacji, zobacz [dostępu warunkowego opartego na aplika
  
 ---
 
-### <a name="manage-azure-ad-devices-in-the-azure-portal"></a>Zarządzanie urządzeniami usługi Azure AD w witrynie Azure Portal
+### <a name="manage-azure-ad-devices-in-the-azure-portal"></a>Zarządzanie urządzeniami usługi Azure AD w witrynie Azure portal
 
 **Typ:** nowa funkcja  
 **Kategoria usług:** rejestracji urządzeń i zarządzanie  

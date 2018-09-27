@@ -1,7 +1,7 @@
 ---
-title: Uaktywnij ponownie wyłączoną subskrypcję platformy Azure | Dokumentacja firmy Microsoft
-description: Opisuje, kiedy może mieć subskrypcję platformy Azure, wyłączona oraz uaktywnić go ponownie.
-keywords: Wyłączono subskrypcję platformy Azure
+title: Ponowne aktywowanie wyłączonej subskrypcji platformy Azure | Dokumentacja firmy Microsoft
+description: Opisuje, kiedy może być wyłączone subskrypcji platformy Azure oraz uaktywnić go ponownie.
+keywords: Wyłączenie subskrypcji platformy Azure
 services: ''
 documentationcenter: ''
 author: genlin
@@ -15,52 +15,52 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: genli
-ms.openlocfilehash: d76d02ba326cf93582c03937b3ab54d806acaff1
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.author: cwatson
+ms.openlocfilehash: 81f4830691f423e51d6c1f0b71a8fc62160ea92e
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34067609"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393013"
 ---
 # <a name="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it"></a>Dlaczego Moja subskrypcja platformy Azure jest wyłączona i jak go uaktywnić?
 
-Może być wyłączona, ponieważ wygasł środków subskrypcji Azure, osiągnięto limit wydatków, ma zaległe rachunku, osiągnęła limit karty kredytowej, lub ponieważ subskrypcja została anulowana przez administratora konta. Zobacz, jaki problem dotyczy to Ciebie i wykonaj kroki opisane w tym artykule można pobrać subskrypcji ponownej aktywacji.
+Twoja subskrypcja platformy Azure może zostać wyłączona, ponieważ środki wygasły, osiągnięto limit wydatków, istnieje zaległy rachunek, osiągnięto limit karty kredytowej lub z powodu anulowania subskrypcji przez administratora konta. Zobacz, z jakim problemem ma zastosowanie do Ciebie i postępuj zgodnie z instrukcjami w tym artykule, aby uzyskać subskrypcję ponownie uaktywnione.
 
-## <a name="your-credit-is-expired"></a>Środków wygasł
+## <a name="your-credit-is-expired"></a>Twoje środki wygasł
 
-Gdy zarejestrujesz się uzyskać bezpłatne konto platformy Azure, możesz uzyskać subskrypcji bezpłatnej wersji próbnej, która udostępnia 200 USD w kredytów systemu Azure dla 30 dni i 12 miesięcy od bezpłatnych usług. Po zakończeniu 30 dni Azure wyłącza subskrypcji. Twoja subskrypcja jest wyłączona w celu zabezpieczenia przed przypadkowym są naliczane opłaty za użycie poza środki i bezpłatnych usług uwzględnionych w subskrypcji. Aby kontynuować korzystanie z usług Azure, musisz [uaktualnienia subskrypcji z subskrypcją płatność za rzeczywiste użycie](billing-upgrade-azure-subscription.md). Po zakończeniu uaktualnienia subskrypcji nadal ma dostęp do zwolnienia usług przez 12 miesięcy. Możesz tylko zostały naliczone opłaty za użycie poza bezpłatnych usług i ilości.
+Po zarejestrowaniu się dla bezpłatnego konta platformy Azure możesz uzyskać subskrypcji bezpłatnej wersji próbnej, która zapewnia 200 USD w środków platformy Azure przez 30 dni i przez 12 miesięcy bezpłatnych usług. Po upływie 30 dni Azure wyłącza subskrypcji. Twoja subskrypcja jest wyłączona, aby chronić klientów przed przypadkowym naliczania opłat za użycie wykraczające poza środki i bezpłatnych usług zawartych w ramach subskrypcji. Aby nadal korzystać z usług platformy Azure, musisz mieć [Uaktualnij swoją subskrypcję do subskrypcji płatności](billing-upgrade-azure-subscription.md). Po uaktualnieniu, Twoja subskrypcja ma nadal dostęp do bezpłatnych usług przez 12 miesięcy. Zostanie naliczona tylko za użycie wykraczające poza bezpłatnych usług i ilości.
 
 ## <a name="you-reached-your-spending-limit"></a>Osiągnięto limit wydatków
 
-Subskrypcje platformy Azure z kredytowej, takie jak bezpłatna wersja próbna i Visual Studio Enterprise ma limitami wydatków na nich. Oznacza to, że można używać tylko usługi do dołączone środków. Gdy użycie osiągnie limit wydatków, Azure wyłącza subskrypcji dla pozostałych tego okresu rozliczeniowego. Twoja subskrypcja jest wyłączona w celu zabezpieczenia przed przypadkowym są naliczane opłaty za użycie poza środków uwzględnionych w subskrypcji. Aby usunąć limit wydatków, zobacz [usunąć limit wydatków w Centrum konta](billing-spending-limit.md#remove).
+Subskrypcje platformy Azure z środkami, np. bezpłatnej wersji próbnej i Visual Studio Enterprise mają limity wydatków na nich. Oznacza to, że można używać tylko usług maksymalnie uwzględniane środki. Gdy użycie osiągnie limit wydatków, Azure wyłącza subskrypcji dla pozostałej w tym okresie rozliczeniowym. Jeśli subskrypcja zostanie wyłączona, aby chronić klientów przed przypadkowym naliczania opłat za użycie wykraczające poza środki zawartych w ramach subskrypcji. Aby usunąć limit wydatków, zobacz [Usuń limit wydatków w Centrum konta](billing-spending-limit.md#remove).
 
 > [!NOTE] 
-> Jeśli masz subskrypcji bezpłatnej wersji próbnej i usunąć limit wydatków, subskrypcja konwertuje płatność za rzeczywiste użycie w końcu bezpłatnej wersji próbnej. Należy dysponować swojego pozostałego kredytu jeszcze przez pełne 30 dni, po utworzeniu subskrypcji. Masz również dostęp do zwolnienia usług przez 12 miesięcy.
+> Jeśli masz subskrypcję bezpłatnej wersji próbnej i Usuń limit wydatków, subskrypcja konwertuje płatności na końcu bezpłatnej wersji próbnej. Zachowasz pozostałe środki pełną 30 dni po utworzeniu subskrypcji. Masz również dostęp do bezpłatnych usług przez 12 miesięcy.
 
-Aby monitorować i zarządzać nimi działania rozliczeń dla platformy Azure, zobacz [uniknąć kosztów nieoczekiwany rozliczenia Azure i kosztów zarządzania](billing-getting-started.md) i [skonfigurować alerty dotyczące subskrypcji platformy Microsoft Azure billing](billing-set-up-alerts.md).
+Aby monitorować i zarządzać działania rozliczeniowe dla platformy Azure, zobacz [zapobieganie powstawaniu nieoczekiwanych kosztów za pomocą rozliczeń platformy Azure i zarządzania kosztami](billing-getting-started.md) i [Konfigurowanie alertów dla Twojej subskrypcji Microsoft Azure billing](billing-set-up-alerts.md).
 
 
 ## <a name="your-bill-is-past-due"></a>Rachunek jest zaległa
 
-Do rozpoznania zaległe saldo, zobacz [rozwiązać zaległe saldo dla Twojej subskrypcji platformy Azure po otrzymaniu wiadomości e-mail z platformy Azure](billing-azure-subscription-past-due-balance.md).
+Rozpoznać zaległe saldo, zobacz [rozwiązać Zaległa saldo subskrypcji platformy Azure po otrzymaniu wiadomości e-mail z platformy Azure](billing-azure-subscription-past-due-balance.md).
 
-## <a name="the-bill-exceeds-your-credit-card-limit"></a>Zestawienie przekracza limit Twojej karty kredytowej
+## <a name="the-bill-exceeds-your-credit-card-limit"></a>Rachunku przekracza limit Twojej karty kredytowej
 
-Aby rozwiązać ten problem, [przełączyć się do innej karty kredytowej](billing-how-to-change-credit-card.md). Lub jeśli są reprezentujący firmy, możesz [przełącznik, aby zapłacić za faktury](billing-how-to-pay-by-invoice.md).
+Aby rozwiązać ten problem, [przełączyć się do innej karty kredytowej](billing-how-to-change-credit-card.md). Lub jeśli masz reprezentujący działalności, możesz to zrobić [przełącznik przy użyciu faktury](billing-how-to-pay-by-invoice.md).
 
-## <a name="the-subscription-was-accidentally-canceled-and-you-want-to-reactivate"></a>Przypadkowo anulowania subskrypcji i chcesz ponownie uaktywnić
+## <a name="the-subscription-was-accidentally-canceled-and-you-want-to-reactivate"></a>Subskrypcja została przypadkowo anulowana i chcesz ponownie uaktywnić
 
-Jeśli są konta administratora i przypadkowo anulowania subskrypcji płatność za rzeczywiste użycie, możesz uaktywnić go ponownie w Centrum konta.
+Jeśli jesteś administratorem konta i przypadkowo anulowana subskrypcja płatności, możesz uaktywnić go ponownie w Centrum konta.
 
-1. Zaloguj się do [Centrum konta](https://account.windowsazure.com/Subscriptions).
+1. Zaloguj się do [Centrum kont](https://account.windowsazure.com/Subscriptions).
 1. Wybierz subskrypcję, anulowane.
 1. Kliknij przycisk **ponownie uaktywnić**.
 
-    ![Zrzut ekranu pokazujący ponownie uaktywnić łącza w okienku po prawej stronie](./media/billing-how-to-cancel-azure-subscription/reactivate-sub.png)
+    ![Zrzut ekranu pokazujący ponownie uaktywnić linki w okienku po prawej stronie](./media/billing-how-to-cancel-azure-subscription/reactivate-sub.png)
 
-Dla innych typów subskrypcji [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) aby swoją subskrypcję ponownej aktywacji.
+Dla innych typów subskrypcji [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) mieć ponowne aktywowanie subskrypcji.
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
 
-Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać szybkie rozwiązanie problemu.
+Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.

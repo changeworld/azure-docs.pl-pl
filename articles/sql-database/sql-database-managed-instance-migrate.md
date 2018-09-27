@@ -1,22 +1,23 @@
 ---
 title: Migracja wystąpienia programu SQL Server do wystąpienia zarządzanego Azure SQL Database | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak przeprowadzić migrację wystąpienia programu SQL Server do wystąpienia zarządzanego Azure SQL Database.
-keywords: migracja bazy danych,migracja bazy danych programu sql server,narzędzia migracji bazy danych,migracja bazy danych,migracja bazy danych sql
 services: sql-database
+ms.service: sql-database
+ms.subservice: data-movement
+ms.custom: ''
+ms.devlang: ''
+ms.topic: conceptual
 author: bonova
+ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.service: sql-database
-ms.custom: managed instance
-ms.topic: conceptual
-ms.date: 09/20/2018
-ms.author: bonova
-ms.openlocfilehash: 5aad6060691c796906232d9625ff00b748616a77
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.date: 09/26/2018
+ms.openlocfilehash: 7653ce7b0823b4e91685e77701a307370261f7e6
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038996"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394069"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-database-managed-instance"></a>Migracja wystąpienia programu SQL Server do wystąpienia zarządzanego Azure SQL Database
 
@@ -107,6 +108,8 @@ Poniższa tabela zawiera więcej informacji dotyczących metod, których można 
 > - Przywracanie bazy danych systemu nie jest obsługiwane. Aby przeprowadzić migrację obiektów na poziomie wystąpienia (przechowywane w bazach danych master i msdb), zaleca się ich skryptu i uruchamianie skryptów T-SQL w wystąpieniu docelowym.
 
 Aby uzyskać szybki start przedstawiający sposób przywracania kopii zapasowej bazy danych do wystąpienia zarządzanego przy użyciu poświadczeń sygnatury dostępu Współdzielonego, zobacz [Przywracanie z kopii zapasowej do wystąpienia zarządzanego](sql-database-managed-instance-get-started-restore.md).
+
+> [!VIDEO https://www.youtube.com/embed/RxWYojo_Y3Q]
 
 ## <a name="monitor-applications"></a>Monitorowanie aplikacji
 

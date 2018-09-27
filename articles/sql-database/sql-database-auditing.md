@@ -12,12 +12,12 @@ ms.author: giladm
 ms.reviewer: vanto
 manager: craigg
 ms.date: 09/10/2018
-ms.openlocfilehash: dd1672c0cdae243bf6ff19efa22df66239611b44
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 8ba07b22d247cb9263890a747bd166d63af27e3b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064179"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395751"
 ---
 # <a name="get-started-with-sql-database-auditing"></a>Rozpoczynanie pracy z inspekcją bazy danych SQL
 Inspekcji usługi Azure SQL database śledzi zdarzenia bazy danych i zapisuje je do inspekcji logowania na koncie magazynu platformy Azure. Inspekcja również:
@@ -109,7 +109,7 @@ W przypadku wybrania tylko zapisywanie dzienników inspekcji usługi Log Analyti
 
     ![Otwórz w pakiecie OMS](./media/sql-database-auditing-get-started/auditing_open_in_oms.png)
 
-- Alternatywnie można także przejść dzienniki inspekcji w bloku usługi Log Analytics. Otwórz obszar roboczy usługi Log Analytics i w obszarze **ogólne** kliknij **dzienniki**. Można zacząć od prostego zapytania, takie jak: wyszukiwanie *"SQLSecurityAuditEvents"* Aby wyświetlić inspekcji logowania.
+- Alternatywnie można także przejść dzienniki inspekcji w bloku usługi Log Analytics. Otwórz obszar roboczy usługi Log Analytics i w obszarze **ogólne** kliknij **dzienniki**. Można zacząć od prostego zapytania, takie jak: *wyszukiwanie "SQLSecurityAuditEvents"* Aby wyświetlić inspekcji logowania.
     W tym miejscu możesz również użyć [Operations Management Suite (OMS) Log Analytics](../log-analytics/log-analytics-log-search.md) przeprowadzić zaawansowane wyszukiwanie na dane dziennika inspekcji. Usługa log Analytics udostępnia w czasie rzeczywistym operational insights za pomocą zintegrowanej funkcji wyszukiwania i niestandardowym pulpitom nawigacyjnym umożliwiającym szybkie analizowanie milionów rekordów z wszystkich obciążeń i serwerów. Aby uzyskać dodatkowe przydatne informacje dotyczące języka wyszukiwania usługi Log Analytics pakietu OMS i poleceń, zobacz [usługi Log Analytics Wyszukaj odwołanie](../log-analytics/log-analytics-log-search.md).
 
 W przypadku wybrania tylko zapisywanie dzienników inspekcji w Centrum zdarzeń:

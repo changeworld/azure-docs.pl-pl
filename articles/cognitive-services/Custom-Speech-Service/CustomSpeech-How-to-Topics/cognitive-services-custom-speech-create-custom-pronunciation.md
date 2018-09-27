@@ -1,21 +1,22 @@
 ---
-title: Wymowa niestandardowych za pomocą usługa Custom Speech Service na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć model języka dzięki usłudze Custom Speech Service w usługach Cognitive Services.
+title: Użyj niestandardowego Wymowa — usługa Custom Speech Service
+titlesuffix: Azure Cognitive Services
+description: Dowiedz się, jak utworzyć model języka dzięki usłudze Custom Speech Service.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/23/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: c51ef6b25b454d0b8bf450b791f5c0fa9c6dfdee
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6442eec3e622282ecf6a3bf884110cd435fc18be
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999379"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223478"
 ---
 # <a name="enable-custom-pronunciation"></a>Włącz Wymowa niestandardowe
 Wymowa niestandardowych umożliwia użytkownikom na definiowanie w postaci fonetycznej i wyświetlania słowa lub terminy. Jest to przydatne do obsługi warunki niestandardowe, takie jak nazwy produktów lub akronimów. Wszystko co potrzebne jest plikiem Wymowa (pliku txt prosty).

@@ -6,12 +6,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 3f2fa055af63ab3920fec79ad93c25b8ea7e5ed9
-ms.sourcegitcommit: 17fe5fe119bdd82e011f8235283e599931fa671a
+ms.openlocfilehash: 6d79cdf279022320f654fbbeadb870f82db88cab
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/11/2018
-ms.locfileid: "42058463"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392789"
 ---
 # <a name="azure-batch-rendering-capabilities"></a>Możliwości renderowania w usłudze Azure Batch
 
@@ -50,9 +50,12 @@ Aplikacje, które będą używane i mieć opłacie licencyjnej muszą być okre�
 * Określ `applicationLicenses` właściwości podczas [tworzenia puli](https://docs.microsoft.com/rest/api/batchservice/pool/add#request-body).  Można określić następujące wartości w tablicy ciągów — "vray", "arnold", "3dsmax", "maya".
 * Po określeniu jednej lub więcej aplikacji, koszt tych aplikacji jest dodawany do kosztu maszyn wirtualnych.  Ceny aplikacji są wyświetlane na [usługi Azure Batch stronę z cennikiem](https://azure.microsoft.com/pricing/details/batch/#graphic-rendering).
 
+> [!NOTE]
+> Jeśli zamiast tego możesz połączyć się z serwera licencji na korzystanie z aplikacji renderowanie, nie należy określać `applicationLicenses` właściwości.
+
 Aby wybrać aplikacje i wyświetlić ceny aplikacji, można użyć witryny Azure portal lub programu Batch Explorer.
 
-Jeśli zostanie podjęta próba na korzystanie z aplikacji, ale aplikacja nie została określona w `applicationLicenses` właściwość konfiguracji puli, a następnie wykonywania aplikacji nie powiedzie się z licencjonowania błędów oraz kod zakończenia różny od zera.
+Jeśli zostanie podjęta próba na korzystanie z aplikacji, ale aplikacja nie została określona w `applicationLicenses` właściwość konfiguracji puli lub czy nie zasięg serwera licencji, a następnie wykonywania aplikacji nie powiedzie się z licencjonowania błędów oraz kod zakończenia różny od zera.
 
 ### <a name="environment-variables-for-pre-installed-applications"></a>Zmienne środowiskowe dla optymalizacji wstępnie zainstalowanych aplikacji
 

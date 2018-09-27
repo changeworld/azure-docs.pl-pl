@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: tbd
-ms.date: 06/05/2018
+ms.date: 09/05/2018
 ms.author: spelluru
-ms.openlocfilehash: 49694780f4fe32f8068c1d7c4cc87cfb88f77fe5
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: f48e9a5600dca1e13d6ee94a675d5bc824915118
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700984"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393965"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Kolejki magazynu i kolejek usługi Service Bus — porównanie
 W tym artykule przeanalizowano różnice i podobieństwa dwóch typów kolejek oferowanych przez Microsoft Azure już dzisiaj: kolejki magazynu i kolejek usługi Service Bus. Dzięki tym informacjom można porównać odpowiednie technologie i świadomie wybrać rozwiązanie, które najlepiej odpowiada danym potrzebom.
@@ -99,7 +99,7 @@ Ta sekcja zawiera porównanie zaawansowane możliwości zapewniane przez kolejki
 
 | Kryteria porównania | Kolejki magazynu | Kolejki usługi Service Bus |
 | --- | --- | --- |
-| Zaplanowane dostarczania |**Tak** |**Tak** |
+| Zaplanowane dostarczanie |**Tak** |**Tak** |
 | Automatyczne utraconych |**Nie** |**Tak** |
 | Zwiększenie wartości czasu wygaśnięcia kolejki |**Tak**<br/><br/>(za pośrednictwem aktualizacji w miejscu limitu czasu widoczności) |**Tak**<br/><br/>(udostępnione za pośrednictwem dedykowanego interfejsu API function) |
 | Obsługa komunikatów zanieczyszczonych |**Tak** |**Tak** |

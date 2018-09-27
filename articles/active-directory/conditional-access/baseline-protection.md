@@ -17,12 +17,12 @@ ms.workload: identity
 ms.date: 08/08/2018
 ms.author: markvi
 ms.reviewer: nigu
-ms.openlocfilehash: 57fef112186834ead76f6223e32cb358e4d6d053
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: ef2b5dd393974ddf700235991b60ec66031e34c2
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44024077"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222271"
 ---
 # <a name="what-is-baseline-protection-preview"></a>Co to jest ochrona linii bazowej (wersja zapoznawcza)?  
 
@@ -56,7 +56,7 @@ Te zasady linii bazowej zapewnia możliwość wykluczenia użytkowników i grup.
 
 ## <a name="enable-a-baseline-policy"></a>Włącz zasady linii bazowej 
 
-Mimo że zasady linii bazowej w wersji zapoznawczej, są domyślnie nie jest aktywowany. Musisz ręcznie włączyć zasadę, aby ją uaktywnić. Jak najszybciej po publicznym udostępnieniu produktów tej funkcji zasady są domyślnie aktywowany. Zmiana zachowania planowane jest powód, dlaczego masz oprócz Włączanie i wyłączanie trzecią opcję, aby ustawić stan zasady: **automatycznie Włącz zasady w przyszłości**. Po zaznaczeniu tej opcji, możesz zezwolić firma Microsoft będzie decydować, kiedy należy aktywować zasad.      
+Mimo że zasady linii bazowej w wersji zapoznawczej, są domyślnie nie jest aktywowany. Musisz ręcznie włączyć zasadę, aby ją uaktywnić. Jeśli zasady plan bazowy jest jawnie włączyć na etapie wersji zapoznawczej, ich pozostaną aktywne po tej funkcji staje się ogólnie dostępna. Zmiana zachowania planowane jest powód, dlaczego, oprócz Włączanie i wyłączanie, masz trzecią opcję, aby ustawić stan zasady: **automatycznie Włącz zasady w przyszłości**. Po zaznaczeniu tej opcji, możesz pozostawić zasady wyłączona w trakcie okresu zapoznawczego, ale zlecić firmie Microsoft, włącz je automatycznie, gdy ta funkcja staje się ogólnie dostępna. Jeśli nie zostanie jawnie włączone zasady linii bazowej teraz, a nie zaznaczaj **automatycznie Włącz zasady w przyszłości** opcji zasady pozostanie wyłączona podczas tej funkcji staje się ogólnie dostępna.
 
 
 **Aby włączyć zasadę punktu odniesienia:**  

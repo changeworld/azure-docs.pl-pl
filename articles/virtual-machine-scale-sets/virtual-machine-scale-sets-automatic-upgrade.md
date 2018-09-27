@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: rajraj
-ms.openlocfilehash: 4d3af3b7c7084c3c410bc936356d9caff643b805
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 1ca0ec7185707d9b9f9712c2ace8dacb361f7b5b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182131"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394373"
 ---
 # <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Automatyczne uaktualnienia obrazu systemu operacyjnego zestawu skalowania maszyn wirtualnych platformy Azure
 
@@ -38,17 +38,15 @@ Automatyczne uaktualnianie systemu operacyjnego ma następującą charakterystyk
 
 ## <a name="how-does-automatic-os-image-upgrade-work"></a>Jak działa automatyczne systemu operacyjnego obrazu uaktualnienia pracy?
 
-Uaktualnienie działa przez zastąpienie dysku systemu operacyjnego maszyny wirtualnej z nowym utworzone za pomocą najnowszej wersji obrazu. Dowolne skonfigurowane rozszerzeń i skrypty niestandardowe dane działają podczas utrwalonych danych, które dyski zostaną zachowane. Aby zminimalizować czas przestoju aplikacji, uaktualnienia mieć miejsce w partii maszyn wirtualnych z nie więcej niż 20% skalowania Ustaw uaktualnienia w dowolnej chwili. Istnieje również możliwość integracji sondę kondycji aplikacji usługi Azure Load Balancer. Jest to zdecydowanie zaleca się dołączyć pulsu aplikacji, a następnie sprawdź uaktualnianie powiodło się dla każdej partii w procesie uaktualniania.
+Uaktualnienie działa przez zastąpienie dysku systemu operacyjnego maszyny wirtualnej z nowym utworzone za pomocą najnowszej wersji obrazu. Dowolne skonfigurowane rozszerzeń i skrypty niestandardowe dane działają podczas utrwalonych danych, które dyski zostaną zachowane. Aby zminimalizować czas przestoju aplikacji, uaktualnienia mieć miejsce w partii maszyn wirtualnych z nie więcej niż 20% skalowania Ustaw uaktualnienia w dowolnej chwili. Istnieje również możliwość integracji sondę kondycji aplikacji usługi Azure Load Balancer. Zdecydowanie zaleca się dołączyć pulsu aplikacji, a następnie sprawdź uaktualnianie powiodło się dla każdej partii w procesie uaktualniania. Procedura wykonywania jest następująca: 
 
-Poniżej przedstawiono kroki do wykonania: 
-
-1. Przed rozpoczęciem procesu uaktualniania, upewnij się, że nie więcej niż 20% wystąpień jest w złej kondycji. 
+1. Przed rozpoczęciem procesu uaktualniania, koordynatora zapewni nie więcej niż 20% wystąpień jest w złej kondycji. 
 2. Identyfikowanie wystąpień maszyn wirtualnych, aby uaktualnić z usługą batch, o maksymalnej wysokości 20% przychodów liczba całkowita wystąpień usługi batch.
 3. Uaktualnienia obrazu systemu operacyjnego z tej partii wystąpień maszyn wirtualnych.
-4. Jeśli klient skonfiguruje sondy kondycji aplikacji, uaktualnienie czeka maksymalnie 5 minut, zanim sondy do poprawi, a następnie od razu będzie kontynuowane na następną partię. 
+4. Jeśli klient skonfiguruje sond kondycji aplikacji, uaktualnienie czeka maksymalnie 5 minut, zanim sondy do poprawi, przed przejściem do następnej partii uaktualniania. 
 5. Jeśli są pozostałe wystąpienia do uaktualnienia, przejdź do kroku 1) dla nowej partii; w przeciwnym razie uaktualnienie jest pełny.
 
-Aparat uaktualnienia systemu operacyjnego sprawdza, czy ogólnej kondycji wystąpień maszyny Wirtualnej przed uaktualnieniem każdej partii zestawu skalowania. Podczas uaktualniania usługi batch, może być innych jednoczesnych planowana lub nieplanowana konserwacja działań wykonywanych w centrach danych platformy Azure, które mogą mieć wpływ na dostępność maszyn wirtualnych z systemem. Dzięki temu jest możliwe, że tymczasowo więcej niż 20% wystąpień może nie działać. W takich przypadkach na koniec bieżącej partii zestawu skalowania zatrzymuje uaktualnienia.
+Zestaw skalowania systemu operacyjnego sprawdzanie uaktualniania programu orchestrator dotyczące ogólnej kondycji wystąpień maszyny Wirtualnej przed uaktualnieniem każdej partii. Podczas uaktualniania usługi batch, może być innych jednoczesnych planowana lub nieplanowana konserwacja działań wykonywanych w centrach danych platformy Azure, które mogą mieć wpływ na dostępność maszyn wirtualnych z systemem. Dzięki temu jest możliwe, że tymczasowo więcej niż 20% wystąpień może nie działać. W takich przypadkach na koniec bieżącej partii zestawu skalowania zatrzymuje uaktualnienia.
 
 ## <a name="supported-os-images"></a>Obsługiwane obrazy systemu operacyjnego
 Obecnie obsługiwane są tylko niektóre obrazy platformy systemu operacyjnego. Obecnie nie można używać obrazów niestandardowych, które zostały utworzone samodzielnie. 
@@ -72,7 +70,8 @@ Obecnie obsługiwane są następujące jednostki SKU (więcej rozwiązań zostan
 
 - *Wersji* właściwości obrazu platformy musi być równa *najnowsze*.
 - Dla zestawów skalowania bez usługi Service Fabric, należy użyć sondy kondycji aplikacji.
-- Upewnij się, że zasoby modelu zestawu skalowania odwołuje się do jest dostępny i zawsze aktualne. Identyfikator URI Exa.SAS uruchamianie ładunku we właściwościach rozszerzenia maszyny Wirtualnej, ładunek na koncie magazynu, odwołania do kluczy tajnych w modelu. 
+- Upewnij się, że zasoby modelu zestawu skalowania odwołuje się do jest dostępny i zawsze aktualne. 
+  Identyfikator URI Exa.SAS uruchamianie ładunku we właściwościach rozszerzenia maszyny Wirtualnej, ładunek na koncie magazynu, odwołania do kluczy tajnych w modelu. 
 
 ## <a name="configure-automatic-os-image-upgrade"></a>Konfigurowanie automatycznego uaktualnienia obrazu systemu operacyjnego
 Aby skonfigurować automatyczne uaktualnienia obrazu systemu operacyjnego, upewnij się, że *automaticOSUpgradePolicy.enableAutomaticOSUpgrade* właściwość jest ustawiona na *true* w zestawu skalowania definicję modelu. 
@@ -117,7 +116,7 @@ Sondy modułu równoważenia obciążenia może być przywoływany w *elementy n
   ...
 ```
 > [!NOTE]
-> Ta sekcja dotyczy tylko dla zestawów skalowania bez usługi Service Fabric. Usługa Service Fabric ma swój własny pojęcie kondycji aplikacji. Korzystając z automatycznych uaktualnień systemu operacyjnego za pomocą usługi Service Fabric, nowy obraz systemu operacyjnego jest udostępniona domena aktualizacji według domeny aktualizacji, aby zapewnić wysoką dostępność usługi działające w usłudze Service Fabric. Aby uzyskać więcej informacji na temat właściwości niezawodność klastrów usługi Service Fabric, zobacz [tej dokumentacji](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
+> Korzystając z automatycznych uaktualnień systemu operacyjnego za pomocą usługi Service Fabric, nowy obraz systemu operacyjnego jest udostępniona domena aktualizacji według domeny aktualizacji, aby zapewnić wysoką dostępność usługi działające w usłudze Service Fabric. Aby uzyskać więcej informacji na temat właściwości niezawodność klastrów usługi Service Fabric, zobacz [tej dokumentacji](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-capacity#the-durability-characteristics-of-the-cluster).
 
 ### <a name="keep-credentials-up-to-date"></a>Aktualizowanie poświadczeń
 Jeśli zestaw skalowania korzysta z żadnych poświadczeń dostępu do zasobów zewnętrznych, na przykład jeśli skonfigurowano rozszerzenie maszyny Wirtualnej, która używa tokenu sygnatury dostępu Współdzielonego dla konta magazynu, należy upewnić się, że poświadczenia są zawsze na bieżąco. Jeśli wszystkie poświadczenia, w tym certyfikaty i tokeny wygasły, uaktualnienie nie powiedzie, a pierwszej partii maszyn wirtualnych zostanie pozostawiony w stanie niepowodzenia.
@@ -130,7 +129,7 @@ Są zalecane kroki, aby odzyskać maszyn wirtualnych, a następnie ponownie Wł�
 * Wdrażanie zestawu skalowania zaktualizowane, który zaktualizuje wszystkie wystąpienia maszyn wirtualnych, w tym te, które nie powiodło się. 
 
 ## <a name="get-the-history-of-automatic-os-image-upgrades"></a>Pobieranie historii automatyczne uaktualnienia obrazu systemu operacyjnego 
-Możesz sprawdzić historię najnowsze uaktualnienie systemu operacyjnego, wykonywane na zestawie skalowania jest ustawiana za pomocą programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub interfejsów API REST. Możesz też uzyskać historię ostatnich 5 próby uaktualnienia systemu operacyjnego, w ciągu 2 ostatnich miesięcy.
+Możesz sprawdzić historię najnowsze uaktualnienie systemu operacyjnego, wykonywane na zestawie skalowania jest ustawiana za pomocą programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure w wersji 2.0 lub interfejsów API REST. Możesz też uzyskać historii ostatnich pięciu próby uaktualnienia systemu operacyjnego, w ciągu ostatnich dwóch miesięcy.
 
 ### <a name="azure-powershell"></a>Azure PowerShell
 Na poniższym przykładzie używany program Azure PowerShell, aby sprawdzić stan dla zestawu skalowania o nazwie *myVMSS* w grupie zasobów o nazwie *myResourceGroup*:

@@ -1,20 +1,21 @@
 ---
-title: Usługa Azure Content Moderator — tworzenie przeglądy wideo przy użyciu platformy .NET | Dokumentacja firmy Microsoft
-description: Jak utworzyć wideo przeglądy dla platformy .NET przy użyciu zestawu SDK usługi Azure Content Moderator
+title: Utwórz przeglądy wideo przy użyciu platformy .NET — Content Moderator
+titlesuffix: Azure Cognitive Services
+description: Jak utworzyć wideo, przeglądy, korzystanie z Content Moderator zestawu SDK dla platformy .NET
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/18/2018
 ms.author: sajagtap
-ms.openlocfilehash: f0e0867728e8a7e9ab4f54d6a0ec68038260997d
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 284ee24bbb0a15d107acf85e2d58072a0ecbbc6e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182772"
+ms.locfileid: "47219044"
 ---
 # <a name="create-video-reviews-using-net"></a>Utwórz przeglądy wideo przy użyciu platformy .NET
 

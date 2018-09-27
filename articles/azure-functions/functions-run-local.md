@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: conceptual
 ms.date: 08/14/2018
 ms.author: glenga
-ms.openlocfilehash: 08686c46cbba1d7e51f4d73a6c2d0010d767d0bd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f950d8d5b52685e45acf4093adac451c8f22aecd
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039331"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226215"
 ---
 # <a name="work-with-azure-functions-core-tools"></a>Praca z usługą Azure Functions podstawowych narzędzi
 
@@ -483,7 +483,7 @@ Dostępne są następujące opcje wdrażania niestandardowego kontenera:
 
 | Opcja     | Opis                            |
 | ------------ | -------------------------------------- |
-| **`--registry`** | Nazwa rejestru platformy Docker bieżący użytkownik zalogowany. |
+| **`--registry`** | Nazwa rejestru platformy Docker bieżący użytkownik zalogował się. |
 | **`--platform`** | Platforma hostingu aplikacji funkcji. Prawidłowe opcje to `kubernetes` |
 | **`--name`** | Nazwa aplikacji funkcji. |
 | **`--max`**  | Opcjonalnie Ustawia maksymalną liczbę wystąpień aplikacji funkcji do wdrożenia. |

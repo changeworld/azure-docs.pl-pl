@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/06/2018
 ms.author: dobett
-ms.openlocfilehash: eb7b4c4c6228818f78e002f4a06a000e9aa34a3a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 0e0c398311c5826f8b6c72bf0f39ad2bfde306b2
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43109641"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223053"
 ---
 # <a name="schedule-and-broadcast-jobs-netnet"></a>Planowanie i emitowanie zadań (.NET/.NET)
 
@@ -140,7 +140,7 @@ W tej sekcji służy do tworzenia aplikacji konsolowej .NET, która odpowiada na
 9. Zapisz swoją pracę i Skompiluj rozwiązanie.         
 
 > [!NOTE]
-> Dla uproszczenia ten samouczek nie zawiera opisu wdrożenia żadnych zasad ponawiania. W kodzie produkcyjnym należy wdrożyć zasady ponawiania (np. Ponów próbę połączenia), zgodnie z sugestią w artykule z witryny MSDN [obsługi błędów przejściowych](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults).
+> Dla uproszczenia ten samouczek nie zawiera opisu wdrożenia żadnych zasad ponawiania. W kodzie produkcyjnym należy wdrożyć zasady ponawiania (np. Ponów próbę połączenia), zgodnie z sugestią podaną w artykule [obsługi błędów przejściowych](/azure/architecture/best-practices/transient-faults).
 > 
 
 ## <a name="schedule-jobs-for-calling-a-direct-method-and-sending-device-twin-updates"></a>Planowanie zadań podczas wywoływania metody bezpośredniej i wysyłania aktualizacji bliźniaczej reprezentacji urządzenia

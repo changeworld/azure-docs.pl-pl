@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/05/2018
 ms.author: jdial
-ms.openlocfilehash: bd05f1c5c2c8f4c4469a702b73341fd506c54815
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 3ac7ab0aac190ab53075a6a4ee24fca3ee7eeb84
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958785"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227524"
 ---
 # <a name="create-change-or-delete-a-network-security-group"></a>Tworzenie, zmienianie lub usuwanie grupy zabezpieczeń sieci
 
@@ -68,7 +68,7 @@ W polu wyszukiwania w górnej części portalu wprowadź *sieciowe grupy zabezpi
 1. W polu wyszukiwania w górnej części portalu wprowadź *sieciowe grupy zabezpieczeń*. Gdy **sieciowe grupy zabezpieczeń** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz grupy zabezpieczeń sieci na liście, który chcesz wyświetlić szczegóły. W obszarze **ustawienia** można wyświetlić **reguły zabezpieczeń dla ruchu przychodzącego** i **reguły zabezpieczeń dla ruchu wychodzącego**, **interfejsy sieciowe** i  **Podsieci** sieciowa grupa zabezpieczeń jest skojarzona z. Można również włączyć lub wyłączyć **dzienniki diagnostyczne** i widok **obowiązujących reguł zabezpieczeń**. Aby dowiedzieć się więcej, zobacz [dzienniki diagnostyczne](virtual-network-nsg-manage-log.md) i [wyświetlanie obowiązujących reguł zabezpieczeń](diagnose-network-traffic-filter-problem.md).
 3. Aby dowiedzieć się więcej na temat typowych ustawień platformy Azure, na liście, zobacz następujące artykuły:
-    *   [Dziennik aktywności](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
+    *   [Dziennik aktywności](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
     *   [Kontrola dostępu (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
     *   [Tagi](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Blokady](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

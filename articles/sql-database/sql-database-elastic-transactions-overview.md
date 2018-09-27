@@ -2,20 +2,22 @@
 title: Transakcje rozproszone w bazach danych w chmurze
 description: Przegląd transakcji Elastic Database usługi Azure SQL Database
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
+ms.subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.custom: scale out apps
-ms.workload: On Demand
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 0de19870b39bc679d653f3d9bdf4fea3a2c100c1
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 3147061f527621ba98dee84f4d347a6e883d61c0
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44722150"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166473"
 ---
 # <a name="distributed-transactions-across-cloud-databases"></a>Transakcje rozproszone w bazach danych w chmurze
 Transakcje elastyczne bazy danych usługi Azure SQL Database (baza danych SQL) umożliwiają uruchamianie transakcje obejmujące wiele baz danych w bazie danych SQL. Transakcji elastycznych baz danych dla bazy danych SQL są dostępne dla aplikacji .NET za pomocą ADO .NET oraz integracji z dobrze znanych programowania środowisko przy użyciu [System.Transaction](https://msdn.microsoft.com/library/system.transactions.aspx) klasy. Aby uzyskać biblioteki, zobacz [platformy .NET Framework 4.6.1 (Instalator internetowy)](https://www.microsoft.com/download/details.aspx?id=49981).

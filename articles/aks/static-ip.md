@@ -1,82 +1,75 @@
 ---
 title: Używanie statycznego adresu IP z modułem równoważenia obciążenia Azure Kubernetes Service (AKS)
-description: Za pomocą statycznego adresu IP modułu równoważenia obciążenia Azure Kubernetes Service (AKS).
+description: Dowiedz się, jak utworzyć i używać statycznego adresu IP z modułem równoważenia obciążenia Azure Kubernetes Service (AKS).
 services: container-service
 author: iainfoulds
-manager: jeconnoc
 ms.service: container-service
 ms.topic: article
-ms.date: 05/21/2018
+ms.date: 09/26/2018
 ms.author: iainfou
-ms.custom: mvc
-ms.openlocfilehash: 87fe014d5c19be675d4f6cac876548a31a4484b4
-ms.sourcegitcommit: f057c10ae4f26a768e97f2cb3f3faca9ed23ff1b
+ms.openlocfilehash: a7e592e9911c596f2cf74724e73c469ed616e5f0
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42060309"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391349"
 ---
-# <a name="use-a-static-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Używanie statycznego adresu IP z modułem równoważenia obciążenia Azure Kubernetes Service (AKS)
+# <a name="use-a-static-public-ip-address-with-the-azure-kubernetes-service-aks-load-balancer"></a>Statyczny publiczny adres IP za pomocą modułu równoważenia obciążenia Azure Kubernetes Service (AKS)
 
-W niektórych przypadkach takich jak podczas ładowania w usłudze Azure Kubernetes Service (AKS) są odtwarzane równoważenia lub usługi Kubernetes za pomocą typu usługi równoważenia obciążenia są odtwarzane publicznego adresu IP usługi Kubernetes może ulec zmianie. Szczegóły tego dokumentu, Konfigurowanie statycznego adresu IP dla usługi Kubernetes.
+Domyślnie publiczny adres IP przypisany do zasobu modułu równoważenia obciążenia, utworzone przez klaster AKS jest tylko prawidłowy dla cyklem życia tego zasobu. Jeśli usuniesz usługi Kubernetes, moduł równoważenia obciążenia skojarzone i adres IP również zostaną usunięte. Jeśli chcesz przypisać określony adres IP lub zachować adres IP w ponownie wdrożonym usług Kubernetes, można tworzyć i używać statyczny publiczny adres IP.
 
-## <a name="create-static-ip-address"></a>Tworzenie statycznego adresu IP
+W tym artykule dowiesz się, jak utworzyć statyczny publiczny adres IP i przypisać ją do usługi Kubernetes.
 
-Utwórz statyczny publiczny adres IP dla usługi Kubernetes. Adres IP musi zostać utworzona w usłudze AKS **węzła** grupy zasobów. Pobierz nazwę grupy zasobów przy użyciu [az resource show] [ az-resource-show] polecenia.
+## <a name="before-you-begin"></a>Przed rozpoczęciem
 
-```azurecli-interactive
-$ az resource show --resource-group myResourceGroup --name myAKSCluster --resource-type Microsoft.ContainerService/managedClusters --query properties.nodeResourceGroup -o tsv
+W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure] [ aks-quickstart-cli] lub [przy użyciu witryny Azure portal][aks-quickstart-portal].
+
+Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.46 lub później zainstalowane i skonfigurowane. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli potrzebujesz zainstalować lub uaktualnić, zobacz [instalacji wiersza polecenia platformy Azure] [azure-install-cli].
+
+## <a name="create-a-static-ip-address"></a>Tworzenie statycznego adresu IP
+
+Kiedy tworzysz statyczny publiczny adres IP do użycia za pomocą usługi AKS, należy utworzyć zasób adresu IP w **węzła** grupy zasobów. Pobierz nazwę grupy zasobów przy użyciu [az aks show] [ az-aks-show] polecenie i Dodaj `--query nodeResourceGroup` parametr zapytania. Poniższy przykład pobiera węzeł grupy zasobów dla nazwy klastra AKS *myAKSCluster* w polu Nazwa grupy zasobów *myResourceGroup*:
+
+```azurecli
+$ az aks show --resource-group myResourceGroup --name myAKSCluster --query nodeResourceGroup -o tsv
 
 MC_myResourceGroup_myAKSCluster_eastus
 ```
 
-Użyj [tworzenie publicznego adresu ip sieci az] [ az-network-public-ip-create] polecenie, aby utworzyć adres IP.
+Teraz Utwórz statyczny publiczny adres IP z [tworzenie publicznego adresu ip sieci az] [ az-network-public-ip-create] polecenia. Określ nazwę grupy zasobów węzła uzyskanego w poprzednim poleceniu, a następnie nazwę dla adresu IP adresów zasobów, takich jak *myAKSPublicIP*:
 
-```azurecli-interactive
-az network public-ip create --resource-group MC_myResourceGroup_myAKSCluster_eastus --name myAKSPublicIP --allocation-method static
+```azurecli
+az network public-ip create \
+    --resource-group MC_myResourceGroup_myAKSCluster_eastus \
+    --name myAKSPublicIP \
+    --allocation-method static
 ```
 
-Zwróć uwagę na adres IP.
+Adres IP jest wyświetlany, jak pokazano w następujących danych wyjściowych skróconego przykładu:
 
 ```json
 {
   "publicIp": {
     "dnsSettings": null,
     "etag": "W/\"6b6fb15c-5281-4f64-b332-8f68f46e1358\"",
-    "id": "/subscriptions/<SubscriptionID>/resourceGroups/myResourceGroup/providers/Microsoft.Network/publicIPAddresses/myAKSPublicIP",
+    "id": "/subscriptions/<SubscriptionID>/resourceGroups/MC_myResourceGroup_myAKSCluster_eastus/providers/Microsoft.Network/publicIPAddresses/myAKSPublicIP",
     "idleTimeoutInMinutes": 4,
     "ipAddress": "40.121.183.52",
-    "ipConfiguration": null,
-    "ipTags": [],
-    "location": "eastus",
-    "name": "myAKSPublicIP",
-    "provisioningState": "Succeeded",
-    "publicIpAddressVersion": "IPv4",
-    "publicIpAllocationMethod": "Static",
-    "resourceGroup": "myResourceGroup",
-    "resourceGuid": "56ec8760-a3b8-4aeb-a89d-42e68d2cbc8c",
-    "sku": {
-      "name": "Basic"
-    },
-    "tags": null,
-    "type": "Microsoft.Network/publicIPAddresses",
-    "zones": null
+    [..]
   }
 ````
 
- Jeśli to konieczne, można pobrać adresu za pomocą [az sieci public-ip list] [ az-network-public-ip-list] polecenia.
+Możesz później uzyskać publiczny adres IP, korzystając [az sieci public-ip list] [ az-network-public-ip-list] polecenia. Określ nazwę grupy zasobów, węzeł, a następnie wyszukać *ipAddress* jak pokazano w poniższym przykładzie:
 
-```azurecli-interactive
-az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query [0].ipAddress --output tsv
-```
+```azurecli
+$ az network public-ip list --resource-group MC_myResourceGroup_myAKSCluster_eastus --query [0].ipAddress --output tsv
 
-```console
 40.121.183.52
 ```
 
-## <a name="create-service-with-ip-address"></a>Tworzenie usługi przy użyciu adresu IP
+## <a name="create-a-service-using-the-static-ip-address"></a>Tworzenie usługi przy użyciu statycznego adresu IP
 
-Po udostępnieniu mu statyczny adres IP usługi Kubernetes mogą być tworzone za pomocą `loadBalancerIP` właściwości i wartości statyczny adres IP.
+Aby utworzyć usługę ze statycznym adresem IP, należy dodać `loadBalancerIP` właściwości i wartość statyczny adres IP adresów w manifeście YAML, jak pokazano w poniższym przykładzie:
 
 ```yaml
 apiVersion: v1
@@ -92,15 +85,17 @@ spec:
     app: azure-vote-front
 ```
 
-## <a name="troubleshooting"></a>Rozwiązywanie problemów
+## <a name="troubleshoot"></a>Rozwiązywanie problemów
 
-Statyczny adres IP nie został utworzony lub został utworzony w grupie niewłaściwych zasobów, tworzenia usługi nie powiedzie się. Aby rozwiązać, Zwróć zdarzenia tworzenia usługi przy użyciu [opisują kubectl] [ kubectl-describe] polecenia.
+Jeśli statyczny adres IP jest zdefiniowany w *loadBalancerIP* właściwości manifestu usługi Kubernetes, nie istnieje lub nie został utworzony w węźle grupy zasobów, tworzenia usługi równoważenia obciążenia nie powiedzie się. Aby rozwiązać problemy, przejrzyj zdarzenia tworzenia usługi przy użyciu [opisują kubectl] [ kubectl-describe] polecenia. Podaj nazwę usługi, jak określono w manifeście YAML, jak pokazano w poniższym przykładzie:
 
-```azurecli-interactive
+```console
 kubectl describe service azure-vote-front
 ```
 
-```console
+Zostaną wyświetlone informacje o zasobie usługi Kubernetes. *Zdarzenia* na końcu następujące przykładowe dane wyjściowe wskazują, że *użytkownika podany adres IP nie został znaleziony*. W tych scenariuszach Sprawdź, czy utworzono statyczny publiczny adres IP, w węźle grupy zasobów i czy adres IP podany w manifeście usługi Kubernetes jest poprawna.
+
+```
 Name:                     azure-vote-front
 Namespace:                default
 Labels:                   <none>
@@ -122,10 +117,19 @@ Events:
   Warning  CreatingLoadBalancerFailed  6s (x2 over 12s)  service-controller  Error creating load balancer (will retry): Failed to create load balancer for service default/azure-vote-front: user supplied IP Address 40.121.183.52 was not found
 ```
 
+## <a name="next-steps"></a>Kolejne kroki
+
+Dla dodatkowej kontroli nad ruchem sieciowym aplikacji, warto zamiast tego [utworzyć kontroler danych przychodzących][aks-ingress-basic]. Możesz również [utworzyć kontroler danych przychodzących z statyczny publiczny adres IP][aks-static-ingress].
+
 <!-- LINKS - External -->
 [kubectl-describe]: https://kubernetes.io/docs/reference/generated/kubectl/kubectl-commands#describe
+
 <!-- LINKS - Internal -->
 [aks-faq-resource-group]: faq.md#why-are-two-resource-groups-created-with-aks
 [az-network-public-ip-create]: /cli/azure/network/public-ip#az-network-public-ip-create
 [az-network-public-ip-list]: /cli/azure/network/public-ip#az-network-public-ip-list
-[az-resource-show]: /cli/azure/resource#az-resource-show
+[az-aks-show]: /cli/azure/aks#az-aks-show
+[aks-ingress-basic]: ingress-basic.md
+[aks-static-ingress]: ingress-static-ip.md
+[aks-quickstart-cli]: kubernetes-walkthrough.md
+[aks-quickstart-portal]: kubernetes-walkthrough-portal.md

@@ -1,48 +1,49 @@
 ---
-title: Azure moderatora zawartości - łagodzenia zadania i ludzkich w pętli recenzje | Dokumentacja firmy Microsoft
-description: Zastosowanie człowieka nadzoru do łagodzenia wspierana maszyny, aby uzyskać najlepsze wyniki.
+title: Moderowanie zadania i przeglądy człowieka w pętli - Content Moderator
+titlesuffix: Azure Cognitive Services
+description: Zastosowanie ludzkiego nadzoru do wspomaganego maszynowo moderowania uzyskać jak najlepsze rezultaty.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 1/21/2018
 ms.author: sajagtap
-ms.openlocfilehash: 35b3cdaa410712c3fd08d3df4ebe4c83e3955d50
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: b4a2f62b1c9cefb716cb217baf7389c3e7c790b8
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347129"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223259"
 ---
-# <a name="moderation-jobs-and-reviews"></a>Łagodzenie zadań i przeglądów
+# <a name="moderation-jobs-and-reviews"></a>Moderowanie zadania i przeglądy
 
-Łączenie łagodzenia wspierana maszyny z możliwościami ludzkich w pętli za pomocą moderatora zawartości Azure [API przeglądu](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) Aby uzyskać najlepsze wyniki dla Twojej firmy.
+Łączenie wspomaganego maszynowo moderowania oraz możliwości człowieka w pętli za pomocą usługi Azure Content Moderator [API przeglądu](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) Aby uzyskać najlepsze wyniki dla Twojej firmy.
 
-Przegląd interfejsu API oferuje następujące sposoby obejmują nadzoru ludzkich w procesie łagodzenia zawartości:
+Interfejs API przeglądu oferuje następujące sposoby uwzględnić ludzkiego nadzoru w procesie moderowanie zawartości:
 
-* `Job` operacje są używane do uruchamiania łagodzenia wspierana maszyny i tworzenia człowieka przeglądu w jednym kroku.
-* `Review` operacji są używane do tworzenia przeglądu ludzi, poza krok łagodzenia.
-* `Workflow` operacje są używane do zarządzania przepływy pracy automatyzujących skanowanie z progami tworzenia przeglądu.
+* `Job` operacje są używane do uruchamiania wspomagane maszynowo Moderowanie i tworzenie przeglądu przez ludzi w jednym kroku.
+* `Review` operacje są używane do tworzenia przeglądu przez ludzi, poza kroku moderowania.
+* `Workflow` operacje są używane do zarządzania przepływy pracy umożliwiające automatyzację skanowanie z progami dla tworzenia przeglądu.
 
-`Job` i `Review` operacji akceptować wywołania zwrotnego punktów końcowych dla odbieranie stanu i wyników.
+`Job` i `Review` operacje zaakceptować punktów końcowych wywołania zwrotnego do odbierania, stanu i wyników.
 
-W tym artykule omówiono `Job` i `Review` operacji. Odczyt [omówienie przepływy pracy](workflow-api.md) informacji na temat sposobu tworzenia, edytowania i pobrać definicji przepływu pracy.
+W tym artykule opisano `Job` i `Review` operacji. Odczyt [omówienie przepływów pracy](workflow-api.md) instrukcje dotyczące sposobu tworzenia, edytowania i pobrać definicji przepływu pracy.
 
 ## <a name="job-operations"></a>Operacje zadania
 
-### <a name="start-a-job"></a>Uruchom zadanie
-Użyj `Job.Create` operacji uruchamiania łagodzenia i zadania tworzenia człowieka przeglądu. Zawartości moderatora skanuje zawartość i ocenia wyznaczonych przepływu pracy. Oparte na wynikach przepływu pracy, jego tworzy przeglądami albo pomija kroku. Przesyła także po łagodzenia i przejrzyj po tagi do punktu końcowego wywołania zwrotnego.
+### <a name="start-a-job"></a>Uruchamianie zadania
+Użyj `Job.Create` operacji uruchamiania, Moderowanie i zadania tworzenia przeglądu przez ludzi. Pakiet Content Moderator skanuje zawartości i ocenia wyznaczonym przepływu pracy. Oparte na wynikach przepływu pracy, jego tworzy przeglądy albo pominie ten krok. Przesyła znaczniki po Moderowanie i przeglądu po do punktu końcowego usługi wywołania zwrotnego.
 
 Dane wejściowe zawierają następujące informacje:
 
 - Identyfikator przeglądu zespołu.
-- Zawartość do się łagodzenie.
+- Zawartość, do którego należy.
 - Nazwa przepływu pracy. (Wartość domyślna to "domyślny" przepływ pracy).
-- Wywołanie zwrotne interfejsu API w punkcie powiadomienia.
+- Wywołanie zwrotne interfejsu API punktu dla powiadomień.
  
-Następujące odpowiedzi zawiera identyfikator zadania, które zostało uruchomione. Identyfikator zadania umożliwia stan zadań i uzyskać szczegółowe informacje.
+Następującą odpowiedź zawiera identyfikator zadania, które zostało uruchomione. Identyfikator zadania umożliwia pobieranie stanu zadania i Azure otrzymują szczegółowe informacje.
 
     {
         "JobId": "2018014caceddebfe9446fab29056fd8d31ffe"
@@ -50,16 +51,16 @@ Następujące odpowiedzi zawiera identyfikator zadania, które zostało uruchomi
 
 ### <a name="get-job-status"></a>Pobierz stan zadania
 
-Użyj `Job.Get` operacji i identyfikatora zadania, aby uzyskać szczegóły zadania uruchomione lub zostało zakończone. Operacja zwraca, podczas gdy zadanie łagodzenia jest uruchamiane asynchronicznie. Wyniki są zwracane za pośrednictwem punktu końcowego wywołania zwrotnego.
+Użyj `Job.Get` operacji i identyfikator zadania, aby uzyskać szczegółowe informacje o zadaniu uruchomionej lub ukończonej. Operacja zwraca natychmiast, gdy zadanie Moderowanie jest uruchamiane asynchronicznie. Wyniki są zwracane za pośrednictwem punktu końcowego wywołania zwrotnego.
 
 Dane wejściowe zawierają następujące informacje:
 
-- Sprawdź identyfikator zespołu: identyfikator zadania zwracany przez poprzednią operację
+- Identyfikator zespołu przeglądu: identyfikator zadania zwracany przez poprzednią operację
 
 Odpowiedź zawiera następujące informacje:
 
-- Identyfikator recenzowania utworzone. (Aby uzyskać wyników przeglądu ostatecznego, użyj tego Identyfikatora).
-- Stan zadania (wykonane lub w toku): tagi przypisanej łagodzenia (pary klucz wartość).
+- Identyfikator utworzono Przegląd. (Aby uzyskać wyniki ostateczny Przegląd, użyj tego Identyfikatora).
+- Stan zadania (zakończone lub w toku): tagi przypisane Moderowanie (pary klucz wartość).
 - Raport wykonania zadania.
  
  
@@ -109,20 +110,20 @@ Odpowiedź zawiera następujące informacje:
             ]
         }
  
-![Przejrzyj obrazu dla człowieka moderatorów](images/ocr-sample-image.PNG)
+![Przegląd obrazu dla moderatorów ludzi](images/ocr-sample-image.PNG)
 
-## <a name="review-operations"></a>Czynności przeglądu
+## <a name="review-operations"></a>Przegląd operacji
 
 ### <a name="create-reviews"></a>Utwórz przeglądów
 
-Użyj `Review.Create` operacji tworzenia przeglądy człowieka. Można je w innym miejscu średnie albo użyj niestandardowej logiki Aby przypisać znaczniki łagodzenia.
+Użyj `Review.Create` operację, aby utworzyć ludziom dokonywanie. Możesz średni je w innym miejscu albo użyj niestandardowej logiki, aby przypisać znaczniki moderowania.
 
 Dane wejściowe dla tej operacji obejmują:
 
-- Zawartość do przeglądu.
-- Tagi przypisanej (pary wartości klucza) do przeglądu przez człowieka moderatorów.
+- Zawartość do przejrzenia.
+- Przypisanych tagów (pary klucz-wartość) do przeglądu przez ludzi moderatorów.
 
-Następujące odpowiedzi zawiera identyfikator przeglądu:
+Następującą odpowiedź zawiera identyfikator przeglądu:
 
     [
         "201712i46950138c61a4740b118a43cac33f434",
@@ -130,12 +131,12 @@ Następujące odpowiedzi zawiera identyfikator przeglądu:
 
 
 ### <a name="get-review-status"></a>Pobierz stan przeglądu
-Użyj `Review.Get` operację, aby uzyskać wyniki, po zakończeniu człowieka Przegląd moderowane obrazu. Użytkownik jest informowany za pośrednictwem punktu końcowego podanego wywołania zwrotnego. 
+Użyj `Review.Get` operację, aby uzyskać wyniki, po zakończeniu przeglądu przez ludzi moderowanych obrazu. Użytkownik jest informowany za pośrednictwem punktu końcowego podanego wywołania zwrotnego. 
 
-Operacja zwraca dwa zestawy znaczników: 
+Operacja zwraca dwa zestawy tagi: 
 
-* Tagi przypisany przez usługę łagodzenia
-* Tagi zakończenia człowieka przeglądu
+* Tagi przypisane przez usługę Moderowanie
+* Znaczniki po przeglądu przez ludzi zostało ukończone.
 
 Dane wejściowe zawierają co najmniej:
 
@@ -145,10 +146,10 @@ Dane wejściowe zawierają co najmniej:
 Odpowiedź zawiera następujące informacje:
 
 - Stan przeglądu
-- Tagi (pary klucz wartość) potwierdzona przez człowieka osoby dokonującej przeglądu
-- Przypisany przez usługę łagodzenia tagi (pary klucz wartość)
+- Tagi (pary klucz wartość) potwierdzona przez ludzi recenzenta
+- Tagi (pary klucz wartość) przypisany przez usługę Moderowanie
 
-Zobacz tagi przypisane osoba dokonująca przeglądu (**reviewerResultTags**) i początkowe tagi (**metadanych**) w odpowiedzi na następujące przykładowe:
+Zobacz tagi przypisane do osoby dokonującej przeglądu (**reviewerResultTags**) i tagi początkowe (**metadanych**) w odpowiedzi na następujące przykładowe:
 
     {
         "reviewId": "201712i46950138c61a4740b118a43cac33f434",
@@ -183,6 +184,6 @@ Zobacz tagi przypisane osoba dokonująca przeglądu (**reviewerResultTags**) i p
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Przetestuj [API zadania konsoli](try-review-api-job.md)i użyj przykłady kodu interfejsu API REST. Jeśli znasz i Visual Studio C#, Sprawdź również [szybkiego startu .NET zadania](moderation-jobs-quickstart-dotnet.md). 
-* Recenzji, wprowadzenie [API przeglądu konsoli](try-review-api-review.md)i użyj przykłady kodu interfejsu API REST. Następnie zobacz [szybkiego startu .NET przeglądami](moderation-reviews-quickstart-dotnet.md).
-* Wideo recenzji, użyj [szybkiego startu przeglądu wideo](video-reviews-quickstart-dotnet.md)i Dowiedz się, jak [Dodaj zapisy rozmów wideo Przegląd](video-transcript-reviews-quickstart-dotnet.md).
+* Wersja testowa [Konsola interfejsu API zadań](try-review-api-job.md)i przykłady kodu interfejsu API REST. Jeśli znasz program Visual Studio w języku C#, Sprawdź również [.NET zadania szybkiego startu](moderation-jobs-quickstart-dotnet.md). 
+* Aby rozpocząć pracę z [Konsola interfejsu API przeglądu](try-review-api-review.md)i przykłady kodu interfejsu API REST. Następnie zobacz [Szybki Start .NET przeglądy](moderation-reviews-quickstart-dotnet.md).
+* Przeglądy wideo, można użyć [wideo Przejrzyj Przewodnik Szybki Start](video-reviews-quickstart-dotnet.md)i Dowiedz się, jak [Dodaj transkrypcji do wideo przeglądu](video-transcript-reviews-quickstart-dotnet.md).

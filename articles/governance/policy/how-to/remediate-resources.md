@@ -4,16 +4,16 @@ description: Niniejszy instruktaż przeprowadzi Cię przez czynności naprawcze 
 services: azure-policy
 author: DCtheGeek
 ms.author: dacoulte
-ms.date: 09/18/2018
+ms.date: 09/25/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 747650bc47644cdca07f705f42d063c995ebe9bf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: adba2322bce5f0884cba51078e65feeaeaf193d9
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980257"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392701"
 ---
 # <a name="remediate-non-compliant-resources-with-azure-policy"></a>Korygowanie niezgodnych zasobów przy użyciu usługi Azure Policy
 
@@ -27,7 +27,7 @@ Zasady tworzenia zarządzanych tożsamości dla każdego przypisania dla Ciebie,
 ![Tożsamość zarządzana — Brak roli](../media/remediate-resources/missing-role.png)
 
 > [!IMPORTANT]
-> Jeśli zasób jest modyfikowany przez **deployIfNotExists** poza zakres przypisania zasad przydział tożsamość zarządzaną musi być programowo uzyskuje dostęp lub wdrożenie korygowania zakończy się niepowodzeniem.
+> Jeśli zasób jest modyfikowany przez **deployIfNotExists** jest poza zasięgiem szablonu lub przypisania zasad we właściwościach uzyskuje dostęp do zasobów spoza zakresu przypisania zasad, przydział tożsamość zarządzaną musi być [ręcznie uprawnienia](#manually-configure-the-managed-identity) lub wdrożenie korygowania zakończy się niepowodzeniem.
 
 ## <a name="configure-policy-definition"></a>Skonfiguruj definicję zasad
 
@@ -53,6 +53,79 @@ az role definition list --name 'Contributor'
 ```azurepowershell-interactive
 Get-AzureRmRoleDefinition -Name 'Contributor'
 ```
+
+## <a name="manually-configure-the-managed-identity"></a>Ręcznie skonfiguruj tożsamość zarządzaną
+
+Podczas tworzenia przydziału przy użyciu portalu, zasady generuje tożsamość zarządzaną i spowoduje przyznanie role zdefiniowane w **roleDefinitionIds**. W następujących warunkach kroki, aby utworzyć tożsamość zarządzaną i przypisz mu uprawnienia muszą być wykonywane ręcznie:
+
+- Podczas korzystania z zestawu SDK (np. programu Azure PowerShell)
+- Po zmodyfikowaniu zasobu poza zakres przypisania przez szablon
+- Zasobów spoza zakresu przypisania jest odczytywana przez szablon
+
+> [!NOTE]
+> Azure PowerShell i .NET są tylko zestawy SDK, które obecnie obsługuje tę możliwość.
+
+### <a name="create-managed-identity-with-powershell"></a>Utwórz tożsamość zarządzana przy użyciu programu PowerShell
+
+Aby utworzyć tożsamość zarządzaną podczas przypisywania zasad, **lokalizacji** muszą być zdefiniowane i **AssignIdentity** używane. Poniższy przykład pobiera definicji zasad wbudowanych **wdrażanie bazy danych SQL technologii transparent data encryption**, ustawia docelową grupę zasobów, a następnie tworzy przypisanie.
+
+```azurepowershell-interactive
+# Login first with Connect-AzureRmAccount if not using Cloud Shell
+
+# Get the built-in "Deploy SQL DB transparent data encryption" policy definition
+$policyDef = Get-AzureRmPolicyDefinition -Id '/providers/Microsoft.Authorization/policyDefinitions/86a912f6-9a06-4e26-b447-11b16ba8659f'
+
+# Get the reference to the resource group
+$resourceGroup = Get-AzureRmResourceGroup -Name 'MyResourceGroup'
+
+# Create the assignment using the -Location and -AssignIdentity properties
+$assignment = New-AzureRmPolicyAssignment -Name 'sqlDbTDE' -DisplayName 'Deploy SQL DB transparent data encryption' -Scope $resourceGroup.ResourceId -PolicyDefinition $policyDef -Location 'westus' -AssignIdentity
+```
+
+`$assignment` Zmienna zawiera teraz identyfikator podmiotu zabezpieczeń tożsamości zarządzanych oraz standardowe wartości zwracane, gdy Tworzenie przypisania zasad. Jest możliwy za pośrednictwem `$assignment.Identity.PrincipalId`.
+
+### <a name="grant-defined-roles-with-powershell"></a>Udziel określonych ról przy użyciu programu PowerShell
+
+Nowej tożsamości zarządzanej musi wykonać replikację za pomocą usługi Azure Active Directory, zanim mogą być udzielone wymagane role. Po zakończeniu replikacji poniższy przykład wykonuje iterację definicji zasad w `$policyDef` dla **roleDefinitionIds** i używa [New-AzureRmRoleAssignment](/powershell/module/azurerm.resources/new-azurermroleassignment) udzielenia nowe zarządzane tożsamość ról.
+
+```azurepowershell-interactive
+# Use the $policyDef to get to the roleDefinitionIds array
+$roleDefinitionIds = $policyDef.Properties.policyRule.then.details.roleDefinitionIds
+
+if ($roleDefinitionIds.Count -gt 0)
+{
+    $roleDefinitionIds | ForEach-Object {
+        $roleDefId = $_.Split("/") | Select-Object -Last 1
+        New-AzureRmRoleAssignment -Scope $resourceGroup.ResourceId -ObjectId $assignment.Identity.PrincipalId -RoleDefinitionId $roleDefId
+    }
+}
+```
+
+### <a name="grant-defined-roles-through-portal"></a>Udziel określonych ról za pomocą portalu
+
+Istnieją dwa sposoby udzielania przydział tożsamość zarządzaną zdefiniowanych ról przy użyciu portalu, **kontrola dostępu (IAM)** lub edytowanie przypisania zasad lub inicjatywy, a następnie klikając polecenie **Zapisz**.
+
+Aby dodać rolę przydział tożsamość zarządzaną, wykonaj następujące kroki:
+
+1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając pozycję **Wszystkie usługi**, a następnie wyszukując i wybierając opcję **Zasady**.
+
+1. Wybierz pozycję **Przypisania** w lewej części strony usługi Azure Policy.
+
+1. Znajdź przydziału, którego tożsamość zarządzaną i kliknij nazwę.
+
+1. Znajdź **identyfikator przypisania** właściwości na stronie edycji. Identyfikator przypisania będzie mniej więcej tak:
+
+   ```
+   /subscriptions/{subscriptionId}/resourceGroups/PolicyTarget/providers/Microsoft.Authorization/policyAssignments/2802056bfc094dfb95d4d7a5
+   ```
+
+   Nazwa tożsamości zarządzanej to ostatnia część przypisania identyfikator zasobu, który jest `2802056bfc094dfb95d4d7a5` w tym przykładzie. Ta część identyfikatora przydziału zasobu. Kopiuj
+
+1. Przejdź do zasobu lub kontenera nadrzędnego zasobów (Grupa zasobów, subskrypcji, grupy zarządzania), który wymaga definicji roli, dodane ręcznie.
+
+1. Kliknij przycisk **kontrola dostępu (IAM)** łącze w na stronie zasobów, a następnie kliknij przycisk **+ Dodaj** w górnej części strony kontrola dostępu.
+
+1. Wybierz odpowiednią rolę, który odpowiada **roleDefinitionIds** z definicji zasad. Pozostaw **Przypisz dostęp do** wartość domyślną "Azure AD użytkownika, grupy lub aplikacji". W **wybierz** pole, wklej lub wpisz część Identyfikatora zasobu przypisania znajdujące się wcześniej. Po zakończeniu wyszukiwania, kliknij obiekt o takiej samej nazwie, wybierz identyfikator, a następnie kliknij przycisk **Zapisz**.
 
 ## <a name="create-a-remediation-task"></a>Utwórz zadanie korygowania
 

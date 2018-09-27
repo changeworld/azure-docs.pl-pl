@@ -12,12 +12,12 @@ documentationcenter: ''
 manager: timlt
 ms.devlang: na
 ms.custom: mvc
-ms.openlocfilehash: f6cfb7bb988b080189da444cb77e0c258417b1ac
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 9a07fa2010eef22c4d1477641d07dee70ab5a9cb
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45574712"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227450"
 ---
 # <a name="how-to-manage-connectivity-and-reliable-messaging-using-azure-iot-hub-device-sdks"></a>Jak zarządzać łączności i niezawodna obsługa komunikatów za pomocą zestawów SDK urządzeń Azure IoT Hub
 
@@ -54,7 +54,7 @@ Błędy połączenia może się zdarzyć na wielu poziomach:
 - Błędy na poziomie protokołu HTTP, AMQP i MQTT transportu, takich jak odłączyć łącza lub sesji wygasła
 - Błędy na poziomie aplikacji, które wynikają z dowolnego lokalnego błędów, takich jak nieprawidłowe poświadczenia lub zachowanie, takich jak przekroczenia limitu przydziału lub ograniczenia przepustowości usługi
 
-Zestawy SDK urządzeń wykrywać błędy wszystkich trzech poziomów.  Błędy związane z systemu operacyjnego i błędów sprzętu są wykrywane i nie obsługiwane przez zestawy SDK urządzeń.  Projekt będzie opierać się na [przejściowych błędów obsługi wskazówek dotyczących](https://docs.microsoft.com/azure/architecture/best-practices/transient-faults#general-guidelines) z Centrum architektury platformy Azure.
+Zestawy SDK urządzeń wykrywać błędy wszystkich trzech poziomów.  Błędy związane z systemu operacyjnego i błędów sprzętu są wykrywane i nie obsługiwane przez zestawy SDK urządzeń.  Projekt będzie opierać się na [przejściowych błędów obsługi wskazówek dotyczących](/azure/architecture/best-practices/transient-faults#general-guidelines) z Centrum architektury platformy Azure.
 
 ### <a name="retry-patterns"></a>Ponów próbę wykonania wzorców
 

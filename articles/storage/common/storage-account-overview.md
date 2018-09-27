@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/13/2018
 ms.author: tamram
 ms.component: common
-ms.openlocfilehash: b942b85c954bb765833426f3f9a010a66f016a90
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 7b2d51f356538724d567654c0de3decbf19c838c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972321"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222101"
 ---
 # <a name="azure-storage-account-overview"></a>Przegląd konta usługi Azure storage
 
@@ -57,7 +57,7 @@ Konta magazynu ogólnego przeznaczenia v2 obsługi najnowszych funkcji usługi A
 
 Firma Microsoft zaleca używania konta magazynu ogólnego przeznaczenia w wersji 2 w przypadku większości scenariuszy. Ogólnego przeznaczenia w wersji 1 lub konta usługi Blob storage można łatwo uaktualnić do konta ogólnego przeznaczenia v2 modyfikacji oprogramowania nie przestojów ani aplikacji oraz bez potrzeby kopiowania danych. Aby uzyskać więcej informacji na temat uaktualniania do konta ogólnego przeznaczenia w wersji 2, zobacz [uaktualnić do konta magazynu ogólnego przeznaczenia v2](storage-account-upgrade.md). 
 
-Kont magazynu ogólnego przeznaczenia w wersji 2 oferuje wiele warstw dostępu do przechowywania danych na podstawie Twojej wzorców użycia. Aby uzyskać więcej informacji, zobacz [dostęp do warstwy danych obiektów blob](#access-tiers-for-blob-data).
+Kont magazynu ogólnego przeznaczenia w wersji 2 oferuje wiele warstw dostępu do przechowywania danych na podstawie Twojej wzorców użycia. Aby uzyskać więcej informacji, zobacz [warstwy dostępu dla blokowych obiektów blob danych](#access-tiers-for-block-blob-data).
 
 ### <a name="general-purpose-v1-accounts"></a>Konta ogólnego przeznaczenia, wersja 1
 
@@ -81,7 +81,7 @@ Mimo, że kont ogólnego przeznaczenia v2 są zalecane w większości przypadkó
 
 Konta usługi Blob storage to specjalne konto magazynu do przechowywania danych obiektów bez struktury jako blokowe obiekty BLOB. Konta usługi blob storage zapewnić samą trwałość, dostępność, skalowalność i funkcje wydajności, które są dostępne z kontami magazynu ogólnego przeznaczenia w wersji 2. Konta usługi blob storage obsługuje przechowywania blokowych obiektów blob i uzupełnialnych obiektów blob, ale nie stronicowych obiektów blob.
 
-Konta usługi blob storage oferują wiele warstw dostępu do przechowywania danych na podstawie Twojej wzorców użycia. Aby uzyskać więcej informacji, zobacz [dostęp do warstwy danych obiektów blob](#access-tiers-for-blob-data).
+Konta usługi blob storage oferują wiele warstw dostępu do przechowywania danych na podstawie Twojej wzorców użycia. Aby uzyskać więcej informacji, zobacz [warstwy dostępu dla blokowych obiektów blob danych](#access-tiers-for-block-blob-data).
 
 ## <a name="naming-storage-accounts"></a>Nazw kont magazynu
 

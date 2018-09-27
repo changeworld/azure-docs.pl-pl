@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/28/2017
 ms.author: lizross
 ms.reviewer: piotrci
-ms.openlocfilehash: 3ec8472285ecc7512e2eedc8b9ac850ef8e9cf87
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 69be2cb8b57b34502d5a5688ac163d7451abe48e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298024"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223976"
 ---
 # <a name="learn-about-access-management-using-azure-active-directory-groups"></a>Więcej informacji na temat zarządzania dostępem przy użyciu grup usługi Azure Active Directory
 Azure Active Directory (Azure AD) pomaga w zarządzaniu aplikacji opartych na chmurze, lokalnych aplikacji i zasoby przy użyciu grup w organizacji. Twoje zasoby mogą być częścią katalogu, takie jak uprawnienia do zarządzania obiektami za pomocą ról w katalogu lub zewnętrznie w stosunku do katalogu, takie jak do oprogramowania jako usługi (SaaS), Azure services witryn programu SharePoint i zasobów lokalnych.
@@ -34,7 +34,7 @@ Istnieją cztery sposoby przypisywania zasobów prawa dostępu dla użytkownikó
 
 - **Bezpośrednie przypisania.** Właściciel zasobu przypisuje bezpośrednio do użytkownika do zasobu.
 
-- **Przypisania grupy.** Właściciel zasobu przypisuje grupę usługi Azure AD do zasobu, który automatycznie zapewnia wszystkie dostępu członkom grupy zasobów. Członkostwo w grupie jest zarządzana przez właściciela grupy i właściciela zasobu, umożliwiając właściciel, albo dodać lub usunąć członków z grupy. Aby uzyskać więcej informacji na temat dodawania lub usuwania członkostwa w grupie zobacz [porady: Dodawanie lub usuwanie grupy z innej grupy przy użyciu portalu Azure Active Directory](active-directory-groups-membership-azure-portal.md). 
+- **Przypisania grupy.** Właściciel zasobu przypisuje grupę usługi Azure AD do zasobu, który automatycznie zapewnia wszystkie dostępu członkom grupy zasobów. Członkostwo w grupie jest zarządzane zarówno przez właściciela grupy i właściciela zasobu, umożliwiając właściciel, albo dodać lub usunąć członków z grupy. Aby uzyskać więcej informacji na temat dodawania lub usuwania członkostwa w grupie zobacz [porady: Dodawanie lub usuwanie grupy z innej grupy przy użyciu portalu Azure Active Directory](active-directory-groups-membership-azure-portal.md). 
 
 - **Przypisanie oparte na regułach.** Właściciel zasobu tworzy grupę i używa regułę w celu zdefiniowania, czyli użytkownicy przypisani do określonego zasobu. Reguła opiera się na atrybuty, które są przypisane do poszczególnych użytkowników. Właściciel zasobu zarządza reguły, określania atrybutów i wartości, które są wymagane, aby zezwolić na dostęp do zasobu. Aby uzyskać więcej informacji, zobacz [utworzyć grupę dynamiczną i sprawdzić stan](../users-groups-roles/groups-create-rule.md).
 

@@ -9,12 +9,12 @@ ms.devlang: javascript
 ms.topic: conceptual
 ms.date: 06/16/2017
 ms.author: dobett
-ms.openlocfilehash: 61b1dd31039df0db777e7e35d849889047a6588d
-ms.sourcegitcommit: bf522c6af890984e8b7bd7d633208cb88f62a841
+ms.openlocfilehash: c2b8df708a568fa995cf3af783c112127726811b
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39186686"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221812"
 ---
 # <a name="send-cloud-to-device-messages-with-iot-hub-node"></a>Wysyłanie komunikatów z chmury do urządzeń z usługą IoT Hub (Node)
 [!INCLUDE [iot-hub-selector-c2d](../../includes/iot-hub-selector-c2d.md)]
@@ -170,7 +170,7 @@ Teraz można uruchomić aplikacje.
     ![Uruchamianie aplikacji na wysyłanie poleceń chmura urządzenie][img-send-command]
    
    > [!NOTE]
-   > Sake dla uproszczenia w tym samouczku nie implementuje żadnych zasad ponawiania. W kodzie produkcyjnym należy wdrożyć zasady ponawiania (np. wycofywanie wykładnicze) zgodnie z sugestią w artykule z witryny MSDN [Obsługa błędu przejściowego].
+   > Sake dla uproszczenia w tym samouczku nie implementuje żadnych zasad ponawiania. W kodzie produkcyjnym należy wdrożyć zasady ponawiania (np. wycofywanie wykładnicze) zgodnie z sugestią podaną w artykule [obsługi błędów przejściowych](/azure/architecture/best-practices/transient-faults).
    > 
    > 
 
@@ -193,6 +193,5 @@ Aby dowiedzieć się więcej na temat opracowywania rozwiązań usługi IoT Hub,
 [Centrum deweloperów Azure IoT]: http://azure.microsoft.com/develop/iot
 [lnk-free-trial]: http://azure.microsoft.com/pricing/free-trial/
 [lnk-dev-setup]: https://github.com/Azure/azure-iot-sdk-node/tree/master/doc/node-devbox-setup.md
-[Obsługa błędu przejściowego]: https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx
 [Azure Portal]: https://portal.azure.com
 [Akcelerator rozwiązań IoT zdalnego monitorowania platformy Azure]: https://azure.microsoft.com/documentation/suites/iot-suite/

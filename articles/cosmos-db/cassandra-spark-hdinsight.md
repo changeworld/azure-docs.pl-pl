@@ -9,12 +9,12 @@ ms.devlang: spark-scala
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ankhanol
-ms.openlocfilehash: f71f5fa71d685af103bd82b3ccd2a910ab81d90f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 34293ffc70ebbc2a8639913aefe3b62ed8e618d4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962917"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222781"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>Dostęp do usługi Azure Cosmos DB Cassandra API z platformy Spark w ramach platformy YARN z HDInsight
 
@@ -32,7 +32,7 @@ W tym artykule opisano, jak uzyskać dostęp do interfejsu API usługi Azure Cos
 
 * [Używać cqlsh do sprawdzania poprawności, jeśli więc chcesz](cassandra-spark-generic.md##connecting-to-azure-cosmos-db-cassandra-api-from-spark)
 
-* **Konfiguracja interfejsu API rozwiązania Cassandra w Spark2** -Datastax łącznika dla bazy danych Cassandra wymaga, że połączenia bazy danych Cassandra szczegóły, aby być inicjowane jako część kontekstu aparatu Spark. Po uruchomieniu notesu programu Jupyter, sesja platformy spark i kontekst już zainicjowany i nie jest zalecane, aby zatrzymać i ponownie zainicjować kontekstu aparatu Spark, chyba że jest to wraz z każdej konfiguracji Ustaw jako część uruchamiania notesu programu Jupyter domyślne HDInsight. Jeden obejściem jest dodać szczegóły wystąpienia bazy danych Cassandra do Ambari, Spark2 bezpośrednio konfiguracji usługi. Jest to jednorazowa działania dla klastra, która wymaga ponownego uruchomienia tej usługi Spark2.
+* **Konfiguracja interfejsu API rozwiązania Cassandra w Spark2** — łącznik platformy Spark dla bazy danych Cassandra wymaga, że połączenia bazy danych Cassandra szczegóły, aby być inicjowane jako część kontekstu aparatu Spark. Po uruchomieniu notesu programu Jupyter, sesja platformy spark i kontekst już zainicjowany i nie jest zalecane, aby zatrzymać i ponownie zainicjować kontekstu aparatu Spark, chyba że jest to wraz z każdej konfiguracji Ustaw jako część uruchamiania notesu programu Jupyter domyślne HDInsight. Jeden obejściem jest dodać szczegóły wystąpienia bazy danych Cassandra do Ambari, Spark2 bezpośrednio konfiguracji usługi. Jest to jednorazowa działania dla klastra, która wymaga ponownego uruchomienia tej usługi Spark2.
  
   1. Przejdź do narzędzia Ambari, usługa Spark2 i kliknąć konfiguracje
 
@@ -68,7 +68,7 @@ Powłoki usługi Spark jest używana do celów testowania eksploracji.
   import org.apache.spark.sql.types.{StructType, StructField, StringType, IntegerType,LongType,FloatType,DoubleType, TimestampType}
   import org.apache.spark.sql.cassandra._
 
-  //datastax Spark connector
+  //Spark connector
   import com.datastax.spark.connector._
   import com.datastax.spark.connector.cql.CassandraConnector
 

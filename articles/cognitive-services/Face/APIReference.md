@@ -1,21 +1,9 @@
+<!-- Linguist question: Please confirm that the following are API names and should be left as is: "Person Management, LargePersonGroup/PersonGroup Management, LargeFaceList/FaceList Management, and Face Algorithms" -->
 ---
-title: Dokumentacja interfejsu API — interfejs API rozpoznawania twarzy
-titleSuffix: Azure Cognitive Services
-description: Dokumentacja interfejsu API zawiera informacje dotyczące zarządzania osoby, LargePersonGroup/grupie zarządzania, zarządzanie LargeFaceList/FaceList i interfejsy API algorytmów rozpoznawania twarzy.
-services: cognitive-services
-author: SteveMSFT
-manager: cgronlun
-ms.service: cognitive-services
-ms.component: face-api
-ms.topic: reference
-ms.date: 03/01/2018
-ms.author: sbowles
-ms.openlocfilehash: 54217e9f007a85242f38168d464e4242f1fe2504
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
-ms.translationtype: MT
-ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46124252"
+title: Dokumentacja interfejsu API — interfejs API rozpoznawania twarzy titleSuffix: Opis usług Azure Cognitive Services: Dokumentacja interfejsu API zawiera informacje dotyczące zarządzania osoby, LargePersonGroup/grupie zarządzania, zarządzanie LargeFaceList/FaceList i interfejsy API algorytmów rozpoznawania twarzy.
+usługi: Autor usług cognitive services: Menedżer SteveMSFT: cgronlun
+
+MS.Service: ms.component usług cognitive services: interfejs api rozpoznawania twarzy ms.topic: odwołanie ms.date: 2018-03/01 ms.author: sbowles
 ---
 # <a name="api-reference"></a>Dokumentacja interfejsu API
 

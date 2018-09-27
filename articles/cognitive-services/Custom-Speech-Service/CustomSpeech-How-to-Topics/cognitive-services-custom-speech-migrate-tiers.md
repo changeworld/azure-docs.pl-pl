@@ -1,21 +1,22 @@
 ---
-title: Migrowanie ceny warstwy punktów końcowych w usłudze Custom Speech Service na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak przeprowadzić migrację wdrożenia z warstwy S0 i S1, S2 Custom Speech Service punktami końcowymi, w usługach Cognitive Services.
+title: Migrowanie ceny warstw punkty końcowe — Custom Speech Service
+titlesuffix: Azure Cognitive Services
+description: Dowiedz się, jak przeprowadzić migrację wdrożenia z warstwy S0 i S1, S2 Custom Speech Service punktami końcowymi.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: 44411e0c92f4e24e274761821dd99efbe60c5f5d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 560aa0a7b9748f75cdde99691db7f33e2fc10221
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964977"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224855"
 ---
 # <a name="migrate-deployments-to-the-new-pricing-model"></a>Migracja wdrożenia do nowego modelu cen
 Począwszy od lipca 2017 r. Custom Speech Service oferuje [nowego modelu cen](https://azure.microsoft.com/pricing/details/cognitive-services/custom-speech-service/). Nowy model jest *łatwiejsze do zrozumienia*, *prostsza do obliczania kosztów*, i *bardziej elastyczne* pod kątem skalowania. Skalowanie, firma Microsoft wprowadziła pojęcie jednostki skalowania. Każda jednostka skalowania może obsługiwać pięciu współbieżnych żądań. Skalowanie na potrzeby współbieżnych żądań, w tym modelu została ustawiona na 5 równoczesnych żądań dla warstwy S0 i został ustawiony na 12 równoczesnych żądań dla warstwy S1. Możemy otworzyć te limity, która oferuje większą elastyczność dzięki wymagań dotyczących przypadków użycia.

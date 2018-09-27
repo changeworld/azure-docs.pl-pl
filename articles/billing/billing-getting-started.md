@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
-ms.author: tonguyen
-ms.openlocfilehash: 9396e954305ecc9ff6cbdd664c6cb71846bd5bfa
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.author: cwatson
+ms.openlocfilehash: d17215fe05a4795bd539759d98695ec2f6b0df3d
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42919130"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393503"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Uniknąć nieoczekiwanych opłat za pomocą rozliczeń platformy Azure i zarządzania kosztami
 
@@ -33,7 +33,7 @@ Po zarejestrowaniu się na platformie Azure, istnieje kilka rzeczy, które możn
 - Jeśli zarejestrowano się w celu [bezpłatnego konta platformy Azure](https://azure.microsoft.com/free/), [można korzystać z niektórych z najbardziej popularnych usług platformy Azure bezpłatnie przez 12 miesięcy](billing-create-free-services-included-free-account.md). Wraz z zaleceniami wymienione poniżej, zobacz [uniknąć opłat za darmo konta](billing-avoid-charges-free-account.md).
 
 > [!div class="nextstepaction"]
-> [Pomóż nam w usprawnianiu dokumentacja rozliczeń platformy Azure](https://go.microsoft.com/fwlink/p/?linkid=2010091) 
+> [Pomoc w ulepszaniu dokumentów rozliczeniowych platformy Azure](https://go.microsoft.com/fwlink/p/?linkid=2010091) 
 
 ## <a name="get-estimated-costs-before-adding-azure-services"></a>Uzyskaj szacowane koszty przed dodaniem usług platformy Azure
 

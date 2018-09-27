@@ -11,12 +11,12 @@ ms.devlang: multiple
 ms.topic: reference
 ms.date: 11/21/2017
 ms.author: glenga
-ms.openlocfilehash: a1b34484978ad95f0945e93411ac2e2a74fff238
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e989152ece19168138597a96d1246ec64498ce69
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46980978"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227558"
 ---
 # <a name="azure-functions-http-triggers-and-bindings"></a>Usługa Azure Functions HTTP wyzwalaczy i powiązań
 
@@ -483,7 +483,7 @@ Aby zabezpieczyć pełni funkcję punktów końcowych w środowisku produkcyjnym
 
 * Włącz uwierzytelnianie usługi App Service / autoryzacji dla aplikacji funkcji. Platforma usługi App Service pozwala używać do uwierzytelniania klientów usługi Azure Active Directory (AAD) i wielu dostawców tożsamości innych firm. Służy to do zaimplementowania reguł autoryzacji niestandardowej dla funkcji, a informacje o użytkownikach można pracować z kodu funkcji. Aby dowiedzieć się więcej, zobacz [uwierzytelnianie i autoryzacja w usłudze Azure App Service](../app-service/app-service-authentication-overview.md).
 
-* Użyj usługi Azure API Management (APIM), aby uwierzytelnić żądania. APIM oferuje różnorodne opcje zabezpieczeń interfejsu API dla żądań przychodzących. Aby dowiedzieć się więcej, zobacz [zasady uwierzytelniania usługi API Management](../api-management/api-management-authentication-policies.md). Za pomocą usługi APIM w miejscu można skonfigurować aplikację funkcji w celu umożliwienia akceptowania żądań tylko adres PI swojego wystąpienia usługi APIM. Aby dowiedzieć się więcej, zobacz [ograniczenia adresów IP](ip-addresses.md#ip-address-restrictions).
+* Użyj usługi Azure API Management (APIM), aby uwierzytelnić żądania. APIM oferuje różnorodne opcje zabezpieczeń interfejsu API dla żądań przychodzących. Aby dowiedzieć się więcej, zobacz [zasady uwierzytelniania usługi API Management](../api-management/api-management-authentication-policies.md). Za pomocą usługi APIM w miejscu można skonfigurować aplikację funkcji w celu umożliwienia akceptowania żądań tylko adres IP swojego wystąpienia usługi APIM. Aby dowiedzieć się więcej, zobacz [ograniczenia adresów IP](ip-addresses.md#ip-address-restrictions).
 
 * Wdróż aplikację funkcji do usługi Azure App Service Environment (ASE). Środowisko ASE zawiera dedykowane Środowisko hostingu, w której chcesz uruchamiać swoje funkcje. Środowisko ASE można konfigurować pojedynczą bramą frontonu, która służy do uwierzytelniania wszystkich żądań przychodzących. Aby uzyskać więcej informacji, zobacz [Konfigurowanie zapory aplikacji sieci Web (WAF) dla środowiska App Service Environment](../app-service/environment/app-service-app-service-environment-web-application-firewall.md).
 

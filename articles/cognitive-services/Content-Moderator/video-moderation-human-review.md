@@ -1,22 +1,23 @@
 ---
-title: Usługa Azure Content Moderator — Moderowanie wideo | Dokumentacja firmy Microsoft
+title: Moderowanie filmów wideo z przeglądu przez ludzi - Content Moderator
+titlesuffix: Azure Cognitive Services
 description: Użyj wspomagane maszynowo Moderowanie filmów wideo oraz narzędziom do przeglądu przez ludzi do umiarkowanego nieodpowiednią zawartość
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/20/2018
 ms.author: sajagtap
-ms.openlocfilehash: d9c01d4c2590535a4106e8e4ee79a12bdc60d956
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 33956e1986265b36f6df9a2d19909cb974bd3197
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714500"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222084"
 ---
-# <a name="video-moderation"></a>Moderowanie filmów wideo
+# <a name="video-moderation-with-human-review"></a>Moderowanie filmów wideo z przeglądu przez ludzi
 
 Użyj Content Moderator wspomagane maszynowo [Moderowanie filmów wideo](video-moderation-api.md) i [narzędzie do przeglądu przez ludzi](Review-Tool-User-Guide/human-in-the-loop.md) umiarkowane filmów wideo i transkrypcje dla dorosłych (jawne) i erotycznej zawartości (dwuznaczne), aby uzyskać najlepsze wyniki dla Twojej firmy.
 

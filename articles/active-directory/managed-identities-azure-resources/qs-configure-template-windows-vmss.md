@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 259e22607887d4aae43c46a410edb6efa8a5e497
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: 4bfaed3d908574eff3521cedcef4b117d45e1ca2
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45637660"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220923"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-azure-virtual-machine-scale-using-a-template"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na skalę maszyny wirtualnej platformy Azure przy użyciu szablonu
 
@@ -343,7 +343,7 @@ Jeśli masz zestaw skalowania maszyn wirtualnych, który nie wymaga tożsamości
    
    **Microsoft.Compute/virtualMachineScaleSets interfejsu API w wersji 2018-06-01**
     
-   Aby usunąć pojedynczy użytkownik przypisany tożsamości zarządzanej z zestawu skalowania maszyn wirtualnych, usuń go z `userAssignedIdentities` słownika.
+   Aby usunąć pojedynczy tożsamość zarządzaną przypisanych przez użytkownika z zestawu skalowania maszyn wirtualnych, usuń go z `userAssignedIdentities` słownika.
 
    Jeśli masz tożsamości przypisanych przez system, przechowuj je w w `type` wartości w obszarze `identity` wartość.
 

@@ -6,29 +6,29 @@ author: PatAltimore
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 06/13/2018
+ms.date: 09/26/2018
 ms.author: patricka
 ms.reviewer: fiseraci
-ms.openlocfilehash: 3c4be228442bf67ccf16236e36cbf015eca6d4e0
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 59c59705e840d3cdd0d3c5310d84d711cd00c96a
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47092062"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394016"
 ---
 # <a name="update-windows-defender-antivirus-on-azure-stack"></a>Aktualizowanie programu antywirusowego Windows Defender w usłudze Azure Stack
 
-[Program antywirusowy Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10) to rozwiązanie chroniące przed złośliwym kodem, które zapewnia bezpieczeństwo i ochrona przed wirusami. Każdy składnik infrastruktury Azure Stack (hosty funkcji Hyper-V i maszyn wirtualnych) jest chroniony za pomocą programu antywirusowego Windows Defender. Uzyskać aktualną ochronę definicje programu antywirusowego Windows Defender, aparatu i platformy wymagane okresowe aktualizacje. Jak zastosować aktualizacji, zależy od konfiguracji. 
+[Program antywirusowy Windows Defender](https://docs.microsoft.com/windows/security/threat-protection/windows-defender-antivirus/windows-defender-antivirus-in-windows-10) to rozwiązanie chroniące przed złośliwym kodem, które zapewnia bezpieczeństwo i ochrona przed wirusami. Każdy składnik infrastruktury Azure Stack (hosty funkcji Hyper-V i maszyn wirtualnych) jest chroniony za pomocą programu antywirusowego Windows Defender. Uzyskać aktualną ochronę definicje programu antywirusowego Windows Defender, aparatu i platformy wymagane okresowe aktualizacje. Jak zastosować aktualizacji, zależy od konfiguracji.
 
 ## <a name="connected-scenario"></a>Połączone scenariusza
 
-W przypadku ochrony przed złośliwym oprogramowaniem definicji i aparatu aktualizacji usługi Azure Stack [dostawcy zasobów aktualizacji](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-updates#the-update-resource-provider) pobiera definicje ochrony przed złośliwym oprogramowaniem i aktualizacje aparatu kilka razy dziennie. Każdy składnik infrastruktury Azure Stack pobiera aktualizację od dostawcy zasobów aktualizacji i aktualizowane automatycznie.
+W przypadku ochrony przed złośliwym oprogramowaniem definicji i aparatu aktualizacji usługi Azure Stack [dostawcy zasobów aktualizacji](azure-stack-updates.md#the-update-resource-provider) pobiera definicje ochrony przed złośliwym oprogramowaniem i aktualizacje aparatu kilka razy dziennie. Każdy składnik infrastruktury Azure Stack pobiera aktualizację od dostawcy zasobów aktualizacji i aktualizowane automatycznie.
 
-Aktualizacje platformy ochrony przed złośliwym oprogramowaniem, zastosuj [comiesięcznej aktualizacji usługi Azure Stack](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-apply-updates). Comiesięcznej aktualizacji usługi Azure Stack obejmuje aktualizacje platformy programu antywirusowego Windows Defender na miesiąc.
+Aktualizacje platformy ochrony przed złośliwym oprogramowaniem, zastosuj [comiesięcznej aktualizacji usługi Azure Stack](azure-stack-apply-updates.md). Comiesięcznej aktualizacji usługi Azure Stack obejmuje aktualizacje platformy programu antywirusowego Windows Defender na miesiąc.
 
 ## <a name="disconnected-scenario"></a>Scenariusz odłączony
 
- Zastosuj [comiesięcznej aktualizacji usługi Azure Stack](https://docs.microsoft.com/en-us/azure/azure-stack/azure-stack-apply-updates). Comiesięcznej aktualizacji usługi Azure Stack obejmuje definicje programu antywirusowego Windows Defender, aparatu i aktualizacji platformy w miesiącu.
+ Zastosuj [comiesięcznej aktualizacji usługi Azure Stack](azure-stack-apply-updates.md). Comiesięcznej aktualizacji usługi Azure Stack obejmuje definicje programu antywirusowego Windows Defender, aparatu i aktualizacji platformy w miesiącu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

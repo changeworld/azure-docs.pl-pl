@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: 00a15d42084b660ee2ec4db2b012a5e47fc02b41
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 790d327be27dae0c963c37e6e55f1721bf571c80
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46988450"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222118"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Tworzenie, zmienianie lub usuwanie tabeli tras
 
@@ -64,7 +64,7 @@ W polu wyszukiwania w górnej części portalu wprowadź *tabele tras* w polu wy
 1. W polu wyszukiwania w górnej części portalu wprowadź *tabele tras* w polu wyszukiwania. Gdy **tabele tras** są wyświetlane w wynikach wyszukiwania, wybierz ją.
 2. Wybierz tabelę tras, na liście, który chcesz wyświetlić szczegóły. W obszarze **ustawienia**, można wyświetlić **trasy** w tabeli tras i **podsieci** tabelę tras jest skojarzona z.
 3. Aby dowiedzieć się więcej na temat typowych ustawień platformy Azure, zobacz następujące informacje:
-    *   [Dziennik aktywności](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
+    *   [Dziennik aktywności](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
     *   [Kontrola dostępu (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
     *   [Tagi](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
     *   [Blokady](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

@@ -1,58 +1,59 @@
 ---
-title: Wykonywanie zadań zawartości łagodzenia moderatora zawartości platformy Azure | Dokumentacja firmy Microsoft
-description: Informacje o sposobie uruchamiania zadań łagodzenia zawartości w konsoli interfejsu API.
+title: Uruchamianie zadań moderowanie zawartości za pomocą konsoli interfejsu API — Content Moderator
+titlesuffix: Azure Cognitive Services
+description: Dowiedz się, jak uruchamiać zadania moderowanie zawartości w konsoli interfejsu API.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/03/2017
 ms.author: sajagtap
-ms.openlocfilehash: 6f741be1001ae70d5fdbf6f374204aaad1601abe
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 240b26cd86a6985825e3145c5bc43ef31524d7b7
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347012"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227113"
 ---
-# <a name="start-a-moderation-job-from-the-api-console"></a>Uruchom zadanie łagodzenia z poziomu konsoli interfejsu API
+# <a name="start-a-moderation-job-from-the-api-console"></a>Uruchom zadanie Moderowanie z poziomu konsoli interfejsu API
 
-Za pomocą interfejsu API przeglądu [zadania operacje](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) do inicjowania zadań łagodzenia zawartości na trasie zawartości image lub text w moderatora zawartości platformy Azure. 
+Za pomocą interfejsu API przeglądu [zadania operacje](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5) do inicjowania zadań end-to-end moderowanie zawartości dla zawartości image lub text w usłudze Azure Content Moderator. 
 
-Zadanie łagodzenia skanowanie zawartości za pomocą API łagodzenia obrazu moderatora zawartości lub interfejsu API łagodzenia tekstu. Następnie zadanie łagodzenia używa przepływów pracy (zdefiniowany w narzędziu przeglądu) do generowania przeglądy w narzędziu przeglądu. 
+Zadanie Moderowanie skanowanie zawartości za pomocą API moderowania obrazów Moderator zawartości lub interfejs API moderowania tekstu. Następnie zadania Moderowanie używa przepływy pracy (zdefiniowanymi w narzędzie do przeglądu) do generowania przeglądy w narzędzie do przeglądu. 
 
-Po człowieka moderatora sprawdza automatycznie przypisane tagów i dane prognozowania i przesyła decyzji końcowego łagodzenia, interfejsu API przeglądu przesyła wszystkie informacje do punktu końcowego interfejsu API.
+Po ludzi moderator przeglądy automatycznie przypisane tagi i dane prognozowania i przesyła decyzji końcowego Moderowanie, interfejs API przeglądu przesyła wszystkie informacje do punktu końcowego interfejsu API.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Przejdź do [Przegląd narzędzia](https://contentmoderator.cognitive.microsoft.com/). Zarejestruj się, jeśli nie ma to jeszcze gotowe. W narzędziu przeglądu [zdefiniowanie niestandardowego przepływu pracy](Review-Tool-User-Guide/Workflows.md) do użycia w tym `Job` operacji.
+Przejdź do [narzędzie do przeglądu](https://contentmoderator.cognitive.microsoft.com/). Utwórz konto, jeśli nie mają to jeszcze zrobione. W ramach narzędzie do przeglądu [zdefiniować niestandardowe przepływ pracy](Review-Tool-User-Guide/Workflows.md) do użycia w tym `Job` operacji.
 
-## <a name="use-the-api-console"></a>Za pomocą konsoli interfejsu API
-Aby test-drive interfejsu API za pomocą konsoli usługi online, należy kilka wartości o wprowadzenie do konsoli:
+## <a name="use-the-api-console"></a>Użyj konsoli interfejsu API
+Będą mogli ją testować interfejs API za pomocą konsoli usługi online, konieczne jest kilku wartości w celu wprowadzenia w życie konsoli programu:
     
-- `teamName`: Użyj `Id` pole z własnych narzędzi przeglądu poświadczenia ekranu. 
-- `ContentId`: Ten ciąg jest przekazany do interfejsu API i zwrócony przez metodę wywołania zwrotnego. **ContentId** przydaje się do kojarzenia identyfikatory wewnętrzny lub metadane z wyników zadania łagodzenia.- `Workflowname`: nazwa [przepływu pracy, który został utworzony](Review-Tool-User-Guide/Workflows.md) w poprzedniej sekcji.
-- `Ocp-Apim-Subscription-Key`: Znajduje się na **ustawienia** kartę. Aby uzyskać więcej informacji, zobacz [omówienie](overview.md).
+- `teamName`: Służy `Id` pola z ekranu poświadczenia tego narzędzia przeglądu. 
+- `ContentId`: Ten ciąg jest przekazywany do interfejsu API i zwrócone za pośrednictwem wywołania zwrotnego. **ContentId** przydaje się do kojarzenia identyfikatory wewnętrznego lub metadanych z wyników zadania moderowania.- `Workflowname`: nazwa [przepływu pracy, który został utworzony](Review-Tool-User-Guide/Workflows.md) w poprzedniej sekcji.
+- `Ocp-Apim-Subscription-Key`: Znajdujący się na **ustawienia** kartę. Aby uzyskać więcej informacji, zobacz [Przegląd](overview.md).
 
-Dostęp do interfejsu API konsoli jest z **poświadczenia** okna.
+Interfejs API dostępu do konsoli pochodzi z **poświadczenia** okna.
 
-### <a name="navigate-to-the-api-reference"></a>Przejdź do dokumentacji interfejsu API
+### <a name="navigate-to-the-api-reference"></a>Przejdź do dokumentacja interfejsu API
 W **poświadczenia** wybierz [dokumentacja interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/580519483f9b0709fc47f9c5).
 
   `Job.Create` Zostanie otwarta strona.
 
 ### <a name="select-your-region"></a>Wybierz region
-Aby uzyskać **konsoli testowania otwarty interfejs API**, wybierz region, który najlepiej opisuje Twojej lokalizacji.
-  ![Zadania — Utwórz pole region strony](images/test-drive-job-1.png)
+Aby uzyskać **konsoli testowania interfejsu Open API**, wybierz region, który najlepiej opisuje Twojej lokalizacji.
+  ![Zadania — Tworzenie strony pole region](images/test-drive-job-1.png)
 
   `Job.Create` Zostanie otwarta konsola interfejsu API. 
 
 ### <a name="enter-parameters"></a>Wprowadzanie parametrów
 
-Wprowadź wartości parametrów zapytania wymagane, a klucz subskrypcji. W **treść żądania** Określ lokalizację informacje, które chcesz skanować. Na przykład można użyć tego [obraz przykładowy](https://moderatorsampleimages.blob.core.windows.net/samples/sample6.png).
+Wprowadź wartości parametrów zapytania wymagane i klucz subskrypcji. W **treść żądania** Określ lokalizację informacje, które chcesz przeprowadzić skanowanie. W tym przykładzie użyjemy to [przykładowy obraz](https://moderatorsampleimages.blob.core.windows.net/samples/sample6.png).
 
-  ![Zadania — Tworzenie konsoli parametry zapytania, nagłówki i okno treści żądania](images/job-api-console-inputs.PNG)
+  ![Zadania — Tworzenie parametry zapytania konsoli, nagłówki i okno treści żądania](images/job-api-console-inputs.PNG)
 
 ### <a name="submit-your-request"></a>Prześlij żądanie
 Wybierz pozycję **Wyślij**. Identyfikator zadania jest tworzony. Skopiuj to do użycia w następnych krokach.
@@ -62,11 +63,11 @@ Wybierz pozycję **Wyślij**. Identyfikator zadania jest tworzony. Skopiuj to do
 ### <a name="open-the-get-job-details-page"></a>Otwórz stronę szczegółów pobrania zadania
 Wybierz **uzyskać**, a następnie otwórz interfejs API, wybierając przycisk, który odpowiada Twoim regionie.
 
-  ![Zadanie — Tworzenie konsoli wyniki Get](images/test-drive-job-4.png)
+  ![Zadania — Tworzenie konsoli wyniki Get](images/test-drive-job-4.png)
 
-### <a name="review-the-response"></a>Przejrzyj odpowiedzi
+### <a name="review-the-response"></a>Odpowiedź na Przegląd kodu
 
-Wprowadź wartości w polach **teamName** i **JobID**. Wprowadź klucz subskrypcji, a następnie wybierz **wysyłania**. Następującą odpowiedź zawiera przykładowe stan zadania i szczegółowe informacje.
+Wprowadź wartości w polach **teamName** i **JobID**. Wprowadź klucz subskrypcji, a następnie wybierz pozycję **wysyłania**. Następującą odpowiedź zawiera przykładowe zadania stan i szczegółowe informacje.
 
 ```
     {
@@ -97,10 +98,10 @@ Wprowadź wartości w polach **teamName** i **JobID**. Wprowadź klucz subskrypc
 ```
 
 ## <a name="navigate-to-the-review-tool"></a>Przejdź do narzędzia do przeglądu
-Na pulpicie nawigacyjnym moderatora zawartości, wybierz **przeglądu** > **obrazu**. Pojawia się obraz, który skanowany, gotowe do przeglądu człowieka.
+Na pulpicie nawigacyjnym Content Moderator wybierz **przeglądu** > **obraz**. Pojawia się obraz, który skanowany, gotowe do przeglądu przez ludzi.
 
-  ![Obraz narzędzia Przegląd trzech rowerzystów](images/ocr-sample-image.PNG)
+  ![Obraz narzędzie do przeglądu rowerzystów trzy](images/ocr-sample-image.PNG)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W kodzie za pomocą interfejsu API REST lub rozpoczynać [szybkiego startu .NET zadania](moderation-jobs-quickstart-dotnet.md) do integracji z aplikacji.
+W kodzie za pomocą interfejsu API REST lub rozpoczynać się [.NET zadania szybkiego startu](moderation-jobs-quickstart-dotnet.md) do integracji z aplikacją.

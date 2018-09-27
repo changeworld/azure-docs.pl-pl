@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/17/2018
+ms.date: 09/25/2018
 ms.author: bwren
 ms.component: ''
-ms.openlocfilehash: d82fda2928ea8c1e3e60006d3fbe8d53f3d12a9c
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: d1ad629ff5c6909256baa94573d045a8c2c09fb5
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/26/2018
-ms.locfileid: "47182335"
+ms.locfileid: "47223835"
 ---
 # <a name="common-questions-for-transition-from-oms-portal-to-azure-portal-for-log-analytics-users"></a>Często zadawane pytania dotyczące przejścia z portalu pakietu OMS do witryny Azure portal dla użytkowników usługi Log Analytics
 Usługi log Analytics swój własny portal o nazwie portalu pakietu OMS początkowo użyty do zarządzania jej konfiguracji i analizowania zebranych danych.  Wszystkie funkcje z tego portalu został przeniesiony do witryny Azure portal gdzie będą opracowywane.
@@ -83,7 +83,7 @@ Zarządzanie większość ustawień podłączone źródło w **Zaawansowane usta
 | Azure Storage     | **Zaawansowane ustawienia** menu dla obszaru roboczego. |
 | System Center     | **Zaawansowane ustawienia** menu dla obszaru roboczego. |
 | Office 365        | Zobacz [dokumentację dotyczącą rozwiązania do zarządzania usługi Office 365](../operations-management-suite/oms-solution-office-365.md) szczegółowe informacje dotyczące konfiguracji. |
-| Telemetria systemu Windows | Nie jest jeszcze dostępna w witrynie Azure portal. |
+| Telemetria systemu Windows | Menu Ustawienia dla rozwiązania. Zobacz [Windows Analytics w witrynie Azure portal](/windows/deployment/update/windows-analytics-azure-portal) szczegółowe informacje dotyczące konfiguracji. |
 | Łącznik ITSM    | Zobacz [połączenia narzędzia ITSM produktów/usług za pomocą łącznika zarządzania usługami IT](../log-analytics/log-analytics-itsmc-connections.md) instrukcje dotyczące łączenia usługi ITSM za pomocą usługi Log Analytics. |
 
 ### <a name="data"></a>Dane

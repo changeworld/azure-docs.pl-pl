@@ -14,19 +14,19 @@ ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: billing
 ms.date: 5/10/2018
-ms.author: mobandyo
-ms.openlocfilehash: 650fac6208adf8f904384454b2e66e26e45893f1
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.author: erikre
+ms.openlocfilehash: 79cc543e2a106fa8cbff31bdd0e6bb35afe68e4b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42918856"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392044"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Użyj interfejsów API rozliczeń platformy Azure, aby programowo uzyskać wgląd w użycie platformy Azure
-Użyj interfejsów API rozliczeń platformy Azure do pobierania danych użycia i zasobów do narzędzia do analizy danych preferowany. Interfejsy API usługi RateCard i użycia zasobów platformy Azure może pomóc dokładnie przewidzieć i kontrola kosztów. Interfejsy API są zaimplementowane jako dostawcy zasobów i częścią rodziny interfejsach API udostępnianych przez usługę Azure Resource Manager.  
+Użyj interfejsów API rozliczeń platformy Azure do pobierania danych użycia i zasobów do narzędzia do analizy danych preferowany. Interfejsy API usługi RateCard i użycia zasobów platformy Azure mogą ułatwić dokładne przewidywanie kosztów i zarządzanie nimi. Interfejsy API są zaimplementowane jako dostawcy zasobów i częścią rodziny interfejsach API udostępnianych przez usługę Azure Resource Manager.  
 
 > [!div class="nextstepaction"]
-> [Pomóż nam w usprawnianiu dokumentacja rozliczeń platformy Azure](https://go.microsoft.com/fwlink/p/?linkid=2010091)
+> [Pomoc w ulepszaniu dokumentów rozliczeniowych platformy Azure](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="azure-invoice-download-api-preview"></a>Interfejs API pobierania faktur platformy Azure (wersja zapoznawcza)
 Raz [zgody zostało ukończone](billing-manage-access.md#opt-in), pobierania faktur za pomocą wersji zapoznawczej [API faktury](/rest/api/billing). Funkcje obejmują:
@@ -65,7 +65,7 @@ Poniżej przedstawiono scenariusze, które są możliwe przy użyciu połączeni
   * Można również określić, jeśli inny typ oferty platformy Azure zapewnia lepszą szybkość w obrębie zasobu platformy Azure.
   
 ## <a name="partner-solutions"></a>Rozwiązania partnerskie
-[Cloud Cruiser i integracja interfejsów API rozliczeń platformy Azure Microsoft](billing-usage-rate-card-partner-solution-cloudcruiser.md) w tym artykule opisano sposób [Cloud Cruiser Express dla pakietu Azure Pack](http://www.cloudcruiser.com/partners/microsoft/) współpracuje bezpośrednio z poziomu portalu Windows Azure Pack (WAP). Operacyjnymi i finansowymi aspekty prywatne lub hostowanej chmury publicznej Microsoft Azure można zarządzać bezproblemowo z pojedynczy interfejs użytkownika.   
+W artykule [Cloud Cruiser and Microsoft Azure Billing API Integration](billing-usage-rate-card-partner-solution-cloudcruiser.md) (Integracja Cloud Cruiser z interfejsem API rozliczeń platformy Microsoft Azure) opisano, jak pakiet [Cloud Cruiser's Express for Azure Pack](http://www.cloudcruiser.com/partners/microsoft/) działa bezpośrednio z poziomu portalu Windows Azure Pack (WAP). Możesz bezproblemowo zarządzać zarówno operacyjnymi, jak i finansowymi aspektami hostowanej chmury publicznej lub prywatnej platformy Microsoft Azure z jednego interfejsu użytkownika.   
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Zapoznaj się z przykładów kodu w serwisie GitHub:

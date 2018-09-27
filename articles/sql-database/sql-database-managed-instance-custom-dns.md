@@ -2,20 +2,22 @@
 title: Usługa Azure SQL Database Managed wystąpienia niestandardowy system DNS | Dokumentacja firmy Microsoft
 description: W tym temacie opisano opcje konfiguracji dla niestandardowego systemu DNS przy użyciu bazy danych wystąpienia zarządzanego Azure SQL.
 services: sql-database
-author: srdan-bozovic-msft
-manager: craigg
 ms.service: sql-database
-ms.custom: managed instance
+ms.subservice: managed-instance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/23/2018
+author: srdan-bozovic-msft
 ms.author: srbozovi
 ms.reviewer: bonova, carlrab
-ms.openlocfilehash: 2d1bb7e8522da32dd33933261ea41b578f8afac1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+manager: craigg
+ms.date: 09/23/2018
+ms.openlocfilehash: f26ea763d48d03fe7e981b7abbbe64e573ec0b3a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949489"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224277"
 ---
 # <a name="configuring-a-custom-dns-for-azure-sql-database-managed-instance"></a>Konfigurowanie niestandardowego DNS dla usługi Azure SQL Database wystąpienie zarządzane
 
@@ -36,7 +38,7 @@ Niestandardową konfiguracją DNS jest niezgodny z wystąpieniem zarządzanym, n
    ![Opcja niestandardowe dns](./media/sql-database-managed-instance-custom-dns/custom-dns-server-ip-address.png) 
 
    > [!IMPORTANT]
-   > To ustawienie nie zostanie Azure cyklicznego programu rozpoznawania nazw DNS listy powoduje, że wystąpienie zarządzane wejść w stan uszkodzony. Odzyskanie stanu może być konieczna utworzyć nowego wystąpienia w sieci wirtualnej przy użyciu zgodnymi zasadami sieci, tworzenia danych na poziomie wystąpienia i przywracania baz danych. Zobacz [konfiguracja sieci wirtualnej](sql-database-managed-instance-vnet-configuration.md).
+   > To ustawienie nie zostanie Azure cyklicznego programu rozpoznawania nazw na liście DNS może spowodować wystąpienie zarządzane do wprowadzania niestandardowych serwerów DNS jest niedostępny z jakiegoś powodu stanie awaryjnym. Odzyskanie stanu może być konieczna utworzyć nowego wystąpienia w sieci wirtualnej przy użyciu zgodnymi zasadami sieci, tworzenia danych na poziomie wystąpienia i przywracania baz danych. Ustawienia Azure cyklicznego programu rozpoznawania nazw, ponieważ zapewnia ostatni wpis na liście DNS, nawet wtedy, gdy nie wszystkie niestandardowe serwery DNS, nazwy publicznej nadal można rozpoznać. Zobacz [konfiguracja sieci wirtualnej](sql-database-managed-instance-vnet-configuration.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

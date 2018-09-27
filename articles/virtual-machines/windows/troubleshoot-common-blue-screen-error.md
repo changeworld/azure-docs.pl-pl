@@ -13,12 +13,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure
 ms.date: 00/19/2018
 ms.author: genli
-ms.openlocfilehash: 6525067ec7a7a3154d1439f15736a1038ab0408c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 4a029e331129d40b0380fc142d858aa299b7751b
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47167973"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225450"
 ---
 # <a name="windows-shows-blue-screen-error-when-booting-an-azure-vm"></a>Windows pokazuje błękitny ekran błędu podczas rozruchu maszyny Wirtualnej platformy Azure
 W tym artykule opisano niebieskich ekranów, które można napotkać podczas rozruchu Windows maszyn wirtualnych (VM) w systemie Microsoft Azure. Zapewnia kroki ułatwiające zbieranie danych dla biletu pomocy technicznej. 
@@ -43,7 +43,7 @@ Może istnieć kilka przyczyn jako Dlaczego otrzymamy błędu zatrzymania. Najba
 - Uszkodzeniem systemu plików lub ilości pamięci
 - Aplikacja uzyskuje dostęp do zabronione sektora pamięci
 
-## <a name="solution"></a>Rozwiązanie
+## <a name="collect-memory-dump-file"></a>Zbieranie pliku zrzutu pamięci
 
 Aby rozwiązać ten problem, będziesz potrzebować pierwszy do gromadzenia plik zrzutu na potrzeby tej awarii, a następnie skontaktuj się z pomocą techniczną przy użyciu pliku zrzutu. Aby zebrać plik zrzutu, wykonaj następujące kroki:
 
@@ -53,7 +53,7 @@ Aby rozwiązać ten problem, będziesz potrzebować pierwszy do gromadzenia plik
 2. [Dołącz dysk systemu operacyjnego do maszyny Wirtualnej odzyskiwania](troubleshoot-recovery-disks-portal.md). 
 3. Pulpit zdalny dla maszyny Wirtualnej odzyskiwania.
 
-### <a name="collect-dump-file-and-submit-a-support-ticket"></a>Zbieranie pliku zrzutu i Wyślij bilet pomocy technicznej
+### <a name="locate-dump-file-and-submit-a-support-ticket"></a>Zlokalizuj plik zrzutu i Wyślij bilet pomocy technicznej
 
 1. Na maszynie Wirtualnej odzyskiwania przejdź do folderu systemu windows w dołączonym dysku systemu operacyjnego. Litera sterownika, która jest przypisana do dołączonym dysku systemu operacyjnego jest F, musisz przejść do F:\Windows.
 2. Znajdź plik memory.dmp kwietnia, a następnie [Wyślij bilet pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) przy użyciu pliku zrzutu. 

@@ -1,48 +1,48 @@
 ---
-title: Eksportowanie lub usuwanie ustawień portalu Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak można wyeksportować lub usunąć ustawień użytkownika, prywatne pulpity nawigacyjne i dostosowania w portalu Azure.
+title: Eksportowanie lub Usuń ustawienia portalu Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wyeksportować lub usunąć swoje ustawienia użytkownika, prywatne pulpity nawigacyjne i dostosowania w witrynie Azure portal.
 services: azure-portal
 keywords: ''
 author: santhoshsomayajula
-ms.author: santhosh.somayajulu
 ms.date: 05/18/2018
 ms.topic: conceptual
 ms.service: azure-portal
 ms.custom: ''
 manager: dougeby
-ms.openlocfilehash: e9bf6e69b439f5201d66cabb9bc87fe5c9faa610
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.author: cwatson
+ms.openlocfilehash: b2bf674dbb253c7ec698b18776d8752ed6a4c1c8
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34655413"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394084"
 ---
-# <a name="export-or-delete-settings-in-the-azure-portal"></a>Eksportowanie lub usuwanie ustawień w portalu Azure
-Można wyeksportować i usunąć następujące ustawienia z menu ustawień portalu Azure:
-* Azure portalu prywatne pulpity nawigacyjne
-* Ustawienia użytkownika, takich jak Ulubione subskrypcjami lub katalogami i ostatniego logowania się w katalogu
-* Kompozycje i dostosowania
+# <a name="export-or-delete-settings-in-the-azure-portal"></a>Eksportowanie lub usuwanie ustawień w witrynie Azure portal
+Można eksportować i usuwać następujące ustawienia w menu Ustawienia portalu Azure:
+* Azure portal, prywatne pulpity nawigacyjne
+* Ulubione subskrypcjami lub katalogami, takie jak ustawienia użytkownika i ostatniego logowania się w katalogu
+* Motywy i dostosowania
 
-Stanowczo zaleca się wyeksportować, a następnie przejrzyj ustawienia, przed ich usunięciem. Może być czasochłonne odbudować pulpitów nawigacyjnych i ponownie dodać własne dostosowania.
+Zdecydowanie zalecamy wyeksportować, a następnie przejrzyj ustawienia, przed ich usunięciem. Może być czasochłonne Aby ponownie skompilować pulpity nawigacyjne i ponownie dodać dostosowania.
 
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
-**Eksportowanie lub usuwanie ustawień portalu**
+**Eksportowanie lub Usuń ustawienia portalu**
 
 1. Zaloguj się w [Portalu Azure](http://portal.azure.com).
 2. W górnym rogu portalu, wybierz **ustawienia**.
 
     ![Zrzut ekranu pokazujący koło zębate ustawień portalu](media/azure-portal-export-delete-settings/azure-portal-settings-icon.png)
-3. Wybierz **wyeksportować wszystkie ustawienia** lub **usunięcie wszystkich ustawień i prywatne pulpity nawigacyjne**.
+3. Wybierz **wyeksportować wszystkie ustawienia** lub **Usuń wszystkie ustawienia i prywatne pulpity nawigacyjne**.
 
-    ![Zrzut ekranu pokazujący eksportowania ustawień portalu i delete](media/azure-portal-export-delete-settings/azure-portal-export-delete-settings.png)
+    ![Zrzut ekranu przedstawiający eksportowanie ustawień portalu i delete](media/azure-portal-export-delete-settings/azure-portal-export-delete-settings.png)
 
       W poniższej tabeli opisano te ustawienia. 
 
       | Ustawienie | Opis |
       | --- | --- |
-      | **Eksportuj wszystkie ustawienia** | Tworzy plik JSON zawierający ustawień użytkownika, takich jak kompozycję pulpitu nawigacyjnego.|
-      | **Usuń wszystkie ustawienia i prywatne pulpity nawigacyjne** | Usuwa wszystkie linki do prywatnego pulpitów nawigacyjnych i innych dostosowań użytkownika, wprowadzone do pulpitu nawigacyjnego portalu. |
+      | **Eksportuj wszystkie ustawienia** | Tworzy plik JSON, który zawiera ustawień użytkownika, takich jak Twój wybrany motyw pulpitu nawigacyjnego.|
+      | **Usuń wszystkie ustawienia i prywatne pulpity nawigacyjne** | Usuwa wszystkie łącza do prywatne pulpity nawigacyjne i inne modyfikacje użytkownika, wprowadzone do pulpitu nawigacyjnego portalu. |
 
 
 

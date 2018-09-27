@@ -10,12 +10,12 @@ ms.custom: vs-azure
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: glenga
-ms.openlocfilehash: 63213e38dab5ef2edd5150fe0adb620fecb2041c
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 63a2d5a62cf2cdfa2a1a08c56ef5a87aaaa13529
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714449"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395547"
 ---
 # <a name="develop-azure-functions-using-visual-studio"></a>Tworzenie funkcji platformy Azure przy użyciu programu Visual Studio  
 
@@ -171,7 +171,9 @@ Aby przetestować funkcję, naciśnij klawisz F5. Po wyświetleniu monitu zaakce
 
 Z projektem, uruchamianie można przetestować kod, jak testowałbyś wdrożoną funkcję. Aby uzyskać więcej informacji, zobacz [strategii testowania kodu w usłudze Azure Functions](functions-test-a-function.md). Podczas pracy w trybie debugowania, punkty przerwania są osiągane w programie Visual Studio, zgodnie z oczekiwaniami. 
 
-Na przykład sposobu testowania funkcji wyzwalanej przez kolejkę zobacz [samouczek szybkiego startu funkcji wyzwalanej przez kolejkę](functions-create-storage-queue-triggered-function.md#test-the-function).  
+<!---
+For an example of how to test a queue triggered function, see the [queue triggered function quickstart tutorial](functions-create-storage-queue-triggered-function.md#test-the-function).  
+-->
 
 Aby dowiedzieć się więcej na temat korzystania z podstawowych narzędzi usługi Azure Functions, zobacz [kodu i testowanie usługi Azure functions lokalnie](functions-run-local.md).
 

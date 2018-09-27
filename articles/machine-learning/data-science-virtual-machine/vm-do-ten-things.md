@@ -13,14 +13,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/04/2017
+ms.date: 09/24/2018
 ms.author: gokuma
-ms.openlocfilehash: ce73d1ef5425ee2fe66655571a6d6bbbff372af5
-ms.sourcegitcommit: 9222063a6a44d4414720560a1265ee935c73f49e
+ms.openlocfilehash: faabdb4c2d2e434863a6bed0b2cd85a05c94eab1
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39502815"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395733"
 ---
 # <a name="ten-things-you-can-do-on-the-windows-data-science-virtual-machine"></a>Dziesięć rzeczy, które można wykonać na Windows maszyny wirtualnej analizy danych
 
@@ -47,7 +47,7 @@ W tym artykule dowiesz się, jak używać maszyny wirtualnej DSVM do wykonywania
 **Wymagania wstępne**
 
 * Musisz mieć subskrypcję platformy Azure. Możesz zasubskrybować bezpłatnej wersji próbnej [tutaj](https://azure.microsoft.com/free/).
-* Instrukcje dotyczące obsługi maszyny wirtualnej do nauki o danych w witrynie Azure portal są dostępne pod adresem [tworzenia maszyny wirtualnej](https://portal.azure.com/#create/microsoft-ads.standard-data-science-vmstandard-data-science-vm).
+* Instrukcje dotyczące obsługi maszyny wirtualnej do nauki o danych w witrynie Azure portal są dostępne pod adresem [tworzenia maszyny wirtualnej](https://portal.azure.com/#create/microsoft-dsvm.dsvm-windowsserver-2016).
 
 ## <a name="1-explore-data-and-develop-models-using-microsoft-ml-server-or-python"></a>1. Badaj dane i tworzyć modele przy użyciu usługi Microsoft ML Server lub Python
 Języki R i Python umożliwia przeprowadzenie analizy swoje dane bezpośrednio na maszyny DSVM.
@@ -56,7 +56,7 @@ Dla języka R można użyć środowiska IDE, takich jak program RStudio, które 
 
 Dla języka Python można użyć środowiska IDE, takie jak Visual Studio Community Edition, które oferuje narzędzia języka Python dla wstępnie zainstalowane rozszerzenie programu Visual Studio (PTVS). Domyślnie tylko środowisko Python 3.6, środowiska conda główny jest skonfigurowany w narzędziach PTVS. Aby włączyć środowisko Anaconda Python 2.7, musisz wykonaj następujące czynności:
 
-* Tworzenie niestandardowego środowiska dla każdej wersji, przechodząc do **narzędzia** -> **narzędzi Python Tools** -> **środowiska Python** , a następnie klikając polecenie " **+ Niestandardowe**"w programie Visual Studio 2015 Community Edition
+* Tworzenie niestandardowego środowiska dla każdej wersji, przechodząc do **narzędzia** -> **narzędzi Python Tools** -> **środowiska Python** , a następnie klikając polecenie " **+ Niestandardowe**"w programie Visual Studio Community Edition
 * Wprowadź opis i Ustaw ścieżkę prefiks środowiska jako *c:\anaconda\envs\python2* Anaconda Python 2.7
 * Kliknij przycisk **Autowykrywanie** i następnie **Zastosuj** można zapisać środowiska.
 
@@ -66,7 +66,7 @@ Oto jak wygląda instalacji środowiska niestandardowego w programie Visual Stud
 
 Zobacz [dokumentacja narzędzi PTVS](http://aka.ms/ptvsdocs) Aby uzyskać więcej informacji na temat tworzenia środowiska Python.
 
-Teraz możesz są skonfigurowane do tworzenia nowego projektu języka Python. Przejdź do **pliku** -> **New** -> **projektu** -> **Python** i wybierz typ Aplikacja języka Python, które tworzysz. Można ustawić środowisko Python dla bieżącego projektu do żądanej wersji (Anaconda w wersji 2.7 lub 3.6), klikając prawym przyciskiem myszy **środowisko Python**, wybierając opcję **środowiska Python Dodaj/Usuń**, a następnie pobrania wymagane środowisko. Można znaleźć więcej informacji na temat pracy z narzędziami PTVS w produkcie [dokumentacji](http://aka.ms/ptvsdocs).
+Teraz możesz są skonfigurowane do tworzenia nowego projektu języka Python. Przejdź do **pliku** -> **New** -> **projektu** -> **Python** i wybierz typ Aplikacja języka Python, które tworzysz. Można ustawić środowisko Python dla bieżącego projektu do żądanej wersji (Python 2.7 lub 3.6), klikając prawym przyciskiem myszy **środowiska Python**, wybierając opcję **środowiska Python Dodaj/Usuń**, a następnie pobrania wymagane środowisko. Można znaleźć więcej informacji na temat pracy z narzędziami PTVS w produkcie [dokumentacji](http://aka.ms/ptvsdocs).
 
 ## <a name="2-using-a-jupyter-notebook-to-explore-and-model-your-data-with-python-or-r"></a>2. Eksplorowanie i modelowanie danych za pomocą języka Python lub R przy użyciu notesu programu Jupyter
 Notes Jupyter jest zaawansowane środowisko, która zapewnia oparte na przeglądarce "IDE" Eksplorowanie i modelowanie danych. Używając języka Python 2, 3 języka Python lub R ("Open Source" i Microsoft R Server) w notesie Jupyter.

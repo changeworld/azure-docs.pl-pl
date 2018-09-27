@@ -16,12 +16,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: saeeda, jmprieur, andret
 ms.custom: aaddev
-ms.openlocfilehash: c67efa84df2e5eb336d2702fc9c32ffae890d64d
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 0eec1100c5246bb9f5c281971453ac60abc0339f
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034658"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225024"
 ---
 # <a name="web-apps"></a>Aplikacje internetowe
 
@@ -44,7 +44,7 @@ Zobacz przykłady kodu dla scenariuszy aplikacji sieci web w przeglądarce inter
 
 ## <a name="app-registration"></a>Rejestracja aplikacji
 
-Aby zarejestrować aplikację sieci web, zobacz zobacz [rejestrowanie aplikacji z punktem końcowym usługi Azure AD w wersji 1.0](quickstart-v1-add-azure-ad-app.md).
+Aby zarejestrować aplikację sieci web, zobacz [rejestrowanie aplikacji z punktem końcowym usługi Azure AD w wersji 1.0](quickstart-v1-add-azure-ad-app.md).
 
 * Pojedynczej dzierżawy — Jeśli tworzysz aplikację tylko dla Twojej organizacji, należy zarejestrować w katalogu firmy przy użyciu witryny Azure portal.
 * Multi-tenan — Jeśli tworzysz aplikację, która może być używane przez użytkowników spoza organizacji, z jest musi być zarejestrowana w katalogu firmy, ale musi być zarejestrowana w każdej organizacji katalogu, który będzie używany w aplikacji. Aby udostępnić aplikację w jego katalogu, możesz dołączyć procesu rejestracji dla klientów, co pozwala na wyrażanie zgody na aplikację. Po utworzeniu konta dla aplikacji, zobaczą okno dialogowe, które przedstawiono uprawnienia, których wymaga aplikacja i opcji do wyrażenia zgody. W zależności od wymagane uprawnienia administratora w innej organizacji może być konieczne wyrazić zgodę. Po użytkownik lub administrator wyraża zgodę, aplikacja jest zarejestrowana w ich katalogu.

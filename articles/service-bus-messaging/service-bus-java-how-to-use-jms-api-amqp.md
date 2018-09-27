@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: Java
 ms.topic: article
-ms.date: 08/10/2017
+ms.date: 08/10/2018
 ms.author: spelluru
-ms.openlocfilehash: bfab0c374e4b20b09167f37363fe0681144426ac
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: a3274053e772cbdf120be15a385c84d5ae37d610
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699349"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392656"
 ---
 # <a name="how-to-use-the-java-message-service-jms-api-with-service-bus-and-amqp-10"></a>Jak używać języka Java wiadomości usługi (JMS) interfejsu API za pomocą usługi Service Bus i protokołu AMQP 1.0
 Zaawansowane komunikat (QUEUING Protocol) 1.0 to wydajny, niezawodny i protokół sieciowy niskiego poziomu obsługi komunikatów protokołu używanego do tworzenia niezawodnych, międzyplatformowych aplikacji do obsługi wiadomości.

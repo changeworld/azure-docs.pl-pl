@@ -6,20 +6,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 4e133458476a61538c2bddaaeb2f6d56d4ea5a26
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 09/26/2018
+ms.openlocfilehash: c449aaff9741250cfcfaaa4ee490aafc857c4369
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954912"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395308"
 ---
 # <a name="best-practices-for-query-store"></a>Najlepsze rozwiązania dotyczące Query Store
 
 **Dotyczy:** Azure Database for postgresql w warstwie 9.6 i 10
 
 > [!IMPORTANT]
-> Funkcja Query Store jest dostępna w publicznej wersji zapoznawczej.
+> Funkcja Query Store jest w publicznej wersji zapoznawczej w ograniczonej liczbie regionów.
 
 
 W tym artykule opisano najlepsze rozwiązania dotyczące używania Store zapytania w usłudze Azure Database for PostgreSQL.

@@ -14,13 +14,13 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: cjiang
-ms.openlocfilehash: 8368055ed017d8a9e9af92ae6461086abf1d0cff
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.author: cwatson
+ms.openlocfilehash: d48b55af705eddb42853fb236e5eb6a214d1a0ff
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37450238"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394056"
 ---
 # <a name="sign-up-for-an-office-365-subscription-with-your-azure-account"></a>Zamów subskrypcję usługi Office 365 przy użyciu konta platformy Azure
 Jeśli jesteś subskrybenta platformy Azure, można użyć konta platformy Azure w celu uzyskania subskrypcji usługi Office 365. Jeśli jesteś częścią organizacji, która ma subskrypcję platformy Azure, można utworzyć subskrypcji usługi Office 365 dla użytkowników w usłudze istniejącej usługi Azure Active Directory (Azure AD). Zarejestruj się do usługi Office 365 za pomocą konta mającego uprawnienia administratora globalnego lub administratorem rozliczeń w dzierżawie usługi Azure Active Directory. Aby uzyskać więcej informacji, zobacz [Sprawdź moje uprawnienia konta w usłudze Azure AD](#RoleInAzureAD) i [przypisywanie ról administratorów w usłudze Azure Active Directory](../active-directory/users-groups-roles/directory-assign-admin-roles.md).

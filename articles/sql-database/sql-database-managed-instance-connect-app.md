@@ -12,12 +12,12 @@ ms.author: srbozovi
 ms.reviewer: bonova, carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 2228f4664acc8fd63c781897ef77ccd0197c0d7d
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: f57d582aacad568811314494c0ed614839ccabba
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161464"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221744"
 ---
 # <a name="connect-your-application-to-azure-sql-database-managed-instance"></a>Połącz aplikację z wystąpieniem zarządzanym usługi Azure SQL Database
 
@@ -60,7 +60,7 @@ Jeśli nie można ustanowić połączenia do wystąpienia zarządzanego środowi
 Wystąpienie zarządzane jest możliwy tylko za pośrednictwem prywatnego adresu IP tak aby można było uzyskać do niego dostęp z Twojego pola dla deweloperów, najpierw musisz utworzyć połączenie między usługami box usługi dla deweloperów i sieci wirtualnej wystąpienia zarządzanego. Aby to zrobić, należy skonfigurować połączenie punkt-lokacja z siecią wirtualną przy użyciu uwierzytelniania certyfikatu platformy Azure natywnych. Aby uzyskać więcej informacji, zobacz [Konfigurowanie połączenia punkt lokacja, nawiązywanie połączenia z bazą danych wystąpienia zarządzanego Azure SQL z na komputerze lokalnym](sql-database-managed-instance-configure-p2s.md).
 
 ## <a name="connect-from-on-premises-with-vnet-peering"></a>Łączenie ze środowiska lokalnego za pomocą komunikacji równorzędnej sieci wirtualnej
-Inny scenariusz implementowany przez klientów jest zainstalowaną bramę sieci VPN w oddzielnej sieci wirtualnej i subskrypcję z jednego wystąpienia zarządzanego hostingu. Dwie wirtualne etworks następnie równorzędne. Przykładowe architekturę przedstawiono na poniższym diagramie jak może to być realizowane.
+Inny scenariusz implementowany przez klientów jest zainstalowaną bramę sieci VPN w oddzielnej sieci wirtualnej i subskrypcję z jednego wystąpienia zarządzanego hostingu. Dwie wirtualne etworks następnie równorzędne. Następujący przykładowy diagram architektury pokazuje, jak można to zaimplementować.
 
 ![Komunikacja równorzędna sieci wirtualnych](./media/sql-database-managed-instance-connect-app/vnet-peering.png)
 

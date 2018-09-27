@@ -15,12 +15,12 @@ ms.workload: identity
 ms.date: 04/11/2018
 ms.author: markvi
 ms.reviewer: spunukol
-ms.openlocfilehash: 6010ea7f4997e4604e72cdf4a993956ab76b1ef2
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: a2ab70930fad6f457a2eb6d1f277933ff98037e8
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296571"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221370"
 ---
 # <a name="azure-active-directory-conditional-access-settings-reference"></a>Informacje dotyczące ustawień dostępu warunkowego w usłudze Azure Active Directory
 
@@ -223,6 +223,7 @@ To ustawienie dotyczy następujących aplikacji klienta:
 - Microsoft Teams
 - Microsoft Visio
 - Microsoft Word
+- Microsoft To-Do
 
 
 

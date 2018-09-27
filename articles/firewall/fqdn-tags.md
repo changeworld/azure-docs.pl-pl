@@ -7,19 +7,16 @@ ms.service: firewall
 ms.topic: article
 ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: 536c0915cae17aa6f4201c62eae5f5b077805274
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6dc7d20d31d9399355b2b3de90ea90f2f3e07af5
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999481"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224651"
 ---
 # <a name="fqdn-tags-overview"></a>Omówienie tagi nazwy FQDN
 
 FQDN tag reprezentuje grupę w pełni kwalifikowanych nazw domen (FQDN) skojarzony z dobrze znanych usług firmy Microsoft. Tag nazwy FQDN w regułach aplikacji służy do zezwalania wymagane wychodzącego ruchu sieciowego przez zaporę.
-
->[!NOTE]
->Funkcja znaczniki nazwy FQDN jest obecnie dostępna w programie Azure PowerShell i REST tylko.
 
 Na przykład aby ręcznie zezwolić na Windows Update ruchu sieciowego przez zaporę, należy utworzyć wiele reguł aplikacji na dokumentację firmy Microsoft. Za pomocą tagów w pełni kwalifikowaną nazwę domeny, można utworzyć regułę aplikacji, obejmują **aktualizacji Windows** tagów, a teraz ruch sieciowy do punktów końcowych może przepływać za pośrednictwem zapory usługi Microsoft Windows Update.
 
@@ -36,6 +33,9 @@ W poniższej tabeli przedstawiono bieżące znaczniki nazwy FQDN, których możn
 |Usługa Microsoft Active Protection Service (MAPS)|Zezwalaj na dostęp ruchu wychodzącego do [mapy](https://cloudblogs.microsoft.com/enterprisemobility/2016/05/31/important-changes-to-microsoft-active-protection-service-maps-endpoint/).|
 |Środowisko App Service Environment (ASE)|Umożliwia dostęp ruchu wychodzącego do środowiska ASE platformy ruchu. Ten tag nie obejmuje klienta SQL i Storage punkty końcowe utworzone przez środowisko ASE. Powinno być włączone za pomocą [punktów końcowych usługi](../virtual-network/tutorial-restrict-network-access-to-resources.md) lub dodać ręcznie.|
 |Azure Backup|Umożliwia dostęp ruchu wychodzącego do usługi Azure Backup.
+
+> [!NOTE]
+> Po wybraniu tagu w pełni kwalifikowaną nazwę domeny w regule aplikacji, w polu protokołu: port musi być równa **https**.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

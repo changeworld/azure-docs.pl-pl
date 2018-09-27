@@ -1,20 +1,20 @@
 ---
-title: Usługa Azure Content Moderator — Moderowanie tekstu | Dokumentacja firmy Microsoft
+title: Moderowanie tekstu — usługi Content Moderator
 description: Użyj Moderowanie tekstu dla możliwości niechciane tekst, dane osobowe, listy i niestandardowe warunków.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 01/30/2018
 ms.author: sajagtap
-ms.openlocfilehash: b2edaa145650ea3c9fe3c0e9fd5e496ec7d30b99
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 4c4a0ccfc93a6a48a0178183b94cc03cb576930a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44025485"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226572"
 ---
 # <a name="text-moderation"></a>Moderowanie tekstu
 

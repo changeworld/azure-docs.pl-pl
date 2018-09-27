@@ -8,12 +8,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 07/04/2017
 ms.author: elioda
-ms.openlocfilehash: ef84985d7ca0473bdfd387b2fcfb3be344338eb7
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: c881ead472d07200bdf4284f30bcf097f0efcba4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43092123"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223802"
 ---
 # <a name="upload-files-from-your-device-to-the-cloud-with-iot-hub-using-net"></a>Przekazywanie plików z urządzenia do chmury za pomocą usługi IoT Hub przy użyciu platformy .NET
 
@@ -94,7 +94,7 @@ W tej sekcji zmodyfikujesz aplikację urządzenia utworzone w [wysyłanie komuni
     ```
 
 > [!NOTE]
-> Sake dla uproszczenia w tym samouczku nie implementuje żadnych zasad ponawiania. W kodzie produkcyjnym należy wdrożyć zasady ponawiania (np. wycofywanie wykładnicze) zgodnie z sugestią w artykule z witryny MSDN [obsługi błędów przejściowych](https://msdn.microsoft.com/library/hh680901.aspx).
+> Sake dla uproszczenia w tym samouczku nie implementuje żadnych zasad ponawiania. W kodzie produkcyjnym należy wdrożyć zasady ponawiania (np. wycofywanie wykładnicze) zgodnie z sugestią podaną w artykule [obsługi błędów przejściowych](/azure/architecture/best-practices/transient-faults).
 
 ## <a name="receive-a-file-upload-notification"></a>Otrzymywać powiadomienie o przekazywaniu pliku
 

@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 09/03/2018
 ms.author: glenga
 ms.custom: cc996988-fb4f-47
-ms.openlocfilehash: 217e36b7814bb7fe092ca915afd09bfc76b6ffa3
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: 68352db238b92d39119b420ed0d573e88a95bc78
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44094675"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394458"
 ---
 # <a name="azure-queue-storage-bindings-for-azure-functions"></a>Powiązania magazynu dla usługi Azure Functions dla kolejki platformy Azure
 
@@ -535,14 +535,15 @@ W funkcji języka JavaScript za pomocą `context.bindings.<name>` dostępu do da
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+* [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)
+
+<!--
 > [!div class="nextstepaction"]
-> [Przejdź do przewodnika Szybki Start, używającej wyzwalacz kolejki magazynu](functions-create-storage-queue-triggered-function.md)
+> [Go to a quickstart that uses a Queue storage trigger](functions-create-storage-queue-triggered-function.md)
+-->
 
 > [!div class="nextstepaction"]
 > [Przejdź do samouczka, który korzysta z usługi Queue storage powiązania danych wyjściowych](functions-integrate-storage-queue-output-binding.md)
-
-> [!div class="nextstepaction"]
-> [Dowiedz się więcej na temat usługi Azure functions, wyzwalaczami i powiązaniami](functions-triggers-bindings.md)
 
 <!-- LINKS -->
 

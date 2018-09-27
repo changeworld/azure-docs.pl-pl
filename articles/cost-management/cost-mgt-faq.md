@@ -10,12 +10,12 @@ ms.topic: troubleshooting
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 2126875a18d4a6581629ea1c8362236242a666a8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4984332e1a149ae838bc76a24abec90364f5699e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961029"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221982"
 ---
 # <a name="frequently-asked-questions-for-cloudyn"></a>Często zadawane pytania dotyczące platformy Cloudyn
 
@@ -145,7 +145,7 @@ Raportach kosztów może być wahania kosztów, zawsze wtedy, gdy dostawców us�
 
 W ciągu miesiąca wszystkie pliki rozliczeń wysyłane przez dostawcę usługi w chmurze znajdują się szacowanie codziennego koszty. Czasami dane są często aktualizowane — od czasu do czasu kilka razy dziennie. Aktualizacje są za pomocą usług AWS częściej niż platformy Azure. Całkowite koszty powinny być trwałe, po zakończeniu obliczeń rozliczenia dla poprzedniego miesiąca i ostateczną rozliczeń została odebrana. Zazwyczaj przez 10 dnia miesiąca.
 
-Zmiany zostaną wprowadzone po otrzymaniu korekty kosztów od dostawcy usług w chmurze. Odbieranie środków jest jednym z przykładów. Zmiany mogą być miesięcy po danym miesiącu została zamknięta. Zmiany są wyświetlane zawsze, gdy ponowne obliczenie jest tworzone przez dostawcę usługi w chmurze. Cloudyn aktualizuje jego danych historycznych, aby upewnić się, że wszystkie zmiany są ponownie obliczane. Sprawdza także, że koszty są wyświetlane dokładnie w nim raportów.
+Zmiany zostaną wprowadzone po otrzymaniu korekty kosztów od dostawcy usług w chmurze. Odbieranie środków jest jednym z przykładów. Zmiany mogą być miesięcy po danym miesiącu została zamknięta. Zmiany są wyświetlane zawsze, gdy ponowne obliczenie jest tworzone przez dostawcę usługi w chmurze. Cloudyn aktualizuje jego danych historycznych, aby upewnić się, że wszystkie zmiany są ponownie obliczane. Sprawdza także, że koszty są wyświetlane w dokładnie raportuje.
 
 ## <a name="how-can-a-direct-csp-configure-cloudyn-access-for-indirect-csp-customers-or-partners"></a>Jak bezpośredniego programu CSP skonfigurować Cloudyn dostęp dla klientów bezpośredniego programu CSP lub partnerów?
 

@@ -11,12 +11,12 @@ ms.topic: article
 description: Szybkie tworzenie w środowisku Kubernetes za pomocą kontenerów i mikrousług na platformie Azure
 keywords: Docker, Kubernetes, Azure, AKS, Azure Kubernetes Service, containers
 manager: douge
-ms.openlocfilehash: c6ca3003c1338f3e057c76d9e04d8b0cbd2210c7
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 91bec065b2c83eac6b646ae6a55bc1ae0aae01db
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721198"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226895"
 ---
 # <a name="troubleshooting-guide"></a>Przewodnik rozwiązywania problemów
 
@@ -28,11 +28,11 @@ Aby bardziej efektywnie rozwiązać problemy, może pomóc tworzyć bardziej szc
 
 Rozszerzenie programu Visual Studio można ustawić `MS_VS_AZUREDEVSPACES_TOOLS_LOGGING_ENABLED` zmiennej środowiskowej 1. Pamiętaj ponownie uruchomić program Visual Studio dla zmiennej środowiskowej zaczęły obowiązywać. Po włączeniu szczegółowe dzienniki będą zapisywane w swojej `%TEMP%\Microsoft.VisualStudio.Azure.DevSpaces.Tools` katalogu.
 
-W interfejsie wiersza polecenia, użytkownik może zapewniać dane wyjściowe informacji podczas wykonywania polecenia przy użyciu `--verbose` przełącznika.
+W interfejsie wiersza polecenia, użytkownik może zapewniać dane wyjściowe informacji podczas wykonywania polecenia przy użyciu `--verbose` przełącznika. Można również przeglądać szczegółowe dzienniki w `%TEMP%\Azure Dev Spaces`. Na komputerze Mac, można znaleźć katalogu TEMP, uruchamiając `echo $TMPDIR` z okna terminalu. Na komputerze z systemem Linux katalogu TEMP jest zazwyczaj `/tmp`.
 
 ## <a name="debugging-services-with-multiple-instances"></a>Debugowanie usług z wieloma wystąpieniami
 
-W tej chwili usługi Azure Dev miejsca do magazynowania obsługuje debugowanie tylko w pojedynczym wystąpieniu (pod). Plik azds.yaml zawiera ustawienie, replicaCount, która wskazuje liczbę wystąpień, które będą uruchamiane dla Twojej usługi. Jeśli zmienisz replicaCount skonfigurować aplikację do uruchamiania wielu wystąpień dla danej usługi, zachowanie debuger może nie być zgodnie z oczekiwaniami.
+W tej chwili usługi Azure Dev miejsca do magazynowania działa najlepiej, gdy debugowanie jednego wystąpienia (pod). Plik azds.yaml zawiera ustawienie, replicaCount, wskazującą liczbę zasobników, które będą uruchamiane dla Twojej usługi. Jeśli zmienisz replicaCount skonfigurować aplikację do uruchamiania wielu zasobnikach dla danej usługi, debuger będzie połączyć się pierwszy zasobnika (w przypadku alfabetycznym). Jeśli tego zasobnika jest odtwarzany jakiegokolwiek powodu, debuger będzie dołączyć do różnych zasobnik, przez co nieoczekiwane zachowanie.
 
 ## <a name="error-failed-to-create-azure-dev-spaces-controller"></a>Błąd "Nie można utworzyć kontroler Azure Dev miejsca do magazynowania"
 

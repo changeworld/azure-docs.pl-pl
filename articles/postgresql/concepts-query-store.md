@@ -6,20 +6,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 149840157c5e9bb47be70f669b2078585fe4b56c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 09/26/2018
+ms.openlocfilehash: 03f22a7975e8f331efa9dcc30fd088f32bee1649
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953031"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393495"
 ---
 # <a name="monitor-performance-with-the-query-store"></a>Monitorowanie wydajności za pomocą Store zapytania
 
 **Dotyczy:** Azure Database for postgresql w warstwie 9.6 i 10
 
 > [!IMPORTANT]
-> Funkcja Query Store jest dostępna w publicznej wersji zapoznawczej.
+> Funkcja Query Store jest w publicznej wersji zapoznawczej w ograniczonej liczbie regionów.
 
 
 Funkcja Query Store, w usłudze Azure Database for PostgreSQL zapewnia sposób śledzenia wydajności zapytań, wraz z upływem czasu. Zapytanie Store upraszcza wydajności rozwiązywania problemów, ułatwiając szybkie znajdowanie zapytań najdłużej działających i najbardziej dużej ilości zasobów. Query Store automatycznie przechwytuje historię zapytań i statystyki środowiska uruchomieniowego i przechowuje je do przejrzenia. Tak, aby zobaczyć wzorców użycia baz danych, dzieli dane według czasu systemu windows. Dane dla wszystkich użytkowników, bazy danych i zapytania są przechowywane w bazie danych o nazwie **azure_sys** w usłudze Azure Database for postgresql w warstwie wystąpienia.
@@ -117,7 +117,7 @@ Ten widok zwraca wszystkie dane w Query Store. Istnieje jeden wiersz dla każdej
 |query_id   |bigint  || Kod skrótu wewnętrznego obliczane na podstawie instrukcji drzewo analizy|
 |query_sql_text |Varchar(10000)  || Tekst instrukcji językiem. Różne zapytania przy użyciu tej samej struktury są zgrupowane razem; Ten tekst jest tekstem, który w pierwszym zapytań w klastrze.|
 |plan_id    |bigint |   |Identyfikator planu jeszcze odpowiadający to zapytanie nie jest dostępna|
-|godzina_rozpoczęcia |sygnatura czasowa  ||  Zapytania są agregowane według przedziałów czasu - okres przedziału wynosi 15 minut, domyślnie, ale można skonfigurować. Jest to czas rozpoczęcia odpowiadający przedział czasu dla tego wpisu.|
+|godzina_rozpoczęcia |sygnatura czasowa  ||  Zapytania są agregowane według przedziałów czasu - okres przedziału wynosi 15 minut, domyślnie. Jest to czas rozpoczęcia odpowiadający przedział czasu dla tego wpisu.|
 |end_time   |sygnatura czasowa  ||  Godzina zakończenia odpowiadający przedział czasu dla tego wpisu.|
 |wywołania  |bigint  || Liczba przypadków, wykonać zapytania|
 |TOTAL_TIME |podwójnej precyzji   ||  Czas wykonywania kwerendy w milisekundach|
@@ -168,6 +168,10 @@ Query_store.qs_reset() zwraca wartość void
 Query_store.staging_data_reset() zwraca wartość void
 
 `staging_data_reset` odrzuca wszystkie statystyki zebrane w pamięci przez Query Store (czyli dane w pamięci, który nie został opróżniony jeszcze do bazy danych). Tę funkcję można wykonać tylko przez rolę administratora serwera.
+
+## <a name="limitations-and-known-issues"></a>Ograniczenia i znane problemy
+- Jeśli dany serwer PostgreSQL default_transaction_read_only parametru, Query Store nie mogą przechwytywać dane.
+- Funkcje Query Store można przerwana w przypadku napotkania długie zapytania Unicode (> = 6000 bajtów).
 
 
 ## <a name="next-steps"></a>Kolejne kroki

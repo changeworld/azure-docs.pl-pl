@@ -6,18 +6,18 @@ manager: timlt
 ms.author: asdonald
 ms.service: iot-accelerators
 services: iot-accelerators
-ms.date: 09/17/2018
+ms.date: 09/26/2018
 ms.topic: conceptual
-ms.openlocfilehash: 5853730a5e3408e33deb483f6ce6652c1c22efab
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 477ef11a02f67e511396c3efc8f2b331c976c801
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034981"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219978"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>Wdrażanie zdalne monitorowanie akceleratora rozwiązań lokalnie
 
-W tym artykule pokazano, jak wdrożyć akcelerator rozwiązań monitorowania zdalnego na komputerze lokalnym na potrzeby projektowania i testowania. To podejście mikrousługi są wdrażane na lokalny kontener platformy Docker i korzysta z usługi IoT Hub, Cosmos DB i Azure Time Series Insights w chmurze.
+W tym artykule pokazano, jak wdrożyć akcelerator rozwiązań monitorowania zdalnego na komputerze lokalnym na potrzeby projektowania i testowania. Podejście opisane w tym artykule mikrousługi są wdrażane na lokalny kontener platformy Docker i korzysta z usługi IoT Hub, Cosmos DB i Azure Time Series Insights w chmurze. Aby dowiedzieć się, jak uruchomić akcelerator rozwiązania monitorowania zdalnego w środowisku IDE na komputerze lokalnym, zobacz [uruchamianie Mikrousług w środowisku lokalnym](https://github.com/Azure/remote-monitoring-services-java/blob/master/docs/LOCAL_DEPLOYMENT.md) w witrynie GitHub.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -75,13 +75,19 @@ Jeśli jeszcze nie utworzono wymaganych zasobów platformy Azure, wykonaj nastę
 
     Skrypt tworzy grupę zasobów na platformie Azure, nazwą rozwiązania. Ta grupa zasobów zawiera zasoby platformy Azure, który korzysta z akceleratora rozwiązań.
 
-3. Po ukończeniu działania skryptu, wyświetla listę zmiennych środowiskowych. Postępuj zgodnie z instrukcjami, aby zapisać te zmienne **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\.env** pliku.
+3. Po ukończeniu działania skryptu, wyświetla listę zmiennych środowiskowych. Wykonaj instrukcje zawarte w danych wyjściowych polecenia do zapisania tych zmiennych do **azure-iot-pcs-remote-monitoring-dotnet\\usług\\skrypty\\lokalnego\\ENV** pliku.
 
 ### <a name="use-existing-azure-resources"></a>Użyj istniejących zasobów platformy Azure
 
-Jeśli utworzono już wymaganych zasobów platformy Azure edytować definicje zmiennych środowiskowych w **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\.env** pliku z wymaganymi wartościami. **ENV** plik zawiera szczegółowe informacje o tym, gdzie można znaleźć wymaganych wartości.
+Jeśli utworzono już wymaganych zasobów platformy Azure edytować definicje zmiennych środowiskowych w **azure-iot-pcs-remote-monitoring-dotnet\\usług\\skrypty\\lokalnego\\ENV**  pliku z wymaganymi wartościami. **ENV** plik zawiera szczegółowe informacje o tym, gdzie można znaleźć wymaganych wartości.
 
 ## <a name="run-the-microservices-in-docker"></a>Uruchom mikrousług na platformie Docker
+
+Mikrousługi uruchomiona w lokalnym kontenerów platformy Docker muszą uzyskać dostęp do usług działających na platformie Azure. Można przetestować łączność z Internetem przy użyciu następującego polecenia, który małych kontenerów, które próbuje wysłać polecenie ping do adresu internetowego środowiska platformy Docker:
+
+```cmd/sh
+docker run --rm -ti library/alpine ping google.com
+```
 
 Aby uruchomić akcelerator rozwiązań, przejdź do **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local** folder w środowisku wiersza polecenia i uruchom następujące polecenie:
 
@@ -97,7 +103,7 @@ Aby uzyskać dostęp do pulpitu nawigacyjnego rozwiązania monitorowania zdalneg
 
 ## <a name="clean-up"></a>Czyszczenie
 
-Aby uniknąć niepotrzebnych opłat, po zakończeniu testowania, należy usunąć usługi w chmurze z subskrypcji platformy Azure. Jest najprostszym sposobem usuwania usług, aby przejść do [witryny Azure portal](https://ms.portal.azure.com) i Usuń grupę zasobów, który został utworzony po uruchomieniu **start.cmd** skryptu.
+Aby uniknąć niepotrzebnych opłat, po zakończeniu testowania Usuń usług w chmurze z subskrypcji platformy Azure. Jest najprostszym sposobem usuwania usług, aby przejść do [witryny Azure portal](https://ms.portal.azure.com) i Usuń grupę zasobów, który został utworzony po uruchomieniu **start.cmd** skryptu.
 
 Użyj `docker-compose down --rmi all` polecenie, aby usunąć obrazy platformy Docker i wolnego miejsca na komputerze lokalnym. Możesz także usunąć lokalną kopię repozytorium zdalne monitorowanie utworzone podczas klonowania kodu źródłowego z repozytorium GitHub.
 

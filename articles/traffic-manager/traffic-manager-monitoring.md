@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 06/22/2017
 ms.author: kumud
-ms.openlocfilehash: c28b0ccfb565cb6bd4809a321d5e57f04475dceb
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 64f3595206c580d0d177622d23aa49753100d3c0
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123899"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221098"
 ---
 # <a name="traffic-manager-endpoint-monitoring"></a>Monitorowanie punktu końcowego usługi Traffic Manager
 
@@ -32,7 +32,7 @@ Aby skonfigurować monitorowanie punktu końcowego, należy określić następuj
 * **Protokół**. Wybierz pozycję HTTP, HTTPS lub TCP jako protokół, usługi Traffic Manager korzysta podczas badania punktu końcowego usługi do sprawdzenia jej kondycji. Monitorowanie protokołu HTTPS nie sprawdza, czy dotyczy certyfikatu protokołu SSL — go tylko sprawdza, czy certyfikat jest obecny.
 * **Port**. Wybierz port używany dla żądania.
 * **Ścieżka**. To ustawienie konfiguracji jest prawidłowy tylko w przypadku protokołów HTTP i HTTPS, do których określenia ścieżki ustawienie jest wymagane. Zapewnienie tego ustawienia dla TCP monitorowania protokołu będzie skutkowało błędem. Dla protokołu HTTP i HTTPS należy podać względną ścieżkę i nazwę strony sieci Web lub pliku, uzyskujący dostęp do monitorowania. Ukośnika (/) jest prawidłowym wpisem ścieżki względnej. Ta wartość oznacza, że plik znajduje się w katalogu głównym (ustawienie domyślne).
-* **Ustawienia niestandardowego nagłówka** taka konfiguracja ułatwia dodawanie, Dodaj określone nagłówki HTTP kondycji sprawdza wysyła do punktów końcowych przy użyciu profilu usługi Traffic Manager. Nagłówki niestandardowe można określić na poziomie profilu, ma być stosowana dla wszystkich punktów końcowych w tym profilu and / or na poziomie punktu końcowego zastosowanie tylko do tego punktu końcowego. Można użyć niestandardowych nagłówków występowania kontrole kondycji do punktów końcowych w środowisku z wieloma dzierżawami kierowane poprawnie do miejsca docelowego, określając nagłówka hosta. Możesz również użyć tego ustawienia, dodając unikatowy nagłówki, które mogą służyć do identyfikowania usługi Traffic Manager pochodzi żądania HTTP (S) i przetwarza je w różny sposób.
+* **Ustawienia niestandardowego nagłówka** to ustawienie pomaga możesz dodać określone nagłówki HTTP do prawidłowej konfiguracji sprawdza, czy usługi Traffic Manager wysyła do punktów końcowych przy użyciu profilu. Nagłówki niestandardowe można określić na poziomie profilu, ma być stosowana dla wszystkich punktów końcowych w tym profilu and / or na poziomie punktu końcowego zastosowanie tylko do tego punktu końcowego. Można użyć niestandardowych nagłówków występowania kontrole kondycji do punktów końcowych w środowisku z wieloma dzierżawami kierowane poprawnie do miejsca docelowego, określając nagłówka hosta. Możesz również użyć tego ustawienia, dodając unikatowy nagłówki, które mogą służyć do identyfikowania usługi Traffic Manager pochodzi żądania HTTP (S) i przetwarza je w różny sposób.
 * **Oczekiwany stan kodu zakresów** to ustawienie umożliwia określenie wielu zakresów kodu powodzenia w formacie 200 299, 301 301. Jeśli te kody stanu są otrzymywane jako odpowiedź z punktu końcowego, gdy kontrola kondycji jest inicjowane, usługa Traffic Manager oznacza tymi punktami końcowymi jako w dobrej kondycji. Można określić maksymalnie 8 zakresów kodu stanu. To ustawienie jest stosowane tylko do protokołu HTTP i HTTPS oraz do wszystkich punktów końcowych. To ustawienie znajduje się na poziomie profilu usługi Traffic Manager, i domyślnie wartość 200 jest zdefiniowany jako kod stanu powodzenia.
 * **Interwał sondowania**. Ta wartość określa, jak często punkt końcowy jest sprawdzany pod kątem jego kondycję z agentów do sondowania usługi Traffic Manager. Można określić w tym miejscu dwie wartości: 30 sekund (zwykłego sondowania) i 10 sekund (sondowanie szybkie). Jeśli zostaną podane żadne wartości, profil, który ustawia wartości domyślnej równej 30 sekund. Odwiedź stronę [cennik usługi Traffic Manager](https://azure.microsoft.com/pricing/details/traffic-manager) strony, aby dowiedzieć się więcej o cenach badania szybkie.
 * **Tolerowana liczba niepowodzeń**. Ta wartość określa, jak wiele błędów agenta do sondowania usługi Traffic Manager zaakceptować przed oznaczeniem tego punktu końcowego o złej kondycji. Wartość może należeć do zakresu od 0 do 9. Wartość 0 oznacza pojedynczego uszkodzenia monitorowania może spowodować punkt końcowy był oznaczony jako w złej kondycji. Jeśli wartość nie zostanie określona, zostanie użyta wartość domyślna 3.

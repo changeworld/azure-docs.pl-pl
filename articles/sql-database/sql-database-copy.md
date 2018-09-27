@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 8edf13953e77714b0b4386378bdccca47ab30d57
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 2ce86bee96f22b4079afee3eacbeee7ea15a6ffa
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47063680"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226011"
 ---
 # <a name="copy-an-azure-sql-database"></a>Kopiowanie bazy danych Azure SQL
 
@@ -71,7 +71,7 @@ To polecenie kopiuje bazadanych1 do nowej bazy danych o nazwie bazy danych 2 na 
 
     -- Execute on the master database.
     -- Start copying.
-    CREATE DATABASE Database1_copy AS COPY OF Database1;
+    CREATE DATABASE Database2 AS COPY OF Database1;
 
 ### <a name="copy-a-sql-database-to-a-different-server"></a>Kopiowanie bazy danych SQL na innym serwerze
 
@@ -81,7 +81,7 @@ To polecenie kopiuje bazadanych1 na serwerze1 do nowej bazy danych o nazwie bazy
 
     -- Execute on the master database of the target server (server2)
     -- Start copying from Server1 to Server2
-    CREATE DATABASE Database1_copy AS COPY OF server1.Database1;
+    CREATE DATABASE Database2 AS COPY OF server1.Database1;
 
 
 ### <a name="monitor-the-progress-of-the-copying-operation"></a>Monitoruj postęp operacji kopiowania

@@ -1,6 +1,6 @@
 ---
-title: Monitorowanie i śledzenie użycia z bezpłatnych usług platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się sprawdzić użycia bezpłatnych usług. Użyj Azure portalu i użycie woluminów csv.
+title: Monitorowanie i śledzenie użycia usług platformy Azure bezpłatne | Dokumentacja firmy Microsoft
+description: Dowiedz się sprawdzić użycie w przypadku usług bezpłatnych. Za pomocą usługi Azure portal i użycia woluminów csv.
 services: ''
 documentationcenter: ''
 author: amberbhargava
@@ -13,62 +13,62 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
-ms.author: amberb
-ms.openlocfilehash: 7fa0196b7a44ef20ecd63797869dffea55f92c3d
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.author: cwatson
+ms.openlocfilehash: df049a87763f3aae8da2db153f876b88ed39b988
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061320"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47390242"
 ---
-# <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Sprawdź użycie bezpłatnych usług dołączonego bezpłatne konto platformy Azure 
+# <a name="check-usage-of-free-services-included-with-your-azure-free-account"></a>Sprawdź użycie usług bezpłatnych, dołączone do bezpłatnego konta platformy Azure 
 
-To nie naliczane opłaty za usługi objęte bezpłatnie bezpłatne konto platformy Azure, o ile nie przekraczają limitów tych usług. Aby utrzymać z ograniczeniami, albo można portalu Azure lub pliku użycia monitorować i śledzić użycie bezpłatnych usług. 
+Nie są naliczane dla usług bezpłatnych bezpłatnego konta platformy Azure, o ile nie zostaną przekroczone tych usług. Aby utrzymać z ograniczeniami, możesz użyć witryny Azure portal lub plik użycia do monitorowania i śledzenie użycia w przypadku usług bezpłatnych. 
 
-## <a name="check-usage-on-the-azure-portal"></a>Sprawdź użycie w portalu Azure
+## <a name="check-usage-on-the-azure-portal"></a>Sprawdź użycie w witrynie Azure portal
 
 1.  Zaloguj się do witryny [Azure Portal]( http://portal.azure.com).
 
-2.  W obszarze nawigacji po lewej stronie, wybierz **wszystkie usługi**.
+2.  W obszarze nawigacji po lewej stronie wybierz **wszystkich usług**.
 
-3.  Wybierz **subskrypcje**.
+3.  Wybierz pozycję **Subskrypcje**.
 
-4.  Wybierz subskrypcję, utworzony po utworzeniu konta bezpłatne konto.
+4.  Wybierz subskrypcję, który został utworzony podczas tworzenia konta bezpłatne konto.
 
-    ![Zrzut ekranu pokazujący wszystkie subskrypcje](./media/billing-check-usage-of-free-services/select-free-account-subscription.png)
+    ![Zrzut ekranu przedstawiający wszystkie subskrypcje](./media/billing-check-usage-of-free-services/select-free-account-subscription.png)
 
-5.  W sekcji Przegląd zawiera ważne informacje dotyczące Twojej subskrypcji, takich jak identyfikator subskrypcji oferują typ i Nazwa subskrypcji. Można również znaleźć informacje o wygaśnięcia środków bezpłatne konto.
+5.  W sekcji Przegląd zawiera podstawowe informacje dotyczące subskrypcji, takie jak identyfikator subskrypcji, oferują typu i nazwy subskrypcji. Można również znaleźć informacji na temat wygaśnięcia swoje środki na bezpłatne konto.
 
-    ![Zrzut ekranu pokazujący podstawowych informacji o subskrypcji](./media/billing-check-usage-of-free-services/subscription-essential-information.png)
+    ![Zrzut ekranu pokazujący podstawowe informacje o subskrypcji](./media/billing-check-usage-of-free-services/subscription-essential-information.png)
 
-6.  Przewiń w dół do wyszukiwania informacji na temat koszt bieżących i prognozowanych. Koszt obejmuje użycie usługi nie dołączono bezpłatne konto i użycie przekroczenie limitu bezpłatnych usług. 
+6.  Przewiń w dół do wyszukiwania informacji na temat Twoje bieżące i prognozowane koszty. Koszt obejmuje korzystanie z usług, które nie są uwzględnione w ramach bezpłatnego konta i użycie przekraczające granice bezpłatnych usług. 
 
-    ![Zrzut ekranu pokazujący informacje o kosztach subskrypcji](./media/billing-check-usage-of-free-services/subscription-cost-information.png)
+    ![Zrzut ekranu przedstawiający informacje o kosztach subskrypcji](./media/billing-check-usage-of-free-services/subscription-cost-information.png)
 
-7.  Ostatnia część sekcji Przegląd zawiera tabelę o użyciu bezpłatnych usług. 
+7.  Ostatnia część sekcji Przegląd ma jedną tabelę na korzystanie z bezpłatnych usług. 
 
-    ![Zrzut ekranu pokazujący użycia bezpłatnych usług](./media/billing-check-usage-of-free-services/subscription-usage-free-services.png)
+    ![Zrzut ekranu pokazujący korzystanie z bezpłatnych usług](./media/billing-check-usage-of-free-services/subscription-usage-free-services.png)
 
     Tabela zawiera następujące kolumny:
 
-* **Nazwa licznika:** identyfikuje jednostki miary dla pomiaru są używane. Aby dowiedzieć się więcej o usłudze Mapowanie miernika, zobacz [zrozumieć bezpłatnej usługi do pomiaru mapowania](billing-understand-free-service-meter-mapping.md). 
-* **Użycie/Limit:** użycia i limit licznika bieżącego miesiąca. Informacje te można również znaleźć na pasku stanu.
-* **Stan:** użycia stan licznika. W oparciu o Twoje wzorca użycia, może zawierać jeden Statutu.
-  * **Nieużywany:** mierniku nie były używane lub użycie licznika nie osiągnęła systemów rozliczeniowych.
-  * **Przekroczono na \<Data >:** Przekroczono limit licznika \<Data >.
-  * **Prawdopodobnie nie będzie Exceed:** jest mało prawdopodobne przekracza limit dla licznika.
-  * **Przekracza na \<Data >:** najprawdopodobniej będzie przekracza limit licznik na \<Data >.
+* **Nazwa licznika:** Określa jednostkę miary dla mierników, są używane. Aby dowiedzieć się więcej o usłudze do mapowania liczników, zobacz [omówienie mapowania miernika bezpłatnej usługi](billing-understand-free-service-meter-mapping.md). 
+* **Użycie/Limit:** użycia i limit dla licznika bieżącego miesiąca. Te informacje można również znaleźć na pasku stanu.
+* **Stan:** stan zużycia licznika. Na podstawie Twojego użycia wzorca, użytkownik może mieć jedną z Statutu.
+  * **Nieużywany:** licznik nie były używane lub użycie licznika nie dotarła do systemów rozliczeniowych.
+  * **Przekroczono \<daty >:** Przekroczono limit dla licznika \<daty >.
+  * **Prawdopodobnie nie będzie Exceed:** użytkownik prawdopodobnie nie przekracza maksymalną wartość licznika.
+  * **Przekracza \<daty >:** prawdopodobnie przekracza limit dla licznika na \<daty >.
 
 
 ## <a name="check-usage-through-the-usage-file"></a>Sprawdź użycie za pomocą pliku użycia
 
-Użycie pliku zawiera szczegółowe informacje dotyczące subskrypcji platformy Azure. Twoje co miesiąc i codziennie użycia pliku można pobrać z Centrum konta platformy Azure. Aby dowiedzieć się, jak pobrać plik użycia i zrozumieć dostęp wymagany, zobacz [uzyskać faktury i użycie](billing-download-azure-invoice-daily-usage-date.md). Aby uzyskać informacje dotyczące kolumn w pliku użycia, zobacz [zrozumieć warunki na użycie](billing-understand-your-usage.md). 
+Użycie pliku zawiera szczegółowe informacje dotyczące subskrypcji platformy Azure. Swoje miesięczne i codziennie pliku użycia można pobrać z Centrum konta platformy Azure. Aby dowiedzieć się, jak pobrać plik użycia i zrozumienie dostęp wymagany, zobacz [pobieranie faktur i danych użycia](billing-download-azure-invoice-daily-usage-date.md). Aby dowiedzieć się więcej na temat kolumny w pliku użycia, zobacz [zrozumieć warunki na wykorzystanie](billing-understand-your-usage.md). 
 
-Plik użycia zawiera informacje o użyciu zarówno bezpłatnych i płatnych usług. Liczniki bezpłatnej usługi będzie zawierał **wolne** dołączany na końcu nazwy licznika. Można znaleźć wolnej liczników, otwórz plik w formacie programu excel i filtr **kolumny kategorii licznika** dla komórek zawierających tekst **— wolne** (Filtry tekstu użyj &rarr; filtr zawierania) &nbsp;
+Użycie pliku zawiera informacje dotyczące użycia dla usług bezpłatnych i płatnych. Liczniki bezpłatnej usługi, musi **bezpłatna** dołączany na końcu nazwy miernika. Można znaleźć bezpłatne liczniki, otwórz plik programu excel i filtr **kolumny Kategoria licznika** komórek, które zawierają tekst **— bezpłatne** (Użyj filtrów tekstu &rarr; filtr zawierania) &nbsp;
 
-![Zrzut ekranu pokazujący użycia bezpłatnych usług](./media/billing-check-usage-of-free-services/free-services-usage-csv.png)
+![Zrzut ekranu pokazujący korzystanie z bezpłatnych usług](./media/billing-check-usage-of-free-services/free-services-usage-csv.png)
 
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
 
-Jeśli potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać szybkie rozwiązanie problemu.
+Jeśli potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.

@@ -14,13 +14,13 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/14/2018
-ms.author: tonguyen
-ms.openlocfilehash: c782cadadb0250e6c3ca4912dbf8f81e19cb88c5
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.author: cwatson
+ms.openlocfilehash: f7ec113a7fa51fc6d3684c2e7ee9379bd1534e30
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42919058"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392418"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Opis zawartości rachunku za korzystanie z platformy Microsoft Azure
 Aby poznać rachunku dotyczącym platformy Azure, porównaj fakturze za pomocą szczegółowych codzienne pliku użycia i raportów rozwiązania cost management w witrynie Azure portal.
@@ -35,7 +35,7 @@ Szczegółowy opis warunków i opisy faktury i szczegółowe codzienne plik uży
 Aby uzyskać szczegółowe informacje dotyczące raportów rozwiązania cost management, zobacz [portalu Azure cost management](https://docs.microsoft.com/azure/billing/billing-getting-started).
 
 > [!div class="nextstepaction"]
-> [Pomóż nam w usprawnianiu dokumentacja rozliczeń platformy Azure](https://go.microsoft.com/fwlink/p/?linkid=2010091)
+> [Pomoc w ulepszaniu dokumentów rozliczeniowych platformy Azure](https://go.microsoft.com/fwlink/p/?linkid=2010091)
 
 ## <a name="charges"></a>Jak upewnić się, że opłaty w mojej fakturze są poprawne?
 

@@ -1,59 +1,60 @@
 ---
-title: Azure moderatora zawartości - przepływy pracy łagodzenia | Dokumentacja firmy Microsoft
-description: Przepływy pracy za pomocą łagodzenia zawartości.
+title: Przepływy pracy Moderowanie - Content Moderator
+titlesuffix: Azure Cognitive Services
+description: Przepływy pracy za pomocą moderowanie zawartości.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 02/04/2018
 ms.author: sajagtap
-ms.openlocfilehash: 079fcd119f1536f9e76ca57fccc76538b3c3ed78
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 3de45c62eb208671cc2d1d4de5309d2f9d75adc9
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347193"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47226878"
 ---
-# <a name="moderation-workflows"></a>Łagodzenie przepływów pracy
+# <a name="moderation-workflows"></a>Moderowanie przepływów pracy
 
-Moderatora zawartości zawiera narzędzia i interfejsy API do zarządzania przepływami pracy. Korzystania z przepływów pracy z [operacji zadań Przejrzyj API](review-api.md) można zautomatyzować tworzenie przeglądu ludzkich w pętli są oparte na zasadach zawartości i progów.
+Pakiet Content Moderator obejmuje narzędzia i interfejsy API do zarządzania przepływami pracy. Korzystanie z przepływów pracy za pomocą [Przejrzyj operacje interfejsu API zadań](review-api.md) Aby zautomatyzować tworzenie przeglądu człowieka w pętli, na podstawie zasad dotyczących zawartości i progów.
 
-Przegląd interfejsu API oferuje następujące sposoby obejmują nadzoru ludzkich w procesie łagodzenia zawartości:
+Interfejs API przeglądu oferuje następujące sposoby uwzględnić ludzkiego nadzoru w procesie moderowanie zawartości:
 
-1. **Zadania** operacji uruchamiania łagodzenia wspierana maszyny i ludzkich Przejrzyj tworzenie w jednym kroku.
-1. **Przejrzyj** tworzenia poza krok łagodzenia Przejrzyj operacji dla człowieka.
-1. **Przepływu pracy** operacji związanych z zarządzaniem przepływy pracy, które automatyzują skanowanie z progami dla Przejrzyj tworzenia.
+1. **Zadania** operacji uruchamiania wspomagane maszynowo Moderowanie i ludzi Przejrzyj tworzenie w jednym kroku.
+1. **Przejrzyj** operacji dla człowieka Przejrzyj tworzenia poza kroku moderowania.
+1. **Przepływu pracy** operacje do zarządzania przepływy pracy umożliwiające automatyzację skanowanie za pomocą progów Przejrzyj tworzenia.
 
-W tym artykule omówiono **przepływu pracy** operacji. Odczyt [zadania i monitoruje](review-api.md) Przegląd, aby dowiedzieć się więcej o zawartości łagodzenia zadania i monitoruje.
+W tym artykule opisano **przepływu pracy** operacji. Odczyt [zadania i przeglądy](review-api.md) Przegląd, aby dowiedzieć się więcej na temat moderowanie zawartości zadań i ocen.
 
-Wyewidencjonowywanie **domyślne** przepływu pracy to najlepszy sposób, aby rozpocząć pracę w przepływach pracy opis w polu Moderator zawartości.
+Trwa wyewidencjonowywanie **domyślne** przepływ pracy jest najlepszym sposobem na rozpoczęcie pracy w przepływach pracy zrozumieć, w pakiecie Content Moderator.
 
-## <a name="your-first-workflow"></a>Pierwszy przepływu pracy
+## <a name="your-first-workflow"></a>Pierwszego przepływu pracy
 
-Pierwszy przepływu pracy jest powiązane z Twojej [Przejrzyj narzędzia team](https://contentmoderator.cognitive.microsoft.com/). Zarejestruj się, jeśli nie zostało to jeszcze zrobione.
+Oferujemy pierwszego przepływu pracy, przy użyciu usługi [przeglądu zespołu narzędzia](https://contentmoderator.cognitive.microsoft.com/). Utwórz konto, jeśli nie zostało to jeszcze zrobione.
 
 Przejdź do [Przejrzyj przepływy pracy narzędzia](Review-Tool-User-Guide/Workflows.md) ekranu na karcie Ustawienia. Zostanie wyświetlony **domyślne** przepływu pracy, jak pokazano na poniższej ilustracji:
 
-![Zawartości moderatora przepływów pracy](Review-Tool-User-Guide/images/2-workflows-1.png)
+![Content Moderator przepływów pracy](Review-Tool-User-Guide/images/2-workflows-1.png)
 
 ### <a name="open-the-default-workflow"></a>Otwórz domyślnego przepływu pracy
 
-Użyj **Edytuj** opcję, aby otworzyć przepływu pracy edycji strony, jak pokazano na poniższej ilustracji: ![moderatora zawartości domyślny przepływ pracy](images/default-workflow-listed.PNG)
+Użyj **Edytuj** opcję, aby otworzyć przepływu pracy, edytowania strony, jak pokazano na poniższej ilustracji: ![przepływu pracy domyślnego pakietu Content Moderator](images/default-workflow-listed.PNG)
 
 ### <a name="the-designer-view"></a>Widok projektanta
 
-Zostanie wyświetlony **projektanta** kartę przepływu pracy. Widok projektanta zawiera następujące czynności:
+Zostanie wyświetlony **projektanta** kartę dla przepływu pracy. Widok projektanta przedstawia następujące czynności:
 
-1. **Warunku** przepływu pracy, który ma zostać obliczone. W takim przypadku przepływu pracy wywołań moderatora zawartości przez obraz interfejsu API i sprawdza, czy `isAdult` output equals `true`.
-1. **Akcji** do wykonania, jeśli jest spełniony warunek. W takim przypadku przepływ pracy tworzy przeglądu w narzędziu przeglądu Jeśli `isAdult` dane wyjściowe są `true`.
+1. **Warunek** przepływu pracy, który ma zostać obliczone. W tym przypadku przepływu pracy wywołania usługi Content Moderator firmy obrazów interfejsu API i sprawdza czy `isAdult` danych wyjściowych jest równa `true`.
+1. **Akcji** do wykonania, jeśli warunek jest spełniony. W takim przypadku przepływ pracy utworzy Przegląd w narzędzie do przeglądu Jeśli `isAdult` dane wyjściowe są `true`.
 
-![Zawartości moderatora domyślny przepływ pracy - projektanta](images/default-workflow-designer.png)
+![Content Moderator domyślny przepływ pracy - projektanta](images/default-workflow-designer.png)
 
-### <a name="the-json-view"></a>Widok JSON
+### <a name="the-json-view"></a>Widok kodu JSON
 
-Wybierz **JSON** kartę, aby wyświetlić JSON definicji przepływu pracy.
+Wybierz **JSON** kartę, aby zobaczyć definicję formatu JSON przepływu pracy.
 
     {
         "Type": "Logic",
@@ -78,25 +79,25 @@ Wybierz **JSON** kartę, aby wyświetlić JSON definicji przepływu pracy.
 
 ### <a name="key-learning"></a>Learning klucza
 
-Przepływy pracy w zawartości moderatora są łatwa do skonfigurowania i elastyczne. Jeśli wbudowane projektanta nie spełnia wymagań, należy zapisać definicji przepływu pracy w **JSON** format. Następnie użyj definicji JSON z [API przepływu pracy](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) tworzenie i zarządzanie nimi przepływu pracy z aplikacji.
+Przepływy pracy w pakiecie Content Moderator to łatwa do skonfigurowania i elastyczne. Jeśli wbudowane projektanta nie spełnia wymagań, należy zapisać definicji przepływu pracy w **JSON** formatu. Następnie użyj definicję formatu JSON przy użyciu [API przepływu pracy](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) tworzenie i zarządzanie nimi przepływu pracy z poziomu aplikacji.
 
 ## <a name="define-a-custom-workflow"></a>Definiowanie niestandardowego przepływu pracy
 
-Zawartości moderatora przepływu pracy umożliwiają definiowanie i przy użyciu niestandardowych przepływów pracy. Użyj [Przejrzyj przepływy pracy narzędzia porad](Review-Tool-User-Guide/Workflows.md) artykuł, aby zdefiniować niestandardowy przepływ pracy. Ten przepływ pracy używa funkcji Rozpoznawania zawartości moderatora można wyodrębnić tekst z obrazu próbki. Następnie tworzy przeglądu w narzędziu przeglądu.
+Pakiet Content Moderator przepływu pracy umożliwiają definiowanie i korzystanie z niestandardowych przepływów pracy. Użyj [Przejrzyj przepływy pracy narzędzia porad](Review-Tool-User-Guide/Workflows.md) artykuł, aby zdefiniować niestandardowy przepływ pracy. Ten przepływ pracy używa funkcji optycznego rozpoznawania znaków Content Moderator do wyodrębniania tekstu z obrazem próbki. Następnie tworzy przeglądu w narzędziu do przeglądu.
 
-### <a name="the-sample-image"></a>Obraz przykładowej
+### <a name="the-sample-image"></a>Przykładowy obraz
 
-Zapisz [obraz przykładowy](https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png) na dysk lokalny. Ten obraz potrzebę korzystania.
+Zapisz [przykładowy obraz](https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png) na dysk lokalny. Ten obraz jest wymagany dla Twojego wykonywania.
 
 ### <a name="the-designer-view"></a>Widok projektanta
 
-Wybierz **projektanta** kartę i [samouczek tworzenia przepływu pracy](Review-Tool-User-Guide/Workflows.md) do definiowania niestandardowego przepływu pracy. Na poniższej ilustracji przedstawiono projektanta **warunku** widoku. Zapoznaj się z samouczkiem, aby wyświetlić pozostałe kroki.
+Wybierz **projektanta** kartę i [samouczek tworzenia przepływu pracy](Review-Tool-User-Guide/Workflows.md) Aby zdefiniować niestandardowy przepływ pracy. Na poniższej ilustracji przedstawiono projektanta **warunek** widoku. Zapoznaj się z samouczkiem, aby wyświetlić pozostałe kroki.
 
-![Zawartości moderatora - warunek przepływu pracy](Review-Tool-User-Guide/images/ocr-workflow-step-2-condition.PNG)
+![Pakiet Content Moderator — warunek przepływu pracy](Review-Tool-User-Guide/images/ocr-workflow-step-2-condition.PNG)
 
-### <a name="the-json-view"></a>Widok JSON
+### <a name="the-json-view"></a>Widok kodu JSON
 
-Wybierz **JSON** kartę, aby wyświetlić poniższe definicji JSON niestandardowego przepływu pracy. Powiadomienie jak **Jeżeli to** instrukcje w definicji JSON odpowiadają kroki zdefiniowany widok projektanta.
+Wybierz **JSON** kartę, aby zobaczyć poniższą definicję formatu JSON niestandardowego przepływu pracy. Zwróć uwagę sposób, w jaki **If-Then** instrukcji w definicji JSON odnoszą się do kroków zdefiniowane przy użyciu projektanta widoku.
 
     {
         "Type": "Logic",
@@ -132,29 +133,29 @@ Wybierz **JSON** kartę, aby wyświetlić poniższe definicji JSON niestandardow
 
 ### <a name="workflow-result"></a>Wynik przepływu pracy
 
-Po przetestowaniu przepływu pracy na ekranie przepływy pracy, jest tworzony po dokonaniu przeglądu. Przejdź do **obrazu** w obszarze **Przejrzyj** wyświetlić zapoznania się z nimi.
-Przepływ pracy utworzony przeglądu ponieważ przetestowane warunku głównego na obecność tekstu. Przejrzyj wyróżnione **`a`** tag w przeglądzie obrazu.
+Po przetestowaniu przepływu pracy z przepływami pracy ekranu po dokonaniu przeglądu jest tworzony. Przejdź do **obraz** karcie **Przejrzyj** się zapoznania się z nimi.
+Przepływ pracy utworzony Przegląd ponieważ podstawowy warunek testowany na obecność tekstu. Przejrzyj również wyróżnione **`a`** tagu w przeglądzie obrazu.
 
-![Moderatora zawartości — prosty przepływu pracy w danych wyjściowych](images/ocr-sample-image-workflow1.PNG)
+![Pakiet Content Moderator — prosty przepływ pracy w danych wyjściowych](images/ocr-sample-image-workflow1.PNG)
 
 
-## <a name="advanced-workflow-with-combination"></a>Zaawansowanych przepływów pracy z kombinacją
+## <a name="advanced-workflow-with-combination"></a>Zaawansowanych przepływów pracy przy użyciu połączenia
 
-### <a name="the-sample-image"></a>Obraz przykładowej
+### <a name="the-sample-image"></a>Przykładowy obraz
 
-Używać tego samego [obraz przykładowy](https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png) który został użyty w poprzedniej sekcji.
+Użyto tych samych [przykładowy obraz](https://moderatorsampleimages.blob.core.windows.net/samples/sample5.png) użyty w poprzedniej sekcji.
 
-Jednak go, zmienić podstawowy warunek do kombinację dwóch kontroli. Oprócz sprawdzania, czy tekst, należy sprawdzić, czy tekst ma niestosownych żadnych wyrażeń. Przepływ pracy tworzy przeglądu, w przypadku odnalezienia tekst **i** wykryje niestosownych wyrażeń.
+Jednak go, zmienić podstawowy warunek do połączenia dwóch kontroli. Oprócz sprawdzania, czy tekst, należy sprawdzić, czy tekst ma jakiekolwiek przekleństwa. Przepływ pracy tworzy przeglądu, jeśli znajdzie się tekst **i** wykrywa wulgaryzmów.
 
 ### <a name="the-designer-view"></a>Widok projektanta
 
-Aby zmienić **warunku** do **kombinacja**, zmodyfikuj przepływ pracy. Na poniższej ilustracji przedstawiono nowy widok, który zostanie wyświetlony w projektancie.
+Aby zmienić **warunek** do **kombinacji**, zmodyfikuj przepływ pracy. Na poniższej ilustracji przedstawiono nowy widok, który zostanie wyświetlony w projektancie.
 
-![Zawartości moderatora - warunek zmodyfikowane przepływu pracy](images/ocr-workflow-2-designer.PNG)
+![Pakiet Content Moderator — warunek modyfikacji przepływu pracy](images/ocr-workflow-2-designer.PNG)
 
-### <a name="the-json-view"></a>Widok JSON
+### <a name="the-json-view"></a>Widok kodu JSON
 
-Wybierz **JSON** kartę, aby wyświetlić poniższe definicji JSON zmodyfikowany niestandardowy przepływ pracy. Powiadomienie jak **Jeżeli to** instrukcje w definicji JSON odpowiadają nowe kroki dodawane do przepływu pracy.
+Wybierz **JSON** kartę, aby zobaczyć poniższą definicję formatu JSON zmodyfikowany niestandardowy przepływ pracy. Zwróć uwagę sposób, w jaki **If-Then** instrukcji w definicji JSON odpowiadają nowe kroki dodane do przepływu pracy.
 
     {
         "Type": "Logic",
@@ -203,43 +204,43 @@ Wybierz **JSON** kartę, aby wyświetlić poniższe definicji JSON zmodyfikowany
     
 ### <a name="workflow-result"></a>Wynik przepływu pracy
 
-Po ponownie przetestuj przepływu pracy można znaleźć czy przeglądu nie został utworzony. Aby upewnić się, brak każdy Przegląd, przejdź do **obrazu** w obszarze **Przejrzyj**.
-Przepływ pracy nie może utworzyć przeglądu, ponieważ nie można wykryć niestosownych wyrażeń w wyodrębnionego tekstu.
+Po ponownie przetestuj przepływ pracy można znaleźć, czy został utworzony nie przeglądu. Aby upewnić się, brak każdy Przegląd, przejdź do **obraz** karcie **Przejrzyj**.
+Ponieważ nie mogła wykrywania wulgaryzmów w wyodrębniony tekst przepływu pracy nie utworzył przeglądu.
 
-![Moderatora zawartości — dane wyjściowe zmodyfikowane przepływu pracy](images/ocr-workflow-2-result.PNG)
+![Pakiet Content Moderator — dane wyjściowe modyfikacji przepływu pracy](images/ocr-workflow-2-result.PNG)
 
 
 ## <a name="the-workflow-api"></a>Przepływ pracy interfejsu API
 
-[Operacje przepływu pracy](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) udostępniają interfejs programowania, do funkcji przepływu pracy. Tworzenie przepływów pracy, Pobierz szczegóły przepływu pracy i aktualizacji definicji przepływu pracy przy użyciu interfejsu API przepływu pracy.
+[Operacje przepływu pracy](https://westus.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) dostarczające interfejs programowania do możliwości przepływu pracy. Tworzenie przepływów pracy, Pobierz szczegóły przepływu pracy i aktualizowanie definicji przepływu pracy przy użyciu interfejsu API przepływu pracy.
 
 ### <a name="get-all-workflow-details"></a>Szczegóły przepływu pracy GET [All]
 
 **Przepływ pracy Get** operacji akceptuje następujące dane wejściowe:
 
-- **zespołu**: identyfikator zespołu utworzonego podczas konfigurowania sieci [Przejrzyj konta narzędzia](https://contentmoderator.cognitive.microsoft.com/). 
-- **workflowname**: Nazwa przepływu pracy. Użyj `default` rozpoczynać się od znaku.
-- **OCP-Apim-subskrypcji — klucz**: znajdujących się na **ustawienia** kartę. Aby uzyskać więcej informacji, zobacz [omówienie](overview.md).
+- **zespół**: identyfikator zespołu, który został utworzony podczas konfigurowania usługi [zapoznaj się uwagę narzędzie](https://contentmoderator.cognitive.microsoft.com/). 
+- **workflowname**: Nazwa przepływu pracy. Użyj `default` rozpoczynać się.
+- **OCP-Apim-Subscription-Key**: znajdujących się na **ustawienia** kartę. Aby uzyskać więcej informacji, zobacz [Przegląd](overview.md).
 
-Jeśli operacja zakończy się powodzeniem, **stanu odpowiedzi** jest `200 OK` i **zawartości odpowiedzi** definicji przepływu pracy w polu są wyświetlane w formacie JSON.
-Aby dowiedzieć się więcej, przeczytaj [szybkiego startu konsoli przepływu pracy API](try-review-api-job.md).
+Jeśli operacja się powiedzie, **stan odpowiedzi** jest `200 OK` i **zawartość odpowiedzi** wyświetlone definicji przepływu pracy w formacie JSON.
+Aby dowiedzieć się więcej, przeczytaj [Szybki Start konsoli przepływu pracy interfejsu API](try-review-api-job.md).
 
-### <a name="create-or-update-workflow"></a>Utwórz lub zaktualizuj przepływu pracy
+### <a name="create-or-update-workflow"></a>Utwórz lub zaktualizuj przepływ pracy
 
-Operacja tworzenia i aktualizacji umożliwia tworzenie przepływu pracy z interfejsu API.
+Operacja tworzenia i aktualizowania umożliwia tworzenie przepływów pracy z interfejsu API.
 
-**Przepływu pracy — Tworzenie lub aktualizacja** operacji akceptuje następujące dane wejściowe:
+**Tworzenie przepływu pracy lub aktualizacji** operacji akceptuje następujące dane wejściowe:
 
-- **zespołu**: identyfikator zespołu utworzonego podczas konfigurowania sieci [Przejrzyj konta narzędzia](https://contentmoderator.cognitive.microsoft.com/). 
-- **workflowname**: Nazwa przepływu pracy. Użyj `default` rozpoczynać się od znaku.
-- **OCP-Apim-subskrypcji — klucz**: znajdujących się na **ustawienia** kartę. Aby uzyskać więcej informacji, zobacz [omówienie](overview.md).
+- **zespół**: identyfikator zespołu, który został utworzony podczas konfigurowania usługi [zapoznaj się uwagę narzędzie](https://contentmoderator.cognitive.microsoft.com/). 
+- **workflowname**: Nazwa przepływu pracy. Użyj `default` rozpoczynać się.
+- **OCP-Apim-Subscription-Key**: znajdujących się na **ustawienia** kartę. Aby uzyskać więcej informacji, zobacz [Przegląd](overview.md).
 
-Jeśli operacja zakończy się powodzeniem, **stanu odpowiedzi** jest `200 OK` i **zawartości odpowiedzi** wyświetlana `true`. Aby dowiedzieć się więcej, [przetestuj `Create` operacji](try-review-api-job.md).
+Jeśli operacja się powiedzie, **stan odpowiedzi** jest `200 OK` i **zawartość odpowiedzi** wyświetlana `true`. Aby dowiedzieć się więcej, [przetestuj `Create` operacji](try-review-api-job.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się, jak utworzyć niestandardowe przepływy pracy, zapoznaj się [Przejrzyj samouczek przepływu pracy narzędzia](Review-Tool-User-Guide/Workflows.md). 
+Aby dowiedzieć się, jak tworzyć niestandardowe przepływy pracy, zapoznaj się z [Przejrzyj samouczek przepływu pracy narzędzia](Review-Tool-User-Guide/Workflows.md). 
 
-Przetestuj [konsoli przepływu pracy API](try-review-api-job.md) i użyj przykłady kodu interfejsu API REST. 
+Wersja testowa [konsoli przepływu pracy interfejsu API](try-review-api-job.md) i przykłady kodu interfejsu API REST. 
 
-Na koniec Użyj niestandardowych przepływów pracy z **zadania** operacje jako shon w [API zadania konsoli](try-review-api-job.md) i [szybkiego startu .NET zadania](moderation-jobs-quickstart-dotnet.md).
+Na koniec Użyj niestandardowych przepływów pracy za pomocą **zadania** operacji co shon w [Konsola interfejsu API zadań](try-review-api-job.md) i [.NET zadania szybkiego startu](moderation-jobs-quickstart-dotnet.md).

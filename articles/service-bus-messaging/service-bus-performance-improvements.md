@@ -7,14 +7,14 @@ author: spelluru
 manager: timlt
 ms.service: service-bus-messaging
 ms.topic: article
-ms.date: 06/14/2018
+ms.date: 09/14/2018
 ms.author: spelluru
-ms.openlocfilehash: 18e2cc9457252dbd931b03fc08382287fd3a3c1e
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: cfce11546249310ce00e5f19ba81520cc9dd78cf
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304649"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392639"
 ---
 # <a name="best-practices-for-performance-improvements-using-service-bus-messaging"></a>Najlepsze rozwiązania zwiększające wydajność przy użyciu komunikatów usługi Service Bus
 
@@ -79,7 +79,7 @@ Usługa Service Bus nie obsługuje transakcji dla operacji odbierania i usuwania
 
 ## <a name="client-side-batching"></a>Przetwarzanie wsadowe po stronie klienta
 
-Przetwarzanie wsadowe po stronie klienta umożliwia klientowi kolejki lub tematu opóźnić wysyłanie wiadomości przez pewien czas. Jeśli klient wysyła dodatkowe komunikaty w trakcie tego okresu, przesyła wiadomości w jednej partii. Przetwarzanie wsadowe po stronie klienta również powoduje, że kolejki lub subskrypcji klienta partii wielu **Complete** żądań w pojedynczym żądaniu. Przetwarzanie wsadowe jest dostępna tylko dla asynchronicznego **wysyłania** i **Complete** operacji. Synchroniczne operacje są natychmiast wysyłane do usługi Service Bus. Przetwarzanie wsadowe nie wystąpi dla podglądu ani operacji odbioru nie jest przetwarzanie wsadowe wykonywane na klientach.
+Przetwarzanie wsadowe po stronie klienta umożliwia klientowi kolejki lub tematu opóźnić wysyłanie wiadomości przez pewien czas. Jeśli klient wysyła dodatkowe komunikaty w tym okresie, przesyła komunikaty w jednej partii. Przetwarzanie wsadowe po stronie klienta również powoduje, że kolejki lub subskrypcji klienta partii wielu **Complete** żądań w pojedynczym żądaniu. Przetwarzanie wsadowe jest dostępna tylko dla asynchronicznego **wysyłania** i **Complete** operacji. Synchroniczne operacje są natychmiast wysyłane do usługi Service Bus. Przetwarzanie wsadowe nie wystąpi dla podglądu ani operacji odbioru nie jest przetwarzanie wsadowe wykonywane na klientach.
 
 Domyślnie klient używa usługi batch interwał 20 ms. Można zmienić interwał przetwarzania wsadowego, ustawiając [BatchFlushInterval] [ BatchFlushInterval] właściwości przed utworzeniem fabryki obsługi komunikatów. To ustawienie dotyczy wszystkich klientów, które są tworzone przez tę fabrykę.
 

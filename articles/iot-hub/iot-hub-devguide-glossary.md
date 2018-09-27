@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 575326ee3bd2cb64b2cb65168f23f7fe97dad029
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 52aabcfd908afeea3bb9bf36eefad706b74d8ba9
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46954402"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227150"
 ---
 # <a name="glossary-of-iot-hub-terms"></a>Słownik terminów usługi IoT Hub
 W tym artykule wymieniono niektóre typowe terminy używane w artykułach usługi IoT Hub.
@@ -27,7 +27,7 @@ Automatyczne zarządzanie urządzeniami w usłudze Azure IoT Hub automatyzuje wi
 ## <a name="automatic-device-configuration"></a>Konfiguracja urządzenia automatycznego
 Można użyć w zapleczu rozwiązania [konfiguracji urządzeń automatycznego](iot-hub-auto-device-config.md) można przypisać żądanych właściwości z zestawem [bliźniaczych reprezentacji urządzeń](#device-twin) i stan raportu przy użyciu metryk systemu i metryki niestandardowe. 
 
-## <a name="azure-classic-cli"></a>Klasyczny interfejs wiersza polecenia Azure
+## <a name="azure-classic-cli"></a>Klasyczny interfejs wiersza polecenia platformy Azure
 [Klasycznego wiersza polecenia platformy Azure](../cli-install-nodejs.md) to narzędzie dla wielu platform, typu open source, opartych na powłoce poleceń do tworzenia i zarządzania zasobami na platformie Microsoft Azure. Ta wersja interfejsu wiersza polecenia powinny służyć do tylko w przypadku wdrożeń klasycznych.
 
 ## <a name="azure-cli"></a>Interfejs wiersza polecenia platformy Azure
@@ -136,7 +136,7 @@ A [bliźniaczej reprezentacji urządzenia](iot-hub-devguide-device-twins.md) to 
 Podobnie jak w bliźniaczej reprezentacji urządzenia, bliźniacza reprezentacja modułu to dokument JSON, która przechowuje informacje o stanie modułu, takie jak metadane, konfiguracje i warunki. Usługa IoT Hub utrzymuje bliźniaczą reprezentację modułu tożsamości każdego modułu, która obsługi administracyjnej w obszarze tożsamość urządzenia w usłudze IoT hub. Bliźniaczych reprezentacjach modułów umożliwia synchronizowanie modułu warunków i konfiguracje między modułem i zapleczem rozwiązania. Można tworzyć zapytania bliźniaczych reprezentacjach modułów, aby znaleźć określone moduły i wykonać zapytanie o stan długotrwałych operacji.
 
 ## <a name="twin-queries"></a>Zapytania dotyczące bliźniaczych reprezentacji
-[Zapytania dotyczące bliźniaczych reprezentacji urządzeń i moduł](iot-hub-devguide-query-language.md) język zapytań przypominający SQL IoT Hub umożliwia pobieranie informacji z bliźniaczych reprezentacji urządzeń lub bliźniaczych reprezentacjach modułów. Można użyć tego samego języka zapytań usługi IoT Hub można pobrać informacji o [ ](#job) działające w Twoim Centrum IoT hub.
+[Zapytania dotyczące bliźniaczych reprezentacji urządzeń i moduł](iot-hub-devguide-query-language.md) język zapytań przypominający SQL IoT Hub umożliwia pobieranie informacji z bliźniaczych reprezentacji urządzeń lub bliźniaczych reprezentacjach modułów. Można użyć tego samego języka zapytań usługi IoT Hub można pobrać informacji o [](#job) działające w Twoim Centrum IoT hub.
 
 ## <a name="twin-synchronization"></a>Bliźniacza reprezentacja synchronizacji
 Bliźniacza reprezentacja używa synchronizacji [żądane właściwości](#desired-properties) bliźniaczych reprezentacji urządzeń lub bliźniaczych reprezentacjach modułów, skonfiguruj urządzenia lub moduły i pobieranie [zgłaszanych właściwości](#reported-properties) od nich w celu przechowywania w bliźniaczej reprezentacji.
@@ -177,7 +177,7 @@ IoT Hub to w pełni zarządzana usługa platformy Azure, która umożliwia bezpi
 [Metryki usługi IoT Hub](iot-hub-metrics.md) udostępnia dane o stanie centrów IoT w swojej [subskrypcji platformy Azure](#subscription). Metryki usługi IoT Hub umożliwiają oceny ogólnej kondycji usługi i dołączone do niego urządzenia. Metryki usługi IoT Hub może pomóc w Zobacz, co się dzieje z Centrum IoT i badanie głównej przyczyny problemów bez konieczności skontaktuj się z działem pomocy technicznej platformy Azure.
 
 ## <a name="iot-hub-query-language"></a>Język zapytań usługi IoT Hub
-[Język zapytań usługi IoT Hub](iot-hub-devguide-query-language.md) jest języka przypominającego SQL, która pozwala przesyłać zapytania usługi [ ](#job) i bliźniacze reprezentacje urządzeń.
+[Język zapytań usługi IoT Hub](iot-hub-devguide-query-language.md) jest języka przypominającego SQL, która pozwala przesyłać zapytania usługi [](#job) i bliźniacze reprezentacje urządzeń.
 
 ## <a name="iot-hub-resource-rest-api"></a>Usługa IoT Hub zasobu interfejsu API REST
 Możesz użyć [interfejsu API REST zasobów usługi IoT Hub](https://docs.microsoft.com/rest/api/iothub/iothubresource) Zarządzanie centrów IoT w swojej [subskrypcji platformy Azure](#subscription) wykonywanie operacji, takich jak tworzenie, aktualizowanie i Usuwanie koncentratorów.
@@ -219,7 +219,7 @@ W kontekście [bliźniaczej reprezentacji urządzenia](iot-hub-devguide-device-t
 [Usługa Azure Resource Manager](#azure-resource-manager) korzysta z grup zasobów do grupowania powiązanych zasobów. Grupa zasobów służy do wykonywania operacji na wszystkie zasoby w grupie jednocześnie.
 
 ## <a name="retry-policy"></a>Zasady ponawiania
-Użyj zasad ponawiania do obsługi [błędów przejściowych](https://msdn.microsoft.com/library/hh680901(v=pandp.50).aspx) po nawiązaniu połączenia z usługą w chmurze.
+Użyj zasad ponawiania do obsługi [błędów przejściowych](/azure/architecture/best-practices/transient-faults) po nawiązaniu połączenia z usługą w chmurze.
 
 ## <a name="routing-rules"></a>Reguły routingu
 Możesz skonfigurować [reguł routingu](iot-hub-devguide-messages-read-custom.md) w usłudze IoT hub do rozsyłania komunikatów z urządzenia do chmury do [wbudowany punkt końcowy](#built-in-endpoints) lub [niestandardowe punkty końcowe](#custom-endpoints) do przetworzenia przez w zapleczu rozwiązania .

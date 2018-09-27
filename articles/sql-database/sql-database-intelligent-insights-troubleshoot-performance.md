@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 311d1e1fc048e65182fbcbc8ca4b6f8c338da0de
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 49d5e307c51a6527ade63bac0276fa141ecb5c24
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163872"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222458"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Rozwiązywanie problemów z wydajnością usługi Azure SQL Database dzięki inteligentnej analizie
 
@@ -41,7 +41,7 @@ Intelligent Insights automatycznie wykrywa problemy z wydajnością bazy danych 
 | [Pagelatch Contention](sql-database-intelligent-insights-troubleshoot-performance.md#pagelatch-contention) | Wiele wątków jednocześnie próbujesz uzyskać dostęp do tych samych stron buforu danych w pamięci skutkuje czasy oczekiwania zwiększone i powodują, że pagelatch rywalizacji o zasoby. Ma to wpływ na wydajność bazy danych SQL. | Wiele wątków jednocześnie próbujesz uzyskać dostęp do tych samych stron buforu danych w pamięci skutkuje czasy oczekiwania zwiększone i powodują, że pagelatch rywalizacji o zasoby. Ma to wpływ na wydajność bazy danych. |
 | [Brakujący indeks](sql-database-intelligent-insights-troubleshoot-performance.md#missing-index) | Wykryto brakujący indeks wpływających na wydajność bazy danych SQL. | Wykryto brakujący indeks wpływających na wydajność bazy danych. |
 | [Nowe zapytanie](sql-database-intelligent-insights-troubleshoot-performance.md#new-query) | Nowe zapytanie zostało wykryte, mających wpływ na ogólną wydajność bazy danych SQL. | Nowe zapytanie zostało wykryte, mających wpływ na ogólną wydajność bazy danych. |
-| [Statystyka nietypowe oczekiwania](sql-database-intelligent-insights-troubleshoot-performance.md#unusual-wait-statistic) | Czasy oczekiwania nietypowe bazy danych zostały wykryte wpływających na wydajność bazy danych SQL. | Czasy oczekiwania nietypowe bazy danych zostały wykryte wpływających na wydajność bazy danych. |
+| [Statystyka zwiększone oczekiwania](sql-database-intelligent-insights-troubleshoot-performance.md#increased-wait-statistic) | Czasy oczekiwania zwiększone bazy danych zostały wykryte wpływających na wydajność bazy danych SQL. | Czasy oczekiwania zwiększone bazy danych zostały wykryte wpływających na wydajność bazy danych. |
 | [Bazy danych TempDB rywalizacji o zasoby](sql-database-intelligent-insights-troubleshoot-performance.md#tempdb-contention) | Wiele wątków próbuje uzyskać dostęp do tego samego zasobu bazy danych TempDB, powodując "wąskie gardło". Ma to wpływ na wydajność bazy danych SQL. | Wiele wątków próbuje uzyskać dostęp do tego samego zasobu bazy danych TempDB, powodując "wąskie gardło". Ma to wpływ na wydajność bazy danych. |
 | [Mała liczba jednostek DTU puli elastycznej](sql-database-intelligent-insights-troubleshoot-performance.md#elastic-pool-dtu-shortage) | Brak dostępnych jednostek Edtu w puli elastycznej ma wpływ na wydajność bazy danych SQL. | Niedostępne dla wystąpienia zarządzanego ponieważ używa ona modelu rdzenia wirtualnego. |
 | [Planowanie regresji](sql-database-intelligent-insights-troubleshoot-performance.md#plan-regression) | Wykryto nowy plan lub zmiany w obciążeniu istniejącego planu. Ma to wpływ na wydajność bazy danych SQL. | Wykryto nowy plan lub zmiany w obciążeniu istniejącego planu. Ma to wpływ na wydajność bazy danych. |
@@ -203,17 +203,17 @@ Diagnostyka rejestrować informacje o danych wyjściowych maksymalnie dwa nowe w
 
 Należy rozważyć użycie [usługi Azure SQL Database Query Performance Insight](sql-database-query-performance.md).
 
-## <a name="unusual-wait-statistic"></a>Statystyka nietypowe oczekiwania
+## <a name="increased-wait-statistic"></a>Statystyka zwiększone oczekiwania
 
 ### <a name="what-is-happening"></a>Co się dzieje
 
 Wzorzec ten wykrywalny wydajności wskazuje obciążenia spadek wydajności, w którym niska, wykonywanie zapytań są identyfikowane w porównaniu z ostatnim punktem odniesienia 7 dniowy obciążenia.
 
-W takim przypadku system nie można sklasyfikować słabej wydajności zapytań w innych kategoriach wydajności warstwy standardowa wykrywalny, ale on wykryty odpowiedzialny za regresji statystyki oczekiwania. Dlatego traktuje je jako zapytań przy użyciu *statystyki oczekiwania nietypowe*, gdzie również jest uwidaczniany statystyki oczekiwania nietypowe odpowiedzialny za regresji. 
+W takim przypadku system nie można sklasyfikować słabej wydajności zapytań w innych kategoriach wydajności warstwy standardowa wykrywalny, ale on wykryty odpowiedzialny za regresji statystyki oczekiwania. Dlatego traktuje je jako zapytań przy użyciu *wzrosła statystyki oczekiwania*, gdzie również odpowiedzialny za regresji statystyki oczekiwania jest widoczna. 
 
 ### <a name="troubleshooting"></a>Rozwiązywanie problemów
 
-Dziennik diagnostyczny danych wyjściowych informacji na temat szczegółów czasu oczekiwania nietypowe, skróty kwerenda dotyczy zapytań i czasy oczekiwania.
+Diagnostyki rejestrowanie danych wyjściowych informacji o szczegółach czas oczekiwania zwiększone i skrótami query objęte zapytania.
 
 Ponieważ system nie może pomyślnie Identyfikuj główne przyczyny niska, wykonywania zapytań, informacje diagnostyczne jest dobry punkt wyjścia do ręcznego rozwiązywania problemów. Można zoptymalizować wydajność kwerend. Dobrą praktyką jest, aby pobrać tylko te dane, które są potrzebne do użycia, a także uprościć i podzielenie złożonych zapytań na mniejsze. 
 

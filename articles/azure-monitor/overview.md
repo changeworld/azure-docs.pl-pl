@@ -10,19 +10,19 @@ ms.service: azure-monitor
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
-ms.topic: article
-ms.date: 09/14/2018
+ms.topic: conceptual
+ms.date: 09/26/2018
 ms.author: bwren
-ms.openlocfilehash: 97cc6d6e922ab0bedd729eddca754ae016f041bf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0413357b6e17bf66b0ae9b504bc23b9702d03c91
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958020"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220979"
 ---
 # <a name="azure-monitor-overview"></a>Omówienie usługi Azure Monitor
 
-Usługa Azure Monitor maksymalizuje dostępność i wydajność aplikacji, zapewniając kompleksowe rozwiązanie umożliwiające obsługę zbieranie, analizowanie i przetwarzanie danych telemetrycznych z chmury i środowiskach lokalnych. On pomoże Ci zrozumieć, jak działają Twoje aplikacje i aktywnie identyfikuje problemów wpływających na ich i zasoby, których one zależą.
+Usługa Azure Monitor maksymalizuje dostępność i wydajność aplikacji, zapewniając kompleksowe rozwiązanie umożliwiające obsługę zbieranie, analizowanie i przetwarzanie danych telemetrycznych z chmury i środowiskach lokalnych. Pomaga interpretować działanie aplikacji i proaktywnie identyfikuje problemy dotyczące aplikacji i zasobów, od których zależą.
 
 > [!VIDEO https://www.youtube.com/embed/_hGff5bVtkM]
 
@@ -47,7 +47,7 @@ Język zapytań usługi Log Analytics jest odpowiedni dla prostego dziennika zap
 ![Dzienniki](media/overview/logs.png)
 
 ## <a name="what-data-does-azure-monitor-collect"></a>Jakie dane są zbierane w usłudze Azure Monitor
-Usługa log Analytics może zbierać dane z różnych źródeł. Można traktować danych monitorowania dla aplikacji w warstwach — od aplikacji, w dowolnym eksploatacji oraz usług, który opiera się na dół samą platformę. Usługa Azure Monitor zbiera dane z każdej z następujących warstwach:
+Usługa Azure Monitor umożliwia zbieranie danych z różnych źródeł. Można traktować danych monitorowania dla aplikacji w warstwach — od aplikacji, w dowolnym eksploatacji oraz usług, który opiera się na dół samą platformę. Usługa Azure Monitor zbiera dane z każdej z następujących warstwach:
 
 - **Monitorowanie danych aplikacji**: dane dotyczące wydajności i funkcji kodu zostały napisane, niezależnie od platformy.
 - **Dane monitorowania systemu operacyjnego gościa**: dane dotyczące systemu operacyjnego, na którym aplikacja jest uruchomiona. Może to być uruchomiony w platformie Azure, innej chmurze lub lokalnie. 
@@ -145,9 +145,6 @@ Wiele interfejsów API dostępnych do odczytu i zapisu metryk i dzienników z us
 ## <a name="next-steps"></a>Kolejne kroki
 Dowiedz się więcej o usługach:
 
-* [Azure Monitor](https://azure.microsoft.com/services/monitor/), aby rozpocząć pracę z metrykami i alertami monitorowania podstawowego.
-* [Application Insights](https://azure.microsoft.com/documentation/services/application-insights/), jeśli próbujesz diagnozować problemy w aplikacji sieci Web usługi App Service.
-* [Log Analytics](https://azure.microsoft.com/documentation/services/log-analytics/) służącej do analizowania zebranych danych i dzienników monitorowania.
-
-
-
+* [Metryki i dzienniki](../monitoring/monitoring-data-collection.md) dla danych zbieranych przez usługi Azure Monitor.
+* [Źródła danych](../monitoring/monitoring-data-sources.md) dla jak wysyłanie danych telemetrycznych w różnych składników aplikacji.
+* [Log Analytics](../log-analytics/log-analytics-queries.md) do analizowania zebranych danych.

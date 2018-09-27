@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: sujayt
-ms.openlocfilehash: 1db54cfd32a0d598d0079ddaec9aab5d6b2f84c1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 5cf795b85e295488a04e95dbabcee46134361495
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47039296"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222476"
 ---
 # <a name="support-matrix-for-replicating-from-one-azure-region-to-another"></a>Macierz obsługi replikacji między regionami platformy Azure do innego
 
@@ -125,7 +125,7 @@ Można replikować i odzyskiwanie maszyn wirtualnych między wszystkie dwóch re
 Ameryka | Kanada Wschodnia, środkowe stany USA Kanada środkowe, południowo-, Zachodnia środkowe stany USA, wschodnie stany USA, wschodnie stany USA 2, zachodnie stany USA, zachodnie stany USA 2, środkowe stany USA, Północnośrodkowa
 Europa | Zachodnie Zjednoczone Królestwo, południowe Zjednoczone Królestwo, Europa Północna, Europa Zachodnia, Francja środkowa, Francja Południowa
 Azja | Indie Południowe, Indie środkowe, Azja południowo-wschodnia, Azja Wschodnia, Japonia Wschodnia, Japonia Zachodnia, Korea środkowa, Korea Południowa
-Australia   | Australia Wschodnia, Australia południowo-wschodnia
+Australia   | Australia Wschodnia, Australia Południowo-Wschodnia, Australia Środkowa, Australia Środkowa 2
 Azure Government    | Administracja USA — Wirginia, administracja USA — Iowa, administracja USA — Arizona, administracja USA — Teksas, US DOD wschodnie stany, US dod — środkowe
 Niemcy | Niemcy środkowe, Niemcy północno-wschodnie
 Chiny | Chiny wschodnie, Chiny Północne

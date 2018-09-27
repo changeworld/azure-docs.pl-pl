@@ -1,21 +1,21 @@
 ---
-title: Przy użyciu tokenu szczegółowych informacji za pomocą interfejsu API wyszukiwania wizualnego Bing | Dokumentacja firmy Microsoft
-titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Przedstawia użycie szczegółowe informacje o obrazie tokenu przy użyciu interfejsu API wyszukiwania wizualnego Aby uzyskać szczegółowe informacje o obrazie.
+title: Przy użyciu tokenu insights - wyszukiwania wizualnego Bing
+titleSuffix: Azure Cognitive Services
+description: Przedstawia użycie szczegółowe informacje o obrazie tokenu za pomocą API wyszukiwania wizualnego Bing Aby uzyskać szczegółowe informacje o obrazie.
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: bing-visual-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 569ae89a712d14fb36989e756f99725dce398c0a
-ms.sourcegitcommit: b9786bd755c68d602525f75109bbe6521ee06587
+ms.openlocfilehash: e853545e07709d82fa1e3b1143392e6d6012f6f6
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39126562"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227592"
 ---
 # <a name="using-an-insights-token-to-get-insights-about-an-image"></a>Przy użyciu tokenu szczegółowe informacje, aby uzyskać szczegółowe informacje o obrazie
 
@@ -68,7 +68,7 @@ Przykłady, które używają tokenu szczegółowych informacji, zobacz [C#](#usi
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne będzie [programu Visual Studio 2017](https://www.visualstudio.com/downloads/) aby otrzymać ten kod w systemie Windows. (Bezpłatna wersja Community będzie działać.)
+Konieczne będzie [programu Visual Studio 2017](https://www.visualstudio.com/downloads/) aby otrzymać ten kod w systemie Windows. (Można korzystać z bezpłatnej wersji Community Edition).
 
 W tym przewodniku Szybki Start, możesz użyć [bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) klawisz płatna subskrypcja lub subskrypcja.
 
@@ -240,11 +240,11 @@ namespace VisualSearchInsightsToken
 
 <a name="using-java" />
 
-## <a name="using-java"></a>Za pomocą języka Java
+## <a name="using-java"></a>Korzystanie z języka Java
 
 ### <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne będzie [JDK 7 lub 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html) Aby skompilować i uruchomić ten kod. Jeśli masz Ulubione, ale wystarczy edytora tekstów, można użyć Java IDE.
+Musisz mieć zestaw [JDK 7 lub 8](http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html), aby skompilować i uruchomić ten kod. Jeśli masz Ulubione, ale wystarczy edytora tekstów, można użyć Java IDE.
 
 W tym przewodniku Szybki Start, możesz użyć [bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) klawisz płatna subskrypcja lub subskrypcja.
 
@@ -425,7 +425,7 @@ function requestCallback(err, res, body) {
 
 <a name="using-python" />
 
-## <a name="using-python"></a>Przy użyciu języka Python
+## <a name="using-python"></a>Korzystanie z języka Python
 
 
 ### <a name="prerequisites"></a>Wymagania wstępne

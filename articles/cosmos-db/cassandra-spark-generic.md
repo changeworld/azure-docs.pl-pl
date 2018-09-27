@@ -10,12 +10,12 @@ ms.devlang: spark-scala
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ankhanol
-ms.openlocfilehash: b7a6d449e7b8d0f3980a38767147e6b3a37f8e0f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: f2f5aebf32cf5860ca8fc32ab741177c6df15c60
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46996008"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227201"
 ---
 # <a name="connect-to-azure-cosmos-db-cassandra-api-from-spark"></a>Łączenie do usługi Azure Cosmos DB Cassandra API z platformy Spark
 
@@ -27,9 +27,9 @@ Ten artykuł stanowi jednej serii artykułów dotyczących integracji interfejsu
 * Aprowizowanie preferowanego środowiska Spark [[usługi Azure Databricks](https://docs.microsoft.com/azure/azure-databricks/quickstart-create-databricks-workspace-portal) | [usługi Azure HDInsight — Spark](https://docs.microsoft.com/azure/hdinsight/spark/apache-spark-jupyter-spark-sql) | Inne].
 
 ## <a name="dependencies-for-connectivity"></a>Zależności dotyczące łączności
-* **Łącznik platformy Datastax Spark dla bazy danych Cassandra:** służy łącznik Datastax Spark nawiązać połączenia z interfejsem API usługi Azure Cosmos DB Cassandra.  Identyfikowanie i używana wersja łącznika na terenie [Maven central]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) zgodny z platformami Spark i Scala wersje środowiska platformy Spark.
+* **Łącznik Spark dla bazy danych Cassandra:** służy łącznik Spark nawiązać połączenia z interfejsem API usługi Azure Cosmos DB Cassandra.  Identyfikowanie i używana wersja łącznika na terenie [Maven central]( https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) zgodny z platformami Spark i Scala wersje środowiska platformy Spark.
 
-* **Biblioteka Pomocy usługi Azure Cosmos DB dla interfejsu API rozwiązania Cassandra:** oprócz łącznik Datastax potrzebna innej biblioteki o nazwie [azure-cosmos-cassandra-spark Pomocnika]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) z usługi Azure Cosmos DB. Ta biblioteka zawiera fabryka połączenia i klasy zasad niestandardowych ponowień.
+* **Biblioteka Pomocy usługi Azure Cosmos DB dla interfejsu API rozwiązania Cassandra:** oprócz łącznik platformy Spark, potrzebujesz innej biblioteki o nazwie [azure-cosmos-cassandra-spark Pomocnika]( https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) z usługi Azure Cosmos DB. Ta biblioteka zawiera fabryka połączenia i klasy zasad niestandardowych ponowień.
 
   Zasady ponawiania prób w usłudze Azure Cosmos DB jest skonfigurowany do obsługi HTTP status kodu 429 "("żądania dużej szybkości) wyjątki. Interfejs API usługi Azure Cosmos DB Cassandra tłumaczy tych wyjątków w błędy przeciążona natywnego protokołu bazy danych Cassandra i będzie można ponowić próbę z powrotem kompromisu. Ponieważ usługi Azure Cosmos DB używa modelu aprowizowanej przepływności, wyjątki ograniczanie szybkości żądania wystąpić, gdy ruchem przychodzącym/wychodzącym ocenia wzrost. Zasady ponawiania chroni względem wartości graniczne danych, które chwilowo przekroczenie przepływności przydzielonych do kolekcji zadań platformy spark.
 
@@ -40,7 +40,7 @@ Ten artykuł stanowi jednej serii artykułów dotyczących integracji interfejsu
     
 ## <a name="spark-connector-throughput-configuration-parameters"></a>Parametry konfiguracji przepływności łącznika Spark
 
-W poniższej tabeli przedstawiono parametry konfiguracji przepływności specyficzne dla usługi Azure Cosmos DB Cassandra API dostarczonych przez łącznik. Aby uzyskać szczegółową listę wszystkich parametrów konfiguracji, zobacz [informacje o konfiguracji](https://github.com/datastax/spark-cassandra-connector/blob/master/doc/reference.md) strony repozytorium DataStax Spark Cassandra łącznika w witrynie GitHub.
+W poniższej tabeli przedstawiono parametry konfiguracji przepływności specyficzne dla usługi Azure Cosmos DB Cassandra API dostarczonych przez łącznik. Aby uzyskać szczegółową listę wszystkich parametrów konfiguracji, zobacz [informacje o konfiguracji](https://github.com/datastax/spark-cassandra-connector/blob/master/doc/reference.md) strony repozytorium serwisu GitHub łącznika bazy danych Cassandra platformy Spark.
 
 | **Nazwa właściwości** | **Wartość domyślna** | **Opis** |
 |---------|---------|---------|
@@ -80,14 +80,14 @@ Gdy specyficzne dla usług PaaS oparta na platformie Azure Spark były powyżej,
 
 #### <a name="connector-dependencies"></a>Łącznik zależności:
 
-1. Dodaj współrzędne maven [Datastax Cassandra łącznika Spark](cassandra-spark-generic.md#dependencies-for-connectivity)
+1. Dodaj współrzędnych maven, aby uzyskać [Cassandra łącznika Spark](cassandra-spark-generic.md#dependencies-for-connectivity)
 2. Dodaj współrzędne maven [Biblioteka pomocnicza usługi Azure Cosmos DB](cassandra-spark-generic.md#dependencies-for-connectivity) dla interfejsu API rozwiązania Cassandra
 
 #### <a name="imports"></a>Importy:
 
 ```scala
 import org.apache.spark.sql.cassandra._
-//datastax Spark connector
+//Spark connector
 import com.datastax.spark.connector._
 import com.datastax.spark.connector.cql.CassandraConnector
 

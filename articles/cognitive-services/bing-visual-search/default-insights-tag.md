@@ -1,21 +1,21 @@
 ---
-title: Insights-znacznik domyślny | Dokumentacja firmy Microsoft
-titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Szczegółowe informacje na temat wgląd w dane domyślne, zwracanych przez wyszukiwanie wizualne o obrazie.
+title: Insights - znacznik w wyszukiwania wizualnego Bing domyślny
+titleSuffix: Azure Cognitive Services
+description: Szczegółowe informacje na temat szczegółowe dane domyślne, które wyszukiwania wizualnego Bing zwraca o obrazie.
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: bing-visual-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 04/17/2018
 ms.author: scottwhi
-ms.openlocfilehash: a0ced7076c566c819f9e3f7abc5e2fa3930fa0b3
-ms.sourcegitcommit: e0a678acb0dc928e5c5edde3ca04e6854eb05ea6
+ms.openlocfilehash: 542f25df9837a471f6f0e2cf36575c2dd1be2680
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39004305"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224788"
 ---
 # <a name="default-insights-tag"></a>Tag usługi insights domyślny
 

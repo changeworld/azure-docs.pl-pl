@@ -6,12 +6,12 @@ author: mscurrell
 ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: conceptual
-ms.openlocfilehash: 4101f6819dff81376dcab47adb57e4b8ef35e094
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: fc26e1d32332bb0ed9624b7442e38ea79b7bfb1d
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "40034759"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393557"
 ---
 # <a name="rendering-using-azure"></a>Renderowanie przy użyciu platformy Azure
 
@@ -69,7 +69,7 @@ Usługa Azure Batch jest używany w przypadku wielu obciążeń, ale następują
   * Dostępne są obrazy maszyny Wirtualnej w portalu Marketplace platformy Azure zawierające popularne aplikacje graficzne i renderujące, unikając konieczności samodzielnego instalowania aplikacji lub utworzyć własne niestandardowe obrazy z zainstalowanymi aplikacjami. 
 * Płatność za użycie licencji na aplikacje renderowania:
   * Można płacić dla aplikacji w systemie minutowym, oprócz płacić za zasoby obliczeniowe maszyn wirtualnych, co pozwala uniknąć konieczności kupowanie licencji i potencjalnie konfigurowania serwera licencji dla aplikacji.  Również płacenia za użycie oznacza, że jest możliwe w celu zaspokojenia zmiennych i nieoczekiwane obciążenia się nie stałą liczbę licencji.
-  * Użytkownik może również używać wstępnie zainstalowanymi aplikacjami z własnej licencji oraz nie licencjonowania płatność za użycie.
+  * Użytkownik może również używać wstępnie zainstalowanymi aplikacjami z własnej licencji oraz nie licencjonowania płatność za użycie. Aby to zrobić, zazwyczaj należy zainstalować na lokalnych lub opartych na platformie Azure licencji serwera, a siecią wirtualną platformy Azure umożliwia puli renderowania nawiązać połączenie z serwerem licencji.
 * Dodatki dla projektu klienta i aplikacjach do modelowania:
   * Dodatki plug-in zezwolić użytkownikom końcowym na korzystanie z usługi Azure Batch bezpośrednio z aplikacji klienckiej, takich jak Autodesk Maya, co pozwala na tworzenie pul, przesyłanie zadań i upewnij użytkowania więcej obliczeń przygotowanie wydajności niezbędnej do wykonania renderuje szybciej.
 * Renderowanie manager integration:

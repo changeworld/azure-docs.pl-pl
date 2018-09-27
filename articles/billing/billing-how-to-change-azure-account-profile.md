@@ -1,6 +1,6 @@
 ---
 title: Zmiana informacji o Twoim profilu konta platformy Azure | Dokumentacja firmy Microsoft
-description: Zawiera opis sposobu zmiany profilu konta platformy Azure i odpowiedzi na często zadawane pytania, takie jak Dlaczego nie można zmienić kraju w Centrum konta platformy Azure
+description: Zawiera opis sposobu zmiany profilu konta platformy Azure i odpowiedzi na często zadawane pytania, takie jak Dlaczego nie można zmienić kraj, w Centrum konta platformy Azure
 services: ''
 documentationcenter: ''
 author: genlin
@@ -14,53 +14,53 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
-ms.author: genli
+ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: bce9e7de13ff95024685ccf916541357f5362727
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: 4f17a65befc1abbe2a2405e8470f61068ac34f8b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34070655"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394815"
 ---
-# <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>Zmień informacje o Twoim koncie Azure profilu, takie jak kontaktowy adres e-mail, adres i numer telefonu
+# <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>Zmiana informacji o profilu konta platformy Azure, takich jak kontaktowy adres e-mail, adres i numer telefonu
 
-Adres e-mail w profilu administratora konta jest używany przez firmę Microsoft do powiadamiania o ważnych aktualizacjach związanych z rozliczeniami o subskrypcji. Firma Microsoft zaleca, aby określić adres e-mail kontaktu, który regularnie sprawdzać.
+Adres e-mail w profilu Administrator konta jest używany przez firmę Microsoft powiadomimy Cię o ważnych aktualizacji związanych z rozliczeniami subskrypcji. Firma Microsoft zaleca, aby określić adres kontaktowy adres e-mail, który regularnie sprawdzać.
 
-## <a name="how-to-change-your-profile-information"></a>Jak zmienić informacji o Twoim profilu
+## <a name="how-to-change-your-profile-information"></a>Jak zmienić informacji o profilu
 
 1. Zaloguj się do [Centrum konta platformy Azure](https://account.azure.com/Profile).
-1. Wybierz **Edytuj szczegóły** przycisk, a następnie zaktualizuj **profilu** informacji.
+1. Wybierz przycisk **Edytuj szczegóły**, a następnie zaktualizuj informacje w polu **Profil**.
 
-   ![profil](./media/billing-how-to-change-azure-account-profile/profile.png)
+   ![Profil](./media/billing-how-to-change-azure-account-profile/profile.png)
 
 ## <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-### <a name="can-notifications-be-sent-to-a-different-email-address-other-than-the-account-administrator-email-address-associated-with-my-account"></a>Mogą być wysyłane powiadomienia do innego adresu e-mail innego niż adres e-mail administratora konta, które są skojarzone z moim kontem?
+### <a name="can-notifications-be-sent-to-a-different-email-address-other-than-the-account-administrator-email-address-associated-with-my-account"></a>Powiadomienia mogą być wysyłane na inny adres e-mail inny niż adres e-mail administratora konta, które są skojarzone z moim kontem?
 
-Tak. Adres e-mail konta pobiera ważnych powiadomień dotyczących wszystkich subskrypcji w ramach konta. Tak więc zaleca się, że wprowadzono adres e-mail kontaktu, sprawdzającą regularnie administratora konta.
+Tak. Adres e-mail na koncie pobiera ważnych powiadomień dotyczących wszystkich subskrypcji w ramach konta. Dlatego zaleca się, że podajesz adres kontaktowy adres e-mail, który Administrator konta sprawdza się regularnie.
 
-### <a name="can-i-change-the-account-administrator-email-address-in-my-profile"></a>W moim profilu można zmienić adresu e-mail administratora konta?
+### <a name="can-i-change-the-account-administrator-email-address-in-my-profile"></a>Czy mogę zmienić adres e-mail konta administratora w moim profilu?
 
-Tak. Administrator konta jest osoba, która Konfigurowanie konta platformy Azure i kto otrzymuje powiadomienia e-mail ważne informacje wszystkie subskrypcje w ramach konta. Zaleca się, że wprowadzono adres e-mail kontaktu, sprawdzającą regularnie administratora konta.
+Tak. Administrator konta jest osobą, która skonfigurować konto platformy Azure i kto otrzymuje ważna wiadomość e-mail powiadomienia dotyczące subskrypcji, w ramach konta. Firma Microsoft zaleca, aby określić adres kontaktowy adres e-mail, który Administrator konta sprawdza się regularnie.
 
-### <a name="does-updating-my-profile-email-also-update-my-login-email-address"></a>Również aktualizacja Mój profil poczty e-mail zaktualizowanie adresu e-mail logowania?
+### <a name="does-updating-my-profile-email-also-update-my-login-email-address"></a>Powoduje aktualizowanie Mój adres e-mail profilu aktualizacji Mój adres e-mail logowania?
 
-Nie. Aktualizowanie adresu e-mail profilu nie powoduje aktualizacji adresu e-mail logowania. Aby zmienić swój adres e-mail logowania, należy przetransferować własność konta.
+Nie. Aktualizowanie adresu e-mail w profilu nie aktualizuje adres e-mail logowania. Aby zmienić swój adres e-mail logowania, należy przenieść prawo własności konta.
 
-### <a name="does-updating-my-profile-address-also-update-my-credit-card-billing-address"></a>Również aktualizacja adresu profilu zaktualizowanie adres do faktury karty kredytowej?
+### <a name="does-updating-my-profile-address-also-update-my-credit-card-billing-address"></a>Powoduje aktualizowanie Mój adres profilu aktualizacji adres do faktury karty kredytowej?
 
-Aby dowiedzieć się, jak zaktualizować informacji rozliczeniowych, zobacz [zmienić karty kredytowej do realizacji płatności subskrypcji platformy Azure](billing-how-to-change-credit-card.md).
+Aby dowiedzieć się, jak zaktualizować swoje informacje rozliczeniowe, zobacz [zmienić karty kredytowej użytej do zapłacenia za subskrypcję platformy Azure](billing-how-to-change-credit-card.md).
 
 ### <a name="why-cant-i-update-the-country"></a>Dlaczego nie można zaktualizować kraju?
 
-Z powodu ograniczeń technicznych nie można teraz zmienić kraju przy użyciu istniejącego konta. Można jednak utworzyć konto w żądanego kraju i następnie skontaktuj się z pomocą techniczną platformy Azure, aby przeprowadzić migrację usług do tego konta.
+Ze względu na ograniczenia techniczne nie możemy teraz zmienić kraj, przy użyciu istniejącego konta. Można jednak utworzyć konto w żądany kraj i następnie skontaktuj się z działem pomocy technicznej platformy Azure, aby przeprowadzić migrację usług do tego konta.
 
-### <a name="what-email-address-does-the-azure-billing-alerts-preview-feature-use"></a>Jakiego adresu e-mail jest alerty rozliczenia Azure Użyj funkcji w wersji preview?
+### <a name="what-email-address-does-the-azure-billing-alerts-preview-feature-use"></a>Jakiego adresu e-mail jest alertów dotyczących rozliczeń platformy Azure Użyj funkcji w wersji zapoznawczej?
 
-Możesz otrzymywać powiadomienia o alertach z adresem e-mail dodać po utworzeniu konta dla alertów. Adres e-mail używany dla alertów jest oddzielony od adres e-mail administratora konta. Aby uzyskać więcej informacji, zobacz [skonfigurować alerty dotyczące subskrypcji platformy Microsoft Azure billing](billing-set-up-alerts.md).
+Otrzymasz powiadomienia o alertach z adresem e-mail, możesz dodać po zarejestrowaniu się dla alertów. Adres e-mail używany dla alertów różni się od adresu e-mail administratora konta. Aby uzyskać więcej informacji, zobacz [Konfigurowanie alertów dla Twojej subskrypcji Microsoft Azure billing](billing-set-up-alerts.md).
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
 
-Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać szybkie rozwiązanie problemu. 
+Jeśli nadal potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem. 
 

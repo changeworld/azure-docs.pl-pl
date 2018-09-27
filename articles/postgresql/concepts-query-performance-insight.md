@@ -6,20 +6,20 @@ author: rachel-msft
 ms.author: raagyema
 ms.service: postgresql
 ms.topic: conceptual
-ms.date: 09/24/2018
-ms.openlocfilehash: 6d92515a49060c8113fb7c2c75100103a75e5d49
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 09/26/2018
+ms.openlocfilehash: cc041104169ca8c4344b9d3de597283d122e63db
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971658"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394764"
 ---
 # <a name="query-performance-insight"></a>Szczegółowe informacje o wydajności zapytań 
 
 **Dotyczy:** Azure Database for postgresql w warstwie 9.6 i 10
 
 > [!IMPORTANT]
-> Funkcja Query Performance Insight jest w publicznej wersji zapoznawczej. 
+> Funkcja Query Performance Insight jest w publicznej wersji zapoznawczej w ograniczonej liczbie regionów. 
 
 Query Performance Insight ułatwia szybkie identyfikowanie najdłużej działających zapytań są, jak zmieniają się wraz z upływem czasu i czeka, które mają wpływ na ich.
 

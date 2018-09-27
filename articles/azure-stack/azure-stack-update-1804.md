@@ -3,7 +3,7 @@ title: Aktualizacja usługi Azure Stack w wersji 1804 | Dokumentacja firmy Micro
 description: Więcej informacji na temat nowości w wersji 1804 aktualizacji dla usługi Azure Stack zintegrowanych systemów, znanych problemów i umożliwiające pobranie aktualizacji.
 services: azure-stack
 documentationcenter: ''
-author: brenduns
+author: sethmanheim
 manager: femila
 editor: ''
 ms.assetid: ''
@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 08/01/2018
-ms.author: brenduns
+ms.date: 09/26/2018
+ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 0190298cbf6352feeb71e365f5815e174c9e30cc
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 16f12d8119a14e668a7502d99fa2d9c976d23833
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39413520"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393523"
 ---
 # <a name="azure-stack-1804-update"></a>Aktualizacja usługi Azure Stack w wersji 1804
 
@@ -102,6 +102,9 @@ Po zainstalowaniu wersji 1804 Zainstaluj wszystkie odpowiednie poprawki. Uzyska�
 Poniżej przedstawiono znane problemy po instalacji dla kompilacji **20180513.1**.
 
 #### <a name="portal"></a>Portal
+
+- Dokumentacja techniczna usługi Azure Stack koncentruje się na najnowszej wersji. Z powodu portalu zmian między wersjami Zobacz podczas przy użyciu portali usługi Azure Stack mogą różnić się od wyświetlanych w dokumentacji. 
+
 - <!-- TBD - IS ASDK --> Nie można zastosować aktualizacje sterowników za pomocą pakietu rozszerzenia producenta OEM w tej wersji usługi Azure Stack.  Nie ma sposobu obejścia tego problemu.
 
 - <!-- 1272111 - IS --> Po zainstalowaniu lub zaktualizowaniu do tej wersji usługi Azure Stack, nie można wyświetlić jednostki skalowania usługi Azure Stack w portalu administracyjnym.  

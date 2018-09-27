@@ -16,12 +16,12 @@ ms.workload: identity
 ms.date: 09/25/2018
 ms.author: andret
 ms.custom: aaddev
-ms.openlocfilehash: f57dc1707a9e25e4ea308142e804cdbc80d4308a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ba67acec778a48c084897095aa457e5637240a57
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984946"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227439"
 ---
 # <a name="add-sign-in-with-microsoft-to-an-aspnet-core-web-app"></a>Dodawanie logowania firmy Microsoft do aplikacji sieci web platformy ASP.NET Core
 
@@ -62,7 +62,7 @@ Ten przewodnik Szybki Start zawiera przykładowy kod, który demonstruje, jak za
 
 1. Wyodrębnij plik zip do folderu lokalnego (na przykład **C:\Azure-Samples**)
 1. Jeśli używasz programu Visual Studio 2017, otwórz projekt w programie Visual Studio (opcjonalne)
-1. Edytuj **appsettings.json** i zastąp wartość `ClientId` przy użyciu identyfikatora aplikacji z poziomu aplikacji, które właśnie zostało zarejestrowane:
+1. Edytuj **appsettings.json** i zastąp wartość `ClientId` identyfikatorem aplikacji z poziomu aplikacji, które właśnie zostało zarejestrowane:
 
     ```json
     "ClientId": "Enter_the_Application_Id_here"

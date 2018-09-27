@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/23/2018
 ms.author: rkarlin
-ms.openlocfilehash: 03c4a36330ca17eea4233e928d6b728e94e15292
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 18b7b1b3d2a74b6e3aeb671154de48bd7b7f1e00
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299197"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47218058"
 ---
 # <a name="alert-confidence-score"></a>Współczynnik ufności alertu 
 
@@ -29,7 +29,7 @@ Współczynnik ufności w usłudze Security Center może pomóc w klasyfikacji T
 
 ## <a name="how-the-confidence-score-is-triggered"></a>Jak jest wyzwalany, współczynnik ufności
 
-Alerty są generowane w przypadku wykrycia podejrzanych procesów uruchomionych na maszynach wirtualnych. Usługa Security Center sprawdza i analizuje te alerty na maszynach wirtualnych Windows działających na platformie Azure. Sprawdza zautomatyzowane i korelacji, przy użyciu zaawansowanych algorytmów w wielu jednostek i źródeł danych w organizacji, a także wszystkich zasobów platformy Azure i wyświetli z z oceną zaufania, czyli miary pewność, jak usługa Security Center jest ten alert jest oryginalna i musi zostać zbadana.
+Alerty są generowane w przypadku wykrycia podejrzanych procesów uruchomionych na maszynach wirtualnych. Usługa Security Center sprawdza i analizuje te alerty na maszynach wirtualnych Windows działających na platformie Azure. Sprawdza zautomatyzowane i korelacji, przy użyciu zaawansowanych algorytmów w wielu jednostek i źródeł danych w organizacji, a także wszystkich zasobów platformy Azure i przedstawia bez obaw, których wynik, który jest miarą pewność, jak usługa Security Center czy alert jest oryginalna i należy zbadać.
 
 ## <a name="understanding-the-confidence-score"></a>Opis współczynnik ufności
 

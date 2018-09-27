@@ -14,12 +14,12 @@ ms.workload: infrastructure
 ms.date: 09/04/2018
 ms.author: rclaus
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: c2ab917f701ebcb78ae01a4ed97915858e5b95db
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: 1262ed841fe8f6f9c2d5339d79abf06c1ab15a25
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44028389"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392877"
 ---
 # <a name="sap-hana-large-instances-network-architecture"></a>Architektura sieci platformy SAP HANA (duże wystąpienia)
 
@@ -79,7 +79,7 @@ Dostępne są następujące różnice, by wdrożenia SAP na platformie Azure:
 - Architektura aplikacji SAP jest bardziej wrażliwy na opóźnienia sieci niż typowych scenariuszy, w którym dane są wymieniane między lokalną i platformą Azure.
 - Brama sieci wirtualnej ma co najmniej dwóch połączeń usługi ExpressRoute. Zarówno połączenia współużytkują maksymalna przepustowość dla danych przychodzących bramy sieci wirtualnej.
 
-Opóźnienie sieci reprezentatywne między maszynami wirtualnymi i dużych wystąpień HANA jednostki mogą być większe niż typowy opóźnienie Rundy sieci maszyny Wirtualnej do maszyny Wirtualnej. Zależy od regionu platformy Azure, wartości mierzone może przekroczyć opóźnienie obustronne ms 0,7 sklasyfikowane jako poniżej średniej w [1100926 # Uwaga SAP — często zadawane pytania: wydajność sieci](https://launchpad.support.sap.com/#/notes/1100926/E). Niemniej jednak klienci wdrażać aplikacje SAP oparte na oprogramowanie SAP HANA produkcyjne pomyślnie na duże wystąpienie SAP HANA. Klienci, którzy doskonałe ulepszenia raportów, uruchamiając swoje aplikacje SAP na platformie SAP HANA przy użyciu dużych wystąpień HANA jednostki. Upewnij się, że należy dokładnie przetestować procesy biznesowe w dużych wystąpień HANA platformy Azure.
+Opóźnienie sieci reprezentatywne między maszynami wirtualnymi i dużych wystąpień HANA jednostki mogą być większe niż typowy opóźnienie Rundy sieci maszyny Wirtualnej do maszyny Wirtualnej. Zależy od regionu platformy Azure, wartości mierzone może przekroczyć opóźnienie obustronne ms 0,7 sklasyfikowane jako poniżej średniej w [1100926 # Uwaga SAP — często zadawane pytania: wydajność sieci](https://launchpad.support.sap.com/#/notes/1100926/E). Zależą od regionu platformy Azure oraz narzędzia do mierzenia obustronne opóźnienie sieciowe między maszyną Wirtualną platformy Azure i jednostka dużych wystąpień HANA, mierzonego opóźnienie można maksymalnie i wokół 2 milisekund. Niemniej jednak klienci wdrażać aplikacje SAP oparte na oprogramowanie SAP HANA produkcyjne pomyślnie na duże wystąpienie SAP HANA. Upewnij się, że należy dokładnie przetestować procesy biznesowe w dużych wystąpień HANA platformy Azure.
  
 Aby zapewnić deterministyczne opóźnienie między maszynami wirtualnymi i dużych wystąpień HANA, wybór bramy sieci wirtualnej jednostka SKU jest niezbędne. W przeciwieństwie do wzorców ruchu między magazynami lokalnymi i maszynami wirtualnymi wzorzec ruchu między maszynami wirtualnymi i dużych wystąpień HANA można tworzyć małe, ale wysokie wzrosty żądania i dane woluminów, które mają być przekazywane. Aby obsłużyć takie wzrosty dobrze, zdecydowanie zalecamy użycie jednostki SKU bramy UltraPerformance. W klasie typu II jednostek SKU platformy HANA duże wystąpienie użycie jednostki SKU bramy UltraPerformance jako brama sieci wirtualnej jest obowiązkowe.
 

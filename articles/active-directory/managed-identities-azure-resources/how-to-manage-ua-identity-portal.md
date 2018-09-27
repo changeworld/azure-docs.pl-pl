@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 04/16/2018
 ms.author: daveba
-ms.openlocfilehash: 180d4092a2570b719e77d98319ab9b329f2e48c5
-ms.sourcegitcommit: ab9514485569ce511f2a93260ef71c56d7633343
+ms.openlocfilehash: bdbe15a85ad4d2ef6918b7ab7e16942edde5096e
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/15/2018
-ms.locfileid: "45637429"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220338"
 ---
 # <a name="create-list-delete-or-assign-a-role-to-a-user-assigned-managed-identity-using-the-azure-portal"></a>Utwórz listę, usuń lub przypisać rolę do przypisanych przez użytkownika tożsamości zarządzanej przy użyciu witryny Azure portal
 
@@ -27,7 +27,7 @@ ms.locfileid: "45637429"
 
 Zarządzanych tożsamości dla zasobów platformy Azure udostępnia usługi platformy Azure za pomocą tożsamości zarządzanej w usłudze Azure Active Directory. Można użyć tej tożsamości do uwierzytelniania do usług, które obsługują uwierzytelnianie usługi Azure AD bez konieczności używania poświadczeń w kodzie. 
 
-W tym artykule dowiesz się, jak tworzyć, listy, usuń lub przypisywanie roli do użytkownika przypisane zarządzanych tożsamości przy użyciu witryny Azure Portal.
+W tym artykule dowiesz się, jak tworzyć, listy, usuń lub przypisać rolę do przypisanych przez użytkownika tożsamości zarządzanej przy użyciu witryny Azure Portal.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

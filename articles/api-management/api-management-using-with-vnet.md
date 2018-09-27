@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/05/2017
 ms.author: apimpm
-ms.openlocfilehash: 18b9e4eac6b183cd02ad2bb93463b4cc043f303a
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 1a02fd604d08e87c84a73657b7204ecb42b3498b
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040339"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393183"
 ---
 # <a name="how-to-use-azure-api-management-with-virtual-networks"></a>Jak używać usługi Azure API Management przy użyciu sieci wirtualnych
 Sieci wirtualne platformy Azure (Vnet) umożliwiają umieszczenie wszystkich zasobów platformy Azure w sieci lecz-internet, która umożliwia kontrolę dostępu do. Te sieci mogą być następnie połączone do sieci w środowisku lokalnym przy użyciu różnych technologii sieci VPN. Aby dowiedzieć się więcej o usłudze Azure Virtual Networks start z informacjami w tym miejscu: [Omówienie usługi Azure Virtual Network](../virtual-network/virtual-networks-overview.md).
@@ -110,10 +110,11 @@ Gdy wystąpienie usługi API Management znajduje się w sieci Wirtualnej, są u�
 | --- | --- | --- | --- | --- | --- |
 | * / 80, 443 |Przychodzący |TCP |INTERNET / VIRTUAL_NETWORK|Komunikacja klienta z usługi API Management|Zewnętrzne |
 | * / 3443 |Przychodzący |TCP |APIMANAGEMENT / VIRTUAL_NETWORK|Punkt końcowy zarządzania dla witryny Azure portal i programu Powershell |Zewnętrzne i wewnętrzne |
-| * / 80, 443 |Wychodzący |TCP |VIRTUAL_NETWORK / INTERNET|**Zależność od usługi Azure Storage**, usługi Azure Service Bus i Azure Active Directory (jeśli dotyczy).|Zewnętrzne i wewnętrzne |
+| * / 80, 443 |Wychodzący |TCP |VIRTUAL_NETWORK / Storage|**Zależność od usługi Azure Storage**|Zewnętrzne i wewnętrzne |
+| * / 80, 443 |Wychodzący |TCP |VIRTUAL_NETWORK / INTERNET| Usługa Azure Active Directory (jeśli dotyczy)|Zewnętrzne i wewnętrzne |
 | * / 1433 |Wychodzący |TCP |VIRTUAL_NETWORK / SQL|**Dostęp do punktów końcowych usługi Azure SQL** |Zewnętrzne i wewnętrzne |
-| * / 5672 |Wychodzący |TCP |VIRTUAL_NETWORK / INTERNET|Zależność dla dziennika do zasad Centrum zdarzeń i agenta monitorowania |Zewnętrzne i wewnętrzne |
-| * / 445 |Wychodzący |TCP |VIRTUAL_NETWORK / INTERNET|Zależność od udziału plików platformy Azure dla usługi GIT |Zewnętrzne i wewnętrzne |
+| * / 5672 |Wychodzący |TCP |VIRTUAL_NETWORK / usługi EventHub |Zależność dla dziennika do zasad Centrum zdarzeń i agenta monitorowania |Zewnętrzne i wewnętrzne |
+| * / 445 |Wychodzący |TCP |VIRTUAL_NETWORK / Storage |Zależność od udziału plików platformy Azure dla usługi GIT |Zewnętrzne i wewnętrzne |
 | * / 1886 |Wychodzący |TCP |VIRTUAL_NETWORK / INTERNET|Niezbędnych do publikowania stan kondycji Resource Health |Zewnętrzne i wewnętrzne |
 | * / 25028 |Wychodzący |TCP |VIRTUAL_NETWORK / INTERNET|Łączenie do przekazywania SMTP do wysyłania wiadomości E-mail |Zewnętrzne i wewnętrzne |
 | * / 6381 - 6383 |Dla ruchu przychodzącego i wychodzącego |TCP |VIRTUAL_NETWORK / VIRTUAL_NETWORK|Dostęp do wystąpień usługi Redis Cache między RoleInstances |Zewnętrzne i wewnętrzne |
@@ -130,9 +131,11 @@ Gdy wystąpienie usługi API Management znajduje się w sieci Wirtualnej, są u�
 
     | Środowisko platformy Azure | Punkty końcowe |
     | --- | --- |
-    | Azure Public | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li><li>prod3 black.prod3.metrics.nsatc.net</li><li>prod3 red.prod3.metrics.nsatc.net</li></ul> |
+    | Azure Public | <ul><li>prod.warmpath.msftcloudes.com</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li><li>prod3 black.prod3.metrics.nsatc.net</li><li>prod3 red.prod3.metrics.nsatc.net</li><li>prod.warm.ingestion.msftcloudes.com</li><li>`azure region`. warm.ingestion.msftcloudes.com gdzie `East US 2` jest eastus2.warm.ingestion.msftcloudes.com</li></ul> |
     | Azure Government | <ul><li>fairfax.warmpath.usgovcloudapi.NET</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li></ul> |
     | Azure (Chiny) | <ul><li>mooncake.warmpath.chinacloudapi.CN</li><li>shoebox2.Metrics.nsatc.NET</li><li>prod3.Metrics.nsatc.NET</li></ul> |
+
+* **Azure portal Diagnostics**: umożliwia przepływ dzienników diagnostycznych z witryny Azure portal, korzystając z rozszerzenia usługi API Management z poziomu wewnątrz sieci wirtualnej, a dostęp ruchu wychodzącego do `dc.services.visualstudio.com` na porcie 443 jest wymagany. Pomaga to w rozwiązywaniu problemów, które mogą twarzy w przypadku korzystania z rozszerzenia.
 
 * **Trasy Instalacja ekspresowa**: Typowa konfiguracja klienta jest określenie własnych trasy domyślnej (0.0.0.0/0), co zmusza wychodzącego ruchu internetowego, aby zamiast tego przepływu w środowisku lokalnym. Ten przepływ ruchu niezmiennie przerywa łączność z usługą Azure API Management, ponieważ ruch wychodzący jest zablokowane w środowisku lokalnym lub translatora adresów Sieciowych będzie nierozpoznawalną zbiór adresów, które nie będą działać z różnymi punkty końcowe platformy Azure. Rozwiązanie polega na zdefiniowaniu jedną (lub więcej) trasy zdefiniowane przez użytkownika ([tras zdefiniowanych przez użytkownika][UDRs]) w tej podsieci, który zawiera usługi Azure API Management. Trasa zdefiniowana przez użytkownika definiuje trasy specyficzne dla podsieci, które będą honorowane zamiast trasy domyślnej.
   Jeśli to możliwe zaleca się użyć następującej konfiguracji:
@@ -184,6 +187,7 @@ Biorąc pod uwagę przy obliczaniu powyżej minimalny rozmiar podsieci, w który
 * [Łączenie sieci wirtualnej z różnych modeli wdrażania](../vpn-gateway/vpn-gateway-connect-different-deployment-models-powershell.md)
 * [Sposób użycia inspektora interfejsów API do śledzenia wywołań w usłudze Azure API Management](api-management-howto-api-inspector.md)
 * [Sieć wirtualna — często zadawane pytania](../virtual-network/virtual-networks-faq.md)
+* [Tagi usługi](../virtual-network/security-overview.md#service-tags)
 
 [api-management-using-vnet-menu]: ./media/api-management-using-with-vnet/api-management-menu-vnet.png
 [api-management-setup-vpn-select]: ./media/api-management-using-with-vnet/api-management-using-vnet-type.png

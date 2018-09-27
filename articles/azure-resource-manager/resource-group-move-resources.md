@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: tomfitz
-ms.openlocfilehash: 0970f5d4e61a40df7454cc850e59d86708d4aa1c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: cf7d3df6d2e419a700b0be74da3fe2edc5ac24e1
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159107"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393285"
 ---
 # <a name="move-resources-to-new-resource-group-or-subscription"></a>Przenoszenie zasobów do nowej grupy zasobów lub subskrypcji
 
@@ -274,7 +274,29 @@ Register-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNames
 ```
 
 ```azurecli-interactive
-az feature register Microsoft.Compute ManagedResourcesMove
+az feature register --namespace Microsoft.Compute --name ManagedResourcesMove
+```
+
+Żądanie rejestracji początkowo zwraca stan `Registering`. Aby sprawdzić bieżący stan za pomocą:
+
+```azurepowershell-interactive
+Get-AzureRmProviderFeature -FeatureName ManagedResourcesMove -ProviderNamespace Microsoft.Compute
+```
+
+```azurecli-interactive
+az feature show --namespace Microsoft.Compute --name ManagedResourcesMove
+```
+
+Poczekaj kilka minut, zanim stan zmienić `Registered`.
+
+Po zarejestrowaniu funkcji rejestrowania `Microsoft.Compute` dostawcy zasobów. Ten krok należy wykonać, nawet wtedy, gdy wcześniej zarejestrowano dostawcy zasobów.
+
+```azurepowershell-interactive
+Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Compute
+```
+
+```azurecli-interactive
+az provider register --namespace Microsoft.Compute
 ```
 
 Ta obsługa oznacza, że można również przenosić:
@@ -289,7 +311,7 @@ Ograniczenia, które nie są jeszcze obsługiwane są następujące:
 * Maszyn wirtualnych przy użyciu certyfikatu przechowywanego w usłudze Key Vault można przenieść do nowej grupy zasobów w tej samej subskrypcji, ale nie w subskrypcjach.
 * Maszyny wirtualne skonfigurowane przy użyciu usługi Azure Backup. Użyj poniższych obejście, aby przenieść te maszyny wirtualne
   * Znajdź lokalizację maszyny wirtualnej.
-  * Znajdź grupę zasobów, z następującym wzorcem nazewnictwa: `AzureBackupRG_<location of your VM>_1` AzureBackupRG_westus2_1 np.
+  * Znajdź grupę zasobów, z następującym wzorcem nazewnictwa: `AzureBackupRG_<location of your VM>_1` na przykład AzureBackupRG_westus2_1
   * Jeśli komputer znajduje się w witrynie Azure portal, a następnie sprawdź "Pokaż ukryte typy"
   * Jeśli w programie PowerShell użyj `Get-AzureRmResource -ResourceGroupName AzureBackupRG_<location of your VM>_1` polecenia cmdlet
   * Jeśli w interfejsu wiersza polecenia, użyj `az resource list -g AzureBackupRG_<location of your VM>_1`

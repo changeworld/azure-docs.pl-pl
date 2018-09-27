@@ -9,12 +9,12 @@ ms.devlang: csharp
 ms.topic: conceptual
 ms.date: 09/15/2017
 ms.author: dobett
-ms.openlocfilehash: ed591007e6ad83dfbafe13db0bd3d8b53fc216f3
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: bca25f5e7a6fd7685d20236033a5a225c5183a2d
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43106373"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47225348"
 ---
 # <a name="get-started-with-device-management-netnet"></a>Wprowadzenie do zarządzania urządzeniami (.NET/.NET)
 
@@ -213,7 +213,7 @@ W tej sekcji wykonano następujące czynności:
 8. W Eksploratorze rozwiązań programu Visual Studio kliknij rozwiązanie prawym przyciskiem myszy, a następnie kliknij polecenie **Ustaw projekty startowe...**. Wybierz **pojedynczy projekt startowy**, a następnie wybierz pozycję **SimulateManagedDevice** project w menu rozwijanym. Skompiluj rozwiązanie.       
 
 > [!NOTE]
-> Dla uproszczenia ten samouczek nie zawiera opisu wdrożenia żadnych zasad ponawiania. W kodzie produkcyjnym należy wdrożyć zasady ponawiania (np. wycofywanie wykładnicze) zgodnie z sugestią w artykule z witryny MSDN [obsługi błędów przejściowych](https://msdn.microsoft.com/library/hh680901.aspx).
+> Dla uproszczenia ten samouczek nie zawiera opisu wdrożenia żadnych zasad ponawiania. W kodzie produkcyjnym należy wdrożyć zasady ponawiania (np. wycofywanie wykładnicze) zgodnie z sugestią podaną w artykule [obsługi błędów przejściowych](/azure/architecture/best-practices/transient-faults).
 
 ## <a name="run-the-apps"></a>Uruchamianie aplikacji
 

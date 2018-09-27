@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
-ms.author: adpick
-ms.openlocfilehash: 7bc9f4df6e98dd86283c4389466b13b8f6bb4d15
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.author: cwatson
+ms.openlocfilehash: 5c32b90c8a291ff744b4894af12f8d623cb95137
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091058"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47391408"
 ---
 # <a name="export-and-view-your-top-level-subscription-information"></a>Eksportowanie i wyświetlić najwyższego poziomu informacji o subskrypcji
 Jeśli chcesz wyświetlić zestaw subskrypcji identyfikatorów skojarzonych z poświadczeń użytkownika [Pobierz plik JSON, informacje o subskrypcji z Centrum kont Azure](http://account.azure.com/subscriptions/download).

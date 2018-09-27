@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 06/29/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 102f087f31aa304aaaee49e0e39ff8c6874127b4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 47dee26c84d96ebf5b0a421c2f10d18892d6d933
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46966803"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227252"
 ---
 # <a name="supported-resources-for-metric-alerts-in-azure-monitor"></a>Obsługiwane zasobów dla alertów dotyczących metryk w usłudze Azure Monitor
 
@@ -32,7 +32,7 @@ Umożliwia także nowszych alertów metryk popularnych dzienników usługi Log A
 Obecnie można tworzyć nowszych alertów metryk, tylko w witrynie Azure portal, [interfejsu API REST](https://docs.microsoft.com/rest/api/monitor/metricalerts/createorupdate) lub [szablonów usługi Resource Manager](monitoring-create-metric-alerts-with-templates.md). Wkrótce zostanie udostępniona Obsługa konfigurowania nowszych alertów przy użyciu programu PowerShell i wiersza polecenia platformy Azure w wersji 2.0 lub nowszej.
 
 ## <a name="metrics-and-dimensions-supported"></a>Metryki i wymiary obsługiwane
-Nowszych alertów metryk obsługuje alerty dotyczące metryk, używanego przez wymiary. Wymiarów można użyć do filtrowania swoje metryki na odpowiedni poziom. Wszystkie obsługiwane metryki wraz z odpowiednich wymiarów można przeglądać i wizualizować z [usługi Azure Monitor — Eksplorator metryk (wersja zapoznawcza)](monitoring-metric-charts.md).
+Nowszych alertów metryk obsługuje alerty dotyczące metryk, używanego przez wymiary. Wymiarów można użyć do filtrowania swoje metryki na odpowiedni poziom. Wszystkie obsługiwane metryki wraz z odpowiednich wymiarów można przeglądać i wizualizować z [usługi Azure Monitor — Eksplorator metryk](monitoring-metric-charts.md).
 
 Poniżej przedstawiono pełną listę źródeł metryk usługi Azure monitor, obsługiwanych przez nowszych alertów:
 

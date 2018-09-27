@@ -1,6 +1,6 @@
 ---
-title: Uniknięcia opłat za bezpłatne konto platformy Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, dlaczego wyświetlić opłat bezpłatne konto platformy Azure. Poznaj sposoby, aby uniknąć tych opłat.
+title: Unikanie opłat za bezpłatne konto platformy Azure | Dokumentacja firmy Microsoft
+description: Dowiedz się, dlaczego naliczone opłaty dla bezpłatnego konta platformy Azure. Informacje dotyczące sposobów, aby uniknąć tych opłat.
 services: ''
 documentationcenter: ''
 author: amberbhargava
@@ -13,55 +13,55 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 09/25/2017
-ms.author: amberb
-ms.openlocfilehash: 8803a4c0f1be3a3407e5e90bbdadeddbfcb1ab9c
-ms.sourcegitcommit: f06925d15cfe1b3872c22497577ea745ca9a4881
+ms.author: cwatson
+ms.openlocfilehash: 37e43e4bb8b2aea21e0fa396dd197ca41793469d
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37061008"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47394169"
 ---
-# <a name="avoid-getting-charged-for-your-azure-free-account"></a>Unikaj pobieranie opłaty łączone zgodnie z bezpłatne konto platformy Azure
+# <a name="avoid-getting-charged-for-your-azure-free-account"></a>Uniknąć opłat za bezpłatne konto platformy Azure
 
-Bezpłatne konto platformy Azure umożliwia 200 USD w kredytów systemu Azure dla pierwszych 30 dni i ograniczoną ilość bezpłatnych usług przez 12 miesięcy. Aby uzyskać więcej informacji, zobacz [bezpłatne konto platformy Azure](https://azure.microsoft.com/free/). W zależności od stanu środków może używać środków lub zostały naliczone opłaty za użycie poza bezpłatnych usług i ilości.
+Bezpłatne konto platformy Azure pozwala na 200 USD środków platformy Azure przez pierwsze 30 dni i ograniczona liczba bezpłatnych usług przez 12 miesięcy. Aby uzyskać więcej informacji, zobacz [Bezpłatne konto platformy Azure](https://azure.microsoft.com/free/). W zależności od stanu środków może używać środków lub naliczana opłata za użycie wykraczające poza bezpłatnych usług i ilości.
 
-## <a name="you-still-have-active-azure-free-account-credit"></a>Nadal masz active Azure wolne środki konta 
-Jeśli nadal masz kredyt Azure, który nie wygasł, platforma Azure korzysta środków płatności za użycie poza bezpłatnych usług i ilości.
+## <a name="you-still-have-active-azure-free-account-credit"></a>Nadal masz active Azure bezpłatnie środki na koncie 
+Jeśli nadal masz zawierających środki platformy Azure, która nie wygasła, platforma Azure używa środków do zapłaty za użycie wykraczające poza bezpłatnych usług i ilości.
 
-## <a name="your-credit-ran-out-or-has-expired"></a>Środków wyczerpała się lub jego ważność wygasła
-Jeśli środków wyczerpała się lub upłynął, w ciągu 30 dni, Azure wyłącza subskrypcji. Aby kontynuować korzystanie z usług Azure, należy uaktualnić subskrypcję do subskrypcji płatność za rzeczywiste użycie. Aby uzyskać więcej informacji, zobacz [uaktualnienia subskrypcji bezpłatnej wersji próbnej platformy Azure na płatność za rzeczywiste użycie](billing-upgrade-azure-subscription.md). Po zakończeniu uaktualnienia subskrypcji nadal ma dostęp do zwolnienia usług przez 12 miesięcy. Możesz tylko zostały naliczone opłaty za użycie poza bezpłatnych usług i ilości.
-
-
-Oto niektóre z powodów może spowodować naliczenie opłat na bezpłatne konto platformy Azure.
+## <a name="your-credit-ran-out-or-has-expired"></a>Twoje środki wyczerpała się lub utracił ważność
+Jeśli Twoje środki wyczerpała się lub ważność po upływie 30 dni, Azure wyłącza subskrypcji. Aby nadal korzystać z usług platformy Azure, musisz uaktualnić subskrypcję do subskrypcji płatności. Aby uzyskać więcej informacji, zobacz [Zmień poziom subskrypcji bezpłatnej wersji próbnej platformy Azure i płatność za rzeczywiste użycie](billing-upgrade-azure-subscription.md). Po uaktualnieniu, Twoja subskrypcja ma nadal dostęp do bezpłatnych usług przez 12 miesięcy. Zostanie naliczona tylko za użycie wykraczające poza bezpłatnych usług i ilości.
 
 
-### <a name="your-usage-exceeds-the-limits-of-free-services-included-with-your-azure-free-account"></a>Twoje użycie przekroczy limit bezpłatnych usług dołączonego bezpłatne konto platformy Azure
+Spójrzmy na niektóre z powodów na bezpłatnego konta platformy Azure mogą być naliczane opłaty.
 
-Otrzymasz ograniczoną ilość bezpłatnych usług każdego miesiąca o bezpłatne konto platformy Azure. Ilość wolnego wygasa w końcu miesiąca i nie są przerzucane do następnego miesiąca. Na przykład otrzymasz 5 GB miejsca do magazynowania plików każdego miesiąca. W ciągu miesiąca korzystać tylko z 2 GB, pozostałe 3 GB nie są przerzucane do następnego miesiąca. Aby uniknąć pobierania obciążona, Zachowaj użycie w granicach. Aby dowiedzieć się więcej na temat limitów bezpłatnych usług, zobacz [co to jest bezpłatne konto platformy Azure](https://azure.microsoft.com/free/free-account-faq/). Aby sprawdzić użycie bezpłatnej usługi, zobacz [użycia bezpłatnych usług dołączonego bezpłatne konto platformy Azure Sprawdź](billing-check-free-service-usage.md). 
 
-### <a name="you-are-using-services-not-included-for-free-with-your-azure-free-account"></a>W przypadku korzystania z usługi nie dołączono bezpłatnie bezpłatne konto platformy Azure
+### <a name="your-usage-exceeds-the-limits-of-free-services-included-with-your-azure-free-account"></a>Użycie przekracza limit bezpłatnych usług, dołączone do bezpłatnego konta platformy Azure
 
-Zostały naliczone opłaty płatności obejmujące szybkości dla przy użyciu usług, które nie są dołączone bezpłatnie bezpłatne konto platformy Azure. Aby dowiedzieć się więcej o usługach dołączonego bezpłatne konto, zobacz [co to jest bezpłatne konto platformy Azure](https://azure.microsoft.com/free/free-account-faq/). Możesz sprawdzić użycia dla usługi, które korzystają z portalu Azure lub za pośrednictwem pliku użycia platformy Azure. Aby dowiedzieć się więcej, zobacz [regularnie Sprawdź portalu do podziału kosztów i ocena](billing-getting-started.md#costs) i [pobrać użycia z Centrum konta](billing-download-azure-invoice-daily-usage-date.md). 
+Ograniczona liczba bezpłatnych usług możesz uzyskać każdego miesiąca przy użyciu bezpłatnego konta platformy Azure. Ilość wolnego wygaśnie z końcem miesiąca, a nie przejdą do następnego miesiąca. Na przykład możesz pobrać 5 GB miejsca do magazynowania plików każdego miesiąca. Jeśli w danym miesiącu, można używać tylko 2 GB, pozostałe 3 GB nie przejdą do następnego miesiąca. Aby uniknąć opłat, należy zachować użycie w ramach limitów. Aby dowiedzieć się więcej o limitach bezpłatnych usług, zobacz [co to jest bezpłatne konto platformy Azure](https://azure.microsoft.com/free/free-account-faq/). Aby sprawdzić użycie bezpłatnej usługi, zobacz [sprawdzić użycie dołączone do bezpłatnego konta platformy Azure do usług bezpłatnych](billing-check-free-service-usage.md). 
 
-### <a name="you-have-reached-the-end-of-your-12-months-free-services"></a>Został osiągnięty koniec z 12 miesięcy bezpłatnych usług
+### <a name="you-are-using-services-not-included-for-free-with-your-azure-free-account"></a>W przypadku korzystania z usług, które nie są dołączone bezpłatnie bezpłatnego konta platformy Azure
 
-Z bezpłatnych usług i ilości wygaśnie w ciągu 12 miesięcy. Można ustalić datę wygaśnięcia w portalu Azure.
+Opłata jest naliczana zgodnie z rzeczywistym użyciem kursy dotyczące korzystania z usług, które nie są dołączone bezpłatnie bezpłatnego konta platformy Azure. Aby dowiedzieć się więcej o usługach dołączone bezpłatne konto, zobacz [co to jest bezpłatne konto platformy Azure](https://azure.microsoft.com/free/free-account-faq/). Możesz sprawdzić użycie dotyczącą usług, których używasz w witrynie Azure portal lub za pomocą pliku użycia platformy Azure. Aby dowiedzieć się więcej, zobacz [regularnie Sprawdź portal dla podział kosztów i współczynnik spalania](billing-getting-started.md#costs) i [Pobierz dane użycia z Centrum kont](billing-download-azure-invoice-daily-usage-date.md). 
+
+### <a name="you-have-reached-the-end-of-your-12-months-free-services"></a>Osiągnięto koniec z 12 miesięcy bezpłatnych usług
+
+Bezpłatne usługi i ilości wygasają po upływie 12 miesięcy. Można sprawdzić datę wygaśnięcia w witrynie Azure portal.
 
 1.  Zaloguj się do witryny [Azure Portal](http://portal.azure.com).
 
-2.  W obszarze nawigacji po lewej stronie, wybierz **wszystkie usługi**.
+2.  W obszarze nawigacji po lewej stronie wybierz **wszystkich usług**.
 
-3.  Wybierz **subskrypcje**.
+3.  Wybierz pozycję **Subskrypcje**.
 
-4.  Wybierz subskrypcję, utworzony po utworzeniu konta bezpłatne konto.
+4.  Wybierz subskrypcję, który został utworzony podczas tworzenia konta bezpłatne konto.
 
-5.  Przewiń w dół siatki bezpłatnych usług Znajdź. Kliknij tooltip znajdujący się u góry po lewej siatki.
+5.  Przewiń w dół do siatki bezpłatnej usługi wyszukiwania. Kliknij etykietki narzędzia, znajdujący się u góry lewym rogu siatki.
 
-![Zrzut ekranu pokazujący, gdzie można znaleźć Data wygaśnięcia korzyści bezpłatne konto](./media/billing-avoid-charges-free-account/freeaccount-benefits-expiration-date.png)
+![Zrzut ekranu pokazujący, gdzie można znaleźć daty wygaśnięcia korzyści z bezpłatnego konta](./media/billing-avoid-charges-free-account/freeaccount-benefits-expiration-date.png)
 
 
-Po wygaśnięciu z bezpłatnych usług i ilości Azure opłat możesz płatności obejmujące szybkości dla wszystkich usług, którego używasz. Portalu Azure służy do usuwania zasobów dla usług, które nie są używane. Jeśli nie zamierzasz używać dowolnej usługi Azure, możesz [anulowanie subskrypcji](billing-how-to-cancel-azure-subscription.md).
+Gdy ilości i bezpłatnych usług są uznawane za wygasłe, na platformie Azure obowiązuje możesz stawki dla wszystkich usług, którego używasz. Aby usunąć zasoby, usługi, które nie są używane, można użyć witryny Azure portal. Jeśli nie zamierzasz używać dowolnej usługi platformy Azure, możesz to zrobić [anulować subskrypcję](billing-how-to-cancel-azure-subscription.md).
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
 
-Jeśli potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) uzyskać szybkie rozwiązanie problemu.
+Jeśli potrzebujesz pomocy, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.

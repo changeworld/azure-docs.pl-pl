@@ -13,14 +13,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 09/26/2018
 ms.author: kumud
-ms.openlocfilehash: 212212d4650fe25b4ced591d4d4f1ee184e3fc44
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 0b533a48e94db880f23d42decc5c3fb39a27e5ac
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163328"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47395648"
 ---
 # <a name="load-balancer-with-tcp-reset-on-idle-public-preview"></a>Moduł równoważenia obciążenia za pomocą funkcji resetowania TCP w stanie bezczynności (publiczna wersja zapoznawcza)
 
@@ -76,6 +76,7 @@ Ten parametr jest obecnie obowiązujące w następujących regionach.  W regiona
 | Region |
 |---|
 | Azja Południowo-Wschodnia |
+| Europa Zachodnia |
 | Wschodnie stany USA 2 |
 | Północne stany USA |
 | Zachodnie stany USA |

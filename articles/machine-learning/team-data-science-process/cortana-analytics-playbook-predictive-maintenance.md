@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/11/2018
 ms.author: fboylu
-ms.openlocfilehash: 816ba560ccb9b06414dff8ffaea054e88d216b10
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 7802aa8ea9798b18d5424c2342ba63c01406b25a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38972387"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221710"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Przewodnik sztucznej Inteligencji platformy Azure dla rozwiązania do konserwacji zapobiegawczej
 
@@ -426,19 +426,19 @@ Końcowej części tego przewodnika zawiera listę szablonów rozwiązań mened�
 
 ## <a name="training-resources-for-predictive-maintenance"></a>Zasoby szkoleniowe pod kątem konserwacji predykcyjnej
 
-[Ścieżka szkoleniowa usługi Azure AI pod kątem konserwacji predykcyjnej](https://github.com/Azure/AI-PredictiveMaintenance/blob/master/docs/azure-ai-learning-path-for-predictive-maintenance.md) dostarcza materiały szkoleniowe, aby lepiej zrozumieć pojęcia i matematyczne algorytmy i techniki, problemy z menedżerów PdM. 
-
-Platforma Microsoft Azure oferuje bezpłatne zawartości i szkolenie dotyczące ogólnych pojęć sztucznej Inteligencji i praktyki.
+Platforma Microsoft Azure oferuje ścieżki szkoleniowe dla podstawowe pojęcia dotyczące technik menedżerów PdM, oprócz zawartości i szkolenie ogólne pojęcia sztucznej Inteligencji i rozwiązaniem.
 
 | Zasobów szkoleniowych  | Dostępność |
 |:-------------------|--------------|
+| [Ścieżka szkoleniowa dla menedżerów PdM przy użyciu drzewa i lasu Random](https://aischool.microsoft.com/learning-paths/1H5vH5wAYcAy88CoQWQcA8) | Public | 
+| [Ścieżka szkoleniowa dla menedżerów PdM korzystające z uczenia głębokiego](https://aischool.microsoft.com/learning-paths/FSIXxYkOGcauo0eUO8qAS) | Public |
 | [Deweloper sztucznej Inteligencji na platformie Azure](http://azure.microsoft.com/training/learning-paths/azure-ai-developer) | Public |
 | [Służbowe Microsoft AI](http://aischool.microsoft.com/learning-paths) | Public |
 | [Learning sztucznej Inteligencji platformy Azure z usługi GitHub](https://github.com/Azure/connectthedots/blob/master/readme.md) | Public |
 | [LinkedIn Learning](http://www.linkedin.com/learning) | Public |
 | [Seminaria internetowe sztucznej Inteligencji firmy Microsoft w serwisie Youtube](https://www.youtube.com/watch?v=NvrH7_KKzoM&t=4s) | Public |
 | [Pokaż sztucznej Inteligencji firmy Microsoft](http://channel9.msdn.com/Shows/AI-Show) | Public |
-| [LearnAI@MS](http://learnanalytics.microsoft.com) | Partnerzy firmy Microsoft |
-| [Microsoft Partner Network](http://learningportal.microsoft.com) | Partnerzy firmy Microsoft |
+| [LearnAI@MS](http://learnanalytics.microsoft.com) | Partnerzy |
+| [Microsoft Partner Network](http://learningportal.microsoft.com) | Partnerzy |
 
 Ponadto bezpłatne COURSE (ogromnych otwartych kursów online) na sztucznej Inteligencji są oferowane w tryb online przez instytucji akademickich, takich jak Stanforda i MIT i innych firm edukacyjnych.

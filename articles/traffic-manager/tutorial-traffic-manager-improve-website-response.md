@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/23/2018
 ms.author: kumud
-ms.openlocfilehash: 89518d30b862e18fb7c989c95144ffa7f1c294fc
-ms.sourcegitcommit: 1af4bceb45a0b4edcdb1079fc279f9f2f448140b
+ms.openlocfilehash: 087dcda5826d96ad064c472fc897be7e61133387
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/09/2018
-ms.locfileid: "40025136"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47392520"
 ---
 # <a name="tutorial-improve-website-response-using-traffic-manager"></a>Samouczek: Poprawa odpowiedzi witryny sieci Web przy użyciu usługi Traffic Manager 
 
@@ -34,7 +34,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Konfigurowanie nazwy DNS dla maszyn wirtualnych z uruchomionymi usługami IIS
 > * Utwórz profil usługi Traffic Manager dla wydajności ulepszone witryny sieci Web
 > * Dodawanie punktów końcowych maszyny Wirtualnej do profilu usługi Traffic Manager
-> * Wyświetl usługi Traffic Manager w działaniu
+> * Wyświetlanie informacji o działaniu usługi Traffic Manager
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -72,7 +72,7 @@ W tej sekcji utworzysz dwie maszyny wirtualne *myIISVMEastUS* i *myIISVMWEurope*
     
     |Ustawienie|Wartość|
     |---|---|
-    |Sieć wirtualna| Wybierz **sieć wirtualna**w **Utwórz sieć wirtualną**, dla **nazwa**, wprowadź *myVNet1*, podsieć, wprowadź * mySubnet*.|
+    |Sieć wirtualna| Wybierz **sieć wirtualna**w **Utwórz sieć wirtualną**, dla **nazwa**, wprowadź *myVNet1*, podsieć, wprowadź  *mySubnet*.|
     |Sieciowa grupa zabezpieczeń|Wybierz **podstawowe**, a następnie w **Dodaj publiczne porty wejściowe** listę rozwijaną, wybierz opcję **HTTP** i **protokołu RDP** |
     |Diagnostyka rozruchu|Wybierz **wyłączone**.|
     |||
@@ -82,10 +82,10 @@ W tej sekcji utworzysz dwie maszyny wirtualne *myIISVMEastUS* i *myIISVMWEurope*
 
     |Ustawienie|Wartość|
     |---|---|
-    |Grupa zasobów | Wybierz **New**, a następnie wpisz *myResourceGroupTM2*|
+    |Grupa zasobów | Wybierz pozycję **Nowa**, a następnie wpisz *myResourceGroupTM2*|
     |Lokalizacja|Europa Zachodnia|
     |Nazwa maszyny wirtualnej | myIISVMWEurope|
-    |Sieć wirtualna | Wybierz **sieć wirtualna**w **Utwórz sieć wirtualną**, dla **nazwa**, wprowadź *myVNet2*, podsieć, wprowadź * mySubnet*.|
+    |Sieć wirtualna | Wybierz **sieć wirtualna**w **Utwórz sieć wirtualną**, dla **nazwa**, wprowadź *myVNet2*, podsieć, wprowadź  *mySubnet*.|
     |||
 8. Proces tworzenia maszyny wirtualnej może potrwać kilka minut. Nie kontynuuj wykonywania pozostałych kroków, dopóki obie maszyny wirtualne nie zostaną utworzone.
 
@@ -138,14 +138,14 @@ W tej sekcji utworzysz Maszynę wirtualną (*mVMEastUS* i *myVMWestEurope*) w ka
     |Name (Nazwa)|myVMEastUS|
     |Nazwa użytkownika| Wprowadź wybraną nazwę użytkownika.|
     |Hasło| Wprowadź wybrane hasło. Hasło musi mieć co najmniej 12 znaków i spełniać [zdefiniowane wymagania dotyczące złożoności](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
-    |Grupa zasobów| Wybierz **istniejące** , a następnie wybierz *myResourceGroupTM1*.|
+    |Grupa zasobów| Wybierz pozycję **Istniejąca** i wybierz grupę *myResourceGroupTM1*.|
     |||
 
 4. Wybierz rozmiar maszyny wirtualnej w obszarze **Wybierz rozmiar**.
 5. Wybierz następujące wartości w obszarze **Ustawienia**, a następnie wybierz przycisk **OK**:
     |Ustawienie|Wartość|
     |---|---|
-    |Sieć wirtualna| Wybierz **sieć wirtualna**w **Utwórz sieć wirtualną**, dla **nazwa**, wprowadź *myVNet3*, podsieć, wprowadź * mySubnet*.|
+    |Sieć wirtualna| Wybierz **sieć wirtualna**w **Utwórz sieć wirtualną**, dla **nazwa**, wprowadź *myVNet3*, podsieć, wprowadź  *mySubnet*.|
     |Sieciowa grupa zabezpieczeń|Wybierz **podstawowe**, a następnie w **Dodaj publiczne porty wejściowe** listę rozwijaną, wybierz opcję **HTTP** i **protokołu RDP** |
     |Diagnostyka rozruchu|Wybierz **wyłączone**.|
     |||
@@ -158,7 +158,7 @@ W tej sekcji utworzysz Maszynę wirtualną (*mVMEastUS* i *myVMWestEurope*) w ka
     |---|---|
     |Nazwa maszyny wirtualnej | *myVMWEurope*|
     |Grupa zasobów | Wybierz **istniejące**, a następnie wpisz *myResourceGroupTM2*|
-    |Sieć wirtualna | Wybierz **sieć wirtualna**w **Utwórz sieć wirtualną**, dla **nazwa**, wprowadź *myVNet4*, podsieć, wprowadź * mySubnet*.|
+    |Sieć wirtualna | Wybierz **sieć wirtualna**w **Utwórz sieć wirtualną**, dla **nazwa**, wprowadź *myVNet4*, podsieć, wprowadź  *mySubnet*.|
     |||
 
 8. Proces tworzenia maszyny wirtualnej może potrwać kilka minut. Nie kontynuuj wykonywania pozostałych kroków, dopóki obie maszyny wirtualne nie zostaną utworzone.
@@ -166,12 +166,12 @@ W tej sekcji utworzysz Maszynę wirtualną (*mVMEastUS* i *myVMWestEurope*) w ka
 ## <a name="create-a-traffic-manager-profile"></a>Tworzenie profilu usługi Traffic Manager
 Tworzenie profilu usługi Traffic Manager, który kieruje ruch użytkowników tak, wysyłając je do punktu końcowego z najniższym opóźnieniem.
 
-1. W lewym górnym rogu ekranu wybierz **Utwórz zasób** > **sieć** > **profilu usługi Traffic Manager**  >  **Tworzenie**.
-2. W **profilu usługi Traffic Manager utworzyć**wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz **Utwórz**:
+1. W lewej górnej części ekranu wybierz pozycję **Utwórz zasób** > **Sieć** > **Profil usługi Traffic Manager** > **Utwórz**.
+2. W obszarze **Tworzenie profilu usługi Traffic Manager** wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz pozycję **Utwórz**:
     | Ustawienie                 | Wartość                                              |
     | ---                     | ---                                                |
     | Name (Nazwa)                   | Ta nazwa musi być unikatowa w obrębie strefy trafficmanager.net i wyniki nazwę DNS, trafficmanager.net, która umożliwia dostęp do profilu usługi Traffic Manager.                                   |
-    | Metoda routingu          | Wybierz **priorytet** metody routingu.                                       |
+    | Metoda routingu          | Wybierz **wydajności** metody routingu.                                       |
     | Subskrypcja            | Wybierz subskrypcję.                          |
     | Grupa zasobów          | Wybierz **Utwórz nową** i wprowadź *myResourceGroupTM1*. |
     | Lokalizacja                | Wybierz pozycję **Wschodnie stany USA**.  To ustawienie dotyczy lokalizacji grupy zasobów i nie ma wpływu na profil usługi Traffic Manager, który będzie wdrażany globalnie.                              |
@@ -179,12 +179,12 @@ Tworzenie profilu usługi Traffic Manager, który kieruje ruch użytkowników ta
   
     ![Tworzenie profilu usługi Traffic Manager](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-profile.png)
 
-## <a name="add-traffic-manager-endpoints"></a>Dodaj punkty końcowe usługi Traffic Manager
+## <a name="add-traffic-manager-endpoints"></a>Dodawanie punktów końcowych usługi Traffic Manager
 
 Dodaj dwie maszyny wirtualne uruchomione usługi IIS serwery — *myIISVMEastUS*  & *myIISVMWEurope* na potrzeby kierowania ruchu użytkowników do najbliższego punktu końcowego dla użytkownika.
 
-1. Na pasku wyszukiwania portalu Wyszukaj nazwę profilu usługi Traffic Manager, który został utworzony w poprzedniej sekcji, a następnie wybierz profil w wynikach, wyświetlana.
-2. W **profilu usługi Traffic Manager**w **ustawienia** kliknij **punktów końcowych**, a następnie kliknij przycisk **Dodaj**.
+1. Na pasku wyszukiwania portalu wyszukaj nazwę profilu usługi Traffic Manager, który został utworzony w poprzedniej sekcji, a następnie wybierz ten profil w wyświetlonych wynikach.
+2. W obszarze **Profil usługi Traffic Manager** w sekcji **Ustawienia** kliknij pozycję **Punkty końcowe**, a następnie kliknij pozycję **Dodaj**.
 3. Wprowadź lub wybierz poniższe informacje, zaakceptuj wartości domyślne pozostałych ustawień, a następnie wybierz przycisk **OK**:
 
     | Ustawienie                 | Wartość                                              |
@@ -195,13 +195,13 @@ Dodaj dwie maszyny wirtualne uruchomione usługi IIS serwery — *myIISVMEastUS*
     | Zasób docelowy          | **Wybierz publiczny adres IP** Aby wyświetlić listę zasobów przy użyciu publicznych adresów IP w ramach tej samej subskrypcji. W **zasobów**, wybierz publiczny adres IP o nazwie *myIISVMEastUS ip*. Jest to publiczny adres IP serwera usług IIS maszyny Wirtualnej w regionie wschodnie stany USA.|
     |        |           |
 
-4. Powtórz kroki 2 i 3, aby dodać innego punktu końcowego o nazwie *myWestEuropeEndpoint* za publiczny adres IP *myIISVMWEurope ip* skojarzony z serwerem IIS maszyny Wirtualnej o nazwie *myIISVMWEurope *.
-5.  Po zakończeniu dodawania oba punkty końcowe są wyświetlane w **profilu usługi Traffic Manager** wraz z ich monitorowania statusu **Online**.
+4. Powtórz kroki 2 i 3, aby dodać innego punktu końcowego o nazwie *myWestEuropeEndpoint* za publiczny adres IP *myIISVMWEurope ip* skojarzony z serwerem IIS maszyny Wirtualnej o nazwie *myIISVMWEurope* .
+5.  Po zakończeniu dodawania obu punktów końcowych będą one wyświetlane w obszarze **Profil usługi Traffic Manager** ze stanem monitorowania **Online**.
 
-    ![Dodaj punkt końcowy usługi Traffic Manager](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-endpoint.png)
+    ![Dodawanie punktu końcowego usługi Traffic Manager](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-endpoint.png)
   
 
-## <a name="test-traffic-manager-profile"></a>Profil usługi Traffic Manager testu
+## <a name="test-traffic-manager-profile"></a>Testowanie profilu usługi Traffic Manager
 W tej sekcji możesz przetestować, usługi Traffic Manager kierowanie ruchu użytkowników do najbliższego maszyny wirtualne z witryny sieci Web do zapewnienia minimalnego opóźnienia. Aby wyświetlić usługi Traffic Manager w akcji, wykonaj następujące czynności:
 1. Należy określić nazwę DNS profilu usługi Traffic Manager.
 2. Wyświetl usługi Traffic Manager działa w następujący sposób:
@@ -213,13 +213,13 @@ W tym samouczku dla uproszczenia umożliwia nazwę DNS profilu usługi Traffic M
 
 Można określić nazwę DNS profilu usługi Traffic Manager w następujący sposób:
 
-1.  Na pasku wyszukiwania portalu, wyszukaj **profilu usługi Traffic Manager** nazwy, który został utworzony w poprzedniej sekcji. W wynikach, które są wyświetlane kliknij profil usługi traffic manager.
-1. Kliknij przycisk **Przegląd**.
-2. **Profilu usługi Traffic Manager** Wyświetla nazwę DNS nowo utworzonego profilu usługi Traffic Manager. We wdrożeniach produkcyjnych, można skonfigurować nazwę domeny znaczącej, aby wskazywała nazwę domeny usługi Traffic Manager przy użyciu rekordu CNAME systemu DNS.
+1.  Na pasku wyszukiwania portalu wyszukaj nazwę **profilu usługi Traffic Manager**, który został utworzony w poprzedniej sekcji. W wyświetlonych wynikach kliknij profil usługi Traffic Manager.
+1. Kliknij pozycję **Przegląd**.
+2. W obszarze **Profil usługi Traffic Manager** zostanie wyświetlona nazwa DNS nowo utworzonego profilu usługi Traffic Manager. We wdrożeniach produkcyjnych, można skonfigurować nazwę domeny znaczącej, aby wskazywała nazwę domeny usługi Traffic Manager przy użyciu rekordu CNAME systemu DNS.
 
    ![Nazwa DNS usługi Traffic Manager](./media/tutorial-traffic-manager-improve-website-response/traffic-manager-dns-name.png)
 
-### <a name="view-traffic-manager-in-action"></a>Wyświetl usługi Traffic Manager w działaniu
+### <a name="view-traffic-manager-in-action"></a>Wyświetlanie informacji o działaniu usługi Traffic Manager
 W tej sekcji widać, że usługa Traffic Manager jest akcja. 
 
 1. Wybierz **wszystkie zasoby** w menu po lewej stronie, a następnie na liście zasobów kliknij *myVMEastUS* znajdującą się w *myResourceGroupTM1* grupy zasobów.
@@ -229,11 +229,11 @@ W tej sekcji widać, że usługa Traffic Manager jest akcja.
 5. Podczas procesu logowania może pojawić się ostrzeżenie o certyfikacie. Jeśli zostanie wyświetlone ostrzeżenie, wybierz pozycję **Tak** lub **Kontynuuj**, aby nawiązać połączenie. 
 1. W przeglądarce sieci web na maszynie Wirtualnej *myVMEastUS*, wpisz nazwę DNS profilu usługi Traffic Manager, aby wyświetlić witryny sieci Web. Ponieważ maszyna wirtualna znajduje się w **wschodnie stany USA**, są kierowane do najbliższych witryny sieci Web hostowanych na serwerze usług IIS w najbliższej *myIISVMEastUS* znajdującą się w **wschodnie stany USA**.
 
-   ![Profil usługi Traffic Manager testu](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
+   ![Testowanie profilu usługi Traffic Manager](./media/tutorial-traffic-manager-improve-website-response/eastus-traffic-manager-test.png)
 
 2. Następnie połącz się z maszyną wirtualną *myVMWestEurope* na terenie **Europa Zachodnia** korzystając z kroków 1 – 5 i przejdź do nazwy domeny profilu usługi Traffic Manager z tej maszyny Wirtualnej.  Ponieważ maszyna wirtualna znajduje się w **Europa Zachodnia**, możesz teraz są kierowane do witryny sieci Web hostowana na najbliższych na serwerze usług IIS *myIISVMWEurope* znajdującą się w **Europa Zachodnia**. 
 
-   ![Profil usługi Traffic Manager testu](./media/tutorial-traffic-manager-improve-website-response/westeurope-traffic-manager-test.png)
+   ![Testowanie profilu usługi Traffic Manager](./media/tutorial-traffic-manager-improve-website-response/westeurope-traffic-manager-test.png)
    
 ## <a name="delete-the-traffic-manager-profile"></a>Usuwanie profilu usługi Traffic Manager
 Gdy nie są już potrzebne, Usuń grupy zasobów (**ResourceGroupTM1** i **ResourceGroupTM2**). Aby to zrobić, wybierz grupę zasobów (**ResourceGroupTM1** lub **ResourceGroupTM2**), a następnie wybierz pozycję **Usuń**.

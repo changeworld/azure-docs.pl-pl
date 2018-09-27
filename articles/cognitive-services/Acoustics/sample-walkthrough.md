@@ -9,19 +9,19 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: b738cc2fc7db6987b8f4ad54a2c53cc9e69989b3
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: e0c28645de8c45aaf89afb6b5116aa9a3cb04768
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181610"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47227507"
 ---
 # <a name="unity-sample-walkthrough"></a>Przewodnik po przykładzie aparatu Unity
 Jest to przewodnik po przykładowej Akustyka projektu. Aby dowiedzieć się więcej o jakie Akustyka projektu jest, zapoznaj się z [wprowadzenie do projektu Akustyka](what-is-acoustics.md). Aby uzyskać pomoc podczas dodawania pakietu Akustyka projektu do istniejącego projektu środowiska Unity, użyj [Wprowadzenie — przewodnik](getting-started.md).
 
 ## <a name="requirements-for-running-the-sample-project"></a>Wymagania dotyczące uruchamiania przykładowego projektu
 * Unity 2018.2 +, za pomocą skryptów wersji środowiska uruchomieniowego .NET 4.x
-* Edytor platformy Unity na 64-bitowych Windows
+* Unity Editor — wersja 64-bitowa dla systemu Windows
 * Przykład obsługuje pulpitu Windows, platformy uniwersalnej systemu Windows i Android obiekty docelowe, łącznie z zainstalowanym head Wyświetla (HMDs)
 * Wymagane dla procesu Tworzenie subskrypcji platformy Azure Batch
 
@@ -43,7 +43,7 @@ Przykład zawiera ustawienia do uruchomienia na pulpit Windows, platformy uniwer
 ![Włącz VR](media/VRSupport.png)  
 
 Połącz zestaw słuchawkowy VR do Twojego komputera. Przejdź do **Plik > Ustawienia kompilacji**i kliknij przycisk **kompilowanie i uruchamianie** na wdrażanie przykładu w usłudze usługi zestaw nagłowny rzeczywistości Wirtualnej. Nawigowanie po sceny przy użyciu kontrolerów ruchu dla Twojego słuchawkowy, lub spróbuj użyć W, A, S, D na klawiaturze.    
-Przeznaczony dla systemu Android oraz Oculus z rzeczywistym użyciem, wybierz systemu Android z **ustawieniach kompilacji** menu. Kliknij przycisk **Przełącz docelowej**, następnie **kompilowanie i uruchamianie**. Połączone urządzenia z systemem Android spowoduje to wdrożenie sceny próbki. Aby uzyskać informacji o programowaniu dla platformy Unity dla systemu Android, zobacz [dokumentacja aparatu Unity](https://docs.unity3d.com/Manual/android-GettingStarted.html).
+Przeznaczony dla systemu Android oraz Oculus z rzeczywistym użyciem, wybierz systemu Android z **ustawieniach kompilacji** menu. Kliknij przycisk **Przełącz docelowej**, następnie **kompilowanie i uruchamianie**. Połączone urządzenia z systemem Android spowoduje to wdrożenie sceny próbki. Aby uzyskać informacje o programowaniu dla platformy Unity dla systemu Android, zobacz [dokumentacja aparatu Unity](https://docs.unity3d.com/Manual/android-GettingStarted.html).
 
 ![Docelowym systemem Android](media/TargetAndroid.png)  
 

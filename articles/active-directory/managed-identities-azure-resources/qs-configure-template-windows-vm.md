@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: b8e36480269259f38453593973d1f362c136e6be
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: bb62f892ec3d171958764d10f4b069bbd536d2ea
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44349062"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47223444"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure przy użyciu szablonów
 
@@ -34,8 +34,10 @@ W tym artykule przy użyciu szablonu wdrożenia usługi Azure Resource Manager, 
 - Jeśli znasz przy użyciu szablonu wdrożenia usługi Azure Resource Manager, zapoznaj się z [sekcji Przegląd](overview.md). **Należy przejrzeć [różnicę między przypisana przez system i przypisanych przez użytkownika tożsamości zarządzanej](overview.md#how-does-it-work)**.
 - Jeśli nie masz jeszcze konta platformy Azure, [utwórz bezpłatne konto](https://azure.microsoft.com/free/) przed kontynuowaniem.
 - Do wykonywania operacji zarządzania, w tym artykule, Twoje konto musi następujące przypisania kontroli dostępu opartej na rolach platformy Azure:
+
     > [!NOTE]
     > Nie dodatkowych Azure przypisań ról katalogu usługi AD wymagane.
+
     - [Współautor maszyny wirtualnej](/azure/role-based-access-control/built-in-roles#virtual-machine-contributor) do utworzenia maszyny Wirtualnej i Włącz oraz usuwać systemowych i/lub przypisanych przez użytkownika z tożsamości zarządzanej maszyny wirtualnej platformy Azure.
     - [Współautor tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-contributor) tożsamości zarządzanej roli do utworzenia przypisanych przez użytkownika.
     - [Operator tożsamości zarządzanych](/azure/role-based-access-control/built-in-roles#managed-identity-operator) roli przypisywania i usuwania, użytkownik przypisany tożsamości zarządzanej, od i do maszyny Wirtualnej.
@@ -381,7 +383,7 @@ Jeśli masz maszynę Wirtualną, która nie wymaga tożsamości zarządzanej prz
  
    **Microsoft.Compute/virtualMachines interfejsu API w wersji 2017-12-01**
 
-   Aby usunąć pojedynczy użytkownik przypisany tożsamości zarządzanej maszyny wirtualnej, usuń go z `identityIds` tablicy.
+   Aby usunąć pojedynczy tożsamość zarządzaną przypisanych przez użytkownika z maszyny Wirtualnej, usuń go z `identityIds` tablicy.
 
    Jeśli masz przypisaną przez system tożsamości zarządzanej, przechowuj je w w `type` wartości w obszarze `identity` wartość.
    

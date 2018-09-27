@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: byvinyal
-ms.openlocfilehash: c67cc5cb13e2c1112c4752660c82c3ab18360b00
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: efaca1b9506ada02c52ad0833139d3b4e441d456
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056628"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47393617"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usługi Azure, przydziały i ograniczenia
 W tym dokumencie przedstawiono niektóre typowe limity Microsoft Azure, które są czasami nazywane limity przydziału. Ten dokument obecnie nie obejmuje wszystkich usług platformy Azure. Wraz z upływem czasu lista zostaną rozwinięte i zaktualizowana w celu pokrycia więcej platformy.
@@ -89,7 +89,7 @@ W obszarze poniżej ograniczenia dodano nową tabelę odzwierciedla żadnych ró
 * [Scheduler](#scheduler-limits)
 * [Wyszukiwanie](#search-limits)
 * [Service Bus](#service-bus-limits)
-* [Usługa SignalR](#signalr-service-limits)
+* [SignalR Service](#signalr-service-limits)
 * [Site Recovery](#site-recovery-limits)
 * [SQL Database](#sql-database-limits)
 * [SQL Data Warehouse](#sql-data-warehouse-limits)
@@ -165,8 +165,6 @@ W poniższej tabeli przedstawiono funkcje i limity Basic, Standard i Premium [wa
 ### <a name="storage-limits"></a>Limity przestrzeni dyskowej
 <!--like # storage accts -->
 [!INCLUDE [azure-storage-limits](../includes/azure-storage-limits.md)]
-
-[!INCLUDE [storage-limits-increase-include](../includes/storage-limits-increase-include.md)]
 
 Więcej informacji na temat limitów konta magazynu, zobacz [usługi Azure Storage dotyczące skalowalności i cele wydajności](storage/common/storage-scalability-targets.md).
 
