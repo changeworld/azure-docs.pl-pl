@@ -1,84 +1,85 @@
 ---
-title: Przekaż i Zindeksuj filmów wideo za pomocą indeksatora wideo platformy Azure | Dokumentacja firmy Microsoft
-description: W tym temacie pokazano, jak używać interfejsów API, przekazywanie i indeksować wideo za pomocą indeksatora wideo usługi Azure
+title: 'Przykład: przekazywanie i indeksowanie plików wideo za pomocą usługi Video Indexer'
+titlesuffix: Azure Cognitive Services
+description: W tym temacie pokazano, jak przy użyciu interfejsów API przekazywać i indeksować pliki wideo za pomocą usługi Video Indexer.
 services: cognitive services
-documentationcenter: ''
 author: juliako
-manager: erikre
+manager: cgronlun
 ms.service: cognitive-services
-ms.topic: article
-ms.date: 08/17/2018
+ms.component: video-indexer
+ms.topic: sample
+ms.date: 09/15/2018
 ms.author: juliako
-ms.openlocfilehash: 3cf5a32d95b028664f29b82b14e2294d58ae9925
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
-ms.translationtype: MT
+ms.openlocfilehash: e84411535b82b3e4861b529f490bdde0eb25fd42
+ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580006"
+ms.lasthandoff: 09/18/2018
+ms.locfileid: "45983888"
 ---
-# <a name="upload-and-index-your-videos"></a>Przekazywanie i indeksować wideo  
+# <a name="example-upload-and-index-your-videos"></a>Przykład: przekazywanie i indeksowanie plików wideo  
 
-W tym artykule przedstawiono sposób przekazywania plików wideo za pomocą indeksatora wideo usługi Azure. Interfejsu API indeksatora wideo są dostępne dwie opcje przekazywania: 
+W tym artykule pokazano, jak przekazać plik wideo za pomocą usługi Azure Video Indexer. Interfejs API usługi Video Indexer zapewnia dwie opcje przekazywania: 
 
-* Przekaż wideo z adresu URL (preferowane)
-* Wyślij plik wideo w postaci tablicy bajtów w treści żądania.
+* przekazywanie pliku wideo z adresu URL (opcja preferowana),
+* wysyłanie pliku wideo w postaci tablicy bajtów w treści żądania.
 
-W tym artykule opisano sposób używania [Przekaż wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) interfejsu API, aby przekazać i indeksować wideo na podstawie adresu URL. Przykładowy kod w artykule zawiera komentarze kod, który pokazuje, jak przekazać tablicę bajtów.  
+W tym artykule pokazano, jak za pomocą interfejsu API [przekazywania pliku wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) przekazywać i indeksować pliki wideo na podstawie adresów URL. Przykładowy kod podany w artykule zawiera oznaczony jako komentarz kod, w którym pokazano, jak przekazać tablicę bajtów.  
 
-W artykule omówiono niektóre parametry, można ustawić w interfejsie API, zmienić procesów i danych wyjściowych interfejsu API.
+W artykule omówiono też niektóre parametry, które można ustawić w interfejsie API, aby zmieniać przetwarzanie i dane wyjściowe interfejsu API.
 
 > [!Note]
-> Podczas tworzenia konta indeksatora wideo, możesz wybrać bezpłatne konto próbne (skąd określonej liczbie bezpłatnych minut indeksowania) lub opcję płatną (gdzie możesz nie są ograniczone według przydziału). <br/>Za pomocą bezpłatnej wersji próbnej Video Indexer zapewnia do 600 minut indeksować bezpłatne dla użytkowników witryny sieci Web, i maksymalnie 2 400 minut bezpłatne indeksowania dla użytkowników interfejsu API. W przypadku płatnych opcji tworzenia konta Video Indexer, który jest [podłączone do subskrypcji platformy Azure i konto usługi Azure Media Services](connect-to-azure.md). Płacisz indeksowane w ciągu kilku minut, a także konta multimediów powiązane opłaty. 
+> Podczas tworzenia konta w usłudze Video Indexer można wybrać konto bezpłatnej wersji próbnej (w ramach którego otrzymuje się określoną liczbę bezpłatnych minut indeksowania) lub opcję płatną (w przypadku której nie ma ograniczeń przydziału). <br/>Usługa Video Indexer w bezpłatnej wersji próbnej udostępnia do 600 minut bezpłatnego indeksowania u użytkowników witryn internetowych oraz do 2400 minut bezpłatnego indeksowania u użytkowników interfejsów API. W przypadku opcji płatnej utworzone zostaje konto usługi Video Indexer [połączone z subskrypcją platformy Azure i kontem usługi Azure Media Services](connect-to-azure.md). Naliczane są opłaty za minuty indeksowania, a także opłaty powiązane z kontem usługi Media. 
 
 ## <a name="uploading-considerations"></a>Zagadnienia dotyczące przekazywania
     
-- Podczas przekazywania filmu wideo na podstawie adresu URL (preferowany) punktu końcowego musi zostać zabezpieczony za pomocą protokołu TLS 1.2 (lub nowszy)
-- Opcja tablicy bajtów jest ograniczona do 2GB i upłynie limit czasu po 30 min
-- Podany adres URL w `videoURL` param musi być zakodowany
+- W przypadku przekazywania pliku wideo na podstawie adresu URL (opcja preferowana) punkt końcowy musi być zabezpieczony za pomocą protokołu TLS 1.2 (lub nowszej wersji)
+- Opcja tablicy bajtów jest ograniczona do rozmiaru 2 GB i limitu czasu wynoszącego 30 min
+- Adres URL podany w parametrze `videoURL` musi być zakodowany
 
 ## <a name="configurations-and-params"></a>Konfiguracje i parametry
 
-W tej sekcji opisano niektóre parametry opcjonalne i chcesz je ustawić.
+W tej sekcji opisano niektóre parametry opcjonalne i wyjaśniono, kiedy należy je ustawić.
 
 ### <a name="externalid"></a>externalID 
 
-Ten parametr umożliwia określenie Identyfikatora, która zostanie skojarzona z wideo. Identyfikator można zastosować do zewnętrznego integracji systemów "wideo zawartości" Zarządzanie (VCM). Filmy wideo, które znajdują się w portalu usługi Video Indexer można przeszukiwać za pomocą określonego identyfikatora zewnętrznego.
+Ten parametr umożliwia określenie identyfikatora, który zostanie skojarzony z plikiem wideo. Ten identyfikator można zastosować do integracji z zewnętrznym systemem zarządzania zawartością wideo (VCM, Video Content Management). Pliki wideo znajdujące się w portalu usługi Video Indexer można wyszukiwać za pomocą tego określonego identyfikatora zewnętrznego.
 
 ### <a name="indexingpreset"></a>indexingPreset
 
-Użyj tego parametru, jeśli nagrania raw lub zewnętrznego zawierają hałas w tle. Ten parametr jest używany do konfigurowania procesu indeksowania. Można określić następujące wartości:
+Tego parametru należy użyć, jeśli nagrania nieprzetworzone lub zewnętrzne zawierają hałas w tle. Parametr ten służy do konfigurowania procesu indeksowania. Można określić następujące wartości:
 
-- `Default` — Indeks i wyodrębnić szczegółowe informacje przy użyciu audio i wideo
-- `AudioOnly` — Indeks i wyodrębnić szczegółowe informacje przy użyciu tylko audio (Ignorowanie wideo)
-- `DefaultWithNoiseReduction` — Indeks i prowadzenie analiz audio i wideo, przy zastosowaniu algorytmów redukcji szumów strumienia audio
+- `Default` — indeksowanie i wyodrębnianie szczegółowych informacji przy użyciu części zarówno audio, jak i wideo
+- `AudioOnly` — indeksowanie i wyodrębnianie szczegółowych informacji przy użyciu tylko części audio (z ignorowaniem części wideo)
+- `DefaultWithNoiseReduction` — indeksowanie i wyodrębnianie szczegółowych informacji przy użyciu zarówno audio, jak i wideo przy zastosowaniu algorytmów redukcji szumów w strumieniu audio
 
 Cena zależy od wybranej opcji indeksowania.  
 
 ### <a name="callbackurl"></a>callbackUrl
 
-Adres URL wpisu na potrzeby powiadomień podczas indeksowania zostanie ukończona. Usługa Video Indexer dodaje dwa parametry ciągu do niej zapytania: identyfikator i stan. Na przykład, jeśli jest adres url wywołania zwrotnego "https://test.com/notifyme?projectName=MyProject", powiadomienia będą wysyłane z dodatkowe parametry"https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed".
+Adres URL polecenia POST na potrzeby powiadamiania o zakończeniu indeksowania. Usługa Video Indexer dodaje do niego dwa parametry ciągu zapytania: identyfikator i stan. Na przykład jeśli adres URL wywołania zwrotnego to „https://test.com/notifyme?projectName=MyProject”, powiadomienie z dodatkowymi parametrami zostanie wysłane na adres „https://test.com/notifyme?projectName=MyProject&id=1234abcd&state=Processed”.
 
-Można również dodać więcej parametrów do adresu URL, przed opublikowaniem wywołań do usługi Video Indexer i te parametry zostaną uwzględnione podczas wywołania zwrotnego. Później w kodzie, można przeanalizować ciągu zapytania i uzyskać kopii wszystkich określonych parametrów ciągu zapytania (dane, który pierwotnie miały możesz dołączyć do adresu URL, a także informacje Video Indexer dostarczone.) Adres URL musi być zakodowany.
+Można również dodać więcej parametrów do adresu URL przed wysłaniem wywołania do usługi Video Indexer za pomocą polecenia POST i te parametry zostaną uwzględnione w wywołaniu zwrotnym. Później można przeanalizować w kodzie ciąg zapytania i pobrać z powrotem wszystkie określone parametry w ciągu zapytania (dane, który pierwotnie dołączono do adresu URL, wraz z informacjami dostarczonymi przez usługę Video Indexer). Adres URL musi być zakodowany.
 
 ### <a name="streamingpreset"></a>streamingPreset
 
-Po przekazaniu filmu wideo usługa Video Indexer opcjonalnie koduje wideo. Następnie przechodzi do indeksowania i analizowanie filmu wideo. Po zakończeniu Video Indexer analizowanie, otrzymasz powiadomienie z identyfikatorem wideo.  
+Po przekazaniu pliku wideo usługa Video Indexer opcjonalnie koduje ten plik. Następnie przechodzi do indeksowania i analizowania pliku wideo. Po zakończeniu analizowania przez usługę Video Indexer otrzymasz powiadomienie z identyfikatorem pliku wideo.  
 
-Korzystając z [Przekaż wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) lub [ponownie Poindeksuj wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) interfejsu API jest jeden z parametrów opcjonalnych `streamingPreset`. Jeśli ustawisz `streamingPreset` do `Default`, `SingleBitrate`, lub `AdaptiveBitrate`, zostanie wywołany procesu kodowania. Po operacji indeksowania i zadań kodowania wideo został opublikowany, więc również strumieniowego przesyłania wideo. Punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać wideo musi znajdować się w **systemem** stanu.
+W przypadku korzystania z interfejsu API [przekazywania pliku wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Upload-video?) lub [ponownego indeksowania pliku wideo](https://api-portal.videoindexer.ai/docs/services/operations/operations/Re-index-video?) jednym z parametrów opcjonalnych jest `streamingPreset`. W razie ustawienia dla parametru `streamingPreset` wartości `Default`, `SingleBitrate` lub `AdaptiveBitrate` wywoływany jest proces kodowania. Po zakończeniu zadań indeksowania i kodowania plik wideo jest publikowany, aby można go było również przesyłać strumieniowo. Punkt końcowy przesyłania strumieniowego, z którego chcesz strumieniowo przesyłać plik wideo, musi mieć stan **Uruchomiony**.
 
-Aby można było uruchomić indeksowanie i zadań kodowania oraz [konta usługi Azure Media Services połączyć swoje konto usługi Video Indexer](connect-to-azure.md), wymaga jednostek zarezerwowanych. Aby uzyskać więcej informacji, zobacz [skalowanie przetwarzania multimediów](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview). Ponieważ te zadania intensywnie korzystających z obliczeń, zdecydowanie zaleca się typ jednostki S3. Liczbę jednostek zarezerwowanych określa maksymalną liczbę zadań, które mogą działać równolegle. Zalecenie dotyczące planu bazowego jest 10 jednostki zarezerwowane S3. 
+Aby można było uruchomić zadania indeksowania i kodowania, dla [konta usługi Azure Media Services połączonego z kontem usługi Video Indexer](connect-to-azure.md) wymagane są jednostki zarezerwowane. Aby uzyskać więcej informacji, zobacz [Scaling Media Processing](https://docs.microsoft.com/azure/media-services/previous/media-services-scale-media-processing-overview) (Skalowanie przetwarzania multimediów). Ponieważ te zadania wymagają intensywnego przetwarzania, zdecydowanie zaleca się typ jednostki S3. Liczba jednostek zarezerwowanych określa maksymalną liczbę zadań, które mogą działać równolegle. Zalecenie dotyczące planu bazowego to 10 jednostek zarezerwowanych S3. 
 
-Jeśli chcesz tylko indeksować wideo, ale nie Koduj go ustawić `streamingPreset`do `NoStreaming`.
+Jeśli chcesz tylko zaindeksować plik wideo bez kodowania go, ustaw dla parametru `streamingPreset` wartość `NoStreaming`.
 
 ### <a name="videourl"></a>videoUrl
 
-Adres URL pliku wideo i audio mają być indeksowane. Adres URL musi wskazywać na plik multimedialny (stron HTML, które nie są obsługiwane). Plik może być chroniony przez token dostępu w ramach identyfikatora URI, a punkt końcowy obsługujący plik musi być zabezpieczone za pomocą protokołu TLS 1.2 lub nowszej. Adres URL musi być zakodowany. 
+Adres URL pliku wideo/audio do zaindeksowania. Ten adres URL musi wskazywać plik multimedialny (strony HTML nie są obsługiwane). Plik może być chroniony przez token dostępu podany w ramach identyfikatora URI, a punkt końcowy obsługujący plik musi być zabezpieczony za pomocą protokołu TLS 1.2 lub nowszej wersji. Adres URL musi być zakodowany. 
 
-Jeśli `videoUrl` nie zostanie określony, indeksatora wideo oczekuje przekazania pliku jako treść multipart/form.
+Jeśli parametr `videoUrl` nie zostanie określony, usługa Video Indexer oczekuje przekazania pliku jako zawartości treści wieloczęściowej/formularza.
 
 ## <a name="code-sample"></a>Przykład kodu
 
-Poniższy fragment kodu języka C# pokazuje użycie wszystkich interfejsów API indeksatora wideo ze sobą.
+W poniższym fragmencie kodu języka C# pokazano używanie wszystkich interfejsów API usługi Video Indexer razem.
 
 ```csharp
 public async Task Sample()
@@ -245,6 +246,6 @@ public class AccountContractSlim
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Sprawdź dane wyjściowe Azure Video Indexer produkowane przez interfejsy API wersji 2](video-indexer-output-json-v2.md)
+[Sprawdzanie danych wyjściowych usługi Azure Video Indexer wygenerowanych przez interfejs API w wersji 2](video-indexer-output-json-v2.md)

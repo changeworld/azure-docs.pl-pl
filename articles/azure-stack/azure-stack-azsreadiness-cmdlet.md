@@ -1,6 +1,6 @@
 ---
 title: Dokumentacja poleceń cmdlet Start-AzsReadinessChecker | Dokumentacja firmy Microsoft
-description: Pomoc polecenia cmdlet programu PowerShell dla modułu sprawdzania gotowości stosu Azure.
+description: Pomocy dotyczącej poleceń cmdlet programu PowerShell dla modułu narzędzie do sprawdzania gotowości usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: brenduns
@@ -12,21 +12,21 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/08/2018
+ms.date: 09/26/2018
 ms.author: brenduns
 ms.reviewer: ''
-ms.openlocfilehash: 8481fbd6c7cb82b34070f9bc8cc6d7f3f4b2518c
-ms.sourcegitcommit: d98d99567d0383bb8d7cbe2d767ec15ebf2daeb2
+ms.openlocfilehash: a5b2a30549072387df0ae9300de6523ba4069514
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/10/2018
-ms.locfileid: "33937868"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221285"
 ---
 # <a name="start-azsreadinesschecker-cmdlet-reference"></a>Dokumentacja poleceń cmdlet Start-AzsReadinessChecker
 
 Moduł: Microsoft.AzureStack.ReadinessChecker
 
-Ten moduł zawiera tylko jednego polecenia cmdlet.  To polecenie cmdlet przeprowadza co najmniej jedną funkcję przed wdrożeniem lub wstępnie obsługi stosu Azure.
+Ten moduł zawiera tylko jednego polecenia cmdlet.  To polecenie cmdlet wykonuje jedną lub więcej funkcji przed wdrożeniem lub wstępnie obsługi dla usługi Azure Stack.
 
 ## <a name="syntax"></a>Składnia
 ```PowerShell
@@ -168,19 +168,19 @@ Start-AzsReadinessChecker
 
 
  ## <a name="description"></a>Opis
-**Start AzsReadinessChecker** polecenia cmdlet weryfikuje certyfikaty, Azure konta subskrypcji platformy Azure i usług Azure Active Directory. Przeprowadzenie weryfikacji przed wdrożeniem stosu Azure lub przed stosu Azure obsługi akcji, takich jak obrót klucz tajny. Polecenia cmdlet można także wygenerować żądania podpisania certyfikatu dla infrastruktury i opcjonalnie PaaS certyfikatami.  Polecenia cmdlet można ponadto Spakuj ponownie certyfikatów PFX w celu rozwiązania typowych problemów z pakietów.
+**Start AzsReadinessChecker** polecenia cmdlet sprawdza poprawność certyfikatów, kont platformy Azure, subskrypcje platformy Azure i katalogi Active Azure. Uruchom sprawdzanie poprawności przed wdrożeniem usługi Azure Stack lub przed obsługi akcji, takich jak obrotu klucz tajny w usłudze Azure Stack. Polecenia cmdlet można również wygenerować żądania podpisania certyfikatu dla certyfikatów infrastruktury i opcjonalnie certyfikaty PaaS.  Na koniec polecenia cmdlet można Przeprowadź ponowne pakowanie certyfikaty PFX do rozwiązywania typowych problemów z pakietu.
 
 ## <a name="examples"></a>Przykłady
-**Przykład: Generowanie żądania podpisania certyfikatu**
+**Przykład: Generowanie żądanie podpisania certyfikatu**
 
 ```PowerShell
 $regionName = 'east'
 $externalFQDN = 'azurestack.contoso.com'
 $subjectHash = [ordered]@{"OU"="AzureStack";"O"="Microsoft";"L"="Redmond";"ST"="Washington";"C"="US"}
-Start-AzsReadinessChecker -regionName $regionName -externalFQDN $externalFQDN -subjectName $subjectHash -IdentitySystem ADFS -requestType MultipleCSR
+Start-AzsReadinessChecker -regionName $regionName -externalFQDN $externalFQDN -subject $subjectHash -IdentitySystem ADFS -requestType MultipleCSR
 ```
 
-W tym przykładzie Start AzsReadinessChecker generuje wiele żądań (Podpisania certyfikatu) dla certyfikatów umożliwiających wdrożenie usług AD FS Azure stosu z nazwy regionu "Wschód" i nazwy FQDN zewnętrznej "azurestack.contoso.com"
+W tym przykładzie Start AzsReadinessChecker generuje wiele certyfikatów podpisywania żądań obsługi dla certyfikatów odpowiednich dla wdrożenia usług AD FS usługi Azure Stack przy użyciu nazwy regionu "Wschód" i nazwę FQDN zewnętrznej "azurestack.contoso.com"
 
 **Przykład: Sprawdzanie poprawności certyfikatów**
 ```PowerShell
@@ -188,16 +188,16 @@ $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString
 Start-AzsReadinessChecker -CertificatePath .\Certificates\ -PfxPassword $password -RegionName east -FQDN azurestack.contoso.com -IdentitySystem AAD
 ```
 
-W tym przykładzie hasła do pliku PFX jest monitowany o podanie bezpiecznego i Start AzsReadinessChecker sprawdza folder względny "Certyfikaty" certyfikaty dla wdrożenia usługi AAD, o nazwie region "Wschód" i nazwy FQDN zewnętrznej "azurestack.contoso.com" 
+W tym przykładzie hasło PFX jest monitowany o podanie bezpiecznego i rozpoczęcia AzsReadinessChecker sprawdza folderu względnego "Certyfikaty" w przypadku certyfikatów jest prawidłowy na potrzeby wdrażania usługi AAD, o nazwie regionu "Wschód" i nazwę FQDN zewnętrznej "azurestack.contoso.com" 
 
-**Przykład: Sprawdzanie poprawności certyfikatów z danymi wdrożenia (wdrożenia i pomocy technicznej)**
+**Przykład: Sprawdzanie poprawności certyfikatów przy użyciu danych z wdrożenia (wdrażania i obsługi)**
 ```PowerShell
 $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString
 Start-AzsReadinessChecker -CertificatePath .\Certificates\ -PfxPassword $password -DeploymentDataJSONPath .\deploymentdata.json
 ```
-W tym przykładzie wdrażania i obsługi hasła do pliku PFX jest monitowany o podanie bezpiecznego i Start AzsReadinessChecker sprawdza folder względny "Certyfikaty" prawidłowy na potrzeby wdrożenia, w którym tożsamości, regionu i nazwy FQDN zewnętrznej są odczytywane z certyfikatów Plik JSON danych wdrożenia wygenerowany dla wdrożenia. 
+W tym przykładzie wdrażania i obsługi hasła PFX jest monitowany o podanie bezpiecznego i rozpoczęcia AzsReadinessChecker sprawdza folderu względnego "Certyfikaty" prawidłowy na potrzeby wdrożenia, gdy tożsamość, region i nazwy FQDN zewnętrznej są odczytywane z certyfikatami Plik JSON danych wdrożenia wygenerowany dla wdrożenia. 
 
-**Przykład: Sprawdzanie poprawności PaaS certyfikatów**
+**Przykład: Sprawdzanie poprawności certyfikatów PaaS**
 ```PowerShell
 $PaaSCertificates = @{
     'PaaSDBCert' = @{'pfxPath' = '<Path to DBAdapter PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
@@ -209,9 +209,9 @@ $PaaSCertificates = @{
 Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates – RegionName east -FQDN azurestack.contoso.com
 ```
 
-W tym przykładzie obiektu hashtable jest tworzony przy użyciu ścieżek i hasła do każdego certyfikatu PaaS. Certyfikaty można pominąć. Początek AzsReadinessChecker sprawdza każda ścieżka PFX istnieje i weryfikuje je za pomocą obszaru "Wschód" i nazwy FQDN zewnętrznej "azurestack.contoso.com".
+W tym przykładzie tablica skrótów jest konstruowany przy użyciu ścieżek i hasła do każdego certyfikatu PaaS. Certyfikaty można pominąć. Start AzsReadinessChecker sprawdza, czy każda ścieżka PFX istnieje i weryfikuje je przy użyciu region "Wschód" i FQDN zewnętrznej "azurestack.contoso.com".
 
-**Przykład: Zweryfikować PaaS certyfikaty z danymi wdrożenia**
+**Przykład: Sprawdzanie poprawności certyfikatów PaaS przy użyciu danych wdrożenia**
 ```PowerShell
 $PaaSCertificates = @{
     'PaaSDBCert' = @{'pfxPath' = '<Path to DBAdapter PFX>';'pfxPassword' = (ConvertTo-SecureString -String '<Password for PFX>' -AsPlainText -Force)}
@@ -223,24 +223,24 @@ $PaaSCertificates = @{
 Start-AzsReadinessChecker -PaaSCertificates $PaaSCertificates -DeploymentDataJSONPath .\deploymentdata.json
 ```
 
-W tym przykładzie obiektu hashtable jest tworzony przy użyciu ścieżek i hasła do każdego certyfikatu PaaS. Certyfikaty można pominąć. Start AzsReadinessChecker sprawdza, każda ścieżka PFX istnieje i weryfikuje je za pomocą obszaru i nazwy FQDN zewnętrznej odczytu z pliku JSON danych wdrożenia wygenerowany dla wdrożenia. 
+W tym przykładzie tablica skrótów jest konstruowany przy użyciu ścieżek i hasła do każdego certyfikatu PaaS. Certyfikaty można pominąć. Start AzsReadinessChecker sprawdza, czy każda ścieżka PFX istnieje i sprawdza poprawność ich za pomocą region i FQDN zewnętrznej odczytu z pliku JSON danych wdrożenia wygenerowany dla wdrożenia. 
 
-**Przykład: Zweryfikować tożsamość platformy Azure**
+**Przykład: Weryfikowania tożsamości platformy Azure**
 ```PowerShell
 $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant e.g. serviceadmin@contoso.onmicrosoft.com"
 Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -AzureEnvironment AzureCloud -AzureDirectoryTenantName azurestack.contoso.com
 ```
 
-W tym przykładzie poświadczeń konta administratora usługi są monitowani o podanie bezpiecznego i rozpoczęcia AzsReadinessChecker sprawdza, czy konto platformy Azure i usługi Azure Active Directory do wdrożenia usługi AAD z nazwą katalogu dzierżawy "azurestack.contoso.com"
+W tym przykładzie poświadczenia konta administratora usługi są monitowani o podanie bezpiecznego i rozpoczęcia AzsReadinessChecker sprawdza, czy konto platformy Azure i usługi Azure Active Directory są prawidłowe dla wdrożenia usługi AAD o nazwie katalogu dzierżawy "azurestack.contoso.com"
 
 
-**Przykład: Zweryfikować tożsamość platformy Azure z danymi wdrożenia (Obsługa wdrażania)**
+**Przykład: Sprawdzanie poprawności tożsamości platformy Azure z danymi wdrażania (Obsługa wdrażania)**
 ```PowerSHell
 $serviceAdminCredential = Get-Credential -Message "Enter Credentials for Service Administrator of Azure Active Directory Tenant e.g. serviceadmin@contoso.onmicrosoft.com"
 Start-AzsReadinessChecker -AADServiceAdministrator $serviceAdminCredential -DeploymentDataJSONPath .\contoso-depploymentdata.json
 ```
 
-W tym przykładzie poświadczeń konta administratora usługi są monitowani o podanie bezpiecznego i rozpoczęcia AzsReadinessChecker sprawdza, czy konto platformy Azure i usługi Azure Active Directory są prawidłowe dla wdrożenia usługi AAD gdzie AzureCloud i TenantName są odczytywane z danych wdrożenia Plik JSON wygenerowany dla wdrożenia.
+W tym przykładzie poświadczenia konta administratora usługi są monitowani o podanie bezpiecznego i Start AzsReadinessChecker sprawdza, czy konto platformy Azure i usługi Azure Active Directory są prawidłowe dla wdrożenia usługi AAD gdzie AzureCloud i TenantName są odczytywane z danych wdrożenia Plik JSON, generowany dla wdrożenia.
 
 
 **Przykład: Sprawdzanie poprawności rejestracja w usłudze Azure**
@@ -250,17 +250,17 @@ $subscriptionID = "f7c26209-cd2d-4625-86ba-724ebeece794"
 Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -RegistrationSubscriptionID $subscriptionID -AzureEnvironment AzureCloud
 ```
 
-W tym przykładzie poświadczenia właściciela subskrypcji są monitowani o podanie bezpiecznego Start AzsReadinessChecker wykonuje następnie sprawdzenia poprawności względem podane konto i subskrypcję, aby upewnić się, że może służyć do rejestracji stosu Azure. 
+W tym przykładzie poświadczenia właściciela subskrypcji są monitowani o podanie bezpiecznego Start AzsReadinessChecker wykonuje następnie weryfikacji względem podane konto i subskrypcję, aby upewnić się, że może służyć do rejestracji w usłudze Azure Stack. 
 
 
-**Przykład: Sprawdzanie poprawności rejestracja w usłudze Azure z danymi wdrożenia (zespół wdrażania)**
+**Przykład: Sprawdzanie poprawności rejestracja w usłudze Azure z danymi wdrażania (zespół wdrażania)**
 ```PowerShell
 $registrationCredential = Get-Credential -Message "Enter Credentials for Subscription Owner"e.g. subscriptionowner@contoso.onmicrosoft.com"
 $subscriptionID = "f7c26209-cd2d-4625-86ba-724ebeece794"
 Start-AzsReadinessChecker -RegistrationAccount $registrationCredential -RegistrationSubscriptionID $subscriptionID -DeploymentDataJSONPath .\contoso-deploymentdata.json
 ```
 
-W tym przykładzie poświadczenia właściciela subskrypcji są monitowani o podanie bezpiecznego i Start AzsReadinessChecker wykonuje następnie sprawdzenia poprawności względem podane konto i subskrypcję, aby upewnić się, że może służyć do rejestracji stosu Azure gdzie znajdują się dodatkowe szczegóły odczytany z pliku JSON danych wdrożenia wygenerowany dla wdrożenia.
+W tym przykładzie poświadczenia właściciela subskrypcji są monitowani o podanie bezpiecznego Start AzsReadinessChecker następnie wykonuje sprawdzanie poprawności względem danego konta i subskrypcji, aby upewnić się, że może służyć do rejestracji w usłudze Azure Stack gdzie znajdują się dodatkowe szczegóły odczytać z pliku JSON danych wdrożenia wygenerowany dla wdrożenia.
 
 **Przykład: PFX importu/eksportu pakietu**
 ```PowerShell
@@ -268,7 +268,7 @@ $password = Read-Host -Prompt "Enter PFX Password" -AsSecureString
 Start-AzsReadinessChecker -PfxPassword $password -PfxPath .\certificates\ssl.pfx -ExportPFXPath .\certificates\ssl_new.pfx
 ```
 
-W tym przykładzie hasła do pliku PFX jest monitowany o podanie bezpiecznego. Plik ssl.pfx zostaną zaimportowane do magazynu certyfikatów komputera lokalnego i ponownie wyeksportowany z tego samego hasła i zapisane jako ssl_new.pfx.  Ta procedura jest przeznaczona do użytku podczas weryfikacji certyfikatu oflagowane, że klucz prywatny nie ma ustawiony atrybut komputera lokalnego, łańcuch certyfikatów jest uszkodzony, nie znaczenia certyfikatów znajdują się w pliku PDF lub łańcuch certyfikatów jest w niewłaściwej kolejności.
+W tym przykładzie hasło PFX jest monitowany o podanie bezpiecznego. Plik ssl.pfx zostaną zaimportowane do magazynu certyfikatów komputera lokalnego i ponownie eksportowana przy użyciu tego samego hasła i zapisywane jako ssl_new.pfx.  Ta procedura jest do użytku podczas sprawdzania poprawności certyfikatu oflagowane, czy klucz prywatny nie mają ustawionego atrybutu komputera lokalnego, łańcuch certyfikatów jest uszkodzony, nie ma znaczenia certyfikaty znajdują się w pliku PDF lub łańcuch certyfikatów jest w złej kolejności.
 
 
 **Przykład: Wyświetl raport weryfikacji (Obsługa wdrażania)**
@@ -276,97 +276,97 @@ W tym przykładzie hasła do pliku PFX jest monitowany o podanie bezpiecznego. P
 Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json
 ```
 
-W tym przykładzie zespołu wdrażania lub pomocy technicznej otrzymywać raport gotowości klienta (Contoso) i umożliwia wyświetlanie stanu wykonania sprawdzania poprawności, wykonywane Contoso Start AzsReadinessChecker.
+W tym przykładzie zespołu pomocy technicznej lub wdrożenia otrzymywać raport gotowości klienta (Contoso) i użyj Start AzsReadinessChecker, aby wyświetlić stan wykonania sprawdzania poprawności, wykonania firmy Contoso.
 
-**Przykład: Wyświetl raport weryfikacji Podsumowanie certyfikatu weryfikacji tylko (wdrożenia i pomocy technicznej)**
+**Przykład: Wyświetl raport weryfikacji Podsumowanie certyfikatu weryfikacji tylko (wdrażania i obsługi)**
 ```PowerShell
 Start-AzsReadinessChecker -ReportPath Contoso-AzsReadinessReport.json -ReportSections Certificate -Summary
 ```
 
-W tym przykładzie zespołu wdrażania lub pomocy technicznej otrzymywać raport gotowości klienta Contoso i umożliwia przeglądanie podsumowań stanu wykonaniami weryfikacji certyfikatu wykonywane Contoso Start AzsReadinessChecker.
+W tym przykładzie zespołu pomocy technicznej lub wdrożenia otrzymywać raport gotowości odbiorca Contoso i umożliwia wyświetlanie podsumowania stanu wykonań sprawdzania poprawności certyfikatów, wykonać Contoso AzsReadinessChecker rozpoczęcia.
 
 
 
 ## <a name="required-parameters"></a>Wymagane parametry
 > -RegionName
 
-Określa nazwę regionu wdrożenia stosu Azure.
+Określa nazwę region wdrożenia usługi Azure Stack.
 |  |  |
 |----------------------------|--------------|
 |Wpisz:                       |Ciąg        |
 |Położenie:                   |o nazwie         |
 |Wartość domyślna:              |Brak          |
-|Akceptowanie danych wejściowych potoku:      |False         |
-|Akceptowanie symboli wieloznacznych: |False         |
+|Akceptować wejście potokowe:      |False         |
+|Akceptować symbole wieloznaczne: |False         |
 
-> -FQDN    
+> — NAZWA FQDN    
 
-Określa zewnętrzne nazwy FQDN wdrożenia stosu Azure, również używane z aliasem jako ExternalFQDN i ExternalDomainName.
+Określa FQDN zewnętrznej wdrożenia usługi Azure Stack, również aliasowana jako ExternalFQDN i ExternalDomainName.
 |  |  |
 |----------------------------|--------------|
 |Wpisz:                       |Ciąg        |
 |Położenie:                   |o nazwie         |
 |Wartość domyślna:              |ExternalFQDN, ExternalDomainName |
-|Akceptowanie danych wejściowych potoku:      |False         |
-|Akceptowanie symboli wieloznacznych: |False         |
+|Akceptować wejście potokowe:      |False         |
+|Akceptować symbole wieloznaczne: |False         |
 
  
 
 > -IdentitySystem    
 
-Określa wdrożenia stosu Azure systemu tożsamości prawidłowe wartości, AAD lub ADFS, dla usługi Azure Active Directory i Active Directory Federation Services odpowiednio.
+Określa odpowiednio wdrożenia usługi Azure Stack System obsługi tożsamości prawidłowe wartości, AAD lub ADFS, dla usługi Azure Active Directory i Active Directory Federation Services.
 |  |  |
 |----------------------------|--------------|
 |Wpisz:                       |Ciąg        |
 |Położenie:                   |o nazwie         |
 |Wartość domyślna:              |Brak          |
-|Prawidłowe wartości:               |"AAD", "USŁUG AD FS"  |
-|Akceptowanie danych wejściowych potoku:      |False         |
-|Akceptowanie symboli wieloznacznych: |False         |
+|Prawidłowe wartości:               |"AAD", "ADFS"  |
+|Akceptować wejście potokowe:      |False         |
+|Akceptować symbole wieloznaczne: |False         |
 
 > -PfxPassword    
 
-Określa hasło skojarzone z pliki certyfikatów PFX.
+Określa hasło skojarzone z plików certyfikatów PFX.
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |SecureString |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
-|Akceptowanie danych wejściowych potoku:      |False    |
-|Akceptowanie symboli wieloznacznych: |False    |
+|Akceptować wejście potokowe:      |False    |
+|Akceptować symbole wieloznaczne: |False    |
 
 > -PaaSCertificates
 
-Określa hashtable zawierający ścieżek i hasła do PaaS certyfikatów.
+Określa hashtable zawierające ścieżki i hasła, certyfikaty PaaS.
 |  |  |
 |----------------------------|---------|
-|Wpisz:                       |HashTable |
+|Wpisz:                       |Tablica skrótów |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
-|Akceptowanie danych wejściowych potoku:      |False    |
-|Akceptowanie symboli wieloznacznych: |False    |
+|Akceptować wejście potokowe:      |False    |
+|Akceptować symbole wieloznaczne: |False    |
 
 > -DeploymentDataJSONPath
 
-Określa plik konfiguracji stosu Azure wdrożenia danych JSON. Ten plik został wygenerowany dla wdrożenia.
+Określa plik konfiguracji JSON danych wdrożenia usługi Azure Stack. Ten plik został wygenerowany dla wdrożenia.
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |Ciąg   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
-|Akceptowanie danych wejściowych potoku:      |False    |
-|Akceptowanie symboli wieloznacznych: |False    |
+|Akceptować wejście potokowe:      |False    |
+|Akceptować symbole wieloznaczne: |False    |
 
 > -PfxPath
 
-Określa ścieżkę do problematyczne certyfikatu, który wymaga importu/eksportu procedury, aby rozwiązać problem, wskazywany przez weryfikacji certyfikatu w tym narzędziu.
+Określa ścieżkę do problematycznych certyfikatu, który wymaga importu/eksportu procedury, aby rozwiązać problem, wskazane przez weryfikację certyfikatu w tym narzędziu.
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |Ciąg   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
-|Akceptowanie danych wejściowych potoku:      |False    |
-|Akceptowanie symboli wieloznacznych: |False    |
+|Akceptować wejście potokowe:      |False    |
+|Akceptować symbole wieloznaczne: |False    |
 
 > -ExportPFXPath  
 
@@ -376,24 +376,24 @@ Określa ścieżkę docelową dla wynikowego pliku PFX z procedury importowania/
 |Wpisz:                       |Ciąg   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
-|Akceptowanie danych wejściowych potoku:      |False    |
-|Akceptowanie symboli wieloznacznych: |False    |
+|Akceptować wejście potokowe:      |False    |
+|Akceptować symbole wieloznaczne: |False    |
 
 > -Podmiotu
 
-Określa uporządkowanej słownika podmiot generowania żądania certyfikatu.
+Określa słownika uporządkowane podmiotu do generowania żądania certyfikatu.
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |Element OrderedDictionary   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
-|Akceptowanie danych wejściowych potoku:      |False    |
-|Akceptowanie symboli wieloznacznych: |False    |
+|Akceptować wejście potokowe:      |False    |
+|Akceptować symbole wieloznaczne: |False    |
 
 > -RequestType
 
-Określa typ sieci SAN żądania certyfikatu. Prawidłowe wartości MultipleCSR, SingleCSR.
-- *MultipleCSR* generuje wiele żądań certyfikatów, po jednej dla każdej usługi.
+Określa typ sieci SAN w żądaniu certyfikatu. Prawidłowe wartości MultipleCSR, SingleCSR.
+- *MultipleCSR* generuje wiele żądań certyfikatów, jeden dla każdej usługi.
 - *SingleCSR* generuje jedno żądanie certyfikatu dla wszystkich usług.   
 
 |  |  |
@@ -402,101 +402,101 @@ Określa typ sieci SAN żądania certyfikatu. Prawidłowe wartości MultipleCSR,
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
 |Prawidłowe wartości:               |"MultipleCSR", "SingleCSR" |
-|Akceptowanie danych wejściowych potoku:      |False    |
-|Akceptowanie symboli wieloznacznych: |False    |
+|Akceptować wejście potokowe:      |False    |
+|Akceptować symbole wieloznaczne: |False    |
 
 > -OutputRequestPath
 
-Określa ścieżkę docelową dla plików żądania certyfikatu, katalog musi już istnieć.
+Określa ścieżkę docelową dla plików żądania certyfikatu, katalog musi istnieć.
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |Ciąg   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
-|Akceptowanie danych wejściowych potoku:      |False    |
-|Akceptowanie symboli wieloznacznych: |False    |
+|Akceptować wejście potokowe:      |False    |
+|Akceptować symbole wieloznaczne: |False    |
 
 > -AADServiceAdministrator
 
-Określa administratora usługi Azure Active Directory służący do wdrożenia usługi Azure stosu.
+Określa administratora usługi usługi Azure Active Directory służący do wdrażania usługi Azure Stack.
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |PSCredential   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
-|Akceptowanie danych wejściowych potoku:      |False    |
-|Akceptowanie symboli wieloznacznych: |False    |
+|Akceptować wejście potokowe:      |False    |
+|Akceptować symbole wieloznaczne: |False    |
 
 > -AADDirectoryTenantName
 
-Określa nazwę usługi Azure Active Directory służący do wdrożenia usługi Azure stosu.
+Określa nazwę usługi Azure Active Directory, można użyć do wdrożenia usługi Azure Stack.
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |Ciąg   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
-|Akceptowanie danych wejściowych potoku:      |False    |
-|Akceptowanie symboli wieloznacznych: |False    |
+|Akceptować wejście potokowe:      |False    |
+|Akceptować symbole wieloznaczne: |False    |
 
 > -AzureEnvironment
 
-Określa wystąpienie usług Azure, zawierającą konta, katalogów i subskrypcji do zastosowania w przypadku wdrożenia stosu Azure i rejestracji.
+Określa wystąpienie usług platformy Azure, zawierającą konta, katalogów i subskrypcji służący do wdrażania usługi Azure Stack i rejestrowania.
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |Ciąg   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
 |Prawidłowe wartości:               |"AzureCloud", "AzureChinaCloud", "AzureGermanCloud" |
-|Akceptowanie danych wejściowych potoku:      |False    |
-|Akceptowanie symboli wieloznacznych: |False    |
+|Akceptować wejście potokowe:      |False    |
+|Akceptować symbole wieloznaczne: |False    |
 
 > -RegistrationAccount
 
-Określa konto rejestracji do używanych w stosie Azure rejestracji.
+Określa konto rejestracji, który ma być używany do rejestracji w usłudze Azure Stack.
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |Ciąg   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
-|Akceptowanie danych wejściowych potoku:      |False    |
-|Akceptowanie symboli wieloznacznych: |False    |
+|Akceptować wejście potokowe:      |False    |
+|Akceptować symbole wieloznaczne: |False    |
 
 > -RegistrationSubscriptionID
 
-Określa identyfikator rejestracji subskrypcji do używanych w stosie Azure rejestracji.
+Określa identyfikator subskrypcji rejestracji, który ma być używany do rejestracji w usłudze Azure Stack.
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |Identyfikator GUID     |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Brak     |
-|Akceptowanie danych wejściowych potoku:      |False    |
-|Akceptowanie symboli wieloznacznych: |False    |
+|Akceptować wejście potokowe:      |False    |
+|Akceptować symbole wieloznaczne: |False    |
 
 > -ReportPath
 
-Określa ścieżkę do Raport gotowości, domyślnie nazwa bieżącego katalogu i domyślne raportu.
+Określa ścieżkę do raportu gotowości, wartością domyślną jest bieżący katalog i domyślne nazwę raportu.
 |  |  |
 |----------------------------|---------|
 |Wpisz:                       |Ciąg   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Wszyscy      |
-|Akceptowanie danych wejściowych potoku:      |False    |
-|Akceptowanie symboli wieloznacznych: |False    |
+|Akceptować wejście potokowe:      |False    |
+|Akceptować symbole wieloznaczne: |False    |
 
 
 
 ## <a name="optional-parameters"></a>Parametry opcjonalne
 > -CertificatePath     
 
-Określa ścieżkę, w którym wymagane foldery certyfikatu znajdują się tylko certyfikat.
+Określa ścieżkę, pod którym wymagane foldery certyfikatu znajdują się tylko certyfikat.
 
-Foldery wymagane do wdrożenia stosu Azure z systemu tożsamości w usłudze Azure Active Directory są:
+Dostępne są następujące foldery wymagane do wdrożenia usługi Azure Stack z systemem obsługi tożsamości usługi Azure Active Directory:
 
-ACSBlob, ACSQueue, ACSTable, portalu administracyjnego, administrator ARM ARM publicznego, KeyVault, KeyVaultInternal, publiczny
+ACSBlob ACSQueue, ACSTable, Portal administratora, administrator usługi ARM ARM Public, magazynu kluczy, KeyVaultInternal, publiczny
 
-Wymagany folder stosu Azure są wdrażanie za pomocą usług federacyjnych Active Directory systemu tożsamości:
+Wymagane folderu dla usługi Azure Stack, które są wdrażanie za pomocą usług federacyjnych Active Directory systemu tożsamości:
 
-ACSBlob, ACSQueue, ACSTable, usługi AD FS, portalu administratora, administratora ARM, publicznego ARM, wykres, KeyVault, KeyVaultInternal, publiczny
+ACSBlob, ACSQueue, ACSTable, usług AD FS, portalu administracyjnym, ARM administratora, publiczny ARM, programu Graph, magazynu kluczy, KeyVaultInternal, publiczny
 
 
 |  |  |
@@ -504,13 +504,13 @@ ACSBlob, ACSQueue, ACSTable, usługi AD FS, portalu administratora, administrato
 |Wpisz:                       |Ciąg   |
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |. \Certificates |
-|Akceptowanie danych wejściowych potoku:      |False    |
-|Akceptowanie symboli wieloznacznych: |False    |
+|Akceptować wejście potokowe:      |False    |
+|Akceptować symbole wieloznaczne: |False    |
 
 
 > -IncludePaaS  
 
-Określa, czy usługi PaaS jako nazw hostów powinny zostać dodane do żądania certyfikatu.
+Określa, jeśli usługi PaaS jako nazw hostów powinny zostać dodane do żądania certyfikatu.
 
 
 |  |  |
@@ -518,8 +518,8 @@ Określa, czy usługi PaaS jako nazw hostów powinny zostać dodane do żądania
 |Wpisz:                       |SwitchParameter   |
 |Położenie:                   |o nazwie             |
 |Wartość domyślna:              |False             |
-|Akceptowanie danych wejściowych potoku:      |False             |
-|Akceptowanie symboli wieloznacznych: |False             |
+|Akceptować wejście potokowe:      |False             |
+|Akceptować symbole wieloznaczne: |False             |
 
 
 > -ReportSections        
@@ -531,8 +531,8 @@ Określa, czy tylko w celu wyświetlenia raportu podsumowania, pomija szczegół
 |Położenie:                   |o nazwie    |
 |Wartość domyślna:              |Wszyscy      |
 |Prawidłowe wartości:               |"Certyfikat", "AzureRegistration", "AzureIdentity", "Zadania", "All" |
-|Akceptowanie danych wejściowych potoku:      |False    |
-|Akceptowanie symboli wieloznacznych: |False    |
+|Akceptować wejście potokowe:      |False    |
+|Akceptować symbole wieloznaczne: |False    |
 
 
 > — Podsumowanie 
@@ -543,8 +543,8 @@ Określa, czy tylko w celu wyświetlenia raportu podsumowania, pomija szczegół
 |Wpisz:                       |SwitchParameter   |
 |Położenie:                   |o nazwie             |
 |Wartość domyślna:              |False             |
-|Akceptowanie danych wejściowych potoku:      |False             |
-|Akceptowanie symboli wieloznacznych: |False             |
+|Akceptować wejście potokowe:      |False             |
+|Akceptować symbole wieloznaczne: |False             |
 
 
 > -CleanReport  
@@ -553,48 +553,48 @@ Usuwa historię wykonywania i sprawdzania poprawności i zapisuje operacji spraw
 |  |  |
 |----------------------------|------------------|
 |Wpisz:                       |SwitchParameter   |
-|Aliasy:                    |CF                |
+|Aliasy:                    |usługi CF                |
 |Położenie:                   |o nazwie             |
 |Wartość domyślna:              |False             |
-|Akceptowanie danych wejściowych potoku:      |False             |
-|Akceptowanie symboli wieloznacznych: |False             |
+|Akceptować wejście potokowe:      |False             |
+|Akceptować symbole wieloznaczne: |False             |
 
 
 > -OutputPath    
 
-Określa niestandardową ścieżkę, aby zapisać raport gotowości JSON i pełny plik dziennika.  Jeśli ścieżka nie istnieje, narzędzie będzie podejmować próby utworzenia katalogu.
+Określa ścieżkę niestandardową, aby zapisać raport gotowości JSON i pełny plik dziennika.  Jeśli ścieżka nie istnieje, narzędzie spróbuje utworzyć katalog.
 |  |  |
 |----------------------------|------------------|
 |Wpisz:                       |Ciąg            |
 |Położenie:                   |o nazwie             |
 |Wartość domyślna:              |$ENV: TEMP\AzsReadinessChecker  |
-|Akceptowanie danych wejściowych potoku:      |False             |
-|Akceptowanie symboli wieloznacznych: |False             |
+|Akceptować wejście potokowe:      |False             |
+|Akceptować symbole wieloznaczne: |False             |
 
 
-> -Confirm  
+> -Upewnij się  
 
-Wyświetla monit o potwierdzenie przed uruchomieniem polecenia cmdlet.
+Monituje o potwierdzenie przed uruchomieniem polecenia cmdlet.
 |  |  |
 |----------------------------|------------------|
 |Wpisz:                       |SwitchParameter   |
-|Aliasy:                    |CF                |
+|Aliasy:                    |usługi CF                |
 |Położenie:                   |o nazwie             |
 |Wartość domyślna:              |False             |
-|Akceptowanie danych wejściowych potoku:      |False             |
-|Akceptowanie symboli wieloznacznych: |False             |
+|Akceptować wejście potokowe:      |False             |
+|Akceptować symbole wieloznaczne: |False             |
 
 
 > -WhatIf  
 
-Pokazuje, co się stanie po uruchomieniu polecenia cmdlet. Polecenie cmdlet nie zostało uruchomione.
+Pokazuje, co się stanie po uruchomieniu polecenia cmdlet. Polecenie cmdlet nie jest uruchomione.
 |  |  |
 |----------------------------|------------------|
 |Wpisz:                       |SwitchParameter   |
 |Aliasy:                    |Wi                |
 |Położenie:                   |o nazwie             |
 |Wartość domyślna:              |False             |
-|Akceptowanie danych wejściowych potoku:      |False             |
-|Akceptowanie symboli wieloznacznych: |False             |
+|Akceptować wejście potokowe:      |False             |
+|Akceptować symbole wieloznaczne: |False             |
 
  
