@@ -15,16 +15,16 @@ ms.topic: conceptal
 ms.date: 09/18/2018
 ms.author: magoedte
 ms.component: na
-ms.openlocfilehash: 4629d84ccf0749cb0c5a83a4955f281daa546c16
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 9abd46bf75e2a0113f44243d7c1695d96f9c1057
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055821"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220657"
 ---
 # <a name="create-a-log-analytics-workspace-with-azure-powershell"></a>Utwórz obszar roboczy usługi Log Analytics przy użyciu programu Azure PowerShell
 
-Moduł Azure PowerShell umożliwia tworzenie zasobów platformy Azure i zarządzanie nimi za pomocą wiersza polecenia programu PowerShell lub skryptów. Ten przewodnik Szybki Start dowiesz się, jak za pomocą modułu Azure PowerShell, aby wdrożyć obszar roboczy usługi Log Analytics na platformie Azure, która jest unikatowa środowiska z własnym repozytorium danych, źródłami danych i rozwiązań.  Kroki opisane w tym artykule są wymagane, jeśli jest planowane na zbieranie danych z następujących źródeł:
+Moduł Azure PowerShell umożliwia tworzenie zasobów platformy Azure i zarządzanie nimi za pomocą wiersza polecenia programu PowerShell lub skryptów. Ten przewodnik Szybki Start dowiesz się, jak wdrożyć obszar roboczy usługi Log Analytics na platformie Azure, która jest unikatowa środowiska z własnym repozytorium danych, źródłami danych i rozwiązań za pomocą modułu Azure PowerShell.  Kroki opisane w tym artykule są wymagane, jeśli jest planowane na zbieranie danych z następujących źródeł:
 
 * Zasoby platformy Azure w ramach subskrypcji  
 * Lokalnych komputerów monitorowanych przez program System Center Operations Manager  

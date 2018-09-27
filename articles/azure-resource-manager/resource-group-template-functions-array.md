@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/05/2017
+ms.date: 09/24/2018
 ms.author: tomfitz
-ms.openlocfilehash: cdc8222675a9f0099edccb24310bcea03bf963f4
-ms.sourcegitcommit: aa988666476c05787afc84db94cfa50bc6852520
+ms.openlocfilehash: e0269e17a419c6b611d72a7d00668fe9c9519894
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/10/2018
-ms.locfileid: "37929683"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166191"
 ---
 # <a name="array-and-object-functions-for-azure-resource-manager-templates"></a>Funkcje tablicy i obiektów dla szablonów usługi Azure Resource Manager 
 
@@ -32,13 +32,13 @@ Resource Manager zapewnia kilka funkcji do pracy z tablicami i obiektami.
 * [createArray](#createarray)
 * [pusty](#empty)
 * [pierwszy](#first)
-* [część wspólna](#intersection)
+* [Część wspólna](#intersection)
 * [JSON](#json)
 * [ostatni](#last)
-* [długość](#length)
+* [Długość](#length)
 * [max](#max)
 * [min](#min)
-* [zakres](#range)
+* [Zakres](#range)
 * [Pomiń](#skip)
 * [Wypełnij](#take)
 * [Unia](#union)
@@ -645,7 +645,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="intersection" />
 
-## <a name="intersection"></a>część wspólna
+## <a name="intersection"></a>Część wspólna
 `intersection(arg1, arg2, arg3, ...)`
 
 Zwraca pojedynczą tablicę lub obiekt o wspólnych elementach zawiera sekcja z parametrów.
@@ -738,6 +738,10 @@ Zwraca obiekt JSON.
 
 Obiekt JSON z określonego ciągu lub pustego obiektu podczas **null** jest określony.
 
+### <a name="remarks"></a>Uwagi
+
+Jeśli musisz dołączyć wartość parametru lub zmiennej obiektu JSON, użyj [concat](resource-group-template-functions-string.md#concat) funkcji, aby utworzyć ciąg, który zostanie przekazany do funkcji.
+
 ### <a name="example"></a>Przykład
 
 Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/json.json) pokazuje, jak używać funkcji json z tablicami i obiektami:
@@ -746,6 +750,12 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
 {
     "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
+    "parameters": {
+        "testValue": {
+            "type": "string",
+            "defaultValue": "demo value"
+        }
+    },
     "resources": [
     ],
     "outputs": {
@@ -756,6 +766,10 @@ Następujące [przykładowy szablon](https://github.com/Azure/azure-docs-json-sa
         "nullOutput": {
             "type": "bool",
             "value": "[empty(json('null'))]"
+        },
+        "paramOutput": {
+            "type": "object",
+            "value": "[json(concat('{\"a\": \"', parameters('testValue'), '\"}'))]"
         }
     }
 }
@@ -767,6 +781,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | ---- | ---- | ----- |
 | jsonOutput | Obiekt | {"": "b"} |
 | nullOutput | Wartość logiczna | True |
+| paramOutput | Obiekt | {"": "pokaz wartości"}
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -831,7 +846,7 @@ Dane wyjściowe z poprzedniego przykładu z wartościami domyślnymi będą:
 | Name (Nazwa) | Typ | Wartość |
 | ---- | ---- | ----- |
 | arrayOutput | Ciąg | trzy |
-| stringOutput | Ciąg | e |
+| stringOutput | Ciąg | E |
 
 Aby wdrożyć ten przykładowy szablon przy użyciu wiersza polecenia platformy Azure, należy użyć:
 
@@ -847,7 +862,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="length" />
 
-## <a name="length"></a>długość
+## <a name="length"></a>Długość
 `length(arg1)`
 
 Zwraca liczbę elementów w tablicy lub znaków w ciągu.
@@ -1058,7 +1073,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="range" />
 
-## <a name="range"></a>zakres
+## <a name="range"></a>Zakres
 `range(startingInteger, numberOfElements)`
 
 Tworzy tablicę liczb całkowitych z początkowa liczba całkowita i zawierające liczbę elementów.
@@ -1122,7 +1137,7 @@ New-AzureRmResourceGroupDeployment -ResourceGroupName functionexamplegroup -Temp
 
 <a id="skip" />
 
-## <a name="skip"></a>Pomiń
+## <a name="skip"></a>pomiń
 `skip(originalValue, numberToSkip)`
 
 Zwraca tablicę ze wszystkimi elementami po określonej liczbie w tablicy lub zwraca ciąg zawierający wszystkie znaki po określonej liczbie w ciągu.

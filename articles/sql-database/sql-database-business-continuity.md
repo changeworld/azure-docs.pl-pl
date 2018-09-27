@@ -13,12 +13,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 320489f27a3c00cf4d13f7db37c6eb9fda39f5f1
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: e18b637ee583757e040ef6fd5c2d52cff14cb4fc
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064137"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221152"
 ---
 # <a name="overview-of-business-continuity-with-azure-sql-database"></a>Omówienie zagadnień dotyczących ciągłości działalności biznesowej zapewnianej przez usługę Azure SQL Database
 
@@ -123,7 +123,7 @@ Jeśli jako mechanizm odzyskiwania używają aktywna replikacja geograficzna i g
 > 
 
 ### <a name="perform-a-geo-restore"></a>Wykonaj operację przywracania geograficznego
-Korzystając z automatycznych kopii zapasowych z magazynu geograficznie nadmiarowego (domyślnie włączony), można odzyskać bazy danych przy użyciu [geoprzywracanie](sql-database-disaster-recovery.md#recover-using-geo-restore). Odzyskiwanie ma zwykle miejsce w ciągu 12 godzin — bez utraty danych zależą od podczas ostatniego co godzinę różnicowa kopia zapasowa została podjęta i replikowane do jednej godziny. Do momentu ukończenia odzyskiwania baza danych nie może rejestrować żadnych transakcji ani odpowiadać na żadne zapytania. Należy zauważyć, że funkcja przywracania geograficznego tylko przywraca bazę danych do ostatniego dostępnego punktu w czasie.
+Korzystając z automatycznych kopii zapasowych z magazynu geograficznie nadmiarowego (domyślnie włączony), można odzyskać bazy danych przy użyciu [geoprzywracanie](sql-database-disaster-recovery.md#recover-using-geo-restore). Odzyskiwanie ma zwykle miejsce w ciągu 12 godzin — z utratą danych maksymalnie jedną godzinę, zależą od podczas ostatniej kopii zapasowej dziennika zostało wykonane, a replikowane. Do momentu ukończenia odzyskiwania baza danych nie może rejestrować żadnych transakcji ani odpowiadać na żadne zapytania. Należy zauważyć, że funkcja przywracania geograficznego tylko przywraca bazę danych do ostatniego dostępnego punktu w czasie.
 
 > [!NOTE]
 > Jeśli centrum danych powróci do trybu online przed przełączeniem aplikacji za pośrednictwem do odzyskanej bazy danych, można anulować odzyskiwanie.  

@@ -2,19 +2,22 @@
 title: Operacyjne Store zapytania w usłudze Azure SQL Database
 description: Dowiedz się, jak działają Store zapytania w usłudze Azure SQL Database
 services: sql-database
-author: bonova
-manager: craigg
 ms.service: sql-database
-ms.custom: monitor & tune
+ms.subservice: performance
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: bonova
 ms.author: bonova
-ms.openlocfilehash: 37cb77b6738ba1354034dcf77d22a19b96c4ef23
-ms.sourcegitcommit: d551ddf8d6c0fd3a884c9852bc4443c1a1485899
+ms.reviewer: carlrab
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: 8795930c6b676e7e710f112e8d9eedd6ab9084b5
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/07/2018
-ms.locfileid: "37903102"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164569"
 ---
 # <a name="operating-the-query-store-in-azure-sql-database"></a>Operacyjnego Store zapytania w usłudze Azure SQL Database
 Query Store na platformie Azure jest funkcją w pełni zarządzana baza danych, która stale zbiera i przedstawia szczegółowe informacje historyczne na temat wszystkich zapytań. Należy rozważać Query Store, jak Rejestrator danych samolotowy, znacznie upraszcza zapytania Rozwiązywanie problemów z wydajnością zarówno dla aplikacji w chmurze i lokalnych klientów. W tym artykule opisano specyficzne aspekty operacyjne Query Store na platformie Azure. Za pomocą tego wcześniej zebranych zapytania o dane, możesz szybkie diagnozowanie i rozwiązywanie problemów z wydajnością i związku z tym poświęcić więcej czasu, skupiając się na działalność biznesową. 
@@ -54,6 +57,6 @@ Aby uzyskać więcej informacji, odwiedź następujące artykuły:
 
 * [Rejestrator danych dla bazy danych](https://azure.microsoft.com/blog/query-store-a-flight-data-recorder-for-your-database) 
 * [Monitorowanie wydajności za pomocą Store zapytania](https://msdn.microsoft.com/library/dn817826.aspx)
-* [Scenariusze użycia Query Store](https://msdn.microsoft.com/library/mt614796.aspx)
+* [Scenariusze użycia magazynu zapytań](https://msdn.microsoft.com/library/mt614796.aspx)
  
 

@@ -7,20 +7,20 @@ ms.service: expressroute
 ms.topic: conceptual
 ms.date: 09/21/2018
 ms.author: cherylmc
-ms.openlocfilehash: 73bacebe6edc5b1d1273a10a0db7397766c45b0c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fc8abee93983ce4ea06d0b433eb35ed22e0f61b4
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971647"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47218075"
 ---
-# <a name="expressroute-monitoring-metrics-and-alerts"></a>Monitorowanie metryk i alertów usługi ExpressRoute
+# <a name="expressroute-monitoring-metrics-and-alerts"></a>Monitorowanie, metryki i alerty usługi ExpressRoute
 
  Ten artykuł zawiera informacje o monitorowaniu usługi ExpressRoute, metryki i alerty. Usługa Azure Monitor jest jedno centralne miejsce dla wszystkich metryk, alerty i dzienniki diagnostyczne na platformie Azure.
 
 ## <a name="circuit-metrics"></a>Metryki obwodu
 
-Aby przejść do **metryki**, kliknij stronę usługi ExpressRoute dla obwodu, który chcesz monitorować. W obszarze **monitorowanie** może można wyświetlić **metryki**.
+Aby przejść do **metryki**, kliknij stronę usługi ExpressRoute dla obwodu, który chcesz monitorować. W obszarze **monitorowanie** można wyświetlić **metryki**.
 
 ![metryki obwodu](./media/expressroute-monitoring-metrics-alerts/ermetricspeering.jpg)
 

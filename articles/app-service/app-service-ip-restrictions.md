@@ -14,12 +14,12 @@ ms.devlang: multiple
 ms.topic: article
 ms.date: 7/30/2018
 ms.author: ccompy
-ms.openlocfilehash: fb26d91ae772c4da1055da80366d6e8c6b80a6ac
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.openlocfilehash: 9ffeb01a46b62202292f6e1ea91f47cd87954387
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39364312"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219132"
 ---
 # <a name="azure-app-service-static-ip-restrictions"></a>Ograniczenia statyczny adres IP w usłudze Azure App Service #
 
@@ -29,7 +29,7 @@ Funkcja ograniczenia adresów IP działa w przypadku wszystkich obciążeń prac
 
 Po wysłaniu żądania do aplikacji, adres IP z zostaną ocenione względem listy ograniczenia adresów IP. Jeśli adres nie jest dozwolony dostęp na podstawie reguł na liście, w odpowiedzi usługa [HTTP 403](https://en.wikipedia.org/wiki/HTTP_403) kod stanu.
 
-Funkcja ograniczenia adresów IP jest zaimplementowana w ról frontonu usługi App Service, które są nadrzędne hostów procesu roboczego, w której kod jest wykonywany. Ograniczenia adresów IP do nich jest praktycznie list ACL w sieci.  
+Funkcja ograniczenia adresów IP jest zaimplementowana w ról frontonu usługi App Service, które są nadrzędne hostów procesu roboczego, w której kod jest wykonywany. Dlatego skutecznie list ACL sieci są ograniczenia adresów IP.  
 
 ![Ograniczenia adresów IP przepływu](media/app-service-ip-restrictions/ip-restrictions-flow.png)
 

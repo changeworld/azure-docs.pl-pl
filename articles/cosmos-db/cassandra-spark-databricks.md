@@ -9,12 +9,12 @@ ms.devlang: spark-scala
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: ankhanol
-ms.openlocfilehash: 3f1bdb63253506aee211f3733df2a339824de7a0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e1d8f41c55ffd453507804b005d10620665b512c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994653"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222035"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Dostęp do interfejsu API usługi Azure Cosmos DB Cassandra danych z usługi Azure Databricks
 
@@ -32,9 +32,9 @@ Ten artykuł zawiera instrukcje workwith interfejsu API usługi Azure Cosmos DB 
 
 * [Używać cqlsh do sprawdzania poprawności, jeśli więc chcesz](cassandra-spark-generic.md#connecting-to-azure-cosmos-db-cassandra-api-from-spark)
 
-* **Konfiguracja wystąpienia interfejsu API rozwiązania Cassandra łącznika Datastax Cassandra:**
+* **Konfiguracja wystąpienia interfejsu API rozwiązania Cassandra łącznika bazy danych Cassandra:**
 
-  Łącznik Datastax Cassandra wymaga szczegóły połączenia bazy danych Cassandra do zainicjowania jako część kontekstu aparatu spark. Podczas uruchamiania notesu usługi Databricks kontekstu aparatu spark jest już zainicjowany i nie jest zalecane, aby zatrzymać i ponownie zainicjować go. Jedno rozwiązanie to można dodać konfiguracji wystąpienia interfejsu API rozwiązania Cassandra na poziomie do klastra, w konfiguracji klastra spark. Jest to jednorazowa działania dla klastra. Dodaj następujący kod do konfiguracji platformy Spark, jak spacjami parę klucz-wartość:
+  Łącznik dla interfejsu API rozwiązania Cassandra wymaga szczegóły połączenia bazy danych Cassandra do zainicjowania jako część kontekstu aparatu spark. Podczas uruchamiania notesu usługi Databricks kontekstu aparatu spark jest już zainicjowany i nie jest zalecane, aby zatrzymać i ponownie zainicjować go. Jedno rozwiązanie to można dodać konfiguracji wystąpienia interfejsu API rozwiązania Cassandra na poziomie do klastra, w konfiguracji klastra spark. Jest to jednorazowa działania dla klastra. Dodaj następujący kod do konfiguracji platformy Spark, jak spacjami parę klucz-wartość:
  
   ```scala
   spark.cassandra.connection.host YOUR_COSMOSDB_ACCOUNT_NAME.cassandra.cosmosdb.azure.com
@@ -46,11 +46,11 @@ Ten artykuł zawiera instrukcje workwith interfejsu API usługi Azure Cosmos DB 
 
 ## <a name="add-the-required-dependencies"></a>Dodaj wymagane zależności
 
-* **Łącznik platformy Datastax Cassandra Spark:** — w celu integracji z interfejsem API Cassandra DB Cosmos Azure za pomocą platformy Spark, Datastax Cassandra, łącznik, musi być podłączona do usługi Azure Databricks w klastrze. Aby dołączyć do klastra:
+* **Łącznik platformy Spark Cassandra:** — aby Integracja z interfejsem API usługi Azure Cosmos DB Cassandra z platformą Spark, Cassandra, łącznik, musi być podłączona do usługi Azure Databricks w klastrze. Aby dołączyć do klastra:
 
-  * Przejrzyj wersja środowiska uruchomieniowego Databricks wersji platformy Spark. Następnie znajdź [współrzędnych maven](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) są zgodne z łącznikiem Datastax Cassandra Spark i dołączyć go do klastra. Zobacz ["Przekaż pakiet Maven lub Spark pakietu"](https://docs.databricks.com/user-guide/libraries.html) artykuł, aby dołączyć Biblioteka łącznika do klastra. Na przykład Współrzędna maven "Środowiska uruchomieniowego usługi Databricks w wersji 4.3," "Platformy Spark 2.3.1" i "jest Scala 2.11" `spark-cassandra-connector_2.11-2.3.1`
+  * Przejrzyj wersja środowiska uruchomieniowego Databricks wersji platformy Spark. Następnie znajdź [współrzędnych maven](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) są zgodne z łącznikiem Cassandra Spark i dołączyć go do klastra. Zobacz ["Przekaż pakiet Maven lub Spark pakietu"](https://docs.databricks.com/user-guide/libraries.html) artykuł, aby dołączyć Biblioteka łącznika do klastra. Na przykład Współrzędna maven "Środowiska uruchomieniowego usługi Databricks w wersji 4.3," "Platformy Spark 2.3.1" i "jest Scala 2.11" `spark-cassandra-connector_2.11-2.3.1`
 
-* **Biblioteka usługi Azure Cosmos DB Cassandra specyficzne dla interfejsu API:** — fabryka niestandardowego połączenia jest wymagana do skonfigurowania zasad ponawiania z łącznika Datastax Spark interfejsu API usługi Azure Cosmos DB Cassandra. Dodaj `com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0` [współrzędnych maven](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) na dołączanie biblioteki do klastra.
+* **Biblioteka usługi Azure Cosmos DB Cassandra specyficzne dla interfejsu API:** — fabryka niestandardowego połączenia jest wymagana do skonfigurowania zasady ponawiania z łącznika Spark bazy danych Cassandra do interfejsu API usługi Azure Cosmos DB Cassandra. Dodaj `com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0` [współrzędnych maven](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) na dołączanie biblioteki do klastra.
 
 ## <a name="sample-notebooks"></a>Przykładowe notesów
 

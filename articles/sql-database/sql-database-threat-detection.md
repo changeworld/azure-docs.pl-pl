@@ -2,21 +2,22 @@
 title: Wykrywanie zagrożeń — usługa Azure SQL Database | Dokumentacja firmy Microsoft
 description: Wykrywanie zagrożeń wykrywa nietypowe działania bazy danych wskazują możliwe zagrożenia bezpieczeństwa w bazie danych w jednej bazie danych lub elastycznej puli.
 services: sql-database
-author: rmatchoro
-manager: craigg
 ms.service: sql-database
-ms.subservice: advanced-threat-protection
-ms.custom: security
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/19/2018
+author: rmatchoro
 ms.author: ronmat
-ms.reviewer: vanto
-ms.openlocfilehash: ab554707d432f862f9fb9c075eea6cb12419eacd
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.reviewer: vanto, carlrab
+manager: craigg
+ms.date: 09/19/2018
+ms.openlocfilehash: ed7a117d4422b3b3feddd7d2fafa5eabea43f9e5
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46497734"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164941"
 ---
 # <a name="azure-sql-database-threat-detection"></a>Wykrywanie zagrożeń w usłudze Azure SQL Database
 

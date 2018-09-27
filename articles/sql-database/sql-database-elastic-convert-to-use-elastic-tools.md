@@ -1,40 +1,43 @@
 ---
 title: Migrowanie istniejących baz danych do skalowania w poziomie | Dokumentacja firmy Microsoft
-description: Konwertuj podzielonej baz danych za pomocą narzędzi elastycznej bazy danych przez utworzenie niezależnego fragmentu menedżera map
+description: Konwertuj podzielonej na fragmenty bazy danych za pomocą narzędzi elastycznych baz danych, tworząc menedżera map fragmentów
 services: sql-database
-author: stevestein
-manager: craigg
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: scale-out
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: 99b315c96e6decbc3bd7622835ba0639e9560164
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: e5039e299df30df4d49f24430af4b44837d65c44
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34645943"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166379"
 ---
 # <a name="migrate-existing-databases-to-scale-out"></a>Migrowanie istniejących baz danych do skalowania w poziomie
-Łatwe zarządzanie istniejących skalowalnych w poziomie podzielonej baz danych za pomocą narzędzi bazy danych usługi Azure SQL Database (takich jak [biblioteki klienta elastycznej bazy danych](sql-database-elastic-database-client-library.md)). Najpierw przekonwertuj istniejącego zestawu baz danych do użycia [menedżera map niezależnego fragmentu](sql-database-elastic-scale-shard-map-management.md). 
+Łatwe zarządzanie istniejących skalowanych w poziomie podzielonych na fragmenty baz danych przy użyciu narzędzia graficzne bazy danych Azure SQL Database (takie jak [Biblioteka kliencka Elastic Database](sql-database-elastic-database-client-library.md)). Najpierw przekonwertuj istniejącego zestawu baz danych do użycia [Menedżera mapowań fragmentów](sql-database-elastic-scale-shard-map-management.md). 
 
 ## <a name="overview"></a>Przegląd
-Aby przeprowadzić migrację z istniejącej bazy danych podzielonej: 
+Aby przeprowadzić migrację istniejącej bazy danych podzielonej na fragmenty: 
 
-1. Przygotowanie [bazy danych Menedżera mapy niezależnego fragmentu](sql-database-elastic-scale-shard-map-management.md).
-2. Utwórz mapę niezależnego fragmentu.
-3. Przygotuj poszczególnych fragmentów.  
-4. Dodać mapowania do mapy niezależnego fragmentu.
+1. Przygotowanie [bazy danych Menedżera mapowań fragmentów](sql-database-elastic-scale-shard-map-management.md).
+2. Tworzenie mapy fragmentów.
+3. Przygotuj poszczególne fragmenty.  
+4. Dodaj mapowania do mapy fragmentów.
 
-Te techniki można implementować przy użyciu [biblioteki klienta .NET Framework](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/), lub skryptów programu PowerShell, zobacz [Azuresql DB - skrypty narzędzi elastycznej bazy danych](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db). Przykłady w tym miejscu użyć skryptów środowiska PowerShell.
+Techniki te można zaimplementować przy użyciu [biblioteki klienta .NET Framework](http://www.nuget.org/packages/Microsoft.Azure.SqlDatabase.ElasticScale.Client/), lub skryptów programu PowerShell adrese [bazy danych SQL Azure — skrypty narzędzi elastycznej bazy danych](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db). Przykłady w tym miejscu za pomocą skryptów programu PowerShell.
 
-Aby uzyskać więcej informacji o ShardMapManager, zobacz [zarządzania mapy niezależnego fragmentu](sql-database-elastic-scale-shard-map-management.md). Omówienie narzędzi elastycznej bazy danych, zobacz [Przegląd funkcji elastycznej bazy danych](sql-database-elastic-scale-introduction.md).
+Aby uzyskać więcej informacji na temat ShardMapManager zobacz [procesu zarządzania mapą fragmentów](sql-database-elastic-scale-shard-map-management.md). Aby uzyskać omówienie narzędzi elastycznej bazy danych, zobacz [omówienie funkcji Elastic Database](sql-database-elastic-scale-introduction.md).
 
-## <a name="prepare-the-shard-map-manager-database"></a>Przygotowanie bazy danych Menedżera niezależnego fragmentu mapy
-Menedżer mapy niezależnego fragmentu jest specjalne bazy danych, która zawiera dane do zarządzania bazami danych skalowalnych w poziomie. Użyj istniejącej bazy danych lub Utwórz nową bazę danych. Bazy danych, działają jako Menedżer mapy niezależnego fragmentu nie powinien być tej samej bazy danych jako niezależnego fragmentu. Skrypt programu PowerShell nie tworzy bazy danych. 
+## <a name="prepare-the-shard-map-manager-database"></a>Przygotowywanie bazy danych Menedżera mapowań fragmentów
+Menedżera mapowań fragmentów to specjalne bazy danych, która zawiera dane do zarządzania bazami danych skalowanych w poziomie. Użyj istniejącej bazy danych lub Utwórz nową bazę danych. Działający jako menedżera mapowań fragmentów bazy danych nie może być tej samej bazy danych jako fragmentów. Skrypt programu PowerShell nie tworzy bazy danych. 
 
-## <a name="step-1-create-a-shard-map-manager"></a>Krok 1: tworzenie niezależnych menedżera map
+## <a name="step-1-create-a-shard-map-manager"></a>Krok 1: Tworzenie fragmentu menedżera map
     # Create a shard map manager. 
     New-ShardMapManager -UserName '<user_name>' 
     -Password '<password>' 
@@ -44,8 +47,8 @@ Menedżer mapy niezależnego fragmentu jest specjalne bazy danych, która zawier
     # for the new or existing database that should be used for storing 
     # tenant-database mapping information.
 
-### <a name="to-retrieve-the-shard-map-manager"></a>Aby pobrać niezależnego fragmentu menedżera map
-Po utworzeniu można pobrać manager mapy niezależnego fragmentu z tego polecenia cmdlet. Ten krok jest niezbędny, za każdym razem, gdy musisz użyć obiektu ShardMapManager.
+### <a name="to-retrieve-the-shard-map-manager"></a>Aby pobrać menedżera map fragmentów
+Po utworzeniu możesz pobrać za pomocą tego polecenia cmdlet Menedżera mapowań fragmentów. Ten krok jest niezbędny, za każdym razem, gdy konieczne jest użycie obiektu ShardMapManager.
 
     # Try to get a reference to the Shard Map Manager  
     $ShardMapManager = Get-ShardMapManager -UserName '<user_name>' 
@@ -54,30 +57,30 @@ Po utworzeniu można pobrać manager mapy niezależnego fragmentu z tego polecen
     -SqlDatabaseName '<smm_db_name>' 
 
 
-## <a name="step-2-create-the-shard-map"></a>Krok 2: Tworzenie mapy niezależnego fragmentu
-Wybierz typ mapy niezależnego fragmentu do utworzenia. Wybór zależy od architektury bazy danych: 
+## <a name="step-2-create-the-shard-map"></a>Krok 2: Tworzenie mapy fragmentów
+Wybierz typ mapowania fragmentów do utworzenia. Wybór zależy od architektury bazy danych: 
 
-1. Pojedynczej dzierżawy na bazę danych (terminów, zobacz [słownik](sql-database-elastic-scale-glossary.md).) 
-2. Wiele dzierżaw dla jednej bazy danych (dwa typy):
+1. Pojedynczej dzierżawy na bazę danych (warunków, zobacz [słownik](sql-database-elastic-scale-glossary.md).) 
+2. Wiele dzierżaw na bazę danych (dwóch typów):
    1. Mapowanie list
    2. Mapowanie zakresu
 
-Model pojedynczego dzierżawcy można utworzyć **mapowania listy** mapy niezależnego fragmentu. Model pojedynczej dzierżawy przypisuje jednej bazy danych dla każdego dzierżawcy. Jest to efektywne modelu dla deweloperów SaaS, ponieważ takie rozwiązanie upraszcza zarządzanie.
+W przypadku modelu jednej dzierżawy, utworzyć **mapowanie list** mapowania fragmentów. Modelu jednej dzierżawy przypisze jedną bazę danych na dzierżawę. Jest to skuteczne modelu dla deweloperów SaaS, ponieważ upraszcza zarządzanie.
 
 ![Mapowanie list][1]
 
-Modelu wielodostępnym przypisuje kilka dzierżaw do pojedynczej bazy danych (i grup dzierżawcy mogą rozpowszechniają wielu baz danych). Jeśli potrzebujesz każdego dzierżawcy, aby korzystać z niewielkie zbiory danych, należy użyć tego modelu. W tym modelu Przypisz zakres dzierżawcy do bazy danych przy użyciu **mapowanie zakresu**. 
+Modelu wielodostępnym przypisuje kilka dzierżaw w jednej bazie danych (i grup dzierżawców można rozpowszechniać w wielu bazach danych). Jeśli oczekujesz, że każdego dzierżawcy, aby korzystać z danych w małych, należy użyć tego modelu. W tym modelu należy przypisać określonego zakresu dzierżaw, bazę danych za pomocą **mapowania zakresu**. 
 
 ![Mapowanie zakresu][2]
 
-Lub możesz wdrożyć model bazy danych wielu dzierżawców przy użyciu *mapowanie list* można przypisać wielu dzierżawców do pojedynczej bazy danych. Na przykład DB1 jest używany do przechowywania informacji na temat dzierżawy ID 1 i 5 i bazy danych DB2 przechowuje dane dla dzierżawy 7 i dzierżawcy 10. 
+Lub możesz zaimplementować modelu wielodostępną bazą danych przy użyciu *mapowanie list* można przypisać wielu dzierżaw w jednej bazie danych. Na przykład DB1 służy do przechowywania informacji o dzierżawie ID 1 i 5, a bazy danych DB2 przechowuje dane dla dzierżawy 7 i dzierżawy 10. 
 
-![Wiele dzierżaw dla jednej bazy danych][3] 
+![Wielu dzierżaw w pojedynczej bazy danych][3] 
 
-**W oparciu o wybór, wybierz jedną z następujących opcji:**
+**Na podstawie wybranego, wybierz jedną z następujących opcji:**
 
-### <a name="option-1-create-a-shard-map-for-a-list-mapping"></a>Opcja 1: Tworzenie mapy niezależnego fragmentu mapowania listy
-Tworzenie mapy niezależnego fragmentu przy użyciu obiektu ShardMapManager. 
+### <a name="option-1-create-a-shard-map-for-a-list-mapping"></a>Opcja 1: Tworzenie mapy fragmentów mapowania listy
+Tworzenie mapy fragmentów za pomocą obiektu ShardMapManager. 
 
     # $ShardMapManager is the shard map manager object. 
     $ShardMap = New-ListShardMap -KeyType $([int]) 
@@ -85,8 +88,8 @@ Tworzenie mapy niezależnego fragmentu przy użyciu obiektu ShardMapManager.
     -ShardMapManager $ShardMapManager 
 
 
-### <a name="option-2-create-a-shard-map-for-a-range-mapping"></a>Opcja 2: Tworzenie mapy niezależnego fragmentu mapowania zakresu
-Aby korzystać z tego wzorca mapowania, wartości Identyfikatora dzierżawy musi być ciągłe zakresy i można mieć przerwa w zakresach przez pominięcie zakres podczas tworzenia bazy danych.
+### <a name="option-2-create-a-shard-map-for-a-range-mapping"></a>Opcja 2: Tworzenie mapy fragmentów mapowania zakresu
+Korzystanie z tego wzorca mapowania, wartości Identyfikatora dzierżawy musi być ciągłe zakresów i zaakceptować mają przerwa w zakresach, pomijanie zakresu, podczas tworzenia bazy danych.
 
     # $ShardMapManager is the shard map manager object 
     # 'RangeShardMap' is the unique identifier for the range shard map.  
@@ -95,11 +98,11 @@ Aby korzystać z tego wzorca mapowania, wartości Identyfikatora dzierżawy musi
     -RangeShardMapName 'RangeShardMap' 
     -ShardMapManager $ShardMapManager 
 
-### <a name="option-3-list-mappings-on-a-single-database"></a>Opcja 3: Lista mapowania na pojedynczej bazy danych
-Konfigurowanie ten wzorzec wymaga również tworzenia mapy listy jak pokazano w kroku 2, opcja 1.
+### <a name="option-3-list-mappings-on-a-single-database"></a>Opcja 3: Wyświetlić listę mapowań pojedynczej bazy danych
+Konfigurowanie ten wzorzec wymaga również tworzenie mapowania w postaci listy jak pokazano w kroku 2, opcja 1.
 
-## <a name="step-3-prepare-individual-shards"></a>Krok 3: Przygotowanie poszczególnych odłamków
-Dodaj każdy identyfikator niezależnego fragmentu (baza danych) z menedżerem mapy niezależnego fragmentu. Do przechowywania informacji o mapowaniu to przygotowuje pojedynczych baz danych. Tej metody należy wykonać na każdym niezależnego fragmentu.
+## <a name="step-3-prepare-individual-shards"></a>Krok 3: Przygotowanie poszczególne fragmenty.
+Dodaj każdego fragmentu (baza danych) do Menedżera mapowań fragmentów. Wykonanie tych kroków przygotowuje poszczególnych baz danych do przechowywania informacji o mapowaniu. Tej metody należy wykonać dla każdego fragmentu.
 
     Add-Shard 
     -ShardMap $ShardMap 
@@ -108,11 +111,11 @@ Dodaj każdy identyfikator niezależnego fragmentu (baza danych) z menedżerem m
     # The $ShardMap is the shard map created in step 2.
 
 
-## <a name="step-4-add-mappings"></a>Krok 4: Dodawanie mapowania
-Dodanie mapowań zależy od rodzaju mapy niezależnego fragmentu, który został utworzony. Jeśli utworzono mapy listy, możesz dodać mapowania listy. Jeśli utworzono map zakres, należy dodać mapowania zakresu.
+## <a name="step-4-add-mappings"></a>Krok 4. Dodawanie mapowania
+Dodanie mapowań zależy od rodzaju mapy fragmentów, który został utworzony. Jeśli utworzono mapowania w postaci listy, możesz dodać listę mapowań. Jeśli utworzono mapę zakresu, możesz dodać mapowania zakresu.
 
-### <a name="option-1-map-the-data-for-a-list-mapping"></a>Opcja 1: mapowanie danych dla mapowania listy
-Mapowania danych przez dodanie mapowania listy dla każdego dzierżawcy.  
+### <a name="option-1-map-the-data-for-a-list-mapping"></a>Opcja 1: mapowanie danych dla mapowania list
+Mapowania danych, dodając mapowanie list dla każdej dzierżawy.  
 
     # Create the mappings and associate it with the new shards 
     Add-ListMapping 
@@ -123,7 +126,7 @@ Mapowania danych przez dodanie mapowania listy dla każdego dzierżawcy.
     -SqlDatabaseName '<shard_database_name>' 
 
 ### <a name="option-2-map-the-data-for-a-range-mapping"></a>Opcja 2: mapowanie danych dla mapowania zakresu
-Dodaj mapowanie zakresu dla wszystkich dzierżawy identyfikator zakresu - skojarzenia bazy danych:
+Dodaj mapowania zakresu dla wszystkich dzierżawy identyfikator zakresu - skojarzenia bazy danych:
 
     # Create the mappings and associate it with the new shards 
     Add-RangeMapping 
@@ -135,31 +138,31 @@ Dodaj mapowanie zakresu dla wszystkich dzierżawy identyfikator zakresu - skojar
     -SqlDatabaseName '<shard_database_name>' 
 
 
-### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-a-single-database"></a>Krok 4 — opcja 3: mapowanie danych dla wielu dzierżawców w pojedynczej bazy danych
-Dla każdego dzierżawcy Uruchom Add-ListMapping (opcja 1). 
+### <a name="step-4-option-3-map-the-data-for-multiple-tenants-on-a-single-database"></a>Krok 4 — opcja 3: mapowania danych dla wielu dzierżaw w pojedynczej bazy danych
+Dla każdej dzierżawy Uruchom ListMapping Dodaj (opcja 1). 
 
 ## <a name="checking-the-mappings"></a>Sprawdzanie mapowania
-Informacje o istniejących odłamków i mapowania skojarzonych z nimi mogą być przeszukiwane przy użyciu następujących poleceń:  
+Informacje o istniejących fragmentów i mapowania skojarzone z nimi można wykonywać zapytania za pomocą następującego polecenia:  
 
     # List the shards and mappings 
     Get-Shards -ShardMap $ShardMap 
     Get-Mappings -ShardMap $ShardMap 
 
 ## <a name="summary"></a>Podsumowanie
-Po zakończeniu instalacji można rozpocząć korzystanie z biblioteki klienta elastycznej bazy danych. Można również użyć [routingu zależne od danych](sql-database-elastic-scale-data-dependent-routing.md) i [zapytania wielu niezależnych](sql-database-elastic-scale-multishard-querying.md).
+Po zakończeniu instalacji możesz rozpocząć używać biblioteki klienckiej Elastic Database. Można również użyć [routingu zależnego od danych](sql-database-elastic-scale-data-dependent-routing.md) i [zapytania z wieloma fragmentami](sql-database-elastic-scale-multishard-querying.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
-Pobierz skrypty programu PowerShell z [bazy danych elastyczne bazy danych SQL Azure narzędzi skryptów](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
+Pobierz skrypty programu PowerShell z [usługi Azure SQL DB Elastic Database narzędzi skryptów](https://gallery.technet.microsoft.com/scriptcenter/Azure-SQL-DB-Elastic-731883db).
 
-Narzędzia są również w witrynie GitHub: [Azure/elastyczna db-tools](https://github.com/Azure/elastic-db-tools).
+Narzędzia są również w witrynie GitHub: [Azure/elastyczne db-tools](https://github.com/Azure/elastic-db-tools).
 
-Użyj narzędzia do scalania podziału do przenoszenia danych z modelu wielodostępnym lub do pojedynczej dzierżawy modelu. Zobacz [narzędzia do scalania podziału](sql-database-elastic-scale-get-started.md).
+Narzędzie dzielenia i scalania do przenoszenia danych do lub z modelu wielu dzierżaw do modelu jednej dzierżawy. Zobacz [narzędzie do scalania podziału](sql-database-elastic-scale-get-started.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 Aby uzyskać informacje na temat typowych wzorców architektury danych w aplikacjach baz danych typu oprogramowanie jako usługa (SaaS), zobacz artykuł [Design Patterns for Multi-tenant SaaS Applications with Azure SQL Database](sql-database-design-patterns-multi-tenancy-saas-applications.md) (Wzorce projektowe dla wielodostępnych aplikacji SaaS korzystających z usługi Azure SQL Database).
 
-## <a name="questions-and-feature-requests"></a>Pytania i żądania funkcji
-Odpowiedzi na pytania, użyj [forum bazy danych SQL](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) i funkcja żądań, dodaj je do [forum opinii bazy danych SQL](https://feedback.azure.com/forums/217321-sql-database/).
+## <a name="questions-and-feature-requests"></a>Pytania i sugestie funkcji
+Masz pytania, należy użyć [forum bazy danych SQL](http://social.msdn.microsoft.com/forums/azure/home?forum=ssdsgetstarted) i żądania funkcji, dodaj je do [forum z opiniami bazy danych SQL](https://feedback.azure.com/forums/217321-sql-database/).
 
 <!--Image references-->
 [1]: ./media/sql-database-elastic-convert-to-use-elastic-tools/listmapping.png

@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/09/2018
 ms.author: jdial
-ms.openlocfilehash: f8d92c5d01e977fc64e823a0229b5f2ede944743
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d72faa99c15fdbebb299e416fd902bae261f31f9
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46985655"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221183"
 ---
 # <a name="create-change-or-delete-a-virtual-network"></a>Tworzenie, zmienianie lub usuwanie sieci wirtualnej
 
@@ -89,7 +89,7 @@ Przed wykonaniem kroków w żadnej sekcji tego artykułu, należy wykonać nast�
     - **Właściwości**: Wyświetla ustawienia dotyczące sieci wirtualnej, w tym identyfikator zasobu sieci wirtualnej i znajduje się w subskrypcji platformy Azure.
     - **Diagram**: na diagramie przedstawiono wizualna reprezentacja dla wszystkich urządzeń, które są podłączone do sieci wirtualnej. Diagram ma kilka kluczowych informacji o urządzeniach. Zarządzanie urządzeniem, w tym widoku na diagramie wybierz urządzenie.
     - **Typowe ustawienia Azure**: Aby dowiedzieć się więcej na temat typowych ustawień platformy Azure, zobacz następujące informacje:
-        *   [Dziennik aktywności](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs)
+        *   [Dziennik aktywności](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md)
         *   [Kontrola dostępu (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control)
         *   [Tagi](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json)
         *   [Blokady](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json)

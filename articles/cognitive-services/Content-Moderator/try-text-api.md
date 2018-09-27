@@ -1,63 +1,64 @@
 ---
-title: Średnie tekstu przy użyciu interfejsu API łagodzenia tekstu w zawartości moderatora Azure | Dokumentacja firmy Microsoft
-description: Test-Drive łagodzenia tekstu przy użyciu interfejsu API łagodzenia tekstu w konsoli usługi online.
+title: Moderowanie tekstu za pomocą interfejsu API moderowania tekstu - Content Moderator
+titlesuffix: Azure Cognitive Services
+description: Testuj Moderowanie tekstu przy użyciu interfejsu API moderowania tekstu w konsoli usługi online.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 08/05/2017
 ms.author: sajagtap
-ms.openlocfilehash: ed696c31a886626819414c45eb7995edaf161fff
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 95fd5507287a9294f4fca6af9cc5f01f0ea9fe1c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347765"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219791"
 ---
-# <a name="moderate-text-from-the-api-console"></a>Umiarkowany tekstu z konsoli interfejsu API
+# <a name="moderate-text-from-the-api-console"></a>Moderowanie tekstu z poziomu konsoli interfejsu API
 
-Użyj [API łagodzenia tekst](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) w Azure moderatora zawartości do skanowania zawartości tekstu. Operacja skanowania zawartości dla niestosownych wyrażeń i porównuje zawartości przed blacklists udostępnionego i niestandardowych.
+Użyj [interfejs API moderowania tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f) w usłudze Azure Content Moderator do skanowania zawartości tekstu. Operacja skanowania zawartości pod kątem wulgarności i porównuje zawartość względem udostępnionej i niestandardowych list elementów zabronionych.
 
 
-## <a name="get-your-api-key"></a>Uzyskaj swój klucz interfejsu API
-Zanim można test-drive interfejsu API w konsoli usługi online, należy klucz subskrypcji. Ten element znajduje się na **ustawienia** karcie **Ocp-Apim-subskrypcji — klucz** pole. Aby uzyskać więcej informacji, zobacz [omówienie](overview.md).
+## <a name="get-your-api-key"></a>Uzyskaj klucz interfejsu API
+Zanim można Testuj interfejs API w konsoli usługi online, należy się klucz subskrypcji. Ten element znajduje się na **ustawienia** na karcie **Ocp-Apim-Subscription-Key** pole. Aby uzyskać więcej informacji, zobacz [Przegląd](overview.md).
 
-## <a name="navigate-to-the-api-reference"></a>Przejdź do dokumentacji interfejsu API
-Przejdź do [dokumentacja interfejsu API łagodzenia tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f). 
+## <a name="navigate-to-the-api-reference"></a>Przejdź do dokumentacja interfejsu API
+Przejdź do [dokumentacja interfejsu API moderowania tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/57cf753a3f9b070c105bd2c1/operations/57cf753a3f9b070868a1f66f). 
 
   **Tekst — ekranu** zostanie otwarta strona.
 
 ## <a name="open-the-api-console"></a>Otwórz konsolę interfejsu API
-Aby uzyskać **konsoli testowania otwarty interfejs API**, wybierz region, który najlepiej opisuje Twojej lokalizacji. 
+Aby uzyskać **konsoli testowania interfejsu Open API**, wybierz region, który najlepiej opisuje Twojej lokalizacji. 
 
   ![Tekst — wybór obszaru strony ekranu](images/test-drive-region.png)
 
   **Tekst — ekranu** zostanie otwarta konsola interfejsu API.
 
-## <a name="select-the-inputs"></a>Wybierz dane wejściowe
+## <a name="select-the-inputs"></a>Zaznacz dane wejściowe
 
 ### <a name="parameters"></a>Parametry
-Wybierz parametry zapytania, które mają być wykorzystywane w ekranie tekstu. Na przykład użyj wartości domyślnej dla **języka**. Można także pole pozostanie puste, ponieważ operacja automatycznie wykryje prawdopodobnie języka jako część jej wykonywania.
+Wybierz parametry zapytania, które ekranie tekst. Na przykład użyj wartości domyślnej dla **języka**. Można również pole pozostanie puste, ponieważ operacja automatycznie wykryje prawdopodobnie języka jako część jej wykonanie.
 
 > [!NOTE]
-> Dla **języka** parametru, Przypisz `eng` lub pozostaw to pole puste, aby zobaczyć wspierana maszyny **klasyfikacji** odpowiedzi (funkcja w wersji zapoznawczej). **Ta funkcja obsługuje tylko język angielski**.
+> Dla **języka** parametru, Przypisz `eng` lub pozostaw to pole puste, aby zobaczyć wspomagane maszynowo **klasyfikacji** odpowiedzi (funkcja w wersji zapoznawczej). **Ta funkcja obsługuje tylko język angielski**.
 >
-> Dla **warunki niestosownych wyrażeń** wykrywania, użyj [kod ISO 639 3](http://www-01.sil.org/iso639-3/codes.asp) z obsługiwanych języków, które są wymienione w tym artykule, lub pozostaw puste.
+> Dla **warunki wulgaryzmów** wykrywania, użyj [kod ISO 639-3](http://www-01.sil.org/iso639-3/codes.asp) z obsługiwanych języków, które są wymienione w tym artykule, lub pozostawić je puste.
 
-Dla **Autokorekty**, **dane osobowe**, i **klasyfikowania (wersja zapoznawcza)**, wybierz pozycję **true**. Pozostaw **identyfikatora listy można wpisać** pole puste.
+Dla **Autokorekty**, **dane osobowe**, i **klasyfikowania (wersja zapoznawcza)**, wybierz opcję **true**. Pozostaw **ListId** pole puste.
 
-  ![Tekst — parametry zapytania ekranu konsoli](images/text-api-console-inputs.PNG)
+  ![Tekst — parametry zapytania konsoli ekranu](images/text-api-console-inputs.PNG)
 
 ### <a name="content-type"></a>Typ zawartości
-Aby uzyskać **Content-Type**, wybierz typ zawartości ma ekranu. Na przykład użyj domyślnej **zwykły tekst** typ zawartości. W **Ocp-Apim-subskrypcji — klucz** wprowadź klucz subskrypcji.
+Aby uzyskać **Content-Type**, wybierz typ zawartości, które chcesz ekranu. Na przykład użyj wartości domyślnej **text/plain** typ zawartości. W **Ocp-Apim-Subscription-Key** wprowadź swój klucz subskrypcji.
 
 ### <a name="sample-text-to-scan"></a>Przykładowy tekst do skanowania
-W **treść żądania** wprowadź tekst. Poniższy przykład przedstawia zamierzone Literówka w tekście.
+W **treść żądania** wprowadź jakiś tekst. Poniższy przykład pokazuje zamierzone błąd pisowni w tekście.
 
 > [!NOTE]
-> Nieprawidłowy numer ubezpieczenia społecznego w następujący przykładowy tekst jest zamierzone. Ma na celu przedstawienia przykładowe dane wejściowe i wyjściowe formatu.
+> Nieprawidłowy numer ubezpieczenia społecznego w następujący przykładowy tekst jest celowe. Celem jest przekazać przykładowe dane wejściowe i wyjściowe formatu.
 
 ```
     Is this a grabage or crap email abcdef@abcd.com, phone: 6657789887, IP: 255.255.255.255, 1 Microsoft Way, Redmond, WA 98052.
@@ -65,23 +66,23 @@ W **treść żądania** wprowadź tekst. Poniższy przykład przedstawia zamierz
     Also, 999-99-9999 looks like a social security number (SSN).
 ```
 
-### <a name="text-classification-feature"></a>Funkcja klasyfikacji tekstu
+### <a name="text-classification-feature"></a>Funkcji Klasyfikacja tekstu
 
-W poniższym przykładzie widać zawartości moderatora tekst pomocy maszyny klasyfikacji odpowiedzi. Pomaga wykryć potencjalnie niepożądane zawartości. Zawartość oflagowane uzna jako niestosowną w zależności od kontekstu. Oprócz przekazywania prawdopodobieństwo wystąpienia każdej kategorii, to może zalecić człowieka przeglądu zawartości. Funkcja używa uczonego modelu do identyfikowania możliwych obraźliwe, derogacyjnego lub porównawczego języka. W tym żargon, skróconej wyrazy, obraźliwe i celowo błędnie wpisane słowa do przeglądu. 
+W poniższym przykładzie zobaczysz odpowiedź klasyfikacji tekstu wspomagane maszynowo Content Moderator. Ułatwia wykrywanie potencjalnie niepożądane zawartości. Mogą zostać uznane za flagą zawartość, jako niestosowny w zależności od kontekstu. Oprócz przekazywania prawdopodobieństwo wystąpienia każdej kategorii, to może zalecić dokonywanie przeglądu zawartości. Funkcja używa uczonego modelu do identyfikowania możliwych obraźliwe, uwłaczającej lub porównawczego języka. W tym żargonu, skróconej słów, obraźliwych i celowo błędnie napisanych wyrazów do przeglądu. 
 
 #### <a name="explanation"></a>Wyjaśnienie
 
-- `Category1` reprezentuje potencjalnych obecności język, który można uznać za płciowo jawne lub dla dorosłych w niektórych sytuacjach.
-- `Category2` reprezentuje potencjalnych obecności język, który można uznać za płciowo sugerujących lub dojrzałe w niektórych sytuacjach.
-- `Category3` reprezentuje potencjalnych obecności język, który może zostać uznany za obraźliwy w niektórych sytuacjach.
-- `Score` to od 0 do 1. Im wyższa jest ocena wyższa modelu jest prognozowanie kategorii można stosować. Ta wersja zapoznawcza zależy od statystyczne modelu zamiast wyników kodowane ręcznie. Zaleca się testowanie na własną zawartość, aby określić, jak każda kategoria wyrównuje do własnych potrzeb.
-- `ReviewRecommended` jest wartość PRAWDA lub FAŁSZ w zależności od wewnętrznego wynik progów. Klienci powinna ocenić, czy ta wartość lub zdecydować o progami niestandardowymi na podstawie ich zawartości zasad.
+- `Category1` reprezentuje potencjalnych obecności języka, który może być uznawany za przekleństwa jawne lub treści dla dorosłych w niektórych sytuacjach.
+- `Category2` reprezentuje potencjalnych obecności języka, który może być uznawany za przekleństwa dwuznaczne lub dla dorosłych w niektórych sytuacjach.
+- `Category3` reprezentuje potencjalnych obecności język, który może być uznane za obraźliwe w niektórych sytuacjach.
+- `Score` to od 0 do 1. Wyższą ocenę, tym większe modelu jest prognozowanie mogą dotyczyć kategorii. Ta wersja zapoznawcza opiera się na modelu statystycznych, a nie ręcznie zakodowane wyników. Zaleca się testowanie za pomocą własnej zawartości, aby określić, jak wyrównuje każdej kategorii wymagań.
+- `ReviewRecommended` jest wartość PRAWDA lub FAŁSZ, w zależności od wewnętrznego wynik progów. Klientów należy ocenić, czy Użyj tej wartości lub wybrać progami niestandardowymi na podstawie ich zawartości zasad.
 
 ### <a name="analyze-the-response"></a>Analizowanie odpowiedzi
-Następującą odpowiedź zawiera różne wgląd z interfejsu API. Zawiera on potencjalne niestosownych wyrażeń, dane osobowe klasyfikacji (wersja zapoznawcza) i wersji rozwiązany automatycznie.
+Następującą odpowiedź zawiera różne szczegółowe informacje, z interfejsu API. Zawiera on wulgaryzmy, dane osobowe, klasyfikacji (wersja zapoznawcza) i poprawił wersji.
 
 > [!NOTE]
-> Funkcja "Klasyfikacja" wspierana maszyny jest w wersji zapoznawczej i obsługuje tylko język angielski.
+> Funkcja "Klasyfikacja" wspomagane maszynowo jest w wersji zapoznawczej i obsługuje tylko język angielski.
 
 ```
 {
@@ -161,8 +162,8 @@ Następującą odpowiedź zawiera różne wgląd z interfejsu API. Zawiera on po
 }
 ```
 
-Aby uzyskać szczegółowy opis wszystkich sekcji w odpowiedzi JSON, zapoznaj się [omówienie łagodzenia interfejsu API tekstu](text-moderation-api.md).
+Aby uzyskać szczegółowy opis wszystkie sekcje w odpowiedzi JSON, zobacz [Przegląd interfejs API moderowania tekstu](text-moderation-api.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-W kodzie za pomocą interfejsu API REST lub rozpoczynać [szybkiego startu .NET łagodzenia tekst](text-moderation-quickstart-dotnet.md) do integracji z aplikacji.
+W kodzie za pomocą interfejsu API REST lub rozpoczynać się [Szybki Start .NET Moderowanie tekstu](text-moderation-quickstart-dotnet.md) do integracji z aplikacją.

@@ -10,14 +10,14 @@ ms.technology: language-understanding
 ms.topic: article
 ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: ec006d8941d8832d139a09b1e8af13000ff5a43e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f4b267dda3c05d490d91fe02fbcfde4e49674603
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47040707"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166405"
 ---
-# <a name="tutorial-3-add-common-utterance-formats"></a>Samouczek 3. Dodawanie typowych formatów wypowiedzi
+# <a name="tutorial-3-add-common-utterance-formats"></a>Samouczek 3: Dodawanie typowe formaty wypowiedź
 
 W ramach tego samouczka Aby zwiększyć intencji i jednostek prognozowania przy jednoczesnym zapewnieniu mniej wypowiedzi przykładu należy użyć wzorców. Wzorzec jest dostarczany za pomocą przykładu wypowiedź szablonu, który zawiera Składnia służąca do identyfikowania jednostki i tekstu można zignorować. Wzorzec jest kombinacją Dopasowywanie wyrażeń i uczenia maszynowego.  Przykład wypowiedź szablonu, wraz z intencji wypowiedzi zapewniają LUIS lepiej zrozumieć, z jakiego wypowiedzi Dopasuj intencji. 
 

@@ -1,21 +1,22 @@
 ---
-title: Tworzenie punktu końcowego niestandardowa zamiana mowy z usługa Custom Speech Service na platformie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak utworzyć niestandardowy punkt końcowy rozpoznawania mowy na tekst za pomocą usługa Custom Speech Service w usługach Cognitive Services.
+title: Tworzenie punktu końcowego niestandardowa zamiana mowy — usługa Custom Speech Service
+titlesuffix: Azure Cognitive Services
+description: Dowiedz się, jak utworzyć niestandardowy punkt końcowy rozpoznawania mowy na tekst za pomocą usługa Custom Speech Service.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: conceptual
 ms.date: 07/08/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: ed93afa8e10fdfbb0d45f4500b4a648716e25e00
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 958e97f708e7c6920bcb0d65d91656fcf00cd71a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952226"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219027"
 ---
 # <a name="create-a-custom-speech-to-text-endpoint"></a>Tworzenie niestandardowego punktu końcowego funkcji zamiany mowy na tekst
 Po utworzeniu niestandardowych modeli akustycznych lub modeli językowych, można je wdrożyć w niestandardowy punkt końcowy rozpoznawania mowy na tekst. 

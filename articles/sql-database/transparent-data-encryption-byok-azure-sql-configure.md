@@ -2,28 +2,22 @@
 title: 'Program PowerShell i interfejs wiersza polecenia: Włączanie funkcji SQL TDE - key - usługi Azure SQL Database | Dokumentacja firmy Microsoft'
 description: Dowiedz się, jak skonfigurować usługi Azure SQL Database i Data Warehouse, aby rozpocząć korzystanie z przezroczystego szyfrowania danych (TDE) do szyfrowania podczas spoczynku przy użyciu programu PowerShell lub interfejsu wiersza polecenia.
 services: sql-database
-keywords: ''
-documentationcenter: ''
-author: aliceku
-manager: craigg
-editor: ''
-ms.prod: ''
-ms.reviewer: vanto
-ms.suite: sql
-ms.prod_service: sql-database, sql-data-warehouse
 ms.service: sql-database
-ms.tgt_pltfrm: ''
-ms.devlang: azurecli, powershell
+ms.subservice: security
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/20/2018
+author: aliceku
 ms.author: aliceku
-monikerRange: = azuresqldb-current || = azure-sqldw-latest || = sqlallproducts-allversions
-ms.openlocfilehash: 65f9384bb0ceedd6c2bde8ef513040e198ccc4d2
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.reviewer: vanto
+manager: craigg
+ms.date: 09/20/2018
+ms.openlocfilehash: 0fad0cd32e8df38c5a9c06ecf01a14340f1bc9ef
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036375"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165079"
 ---
 # <a name="powershell-and-cli-enable-transparent-data-encryption-using-your-own-key-from-azure-key-vault"></a>Program PowerShell i interfejs wiersza polecenia: Włączanie funkcji Transparent Data Encryption przy użyciu własnego klucza z usługi Azure Key Vault
 

@@ -7,12 +7,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 04/19/2018
 ms.topic: conceptual
-ms.openlocfilehash: 561c5b0f49c36cf15e85e3a334c7a8aa326f70a9
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 0b206d7b56fc8a65c422a4ce22b2f5585e71c8da
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44715061"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47219429"
 ---
 # <a name="customize-and-redeploy-a-microservice"></a>Dostosowywanie i ponowne wdrażanie mikrousługi
 
@@ -58,13 +58,13 @@ Teraz zmienić komunikat o stanie z mikrousług Menedżera Centrum Iot "Nowe zmi
 3. Otwórz StatusController.cs w dowolnym edytorze tekstu lub IDE, które chcesz. 
 4. Znajdź następujący kod:
 
-    ```javascript
+    ```csharp
     return new StatusApiModel(true, "Alive and well");
     ```
 
     Zmień go na poniższy kod i zapisz go.
 
-    ```javascript
+    ```csharp
     return new StatusApiModel(true, "New Edits Made Here!");
     ```
 
@@ -118,13 +118,13 @@ Teraz musisz zaktualizować swoje lokalne docker-compose.yml, aby ściągnąć n
 3. Znajdź następujący kod:
 
     ```docker
-    image: azureiotpcs/pcs-auth-dotnet:testing
+    image: azureiotpcs/iothub-manager-dotnet:testing
     ```
 
     i zmień ją na wyglądać jak na poniższej ilustracji i zapisz go.
 
     ```cmd/sh
-    image: [docker ID]/pcs-auth-dotnet:testing
+    image: [docker ID]/iothub-manager-dotnet:testing
     ```
 
 ## <a name="view-the-new-response-status"></a>Wyświetl nowy stan odpowiedzi

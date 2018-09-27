@@ -8,12 +8,12 @@ ms.date: 08/13/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 3f3a8c8a8bce59d1757e9ad53c8ebdbd06a7f33f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 9c9c04a8310a46605cf5733131db1418b7cb7f7a
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294173"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47218788"
 ---
 # <a name="understand-the-azure-iot-edge-runtime-and-its-architecture"></a>Omówienie środowiska uruchomieniowego usługi Azure IoT Edge oraz jej architektury
 
@@ -31,7 +31,7 @@ ms.locfileid: "46294173"
 
 ![Środowisko uruchomieniowe usługi IoT Edge komunikuje się szczegółowe informacje i kondycji modułów do usługi IoT Hub][1]
 
-Obowiązki środowiska uruchomieniowego usługi IoT Edge można podzielić na dwie kategorie: moduł zarządzania i komunikacji. Te dwie role są wykonywane przez dwa składniki, które tworzą środowisko uruchomieniowe usługi IoT Edge. Centrum usługi IoT Edge jest odpowiedzialny za komunikację, podczas gdy zarządza agent usługi IoT Edge, wdrażania i monitorowania modułów. 
+Obowiązki środowiska uruchomieniowego usługi IoT Edge można podzielić na dwie kategorie: Zarządzanie komunikacji i moduł. Te dwie role są wykonywane przez dwa składniki, które tworzą środowisko uruchomieniowe usługi IoT Edge. Centrum usługi IoT Edge jest odpowiedzialny za komunikację, podczas gdy zarządza agent usługi IoT Edge, wdrażania i monitorowania modułów. 
 
 Agent usługi Edge i Centrum usługi Edge są moduły, podobnie jak każdy inny moduł, działające na urządzeniu usługi IoT Edge. 
 

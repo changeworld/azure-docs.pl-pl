@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 07/24/2017
 ms.author: jdial
-ms.openlocfilehash: 78578197c5f764c8e197d3426506cb1eb13b838f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 110b97cdb4de6e866ac8ce17a1f05d0231ff5071
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956800"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221603"
 ---
 # <a name="create-change-or-delete-a-network-interface"></a>Tworzenie, zmienianie lub usuwanie interfejsu sieciowego
 
@@ -88,7 +88,7 @@ Można wyświetlić i zmienić większość ustawień dla interfejsu sieciowego 
     - **Właściwości:** Wyświetla klucz Ustawienia dotyczące interfejsu sieciowego, w tym jej adres MAC (pusty w przypadku interfejs sieciowy nie jest dołączony do maszyny wirtualnej) i subskrypcji w istnieje.
     - **Efektywne reguły zabezpieczeń:** reguły zabezpieczeń są wyświetlane, jeśli interfejs sieciowy jest podłączony do uruchomionej maszyny wirtualnej i sieciowa grupa zabezpieczeń jest skojarzona z interfejsu sieciowego i/lub podsieci jest ona przypisana do. Aby dowiedzieć się, co jest wyświetlane, zobacz [wyświetlanie obowiązujących reguł zabezpieczeń](#view-effective-security-rules). Aby dowiedzieć się więcej na temat sieciowych grup zabezpieczeń, zobacz [sieciowe grupy zabezpieczeń](security-overview.md).
     - **Skuteczne trasy:** trasy są wyświetlane, jeśli interfejs sieciowy jest podłączony do uruchomionej maszyny wirtualnej. Trasy są kombinacją trasy domyślne systemu Azure, wszystkie trasy zdefiniowane przez użytkownika i wszystkie trasy protokołu BGP, które mogą istnieć dla podsieci, w której interfejs sieciowy jest przypisany do. Aby dowiedzieć się, co jest wyświetlane, zobacz [wyświetlić obowiązujące trasy](#view-effective-routes). Aby dowiedzieć się więcej na temat domyślnych tras i trasy zdefiniowane przez użytkownika, zobacz [Omówienie routingu](virtual-networks-udr-overview.md).
-    - **Typowe ustawienia usługi Azure Resource Manager:** Aby dowiedzieć się więcej na temat typowych ustawień usługi Azure Resource Manager, zobacz [dziennika aktywności](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#activity-logs), [kontrola dostępu (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control), [tagi](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Blokuje](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), i [skrypt automatyzacji](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group).
+    - **Typowe ustawienia usługi Azure Resource Manager:** Aby dowiedzieć się więcej na temat typowych ustawień usługi Azure Resource Manager, zobacz [dziennika aktywności](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md), [kontrola dostępu (IAM)](../azure-resource-manager/resource-group-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json#access-control), [tagi](../azure-resource-manager/resource-group-using-tags.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [Blokuje](../azure-resource-manager/resource-group-lock-resources.md?toc=%2fazure%2fvirtual-network%2ftoc.json), i [skrypt automatyzacji](../azure-resource-manager/resource-manager-export-template.md?toc=%2fazure%2fvirtual-network%2ftoc.json#export-the-template-from-resource-group).
 
 <a name="view-settings-commands"></a>**Polecenia**
 

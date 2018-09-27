@@ -1,5 +1,5 @@
 ---
-title: Zagadnienia dotyczące sieci, za pomocą środowiska usługi Azure App Service
+title: Zagadnienia dotyczące sieci, za pomocą usługi Azure App Service Environment
 description: Wyjaśnia, ruch sieciowy środowiska ASE i jak ustawić sieciowe grupy zabezpieczeń i tras zdefiniowanych przez użytkownika za pomocą środowiska ASE
 services: app-service
 documentationcenter: na
@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 05/29/2018
+ms.date: 08/29/2018
 ms.author: ccompy
-ms.openlocfilehash: ef2288e2f756db6529f1ec5f7b3a49067b2998aa
-ms.sourcegitcommit: e8f443ac09eaa6ef1d56a60cd6ac7d351d9271b9
+ms.openlocfilehash: b9897fd0030c2b6efed0fefc47dd6720a61978cd
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "35648914"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165146"
 ---
 # <a name="networking-considerations-for-an-app-service-environment"></a>Informacje dotyczące sieci środowiska App Service Environment #
 
@@ -67,6 +67,8 @@ Skalowanie w górę lub w dół, są dodawane nowe role odpowiedni rozmiar, a na
 
 ## <a name="ase-dependencies"></a>Zależności środowiska ASE ##
 
+### <a name="ase-inbound-dependencies"></a>Środowisko ASE zależności dla ruchu przychodzącego ###
+
 Środowisko ASE przychodzące dostępu, które zależności są:
 
 | Użycie | Z | Do |
@@ -84,26 +86,23 @@ Do komunikacji między równoważenia obciążenia platformy Azure oraz podsieci
 
 Jeśli używasz aplikacji przypisanych adresów IP, musisz zezwolić na ruch z adresów IP przypisanych do aplikacji w celu podsieci środowiska ASE.
 
-Na potrzeby dostępu wychodzącego środowisko ASE zależy od wielu systemów zewnętrznych. Te zależności systemu są zdefiniowane przy użyciu nazw DNS i nie mapowania stały zestaw adresów IP. W związku z tym środowisko ASE wymaga dostęp ruchu wychodzącego z podsieci środowiska ASE do wszystkich zewnętrznych adresów IP na różnych portów. Środowisko ASE ma następujące zależności ruchu wychodzącego:
+Ruch TCP, których można użyć w na portach 454 i 455 musi przejść z tego samego adresu VIP lub będzie mieć problemu z routingiem asymetrycznym. 
 
-| Użycie | Z | Do |
-|-----|------|----|
-| Azure Storage | Podsieci środowiska ASE | TABLE.Core.Windows.NET blob.core.windows.net, queue.core.windows.net, file.core.windows.net: 80, 443, 445 (445 jest potrzebna tylko dla środowiska ASEv1.) |
-| Azure SQL Database | Podsieci środowiska ASE | Database.Windows.NET: 1433 |
-| Zarządzania platformy Azure | Podsieci środowiska ASE | Management.Core.Windows.NET, management.azure.com, admin.core.windows.net: 443 |
-| Weryfikacja certyfikatu SSL |  Podsieci środowiska ASE            |  ocsp.msocsp.com, mscrl.microsoft.com, crl.microsoft.com: 443 |
-| Usługa Azure Active Directory        | Podsieci środowiska ASE            |  Login.Windows.NET: 443 |
-| Zarządzanie App Service        | Podsieci środowiska ASE            |  gr-prod -<regionspecific>. cloudapp.net, .net az prod.metrics.nsatc: 443 |
-| System DNS platformy Azure                     | Podsieci środowiska ASE            |  Internet: 53 |
-| Środowisko ASE wewnętrznej komunikacji    | Podsieci środowiska ASE: wszystkie porty |  Podsieci środowiska ASE: wszystkie porty |
+### <a name="ase-outbound-dependencies"></a>Wychodzące zależności środowiska ASE ###
 
-Jeśli środowisko ASE utraci dostęp do tych zależności, przestanie działać. Jeśli tak się stanie wystarczająco długi, środowisko ASE jest zawieszone.
+Na potrzeby dostępu wychodzącego środowisko ASE zależy od wielu systemów zewnętrznych. Wiele z tych zależności systemowe są definiowane przy użyciu nazw DNS i nie mapowania stały zestaw adresów IP. W związku z tym środowisko ASE wymaga dostęp ruchu wychodzącego z podsieci środowiska ASE do wszystkich zewnętrznych adresów IP na różnych portów. 
+
+Pełną listę zależności wychodzące są wymienione w dokumencie, który opisuje [Zablokowanie ruchu wychodzącego środowiska App Service Environment](./firewall-integration.md). Jeśli środowisko ASE utraci dostęp do jego zależności, przestanie działać. Jeśli tak się stanie wystarczająco długi, środowisko ASE jest zawieszone. 
 
 ### <a name="customer-dns"></a>Klient DNS ###
 
 Jeśli sieć wirtualna jest skonfigurowany na serwerze DNS przez klienta, obciążenia dzierżaw go użyć. Środowisko ASE jest nadal wymaga do komunikacji z usługą Azure DNS do celów zarządzania. 
 
 Jeśli sieć wirtualna jest skonfigurowana z klientem DNS po drugiej stronie sieci VPN, serwer DNS musi być dostępny z poziomu podsieci zawierającej środowisko ASE.
+
+Aby przetestować rozwiązania z aplikacji sieci web można użyć polecenia konsoli *nameresolver*. Przejdź do okna debugowania witryny funkcji scm aplikacji lub przejdź do aplikacji w portalu i wybierz pozycję Konsola. W wierszu polecenia powłoki można wydać polecenie *nameresolver* oraz adres, który chcesz wyszukać. Wynik, wracając jest taka sama jak aplikacja otrzymamy podczas wprowadzania tych samych wyszukiwania. Jeśli używasz nslookup wykonasz wyszukiwania, zamiast tego używanie usługi Azure DNS.
+
+Jeśli zmienisz ustawienia DNS sieci wirtualnej, należącym do środowiska ASE, konieczne będzie ponowne uruchomienie środowiska ASE. Aby uniknąć ponownego uruchomienia środowiska ASE, zdecydowanie zaleca się skonfigurowania ustawień DNS dla sieci wirtualnej, przed przystąpieniem do tworzenia środowiska ASE.  
 
 <a name="portaldep"></a>
 
@@ -205,9 +204,6 @@ Aby ręcznie utworzyć ten sam tras, wykonaj następujące kroki:
 ## <a name="service-endpoints"></a>Punkty końcowe usługi ##
 
 Punkty końcowe usługi pozwalają ograniczyć dostęp do usług wielodostępnych do zestawu sieci wirtualnych i podsieci platformy Azure. Więcej informacji na temat punktów końcowych usługi zawiera dokumentacja [punktów końcowych usługi sieci wirtualnej][serviceendpoints]. 
-
-   > [!NOTE]
-   > Punkty końcowe usługi z bazą danych SQL nie działają ze środowiskiem ASE w regionach dla instytucji rządowych Stanów Zjednoczonych. Te informacje są prawidłowe tylko w regionach świadczenia publicznej usługi Azure.
 
 Po włączeniu punktów końcowych usługi w zasobie niektóre trasy są utworzone z wyższym priorytetem niż wszystkie inne trasy. Jeśli używasz punktów końcowych usługi w środowisku ASE z wymuszonym tunelowaniem, ruch związany z zarządzaniem usługami Azure SQL i Azure Storage nie będzie tunelowany w sposób wymuszony. 
 

@@ -1,20 +1,21 @@
 ---
-title: Języki obsługiwane przez usługi Azure Content Moderator | Dokumentacja firmy Microsoft
+title: Obsługa języków - Content Moderator
+titlesuffix: Azure Cognitive Services
 description: Poniżej przedstawiono listę języków obsługiwanych przez usługi Content Moderator.
 services: cognitive-services
 author: sanjeev3
-manager: mikemcca
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: content-moderator
-ms.topic: article
+ms.topic: conceptual
 ms.date: 03/21/2018
 ms.author: sajagtap
-ms.openlocfilehash: 973e4efcbe9d0627ca261def2449a237819559ad
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 1cb61a5d2357b6e75c04cba371604794338892f3
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37441152"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220178"
 ---
 # <a name="text-moderation---supported-languages-by-feature"></a>Moderowanie tekstu — języki obsługiwane przez funkcję
 
@@ -62,7 +63,7 @@ ms.locfileid: "37441152"
 | Mycenaean (grecki) | Niemiecki
 | Nko | Grecki
 | Norweski (Bokmal) | Gudżarati
-| Norweski (nynorsk) |  Hausański
+| Norweski (Nynorsk) |  Hausa
 | Stary (perski) | Hebrajski
 | Paszto | Hindi
 | Polski | Węgierski
@@ -72,10 +73,10 @@ ms.locfileid: "37441152"
 | Rosyjski | Inuktitut
 | Santali | Irlandzki
 | Sasak | Isixhosa
-| Saurashtra | Isizulu
+| Saurashtra | isiZulu
 | Serbski (cyrylica) | Włoski
 | Serbski (łaciński) | Japoński
-| Sinaloa | Kannada
+| Sinhala | Kannada
 | Słoweński | Kazachski
 | Hiszpański | Khmerski
 | Szwedzki | Kicze
@@ -83,21 +84,21 @@ ms.locfileid: "37441152"
 | Syryjski | Swahili
 | Tagbanwa | Konkani
 | Akończenie (Nua) | Koreański
-| Tamashek | Kirgijski
+| Tamashek | Kirgiski
 | Turecki | Laotański
 | Ugaritic | Łotewski
 | Uzbecki (cyrylica) | Litewski
 | Uzbecki (łaciński) | Luksemburski
-| Vai | macedoński
+| Vai | Macedoński
 | Yi | Malajski
 | Czuang | Malajalam
 | | Maltański
-| | Maoryjski
+| | Maoryski
 | | Marathi
 | | Mongolski
 | | Nepalski
 | | Norweski (Bokmal)
-| | Norweski (nynorsk)
+| | Norweski (Nynorsk)
 | | Orija
 | | Paszto
 | | Perski
@@ -118,7 +119,7 @@ ms.locfileid: "37441152"
 | | Sesotho północny
 | | Setswana
 | | Sindhi
-| | Sinaloa
+| | Sinhala
 | | Słowacki
 | | Słoweński
 | | Hiszpański

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: e9472f0fb6ca7c9924df57bb61a3f234bc7d4b13
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 262c4e622d7ef915e59f29c8f4272e488acaeccf
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381442"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166915"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Zdefiniuj samodzielnie profilu technicznego w zasadach niestandardowych usługi Azure Active Directory B2C
 
@@ -135,6 +135,7 @@ Możesz również wywołanie interfejsu API REST profilu technicznego z logikę 
 | ContentDefinitionReferenceId | Yes | Identyfikator [zawartości definicji](contentdefinitions.md) skojarzony z tym profilem Technical Preview. |
 | EnforceEmailVerification | Nie | Do tworzenia konta lub edytowania profilu, wymusza Weryfikacja adresu e-mail. Możliwe wartości: `true` (ustawienie domyślne) lub `false`. | 
 | setting.showSignupLink | Nie | Wyświetla przycisk tworzenia konta. Możliwe wartości: `true` (ustawienie domyślne) lub `false` |
+| setting.retryLimit | Nie | Określa, ile razy użytkownik może próbować udostępniania danych, które jest sprawdzana względem profilu technicznego sprawdzania poprawności. Na przykład użytkownik próbuje zarejestrować się przy użyciu konta, które już istnieje i utrzymuje podjęcie próby, aż do osiągnięcia limitu.
 | SignUpTarget | Nie | Rejestracja docelowy identyfikator programu exchange. Po kliknięciu przycisku Utwórz konto usługi Azure AD B2C wykonuje identyfikator określonego programu exchange. |
 
 ## <a name="cryptographic-keys"></a>Klucze kryptograficzne

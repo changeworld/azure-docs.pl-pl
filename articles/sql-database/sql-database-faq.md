@@ -2,19 +2,22 @@
 title: Usługa Azure SQL Database — często zadawane pytania | Dokumentacja firmy Microsoft
 description: Odpowiedzi na typowe pytania klientów zapytaj o bazach danych w chmurze i usługi Azure SQL Database, system zarządzania relacyjnymi bazami danych firmy Microsoft (danych RDBMS) i bazy danych jako usługa w chmurze.
 services: sql-database
-author: CarlRabeler
-manager: craigg
 ms.service: sql-database
-ms.custom: reference
+ms.subservice: ''
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/14/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: 479f7df740e75ae44a5198414036ff0b0c216471
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 8aaf89426cf392faaf6339f49300bf7d2b7dcfcd
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45730651"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166626"
 ---
 # <a name="sql-database-faq"></a>SQL Database — często zadawane pytania
 

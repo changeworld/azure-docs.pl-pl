@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 3e9907450680d6984a644b43014ba90b1a9d987e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b1bab65b68c5f37165fbc8414ac4300c924e53b9
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991933"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165180"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Próbki głosu rekord do utworzenia niestandardowych voice
 
@@ -38,7 +38,7 @@ Rejestrowanie inżynier ds.  |Nadzoruje technicznych aspektów rejestrowania i d
 Dyrektor ds.            |Przygotowuje skrypt i autokarami wydajności talent głosu.
 Edytor              |Kończenie znajdujących się w pliki audio i przygotować je do przekazania do portalu usługi Custom Voice.
 
-Osoba może podać więcej niż jednej roli. W przewodniku założono, że będzie można przede wszystkim wypełnianie rolą dyrektora i zatrudniania talent głosu i odtwarzania nagrania. Jeśli chcesz wprowadzić nagrania samodzielnie, istnieje kilka dostępne informacje o roli inżyniera rejestrowania.
+Osoba może podać więcej niż jednej roli. W przewodniku założono, że będzie można przede wszystkim wypełnianie rolą dyrektora i zatrudniania talent głosu i odtwarzania nagrania. Jeśli chcesz wprowadzić nagrania samodzielnie, ten artykuł zawiera pewne informacje o roli inżyniera rejestrowania. Rolę edytor nie jest potrzebny, dopóki sesji, dzięki czemu mogą być wykonywane przez inżyniera nagrywanie dyrektor.
 
 ## <a name="choose-your-voice-talent"></a>Wybierz swoje talent głosu
 
@@ -74,7 +74,7 @@ Kluczowa jest Wybieranie głosowe talent, różnych jest kluczowa dobre skryptu.
 
 Co więcej tekst powinno zawierać wszystkie sposoby, może być reprezentowany w formie pisemnej określony dźwięk i umieść każdy dźwięk w różnych miejscach w zdaniach. Deklaratywne zdania i pytania należy uwzględnione i odczytać przy użyciu odpowiednich maksimów.
 
-Jest trudne do pisania skryptu, który zapewnia *wystarczający* danych, aby zezwolić portalowi mowy niestandardowego do tworzenia dobrych głosu. W praktyce Najprostszym sposobem, aby skrypt, który zapewnia niezawodne fonetycznych pokrycia jest zawierają dużą liczbę próbek. Standardowa głosów, używane przez firmę Microsoft, powstały od dziesiątki tysięcy wypowiedzi. Należy być przygotowanym do rejestrowania kilka do kilku tysięcy wypowiedzi w co najmniej do tworzenia niestandardowych głosu jakości produkcyjnej.
+Jest trudne do pisania skryptu, który zapewnia *wystarczający* danych, aby zezwolić portalowi mowy niestandardowego do tworzenia dobrych głosu. W praktyce Najprostszym sposobem, aby skrypt, który zapewnia niezawodne fonetycznych pokrycia jest zawierają dużą liczbę próbek. Standardowa głosy, które firma Microsoft udostępnia zostały skompilowane z dziesiątkami tysięcy wypowiedzi. Należy być przygotowanym do rejestrowania kilka do kilku tysięcy wypowiedzi w co najmniej do tworzenia niestandardowych głosu jakości produkcyjnej.
 
 Sprawdź skrypt dokładnie pod kątem błędów. Jeśli to możliwe mają ktoś zbyt je sprawdzić. Po uruchomieniu przy użyciu skryptu za pomocą usługi talent, będzie prawdopodobnie efektywnej kilka więcej błędów.
 
@@ -108,7 +108,7 @@ Na szczęście istnieje możliwość całkowicie uniknąć tych problemów. Dost
 |[Korpus Combat CMU](http://festvox.org/cmu_arctic/)|Około 1100 zdania wybrana w zaufanym działa poza o prawach autorskich przeznaczone dla projektów synteza mowy. Doskonałe punkt początkowy.|
 |Już nie działa<br>w ramach praw autorskich|Zazwyczaj działa opublikowane przed 1923. Dla języka angielskiego [Gutenberg projektu](https://www.gutenberg.org/) udostępnia dziesiątki tysięcy takiego działania. Możesz skoncentrować się na nowsze działa jako język będzie bliżej nowoczesny język angielski.|
 |Dla instytucji rządowych&nbsp;działa|Działania utworzone przez Rząd Stanów Zjednoczonych są nie chronionych prawem autorskim należących w Stanach Zjednoczonych, jednak dla instytucji rządowych mogą oświadczenia praw autorskich w innych krajach.|
-|W domenie publicznej|Działa w przypadku jawnie disclaimed które prawa autorskie lub które zostały wyposażone w dedykowane do domeny publicznej. (Może nie istnieć możliwość odstąpić od praw autorskich w całości na niektóre jurysdykcje.)|
+|W domenie publicznej|Działa w przypadku jawnie disclaimed które prawa autorskie lub które zostały wyposażone w dedykowane do domeny publicznej. Może nie być możliwe do odstąpienia od praw autorskich w całości na niektóre jurysdykcje.|
 |Permissively licencjonowane działa|Firma Creative Commons lub licencji dokumentacji bezpłatna (GFDL) GNU, takich jak działa rozpowszechniane na mocy licencji. Wikipedia używa GFDL. Dlatego niektórych licencji, jednak może nałożyć ograniczenia dotyczące wydajności licencjonowane zawartości, która może mieć wpływ na tworzenie modelu niestandardowego głosu, należy uważnie przeczytać licencji.|
 
 ## <a name="recording-your-script"></a>Rejestrowanie skryptu
@@ -127,7 +127,7 @@ Korzystać z mikrofonu zwrotną studio wysokiej jakości ("mic" skrócie) przezn
 
 Można także użyć analogowy mikrofonu. Wiele domów wypożyczeń oferują wyposażona we znak głosowe, ich mikrofon "zbioru". Należy zauważyć, że korzysta z profesjonalnych narzędzi analogowy zrównoważone XLR łączników, a nie plug 1/4 cala, używanym w urządzeń na odbiorców. Jeśli przejdziesz analogowy, należy także preamp oraz interfejs audio komputera za pomocą tych łączników.
 
-Na autonomicznych lub nagle zainstalować mikrofon i zainstaluj pop filtr przed mikrofonu w celu wyeliminowania hałas "plosive" dźwięki, np. "p" i "b". Niektóre mikrofon są dostarczane z instalacji zawieszenia, który izoluje ich od wibracje w autonomicznych, co jest przydatne.
+Na autonomicznych lub nagle zainstalować mikrofon i zainstaluj pop filtr przed mikrofonu w celu wyeliminowania hałas "plosive" Spółgłoski, takich jak "p" i "b". Niektóre mikrofon są dostarczane z instalacji zawieszenia, który izoluje ich od wibracje w autonomicznych, co jest przydatne.
 
 Talent głosu musi pozostać w odległości spójne z mikrofonu. W systemie taśmy Zaokrąglenie w dół do oznaczania, gdzie należy pozostawić wzorze. Preferuje talent siedzieć, należy zwrócić szczególną uwagę do monitorowania odległość sprawdzanie integralności komunikatu i uniknij szumu spowodowanego krzesło.
 
@@ -137,7 +137,7 @@ Osoby rejestrujące działania — serwisant — powinien znajdować się w oddz
 
 Nagrywanie powinna zawierać jako szumu, jak to możliwe, mając na celu współczynnika sygnał do szumu 80-db lub nowszy.
 
-Ściśle słuchać nagranie wyciszenia w sieci "stoisku," ustalenie, gdzie wszystkie hałasu pochodzi z i wyeliminować przyczyny. Wspólnych źródeł szumu znajdują się otwory wentylacyjne, fluorescencyjnego stateczników światła, ruch na drogach i wentylatory urządzeń (komputerów przenośnych nawet może być fanów) w pobliżu. Kable i mikrofon można wczytać elektrycznych hałas pobliskich połączeń programu AC, zwykle szum lub rozgłaszania.
+Ściśle słuchać nagranie wyciszenia w sieci "stoisku," ustalenie, gdzie wszystkie hałasu pochodzi z i wyeliminować przyczyny. Wspólnych źródeł szumu znajdują się otwory wentylacyjne, fluorescencyjnego stateczników światła, ruch na drogach i wentylatory urządzeń (komputerów przenośnych nawet może być fanów) w pobliżu. Kable i mikrofon można wczytać elektrycznych hałas pobliskich połączeń programu AC, zwykle szum lub rozgłaszania. Rozgłaszania może również być spowodowane *pętli podstaw*, której przyczyną urządzenia podłączone do więcej niż jednego obwodu elektrycznego.
 
 > [!TIP]
 > W niektórych przypadkach można wyeliminować szumu z nagrań, mimo że zawsze zaleca się zatrzyma źródła za pomocą korektora lub oprogramowania redukcji szumów wtyczki.
@@ -148,7 +148,7 @@ Ustawić poziomy, tak że większość dostępne dynamicznym zakresie rejestracj
 
 W tym miejscu jest używany przez większość zakresu (wysokość), ale najwyższej wartości szczytowe sygnału nie skontaktować się z góry lub u dołu okna. Widać również że wyciszenia w nagraniu przybliża linii poziomej alokowania elastycznego wskazujący floor szumu niski. To nagranie ma akceptowalnym zakresem dynamiczne i sygnał / szum.
 
-Rekord bezpośrednio do komputera przy użyciu interfejsu audio wysokiej jakości lub USB port, w zależności od mic używasz. Dla analogowy, proste łańcucha audio: Sprawdzanie integralności komunikatu, preamp, interfejs audio, komputer. Możesz licencjonować zarówno [Avid narzędzi dla specjalistów](http://www.avid.com/en/pro-tools) i [Adobe Audition](https://www.adobe.com/products/audition.html) miesięcznych kosztów uzasadnione. W przypadku bardzo ścisłej swój budżet, wypróbuj bezpłatne [Audacity](https://www.audacityteam.org/).
+Rekord bezpośrednio do komputera za pośrednictwem interfejsu audio wysokiej jakości lub port USB, w zależności od mikrofonu, z którego korzystasz. Dla analogowy, proste łańcucha audio: Sprawdzanie integralności komunikatu, preamp, interfejs audio, komputer. Możesz licencjonować zarówno [Avid narzędzi dla specjalistów](http://www.avid.com/en/pro-tools) i [Adobe Audition](https://www.adobe.com/products/audition.html) miesięcznych kosztów uzasadnione. W przypadku bardzo ścisłej swój budżet, wypróbuj bezpłatne [Audacity](https://www.audacityteam.org/).
 
 Zarejestruj monophonic do 44,1 kHz 16-bitowego (jakością ciągłego wdrażania) lub Lepsza. Bieżący stan systemu — najnowocześniejsze to 48 kHz 24-bitowego, jeśli sprzęt obsługuje tę funkcję. Użytkownik będzie obniżenie częstotliwości próbkowania audio do 16 kHz 16-bitowych przed przesłaniem jej do portalu usługi Custom Voice. Jednak warto korzystać z wysokiej jakości oryginalne nagranie w przypadku zmiany są potrzebne.
 
@@ -185,7 +185,7 @@ Przeprowadzić szkolenia dotyczące usługi talent głębokiego utraty tchu i ws
 Zarejestruj dobre pięć sekund wyciszenia przed pierwszym rejestrowania do przechwytywania "sygnału pokoju." Praktyka ta pomaga w portalu usługi Custom Voice kompensuje wszelkie pozostałe szumu w nagrania.
 
 > [!TIP]
-> Wszystko, czego naprawdę potrzebne jest głosu talent, dzięki czemu można podejmować monophonic nagrywanie (jednego kanału) tylko wiersze. Jednak jeśli rejestrujesz stereo można użyć drugiego kanału do rejestrowania chatter w pomieszczeniu sterowania, aby przechwycić dyskusję na temat konkretnych wierszy lub trwa. Usuń tę ścieżkę, z wersji, który jest przekazywany do portalu usługi Custom Voice.
+> Wszystko, czego naprawdę potrzebne do przechwytywania jest głos talent, dzięki czemu można podejmować monophonic nagrywanie (jednego kanału) tylko wiersze. Jednak jeśli rejestrujesz stereo można użyć drugiego kanału do rejestrowania chatter w pomieszczeniu sterowania, aby przechwycić dyskusję na temat konkretnych wierszy lub trwa. Usuń tę ścieżkę, z wersji, który jest przekazywany do portalu usługi Custom Voice.
 
 Posłuchaj ściśle, użycie słuchawek wydajności talent głosu. Szukasz diction dobra, ale fizycznych, poprawna wymowa i braku niechciane dźwięki. Nie wahaj się poproś użytkownika talent, aby ponownie zarejestrować wypowiedź, które nie spełniają te standardy. 
 
@@ -200,11 +200,11 @@ Podjąć podziały regularnych i zapewniają spożywczy ułatwiające Twojego g�
 
 Rejestrowanie nowoczesnych studios uruchamiane na komputerach. Na końcu sesji pojawi się jeden lub więcej plików audio, nie taśmy. Te pliki będą prawdopodobnie być w formacie WAV lub AIFF jakości CD (44,1 kHz 16-bitowa) lub Lepsza. 48 kHz 24-bitowego to typowe i pożądane. Większe częstotliwości próbkowania, takich jak 96 kHz, zazwyczaj nie są potrzebne.
 
-Portal Custom Voice wymaga każdego wypowiedź podana w jej własnym pliku. Każdy plik dźwiękowy dostarczanych przez studio zawiera wiele wypowiedzi. Głównym zadaniem poprodukcyjnych więc podzielić nagrania i przygotować je do przesłania. Inżynier rejestrowania może mieć umieścić znaczniki w pliku (lub oddzielnych wskaźnika do listy) aby wskazać, gdzie rozpoczyna się każdego wypowiedź.
+Portal Custom Voice wymaga każdego wypowiedź podana w jej własnym pliku. Każdy plik dźwiękowy dostarczanych przez studio zawiera wiele wypowiedzi. Głównym zadaniem poprodukcyjnych więc podzielić nagrania i przygotować je do przesłania. Inżynier nagrywanie mógł zostać umieścić znaczniki w pliku (lub podany arkusz oddzielne sygnalizacji) aby wskazać, gdzie rozpoczyna się każdego wypowiedź.
 
 Notatki w taki sposób, aby znaleźć konkretny spowoduje przejście ma, a następnie użyć dźwięk, takich jak edytowanie, narzędzie [Avid narzędzi dla specjalistów](http://www.avid.com/en/pro-tools), [Adobe Audition](https://www.adobe.com/products/audition.html), lub bezpłatnych [Audacity](https://www.audacityteam.org/), aby skopiować każdy Wypowiedź do nowego pliku.
 
-Pozostaw tylko przez około 0,2 sekund wyciszenia na początku i końcu każdego klipu, z wyjątkiem pierwszej. Ten plik powinien zaczynać pełne pięć sekund wyciszenia. Nie należy używać w edytorze audio "zero out" silent części pliku. W tym "tonu pokoju" pomoże głosu niestandardowe algorytmy kompensuje wszelkie hałas w tle pozostałych.
+Pozostaw tylko przez około 0,2 sekund wyciszenia na początku i końcu każdego klipu, z wyjątkiem pierwszej. Ten plik powinien zaczynać pełne pięć sekund wyciszenia. Nie należy używać edytora audio do dyskretnej części pliku "zero out". W tym "tonu pokoju" pomoże głosu niestandardowe algorytmy kompensuje wszelkie hałas w tle pozostałych.
 
 Posłuchaj dokładnie do każdego pliku. Na tym etapie można edytować małych niechciane dźwięki, które zdarzyło Ci się przeoczyć podczas nagrywania, takich jak smack nieznaczne lip, przed wierszem, ale należy uważać, aby nie usunąć wszystkie rzeczywiste mowy. Jeśli nie można naprawić plik, usuń go z zestawu danych i należy pamiętać, że zostało to zrobione.
 

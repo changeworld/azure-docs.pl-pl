@@ -4,14 +4,14 @@ description: Zawiera omówienie obliczenia dotyczące oceny usługi Azure Migrat
 author: rayne-wiselman
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/17/2018
+ms.date: 09/25/2018
 ms.author: raynew
-ms.openlocfilehash: 84ce20186b882bf07177305291a6f7512ed9ac62
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 923a2a137bb4510e9490ce4077f744a43619a2c6
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732027"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47165028"
 ---
 # <a name="dependency-visualization"></a>Wizualizacja zależności
 
@@ -32,7 +32,7 @@ Usługa Azure Migrate korzysta [rozwiązania Service Map](../operations-manageme
     ![Skojarzyć obszar roboczy usługi Log Analytics](./media/concepts-dependency-visualization/associate-workspace.png)
 
 - Gdy tworzysz nowy obszar roboczy, musisz określić nazwę obszaru roboczego. Obszar roboczy zostanie utworzony w regionie, w tym samym [lokalizacja geograficzna platformy Azure](https://azure.microsoft.com/global-infrastructure/geographies/) jako projekt migracji.
-- Skojarzone obszaru roboczego jest oznaczony przy użyciu klucza **projektu migracji**, a wartość ** nazwę projektu, które służy do wyszukiwania w witrynie Azure portal.
+- Skojarzone obszaru roboczego jest oznaczony przy użyciu klucza **projektu migracji**i wartość **Nazwa projektu**, które służy do wyszukiwania w witrynie Azure portal.
 - Aby przejść do obszaru roboczego skojarzonego z projektem, możesz przejść do **Essentials** części projektu **Przegląd** strony, a dostęp do obszaru roboczego
 
     ![Przejdź do obszaru roboczego usługi Log Analytics](./media/concepts-dependency-visualization/oms-workspace.png)
@@ -62,5 +62,5 @@ Można użyć obszaru roboczego usługi Log Analytics spoza usługi Azure Migrat
 Nie usuwaj tego obszar roboczy utworzony przez usługę Azure Migrate, o ile nie usuniesz projekt migracji. Jeśli to zrobisz, funkcji wizualizacji zależności nie będzie działać zgodnie z oczekiwaniami.
 
 ## <a name="next-steps"></a>Kolejne kroki
-
-[Grupowanie maszyn za pomocą zależności maszyn](how-to-create-group-machine-dependencies.md)
+- [Grupowanie maszyn za pomocą zależności maszyn](how-to-create-group-machine-dependencies.md)
+- [Dowiedz się więcej](https://docs.microsoft.com/azure/migrate/resources-faq#dependency-visualization) temat — często zadawane pytania na wizualizacji zależności.

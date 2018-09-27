@@ -1,30 +1,30 @@
 ---
-title: Utwórz dane wejściowe Azure Media Services zadania z pliku lokalnego | Dokumentacja firmy Microsoft
-description: W tym temacie przedstawiono sposób tworzenia wprowadzania zadania z pliku lokalnego.
+title: Tworzenie wejściowych usługi Azure Media Services zadania z pliku lokalnego | Dokumentacja firmy Microsoft
+description: W tym temacie przedstawiono sposób tworzenia danych wejściowych zadania z pliku lokalnego.
 services: media-services
 documentationcenter: ''
 author: Juliako
-manager: cfowler
+manager: femila
 editor: ''
 ms.service: media-services
 ms.workload: ''
 ms.topic: article
-ms.date: 03/19/2018
+ms.date: 09/25/2018
 ms.author: juliako
-ms.openlocfilehash: 94e7192e13397ad8ec973d92f4c538f430c9cd60
-ms.sourcegitcommit: e14229bb94d61172046335972cfb1a708c8a97a5
+ms.openlocfilehash: 66bd03b03289f568c019588f1b8ac1317ab9c076
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/14/2018
-ms.locfileid: "34160009"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222024"
 ---
-# <a name="create-a-job-input-from-a-local-file"></a>Utwórz wprowadzania zadania z pliku lokalnego
+# <a name="create-a-job-input-from-a-local-file"></a>Tworzenie wejściowych zadania z pliku lokalnego
 
-W Media Services w wersji 3 po przesłaniu zadania, aby przetwarzać pliki wideo, należy sprawdzić, gdzie można znaleźć wejściowy plik wideo usługi Media Services. Wejściowy plik wideo mogą być przechowywane jako zasób usługi multimediów w takim przypadku utworzysz wejściowych zasobu na podstawie pliku (przechowywane lokalnie lub w magazynie obiektów Blob platformy Azure). W tym temacie przedstawiono sposób tworzenia wprowadzania zadania z pliku lokalnego. Na przykład pełna, zobacz [próbki github](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs).
+W Media Services v3 po przesłaniu zadania, aby przetwarzać pliki wideo, należy stwierdzić, gdzie można znaleźć wejściowego filmu wideo usługi Media Services. Wejściowy plik wideo mogą być przechowywane jako zasób usługi multimediów, w którym to przypadku tworzenie wejściowego elementu, na podstawie pliku (przechowywane lokalnie lub w usłudze Azure Blob storage). W tym temacie przedstawiono sposób tworzenia danych wejściowych zadania z pliku lokalnego. Aby uzyskać pełny przykład, zobacz ten [przykładowe github](https://github.com/Azure-Samples/media-services-v3-dotnet-tutorials/blob/master/AMSV3Tutorials/UploadEncodeAndStreamFiles/Program.cs).
 
-## <a name="net-sample"></a>Przykładowe .NET
+## <a name="net-sample"></a>Przykład programu .NET
 
-Poniższy kod przedstawia sposób tworzenia zasobu wejściowego i używać go jako dane wejściowe zadania. Funkcja CreateInputAsset wykonuje następujące czynności:
+Poniższy kod pokazuje, jak utworzyć element zawartości danych wejściowych i korzystać z niego jako dane wejściowe dla zadania. Funkcja CreateInputAsset wykonuje następujące czynności:
 
 * Tworzy element zawartości 
 * Pobranie zapisywalnego [adresu URL sygnatury dostępu współdzielonego](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1) do [kontenera zasobu w magazynie](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-dotnet?tabs=windows#upload-blobs-to-the-container)
@@ -36,4 +36,4 @@ Poniższy kod przedstawia sposób tworzenia zasobu wejściowego i używać go ja
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Utwórz wprowadzania zadania na podstawie adresu URL HTTP (s)](job-input-from-http-how-to.md).
+[Tworzenie danych wejściowych zadania na podstawie adresu URL HTTPS](job-input-from-http-how-to.md).

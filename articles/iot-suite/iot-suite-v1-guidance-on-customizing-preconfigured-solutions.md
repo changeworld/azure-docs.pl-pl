@@ -1,6 +1,6 @@
 ---
-title: Dostosowywanie wstępnie rozwiązania | Dokumentacja firmy Microsoft
-description: Zawiera wskazówki dotyczące sposobu dostosowywania rozwiązań wstępnie pakiet IoT Azure.
+title: Dostosowywanie wstępnie skonfigurowanych rozwiązań | Dokumentacja firmy Microsoft
+description: Wskazówki dotyczące sposobu dostosowywania rozwiązania Azure IoT Suite, wstępnie skonfigurowane.
 services: ''
 suite: iot-suite
 documentationcenter: .net
@@ -16,72 +16,73 @@ ms.workload: na
 ms.date: 11/02/2017
 ms.author: corywink
 ms.openlocfilehash: cb5955111cb3954f71f11602042b5153ccee3473
-ms.sourcegitcommit: b6319f1a87d9316122f96769aab0d92b46a6879a
+ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/20/2018
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47106920"
 ---
 # <a name="customize-a-preconfigured-solution"></a>Dostosowanie wstępnie skonfigurowanego rozwiązania
 
-Wstępnie skonfigurowanych rozwiązań wyposażone w pakiet IoT Azure przedstawienie usług w obrębie zestawu, które współpracują, aby dostarczać rozwiązanie end-to-end. Z tego punktu początkowego istnieją różnych miejscach, w których można rozszerzać i dostosować rozwiązania dla konkretnych scenariuszy. W poniższych sekcjach opisano typowe punkty dostosowania.
+Wstępnie skonfigurowane rozwiązania, które są dostarczane z pakietem Azure IoT Suite pokazują usług w pakiecie wspólnie pracują, aby dostarczać rozwiązania end-to-end. Istnieją różnych miejscach, w których można rozszerzyć i dostosowywać rozwiązań dla konkretnych scenariuszy, z tego punktu wyjścia. W poniższych sekcjach opisano te wspólnych punktów dostosowywania.
 
-## <a name="find-the-source-code"></a>Znaleźć kodu źródłowego
+## <a name="find-the-source-code"></a>Znajdowanie kodu źródłowego
 
-Kod źródłowy dla wstępnie skonfigurowanych rozwiązań jest dostępna w witrynie GitHub w następujących repozytoria:
+Kod źródłowy wstępnie skonfigurowanego rozwiązania jest dostępna w witrynie GitHub w repozytoriach następujące:
 
-* Monitorowania zdalnego: [https://www.github.com/Azure/azure-iot-remote-monitoring](https://github.com/Azure/azure-iot-remote-monitoring)
-* Konserwacji predykcyjnej: [https://github.com/Azure/azure-iot-predictive-maintenance](https://github.com/Azure/azure-iot-predictive-maintenance)
-* Fabryka połączenia: [https://github.com/Azure/azure-iot-connected-factory](https://github.com/Azure/azure-iot-connected-factory)
+* Zdalne monitorowanie: [https://www.github.com/Azure/azure-iot-remote-monitoring](https://github.com/Azure/azure-iot-remote-monitoring)
+* Konserwacja predykcyjna: [https://github.com/Azure/azure-iot-predictive-maintenance](https://github.com/Azure/azure-iot-predictive-maintenance)
+* Połączona fabryka: [https://github.com/Azure/azure-iot-connected-factory](https://github.com/Azure/azure-iot-connected-factory)
 
-Aby zademonstrować wzorców i procedur wykorzystywanych do implementowania end-to-end rozwiązania IoT przy użyciu pakietu IoT Azure znajduje się kod źródłowy dla wstępnie skonfigurowanych rozwiązań. Można znaleźć więcej informacji na temat sposobu tworzenia i wdrażania rozwiązań w repozytoriów GitHub.
+Aby zademonstrować, wzorców i praktyk, używane do implementowania funkcji end-to-end rozwiązania IoT przy użyciu usługi Azure IoT Suite znajduje się kod źródłowy wstępnie skonfigurowanego rozwiązania. Można znaleźć więcej informacji na temat sposobu tworzenia i wdrażania rozwiązań w repozytoriach usługi GitHub.
 
 ## <a name="change-the-preconfigured-rules"></a>Zmień wstępnie skonfigurowanych reguł
 
-Rozwiązanie monitorowania zdalnego obejmuje trzy [Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) zadania obsługi informacji o urządzeniu, telemetrii i logiki reguły w rozwiązaniu.
+Rozwiązania do monitorowania zdalnego obejmuje trzy [usługi Azure Stream Analytics](https://azure.microsoft.com/services/stream-analytics/) zadania do obsługi informacji o urządzeniu, telemetrii i logiki reguły w rozwiązaniu.
 
-Trzy strumienia zadania usługi analiza i ich składni opisano szczegółowo w [monitorowania zdalnego wstępnie skonfigurowane rozwiązanie wskazówki](iot-suite-v1-remote-monitoring-sample-walkthrough.md). 
+Trzy zadania usługi stream analytics i ich składnię są opisane szczegółowo w [zdalne monitorowanie wstępnie skonfigurowanym rozwiązaniu](iot-suite-v1-remote-monitoring-sample-walkthrough.md). 
 
-Edytowanie tych zadań bezpośrednio do alter logiki lub dodać logikę określonych do danego scenariusza. Zadania usługi analiza strumienia można znaleźć w następujący sposób:
+Możesz edytować te zadania bezpośrednio, aby zmienić logiki lub dodać logikę określoną dla scenariusza. Zadania usługi Stream Analytics można znaleźć w następujący sposób:
 
-1. Przejdź do [portalu Azure](https://portal.azure.com).
-2. Przejdź do grupy zasobów o nazwie identycznej z nazwą rozwiązania IoT. 
-3. Wybierz zadanie usługi analiza strumienia Azure, którą chcesz zmodyfikować. 
+1. Przejdź do [witryny Azure portal](https://portal.azure.com).
+2. Przejdź do grupy zasobów o nazwie identycznej z nazwą swojego rozwiązania IoT. 
+3. Wybierz zadania usługi Azure Stream Analytics, które chcesz zmodyfikować. 
 4. Zatrzymaj zadanie, wybierając **zatrzymać** zestawu poleceń. 
 5. Edytowanie danych wejściowych, zapytań i danych wyjściowych.
    
-    Prostą modyfikację jest zmiana kwerendy dotyczącej **reguły** zadanie, aby użyć **"<"** zamiast **">"**. Portal rozwiązania pozostanie **">"** podczas edycji reguły, ale Zwróć uwagę, jak zachowanie jest odwrócony z powodu zmiany w podstawowym zadania.
+    Jest prostą modyfikację, aby zmienić kwerendę dla **reguły** zadanie, aby użyć **"<"** zamiast **">"**. W portalu rozwiązania jest nadal wyświetlany **">"** podczas edytowania reguły, ale Zwróć uwagę, jak zachowanie jest odwrócony z powodu zmiany w podstawowej zadania.
 6. Uruchamianie zadania
 
 > [!NOTE]
-> Zdalnego pulpitu nawigacyjnego monitorowania zależy od określonych danych, więc zmiany zadania może spowodować niepowodzenie pulpitu nawigacyjnego.
+> Pulpit nawigacyjny monitorowania zdalnego jest zależna od określonych danych, tak zmieniając zadania może spowodować, że pulpit nawigacyjny, aby zakończyć się niepowodzeniem.
 
-## <a name="add-your-own-rules"></a>Dodaj własne reguły
+## <a name="add-your-own-rules"></a>Dodać własne reguły
 
-Oprócz zmiana wstępnie skonfigurowane zadania usługi analiza strumienia Azure, można użyć portalu Azure, aby dodać nowe zadania, lub dodawanie nowych zapytań do istniejącego zadania.
+Validated wstępnie skonfigurowane zadania usługi Azure Stream Analytics, można użyć witryny Azure portal Dodaj nowe zadania lub dodanie nowych zapytań do istniejących zadań.
 
 ## <a name="customize-devices"></a>Dostosowywanie urządzeń
 
-Jedną z najbardziej typowych działań rozszerzenia jest praca z urządzeniami, które są specyficzne dla danego scenariusza. Istnieje kilka metod do pracy z urządzeń. Te metody obejmują zmiany symulowane urządzenie, aby dopasować danego scenariusza lub przy użyciu [SDK urządzenia IoT] [ IoT Device SDK] Podłącz urządzenie fizyczne do rozwiązania.
+Jedno z najbardziej typowych działań rozszerzenie współpracuje z urządzeniami specyficzne dla danego scenariusza. Istnieje kilka metod do pracy z urządzenia. Te metody obejmują Zmienianie symulowane urządzenie, aby dopasować do danego scenariusza, oraz przy użyciu [zestawu SDK urządzenia IoT] [ IoT Device SDK] do łączenia z urządzenia fizycznego do rozwiązania.
 
-Przewodnik krok po kroku dotyczący dodawania urządzeń, zobacz [urządzenia łączenie pakiet Iot](iot-suite-v1-connecting-devices.md) artykułu i [zdalnego monitorowania przykład zestawu SDK C](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer/samples/remote_monitoring). Ten przykład jest przeznaczona do pracy z zdalnego wstępnie skonfigurowane rozwiązanie monitorowania.
+Przewodnik krok po kroku do dodawania urządzenia można zobaczyć [Iot Suite łączenie urządzeń](iot-suite-v1-connecting-devices.md) artykułu i [zdalne monitorowanie Przykładowy zestaw SDK C](https://github.com/Azure/azure-iot-sdk-c/tree/master/serializer/samples/remote_monitoring). W tym przykładzie jest przeznaczona do pracy z wstępnie skonfigurowanego rozwiązania do monitorowania zdalnego.
 
-### <a name="create-your-own-simulated-device"></a>Utworzyć symulowane urządzenie
+### <a name="create-your-own-simulated-device"></a>Tworzenie symulowanego urządzenia
 
-Uwzględnione w [zdalnej kontroli kodu źródłowego rozwiązania](https://github.com/Azure/azure-iot-remote-monitoring), jest symulatora .NET. Ta symulator jest udostępniane w ramach rozwiązania i można zmienić go wysłać innych metadanych, telemetrii, i reagowanie na inne polecenia i metody.
+Uwzględnione w [kod źródłowy rozwiązania do monitorowania zdalnego](https://github.com/Azure/azure-iot-remote-monitoring), jest symulator .NET. Ten symulator jest aprowizowany w ramach rozwiązania i zmieniać, Wyślij innych metadanych i telemetrii, i reagować na różnych poleceń i metod.
 
-Symulator wstępnie skonfigurowane w zdalnym wstępnie skonfigurowane rozwiązanie monitorowania symuluje lodówki urządzenia, który emituje temperatury i wilgotności telemetrii. Można zmodyfikować w symulatorze [Simulator.WebJob](https://github.com/Azure/azure-iot-remote-monitoring/tree/master/Simulator/Simulator.WebJob) projektu, gdy zostały rozwidlone repozytorium GitHub.
+Wstępnie skonfigurowane symulatora w zdalnym wstępnie skonfigurowanego rozwiązania monitorowania symuluje chłodniejszej urządzenia, który emituje dane telemetryczne dotyczące temperatury i wilgotności. Możesz zmodyfikować symulatora w [Simulator.WebJob](https://github.com/Azure/azure-iot-remote-monitoring/tree/master/Simulator/Simulator.WebJob) projektu, gdy został utworzony rozwidlenie repozytorium GitHub.
 
-### <a name="available-locations-for-simulated-devices"></a>Dostępne lokalizacje symulowanego urządzenia
+### <a name="available-locations-for-simulated-devices"></a>Dostępne lokalizacje symulowanych urządzeń
 
-Domyślny zbiór lokalizacji jest w Seattle/Redmond, Washington, USA. Możesz zmienić te lokalizacje w [SampleDeviceFactory.cs][lnk-sample-device-factory].
+Domyślny zestaw lokalizacji jest w Seattle/Redmond, Washington, USA. Możesz zmienić te lokalizacje w [SampleDeviceFactory.cs][lnk-sample-device-factory].
 
-### <a name="add-a-desired-property-update-handler-to-the-simulator"></a>Dodaj program obsługi aktualizacji żądanej właściwości do symulatora
+### <a name="add-a-desired-property-update-handler-to-the-simulator"></a>Dodaj program obsługi aktualizacji żądaną właściwość w symulatorze
 
-Można ustawić wartości dla żądanej właściwości dla urządzenia w portalu rozwiązania. Jest obowiązkiem urządzenia do obsługi właściwości żądania zmiany, gdy urządzenie pobiera wartość żądanej właściwości. Aby dodać obsługę zmiany wartości właściwości w ramach żądanej właściwości, należy dodać program obsługi do symulatora.
+Można ustawić wartość żądanej właściwości urządzenia w portalu rozwiązania. Jest odpowiedzialność urządzenia w celu obsługi właściwości żądania zmiany, kiedy urządzenie pobiera wartość żądanej właściwości. Aby dodać obsługę zmiana wartości właściwości, za pośrednictwem żądaną właściwość, należy dodać program obsługi do symulatora.
 
-Symulator zawiera obsługę **SetPointTemp** i **TelemetryInterval** aktualizowanych przez ustawienie właściwości żądane wartości w portalu rozwiązania.
+Symulator zawiera programy obsługi dla **SetPointTemp** i **TelemetryInterval** aktualizowanych przez ustawienie właściwości żądane wartości w portalu rozwiązania.
 
-W poniższym przykładzie pokazano programu obsługi **SetPointTemp** wymaganą właściwość w **CoolerDevice** klasy:
+W poniższym przykładzie pokazano program obsługi dla **SetPointTemp** żądaną właściwość w **CoolerDevice** klasy:
 
 ```csharp
 protected async Task OnSetPointTempUpdate(object value)
@@ -93,28 +94,28 @@ protected async Task OnSetPointTempUpdate(object value)
 }
 ```
 
-Ta metoda aktualizacji temperatury punktu danych telemetrycznych i następnie raportuje zmiany ją do Centrum IoT przez ustawienie właściwości zgłoszone.
+Ta metoda aktualizuje temperatury punktów danych telemetrycznych i następnie raportuje zmiany ją do usługi IoT Hub, ustawiając zgłaszanej właściwości.
 
-Wykonując wzorca w poprzednim przykładzie, można dodać własne programy obsługi dla własnych właściwości.
+Możesz dodać własne programy obsługi dla własnych właściwości, postępując zgodnie ze wzorcem w poprzednim przykładzie.
 
-Należy także powiązać żądanej właściwości do programu obsługi, jak pokazano w poniższym przykładzie z **CoolerDevice** konstruktora:
+Należy również powiązać żądaną właściwość do programu obsługi, jak pokazano w następującym przykładzie **CoolerDevice** Konstruktor:
 
 ```csharp
 _desiredPropertyUpdateHandlers.Add(SetPointTempPropertyName, OnSetPointTempUpdate);
 ```
 
-Należy pamiętać, że **SetPointTempPropertyName** jest stałą zdefiniowany jako "Config.SetPointTemp".
+Należy pamiętać, że **SetPointTempPropertyName** jest stałą, który został zdefiniowany jako "Config.SetPointTemp".
 
-### <a name="add-support-for-a-new-method-to-the-simulator"></a>Dodaj obsługę nowej metody do symulatora
+### <a name="add-support-for-a-new-method-to-the-simulator"></a>Dodanie obsługi nowej metody w symulatorze
 
-Symulator, aby dodać nową obsługę można dostosować [— metoda (metoda bezpośrednia)][lnk-direct-methods]. Istnieją dwa kluczowe kroki wymagane:
+Można dostosować symulator, aby dodać nową obsługę [metody (metoda bezpośrednia)][lnk-direct-methods]. Istnieją dwa kluczowe kroki wymagane:
 
-- Symulator należy powiadomić Centrum IoT w wstępnie skonfigurowane rozwiązanie szczegółowe informacje o metodzie.
-- Symulator musi zawierać kod obsługi wywołania metody, uruchamiając go z **szczegóły urządzenia** panelu w Eksploratorze rozwiązań i za pomocą zadania.
+- Symulator musi powiadomić usługi IoT hub we wstępnie skonfigurowanym rozwiązaniu szczegółowe informacje o metodzie.
+- Symulator mogą zawierać kod obsługujący wywołania metody, gdy wywołujesz ją z **szczegóły urządzenia** panelu w Eksploratorze rozwiązań lub przy użyciu zadania.
 
-Zdalne monitorowanie wstępnie skonfigurowane rozwiązanie używa *zgłosił właściwości* wysłać szczegóły obsługiwane metody do Centrum IoT. Zaplecze rozwiązania przechowuje listę wszystkich metod obsługiwanych przez poszczególne urządzenia oraz Historia wywołań metod. Możesz wyświetlić te informacje o urządzeniach i wywołania metod w portalu rozwiązania.
+Zdalne monitorowanie wstępnie skonfigurowane rozwiązanie używa *zgłaszanych właściwości* wysłać szczegółowe informacje o obsługiwanych metod do usługi IoT hub. Zaplecze rozwiązania przechowuje listę wszystkich metod, które są obsługiwane przez poszczególne urządzenia wraz z historii wywołań metod. Można wyświetlić te informacje o urządzeniach i wywoływanie metod w portalu rozwiązania.
 
-Aby powiadomić Centrum IoT, czy urządzenie obsługuje metodę, urządzenia, należy dodać szczegóły metody **SupportedMethods** węzła we właściwościach zgłoszone:
+Aby powiadomić usługi IoT hub, czy urządzenie obsługuje metodę, urządzenia, należy dodać szczegóły metody **SupportedMethods** węzła w zgłoszonych właściwości:
 
 ```json
 "SupportedMethods": {
@@ -123,20 +124,20 @@ Aby powiadomić Centrum IoT, czy urządzenie obsługuje metodę, urządzenia, na
 }
 ```
 
-Podpis metody ma następujący format: `<method name>--<parameter #0 name>-<parameter #1 type>-...-<parameter #n name>-<parameter #n type>`. Na przykład, aby określić **InitiateFirmwareUpdate** metoda oczekuje parametru ciągu o nazwie **FwPackageURI**, użyj następujących podpis metody:
+Podpis metody ma następujący format: `<method name>--<parameter #0 name>-<parameter #1 type>-...-<parameter #n name>-<parameter #n type>`. Na przykład, aby określić **InitiateFirmwareUpdate** metoda oczekuje jako parametr ciągu o nazwie **FwPackageURI**, użyj następujący podpis metody:
 
 ```json
 InitiateFirmwareUpate--FwPackageURI-string: "description of method"
 ```
 
-Dla listy typów obsługiwanych parametrów, zobacz **CommandTypes** klasy w projekcie infrastruktury.
+Aby uzyskać listę obsługiwane typy parametrów, zobacz **CommandTypes** klasy w projekcie infrastruktury.
 
-Aby usunąć metody, należy ustawić podpis metody `null` we właściwościach zgłoszony.
+Aby usunąć metodę, Ustaw podpis metody `null` zgłoszonych właściwości.
 
 > [!NOTE]
-> Po odebraniu zaplecza rozwiązania tylko aktualizuje informacje o obsługiwanych metod *informacje o urządzeniu* wiadomości z urządzenia.
+> Zaplecze rozwiązania tylko zaktualizowanie informacji o obsługiwanych metodach po odebraniu *informacje o urządzeniu* komunikatów z urządzenia.
 
-Poniższy przykładowy kod z **SampleDeviceFactory** klasy w projekcie wspólnej pokazano, jak dodać metodę do listy **SupportedMethods** we właściwościach zgłoszone wysyłane przez urządzenie:
+Poniższy przykładowy kod z **SampleDeviceFactory** klasy w projekcie wspólnej pokazuje, jak dodać metodę do listy **SupportedMethods** w zgłaszane właściwości wysyłane przez urządzenie:
 
 ```csharp
 device.Commands.Add(new Command(
@@ -147,11 +148,11 @@ device.Commands.Add(new Command(
 ));
 ```
 
-Następujący fragment kodu dodaje szczegóły **InitiateFirmwareUpdate** metody, łącznie z tekstem, które mają być wyświetlane w portalu rozwiązania i szczegółowe informacje o parametrach wymaganej metody.
+Ten fragment kodu dodaje szczegóły **InitiateFirmwareUpdate** metody, w tym tekst do wyświetlenia w portalu rozwiązania i szczegółowe informacje dotyczące parametrów wymaganej metody.
 
-Symulator wysyła właściwości zgłoszone, łącznie z listą obsługiwanych metod, aby Centrum IoT podczas uruchamiania symulatora.
+Symulator wysyła zgłaszane właściwości, łącznie z listą obsługiwanych metod do usługi IoT Hub podczas uruchamiania symulatora.
 
-Dodaj program obsługi do kodu symulatora dla poszczególnych metod obsługiwanych. Widać istniejących programów obsługi w **CoolerDevice** klasy w projekcie Simulator.WebJob. W poniższym przykładzie pokazano programu obsługi **InitiateFirmwareUpdate** metody:
+Dodaj program obsługi do kod symulatora dla poszczególnych metod, które obsługuje. Możesz zobaczyć istniejące programy obsługi w **CoolerDevice** klasy w projekcie Simulator.WebJob. W poniższym przykładzie pokazano program obsługi dla **InitiateFirmwareUpdate** metody:
 
 ```csharp
 public async Task<MethodResponse> OnInitiateFirmwareUpdate(MethodRequest methodRequest, object userContext)
@@ -195,51 +196,51 @@ public async Task<MethodResponse> OnInitiateFirmwareUpdate(MethodRequest methodR
 }
 ```
 
-Nazwy metod obsługi musi rozpoczynać się od `On` następuje nazwa metody. **MethodRequest** parametr zawiera parametry przekazywane wywołania metody z zaplecza rozwiązania. Zwracana wartość musi być typu **zadań&lt;MethodResponse&gt;**. **BuildMethodResponse** narzędzie metody pomaga utworzyć wartość zwracaną.
+Metoda nazwy programów obsługi musi rozpoczynać się `On` następuje nazwa metody. **MethodRequest** parametr zawiera parametry przekazywane wywołanie metody z zapleczem rozwiązania. Zwracana wartość musi być typu **zadań&lt;MethodResponse&gt;**. **BuildMethodResponse** metoda narzędzie pomoże Ci w utworzeniu wartość zwracaną.
 
-Wewnątrz metody obsługi możesz:
+Wewnątrz metody obsługi można wykonać następujące akcje:
 
 - Uruchom zadanie asynchroniczne.
-- Pobrać żądanej właściwości z *dwie urządzenia* w Centrum IoT.
-- Aktualizuj przy użyciu jednej właściwości zgłoszone **SetReportedPropertyAsync** metody w **CoolerDevice** klasy.
-- Zaktualizować wiele właściwości zgłoszonego przez utworzenie **TwinCollection** wystąpienia i wywoływania **Transport.UpdateReportedPropertiesAsync** metody.
+- Pobieranie żądanych właściwości z *bliźniaczej reprezentacji urządzenia* w usłudze IoT Hub.
+- Zaktualizować za pomocą pojedynczego zgłaszanych właściwości **SetReportedPropertyAsync** method in Class metoda **CoolerDevice** klasy.
+- Aktualizowanie wielu zgłaszanych właściwości, tworząc **TwinCollection** wystąpienie i wywołania **Transport.UpdateReportedPropertiesAsync** metody.
 
 W poprzednim przykładzie aktualizacji oprogramowania układowego wykonuje następujące czynności:
 
-- Sprawdza, czy urządzenie jest w stanie zaakceptować żądania aktualizacji oprogramowania układowego.
+- Sprawdza, czy urządzenie jest w stanie zaakceptować żądanie aktualizacji oprogramowania układowego.
 - Asynchronicznie inicjuje operację aktualizacji oprogramowania układowego i przywraca dane telemetryczne po zakończeniu operacji.
 - Natychmiast zwraca komunikat "FirmwareUpdate zaakceptowane", aby wskazać, że żądanie zostało zaakceptowane przez urządzenie.
 
-### <a name="build-and-use-your-own-physical-device"></a>Tworzenie i używanie własnego urządzenia (fizycznych)
+### <a name="build-and-use-your-own-physical-device"></a>Tworzenie i używanie urządzenia (fizycznego)
 
-[Azure IoT SDK](https://github.com/Azure/azure-iot-sdks) Podaj bibliotek podłączania wiele typów urządzeń (języków i systemów operacyjnych) do rozwiązania IoT.
+[Azure IoT SDKs](https://github.com/Azure/azure-iot-sdks) udostępniają biblioteki łączenia wielu typów urządzeń (języków i systemów operacyjnych) w rozwiązaniach IoT.
 
 ## <a name="modify-dashboard-limits"></a>Modyfikowanie limity pulpitu nawigacyjnego
 
 ### <a name="number-of-devices-displayed-in-dashboard-dropdown"></a>Liczba urządzeń wyświetlane na liście rozwijanej pulpitu nawigacyjnego
 
-Wartość domyślna to 200. Można zmienić tego numeru w [DashboardController.cs][lnk-dashboard-controller].
+Wartość domyślna to 200. Możesz zmienić tę wartość w [DashboardController.cs][lnk-dashboard-controller].
 
-### <a name="number-of-pins-to-display-in-bing-map-control"></a>Numer PIN do wyświetlenia w formancie mapy Bing
+### <a name="number-of-pins-to-display-in-bing-map-control"></a>Liczby kodów PIN wyświetlanie w formancie mapy Bing
 
-Wartość domyślna to 200. Można zmienić tego numeru w [TelemetryApiController.cs][lnk-telemetry-api-controller-01].
+Wartość domyślna to 200. Możesz zmienić tę wartość w [TelemetryApiController.cs][lnk-telemetry-api-controller-01].
 
-### <a name="time-period-of-telemetry-graph"></a>Okres czasu wykresu telemetrii
+### <a name="time-period-of-telemetry-graph"></a>Okres telemetrii wykresu
 
 Wartość domyślna to 10 minut. Można zmienić tę wartość w [TelmetryApiController.cs][lnk-telemetry-api-controller-02].
 
 ## <a name="feedback"></a>Opinia
 
-Masz dostosowanie chcesz wyświetlić w tym dokumencie? Dodaj sugestii funkcji [User Voice](https://feedback.azure.com/forums/321918-azure-iot), lub komentarz w tym artykule. 
+Czy masz dostosowania chcesz zobaczyć został opisany w tym dokumencie? Dodaj funkcję sugestii w zakresie [User Voice](https://feedback.azure.com/forums/321918-azure-iot), lub komentarza, w tym artykule. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat opcji dostosowywania wstępnie skonfigurowanych rozwiązań, zobacz:
+Aby dowiedzieć się więcej o opcjach dostosowywania wstępnie skonfigurowanych rozwiązań, zobacz:
 
-* [Łączenie aplikacji logiki do rozwiązania Azure IoT pakiet monitorowania zdalnego wstępnie][lnk-logicapp]
-* [Dynamiczne telemetrii za pomocą zdalnego wstępnie skonfigurowane rozwiązanie monitorowania][lnk-dynamic]
-* [Urządzenie informacji metadanych w zdalnym wstępnie skonfigurowane rozwiązanie monitorowania][lnk-devinfo]
-* [Dostosuj sposób rozwiązania połączonych fabryki wyświetlania danych z serwerów OPC UA][lnk-cf-customize]
+* [Łączenie aplikacji logiki do usługi Azure IoT Suite zdalne monitorowanie wstępnie skonfigurowanego rozwiązania][lnk-logicapp]
+* [Korzystanie z telemetrii dynamicznej z wstępnie skonfigurowanego rozwiązania do monitorowania zdalnego][lnk-dynamic]
+* [Urządzenie informacji o metadanych w wstępnie skonfigurowanego rozwiązania do monitorowania zdalnego][lnk-devinfo]
+* [Dostosowywanie sposobu wyświetlania danych z serwerów OPC UA w rozwiązaniu połączonej fabryki][lnk-cf-customize]
 
 [lnk-logicapp]: iot-suite-v1-logic-apps-tutorial.md
 [lnk-dynamic]: iot-suite-v1-dynamic-telemetry.md

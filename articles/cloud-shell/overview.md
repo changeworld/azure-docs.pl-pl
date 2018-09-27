@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/04/2018
 ms.author: juluk
-ms.openlocfilehash: 67624e7ad21e6c3526b3ca47ff4b8e2df3b6ae54
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ea7393584e77b51073ca8938ec03e9d6f6ad6fc0
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962270"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166677"
 ---
 # <a name="overview-of-azure-cloud-shell"></a>Omówienie usługi Azure Cloud Shell
 Usługa Azure Cloud Shell jest powłoką interaktywne, dostępny w przeglądarce do zarządzania zasobami platformy Azure.
@@ -41,11 +41,11 @@ Usługi cloud Shell umożliwia dostęp do opartego na przeglądarce środowisko 
 Wykorzystaj Cloud Shell, aby pracować autonomiczne z komputera lokalnego w sposób tylko chmura może zapewnić.
 
 ### <a name="choice-of-preferred-shell-experience"></a>Wybór preferowaną powłokę
-Użytkownicy systemu Linux użyć narzędzia Bash w usłudze Cloud Shell, podczas gdy użytkownicy Windows mogą używać programu PowerShell w usłudze Cloud Shell (wersja zapoznawcza) z listy rozwijanej powłoki.
+Użytkownicy mogą wybierać między powłoki Bash lub programu PowerShell z listy rozwijanej powłoki.
 
 ![Powłoka bash w usłudze Cloud Shell](media/overview/overview-bash-pic.png)
 
-![Program PowerShell w usłudze Cloud Shell (wersja zapoznawcza)](media/overview/overview-ps-pic.png)
+![Program PowerShell w usłudze Cloud Shell](media/overview/overview-ps-pic.png)
 
 ### <a name="authenticated-and-configured-azure-workstation"></a>Uwierzytelniony i skonfigurowane Azure stacji roboczej
 Usługa cloud Shell jest zarządzany przez firmę Microsoft, więc pochodzi ona z obsługą języka i popularnych narzędzi wiersza polecenia. Aby uzyskać natychmiastowy dostęp do zasobów przy użyciu wiersza polecenia platformy Azure lub programu Azure PowerShell polecenia cmdlet usługi cloud Shell jednocześnie możliwość bezpiecznego uwierzytelnia automatycznie.
@@ -68,7 +68,7 @@ Usługa cloud Shell jest elastyczne narzędzie, które mogą być używane:
 ### <a name="connect-your-microsoft-azure-files-storage"></a>Połącz magazyn plików pakietu Microsoft Azure
 Cloud Shell maszyn są tymczasowe i wymagają nowego lub istniejącego udziału plików platformy Azure ma zostać zainstalowany jako `clouddrive` do utrwalania plików.
 
-Przy pierwszym uruchomieniu usługi Cloud Shell monituje o utworzenie zasobu grupy, konto magazynu i usługi Azure Files udział w Twoim imieniu. Jest to jednorazowy krok i zostanie automatycznie dołączone do wszystkich sesji. Jeden udział pliku można zamapować i będą używane przez zarówno w przypadku powłoki Bash, jak i programu PowerShell w usłudze Cloud Shell (wersja zapoznawcza).
+Przy pierwszym uruchomieniu usługi Cloud Shell monituje o utworzenie zasobu grupy, konto magazynu i usługi Azure Files udział w Twoim imieniu. Jest to jednorazowy krok i zostanie automatycznie dołączone do wszystkich sesji. Jeden udział pliku można zamapować i będą używane przez zarówno w przypadku powłoki Bash, jak i programu PowerShell w usłudze Cloud Shell.
 
 Dowiedz się więcej na temat sposobu instalacji [konta magazynu do nowego lub istniejącego](persisting-shell-storage.md).
 
@@ -81,11 +81,11 @@ Dowiedz się więcej na temat sposobu instalacji [konta magazynu do nowego lub i
 * Usługa cloud Shell będzie się powtarzał $Home przy użyciu obrazu 5 GB przechowywanych w udziale plików
 * Uprawnienia zostały ustawione jako zwykły użytkownik systemu Linux w powłoce Bash
 
-Dowiedz się więcej o funkcjach [Bash w usłudze Cloud Shell](features.md) i [programu PowerShell w usłudze Cloud Shell (wersja zapoznawcza)](features-powershell.md).
+Dowiedz się więcej o funkcjach [Bash w usłudze Cloud Shell](features.md) i [programu PowerShell w usłudze Cloud Shell](features-powershell.md).
 
 ## <a name="pricing"></a>Cennik
 Komputer, na którym usługa Cloud Shell jest bezpłatną, wstępnie posiadania zainstalowanego udziału plików platformy Azure. Obowiązują koszty związane z regularnych magazynu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Powłoka bash w usłudze Cloud Shell przewodnika Szybki Start](quickstart.md) <br>
-[Program PowerShell w przewodniku Szybki Start usługi Cloud Shell (wersja zapoznawcza)](quickstart-powershell.md)
+[Program PowerShell w usłudze Cloud Shell Przewodnik Szybki Start](quickstart-powershell.md)

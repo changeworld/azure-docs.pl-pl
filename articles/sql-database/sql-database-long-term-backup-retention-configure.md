@@ -2,20 +2,22 @@
 title: Zarządzanie długotrwałym przechowywaniem kopii zapasowych usługi Azure SQL Database | Dokumentacja firmy Microsoft
 description: Informacje o sposobie przechowywania automatycznych kopii zapasowych w magazynie usługi Azure SQL, a następnie przywróć je
 services: sql-database
-author: anosov1960
-manager: craigg
 ms.service: sql-database
-ms.custom: business continuity
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 09/18/2018
+author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
-ms.openlocfilehash: 850467dff0a16cb2ac7cda44537406f0267711b4
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+manager: craigg
+ms.date: 09/18/2018
+ms.openlocfilehash: 0a91139d92570a2ee2828f9295590d580902c501
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366526"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47164994"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Zarządzanie długotrwałym przechowywaniem kopii zapasowych usługi Azure SQL Database
 

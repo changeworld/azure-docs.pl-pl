@@ -1,23 +1,23 @@
 ---
-title: Szkolenie z aplikacją usługi LUIS
+title: Szkolenie swoją wersję usługi LUIS
 titleSuffix: Azure Cognitive Services
-description: Szkolenie to proces uczenia aplikacji Language Understanding (LUIS), aby zwiększyć jego interpretacja języka naturalnego. Szkolenie aplikacją usługi LUIS po aktualizacji do modelu, takich jak dodawanie, edytowanie, etykietowania lub usunięcie jednostki, intencji lub wypowiedzi.
+description: Szkolenie to proces uczenia usługi Language Understanding (LUIS) wersji aplikacji, aby zwiększyć jego interpretacja języka naturalnego. Szkolenie aplikacją usługi LUIS po aktualizacji do modelu, takich jak dodawanie, edytowanie, etykietowania lub usunięcie jednostki, intencji lub wypowiedzi.
 services: cognitive-services
 author: diberry
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: article
-ms.date: 09/06/2018
+ms.date: 09/24/2018
 ms.author: diberry
-ms.openlocfilehash: 6ed76e35ce07f2848c67ef007ad7d3f062f465f7
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f27716cc416b162a5b2df5542d709058f3b3e903
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036766"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182043"
 ---
-# <a name="train-your-luis-app"></a>Szkolenie z aplikacją usługi LUIS
+# <a name="train-your-luis-app-version"></a>Szkolenie używana wersja aplikacji usługi LUIS
 
 Szkolenie to proces uczenia aplikacji Language Understanding (LUIS), aby zwiększyć jego interpretacja języka naturalnego. Szkolenie aplikacją usługi LUIS po aktualizacji do modelu, takich jak dodawanie, edytowanie, etykietowania lub usunięcie jednostki, intencji lub wypowiedzi. 
 
@@ -26,7 +26,7 @@ When you train a LUIS app by example, LUIS generalizes from the examples you hav
 
 Szkolenia i [testowania](luis-concept-test.md) aplikacji jest procesem iteracyjnym. Po uczenie jest aplikacją usługi LUIS, testowanie za pomocą wypowiedzi próbki, aby sprawdzić, czy intencje i podmioty są rozpoznawane prawidłowo. Jeśli nie jesteś, aktualizowanie aplikacją usługi LUIS, szkolenie i test ponownie. 
 
-## <a name="train-your-app"></a>Uczenie aplikacji
+## <a name="how-to-train"></a>Sposób trenowania
 Aby rozpocząć proces iteracyjny, należy najpierw szkolenie aplikacją usługi LUIS w co najmniej raz. Upewnij się, że każdy celem ma co najmniej jeden wypowiedź przed szkolenia.
 
 1. Dostęp do aplikacji, wybierając jego nazwę na **Moje aplikacje** strony. 
@@ -39,6 +39,9 @@ Aby rozpocząć proces iteracyjny, należy najpierw szkolenie aplikacją usługi
 
 >[!NOTE]
 >W przypadku co najmniej jeden intencje w swojej aplikacji, które nie zawierają na przykład wypowiedzi nie uczenie aplikacji. Dodawanie wypowiedzi dla wszystkich profilów konwersji. Aby uzyskać więcej informacji, zobacz [Dodawanie wypowiedzi przykład](luis-how-to-add-example-utterances.md).
+
+## <a name="train-with-all-data"></a>Szkolenie przy użyciu wszystkich danych
+Szkolenie używa niewielką część ujemna próbkowania. Na używanie wszystkich danych zamiast krótki przykład ujemna, należy użyć [wersji interfejsu API z ustawień](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) z `UseAllTrainingData` ustawiona na wartość true, aby wyłączyć tę funkcję. 
 
 ## <a name="next-steps"></a>Kolejne kroki
 

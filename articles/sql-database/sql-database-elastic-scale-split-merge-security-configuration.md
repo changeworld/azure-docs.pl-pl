@@ -1,24 +1,26 @@
 ---
-title: Konfiguracja zabezpieczeń scalania podziału | Dokumentacja firmy Microsoft
-description: Konfigurowanie x409 certyfikaty szyfrowania w usłudze podziału/merge elastycznego skalowania.
-metakeywords: Elastic Database certificates security
+title: Zabezpieczenia dzielenia i scalania konfiguracji | Dokumentacja firmy Microsoft
+description: Konfigurowanie x409 certyfikaty szyfrowania przy użyciu usługi dzielenia i scalania kątem elastycznego skalowania.
 services: sql-database
-manager: craigg
-author: stevestein
 ms.service: sql-database
-ms.custom: scale out apps
+ms.subservice: elastic-scale
+ms.custom: ''
+ms.devlang: ''
 ms.topic: conceptual
-ms.date: 04/01/2018
+author: stevestein
 ms.author: sstein
-ms.openlocfilehash: bb2090aba61f32e79fe3a9fd950e6e3688193d7d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.reviewer: ''
+manager: craigg
+ms.date: 04/01/2018
+ms.openlocfilehash: ca93d97c3e0ddab0377ef437a04e7e3e31197b97
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34647089"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166380"
 ---
-# <a name="split-merge-security-configuration"></a>Konfiguracja zabezpieczeń scalania podziału
-Do korzystania z usługi podziału/Merge, należy poprawnie skonfigurować zabezpieczeń. Usługa jest część funkcji elastycznego skalowania bazy danych SQL Azure firmy Microsoft. Aby uzyskać więcej informacji, zobacz [elastycznej podziału skali i scal samouczek usługi](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
+# <a name="split-merge-security-configuration"></a>Konfiguracja zabezpieczenia dzielenia i scalania
+Aby użyć usługi dzielenia i scalania, należy poprawnie skonfigurować zabezpieczenia. Usługa jest częścią funkcji elastyczne skalowanie systemu Microsoft Azure SQL Database. Aby uzyskać więcej informacji, zobacz [elastycznej podziału skali i scalić samouczek usługi](sql-database-elastic-scale-configure-deploy-split-and-merge.md).
 
 ## <a name="configuring-certificates"></a>Konfigurowanie certyfikatów
 Certyfikaty są skonfigurowane na dwa sposoby. 
@@ -27,7 +29,7 @@ Certyfikaty są skonfigurowane na dwa sposoby.
 2. [Aby skonfigurować certyfikaty klienta](#to-configure-client-certificates) 
 
 ## <a name="to-obtain-certificates"></a>Uzyskiwanie certyfikatów
-Certyfikaty można uzyskać z publicznych urzędów certyfikacji (CA) lub [usługi certyfikatów systemu Windows](http://msdn.microsoft.com/library/windows/desktop/aa376539.aspx). Są to preferowanymi metodami uzyskiwanie certyfikatów.
+Certyfikaty można uzyskać od publicznych urzędów certyfikacji (CA) lub z [Windows certyfikatu usługi](http://msdn.microsoft.com/library/windows/desktop/aa376539.aspx). Są to preferowane metody służące do uzyskania certyfikatów.
 
 Jeśli te opcje nie są dostępne, można wygenerować **certyfikaty z podpisem własnym**.
 
@@ -36,25 +38,25 @@ Jeśli te opcje nie są dostępne, można wygenerować **certyfikaty z podpisem 
 * [pvk2pfx.exe](http://msdn.microsoft.com/library/windows/hardware/ff550672.aspx)
 
 ### <a name="to-run-the-tools"></a>Aby uruchomić narzędzia
-* Z wiersz polecenia dla deweloperów programu Visual Studio, zobacz [wiersz polecenia programu Visual Studio](http://msdn.microsoft.com/library/ms229859.aspx) 
+* W wierszu polecenia dla deweloperów programu Visual Studio, zobacz [wiersza polecenia programu Visual Studio](http://msdn.microsoft.com/library/ms229859.aspx) 
   
-    Jeśli zainstalowany, przejdź do:
+    Jeśli zainstalowano, przejdź do:
   
         %ProgramFiles(x86)%\Windows Kits\x.y\bin\x86 
-* Pobierz WDK z [Windows 8.1: Pobieranie zestawów i narzędzi](http://msdn.microsoft.com/windows/hardware/gg454513#drivers)
+* Pobierz WDK z [Windows 8.1: zestawy i narzędzia do pobrania](http://msdn.microsoft.com/windows/hardware/gg454513#drivers)
 
 ## <a name="to-configure-the-ssl-certificate"></a>Aby skonfigurować certyfikat SSL
-Certyfikat SSL jest wymagany do zaszyfrowania komunikacji i uwierzytelniania serwera. Wybierz najbardziej odpowiednią z trzech poniższych scenariuszy i wykonaj wszystkie jej kroki:
+Certyfikat SSL jest wymagany do szyfrowania komunikacji i uwierzytelniania serwera. Wybierz najbardziej odpowiednią z trzech poniższych scenariuszy, a wykonywanie wszystkich jej kroków:
 
 ### <a name="create-a-new-self-signed-certificate"></a>Utwórz nowy certyfikat z podpisem własnym
 1. [Utwórz certyfikat z podpisem własnym](#create-a-self-signed-certificate)
 2. [Utwórz plik PFX dla certyfikatu SSL z podpisem własnym](#create-pfx-file-for-self-signed-ssl-certificate)
 3. [Przekaż certyfikat SSL do usługi w chmurze](#upload-ssl-certificate-to-cloud-service)
 4. [Aktualizuj certyfikat SSL w pliku konfiguracji usługi](#update-ssl-certificate-in-service-configuration-file)
-5. [Urząd certyfikacji SSL importu](#import-ssl-certification-authority)
+5. [Importowanie urzędu certyfikacji SSL](#import-ssl-certification-authority)
 
 ### <a name="to-use-an-existing-certificate-from-the-certificate-store"></a>Aby użyć istniejącego certyfikatu z magazynu certyfikatów
-1. [Wyeksportuj certyfikat protokołu SSL z magazynu certyfikatów](#export-ssl-certificate-from-certificate-store)
+1. [Eksportowanie certyfikatu protokołu SSL z Store certyfikatu](#export-ssl-certificate-from-certificate-store)
 2. [Przekaż certyfikat SSL do usługi w chmurze](#upload-ssl-certificate-to-cloud-service)
 3. [Aktualizuj certyfikat SSL w pliku konfiguracji usługi](#update-ssl-certificate-in-service-configuration-file)
 
@@ -63,66 +65,66 @@ Certyfikat SSL jest wymagany do zaszyfrowania komunikacji i uwierzytelniania ser
 2. [Aktualizuj certyfikat SSL w pliku konfiguracji usługi](#update-ssl-certificate-in-service-configuration-file)
 
 ## <a name="to-configure-client-certificates"></a>Aby skonfigurować certyfikaty klienta
-Certyfikaty klienta są wymagane do uwierzytelniania żądań do usługi. Wybierz najbardziej odpowiednią z trzech poniższych scenariuszy i wykonaj wszystkie jej kroki:
+Certyfikaty klienta są wymagane do uwierzytelniania żądań do usługi. Wybierz najbardziej odpowiednią z trzech poniższych scenariuszy, a wykonywanie wszystkich jej kroków:
 
 ### <a name="turn-off-client-certificates"></a>Wyłącz certyfikaty klienta
-1. [Wyłącz uwierzytelnianie oparte na certyfikatach](#turn-off-client-certificate-based-authentication)
+1. [Wyłącz uwierzytelnianie na podstawie certyfikatu klienta](#turn-off-client-certificate-based-authentication)
 
 ### <a name="issue-new-self-signed-client-certificates"></a>Wydać nowe certyfikaty klienta z podpisem własnym
 1. [Tworzenie urzędu certyfikacji z podpisem własnym](#create-a-self-signed-certification-authority)
 2. [Przekaż certyfikat urzędu certyfikacji do usługi w chmurze](#upload-ca-certificate-to-cloud-service)
-3. [Aktualizuj certyfikat urzędu certyfikacji w pliku konfiguracji usługi](#update-ca-certificate-in-service-configuration-file)
-4. [Certyfikaty](#issue-client-certificates)
+3. [Aktualizowanie certyfikatu urzędu certyfikacji w pliku konfiguracji usługi](#update-ca-certificate-in-service-configuration-file)
+4. [Wystawianie certyfikatów klienta](#issue-client-certificates)
 5. [Tworzenie plików PFX certyfikatów klienta](#create-pfx-files-for-client-certificates)
 6. [Importowanie certyfikatu klienta](#Import-Client-Certificate)
 7. [Skopiuj odciski palców certyfikatu klienta](#copy-client-certificate-thumbprints)
 8. [Konfigurowanie klientów dozwolonych w pliku konfiguracji usługi](#configure-allowed-clients-in-the-service-configuration-file)
 
 ### <a name="use-existing-client-certificates"></a>Użyj istniejących certyfikatów klienta
-1. [Znajdowanie klucza publicznego urzędu certyfikacji](#find-ca-public-key)
+1. [Znajdź klucz publiczny urzędu certyfikacji](#find-ca-public-key)
 2. [Przekaż certyfikat urzędu certyfikacji do usługi w chmurze](#Upload-CA-certificate-to-cloud-service)
-3. [Aktualizuj certyfikat urzędu certyfikacji w pliku konfiguracji usługi](#Update-CA-Certificate-in-Service-Configuration-File)
+3. [Aktualizowanie certyfikatu urzędu certyfikacji w pliku konfiguracji usługi](#Update-CA-Certificate-in-Service-Configuration-File)
 4. [Skopiuj odciski palców certyfikatu klienta](#Copy-Client-Certificate-Thumbprints)
 5. [Konfigurowanie klientów dozwolonych w pliku konfiguracji usługi](#configure-allowed-clients-in-the-service-configuration-file)
-6. [Skonfiguruj sprawdzanie odwołania certyfikatu klienta](#Configure-Client-Certificate-Revocation-Check)
+6. [Konfigurowanie sprawdzanie odwołania certyfikatu klienta](#Configure-Client-Certificate-Revocation-Check)
 
-## <a name="allowed-ip-addresses"></a>Dozwolonych adresów IP
-Dostęp do punktów końcowych usługi można ograniczyć do określonych zakresów adresów IP.
+## <a name="allowed-ip-addresses"></a>Dozwolone adresy IP
+Dostęp do punktów końcowych usługi może być ograniczone do określonych zakresów adresów IP.
 
 ## <a name="to-configure-encryption-for-the-store"></a>Aby skonfigurować szyfrowanie magazynu
-Certyfikat jest wymagany do szyfrowania poświadczeń, które są przechowywane w magazynie metadanych. Wybierz najbardziej odpowiednią z trzech poniższych scenariuszy i wykonaj wszystkie jej kroki:
+Certyfikat jest wymagany do szyfrowania poświadczeń, które są przechowywane w magazynie metadanych. Wybierz najbardziej odpowiednią z trzech poniższych scenariuszy, a wykonywanie wszystkich jej kroków:
 
 ### <a name="use-a-new-self-signed-certificate"></a>Użyj nowego certyfikatu z podpisem własnym
 1. [Utwórz certyfikat z podpisem własnym](#create-a-self-signed-certificate)
-2. [Tworzenie pliku PFX certyfikatu szyfrowania z podpisem własnym](#create-pfx-file-for-self-signed-ssl-certificate)
-3. [Przekaż certyfikat szyfrowania, aby usługa w chmurze](#upload-encryption-certificate-to-cloud-service)
+2. [Utwórz plik PFX certyfikatu szyfrowania z podpisem własnym](#create-pfx-file-for-self-signed-ssl-certificate)
+3. [Przekaż certyfikat szyfrowania do usługi w chmurze](#upload-encryption-certificate-to-cloud-service)
 4. [Aktualizuj certyfikat szyfrowania w pliku konfiguracji usługi](#update-encryption-certificate-in-service-configuration-file)
 
 ### <a name="use-an-existing-certificate-from-the-certificate-store"></a>Użyj istniejącego certyfikatu z magazynu certyfikatów
-1. [Wyeksportuj certyfikat szyfrowania z magazynu certyfikatów](#export-encryption-certificate-from-certificate-store)
-2. [Przekaż certyfikat szyfrowania, aby usługa w chmurze](#upload-encryption-certificate-to-cloud-service)
+1. [Eksportowanie certyfikatu szyfrowania z Store certyfikatu](#export-encryption-certificate-from-certificate-store)
+2. [Przekaż certyfikat szyfrowania do usługi w chmurze](#upload-encryption-certificate-to-cloud-service)
 3. [Aktualizuj certyfikat szyfrowania w pliku konfiguracji usługi](#update-encryption-certificate-in-service-configuration-file)
 
 ### <a name="use-an-existing-certificate-in-a-pfx-file"></a>Użyj istniejącego certyfikatu w pliku PFX
-1. [Przekaż certyfikat szyfrowania, aby usługa w chmurze](#upload-encryption-certificate-to-cloud-service)
+1. [Przekaż certyfikat szyfrowania do usługi w chmurze](#upload-encryption-certificate-to-cloud-service)
 2. [Aktualizuj certyfikat szyfrowania w pliku konfiguracji usługi](#update-encryption-certificate-in-service-configuration-file)
 
 ## <a name="the-default-configuration"></a>Domyślna konfiguracja
-Domyślna konfiguracja nie zezwala na dostęp do punktu końcowego HTTP. To jest zalecane ustawienie, ponieważ żądania z tymi punktami końcowymi może posiadać poufne informacje, takie jak poświadczenia bazy danych.
-Domyślna konfiguracja umożliwia dostęp do punktu końcowego protokołu HTTPS. To ustawienie może być ograniczony dalej.
+Domyślna konfiguracja nie zezwala na dostęp do punktu końcowego HTTP. Jest to zalecane ustawienia, ponieważ żądania do tych punktów końcowych może posiadać poufne informacje, takie jak poświadczenia bazy danych.
+Domyślna konfiguracja umożliwia dostęp do punktu końcowego HTTPS. To ustawienie może być ograniczony dalej.
 
-### <a name="changing-the-configuration"></a>Zmiana konfiguracji
-Grupy z regułami kontroli dostępu, które dotyczą i punktu końcowego są konfigurowane w **<EndpointAcls>** sekcji **pliku konfiguracji usługi**.
+### <a name="changing-the-configuration"></a>Zmienianie konfiguracji
+Grupa reguł kontroli dostępu, które dotyczą i punktu końcowego są konfigurowane w **<EndpointAcls>** sekcji **pliku konfiguracji usługi**.
 
     <EndpointAcls>
       <EndpointAcl role="SplitMergeWeb" endPoint="HttpIn" accessControl="DenyAll" />
       <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="AllowAll" />
     </EndpointAcls>
 
-Zasady grupy kontroli dostępu są konfigurowane w <AccessControl name=""> sekcji pliku konfiguracji usługi. 
+Zasady w grupie kontroli dostępu są konfigurowane w <AccessControl name=""> sekcję pliku konfiguracji usługi. 
 
-Format opisanej w dokumentacji list kontroli dostępu do sieci.
-Na przykład aby zezwolić tylko adresy IP w zakresie 100.100.0.0 do 100.100.255.255 można uzyskać dostępu do punktu końcowego protokołu HTTPS, reguły będzie wyglądać następująco:
+Format opisanej w dokumentacji list kontroli dostępu w sieci.
+Na przykład aby zezwolić tylko adresy IP w zakresie 100.100.0.0 do 100.100.255.255, dostęp do punktu końcowego HTTPS, zasady będzie wyglądać następująco:
 
     <AccessControl name="Retricted">
       <Rule action="permit" description="Some" order="1" remoteSubnet="100.100.0.0/16"/>
@@ -132,17 +134,17 @@ Na przykład aby zezwolić tylko adresy IP w zakresie 100.100.0.0 do 100.100.255
     <EndpointAcl role="SplitMergeWeb" endPoint="HttpsIn" accessControl="Restricted" />
 
 ## <a name="denial-of-service-prevention"></a>Odmowa usługi zapobiegania
-Istnieją dwa różne mechanizmy obsługiwane wykrywanie i zapobieganie atakom "odmowa usługi":
+Istnieją dwa różne mechanizmy obsługiwane do wykrywania i zapobiegania atakom typu odmowa usługi:
 
-* Ogranicz liczbę równoczesnych żądań na hosta zdalnego (domyślnie wyłączone)
-* Ogranicz szybkość dostępu do jednego hosta zdalnego (na domyślne)
+* Ogranicz liczbę równoczesnych żądań na host zdalny (funkcja domyślnie wyłączona)
+* Ograniczanie szybkości dostępu do jednego hosta zdalnego (na domyślnie)
 
-Są one oparte na funkcji opisano w dynamicznej zabezpieczeń IP w programie IIS. Jeśli zmiana ta konfiguracja ostrożnie następujące czynniki:
+Są one oparte na funkcji opisano w zabezpieczeń dynamicznych adresów IP w usługach IIS. Gdy zmiana ta konfiguracja ostrożnie następujące czynniki:
 
-* Zachowanie urządzeń translatora adresów sieciowych za pośrednictwem informacji hosta zdalnego i serwerów proxy
+* Zachowanie serwery proxy i urządzenia translatora adresów sieciowych na informacje hosta zdalnego
 * Każde żądanie do dowolnego zasobu w roli sieci web jest uznawany za (np. ładowanie skryptów, obrazy, itp.)
 
-## <a name="restricting-number-of-concurrent-accesses"></a>Ograniczenie liczby równoczesnych dostępów
+## <a name="restricting-number-of-concurrent-accesses"></a>Ograniczenie liczby równoczesnych dostępy do
 Dostępne są następujące ustawienia, które skonfigurowania tego zachowania:
 
     <Setting name="DynamicIpRestrictionDenyByConcurrentRequests" value="false" />
@@ -150,27 +152,27 @@ Dostępne są następujące ustawienia, które skonfigurowania tego zachowania:
 
 Zmień DynamicIpRestrictionDenyByConcurrentRequests na wartość true, aby włączyć tę ochronę.
 
-## <a name="restricting-rate-of-access"></a>Ograniczanie szybkość dostępu
+## <a name="restricting-rate-of-access"></a>Ograniczanie szybkości dostępu
 Dostępne są następujące ustawienia, które skonfigurowania tego zachowania:
 
     <Setting name="DynamicIpRestrictionDenyByRequestRate" value="true" />
     <Setting name="DynamicIpRestrictionMaxRequests" value="100" />
     <Setting name="DynamicIpRestrictionRequestIntervalInMilliseconds" value="2000" />
 
-## <a name="configuring-the-response-to-a-denied-request"></a>Konfigurowanie odpowiedzi na żądanie odmowy
+## <a name="configuring-the-response-to-a-denied-request"></a>Konfigurowanie odpowiedzi na żądanie odrzuconych
 Następujące ustawienie umożliwia skonfigurowanie odpowiedzi na żądanie odmowy:
 
     <Setting name="DynamicIpRestrictionDenyAction" value="AbortRequest" />
-Zajrzyj do dokumentacji dla dynamicznych zabezpieczeń protokołu IP w usługach IIS dla innych obsługiwanych wartości.
+Zapoznaj się z dokumentacją dla dynamicznych zabezpieczeń protokołu IP w usługach IIS dla innych obsługiwanych wartości.
 
-## <a name="operations-for-configuring-service-certificates"></a>Operacje dotyczące konfigurowania certyfikatów usługi
-Ten temat dotyczy tylko w celach informacyjnych. Wykonaj kroki konfiguracji opisane w temacie:
+## <a name="operations-for-configuring-service-certificates"></a>Operacje dotyczące konfigurowania usług certyfikatów
+Ten temat dotyczy tylko do celów referencyjnych. Wykonaj poniższe czynności konfiguracyjne opisane w temacie:
 
-* Konfigurowanie certyfikatu protokołu SSL
+* Konfigurowanie certyfikatu SSL
 * Skonfiguruj certyfikaty klienta
 
 ## <a name="create-a-self-signed-certificate"></a>Tworzenie certyfikatu z podpisem własnym
-Wykonaj:
+Należy wykonać:
 
     makecert ^
       -n "CN=myservice.cloudapp.net" ^
@@ -181,52 +183,52 @@ Wykonaj:
 
 Aby dostosować:
 
-* -n z adresem URL usługi. Symbole wieloznaczne ("CN = * .cloudapp .net") i alternatywnych nazw ("CN=myservice1.cloudapp.net, CN=myservice2.cloudapp.net") są obsługiwane.
+* -n za pomocą adresu URL usługi. Symbole wieloznaczne ("CN = * .cloudapp .net") i alternatywnych nazw ("CN=myservice1.cloudapp.net, CN=myservice2.cloudapp.net") są obsługiwane.
 * -e z datą wygaśnięcia certyfikatu Utwórz silne hasło i określ go po wyświetleniu monitu.
 
-## <a name="create-pfx-file-for-self-signed-ssl-certificate"></a>Utwórz plik PFX dla certyfikatu SSL z podpisem własnym
-Wykonaj:
+## <a name="create-pfx-file-for-self-signed-ssl-certificate"></a>Tworzenie pliku PFX certyfikatu SSL z podpisem własnym
+Należy wykonać:
 
         pvk2pfx -pvk MySSL.pvk -spc MySSL.cer
 
-Wprowadź hasło, a następnie wyeksportować certyfikat z następującymi opcjami:
+Wprowadź hasło, a następnie wyeksportować certyfikat za pomocą tych opcji:
 
 * Tak, Eksportuj klucz prywatny
 * Eksportuj wszystkie właściwości rozszerzone
 
 ## <a name="export-ssl-certificate-from-certificate-store"></a>Wyeksportuj certyfikat protokołu SSL z magazynu certyfikatów
-* Znajdowanie certyfikatów
-* Kliknij przycisk Akcje -> Wszystkie zadania -> Export...
-* Wyeksportuj certyfikat do. Plik PFX z następującymi opcjami:
+* Znajdź certyfikat
+* Kliknij pozycję Operacje -> Wszystkie zadania -> Eksportuj...
+* Wyeksportuj certyfikat w. Plik PFX za pomocą tych opcji:
   * Tak, Eksportuj klucz prywatny
-  * Jeśli to możliwe, Dołącz wszystkie certyfikaty do ścieżki certyfikacji * Wyeksportuj wszystkie rozszerzone właściwości
+  * Jeśli to możliwe, Dołącz wszystkie certyfikaty do ścieżki certyfikacji * wyeksportować wszystkie rozszerzone właściwości
 
 ## <a name="upload-ssl-certificate-to-cloud-service"></a>Przekaż certyfikat SSL do usługi w chmurze
-Przekazywanie certyfikatu z istniejącym lub wygenerowany. Plik PFX o pary kluczy SSL:
+Przekazywanie certyfikatu z istniejącym lub wygenerowane. Plik PFX parą kluczy SSL:
 
 * Wprowadź hasło chroniące informacje o kluczu prywatnym
 
 ## <a name="update-ssl-certificate-in-service-configuration-file"></a>Aktualizuj certyfikat SSL w pliku konfiguracji usługi
-Zaktualizuj wartość odcisku palca poniższe ustawienia w pliku konfiguracji usługi z odciskiem palca certyfikatu przekazane do usługi w chmurze:
+Zaktualizuj wartość odcisku palca, następujące ustawienia w pliku konfiguracji usługi odcisk palca certyfikatu przekazany do usługi w chmurze:
 
     <Certificate name="SSL" thumbprint="" thumbprintAlgorithm="sha1" />
 
-## <a name="import-ssl-certification-authority"></a>Urząd certyfikacji SSL importu
-Wykonaj następujące kroki w wszystkie konta/maszyny, które będą komunikować się z usługą:
+## <a name="import-ssl-certification-authority"></a>Importowanie urzędu certyfikacji SSL
+Wykonaj następujące kroki na wszystkie konta/maszynie, która będzie komunikować się z usługą:
 
 * Kliknij dwukrotnie. Plik CER w Eksploratorze Windows
 * W oknie dialogowym certyfikat kliknij przycisk Zainstaluj certyfikat...
 * Zaimportuj certyfikat do magazynu zaufanych głównych urzędów certyfikacji
 
-## <a name="turn-off-client-certificate-based-authentication"></a>Wyłącz uwierzytelnianie oparte na certyfikatach
-Obsługiwane jest tylko uwierzytelnianie oparte na certyfikatach klienta i wyłączenie go spowoduje umożliwiają publiczny dostęp do punktów końcowych usługi, innych mechanizmów znajdują się w miejscu (np. Microsoft Azure Virtual Network).
+## <a name="turn-off-client-certificate-based-authentication"></a>Wyłącz uwierzytelnianie na podstawie certyfikatu klienta
+Tylko uwierzytelnianie oparte na certyfikatach klienta jest obsługiwane i wyłączenie go pozwoli na publiczny dostęp do punktów końcowych usługi, chyba że inne mechanizmy zostały spełnione (np. Microsoft Azure Virtual Network).
 
-Zmiana tych ustawień na wartość false w pliku konfiguracji usługi, aby wyłączyć funkcję:
+Zmień te ustawienia na wartość false w pliku konfiguracji usługi, aby wyłączyć tę funkcję:
 
     <Setting name="SetupWebAppForClientCertificates" value="false" />
     <Setting name="SetupWebserverForClientCertificates" value="false" />
 
-Następnie skopiuj tym samym odciskiem palca jako certyfikatu SSL w ustawieniu certyfikatu urzędu certyfikacji:
+Następnie skopiuj ten sam odcisk palca jako certyfikat SSL w ustawieniu certyfikatu urzędu certyfikacji:
 
     <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
 
@@ -241,44 +243,44 @@ Wykonaj poniższe kroki, aby utworzyć certyfikat z podpisem własnym do działa
       -sr localmachine -ss my ^
       MyCA.cer
 
-Aby dostosować go
+Aby dostosować ją
 
 * -e z datą wygaśnięcia certyfikacji
 
-## <a name="find-ca-public-key"></a>Znajdowanie klucza publicznego urzędu certyfikacji
-Wszystkie certyfikaty klienta musi został wystawiony przez urząd certyfikacji zaufany przez usługę. Znajdź klucz publiczny dla urzędu certyfikacji, który wystawił certyfikaty, które mają być używane do uwierzytelniania w celu przekazania go do usługi w chmurze klienta.
+## <a name="find-ca-public-key"></a>Znajdź klucz publiczny urzędu certyfikacji
+Wszystkie certyfikaty klienta muszą został wystawiony przez urząd certyfikacji zaufany przez usługę. Znajdź klucz publiczny do urzędu certyfikacji, który wystawił certyfikaty, które mają być używane do uwierzytelniania w celu przekazania go do usługi w chmurze klienta.
 
-Jeśli plik zawierający klucz publiczny nie jest dostępna, należy wyeksportować go z magazynu certyfikatów:
+Jeśli plik przy użyciu klucza publicznego jest niedostępny, należy wyeksportować go z magazynu certyfikatów:
 
-* Znajdowanie certyfikatów
-  * Wyszukaj wystawiony przez urząd certyfikacji tego samego certyfikatu klienta
+* Znajdź certyfikat
+  * Wyszukaj z certyfikatem klienta wystawionym przez tego samego urzędu certyfikacji
 * Kliknij dwukrotnie certyfikat.
-* Wybierz kartę Ścieżka certyfikacji w oknie dialogowym certyfikat.
+* Wybierz kartę ścieżki certyfikacji, w oknie dialogowym certyfikat.
 * Kliknij dwukrotnie wpis urzędu certyfikacji w ścieżce.
 * Zanotować właściwości certyfikatu.
 * Zamknij **certyfikatu** okna dialogowego.
-* Znajdowanie certyfikatów
-  * Wyszukiwanie certyfikacji opisanymi powyżej.
-* Kliknij przycisk Akcje -> Wszystkie zadania -> Export...
-* Wyeksportuj certyfikat do. CER z następującymi opcjami:
+* Znajdź certyfikat
+  * Wyszukaj urzędu certyfikacji, o których wspomniano powyżej.
+* Kliknij pozycję Operacje -> Wszystkie zadania -> Eksportuj...
+* Wyeksportuj certyfikat w. CER za pomocą tych opcji:
   * **Nie eksportuj klucza prywatnego**
-  * Dołącz wszystkie certyfikaty do ścieżki certyfikacji, jeśli to możliwe.
+  * Dołącz wszystkie certyfikaty do ścieżki certyfikacji, jeśli jest to możliwe.
   * Eksportuj wszystkie właściwości rozszerzone.
 
 ## <a name="upload-ca-certificate-to-cloud-service"></a>Przekaż certyfikat urzędu certyfikacji do usługi w chmurze
-Przekazywanie certyfikatu z istniejącym lub wygenerowany. Plik CER przy użyciu klucza publicznego urzędu certyfikacji.
+Przekazywanie certyfikatu z istniejącym lub wygenerowane. Plik CER przy użyciu klucza publicznego urzędu certyfikacji.
 
-## <a name="update-ca-certificate-in-service-configuration-file"></a>Certyfikat urzędu certyfikacji aktualizacji w pliku konfiguracji usługi
-Zaktualizuj wartość odcisku palca poniższe ustawienia w pliku konfiguracji usługi z odciskiem palca certyfikatu przekazane do usługi w chmurze:
+## <a name="update-ca-certificate-in-service-configuration-file"></a>Aktualizuj urząd certyfikacji certyfikatu w pliku konfiguracji usługi
+Zaktualizuj wartość odcisku palca, następujące ustawienia w pliku konfiguracji usługi odcisk palca certyfikatu przekazany do usługi w chmurze:
 
     <Certificate name="CA" thumbprint="" thumbprintAlgorithm="sha1" />
 
-Zaktualizuj wartość następujące ustawienia z tym samym odciskiem palca:
+Z tym samym odciskiem palca, zaktualizuj wartość następujące ustawienia:
 
     <Setting name="AdditionalTrustedRootCertificationAuthorities" value="" />
 
-## <a name="issue-client-certificates"></a>Certyfikaty
-Każda osoba uprawnień do uzyskania dostępu do usługi powinien mieć klienta certyfikat wystawiony dla his/hers wyłącznego użycia i powinna wybrać własne his/hers silne hasło, aby chronić jego klucz prywatny. 
+## <a name="issue-client-certificates"></a>Wystawianie certyfikatów klienta
+Poszczególnym uprawnień do uzyskania dostępu do usługi powinny mieć z certyfikatem klienta wystawionym dla his/hers wyłącznego użycia i należy wybrać, czy his/hers właścicielem silne hasło, aby chronić jego klucz prywatny. 
 
 W tym samym komputerze, na którym generowane i przechowywane certyfikat urzędu certyfikacji z podpisem własnym należy wykonać następujące czynności:
 
@@ -292,13 +294,13 @@ W tym samym komputerze, na którym generowane i przechowywane certyfikat urzędu
 
 Dostosowywanie:
 
-* n - o identyfikatorze dla klientowi, który będą uwierzytelniane z tym certyfikatem
+* n - o identyfikatorze dla klienta, która będzie uwierzytelniana przy użyciu tego certyfikatu
 * -e z datą wygaśnięcia certyfikatu
-* MyID.pvk i MyID.cer z unikatowych nazw plików dla tego certyfikatu klienta.
+* MyID.pvk i MyID.cer przy użyciu unikatowych nazw plików dla tego certyfikatu klienta.
 
-To polecenie wyświetli monit o podanie hasła w celu utworzone, a następnie użyć raz. Należy używać silnych haseł.
+To polecenie wyświetli monit o hasło, aby być tworzone i następnie użyć raz. Należy używać silnych haseł.
 
-## <a name="create-pfx-files-for-client-certificates"></a>Tworzenie plików PFX dla klienta certyfikatów
+## <a name="create-pfx-files-for-client-certificates"></a>Tworzenie plików PFX dla klientów certyfikatów
 Dla każdego certyfikatu wygenerowanego klienta należy wykonać:
 
     pvk2pfx -pvk MyID.pvk -spc MyID.cer
@@ -307,37 +309,37 @@ Dostosowywanie:
 
     MyID.pvk and MyID.cer with the filename for the client certificate
 
-Wprowadź hasło, a następnie wyeksportować certyfikat z następującymi opcjami:
+Wprowadź hasło, a następnie wyeksportować certyfikat za pomocą tych opcji:
 
 * Tak, Eksportuj klucz prywatny
 * Eksportuj wszystkie właściwości rozszerzone
-* Osoby, dla którego ten certyfikat został wystawiony, należy wybrać hasło eksportu
+* Osoba, dla którego ten certyfikat został wystawiony, należy wybrać hasło eksportu
 
 ## <a name="import-client-certificate"></a>Importowanie certyfikatu klienta
-Każda osoba, dla którego został wystawiony certyfikat klienta należy importować pary kluczy na maszynach, które będzie on używany do komunikacji z usługą:
+Każda osoba, dla którego został wystawiony certyfikat klienta należy zaimportować pary kluczy na maszynach, które będzie on używany do komunikacji z usługą:
 
 * Kliknij dwukrotnie. Plik PFX w Eksploratorze Windows
-* Importowanie certyfikatu do osobistego magazynu z co najmniej tej opcji:
+* Importuj certyfikat do osobistego przechowywania z co najmniej tej opcji:
   * Dołącz wszystkie właściwości rozszerzone zaznaczone
 
 ## <a name="copy-client-certificate-thumbprints"></a>Skopiuj odciski palców certyfikatu klienta
-Poszczególnych osób, dla którego został wystawiony certyfikat klienta, wykonaj następujące kroki w celu uzyskania his/hers odcisk palca certyfikatu, który zostanie dodany do pliku konfiguracji usługi:
+Każda osoba, dla którego został wystawiony certyfikat klienta należy wykonać następujące kroki, aby uzyskać odcisk palca his/hers certyfikatu, który zostanie dodany do pliku konfiguracji usługi:
 
 * Uruchom certmgr.exe
 * Wybierz kartę osobiste.
-* Kliknij dwukrotnie certyfikat klienta, które mają być używane do uwierzytelniania
+* Kliknij dwukrotnie certyfikat klienta, który ma być używany do uwierzytelniania
 * W oknie dialogowym certyfikat, który zostanie otwarty wybierz kartę szczegółów
-* Upewnij się, że Pokaż są wyświetlane wszystkie
+* Upewnij się, że wyświetla wszystkie Show
 * Wybierz pole o nazwie odcisk palca na liście
-* Skopiuj wartość odcisku palca ** usunąć niewidoczne znaków Unicode, przed pierwszą ** usunięcia wszystkich spacji
+* Skopiuj wartość odcisku palca ** Usuń niewidoczne znaki Unicode przed pierwszą ** Usuń wszystkie spacje
 
 ## <a name="configure-allowed-clients-in-the-service-configuration-file"></a>Konfigurowanie klientów dozwolone w pliku konfiguracji usługi
-Zaktualizuj wartość poniższe ustawienia w pliku konfiguracji usługi rozdzielaną przecinkami listę odcisków palców certyfikatów klientów, zezwolenie na dostęp do usługi:
+Zaktualizuj wartość następujące ustawienia w pliku konfiguracji usługi rozdzielaną przecinkami listę odcisków palców certyfikatów klientów, zezwolenie na dostęp do usługi:
 
     <Setting name="AllowedClientCertificateThumbprints" value="" />
 
-## <a name="configure-client-certificate-revocation-check"></a>Skonfiguruj sprawdzanie odwołania certyfikatu klienta
-Ustawienie domyślne nie sprawdza się z urzędem certyfikacji dla stanu odwołania certyfikatu klienta. Aby włączyć kontroli, jeśli urząd certyfikacji, który wystawił certyfikaty klienta obsługuje kontrole, należy zmienić następujące ustawienie z jedną z wartości zdefiniowanych w wyliczeniu X509RevocationMode:
+## <a name="configure-client-certificate-revocation-check"></a>Konfigurowanie sprawdzanie odwołania certyfikatu klienta
+Ustawienie domyślne nie sprawdza się z urzędem certyfikacji dla stanu odwołania certyfikatu klienta. Aby włączyć sprawdza, czy urząd certyfikacji, który wystawił certyfikaty klienta obsługuje takich kontroli, Zmień następujące ustawienie przy użyciu jednej z wartości zdefiniowanych w wyliczeniu X509RevocationMode:
 
     <Setting name="ClientCertificateRevocationCheck" value="NoCheck" />
 
@@ -350,35 +352,35 @@ Dostosowywanie:
 
     MyID.pvk and MyID.cer with the filename for the encryption certificate
 
-Wprowadź hasło, a następnie wyeksportować certyfikat z następującymi opcjami:
+Wprowadź hasło, a następnie wyeksportować certyfikat za pomocą tych opcji:
 
 * Tak, Eksportuj klucz prywatny
 * Eksportuj wszystkie właściwości rozszerzone
 * Konieczne będzie hasło podczas przekazywania certyfikatu do usługi w chmurze.
 
 ## <a name="export-encryption-certificate-from-certificate-store"></a>Wyeksportuj certyfikat szyfrowania z magazynu certyfikatów
-* Znajdowanie certyfikatów
-* Kliknij przycisk Akcje -> Wszystkie zadania -> Export...
-* Wyeksportuj certyfikat do. Plik PFX z następującymi opcjami: 
+* Znajdź certyfikat
+* Kliknij pozycję Operacje -> Wszystkie zadania -> Eksportuj...
+* Wyeksportuj certyfikat w. Plik PFX za pomocą tych opcji: 
   * Tak, Eksportuj klucz prywatny
   * Jeśli to możliwe, Dołącz wszystkie certyfikaty do ścieżki certyfikacji 
 * Eksportuj wszystkie właściwości rozszerzone
 
 ## <a name="upload-encryption-certificate-to-cloud-service"></a>Przekaż certyfikat szyfrowania do usługi w chmurze
-Przekazywanie certyfikatu z istniejącym lub wygenerowany. Plik PFX o pary kluczy szyfrowania:
+Przekazywanie certyfikatu z istniejącym lub wygenerowane. Plik PFX parą kluczy szyfrowania:
 
 * Wprowadź hasło chroniące informacje o kluczu prywatnym
 
 ## <a name="update-encryption-certificate-in-service-configuration-file"></a>Aktualizuj certyfikat szyfrowania w pliku konfiguracji usługi
-Zaktualizuj wartość odcisku palca z następujących ustawień w pliku konfiguracji usługi z odciskiem palca certyfikatu przekazane do usługi w chmurze:
+Zaktualizuj wartość odcisku palca z następujących ustawień w pliku konfiguracji usługi odcisk palca certyfikatu przekazany do usługi w chmurze:
 
     <Certificate name="DataEncryptionPrimary" thumbprint="" thumbprintAlgorithm="sha1" />
 
-## <a name="common-certificate-operations"></a>Typowe operacje certyfikatu
-* Konfigurowanie certyfikatu protokołu SSL
+## <a name="common-certificate-operations"></a>Typowe operacje dotyczące certyfikatu
+* Konfigurowanie certyfikatu SSL
 * Skonfiguruj certyfikaty klienta
 
-## <a name="find-certificate"></a>Znajdowanie certyfikatów
+## <a name="find-certificate"></a>Znajdź certyfikat
 Wykonaj następujące kroki:
 
 1. Uruchom mmc.exe.
@@ -388,7 +390,7 @@ Wykonaj następujące kroki:
 5. Wybierz lokalizację magazynu certyfikatów.
 6. Kliknij przycisk **Zakończ**.
 7. Kliknij przycisk **OK**.
-8. Rozwiń węzeł **certyfikaty**.
+8. Rozwiń **certyfikaty**.
 9. Rozwiń węzeł magazynu certyfikatów.
 10. Rozwiń węzeł podrzędny certyfikatu.
 11. Wybierz certyfikat z listy.
@@ -399,12 +401,12 @@ W **Kreator eksportu certyfikatów**:
 1. Kliknij przycisk **Dalej**.
 2. Wybierz **tak**, następnie **Eksportuj klucz prywatny**.
 3. Kliknij przycisk **Dalej**.
-4. Wybierz format pliku żądanego wyniku.
+4. Wybierz format pliku żądaną produktu wyjściowego.
 5. Sprawdź wybrane opcje.
 6. Sprawdź **hasło**.
 7. Wpisz silne hasło i potwierdź je.
 8. Kliknij przycisk **Dalej**.
-9. Wpisz lub wyszukaj nazwę pliku miejsce przechowywania certyfikatu (Użyj. Rozszerzenie PFX).
+9. Wpisz lub Przeglądaj, nazwa_pliku miejsce przechowywania certyfikatu (Użyj. Rozszerzenie PFX).
 10. Kliknij przycisk **Dalej**.
 11. Kliknij przycisk **Zakończ**.
 12. Kliknij przycisk **OK**.
@@ -414,12 +416,12 @@ W Kreatorze importu certyfikatów:
 
 1. Wybierz lokalizację magazynu.
    
-   * Wybierz **bieżącego użytkownika** jeśli tylko procesów uruchomionych w obszarze bieżący użytkownik będą uzyskiwać dostęp do usługi
-   * Wybierz **komputera lokalnego** Jeśli inne procesy w tym komputerze będą uzyskiwać dostęp do usługi
+   * Wybierz **bieżącego użytkownika** czy tylko procesów uruchomionych w ramach bieżącego użytkownika uzyskają dostęp do usługi
+   * Wybierz **komputera lokalnego** Jeśli inne procesy, w tym komputerze uzyskają dostęp do usługi
 2. Kliknij przycisk **Dalej**.
 3. W przypadku importowania z pliku upewnij się, ścieżkę pliku.
-4. Jeśli import. Plik PFX:
-   1. Wprowadź hasło, ochrona klucza prywatnego
+4. W przypadku importowania. Plik PFX:
+   1. Wprowadź hasło ochrony klucza prywatnego
    2. Wybierz opcje importowania
 5. Wybierz "W miejscu" certyfikaty w następującym magazynie
 6. Kliknij pozycję **Browse (Przeglądaj)**.
@@ -432,20 +434,20 @@ W Kreatorze importu certyfikatów:
 ## <a name="upload-certificate"></a>Przekazywanie certyfikatu
 W witrynie [Azure Portal](https://portal.azure.com/)
 
-1. Wybierz **usługi w chmurze**.
+1. Wybierz **usług w chmurze**.
 2. Wybierz usługę w chmurze.
 3. W górnym menu, kliknij przycisk **certyfikaty**.
-4. Na dolnym pasku kliknij **przekazać**.
+4. Na pasku dolnym, kliknij przycisk **przekazywanie**.
 5. Wybierz plik certyfikatu.
-6. Jeśli istnieje. PFX, wprowadź hasło klucza prywatnego.
+6. Jeśli istnieje. Plik PFX pliku, wprowadź hasło klucza prywatnego.
 7. Po zakończeniu skopiuj odcisk palca certyfikatu z nowy wpis na liście.
 
-## <a name="other-security-considerations"></a>Inne zagadnienia dotyczące zabezpieczeń
-Ustawienia protokołu SSL, w tym dokumencie opisano szyfrowania komunikacji między usługą i jej klientów, gdy punkt końcowy HTTPS jest używany. Jest to ważne, ponieważ poświadczenia dostępu do bazy danych i inne poufne informacje znajdują się w komunikacie. Należy jednak pamiętać, że usługa będzie się powtarzał wewnętrzny stan, w tym poświadczenia, w jego wewnętrznego tabele w bazie danych Microsoft Azure SQL w subskrypcji platformy Microsoft Azure zostały podane dla magazynu metadanych. Tej bazy danych został zdefiniowany jako część następujące ustawienie w pliku konfiguracji usługi (. Plik CSCFG): 
+## <a name="other-security-considerations"></a>Inne uwagi dotyczące zabezpieczeń
+Ustawienia protokołu SSL, opisane w niniejszym dokumencie szyfrowania komunikacji między usługą i jej klientów, stosowania punktu końcowego HTTPS. Jest to ważne, ponieważ poświadczenia na potrzeby dostępu do bazy danych i inne poufne informacje znajdują się w komunikacie. Należy jednak pamiętać, że usługa będzie się powtarzał wewnętrzny stan, w tym poświadczeń w jego wewnętrznych tabel w bazie Microsoft Azure SQL, które zostały podane dla magazynu metadanych w ramach subskrypcji Microsoft Azure. Tej bazy danych został zdefiniowany jako część następujące ustawienie w pliku konfiguracji usługi (. Plik CSCFG): 
 
     <Setting name="ElasticScaleMetadata" value="Server=…" />
 
-Poświadczenia przechowywane w tej bazie danych są szyfrowane. Jednak najlepszym rozwiązaniem, sprawdź, czy role sieć web i proces roboczy wdrożeń usługi są zawsze aktualne i bezpieczne, ponieważ mają dostęp do bazy danych metadanych i certyfikat używany do szyfrowania i odszyfrowywania przechowywanych poświadczeń. 
+Poświadczenia przechowywane w tej bazie danych są szyfrowane. Jednak najlepszym rozwiązaniem jest upewnienie się, czy role sieci web i proces roboczy wdrożeń usługi są zawsze aktualne i bezpieczne, jak one mają dostęp do bazy danych metadanych i certyfikat używany do szyfrowania i odszyfrowywania przechowywanych poświadczeń. 
 
 [!INCLUDE [elastic-scale-include](../../includes/elastic-scale-include.md)]
 

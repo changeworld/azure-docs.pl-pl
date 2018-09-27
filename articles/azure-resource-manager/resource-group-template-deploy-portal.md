@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: c16d584f17aa2c209c9c0ec94d35f6fe78ba1907
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.openlocfilehash: b8a6d58ad79b591548542d69e69b71ec61af79af
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494091"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47220129"
 ---
 # <a name="deploy-resources-with-resource-manager-templates-and-azure-portal"></a>Deploy resources with Resource Manager templates and Azure portal (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i witryny Azure Portal)
 
@@ -137,4 +137,4 @@ Portal umożliwia zapisywanie szablonu do konta platformy Azure i wdrażając go
 * Aby wyświetlić dzienniki inspekcji, zobacz [inspekcji operacji przy użyciu usługi Resource Manager](resource-group-audit.md).
 * Aby rozwiązać błędy związane z wdrażaniem, zobacz [wyświetlanie operacji wdrażania](resource-manager-deployment-operations.md).
 * Aby pobrać szablon z wdrożenia lub grupy zasobów, zobacz [szablonu eksportu usługi Azure Resource Manager z istniejących zasobów](resource-manager-export-template.md).
-* Aby uzyskać instrukcje dla przedsiębiorstw dotyczące użycia usługi Resource Manager w celu efektywnego zarządzania subskrypcjami, zobacz [Azure enterprise scaffold - prescriptive subscription governance](/azure/architecture/cloud-adoption-guide/subscription-governance) (Szkielet platformy Azure dla przedsiębiorstwa — narzucony nadzór subskrypcji).
+* Aby bezpiecznie wdrożenia usługi w wielu regionach, zobacz [Azure Deployment Manager](deployment-manager-overview.md).
