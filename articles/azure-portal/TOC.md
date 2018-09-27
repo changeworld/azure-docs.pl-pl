@@ -5,7 +5,7 @@
 # Pojęcia
 ## [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 ## [Skróty klawiaturowe](azure-portal-keyboard-shortcuts.md)
-## [Obsługiwane przeglądarki i urządzenia](../azure-preview-portal-supported-browsers-devices.md)
+## [Obsługiwane przeglądarki i urządzenia](azure-portal-supported-browsers-devices.md)
 ## [Struktura pulpitów nawigacyjnych platformy Azure](azure-portal-dashboards-structure.md)
 # Przewodniki z instrukcjami
 ## Wdrażanie
