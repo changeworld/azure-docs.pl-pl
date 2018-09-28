@@ -25,7 +25,7 @@ Name (Nazwa)    |Opis                                        |Typ       | Operac
 ------- | ------------------------------------------------- | --------- | ----------------------------
 Identyfikator      |Identyfikator jednostki                                          |Int64      |Równa się
 Oś      |Dokument tytułu                                        |Ciąg     |Równa się,<br/>StartsWith
-L       |Dokument języka kodu oddzielone "\@@@"            |Ciąg     |Równa się
+L       |Dokument języka kodu oddzielone "\@@@\"            |Ciąg     |Równa się
 Tak       |Rok papieru                                         |Int32      |Równa się,<br/>IsBetween
 D       |Data papieru                                         |Date       |Równa się,<br/>IsBetween
 DW      |Liczba cytatu                                     |Int32      |brak  
