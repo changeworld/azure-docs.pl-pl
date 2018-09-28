@@ -9,19 +9,19 @@ ms.author: estfan
 ms.topic: article
 ms.reviewer: klam, deli, LADocs
 ms.suite: integration
-ms.date: 09/24/2018
-ms.openlocfilehash: fd92b093b70dba2df3ec645b3ecb77233d3ebd5c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 09/26/2018
+ms.openlocfilehash: 36e8161eb8be16b75d843a2b7a65fc3dd70d9c02
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958360"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405292"
 ---
 # <a name="create-and-manage-automated-logic-app-workflows---visual-studio-code"></a>Tworzenie i zarządzanie nimi przepływów pracy z aplikacji zautomatyzowanej logiki — Visual Studio Code
 
 Za pomocą [usługi Azure Logic Apps](../logic-apps/logic-apps-overview.md) i programu Visual Studio Code, możesz tworzyć i zarządzać aplikacje logiki, które ułatwiają Automatyzowanie zadań, przepływy pracy i procesy integrowania aplikacji, danych, systemów i usług w organizacji i przedsiębiorstw. W tym artykule pokazano, jak tworzyć i edytować definicji przepływu pracy aplikacji logiki przy pracy w środowisku oparte na kodzie. Możesz także pracować z aplikacji logiki już wdrożone <a href="https://docs.microsoft.com/azure/guides/developer/azure-developer-guide" target="_blank">Azure</a> w chmurze. 
 
-Chociaż można wykonać te same czynności w <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a> i w programie Visual Studio, możesz szybciej rozpocząć pracę w programie Visual Studio Code po użytkownik chce pracować bezpośrednio w kodzie. Na przykład możesz można również wyłączyć, włączyć, Usuń i odświeżanie aplikacji logiki zostały już utworzone.
+Chociaż można wykonać te same czynności w <a href="https://portal.azure.com" target="_blank">witryny Azure portal</a> i w programie Visual Studio, możesz szybciej rozpocząć pracę w programie Visual Studio Code po użytkownik chce pracować bezpośrednio w kodzie. Na przykład możesz można również wyłączyć, włączyć, Usuń i odświeżanie aplikacji logiki zostały już utworzone. Ponadto można pracować nad logic apps i konta integracji z dowolnej platformy programowania, w którym jest uruchamiany program Visual Studio Code, takie jak Linux, Windows i Mac.
 
 W tym artykule, można utworzyć sama aplikacja logiki, podobnie jak w [Szybki Start: tworzenie aplikacji logiki w witrynie Azure portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), który poświęcona jest bardziej podstawowe pojęcia. W programie Visual Studio Code aplikacja logiki będzie wyglądać podobnie jak w tym przykładzie:
 
@@ -43,7 +43,7 @@ Przed rozpoczęciem upewnij się, że masz następujące elementy:
 
   * Rozszerzenie programu Visual Studio Code dla usługi Azure Logic Apps
 
-    Możesz zainstalować to rozszerzenie z wewnątrz programu Visual Studio Code. 
+    Możesz zainstalować to rozszerzenie z [Visual Studio Marketplace](https://marketplace.visualstudio.com/items?itemName=ms-azuretools.vscode-logicapps) lub bezpośrednio z wewnątrz programu Visual Studio Code. 
     Upewnij się, że po zainstalowaniu ponownym załadowaniu programu Visual Studio Code. 
 
     ![Znajdź "Rozszerzenie programu Visual Studio Code dla usługi Azure Logic Apps"](./media/create-logic-apps-visual-studio-code/find-install-logic-apps-extension.png)
@@ -52,7 +52,7 @@ Przed rozpoczęciem upewnij się, że masz następujące elementy:
 
     ![Zainstalowane rozszerzenie](./media/create-logic-apps-visual-studio-code/installed-extension.png)
 
-    Aby uzyskać więcej informacji, zobacz <a href="https://code.visualstudio.com/docs/editor/extension-gallery" target="_blank">Portal Marketplace z rozszerzeniami</a>. 
+    Aby uzyskać więcej informacji, zobacz <a href="https://code.visualstudio.com/docs/editor/extension-gallery" target="_blank">Portal Marketplace z rozszerzeniami</a>. Możesz również wyświetlić i wkłady do wersji typu open source to rozszerzenie, odwiedzając [rozszerzenia usługi Azure Logic Apps for Visual Studio Code w serwisie GitHub](https://github.com/Microsoft/vscode-azurelogicapps). 
 
 <a name="sign-in-azure"></a>
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 08/08/2018
 ms.author: fauhse
 ms.component: files
-ms.openlocfilehash: f5fa68488fa8130ad49da37c91b7f4c04376edb3
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: b32f388974f03ece206ae4eaece39f1a242d31e2
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42440683"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408546"
 ---
 # <a name="azure-file-sync-proxy-and-firewall-settings"></a>Ustawienia serwera proxy i zapory usługi Azure File Sync
 Usługa Azure File Sync łączy swoje lokalne serwery do usługi pliki Azure, włączenie synchronizacji obejmujące wiele lokacji i obsługi warstw w funkcji w chmurze. W efekcie na serwerze lokalnym musi połączony z Internetem. Administrator IT musi określić najlepszą ścieżkę dla serwera uzyskać dostęp do usług Azure cloud services.
@@ -93,13 +93,14 @@ Jak wspomniano w poprzedniej sekcji, port 443 wymaga Otwórz ruchu wychodzącego
 
 W poniższej tabeli opisano domen wymagana dla komunikacji:
 
-| Usługa | Domena | Sposób użycia |
+| Usługa | Domain | Sposób użycia |
 |---------|----------------|------------------------------|
 | **Azure Resource Manager** | https://management.azure.com | Każde wywołanie użytkownika (na przykład programu PowerShell) przechodzi przez ten adres URL, w tym wywołanie rejestracji serwera początkowego. |
 | **Azure Active Directory** | https://login.windows.net | Wywołania usługi Azure Resource Manager muszą być przekazywane uwierzytelnionego użytkownika. Została wykonana pomyślnie, ten adres URL jest używany do uwierzytelniania użytkowników. |
 | **Azure Active Directory** | https://graph.windows.net/ | W ramach wdrażania usługi Azure File Sync nazwy głównej usługi dla subskrypcji usługi Azure Active Directory zostanie utworzona. Ten adres URL jest używany w tym. Ta jednostka służy delegowania minimalny zestaw praw do usługi Azure File Sync. Użytkownik wykonujący początkowej konfiguracji usługi Azure File Sync musi być uwierzytelniony użytkownik z uprawnieniami właściciela subskrypcji. |
 | **Azure Storage** | &ast;.core.windows.net | Gdy serwer pobiera plik, następnie serwera wykonuje tego przepływu danych bardziej wydajnie w przypadku bezpośrednio do udziału plików platformy Azure na koncie magazynu. Serwer ma klucz sygnatury dostępu Współdzielonego, który zezwala tylko na dostęp do udziału plików docelowych. |
 | **Usługi Azure File Sync** | &ast;.one.microsoft.com | Po zarejestrowaniu serwera początkowego serwer odebrał regionalnego adresu URL dla wystąpienia usługi Azure File Sync, w tym regionie. Serwer może komunikować się bezpośrednio i efektywnie z wystąpieniem, Obsługa synchronizację za pomocą adresu URL. |
+| **Infrastruktura PKI firmy Microsoft** | http://www.microsoft.com/pki/mscorp  http://ocsp.msocsp.com | Po zainstalowaniu agenta usługi Azure File Sync adres URL infrastruktury kluczy publicznych jest używany do pobierania certyfikaty pośrednie są wymagane do komunikacji z usługą Azure File Sync. Adres URL protokołu OCSP służy do sprawdzania stanu certyfikatu. |
 
 > [!Important]
 > Gdy zezwala na ruch do &ast;. one.microsoft.com, ruch do więcej niż tylko usługa synchronizacji jest możliwe z serwera. Istnieje wiele więcej usług firmy Microsoft są dostępne w obszarze domen podrzędnych.

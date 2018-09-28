@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 76fdf532a35cbe16543bc49b5c02fad5d86690d5
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 364600d4c1c53f4e5fe726d443287bf1a5f2d4ec
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44718996"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419172"
 ---
 # <a name="claimsschema"></a>ClaimsSchema
 
@@ -268,7 +268,7 @@ Usługa Azure AD B2C obsługuje wiele typów danych wejściowych użytkownika, t
 
 ### <a name="datetimedropdown"></a>DateTimeDropdown
 
-**DateTimeDropdown** typ danych wejściowych użytkownika służy do zapewnienia zbiór rozwijanych, aby wybrać dzień, miesiąc i rok.
+**DateTimeDropdown** typ danych wejściowych użytkownika służy do zapewnienia zbiór rozwijanych, aby wybrać dzień, miesiąc i rok. Predykaty i PredicateValidations elementów można użyć do kontrolowania wartości minimalne i maksymalne daty. Aby uzyskać więcej informacji, zobacz **skonfigurować zakres dat** części [predykatów i PredicateValidations](predicates.md).
 
 ![Za pomocą oświadczenia typu, przy użyciu datetimedropdown](./media/claimsschema/datetimedropdown.png)
 

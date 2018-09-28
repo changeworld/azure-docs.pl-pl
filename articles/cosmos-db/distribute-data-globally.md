@@ -9,12 +9,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: mjbrown
-ms.openlocfilehash: fef4d14e6f5a9dcba1f7e111f9a54c3e1a9fbfa9
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 227c243d82665dc533e3bfa6a1fe3e9bb775a262
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46959858"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408899"
 ---
 # <a name="global-data-distribution-with-azure-cosmos-db"></a>Dane globalne dystrybucji za pomocą usługi Azure Cosmos DB
 
@@ -24,7 +24,7 @@ Platforma Azure jest powszechnie stosowana — jej zasięgu globalnym w regionac
 
 ## <a name="global-distribution-with-multi-master"></a>Globalnej dystrybucji przy użyciu Multi-Master
 
-Jako natywnie urodzony w usłudze w chmurze usługi Azure Cosmos DB jest starannie zaprojektowany od podstaw się przy użyciu wielu dzierżawców, globalną dystrybucję i Multi-Master dla dokumentów, pary klucz wartość, wykres i modeli danych rodzin kolumn.
+Jako usługa w chmurze usługi Azure Cosmos DB starannie zaprojektowany pod kątem obsługę wielu dzierżawców, globalną dystrybucję i Multi-Master dokumentów, pary klucz wartość, wykres i modeli danych rodzin kolumn.
 
 ![Kontener usługi Azure Cosmos DB na partycje i rozproszonych w trzech regionach](./media/distribute-data-globally/global-apps.png)
 

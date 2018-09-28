@@ -2,18 +2,18 @@
 title: Pojęcia dla deweloperów w usłudze Azure Data Catalog
 description: Wprowadzenie do kluczowych koncepcji usługi Azure Data Catalog modelu koncepcyjnego jako narażonych za pośrednictwem interfejsu API REST katalogu.
 services: data-catalog
-author: spelluru
-ms.author: spelluru
+author: markingmyname
+ms.author: maghan
 ms.assetid: 89de9137-a0a4-40d1-9f8d-625acad31619
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 753b4660c8ca47f12aace87a254b93a88db8aaa7
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 97dafe01db4779332a530dc8981b3d6ada8c9df9
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053746"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406519"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Pojęcia dla deweloperów w usłudze Azure Data Catalog
 Microsoft **usługi Azure Data Catalog** to usługa w pełni zarządzana usługa w chmurze, która zapewnia możliwości Odnajdowanie źródeł danych oraz crowdsourcing metadanych źródła danych. Deweloperzy mogą używać usługi za pośrednictwem jej interfejsów API REST. Zrozumienie z pojęciami dotyczącymi usługi jest ważne dla deweloperów pomyślnie zintegrować z usługą **usługi Azure Data Catalog**.

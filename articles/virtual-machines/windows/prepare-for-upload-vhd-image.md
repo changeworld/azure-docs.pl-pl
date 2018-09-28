@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 08/23/2018
 ms.author: genli
-ms.openlocfilehash: 293671ac3426a92453e0c1642d421038824ac02c
-ms.sourcegitcommit: f1e6e61807634bce56a64c00447bf819438db1b8
+ms.openlocfilehash: b4787f5b9657afbcedbd3803d6a17af9c8cf9099
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42886977"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406995"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Przygotowywanie wirtualnego dysku twardego Windows lub VHDX można przekazać na platformę Azure
 Przed przekazaniem Windows maszyn wirtualnych (VM) ze środowiska lokalnego w systemie Microsoft Azure, należy przygotować wirtualny dysk twardy (VHD lub VHDX). Platforma Azure obsługuje **tylko maszyny wirtualne generacji 1** są w formacie pliku wirtualnego dysku twardego oraz mieć stały dysk o rozmiarze. Maksymalny dozwolony rozmiar wirtualnego dysku twardego jest 1,023 GB. Możesz również przekonwertować generacji 1 maszyny Wirtualnej z VHDX pliku system do wirtualnego dysku twardego i z dynamicznie powiększających się dysków na stałych rozmiarach. Ale nie można zmienić generacji maszyny Wirtualnej. Aby uzyskać więcej informacji, zobacz [generacji 1 lub 2 należy utworzyć maszyny Wirtualnej w funkcji Hyper-V](https://technet.microsoft.com/windows-server-docs/compute/hyper-v/plan/should-i-create-a-generation-1-or-2-virtual-machine-in-hyper-v).
@@ -374,7 +374,7 @@ Jeśli zamiast tego chcesz tylko utworzyć jedną maszynę Wirtualną z jednego 
 Aby uzyskać więcej informacji o tym, jak utworzyć maszynę Wirtualną na podstawie wyspecjalizowanego dysku Zobacz:
 
 - [Tworzenie maszyny Wirtualnej na podstawie wyspecjalizowanego dysku](create-vm-specialized.md)
-- [Tworzenie maszyny Wirtualnej na podstawie wyspecjalizowanego dysku wirtualnego dysku twardego](https://review.docs.microsoft.com/en-us/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
+- [Tworzenie maszyny Wirtualnej na podstawie wyspecjalizowanego dysku wirtualnego dysku twardego](https://docs.microsoft.com/en-us/azure/virtual-machines/windows/create-vm-specialized-portal?branch=master)
 
 Jeśli chcesz utworzyć uogólnionego obrazu, należy uruchomić programu sysprep. Aby uzyskać więcej informacji na temat narzędzia Sysprep, zobacz [sposobu użycia programu Sysprep: wprowadzenie](http://technet.microsoft.com/library/bb457073.aspx). 
 

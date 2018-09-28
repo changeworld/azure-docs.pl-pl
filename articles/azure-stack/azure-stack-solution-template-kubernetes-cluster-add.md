@@ -11,26 +11,26 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: e0a96d947bce579d2c1d7d31de83c7ef53eabd3a
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 978cce4642dc61143bd829fcae03357fd8c969c2
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165810"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405516"
 ---
 # <a name="add-kubernetes-to-the-azure-stack-marketplace"></a>Dodaj rozwiązanie Kubernetes w portalu Marketplace usługi Azure Stack
 
 *Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
 > [!note]  
-> Rozwiązanie Kubernetes w usłudze Azure Stack jest w wersji zapoznawczej. Aby zażądać dostępu do elementu portalu Marketplace klastra Kubernetes potrzebne do wykonania instrukcji w tym artykule [wniosek o uzyskanie dostępu do](https://aka.ms/azsk8).
+> Rozwiązanie Kubernetes w usłudze Azure Stack jest w wersji zapoznawczej.
 
 Rozwiązania Kubernetes jako elementu portalu Marketplace możesz zaoferować użytkownikom. Użytkownikom można wdrożyć rozwiązania Kubernetes w jednej, skoordynowanej operacji.
 
-Następujący artykuł przyjrzeć się przy użyciu szablonu usługi Azure Resource Manager, wdrażanie i Inicjowanie obsługi administracyjnej zasobów dla autonomicznego klastra usługi Kubernetes. Przed rozpoczęciem należy sprawdzić usługi Azure Stack i ustawienia globalnego dzierżawy usługi Azure. Zbieranie wymaganych informacji na temat usługi Azure Stack. Dodaj wymagane zasoby do swojej dzierżawy, a w portalu Azure Marketplace stosu. Klaster zależy od tego, serwer Ubuntu, niestandardowego skryptu i elementów rozwiązania Kubernetes w portalu marketplace.
+Następujący artykuł przyjrzeć się przy użyciu szablonu usługi Azure Resource Manager, wdrażanie i Inicjowanie obsługi administracyjnej zasobów dla autonomicznego klastra usługi Kubernetes. Element Marketplace klastra Kubernetes 0.3.0 wymaga usługi Azure Stack w wersji 1808. Przed rozpoczęciem należy sprawdzić usługi Azure Stack i ustawienia globalnego dzierżawy usługi Azure. Zbieranie wymaganych informacji na temat usługi Azure Stack. Dodaj wymagane zasoby do swojej dzierżawy, a w portalu Azure Marketplace stosu. Klaster zależy od tego, serwer Ubuntu, niestandardowego skryptu i elementów rozwiązania Kubernetes w portalu marketplace.
 
 ## <a name="create-a-plan-an-offer-and-a-subscription"></a>Tworzenie planu, oferty i subskrypcji
 

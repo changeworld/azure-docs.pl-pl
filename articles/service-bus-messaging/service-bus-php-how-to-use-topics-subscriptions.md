@@ -12,14 +12,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PHP
 ms.topic: article
-ms.date: 10/06/2017
+ms.date: 09/06/2018
 ms.author: spelluru
-ms.openlocfilehash: 9901b485b97ecde2de889796fc682db3ee30c544
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 8b2cd62d9f1c2010956604a9f3c753d893f7c2ad
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43701399"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407284"
 ---
 # <a name="how-to-use-service-bus-topics-and-subscriptions-with-php"></a>Jak korzystać z subskrypcji i tematów usługi Service Bus za pomocą języka PHP
 
@@ -129,7 +129,7 @@ catch(ServiceException $e){
 Subskrypcje tematu są również tworzone przy użyciu `ServiceBusRestProxy->createSubscription` metody. Subskrypcje są nazywane i mogą zawierać opcjonalny filtr, który ogranicza zestaw komunikatów przesyłany do wirtualnej kolejki subskrypcji.
 
 ### <a name="create-a-subscription-with-the-default-matchall-filter"></a>Tworzenie subskrypcji z filtrem domyślnym (MatchAll)
-Filtr **MatchAll** jest filtrem domyślnym, który jest używany, gdy podczas tworzenia nowej subskrypcji nie został określony żaden filtr. Gdy **MatchAll** filtr jest stosowany, wszystkie komunikaty opublikowane do tematu są umieszczane w wirtualnej kolejce subskrypcji. Poniższy przykład tworzy subskrypcję o nazwie "mysubscription" i używa domyślnego **MatchAll** filtru.
+Jeśli po utworzeniu nowej subskrypcji został określony żaden filtr **MatchAll** filtr (ustawienie domyślne) jest używany. Gdy **MatchAll** filtr jest stosowany, wszystkie komunikaty opublikowane do tematu są umieszczane w wirtualnej kolejce subskrypcji. Poniższy przykład tworzy subskrypcję o nazwie "mysubscription" i używa domyślnego **MatchAll** filtru.
 
 ```php
 require_once 'vendor/autoload.php';
@@ -177,7 +177,7 @@ $ruleInfo->withSqlFilter("MessageNumber > 3");
 $ruleResult = $serviceBusRestProxy->createRule("mytopic", "HighMessages", $ruleInfo);
 ```
 
-Pamiętaj, że ten kod wymaga użycia dodatkowej przestrzeni nazw: `WindowsAzure\ServiceBus\Models\SubscriptionInfo`.
+Ten kod wymaga użycia dodatkowej przestrzeni nazw: `WindowsAzure\ServiceBus\Models\SubscriptionInfo`.
 
 Podobnie poniższy przykład tworzy subskrypcję o nazwie `LowMessages` z `SqlFilter` wybiera tylko komunikaty, które mają `MessageNumber` właściwość mniejszą lub równą 3.
 
@@ -225,7 +225,7 @@ catch(ServiceException $e){
 }
 ```
 
-Komunikaty wysyłane do tematów usługi Service Bus są wystąpieniami [BrokeredMessage] [ BrokeredMessage] klasy. [BrokeredMessage] [ BrokeredMessage] obiekty mają zestaw właściwości standardowych i metody, a także właściwości, które mogą służyć do przechowywania niestandardowych właściwości specyficzne dla aplikacji. Poniższy przykład przedstawia sposób wysłania 5 wiadomości testowe `mytopic` wcześniej utworzony temat. `setProperty` Metoda służy do dodawania właściwości niestandardowych (`MessageNumber`) do każdej wiadomości. Należy pamiętać, że `MessageNumber` różni się w wartości właściwości dla każdej wiadomości (tej wartości można użyć, aby określić subskrypcje, które otrzymają, jak pokazano na [Utwórz subskrypcję](#create-a-subscription) sekcji):
+Komunikaty wysyłane do tematów usługi Service Bus są wystąpieniami [BrokeredMessage] [ BrokeredMessage] klasy. [BrokeredMessage] [ BrokeredMessage] obiekty mają zestaw właściwości standardowych i metody, a także właściwości, które mogą służyć do przechowywania niestandardowych właściwości specyficzne dla aplikacji. Poniższy przykład przedstawia sposób wysyłania pięciu testowych komunikatów do `mytopic` wcześniej utworzony temat. `setProperty` Metoda służy do dodawania właściwości niestandardowych (`MessageNumber`) do każdej wiadomości. `MessageNumber` Różni się w wartości właściwości dla każdej wiadomości (tej wartości można użyć, aby określić subskrypcje, które otrzymają, jak pokazano na [Utwórz subskrypcję](#create-a-subscription) sekcji):
 
 ```php
 for($i = 0; $i < 5; $i++){
@@ -246,7 +246,7 @@ Tematy usługi Service Bus obsługują maksymalny rozmiar komunikatu 256 KB w [w
 ## <a name="receive-messages-from-a-subscription"></a>Odbieranie komunikatów z subskrypcji
 Najlepszym sposobem na odbieranie komunikatów z subskrypcji jest użycie `ServiceBusRestProxy->receiveSubscriptionMessage` metody. Komunikaty mogą być odbierane w dwóch różnych trybach: [ *ReceiveAndDelete* i *PeekLock*](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode). Ustawienie domyślne to **PeekLock**.
 
-W przypadku używania trybu [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) odbieranie jest operacją pojedynczego zrzutu. Oznacza to, że kiedy usługa Service Bus odbiera żądanie odczytu komunikatu w subskrypcji, oznacza komunikat jako wykorzystywany i zwraca go do aplikacji. [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) * tryb jest najprostszym modelem i działa najlepiej w scenariuszach, w których aplikacja może tolerować nieprzetworzenie komunikatu w razie awarii. Aby to zrozumieć, rozważmy scenariusz, w którym konsument wystawia żądanie odbioru, a następnie ulega awarii przed jego przetworzeniem. Ponieważ usługi Service Bus będą oznaczyła komunikat jako wykorzystany, a następnie, gdy aplikacja ponownie uruchamia i ponownie rozpocznie korzystanie z komunikatów, pominie utracony komunikat, który został wykorzystany przed awarią.
+W przypadku używania trybu [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) odbieranie jest operacją pojedynczego zrzutu. Oznacza to, że kiedy usługa Service Bus odbiera żądanie odczytu komunikatu w subskrypcji, oznacza komunikat jako wykorzystywany i zwraca go do aplikacji. [ReceiveAndDelete](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) * tryb jest najprostszym modelem i działa najlepiej w scenariuszach, w których aplikacja może tolerować nieprzetworzenie komunikatu w razie niepowodzenia. Aby to zrozumieć, rozważmy scenariusz, w którym konsument wystawia żądanie odbioru, a następnie ulega awarii przed jego przetworzeniem. Usługa Service Bus oznaczyła komunikat jako wykorzystany, następnie gdy aplikacja zostanie ponownie uruchomiona i ponownie rozpocznie korzystanie z komunikatów, jego ma utracony komunikat, który został wykorzystany przed awarią.
 
 W domyślnym [PeekLock](https://docs.microsoft.com/dotnet/api/microsoft.servicebus.messaging.receivemode) trybie odebranie komunikatu staje się operacją dwuetapowy, co umożliwia obsługę aplikacji, które nie tolerują brakujących komunikatów. Gdy usługa Service Bus odbiera żądanie, znajduje następny komunikat do wykorzystania, blokuje go w celu uniemożliwienia innym klientom odebrania go i zwraca go do aplikacji. Po skopiowaniu aplikacja zakończy przetwarzanie komunikatu (lub niezawodnie zapisze go w celu przyszłego przetwarzania), wykonuje drugi etap procesu odbierania przez przekazanie odebranego komunikatu do `ServiceBusRestProxy->deleteMessage`. Gdy Usługa Service Bus widzi `deleteMessage` wywołanie, jego oznacza komunikat jako wykorzystany i usuń go z kolejki.
 
@@ -292,14 +292,14 @@ catch(ServiceException $e){
 ```
 
 ## <a name="how-to-handle-application-crashes-and-unreadable-messages"></a>Porady: Obsługa awarii aplikacji i komunikatów niemożliwych do odczytania
-Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w razie błędów w aplikacji lub trudności z przetwarzaniem komunikatu. Jeśli aplikacja odbiorcy nie może przetworzyć komunikatu z jakiegoś powodu, wówczas może wywołać `unlockMessage` metody dla odebranego komunikatu (zamiast `deleteMessage` metody). Powoduje to odblokowanie komunikatu w kolejce przez usługę Service Bus i ponowne udostępnienie go do odebrania przez tę samą lub inną odbierającą aplikację.
+Usługa Service Bus zapewnia funkcję ułatwiającą bezpieczne odzyskiwanie w razie błędów w aplikacji lub trudności z przetwarzaniem komunikatu. Jeśli aplikacja odbiorcy nie może przetworzyć komunikatu z jakiegoś powodu, wówczas może wywołać `unlockMessage` metody dla odebranego komunikatu (zamiast `deleteMessage` metody). Powoduje to odblokowanie komunikatu w kolejce i udostępnić go do ponownego odbioru, tę samą lub inną odbierającą aplikację usługę Service Bus.
 
 Istnieje również limit czasu skojarzony z komunikatem zablokowanym w kolejce i jeśli aplikacja nie może przetworzyć komunikatu przed limit czasu blokady upływem (na przykład jeśli wystąpiła awaria aplikacji), Usługa Service Bus automatycznie odblokowuje komunikat i przypisz ją dostępne do ponownego odbioru.
 
-W przypadku, gdy aplikacja przestaje działać po przetworzeniu komunikatu, lecz przed `deleteMessage` wystawić żądania, a następnie wiadomości są przed przeniesieniem do aplikacji po jej ponownym uruchomieniu. Jest to często nazywane *co najmniej raz* oznacza, że przetwarzanie; każdy komunikat jest przetwarzany co najmniej raz, ale w pewnych sytuacjach ten sam komunikat może być dostarczony ponownie. Jeśli scenariusz nie Toleruje dwukrotnego przetwarzania, deweloperzy aplikacji powinni dodać dodatkową logikę do aplikacji do obsługi dwukrotnego dostarczania komunikatów. Jest to często osiągane przy użyciu `getMessageId` metoda wiadomości, która pozostaje stała między kolejnymi próbami dostarczenia.
+W przypadku, gdy aplikacja przestaje działać po przetworzeniu komunikatu, lecz przed `deleteMessage` wystawić żądania, a następnie wiadomości są przed przeniesieniem do aplikacji po jej ponownym uruchomieniu. Tego rodzaju przetwarzania jest często nazywane *co najmniej raz* oznacza, że przetwarzanie; każdy komunikat jest przetwarzany co najmniej raz, ale w pewnych sytuacjach ten sam komunikat może być dostarczony ponownie. Jeśli scenariusz nie Toleruje dwukrotnego przetwarzania, deweloperzy aplikacji powinni dodać dodatkową logikę do aplikacji do obsługi dwukrotnego dostarczania komunikatów. Jest często osiągane przy użyciu `getMessageId` metoda wiadomości, która pozostaje stała między kolejnymi próbami dostarczenia.
 
 ## <a name="delete-topics-and-subscriptions"></a>Usuwanie tematów i subskrypcji
-Aby usunąć tematu lub subskrypcji, użyj `ServiceBusRestProxy->deleteTopic` lub `ServiceBusRestProxy->deleteSubscripton` metod, odpowiednio. Należy pamiętać, że usunięcie tematu powoduje również usunięcie wszystkich subskrypcji, które są zarejestrowane z tematem.
+Aby usunąć tematu lub subskrypcji, użyj `ServiceBusRestProxy->deleteTopic` lub `ServiceBusRestProxy->deleteSubscripton` metod, odpowiednio. Usunięcie tematu powoduje również usunięcie subskrypcji, które są zarejestrowane z tematem.
 
 Poniższy przykład pokazuje sposób usuwania tematu o nazwie `mytopic` i jego zarejestrowanej subskrypcji.
 
@@ -334,7 +334,7 @@ $serviceBusRestProxy->deleteSubscription("mytopic", "mysubscription");
 ```
 
 ## <a name="next-steps"></a>Kolejne kroki
-Teraz, kiedy znasz już podstawy kolejek usługi Service Bus, zobacz [kolejki, tematy i subskrypcje] [ Queues, topics, and subscriptions] Aby uzyskać więcej informacji.
+Aby uzyskać więcej informacji, zobacz [kolejki, tematy i subskrypcje][Queues, topics, and subscriptions].
 
 [BrokeredMessage]: /dotnet/api/microsoft.servicebus.messaging.brokeredmessage
 [Queues, topics, and subscriptions]: service-bus-queues-topics-subscriptions.md

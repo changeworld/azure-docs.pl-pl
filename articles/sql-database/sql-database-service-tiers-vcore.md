@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: sashan, moslake
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 8947a34f43f09281712c0e211c3dc6b8db9da6b3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 09/26/2018
+ms.openlocfilehash: 3fb1357b7a70579fa527a896d5bd359749b10ad6
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160676"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407659"
 ---
 # <a name="choosing-a-vcore-service-tier-compute-memory-storage-and-io-resources"></a>Wybieranie warstwy usług (rdzeń wirtualny), obliczeniowych, pamięci, magazynu i zasoby we/wy
 
@@ -89,7 +89,7 @@ Magazyn kopii zapasowych bazy danych jest przydzielany do obsługi punktu w czas
 
 ### <a name="hyperscale-service-tier-preview"></a>Warstwy usług na dużą skalę (wersja zapoznawcza)
 
-na podstawie migawki kopii zapasowej w magazynie zdalnym platformy Azure i przywracanie na użytek migawek Szybkie odzyskiwanie. Kopie zapasowe są natychmiastowe i nie wpływać na wydajność operacji We/Wy, mocy obliczeniowej. Operacje przywracania są bardzo szybko, a nie rozmiar operacje na danych (w ciągu kilku minut nie dni/godziny).
+W przypadku warstwy usług na dużą skalę kopie zapasowe są na podstawie migawki i przechowywane w usłudze Azure storage zdalnego. Przywracanie na użytek migawek Szybkie odzyskiwanie. Kopie zapasowe są natychmiastowe i nie wpływać na wydajność operacji We/Wy, mocy obliczeniowej. Operacje przywracania są bardzo szybko, a nie rozmiar operacje na danych (w ciągu kilku minut nie dni/godziny).
 
 ## <a name="azure-hybrid-use-benefit"></a>Korzyść użycia hybrydowego platformy Azure
 

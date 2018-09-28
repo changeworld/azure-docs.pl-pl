@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 03/28/2018
 ms.author: lizross
 ms.reviewer: olhaun
-ms.openlocfilehash: 39ec7c979294860967deb3307f5d87112b762257
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: b019523227bcd45e502ec84055cfb09025918331
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47106971"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406128"
 ---
 # <a name="backup-and-recover-account-credentials-with-the-microsoft-authenticator-app"></a>Kopia zapasowa i odzyskiwanie poświadczeń konta, za pomocą aplikacji Microsoft Authenticator
 
@@ -78,12 +78,12 @@ Dla osobistych kont Microsoft można potwierdzić swoją tożsamość, wprowadza
 
     ![Aplikacja Microsoft Authenticator, pokazujący dostępne konta za pomocą ich skojarzone strzałki listy rozwijanej](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-additonal-accts.png)
 
-2.  Wybierz **kod QR skanowanie, aby odzyskać**, a następnie zeskanować kod QR, podane przez administratora.
+2.  Wybierz **kod QR skanowanie, aby odzyskać**, a następnie Zeskanuj kod QR.
 
     ![Aplikacja Microsoft Authenticator, co umożliwia skanowanie kodu QR](./media/microsoft-authenticator-app-backup-and-recovery/backup-and-recovery-scan-qr-code.png)
 
     >[!NOTE]
-    >Aby uzyskać więcej informacji na temat sposobu uzyskania kodu QR, zobacz [sposób dodawania konta sekcji pobierania korzystać z aplikacji Microsoft Authenticator](https://docs.microsoft.com/azure/active-directory/user-help/microsoft-authenticator-app-how-to#add-accounts-to-the-app) artykułu.
+    >Aby uzyskać więcej informacji na temat sposobu uzyskania kodu QR, zobacz [Rozpoczynanie pracy z aplikacją Microsoft Authenticator](https://docs.microsoft.com/azure/active-directory/user-help/microsoft-authenticator-app-how-to#add-accounts-to-the-app) lub [ustawić informacje zabezpieczające, aby użyć aplikacji authenticator](https://docs.microsoft.com/azure/active-directory/user-help/security-info-setup-auth-app#to-use-the-microsoft-authenticator-app), zależnie od tego, czy Twój administrator wyłączył informacji zabezpieczających.
 
 ## <a name="troubleshooting-backup-and-recovery-problems"></a>Rozwiązywanie problemów z kopii zapasowej i odzyskiwania
 Istnieje kilka powodów dlaczego kopii zapasowej może nie być dostępne:

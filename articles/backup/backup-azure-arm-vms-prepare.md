@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 9/10/2018
 ms.author: markgal
-ms.openlocfilehash: 80987408e65785afba1df2d2f6b6fc9981fd2dbf
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 00432e1b5a181c57e4901b684d0a86c1cc843037
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45542824"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408984"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Przygotowywanie środowiska do tworzenia kopii zapasowych maszyn wirtualnych wdrożonych przez program Resource Manager
 
@@ -47,7 +47,7 @@ Jeśli te warunki są już istnieją w Twoim środowisku, przejdź do [tworzenie
 Przed przygotowaniem środowiska, należy zrozumieć następujące ograniczenia:
 
 * Tworzenie kopii zapasowych maszyn wirtualnych przy użyciu SSD w warstwie standardowa nie jest obecnie obsługiwane.
-* Tworzenie kopii zapasowych maszyn wirtualnych przy użyciu więcej niż 16 dysków danych nie jest obsługiwane.
+* Tworzenie kopii zapasowych maszyn wirtualnych przy użyciu więcej niż 32 dyski danych nie jest obsługiwane.
 * Tworzenie kopii zapasowych maszyn wirtualnych za pomocą zastrzeżonego adresu IP i nie ma zdefiniowanego punktu końcowego nie jest obsługiwane.
 * Tworzenie kopii zapasowych maszyn wirtualnych systemu Linux, szyfrowane za pomocą funkcji szyfrowania Linux Unified klucz instalacji (LUKS) nie jest obsługiwane.
 * Nie zaleca się tworzenie kopii zapasowych maszyn wirtualnych, które zawierają udostępnionych woluminów klastra (CSV) lub serwera plików skalowalnego w poziomie konfiguracji. Jeśli będą wykonywane, awarii składników zapisywania CSV jest oczekiwany. Wymagają one, obejmujące wszystkie maszyny wirtualne, które uwzględnione w konfiguracji klastra podczas wykonywania zadania migawki. Usługa Azure Backup nie obsługuje spójność wielu maszyn wirtualnych. 

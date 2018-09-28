@@ -5,17 +5,17 @@ services: cost-management
 keywords: ''
 author: bandersmsft
 ms.author: banders
-ms.date: 08/07/2018
+ms.date: 09/27/2018
 ms.topic: conceptual
 ms.service: cost-management
 manager: dougeby
 ms.custom: ''
-ms.openlocfilehash: 9c09f473f5d8b399c4fb1b1ad449c783c797f4dd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bc3eb2721dd9fc0c4cde407a8257f6be73201a2a
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968513"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423361"
 ---
 # <a name="add-extended-metrics-for-azure-virtual-machines"></a>Dodawanie rozszerzonych metryk dla maszyn wirtualnych platformy Azure
 
@@ -33,36 +33,38 @@ Na przykład możesz chcieć Monitoruj procent użycia procesora CPU i procent p
 > [!NOTE]
 > Zbieranie rozszerzonych danych metryk jest obsługiwany tylko przy użyciu funkcji platformy Azure monitorowania na poziomie gościa. Cloudyn nie jest zgodny z rozszerzenia maszyny Wirtualnej programu Log Analytics.
 
-## <a name="verify-that-metrics-are-enabled-on-vms"></a>Sprawdź, czy metryki są włączone na maszynach wirtualnych
+## <a name="determine-whether-extended-metrics-are-enabled"></a>Czy są włączone rozszerzonych metryk
 
 1. Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
 2. W obszarze **maszyn wirtualnych**, wybierz maszynę Wirtualną i w obszarze **monitorowanie**, wybierz opcję **metryki**. Jest wyświetlana lista dostępnych metryk.
 3. Wybierz niektóre metryki, a wykres przedstawia dane dla nich.  
     ![Przykładowe metryki — host procentowe użycie procesora CPU](./media/azure-vm-extended-metrics/metric01.png)
 
-W powyższym przykładzie ograniczony zestaw standardowych metryk są dostępne dla hostów, ale metryk pamięci nie są. Metryki pamięci są częścią pakietu rozszerzonych metryk. Należy wykonać dodatkowe kroki w celu włączenia rozszerzonych metryk. Poniższe informacje przeprowadzi Cię przez włączenie ich.
+W powyższym przykładzie ograniczony zestaw standardowych metryk są dostępne dla hostów, ale metryk pamięci nie są. Metryki pamięci są częścią pakietu rozszerzonych metryk. W tym przypadku rozszerzonych metryk nie są włączone dla maszyny Wirtualnej. Należy wykonać dodatkowe kroki w celu włączenia rozszerzonych metryk. Poniższe informacje przeprowadzi Cię przez włączenie ich.
 
 ## <a name="enable-extended-metrics-in-the-azure-portal"></a>Włącz rozszerzone metryki w witrynie Azure portal
 
 Metryki standardowe są metryki komputera hosta. _[Host] procentowe użycie procesora CPU_ metryka jest jednym z przykładów. Dostępne są również podstawowe metryki dla maszyn wirtualnych gościa i są również nazywane rozszerzonych metryk. Przykłady rozszerzonych metryk _procent pamięci [gościa]_ i _dostępnej pamięci [gościa]_.
 
-Włączanie rozszerzonych metryk jest bardzo proste. Dla każdej maszyny Wirtualnej Włącz monitorowanie na poziomie gościa. Po włączeniu monitorowania na poziomie gościa agent diagnostyki platformy Azure jest zainstalowany na maszynie Wirtualnej. Następujący proces jest taki sam dla maszyn wirtualnych klasycznych i regularnego i taki sam dla Windows i maszyn wirtualnych systemu Linux.
+Włączanie rozszerzonych metryk jest bardzo proste. Dla każdej maszyny Wirtualnej Włącz monitorowanie na poziomie gościa. Po włączeniu monitorowania na poziomie gościa agent diagnostyki platformy Azure jest zainstalowany na maszynie Wirtualnej. Domyślnie są dodawane podstawowego zestawu rozszerzonych metryk. Następujący proces jest taki sam dla maszyn wirtualnych klasycznych i regularnego i taki sam dla Windows i maszyn wirtualnych systemu Linux.
 
 Należy pamiętać, że zarówno platformy Azure, jak i Linux monitorowania na poziomie gościa wymagają konta magazynu. Po włączeniu monitorowania poziomie gościa, jeśli nie wybierzesz istniejące konto magazynu, a następnie jedną zostanie utworzony.
 
 ### <a name="enable-guest-level-monitoring-on-existing-vms"></a>Włącz monitorowanie na poziomie dla gości na istniejących maszynach wirtualnych
 
 1. W **maszyn wirtualnych**, Wyświetl listę maszyn wirtualnych, a następnie wybierz Maszynę wirtualną.
-2. W obszarze **monitorowanie**, wybierz opcję **metryki**.
-3. Kliknij przycisk **ustawień diagnostycznych**.
-4. Na stronie ustawienia diagnostyki kliknij **Włącz monitorowanie na poziomie gościa**.  
+2. W obszarze **monitorowanie**, wybierz opcję **ustawień diagnostycznych**.
+3. Na stronie ustawienia diagnostyki kliknij **Włącz monitorowanie na poziomie gościa**.  
     ![Włącz monitorowanie na poziomie gościa](./media/azure-vm-extended-metrics/enable-guest-monitoring.png)
-5. Po kilku minutach agenta funkcji Diagnostyka Azure jest zainstalowany na maszynie Wirtualnej. Odśwież stronę i listy dostępnych metryk jest aktualizowany za pomocą metryk gościa.  
+4. Po kilku minutach agenta funkcji Diagnostyka Azure jest zainstalowany na maszynie Wirtualnej. Podstawowy zestaw metryk są dodawane. Odśwież stronę. Dodano liczników są wyświetlane na karcie Przegląd.
+5. W obszarze monitorowania, wybierz **metryki**.
+6. Wykres metryk w obszarze **Namespace metryki**, wybierz opcję **gościa (wersja klasyczna)**.
+7. Na liście metryki można wyświetlić wszystkich dostępnych liczników wydajności na maszynie Wirtualnej gościa.  
     ![Rozszerzonych metryk](./media/azure-vm-extended-metrics/extended-metrics.png)
 
 ### <a name="enable-guest-level-monitoring-on-new-vms"></a>Aby włączyć monitorowanie poziomie gościa, na nowych maszynach wirtualnych
 
-Podczas tworzenia nowych maszyn wirtualnych, upewnij się, że wybrano **Diagnostyka systemu operacyjnego gościa**.
+Po utworzeniu nowych maszyn wirtualnych, na karcie Zarządzanie wybierz **na** dla **systemu operacyjnego gościa diagnostyki**.
 
 ![Włącz diagnostykę systemu operacyjnego gościa](./media/azure-vm-extended-metrics/new-enable-diag.png)
 

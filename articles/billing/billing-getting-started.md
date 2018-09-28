@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 01/24/2018
 ms.author: cwatson
-ms.openlocfilehash: d17215fe05a4795bd539759d98695ec2f6b0df3d
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 6b497fd9f4280c36adcbeb4d94e469525c9dad6e
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393503"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423004"
 ---
 # <a name="prevent-unexpected-charges-with-azure-billing-and-cost-management"></a>Uniknąć nieoczekiwanych opłat za pomocą rozliczeń platformy Azure i zarządzania kosztami
 
@@ -54,17 +54,6 @@ Aby uzyskać więcej informacji na temat cen, zobacz ten [— często zadawane p
 Zwykle po dodaniu usługi w witrynie Azure portal, istnieje widok przedstawiający podobne szacowany koszt na miesiąc. Na przykład w przypadku wybrania rozmiaru maszyny Wirtualnej Windows, zostanie wyświetlony szacowany miesięczny koszt godzin obliczeniowych:
 
 ![Przykład: maszyna wirtualna A1 Windows jest szacowany koszt 66.96 USD na miesiąc](./media/billing-getting-started/vm-size-cost.PNG)
-
-### <a name="set-up-billing-alerts"></a>Ustawianie alertów dotyczących rozliczeń
-
-Skonfiguruj alerty dotyczące rozliczeń, aby otrzymywać wiadomości e-mail, gdy koszty użycia przekracza kwoty, który określisz. W przypadku miesięcznych środków na korzystanie z Konfigurowanie alertów dotyczących gdy określonej wartości. Aby uzyskać więcej informacji, zobacz [Konfigurowanie alertów dla Twojej subskrypcji Microsoft Azure billing](billing-set-up-alerts.md).
-
-![Zrzut ekranu przedstawiający rozliczeń wiadomość e-mail z alertem](./media/billing-getting-started/billing-alert.png)
-
-> [!NOTE]
-> Ta funkcja jest nadal w wersji zapoznawczej, więc należy sprawdzić użycie regularnie.
-
-Możesz chcieć na użytek szacowania kosztów z Kalkulatora cen. zaleca się Twój pierwszy alert.
 
 ### <a name="spending-limit"></a> Sprawdź, czy limit wydatków
 
@@ -166,7 +155,7 @@ Widoki kosztów przedsiębiorstwa są obecnie dostępne w publicznej wersji zapo
     - Jesteś administratorem działu i administratorem rejestracji została wyłączona "opłaty widoku DA" ustawienie.  Skontaktuj się z administratorem rejestracji w celu uzyskania dostępu. 
     - Zakupili platformę Azure za pośrednictwem partnera kanału i partnera nie udostępnił informacje o cenach.  
 - Po zaktualizowaniu ustawień związanych z koszty dostępu w witrynie Enterprise portal, istnieje opóźnienie za kilka minut, zanim zmiany zostaną odzwierciedlone w witrynie Azure portal.
-- Limit wydatków, alerty dotyczące rozliczeń i wskazówki dotyczące faktury nie odnoszą się do subskrypcji umowy EA.
+- Limit wydatków i wskazówki dotyczące faktury nie mają zastosowania do subskrypcji umowy EA.
 
 ### <a name="check-your-subscription-and-access"></a>Sprawdź subskrypcję i dostępu
 

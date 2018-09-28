@@ -11,20 +11,20 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 08/07/2018
+ms.date: 09/24/2018
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 26f696c2f54d9cb8a176fe079101e26384ac0a6e
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 281c426170985d43401a13988218126ea3951634
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47034454"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405618"
 ---
 # <a name="custom-roles-in-azure"></a>Role niestandardowe na platformie Azure
 
-Jeśli [role wbudowane](built-in-roles.md) nie spełniają specyficznych potrzeb Twojej organizacji, możesz utworzyć własne role niestandardowe. Podobnie jak wbudowane role można przypisać role niestandardowe do użytkowników, grup i nazwy główne usług w subskrypcji, grupy zasobów i zakresy zasobów. Role niestandardowe są przechowywane w dzierżawie usługi Azure Active Directory (Azure AD) i mogą być współużytkowane w różnych subskrypcjach. Każda dzierżawa może mieć maksymalnie 2000 ról niestandardowych. Role niestandardowe można tworzyć przy użyciu programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST.
+Jeśli [role wbudowane](built-in-roles.md) nie spełniają specyficznych potrzeb Twojej organizacji, możesz utworzyć własne role niestandardowe. Podobnie jak wbudowane role można przypisać role niestandardowe do użytkowników, grup i nazwy główne usług w subskrypcji, grupy zasobów i zakresy zasobów. Role niestandardowe są przechowywane w katalogu usługi Azure Active Directory (Azure AD) i mogą być współużytkowane w różnych subskrypcjach. Każdy katalog może mieć maksymalnie 2000 ról niestandardowych. Role niestandardowe można tworzyć przy użyciu programu Azure PowerShell, interfejsu wiersza polecenia platformy Azure lub interfejsu API REST.
 
 ## <a name="custom-role-example"></a>Przykład rolę niestandardową
 
@@ -92,7 +92,7 @@ Rola niestandardowa ma następujące właściwości.
 
 | Właściwość | Wymagane | Typ | Opis |
 | --- | --- | --- | --- |
-| `Name` | Yes | Ciąg | Wyświetlana nazwa roli niestandardowej. Musi być unikatowa dla dzierżawy. Może zawierać litery, cyfry, spacje i znaki specjalne. Maksymalna liczba znaków to 128. |
+| `Name` | Yes | Ciąg | Wyświetlana nazwa roli niestandardowej. Definicja roli jest zasobem poziom subskrypcji, definicja roli może służyć w wielu subskrypcjach, które współużytkują ten sam katalog usługi Azure AD. Ta nazwa wyświetlana musi być unikatowa w zakresie katalogu usługi Azure AD. Może zawierać litery, cyfry, spacje i znaki specjalne. Maksymalna liczba znaków to 128. |
 | `Id` | Yes | Ciąg | Unikatowy identyfikator roli niestandardowej. Dla programu Azure PowerShell i wiersza polecenia platformy Azure ten identyfikator jest generowany automatycznie po utworzeniu nowej roli. |
 | `IsCustom` | Yes | Ciąg | Wskazuje, czy jest to rola niestandardowa. Ustaw `true` dla ról niestandardowych. |
 | `Description` | Yes | Ciąg | Opis roli niestandardowej. Może zawierać litery, cyfry, spacje i znaki specjalne. Maksymalna liczba znaków wynosi 1024. |

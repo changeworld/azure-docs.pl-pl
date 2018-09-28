@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: mysql
 ms.topic: article
-ms.date: 07/11/2018
-ms.openlocfilehash: 614ea0dd69c9bb07df20634298c1192e6ffee789
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.date: 09/27/2018
+ms.openlocfilehash: c390f6cbc9f7ced8113b4e6053dec1adcaf761a1
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380339"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422607"
 ---
 # <a name="azure-database-for-mysql-pricing-tiers"></a>Usługa Azure Database for MySQL warstw cenowych
 
@@ -73,6 +73,11 @@ Obliczenia, że zasoby są dostarczane jako rdzeni wirtualnych, który reprezent
 | Japonia Zachodnia | X | X |
 | Korea Środkowa |  | X |
 | Korea Południowa |  | X |
+| Niemcy Środkowe |  | X |
+| US DoD — środkowe stany  | X |  |
+| US DoD — wschodnie stany  | X |  |
+| Administracja USA — Arizona |  | X |
+| Administracja USA — Teksas |  | X |
 
 ## <a name="storage"></a>Magazyn
 

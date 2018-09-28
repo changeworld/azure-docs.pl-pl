@@ -11,22 +11,22 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: waltero
-ms.openlocfilehash: 89c72e21733b01a3e42c0e58d65cb7877e47d374
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 82d99f575837b47a29bd6d8330ee58f442b6110a
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163498"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409358"
 ---
 # <a name="deploy-kubernetes-to-azure-stack"></a>Wdrażanie rozwiązania Kubernetes do usługi Azure Stack
 
 *Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
 > [!Note]  
-> Rozwiązanie Kubernetes w usłudze Azure Stack jest w wersji zapoznawczej. Operator usługi Azure Stack musisz poprosić o dostęp do elementu portalu Marketplace klastra Kubernetes potrzebne do wykonania instrukcji w tym artykule.
+> Rozwiązanie Kubernetes w usłudze Azure Stack jest w wersji zapoznawczej.
 
 Następujący artykuł patrzy na przy użyciu szablonu rozwiązania usługi Azure Resource Manager do wdrażania i przydzielanie zasobów dla rozwiązania Kubernetes w jednej, skoordynowanej operacji. Możesz należy do zebrania wymaganych informacji dotyczących instalacji usługi Azure Stack, Generowanie szablonu, a następnie wdrożyć do chmury. Uwaga szablonu nie jest tego samego zarządzanych usług AKS oferowanych na platformie Azure globalnego.
 
@@ -55,6 +55,8 @@ Aby rozpocząć pracę, upewnij się, że masz odpowiednie uprawnienia, i że us
 1. Sprawdź, czy masz ważnej subskrypcji w portalu dzierżawcy usługi Azure Stack, i że masz wystarczająco dużo publiczny adres IP adresów dostępnych do dodania nowych aplikacji.
 
     Nie można wdrożyć klaster do usługi Azure Stack **administratora** subskrypcji. Należy użyć **użytkownika** subskrypcji. 
+
+1. Jeśli nie masz klastra Kubernetes w portalu marketplace, Porozmawiaj z administratorem usługi Azure Stack.
 
 ## <a name="create-a-service-principal-in-azure-ad"></a>Tworzenie jednostki usługi w usłudze Azure AD
 

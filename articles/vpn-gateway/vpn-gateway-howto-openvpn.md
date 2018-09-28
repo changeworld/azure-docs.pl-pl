@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: conceptual
-ms.date: 09/21/2018
+ms.date: 09/26/2018
 ms.author: cherylmc
-ms.openlocfilehash: b915a56b14332bfa885eaccf9a151d08c58dc5b1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 958f4f46ec6ba407df7c739b7c62aa1489458485
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46973698"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408280"
 ---
 # <a name="configure-openvpn-for-azure-point-to-site-vpn-gateway-preview"></a>Konfigurowanie OpenVPN Azure point-to-site VPN Gateway (wersja zapoznawcza)
 
@@ -20,7 +20,30 @@ Ten artykuł pomoże Ci skonfigurować OpenVPN w usłudze Azure VPN Gateway. Teg
 
 > [!IMPORTANT]
 > Publiczna wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie należy korzystać z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+## <a name="register"></a>Zarejestruj tę funkcję
+
+Kliknij przycisk **TryIt** w ramach tej procedury, aby zarejestrować tę funkcję za pomocą usługi Azure Cloud Shell.
+
+>[!NOTE]
+>Jeżeli nie zarejestrujesz tej funkcji, nie będzie można z niego korzystać.
 >
+
+Po kliknięciu przycisku **TryIt** aby otworzyć usługę Azure Cloud Shell, skopiuj i wklej następujące polecenia:
+
+```azurepowershell-interactive
+Register-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
+```
+ 
+```azurepowershell-interactive
+Get-AzureRmProviderFeature -ProviderNamespace Microsoft.Network -FeatureName AllowVnetGatewayOpenVpnProtocol
+```
+
+Gdy ta funkcja informuje, jak zarejestrować, należy ponownie zarejestrować subskrypcję do Microsoft.Network przestrzeni nazw.
+
+```azurepowershell-interactive
+Register-AzureRmResourceProvider -ProviderNamespace Microsoft.Network
+```
 
 ## <a name="vnet"></a>1. Tworzenie sieci VPN punkt lokacja
 

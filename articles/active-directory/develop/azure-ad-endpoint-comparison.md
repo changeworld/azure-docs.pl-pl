@@ -3,7 +3,7 @@ title: Porównywanie punktu końcowego v2.0 usługi Azure AD z punktem końcowym
 description: Znasz różnice między punktu końcowego v2.0 usługi Azure AD i punktu końcowego w wersji 1.0
 services: active-directory
 documentationcenter: ''
-author: andretms
+author: CelesteDG
 manager: mtillman
 editor: ''
 ms.assetid: 5060da46-b091-4e25-9fa8-af4ae4359b6c
@@ -13,23 +13,23 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/21/2018
+ms.date: 09/27/2018
 ms.author: andret
-ms.reviewer: hirsin, celested
+ms.reviewer: hirsin, andret
 ms.custom: aaddev
-ms.openlocfilehash: 02c7edc84d2ac3a91c33d8f266d022db5cd5cb40
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b75b31ddfc77be5ed651e7b8484e41a4ae73d8d8
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948962"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406536"
 ---
-# <a name="comparing-the-azure-ad-v20-endpoint-with-v10-endpoint"></a>Porównywanie punktu końcowego v2.0 usługi Azure AD przy użyciu punktu końcowego w wersji 1.0
+# <a name="comparing-the-azure-ad-v20-endpoint-with-the-v10-endpoint"></a>Porównywanie punktu końcowego v2.0 usługi Azure AD przy użyciu punktu końcowego w wersji 1.0
 
 Podczas tworzenia nowej aplikacji, należy znać różnice między punktami końcowymi w wersji 1.0 i 2.0. Poniżej przedstawiono główne różnice, a także niektóre istniejące ograniczenia dla punktu końcowego v2.0.
 
 > [!NOTE]
-> Nie wszystkie scenariusze usługi Azure AD i funkcje są obsługiwane przez punkt końcowy w wersji 2.0. Aby ustalić, należy użyć punktu końcowego v2.0, przeczytaj temat [ograniczenia v2.0](#limitations).
+> Nie wszystkie scenariusze usługi Azure Active Directory (Azure AD) i funkcje są obsługiwane przez punkt końcowy w wersji 2.0. Aby ustalić, należy użyć punktu końcowego v2.0, przeczytaj temat [ograniczenia v2.0](#limitations).
 
 ## <a name="who-can-sign-in"></a>Kto może się zarejestrować
 
@@ -37,7 +37,7 @@ Podczas tworzenia nowej aplikacji, należy znać różnice między punktami koń
 
 * Punkt końcowy v1.0 pozwala tylko kont służbowych zalogować się do aplikacji (Azure AD)
 
-* Punkt końcowy v2.0 umożliwia służbowych i kont służbowych z usługi Azure Active Directory i osobistych kont (MSA) (hotmail.com, outlook.com, msn.com) do logowania.
+* Punkt końcowy v2.0 umożliwia służbowych i kont służbowych z usługi Azure AD i osobistych kont (MSA) (hotmail.com, outlook.com, msn.com) do logowania.
 
 * Punkty końcowe w wersji 1.0 i 2.0 także zaakceptować logowania z *[użytkowników-gości](https://docs.microsoft.com/azure/active-directory/b2b/what-is-b2b)* katalogu usługi Azure AD dla aplikacji skonfigurowanych jako *[pojedynczej dzierżawy](single-and-multi-tenant-apps.md)* lub *wielodostępnych* aplikacji skonfigurowanych do punktu z punktem końcowym specyficznym dla dzierżawy (`https://login.microsoftonline.com/{TenantId_or_Name}`).
 
@@ -119,7 +119,7 @@ Informacje, `openid` zakresu daje aplikacji dostęp do jest teraz ograniczone. `
 
 Dzięki temu kod aplikacji w sposób minimalny ujawnienie — można tylko prosisz użytkownika o zestawie informacji, że wymaganych przez aplikację, aby to zrobić. Aby uzyskać więcej informacji na temat tych zakresów, zobacz [dokumentacja zakresu v2.0](v2-permissions-and-consent.md).
 
-## <a name="token-claims"></a>Oświadczenia tokenu
+## <a name="token-claims"></a>Token oświadczeń
 
 Oświadczenia w tokeny wystawione przez punkt końcowy v2.0, nie będzie taka sama jak tokeny wystawione przez ogólnie dostępne punkty końcowe usługi Azure AD. Migracja do nowej usługi aplikacji nie powinna przyjęto założenie, że danego oświadczenia będzie istnieć w id_tokens lub access_tokens. Dalsze szczegóły różnego rodzaju tokeny używane w punkcie końcowym v2.0 są dostępne w [token dostępu](access-tokens.md) odwołania i [ `id_token` odwołania](id-tokens.md)
 
@@ -214,15 +214,13 @@ Obecnie Obsługa bibliotek dla punktu końcowego v2.0 jest ograniczona. Jeśli c
 
 Nie obsługuje punktu końcowego v2.0, SAML lub WS-Federation; obsługuje tylko Open ID Connect i OAuth 2.0. Nie wszystkie funkcje i możliwości protokołów OAuth zostały włączone do punktu końcowego v2.0.
 
-Następujące funkcje protokołu i funkcje są obecnie *nie jest dostępna* w punkcie końcowym v2.0:
+Następujące funkcje protokołu i funkcje są obecnie *nie jest dostępna* lub *nieobsługiwane* w punkcie końcowym v2.0:
 
-* Obecnie `email` oświadczeń jest zwracany tylko jeśli skonfigurowano opcjonalnego roszczenia, a zakres jest zakresem = wiadomość e-mail została określona w żądaniu. Jednak to zachowanie zmieni się zgodnie z punktem końcowym v2.0 jest aktualizowana w celu dalszego są zgodne ze standardami Open ID Connect i OAuth 2.0.
+* `email` Oświadczeń jest zwracany tylko jeśli skonfigurowano opcjonalnego roszczenia, a zakres jest zakresem = wiadomość e-mail została określona w żądaniu. Jednakże należy się spodziewać to zachowanie można zmienić zgodnie z punktem końcowym v2.0 jest aktualizowana w celu dalszego są zgodne ze standardami Open ID Connect i OAuth 2.0.
 
 * Punktu końcowego v2.0 nie obsługuje wystawiającego oświadczeń roli lub grupy w tokeny Identyfikatora.
 
-* [Przydział poświadczeń hasła właściciela zasobów OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.3) nie jest obsługiwana przez punktu końcowego v2.0.
-
-Ponadto punktu końcowego v2.0 nie obsługuje dowolnej formie protokołów SAML lub WS-Federation.
+* Nie obsługuje punktu końcowego v2.0 [przydział poświadczeń hasła właściciela zasobów OAuth 2.0](https://tools.ietf.org/html/rfc6749#section-4.3).
 
 Aby lepiej zrozumieć zakres protokołu funkcje obsługiwane w punkcie końcowym v2.0, zapoznaj się z artykułem naszych [referencyjne protokołu OpenID Connect i OAuth 2.0](active-directory-v2-protocols.md).
 

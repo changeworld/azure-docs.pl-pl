@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 02/22/2018
+ms.date: 09/22/2018
 ms.author: spelluru
-ms.openlocfilehash: bc0e0bfb8d4dc8637c191785a98f5d15e086cbf5
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 6be1605ee1bb385c303d100729238a8eb71605d0
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696435"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407335"
 ---
 # <a name="overview-of-service-bus-transaction-processing"></a>Omówienie usługi Service Bus przetwarzanie transakcji
 
@@ -31,7 +31,7 @@ A [ *transakcji* ](https://github.com/Azure/azure-service-bus/tree/master/sample
 
 Usługa Service Bus jest broker wiadomości transakcyjnych i zapewnia integralność transakcji dla wszystkich operacji wewnętrznej względem jego magazynami komunikatów. Wszystkie operacje transferu wiadomości wewnątrz usługi Service Bus, takiego jak przenoszenie wiadomości do [kolejki utraconych wiadomości](service-bus-dead-letter-queues.md) lub [automatyczne przekazywanie](service-bus-auto-forwarding.md) komunikatów między jednostkami, są transakcyjne. Jako takie Jeśli Usługa Service Bus zaakceptuje wiadomość, już został przechowywane i etykietą numer sekwencyjny. Od tego momentu wszelkich transferów komunikatów w ramach usługi Service Bus to operacje skoordynowanego między jednostkami i nie doprowadzi do utraty (źródło zakończy się pomyślnie i docelowym nie powiedzie się) lub dublowania (niepowodzenie dotyczące źródła i docelowych zakończy się powodzeniem) wiadomości.
 
-Usługa Service Bus obsługuje operacje względem pojedynczej jednostki obsługi komunikatów (kolejki, tematu, subskrypcji) w zakresie transakcji. Na przykład kilka wiadomości można wysyłać do jednej kolejki z zakresu transakcji, a komunikaty tylko zostaną przekazane do kolejki dziennika, po pomyślnym zakończeniu transakcji.
+Usługa Service Bus obsługuje grupowanie operacji względem jednej jednostki obsługi komunikatów (kolejki, tematu, subskrypcji) w zakresie transakcji. Na przykład kilka wiadomości można wysyłać do jednej kolejki z zakresu transakcji, a komunikaty tylko zostaną przekazane do kolejki dziennika, po pomyślnym zakończeniu transakcji.
 
 ## <a name="operations-within-a-transaction-scope"></a>Operacje w zakresie transakcji
 

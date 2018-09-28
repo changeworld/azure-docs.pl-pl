@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 8/2/2018
 ms.author: markgal
-ms.openlocfilehash: aa26106460f305568fcb2dd1b84fbc54370e5f39
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: efe08eddaceb5a764dbd5393e79644eac1e2e106
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543581"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406162"
 ---
 # <a name="questions-about-the-azure-backup-service"></a>Pytania dotyczące usługi Azure Backup
 Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące składników usługi Azure Backup. W niektórych odpowiedziach znajdują się linki do artykułów zawierających szczegółowe informacje. Aby zadać pytanie dotyczące usługi Azure Backup, kliknij pozycję **Komentarze** (po prawej stronie). Komentarze są wyświetlane na dole tego artykułu. Aby komentować, musisz mieć konto Livefyre. Pytania dotyczące usługi Azure Backup można również zadawać na [forum dyskusyjnym](https://social.msdn.microsoft.com/forums/azure/home?forum=windowsazureonlinebackup).
@@ -148,7 +148,7 @@ W poniższej tabeli opisano sposób ustalania rozmiaru dla każdego źródła da
 | Microsoft Exchange |Suma wszystkich baz danych programu Exchange w serwerze Exchange, którego kopia zapasowa jest wykonywana |
 | Stan systemu/BMR |Każda pojedyncza kopia BMR lub stanu systemu komputera, którego kopia zapasowa jest wykonywana |
 
-Do utworzenia kopii zapasowej maszyny Wirtualnej IaaS platformy Azure każda maszyna wirtualna może mieć maksymalnie 16 dysków danych, a każdy dysk danych może mieć maksymalnie 4095 GB.
+Do utworzenia kopii zapasowej maszyny Wirtualnej IaaS platformy Azure każda maszyna wirtualna może mieć maksymalnie 32 dyski danych, a każdy dysk danych może mieć maksymalnie 4095 GB.
 
 ### <a name="is-there-a-limit-on-the-amount-of-data-held-in-a-recovery-services-vault"></a>Czy istnieje ograniczenie na ilość danych przechowywanych w magazynie usługi Recovery Services?
 Nie ma żadnego limitu ilości danych, które użytkownik może wykonywać kopie zapasowe usługi Recovery Services magazynu.

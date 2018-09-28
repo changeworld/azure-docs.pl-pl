@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 06/14/2018
 ms.author: cwatson
-ms.openlocfilehash: f7ec113a7fa51fc6d3684c2e7ee9379bd1534e30
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: be2e774bc4220d5d93f555263fa9f342f449f8b2
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392418"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423446"
 ---
 # <a name="understand-your-bill-for-microsoft-azure"></a>Opis zawartości rachunku za korzystanie z platformy Microsoft Azure
 Aby poznać rachunku dotyczącym platformy Azure, porównaj fakturze za pomocą szczegółowych codzienne pliku użycia i raportów rozwiązania cost management w witrynie Azure portal.
@@ -141,7 +141,6 @@ Azure 1. strona opłaty są naliczane za zasoby, których bezpośrednio opracowa
 
 ## <a name="tips-for-cost-management"></a>Wskazówki dotyczące usługi cost management
 - Oszacuj koszty przy użyciu [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/) i [całkowity koszt posiadania Kalkulator](https://aka.ms/azure-tco-calculator)i Uzyskaj [szczegółowe informacje o cenach informacji dla każdej usługi](https://azure.microsoft.com/pricing/).
-- [Ustawianie alertów dotyczących rozliczeń](billing-set-up-alerts.md).
 - [Przeglądanie użycia i kosztów regularnie w witrynie Azure portal](billing-getting-started.md#costs).
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.

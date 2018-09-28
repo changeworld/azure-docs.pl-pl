@@ -14,14 +14,14 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
-ms.date: 11/08/2016
+ms.date: 09/26/2018
 ms.author: sedusch
-ms.openlocfilehash: c6d7b4515546ea51264b094316c5da52dbb321c2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9208f2cb207daff2b122550fede48a8dda11d1db
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957027"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407930"
 ---
 # <a name="azure-virtual-machines-deployment-for-sap-netweaver"></a>Wdrażania maszyn wirtualnych platformy Azure dla oprogramowania SAP NetWeaver
 [767598]:https://launchpad.support.sap.com/#/notes/767598
@@ -1000,6 +1000,10 @@ Ten test sprawdza, czy wszystkich metryk wydajności, które są wyświetlane w 
 
 Jeśli nie zainstalowano rozszerzenie platformy Azure Enhanced Monitoring lub usługa AzureEnhancedMonitoring nie jest uruchomiona, rozszerzenie nie został skonfigurowany poprawnie. Aby uzyskać szczegółowe informacje o sposobie wdrażania rozszerzenia, zobacz [Rozwiązywanie problemów z infrastruktury monitorowania platformy Azure dla rozwiązania SAP][deployment-guide-5.3].
 
+> [!NOTE]
+> Azperflib.exe jest składnikiem, którego nie można użyć do własnych celów. Jest składnikiem, który dostarcza dane związane z maszyny Wirtualnej agenta hosta SAP do monitorowania platformy Azure.
+> 
+
 ##### <a name="check-the-output-of-azperflibexe"></a>Sprawdź dane wyjściowe azperflib.exe
 Dane wyjściowe Azperflib.exe pokazują, że wszystkie zostały wypełnione liczniki wydajności platformy Azure dla rozwiązania SAP. W dolnej części listy liczników zbieranych wskaźnik Podsumowanie i kondycji Pokaż stan monitorowania platformy Azure.
 
@@ -1093,6 +1097,10 @@ Jeśli niektóre monitorowania dane nie są poprawnie, wskazane przez test opisa
 
 Upewnij się, że każdy wynik sprawdzania kondycji jest **OK**. Jeśli niektóre testy nie są wyświetlane **OK**, uruchom polecenie cmdlet update zgodnie z opisem w [skonfigurować rozszerzenie platformy Azure Enhanced Monitoring dla rozwiązania SAP][deployment-guide-4.5]. Poczekaj 15 minut, a następnie powtórz sprawdzania opisanych w [sprawdzanie gotowości dla platformy Azure Enhanced Monitoring dla rozwiązania SAP] [ deployment-guide-5.1] i [sprawdzenie kondycji dla konfiguracji infrastruktury monitorowania platformy Azure] [deployment-guide-5.2]. Jeśli testy nadal wskazywać na problem z niektórych lub wszystkich liczników, zobacz [Rozwiązywanie problemów z infrastruktury monitorowania platformy Azure dla rozwiązania SAP][deployment-guide-5.3].
 
+> [!Note]
+> Mogą występować pewne ostrzeżenia w przypadkach, w których są używane zarządzane dyski w warstwie standardowa usługi Azure. Ostrzeżenia będzie wyświetlany zamiast testy, zwracając "OK". Jest to normalne i planowanym w przypadku tego typu dysku. Zobacz również [Rozwiązywanie problemów z infrastruktury monitorowania platformy Azure dla rozwiązania SAP][deployment-guide-5.3]
+> 
+
 ### <a name="fe25a7da-4e4e-4388-8907-8abc2d33cfd8"></a>Rozwiązywanie problemów z infrastruktury monitorowania platformy Azure dla rozwiązania SAP
 
 #### <a name="windowslogowindows-azure-performance-counters-do-not-show-up-at-all"></a>![Windows][Logo_Windows] Liczniki wydajności platformy Azure nie są wyświetlane w każdym
@@ -1144,6 +1152,23 @@ Katalog \\var\\lib\\waagent\\ nie ma podkatalogu dla rozszerzenia Azure Enhanced
 
 ###### <a name="solution"></a>Rozwiązanie
 Rozszerzenie nie jest zainstalowany. Ustal, czy jest to problem z serwerem proxy, (zgodnie z wcześniejszym opisem). Może być konieczne ponowne uruchomienie maszyny i/lub uruchom ponownie `Set-AzureRmVMAEMExtension` skrypt konfiguracji.
+
+##### <a name="the-execution-of-set-azurermvmaemextension-and-test-azurermvmaemextension-show-warning-messages-stating-that-standard-managed-disks-are-not-supported"></a>Wykonywanie Set-AzureRmVMAEMExtension i Test-AzureRmVMAEMExtension Pokaż komunikaty ostrzegawcze z informacją, że dyski zarządzane w warstwie standardowa nie są obsługiwane
+
+###### <a name="issue"></a>Problem
+Podczas wykonywania Set-AzureRmVMAEMExtension i Test-AzureRmVMAEMExtension, takie jak te komunikaty są wyświetlane:
+
+<pre><code>
+WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
+WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
+WARNING: [WARN] Standard Managed Disks are not supported. Extension will be installed but no disk metrics will be available.
+</code></pre>
+
+Wykonywanie azperfli.exe zgodnie z wcześniejszym opisem można uzyskać wynik, który wskazuje-dobrej kondycji. 
+
+###### <a name="solution"></a>Rozwiązanie
+Komunikaty są spowodowane przez fakt, że dyski zarządzane w warstwie standardowa nie zapewniają interfejsy API używane przez rozszerzenie monitorowania do zapoznania się na statystyki standardowe konta magazynu platformy Azure. Nie jest przedmiotem obaw. Przyczyna wprowadzenie do monitorowania dla kont usługi Standard Disk Storage została ograniczania operacji We/Wy, które wystąpiły często. Dyski zarządzane pozwoli uniknąć takich ograniczania przepustowości poprzez ograniczenie liczby dysków na koncie magazynu. W związku z tym nie ma tego rodzaju danych monitorowania nie jest krytyczny.
+
 
 #### <a name="linuxlogolinux-some-azure-performance-counters-are-missing"></a>![Linux][Logo_Linux] Brak niektórych liczników wydajności platformy Azure
 Metryki wydajności na platformie Azure są zbierane przez demona, który pobiera dane z wielu źródeł. Niektóre dane konfiguracji są zbierane lokalnie, a niektóre metryki wydajności są odczytywane z usługi Azure Diagnostics. Liczniki pamięci masowej pochodzą z dzienników w ramach subskrypcji magazynu.

@@ -4,16 +4,16 @@ description: Dowiedz się więcej o moduły usługi Azure IoT Edge i sposobu ich
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 02/15/2018
+ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 76b0bab0f2eb34d7283d38eb0442f4f2f2083db3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5d80b6438569e74ee254d27e0061443a87efc6ce
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46995386"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423395"
 ---
 # <a name="understand-azure-iot-edge-modules"></a>Omówienie modułów usługi Azure IoT Edge
 
@@ -79,6 +79,7 @@ Moduły usługi IoT Edge może być w trybie offline przez dłuższy czas, tak d
 Dodatkowe możliwości w trybie offline są dostępne w publicznej wersji zapoznawczej. Aby uzyskać więcej informacji, zobacz [opis rozszerzony możliwości w trybie offline dla usługi IoT Edge, urządzeń, moduły i urządzeń podrzędnych](offline-capabilities.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
+ - [Zrozumienie wymagań i narzędzia do tworzenia modułów usługi IoT Edge][lnk-mod-dev]
  - [Omówienie środowiska uruchomieniowego usługi Azure IoT Edge oraz jej architektury][lnk-runtime]
 
 <!-- Images -->
@@ -89,3 +90,4 @@ Dodatkowe możliwości w trybie offline są dostępne w publicznej wersji zapozn
 [lnk-device-identity]: ../iot-hub/iot-hub-devguide-identity-registry.md
 [lnk-device-twin]: ../iot-hub/iot-hub-devguide-device-twins.md
 [lnk-runtime]: iot-edge-runtime.md
+[lnk-mod-dev]: module-development.md

@@ -8,13 +8,13 @@ manager: kfile
 editor: jasonwhowell
 ms.service: postgresql
 ms.topic: article
-ms.date: 07/21/2018
-ms.openlocfilehash: 18f6647a8412477384a48aa777461f99b2fbcb0a
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.date: 09/27/2018
+ms.openlocfilehash: 696932135cdd3850e04d25370867c0273b99b3bf
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44379546"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423548"
 ---
 # <a name="azure-database-for-postgresql-pricing-tiers"></a>Usługa Azure Database for postgresql w warstwie warstw cenowych
 
@@ -74,6 +74,11 @@ Obliczenia, że zasoby są dostarczane jako rdzeni wirtualnych, który reprezent
 | Japonia Zachodnia | X | X |
 | Korea Środkowa |  | X |
 | Korea Południowa |  | X |
+| Niemcy Środkowe |  | X |
+| US DoD — środkowe stany  | X |  |
+| US DoD — wschodnie stany  | X |  |
+| Administracja USA — Arizona |  | X |
+| Administracja USA — Teksas |  | X |
 
 ## <a name="storage"></a>Magazyn
 
@@ -120,4 +125,4 @@ Aby uzyskać najbardziej aktualne informacje o cenach, zobacz usługę [stronę 
 
 - Dowiedz się, jak [utworzysz serwer PostgreSQL w witrynie portal](tutorial-design-database-using-azure-portal.md).
 - Dowiedz się, jak [monitorowania i skalowania usługi Azure Database for postgresql w warstwie serwera za pomocą wiersza polecenia platformy Azure](scripts/sample-scale-server-up-or-down.md).
-- Dowiedz się więcej o [usługi ograniczenia](concepts-limits.md).
+- Dowiedz się więcej o [usługi ograniczenia](concepts-limits.md). 

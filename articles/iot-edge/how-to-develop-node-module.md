@@ -6,15 +6,15 @@ keywords: ''
 author: shizn
 manager: timlt
 ms.author: xshi
-ms.date: 09/04/2018
+ms.date: 09/21/2018
 ms.topic: article
 ms.service: iot-edge
-ms.openlocfilehash: 22049ae0903d2735e4c1974c1071eb7582be9823
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: a1459e3cbd433e2997ffd822b961ac781a72ca90
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44049987"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423531"
 ---
 # <a name="use-visual-studio-code-to-develop-and-debug-nodejs-modules-for-azure-iot-edge"></a>Używanie programu Visual Studio Code do tworzenia i debugowania modułów Node.js dla usługi Azure IoT Edge
 
@@ -37,14 +37,13 @@ Aby utworzyć moduł, potrzebne są Node.js, w tym tworzenie folderu projektu, D
 * [Usługa Azure Container Registry](https://docs.microsoft.com/azure/container-registry/) lub [usługi Docker Hub](https://docs.docker.com/docker-hub/repos/#viewing-repository-tags)
    * Można użyć lokalnego rejestru platformy Docker prototypów i testowania, zamiast rejestru chmury. 
 
-Można skonfigurować lokalne Środowisko deweloperskie, debugowanie, uruchamianie i testowanie rozwiązania usługi IoT Edge należy [narzędzia deweloperskiego EdgeHub IoT Azure](https://pypi.org/project/iotedgehubdev/). Zainstaluj [języka Python (w wersji 2.7/3.6) i narzędzie Pip](https://www.python.org/). Następnie zainstaluj **iotedgehubdev** uruchamiając poniższe polecenie w terminalu.
+Można skonfigurować lokalne Środowisko deweloperskie, debugowanie, uruchamianie i testowanie rozwiązania usługi IoT Edge należy [narzędzia deweloperskiego EdgeHub IoT Azure](https://pypi.org/project/iotedgehubdev/). Zainstaluj [języka Python (w wersji 2.7/3.6) i narzędzie Pip](https://www.python.org/). Narzędzie PIP jest dołączony do Instalator środowiska Python. Następnie zainstaluj **iotedgehubdev** uruchamiając poniższe polecenie w terminalu.
 
    ```cmd
    pip install --upgrade iotedgehubdev
    ```
 
 Aby przetestować modułu na urządzeniu, należy aktywnym Centrum IoT przy użyciu co najmniej jeden identyfikator urządzenia usługi IoT Edge utworzone. Jeśli demon usługi IoT Edge są uruchomione na komputerze deweloperskim, może być konieczne zatrzymanie EdgeHub i EdgeAgent przed przejściem do następnego kroku. 
-
 
 ## <a name="create-a-new-solution-template"></a>Utwórz nowy szablon rozwiązania
 
@@ -56,6 +55,7 @@ Poniższe kroki przedstawiające utworzyć moduł usługi IoT Edge, oparty na j�
    ```cmd/sh
    npm install -g yo generator-azure-iot-edge-module
    ```
+
 3. W programie Visual Studio Code wybierz pozycję **Widok** > **Paleta poleceń**. 
 4. W palecie poleceń typu, a następnie uruchom polecenie **usługi Azure IoT Edge: nowe rozwiązanie graniczne IoT**.
 
@@ -90,6 +90,7 @@ Gdy wszystko będzie gotowe dostosować szablon środowiska Node.js przy użyciu
 Visual Studio Code obsługuje środowiska Node.js. Dowiedz się więcej o [jak pracować w środowisku Node.js w programie VS Code](https://code.visualstudio.com/docs/nodejs/nodejs-tutorial).
 
 ## <a name="launch-and-debug-module-code-without-container"></a>Uruchamianie i debugowanie kodu modułu bez kontenera
+
 Moduł IoT Edge Node.js jest zależny od zestawu SDK urządzenia środowiska Node.js usługi Azure IoT. W kodzie modułu domyślne, należy zainicjować **ModuleClient** z ustawieniami środowiska i wprowadź nazwę, co oznacza, że moduł IoT Edge Node.js wymaga ustawienia środowiska uruchomić i przeprowadzić i trzeba będzie również wysłać lub kierowanie komunikatów w postaci do kanałów danych wejściowych. Domyślne modułu Node.js zawiera tylko jeden kanał wejściowy, a nazwa to **wejście1**.
 
 ### <a name="setup-iot-edge-simulator-for-single-module-app"></a>Konfigurowanie usługi IoT Edge symulator modułu pojedynczej aplikacji
@@ -158,13 +159,13 @@ W komputerze deweloperskim można uruchomić symulatora usługi IoT Edge, zamias
     "createOptions": "{\"ExposedPorts\":{\"9229/tcp\":{}},\"HostConfig\":{\"PortBindings\":{\"9229/tcp\":[{\"HostPort\":\"9229\"}]}}}"
     ```
 
-5. Przejdź do widoku debugowania programu VS Code. Wybierz plik konfiguracji debugowania dla modułu. Nazwa opcji debugowania powinny być podobne do **ModuleName zdalne debugowanie (Node.js)** lub **ModuleName zdalne debugowanie (środowiska Node.js na platformie Windows Container)**, która jest zależna od typu kontenera na komputerze deweloperskim.
+3. Przejdź do widoku debugowania programu VS Code. Wybierz plik konfiguracji debugowania dla modułu. Nazwa opcji debugowania powinny być podobne do **ModuleName zdalne debugowanie (Node.js)** lub **ModuleName zdalne debugowanie (środowiska Node.js na platformie Windows Container)**, która jest zależna od typu kontenera na komputerze deweloperskim.
 
-6. Wybierz **Rozpocznij debugowanie** lub wybierz **F5**. Wybierz proces do dołączenia.
+4. Wybierz **Rozpocznij debugowanie** lub wybierz **F5**. Wybierz proces do dołączenia.
 
-7. W widoku debugowania programu VS Code zobaczysz zmiennych w panelu po lewej stronie.
+5. W widoku debugowania programu VS Code zobaczysz zmiennych w panelu po lewej stronie.
 
-8. Aby zatrzymać sesję debugowania, kliknij przycisk Zatrzymaj lub naciśnij klawisz **Shift + F5**. Paleta poleceń programu VS Code, wpisz i wybierz pozycję **usługi Azure IoT Edge: Zatrzymaj IoT Edge symulator**.
+6. Aby zatrzymać sesję debugowania, kliknij przycisk Zatrzymaj lub naciśnij klawisz **Shift + F5**. Paleta poleceń programu VS Code, wpisz i wybierz pozycję **usługi Azure IoT Edge: Zatrzymaj IoT Edge symulator**.
 
 > [!NOTE]
 > Poprzedni przykład pokazuje, jak debugowanie moduły usługi IoT Edge dla środowiska Node.js w kontenerach. Ujawnionych portów on dodany do Twojego modułu kontenera CreateOptions, można żądań. Po zakończeniu debugowania moduły Node.js, zalecane jest usunięcie tych ujawnionych portów dla modułów usługi IoT Edge gotowe do produkcji.

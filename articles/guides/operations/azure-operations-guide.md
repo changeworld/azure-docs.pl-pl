@@ -15,12 +15,12 @@ ms.tgt_pltfrm: ''
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.author: mibender
-ms.openlocfilehash: 28eeae8906480a5a160bfe11386da96b646f7427
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: c10e071100410f6d5d995d88657bdd85c08a9715
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44296860"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423497"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Wprowadzenie dla operatorów IT na platformie Azure
 
@@ -228,10 +228,6 @@ Aby uzyskać więcej informacji, zobacz [wgląd w użycie zasobów usługi Micro
 ### <a name="forecast-cost-with-the-pricing-calculator"></a>Prognozowane koszty za pomocą kalkulatora cen.
 
 Ceny dla każdej usługi w systemie Azure jest inny. Wiele usług platformy Azure udostępniają warstw Basic, Standard i Premium. Zwykle każda warstwa ma kilka poziomów cen i wydajności. Za pomocą [online kalkulator cen](http://azure.microsoft.com/pricing/calculator), można utworzyć szacowania cen. Kalkulator zawiera elastyczność, aby oszacować koszt pojedynczego zasobu lub tej grupy zasobów.
-
-### <a name="set-up-billing-alerts"></a>Ustawianie alertów dotyczących rozliczeń
-
-Po wdrożeniu aplikacji lub rozwiązania na platformie Azure można tworzyć alerty, które wysyłają możesz wysłać wiadomość e-mail po podejście limitów wydatków zdefiniowane w alercie. Aby uzyskać więcej informacji, zobacz [Konfigurowanie alertów dla Twojej subskrypcji Microsoft Azure billing](../../billing/billing-set-up-alerts.md).
 
 ## <a name="azure-resource-manager"></a>Azure Resource Manager
 

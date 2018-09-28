@@ -11,12 +11,12 @@ ms.devlang: csharp
 ms.workload: big-data
 ms.topic: conceptual
 ms.date: 11/15/2017
-ms.openlocfilehash: 90a01e1b6741d0668a71e612d9c0cf90871b67da
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: fa178efadf001b70501b132ede67686ae5c06363
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366322"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422562"
 ---
 # <a name="plan-your-azure-time-series-insights-environment"></a>Planowanie środowiska usługi Azure Time Series Insights
 
@@ -72,7 +72,7 @@ Poniższa tabela podsumowuje pojemność zdarzeń przychodzących dla każdej je
 |S1     |   30 mln     |  30 GB     |  720    |  720 KB   |
 |S2     |   300 milionów    |   300 GB   | 7200   | 7200 KB  |
 
-Można zwiększyć pojemność S1 lub S2 SKU do 10 jednostek w ramach jednego środowiska. Nie można migrować ze środowiska S1, s2 lub ze środowiska S2 do S1. 
+Można zwiększyć pojemność S1 lub S2 SKU do 10 jednostek w ramach jednego środowiska. Nie można migrować ze środowiska S1, s2 lub ze środowiska S2 do S1.
 
 Ruch przychodzący pojemności najpierw należy określić łączny ruch przychodzący, które są wymagane na co miesiąc. Następnie należy określić co użytkownika na minutę wymaga się, jak jest to, gdzie ograniczania przepustowości i opóźnienia odtwarzanie roli.
 
@@ -90,32 +90,36 @@ Może nie wiedzieć z wyprzedzeniem jak dużo danych oczekujesz, że do wypychan
  
 ### <a name="mitigate-throttling-and-latency"></a>Eliminowanie ograniczania przepustowości i opóźnienia
 
-Aby uzyskać informacji na temat sposobu zapobiegania ograniczania przepustowości i opóźnienia, zobacz [zmniejszyć opóźnienia i ograniczania przepustowości](time-series-insights-environment-mitigate-latency.md). 
+Aby uzyskać informacji na temat sposobu zapobiegania ograniczania przepustowości i opóźnienia, zobacz [zmniejszyć opóźnienia i ograniczania przepustowości](time-series-insights-environment-mitigate-latency.md).
 
 ## <a name="shaping-your-events"></a>Kształtowanie zdarzeń
-Jest ważne upewnić się, w sposób wysyłania zdarzeń do usługi TSI obsługuje rozmiar środowiska, w przypadku udostępniania (i odwrotnie, można mapować rozmiar środowiska, ile zdarzeń odczytuje TSI i rozmiar każdego zdarzenia).  Podobnie należy wziąć pod uwagę atrybuty, które chcesz dokonać fragmentacji i Filtruj według podczas wykonywania zapytania o dane.  Pamiętając o tym, Sugerujemy, przeglądając JSON kształtowania części naszych *wysyłanie zdarzeń* dokumentacji [dokumentację] (https://docs.microsoft.com/azure/time-series-insights/time-series-insights-send-events).  Jest w dolnej części strony.  
+Jest ważne upewnić się, w sposób wysyłania zdarzeń do usługi TSI obsługuje rozmiar środowiska, w przypadku udostępniania (i odwrotnie, można mapować rozmiar środowiska, ile zdarzeń odczytuje TSI i rozmiar każdego zdarzenia).  Podobnie należy wziąć pod uwagę atrybuty, które chcesz dokonać fragmentacji i Filtruj według podczas wykonywania zapytania o dane.  Pamiętając o tym, Sugerujemy, przeglądając JSON kształtowania części naszych [wysyłanie zdarzeń dokumentacji](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-send-events).  Jest w dolnej części strony.  
 
 ## <a name="ensuring-you-have-reference-data-in-place"></a>Sprawdzając, czy dane referencyjne w miejscu
 Zestawu danych referencyjnych jest kolekcją elementów, które polepszają zdarzenia ze źródła zdarzenia. Aparat transferu danych przychodzących Series Insights czasu łączy każde zdarzenie ze źródła zdarzeń z odpowiednich wiersza danych w zestawie danych referencyjnych. To rozszerzone zdarzenie jest następnie dostępne dla zapytania. To połączenie jest oparte na kolumny klucza podstawowego, zdefiniowane w zestawie danych referencyjnych.
 
 Należy zauważyć, że w danych referencyjnych nie jest częścią wstecznie. Oznacza to, że tylko danych przychodzących bieżących i przyszłych jest dopasowane i przyłączone do odwołania zestawu daty, po jego skonfigurowaniu i przekazać.  Jeśli planujesz wysyłać dużej ilości danych historycznych TSI i nie przekazywania lub Utwórz dane referencyjne w usłudze TSI najpierw, a następnie może być konieczne ponowne wykonywać swoją pracę (podpowiedzi, nie było przyjemne).  
 
-Aby dowiedzieć się więcej na temat sposobu tworzenia, przekazywanie i Zarządzaj danymi w usłudze TSI odwołania, przejdź do naszego *dane referencyjne* dokumentacji [dokumentacji](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
+Aby dowiedzieć się więcej na temat sposobu tworzenia, przekazywanie i Zarządzaj danymi w usłudze TSI odwołania, przejdź do naszego [dokumentacji zestawu danych](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-add-reference-data-set).
 
 ## <a name="business-disaster-recovery"></a>Odzyskiwanie po awarii biznesowych
-Jako usługi Azure Time Series Insights zapewnia wysoką dostępność (HA) przy użyciu nadmiarowość na poziomie regionu platformy Azure, bez konieczności wykonywania dodatkowej pracy wymaganego przez rozwiązanie. Platforma Microsoft Azure zawiera funkcje ułatwiające tworzenie rozwiązań za pomocą funkcji odzyskiwania po awarii lub dostępności między regionami. Jeśli chcesz zapewnić globalnego, między regionami wysokiej dostępności dla urządzeń lub użytkowników, korzystać z tych funkcji odzyskiwania po awarii z platformy Azure. Artykuł [wskazówek technicznych ciągłości biznesowej Azure](../resiliency/resiliency-technical-guidance.md) opis wbudowanych funkcji na platformie Azure zapewniającej ciągłość biznesową i odzyskiwanie po awarii. [Odzyskiwania po awarii i wysoka dostępność dla aplikacji platformy Azure] [https://docs.microsoft.com/en-us/azure/architecture/resiliency/index] dokument zawiera wskazówki dotyczące architektury, strategii dla aplikacji platformy Azure w celu osiągnięcia wysokiej dostępności i odzyskiwania po awarii.
+Jako usługi Azure Time Series Insights zapewnia wysoką dostępność (HA) przy użyciu nadmiarowość na poziomie regionu platformy Azure, bez konieczności wykonywania dodatkowej pracy wymaganego przez rozwiązanie. Platforma Microsoft Azure zawiera funkcje ułatwiające tworzenie rozwiązań za pomocą funkcji odzyskiwania po awarii lub dostępności między regionami. Jeśli chcesz zapewnić globalnego, między regionami wysokiej dostępności dla urządzeń lub użytkowników, korzystać z tych funkcji odzyskiwania po awarii z platformy Azure. Artykuł [wskazówek technicznych ciągłości biznesowej Azure](../resiliency/resiliency-technical-guidance.md) opis wbudowanych funkcji na platformie Azure zapewniającej ciągłość biznesową i odzyskiwanie po awarii. [Odzyskiwania po awarii i wysoka dostępność dla aplikacji platformy Azure](https://docs.microsoft.com/azure/architecture/resiliency/index) dokument zawiera wskazówki dotyczące architektury, strategii dla aplikacji platformy Azure w celu osiągnięcia wysokiej dostępności i odzyskiwania po awarii.
 
-Usługa Azure Time Series Insights nie ma wbudowanych firm odzyskiwania po awarii (BCDR). Klienci, którzy wymagają strategii BCDR nadal można zaimplementować strategię odzyskiwania przy użyciu następującej metody: 
+Usługa Azure Time Series Insights nie ma wbudowanych firm odzyskiwania po awarii (BCDR).
+Domyślnie usługa Azure IoT Hub i Event Hubs mają wbudowane odzyskiwania.
 
-Utwórz drugie środowisko usługi Time Series Insights w kopii zapasowej regionie platformy Azure i wysyłanie zdarzeń do tego środowiska pomocnicze ze źródła zdarzeń głównej, wykorzystując drugi dedykowanej grupy klientów i wskazówki dotyczące strategii BCDR tego źródła zdarzeń.  
+Aby dowiedzieć się więcej na temat zasad bcdr można wykorzystać usługi IoT Hub, odwiedź [tutaj](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr).  
+
+Aby dowiedzieć się więcej na temat zasad BCDR Centrum zdarzeń, head [tutaj](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr).
+
+Jednak klienci, którzy wymagają strategii BCDR, nadal można zaimplementować strategię odzyskiwania przy użyciu następującej metody.
+Tworząc drugie środowisko usługi Time Series Insights w zdarzenia kopii zapasowej Azure region i Wyślij do tego środowiska dodatkowej ze źródła zdarzeń głównej, wykorzystując drugi dedykowanej grupy klientów i wytycznych BCDR tego źródła zdarzeń.  
 
 1.  Utwórz środowisko, w drugim regionie.  Więcej informacji na temat tworzenia środowiska usługi Time Series Insights [tutaj](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-get-started).
 2.  Utwórz drugi dedykowanej grupy klientów dla źródła zdarzeń i łączenie źródła zdarzeń do nowego środowiska.  Pamiętaj wyznaczyć grupy odbiorców drugi, dedykowanych.  Więcej informacji na ten temat można znaleźć, wykonując jedną [dokumentacja usługi IoT Hub](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-how-to-add-an-event-source-iothub) lub [dokumentacja Centrum zdarzeń](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-data-access).
 3.  Gdyby Twojego regionu podstawowego przestaną działać w przypadku wystąpienia zdarzenia awarii, przeprowadź operacje tworzenia kopii zapasowej środowiska usługi Time Series Insights.  
 
-Domyślnie usługa Azure Iot Hub i Event Hubs mają wbudowane odzyskiwania. Aby dowiedzieć się więcej na temat zasad bcdr można wykorzystać usługi IoT Hub, odwiedź [tutaj](https://docs.microsoft.com/azure/iot-hub/iot-hub-ha-dr).  Aby dowiedzieć się więcej na temat zasad BCDR Centrum zdarzeń, head [tutaj](https://docs.microsoft.com/azure/event-hubs/event-hubs-geo-dr).  
-
-Jest **pamiętać** podczas dowolnego scenariusza trybu Failover może wystąpić opóźnienie przed TSI ponownie rozpocząć przetwarzanie komunikatów. Może to spowodować nagły w komunikacie przetwarzania, aby uzyskać więcej informacji take przyjrzeć się [czas serii szczegółowych informacji zarządzania ograniczania przepustowości](https://docs.microsoft.com/en-us/azure/time-series-insights/time-series-insights-environment-mitigate-latency)
+Jest **pamiętać** podczas dowolnego scenariusza trybu failover może wystąpić opóźnienie przed TSI ponownie rozpocząć przetwarzanie komunikatów: może to spowodować nagły podczas przetwarzania komunikatu. Aby uzyskać więcej informacji, zapoznaj się [tego dokumentu](https://docs.microsoft.com/azure/time-series-insights/time-series-insights-environment-mitigate-latency)
 
 ## <a name="next-steps"></a>Kolejne kroki
 - [Jak dodać źródła zdarzeń Centrum zdarzeń](time-series-insights-how-to-add-an-event-source-eventhub.md)

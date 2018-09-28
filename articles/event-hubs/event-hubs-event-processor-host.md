@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 672e31109b71a8a4238a05851a58a7c83e275b19
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 14db9ec9e4cd90d0c2d224bd944e2bc5b591a53b
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576320"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405907"
 ---
 # <a name="azure-event-hubs-event-processor-host-overview"></a>Omówienie usługi Azure hosta procesora zdarzeń centrów zdarzeń
 
@@ -88,7 +88,8 @@ Następnie utwórz wystąpienie [EventProcessorHost](/dotnet/api/microsoft.azure
 - **eventHubConnectionString:** parametry połączenia Centrum zdarzeń, który można pobrać z witryny Azure portal. Te parametry połączenia powinny mieć **nasłuchiwania** uprawnienia w Centrum zdarzeń.
 - **storageConnectionString:** konto magazynu używane na potrzeby zarządzania wewnętrznych zasobów.
 
-Na koniec Zarejestruj konsumentów [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) wystąpienie z usługi Event Hubs. Rejestrowanie powoduje, że usługi Event Hubs można oczekiwać, że aplikacja konsumenta zużywa zdarzenia z niektórych z jej partycji, a także do wywołania [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) kod implementacji zawsze wtedy, gdy umieszcza ono zdarzenia z.
+Na koniec Zarejestruj konsumentów [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) wystąpienie z usługi Event Hubs. Rejestrowanie klasy procesora zdarzeń z wystąpieniem klasy EventProcessorHost rozpoczyna przetwarzanie zdarzeń. Rejestrowanie powoduje, że usługi Event Hubs można oczekiwać, że aplikacja konsumenta zużywa zdarzenia z niektórych z jej partycji, a także do wywołania [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) kod implementacji zawsze wtedy, gdy umieszcza ono zdarzenia z. 
+
 
 ### <a name="example"></a>Przykład
 
@@ -123,7 +124,7 @@ W tym miejscu każdy host uzyskuje własność partycji przez określony czas (c
 
 Każde wywołanie [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) zapewnia zbieranie zdarzeń. Jest odpowiedzialny za obsługę następujących zdarzeń. Zalecane jest wykonanie czynności relatywnie szybko; oznacza to czy jako nieco przetwarzania, jak to możliwe. Zamiast tego należy użyć grup odbiorców. Jeśli należy zapisać do magazynu i czy niektóre routingu, to zazwyczaj lepiej używały dwóch grup odbiorców i mieć dwie [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) implementacji, które są uruchamiane niezależnie.
 
-W pewnym momencie podczas przetwarzania Twojego zechcieć do śledzenia co użytkownik przeczytał i zakończone. Śledzenia ma krytyczne znaczenie, jeśli należy ponownie uruchomić odczytu, więc nie można wrócić do początku strumienia. [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) upraszcza to śledzenie za pomocą *punktów kontrolnych*. Punkt kontrolny to lokalizacji lub przesunięcie w danej partycji w ramach danej grupy odbiorców, w tym momencie możesz ustali, że zostały przetworzone komunikaty. Oznaczanie punktu kontrolnego w **EventProcessorHost** odbywa się przez wywołanie metody [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) metody [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) obiektu. Ta operacja odbywa się zwykle w ramach [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) metody, ale można również wykonać [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync).
+W pewnym momencie podczas przetwarzania Twojego zechcieć do śledzenia co użytkownik przeczytał i zakończone. Śledzenia ma krytyczne znaczenie, jeśli należy ponownie uruchomić odczytu, więc nie można wrócić do początku strumienia. [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost) upraszcza to śledzenie za pomocą *punktów kontrolnych*. Punkt kontrolny to lokalizacji lub przesunięcie w danej partycji w ramach danej grupy odbiorców, w tym momencie możesz ustali, że zostały przetworzone komunikaty. Oznaczanie punktu kontrolnego w **EventProcessorHost** odbywa się przez wywołanie metody [CheckpointAsync](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext.checkpointasync) metody [PartitionContext](/dotnet/api/microsoft.azure.eventhubs.processor.partitioncontext) obiektu. Ta operacja odbywa się w obrębie [ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor.processeventsasync) metody, ale można również wykonać [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync).
 
 ## <a name="checkpointing"></a>Tworzenie punktów kontrolnych
 
@@ -140,8 +141,9 @@ Domyślnie [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.
 Na koniec [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync) umożliwia zamknięcie czyste wszystkich partycji czytników i powinno być zawsze wywoływane podczas zamykania wystąpienie [EventProcessorHost](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost). Niewykonanie tej czynności może powodować opóźnienia podczas uruchamiania innych wystąpień **EventProcessorHost** z powodu wygaśnięcia dzierżawy i epoki konfliktów. Epoki zarządzania jest omówiona szczegółowo w tym [wpis w blogu](https://blogs.msdn.microsoft.com/gyan/2014/09/02/event-hubs-receiver-epoch/)
 
 ## <a name="lease-management"></a>Zarządzanie dzierżawą
+Rejestrowanie klasy procesora zdarzeń z wystąpieniem klasy EventProcessorHost rozpoczyna przetwarzanie zdarzeń. Wystąpienie hosta uzyskuje dzierżawy na partycji Centrum zdarzeń, prawdopodobnie Przechwytywanie niektóre z innych wystąpień hosta w taki sposób, że na partycji równomiernego rozłożenia zbieżna dla wartości we wszystkich wystąpieniach hosta. Dla każdej dzierżawy partycji wystąpienie hosta tworzy wystąpienie klasy procesora zdarzeń podana, a następnie odbiera zdarzenia z tej partycji i przekazuje je do wystąpienia procesora zdarzeń. Poproś o dodanie większej liczby wystąpień oraz liczby możliwych dzierżaw jest pobierany, EventProcessorHost ostatecznie równoważy obciążenia na wszystkich użytkowników.
 
-Jak wyjaśniono wcześniej, tabela śledzenia znacząco upraszcza charakter automatyczne skalowanie [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync). Jako wystąpienie **EventProcessorHost** zostanie uruchomiony, uzyskuje tak wielu dzierżaw, jak to możliwe i rozpoczyna się odczytywanie zdarzeń. Jako dzierżawy wygasną **EventProcessorHost** próbuje odnowić je, umieszczając rezerwacji. Jeśli dzierżawa jest dostępny do odnowienia, procesor będzie kontynuować odczytywanie, ale nie Jeśli czytnik jest zamykany i [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) jest wywoływana. **CloseAsync** jest dobry moment na wykonanie ostatecznego czyszczenia dla tej partycji.
+Jak wyjaśniono wcześniej, tabela śledzenia znacząco upraszcza charakter skalowania automatycznego [EventProcessorHost.UnregisterEventProcessorAsync](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.unregistereventprocessorasync). Jako wystąpienie **EventProcessorHost** zostanie uruchomiony, uzyskuje tak wielu dzierżaw, jak to możliwe i rozpoczyna się odczytywanie zdarzeń. Jako dzierżawy wygasną **EventProcessorHost** próbuje odnowić je, umieszczając rezerwacji. Jeśli dzierżawa jest dostępny do odnowienia, procesor będzie kontynuować odczytywanie, ale nie Jeśli czytnik jest zamykany i [CloseAsync](/dotnet/api/microsoft.azure.eventhubs.eventhubclient.closeasync) jest wywoływana. **CloseAsync** jest dobry moment na wykonanie ostatecznego czyszczenia dla tej partycji.
 
 **EventProcessorHost** obejmuje [PartitionManagerOptions](/dotnet/api/microsoft.azure.eventhubs.processor.eventprocessorhost.partitionmanageroptions) właściwości. Ta właściwość umożliwia kontrolę nad zarządzaniem dzierżawy. Ustawić te opcje przed zarejestrowaniem swoje [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) implementacji.
 

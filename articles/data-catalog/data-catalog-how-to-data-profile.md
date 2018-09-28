@@ -2,18 +2,18 @@
 title: Jak za pomocą danych profilowania źródeł danych w usłudze Azure Data Catalog
 description: Artykuł porad wyróżnianie, jak dołączyć poziomie tabeli i kolumn danych profilów rejestrowania źródła danych w usłudze Azure Data Catalog i sposobu używania profilów danych, aby zrozumieć użycie źródeł danych.
 services: data-catalog
-author: spelluru
-ms.author: spelluru
+author: markingmyname
+ms.author: maghan
 ms.assetid: 94a8274b-5c9c-4962-a4b1-2fed38a3d919
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 2f628367e2e5b0e6a4481a6212ff201b11a7105a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: b40bbe7d1eb89f934d6ae07688e698f1949f8e76
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053560"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410242"
 ---
 # <a name="data-profile-data-sources"></a>Źródła danych profilu danych
 ## <a name="introduction"></a>Wprowadzenie

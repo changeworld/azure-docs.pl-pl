@@ -13,15 +13,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 07/11/2018
+ms.date: 09/26/2018
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: db0d796a407c8e33501b0a312c78e8508f17297d
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: 3cefecdf0f87483a1fb544d1eb4e3e514e388259
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39076249"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406927"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>Wdrożenie programu SQL Server Azure Virtual Machines DBMS dla oprogramowania SAP NetWeaver
 
@@ -381,8 +381,10 @@ SQL Server 2014 i nowszych wersjach open możliwości mają być przechowywane p
 
 * Konto magazynu używane musi znajdować się w tym samym regionie platformy Azure jako taki, który jest używany do wdrażania maszyn wirtualnych SQL Server jest uruchomiony w.
 * Wymienione wcześniej dotyczące dystrybucji wirtualnych dysków twardych na różnych kontach magazynu Azure kwestie dla tej metody, a także wdrożeń. Oznacza, że liczba operacji We/Wy na wartości konta usługi Azure Storage.
-* Zamiast rachunku względem limit przydziału operacji We/Wy magazynu maszyny Wirtualnej, ruch z magazynu obiektów blob, reprezentujący plików danych i dziennika programu SQL Server, będzie brana pod uwagę na przepustowość sieci maszyny Wirtualnej z określonego typu maszyny Wirtualnej. Dotyczące przepustowości sieci danego typu maszyny Wirtualnej, zapoznaj się z artykułem [rozmiary dla Windows maszyn wirtualnych na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+* Zamiast rachunku względem limit przydziału operacji We/Wy magazynu maszyny Wirtualnej, ruch z magazynu obiektów blob, reprezentujący plików danych i dziennika programu SQL Server, będzie brana pod uwagę na przepustowość sieci maszyny Wirtualnej z określonego typu maszyny Wirtualnej. Dotyczące przepustowości sieci i magazynu konkretnego typu maszyn wirtualnych, zapoznaj się z artykułem [rozmiary dla Windows maszyn wirtualnych na platformie Azure](https://docs.microsoft.com/azure/virtual-machines/windows/sizes).
+* W wyniku wypychanie we/wy przez limit przydziału sieci, są mieliźnie głównie przydziału miejsca do magazynowania i korzystając z niego korzystać tylko częściowo ogólną przepustowość maszyny Wirtualnej.
 * Cele wydajności przepływności operacji We/Wy i operacje We/Wy z usługi Azure Premium Storage rozmiarów inny dysk nie mają już zastosowania. Nawet jeśli obiekty BLOB, który został utworzony znajdują się w usłudze Azure Premium Storage. Obiekty docelowe są udokumentowane artykuł [High-performance Premium Storage i dysków zarządzanych dla maszyn wirtualnych](https://docs.microsoft.com/azure/virtual-machines/windows/premium-storage#scalability-and-performance-targets). W wyniku umieszczenia plików danych programu SQL Server i plików dziennika bezpośrednio na obiekty BLOB, które są przechowywane w usłudze Azure Premium Storage, charakterystyki wydajności mogą być różne w porównaniu do wirtualnych dysków twardych w usłudze Azure Premium Storage.
+* Na podstawie buforowania hosta jako dostępnej do dysków usługi Premium Storage dla platformy Azure nie jest dostępna w przypadku umieszczenia plików danych programu SQL Server bezpośrednio na obiektach blob platformy Azure.
 * Na maszynach wirtualnych serii M akcelerator zapisu platformy Azure nie może służyć do obsługi liczone w ułamkach milisekund zapisu pliku dziennika transakcji programu SQL Server. 
 
 Szczegółowe informacje o tej funkcji można znaleźć w artykule [pliki danych programu SQL Server w systemie Microsoft Azure](https://docs.microsoft.com/sql/relational-databases/databases/sql-server-data-files-in-microsoft-azure?view=sql-server-2017)

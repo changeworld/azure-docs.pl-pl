@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/26/2018
 ms.author: jingwang
-ms.openlocfilehash: d1a34a4c341a48f594f37da9fb34420adab390ac
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: ce3c494dc0b8c962c8dae0af38d3cb5476cdf48b
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47227320"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406179"
 ---
 # <a name="copy-data-from-and-to-dynamics-365-common-data-service-or-dynamics-crm-by-using-azure-data-factory"></a>Kopiowanie danych z i Dynamics 365 (Common Data Service) lub programu Dynamics CRM przy użyciu usługi Azure Data Factory
 
@@ -158,8 +158,8 @@ Aby skopiować dane z i do usługi Dynamics, należy ustawić właściwość typ
 | entityName | Nazwa logicznej jednostki do pobrania. | Nie dla źródła (Jeśli określono parametr "zapytanie" w źródle działania) tak dla ujścia |
 
 > [!IMPORTANT]
->- Podczas kopiowania danych z systemu Dynamics, w sekcji "strukturę" jest wymagany w zestawie danych Dynamics aby upewnić się, wynik deterministyczne kopiowania. Definiuje typ danych kolumny danych Dynamics, który chcesz skopiować. Aby dowiedzieć się więcej, zobacz [struktury zestawu danych](concepts-datasets-linked-services.md#dataset-structure) i [mapowanie typu danych dla usługi Dynamics](#data-type-mapping-for-dynamics).
->- Podczas tworzenia w interfejsie użytkownika, ADF można wywnioskować schematu przez próbkowanie pierwszych wierszy z wyników kwerendy Dynamics zainicjować konstrukcji struktury, w którym wielkość kolumny bez wartości zostaną pominięte z powodu optymalizacji wydajności przez usługę Dynamics. Możesz przejrzeć i dodać większą liczbę kolumn w Dynamics zestawu danych schematu/strukturę zgodnie z potrzebami, które będą honorowane w czasie wykonywania kopii. 
+>- Podczas kopiowania danych z systemu Dynamics, w sekcji "strukturę" jest opcjonalne, ale recommanded w zestawie danych Dynamics, aby upewnić się, wynik deterministyczne kopiowania. Definiuje typ danych kolumny danych Dynamics, który chcesz skopiować. Aby dowiedzieć się więcej, zobacz [struktury zestawu danych](concepts-datasets-linked-services.md#dataset-structure) i [mapowanie typu danych dla usługi Dynamics](#data-type-mapping-for-dynamics).
+>- Podczas importowania schematu w tworzeniu interfejsu użytkownika, ADF wnioskowanie schematu przez próbkowanie pierwszych wierszy z wyników kwerendy Dynamics zainicjować konstrukcji struktury, pominąć przypadków kolumn bez wartości. Możesz przejrzeć i dodać większą liczbę kolumn w Dynamics zestawu danych schematu/strukturę zgodnie z potrzebami, które będą honorowane w czasie wykonywania kopii.
 >- Podczas kopiowania danych do usługi Dynamics, w sekcji "strukturę" jest opcjonalna w zestawie danych Dynamics. Kolumny do skopiowania do jest określany przez schemat danych źródłowych. Jeśli źródłem jest plik CSV, bez nagłówka w wejściowego zestawu danych, należy określić "strukturę" z typem danych kolumny. Mapują do pól w pliku CSV pojedynczo, w kolejności.
 
 **Przykład:**

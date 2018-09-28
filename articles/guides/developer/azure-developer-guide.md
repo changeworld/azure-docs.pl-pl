@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 10/18/2017
 ms.author: glenga
-ms.openlocfilehash: f8aa37dbc2d3fb5f560d899626a84a2ab86ff223
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d298cfe22328db68cfbb6b4c7fc82b2de0c186b1
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294581"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423599"
 ---
 # <a name="get-started-guide-for-azure-developers"></a>Przewodnik dla początkujących deweloperów platformy Azure
 
@@ -310,9 +310,3 @@ System Azure oferuje zestaw rozliczeń interfejsów API REST, które udzielić d
 Mimo że jest trudne do szacowania kosztów wcześniej, platforma Azure ma [Kalkulator cen](https://azure.microsoft.com/pricing/calculator/) czy można używać podczas szacowania kosztów wdrożone zasoby. Blok rozliczeń w portalu i interfejsów API REST rozliczeń umożliwia również oszacować przyszłości oszczędność kosztów, w zależności od bieżącego użycia.
 
 >**Rozpoczynanie pracy**: zobacz [API RateCard i użycie rozliczeń platformy Azure — omówienie](../../billing-usage-rate-card-overview.md).
-
-#### <a name="set-up-billing-alerts"></a>Ustawianie alertów dotyczących rozliczeń
-
-Po wdrożeniu aplikacji lub rozwiązania na platformie Azure, można tworzyć alerty, które wysyłają wiadomości e-mail w przypadku podejścia limity wydatków, które są zdefiniowane w alercie.
-
->**Rozpoczynanie pracy**: Aby dowiedzieć się więcej, zobacz [Konfigurowanie alertów dla Twojej subskrypcji Microsoft Azure billing](../../billing-set-up-alerts.md).

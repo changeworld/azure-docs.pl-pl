@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/27/2017
 ms.author: johnkem
 ms.component: ''
-ms.openlocfilehash: c99186d73886041d92bea38b0dd4dc17f55001e4
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1a42c13bc0b441074829b1753c1d3cab8fbfaccf
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977863"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407573"
 ---
 # <a name="get-started-with-roles-permissions-and-security-with-azure-monitor"></a>Rozpoczynanie pracy z rolami, uprawnienia i zabezpieczeń za pomocą usługi Azure Monitor
 Wiele zespołów należy ściśle regulowania dostępu do danych monitorowania i ustawień. Na przykład, jeśli posiadasz elementy członkowskie zespołu, którzy pracują wyłącznie na temat monitorowania (pracowników działu pomocy technicznej, inżynierom devops) lub korzystając z dostawcą usługi zarządzanej, można przyznać im dostęp do danych monitorowania tylko jednocześnie ograniczając możliwość tworzenia, modyfikowania, lub Usuń zasoby. W tym artykule pokazano, jak szybko wbudowana rola RBAC monitorowania są stosowane do użytkownika na platformie Azure lub utworzyć własne niestandardowe rolę dla użytkownika, który musi mieć ograniczone uprawnienia monitorowania. Następnie omówiono zagadnienia dotyczące zabezpieczeń na zasoby dotyczące usługi Azure Monitor i jak można ograniczyć dostęp do danych, które zawierają.
@@ -181,14 +181,8 @@ Usługa Azure Monitor wymaga dostępu do zasobów platformy Azure do świadczeni
 Monitorowanie danych często są zapisywane na koncie magazynu. Warto upewnić się, że dane skopiowane do konta magazynu nie są dostępne przez nieautoryzowanych użytkowników. Dla dodatkowego bezpieczeństwa możesz zablokować dostęp do sieci, aby zezwalać tylko na autoryzowanych zasobów i zaufanych dostępu do usług firmy Microsoft do konta magazynu przez ograniczenie konta magazynu do użycia "wybranych sieci".
 ![Okno dialogowe Ustawienia usługi Azure Storage](./media/monitoring-roles-permissions-security/secured-storage-example.png) usługi Azure Monitor jest uważany za jeden z nich "zaufanych usług firmy Microsoft" Jeśli zezwolisz na dostęp zabezpieczony magazyn do zaufanych usług firmy Microsoft, usługa Azure monitor będzie mieć dostęp do konta magazynu zabezpieczone; Włączanie zapisywanie dzienników diagnostycznych usługi Azure Monitor, dzienników aktywności i metryki do swojego konta magazynu w tych warunkach chronionych. Umożliwi to również usługi Log Analytics w celu odczytu dzienników z bezpiecznego magazynu.   
 
+
 Aby uzyskać więcej informacji, zobacz [Network security i Azure Storage](../storage/common/storage-network-security.md)
- 
-### <a name="secured-virtual-networks-with-service-endpoints"></a>Zabezpieczone sieci wirtualnych z punktami końcowymi usługi 
-
-Sieci wirtualne (Vnet) umożliwiają ograniczanie ruchu, aby zezwolić tylko na określony ruch do komunikowania się z zasobami platformy Azure. Możesz określić punkty końcowe usługi do rozszerzenia Twojej sieci wirtualnej, aby uwzględnić usługi Azure Monitor; Spowoduje to włączenie zasobów w celu conitinue bezpiecznie wysyłać informacje rejestrowania i metryk do usługi Azure Monitor z sieciami wirtualnymi.  
-
-Aby uzyskać więcej informacji, zobacz [punkty końcowe sieci wirtualnej](../virtual-network/virtual-network-service-endpoints-overview.md). 
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 * [Przeczytaj o ROLACH i uprawnienia w usłudze Resource Manager](../role-based-access-control/overview.md)

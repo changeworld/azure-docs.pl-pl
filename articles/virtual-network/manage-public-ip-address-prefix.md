@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/24/2018
 ms.author: anavin
-ms.openlocfilehash: 1426bddb6e9e3e110fe5a86ed451ec40c2677e78
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 71dee9f36a3e8e11cc23f966c9157f6409a3b5e0
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957509"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405737"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Tworzenie, zmienianie i usuwanie publicznej prefiksu adresu IP
 
@@ -78,7 +78,6 @@ Po utworzeniu prefiks, musisz utworzyć statyczne adresy IP z prefiksu. Aby to z
     |Name (Nazwa)|Yes|Nazwa publicznego adresu IP musi być unikatowa w obrębie grupy zasobów, którą wybierzesz.|
    |Limit czasu bezczynności (minuty)|Nie|Ile minut nie zamykaj połączenie TCP lub HTTP bez polegania na klientach, aby wysyłać komunikaty utrzymywania aktywności. |
    |Etykieta nazwy DNS|Nie|Musi być unikatowa w obrębie regionu świadczenia usługi Azure, Utwórz nazwę w (za pośrednictwem wszystkich subskrypcji i wszystkich klientów). Azure powoduje automatyczne zarejestrowanie nazwy i adresu IP w jej systemie DNS, dzięki czemu możesz nawiązać połączenie zasób o nazwie. Azure dołącza podsieć domyślna, takich jak *location.cloudapp.azure.com* (tam, gdzie lokalizacja to lokalizacja, możesz wybrać) do nazwy zostaną podane, można utworzyć w pełni kwalifikowana nazwa DNS. Aby uzyskać więcej informacji, zobacz [użycia usługi Azure DNS z publicznym adresem IP platformy Azure](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
-   |Strefa dostępności|  Nie | To ustawienie jest wyświetlany tylko w przypadku wybrania obsługiwany region. Aby uzyskać listę obsługiwanych lokalizacji, zobacz [Przegląd stref dostępności](../availability-zones/az-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json). Strefowo nadmiarowy jest automatycznie wybrana i sprawia, że ścieżka danych odporne na awarie strefy. Jeśli wolisz gwarantuje określonej strefy, który nie jest odporna na awarie strefy, można wybrać określonej strefy.
 
 ## <a name="view-or-delete-a-prefix"></a>Wyświetl lub usuń prefiks
 

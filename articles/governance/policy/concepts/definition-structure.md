@@ -8,12 +8,12 @@ ms.date: 09/18/2018
 ms.topic: conceptual
 ms.service: azure-policy
 manager: carmonm
-ms.openlocfilehash: 7a1b7b7f970aff620ce01e340c5e56326f4a4a35
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 329bba11c95056b038fdab5041637cbb6a0feb6a
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055088"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407267"
 ---
 # <a name="azure-policy-definition-structure"></a>Struktura definicji zasad platformy Azure
 
@@ -81,6 +81,10 @@ Firma Microsoft zaleca, aby ustawić **tryb** do `all` w większości przypadkó
 
 Parametry ułatwiają zarządzanie zasadami dzięki zmniejszeniu liczby definicji zasad. Reakcji parametrów, takich jak pola w formularzu — `name`, `address`, `city`, `state`. Te parametry pozostają niezmienione, jednak ich wartości zmieniają poszczególnych wypełniania formularza.
 Parametry działają tak samo, podczas tworzenia zasad. Jeśli dołączysz parametrów w definicji zasad, można ponownie użyć tej zasady dla różnych scenariuszy przy użyciu innej wartości.
+
+> [!NOTE]
+> Definicji parametrów zasad lub definicji inicjatywy można skonfigurować tylko podczas początkowego tworzenia zasad lub inicjatywy. Nie można później zmienić definicji parametrów.
+> Zapobiega to pośrednio odbywa się nieprawidłowe istniejące przypisania zasad lub inicjatywy.
 
 Na przykład można zdefiniować zasady dla właściwości zasobów, ograniczyć lokalizacje, w której można wdrożyć zasoby. W takim przypadku może zadeklarować następujące parametry podczas tworzenia zasad:
 

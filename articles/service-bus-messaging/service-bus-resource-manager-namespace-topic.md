@@ -12,20 +12,20 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 04/11/2018
+ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: b5512186913eb59be2b89ce8b8bb9fb881f59cd8
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 08b4ef6ea59123524500188428eb0bc03d85138b
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699825"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409987"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-and-subscription-using-an-azure-resource-manager-template"></a>Tworzenie przestrzeni nazw usługi Service Bus za pomocą tematów i subskrypcji przy użyciu szablonu usługi Azure Resource Manager
 
 W tym artykule przedstawiono sposób używania szablonu usługi Azure Resource Manager, który tworzy przestrzeń nazw usługi Service Bus i tematu i subskrypcji w ramach tej przestrzeni nazw. W niniejszym artykule wyjaśniono, jak określić, jakie zasoby są wdrożone i jak zdefiniować parametry, które są określone, gdy wdrożenie jest wykonywane. Można użyć tego szablonu na potrzeby własnych wdrożeń lub dostosować go do konkretnych potrzeb.
 
-Aby uzyskać więcej informacji na temat tworzenia szablonów, zobacz [tworzenia usługi Azure Resource Manager][Authoring Azure Resource Manager templates].
+Aby uzyskać więcej informacji na temat tworzenia szablonów, zobacz [Tworzenie szablonów usługi Azure Resource Manager][Authoring Azure Resource Manager templates].
 
 Aby uzyskać kompletny szablon, zobacz [przestrzeń nazw usługi Service Bus z tematem i subskrypcją] [ Service Bus namespace with topic and subscription] szablonu.
 
@@ -41,7 +41,7 @@ Aby uzyskać kompletny szablon, zobacz [przestrzeń nazw usługi Service Bus z t
 > 
 > 
 
-## <a name="what-will-you-deploy"></a>Co chcesz wdrożyć?
+## <a name="what-do-you-deploy"></a>Co to są wdrażane?
 
 Korzystając z tego szablonu możesz wdrożyć przestrzeni nazw usługi Service Bus z tematem i subskrypcją.
 
@@ -53,9 +53,9 @@ Aby automatycznie uruchomić wdrożenie, kliknij poniższy przycisk:
 
 ## <a name="parameters"></a>Parametry
 
-Przy użyciu usługi Azure Resource Manager można zdefiniować parametry dla wartości, które mają zostać uwzględnione podczas wdrażania szablonu. Szablon zawiera sekcję o nazwie `Parameters` zawierający wszystkie wartości parametru. Parametr powinien obejmować wartości, które różnią się w zależności od wdrażanego projektu lub środowiska, w którym odbywa się wdrożenie. Nie należy definiować parametrów dla wartości, które pozostają niezmienione. Każda wartość parametru używana w szablonie definiuje wdrażane zasoby.
+Przy użyciu usługi Azure Resource Manager można zdefiniować parametry dla wartości, które mają zostać uwzględnione podczas wdrażania szablonu. Szablon zawiera sekcję o nazwie `Parameters` zawierający wszystkie wartości parametru. Definiowanie parametru dla tych wartości, które różnią się, na podstawie projektu, który jest wdrażany lub opartych na środowisku, w których jest wdrażany na. Nie należy definiować parametrów dla wartości, które pozostają niezmienione. Każda wartość parametru używana w szablonie definiuje wdrażane zasoby.
 
-Szablon zawiera definicje następujących parametrów.
+Szablon definiuje następujące parametry:
 
 ### <a name="servicebusnamespacename"></a>serviceBusNamespaceName
 Nazwa tworzonej przestrzeni nazw usługi Service Bus.
@@ -149,7 +149,7 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 ## <a name="next-steps"></a>Kolejne kroki
 Po utworzeniu i wdrożeniu zasobów przy użyciu usługi Azure Resource Manager, Dowiedz się, jak można nimi zarządzać, wyświetlając następujące artykuły:
 
-* [Zarządzanie usługą Service Bus przy użyciu programu PowerShell](service-bus-manage-with-ps.md)
+* [Zarządzanie usługą Service Bus za pomocą programu PowerShell](service-bus-manage-with-ps.md)
 * [Zarządzanie zasobami usługi Service Bus za pomocą Eksploratora usługi Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md

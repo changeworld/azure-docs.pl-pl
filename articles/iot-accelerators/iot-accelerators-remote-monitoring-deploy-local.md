@@ -8,12 +8,12 @@ ms.service: iot-accelerators
 services: iot-accelerators
 ms.date: 09/26/2018
 ms.topic: conceptual
-ms.openlocfilehash: 477ef11a02f67e511396c3efc8f2b331c976c801
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 7007b1406dbcfab3af4700418ac2ce07b9e521c0
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47219978"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407437"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-locally"></a>Wdrażanie zdalne monitorowanie akceleratora rozwiązań lokalnie
 
@@ -42,17 +42,13 @@ Repozytorium GitHub zdalne monitorowanie kodu źródłowego zawiera pliki konfig
 Aby pobrać najnowszą wersję implementacji mikrousług Java, uruchom polecenie:
 
 ```cmd/sh
-git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-java.git
-cd azure-iot-pcs-remote-monitoring-java
-git submodule foreach git pull origin master
+git clone https://github.com/Azure/remote-monitoring-services-java.git
 ```
 
 Aby pobrać najnowszą wersję implementacji mikrousługi platformy .NET, uruchom polecenie:
 
 ```cmd\sh
-git clone --recurse-submodules https://github.com/Azure/azure-iot-pcs-remote-monitoring-dotnet.git
-cd azure-iot-pcs-remote-monitoring-dotnet
-git submodule foreach git pull origin master
+git clone https://github.com/Azure/remote-monitoring-services-dotnet.git
 ```
 
 > [!NOTE]
@@ -66,7 +62,7 @@ Mimo że w tym artykule pokazano, jak uruchomić mikrousługi lokalnie, są one 
 
 Jeśli jeszcze nie utworzono wymaganych zasobów platformy Azure, wykonaj następujące kroki:
 
-1. W środowisku wiersza polecenia i przejdź do **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local\launch** folderu w sklonowanej kopii repozytorium.
+1. W środowisku wiersza polecenia i przejdź do **remote-monitoring usługi dotnet\scripts\local\launch** folderu w sklonowanej kopii repozytorium.
 
 2. Uruchom **start.cmd** skryptu i postępuj zgodnie z monitami. Skrypt wyświetli monit o Zaloguj się do konta platformy Azure i ponownie uruchom skrypt. Skrypt następnie wyświetli monit o podanie następujących informacji:
     * Nazwa rozwiązania.
@@ -75,11 +71,11 @@ Jeśli jeszcze nie utworzono wymaganych zasobów platformy Azure, wykonaj nastę
 
     Skrypt tworzy grupę zasobów na platformie Azure, nazwą rozwiązania. Ta grupa zasobów zawiera zasoby platformy Azure, który korzysta z akceleratora rozwiązań.
 
-3. Po ukończeniu działania skryptu, wyświetla listę zmiennych środowiskowych. Wykonaj instrukcje zawarte w danych wyjściowych polecenia do zapisania tych zmiennych do **azure-iot-pcs-remote-monitoring-dotnet\\usług\\skrypty\\lokalnego\\ENV** pliku.
+3. Po ukończeniu działania skryptu, wyświetla listę zmiennych środowiskowych. Wykonaj instrukcje zawarte w danych wyjściowych polecenia do zapisania tych zmiennych do **remote-monitoring usługi dotnet\\skrypty\\lokalnego\\ENV** pliku.
 
 ### <a name="use-existing-azure-resources"></a>Użyj istniejących zasobów platformy Azure
 
-Jeśli utworzono już wymaganych zasobów platformy Azure edytować definicje zmiennych środowiskowych w **azure-iot-pcs-remote-monitoring-dotnet\\usług\\skrypty\\lokalnego\\ENV**  pliku z wymaganymi wartościami. **ENV** plik zawiera szczegółowe informacje o tym, gdzie można znaleźć wymaganych wartości.
+Jeśli utworzono już wymaganych zasobów platformy Azure edytować definicje zmiennych środowiskowych w **remote-monitoring usługi dotnet\\skrypty\\lokalnego\\ENV** plików za pomocą wymagane wartości. **ENV** plik zawiera szczegółowe informacje o tym, gdzie można znaleźć wymaganych wartości.
 
 ## <a name="run-the-microservices-in-docker"></a>Uruchom mikrousług na platformie Docker
 
@@ -89,7 +85,7 @@ Mikrousługi uruchomiona w lokalnym kontenerów platformy Docker muszą uzyskać
 docker run --rm -ti library/alpine ping google.com
 ```
 
-Aby uruchomić akcelerator rozwiązań, przejdź do **azure-iot-pcs-remote-monitoring-dotnet\services\scripts\local** folder w środowisku wiersza polecenia i uruchom następujące polecenie:
+Aby uruchomić akcelerator rozwiązań, przejdź do **remote-monitoring usługi dotnet\\skrypty\\lokalnego** folder w środowisku wiersza polecenia i uruchom następujące polecenie:
 
 ```cmd\sh
 docker-compose up

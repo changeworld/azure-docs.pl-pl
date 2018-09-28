@@ -2,18 +2,18 @@
 title: Rozpoczynanie pracy z usługą Azure Data Catalog
 description: Ten kompleksowy samouczek zawiera scenariusze dotyczące usługi Azure Data Catalog i opis jej możliwości.
 services: data-catalog
-author: steelanddata
-ms.author: spelluru
+author: markingmyname
+ms.author: maghan
 ms.assetid: 03332872-8d84-44a0-8a78-04fd30e14b18
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: c65f5c2ca3f162c17d036198c4285f9c965bbd53
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4386f87b6986e6ab1742a8d3c14a100fea112182
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053816"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406315"
 ---
 # <a name="get-started-with-azure-data-catalog"></a>Rozpoczynanie pracy z usługą Azure Data Catalog
 Azure Data Catalog to w pełni zarządzana usługa w chmurze służąca jako system rejestracji i odnajdywania zasobów danych przedsiębiorstwa. Szczegółowe omówienie tej usługi można znaleźć w artykule [Co to jest usługa Azure Data Catalog?](data-catalog-what-is-data-catalog.md).

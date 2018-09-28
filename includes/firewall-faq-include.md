@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 9/14/2018
 ms.author: victorh
 ms.custom: include file
-ms.openlocfilehash: 4c6aaea836302732b1af3d22923c965575cfc9d2
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1242cf80ffd283471eb507612949a81d4b3fd594
+ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47020476"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47401573"
 ---
 ### <a name="what-is-azure-firewall"></a>Co to jest usługa Azure Firewall?
 
@@ -24,7 +24,7 @@ Azure Firewall to zarządzana, sieciowa usługa zabezpieczeń oparta na chmurze,
 * Zapora stanowa jako usługa
 * Wbudowana wysoka dostępność z nieograniczoną skalowalnością w chmurze
 * Filtrowanie według nazw FQDN
-* Nazwa FQDN tagów
+* Tagi FQDN
 * Reguły filtrowania ruchu sieciowego
 * Obsługa translacji adresów sieciowych źródła (SNAT) dla ruchu wychodzącego
 * Obsługuje DNAT dla ruchu przychodzącego
@@ -101,6 +101,9 @@ $publicip = Get-AzureRmPublicIpAddress -Name "Public IP Name" -ResourceGroupName
 $azfw.Allocate($vnet,$publicip)
 Set-AzureRmFirewall -AzureFirewall $azfw
 ```
+
+> [!NOTE]
+> Należy zmienić alokację zapory i publiczny adres IP do oryginalnej grupy zasobów i subskrypcji.
 
 ### <a name="what-are-the-known-service-limits"></a>Jakie są limity znane usługi?
 

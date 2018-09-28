@@ -9,12 +9,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 205a4d454be02d64058e3d0fcffda35df5b831a5
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b6370fd9125c5b14df781b27e028c139175b7589
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971678"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405805"
 ---
 # <a name="tune-hyperparameters-for-your-model"></a>Dostosowywanie hiperparametrów dla modelu
 
@@ -240,7 +240,7 @@ max_concurrent_runs=4
 To spowoduje skonfigurowanie hiperparametrycznego dostrajania eksperymentu można użyć maksymalnie 20, łączna liczba uruchomień uruchamiania 4 konfiguracji w danym momencie.
 
 ## <a name="configure-your-hyperparameter-tuning-experiment"></a>Konfigurowanie usługi hiperparametrycznego dostrajania eksperymentu
-Można skonfigurować usługi hiperparametrycznego dostrajania eksperymentu przy użyciu przestrzeni wyszukiwania zdefiniowanych hyperpameter, wcześniejsze zakończenie zasad, podstawowe metryki i alokacji zasobów z powyższej sekcji. Ponadto konieczne będzie zapewnienie `estimator` , zostanie wywołana z próbkowanych hiperparametrów. `estimator` Opisuje skrypt szkoleniowy uruchomieniu, zasoby na zadanie (jednym lub wieloma procesorami gpu) i obliczeniowego elementu docelowego do użycia. Od współbieżności dla usługi hiperparametrycznego dostrajania eksperymentu są bramkowane na dostępnych zasobów, należy upewnić się, że obliczeniowego elementu docelowego określona w `estimator` ma wystarczające zasoby, odpowiednią współbieżność. (Zobacz [łącze](/how-to-train-ml-models.md) więcej informacji na temat aplikacjom).
+Można skonfigurować usługi hiperparametrycznego dostrajania eksperymentu przy użyciu przestrzeni wyszukiwania zdefiniowanych hyperpameter, wcześniejsze zakończenie zasad, podstawowe metryki i alokacji zasobów z powyższej sekcji. Ponadto konieczne będzie zapewnienie `estimator` , zostanie wywołana z próbkowanych hiperparametrów. `estimator` Opisuje skrypt szkoleniowy uruchomieniu, zasoby na zadanie (jednym lub wieloma procesorami gpu) i obliczeniowego elementu docelowego do użycia. Od współbieżności dla usługi hiperparametrycznego dostrajania eksperymentu są bramkowane na dostępnych zasobów, należy upewnić się, że obliczeniowego elementu docelowego określona w `estimator` ma wystarczające zasoby, odpowiednią współbieżność. (Zobacz [sposób trenowania modeli](how-to-train-ml-models.md) więcej informacji na temat aplikacjom).
 
 Oto przykład sposobu konfigurowania eksperymentu strojenia hiperparametrycznego-
 
@@ -314,5 +314,5 @@ Pobierz ten notes:
 [!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
-* [Śledź eksperymentu](/how-to-track-experiments.md)
-* [Wdrażanie uczonego modelu](/how-to-deploy-and-where.md)
+* [Śledź eksperymentu](how-to-track-experiments.md)
+* [Wdrażanie uczonego modelu](how-to-deploy-and-where.md)

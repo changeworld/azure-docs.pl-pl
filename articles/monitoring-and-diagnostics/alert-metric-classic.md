@@ -7,18 +7,18 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: e325335d43ef31c44ac812aca66309132f5372a3
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e0c9cc342bb4b06053f53abc891ee1c415327998
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951614"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410004"
 ---
-# <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i Zarządzanie alertami metryki za pomocą usługi Azure Monitor
+# <a name="create-view-and-manage-classic-metric-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie metryki alertów klasycznych przy użyciu usługi Azure Monitor
 
 Klasyczne alertów dotyczących metryk w usłudze Azure Monitor zapewnia sposób otrzymywania powiadomień, gdy jeden metryki przekroczą próg. Klasyczne alertów dotyczących metryk jest starszych funkcji, która służy do wyzwalania alertu metryki-wymiarowej tylko. Brak istniejących nowszej funkcję o nazwie alertów dotyczących metryk, który zawiera udoskonalone funkcje za pośrednictwem klasycznego alertów dotyczących metryk. Dowiedz się więcej na temat nowych funkcji alertów dotyczących metryk w programie [Przegląd alertów metryk](alert-metric-overview.md). W tym artykule opisujemy sposób tworzyć, wyświetlać i zarządzać klasycznego reguł alertów dotyczących metryk za pośrednictwem witryny Azure portal, programu Powershell i wiersza polecenia platformy Azure.
 
-## <a name="create-a-classic-metric-alert-rule-using-azure-portal"></a>Tworzenie klasycznego reguła alertu metryki za pomocą witryny Azure portal
+## <a name="with-azure-portal"></a>Za pomocą witryny Azure portal
 
 1. W [portal](https://portal.azure.com/), Znajdź zasób, który chcesz monitorować, a następnie wybierz ją.
 
@@ -46,15 +46,13 @@ Klasyczne alertów dotyczących metryk w usłudze Azure Monitor zapewnia sposób
 
 W ciągu kilku minut ten alert jest aktywny i wyzwala w sposób opisany wcześniej.
 
-## <a name="manage-your-classic-metric-alert-rules-using-azure-portal"></a>Zarządzanie klasycznego reguł alertu metryki za pomocą witryny Azure portal
-
 Po utworzeniu alertu, można go zaznaczyć i wykonaj jedną z następujących czynności:
 
 * Wyświetl wykres pokazujący próg metryki i rzeczywiste wartości z poprzedniego dnia.
 * Edytuj lub usuń go.
 * **Wyłącz** lub **Włącz** jej, jeśli chcesz tymczasowo zatrzymać lub wznowić odbieranie powiadomień dla tego alertu.
 
-## <a name="creating-and-managing-classic-metric-alert-rule-using-azure-cli"></a>Tworzenie i zarządzanie nimi w klasycznym regułę alertu metryki za pomocą wiersza polecenia platformy Azure
+## <a name="with-azure-cli"></a>Z interfejsem wiersza polecenia platformy Azure
 
 Przedstawione w poprzednich sekcjach opisano, jak tworzyć, wyświetlać i zarządzać reguł alertów dotyczących metryk za pomocą witryny Azure portal. W tej sekcji opisano sposób zrobić to samo za pomocą wielu platform [wiersza polecenia platformy Azure](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest). To najszybszy sposób rozpocząć korzystanie z wiersza polecenia platformy Azure za pośrednictwem [usługi Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview?view=azure-cli-latest).
 
@@ -86,7 +84,7 @@ az monitor alert create --name <alert name> --resource-group <group name> \
 az monitor alert delete --name <alert name> --resource-group <group name>
 ```
 
-### <a name="create-view-and-manage-classic-metric-alerts-using-powershell"></a>Tworzenie, wyświetlanie i zarządzanie nimi metryk alertów klasycznych przy użyciu programu PowerShell
+## <a name="with-powershell"></a>Z programem PowerShell
 
 Tej sekcji pokazano, jak za pomocą programu PowerShell, poleceń tworzyć, wyświetlać i zarządzać klasycznego alertów dotyczących metryk. Przykłady w artykule pokazano, jak można użyć poleceń cmdlet usługi Azure Monitor dla klasycznego alertów dotyczących metryk.
 

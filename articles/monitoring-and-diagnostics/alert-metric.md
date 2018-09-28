@@ -7,20 +7,20 @@ ms.topic: conceptual
 ms.date: 09/18/2018
 ms.author: snmuvva
 ms.component: alerts
-ms.openlocfilehash: 479fd902ef68bf24306bcd699da0be08415592a0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 6ac31818a68aa2b4624410b423b7559b84275777
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956993"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409375"
 ---
-# <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i Zarządzanie alertami metryki za pomocą usługi Azure Monitor
+# <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie przy użyciu usługi Azure Monitor alertów dotyczących metryk
 
 Alerty metryk w usłudze Azure Monitor zapewnia sposób otrzymywania powiadomień, gdy jeden metryki przekroczą próg. Alerty metryki pracy na szeroką gamę metryk wielowymiarowych platformy, metryki niestandardowe, standard usługi Application Insights i metryki niestandardowe. W tym artykule opisujemy sposób tworzyć, wyświetlać i zarządzać reguł alertów dotyczących metryk za pośrednictwem witryny Azure portal i interfejs wiersza polecenia platformy Azure. Można również utworzyć reguł alertów dotyczących metryk za pomocą szablonów usługi Azure Resource Manager, które jest opisane w [oddzielny artykuł](monitoring-enable-alerts-using-template.md).
 
 Dowiedz się więcej o jak metryki alerty działają z [Przegląd alertów metryk](alert-metric-overview.md).
 
-## <a name="create-a-metric-alert-rule-using-azure-portal"></a>Utwórz regułę alertu metryki za pomocą witryny Azure portal
+## <a name="create-with-azure-portal"></a>Tworzenie za pomocą witryny Azure portal
 
 Poniższa procedura opisuje sposób tworzenia regułę alertu metryki w witrynie Azure portal:
 
@@ -58,7 +58,7 @@ Poniższa procedura opisuje sposób tworzenia regułę alertu metryki w witrynie
 > [!NOTE]
 > Alert dotyczący metryki, zasady utworzone za pośrednictwem portalu są tworzone w tej samej grupie zasobów co zasób docelowy.
 
-## <a name="view-and-manage-metric-alert-rules-using-azure-portal"></a>Wyświetlanie i zarządzanie nimi reguły alertów metryk za pomocą witryny Azure portal
+## <a name="view-and-manage-with-azure-portal"></a>Wyświetlanie i zarządzanie nimi za pomocą witryny Azure portal
 
 Można wyświetlać i zarządzać reguł alertów dotyczących metryk za pomocą bloku zasady zarządzania, w sekcji alerty. Poniższa procedura pokazuje, jak wyświetlać swoje reguł alertów dotyczących metryk i edytować jeden z nich.
 
@@ -80,7 +80,7 @@ Można wyświetlać i zarządzać reguł alertów dotyczących metryk za pomocą
 
 6. Kliknij przycisk **gotowe** Aby zapisać zmiany.
 
-## <a name="create-view-and-manage-metric-alert-rules-using-azure-cli"></a>Tworzenie, wyświetlanie i zarządzanie nimi reguły alertów metryk, przy użyciu wiersza polecenia platformy Azure
+## <a name="with-azure-cli"></a>Z interfejsem wiersza polecenia platformy Azure
 
 Przedstawione w poprzednich sekcjach opisano, jak tworzyć, wyświetlać i zarządzać reguł alertów dotyczących metryk za pomocą witryny Azure portal. W tej sekcji opisano sposób zrobić to samo za pomocą wielu platform [wiersza polecenia platformy Azure](https://docs.microsoft.com/en-us/cli/azure/get-started-with-azure-cli?view=azure-cli-latest). To najszybszy sposób rozpocząć korzystanie z wiersza polecenia platformy Azure za pośrednictwem [usługi Azure Cloud Shell](https://docs.microsoft.com/en-us/azure/cloud-shell/overview?view=azure-cli-latest). W tym artykule używamy usługi Cloud shell.
 

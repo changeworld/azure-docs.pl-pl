@@ -12,14 +12,14 @@ ms.devlang: tbd
 ms.topic: article
 ms.tgt_pltfrm: dotnet
 ms.workload: na
-ms.date: 04/11/2018
+ms.date: 09/11/2018
 ms.author: spelluru
-ms.openlocfilehash: dd0ef94c7efb27641d5f0bf50d87bf852bcd1e9a
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 7774d67d02b2b0f0080cbff2ffc3606b99450f26
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43696340"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404965"
 ---
 # <a name="create-a-service-bus-namespace-with-topic-subscription-and-rule-using-an-azure-resource-manager-template"></a>Tworzenie przestrzeni nazw usługi Service Bus przy użyciu tematu, subskrypcji i reguły za pomocą szablonu usługi Azure Resource Manager
 
@@ -43,7 +43,7 @@ Aby uzyskać kompletny szablon, zobacz [przestrzeń nazw magistrali usług przy 
 > 
 > 
 
-## <a name="what-will-you-deploy"></a>Co chcesz wdrożyć?
+## <a name="what-do-you-deploy"></a>Co to są wdrażane?
 
 Korzystając z tego szablonu możesz wdrożyć przestrzeni nazw usługi Service Bus przy użyciu tematu, subskrypcji i reguły (filtr).
 
@@ -51,7 +51,7 @@ Korzystając z tego szablonu możesz wdrożyć przestrzeni nazw usługi Service 
 
 ## <a name="what-are-rules-filters"></a>Co to są zasady (filtrów)?
 
-W wielu scenariuszach wiadomości, które mają szczególne cechy muszą zostać przetworzone w różny sposób. Aby włączyć to niestandardowe przetwarzanie, można skonfigurować subskrypcje, aby znaleźć wiadomości, które mają szczególne właściwości, a następnie dokonaj zmian do tych właściwości. Mimo że subskrypcje usługi Service Bus, zobacz wszystkie wiadomości wysyłane do tematu, można kopiować tylko podzbiór tych komunikatów do kolejki wirtualne subskrypcji. Jest to realizowane przy użyciu filtrów subskrypcji. Aby dowiedzieć się więcej na temat reguł (filtry), zobacz [reguły i akcje](service-bus-queues-topics-subscriptions.md#rules-and-actions).
+W wielu scenariuszach wiadomości, które mają szczególne cechy muszą zostać przetworzone w różny sposób. Aby włączyć to niestandardowe przetwarzanie, można skonfigurować subskrypcje, aby znaleźć wiadomości, które mają szczególne właściwości, a następnie dokonaj zmian do tych właściwości. Mimo że subskrypcje usługi Service Bus, zobacz wszystkie wiadomości wysyłane do tematu, można kopiować tylko podzbiór tych komunikatów do kolejki wirtualne subskrypcji. To osiągnąć, za pomocą filtrów subskrypcji. Aby dowiedzieć się więcej na temat reguł (filtry), zobacz [reguły i akcje](service-bus-queues-topics-subscriptions.md#rules-and-actions).
 
 Aby automatycznie uruchomić wdrożenie, kliknij poniższy przycisk:
 
@@ -59,7 +59,7 @@ Aby automatycznie uruchomić wdrożenie, kliknij poniższy przycisk:
 
 ## <a name="parameters"></a>Parametry
 
-Za pomocą usługi Azure Resource Manager, należy zdefiniować parametry dla wartości, które chcesz określić podczas wdrażania szablonu. Szablon zawiera sekcję o nazwie `Parameters` obejmującą wszystkie wartości parametrów. Parametr powinien obejmować wartości, które różnią się w zależności od wdrażanego projektu lub środowiska, w którym odbywa się wdrożenie. Nie należy definiować parametrów dla wartości, które pozostają niezmienione. Każda wartość parametru używana w szablonie definiuje wdrażane zasoby.
+Za pomocą usługi Azure Resource Manager, zdefiniuj parametry dla wartości, które chcesz określić podczas wdrażania szablonu. Szablon zawiera sekcję o nazwie `Parameters` obejmującą wszystkie wartości parametrów. Na podstawie projektu, który jest wdrażany lub opartych na środowisku, w których jest wdrażany z, należy zdefiniować parametr dla tych wartości, które różnią się. Nie należy definiować parametrów dla wartości, które pozostają niezmienione. Każda wartość parametru używana w szablonie definiuje wdrażane zasoby.
 
 Szablon definiuje następujące parametry:
 
@@ -180,7 +180,7 @@ azure group deployment create \<my-resource-group\> \<my-deployment-name\> --tem
 Po utworzeniu i wdrożeniu zasobów przy użyciu usługi Azure Resource Manager, Dowiedz się, jak można nimi zarządzać, wyświetlając następujące artykuły:
 
 * [Zarządzanie usługą Azure Service Bus](service-bus-management-libraries.md)
-* [Zarządzanie usługą Service Bus przy użyciu programu PowerShell](service-bus-manage-with-ps.md)
+* [Zarządzanie usługą Service Bus za pomocą programu PowerShell](service-bus-manage-with-ps.md)
 * [Zarządzanie zasobami usługi Service Bus za pomocą Eksploratora usługi Service Bus](https://github.com/paolosalvatori/ServiceBusExplorer/releases)
 
 [Authoring Azure Resource Manager templates]: ../azure-resource-manager/resource-group-authoring-templates.md

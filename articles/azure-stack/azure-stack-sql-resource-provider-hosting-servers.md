@@ -11,19 +11,22 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/27/2018
 ms.author: jeffgilb
-ms.reviewer: jeffgo
-ms.openlocfilehash: c33d1fe1385619420215ec0f0fa3b0a2f90dddc0
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.reviewer: quying
+ms.openlocfilehash: 8fc24e58af51a249e3305dbe1496c499387be6b1
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44299461"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407913"
 ---
 # <a name="add-hosting-servers-for-the-sql-resource-provider"></a>Dodawanie serwerów hostingu dla dostawcy zasobów bazy danych SQL
 
 Wystąpienie serwera SQL na maszynie wirtualnej (VM) można hostować w [usługi Azure Stack](azure-stack-poc.md), lub na maszynie Wirtualnej poza środowiskiem usługi Azure Stack, tak długo, jak dostawcy zasobów bazy danych SQL można połączyć się z wystąpieniem.
+
+> [!NOTE]
+> Bazy danych SQL można utworzyć w programie SQL server dostawcy zasobów. Dostawcy zasobów bazy danych SQL, powinny zostać utworzone w domyślnej subskrypcji dostawcy, a serwerami hostingu SQL powinny zostać utworzone w płatnych, subskrypcja użytkownika. Serwer dostawcy zasobów nie powinny służyć do baz danych użytkownika hosta.
 
 ## <a name="overview"></a>Przegląd
 

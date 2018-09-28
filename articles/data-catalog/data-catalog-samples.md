@@ -2,18 +2,18 @@
 title: Przykłady dewelopera usługi Azure Data Catalog
 description: Ten artykuł zawiera omówienie przykłady dostępnych dla deweloperów dla interfejsu API REST usługi Data Catalog.
 services: data-catalog
-author: spelluru
-ms.author: spelluru
+author: markingmyname
+ms.author: maghan
 ms.assetid: 0dc23edd-04d8-49fc-841e-d132fb109ce7
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: 98d17e5fc8b2348887d6a9e361a455474d666db4
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: a4f88b63fa91dcec52b86be568ef4c98ee82c277
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053700"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47404329"
 ---
 # <a name="data-catalog-developer-samples"></a>Przykłady dla deweloperów wykazu danych
 Zacznij programować aplikacje wykazu danych przy użyciu interfejsu API REST usługi Data Catalog. Interfejsu API REST usługi Data Catalog jest oparty na protokole REST interfejs API, który zapewnia dostęp programowy do zasobów usługi Data Catalog do rejestrowania, adnotacji i wyszukiwania zasobów danych programowo.

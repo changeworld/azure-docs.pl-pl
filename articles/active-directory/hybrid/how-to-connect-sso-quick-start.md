@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 532a37c5de7b69c44f0f8502613ac534f57c8ef9
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: d7906323da8e9ee1571efe908084ae1433884e61
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312340"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405992"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-quick-start"></a>Usługa Azure Active Directory bezproblemowe logowanie jednokrotne: Szybki start
 
@@ -124,9 +124,9 @@ Istnieją dwa sposoby, aby zmodyfikować ustawienia strefy Intranet użytkownik�
 
     Wynik wygląda następująco:
 
-    Wartość:https://autologon.microsoftazuread-sso.com
+    Nazwa wartości: https://autologon.microsoftazuread-sso.com
   
-    Dane: 1
+    Wartość (dane): 1
 
    >[!NOTE]
    > Jeśli chcesz uniemożliwić użytkownikom niektóre za pomocą bezproblemowego logowania jednokrotnego (na przykład, jeśli ci użytkownicy Zaloguj się na udostępnionym kioski), ustaw powyższe wartości **4**. Ta akcja dodaje usługi Azure AD adres URL do strefy z ograniczeniami i kończy się niepowodzeniem bezproblemowe logowanie Jednokrotne przez cały czas.

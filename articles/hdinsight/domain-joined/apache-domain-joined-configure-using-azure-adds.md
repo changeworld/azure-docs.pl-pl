@@ -8,12 +8,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 2e4aab68dba02eb5df16aa316f867697680b8977
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: eb24aa0471604696de99f4878baef764cfef0a8b
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181689"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408358"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra HDInsight z pakietem Enterprise Security za pomocą usługi Azure Active Directory Domain Services
 
@@ -27,6 +27,10 @@ W tym artykule dowiesz się, jak skonfigurować klaster HDInsight przy użyciu E
 ## <a name="enable-azure-ad-ds"></a>Włączanie usługi Azure AD DS
 
 Włączanie usług AD DS Azure to warunek wstępny, przed utworzeniem klastra HDInsight z ESP. Aby uzyskać więcej informacji, zobacz [włączyć usługi Azure Active Directory Domain Services w witrynie Azure portal](../../active-directory-domain-services/active-directory-ds-getting-started.md). 
+
+Po włączeniu usług AD DS Azure wszystkich użytkowników i obiekty rozpocząć synchronizowanie z usługi Azure Active Directory (AAD) do usługi Azure AD — DS domyślnie. Długość operacji synchronizacji jest zależna od liczby obiektów w usłudze AAD. Synchronizacja może potrwać kilka dni w setkach tysięcy obiektów. 
+
+Klienci mogą wybrać opcję Synchronizuj tylko grupy, którzy potrzebują dostępu do klastrów HDInsight. Tej opcji tylko określone grupy synchronizacji jest nazywany *zakresu synchronizacji*. Zobacz [konfigurowania zakresu synchronizacji z usługi Azure AD do domeny zarządzanej](https://docs.microsoft.com/en-us/azure/active-directory-domain-services/active-directory-ds-scoped-synchronization) instrukcje.
 
 > [!NOTE]
 > Tylko Administratorzy dzierżawy mają uprawnienia do tworzenia wystąpienia usług AD DS platformy Azure. Uwierzytelnianie wieloskładnikowe wymaga można wyłączyć tylko dla użytkowników, którzy będą uzyskiwać dostęp do klastra.

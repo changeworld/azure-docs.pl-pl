@@ -16,12 +16,12 @@ ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 4f17a65befc1abbe2a2405e8470f61068ac34f8b
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 622a8777f5ed329636c7023bb52790756f8d7206
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47394815"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422630"
 ---
 # <a name="change-your-azure-account-profile-information-such-as-contact-email-address-and-phone-number"></a>Zmiana informacji o profilu konta platformy Azure, takich jak kontaktowy adres e-mail, adres i numer telefonu
 
@@ -55,10 +55,6 @@ Aby dowiedzieć się, jak zaktualizować swoje informacje rozliczeniowe, zobacz 
 ### <a name="why-cant-i-update-the-country"></a>Dlaczego nie można zaktualizować kraju?
 
 Ze względu na ograniczenia techniczne nie możemy teraz zmienić kraj, przy użyciu istniejącego konta. Można jednak utworzyć konto w żądany kraj i następnie skontaktuj się z działem pomocy technicznej platformy Azure, aby przeprowadzić migrację usług do tego konta.
-
-### <a name="what-email-address-does-the-azure-billing-alerts-preview-feature-use"></a>Jakiego adresu e-mail jest alertów dotyczących rozliczeń platformy Azure Użyj funkcji w wersji zapoznawczej?
-
-Otrzymasz powiadomienia o alertach z adresem e-mail, możesz dodać po zarejestrowaniu się dla alertów. Adres e-mail używany dla alertów różni się od adresu e-mail administratora konta. Aby uzyskać więcej informacji, zobacz [Konfigurowanie alertów dla Twojej subskrypcji Microsoft Azure billing](billing-set-up-alerts.md).
 
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Skontaktuj się z pomocą techniczną.
 

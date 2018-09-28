@@ -9,12 +9,12 @@ ms.author: divswa
 ms.reviewer: estfan, jonfan, LADocs
 ms.topic: article
 ms.date: 08/19/2018
-ms.openlocfilehash: ee1df77dc18350a64082cb62c297a53700cad223
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: bd31de8f60fff5630141f708714083fe76220d11
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128749"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410157"
 ---
 # <a name="send-receive-and-batch-process-messages-in-azure-logic-apps"></a>Wysyłanie, odbieranie i wsadowe przetwarzanie komunikatów w usłudze Azure Logic Apps
 
@@ -60,7 +60,7 @@ Przed może wysyłać komunikaty do usługi batch, tej partii najpierw musi istn
    |----------|-------------|
    | **Tryb partii** | - **Wbudowane**: Definiowanie kryteriów wersji wewnątrz wyzwalacza partii <br>- **Konto integracji**: Definiowanie wielu wersji konfiguracji kryteria za pośrednictwem [konta integracji](../logic-apps/logic-apps-enterprise-integration-create-integration-account.md). Z kontem integracji możesz zachować te konfiguracje, wszystko w jednym miejscu, a nie w oddzielnych logic apps. | 
    | **Nazwa partii** | Nazwa usługi batch, jest "TestBatch" w tym przykładzie, która ma zastosowanie tylko do **wbudowane** tryb usługi batch |  
-   | **Kryteria zwalniania** | Ma zastosowanie tylko do **wbudowane** usługi batch w trybie i określa kryteria, aby spełnić przed przetworzeniem każdej partii: <p>- **Na podstawie liczby komunikatów**: liczba komunikatów do zbierania w usłudze batch, na przykład 10 wiadomości <br>- **Rozmiar na podstawie**: maksymalny rozmiar partii w bajtach, na przykład 100 MB <br>- **Na podstawie harmonogramu**: interwał i częstotliwość między partii wydania, na przykład 10 minut. Można również określić datę i godzinę. <br>- **Zaznacz wszystko**: Użyj określone kryteria. | 
+   | **Kryteria zwalniania** | Ma zastosowanie tylko do **wbudowane** usługi batch w trybie i wybiera odpowiednie kryteria, aby spełnić przed przetworzeniem każdej partii: <p>- **Na podstawie liczby komunikatów**: liczba komunikatów do zbierania w usłudze batch, na przykład 10 wiadomości <br>- **Rozmiar na podstawie**: maksymalny rozmiar partii w bajtach, na przykład 100 MB <br>- **Na podstawie harmonogramu**: interwał i częstotliwość między partii wydania, na przykład 10 minut. Minimalny cykl jest 60 sekund lub 1 minutę. Ułamkowe wartości minutowe skutecznie zaokrąglić do 1 minuty. Aby określić datę i godzinę, wybierz **Pokaż opcje zaawansowane**. <br>- **Zaznacz wszystko**: Użyj określone kryteria. | 
    ||| 
    
    W tym przykładzie wybiera wszystkie kryteria:
@@ -107,9 +107,7 @@ Przed może wysyłać komunikaty do usługi batch, tej partii najpierw musi istn
 
    * W **treści** pole, po wyświetleniu listy zawartości dynamicznej wybierz **identyfikator komunikatu** pola. 
 
-     Projektant aplikacji logiki automatycznie dodaje pętlę "For each" wokół akcji Wyślij wiadomość e-mail, ponieważ ta akcja nie akceptuje tablicę jako dane wejściowe. 
-     Ta pętla wysyła wiadomość e-mail dla każdego komunikatu w partii. 
-     Tak, gdy wyzwalacz partii jest ustawiony na 10 wiadomości, zostanie wyświetlona 10 wiadomości czasu aktywowaniu wyzwalacza.
+     Projektant aplikacji logiki automatycznie dodaje pętlę "For each" wokół akcji Wyślij wiadomość e-mail, ponieważ ta akcja traktuje dane wyjściowe z poprzednich akcji jako kolekcję, a nie w zadaniu wsadowym. 
 
      !["Treść" Wybierz "Identyfikator komunikatu"](./media/logic-apps-batch-process-send-receive-messages/send-email-action-details-for-each.png)
 
@@ -216,6 +214,7 @@ Twoja aplikacja logiki nadawcy partii jest uruchamiany co minutę, generuje loso
 
 ## <a name="next-steps"></a>Kolejne kroki
 
+* [Tworzenie partii i wysyłanie komunikatów EDI](../logic-apps/logic-apps-scenario-edi-send-batch-messages.md)
 * [Tworzenie definicji aplikacji logiki przy użyciu pliku JSON](../logic-apps/logic-apps-author-definitions.md)
 * [Tworzenie aplikacji bezserwerowej w programie Visual Studio za pomocą usługi Azure Logic Apps i Functions](../logic-apps/logic-apps-serverless-get-started-vs.md)
 * [Obsługa wyjątków i rejestrowania błędów dla usługi logic apps](../logic-apps/logic-apps-scenario-error-and-exception-handling.md)

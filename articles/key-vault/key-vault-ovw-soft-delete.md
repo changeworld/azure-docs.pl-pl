@@ -7,12 +7,12 @@ author: bryanla
 ms.author: bryanla
 manager: mbaldwin
 ms.date: 09/25/2017
-ms.openlocfilehash: 776d5957ee2c11354c350523cbc8fde12fbcafaf
-ms.sourcegitcommit: 8b694bf803806b2f237494cd3b69f13751de9926
+ms.openlocfilehash: ac34f03c896e9e2180b653c41faa7f7525a40e33
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/20/2018
-ms.locfileid: "46498185"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407879"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Omówienie usuwania nietrwałego w usłudze Azure Key Vault
 
@@ -41,12 +41,22 @@ Za pomocą tej funkcji operacja usunięcia usługi key vault lub obiektu usługi
 
 Opcji soft-delete jest opcjonalne zachowanie usługi Key Vault i jest **nie jest włączona domyślnie** w tej wersji. 
 
-### <a name="do-not-purge-flag"></a>Przeczyszczanie flagi
-Użytkownik, który chce, aby wymusić usunięcie magazynu lub obiektu magazynu można to zrobić. To, jeśli użytkownik ma uprawnienia do usuwania magazynu lub obiektu w magazynie można wymusić przeczyszczania, nawet wtedy, gdy jest włączone usuwanie nietrwałe dla tego magazynu. Jednak jeśli użytkownik chce zapobiec usunięciu życie magazyn lub obiektu magazynu mogą oni ustawić — ochrona przed czyszczeniem Włącz flagę, aby mieć wartość true. Po utworzeniu magazynu można włączyć flagę w ten sposób. Warunek wstępny do włączania ochrona przed czyszczeniem to musi mieć włączone usuwanie nietrwałe. To polecenie, aby to zrobić w wersji 2 interfejsu wiersza polecenia platformy Azure
+### <a name="purge-protection--flag"></a>Wyczyść flagę ochrony
+Przeczyść ochrony (**— ochrona przed czyszczeniem Włącz** w interfejsie wiersza polecenia platformy Azure) flaga jest domyślnie wyłączona. Gdy ta flaga jest włączona, magazynu lub obiektu w stanie usunięty, nie można przeczyścić aż do minął okres przechowywania 90 dni. Nadal można odzyskać taki magazyn lub obiektu. Ta flaga zapewnia dodano dla klientów, magazynu lub obiektu można nigdy trwale usunąć, dopóki nie upłynął okres przechowywania. Flaga ochrony przeczyszczania można włączyć tylko wtedy, gdy flaga opcji soft-delete znajduje się na lub podczas tworzenia magazynu włączyć obu opcji soft-delete i przeczyścić ochrony.
+
+[!NOTE] Warunek wstępny do włączania ochrona przed czyszczeniem to musi mieć włączone usuwanie nietrwałe. To polecenie, aby to zrobić w wersji 2 interfejsu wiersza polecenia platformy Azure
 
 ```
 az keyvault create --name "VaultName" --resource-group "ResourceGroupName" --location westus --enable-soft-delete true --enable-purge-protection true
 ```
+
+### <a name="permitted-purge"></a>Dozwolone przeczyszczania
+
+Trwałe usuwanie przeczyszczanie, magazyn kluczy jest możliwe za pośrednictwem operacji POST, w zasobie serwer proxy i wymaga specjalnych uprawnień. Ogólnie rzecz biorąc tylko właściciel subskrypcji będzie można przeczyścić magazynu kluczy. Operację POST wyzwala natychmiastową i nieodwracalny usunięcie tego magazynu. 
+
+Są wyjątki od tej reguły
+- tak w przypadku subskrypcji platformy Azure została oznaczona jako *nieusuwalnej*. W tym przypadku jedyną usługą następnie może wykonać rzeczywiste usunięcie i odbywa się to jako proces w zaplanowanym. 
+- Gdy — ochrona przed czyszczeniem Włącz flaga jest włączona na sam magazyn. W tym przypadku usługi Key Vault będzie czekać przez 90 dni od, gdy oryginalny obiekt tajny został oznaczony do usunięcia trwale usunąć obiekt.
 
 ### <a name="key-vault-recovery"></a>Odzyskiwanie usługi Key vault
 
@@ -70,12 +80,6 @@ Nietrwale usunięte zasoby są przechowywane przez określony okres czasu, 90 dn
 - Tylko specjalnie użytkownikiem może wymusić usuwanie magazynu kluczy lub obiektu usługi key vault wydając polecenie delete na odpowiadający jej zasób serwera proxy.
 
 O ile nie zostanie przywrócona kluczy lub kluczy obiektu, usługę na końcu okresu przechowywania wykonuje Przeczyść usunięty nietrwale magazyn kluczy lub kluczy obiektu i jego zawartości. Usunięcie zasobu nie może być zaplanowane ponownie.
-
-### <a name="permitted-purge"></a>Dozwolone przeczyszczania
-
-Trwałe usuwanie przeczyszczanie, magazyn kluczy jest możliwe za pośrednictwem operacji POST, w zasobie serwer proxy i wymaga specjalnych uprawnień. Ogólnie rzecz biorąc tylko właściciel subskrypcji będzie można przeczyścić magazynu kluczy. Operację POST wyzwala natychmiastową i nieodwracalny usunięcie tego magazynu. 
-
-Wyjątek ma miejsce w przypadku subskrypcji platformy Azure została oznaczona jako *nieusuwalnej*. W tym przypadku jedyną usługą następnie może wykonać rzeczywiste usunięcie i odbywa się to jako proces w zaplanowanym. 
 
 ### <a name="billing-implications"></a>Opłaty wpływ
 

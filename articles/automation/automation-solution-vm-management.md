@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 08/1/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 99329dd812ad47cf98845ba794bc108d26d85352
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: 2f990f22d762c5f95d3274b740caf30691ded90e
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45543704"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409848"
 ---
 # <a name="startstop-vms-during-off-hours-solution-in-azure-automation"></a>Uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu rozwiązania w usłudze Azure Automation
 
@@ -31,6 +31,9 @@ Ograniczenia związane z bieżącego rozwiązania są następujące:
 - To rozwiązanie zarządza VMs w dowolnym regionie, ale można używać tylko w tej samej subskrypcji co konto usługi Azure Automation.
 - To rozwiązanie jest dostępne na platformie Azure i AzureGov do dowolnego regionu, który obsługuje obszar roboczy usługi Log Analytics, konto usługi Azure Automation i alertach. Regiony AzureGov aktualnie nie obsługują funkcje poczty e-mail.
 
+> [!NOTE]
+> Jeśli używasz rozwiązania dla klasycznych maszyn wirtualnych, następnie wszystkie maszyny wirtualne będą przetwarzane sekwencyjnie na usługę w chmurze. Przetwarzanie równoległe zadania jest w dalszym ciągu będzie obsługiwana w różnych usługach w chmurze.
+
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Elementy runbook dla tego rozwiązania, pracować [konta Uruchom jako platformy](automation-create-runas-account.md). Konto Uruchom jako jest preferowaną metodą uwierzytelniania, ponieważ używa ona uwierzytelniania certyfikatu zamiast hasła, które może być wygaśnięcie lub ulegać częstym zmianom.
@@ -45,28 +48,28 @@ Wykonaj poniższe kroki, aby dodać uruchamianie/zatrzymywanie maszyn wirtualnyc
 
    > [!NOTE]
    > Można również utworzyć go z dowolnego miejsca w witrynie Azure portal, klikając **Utwórz zasób**. Na stronie portalu Marketplace, wpisz słowo kluczowe, taką jak **Start** lub **uruchomień/zatrzymań**. Po rozpoczęciu pisania zawartość listy jest filtrowana w oparciu o wpisywane dane. Alternatywnie możesz wpisać jeden lub więcej słów kluczowych z pełną nazwę rozwiązania i naciśnij klawisz Enter. Wybierz **uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu** w wynikach wyszukiwania.
-1. W **uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu** dla wybranego rozwiązania strony, przejrzyj dane podsumowania, a następnie kliknij przycisk **Utwórz**.
+2. W **uruchamianie/zatrzymywanie maszyn wirtualnych poza godzinami szczytu** dla wybranego rozwiązania strony, przejrzyj dane podsumowania, a następnie kliknij przycisk **Utwórz**.
 
    ![Azure Portal](media/automation-solution-vm-management/azure-portal-01.png)
 
-1. **Dodaj rozwiązanie** zostanie wyświetlona strona. Monit o skonfigurowanie rozwiązania przed zaimportowaniem do subskrypcji usługi Automation.
+3. **Dodaj rozwiązanie** zostanie wyświetlona strona. Monit o skonfigurowanie rozwiązania przed zaimportowaniem do subskrypcji usługi Automation.
 
    ![Strona Dodaj rozwiązanie zarządzania maszyny Wirtualnej](media/automation-solution-vm-management/azure-portal-add-solution-01.png)
 
-1. Na **Dodaj rozwiązanie** wybierz opcję **obszaru roboczego**. Wybierz obszar roboczy usługi Log Analytics, która jest połączona z tą samą subskrypcją platformy Azure, w której znajduje się konto usługi Automation. Jeśli nie masz obszaru roboczego wybierz **Utwórz nowy obszar roboczy**. Na **obszar roboczy usługi Log Analytics** strony, wykonaj następujące czynności:
+4. Na **Dodaj rozwiązanie** wybierz opcję **obszaru roboczego**. Wybierz obszar roboczy usługi Log Analytics, która jest połączona z tą samą subskrypcją platformy Azure, w której znajduje się konto usługi Automation. Jeśli nie masz obszaru roboczego wybierz **Utwórz nowy obszar roboczy**. Na **obszar roboczy usługi Log Analytics** strony, wykonaj następujące czynności:
    - Określ nazwę dla nowego **obszar roboczy usługi Log Analytics**.
    - Wybierz **subskrypcji** się połączyć, wybierając z listy rozwijanej, jeśli nie jest domyślnie wybrana.
    - Aby uzyskać **grupy zasobów**, można utworzyć nową grupę zasobów lub wybrać istniejącą grupę.
    - Wybierz **lokalizację**. Obecnie jedynymi dostępnymi lokalizacjami są **Australia południowo-wschodnia**, **Kanada Środkowa**, **Indie środkowe**, **wschodnie stany USA**, **Japonia, część wschodnia**, **Azja południowo-wschodnia**, **Południowe Zjednoczone Królestwo**, i **Europa Zachodnia**.
    - Wybierz **warstwę cenową**. Wybierz **na GB (autonomiczne)** opcji. Usługa log Analytics został zaktualizowany [ceny](https://azure.microsoft.com/pricing/details/log-analytics/) i warstwie na GB jest jedyną opcją.
 
-1. Po podaniu wymaganych informacji w **obszaru roboczego usługi Log Analytics** kliknij **Utwórz**. Możesz śledzić postęp w sekcji **powiadomienia** z menu, która zwraca do **Dodaj rozwiązanie** strony po zakończeniu.
-1. Na **Dodaj rozwiązanie** wybierz opcję **konta usługi Automation**. Jeśli tworzysz nowy obszar roboczy usługi Log Analytics, możesz utworzyć nowe konto usługi Automation, który ma zostać skojarzony z nim lub wybierz istniejące konto usługi Automation, który nie jest już połączony z obszarem roboczym analizy dzienników. Wybierz istniejące konto usługi Automation, lub kliknij przycisk **Tworzenie konta usługi Automation**, a następnie na **Dodawanie konta usługi Automation** Podaj następujące informacje:
+5. Po podaniu wymaganych informacji w **obszaru roboczego usługi Log Analytics** kliknij **Utwórz**. Możesz śledzić postęp w sekcji **powiadomienia** z menu, która zwraca do **Dodaj rozwiązanie** strony po zakończeniu.
+6. Na **Dodaj rozwiązanie** wybierz opcję **konta usługi Automation**. Jeśli tworzysz nowy obszar roboczy usługi Log Analytics, możesz utworzyć nowe konto usługi Automation, który ma zostać skojarzony z nim lub wybierz istniejące konto usługi Automation, który nie jest już połączony z obszarem roboczym analizy dzienników. Wybierz istniejące konto usługi Automation, lub kliknij przycisk **Tworzenie konta usługi Automation**, a następnie na **Dodawanie konta usługi Automation** Podaj następujące informacje:
    - W polu **Nazwa** wprowadź nazwę konta usługi Automation.
 
     Wszystkie inne opcje są wypełniane automatycznie na podstawie na wybrany obszar roboczy usługi Log Analytics. Nie można zmodyfikować tych opcji. Konto Uruchom jako platformy Azure jest domyślną metodą uwierzytelniania dla elementów Runbook zawartych w tym rozwiązaniu. Po kliknięciu **OK**, opcje konfiguracji zostaną sprawdzone i utworzeniu konta usługi Automation. Postęp możesz śledzić w sekcji **Powiadomienia** z poziomu menu.
 
-1. Na koniec na **Dodaj rozwiązanie** wybierz opcję **konfiguracji**. **Parametry** zostanie wyświetlona strona.
+7. Na koniec na **Dodaj rozwiązanie** wybierz opcję **konfiguracji**. **Parametry** zostanie wyświetlona strona.
 
    ![Strona parametrów dla rozwiązania](media/automation-solution-vm-management/azure-portal-add-solution-02.png)
 
@@ -83,7 +86,7 @@ Wykonaj poniższe kroki, aby dodać uruchamianie/zatrzymywanie maszyn wirtualnyc
      > [!IMPORTANT]
      > Wartością domyślną dla **nazwy grupy zasobów obiektów docelowych** jest **&ast;**. Jest przeznaczony dla wszystkich maszyn wirtualnych w ramach subskrypcji. Jeśli nie chcesz, aby rozwiązanie pod kątem wszystkich maszyn wirtualnych w ramach subskrypcji, ta wartość musi zostać zaktualizowany do listy nazwy grupy zasobów przed włączeniem harmonogramy.
 
-1. Po skonfigurowaniu ustawień początkowych wymaganych dla rozwiązania, kliknij przycisk **OK** zamknąć **parametry** strony i wybierz **Utwórz**. Po wszystkie ustawienia zostaną zweryfikowane, rozwiązanie jest wdrożone do subskrypcji. Ten proces może potrwać kilka sekund, aby zakończyć i śledzić postęp w obszarze **powiadomienia** z menu.
+8. Po skonfigurowaniu ustawień początkowych wymaganych dla rozwiązania, kliknij przycisk **OK** zamknąć **parametry** strony i wybierz **Utwórz**. Po wszystkie ustawienia zostaną zweryfikowane, rozwiązanie jest wdrożone do subskrypcji. Ten proces może potrwać kilka sekund, aby zakończyć i śledzić postęp w obszarze **powiadomienia** z menu.
 
 ## <a name="scenarios"></a>Scenariusze
 

@@ -7,12 +7,12 @@ ms.service: container-service
 ms.topic: article
 ms.date: 09/26/2018
 ms.author: iainfou
-ms.openlocfilehash: 68a7883e7f8b3fb62265375208f66b761d43d82e
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 20c7d20399392e653668953029bcb81886863ce4
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391213"
+ms.locfileid: "47404623"
 ---
 # <a name="manually-create-and-use-kubernetes-volume-with-azure-disks-in-azure-kubernetes-service-aks"></a>Ręcznie utworzyć i wolumin Kubernetes za pomocą usługi Azure disks w usłudze Azure Kubernetes Service (AKS)
 
@@ -24,7 +24,7 @@ Aby uzyskać więcej informacji na woluminach Kubernetes, zobacz [woluminów Kub
 
 W tym artykule założono, że masz istniejący klaster usługi AKS. Jeśli potrzebujesz klastra AKS, zobacz Przewodnik Szybki Start usługi AKS [przy użyciu wiersza polecenia platformy Azure] [ aks-quickstart-cli] lub [przy użyciu witryny Azure portal][aks-quickstart-portal].
 
-Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.46 lub później zainstalowane i skonfigurowane. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli potrzebujesz zainstalować lub uaktualnić, zobacz [instalacji wiersza polecenia platformy Azure] [azure-install-cli].
+Możesz również muszą wiersza polecenia platformy Azure w wersji 2.0.46 lub później zainstalowane i skonfigurowane. Uruchom polecenie `az --version`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczna będzie instalacja lub uaktualnienie, zobacz [Instalowanie interfejsu wiersza polecenia platformy Azure][install-azure-cli].
 
 ## <a name="create-an-azure-disk"></a>Tworzenie dysku platformy Azure
 
@@ -91,7 +91,7 @@ Masz teraz uruchomiony zasobnik z dysku platformy Azure zainstalowany w lokaliza
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać więcej informacji o usłudze AKS klastrów oddziałują na dyskach platformy Azure, zobacz [wtyczka Kubernetes dla usługi Azure Disks][kubernetes-disks]
+Aby uzyskać więcej informacji o usłudze AKS klastrów oddziałują na dyskach platformy Azure, zobacz [wtyczka Kubernetes dla usługi Azure Disks][kubernetes-disks].
 
 <!-- LINKS - external -->
 [kubernetes-disks]: https://github.com/kubernetes/examples/blob/master/staging/volumes/azure_disk/README.md
@@ -106,3 +106,4 @@ Aby uzyskać więcej informacji o usłudze AKS klastrów oddziałują na dyskach
 [aks-quickstart-cli]: kubernetes-walkthrough.md
 [aks-quickstart-portal]: kubernetes-walkthrough-portal.md
 [az-aks-show]: /cli/azure/aks#az-aks-show
+[install-azure-cli]: /cli/azure/install-azure-cli

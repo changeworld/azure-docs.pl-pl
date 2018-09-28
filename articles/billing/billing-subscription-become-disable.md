@@ -16,12 +16,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/11/2018
 ms.author: cwatson
-ms.openlocfilehash: 81f4830691f423e51d6c1f0b71a8fc62160ea92e
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 3fc7e316289201f5a800b56a7dc63f559c1f90a2
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393013"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422664"
 ---
 # <a name="why-is-my-azure-subscription-disabled-and-how-do-i-reactivate-it"></a>Dlaczego Moja subskrypcja platformy Azure jest wyłączona i jak go uaktywnić?
 
@@ -38,7 +38,7 @@ Subskrypcje platformy Azure z środkami, np. bezpłatnej wersji próbnej i Visua
 > [!NOTE] 
 > Jeśli masz subskrypcję bezpłatnej wersji próbnej i Usuń limit wydatków, subskrypcja konwertuje płatności na końcu bezpłatnej wersji próbnej. Zachowasz pozostałe środki pełną 30 dni po utworzeniu subskrypcji. Masz również dostęp do bezpłatnych usług przez 12 miesięcy.
 
-Aby monitorować i zarządzać działania rozliczeniowe dla platformy Azure, zobacz [zapobieganie powstawaniu nieoczekiwanych kosztów za pomocą rozliczeń platformy Azure i zarządzania kosztami](billing-getting-started.md) i [Konfigurowanie alertów dla Twojej subskrypcji Microsoft Azure billing](billing-set-up-alerts.md).
+Aby monitorować i zarządzać działania rozliczeniowe dla platformy Azure, zobacz [zapobieganie powstawaniu nieoczekiwanych kosztów za pomocą rozliczeń platformy Azure i zarządzania kosztami](billing-getting-started.md).
 
 
 ## <a name="your-bill-is-past-due"></a>Rachunek jest zaległa

@@ -5,19 +5,19 @@ services: databox
 author: alkohli
 ms.service: databox
 ms.topic: article
-ms.date: 08/28/2018
+ms.date: 09/27/2018
 ms.author: alkohli;
 ms.component: ''
-ms.openlocfilehash: afb7de78a30367b0cc12e621019f1e8be975e63f
-ms.sourcegitcommit: 63613e4c7edf1b1875a2974a29ab2a8ce5d90e3b
+ms.openlocfilehash: 9bab8a55301a5eb40b38bec984205fff2a52559e
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/29/2018
-ms.locfileid: "43191622"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422817"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Otwórz bilet pomocy technicznej urządzenia Azure Data Box 
 
-Jeśli napotkasz jakiekolwiek problemy z usługą Azure Data Box można utworzyć żądania obsługi, aby uzyskać pomoc techniczną. Ten artykuł przeprowadzi Cię przez:
+Ten artykuł dotyczy usługi Azure Data Box i dysku Azure Data Box, które są zarządzane przez usługę Azure Data Box. Jeśli napotkasz jakiekolwiek problemy z usługą Azure Data Box można utworzyć żądania obsługi, aby uzyskać pomoc techniczną. Ten artykuł przeprowadzi Cię przez:
 
 * Jak utworzyć żądanie pomocy technicznej.
 * Jak zarządzać żądanie zasady świadczenia pomocy technicznej z poziomu portalu.

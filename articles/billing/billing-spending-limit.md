@@ -14,18 +14,16 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
-ms.openlocfilehash: 20b664e8a194c394f90b1d060dbd081fc1507528
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 614102d65407485d31963afa9185400938a7d95b
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395614"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423089"
 ---
 # <a name="understand-azure-spending-limit-and-how-to-remove-it"></a>Zrozumienie limicie wydatków i sposobach jego usuwania
 
 Istnieje limit wydatków w usłudze Azure, aby uniknąć wydatków za pośrednictwem wynikające z kwoty kredytu. Wszyscy nowi klienci, którzy utworzą konto w wersji próbnej lub ofert obejmujących środki przez wiele miesięcy mają limit wydatków, domyślnie włączona. Limit wydatków wynosi 0 USD. Nie można zmienić. Limit wydatków jest niedostępny na przykład dla subskrypcji korzystających z płatności zgodnie z rzeczywistym użyciem i planów zobowiązań. Zobacz [pełną listę ofert platformy Azure i dostępność limitu wydatków](https://azure.microsoft.com/support/legal/offer-details/).
-
-**Szukasz alertów dotyczących rozliczeń?** Zobacz [Konfigurowanie alertów dotyczących rozliczeń lub środków dla subskrypcji platformy Azure](billing-set-up-alerts.md).
 
 ## <a name="what-happens-when-i-reach-the-spending-limit"></a>Co się dzieje w przypadku osiągnięcia limitu wydatków?
 
@@ -78,7 +76,7 @@ Ta funkcja jest dostępna tylko wtedy, gdy limit wydatków został usunięty prz
 
 ### <a name="how-do-i-set-a-custom-spending-limit"></a>Jak ustawić niestandardowe limitu wydatków?
 
-Nie mamy już dziś możesz wydać limity niestandardowe. Jednak można zgodzić się na [Użyj alerty dotyczące rozliczeń do kontroli swoje wydatki](billing-set-up-alerts.md).
+Limity wydatków niestandardowe nie są dostępne.
 
 ### <a name="does-the-spending-limit-prevent-all-charges-from-azure"></a>Limit wydatków uniemożliwia wszystkie opłaty z platformy Azure?
 

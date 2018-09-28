@@ -17,12 +17,12 @@ ms.topic: conceptual
 ms.date: 06/15/2018
 ms.author: cwatson
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 20da1eb7b71c625dc83c52b30020f38992819e95
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 7e9b5d1a84417cf6e6264211ea6e542ab712f9fe
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395359"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422608"
 ---
 # <a name="transfer-ownership-of-an-azure-subscription-to-another-account"></a>Przenieść własność subskrypcji platformy Azure do innego konta
 
@@ -82,7 +82,6 @@ Administrator przedsiębiorstwa może przenieść własność subskrypcji w rama
    1. Certyfikaty zarządzania, które Przyznaj użytkownikowi prawa administratora do zasobów subskrypcji. Aby uzyskać więcej informacji, zobacz [tworzenie i przekazywanie certyfikatów zarządzania dla platformy Azure](../cloud-services/cloud-services-certs-create.md)
    1. Klucze dostępu dla usług, takich jak magazyn. Aby uzyskać więcej informacji, zobacz [kontach magazynu Azure — informacje](../storage/common/storage-create-storage-account.md)
    1. Poświadczenia dostępu zdalnego dla usług, takich jak Azure Virtual Machines. 
-1. [Aktualizuj alerty dotyczące rozliczeń dla tej subskrypcji](billing-set-up-alerts.md) na [Centrum konta platformy Azure](https://account.windowsazure.com/Subscriptions). 
 1. Jeśli pracujesz z partnerem, należy wziąć pod uwagę zaktualizowaniu Identyfikatora partnera w ramach tej subskrypcji. Można zaktualizować Identyfikatora partnera w [witryny Azure portal](https://portal.azure.com).
 
 <a id="supported"></a>

@@ -8,12 +8,12 @@ ms.service: service-bus-messaging
 ms.topic: article
 ms.date: 09/06/2018
 ms.author: spelluru
-ms.openlocfilehash: ccdd17bf5a6b3ff00fd3fdada8f4ae02a071274c
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 2ca2063158634dfa42da094b77c70a2730e82176
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392455"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423174"
 ---
 # <a name="partitioned-queues-and-topics"></a>Partycjonowane kolejki i tematy
 
@@ -140,7 +140,7 @@ Usługa Service Bus obsługuje wiadomości automatycznego przekazywania z, aby n
 
 Obecnie Usługa Service Bus nakłada następujące ograniczenia dotyczące partycjonowane kolejki i tematy:
 
-* Partycjonowane kolejki i tematy nie są obsługiwane w warstwie Premium obsługi komunikatów.
+* Partycjonowane kolejki i tematy nie są obsługiwane w warstwie Premium obsługi komunikatów. Sesje są obsługiwane w warstwie Premium przy użyciu identyfikatora sesji. 
 * Partycjonowane kolejki i tematy nie obsługują wysyłanie wiadomości, które należą do różnych sesji w ramach jednej transakcji.
 * Obecnie w usłudze Service Bus można utworzyć maksymalnie 100 partycjonowanych kolejek lub tematów w każdej przestrzeni nazw. Każdy podzieleniu kolejki lub tematu, liczy się do limitu przydziału 10 000 jednostek na obszar nazw (nie ma zastosowania do warstwy Premium).
 

@@ -7,16 +7,16 @@ ms.date: 9/18/2018
 ms.topic: conceptual
 ms.service: azure-monitor
 ms.component: alerts
-ms.openlocfilehash: 1ec47ddf5769dd8ed624277a86db57f449581b90
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 586ced5b239b77dd9ae596a754613a66cee371a9
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948693"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405924"
 ---
 # <a name="understand-how-metric-alerts-work-in-azure-monitor"></a>Zrozumienie, jak metryki, alerty pracy w usłudze Azure Monitor
 
-Alerty metryk w usłudze Azure Monitor działać na podstawie metryk wielowymiarowych. Metryki te mogą być metryk platformy, metryki niestandardowe (wersja zapoznawcza), popularnych dzienników z usługi Log Analytics na metrykach standardowych metryk usługi Application Insights. Alerty metryki oceny w regularnych odstępach czasu, aby sprawdzić, czy warunki w jednym węźle lub metryki szeregów czasowych są spełnione i otrzymywać powiadomienia, gdy są spełnione ocen. Alerty metryki są stanowe oznacza to, że ich tylko wysyłacie powiadomienia po zmianie stanu.
+Alerty metryk w usłudze Azure Monitor działać na podstawie metryk wielowymiarowych. Metryki te mogą być metryk platformy [metryki niestandardowe](metrics-custom-overview.md), [popularnych dzienników z usługi Log Analytics jest konwertowana na metryki](monitoring-metric-alerts-logs.md), standardowych metryk usługi Application Insights. Alerty metryki oceny w regularnych odstępach czasu, aby sprawdzić, czy warunki na co najmniej jeden metryki szeregów czasowych są spełnione i otrzymywać powiadomienia, gdy są spełnione ocen. Alerty metryki są stanowe, czyli one tylko wysyłacie powiadomienia po zmianie stanu.
 
 ## <a name="how-do-metric-alerts-work"></a>Jak działają alerty metryki
 
@@ -75,11 +75,17 @@ Załóżmy, że, masz aplikację sieci web, która ma do czynienia z ogromną ż
 
 Ta reguła będzie automatycznie monitorować wszystkie wartości tj wystąpienia można monitorować wystąpień, jak pojawiają się bez konieczności modyfikowania usługi reguła alertu metryki ponownie.
 
-### <a name="monitoring-multiple-resource-using-metric-alerts"></a>Monitorowanie wielu zasobów przy użyciu alertów dotyczących metryk
+### <a name="monitoring-multiple-resources-using-metric-alerts"></a>Monitorowanie wielu zasobów przy użyciu alertów dotyczących metryk
 
-Ponieważ jak już wspomniano w poprzedniej sekcji, istnieje możliwość mają jedną regułę alertu metryki monitorującego każda kombinacja poszczególnych wymiaru (tj.) Seria metryki czasu). Jest jednak nadal ograniczona do zrobienia tego jednego zasobu naraz. Alerty metryki teraz obsługują także monitorowanie wielu zasobów z jedną regułą w wersji zapoznawczej. Jeśli masz 100 maszyn wirtualnych w ramach subskrypcji, ta nowa funkcja pomaga szybko skonfigurować monitorowanie dla nich. 
+Ponieważ jak już wspomniano w poprzedniej sekcji, istnieje możliwość mają jedną regułę alertu metryki monitorującego każda kombinacja poszczególnych wymiaru (tj.) Seria metryki czasu). Jednak wcześniej było nadal ograniczona do zrobienia tego jednego zasobu naraz. Usługa Azure Monitor obsługuje także monitorowanie wielu zasobów przy użyciu jednej reguły alertu metryki. Ta funkcja jest obecnie w wersji zapoznawczej i obsługiwana tylko dla maszyn wirtualnych. Ponadto pojedynczy alert dotyczący metryki można monitorować zasoby w jednym regionie platformy Azure.
 
-Ta funkcja jest obecnie dostępna w wersji zapoznawczej. Tworzenie reguł alertów dotyczących metryk, które monitorują wiele zasobów nie jest obecnie obsługiwane za pośrednictwem witryny Azure portal. Możesz utworzyć te reguły za pomocą szablonów usługi Azure Resource Manager.
+Można określić zakres monitorowania, pojedynczy alert dotyczący metryki w jednym z trzech sposobów:
+
+- jako listę maszyn wirtualnych w jednym regionie platformy Azure w ramach subskrypcji
+- Wszystkie maszyny wirtualne (w jednym regionie platformy Azure) w co najmniej jedną grupę zasobów w ramach subskrypcji
+- Wszystkie maszyny wirtualne (w jednym regionie platformy Azure) w jednej subskrypcji
+
+Tworzenie reguł alertów dotyczących metryk, które monitorują wiele zasobów nie jest obecnie obsługiwane za pośrednictwem witryny Azure portal. Możesz utworzyć te reguły za pomocą [szablonów usługi Azure Resource Manager](monitoring-create-metric-alerts-with-templates.md#resource-manager-template-for-metric-alert-that-monitors-multiple-resources). Otrzymasz poszczególnych powiadomień dla każdej maszyny wirtualnej. 
 
 ## <a name="typical-latency"></a>Typowy czas oczekiwania
 

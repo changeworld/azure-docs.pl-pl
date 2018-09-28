@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/16/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8da582750b5e20ddd7018f59292e7342f1628c8c
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 9ef0b3d9ae0cea5082a5c764012958f02113fe9a
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39425387"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408491"
 ---
 # <a name="troubleshoot-common-azure-deployment-errors-with-azure-resource-manager"></a>Rozwiąż typowe błędy wdrażania na platformie Azure przy użyciu usługi Azure Resource Manager
 
@@ -32,7 +32,7 @@ W tym artykule opisano niektóre typowe błędy wdrażania na platformie Azure, 
 | ---------- | ---------- | ---------------- |
 | AccountNameInvalid | Postępuj zgodnie z ograniczenia nazewnictwa dla kont magazynu. | [Rozpoznać nazwę konta magazynu](resource-manager-storage-account-name-errors.md) |
 | AccountPropertyCannotBeSet | Sprawdź właściwości konta dostępnego magazynu. | [storageAccounts](/azure/templates/microsoft.storage/storageaccounts) |
-| AllocationFailed | Klaster lub regionie nie ma dostępnych zasobów, lub nie obsługuje żądanego rozmiaru maszyny Wirtualnej. Ponów żądanie w późniejszym czasie, lub żądania innego rozmiaru maszyny Wirtualnej. | [Problemy z aprowizacji i alokacji dla systemu Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md), [problemy z aprowizacji i alokacji w Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) i [Rozwiązywanie problemów z błędami alokacji](../virtual-machines/windows/allocation-failure.md)|
+| AllocationFailed | Klaster lub regionie nie ma dostępnych zasobów, lub nie obsługuje żądanego rozmiaru maszyny Wirtualnej. Ponów żądanie w późniejszym czasie, lub żądania innego rozmiaru maszyny Wirtualnej. | [Problemy z aprowizacji i alokacji dla systemu Linux](../virtual-machines/linux/troubleshoot-deployment-new-vm.md), [problemy z aprowizacji i alokacji w Windows](../virtual-machines/windows/troubleshoot-deployment-new-vm.md) i [Rozwiązywanie problemów z błędami alokacji](../virtual-machines/troubleshooting/allocation-failure.md)|
 | AnotherOperationInProgress | Poczekaj na zakończenie operacji jednoczesnych. | |
 | AuthorizationFailed | Twoje konto lub jednostki usługi nie ma wystarczające uprawnienia dostępu do ukończenia wdrażania. Sprawdź, Twoje konto należy do roli, a jego dostęp dla zakresu wdrożenia. | [Kontrola dostępu oparta na rolach na platformie Azure](../role-based-access-control/role-assignments-portal.md) |
 | BadRequest | Wysłano wartości wdrożenia, które nie spełniają oczekiwań przez usługę Resource Manager. Sprawdź komunikat o stanie wewnętrzny, aby uzyskać pomoc dotyczącą rozwiązywania problemów. | [Dokumentacja dotycząca szablonów](/azure/templates/) i [obsługiwane lokalizacje](resource-manager-templates-resources.md#location) |

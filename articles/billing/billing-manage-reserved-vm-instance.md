@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/08/2018
 ms.author: cwatson
-ms.openlocfilehash: ca880ea273552198b4bc84cbe594489ef0adf5e0
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 0b19bb0d77bb600258596ce369713464641a7d2f
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393200"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423242"
 ---
 # <a name="manage-reservations-for-azure-resources"></a>Zarządzanie rezerwacji dla zasobów platformy Azure
 
@@ -28,7 +28,7 @@ Jeśli zakupiono Azure Reserved Virtual Machine Instances, możesz zmienić usta
 
 ## <a name="change-the-scope-for-a-reservation"></a>Zmień zakres dla rezerwacji
 
- Rabat związany z rezerwacją ma zastosowanie do maszyn wirtualnych, baz danych SQL lub innych zasobów, która pasuje do rezerwacji i uruchamiane w ramach zakresu rezerwacji. Zakres rezerwacji może być pojedynczej subskrypcji, czy wszystkie subskrypcje w kontekstu rozliczeń. Jeśli zakres jest ustawiona na jedną subskrypcję, rezerwacja jest dopasowany do uruchomionego zasobów w wybranej subskrypcji. Jeśli ustawiono zakres udostępniony, Azure pasuje rezerwacji do zasobów, które są uruchamiane w przypadku wszystkich subskrypcji w ramach kontekstu rozliczeń. Kontekstu rozliczeń zależy od subskrypcji zakupu rezerwacji.
+ Rabat związany z rezerwacją ma zastosowanie do maszyn wirtualnych, baz danych SQL, Azure Cosmos DB i innych zasobów, która pasuje do rezerwacji i uruchamiane w ramach zakresu rezerwacji. Zakres rezerwacji może być pojedynczej subskrypcji, czy wszystkie subskrypcje w kontekstu rozliczeń. Jeśli zakres jest ustawiona na jedną subskrypcję, rezerwacja jest dopasowany do uruchomionego zasobów w wybranej subskrypcji. Jeśli ustawiono zakres udostępniony, Azure pasuje rezerwacji do zasobów, które są uruchamiane w przypadku wszystkich subskrypcji w ramach kontekstu rozliczeń. Kontekstu rozliczeń zależy od subskrypcji zakupu rezerwacji.
 
 Aby zaktualizować zakresu rezerwacji:
 
@@ -122,6 +122,7 @@ Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące art
 - [Co to jest Azure rezerwacje?](billing-save-compute-costs-reservations.md)
 - [Przedpłaty dotyczące maszyn wirtualnych przy użyciu wystąpienia zarezerwowane maszyn wirtualnych platformy Azure](../virtual-machines/windows/prepay-reserved-vm-instances.md)
 - [Zapłać z góry za zasoby obliczeniowe bazy danych SQL Database o pojemności usługi Azure SQL Database, zarezerwowane](../sql-database/sql-database-reserved-capacity.md)
+- [Zapłać z góry za zasoby usługi Azure Cosmos DB z pojemnością zarezerwowane usługi Azure Cosmos DB](../cosmos-db/cosmos-db-reserved-capacity.md)
 - [Zapłać z góry za plany oprogramowania SUSE z listy zastrzeżeń platformy Azure](../virtual-machines/linux/prepay-suse-software-charges.md)
 - [Zrozumienie, jak jest stosowany rabat związany z rezerwacją maszyny Wirtualnej](billing-understand-vm-reservation-charges.md)
 - [Zrozumienie, jak jest stosowany rabat plan oprogramowania SUSE Linux Enterprise](../billing/billing-understand-suse-reservation-charges.md)

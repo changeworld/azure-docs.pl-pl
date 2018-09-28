@@ -5,15 +5,15 @@ services: container-registry
 author: mmacy
 manager: jeconnoc
 ms.service: container-registry
-ms.topic: quickstart
-ms.date: 04/10/2018
+ms.topic: article
+ms.date: 09/27/2018
 ms.author: marsma
-ms.openlocfilehash: a3932ff621782b8ab97f27ef052aeee8e1d2a3ac
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
-ms.translationtype: HT
+ms.openlocfilehash: 9bb1f7682338f1d9e591ed1350e1940d85462bd1
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39423508"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409341"
 ---
 # <a name="best-practices-for-azure-container-registry"></a>Najlepsze rozwiązania dla usługi Azure Container Registry
 
@@ -66,33 +66,27 @@ Aby uzyskać szczegółowe informacje o uwierzytelnianiu w usłudze Azure Contai
 
 Ograniczenia magazynu każdej [jednostki SKU rejestru kontenerów][container-registry-skus] służą zachowaniu zgodności z typowym scenariuszem: **Podstawowa** służąca do rozpoczynania pracy, **Standardowa** przeznaczona do większości aplikacji produkcyjnych oraz **Premium** zapewniająca wydajność w hiperskali i [replikację geograficzną][container-registry-geo-replication]. W ciągu cyklu życia rejestru należy zarządzać jego rozmiarem, okresowo usuwając nieużywaną zawartość.
 
-Bieżące użycie rejestru można znaleźć w obszarze **Przegląd** rejestru kontenerów w witrynie Azure Portal:
+Użyj polecenia interfejsu wiersza polecenia Azure [az acr show użycia] [ az-acr-show-usage] do wyświetlenia bieżącej rozmiarem rejestru:
+
+```console
+$ az acr show-usage --resource-group myResourceGroup --name myregistry --output table
+NAME      LIMIT         CURRENT VALUE    UNIT
+--------  ------------  ---------------  ------
+Size      536870912000  185444288        Bytes
+Webhooks  100                            Count
+```
+
+Możesz również znaleźć używanej w bieżącej pamięci **Przegląd** rejestru w witrynie Azure portal:
 
 ![Informacje o użyciu rejestru w witrynie Azure Portal][registry-overview-quotas]
 
-Możesz zarządzać rozmiarem rejestru za pomocą [interfejsu wiersza polecenia platformy Azure][azure-cli] lub witryny [Azure Portal][azure-portal]. Tyko zarządzane jednostki SKU (warstw Podstawowa, Standardowa i Premium) obsługują usuwanie repozytoriów i obrazów. W rejestrze klasycznym nie można usuwać repozytoriów, obrazów ani tagów.
+### <a name="delete-image-data"></a>Usuń obraz danych
 
-### <a name="delete-in-azure-cli"></a>Usuwanie w interfejsie wiersza polecenia platformy Azure
+Usługa Azure Container Registry obsługuje kilka metod, usuwania danych obrazu z rejestru kontenerów. Można usunąć obrazy według tagu lub skrótu manifestu lub usunąć całego repozytorium.
 
-Repozytorium lub znajdującą się w nim zawartość można usunąć za pomocą polecenia [az acr repository delete][az-acr-repository-delete].
+Aby uzyskać szczegółowe informacje na temat usuwania danych obrazu z rejestru, w tym nieoznakowany (nazywane czasem "delegujące" lub "oddzielone") obrazów, zobacz [usuwanie obrazów kontenerów w usłudze Azure Container Registry](container-registry-delete.md).
 
-Aby usunąć repozytorium, wraz ze wszystkimi znajdującymi się w nim tagami i danymi warstw obrazów, podaj tylko nazwę repozytorium podczas wykonywania polecenia [az acr repository delete][az-acr-repository-delete]. W następującym przykładzie usuniemy repozytorium *myapplication* oraz wszystkie znajdujące się w nim tagi i dane warstw obrazów:
-
-```azurecli
-az acr repository delete --name myregistry --repository myapplication
-```
-
-Dane obrazów można usunąć z repozytorium także za pomocą argumentów `--tag` i `--manifest`. Aby uzyskać szczegółowe informacje o tych argumentach, zobacz [dokumentację polecenia az acr repository delete][az-acr-repository-delete].
-
-### <a name="delete-in-azure-portal"></a>Usuwanie w witrynie Azure Portal
-
-Aby usunąć repozytorium z rejestru w witrynie Azure Portal, przejdź najpierw do rejestru kontenerów. Następnie w obszarze **USŁUGI** wybierz pozycję **Repozytoria** i kliknij prawym przyciskiem myszy repozytorium, które chcesz usunąć. Wybierz pozycję **Usuń**, aby usunąć repozytorium oraz znajdujące się w nim obrazy platformy Docker.
-
-![Usuwanie repozytorium w witrynie Azure Portal][delete-repository-portal]
-
-W podobny sposób można również usunąć z repozytorium tagi. Przejdź do repozytorium, w obszarze **TAGI** kliknij prawym przyciskiem myszy tag, który chcesz usunąć, i wybierz pozycję **Usuń**.
-
-## <a name="next-steps"></a>Następne kroki
+## <a name="next-steps"></a>Kolejne kroki
 
 Usługa Azure Container Registry jest dostępna w kilku warstwach, nazywanych jednostkami SKU, z których każda oferuje różne możliwości. Aby uzyskać szczegółowe informacje na temat dostępnych jednostek SKU, zobacz [Jednostki SKU usługi Azure Container Registry](container-registry-skus.md).
 
@@ -102,6 +96,7 @@ Usługa Azure Container Registry jest dostępna w kilku warstwach, nazywanych je
 
 <!-- LINKS - Internal -->
 [az-acr-repository-delete]: /cli/azure/acr/repository#az-acr-repository-delete
+[az-acr-show-usage]: /cli/azure/acr#az-acr-show-usage
 [azure-cli]: /cli/azure
 [azure-portal]: https://portal.azure.com
 [container-registry-geo-replication]: container-registry-geo-replication.md

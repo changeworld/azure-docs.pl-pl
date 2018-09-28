@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 04/25/2017
 ms.author: wesmc
-ms.openlocfilehash: 049ae78efee0b5ebdf6bfbe207f8c85d94e9238f
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 631933647e27428349fc1efeb17f62f4614f7f64
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44050072"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423310"
 ---
 # <a name="ssh-support-for-azure-app-service-on-linux"></a>Obsługa protokołu SSH dla usługi Azure App Service w systemie Linux
 
@@ -122,10 +122,10 @@ Jeśli po uruchomieniu już `az extension add` , uruchom [aktualizacji rozszerze
 az extension update --name webapp
 ```
 
-Otwórz połączenie zdalne z usługą aplikacji przy użyciu [Utwórz połączenie zdalne az webapp](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) polecenia. Określ  _\<subskrypcji\_identyfikator >_,  _\<grupy\_name >_ i \_< aplikacji\_nazwa > _ dla twojej aplikacji i Zastąp \<port > numerem portu lokalnego.
+Otwórz połączenie zdalne z usługą aplikacji przy użyciu [Utwórz połączenie zdalne az webapp](/cli/azure/ext/webapp/webapp/remote-connection?view=azure-cli-latest#ext-webapp-az-webapp-remote-connection-create) polecenia. Określ  _\<subskrypcji\_identyfikator >_,  _\<grupy\_name >_ i \_< aplikacji\_nazwa > _ dla aplikacji.
 
 ```azurecli-interactive
-az webapp remote-connection create --subscription <subscription_id> --resource-group <group_name> -n <app_name> -p <port> &
+az webapp remote-connection create --subscription <subscription_id> --resource-group <group_name> -n <app_name> &
 ```
 
 > [!TIP]

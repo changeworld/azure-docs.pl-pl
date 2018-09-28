@@ -2,18 +2,18 @@
 title: Jak dodawać adnotacje do źródeł danych w usłudze Azure Data Catalog
 description: Artykuł porad wyróżnianie jak dodawać adnotacje do zasobów danych w usłudze Azure Data Catalog, w tym przyjazne nazwy, tagów, opisów i ekspertów.
 services: data-catalog
-author: steelanddata
-ms.author: maroche
+author: markingmyname
+ms.author: maghan
 ms.assetid: 5a7e6bb2-863c-4eca-b614-1c814920d9ed
 ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 01/18/2018
-ms.openlocfilehash: a6751a2cbb2a12d0d0ffe1eb0707ad4e8bc45ed8
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 39fd84882b42a1890358991b62afc1e393f6daa9
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43053556"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407836"
 ---
 # <a name="how-to-annotate-data-sources"></a>Jak dodawać adnotacje do źródeł danych
 ## <a name="introduction"></a>Wprowadzenie

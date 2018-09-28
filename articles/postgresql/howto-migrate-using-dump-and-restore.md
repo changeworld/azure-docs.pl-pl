@@ -9,12 +9,12 @@ editor: jasonwhowell
 ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2018
-ms.openlocfilehash: b8d5208992e8f12fae3c010748b2c494e0d50ee8
-ms.sourcegitcommit: 06724c499837ba342c81f4d349ec0ce4f2dfd6d6
+ms.openlocfilehash: b6e6e8eeea7ee442ccdbb0524cafb2f51ff30268
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46465661"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409613"
 ---
 # <a name="migrate-your-postgresql-database-using-dump-and-restore"></a>Migrowanie przy użyciu zrzutu i przywracania bazy danych PostgreSQL
 Możesz użyć [pg_dump](https://www.postgresql.org/docs/9.3/static/app-pgdump.html) można wyodrębnić bazy danych PostgreSQL w pliku zrzutu i [pg_restore](https://www.postgresql.org/docs/9.3/static/app-pgrestore.html) przywrócenie bazy danych PostgreSQL z pliku archiwum, utworzone przez pg_dump.
@@ -36,9 +36,6 @@ Na przykład w przypadku lokalnego serwera i bazy danych o nazwie **testdb** w n
 pg_dump -Fc -v --host=localhost --username=masterlogin --dbname=testdb > testdb.dump
 ```
 
-> [!IMPORTANT]
-> Skopiuj pliki kopii zapasowej do obiektu blob platformy Azure/magazynu i przeprowadzenia odzyskiwania z tego miejsca, którego wartością powinna być o wiele szybciej, niż wykonywanie przywracania w Internecie.
-> 
 
 ## <a name="restore-the-data-into-the-target-azure-database-for-postrgesql-using-pgrestore"></a>Przywracanie danych do docelowej bazy danych Azure przy użyciu pg_restore PostrgeSQL
 Po utworzeniu docelowej bazy danych, można użyć polecenia pg_restore i -d, parametr--dbname do przywrócenia danych do docelowej bazy danych z pliku zrzutu.
@@ -74,7 +71,7 @@ Jednym ze sposobów migracji istniejącej bazy danych postgresql w warstwie do u
     ```
 
 ### <a name="for-the-restore"></a>Dla przywracania
-- Skopiuj pliki kopii zapasowej w sklepie systemu Azure blob/i wykonaj Przywracanie z tego miejsca. Powinna to być szybsze niż podczas przywracania w Internecie. 
+- Zalecamy przenoszenia pliku kopii zapasowej na maszynie Wirtualnej platformy Azure, w tym samym regionie, co usługi Azure Database for postgresql w warstwie serwera podczas migrowania do usługi i czy pg_restore z tej maszyny Wirtualnej w celu zmniejszenia opóźnienia sieci. Zalecamy również utworzeniu maszyny Wirtualnej za pomocą [przyspieszoną sieć](..\virtual-network\create-vm-accelerated-networking-powershell.md) włączone.
 - Należy przeprowadzić już domyślnie, ale Otwieranie pliku zrzutu, aby sprawdzić, czy instrukcje tworzenia indeksu po wstawieniu danych. Jeśli nie jest wymagane, należy przenieść instrukcje tworzenia indeksu po wstawieniu danych.
 - Przywróć z przełącznikami -Fc i -j *#* równoległe przetwarzanie przywracania. *#* jest to liczba rdzeni na serwerze docelowym. Możesz też spróbować z *#* równa dwa razy liczbę rdzeni serwera docelowego, aby zobaczyć wpływ. Na przykład:
 

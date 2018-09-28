@@ -7,15 +7,15 @@ manager: femila
 cloud: azure-stack
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/22/2018
+ms.date: 09/27/2018
 ms.author: jeffgilb
 ms.reviewer: adshar
-ms.openlocfilehash: a36609ae63351070bb28469d9ccf1f3deb7bc6ff
-ms.sourcegitcommit: a62cbb539c056fe9fcd5108d0b63487bd149d5c3
+ms.openlocfilehash: 5a9621ef9a8d6c545617e5bf3ef6f4197b70be88
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42616953"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419612"
 ---
 # <a name="azure-stack-diagnostics-tools"></a>Narzędzia diagnostyczne w usłudze Azure Stack
 
@@ -124,7 +124,7 @@ if($s)
  |ACSFabric|DatacenterIntegration|KeyVaultControlPlane|SeedRingServices|
  |ACSFrontEnd|DeploymentMachine|KeyVaultDataPlane|SLB|
  |ACSMetrics|DiskRP|KeyVaultInternalControlPlane|SlbVips|
- |ACSMigrationService|Domena|KeyVaultInternalDataPlane|SQL|
+ |ACSMigrationService|Domain|KeyVaultInternalDataPlane|SQL|
  |ACSMonitoringService|ECE|KeyVaultNamingService|SRP|
  |ACSSettingsService|EventAdminRP|MDM|Magazyn|
  |ACSTableMaster|EventRP|MetricsAdminRP|StorageAccounts|
@@ -143,14 +143,6 @@ if($s)
  |Chmura|Dostawca tożsamości|OnboardRP|     |   
  |Klaster|międzynarodowych nazw domen.|ŚRODOWISKA PXE|     |
  |   |   |   |    |
-
-
-### <a name="bkmk_gui"></a>Zbieranie dzienników przy użyciu graficznego interfejsu użytkownika
-Zamiast udostępniać wymaganych parametrów polecenia cmdlet Get-AzureStackLog do pobierania dzienników usługi Azure Stack, można również korzystać z dostępnych narzędzi typu open source usługi Azure Stack znajduje się w głównym usługi Azure Stack narzędzia narzędzia repozytorium GitHub na http://aka.ms/AzureStackTools.
-
-**ERCS_AzureStackLogs.ps1** skrypt programu PowerShell jest przechowywany w repozytorium GitHub narzędzi i jest aktualizowana w regularnych odstępach czasu. Aby upewnić się, że masz najnowszą wersją dostępną, należy pobrać go bezpośrednio http://aka.ms/ERCS. Pracy administracyjnej sesji programu PowerShell, skrypt łączy do endpoint uprzywilejowanych i uruchamia Get AzureStackLog z podanych parametrów. Jeśli nie dostarczono żadnych parametrów, skrypt domyślnie monitowania o parametry za pomocą graficznego interfejsu użytkownika.
-
-Aby dowiedzieć się więcej na temat skryptu programu ERCS_AzureStackLogs.ps1 PowerShell, możesz obejrzeć [krótki film wideo](https://www.youtube.com/watch?v=Utt7pLsXEBc) lub wyświetlić skryptu [pliku readme](https://github.com/Azure/AzureStack-Tools/blob/master/Support/ERCS_Logs/ReadMe.md) znajduje się w repozytorium GitHub narzędzia usługi Azure Stack. 
 
 ### <a name="additional-considerations"></a>Dodatkowe zagadnienia
 

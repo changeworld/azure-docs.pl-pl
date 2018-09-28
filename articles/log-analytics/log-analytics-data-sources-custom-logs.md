@@ -12,15 +12,15 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 05/27/2018
+ms.date: 09/27/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 831b52a27a1ccfc349b9b54f8c3d874e41ddc322
-ms.sourcegitcommit: f86e5d5b6cb5157f7bde6f4308a332bfff73ca0f
+ms.component: ''
+ms.openlocfilehash: 5eab8e4bf6b1aa90a9eef3e26dfc3020e3e3179b
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/31/2018
-ms.locfileid: "39363147"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423514"
 ---
 # <a name="custom-logs-in-log-analytics"></a>Dzienniki niestandardowe w usłudze Log Analytics
 Źródło danych dzienników niestandardowych w usłudze Log Analytics można zbierać zdarzenia z plików tekstowych na komputerach z systemami Windows i Linux. Wiele aplikacji rejestrować informacje w plikach tekstowych zamiast standardowymi usługami rejestrowania, takie jak dziennik zdarzeń Windows lub Syslog.  Po zebraniu można analizować każdy rekord w Zaloguj się do poszczególnych pól za pomocą [pól niestandardowych](log-analytics-custom-fields.md) funkcji usługi Log Analytics.
@@ -40,6 +40,10 @@ Pliki dziennika mają być zbierane musi spełniać następujące kryteria.
 >Jeśli istnieją zduplikowane wpisy w pliku dziennika, usługi Log Analytics będzie zbierać je.  Jednak wyniki wyszukiwania będą niespójne gdzie wyników filtrowania Pokaż więcej zdarzeń niż liczba wyników.  Ważne jest, sprawdź poprawność dziennika, aby określić, jeśli aplikacja, która tworzy on jest przyczyną tego zachowania i rozwiązać problem, jeśli jest to możliwe, przed utworzeniem definicji kolekcji dzienników niestandardowych.  
 >
   
+>[!NOTE]
+> Jeśli aplikacja tworzy nowy plik dziennika, każdego dnia lub gdy osiągnie pewien rozmiar, agenta usługi Log Analytics dla systemu Linux nie wykrywa ich aż po ponownym uruchomieniu. Jest to spowodowane agenta, tylko wylicza i rozpoczyna monitorowanie pod kątem wzorców z określonym dzienników w przypadku uruchamiania i w związku z tym należy zaplanować wokół niego, automatyzując ponownego uruchomienia agenta.  Za pomocą agenta usługi Log Analytics dla Windows nie ma tego ograniczenia.  
+>
+
 ## <a name="defining-a-custom-log"></a>Definiowanie dziennika niestandardowego
 Poniższa procedura umożliwia zdefiniowanie niestandardowego pliku dziennika.  Przewiń do końca tego artykułu przewodnik przykładowej Dodawanie dziennika niestandardowego.
 
@@ -66,9 +70,13 @@ Jeśli jest używany ogranicznik sygnatury czasowej, właściwość TimeGenerate
 5. Kliknij przycisk **Dalej**.
 
 ### <a name="step-3-add-log-collection-paths"></a>Krok 3. Dodaj ścieżki zbierania dzienników
-Należy zdefiniować jedną lub więcej ścieżek na agencie, gdzie można znaleźć dziennika niestandardowego.  Możesz albo podać określoną ścieżkę i nazwę pliku dziennika, lub można określić ścieżkę symbolem wieloznacznym dla nazwy.  To obsługuje aplikacje, które dziennie, lub gdy jeden plik osiągnie określony rozmiar, Utwórz nowy plik.  Możesz również podać wiele ścieżek dla jednego pliku dziennika.
+Należy zdefiniować jedną lub więcej ścieżek na agencie, gdzie można znaleźć dziennika niestandardowego.  Możesz albo podać określoną ścieżkę i nazwę pliku dziennika, lub można określić ścieżkę symbolem wieloznacznym dla nazwy. To obsługuje aplikacje, które dziennie, lub gdy jeden plik osiągnie określony rozmiar, Utwórz nowy plik. Możesz również podać wiele ścieżek dla jednego pliku dziennika.
 
 Na przykład aplikacja może utworzyć pliku dziennika każdego dnia z datą uwzględniony w nazwie, jak log20100316.txt. Wzorzec dla takich dziennika może być *dziennika\*.txt* która będzie stosowana dla każdego pliku dziennika, po zastosowaniu nazewnictwa schematu.
+
+>[!NOTE]
+> Jeśli aplikacja tworzy nowy plik dziennika, każdego dnia lub gdy osiągnie pewien rozmiar, agenta usługi Log Analytics dla systemu Linux nie wykrywa ich aż po ponownym uruchomieniu. Jest to spowodowane agenta, tylko wylicza i rozpoczyna monitorowanie pod kątem wzorców z określonym dzienników w przypadku uruchamiania i w związku z tym należy zaplanować wokół niego, automatyzując ponownego uruchomienia agenta.  Za pomocą agenta usługi Log Analytics dla Windows nie ma tego ograniczenia.  
+>
 
 Poniższa tabela zawiera przykłady prawidłowych do określenia różnych plikach dziennika.
 

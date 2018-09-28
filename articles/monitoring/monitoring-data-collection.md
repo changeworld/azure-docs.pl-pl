@@ -7,17 +7,17 @@ manager: carmonm
 editor: tysonn
 ms.service: monitoring
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/11/2018
+ms.date: 09/27/2018
 ms.author: bwren
-ms.openlocfilehash: d71dc77eac89fef3ae7f8aeb69a05197456ac865
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 19a611ca88310f06503bea2b8606699fe3e1c709
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962934"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47406044"
 ---
 # <a name="monitoring-data-collected-by-azure-monitor"></a>Dane monitorowania zbierane przez usługi Azure Monitor
 [Usługa Azure Monitor](../azure-monitor/overview.md) jest to usługa, która pomaga monitorować Twoje aplikacje i zasoby korzystają z. Decydujące znaczenie dla tej funkcji jest przechowywanie danych telemetrycznych i innych danych z monitorowanych zasobów. Ten artykuł zawiera pełny opis jak te dane są przechowywane i używane przez usługi Azure Monitor.
@@ -155,7 +155,7 @@ Usługa log Analytics może zbierać dane z różnych źródeł, zarówno w obr�
 Następujące zadania, które można wykonywać za pomocą dzienników:
 
 - Użyj [strony Log Analytics](../log-analytics/query-language/get-started-analytics-portal.md) w witrynie Azure portal do pisania zapytań, analizowanie danych dzienników.  Wyniki renderowane jako tabele lub wykresy, aby przypiąć [pulpitu nawigacyjnego platformy Azure](../azure-portal/azure-portal-dashboards.md).
-- Konfigurowanie [reguł alertów dzienników](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md) która wyśle powiadomienie, lub trwa [zautomatyzowanej akcji](../monitoring-and-diagnostics/monitoring-action-groups.md) po wyniki zapytania pasują do konkretnego wyniku.
+- Konfigurowanie [reguł alertów dzienników](../monitoring-and-diagnostics/alert-log.md) która wyśle powiadomienie, lub trwa [zautomatyzowanej akcji](../monitoring-and-diagnostics/monitoring-action-groups.md) po wyniki zapytania pasują do konkretnego wyniku.
 - Tworzenie przepływu pracy na podstawie danych w usłudze Log Analytics przy użyciu [Logic Apps]().
 - Eksportowanie wyników kwerendy, aby [usługi Power BI](../log-analytics/log-analytics-powerbi.md) różne wizualizacje i udostępniać użytkownikom spoza platformy Azure.
 - Dostęp do wartości metryk z wiersza polecenia lub niestandardowych aplikacji przy użyciu [poleceń cmdlet programu PowerShell](https://docs.microsoft.com/powershell/module/azurerm.operationalinsights/?view=azurermps-6.8.1) lub [interfejsu API REST](https://dev.loganalytics.io/).
@@ -175,7 +175,7 @@ Możesz uzyskać wskazówki dotyczące zbieranie metryk z zasobów platformy Azu
 ### <a name="logs-to-metrics"></a>Dzienniki, metryki
 Zgodnie z powyższym opisem metryki są bardziej elastyczny niż dzienniki, aby można było utworzyć alerty z mniejszymi opóźnieniami i przy niskich kosztach. Usługa log Analytics zbiera znacznej ilości danych liczbowych, który będzie odpowiedni dla metryk, ale nie są przechowywane w magazynie metryki platformy Azure.  Typowym przykładem są dane dotyczące wydajności zbierane z agentów i rozwiązań do zarządzania. Niektóre z tych wartości mogły zostać skopiowane do magazynu metryk, jeśli są one dostępne dla alertów i analizy przy użyciu Eksploratora metryk.
 
-WYJAŚNIENIE Ta funkcja jest dostępna na [szybciej metryki alertów dotyczących dzienników, obecnie dostępna w ograniczonej publicznej wersji zapoznawczej](https://azure.microsoft.com/blog/faster-metric-alerts-for-logs-now-in-limited-public-preview/). Lista wartości pomocy technicznej znajduje się w temacie [obsługiwanych metod metryki i tworzenia nowych alertów metryk](../monitoring-and-diagnostics/monitoring-near-real-time-metric-alerts.md).
+WYJAŚNIENIE Ta funkcja jest dostępna na [Tworzenie alertów metryk dla dzienników w usłudze Azure Monitor](../monitoring-and-diagnostics/monitoring-metric-alerts-logs.md). Lista wartości pomocy technicznej znajduje się w temacie [metryki obsługiwane z usługą Azure Monitor](../monitoring-and-diagnostics/monitoring-supported-metrics.md#microsoftoperationalinsightsworkspaces).
 
 ## <a name="stream-data-to-external-systems"></a>Data Stream z systemami zewnętrznymi
 Oprócz używania narzędzi na platformie Azure do analizowania danych monitorowania, może być wymagane ją przesłać do zewnętrznego narzędzia, takie jak informacje o zabezpieczeniach i produktów do zarządzania (SIEM) zdarzenia. Przekazywanie ten jest zazwyczaj wykonywane bezpośrednio z monitorowanych zasobów za pomocą [usługi Azure Event Hubs](https://docs.microsoft.com/azure/event-hubs/). 

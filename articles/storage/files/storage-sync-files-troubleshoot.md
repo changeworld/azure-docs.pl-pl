@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: 88c73b3c9fd3ffc0c323b9971e245e6f6d9695a0
-ms.sourcegitcommit: af60bd400e18fd4cf4965f90094e2411a22e1e77
+ms.openlocfilehash: cbfe3022c4ffd03e4ab93682eb14a5a588aa0013
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44095542"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409477"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -236,14 +236,13 @@ Aby wyświetlić te błędy, uruchom **FileSyncErrorsReport.ps1** skrypt program
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Plik został zmieniony podczas synchronizacji, więc musi on zostać ponownie zsynchronizowany. | Nie jest wymagana żadna akcja. |
 
 #### <a name="handling-unsupported-characters"></a>Obsługa nieobsługiwane znaki
-Jeśli **FileSyncErrorsReport.ps1** skrypt programu PowerShell pokazuje błędy spowodowane nieobsługiwane znaki (0x7b kody błędów i 0x8007007b), należy usunąć lub zmienić nazwę znaków na pozycji błędu z odpowiednich plików. Program PowerShell prawdopodobnie zostanie wydrukowana te znaki jako znaki zapytania lub prostokąty pusty, ponieważ większość z tych znaków ma nie standardowych wizualnego kodowania.
+Jeśli **FileSyncErrorsReport.ps1** skrypt programu PowerShell pokazuje błędy spowodowane nieobsługiwane znaki (0x7b kody błędów i 0x8007007b), należy usunąć lub zmienić nazwę znaków na pozycji błędu z odpowiednich plików. Program PowerShell prawdopodobnie zostanie wydrukowana te znaki jako znaki zapytania lub prostokąty pusty, ponieważ większość z tych znaków ma nie standardowych wizualnego kodowania. [Narzędzie przeszedł ocenę](storage-sync-files-planning.md#evaluation-tool) może służyć do identyfikowania znaków, które nie są obsługiwane.
 
 Poniższa tabela zawiera wszystkie znaki unicode, który nie obsługuje jeszcze usługi Azure File Sync.
 
 | Zestaw znaków | Liczba znaków |
 |---------------|-----------------|
 | <ul><li>0x0000009D (polecenie osc systemu operacyjnego)</li><li>0x00000090 (ciąg formantu urządzenia kontrolery domeny)</li><li>0x0000008F (zmiana jednego ss3 trzech)</li><li>0x00000081 (ustawienie wstępne wysokiej oktetu)</li><li>0x0000007F (Usuń del)</li><li>0x0000008D (wystąpień zarezerwowanych odwrotnej wiersz)</li></ul> | 6 |
-| <ul><li>0x0000200F (znak od prawej do lewej)</li><li>0x0000200E (znak od lewej do prawej)</li><li>0x0000202E (zastąpienie od prawej do lewej)</li><li>0x0000202D (od lewej do prawej zastępowania)</li><li>0x0000202C (pop kierunkowe formatowanie)</li><li>0x0000202B (Osadzanie od prawej do lewej)</li><li>0x0000202A (Osadzanie od lewej do prawej)</li></ul> | 7 |
 | 0x0000FDD0 - 0x0000FDEF (arabski prezentacja formularzy a) | 32 |
 | 0x0000FFF0 - 0x0000FFFF (promocje) | 16 |
 | <ul><li>0x0001FFFE - 0x0001FFFF = 2 (nieznakowe)</li><li>0x0002FFFE - 0x0002FFFF = 2 (nieznakowe)</li><li>0x0003FFFE - 0x0003FFFF = 2 (nieznakowe)</li><li>0x0004FFFE - 0x0004FFFF = 2 (nieznakowe)</li><li>0x0005FFFE - 0x0005FFFF = 2 (nieznakowe)</li><li>0x0006FFFE - 0x0006FFFF = 2 (nieznakowe)</li><li>0x0007FFFE - 0x0007FFFF = 2 (nieznakowe)</li><li>0x0008FFFE - 0x0008FFFF = 2 (nieznakowe)</li><li>0x0009FFFE - 0x0009FFFF = 2 (nieznakowe)</li><li>0x000AFFFE - 0x000AFFFF = 2 (nieznakowe)</li><li>0x000BFFFE - 0x000BFFFF = 2 (nieznakowe)</li><li>0x000CFFFE - 0x000CFFFF = 2 (nieznakowe)</li><li>0x000DFFFE - 0x000DFFFF = 2 (nieznakowe)</li><li>0x000EFFFE - 0x000EFFFF = 2 (niezdefiniowany)</li><li>0x000FFFFE - 0x000FFFFF = 2 (dodatkowych użytku prywatnego obszaru)</li></ul> | 30 |
@@ -516,7 +515,7 @@ W przypadku których istnieje wiele na błędy synchronizacji plików, sesje syn
 | **Ciąg błędu** | ECS_E_SYNC_INVALID_PATH |
 | **Wymagana korekta** | Yes |
 
-Upewnij się, ścieżka istnieje, znajduje się na lokalnym woluminie NTFS i nie jest punktem ponownej analizy lub istniejący punkt końcowy serwera.
+Upewnij się, że ścieżka istnieje, znajduje się na lokalnym woluminie NTFS i nie jest punktem ponownej analizy ani istniejącym punktem końcowym serwera.
 
 <a id="-2134376373"></a>**Usługa jest obecnie niedostępna.**  
 | | |

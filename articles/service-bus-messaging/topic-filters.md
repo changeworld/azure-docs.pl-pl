@@ -11,18 +11,18 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 01/26/2018
+ms.date: 09/26/2018
 ms.author: spelluru
-ms.openlocfilehash: a1616150ebf696654bc0ca9a79d39c3877c363d9
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 08a90811356f508eebfed9f88500a694f2fbd83e
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43699390"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47407131"
 ---
 # <a name="topic-filters-and-actions"></a>Filtry tematów i akcje
 
-Subskrybenci mogą definiować wiadomości, które chcą otrzymywać z tematu. Te komunikaty są określane w postaci co najmniej jedną regułę o nazwie subskrypcji. Każda reguła zawiera warunek, który wybiera określone wiadomości i akcji, która oznacza stosowanym wybranego komunikatu. Dla każdego pasującego warunku reguły subskrypcji tworzy kopię wiadomości, która może być inaczej adnotację dla każdej reguły dopasowania.
+Subskrybenci mogą zdefiniować, które komunikaty chcą odbierać z tematu. Te komunikaty są określane w postaci co najmniej jedną regułę o nazwie subskrypcji. Każda reguła zawiera warunek, który wybiera określone wiadomości i akcji, która oznacza stosowanym wybranego komunikatu. Dla każdego pasującego warunku reguły subskrypcja tworzy kopię komunikatu, która może być inaczej adnotowana dla każdej pasującej reguły.
 
 Każda subskrypcja nowo utworzony temat ma regułę początkowej domyślnej subskrypcji. Jeśli nie określisz warunek filtru dla tej reguły, jest zastosowany filtr **true** filtr, który włącza wszystkie komunikaty, należy wybrać do subskrypcji. Domyślna reguła ma żadnej akcji skojarzonych adnotacji.
 
@@ -30,7 +30,7 @@ Usługa Service Bus obsługuje trzy warunki filtru:
 
 -   *Filtry logiczne* — **TrueFilter** i **FalseFilter** albo spowodować, że wszystkie komunikaty o nadchodzących (**true**) lub Brak nadchodzących wiadomości (**false**) należy wybrać dla subskrypcji.
 
--   *Filtry SQL* — **SqlFilter** przechowuje podobnego do SQL wyrażenia warunkowego, które jest obliczane w brokerze przed nadchodzących wiadomości właściwości zdefiniowane przez użytkownika i właściwości systemu. Wszystkie właściwości systemu musi być poprzedzona znakiem `sys.` w wyrażeniu warunkowym. [Podzbioru języka SQL dla warunków filtrowania](service-bus-messaging-sql-filter.md) testy istnienia właściwości (EXISTS), a także — wartości null (IS NULL), operatory logiczne NOT/i/lub, relacyjne, proste Arytmetyka numeryczna i wzorzec zwykłego tekstu dopasowanie za pomocą NOTACJI.
+-   *Filtry SQL* — **SqlFilter** przechowuje podobnego do SQL wyrażenia warunkowego, które jest obliczane w brokerze przed nadchodzących wiadomości właściwości zdefiniowane przez użytkownika i właściwości systemu. Wszystkie właściwości systemu musi być poprzedzona znakiem `sys.` w wyrażeniu warunkowym. [Podzbioru języka SQL dla warunków filtrowania](service-bus-messaging-sql-filter.md) testy istnienia właściwości (`EXISTS`), jak również, jak w przypadku wartości null (`IS NULL`), operator logiczny NOT/i/lub, operatory relacyjne i proste Arytmetyka numeryczna, i dopasowanie wzorca zwykłego tekstu za pomocą `LIKE`.
 
 -   *Filtry korelacji* — **CorrelationFilter** zawiera zestaw warunków, które są dopasowywane do co najmniej jeden komunikat nadchodzących właściwości użytkownika i systemu. Zazwyczaj jest używane do dopasowywania **CorrelationId** właściwości, ale aplikacja może także dopasować **ContentType**, **etykiety**,  **Identyfikator komunikatu**, **ReplyTo**, **ReplyToSessionId**, **SessionId**, **do**i wszelkie zdefiniowane przez użytkownika właściwości. Istnieje dopasowanie, gdy komunikat nadchodzących wartość właściwości jest równa wartości określonej w filtr korelacji. Dla wyrażenia ciągu porównania jest uwzględniana wielkość liter. Podczas określania wielu właściwości dopasowanie, filtr łączy je jako warunku logicznego i, co oznacza dla filtru dopasować, wszystkie warunki muszą być zgodne.
 
@@ -40,7 +40,7 @@ Reguły filtrowania złożonych wymagają możliwości przetwarzania. W szczegó
 
 ## <a name="actions"></a>Akcje
 
-Za pomocą warunków filtrowania SQL, a tylko osobom można zdefiniować akcję, która może dodawać adnotacje komunikat poprzez dodawanie, usuwanie lub zastępowanie właściwości i ich wartości. Akcja [korzysta z wyrażenia podobnego do SQL](service-bus-messaging-sql-filter.md) , luźno leans składni instrukcji SQL UPDATE. Akcja odbywa się w komunikacie po jego dopasowany i przed wybrano komunikat do tematu. Zmiany właściwości wiadomości są prywatne komunikat skopiowane do subskrypcji.
+Za pomocą warunków filtru SQL można zdefiniować akcję, która może dodawać adnotacje komunikat poprzez dodawanie, usuwanie lub zastępowanie właściwości i ich wartości. Akcja [korzysta z wyrażenia podobnego do SQL](service-bus-messaging-sql-filter.md) , luźno leans składni instrukcji SQL UPDATE. Akcja odbywa się w komunikacie po jego dopasowany i przed wybrano komunikat do tematu. Zmiany właściwości wiadomości są prywatne komunikat skopiowane do subskrypcji.
 
 ## <a name="usage-patterns"></a>Wzorce użycia
 
@@ -50,7 +50,7 @@ Filtry i akcje umożliwiają dwie dodatkowe grupy wzorców: partycjonowania i ro
 
 Partycjonowanie używa filtry, aby dystrybuować komunikaty do wielu istniejących subskrypcji tematu w sposób przewidywalny i wzajemnie się wykluczają. Wzór partycjonowania jest używany, gdy system jest skalowana w poziomie do obsługi wielu różnych kontekstach w funkcjonalnie identyczny przedziały, że każdy przechowywania podzbiór danych ogólny; na przykład informacje o profilu klienta. Z podziałem na partycje, wydawca przesyła wiadomość do tematu bez konieczności znajomości partycjonowania modelu. Komunikat jest następnie przenoszony do poprawną subskrypcję, z którego mogą następnie być pobierane przez program obsługi komunikatów w partycji.
 
-Routing wykorzystuje filtry, aby dystrybuować komunikaty do różnych subskrypcji tematu w sposób przewidywalny, ale nie zawsze wyłączności. W połączeniu z [automatycznego przekazywania](service-bus-auto-forwarding.md) funkcji tematu filtry umożliwiają tworzenie, złożonym routingiem wykresów w przestrzeni nazw usługi Service Bus dla dystrybucji komunikatów w regionie platformy Azure. Za pomocą usługi Azure Functions lub Azure Logic Apps, działając jako Most między przestrzeni nazw usługi Azure Service Bus można utworzyć złożonych topologii globalnego dzięki bezpośredniej integracji aplikacji biznesowych.
+Routing wykorzystuje filtry, aby dystrybuować komunikaty do różnych subskrypcji tematu w sposób przewidywalny, ale nie zawsze wyłączności. W połączeniu z [automatycznego przekazywania](service-bus-auto-forwarding.md) funkcji tematu filtry umożliwiają tworzenie, złożonym routingiem wykresów w przestrzeni nazw usługi Service Bus dla dystrybucji komunikatów w regionie platformy Azure. Usługi Azure Functions i Azure Logic Apps, działając jako Most między przestrzeni nazw usługi Azure Service Bus umożliwia tworzenie złożonych topologii globalnych za pomocą bezpośredniej integracji w aplikacjach line-of-business.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
