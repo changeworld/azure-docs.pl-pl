@@ -12,12 +12,12 @@ ms.author: genemi
 ms.reviewer: sstein
 manager: craigg
 ms.date: 09/19/2018
-ms.openlocfilehash: 28f572ee61271c4c81319f7c263172012788765a
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 1e74a0c915471fecb3b8e0662559eb5bfe189b3d
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47055547"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423021"
 ---
 # <a name="deploy-and-explore-a-standalone-single-tenant-application-that-uses-azure-sql-database"></a>Wdrażanie i eksplorowanie oddzielną aplikację pojedynczej dzierżawy, który używa usługi Azure SQL Database
 
@@ -27,7 +27,7 @@ Aplikacja autonomiczna lub wzorzec aplikacji dla dzierżawcy wdraża wystąpieni
 
 W tym samouczku wdrożysz trzy aplikacje autonomiczne trzy dzierżaw do subskrypcji platformy Azure.  Masz pełny dostęp i pracować z poszczególnych składników aplikacji.
 
-Skrypty kodu i zarządzanie źródłowy aplikacji są dostępne w [WingtipTicketsSaaS StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) repozytorium GitHub.
+Skrypty kodu i zarządzanie źródłowy aplikacji są dostępne w [WingtipTicketsSaaS StandaloneApp](https://github.com/Microsoft/WingtipTicketsSaaS-StandaloneApp) repozytorium GitHub. Aplikacja została utworzona za pomocą programu Visual Studio 2015 i nie zostało pomyślnie Otwórz i skompiluj w programie Visual Studio 2017 bez aktualizowania.
 
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:

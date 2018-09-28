@@ -1,6 +1,6 @@
 ---
-title: Usługa rozpoznawania mowy usług Azure Cognitive Services
-description: Dowiedz się, jak dostosować Wymowa za pomocą mowy usług Cognitive Services.
+title: Dostosowywanie Wymowa usług mowy w usłudze Azure Cognitive Services
+description: Dowiedz się, jak dostosować Wymowa usług mowy w usłudze Azure Cognitive Services.
 services: cognitive-services
 author: PanosPeriorellis
 ms.service: cognitive-services
@@ -8,12 +8,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 07/02/2018
 ms.author: panosper
-ms.openlocfilehash: 93fec1ea78263798588a43b2314ffdea736cdbbc
-ms.sourcegitcommit: b5ac31eeb7c4f9be584bb0f7d55c5654b74404ff
+ms.openlocfilehash: a608d1e48112fbb2adb56191eeb7f168de507e77
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/23/2018
-ms.locfileid: "42745355"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47423208"
 ---
 # <a name="enable-custom-pronunciation"></a>Włącz Wymowa niestandardowe
 Za pomocą niestandardowych wymowa, można zdefiniować fonetycznych formularza i wyświetlanie słowa lub terminy. Jest to przydatne do obsługi warunki niestandardowe, takie jak nazwy produktów lub akronimów. Wszystko co potrzebne jest plikiem Wymowa (pliku txt prosty).
@@ -33,7 +33,7 @@ W poniższej tabeli przedstawiono kilka przykładów:
 | CNTK | Zobacz n herbaty k|
 
 ## <a name="requirements-for-the-spoken-form"></a>Wymagania dotyczące mówionej formy
-Mówionej formy musi być pisana małymi literami i co można wymusić podczas importowania. Ponadto należy podać zaewidencjonuje odbierający dane. Nie karty w mówionej formy lub formularz wyświetlania jest dozwolone. Jednak może być bardziej zabronione znaki w formularzu wyświetlania (na przykład ~ i ^).
+Mówionej formy musi być pisana małymi literami i co można wymusić podczas importowania. Należy również podać zaewidencjonuje odbierający dane. Nie karty w mówionej formy lub formularz wyświetlania jest dozwolone. Jednak może być bardziej zabronione znaki w formularzu wyświetlania (na przykład ~ i ^).
 
 Każdy plik txt może mieć wiele wpisów, jak pokazano na poniższej ilustracji:
 
@@ -47,7 +47,7 @@ Wymowa niestandardowego jest obecnie obsługiwane dla języka angielskiego (en U
 | Język | Znaki |
 |---------- |----------|
 | Angielski (en US) | , b, c, d, e, f, g, h, i, "j", k, l, o, p, pytania i odpowiedzi, r, s, t, u, v, w, x, y, z |
-| Niemiecki (de-de) | ä strumień świetlny, znaki ü, ẞ, a, b, c, d, e, f, g, h, i, "j", k, l, o, p, pytania i odpowiedzi, r, s, t, u, v, w, x, y, z |
+| Niemiecki (de-de) | ä strumień świetlny, znaki ü,?, a, b, c, d, e, f, g, h, i, "j", k, l, o, p, pytania i odpowiedzi, r, s, t, u, v, w, x, y, z |
 
 > [!NOTE]
 > Formularz wyświetlania termin (w pliku Wymowa) zapisywane taki sam sposób w zestawie danych dostosowywania języka.
@@ -56,10 +56,10 @@ Wymowa niestandardowego jest obecnie obsługiwane dla języka angielskiego (en U
 Formularz wyświetlania można tylko niestandardowe słowa, czasu trwania umowy, akronim lub wyrazy złożone łączące istniejące słowa. Można również wprowadzić alternatywne wymowy popularne wyrazy. 
 
 >[!NOTE]
->Firma Microsoft nie zaleca się używania tej funkcji, aby sformułować popularnych wyrazów lub zmodyfikować mówionej formy. Zaleca dekodera, aby zobaczyć, czy niektóre nietypowe wyrazów (np. skróty wyrazy techniczne i obce słowa) są niepoprawnie zdekodowane. W takim przypadku należy dodać je do pliku Wymowa niestandardowych. W model języka należy zawsze i tylko używać formularz wyświetlania wyrazu. 
+>Nie zaleca się używania tej funkcji, aby sformułować popularnych wyrazów lub zmodyfikować mówionej formy. Zaleca dekodera, aby zobaczyć, czy niektóre nietypowe wyrazów (np. skróty wyrazy techniczne i obce słowa) są niepoprawnie zdekodowane. W takim przypadku należy dodać je do pliku Wymowa niestandardowych. W model języka należy zawsze i tylko używać formularz wyświetlania wyrazu. 
 
 ## <a name="requirements-for-the-file-size"></a>Wymagania dotyczące rozmiaru pliku
-Rozmiar pliku txt, który zawiera wpisy Wymowa jest ograniczona do 1 megabajtów (MB). Zazwyczaj jest konieczne przekazywanie dużych ilości danych przy użyciu tego pliku. Większość plików niestandardowych Wymowa prawdopodobnie kilku kilobajtów (KB/s) w rozmiarze. Kodowanie pliku txt, dla wszystkich ustawień regionalnych powinna być BOM UTF-8. Angielskie ustawienia regionalne dopuszczalne jest również ANSI.
+Rozmiar pliku txt, który zawiera wpisy Wymowa jest ograniczona do 1 megabajtów (MB). Zazwyczaj nie trzeba przekazywanie dużych ilości danych przy użyciu tego pliku. Większość plików niestandardowych Wymowa prawdopodobnie kilku kilobajtów (KB/s) w rozmiarze. Kodowanie pliku txt, dla wszystkich ustawień regionalnych powinna być BOM UTF-8. Angielskie ustawienia regionalne dopuszczalne jest również ANSI.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Popraw dokładności rozpoznawania, tworząc [niestandardowy model akustyczny](how-to-customize-acoustic-models.md).

@@ -1,129 +1,135 @@
 ---
-title: Wdrażanie modułów Azure IoT Edge | Dokumentacja firmy Microsoft
-description: Więcej informacji na temat sposobu modułów uzyskać wdrażania na urządzenia brzegowe
+title: Wdrożenie modułów dla usługi Azure IoT Edge | Dokumentacja firmy Microsoft
+description: Więcej informacji na temat sposobu modułów wdrożony na urządzeniach brzegowych
 author: kgremban
 manager: timlt
 ms.author: kgremban
-ms.date: 06/06/2018
+ms.date: 09/27/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: f64e6db576b7b1605cc070948a021184fc6ee8ad
-ms.sourcegitcommit: 150a40d8ba2beaf9e22b6feff414f8298a8ef868
+ms.openlocfilehash: 754dafc80a435fbb9f2cee080b29d1765ae935e6
+ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37029264"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47422474"
 ---
-# <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale"></a>Zrozumienie wdrożeń IoT Edge dla urządzeń z jednego lub na dużą skalę
+# <a name="understand-iot-edge-deployments-for-single-devices-or-at-scale"></a>Omówienie wdrożenia usługi IoT Edge dla urządzeń z jednej lub w odpowiedniej skali
 
-Urządzenia brzegowe IoT Azure wykonaj [cykl życia urządzenia] [ lnk-lifecycle] przypomina na inne typy urządzeń IoT:
+Postępuj zgodnie z urządzenia w usłudze Azure IoT Edge [cykl życia urządzenia] [ lnk-lifecycle] przypomina na inne typy urządzeń IoT:
 
-1. Urządzenia brzegowe IoT obsługi administracyjnej, która obejmuje tworzenie obrazu urządzenia z systemem operacyjnym i instalowania [środowiska uruchomieniowego krawędzi IoT][lnk-runtime].
-1. Urządzenia są skonfigurowane do uruchomienia [modułów krawędzi IoT][lnk-modules]i następnie monitorować kondycję. 
-1. Ponadto urządzenia można wycofać gdy są one zastąpione lub staną się nieaktualne.  
+1. Urządzenia usługi IoT Edge obsługi administracyjnej, który obejmuje tworzenie obrazu urządzenia z systemem operacyjnym i instalowanie [środowisko uruchomieniowe usługi IoT Edge][lnk-runtime].
+2. Urządzenia są skonfigurowane do uruchamiania [moduły usługi IoT Edge][lnk-modules], a następnie monitorowane pod kątem kondycji. 
+3. Na koniec urządzeń mogą wycofany, gdy są one zastąpione lub stają się przestarzałe.  
 
-Azure IoT krawędź udostępnia dwa sposoby konfigurowania modułów do uruchamiania na urządzeniach krawędzi IoT: jeden dla rozwoju i szybkie iteracji na jednym urządzeniu (użyto tej metody w samouczkach Azure IoT krawędzi), a drugi do zarządzania dużą floty urządzeń IoT krawędzi. Obie metody są dostępne, w portalu Azure i programowo.
+Usługa Azure IoT Edge zapewnia dwa sposoby konfigurowania modułów do uruchamiania na urządzeniach usługi IoT Edge: jeden dla rozwoju i szybkie iteracje na jednym urządzeniu (Ta metoda jest używana w usłudze Azure IoT Edge [samouczki](tutorial-deploy-function.md)), i jedną do zarządzania dużą flot programu Urządzenia usługi IoT Edge. Obie te metody są dostępne, w witrynie Azure portal lub programowo. Dla docelowych grup lub dużą liczbę urządzeń, należy określić urządzeń, które chcesz wdrożyć moduły przy użyciu [tagi](https://docs.microsoft.com/azure/iot-edge/how-to-deploy-monitor#identify-devices-using-tags) w bliźniaczej reprezentacji urządzenia. Poniższe kroki porozmawiać na temat wdrożenia w grupie urządzeń stanu Waszyngton identyfikowane za pomocą właściwości tagów. 
 
-Ten artykuł skupia się na konfiguracji i monitorowania etapów floty urządzeń, nazywane zbiorczo krawędzi IoT wdrożeń automatycznych. Ogólne kroki wdrożenia są następujące:   
+Ten artykuł koncentruje się na konfiguracji i monitorowania etapów do floty urządzeń, zbiorczo określany jako automatycznego wdrożenia usługi IoT Edge. Ogólne kroki wdrożenia są następujące: 
 
-1. Operator definiuje wdrożenia, które opisano zestaw modułów, a także urządzeń docelowych. Dla każdego wdrożenia ma manifest wdrażania, która odzwierciedla te informacje. 
-1. Usługa Centrum IoT komunikuje się z wszystkie objęte nimi urządzenia ich konfiguracji z żądaną modułów. 
-1. Usługa Centrum IoT pobiera stan z urządzeń IoT Edge i udostępnia te operator monitorowania.  Na przykład operator widoczny, gdy urządzenia nie skonfigurowano pomyślnie lub moduł nie powiedzie się w czasie wykonywania. 
-1. W dowolnym momencie nowych urządzeń IoT krawędzi, które spełniają warunki określania wartości docelowej są skonfigurowane do wdrożenia. Na przykład wdrożenia, którego celem jest automatycznie wszystkie urządzenia IoT krawędzi w stanie Waszyngton konfiguruje nowe urządzenie brzegowe IoT po elastycznie i dodane do grupy urządzeń w stanie Waszyngton. 
+1. Operator definiuje wdrożenia, które opisuje zestaw modułów, a także urządzeń docelowych. Każde wdrożenie ma manifestu wdrażania, który odzwierciedla te informacje. 
+2. Usługa IoT Hub komunikuje się z wszystkie objęte nimi urządzenia, aby je skonfigurować przy użyciu żądanych modułów. 
+3. Usługa IoT Hub pobiera stan z urządzenia usługi IoT Edge i wydobywa informacje dotyczące tych dla operatora do monitorowania.  Na przykład operator widoczne, gdy urządzenia usługi Edge nie została skonfigurowana pomyślnie lub jeśli moduł zakończy się niepowodzeniem podczas wykonywania. 
+4. W dowolnym momencie nowego urządzenia usługi IoT Edge, które spełniają warunki określania wartości docelowej są skonfigurowane dla wdrożenia. Na przykład wdrożenia, który jest przeznaczony dla wszystkich urządzeń usługi IoT Edge w stanie Waszyngton, automatycznie konfiguruje nowe urządzenie usługi IoT Edge po jego są aprowizowane i dodane do grupy urządzeń w stanie Waszyngton. 
  
-W tym artykule opisano każdego składnika uwzględnionego w Konfigurowanie i monitorowanie wdrożenia. Aby uzyskać wskazówki dotyczące tworzenia i aktualizowania wdrożenia, zobacz [wdrażanie i monitorowanie krawędzi IoT modułów na dużą skalę][lnk-howto].
+W tym artykule opisano poszczególne składniki zaangażowane w konfigurowania i monitorowania wdrożenia. Aby uzyskać wskazówki dotyczące tworzenia i aktualizowania wdrożenia, zobacz [wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę][lnk-howto].
 
 ## <a name="deployment"></a>Wdrożenie
 
-Automatyczne wdrożenie krawędzi IoT przypisuje krawędzi IoT obrazów modułu do uruchamiania jako wystąpień w zestawie docelowym urządzenia brzegowe IoT. Działa on przez skonfigurowanie manifest rozmieszczenia krawędzi IoT Aby dołączyć listę modułów z odpowiednie parametry inicjacji. Wdrożenia można przypisać do jednego urządzenia (na podstawie Identyfikatora urządzenia) lub do grupy urządzeń (w oparciu tagów). Po urządzenia IoT odbiera manifest wdrażania, pobiera i instaluje obrazy kontener modułu z repozytoriami odpowiedniego kontenera i konfiguruje je odpowiednio. Po utworzeniu wdrożenia operator można monitorować stan wdrożenia, aby zobaczyć, czy urządzeń docelowych są poprawnie skonfigurowane.   
+Automatyczne wdrożenie usługi IoT Edge przypisuje usługi IoT Edge obrazy modułu do uruchamiania jako wystąpień w zestawie docelowym urządzenia usługi IoT Edge. To działa, konfigurując manifest wdrożenia usługi IoT Edge zawiera listę modułów za pomocą odpowiednich parametrów inicjowania. Wdrożenia można przypisać do jednego urządzenia (oparte na identyfikator urządzenia) lub do grupy urządzeń (na podstawie tagów). Po urządzenia usługi IoT Edge otrzymuje manifestu wdrażania, pobiera i instaluje moduł obrazy kontenerów z repozytoriów odpowiednich kontenerów i konfiguruje je odpowiednio. Po utworzeniu wdrożenia operator można monitorować stan wdrożenia, aby zobaczyć, czy urządzenia docelowe są poprawnie skonfigurowane.
 
-Urządzenia muszą być udostępniane jako urządzenia IoT brzegowe można skonfigurować z wdrożeniem. Następujące wymagania wstępne musi być na urządzeniu, zanim może odbierać wdrożenia:
-* Podstawowy system operacyjny
-* Kontener system zarządzania, takich jak Moby lub Docker
-* Inicjowanie obsługi środowiska uruchomieniowego krawędzi IoT 
+Urządzenia muszą być inicjowana jak dla urządzenia usługi IoT Edge, należy skonfigurować z wdrożeniem. Następujące wymagania wstępne muszą być na urządzeniu, zanim może ona odbierać wdrożenia:
 
-### <a name="deployment-manifest"></a>Manifest rozmieszczenia
+* Podstawowego systemu operacyjnego
+* System zarządzania kontenera, takich jak Moby lub rozwiązania Docker
+* Inicjowanie obsługi środowiska uruchomieniowego usługi IoT Edge 
 
-Manifest rozmieszczenia jest dokument JSON, który opisuje moduły można skonfigurować na urządzeniach docelowych IoT krawędzi. Zawiera on konfiguracji metadane dla wszystkich modułów moduły wymagany system (w szczególności agenta krawędzi IoT i Centrum IoT krawędzi).  
+### <a name="deployment-manifest"></a>Manifest wdrażania
 
-Metadane konfiguracji dla każdego modułu obejmują: 
+Manifest wdrożenia jest to dokument JSON, który opisuje modułów, które mają być skonfigurowane na docelowe urządzenia usługi IoT Edge. Zawiera ona metadanych konfiguracji dla wszystkich modułów, w tym moduły wymagany system (w szczególności agenta usługi IoT Edge i Centrum usługi IoT Edge).  
+
+Metadane konfiguracji dla każdego modułu, obejmują: 
+
 * Wersja 
 * Typ 
 * Stan (np. uruchomiona lub zatrzymana) 
-* Ponowne uruchomienie zasad 
-* Obraz i kontener rejestru
+* Uruchom ponownie zasad 
+* Rejestr obrazów oraz kontenerów
 * Trasy dla danych wejściowych i wyjściowych 
 
-Jeśli w rejestrze Kontener prywatny jest przechowywany obraz modułu, agent krawędzi IoT przechowuje poświadczenia rejestru. 
+Jeśli obraz modułu jest przechowywany w prywatnym rejestrze kontenerów, agent usługi IoT Edge przechowuje poświadczenia rejestru. 
 
 ### <a name="target-condition"></a>Warunek docelowy
 
-Warunek docelowy jest stale obliczenia obejmują nowe urządzenia, które spełniają wymagania lub usuń urządzenia, które nie może wykonywać za pomocą czasu życia wdrożenia. Wdrożenie zostanie ponownie uaktywnić, jeśli usługa wykrywa zmiany stanu docelowego. 
+Warunek docelowy jest stale oceniany w celu uwzględnienia nowych urządzeń spełniających wymagania lub usunięcia urządzeń, które nie może wykonywać w czasie życia wdrożenia. Wdrożenie zostanie ponownie uruchomione, jeśli usługa wykrywa wszelkie zmiany stanu docelowego. 
 
-Na przykład masz wdrożenie A z tags.environment warunek docelowy = "produkcyjnego". Gdy należy rozpocząć poza wdrożenia istnieje dziesięć urządzeń produkcji. Moduły pomyślnie zostały zainstalowane w tych dziesięć urządzeń. Stan agenta krawędzi IoT jest wyświetlany jako 10 łączna liczba urządzeń, 10 pomyślnej odpowiedzi, 0 odpowiedzi i 0 oczekujące odpowiedzi. Teraz Dodaj pięć większej liczby urządzeń z tags.environment = "produkcyjnego". Usługa wykryje zmianę i stan agenta krawędzi IoT staje się 15 łączna liczba urządzeń, 10 pomyślnej odpowiedzi, 0 odpowiedzi i 5 oczekujące odpowiedzi przy próbie wdrożyć pięć nowych urządzeń.
+Na przykład masz wdrożenie obejmuje A tags.environment warunek docelowy = "prod". Gdy wdrożenie jest rozpoczynane, istnieje dziesięć urządzeń w środowisku produkcyjnym. Moduły zostali pomyślnie zainstalowani na tych urządzeniach dziesięciu. Stan agenta IoT Edge jest wyświetlany jako 10 łącznej liczby urządzeń, 10 pomyślne odpowiedzi, odpowiedzi 0 i 0 oczekujące odpowiedzi. Teraz możesz dodać pięć więcej urządzeń za pomocą tags.environment = "prod". Usługa wykrywa zmianę i stan agenta IoT Edge staje się 15 łącznej liczby urządzeń, 10 pomyślne odpowiedzi, 0 odpowiedzi i 5 oczekujące odpowiedzi podczas próby wdrożenia do pięciu nowych urządzeń.
 
-Wszelkie warunek typu Boolean na urządzeniu twins znaczników lub deviceId można użyć do wybrania urządzeń docelowych. Jeśli chcesz użyć warunku tagów, musisz dodać "tagi":{} części dwie urządzenia, w tym samym poziomie jako właściwości. [Dowiedz się więcej na temat tagów w dwie urządzenia](../iot-hub/iot-hub-devguide-device-twins.md)
+Użyj dowolnego warunku typu Boolean na tagów bliźniaczych reprezentacji urządzenia lub identyfikator urządzenia, aby wybrać urządzenia docelowe. Jeśli chcesz użyć warunku przy użyciu tagów, musisz dodać "tags":{} sekcji w bliźniaczej reprezentacji urządzenia, w tym samym poziomie jako właściwości. [Dowiedz się więcej na temat tagów w bliźniaczej reprezentacji urządzenia](../iot-hub/iot-hub-devguide-device-twins.md)
 
-Przykłady warunków docelowych:
+Przykłady warunków docelowej:
+
 * deviceId = "linuxprod1"
-* Tags.Environment = "produkcyjnego"
-* Tags.Environment = prod tags.location i = "westus"
-* Tags.Environment = prod tags.location lub = "westus"
-* Tags.operator = 'John' i tags.environment = prod deviceId nie = "linuxprod1"
+* Tags.Environment = "prod"
+* Tags.Environment = 'prod' AND tags.location = 'westus'
+* Tags.Environment = 'prod' OR tags.location = 'westus'
+* Tags.operator = "Jan" i tags.environment = 'prod' nie deviceId = "linuxprod1"
 
-Poniżej przedstawiono niektóre ogranicza podczas tworzenia warunku docelowych:
+Poniżej przedstawiono niektóre ogranicza podczas konstruowania warunek docelowy:
 
-* W dwie urządzenia można utworzyć tylko przy użyciu znaczników lub deviceId warunek docelowy.
-* Podwójny cudzysłów nie jest dozwolone w jakiejkolwiek jego części warunek docelowy. Użyj pojedynczych cudzysłowów.
-* Apostrofy reprezentują wartości stanu docelowego. W związku z tym musi escape z innego pojedynczy cudzysłów pojedynczy cudzysłów, jeśli jest ona częścią nazwy urządzenia. Na przykład warunek docelowy: operator'sDevice musi mieć postać deviceId = "operator" sDevice ".
-* Cyfry, litery i następujące znaki są dozwolone w wartości warunek docelowych: `-:.+%_#*?!(),=@;$`.
+* W bliźniaczej reprezentacji urządzenia można utworzyć tylko za pomocą znaczników lub deviceId warunek docelowy.
+* Podwójny cudzysłów nie jest dozwolone w dowolnej części warunek docelowy. Użyj pojedynczych cudzysłowów.
+* Apostrofy reprezentują wartości warunek docelowy. W związku z tym jeśli jest ona częścią nazwy urządzenia musi znak ucieczki pojedynczy cudzysłów za pomocą innego pojedynczy cudzysłów. Na przykład warunek docelowy: operator'sDevice musi być zapisana jako deviceId = "operator" sDevice ".
+* Cyfry, litery i następujące znaki są dozwolone w wartości warunku docelowego: `-:.+%_#*?!(),=@;$`.
 
 ### <a name="priority"></a>Priorytet
 
-Priorytet określa, czy wdrożenie powinien być zastosowany względem innych wdrożeń urządzenia docelowego. Priorytet wdrożenia jest dodatnią liczbą całkowitą z większą liczbą określające wyższy priorytet. Jeśli urządzenia IoT jest przeznaczona przez więcej niż jedno wdrożenie, dotyczą wdrożenia o najwyższym priorytecie.  Wdrożenia z niższym priorytetów nie są stosowane, nie są one łączone.  Jeśli urządzenie jest przeznaczona z co najmniej dwa wdrożenia z taki sam priorytet, stosuje się ostatnio utworzonego wdrożenia (określoną przez utworzenie sygnatury czasowej).
+Priorytet określa, czy wdrożenie powinny być stosowane do urządzenia docelowego względem innych wdrożeń. Priorytet wdrożenia jest dodatnią liczbą całkowitą z większą liczbą oznaczający wyższy priorytet. Jeśli urządzenia usługi IoT Edge jest objęty przez więcej niż jedno wdrożenie, dotyczą wdrożenia o najwyższym priorytecie.  Wdrożenia o niższych priorytetach nie są stosowane, nie są one scalane.  Jeśli urządzenie zostanie wybrane co najmniej dwóch wdrożeń o taki sam priorytet, stosuje się ostatnio utworzonego wdrożenia (określany przez sygnaturę czasową utworzenia).
 
 ### <a name="labels"></a>Etykiety 
 
-Etykiety są pary klucz wartość ciągu, których można użyć do filtrowania i grupy wdrożeń. Wdrożenie może mieć wiele etykiet. Etykiety są opcjonalne i nie wpływu rzeczywista konfiguracja urządzenia brzegowe IoT. 
+Etykiety są pary klucz/wartość ciągu, które można użyć do filtrowania i grupy wdrożenia. Wdrożenie może mieć wielu etykiet. Etykiety są opcjonalne i wykonaj bez wpływu na rzeczywistą konfigurację urządzenia usługi IoT Edge. 
 
 ### <a name="deployment-status"></a>Stan wdrożenia
 
-Wdrożenia można monitorować w celu określenia, czy pomyślnie zastosowane dla wszystkich docelowych urządzeń IoT krawędzi.  Docelowe urządzenie brzegowe pojawi się w co najmniej jednej z następujących kategorii stanu: 
-* **Docelowy** wyświetlane krawędzi IoT urządzenia, które odpowiada wdrożenia przeznaczonych dla warunku.
-* **Rzeczywiste** pokazuje docelowym krawędzi IoT urządzenia, które nie są objęte przez inne wdrożenie o wyższym priorytecie.
-* **Dobra** wyświetlane krawędzi IoT urządzenia, które mają zgłaszana z powrotem do usługi czy moduły zostały pomyślnie wdrożone. 
-* **Zła** pokazuje krawędzi IoT urządzenia mają zgłaszana z powrotem do usługi, że jedna lub moduły nie zostały pomyślnie wdrożone. W celu dalszego badania błąd, zdalne nawiązywanie połączenia tego urządzenia, a następnie Wyświetl pliki dziennika.
-* **Nieznany** wyświetlane krawędzi IoT urządzenia, które nie zgłosiły żadnych stanu dotyczące tego wdrożenia. W celu dalszego badania, Wyświetl pliki dziennika i informacje o usługi.
+Wdrożenia można monitorować w taki sposób, aby określić, czy pomyślnie zastosowane dla wszystkich docelowych urządzeń usługi IoT Edge.  Docelowe urządzenia Edge pojawi się w co najmniej jednej z następujących kategorii stanu: 
+
+* **Docelowy** pokazuje usługi IoT Edge urządzenia pasujące wdrożenia przeznaczone dla warunku.
+* **Rzeczywiste** wyświetlane docelowej usługi IoT Edge urządzenia, które nie są objęci inne wdrożenie o wyższym priorytecie.
+* **Dobra** pokazuje usługi IoT Edge urządzenia, które zgłosiły powrót do usługi, moduły zostały pomyślnie wdrożone. 
+* **Zła** pokazuje usługi IoT Edge urządzenia mają odsyłane do usługi, że jedna lub moduły nie zostały pomyślnie wdrożone. Aby dokładniej zbadać błąd, łączyć się zdalnie z tego urządzenia i wyświetlić pliki dziennika.
+* **Nieznany** wyświetlane usługi IoT Edge urządzenia, które nie zgłosiły żadnych stanu dotyczące tego wdrożenia. Aby badać, Wyświetl usługi informacji i plików dziennika.
 
 ## <a name="phased-rollout"></a>Etapowego wdrażania 
 
-Etapowego wdrażania jest ogólny proces, zgodnie z którymi operator wdraża zmiany rozszerzanie zbiór urządzeń IoT krawędzi. Celem jest zmiany stopniowo, aby zmniejszyć ryzyko dokonywania szerokości skali fundamentalne zmiany.  
+Etapowego wdrażania jest cały proces, według której operator wdraża zmiany rozszerzanie zbiór urządzeń usługi IoT Edge. Celem jest, aby wprowadzić zmiany, stopniowo w celu zmniejszenia ryzyka dokonywania szerokiej skali istotne zmiany w.  
 
 Etapowe wdrażanie jest wykonywane w następujących faz i kroki: 
-1. Ustanowienie środowiska testowego z urządzeń IoT krawędzi przez ustawienie tag dwie urządzenia, takie jak i udostępniania ich `tag.environment='test'`. Środowisko testowe duplikowany wdrażania po pewnym czasie będzie obowiązywać w środowisku produkcyjnym. 
-1. Tworzenie wdrożenia, łącznie z modułami żądaną i konfiguracji. Warunek docelowy powinien wskazywać testu środowisko urządzenia IoT krawędzi.   
-1. Sprawdź poprawność nowej konfiguracji modułu w środowisku testowym.
-1. Zaktualizuj wdrożenie, aby uwzględnić podzbiór urządzenia IoT Edge produkcyjnych przez dodanie nowego znacznika do określania wartości docelowej stanu. Upewnij się również, że priorytet dla wdrożenia jest wyższy niż pozostałe obecnie wskazywane na tych urządzeniach wdrożenia 
-1. Sprawdź, czy wdrożenie powiodło się na urządzeniach docelowych IoT wyświetlając stan wdrożenia.
-1. Aktualizacja środowiska pod kątem wszystkich pozostałych urządzeń IoT Edge produkcyjnych.
+
+1. Ustanowienie środowiska testowego z urządzenia usługi IoT Edge inicjowanie ich obsługi administracyjnej i ustawiając tagu bliźniaczej reprezentacji urządzenia, takie jak `tag.environment='test'`. Środowisko testowe powinny odzwierciedlać środowisko produkcyjne, po pewnym czasie przeznaczony dla wdrożenia. 
+2. Utwórz wdrożenie w tym żądanych modułów i konfiguracji. Warunek docelowy powinien dotyczyć testu środowisko urządzenia usługi IoT Edge.   
+3. Sprawdź poprawność nowej konfiguracji modułu w środowisku testowym.
+4. Aktualizowanie wdrożenia obejmujący podzbiór urządzenia usługi IoT Edge w środowisku produkcyjnym, dodając nowy tag do stanu, określania wartości docelowej. Upewnij się również, że priorytet dla wdrożenia jest wyższy niż inne wdrożenia mają obecnie zastosowania żadne do tych urządzeń 
+5. Sprawdź, czy wdrożenie zakończyło się pomyślnie na docelowych urządzeniach IoT, wyświetlając stan wdrożenia.
+6. Aktualizowanie wdrożenia i nakieruj wszystkie pozostałe urządzenia usługi IoT Edge w środowisku produkcyjnym.
 
 ## <a name="rollback"></a>Wycofywanie
 
-Wdrożeń można wycofać w przypadku błędów lub błędy konfiguracji.  Ponieważ wdrożenia definiuje konfigurację modułu bezwzględny dla urządzenia IoT, dodatkowe wdrożenia może musi być wskazywane na tym samym urządzeniu z niższym priorytetem, nawet jeśli celem jest, aby usunąć wszystkie moduły.  
+Wdrożeń można wycofać w przypadku błędów lub błędy konfiguracji.  Ponieważ wdrożenie definiuje konfigurację modułu bezwzględne dla urządzenia usługi IoT Edge, wdrożenia dodatkowych muszą również zostać objęci tym samym urządzeniu z niższym priorytetem, nawet jeśli celem jest, aby usunąć wszystkie moduły.  
 
 Wycofywanie zmian należy wykonać w następującej kolejności: 
-1. Upewnij się, że drugie wdrożenie jest również wskazywane na ten sam zestaw urządzenia. Jeśli celem wycofywanie usunąć wszystkie moduły, drugie wdrożenie nie może zawierać żadnych modułów. 
-1. Zmodyfikuj lub usuń wyrażenie warunku docelowej wdrożenia, które chcesz przywracać tak, aby urządzenia nie spełniają warunek określania wartości docelowej.
-1. Sprawdź, czy wycofywanie zakończyło się pomyślnie, sprawdzając stan wdrożenia.
-   * Wdrożenie zwrotnego wycofana powinien być już wyświetlony stan dla urządzeń, które zostały wycofane.
-   * Drugie wdrożenie obejmuje teraz stan wdrożenia dla urządzeń, które zostały wycofane.
+
+1. Upewnij się, że drugie wdrożenie jest wskazywane na tym samym zestawie urządzeń. Jeśli celem wycofywanie jest aby usunąć wszystkie moduły, drugie wdrożenie nie może zawierać żadnych modułów. 
+2. Modyfikowanie lub usuwanie wyrażenie warunku docelowego wdrożenia, którą chcesz wdrożyć tak, aby urządzenia nie spełniają warunek określania wartości docelowej.
+3. Sprawdź, czy wycofywanie zakończyło się pomyślnie, wyświetlając stan wdrożenia.
+   * Wdrożenie zwrotnego wycofana już nie powinien być wyświetlony stan urządzeń, które zostały wycofane.
+   * Drugie wdrożenie powinny znajdować się teraz stan wdrożenia dla urządzeń, które zostały wycofane.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* Szczegółowe kroki umożliwiające tworzenie, aktualizowanie lub usuwanie wdrożenia w [wdrażanie i monitorowanie krawędzi IoT modułów na dużą skalę][lnk-howto].
-* Dowiedz się więcej o innych pojęcia krawędzi IoT, takich jak [środowiska uruchomieniowego krawędzi IoT] [ lnk-runtime] i [modułów krawędzi IoT][lnk-modules].
+* Przewodnik po krokach do utworzenia, aktualizacji lub usunięcia wdrożenia w [wdrażanie i monitorowanie moduły usługi IoT Edge na dużą skalę][lnk-howto].
+* Dowiedz się więcej o innych pojęć usługi IoT Edge, takich jak [środowisko uruchomieniowe usługi IoT Edge] [ lnk-runtime] i [moduły usługi IoT Edge][lnk-modules].
 
 <!-- Links -->
 [lnk-lifecycle]: ../iot-hub/iot-hub-device-management-overview.md
