@@ -1,27 +1,22 @@
 ---
-title: Samouczek — monitorowanie dzienników usługi Azure Firewall
-description: W tym samouczku dowiesz się, jak włączyć dzienniki usługi Azure Firewall i zarządzać nimi.
+title: 'Samouczek: monitorowanie dzienników i metryk usługi Azure Firewall'
+description: W tym samouczku dowiesz się, jak włączyć dzienniki i metryki usługi Azure Firewall i zarządzać nimi.
 services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.workload: infrastructure-services
-ms.date: 7/11/2018
+ms.date: 9/24/2018
 ms.author: victorh
-ms.openlocfilehash: a4922fda80b957138a9929090f9d3c349348185d
-ms.sourcegitcommit: df50934d52b0b227d7d796e2522f1fd7c6393478
+ms.openlocfilehash: 1940fb210481dc75fe48d110776185e90cb3e42f
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38991901"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46991049"
 ---
-# <a name="tutorial-monitor-azure-firewall-logs"></a>Samouczek: monitorowanie dzienników usługi Azure Firewall
+# <a name="tutorial-monitor-azure-firewall-logs-and-metrics"></a>Samouczek: monitorowanie dzienników i metryk usługi Azure Firewall
 
-[!INCLUDE [firewall-preview-notice](../../includes/firewall-preview-notice.md)]
-
-W przykładach podanych w artykułach na temat usługi Azure Firewall założono, że publiczna wersja zapoznawcza usługi Azure Firewall została już włączona. Aby uzyskać więcej informacji, zobacz [Włączanie publicznej wersji zapoznawczej usługi Azure Firewall](public-preview.md).
-
-Usługę Azure Firewall możesz monitorować przy użyciu dzienników zapory. Ponadto dzienniki aktywności umożliwiają inspekcję operacji wykonywanych względem zasobów usługi Azure Firewall.
+Usługę Azure Firewall możesz monitorować przy użyciu dzienników zapory. Ponadto dzienniki aktywności umożliwiają inspekcję operacji wykonywanych względem zasobów usługi Azure Firewall. Za pomocą metryk możesz wyświetlać liczniki wydajności w portalu. 
 
 Niektóre z tych dzienników są dostępne za pośrednictwem portalu. Dzienniki mogą być wysyłane do usługi [Log Analytics](../log-analytics/log-analytics-azure-networking-analytics.md), Storage i Event Hubs oraz analizowane za pomocą usługi Log Analytics lub innych narzędzi, takich jak program Excel i usługa Power BI.
 
@@ -32,69 +27,12 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Włączanie rejestrowania przy użyciu programu PowerShell
 > * Wyświetlanie i analizowanie dziennika aktywności
 > * Wyświetlanie i analizowanie dzienników reguł sieci i aplikacji
+> * Wyświetlanie metryk
 
-## <a name="diagnostic-logs"></a>Dzienniki diagnostyczne
+## <a name="prerequisites"></a>Wymagania wstępne
 
- Dla usługi Azure Firewall są dostępne następujące dzienniki diagnostyczne:
+Przed rozpoczęciem tego samouczka należy przeczytać sekcję dotyczącą [dzienników i metryk usługi Azure Firewall](logs-and-metrics.md), która zawiera omówienie dzienników i metryk dostępnych dla usługi Azure Firewall.
 
-* **Dziennik reguł aplikacji**
-
-   Dziennik reguł aplikacji jest zapisywany na koncie magazynu, przesyłany strumieniowo do usługi Event Hubs i/lub wysyłany do usługi Log Analytics tylko wtedy, gdy włączono go dla każdej zapory Azure Firewall. W wyniku każdego nowego połączenia, które jest zgodne z jedną ze skonfigurowanych reguł aplikacji, jest tworzony dziennik dla zaakceptowanego/odrzuconego połączenia. Dane są rejestrowane w formacie JSON, jak pokazano w poniższym przykładzie:
-
-   ```
-   Category: access logs are either application or network rule logs.
-   Time: log timestamp.
-   Properties: currently contains the full message. 
-   note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
-   ```
-
-   ```json
-   {
-    "category": "AzureFirewallApplicationRule",
-    "time": "2018-04-16T23:45:04.8295030Z",
-    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
-    "operationName": "AzureFirewallApplicationRuleLog",
-    "properties": {
-        "msg": "HTTPS request from 10.1.0.5:55640 to mydestination.com:443. Action: Allow. Rule Collection: collection1000. Rule: rule1002"
-    }
-   }
-   ```
-
-* **Dziennik reguł sieci**
-
-   Dziennik reguł sieci jest zapisywany na koncie magazynu, przesyłany strumieniowo do usługi Event Hubs i/lub wysyłany do usługi Log Analytics tylko wtedy, gdy włączono go dla każdej zapory Azure Firewall. W wyniku każdego nowego połączenia, które jest zgodne z jedną ze skonfigurowanych reguł sieci, jest tworzony dziennik dla zaakceptowanego/odrzuconego połączenia. Dane są rejestrowane w formacie JSON, jak pokazano w poniższym przykładzie:
-
-   ```
-   Category: access logs are either application or network rule logs.
-   Time: log timestamp.
-   Properties: currently contains the full message. 
-   note: this field will be parsed to specific fields in the future, while maintaining backward compatibility with the existing properties field.
-   ```
-
-   ```json
-  {
-    "category": "AzureFirewallNetworkRule",
-    "time": "2018-06-14T23:44:11.0590400Z",
-    "resourceId": "/SUBSCRIPTIONS/{subscriptionId}/RESOURCEGROUPS/{resourceGroupName}/PROVIDERS/MICROSOFT.NETWORK/AZUREFIREWALLS/{resourceName}",
-    "operationName": "AzureFirewallNetworkRuleLog",
-    "properties": {
-        "msg": "TCP request from 111.35.136.173:12518 to 13.78.143.217:2323. Action: Deny"
-    }
-   }
-
-   ```
-
-Masz trzy opcje przechowywania dzienników:
-
-* **Konto magazynu**: konta magazynu najlepiej sprawdzają się w przypadku dzienników przechowywanych przez dłuższy czas i przeglądanych w razie potrzeby.
-* **Event Hubs**: usługa Event Hubs to doskonałe rozwiązanie umożliwiające integrację z innymi narzędziami do zarządzania informacjami i zdarzeniami zabezpieczeń (SIEM, Security Information and Event Management), aby otrzymywać alerty dotyczące zasobów.
-* **Log Analytics**: usługa Log Analytics najlepiej nadaje się do ogólnego monitorowania aplikacji w czasie rzeczywistym lub przyglądania się trendom.
-
-## <a name="activity-logs"></a>Dzienniki aktywności
-
-   Wpisy dziennika aktywności są zbierane domyślnie i można je wyświetlać w witrynie Azure Portal.
-
-   Korzystając z [dzienników aktywności platformy Azure](../azure-resource-manager/resource-group-audit.md) (znanych wcześniej jako dzienniki operacyjne i dzienniki inspekcji), możesz wyświetlać wszystkie operacje przesyłane do Twojej subskrypcji platformy Azure.
 
 ## <a name="enable-diagnostic-logging-through-the-azure-portal"></a>Włączanie rejestrowania diagnostycznego za pośrednictwem witryny Azure Portal
 
@@ -105,8 +43,8 @@ Od wykonania tej procedury w celu włączenia rejestrowania diagnostycznego moż
 
    W przypadku usługi Azure Firewall są dostępne dwa dzienniki specyficzne dla usługi:
 
-   * Dziennik reguł aplikacji
-   * Dziennik reguł sieci
+   * AzureFirewallApplicationRule
+   * AzureFirewallNetworkRule
 
 3. Aby rozpocząć zbieranie danych, kliknij pozycję **Włącz diagnostykę**.
 4. Strona **Ustawienia diagnostyczne** zawiera ustawienia dzienników diagnostycznych. 
@@ -163,6 +101,8 @@ Ponadto możesz połączyć się z kontem magazynu i pobrać wpisy dziennika JSO
 > [!TIP]
 > Jeśli znasz program Visual Studio oraz podstawowe pojęcia dotyczące zmiany wartości stałych i zmiennych w języku C#, możesz skorzystać z [konwerterów dzienników](https://github.com/Azure-Samples/networking-dotnet-log-converter) dostępnych w witrynie GitHub.
 
+## <a name="view-metrics"></a>Wyświetlanie metryk
+Przejdź do usługi Azure Firewall, a następnie w obszarze **Monitorowanie** kliknij pozycję **Metryki**. Aby wyświetlić dostępne wartości, wybierz listę rozwijaną **METRYKA**.
 
 ## <a name="next-steps"></a>Następne kroki
 

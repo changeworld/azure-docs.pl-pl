@@ -11,15 +11,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 09/26/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: 30dbdff584f1bea955072e96a5e0f03cfe4c92c1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: c195f2ee24b61a57c098d5214a37f65e80845074
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963734"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410208"
 ---
 # <a name="tutorial-create-an-edge-machine-learning-solution-with-azure-and-azure-stack"></a>Samouczek: Tworzenie przeglądarki edge rozwiązanie uczenia maszynowego z platformą Azure i usługi Azure Stack
 
@@ -71,7 +71,7 @@ Znajomość platformy Azure i usługi Azure Stack jest wymagana. Aby dowiedzieć
 
  -  [Kluczowe pojęcia usługi Azure Stack](https://docs.microsoft.com/azure/azure-stack/azure-stack-key-features)
 
- -  [Przewodnik rozwiązania ciągłej integracji/ciągłego wdrażania hybrydowego usługi Azure Stack](/azure-stack-solution-pipeline.md)
+ -  [Przewodnik rozwiązania ciągłej integracji/ciągłego wdrażania hybrydowego usługi Azure Stack](/azure/azure-stack/user/azure-stack-solution-pipeline)
 
 **Azure**
 

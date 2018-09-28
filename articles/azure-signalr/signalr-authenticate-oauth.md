@@ -14,16 +14,14 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 06/13/2018
 ms.author: zhshang
-ms.openlocfilehash: 4856f4cdba7618884a42341f16d4828cb062e75c
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 696139a3e37f7bd1e32b4e7cec836b3c66df16a6
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43667654"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46974327"
 ---
 # <a name="tutorial-azure-signalr-service-authentication"></a>Samouczek: uwierzytelnianie w usłudze Azure SignalR Service
-
-Usługa Microsoft Azure SignalR Service jest obecnie dostępna w [publicznej wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 Ten samouczek opiera się na aplikacji pokoju rozmów wprowadzonej w przewodniku Szybki start. Jeśli jeszcze nie zostało wykonane ćwiczenie [Tworzenie pokoju rozmów za pomocą usługi SignalR Service](signalr-quickstart-dotnet-core.md), wykonaj je najpierw. 
 
@@ -396,7 +394,7 @@ W tej sekcji włączysz prawdziwe uwierzytelnianie, dodając atrybut `Authorize`
 
 W tej sekcji użyjesz interfejsu wiersza polecenia (CLI) platformy Azure z poziomu usługi Azure Cloud Shell, aby utworzyć nową [aplikację internetową platformy Azure](https://docs.microsoft.com/azure/app-service/) do hostowania Twojej aplikacji platformy ASP.NET na platformie Azure. Aplikacja internetowa zostanie skonfigurowana do używania lokalnego wdrożenia usługi Git. Aplikacja internetowa będzie również skonfigurowana za pomocą parametrów połączenia usługi SignalR, wpisów tajnych aplikacji OAuth usługi GitHub i użytkownika wdrożenia.
 
-Kroki opisane w tej sekcji używają rozszerzenia *signalr* dla interfejsu wiersza polecenia platformy Azure. Uruchom następujące polecenie, aby zainstalować rozszerzenie *signalr* dla interfejsu wiersza polecenia platformy Azure w wersji 2.0:
+Kroki opisane w tej sekcji używają rozszerzenia *signalr* dla interfejsu wiersza polecenia platformy Azure. Uruchom następujące polecenie, aby zainstalować rozszerzenie *signalr* dla interfejsu wiersza polecenia platformy Azure:
 
 ```azurecli-interactive
 az extension add -n signalr

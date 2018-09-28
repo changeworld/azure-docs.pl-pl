@@ -1,6 +1,6 @@
 ---
-title: Usługa Azure AD w środowisku Node.js interfejsu API sieci web wprowadzenie | Dokumentacja firmy Microsoft
-description: Jak utworzyć Node.js REST internetowego interfejsu API, która integruje się z usługą Azure AD do uwierzytelniania.
+title: Zabezpieczanie internetowego interfejsu API za pomocą usługi Azure AD | Microsoft Docs
+description: Dowiedz się, jak utworzyć internetowy interfejs API REST platformy Node.js, który integruje się z usługą Azure AD w celu uwierzytelniania.
 services: active-directory
 documentationcenter: nodejs
 author: CelesteDG
@@ -11,29 +11,36 @@ ms.component: develop
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: javascript
-ms.topic: article
-ms.date: 11/30/2017
+ms.topic: quickstart
+ms.date: 09/24/2018
 ms.author: celested
 ms.custom: aaddev
-ms.openlocfilehash: 3b203e5be82c01e7d586c90bae454aca23ebd630
-ms.sourcegitcommit: 615403e8c5045ff6629c0433ef19e8e127fe58ac
-ms.translationtype: MT
+ms.openlocfilehash: f6f804ea9121d1728e31f1e694280e841f4b7f4e
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39581456"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46946548"
 ---
-# <a name="azure-ad-nodejs-web-api-getting-started"></a>Usługa Azure AD w środowisku Node.js interfejsu API sieci web wprowadzenie
+# <a name="quickstart-secure-a-web-api-with-azure-active-directory"></a>Przewodnik Szybki start: Zabezpieczanie internetowego interfejsu API za pomocą usługi Azure Active Directory
 
-W tym artykule pokazano, jak zabezpieczyć [Restify](http://restify.com/) punkt końcowy interfejsu API za pomocą [Passport](http://passportjs.org/) przy użyciu [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad) modułu do obsługi komunikacji z usługą Azure Active Directory (AAD). 
+[!INCLUDE [active-directory-develop-applies-v1](../../../includes/active-directory-develop-applies-v1.md)]
 
-Zakres tego samouczka opisano problemy dotyczące zabezpieczanie punktów końcowych interfejsu API. Problemy z logowaniem i przechowywanie tokenów uwierzytelniania nie są zaimplementowane w tym miejscu i są odpowiedzialne za aplikacji klienckiej. Aby uzyskać szczegółowe informacje otaczającego implementacji klienta, zapoznaj się [aplikacji sieci web Node.js logowania i wylogowania z usługą Azure AD](quickstart-v1-openid-connect-code.md).
+W tym przewodniku Szybki start dowiesz się, jak zabezpieczyć punkt końcowy interfejsu API modułu [Restify](http://restify.com/) za pomocą usługi [Passport](http://passportjs.org/) przy użyciu modułu [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad) w celu obsługi komunikacji z usługą Azure Active Directory (Azure AD).
 
-Przykład pełny kod skojarzony z tym artykule jest dostępny w [GitHub](https://github.com/Azure-Samples/active-directory-node-webapi-basic).
+Zakres tego przewodnika Szybki start obejmuje kwestie dotyczące zabezpieczania punktów końcowych interfejsu API. Kwestie dotyczące logowania się i przechowywania tokenów uwierzytelniania nie są opisywane w tym module i odpowiada za nie aplikacji kliencka. Aby uzyskać szczegółowe informacje dotyczące implementacji klienta, zobacz[Node.js web app sign-in and sign-out with Azure AD (Logowanie się do aplikacji internetowych Node.js i wylogowywanie się z nich za pomocą usługi Azure AD)](quickstart-v1-openid-connect-code.md).
 
-## <a name="create-the-sample-project"></a>Utwórz przykładowy projekt
-Ta aplikacja serwera wymaga kilku zależności pakietów do obsługi modułu Restify i strategii Passport, a także konta informacje, które są przekazywane do usługi AAD.
+Pełny przykład kodu skojarzony z tym artykułem jest dostępny w repozytorium [GitHub](https://github.com/Azure-Samples/active-directory-node-webapi-basic).
 
-Aby rozpocząć, Dodaj następujący kod do pliku o nazwie `package.json`:
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Aby rozpocząć pracę, należy spełnić poniższe wymagania wstępne.
+
+### <a name="create-the-sample-project"></a>Tworzenie przykładowego projektu
+
+Aplikacja serwerowa wymaga kilku zależności pakietów do obsługi modułu Restify i usługi Passport, a także informacji o koncie przekazywanych do usługi Azure AD.
+
+Aby rozpocząć, dodaj następujący kod do pliku o nazwie `package.json`:
 
 ```Shell
 {
@@ -51,36 +58,36 @@ Aby rozpocząć, Dodaj następujący kod do pliku o nazwie `package.json`:
 }
 ```
 
-Gdy `package.json` zostanie utworzony, uruchom `npm install` w wierszu polecenia do zainstalowania zależności pakietów. 
+Po utworzeniu pliku `package.json` w wierszu polecenia uruchom polecenie `npm install`, aby zainstalować zależności pakietów. 
 
-### <a name="configure-the-project-to-use-active-directory"></a>Skonfiguruj projekt do korzystania z usługi Active Directory
+#### <a name="configure-the-project-to-use-active-directory"></a>Konfigurowanie projektu pod kątem korzystania z usługi Active Directory
 
-Aby rozpocząć konfigurowanie aplikacji, istnieje kilka wartości specyficznych dla konta, którego można uzyskać z wiersza polecenia platformy Azure. Najprostszym sposobem rozpoczęcia pracy przy użyciu interfejsu wiersza polecenia jest korzystać z usługi Azure Cloud Shell.
+Aby rozpocząć konfigurowanie aplikacji, należy pobrać kilka wartości specyficznych dla konta, które można uzyskać z poziomu interfejsu wiersza polecenia platformy Azure. Najprostszym sposobem rozpoczęcia pracy z interfejsem wiersza polecenia jest użycie usługi Azure Cloud Shell.
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
 
-Wprowadź następujące polecenie w usłudze cloud shell: 
+Wprowadź następujące polecenie w usłudze Cloud Shell:
 
 ```azurecli-interactive
 az ad app create --display-name node-aad-demo --homepage http://localhost --identifier-uris http://node-aad-demo
 ```
 
-[Argumenty](/cli/azure/ad/app?view=azure-cli-latest#az-ad-app-create) dla `create` polecenia obejmują:
+[Argumenty](/cli/azure/ad/app?view=azure-cli-latest#az-ad-app-create) dla polecenia `create` obejmują:
 
 | Argument  | Opis |
 |---------|---------|
 |`display-name` | Przyjazna nazwa rejestracji |
-|`homepage` | Adres URL, których użytkownicy mogą zarejestrować się w i korzystania z aplikacji |
-|`identifier-uris` | Unikatowe identyfikatory URI, używanego przez usługi Azure AD dla tej aplikacji spacjami. |
+|`homepage` | Adres URL, którego użytkownicy mogą użyć, aby zalogować się do aplikacji i korzystać z niej |
+|`identifier-uris` | Oddzielane spacjami unikatowe identyfikatory URI, których usługa Azure AD może używać na potrzeby tej aplikacji |
 
-Zanim będzie można połączyć z usługą Azure Active Directory, potrzebne są następujące informacje:
+Do nawiązania połączenia z usługą Azure Active Directory potrzebne są następujące informacje:
 
 | Name (Nazwa)  | Opis | Nazwa zmiennej w pliku konfiguracji |
 | ------------- | ------------- | ------------- |
-| Nazwa dzierżawy  | [Nazwa dzierżawy](quickstart-create-new-tenant.md) ma być używany do uwierzytelniania | `tenantName`  |
-| Identyfikator klienta  | Identyfikator klienta to określenie protokołu OAuth dla usługi AAD _identyfikator aplikacji_. |  `clientID`  |
+| Nazwa dzierżawy  | [Nazwa dzierżawy](quickstart-create-new-tenant.md), która ma być używana do uwierzytelniania | `tenantName`  |
+| Identyfikator klienta  | Identyfikator klienta to termin dotyczący protokołu OAuth na potrzeby _identyfikatora aplikacji_ usługi AAD. |  `clientID`  |
 
-Skopiuj z odpowiedzi rejestracji w usłudze Azure Cloud Shell, `appId` wartość i utworzyć nowy plik o nazwie `config.js`. Następnie dodaj poniższy kod i Zastąp wartości w nawiasach kwadratowych tokenów:
+Z odpowiedzi rejestracji w usłudze Azure Cloud Shell skopiuj wartość `appId` i utwórz nowy plik o nazwie `config.js`. Następnie dodaj poniższy kod i zastąp swoje wartości tokenami w nawiasach:
 
 ```JavaScript
 const tenantName    = //<YOUR_TENANT_NAME>;
@@ -94,12 +101,15 @@ module.exports.credentials = {
   clientID: clientID
 };
 ```
-Aby uzyskać więcej informacji na temat ustawień konfiguracji poszczególnych Przejrzyj [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad#5-usage) dokumentacji modułu.
 
-## <a name="implement-the-server"></a>Implementowanie serwera
-[Passport-azure-ad](https://github.com/AzureAD/passport-azure-ad#5-usage) moduł funkcji pomocy dwóch strategii uwierzytelniania: [OIDC](https://github.com/AzureAD/passport-azure-ad#51-oidcstrategy) i [elementu nośnego](https://github.com/AzureAD/passport-azure-ad#52-bearerstrategy) strategii. Zaimplementowane w tym artykule są używane strategii elementu nośnego do bezpiecznego punktu końcowego interfejsu API.
+Aby uzyskać więcej informacji na temat poszczególnych ustawień konfiguracyjnych, zapoznaj się z dokumentacją modułu [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad#5-usage).
 
-### <a name="step-1-import-dependencies"></a>Krok 1: Import zależności
+### <a name="implement-the-server"></a>Implementowanie serwera
+
+Moduł [passport-azure-ad](https://github.com/AzureAD/passport-azure-ad#5-usage) obsługuje dwie strategie uwierzytelniania: strategię [OIDC](https://github.com/AzureAD/passport-azure-ad#51-oidcstrategy) i strategię [elementu nośnego](https://github.com/AzureAD/passport-azure-ad#52-bearerstrategy). Serwer zaimplementowany w tym artykule korzysta ze strategii elementu nośnego do zabezpieczenia punktu końcowego interfejsu API.
+
+### <a name="step-1-import-dependencies"></a>Krok 1. Importowanie zależności
+
 Utwórz nowy plik o nazwie `app.js` i wklej następujący tekst:
 
 ```JavaScript
@@ -114,20 +124,17 @@ const
 ;
 ```
 
-W tej sekcji kodu:
+W powyższej sekcji kodu:
 
-- `restify` i `restify-plugins` moduły są wywoływane w celu skonfigurowania serwera Restify.
+- Odwołania do modułów `restify` i `restify-plugins` są tworzone w celu skonfigurowania serwera Restify.
+- Moduły `passport` i `passport-azure-ad` są odpowiedzialne za komunikację z usługą Azure AD.
+- Zmienna `config` jest inicjowana z wartościami z pliku `config.js` utworzonego w poprzednim kroku.
+- Tablica jest tworzona dla elementu `authenticatedUserTokens` w celu przechowywania tokenów użytkowników, gdy są one przekazywane do zabezpieczonych punktów końcowych.
+- Element `serverPort` jest definiowany na podstawie portu środowiska procesu lub pliku konfiguracji.
 
-- `passport` i `passport-azure-ad` moduły są zobowiązani do komunikacji przy użyciu usługi AAD.
+### <a name="step-2-instantiate-an-authentication-strategy"></a>Krok 2. Tworzenie wystąpienia strategii uwierzytelniania
 
-- `config` Zmienna jest inicjowana z wartościami z `config.js` pliku utworzonego w poprzednim kroku.
-
-- Tablica jest tworzona dla `authenticatedUserTokens` do przechowywania tokenów użytkownika, ponieważ są one przekazywane do bezpiecznego punktów końcowych.
-
-- `serverPort` Albo zdefiniowano z portu środowiska procesu lub z pliku konfiguracji.
-
-### <a name="step-2-instantiate-an-authentication-strategy"></a>Krok 2: Utwórz wystąpienie strategii uwierzytelniania
-Jako punkt końcowy należy zabezpieczyć, należy podać strategii jest odpowiedzialny za sprawdzenie, czy bieżące żądanie pochodzi z uwierzytelnionego użytkownika. W tym miejscu `authenticatonStrategy` zmienna jest wystąpieniem `passport-azure-ad` `BearerStrategy` klasy. Dodaj następujący kod po `require` instrukcji.
+Po zabezpieczeniu punktu końcowego należy podać strategię odpowiedzialną za określenie, czy bieżące żądanie pochodzi od uwierzytelnionego użytkownika. W tym przypadku zmienna `authenticatonStrategy` jest wystąpieniem klasy `BearerStrategy` modułu `passport-azure-ad`. Dodaj następujący kod po instrukcjach `require`.
 
 ```JavaScript
 const authenticationStrategy = new BearerStrategy(config.credentials, (token, done) => {
@@ -145,16 +152,18 @@ const authenticationStrategy = new BearerStrategy(config.credentials, (token, do
     return done(null, currentUser, token);
 });
 ```
-Ta implementacja używa rejestracji automatycznej, dodając tokenów uwierzytelniania do `authenticatedUserTokens` tablicy, jeśli jeszcze nie istnieje.
 
-Po utworzeniu nowego wystąpienia strategii możesz przekazać go w usłudze Passport za pośrednictwem `use` metody. Dodaj następujący kod do `app.js` do użycia strategii w usłudze Passport.
+Ta implementacja korzysta z rejestracji automatycznej, dodając tokeny uwierzytelniania do tablicy `authenticatedUserTokens`, jeśli jeszcze nie istnieją.
+
+Po utworzeniu nowego wystąpienia strategii należy przekazać je do usługi Passport za pośrednictwem metody `use`. Dodaj następujący kod do pliku `app.js` w celu użycia strategii w usłudze Passport.
 
 ```JavaScript
 passport.use(authenticationStrategy);
 ```
 
-### <a name="step-3-server-configuration"></a>Krok 3: Konfiguracja serwera
-Za pomocą strategii uwierzytelniania zdefiniowane możesz teraz skonfigurować serwer Restify z niektórymi ustawieniami podstawowe i ustawić na potrzeby usługi Passport zabezpieczeń.
+### <a name="step-3-server-configuration"></a>Krok 3. Konfiguracja serwera
+
+Po zdefiniowaniu strategii uwierzytelniania możesz teraz skonfigurować serwer Restify za pomocą pewnych ustawień podstawowych i użyć usługi Passport na potrzeby zabezpieczeń.
 
 ```JavaScript
 const server = restify.createServer({ name: 'Azure Active Directroy with Node.js Demo' });
@@ -162,13 +171,13 @@ server.use(restifyPlugins.authorizationParser());
 server.use(passport.initialize());
 server.use(passport.session());
 ```
-Ten serwer zostanie zainicjowana i skonfigurowana do analizowania nagłówków autoryzacji i następnie skonfigurowany do używania usługi Passport.
+Ten serwer jest inicjowany i konfigurowany do analizowania nagłówków autoryzacji, a następnie ustawiany do używania usługi Passport.
 
+### <a name="step-4-define-routes"></a>Krok 4. Definiowanie tras
 
-### <a name="step-4-define-routes"></a>Krok 4: Definiowanie tras
-Można teraz trasy są definiowane i określić, które można zabezpieczyć przy użyciu usługi AAD. Ten projekt zawiera dwie trasy, gdzie jest otwarty do katalogu głównego i `/api` trasy jest równa wymagają uwierzytelniania.
+Możesz teraz zdefiniować trasy i określić, które z nich mają zostać zabezpieczone za pomocą usługi Azure AD. Ten projekt zawiera dwie trasy, których poziom główny jest otwarty, a trasa `/api` jest ustawiona w celu wymagania uwierzytelniania.
 
-W `app.js` Dodaj następujący kod dla danej trasy do poziomu głównego:
+W pliku `app.js` dodaj następujący kod dla trasy poziomu głównego:
 
 ```JavaScript
 server.get('/', (req, res, next) => {
@@ -177,7 +186,7 @@ server.get('/', (req, res, next) => {
 });
 ```
 
-Główny trasy zezwala na wszystkie żądania za pośrednictwem trasy i zwraca komunikat, który zawiera polecenie, aby przetestować `/api` trasy. Z drugiej strony `/api` trasy jest zablokowana przy użyciu [ `passport.authenticate` ](http://passportjs.org/docs/authenticate). Dodaj następujący kod po główny trasy.
+Trasa główna zezwala na wszystkie żądania i zwraca komunikat, który zawiera polecenie służące do przetestowania trasy `/api`. Z kolei trasa `/api` jest zablokowana przy użyciu metody [`passport.authenticate`](http://passportjs.org/docs/authenticate). Dodaj następujący kod poniżej trasy głównej.
 
 ```JavaScript
 server.get('/api', passport.authenticate('oauth-bearer', { session: false }), (req, res, next) => {
@@ -186,9 +195,9 @@ server.get('/api', passport.authenticate('oauth-bearer', { session: false }), (r
 });
 ```
 
-Ta konfiguracja może składać się uwierzytelnionego żądania, które oferują dostęp tokenu elementu nośnego, do `/api`. Opcja `session: false` służy do wyłączania sesje wymagają, że token jest przekazywany do interfejsu API z każdym żądaniem.
+Ta konfiguracja zezwala jedynie na uwierzytelnione żądania, które obejmują dostęp tokenu elementu nośnego do trasy `/api`. Dzięki użyciu opcji `session: false` w ramach sesji nie jest wymagane przekazywanie tokenu do interfejsu API wraz każdym żądaniem.
 
-Ponadto serwer jest ustawiony do nasłuchiwania na porcie skonfigurowanym przez wywołanie metody `listen` metody.
+Na końcu serwer jest ustawiany do nasłuchiwania na skonfigurowanym porcie przez wywołanie metody `listen`.
 
 ```JavaScript
 server.listen(serverPort);
@@ -196,21 +205,21 @@ server.listen(serverPort);
 
 ## <a name="run-the-sample"></a>Uruchamianie aplikacji przykładowej
 
-Teraz, gdy serwer jest implementowana, możesz uruchomić serwer, otwierając wiersz polecenia i wprowadź:
+Teraz, gdy serwer jest zaimplementowany, możesz go uruchomić, otwierając wiersz polecenia i wprowadzając następujące polecenie:
 
-```Shell
+```shell
 npm start
 ```
 
-Z systemu można przesłać żądania do serwera, do wyników testu. Aby zademonstrować odpowiedzi z główny trasy, Otwórz powłokę bash i wprowadź następujący kod:
+Gdy serwer jest uruchomiony, możesz przesłać do niego żądanie w celu przetestowania wyników. Aby zademonstrować odpowiedź z trasy głównej, otwórz powłokę bash i wprowadź następujący kod:
 
-```Shell 
+```shell
 curl -isS -X GET http://127.0.0.1:3000/
 ```
 
-Jeśli serwer został skonfigurowany poprawnie, odpowiedź powinna wyglądać podobnie do:
+Jeśli serwer został poprawnie skonfigurowany, odpowiedź powinna wyglądać podobnie do poniższej:
 
-```Shell
+```shell
 HTTP/1.1 200 OK
 Server: Azure Active Directroy with Node.js Demo
 Content-Type: application/json
@@ -221,15 +230,15 @@ Connection: keep-alive
 Try: curl -isS -X GET http://127.0.0.1:3000/api
 ```
 
-Następnie można przetestować trasy, który wymaga uwierzytelniania, wprowadzając następujące polecenie do powłoki bash:
+Następnie możesz przetestować trasy, które wymagają uwierzytelniania, wprowadzając następujące polecenie w powłoce bash:
 
-```Shell 
+```shell
 curl -isS -X GET http://127.0.0.1:3000/api
 ```
 
-Jeśli serwer został skonfigurowany poprawnie, a następnie serwer powinien odpowiadać ze stanem `Unauthorized`.
+Jeśli serwer został poprawnie skonfigurowany, powinien on odpowiedzieć za pomocą stanu `Unauthorized`.
 
-```Shell
+```shell
 HTTP/1.1 401 Unauthorized
 Server: Azure Active Directroy with Node.js Demo
 WWW-Authenticate: token is not found
@@ -239,10 +248,10 @@ Content-Length: 12
 
 Unauthorized
 ```
-Teraz, po utworzeniu bezpiecznego interfejsu API, można zaimplementować klienta, który umożliwia przekazywanie tokenów uwierzytelniania do interfejsu API.
 
-## <a name="next-steps"></a>Kolejne kroki
-Jak wspomniano we wprowadzeniu, należy zaimplementować odpowiednika klienta, aby połączyć się z serwerem, obsługujący logowanie i wylogowywanie oraz zarządzania nimi tokenów. Przykłady oparte na kodzie, mogą odwoływać się do aplikacji klienckich w [iOS](https://github.com/MSOpenTech/azure-activedirectory-library-for-ios) i [Android](https://github.com/MSOpenTech/azure-activedirectory-library-for-android). Samouczek krok po kroku można znaleźć w następującym artykule:
+Po utworzeniu bezpiecznego interfejsu API możesz zaimplementować klienta, za pomocą którego możliwe jest przekazywanie tokenów uwierzytelniania do interfejsu API.
 
-> [!div class="nextstepaction"]
-> [Aplikację internetową środowiska node.js, logowania i wylogowania z usługą Azure AD](quickstart-v1-openid-connect-code.md)
+## <a name="next-steps"></a>Następne kroki
+
+* Należy zaimplementować odpowiednik klienta w celu nawiązania połączenia z serwerem, który obsługuje logowanie, wylogowywanie i zarządzanie tokenami. Przykłady oparte na kodzie możesz znaleźć w aplikacjach klienckich w systemie [iOS](https://github.com/MSOpenTech/azure-activedirectory-library-for-ios) i [Android](https://github.com/MSOpenTech/azure-activedirectory-library-for-android).
+* Aby uzyskać samouczek krok po kroku, zobacz [Node.js web app sign-in and sign-out with Azure AD (Logowanie się do aplikacji internetowych Node.js i wylogowywanie się z nich za pomocą usługi Azure AD)](quickstart-v1-openid-connect-code.md).

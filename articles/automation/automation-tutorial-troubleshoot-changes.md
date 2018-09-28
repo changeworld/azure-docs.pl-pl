@@ -7,16 +7,16 @@ ms.component: change-inventory-management
 keywords: zmiana, śledzenie, automatyzacja
 author: jennyhunter-msft
 ms.author: jehunte
-ms.date: 08/27/2018
+ms.date: 09/12/2018
 ms.topic: tutorial
 ms.custom: mvc
 manager: carmonm
-ms.openlocfilehash: fd94fd234067f63eab424c7f757d4adf842e7b46
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 16d5a025f0c0ff571298e0f528fb9119e37950f3
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43120589"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46995266"
 ---
 # <a name="troubleshoot-changes-in-your-environment"></a>Rozwiązywanie problemów ze zmianami we własnym środowisku
 
@@ -32,6 +32,7 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Włączanie połączenia dziennika aktywności
 > * Wyzwalanie zdarzenia
 > * Przeglądanie zmian
+> * Konfigurowanie alertów
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -41,9 +42,9 @@ Do ukończenia tego samouczka niezbędne są następujące elementy:
 * [Konto automatyzacji](automation-offering-get-started.md) do przechowywania obserwatora i elementów Runbook akcji oraz zadania obserwatora.
 * [Maszyna wirtualna](../virtual-machines/windows/quick-create-portal.md) do dołączenia.
 
-## <a name="log-in-to-azure"></a>Zaloguj się do platformy Azure.
+## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 
-Zaloguj się do witryny Azure Portal na stronie http://portal.azure.com.
+Zaloguj się do witryny Azure Portal pod adresem http://portal.azure.com.
 
 ## <a name="enable-change-tracking-and-inventory"></a>Włączanie śledzenia zmian i spisu
 
@@ -66,20 +67,22 @@ Udostępnienie danych do analizy może potrwać od 30 minut do 6 godzin.
 
 ## <a name="using-change-tracking-in-log-analytics"></a>Używanie śledzenia zmian w usłudze Log Analytics
 
-Śledzenie zmian generuje dane dziennika, które są wysyłane do usługi Log Analytics. Aby wyszukiwać w dziennikach za pomocą uruchamiania zapytań, wybierz pozycję **Log Analytics** w górnej części okna **Śledzenie zmian**.
-Dane śledzenia zmian są przechowywane w obszarze typu **ConfigurationChange**. Następujące przykładowe zapytanie usługi Log Analytics zwraca wszystkie usługi systemu Windows, które zostały zatrzymane.
+Śledzenie zmian generuje dane dziennika, które są wysyłane do usługi Log Analytics.
+Aby wyszukiwać w dziennikach za pomocą uruchamiania zapytań, wybierz pozycję **Log Analytics** w górnej części okna **Śledzenie zmian**.
+Dane śledzenia zmian są przechowywane w obszarze typu **ConfigurationChange**.
+Następujące przykładowe zapytanie usługi Log Analytics zwraca wszystkie usługi systemu Windows, które zostały zatrzymane.
 
 ```
 ConfigurationChange
 | where ConfigChangeType == "WindowsServices" and SvcState == "Stopped"
 ```
 
-Aby dowiedzieć się więcej na temat uruchamiania i wyszukiwania plików dziennika w usłudze Log Analytics, zobacz [Azure Log Analytics](https://docs.loganalytics.io/index).
+Aby dowiedzieć się więcej na temat uruchamiania i wyszukiwania plików dziennika w usłudze Log Analytics, zobacz [Azure Log Analytics](../log-analytics/log-analytics-queries.md).
 
 ## <a name="configure-change-tracking"></a>Konfigurowanie śledzenia zmian
 
 Śledzenie zmian daje możliwość śledzenia zmian konfiguracji na własnej maszynie wirtualnej. Poniższe kroki pokazują, jak skonfigurować śledzenie kluczy rejestru i plików.
- 
+
 Aby wybrać, które pliki i klucze rejestru mają być zbierane i śledzone, wybierz pozycję **Edytuj ustawienia** w górnej części strony **Śledzenie zmian**.
 
 > [!NOTE]
@@ -92,7 +95,7 @@ W oknie **Konfiguracja obszaru roboczego** dodaj klucze rejestru systemu Windows
 1. Na karcie **Rejestr systemu Windows** wybierz opcję **Dodaj**.
     Zostanie otwarte okno **Dodawanie rejestru systemu Windows dla śledzenia zmian**.
 
-3. Na stronie **Dodawanie rejestru systemu Windows do śledzenia zmian** wprowadź informacje o kluczu, który ma być śledzony, i kliknij przycisk **Zapisz**
+1. Na stronie **Dodawanie rejestru systemu Windows do śledzenia zmian** wprowadź informacje o kluczu, który ma być śledzony, i kliknij przycisk **Zapisz**
 
 |Właściwość  |Opis  |
 |---------|---------|
@@ -168,6 +171,49 @@ Wybierz zmianę **WindowsServices**, a spowoduje to otwarcie okna **Szczegóły 
 
 ![Wyświetlanie szczegółów zmiany w portalu](./media/automation-tutorial-troubleshoot-changes/change-details.png)
 
+## <a name="configure-alerts"></a>Konfigurowanie alertów
+
+Wyświetlanie zmian wprowadzonych w witrynie Azure Portal może być przydatne, ale bardziej korzystna jest możliwość otrzymywania alertów po wystąpieniu zmiany (np. po zatrzymaniu usługi).
+
+Aby dodać alert dotyczący zatrzymanej usługi, w witrynie Azure Portal przejdź do pozycji **Monitorowanie**. Następnie w obszarze **Usługi udostępnione** wybierz pozycję **Alerty** i kliknij przycisk **+ Nowa reguła alertu**
+
+W obszarze **1. Zdefiniuj warunek alertu**, kliknij przycisk **Wybierz docelowy**. W obszarze **Filtruj według typu zasobu** wybierz pozycję **Log Analytics**. Wybierz swój obszar roboczy usługi Log Analytics, a następnie wybierz pozycję **Gotowe**.
+
+![Wybieranie zasobu](./media/automation-tutorial-troubleshoot-changes/select-a-resource.png)
+
+Wybierz pozycję **+ Dodaj kryteria**.
+W obszarze **Konfigurowanie logiki sygnału** w tabeli wybierz pozycję **Przeszukiwanie dzienników niestandardowych**. W polu tekstowym Zapytanie wyszukiwania wprowadź poniższe zapytanie:
+
+```loganalytics
+ConfigurationChange | where ConfigChangeType == "WindowsServices" and SvcName == "W3SVC" and SvcState == "Stopped" | summarize by Computer
+```
+
+To zapytanie zwraca informacje o komputerach, na których w określonym przedziale czasu została zatrzymana usługa W3SVC.
+
+W obszarze **Logika alertu** w polu **Próg** wprowadź **0**. Po zakończeniu wybierz pozycję **Gotowe**.
+
+![Konfigurowanie logiki sygnału](./media/automation-tutorial-troubleshoot-changes/configure-signal-logic.png)
+
+W obszarze **2. Zdefiniuj szczegóły alertu** wprowadź nazwę i opis alertu. Ustaw **Ważność** na **Informacyjny (ważność 2)**, **Ostrzegawczy (ważność 1)** lub **Krytyczny (ważność 0)**.
+
+![Definiowanie szczegółów alertu](./media/automation-tutorial-troubleshoot-changes/define-alert-details.png)
+
+W obszarze **3. Zdefiniuj grupę akcji** wybierz pozycję **Nowa grupa akcji**. Grupa akcji to grupa składająca się z akcji, których można używać w wielu alertach. Akcje mogą obejmować powiadomienia e-mail, elementy runbook i webhook oraz wiele innych. Aby dowiedzieć się więcej o grupach akcji, zobacz [Create and manage action groups (Tworzenie grup akcji i zarządzanie nimi)](../monitoring-and-diagnostics/monitoring-action-groups.md).
+
+W polu **Nazwa grupy akcji** wprowadź nazwę alertu oraz krótką nazwę. Krótka nazwa jest używana zamiast pełnej nazwy grupy akcji podczas przesyłania powiadomień przy użyciu danej grupy.
+
+W obszarze **Akcje** wprowadź nazwę akcji, na przykład **Wyślij wiadomość e-mail do administratorów**. W obszarze **TYP AKCJI** wybierz pozycję **E-mail/SMS/Push/Głos**. W obszarze **SZCZEGÓŁY** wybierz pozycję **Edytuj szczegóły**.
+
+![Dodawanie grupy akcji](./media/automation-tutorial-troubleshoot-changes/add-action-group.png)
+
+W okienku **E-mail/SMS/Push/Głos** wprowadź nazwę. Zaznacz pole wyboru **E-mail**, a następnie wprowadź prawidłowy adres e-mail. Kliknij przycisk **OK** na stronie **E-mail/SMS/Push/Głos**, a następnie kliknij przycisk **OK** na stronie **Dodawanie grupy akcji**.
+
+Aby dostosować temat wiadomości e-mail alertu, w oknie **Tworzenie reguły** w obszarze **Dostosowywanie akcji** wybierz pozycję **Temat wiadomości e-mail**. Po zakończeniu wybierz pozycję **Utwórz regułę alertu**. Alert informuje użytkownika o pomyślnym wdrożeniu aktualizacji oraz o maszynach będących elementami danego uruchomienia wdrożenia aktualizacji.
+
+Poniższa ilustracja przedstawia przykładową wiadomość e-mail odebraną po zatrzymaniu usługi W3SVC.
+
+![e-mail](./media/automation-tutorial-troubleshoot-changes/email.png)
+
 ## <a name="next-steps"></a>Następne kroki
 
 W tym samouczku zawarto informacje na temat wykonywania następujących czynności:
@@ -179,6 +225,7 @@ W tym samouczku zawarto informacje na temat wykonywania następujących czynnoś
 > * Włączanie połączenia dziennika aktywności
 > * Wyzwalanie zdarzenia
 > * Przeglądanie zmian
+> * Konfigurowanie alertów
 
 Przejdź do omówienia rozwiązania śledzenia zmian i spisu, aby uzyskać więcej informacji.
 

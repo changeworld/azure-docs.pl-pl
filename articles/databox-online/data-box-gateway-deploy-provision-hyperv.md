@@ -1,0 +1,216 @@
+---
+title: Samouczek dotyczący aprowizacji usługi Azure Data Box Gateway w funkcji Hyper-V | Microsoft Docs
+description: W drugim samouczku dotyczącym wdrażania usługi Azure Data Box Gateway omówiono aprowizację urządzenia wirtualnego w funkcji Hyper-V.
+services: databox-edge-gateway
+documentationcenter: NA
+author: alkohli
+manager: twooley
+editor: ''
+ms.assetid: ''
+ms.service: databox-edge-gateway
+ms.devlang: NA
+ms.topic: tutorial
+ms.tgt_pltfrm: NA
+ms.workload: NA
+ms.date: 09/24/2018
+ms.author: alkohli
+ms.custom: ''
+ms.openlocfilehash: bf744d2aaab168b8ce918f7b776d8855cdc5ad16
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46975247"
+---
+# <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v-preview"></a>Samouczek: aprowizowanie usługi Azure Data Box Gateway w funkcji Hyper-V (wersja zapoznawcza)
+
+## <a name="overview"></a>Omówienie
+
+W tym samouczku przedstawiono sposób aprowizowania usługi Azure Data Box Gateway na hoście funkcji Hyper-V z systemem Windows Server 2016, Windows Server 2012 R2 lub Windows Server 2012. 
+
+Do aprowizowania i skonfigurowania urządzenia wirtualnego wymagane są uprawnienia administratora. Aprowizacja i wstępna konfiguracja może zająć około 10 minut.
+
+Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+
+> [!div class="checklist"]
+> * Sprawdzanie, czy host spełnia minimalne wymagania dotyczące urządzenia
+> * Aprowizowanie urządzenia wirtualnego w funkcji hypervisor
+> * Uruchamianie urządzenia wirtualnego i uzyskiwanie adresu IP
+
+Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+> [!IMPORTANT]
+> - Usługa Data Box Gateway jest dostępna w wersji zapoznawczej. Przed zamówieniem i wdrożeniem tego rozwiązania zapoznaj się z [warunkami świadczenia usług Azure w wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
+## <a name="prerequisites"></a>Wymagania wstępne
+
+Przed aprowizowaniem urządzenia wirtualnego na hoście funkcji Hyper-V z systemem Windows Server 2016 lub Windows Server 2012 R2 muszą zostać spełnione następujące wymagania.
+
+### <a name="for-the-data-box-gateway-resource"></a>Zasób usługi Data Box Gateway
+
+Przed rozpoczęciem upewnij się, że:
+
+* Zostały wykonane wszystkie kroki samouczka [Prepare the portal for Data Box Gateway (Przygotowywanie portalu pod kątem usługi Data Box Gateway)](data-box-gateway-deploy-prep.md).
+* Pobrano obraz urządzenia wirtualnego dla funkcji Hyper-V z witryny Azure Portal zgodnie z opisem w samouczku [Prepare the portal for Data Box Gateway (Przygotowywanie portalu pod kątem usługi Data Box Gateway)](data-box-gateway-deploy-prep.md).
+
+  > [!IMPORTANT]
+  > Oprogramowania uruchomionego w usłudze Data Box Gateway można używać tylko z zasobem usługi Data Box Gateway.
+ 
+### <a name="for-the-data-box-gateway-virtual-device"></a>Urządzenie wirtualne usługi Data Box Gateway
+
+Przed wdrożeniem urządzenia upewnij się, że:
+
+* Masz dostęp do hosta funkcji Hyper-V z systemem Windows Server 2012 R2 lub nowszym, którego można użyć do aprowizacji urządzenia.
+* System hosta może przeznaczyć następujące zasoby wyłącznie na potrzeby aprowizacji urządzenia wirtualnego:
+
+  * Co najmniej 4 rdzenie.
+  * Co najmniej 8 GB pamięci RAM. 
+  * Jeden interfejs sieciowy.
+  * Dysk systemu operacyjnego o rozmiarze 250 GB.
+  * Dysk wirtualny o rozmiarze 2 TB do przechowywania danych.
+
+### <a name="for-the-network-in-the-datacenter"></a>Sieć w centrum danych
+
+Przed rozpoczęciem:
+
+- Zapoznaj się z wymaganiami dotyczącymi przygotowania sieci pod kątem wdrożenia usługi Data Box Gateway i skonfiguruj sieć w centrum danych zgodnie z tymi wymaganiami. Aby uzyskać więcej informacji, zobacz [Data Box Gateway networking requirements (Wymagania dotyczące sieci dla usługi Data Box Gateway)](data-box-gateway-system-requirements.md#networking-requirements).
+- Aby umożliwić optymalne działanie urządzenia, przepustowość połączenia internetowego musi wynosić co najmniej 20 Mb/s.
+
+
+## <a name="check-the-host-system"></a>Sprawdzanie systemu hosta
+
+Do utworzenia urządzenia wirtualnego potrzebne są następujące elementy:
+
+* Rola funkcji Hyper-V zainstalowana w systemie Windows Server 2016, Windows Server 2012 R2 lub Windows Server 2012.
+* Menedżer funkcji Microsoft Hyper-V na kliencie z systemem Microsoft Windows połączonym z hostem.
+* Upewnij się, że sprzęt (host), na którym tworzysz urządzenie wirtualne, może przeznaczyć następujące zasoby wyłącznie na potrzeby urządzenia wirtualnego:
+
+    * Co najmniej 4 rdzenie.
+    * Co najmniej 8 GB pamięci RAM.
+    * Jeden interfejs sieciowy połączony z siecią umożliwiającą kierowanie ruchu do Internetu. .
+    * Dysk systemu operacyjnego o rozmiarze 250 GB.
+    * Dysk wirtualny o rozmiarze 2 TB do przechowywania danych systemu.
+
+## <a name="provision-a-virtual-device-in-hypervisor"></a>Aprowizowanie urządzenia wirtualnego w funkcji hypervisor
+
+Wykonaj następujące czynności, aby aprowizować urządzenie w funkcji hypervisor.
+
+1. Na hoście z systemem Windows Server skopiuj obraz urządzenia wirtualnego na dysk lokalny. Możesz pobrać ten obraz w formacie VHDX z witryny Azure Portal. Zanotuj lokalizację, do której został skopiowany obraz, ponieważ będzie on używany w dalszej części tej procedury.
+2. Otwórz **Menedżera serwera**. W prawym górnym rogu kliknij przycisk **Narzędzia** i wybierz pozycję **Menedżer funkcji Hyper-V**.
+
+    ![](./media/data-box-gateway-deploy-provision-hyperv/image1.png)  
+  
+3. W **Menedżerze funkcji Hyper-V** w okienku zakresu kliknij prawym przyciskiem myszy węzeł systemu, aby otworzyć menu kontekstowe, a następnie kliknij kolejno pozycje **Nowy** > **Maszyna wirtualna**.
+
+   ![](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
+4. Na stronie **Przed rozpoczęciem** w kreatorze nowej maszyny wirtualnej kliknij przycisk **Dalej**.
+5. Na stronie **Określanie nazwy i lokalizacji** wprowadź **nazwę** urządzenia wirtualnego. Kliknij przycisk **Dalej**.
+   
+   > [!IMPORTANT]
+   > W tej wersji w nazwie urządzenia wirtualnego można używać tylko wielkich liter.
+
+   ![](./media/data-box-gateway-deploy-provision-hyperv/image3.png)
+6. Na stronie **Określanie generacji** wybierz pozycję **Generacja 2** jako typ obrazu urządzenia w formacie vhdx, a następnie kliknij przycisk **Dalej**.    
+
+   ![](./media/data-box-gateway-deploy-provision-hyperv/image4.png)
+7. Na stronie **Przypisywanie pamięci** w polu **Pamięć początkowa** wprowadź wartość nie mniejszą niż **8192 MB**, nie włączaj pamięci dynamicznej, a następnie kliknij przycisk **Dalej**.
+
+   ![](./media/data-box-gateway-deploy-provision-hyperv/image5.png) 
+8. Na stronie **Konfigurowanie sieci** określ przełącznik wirtualny połączony z Internetem, a następnie kliknij przycisk **Dalej**.
+
+   ![](./media/data-box-gateway-deploy-provision-hyperv/image6.png)
+9. Na stronie **Podłączanie wirtualnego dysku twardego** wybierz pozycję **Użyj istniejącego wirtualnego dysku twardego**, podaj lokalizację obrazu urządzenia wirtualnego, a następnie kliknij przycisk **Dalej**.
+
+   ![](./media/data-box-gateway-deploy-provision-hyperv/image7.png)
+10. Przejrzyj informacje na stronie **Podsumowanie**, a następnie kliknij pozycję **Zakończ**, aby utworzyć maszynę wirtualną.
+
+    ![](./media/data-box-gateway-deploy-provision-hyperv/image8.png)
+11. Aby spełnić wymagania minimalne, potrzebujesz 4 rdzeni. Aby dodać 4 procesory wirtualne, wybierz swój system hosta w oknie **Menedżera funkcji Hyper-V**. Na liście **Maszyny wirtualne** w okienku po prawej stronie znajdź utworzoną przed chwilą maszynę wirtualną. Zaznacz i kliknij prawym przyciskiem myszy nazwę maszyny, a następnie wybierz pozycję **Ustawienia**.
+
+    ![](./media/data-box-gateway-deploy-provision-hyperv/image9.png)
+12. Na stronie **Ustawienia** w lewym okienku kliknij pozycję **Procesor**. W okienku po prawej stronie ustaw wartość 4 lub większą w polu **Liczba procesorów wirtualnych**. Kliknij przycisk **Zastosuj**.
+
+    ![](./media/data-box-gateway-deploy-provision-hyperv/image10.png)
+13. Aby spełnić wymagania minimalne, należy również dodać dysk wirtualny danych o rozmiarze 2 TB. Na stronie **Ustawienia**:
+
+    1. W okienku po lewej stronie wybierz pozycję **Kontroler SCSI**.
+    2. W okienku po prawej stronie wybierz pozycję **Dysk twardy** i kliknij przycisk **Dodaj**.
+
+    ![](./media/data-box-gateway-deploy-provision-hyperv/image11.png)
+14. Na stronie **Dysk twardy** wybierz opcję **Wirtualny dysk twardy**, a następnie kliknij przycisk **Nowy**. Zostanie uruchomiony **Kreator nowego wirtualnego dysku twardego**.
+
+    ![](./media/data-box-gateway-deploy-provision-hyperv/image12.png)
+1. Na stronie **Przed rozpoczęciem** w kreatorze nowego wirtualnego dysku twardego kliknij przycisk **Dalej**.
+2. Na stronie **Wybieranie formatu dysku** zaakceptuj domyślną opcję formatu **VHDX**. Kliknij przycisk **Dalej**.
+   
+17. Na stronie **Wybieranie typu dysku** ustaw typ wirtualnego dysku twardego **Dynamicznie powiększający się** (zalecane). Dysk **O stałym rozmiarze** również byłby odpowiedni, ale jego tworzenie mogłoby zająć więcej czasu. Nie zalecamy używania opcji **Różnicowy**. Kliknij przycisk **Dalej**. 
+
+    ![](./media/data-box-gateway-deploy-provision-hyperv/image13.png)
+18. Na stronie **Określanie nazwy i lokalizacji** podaj **nazwę** dysku danych oraz jego **lokalizację** (możesz skorzystać z opcji Przeglądaj). Kliknij przycisk **Dalej**.
+
+    ![](./media/data-box-gateway-deploy-provision-hyperv/image14.png)
+19. Na stronie **Konfigurowanie dysku** wybierz opcję **Utwórz nowy pusty wirtualny dysk twardy** i wybierz rozmiar **2 TB** lub większy. 2 TB to wymaganie minimalne — zawsze można aprowizować większy dysk. Pamiętaj, że po aprowizowaniu dysku nie można zmniejszyć jego rozmiaru.  Można natomiast rozszerzyć go, dodając dysk danych. Kliknij przycisk **Dalej**.
+
+    ![](./media/data-box-gateway-deploy-provision-hyperv/image15.png)
+20. Sprawdź dane dysku wirtualnego na stronie **Podsumowanie** i, jeśli wszystkie dane są prawidłowe, kliknij przycisk **Zakończ**, aby utworzyć dysk. Kreator zostanie zamknięty, a wirtualny dysk twardy zostanie dodany do maszyny.
+
+    ![](./media/data-box-gateway-deploy-provision-hyperv/image16.png)
+21. Wróć do strony **Ustawienia**. Kliknij przycisk **OK**, aby zamknąć stronę **Ustawienia**, a następnie wróć do okna Menedżera funkcji Hyper-V.
+
+    ![](./media/data-box-gateway-deploy-provision-hyperv/image17.png)
+
+## <a name="start-the-virtual-device-and-get-the-ip"></a>Uruchamianie urządzenia wirtualnego i uzyskiwanie adresu IP
+Wykonaj poniższe kroki, aby uruchomić urządzenie wirtualne i nawiązać z nim połączenie.
+
+#### <a name="to-start-the-virtual-device"></a>Aby uruchomić urządzenie wirtualne
+1. Uruchom urządzenie wirtualne.
+
+   ![](./media/data-box-gateway-deploy-provision-hyperv/image18.png)
+2. Po uruchomieniu urządzenia wybierz je, kliknij prawym przyciskiem myszy, a następnie wybierz polecenie **Połącz**.
+
+3. Przygotowanie urządzenia może potrwać około 10–15 minut. W konsoli zostanie wyświetlony komunikat o stanie, wskazujący postęp procesu. Gdy urządzenie będzie gotowe, przejdź do pozycji **Akcja**. Naciśnij klawisze `Ctrl + Alt + Delete`, aby zalogować się do urządzenia wirtualnego. Domyślna nazwa użytkownika to *EdgeUser*, a domyślne hasło to *Password1*.
+
+   ![](./media/data-box-gateway-deploy-provision-hyperv/image21.png)
+4. Ze względów bezpieczeństwa hasło administratora urządzenia wygasa przy pierwszym logowaniu. Zostanie wyświetlony monit informujący o konieczności zmiany hasła.
+
+   Wprowadź hasło zawierające co najmniej 8 znaków. Hasło musi zawierać co najmniej 3 z następujących 4 elementów: wielkie litery, małe litery, cyfry i znaki specjalne. Wprowadź ponownie hasło w celu potwierdzenia. Otrzymasz powiadomienie, że hasło zostało zmienione.
+   
+5. Po pomyślnej zmianie hasła urządzenie wirtualne może zostać uruchomione ponownie. Poczekaj na uruchomienie urządzenia.  Zostanie wyświetlona konsola programu Windows PowerShell urządzenia wraz z paskiem postępu.
+
+   ![](./media/data-box-gateway-deploy-provision-hyperv/image22.png)
+
+6. Kroki od 6 do 8 mają zastosowanie tylko w przypadku uruchamiania w środowisku bez protokołu DHCP. W przypadku środowiska protokołu DHCP należy pominąć te kroki i przejść do kroku 9. Jeśli urządzenie zostało uruchomione w środowisku bez protokołu DHCP, zostanie wyświetlony komunikat z taką informacją.
+    
+7. Aby skonfigurować sieć, użyj polecenia `Get-HcsIpAddress` do wyświetlenia listy interfejsów sieciowych włączonych na urządzeniu wirtualnym. Jeśli urządzenie ma włączony jeden interfejs sieciowy, jego domyślną nazwą jest `DATA1`.
+
+8. Skonfiguruj sieć za pomocą polecenia cmdlet `Set-HcsIpAddress`. Zobacz poniższy przykład:
+
+    `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
+    
+9. Po zakończeniu początkowej konfiguracji i uruchomieniu urządzenia zobaczysz tekst baneru urządzenia. Zanotuj adresy IP i URL wyświetlane w tekście baneru. Posłużą one do zarządzania urządzeniem. Użyj tego adresu IP do nawiązania połączenia z internetowym interfejsem użytkownika urządzenia wirtualnego i dokończ lokalną konfigurację i aktywację urządzenia.
+
+   ![](./media/data-box-gateway-deploy-provision-hyperv/image23.png)
+      
+
+Jeśli urządzenie nie spełnia minimalnych wymagań dotyczących konfiguracji, w tekście transparentu zostanie wyświetlony błąd. Zmodyfikuj konfigurację urządzenia tak, aby zapewnić zasoby zgodne z wymaganiami minimalnymi. Następnie możesz ponownie uruchomić urządzenie i połączyć się z nim. Minimalne wymagania konfiguracji opisano w sekcji [Krok 1. Sprawdzanie, czy system hosta spełnia minimalne wymagania dotyczące urządzenia wirtualnego](#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements).
+
+<!--If you face any other error during the initial configuration using the local web UI, refer to the following workflows:
+
+* Run diagnostic tests to [troubleshoot web UI setup](storsimple-ova-web-ui-admin.md#troubleshoot-web-ui-setup-errors).
+* [Generate log package and view log files](storsimple-ova-web-ui-admin.md#generate-a-log-package).-->
+
+## <a name="next-steps"></a>Następne kroki
+
+W tym samouczku przedstawiono zagadnienia dotyczące usługi Data Box Gateway, takie jak:
+
+> [!div class="checklist"]
+> * Sprawdzanie, czy host spełnia minimalne wymagania dotyczące urządzenia
+> * Aprowizowanie urządzenia wirtualnego w funkcji hypervisor
+> * Uruchamianie urządzenia wirtualnego i uzyskiwanie adresu IP
+
+Przejdź do następnego samouczka, aby dowiedzieć się, jak nawiązać połączenie z urządzeniem wirtualnym oraz skonfigurować i aktywować je.
+
+> [!div class="nextstepaction"]
+> [Connect and set up your Data Box Gateway (Nawiązywanie połączenia z usługą Data Box Gateway i konfigurowanie jej)](./data-box-gateway-deploy-connect-setup-activate.md)
+
+

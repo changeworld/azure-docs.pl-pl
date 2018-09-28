@@ -6,15 +6,15 @@ author: vhorne
 manager: jpconnock
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 7/11/2018
+ms.date: 09/24/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 05959143431a2cc11d79a4012f45eb565c1c91f2
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 727d38cae6c2f98d2922d5760f116ab85d75b8ac
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576002"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983518"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal
 
@@ -31,7 +31,9 @@ Ruch sieciowy podlega skonfigurowanym regułom zapory podczas kierowania ruchu s
 
 Reguły aplikacji i sieci są przechowywane w *kolekcjach reguł*. Kolekcja reguł to lista reguł, które mają tę samą akcję i priorytet.  Kolekcja reguł sieci to lista reguł sieci, a kolekcja reguł aplikacji to lista reguł aplikacji.
 
-Kolekcje reguł sieci są zawsze przetwarzane przed kolekcjami reguł aplikacji. Wszystkie reguły powodują zakończenie, a więc jeśli dopasowanie zostanie znalezione w kolekcji reguł sieci, następujące kolekcje reguł aplikacji dla sekcji nie będą przetwarzane.
+W usłudze Azure Firewall nie istnieje pojęcie reguł ruchu przychodzącego i wychodzącego. Istnieją zasady aplikacji i zasady sieci, które są stosowane do wszelkiego ruchu przechodzącego przez zaporę. Najpierw stosowane są reguły sieci, a następnie reguły aplikacji, a reguły powodują zakończenie.
+
+Jeśli na przykład zostanie dopasowana reguła sieci, pakiet nie zostanie oceniony przez reguły aplikacji. Jeśli nie zostanie dopasowana reguła sieci i jeśli protokół pakietu to HTTP/HTTPS, pakiet zostanie oceniony przez reguły aplikacji. Jeśli nadal nie zostanie znalezione dopasowanie, pakiet zostanie oceniony względem kolekcji reguł infrastruktury. Jeśli wciąż nie zostanie znalezione dopasowanie, pakiet zostanie domyślnie odrzucony.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -46,10 +48,6 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
-
-[!INCLUDE [firewall-preview-notice](../../includes/firewall-preview-notice.md)]
-
-W przykładach podanych w artykułach na temat usługi Azure Firewall założono, że publiczna wersja zapoznawcza usługi Azure Firewall została już włączona. Aby uzyskać więcej informacji, zobacz [Włączanie publicznej wersji zapoznawczej usługi Azure Firewall](public-preview.md).
 
 W tym samouczku utworzysz pojedynczą sieć wirtualną z trzema podsieciami:
 - **FW-SN** — w tej podsieci znajduje się zapora.
@@ -83,9 +81,7 @@ Najpierw utwórz grupę zasobów zawierającą zasoby wymagane do wdrożenia zap
 7. W polu **Subskrypcja** wybierz subskrypcję.
 8. W obszarze **Grupa zasobów** wybierz pozycję **Użyj istniejącej**, a następnie wybierz pozycję **Test-FW-RG**.
 9. W polu **Lokalizacja** wybierz tę samą lokalizację, która była używana poprzednio.
-10. W obszarze **Podsieci** w polu **Nazwa** wpisz wartość **AzureFirewallSubnet**.
-
-    Zapora będzie znajdować się w tej podsieci, a nazwą podsieci **musi** być AzureFirewallSubnet.
+10. W obszarze **Podsieci** w polu **Nazwa** wpisz wartość **AzureFirewallSubnet**. Zapora będzie znajdować się w tej podsieci, a nazwą podsieci **musi** być AzureFirewallSubnet.
 11. W polu **Zakres adresów** wpisz wartość **10.0.1.0/24**.
 12. Użyj innych domyślnych ustawień, a następnie kliknij przycisk **Utwórz**.
 
@@ -207,25 +203,21 @@ Na potrzeby podsieci **Workload-SN** skonfiguruj trasę domyślną ruchu wychodz
 
 
 1. Otwórz pozycję **Test-FW-RG** i kliknij zaporę **Test-FW01**.
-1. Na stronie **Test-FW01** w obszarze **Ustawienia** kliknij pozycję **Reguły**.
-2. Kliknij pozycję **Dodaj kolekcję reguł aplikacji**.
-3. W polu **Nazwa** wpisz wartość **App-Coll01**.
-1. W polu **Priorytet** wpisz wartość **200**.
-2. W polu **Akcja** wybierz opcję **Zezwalaj**.
+2. Na stronie **Test-FW01** w obszarze **Ustawienia** kliknij pozycję **Reguły**.
+3. Kliknij pozycję **Dodaj kolekcję reguł aplikacji**.
+4. W polu **Nazwa** wpisz wartość **App-Coll01**.
+5. W polu **Priorytet** wpisz wartość **200**.
+6. W polu **Akcja** wybierz opcję **Zezwalaj**.
+7. W obszarze **Reguły** w polu **Nazwa** wpisz wartość **AllowGH**.
+8. W polu **Adresy źródłowe** wpisz wartość **10.0.2.0/24**.
+9. W polu **Protocol:port** wpisz wartość **http, https**. 
+10. W polu **Docelowa nazwa FQDN** wpisz wartość **github.com**
+11. Kliknij pozycję **Add** (Dodaj).
 
-6. W obszarze **Reguły** w polu **Nazwa** wpisz wartość **AllowGH**.
-7. W polu **Adresy źródłowe** wpisz wartość **10.0.2.0/24**.
-8. W polu **Protocol:port** wpisz wartość **http, https**. 
-9. W polu **Docelowa nazwa FQDN** wpisz wartość **github.com**
-10. Kliknij pozycję **Add** (Dodaj).
+Usługa Azure Firewall zawiera wbudowaną kolekcję reguł dla nazw FQDN infrastruktury, które domyślnie są dozwolone. Te nazwy FQDN są specyficzne dla platformy i nie można ich używać do innych celów. Aby uzyskać więcej informacji, zobacz [Infrastrukturalne nazwy FQDN](infrastructure-fqdns.md).
 
-> [!NOTE]
-> Usługa Azure Firewall zawiera wbudowaną kolekcję reguł dla nazw FQDN infrastruktury, które domyślnie są dozwolone. Te nazwy FQDN są specyficzne dla platformy i nie można ich używać do innych celów. Dozwolone nazwy FQDN infrastruktury obejmują:
->- Obliczenia dostępu do repozytorium obrazów platformy (PIR) magazynu.
->- Dostęp magazynu stanu dysków zarządzanych.
->- Diagnostyka systemu Windows
->
-> Możesz zastąpić tę wbudowaną kolekcję reguł infrastruktury przez utworzenie kolekcji reguł aplikacji *odmawiaj wszystkim*, która jest przetwarzana jako ostatnie. Zawsze będzie ona przetwarzana przed kolekcją reguł infrastruktury. Wszystko, co nie znajduje się w kolekcji reguł infrastruktury, zostanie odrzucone domyślnie.
+> [!Note]
+> Tagi FQDN można obecnie skonfigurować tylko przy użyciu programu Azure PowerShell i architektury REST. Kliknij [tutaj](https://aka.ms/firewallapplicationrule), aby dowiedzieć się więcej. 
 
 ## <a name="configure-network-rules"></a>Konfigurowanie reguł sieci
 

@@ -5,65 +5,73 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 07/18/2018
+ms.date: 09/21/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: 67dd6ba9b94ed9d58d91fb644ce9ee9e44ae9e45
-ms.sourcegitcommit: 1478591671a0d5f73e75aa3fb1143e59f4b04e6a
+ms.openlocfilehash: a21b97f603fc28cdbba8983547ce958a34df0774
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/19/2018
-ms.locfileid: "39159173"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46968598"
 ---
-# <a name="what-is-azure-virtual-wan-preview"></a>Co to jest usługa Azure Virtual WAN? (Wersja zapoznawcza)
+# <a name="what-is-azure-virtual-wan"></a>Co to jest usługa Azure Virtual WAN?
 
-Azure Virtual WAN to usługa sieciowa zapewniająca zoptymalizowaną i zautomatyzowaną łączność między oddziałami za pośrednictwem platformy Azure. Usługa Virtual WAN umożliwia łączenie urządzeń w oddziałach z platformą Azure i konfigurowanie ich komunikacji. Można to zrobić ręcznie lub za pomocą urządzeń preferowanych dostawców — partnerów usługi Virtual WAN. Użycie urządzeń preferowanych dostawców zapewnia łatwość obsługi i upraszcza łączność oraz zarządzanie konfiguracją. Wbudowany pulpit nawigacyjny sieci WAN na platformie Azure udostępnia na bieżąco wskazówki dotyczące rozwiązywania problemów, dzięki którym oszczędzisz czas, i umożliwia łatwe monitorowanie łączności między lokacjami w dużej skali.
-
-> [!IMPORTANT]
-> Usługa Azure Virtual WAN jest obecnie dostępna w zarządzanej publicznej wersji zapoznawczej. Aby korzystać z usługi Virtual WAN, należy najpierw [zarejestrować się w wersji zapoznawczej](#enroll).
->
-> Publiczna wersja zapoznawcza nie jest objęta umową dotyczącą poziomu usług i nie należy korzystać z niej w przypadku obciążeń produkcyjnych. Niektóre funkcje mogą nie być obsługiwane, mogą mieć ograniczone możliwości lub mogą nie być dostępne we wszystkich lokalizacjach platformy Azure. Aby uzyskać szczegółowe informacje, zobacz [Dodatkowe warunki użytkowania wersji zapoznawczych platformy Microsoft Azure](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
-
-Ten artykuł zawiera krótkie omówienie łączności sieciowej między obciążeniami na platformie Azure i poza nią. Usługa Virtual WAN oferuje następujące korzyści:
-
-* **Zintegrowane rozwiązania w zakresie łączności w topologii piasty i szprych:** możliwość zautomatyzowania konfiguracji łączności między lokacjami lokalnymi a koncentratorem na platformie Azure za pomocą różnorodnych źródeł, w tym rozwiązań partnerów usługi Virtual WAN.
-* **Automatyczna instalacja i konfiguracja szprych:** bezproblemowe łączenie sieci wirtualnych i obciążeń z koncentratorem na platformie Azure.
-* **Intuicyjne rozwiązywanie problemów:** możesz monitorować cały przepływ na platformie Azure i podejmować wymagane działania na podstawie tych informacji.
+Azure Virtual WAN to usługa sieciowa zapewniająca zoptymalizowaną i zautomatyzowaną łączność między oddziałami za pośrednictwem platformy Azure. Usługa Virtual WAN umożliwia łączenie urządzeń w oddziałach z platformą Azure i konfigurowanie ich komunikacji. Można to zrobić ręcznie lub za pomocą urządzeń preferowanych partnerów za pośrednictwem partnera usługi Virtual WAN. Zobacz artykuł na temat [preferowanych partnerów](https://go.microsoft.com/fwlink/p/?linkid=2019615), aby uzyskać szczegółowe informacje. Użycie urządzeń preferowanych partnerów zapewnia łatwość obsługi i upraszcza łączność oraz zarządzanie konfiguracją. Wbudowany pulpit nawigacyjny sieci WAN na platformie Azure udostępnia na bieżąco wskazówki dotyczące rozwiązywania problemów, dzięki którym oszczędzisz czas, a także umożliwia łatwe monitorowanie łączności w dużej skali.
 
 ![Diagram usługi Virtual WAN](./media/virtual-wan-about/virtualwan.png)
 
-## <a name="vendor"></a>Współpraca z partnerem usługi Virtual WAN
+Ten artykuł zawiera krótkie omówienie łączności sieciowej między obciążeniami na platformie Azure i poza nią. Usługa Virtual WAN oferuje następujące korzyści:
 
-1. Kontroler urządzenia w oddziale (VPN/SDWAN) jest uwierzytelniany w celu wyeksportowania informacji z lokacji na platformę Azure za pomocą jednostki usługi platformy Azure.
+* **Zintegrowane rozwiązania w zakresie łączności w topologii piasty i szprych:** możliwość zautomatyzowania konfiguracji łączności między lokacjami lokalnymi a koncentratorem na platformie Azure.
+* **Automatyczna instalacja i konfiguracja szprych:** bezproblemowe łączenie sieci wirtualnych i obciążeń z koncentratorem na platformie Azure.
+* **Intuicyjne rozwiązywanie problemów:** możesz monitorować cały przepływ na platformie Azure i podejmować wymagane działania na podstawie tych informacji.
+
+## <a name="s2s"></a>Połączenia typu lokacja-lokacja
+
+Możesz utworzyć połączenie typu lokacja-lokacja w usłudze Virtual WAN za pośrednictwem [partnera usługi Virtual WAN](https://go.microsoft.com/fwlink/p/?linkid=2019615) lub ręcznie.
+
+### <a name="s2spartner"></a>Współpraca z partnerem usługi Virtual WAN
+
+Jeśli pracujesz z partnerem usługi Virtual WAN, proces wygląda następująco:
+
+1. Kontroler urządzenia w oddziale (VPN/SDWAN) jest uwierzytelniany w celu wyeksportowania informacji z lokacji na platformę Azure za pomocą [jednostki usługi platformy Azure](../azure-resource-manager/resource-group-create-service-principal-portal.md).
 2. Kontroler urządzenia w oddziale (VPN/SDWAN) uzyskuje konfigurację łączności z platformy Azure i aktualizuje urządzenie lokalne. To umożliwia zautomatyzowanie pobierania, edytowania i aktualizowania konfiguracji lokalnego urządzenia sieci VPN.
-3. Gdy urządzenie jest prawidłowo skonfigurowane pod kątem platformy Azure, tworzone jest połączenie typu lokacja-lokacja (dwa aktywne tunele) z siecią WAN platformy Azure. Platforma Azure wymaga, aby kontroler w oddziale (VPN/SDWAN) obsługiwał protokół IKEv2. Protokół BGP jest opcjonalny.
+3. Gdy urządzenie jest prawidłowo skonfigurowane pod kątem platformy Azure, tworzone jest połączenie typu lokacja-lokacja (dwa aktywne tunele) z siecią WAN platformy Azure. Platforma Azure obsługuje zarówno protokół IKEv1, jak i IKEv2. Protokół BGP jest opcjonalny.
+
+
+Jeśli nie chcesz korzystać z preferowanego partnera, możesz skonfigurować połączenie ręcznie. Zobacz [Tworzenie połączenia typu lokacja-lokacja przy użyciu usługi Virtual WAN](virtual-wan-site-to-site-portal.md).
+
+## <a name="p2s"></a>Połączenia typu punkt-lokacja (wersja zapoznawcza)
+
+Aby utworzyć połączenie ręcznie, zobacz [Tworzenie połączenia typu punkt-lokacja przy użyciu usługi Virtual WAN](https://go.microsoft.com/fwlink/p/?linkid=2020051&clcid).
+
+## <a name="er"></a>Połączenia usługi ExpressRoute (wersja zapoznawcza)
+
+Aby utworzyć połączenie ręcznie, zobacz [Tworzenie połączenia usługi ExpressRoute przy użyciu usługi Virtual WAN](https://go.microsoft.com/fwlink/p/?linkid=2020148&clcid).
+
 
 ## <a name="resources"></a>Zasoby usługi Virtual WAN
 
 Aby skonfigurować kompleksową wirtualną sieć WAN, należy utworzyć następujące zasoby:
 
-* **virtualWAN:** zasób virtualWAN reprezentuje wirtualną nakładkę sieci platformy Azure i stanowi zbiór kilku zasobów. Zawiera linki do wszystkich koncentratorów wirtualnych, które mają się znaleźć w wirtualnej sieci WAN. Zasoby usługi Virtual WAN są wzajemnie izolowane i nie mogą zawierać wspólnego koncentratora. Koncentratory wirtualne w usłudze Virtual WAN nie komunikują się ze sobą.
+* **virtualWAN:** zasób virtualWAN reprezentuje wirtualną nakładkę sieci platformy Azure i stanowi zbiór kilku zasobów. Zawiera linki do wszystkich koncentratorów wirtualnych, które mają się znaleźć w wirtualnej sieci WAN. Zasoby usługi Virtual WAN są wzajemnie izolowane i nie mogą zawierać wspólnego koncentratora. Koncentratory wirtualne w usłudze Virtual WAN nie komunikują się ze sobą. Właściwość „Zezwalaj na ruch między oddziałami” zezwala na ruch między lokacjami sieci VPN oraz z lokacji sieci VPN do lokacji z włączoną usługą ExpressRoute. Należy pamiętać, że usługa ExpressRoute w usłudze Azure Virtual WAN jest obecnie dostępna w wersji zapoznawczej.
 
 * **Lokacja:** zasób lokacji, noszący nazwę vpnsite, reprezentuje lokalne urządzenie sieci VPN i jego ustawienia. Dzięki współpracy z partnerem usługi Virtual WAN otrzymasz wbudowane rozwiązanie do automatycznego eksportowania tych informacji na platformę Azure.
 
-* **Koncentrator:** koncentrator wirtualny to sieć wirtualna zarządzana przez firmę Microsoft. Koncentrator zawiera różne punkty końcowe usług, umożliwiające łączność z siecią lokalną (zasobem vpnsite). Koncentrator to podstawowy element sieci w danym regionie. W jednym regionie świadczenia usługi Azure może znajdować się tylko jeden koncentrator. Utworzenie koncentratora w witrynie Azure Portal spowoduje automatyczne utworzenie sieci wirtualnej i bramy vpngateway dla koncentratora wirtualnego.
+* **Koncentrator:** koncentrator wirtualny to sieć wirtualna zarządzana przez firmę Microsoft. Koncentrator zawiera różne punkty końcowe usług, umożliwiające łączność z siecią lokalną (zasobem vpnsite). Koncentrator to podstawowy element sieci w danym regionie. W jednym regionie świadczenia usługi Azure może znajdować się tylko jeden koncentrator. Utworzenie koncentratora w witrynie Azure Portal spowoduje utworzenie sieci wirtualnej i bramy vpngateway dla koncentratora wirtualnego.
 
   Brama koncentratora różni się od bramy sieci wirtualnej używanej w usługach ExpressRoute i VPN Gateway. Na przykład w przypadku użycia usługi Virtual WAN nie tworzy się połączenia typu lokacja-lokacja z lokacji lokalnej bezpośrednio do sieci wirtualnej. Zamiast tego jest tworzone połączenie typu lokacja-lokacja z koncentratorem. Ruch zawsze jest kierowany przez bramę koncentratora. Oznacz to, że sieci wirtualne nie muszą mieć własnych bram sieci wirtualnej. Usługa Virtual WAN umożliwia łatwe skalowanie sieci wirtualnych za pośrednictwem koncentratora wirtualnego i bramy koncentratora wirtualnego. 
 
 * **Połączenie sieci wirtualnej koncentratora:** zasób połączenia sieci wirtualnej koncentratora umożliwia bezproblemowe łączenie koncentratora z siecią wirtualną. Obecnie można tworzyć połączenia tylko z sieciami wirtualnymi znajdującymi się w tym samym regionie co koncentrator.
 
-##<a name="enroll"></a>Rejestracja w wersji zapoznawczej
-
-Aby móc skonfigurować usługę Virtual WAN, należy najpierw zarejestrować swoją subskrypcję w wersji zapoznawczej. Jeśli tego nie zrobisz, usługa Virtual WAN nie będzie dostępna w portalu. Aby przeprowadzić rejestrację, wyślij wiadomość e-mail na adres <azurevirtualwan@microsoft.com>, podając identyfikator subskrypcji. Gdy subskrypcja zostanie zarejestrowana, otrzymasz wiadomość e-mail.
+* **Tabela tras koncentratora:** możesz utworzyć trasę koncentratora wirtualnego i zastosować tę trasę do tabeli tras koncentratora wirtualnego. Możesz zastosować wiele tras do tabeli tras koncentratora wirtualnego.
 
 ## <a name="faq"></a>Często zadawane pytania
 
 [!INCLUDE [Virtual WAN FAQ](../../includes/virtual-wan-faq-include.md)]
 
-## <a name="feedback"></a>Opinie dotyczące wersji zapoznawczej
-
-Będziemy wdzięczni za przesłanie opinii. Wyślij wiadomość e-mail na adres <azurevirtualwan@microsoft.com>, jeśli chcesz zgłosić problem lub wyrazić swoją opinię (pozytywną lub negatywną) dotyczącą usługi Virtual WAN. W wierszu tematu wpisz nazwę firmy w nawiasie kwadratowym („[ ]”). Jeśli zgłaszasz problem, dołącz również swój identyfikator subskrypcji.
 
 ## <a name="next-steps"></a>Następne kroki
 
-Możesz utworzyć połączenie typu lokacja-lokacja w usłudze Virtual WAN za pośrednictwem [partnera usługi Virtual WAN](https://aka.ms/virtualwan) lub ręcznie. Aby utworzyć połączenie ręcznie, zobacz [Create a Site-to-Site connection using Virtual WAN (Tworzenie połączenia typu lokacja-lokacja w usłudze Virtual WAN)](virtual-wan-site-to-site-portal.md).
+* Zobacz [lokalizacje i partnerów usługi Virtual WAN](https://aka.ms/virtualwan)

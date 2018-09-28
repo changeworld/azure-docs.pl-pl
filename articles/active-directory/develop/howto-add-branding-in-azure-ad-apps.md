@@ -10,30 +10,37 @@ ms.assetid: 72f4e464-1352-4a49-a18f-c37f58e7d5c4
 ms.service: active-directory
 ms.component: develop
 ms.devlang: na
-ms.topic: article
+ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 04/27/2017
+ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: arielgo
 ms.custom: aaddev, signin_art
-ms.openlocfilehash: 92990a71a0b138f08c515450ecd71692fa57f297
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: 6edcd5b3df7c3c58c6568434f82fbc52cb9e28df
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "43185424"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46958870"
 ---
 # <a name="branding-guidelines-for-applications"></a>Wytyczne dotyczące oznaczania aplikacji marką
 
-W tym artykule przedstawiono wytyczne dotyczące oznaczania marką, które należy stosować podczas opracowywania aplikacji przy użyciu usługi Azure Active Directory (Azure AD). Te wytyczne ułatwią udzielanie pomocy klientom, którzy chcą używać konta służbowego zarządzanego przez usługę Azure AD, lub konta osobistego na potrzeby tworzenia konta i logowania w aplikacji.
+Podczas opracowywania aplikacji przy użyciu usługi Azure Active Directory (Azure AD) będziesz musieć udzielać pomocy klientom, którzy chcą używać konta służbowego zarządzanego przez usługę Azure AD lub konta osobistego na potrzeby tworzenia konta i logowania w aplikacji.
+
+W tym artykule:
+
+- Poznasz dwa rodzaje kont użytkowników zarządzanych przez firmę Microsoft i dowiesz się, jak odwoływać się do konta usługi Azure AD w aplikacji.
+- Dowiesz się, co jest potrzebne, aby dodać logo firmy Microsoft do użycia w aplikacji.
+- Pobierzesz oficjalne obrazy **Zaloguj się** lub **Zaloguj się przy użyciu konta Microsoft** do wykorzystania w aplikacji.
+- Poznasz zalecenia oraz zakazy dotyczące znakowania i nawigacji.
 
 ## <a name="personal-accounts-vs-work-or-school-accounts-from-microsoft"></a>Konta osobiste a służbowe firmy Microsoft
 
 Firma Microsoft zarządza dwoma rodzajami kont użytkowników:
 
-* **Konta osobiste** (wcześniej konta Windows Live ID). Te konta reprezentują relację między *poszczególnymi* użytkownikami i firmą Microsoft oraz umożliwiają uzyskiwanie dostępu do urządzeń klientów i usług firmy Microsoft. Te konta są przeznaczone do użytku osobistego.
-* **Konta służbowe.** Te konta są zarządzane przez firmę Microsoft w imieniu organizacji, która używa usługi Azure Active Directory. Te konta umożliwiają logowanie się do usługi Office 365 i innych usług biznesowych firmy Microsoft.
+- **Konta osobiste** (wcześniej konta Windows Live ID). Te konta reprezentują relację między *poszczególnymi* użytkownikami i firmą Microsoft oraz umożliwiają uzyskiwanie dostępu do urządzeń klientów i usług firmy Microsoft. Te konta są przeznaczone do użytku osobistego.
+- **Konta służbowe.** Te konta są zarządzane przez firmę Microsoft w imieniu organizacji, która używa usługi Azure Active Directory. Te konta umożliwiają logowanie się do usługi Office 365 i innych usług biznesowych firmy Microsoft.
 
 Konta służbowe firmy Microsoft zwykle są przypisane do użytkowników końcowych (pracowników, uczniów, studentów, pracowników federalnych) przez ich organizacje (firmy, szkoły, agencje rządowe). Te konta są zarządzane bezpośrednio w chmurze (na platformie Azure AD) lub synchronizowane z usługą Azure AD z poziomu katalogu lokalnego, takiego jak usługa Active Directory systemu Windows Server. Firma Microsoft jest *nadzorcą* kont służbowych, ale należą one do organizacji i są przez nią kontrolowane.
 
@@ -41,8 +48,8 @@ Konta służbowe firmy Microsoft zwykle są przypisane do użytkowników końcow
 
 Firma Microsoft nie pokazuje użytkownikom końcowym nazw marek platformy Azure lub usługi Active Directory i nie należy tego robić.
 
-* Gdy użytkownicy są zalogowani, należy możliwie najczęściej używać nazwy i logo organizacji. Jest to lepsze rozwiązanie niż używanie ogólnych terminów, takich jak „Twoja organizacja”.
-* Gdy użytkownicy nie są zalogowani, należy nazywać ich konta „kontami służbowymi” i używać logo firmy Microsoft, aby pokazać, że te konta są zarządzane przez firmę Microsoft. Nie należy używać takich terminów jak „konto przedsiębiorstwa”, „konto biznesowe” lub „konto firmowe”, które są mylące dla użytkowników.
+- Gdy użytkownicy są zalogowani, należy możliwie najczęściej używać nazwy i logo organizacji. Jest to lepsze rozwiązanie niż używanie ogólnych terminów, takich jak „Twoja organizacja”.
+- Gdy użytkownicy nie są zalogowani, należy nazywać ich konta „kontami służbowymi” i używać logo firmy Microsoft, aby pokazać, że te konta są zarządzane przez firmę Microsoft. Nie należy używać takich terminów jak „konto przedsiębiorstwa”, „konto biznesowe” lub „konto firmowe”, które są mylące dla użytkowników.
 
 ## <a name="user-account-pictogram"></a>Piktogram konta użytkownika
 
@@ -94,7 +101,6 @@ Aby pobrać oficjalne obrazy do użycia w aplikacji, kliknij prawym przyciskiem 
 | Zaloguj się przy użyciu konta Microsoft (motyw jasny) | ![Przycisk „Zaloguj się” w formacie PNG (motyw jasny)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.png) | ![Przycisk „Zaloguj się przy użyciu konta Microsoft” w formacie SVG (motyw jasny)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light.svg) |
 | Zaloguj się (motyw ciemny)                 | ![Krótki przycisk „Zaloguj się” w formacie PNG (motyw ciemny)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.png) | ![Krótki przycisk „Zaloguj się” w formacie SVG (motyw ciemny)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_dark_short.svg) |
 | Zaloguj się (motyw jasny)                | ![Krótki przycisk „Zaloguj się” w formacie PNG (motyw jasny)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.png) | ![Krótki przycisk „Zaloguj się” w formacie SVG (motyw jasny)](./media/howto-add-branding-in-azure-ad-apps/ms-symbollockup_signin_light_short.svg) |
-
 
 ## <a name="branding-dos-and-donts"></a>Zalecenia dotyczące oznaczania marką
 

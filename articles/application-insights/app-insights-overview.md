@@ -12,19 +12,17 @@ ms.tgt_pltfrm: ibiza
 ms.devlang: na
 ms.topic: overview
 ms.custom: mvc
-ms.date: 05/14/2017
+ms.date: 09/06/2018
 ms.author: mbullwin
-ms.openlocfilehash: fe6be773988d1889336cdddb54f7886aeb8d4f5f
-ms.sourcegitcommit: 0c490934b5596204d175be89af6b45aafc7ff730
+ms.openlocfilehash: aa9c02e069700ab236c4b9fc78482450b5911e93
+ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/27/2018
-ms.locfileid: "37051828"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "46983876"
 ---
 # <a name="what-is-application-insights"></a>Co to jest usługa Application Insights?
-Usługa Application Insights jest rozszerzalną usługą zarządzania wydajnością aplikacji (APM) dla deweloperów sieci Web na wielu platformach. Użyj tej usługi do monitorowania aplikacji internetowej na żywo. Usługa automatycznie wykryje nieprawidłowości w zakresie wydajności. Obejmuje ona zaawansowane narzędzia analityczne, dzięki którym możesz diagnozować problemy i zrozumieć sposób korzystania z aplikacji przez użytkowników.  Usługa ta pomaga w ciągłym doskonaleniu wydajności i użyteczności tworzonych rozwiązań. Działa w przypadku aplikacji na różnych platformach, w tym .NET, Node.js i J2EE, hostowanych lokalnie lub w chmurze. Integruje się ona z procesem DevOps i ma punkty połączenia z szeroką gamą narzędzi programistycznych. Może monitorować i analizować dane telemetryczne z aplikacji mobilnych dzięki integracji z usługą Visual Studio App Center i platformą HockeyApp.
-
-![Udostępnia wykresy statystyki działań użytkownika lub przejście do szczegółów określonych zdarzeń.](./media/app-insights-overview/00-sample.png)
+Usługa Application Insights jest rozszerzalną usługą zarządzania wydajnością aplikacji (APM) dla deweloperów sieci Web na wielu platformach. Użyj tej usługi do monitorowania aplikacji internetowej na żywo. Usługa automatycznie wykryje nieprawidłowości w zakresie wydajności. Obejmuje ona zaawansowane narzędzia analityczne, dzięki którym możesz diagnozować problemy i zrozumieć sposób korzystania z aplikacji przez użytkowników.  Usługa ta pomaga w ciągłym doskonaleniu wydajności i użyteczności tworzonych rozwiązań. Działa w przypadku aplikacji na różnych platformach, w tym .NET, Node.js i J2EE, hostowanych lokalnie lub w chmurze. Integruje się ona z procesem DevOps i ma punkty połączenia z szeroką gamą narzędzi programistycznych. Może monitorować i analizować dane telemetryczne z aplikacji mobilnych dzięki integracji z usługą Visual Studio App Center.
 
 [Obejrzyj animację wprowadzającą](https://www.youtube.com/watch?v=fX2NtGrh-Y0).
 
@@ -34,7 +32,6 @@ Zainstaluj mały pakiet instrumentacji w swojej aplikacji i skonfiguruj zasób u
 Instrumentacja może obejmować nie tylko aplikację usługi sieci Web, ale również wszystkie składniki tła i skrypty JavaScript na samych stronach sieci Web. 
 
 ![Instrumentacja usługi Application Insights w Twojej aplikacji wysyła dane telemetryczne do zasobu usługi Application Insights.](./media/app-insights-overview/01-scheme.png)
-
 
 Ponadto możesz ściągnąć dane telemetryczne ze środowisk hostów, takich jak liczniki wydajności, diagnostyka platformy Azure lub dzienniki platformy Docker. Możesz też skonfigurować testy sieci Web, które okresowo wysyłają syntetyczne żądania do usługi sieci Web.
 
@@ -114,7 +111,7 @@ Istnieje kilka sposobów, aby rozpocząć. Zacznij od tego, co najlepiej sprawdz
   * [**J2EE**](app-insights-java-live.md)
 * **W czasie tworzenia: dodaj usługę Application Insights do swojego kodu.** Umożliwia pisanie niestandardowych telemetrii oraz instrumentację zaplecza i aplikacji komputerowych.
   * [Program Visual Studio](app-insights-asp-net.md) 2013 Update 2 lub nowszy.
-  * Język Java w środowisku [Eclipse](app-insights-java-eclipse.md) lub [innych narzędziach](app-insights-java-get-started.md)
+  * [Java](app-insights-java-get-started.md)
   * [Node.js](app-insights-nodejs.md)
   * [Inne platformy](app-insights-platforms.md)
 * **[Instrumentacja stron sieci Web](app-insights-javascript.md)** dla widoku strony, wywołań AJAX i innych telemetrii po stronie klienta.

@@ -1,0 +1,120 @@
+items:
+- name: Rozwiązywanie problemów z maszynami wirtualnymi platformy Azure
+  href: index.md
+- name: Błędy alokacji
+  items:
+  - name: Błędy alokacji
+    href: allocation-failure.md
+  - name: Błędy alokacji w przypadku wdrożeń klasycznych
+    href: allocation-failure-classic.md
+- name: Diagnostyka rozruchu
+  href: boot-diagnostics.md
+- name: RDP
+  items:
+  - name: Resetowanie protokołu RDP
+    href: reset-rdp.md
+  - name: Rozwiązywanie problemów z protokołem RDP
+    href: troubleshoot-rdp-connection.md
+  - name: Szczegółowe rozwiązywanie problemów z protokołem RDP
+    href: detailed-troubleshoot-rdp.md
+  - name: Rozwiązywanie problemów z konkretnymi błędami
+    href: troubleshoot-specific-rdp-errors.md
+- name: Protokół SSH
+  items:
+  - name: Rozwiązywanie problemów z protokołem SSH
+    href: troubleshoot-ssh-connection.md
+  - name: Szczegółowe rozwiązywanie problemów z protokołem RDP
+    href: detailed-troubleshoot-ssh-connection.md
+- name: Typowe komunikaty o błędach
+  href: error-messages.md
+- name: Problemy z wydajnością maszyn wirtualnych z systemem Windows
+  href: performance-diagnostics.md
+  items:
+  - name: Korzystanie z narzędzia PerfInsights
+    href: how-to-use-perfInsights.md
+  - name: Rozszerzenie do diagnostyki wydajności
+    href: performance-diagnostics-vm-extension.md
+- name: Instalowanie agenta maszyny wirtualnej z systemem Windows w trybie offline
+  href: install-vm-agent-offline.md
+- name: Ponowne wdrażanie maszyny wirtualnej
+  items:
+  - name: Linux
+    href: redeploy-to-new-node-linux.md
+  - name: Windows
+    href: redeploy-to-new-node-windows.md
+- name: Resetowanie hasła maszyny wirtualnej
+  items:
+  - name: Windows
+    href: reset-local-password-without-agent.md
+  - name: Linux
+    href: reset-password.md
+- name: Resetowanie karty sieciowej
+  href: reset-network-interface.md
+- name: Ponowne uruchamianie maszyny wirtualnej lub zmienianie jej rozmiaru
+  href: restart-resize-error-troubleshooting.md
+- name: Korzystanie z konsoli szeregowej
+  items:
+  - name: Maszyna wirtualna z systemem Linux
+    href: serial-console-linux.md
+    items:
+    - name: Konsola szeregowa — tryb GRUB/pojedynczego użytkownika
+      href: serial-console-grub-single-user-mode.md
+    - name: Konsola szeregowa — NMI/SysRq
+      href: serial-console-nmi-sysrq.md
+  - name: Maszyna wirtualna z systemem Windows
+    href: serial-console-windows.md
+    items:
+    - name: Polecenia CMD i polecenia programu PowerShell
+      href: serial-console-cmd-ps-commands.md
+- name: Błędy podczas usuwania zasobów magazynu
+  href: storage-resource-deletion-errors.md
+- name: Nieoczekiwane ponowne uruchamianie maszyn wirtualnych z dołączonymi dyskami VHD
+  href: unexpected-reboots-attached-vhds.md
+- name: Problemy z aktywacją systemu Windows
+  href: troubleshoot-activation-problems.md
+- name: Problemy z dostępem do aplikacji
+  href: troubleshoot-app-connection.md
+- name: Nowe wdrożenia maszyn wirtualnych
+  items:
+  - name: Linux
+    href: troubleshoot-deployment-new-vm-linux.md
+  - name: Windows
+    href: troubleshoot-deployment-new-vm-windows.md
+- name: Rozwiązywanie problemów z wdrożeniami
+  items:
+  - name: Linux
+    href: troubleshoot-deploy-vm-linux.md
+  - name: Windows
+    href: troubleshoot-deploy-vm-windows.md
+- name: Nazwy urządzeń ulegają zmianie
+  href: troubleshoot-device-names-problems.md
+- name: Dostęp do odzyskiwania maszyny wirtualnej
+  items:
+  - name: Windows
+    items:
+    - name: PowerShell
+      href: troubleshoot-recovery-disks-windows.md
+    - name: Azure Portal
+      href: troubleshoot-recovery-disks-portal-windows.md
+  - name: Linux
+    items:
+    - name: Interfejs wiersza polecenia
+      href: troubleshoot-recovery-disks-linux.md
+    - name: Azure Portal
+      href: troubleshoot-recovery-disks-portal-linux.md
+- name: Błędy funkcji BitLocker
+  href: troubleshoot-bitlocker-boot-error.md
+- name: Sprawdzanie błędów systemu plików
+  href: troubleshoot-check-disk-boot-error.md
+- name: Błędy ograniczania przepustowości
+  href: troubleshooting-throttling-errors.md
+- name: Używanie wirtualizacji zagnieżdżonej
+  href: troubleshoot-vm-by-use-nested-virtualization.md
+- name: Omówienie ponownego uruchamiania systemu
+  href: understand-vm-reboot.md
+ms.openlocfilehash: b00e785c3ae31171ce3189edd9cffe094bc71024
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.translationtype: HT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47410755"
