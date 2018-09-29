@@ -6,23 +6,22 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: b0e694e4-3575-424c-afda-7d48c2025a62
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 05/10/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: cdfdaf9195f14e3cbe3db2a4507bd91a3133a26e
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
+ms.openlocfilehash: d979692ba32c596058d28c88f32e7e5872ab7ef9
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39071389"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452330"
 ---
-# <a name="manage-storage-capacity-for-azure-stack"></a>Zarządzanie pojemnością magazynu dla usługi Azure Stack
+# <a name="manage-storage-capacity-for-azure-stack"></a>Zarządzanie pojemnością magazynu dla usługi Azure Stack 
 
 *Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
@@ -86,10 +85,15 @@ Operator chmury, można monitorować pojemności udziału, przy użyciu programu
 - **Używana pojemność** ilość danych w bajtach, który jest używany przez wszystkie zakresy z plików, które przechowują dane dzierżawy i skojarzone metadane.
 
 ### <a name="use-the-administrator-portal"></a>Korzystanie z portalu administratora
-Jako operator chmury z portalu administracyjnego służy również do wyświetlania pojemności wszystkich udziałów. **Przejdź do magazynu** > **udziałów plików** aby otworzyć listę udziału pliku, gdzie można wyświetlić informacje o użyciu.
-![Przykład: Udziałów plików magazynu](media/azure-stack-manage-storage-shares/storage-file-shares.png)
-- **Łączna liczba** jest całkowita ilość miejsca w bajtach, które są dostępne w udziale. To miejsce jest używane dla danych i metadanych, które są obsługiwane przez usługi magazynu.
-- **UŻYWANE** ilość danych w bajtach, który jest używany przez wszystkie zakresy z plików, które przechowują dane dzierżawy i skojarzone metadane.
+Jako operator chmury z portalu administracyjnego służy również do wyświetlania pojemności wszystkich udziałów.
+
+1. Zaloguj się do [portalu administracyjnego](https://adminportal.local.azurestack.external).
+2. Wybierz **wszystkich usług** > **magazynu** aby otworzyć listę udziału pliku, gdzie można wyświetlić informacje o użyciu. 
+
+  ![Przykład: Udziałów plików magazynu](media/azure-stack-manage-storage-shares/storage-file-shares.png)
+
+  - **Łączna liczba** jest całkowita ilość miejsca w bajtach, które są dostępne w udziale. To miejsce jest używane dla danych i metadanych, które są obsługiwane przez usługi magazynu.
+  - **UŻYWANE** ilość danych w bajtach, który jest używany przez wszystkie zakresy z plików, które przechowują dane dzierżawy i skojarzone metadane.
 
 ### <a name="storage-space-alerts"></a>Alerty miejsce magazynowania
 Korzystając z portalu administratora, możesz otrzymywać alerty o udziałów, które jest mało miejsca.

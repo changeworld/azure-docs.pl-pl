@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie wydajnością pamięci fizycznej stosu Azure | Dokumentacja firmy Microsoft
-description: Monitorowanie i zarządzanie nimi dostępnego miejsca na stosie Azure.
+title: Zarządzanie pojemnością pamięci fizycznej dla usługi Azure Stack | Dokumentacja firmy Microsoft
+description: Monitorowanie i zarządzanie miejsce do magazynowania dostępne dla usługi Azure Stack.
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
@@ -12,44 +12,43 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/08/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: Thomas.Roettinger
-ms.openlocfilehash: dc572353c2e27ddfbae2398f1aece56586955e26
-ms.sourcegitcommit: fc64acba9d9b9784e3662327414e5fe7bd3e972e
+ms.openlocfilehash: a914d20f61b5b632e792ca29f6c201964db4a203
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/12/2018
-ms.locfileid: "34074861"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452143"
 ---
-<!---Loc Comment: Please, check the comment in coversation section---> 
-# <a name="manage-physical-memory-capacity-for-azure-stack"></a>Zarządzanie wydajnością pamięci fizycznej Azure stosu
+# <a name="manage-physical-memory-capacity-for-azure-stack"></a>Zarządzanie pojemnością pamięci fizycznej dla usługi Azure Stack
 
-*Dotyczy: Azure stosu zintegrowane systemy*
+*Dotyczy: zintegrowane systemy usługi Azure Stack*
 
-Aby zwiększyć pojemność całkowitej dostępnej pamięci stosu Azure, możesz dodać więcej pamięci. W stosie Azure serwera fizycznego jest również nazywany *węzła jednostki skali*. Wszystkie węzły jednostki skalowania, będących członkami jednostki skalowania pojedynczego musi mieć tego samego ilość pamięci.
+Aby zwiększyć pojemność całkowitej dostępnej pamięci dla usługi Azure Stack, możesz dodać więcej pamięci. W usłudze Azure Stack serwer fizyczny jest również nazywany *węzła jednostki skalowania*. Wszystkie węzły jednostki skalowania, które są elementami członkowskimi jednostki skalowania pojedynczej musi mieć tej samej ilości pamięci.
 
 > [!note]  
-> Przed kontynuowaniem w dokumentacji producenta sprzętu Aby sprawdzić, czy producent obsługuje uaktualnienie pamięci fizycznej. Umowę dotyczącą pomocy technicznej producenta OEM sprzętu dostawcy może wymagać, że dostawcy wykonać rozmieszczenia stojak serwerów fizycznych i aktualizacji oprogramowania układowego urządzenia.
+> Przed kontynuowaniem zapoznaj się z dokumentacją producenta sprzętu, aby sprawdzić, czy producent obsługuje uaktualnienie pamięci fizycznej. Umowy dotyczącej pomocy technicznej producenta OEM sprzęt dostawcy może wymagać, że dostawca wykonać umieszczania stojak serwerów fizycznych i aktualizacji oprogramowania układowego urządzenia.
 
-Poniższy diagram przepływu przedstawia ogólny proces dodawania pamięci do każdego węzła jednostki skalowania.
+Poniższy diagram przepływu przedstawia ogólny proces dodawania pamięci dla każdego węzła jednostki skalowania.
 
-![Zwiększ ilość pamięci w każdym węźle jednostki skalowania](media\azure-stack-manage-storage-physical-capacity\process-to-add-memory-to-scale-unit.png)
+![Zwiększ ilość pamięci do każdego węzła jednostki skalowania](media\azure-stack-manage-storage-physical-capacity\process-to-add-memory-to-scale-unit.png)
 
-## <a name="add-memory-to-an-existing-node"></a>Dodaj więcej pamięci do istniejący węzeł
-W poniższych krokach przedstawiono ogólne omówienie procesu Dodaj pamięci. 
-
-> [!Warning]  
-Bez odwołujących się do dokumentacji przez producentów OEM nie wykonaj następujące kroki.
+## <a name="add-memory-to-an-existing-node"></a>Zwiększ ilość pamięci do istniejącego węzła
+W poniższych krokach przedstawiono ogólny przegląd, Dodaj pamięci procesu. 
 
 > [!Warning]  
-Jednostki skalowania całego muszą zostać wyłączone ponieważ uaktualnienia stopniowego pamięci nie jest obsługiwana.
+Nie wykonuj następujące czynności bez odwołujące się do dokumentacji dostarczonego przez producenta OEM.
 
-1. Zatrzymaj stosu Azure, wykonując kroki opisane w [rozpoczęcie i zakończenie stosu Azure](azure-stack-start-and-stop.md) artykułu.
-2. Rozszerzenie pamięci na każdym komputerze fizycznym, korzystając z dokumentacji producenta sprzętu.
-3. Uruchom stosu Azure, korzystając z procedury w [rozpoczęcie i zakończenie stosu Azure](azure-stack-start-and-stop.md) artykułu.
+> [!Warning]  
+Musi być zamknięty całej jednostki skalowania, ponieważ uaktualnienie stopniowe pamięci nie jest obsługiwana.
+
+1. Zatrzymaj usługę Azure Stack wykonując kroki opisane w [uruchamianie i zatrzymywanie usługi Azure Stack](azure-stack-start-and-stop.md) artykułu.
+2. Uaktualnij pamięci na każdym komputerze fizycznym, korzystając z dokumentacji producenta sprzętu.
+3. Uruchom usługę Azure Stack przy użyciu kroków w [uruchamianie i zatrzymywanie usługi Azure Stack](azure-stack-start-and-stop.md) artykułu.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
- - Aby dowiedzieć się, jak zarządzać kontami magazynu Azure stosu, odzyskiwanie, a odzyskać pojemność odpowiednio do potrzeb działalności, zobacz [Zarządzanie kontami magazynu Azure stosu](azure-stack-manage-storage-accounts.md).
- - Aby dowiedzieć się operatorowi chmury Azure stosu monitoruje i zarządza pojemności ich wdrożenia stosu Azure, zobacz [Zarządzanie pojemność magazynu dla usługi Azure stosu](azure-stack-manage-storage-shares.md). 
+ - Aby dowiedzieć się, jak zarządzać kontami magazynu w usłudze Azure Stack, aby znaleźć, odzyskiwania i odzyskać pojemność magazynu na podstawie potrzeb biznesowych, zobacz [Zarządzanie kontami magazynu w usłudze Azure Stack](azure-stack-manage-storage-accounts.md).
+ - Aby dowiedzieć się, operator chmury Azure Stack, monitoruje i zarządza się pojemności ich wdrożenia usługi Azure Stack, zobacz [Zarządzanie pojemnością magazynu dla usługi Azure Stack](azure-stack-manage-storage-shares.md). 

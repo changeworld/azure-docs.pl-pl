@@ -6,21 +6,20 @@ documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 627d355b-4812-45cb-bc1e-ce62476dab34
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: PowerShell
 ms.topic: get-started-article
-ms.date: 05/10/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: xiaofmao
-ms.openlocfilehash: 8914391a586bb508192200beaba7f591649a1e99
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 35c15613192ac12a7d4c64cbe28f62200724d311
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42139437"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452279"
 ---
 # <a name="manage-storage-accounts-in-azure-stack"></a>Zarządzanie kontami magazynu w usłudze Azure Stack
 Dowiedz się, jak zarządzać kontami magazynu w usłudze Azure Stack, aby znaleźć, odzyskiwania i odzyskać pojemność magazynu na podstawie potrzeb biznesowych.
@@ -28,19 +27,19 @@ Dowiedz się, jak zarządzać kontami magazynu w usłudze Azure Stack, aby znale
 ## <a name="find"></a>Znajdź konto magazynu
 Lista kont magazynu w regionie mogą być wyświetlane w usłudze Azure Stack przez:
 
-1. W przeglądarce internetowej przejdź do https://adminportal.local.azurestack.external.
-2. Zaloguj się do portalu administracyjnego usługi Azure Stack jako operator chmury (przy użyciu poświadczeń, których podana podczas wdrażania)
-3. Domyślny pulpit nawigacyjny — znaleźć **zarządzanie regionami** listy i wybierz region, którą chcesz zbadać, na przykład **(lokalnego**).
+1. Zaloguj się do [portalu administracyjnego](https://adminportal.local.azurestack.external).
+
+2. Wybierz **wszystkich usług** > **zarządzanie regionami** w obszarze **administracji**.
+
+3. Wybierz **magazynu** z **dostawców zasobów** listy.
    
-   ![](media/azure-stack-manage-storage-accounts/image1.png)
-4. Wybierz **magazynu** z **dostawców zasobów** listy.
+   ![Dostawca zasobów magazynu](media/azure-stack-manage-storage-accounts/image1.png)
+
+5. Wybierz **kont magazynu** w **magazynu**.
    
    ![](media/azure-stack-manage-storage-accounts/image2.png)
-5. Teraz, w okienku administrator dostawcy zasobów magazynu — przewiń w dół do **kont magazynu** kartę i wybierz ją.
    
-   ![](media/azure-stack-manage-storage-accounts/image3.png)
-   
-   Strona wynikowy jest lista kont magazynu, w tym regionie.
+   Blok Wyświetla listę kont magazynu, w tym regionie.
    
    ![](media/azure-stack-manage-storage-accounts/image4.png)
 
@@ -76,12 +75,12 @@ Może być w sytuacji, gdy trzeba odzyskać usuniętego konta.
 
 W usłudze Azure Stack istnieje najprościej można to zrobić:
 
-1. Przejdź do listy kont magazynu. Zobacz [Znajdź konto magazynu](#find) w tym temacie, aby uzyskać więcej informacji.
+1. Przejdź do listy kont magazynu. Zobacz [Znajdź konto magazynu](#find) w tym artykule, aby uzyskać więcej informacji.
 2. Znajdź tego konkretnego konta na liście. Może być konieczne do filtrowania.
 3. Sprawdź *stanu* konta. Powinna być widoczna nazwa **usunięte**.
 4. Wybierz konto, co spowoduje otwarcie okienka szczegółów konta.
 5. Na górze w tym okienku Znajdź **odzyskać** przycisku i wybierz ją.
-6. Wybierz **tak** o potwierdzenie.
+6. Wybierz pozycję **Tak**, aby potwierdzić.
    
    ![](media/azure-stack-manage-storage-accounts/image8.png)
 7. Odzyskiwanie jest teraz w *proces... Czekaj* dla wskazanie, czy zakończyła się pomyślnie.
@@ -97,19 +96,18 @@ W usłudze Azure Stack istnieje najprościej można to zrobić:
   Poza przechowywania oznacza, że że usuniętego konta przekroczył okres przechowywania i nie może być możliwe do odzyskania.
 * Twoje konto usunięte nie są wyświetlane na liście kont.
   
-  Konta nie mogą być wyświetlane na liście kont, gdy usuniętego konta została już bezużyteczne. W tym przypadku nie można odzyskać. Zobacz [odzyskać pojemności](#reclaim) w tym temacie.
+  Konta nie mogą być wyświetlane na liście kont, gdy usuniętego konta została już bezużyteczne. W tym przypadku nie można odzyskać. Zobacz [odzyskać pojemności](#reclaim) w tym artykule.
 
 ## <a name="set-the-retention-period"></a>Ustaw okres przechowywania
 Ustawienie okresu zachowywania umożliwia operatorowi chmury określić okres czasu w dniach (od 0 do 9999 dni), podczas których potencjalnie można odzyskać wszystkie usunięte konto. Domyślny okres przechowywania jest ustawiona na wartość 0 dni. Ustawienie wartości na "0" oznacza, że wszystkie usunięte konto jest natychmiast poza przechowywania i oznaczone do okresowego wyrzucania elementów bezużytecznych.
 
 **Aby zmienić okres przechowywania:**
 
-1. W przeglądarce internetowej przejdź do https://adminportal.local.azurestack.external.
-2. Zaloguj się do portalu administracyjnego usługi Azure Stack jako operator chmury (przy użyciu poświadczeń, których podana podczas wdrażania)
-3. Domyślny pulpit nawigacyjny — znaleźć **zarządzanie regionami** listy i wybierz region, którą chcesz zbadać — na przykład **(lokalnego**).
-4. Wybierz **magazynu** z **dostawców zasobów** listy.
-5. Wybierz **ustawienia** u góry, aby otworzyć okienko ustawienia.
-6. Wybierz **konfiguracji** następnie zmodyfikuj wartość okresu przechowywania.
+1. Zaloguj się do [portalu administracyjnego](https://adminportal.local.azurestack.external).
+2. Wybierz **wszystkich usług** > **zarządzanie regionami** w obszarze **administracji**.
+3. Wybierz **magazynu** z **dostawców zasobów** listy.
+4. Wybierz **ustawienia** u góry, aby otworzyć okienko ustawienia.
+5. Wybierz **konfiguracji** następnie zmodyfikuj wartość okresu przechowywania.
 
    Ustaw liczbę dni, a następnie zapisz go.
    
@@ -142,7 +140,7 @@ Można także jawnie przesłonić okres przechowywania przy użyciu programu Pow
    Aby uzyskać więcej informacji o poleceniach cmdlet usługi Azure Resource Manager, zobacz [przy użyciu programu Azure PowerShell z usługą Azure Resource Manager](http://go.microsoft.com/fwlink/?LinkId=394767)
 2. Uruchom następujące polecenia cmdlet:
 
-> [!NOTE]
+> [!NOTE]  
 > Po uruchomieniu tych poleceń cmdlet, możesz trwale usunąć to konto i jego zawartość. Nie jest możliwe do odzyskania. To należy używać ostrożnie.
 
 ```PowerShell  
