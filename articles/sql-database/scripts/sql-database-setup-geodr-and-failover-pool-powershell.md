@@ -2,26 +2,22 @@
 title: Przykład programu PowerShell — aktywna replikacja geograficzna bazy danych Azure SQL Database w puli | Microsoft Docs
 description: Przykładowy skrypt programu Azure PowerShell do konfigurowania aktywnej replikacji geograficznej dla bazy danych Azure SQL Database w puli i przełączania jej w tryb failover.
 services: sql-database
-documentationcenter: sql-database
-author: CarlRabeler
-manager: craigg
-editor: carlrab
-tags: azure-service-management
-ms.assetid: ''
 ms.service: sql-database
-ms.custom: business continuity, mvc
+ms.subservice: operations
+ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: sql-database
-ms.workload: database
-ms.date: 09/07/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: db788652a73b82b8d6a8dab2ecd888d66b2057ca
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/07/2018
+ms.openlocfilehash: 727333f07d5ab09714b866851b21909e03f9ebfc
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054040"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056057"
 ---
 # <a name="use-powershell-to-configure-active-geo-replication-for-a-pooled-azure-sql-database"></a>Konfigurowanie aktywnej replikacji geograficznej dla bazy danych Azure SQL Database w puli przy użyciu programu PowerShell
 

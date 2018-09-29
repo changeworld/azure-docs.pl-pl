@@ -16,7 +16,8 @@ W poniższej tabeli wymieniono ograniczenia, które są stosowane do zasobów Io
 
 Usługi Device Provisioning ogranicza żądania po przekroczeniu następujących limitów przydziału:
 
-| Ograniczenie | Wartość usługi |
+| Ograniczenie | Wartość na jednostkę |
 | --- | --- |
-| Operacje | 100/min |
-| Rejestracje urządzeń | 100/min |
+| Operacje | 200/min/usługi |
+| Rejestracje urządzeń | 200/min/usługi |
+| Operacja sondowania urządzenia | 5/10 s/urządzenia |

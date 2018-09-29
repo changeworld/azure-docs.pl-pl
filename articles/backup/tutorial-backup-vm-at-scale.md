@@ -9,12 +9,12 @@ ms.date: 2/14/2018
 ms.topic: tutorial
 ms.service: backup
 ms.custom: mvc
-ms.openlocfilehash: 4fb8d45c285ee3c1651039619808b8964c5313cd
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: dfe561e7a7231c8e7f9465819a01cd4b0a35f47c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983084"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434547"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Tworzenie kopii zapasowych wielu maszyn wirtualnych za pomocą witryny Azure Portal
 
@@ -42,7 +42,7 @@ Magazyn usługi Recovery Services zawiera dane kopii zapasowych i zasady tworzen
 
     ![Otwieranie menu magazynu](./media/tutorial-backup-vm-at-scale/provide-vault-detail-2.png)
 
-3. W menu Magazyn usługi Recovery Services: 
+3. W menu Magazyn usługi Recovery Services:
 
     - Wpisz *myRecoveryServicesVault* w polu **Nazwa**.
     - Identyfikator bieżącej subskrypcji znajduje się w polu **Subskrypcja**. Jeśli masz dodatkowe subskrypcje, możesz wybrać inną subskrypcję dla nowego magazynu.
@@ -76,7 +76,7 @@ Po utworzeniu magazynu usługi Recovery Services następnym krokiem jest skonfig
 
     ![Wybieranie obciążenia](./media/tutorial-backup-vm-at-scale/create-new-policy.png)
 
-5. W menu **Zasady kopii zapasowych** w polu **Nazwa zasad** wpisz *Finance* (Finansowe). Wprowadź następujące zmiany dotyczące zasad tworzenia kopii zapasowych: 
+5. W menu **Zasady kopii zapasowych** w polu **Nazwa zasad** wpisz *Finance* (Finansowe). Wprowadź następujące zmiany dotyczące zasad tworzenia kopii zapasowych:
     - W obszarze **Częstotliwość tworzenia kopii zapasowych** ustaw strefę czasową *Czas środkowy*. Ponieważ kompleks sportowy znajduje się w Teksasie, właściciel chce, aby czas był lokalny. Pozostaw dla częstotliwości tworzenia kopii zapasowych ustawienie: codziennie o 3:30.
     - W obszarze **Przechowywanie codziennego punktu kopii zapasowej** ustaw okres 90 dni.
     - W obszarze **Przechowywanie tygodniowego punktu kopii zapasowej** użyj punktu przywracania *Poniedziałek* przechowywanego przez 52 tygodnie.
@@ -84,21 +84,21 @@ Po utworzeniu magazynu usługi Recovery Services następnym krokiem jest skonfig
     - Anuluj wybór opcji **Przechowywanie rocznego punktu kopii zapasowej**. Kierownik ds. finansów nie chce przechowywać danych dłużej niż 36 miesięcy.
     - Kliknij pozycję **OK**, aby utworzyć zasady kopii zapasowych.
 
-    ![Wybieranie obciążenia](./media/tutorial-backup-vm-at-scale/set-new-policy.png) 
+    ![Wybieranie obciążenia](./media/tutorial-backup-vm-at-scale/set-new-policy.png)
 
     Po utworzeniu zasad tworzenia kopii zapasowych należy skojarzyć je z maszynami wirtualnymi.
 
-6. W oknie dialogowym **Wybieranie maszyn wirtualnych** wybierz pozycję *myVM* i kliknij przycisk **OK**, aby wdrożyć zasady tworzenia kopii zapasowych dla maszyn wirtualnych. 
+6. W oknie dialogowym **Wybieranie maszyn wirtualnych** wybierz pozycję *myVM* i kliknij przycisk **OK**, aby wdrożyć zasady tworzenia kopii zapasowych dla maszyn wirtualnych.
 
     Zostaną wyświetlone wszystkie maszyny wirtualne, które znajdują się w tej samej lokalizacji i nie są jeszcze skojarzone z żadnymi zasadami tworzenia kopii zapasowych. Maszyny *myVMH1* i *myVMR1* są wybrane do skojarzenia z zasadami *Finance* (Finansowe).
 
-    ![Wybieranie obciążenia](./media/tutorial-backup-vm-at-scale/choose-vm-to-protect.png) 
+    ![Wybieranie obciążenia](./media/tutorial-backup-vm-at-scale/choose-vm-to-protect.png)
 
     Po ukończeniu wdrażania zostanie wyświetlone powiadomienie o pomyślnym ukończeniu wdrażania.
 
 ## <a name="initial-backup"></a>Początkowa kopia zapasowa
 
-Włączono tworzenie kopii zapasowych dla magazynów usługi Recovery Services, ale nie została utworzona początkowa kopia zapasowa. Jednym z najlepszych rozwiązań w zakresie odzyskiwania po awarii jest wyzwolenie tworzenia pierwszej kopii zapasowej w celu zapewnienia ochrony danych. 
+Włączono tworzenie kopii zapasowych dla magazynów usługi Recovery Services, ale nie została utworzona początkowa kopia zapasowa. Jednym z najlepszych rozwiązań w zakresie odzyskiwania po awarii jest wyzwolenie tworzenia pierwszej kopii zapasowej w celu zapewnienia ochrony danych.
 
 Aby uruchomić zadanie tworzenia kopii zapasowej na żądanie:
 
@@ -130,10 +130,10 @@ Aby uruchomić zadanie tworzenia kopii zapasowej na żądanie:
 
     Powiadomienia dotyczące wdrożenia informują o wyzwoleniu zadania tworzenia kopii zapasowej, dzięki czemu możesz monitorować postęp zadania na stronie zadań tworzenia kopii zapasowych. W zależności od rozmiaru maszyny wirtualnej tworzenie początkowej kopii zapasowej może potrwać pewien czas.
 
-    Po ukończeniu zadania tworzenia początkowej kopii zapasowej jego stan pojawi się w menu zadań kopii zapasowej. Zadanie tworzenia kopii zapasowej na żądanie spowodowało utworzenie początkowego punktu przywracania dla maszyny *myVM*. Jeśli chcesz utworzyć kopie zapasowe innych maszyn wirtualnych, powtórz te czynności dla każdej z nich. 
+    Po ukończeniu zadania tworzenia początkowej kopii zapasowej jego stan pojawi się w menu zadań kopii zapasowej. Zadanie tworzenia kopii zapasowej na żądanie spowodowało utworzenie początkowego punktu przywracania dla maszyny *myVM*. Jeśli chcesz utworzyć kopie zapasowe innych maszyn wirtualnych, powtórz te czynności dla każdej z nich.
 
     ![Kafelek Zadania tworzenia kopii zapasowej](./media/tutorial-backup-vm-at-scale/initial-backup-complete.png)
-  
+
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 Jeśli planujesz kontynuowanie pracy z kolejnymi samouczkami, nie usuwaj zasobów utworzonych w tym samouczku. Jeśli nie planujesz kontynuowania pracy, wykonaj następujące czynności, aby usunąć wszystkie zasoby utworzone w witrynie Azure Portal w ramach tego samouczka.
@@ -153,15 +153,15 @@ Jeśli planujesz kontynuowanie pracy z kolejnymi samouczkami, nie usuwaj zasobó
 
     ![Ikona Ustawienia](./media/tutorial-backup-vm-at-scale/context-menu-to-delete-vm.png)
 
-4. W menu kontekstowym wybierz pozycję **Zatrzymaj kopię zapasową**, aby otworzyć menu Zatrzymaj kopię zapasową. 
+4. W menu kontekstowym wybierz pozycję **Zatrzymaj kopię zapasową**, aby otworzyć menu Zatrzymaj kopię zapasową.
 
     ![Ikona Ustawienia](./media/tutorial-backup-vm-at-scale/context-menu-for-delete.png)
 
 5. W menu **Zatrzymaj kopię zapasową** wybierz górne menu rozwijane i wybierz pozycję **Usuń dane kopii zapasowej**.
 
 6. W oknie dialogowym **Wpisywanie nazwy elementu kopii zapasowej** wpisz *myVM*.
- 
-7. Po zweryfikowaniu elementu kopii zapasowej (pojawi się znacznik wyboru) zostanie włączony przycisk **Zatrzymaj kopię zapasową**. Kliknij przycisk **Zatrzymaj kopię zapasową**, aby zatrzymać zasady i usunąć punkty przywracania. 
+
+7. Po zweryfikowaniu elementu kopii zapasowej (pojawi się znacznik wyboru) zostanie włączony przycisk **Zatrzymaj kopię zapasową**. Kliknij przycisk **Zatrzymaj kopię zapasową**, aby zatrzymać zasady i usunąć punkty przywracania.
 
     ![kliknij przycisk Zatrzymaj kopię zapasową, aby usunąć magazyn](./media/tutorial-backup-vm-at-scale/provide-reason-for-delete.png)
 
@@ -183,7 +183,7 @@ Podczas pracy z tym samouczkiem wykonano następujące czynności przy użyciu w
 > * Przypisywanie zasad tworzenia kopii zapasowych w celu ochrony wielu maszyn wirtualnych
 > * Wyzwalanie tworzenia kopii zapasowej na żądanie dla maszyn wirtualnych
 
-Przejdź do następnego samouczka, aby przywrócić maszynę wirtualną platformy Azure z dysku. 
+Przejdź do następnego samouczka, aby przywrócić maszynę wirtualną platformy Azure z dysku.
 
 > [!div class="nextstepaction"]
 > [Przywracanie maszyn wirtualnych za pomocą interfejsu wiersza polecenia](./tutorial-restore-disk.md)

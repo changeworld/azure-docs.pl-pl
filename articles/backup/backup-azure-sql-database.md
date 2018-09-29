@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 08/02/2018
 ms.author: markgal;anuragm
 ms.custom: ''
-ms.openlocfilehash: c3321fb64c423b1b3c80f48fb97a70cc7dbc83f9
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: aab0ac2dfba47741eaf5a75ef46d9ca5f8873d50
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433569"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434249"
 ---
 # <a name="back-up-sql-server-databases-to-azure"></a>Tworzenie kopii zapasowych baz danych programu SQL Server na platformie Azure
 
@@ -823,6 +823,10 @@ Wyzwól tworzenie pełnej kopii zapasowej. Kopie zapasowe dziennika rozpocząć 
 ### <a name="can-i-protect-sql-always-on-availability-groups-where-the-primary-replica-is-on-premises"></a>Czy można chronić SQL zawsze włączonych grup dostępności gdzie znajduje się replika podstawowa jest w środowisku lokalnym
 
 Nie. Usługa Azure Backup chroni serwery SQL działającej na platformie Azure. Jeśli grupy dostępności (AG) jest rozłożona się między maszynami platformy Azure i w środowisku lokalnym, AG mogą być chronione, tylko wtedy, gdy replika podstawowa jest uruchomiona na platformie Azure. Ponadto usługa Azure Backup chroni tylko węzły, w tym samym regionie platformy Azure co magazyn usługi Recovery Services.
+
+### <a name="can-i-protect-sql-always-on-availability-groups-which-are-spread-across-azure-regions"></a>Czy mogę chronić SQL zawsze włączone grupy dostępności, które są dystrybuowane między regionami platformy Azure
+Magazyn usług odzyskiwania kopii zapasowych można wykryć i chronić wszystkie węzły, które znajdują się w tym samym regionie co magazyn usługi Recovery Services. Jeśli masz zawsze na grupy dostępności obejmujące wiele regionów systemu Azure, musisz skonfigurować tworzenie kopii zapasowej z regionu, który ma węzła podstawowego. Usługa Azure Backup będzie można wykryć i ochronę wszystkich baz danych w grupie dostępności, zgodnie z preferencję tworzenia kopii zapasowych. Jeśli preferencję tworzenia kopii zapasowych nie jest spełniony, tworzenie kopii zapasowych zakończy się niepowodzeniem i zostanie wyświetlony alert o niepowodzeniu.
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

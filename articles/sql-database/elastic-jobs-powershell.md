@@ -2,18 +2,22 @@
 title: Tworzenie agenta zadań elastycznych bazy danych Azure SQL Database za pomocą programu PowerShell | Microsoft Docs
 description: Dowiedz się, jak utworzyć agenta zadań elastycznych za pomocą programu PowerShell.
 services: sql-database
-author: johnpaulkee
-manager: craigg
 ms.service: sql-database
+ms.subservice: operations
+ms.custom: ''
+ms.devlang: ''
 ms.topic: tutorial
-ms.date: 06/14/2018
+author: johnpaulkee
 ms.author: joke
-ms.openlocfilehash: 2cc8db0ce849e0f0d376824665aac7dbc2af29db
-ms.sourcegitcommit: 04fc1781fe897ed1c21765865b73f941287e222f
+ms.reviwer: ''
+manager: craigg
+ms.date: 06/14/2018
+ms.openlocfilehash: 56dd6eff7744ddddf57b747574ee9800174d6365
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/13/2018
-ms.locfileid: "39035221"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47055496"
 ---
 # <a name="create-an-elastic-job-agent-using-powershell"></a>Tworzenie agenta zadań elastycznych za pomocą programu PowerShell
 

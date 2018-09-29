@@ -1,7 +1,5 @@
 # Omówienie
 ## [Informacje o witrynie Azure Portal](../azure-portal-overview.md)
-# Samouczki
-## [Metodyka DevOps w witrynie Azure Portal](tutorial-azureportal-devops.md)
 # Pojęcia
 ## [Azure Resource Manager](../azure-resource-manager/resource-group-overview.md)
 ## [Skróty klawiaturowe](azure-portal-keyboard-shortcuts.md)

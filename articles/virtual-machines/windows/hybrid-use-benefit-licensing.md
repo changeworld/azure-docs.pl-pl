@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-windows
 ms.workload: infrastructure-services
 ms.date: 4/22/2018
 ms.author: xujing-ms
-ms.openlocfilehash: 1b893518ec67d6c11c2bcee3acc52c01cd573f86
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: fef057b5d1e1ba8b03b04852376b1e5a49926008
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47091570"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432409"
 ---
 # <a name="azure-hybrid-benefit-for-windows-server"></a>Korzyść użycia hybrydowego platformy Azure dla systemu Windows Server
 Klienci z pakietem Software Assurance Azure korzyści użycia hybrydowego dla systemu Windows Server umożliwia użycie licencji na system Windows Server w środowisku lokalnym i uruchamianie maszyn wirtualnych Windows na platformie Azure, przy niższych kosztach. Azure korzyści użycia hybrydowego dla systemu Windows Server służy do wdrażania nowych maszyn wirtualnych z systemem operacyjnym Windows. W tym artykule przechodzi przez instrukcje dotyczące sposobu wdrażania nowych maszyn wirtualnych za pomocą usługi Azure korzyści użycia hybrydowego dla systemu Windows Server oraz jak zaktualizować istniejące uruchamianie maszyn wirtualnych. Aby uzyskać więcej informacji na temat usługi Azure korzyści użycia hybrydowego dla systemu Windows Server oszczędności licencjonowania i kosztów, zobacz [strony licencjonowania platformy Azure korzyści użycia hybrydowego dla systemu Windows Server](https://azure.microsoft.com/pricing/hybrid-use-benefit/).
@@ -114,7 +114,7 @@ W witrynie portal w bloku maszyny Wirtualnej możesz zaktualizować maszyny Wirt
     ```azurecli
     az vm update --resource-group myResourceGroup --name myVM --set licenseType=Windows_Server
     ```
-    
+
 ### <a name="how-to-verify-your-vm-is-utilizing-the-licensing-benefit"></a>Jak zweryfikować maszyny Wirtualnej wykorzystywanych korzyść z licencjonowania
 Po wdrożeniu maszyny Wirtualnej za pomocą programu PowerShell, szablon usługi Resource Manager lub portalu, można sprawdzić ustawienia za pomocą następujących metod.
 
@@ -145,6 +145,10 @@ LicenseType              :
 ```azurecli
 az vm get-instance-view -g MyResourceGroup -n MyVM --query '[?licenseType==Windows_Server]' -o table
 ```
+
+> [!NOTE]
+> Zmiana typu licencji na maszynie Wirtualnej nie powoduje ponowne uruchomienie lub spowodować, że interuption usługi systemu. Jest licencjonowanie flagi tylko metadane.
+>
 
 ## <a name="list-all-vms-with-azure-hybrid-benefit-for-windows-server-in-a-subscription"></a>Lista wszystkich maszyn wirtualnych za pomocą usługi Azure korzyści użycia hybrydowego dla systemu Windows Server w ramach subskrypcji
 Aby wyświetlić i liczba wszystkich maszyn wirtualnych wdrożonych przy użyciu usługi Azure korzyści użycia hybrydowego dla systemu Windows Server, można uruchomić następujące polecenie z subskrypcji:

@@ -15,12 +15,12 @@ ms.workload: NA
 ms.date: 09/24/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: f4c3cf5329c10cda3691370e946b8397662a8d66
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4c21245e05625f65b6b5dcf5f7081f5f5d1abb52
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953416"
+ms.locfileid: "47030609"
 ---
 # <a name="tutorial-prepare-to-deploy-azure-data-box-gateway-preview"></a>Samouczek: przygotowywanie do wdrażania usługi Azure Data Box Gateway (wersja zapoznawcza)
 
@@ -89,7 +89,7 @@ Przed rozpoczęciem upewnij się, że:
 
 ## <a name="create-a-new-resource"></a>Tworzenie nowego zasobu
 
-Pojedyncze wystąpienie zasobu usługi Data Box Gateway może zarządzać wieloma urządzeniami wirtualnymi usługi Data Box Gateway. Wykonaj poniższe kroki, aby utworzyć nowy zasób usługi Data Box Gateway. 
+Wykonaj poniższe kroki, aby utworzyć nowy zasób usługi Data Box Gateway. 
 
 Jeśli masz istniejący zasób usługi Data Box Gateway, którego możesz użyć do zarządzania urządzeniami wirtualnymi, pomiń ten krok i przejdź do sekcji [Uzyskiwanie klucza aktywacji](#get-the-activation-key).
 
