@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kylestorck
-ms.openlocfilehash: b0dd5e0c365c65fc7b29752f7885acb71bdb3df8
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: c19b19cab33ae868f11ded0b7ce87dac99269596
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181697"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431995"
 ---
 # <a name="known-issues"></a>Znane problemy
 W przypadku używania projektanta w wersji zapoznawczej dla Akustyka projektu, mogą wystąpić następujące znane problemy.
@@ -27,7 +27,7 @@ Jeśli zmienisz scenę, wszystkich parametrów akustycznych należących do dane
 
 Powinno to domyślne ścieżki względnej, aby ułatwić udostępnianie projektów między współpracowników. Jako obejście tego problemu należy zmienić ścieżkę względem katalogu projektu.
 
-## <a name="runtime-voxels-are-a-different-size-than-design-time-voxels"></a>Środowisko uruchomieniowe voxels są inny rozmiar niż voxels w czasie projektowania
+## <a name="runtime-voxels-are-a-different-size-than-scene-preview-voxels"></a>Środowisko uruchomieniowe voxels są inny rozmiar niż voxels Podgląd sceny
 
 Jeśli to zrobisz **Calculate** na **sondy** kartę i widok voxels, a następnie wykonaj tworzenie i wyświetlanie voxels w czasie wykonywania dla tego samego sceny, voxels mają różne rozmiary. Voxels pokazano tworzenie wstępne są voxels używane w symulacji. Voxels wyświetlane w czasie wykonywania są używane do interpolacji między punktami sondowania. Może to spowodować niespójność, gdzie portali pojawią się otwarty w czasie wykonywania, które nie są faktycznie otwarte.
 
@@ -51,5 +51,5 @@ Upewnij się, jest ustawiona wersja środowiska uruchomieniowego skryptów w ust
 Dokładnie sprawdź wykorzystano poprawne poświadczenia dla konta platformy Azure, że Twoje konto obsługuje typ węzła w tworzenie i czy zegar systemowy jest prawidłowa.
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Rozpoczynanie pracy [integracji Akustyka w swoim projekcie aparatu Unity](getting-started.md)
+* Rozpocznij [wprowadzanie akustyki do projektu Unity](getting-started.md)
 

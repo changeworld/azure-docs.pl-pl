@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/19/2018
+ms.date: 09/28/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 6a929c0226734a95e088e78307f2bbcc0571adef
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 09f5dbdb173e1613ed942391da7baaeb045654e4
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46364605"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452534"
 ---
 # <a name="register-azure-stack-with-azure"></a>Rejestrowania usługi Azure Stack na platformie Azure
 
@@ -94,6 +94,19 @@ Wdrożenia usługi Azure Stack może być *połączone* lub *odłączony*.
  - **Odłączony**  
  O odłączony z poziomu opcji wdrażania na platformie Azure, wdrażanie i używanie usługi Azure Stack bez połączenia z Internetem. Jednak z wdrożeniem odłączonego, są ograniczone do magazynu tożsamości usługi AD FS i model rozliczeń oparty na pojemności.
     - [Zarejestruj bez połączenia przy użyciu usługi Azure Stack **pojemności** model rozliczeń ](#register-disconnected-with-capacity-billing)
+
+### <a name="determine-a-unique-registration-name-to-use"></a>Określ nazwę unikatową rejestracji, do użycia 
+Podczas rejestrowania usługi Azure Stack na platformie Azure musisz podać nazwę unikatową rejestracji. Prosty sposób, aby skojarzyć subskrypcję usługi Azure Stack przy użyciu rejestracja w usłudze Azure jest użycie usługi Azure Stack **identyfikator chmury**. 
+
+> [!NOTE]
+> Azure rejestracje stosu przy użyciu model rozliczeń oparty na pojemności, należy zmienić unikatową nazwę, rejestrując ponownie po wygaśnięciu tych subskrypcji rocznej.
+
+Aby określić identyfikator chmury dla danego wdrożenia usługi Azure Stack, Otwórz program PowerShell jako administrator na komputerze, nie mogą uzyskiwać dostęp do uprzywilejowanych punktu końcowego, uruchom następujące polecenia i Zarejestruj **CloudID** wartość: 
+
+```powershell
+Run: Enter-PSSession -ComputerName <privileged endpoint computer name> -ConfigurationName PrivilegedEndpoint
+Run: get-azurestackstampinformation 
+```
 
 ## <a name="register-connected-with-pay-as-you-go-billing"></a>Zarejestruj się związanych z rozliczeniami zgodnie z rzeczywistym użyciem
 
@@ -257,7 +270,7 @@ Następnie należy pobrać klucza aktywacji z zasobu rejestracji na platformie A
 Aby uzyskać klucz aktywacji, uruchom następujące polecenia cmdlet programu PowerShell:  
 
   ```Powershell
-  $RegistrationResourceName = "AzureStack-<Cloud Id for the Environment to register>"
+  $RegistrationResourceName = "AzureStack-<unique-registration-name>"
   $KeyOutputFilePath = "$env:SystemDrive\ActivationKey.txt"
   $ActivationKey = Get-AzsActivationKey -RegistrationName $RegistrationResourceName -KeyOutputFilePath $KeyOutputFilePath
   ```
@@ -351,7 +364,7 @@ Możesz użyć tokenu rejestracji użyty do utworzenia zasobu:
 Lub możesz użyć nazwy rejestracji:
 
   ```Powershell
-  $registrationName = "AzureStack-<Cloud ID of Azure Stack Environment>"
+  $registrationName = "AzureStack-<unique-registration-name>"
   Unregister-AzsEnvironment -RegistrationName $registrationName
   ```
 

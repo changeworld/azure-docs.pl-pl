@@ -11,12 +11,12 @@ ms.devlang: na
 ms.topic: overview
 ms.date: 05/22/2017
 ms.author: rafats
-ms.openlocfilehash: 4b469d306c4cd642e375e4eb15b0d26df828b308
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 76545c9953cff944c515e887a6a4214b9c76c501
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "42023972"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038531"
 ---
 # <a name="introduction-to-azure-cosmos-db-sql-api"></a>Wprowadzenie do usługi Azure Cosmos DB: Interfejs API SQL
 
@@ -72,7 +72,7 @@ Usługa Azure Cosmos DB udostępnia zasoby za pośrednictwem interfejsów API RE
 | [Zestaw SDK Java](http://go.microsoft.com/fwlink/?LinkID=402380) |[Biblioteka języka Java](/java/api/com.microsoft.azure.documentdb) |
 | [Zestaw SDK dla języka JavaScript](https://github.com/Azure/azure-cosmos-js) |[Biblioteka języka JavaScript](https://github.com/Azure/azure-cosmos-js) |
 | Nie dotyczy |[Zestaw SDK dla języka JavaScript po stronie serwera](https://github.com/Azure/azure-cosmosdb-js-server) |
-| [Zestaw SDK dla języka Python](https://pypi.python.org/pypi/pydocumentdb) |[Biblioteka języka Python](http://azure.github.io/azure-documentdb-python/) |
+| [Zestaw SDK dla języka Python](https://pypi.python.org/pypi/pydocumentdb) |[Biblioteka języka Python](https://github.com/Azure/azure-cosmos-python) |
 | Nie dotyczy | [Interfejs API dla usługi MongoDB](mongodb-introduction.md)
 
 

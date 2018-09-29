@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b731b280b3e97076014f609571766a07a3dde1ea
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: ce2ad3e699b930f801ad47083d6cfcf6a7937a5c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159894"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433450"
 ---
 # <a name="string-claims-transformations"></a>Ciąg oświadczeń przekształcenia
 
@@ -156,7 +156,7 @@ Ustal, czy jedno oświadczenie ciągu jest równy innemu. Wynik jest nowy logicz
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie InputClaim | inputClaim1 | ciąg | Najpierw oświadczenia typu, który ma być porównane. |
 | Oświadczenie InputClaim | inputClaim2 | ciąg | Po drugie oświadczenia typu, który ma być porównane. |
-| InputParameter | Operator | ciąg | Możliwe wartości: `Equal` lub `Not Equal`. |
+| InputParameter | Operator | ciąg | Możliwe wartości: `EQUAL` lub `NOT EQUAL`. |
 | InputParameter | IgnoreCase | wartość logiczna | Określa, czy to porównanie powinien ignorować wielkość liter porównywane ciągi. |
 | oświadczenie outputClaim | oświadczenie outputClaim | wartość logiczna | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane. |
 
@@ -196,7 +196,7 @@ Określa, czy wartość oświadczenia jest równa wartości parametru wejściowe
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
 | Oświadczenie InputClaim | inputClaim1 | ciąg | Typ oświadczenia, który ma być porównane. |
-| InputParameter | Operator | ciąg | Możliwe wartości: `Equal` lub `Not Equal`. |
+| InputParameter | Operator | ciąg | Możliwe wartości: `EQUAL` lub `NOT EQUAL`. |
 | InputParameter | Element compareTo | ciąg | ciąg porównania, jedna z wartości: liczba porządkowa, OrdinalIgnoreCase. |
 | InputParameter | IgnoreCase | wartość logiczna | Określa, czy to porównanie powinien ignorować wielkość liter porównywane ciągi. |
 | oświadczenie outputClaim | oświadczenie outputClaim | wartość logiczna | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane. |
@@ -224,7 +224,7 @@ Możesz użyć tego oświadczenia przekształcenia, aby sprawdzić, czy roszczen
     - **inputClaim1**: 1
 - Parametry wejściowe:
     - **Element compareTo**: 1
-    - **operator**: równy 
+    - **operator**: RÓWNY 
     - **ignoreCase**: true
 - Oświadczeń danych wyjściowych:
     - **oświadczenie outputClaim**: true
@@ -235,11 +235,11 @@ Tworzy losowy ciąg przy użyciu generator liczb losowych. Jeśli generator licz
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| InputParameter | randomGeneratorType | ciąg | Określa wartość losowe wygenerowanie, `GUID` (unikatowy identyfikator globalny) lub `integer` (liczba). |
+| InputParameter | randomGeneratorType | ciąg | Określa wartość losowe wygenerowanie, `GUID` (unikatowy identyfikator globalny) lub `INTEGER` (liczba). |
 | InputParameter | stringFormat | ciąg | [Opcjonalnie] Sformatuj wartości losowej. |
 | InputParameter | base64 | wartość logiczna | [Opcjonalnie] Konwertuj wartość losową base64. Jeśli zostanie zastosowany format ciągu, wartość po ciągu formatu jest zakodowany w formacie Base64. |
-| InputParameter | maximumNumber | Int | [Opcjonalnie] Aby uzyskać `Integer` randomGeneratorType tylko. Określ numer maximute. |
-| InputParameter | Inicjator  | Int | [Opcjonalnie] Aby uzyskać `Integer` randomGeneratorType tylko. Należy określić inicjatora dla wartości losowej. Uwaga: ten sam inicjatora daje tę samą sekwencję liczb losowych. |
+| InputParameter | maximumNumber | Int | [Opcjonalnie] Aby uzyskać `INTEGER` randomGeneratorType tylko. Określ numer maximute. |
+| InputParameter | Inicjator  | Int | [Opcjonalnie] Aby uzyskać `INTEGER` randomGeneratorType tylko. Należy określić inicjatora dla wartości losowej. Uwaga: ten sam inicjatora daje tę samą sekwencję liczb losowych. |
 | oświadczenie outputClaim | oświadczenie outputClaim | ciąg | Zostało wywołane ClaimTypes, które zostaną wygenerowane po tym przekształcania oświadczeń. Wartości losowej. |
 
 Poniższy przykład generuje unikatowy identyfikator globalny. Oświadczeń to, że przekształcenie służy do tworzenia losowej nazwy UPN (główna nazwa użytkownika).
@@ -266,7 +266,7 @@ Poniższy przykład generuje losową wartość całkowitą od 0 do 1000. Wartoś
 ```XML
 <ClaimsTransformation Id="SetRandomNumber" TransformationMethod="CreateRandomString">
   <InputParameters>
-    <InputParameter Id="randomGeneratorType" DataType="string" Value="integer" />
+    <InputParameter Id="randomGeneratorType" DataType="string" Value="INTEGER" />
     <InputParameter Id="maximumNumber" DataType="int" Value="1000" />
     <InputParameter Id="stringFormat" DataType="string" Value="OTP_{0}" />
     <InputParameter Id="base64" DataType="boolean" Value="false" />

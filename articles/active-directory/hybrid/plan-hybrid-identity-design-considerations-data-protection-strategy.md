@@ -16,12 +16,12 @@ ms.date: 11/13/2017
 ms.component: hybrid
 ms.author: billmath
 ms.custom: seohack1
-ms.openlocfilehash: 7999dc15fbe1af9d23b47971db03cf6b197f110f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: a3cbbf887c4b7df57f2df89dfb8649967d6d9b1b
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312109"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434759"
 ---
 # <a name="define-data-protection-strategy-for-your-hybrid-identity-solution"></a>Definiowanie strategii ochrony danych dla rozwiązania tożsamości hybrydowej
 W tym zadaniu należy zdefiniować strategię ochrony danych do hybrydowego tożsamości rozwiązania w celu spełnienia wymagań biznesowych zdefiniowaną w:
@@ -58,8 +58,6 @@ W zależności od sposobu odpowiedzi na pytania w [określić wymagania dotyczą
 
 ## <a name="define-content-management-options"></a>Definiowanie opcji zarządzania zawartością
 
-<a name="one-advantage-of-using-azure-ad-to-manage-a-hybrid-identity-infrastructure-is-that-the-process-is-fully-transparent-from-the-end-users-perspective-the-user-tries-to-access-a-shared-resource-the-resource-requires-authentication-the-user-has-to-send-an-authentication-request-to-azure-ad-in-order-to-obtain-the-token-and-access-the-resource-this-entire-process-happens-in-the-background-without-user-interaction"></a>Jedną z zalet Zarządzanie hybrydowej infrastruktury tożsamości za pomocą usługi Azure AD jest, że proces jest całkowicie przezroczyste z perspektywy użytkownika końcowego. Użytkownik próbuje uzyskać dostęp do udostępnionego zasobu, zasób wymaga uwierzytelnienia, użytkownik musi wysłać żądanie uwierzytelnienia do usługi Azure AD w celu uzyskania tokenu i uzyskać dostęp do zasobu. Ta cały proces przebiega w tle, bez interakcji z użytkownikiem. 
-=======
 Jedną z zalet Zarządzanie hybrydowej infrastruktury tożsamości za pomocą usługi Azure AD jest, że proces jest całkowicie przezroczyste z perspektywy użytkownika końcowego. Użytkownik próbuje uzyskać dostęp do udostępnionego zasobu, zasób wymaga uwierzytelnienia, użytkownik musi wysłać żądanie uwierzytelnienia do usługi Azure AD w celu uzyskania tokenu i uzyskać dostęp do zasobu. Ta cały proces przebiega w tle, bez interakcji z użytkownikiem. 
 
 Organizacje, które są zazwyczaj obawy dotyczące prywatności danych wymagają klasyfikacji danych dla ich rozwiązania. Jeśli bieżącą infrastrukturę lokalną już używa klasyfikacji danych, jest możliwe do użycia usługi Azure AD jako głównego repozytorium tożsamości użytkowników. Typowe narzędzia, że jest używane w środowisku lokalnym, klasyfikacja danych jest nazywana [Data Classification Toolkit](https://msdn.microsoft.com/library/Hh204743.aspx) dla systemu Windows Server 2012 R2. To narzędzie może pomóc zidentyfikować, klasyfikować i chronić dane na serwerach plików w chmurze prywatnej. Istnieje również możliwość użycia [automatycznej klasyfikacji plików](https://technet.microsoft.com/library/hh831672.aspx) w systemie Windows Server 2012, aby wykonać to zadanie.

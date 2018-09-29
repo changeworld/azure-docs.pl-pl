@@ -1,0 +1,62 @@
+---
+title: Obsługa języków — interfejs API analizy tekstu
+titleSuffix: Azure Cognitive Services
+description: 'Lista języków naturalnych obsługiwanych przez interfejs API analizy tekstu. W tym artykule opisano, które języki są obsługiwane dla każdej operacji: analiza tonacji, wyodrębnianie kluczowych fraz oraz wykrywanie języka.'
+services: cognitive-services
+author: ashmaka
+manager: cgronlun
+ms.service: cognitive-services
+ms.technology: text-analytics
+ms.topic: article
+ms.date: 09/25/2018
+ms.author: ashmaka
+ms.openlocfilehash: e9f466ac6bce98a6a9f2d79a443c9602ca40bb26
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47435513"
+---
+# <a name="language-and-region-support-for-the-text-analytics-api"></a>Obsługa języka i regionu dla interfejsu API analizy tekstu
+
+W tym artykule opisano, które języki są obsługiwane dla każdej operacji: analiza tonacji, wyodrębnianie kluczowych fraz oraz wykrywanie języka.
+
+## <a name="language-detection"></a>Wykrywanie języka
+
+Interfejs API analizy tekstu można wykrywać maksymalnie 120 języków. Wykrywanie języka zwraca "skrypt" język. Na przykład frazy "Mam dog" zwróci `en` zamiast `en-US`. Tylko w szczególnych przypadkach jest chińskich, których będzie zwracać funkcja wykrywania języka `zh_CHS` lub `zh_CHT` Jeśli można określić, skrypt danego tekstu, pod warunkiem. W sytuacjach, gdzie określonego skryptu nie można zidentyfikować dla dokumentu chińskim, to zostanie zwrócona po prostu `zh`.
+
+## <a name="sentiment-analysis-key-phrase-extraction-and-entity-linking"></a>Analiza tonacji, wyodrębnianie kluczowych fraz i łączenie jednostek
+
+Analiza tonacji, wyodrębnianie kluczowych fraz i łączenie podmiotów, aby uzyskać listę obsługiwanych języków jest bardziej selektywnego analizatorów jest dostosowany do uwzględnienia językowej reguły dodatkowe języki.
+
+## <a name="language-list-and-status"></a>Lista języków i stan
+
+Obsługa języków początkowo jest udostępniona w wersji zapoznawczej, tłumaczenie jest ogólnie dostępna (GA) stanu, niezależnie od siebie i usługi analizy tekstu, ogólne. Istnieje możliwość dla języków pozostaje w wersji zapoznawczej, nawet w trakcie przejść interfejsu API analizy tekstu jest ogólnie dostępna.
+
+| Język    | Kod języka | Opinia | Kluczowe frazy | Łączenie jednostek |   Uwagi  |
+|:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
+| Duński      | `da`          | ✔ \*     | ✔           |             |     |
+| Holenderski       | `nl`          | ✔ \*     | ✔          |             |     |
+| Polski     | `en`          | ✔        | ✔           |  ✔ \*   |      |
+| Fiński     | `fi`          | ✔ \*     | ✔           |             |     |
+| Francuski      | `fr`          | ✔        | ✔           |             |     |
+| Niemiecki      | `de`          | ✔ \*     | ✔           |            |     |
+| Grecki       | `el`          | ✔ \*     |             |            |     |
+| Włoski     | `it`          | ✔ \*     | ✔           |             |     |
+| Japoński    | `ja`          |          | ✔           |            |     |
+| Koreański      | `ko`          |          | ✔           |            |     |
+| Norweski (Bokmal) | `no`          | ✔ \*     |  ✔          |             |     |
+| Polski      | `pl`          | ✔ \*     |  ✔          |             |     |
+| Portugalski (Portugalia) | `pt-PT`| ✔        |  ✔          |       |`pt` również zaakceptowana|
+| Portugalski (Brazylia)   | `pt-BR`|          |  ✔   |         |     |
+| Rosyjski     | `ru`          | ✔ \*     | ✔           |             |     |
+| Hiszpański     | `es`          | ✔        | ✔           |     |     |
+| Szwedzki     | `sv`          | ✔ \*     | ✔           |             |     |
+| Turecki     | `tr`          | ✔ \*     |             |             |     |
+
+\* Wskazuje obsługę języka w wersji zapoznawczej
+
+## <a name="see-also"></a>Zobacz także
+
+[Cognitive stronę dokumentacji usługi](https://docs.microsoft.com/azure/cognitive-services/)   
+[Strona produktu usług Cognitive Services](https://azure.microsoft.com/services/cognitive-services/)

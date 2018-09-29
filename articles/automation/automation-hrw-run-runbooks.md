@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 07/17/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 8f21457a63470b88e93ead97454f996cea38073a
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: a0b5188605874a04f0341cde1a68487c8a50df84
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43103772"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431818"
 ---
 # <a name="running-runbooks-on-a-hybrid-runbook-worker"></a>Uruchamianie elementów runbook w hybrydowym procesie roboczym elementu Runbook
 
@@ -39,7 +39,8 @@ Start-AzureRmAutomationRunbook –AutomationAccountName "MyAutomationAccount" �
 
 ## <a name="runbook-permissions"></a>Uprawnienia elementu Runbook
 
-Elementy Runbook uruchomione w hybrydowym procesie roboczym elementu Runbook nie można użyć tej samej metody, która jest zwykle używana do uwierzytelniania elementów runbook do zasobów platformy Azure, ponieważ uzyskują dostęp do zasobów spoza platformy Azure. Element runbook albo podać swój własny uwierzytelniania do zasobów lokalnych, lub można określić konto Uruchom jako w celu zapewnienia kontekstu użytkownika dla wszystkich elementów runbook.
+Elementy Runbook uruchomione w hybrydowym procesie roboczym elementu Runbook nie można użyć tej samej metody, która jest zwykle używana do uwierzytelniania elementów runbook do zasobów platformy Azure, ponieważ uzyskują dostęp do zasobów spoza platformy Azure. Element runbook albo podać swój własny uwierzytelniania do zasobów lokalnych lub można skonfigurować uwierzytelnianie przy użyciu [zarządzanych tożsamości dla zasobów platformy Azure](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager
+), lub określić konto Uruchom jako w celu zapewnienia kontekstu użytkownika dla wszystkich elementów runbook.
 
 ### <a name="runbook-authentication"></a>Uwierzytelnianie elementu Runbook
 
@@ -74,6 +75,32 @@ Aby określić konto Uruchom jako dla grupy hybrydowych procesów roboczych, nal
 4. Wybierz **wszystkie ustawienia** i następnie **hybrydowego procesu roboczego grupy**.
 5. Zmiana **Uruchom jako** z **domyślne** do **niestandardowe**.
 6. Wybierz poświadczenie, a następnie kliknij przycisk **Zapisz**.
+
+### <a name="managed-identities-for-azure-resources"></a>Zarządzanych tożsamości dla zasobów platformy Azure
+
+Hybrydowe procesy robocze elementów Runbook uruchomionych na maszynach wirtualnych platformy Azure można użyć zarządzanych tożsamości dla zasobów platformy Azure do uwierzytelniania do zasobów platformy Azure. Istnieje wiele korzyści zarządzanych tożsamości dla zasobów platformy Azure za pośrednictwem konta Uruchom jako.
+
+* Nie trzeba wyeksportować certyfikat Uruchom jako, a następnie zaimportować go do hybrydowego procesu roboczego Runbook
+* Nie musisz odnowić certyfikat używany przez konto Uruchom jako
+* Nie trzeba obsługiwać Uruchom jako obiekt połączenia w kodzie elementu runbook
+
+Do korzystania z tożsamości zarządzanej dla zasobów platformy Azure w ramach procesu roboczego hybrydowego elementu Runbook, należy wykonać następujące czynności:
+
+1. Tworzenie maszyny Wirtualnej platformy Azure
+2. [Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na maszynie Wirtualnej](../active-directory/managed-identities-azure-resources/qs-configure-portal-windows-vm.md#enable-system-assigned-managed-identity-on-an-existing-vm)
+3. [Udzielanie dostępu do sieci maszyny Wirtualnej do grupy zasobów w usłudze Resource Manager](../active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#grant-your-vm-access-to-a-resource-group-in-resource-manager)
+4. [Uzyskaj token dostępu przy użyciu tożsamości zarządzanej przypisany systemowo maszyny Wirtualnej] (.. / active-directory/managed-identities-azure-resources/tutorial-windows-vm-access-arm.md#get-an-access-token-using-the-vms-system-assigned-managed-identity-and-use-it-to-call-azure-resource-manager)
+5. [Instalowanie Windows hybrydowego procesu roboczego Runbook](automation-windows-hrw-install.md#installing-the-windows-hybrid-runbook-worker) na maszynie wirtualnej.
+
+Po zakończeniu powyższych kroków możesz używać `Connect-AzureRmAccount -Identity` w elemencie runbook do uwierzytelniania do zasobów platformy Azure. Zmniejsza to potrzebę korzystać z konta Uruchom jako i zarządzanie certyfikatami dla konta Uruchom jako.
+
+```powershell
+# Connect to Azure using the Managed identities for Azure resources identity configured on the Azure VM that is hosting the hybrid runbook worker
+Connect-AzureRmAccount -Identity
+
+# Get all VM names from the subscription
+Get-AzureRmVm | Select Name
+```
 
 ### <a name="automation-run-as-account"></a>Konto Uruchom jako usługi Automation
 

@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: b6a00719fea78d5872dc00a874951c4760d9207f
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d712286cb4ea5e67474ec11d56d99eaf2cabec3e
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381530"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433076"
 ---
 # <a name="json-claims-transformations"></a>JSON oświadczeń przekształcenia
 
@@ -75,7 +75,7 @@ Pobierz listę określonych elementów z danymi w formacie Json.
 W poniższym przykładzie przekształcania oświadczeń wyodrębnia poniższe oświadczenia: wiadomości e-mail (ciąg), displayName (ciąg), membershipNum (int), aktywne (wartość logiczna) i Data urodzenia (Data/godzina) z danych JSON.
 
 ```JSON
-[{"key":"email","value":"someone@example.com"}, "key":"displayName","value":"Someone"}, {"key":"membershipNum","value":6353399}, {"key":"active","value":true}, {"key":"birthdate","value":"1980-09-23T00:00:00Z"}]
+[{"key":"email","value":"someone@example.com"}, {"key":"displayName","value":"Someone"}, {"key":"membershipNum","value":6353399}, {"key":"active","value":true}, {"key":"birthdate","value":"1980-09-23T00:00:00Z"}]
 ```
 
 ```XML
@@ -86,7 +86,7 @@ W poniższym przykładzie przekształcania oświadczeń wyodrębnia poniższe o�
   <InputParameters>
     <InputParameter Id="errorOnMissingClaims" DataType="boolean" Value="false" />
     <InputParameter Id="includeEmptyClaims" DataType="boolean" Value="false" />
-    <InputParameter Id="jsonSourceKeyName" DataType="string" Value="type" />
+    <InputParameter Id="jsonSourceKeyName" DataType="string" Value="key" />
     <InputParameter Id="jsonSourceValueName" DataType="string" Value="value" />
   </InputParameters>
   <OutputClaims>
@@ -100,7 +100,7 @@ W poniższym przykładzie przekształcania oświadczeń wyodrębnia poniższe o�
 ```    
 
 - Oświadczeń wejściowych:
-    - **jsonSourceClaim**: [{"key": "email", "value": "someone@example.com"}, "key": "displayName", "value": "Ktoś"}, {"key": "membershipNum", "value": 6353399}, {"key": "aktywny", "value": true}, {"key": "Data urodzenia", "value": "1980-09-23T00:0 0:00Z"}]
+    - **jsonSourceClaim**: [{"key": "email", "value": "someone@example.com"}, {"key": "displayName", "value": "Ktoś"}, {"key": "membershipNum", "value": 6353399}, {"key": "aktywny", "value": true}, {"key": "Data urodzenia", "value": "1980-09-23T00:0 0:00Z"}]
 - Parametry wejściowe:
     - **errorOnMissingClaims**: false
     - **includeEmptyClaims**: false
@@ -221,11 +221,9 @@ Oświadczeń wychodzących:
 
 ```JSON
 {
-  {
-    "user": {
-      "name":"Someone",
-      "email":"someone@example.com"
-    }
+  "user": {
+    "name":"Someone",
+    "email":"someone@example.com"
   }
 }
 ```

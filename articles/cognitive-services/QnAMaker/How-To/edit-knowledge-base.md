@@ -10,12 +10,12 @@ ms.component: qna-maker
 ms.topic: article
 ms.date: 09/12/2018
 ms.author: tulasim
-ms.openlocfilehash: ca35e13c502efadad07ef78077271923951ae4b1
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: f927e5b7ff65b82aef9d4224d22296e0fa48ad59
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47038225"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47451888"
 ---
 # <a name="edit-a-knowledge-base"></a>Edytowanie bazy wiedzy
 
@@ -30,8 +30,24 @@ Usługa QnA Maker umożliwia zarządzanie zawartość bazy wiedzy, zapewniając 
     ![Moje bazy wiedzy](../media/qnamaker-how-to-edit-kb/my-kbs.png)
 
 2. Wybierz określoną wiedzy, aby wprowadzić zmiany.
+ 
+3. Kliknij pozycję **Settings** (Ustawienia).
 
-3. Po zakończeniu wprowadzania zmian w bazie wiedzy Knowledge base, kliknij pozycję **Zapisz i szkolenie** w prawym górnym rogu strony aby utrwalić zmiany.    
+   W tym miejscu można edytować wymaganym polem nazwy usługi.
+  
+   Możesz dodać nowe adresy URL, aby dodać nową zawartość — często zadawane pytania do bazy wiedzy, klikając **bazy wiedzy Zarządzaj -> "+ Dodaj adres URL"** łącza.
+   
+   Możesz usunąć istniejące adresy URL, klikając **ikona usuwania**.
+   
+   Jeśli chcesz, aby baza wiedzy w celu przeszukiwania najnowszej zawartości istniejące adresy URL, znaczników Nazwa pola wyboru **"Odśwież"**, spowoduje to zaktualizowanie bazy wiedzy o najnowszą zawartość adresu URL.
+   
+Możesz dodać obsługiwany plik dokumentu jako część bazy wiedzy, klikając **bazy wiedzy Zarządzaj -> "+ Dodaj plik"**
+
+Można również zaimportować wszystkie istniejące bazy wiedzy, klikając **"Ímport bazy wiedzy"** przycisku. 
+   
+Aktualizacja serwera z bazy wiedzy jest zależna od **warstwę cenową zarządzania** używane podczas tworzenia usługi QnA Maker skojarzony z knowledgbase. Możesz także zaktualizować warstwa zarządzania z witryny Azure portal, jeśli jest to wymagane.
+
+4. Po zakończeniu wprowadzania zmian w bazie wiedzy Knowledge base, kliknij pozycję **Zapisz i szkolenie** w prawym górnym rogu strony aby utrwalić zmiany.    
 
     ![Zapisz i uczenie](../media/qnamaker-how-to-edit-kb/save-and-train.png)
 

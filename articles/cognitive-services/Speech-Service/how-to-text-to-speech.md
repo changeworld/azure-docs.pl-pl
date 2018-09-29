@@ -9,18 +9,18 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 09/08/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 776b8496ea3f46287e2eeec7c150b8d60ca3e553
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 5822c313cf0fb5848726cf85c46cda2a3a408264
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46964108"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434623"
 ---
 # <a name="use-text-to-speech-in-speech-service"></a>Użyj "Tekst na mowę" usługi mowy
 
 Usługa rozpoznawania mowy udostępnia funkcjonalność zamiany tekstu na mowę za pośrednictwem prostego żądania HTTP. Możesz `POST` tekst, który ma być używany do odpowiednich punktów końcowych i usługi zwraca plik audio (`.wav`) zawierający syntezatora mowy. Aplikacja następnie można użyć tego audio jako na potrzeby.
 
-Treść żądania zamiany tekstu na mowę, może być zwykły tekst (ASCII lub UTF8) lub [SSML](speech-synthesis-markup.md) dokumentu. Za pomocą głosu domyślne telefoniczną żądania w formacie zwykłego tekstu. W większości przypadków chcesz użyć SSML treści. Żądanie HTTP musi zawierać [autoryzacji](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#authentication) tokenu. 
+Treść żądania zamiany tekstu na mowę, może być zwykły tekst (ASCII lub UTF8) lub [SSML](speech-synthesis-markup.md) dokumentu. Za pomocą głosu domyślne telefoniczną żądania w formacie zwykłego tekstu. W większości przypadków chcesz użyć SSML treści. Żądanie HTTP musi zawierać [autoryzacji](https://docs.microsoft.com/azure/cognitive-services/speech-service/rest-apis#authentication) tokenu.
 
 Punkty końcowe regionalnych zamiany tekstu na mowę są wyświetlane w tym miejscu. Użyj jednej odpowiednie dla Twojej subskrypcji.
 
@@ -38,11 +38,11 @@ Aby określić głosu, użyj `<voice>` [SSML](speech-synthesis-markup.md) tagu. 
 </speak>
 ```
 
-Zobacz [głosów zamiany tekstu na mowę](supported-languages.md#text-to-speech) Aby uzyskać listę dostępnych głosów i ich nazwy.
+Zobacz [głosów zamiany tekstu na mowę](language-support.md#text-to-speech) Aby uzyskać listę dostępnych głosów i ich nazwy.
 
 ## <a name="make-a-request"></a>Wysyłanie żądania
 
-Zamiana tekstu na mowę HTTP żądania w trybie WPIS z tekstem wymawiane w treści żądania. Maksymalna długość treści żądania HTTP to 1024 znaki. Żądanie musi mieć następujące nagłówki: 
+Zamiana tekstu na mowę HTTP żądania w trybie WPIS z tekstem wymawiane w treści żądania. Maksymalna długość treści żądania HTTP to 1024 znaki. Żądanie musi mieć następujące nagłówki:
 
 Nagłówek|Wartości|Komentarze
 -|-|-

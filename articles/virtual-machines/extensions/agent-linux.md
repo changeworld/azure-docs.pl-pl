@@ -3,7 +3,7 @@ title: Omówienie agenta maszyny Wirtualnej systemu Linux platformy Azure | Doku
 description: Informacje o sposobie instalowania i konfigurowania agenta systemu Linux (waagent) do zarządzania interakcją maszyny wirtualnej z kontrolerem sieci szkieletowej Azure.
 services: virtual-machines-linux
 documentationcenter: ''
-author: zroiy
+author: roiyz-msft
 manager: jeconnoc
 editor: ''
 tags: azure-service-management,azure-resource-manager
@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 10/17/2016
 ms.author: roiyz
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d3cba4e884b64d47c4e3109b23aebab7dd9da45f
-ms.sourcegitcommit: 96f498de91984321614f09d796ca88887c4bd2fb
+ms.openlocfilehash: 73e5e54e40223f7cd972e2bd2752add9ca82ff2b
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39412164"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452347"
 ---
 # <a name="understanding-and-using-the-azure-linux-agent"></a>Znajomość i wykorzystanie agenta systemu Linux dla platformy Azure
 

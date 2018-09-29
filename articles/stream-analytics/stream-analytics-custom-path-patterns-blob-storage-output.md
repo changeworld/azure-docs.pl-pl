@@ -8,18 +8,18 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 6945e31825af46628c0945cdf579382b20bdcd68
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: da29c6bd8ddc1e2f62a78fb683df5e1784141722
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47414013"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452568"
 ---
 # <a name="custom-datetime-path-patterns-for-azure-stream-analytics-blob-storage-output-preview"></a>Niestandardowe wzorców ścieżki daty/godziny usługi Azure Stream Analytics obiektu blob magazynu danych wyjściowych (wersja zapoznawcza)
 
 Usługa Azure Stream Analytics obsługuje niestandardowych daty i godziny specyfikatory formatu w ścieżce pliku do magazynu obiektów blob w danych wyjściowych. Zezwalaj na niestandardowe wzorców ścieżki daty/godziny, można określić format danych wyjściowych, była zgodna z konwencjami Hive przesyłania strumieniowego, co daje możliwość wysyłania danych do usługi Azure HDInsight i Azure Databricks dla podrzędnych przetwarzania usługi Azure Stream Analytics. Niestandardowe wzorców ścieżki daty/godziny są łatwo zaimplementować przy użyciu `datetime` — słowo kluczowe w polu Prefiks ścieżki obiektu blob danych wyjściowych, wraz ze specyfikatora formatu. Na przykład `{datetime:yyyy}`.
 
-Użyj tego linku, aby [witryny Azure Portal](https://ms.portal.azure.com/?Microsoft_Azure_StreamAnalytics_bloboutputcustomdatetimeformats=true) Aby przełączać flagę funkcji, umożliwiająca niestandardowe wzorców ścieżki daty/godziny dla obiektu blob magazynu danych wyjściowych w wersji zapoznawczej. Ta funkcja zostanie wkrótce włączona w głównej portalu.
+Użyj tego linku, aby [witryny Azure Portal](https://portal.azure.com/?Microsoft_Azure_StreamAnalytics_bloboutputcustomdatetimeformats=true) Aby przełączać flagę funkcji, umożliwiająca niestandardowe wzorców ścieżki daty/godziny dla obiektu blob magazynu danych wyjściowych w wersji zapoznawczej. Ta funkcja zostanie wkrótce włączona w głównej portalu.
 
 ## <a name="supported-tokens"></a>Obsługiwane tokeny
 

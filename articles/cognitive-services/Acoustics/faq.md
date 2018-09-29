@@ -9,26 +9,26 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 7e27b5117f5f0ea98916ecfefcbb0dac9323e1d9
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: a71e867bd23cf64b2ac7fc8cd1c54c55d92ce924
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181650"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431792"
 ---
 # <a name="frequently-asked-questions"></a>Często zadawane pytania
 
-## <a name="what-is-project-acoustics"></a>Co to jest Akustyka projektu?
+## <a name="what-is-project-acoustics"></a>Co to jest akustyka projektu?
 
-Wtyczka Unity Akustyka projektu to system Akustyka obliczający zachowanie dźwięku przed środowiska uruchomieniowego, podobnie statyczne oświetlenia. Chmura ma skomplikowanymi fizyki wave w czasie projektowania, więc koszt czasu wykonywania procesora CPU jest niska.  
+Wtyczka Unity Akustyka projektu to system Akustyka obliczający zachowanie dźwięku przed środowiska uruchomieniowego, podobnie statyczne oświetlenia. Chmura ma skomplikowanymi fali fizyki obliczeń, więc koszt czasu wykonywania procesora CPU jest niska.  
 
 ## <a name="where-can-i-download-the-plugin"></a>Gdzie można pobrać wtyczkę?
 
-Jeśli interesuje Cię oceny wtyczki Akustyka, zarejestruj [tutaj](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u) do dołączenia do projektanta w wersji zapoznawczej.
+Jeśli interesuje Cię ocena wtyczki akustyki, zarejestruj się [tutaj](https://forms.office.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRwMoAEhDCLJNqtVIPwQN6rpUOFRZREJRR0NIQllDOTQ1U0JMNVc4OFNFSy4u), aby dołączyć do programu Designer Preview.
 
 ## <a name="is-azure-used-at-runtime"></a>Azure jest używana w środowisku uruchomieniowym?
 
-Nie, integracja z chmurą jest używane tylko na etapie precompute w czasie projektowania.
+Nie, integracja z chmurą jest używane tylko na etapie precompute jako część instalacji sceny.
  
 ## <a name="what-is-simulation-input"></a>Co to jest symulacji dane wejściowe? 
 

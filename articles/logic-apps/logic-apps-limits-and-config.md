@@ -3,19 +3,18 @@ title: Limity i konfiguracja — Azure Logic Apps | Dokumentacja firmy Microsoft
 description: Wartości konfiguracji dla usługi Azure Logic Apps i limity usługi
 services: logic-apps
 ms.service: logic-apps
+ms.suite: integration
 author: ecfan
 ms.author: estfan
-manager: jeconnoc
-ms.topic: article
-ms.date: 08/10/2018
 ms.reviewer: klam, LADocs
-ms.suite: integration
-ms.openlocfilehash: 49b8efe6b5d56c3edaf8b311ff3c6667a8952536
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.topic: article
+ms.date: 09/26/2018
+ms.openlocfilehash: c557c3e34fc4588b8bf13d69159a144d059b039e
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42059584"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452460"
 ---
 # <a name="limits-and-configuration-information-for-azure-logic-apps"></a>Limity i informacje o konfiguracji dla usługi Azure Logic Apps
 
@@ -76,7 +75,7 @@ Aby zmienić domyślny limit od 7 do 90 dni, wykonaj następujące kroki. Jeśli
 
 Po wyłączeniu aplikacji logiki są tworzone nie nowe przebiegi. Wszystkie w toku i oczekujących uruchomień będzie kontynuowane, dopóki kończą się, co może zająć czas trwania.
 
-Po usunięciu aplikacji logiki są tworzone nie nowe przebiegi. Wszystkie w toku i oczekujących uruchomień, zostaną anulowane. Jeśli masz tysiące przebiegów, anulowania może zająć znaczną ilość czasu, aby zakończyć.
+Po usunięciu aplikacji logiki nie są tworzone wystąpienia nowych przebiegów. Wszystkie trwające i oczekujące przebiegi zostają anulowane. Anulowanie kilku tysięcy przebiegów może zająć dużo czasu.
 
 <a name="looping-debatching-limits"></a>
 
@@ -305,8 +304,13 @@ Wszystkie aplikacje logiki w regionie, użyj tych samych zakresów adresów IP. 
 Do obsługi wywołania, [łączników](../connectors/apis-list.md) upewnij, tak skonfigurowany, konfiguracje zapory obejmują one te wychodzące adresy IP na podstawie regionów wówczas, gdy istnieją aplikacje Logic Apps.
 
 > [!IMPORTANT]
->
 > Jeśli masz istniejące konfiguracje, zaktualizuj je **możliwie jak przed 1 września 2018** tak aby dołączyć i pasują do adresów IP na tej liście dla regionów, gdy istnieją aplikacje Logic Apps. 
+> 
+> Usługa Logic Apps nie obsługuje bezpośredniego połączenia z konta usługi Azure storage za pośrednictwem zapór. Aby uzyskać dostęp do tych kont magazynu, użyj tutaj jedną z opcji: 
+>
+> * Tworzenie [środowisko usługi integracji](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md), które mogą łączyć się z zasobami w sieci wirtualnej platformy Azure. 
+> 
+> * Jeśli używasz już usługi API Management, można użyć tej usługi, w tym scenariuszu. Aby uzyskać więcej informacji, zobacz [Architektura integracji przedsiębiorstw proste](http://aka.ms/aisarch).
 
 | Region aplikacji logiki | IP ruchu wychodzącego | 
 |-------------------|-------------|  

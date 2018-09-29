@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/03/2018
 ms.author: genli
-ms.openlocfilehash: cb8ba5169a6ebfbb11ba0acfa9b9f463b7cdf6a1
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: 7d8325ce04a9fa7853fb622062022a6938375f96
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39520809"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47430985"
 ---
 # <a name="instance-level-public-ip-classic-overview"></a>Wystąpienie poziomu omówienie publicznego adresu IP (klasyczny)
 Wystąpienie poziomu publicznego adresu IP (ILPIP) to publiczny adres IP, który można przypisać bezpośrednio do wystąpienia roli maszyny Wirtualnej lub usługi w chmurze, a nie do usługi w chmurze, w tej sieci maszyny Wirtualnej lub w wystąpieniu roli. ILPIP nie przyjmuje miejscem, w którym programu virtual IP (VIP) przypisany do usługi w chmurze. Jest raczej, dodatkowe adresu IP, który służy do nawiązania bezpośredniego połączenia z maszyny Wirtualnej lub w wystąpieniu roli.
@@ -31,10 +31,13 @@ Wystąpienie poziomu publicznego adresu IP (ILPIP) to publiczny adres IP, który
 
 Jak pokazano na rysunku 1, usługa w chmurze odbywa się przy użyciu adresu VIP, podczas gdy poszczególne maszyny wirtualne są zwykle dostępne przy użyciu adresu VIP:&lt;numer portu&gt;. Przypisując ILPIP do określonej maszyny Wirtualnej, że można uzyskać dostępu do maszyny Wirtualnej bezpośrednio przy użyciu tego adresu IP.
 
-Podczas tworzenia usługi w chmurze na platformie Azure, odpowiednie rekordy A systemu DNS są tworzone automatycznie zezwolić na dostęp do usługi za pośrednictwem Pełna nazwa domeny (FQDN) zamiast rzeczywistego adresu VIP. Ten sam proces ma miejsce dla ILPIP, zezwalając na dostęp do wystąpienia maszyny Wirtualnej lub roli w pełni kwalifikowaną nazwę domeny, zamiast ILPIP. Na przykład jeśli Utwórz usługę w chmurze o nazwie *contosoadservice*, i skonfiguruj rolę sieci web o nazwie *contosoweb* z dwoma wystąpieniami Azure rejestruje następujące rekordy A wystąpień:
+Podczas tworzenia usługi w chmurze na platformie Azure, odpowiednie rekordy A systemu DNS są tworzone automatycznie zezwolić na dostęp do usługi za pośrednictwem Pełna nazwa domeny (FQDN) zamiast rzeczywistego adresu VIP. Ten sam proces ma miejsce dla ILPIP, zezwalając na dostęp do wystąpienia maszyny Wirtualnej lub roli w pełni kwalifikowaną nazwę domeny, zamiast ILPIP. Na przykład jeśli utworzyć usługę w chmurze o nazwie *contosoadservice*, i skonfiguruj rolę sieci web o nazwie *contosoweb* z dwoma wystąpieniami i w pliku .cscfg `domainNameLabel` jest ustawiona na  *WebPublicIP*Azure rejestrów następujących A rejestruje wystąpień:
 
-* contosoweb\_IN_0.contosoadservice.cloudapp.net
-* contosoweb\_IN_1.contosoadservice.cloudapp.net 
+
+* WebPublicIP.0.contosoadservice.cloudapp.net
+* WebPublicIP.1.contosoadservice.cloudapp.net
+* Przyciski ...
+
 
 > [!NOTE]
 > Można przypisać tylko jedną ILPIP dla każdego wystąpienia maszyny Wirtualnej lub roli. Możesz użyć maksymalnie 5 ILPIPs na subskrypcję. ILPIPs nie są obsługiwane dla maszyn wirtualnych z wieloma kartami.
@@ -152,7 +155,7 @@ Aby dodać ILPIP wystąpienie roli usług Cloud Services, wykonaj następujące 
         <AddressAssignments>
           <InstanceAddress roleName="WebRole1">
         <PublicIPs>
-          <PublicIP name="MyPublicIP" domainNameLabel="MyPublicIP" />
+          <PublicIP name="MyPublicIP" domainNameLabel="WebPublicIP" />
             </PublicIPs>
           </InstanceAddress>
         </AddressAssignments>
@@ -162,14 +165,22 @@ Aby dodać ILPIP wystąpienie roli usług Cloud Services, wykonaj następujące 
 3. Przekaż plik .cscfg dla usługi w chmurze, wykonując kroki opisane w [jak skonfigurować usługi w chmurze](../cloud-services/cloud-services-how-to-configure-portal.md?toc=%2fazure%2fvirtual-network%2ftoc.json#reconfigure-your-cscfg) artykułu.
 
 ### <a name="how-to-retrieve-ilpip-information-for-a-cloud-service"></a>Jak pobrać informacje ILPIP dla usługi w chmurze
-Aby wyświetlić informacje ILPIP dla każdego wystąpienia roli, uruchom następujące polecenie programu PowerShell i sprawdź wartości *publicznego adresu IP* i *PublicIPName*:
+Aby wyświetlić informacje ILPIP dla każdego wystąpienia roli, uruchom następujące polecenie programu PowerShell i sprawdź wartości *publicznego adresu IP*, *PublicIPName*, *PublicIPDomainNameLabel* i *PublicIPFqdns*:
 
 ```powershell
-$roles = Get-AzureRole -ServiceName PaaSFTPService -Slot Production -RoleName WorkerRole1 -InstanceDetails
+Add-AzureAccount
+
+$roles = Get-AzureRole -ServiceName <Cloud Service Name> -Slot Production -RoleName WebRole1 -InstanceDetails
 
 $roles[0].PublicIPAddress
 $roles[1].PublicIPAddress
 ```
+
+Można także użyć `nslookup` zapytań do domeny podrzędnej przez rekord:
+
+```batch
+nslookup WebPublicIP.0.<Cloud Service Name>.cloudapp.net
+``` 
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Zrozumienie sposobu [adresowania IP](virtual-network-ip-addresses-overview-classic.md) działa w klasycznym modelu wdrażania.

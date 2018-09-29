@@ -1,44 +1,44 @@
 ---
-title: Przygotowanie środowiska docelowego dla replikacji VMware na platformie Azure | Dokumentacja firmy Microsoft
-description: W tym artykule opisano sposób przygotowania urządzenie docelowe środowisko platformy Azure do replikacji maszyn wirtualnych programu VMware na platformę Azure.
+title: Przygotowanie środowiska docelowego (serwer fizyczny/VMware do platformy Azure) | Dokumentacja firmy Microsoft
+description: W tym artykule opisano sposób przygotowania urządzenie docelowe środowisko platformy Azure do replikacji maszyn wirtualnych VMware oraz replikacji serwerów fizycznych do platformy Azure.
 services: site-recovery
 author: bsiva
 manager: abhemraj
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
+ms.date: 09/28/2018
 ms.author: bsiva
-ms.openlocfilehash: 4b428dff1cebf353cc081696649494e6e4ec9b92
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: 948812f05697362978ad041566d22977efec92a1
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37921114"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434640"
 ---
-# <a name="prepare-the-target-environment-for-vmware-replication-to-azure"></a>Przygotowanie środowiska docelowego dla replikacji VMware na platformie Azure
+# <a name="prepare-the-target-environment-vmwarephysical-to-azure"></a>Przygotowanie środowiska docelowego (serwer fizyczny/VMware do platformy Azure)
 
-W tym artykule opisano sposób przygotowania urządzenie docelowe środowisko platformy Azure, aby rozpocząć replikowanie maszyn wirtualnych programu VMware do platformy Azure.
+W tym artykule opisano sposób przygotowania urządzenie docelowe środowisko platformy Azure, aby rozpocząć replikowanie maszyn wirtualnych VMware lub serwery fizyczne do platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Artykuł zakłada:
-- Utworzono magazyn usługi Recovery Services można chronić maszyny wirtualne VMware. Można utworzyć magazyn usługi Recovery Services z [witryny Azure portal](http://portal.azure.com "witryny Azure portal").
-- Masz [konfiguracji środowiska lokalnego](vmware-azure-set-up-source.md) replikowania maszyn wirtualnych programu VMware do platformy Azure.
+- Utworzono magazyn usługi Recovery Services na [witryny Azure portal](http://portal.azure.com "witryny Azure portal") chronić maszyny źródłowej
+- Skonfigurowano w lokalnym środowisku replikacji źródła [maszyn wirtualnych VMware](vmware-azure-set-up-source.md) lub [serwerów fizycznych](physical-azure-set-up-source.md) na platformie Azure.
 
 ## <a name="prepare-target"></a>Przygotowywanie celu
 
-Po zakończeniu **cel ochrony 1 kroku** i **krok 2: przygotowanie źródłowego**, nastąpi przekierowanie do **krok 3: docelowy**
+Po zakończeniu **krok 1: cel ochrony wybierz** i **krok 2: przygotowanie źródłowego**, nastąpi przekierowanie do **krok 3: docelowy**
 
 ![Przygotowywanie celu](./media/vmware-azure-set-up-target/prepare-target-vmware-to-azure.png)
 
-1. **Subskrypcja:** z menu rozwijanego Wybierz subskrypcję, którą chcesz zreplikować maszyny wirtualnej.
+1. **Subskrypcja:** z menu rozwijanego Wybierz subskrypcję, dla której chcesz wykonać replikację maszyn wirtualnych ani serwery fizyczne do.
 2. **Model wdrażania:** wybierz model wdrażania (Model Klasyczny lub usługi Resource Manager)
 
-Oparte na modelu wdrażania wybranego, weryfikacji jest Uruchom, aby upewnić się, że masz co najmniej jedno zgodne konto magazynu i sieć wirtualną w subskrypcji docelowej replikacji i trybu failover maszyny wirtualnej.
+Oparte na modelu wdrażania wybranego, sprawdzanie poprawności jest wykonywane aby upewnić się, że masz co najmniej jedno zgodne konto magazynu i sieć wirtualną w subskrypcji docelowej replikacji i trybu failover Twojej maszyny wirtualnej lub serwer fizyczny z platformą.
 
 Po operacje sprawdzania poprawności zakończy się pomyślnie, kliknij przycisk OK, aby przejść do następnego kroku.
 
-Jeśli nie masz zgodne konto magazynu usługi Resource Manager lub sieć wirtualną można utworzyć na, klikając **+ konto magazynu** lub **+ sieć** przyciski w górnej części strony.
+Jeśli nie masz zgodne konto magazynu usługi Resource Manager lub sieć wirtualną można utworzyć jeden, klikając **+ konto magazynu** lub **+ sieć** przyciski w górnej części strony.
 
 ## <a name="next-steps"></a>Kolejne kroki
 [Konfigurowanie ustawień replikacji](vmware-azure-set-up-replication.md).

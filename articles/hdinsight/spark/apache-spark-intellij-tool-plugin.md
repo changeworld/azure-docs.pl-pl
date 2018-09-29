@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 11/25/2017
 ms.author: maxluk
-ms.openlocfilehash: ed0118584d51f08d64a88dc1e7e6e2ba5f95cb0a
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 07c2b506007daccd53a8b06a43064e6e274ac43b
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43042595"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433362"
 ---
 # <a name="use-azure-toolkit-for-intellij-to-create-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for IntelliJ umożliwia tworzenie aplikacji Spark dla klastra usługi HDInsight
 
@@ -181,8 +181,12 @@ Możesz połączyć normalny klaster HDInsight przy użyciu nazwy użytkownika s
 
         ![W oknie dialogowym Wybierz klasę Main](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-3.png)
 
-      * Ponieważ kod aplikacji, w tym przykładzie nie wymagają argumentów wiersza polecenia lub odwoływać się do plików lub plikach JAR, pozostałe pola można pozostawić puste. Po podaniu wszystkich informacji w oknie dialogowym powinny zgodnie z poniższym obrazem.
+      * Możesz podać wymagane informacje. Temat **zadania konfiguracji**, firma Microsoft ma wartości domyślnej. A może odnosić się do [interfejsu API REST usługi Livy Apache](http://livy.incubator.apache.org./docs/latest/rest-api.html) Aby uzyskać więcej informacji na temat kluczy. **Argumenty wiersza polecenia**, **przywoływane JARs** i **przywoływane pliki** powinny wyglądać poniżej obrazu. Możesz zapoznać się z [konfiguracji aparatu Spark](https://spark.apache.org/docs/latest/configuration.html#runtime-environment) Aby uzyskać więcej informacji na temat **przywoływane JARs** i **przywoływane pliki**. Aby **przywoływane JARs** i **przywoływane pliki** działać prawidłowo, należy przekazać zasobów do klastra, należy najpierw Prześlij. Zapoznaj się [sposób przekazywania zasobów do klastra](https://docs.microsoft.com/azure/storage/blobs/storage-quickstart-blobs-storage-explorer). Okno dialogowe przesyłania powinien przypominać ilustrację poniżej.
         
+        ![Znaczenie platformy Spark, przesłanie okna dialogowego okno zadania konfiguracji](./media/apache-spark-intellij-tool-plugin/submit-job-configurations.png)
+
+        ![Oznacza pliki JAR używane przesyłania Spark okna dialogowego pole](./media/apache-spark-intellij-tool-plugin/jar-files-meaning.png)
+
         ![Okno dialogowe przesyłania platformy Spark](./media/apache-spark-intellij-tool-plugin/hdi-submit-spark-app-2.png)
 
    c. **Przesyłania Spark** karta w dolnej części okna należy rozpocząć wyświetlanie postępu. Można je również zatrzymać aplikację, wybierając czerwony przycisk w **przesyłania Spark** okna.

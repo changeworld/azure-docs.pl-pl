@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: 93b0a7e382c27cab5f050166ec8fa89fc7cf6b96
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: e2dabc66a906d35525f51bf9a1c09b62430ded55
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576106"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434011"
 ---
 # <a name="azure-logging-and-auditing"></a>Rejestrowanie i przeprowadzanie inspekcji na platformie Azure
 
@@ -351,7 +351,7 @@ Istnieją cztery sposoby [gromadzenia dzienników i metryk dla usług platformy 
 
 
 ## <a name="log-integration-with-on-premises-siem-systems"></a>Integracja dzienników przy użyciu lokalnych systemów SIEM
-Za pomocą [Azure Log Integration](https://www.microsoft.com/download/details.aspx?id=53324), możesz zintegrować nieprzetworzonych dzienników z zasobów platformy Azure z lokalnego systemu SIEM.
+Za pomocą [Azure Log Integration](https://www.microsoft.com/download/details.aspx?id=53324), możesz zintegrować nieprzetworzonych dzienników z zasobów platformy Azure z lokalnego systemu SIEM (Security informacjami i zdarzeniami systemu zarządzania).
 
 ![Diagram integracji dzienników](./media/azure-log-audit/azure-log-audit-fig9.png)
 

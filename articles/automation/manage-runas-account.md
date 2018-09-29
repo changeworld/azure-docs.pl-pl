@@ -9,18 +9,18 @@ ms.author: gwallace
 ms.date: 09/12/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 32a7b7026df1522abe2ca3dc7b212b06e08ff905
-ms.sourcegitcommit: f983187566d165bc8540fdec5650edcc51a6350a
+ms.openlocfilehash: a8821b2e1be10cddafba04109041e76ef65f6a6a
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/13/2018
-ms.locfileid: "45544281"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433705"
 ---
 # <a name="manage-azure-automation-run-as-accounts"></a>Zarządzanie kontami Uruchom jako usługi Azure Automation
 
 Konta Uruchom jako w usłudze Azure Automation są używane do zapewnienia uwierzytelniania do zarządzania zasobami na platformie Azure przy użyciu poleceń cmdlet platformy Azure.
 
-Podczas tworzenia konta Uruchom jako tworzy nowego użytkownika nazwy głównej usługi w usłudze Azure Active Directory i przypisuje rolę Współautor do tego użytkownika na poziomie subskrypcji.
+Podczas tworzenia konta Uruchom jako tworzy nowego użytkownika nazwy głównej usługi w usłudze Azure Active Directory i przypisuje rolę Współautor do tego użytkownika na poziomie subskrypcji. W przypadku elementów runbook, użyj hybrydowych procesów roboczych Runbook na maszynach wirtualnych platformy Azure, można użyć [zarządzanych tożsamości dla zasobów platformy Azure](automation-hrw-run-runbooks.md#managed-identities-for-azure-resources) zamiast konta Uruchom jako do uwierzytelniania do zasobów platformy Azure.
 
 Istnieją dwa typy kont Uruchom jako:
 

@@ -4,7 +4,7 @@ description: Rozwiązywanie problemów, gdy nie można połączyć się z maszyn
 keywords: Błąd połączenia zdalnego, błąd połączeń usług pulpitu zdalnego, nie można nawiązać połączenia z maszyną Wirtualną, rozwiązywania problemów usług pulpitu zdalnego
 services: virtual-machines-windows
 documentationcenter: ''
-author: zroiy
+author: roiyz-msft
 manager: jeconnoc
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
@@ -15,12 +15,12 @@ ms.tgt_pltfrm: vm-windows
 ms.topic: troubleshooting
 ms.date: 03/23/2018
 ms.author: roiyz
-ms.openlocfilehash: d08f5f5a553c0f7459aa8eed3b4e7658d0e6a4a9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: b73cdc7e55a60fbefc294a54f70daa9b2a11ced1
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413853"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452461"
 ---
 # <a name="troubleshoot-remote-desktop-connections-to-an-azure-virtual-machine"></a>Rozwiązywanie problemów z połączeniami pulpitu zdalnego na maszynie wirtualnej platformy Azure
 Połączenia protokołu RDP (Remote Desktop) z systemem Windows Azure maszyną wirtualną (VM) może zakończyć się niepowodzeniem z różnych powodów, pozostawiając do użytkownika nie może uzyskać dostępu do maszyny Wirtualnej. Ten problem może być za pomocą usług pulpitu zdalnego na maszynę Wirtualną, połączenie sieciowe lub klienta pulpitu zdalnego na komputerze hosta. Ten artykuł przeprowadzi Cię przez niektóre z najbardziej typowych metod, aby rozwiązać problemy z połączeniem RDP. 

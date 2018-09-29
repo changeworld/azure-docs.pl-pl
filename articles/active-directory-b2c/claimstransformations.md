@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: 7e4f3d4cd66760fd2cca799e929d2035c0ba3fd0
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: b569fe6a354bed315fd2136cafdade667b6f3a8b
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381529"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432814"
 ---
 # <a name="claimstransformations"></a>ClaimsTransformations
 
@@ -26,12 +26,14 @@ ms.locfileid: "44381529"
 Aby dołączyć listę funkcji transformacji roszczenia, które mogą być używane w podróży użytkownika, — element ClaimsTransformations XML musi być zadeklarowana w sekcji BuildingBlocks zasad.
 
 ```xml
-<ClaimsTransformations Id="<identifier>" TransformationMethod="<method>">
-  ...
-</ClaimsTransformation>
+<ClaimsTransformations>
+  <ClaimsTransformation Id="<identifier>" TransformationMethod="<method>">
+    ...
+  </ClaimsTransformation>
+</ClaimsTransformations>
 ```
 
-**ClaimsTransformations** conatains element następujące atrybuty:
+**ClaimsTransformation** conatains element następujące atrybuty:
 
 | Atrybut |Wymagane | Opis |
 | --------- |-------- | ----------- |

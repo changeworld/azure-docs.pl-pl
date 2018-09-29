@@ -15,12 +15,12 @@ ms.date: 07/31/2018
 ms.author: magoedte
 ms.custom: mvc
 ms.component: na
-ms.openlocfilehash: 31e9e6b173a578b09f656850271ed5a8f0f2baa8
-ms.sourcegitcommit: e3d5de6d784eb6a8268bd6d51f10b265e0619e47
+ms.openlocfilehash: b5d7b71b76eebc0c14fe1403791c3d4b6cefd7f4
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/01/2018
-ms.locfileid: "39391335"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161059"
 ---
 # <a name="view-or-analyze-data-collected-with-log-analytics-log-search"></a>Wyświetlanie i analizowanie zebranych danych za pomocą wyszukiwania w dziennikach usługi Log Analytics
 
@@ -85,7 +85,7 @@ Ten sam filtr można ustawić, wybierając pozycję **Filtruj** z menu właściw
 
 Opcja **Filtruj** istnieje tylko dla właściwości, których nazwy są oznaczone kolorem niebieskim po umieszczeniu na nich wskaźnika.  Są to pola *z możliwością wyszukiwania*, które są indeksowane na potrzeby warunków wyszukiwania.  Pola oznaczone kolorem szarym są polami *wyszukiwania dowolnego tekstu*, dla których jest dostępna tylko opcja **Pokaż odwołania**.  Ta opcja zwraca rekordy, dla których ta wartość istnieje w dowolnej właściwości.
 
-Wyniki można grupować według pojedynczej właściwości, wybierając opcję **Grupuj według** z menu rekordu.  Spowoduje to dodanie do zapytania operatora [summarize](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/summarize-operator) wyświetlającego wyniki na wykresie.  Można grupować według więcej niż jednej właściwości, ale w tym celu trzeba edytować zapytanie bezpośrednio.  Wybierz menu rekordu obok właściwości **Computer** (Komputer) i wybierz pozycję **Grupuj według „Computer”**.  
+Wyniki można grupować według pojedynczej właściwości, wybierając opcję **Grupuj według** z menu rekordu.  Spowoduje to dodanie do zapytania operatora [summarize](/azure/kusto/query/summarizeoperator) wyświetlającego wyniki na wykresie.  Można grupować według więcej niż jednej właściwości, ale w tym celu trzeba edytować zapytanie bezpośrednio.  Wybierz menu rekordu obok właściwości **Computer** (Komputer) i wybierz pozycję **Grupuj według „Computer”**.  
 
 ![Grupowanie według komputerów](media/log-analytics-tutorial-viewdata/log-analytics-portal-eventlist-04.png)
 
@@ -130,7 +130,7 @@ Perf | where ObjectName == "Processor"  | where CounterName == "% Processor Time
 
 ![Użycie procesorów](media/log-analytics-tutorial-viewdata/log-analytics-portal-perfsearch-02.png)
 
-To ogranicza dane do określonego licznika, ale nadal nie udostępnia ich w szczególnie przydatnej postaci.  Można wyświetlić dane na wykresie liniowym, ale najpierw należy je zgrupować według właściwości Computer (Komputer) i TimeGenerated (Godzina wygenerowania).  Aby zgrupować według wielu pól, należy bezpośrednio zmodyfikować zapytanie. Zmodyfikuj je więc do następującej postaci.  Wykorzystywana jest tu funkcja [avg](https://docs.loganalytics.io/docs/Language-Reference/Aggregation-functions/avg()) działająca na właściwości **CounterValue** w celu obliczania średniej wartości dla każdej godziny.
+To ogranicza dane do określonego licznika, ale nadal nie udostępnia ich w szczególnie przydatnej postaci.  Można wyświetlić dane na wykresie liniowym, ale najpierw należy je zgrupować według właściwości Computer (Komputer) i TimeGenerated (Godzina wygenerowania).  Aby zgrupować według wielu pól, należy bezpośrednio zmodyfikować zapytanie. Zmodyfikuj je więc do następującej postaci.  Wykorzystywana jest tu funkcja [avg](/azure/kusto/query/avg-aggfunction) działająca na właściwości **CounterValue** w celu obliczania średniej wartości dla każdej godziny.
 
 ```
 Perf  
@@ -140,7 +140,7 @@ Perf
 
 ![Wykres danych wydajności](media/log-analytics-tutorial-viewdata/log-analytics-portal-perfsearch-03.png)
 
-Dane są już odpowiednio zgrupowane, można je więc wyświetlić na wykresie przez dodanie operatora [render](https://docs.loganalytics.io/docs/Language-Reference/Tabular-operators/render-operator).  
+Dane są już odpowiednio zgrupowane, można je więc wyświetlić na wykresie przez dodanie operatora [render](/azure/kusto/query/renderoperator).  
 
 ```
 Perf  

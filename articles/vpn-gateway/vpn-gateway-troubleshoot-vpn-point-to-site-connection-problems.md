@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: genli
-ms.openlocfilehash: cd89c41b43be1da339ca7dcc64110e7145a93903
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 72cf094dc6206fcb156a3e4dae6e89662e2085d8
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37857334"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434861"
 ---
 # <a name="troubleshooting-azure-point-to-site-connection-problems"></a>Rozwiązywanie problemów: Problemy z połączeniem usługi Azure point-to-site
 
@@ -51,7 +51,7 @@ Aby rozwiązać ten problem, wykonaj następujące kroki:
     | Azuregateway-*GUID*.cloudapp.net  | Bieżący User\Trusted główne urzędy certyfikacji|
     | AzureGateway-*GUID*.cloudapp.net, AzureRoot.cer    | Lokalny komputer lokalny\Zaufane główne urzędy certyfikacji|
 
-3. Przejdź do użytkowników\<UserName > \AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID >, ręcznie zainstaluj certyfikat (plik *.cer) na użytkownika i magazynie komputera.
+3. Przejdź do C:\Users\<UserName > \AppData\Roaming\Microsoft\Network\Connections\Cm\<GUID >, ręcznie zainstaluj certyfikat (plik *.cer) na użytkownika i magazynie komputera.
 
 Aby uzyskać więcej informacji na temat sposobu instalowania certyfikatu klienta, zobacz [Generowanie i eksportowanie certyfikatów dla połączeń punkt lokacja](vpn-gateway-certificates-point-to-site.md).
 
@@ -276,7 +276,7 @@ Usuń połączenie sieci VPN typu punkt lokacja, a następnie ponownie zainstalo
 
 ### <a name="solution"></a>Rozwiązanie
 
-Aby rozwiązać ten problem, Usuń stare pliki konfiguracji klienta sieci VPN z **C:\users\username\AppData\Microsoft\Network\Connections\<VirtualNetworkId >**, a następnie ponownie uruchom Instalatora klienta sieci VPN.
+Aby rozwiązać ten problem, Usuń stare pliki konfiguracji klienta sieci VPN z **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId >**, a następnie ponownie uruchom Instalatora klienta sieci VPN .
 
 ## <a name="point-to-site-vpn-client-cannot-resolve-the-fqdn-of-the-resources-in-the-local-domain"></a>Klient sieci VPN typu punkt lokacja nie może rozpoznać nazwę FQDN zasobów w domenie lokalnej
 
@@ -361,7 +361,7 @@ Ten problem może być spowodowane przez poprzednie instalacje klienta sieci VPN
 
 ### <a name="solution"></a>Rozwiązanie
 
-Usuń stare pliki konfiguracji klienta sieci VPN z **C:\users\username\AppData\Microsoft\Network\Connections\<VirtualNetworkId >** i ponownie uruchom Instalatora klienta sieci VPN. 
+Usuń stare pliki konfiguracji klienta sieci VPN z **C:\Users\UserName\AppData\Roaming\Microsoft\Network\Connections\<VirtualNetworkId >** i ponownie uruchom Instalatora klienta sieci VPN. 
 
 ## <a name="the-vpn-client-hibernates-or-sleep-after-some-time"></a>Klient sieci VPN w stan hibernacji lub uśpienia po pewnym czasie
 

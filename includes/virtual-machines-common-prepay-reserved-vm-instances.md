@@ -4,12 +4,12 @@ ms.author: yashar
 ms.service: virtual-machines-windows
 ms.topic: include
 ms.date: 09-05-2018
-ms.openlocfilehash: 75e493f6b2e47bf3323df9e52ad3a933a6efbead
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 065ac0855fc47b23b434287f9f4406bd641f01ae
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44058357"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47454465"
 ---
 # <a name="prepay-for-virtual-machines-with-azure-reserved-vm-instances"></a>Przedpłaty dotyczące maszyn wirtualnych przy użyciu wystąpienia zarezerwowane maszyn wirtualnych platformy Azure
 
@@ -19,21 +19,22 @@ Rezerwacja wystąpienia maszyny Wirtualnej można kupić [witryny Azure portal](
 
 - Musisz być w roli właściciela dla co najmniej jeden Enterprise lub subskrypcję z płatnością za rzeczywiste użycie.
 - W przypadku subskrypcji Enterprise, musi być włączony zakupu rezerwacji [portalu EA portal](https://ea.azure.com).
-- Dla programu Cloud Solution Provider (CSP) tylko agentów administratora lub agentom sprzedaży mogą kupować rezerwacje.
+- Program Cloud Solution Provider (CSP) tylko agentów administratora lub agentom sprzedaży mogą kupować rezerwacje.
 
-## <a name="determine-the-right-vm-size-before-purchase"></a>Określić właściwy rozmiar maszyny Wirtualnej przed dokonaniem zakupu
+## <a name="determine-the-right-vm-size-before-you-buy"></a>Określić właściwy rozmiar maszyny Wirtualnej przed zakupem
 
-Podkategoria miernika i produktu pola danych użycia nie rozróżnia rozmiarów maszyn wirtualnych, korzystających z usługi premium storage z rozmiarów maszyn wirtualnych, które nie używają usługi premium storage, przy użyciu tych pól, aby określić maszyna wirtualna rozmiar dla zakupu rezerwacji może spowodować niepoprawne Rezerwacja zakupu i nie zapewnia rabaty rezerwacji. Aby określić właściwy rozmiar maszyny Wirtualnej dla zakupu rezerwacji, użyj jednej z poniższych metod.
+Podkategoria miernika i produktu pola danych użycia nie rozróżnia rozmiarów maszyn wirtualnych, korzystających z usługi premium storage z maszyn wirtualnych, które nie. Jeśli używasz tych pól do ustalenia rozmiaru maszyny Wirtualnej do użycia dla rezerwacji, może kupić niewłaściwy rozmiar i nie będą otrzymywać rabat związany z rezerwacją, których oczekujesz. Aby określić właściwy rozmiar maszyny Wirtualnej, w przypadku dokonywania zakupu rezerwacji, użyj jednej z następujących metod:
 
-- Zapoznaj się z polem AdditionalInfo w pliku użycia lub interfejs API użycia, aby określić odpowiedni rozmiar maszyny Wirtualnej dla zakupu rezerwacji. Nie należy używać wartości z pól Podkategoria licznika lub produktu, ponieważ te pola nie rozróżniają między wersjami S i Non-S maszyny wirtualnej.
-- Można również uzyskać dokładne informacje rozmiar maszyny Wirtualnej przy użyciu programu Powershell, usługi Azure Resource Manager, lub z maszyny Wirtualnej z jego szczegóły w witrynie Azure portal.
+- Zapoznaj się z polem AdditionalInfo w pliku użycia lub interfejs API użycia, aby określić odpowiedni rozmiar maszyny Wirtualnej. Nie używaj wartości z pól Podkategoria licznika lub produkt. Te pola nie odróżnić S i Non-S wersje maszyny Wirtualnej.
+- Uzyskaj dokładne informacje rozmiar maszyny Wirtualnej przy użyciu programu Powershell, usługi Azure Resource Manager, lub z maszyny Wirtualnej szczegółowych informacji w witrynie Azure portal.
 
 Zarezerwowane wystąpienia maszyn wirtualnych są dostępne dla większości rozmiarów maszyn wirtualnych z pewnymi wyjątkami:
 
-- Klasyczne maszyny wirtualne i Cloud services nie uzyskać rabat związany z rezerwacją.
-- Pominięte rdzeni maszyn wirtualnych nie uzyskać rabaty rezerwacji.
-- Następujące serię maszyn wirtualnych nie uzyskasz rabaty rezerwacji: A-series serii Av2 i serii G.
-- Maszyny wirtualne w wersji zapoznawczej: serię maszyn wirtualnych ani rozmiaru, który jest w wersji zapoznawczej nie są dostępne do zakupu rezerwacji.
+- Rabat związany z rezerwacją nie ma zastosowania dla następujących maszyn wirtualnych:
+  - Klasyczne maszyny wirtualne i usługi w chmurze
+  - Rozmiary ograniczone procesorów wirtualnych
+  - Serię maszyn wirtualnych: A-series serii Av2 i serii G
+  - Maszyny wirtualne w wersji zapoznawczej: serię maszyn wirtualnych ani rozmiaru, który jest w wersji zapoznawczej
 - Chmury: Rezerwacji nie są dostępne do zakupu w regionach platformy Azure instytucji rządowych USA, Niemcy i Chiny.
 - Za mały limit przydziału: rezerwacji, które są ograniczone do pojedynczej subskrypcji musi mieć dostępnego w ramach subskrypcji dla nowych wystąpień Zarezerwowanych limitu przydziału procesorów wirtualnych. Na przykład jeśli docelowa subskrypcja ma limit przydziału procesorów wirtualnych 10 dla serii D, następnie możesz dokonać zakupu rezerwacji 11 wystąpień maszyna wirtualna Standard_D1. Sprawdzenie limitu przydziału dla rezerwacji obejmuje maszyny wirtualne wdrożone w ramach subskrypcji. Na przykład jeśli subskrypcja ma limit przydziału procesorów wirtualnych 10 dla serii D, ma dwa wystąpienia maszyna wirtualna standard_D1 wdrożeniu można kupować Rezerwacja 10 wystąpień maszyna wirtualna standard_D1 w ramach tej subskrypcji. 
 - Ograniczenia dotyczące pojemności: W rzadkich przypadkach limitów zakupu nowej rezerwacji dla podzbioru rozmiarów maszyn wirtualnych z powodu niskiej wydajności w regionie platformy Azure.

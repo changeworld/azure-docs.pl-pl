@@ -9,14 +9,14 @@ ms.workload: multiple
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/18/2018
+ms.date: 09/28/2018
 ms.author: tomfitz
-ms.openlocfilehash: 4ec09f5ed57dca89934efa750eed05e1ebcb1216
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5bb820d816115dccf470b6c32d080862495e8310
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46298289"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434980"
 ---
 # <a name="move-operation-support-for-resources"></a>Przenoszenie obsługi operacji dla zasobów
 
@@ -190,6 +190,7 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | rejestry | Yes | Yes |
 | rejestry/buildtasks | Yes | Yes |
 | rejestry/replikacji | Nie | Nie |
+| rejestry/zadań | Yes | Yes |
 | rejestry/elementów webhook | Yes | Yes |
 
 ## <a name="microsoftcontainerservice"></a>Microsoft.ContainerService
@@ -197,6 +198,7 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | ------------- | -------------- | ------------ |
 | containerservices | Nie | Nie |
 | managedclusters | Nie | Nie |
+| openshiftmanagedclusters | Nie | Nie |
 
 ## <a name="microsoftcontentmoderator"></a>Microsoft.ContentModerator
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -276,6 +278,15 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | ------------- | -------------- | ------------ |
 | servergroups | Nie | Nie |
 | serwerów | Yes | Yes |
+
+## <a name="microsoftdeploymentmanager"></a>Microsoft.DeploymentManager
+| Typ zasobu | Grupa zasobów | Subskrypcja |
+| ------------- | -------------- | ------------ |
+| artifactsources | Nie | Nie |
+| Wprowadzanie | Nie | Nie |
+| servicetopologies | Nie | Nie |
+| servicetopologies/usługi | Nie | Nie |
+| servicetopologies/services/serviceunits | Nie | Nie |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -417,6 +428,11 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | ------------- | -------------- | ------------ |
 | accounts | Yes | Yes |
 
+## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
+| Typ zasobu | Grupa zasobów | Subskrypcja |
+| ------------- | -------------- | ------------ |
+| obszary robocze | Yes | Yes |
+
 ## <a name="microsoftmanagedidentity"></a>Microsoft.ManagedIdentity
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | -------------- | ------------ |
@@ -449,15 +465,22 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | ------------- | -------------- | ------------ |
 | applicationgateways | Nie | Nie |
 | applicationsecuritygroup | Yes | Yes |
+| azurefirewalls | Yes | Yes |
 | połączenia | Yes | Yes |
 | ddosprotectionplans | Nie | Nie |
 | dnszones | Yes | Yes |
 | expressroutecircuits | Nie | Nie |
+| expressroutecrossconnections | Nie | Nie |
+| expressroutegateways | Nie | Nie |
 | expressrouteports | Nie | Nie |
+| frontdoors | Yes | Yes |
+| frontdoorwebapplicationfirewallpolicies | Yes | Yes |
+| interfaceendpoints | Nie | Nie |
 | modułami modułami | Yes | Yes |
 | localnetworkgateways | Yes | Yes |
 | networkintentpolicies | Yes | Yes |
 | interfejsy | Yes | Yes |
+| networkprofiles | Nie | Nie |
 | networksecuritygroups | Yes | Yes |
 | networkwatchers | Yes | Yes |
 | networkwatchers/connectionmonitors | Yes | Yes |
@@ -467,9 +490,16 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 | publicipprefixes | Yes | Yes |
 | routefilters | Nie | Nie |
 | routetables | Yes | Yes |
+| serviceendpointpolicies | Yes | Yes |
 | trafficmanagerprofiles | Yes | Yes |
+| virtualhubs | Yes | Yes |
 | elementów virtualnetworkgateway | Yes | Yes |
 | virtualnetworks | Yes | Yes |
+| virtualnetworktaps | Nie | Nie |
+| virtualwans | Yes | Yes |
+| vpngateways | Yes | Yes |
+| vpnsites | Yes | Yes |
+| webapplicationfirewallpolicies | Yes | Yes |
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft.NotificationHubs
 | Typ zasobu | Grupa zasobów | Subskrypcja |
@@ -568,6 +598,8 @@ Po znalezieniu dostawcy zasobów i typu zasobu, użyj tabel w tym artykule, aby 
 ## <a name="microsoftsql"></a>Microsoft.Sql
 | Typ zasobu | Grupa zasobów | Subskrypcja |
 | ------------- | -------------- | ------------ |
+| managedinstances | Yes | Yes |
+| managedinstances/baz danych | Yes | Yes |
 | serwerów | Yes | Yes |
 | serwery/baz danych | Yes | Yes |
 | serwery/elasticpools | Yes | Yes |

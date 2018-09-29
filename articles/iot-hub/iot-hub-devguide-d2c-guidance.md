@@ -1,49 +1,44 @@
 ---
-title: Opcje urządzenia do chmury systemu Azure IoT Hub | Dokumentacja firmy Microsoft
-description: Przewodnik dewelopera — wskazówki dotyczące użycie wiadomości urządzenia do chmury, zgłoszone właściwości lub przekazywania pliku do komunikacji z chmury do urządzenia.
+title: Opcje urządzenia do chmury w usłudze Azure IoT Hub | Dokumentacja firmy Microsoft
+description: Przewodnik dewelopera — wskazówki dotyczące kiedy należy używać komunikatów z urządzenia do chmury, zgłoszone właściwości aktualizuje lub przekazywanie pliku do komunikacji z chmury do urządzenia.
 author: fsautomata
-manager: ''
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: elioda
-ms.openlocfilehash: a1881b74ba3f4f66e9e47b24d2ee8c8c17c5f05d
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: cd20c835fbb08ca0d44f6c77374ba52e19536d63
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34634220"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452194"
 ---
-# <a name="device-to-cloud-communications-guidance"></a>Wskazówki dotyczące komunikacji urządzenia do chmury
-Podczas wysyłania informacji z aplikacji urządzenia zaplecza rozwiązania, Centrum IoT udostępnia trzy opcje:
+# <a name="device-to-cloud-communications-guidance"></a>Wskazówki dotyczące komunikacji z urządzenia do chmury
 
-* [Urządzenia do chmury wiadomości] [ lnk-d2c] telemetrii serie czasu i alerty.
-* [Dwie urządzenia użytkownika zgłosiła właściwości] [ lnk-twins] raportowania urządzenia stan informacje takie jak dostępne możliwości, warunków lub stan długotrwałe przepływów pracy. Na przykład konfiguracji i aktualizacji oprogramowania.
-* [Przekazywanie pliku] [ lnk-fileupload] nośnika pliki i partie dużych telemetrii przekazany przez sporadycznie połączonych urządzeń lub skompresowane, aby oszczędzić przepustowość.
+Podczas wysyłania informacji z aplikacji urządzenia do zaplecza rozwiązania, usługi IoT Hub udostępnia trzy opcje:
+
+* [Komunikaty z urządzenia do chmury](iot-hub-devguide-messages-d2c.md) czas serii telemetrię i alerty.
+
+* [Bliźniacza reprezentacja urządzenia użytkownika zgłaszanych właściwości](iot-hub-devguide-device-twins.md) raportowania informacje o stanie urządzenia, takie jak dostępne możliwości, postanowienia lub stan długotrwałe przepływy pracy. Na przykład konfiguracji i aktualizacji oprogramowania.
+
+* [Przekazywanie pliku](iot-hub-devguide-file-upload.md) nośnika pliki i telemetrii dużych partii przekazane przez sporadycznie połączonych urządzeń lub skompresować, aby oszczędzić przepustowość.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 Oto szczegółowe porównanie różnych opcji komunikacji urządzenia do chmury.
 
-|  | Komunikaty z urządzenia do chmury | Dwie urządzenia zgłoszonego właściwości | Przekazywania plików |
+|  | Komunikaty z urządzenia do chmury | Zgłaszane właściwości bliźniaczej reprezentacji urządzenia | Operacje przekazywania plików |
 | ---- | ------- | ---------- | ---- |
-| Scenariusz | Dane telemetryczne szeregów czasowych i alerty. Na przykład partii danych czujnika 256 KB wysyłane co 5 minut. | Dostępne możliwości i warunki. Na przykład bieżącego urządzenia tryb łączności przykład sieci komórkowej lub Wi-Fi. Synchronizowanie długotrwałe przepływów pracy, takich jak aktualizacje oprogramowania i konfiguracji oprogramowania. | Pliki multimedialne. Partie dużych telemetrii (zazwyczaj skompresowane). |
-| Przechowywanie i pobieranie | Tymczasowo przechowywane przez Centrum IoT maksymalnie 7 dni. Tylko sekwencyjnego odczytu. | Przechowywane przez Centrum IoT w dwie urządzenia. Pobieranie przy użyciu [język zapytań Centrum IoT][lnk-query]. | Przechowywane na koncie usługi Magazyn Azure dostarczane przez użytkownika. |
-| Rozmiar | Maksymalnie 256 KB wiadomości. | Rozmiar maksymalny zgłoszone właściwości jest 8 KB. | Maksymalny rozmiar obsługiwany przez magazyn obiektów Blob Azure. |
-| Częstotliwość | Wysoka. Aby uzyskać więcej informacji, zobacz [ogranicza Centrum IoT][lnk-quotas]. | Średnia. Aby uzyskać więcej informacji, zobacz [ogranicza Centrum IoT][lnk-quotas]. | Niski. Aby uzyskać więcej informacji, zobacz [ogranicza Centrum IoT][lnk-quotas]. |
-| Protokół | Dostępna dla wszystkich protokołów. | Dostępne przy użyciu MQTT lub AMQP. | Dostępne, gdy przy użyciu protokołów, ale wymaga protokołu HTTPS na urządzeniu. |
+| Scenariusz | Szeregi czasowe telemetrię i alerty. Na przykład partie danych czujnika 256 KB wysyłane co 5 minut. | Dostępne możliwości i warunki. Na przykład bieżącego urządzenia tryb łączności takich jak sieci komórkowej lub Wi-Fi. Synchronizowanie długotrwałe przepływy pracy, takich jak konfiguracji lub aktualizacji oprogramowania. | Pliki multimedialne. Partie dużych telemetrii (zazwyczaj skompresowane). |
+| Przechowywanie i pobieranie | Tymczasowo przechowywane przez usługę IoT Hub maksymalnie 7 dni. Tylko sekwencyjnego odczytu. | Przechowywane przez usługę IoT Hub w bliźniaczej reprezentacji urządzenia. Pobieranie przy użyciu [język zapytań usługi IoT Hub](iot-hub-devguide-query-language.md). | Przechowywane na koncie usługi Azure Storage podanego przez użytkownika. |
+| Rozmiar | Maksymalnie 256 KB komunikatów. | Rozmiar maksymalny zgłoszone właściwości aktualizuje to 8 KB. | Maksymalny obsługiwany rozmiar pliku przez usługę Azure Blob Storage. |
+| Częstotliwość | Wysoka. Aby uzyskać więcej informacji, zobacz [usługi IoT Hub ogranicza](iot-hub-devguide-quotas-throttling.md). | Średnia. Aby uzyskać więcej informacji, zobacz [usługi IoT Hub ogranicza](iot-hub-devguide-quotas-throttling.md). | Niski. Aby uzyskać więcej informacji, zobacz [usługi IoT Hub ogranicza](iot-hub-devguide-quotas-throttling.md). |
+| Protokół | Dostępna dla wszystkich protokołów. | Dostępne przy użyciu protokołu MQTT lub AMQP. | Dostępne w przypadku korzystania z protokołów, ale wymaga protokołu HTTPS na urządzeniu. |
 
-Aplikacja może być konieczne wysyłanie informacji zarówno jako szeregów czasowych telemetrii lub alertu i udostępnić go w dwie urządzenia. W tym scenariuszu można wybrać jedną z następujących opcji:
+Aplikacja może potrzebować do wysyłania informacji zarówno jako dane telemetryczne szeregów czasowych lub alertu i udostępnić ją w bliźniaczej reprezentacji urządzenia. W tym scenariuszu można wybrać jedną z następujących opcji:
 
-* Aplikacja urządzenie wysyła komunikat urządzenia do chmury i raporty zmiany właściwości.
-* Zaplecze rozwiązania może przechowywać informacje w znacznikach dwie urządzenia po odebraniu wiadomości.
+* Aplikacja urządzenia wysyła komunikat z urządzenia do chmury i zmiana właściwości raportów.
+* Zaplecze rozwiązania może przechowywać informacje w bliźniaczej reprezentacji urządzenia tagi, po odebraniu wiadomości.
 
-Ponieważ urządzenia do chmury wiadomości włączyć znacznie wyższą przepływność niż aktualizacji dwie urządzenia, czasami jest pożądane, aby uniknąć aktualizowanie dwie urządzenia dla każdej wiadomości urządzenia do chmury.
-
-
-[lnk-twins]: iot-hub-devguide-device-twins.md
-[lnk-fileupload]: iot-hub-devguide-file-upload.md
-[lnk-quotas]: iot-hub-devguide-quotas-throttling.md
-[lnk-query]: iot-hub-devguide-query-language.md
-[lnk-d2c]: iot-hub-devguide-messages-d2c.md
+Ponieważ komunikaty z urządzenia do chmury włączyć znacznie wyższą przepływność niż aktualizacji bliźniaczej reprezentacji urządzenia, czasami jest pożądane, aby uniknąć aktualizacji bliźniaczej reprezentacji urządzenia dla każdej wiadomości z urządzenia do chmury.

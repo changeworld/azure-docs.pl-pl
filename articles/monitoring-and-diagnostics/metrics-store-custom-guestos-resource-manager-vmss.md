@@ -8,12 +8,12 @@ ms.topic: howto
 ms.date: 09/24/2018
 ms.author: ancav
 ms.component: metrics
-ms.openlocfilehash: d896cb01c7dc2cd4ed028db418f838809c7ce25c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b9808233e08e545c31e171afe104173dccc6abed
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46987003"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434929"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-using-a-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Wyślij metryki systemu operacyjnego gościa, aby metryki usługi Azure Monitor przechowywania dla zestawu skalowania maszyn wirtualnych Windows przy użyciu szablonu usługi Resource Manager
 
@@ -83,7 +83,7 @@ Na maszynie wirtualnej zasobów zestawu skalowania, Znajdź **virtualMachineProf
 
 W **extensionProfile**, Dodaj nowe rozszerzenie do szablonu, jak to przedstawiono w **sekcji VMSS WAD rozszerzeń**.  Ta sekcja jest rozszerzenie tożsamości usługi zarządzanej (MSI), który gwarantuje, że metryki jest emitowane są akceptowane przez usługi Azure Monitor. **Nazwa** pole może zawierać dowolną nazwę. 
 
-Poniższy kod poniżej rozszerzenia MSI dodaje także rozszerzenie diagnostyki i konfiguracji jako rozszerzenie zasobu do zasobu zestawu skalowania maszyny wirtualnej. Możesz dodawać i usuwać liczniki wydajności, zgodnie z potrzebami. 
+Poniższy kod z rozszerzeniem MSI dodaje także rozszerzenie diagnostyki i konfiguracji jako rozszerzenie zasobu do zasobu zestawu skalowania maszyny wirtualnej. Możesz dodawać i usuwać liczniki wydajności, zgodnie z potrzebami. 
 
 ```json
           "extensionProfile": { 

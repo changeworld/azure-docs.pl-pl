@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 4af2e570b498e496e80b6aeee2b8aeae23c582cc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e5b44ed2435986ffd500cade1f7c8ff8047d353d
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952413"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452310"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Wybierz, a następnie użyć obliczeniowego elementu docelowego do nauczenia modelu
 
@@ -23,7 +23,7 @@ Za pomocą usługi Azure Machine Learning możesz uczyć modelu w kilku różnyc
 
 Cel obliczenia jest zasobem, który jest uruchamiany skrypt szkolenia lub hosty modelu po jego wdrożeniu jako usługę sieci web. One mogą być tworzone i zarządzane przy użyciu zestawu SDK usługi Azure Machine Learning lub interfejsu wiersza polecenia. Jeśli masz obliczeniowych elementów docelowych, które zostały utworzone przez inny proces (na przykład, witryny Azure portal lub interfejsu wiersza polecenia platformy Azure), możesz ich używać, dołączanie ich do obszaru roboczego usługi Azure Machine Learning.
 
-Można uruchomić za pomocą lokalnego uruchomienia na maszynie oraz skalowanie w górę i w poziomie w innych środowiskach, takich jak zdalnych maszyn wirtualnych do nauki o danych z procesorem GPU lub usługi Azure Batch AI. 
+Można rozpoczynać przebiegów lokalnych na komputerze, a następnie skalowania w górę i do innych środowisk, takich jak zdalnych maszyn wirtualnych do nauki o danych z procesorem GPU lub usługi Azure Batch AI. 
 
 ## <a name="supported-compute-targets"></a>Obsługiwane obliczeniowych elementów docelowych
 
@@ -90,6 +90,8 @@ run_config_user_managed.environment.python.user_managed_dependencies = True
 # You can choose a specific Python environment by pointing to a Python path 
 #run_config.environment.python.interpreter_path = '/home/ninghai/miniconda3/envs/sdk2/bin/python'
 ```
+
+Dla notesu Jupyter, demonstrujący szkolenia w środowisku zarządzane przez użytkownika, zobacz [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb).
   
 ### <a name="system-managed-environment"></a>System zarządzany środowiska
 
@@ -110,6 +112,9 @@ run_config_system_managed.prepare_environment = True
 
 run_config_system_managed.environment.python.conda_dependencies = CondaDependencies.create(conda_packages=['scikit-learn'])
 ```
+
+Dla notesu Jupyter, demonstrujący szkolenia w środowisku zarządzane przez system, zobacz [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/02.train-on-local/02.train-on-local.ipynb).
+
 ## <a id="dsvm"></a>Maszyna wirtualna do nauki o danych
 
 Komputer lokalny nie może mieć obliczenia lub zasobów procesora GPU, wymaganych do nauczenia modelu. W takiej sytuacji możesz skalować w górę lub skalowania w poziomie procesu uczenia przez dodanie dodatkowych obliczeniowych elementów docelowych, takich jak maszyny wirtualne do nauki o danych (DSVM).
@@ -190,6 +195,8 @@ Poniższe kroki konfigurowania maszyn wirtualnych do nauki o danych (DSVM) jako 
     dsvm_compute.delete()
     ```
 
+Dla notesu Jupyter, który demonstruje szkolenia na maszynę wirtualną do nauki o danych, zobacz [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb).
+
 ## <a id="batch"></a>Usługa Azure Batch AI
 
 Jeśli zajmuje dużo czasu w celu nauczenia modelu, można użyć usługi Azure Batch AI do dystrybucji szkolenia w klastrze zasobów obliczeniowych w chmurze. Usługa Batch AI można skonfigurować w taki sposób, aby umożliwić zasobów procesora GPU.
@@ -232,14 +239,14 @@ if not found:
     print(compute_target.status.serialize())
 ```
 
-Aby dołączyć istniejący klaster usługi Batch AI jako cel obliczenia, należy podać identyfikator zasobu platformy Azure. Aby uzyskać identyfikator zasobu w witrynie Azure portal, należy:
+Aby dołączyć istniejący klaster usługi Batch AI jako cel obliczenia, należy podać identyfikator zasobu platformy Azure. Aby uzyskać identyfikator zasobu w witrynie Azure portal, użyj następujących kroków:
 1. Wyszukaj `Batch AI` usługę **wszystkie usługi**
 1. Kliknij nazwę obszaru roboczego, do której należy klaster
 1. Wybierz klaster
 1. Kliknij pozycję **właściwości**
 1. Kopiuj **identyfikator**
 
-W poniższym przykładzie użyto zestawu SDK, aby dołączyć klaster z obszarem roboczym. W tym przykładzie Zastąp `<name>` przy użyciu dowolnej nazwy dla obliczeń. Nie ma to być zgodna z nazwą klastra. Zastąp `<resource-id>` o identyfikatorze zasobu platformy Azure, szczegóły przedstawiono powyżej:
+W poniższym przykładzie użyto zestawu SDK, aby dołączyć klaster z obszarem roboczym. W tym przykładzie Zastąp `<name>` przy użyciu dowolnej nazwy dla obliczeń. Nazwa nie musi odpowiadać nazwie klastra. Zastąp `<resource-id>` za pomocą usługi Azure resource ID szczegóły przedstawiono powyżej:
 
 ```python
 from azureml.core.compute import BatchAiCompute
@@ -253,7 +260,9 @@ Możesz również sprawdzić stan klastra i zadania usługi Batch AI przy użyci
 - Sprawdź stan klastra. Możesz zobaczyć, ile węzły są uruchomione przy użyciu `az batchai cluster list`.
 - Sprawdź stan zadania. Możesz zobaczyć, ile zadania są uruchamiane przy użyciu `az batchai job list`.
 
-Trwa około 5 minut, aby utworzyć klaster usługi Batch AI
+Trwa około 5 minut, aby utworzyć klaster usługi Batch AI.
+
+Dla notesu Jupyter, który demonstruje szkolenia w klastrze usługi Batch AI, zobacz [ https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow/03.train-hyperparameter-tune-deploy-with-tensorflow.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/training/03.train-hyperparameter-tune-deploy-with-tensorflow/03.train-hyperparameter-tune-deploy-with-tensorflow.ipynb).
 
 ## <a name='aci'></a>Wystąpienie kontenera platformy Azure (ACI)
 
@@ -296,6 +305,8 @@ run_config.environment.python.conda_dependencies = CondaDependencies.create(cond
 ```
 
 Może potrwać od kilku sekund do kilku minut utworzyć cel obliczenia ACI.
+
+Dla notesu Jupyter, który demonstruje szkolenie dotyczące wystąpienia kontenera platformy Azure, zobacz [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/03.train-on-aci/03.train-on-aci.ipynb).
 
 ## <a id="hdinsight"></a>Dołącz klastra usługi HDInsight 
 
@@ -352,6 +363,8 @@ run = exp.submit(src)
 run.wait_for_completion(show_output = True)
 ```
 
+Aby uzyskać notesu programu Jupyter, który demonstruje szkolenia z platformy Spark w HDInsight, zobacz [ https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb ](https://github.com/Azure/MachineLearningNotebooks/blob/master/01.getting-started/05.train-in-spark/05.train-in-spark.ipynb).
+
 ## <a name="view-and-set-up-compute-using-the-azure-portal"></a>Wyświetlanie i konfigurowanie obliczeń przy użyciu witryny Azure portal
 
 Można wyświetlić co obliczeniowe elementy docelowe są skojarzone z obszarem roboczym w witrynie Azure portal. Aby przejść do listy, wykonaj następujące kroki:
@@ -403,6 +416,7 @@ Wykonaj powyższe kroki, aby wyświetlić listę obliczeniowych elementów docel
 Następujące notesów zademonstrowania koncepcji w tym artykule:
 * `01.getting-started/02.train-on-local/02.train-on-local.ipynb`
 * `01.getting-started/04.train-on-remote-vm/04.train-on-remote-vm.ipynb`
+* `01.getting-started/03.train-on-aci/03.train-on-aci.ipynb`
 * `01.getting-started/05.train-in-spark/05.train-in-spark.ipynb`
 * `01.getting-started/07.hyperdrive-with-sklearn/07.hyperdrive-with-sklearn.ipynb`
 

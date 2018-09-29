@@ -8,12 +8,12 @@ ms.service: app-service
 ms.topic: article
 ms.date: 04/27/2017
 ms.author: sewatson
-ms.openlocfilehash: 0d4121bd68611c1f3c6a8c89a0d60251401d670a
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.openlocfilehash: 50e6b714bc28ce383f06580d0e35b0b0e4066835
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44301297"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432227"
 ---
 # <a name="app-service-documentation"></a>Dokumentacja usługi App Service
 Usługa Azure App Service umożliwia tworzenie i hostowanie aplikacji internetowych w wybranym języku programowania bez zarządzania infrastrukturą, językiem i środowiskiem uruchomieniowym platformy internetowej. Oferuje automatyczne skalowanie i wysoką dostępność, obsługuje systemy Windows i Linux, a także umożliwia używanie wdrożeń zautomatyzowanych z usług GitHub i Azure DevOps Services oraz dowolnych repozytoriów Git. Dowiedz się, jak używać usługi Azure App Service, korzystając z przewodników Szybki start, samouczków i przykładów.
@@ -40,7 +40,7 @@ Dowiedz się, jak wdrażać i monitorować bezpiecznie aplikacje internetowe na 
   - [.NET z Azure SQL DB](/azure/app-service/app-service-web-tutorial-dotnet-sqldatabase)
   - [Środowisko Node.js z bazą danych MongoDB](/azure/app-service/app-service-web-tutorial-nodejs-mongodb-app)
   - [Java z bazą danych MySQL](/app-service/app-service-web-tutorial-java-mysql)
-  - [Python z PostgreSQL](/app-service/containers/tutorial-docker-python-postgresql-app)
+  - [Python z PostgreSQL](/app-service/containers/tutorial-python-postgresql-app)
 - [Mapowanie istniejącej domeny niestandardowej na aplikację](/azure/app-service/app-service-web-tutorial-custom-domain)
 - [Powiązywanie istniejącego certyfikatu SSL z aplikacją](/azure/app-service/app-service-web-tutorial-custom-SSL)
 

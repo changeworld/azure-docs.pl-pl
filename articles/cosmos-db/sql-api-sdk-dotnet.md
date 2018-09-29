@@ -12,12 +12,12 @@ ms.topic: reference
 ms.date: 03/09/2018
 ms.author: rnagpal
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 8ba241ccfdaed8694d3dfb9513e56975e39cdb1c
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: b7de476c6b96856e9b783ed8182985846bb39cfa
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395784"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452398"
 ---
 # <a name="azure-cosmos-db-net-sdk-for-sql-api-download-and-release-notes"></a>Usługa Azure Cosmos DB .NET SDK interfejsu API SQL: Pobierz i informacje o wersji
 > [!div class="op_single_selector"]
@@ -50,6 +50,10 @@ ms.locfileid: "47395784"
 </table></br>
 
 ## <a name="release-notes"></a>Informacje o wersji
+### <a name="a-name211211"></a><a name="2.1.1"/>2.1.1
+
+* Dodać więcej odporności na awarie przejściowe żądania w wielu regionach.
+
 ### <a name="a-name210210"></a><a name="2.1.0"/>2.1.0
 
 * Dodano wiele regionów zapisu pomocy technicznej.
@@ -323,6 +327,7 @@ Wszystkie żądania do usługi Azure Cosmos DB przy użyciu wycofane zestawu SDK
 
 | Wersja | Data wydania | Data wygaśnięcia |
 | --- | --- | --- |
+| [2.1.1](#2.1.1) |27 września 2018 r. |--- |
 | [2.1.0](#2.1.0) |21 września 2018 r. |--- |
 | [2.0.0](#2.0.0) |07 września 2018 r. |--- |
 | [1.22.0](#1.22.0) |19 kwietnia 2018 r. |--- |

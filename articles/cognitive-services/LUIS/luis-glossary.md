@@ -10,23 +10,23 @@ ms.component: language-understanding
 ms.topic: article
 ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 4e14c666401d5e494d924889a8bba957be232c12
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: a741cb1c2643e48080018e5c9f4ada7038bce29e
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036834"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434810"
 ---
 # <a name="glossary"></a>Słownik
 Language Understanding (LUIS) słownik wyjaśnia, warunki, które można napotkać podczas pracy z usługą interfejsu API usługi LUIS.
 
 ## <a name="active-version"></a>Wersja aktywna
 
-Wersja usługi LUIS aktywna jest wersji, który odbiera wszystkie zmiany w modelu. W [LUIS](luis-reference-regions.md) witryny sieci Web, jeśli chcesz wprowadzić zmiany do wersji, która nie jest aktywny wersji, musisz najpierw ustawić tej wersji jako aktywny. 
+Wersja usługi LUIS aktywna jest wersji, który odbiera wszystkie zmiany w modelu. W [LUIS](luis-reference-regions.md) witryny sieci Web, jeśli chcesz wprowadzić zmiany do wersji, która nie jest aktywny wersji, musisz najpierw ustawić tej wersji jako aktywny.
 
 ## <a name="authoring"></a>Tworzenie
 
-Tworzenie jest możliwość tworzenia, zarządzania i wdrażania [aplikacją usługi LUIS](#luis-app), albo za pomocą [LUIS](luis-reference-regions.md) witryny sieci Web lub [Tworzenie interfejsów API](https://aka.ms/luis-authoring-api). 
+Tworzenie jest możliwość tworzenia, zarządzania i wdrażania [aplikacją usługi LUIS](#luis-app), albo za pomocą [LUIS](luis-reference-regions.md) witryny sieci Web lub [Tworzenie interfejsów API](https://aka.ms/luis-authoring-api).
 
 ## <a name="authoring-key"></a>Tworzenie klucza
 
@@ -70,7 +70,7 @@ Taki sam jak [aktywnej wersji](#active-version)
 
 ## <a name="domain"></a>Domeny
 
-W kontekście usługi LUIS **domeny** jest obszarem wiedzy. Twoja domena to specyficzne dla Twojej okolicy aplikacji wiedzy. Może to być obszarze Ogólne aplikacji agenta podróży. Aplikacja podróży agent może być również specyficzne dla tylko obszarów informacje dla swojej firmy, takich jak określonych lokalizacjach geograficznych, języków i usług. 
+W kontekście usługi LUIS **domeny** jest obszarem wiedzy. Twoja domena to specyficzne dla Twojej okolicy aplikacji wiedzy. Może to być obszarze Ogólne aplikacji agenta podróży. Aplikacja podróży agent może być również specyficzne dla tylko obszarów informacje dla swojej firmy, takich jak określonych lokalizacjach geograficznych, języków i usług.
 
 ## <a name="endpoint"></a>Punkt końcowy
 
@@ -90,7 +90,7 @@ Przykładowy punkt końcowy wygląda następująco:
 
 ## <a name="entity"></a>Jednostki
 
-[Jednostki](luis-concept-entity-types.md) są ważne słów w [wypowiedzi](luis-concept-utterance.md) opisują informacje istotne dla [intencji](luis-concept-intent.md), i czasami są niezbędne do niego. Jednostka jest zasadniczo typu danych w usługi LUIS. 
+[Jednostki](luis-concept-entity-types.md) są ważne słów w [wypowiedzi](luis-concept-utterance.md) opisują informacje istotne dla [intencji](luis-concept-intent.md), i czasami są niezbędne do niego. Jednostka jest zasadniczo typu danych w usługi LUIS.
 
 ## <a name="f-measure"></a>Miara F
 
@@ -114,7 +114,7 @@ W usłudze machine learning [funkcji](luis-concept-feature.md) wyróżniający c
 
 ## <a name="labeling"></a>Etykietowania
 
-Etykietowanie jest proces kojarzenia wyraz lub frazę w intencji [wypowiedź](#utterance) z [jednostki](#entity) (typ danych). 
+Etykietowanie jest proces kojarzenia wyraz lub frazę w intencji [wypowiedź](#utterance) z [jednostki](#entity) (typ danych).
 
 ## <a name="luis-app"></a>Aplikacją usługi LUIS
 
@@ -125,26 +125,26 @@ Aplikacją usługi LUIS jest uczony modelem przetwarzania języka naturalnego, w
 Każda aplikacja ma jednego właściciela, który jest osobie, która utworzyła aplikację. Właściciel subskrypcji może dodać [współpracowników](#collaborator).
 
 ## <a name="pattern"></a>Wzorce
-Poprzednie funkcja wzorca jest zastępowany [wzorców](luis-concept-patterns.md). Użycie wzorców w celu zwiększenia dokładności prognozy, podając mniejszą liczbę przykładów szkoleniowych. 
+Poprzednie funkcja wzorca jest zastępowany [wzorców](luis-concept-patterns.md). Użycie wzorców w celu zwiększenia dokładności prognozy, podając mniejszą liczbę przykładów szkoleniowych.
 
 ## <a name="phrase-list"></a>Lista fraz
 
-A [listy fraz](luis-concept-feature.md#what-is-a-phrase-list-feature) znajduje się grupa wartości (słów i fraz), które należą do tej samej klasy i muszą być traktowane w podobny sposób (na przykład nazwy miasta lub produktów). Wymienne listy jest traktowany jako synonimów. 
+A [listy fraz](luis-concept-feature.md#what-is-a-phrase-list-feature) znajduje się grupa wartości (słów i fraz), które należą do tej samej klasy i muszą być traktowane w podobny sposób (na przykład nazwy miasta lub produktów). Wymienne listy jest traktowany jako synonimów.
 
 ## <a name="prebuilt-domains"></a>Wstępnie utworzone domeny
 
-A [ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md) jest aplikacją usługi LUIS skonfigurowane dla określonej domeny, takich jak Automatyzacja domu (HomeAutomation) lub zastrzeżeń restauracji (RestaurantReservation). Intencji, wypowiedzi oraz jednostki są skonfigurowane dla tej domeny. 
+A [ze wstępnie utworzonych domen](luis-how-to-use-prebuilt-domains.md) jest aplikacją usługi LUIS skonfigurowane dla określonej domeny, takich jak Automatyzacja domu (HomeAutomation) lub zastrzeżeń restauracji (RestaurantReservation). Intencji, wypowiedzi oraz jednostki są skonfigurowane dla tej domeny.
 
 ## <a name="prebuilt-entity"></a>Wstępnie utworzone jednostki
 
-A [wstępnie utworzone jednostki](luis-prebuilt-entities.md) jest jednostką usługi LUIS udostępnia typowe rodzaje informacje, takie jak numer, adres URL i wiadomości e-mail. Istnieje możliwość dodawania wstępnie utworzone jednostki do aplikacji. 
+A [wstępnie utworzone jednostki](luis-prebuilt-entities.md) jest jednostką usługi LUIS udostępnia typowe rodzaje informacje, takie jak numer, adres URL i wiadomości e-mail. Istnieje możliwość dodawania wstępnie utworzone jednostki do aplikacji.
 
 ## <a name="precision"></a>Precyzja
 W [testowania partii](luis-interactive-test.md#batch-testing), dokładność (nazywane również wartości dodatniej predykcyjnej) jest ułamek odpowiednie wypowiedzi między wypowiedzi pobrane.
 
 ## <a name="programmatic-key"></a>Klucz programowy
 
-Nowa nazwa: [tworzenia klucza](#authoring-key). 
+Nowa nazwa: [tworzenia klucza](#authoring-key).
 
 ## <a name="publish"></a>Publikowanie
 
@@ -152,24 +152,24 @@ Publikowanie oznacza, dzięki czemu usługa LUIS [aktywnej wersji](#active-versi
 
 ## <a name="quota"></a>Limit przydziału
 
-Limit przydziału usługi LUIS jest ograniczenie [warstwy subskrypcji platformy Azure](https://aka.ms/luis-price-tier). Limit przydziału usługi LUIS można ograniczyć, używając zarówno w przypadku żądań na sekundę (429 stanu HTTP) i łączna liczba żądań w ciągu miesiąca (Stan HTTP 403). 
+Limit przydziału usługi LUIS jest ograniczenie [warstwy subskrypcji platformy Azure](https://aka.ms/luis-price-tier). Limit przydziału usługi LUIS można ograniczyć, używając zarówno w przypadku żądań na sekundę (429 stanu HTTP) i łączna liczba żądań w ciągu miesiąca (Stan HTTP 403).
 
 ## <a name="recall"></a>Odwołania
-W [testowania partii](luis-interactive-test.md#batch-testing), odwołanie (znanego również jako ważność), jest możliwość usługi LUIS w celu uogólnienia. 
+W [testowania partii](luis-interactive-test.md#batch-testing), odwołanie (znanego również jako ważność), jest możliwość usługi LUIS w celu uogólnienia.
 
 ## <a name="semantic-dictionary"></a>Słownik semantyczne
 Słownik semantycznego znajduje się na stronie listy jednostek, a także na stronie listy fraz. Semantyczne słownik zawiera sugestie słów na podstawie bieżącego zakresu.
 
 ## <a name="sentiment-analysis"></a>Analiza tonacji
-Analiza tonacji zawiera wartości dodatnie lub ujemne wypowiedzi dostarczone przez [analizy tekstu](https://azure.microsoft.com/services/cognitive-services/text-analytics/). 
+Analiza tonacji zawiera wartości dodatnie lub ujemne wypowiedzi dostarczone przez [analizy tekstu](https://azure.microsoft.com/services/cognitive-services/text-analytics/).
 
 ## <a name="speech-priming"></a>Zalewanie mowy
 
-Zalewanie mowy umożliwia usługi rozpoznawania mowy w celu zalewany, Twój model usługi LUIS. 
+Zalewanie mowy umożliwia usługi rozpoznawania mowy w celu zalewany, Twój model usługi LUIS.
 
 ## <a name="spelling-correction"></a>Korekty pisowni
 
-Włączanie sprawdzania pisowni Bing do poprawianie błędnie napisanych wyrazów w wypowiedzi przed prognozy. 
+Włączanie sprawdzania pisowni Bing do poprawianie błędnie napisanych wyrazów w wypowiedzi przed prognozy.
 
 ## <a name="starter-key"></a>Klucz Starter
 
@@ -177,7 +177,7 @@ Taki sam jak [klucza programowego](#programmatic-key), których nazwy zostały z
 
 ## <a name="subscription-key"></a>Klucz subskrypcji
 
-Klucz subskrypcji jest **punktu końcowego** klucz skojarzony z usługi LUIS [tworzenia na platformie Azure](luis-how-to-azure-subscription.md). Ten klucz nie jest [tworzenia klucza](#programmatic-key). W przypadku klucza punktu końcowego powinno być używane do wszelkie żądania punktu końcowego, zamiast tworzenia klucza. Możesz zobaczyć swoje bieżącego klucza punktu końcowego wewnątrz adres URL punktu końcowego w dolnej części [ **kluczy i punktów końcowych** strony](luis-how-to-manage-keys.md) w [LUIS](luis-reference-regions.md) witryny sieci Web. Jest to wartość z **klucz subskrypcji** pary nazwa/wartość. 
+Klucz subskrypcji jest **punktu końcowego** klucz skojarzony z usługi LUIS [tworzenia na platformie Azure](luis-how-to-azure-subscription.md). Ten klucz nie jest [tworzenia klucza](#programmatic-key). W przypadku klucza punktu końcowego powinno być używane do wszelkie żądania punktu końcowego, zamiast tworzenia klucza. Możesz zobaczyć swoje bieżącego klucza punktu końcowego wewnątrz adres URL punktu końcowego w dolnej części [ **kluczy i punktów końcowych** strony](luis-how-to-manage-keys.md) w [LUIS](luis-reference-regions.md) witryny sieci Web. Jest to wartość z **klucz subskrypcji** pary nazwa/wartość.
 
 ## <a name="test"></a>Test
 
@@ -185,12 +185,12 @@ Klucz subskrypcji jest **punktu końcowego** klucz skojarzony z usługi LUIS [tw
 
 ## <a name="timezoneoffset"></a>Przesunięcie strefy czasowej
 
-Punkt końcowy zawiera timezoneOffset. Jest to liczba w ciągu kilku minut, aby dodawać i usuwać datetimeV2 wstępnie utworzone jednostki. Na przykład jeśli wypowiedź "czas, jaki jest ona teraz?", datetimeV2 zwracany jest bieżący czas dla żądania klienta. Jeśli żądania klienta pochodzą robota lub innych aplikacji, która nie jest taki sam jak Twój bot użytkownika, należy przekazać w przesunięcie między bot i użytkownika. 
+Punkt końcowy zawiera timezoneOffset. Jest to liczba w ciągu kilku minut, aby dodawać i usuwać datetimeV2 wstępnie utworzone jednostki. Na przykład jeśli wypowiedź "czas, jaki jest ona teraz?", datetimeV2 zwracany jest bieżący czas dla żądania klienta. Jeśli żądania klienta pochodzą robota lub innych aplikacji, która nie jest taki sam jak Twój bot użytkownika, należy przekazać w przesunięcie między bot i użytkownika.
 
 Zobacz [Zmień strefę czasową datetimeV2 wstępnie utworzone jednostki](luis-concept-data-alteration.md?#change-time-zone-of-prebuilt-datetimev2-entity).
 
 ## <a name="token"></a>Token
-Token jest najmniejsza jednostka, która jest oznaczona etykietą w jednostce. Tokenizacji opiera się na aplikacji [kultury](luis-supported-languages.md#tokenization).
+Token jest najmniejsza jednostka, która jest oznaczona etykietą w jednostce. Tokenizacji opiera się na aplikacji [kultury](luis-language-support.md#tokenization).
 
 ## <a name="train"></a>Szkolenie
 
@@ -206,7 +206,7 @@ W [testowania partii](luis-interactive-test.md#batch-testing), punktów danych r
 
 ## <a name="utterance"></a>Wypowiedź
 
-Wypowiedź to wyrażenie języka naturalnego, takie jak "książki 2 bilety do Seattle następny wtorek". Przykład wypowiedzi są dodawane do intencji. 
+Wypowiedź to wyrażenie języka naturalnego, takie jak "książki 2 bilety do Seattle następny wtorek". Przykład wypowiedzi są dodawane do intencji.
 
 ## <a name="version"></a>Wersja
 

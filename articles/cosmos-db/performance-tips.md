@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 01/24/2018
 ms.author: sngun
-ms.openlocfilehash: 47896b681c2ba43d4ca41682ec51e0dfd167c9d5
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: a805294ecb416d18f3ce13981d26a7d25cd5a204
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700960"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432855"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Porady dotyczące wydajności dla usługi Azure Cosmos DB i platformy .NET
 
@@ -42,7 +42,7 @@ Dlatego jeśli "jak mogę poprawić wydajność mojej bazy danych?" należy wzi�
 
    * W trybie bezpośrednim
 
-     Tryb Direct obsługuje łączność za pośrednictwem protokołów TCP i HTTPS. Obecnie bezpośrednie jest obsługiwana w programie .NET Standard 2.0 tylko na platformy Windows. Podczas korzystania z trybu bezpośrednich, istnieją dwie opcje protokołu:
+     Tryb Direct obsługuje łączność za pośrednictwem protokołów TCP i HTTPS. Obecnie bezpośrednie jest obsługiwane w programie .NET Standard 2.0. Podczas korzystania z trybu bezpośrednich, istnieją dwie opcje protokołu:
 
     * TCP
     * HTTPS

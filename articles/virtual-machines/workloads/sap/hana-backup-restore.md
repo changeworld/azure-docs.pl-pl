@@ -11,15 +11,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure
-ms.date: 09/17/2018
+ms.date: 09/28/2018
 ms.author: saghorpa
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: cca9a12b0512ca502d143f4a88c959e1bfc4f90e
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 2a72fade57b070ac2ac1aea28cbec92700c3797f
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45985885"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452551"
 ---
 # <a name="backup-and-restore"></a>Tworzenie kopii zapasowej i przywracanie
 
@@ -68,7 +68,7 @@ Można wykonywać migawek magazynu, przeznaczone dla trzech klas woluminów:
 - Oddzielne migawkę za pośrednictwem/hana/logbackups.
 - Partycja systemu operacyjnego.
 
-Pobierz najnowsze skrypty migawki i dokumentacji [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts). 
+Pobierz najnowsze skrypty migawki i dokumentacji [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts). Po pobraniu pakietu skryptu migawki z [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts), możesz także uzyskać w dokumentacji PDF skrypty jako część pakietu skryptu. Każdy pakiet skrypt ma własną dokumentację PDF.
 
 ## <a name="storage-snapshot-considerations"></a>Zagadnienia dotyczące migawek magazynu
 
@@ -114,7 +114,7 @@ Aby skonfigurować migawek magazynu przy użyciu dużych wystąpień HANA, wykon
 1. Skopiuj skrypty i pliku konfiguracji z [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts) do lokalizacji **hdbsql** w instalacji oprogramowania SAP HANA.
 1. Modyfikowanie *HANABackupDetails.txt* plików, gdy jest to konieczne do specyfikacji odpowiedniego klienta.
 
-Pobierz najnowsze skrypty migawki i dokumentacji [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts). 
+Pobierz najnowsze skrypty migawki i dokumentacji [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts). Po pobraniu pakietu skryptu migawki z [GitHub](https://github.com/Azure/hana-large-instances-self-service-scripts), możesz także uzyskać w dokumentacji PDF skrypty jako część pakietu skryptu. Każdy pakiet skrypt ma własną dokumentację PDF.
 
 ### <a name="consideration-for-mcod-scenarios"></a>Ważną kwestią dotyczącą MCOD scenariuszy
 Jeśli korzystasz z [scenariusza MCOD](https://launchpad.support.sap.com/#/notes/1681092) z wieloma wystąpieniami platformy SAP HANA w jednej jednostce dużych wystąpień HANA mieć osobne woluminy magazynu zainicjowana obsługa administracyjna dla wszystkich wystąpień oprogramowania SAP HANA. W bieżącej wersji automatyzacji samoobsługi migawki nie można zainicjować oddzielne migawek w systemie wystąpienia każdej platformy HANA identyfikator. Funkcje zapewnia sprawdza, czy zarejestrowanych wystąpień oprogramowania SAP HANA serwera w pliku konfiguracji (zobacz w dalszej części tego artykułu) i wykonuje migawek równocześnie woluminów wszystkich wystąpień, które są zarejestrowane w jednostce.

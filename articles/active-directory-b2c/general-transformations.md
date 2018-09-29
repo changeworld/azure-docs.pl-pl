@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 09/10/2018
 ms.author: davidmu
 ms.component: B2C
-ms.openlocfilehash: a13cb0360a33c301129f2975ce67580204602d9a
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: 8ff418c24e9171d452bca873c4b8f66ada2adb7c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44381486"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47431330"
 ---
 # <a name="general-claims-transformations"></a>Przekształcenia oświadczeń ogólne
 
@@ -29,7 +29,7 @@ Sprawdza, czy **oświadczenie inputClaim** istnieje lub nie, a następnie ustawi
 
 | Element | TransformationClaimType | Typ danych | Uwagi |
 | ---- | ----------------------- | --------- | ----- |
-| Oświadczenie InputClaim | oświadczenie inputClaim |Dowolne | Oświadczeń wejściowych, których istnienie muszą zostać zweryfikowane. |
+| Oświadczenie InputClaim | Oświadczenie InputClaim |Dowolne | Oświadczeń wejściowych, których istnienie muszą zostać zweryfikowane. |
 | oświadczenie outputClaim | oświadczenie outputClaim | wartość logiczna | Typ oświadczenia, które są generowane po wywołaniu tego ClaimsTransformation. |
 
 Użyj tego przekształcania do Sprawdź, czy oświadczenie istnieje lub zawiera wszystkie wartości oświadczeń. Wartość zwracana jest wartość logiczna wskazująca, czy istnieje oświadczenia. Poniższy przykład sprawdza, czy istnieje adres e-mail.
@@ -61,7 +61,7 @@ Skrótu podany tekst zwykły przy użyciu ziarna i klucz tajny.
 | Oświadczenie InputClaim | zwykły tekst | ciąg | Oświadczeń wejściowych do zaszyfrowania |
 | Oświadczenie InputClaim | ziarna | ciąg | Parametr ziarna. Możesz utworzyć losową wartość, przy użyciu `CreateRandomString` przekształcania oświadczeń. |
 | InputParameter | randomizerSecret | ciąg | Wskazuje na istniejące usługi Azure AD B2C **klucze zasad**. Aby utworzyć nową: W dzierżawie usługi Azure AD B2C wybierz **ustawieniami B2C > Struktura środowiska tożsamości**. Wybierz **klucze zasad** do wyświetlania kluczy, które są dostępne w Twojej dzierżawie. Wybierz pozycję **Dodaj**. Aby uzyskać **opcje**, wybierz opcję **ręczne**. Podaj nazwę (prefiks B2C_1A_ mogą zostać dodane automatycznie.). W polu klucza tajnego wprowadź wszystkie hasła, które chcesz użyć, takie jak 1234567890. Wybierz użycie klucza **klucz tajny**. Wybierz pozycję **Utwórz**. |
-| oświadczenie outputClaim | oświadczenie outputClaim | wartość logiczna | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane. Oświadczenie skonfigurowane w `plaintext` oświadczenie inputClaim. |
+| oświadczenie outputClaim | Skrót | ciąg | Typ oświadczenia, które są generowane po tym przekształcania oświadczeń zostało wywołane. Oświadczenie skonfigurowane w `plaintext` oświadczenie inputClaim. |
 
 ```XML
 <ClaimsTransformation Id="HashPasswordWithEmail" TransformationMethod="Hash">

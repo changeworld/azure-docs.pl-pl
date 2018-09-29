@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 3559a25f3073f88e99379e98bc4562209b0c0825
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: f80c0f3cdc114b53c002266820e8d9b8773acc5d
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42108448"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432193"
 ---
 # <a name="about-the-speech-translation-api"></a>Interfejs API tłumaczenia mowy — informacje
 
@@ -30,9 +30,9 @@ Interfejs API tłumaczenia mowy wykorzystuje te same technologie, które stanowi
 
 ## <a name="about-the-technology"></a>Technologię
 
-Podstawowy aparat tłumaczenia firmy Microsoft są dwa różne podejścia: statystycznego tłumaczenia maszynowego (SMT) i neuronowego tłumaczenia maszynowego (NMT). Drugim, sztucznej inteligencji podejścia wykorzystujące sieci neuronowych, jest bardziej nowoczesnego podejścia do tłumaczenia maszynowego. NMT oferuje lepsze tłumaczenie — nie tylko dokładniejsze, ale również bardziej fluent i fizycznych. Przyczyna klucza Ta elastyczność to, że NMT używa pełnego kontekstu zdanie do przekształcania słów.
+Podstawowy aparat tłumaczenia firmy Microsoft są dwa różne podejścia: statystycznego tłumaczenia maszynowego (SMT) i neuronowego tłumaczenia maszynowego (NMT). Drugim, sztucznej inteligencji podejścia wykorzystujące sieci neuronowych, jest bardziej nowoczesnego podejścia do tłumaczenia maszynowego. NMT oferuje lepsze tłumaczenie — nie tylko dokładniejsze, ale również bardziej fluent i fizycznych. Główną przyczyną tej płynności jest fakt, że technologia NMT używa do tłumaczenia słów pełnego kontekstu zdania.
 
-Już dziś Microsoft została zmigrowana na NMT dla najbardziej popularnych języków, wykorzystujące SMT tylko dla rzadziej używanych języków. Wszystkie [języki dostępne do tłumaczenia mowy do mowy](supported-languages.md#speech-translation) są obsługiwane przez NMT. Tłumaczenie mowy na tekst mogą używać SMT lub NMT, w zależności od pary języka. Jeśli język docelowy jest obsługiwany przez NMT, pełne tłumaczenie jest zasilane z NMT. Jeśli język docelowy nie jest obsługiwany przez NMT, tłumaczenie jest hybrydowa NMT i SMT, przy użyciu języka angielskiego jako "pivot" między dwa języki.
+Już dziś Microsoft została zmigrowana na NMT dla najbardziej popularnych języków, wykorzystujące SMT tylko dla rzadziej używanych języków. Wszystkie [języki dostępne do tłumaczenia mowy do mowy](language-support.md#speech-translation) są obsługiwane przez NMT. Tłumaczenie mowy na tekst mogą używać SMT lub NMT, w zależności od pary języka. Jeśli język docelowy jest obsługiwany przez NMT, pełne tłumaczenie jest zasilane z NMT. Jeśli język docelowy nie jest obsługiwany przez NMT, tłumaczenie jest hybrydowa NMT i SMT, przy użyciu języka angielskiego jako "pivot" między dwa języki.
 
 Różnice między modelami są wewnętrzne w aparacie tłumaczenia. Użytkownicy końcowi Zwróć uwagę, tylko jakości tłumaczenia ulepszone, szczególnie w przypadku chińskim, japońskim i arabskim.
 

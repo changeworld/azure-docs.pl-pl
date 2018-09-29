@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: heidist
-ms.openlocfilehash: ddb60631f54e1b635ae5ec036b7d35d47ca0a519
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: d28b9177684cf7b9a3ddc83107806aaa6afde477
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221762"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434036"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Wybierz warstwę cenową dla usługi Azure Search
 
@@ -64,7 +64,7 @@ W usłudze Azure Search postacią pojemności *replik* i *partycje*.
 + Partycje przechowywania indeksy i automatycznie podziału danych z możliwością wyszukiwania: dwie partycje podzielić indeksu w wysokości równej połowie, trzech partycjach trzecie i tak dalej. Pod względem wydajności *rozmiar partycji* jest głównej różnicującego funkcji w warstwach.
 
 > [!NOTE]
-> Wszystkie **standardowa** warstwy pomocy technicznej [partycje i repliki elastyczne kombinacje](search-capacity-planning.md#chart) aby można było [wagi systemu dla szybkości lub magazynu](search-performance-optimization.md) , zmieniając równowagi. **Podstawowe** zapewnia trzy repliki dla wysokiej dostępności, ale ma tylko jedną partycję. **Bezpłatne** warstwy są oferowane dedykowanych zasobów: przetwarzanie zasoby są współużytkowane przez wiele bezpłatnych usług.
+> Wszystkie **standardowa** warstwy pomocy technicznej [partycje i repliki elastyczne kombinacje](search-capacity-planning.md#chart) aby można było [wagi systemu dla szybkości lub magazynu](search-performance-optimization.md) , zmieniając równowagi. **Podstawowe** zapewnia trzy repliki dla wysokiej dostępności, ale ma tylko jedną partycję. **Bezpłatne** warstwy są oferowane dedykowanych zasobów: przetwarzanie zasoby są współużytkowane przez wielu subskrybentów.
 
 ### <a name="more-about-service-limits"></a>Więcej informacji na temat limity usługi
 

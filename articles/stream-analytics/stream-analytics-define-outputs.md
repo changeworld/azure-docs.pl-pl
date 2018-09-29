@@ -9,12 +9,12 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 05/14/2018
-ms.openlocfilehash: d75a91ea0925ef0860b8e6dee310156bef21a1ba
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: e9c09d31af1b6ea214ae2d0fc6fd7399c07fd8c0
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47056825"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434552"
 ---
 # <a name="understand-outputs-from-azure-stream-analytics"></a>Zrozumieć dane wyjściowe z usługi Azure Stream Analytics
 W tym artykule opisano różne typy danych wyjściowych jest dostępny dla zadania usługi Azure Stream Analytics. Dane wyjściowe pozwalają na przechowywanie i zapisać wyniki zadania usługi Stream Analytics. Można wykonać, korzystając z danych wyjściowych, dalszych analiz biznesowych i danych magazynu danych. 
@@ -71,7 +71,7 @@ Aby odnowić autoryzację, **zatrzymać** zadania > Przejdź do usługi Data Lak
 | Database (Baza danych) | Nazwa bazy danych, w których w przypadku wysyłania danych wyjściowych. |
 | Nazwa serwera | Nazwa serwera bazy danych SQL. |
 | Nazwa użytkownika | Nazwa użytkownika, który ma dostęp do zapisu w bazie danych. |
-| Hasło | Hasło, aby połączyć databas.e |
+| Hasło | Hasło do łączenia z bazą danych |
 | Tabela | Nazwa tabeli, w którym plik wyjściowy zostanie zapisany. Nazwa tabeli jest rozróżniana wielkość liter i schematu w tej tabeli powinna być zgodna dokładnie z numerem pola i ich typy, które są generowane przez zadanie danych wyjściowych. |
 
 > [!NOTE]

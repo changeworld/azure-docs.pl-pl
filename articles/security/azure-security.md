@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 11/21/2017
 ms.author: TomSh
-ms.openlocfilehash: a1cd2ecc738434fc8d5de03ef538be3ea896fa2b
-ms.sourcegitcommit: f606248b31182cc559b21e79778c9397127e54df
+ms.openlocfilehash: 81eb23a0955bbc6a5f9dcd95c6874f0c5a8c286c
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/12/2018
-ms.locfileid: "38971010"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434042"
 ---
 # <a name="introduction-to-azure-security"></a>Wprowadzenie do zabezpieczeń platformy Azure
 ## <a name="overview"></a>Przegląd
@@ -100,7 +100,7 @@ Jeśli występują awarie, błędy lub problemy z wydajnością, możesz wyszuka
 Usługa log Analytics mogą być przydatne narzędzie analizy śledczej i innych zabezpieczeń, jak to narzędzie pozwala szybko przeszukiwać dużych ilości wpisy związane z zabezpieczeniami dzięki podejściu elastyczne możliwości tworzenia zapytań. Ponadto w środowisku lokalnym [dzienniki zapory i serwera proxy można eksportować do platformy Azure i dostępne do analizy przy użyciu usługi Log Analytics.](https://docs.microsoft.com/azure/log-analytics/log-analytics-proxy-firewall)
 
 ### <a name="azure-advisor"></a>Azure Advisor
-[Usługa Azure Advisor](https://docs.microsoft.com/azure/advisor/) to spersonalizowany konsultant ds. chmury, która pomaga w celu optymalizacji wdrożeń platformy Azure. Analizuje on konfigurację zasobów i dane telemetryczne użycia. Następnie zaleca rozwiązania, aby pomóc w ulepszaniu [wydajności](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations), [zabezpieczeń](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations), i [wysokiej dostępności](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations) Twoich zasobów, a także szuka możliwości [zmniejszyć ogólną Azure spend](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations). Usługa Azure Advisor zawiera zalecenia dotyczące zabezpieczeń, która umożliwia znaczne zwiększenia poziomu bezpieczeństwa ogólnej dla rozwiązania, które można wdrożyć na platformie Azure. Te zalecenia są pobierane z analizy zabezpieczeń, wykonywane przez [usługi Azure Security Center.](https://docs.microsoft.com/azure/security-center/security-center-intro)
+[Usługa Azure Advisor](https://docs.microsoft.com/azure/advisor/) to spersonalizowany konsultant ds. chmury, która pomaga w celu optymalizacji wdrożeń platformy Azure. Analizuje on konfigurację zasobów i dane telemetryczne użycia. Następnie zaleca rozwiązania, aby pomóc w ulepszaniu [wydajności](https://docs.microsoft.com/azure/advisor/advisor-performance-recommendations), [zabezpieczeń](https://docs.microsoft.com/azure/advisor/advisor-security-recommendations), i [wysokiej dostępności](https://docs.microsoft.com/azure/advisor/advisor-high-availability-recommendations) Twoich zasobów, a także szuka możliwości [zmniejszyć ogólną Azure spend](https://docs.microsoft.com/azure/advisor/advisor-cost-recommendations). Usługa Azure Advisor zawiera zalecenia dotyczące zabezpieczeń, które może znacznie zwiększyć ogólną strukturę bezpieczeństwa dla rozwiązania, które można wdrożyć na platformie Azure. Te zalecenia są pobierane z analizy zabezpieczeń, wykonywane przez [usługi Azure Security Center.](https://docs.microsoft.com/azure/security-center/security-center-intro)
 
 ### <a name="azure-security-center"></a>Azure Security Center
 Usługa [Azure Security Center](https://docs.microsoft.com/azure/security-center/security-center-intro) ułatwia zapobieganie zagrożeniom, ich wykrywanie i reagowanie na nie, a przy tym zapewnia lepszy wgląd i większą kontrolę w zakresie bezpieczeństwa zasobów na platformie Azure. Zapewnia zintegrowane monitorowanie zabezpieczeń i zarządzanie zasadami subskrypcji platformy Azure, pomaga wykrywać zagrożenia, które w przeciwnym razie mogłyby pozostać niezauważone, a także współpracuje z szerokim ekosystemem rozwiązań z zakresu zabezpieczeń.
@@ -272,7 +272,7 @@ Scentralizowana zapora aplikacji internetowej chroniąca przed atakami z Interne
 ### <a name="traffic-manager"></a>Traffic Manager
 Microsoft [usługi Azure Traffic Manager](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-overview) umożliwia kontrolowanie dystrybucji ruchu użytkowników do punktów końcowych usługi w różnych centrach danych. Punkty końcowe usługi obsługiwane przez usługę Traffic Manager obejmują maszyny wirtualne platformy Azure, aplikacje sieci Web i usług w chmurze. Usługi Traffic Manager można również używać z zewnętrznymi punktami końcowymi poza platformą Azure. Usługa Traffic Manager przy użyciu systemu nazw domen (DNS) kieruje żądania klientów do najbardziej odpowiednich punktów końcowych, na podstawie [metody routingu ruchu](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-routing-methods) i kondycji punktów końcowych.
 
-Usługa Traffic Manager udostępnia szereg metod routingu ruchu do potrzeb różnych aplikacji, punkt końcowy kondycji [monitorowania](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring)i automatycznej pracy awaryjnej. Usługa Traffic Manager jest odporna na awarie, w tym awarii całego regionu platformy Azure.
+Usługa Traffic Manager udostępnia szereg metod routingu ruchu do potrzeb różnych aplikacji, punkt końcowy kondycji [monitorowania](https://docs.microsoft.com/azure/traffic-manager/traffic-manager-monitoring)i automatycznej pracy awaryjnej. Usługa Traffic Manager jest odporna na awarie, w tym awarię całego regionu platformy Azure.
 ### <a name="azure-load-balancer"></a>Azure Load Balancer
 Usługa [Azure Load Balancer](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) zapewnia aplikacjom wysoką dostępność i wydajność sieci. Jest rozkładający ruch przychodzący między dobrej kondycji wystąpień usługi zdefiniowane w zestawie z równoważeniem obciążenia modułu równoważenia obciążenia warstwy 4 (TCP, UDP). Usługa Azure Load Balancer można skonfigurować w celu:
 
@@ -364,7 +364,7 @@ Firma Microsoft używa wielu rozwiązania z zakresu bezpieczeństwa i technologi
 -   [Zintegrowane zarządzanie tożsamości (tożsamość hybrydowa)](https://azure.microsoft.com/documentation/articles/active-directory-hybrid-identity-design-considerations-overview/) pozwala zachować kontrolę dostępu użytkowników na platformach wewnętrznego centrów danych i w chmurze, tworzenia pojedynczej tożsamości użytkownika do uwierzytelniania i autoryzacji do wszystkich zasobów.
 
 ### <a name="secure-apps-and-data"></a>Zabezpieczanie aplikacji i danych
-[Usługa Azure Active Directory](https://azure.microsoft.com/services/active-directory/), kompleksowe tożsamość i dostęp do chmury rozwiązanie do zarządzania, pomaga w zabezpieczeniu dostępu do danych w aplikacji w witrynie i w chmurze i ułatwia zarządzanie użytkownikami i grupami. On oferuje podstawowe usługi katalogowe, zaawansowane funkcje zarządzania tożsamościami, zabezpieczeń i zarządzanie dostępem do aplikacji i ułatwia deweloperom tworzenie zarządzania tożsamościami oparta na zasadach w swoich aplikacjach. Aby zwiększyć możliwości usługi Azure Active Directory, możesz dodać możliwości płatnych przy użyciu wersji usługi Azure Active Directory w warstwach podstawowa, Premium P1 i Premium P2.
+[Usługa Azure Active Directory](https://azure.microsoft.com/services/active-directory/), kompleksowe tożsamość i dostęp do chmury rozwiązanie do zarządzania, pomaga w zabezpieczeniu dostępu do danych w aplikacji w witrynie i w chmurze i ułatwia zarządzanie użytkownikami i grupami. On oferuje podstawowe usługi katalogowe, zaawansowane funkcje zarządzania tożsamościami, zabezpieczeń i zarządzanie dostępem do aplikacji i ułatwia deweloperom tworzenie zarządzania tożsamościami oparta na zasadach w swoich aplikacjach. Aby zwiększyć możliwości usługi Azure Active Directory i uzyskać dostęp do płatnych funkcji, możesz zdecydować się na wykupienie usługi Azure Active Directory w wersji Podstawowej, Premium P1 lub Premium P2.
 
 | Bezpłatne / typowych funkcji     | Podstawowe funkcje    |Funkcje w warstwie Premium P1 |Funkcje w warstwie Premium P2 | Usługa Azure Active Directory Join — system Windows 10 tylko funkcji związanych z|
 | :------------- | :------------- |:------------- |:------------- |:------------- |

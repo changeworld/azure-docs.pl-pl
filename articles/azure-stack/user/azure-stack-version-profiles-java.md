@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 09/28/2018
 ms.author: sethm
 ms.reviewer: sijuman
-ms.openlocfilehash: b5a876ea8b5cc70ee0ca0dcac8628c12dc2b009b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ffd22f3612d55258737cb9c004b2b0f4e9326f07
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413989"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452517"
 ---
 # <a name="use-api-version-profiles-with-java-in-azure-stack"></a>Profilami wersji interfejsu API za pomocą języka Java w usłudze Azure Stack
 
@@ -63,7 +63,7 @@ Aby zainstalować zestaw SDK języka Java, wykonaj następujące kroki:
 
 1.  Wykonaj instrukcje oficjalne, aby zainstalować program Git. Aby uzyskać instrukcje, zobacz [wprowadzenie — Instalowanie usługi Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git).
 
-2.  Postępuj zgodnie z instrukcjami oficjalne zainstalował [zestawu Java SDK](http://zulu.org/download/)) i [Maven](https://maven.apache.org/). Poprawna wersja jest wersja 8 Java Developer Kit. Poprawne narzędzia Apache Maven jest w wersji 3.0 lub nowszej. Zmienna środowiskowa JAVA_HOME musi być równa lokalizacji instalacji zestawu Java Development Kit do ukończenia tego przewodnika Szybki Start. Aby uzyskać więcej informacji, zobacz [tworzenie pierwszej funkcji przy użyciu języka Java i Maven](../../azure-functions/functions-create-first-java-maven.md).
+2.  Postępuj zgodnie z instrukcjami oficjalne zainstalował [zestawu Java SDK](http://zulu.org/download/) i [Maven](https://maven.apache.org/). Poprawna wersja jest wersja 8 Java Developer Kit. Poprawne narzędzia Apache Maven jest w wersji 3.0 lub nowszej. Zmienna środowiskowa JAVA_HOME musi być równa lokalizacji instalacji zestawu Java Development Kit do ukończenia tego przewodnika Szybki Start. Aby uzyskać więcej informacji, zobacz [tworzenie pierwszej funkcji przy użyciu języka Java i Maven](../../azure-functions/functions-create-first-java-maven.md).
 
 3.  Aby zainstalować pakiety zależności poprawne, otwórz plik Pom.xml w aplikacji Java. Dodaj zależność, jak pokazano w poniższym kodzie:
 
@@ -89,7 +89,7 @@ Aby zainstalować zestaw SDK języka Java, wykonaj następujące kroki:
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Za pomocą zestawu Azure .NET SDK usługi Azure Stack, należy podać następujące wartości, a następnie ustaw wartości zmiennych środowiskowych. Aby ustawić zmienne środowiskowe, zobacz instrukcje pod tabelą systemu operacyjnego.
+Za pomocą zestawu Azure Java SDK usługi Azure Stack, należy podać następujące wartości, a następnie ustaw wartości zmiennych środowiskowych. Aby ustawić zmienne środowiskowe, zobacz instrukcje pod tabelą systemu operacyjnego.
 
 | Wartość                     | Zmienne środowiskowe | Opis                                                                                                                                                                                                          |
 | ------------------------- | --------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
@@ -102,7 +102,7 @@ Za pomocą zestawu Azure .NET SDK usługi Azure Stack, należy podać następuj�
 
 Aby znaleźć identyfikator dzierżawy usługi Azure Stack, należy postępować zgodnie z instrukcjami [tutaj](../azure-stack-csp-ref-operations.md). Aby ustawić zmienne środowiskowe, wykonaj następujące czynności:
 
-### <a name="microsoft-windows"></a>Program Microsoft Windows
+### <a name="microsoft-windows"></a>Microsoft Windows
 
 Aby ustawić zmienne środowiskowe w wierszu polecenia Windows, użyj następującego formatu:
 
@@ -128,7 +128,9 @@ Należy zwrócić uwagę następujące kwestie:
 
 - **ResourceManagerUrl** jest w usłudze Azure Stack Development Kit (ASDK): https://management.local.azurestack.external/
 
-- **ResourceManagerUrl** w systemach zintegrowanych: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/` do pobierania metadanych wymagane: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`
+- **ResourceManagerUrl** w systemach zintegrowanych jest: `https://management.<location>.ext-<machine-name>.masd.stbtest.microsoft.com/`
+
+Aby pobrać metadane wymagane: `<ResourceManagerUrl>/metadata/endpoints?api-version=1.0`.
 
 Przykładowy plik JSON:
 
@@ -149,9 +151,7 @@ Przykładowy plik JSON:
 
 1.  **COM.microsoft.Azure.profile\_2018\_03\_01\_hybrydowego**: najnowsze profilu stworzona z myślą o usłudze Azure Stack. Użyj tego profilu usługi najbardziej zgodnych z usługą Azure Stack, tak długo, jak korzystasz z sygnatury 1808 lub więcej.
 
-2.  **COM.microsoft.Azure.profile\_2017\_03\_09\_profilu**: Jeśli użytkownik pracuje na sygnaturę niższa niż kompilacji 1808, za pomocą tego profilu.
-
-3.  **COM.microsoft.Azure**: profil składający się z najnowszymi wersjami programów wszystkich usług. Za pomocą najnowszej wersji wszystkich usług.
+2.  **COM.microsoft.Azure**: profil składający się z najnowszymi wersjami programów wszystkich usług. Za pomocą najnowszej wersji wszystkich usług.
 
 Aby uzyskać więcej informacji na temat profilów Azure Stack i interfejsu API, zobacz [profilami podsumowanie interfejsu API](../user/azure-stack-version-profiles.md#summary-of-api-profiles).
 
@@ -231,14 +231,14 @@ Do tworzenia rozwiązań przy użyciu profilów platformy .NET i interfejsu API 
 
 2.  Tworzenie jednostki usługi platformy Azure i przypisywanie roli dostęp do subskrypcji. Aby uzyskać instrukcje dotyczące tworzenia jednostki usługi, zobacz [użyciu programu Azure PowerShell utworzyć nazwę główną usługi za pomocą certyfikatu](../azure-stack-create-service-principals.md).
 
-3.  Pobrać wymagane następujące wartości:
+3.  Pobierz następujące wartości zmiennych środowiskowych wymagane:
     
-   1.  Identyfikator dzierżawy
-   2.  Identyfikator klienta
-   3.  Wpis tajny klienta
-   4.  Identyfikator subskrypcji
-   5.  Punkt końcowy usługi Resource Manager
-   6.  Lokalizacja zasobu
+   1.  TENANT_ID
+   2.  CLIENT_ID
+   3.  WARTOŚĆ CLIENT_SECRET
+   4.  SUBSCRIPTION_ID
+   5.  ARM_ENDPOINT
+   6.  RESOURCE_LOCATION
 
 4.  Ustaw następujące zmienne środowiskowe, korzystając z informacji pobrane z nazwy głównej usługi zostały utworzone za pomocą wiersza polecenia:
     
@@ -273,10 +273,8 @@ Do tworzenia rozwiązań przy użyciu profilów platformy .NET i interfejsu API 
    HttpResponse response = httpClient.execute(getRequest);
    ```
 
-7.  W pliku pom.xml Dodaj zależność poniżej, aby używać profilu 2018-03-01-hybrydowych usługi Azure Stack. Ta zależność zainstaluje modułów skojarzony z tym profilem dla dostawców zasobów obliczeniowych, sieci, magazynu, KeyVault i usług aplikacji.
-    
-   Pamiętaj, że można używać najnowszych profilu do platformy Azure:
-        
+6.  W pliku pom.xml Dodaj zależność poniżej, aby używać profilu 2018-03-01-hybrydowych usługi Azure Stack. Ta zależność zainstaluje modułów skojarzony z tym profilem dla dostawców zasobów obliczeniowych, sieci, magazynu, KeyVault i usług aplikacji.
+      
    ```xml
    <dependency>
    <groupId>com.microsoft.azure.profile_2018_03_01_hybrid</groupId>

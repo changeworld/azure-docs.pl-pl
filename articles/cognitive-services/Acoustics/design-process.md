@@ -9,18 +9,18 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 3b35f78d66a6ae66b0a56818f5d4be455ce00de5
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: 8f594be67c4677fae00cb01598d3899e30dae1e8
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181692"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433228"
 ---
 # <a name="design-process-overview"></a>Omówienie procesu projektowania
-We wszystkich fazach Akustyka projektu przepływu pracy można wyrazić zgodną z planem projektu: wstępne tworzenie projektu, źródła dźwięku umieszczania i po Tworzenie projektu. Ten proces wymaga mniej znaczników skojarzony umieszczenie woluminy pogłosu przy zachowaniu projektanta kontrolę nad jak brzmi sceny.
+We wszystkich fazach Akustyka projektu przepływu pracy można wyrazić zgodną z planem projektu: wstępne tworzenie sceny instalacji, położenia źródła dźwięku i po Tworzenie projektu. Ten proces wymaga mniej znaczników skojarzony umieszczenie woluminy pogłosu przy zachowaniu projektanta kontrolę nad jak brzmi sceny.
 
 ## <a name="pre-bake-design"></a>Wstępne tworzenie projektu
-Proces projektowania wstępne tworzenie tworzy sceny i metadanych, które są używane do symulowania dźwięku obejmuje, wybierając, które elementy sceny będą uczestniczyć w symulacji w celu zapewnienia occlusions, odbić i reverberation. Metadane dla sceny jest wybór akustyczny materiałów dla każdego elementu sceny. Akustyczny materiałów kontroli ilości energii dźwięku odzwierciedlone powrót po awarii z każdej powierzchni.
+Wstępne tworzenie sceny procesu instalacji tworzy sceny i metadanych, które są używane do symulowania dźwięku obejmuje, wybierając, które elementy sceny będą uczestniczyć w symulacji w celu zapewnienia occlusions, odbić i reverberation. Metadane dla sceny jest wybór akustyczny materiałów dla każdego elementu sceny. Akustyczny materiałów kontroli ilości energii dźwięku odzwierciedlone powrót po awarii z każdej powierzchni.
 
 Współczynnik absorpcji domyślnego dla wszystkich powierzchni jest 0,04, jest wysoce odbicia. Aby uzyskać efekty estetycznych i gra, należy dostrajania współczynniki absorpcji różnych materiałów w scenie, które są szczególnie dobrze do odbiorników, gdy ich usłyszeć przejścia z jednego obszaru sceny do innego. Na przykład przejście z pokoju reverberant ciemny się jasne,-reverberant sceny na zewnątrz rozszerza wpływ przejścia. Aby uzyskać ten efekt, dostosowywanie współczynniki absorpcji na wyższe materiały sceny aktywność na świeżym powietrzu.
 

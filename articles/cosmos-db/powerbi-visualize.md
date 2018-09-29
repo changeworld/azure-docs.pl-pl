@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: sngun
-ms.openlocfilehash: 63ea7e384f9bc5713a41f6c5537ec5548810e5d9
-ms.sourcegitcommit: 30c7f9994cf6fcdfb580616ea8d6d251364c0cd1
+ms.openlocfilehash: b5b3a96991a2150e553af01e3fda73e04116d7fb
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/18/2018
-ms.locfileid: "42055889"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452415"
 ---
 # <a name="power-bi-tutorial-for-azure-cosmos-db-visualize-data-using-the-power-bi-connector"></a>Usługa Power BI samouczek dotyczący usługi Azure Cosmos DB: wizualizuj dane przy użyciu łącznika usługi Power BI
 [PowerBI.com](https://powerbi.microsoft.com/) to usługa online, na którym można tworzyć i udostępniać pulpity nawigacyjne i raporty z danymi, które są ważne dla Ciebie i Twojej organizacji.  Usługa Power BI Desktop jest dedykowany raport narzędziu, która pozwala pobierać dane z różnych źródeł danych, scalania i przekształcać dane, tworzyć zaawansowane raporty i wizualizacje i publikowania raportów usługi Power BI.  Z najnowszą wersją programu Power BI Desktop możesz teraz połączyć z kontem usługi Azure Cosmos DB za pomocą łącznika usługi Azure Cosmos DB dla usługi Power BI.   
@@ -34,7 +34,7 @@ Po ukończeniu tego samouczka usługi Power BI, będziesz mieć możliwość odp
 > Łącznik usługi Power BI dla usługi Azure Cosmos DB połączenie z usługą Power BI Desktop for wyodrębniania i przekształcania danych. Raporty utworzone w programie Power BI Desktop mogą być następnie publikowane w witrynie PowerBI.com. Nie można wykonać bezpośredniego wyodrębniania i przekształcania danych Azure Cosmos DB w witrynie PowerBI.com. 
 
 > [!NOTE]
-> Łączenie z usługą Azure Cosmos DB za pomocą łącznika usługi Power BI jest obecnie obsługiwane dla usługi Azure Cosmos DB SQL i tylko konta interfejsu API usługi MongoDB. Aby połączyć się przy użyciu interfejsu API usługi MongoDB w usłudze Power BI z usługi Azure Cosmos DB, należy użyć [sterownika ODBC usługi MongoDB firmą Simba](http://www.simba.com/drivers/mongodb-odbc-jdbc/).
+> Łączenie z usługą Azure Cosmos DB za pomocą łącznika usługi Power BI jest obecnie obsługiwane dla interfejsu API SQL usługi Azure Cosmos DB i tylko konta interfejsu API języka Gremlin.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed wykonaniem instrukcji zawartych w tym samouczku usługa Power BI, upewnij się, że masz dostęp do następujących zasobów:

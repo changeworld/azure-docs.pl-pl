@@ -4,15 +4,15 @@ description: Zawiera informacje dotyczące urządzenia modułu zbierającego w u
 author: snehaamicrosoft
 ms.service: azure-migrate
 ms.topic: conceptual
-ms.date: 09/25/2018
+ms.date: 09/28/2018
 ms.author: snehaa
 services: azure-migrate
-ms.openlocfilehash: 88bc0bdc29d1f578bd0d314c5c7425026dfd2d22
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: b79045e54b9c2ee4846f2216704a419e0ff85501
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160882"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47434436"
 ---
 # <a name="about-the-collector-appliance"></a>O urządzenia modułu zbierającego
 
@@ -28,13 +28,13 @@ Możesz wdrożyć urządzenie modułu zbierającego przy użyciu szablonu pakiet
 - Szablon OVF możesz pobrać z usługi Azure Migrate projektu w witrynie Azure portal. Możesz zaimportować pobrany plik programem vCenter Server, aby skonfigurować urządzenie modułu zbierającego maszyny Wirtualnej.
 - Z pakietu OVF VMware konfiguruje Maszynę wirtualną z 4 rdzenie, 8 GB pamięci RAM i jeden dysk 80 GB. System operacyjny to Windows Server 2012 R2 (64-bitowy).
 - Po uruchomieniu modułu zbierającego, uruchom szereg wymagań wstępnych, aby upewnij się, czy moduł zbierający łączy się usługa Azure Migrate.
- 
-- [Dowiedz się więcej](tutorial-assessment-vmware.md#create-the-collector-vm) dotyczących tworzenia modułu zbierającego. 
+
+- [Dowiedz się więcej](tutorial-assessment-vmware.md#create-the-collector-vm) dotyczących tworzenia modułu zbierającego.
 
 
 ## <a name="collector-prerequisites"></a>Wymagania wstępne dotyczące modułu zbierającego
 
-Moduł zbierający musi przekazać kilka Sprawdzanie wymagań wstępnych, aby zapewnić możliwość połączenia z usługi Azure Migrate w Internecie i przekazywanie odnalezionych danych. 
+Moduł zbierający musi przekazać kilka Sprawdzanie wymagań wstępnych, aby zapewnić możliwość połączenia z usługi Azure Migrate w Internecie i przekazywanie odnalezionych danych.
 
 - **Sprawdź połączenie internetowe**: moduł zbierający można połączyć się z Internetem bezpośrednio lub za pośrednictwem serwera proxy.
     - Sprawdzanie wymagań wstępnych sprawdza łączność z [adresów URL wymaganych i opcjonalnych](#connect-to-urls).
@@ -71,12 +71,12 @@ Moduł zbierający musi przekazać kilka Sprawdzanie wymagań wstępnych, aby za
     ![Lokalizacja magazynu certyfikatów](./media/concepts-intercepting-proxy/certificate-store-location.png)
 
     6. Wybierz **Umieść wszystkie certyfikaty w następującym magazynie** > **Przeglądaj** > **zaufanych wydawców**. Kliknij przycisk **Zakończ** Aby zaimportować certyfikat.
-    
+
     ![Magazyn certyfikatów](./media/concepts-intercepting-proxy/certificate-store.png)
 
     7. Sprawdź, czy certyfikat został zaimportowany, zgodnie z oczekiwaniami, a następnie sprawdź, czy działa sprawdzania wymagań wstępnych połączenia internetowego jako oczekiwana.
 
-    
+
 
 
 ### <a name="connect-to-urls"></a>Łączenie do adresów URL
@@ -87,7 +87,7 @@ Sprawdzenie łączności jest weryfikowana przez nawiązanie połączenia listę
 --- | --- | ---
 *.portal.azure.com | Służy do sprawdzania łączności z usług platformy Azure i synchronizacji czasu. | Dostęp do adres URL jest wymagany.<br/><br/> Sprawdzanie wymagań wstępnych kończy się niepowodzeniem, jeśli nie ma łączności.
 *.oneget.org:443<br/><br/> *.windows.net:443<br/><br/> *.windowsazure.com:443<br/><br/> *. powershellgallery.com:443<br/><br/> *.msecnd.net:443<br/><br/> *.visualstudio.com:443| Umożliwia pobieranie modułu programu PowerShell vCenter PowerCLI. | Dostęp do adresów URL jest opcjonalne.<br/><br/> Sprawdzanie wymagań wstępnych nie będzie się nie powieść.<br/><br/> Instalacja automatyczna modułu na maszynie Wirtualnej modułu zbierającego nie powiedzie się. Należy ręcznie zainstalować moduł.
- 
+
 
 ### <a name="install-vmware-powercli-module-manually"></a>Zainstaluj ręcznie program VMware PowerCLI modułu
 
@@ -104,7 +104,7 @@ Moduł zbierający łączy się z serwerem vcenter i wysyła zapytanie dotycząc
 - Domyślnie połączenie z serwerem vCenter za pomocą nazwy FQDN lub adres IP. Jeśli na oprogramowania vCenter Server nasłuchuje na innym porcie, nawiążesz z nim za pomocą formularza *IPAddress:Port_Number* lub *FQDN:Port_Number*.
 - Aby zebrać dane wydajności dotyczące magazynu i sieci, ustawieniach statystyk programu vCenter Server musi być równa poziomu 3.
 - Jeśli poziom jest niższa niż trzy, działa odnajdywanie, ale nie będą zbierane dane dotyczące wydajności. Liczniki mogą być zbierane, ale inne można ustawić na zero.
-- Jeśli nie zostaną zebrane dane wydajności dotyczące magazynu i sieci, zaleceń dotyczących rozmiarów oceny są dane na podstawie wydajności procesora CPU i pamięci, a także na dane konfiguracji dla dysku i kart sieciowych. 
+- Jeśli nie zostaną zebrane dane wydajności dotyczące magazynu i sieci, zaleceń dotyczących rozmiarów oceny są dane na podstawie wydajności procesora CPU i pamięci, a także na dane konfiguracji dla dysku i kart sieciowych.
 - Moduł powinien mieć sieci linii wzroku do serwera vCenter.
 
 #### <a name="account-permissions"></a>Uprawnień konta
@@ -125,13 +125,10 @@ Moduł zbierający komunikuje się zgodnie z opisem w następujących tabeli i d
 --- | --- | ---
 Usługa Azure Migrate | TCP 443 | Moduł zbierający komunikuje się z usługą Azure Migrate za pośrednictwem protokołu SSL 443.
 Program vCenter Server | TCP 443 | Moduł zbierający musi mieć możliwość komunikacji z serwerem vCenter.<br/><br/> Domyślnie łączy się vCenter na porcie 443.<br/><br/> Jeśli na oprogramowania vCenter Server nasłuchuje na innym porcie, ten port powinny być dostępne jako port wychodzący na modułu zbierającego.
-RDP | TCP 3389 | 
-
-
+RDP | TCP 3389 |
 
 
 ## <a name="securing-the-collector-appliance"></a>Zabezpieczanie urządzenia modułu zbierającego
-
 
 Zalecamy następujące kroki, aby zabezpieczyć urządzenie modułu zbierającego:
 
@@ -141,19 +138,23 @@ Zalecamy następujące kroki, aby zabezpieczyć urządzenie modułu zbierająceg
 - Po zakończeniu migracji należy usunąć wystąpienia urządzenia.
 - Ponadto po migracji, również usunąć pliki kopii zapasowej dysków (Vmdk), zgodnie z dysków może być vCenter poświadczenia buforowane na nich.
 
-## <a name="updating-the-collector-vm"></a>Aktualizowanie maszyny Wirtualnej modułu zbierającego.
+## <a name="os-license-in-the-collector-vm"></a>Licencja systemu operacyjnego w maszynie Wirtualnej modułu zbierającego.
 
-Firma Microsoft zaleca systemem ciągłych aktualizacji Windows urządzenia modułu zbierającego.
+Moduł zbierający jest powiązana z licencji ewaluacyjnej systemu Windows Server 2012 R2, która jest ważna przez 180 dni. Okres próbny wygaśnie dla swojej maszyny Wirtualnej modułu zbierającego, zalecane jest aby pobrać nowy OVA i utworzyć nowe urządzenie.
+
+## <a name="updating-the-os-of-the-collector-vm"></a>Aktualizowanie systemu operacyjnego maszyny Wirtualnej modułu zbierającego.
+
+Mimo że urządzenia modułu zbierającego licencją wersji ewaluacyjnej na okres 180 dni, konieczne są stale aktualizowane, systemu operacyjnego na urządzeniu, aby uniknąć automatycznego zamykania szczegółów urządzenia.
 
 - Jeśli moduł zbierający nie zostały zaktualizowane przez 60 dni, rozpoczyna się automatyczne zamykanie maszyny.
 - Jeśli działa odnajdywanie, komputer nie zostać wyłączony, nawet jeśli przeszły 60 dni. Komputer zostanie wyłączona po ukończeniu odnajdywania.
-- Jeśli moduł zbierający była używana przez ponad 45 dni, zaleca się pozostawienie maszyny zaktualizować cały czas uruchomione Windows Update.
+- Jeśli moduł zbierający była używana przez więcej niż 60 dni, zaleca się pozostawienie maszyny zaktualizować cały czas uruchomione Windows Update.
 
 ## <a name="upgrading-the-collector-appliance-version"></a>Uaktualnianie wersji urządzenia modułu zbierającego
 
 Moduł zbierający można uaktualnić do najnowszej wersji, bez pobierania OVA ponownie.
 
-1. Pobierz [najnowszej liście pakietu uaktualnienia](concepts-collector-upgrade.md) 
+1. Pobierz [najnowszej liście pakietu uaktualnienia](concepts-collector-upgrade.md)
 2. Aby upewnij się, że poprawka pobrany bezpieczne, Otwórz okno wiersza polecenia administratora i uruchom następujące polecenie, aby wygenerować wartość skrótu dla pliku ZIP. Wygenerowany skrót powinien odpowiadać za pomocą skrótu wymienionych dla określonej wersji:
 
     ```C:\>CertUtil -HashFile <file_location> [Hashing Algorithm]```
@@ -179,8 +180,6 @@ Moduł zbierający komunikuje się jednorazowo przy użyciu programu vCenter Ser
 - Po ustawieniu poziomu do trzech, zajmuje do dnia do generowania liczników wydajności. Dlatego zaleca się uruchamianie odnajdywania po dniu.
 - Podczas zbierania danych wydajności dla maszyny Wirtualnej, urządzenie opiera się na dane historyczne wydajności, przechowywane w programie vCenter Server. Historia wydajności zbiera dla ostatniego miesiąca.
 - Usługa Azure Migrate zbiera dane licznika średni (zamiast licznika szczytowa) dla każdego metryki.
-     
-
 
 ### <a name="continuous-discovery"></a>Ciągłe odnajdywania
 
@@ -191,12 +190,12 @@ Urządzenie modułu zbierającego stale jest podłączony do projektu Azure Migr
 - Urządzenie zbiera przykłady 20 sekund i tworzy jeden punkt danych co 15 minut.
 - Do tworzenia danych punkt urządzenie szczytowa wartość wybierana jest opcja przykłady 20 sekund i wysyła je do platformy Azure.
 - Aby zatrzymać, ciągłe profilowania w dowolnym momencie z modułu zbierającego.
-     
+
 > [!NOTE]
 > Funkcja ciągłego Odnajdywanie jest w wersji zapoznawczej. Jeśli ustawienia statystyk programu vCenter Server nie jest ustawiony na poziom 3, zaleca się użycie tej metody.
 
 
-## <a name="discovery-process"></a>Proces odnajdywania 
+## <a name="discovery-process"></a>Proces odnajdywania
 
 Po skonfigurowaniu urządzenia można uruchomić odnajdywanie. Poniżej przedstawiono, jak to działa:
 
@@ -208,7 +207,6 @@ Po skonfigurowaniu urządzenia można uruchomić odnajdywanie. Poniżej przedsta
 - Maszyny wirtualne są wykrywane, a ich metadanych i wydajności dane są wysyłane do platformy Azure. Te akcje są częścią zadania odzyskiwania.
     - Określony identyfikator modułu zbierającego, który jest trwały dla danej maszyny na potrzeby odnajdowania znajduje się urządzenie modułu zbierającego.
     - Uruchomione zadanie odzyskiwania jest podany identyfikator określonej sesji. Identyfikator zmiany dla każdego zadania odzyskiwania i może służyć do rozwiązywania problemów.
-
 
 ### <a name="collected-metadata"></a>Zebrano metadane
 
@@ -223,13 +221,10 @@ Urządzenie modułu zbierającego umożliwia odnalezienie następujące metadane
 - Rozmiar pamięci, rozmiary dysków
 - Liczniki wydajności maszyn wirtualnych, dysku i sieci.
 
-
-
 #### <a name="performance-counters"></a>Liczniki wydajności
 
+- **Jednorazowe**: podczas odnajdywania jednorazowe zbieranymi licznikami, należy pamiętać o następujących:
 
-- **Jednorazowe**: podczas odnajdywania jednorazowe zbieranymi licznikami, należy pamiętać o następujących: 
-        
     - Może upłynąć do 15 minut do zbierania i wysyłania metadanych konfiguracji do projektu.
     - Po zebraniu danych konfiguracji może potrwać do godziny dane wydajności były dostępne w portalu.
     - Po metadane są dostępne w portalu, zostanie wyświetlona lista maszyn wirtualnych i możesz rozpocząć tworzenie grup do oceny.
@@ -237,10 +232,8 @@ Urządzenie modułu zbierającego umożliwia odnalezienie następujące metadane
     - Dane konfiguracji dla maszyny Wirtualnej jest dostępny za godzinę, po uruchomieniu odnajdywania
     - Dane dotyczące wydajności rozpoczyna stają się dostępne po 2 godzinach.
     - Po uruchomieniu odnajdywania, poczekaj co najmniej jeden dzień urządzenie profilowania środowiska, przed przystąpieniem do tworzenia oceny.
-    
-   
 
-**Licznik** | **Poziom** | **Poziom na urządzenie** | **Wpływ na ocenę** 
+**Licznik** | **Poziom** | **Poziom na urządzenie** | **Wpływ na ocenę**
 --- | --- | --- | ---
 cpu.usage.average | 1 | Nie dotyczy | Zalecany rozmiar maszyny Wirtualnej i kosztów  
 mem.usage.average | 1 | Nie dotyczy | Zalecany rozmiar maszyny Wirtualnej i kosztów  
@@ -250,9 +243,6 @@ virtualDisk.numberReadAveraged.average | 1 | 3 |  Oblicza rozmiar dysku, koszt p
 virtualDisk.numberWriteAveraged.average | 1 | 3 |   Oblicza rozmiar dysku, koszt przechowywania, rozmiar maszyny Wirtualnej
 NET.RECEIVED.AVERAGE | 2 | 3 |  Oblicza koszt rozmiar i sieć maszyny Wirtualnej                        |
 net.transmitted.average | 2 | 3 | Oblicza koszt rozmiar i sieć maszyny Wirtualnej    
-
-
-
 
 ## <a name="next-steps"></a>Kolejne kroki
 

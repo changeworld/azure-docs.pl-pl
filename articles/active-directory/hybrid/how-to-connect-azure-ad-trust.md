@@ -17,12 +17,12 @@ ms.date: 07/28/2018
 ms.author: billmath
 author: billmath
 ms.custom: ''
-ms.openlocfilehash: 4eeb716e4eeae8dc560f9588c6c3ce252daf741e
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 5ac69c53a6b6c1e4695b88e5806f8e883cd52c66
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46314664"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47432058"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>Zarządzania relacjami zaufania usług AD FS z usługą Azure AD za pomocą usługi Azure AD Connect
 
@@ -41,7 +41,7 @@ Program Azure AD Connect zarządza **tylko** ustawienia związane z zaufania us�
 | Ustawienie | Opis |
 | :--- | :--- |
 | Certyfikat podpisywania tokenu | Program Azure AD Connect może służyć do resetowania i ponowne utworzenie relacji zaufania z usługą Azure AD. Program Azure AD Connect jest jednorazowe, natychmiastowe przerzucania certyfikaty podpisywania tokenu usług AD FS i aktualizuje ustawienia Federacji domeny usługi Azure AD.|
-| Algorytm podpisywania tokenu | Firma Microsoft zaleca używanie algorytmu SHA-256 jako algorytm podpisywania tokenu. Program Azure AD Connect może wykryć, jeśli algorytm podpisywania tokenu jest ustawiony na wartość mniej bezpieczna niż algorytm SHA-256. W następnej operacji możliwych konfiguracji powoduje zaktualizowanie ustawień algorytmu SHA-256. |
+| Algorytm podpisywania tokenu | Firma Microsoft zaleca używanie algorytmu SHA-256 jako algorytm podpisywania tokenu. Program Azure AD Connect może wykryć, jeśli algorytm podpisywania tokenu jest ustawiony na wartość mniej bezpieczna niż algorytm SHA-256. W następnej operacji możliwych konfiguracji powoduje zaktualizowanie ustawień algorytmu SHA-256. Inne zaufania jednostki uzależnionej musi zostać zaktualizowany do użycia nowy certyfikat podpisywania tokenu. |
 | Identyfikator relacji zaufania usługi Azure AD | Program Azure AD Connect, ustawia wartość prawidłowy identyfikator zaufania usługi Azure AD. Usługi AD FS jednoznacznie identyfikuje zaufania usługi Azure AD za pomocą wartości identyfikatora. |
 | Punkty końcowe usługi AD systemu Azure | Program Azure AD Connect zapewnia, że zawsze są punkty końcowe skonfigurowane dla zaufania usługi Azure AD zgodnie z najnowszych zalecane wartości, odporność i wydajność. |
 | Reguły przekształcania wystawiania | Istnieją liczby reguł oświadczeń, które są potrzebne w celu uzyskania optymalnej wydajności funkcji usługi Azure AD w środowisku federacyjnym. Program Azure AD Connect zapewnia się, że zawsze Konfiguracja zaufania usługi Azure AD przy użyciu odpowiedniego zestawu reguł zalecanych oświadczeń. |
