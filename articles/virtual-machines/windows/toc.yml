@@ -225,9 +225,9 @@ items:
       href: nested-virtualization.md
   - name: Zarządzanie kosztami
     items:
-    - name: Opłacanie maszyn wirtualnych z góry — Azure Reservations
+    - name: Opłacanie maszyn wirtualnych z góry — rezerwacje platformy Azure
       href: prepay-reserved-vm-instances.md
-    - name: Co to jest Azure Reservations?
+    - name: Co to są rezerwacje platformy Azure?
       href: ../../billing/billing-save-compute-costs-reservations.md
     - name: Elastyczność rozmiaru wystąpienia maszyny wirtualnej
       href: reserved-vm-instance-size-flexibility.md
@@ -402,80 +402,8 @@ items:
         href: migration-classic-resource-manager-community-tools.md
       - name: Często zadawane pytania
         href: migration-classic-resource-manager-faq.md
-  - name: Rozwiązywanie problemów
-    items:
-    - name: Podłączanie pulpitu zdalnego
-      href: troubleshoot-rdp-connection.md
-      items:
-      - name: Szczegółowe procedury
-        href: detailed-troubleshoot-rdp.md
-      - name: Komunikaty o błędach
-        href: troubleshoot-specific-rdp-errors.md
-    - name: Resetowanie hasła protokołu RDP
-      href: reset-rdp.md
-    - name: Resetowanie hasła lokalnego bez agenta platformy Azure
-      href: reset-local-password-without-agent.md
-    - name: Omówienie ponownego uruchamiania systemu
-      href: understand-vm-reboot.md
-    - name: Resetowanie karty sieciowej
-      href: reset-network-interface.md
-    - name: Diagnostyka rozruchu
-      href: boot-diagnostics.md
-    - name: Konsola szeregowa
-      href: serial-console.md
-      items:
-      - name: Polecenia CMD i polecenia programu PowerShell
-        href: serial-console-cmd-ps-commands.md
-    - name: Tworzenie maszyny wirtualnej
-      href: troubleshoot-deployment-new-vm.md
-    - name: Problemy z wdrażaniem
-      href: troubleshoot-deploy-vm.md
-    - name: Ponowne uruchamianie maszyny wirtualnej lub zmienianie jej rozmiaru
-      href: restart-resize-error-troubleshooting.md
-    - name: Dostęp do aplikacji
-      href: troubleshoot-app-connection.md
-    - name: Problemy z aktywacją
-      href: troubleshoot-activation-problems.md
-    - name: Błędy alokacji
-      href: allocation-failure.md
-    - name: Błędy alokacji — klasyczna maszyna wirtualna
-      href: allocation-failure-classic.md
-    - name: Ponowne wdrażanie maszyny wirtualnej
-      href: redeploy-to-new-node.md
-    - name: Typowe komunikaty o błędach
-      href: error-messages.md
-    - name: Dostęp do odzyskiwania maszyny wirtualnej
-      items:
-      - name: Azure PowerShell
-        href: troubleshoot-recovery-disks.md
-      - name: Azure Portal
-        href: troubleshoot-recovery-disks-portal.md
-    - name: Korzystanie z narzędzia PerfInsights
-      href: how-to-use-perfInsights.md
-    - name: Rozszerzenie maszyny wirtualnej diagnostyki wydajności
-      href: performance-diagnostics-vm-extension.md
-    - name: Diagnostyka wydajności maszyn wirtualnych platformy Azure
-      href: performance-diagnostics.md
-    - name: Używanie wirtualizacji zagnieżdżonej
-      href: troubleshoot-vm-by-use-nested-virtualization.md
-    - name: Instalowanie agenta maszyny wirtualnej w trybie offline
-      href: install-vm-agent-offline.md
-    - name: Rozwiązywanie problemów z dołączonymi dyskami VHD
-      items:
-      - name: Błędy usuwania zasobów magazynu
-        href: storage-resource-deletion-errors.md
-      - name: Nieoczekiwane ponowne uruchamianie maszyn wirtualnych z dołączonymi dyskami VHD
-        href: unexpected-reboots-attached-vhds.md
-    - name: Błędy ograniczania przepustowości
-      href: troubleshooting-throttling-errors.md
-    - name: Rozwiązywanie problemów z błędami rozruchu
-      items:
-      - name: Błędy funkcji BitLocker
-        href: troubleshoot-bitlocker-boot-error.md
-      - name: Sprawdzanie błędów systemu plików
-        href: troubleshoot-check-disk-boot-error.md
-      - name: Typowe błędy z niebieskim ekranem
-        href: troubleshoot-common-blue-screen-error.md
+- name: Rozwiązywanie problemów
+  href: ../troubleshooting/index.md
 - name: Dokumentacja
   items:
   - name: Interfejs wiersza polecenia platformy Azure
@@ -514,9 +442,9 @@ items:
     href: https://azure.microsoft.com/documentation/videos/index/?services=virtual-machines
   - name: Często zadawane pytania
     href: faq.md
-ms.openlocfilehash: 5d3aef71cd6658f1f73dd72a0b89dcb3d5eb4a5f
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: a991b7edc35256823a45b8ad65f9aa99eb7477c9
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47221218"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47408474"
