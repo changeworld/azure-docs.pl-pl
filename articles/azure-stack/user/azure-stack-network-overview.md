@@ -1,45 +1,45 @@
 ---
-title: Wprowadzenie do sieci Azure stosu | Dokumentacja firmy Microsoft
-description: Dowiedz się więcej o sieci Azure stosu
+title: Wprowadzenie do usługi Azure Stack sieci | Dokumentacja firmy Microsoft
+description: Dowiedz się więcej o sieci usługi Azure Stack
 services: azure-stack
 author: mattbriggs
 manager: femila
 ms.service: azure-stack
 ms.topic: get-started-article
-ms.date: 05/21/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: scottnap
-ms.openlocfilehash: ee94fd8a9dac17e4db180b05208df66f3d33b901
-ms.sourcegitcommit: 680964b75f7fff2f0517b7a0d43e01a9ee3da445
+ms.openlocfilehash: ac842507cc52c9677e755d32b09758f787c5a1fb
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34604570"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584565"
 ---
 # <a name="introduction-to-azure-stack-networking"></a>Wprowadzenie do sieci usługi Azure Stack
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Stos Azure oferuje szeroką gamę możliwości sieciowych, które mogą być używane razem lub oddzielnie:
+Usługa Azure Stack oferuje szeroką gamę funkcji sieciowych, które mogą być używane razem lub oddzielnie:
 
-- **Łączność między zasobami Azure stosu**  
-    Łączenie zasobów platformy Azure w bezpieczny, prywatnej sieci wirtualnej w chmurze.
+- **Łączność między zasobami usługi Azure Stack**  
+    Połączyć zasoby Azure ze sobą w bezpieczny i prywatnej sieci wirtualnej w chmurze.
 - **Łączność z Internetem**  
-    Komunikować się z zasobami Azure stosu i za pośrednictwem Internetu.
+    Komunikować się z zasobami usługi Azure Stack za pośrednictwem Internetu.
 - **Łączność lokalna**  
-    Łączenie sieci lokalnej z zasobami Azure stosu za pośrednictwem wirtualnej sieci prywatnej (VPN) przez Internet lub przez dedykowane połączenie stos Azure.
+    Łączenie sieci lokalnej z zasobami usługi Azure Stack za pośrednictwem wirtualnej sieci prywatnej (VPN) przez Internet lub przez dedykowane połączenie do usługi Azure Stack.
 - **Kierunek ruchu i równoważenia obciążenia**  
-    Równoważenie obciążenia ruchu do serwerów w tej samej lokalizacji i bezpośredniego ruch do serwerów w różnych lokalizacjach.
+    Równoważenie obciążenia ruchu do serwerów w tej samej lokalizacji i bezpośrednie kierowanie ruchu do serwerów w różnych lokalizacjach.
 - **Bezpieczeństwo**  
     Filtrowanie ruchu sieciowego między podsieciami sieci lub poszczególnych maszyn wirtualnych (VM).
 - **Routing**  
-    Użyj domyślnej routingu lub routingu między stosu Azure i zasobów lokalnych w pełni kontrolować.
+    Za pomocą domyślny routing lub pełnej kontroli routingu między zasobami lokalnymi i usługi Azure Stack.
 - **Możliwości zarządzania**  
-    Monitorowanie i zarządzanie nimi stosu Azure zasobów sieciowych.
-- **Wdrażanie i Konfigurowanie narzędzi**  
-    Użyj portalu sieci web lub narzędzia wiersza polecenia i platform wdrażania i konfigurowania zasobów sieciowych.
+    Monitorowanie i zarządzanie nimi usługi Azure Stack, zasoby sieciowe.
+- **Narzędzia do wdrażania i konfiguracji**  
+    Wdrażanie i konfigurowanie zasobów sieciowych, należy użyć oparty na sieci web portal lub narzędzi wiersza polecenia dla wielu platform.
 
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-* [Zagadnienia dotyczące sieci Azure stosu](azure-stack-network-differences.md)
+* [Zagadnienia dotyczące sieci usługi Azure Stack](azure-stack-network-differences.md)

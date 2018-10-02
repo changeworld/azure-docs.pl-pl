@@ -1,58 +1,58 @@
 ---
-title: Wdrożenie maszyny Wirtualnej z zabezpieczonym hasłem na stosie Azure | Dokumentacja firmy Microsoft
-description: Dowiedz się, jak wdrożyć maszynę Wirtualną przy użyciu hasła przechowywane w magazynie kluczy stosu Azure
+title: Wdrażanie maszyny Wirtualnej z zabezpieczonym hasłem w usłudze Azure Stack | Dokumentacja firmy Microsoft
+description: Dowiedz się, jak wdrożyć Maszynę wirtualną przy użyciu hasła przechowywane w usłudze Azure Stack Key Vault
 services: azure-stack
 documentationcenter: ''
 author: mattbriggs
 manager: femila
 editor: ''
-ms.assetid: 23322a49-fb7e-4dc2-8d0e-43de8cd41f80
 ms.service: azure-stack
 ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: get-started-article
-ms.date: 05/07/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
-ms.openlocfilehash: 4239eb31afd4abc8b3555f0ee353f5d96716d623
-ms.sourcegitcommit: c52123364e2ba086722bc860f2972642115316ef
+ms.openlocfilehash: e35a63a36a84316815d609afa178f9a896415c2b
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/11/2018
-ms.locfileid: "34068981"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584120"
 ---
-# <a name="create-a-virtual-machine-using-a-secure-password-stored-in-azure-stack-key-vault"></a>Utwórz maszynę wirtualną przy użyciu bezpiecznego hasła przechowywane w magazynie kluczy stosu Azure
+# <a name="create-a-virtual-machine-using-a-secure-password-stored-in-azure-stack-key-vault"></a>Utwórz maszynę wirtualną przy użyciu bezpiecznego hasła przechowywane w usłudze Azure Stack Key Vault
 
-*Dotyczy: Azure stosu zintegrowanych systemów i Azure stosu Development Kit*
+*Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Kroki tego artykułu, do wdrażania maszyny wirtualnej systemu Windows Server przy użyciu hasła przechowywane w magazynie kluczy stosu Azure. Przy użyciu hasła magazynu kluczy jest bezpieczniejsza niż przekazywanie hasła w postaci zwykłego tekstu.
+Tym artykule omówiono wdrażanie maszyny wirtualnej systemu Windows Server przy użyciu hasła przechowywane w usłudze Azure Stack Key Vault. Przy użyciu hasła usługi key vault jest bezpieczniejszy niż przekazywanie hasła w postaci zwykłego tekstu.
 
 ## <a name="overview"></a>Przegląd
 
-Wartości, takie jak hasła można zapisać jako klucza tajnego w magazynie kluczy Azure stosu. Po utworzeniu klucza tajnego można odwoływać się do niej w szablonach usługi Azure Resource Manager. Użycie kluczy tajnych z usługą Resource Manager zapewnia następujące korzyści:
+Można przechowywać wartości, takie jak hasła, jako wpisu tajnego w magazynie kluczy usługi Azure Stack. Po utworzeniu wpisu tajnego, możesz odwoływać się do niej w szablonach usługi Azure Resource Manager. Przy użyciu kluczy tajnych w usłudze Resource Manager zapewnia następujące korzyści:
 
-* Nie trzeba ręcznie wprowadź hasło w każdym wdrożeniu zasobu.
-* Można określić, których użytkowników lub nazwy główne usług można uzyskać dostępu do klucza tajnego.
+* Nie trzeba ręcznie wprowadzać hasła za każdym razem, wdrażanie zasobu.
+* Można określić, które użytkownicy lub jednostki usługi dostęp do klucza tajnego.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Oferta obejmuje usługi Key Vault musi subskrybować.
-* [Instalowanie programu PowerShell Azure stosu.](azure-stack-powershell-install.md)
-* [Konfigurowanie środowiska PowerShell użytkownika stosu Azure.](azure-stack-powershell-configure-user.md)
+* Należy subskrybować ofertę, która obejmuje usługę Key Vault.
+* [Zainstaluj program PowerShell dla usługi Azure Stack.](azure-stack-powershell-install.md)
+* [Konfigurowanie środowiska programu PowerShell.](azure-stack-powershell-configure-user.md)
 
-W poniższych krokach opisano proces wymagane do utworzenia maszyny wirtualnej przez pobranie hasła przechowywane w magazynie kluczy:
+W poniższych krokach opisano proces wymagany do utworzenia maszyny wirtualnej przez pobieranie hasła przechowywane w usłudze Key Vault:
 
-1. Tworzenie magazynu klucz tajny.
-2. Zaktualizuj plik azuredeploy.parameters.json.
-3. Wdrażanie szablonu.
+1. Utwórz magazyn kluczy tajnych.
+2. Aktualizowanie pliku azuredeploy.parameters.json.
+3. Wdróż szablon.
 
->[UWAGA] Korzystania z tych kroków, z platformy Azure stosu Development Kit lub klientom zewnętrznym, jeśli są połączone za pośrednictwem sieci VPN.
+> ! [UWAGA]  
+> Można użyć tych kroków z usługi Azure Stack Development Kit lub z klienta zewnętrznego, jeśli są połączone za pośrednictwem sieci VPN.
 
-## <a name="create-a-key-vault-secret"></a>Tworzenie magazynu klucz tajny
+## <a name="create-a-key-vault-secret"></a>Tworzenie wpisu tajnego usługi Key Vault
 
-Poniższy skrypt tworzy magazyn kluczy i przechowuje hasła w magazynie kluczy jako klucz tajny. Użyj `-EnabledForDeployment` parametru podczas tworzenia magazynu kluczy. Tego parametru zapewnia, że magazyn kluczy mogą być przywoływane z szablonów usługi Azure Resource Manager.
+Poniższy skrypt tworzy magazyn kluczy i przechowuje hasła w usłudze key vault jako klucz tajny. Użyj `-EnabledForDeployment` parametru podczas tworzenia magazynu kluczy. Tego parametru gwarantuje, że usługi key vault można odwoływać się za pomocą szablonów usługi Azure Resource Manager.
 
-```powershell
+```PowerShell
 
 $vaultName = "contosovault"
 $resourceGroup = "contosovaultrg"
@@ -78,13 +78,13 @@ Set-AzureKeyVaultSecret `
 
 ```
 
-Po uruchomieniu skryptu poprzednie dane wyjściowe zawiera tajny identyfikatora URI. Zanotuj tego identyfikatora URI. Masz do utworzenia odwołania w [wdrażania maszyny wirtualnej systemu Windows z hasłem w szablonie magazynu kluczy](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv). Pobierz [101-vm bezpiecznego hasła](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv) folderu na komputerze deweloperskim. Ten folder zawiera `azuredeploy.json` i `azuredeploy.parameters.json` pliki, które będą potrzebne w następnych krokach.
+Po uruchomieniu skryptu poprzedniej, dane wyjściowe obejmują identyfikator URI klucza tajnego. Zanotuj ten identyfikator URI. Należy odwoływać się do niego w [Windows wdrażanie maszyny wirtualnej za pomocą hasła w szablonie usługi key vault](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv). Pobierz [101-hasło maszyny wirtualnej bezpieczny](https://github.com/Azure/AzureStack-QuickStart-Templates/tree/master/101-vm-windows-create-passwordfromkv) folderu na komputerze deweloperskim. Ten folder zawiera `azuredeploy.json` i `azuredeploy.parameters.json` pliki, które będą potrzebne w następnych krokach.
 
-Modyfikowanie `azuredeploy.parameters.json` plików zgodnie z własnymi wartościami środowiska. Parametry szczególnie ważne są nazwę magazynu, grupy zasobów magazynu i klucz tajny identyfikatora URI (jak generowane przez poprzednie skryptu). Przykładem pliku parametrów jest następującego pliku:
+Modyfikowanie `azuredeploy.parameters.json` zgodnie z własnymi wartościami środowiska. Parametry interesujące są nazwę magazynu, grupa zasobów magazynu i klucz tajny identyfikatora URI (tak jak, w poprzednim skrypcie). Następujący plik jest przykładowy plik parametrów:
 
-## <a name="update-the-azuredeployparametersjson-file"></a>Zaktualizuj plik azuredeploy.parameters.json
+## <a name="update-the-azuredeployparametersjson-file"></a>Aktualizowanie pliku azuredeploy.parameters.json
 
-Zaktualizuj plik azuredeploy.parameters.json o identyfikatorze URI KeyVault, secretName, adminUsername wartości maszyny wirtualnej, zgodnie z harmonogramem środowiska. Następujący plik JSON przedstawiono przykład pliku parametrów szablonu:
+Za pomocą identyfikatora URI magazynu kluczy, secretName, adminUsername wartości maszyny wirtualnej dla każdego środowiska, należy zaktualizować pliku azuredeploy.parameters.json. Następujący plik JSON przykładowy plik parametrów szablonu:
 
 ```json
 {
@@ -115,9 +115,9 @@ Zaktualizuj plik azuredeploy.parameters.json o identyfikatorze URI KeyVault, sec
 
 ## <a name="template-deployment"></a>Wdrażanie na podstawie szablonu
 
-Teraz można wdrożyć szablon przy użyciu następujący skrypt programu PowerShell:
+Teraz można wdrożyć szablon przy użyciu poniższy skrypt programu PowerShell:
 
-```powershell
+```PowerShell  
 New-AzureRmResourceGroupDeployment `
   -Name KVPwdDeployment `
   -ResourceGroupName $resourceGroup `
@@ -125,12 +125,12 @@ New-AzureRmResourceGroupDeployment `
   -TemplateParameterFile "<Fully qualified path to the azuredeploy.parameters.json file>"
 ```
 
-Jeśli szablon został wdrożony pomyślnie, wynikiem następujące dane wyjściowe:
+Po pomyślnym wdrożeniu szablonu powoduje następujące dane wyjściowe:
 
-![Dane wyjściowe wdrażanie](media/azure-stack-kv-deploy-vm-with-secret/deployment-output.png)
+![Dane wyjściowe wdrożenia](media/azure-stack-kv-deploy-vm-with-secret/deployment-output.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Wdrażanie przykładowej aplikacji z magazynu kluczy](azure-stack-kv-sample-app.md)
+[Wdróż przykładową aplikację w usłudze Key Vault](azure-stack-kv-sample-app.md)
 
-[Wdrożenie maszyny Wirtualnej przy użyciu certyfikatu usługi Key Vault](azure-stack-kv-push-secret-into-vm.md)
+[Wdrażanie maszyny Wirtualnej z certyfikatem usługi Key Vault](azure-stack-kv-push-secret-into-vm.md)
