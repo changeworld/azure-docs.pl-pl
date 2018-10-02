@@ -10,12 +10,12 @@ ms.service: billing
 ms.topic: article
 ms.date: 09/11/2018
 ms.author: byvinyal
-ms.openlocfilehash: efaca1b9506ada02c52ad0833139d3b4e441d456
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 0b78c7c94f5dc6d7c427188ac4ffd807a06a867e
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393617"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585496"
 ---
 # <a name="azure-subscription-and-service-limits-quotas-and-constraints"></a>Limity subskrypcji i usługi Azure, przydziały i ograniczenia
 W tym dokumencie przedstawiono niektóre typowe limity Microsoft Azure, które są czasami nazywane limity przydziału. Ten dokument obecnie nie obejmuje wszystkich usług platformy Azure. Wraz z upływem czasu lista zostaną rozwinięte i zaktualizowana w celu pokrycia więcej platformy.
@@ -102,7 +102,7 @@ W obszarze poniżej ograniczenia dodano nową tabelę odzwierciedla żadnych ró
 * [Zestawy skalowania maszyn wirtualnych](#virtual-machine-scale-sets-limits)
 
 ### <a name="subscription-limits"></a>Limity subskrypcji
-#### <a name="subscription-limits"></a>Limity subskrypcji
+#### <a name="subscription-limits---azure-service-management-classic-resources"></a>Limity subskrypcji — Zarządzanie usługami platformy Azure (klasycznymi zasobami)
 [!INCLUDE [azure-subscription-limits](../includes/azure-subscription-limits.md)]
 
 #### <a name="subscription-limits---azure-resource-manager"></a>Limity subskrypcji — usługi Azure Resource Manager

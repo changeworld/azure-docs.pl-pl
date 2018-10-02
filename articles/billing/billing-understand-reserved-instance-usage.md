@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/08/2018
+ms.date: 09/28/2018
 ms.author: cwatson
-ms.openlocfilehash: c81db66637a4c56a36b6995ad8df0fe1967d08ef
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 1edf87d9ec334845f82c3c0c20c958e27f01e87a
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47391676"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585224"
 ---
 # <a name="understand-azure-reservation-usage-for-your-pay-as-you-go-subscription"></a>Opis rezerwacji platformy Azure dla Twojej subskrypcji zgodnie z rzeczywistym użyciem
 
@@ -62,9 +62,11 @@ Filtrowanie według **dodatkowe informacje** i wpisz swoje **identyfikator rezer
 4. **Identyfikator licznika** jest identyfikator miernika dla rezerwacji. Ten licznik kosztuje 0 USD. Ten identyfikator miernika pojawia się dla każdej maszyny Wirtualnej, która jest uprawniony do rabat związany z rezerwacją.
 5. Standardowa_ds1_v2 jest jeden procesor wirtualny maszyny Wirtualnej i maszyna wirtualna jest wdrażana bez korzyści użycia hybrydowego platformy Azure. Tak ten licznik obejmuje dodatkowych opłat w oprogramowania Windows. Licznik odpowiadający serii D 1-rdzeniowe maszyny Wirtualnej, możesz znaleźć [koszty oprogramowania Windows wystąpień maszyny Wirtualnej platformy Azure w rezerwy](billing-reserved-instance-windows-software-costs.md). Jeśli masz korzyść użycia hybrydowego platformy Azure, ta dodatkowa opłata nie została zastosowana.
 
-## <a name="usage-for-sql-database-reserved-capacity-reservations"></a>Użycie usługi SQL Database zastrzeżone rezerwacji wydajności
+## <a name="usage-for-sql-database--cosmos-db-reserved-capacity-reservations"></a>Użycie dla bazy danych SQL Database i Cosmos DB zastrzeżone rezerwacji wydajności
 
-Poniższe sekcje założono, że używasz bazy danych SQL Gen 4 w regionie wschodnim regionie USA i rezerwacji swoje informacje wygląda poniższej tabeli:
+Poniższe sekcje użyć usługi Azure SQL Database jako przykład do opisania raport użycia. Te same czynności można użyć, można również pobrać użycia usługi Azure Cosmos DB. 
+
+Załóżmy, że używasz bazy danych SQL Gen 4 w regionie wschodnim regionie USA i rezerwacji swoje informacje wygląda poniższej tabeli:
 
 | Pole | Wartość |
 |---| --- |
@@ -75,7 +77,7 @@ Poniższe sekcje założono, że używasz bazy danych SQL Gen 4 w regionie wscho
 
 ### <a name="statement-section-of-csv-file"></a>Instrukcja części pliku CSV
 
-Filtrowanie według **użycie wystąpień zarezerwowanych** nazwa miernika. Zostanie wyświetlona zawartość podobna Poniższy zrzut ekranu:
+Filtrowanie według **użycie wystąpień zarezerwowanych** pomiaru nazwę, a następnie wybierz wymagane **kategoria licznika** — bazy danych Azure SQL lub usługi Azure Cosmos DB. Zostanie wyświetlona zawartość podobna Poniższy zrzut ekranu:
 
 ![Plik CSV dla bazy danych SQL wydajności rezerwowej](./media/billing-understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
@@ -96,8 +98,8 @@ Filtrowanie według **dodatkowe informacje** i wpisz swoje **identyfikator rezer
 Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące artykuły:
 
 - [Co to jest Azure rezerwacje?](billing-save-compute-costs-reservations.md)
-- [Przedpłaty dotyczące maszyn wirtualnych przy użyciu wystąpienia zarezerwowane maszyn wirtualnych platformy Azure](../virtual-machines/windows/prepay-reserved-vm-instances.md)
-- [Zapłać z góry za zasoby obliczeniowe bazy danych SQL Database o pojemności usługi Azure SQL Database, zarezerwowane](../sql-database/sql-database-reserved-capacity.md)
+- [Prepay for Virtual Machines with Azure Reserved VM Instances (Opłacanie maszyn wirtualnych z góry przy użyciu usługi Azure Reserved VM Instances)](../virtual-machines/windows/prepay-reserved-vm-instances.md)
+- [Prepay for SQL Database compute resources with Azure SQL Database reserved capacity (Opłacanie zasobów obliczeniowych usługi SQL Database z góry przy użyciu zarezerwowanej pojemności usługi Azure SQL Database)](../sql-database/sql-database-reserved-capacity.md)
 - [Zarządzanie usługą Azure Reservations](billing-manage-reserved-vm-instance.md)
 - [Zrozumienie, jak stosowany jest rabat związany z rezerwacją](billing-understand-vm-reservation-charges.md)
 - [Opis zastrzeżenia dla Twojej rejestracji Enterprise](billing-understand-reserved-instance-usage-ea.md)
@@ -106,3 +108,5 @@ Aby dowiedzieć się więcej na temat rezerwacji Azure, zobacz następujące art
 ## <a name="need-help-contact-support"></a>Potrzebujesz pomocy? Kontakt z pomocą techniczną
 
 Jeśli nadal masz dodatkowe pytania, [się z pomocą techniczną](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) można szybko rozwiązać swój problem.
+
+

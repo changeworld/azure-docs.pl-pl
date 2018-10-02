@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 09/28/2018
 ms.author: jeffgilb
 ms.reviewer: brbartle
-ms.openlocfilehash: 09f5dbdb173e1613ed942391da7baaeb045654e4
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: d59de5beb01da3b23de0a7e177fd1cb1887694fc
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452534"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586057"
 ---
 # <a name="register-azure-stack-with-azure"></a>Rejestrowania usługi Azure Stack na platformie Azure
 
@@ -99,7 +99,7 @@ Wdrożenia usługi Azure Stack może być *połączone* lub *odłączony*.
 Podczas rejestrowania usługi Azure Stack na platformie Azure musisz podać nazwę unikatową rejestracji. Prosty sposób, aby skojarzyć subskrypcję usługi Azure Stack przy użyciu rejestracja w usłudze Azure jest użycie usługi Azure Stack **identyfikator chmury**. 
 
 > [!NOTE]
-> Azure rejestracje stosu przy użyciu model rozliczeń oparty na pojemności, należy zmienić unikatową nazwę, rejestrując ponownie po wygaśnięciu tych subskrypcji rocznej.
+> Azure rejestracje stosu przy użyciu model rozliczeń oparty na pojemności, należy zmienić unikatową nazwę, rejestrując ponownie po wygaśnięciu tych subskrypcji rocznej, chyba że użytkownik [Usuń wygasłe rejestracji](azure-stack-registration.md#change-the-subscription-you-use) i ponownie zarejestrowanie w usłudze Azure.
 
 Aby określić identyfikator chmury dla danego wdrożenia usługi Azure Stack, Otwórz program PowerShell jako administrator na komputerze, nie mogą uzyskiwać dostęp do uprzywilejowanych punktu końcowego, uruchom następujące polecenia i Zarejestruj **CloudID** wartość: 
 
@@ -318,12 +318,12 @@ Musisz zaktualizować lub odnowić rejestrację w następujących okolicznościa
 
 #### <a name="change-the-subscription-you-use"></a>Zmień subskrypcję, których używasz
 
-Jeśli chcesz zmienić subskrypcję możesz użyć, należy najpierw uruchomić **AzsRegistration Usuń** polecenia cmdlet, upewnij się, że użytkownik jest zalogowany do poprawnego kontekstu programu Azure PowerShell, a na koniec uruchom **AzsRegistration zestawu**  ze wszystkimi zmienić parametry:
+Jeśli chcesz zmienić subskrypcję możesz użyć, należy najpierw uruchomić **AzsRegistration Usuń** polecenia cmdlet, upewnij się, że użytkownik jest zalogowany do poprawnego kontekstu programu Azure PowerShell, a na koniec uruchom **AzsRegistration zestawu**  parametrami zmiany w tym \<model rozliczeń\>:
 
   ```PowerShell  
   Remove-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint
   Set-AzureRmContext -SubscriptionId $NewSubscriptionId
-  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel PayAsYouUse -RegistrationName $RegistrationName
+  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel <billing model> -RegistrationName $RegistrationName
   ```
 
 #### <a name="change-the-billing-model-or-how-to-offer-features"></a>Zmień model rozliczeń lub jak oferują funkcje
@@ -331,7 +331,7 @@ Jeśli chcesz zmienić subskrypcję możesz użyć, należy najpierw uruchomić 
 Jeśli chcesz zmienić model rozliczeń lub zaoferować funkcji dla instalacji, można wywołać funkcję rejestracji, aby ustawić nowe wartości. Musisz najpierw usunąć bieżący rejestracji:
 
   ```PowerShell  
-  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel PayAsYouUse -RegistrationName $RegistrationName
+  Set-AzsRegistration -PrivilegedEndpointCredential $YourCloudAdminCredential -PrivilegedEndpoint $YourPrivilegedEndpoint -BillingModel <billing model> -RegistrationName $RegistrationName
   ```
 
 ### <a name="renew-or-change-registration-in-disconnected-environments"></a>Odnów lub zmienić rejestracji w środowiskach rozłączonych

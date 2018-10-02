@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 09/14/2017
 ms.author: daveba
-ms.openlocfilehash: bb62f892ec3d171958764d10f4b069bbd536d2ea
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f50714538cdfd1a0bd258a3b78d0885e3c7beed1
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47223444"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018489"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-an-azure-vm-using-a-templates"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na Maszynie wirtualnej platformy Azure przy użyciu szablonów
 
@@ -188,7 +188,7 @@ Jeśli masz maszynę Wirtualną, która nie wymaga tożsamości zarządzanej prz
 
    Jeśli maszyna wirtualna ma system i zarządzanych tożsamości przypisanych przez użytkownika, Usuń `SystemAssigned` z typu tożsamości i zachować `UserAssigned` wraz z `userAssignedIdentities` wartości w słowniku.
 
-   **Microsoft.Compute/virtualMachines interfejsu API w wersji 2018-06-01 i starszych wersji**
+   **Microsoft.Compute/virtualMachines interfejsu API w wersji 2018-06-01**
    
    Jeśli Twoje `apiVersion` jest `2017-12-01` i maszyna wirtualna ma systemowych i tożsamości przypisanych przez użytkownika zarządzanego, Usuń `SystemAssigned` z typu tożsamości i zachować `UserAssigned` wraz z `identityIds` tablicę użytkownik przypisany zarządzanych tożsamości.  
    
@@ -235,7 +235,7 @@ W tej sekcji należy przypisać tożsamości zarządzanej przypisanych przez uż
    }
    ```
    
-   **Microsoft.Compute/virtualMachines interfejsu API w wersji 2017-12-01 i starszych wersji**
+   **Microsoft.Compute/virtualMachines interfejsu API w wersji 2017-12-01**
     
    Jeśli Twoje `apiVersion` jest `2017-12-01`, zarządzanych tożsamości przypisanych przez użytkownika są przechowywane w `identityIds` tablicy i `<USERASSIGNEDIDENTITYNAME>` wartość musi być przechowywany w zmiennej zdefiniowanej w `variables` części szablonu.
     
@@ -316,7 +316,7 @@ W tej sekcji należy przypisać tożsamości zarządzanej przypisanych przez uż
        }
     ]
    ```
-   **Microsoft.Compute/virtualMachines interfejsu API w wersji 2017-12-01 i starszych wersji**
+   **Microsoft.Compute/virtualMachines interfejsu API w wersji 2017-12-01**
    
    ```JSON
    "resources": [
@@ -375,7 +375,7 @@ Jeśli masz maszynę Wirtualną, która nie wymaga tożsamości zarządzanej prz
     }
    ```
    
-   **Microsoft.Compute/virtualMachines interfejsu API w wersji 2018-06-01 i starszych wersji**
+   **Microsoft.Compute/virtualMachines interfejsu API w wersji 2018-06-01**
     
    Aby usunąć pojedynczy tożsamość zarządzaną przypisanych przez użytkownika z maszyny Wirtualnej, usuń go z `useraAssignedIdentities` słownika.
 

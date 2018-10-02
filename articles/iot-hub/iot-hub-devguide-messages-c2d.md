@@ -1,6 +1,6 @@
 ---
-title: Zrozumienie wiadomości chmury do urządzenia Azure IoT Hub | Dokumentacja firmy Microsoft
-description: Przewodnik dewelopera - sposobu korzystania z chmury do urządzenia wiadomości z Centrum IoT. Zawiera informacje na temat cykl życia komunikatów i opcji konfiguracji.
+title: Omówienie obsługi komunikatów chmura urządzenie usługi Azure IoT Hub | Dokumentacja firmy Microsoft
+description: Przewodnik dla deweloperów — jak korzystać z chmury do urządzenia, obsługa komunikatów za pomocą usługi IoT Hub. Zawiera informacje na temat cykl życia komunikatów i opcje konfiguracji.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,82 +8,84 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 03/15/2018
 ms.author: dobett
-ms.openlocfilehash: d3d8df0d1e00fdff4d0e1e93715e1a408116d1e7
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3f137ea80dc67bb075f34846e5563fb72c72b69a
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632479"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585649"
 ---
-# <a name="send-cloud-to-device-messages-from-iot-hub"></a>Wysyłanie wiadomości chmury do urządzenia z Centrum IoT
+# <a name="send-cloud-to-device-messages-from-iot-hub"></a>Wysyłanie komunikatów z chmury do urządzeń z usługi IoT Hub
 
-Aby wysyłać powiadomienia jednokierunkowe aplikacji urządzenia z Twojej zaplecza rozwiązania, wysyłać chmury do urządzenia z Centrum IoT na urządzeniu. Omówienie innych opcji chmury do urządzeń obsługiwanych przez Centrum IoT można znaleźć [wskazówki dotyczące komunikacji chmury do urządzenia][lnk-c2d-guidance].
+Wysyłać jednokierunkowe powiadomienia aplikacji urządzenia z zapleczem rozwiązania, wysyłanie komunikatów z chmury do urządzenia z usługi IoT hub na urządzenie. Aby uzyskać omówienie inne opcje chmury do urządzeń obsługiwanych przez usługę IoT Hub, zobacz [wskazówki dotyczące komunikacji z chmury do urządzenia](iot-hub-devguide-c2d-guidance.md).
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-Wysyłanie wiadomości chmury do urządzenia za pośrednictwem punktu końcowego usługi połączonej (**/wiadomości/devicebound**). Urządzenie otrzyma wiadomości za pośrednictwem punktu końcowego specyficzne dla urządzenia (**/devices/ {deviceId} / wiadomości/devicebound**).
+Wysyłanie komunikatów z chmury do urządzeń za pośrednictwem punktu końcowego usługi skierowaną (**/komunikatów/devicebound**). Urządzenie odbiera komunikaty za pośrednictwem punktu końcowego specyficznych dla urządzenia (**/devices/ {deviceId} / komunikatów/devicebound**).
 
-Aby skierować każdy komunikat chmury do urządzenia, na jednym urządzeniu, ustawia Centrum IoT **do** właściwości **/devices/ {deviceId} / wiadomości/devicebound**.
+Pod kątem każdego komunikatu chmura urządzenie, na jednym urządzeniu, usługa IoT Hub ustawia **do** właściwości **/devices/ {deviceId} / komunikatów/devicebound**.
 
-Każda kolejka urządzenia zawiera maksymalnie 50 wiadomości chmury do urządzenia. Próbuje wysłać komunikaty do tego samego urządzenia powoduje błąd.
+Każda kolejka urządzenia zawiera maksymalnie 50 wiadomości chmury do urządzenia. Próbuje wysłać więcej wiadomości do tego samego urządzenia powoduje wystąpienie błędu.
 
-## <a name="the-cloud-to-device-message-lifecycle"></a>Cykl życia komunikatów chmury do urządzenia
+## <a name="the-cloud-to-device-message-lifecycle"></a>Cykl życia komunikatów chmura urządzenie
 
-Aby zagwarantować dostarczanie komunikatów w najmniej jednokrotne, Centrum IoT utrzymuje chmury do urządzenia komunikatów w kolejkach na urządzenie. Urządzenia musi jawnie potwierdzić *zakończenia* dla Centrum IoT je usunąć z kolejki. Ta metoda gwarantuje odporność na błędy urządzenia i łączności.
+Aby zagwarantować dostarczanie komunikatów co najmniej jednokrotne, usługa IoT Hub utrzymuje komunikatów z chmury do urządzeń w kolejkach na urządzenie. Urządzenia musi jawnie potwierdzić *uzupełniania* usługi IoT Hub je usunąć z kolejki. Ta metoda gwarantuje odporność na łączność i awarii urządzenia.
 
-Poniższy diagram przedstawia wykres stan cyklu życia komunikatu chmura urządzenie w Centrum IoT.
+Na poniższym diagramie przedstawiono wykres stanu cyklu życia dla komunikatu chmury do urządzenia w usłudze IoT Hub.
 
-![Cykl życia komunikatów chmury do urządzenia][img-lifecycle]
+![Cykl życia komunikatów z chmury do urządzenia](./media/iot-hub-devguide-messages-c2d/lifecycle.png)
 
-Gdy usługa Centrum IoT wysyła wiadomość do urządzenia, Usługa ustawia stan wiadomości **umieszczonych w kolejce**. Gdy urządzenie będzie chciał *odbierania* komunikat Centrum IoT *blokad* wiadomości (przez ustawienie stanu **niewidoczne**), co pozwala na urządzeniu, aby rozpocząć odbieranie inne komunikaty inne wątki. Po zakończeniu przetwarzania komunikatów wątku urządzenia powiadomi Centrum IoT przez *Kończenie* wiadomości. Centrum IoT ustawia stan do **Ukończono**.
+Gdy usługa IoT Hub wysyła wiadomość do urządzenia, Usługa ustawia stan komunikatu **umieszczonych w kolejce**. Kiedy urządzenie chce *otrzymywać* komunikat usługi IoT Hub *blokad* komunikat (ustawiając stan **niewidoczne**), co pozwala na urządzeniu, aby zacząć otrzymywać inne wątki inne komunikaty. Po zakończeniu przetwarzania komunikatów wątku urządzenia powiadamia o Centrum IoT Hub, *Kończenie* wiadomości. Usługa IoT Hub ustawia stan do **Ukończono**.
 
-Urządzenia można także wybrać opcję:
+Urządzenia można również wybrać:
 
-* *Odrzuć* wiadomości, co powoduje, że Centrum IoT ustawić ją na **martwych lettered** stanu. Urządzeń łączących się za pośrednictwem protokołu MQTT nie można odrzucić wiadomości chmury do urządzenia.
-* *Porzuć* wiadomości, co powoduje, że Centrum IoT umieścić wiadomości w kolejce, ze stanem ustawioną **umieszczonych w kolejce**. Urządzeń łączących się za pośrednictwem protokołu MQTT nie można porzucić wiadomości chmury do urządzenia.
+* *Odrzuć* wiadomości, co powoduje, że usługi IoT Hub ustawić go na **Dead lettered** stanu. Urządzenia łączące się za pośrednictwem protokołu MQTT, nie można odrzucić komunikatów z chmury do urządzeń.
 
-Wątek może się nie powieść przetworzyć komunikatu bez powiadamiania Centrum IoT. W takim przypadku wiadomości automatycznie przejście od **niewidoczne** stanu do **umieszczonych w kolejce** stanu po *limitu czasu widoczności (lub blokowania)*. Wartość domyślna tego limitu czasu jest jedna minuta.
+* *Porzuć* wiadomości, co powoduje, że usługi IoT Hub można umieścić komunikatu w kolejce, ze stanem równa **umieszczonych w kolejce**. Urządzenia łączące się za pośrednictwem protokołu MQTT nie można porzucić komunikatów z chmury do urządzeń.
 
-**Maksymalna liczba dostarczania** właściwość Centrum IoT określa maksymalną liczbę razy komunikat może przejść między **umieszczonych w kolejce** i **niewidoczne** stanów. Po liczby przejść, Centrum IoT ustawia stan wiadomości **martwych lettered**. Podobnie, ustawia stan wiadomości w Centrum IoT **martwych lettered** po godzinie wygaśnięcia (zobacz [czas wygaśnięcia][lnk-ttl]).
+Wątek może się nie powieść przetwarzania wiadomości bez powiadamiania usługi IoT Hub. W tym przypadku wiadomości automatyczne przejście z **niewidoczne** powrót do stanu **umieszczonych w kolejce** stanu po *limitu czasu widoczności (lub blokady)*. Wartość domyślna tego limitu czasu jest jedna minuta.
 
-[Sposób wysyłania wiadomości chmury do urządzenia z Centrum IoT] [ lnk-c2d-tutorial] pokazano, jak wysyłać chmury do urządzenia z chmury i ich odbierania na urządzeniu.
+**Maksymalna liczba prób dostarczenia** właściwość w Centrum IoT Hub określa maksymalną liczbę razy komunikat może przejść między **umieszczonych w kolejce** i **niewidoczne** stanów. Po tej liczbie przejścia usługi IoT Hub, ustawia stan wiadomości do **Dead lettered**. Podobnie, usługa IoT Hub ustawia stan wiadomości do **Dead lettered** po jego czas wygaśnięcia (zobacz [czas wygaśnięcia](#message-expiration-time-to-live)).
 
-Zazwyczaj urządzenia wypełnia komunikat chmury do urządzenia, gdy wiadomości nie wpływa na logiki aplikacji. Na przykład operacji wykonywane po urządzenia utrwalił komunikat zawartości lokalnie lub został pomyślnie. Komunikat może również zawierać informacje przejściowy, w których utraty nie może mieć wpływ na funkcjonalność aplikacji. Czasami dla długotrwałych zadań, można:
+[o sposobie wysyłania komunikatów z chmury do urządzeń z usługą IoT Hub](iot-hub-csharp-csharp-c2d.md) pokazuje, jak wysyłać komunikaty z chmury do urządzenia w chmurze i odbierać je na urządzeniu.
 
-* Ukończ komunikatu chmura urządzenie po trwałym opis zadania w magazynie lokalnym.
-* Powiadom zaplecza rozwiązania z jednego lub więcej komunikatów urządzenia do chmury na różnych etapach postęp zadania.
+Zazwyczaj urządzenia kończy wiadomość chmury do urządzenia, gdy utraty komunikat nie ma wpływu na logice aplikacji. Na przykład, kiedy urządzenie zawiera utrwalone lokalnie zawartości komunikatu lub został pomyślnie wykonać operacji. Komunikat może również zawierać informacje przejściowych, w której utraty nie mogło mieć wpływ na funkcjonalność aplikacji. Czasami, w przypadku długotrwałych zadań, możesz:
 
-## <a name="message-expiration-time-to-live"></a>Wygaśnięcia wiadomości (czas wygaśnięcia)
+* Zakończ wiadomość chmury do urządzenia po przechowywanie opis zadania w magazynie lokalnym.
 
-Każdy komunikat chmury do urządzenia ma czasu wygaśnięcia. Ten czas jest ustawiony przez jeden z:
+* Powiadom zaplecze rozwiązania z jednego lub więcej komunikatów z urządzenia do chmury na różnych etapach postęp zadania.
+
+## <a name="message-expiration-time-to-live"></a>Wygaśnięcie komunikatu (czas wygaśnięcia)
+
+Wszystkie komunikaty z chmury do urządzeń ma czas wygaśnięcia. Tym razem zostanie ustawiony przez jeden z:
 
 * **ExpiryTimeUtc** właściwości w usłudze.
-* Centrum IoT przy użyciu domyślnego *czas wygaśnięcia* określony jako właściwość Centrum IoT.
+* Usługi IoT Hub przy użyciu domyślnego *czas wygaśnięcia* określony jako właściwość Centrum IoT Hub.
 
-Zobacz [opcje konfiguracji chmury do urządzenia][lnk-c2d-configuration].
+Zobacz [opcje konfiguracji chmury do urządzenia](#cloud-to-device-configuration-options).
 
-Typowym sposobem wykorzystać wygaśnięcia wiadomości i uniknąć wysyłanie komunikatów do odłączonego urządzenia jest skonfigurowanie krótki czas wygaśnięcia wartości. Takie podejście osiąga ten sam rezultat jako obsługi stanu połączenia urządzenia, będąc bardziej wydajne. W przypadku żądania potwierdzeń wiadomości, Centrum IoT powiadamia użytkownika, które urządzenia są:
+Typowym sposobem zalet wygaśnięcie komunikatu i uniknąć wysyłanie komunikatów do odłączone urządzenia, jest ustalenie krótki czas wygaśnięcia wartości. To podejście osiąga ten sam wynik jako zachowaniu stanu połączenia urządzenia, będąc bardziej wydajne. Żądając potwierdzeń komunikatów usługi IoT Hub powiadamia użytkownika, które urządzenia są:
 
 * Może odbierać wiadomości.
-* Nie są w trybie online lub nie powiodło się.
+* Nie są w trybie online lub zakończyć się niepowodzeniem.
 
-## <a name="message-feedback"></a>Komunikat opinii
+## <a name="message-feedback"></a>Komunikat o opinię
 
-Podczas wysyłania komunikatu chmura urządzenie, usługa może wysłać żądanie dostarczania wiadomości informacji dotyczących stanu końcowego tej wiadomości.
+Podczas wysyłania komunikatu chmura urządzenie usługi mogą żądać dostarczanie wiadomości opinię na temat stanu końcowego tego komunikatu.
 
 | Właściwość ACK. | Zachowanie |
 | ------------ | -------- |
-| **Dodatnią** | Jeśli osiągnie komunikatu chmura urządzenie **Ukończono** stanu Centrum IoT generuje komunikat opinii. |
-| **negative** | Jeśli osiągnie komunikatu chmura urządzenie **martwych lettered** stanu Centrum IoT generuje komunikat opinii. |
-| **full**     | Centrum IoT generuje komunikat opinii w każdym przypadku. |
+| **Dodatnie** | Jeśli osiągnie komunikatu chmura urządzenie **Ukończono** stanu usługi IoT Hub generuje komunikat opinii. |
+| **negative** | Jeśli osiągnie komunikatu chmura urządzenie **Dead lettered** stanu usługi IoT Hub generuje komunikat opinii. |
+| **full**     | Usługa IoT Hub generuje komunikat opinii w obu przypadkach. |
 
-Jeśli **potwierdzenia** jest **pełne**i nie zostanie wyświetlony komunikat opinii, oznacza to, że opinia wygasł. Usługa nie może znać, co się stało z oryginalnej wiadomości. W praktyce usługi powinien upewnić, że opinii może przetworzyć przed jej wygaśnięciem. Czas wygaśnięcia maksymalną dwa dni, które pozostawia czas pobierania usługi działa ponownie, jeśli wystąpi błąd.
+Jeśli **potwierdzenia** jest **pełne**, a nie pojawi się komunikat o opinię, oznacza to, że opinia wygasł. Usługa nie wiedzieć, co się stało z oryginalnej wiadomości. W praktyce usługi należy upewnić się, że opinia może przetworzyć przed jej wygaśnięciem. Maksymalny czas wygaśnięcia jest dwa dni, a co pozostawia czas na usługę ponownie uruchomić po wystąpieniu błędu.
 
-Zgodnie z objaśnieniem w [punkty końcowe][lnk-endpoints], Centrum IoT zapewnia informacje zwrotne przez punkt końcowy usługi połączonej (**/messages/servicebound/feedback**) jako wiadomości. Semantyka do odbierania opinii są takie same, jak w przypadku wiadomości chmury do urządzenia. Jeśli to możliwe, opinie komunikat jest przetwarzany wsadowo w pojedynczym komunikacie o następującym formacie:
+Jak wyjaśniono w [punktów końcowych](iot-hub-devguide-endpoints.md), IoT Hub dostarczy opinii za pośrednictwem punktu końcowego usługi skierowaną (**/messages/servicebound/feedback**) jako komunikaty. Semantyka dla otrzymująca opinie są takie same jak dla komunikatów z chmury do urządzeń. Jeśli to możliwe, opinii wiadomości jest partii w pojedynczym komunikacie o następującym formacie:
 
 | Właściwość     | Opis |
 | ------------ | ----------- |
-| EnqueuedTime | Sygnatura czasowa wskazująca otrzymania wiadomości opinii przez koncentratora. |
+| EnqueuedTime | Sygnatura czasowa wskazująca, kiedy odebrano komunikat opinii przez Centrum. |
 | UserId       | `{iot hub name}` |
 | ContentType  | `application/vnd.microsoft.iothub.feedback.json` |
 
@@ -91,16 +93,16 @@ Treść jest serializacji JSON tablicą rekordów, każdy z następującymi wła
 
 | Właściwość           | Opis |
 | ------------------ | ----------- |
-| EnqueuedTimeUtc    | Sygnatura czasowa wskazująca, kiedy wystąpiło wynik komunikatu. Na przykład koncentratora odebrał komunikat opinii lub wygasłe oryginalnej wiadomości. |
-| OriginalMessageId  | **Identyfikator komunikatu** wiadomości chmury do urządzenia, do którego odnosi się ten opinii. |
-| StatusCode         | Wymagany ciąg. Używane w opinii komunikaty generowane przez Centrum IoT. <br/> 'Success' <br/> "Wygasł" <br/> 'DeliveryCountExceeded' <br/> "Odrzucone" <br/> "Usunięte" |
-| Opis        | Ciąg wartości **StatusCode**. |
-| DeviceId           | **DeviceId** urządzenia docelowego komunikatu chmury do urządzenia, do którego odnosi się ten element opinii. |
-| DeviceGenerationId | **DeviceGenerationId** urządzenia docelowego komunikatu chmury do urządzenia, do którego odnosi się ten element opinii. |
+| EnqueuedTimeUtc    | Sygnatura czasowa wskazująca, kiedy się stało wynik komunikatu. Na przykład Centrum odebrał komunikat o opinie lub wygasła w oryginalnej wiadomości. |
+| OriginalMessageId  | **Identyfikator komunikatu** komunikatu chmura urządzenie dotyczy tych informacji opinii. |
+| StatusCode         | Wymagany ciąg. Używane w komunikatów zwrotnych generowane przez usługę IoT Hub. <br/> 'Success' <br/> "Wygasły" <br/> 'DeliveryCountExceeded' <br/> "Odrzucone" <br/> "Usunięte" |
+| Opis        | Wartości dla ciągów **StatusCode**. |
+| DeviceId           | **DeviceId** urządzenia docelowego komunikatu chmura urządzenie, do którego odnosi się ten element opinii. |
+| DeviceGenerationId | **DeviceGenerationId** urządzenia docelowego komunikatu chmura urządzenie, do którego odnosi się ten element opinii. |
 
-Usługa musi określać **MessageId** wiadomości chmury do urządzenia mógł skorelowania jego opinii z oryginalnej wiadomości.
+Należy określić usługę **MessageId** dla komunikatu chmury do urządzenia mieć możliwość skorelowania swoją opinię przy użyciu oryginalnego komunikatu.
 
-W poniższym przykładzie przedstawiono treści wiadomości opinii.
+Poniższy przykład pokazuje treść komunikatu opinii.
 
 ```json
 [
@@ -121,30 +123,19 @@ W poniższym przykładzie przedstawiono treści wiadomości opinii.
 
 ## <a name="cloud-to-device-configuration-options"></a>Opcje konfiguracji chmury do urządzenia
 
-Każdy Centrum IoT udostępnia następujące opcje konfiguracji dla obsługi wiadomości chmury do urządzenia:
+Każde Centrum IoT hub udostępnia następujące opcje konfiguracji dla komunikatów z chmury do urządzenia:
 
 | Właściwość                  | Opis | Zakres i domyślne |
 | ------------------------- | ----------- | ----------------- |
-| defaultTtlAsIso8601       | Domyślny czas wygaśnięcia wiadomości chmury do urządzenia. | Interwał ISO_8601 maksymalnie 2D (minimalna 1 minuta). Wartość domyślna: 1 godzina. |
-| maxDeliveryCount          | Liczba maksymalna dostarczania dla kolejek chmury do urządzenia na urządzeniu. | 1 do 100. Domyślny: 10. |
-| feedback.ttlAsIso8601     | Przechowywanie komunikatów usługi powiązane z opinii. | Interwał ISO_8601 maksymalnie 2D (minimalna 1 minuta). Wartość domyślna: 1 godzina. |
-| feedback.maxDeliveryCount |Liczba maksymalna dostarczania dla kolejki opinii. | 1 do 100. Domyślnie: 100. |
+| defaultTtlAsIso8601       | Domyślny czas wygaśnięcia dla komunikatów z chmury do urządzeń. | Interwał ISO_8601 maksymalnie 2D (minimalna 1 minuta). Wartość domyślna: 1 godzina. |
+| maxDeliveryCount          | Maksymalna liczba dostarczonych komunikatów kolejek chmury do urządzenia na urządzenie. | 1 do 100. Domyślnie: 10. |
+| feedback.ttlAsIso8601     | Przechowywanie komunikatów zwrotnych powiązane z usługi. | Interwał ISO_8601 maksymalnie 2D (minimalna 1 minuta). Wartość domyślna: 1 godzina. |
+| feedback.maxDeliveryCount |Maksymalna liczba dostarczonych komunikatów kolejki opinii. | 1 do 100. Domyślnie: 100. |
 
-Aby uzyskać więcej informacji na temat ustawiania tych opcji konfiguracji, zobacz [centra IoT utworzyć][lnk-portal].
+Aby uzyskać więcej informacji na temat ustawiania tych opcji konfiguracji, zobacz [centra IoT tworzenie](iot-hub-create-through-portal.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby uzyskać informacje o zestawy SDK służy do odbierania wiadomości chmury do urządzenia, zobacz [Azure IoT SDK][lnk-sdks].
+Aby uzyskać informacje dotyczące zestawów SDK, można użyć do odbierania komunikatów z chmury do urządzeń, zobacz [Azure IoT SDKs](iot-hub-devguide-sdks.md).
 
-Aby wypróbować odbieranie komunikatów chmury do urządzenia, zobacz [wysyłania chmury do urządzenia] [ lnk-c2d-tutorial] samouczka.
-
-[img-lifecycle]: ./media/iot-hub-devguide-messages-c2d/lifecycle.png
-
-[lnk-portal]: iot-hub-create-through-portal.md
-[lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md
-[lnk-endpoints]: iot-hub-devguide-endpoints.md
-[lnk-sdks]: iot-hub-devguide-sdks.md
-[lnk-ttl]: #message-expiration-time-to-live
-[lnk-c2d-configuration]: #cloud-to-device-configuration-options
-[lnk-lifecycle]: #message-lifecycle
-[lnk-c2d-tutorial]: iot-hub-csharp-csharp-c2d.md
+Aby wypróbować odbieranie komunikatów z chmury do urządzeń, zobacz [wysyłania z chmury do urządzenia](iot-hub-csharp-csharp-c2d.md) samouczka.

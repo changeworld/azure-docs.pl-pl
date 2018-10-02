@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: cbfe3022c4ffd03e4ab93682eb14a5a588aa0013
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ef70d3d3dd2a806ea978be8e996b7d5ba0fbc96b
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47409477"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586363"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -236,7 +236,7 @@ Aby wyświetlić te błędy, uruchom **FileSyncErrorsReport.ps1** skrypt program
 | 0x80c80017 | -2134376425 | ECS_E_SYNC_OPLOCK_BROKEN | Plik został zmieniony podczas synchronizacji, więc musi on zostać ponownie zsynchronizowany. | Nie jest wymagana żadna akcja. |
 
 #### <a name="handling-unsupported-characters"></a>Obsługa nieobsługiwane znaki
-Jeśli **FileSyncErrorsReport.ps1** skrypt programu PowerShell pokazuje błędy spowodowane nieobsługiwane znaki (0x7b kody błędów i 0x8007007b), należy usunąć lub zmienić nazwę znaków na pozycji błędu z odpowiednich plików. Program PowerShell prawdopodobnie zostanie wydrukowana te znaki jako znaki zapytania lub prostokąty pusty, ponieważ większość z tych znaków ma nie standardowych wizualnego kodowania. [Narzędzie przeszedł ocenę](storage-sync-files-planning.md#evaluation-tool) może służyć do identyfikowania znaków, które nie są obsługiwane.
+Jeśli **FileSyncErrorsReport.ps1** skrypt programu PowerShell pokazuje błędy spowodowane nieobsługiwane znaki (0x7b kody błędów i 0x8007007b), należy usunąć lub zmienić znaków na pozycji błędu z nazwami odpowiednich plików. Program PowerShell prawdopodobnie zostanie wydrukowana te znaki jako znaki zapytania lub prostokąty pusty, ponieważ większość z tych znaków ma nie standardowych wizualnego kodowania. [Uruchamiania narzędzia oceny](storage-sync-files-planning.md#evaluation-tool) może służyć do identyfikowania znaków, które nie są obsługiwane.
 
 Poniższa tabela zawiera wszystkie znaki unicode, który nie obsługuje jeszcze usługi Azure File Sync.
 

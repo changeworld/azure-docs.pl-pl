@@ -10,12 +10,12 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: kakampf
-ms.openlocfilehash: 5be239fd3c77872a59b37efc6de5fc42aca9bb0c
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 2047a9fbbe1bc7d867bb1c300f882e287ab8ad73
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47395818"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018914"
 ---
 # <a name="what-are-the-hadoop-components-and-versions-available-with-hdinsight"></a>Jakie są składniki i wersje dostępne z HDInsight?
 
@@ -82,7 +82,7 @@ W poniższej tabeli wymieniono wersje HDInsight, które są dostępne w witrynie
 | HDInsight 3.6 |HDP 2.6 |Ubuntu 16.0.4 LTS |4 kwietnia 2017 r. | | |Yes |Yes |
 | HDInsight 3.5 <br> (Spark) * |HDP 2.6 |Ubuntu 16.0.4 LTS |30 września 2016 r. |13 marca 2019 r. |13 marca 2019 r. |Yes |Yes |
 
-*Obsługa HDInsight 3.5 został rozszerzony tylko dla typów klastrów Spark*
+*&ast; Obsługa HDInsight 3.5 został rozszerzony tylko dla typów klastrów Spark*
 
 > [!NOTE]
 > Po pomocy technicznej dla wersji wygasła, może nie być dostępne za pośrednictwem portalu Microsoft Azure. Natomiast wersjach klastra nadal dostępne za pośrednictwem `Version` parametru w programie Windows PowerShell [poleceniu New-AzureRmHDInsightCluster](https://docs.microsoft.com/powershell/module/azurerm.hdinsight/new-azurermhdinsightcluster) polecenia i zestawu .NET SDK do wersji dacie wycofania.

@@ -1,6 +1,6 @@
 ---
 title: Wykrywanie anomalii w usłudze Azure Stream Analytics (wersja zapoznawcza)
-description: W tym artykule opisano, jak używać usługi Azure Stream Analytics i usługi Azure Machine Learning razem do wykrywania anomalii.
+description: W tym artykule opisano sposób korzystania ze sobą usługi Azure Stream Analytics i Azure Machine Learning do wykrywania anomalii.
 services: stream-analytics
 author: dubansal
 ms.author: dubansal
@@ -9,29 +9,29 @@ ms.reviewer: jasonh
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 04/09/2018
-ms.openlocfilehash: e7274e4507d901a209ed5832e98ca630feefda4f
-ms.sourcegitcommit: 9cdd83256b82e664bd36991d78f87ea1e56827cd
+ms.openlocfilehash: 045d7623c3f00ee984dad406247e3197a4ecc45a
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 04/16/2018
-ms.locfileid: "31420099"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586175"
 ---
-# <a name="anomaly-detection-in-azure-stream-analytics"></a>Wykrywanie anomalii w Azure Stream Analytics
+# <a name="anomaly-detection-in-azure-stream-analytics"></a>Wykrywanie anomalii w usłudze Azure Stream Analytics
 
 > [!IMPORTANT]
-> Ta funkcja jest dostępna w wersji zapoznawczej, nie jest zaleca się korzystanie z obciążeń produkcyjnych.
+> Ta funkcja jest w trakcie wycofywane, ale zostanie zastąpiony nowych funkcji. Aby uzyskać więcej informacji, odwiedź stronę [osiem nowych funkcji w usłudze Azure Stream Analytics](https://azure.microsoft.com/en-us/blog/eight-new-features-in-azure-stream-analytics/) wpis w blogu.
 
-**AnomalyDetection** operator jest używana do wykrywania różnych typów anomalii w strumieni zdarzeń. Na przykład powolne spadek wolnej pamięci przez dłuższy czas może wskazywać przeciek pamięci lub liczbę żądań usług sieci web, które są trwałe w zakresie może znacznie zwiększyć lub zmniejszyć.  
+**AnomalyDetection** operator jest używany do wykrywania różne rodzaje anomalii w strumieniach zdarzeń. Na przykład powolne spadek wolnej pamięci przez dłuższy czas może wskazywać przeciek pamięci lub liczbę żądań usług sieci web, które są trwałe w zakresie może znacznie zwiększyć lub zmniejszyć.  
 
-AnomalyDetection operator wykrywa trzy typy anomalii: 
+AnomalyDetection operator wykrywa trzy rodzaje anomalii: 
 
-* **Zmień poziom dwukierunkowego**: utrzymujących zwiększyć lub zmniejszyć poziom wartości, zarówno w górę, jak i w dół. Ta wartość jest inna niż impulsy i DIP, które zmian natychmiastowego lub w krótkim okresie.  
+* **Zmień poziom dwukierunkowego**: stałego zwiększyć lub zmniejszyć poziom wartości, zarówno w górę, jak i w dół. Ta wartość jest inna niż wzrostów i DIP, które są zmianami natychmiastowego lub krótkotrwałe.  
 
-* **Powolna dodatnią Trend**: powolne wzrost trend w czasie.  
+* **Wolne trendów pozytywnych**: powolne wzrost trend wraz z upływem czasu.  
 
-* **Powolna ujemna Trend**: powolne spadek trend w czasie.  
+* **Wolne ujemna Trend**: powolne spadek trend wraz z upływem czasu.  
 
-Przy użyciu operatora AnomalyDetection, należy określić **Limit Duration** klauzuli. Klauzulę Określa przedział czasu (jak daleko w historii z bieżącego zdarzenia) należy uwzględnić podczas wykrywania anomalii. Ten operator może być opcjonalnie maksymalnie tylko zdarzenia, które odpowiada za pomocą niektórych właściwości lub warunek **podczas** klauzuli. Ten operator może przetwarzać również opcjonalnie grup zdarzeń klucz określony w oparciu o oddzielnie **partycji przez** klauzuli. Szkolenie i prognozowania są wykonywane niezależnie dla każdej partycji. 
+Za pomocą operatora AnomalyDetection, należy określić **Limit Duration** klauzuli. Ta klauzula Określa przedział czasu (jak daleko w historii z bieżącego zdarzenia) należy uwzględnić podczas wykrywania anomalii. Opcjonalnie Ten operator może być ograniczone wyłącznie te zdarzenia, które odpowiadają określoną właściwość lub warunek, za pomocą **podczas** klauzuli. Ten operator może również opcjonalnie przetwarzać grup zdarzeń oddzielnie w zależności od klucza określonego w **partycji przez** klauzuli. Uczenia i przewidywania występować niezależnie dla każdej partycji. 
 
 ## <a name="syntax-for-anomalydetection-operator"></a>Składnia AnomalyDetection — operator
 
@@ -43,122 +43,122 @@ Przy użyciu operatora AnomalyDetection, należy określić **Limit Duration** k
 
 ### <a name="arguments"></a>Argumenty
 
-* **scalar_expression** — wyrażenie skalarne, w którym odbywa się wykrywania anomalii. Dozwolone wartości dla tego parametru to Float lub typy danych Bigint to zwracany pojedynczą wartość (skalarną). Wyrażenia z symbolami wieloznacznymi **\*** jest niedozwolone. Wyrażenie skalarne nie może zawierać inne funkcje analityczne lub funkcji zewnętrznych. 
+* **wyrażenie_skalarne** -wyrażenie skalarne, nad którym odbywa się wykrywanie anomalii. Dozwolone wartości dla tego parametru obejmują Float lub typy danych Bigint oznacza zwracany pojedynczy () wartość skalarną. Wyrażenia z symbolami wieloznacznymi **\*** jest niedozwolone. Wyrażenie skalarne, które nie mogą zawierać inne funkcje analityczne lub funkcji zewnętrznych. 
 
-* **partition_by_clause** — `PARTITION BY <partition key>` klauzuli dzieli uczenie i szkolenia w osobnych partycji. Innymi słowy, oddzielne modelu będzie służyć za wartości `<partition key>` i tylko zdarzenia z daną wartością mają być używane do nauki i szkolenia w tym modelu. Na przykład następujące pociągu zapytania i wyniki a odczytu względem innych odczyty tylko tej samej czujnika:
+* **partition_by_clause** — `PARTITION BY <partition key>` klauzuli dzieli edukacyjnych i szkoleniowych w oddzielnych partycjach. Innymi słowy, osobnymi plikami modelu będzie używana dla wartości `<partition key>` i tylko zdarzenia przy użyciu tej wartości będą używane na potrzeby edukacyjnych i szkoleniowych w tym modelu. Na przykład następujące zapytanie pociągów i przeznaczona do oceniania odczytu względem innych odczyty tylko tych samych czujnik:
 
   `SELECT sensorId, reading, ANOMALYDETECTION(reading) OVER(PARTITION BY sensorId LIMIT DURATION(hour, 1)) FROM input`
 
-* **Klauzula limit_duration** `DURATION(<unit>, <length>)` — Określa przedział czasu (jak daleko w historii z bieżącego zdarzenia) należy uwzględnić podczas wykrywania anomalii. Zobacz [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) szczegółowy opis obsługiwanych jednostek i ich skrótów. 
+* **Klauzula limit_duration** `DURATION(<unit>, <length>)` -Określa przedział czasu (jak daleko w historii z bieżącego zdarzenia) należy uwzględnić podczas wykrywania anomalii. Zobacz [DATEDIFF](https://msdn.microsoft.com/azure/stream-analytics/reference/datediff-azure-stream-analytics) szczegółowy opis obsługiwanych jednostek i ich skrótami. 
 
-* **when_clause** — określa warunek typu boolean dla zdarzeń w obliczenia wykrywania anomalii.
+* **when_clause** -określa warunek logiczny dla zdarzeń uwzględnione podczas obliczania wykrywania anomalii.
 
-### <a name="return-types"></a>Zwracane typy
+### <a name="return-types"></a>Typy zwracane
 
-AnomalyDetection operator zwraca rekord zawierający wszystkie trzy wyniki jako dane wyjściowe. Właściwości skojarzone z różnymi typami detektory anomalii są:
+AnomalyDetection operator zwraca rekord zawierający wszystkie trzy wyniki jako dane wyjściowe. Właściwości skojarzone z różnymi typami anomalii detektorów są:
 
 - BiLevelChangeScore
 - SlowPosTrendScore
 - SlowNegTrendScore
 
-Aby wyodrębnić poszczególne wartości poza rekordu, użyj **funkcji GetRecordPropertyValue** funkcji. Na przykład:
+Aby wyodrębnić poszczególne wartości z rekordu, użyj **funkcji GetRecordPropertyValue** funkcji. Na przykład:
 
 `SELECT id, val FROM input WHERE (GetRecordPropertyValue(ANOMALYDETECTION(val) OVER(LIMIT DURATION(hour, 1)), 'BiLevelChangeScore')) > 3.25` 
 
-Anomalii typu została wykryta, gdy jeden z wyników anomalii przekracza próg. Próg, może być dowolna liczba zmiennoprzecinkowa > = 0. Próg wynosi zależności między czułość i zaufania. Na przykład niższego progu wprowadzić bardziej podatna na zmiany wykrywania i generowanie więcej alertów wyższa wartość progową można wprowadzić wykrywania mniej poufne i większa pewność, ale zamaskować niektórych anomalii. Wartość progowa dokładnie do użycia zależy od scenariusza. Nie ma żadnego limitu górnego, ale zalecane zakres jest 3,25 5. 
+Anomalii typu została wykryta, gdy jeden z wyników anomalii przekracza próg. Próg, może być dowolną liczbą zmiennoprzecinkową > = 0. Próg wynosi zależność między poufności i zaufania. Na przykład niższego progu ułatwić wykrywanie bardziej wrażliwy na zmiany i generować więcej alertów wyższej wartości progowej może ułatwić wykrywanie mniej poufnych i większa pewność, ale maski niektóre anomalii. Wartość progowa dokładnie do użycia zależy od scenariusza. Nie ma żadnego limitu górnego zakresu zalecane jest jednak 3,25 5. 
 
-Wartość 3,25 pokazano w przykładzie jest po prostu sugerowane punkt początkowy. Dostosowywanie wartość uruchamiając operacje na zestawie danych i sprawdź wartość wyjściowa, aż do dopuszczalnych wartości progowej.
+Wartość 3,25 pokazano w przykładzie jest po prostu sugerowane punkt początkowy. Dostosuj wartość, uruchamiając operacje na zestawie danych i sprawdź, czy wartość wyjściowa aż dopuszczalna wartość progową.
 
 ## <a name="anomaly-detection-algorithm"></a>Algorytm wykrywania anomalii
 
-* AnomalyDetection operator używa **uczenie nienadzorowane** podejście, w którym nie przyjmuje żadnego typu dystrybucji w zdarzeniach. Ogólnie rzecz biorąc dwa modele są obsługiwane jednocześnie w dowolnym momencie, gdy jeden z nich służy do oceniania i innych jest uczony w tle. Modele wykrywania anomalii są uczone przy użyciu danych z bieżącego strumienia, a nie przy użyciu mechanizmu poza pasmem. Dane używane na potrzeby szkolenia zależy od d rozmiar okna, określony przez użytkownika w ramach parametr limitu czasu trwania. Każdy model kończy się pobieranie uczony w zależności od d 2d zdarzeń z długiego okresu. Zalecane jest ma co najmniej 50 zdarzenia każdego okna, aby uzyskać najlepsze wyniki. 
+* AnomalyDetection operator używa **uczenie nienadzorowane** podejścia, w której nie zakłada dowolnego typu dystrybucji w zdarzeniach. Ogólnie rzecz biorąc dwa modele są obsługiwane w sposób równoległy w dowolnym momencie, gdzie jeden z nich służy do oceniania, a drugi jest uczony w tle. Modele wykrywania anomalii są uczone przy użyciu danych z bieżącego strumienia, a nie przy użyciu mechanizmu poza pasmem. Dane używane na potrzeby szkolenia zależy od d rozmiar okna, które są określone przez użytkownika w ramach parametru Limit Duration. Każdy model kończy się wprowadzenie skonfigurowanych pod kątem zależnie od d-2d zdarzeń z długiego okresu. Zaleca się mieć co najmniej 50 zdarzenia każdego okna w celu uzyskania najlepszych wyników. 
 
-* AnomalyDetection operator używa **przedłużanie semantyki okna** do uczenia modeli i zdarzenia wynik. Co oznacza, że każdego zdarzenia jest sprawdzany pod kątem anomalii i wynik jest zwracany. Wynik jest wskaźnik poziomu zaufania z tym anomalii. 
+* AnomalyDetection operator używa **przesuwanego okna semantyki** do uczenia modeli i wynik zdarzenia. Co oznacza, że każde zdarzenie sprawdzania pod kątem anomalii, a wynik jest zwracany. Wynik jest wskazanie poziom zaufania tym anomalii. 
 
-* Zawiera AnomalyDetection operator **gwarancji powtarzalności** takie same dane wejściowe zawsze daje wynik sam, niezależnie od tego, dane wyjściowe zadania godzina rozpoczęcia. Czas rozpoczęcia dane wyjściowe zadania reprezentuje czasu, jaką pierwsze zdarzenie wyjściowe jest generowany przez zadanie. Jest ustawiony przez użytkownika w celu bieżący czas, wartość niestandardową lub czas ostatniego dane wyjściowe (Jeśli zadanie ma wcześniej utworzone dane wyjściowe). 
+* Zawiera AnomalyDetection operator **gwarancji powtarzalności** takie same dane wejściowe zawsze daje ten sam wynik, niezależnie od tego, dane wyjściowe zadania czas rozpoczęcia. Godzina rozpoczęcia zadania danych wyjściowych reprezentuje czas, w którym pierwsze zdarzenie w danych wyjściowych jest generowany przez zadanie. Jest on ustawiony przez użytkownika do bieżącego czasu, wartość niestandardową lub czas ostatniego wyjścia (jeśli jest to zadanie było wcześniej utworzone dane wyjściowe). 
 
-### <a name="training-the-models"></a>Uczenie modeli 
+### <a name="training-the-models"></a>Szkolenie modeli 
 
-W miarę postępów czasu modele są uczone z wykorzystaniem różnych danych. Rozsądnie wynik, pomaga zrozumieć podstawowy mechanizm, za pomocą którego modele są uczone. W tym miejscu **t<sub>0</sub>**  jest **dane wyjściowe zadania godzina rozpoczęcia** i **d** jest **rozmiar okna** od długości Limit parametr. Załóżmy, że czas jest podzielony na **przeskoków d rozmiar**, rozpoczynając od `01/01/0001 00:00:00`. Następujące kroki służą do nauczenia modelu, a wynik zdarzenia:
+W miarę postępów czasu modele są uczone z różnymi danymi. Aby poznać wyniki, pomaga to zrozumieć podstawowy mechanizm, za pomocą którego są uczone modele. W tym miejscu **t<sub>0</sub>**  jest **czas rozpoczęcia dane wyjściowe zadania** i **d** jest **rozmiar okna** z Limit Duration parametr. Przyjęto założenie, że czas jest podzielony na **przeskoków d rozmiar**, poczynając od `01/01/0001 00:00:00`. Poniższe kroki są używane do nauczenia modelu a wynik zdarzenia:
 
-* Podczas uruchamiania zadania odczytuje dane, zaczynając od czasu t<sub>0</sub> — 2W.  
-* Gdy czas osiągnie następnego przeskoku, nowy model M1 jest tworzony i uruchamia pobieranie uczony.  
-* Gdy czas przechodzi przez inny przeskoku, nowy model M2 jest tworzony i uruchamia pobieranie uczony.  
-* Gdy czas osiągnie t<sub>0</sub>, M1 jest aktywowane i rozpoczyna jej wynik pobierania wyjściowych.  
-* W następnym przeskoku trzy elementy odbywa się na tym samym czasie:  
+* Podczas uruchamiania zadania odczytuje dane, zaczynając od czasu t<sub>0</sub> — 2d.  
+* Gdy czas osiągnie następny przeskok, nowy model M1 zostanie utworzony i rozpoczyna się wprowadzenie skonfigurowanych pod kątem.  
+* Czas jest przesuwany o przeskoku innym, nowy model M2 jest tworzony a rozpoczyna się wprowadzenie skonfigurowanych pod kątem.  
+* Gdy czas osiągnie t<sub>0</sub>M1 zostanie aktywowane i jego wynik, który rozpoczyna się wprowadzenie zwrócone.  
+* Na następny przeskok trzy rzeczy odbywa się na tym samym czasie:  
 
-  * M1 nie jest już potrzebne, i jest on odrzucony.  
-  * M2 ma wystarczająco uczenia, dlatego służy do oceniania.  
-  * Nowy model M3 jest tworzony i uruchamia pobieranie uczony w tle.  
+  * M1 nie są już potrzebne, i jest pomijany.  
+  * M2 ma wystarczająco uczony, dzięki czemu jest używana do oceniania.  
+  * Nowy model M3 zostanie utworzony i rozpoczyna się wprowadzenie nauczone w tle.  
 
-* Ten cykl powtarza się dla każdego przeskoku w przypadku, gdy zostaną odrzucone aktywnego modelu, przełącz się do równoległych modelu i rozpocząć szkolenie trzecim modelu w tle. 
+* Ten cykl powtarza się dla każdego przeskoku w przypadku, gdy aktywnego modelu jest pomijany, przełącz się do równoległych modelu i Rozpocznij szkolenie trzecim modelu w tle. 
 
 Schematycznie kroki wyglądać w następujący sposób: 
 
-![Modele szkolenia](media/stream-analytics-machine-learning-anomaly-detection/training_model.png)
+![Szkolenie modeli](media/stream-analytics-machine-learning-anomaly-detection/training_model.png)
 
-|**Model** | **Czas rozpoczęcia szkolenia** | **Czas, aby rozpocząć korzystanie z jego wynik** |
+|**Model** | **Czas rozpoczęcia szkolenia** | **Czas, aby rozpocząć korzystanie z jej wynik** |
 |---------|---------|---------|
 |M1     | 11:20   | 11:33   |
 |M2     | 11:30   | 11:40   |
 |M3     | 11:40   | 11:50   |
 
-* M1 modelu uruchamia szkolenie na 11:20:00, czyli następnego przeskoku po zadania rozpoczyna odczyt 11:13:00. Pierwsze dane wyjściowe jest tworzony z M1 na 11:33:00 po szkolenia 13 minut danych. 
+* M1 modelu uruchamia szkolenia o 11:20, czyli następny przeskok po odczyt 11:13 am rozpoczęcia zadania. Pierwszy danych wyjściowych jest generowany z M1 o 11:33 po szkolenie przy użyciu 13 minut danych. 
 
-* Nowy model M2 rozpoczyna się szkolenie na 11:30:00, ale jego wynik nie pobrać używane do 11:40:00, czyli po ma przeprowadzono uczenia z danych 10 minut. 
+* Nowy model M2 rozpoczyna się szkolenia o 11:30, ale nie jej wynik Pobierz używane w aż do 11:40:00, czyli po po zapoznaniu z 10 minut danych. 
 
-* M3 jest zgodny ze wzorcem samej jako M2. 
+* M3 jest zgodna z tym samym wzorcem, jako M2. 
 
-### <a name="scoring-with-the-models"></a>Ocenianie przy użyciu modeli 
+### <a name="scoring-with-the-models"></a>Ocenianie z modeli 
 
-Na poziomie usługi Machine Learning algorytm wykrywania anomalii oblicza wartość strangeness dla każdego zdarzenia przychodzące, porównując go z zdarzeń w oknie historii. Obliczenia strangeness jest różny dla każdego typu anomalii.  
+Na poziomie usługi Machine Learning algorytm wykrywania anomalii oblicza wartość strangeness dla każdego zdarzenia przychodzące, porównując ją za pomocą zdarzeń w oknie historii. Obliczenie strangeness różni się dla każdego typu anomalii.  
 
-Umożliwia przeglądanie obliczeń strangeness szczegółowo (przyjmowane jest, istnieje zestaw historycznych systemu Windows ze zdarzeniami): 
+Omówmy teraz obliczeń strangeness szczegółowo (przyjmowane jest, istnieje zestaw historycznych systemu Windows ze zdarzeniami): 
 
-1. **Zmiany poziomu dwukierunkowe:** oparte na okno Historia, normalnego zakresu działania jest obliczana jako [10 percentyl, 90-procentowy] to znaczy 10 wartość percentylu jako wartość dolnej granicy i 90th jako górna granica. Wartość strangeness dla bieżącego zdarzenia jest obliczana jako:  
+1. **Zmień poziom dwukierunkowego:** oparte na oknie historii, normalnego zakresu działania jest obliczana jako [10 percentyl, 90. percentyla] oznacza to, firma 10th wartość percentylu z wartością dolną granicę i 90. percentyl jako górną granicę. Wartość strangeness dla bieżącego zdarzenia jest obliczana jako:  
 
    - 0, jeśli event_value normalnego zakresu działania  
    - Jeśli event_value/90th_percentile event_value > 90th_percentile  
    - 10th_percentile/event_value, jeśli jest event_value < 10th_percentile  
 
-2. **Powolne trend dodatnią:** linię trendu wartości zdarzeń w oknie historii jest obliczana i operacji sprawdza pozytywne trendu w wierszu. Wartość strangeness jest obliczana jako:  
+2. **Powolne trendów pozytywnych:** linii trendu za pośrednictwem wartości zdarzeń w oknie historii jest obliczana, a operacja szuka dodatnią trend w wierszu. Wartość strangeness jest obliczana jako:  
 
-   - Kąt nachylenia, jeśli nachylenie jest dodatnia  
+   - Krzywa, jeśli nachylenie jest dodatnia  
    - 0, w przeciwnym razie 
 
-3. **Powolne trend ujemna:** linię trendu wartości zdarzeń w oknie historii jest obliczana i operacji szuka ujemna trendu w wierszu. Wartość strangeness jest obliczana jako: 
+3. **Powolne trend ujemna:** linii trendu za pośrednictwem wartości zdarzeń w oknie historii jest obliczana, a operacja szuka trendów ujemne w wierszu. Wartość strangeness jest obliczana jako: 
 
-   - Kąt nachylenia, jeśli nachylenie jest ujemna.  
+   - Krzywa, jeśli nachylenie jest ujemna  
    - 0, w przeciwnym razie  
 
-Po jest obliczana wartość strangeness zdarzenia przychodzącego, wartość martingale jest obliczana na podstawie wartości strangeness (zobacz [blogu uczenia maszynowego](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/) szczegółowe informacje na temat sposobu jest obliczana wartość martingale). Ta wartość martingale jest zwracany jako wynik anomalii. Wartość martingale zwiększa się powoli w odpowiedzi na wartości dziwne, co umożliwia detektora pozostaje niezawodne sporadyczne zmiany i zmniejsza fałszywe alerty. Ma ona również przydatne właściwości: 
+Gdy jest obliczana wartość strangeness przychodzącym zdarzeniu, wartość martingale jest obliczana na podstawie wartości strangeness (zobacz [blogu usługi Machine Learning](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/) Aby uzyskać szczegółowe informacje, w jaki sposób jest obliczana wartość martingale). Ta wartość martingale jest zwracany jako wyniku anomalii. Wartość martingale zwiększa się wolno w odpowiedzi na dziwne wartości, która umożliwia wykrywanie pozostaje niezawodne sporadyczne zmian i zmniejsza fałszywych alertów. Ma on również przydatne właściwości: 
 
-Prawdopodobieństwo [istnieje t takie tego M<sub>t</sub> > λ] < 1/λ, gdzie M<sub>t</sub> -wartość martingale t błyskawiczne i λ jest rzeczywistą wartość. Na przykład, jeśli istnieje alert po M<sub>t</sub>> 100, a następnie prawdopodobieństwo fałszywych alarmów jest mniejsza niż 1-100.  
+Prawdopodobieństwo [istnieje t takich tego M<sub>t</sub> > λ] < 1/λ, gdzie M<sub>t</sub> -wartość martingale błyskawiczne t i λ jest rzeczywistą wartość. Na przykład, jeśli alert po M<sub>t</sub>> 100, a następnie prawdopodobieństwa wyników fałszywie dodatnich jest mniejsza niż 1/100.  
 
-## <a name="guidance-for-using-the-bi-directional-level-change-detector"></a>Wskazówki dotyczące korzystania z poziomu dwukierunkowe zmienić detektora 
+## <a name="guidance-for-using-the-bi-directional-level-change-detector"></a>Wskazówki dotyczące używania poziom dwukierunkowego zmienić wykrywanie 
 
-Wykrywacz zmiany poziomu dwukierunkowe służy w scenariuszach, takich jak power awarii i odzyskiwania lub godzina łazienkowych ruchu itp. Jednak działa w taki sposób, że po modelu są uczone z niektórych danych, inna zmiana poziomu nietypowych tylko wtedy, gdy nowa wartość jest wyższa niż poprzednie górny limit (podwyższeniu poziomu zmiana wielkości liter) lub niższa od poprzedniego dolny limit (w dół poziom Zmień wielkość liter). W związku z tym modelem nie powinien być widoczny wartości danych w zakresie nowy poziom (w górę lub w dół) w jego oknie szkoleń dla nich wziąć pod uwagę nietypowych. 
+Wykrywanie zmiany poziomu dwukierunkowej może służyć w scenariuszach, takich jak power awarii i odzyskiwania lub godzinę łazienkowych ruchu itp. Jednak działa w taki sposób, że gdy model jest uczony przy użyciu określonych danych, inna zmiana poziomu nietypowe tylko wtedy, gdy nowa wartość jest wyższa niż poprzednie górny limit (podwyższeniu poziomu Zmień wielkość liter) lub mniejsza niż poprzednie niższy limit (w dół poziom Zmień wielkość liter). W związku z tym model nie powinien wartości danych w zakresie nowy poziom (w górę lub w dół) w jego oknie szkolenia dla nich zostały uznane za nieprawidłowe. 
 
-Korzystając z tego detektora, należy rozważyć następujące punkty: 
+Korzystając z tego wykrywanie, należy rozważyć następujące kwestie: 
 
-1. Gdy szeregów czasowych nagle widzi zwiększenia lub porzucić wartości, AnomalyDetection operator wykryje. Ale wykrywanie powrotu do normalnego wymaga więcej planowania. Jeśli szeregów czasowych była w stanie stabilności przed anomalii, które uzyskuje się przez ustawienie okna wykrywania AnomalyDetection operator co najwyżej połowa długości anomalii. W tym scenariuszu założono, że wcześniejsze można oszacować minimalny czas trwania anomalii i ma za mało zdarzeń w tym czasie do nauczenia modelu wystarczająco (co najmniej 50 zdarzeń). 
+1. Gdy szeregów czasowych nagle widzi wzrost lub drop w wartości, operatora AnomalyDetection wykrywa go. Ale wykrywanie powrotu do normalnego wymaga więcej planowania. Jeśli w stanie stabilności przed anomalii, w którym można osiągnąć przez ustawienie AnomalyDetection operator wykrywania okna co najwyżej połowa długości anomalii szeregów czasowych. W tym scenariuszu przyjęto założenie, że wcześniej, można oszacować minimalny czas trwania anomalii i istnieją wystarczającej liczby zdarzeń w tym czasie do nauczenia modelu wystarczająco (co najmniej 50 zdarzeń). 
 
-   Przedstawiono na rysunku 1 i 2 poniżej przy użyciu zmian górny limit (ta sama logika dotyczy niższy limit zmiany). W obu wartości kształty fali są nietypowe zmiany poziomu. Pionowych linii pomarańczowy oznaczenia granice przeskoku i rozmiar przeskoku jest taki sam, jak określono w operatorze AnomalyDetection okna wykrywania. Zielone linie wskazuje rozmiar okna szkolenia. Na rysunku 1 rozmiar przeskoku jest taka sama jak czasu, dla których okresu anomalii. Na rysunku 2 rozmiar przeskoku jest połowy czasu, dla których trwa anomalii. We wszystkich przypadkach wykryciu górę zmiany, ponieważ z modelem użytym do oceniania uczenia został na normalne danych. Ale w oparciu o sposób działania detektora zmiany poziomu dwukierunkowe, go wykluczyć wartości normalnych z okna szkolenia użyty dla modelu, który wyników na powrót do normalnego. Na rysunku 1 uczenia modelu oceniania obejmuje niektóre zdarzenia normalne, więc nie można wykryć powrotu do normalnego. Jednak na rysunku 2, szkolenia zawiera tylko nietypowych strony, która pozwala na wykrycie powrotu do normalnego. Mniejszego niż połowy działa także dla tego samego powodu, podczas gdy większe niczego zakończą się łącznie z bitowego normalne zdarzeń. 
+   Jest to pokazane na rysunku 1 i 2 poniżej z użyciem zmian górny limit (ta sama logika dotyczy niższe zmiany limitu). W obu wartości liczbowych kształty fali są nietypowe zmiany poziomu. Pionowe linie pomarańczowy oznaczają granice przeskoku i rozmiar przeskoku jest taka sama jak określono w operatorze AnomalyDetection okna wykrywania. Zielony linie wskazują rozmiar okna szkolenia. Na rysunku 1. rozmiar przeskoku jest taka sama jak czasu, dla których jest dostępna anomalii. Na rysunku 2 rozmiar przeskoku jest połowę czasu, dla których trwa anomalii. We wszystkich przypadkach zostanie wykryta zmiana palcem, ponieważ model wykorzystywany do oceniania został skonfigurowanych pod kątem na normalne danych. Ale oparte na jak działa wykrywanie zmiany poziomu dwukierunkowej, go wykluczyć normalnych wartości z okna szkolenia użyty dla modelu, który ocenia powrotu do normalnego. Na rysunku 1 szkoleń modelowych oceniania obejmuje niektóre zdarzenia normalne, więc nie można wykryć powrót do normalnego. Jednak na rysunku 2, szkolenie obejmuje tylko nietypowe strony, który zapewnia, że wykryto powrotu do normalnego. Mniejsze niż połowy współpracuje również z tego samego powodu należy nic większe znajdą włącznie bitowe normalne zdarzeń. 
 
-   ![Usługi AD o długości anomalii taki sam rozmiar okna](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_anomaly_length.png)
+   ![Usługi AD o długości anomalii w taki sam rozmiar okna](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_anomaly_length.png)
 
-   ![Usługi Active Directory z rozmiar okna jest równa połowie długości anomalii](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_half_anomaly_length.png)
+   ![AD przy użyciu rozmiaru okna jest równa połowie długość anomalii](media/stream-analytics-machine-learning-anomaly-detection/windowsize_equal_half_anomaly_length.png)
 
-2. W przypadkach, gdy nie można przewidzieć długość anomalii to detektora działa w najlepszym wysiłku. Jednak wybór mniejszą niż okno czasu ogranicza dane szkoleniowe, której może zwiększyć prawdopodobieństwo wykrycia powrotu do normalnego. 
+2. W przypadkach, w których nie można przewidzieć długość anomalii to wykrywanie działa w najlepszym nakładu pracy. Jednak wybór mniejszą niż przedział czasu ogranicza dane szkoleniowe, które będzie zwiększyć prawdopodobieństwo wykrycia powrotu do normalnego. 
 
-3. W poniższym scenariuszu dłużej anomalii nie jest wykryte jako okno szkolenia zawiera już anomalii tego samego wysokiej wartości. 
+3. W poniższym scenariuszu dłużej anomalii nie wykryte jako okno szkolenia zawiera już anomalii o tej samej wysokiej wartości. 
 
-   ![Anomalie o tym samym rozmiarze](media/stream-analytics-machine-learning-anomaly-detection/anomalies_with_same_length.png)
+   ![Anomalie z takim samym rozmiarze](media/stream-analytics-machine-learning-anomaly-detection/anomalies_with_same_length.png)
 
 ## <a name="example-query-to-detect-anomalies"></a>Przykładowe zapytanie do wykrywania anomalii 
 
-Następujące zapytanie może służyć do wyjściowego alert w przypadku wykrycia anomalii.
-Jeśli strumień wejściowy nie jest jednolite, krok agregacji może pomóc przekształcania serii jednolita postać czasu. W przykładzie użyto AVG, ale określony typ agregacji jest zależny od scenariusza użytkownika. Ponadto podczas szeregów czasowych ma luki większe niż okno agregacji, nie ma żadnych zdarzeń w szeregu czasowym z wykrywaniem anomalii wyzwalacza (zgodnie z harmonogramem przesuwanego okna semantyki). W związku z tym założeniu jednolitość jest przerywane po nadejściu następne zdarzenie. W takich sytuacjach luk w szeregu czasowym powinno być wypełnione. Jednym z podejść możliwe ma mieć ostatnie zdarzenie co okno przeskoku, jak pokazano poniżej.
+Następujące zapytanie, może służyć do wypełniania wyjściowego alert w przypadku wykrycia anomalii.
+Gdy strumień wejściowy nie jest jednolite, krok agregacji może pomóc przekształcić ją w serii jednolita postać czasu. W przykładzie użyto AVG, ale konkretny typ agregacji jest zależny od scenariusza użytkownika. Ponadto gdy szeregów czasowych ma większe niż okno agregacji luki, nie ma żadnych zdarzeń w szeregu czasowym, wykrywanie anomalii wyzwalacza (zgodnie z przesuwanego okna semantyki). W rezultacie przy założeniu jednolitość został przerwany, po nadejściu następne zdarzenie. W takich sytuacjach należy wprowadzić luki w szeregu czasowym. Jedno z możliwych podejść jest wzięcie ostatnie zdarzenie w każdego okna przeskoku, jak pokazano poniżej.
 
 ```sql
     WITH AggregationStep AS 
@@ -222,29 +222,29 @@ Jeśli strumień wejściowy nie jest jednolite, krok agregacji może pomóc prze
        3.25
 ```
 
-## <a name="performance-guidance"></a>Wytyczne dotyczące wydajności
+## <a name="performance-guidance"></a>Wskazówki dotyczące wydajności
 
-* Za pomocą sześciu jednostek przesyłania strumieniowego dla zadania. 
+* W przypadku zadań, należy użyć sześciu jednostek przesyłania strumieniowego. 
 * Wysyłanie zdarzeń co najmniej jednej sekundy od siebie.
-* Niepartycjonowany zapytanie, które używa operatora AnomalyDetection może wygenerować wyniki przeciętnie z opóźnieniem obliczeń około 25 ms.
-* Opóźnienie doświadczają partycjonowanej zapytania nieco zależy od liczby partycji, jak liczba obliczenia jest większa. Jednak opóźnienie nastąpi taka sama jak w przypadku niepartycjonowany porównywalne łączna liczba zdarzeń wszystkich partycji.
-* Podczas odczytywania danych z systemem innym niż czasu rzeczywistego, szybko jest pozyskanych dużej ilości danych. Przetwarzanie tych danych jest obecnie wolniej. Czas oczekiwania w takich scenariuszach znaleziono liniowo zwiększyć liczbę punktów danych w oknie zamiast interwał okna rozmiaru lub zdarzeń. Aby skrócić czas oczekiwania w przypadku się w czasie rzeczywistym, należy wziąć pod uwagę przy użyciu mniejszego rozmiaru okna. Alternatywnie należy rozważyć uruchomienie zadania od bieżącego czasu. Kilka przykładów opóźnienia w zapytaniu niepartycjonowany: 
-    - 60 punktów danych w oknie wykrywania może spowodować opóźnienia 10 sekund o przepustowości 3 MB/s. 
-    - 600 punktów danych opóźnienie może nawiązać połączenie o 80 sekund o przepustowości 0,4 MB/s.
+* Niepartycjonowana zapytania, który jest używany AnomalyDetection operator może wygenerować wyniki przeciętnie z opóźnieniem obliczeń około 25 ms.
+* Opóźnienie odczuwalnych podzielonym na partycje zapytanie różni się nieco z liczbą partycji, ponieważ liczba obliczeń jest większa. Jednak opóźnienie jest prawie taki sam jak w przypadku niepartycjonowana porównywalne łączna liczba zdarzeń wszystkich partycji.
+* Podczas odczytywania danych się w czasie rzeczywistym, szybko są pozyskiwane dużej ilości danych. Przetwarzanie tych danych jest obecnie wolniejsze. Stwierdzono, że opóźnienie w takich scenariuszach rośnie liniowo z liczba punktów danych w oknie, a nie interwał rozmiaru lub zdarzeń okna. Aby zmniejszyć opóźnienia w przypadku się w czasie rzeczywistym, należy wziąć pod uwagę przy użyciu mniejszego rozmiaru okna. Można również rozważyć uruchomienie zadania od bieżącego czasu. Kilka przykładów opóźnienia w zapytaniu niepartycjonowana: 
+    - 60 punktów danych w oknie wykrywania może spowodować opóźnienia w 10 sekund przy przepływności równej 3 MB/s. 
+    - 600 punktów danych opóźnienie docierać do około 80 sekund przy przepływności 0,4 MB/s.
 
 ## <a name="limitations-of-the-anomalydetection-operator"></a>Ograniczenia operatora AnomalyDetection 
 
-* Ten operator nie obsługuje obecnie kolekcji i dip wykrywania. Wartości szczytowe i DIP są spontanicznej lub tej zmiany w szeregu czasowym. 
+* Ten operator nie obsługuje obecnie wykrywania kolekcji i dip. Wzrostów i spadków modyfikacje spontanicznej lub krótkotrwałe w szeregu czasowym. 
 
-* Ten operator nie obsługuje obecnie wzorce sezonowości. Wzorce sezonowości są powtarzane wzorce w danych, na przykład zachowanie ruchu innej witryny sieci web podczas weekendów lub różnych trendów zakupów podczas czarne piątek, które nie są anomalii, ale oczekiwano wzorca w zachowaniu. 
+* Ten operator aktualnie nie obsługuje wzorce sezonowość. Sezonowość wzorce są wzorce powtórzeń w danych, na przykład zachowanie ruchu innej witryny sieci web podczas weekendów lub różnych zakupów trendów w czarny piątek, nie będących anomalie, ale oczekiwanym wzorcem w zachowaniu. 
 
-* Ten operator oczekuje serii godzina jest jednolita. Strumień zdarzeń można ujednolicone przez agregowanie za pośrednictwem wirowania lub Skaczące okno. W scenariuszach, w którym odstęp między zdarzeniami zawsze jest mniejszy niż okno agregacji okno wirowania jest wystarczające, aby wprowadzić uniform szeregów czasowych. Gdy przerwa może być większy, luk może zostać wypełniony powtarzając ostatnią wartość przy użyciu okna przeskoku. 
+* Ten operator oczekuje serii czas wejściowy jest jednolita. Strumień zdarzeń można ujednolicone przez agregowanie za pośrednictwem wirowania lub przeskokiem okna. W scenariuszach, gdzie przerwy między zdarzeniami zawsze jest mniejszy niż okno agregacji okno wirowania jest wystarczające, aby wprowadzić jednolitego szeregów czasowych. Podczas przerwy, może być większy, można podać luki, powtarzając ostatnie wartości za pomocą okna przeskoku. 
 
 ## <a name="references"></a>Dokumentacja
 
-* [Wykrywanie anomalii — Using machine learning w celu wykrycia nieprawidłowości w czasie serii danych](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/)
-* [Wykrywanie anomalii interfejsu API uczenia maszynowego](https://docs.microsoft.com/en-gb/azure/machine-learning/machine-learning-apps-anomaly-detection-api)
-* [Wykrywanie anomalii serii czasu](https://msdn.microsoft.com/library/azure/mt775197.aspx)
+* [Wykrywanie anomalii — używanie uczenia maszynowego w celu wykrycia nieprawidłowości w danych szeregów czasowych](https://blogs.technet.microsoft.com/machinelearning/2014/11/05/anomaly-detection-using-machine-learning-to-detect-abnormalities-in-time-series-data/)
+* [Interfejs API wykrywania anomalii uczenia maszynowego](https://docs.microsoft.com/en-gb/azure/machine-learning/machine-learning-apps-anomaly-detection-api)
+* [Wykrywanie anomalii w czasie serii](https://msdn.microsoft.com/library/azure/mt775197.aspx)
 
 ## <a name="next-steps"></a>Kolejne kroki
 

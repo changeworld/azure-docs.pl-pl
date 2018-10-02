@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/25/2018
+ms.date: 10/01/2018
 ms.author: tomfitz
-ms.openlocfilehash: d8bc1165d131c593d5f4697b20166b72605ad488
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f19708d232080b53446bedd9316fcf9d7772890d
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47228531"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585802"
 ---
 # <a name="enable-safe-deployment-practices-with-azure-deployment-manager-public-preview"></a>Włącz praktyki bezpiecznego wdrażania w usłudze Azure Deployment Manager (publiczna wersja zapoznawcza)
 
@@ -220,7 +220,7 @@ Aby uzyskać więcej informacji, zobacz [kroki odwołanie do szablonu](/azure/te
 
 ### <a name="rollouts"></a>Wprowadzanie
 
-Aby upewnić się, że źródła artefaktu jest dostępna, wdrożenia zależy od niego. Wdrożenia definiuje grupy kroków dla każdej jednostki usługi, które zostało wdrożone. Można zdefiniować akcje do wykonania przed lub po wdrożeniu. Na przykład można określić, że wdrożenie oczekiwać po wdrożeniu jednostki usługi. 
+Aby upewnić się, że źródła artefaktu jest dostępna, wdrożenia zależy od niego. Wdrożenia definiuje grupy kroków dla każdej jednostki usługi, które zostało wdrożone. Można zdefiniować akcje do wykonania przed lub po wdrożeniu. Na przykład można określić, że wdrożenie oczekiwać po wdrożeniu jednostki usługi. Można zdefiniować kolejność grupy kroków.
 
 Określa obiekt tożsamości [przypisanych przez użytkownika z tożsamości zarządzanej](#identity-and-access) która wykonuje operacje wdrażania.
 
@@ -248,6 +248,7 @@ Poniższy kod przedstawia ogólny format wdrożenia.
         "stepGroups": [
             {
                 "name": "stepGroup1",
+                "dependsOnStepGroups": ["<step-group-name>"],
                 "preDeploymentSteps": ["<step-ID>"],
                 "deploymentTargetId":
                     "<service-unit-ID>",

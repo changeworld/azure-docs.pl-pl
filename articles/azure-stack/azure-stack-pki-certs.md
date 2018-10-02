@@ -12,15 +12,15 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/05/2018
+ms.date: 09/28/2018
 ms.author: mabrigg
 ms.reviewer: ppacent
-ms.openlocfilehash: 8de34e4ac01dea9cf4a0c718883e8cc828be6403
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 61c91f7e1f2ba266be6453bb6e6fb25f3834485e
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714621"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585900"
 ---
 # <a name="azure-stack-public-key-infrastructure-certificate-requirements"></a>Wymagania dotyczące usługi Azure Stack infrastruktury kluczy publicznych certyfikatów
 
@@ -39,7 +39,7 @@ Poniższa lista zawiera opis wymagań dotyczących certyfikatów, które są wym
 - Infrastruktury Azure Stack musi mieć dostęp do sieci do lokalizacji listy odwołania certyfikatów (CRL) urzędu certyfikacji, opublikowane w certyfikacie. Tę listę CRL musi być punkt końcowy http
 - W przypadku rotacji certyfikatów, certyfikaty musi być albo wystawionych przez ten sam organ wewnętrznego certyfikatu używanego do podpisywania certyfikatów podane w wdrożenia lub dowolnym publicznego urzędu certyfikacji z powyższych
 - Korzystanie z certyfikatów z podpisem własnym nie są obsługiwane.
-- Do wdrożenia i obrót, możesz użyć pojedynczego certyfikatu, obejmujące wszystkie przestrzenie nazw pól Nazwa podmiotu i alternatywnej nazwy podmiotu (SAN) certyfikatu lub można użyć poszczególne certyfikaty dla każdej przestrzeni nazw poniżej usługi Azure Stack usługi, której planujesz korzystanie z wymagają. Uwaga: oba podejścia wymaga użycia symbole wieloznaczne dla punktów końcowych, w którym są one wymagane, takie jak **KeyVault** i **KeyVaultInternal**. 
+- Do wdrożenia i obrót, możesz użyć pojedynczego certyfikatu, obejmujące wszystkie przestrzenie nazw pól Nazwa podmiotu i alternatywnej nazwy podmiotu (SAN) certyfikatu lub można użyć poszczególne certyfikaty dla każdej przestrzeni nazw poniżej usługi Azure Stack usługi, której planujesz korzystanie z wymagają. Oba podejścia wymaga użycia symbole wieloznaczne dla punktów końcowych, w którym są one wymagane, takie jak **KeyVault** i **KeyVaultInternal**. 
 - Algorytm podpisu certyfikatu musi być 3DES. Algorytm nie może być SHA1, muszą być silniejsza. 
 - Format certyfikatu musi być PFX, ponieważ klucze publiczne i prywatne są wymagane do zainstalowania usługi Azure Stack. 
 - Plik pfx certyfikatu musi mieć wartość "Podpis cyfrowy" i "KeyEncipherment" w polu "Użycie klucza".

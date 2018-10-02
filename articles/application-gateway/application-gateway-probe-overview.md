@@ -8,12 +8,12 @@ ms.service: application-gateway
 ms.topic: article
 ms.date: 8/6/2018
 ms.author: victorh
-ms.openlocfilehash: b34e5317a35d694e8521e73b0846da973661d9df
-ms.sourcegitcommit: 9819e9782be4a943534829d5b77cf60dea4290a2
+ms.openlocfilehash: f9bd0288d4009af536bdc8f45cbaed4b3f1eee18
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/06/2018
-ms.locfileid: "39531530"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018716"
 ---
 # <a name="application-gateway-health-monitoring-overview"></a>Omówienie monitorowania kondycji bramy aplikacji
 
@@ -96,7 +96,7 @@ Poniższa tabela zawiera definicje dla właściwości sondę kondycji niestandar
 
 Jeśli na podsieci bramy aplikacji jest sieciowa grupa zabezpieczeń (NSG), zakresy portów 65503 65534 musi być otwarty w podsieci bramy aplikacji dla ruchu przychodzącego. Te porty są wymagane dla kondycji zaplecza interfejsu API do pracy.
 
-Ponadto wychodzące połączenie z Internetem nie mogą zostać zablokowane, a ruch z AzureLoadBalancer tag muszą być dozwolone.
+Ponadto wychodzące połączenie z Internetem nie mogą zostać zablokowane, a ruch przychodzący pochodzące z AzureLoadBalancer tag muszą być dozwolone.
 
 ## <a name="next-steps"></a>Kolejne kroki
 Po zapoznaniu się z informacji na temat monitorowania kondycji bramy Application Gateway, można skonfigurować [sondy kondycji niestandardowe](application-gateway-create-probe-portal.md) w witrynie Azure portal lub [sondy kondycji niestandardowe](application-gateway-create-probe-ps.md) przy użyciu programu PowerShell i usługi Azure Resource Manager model wdrażania.

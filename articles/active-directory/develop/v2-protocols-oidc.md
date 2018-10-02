@@ -17,12 +17,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 51c7bacbfa30a74aef89abba133e48c483375032
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0c2ff5272fc6cdc4cc18b8d461a8fb7edeee9878
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971454"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017991"
 ---
 # <a name="azure-active-directory-v20-and-the-openid-connect-protocol"></a>Azure Active Directory w wersji 2.0 i protokołu OpenID Connect
 
@@ -111,7 +111,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | --- | --- | --- |
 | dzierżawa |Wymagane |Możesz użyć `{tenant}` wartość w polu Ścieżka żądania w celu kontrolowania, kto zalogować się do aplikacji. Dozwolone wartości to `common`, `organizations`, `consumers`i identyfikatorów dzierżawy. Aby uzyskać więcej informacji, zobacz [protokołu podstawy](active-directory-v2-protocols.md#endpoints). |
 | client_id |Wymagane |Identyfikator aplikacji [portalu rejestracji aplikacji](https://apps.dev.microsoft.com/?referrer=https://azure.microsoft.com/documentation/articles&deeplink=/appList) przypisany do aplikacji. |
-| response_type |Wymagane |Musi zawierać `id_token` dla logowania OpenID Connect. Może to również obejmować inne `response_types` wartości, takich jak `code`. |
+| response_type |Wymagane |Musi zawierać `id_token` dla logowania OpenID Connect. Może to również obejmować inne `response_type` wartości, takich jak `code`. |
 | redirect_uri |Zalecane |Przekierowania URI aplikacji, gdzie odpowiedzi uwierzytelniania mogą być wysyłane i odbierane przez aplikację. Jego musi dokładnie odpowiadać jeden zarejestrowany w portalu, identyfikatory URI przekierowania z tym wyjątkiem, że musi być zakodowane w adresie URL. |
 | scope |Wymagane |Rozdzielonej spacjami listy zakresów. Dla protokołu OpenID Connect, musi on zawierać zakres `openid`, co przekłada się na uprawnienia "Logowanie się w" w zgody interfejsu użytkownika. W tym żądaniu żądanie zgody, mogą również obejmować inne zakresy. |
 | Identyfikator jednorazowy |Wymagane |Wartości zawarte w żądaniu wygenerowane przez aplikację, która zostanie uwzględniona w wynikowej wartości id_token jako oświadczenia. Aplikację można sprawdzić tę wartość, aby uniknąć powtarzania tokenu ataków. Wartość jest zazwyczaj losowego, unikatowy ciąg, który może służyć do identyfikowania pochodzenia żądania. |

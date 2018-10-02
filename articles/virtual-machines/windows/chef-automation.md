@@ -15,19 +15,19 @@ ms.devlang: na
 ms.topic: article
 ms.date: 05/30/2017
 ms.author: diviso
-ms.openlocfilehash: 3a6fbc8410dbc5aec4522f0972a29c67527edb23
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: de89756a3f9ef1139e855da16c0343a9919b56cb
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42054543"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585378"
 ---
 # <a name="automating-azure-virtual-machine-deployment-with-chef"></a>Automatyzowanie wdrażania maszyny wirtualnej platformy Azure przy użyciu narzędzia Chef
 [!INCLUDE [learn-about-deployment-models](../../../includes/learn-about-deployment-models-both-include.md)]
 
 Chef to doskonałe narzędzie do dostarczania automatyzacji i żądanego stanu konfiguracji.
 
-Przy użyciu najnowszej interfejsu api w chmurze wydania, Chef zapewnia bezproblemową integrację z platformą Azure, dzięki czemu możesz aprowizować i wdrażać stanami konfiguracji za pomocą jednego polecenia.
+Najnowsza wersja interfejsu API w chmurze Chef zapewnia bezproblemową integrację z platformą Azure, dzięki czemu możesz aprowizować i wdrażać stanami konfiguracji za pomocą jednego polecenia.
 
 Ten artykuł służy do konfigurowania środowiska Chef do udostępniania maszyn wirtualnych platformy Azure i poznać dokładnie proces tworzenia zasad lub "CookBook", a następnie wdrożenie ten podręcznik na maszynie wirtualnej platformy Azure.
 
@@ -42,7 +42,7 @@ Poniższy diagram przedstawia architekturę wysokiego poziomu Chef.
 
 Program chef ma trzy główne składniki architektury: serwer programu Chef, Chef, klient (node) i stacji roboczej programu Chef.
 
-Serwer programu Chef punkt zarządzania i dostępne są dwie opcje dla serwera programu Chef: hostowanego rozwiązania lub rozwiązaniem w firmie. Firma Microsoft będzie używać rozwiązania hostowanego.
+Serwer programu Chef punkt zarządzania i dostępne są dwie opcje dla serwera programu Chef: hostowanego rozwiązania lub rozwiązaniem w firmie. Firma Microsoft będzie używać rozwiązania hostowanego w tym samouczku.
 
 Klient programu Chef (node) jest agent, który znajduje się na serwerach, którymi zarządzasz.
 
@@ -75,7 +75,7 @@ Po utworzeniu Twojej organizacji, należy pobrać starter kit.
 ![][4]
 
 > [!NOTE]
-> Jeśli zostanie wyświetlony monit, ostrzeżenie, klucze zostaną zresetowane, jest ok, aby kontynuować, gdy będą dostępne nie istniejącej infrastruktury, jak jeszcze skonfigurowane.
+> Jeśli zostanie wyświetlony monit, ostrzeżenie, klucze zostaną zresetowane, jest OK kontynuować, gdy będą dostępne nie istniejącej infrastruktury, jak jeszcze skonfigurowane.
 > 
 > 
 
@@ -94,7 +94,7 @@ Teraz masz cztery pliki w folderze głównym c:\chef w tym plików publikowania 
 
 Pliki PEM zawierają organizacji i prywatne klucze administratora w celu komunikacji, gdy plik knife.rb zawiera konfigurację Nóż. Konieczne będzie edytowanie pliku knife.rb.
 
-Otwórz plik w wybranym edytorze i zmodyfikować "cookbook_path" poprzez usunięcie /... / ze ścieżki, tak wygląda na to, jak pokazano dalej.
+Otwórz plik w wybranym edytorze i zmodyfikować "cookbook_path" poprzez usunięcie /... / ze ścieżki, dzięki czemu będzie ono wyświetlane jako:
 
     cookbook_path  ["#{current_dir}/cookbooks"]
 
@@ -109,7 +109,7 @@ Plik knife.rb powinna teraz wyglądać podobnie do poniższego przykładu.
 Linie te zapewniają, że nóż odwołuje się do katalogu podręczniki, w obszarze c:\chef\cookbooks i używa wzorów naszego pliku ustawień publikowania platformy Azure podczas operacji na platformie Azure.
 
 ## <a name="installing-the-chef-development-kit"></a>Instalowanie programu Chef Development Kit
-Następny [Pobierz i zainstaluj](http://downloads.getchef.com/chef-dk/windows) ChefDK (Chef Development Kit), aby skonfigurować stację roboczą Chef.
+Następnie [Pobierz i zainstaluj](http://downloads.getchef.com/chef-dk/windows) ChefDK (Chef Development Kit), aby skonfigurować stację roboczą Chef.
 
 ![][7]
 
@@ -119,7 +119,9 @@ Upewnij się, że w zmiennej PATH zawiera wpisy dla C:\opscode\chefdk\bin; C:\op
 
 Jeśli nie istnieje, upewnij się, że możesz dodać te ścieżki!
 
-*NALEŻY PAMIĘTAĆ, ŻE WAŻNA JEST KOLEJNOŚĆ ŚCIEŻKĘ!* Jeśli Twoje ścieżki opscode nie znajdują się w odpowiedniej kolejności będziesz mieć problemy.
+> [!NOTE]
+> Ważna jest kolejność ścieżki! Jeśli Twoje ścieżki opscode nie znajdują się w odpowiedniej kolejności będziesz mieć problemy. 
+> 
 
 Uruchom ponownie stację roboczą, przed kontynuowaniem.
 

@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/17/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 39287e4d90e4f6f42dd1f79d5457853e253bd736
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 8b91ae9a4f258e52b032dca1484be70469094c2e
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45737060"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585734"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Usługa Azure Import/Export umożliwia importowanie danych do usługi Azure Blob Storage
 
@@ -107,7 +107,7 @@ Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
 
     - Przekazywanie plików dziennika dysków, które uzyskany w kroku przygotowania dysku. Jeśli `waimportexport.exe version1` był używany, przekazać jeden plik dla każdego dysku, który został przygotowany. Jeśli rozmiar pliku dziennika przekracza 2 MB, a następnie można użyć `<Journal file name>_DriveInfo_<Drive serial ID>.xml` również tworzone przy użyciu pliku dziennika. 
     - Wybierz docelowe konto magazynu, w którym dane zostaną umieszczone. 
-    - Lokalizacja nadania jest automatycznie wypełniane na podstawie w regionie wybranym koncie magazynu.
+    - Lokalizacja dropoff jest automatycznie wypełniane na podstawie w regionie wybranym koncie magazynu.
    
    ![Tworzenie zadania importu — krok 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 

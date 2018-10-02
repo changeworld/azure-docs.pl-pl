@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 05/18/2018
 ms.author: ryanwi
-ms.openlocfilehash: 4a5ca4879f81533e3617ca9dfe9cdf8afcf2965b
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 0782b50662d1d49ec79aebbf7a5f889471f11283
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43700175"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018456"
 ---
 # <a name="create-your-first-service-fabric-container-application-on-windows"></a>Tworzenie pierwszej aplikacji kontenera usługi Service Fabric w systemie Windows
 > [!div class="op_single_selector"]
@@ -575,7 +575,7 @@ Domyślny interwał to 10 sekund. Ta konfiguracja jest dynamiczna, dlatego uaktu
 
 ## <a name="configure-the-runtime-to-remove-unused-container-images"></a>Konfigurowanie środowiska uruchomieniowego w celu usunięcia nieużywanych obrazów kontenerów
 
-Możesz skonfigurować klaster usługi Service Fabric w celu usuwania nieużywanych obrazów kontenerów z węzła. Ta konfiguracja pozwala na ponowne przechwycenie miejsca na dysku w przypadku zbyt wielu obrazów kontenerów w węźle. Aby włączyć tę funkcję, zaktualizuj sekcję `Hosting` w manifeście klastra, jak pokazano w poniższym fragmencie kodu: 
+Możesz skonfigurować klaster usługi Service Fabric w celu usuwania nieużywanych obrazów kontenerów z węzła. Ta konfiguracja pozwala na ponowne przechwycenie miejsca na dysku w przypadku zbyt wielu obrazów kontenerów w węźle. Aby włączyć tę funkcję, należy zaktualizować [hostingu](service-fabric-cluster-fabric-settings.md#hosting) sekcji w manifeście klastra, jak pokazano w poniższym fragmencie kodu: 
 
 
 ```json
@@ -596,7 +596,7 @@ Możesz skonfigurować klaster usługi Service Fabric w celu usuwania nieużywan
 } 
 ```
 
-Jeśli nie chcesz usuwać pewnych obrazów, określ je przy użyciu parametru `ContainerImagesToSkip`. 
+Jeśli nie chcesz usuwać pewnych obrazów, określ je przy użyciu parametru `ContainerImagesToSkip`.  
 
 
 ## <a name="configure-container-image-download-time"></a>Konfigurowanie czasu pobierania obrazów kontenerów

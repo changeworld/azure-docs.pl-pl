@@ -6,16 +6,16 @@ author: jeffgilb
 manager: femila
 ms.service: azure-stack
 ms.topic: article
-ms.date: 08/07/2018
+ms.date: 09/28/2018
 ms.author: jeffgilb
 ms.reviewer: wfayed
 keywords: ''
-ms.openlocfilehash: 9bbe55e08d7a005d38c5608df39f9285d79eb203
-ms.sourcegitcommit: 387d7edd387a478db181ca639db8a8e43d0d75f7
+ms.openlocfilehash: 5d002ae84334219d636448e8c78a791fa9c230e7
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/10/2018
-ms.locfileid: "42055094"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586142"
 ---
 # <a name="azure-stack-datacenter-integration---identity"></a>Integracja usługi Azure datacenter stosu — tożsamość
 Za pomocą usługi Azure Active Directory (Azure AD) lub usługi Active Directory Federation Services (AD FS) w usłudze Azure Stack można wdrożyć jako dostawcy tożsamości. Należy wybrać przed wdrożeniem usługi Azure Stack. Wdrażanie przy użyciu usług AD FS jest również określany jako wdrażanie usługi Azure Stack w trybie rozłączonym.
@@ -173,9 +173,9 @@ Aby wykonać poniższą procedurę należy użyć komputera, który ma łączno�
 1. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień i uruchom następujące polecenie, przy użyciu parametrów, które są odpowiednie dla danego środowiska:
 
    ```PowerShell  
-   [XML]$Metadata = Invoke-WebRequest -URI https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml -UseBasicParsing
+    $metadata = (Invoke-WebRequest -URI " https://win-SQOOJN70SGL.contoso.com/federationmetadata/2007-06/federationmetadata.xml " -UseBasicParsing).Content
+    Set-Content -Path c:\metadata.xml -Encoding Unicode -Value $metadata 
 
-   $Metadata.outerxml|out-file c:\metadata.xml
    ```
 
 2. Skopiuj plik metadanych do komputera, który może komunikować się z punktem końcowym uprzywilejowanych.
@@ -240,24 +240,27 @@ Jeśli postanowisz ręcznie uruchomić polecenia, wykonaj następujące czynnoś
    => issue(claim = c);
    ```
 
-2. Aby włączyć uwierzytelnianie oparte na formularzach Windows, otwórz sesję programu Windows PowerShell jako użytkownik z podwyższonym poziomem uprawnień i uruchom następujące polecenie:
+2. Sprawdzanie poprawności dla uwierzytelniania opartego na formularzach Windows ekstranetu i sieci intranet jest włączone. Najpierw sprawdź, czy jego już włączony, uruchamiając następujące polecenie cmdlet:
 
    ```PowerShell  
-   Set-AdfsProperties -WIASupportedUserAgents @("MSAuthHost/1.0/In-Domain","MSIPC","Windows Rights Management Client","Kloud")
+   Get-AdfsAuthenticationProvider | where-object { $_.name -eq "FormsAuthentication" } | select Name, AllowedForPrimaryExtranet, AllowedForPrimaryIntranet
    ```
+
+    > [!Note]  
+    > Windows zintegrowanego uwierzytelniania (WIA) agent użytkownika obsługiwanych, ciągi mogą przestarzałe rozmieszczania użytkownik usługi AD FS może wymagać zostać zaktualizowany do obsługi najnowszej klientów. Możesz przeczytać więcej na temat aktualizowania WIA obsługiwanych ciągów agenta użytkownika w artykule [uwierzytelniania opartego na formularzach pakietu Konfigurowanie intranetu dla urządzeń, które nie obsługują WIA](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-intranet-forms-based-authentication-for-devices-that-do-not-support-wia).<br>Kroki, aby włączyć zasady uwierzytelniania opartego na formularzach są udokumentowane w artykule [skonfigurować zasady uwierzytelniania](https://docs.microsoft.com/windows-server/identity/ad-fs/operations/configure-authentication-policies).
 
 3. Aby dodać relację zaufania jednostki uzależnionej, uruchom następujące polecenie programu Windows PowerShell na wystąpienia usług AD FS lub elementu członkowskiego z farmy. Upewnij się zaktualizować punkt końcowy usług AD FS, a następnie wskaż plik utworzony w kroku 1.
 
    **Dla usług AD FS 2016**
 
    ```PowerShell  
-   Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -AccessControlPolicyName "Permit everyone"
+   Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -AccessControlPolicyName "Permit everyone" -TokenLifeTime 1440
    ```
 
    **Dla usługi AD FS 2012/2012 R2**
 
    ```PowerShell  
-   Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true
+   Add-ADFSRelyingPartyTrust -Name AzureStack -MetadataUrl "https://YourAzureStackADFSEndpoint/FederationMetadata/2007-06/FederationMetadata.xml" -IssuanceTransformRulesFile "C:\ClaimIssuanceRules.txt" -AutoUpdateEnabled:$true -MonitoringEnabled:$true -enabled:$true -TokenLifeTime 1440
    ```
 
    > [!IMPORTANT]
@@ -270,12 +273,6 @@ Jeśli postanowisz ręcznie uruchomić polecenia, wykonaj następujące czynnoś
 
    ```PowerShell  
    Set-AdfsProperties -IgnoreTokenBinding $true
-   ```
-
-5. Portale usługi Azure Stack i narzędzia (Visual Studio) wymagają tokenów odświeżania. Należy je skonfigurować, opierając się na zaufania. Otwórz sesję środowiska Windows PowerShell z podwyższonym poziomem uprawnień i uruchom następujące polecenie:
-
-   ```PowerShell  
-   Set-ADFSRelyingPartyTrust -TargetName AzureStack -TokenLifeTime 1440
    ```
 
 ## <a name="spn-creation"></a>Tworzenie nazwy SPN

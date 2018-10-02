@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: identity
 ms.date: 02/20/2018
 ms.author: daveba
-ms.openlocfilehash: 4bfaed3d908574eff3521cedcef4b117d45e1ca2
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: c6bc77e5ee1fa5e180b41dca50640dc01fee0691
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220923"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017520"
 ---
 # <a name="configure-managed-identities-for-azure-resources-on-a-azure-virtual-machine-scale-using-a-template"></a>Konfigurowanie zarządzanych tożsamości dla zasobów platformy Azure na skalę maszyny wirtualnej platformy Azure przy użyciu szablonu
 
@@ -146,7 +146,7 @@ Jeśli masz zestaw skalowania maszyn wirtualnych, który nie wymaga tożsamości
 
    Jeśli Twoja wersja interfejsu API jest `2018-06-01` i maszyna wirtualna ma systemowych i tożsamości przypisanych przez użytkownika zarządzanego, Usuń `SystemAssigned` z typu tożsamości i zachować `UserAssigned` wraz z wartościami słownika userAssignedIdentities.
 
-   **Microsoft.Compute/virtualMachineScaleSets interfejsu API w wersji 2018-06-01 i starszych wersji**
+   **Microsoft.Compute/virtualMachineScaleSets interfejsu API w wersji 2018-06-01**
 
    Jeśli Twoja wersja interfejsu API jest `2017-12-01` i zestawu skalowania maszyn wirtualnych ma systemowych i tożsamości przypisanych przez użytkownika zarządzanego, Usuń `SystemAssigned` z typu tożsamości i zachować `UserAssigned` wraz z `identityIds` tablicę użytkownik przypisany zarządzane tożsamości. 
    
@@ -279,7 +279,7 @@ W tej sekcji należy przypisać przypisanych przez użytkownika tożsamości zar
     ]
    ```
 
-   **Microsoft.Compute/virtualMachines interfejsu API w wersji 2017-12-01 wcześniej eand**
+   **Microsoft.Compute/virtualMachines interfejsu API w wersji 2017-12-01**
 
    ```json
    "resources": [

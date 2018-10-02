@@ -7,12 +7,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 07/17/2018
 ms.author: nberdy
-ms.openlocfilehash: f2e04c793f5c238716930bcbdcaa090e6a133588
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: f9476d42bbdb9d2a499c08d83eed6696fbbed469
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452595"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586006"
 ---
 # <a name="understand-and-invoke-direct-methods-from-iot-hub"></a>Zrozumienie i wywoływanie metod bezpośrednich z usługi IoT Hub
 
@@ -33,7 +33,7 @@ Zapoznaj się [wskazówki dotyczące komunikacji chmury do urządzenia](iot-hub-
 Metody bezpośrednie są implementowane na urządzeniu i mogą wymagać zero lub więcej danych wejściowych w ładunku metody, aby prawidłowo utworzyć wystąpienie. Wywoływanie metody bezpośredniej za pomocą identyfikatora URI przeznaczonych dla usługi (`{iot hub}/twins/{device id}/methods/`). Urządzenie odbiera metod bezpośrednich za pośrednictwem tematu MQTT specyficznych dla urządzenia (`$iothub/methods/POST/{method name}/`) lub za pośrednictwem protokołu AMQP łączy ( `IoThub-methodname` i `IoThub-status` właściwości aplikacji). 
 
 > [!NOTE]
-> Po wywołaniu metody bezpośredniej o urządzeniu nazwy i wartości właściwości mogą zawierać tylko US-ASCII drukowania litery, cyfry, z wyjątkiem tych w następującym zestawie: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``.
+> Po wywołaniu metody bezpośredniej o urządzeniu nazwy i wartości właściwości mogą zawierać tylko US-ASCII drukowania litery, cyfry, z wyjątkiem tych w następującym zestawie: ``{'$', '(', ')', '<', '>', '@', ',', ';', ':', '\', '"', '/', '[', ']', '?', '=', '{', '}', SP, HT}``
 > 
 
 Bezpośrednie metody są synchroniczne i albo powodzenie lub Niepowodzenie po upływie limitu czasu (domyślne: 30 sekund do ustawienia zapasowej 3600 sekund). Metody bezpośrednie są przydatne w scenariuszach interaktywne, którego urządzenia, która będzie działać tylko wtedy, gdy urządzenie jest w trybie online i odbieranie poleceń. Na przykład włączenie światła przez telefon. W tych scenariuszach chcesz zobaczyć natychmiastowego powodzenie lub niepowodzenie, więc usługę w chmurze może działać na wynik tak szybko, jak to możliwe. Urządzenie może zwrócić niektóre treści wiadomości, w wyniku metody, ale nie jest wymagana dla metody to zrobić. Brak żadnej gwarancji, w kolejności lub dowolnym semantyki współbieżności na wywołania metody.

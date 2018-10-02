@@ -9,16 +9,16 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 09/08/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 48e2f965cdc482f9070497f9a4e7e016bfeb92ea
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a353328983c9a1e9cce2847d600d8bcf409a56f6
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978152"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017469"
 ---
 # <a name="speech-synthesis-markup-language"></a>Język znaczników synteza mowy
 
-Mowy syntezy Markup Language (SSML) to język znaczników oparty na formacie XML, który umożliwia kontrolowanie Wymowa i *prosody* z zamiany tekstu na mowę. (Prosody odwołuje się do rytm wydawania i wysokość mowy — muzyka, jeśli wykonasz). Możesz fonetycznie Podaj słowa, zapewniają wskazówki do interpretacji liczb, wstawianie wstrzymuje, wysokość formantu, wolumin i szybkość i więcej.
+Mowy syntezy Markup Language (SSML) to język znaczników oparty na formacie XML, który umożliwia kontrolowanie Wymowa i *prosody* z zamiany tekstu na mowę. Prosody odwołuje się do rytm wydawania i wysokość mowy — muzyka, jeśli chcesz. Możesz fonetycznie Podaj słowa, zapewniają wskazówki do interpretacji liczb, wstawianie wstrzymuje, wysokość formantu, wolumin i szybkość i więcej.
 
 Aby uzyskać więcej informacji, zobacz [mowy syntezy Markup Language (SSML) w wersji 1.0](http://www.w3.org/TR/2009/REC-speech-synthesis-20090303/) w W3C.
 

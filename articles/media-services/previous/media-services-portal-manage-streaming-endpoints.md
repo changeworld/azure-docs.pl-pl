@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie punktów końcowych przesyłania strumieniowego przy użyciu portalu Azure | Dokumentacja firmy Microsoft
-description: W tym temacie przedstawiono sposób zarządzania punktów końcowych przesyłania strumieniowego przy użyciu portalu Azure.
+title: Zarządzanie punktami końcowymi przesyłania strumieniowego przy użyciu witryny Azure portal | Dokumentacja firmy Microsoft
+description: W tym temacie pokazano, jak zarządzać punktami końcowymi przesyłania strumieniowego przy użyciu witryny Azure portal.
 services: media-services
 documentationcenter: ''
 author: Juliako
@@ -15,103 +15,103 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/10/2017
 ms.author: juliako
-ms.openlocfilehash: 542780766cfa90026d5ff492fcf7b579cb2d7029
-ms.sourcegitcommit: e221d1a2e0fb245610a6dd886e7e74c362f06467
+ms.openlocfilehash: a023cb2ea1cf74c8029cc207c9b899631facb929
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 05/07/2018
-ms.locfileid: "33790349"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018268"
 ---
-# <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Zarządzanie punktów końcowych przesyłania strumieniowego przy użyciu portalu Azure
+# <a name="manage-streaming-endpoints-with-the-azure-portal"></a>Zarządzanie punktami końcowymi przesyłania strumieniowego przy użyciu witryny Azure portal
 
-W tym artykule pokazano, jak używać portalu Azure do zarządzania punktów końcowych przesyłania strumieniowego. 
+W tym artykule pokazano, jak zarządzać punktami końcowymi przesyłania strumieniowego przy użyciu witryny Azure portal. 
 
 >[!NOTE]
->Upewnij się przejrzeć [omówienie](media-services-streaming-endpoints-overview.md) artykułu. 
+>Upewnij się zapoznać się z [Przegląd](media-services-streaming-endpoints-overview.md) artykułu. 
 
-Aby uzyskać informacje na temat skalowania punktu końcowego przesyłania strumieniowego, zobacz [to](media-services-portal-scale-streaming-endpoints.md) artykułu.
+Aby dowiedzieć się, jak skalować punkt końcowy przesyłania strumieniowego, zobacz [to](media-services-portal-scale-streaming-endpoints.md) artykułu.
 
-## <a name="start-managing-streaming-endpoints"></a>Rozpocznij zarządzanie punktów końcowych przesyłania strumieniowego 
+## <a name="start-managing-streaming-endpoints"></a>Rozpoczynanie zarządzania punktami końcowymi przesyłania strumieniowego 
 
-Aby rozpocząć zarządzanie punktów końcowych przesyłania strumieniowego dla Twojego konta, wykonaj następujące czynności.
+Aby rozpocząć zarządzanie punktami końcowymi przesyłania strumieniowego dla swojego konta, wykonaj następujące czynności.
 
 1. W witrynie [Azure Portal](https://portal.azure.com/) wybierz swoje konto usługi Azure Media Services.
-2. W **ustawienia** bloku, wybierz opcję **punkty końcowe przesyłania strumieniowego**.
+2. W **ustawienia** bloku wybierz **punkty końcowe przesyłania strumieniowego**.
    
     ![Punkt końcowy przesyłania strumieniowego](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints1.png)
 
 > [!NOTE]
-> Rozliczenie jest przeprowadzane tylko w przypadku przesyłania strumieniowego punktu końcowego jest w stanie uruchomienia.
+> Opłaty są naliczane tylko wtedy, gdy punkt końcowy przesyłania strumieniowego jest w stanie uruchomienia.
 
 ## <a name="adddelete-a-streaming-endpoint"></a>Dodawanie/Usuwanie punktu końcowego przesyłania strumieniowego
 
 >[!NOTE]
 >Nie można usunąć domyślnego punktu końcowego przesyłania strumieniowego.
 
-Do dodawania/usuwania punktu końcowego przesyłania strumieniowego przy użyciu portalu Azure, wykonaj następujące czynności:
+Do dodawania/usuwania punktu końcowego przesyłania strumieniowego przy użyciu witryny Azure portal, wykonaj następujące czynności:
 
-1. Aby dodać punkt końcowy przesyłania strumieniowego, kliknij przycisk **+ punktu końcowego** w górnej części strony. 
+1. Aby dodać punkt końcowy przesyłania strumieniowego, kliknij **+ punkt końcowy** w górnej części strony. 
 
-    Jeśli planujesz umieszczenie różnych CDN lub CDN oraz bezpośredni dostęp do można wiele punktów końcowych przesyłania strumieniowego.
+    Możesz chcieć wiele punktów końcowych przesyłania strumieniowego, jeśli planujesz mieć różne usługi CDN lub CDN i bezpośredni dostęp.
 
-2. Aby usunąć punkt końcowy przesyłania strumieniowego, naciśnij klawisz **usunąć** przycisku.      
-3. Kliknij przycisk **Start** przycisk, aby uruchomić punktu końcowego przesyłania strumieniowego.
+2. Aby usunąć punktu końcowego przesyłania strumieniowego, naciśnij **Usuń** przycisku.      
+3. Kliknij przycisk **Start** przycisk, aby uruchomić punkt końcowy przesyłania strumieniowego.
    
     ![Punkt końcowy przesyłania strumieniowego](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints2.png)
 
 
 ## <a id="configure_streaming_endpoints"></a>Konfigurowanie punktu końcowego przesyłania strumieniowego
-Punktu końcowego przesyłania strumieniowego, można skonfigurować następujące właściwości:
+Punkt końcowy przesyłania strumieniowego, można skonfigurować następujące właściwości:
 
 * Kontrola dostępu
 * Kontrola pamięci podręcznej
-* Granic lokacji zasad dostępu
+* Obejmujące wiele lokacji zasad dostępu
 
-Aby uzyskać szczegółowe informacje na temat tych właściwości, zobacz [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
+Aby uzyskać szczegółowe informacje o tych właściwościach, zobacz [StreamingEndpoint](https://docs.microsoft.com/rest/api/media/operations/streamingendpoint).
 
 >[!NOTE]
->Po włączeniu sieci CDN w warstwie dostępu do adresu IP nie może uzyskać dostępu. IP dostępu ma zastosowanie tylko w przypadku, gdy nie mają CDN.
+>Po włączeniu usługi CDN nie masz dostępu do dostępu do adresów IP. Dostęp do adresu IP ma zastosowanie tylko w przypadku, gdy nie masz usługi CDN.
 
-Można skonfigurować punktu końcowego przesyłania strumieniowego, wykonując następujące czynności:
+Punkt końcowy przesyłania strumieniowego można skonfigurować, wykonując następujące czynności:
 
-1. Wybierz punktu końcowego przesyłania strumieniowego, który chcesz skonfigurować.
+1. Wybierz punkt końcowy przesyłania strumieniowego, który chcesz skonfigurować.
 2. Kliknij przycisk **ustawienia**.
 
-Następuje krótki opis tych pól.
+Krótki opis pól poniżej.
 
 ![Punkt końcowy przesyłania strumieniowego](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints4.png)
 
-1. Maksymalna pamięć podręczna zasad: używane do konfigurowania okres istnienia pamięci podręcznej obsługiwanych przez ten punkt końcowy przesyłania strumieniowego zasobów. Jeśli wartość nie jest ustawiona, używana jest wartość domyślna. Wartości domyślne można zdefiniować w taki sposób, bezpośrednio w magazynie Azure. Po włączeniu usługi Azure CDN dla punktu końcowego przesyłania strumieniowego powinno nie wartość pamięci podręcznej zasad mniejszy niż 600 sekund.  
-2. Dozwolone adresy IP: umożliwia określenie adresów IP, które będą mogły nawiązywać połączenia do opublikowanych punktu końcowego przesyłania strumieniowego. Jeśli nie określono adresów IP, dowolnego adresu IP będą mogli nawiązywać połączeń. Adresy IP można określić jako pojedynczy adres IP (na przykład "10.0.0.1"), zakresu adresów IP przy użyciu adresu IP i maski podsieci CIDR (na przykład "10.0.0.1/22") lub zakres adresów IP przy użyciu adresu IP i maski podsieci dziesiętną kropkami (na przykład 10.0.0.1 () 255.255.255.0) ").
-3. Konfiguracja Akamai podpis nagłówka uwierzytelniania: można określić sposób skonfigurowania podpis nagłówka uwierzytelniania żądania z serwerów Akamai. Wygaśnięcia jest w formacie UTC.
+1. Zasady dotyczące maksymalnej pamięci podręcznej: używane do konfigurowania okres istnienia pamięci podręcznej dla elementów zawartości dostarczanych za pośrednictwem tego punktu końcowego przesyłania strumieniowego. Jeśli wartość nie jest ustawiona, używana jest wartość domyślna. Domyślne wartości można zdefiniować w taki sposób, bezpośrednio w usłudze Azure storage. Usługi Azure CDN została włączona dla punktu końcowego przesyłania strumieniowego, nie należy ustawić wartość zasad pamięci podręcznej na mniej niż 600 sekund.  
+2. Dozwolone adresy IP: można określić adresy IP, które będzie mogła nawiązać połączenie z opublikowanych punkt końcowy przesyłania strumieniowego. Jeśli nie określono adresów IP, dowolny adres IP będzie nawiązać połączenie. Adresy IP można określić jako pojedynczy adres IP (na przykład "10.0.0.1"), zakres adresów IP przy użyciu adresu IP i maski podsieci CIDR (na przykład "10.0.0.1/22") lub zakres adresów IP przy użyciu adresu IP i maski notacji dziesiętnej podsieci (na przykład "10.0.0.1 () 255.255.255.0) ").
+3. Konfiguracja uwierzytelnianie nagłówków podpisów Akamai: używany do określenia sposobu skonfigurowania żądanie uwierzytelnienia nagłówków podpisów z serwerów Akamai. Czas wygaśnięcia jest w formacie UTC.
 
-## <a name="scale-your-premium-streaming-endpoint"></a>Skalowanie programu Premium punktu końcowego przesyłania strumieniowego
+## <a name="scale-your-premium-streaming-endpoint"></a>Skalowanie usługi Premium, punkt końcowy przesyłania strumieniowego
 
 Więcej informacji znajduje się w [tym](media-services-portal-scale-streaming-endpoints.md) artykule.
 
-## <a id="enable_cdn"></a>Włącz integrację usługi Azure CDN
+## <a id="enable_cdn"></a>Włączanie integracji z usługą Azure CDN
 
 Podczas tworzenia nowego konta integracji przesyłania strumieniowego punktu końcowego usługi Azure CDN domyślny jest domyślnie włączona.
 
-Jeśli zechcesz później Włącz/Wyłącz CDN, musi należeć do punktu końcowego przesyłania strumieniowego **zatrzymana** stanu. Może zająć do dwóch godzin dla ustawiany integracji usługi Azure CDN i zmiany jako aktywnych we wszystkich CDN POP. Jednak można uruchomić punktu końcowego oraz strumienia bez przerw w działaniu przesyłania z punktu końcowego przesyłania strumieniowego i po ukończeniu integracji strumień jest dostarczany z sieci CDN. W okresie inicjowania obsługi administracyjnej punktu końcowego przesyłania strumieniowego będzie w **uruchamianie** stanu i użytkownik może obserwować degredad wydajności.
+Jeśli zechcesz później wyłączanie/włączanie usługi CDN, musi należeć do punktu końcowego przesyłania strumieniowego **zatrzymana** stanu. Może potrwać do dwóch godzin dla integracji usługi Azure CDN włączany i zmian jako aktywny we wszystkich punktach obecności usługi CDN. Jednakże możesz uruchomić punkt końcowy przesyłania strumieniowego i strumienia bez przerw w pracy z punktu końcowego przesyłania strumieniowego, a po ukończeniu integracji strumień jest dostarczany z sieci CDN. W okresie udostępniania punktu końcowego przesyłania strumieniowego będą w **uruchamianie** stanu i użytkownik może obserwować pogorszenie wydajności.
 
-Integracja usługi CDN jest włączona w centrach danych platformy Azure z wyjątkiem Chin i federalnych regionów.
+Integracja usługi CDN jest włączona w centrach danych platformy Azure z wyjątkiem Chin i rządu federalnego regionów.
 
-Gdy ta funkcja jest włączona, **kontroli dostępu**, ** niestandardowa nazwa hosta, i **uwierzytelnianie za pomocą sygnatury Akamai** konfiguracja zostanie wyłączona.
+Po włączeniu, **kontroli dostępu**, ** niestandardowa nazwa hosta, a **uwierzytelniania podpisów serwerów Akamai** Konfiguracja pobiera wyłączona.
  
 > [!IMPORTANT]
-> Integracja usługi Azure Media Services z usługą Azure CDN jest wdrażana w **Azure CDN from Verizon** standardu punkty końcowe przesyłania strumieniowego. Punkty końcowe przesyłania strumieniowego Premium można skonfigurować przy użyciu wszystkich **Azure CDN ceny warstw i dostawców**. Aby uzyskać więcej informacji na temat funkcji usługi Azure CDN, zobacz [Omówienie usługi CDN](../../cdn/cdn-overview.md).
+> Integracja usługi Azure Media Services z usługą Azure CDN jest wdrażana w **Azure CDN from Verizon** dla standardowych punktów końcowych przesyłania strumieniowego. Punkty końcowe przesyłania strumieniowego Premium można skonfigurować za pomocą wszystkich **usługi Azure CDN ceny warstwy i dostawców**. Aby uzyskać więcej informacji na temat funkcji usługi Azure CDN, zobacz [Omówienie usługi CDN](../../cdn/cdn-overview.md).
  
 ### <a name="additional-considerations"></a>Dodatkowe zagadnienia
 
-* Po włączeniu przesyłania strumieniowego punktu końcowego CDN klientów nie można żądać zawartości bezpośrednio ze źródła. Jeśli potrzebna jest możliwość testowania treści lub bez CDN, można utworzyć innej przesyłania strumieniowego punktu końcowego, który nie jest włączona w sieci CDN.
-* Twoje przesyłania strumieniowego hosta punktu końcowego nie zmienia się po włączeniu usługi CDN. Nie należy wprowadzać żadnych zmian do przepływu pracy usług media po włączeniu usługi CDN. Na przykład jeśli Twoje przesyłania strumieniowego hosta punktu końcowego jest strasbourg.streaming.mediaservices.windows.net, po włączeniu usługi CDN, dokładnie tej samej nazwy hosta jest używana.
-* Dla nowych punktów końcowych przesyłania strumieniowego można włączyć CDN za tworzenie nowego punktu końcowego; istniejące punkty końcowe przesyłania strumieniowego należy najpierw zatrzymać punktu końcowego, a następnie Włącz/Wyłącz CDN.
-* Standardowego punktu końcowego przesyłania strumieniowego można skonfigurować tylko za pomocą **dostawcy sieci CDN w warstwie standardowa Verizon** przy użyciu klasycznego portalu Azure. Jednak można włączyć innych dostawców usługi Azure CDN przy użyciu interfejsów API REST.
+* Jeśli CDN została włączona dla punktu końcowego przesyłania strumieniowego, klienci nie mogą zażądać zawartości bezpośrednio ze źródła. Jeśli potrzebna jest możliwość testowania treści z lub bez usługi CDN, możesz utworzyć inny punkt końcowy przesyłania strumieniowego nie włączono usługę CDN.
+* Przesyłania strumieniowego nazwę hosta punktu końcowego nie zmienia się po włączeniu usługi CDN. Nie musisz wprowadzać żadnych zmian usługi przepływu pracy usługi media services po włączeniu usługi CDN. Na przykład w przypadku przesyłania strumieniowego nazwę hosta punktu końcowego strasbourg.streaming.mediaservices.windows.net, po włączeniu usługi CDN, dokładnie tej samej nazwy hosta jest używana.
+* Nowe punkty końcowe przesyłania strumieniowego można włączyć sieć CDN po prostu tworząc nowy punkt końcowy; istniejące punkty końcowe przesyłania strumieniowego należy najpierw zatrzymać punktu końcowego i następnie Włączanie/wyłączanie usługi CDN.
+* Standardowy punkt końcowy przesyłania strumieniowego można skonfigurować tylko przy użyciu **dostawcy CDN w warstwie standardowa firmy Verizon** przy użyciu klasycznej witryny Azure portal. Jednakże można włączyć innych dostawców rozwiązań w usłudze Azure CDN przy użyciu interfejsów API REST.
 
-## <a name="configure-cdn-profile"></a>Skonfiguruj profil CDN
+## <a name="configure-cdn-profile"></a>Konfigurowanie profilu CDN
 
-Można skonfigurować profil CDN, wybierając **Zarządzanie CDN** przycisk od góry.
+Można skonfigurować profil usługi CDN, wybierając **zarządzania sieci CDN** przycisk od góry.
 
 ![Punkt końcowy przesyłania strumieniowego](./media/media-services-portal-manage-streaming-endpoints/media-services-manage-streaming-endpoints6.png)
 

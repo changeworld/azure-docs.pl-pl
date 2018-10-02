@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/10/2018
 ms.author: alkohli
 ms.component: common
-ms.openlocfilehash: 1be7dd9ce537d0999ace01eafa46318e42df9f20
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: adb3127e45166d4743c182cbd21944dd86810596
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45732451"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584170"
 ---
 # <a name="use-azure-importexport-service-to-import-data-to-azure-files"></a>Usługa Azure Import/Export umożliwia importowanie danych do usługi Azure Files
 
@@ -139,7 +139,7 @@ Wykonaj poniższe kroki, aby utworzyć zadanie importu w witrynie Azure portal.
     
     - Przekazywanie plików dziennika, utworzone w ciągu poprzednich [krok 1: przygotowanie dysków](#step-1-prepare-the-drives). 
     - Wybierz konto magazynu, które mają zostać zaimportowane dane. 
-    - Lokalizacja nadania jest automatycznie wypełniane na podstawie w regionie wybranym koncie magazynu.
+    - Lokalizacja dropoff jest automatycznie wypełniane na podstawie w regionie wybranym koncie magazynu.
    
        ![Tworzenie zadania importu — krok 2](./media/storage-import-export-data-to-blobs/import-to-blob4.png)
 

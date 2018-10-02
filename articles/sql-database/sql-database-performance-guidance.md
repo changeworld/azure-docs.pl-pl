@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 283d27e330b7e1defb34196279693b5b5a7221df
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 09/24/2018
+ms.openlocfilehash: 09238b75680658e9efef3a6a9aaa3c288d3d91a4
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160591"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585853"
 ---
 # <a name="tuning-performance-in-azure-sql-database"></a>Dostrajanie wydajności w usłudze Azure SQL Database
 
@@ -30,29 +30,18 @@ W przypadku nie ma żadnych zaleceń dotyczy i nadal masz problemy z wydajności
 
 Są one metod ręcznych, ponieważ musisz określić ilość zasobów spełnia Twoje potrzeby. W przeciwnym razie należy ponownie zapisuje aplikacji lub kodu bazy danych i wdrażanie zmiany.
 
-## <a name="increasing-servicce-tier-of-your-database"></a>Zwiększenie servicce warstwy bazy danych
+## <a name="increasing-service-tier-of-your-database"></a>Zwiększenie warstwy usługi bazy danych
 
-Usługa Azure SQL Database oferuje dwa modele zakupu, [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) , możesz wybrać spośród. Każda warstwa usługi izoluje wyłącznie zasoby, można użyć usługi SQL database i gwarantuje przewidywalną wydajność w danej warstwie usługi. W tym artykule firma Microsoft oferuje wskazówki, które mogą pomóc Ci wybrać warstwę usług dla aplikacji. Omówimy również sposób, że można Dostrajanie aplikacji w taki sposób, aby maksymalnie wykorzystać usługę Azure SQL Database.
+Usługa Azure SQL Database oferuje [dwa modele zakupu](sql-database-service-tiers.md), [modelu zakupu opartego na jednostkach DTU](sql-database-service-tiers-dtu.md) i [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) , możesz wybrać spośród. Każda warstwa usługi izoluje wyłącznie zasoby, można użyć usługi SQL database i gwarantuje przewidywalną wydajność w danej warstwie usługi. W tym artykule firma Microsoft oferuje wskazówki, które mogą pomóc Ci wybrać warstwę usług dla aplikacji. Omówimy również sposób, że można Dostrajanie aplikacji w taki sposób, aby maksymalnie wykorzystać usługę Azure SQL Database. Każda warstwa usługi ma swój własny [limity zasobów](sql-database-resource-limits.md). Aby uzyskać więcej informacji, zobacz [limity zasobów opartych na rdzeniach wirtualnych](sql-database-vcore-resource-limits-single-databases.md) i [limity zasobów na podstawie jednostek DTU](sql-database-dtu-resource-limits-single-databases.md).
 
 > [!NOTE]
 > Ten artykuł koncentruje się na wskazówki dotyczące wydajności dla pojedynczych baz danych w usłudze Azure SQL Database. Aby uzyskać wskazówki dotyczące wydajności związane z pul elastycznych, zobacz [zagadnienia dotyczące cen i wydajności dla pul elastycznych](sql-database-elastic-pool-guidance.md). Należy pamiętać, jednak wiele zalecenia dotyczące dostrajania w tym artykule dotyczą baz danych w elastycznej puli, a podobne korzyści wydajności.
-> 
-
-* **Podstawowe**: podstawowa usługa warstwa oferuje dobrą wydajność przewidywalność dla każdej bazy danych, godzinę w ciągu godziny. W podstawowej bazy danych wystarczających zasobów obsługują dobrą wydajność w małej bazy danych, która nie ma wiele równoczesnych żądań. Typowe przypadki użycia, gdy używasz w warstwie podstawowa są następujące:
-  * **Po prostu rozpoczynasz pracę z usługą Azure SQL Database**. Aplikacje, które są w fazie projektowania często nie muszą wysoka compute rozmiarów. Podstawowe bazy danych są idealne środowisko do tworzenia bazy danych i testowania, w momencie niskiej cenie.
-  * **Masz bazę danych z żadnym użytkownikiem**. Aplikacje, które kojarzą pojedynczego użytkownika z bazy danych zwykle nie mają wysokie wymagania dotyczące wydajności i współbieżności. Te aplikacje nadają się do warstwy usług w warstwie podstawowa.
-* **Standardowa**: warstwie usługi standardowa oferuje lepszą wydajność przewidywalności i zapewnia dobrą wydajność w przypadku baz danych, które mają wiele współbieżnych żądań, takich jak aplikacje sieci web i grupy roboczej. Po wybraniu warstwy usług w warstwie standardowa bazy danych, można rozmiar aplikacji bazy danych na podstawie przewidywalnej wydajności, minuty w ciągu minuty.
-  * **Baza danych zawiera wiele równoczesnych żądań**. Aplikacje, które usługa więcej niż jeden użytkownik naraz zazwyczaj konieczne wyższe rozmiarów wystąpień obliczeniowych. Na przykład grupy roboczej lub aplikacji sieci web, które muszą niskim średnim we/wy wymaganiami co do ruchu obsługą wielu równoczesnych zapytań nadaje się do warstwy usług w warstwie standardowa.
-* **Premium**: warstwy Premium zapewnia przewidywalną wydajność, drugi za pośrednictwem drugie dla każdej bazy danych Premium lub krytyczne dla działania firmy. Po wybraniu warstwy Premium, można rozmiar bazy danych aplikacji na podstawie szczytowego obciążenia dla tej bazy danych. Plan usuwa przypadków w wydajności, które wariancji może spowodować małych zapytania trwać dłużej, niż oczekiwano w operacji wrażliwych na opóźnienia. Ten model znacznie upraszcza cykli weryfikacji i opracowywanie produktów dla aplikacji, które należy wprowadzić silne instrukcji dotyczących szczytowe zapotrzebowanie na zasoby, wariancji wydajności lub kwerendami. Większość przypadków użycia warstwy Premium usługi mają co najmniej jeden z następujących cech:
-  * **Duże szczytowe obciążenia**. Aplikację, która wymaga znacznej procesora CPU, pamięć lub wejścia/wyjścia (IO) do wykonania swoich operacji wymaga określenia rozmiaru dedykowaną, obliczeń o wysokiej. Na przykład znane z wielu rdzeni Procesora przez dłuższy czas operacji bazy danych jest kandydatem do warstwy Premium.
-  * **Wiele żądań jednocześnie**. Niektóre aplikacje baz danych usługi dużo współbieżnych żądań, na przykład, gdy obsługująca witryny sieci Web, która ma woluminu dużego ruchu. Podstawowa i standardowa warstwy usług Ogranicz liczbę równoczesnych żądań na bazie danych. Aplikacje, które wymagają więcej połączeń należy wybrać rozmiar rezerwacji odpowiednie do obsługi maksymalną liczbę żądań potrzebne.
-  * **Małe opóźnienia**. Niektóre aplikacje muszą gwarantuje odpowiedź z bazy danych w krótkim czasie. Jeśli określone procedury składowanej jest wywoływana w ramach szerszej operacji klienta, może być wymagane są powrót z wywołania w nie więcej niż 20 MS, 99 procent czasu. Ten typ aplikacji korzysta z warstwy Premium, aby upewnić się, że wymagane moc obliczeniowa jest dostępny.
 
 Warstwy usług niezbędnych do usługi SQL database zależy od wymagań obciążenia szczytowe dla każdego wymiaru zasobów. Niektóre aplikacje używać trivial ilości pojedynczego zasobu, ale istnieją znaczne wymagania dotyczące innych zasobów.
 
 ### <a name="service-tier-capabilities-and-limits"></a>Usługa możliwości i ograniczeń warstw
 
-W każdej warstwie usługi możesz ustawić rozmiar obliczeń dzięki elastyczności, aby płacić tylko za potrzebne. Możesz [dostosować pojemność](sql-database-service-tiers-dtu.md), w górę lub w dół w miarę zmian obciążenia. Na przykład jeśli obciążenie bazy danych jest wysoka w sezonie zakupów wstecz do szkoły, może zwiększyć rozmiaru obliczeń dla bazy danych na określony czas, lipca, za pośrednictwem września. Można zmniejszyć jej po zakończeniu Twojej sezon szczytowego. Można zminimalizować, płacisz, optymalizując środowiska chmury do sezonowości w firmie. Ten model jest również odpowiedni dla cykle wydawania produktu oprogramowania. Zespół testowy może przydzielić pojemność, podczas przebiegów testów i zwolnij danej pojemności, po zakończeniu testowania. W modelu żądania pojemności płacisz za pojemność potrzebny i uniknąć wydatków na dedykowanych zasobów, może być rzadko używanych.
+W każdej warstwie usługi możesz ustawić rozmiar obliczeń dzięki elastyczności, aby płacić tylko za potrzebne. Możesz [dostosować pojemność](sql-database-single-database-scale.md), w górę lub w dół w miarę zmian obciążenia. Na przykład jeśli obciążenie bazy danych jest wysoka w sezonie zakupów wstecz do szkoły, może zwiększyć rozmiaru obliczeń dla bazy danych na określony czas, lipca, za pośrednictwem września. Można zmniejszyć jej po zakończeniu Twojej sezon szczytowego. Można zminimalizować, płacisz, optymalizując środowiska chmury do sezonowości w firmie. Ten model jest również odpowiedni dla cykle wydawania produktu oprogramowania. Zespół testowy może przydzielić pojemność, podczas przebiegów testów i zwolnij danej pojemności, po zakończeniu testowania. W modelu żądania pojemności płacisz za pojemność potrzebny i uniknąć wydatków na dedykowanych zasobów, może być rzadko używanych.
 
 ### <a name="why-service-tiers"></a>Dlaczego usługa warstwy?
 Mimo, że każde obciążenie bazy danych może się różnić, przeznaczenie warstwy usług jest zapewnienie przewidywalność wydajności w różnych rozmiarów wystąpień obliczeniowych. Klienci z wymagań dotyczących zasobów bazy danych na dużą skalę można pracować w bardziej dedykowane środowisko przetwarzania danych.

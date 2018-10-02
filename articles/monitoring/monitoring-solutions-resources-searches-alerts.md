@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: f03e124aab27292ee86fcd8c28ecebb0ba9cbdcf
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: fd8ba47e8fb0d591fab7717117329357b74f907a
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999515"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585972"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Dodawanie usługi Log Analytics zapisane wyszukiwania i alerty w rozwiązaniu do zarządzania (wersja zapoznawcza)
 
@@ -84,7 +84,7 @@ Każda właściwość zapisanego kryterium wyszukiwania jest opisane w poniższe
 | query | Zapytanie do uruchomienia. |
 
 > [!NOTE]
-> Może być konieczne użycie znaków ucieczki w zapytaniu, jeśli zawiera znaki, które może zostać zinterpretowane jako kod JSON.  Na przykład, jeśli zapytanie zostało **typu: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"**, powinny być zapisywane w pliku rozwiązania jako **typu: AzureActivity OperationName:\" Microsoft.Compute/virtualMachines/write\"**.
+> Może być konieczne użycie znaków ucieczki w zapytaniu, jeśli zawiera znaki, które może zostać zinterpretowane jako kod JSON.  Na przykład, jeśli zapytanie zostało **typu: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"**, powinny być zapisywane w pliku rozwiązania jako **typu: AzureActivity OperationName:\\" Microsoft.Compute/virtualMachines/write\\"**.
 
 ## <a name="alerts"></a>Alerty
 [Alerty dzienników platformy Azure](../monitoring-and-diagnostics/monitor-alerts-unified-log.md) są tworzone przez reguły alertów platformy Azure, które uruchamiają zapytania określonego dziennika w regularnych odstępach czasu.  Jeśli wyniki zapytania pasują do określonych kryteriów, zostaje utworzony rekord alertu i co najmniej jednej akcji są uruchamiane przy użyciu [grup akcji](../monitoring-and-diagnostics/monitoring-action-groups.md).  
@@ -250,7 +250,7 @@ Każdy harmonogram ma jeden **alertu** akcji.  Definiuje szczegóły alertu, i o
 | Nazwa elementu | Wymagane | Opis |
 |:--|:--|:--|
 | Adresaci | Yes | Rozdzielana przecinkami lista adresów e-mail, aby wysłać powiadomienia, gdy jest tworzony alert, takie jak w poniższym przykładzie.<br><br>**[ "recipient1@contoso.com", "recipient2@contoso.com" ]** |
-| Temat | Yes | Wiersz tematu wiadomości e-mail. |
+| Podmiot | Yes | Wiersz tematu wiadomości e-mail. |
 | Załącznik | Nie | Załączniki nie są obecnie obsługiwane.  Jeśli ten element jest włączone, należy go **Brak**. |
 
 

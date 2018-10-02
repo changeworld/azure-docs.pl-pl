@@ -8,12 +8,12 @@ ms.date: 09/21/2018
 ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
-ms.openlocfilehash: 5e358992661f7bcf06121a07c1bafca0850316b2
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 259d61125828ee487b74daa525f3635cfa592ce7
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423141"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017708"
 ---
 # <a name="properties-of-the-edge-agent-and-edge-hub-module-twins"></a>Właściwości agenta usługi Edge i bliźniaczych reprezentacjach modułów Centrum usługi Edge
 
@@ -46,6 +46,7 @@ Agent usługi Edge bliźniaczą reprezentację modułu nosi nazwę `$edgeAgent` 
 | systemModules.edgeHub.configuration.id | Identyfikator wdrożenia, które są wdrożone w tym module. | Ta właściwość jest ustawiona przez usługę IoT Hub, po zastosowaniu tego manifestu, przy użyciu wdrożenia. Nie jest częścią manifestu wdrażania. |
 | moduły. {moduleId} .version | Zdefiniowane przez użytkownika ciąg reprezentujący wersję tego modułu. | Yes |
 | moduły. .Type — {moduleId} | Musi być "docker" | Yes |
+| moduły. .status {moduleId} | {"uruchomiona" \| "zatrzymana"} | Yes |
 | moduły. .restartPolicy {moduleId} | {"nigdy" \| "na — nie powiodło się" \| "na — zła" \| "zawsze"} | Yes |
 | modules.{moduleId}.settings.image | Identyfikator URI do obrazu modułu. | Yes |
 | modules.{moduleId}.settings.createOptions | Opcje tworzenia kontenera moduł zawierający JSON skonwertowanej do formatu tekstowego. [Opcje tworzenia platformy docker][lnk-docker-create-options] | Nie |

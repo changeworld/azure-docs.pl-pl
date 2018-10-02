@@ -7,24 +7,22 @@ ms.subservice: operations
 ms.custom: ''
 ms.devlang: ''
 ms.topic: conceptual
-author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/18/2018
-ms.openlocfilehash: 0a91139d92570a2ee2828f9295590d580902c501
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 09/19/2018
+ms.openlocfilehash: 68746874ec01f44055421f0033acd0d485e1d230
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47164994"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586091"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Zarządzanie długotrwałym przechowywaniem kopii zapasowych usługi Azure SQL Database
 
 Można skonfigurować usługi Azure SQL database za pomocą [długoterminowego przechowywania kopii zapasowych](sql-database-long-term-retention.md) zasad (od lewej do prawej) automatycznie przechowywania kopii zapasowych w magazynie obiektów blob platformy Azure przez maksymalnie 10 lat. Można odzyskać bazę danych przy użyciu tych kopii zapasowych przy użyciu witryny Azure portal lub programu PowerShell.
 
 ## <a name="use-the-azure-portal-to-configure-long-term-retention-policies-and-restore-backups"></a>Użyj witryny Azure portal, aby skonfigurować długoterminowe zasady przechowywania i przywracanie kopii zapasowych
-
 Poniższe sekcje pokazują, jak skonfigurować długoterminowe przechowywanie, wyświetlanie kopii zapasowych podlegających długoterminowemu przechowywaniu i długoterminowym przechowywaniu kopii zapasowej za pomocą witryny Azure portal.
 
 ### <a name="configure-long-term-retention-policies"></a>Skonfiguruj zasady przechowywania długoterminowego
@@ -78,6 +76,24 @@ Poniższe sekcje pokazują, jak skonfigurować długoterminowe przechowywanie ko
 - [Elementu AzureRM.Sql 4.5.0](https://www.powershellgallery.com/packages/AzureRM.Sql/4.5.0) lub nowszej
 - [AzureRM 6.1.0](https://www.powershellgallery.com/packages/AzureRM/6.1.0) lub nowszej
 > 
+
+### <a name="rbac-roles-to-manage-long-term-retention"></a>Zarządzanie długotrwałym przechowywaniem ról RBAC
+
+Aby można było zarządzać kopii zapasowych LTR, musisz być 
+- Właściciel subskrypcji lub
+- Rola Współautor serwera SQL Server w **subskrypcji** zakresu lub
+- Rola Współautor bazy danych SQL w **subskrypcji** zakresu
+
+Jeśli wymagane jest bardziej szczegółową kontrolę, można utworzyć niestandardowe role RBAC i przypisać je w **subskrypcji** zakresu. 
+
+Aby uzyskać **Get AzureRmSqlDatabaseLongTermRetentionBackup** i **Restore-AzureRmSqlDatabase** rolę musi mieć następujące uprawnienia:
+
+Microsoft.Sql/locations/longTermRetentionBackups/read Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionBackups/read Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/ longTermRetentionBackups/Odczyt
+ 
+Aby uzyskać **AzureRmSqlDatabaseLongTermRetentionBackup Usuń** roli, trzeba mieć następujące uprawnienia:
+
+Microsoft.Sql/locations/longTermRetentionServers/longTermRetentionDatabases/longTermRetentionBackups/delete
+
 
 ### <a name="create-an-ltr-policy"></a>Tworzenie zasad LTR
 

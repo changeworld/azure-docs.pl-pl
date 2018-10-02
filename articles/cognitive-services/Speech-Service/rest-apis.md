@@ -8,12 +8,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/09/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 6758cd658daf75beeea93bf9c719508cd271c8be
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: cc73be09cec4ef963a496687d112f98e05d98802
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47032431"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018523"
 ---
 # <a name="speech-service-rest-apis"></a>Usługa rozpoznawania mowy interfejsów API REST
 
@@ -32,11 +32,11 @@ Ten interfejs API obsługuje tylko krótkie wypowiedzi. Żądania może zawiera�
 
 ### <a name="query-parameters"></a>Parametry zapytania
 
-Mogą zostać dołączone następujące parametry ciągu zapytania żądania REST.
+Następujące parametry mogą być zawarte w ciągu zapytania żądania REST.
 
 |Nazwa parametru|Wymagane/opcjonalne|Znaczenie|
 |-|-|-|
-|`language`|Wymagane|Identyfikator doceniona języka. Zobacz [obsługiwane języki](supported-languages.md#speech-to-text).|
+|`language`|Wymagane|Identyfikator doceniona języka. Zobacz [obsługiwane języki](language-support.md#speech-to-text).|
 |`format`|Optional (Opcjonalność)<br>Wartość domyślna: `simple`|Format wyników `simple` lub `detailed`. Proste wyniki obejmują `RecognitionStatus`, `DisplayText`, `Offset`i czas trwania. Szczegółowe wyniki będą zawierać wielu kandydatów z wartościami zaufania i cztery różne reprezentacje.|
 |`profanity`|Optional (Opcjonalność)<br>Wartość domyślna: `masked`|Jak obsługiwać wulgaryzmów w wyniki rozpoznawania. Może być `masked` (zastępuje wulgaryzmów gwiazdkami), `removed` (spowoduje to usunięcie wszystkich wulgaryzmów), lub `raw` (w tym wulgaryzmów).
 
@@ -195,9 +195,6 @@ Dostępne są następujące punkty końcowe REST dla usługi mowy tekst na mowę
 
 [!INCLUDE [](../../../includes/cognitive-services-speech-service-endpoints-text-to-speech.md)]
 
-> [!NOTE]
-> Jeśli utworzono niestandardową czcionkę głosową, należy użyć skojarzone niestandardowego punktu końcowego.
-
 Usługa rozpoznawania mowy obsługuje wyjściowego audio 24 KHz, oprócz danych wyjściowych 16 Khz, obsługiwane przez rozpoznawania mowy Bing. Cztery formaty danych wyjściowych 24 KHz są dostępne do użycia w `X-Microsoft-OutputFormat` nagłówka HTTP, jak są dwa głosy 24 KHz, `Jessa24kRUS` i `Guy24kRUS`.
 
 Ustawienia regionalne | Język   | Płeć | Mapowanie nazwy usługi
@@ -205,7 +202,7 @@ Ustawienia regionalne | Język   | Płeć | Mapowanie nazwy usługi
 pl-PL  | US English | Kobieta | "Microsoft Server mowy Text na głos mowy (en US, Jessa24kRUS)" 
 pl-PL  | US English | Mężczyzna   | "Microsoft Server mowy Text na głos mowy (en US, Guy24kRUS)"
 
-Pełną listę dostępnych głosów jest dostępna w [obsługiwane języki](supported-languages.md#text-to-speech).
+Pełną listę dostępnych głosów jest dostępna w [obsługiwane języki](language-support.md#text-to-speech).
 
 ### <a name="request-headers"></a>Nagłówki żądań
 
@@ -265,7 +262,8 @@ Kod HTTP|Znaczenie|Możliwa przyczyna
 400 |Nieprawidłowe żądanie |Wymagany parametr jest Brak, pusta lub równa null. Lub wartość przekazana do każdego wymaganego lub opcjonalnego parametru jest nieprawidłowa. Typowym problemem jest nagłówkiem, który jest za długi.
 401|Brak autoryzacji |Żądanie nie jest autoryzowany. Zaznacz, aby upewnić się, że klucz subskrypcji lub token jest prawidłowy i w poprawny region.
 413|Jednostka żądania jest zbyt duża|Dane wejściowe SSML jest dłuższa niż 1024 znaki.
-|502|Zła brama    | Problem z siecią lub po stronie serwera. Może również oznaczać nieprawidłowy nagłówek.
+429|Zbyt wiele żądań|Przekroczono limit przydziału lub liczbę żądań dozwoloną przez subskrypcję.
+502|Zła brama | Problem z siecią lub po stronie serwera. Może również oznaczać nieprawidłowy nagłówek.
 
 W przypadku stanu HTTP `200 OK`, treść odpowiedzi zawiera plik audio w formacie żądanej. Mogą być odtwarzane tego pliku, ponieważ przeniesione lub zapisany do buforu lub nowszej odtwarzania lub inne użycie w pliku.
 

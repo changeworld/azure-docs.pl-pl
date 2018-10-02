@@ -15,12 +15,12 @@ ms.date: 09/24/2018
 ms.author: celested
 ms.reviewer: brandwe
 ms.custom: aaddev
-ms.openlocfilehash: e9598cb464360e35a86b6fe35d8c965a5e7fb51d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0a2a9845f82f1a81f3e187edbbb2deaa2300b3be
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46963036"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585921"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Porady: Włączanie logowania jednokrotnego dla wielu aplikacji, w systemie iOS za pomocą biblioteki ADAL
 
@@ -250,7 +250,7 @@ Dostępne są następujące czynności:
 1. Włącz tryb brokera w kodzie aplikacji wywołania MS SDK.
 2. Ustanawia nowy identyfikator URI przekierowania i przewidzieć, że do Twojej rejestracji aplikacji i aplikacji.
 3. Rejestrowanie schemat adresu URL.
-4. Obsługa iOS9: Dodaj uprawnienia do pliku info.plist.
+4. Dodaj uprawnienia do pliku info.plist.
 
 #### <a name="step-1-enable-broker-mode-in-your-application"></a>Krok 1: Włącz tryb brokera w aplikacji
 
@@ -307,12 +307,16 @@ Drugi "msauth" muszą być zarejestrowane w Twojej aplikacji uwierzytelnianie op
 
 przykład: *msauth://code/x-msauth-mytestiosapp%3A%2F%2Fcom.myapp.mytestapp*
 
-#### <a name="step-4-ios9-add-a-configuration-parameter-to-your-app"></a>Krok 4: iOS9: Dodawanie parametru konfiguracji do aplikacji
+#### <a name="step-4-add-a-configuration-parameter-to-your-app"></a>Krok 4: Dodawanie parametru konfiguracji do aplikacji
 
-— CanOpenURL korzysta z biblioteki ADAL: aby Sprawdź, czy broker jest zainstalowana na urządzeniu. W systemie iOS 9 firmy Apple zablokowany co można wyszukiwać schematów aplikacji. Należy dodać "msauth" w sekcji LSApplicationQueriesSchemes swoje `info.plist file`.
+— CanOpenURL korzysta z biblioteki ADAL: aby Sprawdź, czy broker jest zainstalowana na urządzeniu. W systemie iOS 9 na Apple zablokowany co można wyszukiwać schematów aplikacji. Należy dodać "msauth" w sekcji LSApplicationQueriesSchemes swoje `info.plist file`.
 
 ```
-<key>LSApplicationQueriesSchemes</key> <array><string>msauth</string></array>
+    <key>LSApplicationQueriesSchemes</key>
+    <array>
+        <string>msauth</string>
+    </array>
+
 ```
 
 ### <a name="youve-configured-sso"></a>Skonfigurowano logowania jednokrotnego!

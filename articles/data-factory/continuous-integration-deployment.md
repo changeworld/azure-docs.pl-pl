@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/26/2018
+ms.date: 10/01/2018
 ms.author: douglasl
-ms.openlocfilehash: ff112459ef23930329fc1959a633bd6f505893a1
-ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
+ms.openlocfilehash: aa8572ea0195891657baf3df1916ce0b4f36f788
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47419603"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018812"
 ---
 # <a name="continuous-integration-and-delivery-cicd-in-azure-data-factory"></a>Ciągła integracja i dostarczanie (CI/CD) w usłudze Azure Data Factory
 
@@ -112,6 +112,11 @@ Poniżej przedstawiono procedurę konfigurowania wersji potoki usługi Azure, wi
     f.  Wybierz **...** obok pozycji **przesłanianie parametrów szablonu** pola, a następnie wprowadź informacje dla elementu docelowego fabryki danych. Dla poświadczeń, które pochodzą z usługi key vault, użyj takiej samej nazwie klucza tajnego w następującym formacie: Nazwa klucza tajnego zakładając, że jest `cred1`, wprowadź `"$(cred1)"` (w cudzysłowie).
 
     ![](media/continuous-integration-deployment/continuous-integration-image9.png)
+
+    g. Wybierz **przyrostowe** tryb wdrożenia.
+
+    > [!WARNING]
+    > Jeśli wybierzesz **Complete** tryb wdrożenia, istniejące zasoby mogą zostać usunięte, w tym docelowa grupa zasobów.
 
 1.  Zapisz potoku tworzenia wersji.
 

@@ -11,13 +11,13 @@ author: bonova
 ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/26/2018
-ms.openlocfilehash: 626dd362248027831c78d1505662ca12d2ff334d
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.date: 10/01/2018
+ms.openlocfilehash: a09a19957c318416f3cb4de79305b181dbc3be81
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47392826"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018289"
 ---
 # <a name="what-is-a-managed-instance"></a>Co to jest wystąpienie zarządzane?
 
@@ -75,7 +75,7 @@ Wystąpienie zarządzane jest dostępna w dwóch warstwach usługi:
 Obie warstwy usług gwarantuje dostępność na poziomie 99,99% i pozwalają na niezależne wybierz rozmiar magazynu i moc obliczeniową. Aby uzyskać więcej informacji na temat architektury wysokiej dostępności usługi Azure SQL Database, zobacz [wysokiej dostępności i Azure SQL Database](sql-database-high-availability.md).
 
 > [!IMPORTANT]
-> Zmiana warstwie usługi, z ogólnego przeznaczenia na krytyczne dla działania firmy lub odwrotnie nie jest obsługiwana w publicznej wersji zapoznawczej. Użytkownik chce migrować swoje bazy danych do wystąpienia w warstwie innej usługi, można tworzyć nowe wystąpienie, Przywróć bazy danych przy użyciu punktu w czasie przywracania z oryginalnego wystąpienia i następnie upuść oryginalne wystąpienie, jeśli nie jest już potrzebna. 
+> Zmiana warstwie usługi, z ogólnego przeznaczenia na krytyczne dla działania firmy lub odwrotnie nie jest obsługiwana w publicznej wersji zapoznawczej. Użytkownik chce migrować swoje bazy danych do wystąpienia w warstwie innej usługi, można tworzyć nowe wystąpienie, Przywróć bazy danych przy użyciu punktu w czasie przywracania z oryginalnego wystąpienia i następnie upuść oryginalne wystąpienie, jeśli nie jest już potrzebna. Jednak możesz skalować liczbę rdzeni wirtualnych i magazynu w górę lub w dół w ramach warstwy usług bez przestojów.
 
 ### <a name="general-purpose-service-tier"></a>Warstwy usług w usłudze ogólnego przeznaczenia
 
@@ -108,7 +108,7 @@ Poniższa lista zawiera opis kluczowych charakterystyk warstwy usług ogólnego 
 
 \* Rdzeń wirtualny reprezentuje logiczny Procesor CPU z opcją wyboru generacji sprzętu. Logiczne procesory CPU 4 generacji wykorzystują procesory Intel E5-2673 v3 (Haswell) 2,4 GHz, a logiczne procesory CPU 5 ogólnego są oparte na Intel E5-2673 v4 (broadwell z zegarem) 2,3 GHz. 
 
-Aby uzyskać więcej informacji, zobacz [dostępności Standard/ogólnego przeznaczenia i architektura](sql-database-high-availability.md#standardgeneral-purpose-availability) w usłudze Azure SQL Database.
+Aby uzyskać więcej informacji, zobacz [dostępności Standard/ogólnego przeznaczenia i architektura](sql-database-high-availability.md#standardgeneral-purpose-availability) w usłudze Azure SQL Database i [magazynu najlepsze rozwiązania w zakresie wydajności i zagadnienia dotyczące usługi Azure SQL DB wystąpienia zarządzanego (Ogólne Cel)](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/).
 
 ### <a name="business-critical-service-tier-preview"></a>Warstwy usług krytycznych Business (wersja zapoznawcza)
 

@@ -9,16 +9,16 @@ ms.technology: speech
 ms.topic: article
 ms.date: 05/18/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 068f0a0d9202174faf5d54bebf5cf5f8fae86766
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: def8d8f9fc55aa6491799a134a554a8a7fe2884a
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721008"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017199"
 ---
 # <a name="get-started-with-the-speech-devices-sdk"></a>Wprowadzenie do zestawu Speech Devices SDK
 
-W tym artykule opisano sposób konfigurowania programistycznych PC i zestaw Speech urządzenia development kit dla tworzenia urządzenia z włączoną obsługą mowy za pomocą zestawu Speech Devices SDK. Następnie utworzysz i wdrożysz przykładową aplikację na urządzeniu. 
+W tym artykule opisano sposób konfigurowania programistycznych PC i zestaw Speech urządzenia development kit dla tworzenia urządzenia z włączoną obsługą mowy za pomocą zestawu Speech Devices SDK. Następnie zbudujesz i wdrożysz przykładową aplikację na urządzeniu. 
 
 Kod źródłowy przykładowej aplikacji jest dołączone do zestawu Speech Devices SDK. Warto również [dostępne w serwisie GitHub](https://github.com/Azure-Samples/Cognitive-Services-Speech-Devices-SDK).
 
@@ -45,7 +45,7 @@ Przed rozpoczęciem tworzenia przy użyciu zestawu Speech Devices SDK, Zbierz in
 
 ## <a name="set-up-the-development-kit"></a>Skonfiguruj zestaw development kit
 
-1. Zestaw deweloperski nawiązać połączenie z komputerem PC lub zasilania karty przy użyciu kabla USB mini. Gdy zostanie połączony zestaw deweloperski, wskaźnika na zielono świeci się w górnym tablicy.
+1. Zestaw development kit nawiązać połączenie z komputerem PC lub zasilania karty przy użyciu kabla USB mini. Jeśli zestaw jest połączony, wskaźnik zielono świeci się w górnym tablicy.
 
 1. Zestaw development kit połączyć się z komputerem za pomocą drugiego mini kabla USB.
 
@@ -72,7 +72,7 @@ Przed rozpoczęciem tworzenia przy użyciu zestawu Speech Devices SDK, Zbierz in
    ```
 
     > [!NOTE]
-    > Te polecenia korzystają mostka debugowania systemu Android, adb.exe, który jest częścią instalacji programu Android Studio. To narzędzie znajduje się w C:\Users\[nazwa_użytkownika] \AppData\Local\Android\Sdk\platform narzędzia. Ten katalog można dodać do swojej ścieżki, aby był bardziej wygodne do wywołania `adb`. W przeciwnym razie należy określić pełną ścieżkę do instalacji adb.exe w każdego polecenia, który wywołuje `adb`.
+    > Te polecenia korzystają z mostka debugowania systemu Android, `adb.exe`, który jest częścią instalacji programu Android Studio. To narzędzie znajduje się w C:\Users\[nazwa_użytkownika] \AppData\Local\Android\Sdk\platform narzędzia. Ten katalog można dodać do swojej ścieżki, aby był bardziej wygodne do wywołania `adb`. W przeciwnym razie należy określić pełną ścieżkę do instalacji adb.exe w każdego polecenia, który wywołuje `adb`.
 
     > [!TIP]
     > Wyciszenia mikrofonu i głośników, należy upewnić się, że pracujesz z mikrofon zestaw development kit Twojego komputera. W ten sposób przypadkowo nie spowoduje wyzwolenia z urządzenia z dźwięku z komputera.
@@ -110,7 +110,7 @@ Aby uruchomić testy ROOBO i weryfikowanie konfiguracji development kit, tworzen
 
 1.  Uruchom program Android Studio.
 
-1.  Wybierz **Otwórz istniejący projekt Android Studio**.
+1.  Wybierz pozycję **Open an existing Android Studio project** (Otwórz istniejący projekt Android Studio).
 
     ![Android Studio — Otwórz istniejący projekt](media/speech-devices-sdk/qsg-5.png)
  

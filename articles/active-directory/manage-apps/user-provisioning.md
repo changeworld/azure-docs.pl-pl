@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 680cea983fb7435bf4492fc295e29f3a234a4323
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: 1f7a38994cb127d2edb59e9d3befeece99a7feb1
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44357288"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018693"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatyzowanie użytkownika aprowizacji i cofania aprowizacji do aplikacji SaaS w usłudze Azure Active Directory
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Co to jest automatyczna aprowizacja użytkowników dla aplikacji SaaS?
@@ -129,8 +129,8 @@ Po uruchomieniu usługi aprowizacji, pierwsza synchronizacja nigdy nie wykonał 
 1. Zapytanie, wszyscy użytkownicy i grupy z systemu źródłowego podczas pobierania wszystkie atrybuty zdefiniowane w [mapowania atrybutów](customize-application-attributes.md).
 2. Filtrowanie użytkowników i grup, zwrócone, przy użyciu dowolnej skonfigurowane [przypisania](assign-user-or-group-access-portal.md) lub [opartych na atrybutach filtrami zakresu](define-conditional-rules-for-provisioning-user-accounts.md).
 3. Gdy użytkownik znajduje się do przypisania lub w zakresie udostępniania, usługa wysyła kwerendę do systemu docelowego, użytkownik pasującego przy użyciu wyznaczonej [pasujące atrybuty](customize-application-attributes.md#understanding-attribute-mapping-properties). Przykład: Jeśli nazwa userPrincipal w systemie źródłowym jest pasujący atrybut i mapuje nazwę użytkownika systemu docelowego, a następnie usługę aprowizacji wysyła zapytanie do systemu docelowego dla nazwy użytkownika, który pasuje do wartości nazwy userPrincipal w systemie źródłowym.
-4. Jeśli użytkownik pasującego nie zostanie znaleziony w systemie docelowym, zostanie utworzony przy użyciu atrybutów zwracane z systemu źródłowego.
-5. Jeśli użytkownik pasującego zostanie znaleziony, jest aktualizowany przy użyciu atrybutów udostępnianej przez system źródłowy.
+4. Jeśli użytkownik pasującego nie zostanie znaleziony w systemie docelowym, zostanie utworzony przy użyciu atrybutów zwracane z systemu źródłowego. Po utworzeniu konta użytkownika usługi aprowizacji wykrywa i buforuje identyfikator systemu docelowego dla nowego użytkownika, który jest używany do wykonywania wszystkich przyszłych operacji na tego użytkownika.
+5. Jeśli użytkownik pasującego zostanie znaleziony, jest aktualizowany przy użyciu atrybutów udostępnianej przez system źródłowy. Po dopasowaniu konta użytkownika usługi aprowizacji wykrywa i buforuje identyfikator systemu docelowego dla nowego użytkownika, który jest używany do wykonywania wszystkich przyszłych operacji na tego użytkownika.
 6. Jeśli mapowania atrybutów zawiera atrybuty "odwołanie", usługa wykonuje dodatkowe aktualizacje umożliwia tworzenie i łączenie przywoływane obiekty w systemie docelowym. Na przykład użytkownik może mieć z atrybutem "Manager" w systemie docelowym, który został połączony z innym użytkownikiem utworzony w systemie docelowym.
 7. Znak wodny po zakończeniu początkowej synchronizacji znajdują się punkty wyjścia dotyczące kolejne synchronizacje przyrostowe są zachowywane.
 
@@ -142,8 +142,8 @@ Po synchronizacji początkowej wszystkie kolejne synchronizacje wykonują nastę
 1. Kwerendy systemie źródłowym żadnych użytkowników i grup, które zostały zaktualizowane od czasu ostatniego znaku wodnego została zapisana.
 2. Filtrowanie użytkowników i grup, zwrócone, przy użyciu dowolnej skonfigurowane [przypisania](assign-user-or-group-access-portal.md) lub [opartych na atrybutach filtrami zakresu](define-conditional-rules-for-provisioning-user-accounts.md).
 3. Gdy użytkownik znajduje się do przypisania lub w zakresie udostępniania, usługa wysyła kwerendę do systemu docelowego, użytkownik pasującego przy użyciu wyznaczonej [pasujące atrybuty](customize-application-attributes.md#understanding-attribute-mapping-properties).
-4. Jeśli użytkownik pasującego nie zostanie znaleziony w systemie docelowym, zostanie utworzony przy użyciu atrybutów zwracane z systemu źródłowego.
-5. Jeśli użytkownik pasującego zostanie znaleziony, jest aktualizowany przy użyciu atrybutów udostępnianej przez system źródłowy.
+4. Jeśli użytkownik pasującego nie zostanie znaleziony w systemie docelowym, zostanie utworzony przy użyciu atrybutów zwracane z systemu źródłowego. Po utworzeniu konta użytkownika usługi aprowizacji wykrywa i buforuje identyfikator systemu docelowego dla nowego użytkownika, który jest używany do wykonywania wszystkich przyszłych operacji na tego użytkownika.
+5. Jeśli użytkownik pasującego zostanie znaleziony, jest aktualizowany przy użyciu atrybutów udostępnianej przez system źródłowy. Jeśli jest nowo przypisani konta, który jest zgodny, usługę aprowizacji wykrywa i buforuje identyfikator systemu docelowego dla nowego użytkownika, który jest używany do wykonywania wszystkich przyszłych operacji na tego użytkownika.
 6. Jeśli mapowania atrybutów zawiera atrybuty "odwołanie", usługa wykonuje dodatkowe aktualizacje umożliwia tworzenie i łączenie przywoływane obiekty w systemie docelowym. Na przykład użytkownik może mieć z atrybutem "Manager" w systemie docelowym, który został połączony z innym użytkownikiem utworzony w systemie docelowym.
 7. Jeśli użytkownik, który został wcześniej w zakresie udostępniania zostanie usunięty z zakresu (w tym trwa nieprzypisane), usługa wyłącza użytkownika w systemie docelowym za pośrednictwem aktualizacji.
 8. Jeśli użytkownik, który został wcześniej w zakresie udostępniania jest wyłączone lub usunięte nietrwale w systemie źródłowym, usługa wyłącza użytkownika w systemie docelowym za pośrednictwem aktualizacji.
@@ -237,6 +237,31 @@ Na podstawie scenariusza wskazówki na temat rozwiązywania problemów automatyc
 
 Aby uzyskać przykładowe wdrożenie krok po kroku planowanie Inicjowanie obsługi ruchu wychodzącego użytkowników do aplikacji, zobacz [tożsamości — przewodnik wdrażania dla aprowizacji użytkowników](https://aka.ms/userprovisioningdeploymentplan).
 
+##<a name="more-frequenty-asked-questions"></a>Więcej frequenty zadawane pytania
+
+###<a name="does-automatic-user-provisioning-to-saas-apps-work-with-b2b-users-in-azure-ad"></a>Jest automatyczna aprowizacja użytkowników na działanie aplikacji SaaS przy użyciu użytkowników B2B w usłudze Azure AD?
+
+Tak, jest możliwe przy użyciu poświadczeń użytkownika usługi Azure AD inicjowania obsługi użytkowników usługi do aprowizacji B2B (lub gościa) w usłudze Azure AD z aplikacjami SaaS.
+
+Jednak dla użytkowników B2B móc zalogować się do aplikacji SaaS przy użyciu usługi Azure AD, aplikacja SaaS musi mieć jej opartej na SAML pojedynczego logowania jednokrotnego skonfigurowano możliwość w określony sposób. Aby uzyskać więcej informacji na temat konfigurowania aplikacji SaaS w celu obsługi logowania użytkowników B2B, zobacz [aplikacje SaaS skonfigurować współpracę B2B dzięki]( https://docs.microsoft.com/azure/active-directory/b2b/configure-saas-apps).
+
+###<a name="does-automatic-user-provisioning-to-saas-apps-work-with-dynamic-groups-in-azure-ad"></a>Jest automatyczna aprowizacja użytkowników na działanie aplikacji SaaS z grupami dynamicznymi w usłudze Azure AD?
+
+Tak. Po skonfigurowaniu "Synchronizuj tylko przypisanych użytkowników i grup" Usługa aprowizowania użytkowników w usłudze Azure AD można aprowizacji bądź anulowaniu aprowizacji użytkowników w aplikacji SaaS, w oparciu o informację, czy są oni członkami [grupy dynamicznej](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule]). Grupy dynamiczne również działać przy użyciu opcji "Synchronizuj wszystkich użytkowników i grupy".
+
+Jednak użycie grup dynamicznych może mieć wpływ na ogólną wydajność end-to-end Inicjowanie obsługi użytkowników z usługi Azure AD z aplikacjami SaaS. Podczas korzystania z grup dynamicznych, należy pamiętać te zastrzeżenia i zalecenia:
+
+* Jak zainicjowano obsługę administracyjną lub anulowanie aprowizacji w aplikacji SaaS fast użytkownika w grupie dynamicznej są zależy od tego, jak szybko ocenić zmiany członkostwa grupy dynamicznej. Aby uzyskać informacje na temat sprawdzić stan przetwarzania grupy dynamicznej, zobacz [sprawdzić stan przetwarzania reguły członkostwa](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule#check-processing-status-for-a-membership-rule).
+
+* Podczas korzystania z grup dynamicznych, zasad musi być starannie przemyślane użytkownikowi aprowizacji i cofania aprowizacji na uwadze, ponieważ spowoduje utratę członkostwa anulowania obsługi zdarzeń.
+
+###<a name="does-automatic-user-provisioning-to-saas-apps-work-with-nested-groups-in-azure-ad"></a>Jest automatyczna aprowizacja użytkowników na działanie aplikacji SaaS przy użyciu zagnieżdżonych grup w usłudze Azure AD?
+
+Nie. Po skonfigurowaniu "Synchronizuj tylko przypisanych użytkowników i grup" Usługa aprowizowania użytkowników w usłudze Azure AD nie będzie mógł odczytać lub inicjowania obsługi użytkowników, które znajdują się w grupach zagnieżdżonych. Jest tylko możliwość odczytu i zainicjowanie obsługi administracyjnej użytkowników należących do natychmiastowego grupy jawnie przypisane.
+
+Jest to ograniczenie "oparte na grupach przypisania do aplikacji", która także ma zastosowanie do logowania jednokrotnego i jest opisany w [przy użyciu grupy, aby zarządzać dostępem do aplikacji SaaS](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/groups-saasapps ).
+
+Jako obejście można należy jawnie przypisać (lub w inny sposób [zakresu z](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)) grupy zawierające użytkowników, którzy potrzebują do zainicjowania obsługi administracyjnej.
 
 ## <a name="related-articles"></a>Pokrewne artykuły:
 * [Lista samouczków dotyczących integrowania aplikacji SaaS](../saas-apps/tutorial-list.md)

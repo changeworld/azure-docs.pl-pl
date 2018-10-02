@@ -11,20 +11,20 @@ ms.workload: na
 pms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 09/20/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: eacf8fc9335af2dacffa3e13da47ea39a2776f2b
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: c90e51d1aa1c3215c40baeae2c5494ef90b01132
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44714568"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584357"
 ---
 # <a name="azure-stack-registration"></a>Rejestracja w usłudze Azure Stack
 Instalacja usługi Azure Stack Development Kit (ASDK) można zarejestrować za pomocą platformy Azure, aby pobieranie elementów portalu marketplace z platformy Azure i Ustaw dane handlu odsyłanie do firmy Microsoft. Rejestracja jest wymagany do obsługi pełnego funkcje usługi Azure Stack, w tym portalu marketplace syndykacji. Rejestracja jest zalecane, ponieważ umożliwia testowanie ważnych funkcji usługi Azure Stack, takich jak syndykacji portalu marketplace i raportowanie użycia. Po zarejestrowaniu usługi Azure Stack, użycie jest zgłaszany do handlu platformy Azure. Można to sprawdzić w ramach subskrypcji, których użyto podczas rejestracji. Jednak użytkownicy ASDK nie są naliczane za dotychczasowe użycie raportowane.
 
-Jeśli nie zarejestrujesz swoje ASDK, możesz zobaczyć **wymagana aktywacja** alert ostrzeżenia, zaleceniem rejestrowania usługi Azure Stack Development Kit. To zachowanie jest oczekiwane.
+Jeśli nie zarejestrujesz swoje ASDK, możesz zobaczyć **wymagana aktywacja** alert ostrzeżenia, zaleceniem rejestrowania usługi Azure Stack Development Kit. Takie zachowanie jest oczekiwane.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Przed użyciem tych instrukcji do rejestrowania ASDK na platformie Azure, upewnij się, że zainstalowany program Azure PowerShell stosu i pobrać narzędzia usługi Azure Stack, zgodnie z opisem w [konfiguracji powdrożeniowej](asdk-post-deploy.md) artykułu.
@@ -61,11 +61,14 @@ Wykonaj następujące kroki, aby zarejestrować ASDK z platformą Azure.
     #Register Azure Stack
     $AzureContext = Get-AzureRmContext
     $CloudAdminCred = Get-Credential -UserName AZURESTACK\CloudAdmin -Message "Enter the credentials to access the privileged endpoint."
+    $RegistrationName = "<unique-registration-name>"
+    $UsageReporting = True # Set to False if you using a Capacity Billing Model
     Set-AzsRegistration `
-    -PrivilegedEndpointCredential $CloudAdminCred `
-    -PrivilegedEndpoint AzS-ERCS01 `
-    -BillingModel Development `
-    -RegistrationName "<Unique-name>"
+        -PrivilegedEndpointCredential $CloudAdminCred `
+        -PrivilegedEndpoint AzS-ERCS01 `
+        -BillingModel Development
+        -RegistrationName $RegistrationName
+        -EnableUsageReporting $UsageReporting
     ```
 3. Po ukończeniu działania skryptu, powinien zostać wyświetlony ten komunikat: **środowiska jest teraz zarejestrowany i aktywować przy użyciu podanych parametrów.**
 

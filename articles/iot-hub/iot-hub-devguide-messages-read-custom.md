@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/09/2018
 ms.author: dobett
-ms.openlocfilehash: af0b819c6c60835089c174a1f9f7c3a6215e362c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: bbd5058be502839f83db484136d1c97bac4a3d79
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46956965"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585955"
 ---
 # <a name="use-message-routes-and-custom-endpoints-for-device-to-cloud-messages"></a>Użyj trasy wiadomość i niestandardowe punkty końcowe dla komunikatów z urządzenia do chmury
 
@@ -32,37 +32,30 @@ Pojedynczy komunikat może odpowiadać warunku w wielu zapytań routingu, w któ
 
 ## <a name="endpoints-and-routing"></a>Punkty końcowe i routingu
 
-Centrum IoT hub jest powiązana wartość domyślna [wbudowany punkt końcowy][lnk-built-in]. Możesz utworzyć niestandardowe punkty końcowe do wyznaczania tras, łącząc innych usług w Twojej subskrypcji do Centrum. Usługa IoT Hub obsługuje obecnie kontenery usługi Azure Storage, usługa Event Hubs, kolejki usługi Service Bus i tematów usługi Service Bus jako niestandardowe punkty końcowe.
+Centrum IoT hub jest powiązana wartość domyślna [wbudowany punkt końcowy](iot-hub-devguide-messages-read-builtin.md). Możesz utworzyć niestandardowe punkty końcowe do wyznaczania tras, łącząc innych usług w Twojej subskrypcji do Centrum. Usługa IoT Hub obsługuje obecnie kontenery usługi Azure Storage, usługa Event Hubs, kolejki usługi Service Bus i tematów usługi Service Bus jako niestandardowe punkty końcowe.
 
 Gdy używasz routingu, jak i niestandardowe punkty końcowe, wiadomości tylko są dostarczane do wbudowany punkt końcowy, jeśli nie są zgodne dowolnego zapytania. Aby dostarcza komunikaty do wbudowanego punktu końcowego również do niestandardowego punktu końcowego, należy dodać trasę, która wysyła komunikaty do **zdarzenia** punktu końcowego.
 
 > [!NOTE]
-> Usługa IoT Hub obsługuje tylko zapisywanie danych w kontenerach usługi Azure Storage jako obiekty BLOB.
+> * Usługa IoT Hub obsługuje tylko zapisywanie danych w kontenerach usługi Azure Storage jako obiekty BLOB.
+> * Kolejki usługi Service Bus i tematów za pomocą **sesje** lub **wykrywania duplikatów** włączone nie są obsługiwane jako niestandardowe punkty końcowe.
 
-> [!WARNING]
-> Kolejki usługi Service Bus i tematów za pomocą **sesje** lub **wykrywania duplikatów** włączone nie są obsługiwane jako niestandardowe punkty końcowe.
-
-Aby uzyskać więcej informacji na temat tworzenia niestandardowych punktów końcowych w usłudze IoT Hub, zobacz [punktów końcowych usługi IoT Hub][lnk-devguide-endpoints].
+Aby uzyskać więcej informacji na temat tworzenia niestandardowych punktów końcowych w usłudze IoT Hub, zobacz [punktów końcowych usługi IoT Hub](iot-hub-devguide-endpoints.md).
 
 Aby uzyskać więcej informacji na temat odczytywanie ich z niego niestandardowe punkty końcowe zobacz:
 
-* Odczytywanie z [kontenery usługi Azure Storage][lnk-getstarted-storage].
-* Odczytywanie z [usługi Event Hubs][lnk-getstarted-eh].
-* Odczytywanie z [kolejek usługi Service Bus][lnk-getstarted-queue].
-* Odczytywanie z [tematów usługi Service Bus][lnk-getstarted-topic].
+* Odczytywanie z [kontenery usługi Azure Storage](../storage/blobs/storage-blobs-introduction.md).
 
-### <a name="next-steps"></a>Kolejne kroki
+* Odczytywanie z [usługi Event Hubs](../event-hubs/event-hubs-csharp-ephcs-getstarted.md).
 
-* Aby uzyskać więcej informacji na temat punktów końcowych usługi IoT Hub, zobacz [punktów końcowych usługi IoT Hub][lnk-devguide-endpoints].
+* Odczytywanie z [kolejek usługi Service Bus](../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md).
+
+* Odczytywanie z [tematów usługi Service Bus](../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md).
+
+## <a name="next-steps"></a>Kolejne kroki
+
+* Aby uzyskać więcej informacji na temat punktów końcowych usługi IoT Hub, zobacz [punktów końcowych usługi IoT Hub](iot-hub-devguide-endpoints.md).
+
 * Aby uzyskać więcej informacji na temat język zapytań, służą do definiowania zapytań routingu, zobacz [składni zapytań routingu komunikatów](iot-hub-devguide-routing-query-syntax.md).
-* [Komunikaty urządzenia do chmury usługi IoT Hub procesu przy użyciu tras] [ lnk-d2c-tutorial] samouczek pokazuje, jak używać zapytań routingu i niestandardowe punkty końcowe.
 
-[lnk-built-in]: iot-hub-devguide-messages-read-builtin.md
-[lnk-device-to-cloud]: iot-hub-devguide-messages-d2c.md
-[lnk-devguide-query-language]: iot-hub-devguide-query-language.md
-[lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
-[lnk-d2c-tutorial]: tutorial-routing.md
-[lnk-getstarted-eh]: ../event-hubs/event-hubs-csharp-ephcs-getstarted.md
-[lnk-getstarted-queue]: ../service-bus-messaging/service-bus-dotnet-get-started-with-queues.md
-[lnk-getstarted-topic]: ../service-bus-messaging/service-bus-dotnet-how-to-use-topics-subscriptions.md
-[lnk-getstarted-storage]: ../storage/blobs/storage-blobs-introduction.md
+* [Komunikaty urządzenia do chmury usługi IoT Hub procesu przy użyciu tras](tutorial-routing.md) samouczek pokazuje, jak używać zapytań routingu i niestandardowe punkty końcowe.

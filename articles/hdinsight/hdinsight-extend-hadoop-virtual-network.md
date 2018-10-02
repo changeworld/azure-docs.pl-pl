@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 07/26/2018
-ms.openlocfilehash: 98c62f54e2413bd67600db182c452d0d5965f239
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4cbbfe5c40dd8686cf25ac31aa5db53b2a6415f7
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46972185"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018863"
 ---
 # <a name="extend-azure-hdinsight-using-an-azure-virtual-network"></a>Rozszerzenie usługi Azure HDInsight przy użyciu usługi Azure Virtual Network
 
@@ -253,7 +253,7 @@ Wymuszone tunelowanie jest zdefiniowane przez użytkownika konfiguracji routingu
 >
 > Jeśli nie używasz sieciowych grup zabezpieczeń lub tras zdefiniowanych przez użytkownika do kontroli ruchu, możesz zignorować tę sekcję.
 
-Jeśli używasz sieciowych grup zabezpieczeń lub tras zdefiniowanych przez użytkownika muszą zezwalać na ruch z usługi kondycji i zarządzania platformy Azure do osiągnięcia HDInsight. Aby znaleźć adresy IP, które muszą być dozwolone, wykonaj następujące kroki:
+Jeśli używasz sieciowych grup zabezpieczeń lub tras zdefiniowanych przez użytkownika muszą zezwalać na ruch z usługi kondycji i zarządzania platformy Azure do osiągnięcia HDInsight. Musisz również zezwolić na ruch między maszynami wirtualnymi w tej podsieci. Aby znaleźć adresy IP, które muszą być dozwolone, wykonaj następujące kroki:
 
 1. Zawsze muszą zezwalać na ruch z następujących adresów IP:
 

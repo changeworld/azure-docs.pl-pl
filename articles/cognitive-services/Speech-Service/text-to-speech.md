@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: eebe41ea879ad34defadd08ce3095f7f6edca4d8
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 4dafab089e6ac4bbf4fb9441d995983ce5b58150
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44719804"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48016878"
 ---
 # <a name="about-the-text-to-speech-api"></a>Zamiana tekstu na mowę interfejsu API — informacje
 
@@ -34,13 +34,13 @@ Scenariusze, w których mowy przyjmowana jest syntezy obejmują:
 
 ## <a name="voice-support"></a>Obsługa głosu
 
-Microsoft **zamiany tekstu na mowę** usługa oferuje ponad 75 głosów w ponad 45 języków i ustawień regionalnych. Aby zastosować te standard "czcionki głosowe", należy tylko określić nazwę głosu kilka innych parametrów, po wywołaniu interfejsu API REST usługi. Aby uzyskać szczegółowe informacje głosy są obsługiwane, zobacz [obsługiwane języki](https://docs.microsoft.com/azure/cognitive-services/speech-service/supported-languages#text-to-speech). 
+Microsoft **zamiany tekstu na mowę** usługa oferuje ponad 75 głosów w ponad 45 języków i ustawień regionalnych. Aby zastosować te standard "czcionki głosowe", należy tylko określić nazwę głosu kilka innych parametrów, po wywołaniu interfejsu API REST usługi. Aby uzyskać szczegółowe informacje głosy są obsługiwane, zobacz [obsługiwane języki](language-support.md#text-to-speech). 
 
 Chcąc głosu unikatowy dla aplikacji, można utworzyć [czcionki głosowe niestandardowe](how-to-customize-voice-font.md) z próbek mowy.
 
 ## <a name="api-capabilities"></a>Funkcje interfejsu API
 
-Wiele możliwości **zamiany tekstu na mowę** interfejsu API — zwłaszcza w części dotyczącej dostosowywania — są dostępne za pośrednictwem interfejsu REST. Poniższa tabela zawiera podsumowanie możliwości każdej metody uzyskiwania dostępu do interfejsu API. Dla pełną listę możliwości i interfejsu API szczegółowych informacji, zapoznaj się [struktury Swagger](https://swagger/service/11ed9226-335e-4d08-a623-4547014ba2cc#/)
+Wiele możliwości **zamiany tekstu na mowę** interfejsu API — zwłaszcza w części dotyczącej dostosowywania — są dostępne za pośrednictwem interfejsu REST. Poniższa tabela zawiera podsumowanie możliwości każdej metody uzyskiwania dostępu do interfejsu API. Aby uzyskać pełną listę możliwości i interfejsu API, szczegółowe informacje, zapoznaj się [Swagger](https://swagger/service/11ed9226-335e-4d08-a623-4547014ba2cc#/),
 
 | Przypadek użycia | REST | Zestawy SDK |
 |-----|-----|-----|----|

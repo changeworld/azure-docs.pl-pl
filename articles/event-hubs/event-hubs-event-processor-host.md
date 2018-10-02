@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 08/16/2018
 ms.author: shvija
-ms.openlocfilehash: 14db9ec9e4cd90d0c2d224bd944e2bc5b591a53b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 63cc8a698c9e383c4b5908286d28b51d89842bdc
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47405907"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585700"
 ---
 # <a name="azure-event-hubs-event-processor-host-overview"></a>Omówienie usługi Azure hosta procesora zdarzeń centrów zdarzeń
 
@@ -45,7 +45,7 @@ Zamiast tego, tworząc własne rozwiązanie, usługa Event Hubs zapewnia tę fun
 
 ## <a name="ieventprocessor-interface"></a>Interfejsu IEventProcessor
 
-Po pierwsze, korzystanie z implementacji aplikacji [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) interfejs, który ma cztery metody: [OpenAsync, CloseAsync, ProcessErrorAsync i ProcessEventsAsnyc](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Ten interfejs zawiera rzeczywisty kod na korzystanie ze zdarzeń, które wysyła usługi Event Hubs. Poniższy kod pokazuje implementację proste:
+Po pierwsze, korzystanie z implementacji aplikacji [IEventProcessor](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor) interfejs, który ma cztery metody: [OpenAsync, CloseAsync, ProcessErrorAsync i ProcessEventsAsync](/dotnet/api/microsoft.azure.eventhubs.processor.ieventprocessor?view=azure-dotnet#methods). Ten interfejs zawiera rzeczywisty kod na korzystanie ze zdarzeń, które wysyła usługi Event Hubs. Poniższy kod pokazuje implementację proste:
 
 ```csharp
 public class SimpleEventProcessor : IEventProcessor

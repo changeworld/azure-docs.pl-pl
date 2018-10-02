@@ -11,14 +11,14 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/11/2018
+ms.date: 09/28/2018
 ms.author: patricka
-ms.openlocfilehash: 0c49a895a3cd214bb6f9c88b5365cf980c60bf0a
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: c9b9e569cf643b85b41698bf29429d0b7ceec37e
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47451775"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585105"
 ---
 # <a name="multi-tenancy-in-azure-stack"></a>Wielodostępność w usłudze Azure Stack
 
@@ -103,17 +103,6 @@ Register-AzSWithMyDirectoryTenant `
 > Ten skrypt należy uruchomić ponownie w dowolnym momencie, aby sprawdzić stan aplikacji usługi Azure Stack w Twoim katalogu.
 > 
 > Zauważyliście problemy z tworzeniem maszyn wirtualnych na dyski zarządzane (zostanie wprowadzony w aktualizacji 1808) nowej **dostawcy zasobów dysku** dodano, co wymaga tego skryptu do ponownego uruchomienia.
-
-### <a name="activate-the-administrator-and-tenant-portals"></a>Uaktywnianie portali administratora i dzierżawy
-Po wdrożenia, które używają usługi Azure AD możesz aktywować zarówno usługi Azure Stack administratora i dzierżawy portali. Aktywacja wyraża zgodę dające w portalu Azure Stack i Azure Resource Manager odpowiednie uprawnienia (na liście na stronie zgoda) do wszystkich użytkowników katalogu.
-
-- Portal administratora, przejdź do https://adminportal.local.azurestack.external/guest/signup, przeczytaj informacje, a następnie kliknij przycisk Akceptuj. Po zaakceptowaniu, możesz dodać administratorów usługi, którzy nie są również administratorami dzierżawy katalogu.
-- Przejdź do portalu dzierżawcy do https://portal.local.azurestack.external/guest/signup, przeczytaj informacje, a następnie kliknij przycisk Akceptuj. Po zaakceptowaniu, użytkownicy, w katalogu mogą logować się do portalu dzierżawcy. 
- 
-> [!NOTE] 
-> Jeśli nie jest aktywowany portali, tylko administrator katalogu można Zaloguj się i używać portali. Jeśli inny użytkownik się zaloguje, zobaczą błąd, który informuje, że administrator nie ma przyznane uprawnienia do innych użytkowników. Administrator nie natywnie należy do katalogu, w którym usługi Azure Stack jest zarejestrowana w celu, w katalogu usługi Azure Stack musi być dołączany do adresem URL aktywacji. Na przykład, jeśli zarejestrowano fabrikam.onmicrosoft.com i administratora usługi Azure Stack jest admin@contoso.com, przejdź do https://portal.local.azurestack.external/guest/signup/fabrikam.onmicrosoft.com można aktywować w portalu.
-
-
 
 ### <a name="direct-users-to-sign-in"></a>Bezpośrednie użytkownikom na logowanie
 

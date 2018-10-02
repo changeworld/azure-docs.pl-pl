@@ -7,12 +7,12 @@ ms.service: cognitive-services
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: nolach
-ms.openlocfilehash: 5e99e7e376a020f845816fb38e31dd727d87a4cb
-ms.sourcegitcommit: 42405ab963df3101ee2a9b26e54240ffa689f140
+ms.openlocfilehash: 843ff39f49141ff78219771a6d4af2e9e6e7644b
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47423429"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017486"
 ---
 # <a name="creating-custom-voice-fonts"></a>Tworzenie niestandardowych voice czcionek
 
@@ -92,7 +92,7 @@ System niestandardowych voice normalizuje zapisy, dokonując przekonwertowania t
 
 ## <a name="upload-your-datasets"></a>Przekazywanie swoich zestawów danych
 
-Po użytkownik wstępnego Twoje archiwum pliku audio i zapisy, przekazać je za pośrednictwem [portal usługi Custom Voice](https://customvoice.ai).
+Po przygotowaniu usługi archiwum plików audio i zapisy, przekazać je przy użyciu [portal usługi Custom Voice](https://customvoice.ai).
 
 > [!NOTE]
 > Nie można edytować zestawów danych, po zostały przekazane. Jeśli zapomnisz obejmują zapisy niektórych plików audio, na przykład lub przypadkowo wybierz problem płeć, możesz ponownie przekazać cały zestaw danych. Sprawdź ustawienia i zestaw danych, dokładnie przed rozpoczęciem przekazywania.

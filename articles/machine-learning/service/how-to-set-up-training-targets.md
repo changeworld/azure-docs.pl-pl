@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: e5b44ed2435986ffd500cade1f7c8ff8047d353d
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 65134d78fb011ae707c0629bef1ebb1a66bd8ec2
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452310"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018506"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Wybierz, a następnie użyć obliczeniowego elementu docelowego do nauczenia modelu
 
@@ -372,7 +372,7 @@ Można wyświetlić co obliczeniowe elementy docelowe są skojarzone z obszarem 
 1. Odwiedź stronę [witryny Azure portal](https://portal.azure.com) i przejdź do obszaru roboczego.
 2. Kliknij pozycję __obliczenia__ łącze w obszarze __aplikacje__ sekcji.
 
-    ![Karta obliczeń widoku](./media/how-to-set-up-training-targets/compute_tab.png)
+    ![Karta obliczeń widoku](./media/how-to-set-up-training-targets/azure-machine-learning-service-workspace.png)
 
 ### <a name="create-a-compute-target"></a>Utworzyć cel obliczenia
 
@@ -380,7 +380,7 @@ Wykonaj powyższe kroki, aby wyświetlić listę obliczeniowych elementów docel
 
 1. Kliknij przycisk __+__ Zaloguj się do dodania obliczeniowego elementu docelowego.
 
-    ![Dodaj obliczenie ](./media/how-to-set-up-training-targets/add_compute.png)
+    ![Dodaj obliczenie ](./media/how-to-set-up-training-targets/add-compute-target.png)
 
 1. Wprowadź nazwę dla obliczeniowego elementu docelowego.
 1. Wybierz typ obliczenia, które można dołączyć do __szkolenia__. 

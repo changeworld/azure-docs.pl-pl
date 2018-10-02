@@ -15,18 +15,18 @@ ms.devlang: na
 ms.topic: article
 ms.date: 01/29/2017
 ms.author: deguhath
-ms.openlocfilehash: 6e9813d989a54dbb1609a58dd502a7493d973faa
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a4587b1292652cd712b0bf389a9963a4f73b1333
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433722"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586380"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-server"></a>Zespół danych dla celów naukowych w działaniu: przy użyciu programu SQL Server
 W tym samouczku opisano proces tworzenia i wdrażania modelu uczenia maszynowego, przy użyciu programu SQL Server i publicznie dostępnego zestawu danych — [rund taksówek NYC](http://www.andresmh.com/nyctaxitrips/) zestawu danych. Procedura następuje pracy do analizy danych w warstwie standardowa: pozyskiwanie i eksplorować dane, Projektuj funkcje ułatwić szkolenia, a następnie utworzyć i wdrożyć model.
 
 ## <a name="dataset"></a>Taksówek NYC podróży opis zestawu danych
-Dane podróży taksówek NYC około 20GB skompresowanych plików CSV (~ 48GB nieskompresowane), zawierających ponad milion 173 poszczególnych podróży i opłaty opłacony każdego podróży. Każdy rekord podróży obejmuje odbiór i nadania lokalizacji i czasu, hack anonimowe (sterownika) numer licencji i numer Medalionu (unikatowy identyfikator dla taksówek). Dane obejmuje wszystkie podróży w roku 2013 i znajduje się w następujących dwóch zestawów danych w każdym miesiącu:
+Dane podróży taksówek NYC około 20GB skompresowanych plików CSV (~ 48GB nieskompresowane), zawierających ponad milion 173 poszczególnych podróży i opłaty opłacony każdego podróży. Każdy rekord podróży obejmuje odbiór i dropoff lokalizacji i czasu, hack anonimowe (sterownika) numer licencji i numer Medalionu (unikatowy identyfikator dla taksówek). Dane obejmuje wszystkie podróży w roku 2013 i znajduje się w następujących dwóch zestawów danych w każdym miesiącu:
 
 1. "Trip_data" CSV zawiera szczegóły podróży, takie jak liczba osób, pobrania i dropoff punkty, czasu trwania podróży i długość podróży. Poniżej przedstawiono kilka przykładowych rekordów:
    
@@ -220,7 +220,7 @@ W tym przykładzie oblicza rozkład Porada zakresów w danym okresie czasu (lub 
     GROUP BY tip_class
 
 #### <a name="exploration-compute-and-compare-trip-distance"></a>Eksploracji: Obliczeń i porównywanie odległość podróży
-Ten przykład konwertuje długość geograficzna odbiór i nadania i szerokości geograficznej do lokalizacji geograficznej SQL punktów oblicza odległość podróży za pomocą różnicę punktów lokalizacji geograficznej SQL i zwraca losowej próbki wyniki porównania. Przykład ogranicza wyniki do prawidłowe współrzędne wyłącznie przy użyciu zapytania oceny jakości danych omówione wcześniej.
+Ten przykład konwertuje odbiór i dropoff długości geograficznej i szerokości geograficznej do lokalizacji geograficznej SQL punktów oblicza odległość podróży za pomocą różnicę punktów lokalizacji geograficznej SQL i zwraca losowej próbki wyniki porównania. Przykład ogranicza wyniki do prawidłowe współrzędne wyłącznie przy użyciu zapytania oceny jakości danych omówione wcześniej.
 
     SELECT
     pickup_location=geography::STPointFromText('POINT(' + pickup_longitude + ' ' + pickup_latitude + ')', 4326)

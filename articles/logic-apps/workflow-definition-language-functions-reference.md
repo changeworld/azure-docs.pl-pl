@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 08/15/2018
 ms.reviewer: klam, LADocs
 ms.suite: integration
-ms.openlocfilehash: 8a2e06d2e6cf3e470d4e0909e5559ac0411292fd
-ms.sourcegitcommit: 1fb353cfca800e741678b200f23af6f31bd03e87
+ms.openlocfilehash: 0f2543ff10f19d6f1ccd656855dbb41cf42e6ae2
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43307117"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018999"
 ---
 # <a name="functions-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Dokumentacja funkcji programu język definicji przepływów pracy w usłudze Azure Logic Apps
 
@@ -82,7 +82,7 @@ Aby pracować z ciągów, można użyć tych funkcji ciąg, a także niektóre [
 | [indexOf](../logic-apps/workflow-definition-language-functions-reference.md#indexof) | Zwraca pozycję początkową podciąg. | 
 | [lastIndexOf](../logic-apps/workflow-definition-language-functions-reference.md#lastindexof) | Zwraca pozycję początkową ostatnie wystąpienie podciągu. | 
 | [Zastąp](../logic-apps/workflow-definition-language-functions-reference.md#replace) | Zamień podciąg określony ciąg i zwraca ciąg zaktualizowane. | 
-| [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Zwraca tablicę, która ma wszystkich znaków z ciągu i oddziela każdego znaku znakiem określonego ogranicznika. | 
+| [split](../logic-apps/workflow-definition-language-functions-reference.md#split) | Zwraca tablicę zawierającą podciągów, oddzielone przecinkami, z dłuższym ciągu oparte na znak określonego ogranicznika w oryginalnym ciągu. | 
 | [startsWith](../logic-apps/workflow-definition-language-functions-reference.md#startswith) | Sprawdź, czy ciąg zaczyna się od określonego podciąg. | 
 | [podciąg](../logic-apps/workflow-definition-language-functions-reference.md#substring) | Zwraca znaki ciągu, zaczynając od określonej pozycji. | 
 | [toLower](../logic-apps/workflow-definition-language-functions-reference.md#toLower) | Zwraca ciąg w formacie małe litery. | 
@@ -3016,32 +3016,32 @@ I zwraca tej tablicy, pozostałe elementy: `[1,2,3]`
 
 ### <a name="split"></a>split
 
-Wróć, rozdzielonych tablicę, która ma wszystkich znaków z ciągu, a każdy znak *ogranicznik*.
+Zwraca tablicę zawierającą podciągów, oddzielone przecinkami, w oparciu o znak określonego ogranicznika w oryginalnym ciągu. 
 
 ```
-split('<text>', '<separator>')
+split('<text>', '<delimiter>')
 ```
 
 | Parametr | Wymagane | Typ | Opis | 
 | --------- | -------- | ---- | ----------- | 
-| <*Tekst*> | Yes | Ciąg | Ciąg, który zawiera znaki podziału |  
-| <*Separator*> | Yes | Ciąg | Separator wyświetlany od każdego znaku w tablica wynikowa | 
+| <*Tekst*> | Yes | Ciąg | Ciąg na podciągi na podstawie przy użyciu określonego ogranicznika w oryginalnym ciągu |  
+| <*Ogranicznik*> | Yes | Ciąg | Znak w oryginalnym ciągu do użycia jako ogranicznika | 
 ||||| 
 
 | Wartość zwracana | Typ | Opis | 
 | ------------ | ---- | ----------- | 
-| [<*char1*><*separator*><*char2*><*separator*>...] | Tablica | Tablica wynikowa utworzone na podstawie wszystkich elementów w określonym ciągu. |
+| [<*substring1*>, <*substring2*>,...] | Tablica | Tablica zawierająca podciągów z oryginalnego ciągu, rozdzielone przecinkami |
 |||| 
 
 *Przykład* 
 
-W tym przykładzie tworzy tablicę z określonym ciągiem znaków, oddzielając każdy znak przecinka jako ogranicznika:
+W tym przykładzie tworzy tablicę z podciągów z określonego ciągu, w oparciu o określony znak, rozdzielając: 
 
 ```
-split('abc', ',')
+split('a_b_c', '_')
 ```
 
-I zwraca wynik: `[a, b, c]`
+I zwraca tablicę, w tym w wyniku: `["a","b","c"]`
 
 <a name="startOfDay"></a>
 

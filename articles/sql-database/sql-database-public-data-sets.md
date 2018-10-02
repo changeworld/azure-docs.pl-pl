@@ -12,12 +12,12 @@ ms.author: douglasl
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 6977995fb33d221b48a633076f61d3ee39d6ba40
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 225c8093816c5186cbc084f74bc6e0591107ec00
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160421"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586261"
 ---
 # <a name="public-data-sets-for-testing-and-prototyping"></a>Publiczne zestawy danych do testowania i tworzenia prototypów
 
@@ -40,7 +40,7 @@ Przeglądaj tej listy publicznych zestawach danych dla danych, które umożliwia
 
 | Źródło danych | Informacje o danych | Informacje o plikach |
 |---|---|---|
-| [Dane taksówek w Nowym Jorku](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "Rekordy podróży taksówek obejmują pola przechwytywania odbiór i nadania daty/godziny, pobrania i nadania lokalizacje, odległości podróży, opłaty dla pozycji, szybkość typy, typy płatności i liczby pasażerów zgłaszane przez sterownik." | Zestawy danych są w plikach CSV według miesiąca. |
+| [Dane taksówek w Nowym Jorku](http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml) | "Rekordy podróży taksówek obejmują pola przechwytywania odbiór dropoff daty/godziny, pobrania i dropoff lokalizacje, odległości podróży, opłaty dla pozycji, szybkość typy, typy płatności i liczby pasażerów zgłaszane przez sterownik." | Zestawy danych są w plikach CSV według miesiąca. |
 | [Microsoft Research zestawów danych — "Data Science Research"](https://www.microsoft.com/research/academic-program/data-science-microsoft-research/) | Zestawy wielu danych, obejmujące interakcji-komputer, audio/wideo, danych wyszukiwania/pobieranie informacji dotyczących, dane geograficzne/lokalizacji, przetwarzanie języka naturalnego i związane z robotyką/komputerowej. | Zestawy danych są w różnych formatach, zip do pobrania. |
 | [Danych dotyczących genomu publiczne](http://www.completegenomics.com/public-data/) | "Zróżnicowany zestaw danych ludzkiej genomów są dostępne bezpłatnie do użytku publicznego zwiększyć wszelkich badań dotyczących genomu..." Dostawca, pełną Genomics jest prywatny corporation nastawionym na osiąganie zysku. | Zestawy danych, po wyodrębniania, są w formacie tekstowym systemu UNIX. Dostępne są również narzędzia do analizy. |
 | [Otwórz dane do analizy danych w chmurze](https://www.opensciencedatacloud.org/) | "Otwórz danych do analizy w chmurze zapewnia środowiska nauki z zasobami na potrzeby przechowywania, udostępnianie i analizowanie zestawów terabajtów i petabajtów danych naukowych".| Zestawy danych są w różnych formatach. |

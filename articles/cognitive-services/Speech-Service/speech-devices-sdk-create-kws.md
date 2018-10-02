@@ -9,12 +9,12 @@ ms.technology: speech
 ms.topic: article
 ms.date: 04/28/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 7ba62ce0cc2d391c96c31795aabaac9c8796f6d5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 5b5a13c5a655260bde0496cb2289aec8a55e4b21
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165538"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017041"
 ---
 # <a name="create-a-custom-wake-word-by-using-the-speech-service"></a>Utwórz niestandardowe słowo aktywujące przy użyciu usługi mowy
 
@@ -49,30 +49,29 @@ Zanim użyjesz niestandardowe słowo aktywujące urządzeń z systemem słowo ak
 
 1. Przejdź do [portal usługi Custom Speech](https://cris.ai/).
 
-2. Utwórz nowe konto, za pomocą adresu e-mail, na którym odebrano zaproszenie dla usługi Azure Active Directory. 
+1. Utwórz nowe konto, za pomocą adresu e-mail, na którym odebrano zaproszenie dla usługi Azure Active Directory. 
 
     ![Utwórz nowe konto](media/speech-devices-sdk/wake-word-1.png)
  
-3.  Po zalogowaniu, wypełnij formularz, a następnie wybierz **Start Moja podróż**.
+1.  Po zalogowaniu, wypełnij formularz, a następnie wybierz **Start Moja podróż**.
 
     ![Zalogowano pomyślnie](media/speech-devices-sdk/wake-word-3.png)
  
-4. **Niestandardowe wznawiania w programie Word** strona nie jest dostępny publicznie, więc nie ma żadnych bezpośredni link umożliwiający przejście istnieje. Funkcja Custom Speech wymaga subskrypcji platformy Azure, ale nie funkcji Wake niestandardowe w programie Word. Jeśli masz **nie nie znaleziono subskrypcji.** Strona błędu, po prostu zastąpić **"subskrypcji? komunikat o błędzie = nie % 20Subscriptions % 20found"** za pomocą "**customkws**" adres URL i wprowadź trafień. Adres URL powinien być jednym z następujących: https://westus.cris.ai/customkws, https://eastasia.cris.ai/customkws lub https://northeurope.cris.ai/customkws, w zależności od których jest Twoim regionie.   
-
+1. **Niestandardowe wznawiania w programie Word** strona nie jest dostępny publicznie, więc nie ma żadnych bezpośredni link umożliwiający przejście istnieje. Funkcja Custom Speech wymaga subskrypcji platformy Azure, ale nie funkcji Wake niestandardowe w programie Word. Jeśli masz **nie nie znaleziono subskrypcji.** Strona błędu, po prostu zastąpić **"subskrypcji? komunikat o błędzie = nie % 20Subscriptions % 20found"** za pomocą "**customkws**" adres URL i wprowadź trafień. Adres URL powinien być jednym z następujących: https://westus.cris.ai/customkws, https://eastasia.cris.ai/customkws lub https://northeurope.cris.ai/customkws, w zależności od których jest Twoim regionie.
 
     ![Strona niestandardowe wznawiania w programie Word jest ukryta](media/speech-devices-sdk/wake-word-4.png)
  
-6. Wpisz słowo aktywujące wybranych przez użytkownika, a następnie wybierz **przesłać słowo**.
+1. Wpisz słowo aktywujące wybranych przez użytkownika, a następnie wybierz **przesłać słowo**.
 
     ![Wprowadź swoje słowo aktywujące](media/speech-devices-sdk/wake-word-5.png)
  
-7. Może upłynąć kilka minut, zanim pliki do wygenerowania. Powinien zostać wyświetlony rotowania okrąg w oknie przeglądarki. Po chwili informacji pasek jest wyświetlany, pytaniem, aby pobrać plik zip.
+1. Może upłynąć kilka minut, zanim pliki do wygenerowania. Powinien zostać wyświetlony rotowania okrąg w oknie przeglądarki. Po chwili informacji pasek jest wyświetlany, pytaniem, aby pobrać plik zip.
 
     ![Odbieranie pliku zip](media/speech-devices-sdk/wake-word-6.png)
 
-8. Zapisz plik zip na komputer. Należy ten plik, aby wdrażać niestandardowe słowo aktywujące development Kit. Aby wdrożyć niestandardowe słowo aktywujące, postępuj zgodnie z instrukcjami [wprowadzenie do zestawu Speech Devices SDK](speech-devices-sdk-qsg.md).
+1. Zapisz plik zip na komputer. Należy ten plik, aby wdrażać niestandardowe słowo aktywujące development Kit. Aby wdrożyć niestandardowe słowo aktywujące, postępuj zgodnie z instrukcjami [wprowadzenie do zestawu Speech Devices SDK](speech-devices-sdk-qsg.md).
 
-9. Wybierz **się wylogować.**
+1. Wybierz **się wylogować.**
 
 ## <a name="next-steps"></a>Kolejne kroki
 

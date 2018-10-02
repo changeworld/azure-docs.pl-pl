@@ -10,12 +10,12 @@ ms.component: translator-text
 ms.topic: reference
 ms.date: 03/29/2018
 ms.author: v-jansko
-ms.openlocfilehash: 4d156d3cfd0afa463cdc18b73ad05d09e4159dae
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 613cdd14ad196058458b090024cc6b9a4b8a80b6
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129492"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018625"
 ---
 # <a name="translator-text-api-30-transliterate"></a>API 3.0 tekstu usługi Translator: transliteracja
 
@@ -41,16 +41,16 @@ https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0
     <td>*Wymagany parametr*.<br/>Wersja interfejsu API zażądane przez klienta. Wartość musi być `3.0`.</td>
   </tr>
   <tr>
-    <td>język</td>
+    <td>language</td>
     <td>*Wymagany parametr*.<br/>Określa język tekstu, aby przekonwertować z jednego skryptu. Języki możliwe są wymienione w `transliteration` zakres uzyskać, badając usługę dla jego [obsługiwane języki](.\v3-0-languages.md).</td>
   </tr>
   <tr>
     <td>fromScript</td>
-    <td>*Wymagany parametr*.<br/>Określa skrypt używany przez tekst wejściowy. Wyszukiwanie [obsługiwane języki](.\v3-0-languages.md) przy użyciu `transliteration` zakres, aby znaleźć dostępnych danych wejściowych skryptów dla wybranego języka.</td>
+    <td>*Wymagany parametr*.<br/>Określa skrypt używany przez tekst wejściowy. Wyszukaj [obsługiwane języki](.\v3-0-languages.md) przy użyciu `transliteration` zakres, aby znaleźć dostępnych danych wejściowych skryptów dla wybranego języka.</td>
   </tr>
   <tr>
     <td>toScript</td>
-    <td>*Wymagany parametr*.<br/>Określa skrypt wyjściowy. Wyszukiwanie [obsługiwane języki](.\v3-0-languages.md) przy użyciu `transliteration` zakres, aby znaleźć dostępne dla wybranej kombinacji języka skryptów danych wyjściowych i wejściowych skryptu.</td>
+    <td>*Wymagany parametr*.<br/>Określa skrypt wyjściowy. Wyszukaj [obsługiwane języki](.\v3-0-languages.md) przy użyciu `transliteration` zakres, aby znaleźć dostępne dla wybranej kombinacji języka skryptów danych wyjściowych i wejściowych skryptu.</td>
   </tr>
 </table> 
 
@@ -171,7 +171,7 @@ Poniższy przykład pokazuje, jak przekonwertować dwa ciągi znaków japońskic
 [{"text":"こんにちは","script":"jpan"},{"text":"さようなら","script":"jpan"}]
 ```
 
-Korzystając z programu cUrl w oknie wiersza polecenia, który nie obsługuje znaki Unicode, wykonaj następujące ładunek w formacie JSON i zapisz go w pliku o nazwie `request.txt`. Pamiętaj zapisać plik z `UTF-8` kodowania.
+Korzystając z programu cURL w oknie wiersza polecenia, który nie obsługuje znaki Unicode, wykonaj następujące ładunek w formacie JSON i zapisz go w pliku o nazwie `request.txt`. Pamiętaj zapisać plik z `UTF-8` kodowania.
 
 ```
 curl -X POST "https://api.cognitive.microsofttranslator.com/transliterate?api-version=3.0&language=ja&fromScript=Jpan&toScript=Latn" -H "X-ClientTraceId: 875030C7-5380-40B8-8A03-63DACCF69C11" -H "Ocp-Apim-Subscription-Key: <client-secret>" -H "Content-Type: application/json" -d @request.txt

@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 07/5/2018
 ms.author: v-jerkin
-ms.openlocfilehash: b1bab65b68c5f37165fbc8414ac4300c924e53b9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: c30d531876ae7c69c164bc1d73103e493aaaa8fa
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47165180"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018316"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Próbki głosu rekord do utworzenia niestandardowych voice
 
@@ -38,7 +38,7 @@ Rejestrowanie inżynier ds.  |Nadzoruje technicznych aspektów rejestrowania i d
 Dyrektor ds.            |Przygotowuje skrypt i autokarami wydajności talent głosu.
 Edytor              |Kończenie znajdujących się w pliki audio i przygotować je do przekazania do portalu usługi Custom Voice.
 
-Osoba może podać więcej niż jednej roli. W przewodniku założono, że będzie można przede wszystkim wypełnianie rolą dyrektora i zatrudniania talent głosu i odtwarzania nagrania. Jeśli chcesz wprowadzić nagrania samodzielnie, ten artykuł zawiera pewne informacje o roli inżyniera rejestrowania. Rolę edytor nie jest potrzebny, dopóki sesji, dzięki czemu mogą być wykonywane przez inżyniera nagrywanie dyrektor.
+Osoba może podać więcej niż jednej roli. W przewodniku założono, że będzie można przede wszystkim wypełnianie rolą dyrektora i zatrudniania talent głosu i odtwarzania nagrania. Jeśli chcesz wprowadzić nagrania samodzielnie, ten artykuł zawiera pewne informacje o roli inżyniera rejestrowania. Rolę edytor nie jest potrzebny, dopóki sesji, dzięki czemu mogą być wykonywane przez dyrektora lub odtwarzania nagrania.
 
 ## <a name="choose-your-voice-talent"></a>Wybierz swoje talent głosu
 

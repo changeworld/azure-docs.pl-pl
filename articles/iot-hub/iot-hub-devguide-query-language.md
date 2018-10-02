@@ -2,22 +2,21 @@
 title: Zrozumienie języka zapytań usługi Azure IoT Hub | Dokumentacja firmy Microsoft
 description: Przewodnik dewelopera — opis usługi IoT Hub podobnego do SQL zapytania język używany do pobierania informacji o urządzeniu/modułu bliźniaczych reprezentacji i zadań z usługi IoT hub.
 author: fsautomata
-manager: ''
 ms.service: iot-hub
 services: iot-hub
 ms.topic: conceptual
 ms.date: 02/26/2018
 ms.author: elioda
-ms.openlocfilehash: 2e4b356fec642e06e3223700967eeacd19f1c49c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4aa4a3b1e617009d88c581966f791569322d967f
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952481"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018439"
 ---
 # <a name="iot-hub-query-language-for-device-and-module-twins-jobs-and-message-routing"></a>Język zapytań usługi IoT Hub dla bliźniaczych reprezentacji urządzeń i modułów, zadań i routingu wiadomości
 
-IoT Hub udostępnia zaawansowane podobnego do SQL języka można pobrać informacji dotyczących [bliźniaczych reprezentacji urządzeń] [ lnk-twins] i [zadania][lnk-jobs]i [routing komunikatów][lnk-devguide-messaging-routes]. Ten artykuł przedstawia:
+IoT Hub udostępnia zaawansowane podobnego do SQL języka można pobrać informacji dotyczących [bliźniaczych reprezentacji urządzeń](iot-hub-devguide-device-twins.md) i [zadania](iot-hub-devguide-jobs.md), i [routing komunikatów](iot-hub-devguide-messages-d2c.md). Ten artykuł przedstawia:
 
 * Wprowadzenie do najważniejszych funkcji języka zapytań usługi IoT Hub, a
 * Szczegółowy opis języka. Aby uzyskać szczegółowe informacje dotyczące języka zapytania do rozsyłania wiadomości, zobacz [zapytania w routingu komunikatów](../iot-hub/iot-hub-devguide-routing-query-syntax.md).
@@ -25,7 +24,9 @@ IoT Hub udostępnia zaawansowane podobnego do SQL języka można pobrać informa
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
 ## <a name="device-and-module-twin-queries"></a>Zapytania dotyczące bliźniaczych reprezentacji urządzeń i modułu
-[Bliźniacze reprezentacje urządzeń] [ lnk-twins] i bliźniaczych reprezentacjach modułów mogą zawierać dowolne obiekty JSON jako tagów i właściwości. Usługa IoT Hub umożliwia zapytań bliźniaczych reprezentacji urządzeń i bliźniaczych reprezentacjach modułów jako pojedynczy dokument JSON zawierający wszystkie informacje bliźniaczej reprezentacji.
+
+[Bliźniacze reprezentacje urządzeń](iot-hub-devguide-device-twins.md) i bliźniaczych reprezentacjach modułów mogą zawierać dowolne obiekty JSON jako tagów i właściwości. Usługa IoT Hub umożliwia zapytań bliźniaczych reprezentacji urządzeń i bliźniaczych reprezentacjach modułów jako pojedynczy dokument JSON zawierający wszystkie informacje bliźniaczej reprezentacji.
+
 Załóżmy na przykład, że bliźniaczych reprezentacji urządzeń usługi IoT hub mają następującą strukturę (bliźniaczą reprezentację modułu mogą być podobne tylko przy użyciu dodatkowych moduleId):
 
 ```json
@@ -80,15 +81,14 @@ Załóżmy na przykład, że bliźniaczych reprezentacji urządzeń usługi IoT 
 
 ### <a name="device-twin-queries"></a>Zapytania dotyczące bliźniaczych reprezentacji urządzeń
 
-Usługa IoT Hub udostępnia bliźniaczych reprezentacji urządzeń jako kolekcji dokumentów o nazwie **urządzeń**.
-Dlatego następujące zapytanie pobiera cały zestaw bliźniaczych reprezentacji urządzeń:
+Usługa IoT Hub udostępnia bliźniaczych reprezentacji urządzeń jako kolekcji dokumentów o nazwie **urządzeń**. Na przykład następujące zapytanie pobiera cały zestaw bliźniaczych reprezentacji urządzeń:
 
 ```sql
 SELECT * FROM devices
 ```
 
 > [!NOTE]
-> [Usługa Azure IoT SDKs] [ lnk-hub-sdks] Obsługuj stronicowanie dużych wyników.
+> [Usługa Azure IoT SDKs](iot-hub-devguide-sdks.md) Obsługuj stronicowanie dużych wyników.
 
 Usługa IoT Hub umożliwia pobieranie bliźniaczych reprezentacji urządzeń filtrowanie przy użyciu dowolnego warunków. Na przykład do otrzymywania urządzenia bliźniaczych reprezentacji gdzie **location.region** ustawiony jest tag **USA** Użyj następującego zapytania:
 
@@ -97,11 +97,11 @@ SELECT * FROM devices
 WHERE tags.location.region = 'US'
 ```
 
-Operatory logiczne i porównań arytmetycznej są również obsługiwane. Na przykład można pobrać urządzenia twins znajduje się w Stanach Zjednoczonych i skonfigurowane do wysyłania telemetrii za mniej niż minutę, użyj następującego zapytania:
+Operatory logiczne i porównań arytmetycznej są również obsługiwane. Na przykład aby pobrać bliźniaczych reprezentacji urządzeń znajdujących się w Stanach Zjednoczonych i skonfigurowane do wysyłania telemetrii za mniej niż minutę, użyj następującego zapytania:
 
 ```sql
 SELECT * FROM devices
-WHERE tags.location.region = 'US'
+  WHERE tags.location.region = 'US'
     AND properties.reported.telemetryConfig.sendFrequencyInSecs >= 60
 ```
 
@@ -109,25 +109,25 @@ Dla wygody, jest również możliwość użycia tablicowych o **w** i **nW** ope
 
 ```sql
 SELECT * FROM devices
-WHERE properties.reported.connectivity IN ['wired', 'wifi']
+  WHERE properties.reported.connectivity IN ['wired', 'wifi']
 ```
 
 Często jest niezbędne do identyfikowania wszystkich bliźniaków urządzeń, które zawierają określoną właściwość. Usługa IoT Hub obsługuje funkcję `is_defined()` do tego celu. Na przykład aby bliźniaczych reprezentacji urządzeń pobierania, które definiują `connectivity` właściwości użyj następującego zapytania:
 
 ```SQL
 SELECT * FROM devices
-WHERE is_defined(properties.reported.connectivity)
+  WHERE is_defined(properties.reported.connectivity)
 ```
 
-Zapoznaj się [klauzuli WHERE] [ lnk-query-where] sekcji pełną dokumentację funkcji filtrowania.
+Zapoznaj się [klauzuli WHERE](iot-hub-devguide-query-language.md#where-clause) sekcji pełną dokumentację funkcji filtrowania.
 
-Grupowanie i agregacje są również obsługiwane. Na przykład można znaleźć liczby urządzeń w każdym telemetrii stan konfiguracji, użyj następującego zapytania:
+Grupowanie i agregacje są również obsługiwane. Na przykład aby znaleźć liczby urządzeń w każdy stan konfiguracji telemetrii, użyj następującego zapytania:
 
 ```sql
 SELECT properties.reported.telemetryConfig.status AS status,
     COUNT() AS numberOfDevices
-FROM devices
-GROUP BY properties.reported.telemetryConfig.status
+  FROM devices
+  GROUP BY properties.reported.telemetryConfig.status
 ```
 
 To grupowanie zapytanie zwróci wynik podobny do poniższego przykładu:
@@ -159,7 +159,7 @@ SELECT LastActivityTime FROM devices WHERE status = 'enabled'
 
 ### <a name="module-twin-queries"></a>Zapytania dotyczące bliźniaczych reprezentacji modułu
 
-Zapytań o bliźniaczych reprezentacjach modułów jest podobny do wykonywania zapytań na bliźniacze reprezentacje urządzeń, ale przy użyciu innej kolekcji/przestrzeni nazw, czyli zamiast "z urządzenia" można tworzyć zapytania
+Zapytań o bliźniaczych reprezentacjach modułów jest podobne do zapytań o bliźniaczych reprezentacji urządzeń, ale przy użyciu innej kolekcji/przestrzeni nazw, czyli zamiast "z urządzenia" można tworzyć zapytania device.modules:
 
 ```sql
 SELECT * FROM devices.modules
@@ -171,14 +171,18 @@ Firma Microsoft nie zezwalaj na sprzężenie między urządzeniami i devices.mod
 Select * from devices.modules where properties.reported.status = 'scanning'
 ```
 
-To zapytanie będzie zwracać wszystkie bliźniaczych reprezentacjach modułów ze stanem skanowania, ale tylko na określony podzbiór urządzeń.
+To zapytanie będzie zwracać wszystkie bliźniaczych reprezentacjach modułów ze stanem skanowania, ale tylko na określony podzbiór urządzeń:
 
 ```sql
-Select * from devices.modules where properties.reported.status = 'scanning' and deviceId IN ('device1', 'device2')  
+Select * from devices.modules 
+  where properties.reported.status = 'scanning' 
+  and deviceId IN ('device1', 'device2')  
 ```
 
 ### <a name="c-example"></a>Przykład w języku C#
-Funkcjonalność zapytań jest uwidaczniany przez [zestawu SDK usługi C#] [ lnk-hub-sdks] w **RegistryManager** klasy.
+
+Funkcjonalność zapytań jest uwidaczniany przez [zestawu SDK usługi C#](iot-hub-devguide-sdks.md) w **RegistryManager** klasy.
+
 Oto przykład prostego zapytania:
 
 ```csharp
@@ -198,7 +202,9 @@ while (query.HasMoreResults)
 Obiekt zapytania udostępnia wiele **dalej** wartości w zależności od opcji deserializacji wymagane przez zapytanie. Na przykład obiekty zadanie lub bliźniaczych reprezentacji urządzeń lub zwykły JSON, korzystając z projekcji.
 
 ### <a name="nodejs-example"></a>Przykład platformy node.js
-Funkcjonalność zapytań jest uwidaczniany przez [zestawu SDK usługi Azure IoT dla środowiska Node.js] [ lnk-hub-sdks] w **rejestru** obiektu.
+
+Funkcjonalność zapytań jest uwidaczniany przez [zestawu SDK usługi Azure IoT dla środowiska Node.js](iot-hub-devguide-sdks.md) w **rejestru** obiektu.
+
 Oto przykład prostego zapytania:
 
 ```nodejs
@@ -233,8 +239,7 @@ Obecnie porównania są obsługiwane tylko między typami pierwotnymi (nie obiek
 
 ## <a name="get-started-with-jobs-queries"></a>Wprowadzenie do zapytań zadania
 
-[Zadania] [ lnk-jobs] umożliwiają wykonywanie operacji na zestawach urządzeń. Każdy bliźniaczej reprezentacji urządzenia zawiera informacje o wszystkich zadań, które jest częścią kolekcji o nazwie **zadań**.
-Logicznie
+[Zadania](iot-hub-devguide-jobs.md) umożliwiają wykonywanie operacji na zestawach urządzeń. Każdy bliźniaczej reprezentacji urządzenia zawiera informacje o wszystkich zadań, które jest częścią kolekcji o nazwie **zadań**.
 
 ```json
 {
@@ -276,16 +281,18 @@ Na przykład aby uzyskać wszystkie zadania (ostatnie i zaplanowane), które wp�
 
 ```sql
 SELECT * FROM devices.jobs
-WHERE devices.jobs.deviceId = 'myDeviceId'
+  WHERE devices.jobs.deviceId = 'myDeviceId'
 ```
 
 Należy pamiętać o tym, jak to zapytanie zawiera stan specyficznych dla urządzenia (i ewentualnie odpowiedzi metody bezpośredniej) każde zadanie zwracane.
+
 Użytkownik może również filtrować za pomocą dowolnego warunków logicznych na temat wszystkich właściwości obiektu w **devices.jobs** kolekcji.
+
 Na przykład aby pobrać wszystkie ukończone urządzenia bliźniaczej reprezentacji zadania aktualizacji, które zostały utworzone od września 2016 roku dla określonego urządzenia, użyj następującego zapytania:
 
 ```sql
 SELECT * FROM devices.jobs
-WHERE devices.jobs.deviceId = 'myDeviceId'
+  WHERE devices.jobs.deviceId = 'myDeviceId'
     AND devices.jobs.jobType = 'scheduleTwinUpdate'
     AND devices.jobs.status = 'completed'
     AND devices.jobs.createdTimeUtc > '2016-09-01'
@@ -295,10 +302,11 @@ Możesz również pobrać wyniki poszczególnych urządzeń pojedynczego zadania
 
 ```sql
 SELECT * FROM devices.jobs
-WHERE devices.jobs.jobId = 'myJobId'
+  WHERE devices.jobs.jobId = 'myJobId'
 ```
 
 ### <a name="limitations"></a>Ograniczenia
+
 Obecnie zapytanie na **devices.jobs** nie obsługują:
 
 * Projekcji, dlatego tylko `SELECT *` jest możliwe.
@@ -306,24 +314,28 @@ Obecnie zapytanie na **devices.jobs** nie obsługują:
 * Wykonuje agregacje, takie jak liczba, avg, Grupuj według.
 
 ## <a name="basics-of-an-iot-hub-query"></a>Podstawowe informacje dotyczące zapytań usługi IoT Hub
+
 Składa się każdego zapytania usługi IoT Hub, wybierz opcję i z klauzul, w której opcjonalne oraz klauzule GROUP BY. Każdego zapytania jest uruchamiane na kolekcji dokumentów JSON, na przykład bliźniaczych reprezentacji urządzeń. Klauzula FROM wskazuje kolekcji dokumentów, należy powtórzyć w (**urządzeń** lub **devices.jobs**). Następnie jest stosowany filtr w klauzuli WHERE. Za pomocą agregacji są pogrupowane wyniki tego kroku określone w klauzuli GROUP BY. Dla każdej grupy jest generowany wiersz jak określono w klauzuli SELECT.
 
 ```sql
 SELECT <select_list>
-FROM <from_specification>
-[WHERE <filter_condition>]
-[GROUP BY <group_specification>]
+  FROM <from_specification>
+  [WHERE <filter_condition>]
+  [GROUP BY <group_specification>]
 ```
 
 ## <a name="from-clause"></a>FROM — klauzula
+
 **z < from_specification >** klauzuli może przyjmować tylko dwie wartości: **URZĄDZENIOM** do zapytań bliźniaczych reprezentacji urządzeń lub **z devices.jobs** do szczegółów poszczególnych urządzeń zadania kwerendy.
+
 
 ## <a name="where-clause"></a>Klauzula WHERE
 **Gdzie < filter_condition >** klauzula jest opcjonalne. Określa ona, że co najmniej jeden warunek, że za pomocą pliku JSON dokumenty w kolekcji FROM musi spełniać być dołączane jako część wyniku. Dowolny dokument JSON musi być określone warunki "true", mają zostać uwzględnione w wynikach.
 
-Dozwolone warunki są opisane w sekcji [wyrażeń i warunków][lnk-query-expressions].
+Dozwolone warunki są opisane w sekcji [wyrażeń i warunków](iot-hub-devguide-query-language.md#expressions-and-conditions).
 
 ## <a name="select-clause"></a>Klauzula SELECT
+
 **Wybierz < select_list >** jest obowiązkowy i określa, jakie wartości są pobierane z zapytania. Określa wartości JSON, które będą używane do generowania nowych obiektów JSON.
 Dla każdego elementu filtrowane (i opcjonalnie pogrupowanych) podzbiorem kolekcji od fazy projekcji generuje nowy obiekt JSON. Ten obiekt jest konstruowany przy użyciu wartości określone w klauzuli SELECT.
 
@@ -349,7 +361,7 @@ SELECT [TOP <max number>] <projection list>
     | max(<projection_element>)
 ```
 
-**Attribute_name** odwołuje się do żadnej właściwości dokumentu JSON w kolekcji FROM. Kilka przykładów klauzule SELECT można znaleźć w [wprowadzenie do zapytań bliźniaczych reprezentacji urządzeń] [ lnk-query-getstarted] sekcji.
+**Attribute_name** odwołuje się do żadnej właściwości dokumentu JSON w kolekcji FROM. Kilka przykładów klauzule SELECT można znaleźć w [wprowadzenie do zapytań bliźniaczych reprezentacji urządzeń](iot-hub-devguide-query-language.md#get-started-with-device-twin-queries) sekcji.
 
 Obecnie wybór klauzule różni się od **wybierz*** są obsługiwane tylko w agregacji zapytań dotyczących bliźniaczych reprezentacji urządzeń.
 
@@ -483,18 +495,5 @@ Obsługiwane są następujące funkcje ciągów w warunkach trasy:
 | CONTAINS(x,y) | Zwraca wartość logiczną wskazującą, czy pierwszy ciąg wyrażenie zawiera drugą. |
 
 ## <a name="next-steps"></a>Kolejne kroki
-Dowiedz się, jak wykonywać zapytania w aplikacjach przy użyciu [Azure IoT SDKs][lnk-hub-sdks].
 
-[lnk-query-where]: iot-hub-devguide-query-language.md#where-clause
-[lnk-query-expressions]: iot-hub-devguide-query-language.md#expressions-and-conditions
-[lnk-query-getstarted]: iot-hub-devguide-query-language.md#get-started-with-device-twin-queries
-
-[lnk-twins]: iot-hub-devguide-device-twins.md
-[lnk-jobs]: iot-hub-devguide-jobs.md
-[lnk-devguide-endpoints]: iot-hub-devguide-endpoints.md
-[lnk-devguide-quotas]: iot-hub-devguide-quotas-throttling.md
-[lnk-devguide-mqtt]: iot-hub-mqtt-support.md
-[lnk-devguide-messaging-routes]: iot-hub-devguide-messages-d2c.md
-[lnk-devguide-messaging-format]: iot-hub-devguide-messages-construct.md
-
-[lnk-hub-sdks]: iot-hub-devguide-sdks.md
+Dowiedz się, jak wykonywać zapytania w aplikacjach przy użyciu [Azure IoT SDKs](iot-hub-devguide-sdks.md).

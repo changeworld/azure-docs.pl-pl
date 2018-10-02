@@ -12,15 +12,15 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/28/2018
+ms.date: 10/01/2018
 ms.author: sethm
 ms.reviewer: justini
-ms.openlocfilehash: 7278f784316fdbd7170bb69b9414911b8f5b3823
-ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
+ms.openlocfilehash: 94e18b6a4fc367a9697078f8e0c1a307ae15d4be
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47452687"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017946"
 ---
 # <a name="azure-stack-1808-update"></a>Aktualizacja usługi Azure Stack 1808
 
@@ -137,7 +137,7 @@ Ta aktualizacja zawiera także ograniczania ryzyka związanego z wykonywaniem sp
 
 ### <a name="post-update-steps"></a>Kroki po aktualizacji
 Po zainstalowaniu tej aktualizacji Zainstaluj wszystkie odpowiednie poprawki. Uzyskać więcej informacji, zobacz następujące artykuły bazy wiedzy knowledge base, a także naszego [obsługi zasad](azure-stack-servicing-policy.md). 
-- [KB 4464226 — usługi Azure Stack poprawki w usłudze Azure Stack poprawkę 1.1808.1.99]( https://support.microsoft.com/help/4464226)
+- [KB 4465859 — usługi Azure Stack poprawki w usłudze Azure Stack poprawkę 1.1808.2.104](https://support.microsoft.com/help/4465859/)
 
 
 ## <a name="known-issues-post-installation"></a>Znane problemy (po instalacji)
@@ -230,8 +230,6 @@ Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
 - <!-- 2724873 - IS --> Korzystając z polecenia cmdlet programu PowerShell **Start AzsScaleUnitNode** lub **Stop AzsScaleunitNode** Zarządzanie jednostek skalowania, pierwsza próba uruchomienia lub zatrzymania jednostki skalowania może zakończyć się niepowodzeniem. Jeśli polecenie cmdlet nie powiedzie się przy pierwszym uruchomieniu, należy uruchomić polecenie cmdlet po raz drugi. Drugiego przebiegu ma być pomyślnie wykonane do ukończenia tej operacji. 
 
 - <!-- TBD - IS ASDK --> Po utworzeniu maszyny wirtualne w portalu użytkowników usługi Azure Stack portal zawiera nieprawidłową liczbę dysków z danymi, które można dołączyć do maszyny Wirtualnej serii DS. Maszyny wirtualne z serii DS może obsłużyć tyle dysków z danymi konfiguracji platformy Azure.
-
-- <!-- TBD - IS ASDK --> Jeśli używasz środowiska z wieloma dzierżawami aprowizacji maszyny Wirtualnej w przypadku dysków zarządzanych w ramach subskrypcji, które nie należą do domyślnej dzierżawy kończy się niepowodzeniem z następującego błędu: *operacja dotycząca zasobu zakończyła ze stanem inicjowania obsługi terminalu "Niepowodzenie".*
 
 - <!-- TBD - IS ASDK --> Jeśli aprowizacja rozszerzenia na wdrożenie maszyny Wirtualnej trwa zbyt długo, użytkownicy pozwolić limit czasu inicjowania obsługi administracyjnej zamiast próby zatrzymania procesu cofnięcie przydziału lub Usuń maszynę Wirtualną.  
 

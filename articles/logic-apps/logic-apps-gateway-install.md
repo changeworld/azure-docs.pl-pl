@@ -9,12 +9,12 @@ ms.author: estfan
 ms.reviewer: yshoukry, LADocs
 ms.topic: article
 ms.date: 07/20/2018
-ms.openlocfilehash: d4fbbcb81433876e4c57763b8a90b3ff1168a699
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: daeb0c5436d851b6e234c1b97583df526192659e
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43842451"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018778"
 ---
 # <a name="install-on-premises-data-gateway-for-azure-logic-apps"></a>Zainstaluj lokalną bramę danych dla usługi Azure Logic Apps
 
@@ -101,7 +101,7 @@ Aby uzyskać informacje o sposobie używania bramy z innymi usługami, zobacz na
 
 ## <a name="install-data-gateway"></a>Instalowanie bramy danych
 
-1. [Pobierz, Zapisz i uruchom Instalatora bramy na komputerze lokalnym](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409).
+1. [Pobierz, Zapisz i uruchom Instalatora bramy na komputerze lokalnym](https://aka.ms/on-premises-data-gateway-installer).
 
 2. Zaakceptuj domyślną ścieżkę instalacji lub określ lokalizację na komputerze, na którym chcesz zainstalować bramę.
 
@@ -182,7 +182,7 @@ Jeśli musisz zmienić lokalizację bramy sieci, przeniesienia instalacji progra
 
 1. Z tego komputera **Panelu sterowania**, przejdź do **programy i funkcje**. Na liście programów zaznacz **lokalnej bramy danych**, a następnie wybierz **Odinstaluj**.
 
-2. [Ponownie zainstaluj lokalną bramę danych](http://go.microsoft.com/fwlink/?LinkID=820931&clcid=0x409).
+2. [Ponownie zainstaluj lokalną bramę danych](https://aka.ms/on-premises-data-gateway-installer).
 
 3. Po otwarciu Instalatora, zaloguj się przy użyciu tego samego konta służbowego, które zostało wcześniej użyte do zainstalowania bramy.
 

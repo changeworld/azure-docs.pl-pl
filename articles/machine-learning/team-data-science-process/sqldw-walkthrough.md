@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/24/2017
 ms.author: deguhath
-ms.openlocfilehash: 6178c4a55d24bb37aae787129c9a0d390a2e536b
-ms.sourcegitcommit: 44fa77f66fb68e084d7175a3f07d269dcc04016f
+ms.openlocfilehash: 192af40df3a8bc0545c9c3a86792e7eb8cb31de9
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/24/2018
-ms.locfileid: "39226230"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47586108"
 ---
 # <a name="the-team-data-science-process-in-action-using-sql-data-warehouse"></a>Zespół danych dla celów naukowych w działaniu: Korzystanie z programu SQL Data Warehouse
 W tym samouczku, w jaki sposób Cię przez proces tworzenia i wdrażania modelu uczenia maszynowego, przy użyciu magazynu danych SQL (SQL data Warehouse) dla publicznie dostępnego zestawu danych — [rund taksówek NYC](http://www.andresmh.com/nyctaxitrips/) zestawu danych. Model klasyfikacji binarnej skonstruowany przewiduje czy Porada czy płatna komunikacji dwustronnej i modele wieloklasowej klasyfikacji i regresji zostały również omówione, które przewidzieć dystrybucja przypadku ilości Porada płatne.
@@ -28,7 +28,7 @@ W tym samouczku, w jaki sposób Cię przez proces tworzenia i wdrażania modelu 
 Następujące procedury [Team Data Science naukowych](https://azure.microsoft.com/documentation/learning-paths/cortana-analytics-process/) przepływu pracy. Pokazujemy, jak skonfigurować środowisko do nauki o danych, jak załadować dane do magazynu danych SQL i jak za pomocą usługi SQL DW lub IPython Notebook Eksplorowanie danych i inżynier ds. funkcji do modelu. Następnie przedstawiono, jak utworzyć i wdrożyć model przy użyciu usługi Azure Machine Learning.
 
 ## <a name="dataset"></a>Zestaw danych podróży taksówek NYC
-Dane podróży taksówek NYC składa się z około 20GB skompresowanych plików CSV (~ 48GB nieskompresowane), rejestrowanie ponad milion 173 poszczególnych podróży i opłaty opłacony każdego podróży. Każdy podróży rekord zawiera lokalizacji odbioru i nadania i godziny, hack anonimowe (sterownika) numer licencji i numer Medalionu (unikatowy identyfikator dla taksówek). Dane obejmuje wszystkie podróży w roku 2013 i znajduje się w następujących dwóch zestawów danych w każdym miesiącu:
+Dane podróży taksówek NYC składa się z około 20GB skompresowanych plików CSV (~ 48GB nieskompresowane), rejestrowanie ponad milion 173 poszczególnych podróży i opłaty opłacony każdego podróży. Każdy podróży rekord zawiera lokalizacji odbioru i dropoff i godziny, hack anonimowe (sterownika) numer licencji i numer Medalionu (unikatowy identyfikator dla taksówek). Dane obejmuje wszystkie podróży w roku 2013 i znajduje się w następujących dwóch zestawów danych w każdym miesiącu:
 
 1. **Trip_data.csv** plik zawiera szczegóły podróży, np. liczby pasażerów, wybieranie i dropoff punkty, czasu trwania podróży i długość podróży. Poniżej przedstawiono kilka przykładowych rekordów:
    
@@ -442,7 +442,7 @@ W tym przykładzie oblicza rozkład Porada zakresów w danym okresie czasu (lub 
 | 4 |85765 |
 
 ### <a name="exploration-compute-and-compare-trip-distance"></a>Eksploracji: Obliczeń i porównywanie odległość podróży
-Ten przykład konwertuje długość geograficzna odbiór i nadania i szerokości geograficznej do lokalizacji geograficznej SQL punktów oblicza odległość podróży za pomocą różnicę punktów lokalizacji geograficznej SQL i zwraca losowej próbki wyniki porównania. Przykład ogranicza wyniki do prawidłowe współrzędne wyłącznie przy użyciu zapytania oceny jakości danych omówione wcześniej.
+Ten przykład konwertuje odbiór i dropoff długości geograficznej i szerokości geograficznej do lokalizacji geograficznej SQL punktów oblicza odległość podróży za pomocą różnicę punktów lokalizacji geograficznej SQL i zwraca losowej próbki wyniki porównania. Przykład ogranicza wyniki do prawidłowe współrzędne wyłącznie przy użyciu zapytania oceny jakości danych omówione wcześniej.
 
     /****** Object:  UserDefinedFunction [dbo].[fnCalculateDistance] ******/
     SET ANSI_NULLS ON

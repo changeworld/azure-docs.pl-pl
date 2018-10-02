@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 08/27/2018
 ms.author: aljo
-ms.openlocfilehash: cf8e9dff020e16efe4b37a2bfd66563211be3020
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 69f29eac17ecdf5381a550bc182c547fa0c25278
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055543"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018982"
 ---
 # <a name="customize-service-fabric-cluster-settings"></a>Dostosowywanie ustawień klastra usługi Service Fabric
 W tym artykule opisano sposób dostosowywania różne ustawienia sieci szkieletowej klastra usługi Service Fabric. W przypadku klastrów hostowanych na platformie Azure, można dostosować ustawienia za pośrednictwem [witryny Azure portal](https://portal.azure.com) lub przy użyciu szablonu usługi Azure Resource Manager. W przypadku autonomicznych klastrów możesz dostosować ustawienia aktualizowania pliku ClusterConfig.json, a następnie wykonać uaktualnienie konfiguracji w klastrze. 
@@ -352,6 +352,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |ApplicationUpgradeTimeout| Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(360)|Dynamiczny| Określ przedział czasu w sekundach. Limit czasu dla uaktualnienie aplikacji. Jeśli limit czasu jest mniejsza niż deployer "ActivationTimeout" zakończy się niepowodzeniem. |
 |ContainerServiceArguments|ciąg, domyślna to "-H 2375 -H npipe: / /"|Statyczny|Sieć szkieletowa usług (CPP) zarządza demona platformy docker (z wyjątkiem komputerów klienckich systemu windows, takich jak Windows 10). Ta konfiguracja umożliwia użytkownikowi określić niestandardowe argumenty, które powinny być przekazywane do demona platformy docker, podczas jego uruchamiania. Jeśli określono niestandardowe argumenty, Usługa Service Fabric nie przekaże żadnego innego argumentu do aparatu platformy Docker z wyjątkiem "--pidfile" argument. Dlatego użytkownicy nie należy określać "--pidfile" argument jako część ich argumentów klienta. Ponadto niestandardowe argumenty należy upewnić się, że platforma docker demona nasłuchuje na domyślnym potoku nazw w systemie Windows (lub w gnieździe domeny systemu Unix w systemie Linux) dla usługi Service Fabric móc komunikować się z nim.|
 |ContainerServiceLogFileMaxSizeInKb|int, domyślny jest 32768|Statyczny|Maksymalny rozmiar pliku dziennika wygenerowany przez kontenery platformy docker.  Tylko Windows.|
+|ContainerImagesToSkip|ciąg nazwy obrazów oddzielony znakiem linii pionowej, wartością domyślną jest ""|Statyczny|Nazwa obrazów kontenerów, które nie powinny być usuwane.  Używane z parametrem PruneContainerImages.|
 |ContainerServiceLogFileNamePrefix|ciąg, domyślną jest "sfcontainerlogs"|Statyczny|Prefiks nazwy pliku dla plików dziennika generowanych przez kontenery platformy docker.  Tylko Windows.|
 |ContainerServiceLogFileRetentionCount|Int, domyślna wynosi 10|Statyczny|Liczba plików dziennika generowanych przez kontenery platformy docker, zanim pliki dziennika zostaną zastąpione.  Tylko Windows.|
 |CreateFabricRuntimeTimeout|Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(120)|Dynamiczny| Określ przedział czasu w sekundach. Wartość limitu czasu w celu synchronizacji FabricCreateRuntime wywołania |
@@ -375,6 +376,7 @@ Poniżej przedstawiono listę sieci szkieletowej ustawienia, które można dosto
 |NTLMAuthenticationPasswordSecret|SecureString, wartością domyślną jest Common::SecureString("")|Statyczny|Jest zaszyfrowane ma, który jest używany do generowania haseł dla użytkowników NTLM. Musi być nelze nastavit, pokud NTLMAuthenticationEnabled ma wartość true. Zatwierdzone przez wdrażania. |
 |NTLMSecurityUsersByX509CommonNamesRefreshInterval|Przedział czasu, wartością domyślną jest Common::TimeSpan::FromMinutes(3)|Dynamiczny|Określ przedział czasu w sekundach. Ustawienia specyficzne dla środowiska okresowe interwał, w których hostingu skanowania pod kątem nowych certyfikatów służący do uwierzytelniania NTLM FileStoreService konfiguracji. |
 |NTLMSecurityUsersByX509CommonNamesRefreshTimeout|Przedział czasu, wartością domyślną jest Common::TimeSpan::FromMinutes(4)|Dynamiczny| Określ przedział czasu w sekundach. Limit czasu konfigurowania użytkowników protokołu NTLM przy użyciu nazwy pospolite certyfikatów. Użytkownicy NTLM są wymagane przez FileStoreService udziałów. |
+|PruneContainerImages|wartość logiczna, domyślna to FALSE|Dynamiczny| Usuń aplikację nieużywanych obrazów kontenerów z węzłów. Gdy ApplicationType jest wyrejestrowywany z klastra usługi Service Fabric, obrazy kontenera, które były używane przez tę aplikację zostaną usunięte w węzłach, w którym został on pobrany przez usługę Service Fabric. Oczyszczanie uruchamiany co godzinę, dzięki czemu może potrwać maksymalnie jedną godzinę (oraz czas, aby oczyścić obrazu) dla obrazów do usunięcia z klastra.<br>Usługi Service Fabric nigdy nie będzie pobrać lub usunięcia obrazów, które nie są powiązane z aplikacją.  Niepowiązanych obrazy, które zostały pobrane ręcznie lub w inny sposób muszą zostać jawnie usunięte.<br>Obrazy, które nie powinny być usuwane, można określić w parametrze ContainerImagesToSkip.| 
 |RegisterCodePackageHostTimeout|Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(120)|Dynamiczny| Określ przedział czasu w sekundach. Wartość limitu czasu dla FabricRegisterCodePackageHost wywołanie synchroniczne. Dotyczy tylko multi kod pakietu aplikacji hosty takich jak FWP |
 |RequestTimeout|Przedział czasu, wartością domyślną jest Common::TimeSpan::FromSeconds(30)|Dynamiczny| Określ przedział czasu w sekundach. Ta pozycja reprezentuje limit czasu komunikacji między hostem aplikacji i proces sieci szkieletowej dla różnych hostingu powiązanych operacji, takich jak rejestracji fabrycznej; użytkownika Rejestracja w czasie wykonywania. |
 |RunAsPolicyEnabled| wartość logiczna, domyślna to FALSE|Statyczny| Umożliwia uruchamianie kodu pakietów jako użytkownik lokalny inny niż użytkownik w ramach której sieci szkieletowej proces jest uruchomiony. Aby włączyć te zasady sieci szkieletowej musi działać jako SYSTEM lub użytkownik, który ma SeAssignPrimaryTokenPrivilege. |

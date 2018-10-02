@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/20/2018
 ms.author: mbullwin
-ms.openlocfilehash: a960ace141d5d71559c39c627f96746a25bf5207
-ms.sourcegitcommit: 8ebcecb837bbfb989728e4667d74e42f7a3a9352
+ms.openlocfilehash: 31d7f0fd70edf7bbf05a3a180baa6cc078e02ba1
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/21/2018
-ms.locfileid: "42062106"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47585479"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Eksportowanie telemetrii z usługi Application Insights
 Czy chcesz zachować dane telemetryczne przez czas dłuższy niż okres przechowywania standardowa? Lub przetwarzać dane w jakiś sposób wyspecjalizowane? Eksport ciągły jest idealny dla tego. Zdarzenia, które są widoczne w portalu usługi Application Insights można wyeksportować do magazynu na platformie Microsoft Azure w formacie JSON. W tym miejscu możesz pobrać dane i napisać kod, które możesz: musisz go przetworzyć.  
@@ -37,11 +37,9 @@ Eksportu ciągłego dane są kopiowane do magazynu (gdzie pozostawał dla tak d�
 ## <a name="setup"></a> Utwórz eksport ciągły
 1. W zasobie usługi Application Insights dla aplikacji, otwórz Eksport ciągły i wybierz polecenie **Dodaj**:
 
-    ![Przewiń w dół i kliknij przycisk eksportu ciągłego](./media/app-insights-export-telemetry/01-export.png)
-
 2. Wybierz dane telemetryczne typy danych, które chcesz wyeksportować.
 
-3. Utwórz lub wybierz [konta usługi Azure storage](../storage/common/storage-introduction.md) miejscu, w którym chcesz przechowywać dane.
+3. Utwórz lub wybierz [Konto magazynu platformy Azure] (.. / storage/common/storage-introduction.md) gdzie mają być przechowywane dane. Aby uzyskać więcej informacji na temat cen opcje magazynu, odwiedź stronę [official będzie przydatna stronę z cennikiem](https://azure.microsoft.com/pricing/details/storage/).
 
     > [!Warning]
     > Domyślna lokalizacja magazynu zostanie ustawiona do tego samego regionu geograficznego, co zasób usługi Application Insights. Jeśli będą przechowywane w innym regionie, może spowodować naliczenie opłaty za transfer.

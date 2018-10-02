@@ -9,12 +9,12 @@ ms.technology: Speech
 ms.topic: article
 ms.date: 09/24/2018
 ms.author: fmegen
-ms.openlocfilehash: b925a382a32f320c5d6906bc3fa23f046d260cb0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9ac48bd77087a8dc050ccd1ee8fe63ec5c25a643
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46997441"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018388"
 ---
 # <a name="quickstart-recognize-speech-in-javascript-in-a-browser-using-the-cognitive-services-speech-sdk"></a>Szybki Start: Rozpoznawanie mowy w języku JavaScript w przeglądarce, za pomocą Cognitive Services SDK rozpoznawania mowy
 
@@ -36,6 +36,8 @@ Ta aplikacja jest oparta na Microsoft Cognitive Services SDK mowy ([pobierania w
 Utwórz nowy, pusty folder. W przypadku, gdy chcesz hostować próbki na serwerze sieci web, upewnij się, że serwer sieci web można uzyskać dostęp do folderu.
 
 ## <a name="unpack-the-speech-sdk-for-javascript-into-that-folder"></a>Rozpakowywanie mowy zestawu SDK dla języka JavaScript do tego folderu
+
+[!INCLUDE [License Notice](../../../includes/cognitive-services-speech-service-license-notice.md)]
 
 Pobierz zestaw SDK rozpoznawania mowy jako [pakiet wincache.zip](https://aka.ms/csspeech/jsbrowserpackage) i Rozpakuj go do nowo utworzonego folderu. Powinno to spowodować dwa pliki, które są dopiero, czyli `microsoft.cognitiveservices.speech.sdk.bundle.js` i `microsoft.cognitiveservices.speech.sdk.bundle.js.map`.
 Ostatnie pliku jest opcjonalne i używane, aby ułatwić debugowanie kodu zestawu SDK, w razie potrzeby.

@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jerkin
-ms.openlocfilehash: 60a6061d6ac0998064897462c0e82db811bdc187
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: e8d84d83636bc8bed287d1fa68d36ce1c2ea3d58
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435520"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018557"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Obsługa języka i regionu dla interfejsu API mowy usługi
 
@@ -161,8 +161,6 @@ Dostosowanie głos jest dostępna dla US English (en US), kontynent, chiński (z
 ## <a name="speech-translation"></a>Tłumaczenie mowy
 
 **Tłumaczenia mowy** API obsługę innych języków tłumaczenia mowy do rozpoznawania mowy i rozpoznawania mowy na tekst. Język źródłowy zawsze musi być z poniższej tabeli języka mowy. Dostępne języki docelowej zależą od tego, czy element docelowy tłumaczenia jest mowy lub tekstu.
-
-Listę języków można uzyskać programistycznie przy użyciu punktu końcowego języków interfejsu API REST. Lista zawiera każdego kodu języka, a także nazwę języka w języku angielskim lub w obsługiwanym języku. Ta lista jest aktualizowana przez usługę Microsoft Translator, zawsze wtedy, gdy nowy język staje się dostępna.
 
 ### <a name="speech-languages"></a>Języki mowy
 

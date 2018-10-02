@@ -1,6 +1,6 @@
 ---
-title: Portów i protokołów komunikacyjnych Centrum IoT Azure | Dokumentacja firmy Microsoft
-description: Przewodnik dewelopera — w tym artykule opisano protokołów komunikacyjnych obsługiwanych, urządzenia do chmury i chmury do urządzenia komunikację i numery portów, które muszą być otwarte.
+title: Usługa Azure IoT Hub komunikacji protokoły i porty | Dokumentacja firmy Microsoft
+description: Przewodnik dewelopera — w tym artykule opisano protokołów komunikacyjnych obsługiwanych, komunikacji urządzenia do chmury i z chmury do urządzeń i numery portów, które muszą być otwarte.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,47 +8,51 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 0fe3dd719877dac23410ff1ca00d559636a5ed60
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: 3079b2414c44fc97bc8aff4b207e0943e94c7457
+ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34633006"
+ms.lasthandoff: 10/01/2018
+ms.locfileid: "47584340"
 ---
-# <a name="reference---choose-a-communication-protocol"></a>Odwołanie — wybierz protokół komunikacyjny
+# <a name="reference---choose-a-communication-protocol"></a>Odwołania — wybór protokołu komunikacyjnego
 
-Centrum IoT umożliwia skonfigurowanie urządzenia do używania następujące protokoły komunikacji po stronie urządzenia:
+Usługa IoT Hub umożliwia urządzeniom używane następujące protokoły na potrzeby komunikacji po stronie urządzenia:
 
-* [MQTT][lnk-mqtt]
+* [MQTT](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/mqtt-v3.1.1.pdf)
 * MQTT za pośrednictwem obiektów WebSocket
-* [AMQP][lnk-amqp]
+* [PROTOKÓŁ AMQP](http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf)
 * AMQP za pośrednictwem obiektów WebSocket
 * HTTPS
 
-Informacje, jak te protokoły obsługują określone funkcje Centrum IoT, zobacz [wskazówki komunikację urządzenia do chmury] [ lnk-d2c-guidance] i [wskazówki dotyczące komunikacji chmury do urządzenia][lnk-c2d-guidance].
+Aby uzyskać informacje o współpracy tych protokołów określonych funkcji usługi IoT Hub, zobacz [wskazówki dotyczące komunikacji z urządzenia do chmury](iot-hub-devguide-d2c-guidance.md) i [wskazówki dotyczące komunikacji z chmury do urządzenia](iot-hub-devguide-c2d-guidance.md).
 
-W poniższej tabeli przedstawiono ogólne zalecenia dotyczące wyboru protokołu:
+Poniższa tabela zawiera ogólne zalecenia dotyczące wybranego protokołu:
 
-| Protokół | Kiedy należy wybrać tego protokołu |
+| Protokół | Kiedy należy wybrać ten protokół |
 | --- | --- |
-| MQTT <br> MQTT za pośrednictwem protokołu WebSocket |Użyj na wszystkich urządzeniach, które nie wymagają łączyć wielu urządzeń (każde z nich własne poświadczenia na urządzenie) za pośrednictwem tego samego połączenia TLS. |
-| AMQP <br> Protokół AMQP za pośrednictwem protokołu WebSocket |Aby móc korzystać z połączenia Multipleksowanie między urządzeniami w systemie bram pola i w chmurze. |
-| HTTPS |Zalecany w przypadku urządzeń, które nie obsługują innych protokołów. |
+| MQTT <br> MQTT za pośrednictwem protokołu WebSocket |Użyj tej opcji na wszystkich urządzeniach, które nie wymagają nawiązać połączenie za pośrednictwem tego samego połączenia TLS między wieloma urządzeniami (każdy z jej własnych poświadczeń na urządzenie). |
+| AMQP <br> Protokół AMQP przez WebSocket |Aby móc korzystać z połączenia Multipleksowanie między urządzeniami w systemie bramy pola i w chmurze. |
+| HTTPS |Zastosowanie w przypadku urządzeń, które nie obsługują innych protokołów. |
 
-Po wybraniu użytkownika protokołu komunikacji po stronie urządzenia, należy wziąć pod uwagę następujące kwestie:
+W przypadku wybrania usługi protokołu komunikacji po stronie urządzenia, należy wziąć pod uwagę następujące kwestie:
 
-* **Wzorzec chmury do urządzenia**. Protokół HTTPS nie ma wydajnym sposobem wdrożenia serwera wypychania. Tak korzystając z protokołu HTTPS, urządzenia sondować Centrum IoT wiadomości chmury do urządzenia. Ta metoda jest nieefektywne dla Centrum IoT i urządzeniami. W obszarze bieżące wytyczne HTTPS każde urządzenie powinno sondowania wiadomości co 25 minut lub więcej. MQTT i protokołu AMQP obsługuje wypychania serwera podczas odbierania wiadomości chmury do urządzenia. Umożliwiają one natychmiastowego wypchnięć wiadomości z Centrum IoT na urządzeniu. Jeśli czas oczekiwania na dostarczenie jest istotny, MQTT lub AMQP są protokoły używane. Rzadko połączonych urządzeń HTTPS działa również.
-* **Pole bram**. Korzystając z MQTT i HTTPS, nie można połączyć z wieloma urządzeniami (każde z nich własne poświadczenia na urządzenie) przy użyciu tego samego połączenia TLS. Aby uzyskać [pola scenariusze bramy] [ lnk-azure-gateway-guidance] wymagające jednego połączenia TLS między bramą pola i Centrum IoT dla każdego podłączonego urządzenia, te protokoły są nieoptymalne.
-* **Mało zasobów urządzeń**. Biblioteki MQTT i HTTPS ma mniejszy wyświetlacz niż bibliotek protokołu AMQP. Tak Jeśli urządzenie ma ograniczone zasoby (na przykład mniejsza niż 1 MB pamięci RAM), te protokoły mogą być dostępne tylko implementacja protokołu.
-* **Przechodzenie sieci**. Standardowy protokół AMQP korzysta z portu 5671 i MQTT nasłuchuje na porcie 8883. Korzystanie z tych portów może spowodować problemy w sieciach, które zostały zamknięte do protokołów innych niż HTTPS. Użyj MQTT przez protokół WebSockets, AMQP za pośrednictwem protokołu WebSockets lub HTTPS, w tym scenariuszu.
-* **Rozmiar ładunku**. MQTT i AMQP są binarne protokołów, które powoduje ładunki mniejszych niż HTTPS.
+* **Wzorzec chmury do urządzenia**. Protokół HTTPS nie ma efektywny sposób, aby zaimplementować wypychania przez serwer. Jako takie korzystając z protokołu HTTPS, urządzenia sondować usługę IoT Hub dla komunikatów z chmury do urządzeń. To podejście jest nieefektywne dla Centrum IoT i urządzeń. W obszarze bieżące wytyczne HTTPS każde urządzenie należy wykonać sondowanie komunikatów, co 25 minut lub dłużej. MQTT i protokół AMQP obsługuje wypychania przez serwer podczas odbierania komunikatów z chmury do urządzeń. Umożliwiają one bezpośredniego wypchnięcia wiadomości z usługi IoT Hub do urządzenia. Jeśli opóźnienie dostarczania jest istotna, MQTT lub AMQP są protokoły używane. Rzadko połączonych urządzeń protokół HTTPS działa również.
+
+* **Pole bram**. Korzystając z protokołu MQTT i HTTPS, nie można połączyć wiele urządzeń (każdy z jej własnych poświadczeń na urządzenie) przy użyciu tego samego połączenia TLS. Aby uzyskać [pola scenariusze bramy](iot-hub-devguide-endpoints.md#field-gateways) wymagające jednego połączenia TLS między bramy w terenie i IoT Hub dla każdego urządzenia połączone, te protokoły są suboptymalny.
+
+* **Mało zasobów urządzeń**. Biblioteki protokołu MQTT i HTTPS ma mniejszy wyświetlacz niż biblioteki protokołu AMQP. Jako takie Jeśli urządzenie ma ograniczone zasoby (na przykład, mniejsze niż 1 MB pamięci RAM), te protokoły może być tylko dostępne implementacji protokołu.
+
+* **Sieci przechodzenie**. Standardowy protokół AMQP korzysta z portu 5671 i MQTT nasłuchuje na porcie 8883. Użycie tych portów mogą powodować problemy w sieciach, które zostały zamknięte do protokołów innych niż HTTPS. Użyj protokołu MQTT za pośrednictwem funkcji WebSockets, AMQP za pośrednictwem funkcji WebSockets lub HTTPS w tym scenariuszu.
+
+* **Rozmiar ładunku**. MQTT i protokół AMQP są binarne protokołów, które powodują w bardziej zwarty ładunków niż HTTPS.
 
 > [!WARNING]
-> Przy użyciu protokołu HTTPS, poszczególnych urządzeń należy sondować komunikatów chmury do urządzenia, co 25 minut lub więcej. Jednak podczas tworzenia, dopuszczalne jest do sondowania częściej niż co 25 minut.
+> Przy użyciu protokołu HTTPS, każde urządzenie powinno sondowania dla komunikatów z chmury do urządzeń, co 25 minut lub dłużej. Jednak podczas tworzenia aplikacji, dopuszczalne jest sondowania częściej niż co 25 minut.
 
 ## <a name="port-numbers"></a>Numery portów
 
-Urządzenia mogą komunikować się z Centrum IoT na platformie Azure przy użyciu różnych protokołów. Zazwyczaj wybór protokół jest wymuszany przez określone wymagania rozwiązania. W poniższej tabeli wymieniono portów wychodzących, które musi być otwarte dla urządzenia można było użyć określonego protokołu:
+Urządzenia mogą komunikować się z usługą IoT Hub na platformie Azure przy użyciu różnych protokołów. Zazwyczaj wybranego protokołu są sterowane określonych wymagań rozwiązania. Poniższa tabela zawiera listę portów wychodzących, które muszą być otwarte dla urządzenia można było korzystać z określonym protokołem:
 
 | Protokół | Port |
 | --- | --- |
@@ -58,16 +62,8 @@ Urządzenia mogą komunikować się z Centrum IoT na platformie Azure przy użyc
 | AMQP za pośrednictwem obiektów WebSocket |443 |
 | HTTPS |443 |
 
-Po utworzeniu Centrum IoT w regionie Azure, Centrum IoT przechowuje ten sam adres IP przez czas ich istnienia tego Centrum IoT. Jednak jeśli Microsoft przenosi Centrum IoT na jednostkę skalowania różnych utrzymanie jakości usług, następnie przypisano nowego adresu IP.
-
+Po utworzeniu Centrum IoT hub w regionie świadczenia usługi Azure IoT hub przechowuje ten sam adres IP okres istnienia tego Centrum IoT hub. Jednak jeśli Microsoft przenosi usługi IoT hub na jednostkę skalowania innego, aby zachować jakość usług, jego jest przypisywany nowy adres IP.
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-Aby dowiedzieć się więcej na temat sposobu Centrum IoT implementuje ten protokół MQTT, zobacz [komunikacja z Centrum IoT przy użyciu protokołu MQTT][lnk-mqtt-support].
-
-[lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
-[lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md
-[lnk-mqtt-support]: iot-hub-mqtt-support.md
-[lnk-amqp]: http://docs.oasis-open.org/amqp/core/v1.0/os/amqp-core-complete-v1.0-os.pdf
-[lnk-mqtt]: http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/mqtt-v3.1.1.pdf
-[lnk-azure-gateway-guidance]: iot-hub-devguide-endpoints.md#field-gateways
+Aby dowiedzieć się więcej na temat sposobu IoT Hub zaimplementowano protokołu MQTT, zobacz [komunikacja z Centrum IoT hub przy użyciu protokołu MQTT](iot-hub-mqtt-support.md).

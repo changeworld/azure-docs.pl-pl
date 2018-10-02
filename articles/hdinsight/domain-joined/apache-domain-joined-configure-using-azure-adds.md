@@ -8,12 +8,12 @@ ms.author: omidm
 ms.reviewer: jasonh
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: eb24aa0471604696de99f4878baef764cfef0a8b
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 6cfe587abadf8350fecc497b1af1cea9700f4f28
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408358"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018730"
 ---
 # <a name="configure-a-hdinsight-cluster-with-enterprise-security-package-by-using-azure-active-directory-domain-services"></a>Konfigurowanie klastra HDInsight z pakietem Enterprise Security za pomocą usługi Azure Active Directory Domain Services
 
@@ -45,7 +45,11 @@ Wyświetlanie stanu kondycji usługi Azure Active Directory Domain Services, wyb
 
 ## <a name="add-managed-identity"></a>Dodaj tożsamość zarządzaną
 
-Po włączeniu usług AD DS Azure tworzenie zarządzanych tożsamości przypisanych przez użytkownika i przypisz ją do **Współautor usługi domeny HDInsight** roli kontroli dostępu usług AD DS w platformie Azure.
+Tworzenie tożsamości zarządzanych przypisanych przez użytkownika, jeśli nie masz jeszcze takiego. Zobacz [Utwórz, listy, usuwania lub przypisać rolę do przypisanych przez użytkownika tożsamości zarządzanej przy użyciu witryny Azure portal](https://docs.microsoft.com/en-us/azure/active-directory/managed-identities-azure-resources/how-to-manage-ua-identity-portal) instrukcje. 
+
+Tożsamość zarządzana jest używany do upraszczają operacje usługi domeny. Ta tożsamość ma dostęp do odczytu, tworzenie, modyfikowanie i usuwanie operacji usług domeny, które są wymagane przez pakiet zabezpieczeń przedsiębiorstwa HDInsight, takie jak tworzenie jednostek organizacyjnych i zasad usługi.
+
+Po włączeniu usług AD DS platformy Azure, tworzenie zarządzanych tożsamości przypisanych przez użytkownika i przypisz ją do **Współautor usługi domeny HDInsight** roli kontroli dostępu usług AD DS w platformie Azure.
 
 ![Usługa Azure Active Directory Domain Services dostępu formantu](./media/apache-domain-joined-configure-using-azure-adds/hdinsight-configure-managed-identity.png)
 
