@@ -9,14 +9,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/18/2018
+ms.date: 9/28/2018
 ms.author: rithorn
-ms.openlocfilehash: d031059f9811cedb703fec4920e00fd1b2e3f877
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 6b369c8209e62ff3c98b3fdf78378b403b0a0d2d
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47045353"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48017657"
 ---
 # <a name="organize-your-resources-with-azure-management-groups"></a>Organizowanie zasobów przy użyciu grup zarządzania platformy Azure
 
@@ -62,19 +62,30 @@ Główna grupa zarządzania jest wbudowana w hierarchię, aby wszystkie grupy za
   - Każdy, kto ma dostęp do subskrypcji, może zobaczyć kontekst, w którym ta subskrypcja znajduje się w hierarchii.  
   - Nikt nie otrzymuje domyślnego dostępu do głównej grupy zarządzania. Administratorzy globalni katalogu są jedynymi użytkownikami, którzy mogą samodzielnie podnieść swój poziom uprawnień, aby uzyskać dostęp.  Gdy administratorzy katalogu mają dostęp, mogą przypisać dowolne role RBAC innym użytkownikom w celu zarządzania.  
 
-> [!NOTE]
-> Jeśli Twój katalog zaczął korzystać z usługi grup zarządzania przed 25.06.2018 r., może nie być skonfigurowany ze wszystkimi subskrypcjami w hierarchii. Zespół ds. grup zarządzania wstecznie aktualizuje każdy katalog, który rozpoczął korzystanie z grup zarządzania w publicznej wersji zapoznawczej przed tą datą, w lipcu/sierpnia 2018 r. Wszystkie subskrypcje w katalogach zostaną ustawione jako elementy podrzędne głównej grupy zarządzania.
->
-> Jeśli masz pytania na temat tego procesu, skontaktuj się z managementgroups@microsoft.com  
-  
-## <a name="initial-setup-of-management-groups"></a>Konfiguracja początkowa grup zarządzania
-
-Kiedy dowolny użytkownik rozpoczyna korzystanie z grup zarządzania, wykonywany jest proces konfiguracji początkowej. Pierwszym jego krokiem jest utworzenie głównej grupy zarządzania w katalogu. Po utworzeniu tej grupy wszystkie istniejące subskrypcje, które znajdują się w katalogu, stają się elementami podrzędnymi głównej grupy zarządzania. Celem tego procesu jest upewnienie się, że istnieje tylko jedna hierarchia grup zarządzania w katalogu. Pojedyncza hierarchia w katalogu umożliwia klientom administracyjnym klientom stosowanie globalnego dostępu i zasad, których inni klienci w katalogu nie mogą obejść. Wszystkie przypisania w głównej grupie będą stosowane do wszystkich grup zarządzania, subskrypcji, grup zasobów i zasobów w katalogu dzięki istnieniu tylko jednej hierarchii w katalogu.
-
 > [!IMPORTANT]
 > Wszystkie przypisania dostępu użytkowników lub zasad w głównej grupie zarządzania **dotyczą wszystkich zasobów w katalogu**.
 > W związku z tym wszyscy klienci powinni ocenić potrzebę posiadania elementów zdefiniowanych w tym zakresie.
 > Przypisania dostępu użytkowników i zasad powinny być „niezbędne” tylko w tym zakresie.  
+
+## <a name="initial-setup-of-management-groups"></a>Konfiguracja początkowa grup zarządzania
+
+Kiedy dowolny użytkownik rozpoczyna korzystanie z grup zarządzania, wykonywany jest proces konfiguracji początkowej. Pierwszym jego krokiem jest utworzenie głównej grupy zarządzania w katalogu. Po utworzeniu tej grupy wszystkie istniejące subskrypcje, które znajdują się w katalogu, stają się elementami podrzędnymi głównej grupy zarządzania. Celem tego procesu jest upewnienie się, że istnieje tylko jedna hierarchia grup zarządzania w katalogu. Pojedyncza hierarchia w katalogu umożliwia klientom administracyjnym klientom stosowanie globalnego dostępu i zasad, których inni klienci w katalogu nie mogą obejść. Wszystkie przypisania w głównej grupie będą stosowane do wszystkich grup zarządzania, subskrypcji, grup zasobów i zasobów w katalogu dzięki istnieniu tylko jednej hierarchii w katalogu.
+
+## <a name="trouble-seeing-all-subscriptions"></a>Problemy z wyświetlaniem wszystkich subskrypcji
+
+W przypadku niektórych katalogów, które rozpoczęły korzystanie z grup zarządzania niedługo po udostępnieniu wersji zapoznawczej (przed 25 czerwca 2018 r.), mógł wystąpić problem polegający na tym, że nie wymuszono umieszczenia wszystkich subskrypcji w hierarchii.  Dzieje się tak, ponieważ procesy wymuszające umieszczenie subskrypcji w hierarchii były implementowane po przypisaniu roli lub zasad w głównej grupie zarządzania w katalogu.
+
+### <a name="how-to-resolve-the-issue"></a>Jak rozwiązać ten problem
+
+Problem można rozwiązać samodzielnie na dwa sposoby.
+
+1. Usuń wszystkie przypisania ról i zasad z głównej grupy zarządzania
+    1. Usunięcie wszystkich przypisań ról i zasad z głównej grupy zarządzania spowoduje wypełnienie hierarchii przez usługę wszystkimi subskrypcjami podczas następnego cyklu nocnego.  To sprawdzanie jest wykonywane, aby upewnić się, że nie został przypadkowo udzielony dostęp lub nie przypisano przypadkowo zasad do wszystkich subskrypcji dzierżawy.
+    1. Najlepszym sposobem wykonania tego procesu bez wpływu na usługi jest zastosowanie przypisań ról lub zasad na poziomie o jeden niższym niż główna grupa zarządzania. Wtedy będzie można usunąć wszystkie przypisania z zakresu głównego.
+1. Bezpośrednio wywołaj interfejs API, aby rozpocząć proces wypełniania
+    1. Każdy autoryzowany klient w katalogu może wywołać interfejs API *TenantBackfillStatusRequest* lub *StartTenantBackfillRequest*. Wywołanie interfejsu API StartTenantBackfillRequest powoduje rozpoczęcie procesu początkowej konfiguracji, który polega na przeniesieniu wszystkich subskrypcji do hierarchii. Ten proces rozpoczyna również wymuszanie dodawania wszystkich nowych subskrypcji jako elementu podrzędnego głównej grupy zarządzania. Wykonanie tego procesu nie wymaga żadnych zmian przypisań na poziomie głównym, ponieważ wskazujesz, że akceptujesz zastosowanie wszelkich przypisań zasad lub dostępu na tym poziomie do wszystkich subskrypcji.
+
+Jeśli masz pytania na temat tego procesu wypełniania, napisz na adres managementgroups@microsoft.com  
   
 ## <a name="management-group-access"></a>Dostęp do grupy zarządzania
 

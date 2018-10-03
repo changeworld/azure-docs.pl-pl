@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/09/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 32e76d1593f8bda0ebf745e76373908970aeb181
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.component: ''
+ms.openlocfilehash: 109d4eda7d7ad05b4d6138228be23b48076090ca
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43124173"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237368"
 ---
 # <a name="wire-data-20-preview-solution-in-log-analytics"></a>Rozwiązanie Dane o komunikacji sieciowej 2.0 (wersja zapoznawcza) w usłudze Log Analytics
 
@@ -268,7 +268,7 @@ Aby łatwo wdrożyć agenta Dependency Agent na wielu serwerach naraz, można u�
 
 ```PowerShell
 
-Invoke-WebRequest &quot;https://aka.ms/dependencyagentwindows&quot; -OutFile InstallDependencyAgent-Windows.exe
+Invoke-WebRequest 'https://aka.ms/dependencyagentwindows' -OutFile InstallDependencyAgent-Windows.exe
 
 .\InstallDependencyAgent-Windows.exe /S
 
@@ -291,7 +291,7 @@ Aby wdrożyć agenta Dependency Agent za pośrednictwem usługi Desired State Co
 ```
 Import-DscResource -ModuleName xPSDesiredStateConfiguration
 
-$DAPackageLocalPath = &quot;C:\InstallDependencyAgent-Windows.exe&quot;
+$DAPackageLocalPath = 'C:\InstallDependencyAgent-Windows.exe'
 
 
 
@@ -305,11 +305,11 @@ Node $NodeName
 
     {
 
-        Uri = &quot;https://aka.ms/dependencyagentwindows&quot;
+        Uri = 'https://aka.ms/dependencyagentwindows'
 
         DestinationPath = $DAPackageLocalPath
 
-        DependsOn = &quot;[Package]OI&quot;
+        DependsOn = '[Package]OI'
 
     }
 
@@ -317,21 +317,21 @@ Node $NodeName
 
     {
 
-        Ensure=&quot;Present&quot;
+        Ensure='Present'
 
-        Name = &quot;Dependency Agent&quot;
+        Name = 'Dependency Agent'
 
         Path = $DAPackageLocalPath
 
         Arguments = '/S'
 
-        ProductId = &quot;&quot;
+        ProductId = ''
 
-        InstalledCheckRegKey = &quot;HKEY\_LOCAL\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\DependencyAgent&quot;
+        InstalledCheckRegKey = 'HKEY\_LOCAL\_MACHINE\SOFTWARE\Wow6432Node\Microsoft\Windows\CurrentVersion\Uninstall\DependencyAgent'
 
-        InstalledCheckRegValueName = &quot;DisplayName&quot;
+        InstalledCheckRegValueName = 'DisplayName'
 
-        InstalledCheckRegValueData = &quot;Dependency Agent&quot;
+        InstalledCheckRegValueData = 'Dependency Agent'
 
     }
 

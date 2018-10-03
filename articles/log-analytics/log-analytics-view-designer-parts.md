@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/12/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: ac81525c107fcc291a8c3ef0163bf0ef2bbfdc3b
-ms.sourcegitcommit: 3f8f973f095f6f878aa3e2383db0d296365a4b18
+ms.component: ''
+ms.openlocfilehash: 8cc654fca8e645253ffc79ef808075bdbe887530
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42057400"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043298"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-log-analytics"></a>Podręcznik informacyjny do części wizualizacji projektanta widoków w usłudze Log Analytics
 Przy użyciu projektanta widoku w usłudze Azure Log Analytics, można tworzyć widoki niestandardowe w witrynie Azure portal, które przedstawiają różne wizualizacje danych ze swojego obszaru roboczego usługi Log Analytics. Ten artykuł jest przewodnik odwołanie do ustawienia dla części wizualizacji, które są dostępne w widoki niestandardowe.

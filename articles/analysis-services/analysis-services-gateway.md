@@ -1,5 +1,5 @@
 ---
-title: Lokalna brama danych | Dokumentacja firmy Microsoft
+title: Brama danych lokalnych
 description: Lokalna brama jest konieczne, jeśli serwer usług Analysis Services na platformie Azure połączy się z lokalnymi źródłami danych.
 author: minewiskan
 manager: kfile
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 10/11/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: 9ed2614969952eab90dfec572d9b61071981c4bf
-ms.sourcegitcommit: 794bfae2ae34263772d1f214a5a62ac29dcec3d2
+ms.openlocfilehash: 3b731d44348c506f09f0d30d6d42b9cbdc623936
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44391627"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041939"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-azure-on-premises-data-gateway"></a>Nawiązywanie połączenia z lokalnymi źródłami danych za pomocą bramy danych lokalnych platformy Azure
 Lokalna brama danych działa jako most, zapewniając bezpieczny transfer danych między lokalnymi źródłami danych i serwerami usług Azure Analysis Services w chmurze. Oprócz Praca z wieloma serwerami usług Azure Analysis Services, w tym samym regionie, najnowszą wersję bramy współpracuje również z usługi Azure Logic Apps, usługa Power BI, Power Apps i Microsoft Flow. Można skojarzyć wiele usług w tej samej subskrypcji i tym samym regionie za pośrednictwem jednej bramy. 
@@ -172,8 +172,6 @@ Pliki dziennika są ważnym podczas rozwiązywania problemów.
 #### <a name="configuration-logs"></a>Dzienniki konfiguracji
 
 `C:\Users\<username>\AppData\Local\Microsoft\On-premises data gateway\GatewayConfigurator.log`
-
-
 
 
 #### <a name="event-logs"></a>Dzienniki zdarzeń

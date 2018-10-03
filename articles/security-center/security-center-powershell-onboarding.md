@@ -12,19 +12,19 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 9/20/2018
+ms.date: 10/2/2018
 ms.author: rkarlin
-ms.openlocfilehash: 4664a9f84a92b7a223409d764971fda81317bbf0
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 756aadfb015ada8ea642e9e4893664eed3f6c9b2
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222254"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042556"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Automatyzowanie dołączania do usługi Azure Security Center przy użyciu programu PowerShell
 
 Możesz zabezpieczyć obciążeń platformy Azure programowo, za pomocą modułu programu PowerShell Centrum zabezpieczeń Azure.
-Przy użyciu programu PowerShell umożliwia automatyzowanie zadań i uniknąć tego błędu ludzkiego, związane z zadań wykonywanych ręcznie, jest to szczególnie przydatne w przypadku wdrożeń na dużą skalę, obejmujące dziesiątek, jak subskrypcje z setek, tysięcy zasobów — wszystkie z nich musi być zabezpieczony początek.
+Przy użyciu programu PowerShell umożliwia automatyzowanie zadań i uniknąć tego błędu ludzkiego, związane z zadań wykonywanych ręcznie. Jest to szczególnie przydatne w przypadku wdrożeń na dużą skalę, obejmujące dziesiątek, jak subskrypcje z setek, tysięcy zasobów — wszystkie z nich musi być zabezpieczona od samego początku.
 
 Dołączanie do usługi Azure Security Center przy użyciu programu PowerShell umożliwia programowe automatyzacji dołączania i zarządzania zasobami platformy Azure i dodać środki bezpieczeństwa niezbędne.
 
@@ -52,7 +52,6 @@ Te kroki należy wykonać przed uruchomieniem polecenia cmdlet usługi Security 
         Install-Module -Name PowerShellGet -Force
         Set-ExecutionPolicy -ExecutionPolicy AllSigned
         Import-Module PowerShellGet
-        Install-Module -Name AzureRM.profile -RequiredVersion 5.5.0
 6.  Ponowne uruchomienie programu PowerShell
 
 7. W programie PowerShell uruchom następujące polecenia:
@@ -63,12 +62,12 @@ Te kroki należy wykonać przed uruchomieniem polecenia cmdlet usługi Security 
 
 1.  Zarejestruj subskrypcje, aby dostawca zasobów Centrum zabezpieczeń:
 
-        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c”
-        Register-AzureRmResourceProvider -ProviderNamespace ‘Microsoft.Security’ 
+        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
+        Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.Security' 
 
 2.  Opcjonalnie: Ustaw poziom pokrycia (warstwa cenowa) z subskrypcji (Jeśli nie zdefiniowano warstwa cenowa jest ustawiona na bezpłatna):
 
-        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c”
+        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
         Set-AzureRmSecurityPricing -Name "default" -PricingTier "Standard"
 
 3.  Konfigurowanie obszaru roboczego usługi Log Analytics, do którego agenci będą zgłaszać. Konieczne jest posiadanie utworzonej już, że maszyny wirtualne w subskrypcji będą raportować usłudze obszar roboczy usługi Log Analytics. Można zdefiniować wiele subskrypcji w celu przekazywania informacji do tego samego obszaru roboczego. Jeśli nie zdefiniowano domyślnego obszaru roboczego będą używane.
@@ -78,7 +77,7 @@ Te kroki należy wykonać przed uruchomieniem polecenia cmdlet usługi Security 
 
 4.  Automatyczna obsługa instalacji programu Microsoft Monitoring Agent na maszynach wirtualnych platformy Azure:
     
-        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c”
+        Set-AzureRmContext -Subscription "d07c0080-170c-4c24-861d-9c817742786c"
     
         Set-AzureRmSecurityAutoProvisioningSetting -Name "default" -EnableAutoProvision
 
@@ -94,7 +93,7 @@ Te kroki należy wykonać przed uruchomieniem polecenia cmdlet usługi Security 
 
         Register-AzureRmResourceProvider -ProviderNamespace 'Microsoft.PolicyInsights'
         $Policy = Get-AzureRmPolicySetDefinition -Name ' [Preview]: Enable Monitoring in Azure Security Center'
-        New-AzureRmPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope ‘/subscriptions/d07c0080-170c-4c24-861d-9c817742786c’
+        New-AzureRmPolicyAssignment -Name 'ASC Default <d07c0080-170c-4c24-861d-9c817742786c>' -DisplayName 'Security Center Default <subscription ID>' -PolicySetDefinition $Policy -Scope '/subscriptions/d07c0080-170c-4c24-861d-9c817742786c'
 
 Masz teraz pomyślnie dołączono Azure Security Center przy użyciu programu PowerShell!
 
@@ -108,7 +107,7 @@ Teraz można tych poleceń cmdlet programu PowerShell za pomocą skryptów autom
 ## <a name="see-also"></a>Zobacz także
 Aby dowiedzieć się więcej na temat wykorzystania programu PowerShell do automatyzacji dołączania do usługi Security Center, zobacz następujący artykuł:
 
-* [AzureRM.Security](https://www.powershellgallery.com/packages/AzureRM.Security/0.1.0-preview).
+* [AzureRM.Security](https://www.powershellgallery.com/packages/AzureRM.Security/0.2.0-preview).
 
 Aby dowiedzieć się więcej o usłudze Security Center, zobacz następujący artykuł:
 

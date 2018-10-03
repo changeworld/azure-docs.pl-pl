@@ -12,12 +12,12 @@ ms.author: v-daljep
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: 49d5e307c51a6527ade63bac0276fa141ecb5c24
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: bbf94d53b24c4087e7212d56bd51131034e39212
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47222458"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042991"
 ---
 # <a name="troubleshoot-azure-sql-database-performance-issues-with-intelligent-insights"></a>Rozwiązywanie problemów z wydajnością usługi Azure SQL Database dzięki inteligentnej analizie
 
@@ -73,7 +73,7 @@ Dziennik diagnostyczny generuje skróty zapytania zapytań, które miała wpływ
 
 Jeśli osiągnięto limitów dostępnych sesji można zoptymalizować swoje aplikacje dzięki zmniejszeniu liczby logowań wprowadzonych w bazie danych. Jeśli nie możesz zmniejszyć liczbę logowania z poziomu aplikacji w bazie danych, należy rozważyć zwiększenie warstwy cenowej bazy danych. Lub możesz podzielić i przenieść bazę danych do wielu baz danych w celu zrównoważonego dystrybucji obciążenia.
 
-Aby uzyskać więcej wskazówek na temat stosowania ograniczeń sesji, zobacz [radzenia sobie z limitów maksymalnej logowania do bazy danych SQL](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Aby dowiedzieć się, limity zasobów dostępnych w warstwie subskrypcji, zobacz [limity zasobów bazy danych SQL](https://docs.microsoft.com/azure/sql-database/sql-database-resource-limits).
+Aby uzyskać więcej wskazówek na temat stosowania ograniczeń sesji, zobacz [radzenia sobie z limitów maksymalnej logowania do bazy danych SQL](https://blogs.technet.microsoft.com/latam/2015/06/01/how-to-deal-with-the-limits-of-azure-sql-database-maximum-logins/). Zobacz [Przegląd zasobów limity na serwerze logicznym](sql-database-resource-limits-logical-server.md) uzyskać informacji dotyczących ograniczeń na poziomach serwera i subskrypcji.
 
 ## <a name="workload-increase"></a>Wzrost obciążenia
 

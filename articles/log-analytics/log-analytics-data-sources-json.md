@@ -1,6 +1,6 @@
 ---
-title: Zbieranie danych niestandardowych JSON w OMS analizy dzienników | Dokumentacja firmy Microsoft
-description: Mogą być zbierane niestandardowych źródeł danych JSON do analizy dzienników dla systemu Linux przy użyciu agenta pakietu OMS.  Te źródła danych niestandardowych można proste skrypty zwracanie JSON, takie jak curl lub jednego z jego FluentD 300 + wtyczek. W tym artykule opisano konfiguracja wymagana dla tej kolekcji danych.
+title: Zbieranie niestandardowe dane JSON w usłudze Log Analytics pakietu OMS | Dokumentacja firmy Microsoft
+description: Może być zbierana niestandardowego źródła danych JSON w usłudze Log Analytics za pomocą agenta pakietu OMS dla systemu Linux.  Te niestandardowymi źródłami danych mogą być proste skrypty zwracanie JSON, takich jak narzędzie curl lub jeden z jego FluentD ponad 300 wtyczek. Ten artykuł zawiera opis konfiguracji wymaganej do zbierania danych.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -14,27 +14,27 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/04/2017
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: d3c8807b7624e68ff55557922f97d51e24fc2c19
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 9725a3df04ef28fc3a076c3c6ca6663e36b186a8
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131807"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48040272"
 ---
-# <a name="collecting-custom-json-data-sources-with-the-oms-agent-for-linux-in-log-analytics"></a>Zbieranie niestandardowych źródeł danych JSON z agentem pakietu OMS dla systemu Linux w analizy dzienników
-Mogą być zbierane niestandardowych źródeł danych JSON do analizy dzienników dla systemu Linux przy użyciu agenta pakietu OMS.  Te źródła danych niestandardowych mogą być proste skrypty, takie jak zwracanie JSON [curl](https://curl.haxx.se/) lub jednego z [w FluentD 300 + wtyczek](http://www.fluentd.org/plugins/all). W tym artykule opisano konfiguracja wymagana dla tej kolekcji danych.
+# <a name="collecting-custom-json-data-sources-with-the-oms-agent-for-linux-in-log-analytics"></a>Zbieranie niestandardowego źródła danych JSON za pomocą agenta pakietu OMS dla systemu Linux w usłudze Log Analytics
+Może być zbierana niestandardowego źródła danych JSON w usłudze Log Analytics za pomocą agenta pakietu OMS dla systemu Linux.  Te niestandardowymi źródłami danych mogą być proste skrypty, takie jak zwracanie JSON [curl](https://curl.haxx.se/) lub jednego z [firmy FluentD ponad 300 wtyczek](http://www.fluentd.org/plugins/all). Ten artykuł zawiera opis konfiguracji wymaganej do zbierania danych.
 
 > [!NOTE]
-> Agent pakietu OMS dla systemu Linux v1.1.0-217 + jest wymagana dla danych JSON niestandardowe
+> Agent usługi OMS dla systemu Linux v1.1.0-217 + jest wymagany dla niestandardowe dane JSON
 
 ## <a name="configuration"></a>Konfigurowanie
 
-### <a name="configure-input-plugin"></a>Skonfiguruj wtyczkę wejściowych
+### <a name="configure-input-plugin"></a>Konfigurowanie danych wejściowych wtyczki
 
-Aby zbierać dane JSON w analizy dzienników, Dodaj `oms.api.` na początku tag FluentD w wejściowych wtyczki.
+Aby zebrać dane JSON w usłudze Log Analytics, należy dodać `oms.api.` do ekranu startowego tagu FluentD we wtyczce danych wejściowych.
 
-Na przykład poniżej przedstawiono plik konfiguracji oddzielnych `exec-json.conf` w `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`.  Używa wtyczki FluentD `exec` do uruchamiania polecenia curl co 30 sekund.  Dane wyjściowe tego polecenia są zbierane przez wtyczkę dane wyjściowe JSON.
+Na przykład Oto osobnego pliku konfiguracji `exec-json.conf` w `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`.  Ta metoda korzysta z wtyczki FluentD `exec` do uruchomienia polecenia curl co 30 sekund.  Dane wyjściowe tego polecenia są zbierane przez wtyczkę dane wyjściowe JSON.
 
 ```
 <source>
@@ -58,12 +58,12 @@ Na przykład poniżej przedstawiono plik konfiguracji oddzielnych `exec-json.con
   retry_wait 30s
 </match>
 ```
-Plik konfiguracji dodany w obszarze `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` trzeba mieć własność zmienić przy użyciu następującego polecenia.
+Dodawany plik konfiguracyjny `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/` będzie wymagać, aby mieć prawa własności do swoją zmieniono za pomocą następującego polecenia.
 
 `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/exec-json.conf`
 
-### <a name="configure-output-plugin"></a>Skonfiguruj wtyczkę danych wyjściowych 
-Dodaj następującą konfigurację wtyczki dane wyjściowe do konfiguracji głównego w `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` lub plik konfiguracji oddzielne wprowadzanych w `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
+### <a name="configure-output-plugin"></a>Konfigurowanie wtyczki danych wyjściowych 
+Dodaj następującą konfigurację wtyczki dane wyjściowe do głównej konfiguracji w `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` lub osobnego pliku konfiguracji wprowadzanych w `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
 
 ```
 <match oms.api.**>
@@ -81,18 +81,18 @@ Dodaj następującą konfigurację wtyczki dane wyjściowe do konfiguracji głó
 ```
 
 ### <a name="restart-oms-agent-for-linux"></a>Uruchom ponownie agenta pakietu OMS dla systemu Linux
-Uruchom ponownie agenta pakietu OMS usługi systemu Linux przy użyciu następującego polecenia.
+Uruchom ponownie agenta pakietu OMS dla systemu Linux usługi za pomocą następującego polecenia.
 
     sudo /opt/microsoft/omsagent/bin/service_control restart 
 
 ## <a name="output"></a>Dane wyjściowe
-Dane zostaną zebrane w analizy dzienników z typem rekordu `<FLUENTD_TAG>_CL`.
+Dane będą zbierane w usłudze Log Analytics z typem rekordu `<FLUENTD_TAG>_CL`.
 
-Na przykład niestandardowe tag `tag oms.api.tomcat` w analizy dzienników z typem rekordu `tomcat_CL`.  Można pobrać wszystkie rekordy tego typu z następujących wyszukiwania dziennika.
+Na przykład niestandardowy tag `tag oms.api.tomcat` w usłudze Log Analytics z typem rekordu `tomcat_CL`.  Można pobrać wszystkie rekordy tego typu z następujące wyszukiwanie w dzienniku.
 
     Type=tomcat_CL
 
-Zagnieżdżone dane JSON źródeł, są obsługiwane, ale są indeksowane na podstawie pola nadrzędnego. Na przykład następujące dane JSON jest zwracana z analizy dzienników wyszukiwanie jako `tag_s : "[{ "a":"1", "b":"2" }]`.
+Zniżki w stosunku do pola nadrzędnego na podstawie zagnieżdżone dane JSON źródła są obsługiwane, ale są indeksowane. Na przykład następujące dane JSON jest zwracana z wyszukiwania usługi Log Analytics, jako `tag_s : "[{ "a":"1", "b":"2" }]`.
 
 ```
 {
@@ -105,5 +105,5 @@ Zagnieżdżone dane JSON źródeł, są obsługiwane, ale są indeksowane na pod
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [dziennika wyszukiwania](log-analytics-log-searches.md) analizować dane zebrane ze źródeł danych i rozwiązania. 
+* Dowiedz się więcej o [dziennikach](log-analytics-log-searches.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
  

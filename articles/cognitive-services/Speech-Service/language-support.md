@@ -10,12 +10,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 09/25/2018
 ms.author: v-jerkin
-ms.openlocfilehash: e8d84d83636bc8bed287d1fa68d36ce1c2ea3d58
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 9a867289cffa17030e397ef170e9055451057410
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018557"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237742"
 ---
 # <a name="language-and-region-support-for-speech-service-api"></a>Obsługa języka i regionu dla interfejsu API mowy usługi
 
@@ -31,16 +31,16 @@ Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące język
  ES urzędu certyfikacji | Kataloński | Nie | Nie | Nie
  Akcelerator deweloperski w wersji DK | Duński (Dania) | Nie | Nie | Nie
  de-DE. | Niemiecki (Niemcy) | Yes | Yes | Nie
- EN-AU | Angielski (Australia) | Yes | Yes | Yes
- EN-CA | Angielski (Kanada) | Yes | Yes | Yes
- en-GB | Angielski (Zjednoczone Królestwo) | Yes | Yes | Yes
- EN-IN | English (India) | Nie | Yes | Yes
- EN NZ | Angielski (Nowa Zelandia) | Yes | Yes | Yes  
+ EN-AU | Angielski (Australia) | Nie | Yes | Yes
+ EN-CA | Angielski (Kanada) | Nie | Yes | Yes
+ en-GB | Angielski (Zjednoczone Królestwo) | Nie | Yes | Yes
+ EN-IN | English (India) | Yes | Yes | Yes
+ EN NZ | Angielski (Nowa Zelandia) | Nie | Yes | Yes  
  pl-PL | Angielski (Stany Zjednoczone) | Yes | Yes | Yes
- es-ES | Hiszpański (Hiszpania) | Yes | Yes | Nie
- es-MX | Hiszpański (Meksyk) | Yes | Yes | Nie
+ es-ES | Hiszpański (Hiszpania) | Nie | Yes | Nie
+ es-MX | Hiszpański (Meksyk) | Nie | Yes | Nie
  fi-FI | Fiński (Finlandia) | Nie | Nie | Nie
- fr-CA | Francuski (Kanada) | Yes | Yes | Nie
+ fr-CA | Francuski (Kanada) | Nie | Yes | Nie
  fr-FR | Francuski (Francja) | Yes | Yes | Nie
  w | Hindi (Indie) | Nie | Yes | Nie
  IT-IT | Włoski (Włochy) | Yes | Yes | Nie
@@ -51,7 +51,7 @@ Interfejs API rozpoznawania mowy firmy Microsoft obsługuje następujące język
  pl-PL | Polski (Polska) | Nie | Nie | Nie
  pt-BR | Portugalski (Brazylia) | Nie | Yes | Nie
  pt-PT | Portugalski (Portugalia) | Nie | Yes | Nie
- ru-RU | Rosyjski (Rosja) | Nie | Yes | Nie
+ ru-RU | Rosyjski (Rosja) | Yes | Yes | Nie
  sv-SE | Szwedzki (Szwecja) | Nie | Nie | Nie
  zh-CN | Chiński (mandaryński uproszczony) | Yes | Yes | Nie
  zh-HK | Chiński (mandaryński, tradycyjny) | Nie | Yes | Nie

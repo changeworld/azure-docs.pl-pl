@@ -11,25 +11,25 @@ ms.workload: na
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: tutorial
-ms.date: 09/24/2018
+ms.date: 10/02/2018
 ms.author: mabrigg
 ms.reviewer: Anjay.Ajodha
-ms.openlocfilehash: b704db0b79d056f5c7081d3fed117e1d1f22b336
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: b4b81546a267e6fd082f83db8b23010f0742771f
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978832"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237909"
 ---
 # <a name="tutorial-create-a-staged-data-analytics-solution-with-azure-and-azure-stack"></a>Samouczek: Tworzenie rozwiązania analizy użycia przemieszczonych danych dzięki platformie Azure i usługi Azure Stack 
 
 *Dotyczy: Usługa Azure Stack zintegrowane systemy i usługi Azure Stack Development Kit*
 
-Dowiedz się, jak korzystać zarówno lokalnie, jak i środowisk chmury publicznej do zmierzenia się z wielu funkcji przedsiębiorstwa. Usługa Azure Stack oferuje szybkie, bezpieczne i elastyczne rozwiązanie w zakresie zbierania, przetwarzania, przechowywania i rozpowszechniania danych lokalnych i zdalnych, szczególnie w przypadku, gdy bezpieczeństwa, poufności, zasady firmowe i wymogów prawnych mogą się różnić między lokalizacjami i Liczba użytkowników.
+Dowiedz się, jak korzystać zarówno lokalnie, jak i środowisk chmury publicznej do zmierzenia się z wielu funkcji przedsiębiorstwa. Usługa Azure Stack oferuje szybkie, bezpieczne i elastyczne rozwiązanie w zakresie zbierania, przetwarzania, przechowywania i rozpowszechniania danych lokalnych i zdalnych, szczególnie w przypadku, gdy bezpieczeństwa, poufności, zasady firmowe i wymogów prawnych mogą się różnić między lokalizacjami i użytkowników.
 
 W tym wzorcu klientów są zbierane dane, które wymaga analizy punkcie kolekcji, tak, aby umożliwić szybkie decyzje. Występuje często, zbierania danych z Brak dostępu do Internetu. Gdy połączenie zostanie ustanowione, może być konieczne czy analizy danych, aby uzyskać dodatkowe szczegółowe informacje o dużej ilości zasobów. Nadal możesz przeanalizować dane, gdy chmura publiczna jest za późno lub niedostępny.
 
-W ramach tego samouczka utworzysz przykładowe środowisku:
+W tym samouczku należy utworzyć środowisko próbki do:
 
 > [!div class="checklist"]
 > - Utwórz obiekt blob magazynu danych pierwotnych.
@@ -55,7 +55,7 @@ Pewne przygotowania jest wymagane do skompilowania tego rozwiązania:
 
 -   Pobrać i zainstalować program [Microsoft Azure Storage Explorer](http://storageexplorer.com/).
 
--   Nie podano danych przetworzonych przez te funkcje. Dane muszą być generowane i dostępne do przekazania do kontenera obiektów blob magazynu Azure Stack.
+-   Należy podać dane do przetworzenia przez funkcje. Dane muszą być generowane i dostępne do przekazania do kontenera obiektów blob magazynu Azure Stack.
 
 ## <a name="issues-and-considerations"></a>Problemy i zagadnienia
 
@@ -123,17 +123,11 @@ Kontener konta i obiektów blob magazynu będzie przechowywać wszystkie orygina
 
 Tworzenie nowej funkcji usługi Azure Stack, aby przenieść Wyczyść dane z usługi Azure Stack na platformie Azure.
 
-1.  Utwórz nową funkcję, klikając **funkcje**, a następnie **+ nowa funkcja** przycisku.
+### <a name="create-the-azure-stack-function-app"></a>Tworzenie aplikacji funkcji usługi Azure Stack
 
-    ![Tekst alternatywny](media\azure-stack-solution-staged-data-analytics\image3.png)
-
-2.  Wybierz **wyzwalacza czasomierza**.
-
-    ![Tekst alternatywny](media\azure-stack-solution-staged-data-analytics\image4.png)
-
-3.  Wybierz **C\#**  jako język i nazwa funkcji: `upload-to-azure` Ustaw harmonogram `0 0 * * * *`, ponieważ w CRON jest raz godzinę.
-
-    ![Tekst alternatywny](media\azure-stack-solution-staged-data-analytics\image5.png)
+1. Zaloguj się do [portalu Azure Stack](https://portal.local.azurestack.external).
+2. Wybierz pozycję **Wszystkie usługi**.
+3. Wybierz **aplikacje funkcji** w **sieci Web i mobilność** grupy.
 
 4.  Tworzenie aplikacji funkcji przy użyciu ustawień określonych w tabeli znajdującej się poniżej obrazu.
 
@@ -148,7 +142,7 @@ Tworzenie nowej funkcji usługi Azure Stack, aby przenieść Wyczyść dane z us
     | Plan Zużycie | Plan hostingu określający sposób przydzielania zasobów do aplikacji funkcji. W domyślnym Plan zużycie zasobów są dodawane dynamicznie zgodnie z wymaganiami funkcji. W tym hosting bezserwerowy, zapłacisz tylko za czas, gdy funkcje są uruchomione. |  |
     | Lokalizacja | Region najbliższą | Wybierz region okolicy lub w pobliżu innych usług dostępu do usługi functions. |
     | **Konto magazynu** |  |  |
-    | \<konta magazynu utworzonego powyżej > | Nazwa nowego konta magazynu używanego przez aplikację funkcji. Nazwy kont usługi Storage muszą mieć długość od 3 do 24 znaków i mogą zawierać tylko cyfry i małe litery. Możesz także użyć istniejącego konta. |  |
+    | \<konta magazynu utworzonego powyżej > | Nazwa nowego konta magazynu używanego przez aplikację funkcji. Nazwy kont magazynu muszą być od 3 do 24 znaków. Nazwa może składać się tylko cyfry i małe litery. Możesz także użyć istniejącego konta. |  |
 
     **Przykład:**
 
@@ -164,13 +158,25 @@ Tworzenie nowej funkcji usługi Azure Stack, aby przenieść Wyczyść dane z us
 
 ![Pomyślnie utworzona aplikacja funkcji.](media\azure-stack-solution-staged-data-analytics\image8.png)
 
+### <a name="add-a-function-to-the-azure-stack-function-app"></a>Dodawanie funkcji do aplikacji funkcji usługi Azure Stack
+
+1.  Utwórz nową funkcję, klikając **funkcje**, a następnie **+ nowa funkcja** przycisku.
+
+    ![Tekst alternatywny](media\azure-stack-solution-staged-data-analytics\image3.png)
+
+2.  Wybierz **wyzwalacza czasomierza**.
+
+    ![Tekst alternatywny](media\azure-stack-solution-staged-data-analytics\image4.png)
+
+3.  Wybierz **C\#**  jako język i nazwa funkcji: `upload-to-azure` Ustaw harmonogram `0 0 * * * *`, ponieważ w CRON jest raz godzinę.
+
+    ![Tekst alternatywny](media\azure-stack-solution-staged-data-analytics\image5.png)
+
 ## <a name="create-a-blob-storage-triggered-function"></a>Tworzenie funkcji wyzwalanej przez magazyn obiektów Blob
 
-1.  Rozwiń aplikację funkcji, a następnie wybierz pozycję **+** znajdujący się obok **funkcji**. Jeśli jest to pierwsza funkcja w aplikacji funkcji, wybierz **funkcja niestandardowa**. Spowoduje to wyświetlenie pełnego zestawu szablonów funkcji.
+1.  Rozwiń aplikację funkcji, a następnie wybierz pozycję **+** znajdujący się obok **funkcji**.
 
-  ![Strona szybkiego rozpoczynania pracy z usługą Functions w witrynie Azure Portal](media\azure-stack-solution-staged-data-analytics\image9.png)
-
-2.  W polu wyszukiwania wpisz obiektów blob, a następnie wybierz żądany język dla szablonu wyzwalacza usługi Blob storage.
+2.  W polu wyszukiwania wpisz `blob` , a następnie wybierz żądany język dla **obiekt Blob wyzwalacza** szablonu.
 
   ![Wybierz szablon wyzwalacza usługi Blob Storage.](media\azure-stack-solution-staged-data-analytics\image10.png)
 

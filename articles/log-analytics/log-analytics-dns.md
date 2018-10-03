@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/20/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 56ad633807a59eaa7ae75dc334aa630fb3bf94a3
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.component: ''
+ms.openlocfilehash: 9bb7adaeec89979ff86920b4bfd74c6399bda298
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39436730"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043640"
 ---
 # <a name="gather-insights-about-your-dns-infrastructure-with-the-dns-analytics-preview-solution"></a>Zbierz informacje na temat infrastruktury DNS za pomocą rozwiązania DNS Analytics w wersji zapoznawczej
 
@@ -62,7 +62,7 @@ Skorzystaj z poniższych informacji, aby skonfigurować rozwiązania:
 
 Rozwiązanie rozpoczyna zbieranie danych bez konieczności dalszej konfiguracji. Jednak można użyć następującej konfiguracji, aby dostosować zbieranie danych.
 
-### <a name="configure-the-solution"></a>Konfigurowanie rozwiązania
+### <a name="configure-the-solution"></a>Skonfiguruj rozwiązanie
 
 Na pulpicie nawigacyjnym rozwiązania kliknij **konfiguracji** aby otworzyć stronę konfiguracji analizy DNS. Istnieją dwa typy, które można wprowadzać zmian w konfiguracji:
 

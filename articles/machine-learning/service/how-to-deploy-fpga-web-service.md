@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.reviewer: jmartens
 ms.author: tedway
 author: tedway
-ms.date: 09/24/2018
-ms.openlocfilehash: ee67585a523ab96b1442d9eee3e9dfd55a758d32
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.date: 10/01/2018
+ms.openlocfilehash: df6637f1a52b679ba9ad0a49fb37d4e4b72f35e4
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46971488"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237827"
 ---
 # <a name="deploy-a-model-as-a-web-service-on-an-fpga-with-azure-machine-learning"></a>Wdrażanie modelu jako usługi sieci web na FPGA za pomocą usługi Azure Machine Learning
 
@@ -23,6 +23,8 @@ Model można wdrożyć jako usługę sieci web, na [pola Tablice bramek programo
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+
+- Należy zażądać i zatwierdzić FPGA limitu przydziału. Aby zażądać dostępu, wypełnij formularz żądania limitu przydziału: https://aka.ms/aml-real-time-ai
 
 - Obszar roboczy usługi Azure Machine Learning i Azure Machine Learning SDK dla język Python jest zainstalowany. Dowiedz się, jak uzyskać te wymagania wstępne przy użyciu [sposób konfigurowania środowiska deweloperskiego](how-to-configure-environment.md) dokumentu.
  
@@ -47,11 +49,7 @@ Postępuj zgodnie z instrukcjami, aby:
 > [!IMPORTANT]
 > W celu zoptymalizowania opóźnienia i przepływności, klienta należy w tym samym regionie platformy Azure jako punktu końcowego.  Obecnie interfejsy API są tworzone w regionie wschodnie stany USA Azure.
 
-### <a name="get-the-notebook"></a>Pobieranie notesu
 
-Dla wygody w tym samouczku jest dostępna jako notesu programu Jupyter. Użyj jednej z tych metod do uruchamiania `project-brainwave/project-brainwave-quickstart.ipynb` Notes:
-
-[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-in-azure-notebook.md)]
 
 ### <a name="preprocess-image"></a>Wstępne przetwarzanie obrazu
 Pierwszy etap potoku jest przetwarzanie wstępne obrazów.
@@ -66,6 +64,7 @@ in_images = tf.placeholder(tf.string)
 image_tensors = utils.preprocess_array(in_images)
 print(image_tensors.shape)
 ```
+
 ### <a name="add-featurizer"></a>Dodaj Featurized
 Inicjowanie modelu i Pobierz punkt kontrolny TensorFlow wykonywanie kwantyzowanych wersji ResNet50 ma być używany jako featurized.
 
@@ -317,3 +316,11 @@ Przy użyciu jednej z metod powoduje, że gRPC użyć certyfikatu jako certyfika
 
 > [!IMPORTANT]
 > gRPC Akceptuj niezaufane certyfikaty. Za pomocą niezaufanego certyfikatu zakończy się niepowodzeniem z `Unavailable` kod stanu. Szczegóły dotyczące błędu zawierają `Connection Failed`.
+
+## <a name="sample-notebook"></a>Przykładowy notes
+
+Koncepcji w tym artykule przedstawiono w `project-brainwave/project-brainwave-quickstart.ipynb` notesu.
+
+Pobierz ten notes:
+
+[!INCLUDE [aml-clone-in-azure-notebook](../../../includes/aml-clone-for-examples.md)]

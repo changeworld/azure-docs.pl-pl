@@ -7,12 +7,12 @@ ms.service: storage
 ms.date: 09/11/2018
 ms.author: renash
 ms.component: files
-ms.openlocfilehash: 43acff5c4d37c46245566fb2e1d74d3e14d527bb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1f7fc9916fc856d636b6ad850f831a3235b80632
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46949846"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237759"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-files"></a>Często zadawane pytania (FAQ) dotyczące usługi Azure Files
 [Usługa Azure Files](storage-files-introduction.md) oferuje w pełni zarządzane udziały plików w chmurze, które są dostępne za pośrednictwem będące standardami branżowymi [protokołu bloku komunikatów serwera (SMB)](https://msdn.microsoft.com/library/windows/desktop/aa365233.aspx). Udziały plików platformy Azure można zainstalować równolegle na chmurowych lub lokalnych wdrożeń systemu Windows, Linux i macOS. Udziały plików platformy Azure na komputerach z systemem Windows Server, również buforujesz przy użyciu usługi Azure File Sync w celu zapewnienia szybkiego dostępu blisko użycia danych.
@@ -108,60 +108,23 @@ Ten artykuł zawiera odpowiedzi na często zadawane pytania dotyczące usługi A
 
 * <a id="sizeondisk-versus-size"></a>
 **Dlaczego nie *rozmiar na dysku* właściwość dopasowania plików *rozmiar* właściwości po zakończeniu korzystania z usługi Azure File Sync?**  
-    Eksploratora plików Windows udostępnia dwie właściwości do reprezentowania rozmiaru pliku: **rozmiar** i **rozmiar na dysku**. Te właściwości różnią się w niewielkim stopniu w znaczenie. **Rozmiar** reprezentuje pełną rozmiaru pliku. **Rozmiar na dysku** reprezentuje rozmiar strumienia pliku, który jest przechowywany na dysku. Wartości tych właściwości można różnią się z różnych powodów, takich jak kompresja, korzystanie z funkcji deduplikacji danych lub obsługa warstw przy użyciu usługi Azure File Sync w chmurze. Jeśli plik jest warstwowe udziału plików platformy Azure, rozmiar na dysku wynosi zero, ponieważ strumienia pliku są przechowywane w udziale plików platformy Azure, a nie na dysku. Istnieje także możliwość pliku do się częściowo warstwowego (lub częściowo odwołane). W pliku częściowo warstwowego część pliku znajduje się na dysku. Taka sytuacja może wystąpić, częściowo są odczytywane przez aplikacje, takie jak odtwarzaczy multimedialnych lub zip narzędzia plików. 
+ Zobacz [Obsługa warstw w chmurze opis](storage-sync-cloud-tiering.md#sizeondisk-versus-size).
 
 * <a id="is-my-file-tiered"></a>
 **Jak sprawdzić, czy plik został warstwy?**  
-    Istnieje kilka sposobów, aby sprawdzić, czy plik został warstwy do udziału plików platformy Azure:
-    
-   *  **Sprawdź atrybuty pliku do pliku.**
-     Aby to zrobić, kliknij prawym przyciskiem myszy w pliku, przejdź do **szczegóły**, a następnie przewiń w dół do **atrybuty** właściwości. Plikami warstwowym ma następujące atrybuty zestawu:     
-        
-        | Atrybut litera | Atrybut | Definicja |
-        |:----------------:|-----------|------------|
-        | A | Archiwum | Wskazuje, że plik kopie zapasowe powinny być za pomocą oprogramowania kopii zapasowej. Ten atrybut ma zawsze wartość niezależnie od tego, czy plik jest warstwowe lub pełni przechowywane na dysku. |
-        | P | Plik rozrzedzony | Wskazuje, że plik jest plik rozrzedzony. Plik rozrzedzony jest specjalistyczną odmianą pliku, który oferuje systemu plików NTFS do efektywnego wykorzystania, gdy plik w usłudze stream dysku przede wszystkim jest pusta. Usługa Azure File Sync używa plików rozrzedzonych, ponieważ warstwowego w pełni lub częściowo przypomnieć pliku. W pełni warstwowego pliku strumienia pliku są przechowywane w chmurze. W pliku częściowo odwołane, że plik znajduje się już na dysku. Jeśli plik jest w pełni przypomnieć na dysku, usługi Azure File Sync konwertuje ją z plik rozrzedzony zwykły plik. |
-        | L | Punkt ponownej analizy | Wskazuje, że plik ma punkt ponownej analizy. Punkt ponownej analizy to specjalne wskaźnika do użytku przez filtr systemu plików. Usługa Azure File Sync używa punktów ponownej analizy do definiowania do filtru systemu plików usługi Azure File Sync (StorageSync.sys) lokalizacji chmury, gdzie plik jest przechowywany. To umożliwia bezproblemowe. Użytkownicy nie będą musieli wiedzieć, że jest używana usługa Azure File Sync lub sposobu uzyskania dostępu do pliku w udziale plików platformy Azure. Gdy plik jest w pełni przypomnieć, usługi Azure File Sync Usuwa punkt ponownej analizy z pliku. |
-        | O | Offline | Wskazuje, że część lub całość zawartości nie są przechowywane na dysku. Gdy plik jest w pełni przypomnieć, usługi Azure File Sync usuwa tego atrybutu. |
-
-        ![Okno dialogowe właściwości pliku, z wybraną kartą szczegóły](media/storage-files-faq/azure-file-sync-file-attributes.png)
-        
-        Można zobaczyć atrybuty dla wszystkich plików w folderze, dodając **atrybuty** pola do wyświetlenia tabeli Eksploratora plików. Aby to zrobić, kliknij prawym przyciskiem myszy istniejącą kolumnę (na przykład **rozmiar**), wybierz opcję **więcej**, a następnie wybierz pozycję **atrybuty** z listy rozwijanej.
-        
-   * **Użyj `fsutil` pod kątem punktów ponownej analizy z pliku.**
-       Zgodnie z opisem w poprzedniej opcji, plikami warstwowym zawsze ma zestaw punktu ponownej analizy. Wskaźnikiem ponownej analizy to specjalne wskaźnika dla filtru systemu plików usługi Azure File Sync (StorageSync.sys). Aby sprawdzić, czy plik ma punkt ponownej analizy, w oknie wiersza polecenia lub programu PowerShell z podwyższonym poziomem uprawnień, uruchom `fsutil` narzędzie:
-    
-        ```PowerShell
-        fsutil reparsepoint query <your-file-name>
-        ```
-
-        Jeśli plik ma punkt ponownej analizy, powinna się pojawić **ponownej analizy, wartość tagu: 0x8000001e**. Ta wartość szesnastkowa to wartość punktu ponownej analizy, która jest właścicielem usługi Azure File Sync. Dane wyjściowe zawierają również dane ponownej analizy, która reprezentuje ścieżkę do pliku w udziale plików platformy Azure.
-
-        > [!WARNING]  
-        > `fsutil reparsepoint` Narzędzie polecenie ma również możliwość usunięcia punktów ponownej analizy. Nie wykonuj tego polecenia, chyba, że zespół inżynierów usługi Azure File Sync monit. Uruchomienie tego polecenia może spowodować utratę danych. 
+ Zobacz [Obsługa warstw w chmurze opis](storage-sync-cloud-tiering.md#is-my-file-tiered).
 
 * <a id="afs-recall-file"></a>**Plik, który ma być użyty został warstwowego. Jak można odwołać pliku na dysku, aby używać go lokalnie?**  
-    Najprostszym sposobem odwołania pliku na dysku jest można otworzyć pliku. Filtr systemu plików usługi Azure File Sync (StorageSync.sys) bezproblemowo pobiera plik z udziału plików platformy Azure bez konieczności wykonywania pracy ze strony użytkownika. Dla typów plików, które mogą być częściowo odczytu, takich jak pliki multimedialne lub zip, otwieranie pliku nie jest pobierany całego pliku.
+ Zobacz [Obsługa warstw w chmurze opis](storage-sync-cloud-tiering.md#afs-recall-file).
 
-    Również umożliwia PowerShell wymuszenie można wycofać. Ta opcja może być przydatne, jeśli chcesz odwołać wielu plików jednocześnie, np. wszystkie pliki w folderze. Otwórz sesję programu PowerShell, aby węzeł serwera, na którym zainstalowano usługę Azure File Sync, a następnie uruchom następujące polecenia środowiska PowerShell:
-    
-    ```PowerShell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncFileRecall -Path <file-or-directory-to-be-recalled>
-    ```
 
 * <a id="afs-force-tiering"></a>
 **Jak wymusić, plik lub katalog do umieszczane?**  
-    Gdy jest włączona funkcja obsługi warstw w chmurze, obsługi warstw automatycznie pliki warstw w chmurze oparte na ostatni dostęp i zmodyfikuj czas do osiągnięcia procent wolnego miejsca na woluminie określone na punkt końcowy w chmurze. Czasami jednak warto to wymuszone ręcznie plik do warstwy. Może to być przydatne, jeśli zapiszesz dużych plików, które nie będą do ponownego użycia przez długi czas i mają ilość wolnego miejsca na woluminie teraz do użycia dla innych plików i folderów. Można wymusić warstw przy użyciu następujących poleceń programu PowerShell:
-
-    ```PowerShell
-    Import-Module "C:\Program Files\Azure\StorageSyncAgent\StorageSync.Management.ServerCmdlets.dll"
-    Invoke-StorageSyncCloudTiering -Path <file-or-directory-to-be-tiered>
-    ```
+ Zobacz [Obsługa warstw w chmurze opis](storage-sync-cloud-tiering.md#afs-force-tiering).
 
 * <a id="afs-effective-vfs"></a>
 **Jak jest *wolne miejsce w woluminie* interpretowany, jeśli mam wiele punktów końcowych serwera na woluminie?**  
-    Jeśli istnieje więcej niż jeden punkt końcowy serwera na woluminie, próg wolnego miejsca na efektywne woluminu jest największy wolne miejsce w woluminie określona dla dowolnego punktu końcowego serwera, w tym woluminie. Pliki będą umieszczane w taki sposób, zgodnie z ich wzorce użycia niezależnie od tego, z którym punktem końcowym serwera, do którego należą. Na przykład jeśli masz dwa punkty końcowe serwera na woluminie Punk końcowy 1 i Endpoint2, gdzie Punk końcowy 1 ma próg wolnego miejsca na wolumin o 25%, a Endpoint2 próg wolnego miejsca na woluminie 50% próg wolnego miejsca na woluminie zarówno punkty końcowe serwera będzie 50%.
+ Zobacz [Obsługa warstw w chmurze opis](storage-sync-cloud-tiering.md#afs-effective-vfs).
 
 * <a id="afs-files-excluded"></a>
 **Które pliki lub foldery są automatycznie wykluczane przez usługę Azure File Sync?**  

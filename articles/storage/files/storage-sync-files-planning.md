@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 07/19/2018
 ms.author: wgries
 ms.component: files
-ms.openlocfilehash: d5b01566f672309837f738e185820a0f13eda1c1
-ms.sourcegitcommit: a3a0f42a166e2e71fa2ffe081f38a8bd8b1aeb7b
+ms.openlocfilehash: e4e793ac5735f7f3b07d285dea027a8f603b7964
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/01/2018
-ms.locfileid: "43382258"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237901"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Planowanie wdrażania usługi Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -62,10 +62,7 @@ Punkt końcowy w chmurze jest udział plików platformy Azure, która jest czę�
 > Usługa Azure File Sync nie obsługuje bezpośrednio wprowadzania zmian do udziału plików platformy Azure. Jednak wszelkie zmiany wprowadzone w udziale plików platformy Azure najpierw konieczne ich odnalezienie przez zadanie wykrywania zmian usługi Azure File Sync. Zadanie wykrywania zmian jest inicjowane dla punktu końcowego w chmurze tylko raz na 24 godziny. Ponadto zmiany wprowadzone do udziału plików platformy Azure za pośrednictwem protokołu REST nie może zaktualizować SMB godzina ostatniej modyfikacji i nie będą widoczne jako zmiany przez sync. Aby uzyskać więcej informacji, zobacz [usługi Azure Files — często zadawane pytania](storage-files-faq.md#afs-change-detection).
 
 ### <a name="cloud-tiering"></a>Obsługa warstw w chmurze 
-Obsługa warstw w chmurze jest opcjonalną funkcją usługi Azure File Sync w którym rzadko używane lub uzyskać dostępu do plików większych niż 64 KiB rozmiarze mogą należeć do warstwy do usługi Azure Files. Gdy plik jest warstwowe, filtru systemu plików usługi Azure File Sync (StorageSync.sys) zamienia plik lokalnie wskaźnik lub punkt ponownej analizy. Punkt ponownej analizy reprezentuje adres URL do pliku w usłudze Azure Files. Plikami warstwowym ma atrybut "offline", ustaw w systemie plików NTFS, dzięki czemu aplikacje innych firm można zidentyfikować pliki warstwowe. Gdy użytkownik otwiera plik warstwowy, usługi Azure File Sync bezproblemowo odwołania do danych plików z usługi Azure Files użytkownik nie musi wiedzieć, że plik nie jest przechowywany lokalnie w systemie. Ta funkcja jest nazywana zarządzania magazynu hierarchicznych (HSM).
-
-> [!Important]  
-> Chmura obsługi warstw nie jest obsługiwana dla punkty końcowe serwera w woluminach systemu Windows.
+Chmura warstw to opcjonalna funkcja usługi Azure File Sync, w których często używanych plików są buforowane lokalnie na serwerze, podczas gdy inne pliki są organizowane w warstwy do usługi Azure Files na podstawie ustawień zasad. Aby uzyskać więcej informacji, zobacz [Obsługa poziomów w chmurze opis](storage-sync-cloud-tiering.md).
 
 ## <a name="azure-file-sync-system-requirements-and-interoperability"></a>Wymagania systemowe w usłudze Azure File Sync i współdziałanie 
 Tej sekcji omówiono wymagania systemowe agenta usługi Azure File Sync i współdziałanie z funkcji systemu Windows Server oraz role i rozwiązań innych firm.
@@ -88,7 +85,7 @@ Przed wdrożeniem usługi Azure File Sync, należy sprawdzić, czy jest on zgodn
         Install-Module -Name AzureRM.StorageSync -AllowPrerelease
     ```
 
-#### <a name="usage"></a>Użycie  
+#### <a name="usage"></a>Sposób użycia  
 Narzędzie oceny można wywołać na kilka różnych sposobów: możesz wykonać testy systemu i/lub sprawdzenia zestawu danych. Aby wykonać testy systemu i zestaw danych: 
 
 ```PowerShell
@@ -111,7 +108,7 @@ Aby wyświetlić wyniki w formacie CSV:
     $errors | Select-Object -Property Type, Path, Level, Description | Export-Csv -Path <csv path>
 ```
 
-### <a name="system-requirements"></a>Wymagania systemowe
+### <a name="system-requirements"></a>Wymagania systemu
 - Serwer z systemem Windows Server 2012 R2 lub Windows Server 2016:
 
     | Wersja | Obsługiwane jednostki SKU | Obsługiwane opcje wdrażania |
@@ -132,7 +129,7 @@ Aby wyświetlić wyniki w formacie CSV:
 - Podłączonych lokalnie woluminie sformatowanym w systemie plików NTFS.
 
 ### <a name="file-system-features"></a>Funkcje systemu plików
-| Funkcja | Stan obsługi | Uwagi |
+| Cecha | Stan obsługi | Uwagi |
 |---------|----------------|-------|
 | Listy kontroli dostępu (ACL) | W pełni obsługiwane | Listy kontroli dostępu Windows są zachowywane przez usługę Azure File Sync i są wymuszane przez system Windows Server w punktach końcowych serwera. Windows list ACL nie są (jeszcze) obsługiwane przez usługi Azure Files, jeśli pliki są dostępne bezpośrednio w chmurze. |
 | Twarde linki | Pominięto | |
@@ -231,7 +228,7 @@ Ogólnie rzecz biorąc usługi Azure File Sync powinien obsługiwać współdzia
 ### <a name="other-hierarchical-storage-management-hsm-solutions"></a>Inne rozwiązania zarządzania magazynu hierarchicznych (HSM)
 Inne rozwiązania sprzętowego modułu zabezpieczeń należy używać usługi Azure File Sync.
 
-## <a name="region-availability"></a>Dostępność w poszczególnych regionach
+## <a name="region-availability"></a>Dostępność w danym regionie
 Usługa Azure File Sync jest dostępna tylko w następujących regionach:
 
 | Region | Lokalizacja centrum danych |
@@ -239,15 +236,15 @@ Usługa Azure File Sync jest dostępna tylko w następujących regionach:
 | Australia Wschodnia | Stan Nowa Południowa Walia |
 | Australia Południowo-Wschodnia | Stan Wiktoria |
 | Kanada Środkowa | Toronto |
-| Kanada Wschodnia | Quebec |
+| Kanada Wschodnia | Miasto Quebec |
 | Indie Środkowe | Pune |
 | Środkowe stany USA | Iowa |
-| Azja Wschodnia | Hongkong SAR |
+| Azja Wschodnia | Hongkong |
 | Wschodnie stany USA | Wirginia |
 | Wschodnie stany USA 2 | Wirginia |
 | Europa Północna | Irlandia |
 | Indie Południowe | Chennai |
-| Azja Południowo-wschodnia | Singapur |
+| Azja Południowo-Wschodnia | Singapur |
 | Południowe Zjednoczone Królestwo | Londyn |
 | Zachodnie Zjednoczone Królestwo | Cardiff |
 | Europa Zachodnia | Holandia |
@@ -268,12 +265,12 @@ Aby obsługiwać integrację trybu failover dla magazynu geograficznie nadmiarow
 | Kanada Wschodnia         | Kanada Środkowa     |
 | Indie Środkowe       | Indie Południowe        |
 | Środkowe stany USA          | Wschodnie stany USA 2          |
-| Azja Wschodnia           | Azja Południowo-wschodnia     |
+| Azja Wschodnia           | Azja Południowo-Wschodnia     |
 | Wschodnie stany USA             | Zachodnie stany USA            |
 | Wschodnie stany USA 2           | Środkowe stany USA         |
 | Europa Północna        | Europa Zachodnia        |
 | Indie Południowe         | Indie Środkowe      |
-| Azja Południowo-wschodnia      | Azja Wschodnia          |
+| Azja Południowo-Wschodnia      | Azja Wschodnia          |
 | Południowe Zjednoczone Królestwo            | Zachodnie Zjednoczone Królestwo            |
 | Zachodnie Zjednoczone Królestwo             | Południowe Zjednoczone Królestwo           |
 | Europa Zachodnia         | Europa Północna       |

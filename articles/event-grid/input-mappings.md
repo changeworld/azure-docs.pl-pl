@@ -6,14 +6,14 @@ author: tfitzmac
 manager: timlt
 ms.service: event-grid
 ms.topic: conceptual
-ms.date: 05/09/2018
+ms.date: 10/02/2018
 ms.author: tomfitz
-ms.openlocfilehash: 32f93f383ec4044afb0696fcef1705c9ed65d673
-ms.sourcegitcommit: 0a84b090d4c2fb57af3876c26a1f97aac12015c5
+ms.openlocfilehash: f79fa096484edc34294ea0a69584e12788dba647
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/11/2018
-ms.locfileid: "38578921"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043401"
 ---
 # <a name="map-custom-fields-to-event-grid-schema"></a>Mapowanie pól niestandardowych na schemat usługi Event Grid
 
@@ -43,9 +43,9 @@ Podczas tworzenia niestandardowego tematu, należy określić sposób mapowania 
 
 * `--input-schema` Parametr określa typ schematu. Dostępne opcje to: *cloudeventv01schema*, *customeventschema*, i *eventgridschema*. Wartość domyślna to eventgridschema. Podczas tworzenia niestandardowego mapowanie między schematu i schemat siatki zdarzeń, użyj customeventschema. Gdy zdarzenia są schematu CloudEvents, należy użyć cloudeventv01schema.
 
-* `--input-mapping-default-values` Parametr określa wartości domyślne dla pól w schemacie usługi Event Grid. Można ustawić wartości domyślne dla *podmiotu*, *typzdarzenia*, i *dataversion*. Zazwyczaj używa się tego parametru podczas niestandardowego schematu nie zawiera pola, które odpowiada jednej z tych trzech pól. Na przykład można określić, że dataversion ma zawsze wartość **1.0**.
+* `--input-mapping-default-values` Parametr określa wartości domyślne dla pól w schemacie usługi Event Grid. Można ustawić wartości domyślne dla `subject`, `eventtype`, i `dataversion`. Zazwyczaj używa się tego parametru podczas gdy niestandardowego schematu nie zawiera pola, które odpowiada jednej z tych trzech pól. Na przykład można określić tej wersji danych jest zawsze równa **1.0**.
 
-* `--input-mapping-fields` Parametr mapowania pól schematu do schematu siatki zdarzeń. Możesz określić wartości w pary klucz/wartość rozdzielonych spacjami. Nazwa klucza musi zawierać nazwę pola siatki zdarzeń. Dla wartości Użyj nazwy pola. Można użyć nazw dla *identyfikator*, *tematu*, *eventtime*, *podmiotu*, *typzdarzenia*i *dataversion*.
+* `--input-mapping-fields` Parametr mapowania pól schematu do schematu siatki zdarzeń. Możesz określić wartości w pary klucz/wartość rozdzielonych spacjami. Nazwa klucza musi zawierać nazwę pola siatki zdarzeń. Dla wartości Użyj nazwy pola. Można użyć nazw dla `id`, `topic`, `eventtime`, `subject`, `eventtype`, i `dataversion`.
 
 Poniższy przykład tworzy niestandardowy temat z niektórymi mapowane i domyślne pola:
 
@@ -58,7 +58,7 @@ az eventgrid topic create \
   -n demotopic \
   -l eastus2 \
   -g myResourceGroup \
-  --input-schema customeventschema
+  --input-schema customeventschema \
   --input-mapping-fields eventType=myEventTypeField \
   --input-mapping-default-values subject=DefaultSubject dataVersion=1.0
 ```
@@ -69,13 +69,14 @@ Podczas subskrybowania tematu niestandardowego, należy określić schemat, któ
 
 Przykłady w tej sekcji Użyj usługi Queue storage dla programu obsługi zdarzeń. Aby uzyskać więcej informacji, zobacz [kierowanie zdarzeń niestandardowych do usługi Azure Queue storage](custom-event-to-queue-storage.md).
 
-Poniższy przykład ilustruje subskrybowanie tematu usługi event grid i używa domyślny schemat siatki zdarzeń:
+Poniższy przykład ilustruje subskrybowanie tematu usługi event grid i używa schematu siatki zdarzeń:
 
 ```azurecli-interactive
 az eventgrid event-subscription create \
   --topic-name demotopic \
   -g myResourceGroup \
   --name eventsub1 \
+  --event-delivery-schema eventgridschema \
   --endpoint-type storagequeue \
   --endpoint <storage-queue-url>
 ```
@@ -94,15 +95,15 @@ az eventgrid event-subscription create \
 
 ## <a name="publish-event-to-topic"></a>Publikowanie zdarzenia do tematu
 
-Teraz można przystąpić do wysłania zdarzenia do tematu niestandardowego i zobaczyć wyniki tego mapowania. Poniższy skrypt w celu opublikowania zdarzenia w [schematu przykład](#original-event-schema):
+Teraz możesz przystąpić do wysłania zdarzenia do tematu niestandardowego i zobaczyć wyniki tego mapowania. Poniższy skrypt w celu opublikowania zdarzenia w [schematu przykład](#original-event-schema):
 
 ```azurecli-interactive
 endpoint=$(az eventgrid topic show --name demotopic -g myResourceGroup --query "endpoint" --output tsv)
 key=$(az eventgrid topic key list --name demotopic -g myResourceGroup --query "key1" --output tsv)
 
-body=$(eval echo "'$(curl https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/event-grid/mapeventfields.json)'")
+event='[ { "myEventTypeField":"Created", "resource":"Users/example/Messages/1000", "resourceData":{"someDataField1":"SomeDataFieldValue"} } ]'
 
-curl -X POST -H "aeg-sas-key: $key" -d "$body" $endpoint
+curl -X POST -H "aeg-sas-key: $key" -d "$event" $endpoint
 ```
 
 Teraz Przyjrzyj się usługi Queue storage. Obie subskrypcje zdarzeń są dostarczane w różnych schematach.

@@ -9,12 +9,12 @@ ms.reviewer: klam, LADocs
 ms.suite: integration
 ms.topic: reference
 ms.date: 06/22/2018
-ms.openlocfilehash: 8adfd0b3d6d87834441ab87af194de141b77af34
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 4b124b79eeacf0df5f1b9dff798ebeea20d82090
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43093622"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044777"
 ---
 # <a name="trigger-and-action-types-reference-for-workflow-definition-language-in-azure-logic-apps"></a>Odwołania do typów wyzwalaczy i akcji dla język definicji przepływów pracy w usłudze Azure Logic Apps
 
@@ -62,7 +62,7 @@ Wyzwalacze mają te elementy najwyższego poziomu, mimo że niektóre są opcjon
 
 | Wartość | Typ | Opis | 
 |-------|------|-------------| 
-| <*Tablica z warunkami*> | Tablica | Tablica, która zawiera co najmniej jeden [warunki](#trigger-conditions) określające, czy chcesz uruchomić przepływ pracy | 
+| <*Tablica z warunkami*> | Tablica | Tablica, która zawiera co najmniej jeden [warunki](#trigger-conditions) określające, czy chcesz uruchomić przepływ pracy. Dostępne tylko dla wyzwalaczy. | 
 | <*Opcje w przypadku konfiguracji środowiska uruchomieniowego*> | Obiekt JSON | Można zmienić zachowanie środowiska uruchomieniowego wyzwalacza, ustawiając `runtimeConfiguration` właściwości. Aby uzyskać więcej informacji, zobacz [ustawień konfiguracji środowiska uruchomieniowego](#runtime-config-options). | 
 | <*wyrażenie splitOn*> | Ciąg | Wyzwalacze, które zwracają tablicę, można określić wyrażenie, [dzieli lub *debatches* ](#split-on-debatch) elementy tablicy do wielu wystąpień przepływu pracy do przetwarzania. | 
 | <*Opcja operacji*> | Ciąg | Można zmienić domyślne zachowanie przez ustawienie `operationOptions` właściwości. Aby uzyskać więcej informacji, zobacz [opcje operacji](#operation-options). | 
@@ -657,7 +657,7 @@ Ten wyzwalacz Określa, że żądanie przychodzące należy użyć metody POST p
 
 ## <a name="trigger-conditions"></a>Warunki wyzwalania
 
-W przypadku dowolnego wyzwalacza może zawierać tablicę zawierającą co najmniej jednego wyrażenia warunki, które określają, czy należy uruchomić przepływ pracy. Aby dodać `conditions` właściwości aplikacji logiki, Otwórz aplikację logiki w edytorze widoku kodu.
+Dla dowolnego wyzwalacza i tylko wyzwalaczy może zawierać tablicę zawierającą co najmniej jednego wyrażenia warunki, które określają, czy należy uruchomić przepływ pracy. Aby dodać `conditions` właściwości wyzwalacza w aplikacji logiki, Otwórz aplikację logiki w edytorze widoku kodu.
 
 Na przykład określić, czy wyzwalacz uruchamia, tylko gdy witryny sieci Web zwraca wystąpił wewnętrzny błąd serwera, odwołując się do kodu stanu wyzwalacza w `conditions` właściwości:
 
@@ -1340,7 +1340,7 @@ Ta akcja tworzy tablicę z elementów w innej tablicy na podstawie określonego 
 | Wartość | Typ | Opis | 
 |-------|------|-------------| 
 | <*Tablica*> | Tablica | Tablica lub wyrażenie, które zawiera elementy źródła. Jeśli określisz wyrażenia, należy ująć to wyrażenie z podwójnymi cudzysłowami. |
-| <*warunek lub filtr*> | Ciąg | Na warunek używany do filtrowania elementów w tablicy źródłowej <p>**Uwaga**: Jeśli żadne wartości nie spełnia warunku, ta akcja stworzy pustą tablicę. |
+| <*warunek lub filtr*> | Ciąg | Na warunek używany do filtrowania elementów w tablicy źródłowej <p>**Uwaga**: Jeśli żadne wartości nie spełnia warunku, a następnie ta akcja stworzy pustą tablicę. |
 |||| 
 
 *Przykład*
@@ -2318,7 +2318,7 @@ Można zmienić domyślne zachowanie dla wyzwalaczy i akcji przy użyciu `operat
 
 ### <a name="change-trigger-concurrency"></a>Zmień wyzwalacz współbieżności
 
-Domyślnie wystąpień aplikacji logiki uruchamiane w tym samym czasie jednocześnie lub równolegle do [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Tak każde wystąpienie wyzwalacz jest uruchamiany przed wystąpienie aplikacji logiki wcześniej aktywne odliczania. Ten limit zapewnia kontrolować liczbę żądań, które odbierają systemów zaplecza. 
+Domyślnie wystąpień aplikacji logiki uruchamiane w tym samym czasie jednocześnie lub równolegle do [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits). Tak każde wystąpienie wyzwalacz jest uruchamiany przed odliczania poprzedniego wystąpienia aplikacji logiki. Ten limit zapewnia kontrolować liczbę żądań, które odbierają systemów zaplecza. 
 
 Aby zmienić domyślny limit, służy Edytor widoku kodu lub Projektant aplikacji logiki, ponieważ zmiana ustawienia współbieżności przy użyciu narzędzia Projektant dodaje lub aktualizuje `runtimeConfiguration.concurrency.runs` właściwości podstawowej definicji wyzwalacza i na odwrót. Ta właściwość określa maksymalną liczbę wystąpień aplikacji logiki, które można uruchomić równolegle. 
 
@@ -2399,7 +2399,7 @@ Domyślnie wystąpień aplikacji logiki uruchamiane w tym samym czasie jednocze�
 
 Liczba przebiegów, które mogą poczekać ma również [domyślny limit](../logic-apps/logic-apps-limits-and-config.md#looping-debatching-limits), które można zmienić. Jednak po aplikacji logiki osiągnie limit przebiegów oczekiwania, aparat usługi Logic Apps nie są już akceptuje nowe przebiegi. Żądanie i elementy webhook wyzwala zwracane błędy 429 i cykliczne wyzwalacze start pomijanie prób sondowania.
 
-Aby zmienić domyślny limit przebiegów oczekiwania, w źródłowym wyzwalają definicję, dodać i ustawić `runtimeConfiguration.concurency.maximumWaitingRuns` właściwości na wartość z zakresu od `0` i `100`. 
+Aby zmienić domyślny limit przebiegów oczekiwania, w źródłowym wyzwalają definicję, Dodaj `runtimeConfiguration.concurency.maximumWaitingRuns` właściwość z wartością z zakresu od `0` i `100`. 
 
 ```json
 "<trigger-name>": {

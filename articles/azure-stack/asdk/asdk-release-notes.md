@@ -12,87 +12,60 @@ ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 10/01/2018
-git ms.author: sethm
+ms.author: sethm
 ms.reviewer: misainat
-ms.openlocfilehash: e157211109825f3edaa910250e083ecb80faf941
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: d322fe378e7f662c233e9572dfc79dcd961137bd
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586329"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237810"
 ---
 # <a name="azure-stack-development-kit-release-notes"></a>Informacje o wersji usługi Azure Stack Development Kit  
 Ten artykuł zawiera informacje dotyczące ulepszeń, poprawek i znanych problemach w usłudze Azure Stack Development Kit. Jeśli nie masz pewności, której wersji używasz, możesz to zrobić [korzystanie z portalu, aby sprawdzić](.\.\azure-stack-updates.md#determine-the-current-version).
 
 > Na bieżąco what's new in ASDK subskrybując [ ![RSS](./media/asdk-release-notes/feed-icon-14x14.png)](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#) [kanału informacyjnego](https://docs.microsoft.com/api/search/rss?search=Azure+Stack+Development+Kit+release+notes&locale=en-us#).
 
-## <a name="build-11808097"></a>Tworzenie 1.1808.0.97
+## <a name="build-11809xxx"></a>Tworzenie 1.1809.x.xx
 
 ### <a name="new-features"></a>Nowe funkcje
 Ta kompilacja obejmuje następujące ulepszenia i poprawki dla usługi Azure Stack.  
 
-- <!-- 2682594   | ASDK  -->   **Wszystkie środowiska Azure Stack teraz używać format strefy czasowej uniwersalnego czasu koordynowanego (UTC).**  Wszystkie dane dziennika, a teraz powiązane informacje wyświetlane w formacie UTC. 
+- <!--  2712869   | IS  ASDK -->  **Klient usługi syslog usługi Azure Stack (ogólnie)** ten klient umożliwia przekazywanie inspekcje, alerty i dzienniki zabezpieczeń związane z infrastruktury Azure Stack w celu syslog serwera lub zabezpieczeń informacjami i zdarzeniami (SIEM) oprogramowania do zarządzania zewnętrzne w stosunku do usługi Azure Stack. Klient usługi syslog obsługuje teraz, określając port, na którym nasłuchuje serwer syslog.
 
-- <!-- 2437250  | IS  ASDK --> **Dyski zarządzane są obsługiwane.** Możesz teraz używać usługi Managed Disks w maszynach wirtualnych usługi Azure Stack i zestawy skalowania maszyn wirtualnych. Aby uzyskać więcej informacji, zobacz [stosu usługi Azure Managed Disks: różnice i zagadnienia](/azure/azure-stack/user/azure-stack-managed-disk-considerations).
- 
-- <!-- 2563799  | IS  ASDK -->  **Usługa Azure Monitor**. Takich jak Azure Monitor na platformie Azure usługi Azure Monitor w usłudze Azure Stack zapewnia podstawowy poziom infrastrukturą metryk i dzienników dla większości usług. For more information, see [Azure Monitor on Azure Stack](/azure/azure-stack/user/azure-stack-metrics-azure-data).
+W tej wersji klienta programu syslog jest ogólnie dostępna, i mogą być używane w środowiskach produkcyjnych.
 
-- <!-- ASDK --> **Galeria elementów dla zestawów skalowania maszyn wirtualnych są teraz wbudowane**.  Zestaw skalowania maszyn wirtualnych elementy galerii są teraz udostępniane w portalach użytkowników i administratorów bez konieczności pobierania ich. 
-
-- <!-- IS, ASDK --> **Skalowanie zestawu skalowania maszyn wirtualnych**.  Można użyć portalu [skalowanie zestawu skalowania maszyn wirtualnych](/azure/azure-stack/azure-stack-compute-add-scalesets.md#scale-a-virtual-machine-scale-set) (zestawu skalowania maszyn wirtualnych).   
-
-- <!-- 2489570 | IS ASDK--> **Obsługa niestandardowych konfiguracji zasad protokołu IPSec/IKE** dla [bram sieci VPN w usłudze Azure Stack](/azure/azure-stack/azure-stack-vpn-gateway-about-vpn-gateways).
-
-- <!-- | IS ASDK--> **Elementu portalu marketplace Kubernetes**. Teraz można wdrożyć klastry Kubernetes za pomocą [elementu portalu Kubernetes Marketplace](/azure/azure-stack/azure-stack-solution-template-kubernetes-cluster-add). Użytkownicy mogą wybrać element Kubernetes i wypełnij kilka parametrów do wdrażania klastra Kubernetes w usłudze Azure Stack. Szablony ma na celu ułatwić użytkownikom w celu wdrożenia rozwiązania Kubernetes i testowania instalacji w kilku krokach.
-
-- <!-- | IS ASDK--> **Łańcuch bloków szablony**. Można teraz wykonać [wdrożeń konsorcjum Ethereum](/azure/azure-stack/azure-stack-ethereum) w usłudze Azure Stack. Można znaleźć trzy nowe szablony w [usługi Azure Stack szablonów Szybki Start](https://github.com/Azure/AzureStack-QuickStart-Templates). Umożliwiają one użytkownikowi wdrażanie i konfigurowanie sieci Ethereum konsorcjum zawierającym wiele elementów członkowskich przy minimalnej znajomości platformy Azure i Ethereum. Szablony ma na celu ułatwić użytkownikom do instalacji i testowania aplikacji łańcucha bloków wdrożeń w kilku krokach.
-
-- <!-- | IS ASDK--> **Interfejs API w wersji profilu 2017-03-09-profile została zaktualizowana w celu 2018-03-01-hybrydowego**. Profile interfejsu API Określ dostawca zasobów platformy Azure i wersja interfejsu API dla punkty końcowe REST platformy Azure. Aby uzyskać więcej informacji na temat profilów, zobacz [Zarządzanie profilami wersji interfejsu API w usłudze Azure Stack](/azure/azure-stack/user/azure-stack-version-profiles).
-
+Aby uzyskać więcej informacji, zobacz [przekazywania usługi syslog usługi Azure Stack](../azure-stack-integrate-security.md).
 
 ### <a name="fixed-issues"></a>Rozwiązane problemy
-- <!-- IS ASDK--> Rozwiązaliśmy problem w przypadku tworzenia zestaw dostępności w portalu, co spowodowało w zestawie, domeny błędów i domeny aktualizacji 1.
 
-- <!-- IS ASDK --> Ustawienia skalowania zestawów skalowania maszyn wirtualnych są teraz dostępne w portalu.  
+- <!-- 2702741 -  IS ASDK --> Rozwiązano problem, w której publiczne adresy IP, które zostały wdrożone za pomocą dynamicznej alokacji metoda nie jest gwarantowana zostaną zachowane po wystawieniu Zatrzymaj anulowanie. Teraz są zachowywane.
 
-- <!-- 2494144- IS, ASDK --> Rozwiązano problem, który uniemożliwił niektóre rozmiary maszyn wirtualnych serii F pojawiające się podczas wybierania rozmiaru maszyny Wirtualnej dla wdrożenia. 
-
-- <!-- IS, ASDK --> Ulepszenia dotyczące wydajności podczas tworzenia maszyn wirtualnych i nie tylko zoptymalizowane pod kątem użycia podstawowego magazynu.
+- <!-- 3078022 - IS ASDK --> Jeśli maszyna wirtualna została zatrzymana z cofniętą alokacją przed 1808 nie można jej ponownie przydzielić po 1808 aktualizacji.  Ten problem został rozwiązany w 1809. Wystąpienia, które zostały w tym stanie i nie może zostać uruchomiony, może zostać uruchomiony w 1809 dzięki tej poprawce. Poprawka zapobiega także ten problem pojawiał.
 
 - **Różne poprawki** dla wydajności, stabilności, bezpieczeństwa i systemu operacyjnego, który jest używany przez usługę Azure Stack
 
 
 ### <a name="changes"></a>Zmiany
+
 - <!-- 1697698  | IS, ASDK --> *Samouczki szybkiego startu* w link teraz pulpitu nawigacyjnego portalu użytkowników do odpowiednich artykułów w dokumentacji online usługi Azure Stack.
 
 - <!-- 2515955   | IS ,ASDK--> *Wszystkie usługi* zastępuje *więcej usług* w portalach administratora i użytkownika usługi Azure Stack. Teraz możesz używać *wszystkich usług* jako alternatywę, można przejść w portalach usługi Azure Stack w taki sam sposób jak w witrynie Azure Portal.
 
-- <!-- TBD | IS, ASDK --> *+ Utwórz zasób* zastępuje *+ nowy* w portalach administratora i użytkownika usługi Azure Stack.  Teraz możesz używać *+ Utwórz zasób* jako alternatywę, można przejść w portalach usługi Azure Stack w taki sam sposób jak w witrynie Azure Portal. 
-
-- <!--  TBD – IS, ASDK --> *Podstawowa A* rozmiarów maszyn wirtualnych są wycofywane w przypadku [tworzenie zestawów skalowania maszyn wirtualnych](.\.\azure-stack-compute-add-scalesets.md) (VMSS) za pośrednictwem portalu. Do utworzenia zestawu skalowania maszyn wirtualnych o tym rozmiarze, użyj programu PowerShell lub w szablonie. 
+- <!--  TBD – IS, ASDK --> *Podstawowa A* rozmiarów maszyn wirtualnych są wycofywane w przypadku [tworzenie zestawów skalowania maszyn wirtualnych](../azure-stack-compute-add-scalesets.md) (VMSS) za pośrednictwem portalu. Do utworzenia zestawu skalowania maszyn wirtualnych o tym rozmiarze, użyj programu PowerShell lub w szablonie. 
 
 ### <a name="known-issues"></a>Znane problemy
 
 #### <a name="portal"></a>Portal  
-- <!-- 2967387 – IS, ASDK --> Konto używane do logowania do portalu administratora lub użytkownika usługi Azure Stack jest wyświetlany jako **Niezidentyfikowany użytkownik**. Dzieje się tak, gdy konto nie ma albo *pierwszy* lub *ostatniego* nazwy. Aby obejść ten problem, należy edytować konto użytkownika, aby podać nazwę pierwszego lub ostatniego. Należy następnie zaloguj i zaloguj ponownie do portalu. 
 
--  <!--  2873083 - IS ASDK --> Kiedy używać portalu, aby utworzyć zestaw skalowania maszyn wirtualnych zestawu (zestawu skalowania maszyn wirtualnych), *rozmiaru wystąpienia* listy rozwijanej nie załadować się poprawnie, gdy używasz programu Internet Explorer. Aby obejść ten problem, należy użyć innej przeglądarki podczas korzystania z portalu do tworzenia zestawu skalowania maszyn wirtualnych.  
+- <!-- 1697698  | IS, ASDK --> *Samouczki szybkiego startu* w link teraz pulpitu nawigacyjnego portalu użytkowników do odpowiednich artykułów w dokumentacji online usługi Azure Stack.
 
-- <!-- TBD  ASDK --> Domyślna strefa czasowa dla wszystkich wdrożeń usługi Azure Stack jest teraz ustawić uniwersalny czas koordynowany (UTC). Strefa czasowa można wybrać podczas instalowania usługi Azure Stack, jednak automatycznie powraca on do UTC domyślnie podczas instalacji.
+- <!-- 2515955   | IS ,ASDK--> *Wszystkie usługi* zastępuje *więcej usług* w portalach administratora i użytkownika usługi Azure Stack. Teraz możesz używać *wszystkich usług* jako alternatywę, można przejść w portalach usługi Azure Stack w taki sam sposób jak w witrynie Azure Portal.
 
-- <!-- 2931230 – IS  ASDK --> Plany, które są dodawane do subskrypcji użytkownika, ponieważ nie można usunąć planu dodatku, nawet wtedy, gdy usuniesz plan z subskrypcji użytkownika. Plan pozostanie, dopóki odwołujące się do planu dodatku subskrypcje zostaną również usunięte. 
-
-- <!--2760466 – IS  ASDK --> Po zainstalowaniu nowego środowiska usługi Azure Stack, z tą wersją, ten alert oznacza to, *wymagana aktywacja* mogą nie być wyświetlane. [Aktywacja](.\.\azure-stack-registration.md) jest wymagany, zanim będzie można użyć portalu marketplace syndykacji. 
-
-- <!-- TBD - IS ASDK --> Dwa typy subskrypcji administracyjne, które zostały [wprowadzonym w wersji 1804](.\.\azure-stack-update-1804.md#new-features) nie powinny być używane. Typy subskrypcji **pomiaru subskrypcji**, i **subskrypcji zużycie**. Te typy subskrypcji są **pomiaru subskrypcji**, i **subskrypcji zużycie**. Te typy subskrypcji są wyświetlane w nowych wersji środowiska usługi Azure Stack począwszy od wersji 1804, ale nie są jeszcze gotowe do użycia. Można nadal używać **subskrypcję dostawcy domyślne** typu.
-
-- <!-- TBD -  IS ASDK --> Usuwanie subskrypcji użytkownika powoduje zasoby oddzielone. Jako obejście najpierw usuń zasoby użytkowników lub całą grupę zasobów, a następnie usuń subskrypcji użytkownika.
-
-- <!-- TBD -  IS ASDK --> Nie można wyświetlić uprawnienia do subskrypcji przy użyciu portali usługi Azure Stack. Jako obejście tego problemu Sprawdź uprawnienia za pomocą programu PowerShell.
-
-
+- <!--  TBD – IS, ASDK --> *Podstawowa A* rozmiarów maszyn wirtualnych są wycofywane w przypadku [tworzenie zestawów skalowania maszyn wirtualnych](../azure-stack-compute-add-scalesets.md) (VMSS) za pośrednictwem portalu. Do utworzenia zestawu skalowania maszyn wirtualnych o tym rozmiarze, użyj programu PowerShell lub w szablonie.
 
 #### <a name="health-and-monitoring"></a>Monitorowanie kondycji i
+
 - <!-- 1264761 - IS ASDK -->  Użytkownik może widzieć alerty dla *kondycji kontrolera* składnik, który ma następujące informacje:  
 
    Zgłoś alert, #1:

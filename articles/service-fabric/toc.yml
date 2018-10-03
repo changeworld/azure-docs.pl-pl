@@ -195,12 +195,6 @@ items:
         href: service-fabric-dnsservice.md
       - name: Zwrotny serwer proxy
         href: service-fabric-reverseproxy.md
-      - name: Instalowanie i konfigurowanie zwrotnego serwera proxy
-        href: service-fabric-reverseproxy-setup.md
-      - name: Konfigurowanie zwrotnego serwera proxy na potrzeby bezpiecznej komunikacji
-        href: service-fabric-reverseproxy-configure-secure-communication.md
-      - name: Diagnostyka zwrotnego serwera proxy
-        href: service-fabric-reverse-proxy-diagnostics.md
       - name: ASP.NET Core
         href: service-fabric-reliable-services-communication-aspnetcore.md
     - name: Cykl życia aplikacji
@@ -554,6 +548,12 @@ items:
         href: service-fabric-set-up-continuous-integration.md
       - name: Wdrażanie aplikacji systemu Linux przy użyciu narzędzia Jenkins
         href: service-fabric-cicd-your-linux-applications-with-jenkins.md
+  - name: Instalowanie i konfigurowanie zwrotnego serwera proxy
+    items:
+    - name: Instalowanie i konfigurowanie zwrotnego serwera proxy
+      href: service-fabric-reverseproxy-setup.md
+    - name: Konfigurowanie zwrotnego serwera proxy na potrzeby bezpiecznej komunikacji
+      href: service-fabric-reverseproxy-configure-secure-communication.md
   - name: Tworzenie klastrów i zarządzanie nimi
     items:
     - name: Klastry na platformie Azure
@@ -658,6 +658,8 @@ items:
         href: service-fabric-understand-and-troubleshoot-with-system-health-reports.md
       - name: Wyświetlanie raportów o kondycji
         href: service-fabric-view-entities-aggregated-health.md
+    - name: Diagnozowanie zdarzeń zwrotnego serwera proxy
+      href: service-fabric-reverse-proxy-diagnostics.md
     - name: Rozwiązywanie problemów z klastrem lokalnym
       href: service-fabric-troubleshoot-local-cluster-setup.md
     - name: Diagnozowanie typowych scenariuszy
@@ -757,9 +759,9 @@ items:
     href: https://azure.microsoft.com/updates/?product=service-fabric
   - name: Filmy wideo
     href: https://azure.microsoft.com/documentation/videos/index/?services=service-fabric
-ms.openlocfilehash: 7bd6ee339aa1eafbf260e9df4925f50cba49bdf8
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: fc85458db829f66ad90d846aec7148fa58a3bbc0
+ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47406061"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48018880"

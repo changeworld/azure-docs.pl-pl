@@ -10,12 +10,12 @@ ms.reviewer: estfan, LADocs
 ms.assetid: 349d57e8-f62b-4ec6-a92f-a6e0242d6c0e
 ms.topic: article
 ms.date: 07/25/2016
-ms.openlocfilehash: 43fd52dd04e679b9756c07e8c6e260323469026a
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: c1ef71ea2ec551335c3681760c181624334c3229
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43126206"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043205"
 ---
 # <a name="schema-updates-for-azure-logic-apps---june-1-2016"></a>Aktualizacje schematu dla usługi Azure Logic Apps — 1 czerwca 2016 r.
 
@@ -33,23 +33,23 @@ Do uaktualnienia aplikacji logiki ze schematu w wersji zapoznawczej 1 sierpnia 2
 
 Ten schemat obejmuje zakresy, które umożliwiają grupy razem lub zagnieżdżonych operacje wewnątrz siebie nawzajem. Na przykład warunek może zawierać inny warunek. Dowiedz się więcej o [zakresu składni](../logic-apps/logic-apps-loops-and-scopes.md), lub przejrzyj w tym przykładzie zakres podstawowe:
 
-```
+```json
 {
-    "actions": {
-        "My_Scope": {
-            "type": "scope",
-            "actions": {                
-                "Http": {
-                    "inputs": {
-                        "method": "GET",
-                        "uri": "http://www.bing.com"
-                    },
-                    "runAfter": {},
-                    "type": "Http"
-                }
+   "actions": {
+      "Scope": {
+         "type": "Scope",
+         "actions": {                
+            "Http": {
+               "inputs": {
+                   "method": "GET",
+                   "uri": "http://www.bing.com"
+               },
+               "runAfter": {},
+               "type": "Http"
             }
-        }
-    }
+         }
+      }
+   }
 }
 ```
 
@@ -57,29 +57,29 @@ Ten schemat obejmuje zakresy, które umożliwiają grupy razem lub zagnieżdżon
 
 ## <a name="conditions-and-loops-changes"></a>Zmiany warunków i pętli
 
-W schemacie poprzedniej wersji, warunków i pętli zostały parametrów skojarzonych z jednej akcji. Ten schemat wind tego ograniczenia, więc warunków i pętli pojawiają się jako typy akcji. Dowiedz się więcej o [pętli i zakresy](../logic-apps/logic-apps-loops-and-scopes.md), lub przejrzeć ten prosty przykład dla warunku akcji:
+W schemacie poprzedniej wersji, warunków i pętli zostały parametrów skojarzonych z jednej akcji. Ten schemat wind tego ograniczenia, więc warunków i pętli są teraz dostępne jako typy akcji. Dowiedz się więcej o [pętli i zakresy](../logic-apps/logic-apps-loops-and-scopes.md), [warunki](../logic-apps/logic-apps-control-flow-conditional-statement.md), lub przejrzeć tym podstawowym przykładzie, który zawiera informacje o akcji warunek:
 
-```
+```json
 {
-    "If_trigger_is_some-trigger": {
-        "type": "If",
-        "expression": "@equals(triggerBody(), 'some-trigger')",
-        "runAfter": { },
-        "actions": {
-            "Http_2": {
-                "inputs": {
-                    "method": "GET",
-                    "uri": "http://www.bing.com"
-                },
-                "runAfter": {},
-                "type": "Http"
-            }
-        },
-        "else": 
-        {
-            "if_trigger_is_another-trigger": "..."
-        }      
-    }
+   "Condition - If trigger is some trigger": {
+      "type": "If",
+      "expression": "@equals(triggerBody(), '<trigger-name>')",
+      "runAfter": {},
+      "actions": {
+         "Http_2": {
+            "inputs": {
+                "method": "GET",
+                "uri": "http://www.bing.com"
+            },
+            "runAfter": {},
+            "type": "Http"
+         }
+      },
+      "else": 
+      {
+         "Condition - If trigger is another trigger": {}
+      }  
+   }
 }
 ```
 
@@ -87,16 +87,14 @@ W schemacie poprzedniej wersji, warunków i pętli zostały parametrów skojarzo
 
 ## <a name="runafter-property"></a>Właściwość "runAfter"
 
-`runAfter` Zastępuje właściwość `dependsOn`, zapewniające większą dokładność podczas określania kolejności wykonywania akcji na podstawie stanu z poprzednich akcji.
+`runAfter` Zastępuje właściwość `dependsOn`, zapewniające większą dokładność podczas określania kolejności wykonywania akcji na podstawie stanu z poprzednich akcji. `dependsOn` Właściwość wskazano, czy "Akcja uruchomiono i zakończyło się pomyślnie", na podstawie poprzedniej akcji zakończyło się pomyślnie, nie powiodło się, czy jako pominięte — nie liczbę razy, aby uruchomić akcję. `runAfter` Właściwość zapewnia elastyczność jako obiekt, który określa wszystkie akcje nazwy po uruchamia obiektu. Ta właściwość definiuje również tablica stany, które są dopuszczalne jako wyzwalacze. Na przykład, jeśli chcesz, aby dana akcja do uruchomienia po wykonaniu akcji A zakończy się pomyślnie, i również po akcji B zakończy się pomyślnie lub nie powiedzie się, skonfiguruj to `runAfter` właściwości:
 
-`dependsOn` Właściwość jest synonimem "Akcja uruchomiono i zakończyło się pomyślnie.", nie ma znaczenia, ile razy chce się wykonać czynności, w oparciu o tego, czy poprzedniej akcji zakończyło się powodzeniem, nie powiodło się lub pominięte. `runAfter` Właściwości można swobodnie tego jako obiekt, który określa wszystkie nazwy akcji, po których jest uruchamiany obiektu. Ta właściwość definiuje również tablica stany, które są dopuszczalne jako wyzwalacze. Na przykład, jeśli chce się uruchomić po krok zakończy się powodzeniem, a także po kroku B zakończy się powodzeniem lub niepowodzeniem, możesz utworzyć to `runAfter` właściwości:
-
-```
+```json
 {
-    "...",
-    "runAfter": {
-        "A": ["Succeeded"],
-        "B": ["Succeeded", "Failed"]
+   // Other parts in action definition
+   "runAfter": {
+      "A": ["Succeeded"],
+      "B": ["Succeeded", "Failed"]
     }
 }
 ```
@@ -109,10 +107,12 @@ Uaktualnienie do [najnowszych schematu](https://schema.management.azure.com/sche
 
 2. Przejdź do **Przegląd**. Na pasku narzędzi aplikacji logiki wybierz **aktualizacja schematu**.
    
-    ![Wybierz pozycję Aktualizuj schemat][1]
+   ![Wybierz pozycję Aktualizuj schemat][1]
    
-    Uaktualnionej definicji jest zwracany, który możesz skopiować i wkleić w definicji zasobu, jeśli to konieczne. 
-    Jednak firma Microsoft **zdecydowanie zaleca się** wybierzesz **Zapisz jako** aby upewnić się, że wszystkie odwołania połączeń są prawidłowe w uaktualnionej aplikacji logiki.
+   Uaktualnionej definicji jest zwracany, który możesz skopiować i wkleić w definicji zasobu, jeśli to konieczne. 
+
+   > [!IMPORTANT]
+   > *Upewnij się, że* wybierzesz **Zapisz jako** więc wszystkie odwołania połączeń flagi card_authenticate_ w uaktualnionej aplikacji logiki.
 
 3. Na pasku narzędzi uaktualniania bloku wybierz **Zapisz jako**.
 
@@ -125,17 +125,17 @@ Uaktualnienie do [najnowszych schematu](https://schema.management.azure.com/sche
 
 6. *Opcjonalnie* zastąpienie poprzedniej aplikacji logiki przy użyciu nowej wersji schematu, na pasku narzędzi wybierz **klonowania**obok pozycji **aktualizacja schematu**. Ten krok jest niezbędny, tylko wtedy, gdy chcesz zachować ten sam identyfikator zasobu lub żądania URL wyzwalacza aplikacji logiki.
 
-### <a name="upgrade-tool-notes"></a>Informacje o narzędzie uaktualniania
+## <a name="upgrade-tool-notes"></a>Informacje o narzędzie uaktualniania
 
-#### <a name="mapping-conditions"></a>Warunków mapowania
+### <a name="mapping-conditions"></a>Warunków mapowania
 
-W uaktualnionej definicji narzędzie sprawia, że najlepszy nakład pracy na grupowanie akcji gałęzi true i false jako zakres. W szczególności projektanta wzorzec `@equals(actions('a').status, 'Skipped')` powinny się wyświetlać jako `else` akcji. Jednak jeśli narzędzie wykryje nierozpoznawalną wzorców, narzędzie może utworzyć osobne warunki dla wartości true i false gałęzi. Możesz ponownie zamapować czynności po uaktualnieniu, jeśli to konieczne.
+W uaktualnionej definicji narzędzie sprawia, że najlepszy nakład pracy na grupowanie akcji gałęzi true i false jako zakres. W szczególności projektanta wzorzec `@equals(actions('a').status, 'Skipped')` pojawia się jako `else` akcji. Jednak jeśli narzędzie wykryje nierozpoznawalną wzorców, narzędzie może utworzyć osobne warunki dla wartości true i false gałęzi. Możesz ponownie zamapować czynności po uaktualnieniu, jeśli to konieczne.
 
 #### <a name="foreach-loop-with-condition"></a>pętli "foreach" z warunkiem
 
-W nowym schemacie do replikowania wzorca można użyć akcji filtrowania `foreach` pętli z warunkiem każdego elementu, ale tę zmianę automatycznie powinno mieć miejsce podczas uaktualniania. Warunek przestaje być akcję filtrowania przed pętli foreach w celu zwrócenia tylko tablicę elementów spełniających warunek, a ta tablica jest przekazywana do działania foreach. Aby uzyskać przykład, zobacz [pętli i zakresy](../logic-apps/logic-apps-loops-and-scopes.md).
+W nowym schemacie, można użyć akcji filtrowania do replikowania wzorzec, który używa **dla każdego** pętli za pomocą jednego warunku każdego elementu. Jednak zmiana automatycznie odbywa się podczas uaktualniania. Warunek przestaje być akcji filtrowania, który pojawia się przed **dla każdego** pętli, tylko tablicę elementów spełniających warunek i macierzy w celu przekazywania **dla każdego** akcji. Aby uzyskać przykład, zobacz [pętli i zakresy](../logic-apps/logic-apps-loops-and-scopes.md).
 
-#### <a name="resource-tags"></a>Tagi zasobów
+### <a name="resource-tags"></a>Tagi zasobów
 
 Po uaktualnieniu, tagi zasobów zostaną usunięte, więc należy je zresetować dla uaktualnionego przepływu pracy.
 
@@ -157,20 +157,20 @@ Aby filtrować dużą tablicę do mniejszy zestaw elementów, nowe `filter` typ 
 
 Akcje mogą teraz zawierać dodatkowe właściwości o nazwie `trackedProperties`, który jest elementem równorzędnym do `runAfter` i `type` właściwości. Ten obiekt określa niektórych danych wejściowych akcji ani danych wyjściowych, które mają zostać uwzględnione w danych telemetrycznych diagnostycznych platformy Azure, emitowane jako część przepływu pracy. Na przykład:
 
-```
-{                
-    "Http": {
-        "inputs": {
-            "method": "GET",
-            "uri": "http://www.bing.com"
-        },
-        "runAfter": {},
-        "type": "Http",
-        "trackedProperties": {
-            "responseCode": "@action().outputs.statusCode",
-            "uri": "@action().inputs.uri"
-        }
-    }
+``` json
+{
+   "Http": {
+      "inputs": {
+         "method": "GET",
+         "uri": "http://www.bing.com"
+      },
+      "runAfter": {},
+      "type": "Http",
+      "trackedProperties": {
+         "responseCode": "@action().outputs.statusCode",
+         "uri": "@action().inputs.uri"
+      }
+   }
 }
 ```
 

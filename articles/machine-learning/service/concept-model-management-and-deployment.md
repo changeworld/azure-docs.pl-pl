@@ -1,6 +1,6 @@
 ---
-title: Zarządzanie i wdrażanie modeli w usłudze Azure Machine Learning
-description: Dowiedz się, jak wdrażanie, zarządzanie i monitorowanie swoje modele, aby nieustannie podnosić je za pomocą usługi Azure Machine Learning. Można wdrażać modele, które możesz skonfigurowanych pod kątem korzystania z usługi Azure Machine Learning na komputerze lokalnym lub z innych źródeł.
+title: Zarządzanie i wdrażanie modeli usługi Azure Machine Learning
+description: Dowiedz się, jak wdrażanie, zarządzanie i monitorowanie swoje modele, aby nieustannie podnosić je za pomocą usługi Azure Machine Learning. Można wdrażać te modele, które uczony przy użyciu usługi Azure Machine Learning, na komputerze lokalnym lub z innych źródeł.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,16 +9,16 @@ ms.reviewer: jmartens
 author: hjerez
 ms.author: hjerez
 ms.date: 09/24/2018
-ms.openlocfilehash: d3e0b63d42ad8c6d4765f5120c26c5dfdf5ad6fb
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: afba483172bc34b9d54afc3af755f0967affc875
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166541"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239170"
 ---
-# <a name="manage-deploy-and-monitor-models-with-azure-machine-learning"></a>Zarządzanie, wdrażanie i monitorowanie modeli przy użyciu usługi Azure Machine Learning
+# <a name="manage-deploy-and-monitor-models-with-azure-machine-learning-service"></a>Zarządzanie, wdrażanie i monitorowanie modeli przy użyciu usługi Azure Machine Learning
 
-W tym artykule możesz dowiedzieć się, jak wdrażanie, zarządzanie i monitorowanie swoje modele, aby nieustannie podnosić je za pomocą usługi Azure Machine Learning. Można wdrażać modele, które możesz skonfigurowanych pod kątem korzystania z usługi Azure Machine Learning na komputerze lokalnym lub z innych źródeł. 
+W tym artykule możesz Dowiedz się, jak wdrażanie, zarządzanie i monitorowanie swoje modele, aby nieustannie podnosić je za pomocą usługi Azure Machine Learning. Można wdrażać modele, które możesz skonfigurowanych pod kątem korzystania z usługi Azure Machine Learning na komputerze lokalnym lub z innych źródeł. 
 
 Na poniższym diagramie przedstawiono przepływ pracy całego procesu wdrażania: [ ![wdrażanie przepływu pracy dla usługi Azure Machine Learning](media/concept-model-management-and-deployment/deployment-pipeline.png) ](media/concept-model-management-and-deployment/deployment-pipeline.png#lightbox)
 

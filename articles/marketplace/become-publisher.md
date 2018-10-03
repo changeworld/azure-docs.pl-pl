@@ -14,12 +14,12 @@ ms.devlang: ''
 ms.topic: article
 ms.date: 06/05/2018
 ms.author: ellacroi
-ms.openlocfilehash: 7aadb7b89cf1b338a257846882e34ff796df74b2
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 745b26661d34357e44b6a7c2ed6e40f3195781f1
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45580722"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237997"
 ---
 # <a name="become-a-cloud-marketplace-publisher"></a>Zostań chmury wydawcy w witrynie Marketplace
 
@@ -42,7 +42,7 @@ Uczestnictwo w chmurze firmy Microsoft w witrynie marketplace wymaga członkostw
 *   Aby zarejestrować się w sieci Microsoft Partner Network, odwiedź stronę [strony członkostwa](https://partner.microsoft.com/membership) i postępuj zgodnie z instrukcjami, aby uruchomić Twojej rejestracji.  
 
 Po zarejestrowaniu, Zapisz identyfikator Microsoft Partner Network dla Twojej organizacji. Będzie on potrzebny podczas wykonywania kroku 3 podczas przesyłania formularza rejestracji portalu marketplace.
-*   Dowiedz się więcej o zaletach [sieci Microsoft Partner Network](https://partner.microsoft.com/en-us/commercial)
+*   Dowiedz się więcej o zaletach [sieci Microsoft Partner Network](https://partner.microsoft.com/commercial)
 *   Jeśli Twoja organizacja ma istniejące członkostwo, spowoduje dołączenie do Twojej organizacji, podczas rejestracji. Jeśli używasz [Centrum partnerskiego](https://partnercenter.microsoft.com/partner/home), będzie można zobaczyć identyfikator na Twoim koncie Centrum partnerskiego. Jeśli używasz [Centrum członkostwa partnera (PMC)](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx), będzie można zobaczyć, jak to na Twoim koncie Partner Membership Center. 
 
 ---  
@@ -54,18 +54,18 @@ Konto Microsoft, np. *@outlook.com lub @live.com*, umożliwia dostęp do wielu u
 [! [Ważne] Uwaga, konta Microsoft skojarzonego z służbowego adresu e-mail nie zezwoli na dostęp do portalu.
 
 >[!Note]
->Jeśli masz już konto Microsoft, zapoznaj się z [wytyczne dotyczące tworzenia Identyfikatora firmy Microsoft do zarządzania kontem marketplace](https://review.docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account) ustalenie, jeśli może służyć do publikowania w portalu marketplace. 
+>Jeśli masz już konto Microsoft, zapoznaj się z [wytyczne dotyczące tworzenia Identyfikatora firmy Microsoft do zarządzania kontem marketplace](https://docs.microsoft.com/azure/marketplace/guidelines#guidelines-for-creating-a-microsoft-id-to-manage-a-marketplace-account) ustalenie, jeśli może służyć do publikowania w portalu marketplace. 
 
->Użytkowników za pomocą usługi Azure Active Directory federacyjnego konta firmowego powinni przeczytać [w tym artykule](https://review.docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain) przed podjęciem próby utworzenia lub używania istniejącego Account firmy Microsoft.
+>Użytkowników za pomocą usługi Azure Active Directory federacyjnego konta firmowego powinni przeczytać [w tym artykule](https://docs.microsoft.com/azure/marketplace/guidelines#issue-microsoft-id-in-an-azure-ad-federated-domain) przed podjęciem próby utworzenia lub używania istniejącego Account firmy Microsoft.
 
-*   Aby uzyskać pomoc przy tworzeniu i zarządzaniu nim swojego konta Microsoft, odwiedź [stron pomocy technicznej pomocy konta Microsoft](https://support.microsoft.com/en-us/products/microsoft-account?category=manage-account).
+*   Aby uzyskać pomoc przy tworzeniu i zarządzaniu nim swojego konta Microsoft, odwiedź [stron pomocy technicznej pomocy konta Microsoft](https://support.microsoft.com/products/microsoft-account?category=manage-account).
 
 
 ---  
 
 ## <a name="3-submit-the-marketplace-registration-form"></a>3. Prześlij formularz rejestracji w portalu marketplace  
 | 15 min |  
-Wykonaj to podsumowanie [formularz rejestracji](https://azuremarketplace.microsoft.com/en-us/sell/signup) przestanie wydawcy w witrynie marketplace. Informacji przedstawionych w tym formularzu będzie służyć do tworzenia konta wydawcy w portalu Cloud Partner, który pozwoli na tworzenie, publikowanie i zarządzanie oferty w witrynie marketplace.
+Wykonaj to podsumowanie [formularz rejestracji](https://azuremarketplace.microsoft.com/sell/signup) przestanie wydawcy w witrynie marketplace. Informacji przedstawionych w tym formularzu będzie służyć do tworzenia konta wydawcy w portalu Cloud Partner, który pozwoli na tworzenie, publikowanie i zarządzanie oferty w witrynie marketplace.
 
 Użytkownik będzie musiał podać następujące informacje:
 *   Szczegółowe informacje o organizacji, w tym identyfikator sieci Microsoft Partner Network (który można wyszukiwać w jednym [Centrum partnerskiego](https://partnercenter.microsoft.com/partner/home) lub [Partner Membership Center](https://partners.microsoft.com/partnerprogram/PartnerMembershipCenter.aspx))
@@ -75,26 +75,26 @@ Użytkownik będzie musiał podać następujące informacje:
 ---  
 ## <a name="4-sign-into-cloud-partner-portal"></a>4. Zaloguj się do portalu Cloud Partner
 | 1 do 3 dni | <br>
-Nasz portal Marketplace zespół ds. dołączania przejrzy i sprawdzić szczegółowe dane rejestracji portalu marketplace, które zostały określone w kroku 3. Po zatwierdzeniu otrzymasz powitalnej wiadomości e-mail przy użyciu poświadczeń konta i wskazówki dotyczące logowania do [portalu Cloud Partner](https://cloudpartner.azure.com).
+Nasz zespół ds. dołączania Marketplace zostanie przeprowadzona Weryfikacja szczegóły rejestracji portalu marketplace, które są udostępniane w kroku 3. Po zatwierdzeniu otrzymasz powitalnej wiadomości e-mail przy użyciu poświadczeń konta i wskazówki dotyczące logowania do [portalu Cloud Partner](https://cloudpartner.azure.com).
 
 Użyjesz [portalu Cloud Partner](https://cloudpartner.azure.com) tworzenie, publikowanie i zarządzanie oferty w witrynie marketplace. Po otrzymaniu powitalną wiadomość e-mail dotyczącą zatwierdzenia, możesz natychmiast zalogować się do [portalu Cloud Partner](https://cloudpartner.azure.com) o dodatkowe informacje techniczne dotyczące publikowania w portalu Marketplace i tworzenie oferty dostępu do konta Microsoft. 
 *   Aby uzyskać więcej informacji o korzystaniu z portalu Cloud Partner [można znaleźć w artykule wprowadzenie w sekcji Dowiedz się więcej na](https://cloudpartner.azure.com/#documentation/getting-started-with-the-cloud-partner-portal). Użytkownik musi zalogowany do portalu Cloud Partner na dostęp do tych informacji.
 *   Jeśli masz pytania lub czy można zaplanować wywołanie omówienie dołączania, np. Przejrzyj inne artykuły, w tym przewodniku wydawcy lub Otwórz żądanie obsługi, w obszarze Typ problemu > z przy dołączaniu w portalu Marketplace w portalu Cloud Partner.
-*   Jeśli nie masz powitalnej wiadomości e-mail, sprawdź folder wiadomości-śmieci wiadomości e-mail o temacie "Microsoft Marketplace — Zapraszamy!." Jeśli nie ma żadnych wiadomości e-mail w folderze wiadomości-śmieci, [skontaktuj się z pomocą techniczną firmy Microsoft](https://support.microsoft.com/en-us/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=en-us&supportregion=en-us&pesid=16230&forceorigin=esmc&ccsid=636595105151894820). Na stronie pomocy technicznej wybierz: typ problemu > przechodzenia do portalu Marketplace.  Nasz zespół ds. dołączania wydawcy witryny Marketplace docenią uzyskanymi z zapytania. 
+*   Jeśli nie masz powitalnej wiadomości e-mail, sprawdź folder wiadomości-śmieci wiadomości e-mail o temacie "Microsoft Marketplace — Zapraszamy!." Jeśli nie ma żadnych wiadomości e-mail w folderze wiadomości-śmieci, [skontaktuj się z pomocą techniczną firmy Microsoft](https://support.microsoft.com/getsupport?wf=0&tenant=classiccommercial&oaspworkflow=start_1.0.0.0&locale=&supportregion=&pesid=16230&forceorigin=esmc&ccsid=636595105151894820). Na stronie pomocy technicznej wybierz: typ problemu > przechodzenia do portalu Marketplace.  Nasz zespół ds. dołączania wydawcy witryny Marketplace docenią uzyskanymi z zapytania. 
 
 
 ## <a name="5-register-in-dev-center-for-transact-publishing-option-only"></a>5. Rejestrowanie w Centrum deweloperów (w przypadku Transact tylko z opcją publikowania) 
 | 5 – 10 dni |  
-A [Centrum deweloperów](https://developer.microsoft.com/en-us/store/register) konto jest wymagane w przypadku ofert, korzystających z języka transact opcji publikowania: obejmuje maszyny wirtualne, aplikacje platformy Azure i aplikacji SaaS, które skonfigurowano do sprzedaży za pośrednictwem platformy Azure. [Centrum deweloperów](https://developer.microsoft.com/en-us/store/register) szczegóły konta są używane przez firmę Microsoft do weryfikowania prawne, podatku i informacji bankowych dla Twojej organizacji, która będzie służyć do celów informacje dotyczące wypłat sprzedaży i bill licencjonowania oprogramowania, opłaty za pośrednictwem platformy Azure Portal Marketplace. 
+A [Centrum deweloperów](https://developer.microsoft.com/store/register) konto jest wymagane w przypadku ofert, korzystających z języka transact opcji publikowania: obejmuje maszyny wirtualne, aplikacje platformy Azure i aplikacji SaaS, które skonfigurowano do sprzedaży za pośrednictwem platformy Azure. [Centrum deweloperów](https://developer.microsoft.com/store/register) szczegóły konta są używane przez firmę Microsoft do weryfikowania prawne, podatku i informacji bankowych dla Twojej organizacji, która będzie służyć do celów informacje dotyczące wypłat sprzedaży i bill licencjonowania oprogramowania, opłaty za pośrednictwem platformy Azure Portal Marketplace. 
 
-[Centrum deweloperów](https://developer.microsoft.com/en-us/store/register) proces rejestracji mogą być uruchamiane przed utworzeniem oferty w portalu Cloud Partner, ale należy wykonać przed opublikowaniem oferty w portalu marketplace. Biorąc pod uwagę czas trwania typowej 5 – 10 dni tego kroku, firma Microsoft zaleca uruchamianie tego procesu tak szybko, jak to możliwe, jeśli zamierzasz używać opcji publikowania języka transact. 
+[Centrum deweloperów](https://developer.microsoft.com/store/register) proces rejestracji mogą być uruchamiane przed utworzeniem oferty w portalu Cloud Partner, ale należy wykonać przed opublikowaniem oferty w portalu marketplace. Biorąc pod uwagę czas trwania typowej 5 – 10 dni tego kroku, firma Microsoft zaleca uruchamianie tego procesu tak szybko, jak to możliwe, jeśli zamierzasz używać opcji publikowania języka transact. 
 
-Indywidualne rejestrowanie w [Centrum deweloperów](https://developer.microsoft.com/en-us/store/register) musi być prawidłową przedstawiciel organizacji i podać informacje osobiste, aby zweryfikować swoją tożsamość. Rejestrowanie przy użyciu konta Microsoft utworzonego w kroku 2 i używanie tego samego konta Microsoft, które umożliwiają dostęp do portalu Cloud Partner.
+Indywidualne rejestrowanie w [Centrum deweloperów](https://developer.microsoft.com/store/register) musi być prawidłową przedstawiciel organizacji i podać informacje osobiste, aby zweryfikować swoją tożsamość. Rejestrowanie przy użyciu konta Microsoft utworzonego w kroku 2 i używanie tego samego konta Microsoft, które umożliwiają dostęp do portalu Cloud Partner.
 
-*   Aby zarejestrować dla [Centrum deweloperów](https://developer.microsoft.com/en-us/store/register) konta [rozpocząć proces rejestracji, w tym miejscu](https://developer.microsoft.com/en-us/store/register).
+*   Aby zarejestrować dla [Centrum deweloperów](https://developer.microsoft.com/store/register) konta [rozpocząć proces rejestracji, w tym miejscu](https://developer.microsoft.com/store/register).
 *   Aby uzyskać więcej informacji na temat tworzenia konta Microsoft, odwiedź stronę *Utwórz konto Microsoft* sekcji.
  
-Po zakończeniu [Centrum deweloperów](https://developer.microsoft.com/en-us/store/register) rejestracji, Połącz swój profil partnera chmury za pomocą usługi [Centrum deweloperów](https://developer.microsoft.com/en-us/store/register) konta (Zobacz szczegółowy opis kroków w tym miejscu). Ten krok należy wykonać przed opublikowaniem oferty transact. 
+Po zakończeniu [Centrum deweloperów](https://developer.microsoft.com/store/register) rejestracji, Połącz swój profil partnera chmury za pomocą usługi [Centrum deweloperów](https://developer.microsoft.com/store/register) konta (Zobacz szczegółowy opis kroków w tym miejscu). Ten krok należy wykonać przed opublikowaniem oferty transact. 
 
 >[!Note]
 >Do odstąpienia od opłatę za rejestrację w Centrum deweloperów $99, wypełnij formularz rejestracji w portalu marketplace, a otrzymasz wiadomość e-mail zawierająca kod promocyjny. 

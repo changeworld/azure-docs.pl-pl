@@ -12,12 +12,12 @@ ms.author: sachinp
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/20/2018
-ms.openlocfilehash: aab532bb01e1ec0392f0b1c3ef155097a9f826f9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 48ba68e8fd40af859fc6701495a2dca280a1c222
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47159639"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042635"
 ---
 # <a name="resource-limits-for-single-databases-using-the-dtu-based-purchasing-model"></a>Limity zasobów dla pojedynczych baz danych przy użyciu modelu zakupu opartego na jednostkach DTU 
 
@@ -127,7 +127,7 @@ Maksymalny rozmiar większy niż 1 TB dla bazy danych P11 i P15 jest obsługiwan
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Zobacz [— często zadawane pytania dla bazy danych SQL](sql-database-faq.md) odpowiedzi na często zadawane pytania.
-- Zobacz [limity zasobów Omówienie usługi Azure SQL Database](sql-database-resource-limits.md) uzyskać informacji dotyczących ograniczeń na poziomach serwera i subskrypcji.
+- Zobacz [Przegląd zasobów limity na serwerze logicznym](sql-database-resource-limits-logical-server.md) uzyskać informacji dotyczących ograniczeń na poziomach serwera i subskrypcji.
 - Aby uzyskać informacji na temat ogólne limity platformy Azure, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md).
 - Aby uzyskać informacji na temat jednostek Dtu i Edtu, zobacz [jednostek Dtu i Edtu](sql-database-service-tiers.md#what-are-database-transaction-units-dtus).
 - Aby uzyskać informacje na temat limitów rozmiarów bazy danych tempdb, zobacz https://docs.microsoft.com/sql/relational-databases/databases/tempdb-database#tempdb-database-in-sql-database.

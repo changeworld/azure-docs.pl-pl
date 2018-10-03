@@ -10,14 +10,18 @@ ms.component: linguistic-analysis
 ms.topic: conceptual
 ms.date: 03/23/2016
 ms.author: lesun
-ms.openlocfilehash: a998bdf32be948448131ea12db1b7d4204e6722d
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ROBOTS: NOINDEX
+ms.openlocfilehash: f8c7aba2b853f3916c2d01d94d49090a4b3e36a0
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127469"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237235"
 ---
 # <a name="analyzer-names"></a>Nazwy analizatorów
+
+> [!IMPORTANT]
+> Wersja zapoznawcza analizy językowej została zlikwidowana 9 sierpnia 2018 r. Firma Microsoft zaleca używanie [moduły analizy tekstu w usłudze Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) do przetwarzania tekstu i analizy.
 
 Używamy nieco skomplikowane struktura nazewnictwa analizatorów, aby zezwalał na elastyczność, zarówno na analizatory i dokładność zrozumieć, co oznacza nazwę.
 Nazwy analizatorów składają się z czterech części: identyfikator, rodzaj, Specyfikacja i implementację.

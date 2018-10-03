@@ -11,26 +11,28 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 4c9edd60ffa1cd9ed5d95b37592fa49f44117818
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/01/2018
+ms.openlocfilehash: 31a423714154537cfc8d801b972869035aa61035
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161339"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042210"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Odzyskiwanie bazy danych Azure SQL za pomocą bazy danych automatycznych kopii zapasowych
-SQL Database oferuje następujące opcje odzyskiwania bazy danych przy użyciu [automatyczne kopie zapasowe bazy danych](sql-database-automated-backups.md) i [kopii zapasowych podlegających długoterminowemu przechowywaniu](sql-database-long-term-retention.md). Można przywrócić z kopii zapasowej bazy danych, aby:
+Domyślnie kopie zapasowe bazy danych SQL są przechowywane w georeplikowanym magazynie obiektów blob (RA-GRS). Poniższe opcje są dostępne dla bazy danych odzyskiwania przy użyciu [automatyczne kopie zapasowe bazy danych](sql-database-automated-backups.md):
 
-* Nową bazę danych na tym samym serwerze logicznym odzyskiwane do określonego punktu w czasie w okresie przechowywania. 
-* Baza danych na tym samym serwerze logicznym odzyskiwane do czasu usunięcia dla usuniętej bazy danych.
-* Nową bazę danych na dowolnym serwerze logicznym, w dowolnym regionie przywrócona do stanu najnowszych codzienne kopie zapasowe w georeplikowanym magazynie obiektów blob (RA-GRS).
+* Utwórz nową bazę danych na tym samym serwerze logicznym odzyskiwane do określonego punktu w czasie w okresie przechowywania. 
+* Tworzenie bazy danych na tym samym serwerze logicznym odzyskiwane do czasu usunięcia dla usuniętej bazy danych.
+* Utwórz nową bazę danych na dowolnym serwerze logicznym w dowolnym regionie przywrócona do stanu najnowszej kopii zapasowych.
+
+Jeśli skonfigurowano [kopii zapasowych, długoterminowe przechowywanie](sql-database-long-term-retention.md) można również utworzyć nową bazę danych z dowolnej kopii zapasowej od lewej do prawej, na dowolnym serwerze logicznym, w dowolnym regionie.  
 
 > [!IMPORTANT]
 > Nie można zastąpić istniejącą bazę danych podczas przywracania.
 >
 
-Przywróconej bazy danych generuje koszt dodatkowego magazynu w następujących warunkach: 
+Korzystając z warstwy usługi Standard lub Premium, przywróconej bazy danych wiąże się koszt dodatkowego magazynu w następujących warunkach: 
 - Przywracanie P11 – P15 S4-S12 lub P1 – P6, jeśli maksymalnego rozmiaru bazy danych jest większa niż 500 GB.
 - Przywracanie P1 – P6 do S4-S12, jeśli maksymalnego rozmiaru bazy danych jest większa niż 250 GB.
 

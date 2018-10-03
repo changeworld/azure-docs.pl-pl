@@ -9,18 +9,18 @@ ms.author: haining
 author: hning86
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 3011fa85dbac2135f4d9113c6b76a8b667ee4013
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 64104fc70c7be1589c9332905f243a2e1e692eee
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46952137"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237980"
 ---
 # <a name="architecture-and-concepts-how-does-azure-machine-learning-service-work"></a>Architektury i koncepcji: jak działa usługa Azure Machine Learning? 
 
 W tym dokumencie opisano architekturę i pojęcia dotyczące usługi Azure Machine Learning. Poniższy diagram przedstawia główne składniki usługi i przedstawiono ogólny przepływ pracy, podczas korzystania z usługi: 
 
-[![Usługa Azure Machine Learning architektury i przepływu pracy](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
+[![Usługa Azure architektury usługi Machine Learning i przepływu pracy](./media/concept-azure-machine-learning-architecture/workflow.png)](./media/concept-azure-machine-learning-architecture/workflow.png#lightbox)
 
 Przepływ pracy jest zwykle obejmuje następujące kroki:
 
@@ -73,9 +73,9 @@ W najprostszym modelem jest fragmentem kodu, który przyjmuje dane wejściowe i 
 
 Model jest generowany przez uruchomienie w usłudze Azure Machine Learning. Można również użyć modelu skonfigurowanych pod kątem poza usługi Azure Machine Learning. W obszarze roboczym usługi Azure Machine Learning można zarejestrować model.
 
-Usługa Azure Machine Learning jest niezależny od framework. Podczas tworzenia modelu, na przykład scikit, można użyć dowolnej architektury uczenia maszynowego popularnych — Dowiedz się, xgboost, PyTorch, TensorFlow, Chainer i CNTK.
+Usługa Machine Learning jest niezależny od framework. Podczas tworzenia modelu, na przykład scikit, można użyć dowolnej architektury uczenia maszynowego popularnych — Dowiedz się, xgboost, PyTorch, TensorFlow, Chainer i CNTK.
 
-Aby uzyskać przykład uczenia modelu, zobacz [Szybki Start: tworzenie obszaru roboczego uczenia maszynowego](quickstart-get-started.md) dokumentu.
+Przykład uczenia modelu, zobacz [Szybki Start: tworzenie obszaru roboczego usługi uczenia maszynowego](quickstart-get-started.md) dokumentu.
 
 ### <a name="model-registry"></a>Model rejestru
 

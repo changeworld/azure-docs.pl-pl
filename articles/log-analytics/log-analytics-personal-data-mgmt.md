@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/18/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 9ea004a35f739a8c4f7ee1ed320bd6657ed4e820
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.component: ''
+ms.openlocfilehash: 1b9d8d252055bb1368b7024ca9b0acf6c21ba7b3
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957918"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041615"
 ---
 # <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Wskazówki dotyczące danych osobowych przechowywanych w usłudze Log Analytics i usługi Application Insights
 

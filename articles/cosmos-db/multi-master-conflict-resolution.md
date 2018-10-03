@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: mjbrown
 ms.reviewer: sngun
-ms.openlocfilehash: 5feefdb8fe6204bc8ef42a5e65bf1e30354e0cf9
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 39fd393e78a2b66749c6aa34a758b185b38effdf
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393931"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041191"
 ---
 # <a name="multi-master-conflict-resolution-in-azure-cosmos-db"></a>Rozwiązywanie konfliktów wielu wzorców w usłudze Azure Cosmos DB 
 
@@ -157,7 +157,7 @@ Procedura ma cztery parametry:
 
 * **conflictingDocuments:** określa zbiór zatwierdzonej wersji wszystkie dokumenty w bazie danych, które są sprzeczne z incomingDocument w kolumnie identyfikator lub inne pola unikatowego indeksu. Te dokumenty będą miały różne wartości "rid" w porównaniu do incomingDocument.
 
-Zdefiniowane przez użytkownika procedury ma pełny dostęp do klucza partycji usługi Cosmos DB i mogą wykonywać dowolne operacje magazynu, aby rozwiązać konflikty. Jeśli zdefiniowane przez użytkownika procedury nie zatwierdzić konfliktów wersji, system będzie się zmniejszać konfliktu i existingDocument pozostanie zatwierdzone. Jeśli procedura zdefiniowanych przez użytkownika nie powiedzie się lub nie istnieje, usługi Azure Cosmos DB wszystkie doda konfliktu do konfliktów tylko do odczytu źródła danych, gdzie będzie można przetwarzać asynchronicznie, jak pokazano na [trybu rozwiązania konfliktu asynchroniczne](). 
+Zdefiniowane przez użytkownika procedury ma pełny dostęp do klucza partycji usługi Cosmos DB i mogą wykonywać dowolne operacje magazynu, aby rozwiązać konflikty. Jeśli zdefiniowane przez użytkownika procedury nie zatwierdzić konfliktów wersji, system będzie się zmniejszać konfliktu i existingDocument pozostanie zatwierdzone. Jeśli procedura zdefiniowanych przez użytkownika nie powiedzie się lub nie istnieje, usługi Azure Cosmos DB wszystkie doda konfliktu do konfliktów tylko do odczytu źródła danych, gdzie będzie można przetwarzać asynchronicznie, jak pokazano na [trybu rozwiązania konfliktu asynchroniczne](#custom--asynchronous). 
 
 ### <a name="custom--asynchronous"></a>Niestandardowe — asynchroniczne  
 

@@ -1,6 +1,6 @@
 ---
-title: Grupy komputerów w Azure Log Analytics dziennika wyszukiwania | Dokumentacja firmy Microsoft
-description: Grupy komputerów w analizy dzienników umożliwiają zakres wyszukiwania dziennika do określonego zestawu komputerów.  W tym artykule opisano różne metody używanej do tworzenia grup komputerów i sposobu ich używania w wyszukiwaniu dziennika.
+title: Przeszukiwanie dzienników grup komputerów w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Grupy komputerów w usłudze Log Analytics umożliwia zakres wyszukiwań w dziennikach do konkretnego zestawu komputerów.  W tym artykule opisano różne metody używanej do tworzenia grup komputerów i jak ich używać podczas wyszukiwania dziennika.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -14,33 +14,33 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 23ac75b4afb07c3f8d5f0d90755a5cf2087087e1
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 7e4889148a752b552f8bd65702ea5dda450ded31
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130679"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044301"
 ---
-# <a name="computer-groups-in-log-analytics-log-searches"></a>Zaloguj się wyszukiwanie grup komputerów w analizy dzienników
+# <a name="computer-groups-in-log-analytics-log-searches"></a>Przeszukiwanie dzienników grup komputerów w usłudze Log Analytics
 
-Grupy komputerów w analizy dzienników umożliwiają zakresu [dziennika wyszukiwania](log-analytics-log-search-new.md) do określonego zestawu komputerów.  Każda grupa jest wypełniana z komputerami za pomocą zapytanie, które należy zdefiniować lub importując grup z różnych źródeł.  Podczas wyszukiwania dziennika zawiera grupy, wyniki są ograniczone do rekordów, które spełniają komputerów w grupie.
+Grupy komputerów w usłudze Log Analytics umożliwia zakresu [dziennikach](log-analytics-log-search-new.md) do konkretnego zestawu komputerów.  Każda grupa jest wypełniana komputerami za pomocą zapytań, który zdefiniujesz lub przez importowanie grup z różnych źródeł.  Gdy grupy jest włączona do przeszukiwania dzienników, wyniki są ograniczone do rekordy spełniające komputerów w grupie.
 
 ## <a name="creating-a-computer-group"></a>Tworzenie grupy komputerów
-Można utworzyć grupę komputerów w analizy dzienników przy użyciu dowolnej z metod w poniższej tabeli.  W poniższych sekcjach znajdują się szczegółowe informacje o każdej z metod. 
+Można utworzyć grupę komputerów w usłudze Log Analytics przy użyciu dowolnej z metod w poniższej tabeli.  W poniższych sekcjach znajdują się szczegółowe informacje na temat poszczególnych metod. 
 
 | Metoda | Opis |
 |:--- |:--- |
-| Wyszukiwanie w dzienniku |Utwórz wyszukiwania dziennika, które zwraca listę komputerów. |
-| Interfejs API wyszukiwania w dzienniku |Programowe tworzenie grupy komputerów, na podstawie wyników wyszukiwania dziennika za pomocą interfejsu API wyszukiwania dziennika. |
-| Usługa Active Directory |Automatyczne skanowanie członkostwo w grupie na wszystkich komputerach agenta, które są członkami domeny usługi Active Directory i utworzyć grupę w analizy dzienników dla każdej grupy zabezpieczeń. |
-| Configuration Manager | Zaimportować kolekcje w programie System Center Configuration Manager i utworzyć grupę w analizy dzienników dla każdego. |
-| Windows Server Update Services |Skanowanie serwerów WSUS lub klientów do użycia z grup i automatycznie utworzyć grupę w analizy dzienników dla każdego. |
+| Wyszukiwanie w dzienniku |Utwórz wyszukiwanie w dzienniku, które zwraca listę komputerów. |
+| Interfejs API wyszukiwania w dzienniku |Użyj interfejsu API wyszukiwania w dzienniku programowo utworzyć grupę komputerów, na podstawie wyników przeszukiwania dzienników. |
+| Usługa Active Directory |Automatyczne skanowanie członkostwa w grupie komputerów agenta, które są członkami domeny usługi Active Directory i utworzyć grupę w usłudze Log Analytics dla każdej grupy zabezpieczeń. |
+| Configuration Manager | Importuj kolekcje w programie System Center Configuration Manager i Utwórz grupę w usłudze Log Analytics dla każdego. |
+| Windows Server Update Services |Wyszukaj przeznaczone dla grup serwerów WSUS lub klientów i automatycznie utworzyć grupę w usłudze Log Analytics dla każdego. |
 
 ### <a name="log-search"></a>Wyszukiwanie w dzienniku
-Grupy komputerów utworzone na podstawie wyszukiwania dziennika zawiera wszystkie komputery zwróconych przez zapytanie, które należy zdefiniować.  To zapytanie jest uruchamiane za każdym razem, grupa komputerów jest używany tak, aby wszelkie zmiany, ponieważ grupa została utworzona ta jest uwzględniana.  
+Grupy komputerów, utworzone na podstawie wyszukiwanie w dzienniku zawiera wszystkich komputerów zwracanych przez zapytanie, które należy zdefiniować.  To zapytanie jest uruchamiany za każdym razem, gdy grupa komputerów jest używana co znajduje odzwierciedlenie zmiany, ponieważ grupa została utworzona.  
 
-Każde zapytanie można używać dla grupy komputerów, ale aplikacja musi zwracać różne zestaw komputerów przy użyciu `distinct Computer`.  Poniżej znajduje się wyszukiwanie typowym przykładem, które można użyć jako grupę komputerów.
+Można użyć dowolnego zapytania dla grupy komputerów, ale aplikacja musi zwracać różne zestaw komputerów przy użyciu `distinct Computer`.  Poniżej przedstawiono wyszukiwanie typowym przykładem, które można użyć jako grupę komputerów.
 
     Heartbeat | where Computer contains "srv" | distinct Computer
 
@@ -48,69 +48,69 @@ W poniższej tabeli opisano właściwości, które definiują grupę komputerów
 
 | Właściwość | Opis |
 |:---|:---|
-| Nazwa wyświetlana   | Nazwa wyszukiwania, które mają być wyświetlane w portalu. |
-| Kategoria       | Kategoria do organizowania wyszukiwania w portalu. |
+| Nazwa wyświetlana   | Nazwa wyszukiwania, aby wyświetlić w portalu. |
+| Kategoria       | Kategoria do organizowania operacji wyszukiwania w portalu. |
 | Zapytanie          | Zapytanie dla grupy komputerów. |
-| Alias funkcji | Unikatowego aliasu używany do identyfikowania grupy komputerów w zapytaniu. |
+| Alias funkcji | Unikatowego aliasu, używany do identyfikowania grupy komputerów w zapytaniu. |
 
-Poniższa procedura umożliwia utworzenie grupy komputerów z dziennika wyszukiwania w portalu Azure.
+Poniższa procedura umożliwia utworzenie grupy komputerów z przeszukiwania dzienników w witrynie Azure portal.
 
-2. Otwórz **wyszukiwania dziennika** , a następnie kliknij przycisk **zapisane wyszukiwania** w górnej części ekranu.
+2. Otwórz **wyszukiwanie w dzienniku** a następnie kliknij przycisk **zapisane wyszukiwania** w górnej części ekranu.
 3. Kliknij przycisk **Dodaj** i podaj wartości dla każdej właściwości grupy komputerów.
 4. Wybierz **Zapisz to zapytanie jako grupę komputerów** i kliknij przycisk **OK**.
 
 
 
 ### <a name="active-directory"></a>Usługa Active Directory
-Podczas konfigurowania analizy dzienników do zaimportowania członkostwa w grupach usługi Active Directory, analizuje członkostwo w grupie komputerów przyłączonych do domeny z agentem pakietu OMS.  Grupa komputerów jest tworzony w analizy dzienników dla każdej grupy zabezpieczeń w usłudze Active Directory, a każdy komputer jest dodawany do odpowiadającego do grupy zabezpieczeń, które są oni członkami grupy komputerów.  To członkostwo jest stale aktualizowany co 4 godziny.  
+Podczas konfigurowania usługi Log Analytics, aby zaimportować członkostwa w grupach usługi Active Directory analizuje członkostwa w grupie komputerów przyłączonych do domeny za pomocą agenta pakietu OMS.  Grupa komputerów jest tworzony w usłudze Log Analytics dla każdej grupy zabezpieczeń w usłudze Active Directory, a każdy komputer został dodany do grupy komputerów, odpowiadający grup zabezpieczeń, do których należą.  To członkostwo jest stale aktualizowany co 4 godziny.  
 
-Konfigurowanie analizy dzienników do zaimportowania grup zabezpieczeń usługi Active Directory z analizy dzienników **Zaawansowane ustawienia** w portalu Azure.  Wybierz **grup komputerów**, **usługi Active Directory**, a następnie **członkostwa w grupach usługi Active Directory importu z komputerów**.  Nie są wymagane żadne dalsze czynności konfiguracyjne.
+Konfigurowanie usługi Log Analytics można zaimportować grupy zabezpieczeń usługi Active Directory z usługą Log Analytics **Zaawansowane ustawienia** w witrynie Azure portal.  Wybierz **grup komputerów**, **usługi Active Directory**, a następnie **członkostwa w grupach usługi Active Directory importu z komputerów**.  Nie są wymagane żadne dalsze czynności konfiguracyjne.
 
-![Grupy komputerów z usługi Active Directory](media/log-analytics-computer-groups/configure-activedirectory.png)
+![Grupy komputerów z usługą Active Directory](media/log-analytics-computer-groups/configure-activedirectory.png)
 
-Grupy zostały zaimportowane, menu znajdują się liczba komputerów z członkostwem grupy wykryte i liczby grup zaimportowane.  Możesz kliknąć jeden z poniższych linków, aby zwrócić **Grupa_komputerów** rekordy z tymi informacjami.
+Grupy zostały zaimportowane, menu znajdują się liczby komputerów za pomocą członkostwa w grupie wykryte i liczba grup zaimportowane.  Możesz kliknąć jedno z poniższych linków, aby zwrócić **Grupa_komputerów** rekordy z tymi informacjami.
 
 ### <a name="windows-server-update-service"></a>Windows Server Update Service
-Podczas konfigurowania analizy dzienników do zaimportowania członkostwa w grupach usług WSUS, analizuje docelowych członkostwo w grupie komputerów z agentem pakietu OMS.  Jeśli używasz klienta przeznaczonych dla dowolnego komputera, który jest podłączony do analizy dzienników i jest częścią żadnych WSUS przypisywania grup ma jego przynależność zaimportowany do analizy dzienników. Jeśli używasz po stronie serwera celem OMS agenta należy zainstalować na serwerze programu WSUS w taki sposób, aby informacje o członkostwie grupy do zaimportowania do analizy dzienników.  To członkostwo jest stale aktualizowany co 4 godziny. 
+Podczas konfigurowania usługi Log Analytics, aby zaimportować członkostwa w grupach usług WSUS, analizuje określania wartości docelowej członkostwa w grupie komputerów za pomocą agenta pakietu OMS.  Jeśli używasz klienta przeznaczone dla dowolnego komputera, który jest podłączony do usługi Log Analytics i jest częścią dowolnego programu WSUS przeznaczone dla grup ma jego członkostwo w grupie zaimportowany do usługi Log Analytics. Jeśli używasz po stronie serwera dla pakietu OMS agent powinien być zainstalowany na serwerze programu WSUS w taki sposób, w kolejności, aby uzyskać informacje o członkostwie grupy do zaimportowania do usługi Log Analytics.  To członkostwo jest stale aktualizowany co 4 godziny. 
 
-Konfigurowanie analizy dzienników do zaimportowania grup usług WSUS z analizy dzienników **Zaawansowane ustawienia** w portalu Azure.  Wybierz **grup komputerów**, **WSUS**, a następnie **importu programu WSUS członkostw**.  Nie są wymagane żadne dalsze czynności konfiguracyjne.
+Konfigurowanie usługi Log Analytics do zaimportowania grup usług WSUS z usługą Log Analytics **Zaawansowane ustawienia** w witrynie Azure portal.  Wybierz **grup komputerów**, **WSUS**, a następnie **członkostwa w grupach importu programu WSUS**.  Nie są wymagane żadne dalsze czynności konfiguracyjne.
 
 ![Grupy komputerów programu WSUS](media/log-analytics-computer-groups/configure-wsus.png)
 
-Grupy zostały zaimportowane, menu znajdują się liczba komputerów z członkostwem grupy wykryte i liczby grup zaimportowane.  Możesz kliknąć jeden z poniższych linków, aby zwrócić **Grupa_komputerów** rekordy z tymi informacjami.
+Grupy zostały zaimportowane, menu znajdują się liczby komputerów za pomocą członkostwa w grupie wykryte i liczba grup zaimportowane.  Możesz kliknąć jedno z poniższych linków, aby zwrócić **Grupa_komputerów** rekordy z tymi informacjami.
 
 ### <a name="system-center-configuration-manager"></a>System Center Configuration Manager
-Podczas konfigurowania analizy dzienników do Importuj członkostwa w kolekcji programu Configuration Manager tworzy grupy komputerów dla każdej kolekcji.  Informacje dotyczące członkostwa kolekcji jest pobierana co 3 godziny, aby zapewnić aktualność grupy komputerów. 
+Podczas konfigurowania usługi Log Analytics, aby zaimportować członkostwa w kolekcjach programu Configuration Manager tworzy grupy komputerów, dla każdej kolekcji.  Informacje o członkostwo w kolekcji jest pobierana co 3 godziny, aby zapewnić aktualność grup komputerów. 
 
-Przed zaimportowaniem kolekcji programu Configuration Manager, należy najpierw [łączenia programu Configuration Manager do analizy dzienników](log-analytics-sccm.md).  Następnie można skonfigurować Importuj z analizy dzienników **Zaawansowane ustawienia** w portalu Azure.  Wybierz **grup komputerów**, **SCCM**, a następnie **członkostwa w kolekcji programu Configuration Manager importu**.  Nie są wymagane żadne dalsze czynności konfiguracyjne.
+Przed zaimportowaniem kolekcji programu Configuration Manager, należy najpierw [łączenia programu Configuration Manager do usługi Log Analytics](log-analytics-sccm.md).  Następnie można skonfigurować importowania z usługi Log Analytics **Zaawansowane ustawienia** w witrynie Azure portal.  Wybierz **grup komputerów**, **SCCM**, a następnie **członkostwa w kolekcjach programu Configuration Manager importu**.  Nie są wymagane żadne dalsze czynności konfiguracyjne.
 
 ![Grupy komputerów z programu SCCM](media/log-analytics-computer-groups/configure-sccm.png)
 
-Kolekcje zostały zaimportowane, menu znajdują się liczba komputerów z członkostwem grupy wykryte i liczby grup zaimportowane.  Możesz kliknąć jeden z poniższych linków, aby zwrócić **Grupa_komputerów** rekordy z tymi informacjami.
+Po kolekcji zostały zaimportowane, menu wyświetla liczbę komputerów z członkostwem grupy wykryte i liczbę grup zaimportowanych.  Możesz kliknąć jedno z poniższych linków, aby zwrócić **Grupa_komputerów** rekordy z tymi informacjami.
 
 ## <a name="managing-computer-groups"></a>Zarządzanie grupami komputerów
-Możesz wyświetlić grupy komputerów, które zostały utworzone na podstawie wyszukiwania dziennika lub interfejsu API dziennika wyszukiwania z analizy dzienników **Zaawansowane ustawienia** w portalu Azure.  Wybierz **grup komputerów** , a następnie **zapisane grupy**.  
+Grupy komputerów, które zostały utworzone przy użyciu przeszukiwania dzienników lub interfejsu API wyszukiwania w dzienniku z usługą Log Analytics można wyświetlić **Zaawansowane ustawienia** w witrynie Azure portal.  Wybierz **grup komputerów** i następnie **zapisane grupy**.  
 
-Kliknij przycisk **x** w **Usuń** kolumna usunąć grupę komputerów.  Kliknij przycisk **Wyświetlanie członków** ikona grupy do uruchamiania grupy dziennik wyszukiwania, które zwraca jej elementów członkowskich.  Nie można zmodyfikować grupy komputerów, ale zamiast tego należy usunąć i ponownie utworzyć przy użyciu zmodyfikowanych ustawień.
+Kliknij przycisk **x** w **Usuń** kolumny, aby usunąć grupę komputerów.  Kliknij przycisk **Wyświetl członków** ikony grupy uruchomić przeszukiwanie dziennika grupy, które zwraca jej członków.  Nie można zmodyfikować grupy komputerów, ale zamiast tego należy usunąć i utworzyć ją ponownie przy użyciu zmodyfikowanych ustawień.
 
-![Grupy komputerów zapisane](media/log-analytics-computer-groups/configure-saved.png)
+![Zapisane grupy komputerów](media/log-analytics-computer-groups/configure-saved.png)
 
 
-## <a name="using-a-computer-group-in-a-log-search"></a>W wyszukiwaniu dziennika przy użyciu grupy komputerów
-Możesz użyć grupy komputerów utworzone na podstawie wyszukiwania dziennika w zapytaniu traktując jej aliasem jako funkcja, zwykle przy użyciu następującej składni:
+## <a name="using-a-computer-group-in-a-log-search"></a>Używanie grupy komputerów podczas wyszukiwania dziennika
+Możesz użyć grupy komputerów utworzone na podstawie przeszukiwania dzienników w zapytaniu traktując jego aliasu jako funkcja, zazwyczaj przy użyciu następującej składni:
 
   `Table | where Computer in (ComputerGroup)`
 
-Na przykład można użyć następujących do zwrócenia UpdateSummary rekordów tylko komputery należące do grupy komputerów o nazwie mycomputergroup.
+Na przykład można użyć następujących do zwrócenia rekordy UpdateSummary tylko komputery należące do grupy komputerów o nazwie mycomputergroup.
  
   `UpdateSummary | where Computer in (mycomputergroup)`
 
 
-Zaimportowany komputer grup i komputerów uwzględnione są przechowywane w **Grupa_komputerów** tabeli.  Na przykład poniższe zapytanie zwróci listę komputerów w grupie komputerów w domenie z usługi Active Directory. 
+Zaimportowany komputer grupy i ich uwzględnionych komputerach, które są przechowywane w **Grupa_komputerów** tabeli.  Na przykład następujące zapytanie zwróci listę komputerów w grupie komputerów w domenie z usługi Active Directory. 
 
   `ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer`
 
-Następujące zapytanie zwróci UpdateSummary rekordów tylko komputery w domenie komputerach.
+Następujące zapytanie zwróci rekordy UpdateSummary tylko komputery, na komputerach z domeny.
 
   ```
   let ADComputers = ComputerGroup | where GroupSource == "ActiveDirectory" and Group == "Domain Computers" | distinct Computer;
@@ -121,7 +121,7 @@ Następujące zapytanie zwróci UpdateSummary rekordów tylko komputery w domeni
 
 
 ## <a name="computer-group-records"></a>Rekordów grupy komputerów
-Zostaje utworzony rekord w obszarze roboczym analizy dzienników dla każdego członkostwa grup komputerów utworzone na podstawie usługi Active Directory lub usług WSUS.  Te rekordy mieć typu **Grupa_komputerów** i mieć właściwości w poniższej tabeli.  Rekordy nie są tworzone dla grup komputerów opartych na dziennik wyszukiwania.
+Rekord zostanie utworzony w obszarze roboczym usługi Log Analytics dla każdego członkostwo w grupie komputerów, utworzone na podstawie usługi Active Directory lub programu WSUS.  Te rekordy mają typ **Grupa_komputerów** i mają właściwości podane w poniższej tabeli.  Rekordy nie zostaną utworzone dla grup komputerów, w oparciu o wyszukiwań w dziennikach.
 
 | Właściwość | Opis |
 |:--- |:--- |
@@ -129,12 +129,12 @@ Zostaje utworzony rekord w obszarze roboczym analizy dzienników dla każdego cz
 | SourceSystem |*SourceSystem* |
 | Computer (Komputer) |Nazwa komputera członkowskiego. |
 | Grupa |Nazwa grupy. |
-| GroupFullName |Pełna ścieżka do grupy, takie jak źródło i nazwa źródła. |
-| GroupSource |Źródło tej grupy zostały zebrane z. <br><br>Polecenie cmdlet<br>WSUS<br>WSUSClientTargeting |
-| GroupSourceName |Nazwa źródła, które zostały zebrane grupy.  Dla usługi Active Directory jest to nazwa domeny. |
-| ManagementGroupName |Nazwa grupy zarządzania agentów SCOM.  W przypadku innych agentów jest AOI -\<identyfikator obszaru roboczego\> |
+| GroupFullName |Pełna ścieżka do grupy, w tym źródłowego i nazwę źródła. |
+| GroupSource |Źródłowej, tej grupy, zebranych z. <br><br>ActiveDirectory<br>WSUS<br>WSUSClientTargeting |
+| GroupSourceName |Nazwa źródła, które zostały zebrane grupy.  Usługi Active Directory jest to nazwa domeny. |
+| ManagementGroupName |Nazwa grupy zarządzania agentów SCOM.  Dla innych agentów jest to AOI -\<identyfikator obszaru roboczego\> |
 | TimeGenerated |Data i godzina utworzenia lub aktualizacji grupy komputerów. |
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [dziennika wyszukiwania](log-analytics-log-searches.md) analizować dane zebrane ze źródeł danych i rozwiązania.  
+* Dowiedz się więcej o [dziennikach](log-analytics-log-searches.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
 

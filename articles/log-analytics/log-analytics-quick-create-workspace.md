@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptal
 ms.date: 08/23/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: a52654ab620908b9c8c07edf3fcdfbf70068528d
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.component: ''
+ms.openlocfilehash: edebeec493b025a81a99c0458344aafe59e769e9
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220794"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48040878"
 ---
 # <a name="create-a-log-analytics-workspace-in-the-azure-portal"></a>Utwórz obszar roboczy usługi Log Analytics w witrynie Azure portal
 W witrynie Azure portal, które można skonfigurować obszar roboczy usługi Log Analytics, która jest unikatowa środowisko usługi Log Analytics z własnym repozytorium danych, źródłami danych i rozwiązań.  Kroki opisane w tym artykule są wymagane, jeśli jest planowane na zbieranie danych z następujących źródeł:

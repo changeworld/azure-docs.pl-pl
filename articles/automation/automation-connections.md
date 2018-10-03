@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 03/15/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: 4ead83dc449f2b32461b0585f276c9f3bfd3f847
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
+ms.openlocfilehash: d9dbf816d4fd0d9f6044ebeea9a23a60adcc5bc8
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42919106"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044607"
 ---
 # <a name="connection-assets-in-azure-automation"></a>Elementy zawartości połączenia w usłudze Azure Automation
 
@@ -45,7 +45,7 @@ Działania w poniższej tabeli są używane do dostępu do połączenia w elemen
 |[Get-AutomationConnection](/powershell/module/servicemanagement/azure/get-azureautomationconnection?view=azuresmps-3.7.0)|Pobiera połączenie do użycia. Zwraca tabelę mieszania, za pomocą właściwości połączenia.|
 
 >[!NOTE] 
->Należy unikać używania zmiennych za pomocą parametru Name **Get - AutomationConnection** ponieważ może to skomplikować wykrywanie zależności między elementami runbook lub konfiguracji DSC i zasobów połączeń w czasie projektowania.
+>Należy unikać używania zmiennych za pomocą parametru Name **Get AutomationConnection** ponieważ może to skomplikować wykrywanie zależności między elementami runbook lub konfiguracji DSC i zasobów połączeń w czasie projektowania.
 
  
 ## <a name="python2-functions"></a>Funkcje Python2 

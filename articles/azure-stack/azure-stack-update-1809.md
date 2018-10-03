@@ -1,0 +1,259 @@
+---
+title: Aktualizacja usługi Azure Stack 1809 | Dokumentacja firmy Microsoft
+description: Informacje na temat nowości w aktualizacji 1809 dla usługi Azure Stack zintegrowane systemy, w tym znanych problemów i umożliwiające pobranie aktualizacji.
+services: azure-stack
+documentationcenter: ''
+author: sethmanheim
+manager: femila
+editor: ''
+ms.assetid: ''
+ms.service: azure-stack
+ms.workload: na
+ms.tgt_pltfrm: na
+ms.devlang: na
+ms.topic: article
+ms.date: 09/26/2018
+ms.author: sethm
+ms.reviewer: justini
+ms.openlocfilehash: 4b83d3743f65a3ad1b757c2e6dee8416701b24f3
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.translationtype: MT
+ms.contentlocale: pl-PL
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48243112"
+---
+# <a name="azure-stack-1809-update"></a>Aktualizacja usługi Azure Stack 1809
+
+*Dotyczy: zintegrowane systemy usługi Azure Stack*
+
+W tym artykule opisano zawartość pakietu 1809 aktualizacji. Pakiet aktualizacji zawiera ulepszenia, poprawki i znane problemy dotyczące tej wersji usługi Azure Stack. Ten artykuł zawiera również link, aby pobrać aktualizację. Znane problemy są podzielone na problemy bezpośrednio związane z procesem aktualizacji i kompilacji (po instalacji).
+
+> [!IMPORTANT]  
+> Ten pakiet aktualizacji jest tylko dla usługi Azure Stack, zintegrowanych systemów. Nie dotyczą tego pakietu aktualizacji usługi Azure Stack Development Kit.
+
+## <a name="build-reference"></a>Dokumentacja kompilowania
+
+Numerem kompilacji aktualizacji usługi Azure Stack 1809 **1.1809.x.xx**.  
+
+### <a name="new-features"></a>Nowe funkcje
+
+Ta aktualizacja obejmuje następujące ulepszenia usługi Azure Stack:
+
+- <!--  2712869   | IS  ASDK -->  **Klient usługi syslog usługi Azure Stack (ogólnie)** ten klient umożliwia przekazywanie inspekcje, alerty i dzienniki zabezpieczeń związane z infrastruktury Azure Stack w celu syslog serwera lub zabezpieczeń informacjami i zdarzeniami (SIEM) oprogramowania do zarządzania zewnętrzne w stosunku do usługi Azure Stack. Klient usługi syslog obsługuje teraz, określając port, na którym nasłuchuje serwer syslog.
+
+W tej wersji klienta programu syslog jest ogólnie dostępna, i mogą być używane w środowiskach produkcyjnych.
+
+Aby uzyskać więcej informacji, zobacz [przekazywania usługi syslog usługi Azure Stack](azure-stack-integrate-security.md).
+
+### <a name="fixed-issues"></a>Rozwiązane problemy
+
+- <!-- 2702741 -  IS ASDK --> Rozwiązano problem, w której publiczne adresy IP, które zostały wdrożone za pomocą dynamicznej alokacji metoda nie jest gwarantowana zostaną zachowane po wystawieniu Zatrzymaj anulowanie. Teraz są zachowywane.
+
+- <!-- 3078022 - IS ASDK --> Jeśli maszyna wirtualna została zatrzymana z cofniętą alokacją przed 1808 nie można jej ponownie przydzielić po 1808 aktualizacji.  Ten problem został rozwiązany w 1809. Wystąpienia, które zostały w tym stanie i nie może zostać uruchomiony, może zostać uruchomiony w 1809 dzięki tej poprawce. Poprawka zapobiega także ten problem pojawiał.
+
+### <a name="changes"></a>Zmiany
+
+- <!-- 1697698  | IS, ASDK --> *Samouczki szybkiego startu* w link teraz pulpitu nawigacyjnego portalu użytkowników do odpowiednich artykułów w dokumentacji online usługi Azure Stack.
+
+- <!-- 2515955   | IS ,ASDK--> *Wszystkie usługi* zastępuje *więcej usług* w portalach administratora i użytkownika usługi Azure Stack. Teraz możesz używać *wszystkich usług* jako alternatywę, można przejść w portalach usługi Azure Stack w taki sam sposób jak w witrynie Azure Portal.
+
+- <!--  TBD – IS, ASDK --> *Podstawowa A* rozmiarów maszyn wirtualnych są wycofywane w przypadku [tworzenie zestawów skalowania maszyn wirtualnych](azure-stack-compute-add-scalesets.md) (VMSS) za pośrednictwem portalu. Do utworzenia zestawu skalowania maszyn wirtualnych o tym rozmiarze, użyj programu PowerShell lub w szablonie.  
+
+### <a name="common-vulnerabilities-and-exposures"></a>Typowe luki w zabezpieczeniach i zagrożeń
+
+Ta aktualizacja instaluje następujące aktualizacje zabezpieczeń:  
+
+- [ADV180022](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/ADV180022)
+- [CVE-2018-0965](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-0965)
+- [CVE-2018-8271](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8271)
+- [CVE-2018-8332](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8332)
+- [CVE-2018-8335](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8335)
+- [CVE-2018-8392](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8392)
+- [CVE-2018-8393](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8393)
+- [CVE-2018-8410](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8410)
+- [CVE-2018-8419](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8419)
+- [CVE-2018-8420 —](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8420)
+- [CVE-2018-8424](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8424)
+- [CVE-2018-8433](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8433)
+- [CVE-2018-8434](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8434)
+- [CVE-2018-8435](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8435)
+- [CVE-2018-8438](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8438)
+- [CVE-2018-8439](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8439)
+- [CVE-2018-8440](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8440)
+- [CVE-2018-8442](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8442)
+- [CVE-2018-8443](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8443)
+- [CVE-2018-8446](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8446)
+- [CVE-2018-8449](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8449)
+- [CVE-2018-8455](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8455)
+- [CVE-2018-8462](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8462)
+- [CVE-2018-8468](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8468)
+- [CVE-2018-8475](https://portal.msrc.microsoft.com/en-US/security-guidance/advisory/CVE-2018-8475)
+
+Aby uzyskać więcej informacji na temat tych luk w zabezpieczeniach kliknij poprzednie linki lub zobacz artykule bazy wiedzy Microsoft [4457131](https://support.microsoft.com/help/4457131).
+
+### <a name="prerequisites"></a>Wymagania wstępne
+
+- Instalowanie usługi Azure Stack [aktualizacji 1808](azure-stack-update-1808.md) przed zastosowaniem aktualizacji usługi Azure Stack 1809. 
+- Zainstaluj najnowszy dostępny [aktualizacja lub poprawka dla wersji 1808](azure-stack-update-1808.md#post-update-steps).
+
+  > [!TIP]  
+  > Subskrybowania następujących *RRS* lub *Atom* źródła danych na bieżąco przy użyciu usługi Azure Stack poprawki:
+  > - REKORDY ZASOBÓW: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/rss ... 
+  > - Atom: https://support.microsoft.com/app/content/api/content/feeds/sap/en-us/32d322a8-acae-202d-e9a9-7371dccf381b/atom ...
+
+
+- Przed rozpoczęciem instalacji tej aktualizacji należy uruchomić [AzureStack testu](azure-stack-diagnostic-test.md) z następującymi parametrami, aby zweryfikować stan usługi Azure Stack i rozwiązać wszelkie problemy z działaniem, znaleziono, w tym wszystkie ostrzeżenia i błędy. Również przejrzeć aktywne alerty i rozwiązywanie tych, które wymagają akcji.  
+
+  ```PowerShell
+  Test-AzureStack -Include AzsControlPlane, AzsDefenderSummary, AzsHostingInfraSummary, AzsHostingInfraUtilization, AzsInfraCapacity, AzsInfraRoleSummary, AzsPortalAPISummary, AzsSFRoleSummary, AzsStampBMCSummary
+  ``` 
+
+### <a name="known-issues-with-the-update-process"></a>Znane problemy związane z procesem aktualizacji
+
+- <!-- 2468613 - IS --> Podczas instalacji tej aktualizacji, użytkownik może widzieć alerty z tytułem *błędu — szablon FaultType UserAccounts.New Brak.*  Te alerty można bezpiecznie zignorować. Te alerty zostanie zamknięte automatycznie po zakończeniu instalacji tej aktualizacji.
+
+- <!-- 2489559 - IS --> Nie należy próbować tworzyć maszyny wirtualne podczas instalacji tej aktualizacji. Aby uzyskać więcej informacji na temat zarządzania aktualizacjami, zobacz [zarządzanie aktualizacjami w usłudze Azure Stack — omówienie](azure-stack-updates.md#plan-for-updates).
+
+- <!-- 2830461 - IS --> W pewnych okolicznościach podczas aktualizacji wymaga uwagi, odpowiedni alert może nie zostać wygenerowany. Dokładny stan nadal zostaną odzwierciedlone w portalu i nie ulega zmianie.
+
+### <a name="post-update-steps"></a>Kroki po aktualizacji
+
+*Nie istnieją żadne kroki po aktualizacji aktualizacji 1809.*
+
+<!-- After the installation of this update, install any applicable Hotfixes. For more information view the following knowledge base articles, as well as our [Servicing Policy](azure-stack-servicing-policy.md).  
+ - [Link to KB]()  
+ -->
+
+## <a name="known-issues-post-installation"></a>Znane problemy (po instalacji)
+
+Poniżej przedstawiono znane problemy po instalacji tej wersji kompilacji.
+
+### <a name="portal"></a>Portal
+
+- Dokumentacja techniczna usługi Azure Stack koncentruje się na najnowszej wersji. Z powodu portalu zmian między wersjami Zobacz podczas przy użyciu portali usługi Azure Stack mogą różnić się od wyświetlanych w dokumentacji.
+
+- <!-- 2930718 - IS ASDK --> W portalu administratora przy uzyskiwaniu dostępu do szczegółów dowolnej subskrypcji użytkownika po zamknięciu bloku i klikając **ostatnie**, nie jest wyświetlana Nazwa subskrypcji użytkownika.
+
+- <!-- 3060156 - IS ASDK --> W portalach administratora i użytkownika, klikając ustawienia portalu i wybierając **Usuń wszystkie ustawienia i prywatne pulpity nawigacyjne** nie działa zgodnie z oczekiwaniami. Powiadomienia o błędzie jest wyświetlany. 
+
+- <!-- 2930799 - IS ASDK --> W portalach administratora i użytkownika w obszarze **wszystkich usług**, element zawartości **planów ochrony przed atakami DDoS** niepoprawnie znajduje się na liście. Nie jest faktycznie dostępne w usłudze Azure Stack. Jeśli spróbujesz go utworzyć, zostanie wyświetlony błąd informujący, że portal nie można utworzyć elementu portalu marketplace. 
+
+- <!-- 2930820 - IS ASDK --> W portalach administratora i użytkownika jeśli wyszukasz "Docker" jest niepoprawnie zwrócony element. Nie jest faktycznie dostępne w usłudze Azure Stack. Jeśli spróbujesz go utworzyć, zostanie wyświetlony blok ze wskazaniem błędu. 
+
+- <!-- 2967387 – IS, ASDK --> Konto używane do logowania do portalu administratora lub użytkownika usługi Azure Stack jest wyświetlany jako **Niezidentyfikowany użytkownik**. Dzieje się tak, gdy konto nie ma albo *pierwszy* lub *ostatniego* nazwy. Aby obejść ten problem, należy edytować konto użytkownika, aby podać nazwę pierwszego lub ostatniego. Należy następnie zaloguj i zaloguj ponownie do portalu.  
+
+-  <!--  2873083 - IS ASDK --> Kiedy używać portalu, aby utworzyć zestaw skalowania maszyn wirtualnych zestawu (zestawu skalowania maszyn wirtualnych), *rozmiaru wystąpienia* listy rozwijanej nie załadować się poprawnie, gdy używasz programu Internet Explorer. Aby obejść ten problem, należy użyć innej przeglądarki podczas korzystania z portalu do tworzenia zestawu skalowania maszyn wirtualnych.  
+
+- <!-- TBD  ASDK --> Domyślna strefa czasowa dla wszystkich wdrożeń usługi Azure Stack jest teraz ustawić uniwersalny czas koordynowany (UTC). Strefa czasowa można wybrać podczas instalowania usługi Azure Stack, jednak automatycznie powraca on do UTC domyślnie podczas instalacji.
+
+- <!-- 2931230 – IS  ASDK --> Plany, które są dodawane do subskrypcji użytkownika, ponieważ nie można usunąć planu dodatku, nawet wtedy, gdy usuniesz plan z subskrypcji użytkownika. Plan pozostanie, dopóki odwołujące się do planu dodatku subskrypcje zostaną również usunięte. 
+
+- <!--2760466 – IS  ASDK --> Po zainstalowaniu nowego środowiska usługi Azure Stack, z tą wersją, ten alert oznacza to, *wymagana aktywacja* mogą nie być wyświetlane. [Aktywacja](azure-stack-registration.md) jest wymagany, zanim będzie można użyć portalu marketplace syndykacji.  
+
+- <!-- TBD - IS ASDK --> Dwa typy subskrypcji administracyjne, które zostały [wprowadzonym w wersji 1804](azure-stack-update-1804.md#new-features) nie powinny być używane. Typy subskrypcji **pomiaru subskrypcji**, i **subskrypcji zużycie**. Te typy subskrypcji są wyświetlane w nowych wersji środowiska usługi Azure Stack począwszy od wersji 1804, ale nie są jeszcze gotowe do użycia. Można nadal używać **domyślny dostawca** typu subskrypcji.
+
+- <!-- TBD - IS ASDK --> Usuwanie subskrypcji użytkownika powoduje zasoby oddzielone. Jako obejście najpierw usuń zasoby użytkowników lub całą grupę zasobów, a następnie usuń subskrypcji użytkownika.
+
+- <!-- TBD - IS ASDK --> Nie można wyświetlić uprawnienia do subskrypcji przy użyciu portali usługi Azure Stack. Jako obejście tego problemu Sprawdź uprawnienia za pomocą programu PowerShell.
+
+
+### <a name="health-and-monitoring"></a>Monitorowanie kondycji i
+
+- <!-- 1264761 - IS ASDK -->  Użytkownik może widzieć alerty dla **kondycji kontrolera** składnik, który ma następujące informacje:  
+
+   Zgłoś alert, #1:
+   - Nazwa: Rola infrastruktury złej kondycji
+   - Ważność: ostrzeżenie
+   - SKŁADNIKÓW: Kontroler kondycji
+   - Opis: Kontroler kondycji pulsu skaner jest niedostępny. To może mieć wpływ na raporty o kondycji i metryki.  
+
+  Zgłoś alert, #2:
+   - Nazwa: Rola infrastruktury złej kondycji
+   - Ważność: ostrzeżenie
+   - SKŁADNIKÓW: Kontroler kondycji
+   - Opis: Kontroler kondycji skanera kodów błędów jest niedostępny. To może mieć wpływ na raporty o kondycji i metryki.
+
+  Obydwa alerty można bezpiecznie zignorować i zostanie zamknięte automatycznie wraz z upływem czasu.  
+
+
+- <!-- 2812138 | IS --> Można napotkać alert w przypadku **magazynu** składnik, który ma następujące informacje:
+
+   - Nazwa: Magazyn usługi wewnętrzny błąd komunikacji  
+   - Waga: krytyczny  
+   - SKŁADNIK: magazynu  
+   - Opis: Wystąpił błąd wewnętrzny komunikacji z usługą magazynu podczas wysyłania żądań do następujących węzłów.  
+
+    Alert można bezpiecznie zignorować, ale musisz ręcznie zamknąć alert.
+
+- <!-- 2368581 - IS. ASDK --> Operatorów usługi Azure Stack, jeśli pojawi się alert małej ilości pamięci, a maszyny wirtualne dzierżawcy nie można wdrożyć za pomocą **błąd podczas tworzenia maszyny Wirtualnej w sieci szkieletowej**, istnieje możliwość, że sygnatury usługi Azure Stack jest mało dostępnej pamięci. Użyj [Planisty wydajności usługi Azure Stack](https://gallery.technet.microsoft.com/Azure-Stack-Capacity-24ccd822) poprawnie dostępnej pojemności dla obciążeń.
+
+
+### <a name="compute"></a>Wystąpienia obliczeniowe
+
+- <!-- 2869209 – IS, ASDK --> Korzystając z [ **AzsPlatformImage Dodaj** polecenia cmdlet](https://docs.microsoft.com/powershell/module/azs.compute.admin/add-azsplatformimage?view=azurestackps-1.4.0), należy użyć **- OsUri** jako konto magazynu, identyfikator URI, gdy dysk jest przekazywany parametr. Jeśli używasz lokalnej ścieżki dysku, polecenia cmdlet zakończy się niepowodzeniem z następującym błędem: *długotrwałych operacji nie powiodło się ze stanem "Niepowodzenie"*. 
+
+- <!--  2966665 – IS, ASDK --> Dołączanie dysków SSD dyski danych do rozmiaru premium zarządzanych dysków maszyn wirtualnych (DS, DSv2, Fs i Fs_V2) kończy się niepowodzeniem z powodu błędu: *nie można zaktualizować dysków maszyny wirtualnej "vmname" Błąd: żądanie nie można wykonać operacji, ponieważ typ konta magazynu " Premium_LRS nie jest obsługiwana dla rozmiaru maszyny Wirtualnej "Standard_DS/Ds_V2/FS/Fs_v2)*
+
+   Aby obejść ten problem, należy użyć *Standard_LRS* dyski danych zamiast *dysków Premium_LRS*. Korzystanie z *Standard_LRS* dysków z danymi nie zmienia się operacji We/Wy lub rozliczeń kosztów. 
+
+- <!--  2795678 – IS, ASDK --> Korzystając z portalu do tworzenia maszyn wirtualnych (VM) rozmiarów maszyn wirtualnych — wersja premium (DS, Ds_v2, FS i FSv2), maszyna wirtualna jest tworzona na koncie magazynu w warstwie standardowa. Tworzenie konta magazynu w warstwie standardowa nie wpływa na funkcjonalnie, operacje We/Wy, lub rozliczeń. 
+
+   Możesz bezpiecznie zignorować ostrzeżenie, że jest wyświetlany komunikat: *przycisk OK, aby używać dysku standardowego na na rozmiar obsługujący dyski w warstwie premium. To może mieć wpływ na wydajność systemu operacyjnego i nie jest zalecane. Rozważ użycie magazynu w warstwie premium (SSD).*
+
+- <!-- 2967447 - IS, ASDK --> Środowisko tworzenia maszyny wirtualnej scale set (VMSS) zapewnia opartych na systemie CentOS 7.2 jako opcję wdrażania. Ponieważ ten obraz nie jest dostępna w usłudze Azure Stack, wybierz inny system operacyjny na potrzeby wdrożenia albo skorzystać z szablonu usługi Azure Resource Manager, określając innego obrazu systemu CentOS, który został pobrany przed ich wdrożeniem w portalu Marketplace przez operatora.  
+
+- <!-- 2724873 - IS --> Korzystając z polecenia cmdlet programu PowerShell **Start AzsScaleUnitNode** lub **Stop AzsScaleunitNode** Zarządzanie jednostek skalowania, pierwsza próba uruchomienia lub zatrzymania jednostki skalowania może zakończyć się niepowodzeniem. Jeśli polecenie cmdlet nie powiedzie się przy pierwszym uruchomieniu, należy uruchomić polecenie cmdlet po raz drugi. Drugiego przebiegu ma być pomyślnie wykonane do ukończenia tej operacji. 
+
+- <!-- TBD - IS ASDK --> Po utworzeniu maszyny wirtualne w portalu użytkowników usługi Azure Stack portal zawiera nieprawidłową liczbę dysków z danymi, które można dołączyć do maszyny Wirtualnej serii DS. Maszyny wirtualne z serii DS może obsłużyć tyle dysków z danymi konfiguracji platformy Azure.
+
+- <!-- TBD - IS ASDK --> Jeśli aprowizacja rozszerzenia na wdrożenie maszyny Wirtualnej trwa zbyt długo, użytkownicy pozwolić limit czasu inicjowania obsługi administracyjnej zamiast próby zatrzymania procesu cofnięcie przydziału lub Usuń maszynę Wirtualną.  
+
+- <!-- 1662991 IS ASDK --> Diagnostyka maszyn wirtualnych systemu Linux nie jest obsługiwana w usłudze Azure Stack. Podczas wdrażania maszyny Wirtualnej z systemem Linux przy użyciu włączenia diagnostyki maszyn wirtualnych, wdrożenie zakończy się niepowodzeniem. Wdrażanie nie powiedzie, jeśli włączysz podstawowe metryki maszyny Wirtualnej systemu Linux, za pomocą ustawień diagnostycznych.  
+
+- <!-- 2724961- IS ASDK --> Po dokonaniu rejestracji **Microsoft.Insight** dostawcy zasobów w ustawieniach subskrypcji i tworzenie maszyny Wirtualnej z systemem Windows przy użyciu gościa systemu operacyjnego diagnostycznych włączone, wykres procent użycia procesora CPU na stronie Omówienie maszyny Wirtualnej nie wyświetla danych metryk.
+
+   Aby znaleźć danych metryk, takich jak wykres procent użycia procesora CPU dla maszyny Wirtualnej, przejdź do okna metryk i wyświetlić wszystkie obsługiwane metryki gościa maszyny Wirtualnej Windows.
+
+
+
+### <a name="networking"></a>Networking  
+
+- <!-- 1766332 - IS ASDK --> W obszarze **sieć**, po kliknięciu **Utwórz bramę sieci VPN** do skonfigurowania połączenia sieci VPN, **oparte na zasadach** jest wymieniony jako typ sieci VPN. Nie należy zaznaczać tej opcji. Tylko **na podstawie trasy** opcja jest obsługiwana w usłudze Azure Stack.
+
+- <!-- 1902460 - IS ASDK --> Usługa Azure Stack obsługuje jeden *bramy sieci lokalnej* dla adresu IP. Ta zasada obowiązuje dla wszystkich subskrypcji dzierżawcy. Po utworzenia pierwszego lokalne bramy połączenia sieciowego, kolejne podejmuje próbę utworzenia zasobu bramy sieci lokalnej za pomocą tego samego adresu IP są zablokowane.
+
+- <!-- 16309153 - IS ASDK --> W sieci wirtualnej, który został utworzony przy użyciu ustawienia serwera DNS z *automatyczne*, zmieniających się niestandardowy błąd serwera DNS. Zaktualizowano ustawienia nie zostaną wypchnięte do maszyn wirtualnych w tej sieci wirtualnej.
+
+- <!-- 2529607 - IS ASDK --> W usłudze Azure Stack *obrotu klucz tajny*, istnieje okres, w której publiczne adresy IP są niedostępne dla 2 do 5 minut.
+
+-   <!-- 2664148 - IS ASDK --> W scenariuszach, w którym dzierżawy uzyskuje dostęp do maszyn wirtualnych przy użyciu tunelu S2S VPN mogą występować w scenariuszu, w której próby nawiązania połączenia się nie powieść, jeśli podsieć lokalna została dodana do bramy sieci lokalnej, po brama została już utworzona. 
+
+
+<!-- ### SQL and MySQL-->
+
+
+### <a name="app-service"></a>App Service
+
+- <!-- 2352906 - IS ASDK --> Użytkownicy, należy zarejestrować dostawcę zasobów magazynu, przed utworzeniem ich pierwszej funkcji platformy Azure w ramach subskrypcji.
+
+
+### <a name="usage"></a>Sposób użycia  
+
+- <!-- TBD - IS ASDK --> Publiczne dane z licznika użycia adresów IP zawiera takie same *Data/godzina zdarzenia* wartość dla każdego rekordu, zamiast *TimeDate* sygnatury, który pokazuje, kiedy rekord został utworzony. Obecnie nie można użyć tych danych do wykonania dokładnego rozliczania użycia publicznego adresu IP.
+
+
+<!-- #### Identity -->
+<!-- #### Marketplace -->
+
+
+## <a name="download-the-update"></a>Pobierz aktualizację
+
+Możesz pobrać pakiet aktualizacji usługi Azure Stack 1809 z [tutaj](https://aka.ms/azurestackupdatedownload).
+  
+
+## <a name="next-steps"></a>Kolejne kroki
+
+- Aby przejrzeć zasady obsługi dla usługi Azure Stack zintegrowane systemy i co należy zrobić, aby zapewnić systemu w stanie wspieranym, zobacz [obsługi zasad w usłudze Azure Stack](azure-stack-servicing-policy.md).  
+- Aby użyć uprzywilejowanych punktu końcowego (program ten) do monitorowania i Wznów aktualizacje, zobacz [monitorowanie aktualizacji w usłudze Azure Stack przy użyciu uprzywilejowanych punktu końcowego](azure-stack-monitor-update.md).  
+- Aby uzyskać omówienie zarządzania aktualizacjami w usłudze Azure Stack, zobacz [zarządzanie aktualizacjami w usłudze Azure Stack — omówienie](azure-stack-updates.md).  
+- Aby uzyskać więcej informacji na temat sposobu stosowania aktualizacji za pomocą usługi Azure Stack, zobacz [stosowanie aktualizacji w usłudze Azure Stack](azure-stack-apply-updates.md).  

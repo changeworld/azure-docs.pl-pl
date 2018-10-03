@@ -2,19 +2,18 @@
 title: Zestaw SDK urządzeń Azure IoT dla języka C | Dokumentacja firmy Microsoft
 description: Rozpoczynanie pracy z usługą SDK urządzeń Azure IoT dla języka C i Dowiedz się, jak tworzyć aplikacje do urządzeń, które komunikują się z usługą IoT hub.
 author: yzhong94
-manager: arjmands
 ms.service: iot-hub
 services: iot-hub
 ms.devlang: c
 ms.topic: conceptual
 ms.date: 08/25/2017
 ms.author: yizhon
-ms.openlocfilehash: db9c22acfba0f6f1781348b36a1d253a515cc063
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0c2f39ed1610598ab4f7f857da3df817089bcb38
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46977280"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044743"
 ---
 # <a name="azure-iot-device-sdk-for-c"></a>Usługa Azure zestaw SDK urządzeń IoT dla języka C
 
@@ -38,13 +37,18 @@ Możesz znaleźć [ **zestaw SDK urządzeń Azure IoT dla języka C** ](https://
 
 Najnowszą wersję bibliotek można znaleźć w **wzorca** gałęzi repozytorium:
 
-  ![](media/iot-hub-device-sdk-c-intro/01-MasterBranch.PNG)
+  ![Zrzut ekranu przedstawiający głównej gałęzi w repozytorium](./media/iot-hub-device-sdk-c-intro/RepoMasterBranch.png)
 
 * Implementacja core SDK znajduje się w **iothub\_klienta** folder, który zawiera implementację najniższy poziom interfejsu API zestawu SDK: **usługi IoTHubClient** biblioteki. **Usługi IoTHubClient** biblioteka zawiera interfejsy API Implementowanie nieprzetworzone komunikaty do wysyłania komunikatów do Centrum IoT Hub i odbieranie komunikatów z usługi IoT Hub. Korzystając z tej biblioteki, odpowiedzialność za wdrażanie serializacji komunikatu, ale inne informacje szczegółowe dotyczące komunikacji z usługą IoT Hub są obsługiwane dla Ciebie.
+
 * **Serializator** folder zawiera funkcje pomocnicze i przykłady, które pokazują, jak do serializowania danych przed wysłaniem do usługi Azure IoT Hub przy użyciu biblioteki klienta. Korzystanie z serializatora nie jest obowiązkowe i jest dostarczana jako udogodnienie. Aby użyć **serializator** biblioteki, zdefiniuj model, który określa dane do wysłania do Centrum IoT i komunikaty oczekuje się od niego. Gdy model jest zdefiniowana, zestaw SDK udostępnia powierzchni interfejsu API, która umożliwia łatwą pracę z komunikatami z urządzenia do chmury i z chmury do urządzeń bez konieczności martwienia się o szczegóły serializacji. Biblioteka jest zależny od innych bibliotek typu open source, które implementują transportu przy użyciu protokołów, takich jak MQTT i protokół AMQP.
+
 * **Usługi IoTHubClient** biblioteki jest zależny od innych bibliotek typu open source:
+
   * [Narzędzie współużytkowane Azure C](https://github.com/Azure/azure-c-shared-utility) biblioteki, która zapewnia funkcje wspólne podstawowych zadań (na przykład ciągów, listy manipulacji i we/wy) wymaganą przy zestawów SDK C dotyczących platformy Azure.
+
   * [Azure uAMQP](https://github.com/Azure/azure-uamqp-c) biblioteki, która jest implementacją protokołu AMQP zoptymalizowany pod kątem urządzeń ograniczonych zasobów po stronie klienta.
+
   * [Azure uMQTT](https://github.com/Azure/azure-umqtt-c) biblioteki, która jest biblioteką ogólnego przeznaczenia, implementacja protokołu MQTT i zoptymalizowane na potrzeby ograniczonego zasobu urządzenia.
 
 Korzystanie z tych bibliotek jest łatwiejsze do zrozumienia, analizując przykładowy kod. Poniższe sekcje opisują kilka przykładowych aplikacji, które znajdują się w zestawie SDK. W tym przewodniku powinien zapewnić dobry sposób działania dla różnych funkcji warstwy architektury zestawu SDK i wprowadzenie do działania za pośrednictwem interfejsów API.
@@ -70,7 +74,9 @@ Teraz, gdy masz przykładowy kod źródłowy, w następnej kolejności wykonaj j
 Istnieje kilka narzędzi typu open source, które ułatwiają zarządzanie Centrum IoT hub.
 
 * Aplikacji Windows, o nazwie [Eksplorator urządzeń](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
+
 * Rozszerzenia programu Visual Studio Code dla wielu platform o nazwie [Azure IoT Toolkit](https://marketplace.visualstudio.com/items?itemName=vsciot-vscode.azure-iot-toolkit).
+
 * Interfejs wiersza polecenia dla wielu platform Python o nazwie [rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure](https://github.com/Azure/azure-iot-cli-extension).
 
 Ten samouczek używa graficznym *Eksplorator urządzeń* narzędzia. Możesz użyć *rozszerzenie Azure IoT Toolkit dla programu VS Code* w przypadku tworzenia w programie VS Code. Można również użyć *rozszerzenia IoT dla interfejsu wiersza polecenia platformy Azure w wersji 2.0* narzędzia, jeśli wolisz używać narzędzi interfejsu wiersza polecenia.
@@ -79,29 +85,31 @@ Narzędzie device explorer używa bibliotek usługi Azure IoT do wykonywania ró
 
 Jeśli nie znasz narzędzie device explorer, Poniższa procedura opisuje jak z niej korzystać, aby dodać urządzenie i uzyskać parametry połączenia urządzenia.
 
-Aby zainstalować narzędzie device explorer, zobacz [sposób używania Device Explorer dla urządzeń usługi IoT Hub](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
+1. Aby zainstalować narzędzie device explorer, zobacz [sposób używania Device Explorer dla urządzeń usługi IoT Hub](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/tools/DeviceExplorer).
 
-Kiedy uruchamiasz program, zostanie wyświetlony ten interfejs:
+2. Kiedy uruchamiasz program, zostanie wyświetlony ten interfejs:
 
-  ![](media/iot-hub-device-sdk-c-intro/03-DeviceExplorer.PNG)
+  ![Zrzut ekranu z bliźniaczej reprezentacji Device Explorer](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinConfigTab.png)
 
-Wprowadź swoje **parametry połączenia Centrum IoT Hub** w pierwszym polu i kliknij **aktualizacji**. Ten krok obejmuje skonfigurowanie narzędzie tak, aby umożliwić komunikację z usługą IoT Hub. **Parametry połączenia** znajduje się w obszarze **usługi IoT Hub** > **ustawienia** > **zasady dostępu współużytkowanego**  >  **iothubowner**.
+3. Wprowadź swoje **parametry połączenia Centrum IoT Hub** w pierwszym polu i kliknij **aktualizacji**. Ten krok obejmuje skonfigurowanie narzędzie tak, aby umożliwić komunikację z usługą IoT Hub. 
 
-Po skonfigurowaniu parametry połączenia Centrum IoT kliknij **zarządzania** karty:
+**Parametry połączenia** znajduje się w obszarze **usługi IoT Hub** > **ustawienia** > **zasady dostępu współużytkowanego**  >  **iothubowner**.
 
-  ![](media/iot-hub-device-sdk-c-intro/04-ManagementTab.PNG)
+4. Po skonfigurowaniu parametry połączenia Centrum IoT kliknij **zarządzania** karty:
+
+  ![Bliźniacza reprezentacja Device Explorer / zarządzania zrzut ekranu](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab.png)
 
 Ta karta jest, którym zarządzasz urządzeń zarejestrowanych w usłudze IoT hub.
 
-Tworzenie urządzenia, klikając **Utwórz** przycisku. Wyświetla okno dialogowe z zestawem wstępnie wypełnionych klucze (podstawowe i pomocnicze). Wprowadź **identyfikator urządzenia** a następnie kliknij przycisk **Utwórz**.
+5. Tworzenie urządzenia, klikając **Utwórz** przycisku. Wyświetla okno dialogowe z zestawem wstępnie wypełnionych klucze (podstawowe i pomocnicze). Wprowadź **identyfikator urządzenia** a następnie kliknij przycisk **Utwórz**.
 
-  ![](media/iot-hub-device-sdk-c-intro/05-CreateDevice.PNG)
+  ![Utwórz zrzut ekranu urządzenia](./media/iot-hub-device-sdk-c-intro/CreateDevice.png)
 
-Po utworzeniu urządzenia urządzenia Wyświetl listę wszystkich zarejestrowanych urządzeń, który został utworzony w tym aktualizacje. Kliknięcie prawym przyciskiem myszy nowe urządzenie, zostanie wyświetlony w tym menu:
+6. Po utworzeniu urządzenia urządzenia Wyświetl listę wszystkich zarejestrowanych urządzeń, który został utworzony w tym aktualizacje. Kliknięcie prawym przyciskiem myszy nowe urządzenie, zostanie wyświetlony w tym menu:
 
-  ![](media/iot-hub-device-sdk-c-intro/06-RightClickDevice.PNG)
+  ![Wyników kliknij prawym przyciskiem myszy bliźniaczej reprezentacji Device Explorer](./media/iot-hub-device-sdk-c-intro/DeviceExplorerTwinManagementTab_RightClick.png)
 
-Jeśli wybierzesz **skopiuj parametry połączenia dla wybranego urządzenia**, parametry połączenia urządzenia są kopiowane do Schowka. Zachowaj kopię parametry połączenia urządzenia. Będzie on potrzebny podczas uruchamiania aplikacji przykładowej, opisane w poniższych sekcjach.
+7. Jeśli wybierzesz **skopiuj parametry połączenia dla wybranego urządzenia**, parametry połączenia urządzenia są kopiowane do Schowka. Zachowaj kopię parametry połączenia urządzenia. Będzie on potrzebny podczas uruchamiania aplikacji przykładowej, opisane w poniższych sekcjach.
 
 Po ukończeniu powyższych kroków, wszystko będzie gotowe rozpocząć uruchamianie kodu. Większość przykładów ma stałą w górnej części pliku źródłowego głównego, który umożliwia wprowadzanie parametrów połączenia. Na przykład, odpowiedni wiersz z **iothub\_klienta\_przykładowe\_mqtt** aplikacja pojawi się w następujący sposób.
 
@@ -115,7 +123,7 @@ W ramach **iothub\_klienta** folderu w [azure-iot-sdk-c](https://github.com/azur
 
 Wersja Windows **iothub\_klienta\_przykładowe\_mqtt** aplikacja zawiera następujące rozwiązania Visual Studio:
 
-  ![](media/iot-hub-device-sdk-c-intro/12-iothub-client-sample-mqtt.PNG)
+  ![Eksplorator rozwiązań programu Visual Studio](./media/iot-hub-device-sdk-c-intro/iothub-client-sample-mqtt.png)
 
 > [!NOTE]
 > Jeśli możesz otworzyć ten projekt w programie Visual Studio 2017, Zaakceptuj monity o rzekieruj projekt do najnowszej wersji.
@@ -141,7 +149,8 @@ Następujące kroki przeprowadzą Cię przez co to są wymagane do użycia za po
 Aby rozpocząć pracę z biblioteki, najpierw należy przydzielić dojścia klienta usługi IoT Hub:
 
 ```c
-if ((iotHubClientHandle = IoTHubClient_LL_CreateFromConnectionString(connectionString, MQTT_Protocol)) == NULL)
+if ((iotHubClientHandle = 
+  IoTHubClient_LL_CreateFromConnectionString(connectionString, MQTT_Protocol)) == NULL)
 {
     (void)printf("ERROR: iotHubClientHandle is NULL!\r\n");
 }
@@ -229,7 +238,7 @@ if (IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, ReceiveMessageCallbac
 else
 {
     (void)printf("IoTHubClient_LL_SetMessageCallback...successful.\r\n");
-...
+    ...
 ```
 
 Ostatni parametr jest pusty wskaźnik dowolnie. W tym przykładzie jest wskaźnik do liczby całkowitej, ale może to być wskaźnik do bardziej złożone struktury danych. Ten parametr umożliwia funkcji wywołania zwrotnego do wykonywania operacji udostępnionego stanu z funkcją wywołującą tej funkcji.
@@ -327,7 +336,7 @@ Koncepcyjnie **serializator** biblioteki znajduje się w górnej części **usł
 
 Wewnątrz **serializator** folderu w [repozytorium azure-iot-sdk-c](https://github.com/Azure/azure-iot-sdk-c), jest **przykłady** folderze, który zawiera aplikację o nazwie **simplesample\_mqtt**. W tym przykładzie w wersji Windows zawiera następujące rozwiązania Visual Studio:
 
-  ![](media/iot-hub-device-sdk-c-intro/14-simplesample_mqtt.PNG)
+  ![Rozwiązania Visual Studio dla przykładu protokołu mqtt](./media/iot-hub-device-sdk-c-intro/simplesample_mqtt.png)
 
 > [!NOTE]
 > Jeśli możesz otworzyć ten projekt w programie Visual Studio 2017, Zaakceptuj monity o rzekieruj projekt do najnowszej wersji.
@@ -457,7 +466,6 @@ static void sendMessage(IOTHUB_CLIENT_LL_HANDLE iotHubClientHandle, const unsign
 }
 ```
 
-
 Drugi do ostatniego parametru **usługi IoTHubClient\_LL\_SendEventAsync** jest odwołanie do funkcji wywołania zwrotnego, która jest wywoływana, gdy dane są przesyłane w pomyślnie. Oto funkcji wywołania zwrotnego w przykładzie:
 
 ```c
@@ -480,7 +488,8 @@ To wszystko na temat wysyłania komunikatów z urządzenia do chmury. Pozostało
 Odbieranie komunikatów działa podobnie jak sposób wiadomości działają w **usługi IoTHubClient** biblioteki. Najpierw należy zarejestrować się funkcji wywołania zwrotnego komunikat:
 
 ```c
-if (IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, IoTHubMessage, myWeather) != IOTHUB_CLIENT_OK)
+if (IoTHubClient_LL_SetMessageCallback(iotHubClientHandle, 
+  IoTHubMessage, myWeather) != IOTHUB_CLIENT_OK)
 {
     printf("unable to IoTHubClient_SetMessageCallback\r\n");
 }
@@ -569,15 +578,8 @@ Każda z tych trzech funkcji jest wyrównywany z trzech funkcji inicjowania opis
 
 W tym artykule opisano podstawowe informacje dotyczące korzystania z bibliotek w **zestaw SDK urządzeń Azure IoT dla języka C**. Go podano wystarczających informacji, aby zrozumieć, co znajduje się w zestawie SDK, jego architekturę i jak rozpocząć pracę z usługą przykłady Windows. Opis zestawu SDK będzie nadal następnego artykułu, ponieważ wyjaśnia [więcej informacji na temat usługi IoTHubClient biblioteki](iot-hub-device-sdk-c-iothubclient.md).
 
-Aby dowiedzieć się więcej na temat tworzenia usługi IoT Hub, zobacz [Azure IoT SDKs][lnk-sdks].
+Aby dowiedzieć się więcej na temat tworzenia usługi IoT Hub, zobacz [Azure IoT SDKs](iot-hub-devguide-sdks.md).
 
 Aby bliżej zapoznać się z możliwościami usługi IoT Hub, zobacz:
 
-* [Wdrażanie rozwiązań SI na urządzeniach brzegowych przy użyciu usługi Azure IoT Edge][lnk-iotedge]
-
-[lnk-file upload]: iot-hub-csharp-csharp-file-upload.md
-[lnk-create-hub]: iot-hub-rm-template-powershell.md
-[lnk-c-sdk]: iot-hub-device-sdk-c-intro.md
-[lnk-sdks]: iot-hub-devguide-sdks.md
-
-[lnk-iotedge]: ../iot-edge/tutorial-simulate-device-linux.md
+* [Wdrażanie rozwiązań SI na urządzeniach brzegowych za pomocą usługi Azure IoT Edge](../iot-edge/tutorial-simulate-device-linux.md)

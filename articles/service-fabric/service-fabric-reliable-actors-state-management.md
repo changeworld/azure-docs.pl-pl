@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/02/2017
 ms.author: vturecek
-ms.openlocfilehash: d5bc6877aa353ae37ba3ada53ee620a0230357e9
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: aae0ec93f3de708096ff9546a3a4f4e090095a89
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585173"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041165"
 ---
 # <a name="reliable-actors-state-management"></a>Niezawodne zarządzanie stanem aktorów
 Elementy Reliable Actors są jednowątkowe obiekty, hermetyzują logiki i stanu. Ponieważ aktorów są uruchamiane na usług Reliable Services, ich niezawodne zachowują stan, przy użyciu tego samego trwałości i mechanizmów replikacji. W ten sposób Aktorzy nie strać ich stanu po awarii po ponownej aktywacji po wyrzucania elementów bezużytecznych lub po przeniesieniu ich między węzłami w klastrze z powodu równoważenia zasobów lub uaktualnień.
@@ -121,7 +121,7 @@ Poniżej przedstawiono niektóre sugerowane rozwiązania i wskazówki dotyczące
 Jest to niezbędne, wydajność i użycie zasobów dla aplikacji. Zawsze, gdy występuje wszelkich zapisu/aktualizacji "o nazwie stan" aktora, wartości całkowitej odpowiadającego temu Państwu"o nazwie" jest serializowane i wysyłane przez sieć do replik pomocniczych.  Pomocnicze bazy danych zapisu na dysku lokalnym i odpowiedzi do repliki podstawowej. Gdy podstawowy otrzyma potwierdzeń z kworum replik pomocniczych, zapisuje stan jego dysk lokalny. Na przykład załóżmy, że wartość jest klasa, która ma 20 elementów członkowskich i o rozmiarze 1 MB. Nawet wtedy, gdy został zmodyfikowany tylko jeden z członków klasy, która ma rozmiar 1 KB, zakończenia płaci się koszt serializacji i zapisu na dysku i sieci za pełną 1 MB. Podobnie jeśli wartość wynosi kolekcję (takie jak listy, tablicy lub słownika), naliczana jest opłata za pełną kolekcję nawet wtedy, gdy jeden z członków jej modyfikować. Interfejs StateManager Klasa aktora przypomina słownika. Zawsze powinny modelować struktury danych reprezentujący stanu aktora, na podstawie tego słownika.
  
 ### <a name="correctly-manage-the-actors-life-cycle"></a>Poprawnie Zarządzanie cyklem życia aktora
-Należy mieć jednoznaczne zasady dotyczące zarządzania rozmiar stanu w każdej partycji usługi aktora. Usługa aktora powinni mieć stałą liczbą aktorów i użyć ich ponownie bardzo, jak to możliwe. Jeśli nieustannie tworzy nowe podmioty, należy je usunąć, po zakończeniu pracy. Struktura aktora przechowuje niektóre metadane dotyczące każdego aktora, który istnieje. Usuwanie stanu aktora nie powoduje usunięcia metadanych dotyczących tego aktora. Należy usunąć aktora (zobacz [usuwanie aktorów i ich stanu](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)) do usunięcia wszystkich informacji o jej przechowywanych w systemie. Jako dodatkowe sprawdzenie powinien zapytań usługi aktora (zobacz [wyliczanie aktorów](service-fabric-reliable-actors-enumerate.md)) raz na jakiś czas, aby upewnić się, liczba aktorów znajdują się w oczekiwanym zakresem.
+Należy mieć jednoznaczne zasady dotyczące zarządzania rozmiar stanu w każdej partycji usługi aktora. Usługa aktora powinni mieć stałą liczbą aktorów i wykorzystać ją w miarę możliwości. Jeśli nieustannie tworzy nowe podmioty, należy je usunąć, po zakończeniu pracy. Struktura aktora przechowuje niektóre metadane dotyczące każdego aktora, który istnieje. Usuwanie stanu aktora nie powoduje usunięcia metadanych dotyczących tego aktora. Należy usunąć aktora (zobacz [usuwanie aktorów i ich stanu](service-fabric-reliable-actors-lifecycle.md#manually-deleting-actors-and-their-state)) do usunięcia wszystkich informacji o jej przechowywanych w systemie. Jako dodatkowe sprawdzenie powinien zapytań usługi aktora (zobacz [wyliczanie aktorów](service-fabric-reliable-actors-enumerate.md)) raz na jakiś czas, aby upewnić się, liczbę uczestników znajdują się w oczekiwanym zakresem.
  
 Jeśli kiedykolwiek coraz częściej rozmiar oczekiwany rozmiar pliku bazy danych usługi aktora, upewnij się, że postępujesz zgodnie z poprzednim wytycznych. Jeśli postępujesz zgodnie z tymi wytycznymi i nadal są bazy danych problemów z rozmiarem plików, wykonaj następujące czynności [Otwórz bilet pomocy technicznej](service-fabric-support.md) z zespołem produktu, aby uzyskać pomoc.
 

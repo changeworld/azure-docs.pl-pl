@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 09/24/2018
 ms.author: ramankum
 ms.custom: include file
-ms.openlocfilehash: ea312002a9a1a39505cd4748864ca9dfc1da43dd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 097fc837807d28e02732cf8820afac74c33e16d9
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47060337"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48240008"
 ---
 # <a name="high-performance-premium-storage-and-managed-disks-for-vms"></a>Magazyn w warstwie Premium o wysokiej wydajności i dysków zarządzanych dla maszyn wirtualnych
 
@@ -280,7 +280,7 @@ sudo rpm -e hypervkvpd  ## (Might return an error if not installed. That's OK.)
 sudo yum install microsoft-hyper-v
 ```
 
-Aby aktywować nowe sterowniki, uruchom ponownie komputer.
+Aby aktywować nowe sterowniki, uruchom ponownie maszynę Wirtualną.
 
 ## <a name="pricing-and-billing"></a>Cennik i rozliczenia
 

@@ -14,13 +14,13 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/10/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 7f55b762bda5ff0c7bbedf414b18465656496cbb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.component: ''
+ms.openlocfilehash: 6aaf9b42677064b31c56be96775692c75812e145
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46984589"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044624"
 ---
 # <a name="create-and-manage-alert-rules-in-log-analytics-with-rest-api"></a>Tworzenie i zarządzanie nimi reguły alertów w usłudze Log Analytics przy użyciu interfejsu API REST
 Log Analytics alertu interfejsu API REST umożliwia tworzenie i Zarządzanie alertami w Operations Management Suite (OMS).  Ten artykuł zawiera szczegółowe informacje o interfejsie API i przykłady do wykonywania różnych operacji.
@@ -329,7 +329,7 @@ Powiadomienia e-mail Wyślij wiadomości e-mail do co najmniej jednego adresata.
 | Właściwość | Opis |
 |:--- |:--- |
 | Adresaci |Lista adresów e-mail. |
-| Temat |Temat wiadomości e-mail. |
+| Podmiot |Temat wiadomości e-mail. |
 | Załącznik |Załączniki nie są obecnie obsługiwane, dzięki czemu zawsze będzie to miało wartość "None". |
 
 Oto przykładowa odpowiedź dla akcji powiadomienia e-mail o progu.  

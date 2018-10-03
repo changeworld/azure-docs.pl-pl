@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.component: core
 ms.topic: article
 ms.date: 09/24/2018
-ms.openlocfilehash: 65134d78fb011ae707c0629bef1ebb1a66bd8ec2
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 99d85c769b876baa360628bfc20ad5b1563a0a3f
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018506"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237334"
 ---
 # <a name="select-and-use-a-compute-target-to-train-your-model"></a>Wybierz, a następnie użyć obliczeniowego elementu docelowego do nauczenia modelu
 

@@ -12,12 +12,12 @@ ms.date: 09/18/2018
 ms.author: lizross
 ms.reviewer: elkuzmen
 ms.custom: it-pro
-ms.openlocfilehash: dc28263fca5c6854ffad12678b472804f074addd
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: c4529948a0a1b165945de78de97cc2470c6b431e
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47035746"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237555"
 ---
 # <a name="how-to-add-your-custom-domain-name-using-the-azure-active-directory-portal"></a>Porady: Dodawanie niestandardowej nazwy domeny za pomocą portalu Azure Active Directory
 Każdej nowej usługi Azure AD dzierżawy, który jest dostarczany z początkową nazwę domeny, *nazwa_domeny*. onmicrosoft.com. Nie można zmienić ani usunąć początkowej nazwy domeny, ale nazwy organizacji może dodać do listy. Dodawanie niestandardowych nazw domen, ułatwia utworzenie nazwy użytkownika, które są znane użytkownikom, takie jak *alain@contoso.com*.
@@ -92,7 +92,8 @@ Po zarejestrowaniu niestandardową nazwę domeny, należy upewnić się, że jes
 
     Jeśli nie można zaktualizować rekord w witrynie rejestratora, możesz udostępniać wpis z osobą, która ma odpowiednich uprawnień, aby dodać wpis i sprawdź, czy są dokładne.
 
-- **Upewnij się, że nazwa domeny nie jest już używana w innym katalogu.** Nazwy domeny może zostać zweryfikowana tylko w jednym katalogu, co oznacza, że jeśli nazwa domeny jest obecnie weryfikowana w innym katalogu, nie można również można zweryfikować w nowym katalogu. Aby rozwiązać ten problem duplikatów, należy usunąć nazwę domeny z katalogu stare. Aby uzyskać więcej informacji na temat usuwania nazw domen, zobacz [Zarządzanie niestandardowymi nazwami domen](../users-groups-roles/domains-manage.md). 
+- **Upewnij się, że nazwa domeny nie jest już używana w innym katalogu.** Nazwy domeny może zostać zweryfikowana tylko w jednym katalogu, co oznacza, że jeśli nazwa domeny jest obecnie weryfikowana w innym katalogu, nie można również można zweryfikować w nowym katalogu. Aby rozwiązać ten problem duplikatów, należy usunąć nazwę domeny z katalogu stare. Aby uzyskać więcej informacji na temat usuwania nazw domen, zobacz [Zarządzanie niestandardowymi nazwami domen](../users-groups-roles/domains-manage.md).
+    - Jeśli istnieją użytkownicy, którzy aktywowali usługę PowerBI za pomocą rejestracji samoobsługowej i utworzyli niezarządzaną dzierżawę dla organizacji, administrator IT może zarządzać tą dzierżawą za pośrednictwem przejęcia lub dodać domenę przy użyciu opcji wymuszonego przejęcia w programie PowerShell. Aby dowiedzieć się więcej o przejęciu domeny przez administratora, zobacz [przejąć niezarządzanego katalogu jako administrator usługi Azure Active Directory](../users-groups-roles/domains-admin-takeover.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

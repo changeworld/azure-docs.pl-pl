@@ -9,12 +9,12 @@ ms.author: raymondl
 author: raymondlaghaeian
 ms.reviewer: sgilley
 ms.date: 09/24/2018
-ms.openlocfilehash: 5a62d4b0b324d8b2536e408132210f07f08e8bb8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: e796feaf8ef25eaa91b7db810a11a67da13e9df1
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46958700"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237181"
 ---
 # <a name="deploy-web-services-to-azure-container-instances"></a>Wdrażaj usługi sieci web w usłudze Azure Container Instances 
 

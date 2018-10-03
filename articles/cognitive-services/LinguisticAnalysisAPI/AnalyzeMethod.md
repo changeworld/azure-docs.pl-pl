@@ -10,14 +10,18 @@ ms.component: linguistic-analysis
 ms.topic: conceptual
 ms.date: 12/13/2016
 ms.author: lesun
-ms.openlocfilehash: c8d380a23c1bbfca8258ef533453050c72a3abd0
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ROBOTS: NOINDEX
+ms.openlocfilehash: 87df00ae5ca12b168f2e1c03850da2e94cec350b
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46129628"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239306"
 ---
 # <a name="analyze-method"></a>Metoda analyze
+
+> [!IMPORTANT]
+> Wersja zapoznawcza analizy językowej została zlikwidowana 9 sierpnia 2018 r. Firma Microsoft zaleca używanie [moduły analizy tekstu w usłudze Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) do przetwarzania tekstu i analizy.
 
 **Analizowanie** interfejsu API REST jest używany do analizowania danych wejściowych danego języka naturalnego.
 Który może obejmować tylko znajdowanie [zdania i tokeny](Sentences-and-Tokens.md) w tym dane wejściowe, znajdowanie [tagów części mowy](POS-tagging.md), lub znajdowania [drzewa constitutency](Constituency-Parsing.md).
@@ -150,7 +154,7 @@ Treści żądania: Ładunek JSON
   "analyzerIds": [
     "4FA79AF1-F22C-408D-98BB-B7D7AEEF7F04",
     "22A6B758-420F-4745-8A3C-46835A67C0D2" ],
-  "text": "Hi, Tom! How are you today?" 
+  "text": "Hi, Tom! How are you today?"
 }
 ```
 
@@ -158,13 +162,12 @@ Odpowiedź: JSON
 ```json
 [
   {
-    "analyzerId": "4FA79AF1-F22C-408D-98BB-B7D7AEEF7F04", 
+    "analyzerId": "4FA79AF1-F22C-408D-98BB-B7D7AEEF7F04",
     "result": [ ["NNP",",","NNP","."], ["WRB","VBP","PRP","NN","."] ]
   },
   {
-    "analyzerId": "22A6B758-420F-4745-8A3C-46835A67C0D2", 
+    "analyzerId": "22A6B758-420F-4745-8A3C-46835A67C0D2",
     "result":["(TOP (S (NNP Hi) (, ,) (NNP Tom) (. !)))","(TOP (SBARQ (WHADVP (WRB How)) (SQ (VP (VBP are)) (NP (PRP you)) (NN today) (. ?))))"]
   }
 ]
 ```
-

@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: a79c09df7d5fec5884a6810b82b7c174042a4c93
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: f6067a6270010aaf57a404f66b8a99cbafa525ca
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054567"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041700"
 ---
 # <a name="how-it-works-azure-multi-factor-authentication"></a>Jak to działa: Usługa Azure Multi-Factor Authentication
 
@@ -57,8 +57,7 @@ Ponieważ większość użytkowników są przyzwyczajeni do korzystania z tylko 
 
 * Szkolenie z personelem pomocy technicznej do obsługi scenariuszy, w których użytkownik nie może zalogować, ponieważ nie mają dostępu do metody ich uwierzytelniania lub nie działają prawidłowo.
    * Za pomocą zasad dostępu warunkowego dla usługi MFA Azure z personelem pomocy technicznej można dodać użytkownika do grupy, który jest wykluczony z zasad, wymaganie usługi MFA.
-   * Działu pomocy technicznej można włączyć tymczasowe jednorazowe obejście dla użytkowników serwera usługi Azure MFA umożliwia użytkownikowi uwierzytelnienie bez weryfikacji dwuetapowej. Obejście jest tymczasowe i wygasa po określonej liczbie sekund.
-   * Za pomocą zasad dostępu warunkowego dla usługi MFA Azure z personelem pomocy technicznej można dodać użytkownika do grupy, który jest wykluczony z zasad, wymaganie usługi MFA.
+   * Działu pomocy technicznej można włączyć tymczasowe jednorazowe obejście dla użytkowników serwera usługi Azure MFA umożliwia użytkownikowi uwierzytelnienie bez weryfikacji dwuetapowej. Obejście jest tymczasowe i wygasa po określonej liczbie sekund.   
 * Należy rozważyć użycie zaufanych adresów IP lub nazwane lokalizacje jako sposób, aby zminimalizować monity weryfikacji dwuetapowej. Dzięki tej funkcji Administratorzy dzierżawy zarządzanych lub federacyjnego można pominąć weryfikacji dwuetapowej dla użytkowników, którzy są logowanie z zaufanej lokalizacji sieciowej takich jak intranet w organizacji.
 * Wdrażanie [usługi Azure AD Identity Protection](../active-directory-identityprotection.md) i wyzwolić weryfikację dwuetapową, w oparciu o zdarzenia o podwyższonym ryzyku.
 

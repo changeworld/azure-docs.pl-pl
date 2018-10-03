@@ -12,16 +12,19 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/23/2018
-ms.openlocfilehash: 314a2182c3be5c5f10e075cdbda27f4a716f2536
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 18f354f931995731bf4f0da47e830a575e96fc7c
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47160404"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237776"
 ---
 # <a name="what-is-the-hyperscale-service-tier-preview-in-azure-sql-database"></a>Co to jest warstwę usługi na dużą skalę (wersja zapoznawcza) w usłudze Azure SQL Database?
 
 Warstwy usług na dużą skalę w usłudze Azure SQL Database jest najnowsza warstwy usług w modelu zakupu opartego na rdzeniach wirtualnych. Ta warstwa usługi jest wysoce skalowalny magazyn i warstwy wydajności obliczeniowej, który korzysta z architektury platformy Azure do skalowania magazynu i zasoby obliczeniowe dla usługi Azure SQL Database w znacznym stopniu po przekroczeniu limitów dostępnych dla firm i ogólnego przeznaczenia Warstwy usług krytycznych.
+
+> [!IMPORTANT]
+> Warstwy usług na dużą skalę jest obecnie w publicznej wersji zapoznawczej i jest dostępny w niektórych regionach platformy Azure. Aby region pełną listę, zobacz [na dużą skalę usługa warstwy dostępne regiony](#hyperscale-regions)
 
 ## <a name="what-are-the-capabilities-of-the-hyperscale-service-tier"></a>Jakie są możliwości warstwy usług na dużą skalę
 
@@ -83,9 +86,12 @@ Kopie zapasowe są base migawki plików i dlatego są prawie natychmiastowe. Roz
 
 Dzięki możliwości szybkiego uruchomienia dodatkowych tylko do odczytu węzłów obliczeniowych w górę/w dół Hiperskali architektura umożliwia znaczne odczyt możliwości skalowania i można także zwolnić węzła obliczeniowego podstawowego do obsługi liczby żądań zapisu. Ponadto węzły obliczeniowe można skalować w górę/w dół szybko z uwagi na architekturę magazyn udostępniony architektury na dużą skalę. 
 
+### <a name="a-namehyperscale-regions-hyperscale-service-tier-available-regions"></a><a name="hyperscale-regions"> Dostępne regiony warstwę usługi na dużą skalę
+Warstwy usług na dużą skalę jest obecnie w publicznej wersji zapoznawczej i jest dostępna w następujących regionach świadczenia usługi Azure: EastUS1 EastUS2, WestUS2, CentralUS, NorthCentralUS, WestEurope, NorthEurope, UKWest, AustraliaEast, AustraliaSouthEast, SouthEastAsia, JapanEast, KoreaCentral
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Aby uzyskać informacji o warstwach usługi, zobacz [warstwy usług](sql-database-service-tiers.md)
-- Aby uzyskać szczegółowe informacje dotyczące limitów zasobów, zobacz [limity zasobów (rdzeń wirtualny)](sql-database-resource-limits.md)
+- Zobacz [Przegląd zasobów limity na serwerze logicznym](sql-database-resource-limits-logical-server.md) uzyskać informacji dotyczących ograniczeń na poziomach serwera i subskrypcji.
+- Zakupu limity modelu pojedynczej bazy danych, zobacz [usługi Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pojedynczej bazy danych](sql-database-vcore-resource-limits-single-databases.md).
 - Dla funkcji i listy porównanie, zobacz [typowe funkcje SQL](sql-database-features.md).

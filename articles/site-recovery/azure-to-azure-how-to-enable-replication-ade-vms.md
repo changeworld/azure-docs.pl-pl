@@ -8,12 +8,12 @@ ms.service: site-recovery
 ms.topic: article
 ms.date: 09/28/2018
 ms.author: sutalasi
-ms.openlocfilehash: d276098c951cb26a97906e6ac7e23c0ab2e4d137
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 5d1beb124bbb857d13aecad7bf0cef493d42dac5
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432583"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043281"
 ---
 # <a name="replicate-azure-disk-encryption-ade-enabled-virtual-machines-to-another-azure-region"></a>Replikowanie maszyn wirtualnych jest włączone szyfrowanie (ADE) dysku platformy Azure do innego regionu platformy Azure
 
@@ -127,7 +127,7 @@ W poniższych scenariuszach, trzeba będzie można zaktualizować ustawień szyf
   - Włączona replikacja usługi Site recovery na maszynie Wirtualnej i włączone szyfrowanie dysków Azure (ADE) na źródłowej maszynie Wirtualnej w późniejszym terminie
   - Włączona replikacja usługi Site recovery na maszynie Wirtualnej i zmienić klucz szyfrowania dysku i/lub klucz szyfrowania klucza na źródłowej maszynie Wirtualnej w późniejszym terminie
 
-Możesz użyć [skrypt](#copy-ade-keys-to-dr-region-using-powerShell-script) kopiowanie kluczy szyfrowania do regionu docelowego, a następnie zaktualizować ustawienia szyfrowania docelowego w **usługi Recovery services vault -> zreplikowany element -> Właściwości -> obliczenia i sieć.**
+Możesz użyć [skrypt](#copy-ade-keys-to-dr-region-using-powershell-script) kopiowanie kluczy szyfrowania do regionu docelowego, a następnie zaktualizować ustawienia szyfrowania docelowego w **usługi Recovery services vault -> zreplikowany element -> Właściwości -> obliczenia i sieć.**
 
 ![Update-ade-settings](./media/azure-to-azure-how-to-enable-replication-ade-vms/update-ade-settings.png)
 

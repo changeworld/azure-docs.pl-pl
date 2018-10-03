@@ -11,17 +11,17 @@ author: anosov1960
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/18/2018
-ms.openlocfilehash: d82f4e03176911804702db2ea18a5bc9a95583a3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/01/2018
+ms.openlocfilehash: 3242f683fd6190209e3395bd8410dd1b2cd36960
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47158706"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043355"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Ładowanie równoważenie obciążeń związanych z zapytaniami tylko do odczytu (wersja zapoznawcza) przy użyciu repliki tylko do odczytu
 
-**Odczyt skalowalnego w poziomie** pozwala załadować saldo usługa Azure SQL Database tylko do odczytu obciążeń przy użyciu pojemności repliki tylko do odczytu. 
+**Odczyt skalowalnego w poziomie** pozwala załadować saldo usługa Azure SQL Database tylko do odczytu obciążeń przy użyciu pojemność jednej z replik tylko do odczytu. 
 
 ## <a name="overview-of-read-scale-out"></a>Omówienie odczytu skalowalnego w poziomie
 

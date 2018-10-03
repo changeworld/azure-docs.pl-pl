@@ -2,21 +2,21 @@
 title: Usługa Azure Site Recovery — ustawienia i testowania odzyskiwania po awarii dla maszyn wirtualnych platformy Azure przy użyciu programu Azure PowerShell | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skonfigurować odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure za pomocą usługi Azure Site Recovery przy użyciu programu Azure PowerShell.
 services: site-recovery
-author: bsiva
-manager: abhemraj
-editor: raynew
+author: sujayt
+manager: rochakm
 ms.service: site-recovery
 ms.topic: article
-ms.date: 07/06/2018
-ms.author: bsiva
-ms.openlocfilehash: 1bf2fe84f9695993dacb6d197d75c18e5db86c4e
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.date: 10/02/2018
+ms.author: sutalasi
+ms.openlocfilehash: 9b7200dab0351b6cd00aef05bf27c5c71a049d76
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433433"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044511"
 ---
 # <a name="set-up-disaster-recovery-for-azure-virtual-machines-using-azure-powershell"></a>Konfigurowanie odzyskiwania po awarii dla maszyn wirtualnych platformy Azure przy użyciu programu Azure PowerShell
+
 
 W tym artykule, możesz dowiedzieć się, jak skonfigurować i przetestować odzyskiwanie po awarii dla maszyn wirtualnych platformy Azure przy użyciu programu Azure PowerShell.
 
@@ -159,12 +159,15 @@ Remove-Item -Path $Vaultsettingsfile.FilePath
 ```
 ## <a name="prepare-the-vault-to-start-replicating-azure-virtual-machines"></a>Przygotowanie magazynu, aby rozpocząć replikowanie maszyn wirtualnych platformy Azure
 
-####<a name="1-create-a-site-recovery-fabric-object-to-represent-the-primarysource-region"></a>1. Utwórz obiekt sieci szkieletowej Site Recovery do reprezentowania primary(source) region
+### <a name="create-a-site-recovery-fabric-object-to-represent-the-primary-source-region"></a>Utwórz obiekt sieci szkieletowej Site Recovery do reprezentowania region podstawowy (źródło)
 
-Obiekt sieci szkieletowej, w magazynie reprezentuje region platformy Azure. Obiekt podstawowy sieci szkieletowej jest obiektem sieci szkieletowej, tworzone do reprezentowania regionu platformy Azure, której należy maszyn wirtualnych chronionych w magazynie. W tym przykładzie w tym artykule chroniona maszyna wirtualna jest w regionie wschodnie stany USA.
+Obiekt sieci szkieletowej, w magazynie reprezentuje region platformy Azure. Do reprezentowania regionu platformy Azure, które chronione w magazynie maszyny wirtualne należą do tworzenia obiektu podstawowego sieci szkieletowej. W tym przykładzie w tym artykule chroniona maszyna wirtualna jest w regionie wschodnie stany USA.
 
-> [!NOTE]
-> Operacjami usługi Azure Site Recovery są wykonywane asynchronicznie. Po zainicjowaniu operacji przesyłania zadania usługi Azure Site Recovery i zwracany jest zadaniem śledzenia obiektu. Pobierz najnowszy stan zadania (Get-ASRJob) i monitorowanie stanu operacji, należy użyć zadania śledzenia obiektu.
+- Można utworzyć tylko jedną siecią szkieletową obiektu na region. 
+- Jeśli zostało wcześniej włączone replikacji usługi Site Recovery dla maszyny Wirtualnej w witrynie Azure portal, Usługa Site Recovery automatycznie tworzy obiekt sieci szkieletowej. Jeśli istnieje obiekt sieci szkieletowej dla regionu, nie można utworzyć nowy.
+
+
+Przed rozpoczęciem należy pamiętać, że operacjami usługi Site Recovery są wykonywane asynchronicznie. Po zainicjowaniu operacji przesyłania zadania usługi Azure Site Recovery i zwracany jest zadaniem śledzenia obiektu. Pobierz najnowszy stan zadania (Get-ASRJob) i monitorowanie stanu operacji, należy użyć zadania śledzenia obiektu.
 
 ```azurepowershell
 #Create Primary ASR fabric
@@ -184,7 +187,7 @@ $PrimaryFabric = Get-AsrFabric -Name "A2Ademo-EastUS"
 ```
 Jeśli chronione maszyny wirtualne z różnych regionów platformy Azure w tym samym magazynie, należy utworzyć jeden obiekt sieci szkieletowej dla każdego źródła region platformy Azure.
 
-####<a name="2-create-a-site-recovery-fabric-object-to-represent-the-recovery-region"></a>2. Utwórz obiekt sieci szkieletowej Site Recovery do reprezentowania region odzyskiwania
+### <a name="create-a-site-recovery-fabric-object-to-represent-the-recovery-region"></a>Utwórz obiekt sieci szkieletowej Site Recovery do reprezentowania region odzyskiwania
 
 Obiekt sieci szkieletowej odzyskiwania reprezentuje odzyskiwania lokalizacji platformy Azure. Maszyny wirtualne będą replikowane do i odzyskana (w przypadku pracy awaryjnej) regionie odzyskiwania, reprezentowane przez sieć szkieletową odzyskiwania. Odzyskiwanie region platformy Azure, w tym przykładzie jest zachodnie stany USA 2.
 
@@ -205,7 +208,7 @@ $RecoveryFabric = Get-AsrFabric -Name "A2Ademo-WestUS"
 
 ```
 
-####<a name="3-create-a-site-recovery-protection-container-in-the-primary-fabric"></a>3. Tworzenie kontenera ochrony Usługa Site Recovery w podstawowej sieci szkieletowej
+### <a name="create-a-site-recovery-protection-container-in-the-primary-fabric"></a>Tworzenie kontenera ochrony Usługa Site Recovery w podstawowej sieci szkieletowej
 
 Kontener ochrony jest kontenerem, używane do grupowania zreplikowane elementy w sieci szkieletowej.
 
@@ -223,7 +226,7 @@ Write-Output $TempASRJob.State
 
 $PrimaryProtContainer = Get-ASRProtectionContainer -Fabric $PrimaryFabric -Name "A2AEastUSProtectionContainer"
 ```
-####<a name="4-create-a-site-recovery-protection-container-in-the-recovery-fabric"></a>4. Tworzenie kontenera ochrony Usługa Site Recovery w sieci szkieletowej odzyskiwania
+### <a name="create-a-site-recovery-protection-container-in-the-recovery-fabric"></a>Tworzenie kontenera ochrony Usługa Site Recovery w sieci szkieletowej odzyskiwania
 
 ```azurepowershell
 #Create a Protection container in the recovery Azure region (within the Recovery fabric)
@@ -242,7 +245,7 @@ Write-Output $TempASRJob.State
 $RecoveryProtContainer = Get-ASRProtectionContainer -Fabric $RecoveryFabric -Name "A2AWestUSProtectionContainer"
 ```
 
-####<a name="5-create-a-replication-policy"></a>5. Tworzenie zasad replikacji
+### <a name="create-a-replication-policy"></a>Tworzenie zasad replikacji
 
 ```azurepowershell
 #Create replication policy
@@ -259,7 +262,7 @@ Write-Output $TempASRJob.State
 
 $ReplicationPolicy = Get-ASRPolicy -Name "A2APolicy"
 ```
-####<a name="6-create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container"></a>6. Utwórz mapowanie kontenera ochrony między podstawowymi i odzyskiwania w kontenerze ochrony
+### <a name="create-a-protection-container-mapping-between-the-primary-and-recovery-protection-container"></a>Utwórz mapowanie kontenera ochrony między podstawowymi i odzyskiwania w kontenerze ochrony
 
 Do mapowania kontenera ochrony mapuje kontener ochronę podstawową za pomocą kontenera ochrony odzyskiwania i zasady replikacji. Utwórz jedno mapowanie dla każdej zasady replikacji, które będzie używane do replikacji maszyn wirtualnych między dwoma kontenera ochrony.
 
@@ -279,7 +282,7 @@ Write-Output $TempASRJob.State
 $EusToWusPCMapping = Get-ASRProtectionContainerMapping -ProtectionContainer $PrimaryProtContainer -Name "A2APrimaryToRecovery"
 ```
 
-####<a name="7-create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>7. Tworzenie mapowania kontenera ochrony w przypadku powrotu po awarii (replikacja odwrotna po przejściu w tryb failover)
+### <a name="create-a-protection-container-mapping-for-failback-reverse-replication-after-a-failover"></a>Tworzenie mapowania kontenera ochrony w przypadku powrotu po awarii (replikacja odwrotna po przejściu w tryb failover)
 
 Po przejściu w tryb failover, gdy jesteś gotowy przywrócić nieudane przez maszynę wirtualną do oryginalnego region platformy Azure, można przeprowadzić powrotu po awarii. Powrót po awarii, nie powiodło się za pośrednictwem maszyny wirtualnej jest replikowany z nie powiodło się w regionie do regionu oryginalnego. Do replikacji odwrotnej przełączyć role oryginalnego region i region odzyskiwania. Oryginalny region staje się teraz nowy region odzyskiwania, a jaki był pierwotnie regionie odzyskiwania teraz staje się regionu podstawowego. Mapowanie kontenera ochrony do replikacji odwrotnej reprezentuje przełączono stan role regionów oryginału i odzyskiwania.
 

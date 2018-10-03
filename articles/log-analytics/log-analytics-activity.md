@@ -1,6 +1,6 @@
 ---
-title: Zbieranie i analizowanie dzienników Azure aktywności w Log Analytics | Dokumentacja firmy Microsoft
-description: Rozwiązania Azure Dzienniki aktywności służy do analizowania i przeszukiwać dziennik aktywności platformy Azure Twojej subskrypcji platformy Azure.
+title: Zbieraj i Analizuj Dzienniki aktywności platformy Azure w usłudze Log Analytics | Dokumentacja firmy Microsoft
+description: Rozwiązanie dzienników aktywności platformy Azure służy do analizowania i wyszukiwanie w dzienniku aktywności platformy Azure w Twojej subskrypcji platformy Azure.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -14,92 +14,92 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 0b05dc17fc7ba567bf633c25a080fbf56903935c
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: dab2dd2b1d020a7619b18f330640b7f555a1f8c1
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37130330"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044386"
 ---
-# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Zbieranie i analizowanie dzienników aktywności platformy Azure w analizy dzienników
+# <a name="collect-and-analyze-azure-activity-logs-in-log-analytics"></a>Zbieraj i Analizuj Dzienniki aktywności platformy Azure w usłudze Log Analytics
 
-![Symbol Dzienniki aktywności platformy Azure](./media/log-analytics-activity/activity-log-analytics.png)
+![Symbol dzienników aktywności usługi Azure](./media/log-analytics-activity/activity-log-analytics.png)
 
-Rozwiązania analizy dziennika aktywności ułatwiają analizowanie i wyszukaj [dziennik aktywności platformy Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) wszystkich subskrypcji platformy Azure. Dziennik aktywności platformy Azure jest dziennika, który oferuje wgląd w operacji wykonywanych na zasobów w subskrypcji. Dziennik aktywności była wcześniej znana jako *dzienników inspekcji* lub *operacyjne dzienniki* ponieważ raporty zdarzeń dla subskrypcji.
+Rozwiązanie Activity Log Analytics ułatwiają analizowanie i wyszukaj [dziennika aktywności platformy Azure](../monitoring-and-diagnostics/monitoring-overview-activity-logs.md) we wszystkich subskrypcjach platformy Azure. Dziennik aktywności platformy Azure jest dziennik, który zawiera szczegółowe informacje dotyczące operacji wykonywanych na zasobach w Twoich subskrypcjach. Dziennik aktywności była wcześniej znana jako *dzienników inspekcji* lub *operacyjne dzienniki* od momentu jego raporty zdarzeń dla subskrypcji.
 
-Korzystając z dziennika aktywności, można określić *co*, *kto*, i *podczas* dla żadnego zapisu (PUT, POST, DELETE) dotyczące zasobów w ramach subskrypcji. Można także poznać stan działania i inne odpowiednie właściwości. Dziennik nie zawiera operacje odczytu (GET) lub operacji dla zasobów korzystających z klasycznego modelu wdrożenia.
+Korzystając z dziennika aktywności można określić *co*, *kto*, i *podczas* dla dowolnego zapisu (PUT, POST, DELETE) dla zasobów w ramach subskrypcji. Dodatkowo użytkownik rozumie stan działania i inne odpowiednie właściwości. Dziennik aktywności nie obejmują operacji odczytu (GET) ani operacji dotyczących zasobów, które używają klasycznego modelu wdrażania.
 
-Podczas nawiązywania połączenia dzienników działanie Azure Log Analytics, możesz:
+Po nawiązaniu połączenia dzienników aktywności platformy Azure do usługi Log Analytics, możesz wykonywać następujące czynności:
 
-- Analizowanie dzienników działania z wstępnie zdefiniowanych widoków
-- Analizowanie i dzienniki wyszukiwania i działania z wieloma subskrypcjami platformy Azure
-- Zachowaj dzienniki aktywności przez czas dłuższy niż 90 dni<sup>1</sup>
-- Dzienniki aktywności jest skorelowany z innych Azure danych platformy i aplikacji
-- Zobacz działań operacyjnych w stan
-- Wyświetlanie trendów działania wykonywane na każdej z usługami Azure
-- Raport dotyczący zmiany autoryzacji na wszystkich zasobów na platformie Azure
-- Określenie awarii lub usługa zagadnień dotyczących kondycji wpływu na zasoby
-- Użyj dziennika wyszukiwania służące do skorelowania aktywności użytkowników, wykonanie operacji skalowania automatycznego zmiany autoryzacji i usługi kondycji do innych dzienników lub metryk ze środowiska
+- Analizowanie dzienników aktywności, za pomocą wstępnie zdefiniowanych widoków
+- Analizowanie i wyszukiwania i Dzienniki aktywności z wieloma subskrypcjami platformy Azure
+- Zachowaj dzienników aktywności przez dłużej niż 90 dni<sup>1</sup>
+- Skorelowania dzienników aktywności z platformą Azure, inne platformy i aplikacji danych
+- Zobacz działań operacyjnych zagregowanych wg stanu
+- Wyświetlanie trendów działania wykonywane na wszystkich usług platformy Azure
+- Raport na temat zmian autoryzacji dla wszystkich zasobów platformy Azure
+- Identyfikowanie awarii lub usługi problemy z kondycją wywierania wpływu na zasoby
+- Umożliwia korelowanie aktywności użytkowników, operacje automatycznego skalowania, zmiany autoryzacji i kondycję usługi do innych dzienników i metryk ze środowiska wyszukiwania w Dzienniku
 
-<sup>1</sup>domyślnie analizy dzienników zachowuje Dzienniki aktywności platformy Azure przez 90 dni, nawet jeśli znajdują się na warstwę bezpłatna. Lub, jeśli masz obszar roboczy ustawienia przechowywania mniej niż 90 dni. Jeśli obszar roboczy ma przechowywania, która jest dłuższa niż 90 dni, dzienniki aktywności są przechowywane na podstawie na okres przechowywania obszaru roboczego.
+<sup>1</sup>Domyślnie usługi Log Analytics przechowuje dzienników aktywności platformy Azure przez 90 dni, nawet jeśli znajdują się w ramach warstwy bezpłatna. Lub, jeśli masz obszar roboczy ustawienia przechowywania, mniej niż 90 dni. Jeśli obszar roboczy ma przechowywania, która jest większa niż 90 dni, dzienniki aktywności są przechowywane na podstawie na okres przechowywania obszaru roboczego.
 
-Analiza dzienników zbiera Dzienniki aktywności bezpłatnie i przechowuje dzienniki bezpłatne 90 dni. Jeśli przechowujesz dzienniki przez czas dłuższy niż 90 dni spowoduje naliczenie opłaty przechowywania danych na dane przechowywane dłużej niż 90 dni.
+Log Analytics zbiera Dzienniki aktywności są bezpłatne i dzienniki są przechowywane przez 90 dni wolne od opłat. W przypadku przechowywania dzienników przez czas dłuższy niż 90 dni spowoduje naliczenie opłaty za przechowywanie danych na dane przechowywane dłużej niż 90 dni.
 
-Gdy użytkownik jest w warstwy cenowej bezpłatna, dzienniki aktywności nie dotyczą codziennego użycia danych.
+Podczas korzystania z warstwy cenowej bezpłatna, dzienniki aktywności nie dotyczą dzienne zużycie w magazynie danych.
 
 ## <a name="connected-sources"></a>Połączone źródła
 
-W przeciwieństwie do większości innych rozwiązań analizy dzienników danych nie jest zbierane o Dzienniki aktywności przez agentów. Wszystkie dane używane przez to rozwiązanie pochodzi bezpośrednio z platformy Azure.
+W przeciwieństwie do większości innych rozwiązań usługi Log Analytics dane nie są zbierane dla dzienników aktywności przez agentów. Wszystkie dane używane przez rozwiązania pochodzi bezpośrednio na platformie Azure.
 
 | Połączone źródło | Obsługiwane | Opis |
 | --- | --- | --- |
-| [Agenci dla systemu Windows](log-analytics-windows-agent.md) | Nie | Rozwiązanie nie zbiera informacje z agentów systemu Windows. |
-| [Agenci dla systemu Linux](log-analytics-linux-agents.md) | Nie | Rozwiązanie nie zbiera informacje z agentów systemu Linux. |
-| [Grupa zarządzania programu SCOM](log-analytics-om-agents.md) | Nie | Rozwiązanie nie zbiera informacje z agentów w podłączonej grupy zarządzania SCOM. |
-| [Konto usługi Azure Storage](log-analytics-azure-storage.md) | Nie | Rozwiązanie nie zbiera informacje z usługi Azure storage. |
+| [Agenci dla systemu Windows](log-analytics-windows-agent.md) | Nie | Rozwiązanie nie zbiera informacji od agentów Windows. |
+| [Agenci dla systemu Linux](log-analytics-linux-agents.md) | Nie | Rozwiązanie zbiera informacje z agentów dla systemu Linux. |
+| [Grupy zarządzania SCOM](log-analytics-om-agents.md) | Nie | Rozwiązanie nie zbiera informacji od agentów w połączonej grupie zarządzania programu SCOM. |
+| [Konto usługi Azure Storage](log-analytics-azure-storage.md) | Nie | Rozwiązanie zbiera informacje z usługi Azure storage. |
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-- Aby uzyskać dostęp do informacji dziennika aktywności platformy Azure, musi mieć subskrypcję platformy Azure.
+- Aby uzyskać dostęp do informacji z dziennika aktywności platformy Azure, musi mieć subskrypcję platformy Azure.
 
 ## <a name="configuration"></a>Konfigurowanie
 
-Wykonaj poniższe kroki, aby skonfigurować rozwiązanie działania analizy dzienników dla obszarów roboczych.
+Wykonaj poniższe kroki, aby skonfigurować rozwiązanie Activity Log Analytics dla obszarów roboczych.
 
 1. Włącz rozwiązanie Activity Log Analytics z [portalu Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/Microsoft.AzureActivityOMS?tab=Overview) lub przy użyciu procesu opisanego w [Add Log Analytics solutions from the Solutions Gallery (Dodawanie rozwiązań usługi Log Analytics z galerii rozwiązań)](log-analytics-add-solutions.md).
-2. Skonfiguruj Dzienniki aktywności, aby przejść do obszaru roboczego analizy dzienników.
-    1. W portalu Azure wybierz obszar roboczy, a następnie kliknij przycisk **dziennik aktywności platformy Azure**.
+2. Konfigurowanie dzienników aktywności, aby przejść do obszaru roboczego usługi Log Analytics.
+    1. W witrynie Azure portal, wybierz swój obszar roboczy, a następnie kliknij przycisk **dziennik aktywności platformy Azure**.
     2. Dla każdej subskrypcji kliknij nazwę subskrypcji.  
         ![Dodaj subskrypcję](./media/log-analytics-activity/add-subscription.png)
-    3. W *Nazwa subskrypcji* bloku, kliknij przycisk **Connect**.  
+    3. W *SubscriptionName* bloku kliknij **Connect**.  
         ![Łączenie subskrypcji](./media/log-analytics-activity/subscription-connect.png)
 
-Jeśli dodasz rozwiązania przy użyciu portalu OMS, zostanie wyświetlony następujący fragment. Zaloguj się do portalu Azure do połączenia subskrypcji platformy Azure do swojego obszaru roboczego.  
-![zostanie wykonana oceny](./media/log-analytics-activity/tile-performing-assessment.png)
+Jeśli dodasz rozwiązanie za pomocą portalu pakietu OMS, będzie widoczny następujący Kafelek. Zaloguj się do witryny Azure portal do łączenia z subskrypcją platformy Azure do swojego obszaru roboczego.  
+![Wykonywanie oceny](./media/log-analytics-activity/tile-performing-assessment.png)
 
 ## <a name="using-the-solution"></a>Użycie rozwiązania
 
-Po dodaniu rozwiązania analizy dziennika aktywności do swojego obszaru roboczego **Dzienniki aktywności Azure** kafelka jest dodawany do pulpitu nawigacyjnego przeglądu. Jest wyświetlana liczba Liczba rekordów działanie Azure dla subskrypcji platformy Azure, które rozwiązanie ma dostęp do tego kafelka.
+Po dodaniu rozwiązania Activity Log Analytics do swojego obszaru roboczego **dzienników aktywności platformy Azure** zostanie dodany Kafelek do pulpitu nawigacyjnego przeglądu. Ten Kafelek zawiera liczbę rekordów działań platformy Azure dla subskrypcji platformy Azure, które rozwiązanie ma dostęp do.
 
 ![Kafelek Dzienniki aktywności platformy Azure](./media/log-analytics-activity/azure-activity-logs-tile.png)
 
-### <a name="view-azure-activity-logs"></a>Rejestruje działanie usługi Azure widoku
+### <a name="view-azure-activity-logs"></a>Dzienniki aktywności platformy Azure w widoku
 
-Kliknij przycisk **Dzienniki aktywności Azure** Kafelek, aby otworzyć **Dzienniki aktywności Azure** pulpitu nawigacyjnego. Na pulpicie nawigacyjnym znajdują się bloki wymienione w poniższej tabeli. Każdy blok zawiera do 10 elementów spełniających kryteria tego bloku dla określonego zakresu i czasu. Możesz uruchomić przeszukiwanie dzienników, które zwróci wszystkie rekordy. W tym celu kliknij przycisk **Zobacz wszystko** na dole bloku lub kliknij nagłówek bloku.
+Kliknij przycisk **dzienników aktywności platformy Azure** Kafelek, aby otworzyć **dzienników aktywności platformy Azure** pulpitu nawigacyjnego. Na pulpicie nawigacyjnym znajdują się bloki wymienione w poniższej tabeli. Każdy blok zawiera do 10 elementów spełniających kryteria tego bloku dla określonego zakresu i czasu. Możesz uruchomić przeszukiwanie dzienników, które zwróci wszystkie rekordy. W tym celu kliknij przycisk **Zobacz wszystko** na dole bloku lub kliknij nagłówek bloku.
 
-Dane dziennika aktywności jest wyświetlany tylko *po* skonfigurowaniu Dzienniki aktywności można przejść do rozwiązania, więc nie można wyświetlić danych, przed upływem.
+Dane dzienników aktywności jest wyświetlany tylko *po* zostały skonfigurowane z dzienników aktywności, aby przejść do rozwiązania, więc nie można wyświetlić danych przed tym dniem.
 
 | Blade | Opis |
 | --- | --- |
-| Wpisy dziennika aktywności platformy Azure | Przedstawia wykres słupkowy TOP wpis dziennika aktywności platformy Azure rekordów sumy wybranego zakresu i pokazuje listę top wywołań 10 działania. Kliknij na wykresie słupkowym, aby uruchomić wyszukiwanie dziennika <code>AzureActivity</code>. Kliknij element wywołujący, aby uruchomić wyszukiwanie dziennika zwracanie wszystkich wpisów dziennika aktywności dla danego elementu. |
-| Dzienniki aktywności według stanu | Przedstawia wykres pierścieniowy stanu dziennika aktywności platformy Azure wybranego zakresu. Również listy to lista top rekordów stanu 10. Kliknij na wykresie, aby uruchomić wyszukiwanie dziennika <code>AzureActivity &#124; summarize AggregatedValue = count() by ActivityStatus</code>. Kliknij element stanu, aby uruchomić wyszukiwanie dziennika zwracanie wszystkich wpisów dziennika aktywności dla tego rekordu stanu. |
-| Dzienniki aktywności przez zasób | Zawiera całkowitą liczbę zasobów o Dzienniki aktywności oraz listę pierwszych dziesięciu zasobów z rekordem liczniki dla każdego zasobu. Kliknij przycisk całkowity obszar, aby uruchomić wyszukiwanie dziennika <code>AzureActivity &#124; summarize AggregatedValue = count() by Resource</code>, który zawiera wszystkie zasoby platformy Azure dostępna w rozwiązaniu. Kliknij zasób, aby uruchomić wyszukiwanie dziennika zwracanie wszystkich rekordów działania dla tego zasobu. |
-| Dzienniki aktywności przez dostawcę zasobów | Przedstawia sumę dostawców zasobów, które powodują powstanie działania dzienniki i listy pierwszych dziesięć. Kliknij przycisk całkowity obszar, aby uruchomić wyszukiwanie dziennika <code>AzureActivity &#124; summarize AggregatedValue = count() by ResourceProvider</code>, który wskazuje wszystkich dostawców zasobów platformy Azure. Kliknij dostawcę zasobów, aby uruchomić wyszukiwanie dziennika zwracanie wszystkich rekordów działania dla dostawcy. |
+| Wpisy dziennika aktywności platformy Azure | Przedstawia wykres słupkowy w górnej części wpis dziennika aktywności platformy Azure rekordu sumy dla zakresu dat, który wybrano i wyświetla listę najważniejszych wywołań 10 działania. Kliknij wykres słupkowy Aby uruchomić wyszukiwanie w dzienniku dla <code>AzureActivity</code>. Kliknij element wywołujący, aby uruchomić wyszukiwanie w dzienniku zwraca wszystkie wpisy dziennika aktywności dla tego elementu. |
+| Dzienniki aktywności według stanu | Przedstawia wykres pierścieniowy stanu dziennika aktywności platformy Azure dotyczące zakresu dat, które zostały wybrane. Lista pierwszych rekordów stanu dziesięć również pokazuje listę. Kliknij wykres, aby uruchomić wyszukiwanie w dzienniku dla <code>AzureActivity &#124; summarize AggregatedValue = count() by ActivityStatus</code>. Kliknij element stanu, aby uruchomić wyszukiwanie w dzienniku zwraca wszystkie wpisy dziennika aktywności dla tego rekordu stanu. |
+| Dzienniki aktywności według zasobu | Zawiera całkowitą liczbę zasobów przy użyciu dzienników aktywności i zawiera listę pierwszych dziesięciu zasobów przy użyciu rekordu jest liczona dla każdego zasobu. Kliknij obszar całkowitej, aby uruchomić wyszukiwanie w dzienniku dla <code>AzureActivity &#124; summarize AggregatedValue = count() by Resource</code>, które wyświetla wszystkie zasoby platformy Azure dostępnych do rozwiązania. Kliknij zasób, aby uruchomić wyszukiwanie w dzienniku zwraca wszystkie rekordy działanie dla tego zasobu. |
+| Dzienniki aktywności przez dostawcę zasobów | Pokazuje, całkowita liczba dostawców zasobów, które generują działania rejestruje i wyświetla listę pierwszych dziesięć. Kliknij obszar całkowitej, aby uruchomić wyszukiwanie w dzienniku dla <code>AzureActivity &#124; summarize AggregatedValue = count() by ResourceProvider</code>, które wyświetla wszystkich dostawców zasobów platformy Azure. Kliknij dostawcę zasobów, aby uruchomić wyszukiwanie w dzienniku zwracanie wszystkich rekordów działań dla dostawcy. |
 
-![Azure Dzienniki aktywności pulpitu nawigacyjnego](./media/log-analytics-activity/activity-log-dash.png)
+![Pulpitu nawigacyjnego dzienników aktywności platformy Azure](./media/log-analytics-activity/activity-log-dash.png)
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- Utwórz [alert](log-analytics-alerts-creating.md) po sytuacji określonego działania.
-- Użyj [wyszukiwania dziennika](log-analytics-log-searches.md) do wyświetlenia szczegółowych informacji z dzienników działania.
+- Tworzenie [alert](log-analytics-alerts-creating.md) podczas określonego działania się dzieje.
+- Użyj [wyszukiwanie w dzienniku](log-analytics-log-searches.md) Aby wyświetlić szczegółowe informacje z dzienników aktywności.

@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/16/2018
 ms.author: gokuma
-ms.openlocfilehash: d9b89329e2a9bdb26c9aa1d12bc181c61518dcb8
-ms.sourcegitcommit: 7827d434ae8e904af9b573fb7c4f4799137f9d9b
+ms.openlocfilehash: c125f503166e3f63599dbd09acf42c69fab8d2ce
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/18/2018
-ms.locfileid: "39116167"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044658"
 ---
 # <a name="data-science-with-a-linux-data-science-virtual-machine-on-azure"></a>Do nauki o danych z systemem Linux maszyny wirtualnej analizy danych na platformie Azure
 W tym instruktażu przedstawiono sposób wykonywania kilku typowych zadań do nauki o danych z maszyna wirtualna do nauki o danych systemu Linux. Linux Data Science Virtual Machine (dsvm dystrybucji) jest obraz maszyny wirtualnej dostępne na platformie Azure, który jest wstępnie instalowane ze zbiorem narzędzi często używane do analizy danych i uczenia maszynowego. Składniki oprogramowania są wymienione w [Aprowizowanie maszyny wirtualnej do nauki o danych Linux](linux-dsvm-intro.md) tematu. Obraz maszyny Wirtualnej ułatwia rozpoczęcie pracy, nauki o danych w ciągu kilku minut, bez konieczności instalowania i konfigurowania poszczególnych narzędzi indywidualnie. Możesz łatwo skalować w górę maszyny Wirtualnej, w razie potrzeby i zatrzymaj ją, gdy użycie. Więc ten zasób jest elastyczne i ekonomiczne.
@@ -483,7 +483,7 @@ Aby rozpocząć, uruchom Squirrel SQL z menu aplikacji. Aby skonfigurować stero
 * Kliknij prawym przyciskiem myszy **PostgreSQL** i wybierz **modyfikowania sterowników**.
 * Wybierz **bardzo klasy ścieżki**, następnie **Dodaj**.
 * Wprowadź ***/usr/share/java/jdbcdrivers/postgresql-9.4.1208.jre6.jar*** dla **nazwa pliku** i
-* Wybierz **Otwórz**.
+* Wybierz pozycję **Otwórz**.
 * Wybierz z listy sterowniki, a następnie wybierz **org.postgresql.Driver** w **Nazwa klasy**i wybierz **OK**.
 
 Aby skonfigurować połączenie z serwerem lokalnym:
@@ -544,6 +544,6 @@ I zapytania przy użyciu narzędzia sqlcmd:
 Można także badać, za pomocą Squirrel SQL. Wykonać podobne kroki dla PostgreSQL, za pomocą MSSQL serwera sterownik JDBC firmy Microsoft, który można znaleźć w ***/usr/share/java/jdbcdrivers/sqljdbc42.jar***.
 
 ## <a name="next-steps"></a>Kolejne kroki
-Aby uzyskać omówienie tematów, które przeprowadzą Cię przez zadania, wchodzące w skład procesu do nauki o danych na platformie Azure, zobacz [zespołu danych dla celów naukowych](http://aka.ms/datascienceprocess).
+Aby uzyskać omówienie tematów, które przeprowadzą Cię przez zadania, wchodzące w skład procesu do nauki o danych na platformie Azure, zobacz [zespołu danych dla celów naukowych](https://docs.microsoft.com/azure/machine-learning/team-data-science-process/overview).
 
 Aby uzyskać opis innych instruktaży end-to-end, które przedstawiają kroki w procesie nauki o danych zespołu dla konkretnych scenariuszy, zobacz [wskazówki dotyczące procesu do nauki o danych zespołu](../team-data-science-process/walkthroughs.md). Przewodniki pokazują również sposób łączenia w chmurze i lokalnych narzędzi i usług w przepływie pracy lub potoku do tworzenia inteligentnych aplikacji.

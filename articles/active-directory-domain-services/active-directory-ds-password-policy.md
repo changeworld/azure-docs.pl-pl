@@ -8,19 +8,19 @@ manager: mtillman
 editor: curtand
 ms.assetid: 1a14637e-b3d0-4fd9-ba7a-576b8df62ff2
 ms.service: active-directory
-ms.component: domains
+ms.component: domain-services
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
 ms.date: 09/17/2018
 ms.author: maheshu
-ms.openlocfilehash: 868d902baac294fc5d7eb093f41159f6eedd109c
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 66db13ea2b40d32b03d57e7d039863315312d734
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45986287"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043111"
 ---
 # <a name="password-and-account-lockout-policies-on-managed-domains"></a>Zasady blokowania haseł i kont, w domenach zarządzanych
 W tym artykule opisano domyślne zasady haseł w domenie zarządzanej. Obejmuje ona również, jak można skonfigurować te zasady.

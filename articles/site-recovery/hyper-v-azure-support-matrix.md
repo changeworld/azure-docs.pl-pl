@@ -5,15 +5,15 @@ services: site-recovery
 author: rayne-wiselman
 manager: carmonm
 ms.service: site-recovery
-ms.topic: article
-ms.date: 08/14/2018
+ms.topic: conceptual
+ms.date: 10/02/2018
 ms.author: raynew
-ms.openlocfilehash: e363885afb77a60bfc0229a872fdb4e519d5979d
-ms.sourcegitcommit: 7b845d3b9a5a4487d5df89906cc5d5bbdb0507c8
+ms.openlocfilehash: 8c943b9ec8114699a7fad487c7d669b58942c019
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "42054978"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042533"
 ---
 # <a name="support-matrix-for-hyper-v-replication-to-azure"></a>Macierz obsługi replikacji funkcji Hyper-V do platformy Azure
 
@@ -59,16 +59,16 @@ Dodaj dysk na replikowanej maszynie Wirtualnej funkcji Hyper-V | Nieobsługiwane
 
 **Składnik** | **Funkcji Hyper-V za pomocą programu Virtual Machine Manager** | **Funkcji Hyper-V bez programu Virtual Machine Manager**
 --- | --- | ---
-Sieci hostów: tworzenia zespołu kart interfejsu Sieciowego | Yes
-Sieci hostów: sieci VLAN | Yes
-Sieci hostów: IPv4 | Yes
-Sieci hostów: IPv6 | Nie
-Sieć maszyny Wirtualnej gościa: tworzenia zespołu kart interfejsu Sieciowego | Nie
-Sieć maszyny Wirtualnej gościa: IPv4 | Yes
-Sieć maszyny Wirtualnej gościa: IPv6 | Nie
-Sieć maszyny Wirtualnej gościa: statyczny adres IP (Windows) | Yes
-Sieć maszyny Wirtualnej gościa: statyczny adres IP (Linux) | Nie
-Sieć maszyny Wirtualnej gościa: Multi-NIC | Yes
+Sieci hostów: tworzenia zespołu kart interfejsu Sieciowego | Yes | Yes
+Sieci hostów: sieci VLAN | Yes | Yes
+Sieci hostów: IPv4 | Yes | Yes
+Sieci hostów: IPv6 | Nie | Nie
+Sieć maszyny Wirtualnej gościa: tworzenia zespołu kart interfejsu Sieciowego | Nie | Nie
+Sieć maszyny Wirtualnej gościa: IPv4 | Yes | Yes
+Sieć maszyny Wirtualnej gościa: IPv6 | Nie | Yes
+Sieć maszyny Wirtualnej gościa: statyczny adres IP (Windows) | Yes | Yes
+Sieć maszyny Wirtualnej gościa: statyczny adres IP (Linux) | Nie | Nie
+Sieć maszyny Wirtualnej gościa: Multi-NIC | Yes | Yes
 
 
 

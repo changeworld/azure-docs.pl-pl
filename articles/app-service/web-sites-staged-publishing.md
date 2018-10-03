@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 12/16/2016
 ms.author: cephalin
-ms.openlocfilehash: ecd58779262f6580287e6c72d3aa2aecf237a562
-ms.sourcegitcommit: 776b450b73db66469cb63130c6cf9696f9152b6a
+ms.openlocfilehash: 35027b4eadba72776fd27826a389763cc0832eee
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "45983112"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044318"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Konfigurowanie środowisk przejściowych w usłudze Azure App Service
 <a name="Overview"></a>
@@ -84,7 +84,7 @@ Podczas klonowania konfiguracji z innego miejsca wdrożenia sklonowanego konfigu
 * Ustawienia skalowania
 * Planiści zadań Webjob
 
-Aby skonfigurować aplikację ustawienie lub parametrów połączenia do przypisane do miejsca (nie zamienione), dostęp do **ustawienia aplikacji** bloku dla określonego miejsca, następnie wybierz pozycję **ustawienie miejsca** pole dla konfiguracji elementy, które powinny trzymaj gniazda. Oznaczanie elementu konfiguracji jako miejsce określonych powoduje ustanowienie tego elementu jako nie swappable miejsc wdrożenia skojarzone z aplikacją.
+Aby skonfigurować aplikację ustawienie lub parametrów połączenia do przypisane do miejsca (nie zamienione), dostęp do **ustawienia aplikacji** bloku dla określonego miejsca, następnie wybierz pozycję **ustawienie miejsca** pole dla konfiguracji elementy, które powinny być przypisane do gniazda. Oznaczanie elementu konfiguracji jako miejsce określonych powoduje ustanowienie tego elementu jako nie swappable miejsc wdrożenia skojarzone z aplikacją.
 
 ![Definiowanie ustawień gniazda][SlotSettings]
 

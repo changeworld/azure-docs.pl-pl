@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 02/20/2018
 ms.author: abshamsft
-ms.component: na
-ms.openlocfilehash: 3640f5bb2c2e9457e269bd189cbec3b627ee7349
-ms.sourcegitcommit: 4de6a8671c445fae31f760385710f17d504228f8
+ms.component: ''
+ms.openlocfilehash: e12c513f8812381897804412616be1ef7c743a3d
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39626876"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044097"
 ---
 # <a name="network-performance-monitor-solution-in-azure"></a>Network Performance Monitor rozwiązanie na platformie Azure
 
@@ -59,7 +59,7 @@ Lista obsługiwanych regionów dla Monitor usługi ExpressRoute jest dostępna w
 
 ## <a name="set-up-and-configure"></a>Instalowanie i konfigurowanie
 
-### <a name="install-and-configure-agents"></a>Instalowanie i konfigurowanie agentów 
+### <a name="install-and-configure-agents"></a>Instalacja i konfiguracja agentów 
 
 Użyj podstawowych procesów, aby zainstalować agentów na [komputerów Windows połączyć z usługą Azure Log Analytics](log-analytics-windows-agents.md) i [łączenie programu Operations Manager do usługi Log Analytics](log-analytics-om-agents.md).
 

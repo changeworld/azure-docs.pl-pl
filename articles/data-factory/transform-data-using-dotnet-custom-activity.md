@@ -10,14 +10,14 @@ ms.workload: data-services
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 08/29/2018
+ms.date: 10/01/2018
 ms.author: douglasl
-ms.openlocfilehash: f4a88c5495fc3297699110d8a12a22ff7d6c2bbb
-ms.sourcegitcommit: a1140e6b839ad79e454186ee95b01376233a1d1f
+ms.openlocfilehash: fa13b6509052438a0f59c4610f250d0b88b41f2b
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43144358"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043081"
 ---
 # <a name="use-custom-activities-in-an-azure-data-factory-pipeline"></a>Korzystanie z działań niestandardowych w potoku usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -105,7 +105,7 @@ W poniższej tabeli opisano nazwy i opisy właściwości, które są specyficzne
 | linkedServiceName     | Połączoną usługę służącą do usługi Azure Batch. Aby dowiedzieć się więcej na temat tej połączonej usługi, zobacz [usługi połączone usługi Compute](compute-linked-services.md) artykułu.  | Yes      |
 | command               | Polecenie niestandardowych aplikacji do wykonania. Jeśli aplikacja jest już dostępne w węźle puli Azure Batch, można pominąć resourceLinkedService i folderPath. Na przykład można określić polecenie, aby być `cmd /c dir`, które są natywnie obsługiwane przez węzeł Windows puli usługi Batch. | Yes      |
 | resourceLinkedService | Usługa Azure Storage połączoną usługę służącą do konta magazynu, w którym przechowywany jest niestandardowy aplikacji | Nie       |
-| folderPath            | Ścieżka do folderu niestandardowych aplikacji i wszystkich jego zależności | Nie       |
+| folderPath            | Ścieżka do folderu niestandardowych aplikacji i wszystkich jego zależności<br/><br/>Jeśli występują zależności przechowywane w podfolderach — czyli w hierarchicznej struktury folderów w obszarze *folderPath* — struktura folderów jest spłaszczany obecnie, gdy pliki są kopiowane do usługi Azure Batch. Oznacza to, że wszystkie pliki są kopiowane do pojedynczego folderu z bez podfolderów. Aby obejść ten problem, należy wziąć pod uwagę kompresowanie plików, Kopiowanie skompresowanego pliku i rozpakowywania go przy użyciu niestandardowego kodu w dowolnym miejscu. | Nie       |
 | referenceObjects      | Tablica istniejących połączonych usług i zestawów danych. Odwołania usługi połączone i zestawy danych są przekazywane do aplikacji niestandardowej w formacie JSON, dzięki czemu niestandardowy kod może odwoływać się do zasobów usługi Data Factory | Nie       |
 | Właściwości rozszerzone    | Właściwości zdefiniowane przez użytkownika, które mogą być przekazywane do aplikacji niestandardowej w formacie JSON, dzięki czemu niestandardowy kod może odwoływać się do dodatkowych właściwości | Nie       |
 

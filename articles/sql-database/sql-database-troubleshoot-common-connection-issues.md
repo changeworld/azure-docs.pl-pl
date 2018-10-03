@@ -12,12 +12,12 @@ ms.author: daleche
 ms.reviewer: ''
 manager: craigg
 ms.date: 04/01/2018
-ms.openlocfilehash: 276a2d6d717497538a6633a9b0926bb89b9e875c
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: a34745c5586fa90d3e167bb3be22e93dfa83b7af
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161101"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041734"
 ---
 # <a name="troubleshoot-connection-issues-to-azure-sql-database"></a>Rozwiązywanie problemów z połączeniem do usługi Azure SQL Database
 Gdy połączenie usługi Azure SQL Database nie powiodło się, pojawi się [komunikaty o błędach](sql-database-develop-error-messages.md). Ten artykuł stanowi scentralizowane temat, który pomoże Ci rozwiązać problemy z połączeniem usługi Azure SQL Database. Wprowadza [najczęstszych przyczyn](#cause) z problemów z łącznością, zaleca się [narzędzia rozwiązywania problemów](#try-the-troubleshooter-for-azure-sql-database-connectivity-issues) ulec pomaga tożsamości problem, a także kroki rozwiązywania problemów, aby rozwiązać [przejściowe błędy](#troubleshoot-transient-errors) i [trwałego lub inne niż przejściowe błędy](#troubleshoot-persistent-errors). 
@@ -62,7 +62,7 @@ Ten błąd występuje, gdy w bazie danych platformy Azure jest przeniesiony (lub
 
 1. Sprawdź [pulpitu nawigacyjnego usług systemu Azure firmy Microsoft](https://azure.microsoft.com/status) o znanych awariach, które wystąpiły w czasie, podczas którego błędy zostały zgłoszone przez aplikację.
 2. Aplikacje łączące się z usługą w chmurze, takich jak usługi Azure SQL Database należy spodziewać się zdarzenia okresowe ponownej konfiguracji i implementowanie ponów logikę obsługującą te błędy zamiast udostępniając je jako błędy aplikacji dla użytkowników. Przegląd [błędów przejściowych](sql-database-connectivity-issues.md) sekcji i najlepsze rozwiązania i wytyczne dotyczące projektowania w [omówienie programowania w usłudze SQL Database](sql-database-develop-overview.md) uzyskać więcej informacji i ogólne strategie dotyczące ponawiania prób. Następnie zobacz przykłady kodu w [biblioteki połączeń dla usługi SQL Database i programu SQL Server](sql-database-libraries.md) dla szczegółowych informacji.
-3. Zgodnie z bazy danych zbliża się limit zasobów, może wydawać się być przejściowy problem łączności. Zobacz [limity zasobów](sql-database-resource-limits.md).
+3. Zgodnie z bazy danych zbliża się limit zasobów, może wydawać się być przejściowy problem łączności. Zobacz [limity zasobów](sql-database-resource-limits-logical-server.md#what-happens-when-database-resource-limits-are-reached).
 4. Jeśli nadal występują problemy z łącznością lub jeśli czas trwania, dla którego aplikacja napotkała błąd przekracza 60 sekund, lub jeśli wiele wystąpień tego błędu jest widoczny w danym dniu pliku żądanie pomocy technicznej platformy Azure, wybierając **uzyskiwanie pomocy technicznej**na [pomocy technicznej systemu Azure](https://azure.microsoft.com/support/options) lokacji.
 
 ## <a name="troubleshoot-persistent-errors"></a>Rozwiązywanie problemów z błędami trwałego

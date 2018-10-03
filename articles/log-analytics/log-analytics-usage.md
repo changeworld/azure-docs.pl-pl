@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/11/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 1bb96821b61647f5dfad54c8b0cb6248eb0db4af
-ms.sourcegitcommit: d2f2356d8fe7845860b6cf6b6545f2a5036a3dd6
+ms.component: ''
+ms.openlocfilehash: 8039a660a0f9fc94471e4b3e28b1b00bfb0d6b9e
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/16/2018
-ms.locfileid: "42059249"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042449"
 ---
 # <a name="analyze-data-usage-in-log-analytics"></a>Analizowanie użycia danych w usłudze Log Analytics
 

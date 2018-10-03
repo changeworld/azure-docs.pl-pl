@@ -12,18 +12,18 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 5f0e5de7503d06d1aff319434d763d3b034053b3
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 9ad43ecf2aa5649e582f1aa4159352edf9c8fa5b
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166368"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042601"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-a-single-database"></a>Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pojedynczej bazy danych
 
 Ten artykuł zawiera limity zasobów szczegółowe dla pojedynczych baz danych Azure SQL Database przy użyciu modelu zakupu opartego na rdzeniach wirtualnych.
 
-Oparte na jednostkach DTU limitów zakupu modelu zobacz [limity zasobów na podstawie jednostek DTU bazy danych SQL](sql-database-dtu-resource-limits.md).
+Oparte na jednostkach DTU zakupu modelu limitów dla pojedynczych baz danych na serwerze logicznym, zobacz [Przegląd zasobów limity na serwerze logicznym](sql-database-resource-limits-logical-server.md).
 
 > [!IMPORTANT]
 > W pewnych okolicznościach może być konieczne baza danych mogą odzyskać nieużywane miejsce. Aby uzyskać więcej informacji, zobacz [zarządzania miejsca na pliki w usłudze Azure SQL Database](sql-database-file-space-management.md).

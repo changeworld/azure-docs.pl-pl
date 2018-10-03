@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/19/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: b91b906db1307343a50ffc3be07d562091f2e335
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.component: ''
+ms.openlocfilehash: 97fa3e9cf043037bf2fe4b0ba198bbdf68de9fa4
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978799"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044692"
 ---
 # <a name="log-analytics-data-security"></a>Bezpieczeństwo danych analizy dziennika
 Ten dokument jest przeznaczony do dostarczają informacje charakterystyczne do usługi Log Analytics, która jest funkcją usługi Azure monitor, aby uzupełnić informacje na [Centrum zaufania systemu Azure](../security/security-microsoft-trust-center.md).  

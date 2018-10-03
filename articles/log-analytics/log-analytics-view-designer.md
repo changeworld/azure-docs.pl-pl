@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 06/22/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 362d19c489dfa0eda33036052ac9626414ef0933
-ms.sourcegitcommit: 0c64460a345c89a6b579b1d7e273435a5ab4157a
+ms.component: ''
+ms.openlocfilehash: 9a981b80921b8fea60941a994595b19933b61a21
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/31/2018
-ms.locfileid: "43340740"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042380"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-log-analytics"></a>Tworzenie niestandardowych widoków przy użyciu projektanta widoku w usłudze Log Analytics
 Przy użyciu projektanta widoku w [usługi Azure Log Analytics](log-analytics-overview.md), można tworzyć różne widoki niestandardowe w witrynie Azure portal, która pomoże Ci wizualizować dane w obszarze roboczym usługi Log Analytics. Ten artykuł zawiera omówienie Projektant widoków i procedur tworzenia i edytowania widoków niestandardowych.
@@ -54,7 +54,7 @@ W poniższej tabeli opisano opcje:
 
 | Opcja | Opis |
 |:--|:--|
-| Odśwież   | Odświeża widok przy użyciu najnowszych danych. | 
+| Odświeżanie   | Odświeża widok przy użyciu najnowszych danych. | 
 | Analiza | Otwiera [portalu analizy zaawansowanej](log-analytics-log-search-portals.md) do analizowania danych za pomocą zapytań log. |
 | Edytuj       | Otwiera widok w Projektancie widoku do edycji jej zawartość i konfigurację.  |
 | Klonuj      | Tworzy nowy widok, a zostanie on otwarty w Projektancie widoku. Nazwa nowego widoku jest taka sama, jak oryginalna nazwa, ale z *kopiowania* dołączone do niego. |
@@ -101,10 +101,10 @@ Praca z widokami w trybie edycji opcje są opisane w poniższej tabeli.
 | Opcja | Opis |
 |:--|:--|
 | Zapisz        | Zapisuje zmiany i zamyka widoku. |
-| Anuluj      | Odrzuca wszystkie zmiany i zamyka widoku. |
+| Cancel      | Odrzuca wszystkie zmiany i zamyka widoku. |
 | Usuń widok | Usuwa widok. |
-| Eksportuj      | Eksportuje widoku na potrzeby [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) który można zaimportować do innego obszaru roboczego. Nazwa pliku jest nazwa widoku i ma *omsview* rozszerzenia. |
-| Importuj      | Importy *omsview* pliku, który został wyeksportowany z innym obszarem roboczym. Ta akcja zastępuje konfigurację istniejącego widoku. |
+| Eksportowanie      | Eksportuje widoku na potrzeby [szablonu usługi Azure Resource Manager](../azure-resource-manager/resource-group-authoring-templates.md) który można zaimportować do innego obszaru roboczego. Nazwa pliku jest nazwa widoku i ma *omsview* rozszerzenia. |
+| Import      | Importy *omsview* pliku, który został wyeksportowany z innym obszarem roboczym. Ta akcja zastępuje konfigurację istniejącego widoku. |
 | Klonuj       | Tworzy nowy widok, a zostanie on otwarty w Projektancie widoku. Nazwa nowego widoku jest taka sama, jak oryginalna nazwa, ale z *kopiowania* dołączone do niego. |
 
 ## <a name="next-steps"></a>Kolejne kroki

@@ -1,6 +1,6 @@
 ---
-title: Przewodnik dewelopera Centrum IoT Azure | Dokumentacja firmy Microsoft
-description: Przewodnik dewelopera usługi Azure IoT Hub omówiono punktów końcowych, zabezpieczeń, w rejestrze tożsamości, zarządzanie urządzeniami, bezpośrednie metod, twins urządzenia, przekazywania plików, zadań, Centrum IoT język zapytania, a wiadomości.
+title: Przewodnik dewelopera usługi Azure IoT Hub | Dokumentacja firmy Microsoft
+description: Przewodnik dla deweloperów usługi Azure IoT Hub zawiera omówienie punktów końcowych, zabezpieczenia, zarządzanie urządzeniami, zadania, metod bezpośrednich, operacje przekazywania plików, w rejestrze tożsamości, bliźniacze reprezentacje urządzeń, język zapytań usługi IoT Hub, a wiadomości.
 author: dominicbetts
 manager: timlt
 ms.service: iot-hub
@@ -8,70 +8,71 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 01/29/2018
 ms.author: dobett
-ms.openlocfilehash: 1871ae68008f9fe9b3cb201a7b5f205792bc0817
-ms.sourcegitcommit: 266fe4c2216c0420e415d733cd3abbf94994533d
+ms.openlocfilehash: ecbec614bd0d1b043faf6ad002b05d4acdcc4ab4
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/01/2018
-ms.locfileid: "34632979"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041751"
 ---
-# <a name="azure-iot-hub-developer-guide"></a>Przewodnik dewelopera Centrum IoT Azure
+# <a name="azure-iot-hub-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure IoT Hub
 
-Centrum IoT Azure jest w pełni zarządzaną usługę, która umożliwia włączanie i niezawodności komunikację dwukierunkową między milionów urządzeń i zaplecze rozwiązania.
+Usługa Azure IoT Hub to w pełni zarządzana usługa, która ułatwia włączanie bezpieczną i niezawodną komunikację dwukierunkową między milionami urządzeń i zapleczem rozwiązania.
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-partial.md)]
 
-Centrum IoT Azure oferuje:
+Usługa Azure IoT Hub zapewnia:
 
-* Bezpieczna komunikacja przy użyciu poświadczeń zabezpieczeń urządzenia i kontrola dostępu.
-* Wiele opcji komunikacji hiperskali urządzenia do chmury i chmury do urządzenia.
-* Kolejność przechowywania informacji o stanie na urządzenie i metadanych.
-* Łatwe urządzenia łączność z bibliotekami urządzenia dla najbardziej popularnych języków i platform.
+* Bezpieczna komunikacja przy użyciu poświadczeń zabezpieczeń na poziomie urządzenia i kontrola dostępu.
 
-Ten przewodnik dewelopera Centrum IoT zawiera następujące artykuły:
+* Wiele opcji komunikacji ogromne urządzenia do chmury i z chmury do urządzeń.
 
-* [Wskazówki dotyczące komunikacji urządzenia do chmury] [ lnk-d2c-guidance] ułatwia wybór między wiadomości urządzenia do chmury, dwie urządzenia zgłoszonego właściwości i przekazywania pliku.
-* [Wskazówki dotyczące komunikacji chmury do urządzenia] [ lnk-c2d-guidance] ułatwia wybór między metody bezpośredniego, odpowiednie właściwości dwie urządzenia i komunikaty chmury do urządzenia.
-* [Urządzenia do chmury i wiadomości z Centrum IoT chmury do urządzenia] [ devguide-messaging] opisano funkcje obsługi wiadomości (urządzenia do chmury i chmury do urządzenia), które udostępnia Centrum IoT.
-  * [Wysyłanie komunikatów urządzenia do chmury do Centrum IoT][devguide-messages-d2c].
-  * [Przeczytaj komunikaty urządzenia do chmury z wbudowanym punktem końcowym][devguide-builtin].
-  * [Użyj niestandardowe punkty końcowe i reguły routingu dla komunikatów urządzenia do chmury][devguide-custom].
-  * [Wysyłanie wiadomości chmury do urządzenia z Centrum IoT][devguide-messages-c2d].
-  * [Tworzenie i odczytywanie wiadomości Centrum IoT][devguide-format].
-* [Przekazywanie plików z urządzenia] [ devguide-upload] w tym artykule opisano, jak można przekazać pliki z urządzenia. Artykuł zawiera także informacje o tematów, takich jak powiadomienia, czy można wysyłać procesu przekazywania.
-* [Zarządzanie tożsamościami urządzenie w Centrum IoT] [ devguide-identities] opisuje jakie informacje magazyny rejestru tożsamości każdego centrum IoT. Artykuł opisuje również sposób dostępu i zmodyfikuj go.
-* [Kontrola dostępu do Centrum IoT] [ devguide-security] opisano model zabezpieczeń używany do udostępnienia funkcji Centrum IoT dla obu urządzeń i składniki w chmurze. Artykuł zawiera informacje dotyczące używania tokenów i certyfikaty X.509 i szczegóły uprawnień, które mogą udzielać dostępu.
-* [Umożliwia synchronizowanie stanu i konfiguracji urządzenia twins] [ devguide-device-twins] opisuje *dwie urządzenia* koncepcji. Artykuł również funkcje twins urządzenie tym ujawnia, takich jak synchronizowanie urządzenia z jego dwie urządzenia. Artykuł zawiera informacje na temat danych przechowywanych w dwie urządzenia.
-* [Wywoływanie metody bezpośrednio na urządzeniu] [ devguide-directmethods] opisuje cyklem życia metoda bezpośrednia. Artykuł opisuje sposób wywołania metody na urządzeniu z aplikacji zaplecza i obsługiwać metodę bezpośrednio na urządzeniu.
-* [Planowanie zadań na wielu urządzeniach] [ devguide-jobs] zawiera opis sposobu tworzenia harmonogramu zadań na wielu urządzeniach. Artykuł opisuje sposób przesyłania zadań, wykonujących zadania jako wykonywania metoda bezpośrednia aktualizacja urządzenia przy użyciu podwójnego urządzenia. On również opis zbadać stanu zadania.
-* [Odwołanie — wybierz protokół komunikacyjny] [ devguide-protocol] opisuje protokołów komunikacyjnych, że Centrum IoT do komunikacji urządzeń i obsługuje listę portów, które powinno być otwarte.
-* [Odwołanie — punkty końcowe Centrum IoT] [ devguide-endpoints] opisano różne punkty końcowe, które udostępnia każdego centrum IoT dla operacji obsługi i zarządzania. Artykuł opisuje również sposób możesz utworzyć dodatkowe punkty końcowe w Centrum IoT i jak użyć bramy pola, aby umożliwić łączność z punktami końcowymi Centrum IoT w scenariuszach niestandardowe.
-* [Odwołanie - Centrum IoT zapytania języka twins urządzenia, zadania i rozsyłania wiadomości] [ devguide-query] opisuje tego języka zapytania Centrum IoT, która umożliwia pobieranie informacji z Centrum temat zadań i twins urządzenia.
-* [Odwołanie - przydziały i ograniczenia przepustowości] [ devguide-quotas] podsumowuje przydziały w usłudze IoT Hub i ograniczenie, które występuje, gdy przekracza limit przydziału.
-* [Odwołanie — cennik] [ devguide-pricing] zawiera ogólne informacje dotyczące różnych jednostki SKU i cenach dla Centrum IoT i szczegółowe informacje o sposobie różne funkcje Centrum IoT są mierzone jako wiadomości przez Centrum IoT.
-* [Odwołanie - urządzeń i usług zestawów SDK] [ devguide-sdks] Wyświetla listę zestawów SDK IoT Azure do tworzenia aplikacji usług i urządzeń, które współdziałają z Centrum IoT. Artykuł zawiera linki do dokumentacji interfejsu API.
-* [Odwołanie — Obsługa MQTT Centrum IoT] [ devguide-mqtt] zawiera szczegółowe informacje o sposobie obsługi protokołu MQTT w Centrum IoT. Tym artykule opisano obsługę protokołu MQTT wbudowanych do zestawów SDK IoT Azure i zawiera informacje dotyczące korzystania z protokołu MQTT bezpośrednio.
-* [Słownik] [ devguide-glossary] listę typowe terminy związane z Centrum IoT.
+* Odpytywalny przechowywania informacji o stanie poszczególnych urządzeń i metadane.
 
-[devguide-messaging]: iot-hub-devguide-messaging.md
-[devguide-upload]: iot-hub-devguide-file-upload.md
-[devguide-identities]: iot-hub-devguide-identity-registry.md
-[devguide-security]: iot-hub-devguide-security.md
-[devguide-device-twins]: iot-hub-devguide-device-twins.md
-[devguide-directmethods]: iot-hub-devguide-direct-methods.md
-[devguide-jobs]: iot-hub-devguide-jobs.md
-[devguide-endpoints]: iot-hub-devguide-endpoints.md
-[devguide-quotas]: iot-hub-devguide-quotas-throttling.md
-[devguide-query]: iot-hub-devguide-query-language.md
-[devguide-sdks]: iot-hub-devguide-sdks.md
-[devguide-mqtt]: iot-hub-mqtt-support.md
-[devguide-glossary]: iot-hub-devguide-glossary.md
-[devguide-pricing]: iot-hub-devguide-pricing.md
-[lnk-c2d-guidance]: iot-hub-devguide-c2d-guidance.md
-[lnk-d2c-guidance]: iot-hub-devguide-d2c-guidance.md
-[devguide-messages-d2c]: iot-hub-devguide-messages-d2c.md
-[devguide-builtin]: iot-hub-devguide-messages-read-builtin.md
-[devguide-custom]: iot-hub-devguide-messages-read-custom.md
-[devguide-messages-c2d]: iot-hub-devguide-messages-c2d.md
-[devguide-format]: iot-hub-devguide-messages-construct.md
-[devguide-protocol]: iot-hub-devguide-protocols.md
+* Łączność urządzeń łatwe za pomocą biblioteki urządzeń dla najbardziej popularnych języków i platform.
+
+Ten przewodnik dla deweloperów usługi IoT Hub zawiera następujące artykuły:
+
+* [Wskazówki dotyczące komunikacji z urządzenia do chmury](iot-hub-devguide-d2c-guidance.md) pomaga wybrać komunikatów z urządzenia do chmury, zgłaszanych właściwości bliźniaczej reprezentacji urządzenia i przekazywanie pliku.
+
+* [Wskazówki dotyczące komunikacji z chmury do urządzenia](iot-hub-devguide-c2d-guidance.md) pomaga wybrać jedną z metod bezpośrednich, żądane właściwości bliźniaczej reprezentacji urządzenia i komunikaty z chmury do urządzenia.
+
+* [Urządzenia do chmury i obsługa komunikatów za pomocą usługi IoT Hub chmury do urządzenia](iot-hub-devguide-messaging.md) opisano funkcje obsługi komunikatów (urządzenia do chmury i z chmury do urządzeń), które udostępnia usługi IoT Hub.
+
+  * [Wysyłanie komunikatów z urządzenia do chmury do Centrum IoT Hub](iot-hub-devguide-messages-d2c.md).
+
+  * [Odczytywanie komunikatów z urządzenia do chmury z wbudowanego punktu końcowego](iot-hub-devguide-messages-read-builtin.md).
+
+  * [Użyj niestandardowych punktów końcowych i reguł routingu dla komunikatów z urządzenia do chmury](iot-hub-devguide-messages-read-custom.md).
+
+  * [Wysyłanie komunikatów z chmury do urządzeń z usługi IoT Hub](iot-hub-devguide-messages-c2d.md).
+
+  * [Tworzenie i odczytywanie komunikatów usługi IoT Hub](iot-hub-devguide-messages-construct.md).
+
+* [Przekazywanie plików z urządzenia](iot-hub-devguide-file-upload.md) w tym artykule opisano, jak przekazać plików z urządzenia. Artykuł zawiera również informacje o zagadnienia, takie jak powiadomienia, które można wysyłać procesu przekazywania.
+
+* [Zarządzanie tożsamościami urządzeń w usłudze IoT Hub](iot-hub-devguide-identity-registry.md)opisuje jakie informacje magazyny rejestrze tożsamości Centrum IoT. W artykule opisano również, jak można uzyskać dostęp i zmodyfikować go.
+
+* [Kontrola dostępu do usługi IoT Hub](iot-hub-devguide-security.md) w tym artykule opisano model zabezpieczeń umożliwia udzielanie dostępu do funkcji usługi IoT Hub dla obu urządzeń i w chmurze składniki. Artykuł zawiera informacje dotyczące używania tokenów i certyfikaty X.509 i szczegółowe informacje o uprawnienia, które można udzielić uprawnień.
+
+* [Użyj bliźniacze reprezentacje urządzeń, aby zsynchronizować stan i konfiguracje](iot-hub-devguide-device-twins.md) opisuje *bliźniaczej reprezentacji urządzenia* koncepcji. Artykuł również udostępnić tym bliźniaczych reprezentacji urządzeń funkcje, takie jak synchronizacja urządzenia za pomocą jego bliźniaczej reprezentacji urządzenia. Artykuł zawiera informacje o danych przechowywanych w bliźniaczej reprezentacji urządzenia.
+
+* [Wywoływanie metody bezpośredniej o urządzeniu](iot-hub-devguide-direct-methods.md) opisuje cykl życia metody bezpośredniej. W artykule opisano, jak wywoływać metody na urządzeniu z poziomu aplikacji zaplecza i obsługiwać bezpośrednie metody na urządzeniu.
+
+* [Planowanie zadań na wielu urządzeniach](iot-hub-devguide-jobs.md) w tym artykule opisano, jak możesz planować prace na wielu urządzeniach. W artykule opisano sposób przesyłania zadań wykonujących zadania co wykonywanie metody bezpośredniej aktualizacji urządzenia przy użyciu bliźniaczej reprezentacji urządzenia. Opisuje ona również, jak wykonać zapytania o stan zadania.
+
+* [Odwołania — wybór protokołu komunikacyjnego](iot-hub-devguide-protocols.md) opisuje protokołów komunikacyjnych, że usługi IoT Hub obsługuje komunikacji z urządzeniem i wyświetla listę portów, które powinno być otwarte.
+
+* [Odwołanie - punktów końcowych usługi IoT Hub](iot-hub-devguide-endpoints.md) w tym artykule opisano różne punkty końcowe, które każde Centrum IoT hub udostępnia dla operacji zarządzania i środowiska uruchomieniowego. W artykule opisano również, jak utworzyć dodatkowe punkty końcowe w usłudze IoT hub i jak włączyć łączność z punktami końcowymi usługi IoT Hub w scenariuszach niestandardowych za pomocą bramy w terenie.
+
+* [Odwołanie — język zapytań usługi IoT Hub dla bliźniaczych reprezentacji urządzeń, zadań i routingu wiadomości](iot-hub-devguide-query-language.md) opisuje tego języka zapytań usługi IoT Hub, która umożliwia pobieranie informacji z Twojego Centrum dotyczących bliźniaczych reprezentacji urządzeń i zadań.
+
+* [Odwołanie - przydziałów i dławienia](iot-hub-devguide-quotas-throttling.md) znajduje się podsumowanie przydziały w usługę IoT Hub i ograniczania przepustowości, które występuje, gdy przekracza limit przydziału.
+
+* [Odwołania — cennik](iot-hub-devguide-pricing.md) zawiera ogólne informacje dotyczące różnych jednostek SKU i ceny dla usługi IoT Hub i szczegółowe informacje na temat sposobu różnych funkcji usługi IoT Hub są mierzone jako komunikaty przez usługę IoT Hub.
+
+* [Odwołanie - urządzeniem i usługą SDK](iot-hub-devguide-sdks.md) Wyświetla listę zestawów SDK usługi Azure IoT do tworzenia aplikacji usług i urządzeń, które współdziałają z Centrum IoT hub. Artykuł zawiera linki do dokumentacji online dotyczącej interfejsu API.
+
+* [Odwołanie — Obsługa protokołu MQTT Centrum IoT](iot-hub-mqtt-support.md) zawiera szczegółowe informacje o sposobie obsługi protokołu MQTT w Centrum IoT Hub. Artykuł zawiera opis Obsługa protokołu MQTT wbudowana w usłudze Azure IoT SDKs i zawiera informacje dotyczące bezpośrednio przy użyciu protokołu MQTT.
+
+* [Słownik](iot-hub-devguide-glossary.md) listę typowe terminy związane z Centrum IoT Hub.

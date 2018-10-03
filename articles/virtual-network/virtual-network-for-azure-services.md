@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: jdial
-ms.openlocfilehash: 06af3351f5669f5cd9aeeb9c4cb2168666476b52
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ef902f58f37cd0d09195aa5d1ff03847906ef414
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994636"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238901"
 ---
 # <a name="virtual-network-integration-for-azure-services"></a>Integracja sieci wirtualnej dla usług platformy Azure
 
@@ -58,12 +58,8 @@ Każda usługa wdrażać bezpośrednio w sieci wirtualnej ma określone wymagani
 Analiza | [Usługa Azure HDInsight](../hdinsight/hdinsight-extend-hadoop-virtual-network.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Usługa Azure Databricks](../azure-databricks/what-is-azure-databricks.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |
 | Tożsamość | [Azure Active Directory Domain Services](../active-directory-domain-services/active-directory-ds-getting-started-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json) |
 | Containers | [Usługa Azure Kubernetes Service (AKS)](../aks/networking-overview.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Wystąpienie kontenera platformy Azure (ACI)](http://www.aka.ms/acivnet)<br/>[Aparat usługi w usłudze Azure kontenera](https://github.com/Azure/acs-engine) za pomocą wtyczki Azure wirtualnych sieci CNI [wtyczki](https://github.com/Azure/acs-engine/tree/master/examples/vnet)||
-| Sieć Web | [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Środowisko usługi App Service](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Aplikacji internetowych](http://www.aka.ms/WebAppsVNet)
-| Hostowana *| [Pliki NetApp platformy Azure (i)](../azure-netapp-files/azure-netapp-files-introduction.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Usługa Azure dedykowany sprzętowego modułu zabezpieczeń](http://www.aka.ms/azurededicatedhsm)
-| | |
+| Sieć Web | [API Management](../api-management/api-management-using-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>[Środowisko usługi App Service](../app-service/web-sites-integrate-with-vnet.md?toc=%2fazure%2fvirtual-network%2ftoc.json)<br/>
 <br/>
-* Wyspecjalizowane usługi zwykle działających w sprzętu.
-
 
 
 ## <a name="service-endpoints-for-azure-services"></a>Punkty końcowe usługi dla usług platformy Azure

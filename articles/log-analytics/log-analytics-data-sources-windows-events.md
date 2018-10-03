@@ -1,6 +1,6 @@
 ---
-title: Zbieranie i analizowanie dzienników zdarzeń systemu Windows w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
-description: Dzienniki zdarzeń systemu Windows są jednym z najbardziej typowych źródeł danych używanych przez analizy dzienników.  W tym artykule opisano sposób konfigurowania zbierania dzienników zdarzeń systemu Windows i szczegóły rekordów tworzonych w obszarze roboczym analizy dzienników.
+title: Zbieranie i analizowanie dzienników zdarzeń Windows w usłudze Azure Log Analytics | Dokumentacja firmy Microsoft
+description: Dzienniki zdarzeń Windows są jednymi z najbardziej typowe źródła danych używane przez usługę Log Analytics.  W tym artykule opisano sposób konfigurowania zbierania dzienników zdarzeń Windows i szczegółowe informacje o rekordy, które tworzą w obszarze roboczym usługi Log Analytics.
 services: log-analytics
 documentationcenter: ''
 author: bwren
@@ -14,68 +14,68 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 12/11/2017
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 8183258ddde335b09293c72368ad3bf58a69334a
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: 4e21c011f54382466bf614dc01fb9d51b514d998
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37129357"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044250"
 ---
-# <a name="windows-event-log-data-sources-in-log-analytics"></a>Źródła danych dziennika zdarzeń systemu Windows w analizy dzienników
-Dzienniki zdarzeń systemu Windows są jednym z najbardziej typowych [źródeł danych](log-analytics-data-sources.md) do zbierania danych za pomocą agentów systemu Windows, ponieważ wiele aplikacji zapisu do dziennika zdarzeń systemu Windows.  Oprócz określenia żadnych dzienników niestandardowych tworzony przez aplikacje, które należy monitorować może zbierać zdarzenia z dzienników standardowe, takie jak systemu i aplikacji.
+# <a name="windows-event-log-data-sources-in-log-analytics"></a>Źródła danych dziennika zdarzeń Windows w usłudze Log Analytics
+Dzienniki zdarzeń Windows są jedną z najbardziej typowych [źródeł danych](log-analytics-data-sources.md) do zbierania danych przy użyciu agentów Windows, ponieważ wiele aplikacji zapisu w dzienniku zdarzeń Windows.  Oprócz określenia żadnych dzienników niestandardowych utworzone przez aplikacje, które są potrzebne do monitorowania może zbierać zdarzenia z dzienników standardowych, takich jak systemu i aplikacji.
 
-![Zdarzenia systemu Windows](media/log-analytics-data-sources-windows-events/overview.png)     
+![Zdarzenia Windows](media/log-analytics-data-sources-windows-events/overview.png)     
 
-## <a name="configuring-windows-event-logs"></a>Dzienniki zdarzeń Konfigurowanie systemu Windows
-Konfigurowanie dzienników zdarzeń systemu Windows z [danych menu Ustawienia usługi Analiza dzienników](log-analytics-data-sources.md#configuring-data-sources).
+## <a name="configuring-windows-event-logs"></a>Dzienniki konfigurowanie zdarzeń Windows
+Skonfiguruj dzienniki zdarzeń Windows z [danych menu Ustawienia usługi Analiza dzienników](log-analytics-data-sources.md#configuring-data-sources).
 
-Analiza dzienników zbiera tylko zdarzenia z dzienników zdarzeń systemu Windows, które są określone w ustawieniach.  Dziennik zdarzeń można dodać wpisać nazwę dziennika, a następnie klikając polecenie **+**.  Dla każdego dziennika są zbierane tylko zdarzenia dla wybranego ważności.  Sprawdzanie ważności dla określonego dziennika, który chcesz zebrać.  Nie można podać wszelkie dodatkowe kryteria, aby filtrować zdarzenia.
+Usługa log Analytics zbiera tylko zdarzenia z dzienników zdarzeń Windows, które są określone w ustawieniach.  Możesz dodać dziennik zdarzeń przez wpisanie nazwy dziennika, a następnie klikając polecenie **+**.  Dla każdego dziennika są zbierane tylko zdarzenia o ważności wybranych.  Zaznacz ważności dla określonego dziennika, które mają być zbierane.  Nie można podać wszelkie dodatkowe kryteria, aby filtrować zdarzenia.
 
-Podczas wpisywania nazwy dziennika zdarzeń analizy dzienników zawiera sugestie dotyczące typowych nazw w dzienniku zdarzeń. Jeśli dziennik, który ma zostać dodany, nie ma na liście, należy go dodać, wpisując w pełną nazwę dziennika. Pełna nazwa dziennika można znaleźć za pomocą Podglądu zdarzeń. W Podglądzie zdarzeń, otwórz *właściwości* strony dziennika i skopiuj ciąg z *imię i nazwisko* pola.
+Podczas wpisywania nazwy dziennika zdarzeń, usługa Log Analytics oferuje sugestie dotyczące nazw pospolitych dziennika zdarzeń. Jeśli dziennik, który chcesz dodać, nie ma na liście, możesz je dodać, wpisując pełną nazwę dziennika. Pełna nazwa dziennika można znaleźć za pomocą Podglądu zdarzeń. W Podglądzie zdarzeń, otwórz *właściwości* strony dziennika i skopiuj ciąg z *imię i nazwisko* pola.
 
-![Skonfiguruj zdarzenia systemu Windows](media/log-analytics-data-sources-windows-events/configure.png)
+![Konfiguruj zdarzenia Windows](media/log-analytics-data-sources-windows-events/configure.png)
 
 ## <a name="data-collection"></a>Zbieranie danych
-Analiza dzienników zbiera każdego zdarzenia odpowiadający wybranej ważności z monitorowanych dziennika zdarzeń zdarzenie zostało utworzone.  Agent rejestruje jego miejsce w każdym dzienniku zdarzeń zbierane z.  Jeśli w danym okresie czasu agent przejdzie do trybu offline, następnie analizy dzienników zbiera dane zdarzeń z którym ostatnio przerwał, nawet jeśli te zdarzenia zostały utworzone podczas agent jest w trybie offline.  Istnieje możliwość dla tych zdarzeń nie można pobrać, jeśli dziennik zdarzeń jest zawijana niepobranych zdarzenia zostaną zastąpione, gdy agent jest w trybie offline.
+Usługa log Analytics zbiera każdego zdarzenia, które odpowiada wybranej ważności z monitorowanych dziennika zdarzeń, podczas tworzenia zdarzenia.  Agent rejestruje jej miejscu w każdym dzienniku zdarzeń, który zbiera z.  Jeśli agent przejdzie do trybu offline w okresie czasu, następnie usługi Log Analytics zbiera dane zdarzeń z tam, gdzie ją ostatnia przerwaliśmy, nawet jeśli te zdarzenia zostały utworzone, gdy agent był w trybie offline.  Istnieje możliwość dla tych zdarzeń nie można pobrać, jeśli w dzienniku zdarzeń opakowuje ze zdarzeniami niepobranych zostaną zastąpione, gdy agent jest w trybie offline.
 
 >[!NOTE]
->Analiza dzienników nie są zbierane zdarzenia inspekcji utworzone przez program SQL Server ze źródła *MSSQLSERVER* o identyfikatorze zdarzenia 18453, który zawiera słowa kluczowe — *klasycznego* lub *Powodzenie inspekcji* i słowo kluczowe *0xa0000000000000*.
+>Usługa log Analytics nie są zbierane zdarzenia inspekcji utworzone przez program SQL Server ze źródła *MSSQLSERVER* z Identyfikatorem zdarzenia 18453, który zawiera słowa kluczowe — *klasycznego* lub *Sukces inspekcji* i słowo kluczowe *0xa0000000000000*.
 >
 
-## <a name="windows-event-records-properties"></a>Właściwości rekordy zdarzeń systemu Windows
-Rekordy zdarzeń systemu Windows mają typ **zdarzeń** i mieć właściwości w poniższej tabeli:
+## <a name="windows-event-records-properties"></a>Właściwości rekordy zdarzeń Windows
+Rekordy zdarzeń Windows mają typ **zdarzeń** i mają właściwości podane w poniższej tabeli:
 
 | Właściwość | Opis |
 |:--- |:--- |
 | Computer (Komputer) |Nazwa komputera, na którym zostały zebrane zdarzenia. |
 | EventCategory |Kategoria zdarzenia. |
-| EventData |Dane wszystkich zdarzeń w formacie nieprzetworzonym. |
+| EventData |Wszystkie dane zdarzeń w formacie nieprzetworzonym. |
 | Identyfikator zdarzenia |Numer zdarzenia. |
-| EventLevel |Waga zdarzenia w liczbowe. |
-| EventLevelName |Waga zdarzenia w postaci tekstu. |
+| eventLevel |Ważność zdarzenia w forma liczbowa. |
+| EventLevelName |Ważność zdarzenia w postaci tekstu. |
 | Dziennik zdarzeń |Nazwa dziennika zdarzeń, które zostały zebrane zdarzenia. |
 | ParameterXml |Wartości parametrów zdarzenia w formacie XML. |
-| ManagementGroupName |Nazwa grupy zarządzania agentami programu System Center Operations Manager.  Dla innych agentów ta wartość jest AOI-<workspace ID> |
+| ManagementGroupName |Nazwa grupy zarządzania agentów programu System Center Operations Manager.  W innych agentów ta wartość to AOI-<workspace ID> |
 | RenderedDescription |Opis zdarzenia przy użyciu wartości parametrów |
 | Element źródłowy |Źródło zdarzenia. |
-| SourceSystem |Typ agenta, które zostały zebrane zdarzenia. <br> Połącz OpsManager — agent systemu Windows, bądź bezpośrednio lub zarządzanych w programie Operations Manager <br> Linux — wszystkich agentów systemu Linux  <br> AzureStorage — Diagnostyka Azure |
-| TimeGenerated |Data i godzina utworzenia zdarzenia w systemie Windows. |
+| SourceSystem |Typ agenta, które zostały zebrane zdarzenia. <br> Łączenie OpsManager — Windows agent, bezpośrednio lub zarządzania programu Operations Manager <br> Linux — Wszyscy agenci systemu Linux  <br> AzureStorage — Diagnostyka Azure |
+| TimeGenerated |Data i godzina utworzenia zdarzenia w Windows. |
 | UserName |Nazwa użytkownika konta, które są rejestrowane zdarzenia. |
 
-## <a name="log-searches-with-windows-events"></a>Wyszukiwań dziennika zdarzeń systemu Windows
-Poniższa tabela zawiera różne przykłady wyszukiwania dziennika, które pobierają rekordy zdarzeń systemu Windows.
+## <a name="log-searches-with-windows-events"></a>Wyszukiwanie w dzienniku zdarzeń Windows
+Poniższa tabela zawiera różne przykłady przeszukiwania dzienników, które pobierają rekordy zdarzeń Windows.
 
 | Zapytanie | Opis |
 |:---|:---|
-| Wydarzenie |Wszystkie zdarzenia systemu Windows. |
-| Zdarzenia &#124; gdzie EventLevelName == "error" |Wszystkie zdarzenia systemu Windows z ważność błędu. |
-| Zdarzenia &#124; Podsumowanie funkcji count() przez źródło |Liczba systemu Windows zdarzenia według źródła. |
-| Zdarzenia &#124; gdzie EventLevelName == "error" &#124; Podsumowanie funkcji count() przez źródło |Liczba Windows Błąd źródła. |
+| Wydarzenie |Wszystkie zdarzenia Windows. |
+| Zdarzenie &#124; gdzie EventLevelName == "error" |Windows wszystkich zdarzeń o ważności błędu. |
+| Zdarzenie &#124; Podsumuj count() według źródła |Liczba Windows zdarzenia według źródła. |
+| Zdarzenie &#124; gdzie EventLevelName == "error" &#124; Podsumuj count() według źródła |Zdarzenia błędu liczba Windows według źródła. |
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Konfigurowanie analizy dzienników do gromadzenia innych [źródeł danych](log-analytics-data-sources.md) do analizy.
-* Dowiedz się więcej o [dziennika wyszukiwania](log-analytics-log-searches.md) analizować dane zebrane ze źródeł danych i rozwiązania.  
-* Użyj [pola niestandardowe](log-analytics-custom-fields.md) do analizowania rekordów zdarzeń do poszczególnych pól.
-* Skonfiguruj [zbiór liczników wydajności](log-analytics-data-sources-performance-counters.md) z agentów systemu Windows.
+* Skonfiguruj usługę Log Analytics do gromadzenia innych [źródeł danych](log-analytics-data-sources.md) do analizy.
+* Dowiedz się więcej o [dziennikach](log-analytics-log-searches.md) analizować dane zbierane z innych źródeł danych i rozwiązań.  
+* Użyj [pól niestandardowych](log-analytics-custom-fields.md) do analizowania rekordów zdarzeń do poszczególnych pól.
+* Konfigurowanie [zbieranie liczników wydajności](log-analytics-data-sources-performance-counters.md) z agentów użytkownika Windows.

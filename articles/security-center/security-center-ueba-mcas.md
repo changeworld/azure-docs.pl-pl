@@ -12,16 +12,16 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/12/2018
+ms.date: 09/21/2018
 ms.author: rkarlin
-ms.openlocfilehash: d6777e187c04ef9a2f03e4ae813476f5a1093156
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 2a747bdd8de41283b9cba1e40e2652aa826e9c60
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44724129"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044454"
 ---
-# <a name="ueba-for-azure-resources-and-users"></a>UEBA dla użytkowników i zasobów platformy Azure 
+# <a name="ueba-for-azure-resources-and-users"></a>Analiza behawioralna użytkowników i jednostek (UEBA) dla zasobów i użytkowników platformy Azure 
 
 Usługa Azure Security Center partnerów firmy Microsoft Cloud App Security, aby zapewnić Ci alerty oparte na użytkownika i analizie zachowań jednostek (UEBA) dla zasobów platformy Azure i użytkowników (aktywności platformy Azure). Te alerty wykrycia anomalii w zachowanie użytkowników i są oparte na użytkownika i jednostki analizy behawioralnej i usługi machine learning (ML), dzięki czemu można natychmiast uruchomić wykrywanie zaawansowanych zagrożeń działań wykonywanych na Twoich subskrypcji. Ponieważ są one automatycznie włączone, nowe funkcje wykrywania anomalii zapewnia wyniki wprowadzenia, zapewniając natychmiastowy wykrywania zagrożeń, przeznaczonych dla wielu anomalii zachowań użytkowników i zasobów skojarzonych z Twoją subskrypcją. Ponadto te alerty korzystać z dodatkowych danych, która już istnieje w aparacie wykrywania Microsoft Cloud App Security w celu przyspieszenia procesu badania i zawierają bieżących zagrożeń. 
 
@@ -55,8 +55,9 @@ Usługa Security Center obsługuje alerty wykrywania anomalii w usłudze Cloud A
 
 Te alerty są domyślnie włączone, ale można je wyłączyć:
 
-1. W bloku usługi Security Center wybierz **wykrywanie zagrożeń**.
-2. W obszarze **wykrywanie zagrożeń — korzystanie z integracji**, usuń zaznaczenie pola wyboru **Zezwalaj Microsoft Cloud App Security na dostęp do moich danych**i kliknij przycisk **Zapisz**.
+1. W bloku usługi Security Center wybierz **zasady zabezpieczeń**. Kliknij subskrypcję, którą chcesz zmienić, **edytować ustawienia**.
+2.  Kliknij przycisk **wykrywanie zagrożeń**.
+3. W obszarze **korzystanie z integracji**, usuń zaznaczenie pola wyboru **Zezwalaj Microsoft Cloud App Security na dostęp do moich danych**i kliknij przycisk **Zapisz**.
 
    ![Alert wykrycia zagrożeń](./media/security-center-ueba-mcas/security-center-mcas-optout.png)
 

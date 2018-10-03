@@ -9,12 +9,12 @@ ms.topic: article
 ms.date: 04/05/2018
 ms.author: laevenso
 ms.custom: mvc
-ms.openlocfilehash: 7fb60f3c440b4804ad8c5e6c013ecfa454358833
-ms.sourcegitcommit: d16b7d22dddef6da8b6cfdf412b1a668ab436c1f
+ms.openlocfilehash: 231d7b875a7163aaa532be4a6477ca4e2eb67286
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/08/2018
-ms.locfileid: "39716121"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043630"
 ---
 # <a name="using-gpus-on-aks"></a>Przy użyciu procesorów GPU w usłudze AKS
 
@@ -63,7 +63,7 @@ aks-nodepool1-22139053-1   Ready     agent     10h       v1.9.6
 aks-nodepool1-22139053-2   Ready     agent     10h       v1.9.6
 ```
 
-Opisz, jednym z węzłów, aby potwierdzić, że ustalonych w harmonogramie procesorów GPU. Ten znajduje się w obszarze `Capacity` sekcji. Na przykład `alpha.kubernetes.io/nvidia-gpu:  1`.
+Opisz, jednym z węzłów, aby potwierdzić, że ustalonych w harmonogramie procesorów GPU. Ten znajduje się w obszarze `Capacity` sekcji. Na przykład `nvidia.com/gpu:  1`. Jeśli nie widzisz procesorów GPU, zapoznaj się z **rozwiązywanie** poniższej sekcji.
 
 ```
 $ kubectl describe node aks-nodepool1-22139053-0
@@ -96,12 +96,12 @@ Addresses:
   InternalIP:  10.240.0.4
   Hostname:    aks-nodepool1-22139053-0
 Capacity:
- alpha.kubernetes.io/nvidia-gpu:  1
+ nvidia.com/gpu:                  1
  cpu:                             6
  memory:                          57691688Ki
  pods:                            110
 Allocatable:
- alpha.kubernetes.io/nvidia-gpu:  1
+ nvidia.com/gpu:                  1
  cpu:                             6
  memory:                          57589288Ki
  pods:                            110
@@ -135,7 +135,7 @@ Events:         <none>
 
 Aby zademonstrować, że w rzeczywistości działają procesorów GPU, obciążenie z żądaniem odpowiedni zasób włączyć harmonogramu procesora GPU. W tym przykładzie zostanie uruchomiony [Tensorflow](https://www.tensorflow.org/versions/r1.1/get_started/mnist/beginners) zadania względem [zestawu danych mnist ręcznie ZAPISANYCH](http://yann.lecun.com/exdb/mnist/).
 
-Następujące manifest zadania obejmuje limit zasobów `alpha.kubernetes.io/nvidia-gpu: 1`. Odpowiednie CUDA bibliotek i narzędzi debugowania będą dostępne w węźle w `/usr/local/nvidia` i muszą być zainstalowane w zasobniku przy użyciu specyfikacji odpowiednim woluminie, jak pokazano poniżej.
+Następujące manifest zadania obejmuje limit zasobów `nvidia.com/gpu: 1`. 
 
 Skopiuj manifest i Zapisz jako **przykłady tf-mnist ręcznie zapisanych demo.yaml**.
 ```
@@ -158,15 +158,8 @@ spec:
         imagePullPolicy: IfNotPresent
         resources:
           limits:
-            alpha.kubernetes.io/nvidia-gpu: 1
-        volumeMounts:
-        - name: nvidia
-          mountPath: /usr/local/nvidia
+           nvidia.com/gpu: 1
       restartPolicy: OnFailure
-      volumes:
-        - name: nvidia
-          hostPath:
-            path: /usr/local/nvidia
 ```
 
 Użyj [zastosować kubectl] [ kubectl-apply] polecenie, aby uruchomić zadanie. To polecenie analizuje plik manifestu i tworzy zdefiniowane obiekty usługi Kubernetes.

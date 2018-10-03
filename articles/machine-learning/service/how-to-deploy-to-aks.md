@@ -10,12 +10,12 @@ author: raymondlaghaeian
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: f74521f77420fcfc60e99dd3d70574d5e94cf084
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4e2529e760e23ba9837137cf91fd6ca7f52253b2
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967748"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237844"
 ---
 # <a name="how-to-deploy-models-from-azure-machine-learning-service-to-azure-kubernetes-service"></a>Jak wdrażać modele z usługi Azure Machine Learning w usłudze Azure Kubernetes Service
 
@@ -27,7 +27,7 @@ Wdrażanie w usłudze AKS zapewnia automatyczne skalowanie, rejestrowanie, zbier
 
 - Subskrypcja platformy Azure. Jeśli nie masz subskrypcji, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
-- Obszarem roboczym usługi Azure Machine Learning, zawierający skrypty i zestawu SDK usługi Azure Machine Learning dla języka Python zainstalowane katalogu lokalnego. Dowiedz się, jak uzyskać te wymagania wstępne przy użyciu [sposób konfigurowania środowiska deweloperskiego](how-to-configure-environment.md) dokumentu.
+- Usługi Azure Machine Learning service obszar roboczy, zawierający skrypty i zestawu SDK usługi Azure Machine Learning dla języka Python zainstalowane katalogu lokalnego. Dowiedz się, jak uzyskać te wymagania wstępne przy użyciu [sposób konfigurowania środowiska deweloperskiego](how-to-configure-environment.md) dokumentu.
 
 - Model uczenia maszynowego uczony. Jeśli nie masz, zobacz [szkolenie modeli klasyfikacji obrazów](tutorial-train-models-with-aml.md) samouczka.
 

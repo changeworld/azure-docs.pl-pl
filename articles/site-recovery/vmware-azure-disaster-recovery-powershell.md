@@ -2,17 +2,18 @@
 title: Replikacja i tryb failover maszyny wirtualne VMware na platformę Azure przy użyciu programu PowerShell w usłudze Azure Site Recovery | Dokumentacja firmy Microsoft
 description: Dowiedz się, jak skonfigurować replikację i tryb failover na platformie Azure dla maszyn wirtualnych VMware przy użyciu programu PowerShell w usłudze Azure Site Recovery.
 services: site-recovery
-author: bsiva
+author: sujayt
+manager: rochakm
 ms.service: site-recovery
 ms.date: 07/06/2018
 ms.topic: conceptual
-ms.author: bsiva
-ms.openlocfilehash: a826817b8f2b4ebff8442da1fbee79a95990a9e8
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.author: sutalasi
+ms.openlocfilehash: 070e51b132828e4fdf597d28fc2ad602adf76692
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37917816"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042806"
 ---
 # <a name="replicate-and-fail-over-vmware-vms-to-azure-with-powershell"></a>Replikacja i tryb failover maszyny wirtualne VMware na platformę Azure przy użyciu programu PowerShell
 
@@ -25,7 +26,7 @@ Omawiane kwestie:
 > - Sprawdź poprawność rejestracji serwera w magazynie.
 > - Skonfiguruj replikację, łącznie z zasadami replikacji. Dodawanie serwera vCenter i odnajdywanie maszyn wirtualnych. > — Dodawanie serwera vCenter i odnajdywanie 
 > - Tworzenie konta magazynu do przechowywania danych replikacji i zreplikować maszyny wirtualne.
-> - Realizacja trybu failover. Konfigurowanie ustawień trybu failover, wykonaj ustawienia e replikowania maszyn wirtualnych.
+> - Wykonaj przejście w tryb failover. Konfigurowanie ustawień trybu failover, wykonaj ustawienia e replikowania maszyn wirtualnych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

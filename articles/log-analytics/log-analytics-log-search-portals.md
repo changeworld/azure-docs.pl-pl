@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: 4677b8d5601dcafbf4760e6f185ef70393229b1a
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.component: ''
+ms.openlocfilehash: 8a73ad7c17710ab3e6e4ed41eced643ce9eb86dc
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46961063"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042482"
 ---
 # <a name="viewing-and-analyzing-data-in-log-analytics"></a>Wyświetlanie i analizowanie danych w usłudze Log Analytics
 Dostępne są dwie opcje dostępne w witrynie Azure portal do analizowania danych przechowywanych w usłudze Log analytics oraz do tworzenia zapytań dotyczących analizy ad-hoc. Zapytania, które możesz utworzyć przy użyciu tych portali może służyć do innych funkcji, takich jak alerty i pulpity nawigacyjne.

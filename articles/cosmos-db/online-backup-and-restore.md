@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 11/15/2017
 ms.author: govindk
-ms.openlocfilehash: a2c52844e09daf42418b4e548f7185e31dcf4ae9
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: 77f22201b897703f6e74a5a3626a2ccc04a814f4
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44053537"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043230"
 ---
 # <a name="automatic-online-backup-and-restore-with-azure-cosmos-db"></a>Automatyczne tworzenie kopii zapasowej online i przywracanie za pomocą usługi Azure Cosmos DB
 Usługa Azure Cosmos DB automatycznie wykonuje kopie zapasowe wszystkich danych w regularnych odstępach czasu. Automatyczne kopie zapasowe są wykonywane bez wywierania wpływu na wydajność lub dostępności operacje bazy danych. Wszystkie kopie zapasowe są przechowywane osobno w innej usługi storage, a te kopie zapasowe globalnie są replikowane w celu zapewnienia odporności na regionalnej awarii. Automatyczne kopie zapasowe są przeznaczone dla scenariuszy, gdy przypadkowego usunięcia kontenera usługi Cosmos DB i później wymagają odzyskiwanie danych lub rozwiązanie odzyskiwania po awarii.  
@@ -53,11 +53,15 @@ Interfejsu API SQL, jeśli chcesz zachować swoje własne migawki, możesz uży�
 > Jeśli użytkownik "Aprowizowanie przepływności dla zestawu kontenerów na poziomie bazy danych" — należy pamiętać o przywracania odbywa się na poziomie pełnym konta bazy danych. Należy również upewnij się, że skontaktowanie się w obrębie 8 godzin do zespołu pomocy technicznej, jeśli przypadkowo usunięto kontener. Nie można przywrócić dane, jeśli użytkownik nie skontaktowania się z zespołem pomocy technicznej w 8 godzin. 
 
 
+
 ## <a name="restoring-a-database-from-an-online-backup"></a>Przywracanie bazy danych z kopii zapasowej online
 
 Jeśli przypadkowo usuniesz bazy danych lub kontenera, możesz to zrobić [bilet pomocy technicznej](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade) lub [z działem pomocy technicznej platformy Azure](https://azure.microsoft.com/support/options/) przywrócić dane z ostatnich automatycznej kopii zapasowej. Pomoc techniczna platformy Azure jest dostępny dla wybranych planów tylko np. Standard, dla deweloperów, pomocy technicznej nie jest dostępna z planem Basic. Aby dowiedzieć się więcej o planach pomocy technicznej w różnych, zobacz [plany pomocy technicznej platformy Azure](https://azure.microsoft.com/support/plans/) strony. 
 
 Jeśli trzeba przywrócić bazę danych z powodu problemu z uszkodzeniem danych (w tym przypadki, w których są usuwane dokumenty znajdujące się w kontenerze), zobacz [obsługi uszkodzenie danych](#handling-data-corruption) jak należy wykonać dodatkowe kroki w celu zapobieżenia uszkodzone dane zastąpienie istniejących kopii zapasowych. Dla określonej migawki kopii zapasowej do przywrócenia Cosmos DB wymaga danych był dostępny na czas trwania cyklu tworzenia kopii zapasowych dla tej migawki.
+
+> [!NOTE]
+> Kolekcje lub baz danych można przywrócić tylko po żądań klientów w celu przywrócenia. Można usunąć kontenera lub bazy danych bezpośrednio po przywróceniu danych jest responsbility przez klienta. Jeśli nie usuniesz przywróconych baz danych i kolekcji, będzie powodować Naliczanie koszt zgodnie ze stawką przywróconej kolekcji lub bazy danych. Tak jest bardzo ważne natychmiast je usunąć. 
 
 ## <a name="handling-data-corruption"></a>Obsługa uszkodzenie danych
 

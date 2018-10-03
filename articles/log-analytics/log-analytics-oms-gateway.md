@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/02/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 74da7e96ed52b441bc63d5fb5a032db9c6d57774
-ms.sourcegitcommit: eaad191ede3510f07505b11e2d1bbfbaa7585dbd
+ms.component: ''
+ms.openlocfilehash: ac1b04d0b8c50939ff04a87a11fd1a315c2266ff
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/03/2018
-ms.locfileid: "39494280"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48042833"
 ---
 # <a name="connect-computers-without-internet-access-using-the-oms-gateway"></a>Łączenie komputerów bez dostępu do Internetu za pomocą bramy pakietu OMS
 W tym dokumencie opisano sposób konfigurowania komunikacji z usługą Azure Automation i Log Analytics przy użyciu bramy pakietu OMS, w przypadku bezpośredniego połączenia lub programu Operations Manager monitorowane komputery nie mają dostępu do Internetu.  Bramę pakietu OMS, czyli do przodu serwera proxy HTTP obsługującego tunelowania HTTP za pomocą polecenia połączenia protokołu HTTP, można zbierać dane i wysyłać je do usługi Azure Automation i Log Analytics w ich imieniu.  

@@ -13,13 +13,13 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/27/2018
 ms.author: bwren
-ms.component: na
-ms.openlocfilehash: bcc5f23c163a391639d916b8a50c2c05d228ee91
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.component: ''
+ms.openlocfilehash: c43f8acf7f9278ca412bee9ad15f2d51541cd27b
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47432090"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044335"
 ---
 # <a name="standard-properties-in-log-analytics-records"></a>Właściwości standardowe w rekordach usługi Log Analytics
 Dane w [usługi Log Analytics](../log-analytics/log-analytics-queries.md) jest przechowywany jako zestaw rekordów, każdy z typem danych, który ma unikatowego zestawu właściwości. Wiele typów danych, ma standardowych właściwości, które są wspólne dla wielu typów. W tym artykule opisano te właściwości i przedstawiono przykłady jak ich używać w zapytaniach.

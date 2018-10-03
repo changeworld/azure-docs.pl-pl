@@ -8,12 +8,12 @@ ms.author: mamccrea
 ms.reviewer: mamccrea
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 46105ee92a5c98cb8180b2499d0ad295702aac43
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 85fea195b05bea8a1db70f8b5b81cabdfe7c6c72
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46953378"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041513"
 ---
 # <a name="bring-your-own-key-for-apache-kafka-on-azure-hdinsight-preview"></a>Użyj własnego klucza dla platformy Apache Kafka w usłudze Azure HDInsight (wersja zapoznawcza)
 
@@ -35,17 +35,37 @@ Bezpiecznie wymiany kluczy w magazynie kluczy, można użyć witryny Azure porta
 
    ![Utwórz tożsamość zarządzaną przypisanych przez użytkownika w witrynie Azure portal](./media/apache-kafka-byok/user-managed-identity-portal.png)
 
-2. Utwórz lub zaimportuj usługi Azure Key Vault.
+2. Importowanie istniejącego magazynu kluczy, lub Utwórz nową.
 
    HDInsight obsługuje tylko usługi Azure Key Vault. Jeśli masz magazynu kluczy, kluczy można zaimportować do usługi Azure Key Vault. Należy pamiętać, że klucze muszą mieć "Usuwanie nietrwałe" i "Przeczyszczanie" włączone. Funkcje "Usuwanie nietrwałe" i "Przeczyszczanie" są dostępne za pośrednictwem interfejsu REST, .NET / C#, programu PowerShell i wiersza polecenia platformy Azure interfejsów.
 
    Aby utworzyć nowy magazyn kluczy, wykonaj [usługi Azure Key Vault](../../key-vault/key-vault-get-started.md) Szybki Start. Aby uzyskać więcej informacji na temat importowania istniejących kluczy, odwiedź stronę [o kluczy, wpisów tajnych i certyfikatów](../../key-vault/about-keys-secrets-and-certificates.md).
 
+   Aby utworzyć nowy klucz, wybierz **Generuj/Import** z **klucze** menu w obszarze **ustawienia**.
+
+   ![Wygeneruj nowy klucz w usłudze Azure Key Vault](./media/apache-kafka-byok/kafka-create-new-key.png)
+
+   Ustaw **opcje** do **Generuj** i nadaj nazwę klucza.
+
+   ![Wygeneruj nowy klucz w usłudze Azure Key Vault](./media/apache-kafka-byok/kafka-create-a-key.png)
+
+   Wybierz klucz, który został utworzony z listy kluczy.
+
+   ![Lista kluczy usługi Azure Key Vault](./media/apache-kafka-byok/kafka-key-vault-key-list.png)
+
+   Gdy używasz własnego klucza szyfrowania klastra platformy Kafka, należy podać identyfikator URI klucza. Kopiuj **identyfikatora klucza** i zapisz go innym aż wszystko będzie gotowe utworzyć klaster.
+
+   ![Skopiuj identyfikator klucza](./media/apache-kafka-byok/kafka-get-key-identifier.png)
+   
 3. Dodaj tożsamość zarządzaną do zasad dostępu magazynu kluczy.
 
    Utwórz nowe zasady dostępu do usługi Azure Key Vault.
 
    ![Utwórz nowe zasady dostępu do usługi Azure Key Vault](./media/apache-kafka-byok/add-key-vault-access-policy.png)
+
+   W obszarze **Wybierz podmiot zabezpieczeń**, wybierz przypisanych przez użytkownika tożsamości zarządzanej został utworzony.
+
+   ![Ustaw Wybierz podmiot zabezpieczeń dla zasad dostępu w usłudze Azure Key Vault](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
 
    Ustaw **uprawnienia klucza** do **uzyskać**, **Odpakuj klucz**, i **Opakuj klucz**.
 
@@ -55,17 +75,13 @@ Bezpiecznie wymiany kluczy w magazynie kluczy, można użyć witryny Azure porta
 
    ![Ustaw uprawnienia klucza pod kątem zasad dostępu usługi Azure Key Vault](./media/apache-kafka-byok/add-key-vault-access-policy-secrets.png)
 
-   W obszarze **Wybierz podmiot zabezpieczeń**, wybierz przypisanych przez użytkownika tożsamości zarządzanej został utworzony.
-
-   ![Ustaw Wybierz podmiot zabezpieczeń dla zasad dostępu w usłudze Azure Key Vault](./media/apache-kafka-byok/add-key-vault-access-policy-select-principal.png)
-
 4. Tworzenie klastra HDInsight
 
    Teraz możesz przystąpić do tworzenia nowego klastra HDInsight. BYOK będzie stosowany tylko do nowych klastrów podczas tworzenia klastra. Szyfrowanie nie można usunąć z klastrami funkcji BYOK i BYOK nie można dodać do istniejących klastrów.
 
    ![Szyfrowanie dysków platformy Kafka w witrynie Azure portal](./media/apache-kafka-byok/apache-kafka-byok-portal.png)
 
-   Podczas tworzenia klastra, podaj pełny adres URL, w tym klucza wersji klucza. Na przykład `myakv.azure.com/KEK1/v1`. Należy również przypisać tożsamość zarządzaną do klastra i podaj identyfikator URI klucza.
+   Podczas tworzenia klastra, podaj pełny adres URL, w tym klucza wersji klucza. Na przykład `https://contoso-kv.vault.azure.net/keys/kafkaClusterKey/46ab702136bc4b229f8b10e8c2997fa4`. Należy również przypisać tożsamość zarządzaną do klastra i podaj identyfikator URI klucza.
 
 ## <a name="faq-for-byok-to-kafka"></a>Często zadawane pytania dotyczące funkcji BYOK do platformy Kafka
 

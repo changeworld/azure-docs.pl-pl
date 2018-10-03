@@ -8,18 +8,27 @@ ms.reviewer: mldocs
 ms.service: machine-learning
 ms.component: core
 ms.topic: article
-ms.date: 09/24/2018
-ms.openlocfilehash: d84040dc440c373ae9bae6dbac7a95109a387ba7
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/01/2018
+ms.openlocfilehash: d4910eb3dfacb46efe3f85aea3a441bdaaeb1392
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162750"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48236416"
 ---
 # <a name="known-issues-and-troubleshooting-azure-machine-learning-service"></a>Znane problemy i rozwiązywania problemów z usługi Azure Machine Learning
  
 Ten artykuł ułatwia znajdowanie i poprawić błędy lub błędów napotkanych podczas korzystania z usługi Azure Machine Learning. 
 
+## <a name="image-building-failure"></a>Błąd tworzenia obrazu
+
+Obraz tworzenia niepowodzenia podczas wdrażania usługi sieci web. Obejście polega na dodawanie "pynacl == 1.2.1" jako zależność pip Conda pliku konfiguracji obrazu.  
+
+## <a name="pipelines"></a>Potoki
+Wystąpi błąd podczas wywoływania PythonScriptStep wiele razy z rzędu bez wprowadzania zmian w skrypcie lub parametrów. Obejście polega na odbudować obiektu PipelineData.
+
+## <a name="fpgas"></a>Układów FPGA
+Nie można wdrażać modele na układów FPGA dopiero po przeprowadzeniu mają wymagane i zostało zatwierdzone dla limitu przydziału FPGA. Aby zażądać dostępu, wypełnij formularz żądania limitu przydziału: https://aka.ms/aml-real-time-ai
 
 ## <a name="databricks"></a>Usługa Databricks
 

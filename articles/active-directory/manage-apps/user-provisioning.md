@@ -14,12 +14,12 @@ ms.workload: identity
 ms.date: 07/30/2018
 ms.author: barbkess
 ms.reviewer: asmalser
-ms.openlocfilehash: 1f7a38994cb127d2edb59e9d3befeece99a7feb1
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 8a84f2f13318dea5c2b99af0b880f2adb1343c8d
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
 ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018693"
+ms.locfileid: "48042789"
 ---
 # <a name="automate-user-provisioning-and-deprovisioning-to-saas-applications-with-azure-active-directory"></a>Automatyzowanie użytkownika aprowizacji i cofania aprowizacji do aplikacji SaaS w usłudze Azure Active Directory
 ## <a name="what-is-automated-user-provisioning-for-saas-apps"></a>Co to jest automatyczna aprowizacja użytkowników dla aplikacji SaaS?
@@ -237,7 +237,7 @@ Na podstawie scenariusza wskazówki na temat rozwiązywania problemów automatyc
 
 Aby uzyskać przykładowe wdrożenie krok po kroku planowanie Inicjowanie obsługi ruchu wychodzącego użytkowników do aplikacji, zobacz [tożsamości — przewodnik wdrażania dla aprowizacji użytkowników](https://aka.ms/userprovisioningdeploymentplan).
 
-##<a name="more-frequenty-asked-questions"></a>Więcej frequenty zadawane pytania
+##<a name="more-frequently-asked-questions"></a>Więcej często zadawanych pytań
 
 ###<a name="does-automatic-user-provisioning-to-saas-apps-work-with-b2b-users-in-azure-ad"></a>Jest automatyczna aprowizacja użytkowników na działanie aplikacji SaaS przy użyciu użytkowników B2B w usłudze Azure AD?
 
@@ -247,19 +247,19 @@ Jednak dla użytkowników B2B móc zalogować się do aplikacji SaaS przy użyci
 
 ###<a name="does-automatic-user-provisioning-to-saas-apps-work-with-dynamic-groups-in-azure-ad"></a>Jest automatyczna aprowizacja użytkowników na działanie aplikacji SaaS z grupami dynamicznymi w usłudze Azure AD?
 
-Tak. Po skonfigurowaniu "Synchronizuj tylko przypisanych użytkowników i grup" Usługa aprowizowania użytkowników w usłudze Azure AD można aprowizacji bądź anulowaniu aprowizacji użytkowników w aplikacji SaaS, w oparciu o informację, czy są oni członkami [grupy dynamicznej](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule]). Grupy dynamiczne również działać przy użyciu opcji "Synchronizuj wszystkich użytkowników i grupy".
+Tak. Gdy skonfigurowany do "Synchronizuj tylko przypisanych użytkowników i grupy", usługa aprowizowania użytkowników w usłudze Azure AD można udostępnić lub anulować obsługę użytkowników w aplikacji SaaS w oparciu o informację, czy są oni członkami [grupy dynamicznej](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule]). Grupy dynamiczne również działać przy użyciu opcji "Synchronizuj wszystkich użytkowników i grupy".
 
 Jednak użycie grup dynamicznych może mieć wpływ na ogólną wydajność end-to-end Inicjowanie obsługi użytkowników z usługi Azure AD z aplikacjami SaaS. Podczas korzystania z grup dynamicznych, należy pamiętać te zastrzeżenia i zalecenia:
 
 * Jak zainicjowano obsługę administracyjną lub anulowanie aprowizacji w aplikacji SaaS fast użytkownika w grupie dynamicznej są zależy od tego, jak szybko ocenić zmiany członkostwa grupy dynamicznej. Aby uzyskać informacje na temat sprawdzić stan przetwarzania grupy dynamicznej, zobacz [sprawdzić stan przetwarzania reguły członkostwa](https://docs.microsoft.com/azure/active-directory/users-groups-roles/groups-create-rule#check-processing-status-for-a-membership-rule).
 
-* Podczas korzystania z grup dynamicznych, zasad musi być starannie przemyślane użytkownikowi aprowizacji i cofania aprowizacji na uwadze, ponieważ spowoduje utratę członkostwa anulowania obsługi zdarzeń.
+* Podczas korzystania z grup dynamicznych, zasad musi być starannie przemyślane użytkownikowi aprowizację i cofanie aprowizacji, pamiętając, ponieważ spowoduje utratę członkostwa anulowania obsługi zdarzeń.
 
 ###<a name="does-automatic-user-provisioning-to-saas-apps-work-with-nested-groups-in-azure-ad"></a>Jest automatyczna aprowizacja użytkowników na działanie aplikacji SaaS przy użyciu zagnieżdżonych grup w usłudze Azure AD?
 
 Nie. Po skonfigurowaniu "Synchronizuj tylko przypisanych użytkowników i grup" Usługa aprowizowania użytkowników w usłudze Azure AD nie będzie mógł odczytać lub inicjowania obsługi użytkowników, które znajdują się w grupach zagnieżdżonych. Jest tylko możliwość odczytu i zainicjowanie obsługi administracyjnej użytkowników należących do natychmiastowego grupy jawnie przypisane.
 
-Jest to ograniczenie "oparte na grupach przypisania do aplikacji", która także ma zastosowanie do logowania jednokrotnego i jest opisany w [przy użyciu grupy, aby zarządzać dostępem do aplikacji SaaS](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/groups-saasapps ).
+Jest to ograniczenie "oparte na grupach przypisania do aplikacji", która także ma wpływ na logowanie jednokrotne i jest opisany w [przy użyciu grupy, aby zarządzać dostępem do aplikacji SaaS](https://docs.microsoft.com/en-us/azure/active-directory/users-groups-roles/groups-saasapps ).
 
 Jako obejście można należy jawnie przypisać (lub w inny sposób [zakresu z](https://docs.microsoft.com/en-us/azure/active-directory/manage-apps/define-conditional-rules-for-provisioning-user-accounts)) grupy zawierające użytkowników, którzy potrzebują do zainicjowania obsługi administracyjnej.
 

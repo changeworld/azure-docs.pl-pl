@@ -12,12 +12,12 @@ ms.author: moslake
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 3c85398f140ccd61202c066f4394fa54358e0a1e
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 7459ae5153434887ade74f841a2239c76a7caef9
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161577"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48043716"
 ---
 # <a name="azure-sql-database-vcore-based-purchasing-model-limits-for-elastic-pools"></a>Usługa Azure SQL Database oparty na rdzeniach wirtualnych zakupem modelu limity dla pul elastycznych
 
@@ -151,5 +151,5 @@ W poniższej tabeli opisano właściwości dla bazy danych w puli.
 ## <a name="next-steps"></a>Kolejne kroki
 
 - Zobacz [— często zadawane pytania dla bazy danych SQL](sql-database-faq.md) odpowiedzi na często zadawane pytania.
-- Zobacz [limity zasobów Omówienie usługi Azure SQL Database](sql-database-resource-limits.md) uzyskać informacji dotyczących ograniczeń na poziomach serwera i subskrypcji.
+- Zobacz [Przegląd zasobów limity na serwerze logicznym](sql-database-resource-limits-logical-server.md) uzyskać informacji dotyczących ograniczeń na poziomach serwera i subskrypcji.
 - Aby uzyskać informacji na temat ogólne limity platformy Azure, zobacz [subskrypcji platformy Azure i limity, przydziały i ograniczenia](../azure-subscription-service-limits.md).

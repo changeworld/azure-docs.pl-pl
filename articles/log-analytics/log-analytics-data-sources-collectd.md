@@ -1,6 +1,6 @@
 ---
-title: Zbieranie danych z CollectD w OMS Log Analytics | Dokumentacja firmy Microsoft
-description: CollectD jest demonów systemu Linux typu open source, który okresowo zbiera dane z aplikacji oraz informacje o poziomie systemu.  Ten artykuł zawiera informacje dotyczące zbierania danych z CollectD w analizy dzienników.
+title: Zbieranie danych z zebrane w usłudze Log Analytics pakietu OMS | Dokumentacja firmy Microsoft
+description: Zebrane jest demonów systemu Linux typu open source, który okresowo zbiera dane z aplikacji i informacje o poziomie systemu.  Ten artykuł zawiera informacje dotyczące zbierania danych z zebrane w usłudze Log Analytics.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -14,22 +14,22 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/02/2017
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 59b6f8b82d0f714d4526147b42f68e14bf0aa2bd
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: eb053ef8fc66ff9d71a9576b71eb4edfcd688638
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37127700"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041294"
 ---
-# <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Zbieranie danych z CollectD na agentach systemu Linux w analizy dzienników
-[CollectD](https://collectd.org/) jest demonów systemu Linux typu open source, która okresowo gromadzi metryki wydajności z aplikacji i informacji o poziomie systemu. Przykładowe aplikacje obejmują maszyny wirtualnej Java (JVM), serwer MySQL i Nginx. Ten artykuł zawiera informacje dotyczące zbierania danych wydajności z CollectD w analizy dzienników.
+# <a name="collect-data-from-collectd-on-linux-agents-in-log-analytics"></a>Zbieranie danych z zebrane na agentach systemu Linux w usłudze Log Analytics
+[Zebrane](https://collectd.org/) jest demonów systemu Linux typu open source, który okresowo zbiera metryki wydajności z aplikacji i informacje o poziomie systemu. Przykładowe aplikacje obejmują maszyny wirtualnej Java (JVM), serwer MySQL i Nginx. Ten artykuł zawiera informacje dotyczące zbierania danych wydajności z zebrane w usłudze Log Analytics.
 
-Pełną listę dostępnych wtyczek można znaleźć w folderze [tabeli wtyczek](https://collectd.org/wiki/index.php/Table_of_Plugins).
+Pełną listę dostępnych wtyczek znajduje się w temacie [tabeli wtyczek](https://collectd.org/wiki/index.php/Table_of_Plugins).
 
-![Omówienie CollectD](media/log-analytics-data-sources-collectd/overview.png)
+![Zebrane — omówienie](media/log-analytics-data-sources-collectd/overview.png)
 
-Następująca konfiguracja CollectD wchodzi w Agent pakietu OMS dla systemu Linux na przesyłanie danych CollectD do Agent pakietu OMS dla systemu Linux.
+Następująca konfiguracja zebrane są objęte agenta pakietu OMS dla systemu Linux na przesyłanie danych zebrane do agenta pakietu OMS dla systemu Linux.
 
     LoadPlugin write_http
 
@@ -41,7 +41,7 @@ Następująca konfiguracja CollectD wchodzi w Agent pakietu OMS dla systemu Linu
          </Node>
     </Plugin>
 
-Ponadto jeśli używane wersje collectD przed 5.5 zamiast tego użyj następującej konfiguracji.
+Ponadto jeśli używane wersje zebrane przed 5.5 zamiast tego użyj poniższej konfiguracji.
 
     LoadPlugin write_http
 
@@ -52,12 +52,12 @@ Ponadto jeśli używane wersje collectD przed 5.5 zamiast tego użyj następują
        </URL>
     </Plugin>
 
-Konfiguracja CollectD używa domyślnej`write_http` dodatek plug-in, aby wysłać dane wydajności za pośrednictwem portu 26000 do agenta pakietu OMS dla systemu Linux. 
+Domyślnie korzysta z konfiguracji zebrane`write_http` dodatek plug-in, aby wysyłać dane metryk wydajności za pośrednictwem portu 26000 agenta pakietu OMS dla systemu Linux. 
 
 > [!NOTE]
-> W razie potrzeby można skonfigurować tego portu do portu niestandardowy.
+> Jeśli to konieczne, można skonfigurować tego portu na port niestandardowy.
 
-Agent pakietu OMS dla systemu Linux również nasłuchuje na porcie 26000 dla metryki CollectD, a następnie konwertuje je na OMS schematu metryki. Poniżej znajduje się Agent pakietu OMS dla systemu Linux konfiguracji `collectd.conf`.
+OMS Agent for Linux również nasłuchuje na porcie 26000 metryki zebrane i konwertuje je do pakietu OMS schematu metryk. Poniżej przedstawiono OMS Agent for Linux konfiguracji `collectd.conf`.
 
     <source>
       type http
@@ -71,57 +71,57 @@ Agent pakietu OMS dla systemu Linux również nasłuchuje na porcie 26000 dla me
 
 
 ## <a name="versions-supported"></a>Obsługiwane wersje
-- Analiza dzienników obsługuje obecnie CollectD wersji 4.8 i powyżej.
-- Dla kolekcji metryki CollectD wymagany jest Agent pakietu OMS dla systemu Linux v1.1.0-217 lub nowszym.
+- Usługa log Analytics obsługuje obecnie zebrane wersji 4.8 i nowsze wersje.
+- Agenta pakietu OMS dla systemu Linux v1.1.0-217 lub nowszego jest wymagany na potrzeby kolekcji metryki zebrane.
 
 
 ## <a name="configuration"></a>Konfigurowanie
-Poniżej przedstawiono podstawowe czynności umożliwiające konfigurowanie zbierania danych CollectD w analizy dzienników.
+Poniżej przedstawiono podstawowe kroki, aby skonfigurować zbieranie zebrane dane w usłudze Log Analytics.
 
-1. Skonfiguruj CollectD do wysyłania danych do Agent pakietu OMS dla systemu Linux przy użyciu wtyczki write_http.  
-2. Skonfiguruj agenta pakietu OMS dla systemu Linux odbierać dane CollectD na odpowiedni port.
-3. Uruchom ponownie CollectD i Agent pakietu OMS dla systemu Linux.
+1. Skonfiguruj zebrane w celu wysyłania danych do agenta pakietu OMS dla systemu Linux przy użyciu wtyczki write_http.  
+2. Konfigurowanie agenta pakietu OMS dla systemu Linux do nasłuchiwania pod kątem zebrane dane w odpowiedni port.
+3. Uruchom ponownie zebrane i agenta pakietu OMS dla systemu Linux.
 
-### <a name="configure-collectd-to-forward-data"></a>Skonfiguruj CollectD przekazywanie danych 
+### <a name="configure-collectd-to-forward-data"></a>Konfigurowanie zebrane do przekazywania danych 
 
-1. Na przesyłanie danych CollectD do Agent pakietu OMS dla systemu Linux `oms.conf` musi zostać dodany do katalogu konfiguracji CollectD firmy. Miejsce docelowe pliku zależy od distro systemu Linux na komputerze.
+1. Aby dane zebrane trasy do agenta pakietu OMS dla systemu Linux `oms.conf` musi zostać dodane do katalogu konfiguracji zebrane firmy. Miejsce docelowe tego pliku zależy od dystrybucja systemu Linux maszyny.
 
-    Jeśli w katalogu config CollectD znajduje się w /etc/collectd.d/:
+    Jeśli katalog konfiguracji zebrane znajduje się w /etc/collectd.d/:
 
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd.d/oms.conf
 
-    Jeśli w katalogu config CollectD znajduje się w /etc/collectd/collectd.conf.d/:
+    Jeśli katalog konfiguracji zebrane znajduje się w /etc/collectd/collectd.conf.d/:
 
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/oms.conf /etc/collectd/collectd.conf.d/oms.conf
 
     >[!NOTE]
-    >Dla wersji CollectD przed 5.5 należy zmodyfikować tagów w `oms.conf` zgodnie z powyższym.
+    >W przypadku wersji zebrane przed 5.5 trzeba będzie zmodyfikować tagów w `oms.conf` jak pokazano powyżej.
     >
 
-2. Skopiuj collectd.conf do katalogu konfiguracji omsagent żądanego obszaru roboczego.
+2. Skopiuj collectd.conf katalog konfiguracji omsagent żądanego obszaru roboczego.
 
         sudo cp /etc/opt/microsoft/omsagent/sysconf/omsagent.d/collectd.conf /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/
         sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/collectd.conf
 
-3. Uruchom ponownie CollectD i Agent pakietu OMS dla systemu Linux za pomocą następujących poleceń.
+3. Uruchom ponownie zebrane i agenta pakietu OMS dla systemu Linux przy użyciu poniższych poleceń.
 
-    ponowne uruchomienie sudo usługi collectd ponownego uruchomienia operacji sudo /opt/microsoft/omsagent/bin/service_control
+    ponowne uruchomienie "sudo" usługi zebrane ponowne uruchomienie "sudo" /opt/microsoft/omsagent/bin/service_control
 
-## <a name="collectd-metrics-to-log-analytics-schema-conversion"></a>Metryki CollectD do konwersji schematu analizy dzienników
-Aby zachować znanego modelu między metryki infrastruktury już zebrane przez agenta pakietu OMS dla systemu Linux i nowe metryki zbierane przez CollectD następującego mapowania schematu jest używany:
+## <a name="collectd-metrics-to-log-analytics-schema-conversion"></a>Metryki zebrane do konwersji schematu usługi Log Analytics
+Aby zachować znanego modelu między metryk infrastruktury już zebrane przez agenta pakietu OMS dla systemu Linux i nowe metryki zebrane przez zebrane następujące mapowanie schematu jest używany:
 
-| Metryka CollectD pola | Pole analizy dzienników |
+| Metryki zebrane pola | Pole analizy dziennika |
 |:--|:--|
 | host | Computer (Komputer) |
-| wtyczki | Brak |
+| Dodatek typu plug-in | Brak |
 | plugin_instance | Nazwa wystąpienia<br>Jeśli **plugin_instance** jest *null* następnie InstanceName = "*_Total*" |
 | type | Nazwa obiektu |
 | type_instance | CounterName<br>Jeśli **type_instance** jest *null* następnie CounterName =**puste** |
-| [dsnames] | CounterName |
+| [] dsnames | CounterName |
 | dstypes | Brak |
-| wartości] | Równowartości |
+| wartości] | CounterValue |
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [dziennika wyszukiwania](log-analytics-log-searches.md) analizować dane zebrane ze źródeł danych i rozwiązania. 
-* Użyj [pola niestandardowe](log-analytics-custom-fields.md) do analizowania danych z rekordów dziennika systemowego do poszczególnych pól.
+* Dowiedz się więcej o [dziennikach](log-analytics-log-searches.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 
+* Użyj [pól niestandardowych](log-analytics-custom-fields.md) do analizowania danych z rekordy syslog na poszczególne pola.
 

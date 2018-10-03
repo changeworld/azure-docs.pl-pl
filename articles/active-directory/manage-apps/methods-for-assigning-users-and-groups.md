@@ -5,25 +5,23 @@ services: active-directory
 documentationcenter: ''
 author: barbkess
 manager: mtillman
-ms.assetid: ''
 ms.service: active-directory
 ms.component: app-mgmt
 ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/11/2017
+ms.date: 10/01/2018
 ms.author: barbkess
-ms.openlocfilehash: d357a9a7f249127289a256685d9555f777742b68
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: c4aa311018603b32e854d3d3423d342350e6520d
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44356959"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044488"
 ---
-# <a name="how-to-assign-users-and-groups-to-an-application"></a>Jak przypisać użytkowników i grup do aplikacji
-
-Użytkownikom można wykonać następujące czynności dla określonej aplikacji, musisz najpierw pierwszy **przypisać je do aplikacji** przyznanie im dostępu:
+# <a name="assign-users-and-groups-to-an-application-in-azure-active-directory"></a>Przypisywanie użytkowników i grup do aplikacji w usłudze Azure Active Directory
+W tym artykule pokazano, jak przypisać użytkowników lub grup do aplikacji w usłudze Azure Active Directory (Azure AD). Użytkownicy najpierw muszą być przypisani do aplikacji, zanim administrator może nadać im dostęp do następujących:
 
 -   Dostęp do aplikacji przez **przechodząc do adresu URL aplikacji bezpośrednio** (znany także jako zainicjowanego przez dostawcę usług logowania jednokrotnego).
 
@@ -33,17 +31,19 @@ Użytkownikom można wykonać następujące czynności dla określonej aplikacji
 
 -   Zobacz aplikacji pojawiają się na ich [uruchamianie aplikacji usługi Office 365](https://support.office.com/article/Meet-the-Office-365-app-launcher-79f12104-6fed-442f-96a0-eb089a3f476a).
 
-## <a name="methods-to-assign-applications-with-azure-active-directory"></a>Metody, aby przypisać aplikacje za pomocą usługi Azure Active Directory 
+## <a name="prerequisties"></a>Prerequisties
+Zanim będzie można przypisać użytkowników i grup do aplikacji, możesz wymagać od użytkownika przypisania. Wymaganie przypisania użytkownika:
 
-Istnieją 3 sposoby, które można przypisać aplikacji za pomocą usługi Azure Active Directory:
+1. Zaloguj się do witryny Azure portal przy użyciu konta administratora.
+2. Kliknij pozycję **wszystkich usług** element w menu głównym.
+3. Wybierz katalog, którego używasz dla aplikacji.
+4. Kliknij pozycję **aplikacje dla przedsiębiorstw** kartę.
+5. Wybierz aplikację z listy aplikacji skojarzonych z tym katalogiem.
+6. Kliknij przycisk **właściwości** kartę.
+7. Zmiana **wymagane przypisanie użytkownika?** Przełącz Yes (tak).
+8. Kliknij przycisk **Zapisz** znajdujący się u góry ekranu.
 
--   [Przypisywanie użytkownika bezpośrednio do aplikacji jako administrator](#assign-a-user-directly-as-an-administrator)
-
--   [Przypisania grupy bezpośrednio do aplikacji jako administrator](#assign-a-group-directly-to-an-application-as-an-administrator)
-
--   [Włącz samoobsługowego dostępu do aplikacji umożliwia użytkownikom znajdowanie własnych aplikacji](#enable-self-service-application-access-to-allow-users-to-find-their-own-applications)
-
-## <a name="assign-a-user-directly-as-an-administrator"></a>Przypisywanie użytkownika bezpośrednio z uprawnieniami administratora
+## <a name="assign-users"></a>Przypisywanie użytkowników
 
 Aby przypisać co najmniej jednego użytkownika do aplikacji bezpośrednio, wykonaj następujące czynności:
 
@@ -81,7 +81,7 @@ Aby przypisać co najmniej jednego użytkownika do aplikacji bezpośrednio, wyko
 
 Po krótkim czasie użytkowników, dla których wybrano mogli uruchamiać te aplikacje za pomocą metod opisanych w sekcji Opis rozwiązania.
 
-## <a name="assign-a-group-directly-to-an-application-as-an-administrator"></a>Przypisania grupy bezpośrednio do aplikacji jako administrator
+## <a name="assign-groups"></a>Przypisywanie grup
 
 Aby przypisać co najmniej jedną grupę aplikacji bezpośrednio, wykonaj następujące czynności:
 
@@ -119,7 +119,7 @@ Aby przypisać co najmniej jedną grupę aplikacji bezpośrednio, wykonaj nastę
 
 Po krótkim czasie użytkowników w grupach, który wybrano mogli uruchamiać te aplikacje za pomocą metod opisanych w sekcji Opis rozwiązania. Jeśli te są grupami dynamicznymi, w tych przydziałów dla użytkowników w ramach tych przypisanych grup może istnieć pewne opóźnienie dodatkowego przetwarzania.
 
-## <a name="enable-self-service-application-access-to-allow-users-to-find-their-own-applications"></a>Włącz samoobsługowego dostępu do aplikacji umożliwia użytkownikom znajdowanie własnych aplikacji
+## <a name="enable-self-service-application-access"></a>Włącz samoobsługowego dostępu do aplikacji
 
 Opcjonalnie samoobsługowego dostępu do aplikacji jest to doskonały sposób, aby zezwolić użytkownikom na własnym odnajdywanie aplikacji, umożliwiają grupie biznesowej zatwierdzać dostęp do tych aplikacji. Możesz zezwolić grupie biznesowej do zarządzania poświadczeniami przypisane do tych użytkowników po prawej stronie hasło logowania jednokrotnego w aplikacji w swoich panelach dostępu.
 

@@ -10,14 +10,18 @@ ms.component: linguistic-analysis
 ms.topic: conceptual
 ms.date: 03/21/2016
 ms.author: davl
-ms.openlocfilehash: b31ca8f88d1e8d5710c3a6a6cfccbb167fdd762a
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ROBOTS: NOINDEX
+ms.openlocfilehash: 289cab4999276cbfb1fa558f558ebafa8e4e3a30
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46126279"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237878"
 ---
 # <a name="sentence-separation-and-tokenization"></a>Oddzielanie wyrazów i tokenów
+
+> [!IMPORTANT]
+> Wersja zapoznawcza analizy językowej została zlikwidowana 9 sierpnia 2018 r. Firma Microsoft zaleca używanie [moduły analizy tekstu w usłudze Azure Machine Learning](https://docs.microsoft.com/azure/machine-learning/studio-module-reference/text-analytics) do przetwarzania tekstu i analizy.
 
 ## <a name="background-and-motivation"></a>Tło i motywację
 
@@ -53,7 +57,8 @@ Pierwsze zdanie mogą być zapisane jako "Whatdidyousay?")
 
 Istnieje kilka przypadków trudne.
 Po pierwsze znaki interpunkcyjne często (ale nie zawsze) powinny być podziału poza nie otaczającego kontekstu.
-Po drugie, ma angielski *skrótów*, takie jak "nie" lub "to", gdy skompresowane i skrót na mniejsze części słowa. Celem tokenizator jest przerwać sekwencja znaków słowa.
+Po drugie, ma angielski *skrótów*, takie jak "nie" lub "to", gdy skompresowane i skrót na mniejsze części słowa.
+Celem tokenizator jest przerwać sekwencja znaków słowa.
 
 Powrócimy do zdań przykład z góry.
 Teraz możemy zostały umieszczone "center dot" (&middot;) między każdy token distinct.
@@ -62,9 +67,10 @@ Teraz możemy zostały umieszczone "center dot" (&middot;) między każdy token 
 - Czy mogę &middot; została &middot; IE &middot; Posłuchaj &middot; o &middot; &middot; Dyrektor ds. &middot; firmy &middot; " &middot; nowe &middot; propozycji &middot; . &middot; "
 - Jego &middot; firmy &middot; ważne &middot; do &middot; Pan&middot; i &middot; Pani. &middot; Nowak &middot; .
 
-Należy zauważyć, jak większości tokeny to słowa, które można znaleźć w słowniku (np. *ważne*, *Dyrektor*).
+Należy zauważyć, jak większości tokeny to słowa, które można znaleźć w słowniku (na przykład *ważne*, *Dyrektor*).
 Inne może składać się wyłącznie znaków interpunkcyjnych.
-Istnieją bardziej nietypowe tokenów do reprezentowania skrótów, takich jak *IE* dla *nie*, takich jak Zaimki dzierżawcze *firmy*itp. Ta tokenizacji umożliwia obsługę słowa *nie* i zwrot *nie* w sposób bardziej spójny dla wystąpienia.
+Istnieją bardziej nietypowe tokenów do reprezentowania skrótów, takich jak *IE* dla *nie*, i Zaimki dzierżawcze, takich jak *firmy*.
+Ta tokenizacji umożliwia obsługę słowa *nie* i zwrot *nie* w bardziej spójny sposób.
 
 ## <a name="specification"></a>Specyfikacja
 

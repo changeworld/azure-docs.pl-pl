@@ -1,5 +1,5 @@
 ---
-title: Bez hasła usługi Azure AD Zaloguj się przy użyciu aplikacji Microsoft Authenticator (publiczna wersja zapoznawcza)
+title: Logowanie w usłudze Azure AD bez hasła przy użyciu aplikacji Microsoft Authenticator (publiczna wersja zapoznawcza)
 description: Zaloguj się do usługi Azure AD przy użyciu aplikacji Microsoft Authenticator, bez użycia hasła (publiczna wersja zapoznawcza)
 services: active-directory
 ms.service: active-directory
@@ -10,14 +10,14 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: librown
-ms.openlocfilehash: d348978924b4123944e019ef1a309633ee72b516
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: af5fe7c00b2dedd6b3447cd0919bdce3ac38ae5d
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47048070"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237011"
 ---
-# <a name="passwordless-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Logowanie telefonem bez hasła przy użyciu aplikacji Microsoft Authenticator (publiczna wersja zapoznawcza)
+# <a name="password-less-phone-sign-in-with-the-microsoft-authenticator-app-public-preview"></a>Logowanie telefonem bez hasła przy użyciu aplikacji Microsoft Authenticator (publiczna wersja zapoznawcza)
 
 Aplikacja Microsoft Authenticator może służyć do logowania się do dowolnego konta usługi Azure AD bez użycia hasła. Podobne do technologii [Windows Hello dla firm](/windows/security/identity-protection/hello-for-business/hello-identity-verification), Microsoft Authenticator używa uwierzytelniania opartego na kluczach, aby umożliwić poświadczeń użytkownika, który jest powiązany z urządzeniem i używa biometryczne lub numer PIN.
 
@@ -45,7 +45,7 @@ W publicznej wersji zapoznawczej administrator musi najpierw dodać zasad za pom
 
 ## <a name="how-do-my-end-users-enable-phone-sign-in"></a>Jak Moi użytkownicy końcowi włączyć logowanie za pomocą telefonu?
 
-W publicznej wersji zapoznawczej nie istnieje żaden sposób wymusić użytkowników do utworzenia lub używania tego nowego poświadczenia. Użytkownik końcowy tylko wystąpi logowanie bez hasła, gdy administrator jako włączona swojej dzierżawy, a użytkownik zaktualizował swoich aplikacji Microsoft Authenticator, aby włączyć logowanie za pomocą telefonu.
+W publicznej wersji zapoznawczej nie istnieje żaden sposób wymusić użytkowników do utworzenia lub używania tego nowego poświadczenia. Użytkownik końcowy tylko wystąpi logowania bez hasła, gdy administrator jako włączona swojej dzierżawy, a użytkownik zaktualizował swoich aplikacji Microsoft Authenticator, aby włączyć logowanie za pomocą telefonu.
 
 > [!NOTE]
 > Ta funkcja została w aplikacji od marca 2017 r., więc ma możliwość, że gdy jest włączona dla dzierżawy, mogą napotkać użytkownicy ten przepływ natychmiast. Należy pamiętać i przygotowanie użytkowników do tej zmiany.
@@ -61,7 +61,7 @@ Po użytkownik ma konto usługi MFA za pomocą powiadomień push w aplikacji Mic
 
 ### <a name="ad-fs-integration"></a>Integracja z usługą AD FS
 
-Po użytkownik włączył poświadczenia bez hasła Microsoft Authenticator, zawsze będzie domyślnie wysłanie powiadomienia do zatwierdzenia uwierzytelniania dla tego użytkownika. Tę logikę uniemożliwia użytkownikom w dzierżawie hybrydowego być kierowany do usług AD FS dla weryfikacji logowania bez użytkownika, wykonanie dodatkowych czynności kliknij pozycję "Zamiast tego użyj hasła." Ten proces będzie również pominąć wszystkie zasady dostępu warunkowego w środowisku lokalnym i przepływów uwierzytelniania przekazywanego. Wyjątkiem od tego procesu jest, jeśli login_hint jest określony, użytkownik będzie automatycznie przekazywane do usług AD FS, a Pomiń opcję, aby użyć poświadczeń bez hasła.
+Po użytkownik włączył poświadczenia bez hasła Microsoft Authenticator, zawsze będzie domyślnie wysłanie powiadomienia do zatwierdzenia uwierzytelniania dla tego użytkownika. Tę logikę uniemożliwia użytkownikom w dzierżawie hybrydowego być kierowany do usług AD FS dla weryfikacji logowania bez użytkownika, wykonanie dodatkowych czynności kliknij pozycję "Zamiast tego użyj hasła." Ten proces będzie również pominąć wszystkie zasady dostępu warunkowego w środowisku lokalnym i przepływów uwierzytelniania przekazywanego. Wyjątek do tego procesu jest, jeśli login_hint jest określony, użytkownik będzie automatycznie przekazywane do usług AD FS, a Pomiń opcję, aby użyć poświadczeń bez hasła.
 
 ### <a name="azure-mfa-server"></a>Serwer usługi Azure MFA
 
