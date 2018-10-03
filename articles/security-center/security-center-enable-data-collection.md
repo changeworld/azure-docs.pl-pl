@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/20/2018
+ms.date: 10/5/2018
 ms.author: rkarlin
-ms.openlocfilehash: 313697d73d1e269691f1af4f021545049a907d66
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: d0455e549745e743e7a8c0f65cb56a1e16dfb131
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127095"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48044080"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Zbieranie danych w usłudze Azure Security Center
 Usługa Security Center zbiera dane z maszyn wirtualnych (VM) i komputerów spoza platformy Azure do monitorowania pod kątem luk w zabezpieczeniach i zagrożeń. Dane są zbierane za pomocą programu Microsoft Monitoring Agent, który odczytuje różne konfiguracje związane z zabezpieczeniami i dzienniki zdarzeń z maszyn oraz kopiuje dane do Twojego obszaru roboczego na potrzeby analizy. Przykłady takich danych to: operacyjnych, typ i wersja, dzienniki systemu (Windows dzienniki zdarzeń), operacyjnego systemu uruchomione procesy, Nazwa maszyny, adresy IP i zalogowanego użytkownika. Program Microsoft Monitoring Agent kopiuje również pliki zrzutu awaryjnego do swojego obszaru roboczego.
@@ -62,8 +62,8 @@ Aby włączyć automatyczną aprowizację programu Microsoft Monitoring Agent:
 > - Aby uzyskać instrukcje, jak wykonać aprowizację wstępnie istniejącej instalacji, zobacz [automatycznej aprowizacji w przypadku istniejących instalacji agenta](#preexisting).
 > - Aby uzyskać instrukcje dotyczące ręcznego inicjowania obsługi administracyjnej, zobacz [ręcznie zainstalować rozszerzenia Microsoft Monitoring Agent](#manualagent).
 > - Aby uzyskać instrukcje na wyłączenie automatycznej aprowizacji, zobacz [Wyłącz automatyczną aprowizację](#offprovisioning).
+> - Aby uzyskać instrukcje dotyczące dołączania Centrum zabezpieczeń przy użyciu programu PowerShell, zobacz temat [automatyzacji dołączania do usługi Azure Security Center przy użyciu programu PowerShell](security-center-powershell-onboarding.md).
 >
-
 
 ## <a name="workspace-configuration"></a>Konfiguracja obszaru roboczego
 Dane zbierane przez usługę Security Center są przechowywane w obszarach roboczych usługi Log Analytics.  Możesz wybrać dane zebrane z maszyn wirtualnych platformy Azure, przechowywane w obszary robocze utworzone przez usługę Security Center lub istniejący obszar roboczy, który został utworzony. 
@@ -147,12 +147,17 @@ Po wybraniu obszaru roboczego, w którym do przechowywania danych, wszystkie obs
 
 
 ## <a name="data-collection-tier"></a>Warstwa kolekcji danych
-Usługa Security Center można zmniejszyć liczby zdarzeń przy zachowaniu wystarczającej liczby zdarzeń do badania, inspekcji i wykrywania zagrożeń. Możesz wybrać zasady dla subskrypcji i obszarów roboczych cztery rodzaje zdarzeń filtrowania prawej strony mają zostać zebrane przez agenta.
+Wybieranie warstwy zbierania danych w usłudze Azure Security Center mają wpływ tylko na magazyn zdarzeń zabezpieczeń w obszarze roboczym usługi Log Analytics. Program Microsoft Monitoring Agent nadal będzie Zbieraj i Analizuj zdarzenia zabezpieczeń wymaganych do wykrywania zagrożeń usługi Azure Security Center, niezależnie od tego, która warstwa zdarzeń zabezpieczeń zdecydujesz się przechowywać w obszarze roboczym usługi Log Analytics (jeśli istnieje). Wybieranie do przechowywania zdarzeń związanych z zabezpieczeniami w obszarze roboczym spowoduje włączenie analizy, wyszukiwania i inspekcji tych zdarzeń w obszarze roboczym. 
+> [!NOTE]
+> Przechowywanie danych w usłudze Log Analytics może Naliczanie dodatkowych opłat za magazyn danych, zobacz stronę cennika, aby uzyskać więcej informacji.
+>
+Możesz wybrać zasady dla subskrypcji i obszarów roboczych cztery rodzaje zdarzeń filtrowania prawej strony mają być przechowywane w obszarze roboczym: 
 
-- **Wszystkie zdarzenia** — dla klientów, którzy chcą, aby upewnić się, że wszystkie zdarzenia są zbierane. Jest to opcja domyślna.
-- **Typowe** — jest to zestaw zdarzeń, który spełnia większość klientów i umożliwia im pełnego dziennika inspekcji.
+- **Brak** — Wyłącz magazyn zdarzeń zabezpieczeń. Jest to ustawienie domyślne.
 - **Minimalny** — mniejszy zestaw zdarzeń, które klienci, którzy chcą, aby zminimalizować wolumin zdarzeń.
-- **Brak** — Wyłącz zbieranie zdarzeń zabezpieczeń z zabezpieczeniami i dzienniki AppLocker. W przypadku klientów, którzy wybierz tę opcję ich pulpitami nawigacyjnymi zabezpieczeń ma tylko dzienniki zapory Windows i ocen proaktywnych np. ochrony przed złośliwym oprogramowaniem, linii bazowej i aktualizacji.
+- **Typowe** — jest to zestaw zdarzeń, który spełnia większość klientów i umożliwia im pełnego dziennika inspekcji.
+- **Wszystkie zdarzenia** — dla klientów, którzy chcą, aby upewnić się, że wszystkie zdarzenia są przechowywane.
+
 
 > [!NOTE]
 > Te zestawy zdarzenia zabezpieczeń są dostępne tylko dla warstwy standardowa usługi Security Center. Zobacz [cennik](security-center-pricing.md), aby dowiedzieć się więcej na temat warstw cenowych usługi Security Center.
@@ -261,7 +266,7 @@ Program Microsoft Monitoring Agent, można zainstalować ręcznie, dzięki czemu
   > [!NOTE]
   > Sekcja **zbierania danych zdarzeń i wydajności** jest opcjonalne.
   >
-6. Aby wdrożyć rozszerzenie przy użyciu programu PowerShell: skorzystaj z poniższego przykładu programu PowerShell:
+6. Aby wdrożyć rozszerzenie za pomocą programu PowerShell, skorzystaj z następującego przykładu programu PowerShell:
     1.  Przejdź do **usługi Log Analytics** i kliknij pozycję **Zaawansowane ustawienia**.
     
         ![Zestaw usługa log analytics][11]
@@ -289,8 +294,8 @@ Program Microsoft Monitoring Agent, można zainstalować ręcznie, dzięki czemu
         
              Set-AzureRmVMExtension -ResourceGroupName $vm1.ResourceGroupName -VMName $vm1.Name -Name "OmsAgentForLinux" -Publisher "Microsoft.EnterpriseCloud.Monitoring" -ExtensionType "OmsAgentForLinux" -TypeHandlerVersion '1.0' -Location $vm.Location -Settingstring $PublicConf -ProtectedSettingString $PrivateConf -ForceRerun True`
 
-
-
+> [!NOTE]
+> Aby uzyskać instrukcje dotyczące dołączania Centrum zabezpieczeń przy użyciu programu PowerShell, zobacz temat [automatyzacji dołączania do usługi Azure Security Center przy użyciu programu PowerShell](security-center-powershell-onboarding.md).
 
 ## <a name="troubleshooting"></a>Rozwiązywanie problemów
 

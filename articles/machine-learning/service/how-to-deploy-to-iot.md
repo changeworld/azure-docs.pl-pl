@@ -10,12 +10,12 @@ author: shivanipatel
 manager: cgronlun
 ms.reviewer: larryfr
 ms.date: 09/24/2018
-ms.openlocfilehash: 03d692ddfd6f41fd559e9b921f0214a9cd2ada22
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: 20469e127c8e04f4c6418fe28c49b63fc3b363d8
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47225229"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239204"
 ---
 # <a name="prepare-to-deploy-models-on-iot-edge"></a>Przygotowywanie do wdrażania modeli na brzegowych urządzeniach IoT
 
@@ -43,7 +43,7 @@ Aby dowiedzieć się, jak zarejestrować urządzenie i zainstalować środowisko
 
 ## <a name="register-the-model"></a>Zarejestruj model
 
-Moduły usługi IoT Edge platformy Azure są oparte na obrazów kontenerów. Aby wdrożyć model do urządzenia usługi IoT Edge, umożliwia następujące czynności zarejestrować model na obszar roboczy usługi Azure Machine Learning i utworzyć obraz platformy Docker. 
+Moduły usługi IoT Edge platformy Azure są oparte na obrazów kontenerów. Aby wdrożyć model do urządzenia usługi IoT Edge, umożliwia następujące czynności zarejestrować modelu w obszarze roboczym usługi Azure Machine Learning i utworzyć obraz platformy Docker. 
 
 > [!IMPORTANT]
 > Jeśli używasz usługi Azure Machine Learning do nauczenia modelu, który może on już zarejestrowany w obszarze roboczym, w tym przypadku pominąć krok 3.

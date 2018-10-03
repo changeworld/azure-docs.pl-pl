@@ -14,19 +14,19 @@ ms.topic: article
 ms.date: 09/27/2018
 ms.author: jeffgilb
 ms.reviewer: quying
-ms.openlocfilehash: b11ce8bbbf4b270f7a3b9689f95b0cbfca3b14c9
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: 72824e5afb9f8d77c2f7d3bd01e6ff2035e95a95
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408882"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237268"
 ---
 # <a name="add-hosting-servers-for-the-mysql-resource-provider"></a>Dodawanie serwerów hostingu dla dostawcy zasobów bazy danych MySQL
 
 Możesz hostować wystąpienia programu MySQL na maszynie wirtualnej (VM) w [usługi Azure Stack](azure-stack-poc.md), lub na maszynie Wirtualnej poza środowiskiem usługi Azure Stack, tak długo, jak dostawcy zasobów bazy danych MySQL można połączyć się z wystąpieniem.
 
 > [!NOTE]
-> Bazy danych MySQL można utworzyć na serwerze dostawcy zasobów MySQL. Dostawcy zasobów MySQL powinny zostać utworzone w domyślnej subskrypcji dostawcy, a serwerami hostingu MySQL powinny zostać utworzone w płatnych, subskrypcja użytkownika. Serwer dostawcy zasobów nie powinny służyć do baz danych użytkownika hosta.
+> Należy utworzyć bazy danych MySQL na serwerze dostawcy zasobów MySQL. Dostawcy zasobów MySQL powinny zostać utworzone w domyślnej subskrypcji dostawcy, a serwerami hostingu MySQL powinny zostać utworzone w płatnych, subskrypcja użytkownika. Serwer dostawcy zasobów nie powinny służyć do baz danych użytkownika hosta.
 
 MySQL w wersji 5.6, 5.7 i 8.0 mogą być używane do hostowania serwerów. MySQL RP nie obsługuje uwierzytelniania caching_sha2_password; które zostaną dodane w następnej wersji. Serwery MySQL 8.0 musi być skonfigurowana do używania mysql_native_password. Obsługiwane jest również MariaDB.
 

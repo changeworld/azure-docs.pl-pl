@@ -1,6 +1,6 @@
 ---
-title: Co to jest FPGA i Project Brainwave? — Usługi azure Machine Learning
-description: Dowiedz się, jak przyspieszyć tworzenie modeli i głębokich sieciach neuronowych za pomocą układów FPGA na platformie Azure. Ten artykuł zawiera wprowadzenie do macierzy programowalny bramy (FPGA) i jak Azure Machine Learning udostępnia w czasie rzeczywistym sztucznej inteligencji (AI), po wdrożeniu modelu FPGA platformy Azure.
+title: Co to jest FPGA i Project Brainwave? — Platforma azure usługę Machine Learning
+description: Dowiedz się, jak przyspieszyć tworzenie modeli i głębokich sieciach neuronowych za pomocą układów FPGA na platformie Azure. Ten artykuł zawiera wprowadzenie do macierzy programowalny bramy (FPGA) i jak usługa Azure Machine Learning udostępnia w czasie rzeczywistym sztucznej inteligencji (AI), po wdrożeniu modelu FPGA platformy Azure.
 services: machine-learning
 ms.service: machine-learning
 ms.component: core
@@ -9,22 +9,22 @@ ms.author: tedway
 author: tedway
 ms.reviewer: jmartens
 ms.date: 9/24/2018
-ms.openlocfilehash: adcd812bc63f98e4cbde949946bf32a037c6d704
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 411beacd65915c30338ab415b095acc1a0c8cbe6
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47158691"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48238859"
 ---
 # <a name="what-is-fpga-and-project-brainwave"></a>Co to jest FPGA i Project Brainwave?
 
-Ten artykuł zawiera wprowadzenie do macierzy programowalny bramy (FPGA) i jak Azure Machine Learning udostępnia w czasie rzeczywistym sztucznej inteligencji (AI), po wdrożeniu modelu FPGA platformy Azure.
+Ten artykuł zawiera wprowadzenie do macierzy programowalny bramy (FPGA) i jak usługa Azure Machine Learning udostępnia w czasie rzeczywistym sztucznej inteligencji (AI), po wdrożeniu modelu FPGA platformy Azure.
 
 Układów FPGA zawierała tablicę bloków programowalny i typu hierarchii możliwych do ponownego skonfigurowania. Dla połączeń zezwolić na te bloki, aby można skonfigurować na różne sposoby, po produkcji. Układów FPGA zawierają kombinację programowania i wydajność w porównaniu do innych mikroukłady.
 
 ## <a name="fpgas-vs-cpu-gpu-and-asic"></a>Vs układów FPGA. Procesor CPU, procesora GPU i ASIC
 
-![Porównanie usług Azure Machine Learning FPGA](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
+![Porównanie usług Azure FPGA usługi Machine Learning](./media/concept-accelerate-with-fpgas/azure-machine-learning-fpga-comparison.png)
 
 |Procesor||Opis|
 |---|:-------:|------|

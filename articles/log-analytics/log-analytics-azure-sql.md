@@ -14,13 +14,13 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 05/03/2018
 ms.author: v-daljep
-ms.component: na
-ms.openlocfilehash: b7a7e2787128c74cd7d016c01b751d15628fb4b2
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.component: ''
+ms.openlocfilehash: cc7dccd52bf5d3af383f807a5edfcb9c1088c5bf
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181995"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48237097"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Monitorowanie usługi Azure SQL Database przy użyciu usługi Azure SQL Analytics (wersja zapoznawcza)
 
@@ -251,7 +251,7 @@ AzureDiagnostics
 ```
 
 > [!NOTE]
-> - Wymaganie wstępne konfigurowania ten alert ma że wystąpienie zarządzane usługi monitorowane przesyłania strumieniowego dziennika ResourceUsageStats włączony do rozwiązania.
+> - Wymaganie wstępne konfigurowania tego alertu polega na tym, że monitorowane wystąpienia zarządzanego ma przesyłania strumieniowego dziennika ResourceUsageStats włączony do rozwiązania.
 > - To zapytanie wymaga regułę alertu do konfigurowane tak, aby wyzwolić alert, gdy istnieje wyniki (liczba wyników > 0) z kwerendy oznaczający, że z warunkiem istnieje w wystąpieniu zarządzanym. Dane wyjściowe to wykorzystania procent magazynu na wystąpieniu zarządzanym.
 
 ## <a name="next-steps"></a>Kolejne kroki

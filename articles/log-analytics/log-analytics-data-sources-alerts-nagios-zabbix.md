@@ -1,6 +1,6 @@
 ---
-title: Zbieraj alerty Nagios i Zabbix w OMS Log Analytics | Dokumentacja firmy Microsoft
-description: Nagios i Zabbix są typu open source, narzędzia do monitorowania. Alerty można zbierać z tych narzędzi do analizy dzienników w celu przeanalizowania wraz z alertów z innych źródeł.  W tym artykule opisano sposób konfigurowania agenta pakietu OMS dla systemu Linux zbierać alerty z tych systemów.
+title: Zbieraj alerty programów Nagios i Zabbix w usłudze Log Analytics pakietu OMS | Dokumentacja firmy Microsoft
+description: Programów Nagios i Zabbix są typu open source, narzędzi do monitorowania. Z tych narzędzi może zbierać alerty w usłudze Log Analytics, aby analizować je oraz alertów z innych źródeł.  W tym artykule opisano sposób konfigurowania agenta pakietu OMS dla systemu Linux w celu gromadzenia alertów z poziomu tych systemów.
 services: log-analytics
 documentationcenter: ''
 author: mgoedtel
@@ -14,30 +14,30 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 04/13/2018
 ms.author: magoedte
-ms.component: na
-ms.openlocfilehash: 240e56e3e482b81d6336f7d6d2a1f5688953ecd8
-ms.sourcegitcommit: 5892c4e1fe65282929230abadf617c0be8953fd9
+ms.component: ''
+ms.openlocfilehash: e668b2e989571d911c967d08d8012b11adaebd4d
+ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37131555"
+ms.lasthandoff: 10/02/2018
+ms.locfileid: "48041037"
 ---
-# <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>Zbieraj alerty z Nagios i Zabbix w Log Analytics z usługą OMS agenta dla systemu Linux 
-[Nagios](https://www.nagios.org/) i [Zabbix](http://www.zabbix.com/) są typu open source, narzędzia do monitorowania. Można zbierać alerty z tych narzędzi do analizy dzienników w celu przeanalizowania wraz z [alertów z innych źródeł](log-analytics-alerts.md).  W tym artykule opisano sposób konfigurowania agenta pakietu OMS dla systemu Linux zbierać alerty z tych systemów.
+# <a name="collect-alerts-from-nagios-and-zabbix-in-log-analytics-from-oms-agent-for-linux"></a>Zbieraj alerty z programów Nagios i Zabbix w usłudze Log Analytics z agenta pakietu OMS dla systemu Linux 
+[Nagios](https://www.nagios.org/) i [Zabbix](http://www.zabbix.com/) typu open source, narzędzi do monitorowania. Można zbierać alerty z tych narzędzi w usłudze Log Analytics w celu przeanalizowania wraz z [alertów z innych źródeł](log-analytics-alerts.md).  W tym artykule opisano sposób konfigurowania agenta pakietu OMS dla systemu Linux w celu gromadzenia alertów z poziomu tych systemów.
  
 ## <a name="prerequisites"></a>Wymagania wstępne
-Agent pakietu OMS Linux obsługuje zbieranie alertów z Nagios do wersji 4.2.x i Zabbix do wersji 2.x.
+Agenta pakietu OMS dla systemu Linux obsługuje zbieranie alertów z Nagios do wersji 4.2.x i Zabbix do wersji 2.x.
 
 ## <a name="configure-alert-collection"></a>Konfigurowanie zbierania alertów
 
 ### <a name="configuring-nagios-alert-collection"></a>Konfigurowanie zbierania alertów Nagios
-Aby zbierać alerty, wykonaj następujące czynności na serwerze Nagios.
+Aby zbierać alerty, należy wykonać następujące czynności na serwerze Nagios.
 
-1. Przyznaj użytkownikowi **omsagent** dostęp do odczytu do pliku dziennika Nagios `/var/log/nagios/nagios.log`. Zakładając, że plik nagios.log jest właścicielem grupy `nagios`, można dodać użytkownika **omsagent** do **nagios** grupy. 
+1. Przyznaj użytkownikowi **omsagent** dostęp do odczytu do pliku dziennika Nagios `/var/log/nagios/nagios.log`. Zakładając, że plik nagios.log jest należące do grupy `nagios`, można dodać użytkownika **omsagent** do **nagios** grupy. 
 
-    sudo usermod - -G nagios omsagent
+    "sudo" usermod - -G nagios omsagent
 
-2.  Modyfikowanie pliku konfiguracji na `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`. Upewnij się, że następujące wpisy są obecne i nie komentarze wychodzących:  
+2.  Zmodyfikuj plik konfiguracji na `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`. Upewnij się, że istnieje i nie skomentowanej się następujące wpisy:  
 
         <source>  
           type tail  
@@ -51,18 +51,18 @@ Aby zbierać alerty, wykonaj następujące czynności na serwerze Nagios.
           type filter_nagios_log  
         </filter>  
 
-3. Uruchom ponownie demona omsagent
+3. Ponownie uruchom demona omsagent
 
     ```
     sudo sh /opt/microsoft/omsagent/bin/service_control restart
     ```
 
 ### <a name="configuring-zabbix-alert-collection"></a>Konfigurowanie zbierania alertów Zabbix
-Aby zbierać alerty z serwera Zabbix, należy określić użytkownika i hasło w *zwykły tekst*.  Gdy nie nadaje się doskonale, zaleca się utworzenie Zabbix użytkownika z uprawnieniami tylko do odczytu do odpowiednich alarmy catch.
+Aby zebrać alerty serwer Zabbix, należy określić użytkownika i hasło w *zwykły tekst*.  Chociaż nie jest idealnym rozwiązaniem, zaleca się utworzenie Zabbix użytkownika z uprawnieniami tylko do odczytu do przechwytywania istotnych alarmy.
 
-Aby zbierać alerty na serwerze Nagios, wykonaj następujące kroki.
+Aby zbierać alerty na Nagios serwerze, wykonaj następujące czynności.
 
-1. Modyfikowanie pliku konfiguracji na `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`. Upewnij się, że następujące wpisy są obecne i nie komentarze wychodzących.  Zmień wartości w danym środowisku Zabbix nazwy użytkownika i hasła.
+1. Zmodyfikuj plik konfiguracji na `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf`. Upewnij się, że istnieje i nie skomentowanej się następujące wpisy.  Zmień nazwę użytkownika i hasło do wartości w danym środowisku Zabbix.
 
         <source>
          type zabbix_alerts
@@ -73,49 +73,49 @@ Aby zbierać alerty na serwerze Nagios, wykonaj następujące kroki.
          zabbix_password zabbix
         </source>
 
-2. Uruchom ponownie demona omsagent
+2. Ponownie uruchom demona omsagent
 
     `sudo sh /opt/microsoft/omsagent/bin/service_control restart`
 
 
-## <a name="alert-records"></a>Rejestruje alertu
-Rejestruje alertu można pobrać z Nagios i Zabbix przy użyciu [dziennika wyszukiwania](log-analytics-log-searches.md) w analizy dzienników.
+## <a name="alert-records"></a>Rekordy alertów
+Rekordy alertów można pobrać z programów Nagios i Zabbix przy użyciu [dziennikach](log-analytics-log-searches.md) w usłudze Log Analytics.
 
-### <a name="nagios-alert-records"></a>Rejestruje Nagios Alert
+### <a name="nagios-alert-records"></a>Rekordy Nagios alertu
 
-Alert ma rekordy zebrane przez Nagios **typu** z **alertu** i **SourceSystem** z **Nagios**.  Mają one właściwości w poniższej tabeli.
+Zgłoś alert, ma rekordów zbieranych przez Nagios **typu** z **alertu** i **system źródłowy** z **Nagios**.  One mają właściwości podane w poniższej tabeli.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Typ |*Alert* |
+| Typ |*Zgłoś alert* |
 | SourceSystem |*Nagios* |
 | AlertName |Nazwa alertu. |
 | AlertDescription | Opis alertu. |
-| AlertState | Stan usługi lub hosta.<br><br>OK<br>OSTRZEŻENIE<br>W GÓRĘ<br>W DÓŁ |
-| Nazwa hosta | Nazwa hosta, który utworzony alert. |
-| PriorityNumber | Poziom priorytetu alertu. |
-| StateType | Typ stanu alertu.<br><br>SOFT - problem, który nie został zresetowany.<br>TWARDE — problem, który został zresetowany przez określoną liczbę razy.  |
+| AlertState | Stan hosta lub usługi.<br><br>OK<br>OSTRZEŻENIE<br>W GÓRĘ<br>W DÓŁ |
+| Nazwa hosta | Nazwa hosta, która utworzyła alert. |
+| PriorityNumber | Priorytet alertu. |
+| StateType | Typ stanu alertu.<br><br>SOFT - problem, który nie został zresetowany.<br>TWARDE — problem, który został zresetowany określoną liczbę razy.  |
 | TimeGenerated |Data i godzina utworzenia alertu. |
 
 
-### <a name="zabbix-alert-records"></a>Rejestruje alertu Zabbix
-Alert ma rekordy zebrane przez Zabbix **typu** z **alertu** i **SourceSystem** z **Zabbix**.  Mają one właściwości w poniższej tabeli.
+### <a name="zabbix-alert-records"></a>Rekordy alertów Zabbix
+Zgłoś alert, ma rekordów zbieranych przez Zabbix **typu** z **alertu** i **system źródłowy** z **Zabbix**.  One mają właściwości podane w poniższej tabeli.
 
 | Właściwość | Opis |
 |:--- |:--- |
-| Typ |*Alert* |
+| Typ |*Zgłoś alert* |
 | SourceSystem |*Zabbix* |
 | AlertName | Nazwa alertu. |
-| AlertPriority | Ważność alertu.<br><br>nie sklasyfikowane<br>informacje<br>ostrzeżenie<br>średnia<br>Wysoka<br>po awarii  |
+| AlertPriority | Ważność alertu.<br><br>niesklasyfikowanych<br>informacje<br>ostrzeżenie<br>średnia<br>Wysoka<br>po awarii  |
 | AlertState | Stan alertu.<br><br>0 — jest aktualna.<br>1 — stan jest nieznany.  |
 | AlertTypeNumber | Określa, czy alert może wygenerować wiele zdarzeń problem.<br><br>0 — jest aktualna.<br>1 — stan jest nieznany.    |
-| Komentarze | Dodatkowe uwagi o alercie. |
-| Nazwa hosta | Nazwa hosta, który utworzony alert. |
-| PriorityNumber | Wartość wskazująca, ważność alertu.<br><br>0 — nie sklasyfikowane<br>1 — informacje<br>2 — ostrzeżenie<br>3 — średnia<br>4 - Wysoka<br>5 — po awarii |
+| Komentarze | Dodatkowe komentarze dla alertu. |
+| Nazwa hosta | Nazwa hosta, która utworzyła alert. |
+| PriorityNumber | Wartość wskazująca, ważność alertu.<br><br>0 - niesklasyfikowanych<br>1 — informacje<br>2 — ostrzeżenie<br>3 — średnia<br>4 — Wysoka<br>5 — po awarii |
 | TimeGenerated |Data i godzina utworzenia alertu. |
 | TimeLastModified |Data i godzina ostatniej zmiany stanu alertu. |
 
 
 ## <a name="next-steps"></a>Kolejne kroki
-* Dowiedz się więcej o [alerty](log-analytics-alerts.md) w analizy dzienników.
-* Dowiedz się więcej o [dziennika wyszukiwania](log-analytics-log-searches.md) analizować dane zebrane ze źródeł danych i rozwiązania. 
+* Dowiedz się więcej o [alerty](log-analytics-alerts.md) w usłudze Log Analytics.
+* Dowiedz się więcej o [dziennikach](log-analytics-log-searches.md) analizować dane zbierane z innych źródeł danych i rozwiązań. 

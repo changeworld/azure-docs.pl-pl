@@ -9,12 +9,12 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 09/24/2018
-ms.openlocfilehash: 6d6e6a2aea867c5b603d950a4bbaa33f14695f45
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4b4f926009f94162b43dcbb8934e44c1924e91df
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47011038"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239547"
 ---
 Zaloguj się do witryny [Azure Portal](https://portal.azure.com/) przy użyciu poświadczeń subskrypcji platformy Azure, z której będziesz korzystać. Jeśli nie masz subskrypcji platformy Azure, utwórz teraz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 
@@ -34,7 +34,7 @@ W **obszaru roboczego usługi Machine Learning** okienko, przewiń do dołu i wy
 
    ![create](./media/aml-create-in-portal/portal-create-button.png)
 
-W **obszaru roboczego uczenia Maszynowego** okienku konfigurowanie obszaru roboczego.
+W **usługi ML obszaru roboczego** okienku konfigurowanie obszaru roboczego.
 
    Pole|Opis
    ---|---

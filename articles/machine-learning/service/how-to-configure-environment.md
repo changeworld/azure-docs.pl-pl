@@ -9,16 +9,16 @@ ms.reviewer: larryfr
 manager: cgronlun
 ms.topic: conceptual
 ms.date: 8/6/2018
-ms.openlocfilehash: 675dae022376fc62292f3b079bd735939b9199c2
-ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.openlocfilehash: f68d5d7faf3555918b9f9a6add7754c8ae23d0a8
+ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47220299"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48239238"
 ---
 # <a name="configure-a-development-environment-for-the-azure-machine-learning-service"></a>Skonfiguruj środowisko projektowe służące do usługi Azure Machine Learning
 
-Informacje dotyczące konfigurowania środowiska deweloperskiego do pracy z usługą Azure Machine Learning. Dowiesz się jak, utworzyć plik konfiguracji, które kojarzy środowiska z obszaru roboczego usługi Azure Machine Learning. Także przedstawiono sposób konfigurowania następujących środowisk programowania:
+Informacje dotyczące konfigurowania środowiska deweloperskiego do pracy z usługą Azure Machine Learning. Dowiesz się jak, utworzyć plik konfiguracji, które kojarzy środowiska z obszarem roboczym usługi Azure Machine Learning. Także przedstawiono sposób konfigurowania następujących środowisk programowania:
 
 * Notesy Jupyter na komputerze lokalnym
 * Visual Studio Code
@@ -35,6 +35,9 @@ Zalecanym podejściem jest użycie pakietu Anaconda firmy Continuum [wirtualnych
 
  * W środowisku Visual Studio Code [rozszerzenie języka Python](https://code.visualstudio.com/docs/python/python-tutorial).
 
+> [!NOTE]
+> Poleceń powłoki używanych w tym dokumencie są badane przy użyciu programu bash w systemie Linux i macOS. Polecenia są również testowane z cmd.exe na Windows.
+
 ## <a name="create-workspace-configuration-file"></a>Utwórz plik konfiguracji obszaru roboczego
 
 Plik konfiguracji obszaru roboczego jest używana przez zestaw SDK do komunikowania się z obszarem roboczym usługi Azure Machine Learning.  Istnieją dwa sposoby uzyskania tego pliku:
@@ -49,7 +52,8 @@ Plik konfiguracji obszaru roboczego jest używana przez zestaw SDK do komunikowa
         ![Azure Portal](./media/how-to-configure-environment/configure.png) 
     
     1. Utwórz plik przy użyciu tego kodu języka Python. Uruchom kod w tym samym katalogu co skryptów lub notesów odwołujące się do obszaru roboczego:
-        ```
+
+        ```python
         from azureml.core import Workspace
 
         subscription_id ='<subscription-id>'
