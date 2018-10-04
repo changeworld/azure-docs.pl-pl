@@ -1,5 +1,5 @@
 ---
-title: Tworzenie, wyświetlanie i zarządzanie nimi alertów dziennika aktywności w usłudze Azure Monitor
+title: Tworzenie widoku i zarządzanie nimi alertów dziennika aktywności w usłudze Azure Monitor
 description: Jak utworzyć alertów dzienników aktywności z witryny Azure Portal, szablonów zasobów i programu PowerShell.
 author: msvijayn
 services: azure-monitor
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 09/15/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 526c50fa4d261a30738c3f24d537fe5e0d765f6d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: a95cdbb48371cf960211f55bf077cea9db783db5
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46951308"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248333"
 ---
 # <a name="create-view-and-manage-activity-log-alerts-using-azure-monitor"></a>Tworzenie, wyświetlanie i zarządzanie przy użyciu usługi Azure Monitor alertów dziennika aktywności  
 
@@ -25,7 +25,7 @@ Te alerty są dla zasobów platformy Azure, można utworzyć przy użyciu szablo
 > [!IMPORTANT]
 > Nie można utworzyć alerty dotyczące kondycji usługi powiadomień za pośrednictwem interfejsu tworzenia alertu dziennika aktywności. Aby dowiedzieć się więcej o tworzeniu i za pomocą powiadomień dotyczących kondycji usługi, zobacz [odbieranie alertów dziennika aktywności dla powiadomień dotyczących kondycji usług](monitoring-activity-log-alerts-on-service-notifications.md).
 
-## <a name="manage-alert-rules-for-activity-log-using-azure-portal"></a>Zarządzaj regułami alertów dla dziennika aktywności przy użyciu witryny Azure portal
+## <a name="azure-portal"></a>Azure Portal
 
 > [!NOTE]
 
@@ -36,7 +36,7 @@ Te alerty są dla zasobów platformy Azure, można utworzyć przy użyciu szablo
 - Istnieje warunek "anyOf" lub warunki zagnieżdżone w konfiguracji alertu JSON (zasadniczo tylko jeden nieobsługiwanymi jest dozwolona w nie dalszych nieobsługiwanymi/anyOf).
 - Jeśli kategoria jest "administracyjne". Należy określić co najmniej jednego z poprzednich kryteriów w alertu. Nie można utworzyć alert, który aktywuje za każdym razem, gdy zdarzenie zostanie utworzone w dziennikach aktywności.
 
-### <a name="create-an-alert-rule-for-an-activity-log-using-azure-portal"></a>Utwórz regułę alertu dla dziennika aktywności przy użyciu witryny Azure portal
+### <a name="create-with-azure-portal"></a>Tworzenie za pomocą witryny Azure portal
 
 Postępuj zgodnie z następującą procedurą:
 
@@ -102,7 +102,7 @@ Alternatywnie prosty sposób analogiczny opis warunki, na których można tworzy
  ![ Dodaj alert dziennika aktywności](./media/monitoring-activity-log-alerts-new-experience/add-activity-log.png)
     
 
-### <a name="view-and-manage-activity-log-alert-rules-in-azure-portal"></a>Wyświetlanie i zarządzanie nimi reguł alertów dzienników aktywności w witrynie Azure portal
+### <a name="view-and-manage-in-azure-portal"></a>Wyświetlanie i zarządzanie nimi w witrynie Azure portal
 
 1. W witrynie Azure portal kliknij **Monitor** > **alerty** i kliknij przycisk **zarządzanie regułami** w lewym górnym rogu okna.
 
@@ -127,7 +127,7 @@ Alternatywnie prosty sposób analogiczny opis warunki, na których można tworzy
 4.  Można wyłączyć, włączyć lub usunąć regułę. Wybierz odpowiednią opcję w górnej części okna, po wybraniu reguły, zgodnie z opisem w kroku 2.
 
 
-## <a name="manage-alert-rules-for-activity-log-using-azure-resource-template"></a>Zarządzaj regułami alertów dla dziennika aktywności przy użyciu szablonu usługi Azure Resource
+## <a name="azure-resource-template"></a>Szablonu zasobów platformy Azure
 Aby utworzyć alertu dziennika aktywności przy użyciu szablonu usługi Resource Manager, należy utworzyć zasób tego typu `microsoft.insights/activityLogAlerts`. Następnie należy wypełnić wszystkie powiązane właściwości. Oto szablon, który tworzy alertu dziennika aktywności.
 
 ```json
@@ -200,21 +200,23 @@ Przykładowy kod json powyżej, można zapisać jako (np.) sampleActivityLogAler
 > [!NOTE]
 > Może upłynąć do 5 minut nowych reguła alertu dziennika aktywności stanie się aktywna
 
-## <a name="manage-alert-rules-for-activity-log-using-powershell-cli-or-api"></a>Zarządzaj regułami alertów dla dziennika aktywności przy użyciu programu PowerShell, interfejsu wiersza polecenia lub interfejsu API
+## <a name="rest-api"></a>Interfejs API REST 
 [Usługa Azure Monitor — interfejs API alertów dziennika aktywności](https://docs.microsoft.com/rest/api/monitor/activitylogalerts) jest w pełni zgodna z usługą Azure Resource Manager REST API i interfejs API REST. Dlatego można używać za pośrednictwem programu Powershell przy użyciu polecenia cmdlet usługi Resource Manager, a także wiersza polecenia platformy Azure.
 
+## <a name="powershell"></a>PowerShell
 Przedstawione poniżej użycia za pomocą polecenia cmdlet programu PowerShell usługi Resource Manager platformy Azure, w przykładzie przedstawionym wcześniej szablon zasobu (sampleActivityLogAlert.json) w [sekcji zasobów szablonu](#manage-alert-rules-for-activity-log-using-azure-resource-template) :
 ```powershell
 New-AzureRmResourceGroupDeployment -ResourceGroupName "myRG" -TemplateFile sampleActivityLogAlert.json -TemplateParameterFile sampleActivityLogAlert.parameters.json
 ```
 Którym sampleActivityLogAlert.parameters.json ma wartości podanych dla parametrów wymaganych do utworzenia reguły alertu.
 
+## <a name="cli"></a>Interfejs wiersza polecenia
 Przedstawione poniżej użycia za pomocą polecenia usługi Azure Resource Manager w interfejsie wiersza polecenia platformy Azure w przykładzie przedstawionym wcześniej szablon zasobu (sampleActivityLogAlert.json) w [sekcji zasobów szablonu](#manage-alert-rules-for-activity-log-using-azure-resource-template) :
 
 ```azurecli
 az group deployment create --resource-group myRG --template-file sampleActivityLogAlert.json --parameters @sampleActivityLogAlert.parameters.json
 ```
-Którym sampleActivityLogAlert.parameters.json ma wartości podanych dla parametrów wymaganych do utworzenia reguły alertu.
+*SampleActivityLogAlert.parameters.json* plik zawiera wartości podanych dla parametrów wymaganych do utworzenia reguły alertu.
 
 
 ## <a name="next-steps"></a>Kolejne kroki

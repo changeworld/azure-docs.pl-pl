@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kylestorck
-ms.openlocfilehash: c19b19cab33ae868f11ded0b7ce87dac99269596
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: e42a2f854d5d4fa72e17a0b75ffef55069ccb626
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47431995"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267873"
 ---
 # <a name="known-issues"></a>Znane problemy
 W przypadku używania projektanta w wersji zapoznawczej dla Akustyka projektu, mogą wystąpić następujące znane problemy.
@@ -23,17 +23,9 @@ W przypadku używania projektanta w wersji zapoznawczej dla Akustyka projektu, m
 
 Jeśli zmienisz scenę, wszystkich parametrów akustycznych należących do danej scenie nie zostaną automatycznie przeniesione do nową scenę. One będą nadal istnieć w starym pliku elementu zawartości jednak. Wyszukaj **SceneName_AcousticParameters.asset** pliku wewnątrz **edytora** katalogu obok pliku sceny. Zmień nazwę pliku, aby odzwierciedlały nową nazwę sceny.
 
-## <a name="the-default-path-for-the-acousticsdata-folder-in-probes-tab-is-an-absolute-path"></a>Domyślna ścieżka dla folderu AcousticsData na karcie sondy jest ścieżką bezwzględną
-
-Powinno to domyślne ścieżki względnej, aby ułatwić udostępnianie projektów między współpracowników. Jako obejście tego problemu należy zmienić ścieżkę względem katalogu projektu.
-
 ## <a name="runtime-voxels-are-a-different-size-than-scene-preview-voxels"></a>Środowisko uruchomieniowe voxels są inny rozmiar niż voxels Podgląd sceny
 
 Jeśli to zrobisz **Calculate** na **sondy** kartę i widok voxels, a następnie wykonaj tworzenie i wyświetlanie voxels w czasie wykonywania dla tego samego sceny, voxels mają różne rozmiary. Voxels pokazano tworzenie wstępne są voxels używane w symulacji. Voxels wyświetlane w czasie wykonywania są używane do interpolacji między punktami sondowania. Może to spowodować niespójność, gdzie portali pojawią się otwarty w czasie wykonywania, które nie są faktycznie otwarte.
-
-## <a name="uwp-builds-not-working"></a>Platformy uniwersalnej systemu Windows opiera się nie działa
-
-W najnowszych wersjach aparatu Unity (2018.2 +) nie powiodły się kompilacji platformy uniwersalnej systemu Windows. Spowoduje zatrzymania wykonywania fazy kompilacji i uzyskasz "Unity rozszerzenia nie jest jeszcze inicjowany" błędy. To jest śledzona przez [ten problem Unity](https://fogbugz.unity3d.com/default.asp?1070491_1rgf14bakv5u779d).
 
 ## <a name="unity-crashes-when-closing-project"></a>Unity ulega awarii podczas zamykania projektu
 
@@ -49,6 +41,9 @@ Upewnij się, jest ustawiona wersja środowiska uruchomieniowego skryptów w ust
 ## <a name="im-having-authentication-problems-when-connecting-to-azure"></a>Występują problemy z uwierzytelniania podczas nawiązywania połączenia z platformą Azure
 
 Dokładnie sprawdź wykorzystano poprawne poświadczenia dla konta platformy Azure, że Twoje konto obsługuje typ węzła w tworzenie i czy zegar systemowy jest prawidłowa.
+
+## <a name="canceling-a-bake-leaves-the-bake-tab-in-deleting-state"></a>Trwa anulowanie tworzenie pozostawia kartę tworzenie w stanie "usuwania"
+Projekt Akustyka oczyści wszystkich zasobów platformy Azure dla zadania na pomyślne zakończenie lub anulowania, który może zająć do 5 minut.
 
 ## <a name="next-steps"></a>Kolejne kroki
 * Rozpocznij [wprowadzanie akustyki do projektu Unity](getting-started.md)

@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 10/3/2018
 ms.author: kumud
-ms.openlocfilehash: 63c193b4757c28f809a33b917058df36467d4db4
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 50b567b298406b936a11ad5a8737ce4b1e21c0c7
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47163022"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248728"
 ---
 # <a name="load-balancer-outbound-rules"></a>Reguły ruchu wychodzącego modułu równoważenia obciążenia
 
@@ -180,10 +180,10 @@ Zdefiniuj publiczny moduł równoważenia obciążenia standardowego, umieść m
 
 #### <a name="outbound-nat-for-internal-standard-load-balancer-scenarios"></a>NAT dla ruchu wychodzącego w scenariuszach standardowego modułu równoważenia obciążenia wewnętrznego
 
-Korzystając z wewnętrznego standardowego modułu równoważenia obciążenia, NAT dla ruchu wychodzącego nie jest dostępna, dopóki publiczny moduł równoważenia obciążenia standardowego także został skonfigurowany. Można to zmienić za pomocą i reguły ruchu wychodzącego do utworzenia połączenia ruchu wychodzącego dla maszyn wirtualnych za modułem równoważenia obciążenia wewnętrznego standardowych.
+Korzystając z wewnętrznego standardowego modułu równoważenia obciążenia, NAT dla ruchu wychodzącego nie jest dostępna, aż jawnie zadeklarowane łączności wychodzącej. Można zdefiniować łączności wychodzącej za pomocą regułę dla ruchu wychodzącego do utworzenia połączenia ruchu wychodzącego dla maszyn wirtualnych za modułem wewnętrznego standardowego modułu równoważenia obciążenia za pomocą tych kroków:
 
 1. Tworzenie publicznego modułu równoważenia obciążenia standardowego.
-2. Tworzenie puli wewnętrznej bazy danych i umieść maszyny wirtualne w puli zaplecza publicznej usługi Load Balancer.
+2. Tworzenie puli wewnętrznej bazy danych i umieść maszyny wirtualne w puli zaplecza modułu równoważenia obciążenia publiczny oprócz wewnętrznego modułu równoważenia obciążenia.
 3. Skonfiguruj regułę dla ruchu wychodzącego na publiczny moduł równoważenia obciążenia do programu NAT dla ruchu wychodzącego dla tych maszyn wirtualnych.
 
 #### <a name="enable-both-tcp--udp-protocols-for-outbound-nat-with-a-public-standard-load-balancer"></a>Włącz protokoły zarówno TCP i UDP dla NAT dla ruchu wychodzącego z publicznych standardowego modułu równoważenia obciążenia

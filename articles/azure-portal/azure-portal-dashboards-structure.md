@@ -13,12 +13,12 @@ ms.tgt_pltfrm: NA
 ms.workload: na
 ms.date: 09/01/2017
 ms.author: cwatson
-ms.openlocfilehash: 405e0d5184880a00c07de55bd968210fa28e45fc
-ms.sourcegitcommit: d1aef670b97061507dc1343450211a2042b01641
+ms.openlocfilehash: 76f4a52b702a609d7181b9c6c0f2ce600d8a6aac
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47393081"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267991"
 ---
 # <a name="the-structure-of-azure-dashboards"></a>Struktura pulpitów nawigacyjnych platformy Azure
 W tym dokumencie przedstawiono strukturę pulpitu nawigacyjnego platformy Azure, za pomocą następujących pulpitu nawigacyjnego, na przykład:
@@ -326,7 +326,7 @@ __Części__ obiekt zawiera właściwości dla każdej części, w którym nazwa
 Każdy obiekt poszczególnych części ma __pozycji__, i __metadanych__.
 
 ### <a name="the-position-object"></a>Obiekt położenia
-__Pozycji__ właściwość zawiera informacje o rozmiar i położenie, dla części wyrażonej w postaci __x__, __y__, __rowSpan__i __colSpan__. Wartości są posługując się jednostkami siatki. Te jednostki siatki są widoczne, gdy pulpit nawigacyjny jest w trybie dostosowywanie, jak pokazano poniżej. Jeśli chcesz, aby Kafelek, aby mieć szerokość dwie jednostki i siatki, wysokość jednostkę jeden siatki i lokalizację w prawym górnym lewym rogu pulpitu nawigacyjnego, a następnie obejct pozycji wygląda następująco:
+__Pozycji__ właściwość zawiera informacje o rozmiar i położenie, dla części wyrażonej w postaci __x__, __y__, __rowSpan__i __colSpan__. Wartości są posługując się jednostkami siatki. Te jednostki siatki są widoczne, gdy pulpit nawigacyjny jest w trybie dostosowywanie, jak pokazano poniżej. Jeśli chcesz, aby Kafelek, aby mieć szerokość dwie jednostki i siatki, wysokość jednostkę jeden siatki i lokalizację w prawym górnym lewym rogu pulpitu nawigacyjnego, a następnie pozycji obiektu wygląda następująco:
 
 `location: { x: 0, y: 0, rowSpan: 2, colSpan: 1 }`
 
@@ -338,7 +338,7 @@ Każda część ma właściwość metadanych, obiekt jest tylko jedna wymagana w
 
 1. `Extension/Microsoft_Azure_Monitoring/PartType/MetricsChartPart` — Używane do wyświetlania metryk monitorowania
 1. `Extension[azure]/HubsExtension/PartType/MarkdownPart` — Używane do wyświetlania tekstu lub obrazów za pomocą podstawowe formatowanie list, łącza, itd.
-1. `Extension[azure]/HubsExtension/PartType/VideoPart` — Umożliwia wyświetlanie filmów wideo z serwisu YouTube, witryny Channel9 i inny rodzaj film wideo, który działa w wideo tagu html.
+1. `Extension[azure]/HubsExtension/PartType/VideoPart` — Umożliwia wyświetlanie filmów wideo z serwisu YouTube, witryny Channel9 i inny rodzaj film wideo, który działa w wideo tagu HTML.
 1. `Extension/Microsoft_Azure_Compute/PartType/VirtualMachinePart` — Służy do pokazywania nazwę i stan maszyny wirtualnej platformy Azure.
 
 Każdy typ części ma własną konfigurację. Właściwości konfiguracji możliwe są nazywane __dane wejściowe__, __ustawienia__, i __zasobów__. 

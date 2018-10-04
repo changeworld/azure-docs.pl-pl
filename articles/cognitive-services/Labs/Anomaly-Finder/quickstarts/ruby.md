@@ -9,14 +9,16 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 6eb559f8971583afe9619fb41fe331bd3013bb69
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: ef85b82adf3b177678cc8175a7fb2d0eb44323fa
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41987966"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246863"
 ---
 # <a name="use-the-anomaly-finder-api-with-ruby"></a>Narzędzie do wyszukiwania anomalii interfejsu API za pomocą języka Ruby
+
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 Ten artykuł zawiera informacje i przykłady kodu, aby pomóc Ci szybko rozpocząć pracę, przy użyciu interfejsu API wyszukiwania anomalii za pomocą języka Ruby do wykonywania zadań pobierania wynik wykrywania anomalii w danych szeregów czasowych.
 
@@ -38,7 +40,7 @@ Dostępne są następujące kroki w przykładzie.
 
 1. Zainstaluj [klienta rest](https://github.com/rest-client/rest-client) , uruchamiając "rozwiązania gem klienta rest Zainstaluj".
 2. Zapisz poniższego kodu, jako pliku RB.
-3. Zastąp `[YOUR_SUBSCRIPTION_KEY]` wartość kluczem ważnej subskrypcji.
+3. Zastąp wartość `[YOUR_SUBSCRIPTION_KEY]` prawidłowym kluczem subskrypcji.
 4. Zastąp `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` przy użyciu przykładu lub punktów danych.
 5. Wykonywanie, a następnie sprawdź odpowiedzi.
 
@@ -76,7 +78,7 @@ puts response.body
 
 ### <a name="example-response"></a>Przykładowa odpowiedź
 
-Pomyślnej odpowiedzi jest zwracany w formacie JSON. Przykładowa odpowiedź wygląda następująco:
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON. Przykładowa odpowiedź wygląda następująco:
 [!INCLUDE [Response](../includes/response.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki

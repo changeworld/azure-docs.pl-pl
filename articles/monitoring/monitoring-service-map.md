@@ -12,19 +12,23 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
-ms.author: daseidma;bwren
-ms.openlocfilehash: 30a03fd5df9d4119e61698cfe1e5fc612e2cfd3f
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.date: 10/03/2018
+ms.author: magoedte
+ms.openlocfilehash: 49688b958d904450c50944725b18e0d518e27146
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297830"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269262"
 ---
 # <a name="using-service-map-solution-in-azure"></a>Za pomocą rozwiązania Service Map na platformie Azure
 Mapa usługi automatycznie odnajduje składniki aplikacji w systemach Windows i Linux oraz mapuje komunikację między usługami. Przy użyciu mapy usługi w taki sposób, które z nich można przeglądać serwery: jako wzajemnie połączonych systemów dostarczających krytycznych usług. Usługa Service Map Pokazuje połączenia między serwerami, procesami, czas oczekiwania na połączenie przychodzące i wychodzące i portami w dowolnej architekturze połączenia TCP, bez konieczności konfiguracji wymagane inne niż Instalacja agenta.
 
 W tym artykule opisano szczegóły dotyczące dołączania i przy użyciu mapy usługi. Aby uzyskać informacje dotyczące konfigurowania rozwiązania Service Map i dołączania agentów, zobacz [konfigurowania rozwiązania Service Map rozwiązanie na platformie Azure]( monitoring-service-map-configure.md).
+
+>[!NOTE]
+>Jeśli masz już wdrożone rozwiązania Service Map, można teraz również wyświetlić map w usłudze Azure Monitor dla maszyn wirtualnych, który zawiera dodatkowe funkcje, aby monitorować wydajność i kondycja maszyny Wirtualnej. Aby dowiedzieć się więcej, zobacz [usługi Azure Monitor dla maszyn wirtualnych — omówienie](monitoring-vminsights-overview.md).
+
 
 ## <a name="sign-in-to-azure"></a>Logowanie do platformy Azure
 Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com).
@@ -230,6 +234,7 @@ Aby otworzyć element w połączonych rozwiązania ITSM, kliknij przycisk **Wyś
 
 Aby wyświetlić szczegóły dotyczące elementu podczas wyszukiwania dziennika, kliknij **Pokaż podczas wyszukiwania dziennika**.
 Metryki połączeń są zapisywane w dwóch nowych tabel w usłudze Log Analytics 
+
 ## <a name="change-tracking-integration"></a>Integracja śledzenia zmiany
 Integracja mapy usługi przy użyciu śledzenia zmian jest automatyczne, gdy oba rozwiązania są włączone i skonfigurowane w obszarze roboczym usługi Log Analytics.
 
@@ -254,7 +259,7 @@ W systemie Windows:
 - Sieci Adapter(*)\\bajty wysłane/s
 - Sieci Adapter(*)\\bajty odebrane/s
 
-Linux:
+W systemie Linux:
 - Procesor(*)\\czas procesora (%)
 - Memory(*)\\% użycie pamięci
 - Sieci Adapter(*)\\bajty wysłane/s
@@ -359,16 +364,16 @@ Dla każdej właściwości RemoteIp w *VMConnection* tabeli jest sprawdzana wzgl
 | Właściwość | Opis |
 |:--|:--|
 |MaliciousIp |Adres RemoteIp |
-|IndicatorThreadType | |
-|Opis | |
-|TLPLevel | |
-|Ufność | |
-|Ważność | |
-|FirstReportedDateTime | |
-|LastReportedDateTime | |
-|IsActive | |
-|ReportReferenceLink | |
-|AdditionalInformation | |
+|IndicatorThreadType |Wskaźnik zagrożenia wykryte jest jednym z następujących wartości *Botnet*, *C2*, *CryptoMining*, *zakres sieci Darknet*, *przed atakami DDos* , *MaliciousUrl*, *złośliwego oprogramowania*, *wyłudzania informacji*, *Proxy*, *potencjalnie niechciane aplikacje*, *Listy do obejrzenia*.   |
+|Opis |Opis obserwowanych zagrożeń. |
+|TLPLevel |Poziom Rack (RECENT sygnalizacji ulicznej Protocol) jest jednym ze zdefiniowanymi wartościami *biały*, *zielony*, *żółtą*, *Red*. |
+|Ufność |Wartości są *0 – 100*. |
+|Ważność |Wartości są *0 – 5*, gdzie *5* jest najpoważniejsze i *0* nie jest poważny wcale. Wartość domyślna to *3*.  |
+|FirstReportedDateTime |Po raz pierwszy dostawca zgłosił wskaźnika. |
+|LastReportedDateTime |Czas ostatniego wskaźnika widzianego przez Interflow. |
+|IsActive |Wskazuje, wskaźniki zostaną dezaktywowane z *True* lub *False* wartość. |
+|ReportReferenceLink |Zawiera łącza do raportów związanych z danym możliwość obserwowania. |
+|AdditionalInformation |Udostępnia dodatkowe informacje, jeśli ma to zastosowanie, temat obserwowanych zagrożenia. |
 
 ### <a name="servicemapcomputercl-records"></a>Rekordy ServiceMapComputer_CL
 Rekordy z typem *ServiceMapComputer_CL* zawierają dane spisu dla serwerów z agentami mapy usługi. Te rekordy mają właściwości podane w poniższej tabeli:

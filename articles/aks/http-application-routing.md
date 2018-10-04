@@ -8,16 +8,16 @@ ms.service: container-service
 ms.topic: article
 ms.date: 04/25/2018
 ms.author: laevenso
-ms.openlocfilehash: 8934852fe3d95d0a96af0283c30bba4b3bdb411b
-ms.sourcegitcommit: af9cb4c4d9aaa1fbe4901af4fc3e49ef2c4e8d5e
+ms.openlocfilehash: fa9c9416a8a1f80a62a21e5d9041e750b1debb98
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44345883"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269381"
 ---
 # <a name="http-application-routing"></a>Routing aplikacji protokołu HTTP
 
-Rozwiązanie routing aplikacji protokołu HTTP można łatwo uzyskiwać dostęp do aplikacji, które są wdrażane w klastrze usługi Azure Kubernetes Service (AKS). Po włączeniu rozwiązania konfiguruje kontrolera danych przychodzących w klastrze AKS. Podczas wdrażania aplikacji, to rozwiązanie tworzy również publicznie dostępne nazwy DNS dla punktów końcowych aplikacji.
+Rozwiązanie routing aplikacji protokołu HTTP można łatwo uzyskiwać dostęp do aplikacji, które są wdrażane w klastrze usługi Azure Kubernetes Service (AKS). Po włączeniu rozwiązania konfiguruje kontrolera danych przychodzących w klastrze AKS. Podczas wdrażania aplikacji, rozwiązania wzrasta, powstaje publicznie dostępne nazwy DNS dla punktów końcowych aplikacji.
 
 Gdy dodatek jest włączona, tworzy strefę DNS w ramach subskrypcji. Aby uzyskać więcej informacji na temat kosztu DNS Zobacz [ceny DNS][dns-pricing].
 

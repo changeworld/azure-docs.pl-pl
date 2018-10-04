@@ -14,12 +14,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 11/28/2017
 ms.author: apimpm
-ms.openlocfilehash: 54bb6056c41126aecada265eb0e079bc7c281be8
-ms.sourcegitcommit: ab3b2482704758ed13cccafcf24345e833ceaff3
+ms.openlocfilehash: d5f5b66dee88a993347b6c1672fd9526ece09dc4
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/06/2018
-ms.locfileid: "37865937"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269521"
 ---
 # <a name="api-management-access-restriction-policies"></a>Zasady ograniczeń dostępu do usługi API Management
 Ten temat zawiera odwołania do następujących zasad usługi API Management. Aby uzyskać informacje na temat dodawania i konfigurowania zasad, zobacz [zasad w usłudze API Management](http://go.microsoft.com/fwlink/?LinkID=398186).  
@@ -216,7 +216,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 |Name (Nazwa)|Opis|Wymagane|  
 |----------|-----------------|--------------|  
 |ip-filter|Element główny.|Yes|  
-|adres|Określa pojedynczy adres IP, według której chcesz filtrować.|Co najmniej jeden `address` lub `address-range` element jest wymagany.|  
+|Adres|Określa pojedynczy adres IP, według której chcesz filtrować.|Co najmniej jeden `address` lub `address-range` element jest wymagany.|  
 |zakres adresów z = "address", aby = "address"|Określa adres zakresu adresów IP, według której chcesz filtrować.|Co najmniej jeden `address` lub `address-range` element jest wymagany.|  
   
 ### <a name="attributes"></a>Atrybuty  
@@ -268,7 +268,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
   
 |Name (Nazwa)|Opis|Wymagane|  
 |----------|-----------------|--------------|  
-|quota|Element główny.|Yes|  
+|limit przydziału|Element główny.|Yes|  
 |api|Dodaj jeden lub więcej z tych elementów, aby nałożyć limit przydziału wywołania interfejsów API w ramach produktu. Produkt i limity przydziału wywołań interfejsu API są stosowane niezależnie. Interfejs API mogą być przywoływane za pośrednictwem `name` lub `id`. Jeśli oba atrybuty są dostarczane, `id` będą używane i `name` zostaną zignorowane.|Nie|  
 |operacja|Dodaj jeden lub więcej z tych elementów, aby nałożyć limit przydziału wywołania operacji w ramach interfejsu API. Limity przydziału wywołań produktu, interfejsu API i operacji są stosowane niezależnie. Operacja mogą być przywoływane za pośrednictwem `name` lub `id`. Jeśli oba atrybuty są dostarczane, `id` będą używane i `name` zostaną zignorowane.|Nie|  
   
@@ -288,7 +288,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 -   **Zakresy zasad:** produktu  
   
 ##  <a name="SetUsageQuotaByKey"></a> Ustawianie przydziału użycia klucza  
- `quota-by-key` Zasada wymusza odnawialnych lub okres istnienia woluminu i/lub przepustowości limit przydziału wywołania, na podstawie na klucz. Klucz może mieć wartość dowolny ciąg i zazwyczaj znajduje się za pomocą wyrażenia zasad. Aby określić, które żądania powinno być liczone na limit przydziału można dodać warunku opcjonalnie przyrostu.  
+ `quota-by-key` Zasada wymusza odnawialnych lub okres istnienia woluminu i/lub przepustowości limit przydziału wywołania, na podstawie na klucz. Klucz może mieć wartość dowolny ciąg i zazwyczaj znajduje się za pomocą wyrażenia zasad. Aby określić, które żądania powinno być liczone na limit przydziału można dodać warunku opcjonalnie przyrostu. Gdy te zasady są wyzwalane obiekt wywołujący otrzymuje `403 Forbidden` kod stanu odpowiedzi.
   
  Aby uzyskać więcej informacji i przykładów niniejszych zasad, zobacz [Zaawansowane żądanie ograniczania usługi Azure API Management](https://azure.microsoft.com/documentation/articles/api-management-sample-flexible-throttling/).  
   
@@ -329,7 +329,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
   
 |Name (Nazwa)|Opis|Wymagane|  
 |----------|-----------------|--------------|  
-|quota|Element główny.|Yes|  
+|limit przydziału|Element główny.|Yes|  
   
 ### <a name="attributes"></a>Atrybuty  
   
@@ -508,7 +508,7 @@ Ten temat zawiera odwołania do następujących zasad usługi API Management. Ab
 |Wymagaj wygasania w czasie|Wartość logiczna. Określa, czy oświadczeniu wygaśnięcia jest wymagany w tokenie.|Nie|true|
 |wymaga schematu|Nazwa tokenu schemat, np. "Bearer". Gdy ten atrybut jest ustawiony, zasady zapewni, że określony schemat jest obecny w wartości nagłówka autoryzacji.|Nie|ND|
 |Wymagaj podpisane — tokeny zabezpieczające|Wartość logiczna. Określa, czy token jest wymagany do podpisania.|Nie|true|  
-|Separator|Ciąg. Określa separator (np. ",") ma być używany do wyodrębniania zestawu wartości z oświadczeń wielowartościowe.|Nie|ND| 
+|Separator|ciąg. Określa separator (np. ",") ma być używany do wyodrębniania zestawu wartości z oświadczeń wielowartościowe.|Nie|ND| 
 |url|Otwórz adres URL punktu końcowego konfiguracji identyfikator, z którym można uzyskać metadanych konfiguracji Open ID. Odpowiedź musi być zgodny specyfikacje, zgodnie z definicją pod adresem URL:`https://openid.net/specs/openid-connect-discovery-1_0.html#ProviderMetadata`.  Usługi Azure Active Directory, użyj następującego adresu URL: `https://login.microsoftonline.com/{tenant-name}/.well-known/openid-configuration` podstawiając nazwy dzierżawy katalogu, np. `contoso.onmicrosoft.com`.|Yes|ND|  
   
 ### <a name="usage"></a>Sposób użycia  

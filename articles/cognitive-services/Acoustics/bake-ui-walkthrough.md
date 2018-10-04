@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 0e16ec765ae3cbef8a941f43a149428ffdf5bd8d
-ms.sourcegitcommit: 1aedb52f221fb2a6e7ad0b0930b4c74db354a569
+ms.openlocfilehash: a82472ccd5524e7cbe3d92070a6d2b583d8eb4d5
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/17/2018
-ms.locfileid: "40181701"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249302"
 ---
 # <a name="bake-acoustics"></a>Tworzenie Akustyka
 
@@ -199,15 +199,19 @@ Po zakończeniu weryfikacji danych (wersja zapoznawcza), użyj **tworzenie** kar
 1. Tworzenie karty przycisku używane do tej strony.
 2. Krótki opis, co można zrobić na tej stronie.
 3. Pola, aby wprowadzić swoje poświadczenia platformy Azure, po utworzeniu konta platformy Azure. Aby uzyskać więcej informacji, zobacz [Tworzenie konta usługi Azure Batch](create-azure-account.md).
-4. Usługa Azure batch compute typ węzła na potrzeby obliczeń. Typ węzła musi być obsługiwany według lokalizacji centrum danych platformy Azure. Jeśli nie masz pewności, pozostaw **maszyna wirtualna Standard_F8**.
-5. Liczba węzłów na potrzeby tego obliczenia. Liczba, wprowadź w tym miejscu ma wpływ na czas wymagany do ukończenia tworzenie i jest ograniczone przez przydziału rdzeni usługi Azure Batch. Alokacja domyślna tylko umożliwia węzłów dwóch 8 rdzeni lub jednego 16 rdzeni węzła, ale można rozszerzyć. Aby uzyskać więcej informacji na temat ograniczeń alokacji core, zobacz [Tworzenie konta usługi Azure Batch](create-azure-account.md).
-6. Liczba sondy sceny obliczone na **sondy** kartę. Liczbę sond określa liczbę symulacje, które należy uruchomić w chmurze. Nie można określić więcej węzłów niż jest sondy.
-7. Ilość czasu oczekiwano podejmowane dla zadania do uruchamiania w chmurze. Nie dotyczy to czas uruchamiania węzła. Gdy zadanie zacznie działać, to o tym, ile powinna być, aby wrócić wyniki. Należy pamiętać, że jest to tylko oszacowanie.
-8. Całkowita ilość czasu obliczeniowego potrzebnych do uruchomienia symulacje. Jest to suma czasu obliczeń węzeł, który będzie używany na platformie Azure. Zobacz [koszt tworzenie Szacowanie](#Estimating-bake-cost) poniżej Aby uzyskać więcej informacji na temat korzystania z tej wartości.
-9. Ten komunikat informuje, gdzie będzie można zapisać wyników tworzenie po ukończeniu zadania.
-10. (Tylko w trybie Zaawansowane) Jeśli zaistnieje należy wymusić Unity zapomnieć o tworzenie przesłane (np. pobrano wyniki za pomocą innego komputera), kliknij przycisk **Wyczyść stan** przycisk zapomnieć o zadaniu, który został przesłany. Należy pamiętać, że oznacza to plik wyników, gdy wszystko będzie gotowe, będzie **nie** pobrany, i **to nie jest taka sama jak anulowanie zadania**. Zadanie, jeśli uruchomione, będzie kontynuował pracę w chmurze.
-11. Kliknij przycisk Tworzenie, aby przesłać tworzenie do chmury. Gdy zadanie jest uruchomione, spowoduje to pokazanie **anulować zadanie** zamiast tego.
-12. Ten obszar zawiera stan tworzenie. Po zakończeniu powinien być wyświetlony **pobrane**.
+4. Tag obrazu platformy docker dla zestawu narzędzi Akustyka.
+5. Uruchamianie portalu Azure, aby zarządzać subskrypcjami, monitorowania użycia i wyświetlania informacji dotyczących rozliczeń itd. 
+6. Usługa Azure batch compute typ węzła na potrzeby obliczeń. Typ węzła musi być obsługiwany według lokalizacji centrum danych platformy Azure. Jeśli nie masz pewności, pozostaw **Standard_F8s_v2**.
+7. Liczba węzłów na potrzeby tego obliczenia. Liczba, wprowadź w tym miejscu ma wpływ na czas wymagany do ukończenia tworzenie i jest ograniczone przez przydziału rdzeni usługi Azure Batch. Alokacja domyślna tylko umożliwia węzłów dwóch 8 rdzeni lub jednego 16 rdzeni węzła, ale można rozszerzyć. Aby uzyskać więcej informacji na temat ograniczeń alokacji core, zobacz [Tworzenie konta usługi Azure Batch](create-azure-account.md).
+8. Zaznacz to pole wyboru, aby skonfigurować pulę obliczeniowych do użycia [węzły o niskim priorytecie](https://docs.microsoft.com/azure/batch/batch-low-pri-vms). Węzły obliczeniowe o niskim priorytecie mają znacznie niższe koszty, ale mogą być niedostępne lub mogą być przerywane, w dowolnym momencie.
+9. Liczba sondy sceny obliczone na **sondy** kartę. Liczbę sond określa liczbę symulacje, które należy uruchomić w chmurze. Nie można określić więcej węzłów niż jest sondy.
+10. Ilość czasu oczekiwano podejmowane dla zadania do uruchamiania w chmurze. Nie dotyczy to czas uruchamiania węzła. Gdy zadanie zacznie działać, to o tym, ile powinna być, aby wrócić wyniki. Należy pamiętać, że jest to tylko oszacowanie.
+11. Całkowita ilość czasu obliczeniowego potrzebnych do uruchomienia symulacje. Jest to suma czasu obliczeń węzeł, który będzie używany na platformie Azure. Zobacz [koszt tworzenie Szacowanie](#Estimating-bake-cost) poniżej Aby uzyskać więcej informacji na temat korzystania z tej wartości.
+12. Ten komunikat informuje, gdzie będzie można zapisać wyników tworzenie po ukończeniu zadania.
+13. (Tylko w trybie Zaawansowane) Jeśli zaistnieje należy wymusić Unity zapomnieć o tworzenie przesłane (np. pobrano wyniki za pomocą innego komputera), kliknij przycisk **Wyczyść stan** przycisk zapomnieć o zadaniu, który został przesłany. Należy pamiętać, że oznacza to plik wyników, gdy wszystko będzie gotowe, będzie **nie** pobrany, i **to nie jest taka sama jak anulowanie zadania**. Zadanie, jeśli uruchomione, będzie kontynuował pracę w chmurze.
+14. Kliknij przycisk Tworzenie, aby przesłać tworzenie do chmury. Gdy zadanie jest uruchomione, spowoduje to pokazanie **anulować zadanie** zamiast tego.
+15. Przygotowuje przetwarzanie symulacji Akustyka na komputerach lokalnych. Zobacz [Tworzenie lokalnego](#Local-bake) Aby uzyskać więcej informacji.  
+16. Ten obszar zawiera stan tworzenie. Po zakończeniu powinien być wyświetlony **pobrane**.
 
 Można zawsze uzyskać pełne informacje na temat aktywnych zadań, pule obliczeniowe i Magazyn w [witryny Azure Portal](https://portal.azure.com).
 
@@ -217,13 +221,34 @@ Po rozpoczęciu tworzenie, możesz zamknąć aparatu Unity. W zależności od pr
 
 Poświadczenia platformy Azure są bezpiecznie przechowywane na komputerze lokalnym i skojarzone z programu Unity editor. Służą one wyłącznie w celu nawiązania bezpiecznego połączenia z platformą Azure.
 
-### <a name="Estimating-bake-cost"></a> Trwa szacowanie kosztu tworzenie
+### <a name="Estimating-bake-cost"></a> Trwa szacowanie kosztu tworzenie platformy Azure
 
-Aby oszacować, jaki będzie koszt danego tworzenie, wykonaj wartości wyświetlane dla **szacowany koszt obliczeń**, który jest czasem trwania i wielokrotnie kosztów, przez co godzinę w lokalnej walucie z **typ węzła maszyny Wirtualnej** wybrane. Wynik nie będzie również obejmował czas węzła potrzebne do uruchomienia w węzłach i uruchamiania. Na przykład w przypadku wybrania **maszyna wirtualna Standard_F8** typu węzła, który ma koszt wartość 0,75 $/ godz., a szacowany koszt obliczeń jest 3 godzin i 57 minut, szacowany koszt będzie $ wartość 0,75 * ~ 4 godziny = ~ 3,00$. Rzeczywisty koszt będzie prawdopodobnie nieco wyższy ze względu na dodatkowy czas, aby uzyskać dostęp do węzłów pracę. Można znaleźć węzła co godzinę, koszt na [cennik usługi Azure Batch](https://azure.microsoft.com/pricing/details/virtual-machines/linux) strony (wybierz opcję "zoptymalizowane pod kątem obliczeń" lub "obliczenia o wysokiej wydajności" dla kategorii).
+Aby oszacować, jaki będzie koszt danego tworzenie, wykonaj wartości wyświetlane dla **szacowany koszt obliczeń**, który jest czasem trwania i wielokrotnie kosztów, przez co godzinę w lokalnej walucie z **typ węzła maszyny Wirtualnej** wybrane. Wynik nie będzie również obejmował czas węzła potrzebne do uruchomienia w węzłach i uruchamiania. Na przykład w przypadku wybrania **Standard_F8s_v2** typu węzła, który ma koszt 0,40 USD/godz., a szacowany koszt obliczeń jest 3 godzin i 57 minut, szacowany koszt będzie $0,40 * ~ 4 godziny = ~ 1,60 USD. Rzeczywisty koszt będzie prawdopodobnie nieco wyższy ze względu na dodatkowy czas, aby uzyskać dostęp do węzłów pracę. Można znaleźć węzła co godzinę, koszt na [cennik usługi Azure Batch](https://azure.microsoft.com/pricing/details/virtual-machines/linux) strony (wybierz opcję "zoptymalizowane pod kątem obliczeń" lub "obliczenia o wysokiej wydajności" dla kategorii).
 
 ### <a name="reviewing-the-bake-results"></a>Sprawdzanie wyników tworzenie
 
 Po zakończeniu tworzenie, sprawdź, czy punkty voxels i badania znajdują się w ich oczekiwanych lokalizacjach za pomocą wtyczki środowiska uruchomieniowego. Więcej informacji znajduje się w [Omówienie procesu projektowania dla Akustyka](design-process.md).
+
+## <a name="Local-bake"></a>Tworzenie lokalnego
+Tworzenie lokalnej działa Akustyka symulacji na komputerze lokalnym zamiast przeniesieniu ich do klastra obliczeniowego usługi Azure Batch. Może to być to dobry wybór do eksperymentowania z Akustyka bez subskrypcji platformy Azure, ale pamiętaj, że Symulacja Akustyka praktyce najbardziej wymagających a może zająć dużo czasu w zależności od rozmiaru sceny konfiguracji symulacji i raw moc obliczeniową maszyny przetwarzania.
+
+### <a name="minimum-hardware-requirements"></a>Minimalne wymagania sprzętowe
+64-bitowy procesor Intel z co najmniej 8 rdzeni i 32 GB pamięci RAM lub nowszej.
+
+Na przykład na komputerze przy użyciu Intel Xeon E5-1660 8-rdzeniowe @ 3 GHz i 32 GB pamięci-
+* Niewielkiej sceny przy użyciu 100 sondy zajmuje OK. 2 dla zdalnego tworzenie i około 32 godziny na tworzenie rozwiązania dobrym rozwiązaniem.
+* Większe sceny z 1000 sond może zająć maksymalnie ~ 20 godzin zgrubnym rozwiązanie problemu i ~ 21 dni tworzenie rozwiązania dobrym rozwiązaniem.
+
+### <a name="setup-docker"></a>Konfigurowanie platformy Docker
+Instalowanie i konfigurowanie platformy Docker na komputerze, który będzie przetwarzał Symulacja-
+1. Zainstaluj [zestawu narzędzi platformy Docker](https://www.docker.com/products/docker-desktop).
+2. Uruchom ustawień platformy Docker, przejdź do opcji "Zaawansowane", a następnie skonfigurować zasoby, jak pokazano poniżej. ![Zasoby platformy docker](media/DockerSettings.png)
+3. Przejdź do opcji "Udostępnione dyski" i Włącz udostępnianie dla dysku używana na potrzeby przetwarzania.![DockerDriveSharing](media/DockerSharedDrives.png)
+
+### <a name="run-local-bake"></a>Tworzenie lokalnego uruchomienia
+1. Kliknij przycisk "Przygotowanie lokalnego tworzenie" na karcie Tworzenie, a następnie wybierz folder, w którym zostaną zapisane pliki wejściowe i wykonywania skryptów. Następnie można uruchomić tworzenie na dowolnym komputerze, tak długo, jak spełnia minimalne wymagania sprzętowe i ma platforma Docker jest zainstalowana przez skopiowanie folderu do tej maszyny.
+2. Uruchomienie symulacji za pomocą skryptu "runlocalbake.bat", który będzie pobrać obraz Docker Akustyka projektu, za pomocą zestawu narzędzi niezbędnych do symulacji przetwarzania i rozpocząć symulację. 
+3. Po zakończeniu symulacji skopiuj wynikowy plik .ace do projektu środowiska Unity do tej samej lokalizacji, która została określona w karcie sondy. Upewnij się, że nazwa pliku docelowego jest zgodny z wymaganiami firmy Unity, dodając ".bytes" do rozszerzenia pliku. Szczegółowe dzienniki symulacji są przechowywane w pliku "AcousticsLog.txt". Jeśli napotkasz problemy, należy udostępnić ten plik w celu ułatwienia diagnozy.
 
 ## <a name="Data-Files"></a>Pliki danych
 

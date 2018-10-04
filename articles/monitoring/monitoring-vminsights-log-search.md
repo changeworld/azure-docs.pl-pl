@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/18/2018
+ms.date: 09/20/2018
 ms.author: magoedte
-ms.openlocfilehash: 446268f28e7c87196023636889f03be2da92ecfd
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4a5f3178ad4d4152bb29e6c313b3fd332124c154
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46967646"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269398"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-vms"></a>Tworzenie zapytań względem dzienników z usługi Azure Monitor dla maszyn wirtualnych
 Usługa Azure Monitor dla maszyn wirtualnych zbiera metryki wydajności i połączenia, komputera i przetwarzanie magazynu danych i informacji o stanie kondycji i przekazuje go do magazynu danych usługi Log Analytics w usłudze Azure Monitor.  Dane te są dostępne dla [wyszukiwania](../log-analytics/log-analytics-log-searches.md) w usłudze Log Analytics. Dane te można zastosować do scenariuszy obejmujących planowania migracji, analizy wydajności, wykrywanie i rozwiązywanie problemów z wydajnością na żądanie.
@@ -39,7 +39,7 @@ Metryki połączeń są zapisywane do nowej tabeli w usłudze Log Analytics — 
 
 Rekordów w tych tabelach są generowane na podstawie danych przekazywanych przez agenta zależności. Każdy rekord reprezentuje obserwacji w przedziałach czasu jednej minuty. Właściwość TimeGenerated wskazuje początek przedziału czasu. Każdy rekord zawiera informacje w celu zidentyfikowania odpowiednich jednostek, to znaczy, połączenia lub portu, a także metryki skojarzone z tej jednostki. Obecnie jest zgłaszany tylko aktywność sieciową występujący za pomocą protokołu TCP za pośrednictwem protokołu IPv4.
 
-Aby zarządzać, koszt i złożoność, rekordy połączeń nie przedstawiają poszczególnych fizycznych połączeń sieciowych. Wiele połączeń sieci fizycznej są grupowane w logicznej połączenia, które następnie są odzwierciedlane w odpowiedniej tabeli.  Znaczenie, rejestruje w *VMConnection* tabeli reprezentują logiczne grupowanie, a nie poszczególnych fizycznego połączenia, które są przestrzegane. Połączenie z siecią fizyczną współużytkujące taką samą wartość, dla następujących atrybutów dla interwału danego jednej minuty są agregowane w jednym rekordzie logicznych w *VMConnection*. 
+Aby zarządzać, koszt i złożoność, rekordy połączeń nie przedstawiają poszczególnych fizycznych połączeń sieciowych. Wiele połączeń sieci fizycznej są grupowane w logicznej połączenia, które następnie są odzwierciedlane w odpowiedniej tabeli.  Znaczenie, rejestruje w *VMConnection* tabeli reprezentują logiczne grupowanie, a nie poszczególnych fizycznego połączenia, które są przestrzegane. Połączenie z siecią fizyczną współużytkujące taką samą wartość, w przypadku następujących atrybutów dla danego interwału jednej minuty są agregowane w jednym rekordzie logicznych w *VMConnection*. 
 
 | Właściwość | Opis |
 |:--|:--|
@@ -69,9 +69,9 @@ Oprócz metryki liczbę połączeń informacji na temat ilości danych wysłanyc
 |Żądania |Całkowita liczba bajtów wysłanych raportowania przedziale czasu |
 |BytesReceived |Całkowita liczba bajtów odebranych w przedziale czasu raportowania |
 |Odpowiedzi |Liczba odpowiedzi zaobserwowane w przedziale czasu raportowania. 
-|ResponseTimeMax |Największy czas odpowiedzi (w milisekundach) zaobserwowane w przedziale czasu raportowania.  Jeśli brak wartości właściwości jest pusta.|
-|ResponseTimeMin |Najmniejszy czas odpowiedzi (w milisekundach) zaobserwowane w przedziale czasu raportowania.  Jeśli brak wartości właściwości jest pusta.|
-|ResponseTimeSum |Suma czasów odpowiedzi (w milisekundach) zaobserwowane w przedziale czasu raportowania.  Jeśli brak wartości właściwości jest pusta|
+|ResponseTimeMax |Największy czas odpowiedzi (w milisekundach) zaobserwowane w przedziale czasu raportowania. Jeśli brak wartości właściwości jest pusta.|
+|ResponseTimeMin |Najmniejszy czas odpowiedzi (w milisekundach) zaobserwowane w przedziale czasu raportowania. Jeśli brak wartości właściwości jest pusta.|
+|ResponseTimeSum |Suma czasów odpowiedzi (w milisekundach) zaobserwowane w przedziale czasu raportowania. Jeśli brak wartości właściwości jest pusta.|
 
 Trzeci typ danych, zgłaszany jest czas odpowiedzi — obiekt wywołujący poświęcić czas oczekiwania na żądanie przesyłane przez połączenie do przetworzenia i przez zdalny punkt końcowy. Czas odpowiedzi, zgłaszane jest oszacowanie czas odpowiedzi true podstawowego protokołu aplikacji. Jest obliczana, przy użyciu algorytmów heurystycznych oparte na obserwacji przepływ danych między źródłowym i docelowym koniec połączenie z siecią fizyczną. Pod względem koncepcyjnym go różni się od czasu ostatniego bajtu żądania pozostawia nadawcy i czas po nadejściu ostatni bajt odpowiedzi powrotu do tego. Te dwa sygnatury czasowe są używane do odróżnić zdarzenia żądań i odpowiedzi dla danego połączenia fizycznych. Różnica między nimi reprezentuje czas odpowiedzi pojedynczego żądania. 
 
@@ -93,8 +93,8 @@ Dla wygody adres IP zdalnego punktu końcowego połączenia znajduje się we wł
 | Właściwość | Opis |
 |:--|:--|
 |RemoteCountry |Nazwa kraju RemoteIp hostingu.  Na przykład *Stanów Zjednoczonych* |
-|RemoteLatitude |Szerokość geograficzną.  Na przykład *47.68* |
-|RemoteLongitude |Długość geograficzna geolokalizacji.  Na przykład *-122.12* |
+|RemoteLatitude |Szerokość geograficzną. Na przykład *47.68* |
+|RemoteLongitude |Długość geograficzna geolokalizacji. Na przykład *-122.12* |
 
 #### <a name="malicious-ip"></a>Złośliwy adres IP
 Dla każdej właściwości RemoteIp w *VMConnection* tabeli jest sprawdzana względem zbiór adresów IP przy użyciu znanych złośliwych działań. Jeśli RemoteIp została zidentyfikowana jako szkodliwe następujące właściwości zostaną wypełnione (są puste, jeśli adres IP nie jest uznawane za złośliwe) w następujących właściwości rekordu:
@@ -102,16 +102,16 @@ Dla każdej właściwości RemoteIp w *VMConnection* tabeli jest sprawdzana wzgl
 | Właściwość | Opis |
 |:--|:--|
 |MaliciousIp |Adres RemoteIp |
-|IndicatorThreadType | |
-|Opis | |
-|TLPLevel | |
-|Ufność | |
-|Ważność | |
-|FirstReportedDateTime | |
-|LastReportedDateTime | |
-|IsActive | |
-|ReportReferenceLink | |
-|AdditionalInformation | |
+|IndicatorThreadType |Wskaźnik zagrożenia wykryte jest jednym z następujących wartości *Botnet*, *C2*, *CryptoMining*, *zakres sieci Darknet*, *przed atakami DDos* , *MaliciousUrl*, *złośliwego oprogramowania*, *wyłudzania informacji*, *Proxy*, *potencjalnie niechciane aplikacje*, *Listy do obejrzenia*.   |
+|Opis |Opis obserwowanych zagrożeń. |
+|TLPLevel |Poziom Rack (RECENT sygnalizacji ulicznej Protocol) jest jednym ze zdefiniowanymi wartościami *biały*, *zielony*, *żółtą*, *Red*. |
+|Ufność |Wartości są *0 – 100*. |
+|Ważność |Wartości są *0 – 5*, gdzie *5* jest najpoważniejsze i *0* nie jest poważny wcale. Wartość domyślna to *3*.  |
+|FirstReportedDateTime |Po raz pierwszy dostawca zgłosił wskaźnika. |
+|LastReportedDateTime |Czas ostatniego wskaźnika widzianego przez Interflow. |
+|IsActive |Wskazuje, wskaźniki zostaną dezaktywowane z *True* lub *False* wartość. |
+|ReportReferenceLink |Zawiera łącza do raportów związanych z danym możliwość obserwowania. |
+|AdditionalInformation |Udostępnia dodatkowe informacje, jeśli ma to zastosowanie, temat obserwowanych zagrożenia. |
 
 ### <a name="servicemapcomputercl-records"></a>Rekordy ServiceMapComputer_CL
 Rekordy z typem *ServiceMapComputer_CL* zawierają dane spisu dla serwerów z agenta zależności. Te rekordy mają właściwości podane w poniższej tabeli:
@@ -166,34 +166,34 @@ Rekordy z typem *ServiceMapProcess_CL* mają dane spisu dla procesy połączone 
 ## <a name="sample-log-searches"></a>Przykładowe wyszukiwania dzienników
 
 ### <a name="list-all-known-machines"></a>Listę wszystkich znanych maszyn
-ServiceMapComputer_CL | Podsumowanie arg_max(TimeGenerated, *) przez ResourceId
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-the-physical-memory-capacity-of-all-managed-computers"></a>Wyświetl listę wszystkich zarządzanych komputerów pojemność pamięci fizycznej.
-ServiceMapComputer_CL | Podsumowanie arg_max(TimeGenerated, *) przez ResourceId | Projekt PhysicalMemory_d, ComputerName_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project PhysicalMemory_d, ComputerName_s`
 
 ### <a name="list-computer-name-dns-ip-and-os"></a>Nazwa komputera listy, DNS, adresu IP i systemu operacyjnego.
-ServiceMapComputer_CL | Podsumowanie arg_max(TimeGenerated, *) przez ResourceId | Projekt ComputerName_s OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s
+`ServiceMapComputer_CL | summarize arg_max(TimeGenerated, *) by ResourceId | project ComputerName_s, OperatingSystemFullName_s, DnsNames_s, Ipv4Addresses_s`
 
 ### <a name="find-all-processes-with-sql-in-the-command-line"></a>Znajdź wszystkie procesy za pomocą "sql" w wierszu polecenia
-ServiceMapProcess_CL | gdzie contains_cs CommandLine_s "sql" | Podsumowanie arg_max(TimeGenerated, *) przez ResourceId
+`ServiceMapProcess_CL | where CommandLine_s contains_cs "sql" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-resource-name"></a>Znajdź maszyny (najnowsze rekordu) według nazwy zasobu
-Szukaj w "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" (ServiceMapComputer_CL) | Podsumowanie arg_max(TimeGenerated, *) przez ResourceId
+`search in (ServiceMapComputer_CL) "m-4b9c93f9-bc37-46df-b43c-899ba829e07b" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="find-a-machine-most-recent-record-by-ip-address"></a>Znajdź maszyny (najnowsze rekordu) przy użyciu adresu IP
-Szukaj w "10.229.243.232" (ServiceMapComputer_CL) | Podsumowanie arg_max(TimeGenerated, *) przez ResourceId
+`search in (ServiceMapComputer_CL) "10.229.243.232" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-known-processes-on-a-specified-machine"></a>Listę wszystkich znanych procesów na określonym komputerze
-ServiceMapProcess_CL | gdzie MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | Podsumowanie arg_max(TimeGenerated, *) przez ResourceId
+`ServiceMapProcess_CL | where MachineResourceName_s == "m-559dbcd8-3130-454d-8d1d-f624e57961bc" | summarize arg_max(TimeGenerated, *) by ResourceId`
 
 ### <a name="list-all-computers-running-sql"></a>Lista wszystkich komputerów z programem SQL
-ServiceMapComputer_CL | gdzie ResourceName_s w ((wyszukiwanie w (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s
+`ServiceMapComputer_CL | where ResourceName_s in ((search in (ServiceMapProcess_CL) "\*sql\*" | distinct MachineResourceName_s)) | distinct ComputerName_s`
 
 ### <a name="list-all-unique-product-versions-of-curl-in-my-datacenter"></a>Wyświetla listę wszystkich wersji produktu unikatowy programu curl w mojego centrum danych
-ServiceMapProcess_CL | gdzie ExecutableName_s == "zawinięcie" | odrębne ProductVersion_s
+`ServiceMapProcess_CL | where ExecutableName_s == "curl" | distinct ProductVersion_s`
 
 ### <a name="create-a-computer-group-of-all-computers-running-centos"></a>Utwórz grupę komputerów wszystkich komputerów z systemem CentOS
-ServiceMapComputer_CL | gdzie contains_cs OperatingSystemFullName_s "CentOS" | odrębne ComputerName_s
+`ServiceMapComputer_CL | where OperatingSystemFullName_s contains_cs "CentOS" | distinct ComputerName_s`
 
 ### <a name="summarize-the-outbound-connections-from-a-group-of-machines"></a>Podsumowanie połączenia wychodzące z grupy maszyn
 ```

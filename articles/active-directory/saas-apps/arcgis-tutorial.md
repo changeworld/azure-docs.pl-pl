@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 12/13/2017
+ms.date: 10/03/2018
 ms.author: jeedes
-ms.openlocfilehash: 24a82bbaf47153791da2f21a0b68c2f81c0670e7
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: 12ab224481c519db36ae21dd11916649ff0bfbe3
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39446360"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269038"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-arcgis-online"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą usługi ArcGIS Online
 
@@ -38,7 +38,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą usługi ArcGIS Online, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Usługa ArcGIS Online logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -50,31 +50,34 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 - Jeśli nie masz środowisko usługi Azure AD w wersji próbnej, możesz to zrobić [miesięczna wersja próbna](https://azure.microsoft.com/pricing/free-trial/).
 
 ## <a name="scenario-description"></a>Opis scenariusza
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
+
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym.
+Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie usługi ArcGIS Online za pomocą galerii
-1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
+2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-arcgis-online-from-the-gallery"></a>Dodawanie usługi ArcGIS Online za pomocą galerii
+
 Aby skonfigurować integrację usługi ArcGIS Online w usłudze Azure AD, należy dodać ArcGIS Online z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać usługi ArcGIS Online z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
-    ![Przycisk usługi Azure Active Directory][1]
+    ![image](./media/arcgis-tutorial/selectazuread.png)
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
+    ![image](./media/arcgis-tutorial/a_select_app.png)
     
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![image](./media/arcgis-tutorial/a_new_app.png)
 
-1. W polu wyszukiwania wpisz **ArcGIS Online**, wybierz opcję **ArcGIS Online** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **ArcGIS Online**, wybierz opcję **ArcGIS Online** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-    ![Usługa ArcGIS Online na liście wyników](./media/arcgis-tutorial/tutorial_arcgisonline_addfromgallery.png)
+     ![image](./media/arcgis-tutorial/a_add_app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
@@ -87,10 +90,10 @@ ArcGIS online, należy przypisać wartość **nazwa_użytkownika** w usłudze Az
 Aby skonfigurować i testowanie usługi Azure AD logowanie jednokrotne za pomocą usługi ArcGIS Online, należy wykonać poniższe bloki konstrukcyjne:
 
 1. **[Konfigurowanie usługi Azure AD logowania jednokrotnego](#configure-azure-ad-single-sign-on)**  — aby umożliwić użytkownikom korzystać z tej funkcji.
-1. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
-1. **[Tworzenie użytkownika testowego usługi ArcGIS Online](#create-a-arcgis-online-test-user)**  — aby odpowiednikiem Britta Simon w ArcGIS Online, które jest połączone z usługi Azure AD reprezentacja użytkownika.
-1. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
-1. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
+2. **[Tworzenie użytkownika testowego usługi Azure AD](#create-an-azure-ad-test-user)**  — do przetestowania usługi Azure AD logowanie jednokrotne za pomocą Britta Simon.
+3. **[Tworzenie usługi ArcGIS Online użytkownika testowego](#create-an-arcgis-online-test-user)**  — aby odpowiednikiem Britta Simon w ArcGIS Online, które jest połączone z usługi Azure AD reprezentacja użytkownika.
+4. **[Przypisywanie użytkownika testowego usługi Azure AD](#assign-the-azure-ad-test-user)**  — Aby włączyć Britta Simon korzystać z usługi Azure AD logowania jednokrotnego.
+5. **[Testowanie logowania jednokrotnego](#test-single-sign-on)**  — Aby sprawdzić, czy konfiguracja działa.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Konfigurowanie usługi Azure AD logowania jednokrotnego
 
@@ -98,53 +101,61 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 **Aby skonfigurować usługę Azure AD logowanie jednokrotne za pomocą usługi ArcGIS Online, wykonaj następujące czynności:**
 
-1. W witrynie Azure portal na **ArcGIS Online** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W [witryny Azure portal](https://portal.azure.com/)na **ArcGIS Online** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![image](./media/arcgis-tutorial/b1_b2_select_sso.png)
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/arcgis-tutorial/tutorial_arcgisonline_samlbase.png)
+2. Kliknij przycisk **pojedynczej zmiany trybu logowania jednokrotnego** na górze ekranu, aby wybrać **SAML** trybu.
 
-1. Na **ArcGIS Online domena i adresy URL** sekcji, wykonaj następujące czynności:
+      ![image](./media/arcgis-tutorial/b1_b2_saml_ssso.png)
 
-    ![Komponent ArcGIS Online domena i adresy URL pojedynczego logowania jednokrotnego informacji](./media/arcgis-tutorial/tutorial_arcgisonline_url.png)
+3. Na **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, kliknij przycisk **wybierz** dla **SAML** trybu, aby włączyć logowanie jednokrotne.
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.maps.arcgis.com`
+    ![image](./media/arcgis-tutorial/b1_b2_saml_sso.png)
 
-    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `<companyname>.maps.arcgis.com`
+4. Na **Ustaw się logowanie jednokrotne z SAML** kliknij **Edytuj** przycisk, aby otworzyć **podstawową konfigurację protokołu SAML** okna dialogowego.
+
+    ![image](./media/arcgis-tutorial/b1-domains_and_urlsedit.png)
+
+5. Na **podstawową konfigurację protokołu SAML** sekcji, wykonaj następujące czynności:
+
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://<companyname>.maps.arcgis.com`.
+
+    b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `<companyname>.maps.arcgis.com`.
+
+    ![image](./media/arcgis-tutorial/b1-domains_and_urls.png)
 
     > [!NOTE] 
-    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej ArcGIS Online klienta](http://support.esri.com/en/) do uzyskania tych wartości. 
- 
+    > Te wartości są prawdziwe. Zaktualizuj te wartości przy użyciu rzeczywistego adresu URL logowania jednokrotnego i identyfikator. Skontaktuj się z pomocą [zespołem pomocy technicznej ArcGIS Online klienta](http://support.esri.com/en/) do uzyskania tych wartości.
 
+6. Na **certyfikat podpisywania SAML** sekcji, kliknij na **Pobierz** można pobrać **XML metadanych Federacji** , a następnie zapisz plik xml na tym komputerze.
 
-1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+    ![image](./media/arcgis-tutorial/federationxml.png)
 
-    ![Link pobierania certyfikatu](./media/arcgis-tutorial/tutorial_arcgisonline_certificate.png) 
+7. Aby zautomatyzować konfigurację w ramach **ArcGIS Online**, musisz zainstalować **Moje zabezpieczenia aplikacji logowania rozszerzenia przeglądarki do obsługi** , klikając **zainstalować rozszerzenie**.
 
-1. Kliknij przycisk **Zapisz** przycisku.
+    ![image](./media/arcgis-tutorial/install_extension.png)
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/arcgis-tutorial/tutorial_general_400.png)
+8. Po dodaniu rozszerzenia do przeglądarki, kliknij pozycję **Instalatora usługa ArcGIS Online** nastąpi bezpośrednie przekierowanie do aplikacji usługa ArcGIS Online. W tym miejscu podaj poświadczenia administratora do logowania się do usługi ArcGIS Online. Rozszerzenie przeglądarki automatycznie skonfiguruje aplikację i automatyzowania czynności 9 – 13.
 
-1. W oknie przeglądarki internetowej innej Zaloguj się do witryny firmy ArcGIS, jako administrator.
+9. Jeśli chcesz ręcznie skonfigurować usługi ArcGIS Online, Otwórz nowe okno przeglądarki sieci web i zaloguj się do witryny firmy ArcGIS jako administrator i wykonaj następujące czynności:
 
-1. Kliknij przycisk **edytowanie ustawień**.
+10. Kliknij przycisk **edytowanie ustawień**.
 
     ![Edytuj ustawienia](./media/arcgis-tutorial/ic784742.png "Edytuj ustawienia")
 
-1. Kliknij przycisk **zabezpieczeń**.
+11. Kliknij przycisk **zabezpieczeń**.
 
     ![Zabezpieczenia](./media/arcgis-tutorial/ic784743.png "zabezpieczeń")
 
-1. W obszarze **logowania Enterprise**, kliknij przycisk **dostawcy tożsamości zestawu**.
+12. W obszarze **logowania Enterprise**, kliknij przycisk **dostawcy tożsamości zestawu**.
 
     ![Nazwy logowania organizacji](./media/arcgis-tutorial/ic784744.png "logowania organizacji")
 
-1. Na **zestawu dostawcy tożsamości** konfiguracji strony, wykonaj następujące czynności:
-   
+13. Na **zestawu dostawcy tożsamości** konfiguracji strony, wykonaj następujące czynności:
+
     ![Ustawienie dostawcy tożsamości](./media/arcgis-tutorial/ic784745.png "ustawienie dostawcy tożsamości")
-   
+
     a. W **nazwa** polu tekstowym wpisz nazwę swojej organizacji.
 
     b. Dla **metadanych dla dostawcy tożsamości organizacji zostaną udostępnione za pomocą**, wybierz opcję **pliku**.
@@ -153,43 +164,32 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     d. Kliknij przycisk **dostawcy tożsamości zestawu**.
 
-> [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
 Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![image](./media/arcgis-tutorial/d_users_and_groups.png)
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+2. Wybierz **nowego użytkownika** w górnej części ekranu.
 
-    ![Przycisk usługi Azure Active Directory](./media/arcgis-tutorial/create_aaduser_01.png)
+    ![image](./media/arcgis-tutorial/d_adduser.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+3. We właściwościach użytkownika wykonaj następujące czynności.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/arcgis-tutorial/create_aaduser_02.png)
+    ![image](./media/arcgis-tutorial/d_userproperties.png)
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+    a. W **nazwa** pola wprowadź **BrittaSimon**.
+  
+    b. W **nazwa_użytkownika** typ pola **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    ![Przycisk Dodaj](./media/arcgis-tutorial/create_aaduser_03.png)
+    c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.
 
-1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
+    d. Wybierz pozycję **Utwórz**.
 
-    ![Okno dialogowe użytkownika](./media/arcgis-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
-
-    d. Kliknij pozycję **Utwórz**.
- 
-### <a name="create-a-arcgis-online-test-user"></a>Tworzenie usługi ArcGIS Online użytkownika testowego
+### <a name="create-an-arcgis-online-test-user"></a>Tworzenie usługi ArcGIS Online użytkownika testowego
 
 Aby umożliwić użytkownikom usługi Azure AD zalogować się do usługi ArcGIS Online, musi być obsługiwana w ArcGIS Online.  
 W przypadku usługi ArcGIS Online aprowizacji to zadanie ręczne.
@@ -198,22 +198,22 @@ W przypadku usługi ArcGIS Online aprowizacji to zadanie ręczne.
 
 1. Zaloguj się do Twojej **ArcGIS** dzierżawy.
 
-1. Kliknij przycisk **ZAPROŚ członków**.
+2. Kliknij przycisk **ZAPROŚ członków**.
    
     ![Zaproś członków](./media/arcgis-tutorial/ic784747.png "zapraszać członków")
 
-1. Wybierz **dodawać członków automatycznie bez wysyłania wiadomości e-mail**, a następnie kliknij przycisk **dalej**.
+3. Wybierz **dodawać członków automatycznie bez wysyłania wiadomości e-mail**, a następnie kliknij przycisk **dalej**.
    
     ![Dodaj członków automatycznie](./media/arcgis-tutorial/ic784748.png "automatyczne dodawanie członków")
 
-1. Na **członków** okna dialogowego strony, wykonaj następujące czynności:
+4. Na **członków** okna dialogowego strony, wykonaj następujące czynności:
    
      ![Dodaj i sprawdź](./media/arcgis-tutorial/ic784749.png "Dodaj i przeglądu")
     
      a. Wprowadź **E-mail**, **imię**, i **nazwisko** poprawnego konta usługi AAD do aprowizowania.
   
      b. Kliknij przycisk **Dodaj i przegląd**.
-1. Przejrzyj dane zostały wprowadzone, a następnie kliknij przycisk **dodawanie członków**.
+5. Przejrzyj dane zostały wprowadzone, a następnie kliknij przycisk **dodawanie członków**.
    
     ![Dodawanie elementu członkowskiego](./media/arcgis-tutorial/ic784750.png "Dodawanie elementu członkowskiego")
         
@@ -224,55 +224,37 @@ W przypadku usługi ArcGIS Online aprowizacji to zadanie ręczne.
 
 W tej sekcji możesz włączyć Britta Simon do używania platformy Azure logowanie jednokrotne za udzielanie dostępu do usługi ArcGIS Online.
 
-![Przypisanie roli użytkownika][200] 
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**.
 
-**Aby przypisać Britta Simon ArcGIS Online, wykonaj następujące czynności:**
+    ![image](./media/arcgis-tutorial/d_all_applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wybierz **ArcGIS Online**.
 
-    ![Przypisz użytkownika][201] 
+    ![image](./media/arcgis-tutorial/d_all_application.png)
 
-1. Na liście aplikacji wybierz **ArcGIS Online**.
+3. W menu po lewej stronie wybierz **użytkowników i grup**.
 
-    ![Usługa ArcGIS Online łącze na liście aplikacji](./media/arcgis-tutorial/tutorial_arcgisonline_app.png)  
+    ![image](./media/arcgis-tutorial/d_leftpaneusers.png)
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+4. Wybierz **Dodaj** przycisk, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![image](./media/arcgis-tutorial/d_assign_user.png)
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. W **użytkowników i grup** okna dialogowego wybierz **Britta Simon** na liście użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
 
-    ![Okienko Dodawanie przypisania][203]
+5. W **Dodaj przydziału** okna dialogowego wybierz **przypisać** przycisku.
 
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
-
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
-
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
-    
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
 W tej sekcji służy do testowania konfiguracji usługi Azure AD pojedynczego logowania jednokrotnego przy użyciu panelu dostępu.
 
 Po kliknięciu kafelka usługa ArcGIS Online, w panelu dostępu, możesz należy pobrać automatycznie zalogowanych do aplikacji usługa ArcGIS Online.
-Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md). 
+Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie do panelu dostępu](../user-help/active-directory-saas-access-panel-introduction.md).
 
 ## <a name="additional-resources"></a>Zasoby dodatkowe
 
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-<!--Image references-->
 
-[1]: ./media/arcgis-tutorial/tutorial_general_01.png
-[2]: ./media/arcgis-tutorial/tutorial_general_02.png
-[3]: ./media/arcgis-tutorial/tutorial_general_03.png
-[4]: ./media/arcgis-tutorial/tutorial_general_04.png
-
-[100]: ./media/arcgis-tutorial/tutorial_general_100.png
-
-[200]: ./media/arcgis-tutorial/tutorial_general_200.png
-[201]: ./media/arcgis-tutorial/tutorial_general_201.png
-[202]: ./media/arcgis-tutorial/tutorial_general_202.png
-[203]: ./media/arcgis-tutorial/tutorial_general_203.png
 

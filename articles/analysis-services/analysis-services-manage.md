@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.date: 07/03/2018
 ms.author: owend
 ms.reviewer: minewiskan
-ms.openlocfilehash: fa5eeaad6ec98bb7ce725e1bf4c977cb2d5398a6
-ms.sourcegitcommit: 86cb3855e1368e5a74f21fdd71684c78a1f907ac
+ms.openlocfilehash: 52dd9d0ab5a22b702ad7d55d91b860d57e81f607
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/03/2018
-ms.locfileid: "37448615"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267770"
 ---
 # <a name="manage-analysis-services"></a>Zarządzanie usług Analysis Services
 Po utworzeniu serwera usług Analysis Services na platformie Azure, może to być niektóre administrowanie i zarządzanie zadania, które należy wykonać w dół po drodze następnie od razu lub później. Na przykład uruchomić przetwarzania odświeżania danych, kontrolowania, kto może uzyskiwać dostęp do modeli na serwerze lub monitorowanie kondycji serwera. Niektóre zadania zarządzania, można wykonać tylko w witrynie Azure portal, inne osoby w SQL Server Management Studio (SSMS), a niektóre zadania może odbywać się w jednym.
@@ -46,7 +46,7 @@ Aby uzyskać najnowsze funkcje i daje płynne doświadczenia podczas nawiązywan
     > Typ uwierzytelniania, **usługi Active Directory — uniwersalnego z obsługą uwierzytelniania Wieloskładnikowego**, jest zalecane.
 
     > [!NOTE]
-    > Jeśli zalogujesz Account Microsoft Live ID, Yanoo, Gmail, itp., pozostaw puste pole hasła. Zostanie wyświetlony monit o podanie hasła po kliknięciu przycisku Połącz.
+    > Jeśli zalogujesz Account Microsoft Live ID, Yahoo, Gmail, itp., pozostaw puste pole hasła. Zostanie wyświetlony monit o podanie hasła po kliknięciu przycisku Połącz.
 
     **Uwierzytelnianie Windows** poświadczenia Windows domena\nazwa_użytkownika i hasło.
 

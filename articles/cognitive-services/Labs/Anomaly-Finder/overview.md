@@ -1,6 +1,6 @@
 ---
-title: Co to jest anomalii wyszukiwania? -Microsoft kognitywnych usług | Dokumentacja firmy Microsoft
-description: Umożliwia zaawansowane algorytmy w wyszukiwarce anomalii zidentyfikować anomalii w czasie serii danych i zwracają informacje w kognitywnych usług firmy Microsoft.
+title: Czym jest narzędzie do wyszukiwania anomalii? — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
+description: Użyj zaawansowanych algorytmów w narzędzie do wyszukiwania anomalii, aby identyfikować anomalie w danych szeregów czasowych i zwracają informacje w usługach Microsoft Cognitive Services.
 services: cognitive-services
 author: tonyxing
 ms.service: cognitive-services
@@ -8,59 +8,61 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 04/19/2018
 ms.author: tonyxing
-ms.openlocfilehash: 1080bb0ad1d901a8b9a5ace4993d4e0d46924a03
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: 2a0715d3becf695600ed84edbae38151acf055a8
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348180"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246846"
 ---
-# <a name="what-is-anomaly-finder"></a>Co to jest anomalii wyszukiwania?
+# <a name="what-is-anomaly-finder"></a>Czym jest narzędzie do wyszukiwania anomalii?
 
-Wyszukiwanie anomalii pozwala na monitorowanie danych wraz z upływem czasu i wykrywanie anomalii z uczenia maszynowego, która dostosowuje się do danych unikatowy automatycznie stosując prawo statystyczne modelu niezależnie od branży, scenariusz lub danych woluminu. Przy użyciu szeregów czasowych jako dane wejściowe, zwraca anomalii wyszukiwania z interfejsu API czy punktu danych jest anomalii określa oczekiwaną wartością i górne i dolne granice dla wizualizacji. Jako wbudowane usługi AI anomalii wyszukiwania nie wymaga żadnej maszyny uczenia doświadczenia poza zrozumieć, jak użyć interfejsu API RESTful. Dzięki temu programowanie proste i elastyczne od współpracuje z żadnych danych serii czasu, a także można wbudować do przesyłania strumieniowego systemów. Wyszukiwanie anomalii obejmuje szeroki zakres przypadki użycia — na przykład finansowe narzędzia do zarządzania oszustwa, kradzież, zmiana rynków i potencjalne zdarzenia biznesowe lub monitorowania ruchu urządzenia IoT przy zachowaniu anonimowość. To rozwiązanie może być również monetized jako część usługi dla klientów końcowych dowiedzieć się zmiany danych wydatków, zwrot z inwestycji lub aktywności użytkownika.
-Wypróbowanie API Finder anomalii i lepiej zrozumieć dane. 
+[!INCLUDE [PrivatePreviewNote](../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
-Zobacz, jakie można tworzyć za pomocą tego interfejsu API:
+Narzędzie do wyszukiwania anomalii pozwala na monitorowanie danych wraz z upływem czasu i wykrywanie anomalii w usłudze machine learning, która dostosowuje się do unikatowe dane, automatycznie stosując bezpośrednio statystyczne modelu niezależnie od branży, scenariusz lub ilości danych. Jako dane wejściowe, używając szeregu czasowego, zwraca interfejs API wyszukiwania anomalii punktu danych jest anomalii, czy też nie określa oczekiwaną wartość i górne i dolne granice dla wizualizacji. Jako wstępnie utworzone usługi sztucznej Inteligencji narzędzie do wyszukiwania anomalii nie wymaga Dowolna maszyna z uczenia doświadczenie poza zrozumienia sposobu używania interfejsu API RESTful. Ułatwia to projektowanie proste i wszechstronne ponieważ współpracuje z dowolnym danych szeregów czasowych i mogą również być wbudowane w danych przesyłanych strumieniowo systemów. Narzędzie do wyszukiwania anomalii obejmują szeroki zakres zastosowań — na przykład financial narzędzia do zarządzanie oszustwa, kradzież, zmiana rynków i potencjalne zdarzenia biznesowe lub monitorowanie ruchu urządzenia IoT, przy jednoczesnym zachowaniu anonimowości. To rozwiązanie może również sprzedawane w jako część usługi dla klientów końcowych zrozumieć zmiany danych, wydatki, zwrot z inwestycji lub aktywności użytkownika.
+Wypróbuj interfejs API wyszukiwania anomalii i lepiej zrozumieć dane. 
 
-* Dowiedz się do prognozowania na podstawie danych historycznych w szeregu czasowym oczekiwanych wartości
-* Sprawdzić, czy punkt danych jest anomalii poza historycznych wzorca
-* Generowanie poza pasmem w celu wizualizacji zakresem wartości "normal"
+Zobacz, co można skompilować przy użyciu tego interfejsu API:
+
+* Dowiedz się, jak przewidzieć oczekiwanych wartości, na podstawie danych historycznych w szeregach czasowych
+* Sprawdzić, czy punkt danych jest anomalii poza wzorzec historycznych
+* Generuj obiekt band wizualizacji zakresem wartości "normal"
 
 ![Anomaly_Finder](./media/anomaly_detection1.png) 
 
-Rysunek 1: Wykrycia anomalii w sprzedaży przychodów
+Rysunek 1: Wykrycia anomalii w sprzedaży, przychodów
 
 ![Anomaly_Finder](./media/anomaly_detection2.png)
 
-Rysunek 2: Wykryj zmiany wzorca w żądania obsługi
+Rysunek 2: Wykrywanie zmian wzorców w żądania obsługi
 
 ## <a name="requirements"></a>Wymagania
 
-- Serie czasu minimalną ilość danych na dane wejściowe: co najmniej 13 danych punkty dla szeregów czasowych bez wyczyść okresowości, co najmniej 4 cykle danych wskazuje szeregu czasowego z znane okresowości. 
-- Integralność danych: czas serii punktów danych są rozdzielone samego interwału i nie brakuje punktów. 
+- Minimalną ilość danych na dane wejściowe czas serii: co najmniej 13 danych punkty dla szeregów czasowych bez wyczyść okresowości, co najmniej 4 cykle danych punkty dla szeregów czasowych za pomocą znanych okresowości. 
+- Integralność danych: czas serii punktów danych są oddzielone w tym samym interwale i nie brakujących punktów. 
 
-## <a name="identify-anomalies"></a>Zidentyfikuj anomalii
+## <a name="identify-anomalies"></a>Identyfikować anomalie
 
-Zwraca wynik czy punktów podane dane są anomalii lub nie wykrywania anomalii interfejsu API i dodatkowe informacje znajdują się w następujący sposób
-* Okres — okresowości, który interfejsu API używany do wykrywania anomalii punktów.
+Interfejs API wykrywania anomalii zwraca wynik, czy wszystkie punkty danych są anomalie, czy nie, a także dodatkowe informacje znajdują się w następujący sposób
+* Okres — wskazuje okresowości, używany przez interfejs API wykrywania anomalii.
 * WarningText — możliwe ostrzeżenia.
-* ExpectedValue - wartością prognozowaną przez naukę na podstawie modelu
-* IsAnomaly - wyników na to, czy punkty danych są anomalii lub nie
-* IsAnomaly_Neg - wyników na to, czy punkty danych są anomalii w kierunku ujemną (DIP)
-* IsAnomaly_Pos - wyników na to, czy punkty danych są anomalii w kierunku dodatnią (nagłego)
-* UpperMargin — Suma ExpectedValue i UpperMargin określa górną granicę punktu danych jest nadal traktować jako standardowa
-* LowerMargin - (ExpectedValue - LowerMargin) określa dolnej granicy, że punktu danych jest nadal traktować jako standardowa
+* ExpectedValue — wartością prognozowaną ucząc model oparty na protokole
+* IsAnomaly — wynik dla tego, czy punkty danych są anomalie, czy nie
+* IsAnomaly_Neg — wynik dla tego, czy punkty danych są anomalie w kierunku ujemna (spadku)
+* IsAnomaly_Pos — wynik dla tego, czy punkty danych są anomalie w kierunku dodatnią (wzrostów)
+* UpperMargin — Suma ExpectedValue i UpperMargin okaże się, że górna granica, która punktu danych jest nadal traktować w zwykły sposób
+* LowerMargin - (ExpectedValue - LowerMargin) określa dolna granica, że punkt danych nadal jest uznawane za w zwykły sposób
 
 > [!Note]
-> UpperMargin i LowerMargin może służyć do generowania pasmem wokół szeregów czasowych rzeczywiste do wizualizacji normalnej wartości z zakresu. 
+> UpperMargin i LowerMargin może służyć do generowania poza pasmem w całym rzeczywisty czas serii, aby wizualizować zakres wartości Normalny. 
 
-## <a name="adjusting-lower-and-upper-bounds-in-post-processing-on-the-response"></a>Dopasowywanie dolną i górną granicę w post przetwarzania w odpowiedzi
+## <a name="adjusting-lower-and-upper-bounds-in-post-processing-on-the-response"></a>Dostosowywanie dolną i górną granicę w wpis przetwarzania na odpowiedź
 
-Wykrywania anomalii w usłudze API zwraca wynik domyślny czy punktu danych jest anomalii lub nie, a górną i dolną granicą może zostać obliczona z ExpectedValue i UpperMargin/LowerMargin. Te wartości domyślne powinny działać świetnie w większości przypadków. Jednak w niektórych scenariuszach wymagane granice innego niż domyślne. Rozwiązanie zalecane jest stosowania coefficiency na UpperMargin lub LowerMargin dopasować granice dynamicznej.
+Interfejs API wykrywania anomalii zwróci wynik domyślny czy punktu danych jest anomalii, czy nie, a górną i dolną granicę, można obliczyć z ExpectedValue i UpperMargin/LowerMargin. Te wartości domyślne powinny działać prawidłowo w większości przypadków. Jednak niektóre scenariusze wymagają granice innego niż domyślne. Rozwiązanie zaleca się są stosowane coefficiency na UpperMargin lub LowerMargin dopasować granice dynamicznych.
 
 ### <a name="examples-with-1152-as-coefficiency"></a>Przykłady z 1/1.5/2 jako coefficiency
 
-![Czułość domyślne](./media/sensitivity_1.png)
+![Domyślna ważność](./media/sensitivity_1.png)
 
 ![1.5 czułość](./media/sensitivity_1.5.png)
 

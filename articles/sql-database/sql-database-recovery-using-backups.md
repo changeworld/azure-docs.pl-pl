@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/01/2018
-ms.openlocfilehash: 31a423714154537cfc8d801b972869035aa61035
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: bdd3f5c5304cec0a562945ffaf412771e15b6031
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042210"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248265"
 ---
 # <a name="recover-an-azure-sql-database-using-automated-database-backups"></a>Odzyskiwanie bazy danych Azure SQL za pomocą bazy danych automatycznych kopii zapasowych
 Domyślnie kopie zapasowe bazy danych SQL są przechowywane w georeplikowanym magazynie obiektów blob (RA-GRS). Poniższe opcje są dostępne dla bazy danych odzyskiwania przy użyciu [automatyczne kopie zapasowe bazy danych](sql-database-automated-backups.md):
@@ -92,6 +92,9 @@ Aby odzyskać do punktu w czasie za pomocą witryny Azure portal, otwórz stron�
 ## <a name="deleted-database-restore"></a>Przywracanie usuniętej bazy danych
 Można przywrócić usuniętą bazę danych do czasu usunięcia dla usuniętej bazy danych na tym samym serwerze logicznym przy użyciu portalu Azure [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase), lub [REST (createMode = przywracanie)](https://msdn.microsoft.com/library/azure/mt163685.aspx). Można przywrócić usuniętą bazę danych do wcześniejszego punktu w czasie przechowywania, używając [PowerShell](https://docs.microsoft.com/powershell/module/azurerm.sql/restore-azurermsqldatabase).
 
+> [!Note]
+> Przywracanie usuniętej bazy danych nie jest dostępny w wystąpieniu zarządzanym.
+
 > [!TIP]
 > Aby uzyskać przykładowy skrypt programu PowerShell przedstawiająca sposób przywrócić usuniętą bazę danych, zobacz [przywrócić bazę danych SQL przy użyciu programu PowerShell](scripts/sql-database-restore-database-powershell.md).
 >
@@ -111,6 +114,9 @@ Aby odzyskać usuniętą bazę danych podczas jego [okres przechowywania modelu 
 
 ## <a name="geo-restore"></a>Przywracanie geograficzne
 Możesz przywrócić bazę danych SQL na dowolnym serwerze w dowolnym regionie systemu Azure z ostatnich replikowanej geograficznie pełnych i różnicowych kopii zapasowych. Przywracanie geograficzne korzysta z geograficznie nadmiarowej kopii zapasowej jako źródła i może służyć do odzyskiwania bazy danych, nawet jeśli bazy danych lub centrum danych jest niedostępna z powodu awarii. 
+
+> [!Note]
+> Przywracanie geograficzne nie jest dostępny w wystąpieniu zarządzanym.
 
 Funkcja przywracania geograficznego jest domyślną opcję odzyskiwania, gdy baza danych jest niedostępna z powodu zdarzenia w regionie, w którym hostowana jest baza danych. Jeśli na dużą skalę zdarzenia w regionie skutkuje brakiem dostępu aplikacji bazy danych, można przywrócić bazę danych z replikacją geograficzną kopii zapasowych na serwerze w każdym innym regionie. Występuje opóźnienie między po różnicowej kopii zapasowej i jego replikacją geograficzną na platformie Azure blob w innym regionie. To opóźnienie może trwać do godziny, więc w przypadku poważnej awarii, może wystąpić do utraty danych jedną godzinę. Poniższa ilustracja przedstawia przywracania bazy danych z ostatnią dostępną kopią zapasową w innym regionie.
 

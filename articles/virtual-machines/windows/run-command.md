@@ -5,15 +5,15 @@ services: automation
 ms.service: automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 06/06/2018
+ms.date: 10/02/2018
 ms.topic: article
 manager: carmonm
-ms.openlocfilehash: 60cdcbeba0c4149d8f049bbab553bd658c965338
-ms.sourcegitcommit: 2ad510772e28f5eddd15ba265746c368356244ae
+ms.openlocfilehash: 322b21ae2273b949e9a46e0c47a9f9e4d661603e
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/28/2018
-ms.locfileid: "43128599"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267957"
 ---
 # <a name="run-powershell-scripts-in-your-windows-vm-with-run-command"></a>Uruchamiaj skrypty programu PowerShell na maszynie wirtualnej Windows za pomocą polecenia Uruchom
 
@@ -21,7 +21,7 @@ Uruchom polecenie używa agenta maszyny Wirtualnej, aby uruchomić skrypty progr
 
 ## <a name="benefits"></a>Korzyści
 
-Istnieje wiele opcji, które mogą służyć do dostępu do maszyn wirtualnych. Uruchom polecenie można uruchamiać skrypty na maszynach wirtualnych zdalnie przy użyciu agenta maszyny Wirtualnej. Uruchom polecenia mogą być używane w witrynie Azure portal, [interfejsu API REST](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), [wiersza polecenia platformy Azure](/cli/azure/vm/run-command?view=azure-cli-latest#az-vm-run-command-invoke), lub [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand).
+Istnieje wiele opcji, które mogą służyć do dostępu do maszyn wirtualnych. Uruchom polecenie można uruchamiać skrypty na maszynach wirtualnych zdalnie przy użyciu agenta maszyny Wirtualnej. Uruchom polecenia mogą być używane w witrynie Azure portal, [interfejsu API REST](/rest/api/compute/virtual%20machines%20run%20commands/runcommand), lub [PowerShell](/powershell/module/azurerm.compute/invoke-azurermvmruncommand) dla maszyn wirtualnych Windows.
 
 Ta możliwość jest przydatna we wszystkich scenariuszach, gdzie chcesz uruchomić skrypt w ramach maszyn wirtualnych i jest jednym ze sposobów tylko rozwiązywanie i korygowanie maszynę wirtualną, która nie ma protokołu RDP lub otworzyć SSH port, z powodu nieprawidłowej sieci lub użytkownik administracyjny Konfiguracja.
 
@@ -33,6 +33,7 @@ Korzystając z polecenia Uruchom obowiązują następujące ograniczenia:
 * Minimalny czas do uruchomienia skryptu to około 20 sekund
 * Skrypty uruchamiane jako System na Windows
 * Jeden skrypt w danym momencie może być uruchamiany
+* Skrypty, monit o podanie informacji (tryb interakcyjny), które nie są obsługiwane.
 * Nie można anulować uruchamianie skryptu
 * Maksymalny czas, który można uruchomić skryptu wynosi 90 minut, po których przekroczy limit czasu
 * Łączność wychodząca z maszyny Wirtualnej jest wymagana do zwracania wyników skryptu.

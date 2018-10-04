@@ -13,15 +13,15 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: identity
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: celested
 ms.reviewer: jlu, annaba, hirsin
-ms.openlocfilehash: 59856418adde1ea29a0513a1ca7c0c60531768d8
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 3e4b4e904fd4615458e8d873baa1bf30588fe81d
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036545"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249438"
 ---
 # <a name="how-to-migrate-from-the-azure-access-control-service"></a>Instrukcje: Migrowanie z usługi Azure Access Control service
 
@@ -117,6 +117,9 @@ Oto harmonogram wycofano składniki kontroli dostępu:
 - **2 kwietnia 2018 r.**: klasyczny portal Azure całkowicie został wycofany, co oznacza, zarządzanie przestrzenią nazw kontroli dostępu nie jest już dostępna za pośrednictwem dowolnego adresu URL. W tym momencie nie można wyłączyć lub włączyć, usuń lub wyliczanie przestrzeniami nazw usługi Access Control. Jednak, w portalu zarządzania kontroli dostępu jest w pełni funkcjonalne i znajduje się w `https://\<namespace\>.accesscontrol.windows.net`. Wszystkie inne składniki kontroli dostępu w dalszym ciągu działać normalnie.
 - **7 listopada 2018**: kontrola dostępu do wszystkich składników stałe są zamykane. W tym portalu zarządzania kontroli dostępu, Usługa zarządzania, usługi STS i aparat reguł przekształcania tokenu. W tym momencie wszelkie żądania wysyłane do kontroli dostępu (znajdujący się w \<przestrzeni nazw\>. accesscontrol.windows.net) się nie powieść. Użytkownik powinien zostały zmigrowane wszystkie istniejące aplikacje i usługi do innych technologii również przed upływem wskazanego terminu.
 
+> [!NOTE]
+> Zasada wyłącza przestrzenie nazw, które nie żądanego tokenu w okresie czasu. Począwszy od września 2018 r. ten okres jest obecnie w ciągu 14 dni braku aktywności, ale to zostanie skrócona do 7 dni nieaktywności w najbliższych tygodniach. Jeśli masz przestrzeni nazw kontroli dostępu, które są obecnie wyłączone, możesz to zrobić [pobrać i zainstalować program ACS PowerShell](#download-and-install-acs-powershell) ponowne włączenie namespace (s).
+
 ## <a name="migration-strategies"></a>Strategie migracji
 
 W poniższych sekcjach opisano ogólne zalecenia dotyczące migrowania z kontroli dostępu do innych technologii firmy Microsoft.
@@ -195,7 +198,7 @@ Na wysokim poziomie *usługi Azure Active Directory jest prawdopodobnie jest naj
 | Facebook, Google, Yahoo kont | Obsługiwane | Nieobsługiwane jakiejkolwiek |
 | **Protokoły i zgodność z zestawu SDK** | | |
 | WIF | Obsługiwane | Obsługiwane, ale ograniczone instrukcje są dostępne |
-| WS-Federation. | Obsługiwane | Obsługiwane |
+| WS-Federation | Obsługiwane | Obsługiwane |
 | OAuth 2.0 | Obsługa wersji roboczej 13 | Obsługa 6749 RFC, większości współczesnych specyfikacji |
 | WS-Trust | Obsługiwane | Nieobsługiwane |
 | **Format tokenu** | | |
@@ -246,7 +249,7 @@ W poniższej tabeli porównano funkcje kontroli dostępu, które mają zastosowa
 | Facebook, Google, Yahoo kont | Obsługiwane | Facebook i Google obsługiwane natywnie, Yahoo obsługiwanych za pośrednictwem OpenID Connect federation za pomocą zasad niestandardowych |
 | **Protokoły i zgodność z zestawu SDK** | | |
 | Windows Identity Foundation (WIF) | Obsługiwane | Nieobsługiwane |
-| WS-Federation. | Obsługiwane | Nieobsługiwane |
+| WS-Federation | Obsługiwane | Nieobsługiwane |
 | OAuth 2.0 | Obsługa wersji roboczej 13 | Obsługa 6749 RFC, większości współczesnych specyfikacji |
 | WS-Trust | Obsługiwane | Nieobsługiwane |
 | **Format tokenu** | | |
@@ -347,6 +350,10 @@ W takich przypadkach należy rozważyć, migrowanie aplikacji sieci web w taki s
 | ![Ping](./media/active-directory-acs-migration/rsz_ping.png) | [Ping Identity](https://www.pingidentity.com) oferuje dwie podobne do usług ACS. PingOne jest usługa tożsamości w chmurze obsługuje wiele same funkcje co usługa ACS i serwera PingFederate to podobne produkt tożsamości lokalnych, który zapewnia większą elastyczność. Zapoznaj się [wskazówek dotyczących emerytury ACS firmy Ping](https://www.pingidentity.com/en/company/blog/2017/11/20/migrating_from_microsoft_acs_to_ping_identity.html) Aby uzyskać więcej informacji na temat korzystania z tych produktów. |
 
 Naszym celem w pracy firmy Ping Identity i Auth0 jest upewnij się, że wszyscy klienci kontrola dostępu do ścieżki migracji dla swoich aplikacji i usług, które minimalizuje nakład pracy wymagany do przenoszenia z kontroli dostępu.
+
+#### <a name="passthrough-authentication"></a>Uwierzytelnianie przekazujących
+
+Przekazywanie do uwierzytelniania przy użyciu dowolnego przekształcenia tokenu jest nie równoważne technologii firmy Microsoft w usłudze ACS. Jeśli to potrzebnych klientom, Auth0 może być osobą, która zapewnia najbliższego rozwiązanie zbliżenia.
 
 ## <a name="questions-concerns-and-feedback"></a>Pytania, uwagi i opinie
 

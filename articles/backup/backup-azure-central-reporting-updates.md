@@ -1,6 +1,6 @@
 ---
-title: Aktualizowanie usługi Azure Backup centralnej raportowania pakietu zawartości
-description: Informacje o aktualizacjach pakietem zawartości usługi Azure Backup w usłudze Power BI
+title: Aktualizacja usługi Azure Backup centralnej raportowania pakietu zawartości
+description: Informacje o aktualizacjach zawartości usługi Kopia zapasowa Azure pack w usłudze Power BI
 services: backup
 documentationcenter: ''
 author: adigan
@@ -14,31 +14,31 @@ ms.devlang: na
 ms.topic: article
 ms.date: 07/24/2018
 ms.author: adigan;
-ms.openlocfilehash: 07774234849d96b9a44678b68ca7b13b6b4830f9
-ms.sourcegitcommit: a5eb246d79a462519775a9705ebf562f0444e4ec
+ms.openlocfilehash: 73a5e8126ebe6223d790a5b58db7bd5d04b5350f
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/26/2018
-ms.locfileid: "39265820"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267318"
 ---
-# <a name="updating-azure-backup-central-reporting-content-pack"></a>Aktualizowanie usługi Azure Backup centralnej raportowania pakietu zawartości 
+# <a name="update-the-azure-backup-central-reporting-content-pack"></a>Aktualizacja usługi Azure Backup centralnej raportowania pakietu zawartości 
 
-[Usługa Azure Backup pakietu zawartości](https://docs.microsoft.com/azure/backup/backup-azure-configure-reports#view-reports-in-power-bi) może służyć do centralnie wyświetlić raporty dotyczące kopii zapasowych. Pakiet zawartości jest regularnie aktualizowana, aby dodać więcej funkcji i rozwiązuje usterki. W tym artykule poprowadzi Cię przez kroki, aby zaktualizować pakiet zawartości, opóźnienia, aktualizacji i aktualizacje, które zostały wprowadzone wraz z upływem czasu.
+[Pakietu zawartości usługi Azure Backup](https://docs.microsoft.com/azure/backup/backup-azure-configure-reports#view-reports-in-power-bi) można wyświetlać raporty dotyczące funkcji Kopia zapasowa centralnej. Pakiet zawartości jest regularnie aktualizowana można dodać więcej funkcji i naprawiaj usterki. W tym artykule wyjaśniono, jak zaktualizować pakiet zawartości. On również informacje o sposobie odroczenie aktualizacji i sprawdzić aktualizacje wprowadzone wraz z upływem czasu.
 
-## <a name="how-to-get-updates-to-the-content-pack"></a>Jak uzyskać aktualizacje z pakietem zawartości
+## <a name="get-updates-to-the-content-pack"></a>Otrzymuj aktualizacje z pakietem zawartości
 
-### <a name="to-get-the-updated-content-pack"></a>Aby uzyskać zaktualizowany pakiet zawartości
-Swoją kopię pakietu zawartości zostaną zaktualizowani automatycznie, jeśli nie zostały wprowadzone zmiany do niego. W przypadku, gdy pakiet zawartości został zmieniony, otrzymasz powiadomienie w usłudze Power Bi i wiadomość e-mail z powiadomieniem o takie same. Można pobrać zaktualizowany pakiet zawartości zgodnie z Twojej wygody. 
+### <a name="get-the-updated-content-pack"></a>Pobierz zaktualizowany pakiet zawartości
+Swoją kopię pakietu zawartości nie zostały wprowadzone żadne zmiany, aktualizuje automatycznie. Po zmianie pakietu zawartości, otrzymasz powiadomienie w usłudze Power BI i wiadomość e-mail z powiadomieniem. Można wybrać pobrać zaktualizowany pakiet zawartości w Twojej wygody. 
 
-### <a name="to-delay-the-update"></a>Aby opóźnić aktualizacji
-Najlepszym rozwiązaniem jest zaimportowanie pakietu zawartości do [niestandardowego obszaru roboczego](https://youtu.be/26zyOtyHPJM?t=1m57s). Masz teraz możliwość edytowania raportów.
-Jak wspomniano powyżej, jeśli pakiet zawartości zostanie zmienione, zostanie wyświetlone powiadomienie w usłudze Power BI. Można później pobrać pakiet zawartości. 
+### <a name="postpone-the-update"></a>Odroczenie aktualizacji
+Najlepszym rozwiązaniem jest zaimportowanie pakietu zawartości do [niestandardowego obszaru roboczego](https://youtu.be/26zyOtyHPJM?t=1m57s). Raporty można teraz edytować.
+Jak wspomniano wcześniej Jeśli zmieni pakiet zawartości, zostanie wyświetlone powiadomienie w usłudze Power BI. Można później pobrać pakiet zawartości. 
 
 ## <a name="coming-soon"></a>Wkrótce
    
-Usługa Azure Backup pakiet zawartości jest aktualizowana do obsługi obciążeń więcej jako bazy danych SQL w usłudze Kopia zapasowa maszyn wirtualnych IaaS i SC programu DPM, oprócz bieżącej obsługi MAB i kopii zapasowych maszyn wirtualnych platformy Azure. Oznacza to, że wkrótce będzie mogła wyświetlać i analizować dane wszystkie dane kopii zapasowej w jednej centralnej lokalizacji. [Raportów można także dostosowywać](https://youtu.be/26zyOtyHPJM) odpowiednio do potrzeb swojej organizacji.
+Pakiet zawartości usługi Azure Backup jest zaktualizowana do obsługi obciążeń więcej. Obciążenia obejmują usługi Azure SQL Database dla kopii zapasowych maszyn wirtualnych IaaS i System Center Data Protection Manager. Ta funkcja dodaje do bieżącej obsługi usługi Azure backup i kopii zapasowych maszyn wirtualnych platformy Azure. Ta obsługa oznacza, że można wyświetlać i analizować wszystkie dane kopii zapasowej w jednej centralnej lokalizacji. [Można również dostosować raporty](https://youtu.be/26zyOtyHPJM) odpowiednio do potrzeb swojej organizacji.
 
-Aby wprowadzić bardziej opisową raportów na potrzeby różnych obciążeń, zestaw raportów wstępnie skonfigurowany przy użyciu pakietu zawartości usługi Azure Backup został zmieniony. Osiągającego w nadchodzących zestaw raportów jest dostępny tutaj:
+Zmiany są wstępnie skonfigurowane raporty, które pochodzą z pakietem zawartości usługi Azure Backup. Zmiany raporty bardziej opisową na potrzeby różnych obciążeń. Osiągającego w nadchodzących zestaw raportów znajduje się tutaj.
 
 ### <a name="summary"></a>Podsumowanie
    
@@ -57,7 +57,7 @@ Aby wprowadzić bardziej opisową raportów na potrzeby różnych obciążeń, z
 ![Magazyn](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Storage.png)
 
 ### <a name="backup-items"></a>Elementy kopii zapasowej
-![BackupItems](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-BackupItem.png)
+![Elementy kopii zapasowej](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-BackupItem.png)
 
 ### <a name="alerts"></a>Alerty
 
@@ -68,7 +68,7 @@ Aby wprowadzić bardziej opisową raportów na potrzeby różnych obciążeń, z
 ![Zadania](.\media\backup-azure-central-reporting\AzBackup-Central-Reporting-Jobs.png)
     
 
-## <a name="next-steps"></a>Następne kroki:
+## <a name="next-steps"></a>Kolejne kroki
 
-* [Udostępnianie raportów w Twojej organizacji](https://youtu.be/26zyOtyHPJM)
+* [Udostępnianie raportów w całej organizacji](https://youtu.be/26zyOtyHPJM)
 * [Usługa Azure Backup — często zadawane pytania](backup-azure-backup-faq.md)

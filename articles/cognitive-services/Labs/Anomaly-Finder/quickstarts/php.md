@@ -1,6 +1,6 @@
 ---
-title: Sposób użycia interfejsu API Finder anomalii za pomocą języka PHP — kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
-description: Pobierz informacje i przykładowy kod w celu szybkiego Rozpoczynanie pracy przy użyciu anomalii wyszukiwania za pomocą języka PHP w usługach kognitywnych.
+title: Jak używać interfejsu API wyszukiwania anomalii z językiem PHP — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
+description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu narzędzie do wyszukiwania anomalii za pomocą języka PHP w usługach Cognitive Services.
 services: cognitive-services
 author: chliang
 manager: bix
@@ -9,32 +9,34 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: f81c99b77f931b5b259633fa8fcd0bf3e358e281
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: f5f055be584aa9c6afb66ff651fd3c01851afd76
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348169"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246399"
 ---
-# <a name="use-the-anomaly-finder-api-with-php"></a>Wyszukiwanie anomalii interfejsu API za pomocą języka PHP
+# <a name="use-the-anomaly-finder-api-with-php"></a>Narzędzie do wyszukiwania anomalii interfejsu API za pomocą języka PHP
 
-Ten artykuł zawiera informacje i przykłady kodu w celu szybkiego rozpocząć korzystanie z API Finder anomalii za pomocą języka PHP do wykonania zadania pobierania wyników anomalii czasu serii danych.
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
+
+Ten artykuł zawiera informacje i przykłady kodu, aby pomóc Ci szybko rozpocząć pracę, przy użyciu interfejsu API wyszukiwania anomalii za pomocą języka PHP w celu uzyskania wyniku anomalii w danych szeregów czasowych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 
-## <a name="getting-anomaly-points-with-anomaly-finder-api-using-php"></a>Pobieranie punktów anomalii z interfejsem API Finder anomalii używany język PHP
+## <a name="getting-anomaly-points-with-anomaly-finder-api-using-php"></a>Pobieranie punktów anomalii przy użyciu interfejsu API wyszukiwania anomalii przy użyciu języka PHP
 [!INCLUDE [DataContract](../includes/datacontract.md)]
 
-### <a name="example-of-time-series-data"></a>Przykład czasu danych w serii.
-Przykładowe dane serii czasu ma następującą składnię.
+### <a name="example-of-time-series-data"></a>Przykład danych szeregów czasowych
+Przykład danych szeregów czasowych to w następujący sposób.
 [!INCLUDE [Request](../includes/request.md)]
 
-### <a name="analyze-data-and-get-anomaly-points-php-example"></a>Analizowanie danych i uzyskać punkty anomalii przykład PHP
-1. Zastąp `[YOUR_SUBSCRIPTION_KEY]` wartości z klucza ważnej subskrypcji.
-2. Zastąp `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` przykładzie lub punktami danych.
-3. Wykonaj i sprawdź odpowiedzi.
+### <a name="analyze-data-and-get-anomaly-points-php-example"></a>Analizowanie danych otrzymasz odpowiednie punkty anomalii przykład PHP
+1. Zastąp wartość `[YOUR_SUBSCRIPTION_KEY]` prawidłowym kluczem subskrypcji.
+2. Zastąp `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` przy użyciu przykładu lub punktów danych.
+3. Wykonywanie, a następnie sprawdź odpowiedzi.
 
 ```PHP
 <?php
@@ -74,7 +76,7 @@ catch (HttpException $ex)
 
 ### <a name="example-response"></a>Przykładowa odpowiedź
 
-Odpowiedź oznaczająca Powodzenie jest zwracana w formacie JSON. Przykładowa odpowiedź ma następującą składnię.
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON. Przykładowa odpowiedź wygląda następująco:
 [!INCLUDE [Response](../includes/response.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki

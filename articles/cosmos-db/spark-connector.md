@@ -10,12 +10,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 07/11/2018
 ms.author: ramkris
-ms.openlocfilehash: 4fa28e2d3f5d94d7ab47ec3b1e1e3240e5c770de
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 26479ade27b18e817d7ad03d70d27b0cef687e8d
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48042986"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269415"
 ---
 # <a name="accelerate-big-data-analytics-by-using-the-apache-spark-to-azure-cosmos-db-connector"></a>Przyspiesz analizy danych big data przy użyciu platformy Apache Spark do łącznika usługi Azure Cosmos DB
  
@@ -179,7 +179,7 @@ Komunikacja między platformami Spark i usługa Azure Cosmos DB jest znacznie sz
 
 4. Wyodrębnij zawartość przykładowej kanale w serwisie Twitter, a następnie otwórz plik config.py. Zaktualizuj wartości masterKey, host, databaseId, collectionId i preferredLocations.  
 
-5. Przejdź do `http://apps.twitter.com/`i zarejestruj kanale aplikacji w serwisie Twitter. Po wybraniu nazwy aplikacji, będziesz otrzymywać z **konsumenta, klucz tajny klienta, token dostępu i klucz tajny tokenu dostępu**. Skopiuj te wartości i aktualizować je w pliku config.py w celu udostępnienia w serwisie Twitter application programowy dostęp do usługi Twitter.   
+5. Przejdź do `http://apps.twitter.com/`i zarejestruj kanale aplikacji w serwisie Twitter. Po wybraniu nazwy aplikacji, będziesz otrzymywać z **konsumenta, klucz tajny klienta, token dostępu i klucz tajny tokenu dostępu**. Skopiuj te wartości i zaktualizuj je w pliku config.py, aby zapewnić, że w serwisie Twitter application programowy dostęp do usługi Twitter.   
 
 6. Zapisz plik config.py. Otwórz wiersz polecenia i uruchom aplikację w języku Python za pomocą następującego polecenia:
 

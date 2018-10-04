@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/24/2018
 ms.author: rimman
 ms.reviewer: sngun
-ms.openlocfilehash: 1be2d67d8a1ee51c4883ae1f50b80ad3a9691c2d
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2291b2429e6c5c25e051c8f3eca30e1cc3f64611
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46981971"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247333"
 ---
 # <a name="prepay-for-azure-cosmos-db-resources-with-reserved-capacity"></a>Zapłać z góry za zasoby usługi Azure Cosmos DB przy użyciu rezerwowanie pojemności
 
@@ -32,11 +32,11 @@ Możesz kupić pojemność usługi Azure Cosmos DB, zarezerwowane z [witryny Azu
 
 Rozmiar rezerwacji powinna być oparta na łączną przepływność używana przez istniejące lub wkrótce do--wdrażanych zasoby usługi Azure Cosmos DB (na przykład bazy danych lub kontenerów — w kolekcji, tabele, wykresy). Można określić przepustowość wymagana w następujący sposób:
 
-* Przejdź do [witryny Azure Portal](https://portal.azure.com), Znajdź swoje konto usługi Azure Cosmos DB, otwórz blok metryk i uzyskiwanie szczegółowych informacji średniej przepływności na sekundę z **przepływności** kartę w ciągu 3 – 6 miesięcy. Przy zakupie należy podać ten rozmiar jako liczba jednostek rezerwowanie pojemności.
+* Uzyskać dane historyczne łączna aprowizowana przepływność dla konta usługi Azure Cosmos DB, bazy danych i kolekcje we wszystkich regionach. Na przykład możesz ocenić dzienny średni aprowizowanej przepływności, pobierając instrukcji dzienne użycie z `https://account.azure.com`
 
-Alternatywnie Jeśli masz umowy Enterprise Agreement (EA), można pobrać pliku użycia i odwoływać się do **typ usługi** wartość w **dodatkowe informacje** sekcji plik użycia, aby pobrać serwer usługi Azure Cosmos DB Szczegóły dotyczące przepływności.
+* Alternatywnie Jeśli masz umowy Enterprise Agreement (EA), można pobrać pliku użycia i odwoływać się do **typ usługi** wartość w **dodatkowe informacje** sekcji plik użycia, aby pobrać serwer usługi Azure Cosmos DB Szczegóły dotyczące przepływności.
 
-Można również zsumowania średniej przepływności dla wszystkich obciążeń na konta usługi Azure Cosmos DB, przewidywanie uruchomiony następny rok lub trzy lata, a następnie użyć tej ilości rezerwacji.
+* Można również zsumowania średniej przepływności dla wszystkich obciążeń na konta usługi Azure Cosmos DB, przewidywanie uruchomiony następny rok lub trzy lata, a następnie użyć tej ilości rezerwacji.
 
 ## <a name="buy-azure-cosmos-db-reserved-capacity"></a>Kup pojemność usługi Azure Cosmos DB zastrzeżone
 

@@ -1,35 +1,71 @@
 ---
-title: Użyj usługi entity linking przy użyciu interfejsu API analizy tekstu
+title: Rozpoznawanie jednostek za pomocą interfejsu API analizy tekstu
 titleSuffix: Azure Cognitive Services
-description: Dowiedz się, jak do identyfikowania i usuwania jednostek przy użyciu interfejsu API REST analizy tekstu.
+description: Dowiedz się, jak rozpoznać jednostki przy użyciu interfejsu API REST analizy tekstu.
 services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
 ms.component: text-analytics
 ms.topic: article
-ms.date: 09/12/2018
+ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: ad2168806f9ddd124faf66cdb5a0f51ed13dfadc
-ms.sourcegitcommit: 616e63d6258f036a2863acd96b73770e35ff54f8
+ms.openlocfilehash: b2916e5c414562c55c35c9c5e7ab378963e004be
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45604743"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248078"
 ---
-# <a name="how-to-identify-linked-entities-in-text-analytics-preview"></a>Jak zidentyfikować połączonej jednostki w analizy tekstu (wersja zapoznawcza)
+# <a name="how-to-use-named-entity-recognition-in-text-analytics-preview"></a>Jak używać o nazwie rozpoznawania jednostek w analizy tekstu (wersja zapoznawcza)
 
-[Interfejs API usługi Entity Linking](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) przyjmuje tekstu bez struktury i dla każdego dokumentu JSON zwraca listę jednostek rozróżniane wraz z łączami do szczegółowych informacji w sieci web (Wikipedia i Bing). 
+[Interfejs API rozpoznawania jednostek](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) przyjmuje tekstu bez struktury i dla każdego dokumentu JSON zwraca listę jednostek rozróżniane wraz z łączami do szczegółowych informacji w sieci web (Wikipedia i Bing). 
 
-## <a name="entity-linking-vs-named-entity-recognition"></a>Vs łączenie jednostek. Rozpoznawanie jednostek znaku
+## <a name="entity-linking-and-named-entity-recognition"></a>Łączenie podmiotów i rozpoznawanie jednostek znaku
 
-Podczas przetwarzania języka naturalnego, można łatwo pomylić pojęcia łączenie podmiotów i rozpoznawanie jednostek znaku (NER). W wersji zapoznawczej analizy tekstu `entities` punkt końcowy, tylko usługi entity linking jest obsługiwany.
+Text Analytics `entities` punktu końcowego supprts zarówno o nazwie rozpoznawania jednostek (NER) i łączenie podmiotów.
 
+### <a name="entity-linking"></a>Łączenie jednostek
 Łączenie jednostek jest możliwość identyfikowania i odróżnić tożsamość jednostki w tekście (np. określająca, czy "Mars" jest używana jako planety lub Roman Boże z war). Ten proces wymaga obecności wiedzy, do którego został rozpoznany jednostki są połączone — Wikipedia jest używany jako knowledge base, aby `entities` punktu końcowego analizy tekstu.
+
+W analizy tekstu [wersji 2.1-Preview](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)tylko łączenie podmiotów jest dostępna.
+
+### <a name="named-entity-recognition-ner"></a>Rozpoznawanie jednostek znaku (NER)
+O nazwie rozpoznawanie jednostek (NER) to zdolność do identyfikacji różnych obiektów w tekście i kategoryzowanie je do wstępnie zdefiniowanych klas. Poniżej wymieniono obsługiwane klas jednostek.
+
+W wersji zapoznawczej Text Analytics w wersji 2.1 (`https://[region].api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`), łączenie podmiotów i rozpoznawanie jednostek znaku (NER) są dostępne.
 
 ### <a name="language-support"></a>Obsługa języków
 
 Korzystanie z usługi entity linking w różnych językach wymaga, przy użyciu odpowiedniej wiedzy w każdym języku. W przypadku usługi entity linking w analizy tekstu, oznacza to każdy język, który jest obsługiwany przez `entities` punktu końcowego połączy się z odpowiedniego korpus Wikipedia, w tym języku. Ponieważ rozmiar korpusy różni się między językami oczekuje się, czy usługi entity linking odwołań w funkcji również będą się różnić.
+
+## <a name="supported-types-for-named-entity-recognition"></a>Obsługiwane typy dla rozpoznawanie jednostek znaku
+
+| Typ  | Podtyp | Przykład |
+|:-----------   |:------------- |:---------|
+| Person (Osoba)        | N/D\*         | "Jan", "Billa Gatesa"     |
+| Lokalizacja      | N/D\*         | "Redmond w stanie Waszyngton", "Paryż"  |
+| Organizacja  | N/D\*         | "Microsoft"   |
+| Ilość      | Liczba        | "6", "6"     | 
+| Ilość      | Procentowe    | "50%", "percent pięćdziesiąt"| 
+| Ilość      | Liczba porządkowa       | "2", "drugi"     | 
+| Ilość      | NumberRange   | "od 4 do 8"     | 
+| Ilość      | Wiek           | "90 dni temu" lub "30 lat"    | 
+| Ilość      | Waluta      | "$10,99"     | 
+| Ilość      | Wymiar     | "10 mil", "40 cm"     | 
+| Ilość      | Temperatura   | "stopni 32"    |
+| DateTime      | N/D\*         | "6:30 PM 4 lutego 2012"      | 
+| DateTime      | Date          | "2nd maja 2017", "2017-05-02"   | 
+| Data i godzina     | Time          | "8: 00", "8:00"  | 
+| DateTime      | DateRange     | "Maja 2 do 5 maja."    | 
+| DateTime      | timeRange     | "18: 00 – 19: 00"     | 
+| DateTime      | Czas trwania      | "1 minutę i 45 sekund"   | 
+| DateTime      | Set           | "każdy wtorek"     | 
+| DateTime      | Strefa czasowa      |    | 
+| Adres URL           | N/D\*         | „http://www.bing.com”    |
+| Email         | N/D\*         | „support@contoso.com” |
+\* W zależności od jednostki danych wejściowych i wyodrębnione może pominąć niektóre jednostki `SubType`.
+
 
 
 ## <a name="preparation"></a>Przygotowanie
@@ -43,11 +79,11 @@ Rozmiar dokumentu musi być w obszarze 5000 znaków na dokument, i może mieć m
 ```
 {"documents": [{"id": "1",
                 "language": "en",
-                "text": "I really enjoy the new XBox One S. It has a clean look, it has 4K/HDR resolution and it is affordable."
+                "text": "Jeff bought three dozen eggs because there was a 50% discount."
                 },
                {"id": "2",
                 "language": "en",
-                "text": "The Seattle Seahawks won the Super Bowl in 2014."
+                "text": "The Great Depression began in 1929. By 1933, the GDP in America fell by 25%."
                 }
                ]
 }
@@ -59,14 +95,14 @@ Szczegółowe informacje na temat definicji żądania można znaleźć w [sposó
 
 + Tworzenie **WPIS** żądania. Zapoznaj się z dokumentacją interfejsu API dla tego żądania: [interfejs API usługi Entity Linking](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634)
 
-+ Ustaw punkt końcowy HTTP dla wyodrębnianie kluczowych fraz. Musi on zawierać `/entities` zasobów: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/entities`
++ Ustaw punkt końcowy HTTP dla wyodrębnianie kluczowych fraz. Musi on zawierać `/entities` zasobów: `https://westus.api.cognitive.microsoft.com/text/analytics/v2.1-preview/entities`
 
 + Ustaw nagłówek żądania, aby uwzględnić klucz dostępu do operacji analizy tekstu. Aby uzyskać więcej informacji, zobacz [znajdowanie punktów końcowych i klucze dostępu](text-analytics-how-to-access-key.md).
 
 + Treść żądania zawiera kolekcję dokumentów JSON, którą przygotowane na potrzeby tej analizy
 
 > [!Tip]
-> Użyj [Postman](text-analytics-how-to-call-api.md) lub Otwórz **konsoli testowania interfejsu API** w [dokumentacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) struktury żądania i OPUBLIKUJ go w usłudze.
+> Użyj [Postman](text-analytics-how-to-call-api.md) lub Otwórz **konsoli testowania interfejsu API** w [dokumentacji](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) struktury żądania i OPUBLIKUJ go w usłudze.
 
 ## <a name="step-2-post-the-request"></a>Krok 2: Wpis żądania
 
@@ -82,74 +118,168 @@ Dane wyjściowe są natychmiast zwracane. Można strumienia wyniki do aplikacji,
 
 Przykład danych wyjściowych do usługi entity linking pokazano dalej:
 
-```
+```json
 {
-    "documents": [
+    "Documents": [
         {
-            "id": "1",
-            "entities": [
+            "Id": "1",
+            "Entities": [
                 {
-                    "name": "Xbox One",
-                    "matches": [
+                    "Name": "Jeff",
+                    "Matches": [
                         {
-                            "text": "XBox One",
-                            "offset": 23,
-                            "length": 8
+                            "Text": "Jeff",
+                            "Offset": 0,
+                            "Length": 4
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "Xbox One",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/Xbox_One",
-                    "bingId": "446bb4df-4999-4243-84c0-74e0f6c60e75"
+                    "Type": "Person"
                 },
                 {
-                    "name": "Ultra-high-definition television",
-                    "matches": [
+                    "Name": "three dozen",
+                    "Matches": [
                         {
-                            "text": "4K",
-                            "offset": 63,
-                            "length": 2
+                            "Text": "three dozen",
+                            "Offset": 12,
+                            "Length": 11
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "Ultra-high-definition television",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/Ultra-high-definition_television",
-                    "bingId": "7ee02026-b6ec-878b-f4de-f0bc7b0ab8c4"
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "50",
+                    "Matches": [
+                        {
+                            "Text": "50",
+                            "Offset": 49,
+                            "Length": 2
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "50%",
+                    "Matches": [
+                        {
+                            "Text": "50%",
+                            "Offset": 49,
+                            "Length": 3
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Percentage"
                 }
             ]
         },
         {
-            "id": "2",
-            "entities": [
+            "Id": "2",
+            "Entities": [
                 {
-                    "name": "2013 Seattle Seahawks season",
-                    "matches": [
+                    "Name": "Great Depression",
+                    "Matches": [
                         {
-                            "text": "Seattle Seahawks",
-                            "offset": 4,
-                            "length": 16
+                            "Text": "The Great Depression",
+                            "Offset": 0,
+                            "Length": 20
                         }
                     ],
-                    "wikipediaLanguage": "en",
-                    "wikipediaId": "2013 Seattle Seahawks season",
-                    "wikipediaUrl": "https://en.wikipedia.org/wiki/2013_Seattle_Seahawks_season",
-                    "bingId": "eb637865-4722-4eca-be9e-0ac0c376d361"
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "Great Depression",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Great_Depression",
+                    "BingId": "d9364681-98ad-1a66-f869-a3f1c8ae8ef8"
+                },
+                {
+                    "Name": "1929",
+                    "Matches": [
+                        {
+                            "Text": "1929",
+                            "Offset": 30,
+                            "Length": 4
+                        }
+                    ],
+                    "Type": "DateTime",
+                    "SubType": "DateRange"
+                },
+                {
+                    "Name": "By 1933",
+                    "Matches": [
+                        {
+                            "Text": "By 1933",
+                            "Offset": 36,
+                            "Length": 7
+                        }
+                    ],
+                    "Type": "DateTime",
+                    "SubType": "DateRange"
+                },
+                {
+                    "Name": "Gross domestic product",
+                    "Matches": [
+                        {
+                            "Text": "GDP",
+                            "Offset": 49,
+                            "Length": 3
+                        }
+                    ],
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "Gross domestic product",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/Gross_domestic_product",
+                    "BingId": "c859ed84-c0dd-e18f-394a-530cae5468a2"
+                },
+                {
+                    "Name": "United States",
+                    "Matches": [
+                        {
+                            "Text": "America",
+                            "Offset": 56,
+                            "Length": 7
+                        }
+                    ],
+                    "WikipediaLanguage": "en",
+                    "WikipediaId": "United States",
+                    "WikipediaUrl": "https://en.wikipedia.org/wiki/United_States",
+                    "BingId": "5232ed96-85b1-2edb-12c6-63e6c597a1de",
+                    "Type": "Location"
+                },
+                {
+                    "Name": "25",
+                    "Matches": [
+                        {
+                            "Text": "25",
+                            "Offset": 72,
+                            "Length": 2
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Number"
+                },
+                {
+                    "Name": "25%",
+                    "Matches": [
+                        {
+                            "Text": "25%",
+                            "Offset": 72,
+                            "Length": 3
+                        }
+                    ],
+                    "Type": "Quantity",
+                    "SubType": "Percentage"
                 }
             ]
         }
     ],
-    "errors": []
+    "Errors": []
 }
 ```
-
-Jeśli są dostępne, odpowiedź zawiera identyfikator Wikipedia Wikipedia adresu URL i identyfikator Bing dla każdej jednostki wykryte. Mogą one używane w celu dodatkowego zwiększenia aplikacji przy użyciu informacji dotyczących połączonej jednostki.
 
 
 ## <a name="summary"></a>Podsumowanie
 
 W tym artykule przedstawiono pojęcia i przepływ pracy dotyczący łączenie podmiotów, za pomocą analizy tekstu w usługach Cognitive Services. Podsumowanie:
 
-+ [Interfejs API usługi Entity Linking](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/5ac4251d5b4ccd1554da7634) jest dostępny dla wybranych języków.
++ [Jednostki interfejsu API](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634) jest dostępny dla wybranych języków.
 + Dokumenty JSON w treści żądania obejmują identyfikator, tekstu i języka kodu.
 + Żądanie POST jest `/entities` punktu końcowego, za pomocą spersonalizowanego [dostępu key i punktu końcowego](text-analytics-how-to-access-key.md) , który jest poprawny dla Twojej subskrypcji.
 + Dane wyjściowe odpowiedzi, który składa się z połączonej jednostki (w tym pewność, że wyniki, przesunięcia i linków sieci web, dla każdego dokumentu Identyfikator) mogą być używane w dowolnej aplikacji
@@ -163,4 +293,4 @@ W tym artykule przedstawiono pojęcia i przepływ pracy dotyczący łączenie po
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Interfejs API analizy tekstu](//westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics.V2.0/operations/56f30ceeeda5650db055a3c6)
+> [Interfejs API analizy tekstu](https://westus.dev.cognitive.microsoft.com/docs/services/TextAnalytics-V2-1-Preview/operations/5ac4251d5b4ccd1554da7634)

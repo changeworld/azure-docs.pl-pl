@@ -15,12 +15,12 @@ ms.topic: conceptual
 ms.date: 08/06/2018
 ms.author: bwren
 ms.component: na
-ms.openlocfilehash: b56a75074af239f60b82edbe1d074c6384c4aef1
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 0ee34d99c78eb090514385de16cd77d04ddca4e4
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982988"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267702"
 ---
 # <a name="get-started-with-queries-in-log-analytics"></a>Wprowadzenie do zapytań w usłudze Log Analytics
 
@@ -190,7 +190,7 @@ SecurityEvent
 ```
 
 ## <a name="summarize-aggregate-groups-of-rows"></a>Podsumowując: agregacji grup wierszy
-Użyj **Podsumuj** do identyfikowania grup rekordów, zgodnie z co najmniej jedną kolumnę agregacji ich dotyczą. Najczęściej używać systemu operacyjnego **Podsumuj** jest *liczba*, która zwraca liczbę wyników w każdej grupie.
+Użyj **Podsumuj** do identyfikowania grup rekordów, zgodnie z co najmniej jedną kolumnę agregacji ich dotyczą. Najbardziej powszechnym zastosowaniem programu **Podsumuj** jest *liczba*, która zwraca liczbę wyników w każdej grupie.
 
 Następujące zapytanie sprawdza wszystkie *wydajności* grup rekordów z ostatniej godziny, ich według *ObjectName*i zlicza rekordy w każdej grupie: 
 ```Kusto

@@ -4,7 +4,7 @@ description: W tym artykule wyjaśniono, jak platforma Azure zapewnia maszyny wi
 services: load-balancer
 documentationcenter: na
 author: KumudD
-manager: jeconnoc
+manager: jpconnock
 editor: ''
 ms.assetid: 5f666f2a-3a63-405a-abcd-b2e34d40e001
 ms.service: load-balancer
@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 08/27/2018
+ms.date: 10/01/2018
 ms.author: kumud
-ms.openlocfilehash: 24eec3b1f3c85384f80823b82962038c235b6dac
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 58ae89a6b9d7b9e3858358d290e3ecb197e0ac2b
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47036994"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249132"
 ---
 # <a name="outbound-connections-in-azure"></a>Połączenia wychodzące na platformie Azure
 
@@ -67,7 +67,7 @@ W przypadku maszyn wirtualnych ze zrównoważonym obciążeniem tworzy przepływ
 
 Efemeryczne porty frontonu adres IP publicznego modułu równoważenia obciążenia są używane w celu odróżnienia poszczególnych przepływy tworzone przez maszynę Wirtualną. Dynamicznie używa SNAT [wstępnie przydzielonych portów tymczasowych](#preallocatedports) utworzenia przepływy wychodzące. W tym kontekście portów tymczasowych używany do SNAT są nazywane SNAT portów.
 
-Są wstępnie przydzielonych portów SNAT, zgodnie z opisem w [SNAT zrozumienie i osobisty token dostępu](#snat) sekcji. Są one ograniczone zasób, który może wyczerpać. Jest ważne zrozumieć, jak są one [używane](#pat). Aby dowiedzieć się, jak zaprojektować za to użycie i ograniczać zgodnie z potrzebami, zapoznaj się z [wyczerpania Zarządzanie SNAT](#snatexhaust).
+Porty SNAT wstępnie są przydzielane zgodnie z opisem w [SNAT zrozumienie i osobisty token dostępu](#snat) sekcji. Są one ograniczone zasób, który może wyczerpać. Jest ważne zrozumieć, jak są one [używane](#pat). Aby dowiedzieć się, jak zaprojektować za to użycie i ograniczać zgodnie z potrzebami, zapoznaj się z [wyczerpania Zarządzanie SNAT](#snatexhaust).
 
 Gdy [wiele publicznych adresów IP skojarzonych z podstawowego modułu równoważenia obciążenia](load-balancer-multivip-overview.md), dowolne z publicznym adresem IP na te adresy są [Release candidate programu przepływy wychodzące](#multivipsnat), a jeden losowo wybrany.  
 
@@ -75,7 +75,7 @@ Aby monitorować kondycję połączenia wychodzące z podstawowego modułu równ
 
 ### <a name="defaultsnat"></a>Scenariusz 3: Autonomiczny z maszyny Wirtualnej bez adresu publicznym adresem IP na poziomie wystąpienia
 
-W tym scenariuszu maszyna wirtualna nie jest częścią puli publicznego modułu równoważenia obciążenia (i nie jest częścią puli wewnętrznej Balancer w warstwie standardowa) i nie ma przypisanego adresu ILPIP. Podczas tworzenia maszyny Wirtualnej przepływu wychodzącego, Azure tłumaczy prywatnej źródłowy adres IP przepływu wychodzącego do publicznych źródłowego adresu IP. Publiczny adres IP używany dla tego przepływu ruchu wychodzącego nie konfiguruje się i nie wliczają subskrypcji publicznego adresu IP limit zasobów.
+W tym scenariuszu maszyna wirtualna nie jest częścią puli publicznego modułu równoważenia obciążenia (i nie jest częścią puli wewnętrznej Balancer w warstwie standardowa) i nie ma przypisanego adresu ILPIP. Podczas tworzenia maszyny Wirtualnej przepływu wychodzącego, Azure tłumaczy prywatnej źródłowy adres IP przepływu wychodzącego do publicznych źródłowego adresu IP. Publiczny adres IP używany dla tego przepływu ruchu wychodzącego nie konfiguruje się i nie wliczają subskrypcji publicznego adresu IP limit zasobów. Ten publiczny adres IP nie należy do Ciebie i nie może być zastrzeżone. Jeśli ponowne wdrażanie maszyny Wirtualnej lub zestawu dostępności lub zestawu skalowania maszyn wirtualnych, ten publiczny adres IP zostaną zwolnione, a żądane nowego publicznego adresu IP. Nie należy używać w tym scenariuszu do listy dozwolonych adresów IP. Zamiast tego należy użyć jednego z dwóch scenariuszy gdzie można jawnie deklarować wychodzącego scenariusza i publiczny adres IP, który ma być używany dla łączności wychodzącej.
 
 >[!IMPORTANT] 
 >Ten scenariusz ma zastosowanie również podczas __tylko__ wewnętrznego podstawowego modułu równoważenia obciążenia jest dołączony. Scenariusz 3 jest __nie jest dostępna__ podczas wewnętrznego standardowego modułu równoważenia obciążenia jest dołączony do maszyny Wirtualnej.  Należy jawnie utworzyć [scenariusz 1](#ilpip) lub [Scenariusz 2](#lb) oprócz używania wewnętrznego standardowego modułu równoważenia obciążenia.

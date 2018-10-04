@@ -9,14 +9,14 @@ ms.author: haining
 author: hning86
 ms.reviewer: jmartens
 ms.date: 10/01/2018
-ms.openlocfilehash: 5c5468619533e66ddaac352dea8bdcbc9616b10d
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: 92db115ed826b756e11b572a5a62f0f82d4535a7
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48242969"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269193"
 ---
-# <a name="troubleshoot-your-azure-machine-learning-service-deployments"></a>Rozwiązywanie problemów z wdrożenia usługi Azure Machine Learning
+# <a name="troubleshooting-azure-machine-learning-service-deployments"></a>Rozwiązywanie problemów z wdrożeniami usługi Azure Machine Learning
 
 W tym artykule dowiesz się, jak obejść lub Rozwiązywanie typowych błędów wdrażania platformy Docker za pomocą usługi Azure Machine Learning.
 
@@ -41,9 +41,7 @@ Dowiedz się więcej na temat tego procesu w [zarządzania modelami](concept-mod
 
 Jeśli napotkasz problem z dowolnym najpierw musisz jest podzielenie zadania wdrożenia (opisany poprzedniego) na poszczególne kroki, aby ustalić przyczynę problemu. 
 
-Jest to szczególnie przydatne, jeśli używasz `Webservice.deploy` interfejsu API, lub `Webservice.deploy_from_model` interfejsu API, ponieważ te funkcje zgrupować wyżej czynności w ramach jednej akcji. Zazwyczaj te interfejsy API są dość wygodne, ale warto podzielić kroki podczas rozwiązywania problemów. 
-
-Poniżej przedstawiono funkcje do użycia podczas istotne wdrożenia kroki w dół:
+Jest to szczególnie przydatne, jeśli używasz `Webservice.deploy` interfejsu API, lub `Webservice.deploy_from_model` interfejsu API, ponieważ te funkcje zgrupować wyżej czynności w ramach jednej akcji. Zazwyczaj te interfejsy API są bardzo wygodne, ale warto podzielić kroki podczas rozwiązywania problemów, zastępując je za pomocą poniżej wywołania interfejsu API.
 
 1. Należy zarejestrować model. Poniżej przedstawiono przykładowy kod:
 
@@ -64,7 +62,7 @@ Poniżej przedstawiono funkcje do użycia podczas istotne wdrożenia kroki w dó
                                                       conda_file="myenv.yml")
 
     # create the image
-    image = Image.create(name='myimg', models=[model], image_config=img_cfg, workspace=ws)
+    image = Image.create(name='myimg', models=[model], image_config=image_config, workspace=ws)
 
     # wait for image creation to finish
     image.wait_for_creation(show_output=True)
@@ -74,9 +72,9 @@ Poniżej przedstawiono funkcje do użycia podczas istotne wdrożenia kroki w dó
 
     ```python
     # configure an ACI-based deployment
-    aciconfig = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
+    aci_config = AciWebservice.deploy_configuration(cpu_cores=1, memory_gb=1)
 
-    aci_service = Webservice.deploy_from_image(deployment_config=aciconfig, 
+    aci_service = Webservice.deploy_from_image(deployment_config=aci_config, 
                                                image=image, 
                                                name='mysvc', 
                                                workspace=ws)
@@ -86,7 +84,7 @@ Poniżej przedstawiono funkcje do użycia podczas istotne wdrożenia kroki w dó
 Gdy zostały podzielone procesu wdrażania na poszczególne zadania, można przyjrzymy się niektóre z najbardziej typowych błędów.
 
 ## <a name="image-building-fails"></a>Obraz tworzenia kończy się niepowodzeniem
-Jeśli system jest w stanie utworzyć obraz platformy Docker `image.wait_for_creation` wywołanie zakończy się niektóre komunikaty o błędach. Można również znaleźć więcej szczegółowych informacji o błędzie w dzienniku kompilacji obrazu. Identyfikator uri dziennika jest adres URL sygnatury dostępu Współdzielonego do pliku dziennika przechowywanych w usłudze Azure blob storage. Po prostu skopiuj i wklej identyfikator uri do okna przeglądarki i możesz pobrać i przejrzeć dziennik.
+Jeśli system jest w stanie utworzyć obraz platformy Docker `image.wait_for_creation()` wywołanie zakończy się niektóre komunikaty o błędach, które może zaoferować pewne wskazówki. Można także znaleźć więcej szczegółowych informacji o błędach w dzienniku kompilacji obrazu. Poniżej przykładowy kod pokazuje sposób odnajdowania identyfikator uri dziennika kompilacji obrazu.
 
 ```python
 # if you already have the image object handy
@@ -99,14 +97,16 @@ print(ws.images()['myimg'].image_build_log_uri)
 for name, img in ws.images().items()
     print (img.name, img.version, img.image_build_log_uri)
 ```
+Identyfikator uri dziennika obrazu jest adres URL sygnatury dostępu Współdzielonego do pliku dziennika przechowywanych w usłudze Azure blob storage. Po prostu skopiuj i wklej identyfikator uri do okna przeglądarki i możesz pobrać i przejrzeć plik dziennika.
+
 
 ## <a name="service-launch-fails"></a>Uruchomienie usługi nie powiedzie się.
-Po pomyślnym utworzeniu obrazu, system próbuje uruchomić kontener w usłudze ACI i AKS w zależności od konfiguracji wdrożenia. Zalecane jest zawsze najpierw spróbuj wdrożenia usługi ACI, ponieważ jest to wdrożenie prostego jeden kontener. Dzięki temu można następnie wykluczyć problemy specyficzne dla usługi AKS.
+Po pomyślnym utworzeniu obrazu, system próbuje uruchomić kontener w usłudze ACI i AKS w zależności od konfiguracji wdrożenia. Ogólnie zaleca się najpierw spróbuj wdrożenia usługi ACI, ponieważ jest prostsza wdrażanie pojedynczego kontenera. Dzięki temu można następnie wykluczyć problemy specyficzne dla usługi AKS.
 
 Jako część procesu rozruchu kontenera `init()` funkcji oceniania skryptu zostanie wywołany przez system. Jeśli istnieją nieobsłużone wyjątki w `init()` funkcji, można napotkać **CrashLoopBackOff** błąd w komunikacie o błędzie. Poniżej przedstawiono kilka wskazówek, aby rozwiązać ten problem.
 
 ### <a name="inspect-the-docker-log"></a>Sprawdź dziennik platformy Docker
-Jeśli obraz jest kompilowany pomyślnie, ale wystąpiły błędy podczas wdrażania obrazu jako kontener, możesz dowiedzieć się komunikat o błędzie w dzienniku platformy Docker.
+Można wydrukować szczegółowe komunikaty dziennika aparat platformy Docker z obiektu usługi.
 
 ```python
 # if you already have the service object handy
@@ -128,16 +128,23 @@ print(image.image_location)
 
 Lokalizacja obrazu ma następujący format: `<acr-name>.azurecr.io/<image-name>:<version-number>`, takich jak `myworkpaceacr.azurecr.io/myimage:3`. 
 
-Teraz przejdź do okna wiersza polecenia i wpisz następujące polecenia, aby zalogować się do usługi ACR (Azure Container Registry) skojarzone z obszarem roboczym, w którym jest przechowywany obraz.
+Teraz przejdź do okna wiersza polecenia. Jeśli masz zainstalowany azure-cli, możesz wpisać następujące polecenia, aby zalogować się do usługi ACR (Azure Container Registry) skojarzone z obszarem roboczym, w którym jest przechowywany obraz. 
 
 ```sh
-# note the acr_name is just the domain name WITHOUT the ".azurecr.io" postfix
+# log on to Azure first if you haven't done so before
+$ az login
+
+# make sure you set the right subscription in case you have access to multiple subscriptions
+$ az account set -s <subscription_name_or_id>
+
+# now let's log in to the workspace ACR
+# note the acr-name is the domain name WITHOUT the ".azurecr.io" postfix
 # e.g.: az acr login -n myworkpaceacr
 $ az acr login -n <acr-name>
 ```
-Jeśli nie masz azure-cli zainstalowana, można również użyć `docker login` polecenie, aby zalogować się do usługi ACR. Wystarczy pobrać nazwę użytkownika i hasło usługi ACR z witryny Azure portal.
+Jeśli nie masz azure-cli zainstalowana, możesz użyć `docker login` polecenie, aby zalogować się do usługi ACR. Jednak musisz najpierw pobrać nazwę użytkownika i hasło usługi ACR z witryny Azure portal.
 
-Teraz można ściągnąć obraz platformy Docker i uruchomić kontenera w środowisku lokalnym, a następnie uruchom sesji programu bash do debugowania.
+Po zalogowaniu się do usługi ACR, można ściągnąć obraz platformy Docker i uruchomić kontenera w środowisku lokalnym, a następnie uruchom sesję powłoki bash debugowanie przy użyciu `docker run` polecenia:
 
 ```sh
 # note the image_id is <acr-name>.azurecr.io/<image-name>:<version-number>
@@ -165,7 +172,7 @@ W przypadku, gdy potrzebujesz edytora tekstów, aby zmodyfikować skrypty, możn
 # update package index
 apt-get update
 
-# install text editor of your choice
+# install a text editor of your choice
 apt-get install vim
 apt-get install nano
 apt-get install emacs
@@ -184,18 +191,18 @@ $ docker run -p 8000:5001 <image_id>
 ```
 
 ## <a name="function-fails-getmodelpath"></a>Funkcja kończy się niepowodzeniem: get_model_path()
-Często w `init()` funkcji w skrypt oceniania `Model.get_model_path()` funkcja jest wywoływana, aby zlokalizować plik modelu lub folder z plikami w kontenerze. Jest to często źródło błędu, jeśli nie można odnaleźć modelu pliku lub folderu. Najprostszym sposobem, aby debugować ten błąd jest uruchomienie poniższego kodu języka Python w powłoce kontenera:
+Często w `init()` funkcji w skrypt oceniania `Model.get_model_path()` funkcja jest wywoływana, aby zlokalizować plik modelu lub folder z plikami modelu w kontenerze. Jest to często źródło błędu, jeśli nie można odnaleźć modelu pliku lub folderu. Najprostszym sposobem, aby debugować ten błąd jest uruchomienie poniższego kodu języka Python w powłoce kontenera:
 
 ```python
 from azureml.core.model import Model
 print(Model.get_model_path(model_name='my-best-model'))
 ```
 
-Wypisuje to ścieżka lokalna, że skrypt oceniania jest oczekiwano modelu pliku lub folderu. Następnie można sprawdzić, czy plik lub folder jest w rzeczywistości których oczekuje się, można.
+Wypisuje to ścieżka lokalna (względem `/var/azureml-app`) w kontenerze, gdzie skrypt oceniania oczekuje, aby znaleźć model pliku lub folderu. Następnie można sprawdzić, czy plik lub folder jest w rzeczywistości których oczekuje się, można.
 
 
 ## <a name="function-fails-runinputdata"></a>Funkcja kończy się niepowodzeniem: run(input_data)
-Jeśli usługa została pomyślnie wdrożona, a jego ulega awarii, gdy opublikujesz danych do punktu końcowego oceniania, można dodać błąd Przechwytywanie instrukcji w swojej `run(input_data)` funkcji Podziel się komunikat o błędzie. Na przykład:
+Jeśli usługa została pomyślnie wdrożona, ale jej ulega awarii, gdy opublikujesz danych do punktu końcowego oceniania, można dodać błąd Przechwytywanie instrukcji w swojej `run(input_data)` funkcji tak, aby zamiast tego zwraca szczegółowy komunikat o błędzie. Na przykład:
 
 ```python
 def run(input_data):
@@ -209,6 +216,8 @@ def run(input_data):
         # return error message back to the client
         return json.dumps({"error": result})
 ```
+**Uwaga**: zwracanie komunikaty o błędach z `run(input_data)` wywołanie powinno się odbywać tylko do celów debugowania. Może nie być dobry pomysł, aby to zrobić w środowisku produkcyjnym ze względów bezpieczeństwa.
+
 
 ## <a name="next-steps"></a>Kolejne kroki
 

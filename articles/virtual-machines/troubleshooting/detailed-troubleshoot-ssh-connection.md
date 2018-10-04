@@ -4,7 +4,7 @@ description: Szczegółowe kroki rozwiązywania problemów dotyczących problemy
 keywords: SSH połączenia zostało odrzucone, ssh błąd, azure ssh, połączenie SSH nie powiodło się
 services: virtual-machines-linux
 documentationcenter: ''
-author: cynthn
+author: genlin
 manager: jeconnoc
 editor: ''
 tags: top-support-issue,azure-service-management,azure-resource-manager
@@ -15,13 +15,13 @@ ms.tgt_pltfrm: vm-linux
 ms.devlang: na
 ms.topic: troubleshooting
 ms.date: 12/13/2017
-ms.author: cynthn
-ms.openlocfilehash: a75a0e8c31934ff001674830bfe3d3d1c9e6beb1
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.author: genli
+ms.openlocfilehash: 1173e4c9ec40e8b8fe9e24587258f7e7aad7c7f8
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47413912"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269466"
 ---
 # <a name="detailed-ssh-troubleshooting-steps-for-issues-connecting-to-a-linux-vm-in-azure"></a>SSH szczegółowe kroki rozwiązywania problemów dotyczących problemy z połączeniem do maszyny Wirtualnej z systemem Linux na platformie Azure
 Istnieje wiele możliwych przyczyn, które klient SSH może nie można nawiązać połączenia z usługą SSH na maszynę Wirtualną. Jeśli wykonano za pomocą bardziej [SSH ogólne kroki rozwiązywania problemów](troubleshoot-ssh-connection.md), należy rozwiązać problem z połączeniem. Ten artykuł przeprowadzi Cię przez szczegółowe kroki rozwiązywania problemów, aby określić, gdzie występuje błąd połączenia SSH i sposobie jego rozwiązania.

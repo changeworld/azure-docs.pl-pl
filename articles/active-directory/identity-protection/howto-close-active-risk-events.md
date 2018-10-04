@@ -16,12 +16,12 @@ ms.topic: article
 ms.date: 09/24/2018
 ms.author: markvi
 ms.reviewer: raluthra
-ms.openlocfilehash: 230a4df2c43e8d5e6ae1a5a7e8188cf207461022
-ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
+ms.openlocfilehash: 11b6766533da65f55430d55bd8aa0b7067783e0c
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47057963"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48267474"
 ---
 # <a name="how-to-close-active-risk-events"></a>Porady: Zamykanie zdarzeń o podwyższonym ryzyku w aktywnej
 
@@ -51,7 +51,7 @@ Konfigurując [zasad dostępu warunkowego ryzyka użytkownika](howto-user-risk-p
 
 ![Resetowanie hasła](./media/howto-close-active-risk-events/13.png)
 
-Resetowanie hasła zamyka wszystkie zdarzenia ryzyka active powiązane użytkownika, a tożsamość ponownie do to bezpieczne. Za pomocą zasad ryzyka dla użytkownika jest preferowaną metodą zamknąć zdarzenia aktywnego ryzyka, ponieważ ta metoda jest zautomatyzowane. Teraz jest interakcji między dotyczy użytkownika i pomocy technicznej lub administratorem.
+Resetowanie hasła zamyka wszystkie zdarzenia ryzyka active powiązane użytkownika, a tożsamość ponownie do to bezpieczne. Za pomocą zasad ryzyka dla użytkownika jest preferowaną metodą zamknąć zdarzenia aktywnego ryzyka, ponieważ ta metoda jest zautomatyzowane. Nie zachodzi żadna interakcja między dotyczy użytkownika i pomocy technicznej lub administratorem.
 
 Jednak przy użyciu zasad ryzyka dla użytkownika nie zawsze jest stosowane. To dotyczy, na przykład:
 

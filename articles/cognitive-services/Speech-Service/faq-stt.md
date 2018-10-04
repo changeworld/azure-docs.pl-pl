@@ -9,12 +9,12 @@ ms.component: custom-speech
 ms.topic: article
 ms.date: 06/11/2018
 ms.author: panosper
-ms.openlocfilehash: 0a30cce92de4b96b7dc0d29ce12f409df3e895df
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: d176c33a37b26b1e13d5b9beb7ac68d335cc7862
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721884"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249199"
 ---
 # <a name="speech-to-text-frequently-asked-questions"></a>Zamiana mowy na tekst — często zadawane pytania
 
@@ -57,6 +57,12 @@ Można wdrożyć punkt odniesienia i niestandardowych modeli w portalu i uruchom
 **Element**: nie można zaktualizować istniejący model. Jako rozwiązanie należy połączyć stary zestaw danych za pomocą nowego zestawu danych i readapt.
 
 Stary zestaw danych i nowy zestaw danych musi być połączone jednego pliku zip (Aby uzyskać dane akustyczne) lub w pliku txt (w przypadku danych języka). Po zakończeniu dostosowania modelu nowe, zaktualizowane musi być ponownie wdrażana w celu uzyskania nowego punktu końcowego
+
+**Pyt.: Jeśli dostępna jest nowa wersja linii bazowej jest Moje wdrożenie automatycznie zaktualizowane?**
+
+**A**: wdrożenia nie zostaną automatycznie zaktualizowane. 
+
+Jeśli masz dostosowane i wdrożyć model z linią bazową w wersji 1.0, tego wdrożenia pozostaje niezmieniona. Klienci mogą decommision wdrożony model, ponownie dostosowania przy użyciu nowszej wersji linii bazowej i Wdróż ponownie.
 
 **P: co mogę zrobić, jeśli potrzebne zapewnienie większej współbieżności dla mojego wdrożony model niż treści oferowanych w portalu?** 
 

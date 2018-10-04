@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 2c50ba1abfe3681a39b39bf52f127efd9d518aef
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 4365f12992c96ca45ff6b97b0f59202f1eeb4483
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43041872"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268973"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Rozwiązywanie problemów z hybrydowej usługi Azure Active Directory urządzenia niskiego poziomu przyłączone do 
 
@@ -39,23 +39,18 @@ W tym artykule założono, że masz [urządzenia przyłączone do hybrydowej sko
 
 - Dostęp warunkowy oparty na urządzeniu
 
-- [Mobilny dostęp firmowy do ustawień](../active-directory-windows-enterprise-state-roaming-overview.md)
-
-- [Funkcja Windows Hello dla firm](https://docs.microsoft.com/windows/security/identity-protection/hello-for-business/hello-identity-verification) 
-
-
-
-
 
 Ten artykuł zawiera w rozwiązywaniu problemów wskazówki dotyczące sposobu rozwiązania potencjalnych problemów.  
 
 **Co należy wiedzieć:** 
 
-- Maksymalna liczba urządzeń na użytkownika jest skoncentrowane na urządzeniu. Na przykład jeśli *jdoe* i *jharnett* Zaloguj się na urządzeniu z systemem rejestracji odrębnych (DeviceID) jest tworzony dla każdego z nich w **użytkownika** karta informacje.  
+- Maksymalną liczbę urządzeń na użytkownika aktualnie dotyczą również urządzeń przyłączonych do usługi Azure AD hybrydowego niskiego poziomu. 
+
+- Tym samym urządzeniu fizycznym pojawia się wiele razy w usłudze Azure AD, gdy wielu użytkowników domeny logowania urządzeń przyłączonych do usługi Azure AD hybrydowego niskiego poziomu.  Na przykład jeśli *jdoe* i *jharnett* Zaloguj się na urządzeniu z systemem rejestracji odrębnych (DeviceID) jest tworzony dla każdego z nich w **użytkownika** karta informacje. 
+
+- Możesz także uzyskać wiele wpisów dla urządzenia, na karcie informacje użytkownika, z powodu ponownej instalacji systemu operacyjnego lub ręcznej ponownej rejestracji.
 
 - Wstępnej rejestracji / przyłączenia urządzeń jest skonfigurowana do wykonywania próba logowania i blokowanie / odblokowywanie. Może to być opóźnienie 5-minutowych wyzwolone przez zadania harmonogramu zadań. 
-
-- Zawiera wiele wpisów dla urządzenia, na karcie informacje użytkownika z powodu ponownej instalacji systemu operacyjnego lub ręcznej ponownej rejestracji. 
 
 - Upewnij się, że [KB4284842](https://support.microsoft.com/help/4284842) jest zainstalowana w razie Windows 7 z dodatkiem SP1 lub Windows Server 2008 R2 z dodatkiem SP1. Ta aktualizacja zapobiega niepowodzeń uwierzytelniania przyszłych z powodu utraty dostępu klienta do klucze chronione po zmianie hasła.
 
@@ -65,24 +60,39 @@ Ten artykuł zawiera w rozwiązywaniu problemów wskazówki dotyczące sposobu r
 
 1. Zaloguj się przy użyciu konta użytkownika, który wykonał dołączenie do hybrydowej usługi Azure AD.
 
-2. Otwórz wiersz polecenia jako administrator 
+2. Otwórz okno wiersza polecenia 
 
 3. Typ `"%programFiles%\Microsoft Workplace Join\autoworkplace.exe" /i`
 
-To polecenie wyświetla okno dialogowe, które zapewnia więcej szczegółów na temat stanu sprzężenia.
+To polecenie wyświetla okno dialogowe, które zawiera szczegóły dotyczące stanu sprzężenia.
 
 ![Przyłączanie do obszaru roboczego dla Windows](./media/troubleshoot-hybrid-join-windows-legacy/01.png)
 
 
 ## <a name="step-2-evaluate-the-hybrid-azure-ad-join-status"></a>Krok 2: Ocena hybrydowego stan dołączania usługi Azure AD 
 
-Jeśli dołączenie do hybrydowej usługi Azure AD nie powiodło się, okno dialogowe zawiera szczegółowe informacje o problemie, który wystąpił.
+Jeśli urządzenie nie było hybrydowe przyłączone do usługi Azure AD, można spróbować wykonać dołączenie do hybrydowej usługi Azure AD, klikając przycisk "Dołącz". Jeśli próba czy dołączenie do hybrydowej usługi Azure AD nie powiedzie się, będą wyświetlane szczegóły dotyczące błędu.
+
 
 **Najbardziej typowe problemy to:**
 
-- Nieprawidłowej konfiguracji usług AD FS lub Azure AD
+- A źle skonfigurowany usług AD FS lub Azure AD lub problemy z sieci
 
     ![Przyłączanie do obszaru roboczego dla Windows](./media/troubleshoot-hybrid-join-windows-legacy/02.png)
+    
+    - Autoworkplace.exe nie jest w stanie dyskretnie uwierzytelniania za pomocą usługi Azure AD lub AD FS. To może być spowodowane brakiem lub nieprawidłowo skonfigurowany usług AD FS (w przypadku domen federacyjnych) lub brakuje lub zostały nieprawidłowo skonfigurowane usługi Azure AD bezproblemowego logowania jednokrotnego (w przypadku domen zarządzanych) lub problemy z siecią. 
+    
+     - Może to być czy uwierzytelnianie wieloskładnikowe (MFA) jest włączona lub skonfigurowany dla użytkownika, a WIAORMUTLIAUTHN nie jest skonfigurowany na serwerze usług AD FS. 
+     
+     - Inną możliwością jest tej strony (HRD) odnajdowania obszaru macierzystego oczekuje na interakcję użytkownika, co uniemożliwia **autoworkplace.exe** w trybie dyskretnym żądania tokenu.
+     
+     - Możliwe, że usług AD FS i adresów URL usługi Azure AD są nieobecne w strefie intranetu programu Internet Explorer na komputerze klienckim.
+     
+     - Problemy z łącznością sieciową uniemożliwiają **autoworkplace.exe** dotrze usług AD FS lub adresy URL platformy Azure AD. 
+     
+     - **Autoworkplace.exe** wymaga od klienta bezpośredniego linii wzroku od klienta do orgnanization lokalnego kontrolera domeny usługi AD, co oznacza, że dołączenie do hybrydowej usługi Azure AD powiedzie się tylko wtedy, gdy klient jest podłączony do sieci intranet w organizacji .
+     
+     - Twoja organizacja korzysta z usługi Azure AD bezproblemowego logowania jednokrotnego, `https://autologon.microsoftazuread-sso.com` lub `https://aadg.windows.net.nsatc.net` nie są obecne urządzenia IE ustawień sieci intranet, a **zezwala na aktualizacje na pasku stanu za pomocą skryptu** nie jest włączona dla strefy intranetowej.
 
 - Użytkownik nie jest zarejestrowany jako użytkownik domeny
 
@@ -92,9 +102,7 @@ Jeśli dołączenie do hybrydowej usługi Azure AD nie powiodło się, okno dial
     
     - Zalogowany użytkownik nie jest użytkownikiem domeny (na przykład użytkownik lokalny). Na urządzeniach niskiego poziomu, dołączenie do usługi Azure AD hybrydowej jest obsługiwana tylko dla użytkowników domeny.
     
-    - Autoworkplace.exe nie jest w stanie dyskretnie uwierzytelniania za pomocą usługi Azure AD lub AD FS. Może to być spowodowane wyewidencjonowanie i powiązane problemy z łącznością sieciową na adresy URL platformy Azure AD. Możliwe również, czy uwierzytelnianie wieloskładnikowe (MFA) jest włączona lub skonfigurowany dla użytkownika, a WIAORMUTLIAUTHN nie jest skonfigurowany na serwerze federacyjnym. Inną możliwością jest tej strony (HRD) odnajdowania obszaru macierzystego oczekuje na interakcję użytkownika, co uniemożliwia **autoworkplace.exe** w trybie dyskretnym żądania tokenu.
-    
-    - Twoja organizacja korzysta z usługi Azure AD bezproblemowego logowania jednokrotnego, `https://autologon.microsoftazuread-sso.com` lub `https://aadg.windows.net.nsatc.net` nie są obecne urządzenia IE ustawień sieci intranet, a **zezwala na aktualizacje na pasku stanu za pomocą skryptu** nie jest włączona dla strefy intranetowej.
+    - Klient nie jest w stanie połączyć się z kontrolerem domeny.    
 
 - Osiągnięto limit przydziału
 
@@ -114,9 +122,11 @@ Możesz również znaleźć informacje o stanie w dzienniku zdarzeń w obszarze:
 
 - Problemy z konfiguracją usługi: 
 
-  - Serwer federacyjny został skonfigurowany do obsługi **WIAORMULTIAUTHN**. 
+  - Serwer usług AD FS nie został skonfigurowany do obsługi **WIAORMULTIAUTHN**. 
 
   - Las komputera nie ma żadnych obiektu punktu połączenia usługi, który wskazuje nazwę zweryfikowanej domeny w usłudze Azure AD 
+  
+  - Lub jeśli odbywa się domenę, a następnie bezproblemowe logowanie Jednokrotne nie zostało skonfigurowane lub nie działa.
 
   - Użytkownik osiągnął limit urządzeń. 
 

@@ -14,12 +14,12 @@ ms.workload: infrastructure-services
 ms.date: 06/18/2018
 ms.author: bwren, vinagara
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: fd8ba47e8fb0d591fab7717117329357b74f907a
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 8f5dba7ba1c21e33f23cf8917c93e478eadf5f88
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47585972"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269534"
 ---
 # <a name="adding-log-analytics-saved-searches-and-alerts-to-management-solution-preview"></a>Dodawanie usługi Log Analytics zapisane wyszukiwania i alerty w rozwiązaniu do zarządzania (wersja zapoznawcza)
 
@@ -84,7 +84,7 @@ Każda właściwość zapisanego kryterium wyszukiwania jest opisane w poniższe
 | query | Zapytanie do uruchomienia. |
 
 > [!NOTE]
-> Może być konieczne użycie znaków ucieczki w zapytaniu, jeśli zawiera znaki, które może zostać zinterpretowane jako kod JSON.  Na przykład, jeśli zapytanie zostało **typu: AzureActivity OperationName:"Microsoft.Compute/virtualMachines/write"**, powinny być zapisywane w pliku rozwiązania jako **typu: AzureActivity OperationName:\\" Microsoft.Compute/virtualMachines/write\\"**.
+> Może być konieczne użycie znaków ucieczki w zapytaniu, jeśli zawiera znaki, które może zostać zinterpretowane jako kod JSON.  Na przykład, jeśli zapytanie zostało **AzureActivity | OperationName:"Microsoft.Compute/virtualMachines/write"**, powinny być zapisywane w pliku rozwiązania jako **AzureActivity | OperationName: /\"Microsoft.Compute/virtualMachines/write\"**.
 
 ## <a name="alerts"></a>Alerty
 [Alerty dzienników platformy Azure](../monitoring-and-diagnostics/monitor-alerts-unified-log.md) są tworzone przez reguły alertów platformy Azure, które uruchamiają zapytania określonego dziennika w regularnych odstępach czasu.  Jeśli wyniki zapytania pasują do określonych kryteriów, zostaje utworzony rekord alertu i co najmniej jednej akcji są uruchamiane przy użyciu [grup akcji](../monitoring-and-diagnostics/monitoring-action-groups.md).  

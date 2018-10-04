@@ -13,12 +13,12 @@ author: swinarko
 ms.author: sawinark
 ms.reviewer: douglasl
 manager: craigg
-ms.openlocfilehash: a7ba62a28b65d1cd7152c793bc303e747057cdf8
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ace95d39cf7c2d183249b0b6c4094835132b3198
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46991474"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249387"
 ---
 # <a name="create-the-azure-ssis-integration-runtime-in-azure-data-factory"></a>Tworzenie środowiska Azure-SSIS integration runtime w usłudze Azure Data Factory
 Ten artykuł zawiera instrukcje aprowizacji środowiska Azure-SSIS integration runtime w usłudze Azure Data Factory. Następnie możesz użyć programu SQL Server Data Tools (SSDT) lub SQL Server Management Studio (SSMS) do wdrożenia pakietów usług SQL Server Integration Services (SSIS) w tym środowisku uruchomieniowym na platformie Azure. 
@@ -27,7 +27,7 @@ Samouczek [samouczek: Wdrażanie pakietów usług SQL Server Integration Service
 
 - Opcjonalnie za pomocą usługi Azure SQL Database punkty końcowe usługi sieci wirtualnej/zarządzanego wystąpienia jako serwer bazy danych do hostowania wykazu usług SSIS (bazę danych SSISDB). Aby uzyskać wskazówki dotyczące wybranie typu serwera bazy danych do hostowania bazy SSISDB, zobacz [serwer logiczny Porównaj bazy danych SQL i wystąpienie zarządzane usługi SQL Database](create-azure-ssis-integration-runtime.md#compare-sql-database-logical-server-and-sql-database-managed-instance). Jako warunek wstępny należy dołączyć środowiska Azure-SSIS IR do sieci wirtualnej i konfigurowanie sieci wirtualnej, uprawnienia i ustawienia zgodnie z potrzebami. Zobacz [Join Azure-SSIS IR do sieci wirtualnej](https://docs.microsoft.com/en-us/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network). 
 
-- Opcjonalnie użyć uwierzytelniania usługi Azure Active Directory (AAD) za pomocą usługi Azure Data fabryki tożsamość usługi zarządzanej (MSI) dla środowiska Azure-SSIS IR do łączenia się z serwerem bazy danych. Jako warunek wstępny, musisz dodać swoje MSI fabryki danych do grupy usługi AAD ma uprawnienia dostępu do serwera bazy danych, zobacz [Włącz uwierzytelnianie usługi AAD dla środowiska Azure-SSIS IR](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir). 
+- Opcjonalnie na użytek uwierzytelniania usługi Azure Active Directory (AAD) przy użyciu tożsamości usługi Azure Data Factory, zarządzanych zasobów platformy Azure dla środowiska Azure-SSIS IR do łączenia się z serwerem bazy danych. Jako warunek wstępny, musisz dodać swoje MSI fabryki danych do grupy usługi AAD ma uprawnienia dostępu do serwera bazy danych, zobacz [Włącz uwierzytelnianie usługi AAD dla środowiska Azure-SSIS IR](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir). 
 
 ## <a name="overview"></a>Przegląd
 W tym artykule przedstawiono różne sposoby aprowizacji środowiska Azure-SSIS IR: 
@@ -146,7 +146,7 @@ W tej sekcji użyjesz witryny Azure portal, specjalnie Interfejsie Data Factory,
 
     d. W polu **Punkt końcowy serwera bazy danych wykazu** wybierz punkt końcowy serwera bazy danych hostującego bazę danych SSISDB. Na podstawie wybranej bazy danych serwera, bazy danych SSISDB można utworzyć w Twoim imieniu jako pojedynczej bazy danych, część puli elastycznej, lub w wystąpieniu zarządzanym i dostępne w sieci publicznej lub po dołączeniu do sieci wirtualnej. 
 
-    d. Na **uwierzytelnianie w usłudze AAD użycia...**  pole wyboru, wybierz metodę uwierzytelniania dla serwera bazy danych do hostowania bazy SSISDB: bazy danych SQL lub Azure Active Directory (AAD) za pomocą usługi Azure Data fabryki tożsamość usługi zarządzanej (MSI). Jeśli możesz sprawdzić, musisz dodać swoje MSI fabryki danych do grupy usługi AAD ma uprawnienia dostępu do serwera bazy danych, zobacz [Włącz uwierzytelnianie usługi AAD dla środowiska Azure-SSIS IR](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir). 
+    d. Na **uwierzytelnianie w usłudze AAD użycia...**  pole wyboru, wybierz metodę uwierzytelniania dla serwera bazy danych do hostowania bazy SSISDB: bazy danych SQL lub Azure Active Directory (AAD) przy użyciu usługi Azure Data Factory tożsamości zarządzanej dla zasobów platformy Azure. Jeśli możesz sprawdzić, musisz dodać swoje MSI fabryki danych do grupy usługi AAD ma uprawnienia dostępu do serwera bazy danych, zobacz [Włącz uwierzytelnianie usługi AAD dla środowiska Azure-SSIS IR](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir). 
 
     e. W polu **Nazwa administratora** wprowadź nazwę użytkownika uwierzytelnienia SQL dla serwera bazy danych hostującego bazę danych SSISDB. 
 
@@ -333,7 +333,7 @@ Jeśli nie usługi Azure SQL Database za pomocą sieci wirtualnej usługi punkt�
 
 Jeśli używasz wystąpienia zarządzanego do hostowania bazy SSISDB, można pominąć parametr CatalogPricingTier lub przekazać wartość pustą. W przeciwnym razie nie można go pominąć i musi przekazywać prawidłową wartość z listy obsługiwanych warstw cenowych usługi Azure SQL Database, zobacz [limity zasobów bazy danych SQL](../sql-database/sql-database-resource-limits.md). 
 
-Jeśli używasz uwierzytelniania usługi Azure Active Directory (AAD) za pomocą usługi Azure Data fabryki tożsamość usługi zarządzanej (MSI) do łączenia się z serwerem bazy danych, można pominąć parametr CatalogAdminCredential, ale usługi MSI fabryki danych należy dodać do grupy usługi AAD z dostępem uprawnienia na serwerze bazy danych, zobacz [Włącz uwierzytelnianie usługi AAD dla środowiska Azure-SSIS IR](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir). W przeciwnym razie nie można go pominąć i należy przekazać prawidłowy obiekt tworzony na podstawie swoją nazwę administratora serwera i hasło dla uwierzytelniania SQL.
+Jeśli używasz uwierzytelniania usługi Azure Active Directory (AAD) za pomocą usługi Azure Data Factory tożsamości zarządzanej dla zasobów platformy Azure połączyć się z serwerem bazy danych, można pominąć parametr CatalogAdminCredential, ale Twoja MSI fabryki danych należy dodać do grupy usługi AAD za pomocą uprawnienia dostępu do serwera bazy danych, zobacz [Włącz uwierzytelnianie usługi AAD dla środowiska Azure-SSIS IR](https://docs.microsoft.com/en-us/azure/data-factory/enable-aad-authentication-azure-ssis-ir). W przeciwnym razie nie można go pominąć i należy przekazać prawidłowy obiekt tworzony na podstawie swoją nazwę administratora serwera i hasło dla uwierzytelniania SQL.
 
 ```powershell               
 Set-AzureRmDataFactoryV2IntegrationRuntime -ResourceGroupName $ResourceGroupName `

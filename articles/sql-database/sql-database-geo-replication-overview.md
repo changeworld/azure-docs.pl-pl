@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: e3296430cd58c8ba33f7cc9acd4cded2925b5be9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: bd224317ba777939a1db4edeb7cb5df728fc434c
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47166286"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249013"
 ---
 # <a name="overview-active-geo-replication-and-auto-failover-groups"></a>Przegląd: Aktywnej grupy replikacji geograficznej i automatyczny tryb failover
 
@@ -90,6 +90,10 @@ Funkcja aktywna replikacja geograficzna udostępnia następujące podstawowe fun
 ## <a name="auto-failover-group-capabilities"></a>Funkcje grupy automatyczny tryb failover
 
 Funkcja grup automatyczny tryb failover zapewnia zaawansowane abstrakcji aktywnej replikacji geograficznej, dzięki obsłudze replikacji na poziomie grupy i automatycznej pracy awaryjnej. Ponadto usuwa konieczność, aby zmienić parametry połączenia SQL po włączeniu trybu failover, zapewniając punktów końcowych odbiornika dodatkowe. 
+
+> [!NOTE]
+> Automatyczny tryb failover nie jest dostępny w wystąpieniu zarządzanym.
+>  
 
 * **Grupy trybu failover**: można utworzyć jeden lub wiele grup trybu failover między dwoma serwerami w różnych regionach (podstawowych i pomocniczych serwerów). Każda grupa może zawierać jeden lub kilka baz danych, które mogą zostać odzyskane jako jednostka, w przypadku wszystkich lub niektórych podstawowych baz danych staną się niedostępne z powodu awarii w regionie podstawowym.  
 * **Serwer podstawowy**: serwer hostujący podstawowych baz danych w grupie trybu failover.

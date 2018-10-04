@@ -11,13 +11,13 @@ author: CarlRabeler
 ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
-ms.date: 09/14/2018
-ms.openlocfilehash: 8f1c16aba3a3c082091707e33d3341e6eb6dc31e
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.date: 10/02/2018
+ms.openlocfilehash: 99914fd1fbfb2647f54c8257145132db2c7bf045
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47158723"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249115"
 ---
 # <a name="azure-sql-database-purchasing-models-and-resources"></a>Usługa Azure SQL Database zakupu modeli i zasoby 
 
@@ -26,7 +26,7 @@ Usługa Azure SQL Database umożliwia łatwy zakup w pełni zarządzany aparat b
  - [Wystąpienia zarządzane](sql-database-managed-instance.md) w usłudze Azure SQL Database tylko w ramach oferty [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md).
 
 > [!IMPORTANT]
-> [Bazy danych na dużą skalę (wersja zapoznawcza)](sql-database-hyperscale.md) są dostępne tylko w modelu zakupu opartego na rdzeniach wirtualnych dla pojedynczych baz danych z serwerem logicznym lub w ramach wystąpienia zarządzanego. 
+> [Bazy danych na dużą skalę (wersja zapoznawcza)](sql-database-hyperscale.md) znajdują się w publicznej wersji zapoznawczej tylko w przypadku pojedynczych baz danych za pomocą rdzeni wirtualnych zakupem modelu. 
 
 Następujących tabel i wykresów porównania i porównać te dwa modele zakupu.
 

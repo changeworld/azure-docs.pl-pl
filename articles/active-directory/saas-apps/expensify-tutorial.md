@@ -13,14 +13,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 10/2/2017
+ms.date: 10/02/2018
 ms.author: jeedes
-ms.openlocfilehash: d53877dbcc25edad14714633bfa11a0c3cbbf76e
-ms.sourcegitcommit: 1d850f6cae47261eacdb7604a9f17edc6626ae4b
+ms.openlocfilehash: c9ee0af3cbf2c1aa7b24d2f4cf5fba9d664bc087
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/02/2018
-ms.locfileid: "39433262"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248044"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-expensify"></a>Samouczek: Integracja usługi Azure Active Directory z Expensify
 
@@ -38,7 +38,7 @@ Jeśli chcesz dowiedzieć się więcej na temat integracji aplikacji SaaS z usł
 
 Aby skonfigurować integrację usługi Azure AD za pomocą Expensify, potrzebne są następujące elementy:
 
-- Subskrypcję usługi Azure AD
+- Subskrypcji usługi Azure AD
 - Expensify logowanie jednokrotne włączone subskrypcji
 
 > [!NOTE]
@@ -56,25 +56,26 @@ W ramach tego samouczka można przetestować usługę Azure AD rejestracji jedno
 1. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
 
 ## <a name="adding-expensify-from-the-gallery"></a>Dodawanie Expensify z galerii
+
 Aby skonfigurować integrację Expensify w usłudze Azure AD, należy dodać Expensify z galerii z listą zarządzanych aplikacji SaaS.
 
 **Aby dodać Expensify z galerii, wykonaj następujące czynności:**
 
-1. W  **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
+1. W **[witryny Azure portal](https://portal.azure.com)**, w panelu nawigacyjnym po lewej stronie kliknij pozycję **usługi Azure Active Directory** ikony. 
 
-    ![Przycisk usługi Azure Active Directory][1]
+    ![image](./media/expensify-tutorial/selectazuread.png)
 
-1. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
+2. Przejdź do **aplikacje dla przedsiębiorstw**. Następnie przejdź do **wszystkie aplikacje**.
 
-    ![W bloku aplikacji przedsiębiorstwa][2]
+    ![image](./media/expensify-tutorial/a_select_app.png)
     
-1. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
+3. Aby dodać nową aplikację, kliknij **nową aplikację** przycisk u góry okna dialogowego.
 
-    ![Nowy przycisk aplikacji][3]
+    ![image](./media/expensify-tutorial/a_new_app.png)
 
-1. W polu wyszukiwania wpisz **Expensify**, wybierz opcję **Expensify** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
+4. W polu wyszukiwania wpisz **Expensify**, wybierz opcję **Expensify** z panelu wynik kliknięcie **Dodaj** przycisk, aby dodać aplikację.
 
-    ![Expensify na liście wyników](./media/expensify-tutorial/tutorial_expensify_addfromgallery.png)
+     ![image](./media/expensify-tutorial/a_add_app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Konfiguracja i testowanie usługi Azure AD logowania jednokrotnego
 
@@ -98,84 +99,75 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
 **Aby skonfigurować usługę Azure AD logowanie jednokrotne z Expensify, wykonaj następujące czynności:**
 
-1. W witrynie Azure portal na **Expensify** strona integracji aplikacji, kliknij przycisk **logowanie jednokrotne**.
+1. W [witryny Azure portal](https://portal.azure.com/)na **Expensify** strona integracji aplikacji, wybierz opcję **logowanie jednokrotne**.
 
-    ![Skonfigurować łącze rejestracji jednokrotnej][4]
+    ![image](./media/expensify-tutorial/b1_b2_select_sso.png)
 
-1. Na **logowanie jednokrotne** okno dialogowe, wybierz opcję **tryb** jako **opartej na SAML logowania jednokrotnego** włączyć logowanie jednokrotne.
- 
-    ![Okno dialogowe rejestracji jednokrotnej](./media/expensify-tutorial/tutorial_expensify_samlbase.png)
+2. Kliknij przycisk **pojedynczej zmiany trybu logowania jednokrotnego** na górze ekranu, aby wybrać **SAML** trybu.
 
-1. Na **Expensify domena i adresy URL** sekcji, wykonaj następujące czynności:
+      ![image](./media/expensify-tutorial/b1_b2_saml_ssso.png)
 
-    ![Domena i adresy URL pojedynczego logowania jednokrotnego informacji expensify](./media/expensify-tutorial/tutorial_expensify_url.png)
+3. Na **wybierz jedną metodę logowania jednokrotnego** okno dialogowe, kliknij przycisk **wybierz** dla **SAML** trybu, aby włączyć logowanie jednokrotne.
 
-    a. W **adres URL logowania** pole tekstowe, wpisz adres URL w postaci: `https://www.expensify.com/authentication/saml/login`
+    ![image](./media/expensify-tutorial/b1_b2_saml_sso.png)
+
+4. Na **Ustaw się logowanie jednokrotne z SAML** kliknij **Edytuj** przycisk, aby otworzyć **podstawową konfigurację protokołu SAML** okna dialogowego.
+
+    ![image](./media/expensify-tutorial/b1-domains_and_urlsedit.png)
+
+5. Na **podstawową konfigurację protokołu SAML** sekcji, wykonaj następujące czynności:
+
+    a. W **adres URL logowania** pole tekstowe, wpisz adres URL jako: `https://www.expensify.com/authentication/saml/login`
 
     b. W **identyfikator** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://www.<companyname>.expensify.com`
 
+    ![image](./media/expensify-tutorial/b1-domains_and_urls.png)
+
     > [!NOTE] 
-    > Zastąp `<companyname>` sekcji adres URL identyfikatora z domeny Twojej firmy. Zobacz przykład `https://contoso.expensify.com` powyżej. Skontaktuj się z pomocą [zespołem pomocy technicznej klienta Expensify](mailto:help@expensify.com) aby zyskać tę wartość.
+    > Zastąp <companyname> sekcji adres URL identyfikatora z domeny Twojej firmy. Zobacz przykład `https://contoso.expensify.com` powyżej. W Expensify, jest to nazwa domeny jak pokazano w **Ustawienia > domeny kontroli**.
 
-1. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
+    ![Informacje o domenie expensify](./media/expensify-tutorial/tutorial_expensify_domain.png)
 
-    ![Link pobierania certyfikatu](./media/expensify-tutorial/tutorial_expensify_certificate.png) 
+6. Na **Ustaw się logowania jednokrotnego przy użyciu protokołu SAML** strony w **certyfikat podpisywania SAML** , kliknij przycisk **Pobierz** można pobrać odpowiedni certyfikat zgodnie z wymagania i zapisz go na komputerze.
 
-1. Kliknij przycisk **Zapisz** przycisku.
+    ![image](./media/expensify-tutorial/certificatebase64.png)
 
-    ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/expensify-tutorial/tutorial_general_400.png)
-
-1. Aby włączyć logowanie Jednokrotne w Expensify, należy najpierw włączyć **kontroli domeny** w aplikacji. Kontrola domeny można włączyć w aplikacji za pomocą kroków wymienionych [tutaj](http://help.expensify.com/domain-control). Aby uzyskać dodatkową pomoc, pracować [zespołem pomocy technicznej klienta Expensify](mailto:help@expensify.com). Jeśli masz włączoną kontrolą domeny, wykonaj następujące kroki:
+7. Aby włączyć logowanie Jednokrotne w Expensify, należy najpierw włączyć **kontroli domeny** w aplikacji. Kontrola domeny można włączyć w aplikacji za pomocą kroków wymienionych [tutaj](http://help.expensify.com/domain-control). Aby uzyskać dodatkową pomoc, pracować [zespołem pomocy technicznej klienta Expensify](mailto:help@expensify.com). Jeśli masz włączoną kontrolą domeny, wykonaj następujące kroki:
    
     ![Konfigurowanie logowania jednokrotnego](./media/expensify-tutorial/tutorial_expensify_51.png)
     
     a. Zaloguj się do aplikacji Expensify.
     
-    b. Na pasku narzędzi u góry kliknij **administratora**.
+    b. W okienku po lewej stronie kliknij **ustawienia** i przejdź do **SAML**.
     
-    c. W okienku po lewej stronie kliknij **domeny**.
+    c. Przełącz **logowania języka SAML** opcję **włączone**.
     
-    d. Kliknij nazwę zweryfikowanej domeny.
-    
-    e. W okienku po lewej stronie kliknij **SAML**, a następnie wybierz pozycję **włączone**.
-    
-    f. Otwórz pobrany metadanych federacji z usługi Azure AD w programie Notatnik, skopiuj zawartość, a następnie wklej go do **metadanych dostawcy tożsamości** pola tekstowego.
+    d. Otwórz pobrany metadanych federacji z usługi Azure AD w programie Notatnik, skopiuj zawartość, a następnie wklej go do **metadanych dostawcy tożsamości** pola tekstowego.
 
-> [!TIP]
-> Teraz mogą odczytywać zwięzłe wersji tych instrukcji wewnątrz [witryny Azure portal](https://portal.azure.com), podczas gdy konfigurujesz aplikacji!  Po dodaniu tej aplikacji z **usługi Active Directory > aplikacje dla przedsiębiorstw** po prostu kliknij pozycję **logowania jednokrotnego** karty i uzyskać dostęp do osadzonych dokumentacji za pośrednictwem  **Konfiguracja** sekcji u dołu. Możesz dowiedzieć się więcej o funkcji dokumentacji osadzonego w tym miejscu: [dokumentacja embedded usługi Azure AD]( https://go.microsoft.com/fwlink/?linkid=845985)
-> 
-
-### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
+### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD 
 
 Celem tej sekcji jest tworzenie użytkownika testowego w witrynie Azure portal, o nazwie Britta Simon.
 
-   ![Tworzenie użytkownika testowego usługi Azure AD][100]
+1. W witrynie Azure portal w okienku po lewej stronie wybierz **usługi Azure Active Directory**, wybierz opcję **użytkowników**, a następnie wybierz pozycję **wszyscy użytkownicy**.
 
-**Aby utworzyć użytkownika testowego w usłudze Azure AD, wykonaj następujące czynności:**
+    ![image](./media/expensify-tutorial/d_users_and_groups.png)
 
-1. W witrynie Azure portal w okienku po lewej stronie kliknij pozycję **usługi Azure Active Directory** przycisku.
+2. Wybierz **nowego użytkownika** w górnej części ekranu.
 
-    ![Przycisk usługi Azure Active Directory](./media/expensify-tutorial/create_aaduser_01.png)
+    ![image](./media/expensify-tutorial/d_adduser.png)
 
-1. Aby wyświetlić listę użytkowników, przejdź do **użytkowników i grup**, a następnie kliknij przycisk **wszyscy użytkownicy**.
+3. We właściwościach użytkownika wykonaj następujące czynności.
 
-    !["Użytkownicy i grupy" i "All users" linki](./media/expensify-tutorial/create_aaduser_02.png)
+    ![image](./media/expensify-tutorial/d_userproperties.png)
 
-1. Aby otworzyć **użytkownika** okno dialogowe, kliknij przycisk **Dodaj** w górnej części **wszyscy użytkownicy** okno dialogowe.
+    a. W **nazwa** pola wprowadź **BrittaSimon**.
+  
+    b. W **nazwa_użytkownika** typ pola **brittasimon@yourcompanydomain.extension**  
+    Na przykład: BrittaSimon@contoso.com
 
-    ![Przycisk Dodaj](./media/expensify-tutorial/create_aaduser_03.png)
+    c. Wybierz **właściwości**, wybierz opcję **hasło Show** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w polu hasło.
 
-1. W **użytkownika** okna dialogowego pole, wykonaj następujące czynności:
-
-    ![Okno dialogowe użytkownika](./media/expensify-tutorial/create_aaduser_04.png)
-
-    a. W **nazwa** wpisz **BrittaSimon**.
-
-    b. W **nazwa_użytkownika** wpisz adres e-mail użytkownika Britta Simon.
-
-    c. Wybierz **Pokaż hasło** pole wyboru, a następnie zapisz wartość, która jest wyświetlana w **hasło** pole.
-
-    d. Kliknij pozycję **Utwórz**.
+    d. Wybierz pozycję **Utwórz**.
  
 ### <a name="create-an-expensify-test-user"></a>Tworzenie użytkownika testowego Expensify
 
@@ -185,31 +177,25 @@ W tej sekcji utworzysz użytkownika o nazwie Britta Simon w Expensify. Praca z [
 
 W tej sekcji możesz włączyć Britta Simon do używania usługi Azure logowanie jednokrotne za udzielanie dostępu do Expensify.
 
-![Przypisanie roli użytkownika][200] 
+1. W witrynie Azure portal wybierz **aplikacje dla przedsiębiorstw**, wybierz opcję **wszystkie aplikacje**.
 
-**Aby przypisać Britta Simon Expensify, wykonaj następujące czynności:**
+    ![image](./media/expensify-tutorial/d_all_applications.png)
 
-1. W witrynie Azure portal Otwórz widok aplikacji, a następnie przejdź do widoku katalogu i przejdź do **aplikacje dla przedsiębiorstw** kliknięcie **wszystkie aplikacje**.
+2. Na liście aplikacji wybierz **Expensify**.
 
-    ![Przypisz użytkownika][201] 
+    ![image](./media/expensify-tutorial/d_all_proapplications.png)
 
-1. Na liście aplikacji wybierz **Expensify**.
+3. W menu po lewej stronie wybierz **użytkowników i grup**.
 
-    ![Link Expensify na liście aplikacji](./media/expensify-tutorial/tutorial_expensify_app.png)  
+    ![image](./media/expensify-tutorial/d_leftpaneusers.png)
 
-1. W menu po lewej stronie kliknij **użytkowników i grup**.
+4. Wybierz **Dodaj** przycisk, a następnie wybierz **użytkowników i grup** w **Dodaj przydziału** okna dialogowego.
 
-    ![Link "Użytkownicy i grupy"][202]
+    ![image](./media/expensify-tutorial/d_assign_user.png)
 
-1. Kliknij przycisk **Dodaj** przycisku. Następnie wybierz pozycję **użytkowników i grup** na **Dodaj przydziału** okna dialogowego.
+4. W **użytkowników i grup** okna dialogowego wybierz **Britta Simon** na liście użytkowników, następnie kliknij przycisk **wybierz** znajdujący się u dołu ekranu.
 
-    ![Okienko Dodawanie przypisania][203]
-
-1. Na **użytkowników i grup** okno dialogowe, wybierz opcję **Britta Simon** na liście Użytkownicy.
-
-1. Kliknij przycisk **wybierz** znajdujący się na **użytkowników i grup** okna dialogowego.
-
-1. Kliknij przycisk **przypisać** znajdujący się na **Dodaj przydziału** okna dialogowego.
+5. W **Dodaj przydziału** okna dialogowego wybierz **przypisać** przycisku.
     
 ### <a name="test-single-sign-on"></a>Testowanie logowania jednokrotnego
 
@@ -223,17 +209,6 @@ Aby uzyskać więcej informacji na temat panelu dostępu, zobacz [wprowadzenie d
 * [Lista samouczków dotyczących integrowania aplikacji SaaS w usłudze Azure Active Directory](tutorial-list.md)
 * [Czym jest dostęp do aplikacji i logowanie jednokrotne za pomocą usługi Azure Active Directory?](../manage-apps/what-is-single-sign-on.md)
 
-<!--Image references-->
 
-[1]: ./media/expensify-tutorial/tutorial_general_01.png
-[2]: ./media/expensify-tutorial/tutorial_general_02.png
-[3]: ./media/expensify-tutorial/tutorial_general_03.png
-[4]: ./media/expensify-tutorial/tutorial_general_04.png
 
-[100]: ./media/expensify-tutorial/tutorial_general_100.png
-
-[200]: ./media/expensify-tutorial/tutorial_general_200.png
-[201]: ./media/expensify-tutorial/tutorial_general_201.png
-[202]: ./media/expensify-tutorial/tutorial_general_202.png
-[203]: ./media/expensify-tutorial/tutorial_general_203.png
 

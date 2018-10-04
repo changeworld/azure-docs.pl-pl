@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 09/25/2018
 ms.author: ryanwi
-ms.openlocfilehash: f9bcbbdbfb961cc229bac11115c07c0ecd6c931e
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: 9d287abf8963ba46cce42f101aecba31c9762c7a
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48041275"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249540"
 ---
 # <a name="prepare-your-development-environment-on-windows"></a>Przygotowywanie środowiska deweloperskiego w systemie Windows
 > [!div class="op_single_selector"]
@@ -48,6 +48,8 @@ Na potrzeby tworzenia aplikacji obsługiwane są następujące wersje systemu op
 >
 
 ## <a name="install-the-sdk-and-tools"></a>Instalowanie zestawu SDK i narzędzi
+Instalator platformy sieci Web (WebPI) jest zalecanym sposobem instalowania zestawu SDK i narzędzi. Jeśli otrzymujesz błędy w czasie wykonywania za pomocą Instalatora WebPI, można również znaleźć bezpośrednie linki do instalatory w informacjach o wersji dla określonej wersji usługi Service Fabric. Informacje o wersji można znaleźć w różnych anonse wersji na [blog zespołu usługi Service Fabric](https://blogs.msdn.microsoft.com/azureservicefabric/).
+
 ### <a name="to-use-visual-studio-2017"></a>Używanie programu Visual Studio 2017
 Narzędzia Service Fabric Tools są częścią pakietu roboczego Programowanie na platformie Azure w programie Visual Studio 2017. Włącz to obciążenie w ramach instalacji programu Visual Studio.
 Ponadto należy zainstalować zestaw SDK i środowisko uruchomieniowe usługi Microsoft Azure Service Fabric przy użyciu Instalatora platformy sieci Web.

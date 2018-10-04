@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 08/16/2018
 ms.author: jdial
-ms.openlocfilehash: e92c099d9e0dfacff71c13382059acb06037bb1e
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 2291136cf50439b7845c3a344be3218277257b34
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46999872"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269483"
 ---
 # <a name="azure-virtual-network-frequently-asked-questions-faq"></a>Sieć wirtualna platformy Azure — często zadawane pytania (FAQ)
 
@@ -230,7 +230,7 @@ Komunikacji równorzędnej sieci wirtualnej (lub komunikacji równorzędnej siec
 Tak. Globalne wirtualne sieci równorzędne pozwala nawiązać komunikację równorzędną między sieciami wirtualnymi w różnych regionach. Globalne wirtualne sieci równorzędne jest dostępna we wszystkich publicznych regionach platformy Azure. Nie można globalnie komunikacji równorzędnej z publicznych regionach platformy Azure do chmur krajowych. Globalnej komunikacji równorzędnej nie ma obecnie w chmurach krajowych.
 
 ### <a name="can-i-enable-vnet-peering-if-my-virtual-networks-belong-to-subscriptions-within-different-azure-active-directory-tenants"></a>Można włączyć komunikację równorzędną sieci wirtualnej Jeśli Moje sieci wirtualne należą do subskrypcji w ramach różnych dzierżaw usługi Azure Active Directory?
-Obecnie nie jest możliwe ustalenie, komunikacja równorzędna sieci wirtualnych (czy lokalnych lub globalnych) gdy Twoje subskrypcje należą do różnych dzierżaw usługi Azure Active Directory.
+Tak. Jest możliwe ustalenie, komunikacja równorzędna sieci wirtualnych (czy lokalnych lub globalnych), jeśli Twoje subskrypcje należą do różnych dzierżaw usługi Azure Active Directory. Można to zrobić za pomocą programu PowerShell lub interfejsu wiersza polecenia. Portal nie jest jeszcze obsługiwana.
 
 ### <a name="my-vnet-peering-connection-is-in-initiated-state-why-cant-i-connect"></a>Mojej sieci wirtualnej połączenie komunikacji równorzędnej jest *zainicjowano* stanu, dlaczego nie mogę połączyć?
 Jeśli połączenie komunikacji równorzędnej jest w stanie zainicjowano, oznacza to, że utworzono tylko jedno połączenie. Link dwukierunkowe musi zostać utworzona, aby możliwe było nawiązanie połączenia pomyślnie. Na przykład aby nawiązać komunikację równorzędną między sieciami wirtualnymi A siecią wirtualną b, łącze należy utworzyć z zachodzi komunikacja równorzędna między do Vnetc i Vnetc, aby komunikacja równorzędna między. Tworzenie łączy główny zarówno zmieni stan na *połączone.*
@@ -259,7 +259,7 @@ Nie. Przechodnie komunikacja równorzędna nie jest obsługiwana. Należy równo
 ### <a name="are-there-any-bandwidth-limitations-for-peering-connections"></a>Czy istnieją jakiekolwiek ograniczenia przepustowości, dla połączenia komunikacji równorzędnej?
 Nie. Wirtualne sieci równorzędne, lokalnych lub globalnych, nie nakłada żadnych ograniczeń przepustowości. Przepustowość jest tylko limity przez zasób maszynę Wirtualną lub obliczeń.
 
-## <a name="virtual-network-tap"></a>PODSŁUCHU sieci wirtualnej
+## <a name="virtual-network-tap"></a>Virtual Network TAP
 
 ### <a name="which-azure-regions-are-available-for-virtual-network-tap"></a>Które regiony platformy Azure są dostępne dla PODSŁUCHU sieci wirtualnej?
 W wersji zapoznawczej dla deweloperów ta funkcja jest dostępna w regionie zachodnio-środkowe stany USA. Interfejsy sieciowe monitorowane, NACIŚNIJ zasób sieci wirtualnej i rozwiązania modułu zbierającego lub analiza musi zostać wdrożony w tym samym regionie.

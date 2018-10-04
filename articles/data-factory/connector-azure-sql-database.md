@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 09/12/2018
 ms.author: jingwang
-ms.openlocfilehash: 003fb667177bbf7f532946d34a06da757646ade3
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: c513ef76174507f1ea78b265b1882266b8473737
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45578586"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248945"
 ---
 # <a name="copy-data-to-or-from-azure-sql-database-by-using-azure-data-factory"></a>Kopiuj dane do / z usługi Azure SQL Database przy użyciu usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you use:"]
@@ -33,7 +33,7 @@ Można skopiować danych z lub do usługi Azure SQL Database do dowolnego obsłu
 
 W szczególności ten łącznik usługi Azure SQL Database obsługuje te funkcje:
 
-- Kopiowanie danych przy użyciu uwierzytelniania programu SQL i uwierzytelnianie tokenu aplikacji usługi Azure Active Directory (Azure AD) przy użyciu nazwy głównej usługi lub tożsamości usługi zarządzanej (MSI).
+- Kopiowanie danych przy użyciu uwierzytelniania SQL i uwierzytelnianie tokenu aplikacji usługi Azure Active Directory (Azure AD) przy użyciu tożsamości podmiotu zabezpieczeń lub zarządzanej usługi dla zasobów platformy Azure.
 - Jako źródło pobierać dane przy użyciu zapytania SQL lub procedury składowanej.
 - Jako obiekt sink dołączyć dane do tabeli docelowej lub wywołania procedury składowanej za pomocą logiki niestandardowej podczas kopiowania.
 
@@ -64,7 +64,7 @@ Różnymi typami uwierzytelniania można znaleźć w następnych sekcjach dotycz
 
 - [Uwierzytelnianie SQL](#sql-authentication)
 - [Uwierzytelnianie usługi Azure AD aplikacji token: Nazwa główna usługi](#service-principal-authentication)
-- [Uwierzytelnianie usługi Azure AD aplikacji tokenu: tożsamość usługi zarządzanej](#managed-service-identity-authentication)
+- [Uwierzytelnianie usługi Azure AD aplikacji tokenu: zarządzanych tożsamości dla zasobów platformy Azure](#managed-service-identity-authentication)
 
 >[!TIP]
 >Jeśli osiągnięty błąd z kodem jako "UserErrorFailedToConnectToSqlServer", a wiadomości, takich jak "limit sesji dla bazy danych jest XXX i został osiągnięty.", Dodaj `Pooling=false` parametry połączenia i spróbuj ponownie.
@@ -146,9 +146,9 @@ Aby użyć uwierzytelniania tokenu aplikacji usługi oparte na jednostce usługi
 }
 ```
 
-### <a name="managed-service-identity-authentication"></a>Uwierzytelnianie tożsamości usługi zarządzane
+### <a name="managed-identities-for-azure-resources-authentication"></a>Zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure
 
-Fabryka danych może być skojarzony z [tożsamości usługi zarządzanej](data-factory-service-identity.md) reprezentujący fabryki określonych danych. Ta tożsamość usługi służy do uwierzytelniania usługi Azure SQL Database. Fabryka wyznaczonym mogą uzyskiwać dostęp do i kopiowanie danych z lub z bazą danych przy użyciu tej tożsamości.
+Fabryka danych może być skojarzony z [tożsamości zarządzanej dla zasobów platformy Azure](data-factory-service-identity.md) reprezentujący fabryki określonych danych. Ta tożsamość usługi służy do uwierzytelniania usługi Azure SQL Database. Fabryka wyznaczonym mogą uzyskiwać dostęp do i kopiowanie danych z lub z bazą danych przy użyciu tej tożsamości.
 
 Aby użyć uwierzytelniania tokenu aplikacji opartych na MSI usługi Azure AD, wykonaj następujące kroki:
 

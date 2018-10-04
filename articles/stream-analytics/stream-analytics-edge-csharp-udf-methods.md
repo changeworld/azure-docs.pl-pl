@@ -9,12 +9,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: 2b6dfe7c8f8ac8d7207659b848abecd04f56c232
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: f0da25410fe81a93501df940ffbb0e115456a9e8
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181446"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247811"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-edge-jobs-preview"></a>Programowanie .NET Standard funkcje zdefiniowane przez użytkownika dla zadania usługi Azure Stream Analytics Edge (wersja zapoznawcza)
 
@@ -37,16 +37,13 @@ Format dowolny pakiet funkcji zdefiniowanej przez użytkownika ma ścieżkę `/U
 
 |**Typ funkcji zdefiniowanej przez użytkownika (C#)**  |**Usługa Azure Stream Analytics, wpisz**  |
 |---------|---------|
-|wartość logiczna  |  bigint   |
-|int32  |  bigint   |
-|int64  |  bigint   |
-|liczba zmiennoprzecinkowa  |  double   |
+|dł.  |  bigint   |
 |double  |  double   |
 |ciąg  |  nvarchar(max)   |
 |Data i godzina  |  Data i godzina   |
 |— Struktura  |  IRecord   |
 |obiekt  |  IRecord   |
-|Tablica  |  IArray   |
+|Tablica<object>  |  IArray   |
 |Dictionary < string, object >  |  IRecord   |
 
 ## <a name="codebehind"></a>Plik CodeBehind

@@ -12,14 +12,14 @@ ms.workload: identity
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: article
-ms.date: 09/18/2018
+ms.date: 09/27/2018
 ms.author: jeedes
-ms.openlocfilehash: 9e3e3ff05836cb49d46a25ef3fa55d40a0bd134f
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: 479fcc0408021ff63dbcabe3734f60a4ad6d542f
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47184812"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247758"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Samouczek: Integracja usługi Azure Active Directory za pomocą Mój zespół Sub/górną pierwszych punktów Award
 
@@ -50,7 +50,8 @@ Aby przetestować kroki opisane w tym samouczku, należy wykonać te zalecenia:
 
 ## <a name="scenario-description"></a>Opis scenariusza
 
-W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym. Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
+W ramach tego samouczka można przetestować usługę Azure AD rejestracji jednokrotnej w środowisku testowym.
+Scenariusz opisany w tym samouczku składa się z dwóch głównych bloków konstrukcyjnych:
 
 1. Dodawanie Mój zespół Sub/górną pierwszych punktów Award z galerii
 2. Konfigurowanie i testowania usługi Azure AD logowanie jednokrotne
@@ -112,7 +113,7 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
     W **adres URL logowania** pole tekstowe, wpisz adres URL przy użyciu następującego wzorca: `https://microsoftrr.performnet.com/biwv1auth/Shibboleth.sso/Login?providerId=<SAMLENTITYID>`
 
     > [!NOTE]
-    > Wartość adresu URL logowania nie jest prawdziwe. Zaktualizuj tę wartość przy użyciu rzeczywisty adres URL logowania. Skontaktuj się z pomocą [zespołem pomocy technicznej Mój klient Team Sub/górną górnej Award punktów](mailto:myawardpoints@biworldwide.com) aby zyskać tę wartość.
+    > Zostanie wyświetlony `<SAMLENTITYID>` wartości w kolejnych krokach w tym samouczku.
 
 4. Na **certyfikat podpisywania SAML** kliknij **XML metadanych** , a następnie zapisz plik metadanych na tym komputerze.
 
@@ -122,7 +123,9 @@ W tej sekcji możesz włączyć usługi Azure AD logowania jednokrotnego w witry
 
     ![Konfigurowanie pojedynczego logowania jednokrotnego Zapisz przycisku](./media/myawardpoints-tutorial/tutorial_general_400.png)
 
-6. Aby skonfigurować logowanie jednokrotne na **Mój zespół Sub/górną pierwszych punktów Award** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej Mój zespół Sub/górną pierwszych punktów Award](mailto:myawardpoints@biworldwide.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
+6. W **Mój Award punktów górnej Sub/górną zespołu Konfiguracja** zaznacz **Skonfiguruj moje punkty górnej Sub/górną zespół Award** aby otworzyć okno Konfigurowanie logowania jednokrotnego. Skopiuj identyfikator jednostki SAML z **krótki** sekcji, a następnie dołącz wartość Identyfikatora jednostki protokołu SAML ze znakiem w adresie URL zamiast z `<SAMLENTITYID>` w **Moje Award punktów górnej Sub/górną zespołu domena i adresy URL** sekcja w witrynie Azure portal.
+
+7. Aby skonfigurować logowanie jednokrotne na **Mój zespół Sub/górną pierwszych punktów Award** stronie, musisz wysłać pobrany **XML metadanych** do [zespołem pomocy technicznej Mój zespół Sub/górną pierwszych punktów Award](mailto:myawardpoints@biworldwide.com). Ustawiają to ustawienie, aby były prawidłowo po obu stronach połączenia logowania jednokrotnego SAML.
 
 ### <a name="create-an-azure-ad-test-user"></a>Tworzenie użytkownika testowego usługi Azure AD
 

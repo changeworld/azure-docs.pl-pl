@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: cf57acdcbcfa792a6c5ab62c6e8ec0589d625df7
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 4fd2f28f52c45a0ec3128302b02ad5ba498c982b
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994594"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247775"
 ---
 # <a name="server-concepts-in-azure-database-for-mariadb"></a>Pojęcia serwera w usłudze Azure Database dla serwera MariaDB
 Ten artykuł zawiera zagadnienia i wytyczne dotyczące pracy z usługą Azure Database dla serwerów MariaDB.
@@ -44,7 +44,7 @@ Następujące elementy zapewniają bezpieczny dostęp do bazy danych.
 | **Protokół** | Usługa obsługuje oparta na komunikatach protokół używany przez MySQL. |
 | **TCP/IP** | Protokół jest obsługiwany za pośrednictwem protokołu TCP/IP, jak i za pośrednictwem gniazd domeny systemu Unix. |
 | **Zapora** | Aby lepiej chronić swoje dane, regułę zapory uniemożliwia dostęp do serwera bazy danych, do momentu określenia komputerów, które mają uprawnienia. Zobacz [— Azure Database for reguły zapory serwera MariaDB](./concepts-firewall-rules.md). |
-| **SSL** | Usługa obsługuje wymuszenie połączenia SSL między aplikacjami i serwer bazy danych.  <!--See [Configure SSL connectivity in your application to securely connect to Azure Database for MariaDB](./howto-configure-ssl.md).--> |
+| **SSL** | Usługa obsługuje wymuszenie połączenia SSL między aplikacjami i serwer bazy danych. Zobacz [Konfigurowanie łączności SSL w aplikacji w celu nawiązania bezpiecznego połączenia usługi Azure Database dla serwera MariaDB](./howto-configure-ssl.md). |
 
 ## <a name="how-do-i-manage-a-server"></a>Jak zarządzać serwerem?
 — Azure Database dla serwerów MariaDB można zarządzać za pomocą witryny Azure portal lub interfejsu wiersza polecenia platformy Azure.
@@ -52,4 +52,5 @@ Następujące elementy zapewniają bezpieczny dostęp do bazy danych.
 ## <a name="next-steps"></a>Kolejne kroki
 - Aby zapoznać się z omówieniem usługi, zobacz [— Azure Database for MariaDB — omówienie](./overview.md)
 - Aby uzyskać informacje dotyczące określonego zasobu Przydziały i ograniczenia na podstawie Twojej **warstwy usług**, zobacz [warstwy usług](./concepts-pricing-tiers.md)
+
 <!-- - For information about connecting to the service, see [Connection libraries for Azure Database for MariaDB](./concepts-connection-libraries.md). -->

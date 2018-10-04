@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: reference
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/28/2018
+ms.date: 10/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 7e0578572de53fefddb88e163520d2bf5f580012
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 578d078550daaae54c63bf91da1fa5590bb8fdf6
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434317"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249149"
 ---
 # <a name="string-functions-for-azure-resource-manager-templates"></a>Funkcje ciągów dla szablonów usługi Azure Resource Manager
 
@@ -1680,15 +1680,15 @@ Zwraca podciąg, który rozpoczyna się od określonej pozycji znaku i zawiera o
 |:--- |:--- |:--- |:--- |
 | stringToParse |Yes |ciąg |Oryginalny ciąg znaków, z której jest wyodrębniany podciąg. |
 | startIndex |Nie |Int |Liczony od zera znaku pozycja początkowa podciąg. |
-| Długość |Nie |Int |Liczba znaków podciąg. Musi odwoływać się do lokalizacji w ciągu. |
+| Długość |Nie |Int |Liczba znaków podciąg. Musi odwoływać się do lokalizacji w ciągu. Musi mieć wartość zero lub większą. |
 
 ### <a name="return-value"></a>Wartość zwracana
 
-Podciąg.
+Podciąg. Lub ciąg pusty, jeśli długość jest równa zero.
 
 ### <a name="remarks"></a>Uwagi
 
-Funkcja kończy się niepowodzeniem, jeśli podciąg wykracza poza koniec ciągu. Poniższy przykład kończy się niepowodzeniem z powodu błędu "Parametry indeksu i długości muszą odwoływać się do lokalizacji w ciągu. Parametr indeksu: "0", parametr długości: "11", długość parametru ciągu: "10". ".
+Funkcja kończy się niepowodzeniem, jeśli podciąg wykracza poza koniec ciągu lub jeśli długość jest mniejsza niż zero. Poniższy przykład kończy się niepowodzeniem z powodu błędu "Parametry indeksu i długości muszą odwoływać się do lokalizacji w ciągu. Parametr indeksu: "0", parametr długości: "11", długość parametru ciągu: "10". ".
 
 ```json
 "parameters": {

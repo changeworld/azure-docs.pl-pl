@@ -9,14 +9,16 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: 048647f1657a5674bcb508b20b7c57a8a6ed5ed9
-ms.sourcegitcommit: 31241b7ef35c37749b4261644adf1f5a029b2b8e
+ms.openlocfilehash: 8a880e5924ec6bfbabb5ae4d71742f2a29bdea7f
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/04/2018
-ms.locfileid: "43665026"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246933"
 ---
 # <a name="use-the-anomaly-finder-api-with-javascript"></a>Narzędzie do wyszukiwania anomalii interfejsu API za pomocą języka Javascript
+
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
 
 Ten artykuł zawiera informacje i przykłady kodu, aby pomóc Ci szybko rozpocząć pracę, przy użyciu interfejsu API wykrywania anomalii przy użyciu języka Javascript do wykonania zadania pobierania wynik wykrywania anomalii w danych szeregów czasowych.
 
@@ -40,7 +42,7 @@ Dostępne są następujące kroki w przykładzie.
 
 1. Utwórz nowy plik HTML.
 2. Zastąp plik HTML z następującym kodem.
-3. Zastąp `[YOUR_SUBSCRIPTION_KEY]` wartość kluczem ważnej subskrypcji.
+3. Zastąp wartość `[YOUR_SUBSCRIPTION_KEY]` prawidłowym kluczem subskrypcji.
 4. Zastąp dane w requestTextArea punktów danych.
 5. Otwórz plik HTML w przeglądarce sieci Web, a następnie kliknij przycisk `Anomaly Detection` przycisku.
 
@@ -306,7 +308,7 @@ Dostępne są następujące kroki w przykładzie.
 
 ### <a name="example-response"></a>Przykładowa odpowiedź
 
-Pomyślnej odpowiedzi jest zwracany w formacie JSON. Przykładowa odpowiedź wygląda następująco:
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON. Przykładowa odpowiedź wygląda następująco:
 [!INCLUDE [Response](../includes/response.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki

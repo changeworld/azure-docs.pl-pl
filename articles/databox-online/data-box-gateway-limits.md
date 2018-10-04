@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: article
 ms.tgt_pltfrm: NA
 ms.workload: TBD
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: edb4995b626055be830a7accb74d99f1db3ef8d0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 946c045407b150a923d0067776bf80cbfab54c67
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46962209"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268042"
 ---
 # <a name="azure-data-box-gateway-limits-preview"></a>Limity bramy pola danych platformy Azure (wersja zapoznawcza)
 
@@ -28,12 +28,12 @@ ms.locfileid: "46962209"
 Te limity wziąć pod uwagę wdrażania i obsługi rozwiązania Microsoft Azure Data Box Gateway. 
 
 > [!IMPORTANT] 
-> Brama pole danych jest w wersji zapoznawczej. Przegląd [warunki użytkowania dotyczące wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/) przed wdrożeniem tego rozwiązania. 
+> Usługa Data Box Gateway jest dostępna w wersji zapoznawczej. Przed wdrożeniem tego rozwiązania zapoznaj się z [warunkami użytkowania dotyczącymi wersji zapoznawczej](https://azure.microsoft.com/support/legal/preview-supplemental-terms/). 
 
 
 ## <a name="data-box-gateway-service-limits"></a>Limity usługi bramy pola danych
 
-- W tej wersji usługa jest dostępna tylko w określonych regionach w USA, Europa oraz Azja i Pacyfik. Aby uzyskać więcej informacji, przejdź do [dostępność w poszczególnych regionach](#data-box-gateway-overview#region-availability). Konta magazynu powinna być fizycznie najbliższe region wdrożonym urządzenia (może się różnić z obszaru geograficznego usługi).
+- W tej wersji usługa jest dostępna tylko w określonych regionach w USA, Europa oraz Azja i Pacyfik. Aby uzyskać więcej informacji, przejdź do sekcji [Dostępność regionalna](#data-box-gateway-overview#region-availability). Konta magazynu powinna być fizycznie najbliższe region wdrożonym urządzenia (może się różnić z obszaru geograficznego usługi).
 - Przenoszenie zasobu bramy pola danych do innej subskrypcji lub grupy zasobów nie jest obsługiwana. Aby uzyskać więcej informacji, przejdź do [przenoszenie zasobów do nowej grupy zasobów lub subskrypcji](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-move-resources).
 
 ## <a name="data-box-gateway-device-limits"></a>Limity urządzeń bramy pola danych
@@ -44,7 +44,7 @@ W poniższej tabeli opisano limity dla urządzenia bramy pola danych.
 |---|---|
 |Nie. pliki na urządzenie |100 milionów <br> Limit to ~ 25 milionów plików dla każdego 2 TB miejsca na dysku maksymalny limit na 100 mln |
 |Nie. akcji na urządzenie |24 |
-|Maksymalny rozmiar pliku zapisywane do udziału|5 TB |
+|Maksymalny rozmiar pliku zapisywane do udziału|Dla urządzenia wirtualnego 2 TB maksymalny rozmiar pliku wynosi 500 GB. <br> Maksymalny rozmiar pliku zwiększa się wraz z rozmiar dysku danych w poprzednim współczynnik aż do napotkania maksymalnie 5 TB. |
 
 ## <a name="azure-storage-limits"></a>Limity usługi Azure storage
 
@@ -53,7 +53,7 @@ W tej sekcji opisano limity dla usługi Azure Storage i wymagane konwencje nazew
 Aby uzyskać najnowsze informacje o limitach magazynu platformy Azure i najlepsze rozwiązania dotyczące nazewnictwa udziałów, kontenerów i plików przejdź do:
 
 - [Nazewnictwo i odwołania do kontenerów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-containers--blobs--and-metadata)
-- [Nazewnictwo i odwoływanie się do akcji](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
+- [Nazywanie i przywoływanie udziałów](https://docs.microsoft.com/rest/api/storageservices/naming-and-referencing-shares--directories--files--and-metadata)
 - [Blokowe obiekty BLOB i konwencje blob strony](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs)
 
 > [!IMPORTANT]
@@ -89,4 +89,4 @@ Poniżej przedstawiono rozmiary obiektów platformy Azure, które mogą być zap
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-- [Przygotowanie do wdrożenia bramy pola danych platformy Azure](data-box-gateway-deploy-prep.md)
+- [Przygotowywanie do wdrażania usługi Azure Data Box Gateway](data-box-gateway-deploy-prep.md)

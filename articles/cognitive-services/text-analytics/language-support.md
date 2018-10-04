@@ -1,21 +1,21 @@
 ---
 title: Obsługa języków — interfejs API analizy tekstu
 titleSuffix: Azure Cognitive Services
-description: 'Lista języków naturalnych obsługiwanych przez interfejs API analizy tekstu. W tym artykule opisano, które języki są obsługiwane dla każdej operacji: analiza tonacji, wyodrębnianie kluczowych fraz oraz wykrywanie języka.'
+description: 'Lista języków naturalnych obsługiwanych przez interfejs API analizy tekstu. W tym artykule opisano, które języki są obsługiwane dla każdej operacji: analiza tonacji, wyodrębnianie kluczowych fraz, wykrywanie języka i rozpoznawanie jednostek.'
 services: cognitive-services
 author: ashmaka
 manager: cgronlun
 ms.service: cognitive-services
 ms.technology: text-analytics
 ms.topic: article
-ms.date: 09/25/2018
+ms.date: 10/01/2018
 ms.author: ashmaka
-ms.openlocfilehash: e9f466ac6bce98a6a9f2d79a443c9602ca40bb26
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: a94c2af4d3e0d0d0c466f7cb7d58ec35351ebc3e
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47435513"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247741"
 ---
 # <a name="language-and-region-support-for-the-text-analytics-api"></a>Obsługa języka i regionu dla interfejsu API analizy tekstu
 
@@ -25,15 +25,15 @@ W tym artykule opisano, które języki są obsługiwane dla każdej operacji: an
 
 Interfejs API analizy tekstu można wykrywać maksymalnie 120 języków. Wykrywanie języka zwraca "skrypt" język. Na przykład frazy "Mam dog" zwróci `en` zamiast `en-US`. Tylko w szczególnych przypadkach jest chińskich, których będzie zwracać funkcja wykrywania języka `zh_CHS` lub `zh_CHT` Jeśli można określić, skrypt danego tekstu, pod warunkiem. W sytuacjach, gdzie określonego skryptu nie można zidentyfikować dla dokumentu chińskim, to zostanie zwrócona po prostu `zh`.
 
-## <a name="sentiment-analysis-key-phrase-extraction-and-entity-linking"></a>Analiza tonacji, wyodrębnianie kluczowych fraz i łączenie jednostek
+## <a name="sentiment-analysis-key-phrase-extraction-and-entity-recognition"></a>Analiza tonacji, wyodrębnianie kluczowych fraz i rozpoznawanie jednostek
 
-Analiza tonacji, wyodrębnianie kluczowych fraz i łączenie podmiotów, aby uzyskać listę obsługiwanych języków jest bardziej selektywnego analizatorów jest dostosowany do uwzględnienia językowej reguły dodatkowe języki.
+Analiza tonacji, wyodrębnianie kluczowych fraz i rozpoznawanie jednostek listę obsługiwanych języków to tylko niektóre analizatorów jest dostosowany do uwzględnienia językowej reguły dodatkowe języki.
 
 ## <a name="language-list-and-status"></a>Lista języków i stan
 
 Obsługa języków początkowo jest udostępniona w wersji zapoznawczej, tłumaczenie jest ogólnie dostępna (GA) stanu, niezależnie od siebie i usługi analizy tekstu, ogólne. Istnieje możliwość dla języków pozostaje w wersji zapoznawczej, nawet w trakcie przejść interfejsu API analizy tekstu jest ogólnie dostępna.
 
-| Język    | Kod języka | Opinia | Kluczowe frazy | Łączenie jednostek |   Uwagi  |
+| Język    | Kod języka | Opinia | Kluczowe frazy | Rozpoznawanie jednostek |   Uwagi  |
 |:----------- |:-------------:|:---------:|:-----------:|:-----------:|:-----------:
 | Duński      | `da`          | ✔ \*     | ✔           |             |     |
 | Holenderski       | `nl`          | ✔ \*     | ✔          |             |     |
@@ -52,7 +52,7 @@ Obsługa języków początkowo jest udostępniona w wersji zapoznawczej, tłumac
 | Rosyjski     | `ru`          | ✔ \*     | ✔           |             |     |
 | Hiszpański     | `es`          | ✔        | ✔           |     |     |
 | Szwedzki     | `sv`          | ✔ \*     | ✔           |             |     |
-| Turecki     | `tr`          | ✔ \*     |             |             |     |
+| Turecki     | `tr`          | ✔ \*     |             |             |  |
 
 \* Wskazuje obsługę języka w wersji zapoznawczej
 

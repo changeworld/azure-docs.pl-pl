@@ -1,6 +1,6 @@
 ---
-title: Sposób użycia interfejsu API Finder anomalii języka Python - kognitywnych usług firmy Microsoft | Dokumentacja firmy Microsoft
-description: Pobierz informacje i przykładowy kod w celu szybkiego Rozpoczynanie pracy za pomocą wyszukiwania anomalii języka Python w usługach kognitywnych.
+title: Jak używać interfejsu API wyszukiwania anomalii przy użyciu języka Python — Microsoft Cognitive Services | Dokumentacja firmy Microsoft
+description: Pobierz informacje oraz przykłady kodu w celu szybkiego Rozpocznij pracę przy użyciu narzędzie do wyszukiwania anomalii przy użyciu języka Python w usługach Cognitive Services.
 services: cognitive-services
 author: chliang
 manager: bix
@@ -9,35 +9,37 @@ ms.technology: anomaly-detection
 ms.topic: article
 ms.date: 05/01/2018
 ms.author: chliang
-ms.openlocfilehash: c14916b0644edab613b298d6e71f8bbb9a6bb804
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
+ms.openlocfilehash: c9fd96bf4a9bdc9dfe5baf52aa742e19d5436708
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35348157"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247355"
 ---
-# <a name="use-the-anomaly-finder-api-with-python"></a>Wyszukiwanie anomalii interfejsu API za pomocą języka Python
+# <a name="use-the-anomaly-finder-api-with-python"></a>Narzędzie do wyszukiwania anomalii interfejsu API za pomocą języka Python
 
-Ten artykuł zawiera informacje i przykłady kodu w celu szybkiego rozpocząć korzystanie z API Finder anomalii języka Python do wykonania zadania pobierania wyników anomalii czasu serii danych.
+[!INCLUDE [PrivatePreviewNote](../../../../../includes/cognitive-services-anomaly-finder-private-preview-note.md)]
+
+Ten artykuł zawiera informacje i przykłady kodu, aby pomóc Ci szybko rozpocząć pracę, przy użyciu interfejsu API wyszukiwania anomalii przy użyciu języka Python do wykonania zadania pobierania wyniku anomalii w danych szeregów czasowych.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 [!INCLUDE [GetSubscriptionKey](../includes/get-subscription-key.md)]
 
-## <a name="getting-anomaly-points-with-anomaly-finder-api-using-python"></a>Pobieranie punktów anomalii z interfejsem API Finder anomalii używany język Python 
+## <a name="getting-anomaly-points-with-anomaly-finder-api-using-python"></a>Pobieranie punktów anomalii przy użyciu interfejsu API wyszukiwania anomalii przy użyciu języka Python 
 
 [!INCLUDE [DataContract](../includes/datacontract.md)]
 
-### <a name="example-of-time-series-data"></a>Przykład czasu danych w serii.
+### <a name="example-of-time-series-data"></a>Przykład danych szeregów czasowych
 
-Przykład czasu punktów danych serii ma następującą składnię.
+Przykład godziny punktów danych serii wyglądają następująco.
 
 [!INCLUDE [Request](../includes/request.md)]
 
-### <a name="analyze-data-and-get-anomaly-points-python-example"></a>Analizowanie danych i uzyskać przykład Python punktów anomalii
+### <a name="analyze-data-and-get-anomaly-points-python-example"></a>Analizowanie danych i pobrać przykład Python punktów anomalii
 
-Sprawdź, czy zainstalowano python3, następnie utwórz plik wykonywalny python o nazwie detect.py. W detect.py powinny zawierać poniższy kod. Przed wykonaniem kodu, pamiętaj, aby zastąpić `[YOUR_SUBSCRIPTION_KEY]` wartości z klucza ważnej subskrypcji.
-Zastąp `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` z punktami danych.
+Upewnij się, możesz zainstalowano środowiska python3 jako, a następnie utworzyć plik wykonywalny języka python o nazwie detect.py. W detect.py powinny zawierać poniższy kod. Przed wykonaniem kodu, pamiętaj, aby zastąpić `[YOUR_SUBSCRIPTION_KEY]` wartość kluczem ważnej subskrypcji.
+Zastąp `[REPLACE_WITH_THE_EXAMPLE_OR_YOUR_OWN_DATA_POINTS]` z punktów danych.
 
 ```python
 import requests
@@ -65,10 +67,10 @@ print(result)
 
 ### <a name="example-response"></a>Przykładowa odpowiedź
 
-Odpowiedź oznaczająca Powodzenie jest zwracana w formacie JSON. Przykładowa odpowiedź ma następującą składnię.
+Po pomyślnym przetworzeniu żądania zostanie zwrócona odpowiedź w formacie JSON. Przykładowa odpowiedź wygląda następująco:
 [!INCLUDE [Response](../includes/response.md)]
 
 ## <a name="next-steps"></a>Kolejne kroki
 
 > [!div class="nextstepaction"]
-> [Aplikacji Python](../tutorials/python-tutorial.md)
+> [Aplikacja w języku Python](../tutorials/python-tutorial.md)

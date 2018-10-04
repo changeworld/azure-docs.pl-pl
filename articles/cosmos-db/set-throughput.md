@@ -7,28 +7,18 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 07/03/2018
+ms.date: 10/02/2018
 ms.author: andrl
-ms.openlocfilehash: 2da00f700f5cc234455cc686377e5863f1c35bdd
-ms.sourcegitcommit: 1b561b77aa080416b094b6f41fce5b6a4721e7d5
+ms.openlocfilehash: 2f6720e39856366e4bca387effdc2a0624d85826
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/17/2018
-ms.locfileid: "45734475"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247998"
 ---
 # <a name="set-and-get-throughput-for-azure-cosmos-db-containers-and-database"></a>Ustaw i uzyskiwanie informacji o przepływności kontenerów usługi Azure Cosmos DB i bazy danych
 
-Możesz ustawić przepływności kontenera usługi Azure Cosmos DB lub zestaw kontenerów przy użyciu witryny Azure portal lub za pomocą zestawów SDK klienta. 
-
-**Aprowizowanie przepływności dla poszczególnych kontenera:** podczas aprowizowania przepływności zestaw kontenerów tych kontenerów udostępnianie aprowizowanej przepływności. Przepływność inicjowania obsługi administracyjnej dla poszczególnych kontenerów gwarantuje rezerwację przepustowości dla tego określonego kontenera. Podczas przypisywania jednostek żądań na sekundę na poziomie poszczególnych kontenerów, kontenery mogą być tworzone jako *stałej* lub *nieograniczone*. Kontenery o stałym rozmiarze są ograniczone do 10 GB, a ich maksymalna przepływność wynosi 10 000 jednostek żądań na sekundę. Aby utworzyć nieograniczonego kontenera, musisz określić minimalną przepustowość 1000 jednostek RU/s i [klucza partycji](partition-data.md). Ponieważ Twoje dane mogą mieć ma być podzielony na wiele partycji, jest konieczne pobranie klucza partycji, która ma wysoką Kardynalność (od 100 do milionów wartości odrębnych). Wybierając klucza partycji przy użyciu wielu różnych wartości, można zapewnić, że żądań i kontener/tabeli/wykresu może być skalowana w jednolity sposób przez usługę Azure Cosmos DB. 
-
-**Aprowizowanie przepływności dla zestawu, kontenerów lub bazy danych:** Aprowizowanie przepływności bazy danych umożliwia udostępnianie informacji o przepływności między wszystkie kontenery, które należą do tej bazy danych. W bazie danych Azure Cosmos DB może mieć zestaw kontenerów, który udostępnia przepływności, a także kontenery, które są wyposażone w dedykowane przepływności. Podczas przypisywania jednostek żądań na sekundę w zestawie kontenerów, kontenery należące do tego zestawu są traktowane jako *nieograniczone* kontenerów i muszą określać klucz partycji.
-
-Na podstawie aprowizowanej przepływności, usługa Azure Cosmos DB przyzna partycje fizyczne do hostowania kontenerów i dzieli dane/rebalances danych między partycjami, zgodnie z ich przyrostu. Kontener i aprowizacji poziomu przepływności bazy danych to osobne oferty i przełączania się między jedną z tych wersji wymagają migracji danych ze źródła do miejsca docelowego. Oznacza to, należy utworzyć nową bazę danych lub nową kolekcję, a następnie przeprowadzić migrację danych za pomocą [biblioteki wykonawca zbiorcze](bulk-executor-overview.md) lub [usługi Azure Data Factory](../data-factory/connector-azure-cosmos-db.md). Na poniższym obrazie przedstawiono aprowizowania przepływności na różnych poziomach:
-
-![Aprowizacja jednostek żądania dla poszczególnych kontenerów i zestaw kontenerów](./media/request-units/provisioning_set_containers.png)
-
-W kolejnych sekcjach dowiesz się, kroki wymagane do skonfigurowania przepływności na różnych poziomach dla konta usługi Azure Cosmos DB. 
+Możesz ustawić przepływności kontenera usługi Azure Cosmos DB lub zestaw kontenerów przy użyciu witryny Azure portal lub za pomocą zestawów SDK klienta. W tym artykule opisano kroki wymagane do skonfigurowania przepływność w różnych stopniami szczegółowości dla konta usługi Azure Cosmos DB.
 
 ## <a name="provision-throughput-by-using-azure-portal"></a>Aprowizowanie przepływności za pomocą witryny Azure portal
 

@@ -12,12 +12,12 @@ ms.author: jovanpop
 ms.reviewer: carlrab, sashan
 manager: craigg
 ms.date: 09/14/2018
-ms.openlocfilehash: 9c06a028df098874a1ec12d83a362e01a5f4a711
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: dfb1e218218a44aafd318acb53750c875bdf1263
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47161900"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48247723"
 ---
 # <a name="high-availability-and-azure-sql-database"></a>Wysoka dostępność i Azure SQL Database
 
@@ -56,7 +56,7 @@ W modelu premium bazy danych Azure SQL database integruje zasobów obliczeniowyc
 
 Proces aparatu bazy danych programu SQL Server i podstawowych plików mdf/ldf są umieszczane w tym samym węźle, za pomocą podłączonych lokalnie magazynu SSD zapewnianie małych opóźnień do obciążenia. Wysoka dostępność jest implementowany przy użyciu standardu [zawsze włączonych grup dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/overview-of-always-on-availability-groups-sql-server). Każda baza danych działa w klastrze z węzłów bazy danych przy użyciu jednej podstawowej bazy danych, który jest dostępny dla obciążenia klientów i trzy procesy dodatkowej zawierającego kopie danych. Węzeł podstawowy stale wypychanie zmian do węzłów pomocniczych w celu zapewnienia, że dane są dostępne w replikach pomocniczych, jeśli węzeł podstawowy ulegnie awarii jakiegokolwiek powodu. Tryb failover odbywa się przez aparat bazy danych programu SQL Server — jedna replika pomocnicza staje się węzeł podstawowy i nową replikę pomocniczą jest utworzone w celu zapewnienia wystarczającej liczby węzłów w klastrze. Obciążenie jest automatycznie przekierowywane do nowego węzła podstawowego.
 
-Ponadto klaster krytyczne dla działania firmy udostępnia wbudowanego węzła tylko do odczytu, który może służyć do uruchamiania tylko do odczytu zapytań (na przykład raporty), które nie wpływają na wydajność obciążenia głównej. 
+Ponadto takie aplikacje zawierają wbudowany w klaster krytyczne dla działania firmy [odczytu skalowalnego w poziomie](sql-database-read-scale-out.md) funkcją, która udostępnia bezpłatnie z jest opłata w wysokości wbudowanego węzła tylko do odczytu, który może służyć do uruchamiania tylko do odczytu zapytań (na przykład raporty), które nie powinny mieć wpływ na wydajność podstawowego obciążenia.
 
 ## <a name="zone-redundant-configuration-preview"></a>Nadmiarowe konfiguracji strefy (wersja zapoznawcza)
 
@@ -70,15 +70,6 @@ Strefy nadmiarowe kworum zestawie ma replik w różnych centrach danych z niekt�
 Poniższy diagram przedstawia nadmiarowe strefy wersję architektura wysokiej dostępności:
  
 ![Wysoka dostępność architektury strefowo nadmiarowe](./media/sql-database-high-availability/high-availability-architecture-zone-redundant.png)
-
-## <a name="read-scale-out"></a>Odczyt skalowalnego w poziomie
-Zgodnie z opisem, warstw Premium i krytyczne dla działania firmy korzystać z zestawów kworum i zawsze włączonej technologii wysokiej dostępności, zarówno w jednej strefie i konfiguracje nadmiarowe stref. Jedną z zalet funkcji AlwaysOn jest, że repliki są zawsze transakcyjnie spójne. Ponieważ repliki mają taki sam rozmiar obliczeń jako podstawowy, aplikacji mogą korzystać z tej dodatkowej pojemności do obsługi obciążeń tylko do odczytu nie wymagają ponoszenia dodatkowych kosztów (odczytu skalowalnego w poziomie). Dzięki temu zapytania tylko do odczytu zostanie odizolowana od głównej obciążenia odczytu i zapisu i nie ma wpływu na jego wydajność. Przeczytaj funkcja skalowania w poziomie jest przeznaczona dla aplikacji, które obejmują logicznie oddzielone obciążeń tylko do odczytu, takich jak analiza i w związku z tym może wykorzystać atak za tej dodatkowej pojemności bez konieczności nawiązywania połączenia podstawowego. 
-
-Funkcja odczytu skalowalnego w poziomie za pomocą określonej bazy danych, musisz jawnie aktywować go podczas tworzenia bazy danych lub później, zmieniając jego konfigurację przy użyciu programu PowerShell, wywołując [polecenia Set-AzureRmSqlDatabase](/powershell/module/azurerm.sql/set-azurermsqldatabase) lub [New-AzureRmSqlDatabase](/powershell/module/azurerm.sql/new-azurermsqldatabase) poleceń cmdlet lub za pomocą interfejsu REST API usługi Azure Resource Manager [baz danych — Utwórz lub zaktualizuj](/rest/api/sql/databases/createorupdate) metody.
-
-Po włączeniu odczytu skalowalnego w poziomie dla bazy danych aplikacji łączących się tej bazy danych z nastąpi przekierowanie do repliki odczytu i zapisu lub tylko do odczytu replik tej bazy danych zgodnie z opisem w `ApplicationIntent` właściwości skonfigurowane w aplikacji Parametry połączenia. Instrukcje dotyczące `ApplicationIntent` właściwości, zobacz [Określanie przeznaczenia aplikacji](https://docs.microsoft.com/sql/relational-databases/native-client/features/sql-server-native-client-support-for-high-availability-disaster-recovery#specifying-application-intent). 
-
-Jeśli odczyt skalowalnego w poziomie jest wyłączony lub ustaw właściwość ReadScale w warstwie usługi z nieobsługiwanego, wszystkie połączenia są kierowane do repliki odczytu i zapisu, niezależnie od `ApplicationIntent` właściwości.
 
 ## <a name="conclusion"></a>Podsumowanie
 Usługa Azure SQL Database jest ściśle zintegrowana z platformą Azure i zależy od wysoce usługi Service Fabric wykrywania awarii i odzyskiwania w obiektach blob magazynu Azure do ochrony danych i strefy dostępności wyższych odporności na uszkodzenia. W tym samym czasie bazy danych Azure SQL w pełni korzysta z technologii zawsze włączonej grupy dostępności z programu SQL Server gotowym produkcie podczas replikacji i trybu failover. Kombinacja tych technologii umożliwia aplikacjom w pełni korzystać z zalet modelu mieszane pamięci masowej i obsługuje najbardziej wymagające umowy SLA. 

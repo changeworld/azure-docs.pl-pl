@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 03/29/2017
 ms.author: kumud
-ms.openlocfilehash: e0c2ad2385b5c8a54b4d8a743cc4f081e5ff6703
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 06965c43408e943922048804099f8f28d69c8540
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127299"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248289"
 ---
 # <a name="traffic-manager-endpoints"></a>Punkty końcowe usługi Traffic Manager
 Microsoft Azure Traffic Manager umożliwia kontrolowanie sposobu dystrybucji ruchu sieciowego do wdrożenia aplikacji działające w różnych centrach danych. Skonfiguruj każde wdrożenie aplikacji jako punktu końcowego w usłudze Traffic Manager. Gdy usługa Traffic Manager odbiera żądanie DNS, wybiera dostępnego punktu końcowego do zwrócenia w odpowiedzi DNS. Usługa Traffic manager Określa wybór na bieżący stan punktu końcowego i metody routingu ruchu. Aby uzyskać więcej informacji, zobacz [jak działa usługa Traffic Manager](traffic-manager-how-it-works.md).
@@ -37,8 +37,9 @@ W poniższych sekcjach opisano każdy typ punktu końcowego w dokładniej.
 
 Punkty końcowe platformy Azure używane w przypadku usług opartych na platformie Azure w usłudze Traffic Manager. Obsługiwane są następujące typy zasobów platformy Azure:
 
-* Usługi w chmurze "Klasyczny" maszynom wirtualnym IaaS i PaaS.
+* Usługi PaaS w chmurze.
 * Web Apps
+* Miejsc aplikacji sieci Web
 * Zasoby publicznego adresu IP (które mogą być podłączone do maszyn wirtualnych bezpośrednio lub za pośrednictwem usługi Azure Load Balancer). Publiczny adres IP musi mieć nazwę DNS, przypisany do użycia w profilu usługi Traffic Manager.
 
 Publiczny adres IP zasoby są zasobami usługi Azure Resource Manager. Nie istnieją w klasycznym modelu wdrażania. Tak więc są tylko obsługiwane na forach usługi Traffic Manager w usłudze Azure Resource Manager środowisk. Inne typy punktów końcowych są obsługiwane przy użyciu usługi Resource Manager oraz klasycznego modelu wdrażania.

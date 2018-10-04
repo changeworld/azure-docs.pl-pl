@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: a43c52143f936eaefd4383714b1c67b6b74d34e8
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: d0ad7093249bea761e0a36c6fffab8cdd151a662
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44378673"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268025"
 ---
 # <a name="how-to-use-the-expected-entity-property-of-actions"></a>Jak użyć właściwości "Oczekiwano jednostki" w akcji
 
@@ -63,9 +63,10 @@ Konkretnie Jeśli pole "Oczekiwano jednostki" akcję ustawiono $entity, a nastę
 2. W odpowiedzi wpisz "Jak się Nazywasz?".
 3. Wprowadź $name w jednostki z oczekiwaniami. Kliknij pozycję Zapisz.
     - Ta wartość oznacza, że jeśli to pytanie jest zadawane i odpowiedź użytkownika nie ma żadnych jednostek wykrył, bot należy założyć, że całej odpowiedzi użytkownika jest tej jednostki.
+    - Jednostka jest automatycznie dodawany jako disqualifying jednostki. 
 2. Kliknij pozycję operacje, a następnie nową akcję do utworzenia drugiej akcji.
 3. W odpowiedzi wpisz "Hello $name".
-    - Należy pamiętać, że jednostka jest automatycznie dodawany jako wymaganych jednostek. 
+    - Jednostka jest automatycznie dodawany jako element wymagany.
 4. Kliknij pozycję Zapisz.
 
 Masz teraz dwie akcje.
@@ -111,7 +112,7 @@ W poniższych przykładach wyzwala heurystyki "Oczekiwano jednostki", ale jest n
 2. Wpisz "hello".
 3. W odpowiedzi na "jak się Nazywasz" Wprowadź "Mnie o Piotr".
     - Cała fraza zostanie wyróżniona. Jest to spowodowane statystyczne modelu nie znaleziono nazwy, więc heurystyki zadziałał i jako nazwę podmiotu wybrać całej odpowiedzi.
-2. Aby go rozwiązać, kliknij wyróżniony frazy, a następnie kliknij czerwony znak x. 
+2. Aby go poprawić, kliknij wyróżniony frazy, a następnie kliknąć czerwoną ikonę Kosza. 
 3. Kliknij, aby wybrać frank, a następnie kliknij nazwę.
 2. Kliknij wynik akcji
 3. Wybierz pozycję "Hello $name".

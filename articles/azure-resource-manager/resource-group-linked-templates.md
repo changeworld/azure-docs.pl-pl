@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 08/10/2018
+ms.date: 10/03/2018
 ms.author: tomfitz
-ms.openlocfilehash: 8b09170c31691be34cea577eb82c8cce3402be96
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: e1d116b96abab89f08546d3c2d5d7bff3234ecbc
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46294667"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249234"
 ---
 # <a name="using-linked-and-nested-templates-when-deploying-azure-resources"></a>Za pomocą połączone i zagnieżdżone szablony, podczas wdrażania zasobów platformy Azure
 
@@ -49,7 +49,7 @@ Aby utworzyć link do innego szablonu, należy dodać **wdrożeń** zasobów do 
 ]
 ```
 
-Właściwości, które zapewniają zasobu wdrożenia różnią się zależnie od tego, czy łączenie z szablonem zewnętrznych lub zagnieżdżania szablonem wbudowanego w szablonie głównego.
+Właściwości, które zapewniają zasobu wdrożenia różnią się zależnie od one łączenie z szablonem zewnętrznych czy zagnieżdżania szablonem wbudowanego w głównym szablonu.
 
 Dla obu połączone i zagnieżdżone szablony, można użyć tylko [przyrostowe](deployment-modes.md) tryb wdrożenia.
 
@@ -121,7 +121,9 @@ Nie trzeba podać `contentVersion` właściwości dla szablonu lub parametrów. 
 
 ### <a name="external-template-and-inline-parameters"></a>Zewnętrzne parametrów szablonu i wbudowane
 
-Ewentualnie możesz podać wbudowane parametru. Aby przekazać wartość z głównego szablonu do dołączonego szablonu, należy użyć **parametry**.
+Ewentualnie możesz podać wbudowane parametru. Nie można użyć wbudowanego parametrów i link do pliku parametrów. Wdrożenie zakończy się niepowodzeniem z powodu błędu podczas zarówno `parametersLink` i `parameters` zostały określone.
+
+Aby przekazać wartość z głównego szablonu do dołączonego szablonu, należy użyć **parametry**.
 
 ```json
 "resources": [

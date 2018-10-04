@@ -8,12 +8,12 @@ services: mariadb
 ms.service: mariadb
 ms.topic: conceptual
 ms.date: 09/24/2018
-ms.openlocfilehash: dda5df58a83ddd3ce42fa887c3c32a3e23954920
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1d0b27a8fd7e3882a73624fa1b668ac602a85e6b
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46946650"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249506"
 ---
 # <a name="ssl-connectivity-in-azure-database-for-mariadb"></a>Łączności SSL w usłudze Azure Database dla serwera MariaDB
 Azure Database dla serwera MariaDB obsługuje łączenie z serwerem bazy danych dla aplikacji klienckich przy użyciu protokołu Secure Sockets Layer (SSL). Wymuszanie połączeń SSL między serwerem bazy danych a aplikacją kliencką ułatwia ochronę przed atakami typu man-in-the-middle dzięki szyfrowaniu strumienia danych między serwerem a aplikacją.
@@ -25,7 +25,7 @@ Podczas aprowizacji nowej bazy danych Azure dla serwera MariaDB za pośrednictwe
 
 Parametry połączenia dla różnych języków programowania są wyświetlane w witrynie Azure portal. Te parametry połączenia zawierają wymaganych parametrów protokołu SSL do łączenia z bazą danych. W witrynie Azure portal wybierz serwer. W obszarze **ustawienia** nagłówka, wybierz **parametry połączenia**. Parametr SSL zależy od łącznika, na przykład "ssl = true" lub "sslmode = wymagają" lub "sslmode = wymagane" i inne.
 
-<!-- To learn how to enable or disable SSL connection when developing application, refer to [How to configure SSL](howto-configure-ssl.md).-->
+Aby dowiedzieć się, jak włączyć lub wyłączyć połączenia SSL, podczas tworzenia aplikacji, zapoznaj się [jak skonfigurować protokół SSL](howto-configure-ssl.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 - Dowiedz się więcej o [reguły zapory serwera](concepts-firewall-rules.md)

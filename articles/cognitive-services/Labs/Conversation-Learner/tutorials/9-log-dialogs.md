@@ -10,12 +10,12 @@ ms.component: conversation-learner
 ms.topic: article
 ms.date: 04/30/2018
 ms.author: v-jaswel
-ms.openlocfilehash: 6ceeb9683a979256a8a52347fc74ab758fd1d348
-ms.sourcegitcommit: 4e5ac8a7fc5c17af68372f4597573210867d05df
+ms.openlocfilehash: 4663fc377e795e603bd2484ec4cf98578408501f
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/20/2018
-ms.locfileid: "39171439"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248385"
 ---
 # <a name="how-to-log-dialogs-in-a-conversation-learner-model"></a>Jak rejestrować okien dialogowych w modelu uczeń konwersacji
 
@@ -76,7 +76,7 @@ Masz teraz dwie akcje.
 
 Dodaj inny przykład okno dialogowe:
 
-1. Kliknij nową akcję, a następnie okno dialogowe Nowy pociągu.
+1. Kliknij przycisk Train okien dialogowych i polecenie nowe okno pociągu.
 2. Wpisz "co to jest pogody w Seattle?". Zwróć uwagę, że Seattle zostanie oznaczony jako jednostka.
 5. Kliknij wynik akcji 
 6. Wybierz pozycję "pogody w $city jest prawdopodobnie sunny".
@@ -86,7 +86,7 @@ Dodaj inny przykład okno dialogowe:
 Załóżmy, że dla użytkowników po wdrożeniu ten bot.
 
 1. Kliknij dziennik w oknach dialogowych.
-2. Kliknij nową sesję rozmowy.
+2. Kliknij okno dialogowe nowego dziennika.
     - Przedstawia bot, ponieważ może doświadczyć użytkownika w kontrolce rozmów w sieci web po lewej stronie interfejsu użytkownika. Możesz zignorować obszarze odstępu, po prawej stronie.
 3. Wpisz "hello".
 4. Bot odpowiedzi: "które miasta?"
@@ -97,10 +97,10 @@ Załóżmy, że dla użytkowników po wdrożeniu ten bot.
 
 Zacznijmy od nowej sesji:
 
-2. Kliknij nową sesję rozmowy.
+2. Kliknij okno dialogowe nowego dziennika.
 3. Typ "Prognozowanie Boston".
 4. Bot odpowiedzi: "które miasta?"
-2. Kliknij przycisk Gotowe, nauczania.
+2. Kliknij przycisk Done testowania.
 
 Teraz możemy wprowadzić korekty do okna dialogowego drugiego:
 

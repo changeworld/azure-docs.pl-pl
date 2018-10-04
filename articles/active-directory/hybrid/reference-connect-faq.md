@@ -14,12 +14,12 @@ ms.topic: article
 ms.date: 06/05/2018
 ms.component: hybrid
 ms.author: billmath
-ms.openlocfilehash: 1fb19c7b74d059d83cc5a51a158dcc6ba9bede23
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 3cb44779f376dca1844f42f346ed0fa3bfaa93cf
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46312221"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269449"
 ---
 # <a name="azure-active-directory-connect-faq"></a>Azure Active Directory Connect — często zadawane pytania
 
@@ -47,7 +47,7 @@ Nie, wiele łączników dla tej samej domeny usługi AD nie są obsługiwane.
 **P: czy można przenieść bazę danych usługi Azure AD Connect z lokalnej bazy danych do zdalnego wystąpienia programu SQL Server?**   
 Tak, w poniższych krokach przedstawiono ogólne wskazówki, jak to zrobić. Obecnie pracujemy nad bardziej szczegółowym dokumencie.
 1. Utwórz kopię zapasową bazy danych LocalDB ADSync.
-Jest najprostszym sposobem, w tym celu można użyć programu SQL Server Management Studio zainstalowany na tym samym komputerze co program Azure AD Connect. Połączyć się z *(localdb)\.\ADSync*, a następnie tworzy kopię zapasową bazy danych ADSync.
+Jest najprostszym sposobem, w tym celu można użyć programu SQL Server Management Studio zainstalowany na tym samym komputerze co program Azure AD Connect. Połączyć się z *(LocalDb). \ADSync*, a następnie tworzy kopię zapasową bazy danych ADSync.
 
 2. Przywracanie bazy danych ADSync do zdalnego wystąpienia programu SQL Server.
 

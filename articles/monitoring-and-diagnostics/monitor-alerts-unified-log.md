@@ -5,15 +5,15 @@ author: msvijayn
 services: monitoring
 ms.service: azure-monitor
 ms.topic: conceptual
-ms.date: 05/01/2018
+ms.date: 10/01/2018
 ms.author: vinagara
 ms.component: alerts
-ms.openlocfilehash: 2e2db54f4c356a754144e17b11cf25fdf3f12d9f
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 1490e60f3c6537a661fc1e76907b502a586547c9
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46994007"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248883"
 ---
 # <a name="log-alerts-in-azure-monitor"></a>Alerty dzienników w usłudze Azure Monitor
 Ten artykuł zawiera szczegółowe informacje o alertów dzienników są jednym z typów alertów, które obsługują [Azure Alerts](monitoring-overview-unified-alerts.md) i zezwolić użytkownikom na stosowanie platforma analiz platformy Azure jako podstawa dla alertów.
@@ -106,7 +106,7 @@ Teraz załóżmy mamy reguł alertów dzienników o nazwie *Contoso-dziennika �
 - O 13:15 po Contoso dziennika alertów została wykonana przez alertów platformy Azure wyniki wyszukiwania dziennika podane rekordy 2; przekracza wartość progową i wyzwalania alertów, wkrótce po wyzwalając [grupy akcji](monitoring-action-groups.md) skojarzone.
 - Teraz w następnej iteracji o 13:20 po Contoso-dziennika — Alert został wykonany przez alert dotyczący platformy Azure, wyniki wyszukiwania dziennika udostępniany ponownie 0 rekordów poniżej progu i dlatego nie wyzwalania alertu.
 
-Jednak w przypadku wymienionych powyżej o 13:15 - alertów platformy Azure nie może określić, podstawowych problemów, które wystąpienie 1:10 zostaną zachowane, a jeśli jest netto nowe błędy; kwerendy dostarczone przez użytkownika może biorąc pod uwagę wcześniej rekordów - alertów platformy Azure mogą być się. Dlatego do err boku Uwaga, Contoso-dziennika — Alert jest uruchamiany ponownie o 13:15 za pośrednictwem skonfigurowane [grupy akcji](monitoring-action-groups.md). Teraz o 13:20 Jeśli żadne rekordy nie są widoczne — alertów platformy Azure nie może być pewność, że przyczyną rekordy ma został rozwiązany; Dlatego Contoso-dziennika — Alert będzie nie zmieni się na rozwiązany w pulpit nawigacyjny alertów platformy Azure i/lub powiadomienia wysłane z informacją, rozpoznawanie alertu.
+Jednak w przypadku wymienionych powyżej o 13:15 - alertów platformy Azure nie może określić, podstawowych problemów, które wystąpienie 1:10 zostaną zachowane, a jeśli jest netto nowe błędy; alerty platformy Azure nie można się, jako kwerendy dostarczone przez użytkownika może biorąc pod uwagę wcześniej rekordów —. Dlatego do err boku Uwaga, Contoso-dziennika — Alert jest uruchamiany ponownie o 13:15 za pośrednictwem skonfigurowane [grupy akcji](monitoring-action-groups.md). Teraz o 13:20 Jeśli żadne rekordy nie są widoczne — alertów platformy Azure nie może być pewność, że przyczyną rekordy ma został rozwiązany; Dlatego Contoso-dziennika — Alert będzie nie zmieni się na rozwiązany w pulpit nawigacyjny alertów platformy Azure i/lub powiadomienia wysłane z informacją, rozpoznawanie alertu.
 
 
 ## <a name="pricing-and-billing-of-log-alerts"></a>Cennik i rozliczenia alertów dziennika

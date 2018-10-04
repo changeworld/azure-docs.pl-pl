@@ -12,12 +12,12 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: ffe7337282d06dd9a7e22d6750ac98b3a56964bd
-ms.sourcegitcommit: 974c478174f14f8e4361a1af6656e9362a30f515
+ms.openlocfilehash: db0bc0cb64c0b6d7df9319c8d2c5850a27e767a1
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/20/2018
-ms.locfileid: "42056058"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249217"
 ---
 # <a name="azure-data-factory-service-identity"></a>Tożsamości usługi w usłudze Azure Data Factory
 
@@ -169,6 +169,6 @@ Type                  : ServicePrincipal
 Zobacz następujące tematy, które wprowadzają, kiedy i jak używać tożsamość usługi fabryki danych:
 
 - [Store poświadczeń w usłudze Azure Key Vault](store-credentials-in-key-vault.md)
-- [Kopiowanie danych z i do usługi Azure Data Lake Store, przy użyciu uwierzytelniania tożsamości usługi zarządzanej](connector-azure-data-lake-store.md)
+- [Kopiowanie danych z i do usługi Azure Data Lake Store, przy użyciu zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure](connector-azure-data-lake-store.md)
 
-Zobacz [Przegląd MSI](~/articles/active-directory/msi-overview.md) Aby uzyskać więcej ogólnych informacji o tożsamości usługi zarządzanej, których tożsamość usługi fabryki danych opiera się na. 
+Zobacz [tożsamości zarządzanych, aby uzyskać przegląd zasobów platformy Azure](~/articles/active-directory/msi-overview.md) Aby uzyskać więcej ogólnych informacji o zarządzanych tożsamości dla zasobów platformy Azure, których tożsamość usługi fabryki danych opiera się na. 

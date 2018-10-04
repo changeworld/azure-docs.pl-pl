@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 7984d156c1f8d1c29bda57ae39991876341ea0ac
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 56f1769d601df6292decc46c9470768eac29102c
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46127248"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249081"
 ---
 # <a name="load-data-into-azure-data-lake-storage-gen1-by-using-azure-data-factory"></a>Ładowanie danych do usługi Azure Data Lake Storage Gen1 przy użyciu usługi Azure Data Factory
 
@@ -85,7 +85,7 @@ W tym artykule pokazano, jak za pomocą narzędzia Kopia fabryki danych do _ład
    2. Określ **tajny klucz dostępu** wartość.
    3. Wybierz pozycję **Finish** (Zakończ).
    
-   ![Określanie konta usługi Amazon S3](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
+     ![Określanie konta usługi Amazon S3](./media/load-data-into-azure-data-lake-store/specify-amazon-s3-account.png)
    
    4. Zostaną wyświetlone nowe połączenie. Wybierz opcję **Dalej**.
    
@@ -110,7 +110,7 @@ W tym artykule pokazano, jak za pomocą narzędzia Kopia fabryki danych do _ład
    3. Wybierz opcję **Dalej**.
    
    > [!IMPORTANT]
-   > W tym przewodniku używamy _tożsamości usługi zarządzanej_ do uwierzytelnienia konta Data Lake Storage Gen1. Pamiętaj przyznać odpowiednie uprawnienia w Data Lake Storage Gen1 postępując zgodnie z pliku MSI [w instrukcjach](connector-azure-data-lake-store.md#using-managed-service-identity-authentication).
+   > W tym przewodniku użyjesz tożsamość zarządzaną dla zasobów platformy Azure do uwierzytelnienia konta Data Lake Storage Gen1. Pamiętaj przyznać odpowiednie uprawnienia w Data Lake Storage Gen1 postępując zgodnie z pliku MSI [w instrukcjach](connector-azure-data-lake-store.md#managed-identity).
    
    ![Określanie konta usługi Data Lake Storage Gen1](./media/load-data-into-azure-data-lake-store/specify-adls.png)
 9. W **Wybieranie wyjściowego pliku lub folderu** wpisz **copyfroms3** jako nazwa folderu danych wyjściowych, a następnie wybierz **dalej**: 

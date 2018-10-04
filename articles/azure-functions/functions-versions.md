@@ -9,12 +9,12 @@ ms.service: azure-functions
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: glenga
-ms.openlocfilehash: a601ea42549abad84d6cab5c429cf94147776436
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: d4a0d53c3438be9ea4e0229e4a456ed6f5960996
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46978628"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249064"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Wersje środowiska uruchomieniowego usługi Azure Functions — omówienie
 
@@ -98,7 +98,7 @@ Dla programu VS Code może również należy zaktualizować ustawienia użytkown
 
 ### <a name="changing-version-of-apps-in-azure"></a>Zmiana wersji aplikacji na platformie Azure
 
-Wersji opublikowanej aplikacji są ustawiane za pomocą ustawienia aplikacji `FUNCTIONS_RUNTIME_VERSION`.  Jest ono ustawione na `~2` dla aplikacji w wersji 2 i `~1` dla aplikacji w wersji 1.  Jest zdecydowanie odradzane, aby zmienić wersję środowiska uruchomieniowego aplikacji, która zawiera istniejących funkcji publikowane do niego bez również zmianę kodu z tych funkcji.  Ścieżka zalecane jest tworzenie nowej aplikacji funkcji i ustaw odpowiednią wersję, testować zmiany, a następnie wyłączenie lub usunięcie poprzedniej aplikacji.
+Wersji opublikowanej aplikacji są ustawiane za pomocą ustawienia aplikacji `FUNCTIONS_EXTENSION_VERSION`.  Jest ono ustawione na `~2` dla aplikacji w wersji 2 i `~1` dla aplikacji w wersji 1.  Jest zdecydowanie odradzane, aby zmienić wersję środowiska uruchomieniowego aplikacji, która zawiera istniejących funkcji publikowane do niego bez również zmianę kodu z tych funkcji.  Ścieżka zalecane jest tworzenie nowej aplikacji funkcji i ustaw odpowiednią wersję, testować zmiany, a następnie wyłączenie lub usunięcie poprzedniej aplikacji.
 
 ## <a name="bindings"></a>Powiązania 
 

@@ -13,12 +13,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 08/15/2018
 ms.author: apimpm
-ms.openlocfilehash: ed8c34a7e1e11d431d9a3b416067736da0d1612c
-ms.sourcegitcommit: 161d268ae63c7ace3082fc4fad732af61c55c949
+ms.openlocfilehash: 8983e98bdfb99d71559e1d79d5f6e72c8366b954
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43046383"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48268533"
 ---
 # <a name="how-to-implement-disaster-recovery-using-service-backup-and-restore-in-azure-api-management"></a>Jak zaimplementować funkcje odzyskiwania po awarii przy użyciu usługi kopii zapasowej i przywracania w usłudze Azure API Management
 
@@ -74,7 +74,7 @@ Wszystkie zadania, które wykonują zasobów przy użyciu usługi Azure Resource
 
 7. Kliknij przycisk **delegowane uprawnienia** obok nowo dodanych aplikacji, zaznacz pole wyboru, aby uzyskać **dostęp do usługi Azure Service Management (wersja zapoznawcza)**.
 8. Naciśnij klawisz **wybierz**.
-9. Kliknij przycisk **udzielanych Grant**.
+9. Kliknij przycisk **udzielić uprawnień**.
 
 ### <a name="configuring-your-app"></a>Konfigurowanie aplikacji
 
@@ -204,7 +204,7 @@ Przywracanie jest operacją wymagającą dużo czasu, który może potrwać co n
 > **Zmiany** wprowadzone w konfiguracji usługi (na przykład interfejsów API, zasady, wyglądu portalu dla deweloperów) podczas przywracania Trwa operacja **mogą zostać zastąpione**.
 
 > [!NOTE]
-> Operacje tworzenia kopii zapasowych i przywracania można również wykonać przy użyciu programu Powershell *Backup-AzureRmApiManagement* i *Restore-AzureRmApiManagement* odpowiednio poleceń.
+> Operacje tworzenia kopii zapasowych i przywracania można również wykonać przy użyciu programu PowerShell *Backup-AzureRmApiManagement* i *Restore-AzureRmApiManagement* odpowiednio poleceń.
 
 ## <a name="next-steps"></a>Kolejne kroki
 

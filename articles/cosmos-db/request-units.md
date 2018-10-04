@@ -7,37 +7,37 @@ manager: kfile
 ms.service: cosmos-db
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 06/26/2018
+ms.date: 10/02/2018
 ms.author: rimman
-ms.openlocfilehash: 66beeb2cc724f75d17a4c155f1cdb888153e8fbf
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: 23a3e629e12e2a4d417757c9fef5db804bb72c9e
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43286769"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248758"
 ---
-# <a name="request-units-in-azure-cosmos-db"></a>Jednostki żądań w usłudze Azure Cosmos DB
+# <a name="throughput-and-request-units-in-azure-cosmos-db"></a>Jednostki przepływności i żądania w usłudze Azure Cosmos DB
 
-[Usługa Azure Cosmos DB](https://azure.microsoft.com/services/cosmos-db/) to globalnie rozproszona wielomodelowa baza danych Microsoft. Usługa Azure Cosmos DB nie trzeba wynajmować maszyn wirtualnych, wdrażania oprogramowania lub monitorowanie baz danych. Usługa Azure Cosmos DB jest obsługiwane i są stale monitorowane przez najlepszych inżynierów firmy Microsoft do świadczenia światowej klasy dostępności, wydajności i ochrony danych. Uzyskiwać dostęp do danych za pomocą interfejsów API w wybranym, takie jak [SQL](documentdb-introduction.md), [bazy danych MongoDB](mongodb-introduction.md), i [tabeli](table-introduction.md) interfejsów API i grafu przy użyciu [interfejs API Gremlin](graph-introduction.md). Wszystkie interfejsy API wszystkie obsługiwane. 
+Zasoby platformy Azure Cosmos DB są rozliczane na podstawie udostępnionej przepływności i magazynu. Przepływność usługi Azure Cosmos DB jest wyrażona w kategoriach **jednostek żądań na sekundę (RU/s)**. Usługa Azure Cosmos DB obsługuje różne interfejsy API, które mają różne operacje, począwszy od prostego odczytuje i zapisuje wykres złożonych zapytań. Każde żądanie zużywa jednostki żądania na podstawie ilości wymaganych do obsłużenia żądania obliczeń. Liczbę jednostek żądania dla operacji jest deterministyczna. Można śledzić liczbę jednostek żądania, które są używane przez jakakolwiek operacja w usłudze Azure Cosmos DB przy użyciu nagłówka odpowiedzi. Aby zapewnić przewidywalną wydajność, należy zarezerwować przepływność w jednostkach 100 RU/s. Potrzeb można oszacować, korzystając z usługi Azure Cosmos DB [kalkulatora jednostek żądania](https://www.documentdb.com/capacityplanner).
 
-Waluta usługi Azure Cosmos DB jest *jednostki żądań (RU)*. Przy użyciu jednostek żądania nie należy zarezerwować możliwości odczytu/zapisu lub aprowizacja procesora CPU, pamięci i operacji We/Wy. Usługa Azure Cosmos DB obsługuje różne interfejsy API, które mają różne operacje, począwszy od prostego odczytuje i zapisuje wykres złożonych zapytań. Ponieważ nie wszystkie żądania są równe, żądania są przypisywane znormalizowane liczbę jednostek żądania na podstawie ilości wymaganych do obsłużenia żądania obliczeń. Liczbę jednostek żądania dla operacji jest deterministyczna. Można śledzić liczbę jednostek żądania, które są używane przez jakakolwiek operacja w usłudze Azure Cosmos DB przy użyciu nagłówka odpowiedzi. 
+W usłudze Azure Cosmos DB może aprowizować przepływność mierzoną w dwóch stopniach szczegółowości: 
 
-Zapewnienie przewidywalnej wydajności, należy zarezerwować przepływność w jednostkach 100 RU/s. Możesz [oszacować przepływność musi](request-units.md#estimating-throughput-needs) przy użyciu usługi Azure Cosmos DB [kalkulatora jednostek żądania](https://www.documentdb.com/capacityplanner).
+1. **Kontener usługi Azure Cosmos DB:** przepływnością aprowizowaną dla kontenera jest zarezerwowany dla tego określonego kontenera. Podczas przypisywania throughput(RU/s) na poziomie kontenera, kontenery mogą być tworzone jako **stałe** lub **nieograniczone**. 
 
-![Kalkulator przepływności][5]
+  Kontenery o stałym rozmiarze ma ograniczenie do maksymalnie 10 000 jednostek RU/s i limitu 10 GB magazynu. Aby utworzyć nieograniczonego kontenera, musisz określić minimalną przepustowość 1000 jednostek RU/s i [klucza partycji](partition-data.md). Ponieważ dane mogą być podzielone na wiele partycji, trzeba wybierz taki klucz partycji, która ma wysoką Kardynalność (od 100 do milionów wartości odrębnych). Wybór klucza partycji przy użyciu wielu różnych wartości, usługi Azure Cosmos DB zapewnia jednolity sposób skalowania żądania do kolekcji, tabel i grafów. 
 
-Po przeczytaniu tego artykułu, będziesz mieć możliwość odpowiedzieć na następujące pytania:
+2. **Bazy danych usługi Azure Cosmos DB:** przepływnością aprowizowaną dla bazy danych jest współużytkowana przez wszystkie kontenery w ramach tej bazy danych. Podczas aprowizowania przepływności na poziomie bazy danych, można jawnie wykluczone niektórych kontenerów i zamiast tego aprowizować przepływność dla tych kontenerów na poziomie kontenera. Poziom przepływności bazy danych wymaga wszystkie kolekcje są tworzone z kluczem partycji. Podczas przypisywania przepływności na poziomie bazy danych, kontenerów, które należą do tej bazy danych należy można utworzyć przy użyciu klucza partycji, ponieważ każda kolekcja jest **nieograniczone** kontenera.  
 
-* Co to są jednostki żądania i opłaty żądanie w usłudze Azure Cosmos DB?
-* Jak określić żądanie jednostek pojemności dla kontenera lub zestaw kontenerów w usłudze Azure Cosmos DB?
-* Jak oszacować musi jednostki żądań w mojej aplikacji?
-* Co się stanie, jeśli przekroczę żądania jednostek pojemności dla kontenera lub zestaw kontenerów w usłudze Azure Cosmos DB?
+Na podstawie aprowizowanej przepływności, usługa Azure Cosmos DB przyzna partycje fizyczne do hostowania danych kontenerów i dzieli dane między partycjami w miarę jej rozwoju. Na poniższym obrazie przedstawiono aprowizowania przepływności na różnych poziomach:
 
-Ponieważ usługi Azure Cosmos DB to wielomodelowa baza danych, to należy pamiętać, że ten artykuł ma zastosowanie do wszystkich modeli danych i interfejsów API w usłudze Azure Cosmos DB. W tym artykule używany ogólny terminy, takie jak *kontenera* do odwoływania się ogólną do kolekcji lub wykres i *elementu* do odwoływania się ogólną do tabeli, dokumentów, węzeł lub jednostki.
+  ![Aprowizacja jednostek żądania dla poszczególnych kontenerów i zestaw kontenerów](./media/request-units/provisioning_set_containers.png)
+
+> [!NOTE] 
+> Inicjowanie obsługi administracyjnej przepływność na poziomie kontenera i bazy danych są osobne oferty i przełączania się między jedną z tych wersji wymagają migracji danych ze źródła do miejsca docelowego. Oznacza to, należy utworzyć nową bazę danych lub nową kolekcję, a następnie przeprowadzić migrację danych za pomocą [biblioteki wykonawca zbiorcze](bulk-executor-overview.md) lub [usługi Azure Data Factory](../data-factory/connector-azure-cosmos-db.md).
 
 ## <a name="request-units-and-request-charges"></a>Jednostki żądania i żądania opłaty
 
-Usługa Azure Cosmos DB szybkie, oferuje przewidywalną wydajność, rezerwując zasobów w celu zaspokojenia potrzeb przepływność aplikacji. Zmień aplikacji wzorców obciążenia i dostępu wraz z upływem czasu. Usługa Azure Cosmos DB może pomóc łatwo zwiększyć lub zmniejszyć ilość zarezerwowaną przepływnością, dostępne dla aplikacji.
+Rezerwowanie zasobów przez usługę Azure Cosmos DB zapewnia przewidywalną wysoką wydajność, dostosowaną do potrzeb aplikacji w zakresie przepływności. Czas ładowania aplikacji i wzorce dostępu z czasem ulegają zmianie. Usługa Azure Cosmos DB umożliwia łatwe zwiększanie i zmniejszanie przepływności zarezerwowanej dla aplikacji.
 
 Za pomocą usługi Azure Cosmos DB zarezerwowaną przepływność jest określane w przeliczeniu na jednostce żądania przetwarzania na sekundę. Jednostki żądania można traktować jako walutę przepływności. Możesz zarezerwować liczbę jednostek żądania gwarantowane mają być dostępne dla aplikacji na podstawie na sekundę. Każda operacja w usłudze Azure Cosmos DB, zapisywania dokumentu, w tym wysyłania zapytań i zaktualizowanie dokumentu, zużywa procesora CPU, pamięci i operacji We/Wy. Oznacza to każdej operacji jest naliczana opłata za żądanie wyrażana, który jest wyrażona w jednostkach żądania. Gdy już poznasz czynników wpływających na opłat za jednostki żądań i wymagań aplikacji w zakresie przepływności, można uruchomić aplikacji jako koszt skutecznie, jak to możliwe. 
 
@@ -57,7 +57,7 @@ Podczas szacowania liczby jednostek żądania dla aprowizacji funkcji jest ważn
 * **Skrypt użycia**. Podobnie jak w przypadku zapytań, procedur składowanych i wyzwalaczy zużywać jednostki żądania na podstawie stopnia złożoności wykonywanych operacji. Podczas opracowywania aplikacji, sprawdź, czy nagłówek żądania opłat, aby lepiej zrozumieć, jak każda operacja wykorzystuje pojemność jednostki żądania.
 
 ## <a name="estimating-throughput-needs"></a>Planowania związanym z przepływnością
-Jednostka żądania jest miarą znormalizowane koszty przetwarzania żądania. Jednostka pojedyncze żądanie reprezentuje możliwości przetwarzania, które są wymagane do odczytu (za pośrednictwem łączy własnych lub identyfikator) pojedynczy element 1 KB, który składa się z 10 unikatowych wartości (z wyjątkiem właściwości systemu). Żądanie utworzenia (Wstaw), Zamień lub usuń takie same elementu wykorzystuje przetwarzanie większej ilości danych z usługi i tym samym wymaga większej liczby jednostek żądania. 
+Jednostka żądania jest miarą znormalizowane koszty przetwarzania żądania. Jednostka pojedyncze żądanie reprezentuje możliwości przetwarzania, które są wymagane do odczytu (za pośrednictwem linku do samego siebie lub ID) pojedynczy element 1KB, który składa się z 10 unikatowych wartości (z wyjątkiem właściwości systemu). Żądanie utworzenia (Wstaw), Zamień lub usuń takie same elementu wykorzystuje przetwarzanie większej ilości danych z usługi i tym samym wymaga większej liczby jednostek żądania. 
 
 > [!NOTE]
 > Plan bazowy jednostki 1 żądanie dla elementu 1 KB odnosi się do prostych GET przez łącze własne lub identyfikator elementu.
@@ -74,7 +74,6 @@ Na przykład Oto tabelę, która pokazuje liczbę jednostek żądania do aprowiz
 | 4 KB | 500 | 500 | (500 * 1.3) + (500 * 7) = 4,150 jednostek RU/s
 | 64 KB | 500 | 100 | (500 * 10) + (100 * 48) = 9,800 jednostek RU/s
 | 64 KB | 500 | 500 | (500 * 10) + (500 * 48) = 29,000 jednostek RU/s
-
 
 ### <a name="use-the-request-unit-calculator"></a>Skorzystaj z Kalkulatora jednostek żądania
 Aby dostosować swoje szacunki przepływności, można użyć opartą na sieci web [kalkulatora jednostek żądania](https://www.documentdb.com/capacityplanner). Kalkulator mogą pomóc szacowania wymagań jednostki żądania dla typowych operacji, w tym:
@@ -237,4 +236,5 @@ Jeśli masz więcej niż jeden klient łącznie operacyjnego powyżej żądań z
 [3]: ./media/request-units/RUEstimatorDocuments.png
 [4]: ./media/request-units/RUEstimatorResults.png
 [5]: ./media/request-units/RUCalculator2.png
+
 

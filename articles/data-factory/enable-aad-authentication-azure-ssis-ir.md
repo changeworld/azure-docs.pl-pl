@@ -12,16 +12,16 @@ ms.devlang: powershell
 ms.topic: conceptual
 ms.date: 06/21/2018
 ms.author: douglasl
-ms.openlocfilehash: aa06110a6f6fe668388c6aecd98c1ddeeae37edd
-ms.sourcegitcommit: e2ea404126bdd990570b4417794d63367a417856
+ms.openlocfilehash: 234fb5af55565602d283539c63076adebad1ed25
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/14/2018
-ms.locfileid: "45576633"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248979"
 ---
 # <a name="enable-azure-active-directory-authentication-for-the-azure-ssis-integration-runtime"></a>Włącz uwierzytelnianie usługi Azure Active Directory dla środowiska Azure-SSIS integration runtime
 
-W tym artykule pokazano, jak utworzyć środowisko IR Azure-SSIS przy użyciu tożsamości usługi Azure Data Factory. Uwierzytelnianie usługi Active Directory (Azure AD) systemu Azure za pomocą tożsamość usługi zarządzanej (MSI) dla środowiska Azure-SSIS integration runtime pozwala utworzyć środowisko Azure-SSIS integration runtime przy użyciu pliku MSI z fabryki danych zamiast uwierzytelniania SQL.
+W tym artykule pokazano, jak utworzyć środowisko IR Azure-SSIS przy użyciu tożsamości usługi Azure Data Factory. Uwierzytelnianie usługi Active Directory (Azure AD) systemu Azure za pomocą tożsamości zarządzanej dla zasobów platformy Azure dla środowiska Azure-SSIS integration runtime pozwala utworzyć środowisko Azure-SSIS integration runtime przy użyciu pliku MSI z fabryki danych zamiast uwierzytelniania SQL.
 
 Aby uzyskać więcej informacji na temat MSI fabryki danych, zobacz [tożsamości usługi Azure Data Factory](https://docs.microsoft.com/azure/data-factory/data-factory-service-identity).
 

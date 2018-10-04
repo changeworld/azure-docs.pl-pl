@@ -9,12 +9,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 08/17/2018
 ms.author: jingwang
-ms.openlocfilehash: 46e12378812788d147c903046b50a93c13119f2f
-ms.sourcegitcommit: fab878ff9aaf4efb3eaff6b7656184b0bafba13b
+ms.openlocfilehash: 79bb3042af6a42b4a8c33e9a19c80d117c3216e7
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/22/2018
-ms.locfileid: "42444592"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248860"
 ---
 # <a name="copy-data-to-or-from-azure-blob-storage-by-using-azure-data-factory"></a>Kopiowanie danych do i z usługi Azure Blob storage za pomocą usługi Azure Data Factory
 > [!div class="op_single_selector" title1="Select the version of Data Factory service you are using:"]
@@ -30,7 +30,7 @@ Możesz skopiować dane z dowolnego obsługiwanego źródłowego magazynu danych
 W szczególności ten łącznik magazynu obiektów Blob obsługuje:
 
 - Kopiowanie obiektów blob z konta magazynu ogólnego przeznaczenia platformy Azure oraz magazynu gorących/chłodnych obiektów blob. 
-- Kopiowanie obiektów blob za pomocą klucza konta, sygnatury dostępu współdzielonego usługi, uwierzytelnienia tożsamości podmiotu zabezpieczeń lub zarządzanej usługi service.
+- Kopiowanie obiektów blob przy użyciu klucza konta, sygnatury dostępu współdzielonego usługi tożsamości podmiotu zabezpieczeń lub zarządzanej usługi dla uwierzytelnień zasobów platformy Azure.
 - Kopiowanie obiektów blob z bloku, Dołącz lub stronicowe obiekty BLOB i kopiowanie danych tylko blokowe obiekty BLOB. Usługa Azure Premium Storage nie jest obsługiwany jako obiekt sink, ponieważ jest ona objęta stronicowych obiektów blob.
 - Kopiowanie obiektów blob jest analiza kodu lub generowania obiektów blob za pomocą [obsługiwane formaty plików i kodery-dekodery kompresji](supported-file-formats-and-compression-codecs.md).
 
@@ -47,7 +47,7 @@ Poniższe sekcje zawierają szczegółowe informacje dotyczące właściwości, 
 - [Uwierzytelnianie za pomocą klucza konta](#account-key-authentication)
 - [Uwierzytelniania sygnatury dostępu współdzielonego](#shared-access-signature-authentication)
 - [Uwierzytelnianie jednostki usługi](#service-principal-authentication)
-- [Uwierzytelnianie tożsamości usługi zarządzanej](#managed-service-identity-authentication)
+- [Zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure](#managed-service-identity-authentication)
 
 >[!NOTE]
 >HDInsights, Azure Machine Learning i Azure SQL Data Warehouse PolyBase obciążenia obsługują tylko uwierzytelnianie klucza konta magazynu obiektów Blob platformy Azure.
@@ -191,13 +191,13 @@ Te właściwości są obsługiwane w przypadku obiektów Blob platformy Azure po
 }
 ```
 
-### <a name="managed-service-identity-authentication"></a>Uwierzytelnianie tożsamości usługi zarządzanej
+### <a name="managed-identity"></a> Zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure
 
-Fabrykę danych mogą być skojarzone z [tożsamości usługi zarządzanej](data-factory-service-identity.md), który reprezentuje tę fabrykę danych z konkretnych. Ta tożsamość usługi służy bezpośrednio do uwierzytelniania magazynu obiektów Blob, podobnie jak za pomocą jednostki usługi. Umożliwia ona tej fabryki wyznaczonym dostęp i kopiowanie danych z i do usługi Blob storage.
+Fabrykę danych mogą być skojarzone z [tożsamości zarządzanej dla zasobów platformy Azure](data-factory-service-identity.md), który reprezentuje tę fabrykę danych z konkretnych. Ta tożsamość usługi służy bezpośrednio do uwierzytelniania magazynu obiektów Blob, podobnie jak za pomocą jednostki usługi. Umożliwia ona tej fabryki wyznaczonym dostęp i kopiowanie danych z i do usługi Blob storage.
 
 Uwierzytelnianie usługi Azure Storage MSI ogólnie rzecz biorąc, można znaleźć [uwierzytelniania dostępu do usługi Azure Storage przy użyciu usługi Azure Active Directory](../storage/common/storage-auth-aad.md).
 
-Do uwierzytelniania usługa managed service identity (MSI), wykonaj następujące kroki:
+Aby użyć zarządzanych tożsamości do uwierzytelniania zasobów platformy Azure, wykonaj następujące kroki:
 
 1. [Pobierz tożsamość usługi fabryki danych](data-factory-service-identity.md#retrieve-service-identity) przez skopiowanie wartości "Identyfikator aplikacji tożsamości usługi" wygenerowane wraz z fabryką.
 
@@ -214,8 +214,8 @@ Te właściwości są obsługiwane w przypadku obiektów Blob platformy Azure po
 | punktu końcowego usługi | Określ punkt końcowy usługi dla magazynu obiektów Blob platformy Azure przy użyciu wzorca `https://<accountName>.blob.core.windows.net/`. |Yes |
 | connectVia | [Środowiska integration runtime](concepts-integration-runtime.md) ma być używany do łączenia się z magazynem danych. (Jeśli magazyn danych znajduje się w sieci prywatnej), można użyć środowiska Azure Integration Runtime lub środowiskiem Integration Runtime. Jeśli nie zostanie określony, używa domyślnego środowiska Azure Integration Runtime. |Nie |
 
->[!NOTE]
->Uwierzytelnianie tożsamości usługi zarządzanej jest obsługiwana tylko przez "Usłudze Azure blob Storage" typu połączonej usługi, ale nie poprzedniej "AzureStorage" typu połączonej usługi. 
+> [!NOTE]
+> Zarządzanych tożsamości dla zasobów platformy Azure, uwierzytelnianie jest obsługiwana tylko przez "Usłudze Azure blob Storage" typu połączonej usługi, ale nie poprzedniej "AzureStorage" typu połączonej usługi. 
 
 **Przykład:**
 

@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/01/2018
-ms.openlocfilehash: 3242f683fd6190209e3395bd8410dd1b2cd36960
-ms.sourcegitcommit: 3856c66eb17ef96dcf00880c746143213be3806a
+ms.openlocfilehash: bc322857a459f9417ed7c89a6e4df7ce5c41c3f0
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48043355"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48246485"
 ---
 # <a name="use-read-only-replicas-to-load-balance-read-only-query-workloads-preview"></a>Ładowanie równoważenie obciążeń związanych z zapytaniami tylko do odczytu (wersja zapoznawcza) przy użyciu repliki tylko do odczytu
 
@@ -75,7 +75,11 @@ SELECT DATABASEPROPERTYEX(DB_NAME(), 'Updateability')
 > [!NOTE]
 > W danym momencie tylko jeden z zawsze włączonych replik jest dostępna przez sesje tylko do odczytu.
 
-## <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>Włączanie i wyłączanie odczytu skalowalnego w poziomie przy użyciu programu Azure PowerShell
+## <a name="enable-and-disable-read-scale-out"></a>Włączanie i wyłączanie odczytu skalowalnego w poziomie
+
+Odczyt skalowalnego w poziomie jest domyślnie włączone w [wystąpienia zarządzanego](sql-database-managed-instance.md) tier(Preview) krytyczne dla działania firmy. Powinno ono zostać jawnie włączone w [bazy danych są umieszczone na serwerze logicznym](sql-database-logical-servers.md) w warstwach Premium i krytyczne dla działania firmy. Metody włączania i wyłączania odczytu skalowalnego w poziomie opisano w tym miejscu. 
+
+### <a name="enable-and-disable-read-scale-out-using-azure-powershell"></a>Włączanie i wyłączanie odczytu skalowalnego w poziomie przy użyciu programu Azure PowerShell
 
 Zarządzanie odczytu skalowalnego w poziomie w programie Azure PowerShell wymaga grudnia 2016 r. wersja programu Azure PowerShell lub nowszej. Dla najnowszej wersji programu PowerShell, zobacz [programu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps).
 
@@ -99,7 +103,7 @@ Aby utworzyć nową bazę danych za pomocą odczytu skalowalnego w poziomie wł�
 New-AzureRmSqlDatabase -ResourceGroupName <myresourcegroup> -ServerName <myserver> -DatabaseName <mydatabase> -ReadScale Enabled -Edition Premium
 ```
 
-## <a name="enabling-and-disabling-read-scale-out-using-the-azure-sql-database-rest-api"></a>Włączanie i wyłączanie odczytu skalowalnego w poziomie przy użyciu interfejsu API REST usługi Azure SQL Database
+### <a name="enabling-and-disabling-read-scale-out-using-the-azure-sql-database-rest-api"></a>Włączanie i wyłączanie odczytu skalowalnego w poziomie przy użyciu interfejsu API REST usługi Azure SQL Database
 
 Aby utworzyć bazę danych za pomocą odczytu skalowalnego w poziomie włączone, lub włączyć lub wyłączyć odczytu skalowalnego w poziomie do istniejącej bazy danych, Utwórz lub zaktualizuj odpowiednia jednostka bazy danych za pomocą `readScale` właściwością `Enabled` lub `Disabled` podobnie jak w poniższych przykładowych żądanie.
 
