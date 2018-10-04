@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 09/24/2018
+ms.date: 10/03/2018
 ms.author: magoedte
-ms.openlocfilehash: 2f0568064eed556429675ffb34c84d588ac670d5
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 0e23f5ac8dcce940389f62097fef7de36abe2387
+ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47064360"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48269212"
 ---
 # <a name="how-to-onboard-the-azure-monitor-for-vms"></a>Jak dołączyć platformy Azure, monitorując dla maszyn wirtualnych 
 W tym artykule opisano sposób konfigurowania usługi Azure Monitor dla maszyn wirtualnych w celu monitorowania kondycji systemu operacyjnego w maszynach wirtualnych platformy Azure oraz wykrywanie i mapowanie zależności aplikacji, które może być hostowana na nich.  
@@ -31,11 +31,11 @@ Włączanie usługi Azure Monitor dla maszyn wirtualnych odbywa się przy użyci
 * Wiele maszyn wirtualnych platformy Azure lub na maszynie wirtualnej zestawy skalowania w określonej subskrypcji lub grupy zasobów przy użyciu programu PowerShell.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
-Przed rozpoczęciem upewnij się, że masz następujące zgodnie z opisem w poniższych sekcjach podrzędnych.
+Przed rozpoczęciem upewnij się, że masz następujące zgodnie z opisem w poniższych podsekcjach.
 
 ### <a name="log-analytics"></a>Log Analytics 
 
-Obecnie są obsługiwane przez obszar roboczy usługi Log Analytics w następujących regionach:
+Obszar roboczy usługi Log Analytics w następujących regionach jest obecnie obsługiwane:
 
   - Środkowo-zachodnie stany USA  
   - Wschodnie stany USA  
@@ -44,11 +44,18 @@ Obecnie są obsługiwane przez obszar roboczy usługi Log Analytics w następuj�
 
 <sup>1</sup> ten region nie obsługuje obecnie funkcję kondycji monitora platformy Azure dla maszyn wirtualnych   
 
-Jeśli nie masz obszaru roboczego, możesz je utworzyć za pomocą [usługi Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md)za pośrednictwem [PowerShell](https://docs.microsoft.com/azure/log-analytics/scripts/log-analytics-powershell-sample-create-workspace?toc=%2fpowershell%2fmodule%2ftoc.json), lub [witryny Azure portal](../log-analytics/log-analytics-quick-create-workspace.md).  
+Jeśli nie masz obszaru roboczego, możesz utworzyć ją przy użyciu [wiersza polecenia platformy Azure](../log-analytics/log-analytics-quick-create-workspace-cli.md)za pośrednictwem [PowerShell](../log-analytics/log-analytics-quick-create-workspace-posh.md)w [witryny Azure portal](../log-analytics/log-analytics-quick-create-workspace.md), lub za pomocą [usługi Azure Resource Manager](../log-analytics/log-analytics-template-workspace-configuration.md).  Jeśli włączasz monitorowania dla pojedynczej maszyny Wirtualnej platformy Azure w witrynie Azure portal, masz możliwość utworzenia obszaru roboczego w trakcie tego procesu.  
 
 Aby włączyć rozwiązanie, musisz być członkiem roli Współautor usługi Log Analytics. Aby uzyskać więcej informacji na temat kontrolowania dostępu do obszaru roboczego usługi Log Analytics, zobacz [możesz zarządzać obszarami roboczymi](../log-analytics/log-analytics-manage-access.md).
 
 [!INCLUDE [log-analytics-agent-note](../../includes/log-analytics-agent-note.md)]
+
+Włączanie rozwiązania w skali scenariusz najpierw wymaga skonfigurowania następujących w obszarze roboczym usługi Log Analytics:
+
+* Zainstaluj **ServiceMap** i **InfrastructureInsights** rozwiązania
+* Konfiguruj obszar roboczy usługi Log Analytics można zebrać liczników wydajności
+
+Aby skonfigurować obszar roboczy dla tego scenariusza, zobacz [obszaru roboczego analizy dzienników Instalatora](#setup-log-analytics-workspace).
 
 ### <a name="supported-operating-systems"></a>Obsługiwane systemy operacyjne
 
@@ -138,7 +145,7 @@ W poniższej tabeli wymieniono systemy operacyjne Windows i Linux, które są ob
 |12 Z DODATKIEM SP3 | 4.4. * |
 
 ### <a name="hybrid-environment-connected-sources"></a>Środowisko hybrydowe połączone źródła
-Usługa Azure Monitor dla maszyn wirtualnych mapy dane są pobierane z Microsoft Dependency agent. Agent zależności zależy od agenta usługi Log Analytics do połączenia z usługi Log Analytics. Oznacza to, że system musi mieć agenta usługi Log Analytics, zainstalować i skonfigurować za pomocą agenta zależności.  W poniższej tabeli opisano połączone źródła obsługiwanych przez funkcję mapy w środowisku hybrydowym.
+Usługa Azure Monitor dla maszyn wirtualnych mapy dane są pobierane z Microsoft Dependency agent. Agent zależności zależy od usługi Log Analytics agent do połączenia z usługi Log Analytics i w związku z tym, system musi mieć agenta usługi Log Analytics, zainstalować i skonfigurować za pomocą agenta zależności. W poniższej tabeli opisano połączone źródła obsługiwanych przez funkcję mapy w środowisku hybrydowym.
 
 | Połączone źródło | Obsługiwane | Opis |
 |:--|:--|:--|
@@ -206,6 +213,9 @@ Usługa Azure Monitor dla maszyn wirtualnych służy do konfigurowania obszaru r
 |Sieć |Całkowita liczba przesłanych bajtów |  
 |Procesor |Czas procesora (%) |  
 
+## <a name="sign-in-to-azure-portal"></a>Logowanie do witryny Azure Portal
+Zaloguj się do witryny Azure Portal pod adresem [https://portal.azure.com](https://portal.azure.com). 
+
 ## <a name="enable-from-the-azure-portal"></a>Korzystanie z witryny Azure portal
 Aby włączyć monitorowanie maszyny wirtualnej platformy Azure w witrynie Azure portal, wykonaj następujące czynności:
 
@@ -225,76 +235,183 @@ Po włączeniu monitorowania może zająć około 10 minut, zanim będzie można
 
 ![Włączanie usługi Azure Monitor monitorowania przetwarzanie wdrożenia maszyn wirtualnych](./media/monitoring-vminsights-onboard/onboard-vminsights-vm-portal-status.png)
 
-## <a name="enable-using-azure-policy"></a>Włącz przy użyciu usługi Azure Policy
-Aby włączyć rozwiązanie dla wielu maszyn wirtualnych platformy Azure, która zapewnia spójne zgodności i automatyczne włączanie dla nowych maszyn wirtualnych aprowizowane, [usługi Azure Policy](../azure-policy/azure-policy-introduction.md) jest zalecane.  Za pomocą usługi Azure Policy, za pomocą zasad, pod warunkiem zapewnia następujące korzyści dla nowych maszyn wirtualnych:
 
-* Włączanie usługi Azure Monitor dla maszyn wirtualnych dla każdej maszyny Wirtualnej w zdefiniowanego zakresu
-* Wdróż agenta programu Log Analytics 
-* Wdrażanie agenta zależności, aby odnaleźć zależności aplikacji i Pokaż na mapie
-* Przeprowadzaj inspekcję obraz systemu operacyjnego maszyny Wirtualnej platformy Azure jest w uprzednio zdefiniowanej listy w definicji zasad  
-* Przeprowadzaj inspekcję rejestrowanie zdarzeń maszyny Wirtualnej platformy Azure do obszaru roboczego innego niż określona
-* Raport dotyczący wyniki sprawdzania zgodności 
-* Obsługa korygowania niezgodnych maszyn wirtualnych
+## <a name="on-boarding-at-scale"></a>Proces wdrażania na dużą skalę
+W tej sekcji instrukcje dotyczące wykonania podczas wdrażania skalowania usługi Azure Monitor dla maszyn wirtualnych przy użyciu tych zasad platformy Azure lub za pomocą programu Azure PowerShell.  To pierwszy krok wymagany do skonfigurowania obszaru roboczego usługi Log Analytics.  
 
-Aby go uaktywnić dla dzierżawy, ten proces wymaga:
+### <a name="setup-log-analytics-workspace"></a>Konfigurowanie obszaru roboczego usługi Log Analytics
+Jeśli nie masz obszaru roboczego usługi Log Analytics, zapoznaj się z dostępnych metod, które są zalecane w obszarze [wymagania wstępne](#log-analytics) sekcji, aby go utworzyć.  
 
-- Konfiguruj obszar roboczy Log Analytics wykonując kroki opisane w tym miejscu
-- Importowanie definicja inicjatywy do dzierżawy (na poziomie grupy zarządzania lub subskrypcji)
-- Przypisz zasady do żądanego zakresu
-- Przejrzyj wyniki sprawdzania zgodności
+#### <a name="enable-performance-counters"></a>Włącz liczniki wydajności
+Jeśli obszar roboczy usługi Log Analytics, przywoływane przez to rozwiązanie nie jest skonfigurowany do już zbierania liczników wydajności wymaganych przez to rozwiązanie, muszą być włączone. Można to zrobić ręcznie, zgodnie z opisem [tutaj](../log-analytics/log-analytics-data-sources-performance-counters.md), lub przez pobranie i uruchomienie skryptu programu PowerShell dostępny w [galerii programu Powershell Azure](https://www.powershellgallery.com/packages/Enable-VMInsightsPerfCounters/1.1).
+ 
+#### <a name="install-the-servicemap-and-infrastructureinsights-solutions"></a>Instalowanie rozwiązania ServiceMap i InfrastructureInsights
+Ta metoda obejmuje szablon JSON, który określa konfigurację, aby włączyć składników rozwiązania do obszaru roboczego usługi Log Analytics.  
 
-### <a name="add-the-policies-and-initiative-to-your-subscription"></a>Dodaj zasady i inicjatywa do subskrypcji
-Aby użyć zasad, można użyć dostarczonego skryptu programu PowerShell — [VMInsightsPolicy.ps1 Dodaj](https://www.powershellgallery.com/packages/Add-VMInsightsPolicy/1.2) dostępne w galerii programu PowerShell systemu Azure, aby zakończyć to zadanie. Skrypt ten dodaje zasady i inicjatywy do Twojej subskrypcji.  Wykonaj poniższe kroki, aby skonfigurować zasady usługi Azure w ramach subskrypcji. 
+Jeśli znasz koncepcji wdrażanie zasobów za pomocą szablonu, zobacz:
+* [Deploy resources with Resource Manager templates and Azure PowerShell (Wdrażanie zasobów za pomocą szablonów usługi Resource Manager i programu Azure PowerShell)](../azure-resource-manager/resource-group-template-deploy.md)
+* [Wdrażanie zasobów przy użyciu szablonów usługi Resource Manager i interfejsu wiersza polecenia platformy Azure](../azure-resource-manager/resource-group-template-deploy-cli.md) 
 
-1. Pobierz skrypt programu PowerShell do lokalnego systemu plików.
+Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpierw zainstalować i korzystać z interfejsu wiersza polecenia lokalnie. Musi być uruchomiona wiersza polecenia platformy Azure w wersji 2.0.27 lub nowszej. Aby zidentyfikować wersję, uruchom `az --version`. Jeśli musisz zainstalować lub uaktualnić wiersza polecenia platformy Azure, zobacz [zainstalować interfejs wiersza polecenia platformy Azure](https://docs.microsoft.com/cli/azure/install-azure-cli). 
 
-2. Użyj następującego polecenia programu PowerShell w folderze, aby dodać zasady. Skrypt obsługuje następujące parametry opcjonalne: 
+1. Skopiuj i wklej następującą składnię JSON do pliku:
+
+    ```json
+    {
+
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+        "WorkspaceName": {
+            "type": "string"
+        },
+        "WorkspaceLocation": {
+            "type": "string"
+        }
+    },
+    "resources": [
+        {
+            "apiVersion": "2017-03-15-preview",
+            "type": "Microsoft.OperationalInsights/workspaces",
+            "name": "[parameters('WorkspaceName')]",
+            "location": "[parameters('WorkspaceLocation')]",
+            "resources": [
+                {
+                    "apiVersion": "2015-11-01-preview",
+                    "location": "[parameters('WorkspaceLocation')]",
+                    "name": "[concat('ServiceMap', '(', parameters('WorkspaceName'),')')]",
+                    "type": "Microsoft.OperationsManagement/solutions",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
+                    ],
+                    "properties": {
+                        "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
+                    },
+
+                    "plan": {
+                        "name": "[concat('ServiceMap', '(', parameters('WorkspaceName'),')')]",
+                        "publisher": "Microsoft",
+                        "product": "[Concat('OMSGallery/', 'ServiceMap')]",
+                        "promotionCode": ""
+                    }
+                },
+                {
+                    "apiVersion": "2015-11-01-preview",
+                    "location": "[parameters('WorkspaceLocation')]",
+                    "name": "[concat('InfrastructureInsights', '(', parameters('WorkspaceName'),')')]",
+                    "type": "Microsoft.OperationsManagement/solutions",
+                    "dependsOn": [
+                        "[concat('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
+                    ],
+                    "properties": {
+                        "workspaceResourceId": "[resourceId('Microsoft.OperationalInsights/workspaces/', parameters('WorkspaceName'))]"
+                    },
+                    "plan": {
+                        "name": "[concat('InfrastructureInsights', '(', parameters('WorkspaceName'),')')]",
+                        "publisher": "Microsoft",
+                        "product": "[Concat('OMSGallery/', 'InfrastructureInsights')]",
+                        "promotionCode": ""
+                    }
+                }
+            ]
+        }
+    ]
+    ```
+
+2. Zapisz ten plik jako **installsolutionsforvminsights.json** do folderu lokalnego.
+3. Edytuj wartości **WorkspaceName**, **ResourceGroupName**, i **WorkspaceLocation**.  Wartość **WorkspaceName** jest pełny identyfikator zasobu obszaru roboczego usługi Log Analytics, która zawiera nazwę obszaru roboczego, a wartość **WorkspaceLocation** jest region, w obszarze roboczym jest zdefiniowany w.
+4. Wszystko będzie gotowe do wdrożenia tego szablonu, za pomocą następującego polecenia programu PowerShell:
 
     ```powershell
-    -UseLocalPolicies [<SwitchParameter>]
-      <Optional> Load the policies from a local folder instead of https://raw.githubusercontent.com/dougbrad/OnBoardVMInsights/Policy/Policy/
+    New-AzureRmResourceGroupDeployment -Name DeploySolutions -TemplateFile InstallSolutionsForVMInsights.json -ResourceGroupName ResourceGroupName> -WorkspaceName <WorkspaceName> -WorkspaceLocation <WorkspaceLocation - example: eastus>
+    ```
 
-    -SubscriptionId <String>
-      <Optional> SubscriptionId to add the Policies/Initiatives to
-    -ManagementGroupId <String>
-      <Optional> Management Group Id to add the Policies/Initiatives to
+    Zmiana konfiguracji może potrwać kilka minut. Po jej zakończeniu zostanie wyświetlony komunikat podobny do poniższego, która zawiera wynik:
 
-    -Approve [<SwitchParameter>]
-      <Optional> Gives the approval to add the Policies/Initiatives without any prompt
-    ```  
+    ```powershell
+    provisioningState       : Succeeded
+    ```
+
+### <a name="enable-using-azure-policy"></a>Włącz przy użyciu usługi Azure Policy
+Aby włączyć usługi Azure Monitor dla maszyn wirtualnych na dużą skalę, która zapewnia spójne zgodności i automatyczne włączanie dla nowych maszyn wirtualnych aprowizowane, [usługi Azure Policy](../azure-policy/azure-policy-introduction.md) jest zalecane. Te zasady:
+
+* Wdrażanie agenta usługi Log Analytics i agenta zależności 
+* Raport dotyczący wyniki sprawdzania zgodności 
+* Korygowanie dla niezgodnych maszyn wirtualnych
+
+Włączanie usługi Azure Monitor dla maszyn wirtualnych za pomocą zasad z dzierżawą wymaga: 
+
+- Przypisz inicjatywę do zakresu — w grupie zarządzania, subskrypcji lub grupy zasobów 
+- Przejrzyj i korygowanie wyniki sprawdzania zgodności  
+
+Aby uzyskać więcej informacji na temat przypisywania zasad platformy Azure, zobacz [Omówienie usługi Azure Policy](../governance/policy/overview.md#policy-assignment) i przejrzyj [Przegląd grup zarządzania](../governance/management-groups/index.md) przed kontynuowaniem.  
+
+Poniższa tabela zawiera listę definicji zasad, pod warunkiem.  
+
+|Name (Nazwa) |Opis |Typ |  
+|-----|------------|-----|  
+|[Wersja zapoznawcza]: Włączanie usługi Azure Monitor dla maszyn wirtualnych |Włączanie usługi Azure Monitor dla maszyn wirtualnych (VM) z określonego zakresu (grupy zarządzania, subskrypcji lub grupy zasobów). Pobiera obszar roboczy usługi Log Analytics jako parametr. |Inicjatywa |  
+|[Wersja zapoznawcza]: Wdrażanie inspekcji do agenta zależności — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście |Raporty maszyn wirtualnych z CLS jako niezgodne Jeśli obraz maszyny Wirtualnej (OS) nie jest na liście zdefiniowane i agenta nie jest zainstalowany. |Zasady |  
+|[Wersja zapoznawcza]: wdrożenie agenta inspekcji Log Analytics — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście |Raporty maszyn wirtualnych z CLS jako niezgodne Jeśli obraz maszyny Wirtualnej (OS) nie jest na liście zdefiniowane i agenta nie jest zainstalowany. |Zasady |  
+|[Wersja zapoznawcza]: Wdrażanie agenta zależności maszyn wirtualnych systemu Linux |Wdróż agenta zależności maszyn wirtualnych systemu Linux, jeśli obraz maszyny Wirtualnej (OS) jest na liście zdefiniowane i nie jest zainstalowany agent. |Zasady |  
+|[Wersja zapoznawcza]: Wdrażanie agenta zależności dla maszyn wirtualnych Windows |Wdróż agenta zależności Windows VMs, jeśli obraz maszyny Wirtualnej (OS) jest na liście zdefiniowane i nie jest zainstalowany agent. |Zasady |  
+|[Wersja zapoznawcza]: Wdrażanie Log Analytics Agent na maszynach wirtualnych systemu Linux |Wdróż Log Analytics Agent maszyn wirtualnych systemu Linux, jeśli obraz maszyny Wirtualnej (OS) jest na liście zdefiniowane i nie jest zainstalowany agent. |Zasady |  
+|[Wersja zapoznawcza]: Wdrażanie Log Analytics Agent for Windows VMs |Wdróż Log Analytics Agent dla Windows maszyn wirtualnych, jeśli obraz maszyny Wirtualnej (OS) jest na liście zdefiniowane i nie jest zainstalowany agent. |Zasady |  
+
+Zasady autonomiczne (nie dołączona inicjatywy) 
+
+|Name (Nazwa) |Opis |Typ |  
+|-----|------------|-----|  
+|[Wersja zapoznawcza]: inspekcja obszar roboczy usługi Log Analytics dla maszyny Wirtualnej — Zgłoś niezgodność |Raportu maszyn wirtualnych jako niezgodne, jeśli nie rejestrują LA obszaru roboczego w przypisaniu zasad/inicjatywy. |Zasady |
+
+#### <a name="assign-azure-monitor-initiative"></a>Przypisz inicjatywę usługi Azure Monitor
+W tej wersji początkowej przypisania zasad można tworzyć tylko w witrynie Azure portal. Aby dowiedzieć się, jak wykonać następujące czynności, zobacz [Tworzenie przypisania zasad w witrynie Azure portal](../governance/policy/assign-policy-portal.md). 
+
+1. Uruchom usługę Azure Policy w witrynie Azure Portal, klikając pozycję **Wszystkie usługi**, a następnie wyszukując i wybierając opcję **Zasady**. 
+2. Wybierz pozycję **Przypisania** w lewej części strony usługi Azure Policy. Przypisanie to zasady, które zostały przypisane do określonego zakresu.
+3. Wybierz **przypisania inicjatywy** od górnej krawędzi **zasady — przypisania** strony.
+4. Na **przypisania inicjatywy** wybierz opcję **zakres** przez kliknięcie przycisku wielokropka i wybierz albo grupę zarządzania lub subskrypcji i opcjonalnie grupa zasobów. Zakres ogranicza przypisania zasad w tym przypadku do zgrupowania maszyn wirtualnych do wymuszania. Kliknij przycisk **wybierz** w dolnej części **zakres** strony, aby zapisać zmiany.
+5. **Wykluczenia** pozwala na pominięcie co najmniej jednego zasobu z zakresu, który jest opcjonalny. 
+6. Wybierz **definicja inicjatywy** wielokropka, aby otworzyć listę dostępnych definicji i wybierz  **[Wersja zapoznawcza] włączyć usługi Azure Monitor dla maszyn wirtualnych** z listy, a następnie kliknij przycisk **Wybierz**.
+7. **Nazwa przypisania** jest automatycznie wypełniane nazwą inicjatywy jest zaznaczone, ale można go zmienić. Można również dodać opcjonalny **Opis**. **Przypisane przez** jest wypełniane automatycznie na podstawie kto jest zalogowany, a to pole jest opcjonalne.
+8. Wybierz **obszaru roboczego usługi Log Analytics** z listy rozwijanej, która jest dostępna w obsługiwanym regionie.
 
     >[!NOTE]
-    >Uwaga: Jeśli planujesz przypisanie inicjatywy/zasady do wielu subskrypcji, definicje muszą być przechowywane w grupie zarządzania, zawierającą subskrypcje, które przypiszesz zasady. W związku z tym należy użyć parametru - ManagementGroupID.
+    >Jeśli obszar roboczy jest poza zakresem przypisania, musi przyznawać **Współautor usługi Log Analytics** uprawnień, aby identyfikator przypisania zasad podmiotu zabezpieczeń. Jeśli tego nie zrobisz niepowodzenie wdrożenia może zostać wyświetlony takich jak: `The client '343de0fe-e724-46b8-b1fb-97090f7054ed' with object id '343de0fe-e724-46b8-b1fb-97090f7054ed' does not have authorization to perform action 'microsoft.operationalinsights/workspaces/read' over scope ... ` przeglądu [jak ręcznie skonfigurować tożsamość zarządzaną](../governance/policy/how-to/remediate-resources.md#manually-configure-the-managed-identity) do udzielania dostępu.
     >
-   
-    Przykład bez parametrów:  `.\Add-VMInsightsPolicy.ps1`
 
-### <a name="create-a-policy-assignment"></a>Tworzenie przypisania zasad
-Po uruchomieniu `Add-VMInsightsPolicy.ps1` skrypt programu PowerShell, następujące inicjatywy i zasady zostaną dodane:
+9. Zwróć uwagę **tożsamości zarządzanej** opcja jest zaznaczona. To pole jest zaznaczone, gdy inicjatywy przypisaniem zawiera zasady z mocą deployIfNotExists. Z **lokalizacji Zarządzanie tożsamościami** listy rozwijanej wybierz odpowiedni region.  
+10. Kliknij przycisk **Przypisz**.
 
-* **Wdrażanie programu Log Analytics Agent for Windows VMs — wersja zapoznawcza**
-* **Wdrażanie programu Log Analytics Agent na maszynach wirtualnych systemu Linux — wersja zapoznawcza**
-* **Wdrażanie agenta zależności dla maszyn wirtualnych Windows — wersja zapoznawcza**
-* **Wdrażanie agenta zależności maszyn wirtualnych systemu Linux — wersja zapoznawcza**
-* **Inspekcja Log Analytics Agent wdrożenia — obraz (system operacyjny maszyny Wirtualnej) nieznajdujące się na liście — w wersji zapoznawczej**
-* **Inspekcja zależności agenta wdrożenia — obraz (system operacyjny maszyny Wirtualnej) nieznajdujące się na liście — w wersji zapoznawczej**
+#### <a name="review-and-remediate-the-compliance-results"></a>Przejrzyj i Skoryguj wyniki sprawdzania zgodności 
 
-Następujący parametr inicjatywy zostanie dodana:
+Możesz dowiedzieć się, jak można przejrzeć wyniki sprawdzania zgodności, czytając [zidentyfikować wyniki niezgodności](../governance/policy/assign-policy-portal.md#identify-non-compliant-resources). Wybierz **zgodności** w lewej części strony i Znajdź  **[Wersja zapoznawcza] włączyć usługi Azure Monitor dla maszyn wirtualnych** inicjatywy, które nie są zgodne na utworzone przypisanie.
 
-- **Zaloguj się Analytice obszaru roboczego** (trzeba podać identyfikator zasobu obszaru roboczego, jeśli zastosowanie przypisania przy użyciu programu PowerShell lub interfejsu wiersza polecenia)
+![Zgodność z zasadami dla maszyn wirtualnych platformy Azure](./media/monitoring-vminsights-onboard/policy-view-compliance-01.png)
 
-    Maszyny wirtualne dostępne jako niezgodne z zasadami inspekcji **maszyny wirtualne nie znajduje się w zakresie systemu operacyjnego...**  kryteria zasady wdrażania obejmuje tylko maszyny wirtualne, które są wdrażane z dobrze znanych obrazów maszyn wirtualnych platformy Azure. Zajrzyj do dokumentacji, jeśli system operacyjny maszyny Wirtualnej jest obsługiwany lub nie.  Jeśli nie jest, należy skopiować zasady wdrażania i aktualizacji/zmodyfikować, aby utworzyć obraz w zakresie.
+Na podstawie wyników zasad dołączone do tej inicjatywy, maszyny wirtualne są zgłaszane jako niezgodne w następujących scenariuszach:  
+  
+1. Usługa log Analytics lub agenta zależności nie są wdrażane.  
+   To jest typowe dla zakresu przy użyciu istniejących maszyn wirtualnych. Aby uniknąć, [tworzenie zadań korygowania](../governance/policy/how-to/remediate-resources.md) na niezgodnych zasad w celu wdrożenia wymaganych agentów.    
+ 
+    - [Wersja zapoznawcza]: Deploy Dependency Agent for Linux VMs   
+    - [Wersja zapoznawcza]: Deploy Dependency Agent for Windows VMs  
+    - [Wersja zapoznawcza]: Deploy Log Analytics Agent for Linux VMs  
+    - [Wersja zapoznawcza]: Deploy Log Analytics Agent for Windows VMs  
 
-Dodaje następujące zasady opcjonalne autonomicznych:
+2. Maszyna wirtualna obrazu systemu operacyjnego nie jest na liście określone w definicji zasad.  
+   Kryteria zasady wdrażania obejmuje tylko maszyny wirtualne, które są wdrażane z dobrze znanych obrazów maszyn wirtualnych platformy Azure. Zajrzyj do dokumentacji, jeśli system operacyjny maszyny Wirtualnej jest obsługiwany lub nie. Jeśli nie jest, należy skopiować zasady wdrażania i aktualizacji/zmodyfikować, aby utworzyć obraz zgodne. 
+  
+    - [Wersja zapoznawcza]: Wdrażanie inspekcji do agenta zależności — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście  
+    - [Wersja zapoznawcza]: wdrożenie agenta inspekcji Log Analytics — obraz maszyny Wirtualnej (OS) nieznajdujące się na liście
 
-- **Maszyna wirtualna jest skonfigurowana dla niedopasowanych Analytics obszar roboczy usługi Log — wersja zapoznawcza**
+3. Maszyny wirtualne nie są rejestrowanie określony obszar roboczy LA.  
+Istnieje możliwość, czy niektóre maszyny wirtualne w zakresie inicjatywy logowania się do obszaru roboczego LA inny niż jeden raz w przypisaniu zasad. Ta zasada jest narzędziem, aby identyfikować, które maszyny wirtualne zgłaszanej niezgodny z obszarem roboczym.  
+ 
+    - [Wersja zapoznawcza]: Audit Log Analytics Workspace for VM - Report Mismatch  
 
-    To może służyć do identyfikowania maszyn wirtualnych już skonfigurowaną [rozszerzenia Log Analytics VM Extension](../virtual-machines/extensions/oms-windows.md), ale są skonfigurowane przy użyciu innego obszaru roboczego, niż planowano (co zostało wskazane przez przypisanie zasad). Ten parametr, w jakim identyfikator obszaru roboczego.
-
-W tej wersji początkowej przypisania zasad można tworzyć tylko w witrynie Azure portal. Aby dowiedzieć się, jak wykonać następujące czynności, zobacz [Tworzenie przypisania zasad w witrynie Azure portal](../azure-policy/assign-policy-definition.md).
-
-## <a name="enable-with-powershell"></a>Włącz przy użyciu programu PowerShell
-Aby włączyć usługi Azure Monitor dla maszyn wirtualnych, dla wielu maszyn wirtualnych lub maszyn wirtualnych zestawów skalowania, można użyć dostarczonego skryptu programu PowerShell — [VMInsights.ps1 instalacji](https://www.powershellgallery.com/packages/Install-VMInsights/1.0) dostępne w galerii programu PowerShell systemu Azure, aby zakończyć to zadanie.  Ten skrypt iteracji przez co maszyna wirtualna i maszyny Wirtualnej zestawu skalowania w Twojej subskrypcji, w grupie zasobów o określonym zakresie, określony przez *ResourceGroup*, lub do jednej maszyny Wirtualnej lub określony przez zestaw skalowania *nazwa*.  Dla każdej maszyny Wirtualnej lub maszyny Wirtualnej zestawu skalowania skrypt sprawdza, jeśli rozszerzenie maszyny Wirtualnej jest już zainstalowane, a nie podjęto próbę jego ponowną instalację.  W przeciwnym razie przechodzą do instalowania rozszerzeń usługi Log Analytics i maszyn wirtualnych agenta zależności.   
+### <a name="enable-with-powershell"></a>Włącz przy użyciu programu PowerShell
+Aby włączyć usługi Azure Monitor dla maszyn wirtualnych, wiele maszyn wirtualnych i zestawów skalowania maszyn wirtualnych, należy użyć dostarczonego skryptu programu PowerShell — [VMInsights.ps1 instalacji](https://www.powershellgallery.com/packages/Install-VMInsights/1.0) dostępne w galerii programu PowerShell systemu Azure, aby zakończyć to zadanie.  Ten skrypt iteracji przez każdego wirtualnego maszyny i maszyn wirtualnych zestawu skalowania w ramach subskrypcji, w grupie zasobów o określonym zakresie, określony przez *ResourceGroup*, lub do jednej maszyny Wirtualnej lub maszyny wirtualnej zestawu skalowania określony przez *Nazwa*.  Dla każdej maszyny Wirtualnej lub maszyny wirtualnej zestawu skalowania skrypt sprawdza, jeśli rozszerzenie maszyny Wirtualnej jest już zainstalowane, a nie podjęto próbę jego ponowną instalację.  W przeciwnym razie przechodzą do instalowania rozszerzeń usługi Log Analytics i maszyn wirtualnych agenta zależności.   
 
 Ten skrypt wymaga programu Azure PowerShell w wersji modułu 5.7.0 lub nowszej. Uruchom polecenie `Get-Module -ListAvailable AzureRM`, aby dowiedzieć się, jaka wersja jest używana. Jeśli konieczne będzie uaktualnienie, zobacz [Instalowanie modułu Azure PowerShell](https://docs.microsoft.com/powershell/azure/install-azurerm-ps). Jeśli używasz programu PowerShell lokalnie, musisz też uruchomić polecenie `Connect-AzureRmAccount`, aby utworzyć połączenie z platformą Azure.
 
@@ -588,7 +705,7 @@ Jeśli zdecydujesz się użyć wiersza polecenia platformy Azure, należy najpie
     ```
 
 2. Zapisz ten plik jako **installsolutionsforvminsights.json** do folderu lokalnego.
-3. Edytuj wartości **WorkspaceName**, **ResourceGroupName**, i **WorkspaceLocation**.  Wartość **WorkspaceName** jest to pełny identyfikator zasobu obszaru roboczego usługi Log Analytics, która zawiera nazwę obszaru roboczego, a wartość **WorkspaceLocation** to region, obszar roboczy jest zdefiniowany w programie.
+3. Edytuj wartości **WorkspaceName**, **ResourceGroupName**, i **WorkspaceLocation**.  Wartość **WorkspaceName** jest pełny identyfikator zasobu obszaru roboczego usługi Log Analytics, która zawiera nazwę obszaru roboczego, a wartość **WorkspaceLocation** jest region, w obszarze roboczym jest zdefiniowany w.
 4. Wszystko będzie gotowe do wdrożenia tego szablonu, za pomocą następującego polecenia programu PowerShell:
 
     ```powershell

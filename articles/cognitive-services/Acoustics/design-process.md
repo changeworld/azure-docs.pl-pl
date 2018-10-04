@@ -9,12 +9,12 @@ ms.component: acoustics
 ms.topic: article
 ms.date: 08/17/2018
 ms.author: kegodin
-ms.openlocfilehash: 8f594be67c4677fae00cb01598d3899e30dae1e8
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: b6bb04d9cec690198de663189dacd41fcbe960eb
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433228"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248608"
 ---
 # <a name="design-process-overview"></a>Omówienie procesu projektowania
 We wszystkich fazach Akustyka projektu przepływu pracy można wyrazić zgodną z planem projektu: wstępne tworzenie sceny instalacji, położenia źródła dźwięku i po Tworzenie projektu. Ten proces wymaga mniej znaczników skojarzony umieszczenie woluminy pogłosu przy zachowaniu projektanta kontrolę nad jak brzmi sceny.
@@ -45,18 +45,30 @@ Audio DSP dostarczone przez **Acoustics Microsoft** wtyczki spatializer Unity sz
 
 ![Tłumienie odległości](media/distanceattenuation.png)
 
+Akustyka wykonuje obliczenia w polu "symulacji region" skupia się wokół lokalizacji odtwarzacza. Źródła dźwięku jest oddalone przed graczem, znajduje się poza tym regionem symulacji tylko geometrii w ramach tego pola będzie mieć wpływ na dźwięk propagacji (na przykład powoduje zamknięcia.), który jest dobrze działa, gdy occluders znajdują się w pobliżu odtwarzacza. Jednak w przypadkach, gdy działa on w wolnym miejscu, ale occluders zbliżenia odległe źródła dźwięku dźwięk może stać się nierealistycznie disoccluded. Nasze rozwiązania sugerowane jest zapewnienie w takich przypadkach dźwięku tłumienie spadnie na 0 w około 45m, odległość odtwarzacza krawędzią pola w poziomie domyślne.
+
 ### <a name="tuning-scene-parameters"></a>Dostrajanie parametrów sceny
 Aby dostosować parametry dla wszystkich źródeł, kliknij na pasku kanału w mechanizmu Unity **Mixer Audio**i dostosowanie parametrów w **Mixer Akustyka** efekt.
 
 ![Dostosowywanie Mixer](media/MixerParameters.png)
 
 ### <a name="tuning-source-parameters"></a>Dostrajanie parametrów źródła
-Dołączanie **AcousticsSourceCustomization** skrypt do źródła umożliwia dostrajanie parametrów dla tego źródła. Aby dołączyć skrypt, kliknij przycisk **Dodaj składnik** w dolnej części **Inspektor** panelu, a następnie przejdź do **Skrypty > Dostosowywanie źródła Akustyka**. Skrypt ma trzy parametry:
+Dołączanie **AcousticsDesign** skrypt do źródła umożliwia dostrajanie parametrów dla tego źródła. Aby dołączyć skrypt, kliknij przycisk **Dodaj składnik** w dolnej części **Inspektor** panelu, a następnie przejdź do **Skrypty > Projekt Akustyka**. Skrypt zawiera sześć kontrolki:
 
-![Dostosowywanie źródła](media/SourceCustomization.png)
+![AcousticsDesign](media/AcousticsDesign.png)
 
-* **Pogłosu dostosować Power** — dopasowuje pogłosu zasilania, w bazie danych. Wartości dodatnich wprowadzać dźwięk bardziej reverberant podczas wartości ujemnych wprowadzić bardziej susz dźwięku.
+* **Współczynnik zamknięcia** -dotyczą mnożnik zamknięcia poziom bazy danych, obliczone przez system Akustyka. Jeśli ta mnożnik jest większa niż 1, zamknięcia będzie exaggerated, podczas wartości mniejsza niż 1 Upewnij wpływ zamknięcia bardziej subtelne, a wartość 0 powoduje wyłączenie zamknięcia.
+* **Przekazywanie (baza danych)** — Ustaw tłumienie (w bazie danych), spowodowane przez geometrii. Ustaw suwak do jego najniższym poziomie, aby wyłączyć przekazywanie. Akustyka spatializes początkowej audio susz jako odebranych wokół geometrii sceny (portaling). Przekazywanie udostępnia dodatkowe przybycia susz, który jest spatialized w kierunku linii wzroku. Należy pamiętać, że tłumienie odległość krzywą dla źródła są również stosowane.
+* **Dostosuj wetness (baza danych)** — dopasowuje pogłosu zasilania, w bazie danych, zgodnie z odległości ze źródła. Wartości dodatnich wprowadzać dźwięk bardziej reverberant podczas wartości ujemnych wprowadzić bardziej susz dźwięku. Kliknij na formancie krzywej (wiersz zielony), aby wyświetlić Edytor krzywej. Zmodyfikuj krzywej kliknięcie lewym przyciskiem myszy, aby dodać punkty, a następnie przeciągając tych punktów w celu utworzenia funkcji, że chcesz użyć. Oś x jest odległość od źródłowego i osi y jest dostosowanie pogłosu w bazie danych. Zobacz ten [ręczne Unity](https://docs.unity3d.com/Manual/EditingCurves.html) Aby uzyskać więcej informacji na temat edytowania krzywych. Aby przywrócić wartość domyślną krzywej, kliknij prawym przyciskiem myszy **dostosować Wetness** i wybierz **resetowania**.
 * **Decay Skala czasu** — dopasowuje mnożnik dla czas zanikania. Na przykład jeśli wynik tworzenie określa czas zanikania 750 milisekund, ale ta wartość jest równa 1,5, czas zanikania stosowane do źródła jest 1,125 milisekund.
 * **Włącz Akustyka** — Określa, czy Akustyka jest stosowany do tego źródła. Po usunięciu zaznaczenia źródła będzie spatialized HRTFs, jednak bez Akustyka, co oznacza bez przeszkód, zamknięcia i parametry dynamiczne reverberation, takie jak poziom i zanikania czasu. Reverberation nadal jest stosowany przy stałym poziomie i czas zanikania.
+* **Dostosowanie outdoorness** -addytywne korektę na system Akustyka szacowania jak "na zewnątrz" reverberation w źródle powinny dźwiękowych. To ustawienie na 1 spowoduje, że źródło zawsze dźwięku całkowicie na zewnątrz, podczas ustawienie go na wartość -1 spowoduje, że źródła dźwięku pomieszczeniu.
 
-Różne źródła może wymagać różne ustawienia uzyskać pewne efekty estetycznych lub rozgrywkę. Okno dialogowe jest jednym z przykładów możliwe. Wyczyść ludzi jest bardziej attuned do reverberation w mowy, gdy okno dialogowe często konieczne jest zrozumiały dla rozgrywkę. W tym może uwzględnić bez wprowadzania okno dialogowe bez diegetic, dostosowując możliwości pogłosu w dół.
+Różne źródła może wymagać różne ustawienia uzyskać pewne efekty estetycznych lub rozgrywkę. Okno dialogowe jest jednym z przykładów możliwe. Wyczyść ludzi jest bardziej attuned do reverberation w mowy, gdy okno dialogowe często konieczne jest zrozumiały dla rozgrywkę. Konta na w tym, bez konieczności szukania okno dialogowe bez diegetic, przenosząc **dostosować Wetness** w dół, dostosowując **Percepcyjna Warp odległość** parametru opisane poniżej, dodając kilka **Transmisji** dla niektórych susz boost audio propagowanie przez ściany i/lub zmniejszając **zamknięcia współczynnik** od 1 do ma więcej dźwięku odbierane za pośrednictwem portali.
+
+Dołączanie **AcousticsDesignExperimental** skrypt do źródła umożliwia eksperymentalne dostrajania parametrów dla tego źródła. Aby dołączyć skrypt, kliknij przycisk **Dodaj składnik** w dolnej części **Inspektor** panelu, a następnie przejdź do **skryptów > eksperymentalne projektowania Akustyka**. Obecnie jest jedną eksperymentalna kontrolka:
+
+![AcousticsDesignExperimental](media/AcousticsDesignExperimental.png)
+
+* **Percepcyjna Warp odległość** — Zastosuj wykładniczy Wypaczanie odległość, używany do obliczania współczynnik mokro próbnego. System Akustyka oblicza mokrą poziomy w całej przestrzeni, które różnią się płynnie z odległości i podaj odległość Percepcyjna podpowiedzi. Wypaczanie wartości większe niż 1 exaggerate ten efekt przez coraz większe poziomy reverberation powiązane odległość, wprowadzania dźwięku "odległe", podczas gdy mniej niż 1 Upewnij Wypaczanie wartości bardziej subtelne, dzięki czemu dźwięk więcej zmian na podstawie odległości reverberation "przedstawia".
+

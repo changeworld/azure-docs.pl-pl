@@ -12,16 +12,20 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 07/16/2018
-ms.openlocfilehash: b2d4166c25014416efbb7392acda3f3f028b4fa9
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: 6110773ecaba0ad333e4cfc9f9cc6014bd29a7a6
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162050"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48249523"
 ---
 # <a name="store-azure-sql-database-backups-for-up-to-10-years"></a>Store kopie zapasowe bazy danych SQL platformy Azure przez maksymalnie 10 lat
 
 Wiele aplikacji ma prawnych, zgodności lub innych firm do celów, które można przechowywać kopie zapasowe bazy danych dłużej niż 7 – 35 dni, dostarczone przez usługę Azure SQL Database wymagają [automatyczne tworzenie kopii zapasowych](sql-database-automated-backups.md). Funkcja długoterminowego przechowywania (od lewej do prawej), można przechowywać określonego SQL pełne kopie zapasowe bazy danych w [RA-GRS](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage) magazynu obiektów blob do 10 lat. Jakiejkolwiek kopii zapasowej można przywrócić jako nową bazę danych.
+
+> [!NOTE]
+> Od lewej do prawej, można włączyć w bazach danych hostowanej w serwerach logicznych Azure SQL Database. Nadal nie jest dostępny w wystąpieniach zarządzanych.
+> 
 
 ## <a name="how-sql-database-long-term-retention-works"></a>Jak działa długoterminowe przechowywanie bazy danych SQL
 
