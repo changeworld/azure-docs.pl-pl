@@ -9,14 +9,14 @@ ms.date: 03/26/2018
 ms.author: tamram
 ms.custom: mvc
 ms.component: blobs
-ms.openlocfilehash: b3916fb0de48f30bd4809d1fc42dde6ac78c07b6
-ms.sourcegitcommit: d211f1d24c669b459a3910761b5cacb4b4f46ac9
+ms.openlocfilehash: d50291a33a9456fad20382d8e646bf6a19d6179e
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "44023270"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47180885"
 ---
-# <a name="make-your-application-data-highly-available-with-azure-storage"></a>Uzyskiwanie wysokiej dostępności danych aplikacji przy użyciu usługi Azure Storage
+# <a name="tutorial-make-your-application-data-highly-available-with-azure-storage"></a>Samouczek: Uzyskiwanie wysokiej dostępności danych aplikacji przy użyciu usługi Azure Storage
 
 Ten samouczek to pierwsza część w serii. Przedstawiono w nim sposób uzyskiwania wysokiej dostępności danych aplikacji na platformie Azure. Po zakończeniu będziesz mieć aplikację konsolową, która przekazuje i pobiera obiekt blob do konta magazynu [geograficznie nadmiarowego do odczytu](../common/storage-redundancy-grs.md#read-access-geo-redundant-storage) (RA-GRS). Działanie magazynu RA-GRS polega na replikowaniu transakcji z regionu podstawowego do pomocniczego. Ten proces replikacji gwarantuje, że dane w regionie pomocniczym ostatecznie uzyskają spójność. Aplikacja używa wzorca [wyłącznika](/azure/architecture/patterns/circuit-breaker), aby określić, z którym punktem końcowym nawiązać połączenie. Aplikacja przełącza się do pomocniczego punktu końcowego w przypadku symulacji błędu.
 
@@ -43,7 +43,7 @@ W celu ukończenia tego samouczka:
 # <a name="python-tabpython"></a>[Python] (#tab/python) 
 
 * Zainstaluj język [Python](https://www.python.org/downloads/)
-* Pobierz i zainstaluj [zestaw SDK usługi Azure Storage dla języka Python](https://github.com/Azure/azure-storage-python)
+* Pobierz i zainstaluj [zestaw Azure Storage SDK dla języka Python](https://github.com/Azure/azure-storage-python)
 * (Opcjonalnie) Pobierz i zainstaluj program [Fiddler](https://www.telerik.com/download/fiddler)
 
 # <a name="java-tabjava"></a>[Java] (#tab/java)

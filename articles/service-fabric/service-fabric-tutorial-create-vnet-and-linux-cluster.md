@@ -12,19 +12,19 @@ ms.devlang: dotNet
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 01/22/2018
+ms.date: 09/27/2018
 ms.author: ryanwi
 ms.custom: mvc
-ms.openlocfilehash: 161687ec2275558adb235dc63b5244a0a8ff7e47
-ms.sourcegitcommit: 5a7f13ac706264a45538f6baeb8cf8f30c662f8f
+ms.openlocfilehash: 27600cd4656f70b4cd01745667c0e0fd2a2f4997
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/29/2018
-ms.locfileid: "37110797"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405823"
 ---
 # <a name="tutorial-deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Samouczek: wdrażanie klastra usługi Service Fabric systemu Linux w sieci wirtualnej platformy Azure
 
-Niniejszy samouczek jest pierwszą częścią serii. Dowiesz się w nim, jak wdrożyć klaster usługi Service Fabric systemu Linux w [sieci wirtualnej (VNET) platformy Azure](../virtual-network/virtual-networks-overview.md) i [sieciowej grupie zabezpieczeń](../virtual-network/virtual-networks-nsg.md) za pomocą szablonu i interfejsu wiersza polecenia platformy Azure. Po wykonaniu tych czynności powstanie działający w chmurze klaster, w którym można będzie wdrażać aplikacje. Aby utworzyć klaster systemu Windows za pomocą programu PowerShell, zobacz [Tworzenie bezpiecznego klastra systemu Windows na platformie Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
+Niniejszy samouczek jest pierwszą częścią serii. Dowiesz się w nim, jak wdrożyć klaster usługi Service Fabric systemu Linux w [sieci wirtualnej (VNET) platformy Azure](../virtual-network/virtual-networks-overview.md) za pomocą szablonu i interfejsu wiersza polecenia platformy Azure. Po wykonaniu tych czynności powstanie działający w chmurze klaster, w którym można będzie wdrażać aplikacje. Aby utworzyć klaster systemu Windows za pomocą programu PowerShell, zobacz [Tworzenie bezpiecznego klastra systemu Windows na platformie Azure](service-fabric-tutorial-create-vnet-and-windows-cluster.md).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -40,7 +40,7 @@ Ta seria samouczków zawiera informacje na temat wykonywania następujących czy
 > * Tworzenie bezpiecznego klastra na platformie Azure
 > * [Skalowanie klastra na zewnątrz lub do wewnątrz](service-fabric-tutorial-scale-cluster.md)
 > * [Uaktualnianie środowiska uruchomieniowego klastra](service-fabric-tutorial-upgrade-cluster.md)
-> * [Wdrażanie usługi API Management z usługą Service Fabric](service-fabric-tutorial-deploy-api-management.md)
+> * [Usuwanie klastra](service-fabric-tutorial-delete-cluster.md)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
@@ -48,7 +48,7 @@ Przed rozpoczęciem tego samouczka:
 
 * Jeśli nie masz subskrypcji platformy Azure, utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Zainstaluj [interfejs wiersza polecenia usługi Service Fabric](service-fabric-cli.md).
-* Zainstaluj [interfejs wiersza polecenia platformy Azure 2.0](/cli/azure/install-azure-cli).
+* Zainstaluj [interfejs wiersza polecenia platformy Azure](/cli/azure/install-azure-cli)
 
 Poniższe procedury umożliwiają utworzenie klastra usługi Service Fabric z pięcioma węzłami. Aby obliczyć koszt działania klastra usługi Service Fabric na platformie Azure, skorzystaj z [Kalkulatora cen platformy Azure](https://azure.microsoft.com/pricing/calculator/).
 
@@ -78,10 +78,10 @@ W tym samouczku przedstawiono wdrożenie klastra z pięcioma węzłami o tym sam
 
 Pobierz poniższe pliki szablonu usługi Resource Manager:
 
-* [vnet-linuxcluster.json][template]
-* [vnet-linuxcluster.parameters.json][parameters]
+* [AzureDeploy.json][template]
+* [AzureDeploy.Parameters.json][parameters]
 
-Plik [vnet-linuxcluster.json][template] umożliwia wdrożenie szeregu zasobów obejmujących poniższe elementy.
+Ten szablon umożliwia wdrożenie zabezpieczonego klastra pięciu maszyn wirtualnych z jednym typem węzła w sieci wirtualnej.  Inne przykładowe szablony można znaleźć w witrynie [GitHub](https://github.com/Azure-Samples/service-fabric-cluster-templates). Plik [AzureDeploy.json][template] umożliwia wdrożenie szeregu zasobów, w tym następujących.
 
 ### <a name="service-fabric-cluster"></a>Klaster usługi Service Fabric
 
@@ -106,29 +106,18 @@ Moduł równoważenia obciążenia po wdrożeniu sonduje i reguluje konfiguracj�
 * Port aplikacji: 80
 * Port aplikacji: 443
 
-### <a name="virtual-network-subnet-and-network-security-group"></a>Sieć wirtualna, podsieć i sieciowa grupa zabezpieczeń
+### <a name="virtual-network-and-subnet"></a>Sieć wirtualna i podsieć
 
-Nazwy sieci wirtualnej, podsieci i sieciowej grupy zabezpieczeń są deklarowane w parametrach szablonu.  Przestrzenie adresowe sieci wirtualnej i podsieci również są deklarowane w parametrach szablonu:
+Nazwy sieci wirtualnej i podsieci są deklarowane w parametrach szablonu.  Przestrzenie adresowe sieci wirtualnej i podsieci również są deklarowane w parametrach szablonu:
 
 * przestrzeń adresowa sieci wirtualnej: 10.0.0.0/16
 * przestrzeń adresowa podsieci usługi Service Fabric: 10.0.2.0/24
 
-W sieciowej grupie zabezpieczeń są włączane poniższe reguły ruchu przychodzącego. Wartości portów można zmienić, modyfikując zmienne szablonu.
-
-* ClientConnectionEndpoint (TCP): 19000
-* HttpGatewayEndpoint (HTTP/TCP): 19080
-* SMB: 445
-* Internodecommunication: 1025, 1026, 1027
-* Zakres portów efemerycznych: od 49152 do 65534 (wymaganych jest co najmniej 256 portów)
-* Porty do użytku aplikacji: 80 i 443
-* Zakres portów aplikacji: od 49152 do 65534 (używane do komunikacji między usługami, ale nie są otwarte w przypadku modułu równoważenia obciążenia)
-* Wszystkie pozostałe porty są zablokowane
-
-Jeśli będą potrzebne dowolne inne porty aplikacji, będzie trzeba dostosować zasoby Microsoft.Network/loadBalancers i Microsoft.Network/networkSecurityGroups, aby umożliwić ruch przychodzący.
+Jeśli będą potrzebne dowolne inne porty aplikacji, będzie trzeba dostosować zasób Microsoft.Network/loadBalancers, aby zezwolić na ruch przychodzący.
 
 ## <a name="set-template-parameters"></a>Ustawianie parametrów szablonu
 
-Plik parametrów [vnet-cluster.parameters.json][parameters] deklaruje wiele wartości służących do wdrażania klastra i skojarzonych zasobów. Niektóre parametry, które być może będzie trzeba zmodyfikować na potrzeby danego wdrożenia:
+Plik parametrów [AzureDeploy.Parameters][parameters] deklaruje wiele wartości służących do wdrażania klastra i skojarzonych zasobów. Niektóre parametry, które być może będzie trzeba zmodyfikować na potrzeby danego wdrożenia:
 
 |Parametr|Przykładowa wartość|Uwagi|
 |---|---||
@@ -136,7 +125,7 @@ Plik parametrów [vnet-cluster.parameters.json][parameters] deklaruje wiele wart
 |adminPassword|Haslo#1234| Hasło administratora maszyn wirtualnych klastra.|
 |clusterName|mojklastersf123| Nazwa klastra. |
 |location|southcentralus| Lokalizacja klastra. |
-|certificateThumbprint|| <p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta.</p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź wartość odcisku palca certyfikatu. Na przykład „6190390162C988701DB5676EB81083EA608DCCF3”. </p>|
+|certificateThumbprint|| <p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta.</p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź wartość odcisku palca SHA1 certyfikatu. Na przykład „6190390162C988701DB5676EB81083EA608DCCF3”. </p>|
 |certificateUrlValue|| <p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta.</p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź adres URL certyfikatu. Na przykład „https://mykeyvault.vault.azure.net:443/secrets/mycertificate/02bea722c9ef4009a76c5052bcbf8346”.</p>|
 |sourceVaultValue||<p>W przypadku tworzenia certyfikatu z podpisem własnym lub podania pliku certyfikatu ta wartość powinna być pusta.</p><p>Aby użyć istniejącego certyfikatu, który został wcześniej przekazany do magazynu kluczy, wprowadź wartość magazynu źródłowego. Na przykład „/subscriptions/333cc2c84-12fa-5778-bd71-c71c07bf873f/resourceGroups/MyTestRG/providers/Microsoft.KeyVault/vaults/MYKEYVAULT”.</p>|
 
@@ -144,7 +133,9 @@ Plik parametrów [vnet-cluster.parameters.json][parameters] deklaruje wiele wart
 
 ## <a name="deploy-the-virtual-network-and-cluster"></a>Wdrażanie sieci wirtualnej i klastra
 
-Następnym etapem jest skonfigurowanie topologii sieci i wdrożenie klastra usługi Service Fabric. Szablon [vnet-linuxcluster.json][template] usługi Resource Manager umożliwia utworzenie sieci wirtualnej (VNET), podsieci oraz sieciowej grupy zabezpieczeń dla usługi Service Fabric. Szablon pozwala również wdrożyć klaster z włączonymi zabezpieczeniami opartymi na certyfikacie.  W przypadku klastrów produkcyjnych jako certyfikatu klastra należy używać certyfikatu z urzędu certyfikacji. Do zabezpieczenia klastrów testowych może służyć certyfikat z podpisem własnym.
+Następnym etapem jest skonfigurowanie topologii sieci i wdrożenie klastra usługi Service Fabric. Plik [AzureDeploy.json][template] szablonu usługi Resource Manager tworzy sieć wirtualną (VNET) i podsieć dla usługi Service Fabric. Szablon pozwala również wdrożyć klaster z włączonymi zabezpieczeniami opartymi na certyfikacie.  W przypadku klastrów produkcyjnych jako certyfikatu klastra należy używać certyfikatu z urzędu certyfikacji. Do zabezpieczenia klastrów testowych może służyć certyfikat z podpisem własnym.
+
+### <a name="create-a-cluster-using-an-existing-certificate"></a>Tworzenie klastra przy użyciu istniejącego certyfikatu
 
 W poniższym skrypcie wdrożenie nowego klastra zabezpieczonego przy użyciu istniejącego certyfikatu odbywa się za pomocą polecenia [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) oraz szablonu. Polecenie to powoduje także utworzenie nowego magazynu kluczy na platformie Azure i przekazanie danego certyfikatu.
 
@@ -167,7 +158,23 @@ az group create --name $ResourceGroupName --location $Location
 az sf cluster create --resource-group $ResourceGroupName --location $Location \
    --certificate-password $Password --certificate-file $CertPath \
    --vault-name $VaultName --vault-resource-group $ResourceGroupName  \
-   --template-file vnet-linuxcluster.json --parameter-file vnet-linuxcluster.parameters.json
+   --template-file AzureDeploy.json --parameter-file AzureDeploy.Parameters.json
+```
+
+### <a name="create-a-cluster-using-a-new-self-signed-certificate"></a>Tworzenie klastra przy użyciu nowego certyfikatu z podpisem własnym
+
+Poniższy skrypt używa polecenia [az sf cluster create](/cli/azure/sf/cluster?view=azure-cli-latest#az_sf_cluster_create) i szablonu, aby wdrożyć nowy klaster na platformie Azure. Polecenie tworzy również nowy magazyn kluczy na platformie Azure, dodaje nowy certyfikat z podpisem własnym do magazynu kluczy i pobiera plik certyfikatu do środowiska lokalnego.
+
+```azurecli
+ResourceGroupName="sflinuxclustergroup"
+ClusterName="sflinuxcluster"
+Location="southcentralus"
+Password="q6D7nN%6ck@6"
+VaultName="linuxclusterkeyvault"
+VaultGroupName="linuxclusterkeyvaultgroup"
+CertPath="C:\MyCertificates"
+
+az sf cluster create --resource-group $ResourceGroupName --location $Location --cluster-name $ClusterName --template-file C:\temp\cluster\AzureDeploy.json --parameter-file C:\temp\cluster\AzureDeploy.Parameters.json --certificate-password $Password --certificate-output-folder $CertPath --certificate-subject-name $ClusterName.$Location.cloudapp.azure.com --vault-name $VaultName --vault-resource-group $ResourceGroupName
 ```
 
 ## <a name="connect-to-the-secure-cluster"></a>Nawiązywanie połączenia z zabezpieczonym klastrem
@@ -187,13 +194,7 @@ sfctl cluster health
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
-W pozostałych artykułach w tej serii samouczków jest używany utworzony właśnie klaster. Jeśli nie przechodzisz od razu do następnego artykułu, rozważ usunięcie klastra, aby uniknąć naliczania opłat. Najprostszym sposobem na usunięcie klastra i wszystkich wykorzystywanych przez niego zasobów jest usunięcie grupy zasobów.
-
-Zaloguj się do platformy Azure i wybierz identyfikator subskrypcji, za pomocą którego chcesz usunąć klaster.  Identyfikator subskrypcji można uzyskać po zalogowaniu się do [witryny Azure Portal](http://portal.azure.com). Usuń grupę zasobów i wszystkie zasoby klastra, korzystając z polecenia [az group delete](/cli/azure/group?view=azure-cli-latest#az_group_delete).
-
-```azurecli
-az group delete --name $ResourceGroupName
-```
+W pozostałych artykułach w tej serii samouczków jest używany utworzony właśnie klaster. Jeśli nie przechodzisz od razu do następnego artykułu, rozważ [usunięcie klastra](service-fabric-cluster-delete.md), aby uniknąć naliczania opłat.
 
 ## <a name="next-steps"></a>Następne kroki
 
@@ -210,5 +211,5 @@ Przejdź do kolejnego samouczka, aby dowiedzieć się, jak skalować klaster.
 > [!div class="nextstepaction"]
 > [Skalowanie klastra](service-fabric-tutorial-scale-cluster.md)
 
-[template]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/cluster-tutorial/vnet-linuxcluster.json
-[parameters]:https://github.com/Azure/service-fabric-scripts-and-templates/blob/master/templates/cluster-tutorial/vnet-linuxcluster.parameters.json
+[template]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/5-VM-Ubuntu-1-NodeTypes-Secure/AzureDeploy.json
+[parameters]:https://github.com/Azure-Samples/service-fabric-cluster-templates/blob/master/5-VM-Ubuntu-1-NodeTypes-Secure/AzureDeploy.Parameters.json

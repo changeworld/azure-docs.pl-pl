@@ -1,47 +1,56 @@
 ---
-title: Dodawanie wstępnie utworzonych intencji i jednostek w celu wyodrębniania wspólnych danych w usłudze Language Understanding — Azure | Microsoft Docs
-description: Dowiedz się, jak używać wstępnie utworzonych intencji i jednostek do wyodrębniania różnych typów danych jednostki.
+title: 'Samouczek 2: wstępnie utworzone intencje i jednostki — używanie wstępnie utworzonych typowych wypowiedzi — wyodrębnianie typowych danych w usłudze LUIS'
+titleSuffix: Azure Cognitive Services
+description: Dodaj wstępnie utworzone intencje i jednostki do aplikacji samouczka Human Resources, aby szybko zyskać funkcje przewidywania intencji i wyodrębniania danych. Nie musisz oznaczać żadnych wypowiedzi za pomocą wstępnie utworzonych jednostek. Jednostka jest wykrywana automatycznie.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/03/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 0e45b659508c71a9f1220ef5e76b9a95438fa1e6
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: d42aed76ecdbc2bd840e17517db2ca0b6ba11aa0
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162244"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47034437"
 ---
-# <a name="tutorial-2-add-prebuilt-intents-and-entities"></a>Samouczek: 2. Dodawanie wstępnie utworzonych intencji i jednostek
-Dodaj wstępnie utworzone intencje i jednostki do aplikacji samouczka Human Resources, aby szybko zyskać funkcje przewidywania intencji i wyodrębniania danych. 
+# <a name="tutorial-2-identify-common-intents-and-entities"></a>Samouczek 2: identyfikowanie typowych intencji i jednostek
+W ramach tego samouczka zmodyfikujesz aplikację Human Resources. Dodaj wstępnie utworzone intencje i jednostki do aplikacji samouczka Human Resources, aby szybko zyskać funkcje przewidywania intencji i wyodrębniania danych. Nie musisz oznaczać żadnych wypowiedzi za pomocą wbudowanych jednostek, ponieważ jednostka jest wykrywana automatycznie.
 
-Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
+Wbudowane modele typowych domen podmiotów i typów danych ułatwiają szybkie tworzenie modelu i pokazują wygląd modelu na przykładzie. 
+
+**Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
 > [!div class="checklist"]
-* Dodawanie wstępnie utworzonych intencji 
-* Dodawanie wstępnie utworzonych jednostek datetimeV2 i liczb
-* Uczenie i publikowanie
-* Wysyłanie zapytań do usługi LUIS i uzyskiwanie odpowiedzi w formie przewidywania
+> * Korzystanie z istniejącej aplikacji samouczka
+> * Dodawanie wstępnie utworzonych intencji 
+> * Dodawanie wstępnie utworzonych jednostek 
+> * Szkolenie 
+> * Publikowanie 
+> * Pobieranie intencji i jednostek z punktu końcowego
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="before-you-begin"></a>Przed rozpoczęciem
-Jeśli nie masz aplikacji [Human Resources](luis-quickstart-intents-only.md) z poprzedniego samouczka, [zaimportuj](luis-how-to-start-new-app.md#import-new-app) obiekt JSON do nowej aplikacji w witrynie usługi [LUIS](luis-reference-regions.md#luis-website) z repozytorium Github [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-intent-only-HumanResources.json).
+## <a name="use-existing-app"></a>Korzystanie z istniejącej aplikacji
+Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
 
-Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `prebuilts`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. 
+Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj następujące kroki:
+
+1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-intent-only-HumanResources.json).
+
+2. Zaimportuj plik JSON do nowej aplikacji.
+
+3. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `prebuilts`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używana jako część trasy adresu URL, nie może ona zawierać żadnych znaków, które są nieprawidłowe w adresie URL. 
 
 ## <a name="add-prebuilt-intents"></a>Dodawanie wstępnie utworzonych intencji
 Usługa LUIS zapewnia kilka wstępnie utworzonych intencji, których celem jest ułatwienie realizacji typowych intencji użytkownika.  
 
-1. Upewnij się, że aplikacja znajduje się w sekcji **Build** (Kompilacja) aplikacji LUIS. Możesz przejść do tej sekcji, wybierając pozycję **Build** (Kompilacja) na górnym pasku menu po prawej stronie. 
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
-2. Wybierz opcję **Add prebuilt domain intent** (Dodaj wstępnie skompilowaną intencję domeny). 
-
-    [ ![Zrzut ekranu przedstawiający stronę Intents (Intencje) z wyróżnionym przyciskiem Add prebuilt domain intent (Dodaj wstępnie utworzoną skompilowaną domeny)](./media/luis-tutorial-prebuilt-intents-and-entities/add-prebuilt-domain-button.png) ](./media/luis-tutorial-prebuilt-intents-and-entities/add-prebuilt-domain-button.png#lightbox)
+2. Wybierz pozycję **Add prebuilt intent** (Dodaj wstępnie utworzoną intencję). 
 
 3. Wyszukaj `Utilities`. 
 
@@ -61,33 +70,27 @@ Usługa LUIS zawiera kilka wstępnie utworzonych jednostek na potrzeby typowych 
 
 1. Wybierz pozycję **Entities** (Jednostki) w menu nawigacji po lewej stronie.
 
-    [ ![Zrzut ekranu przedstawiający listę Intents (Intencje) z przyciskiem Entities (Jednostki) wyróżnionym na lewym pasku nawigacyjnym](./media/luis-tutorial-prebuilt-intents-and-entities/entities-navigation.png)](./media/luis-tutorial-prebuilt-intents-and-entities/entities-navigation.png#lightbox)
-
-2. Wybierz przycisk **Manage prebuilt entities** (Zarządzaj wstępnie skompilowanymi jednostkami).
-
-    [![Zrzut ekranu z listą Entities (Jednostki) i wyróżnioną pozycją Manage prebuilt entities (Zarządzaj wstępnie skompilowanymi jednostkami)](./media/luis-tutorial-prebuilt-intents-and-entities/manage-prebuilt-entities-button.png)](./media/luis-tutorial-prebuilt-intents-and-entities/manage-prebuilt-entities-button.png#lightbox)
+2. Naciśnij przycisk **Manage prebuilt entity** (Zarządzaj wstępnie utworzoną jednostką).
 
 3. Wybierz pozycję **number** (liczba) oraz **datetimeV2** z listy wstępnie skompilowanych jednostek, a następnie wybierz pozycję **Done (Gotowe)**.
 
     ![Zrzut ekranu przedstawiający pozycję number (liczba) wybraną w oknie dialogowym wstępnie skompilowanych jednostek](./media/luis-tutorial-prebuilt-intents-and-entities/select-prebuilt-entities.png)
 
-## <a name="train-and-publish-the-app"></a>Uczenie i publikowanie aplikacji
+## <a name="train"></a>Szkolenie
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-app-to-endpoint"></a>Publikowanie aplikacji w punkcie końcowym
+## <a name="publish"></a>Publikowanie
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-endpoint-with-an-utterance"></a>Wysyłanie zapytania do punktu końcowego za pomocą wypowiedzi
+## <a name="get-intent-and-entities-from-endpoint"></a>Pobieranie intencji i jednostek z punktu końcowego
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Przejdź na koniec tego adresu URL i wprowadź ciąg `I want to cancel on March 3`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
+2. Przejdź na koniec adresu URL na pasku adresu przeglądarki i wprowadź ciąg `I want to cancel on March 3`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. 
 
-    Wynik przewidział intencję Utilities.Cancel i wyodrębnił dane dla 3 marca i liczby 3. 
-
-    ```
+    ```JSON
     {
       "query": "I want to cancel on March 3",
       "topScoringIntent": {
@@ -162,15 +165,17 @@ Usługa LUIS zawiera kilka wstępnie utworzonych jednostek na potrzeby typowych 
     }
     ```
 
-    Istnieją dwie wartości dla 3 marca, ponieważ wypowiedź nie określała, czy 3 marca jest datą w przeszłości, czy przyszłości. Aplikacja wywoływania LUIS musi wykonać założenie lub poprosić o wyjaśnienie, jeśli jest ono potrzebne. 
+    Wynik przewidział intencję Utilities.Cancel i wyodrębnił dane dla 3 marca i liczby 3. 
 
-    Dodając wstępnie skompilowane intencje i jednostki w prosty i szybki sposób, aplikacja kliencka może dodać funkcje zarządzania rozmowami i wyodrębniania wspólnych typów danych. 
+    Istnieją dwie wartości dla 3 marca, ponieważ wypowiedź nie określała, czy 3 marca jest datą w przeszłości, czy przyszłości. Aplikacja kliencka musi wykonać założenie lub poprosić o wyjaśnienie, jeśli jest ono potrzebne. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Następne kroki
+
+Dodając wstępnie utworzone intencje i jednostki, aplikacja kliencka może określić typowe intencje użytkowników i wyodrębnić wspólne typy danych. 
 
 > [!div class="nextstepaction"]
 > [Dodawanie jednostki wyrażenia regularnego do aplikacji](luis-quickstart-intents-regex-entity.md)

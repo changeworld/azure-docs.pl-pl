@@ -2,30 +2,26 @@
 title: Przykład programu PowerShell — monitorowanie i skalowanie elastycznej puli SQL w usłudze Azure SQL Database | Microsoft Docs
 description: Przykładowy skrypt programu Azure PowerShell umożliwiający monitorowanie i skalowanie elastycznej puli SQL w usłudze Azure SQL Database
 services: sql-database
-documentationcenter: sql-database
-author: CarlRabeler
-manager: craigg
-editor: carlrab
-tags: azure-service-management
-ms.assetid: ''
 ms.service: sql-database
-ms.custom: monitor & tune, mvc
+ms.subservice: performance
+ms.custom: ''
 ms.devlang: PowerShell
 ms.topic: sample
-ms.tgt_pltfrm: sql-database
-ms.workload: database
-ms.date: 09/07/2018
+author: CarlRabeler
 ms.author: carlrab
-ms.openlocfilehash: 9f05713e38278e9033d6e1e9c9f1c2791bcd8f52
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.reviewer: ''
+manager: craigg
+ms.date: 09/14/2018
+ms.openlocfilehash: 3e4bbef18da224e41646e583e3cec0197dd00eba
+ms.sourcegitcommit: 715813af8cde40407bd3332dd922a918de46a91a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44054869"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47056424"
 ---
 # <a name="use-powershell-to-monitor-and-scale-a-sql-elastic-pool-in-azure-sql-database"></a>Monitorowanie i skalowanie elastycznej puli SQL w usłudze Azure SQL Database za pomocą programu PowerShell
 
-Ten przykładowy skrypt programu PowerShell monitoruje metryki wydajności elastycznej puli, skaluje ją na wyższy poziom wydajności i tworzy regułę alertu dla jednej z metryk wydajności. 
+Ten przykładowy skrypt programu PowerShell monitoruje metryki wydajności elastycznej puli, skaluje ją na wyższy rozmiar zasobów obliczeniowych i tworzy regułę alertu dla jednej z metryk wydajności. 
 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 [!INCLUDE [cloud-shell-powershell.md](../../../includes/cloud-shell-powershell.md)]

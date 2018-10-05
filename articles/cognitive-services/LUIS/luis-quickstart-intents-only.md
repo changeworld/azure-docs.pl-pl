@@ -1,63 +1,63 @@
 ---
-title: Tworzenie prostej aplikacji z dwiema intencjami — Azure | Microsoft Docs
-description: Z tego przewodnika Szybki start możesz dowiedzieć się, jak utworzyć prostą aplikację usługi LUIS używającą dwóch intencji i niekorzystającą z jednostek na potrzeby identyfikowania wypowiedzi użytkownika.
+title: 'Samouczek 1: odkrywanie intencji w niestandardowej aplikacji usługi LUIS'
+titleSuffix: Azure Cognitive Services
+description: Utwórz niestandardową aplikację, która będzie przewidywać intencje użytkownika. Ta aplikacja to najprostszy rodzaj aplikacji usługi LUIS, ponieważ nie wyodrębnia ona z tekstu wypowiedzi różnych elementów danych, takich jak adresy e-mail czy daty.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 3f23ade2b0256c72c344e2a619227a79e3c79a47
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: b229dbc90f3f6ecc226c88ee393114f233bcf1a2
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160119"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47035412"
 ---
-# <a name="tutorial-1-build-app-with-custom-domain"></a>Samouczek: 1. Tworzenie aplikacji z domeną niestandardową
-W tym samouczku jest tworzona aplikacja, która pokazuje sposób użycia **intencji** w celu określenia _zamiaru_ użytkownika na podstawie wypowiedzi (tekstu) przesyłanej do aplikacji. Po zakończeniu samouczka punkt końcowy usługi LUIS będzie działał w chmurze.
+# <a name="tutorial-1-build-custom-app-to-determine-user-intentions"></a>Samouczek 1: tworzenie niestandardowej aplikacji umożliwiającej określanie intencji użytkownika
 
-Ta aplikacja to najprostszy typ aplikacji usługi LUIS, ponieważ nie wyodrębnia danych z wypowiedzi. Określa tylko zamiar użytkownika zawarty w wypowiedzi.
+W tym samouczku utworzysz niestandardową aplikację Human Resources (HR), która na podstawie wypowiedzi (tekstu) będzie przewidywała intencje użytkownika. Po zakończeniu samouczka punkt końcowy usługi LUIS będzie działał w chmurze.
 
-<!-- green checkmark -->
+Zadaniem aplikacji jest ustalenie intencji konwersacyjnego tekstu w języku naturalnym. Intencje są podzielone na kategorie **intencji**. Ta aplikacja ma kilka intencji. Pierwsza intencja, **`GetJobInformation`**, umożliwia określenie, kiedy użytkownik chce otrzymać informacje o stanowiskach dostępnych w firmie. Druga intencja, **`None`**, jest używana w przypadku wszystkich wypowiedzi użytkownika, które wykraczają poza _domenę_ (zakres) tej aplikacji. Natomiast trzecia intencja, **`ApplyForJob`**, jest dodawana w przypadku wszystkich wypowiedzi będących podaniem o pracę. Ta trzecia intencja różni się od intencji `GetJobInformation`, ponieważ informacje o stanowisku powinny już być znane, gdy ktoś zgłasza swoją kandydaturę na dane stanowisko. Jednak w zależności od wybranych słów, określenie intencji może być trudne, ponieważ obie dotyczą pracy.
+
+Gdy usługa LUIS zwróci odpowiedź w formacie JSON, żądanie zostanie wykonane. Usługa LUIS nie odpowiada na wypowiedzi użytkowników, tylko określa, o jakie informacje proszą oni w języku naturalnym. 
+
+**Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
+
 > [!div class="checklist"]
-> * Tworzenie nowej aplikacji dla domeny zarządzania zasobami ludzkimi (HR) 
-> * Dodawanie intencji GetJobInformation
-> * Dodawanie przykładowych wypowiedzi do intencji GetJobInformation 
-> * Uczenie i publikowanie aplikacji
-> * Wysyłanie zapytania do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS
-> * Dodawanie intencji ApplyForJob
-> * Dodawanie przykładowych wypowiedzi do intencji ApplyForJob 
-> * Uczenie, publikowanie i ponowne wykonywanie zapytań względem punktu końcowego 
+> * Tworzenie nowej aplikacji 
+> * Tworzenie intencji
+> * Dodawanie przykładowych wypowiedzi
+> * Szkolenie aplikacji
+> * Publikowanie aplikacji
+> * Pobieranie intencji z punktu końcowego
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="purpose-of-the-app"></a>Przeznaczenie aplikacji
-Ta aplikacja ma kilka intencji. Pierwsza intencja, **`GetJobInformation`**, umożliwia określenie, kiedy użytkownik chce otrzymać informacje o stanowiskach dostępnych w firmie. Druga intencja, **`None`**, identyfikuje wszystkie inne typy wypowiedzi. Później w przewodniku Szybki start zostanie dodana trzecia intencja, `ApplyForJob`. 
-
 ## <a name="create-a-new-app"></a>Tworzenie nowej aplikacji
-1. Zaloguj się w witrynie internetowej usługi [LUIS](luis-reference-regions.md#luis-website). Pamiętaj, aby zalogować się w [regionie](luis-reference-regions.md#publishing-regions), w którym mają zostać opublikowane punkty końcowe usługi LUIS.
 
-2. W witrynie internetowej usługi [LUIS](luis-reference-regions.md#luis-website) wybierz pozycję **Create new app** (Utwórz nową aplikację).  
+1. Zaloguj się do portalu usługi LUIS za pomocą adresu URL [https://www.luis.ai](https://www.luis.ai). 
 
-    [![](media/luis-quickstart-intents-only/app-list.png "Zrzut ekranu strony My apps (Moje aplikacje)")](media/luis-quickstart-intents-only/app-list.png#lightbox)
+2. Wybierz opcję **Create new app** (Utwórz nową aplikację).  
 
-3. W wyskakującym oknie dialogowym wprowadź nazwę `HumanResources`. Ta aplikacja obejmuje pytania dotyczące działu zasobów ludzkich w firmie. Dział tego typu obsługuje zagadnienia związane z zatrudnieniem, takie jak stanowiska w firmie, które mają zostać obsadzone.
+    [![](media/luis-quickstart-intents-only/app-list.png "Zrzut ekranu przedstawiający stronę My Apps (Moje aplikacje) usługi Language Understanding (LUIS)")](media/luis-quickstart-intents-only/app-list.png#lightbox)
+
+3. W wyskakującym oknie dialogowym wprowadź nazwę `HumanResources` i zachowaj domyślną kulturę **English** (Angielski). Opis pozostaw pusty.
 
     ![Nowa aplikacja usługi LUIS](./media/luis-quickstart-intents-only/create-app.png)
 
-4. Po zakończeniu tego procesu aplikacja wyświetli stronę **Intents** (Intencje) z intencją **None**. 
+    Następnie aplikacja zostanie wyświetlona na stronie **Intents** (Intencje) z intencją **None**.
 
-## <a name="create-getjobinformation-intention"></a>Tworzenie intencji GetJobInformation
-1. Wybierz pozycję **Create new intent** (Utwórz nową intencję). Wprowadź nazwę nowej intencji: `GetJobInformation`. Ta intencja stanowi prognozę za każdym razem, gdy użytkownik chce uzyskać informacje o stanowiskach dostępnych w firmie.
+## <a name="getjobinformation-intent"></a>Intencja GetJobInformation
 
-    ![](media/luis-quickstart-intents-only/create-intent.png "Zrzut ekranu okna dialogowego New intent (Nowa intencja)")
+1. Wybierz pozycję **Create new intent** (Utwórz nową intencję). Wprowadź nazwę nowej intencji: `GetJobInformation`. Ta intencja jest przewidywana za każdym razem, gdy użytkownik chce uzyskać informacje o stanowiskach dostępnych w firmie.
 
-    Tworząc intencję, tworzysz kategorię informacji, którą chcesz identyfikować. Nadanie nazwy kategorii umożliwia każdej innej aplikacji, która używa wyników zapytania usługi LUIS, zastosowanie tej nazwy kategorii w celu znalezienia odpowiedniej odpowiedzi. Usługa LUIS nie będzie odpowiadać na te pytania — określi jedynie, jakiego typu informacji dotyczy pytanie w języku naturalnym. 
+    ![](media/luis-quickstart-intents-only/create-intent.png "Zrzut ekranu przedstawiający okno dialogowe New intent (Nowa intencja) usługi Language Understanding (LUIS)")
 
-2. Dodaj siedem wypowiedzi do tej intencji — takich, których spodziewasz się ze strony użytkownika, na przykład:
+2. Dostarczając _przykładowe wypowiedzi_, uczysz usługę LUIS, jakiego rodzaju wypowiedzi powinny być przewidywane dla tej intencji. Dodaj kilka przykładowych wypowiedzi do tej intencji — takich, których spodziewasz się ze strony użytkownika, na przykład:
 
     | Przykładowe wypowiedzi|
     |--|
@@ -71,9 +71,17 @@ Ta aplikacja ma kilka intencji. Pierwsza intencja, **`GetJobInformation`**, umo�
 
     [![](media/luis-quickstart-intents-only/utterance-getstoreinfo.png "Zrzut ekranu przedstawiający podawanie nowych wypowiedzi dla intencji MyStore")](media/luis-quickstart-intents-only/utterance-getstoreinfo.png#lightbox)
 
-3. Aplikacja LUIS obecnie nie zawiera żadnych wypowiedzi dla intencji **None**. Potrzebuje ona wypowiedzi, na które aplikacja nie odpowiada. Nie zostawiaj jej pustej. Wybierz pozycję **Intents** (Intencje) na lewym panelu. 
+    [!include[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]    
 
-4. Wybierz intencję **None**. Dodaj trzy wypowiedzi, które może wprowadzić użytkownik, ale które nie są istotne dla tej aplikacji. Jeśli aplikacja dotyczy ofert pracy, przykładowe wypowiedzi dobre dla intencji **None** to:
+
+## <a name="none-intent"></a>Intencja None 
+Aplikacja kliencka musi wiedzieć, czy wypowiedź nie wykracza poza domenę podmiotu aplikacji. Jeśli usługa LUIS zwraca intencję wypowiedzi **None**, aplikacja kliencka może zapytać, czy użytkownik chce zakończyć konwersację. Aplikacja kliencka może również podać więcej wskazówek umożliwiających kontynuowanie konwersacji, jeśli użytkownik nie chce jej zakończyć. 
+
+Te przykładowe wypowiedzi spoza domeny podmiotu są grupowane w intencję **None**. Nie zostawiaj jej pustej. 
+
+1. Wybierz pozycję **Intents** (Intencje) na lewym panelu.
+
+2. Wybierz intencję **None**. Dodaj trzy wypowiedzi, które może wprowadzić użytkownik, ale które nie są istotne dla tej aplikacji Human Resources. Jeśli aplikacja dotyczy ofert pracy, przykładowe wypowiedzi dla intencji **None** to:
 
     | Przykładowe wypowiedzi|
     |--|
@@ -81,25 +89,24 @@ Ta aplikacja ma kilka intencji. Pierwsza intencja, **`GetJobInformation`**, umo�
     |Order a pizza for me (Zamów dla mnie pizzę)|
     |Penguins in the ocean (Pingwiny w oceanie)|
 
-    W aplikacji wywołującej usługę LUIS (takiej jak czatbot), gdy usługa LUIS zwraca intencję **None** dla wypowiedzi, bot może zadać pytanie, czy użytkownik chce zakończyć konwersację. Czatbot może również podać więcej wskazówek umożliwiających kontynuowanie konwersacji, jeśli użytkownik nie chce jej zakończyć. 
 
-## <a name="train-and-publish-the-app"></a>Uczenie i publikowanie aplikacji
+## <a name="train"></a>Szkolenie 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-app-to-endpoint"></a>Publikowanie aplikacji w punkcie końcowym
+## <a name="publish"></a>Publikowanie
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
 
-## <a name="query-endpoint-for-getjobinformation-intent"></a>Wykonywanie zapytań względem punktu końcowego o intencję GetJobInformation
+## <a name="get-intent"></a>Uzyskiwanie intencji
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
-2. Przejdź na koniec tego adresu URL i wprowadź ciąg `I'm looking for a job with Natual Language Processing`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe przykładowe wypowiedzi w kroku 4, dlatego jest dobra do testowania i powinna zwrócić intencję `GetJobInformation` jako intencję z najwyższą oceną. 
+2. Przejdź na koniec adresu URL na pasku adresu i wprowadź ciąg `I'm looking for a job with Natural Language Processing`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź nie przypomina żadnej z przykładowych wypowiedzi. Jest to dobry test, który powinien zwrócić intencję `GetJobInformation` jako najwyżej ocenioną. 
 
-    ```
+    ```JSON
     {
-      "query": "I'm looking for a job with Natual Language Processing",
+      "query": "I'm looking for a job with Natural Language Processing",
       "topScoringIntent": {
         "intent": "GetJobInformation",
         "score": 0.8965092
@@ -118,8 +125,12 @@ Ta aplikacja ma kilka intencji. Pierwsza intencja, **`GetJobInformation`**, umo�
     }
     ```
 
-## <a name="create-applyforjob-intention"></a>Tworzenie intencji ApplyForJob
-Wróć do karty przeglądarki z witryną internetową usługi LUIS i utwórz nową intencję do zastosowania dla zadania.
+    Wyniki obejmują **wszystkie intencje** w aplikacji, obecnie 2. Tablica jednostek jest pusta, ponieważ ta aplikacja obecnie nie ma żadnych jednostek. 
+
+    Wynik w formacie JSON określa najwyżej ocenioną intencję jako właściwość **`topScoringIntent`**. Wszystkie wyniki należą do zakresu od 1 do 0, przy czym im bliżej 1, tym lepiej. 
+
+## <a name="applyforjob-intent"></a>Intencja ApplyForJob
+Wróć do witryny internetowej usługi LUIS i utwórz nową intencję, która będzie określała, czy wypowiedź użytkownika dotyczy podania o pracę.
 
 1. Wybierz pozycję **Build** (Twórz) z menu w prawym górnym rogu, aby powrócić do tworzenia aplikacji.
 
@@ -143,15 +154,21 @@ Wróć do karty przeglądarki z witryną internetową usługi LUIS i utwórz now
 
     Intencja z etykietą jest oznaczona kolorem czerwonym, ponieważ usługa LUIS obecnie nie ma pewności, czy intencja jest poprawna. Proces uczenia aplikacji informuje usługę LUIS, że wypowiedzi dotyczą poprawnej intencji. 
 
-    Ponowne [uczenie i publikowanie](#train-and-publish-the-app). 
+## <a name="train-again"></a>Ponowne szkolenie
 
-## <a name="query-endpoint-for-applyforjob-intent"></a>Punkt końcowy dla intencji ApplyForJob
+[!include[LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
+
+## <a name="publish-again"></a>Ponowne publikowanie
+
+[!include[LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)] 
+
+## <a name="get-intent-again"></a>Ponowne pobieranie intencji
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. W nowym oknie przeglądarki podaj ciąg `Can I submit my resume for job 235986` na końcu adresu URL. 
 
-    ```
+    ```JSON
     {
       "query": "Can I submit my resume for job 235986",
       "topScoringIntent": {
@@ -176,19 +193,15 @@ Wróć do karty przeglądarki z witryną internetową usługi LUIS i utwórz now
     }
     ```
 
-## <a name="what-has-this-luis-app-accomplished"></a>Co wykonała ta aplikacja LUIS?
-Ta aplikacja, obejmująca zaledwie kilka intencji, zidentyfikowała zapytanie w języku naturalnym, które wyraża ten sam zamiar, lecz przedstawiony w inny sposób. 
-
-Wynik w formacie JSON określa najwyżej ocenioną intencję. Wszystkie wyniki należą do zakresu od 1 do 0, przy czym im bliżej 1, tym lepiej. Wyniki dla intencji `GetJobInformation` i `None` są o wiele bliższe zera. 
-
-## <a name="where-is-this-luis-data-used"></a>Gdzie są używane te dane usługi LUIS? 
-Usługa LUIS skończyła obsługiwać to żądanie. Aplikacja wywołująca, taka jak czatbot, może odebrać wynik topScoringIntent i wyszukać informacje (spoza usługi LUIS) w celu udzielenia odpowiedzi na pytanie lub zakończyć konwersację. Są to opcje programistyczne dla bota lub aplikacji wywołującej. Aplikacja LUIS nie wykonuje tej pracy. Usługa LUIS określa jedynie intencję użytkownika. 
+    Wyniki zawierają nową intencję **ApplyForJob**, a także istniejące intencje. 
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Następne kroki
+
+W tym samouczku utworzono aplikację Human Resources (HR), utworzono 2 intencje, dodano przykładowe wypowiedzi do każdej intencji, dodano przykładowe wypowiedzi do intencji None, przeprowadzono szkolenie, opublikowano i przetestowano w punkcie końcowym. Są to podstawowe kroki tworzenia modelu usługi LUIS. 
 
 > [!div class="nextstepaction"]
 > [Dodawanie wstępnie utworzonych intencji i jednostek do aplikacji](luis-tutorial-prebuilt-intents-entities.md)

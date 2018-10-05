@@ -1,20 +1,20 @@
 ---
-title: Szybki start — zmiana modelu i uczenie aplikacji LUIS przy użyciu języka Go — Azure Cognitive Services | Microsoft Docs
+title: Szybki start języka Go — zmiana modelu i szkolenie aplikacji usługi LUIS
 description: W tym przewodniku Szybki start języka Go dodasz przykładowe wypowiedzi do aplikacji Home Automation i przeprowadzisz uczenie aplikacji. Przykładowe wypowiedzi to tekst z rozmowami użytkownika mapowany na intencje. Poprzez zapewnienie przykładowych wypowiedzi dla intencji możesz nauczyć aplikację LUIS, jakim intencjom odpowiada rodzaj tekstu podanego przez użytkownika.
 titleSuffix: Microsoft Cognitive Services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/24/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: da57a7e46cccbf0a9b34b3961a831e7982160e6b
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 2cd8c1aa2deb2af97d4f720efa0e40146b15b888
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44157671"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47031870"
 ---
 # <a name="quickstart-change-model-using-go"></a>Szybki start: zmiana modelu przy użyciu języka Go
 

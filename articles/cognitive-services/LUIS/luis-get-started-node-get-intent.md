@@ -1,22 +1,23 @@
 ---
-title: Analizowanie tekstu w języku naturalnym w usłudze Language Understanding (LUIS) przy użyciu środowiska Node.js — Cognitive Services — Azure Cognitive Services | Microsoft Docs
+title: Szybki start dla środowiska Node.js — przewidywanie intencji — usługa LUIS
+titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start użyjesz dostępnej publicznie aplikacji LUIS, aby określić intencję użytkownika w tekście konwersacji. Przy użyciu środowiska Node.js wyślesz intencję użytkownika jako tekst do punktu końcowego przewidywania HTTP aplikacji publicznej. W punkcie końcowym usługa LUIS zastosuje model aplikacji publicznej, aby przeanalizować tekst w języku naturalnym pod kątem znaczenia, określając ogólną intencję i wyodrębniając dane dotyczące domeny podmiotu aplikacji.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/23/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: b85b8ef19d4cc46d80d600d1cb4404edd71e2374
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 37a94b217e2b9c0d417ad0bdd7678b13e333305d
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44158011"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47038922"
 ---
-# <a name="quickstart-analyze-text-using-nodejs"></a>Szybki start: analiza tekstu przy użyciu środowiska Node.js
+# <a name="quickstart-get-intent-using-nodejs"></a>Szybki start: pobieranie intencji za pomocą środowiska Node.js
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -36,11 +37,11 @@ ms.locfileid: "44158011"
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
 
-## <a name="analyze-text-with-browser"></a>Analiza tekstu przy użyciu przeglądarki
+## <a name="get-intent-with-browser"></a>Pobieranie intencji za pomocą przeglądarki
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
-## <a name="analyze-text-with-nodejs"></a>Analiza tekstu przy użyciu środowiska Node.js
+## <a name="get-intent-programmatically"></a>Pobieranie intencji w sposób programistyczny
 
 Aby uzyskać dostęp do tego samego wyniku, który został wyświetlony w oknie przeglądarki w poprzednim kroku, możesz użyć języka Node.js.
 

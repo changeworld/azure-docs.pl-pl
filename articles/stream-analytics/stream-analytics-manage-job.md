@@ -10,12 +10,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 04/04/2018
-ms.openlocfilehash: 6b924e0555ea7a57f8d5e5309a266b6d2fb44f44
-ms.sourcegitcommit: cb61439cf0ae2a3f4b07a98da4df258bfb479845
+ms.openlocfilehash: 1955fc033e0351be9da89bbee11dc41d6281a63a
+ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/05/2018
-ms.locfileid: "43702531"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47433994"
 ---
 # <a name="create-a-stream-analytics-job-to-analyze-phone-call-data-and-visualize-results-in-a-power-bi-dashboard"></a>Tworzenie zadania usługi Stream Analytics na potrzeby analizowania danych połączeń telefonicznych i wizualizacji wyników na pulpicie nawigacyjnym usługi Power BI
  
@@ -101,12 +101,12 @@ Przed uruchomieniem aplikacji TelcoGenerator należy ją skonfigurować do przes
 5. Następnie otwórz okno polecenia, przejdź do folderu, w którym znajduje się wyodrębniona aplikacja TelcoGenerator, i wprowadź następujące polecenie:
 
    ```
-   telcodatagen.exe 1000 .2 2
+   telcodatagen.exe 1000 0.2 2
    ```
 
    To polecenie przyjmuje następujące parametry:
    * **Liczba rekordów danych połączeń na godzinę**.  
-   * **Procentowe prawdopodobieństwo oszustwa** — czyli jak często aplikacja powinna symulować fałszywe połączenia. Wartość .2 oznacza, że około 20% rekordów połączeń będzie wyglądać na fałszywe.  
+   * **Procentowe prawdopodobieństwo oszustwa** — czyli jak często aplikacja powinna symulować fałszywe połączenia. Wartość 0,2 oznacza, że około 20% rekordów połączeń będzie wyglądać na fałszywe.  
    * **Czas trwania w godzinach** — liczba godzin, przez jaką aplikacja ma być uruchomiona. W dowolnym momencie można również zatrzymać aplikację poprzez zakończenie procesu (Ctrl+C) w wierszu polecenia.
 
    Po kilku sekundach aplikacja rozpocznie wyświetlanie rekordów połączeń telefonicznych na ekranie w miarę wysyłania ich do centrum zdarzeń. Dane połączenia telefonicznego zawierają następujące pola:
@@ -228,7 +228,7 @@ Zapytanie można przetestować z poziomu edytora zapytań. Aby przetestować zap
 
 3. Ustaw opcję **Minuty** na wartość 3 i wybierz przycisk **OK**. Ze strumienia wejściowego zostanie pobrana próbka danych odpowiadająca trzem minutom. Kiedy przykładowe dane będą gotowe, zostanie wyświetlone powiadomienie. Stan próbkowania można zobaczyć na pasku powiadomień. 
 
-   Przykładowe dane są przechowywane tymczasowo i są dostępne, kiedy okno zapytania jest otwarte. Jeśli zamkniesz okno zapytania, przykładowe dane zostaną usunięte i konieczne będzie utworzenie nowego zestawu przykładowych danych. Alternatywnie możesz pobrać plik JSON zawierający przykładowe dane z usługi [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample Data/telco.json), a następnie przekazać ten plik JSON do użycia jako przykładowe dane dla wejścia CallStream.  
+   Przykładowe dane są przechowywane tymczasowo i są dostępne, kiedy okno zapytania jest otwarte. Jeśli zamkniesz okno zapytania, przykładowe dane zostaną usunięte i konieczne będzie utworzenie nowego zestawu przykładowych danych. Alternatywnie możesz pobrać plik JSON zawierający przykładowe dane z usługi [GitHub](https://github.com/Azure/azure-stream-analytics/blob/master/Sample%20Data/telco.json), a następnie przekazać ten plik JSON do użycia jako przykładowe dane dla wejścia CallStream.  
 
 4. Wybierz pozycję **Test**, aby przetestować zapytanie. Powinny zostać wyświetlone dane wyjściowe, tak jak pokazano na poniższym zrzucie ekranu:  
 
@@ -262,7 +262,7 @@ Zapytanie można przetestować z poziomu edytora zapytań. Aby przetestować zap
 
 W tej części samouczka użyjesz przykładowej aplikacji internetowej [ASP.NET](http://asp.net/) utworzonej przez zespół usługi Power BI, aby osadzić pulpit nawigacyjny. Aby uzyskać więcej informacji na temat osadzania pulpitów nawigacyjnych, zobacz artykuł [Osadzanie za pomocą usługi Power BI](https://docs.microsoft.com/power-bi/developer/embedding).
 
-W tym samouczku wykonamy kroki dla aplikacji, której dane należą do użytkownika. Aby skonfigurować aplikację, przejdź do repozytorium GitHub [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) i postępuj zgodnie z instrukcjami w sekcji **User Owns Data (Dane należą do użytkownika)** — użyj adresów URL przekierowania i strony głównej z podsekcji **integrate-dashboard-web-app**. Ponieważ korzystamy z przykładu pulpitu nawigacyjnego, użyj przykładowego kodu integrate-dashboard-web-app znajdującego się w [repozytorium GitHub](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User Owns Data/integrate-dashboard-web-app).
+W tym samouczku wykonamy kroki dla aplikacji, której dane należą do użytkownika. Aby skonfigurować aplikację, przejdź do repozytorium GitHub [PowerBI-Developer-Samples](https://github.com/Microsoft/PowerBI-Developer-Samples) i postępuj zgodnie z instrukcjami w sekcji **User Owns Data (Dane należą do użytkownika)** — użyj adresów URL przekierowania i strony głównej z podsekcji **integrate-dashboard-web-app**. Ponieważ korzystamy z przykładu pulpitu nawigacyjnego, użyj przykładowego kodu integrate-dashboard-web-app znajdującego się w [repozytorium GitHub](https://github.com/Microsoft/PowerBI-Developer-Samples/tree/master/User%20Owns%20Data/integrate-dashboard-web-app).
 Po uruchomieniu aplikacji w przeglądarce wykonaj następujące kroki, aby osadzić utworzony wcześniej pulpit nawigacyjny na stronie internetowej:
 
 1. Wybierz opcję **Sign in to Power BI (Zaloguj się do usługi Power BI)**, aby przyznać aplikacji dostęp do pulpitów nawigacyjnych na Twoim koncie usługi Power BI.  

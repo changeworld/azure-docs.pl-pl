@@ -8,12 +8,12 @@ ms.service: dns
 ms.topic: tutorial
 ms.date: 6/13/2018
 ms.author: victorh
-ms.openlocfilehash: 44f5bf9a28d56e85bae1d50136c50868ec96eb4e
-ms.sourcegitcommit: 30221e77dd199ffe0f2e86f6e762df5a32cdbe5f
+ms.openlocfilehash: ea0dc257d691326bc073b4cbff37e847a6990f02
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39205445"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452304"
 ---
 # <a name="tutorial-host-your-domain-in-azure-dns"></a>Samouczek: hostowanie własnej domeny w usłudze Azure DNS
 
@@ -70,6 +70,9 @@ Usługa Azure DNS automatycznie tworzy autorytatywne rekordy NS w strefie dla pr
 Po utworzeniu strefy DNS i pobraniu serwerów nazw należy zaktualizować domenę nadrzędną przy użyciu informacji o serwerach nazw usługi Azure DNS. Każdy rejestrator ma swoje własne narzędzia do zarządzania systemem DNS służące do zmiany rekordów serwerów nazw dla domeny. Na stronie zarządzania systemem DNS rejestratora edytuj rekordy NS i zastąp je rekordami serwerów nazw usługi Azure DNS.
 
 Podczas delegowania domeny do usługi Azure DNS należy użyć serwerów nazw udostępnionych przez usługę Azure DNS. Zaleca się używanie wszystkich czterech serwerów nazw, niezależnie od nazwy domeny. Delegowanie domeny nie wymaga, aby serwer nazw korzystał z tej samej domeny najwyższego poziomu, co domena użytkownika.
+
+> [!NOTE]
+> Podczas kopiowania każdego z adresów serwera nazw upewnij się, że kopiujesz kropkę na końcu adresu. Końcowa kropka wskazuje koniec w pełni kwalifikowanej nazwy domeny. Niektórzy rejestratorzy mogą dołączać kropkę, jeśli nazwa NS nie ma jej na końcu. Jednak aby zachować zgodność ze specyfikacją RFC dla usługi DNS, dołącz końcową kropkę, ponieważ nie można zakładać, że każdy rejestrator doda ją w razie potrzeby.
 
 Delegowanie z wykorzystaniem serwerów nazw we własnej strefie, niekiedy nazywanych *serwerami nazw znaczących*, nie jest obecnie obsługiwane w usłudze Azure DNS.
 

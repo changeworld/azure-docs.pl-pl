@@ -1,71 +1,81 @@
 ---
-title: Samouczek przeglądania wypowiedzi punktu końcowego w usłudze Language Understanding (LUIS) — Azure | Microsoft Docs
-description: W tym samouczku dowiesz się, jak przeglądać wypowiedzi punktu końcowego w domenie zasobów ludzkich (HR, Human Resources) w usłudze LUIS.
+title: 'Samouczek 1: przeglądanie wypowiedzi punktu końcowego przy użyciu aktywnej nauki'
+titleSuffix: Azure Cognitive Services
+description: Ulepszysz przewidywanie aplikacji, weryfikując i poprawiając wypowiedzi odebrane za pośrednictwem punktu końcowego HTTP usługi LUIS i uznane za niepewne przez tę usługę. Niektóre wypowiedzi mogą wymagać weryfikacji pod kątem intencji, a inne — pod kątem jednostki. Należy regularnie przeglądać wypowiedzi punktu końcowego w ramach zaplanowanej konserwacji usługi LUIS.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/03/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: db44bfad5ece59ed3373699c10d6134201bf1879
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 1047c117228b57f7361a1e386bc6cde7acbfdde8
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160085"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47042279"
 ---
-# <a name="tutorial-review-endpoint-utterances"></a>Samouczek: przeglądanie wypowiedzi punktu końcowego
-W tym samouczku ulepszysz przewidywanie aplikacji, weryfikując i poprawiając wypowiedzi odebrane za pośrednictwem punktu końcowego HTTP usługi LUIS. 
+# <a name="tutorial-1-fix-unsure-predictions"></a>Samouczek 1: rozwiązywanie problemów z niepewnymi przewidywaniami
+W tym samouczku ulepszysz przewidywanie aplikacji, weryfikując i poprawiając wypowiedzi odebrane za pośrednictwem punktu końcowego HTTP usługi LUIS i uznane za niepewne przez tę usługę. Niektóre wypowiedzi mogą wymagać weryfikacji pod kątem intencji, a inne — pod kątem jednostki. Należy regularnie przeglądać wypowiedzi punktu końcowego w ramach zaplanowanej konserwacji usługi LUIS. 
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Informacje o przeglądaniu wypowiedzi punktu końcowego 
-> * Korzystanie z aplikacji LUIS dla domeny zasobów ludzkich (HR, Human Resources) 
-> * Przeglądanie wypowiedzi punktu końcowego
-> * Uczenie i publikowanie aplikacji
-> * Wysyłanie zapytań do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS
-
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Przed rozpoczęciem
-Jeśli nie masz aplikacji Human Resources z samouczka dotyczącego [opinii](luis-quickstart-intent-and-sentiment-analysis.md), zaimportuj ją z repozytorium GitHub [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-sentiment-HumanResources.json). Jeśli w tym samouczku używasz nowej, zaimportowanej aplikacji, musisz także przeprowadzić uczenie i opublikować ją, a następnie dodać wypowiedzi do punktu końcowego za pomocą [skryptu](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js) lub z poziomu punktu końcowego w przeglądarce. Należy dodać następujące wypowiedzi:
-
-   [!code-nodejs[Node.js code showing endpoint utterances to add](~/samples-luis/examples/demo-upload-endpoint-utterances/endpoint.js?range=15-26)]
-
-Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `review`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. 
-
-Jeśli masz wszystkie wersje aplikacji z całej serii samouczków, może Cię zaskoczyć to, że lista **Review endpoint utterances** (Przeglądanie wypowiedzi punktu końcowego) nie ulega zmianie w zależności od wersji. Jest tylko jedna pula wypowiedzi do przejrzenia, niezależnie od aktywnie edytowanej wersji wypowiedzi ani od wersji aplikacji opublikowanej w punkcie końcowym. 
-
-## <a name="purpose-of-reviewing-endpoint-utterances"></a>Cel przeglądania wypowiedzi punktu końcowego
-Ten proces przeglądu to kolejny sposób, w który usługa LUIS może nauczyć się domeny aplikacji. Usługa LUIS wybrała wypowiedzi na liście do przeglądu. Ta lista ma następujące cechy:
+Ten proces przeglądu to kolejny sposób, w który usługa LUIS może nauczyć się domeny aplikacji. Usługa LUIS wybrała wypowiedzi występujące na liście do przeglądu. Ta lista ma następujące cechy:
 
 * Jest specyficzna dla aplikacji.
 * Ma za zadanie zwiększyć dokładność przewidywania aplikacji. 
 * Powinna być regularnie przeglądana. 
 
-Przeglądając wypowiedzi punktu końcowego, weryfikujesz lub poprawiasz przewidzianą intencję wypowiedzi. Ponadto dodajesz etykiety do jednostek niestandardowych, które nie zostały przewidziane. 
+Przeglądając wypowiedzi punktu końcowego, weryfikujesz lub poprawiasz przewidzianą intencję wypowiedzi. Możesz też oznaczać etykietami jednostki niestandardowe, które nie zostały przewidziane lub zostały przewidziane niepoprawnie. 
+
+**Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
+
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * Korzystanie z istniejącej aplikacji samouczka
+> * Przeglądanie wypowiedzi punktu końcowego
+> * Aktualizowanie listy fraz
+> * Szkolenie aplikacji
+> * Publikowanie aplikacji
+> * Wysyłanie zapytań do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS
+
+[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
+
+## <a name="use-existing-app"></a>Korzystanie z istniejącej aplikacji
+
+Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
+
+Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj następujące kroki:
+
+1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-sentiment-HumanResources.json).
+
+2. Zaimportuj plik JSON do nowej aplikacji.
+
+3. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `review`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używana jako część trasy adresu URL, nie może ona zawierać żadnych znaków, które są nieprawidłowe w adresie URL.
+
+    Jeśli w tym samouczku używasz nowej, zaimportowanej aplikacji, musisz także przeprowadzić uczenie i opublikować ją, a następnie dodać wypowiedzi do punktu końcowego za pomocą [skryptu](https://github.com/Microsoft/LUIS-Samples/blob/master/examples/demo-upload-endpoint-utterances/endpoint.js) lub z poziomu punktu końcowego w przeglądarce. Należy dodać następujące wypowiedzi:
+
+   [!code-nodejs[Node.js code showing endpoint utterances to add](~/samples-luis/examples/demo-upload-endpoint-utterances/endpoint.js?range=15-26)]
+
+    Jeśli masz wszystkie wersje aplikacji z całej serii samouczków, może Cię zaskoczyć to, że lista **Review endpoint utterances** (Przeglądanie wypowiedzi punktu końcowego) nie ulega zmianie w zależności od wersji. Jest tylko jedna pula wypowiedzi do przejrzenia, niezależnie od aktywnie edytowanej wersji i od wersji aplikacji opublikowanej w punkcie końcowym. 
 
 ## <a name="review-endpoint-utterances"></a>Przeglądanie wypowiedzi punktu końcowego
 
-1. Upewnij się, że aplikacja Human Resources znajduje się w sekcji **Build** (Kompilacja) aplikacji LUIS. Możesz przejść do tej sekcji, wybierając pozycję **Build** (Kompilacja) na górnym pasku menu po prawej stronie. 
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wybierz pozycję **Review endpoint utterances** (Przejrzyj wypowiedzi punktu końcowego) w lewym obszarze nawigacji. Lista jest przefiltrowana pod kątem intencji **ApplyForJob**. 
 
-    [ ![Zrzut ekranu przycisku Review endpoint utterances (Przejrzyj wypowiedzi punktu końcowego) w lewym obszarze nawigacji](./media/luis-tutorial-review-endpoint-utterances/entities-view-endpoint-utterances.png)](./media/luis-tutorial-review-endpoint-utterances/entities-view-endpoint-utterances.png#lightbox)
+    [ ![Zrzut ekranu przycisku Review endpoint utterances (Przejrzyj wypowiedzi punktu końcowego) w lewym obszarze nawigacji](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png#lightbox)
 
 3. Przełącz pozycję **Entities view** (Widok jednostek), aby wyświetlić jednostki oznaczone etykietami. 
     
-    [ ![Zrzut ekranu obszaru Review endpoint utterances (Przeglądanie wypowiedzi punktu końcowego) z wyróżnionym przełącznikiem Entities view (Widok jednostek)](./media/luis-tutorial-review-endpoint-utterances/select-entities-view.png)](./media/luis-tutorial-review-endpoint-utterances/select-entities-view.png#lightbox)
+    [ ![Zrzut ekranu obszaru Review endpoint utterances (Przeglądanie wypowiedzi punktu końcowego) z wyróżnionym przełącznikiem Entities view (Widok jednostek)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png)](./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-token-view.png#lightbox)
 
     |Wypowiedź|Poprawna intencja|Brakujące jednostki|
     |:--|:--|:--|
     |I'm looking for a job with Natural Language Processing|GetJobInfo|Job — „Natural Language Process”|
 
     Ta wypowiedź ma nieprawidłową intencję i ocenę niższą niż 50%. Intencja **ApplyForJob** ma 21 wypowiedzi w porównaniu do siedmiu wypowiedzi w intencji **GetJobInformation**. Poza prawidłowym dopasowaniem punktu końcowego należy dodać więcej wypowiedzi do intencji **GetJobInformation**. Ta czynność zostanie zostawiona jako ćwiczenie do samodzielnego wykonania. Wszystkie intencje z wyjątkiem intencji **None** powinny mieć mniej więcej taką samą liczbę przykładowych wypowiedzi. Intencja **None** powinna mieć 10% wszystkich wypowiedzi w aplikacji. 
-
-    W obszarze **Tokens View** (Widok tokenów) możesz zatrzymać wskaźnik myszy na dowolnym niebieskim tekście w wypowiedzi, aby zobaczyć przewidywaną nazwę jednostki. 
 
 4. Dla wypowiedzi `I'm looking for a job with Natual Language Processing` wybierz poprawną intencję, **GetJobInformation**, w kolumnie **Aligned intent** (Dopasowana intencja). 
 
@@ -87,11 +97,13 @@ Przeglądając wypowiedzi punktu końcowego, weryfikujesz lub poprawiasz przewid
 
     [ ![Zrzut ekranu przedstawiający finalizowanie dopasowanej intencji pozostałych wypowiedzi](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png)](./media/luis-tutorial-review-endpoint-utterances/finalize-utterance-alignment.png#lightbox)
 
-9. Te wypowiedzi powinny zniknąć z listy. Jeśli zostaną wyświetlone kolejne wypowiedzi, kontynuuj pracę z listą, poprawiając intencje i oznaczając etykietami wszelkie brakujące jednostki, dopóki lista nie będzie pusta. Wybierz kolejną intencję z listy Filter (Filtr) i kontynuuj poprawianie wypowiedzi oraz oznaczanie jednostek etykietami. Pamiętaj, że ostatnim krokiem dla każdej intencji jest wybranie opcji **Add to aligned intent** (Dodaj do dopasowanej intencji) w wierszu wypowiedzi lub zaznaczenie pola wyboru obok każdej intencji i wybranie przycisku **Add selected** (Dodaj wybrane) nad tabelą. 
+9. Te wypowiedzi powinny zniknąć z listy. Jeśli zostaną wyświetlone kolejne wypowiedzi, kontynuuj pracę z listą, poprawiając intencje i oznaczając etykietami wszelkie brakujące jednostki, dopóki lista nie będzie pusta. 
 
-    Ta aplikacja jest bardzo mała. Proces przeglądu zajmuje tylko kilka minut.
+10. Wybierz kolejną intencję z listy Filter (Filtr) i kontynuuj poprawianie wypowiedzi oraz oznaczanie jednostek etykietami. Pamiętaj, że ostatnim krokiem dla każdej intencji jest wybranie opcji **Add to aligned intent** (Dodaj do dopasowanej intencji) w wierszu wypowiedzi lub zaznaczenie pola wyboru obok każdej intencji i wybranie przycisku **Add selected** (Dodaj wybrane) nad tabelą.
 
-## <a name="add-new-job-name-to-phrase-list"></a>Dodawanie nowej nazwy stanowiska do list fraz
+    Kontynuuj, aż wszystkie intencje i jednostki na liście filtru będą miały pustą listę. Ta aplikacja jest bardzo mała. Proces przeglądu zajmuje tylko kilka minut. 
+
+## <a name="update-phrase-list"></a>Aktualizowanie listy fraz
 Na bieżąco aktualizuj listę fraz, dodając do niej wszelkie nowo odnalezione nazwy stanowisk. 
 
 1. Wybierz pozycję **Phrase lists** (Listy fraz) w lewym obszarze nawigacji.
@@ -100,19 +112,19 @@ Na bieżąco aktualizuj listę fraz, dodając do niej wszelkie nowo odnalezione 
 
 3. Dodaj wartość `Natural Language Processing`, a następnie wybierz pozycję **Save** (Zapisz). 
 
-## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
+## <a name="train"></a>Szkolenie
 
 Usługa LUIS nie wie o zmianach, dopóki nie zostanie nauczona. 
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikowanie aplikacji w celu uzyskania adresu URL punktu końcowego
+## <a name="publish"></a>Publikowanie
 
 Jeśli zaimportowano tę aplikację, musisz wybrać pozycję **Sentiment analysis** (Analiza tonacji).
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-an-utterance"></a>Wysyłanie zapytania do punktu końcowego za pomocą wypowiedzi
+## <a name="get-intent-and-entities-from-endpoint"></a>Pobieranie intencji i jednostek z punktu końcowego
 
 Spróbuj użyć wypowiedzi podobnej do poprawionej wypowiedzi. 
 
@@ -223,16 +235,14 @@ Spróbuj użyć wypowiedzi podobnej do poprawionej wypowiedzi.
 Możesz się zastanawiać, dlaczego nie dodać więcej przykładowych wypowiedzi. Jaki jest cel przeglądania wypowiedzi punktu końcowego? W rzeczywistej aplikacji usługi LUIS wypowiedzi punktu końcowego pochodzą od użytkowników, a ich dobór i kolejność słów różnią się od użytych. Gdyby użyto tych samych słów w tej samej kolejności, pierwotne przewidywanie miałoby wyższą wartość procentową. 
 
 ## <a name="why-is-the-top-intent-on-the-utterance-list"></a>Dlaczego intencja o najwyższej ocenie znajduje się na liście wypowiedzi? 
-Niektóre wypowiedzi punktu końcowego będą miały wysoką wartość procentową na liście do przeglądu. Mimo to należy przejrzeć i zweryfikować te wypowiedzi. Znajdują się one na liście, ponieważ różnica między intencją o najwyższej ocenie i intencją drugą w kolejności jest zbyt mała. 
-
-## <a name="what-has-this-tutorial-accomplished"></a>Co osiągnięto w ramach tego samouczka?
-Dokładność przewidywania aplikacji została zwiększona przez przejrzenie wypowiedzi z punktu końcowego. 
+Niektóre wypowiedzi punktu końcowego będą miały wysoki współczynnik przewidywania na liście do przeglądu. Mimo to należy przejrzeć i zweryfikować te wypowiedzi. Znajdują się one na liście, ponieważ różnica między intencją o najwyższej ocenie i intencją drugą w kolejności jest zbyt mała. Różnica między dwiema najważniejszymi intencjami powinna wynosić około 15%.
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Następne kroki
+W tym samouczku przejrzano wypowiedzi przesłane w punkcie końcowym, które usługa LUIS uznała za niepewne. Zweryfikowanie i przeniesienie tych wypowiedzi do poprawnych intencji jako przykładowych wypowiedzi spowoduje, że dokładność przewidywania usługi LUIS zwiększy się.
 
 > [!div class="nextstepaction"]
 > [Dowiedz się, jak używać wzorców](luis-tutorial-pattern.md)

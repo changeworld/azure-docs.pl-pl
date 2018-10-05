@@ -1,26 +1,27 @@
 ---
-title: Zalecenia dotyczące interfejsu API | Dokumentacja firmy Microsoft
-description: Podgląd interfejsu API jest teraz przerywane, zastąpione przez szablon rozwiązania zalecenia.
+title: Co to jest interfejs API zaleceń?
+titlesuffix: Azure Cognitive Services
+description: Interfejs API w wersji zapoznawczej nie jest już obsługiwany. Został on zastąpiony przez szablon rozwiązania zaleceń.
 services: cognitive-services
 author: LuisCabrer
-manager: mwinkle
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: recommendations
-ms.topic: article
+ms.topic: overview
 ms.date: 02/15/2018
 ms.author: luisca
-ms.openlocfilehash: 2224a44c76ce7b04ab6705babbe9fa4f3bfa1c04
-ms.sourcegitcommit: 95d9a6acf29405a533db943b1688612980374272
-ms.translationtype: MT
+ms.openlocfilehash: 59529806c322176c1d85c273a99682eaa7c13e41
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 06/23/2018
-ms.locfileid: "35347389"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222670"
 ---
-# <a name="recommendations-api-discontinued"></a>Zalecenia dotyczące interfejsu API (zaprzestać)
+# <a name="recommendations-api-discontinued"></a>Interfejs API zaleceń (nieobsługiwany)
 
-Zalecenia dotyczące interfejsu API w wersji zapoznawczej nie jest już aktywne opracowywane i oficjalnie została wycofana w lutym 15. 
+Interfejs API zaleceń w wersji zapoznawczej nie jest już aktywnie programowany i został oficjalnie wycofany w dniu 15 lutego. 
 
-Dla alternatywnej należy wziąć pod uwagę nowe open source [szablon rozwiązania zalecenia](http://aka.ms/recopcs), co umożliwia hostowanie aparatem zalecenia w ramach subskrypcji platformy Azure. Obsługuje ona podstawowe scenariusze zalecenia dotyczące interfejsu API, podczas również dzięki funkcjom do wdrożenia na dowolny region platformy Azure i ściśle większą kontrolę zasoby obliczeniowe, używany do uczenia modeli i obsługiwać zalecenia. 
+Jako alternatywę rozważ użycie nowego [szablonu rozwiązania zaleceń](http://aka.ms/recopcs) typu open-source, który umożliwia hostowanie aparatu zaleceń w obrębie własnej subskrypcji platformy Azure. Szablon ten obsługuje podstawowe scenariusze interfejsu API zaleceń, zapewniając równocześnie swobodę wdrażania w dowolnym regionie platformy Azure i dokładniejszą kontrolę zasobów obliczeniowych używanych do uczenia modeli i obsługi zaleceń. 
 
-Dowiedz się więcej o szablon rozwiązania zalecenia, odczytując [dokumentacji](https://github.com/Microsoft/Product-Recommendations). 
+Aby dowiedzieć się więcej na temat szablonu rozwiązania zaleceń, zapoznaj się z [dokumentacją](https://github.com/Microsoft/Product-Recommendations). 
 

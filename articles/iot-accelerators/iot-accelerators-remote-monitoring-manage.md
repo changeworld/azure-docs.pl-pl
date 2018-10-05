@@ -9,12 +9,12 @@ services: iot-accelerators
 ms.date: 07/19/2018
 ms.topic: tutorial
 ms.custom: mvc
-ms.openlocfilehash: b1e12ad837def690e55fc501c67d8b2ed5e3cd4d
-ms.sourcegitcommit: 068fc623c1bb7fb767919c4882280cad8bc33e3a
+ms.openlocfilehash: 6e92ef276d270fcc4c351fb89c699c8addd74632
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/27/2018
-ms.locfileid: "39284615"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222153"
 ---
 # <a name="tutorial-configure-and-manage-devices-connected-to-your-monitoring-solution"></a>Samouczek: konfigurowanie urządzeń połączonych z rozwiązaniem do monitorowania i zarządzanie nimi
 
@@ -144,7 +144,7 @@ Teraz operator firmy Contoso może wykonać zapytanie dotyczące urządzeń wed�
 
 ## <a name="next-steps"></a>Następne kroki
 
-W tym samouczku pokazano, w jaki sposób skonfigurować urządzenia połączone z akceleratorem rozwiązań do zdalnego monitorowania i zarządzać nimi. Aby dowiedzieć się, w jaki sposób korzystać z akceleratora rozwiązań w celu identyfikowania i rozwiązywania problemów z urządzeniami połączonymi, przejdź do kolejnego samouczka.
+W tym samouczku pokazano, w jaki sposób skonfigurować urządzenia połączone z akceleratorem rozwiązań do zdalnego monitorowania i zarządzać nimi. Aby dowiedzieć się, jak używać akceleratora rozwiązań do przeprowadzania analizy głównej przyczyny w przypadku nieoczekiwanego alertu, przejdź do następnego samouczka.
 
 > [!div class="nextstepaction"]
-> [Use device alerts to identify and fix issues with devices connected to your monitoring solution (Korzystanie z alertów urządzenia do identyfikowania i rozwiązywania problemów z urządzeniami połączonymi z rozwiązaniem do monitorowania)](iot-accelerators-remote-monitoring-maintain.md)
+> [Przeprowadzanie analizy głównej przyczyny po wystąpieniu alertu](iot-accelerators-remote-monitoring-root-cause-analysis.md)

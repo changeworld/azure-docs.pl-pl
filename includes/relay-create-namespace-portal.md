@@ -1,5 +1,5 @@
 1. Zaloguj się w witrynie [Azure Portal][Azure portal].
-2. W menu po lewej stronie wybierz pozycję **+ Utwórz zasób**. Następnie wybierz pozycję **Integracja w przedsiębiorstwie** > **Relay**.
+2. W menu po lewej stronie wybierz pozycję **+ Utwórz zasób**. Następnie wybierz pozycję **Integracja** > **Relay**. Jeśli nie widzisz pozycji **Relay** na liście, wybierz pozycję **Zobacz wszystko** w prawym górnym rogu. 
 3. W obszarze **Tworzenie przestrzeni nazw** wprowadź nazwę przestrzeni nazw. System od razu sprawdza, czy nazwa jest dostępna.
 4. W polu **Subskrypcja** wybierz subskrypcję platformy Azure, w której chcesz utworzyć przestrzeń nazw.
 5. W polu [Grupa zasobów](../articles/azure-resource-manager/resource-group-portal.md) wybierz istniejącą grupę zasobów, w której znajdzie się przestrzeń nazw, lub utwórz nową.  

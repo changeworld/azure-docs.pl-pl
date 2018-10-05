@@ -3,18 +3,18 @@ title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
-ms.openlocfilehash: 91ae5f39b981a3124335271f702157dd6628d8e1
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
-ms.translationtype: MT
+ms.openlocfilehash: 51badea3a8bef6aeabb0b24481b024eb006220cb
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42820061"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47044010"
 ---
-Ten przewodnik Szybki Start korzysta z tworzenia klucza dla wygody. Klucz jest przeznaczone głównie dla tworzenia modelu, ale możliwe jest niewielka liczba (1000) żądań punktu końcowego. Gdy wszystko jest gotowe do liczby żądań punktu końcowego w środowisku testowym, etapu lub produkcyjnym, należy utworzyć **Language Understanding** zasobów w witrynie Azure portal i przypisz je do aplikacji usługi LUIS w portalu usługi LUIS. 
+Dla wygody w tym przewodniku Szybki start jest używany klucz tworzenia. Ten klucz jest przeznaczony głównie do tworzenia modelu, ale umożliwia też wysłanie niewielkiej liczby (1000) żądań do punktu końcowego. Gdy będziesz potrzebować większej liczby żądań do punktu końcowego w środowisku testowym, przejściowym lub produkcyjnym, utwórz zasób **Language Understanding** w witrynie Azure Portal i przypisz go do aplikacji LUIS w portalu usługi LUIS. 

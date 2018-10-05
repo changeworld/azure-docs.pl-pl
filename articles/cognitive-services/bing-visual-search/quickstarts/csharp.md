@@ -1,27 +1,27 @@
 ---
-title: Szybki Start języka C# API wyszukiwania wizualnego Bing | Dokumentacja firmy Microsoft
-titleSuffix: Bing Web Search APIs - Cognitive Services
-description: Pokazuje, jak przekazać obraz do interfejsu API wyszukiwania wizualnego Bing i uzyskanie szczegółowych informacji o obrazie.
+title: 'Szybki start: Tworzenie wizualnego zapytania wyszukiwania, C# — wyszukiwanie wizualne Bing'
+titleSuffix: Azure Cognitive Services
+description: Pokazuje, jak przekazać obraz do interfejsu API wyszukiwania wizualnego Bing i uzyskać szczegółowe informacje o obrazie.
 services: cognitive-services
 author: swhite-msft
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.technology: bing-visual-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 5/16/2018
 ms.author: scottwhi
-ms.openlocfilehash: 930a89e3b1996c44f12bd3773565eda40e93ca9c
-ms.sourcegitcommit: 0b05bdeb22a06c91823bd1933ac65b2e0c2d6553
-ms.translationtype: MT
+ms.openlocfilehash: e6e969d9ff0556211ca6080645888d44554b286c
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/17/2018
-ms.locfileid: "39070930"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47218771"
 ---
-# <a name="your-first-bing-visual-search-query-in-c"></a>Pierwsze zapytanie wyszukiwania wizualnego Bing w języku C#
+# <a name="quickstart-your-first-bing-visual-search-query-in-c"></a>Szybki start: Pierwsze zapytanie wyszukiwania wizualnego Bing w języku C#
 
-Interfejs API wyszukiwania wizualnego Bing zwraca informacje o obrazie, który należy podać. Aby przekazać obraz, przy użyciu adresu URL obrazu usługi insights tokenu, lub przekazanie obrazu. Aby uzyskać informacje o tych opcjach, zobacz [co to jest interfejs API wyszukiwania wizualnego Bing?](../overview.md) W tym artykule przedstawiono przekazywania obrazu. Przekazywanie obrazu może być przydatne w scenariuszach mobilnych, gdzie Zrób zdjęcie dobrze znanych charakterystycznych elementów krajobrazu i uzyskanie informacji na jego temat. Na przykład szczegółowe informacje zawiera elementy towarzyszące składni o charakterystycznych elementów krajobrazu. 
+Interfejs API wyszukiwania wizualnego Bing zwraca informacje o udostępnionym obrazie. Obraz można udostępnić przy użyciu adresu URL obrazu, tokenu szczegółowych informacji lub przez przekazanie obrazu. Aby uzyskać informacje o tych opcjach, zobacz [Czym jest interfejs API wyszukiwania wizualnego Bing?](../overview.md) W tym artykule opisano przekazywanie obrazu. Przekazywanie obrazu może być przydatne w scenariuszach mobilnych, w których po zrobieniu zdjęcia znanego charakterystycznego elementu krajobrazu zwracane są informacje na jego temat. Szczegółowe informacje mogą na przykład zawierać ciekawostki na temat charakterystycznego elementu krajobrazu. 
 
-Jeśli załadujesz lokalny obraz, poniżej przedstawiono dane formularza należy uwzględnić w treści wpisu. Dane mogą zawierać nagłówek Content-Disposition. Jego `name` parametru musi być równa "image" i `filename` parametru może być ustawiona na dowolny ciąg. Zawartość formularza jest plik binarny obrazu. Rozmiar maksymalny obrazu, którą możesz przekazać to 1 MB. 
+W przypadku przekazywania lokalnego obrazu w treści żądania POST konieczne jest podanie pokazanych poniżej danych formularza. Dane formularza muszą zawierać nagłówek Content-Disposition. Jego parametr `name` musi mieć wartość "image", a parametr `filename` może być ustawiony na dowolny ciąg. Zawartością formularza jest plik binarny obrazu. Maksymalny rozmiar obrazu, który można przekazać, wynosi 1 MB. 
 
 ```
 --boundary_1234-abcd
@@ -32,27 +32,27 @@ Content-Disposition: form-data; name="image"; filename="myimagefile.jpg"
 --boundary_1234-abcd--
 ```
 
-Ten artykuł zawiera prostą aplikację konsolową, która wysyła żądanie interfejsu API wyszukiwania wizualnego Bing i wyświetla wyniki wyszukiwania JSON. Podczas tej aplikacji został napisany w języku C#, interfejs API jest zgodny z dowolnego języka programowania, który może wysyłać żądania HTTP i Przeanalizuj dane JSON usługi sieci Web typu RESTful. 
+W tym artykule zawarto prostą aplikację konsolową, która wysyła żądanie interfejsu API wyszukiwania wizualnego Bing i wyświetla wyniki wyszukiwania w formacie JSON. Ta aplikacja została napisana w języku C#, a interfejs API jest usługą internetową RESTful zgodną z każdym językiem programowania, który może wysyłać żądania HTTP i analizować dane JSON. 
 
-Program przykładowy używa tylko klas platformy .NET Core i systemem Windows przy użyciu środowiska .NET CLR lub w systemie Linux lub macOS przy użyciu [Mono](http://www.mono-project.com/).
+Przykładowy program używa tylko klas platformy .NET Core i działa w systemie Windows przy użyciu środowiska .NET CLR lub w systemie Linux bądź macOS przy użyciu środowiska [Mono](http://www.mono-project.com/).
 
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-Konieczne będzie [programu Visual Studio 2017](https://www.visualstudio.com/downloads/) aby otrzymać ten kod w systemie Windows. (Bezpłatna wersja Community będzie działać.)
+Do uruchomienia tego kodu w systemie Windows będzie potrzebny program [Visual Studio 2017](https://www.visualstudio.com/downloads/). (Można korzystać z bezpłatnej wersji Community Edition).
 
-W tym przewodniku Szybki Start, możesz użyć [bezpłatna wersja próbna](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) klawisz płatna subskrypcja lub subskrypcja.
+Na potrzeby tego przewodnika Szybki start możesz użyć klucza subskrypcji [bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=bing-web-search-api) lub klucza subskrypcji płatnej.
 
 ## <a name="running-the-application"></a>Uruchamianie aplikacji
 
-Poniżej przedstawiono sposób wysyłania komunikatów przy użyciu HttpWebRequest. Na przykład, który używa klasy HttpClient, HttpRequestMessage i MultipartFormDataContent, zobacz [przy użyciu HttpClient](#using-httpclient).
+Poniżej przedstawiono sposób wysyłania komunikatu przy użyciu żądania HttpWebRequest. Przykład korzystający z obiektów HttpClient, HttpRequestMessage i MultipartFormDataContent znajduje się w sekcji [Korzystanie z obiektu HttpClient](#using-httpclient).
 
 Aby uruchomić tę aplikację, wykonaj następujące kroki:
 
-1. Utwórz nowe rozwiązanie konsoli w programie Visual Studio.
-1. Zastąp zawartość `Program.cs` kodem przedstawionym w tym przewodniku Szybki Start.
-2. Zastąp `accessKey` wartość z kluczem subskrypcji.
-2. Zastąp `imagePath` na ścieżkę obrazu do przekazania.
+1. Utwórz nowe rozwiązanie konsolowe w programie Visual Studio.
+1. Zastąp zawartość pliku `Program.cs` kodem przedstawionym w tym przewodniku Szybki start.
+2. Zastąp wartość elementu `accessKey` kluczem subskrypcji.
+2. Zastąp wartość elementu `imagePath` ścieżką obrazu do przekazania.
 3. Uruchom program.
 
 
@@ -303,11 +303,11 @@ namespace VisualSearchUpload
 ```
 
 
-## <a name="using-httpclient"></a>Za pomocą elementu HttpClient
+## <a name="using-httpclient"></a>Korzystanie z obiektu HttpClient
 
-Jeśli używasz HttpClient, można użyć MultipartFormDataContent tworzyć dane formularza. Wystarczy użyć następujące fragmenty kodu, aby zastąpić te same metody o nazwie w poprzednim przykładzie.
+Jeśli używasz obiektu HttpClient, możesz użyć obiektu MultipartFormDataContent w celu utworzenia danych formularza. Wystarczy użyć następujących fragmentów kodu i zastąpić nimi metody o takiej samej nazwie w poprzednim przykładzie.
 
-Zastąp metodę Main ten kod:
+Zastąp metodę Main następującym kodem:
 
 ```csharp
         static void Main()
@@ -347,7 +347,7 @@ Zastąp metodę Main ten kod:
         }
 ```
 
-Zastąp metodę BingImageSearch przy użyciu tego kodu:
+Zastąp metodę BingImageSearch następującym kodem:
 
 ```csharp
         /// <summary>
@@ -384,12 +384,12 @@ Zastąp metodę BingImageSearch przy użyciu tego kodu:
 
 
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Uzyskiwanie szczegółowych informacji o pliku obrazu przy użyciu tokenu usługi insights](../use-insights-token.md)  
-[Samouczek przekazywania obrazów wyszukiwania wizualnego Bing](../tutorial-visual-search-image-upload.md)
-[samouczek dotyczący aplikacji jednostronicowej wyszukiwania wizualnego Bing](../tutorial-bing-visual-search-single-page-app.md)
-[Przegląd wyszukiwania wizualnego Bing](../overview.md)  
-[Wypróbuj](https://aka.ms/bingvisualsearchtryforfree)  
-[Pobierz klucz bezpłatny dostęp próbny](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
+[Uzyskiwanie szczegółowych informacji o obrazie przy użyciu tokenu szczegółowych informacji](../use-insights-token.md)  
+[Samouczek dotyczący przekazywania obrazów na potrzeby wyszukiwania wizualnego Bing](../tutorial-visual-search-image-upload.md)
+[Samouczek dotyczący aplikacji jednostronicowej wyszukiwania wizualnego Bing](../tutorial-bing-visual-search-single-page-app.md)
+[Omówienie wyszukiwania wizualnego Bing](../overview.md)  
+[Wypróbuj!](https://aka.ms/bingvisualsearchtryforfree)  
+[Pobierz klucz dostępu do bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=bing-visual-search-api)  
 [Dokumentacja interfejsu API wyszukiwania wizualnego Bing](https://aka.ms/bingvisualsearchreferencedoc)

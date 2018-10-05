@@ -1,54 +1,71 @@
 ---
-title: Samouczek tworzenia aplikacji LUIS do wyodrębniania danych — Azure | Microsoft Docs
-description: Z tego samouczka dowiesz się, jak utworzyć prostą aplikację LUIS, używając intencji i jednostki prostej do danych nauczonych maszynowo.
+title: 'Samouczek 7: prosta jednostka z listą fraz w usłudze LUIS'
+titleSuffix: Azure Cognitive Services
+description: Wyodrębnianie danych nauczonych maszynowo z wypowiedzi
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: a69ea8ea45a02399b7c6ad22f0dc514ad8537e06
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 941c29506aa8f17dcb6262495b28dd26e78194d5
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44159660"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036065"
 ---
-# <a name="tutorial-7-add-simple-entity-and-phrase-list"></a>Samouczek: 7. Dodawanie jednostki prostej i listy fraz
-W ramach tego samouczka utworzysz aplikację demonstrującą sposób wyodrębniania danych nauczonych maszynowo z wypowiedzi za pomocą jednostki **Simple** (prostej).
+# <a name="tutorial-7-extract-names-with-simple-entity-and-phrase-list"></a>Samouczek 7: wyodrębnianie nazw przy użyciu prostej jednostki i listy fraz
+
+W tym samouczku wyodrębnisz z wypowiedzi dane nauczone maszynowo dotyczące nazwy stanowiska pracownika, używając **prostej** jednostki. Aby zwiększyć dokładność wyodrębniania, dodaj listę fraz zawierającą terminy specyficzne dla danej prostej jednostki.
+
+W tym samouczku dodasz nową prostą jednostkę w celu wyodrębnienia nazwy stanowiska. Celem prostej jednostki w tej aplikacji LUIS jest nauczenie usługi LUIS, co to jest nazwa stanowiska i gdzie można ją znaleźć w wypowiedzi. Część wypowiedzi, która jest nazwą stanowiska, może się zmieniać dla różnych wypowiedzi i jest zależna od doboru wyrazów i długości wypowiedzi. Usługa LUIS potrzebuje przykładów nazw stanowisk dla wszystkich intencji używających nazw stanowisk.  
+
+Prosta jednostka jest odpowiednia dla tego typu danych, gdy:
+
+* Dane są pojedynczą koncepcją.
+* Dane nie mają określonego formatu, tak jak w przypadku wyrażenia regularnego.
+* Dane nie są typowe, tak jak w przypadku wstępnie skompilowanej jednostki dotyczącej numeru telefonu lub danych.
+* Dane nie są dokładnie dopasowane do listy znanych wyrazów, takiej jak jednostka listy.
+* Dane nie zawierają innych elementów danych, takich jak jednostki złożone lub hierarchiczne.
+
+**Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
 <!-- green checkmark -->
 > [!div class="checklist"]
-> * Omówienie jednostek prostych 
-> * Tworzenie nowej aplikacji LUIS dla domeny zasobów ludzkich (HR, Human Resources) 
+> * Korzystanie z istniejącej aplikacji samouczka
 > * Dodawanie prostej jednostki do wyodrębnienia zadań z aplikacji
-> * Uczenie i publikowanie aplikacji
-> * Wysyłanie zapytania do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS
 > * Dodawanie listy fraz w celu wzmocnienia sygnału wyrazów związanych z zadaniami
-> * Uczenie, publikowanie aplikacji i ponowne wykonywanie zapytania dotyczącego punktu końcowego
+> * Szkolenie 
+> * Publikowanie 
+> * Pobieranie intencji i jednostek z punktu końcowego
 
 [!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="before-you-begin"></a>Przed rozpoczęciem
-Jeśli nie masz aplikacji Human Resources z samouczka dotyczącego [jednostki złożonej](luis-tutorial-composite-entity.md), [zaimportuj](luis-how-to-start-new-app.md#import-new-app) kod JSON do nowej aplikacji w witrynie internetowej usługi [LUIS](luis-reference-regions.md#luis-website). Aplikacja do zaimportowania znajduje się w repozytorium [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-composite-HumanResources.json) usługi Github.
+## <a name="use-existing-app"></a>Korzystanie z istniejącej aplikacji
 
-Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `simple`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji.  
+Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
 
-## <a name="purpose-of-the-app"></a>Przeznaczenie aplikacji
-Ta aplikacja pokazuje, jak wydobyć dane z wypowiedzi. Przeanalizujmy następujące wypowiedzi z czatbota:
+Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj następujące kroki:
+
+1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-composite-HumanResources.json).
+
+2. Zaimportuj plik JSON do nowej aplikacji.
+
+3. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `simple`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używana jako część trasy adresu URL, nie może ona zawierać żadnych znaków, które są nieprawidłowe w adresie URL.
+
+## <a name="simple-entity"></a>Prosta jednostka
+Prosta jednostka wykrywa pojedynczą koncepcję danych zawartą w wyrazach lub frazach.
+
+Przeanalizujmy następujące wypowiedzi z czatbota:
 
 |Wypowiedź|Nazwa zadania możliwa do wyodrębnienia|
 |:--|:--|
 |I want to apply for the new accounting job.|accounting|
-|Please submit my resume for the engineering position.|engineering|
+|Submit my resume for the engineering position.|engineering|
 |Fill out application for job 123456|123456|
-
-W tym samouczku dodasz nową jednostkę w celu wyodrębnienia nazwy zadania. 
-
-## <a name="purpose-of-the-simple-entity"></a>Przeznaczenie jednostki prostej
-Celem jednostki prostej w tej aplikacji LUIS jest nauczenie usługi LUIS, co to jest numer zadania i gdzie można go znaleźć w wypowiedzi. Część wypowiedzi, która jest zadaniem, może się zmienić dla różnych wypowiedzi i jest zależna od doboru wyrazów i długości wypowiedzi. Usługa LUIS potrzebuje przykładów zadań w dowolnej wypowiedzi we wszystkich intencjach.  
 
 Nazwa zadania jest trudna do określenia, ponieważ może być rzeczownikiem, czasownikiem lub frazą składającą się z kilku wyrazów. Na przykład:
 
@@ -65,15 +82,13 @@ Nazwa zadania jest trudna do określenia, ponieważ może być rzeczownikiem, cz
 |extruder|
 |millwright|
 
-Ta aplikacja LUIS ma nazwy zadań w kilku intencjach. Oznaczając te wyrazy w wypowiedziach dla wszystkich intencji, usługa LUIS uczy się, czym jest zadanie, i poznaje dalsze sposoby wyszukiwania go w wypowiedziach.
+Ta aplikacja LUIS ma nazwy zadań w kilku intencjach. Dzięki oznaczeniu tych wyrazów w wypowiedziach dla wszystkich intencji usługa LUIS uczy się, jaka jest nazwa stanowiska i gdzie znajduje się ona w wypowiedziach.
 
-## <a name="create-job-simple-entity"></a>Tworzenie prostej jednostki zadania
+Po oznaczeniu jednostek w przykładowych wypowiedziach ważne jest dodanie listy fraz w celu wzmocnienia sygnału prostej jednostki. Lista fraz **nie** jest używana jako dokładne dopasowanie i nie musi uwzględniać każdej możliwej wartości, jakiej oczekujesz. 
 
-1. Upewnij się, że aplikacja Human Resources znajduje się w sekcji **Build** (Kompilacja) aplikacji LUIS. Możesz przejść do tej sekcji, wybierając pozycję **Build** (Kompilacja) na górnym pasku menu po prawej stronie. 
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Na stronie **Intents** (Intencje) wybierz intencję **ApplyForJob**. 
-
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-select-applyforjob.png "Zrzut ekranu usługi LUIS z wyróżnioną intencją „ApplyForJob”")](media/luis-quickstart-primary-and-secondary-data/hr-select-applyforjob.png#lightbox)
 
 3. W wypowiedzi `I want to apply for the new accounting job` wybierz pozycję `accounting`, wprowadź `Job` w górnym polu menu podręcznego, a następnie w menu podręcznym wybierz polecenie **Create new entity** (Utwórz nową jednostkę). 
 
@@ -110,7 +125,10 @@ Ta aplikacja LUIS ma nazwy zadań w kilku intencjach. Oznaczając te wyrazy w wy
     |My curriculum vitae for professor of biology is enclosed.|professor of biology|
     |I would like to apply for the position in photography.|photography|git 
 
-## <a name="label-entity-in-example-utterances-for-getjobinformation-intent"></a>Oznaczanie etykietą jednostki w przykładowych wypowiedziach dla intencji GetJobInformation
+## <a name="label-entity-in-example-utterances"></a>Oznaczanie jednostki etykietami w przykładowych wypowiedziach
+
+Dodanie etykiet (_oznaczenie_) jednostki wskazuje usłudze LUIS, gdzie znajduje się ta jednostka w przykładowych wypowiedziach.
+
 1. Wybierz pozycję **Intents** (Intencje) z menu po lewej.
 
 2. Wybierz pozycję **GetJobInformation** z listy intencji. 
@@ -125,80 +143,83 @@ Ta aplikacja LUIS ma nazwy zadań w kilku intencjach. Oznaczając te wyrazy w wy
 
     Istnieją inne przykładowe wypowiedzi, ale nie zawierają one wyrazów związanych z zadaniem.
 
-## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
+## <a name="train"></a>Szkolenie
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikowanie aplikacji w celu uzyskania adresu URL punktu końcowego
+## <a name="publish"></a>Publikowanie
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>Wysyłanie zapytania do punktu końcowego za pomocą różnych wypowiedzi
+## <a name="get-intent-and-entities-from-endpoint"></a>Pobieranie intencji i jednostek z punktu końcowego 
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)]
 
 2. Przejdź na koniec tego adresu URL i wprowadź ciąg `Here is my c.v. for the programmer job`. Ostatni parametr ciągu zapytania to `q`, czyli **query** (zapytanie) wypowiedzi. Ta wypowiedź jest inna niż wszystkie pozostałe oznaczone wypowiedzi, dlatego jest dobra do testowania i powinna zwrócić wypowiedzi `ApplyForJob`.
 
-```JSON
-{
-  "query": "Here is my c.v. for the programmer job",
-  "topScoringIntent": {
-    "intent": "ApplyForJob",
-    "score": 0.9826467
-  },
-  "intents": [
+    ```JSON
     {
-      "intent": "ApplyForJob",
-      "score": 0.9826467
-    },
-    {
-      "intent": "GetJobInformation",
-      "score": 0.0218927357
-    },
-    {
-      "intent": "MoveEmployee",
-      "score": 0.007849265
-    },
-    {
-      "intent": "Utilities.StartOver",
-      "score": 0.00349470088
-    },
-    {
-      "intent": "Utilities.Confirm",
-      "score": 0.00348804821
-    },
-    {
-      "intent": "None",
-      "score": 0.00319909188
-    },
-    {
-      "intent": "FindForm",
-      "score": 0.00222647213
-    },
-    {
-      "intent": "Utilities.Help",
-      "score": 0.00211193133
-    },
-    {
-      "intent": "Utilities.Stop",
-      "score": 0.00172086991
-    },
-    {
-      "intent": "Utilities.Cancel",
-      "score": 0.00138010911
+      "query": "Here is my c.v. for the programmer job",
+      "topScoringIntent": {
+        "intent": "ApplyForJob",
+        "score": 0.9826467
+      },
+      "intents": [
+        {
+          "intent": "ApplyForJob",
+          "score": 0.9826467
+        },
+        {
+          "intent": "GetJobInformation",
+          "score": 0.0218927357
+        },
+        {
+          "intent": "MoveEmployee",
+          "score": 0.007849265
+        },
+        {
+          "intent": "Utilities.StartOver",
+          "score": 0.00349470088
+        },
+        {
+          "intent": "Utilities.Confirm",
+          "score": 0.00348804821
+        },
+        {
+          "intent": "None",
+          "score": 0.00319909188
+        },
+        {
+          "intent": "FindForm",
+          "score": 0.00222647213
+        },
+        {
+          "intent": "Utilities.Help",
+          "score": 0.00211193133
+        },
+        {
+          "intent": "Utilities.Stop",
+          "score": 0.00172086991
+        },
+        {
+          "intent": "Utilities.Cancel",
+          "score": 0.00138010911
+        }
+      ],
+      "entities": [
+        {
+          "entity": "programmer",
+          "type": "Job",
+          "startIndex": 24,
+          "endIndex": 33,
+          "score": 0.5230502
+        }
+      ]
     }
-  ],
-  "entities": [
-    {
-      "entity": "programmer",
-      "type": "Job",
-      "startIndex": 24,
-      "endIndex": 33,
-      "score": 0.5230502
-    }
-  ]
-}
-```
+    ```
+    
+    Usługa LUIS znalazła poprawną intencję **ApplyForJob** i wyodrębniła prawidłową jednostkę **Job** (Stanowisko) z wartością `programmer`.
+
 
 ## <a name="names-are-tricky"></a>Nazwy są trudne
 Aplikacja LUIS znalazła prawidłową intencję z wysokim poziomem pewności i wyodrębniła nazwę zadania, ale nazwy mogą być skomplikowane. Spróbuj użyć wypowiedzi `This is the lead welder paperwork`.  
@@ -260,18 +281,15 @@ W poniższym kodzie JSON usługa LUIS odpowiada przy użyciu prawidłowej intenc
 
 Ponieważ nazwa może być dowolna, usługa LUIS przewiduje jednostki dokładniej, jeśli ma listę fraz powiązanych z wyrazami, które umożliwiają wzmocnienie sygnału.
 
-## <a name="to-boost-signal-add-jobs-phrase-list"></a>Dodawanie listy fraz zadań w celu wzmocnienia sygnału
+## <a name="to-boost-signal-add-phrase-list"></a>Dodawanie listy fraz w celu wzmocnienia sygnału
+
 Otwórz plik [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/job-phrase-list.csv) z repozytorium Github LUIS-Samples. Lista zawiera ponad tysiąc wyrazów i fraz związanych z zadaniami. Wyszukaj na liście istotne w Twoim przypadku wyrazy dotyczące zadań. Jeśli odpowiednich wyrazów lub fraz nie ma na liście, dodaj własne.
 
 1. W sekcji **Build** (Kompilacja) aplikacji LUIS wybierz pozycję **Phrase lists** (Listy fraz) w menu **Improve app performance** (Zwiększ wydajność aplikacji).
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-select-phrase-list-left-nav.png "Zrzut ekranu Phrase lists (Listy fraz) z wyróżnionym lewym przyciskiem nawigacji")](media/luis-quickstart-primary-and-secondary-data/hr-select-phrase-list-left-nav.png#lightbox)
-
 2. Wybierz pozycję **Create new phrase list** (Utwórz nową listę fraz). 
 
-    [![](media/luis-quickstart-primary-and-secondary-data/hr-create-new-phrase-list.png "Zrzut ekranu z wyróżnionym przyciskiem Create new phrase list (Utwórz nową listę fraz)")](media/luis-quickstart-primary-and-secondary-data/hr-create-new-phrase-list.png#lightbox)
-
-3. Nadaj nowej liście fraz nazwę `Jobs` i skopiuj listę z pliku jobs-phrase-list.csv do pola tekstowego **Values** (Wartości). Wybierz klawisz Enter. 
+3. Nadaj nowej liście fraz nazwę `Job` i skopiuj listę z pliku jobs-phrase-list.csv do pola tekstowego **Values** (Wartości). Wybierz klawisz Enter. 
 
     [![](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png "Zrzut ekranu podręcznego okna dialogowego tworzenia nowej listy fraz")](media/luis-quickstart-primary-and-secondary-data/hr-create-phrase-list-1.png#lightbox)
 
@@ -348,22 +366,13 @@ Otwórz plik [jobs-phrase-list.csv](https://github.com/Microsoft/LUIS-Samples/bl
     }
     ```
 
-## <a name="phrase-lists"></a>Listy fraz
-Dodanie listy frazy wzmocniło sygnał wyrazów na liście, ale **nie** jest ona używana jako dokładne dopasowanie. Lista fraz ma kilka zadań z pierwszym wyrazem `lead` i zadanie `welder`, ale nie ma zadania `lead welder`. Ta lista fraz dla zadań może być niekompletna. W miarę regularnego [przeglądania wypowiedzi punktu końcowego](luis-how-to-review-endoint-utt.md) i wyszukiwania innych wyrazów dotyczących zadań można dodawać je do listy fraz. Następnie należy ponownie nauczyć i opublikować aplikację.
-
-## <a name="what-has-this-luis-app-accomplished"></a>Co wykonała ta aplikacja LUIS?
-Ta aplikacja, zawierająca prostą jednostkę i listę fraz z wyrazami, zidentyfikowała intencję zapytania w języku naturalnym i zwróciła dane zadania. 
-
-Twój czatbot ma teraz dość informacji, aby określić akcję główną ubiegania się o pracę i parametr tej akcji — przywoływane zadanie. 
-
-## <a name="where-is-this-luis-data-used"></a>Gdzie są używane te dane usługi LUIS? 
-Usługa LUIS skończyła obsługiwać to żądanie. Aplikacja wywołująca, taka jak czatbot, może pobrać wynik topScoringIntent oraz dane z jednostki, aby użyć interfejsu API innej firmy do wysłania informacji o zadaniu do przedstawiciela działu zasobów ludzkich. Jeśli istnieją inne opcje programowe dla bota lub aplikacji wywołującej, usługa LUIS nie obsłuży ich. Usługa LUIS określa jedynie intencję użytkownika. 
-
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Następne kroki
+
+W tym samouczku aplikacja do obsługi kadr używa nauczonej maszynowo prostej jednostki, aby znajdować nazwy stanowisk w wypowiedziach. Nazwami stanowisk mogą być bardzo różne wyrazy i frazy, więc aplikacja potrzebuje listy fraz do wzmocnienia wyrazów z nazwami stanowisk. 
 
 > [!div class="nextstepaction"]
 > [Dodawanie wstępnie skompilowanej jednostki KeyPhrase](luis-quickstart-intent-and-key-phrase.md)

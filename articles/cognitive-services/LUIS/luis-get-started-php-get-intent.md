@@ -1,22 +1,23 @@
 ---
-title: Szybki start dotyczący analizowania tekstu w języku naturalnym w usłudze Language Understanding (LUIS) przy użyciu języka PHP — Cognitive Services — Azure Cognitive Services | Microsoft Docs
+title: Szybki start dla języka PHP — przewidywanie intencji — usługa LUIS
+titleSuffix: Azure Cognitive Services
 description: W tym przewodniku Szybki start użyjesz dostępnej publicznie aplikacji LUIS, aby określić intencję użytkownika w tekście konwersacji. Przy użyciu języka PHP wyślesz intencję użytkownika jako tekst do punktu końcowego przewidywania HTTP aplikacji publicznej. W punkcie końcowym usługa LUIS zastosuje model aplikacji publicznej, aby przeanalizować tekst w języku naturalnym pod kątem znaczenia, określając ogólną intencję i wyodrębniając dane dotyczące domeny podmiotu aplikacji.
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: language-understanding
 ms.topic: quickstart
-ms.date: 08/23/2018
+ms.date: 09/10/2018
 ms.author: diberry
-ms.openlocfilehash: 80d9371cc36ca9ab6b25e79a78e15b7445f0084d
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: 87c37de611056c5672ed0910afdd344325a0c6f7
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44160272"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47036899"
 ---
-# <a name="quickstart-analyze-text-using-php"></a>Szybki start: analiza tekstu przy użyciu języka PHP
+# <a name="quickstart-get-intent-using-php"></a>Szybki start: pobieranie intencji za pomocą języka PHP
 
 [!INCLUDE [Quickstart introduction for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-intro-para.md)]
 
@@ -35,11 +36,11 @@ ms.locfileid: "44160272"
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-get-key-para.md)]
 
-## <a name="analyze-text-with-browser"></a>Analiza tekstu przy użyciu przeglądarki
+## <a name="get-intent-with-browser"></a>Pobieranie intencji za pomocą przeglądarki
 
 [!INCLUDE [Use authoring key for endpoint](../../../includes/cognitive-services-luis-qs-endpoint-browser-para.md)]
 
-## <a name="analyze-text-with-php"></a>Analiza tekstu przy użyciu języka PHP 
+## <a name="get-intent-programmatically"></a>Pobieranie intencji w sposób programistyczny 
 
 Aby uzyskać dostęp do tych samych wyników, które zostały wyświetlone w oknie przeglądarki w poprzednim kroku, możesz użyć języka PHP. 
 

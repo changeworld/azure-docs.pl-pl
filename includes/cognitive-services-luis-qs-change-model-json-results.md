@@ -3,21 +3,21 @@ title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
-ms.openlocfilehash: e14f29593d588a8b13162b374372b723c50db8e9
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
-ms.translationtype: MT
+ms.openlocfilehash: ec178827a2f27a4566f509fe76b58e451329efd4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42920408"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47044149"
 ---
-`response` Tablicy dla Dodawanie wypowiedzi przykład wskazuje powodzenie lub Niepowodzenie dla każdego wypowiedź przykład za pomocą `hasError` właściwości. Następującą odpowiedź JSON pokazuje, że oba wypowiedzi zostały pomyślnie dodane. 
+Tablica `response` służąca do dodawania przykładowych wypowiedzi wskazuje sukces lub niepowodzenie dla każdej przykładowej wypowiedzi za pomocą właściwości `hasError`. Następująca odpowiedź JSON wskazuje, że obie wypowiedzi zostały pomyślnie dodane. 
 
 ```json
     "response": [
@@ -50,7 +50,7 @@ W poniższym kodzie w formacie JSON znajduje się wynik pomyślnego żądania uc
 }
 ```
 
-Następujący kod JSON zawiera wynik żądania zakończonego powodzeniem stanu w szkolenia. Każdy modelID jest intencji. Każdy intencji musi odbywać się na wszystkie wypowiedzi poprawne identyfikowanie wypowiedzi należeć do intencji, a także wypowiedzi, które nie należą do intencji. 
+W poniższym kodzie JSON znajduje się wynik pomyślnego żądania dotyczącego stanu szkolenia. Każda wartość modelID (identyfikator modelu) jest intencją. Każdą intencję należy wyszkolić przy użyciu wszystkich wypowiedzi, aby poprawnie identyfikować wypowiedzi należące do intencji, a także wypowiedzi nienależące do intencji. 
 
 ```JSON
 [

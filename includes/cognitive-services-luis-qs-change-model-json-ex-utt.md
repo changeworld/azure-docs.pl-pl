@@ -3,25 +3,25 @@ title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
-ms.openlocfilehash: 419f15901b665b43b850922f77bd32d7aac8d3a2
-ms.sourcegitcommit: ebb460ed4f1331feb56052ea84509c2d5e9bd65c
-ms.translationtype: MT
+ms.openlocfilehash: a1b0afce31d7202c38b049addf546350ff347719
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42920650"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47044172"
 ---
-Przykładowy plik wypowiedzi **utterances.json**, następuje po określonym formacie. 
+Przykładowy plik wypowiedzi **utterances.json** ma określony format. 
 
-`text` Pole zawiera tekst wypowiedź przykładu. `intentName` Pola musi odpowiadać nazwa intencji istniejącej aplikacji usługi LUIS. Pole `entityLabels` jest wymagane. Jeśli nie chcesz dodać etykietę dowolnej jednostki, należy podać pustą tablicę.
+Pole `text` zawiera tekst przykładowej wypowiedzi. Pole `intentName` musi odpowiadać nazwie istniejącej wypowiedzi w aplikacji LUIS. Pole `entityLabels` jest wymagane. Jeśli nie chcesz dodawać etykiet do żadnych jednostek, podaj pustą tablicę.
 
-Jeśli tablica entityLabels nie jest pusty, `startCharIndex` i `endCharIndex` należy oznaczyć jednostki określonych w `entityName` pola. Indeks jest liczony od zera, co oznacza, że 6 w górnym przykład odwołuje się do "S" z Seattle, bez spacji przed wielkiej litery S. Rozpoczyna się lub kończy się na etykiecie na spację w tekście, wywołanie interfejsu API, aby dodać wypowiedzi nie powiedzie się.
+Jeśli tablica entityLabels nie jest pusta, elementy `startCharIndex` i `endCharIndex` muszą oznaczać jednostkę określoną w polu `entityName`. Indeks jest liczony od zera, co oznacza, że wartość 6 w pierwszym przykładzie odwołuje się do litery „S” wyrazu Seattle, a nie do spacji przed wielką literą S. Jeśli etykieta w tekście będzie rozpoczynać się lub kończyć spacją, wywołanie interfejsu API w celu dodania wypowiedzi nie powiedzie się.
 
 ```JSON
 [

@@ -3,33 +3,33 @@ title: Plik dyrektywy include
 description: Plik dyrektywy include
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: luis
 ms.topic: include
 ms.custom: include file
 ms.date: 08/16/2018
 ms.author: diberry
-ms.openlocfilehash: dae56e05f01e83f05e75fdf378c0c50679d18728
-ms.sourcegitcommit: 58c5cd866ade5aac4354ea1fe8705cee2b50ba9f
-ms.translationtype: MT
+ms.openlocfilehash: e507a7c45e286473abe9b9e4365e80fb29eba2a4
+ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/24/2018
-ms.locfileid: "42820127"
+ms.lasthandoff: 09/24/2018
+ms.locfileid: "47044024"
 ---
-Aby dowiedzieć się, zwraca endpoint prognoz usługi LUIS, należy wyświetlić wyników prognoz w przeglądarce sieci web. Aby zbadać publiczne aplikację, konieczne będzie własny klucz i identyfikator aplikacji. Identyfikator publiczny aplikacji IoT `df67dcdb-c37d-46af-88e1-8b97951ca1c2`, jest dostarczana jako część adresu URL w pierwszym kroku.
+Aby zrozumieć, co zwraca punkt końcowy przewidywania usługi LUIS, wyświetl wynik przewidywania w przeglądarce internetowej. Aby wysyłać zapytania do aplikacji publicznej, potrzebny jest własny klucz i identyfikator aplikacji. Publiczny identyfikator aplikacji IoT (`df67dcdb-c37d-46af-88e1-8b97951ca1c2`) jest udostępniany jako część adresu URL w pierwszym kroku.
 
-Format adresu URL dla **UZYSKAĆ** żądania punktu końcowego jest:
+Żądanie **GET** wysyłane do punktu końcowego ma następujący format adresu URL:
 
 ```JSON
 https://<region>.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription-key=<YOUR-KEY>&q=<user-utterance>
 ```
 
-1. Punkt końcowy aplikacji IoT publicznej jest w następującym formacie: `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=<YOUR_KEY>&q=turn on the bedroom light`
+1. Punkt końcowy publicznej aplikacji IoT ma następujący format: `https://westus.api.cognitive.microsoft.com/luis/v2.0/apps/df67dcdb-c37d-46af-88e1-8b97951ca1c2?subscription-key=<YOUR_KEY>&q=turn on the bedroom light`
 
-    Skopiuj adres URL i Zastąp klucz dla wartości `<YOUR_KEY>`.
+    Skopiuj ten adres URL i zastąp wartość `<YOUR_KEY>` swoim kluczem.
 
-2. Wklej adres URL w oknie przeglądarki, a następnie naciśnij klawisz Enter. W przeglądarce pojawi się wynik JSON, który wskazuje, że usługa LUIS wykrywa `HomeAutomation.TurnOn` intencji jako najważniejsze intencji i `HomeAutomation.Room` jednostki z wartością `bedroom`.
+2. Wklej adres URL w oknie przeglądarki, a następnie naciśnij klawisz Enter. W przeglądarce zostanie wyświetlony wynik w formacie JSON, który wskazuje, że usługa LUIS wykryła intencję `HomeAutomation.TurnOn` jako główną intencję oraz jednostkę `HomeAutomation.Room` o wartości `bedroom`.
 
     ```JSON
     {
@@ -50,7 +50,7 @@ https://<region>.api.cognitive.microsoft.com/luis/v2.0/apps/<appID>?subscription
     }
     ```
 
-3. Zmień wartość parametru `q=` w adresie URL na wartość `turn off the living room light`, a następnie naciśnij klawisz Enter. Wynik teraz oznacza, że usługa LUIS `HomeAutomation.TurnOff` intencji jako najważniejsze intencji i `HomeAutomation.Room` jednostki z wartością `living room`. 
+3. Zmień wartość parametru `q=` w adresie URL na wartość `turn off the living room light`, a następnie naciśnij klawisz Enter. Wynik wskazuje teraz, że aplikacja LUIS wykryła intencję `HomeAutomation.TurnOff` jako główną intencję oraz jednostkę `HomeAutomation.Room` o wartości `living room`. 
 
     ```JSON
     {

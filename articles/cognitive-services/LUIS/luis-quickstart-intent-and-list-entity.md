@@ -1,75 +1,63 @@
 ---
-title: Samouczek dotyczący tworzenia aplikacji LUIS w celu uzyskania tekstu dokładnie pasującego do danych na liście — Azure | Microsoft Docs
-description: Z tego samouczka dowiesz się, jak utworzyć prostą aplikację LUIS, używając intencji i jednostek listy, aby wyodrębnić dane w tym przewodniku Szybki start.
+title: 'Samouczek 4: Dokładne dopasowanie tekstu — jednostka listy usługi LUIS'
+titleSuffix: Azure Cognitive Services
+description: Pobieraj dane, które są zgodne ze wstępnie zdefiniowaną listą elementów. Każdy element na liście może mieć synonimy, które są również dokładnie zgodne
 services: cognitive-services
 author: diberry
-manager: cjgronlund
+manager: cgronlun
 ms.service: cognitive-services
-ms.component: luis
+ms.component: language-understanding
 ms.topic: tutorial
-ms.date: 08/02/2018
+ms.date: 09/09/2018
 ms.author: diberry
-ms.openlocfilehash: 04411f415b7cfe07d893c43e758bd2a4a226472a
-ms.sourcegitcommit: 2d961702f23e63ee63eddf52086e0c8573aec8dd
+ms.openlocfilehash: b4fdf094653a4b16dead6397fe8e1a9f1a0258b9
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44162202"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47162087"
 ---
-# <a name="tutorial-4-add-list-entity"></a>Samouczek 4. Dodawanie jednostki listy
-W tym samouczku utworzysz aplikację, która pokazuje, jak uzyskać dane zgodne ze wstępnie zdefiniowaną listą. 
+# <a name="tutorial-4-extract-exact-text-matches"></a>Samouczek 4: Wyodrębnianie dokładnych dopasowań tekstu
+W tym samouczku dowiesz się, jak uzyskać dane zgodne ze wstępnie zdefiniowaną listą elementów. Każdy element na liście może zawierać listę synonimów. W przypadku aplikacji Human Resources pracownik może być identyfikowany za pomocą kilku kluczowych informacji, takich jak nazwa, adres e-mail, numer telefonu i identyfikator TID. 
 
-<!-- green checkmark -->
-> [!div class="checklist"]
-> * Omówienie jednostek listy 
-> * Tworzenie nowej aplikacji LUIS dla domeny zasobów ludzkich (HR, Human Resources) z intencją MoveEmployee
-> * Dodawanie jednostki listy w celu wyodrębnienia pracowników z wypowiedzi
-> * Uczenie i publikowanie aplikacji
-> * Wysyłanie zapytań do punktu końcowego aplikacji w celu wyświetlenia odpowiedzi JSON usługi LUIS
+Aplikacja Human Resources musi określić, który pracownik jest przenoszony z jednego budynku do innego. W przypadku wypowiedzi o przeniesieniu pracownika usługa LUIS określa intencję i wyodrębnia pracownika, aby aplikacja kliencka mogła utworzyć standardowe polecenie przeniesienia pracownika.
 
-[!INCLUDE [LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
-
-## <a name="before-you-begin"></a>Przed rozpoczęciem
-Jeśli nie masz aplikacji Human Resources z samouczka dotyczącego [jednostki wyrażenia regularnego](luis-quickstart-intents-regex-entity.md), [zaimportuj](luis-how-to-start-new-app.md#import-new-app) kod JSON do nowej aplikacji w witrynie internetowej usługi [LUIS](luis-reference-regions.md#luis-website). Aplikacja do zaimportowania znajduje się w repozytorium [LUIS-Samples](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/quickstarts/custom-domain-regex-HumanResources.json) usługi Github.
-
-Jeśli chcesz zachować oryginalną aplikację Human Resources, sklonuj tę wersję na stronie [Settings](luis-how-to-manage-versions.md#clone-a-version) (Ustawienia) i nadaj jej nazwę `list`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. 
-
-## <a name="purpose-of-the-list-entity"></a>Przeznaczenie jednostki listy
-Ta aplikacja prognozuje wypowiedzi dotyczące przenoszenia pracownika z jednego budynku do innego. Ta aplikacja używa jednostki listy do wyodrębnienia pracownika. Do pracownika można odwoływać się przy użyciu nazwy, numeru telefonu, adresu e-mail lub federalnego numer ubezpieczenia społecznego (USA). 
-
-Jednostka listy może zawierać wiele elementów z synonimami każdego z nich. W małej lub średniej firmie jednostka listy służy do wyodrębniania informacji o pracownikach. 
-
-Nazwa kanoniczna każdego elementu to numer pracownika. Przykłady synonimów w tej domenie: 
-
-|Cel synonimu|Wartość synonimu|
-|--|--|
-|Name (Nazwa)|John W. Smith|
-|Email address (Adres e-mail)|john.w.smith@mycompany.com|
-|Phone extension (Numer wewnętrzny)|x12345|
-|Numer osobistego telefonu komórkowego|425-555-1212|
-|Federalny numer ubezpieczenia społecznego (USA)|123-45-6789|
+Ta aplikacja używa jednostki listy do wyodrębnienia pracownika. Do pracownika można odwoływać się przy użyciu nazwy, wewnętrznego numeru telefonu służbowego,numeru telefonu komórkowego, adresu e-mail lub federalnego numer ubezpieczenia społecznego (USA). 
 
 Jednostka listy jest dobrym rozwiązaniem w przypadku tego typu danych, jeśli:
 
 * Wartości danych należą do znanego zestawu.
 * Zestaw nie przekracza maksymalnych [granic](luis-boundaries.md) usługi LUIS dla tego typu jednostki.
-* Tekst w wypowiedzi to dokładne dopasowanie synonimu. 
+* Tekst w wypowiedzi to dokładne dopasowanie synonimu lub nazwy kanonicznej. 
 
-Usługa LUIS wyodrębnia pracownika w taki sposób, że standardowe zlecenie przeniesienia pracownika można utworzyć w aplikacji klienta.
-<!--
-## Example utterances
-Simple example utterances for a `MoveEmployee` inent:
+**Ten samouczek zawiera informacje na temat wykonywania następujących czynności:**
 
-```
-move John W. Smith from B-1234 to H-4452
-mv john.w.smith@mycompany from office b-1234 to office h-4452
+<!-- green checkmark -->
+> [!div class="checklist"]
+> * Korzystanie z istniejącej aplikacji samouczka
+> * Dodawanie intencji MoveEmployee
+> * Dodawanie jednostki listy 
+> * Szkolenie 
+> * Publikowanie
+> * Pobieranie intencji i jednostek z punktu końcowego
 
-```
--->
+[!include[LUIS Free account](../../../includes/cognitive-services-luis-free-key-short.md)]
 
-## <a name="add-moveemployee-intent"></a>Dodawanie intencji MoveEmployee
+## <a name="use-existing-app"></a>Korzystanie z istniejącej aplikacji
+Przejdź do aplikacji o nazwie **HumanResources** utworzonej w ostatnim samouczku. 
 
-1. Upewnij się, że aplikacja Human Resources znajduje się w sekcji **Build** (Kompilacja) aplikacji LUIS. Możesz przejść do tej sekcji, wybierając pozycję **Build** (Kompilacja) na górnym pasku menu po prawej stronie. 
+Jeśli nie masz aplikacji HumanResources z poprzedniego samouczka, wykonaj następujące kroki:
+
+1.  Pobierz i zapisz [plik JSON aplikacji](https://github.com/Microsoft/LUIS-Samples/blob/master/documentation-samples/tutorials/custom-domain-regex-HumanResources.json).
+
+2. Zaimportuj plik JSON do nowej aplikacji.
+
+3. W sekcji **Manage** (Zarządzanie) na karcie **Versions** (Wersje) sklonuj wersję i nadaj jej nazwę `list`. Klonowanie to dobry sposób na testowanie różnych funkcji usługi LUIS bez wpływu na oryginalną wersję aplikacji. Ponieważ nazwa wersji jest używana jako część trasy adresu URL, nie może ona zawierać żadnych znaków, które są nieprawidłowe w adresie URL. 
+
+
+## <a name="moveemployee-intent"></a>Intencja MoveEmployee
+
+1. [!include[Start in Build section](../../../includes/cognitive-services-luis-tutorial-build-section.md)]
 
 2. Wybierz pozycję **Create new intent** (Utwórz nową intencję). 
 
@@ -94,8 +82,23 @@ mv john.w.smith@mycompany from office b-1234 to office h-4452
 
     [ ![Zrzut ekranu przedstawiający stronę Intent (Intencja) z wyróżnionymi nowymi wypowiedziami](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png) ](./media/luis-quickstart-intent-and-list-entity/hr-enter-utterances.png#lightbox)
 
-## <a name="create-an-employee-list-entity"></a>Tworzenie jednostki listy pracowników
-Teraz, gdy intencja **MoveEmployee** ma wypowiedzi, usługa LUIS musi zrozumieć, czym jest pracownik. 
+    Należy pamiętać, że liczba i jednostka datetimeV2 zostały dodane w poprzednim samouczku i zostaną automatycznie oznaczone etykietą, kiedy zostaną znalezione w dowolnej przykładowej wypowiedzi.
+
+    [!include[Do not use too few utterances](../../../includes/cognitive-services-luis-too-few-example-utterances.md)]  
+
+## <a name="employee-list-entity"></a>Jednostka listy pracowników
+Teraz, gdy intencja **MoveEmployee** ma przykładowe wypowiedzi, usługa LUIS musi zrozumieć, czym jest pracownik. 
+
+Podstawowa nazwa _kanoniczna_ każdego elementu to numer pracownika. Dla tej domeny przykładami synonimów każdej nazwy kanonicznej są: 
+
+|Cel synonimu|Wartość synonimu|
+|--|--|
+|Name (Nazwa)|John W. Smith|
+|Email address (Adres e-mail)|john.w.smith@mycompany.com|
+|Phone extension (Numer wewnętrzny)|x12345|
+|Numer osobistego telefonu komórkowego|425-555-1212|
+|Federalny numer ubezpieczenia społecznego (USA)|123-45-6789|
+
 
 1. Wybierz pozycję **Entities** (Jednostki) w lewym panelu.
 
@@ -133,15 +136,15 @@ Teraz, gdy intencja **MoveEmployee** ma wypowiedzi, usługa LUIS musi zrozumieć
     |Numer osobistego telefonu komórkowego|425-555-0000|
     |Federalny numer ubezpieczenia społecznego (USA)|234-56-7891|
 
-## <a name="train-the-luis-app"></a>Uczenie aplikacji LUIS
+## <a name="train"></a>Szkolenie
 
 [!INCLUDE [LUIS How to Train steps](../../../includes/cognitive-services-luis-tutorial-how-to-train.md)]
 
-## <a name="publish-the-app-to-get-the-endpoint-url"></a>Publikowanie aplikacji w celu uzyskania adresu URL punktu końcowego
+## <a name="publish"></a>Publikowanie
 
 [!INCLUDE [LUIS How to Publish steps](../../../includes/cognitive-services-luis-tutorial-how-to-publish.md)]
 
-## <a name="query-the-endpoint-with-a-different-utterance"></a>Wysyłanie zapytania do punktu końcowego za pomocą różnych wypowiedzi
+## <a name="get-intent-and-entities-from-endpoint"></a>Pobieranie intencji i jednostek z punktu końcowego
 
 1. [!INCLUDE [LUIS How to get endpoint first step](../../../includes/cognitive-services-luis-tutorial-how-to-get-endpoint.md)] 
 
@@ -259,22 +262,12 @@ Teraz, gdy intencja **MoveEmployee** ma wypowiedzi, usługa LUIS musi zrozumieć
 
   Pracownik został znaleziony i zwrócony jako typ `Employee` o rozpoznanej wartości `Employee-24612`.
 
-## <a name="where-is-the-natural-language-processing-in-the-list-entity"></a>Gdzie jest wykonywane przetwarzanie języka naturalnego w jednostce listy? 
-Jednostka listy jest dokładnym dopasowaniem tekstu, dlatego nie opiera się na przetwarzaniu języka naturalnego (ani na uczeniu maszynowym). Aplikacja LUIS korzysta z przetwarzania języka naturalnego (lub uczenia maszynowego), aby wybrać właściwą najwyżej ocenianą intencję. Ponadto wypowiedź może zawierać kilka jednostek lub nawet kilka typów jednostek. Każda wypowiedź jest przetwarzana pod kątem wszystkich jednostek w aplikacji, w tym jednostek przetwarzania języka naturalnego (nauczonych maszynowo).
-
-## <a name="what-has-this-luis-app-accomplished"></a>Co wykonała ta aplikacja LUIS?
-Ta aplikacja z jednostką listy wyodrębniła właściwego pracownika. 
-
-Twój czatbot ma teraz wystarczająco dużo informacji, aby określić akcję główną, `MoveEmployee`, i pracownika do przeniesienia. 
-
-## <a name="where-is-this-luis-data-used"></a>Gdzie są używane te dane usługi LUIS? 
-Usługa LUIS skończyła obsługiwać to żądanie. Aplikacja wywołująca, taka jak czatbot, może pobrać wynik topScoringIntent (najwyżej oceniana intencja) oraz dane z jednostki, aby wykonać kolejny krok. Usługa LUIS nie wykonuje tej pracy programowej dla bota ani dla aplikacji wywołującej. Usługa LUIS określa jedynie intencję użytkownika. 
-
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
 ## <a name="next-steps"></a>Następne kroki
+W tym samouczku utworzono nową intencję, dodano przykładowe wypowiedzi, a następnie utworzono jednostkę listy, aby wyodrębnić z wypowiedzi dokładne dopasowania tekstu. Po wyszkoleniu i opublikowaniu aplikacji zapytanie do punktu końcowego zidentyfikowało intencję i zwróciło wyodrębnione dane.
 
 > [!div class="nextstepaction"]
 > [Dodawanie jednostki hierarchicznej do aplikacji](luis-quickstart-intent-and-hier-entity.md)

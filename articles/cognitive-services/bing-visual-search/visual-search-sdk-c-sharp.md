@@ -1,54 +1,54 @@
 ---
-title: Wyszukiwanie wizualne zestawu SDK języka C# Szybki Start | Dokumentacja firmy Microsoft
-description: Ustawienia wyszukiwania wizualnego aplikację konsolową zestawu SDK C#.
+title: 'Szybki start: korzystanie z zestawu Bing Visual Search SDK, C#'
 titleSuffix: Azure Cognitive Services
+description: Konfigurowanie aplikacji konsoli zestawu Visual Search SDK dla języka C#.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-web-search
-ms.topic: article
+ms.topic: quickstart
 ms.date: 05/16/2018
 ms.author: v-gedod
-ms.openlocfilehash: e9b93c46cf0702dc58398e247fef79c3f31bb50c
-ms.sourcegitcommit: 248c2a76b0ab8c3b883326422e33c61bd2735c6c
-ms.translationtype: MT
+ms.openlocfilehash: 938768ad366611b8651adc3d554c44c16a3830ef
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/23/2018
-ms.locfileid: "39213109"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47224532"
 ---
-# <a name="visual-search-sdk-c-quickstart"></a>Wyszukiwanie wizualne zestawu SDK języka C# Szybki Start
+# <a name="quickstart-bing-visual-search-sdk-c"></a>Szybki start: zestaw Bing Visual Search SDK dla języka C#
 
-Bing wyszukiwania zestawu SDK programu Visual korzysta z funkcji interfejsu API REST dla żądania sieci web i wyniki analizy.
-[Źródła kodu dla języka C# Bing Visual Search przykładowych zestawach SDK](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVisualSearch) jest dostępny w repozytorium.
+Zestaw Bing Visual Search SDK używa funkcji interfejsu API REST na potrzeby żądań internetowych i wyników analiz.
+[Kod źródłowy przykładów zestawu Bing Visual Search SDK dla języka C#](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7/BingVisualSearch) jest dostępny w usłudze Git Hub.
 
-Scenariusze kodu są udokumentowane pod następującymi pozycjami:
-* [Wyszukiwanie wizualne klienta](#client)
-* [Aplikacja konsolowa ukończone](#complete)
-* [Obraz binarny wpis z cropArea](#binary-crop)
+Scenariusze kodu są udokumentowane w następujących sekcjach:
+* [Klient wyszukiwania wizualnego](#client)
+* [Kompletna aplikacja konsolowa](#complete)
+* [Wpis pliku binarnego obrazu z obiektem cropArea](#binary-crop)
 * [Parametr KnowledgeRequest](#knowledge-req)
-* [Tagi, akcje i actionType](#tags-actions)
-* [Liczba tagów, liczbę czynności i pierwszego obiektu actionType](#num-tags-actions)
+* [Tagi, akcje i element actionType](#tags-actions)
+* [Liczba tagów, liczba akcji i pierwszy element actionType](#num-tags-actions)
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
-* Program Visual Studio 2017. Jeśli to konieczne, możesz pobrać wersję bezpłatna wersja community w tym miejscu: https://www.visualstudio.com/vs/community/.
-* Klucz interfejsu API usług Cognitive Services jest wymagany do uwierzytelniania wywołań zestawu SDK. Zaloguj się w celu [bezpłatnej wersji próbnej klucz](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7). Klucz wersji próbnej trwa przez siedem dni, za pomocą jednego wywołania na sekundę. W scenariuszu produkcji [kupić klucz dostępu](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Zobacz też [informacje o cenach](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
-* Możliwość uruchamiania programu .NET core SDK, aplikacji programu .net core 1.1. Można uzyskać CORE, Framework i środowiska uruchomieniowego, które znajdują się w tym miejscu: https://www.microsoft.com/net/download/.
+* Program Visual Studio 2017. W razie potrzeby możesz pobrać bezpłatną wersję dla społeczności z tego miejsca: https://www.visualstudio.com/vs/community/.
+* Klucz interfejsu API usług Cognitive Services jest wymagany do uwierzytelniania wywołań zestawu SDK. Utwórz konto, aby otrzymać [klucz bezpłatnej wersji próbnej](https://azure.microsoft.com/try/cognitive-services/?api=search-api-v7). Klucz wersji próbnej obowiązuje przez siedem dni i oferuje jedno wywołanie na sekundę. W przypadku scenariusza produkcyjnego [kup klucz dostępu](https://portal.azure.com/#create/Microsoft.CognitiveServicesBingSearch-v7). Zobacz również [informacje o cenach](https://azure.microsoft.com/pricing/details/cognitive-services/search-api/visual/).
+* Możliwość uruchamiania zestawu .NET Core SDK i aplikacji platformy .NET Core 1.1. Rozwiązanie CORE, platformę i środowisko uruchomieniowe można pobrać z następującego miejsca: https://www.microsoft.com/net/download/.
 
 ## <a name="application-dependencies"></a>Zależności aplikacji
 
-Aby skonfigurować aplikację konsoli przy użyciu zestawu SDK wyszukiwania w sieci Web Bing, przejdź do `Manage NuGet Packages` opcji z poziomu Eksploratora rozwiązań w programie Visual Studio.  Dodaj `Microsoft.Azure.CognitiveServices.Search.VisualSearch` pakietu.
+Aby skonfigurować aplikację konsolową przy użyciu zestawu Bing Web Search SDK, przejdź do opcji `Manage NuGet Packages` w Eksploratorze rozwiązań w programie Visual Studio.  Dodaj pakiet `Microsoft.Azure.CognitiveServices.Search.VisualSearch`.
 
-Instalowanie [pakietu NuGet zestawu SDK z wyszukiwania w sieci Web](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VisualSearch/1.0) instaluje również zależności, w tym:
+Zainstalowanie [pakietu NuGet Web Search SDK](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.VisualSearch/1.0) spowoduje również zainstalowanie zależności, w tym:
 * Microsoft.Rest.ClientRuntime
 * Microsoft.Rest.ClientRuntime.Azure
 * Newtonsoft.Json
 
 <a name="client"></a>
 
-## <a name="visual-search-client"></a>Wizualne klienta wyszukiwania
-Aby utworzyć wystąpienie `VisualSearchAPI` klienta, dodawanie dyrektyw using:
+## <a name="visual-search-client"></a>Klient wyszukiwania wizualnego
+Aby utworzyć wystąpienie klienta `VisualSearchAPI`, dodaj dyrektywy using:
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.Search.VisualSearch;
@@ -69,7 +69,7 @@ Użyj klienta do wyszukiwania obrazów:
  var visualSearchResults = client.Images.VisualSearchMethodAsync(image: stream, knowledgeRequest: (string)null).Result;
 ```
 
-Analizowanie wyników poprzedniej kwerendy:
+Przeanalizuj wyniki poprzedniego zapytania:
 
 ```csharp
 // Visual Search results
@@ -103,9 +103,9 @@ if (visualSearchResults.Tags.Count > 0)
 
 <a name="complete"></a> 
 
-## <a name="complete-console-application"></a>Aplikacja konsolowa ukończone
+## <a name="complete-console-application"></a>Kompletna aplikacja konsolowa
 
-Następująca aplikacja konsoli wykonuje zapytanie uprzednio zdefiniowany i analizuje wyniki:
+Następująca aplikacja konsolowa wykonuje wcześniej zdefiniowane zapytanie i analizuje wyniki:
 
 ```csharp
 using Microsoft.Azure.CognitiveServices.Search.VisualSearch;
@@ -200,13 +200,13 @@ namespace VisualSrchSDK
 }
 ```
 
-Przykłady wyszukiwania Bing pokazują różne funkcje zestawu SDK.  Dodaj następujące funkcje do uprzednio zdefiniowany `VisualSrchSDK` klasy.
+Przykłady wyszukiwania Bing pokazują różne funkcje zestawu SDK.  Dodaj poniższe funkcje do zdefiniowanej wcześniej klasy `VisualSrchSDK`.
 
 <a name="binary-crop"></a>
 
-## <a name="image-binary-post-with-croparea"></a>Obraz binarny wpis z cropArea
+## <a name="image-binary-post-with-croparea"></a>Wpis pliku binarnego obrazu z obiektem cropArea
 
-Poniższy kod wysyła obrazu binarnego w treści żądania post, wraz z obiektem cropArea.  Następnie drukuje imageInsightsToken, liczba tagów, liczbę akcji i actionType pierwszy.
+Poniższy kod wysyła plik binarny obrazu w treści żądania wpis wraz z obiektem cropArea.  Następnie wyświetla on token imageInsightsToken, liczbę tagów, liczbę akcji i pierwszy element actionType.
 
 ```csharp
 public static void VisualSearchImageBinaryWithCropArea(string subscriptionKey)
@@ -280,7 +280,7 @@ public static void VisualSearchImageBinaryWithCropArea(string subscriptionKey)
 
 ## <a name="knowledgerequest-parameter"></a>Parametr KnowledgeRequest
 
-Poniższy kod wysyła adres url obrazu w `knowledgeRequest` parametru, wraz z \"witryny: www.bing.com\" filtru.  A następnie wyświetla `imageInsightsToken`, liczba tagów, liczbę akcji i actionType pierwszy.
+Poniższy kod wysyła adres URL obrazu w parametrze `knowledgeRequest` razem z filtrem witryny \"site:www.bing.com\".  Następnie wyświetla on token `imageInsightsToken`, liczbę tagów, liczbę akcji i pierwszy element actionType.
 
 ```csharp
 public static void VisualSearchUrlWithFilters(string subscriptionKey)
@@ -353,9 +353,9 @@ public static void VisualSearchUrlWithFilters(string subscriptionKey)
 
 <a name="tags-actions"></a>
 
-## <a name="tags-actions-and-actiontype"></a>Tagi, akcje i actionType
+## <a name="tags-actions-and-actiontype"></a>Tagi, akcje i element actionType
 
-Poniższy kod wysyła token insights obrazu w parametrze knowledgeRequest wraz z obiektem cropArea.  Następnie drukuje imageInsightsToken, liczba tagów, liczbę akcji i actionType pierwszy.
+Poniższy kod wysyła token szczegółowych informacji o obrazie w parametrze knowledgeRequest razem z obiektem cropArea.  Następnie wyświetla on token imageInsightsToken, liczbę tagów, liczbę akcji i pierwszy element actionType.
 
 ```csharp
 public static void VisualSearchInsightsTokenWithCropArea(string subscriptionKey)
@@ -427,9 +427,9 @@ public static void VisualSearchInsightsTokenWithCropArea(string subscriptionKey)
 
 <a name="num-tags-actions"></a>
 
-## <a name="number-of-tags-number-of-actions-and-first-actiontype"></a>Liczba tagów, liczbę czynności i pierwszego obiektu actionType
+## <a name="number-of-tags-number-of-actions-and-first-actiontype"></a>Liczba tagów, liczba akcji i pierwszy element actionType
 
-Poniższy kod wysyła adres url obrazu w parametrze knowledgeRequest wraz z obszaru przycięcia.  Następnie drukuje imageInsightsToken, liczba tagów, liczbę akcji i actionType pierwszy.
+Poniższy kod wysyła adres URL obrazu w parametrze knowledgeRequest razem z obszarem przycinania.  Następnie wyświetla on token imageInsightsToken, liczbę tagów, liczbę akcji i pierwszy element actionType.
 
 ```csharp
 public static void VisualSearchUrlWithJson(string subscriptionKey)
@@ -512,6 +512,6 @@ public static void VisualSearchUrlWithJson(string subscriptionKey)
 }
 ```
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-[Cognitive Services .NET SDK samples](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7).
+[Cognitive Services .NET SDK samples (Przykłady zestawów SDK platformy .NET w usługach Cognitive Services)](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7).
