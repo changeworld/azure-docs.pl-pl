@@ -9,12 +9,12 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 04/20/2018
 ms.author: jasonh
-ms.openlocfilehash: 3dea97d674c2027307ac7eb7cae34b6664e40b0b
-ms.sourcegitcommit: f6e2a03076679d53b550a24828141c4fb978dcf9
+ms.openlocfilehash: 29d6aa99b972dacb12ffb016eabb3a46afab7c7a
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/27/2018
-ms.locfileid: "43108124"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804076"
 ---
 # <a name="ports-used-by-hadoop-services-on-hdinsight"></a>Porty używane przez usługi Hadoop w HDInsight
 
@@ -37,7 +37,7 @@ Aby przyłączyć dodatkowe maszyny do sieci wirtualnej, należy najpierw utworz
 Wszystkie węzły w klastrze usługi HDInsight znajdują się w usłudze Azure Virtual Network, a nie są bezpośrednio dostępne z Internetu. Publiczne brama zapewnia dostęp do następujących portów, które są wspólne dla wszystkich typów klastrów HDInsight przez internet.
 
 | Usługa | Port | Protokół | Opis |
-| --- | --- | --- | --- | --- |
+| --- | --- | --- | --- |
 | sshd |22 |Protokół SSH |Klientom nawiązanie połączenia sshd na podstawowym węzłem głównym. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | sshd |22 |Protokół SSH |Klientom nawiązanie połączenia sshd na węźle krawędzi. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |
 | sshd |23 |Protokół SSH |Łączy się sshd na dodatkowy węzeł główny z klientów. Aby uzyskać więcej informacji, zobacz [Używanie protokołu SSH w usłudze HDInsight](hdinsight-hadoop-linux-use-ssh-unix.md). |

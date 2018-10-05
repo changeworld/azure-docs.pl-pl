@@ -10,17 +10,20 @@ ms.topic: conceptual
 ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
-ms.date: 09/19/2018
-ms.openlocfilehash: 68746874ec01f44055421f0033acd0d485e1d230
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.date: 10/04/2018
+ms.openlocfilehash: fd747eb66a91a1ac9fe3b1c0d2ef7ac50a08faea
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586091"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801124"
 ---
 # <a name="manage-azure-sql-database-long-term-backup-retention"></a>Zarządzanie długotrwałym przechowywaniem kopii zapasowych usługi Azure SQL Database
 
-Można skonfigurować usługi Azure SQL database za pomocą [długoterminowego przechowywania kopii zapasowych](sql-database-long-term-retention.md) zasad (od lewej do prawej) automatycznie przechowywania kopii zapasowych w magazynie obiektów blob platformy Azure przez maksymalnie 10 lat. Można odzyskać bazę danych przy użyciu tych kopii zapasowych przy użyciu witryny Azure portal lub programu PowerShell.
+W usłudze Azure SQL Database, możesz skonfigurować jeden lub bazy danych w puli za pomocą [długoterminowego przechowywania kopii zapasowych](sql-database-long-term-retention.md) zasad (od lewej do prawej) automatycznie przechowywania kopii zapasowych w magazynie obiektów blob platformy Azure przez maksymalnie 10 lat. Można odzyskać bazę danych przy użyciu tych kopii zapasowych przy użyciu witryny Azure portal lub programu PowerShell.
+
+> [!IMPORTANT]
+> [Wystąpienie usługi Azure SQL Database Managed](sql-database-managed-instance.md) nie obsługuje obecnie długoterminowego przechowywania kopii zapasowych.
 
 ## <a name="use-the-azure-portal-to-configure-long-term-retention-policies-and-restore-backups"></a>Użyj witryny Azure portal, aby skonfigurować długoterminowe zasady przechowywania i przywracanie kopii zapasowych
 Poniższe sekcje pokazują, jak skonfigurować długoterminowe przechowywanie, wyświetlanie kopii zapasowych podlegających długoterminowemu przechowywaniu i długoterminowym przechowywaniu kopii zapasowej za pomocą witryny Azure portal.

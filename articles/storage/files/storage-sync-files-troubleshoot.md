@@ -8,12 +8,12 @@ ms.topic: article
 ms.date: 09/06/2018
 ms.author: jeffpatt
 ms.component: files
-ms.openlocfilehash: ef70d3d3dd2a806ea978be8e996b7d5ba0fbc96b
-ms.sourcegitcommit: 5843352f71f756458ba84c31f4b66b6a082e53df
+ms.openlocfilehash: 2b2d817c85528ef56fd0baef80d17c7cd6eae543
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/01/2018
-ms.locfileid: "47586363"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802240"
 ---
 # <a name="troubleshoot-azure-file-sync"></a>Rozwiązywanie problemów z usługą Azure File Sync
 Usługa Azure File Sync umożliwia scentralizowanie udziałów plików Twojej organizacji w usłudze Azure Files przy jednoczesnym zachowaniu elastyczności, wydajności i zgodności lokalnego serwera plików. Usługa Azure File Sync przekształca systemu Windows Server w szybką pamięć podręczną udziału plików platformy Azure. Można użyć dowolnego protokołu, który jest dostępny w systemie Windows Server oraz dostęp do danych lokalnie, w tym protokołu SMB, systemu plików NFS i protokołu FTPS. Może mieć dowolną liczbę pamięci podręcznych potrzebnych na całym świecie.
@@ -319,6 +319,16 @@ Ten błąd występuje, ponieważ agent usługi Azure File Sync nie może uzyska�
 | **Wymagana korekta** | Yes |
 
 Ten błąd występuje, gdy występuje problem z wewnętrznej bazy danych używane przez usługę Azure File Sync. Jeśli wystąpi ten problem, Utwórz żądanie obsługi, a firma Microsoft z Tobą, aby pomóc rozwiązać ten problem.
+
+<a id="-2134364053"></a>**Wersja agenta usługi Azure File Sync, które są zainstalowane na serwerze nie jest obsługiwana.**  
+| | |
+|-|-|
+| **HRESULT** | 0x80C8306B |
+| **HRESULT (dziesiętna)** | -2134364053 |
+| **Ciąg błędu** | ECS_E_AGENT_VERSION_BLOCKED |
+| **Wymagana korekta** | Yes |
+
+Ten błąd występuje, jeśli nie jest obsługiwana przez wersję agenta usługi Azure File Sync, które są zainstalowane na serwerze. Aby rozwiązać ten problem, [uaktualnienia]( https://docs.microsoft.com/en-us/azure/storage/files/storage-files-release-notes#upgrade-paths) do [obsługiwana wersja agenta]( https://docs.microsoft.com/en-us/azure/storage/files/storage-files-release-notes#supported-versions).
 
 <a id="-2134351810"></a>**Osiągnięto limit magazynowania udziału plików platformy Azure.**  
 | | |

@@ -2,7 +2,7 @@
 title: Migrowanie użytkowników licencji użytkownika do licencjonowania opartego na grupy w usłudze Azure Active Directory | Dokumentacja firmy Microsoft
 description: Jak przełączyć się z licencji użytkownika do licencjonowania opartego na grupach, przy użyciu usługi Azure Active Directory
 services: active-directory
-keywords: Licencjonowanie usługi Azure AD
+keywords: Zarządzanie licencjonowaniem w usłudze Azure AD
 documentationcenter: ''
 author: curtand
 manager: mtillman
@@ -14,12 +14,12 @@ ms.component: users-groups-roles
 ms.date: 01/14/2018
 ms.author: curtand
 ms.custom: seohack1
-ms.openlocfilehash: 10851990f26124ae89945d4b56058115cacb81ee
-ms.sourcegitcommit: 0b4da003fc0063c6232f795d6b67fa8101695b61
+ms.openlocfilehash: 5beee2fae518fec23b65ff05a79281e0fc3f1417
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/05/2018
-ms.locfileid: "37862059"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48800744"
 ---
 # <a name="how-to-add-licensed-users-to-a-group-for-licensing-in-azure-active-directory"></a>Jak dodać licencjonowanych użytkowników do grupy licencjonowania w usłudze Azure Active Directory
 
@@ -47,7 +47,7 @@ Ważne jest, aby pamiętać o to, że należy unikać sytuacji, w których migra
 
 6. Rozważ usunięcie oryginalnego przypisań bezpośrednich; Można to zrobić w stopniowo, "etapami", najpierw monitorować wyniki dla podzbioru użytkowników.
 
-  Można pozostawić oryginalny przypisań bezpośrednich na użytkowników, ale gdy użytkownicy opuszczają ich grup licencji, nadal zachowa oryginalnej licencji, który ma prawdopodobnie wartość chcesz, że chcesz użyć.
+  Można pozostawić oryginalny przypisań bezpośrednich, użytkownicy, ale gdy użytkownicy opuszczają ich grup licencji nadal zachowa oryginalnej licencji, który ma prawdopodobnie nie ma.
 
 ## <a name="an-example"></a>Przykład
 
@@ -87,4 +87,4 @@ Aby dowiedzieć się, jak inne scenariusze dotyczące zarządzania licencjami za
 * [Przypisywanie licencji do grupy w usłudze Azure Active Directory](licensing-groups-assign.md)
 * [Co to jest oparte na grupach Licencjonowanie w usłudze Azure Active Directory?](../fundamentals/active-directory-licensing-whatis-azure-portal.md)
 * [Identyfikowanie i rozwiązywanie problemów z licencją dla grupy w usłudze Azure Active Directory](licensing-groups-resolve-problems.md)
-* [Usługa Azure Active Directory na podstawie grupy licencjonowania dodatkowe scenariusze](licensing-group-advanced.md)
+* [Dodatkowe scenariusze licencjonowania opartego na grupach w usłudze Azure Active Directory](licensing-group-advanced.md)

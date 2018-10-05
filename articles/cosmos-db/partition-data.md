@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 07/26/2018
 ms.author: andrl
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: d53106efa4e3761a497e67181546c8ec09fd880c
-ms.sourcegitcommit: ebd06cee3e78674ba9e6764ddc889fc5948060c4
+ms.openlocfilehash: c35082d107b538e7e908162c00facafecc406bc6
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/07/2018
-ms.locfileid: "44055509"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785651"
 ---
 # <a name="partition-and-scale-in-azure-cosmos-db"></a>Partycja i skali w usłudze Azure Cosmos DB
 
@@ -32,7 +32,7 @@ Usługa Azure Cosmos DB zapewnia kontenery do przechowywania danych o nazwie kol
 
 ### <a name="physical-partition"></a>Partycję fizyczną
 
-A *fizycznych* partycja jest stałą zarezerwowanych magazynów opartych na dyskach SSD w połączeniu z zmienną ilość zasobów obliczeniowych (procesora CPU i pamięci). Każdą fizyczną partycję jest replikowana w celu zapewnienia wysokiej dostępności. Każdy zestaw kontenerów może współużytkować jedną lub więcej partycji fizycznych. Zarządzanie fizyczną partycję jest w pełni zarządzana przez usługę Azure Cosmos DB, a nie masz do pisania złożonego kodu lub zarządzania partycjami. Kontenery usługi Azure Cosmos DB są nieograniczone pod względem magazynu i przepływności. Partycje fizyczne są wewnętrznej koncepcji usługi Azure Cosmos DB i przejściowych. Usługa Azure Cosmos DB automatycznie skaluje liczbę partycji fizycznych, na podstawie własnego obciążenia. Dlatego nie należy corelate projektu bazy danych na podstawie liczby partycje fizyczne zamiast tego należy koniecznie wybierz klucz partycji prawo, który określa partycje logiczne. 
+A *fizycznych* partycja jest stałą zarezerwowanych magazynów opartych na dyskach SSD w połączeniu z zmienną ilość zasobów obliczeniowych (procesora CPU i pamięci). Każdą fizyczną partycję jest replikowana w celu zapewnienia wysokiej dostępności. Każdy zestaw kontenerów może współużytkować jedną lub więcej partycji fizycznych. Zarządzanie fizyczną partycję jest w pełni zarządzana przez usługę Azure Cosmos DB, a nie masz do pisania złożonego kodu lub zarządzania partycjami. Kontenery usługi Azure Cosmos DB są nieograniczone pod względem magazynu i przepływności. Partycje fizyczne są wewnętrznej koncepcji usługi Azure Cosmos DB i przejściowych. Usługa Azure Cosmos DB automatycznie skaluje liczbę partycji fizycznych na podstawie Twojego obciążenia. Dlatego nie należy corelate projektu bazy danych na podstawie liczby partycje fizyczne zamiast tego należy koniecznie wybierz klucz partycji prawo, który określa partycje logiczne. 
 
 ### <a name="logical-partition"></a>Partycja logiczna
 
@@ -93,11 +93,13 @@ Wybór klucza partycji przy użyciu powyższe zagadnienia, nie trzeba martwić s
 
 ## <a name="prerequisites"></a>Wymagania wstępne dotyczące partycjonowania
 
-Kontenery usługi Azure Cosmos DB można utworzyć ustalona lub wartością nieograniczoną w witrynie Azure portal. Kontenery o stałym rozmiarze są ograniczone do 10 GB, a ich maksymalna przepływność wynosi 10 000 jednostek żądań na sekundę. Aby utworzyć kontener jako bez ograniczeń, należy określić klucz partycji i minimalnej przepustowości 1000 jednostek RU/s. Kontenery usługi Azure Cosmos DB można również konfigurować udostępnianie przepływności między zestaw kontenerów, w których każdy kontener musi występowaniem partycję kluczy oraz można rozwijać bez ograniczeń. Poniżej przedstawiono wymagania wstępne dotyczące należy wziąć pod uwagę, partycjonowanie i skalowanie:
+Kontenery usługi Azure Cosmos DB można utworzyć ustalona lub wartością nieograniczoną. Kontenery o stałym rozmiarze są ograniczone do 10 GB, a ich maksymalna przepływność wynosi 10 000 jednostek żądań na sekundę. Aby utworzyć kontener jako bez ograniczeń, należy określić klucz partycji i minimalnej przepustowości 1000 jednostek RU/s. Kontenery usługi Azure Cosmos DB można również utworzyć w taki sposób, że używają one przepływności. W takich przypadkach należy występowaniem każdego kontenera klucza partycji i powiększać tak, bez ograniczeń. 
 
-* Podczas tworzenia kontenera (np. Kolekcja, wykres lub tabelę) w witrynie Azure portal wybierz **nieograniczone** opcję pojemności magazynu, aby skorzystać ze skalowania bez ograniczeń. Dla partycji fizycznych, aby automatycznie Podziel na **p1** i **p2** zgodnie z opisem w [jak działa partycjonowania](#how-does-partitioning-work), kontenera musi zostać utworzona z 1000 jednostek RU/s przepustowości lub więcej (lub udziału przepływności na zestaw kontenerów), a klucz partycji musi być podana. 
+Poniżej przedstawiono wymagania wstępne dotyczące należy wziąć pod uwagę, partycjonowanie i skalowanie:
 
-* Jeśli utworzono kontener w witrynie Azure portal lub programowo i początkowa przepływność został 1000 jednostek RU/s lub więcej, a podano klucz partycji, możesz skorzystać z nieograniczone skalowanie bez konieczności wprowadzania zmian do kontenera. Obejmuje to **stałe** kontenerów, ile początkowej kontener został utworzony za pomocą co najmniej 1000 jednostek RU/s przepływności i określono klucza partycji.
+* Podczas tworzenia kontenera (np. Kolekcja, wykres lub tabelę) w witrynie Azure portal wybierz **nieograniczone** opcję pojemności magazynu, aby skorzystać ze skalowania bez ograniczeń. Na partycje fizyczne podziału automatycznie do **p1** i **p2** zgodnie z opisem w [jak działa partycjonowania](#how-does-partitioning-work) artykule kontenera musi zostać utworzona z 1000 jednostek RU/s przepustowości lub więcej (lub udziału przepływności na zestaw kontenerów), a klucz partycji musi być podana. 
+
+* Jeśli możesz utworzyć kontener z początkową przepustowość, większa niż lub równa 1000 jednostek RU/s i podaj klucz partycji, a następnie korzystać z zalet nieograniczone skalowanie bez konieczności wprowadzania zmian do kontenera. Oznacza to, nawet jeśli utworzysz **stałe** kontener, jeśli początkowe kontener jest tworzony przy przepływności co najmniej 1000 jednostek RU/s, a jeśli klucz partycji jest określony, kontener działa jako nieograniczonego kontenera.
 
 * Wszystkie kontenery skonfigurowany tak, aby udostępnić przepływności jako część zestawu kontenerów są traktowane jako **nieograniczone** kontenerów.
 

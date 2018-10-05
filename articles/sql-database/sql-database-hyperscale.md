@@ -12,12 +12,12 @@ ms.author: carlrab
 ms.reviewer: ''
 manager: craigg
 ms.date: 09/23/2018
-ms.openlocfilehash: 18f354f931995731bf4f0da47e830a575e96fc7c
-ms.sourcegitcommit: 1981c65544e642958917a5ffa2b09d6b7345475d
+ms.openlocfilehash: be7c0b80b8f735a5eefe4e8345cd4d4a16885ec4
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48237776"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803566"
 ---
 # <a name="what-is-the-hyperscale-service-tier-preview-in-azure-sql-database"></a>Co to jest warstwę usługi na dużą skalę (wersja zapoznawcza) w usłudze Azure SQL Database?
 
@@ -25,6 +25,9 @@ Warstwy usług na dużą skalę w usłudze Azure SQL Database jest najnowsza war
 
 > [!IMPORTANT]
 > Warstwy usług na dużą skalę jest obecnie w publicznej wersji zapoznawczej i jest dostępny w niektórych regionach platformy Azure. Aby region pełną listę, zobacz [na dużą skalę usługa warstwy dostępne regiony](#hyperscale-regions)
+
+> [!IMPORTANT]
+> Warstwy usług na dużą skalę jest obecnie w publicznej wersji zapoznawczej. Nie zaleca się jeszcze uruchamianie dowolnego obciążenia produkcyjnego w bazach danych na dużą skalę. Nie można zaktualizować bazy danych na dużą skalę do innych warstw usług. W celu badania zaleca się, Utwórz kopię bieżącej bazy danych i zaktualizowania kopii do warstwy usług na dużą skalę.
 
 ## <a name="what-are-the-capabilities-of-the-hyperscale-service-tier"></a>Jakie są możliwości warstwy usług na dużą skalę
 

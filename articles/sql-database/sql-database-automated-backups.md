@@ -12,12 +12,12 @@ ms.author: sashan
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 09/25/2018
-ms.openlocfilehash: 5c6ebfcb7eae52915af24fc67e9b3c774656149d
-ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
+ms.openlocfilehash: e01f48ebee9ade35b44242eba3b03e6e0a4faf46
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/26/2018
-ms.locfileid: "47181145"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802036"
 ---
 # <a name="learn-about-automatic-sql-database-backups"></a>Dowiedz się więcej o automatycznych kopii zapasowych bazy danych SQL
 
@@ -59,7 +59,8 @@ Domyślny okres przechowywania dla bazy danych utworzone za pomocą modelu zakup
 * Warstwy usług w warstwie standardowa wynosi 5 tygodni.
 * Warstwa Premium usług jest 5 tygodni.
 
-Jeśli używasz [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md), przechowywania kopii zapasowych jest możliwość konfiguracji do 35 dni. 
+Jeśli używasz [modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md), domyślny okres przechowywania kopii zapasowych wynosi 7 dni, (zarówno na serwerach logicznych i wystąpienia zarządzane przez usługę).
+Na serwerze logicznym możesz [zmienić okres przechowywania kopii zapasowej do 35 dni](#how-to-change-backup-retention-period). Zmiana okresu przechowywania kopii zapasowej nie jest dostępny w wystąpieniu zarządzanym. 
 
 Czy można zmniejszyć bieżącym okresem przechowywania Odzyskiwanie, wszystkie istniejące kopie zapasowe starsze niż nowy okres przechowywania nie będzie już dostępna. 
 
@@ -74,7 +75,7 @@ Odzyskiwanie kopii zapasowych są geograficznie nadmiarowy i chronione przez [re
 Aby uzyskać więcej informacji, zobacz [punktu w czasie przywracania](sql-database-recovery-using-backups.md#point-in-time-restore)
 
 ### <a name="backups-for-long-term-retention"></a>Długoterminowe przechowywanie kopii zapasowych
-SQL Database oferuje możliwość Konfigurowanie długoterminowego przechowywania danych (od lewej do prawej) pełnych kopii zapasowych dla maksymalnie 10 lat w usłudze Azure blob storage. Włączenie zasad pisowni LTR tygodniowe pełne kopie zapasowe są automatycznie kopiowane do innego kontenera magazynu RA-GRS. Aby spełnić wymagania zgodności w różnych, możesz wybrać różnych okresów przechowywania dla kopii zapasowych co tydzień, miesięczny lub roczny. Użycie magazynu zależy od wybranej częstotliwości tworzenia kopii zapasowych i okresy przechowywania. Możesz użyć [Kalkulator cen od lewej do prawej](https://azure.microsoft.com/pricing/calculator/?service=sql-database) do szacowania kosztów magazynowania od lewej do prawej. 
+Hostowana na serwerze logicznym bazy danych SQL Database oferuje możliwość Konfigurowanie długoterminowego przechowywania danych (od lewej do prawej) pełnych kopii zapasowych dla maksymalnie 10 lat w usłudze Azure blob storage. Włączenie zasad pisowni LTR tygodniowe pełne kopie zapasowe są automatycznie kopiowane do innego kontenera magazynu RA-GRS. Aby spełnić wymagania zgodności w różnych, możesz wybrać różnych okresów przechowywania dla kopii zapasowych co tydzień, miesięczny lub roczny. Użycie magazynu zależy od wybranej częstotliwości tworzenia kopii zapasowych i okresy przechowywania. Możesz użyć [Kalkulator cen od lewej do prawej](https://azure.microsoft.com/pricing/calculator/?service=sql-database) do szacowania kosztów magazynowania od lewej do prawej. 
 
 Podobnie jak Odzyskiwanie, kopie zapasowe od lewej do prawej są geograficznie nadmiarowy i chronione przez [replikacji między regionami w usłudze Azure Storage](../storage/common/storage-redundancy-grs.md#read-access-geo-redundant-storage).
 
@@ -95,6 +96,10 @@ Podczas migracji bazy danych z warstwy usług oparte na jednostkach DTU z przech
 [!INCLUDE [GDPR-related guidance](../../includes/gdpr-intro-sentence.md)]
 
 ## <a name="how-to-change-backup-retention-period"></a>Jak zmienić okres przechowywania kopii zapasowej
+
+> [!Note]
+> Nie można zmienić domyślnego okresu przechowywania kopii zapasowych (7 dni) na wystąpieniu zarządzanym. 
+
 Można zmienić domyślny okres przechowywania, przy użyciu interfejsu API REST lub programu PowerShell. Obsługiwane wartości to: 7, 14, 21, 28 lub 35 dni. Poniższe przykłady ilustrują zmiana okresu przechowywania Odzyskiwanie 28 dni. 
 
 > [!NOTE]

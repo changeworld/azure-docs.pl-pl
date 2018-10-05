@@ -6,19 +6,19 @@ ms.service: automation
 ms.component: process-automation
 author: georgewallace
 ms.author: gwallace
-ms.date: 09/17/2018
+ms.date: 09/26/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: c2d13a409d095bca64da781e5c5ca58553f9710c
-ms.sourcegitcommit: 4ecc62198f299fc215c49e38bca81f7eb62cdef3
+ms.openlocfilehash: 9bbf3582da2664b6e6429677d47aad4d69a7c1bb
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "47048011"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785328"
 ---
 # <a name="source-control-integration-in-azure-automation"></a>Integracja kontroli źródła w usłudze Automatyzacja Azure
 
-Kontrola źródła umożliwia pamiętać elementów runbook usługi Automation konto znajdują się aktualne za pomocą skryptów w repozytorium kontroli źródła GitHub lub operacji deweloperskich platformy Azure. Kontrola źródła pozwala łatwo współpracować z zespołem, śledzenie zmian i wrócić do wcześniejszych wersji elementów runbook. Na przykład kontroli źródła umożliwia synchronizowanie różnych gałęzi w kontroli źródła do rozwoju, testów lub produkcji kont usługi Automation, co ułatwia promowanie kod, który został przetestowany w środowisku projektowym automatyzacji w środowisku produkcyjnym konto.
+Kontrola źródła pozwala na zachowanie elementów runbook w automatyzacji konta są aktualne za pomocą skryptów w repozytorium kontroli źródła GitHub lub operacji deweloperskich platformy Azure. Kontrola źródła pozwala łatwo współpracować z zespołem, śledzenie zmian i wrócić do wcześniejszych wersji elementów runbook. Na przykład kontroli źródła umożliwia synchronizowanie różnych gałęzi w kontroli źródła do kont usługi Automation rozwoju, testów lub produkcji. Ułatwia promowanie kod, który został przetestowany w środowisku projektowym konta usługi Automation w środowisku produkcyjnym.
 
 Usługa Azure Automation obsługuje 3 typy kontroli źródła:
 
@@ -29,6 +29,7 @@ Usługa Azure Automation obsługuje 3 typy kontroli źródła:
 ## <a name="pre-requisites"></a>Wymagania wstępne
 
 * Repozytorium kontroli źródła (GitHub lub Visual Studio Team Services)
+* Poprawny [uprawnienia](#personal-access-token-permissions) do repozytorium kontroli źródła
 * A [Run-As konta i połączenie](manage-runas-account.md)
 
 > [!NOTE]
@@ -40,7 +41,7 @@ W ramach konta usługi Automation wybierz **kontroli źródła (wersja zapoznawc
 
 ![Wybierz kontrolę źródła](./media/source-control-integration/select-source-control.png)
 
-Wybierz **typ kontroli źródła** , kliknij przycisk **Uwierzytelnij**.
+Wybierz **typ kontroli źródła**, kliknij przycisk **Uwierzytelnij**.
 
 Przejrzyj Strona uprawnień aplikacji żądanie i kliknij przycisk **Akceptuj**.
 
@@ -49,8 +50,8 @@ Na **źródło sterowania — Podsumowanie** strony, wprowadź informacje i klik
 |Właściwość  |Opis  |
 |---------|---------|
 |Nazwa kontroli źródła     | Przyjazna nazwa, do kontroli źródła        |
-|Typ kontroli źródła     | Typ źródło kontroli źródła. Dostępne opcje:</br> Github</br>Visual Studio Team Services (Git)</br>Visual Studio Team Services (TFVC)        |
-|Repozytorium     | Nazwa repozytorium lub projektu. To jest określany na podstawie repozytorium kontroli źródła. Przykład: $/ ContosoFinanceTFVCExample         |
+|Typ kontroli źródła     | Typ źródło kontroli źródła. Dostępne opcje:</br> Github</br>Visual Studio Team Services (Git)</br> Visual Studio Team Services (TFVC)        |
+|Repozytorium     | Nazwa repozytorium lub projektu. Ta wartość jest pobierany z repozytorium kontroli źródła. Przykład: $/ ContosoFinanceTFVCExample         |
 |Rozgałęzienie     | Odgałęzienie do pobierania plików źródłowych z. Gałąź określania wartości docelowej nie jest dostępna dla kontrolek typu źródłowego TFVC.          |
 |Ścieżka folderu     | Folder, który zawiera elementy runbook w celu synchronizacji. Przykład: /Runbooks         |
 |Automatyczna synchronizacja     | Włącza lub wyłącza automatyczne synchronizacji, gdy przeprowadzane jest zatwierdzenie w repozytorium kontroli źródła         |
@@ -61,13 +62,13 @@ Na **źródło sterowania — Podsumowanie** strony, wprowadź informacje i klik
 
 ## <a name="syncing"></a>Synchronizowanie
 
-Jeśli automatyczna synchronizacja została ustawiona podczas konfigurowania integracji kontroli źródła, synchronizacja początkowa będzie uruchamiana automatycznie. Jeśli automatyczna synchronizacja nie została ustawiona, wybierz źródło, z tabeli **(wersja zapoznawcza) kontroli źródła** strony. Kliknij przycisk **Rozpocznij synchronizację** można uruchomić procesu synchronizacji.  
+Konfigurowanie automatyczna synchronizacja podczas konfigurowania integracji kontroli źródła, synchronizacja początkowa jest uruchamiana automatycznie. Jeśli automatyczna synchronizacja nie została ustawiona, wybierz źródło, z tabeli **(wersja zapoznawcza) kontroli źródła** strony. Kliknij przycisk **Rozpocznij synchronizację** można uruchomić procesu synchronizacji.  
 
 Można wyświetlić stan bieżącego zadania synchronizacji lub poprzednimi, klikając **Synchronizuj zadania** kartę. Na **kontroli źródła** listę rozwijaną, wybierz kontroli źródła.
 
 ![Stan synchronizacji](./media/source-control-integration/sync-status.png)
 
-Kliknięcie zadania na służy do wyświetlania danych wyjściowych zadania. Oto przykładowe dane wyjściowe z zadania synchronizacji kontroli źródła.
+Kliknięcie zadania na służy do wyświetlania danych wyjściowych zadania. Poniższy przykład przedstawia dane wyjściowe z zadania synchronizacji kontroli źródła.
 
 ```output
 ========================================================================================================
@@ -101,6 +102,35 @@ Source Control Sync Summary:
 
 ========================================================================================================
 ```
+
+## <a name="personal-access-token-permissions"></a>Uprawnienia token pat
+
+Kontrola źródła wymaga niektóre minimalne uprawnienia osobiste tokeny dostępu. Poniższe tabele zawierają minimalne uprawnienia wymagane dla usług GitHub i DevOps platformy Azure.
+
+### <a name="github"></a>GitHub
+
+|Zakres  |Opis  |
+|---------|---------|
+|**repozytorium**     |         |
+|repozytorium: stan     | Stan zatwierdzania dostępu         |
+|repo_deployment      | Stan wdrożenia dostępu         |
+|public_repo     | Dostęp do publicznych repozytoriów         |
+|**Admin: repo_hook**     |         |
+|zapis: repo_hook     | Zapis punkty zaczepienia repozytorium         |
+|Odczyt: repo_hook|Przeczytaj repozytorium punktów zaczepienia|
+
+### <a name="azure-devops"></a>Azure DevOps
+
+|Zakres  |
+|---------|
+|Kod (odczyt)     |
+|Projekt i zespół (odczyt)|
+|Tożsamość (odczyt)      |
+|Profil użytkownika (odczyt)     |
+|Elementy robocze (odczyt)    |
+|Połączenia usługi (Odczyt, zapytań i zarządzanie nimi)<sup>1</sup>    |
+
+<sup>1</sup>uprawnienia do połączenia usługi jest tylko wymagane, jeśli włączono autosync.
 
 ## <a name="disconnecting-source-control"></a>Trwa rozłączanie kontroli źródła
 

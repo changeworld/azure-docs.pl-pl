@@ -12,12 +12,12 @@ ms.devlang: java
 ms.topic: article
 ms.date: 08/29/2018
 ms.author: routlaw
-ms.openlocfilehash: 2b2256ef5802160dbaa66e2a098a798fcdc653d2
-ms.sourcegitcommit: cc4fdd6f0f12b44c244abc7f6bc4b181a2d05302
+ms.openlocfilehash: 48d6836a2f1c7eb53fd6d7a08ee5a049cd9503f6
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47065111"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803039"
 ---
 # <a name="java-developers-guide-for-app-service-on-linux"></a>Przewodnik dla deweloperów języka Java dla usługi App Service w systemie Linux
 
@@ -229,7 +229,7 @@ Za udostępnione zasoby na poziomie serwera:
 
 ## <a name="docker-containers"></a>Kontenerów Docker
 
-Aby korzystać z systemem w usłudze App Service w swoje kontenery JDK Zulu obsługiwanej przez platformę Azure, upewnij się, Twoja aplikacja `Dockerfile` przy użyciu obrazów z [repozytorium obrazów platformy Docker z usługi aplikacji Java](https://github.com/Azure-App-Service/java).
+Aby użyć zestawu JDK Zulu obsługiwanej przez platformę Azure w swoje kontenery, upewnij się, że ściągać i używać wstępnie utworzone obrazy na [strony pobierania firmy Azul](https://www.azul.com/downloads/azure-only/zulu/#docker) lub użyj `Dockerfile` przykłady z [repozytorium usługi GitHub firmy Microsoft Java](https://github.com/Microsoft/java/tree/master/docker).
 
 ## <a name="runtime-availability-and-statement-of-support"></a>Dostępność w czasie wykonywania i oświadczenie zespołu pomocy technicznej
 
@@ -242,7 +242,7 @@ App Service dla systemu Linux obsługuje dwa środowiska uruchomieniowe zarządz
 
 ### <a name="jdk-versions-and-maintenance"></a>Wersje zestawu JDK i konserwacji
 
-Interfejsów platformy Azure obsługiwane Java Development Kit (JDK) jest [Zulu](https://www.azul.com/products/zulu-and-zulu-enterprise/) dostępne za pośrednictwem [firmy Azul Systems](https://www.azul.com/).
+Interfejsów platformy Azure obsługiwane Java Development Kit (JDK) jest [Zulu](https://www.azul.com/downloads/azure-only/zulu/) dostępne za pośrednictwem [firmy Azul Systems](https://www.azul.com/).
 
 Aktualizacji wersji głównych będzie świadczona poprzez nowe opcje środowiska uruchomieniowego usługi Azure App Service dla systemu Linux. Klienci aktualizacji tych nowszych wersji języka Java, konfigurując ich wdrożenie usługi App Service i są odpowiedzialne za przeprowadzanie testów i zapewnienie ważna aktualizacja odpowiadają ich potrzebom.
 
@@ -258,15 +258,15 @@ Jeśli zostanie wycofana obsługiwane środowisko wykonawcze języka Java, dewel
 
 ### <a name="local-development"></a>Lokalne programowanie
 
-Deweloperzy mogli przeprowadzić pobieranie produkcji wersji o Azul Zulu Enterprise zestaw JDK potrzeby lokalnego programowania z [witryny pobierania firmy Azul](https://www.azul.com/downloads/zulu/).
+Deweloperzy mogli przeprowadzić pobieranie produkcji wersji o Azul Zulu Enterprise zestaw JDK potrzeby lokalnego programowania z [witryny pobierania firmy Azul](https://www.azul.com/downloads/azure-only/zulu/).
 
 ### <a name="development-support"></a>Obsługa projektowania
 
-Pomoc techniczna dla zestawu JDK firmy Azul Zulu Enterprise jest dostępna za pośrednictwem podczas tworzenia na platformie Azure lub [usługi Azure Stack](https://azure.microsoft.com/overview/azure-stack/) z [kwalifikowana planu pomocy technicznej Azure](https://azure.microsoft.com/support/plans/).
+Pomoc techniczna dla [obsługiwanej przez platformę Azure rozwiązanie Azul Zulu JDK](https://www.azul.com/downloads/azure-only/zulu/) jest dostępna za pośrednictwem podczas tworzenia na platformie Azure lub [usługi Azure Stack](https://azure.microsoft.com/overview/azure-stack/) z [kwalifikowana planu pomocy technicznej Azure](https://azure.microsoft.com/support/plans/).
 
 ### <a name="runtime-support"></a>Obsługa środowiska uruchomieniowego
 
-Deweloperzy mogą [Otwórz problem](/azure/azure-supportability/how-to-create-azure-support-request) ze środowiskiem uruchomieniowym Java w systemie Linux usługi aplikacji za pośrednictwem pomocy technicznej platformy Azure, jeśli mają one [plan pomocy technicznej kwalifikowaną](https://azure.microsoft.com/support/plans/).
+Deweloperzy mogą [Otwórz problem](/azure/azure-supportability/how-to-create-azure-support-request) z JDK oprogramowanie Zulu firmy Azul za pośrednictwem pomocy technicznej platformy Azure, jeśli mają one [plan pomocy technicznej kwalifikowaną](https://azure.microsoft.com/support/plans/).
 
 ## <a name="next-steps"></a>Kolejne kroki
 

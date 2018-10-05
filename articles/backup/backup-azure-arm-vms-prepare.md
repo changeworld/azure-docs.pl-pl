@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 9/10/2018
 ms.author: markgal
-ms.openlocfilehash: 00432e1b5a181c57e4901b684d0a86c1cc843037
-ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
+ms.openlocfilehash: ebfd879fcd619dab48e4a08130f86afc68f91207
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/27/2018
-ms.locfileid: "47408984"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785430"
 ---
 # <a name="prepare-your-environment-to-back-up-resource-manager-deployed-virtual-machines"></a>Przygotowywanie środowiska do tworzenia kopii zapasowych maszyn wirtualnych wdrożonych przez program Resource Manager
 
@@ -37,7 +37,7 @@ Jeśli te warunki są już istnieją w Twoim środowisku, przejdź do [tworzenie
 
  * **Linux**: Usługa Azure Backup obsługuje [listę dystrybucji, które platforma Azure wspiera](../virtual-machines/linux/endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json), z wyjątkiem CoreOS Linux. Aby uzyskać listę systemów operacyjnych Linux, które obsługują Przywracanie plików, zobacz [odzyskiwanie plików z kopii zapasowej maszyny wirtualnej](backup-azure-restore-files-from-vm.md#for-linux-os).
 
-    > [!NOTE] 
+    > [!NOTE]
     > Inne dystrybucje bring-your-own Linux może działać, dopóki agent maszyny Wirtualnej jest dostępne na maszynie wirtualnej i obsługiwany język Python. Jednak te dystrybucji nie są obsługiwane.
     >
  * **Windows Server**, **klienta Windows**: wersje starsze niż Windows Server 2008 R2 lub Windows 7, nie są obsługiwane.
@@ -46,11 +46,10 @@ Jeśli te warunki są już istnieją w Twoim środowisku, przejdź do [tworzenie
 ## <a name="limitations-when-backing-up-and-restoring-a-vm"></a>Ograniczenia w przypadku tworzenia kopii zapasowych i przywracania maszyny Wirtualnej
 Przed przygotowaniem środowiska, należy zrozumieć następujące ograniczenia:
 
-* Tworzenie kopii zapasowych maszyn wirtualnych przy użyciu SSD w warstwie standardowa nie jest obecnie obsługiwane.
 * Tworzenie kopii zapasowych maszyn wirtualnych przy użyciu więcej niż 32 dyski danych nie jest obsługiwane.
 * Tworzenie kopii zapasowych maszyn wirtualnych za pomocą zastrzeżonego adresu IP i nie ma zdefiniowanego punktu końcowego nie jest obsługiwane.
 * Tworzenie kopii zapasowych maszyn wirtualnych systemu Linux, szyfrowane za pomocą funkcji szyfrowania Linux Unified klucz instalacji (LUKS) nie jest obsługiwane.
-* Nie zaleca się tworzenie kopii zapasowych maszyn wirtualnych, które zawierają udostępnionych woluminów klastra (CSV) lub serwera plików skalowalnego w poziomie konfiguracji. Jeśli będą wykonywane, awarii składników zapisywania CSV jest oczekiwany. Wymagają one, obejmujące wszystkie maszyny wirtualne, które uwzględnione w konfiguracji klastra podczas wykonywania zadania migawki. Usługa Azure Backup nie obsługuje spójność wielu maszyn wirtualnych. 
+* Nie zaleca się tworzenie kopii zapasowych maszyn wirtualnych, które zawierają udostępnionych woluminów klastra (CSV) lub serwera plików skalowalnego w poziomie konfiguracji. Jeśli będą wykonywane, awarii składników zapisywania CSV jest oczekiwany. Wymagają one, obejmujące wszystkie maszyny wirtualne, które uwzględnione w konfiguracji klastra podczas wykonywania zadania migawki. Usługa Azure Backup nie obsługuje spójność wielu maszyn wirtualnych.
 * Dane kopii zapasowej nie zawiera sieciowych zainstalowane dyski dołączone do maszyny Wirtualnej.
 * Zamiana istniejącej maszyny wirtualnej podczas przywracania nie jest obsługiwana. Jeśli użytkownik podejmie próbę przywrócenia maszyny Wirtualnej, gdy maszyna wirtualna istnieje, operacja przywracania kończy się niepowodzeniem.
 * Między regionami, tworzenie kopii zapasowej i przywracania nie są obsługiwane.
@@ -115,7 +114,7 @@ Aby edytować ustawienia replikacji magazynu:
    Jeśli używasz platformy Azure jako punktu końcowego podstawowego magazynu kopii zapasowych, nadal korzystać z magazynu geograficznie nadmiarowego. Jeśli używasz platformy Azure jako punktu końcowego magazynu kopii zapasowych innego niż podstawowy, wybierz magazyn lokalnie nadmiarowy. Przeczytaj więcej na temat opcji magazynu na platformie [Omówienie replikacji usługi Azure Storage](../storage/common/storage-redundancy.md).
 
 1. Jeśli zmienisz typ replikacji magazynu, wybierz **Zapisz**.
-    
+
 Po wybraniu opcji magazynu dla magazynu możesz skojarzyć maszyny Wirtualnej w magazynie. Aby rozpocząć kojarzenie, należy odnaleźć i zarejestrować maszyny wirtualne Azure.
 
 ## <a name="select-a-backup-goal-set-policy-and-define-items-to-protect"></a>Wybierz cel kopii zapasowej, Ustaw zasady i zdefiniuj elementy podlegające ochronie
@@ -172,11 +171,11 @@ Po pomyślnym włączeniu kopii zapasowej zasady tworzenia kopii zapasowej zosta
 Jeśli masz problemy z zarejestrowaniem maszyny wirtualnej, zobacz następujące informacje na temat instalowania agenta maszyny Wirtualnej oraz łączność sieciową. Prawdopodobnie nie potrzebujesz następujących informacji w przypadku ochrony maszyn wirtualnych utworzonych na platformie Azure. Pamiętaj jednak, jeśli wykonano migrację maszyn wirtualnych na platformie Azure, poprawnie zainstalowany agent maszyny Wirtualnej i maszyny wirtualnej mogą komunikować się z siecią wirtualną.
 
 ## <a name="install-the-vm-agent-on-the-virtual-machine"></a>Zainstaluj agenta maszyny Wirtualnej na maszynie wirtualnej
-Dla rozszerzenia kopii zapasowej do pracy, Azure [agenta maszyny Wirtualnej](../virtual-machines/extensions/agent-windows.md) musi być zainstalowany na maszynie wirtualnej platformy Azure. Jeśli maszyna wirtualna została utworzona w portalu Azure Marketplace, agent maszyny Wirtualnej jest już obecny w maszynie wirtualnej. 
+Dla rozszerzenia kopii zapasowej do pracy, Azure [agenta maszyny Wirtualnej](../virtual-machines/extensions/agent-windows.md) musi być zainstalowany na maszynie wirtualnej platformy Azure. Jeśli maszyna wirtualna została utworzona w portalu Azure Marketplace, agent maszyny Wirtualnej jest już obecny w maszynie wirtualnej.
 
 Poniżej znajduje się w sytuacjach, w którym są *nie* używania maszyny Wirtualnej utworzone w portalu Azure Marketplace. **Na przykład po migracji maszyny Wirtualnej z lokalnego centrum danych. W takim przypadku agenta maszyny Wirtualnej musi być zainstalowany w celu włączenia ochrony maszyny wirtualnej.**
 
-**Uwaga**: po zainstalowaniu agenta maszyny Wirtualnej, należy użyć programu Azure PowerShell można zaktualizować właściwości ProvisionGuestAgent, więc Azure wie, maszyny Wirtualnej został zainstalowany agent. 
+**Uwaga**: po zainstalowaniu agenta maszyny Wirtualnej, należy użyć programu Azure PowerShell można zaktualizować właściwości ProvisionGuestAgent, więc Azure wie, maszyny Wirtualnej został zainstalowany agent.
 
 Jeśli masz problemy z tworzeniem kopii zapasowej maszyny Wirtualnej platformy Azure, skorzystaj z poniższej tabeli, aby sprawdzić, czy agent maszyny Wirtualnej platformy Azure został poprawnie zainstalowany na maszynie wirtualnej. W tabeli przedstawiono dodatkowe informacje na temat agenta maszyny Wirtualnej dla Windows i maszyn wirtualnych systemu Linux.
 
@@ -207,11 +206,11 @@ Podczas wybierania opcji wad i zalet należą do zakresu od możliwości zarząd
 ### <a name="whitelist-the-azure-datacenter-ip-ranges"></a>Zakresy adresów IP dozwolonych centrum danych platformy Azure
 Do listy dozwolonych zakresów adresów IP centrum danych platformy Azure, zobacz [witryny sieci Web Azure](http://www.microsoft.com/en-us/download/details.aspx?id=41653) szczegółowe informacje na temat zakresów adresów IP i instrukcje.
 
-Zezwalaj na połączenia do magazynu w określonym regionie przy użyciu [tagów usług](../virtual-network/security-overview.md#service-tags). Upewnij się, że reguła, która umożliwia uzyskanie dostępu do konta magazynu ma wyższy priorytet niż regułę, która blokuje dostęp do Internetu. 
+Zezwalaj na połączenia do magazynu w określonym regionie przy użyciu [tagów usług](../virtual-network/security-overview.md#service-tags). Upewnij się, że reguła, która umożliwia uzyskanie dostępu do konta magazynu ma wyższy priorytet niż regułę, która blokuje dostęp do Internetu.
 
 ![Sieciowa grupa zabezpieczeń z tagami magazynu dla regionu](./media/backup-azure-arm-vms-prepare/storage-tags-with-nsg.png)
 
-Poniższy klip wideo przedstawiono procedury krok po kroku, aby skonfigurować tagi usługi: 
+Poniższy klip wideo przedstawiono procedury krok po kroku, aby skonfigurować tagi usługi:
 
 >[!VIDEO https://www.youtube.com/embed/1EjLQtbKm1M]
 
@@ -292,7 +291,7 @@ HttpProxy.Port=<proxy port>
    * Aby uzyskać **port lokalny**, wybierz opcję **określonych portów**. W poniższym polu Określ numer portu serwera proxy, który został skonfigurowany.
    * Aby uzyskać **port zdalny**, wybierz opcję **wszystkie porty**.
 
-Pozostałe kreatora Zaakceptuj ustawienia domyślne, aż dojdziesz do końca. Następnie Nazwij tę regułę. 
+Pozostałe kreatora Zaakceptuj ustawienia domyślne, aż dojdziesz do końca. Następnie Nazwij tę regułę.
 
 #### <a name="step-3-add-an-exception-rule-to-the-nsg"></a>Krok 3: Dodaj regułę wyjątku do sieciowej grupy zabezpieczeń
 Następujące polecenie dodaje wyjątek do sieciowej grupy zabezpieczeń. Ten wyjątek zezwala na ruch TCP z dowolnego portu na 10.0.0.5 do dowolnego adresu internetowego na porcie 80 (HTTP) lub 443 (HTTPS). Jeśli potrzebujesz określonego portu w publicznej sieci internet, pamiętaj dodać ten port do ```-DestinationPortRange```.

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/24/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 727d38cae6c2f98d2922d5760f116ab85d75b8ac
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ff8df51011ef664950ecfeb9eef0b201306c8ad5
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46983518"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47221659"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Samouczek: wdrażanie i konfigurowanie usługi Azure Firewall w witrynie Azure Portal
 
@@ -31,9 +31,7 @@ Ruch sieciowy podlega skonfigurowanym regułom zapory podczas kierowania ruchu s
 
 Reguły aplikacji i sieci są przechowywane w *kolekcjach reguł*. Kolekcja reguł to lista reguł, które mają tę samą akcję i priorytet.  Kolekcja reguł sieci to lista reguł sieci, a kolekcja reguł aplikacji to lista reguł aplikacji.
 
-W usłudze Azure Firewall nie istnieje pojęcie reguł ruchu przychodzącego i wychodzącego. Istnieją zasady aplikacji i zasady sieci, które są stosowane do wszelkiego ruchu przechodzącego przez zaporę. Najpierw stosowane są reguły sieci, a następnie reguły aplikacji, a reguły powodują zakończenie.
-
-Jeśli na przykład zostanie dopasowana reguła sieci, pakiet nie zostanie oceniony przez reguły aplikacji. Jeśli nie zostanie dopasowana reguła sieci i jeśli protokół pakietu to HTTP/HTTPS, pakiet zostanie oceniony przez reguły aplikacji. Jeśli nadal nie zostanie znalezione dopasowanie, pakiet zostanie oceniony względem kolekcji reguł infrastruktury. Jeśli wciąż nie zostanie znalezione dopasowanie, pakiet zostanie domyślnie odrzucony.
+Usługa Azure Firewall obsługuje reguły translatora adresów sieciowych, reguły sieci oraz reguły aplikacji. Aby dowiedzieć się więcej na temat logiki przetwarzania reguł usługi Azure Firewall, zobacz [Azure Firewall rule processing logic (Logika przetwarzania reguł usługi Azure Firewall)](rule-processing.md).
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -215,9 +213,6 @@ Na potrzeby podsieci **Workload-SN** skonfiguruj trasę domyślną ruchu wychodz
 11. Kliknij pozycję **Add** (Dodaj).
 
 Usługa Azure Firewall zawiera wbudowaną kolekcję reguł dla nazw FQDN infrastruktury, które domyślnie są dozwolone. Te nazwy FQDN są specyficzne dla platformy i nie można ich używać do innych celów. Aby uzyskać więcej informacji, zobacz [Infrastrukturalne nazwy FQDN](infrastructure-fqdns.md).
-
-> [!Note]
-> Tagi FQDN można obecnie skonfigurować tylko przy użyciu programu Azure PowerShell i architektury REST. Kliknij [tutaj](https://aka.ms/firewallapplicationrule), aby dowiedzieć się więcej. 
 
 ## <a name="configure-network-rules"></a>Konfigurowanie reguł sieci
 

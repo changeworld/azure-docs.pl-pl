@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 27f271a20af2bb9910f1cf7d63e6033d78e67b83
-ms.sourcegitcommit: 4ea0cea46d8b607acd7d128e1fd4a23454aa43ee
+ms.openlocfilehash: f2f2208f325728275706eeed9ff16e8afc3b11cf
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/15/2018
-ms.locfileid: "41917734"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47166881"
 ---
 # <a name="tutorial-azure-ad-password-reset-from-the-login-screen"></a>Samouczek: resetowanie hasła usługi Azure AD z ekranu logowania
 
@@ -45,8 +45,6 @@ Wdrażanie zmiany konfiguracji w celu włączenia możliwości resetowania hasł
    * Opcjonalnie podaj znaczący opis profilu
    * Platforma: **Windows 10 lub nowsza**
    * Typ profilu: **Niestandardowy**
-
-   ![CreateProfile][CreateProfile]
 
 3. Skonfiguruj obszar **Ustawienia**
    * **Dodaj** następujące ustawienie OMA-URI, aby włączyć link resetowania hasła
@@ -100,7 +98,6 @@ Teraz, gdy zasady zostały skonfigurowane i przypisane, co zmienia się dla uży
 ![LoginScreen][LoginScreen]
 
 Gdy użytkownicy próbują się zalogować, widzą teraz link resetowania, który otwiera środowisko samoobsługowego resetowania hasła na ekranie logowania. Ta funkcja umożliwia użytkownikom zresetowanie hasła bez konieczności uzyskiwania dostępu do przeglądarki internetowej przy użyciu innego urządzenia.
-Gdy użytkownicy próbują się zalogować, widzą teraz link resetowania, który otwiera środowisko samoobsługowego resetowania hasła na ekranie logowania. Ta funkcja umożliwia użytkownikom zresetowanie hasła bez konieczności uzyskiwania dostępu do przeglądarki internetowej przy użyciu innego urządzenia.
 
 Wskazówki dotyczące używania tej funkcji będzie można znaleźć w artykule [Reset your work or school password (Resetowanie hasła służbowego)](../user-help/active-directory-passwords-update-your-own-password.md#reset-password-at-sign-in)
 
@@ -114,7 +111,11 @@ Podczas testowania tej funkcjonalności za pomocą pulpitu zdanego link „Reset
 
 * Resetowanie hasła nie jest obecnie obsługiwane z poziomu pulpitu zdalnego.
 
-Jeśli ekran blokady systemu Windows będzie wyłączony za pomocą klucza rejestru lub zasad grupy, pozycja **Resetuj hasło** nie będzie dostępna.
+Jeśli ekran blokady systemu Windows zostanie wyłączony za pomocą klucza rejestru lub zasad grupy, pozycja **Resetuj hasło** nie będzie dostępna.
+
+Dziennik inspekcji usługi Azure AD zawiera informacje dotyczące adresu IP i typu klienta, które są powiązane z żądaniem resetowania hasła.
+
+![Przykład resetowania hasła na ekranie logowania w dzienniku inspekcji usługi Azure AD](media/tutorial-sspr-windows/windows-sspr-azure-ad-audit-log.png)
 
 ## <a name="clean-up-resources"></a>Oczyszczanie zasobów
 
@@ -127,6 +128,5 @@ W tym samouczku umożliwiono użytkownikom resetowanie swoich haseł z ekranu lo
 > [!div class="nextstepaction"]
 > [Ocena ryzyka podczas logowania](tutorial-risk-based-sspr-mfa.md)
 
-[CreateProfile]: ./media/tutorial-sspr-windows/create-profile.png "Tworzenie profilu konfiguracji urządzenia usługi Intune w celu włączenia linku resetowania hasła na ekranie logowania systemu Windows 10"
 [Assignment]: ./media/tutorial-sspr-windows/profile-assignment.png "Przypisywanie zasad konfiguracji urządzenia usługi Intune do grupy urządzeń z systemem Windows 10"
 [LoginScreen]: ./media/tutorial-sspr-windows/logon-reset-password.png "Link resetowania hasła na ekranie logowania systemu Windows 10"

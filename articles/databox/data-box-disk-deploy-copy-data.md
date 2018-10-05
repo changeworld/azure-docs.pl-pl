@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/05/2018
+ms.date: 09/28/2018
 ms.author: alkohli
 Customer intent: As an IT admin, I need to be able to order Data Box Disk to upload on-premises data from my server onto Azure.
-ms.openlocfilehash: f25d0b3522658d5fcd4b34110cb03b624dd9e7b1
-ms.sourcegitcommit: 3d0295a939c07bf9f0b38ebd37ac8461af8d461f
+ms.openlocfilehash: 776f70b6b24288006d52cb0e91797d1074180160
+ms.sourcegitcommit: f31bfb398430ed7d66a85c7ca1f1cc9943656678
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/06/2018
-ms.locfileid: "43841509"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47452619"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box-disk-and-verify"></a>Samouczek: kopiowanie danych na urządzenie Azure Data Box Disk i ich weryfikacja
 
@@ -30,17 +30,14 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 
 > [!div class="checklist"]
 > * Kopiowanie danych na urządzenie Data Box Disk
-> * Weryfikowanie integralności danych
+> * Weryfikacja danych
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 
 Przed rozpoczęciem upewnij się, że:
 - Ukończono samouczek [Instalowanie i konfigurowanie urządzenia Azure Data Box Disk](data-box-disk-deploy-set-up.md).
-- Dyski są rozpakowane i włączone.
-- Masz komputer hosta, z którego chcesz skopiować dane na dyski. Na komputerze hosta wymagane jest:
-    - Korzystanie z [obsługiwanego systemu operacyjnego](data-box-disk-system-requirements.md).
-    - [Zainstalowanie programu Windows PowerShell 4](https://www.microsoft.com/download/details.aspx?id=40855).
-    - [Zainstalowanie środowiska .NET Framework 4.5](https://www.microsoft.com/download/details.aspx?id=30653).
+- Twoje dyski są odblokowane i podłączone do komputera klienckiego.
+- Na komputerze klienckim używanym do kopiowania danych na dyski musi być uruchomiony [obsługiwany system operacyjny](data-box-disk-system-requirements.md).
 
 
 ## <a name="copy-data-to-disks"></a>Kopiowanie danych na dyski
@@ -59,6 +56,7 @@ Aby podłączyć urządzenia Data Box Disk do komputera i skopiować na nie dane
 
     Nazwy kontenerów i obiektów blob muszą być zgodne z konwencją nazewnictwa platformy Azure.
 
+    #### <a name="azure-naming-conventions-for-container-and-blob-names"></a>Konwencje nazewnictwa platformy Azure dla nazw kontenerów i obiektów blob
     |Jednostka   |Konwencja  |
     |---------|---------|
     |Nazwy kontenerów blokowych i stronicowych obiektów blob     |Muszą zaczynać się literą lub cyfrą i mogą zawierać tylko małe litery, cyfry oraz łączniki (-). Bezpośrednio przed łącznikiem (-) i bezpośrednio po nim musi znajdować się cyfra lub litera. Nazwy nie mogą zawierać sąsiadujących ze sobą łączników. <br>Muszą być prawidłowymi nazwami DNS o długości od 3 do 63 znaków.          |
@@ -165,17 +163,21 @@ Aby podłączyć urządzenia Data Box Disk do komputera i skopiować na nie dane
 > -  Podczas kopiowania danych upewni się, że rozmiar danych jest zgodny z ograniczeniami rozmiaru opisanymi w temacie [Azure storage and Data Box Disk limits (Ograniczenia usług Azure Storage i Data Box Disk)](data-box-disk-limits.md). 
 > - Jeśli dane przekazywane przy użyciu usługi Data Box Disk będą jednocześnie przekazywane przez inne aplikacje, poza usługą Data Box Disk, skutkiem może być niepowodzenie zadania przekazywania oraz uszkodzenie danych.
 
-## <a name="verify-data-integrity"></a>Weryfikowanie integralności danych
+## <a name="verify-data"></a>Weryfikacja danych 
 
-Aby sprawdzić integralność danych, wykonaj następujące czynności.
+Aby zweryfikować dane, wykonaj następujące czynności:
 
-1. Uruchom plik `AzureExpressDiskService.ps1` w celu walidacji sum kontrolnych. W Eksploratorze plików przejdź do folderu *AzureImportExport* na odpowiednim dysku. Kliknij plik prawym przyciskiem myszy i wybierz polecenie **Uruchom za pomocą programu PowerShell**. 
+1. Uruchom polecenie `DataBoxDiskValidation.cmd` w celu walidacji sumy kontrolnej w folderze *AzureImportExport* na dysku. 
+    
+    ![Dane wyjściowe narzędzia walidacji dysków Data Box Disk](media/data-box-disk-deploy-copy-data/data-box-disk-validation-tool-output.png)
 
-    ![Generowanie sum kontrolnych](media/data-box-disk-deploy-copy-data/data-box-disk-checksum.png)
-
-2. Czas wykonywania tej operacji zależy od rozmiaru danych. Po zakończeniu wykonywania skryptu zostanie wyświetlone podsumowanie procesu sprawdzania integralności danych wraz z czasem trwania tego procesu. Naciśnij klawisz **Enter**, aby zamknąć okno polecenia.
+2. Wybierz odpowiednią opcję. **Zalecamy, aby zawsze przy wykonywaniu walidacji plików i generowaniu sum kontrolnych wybierać opcję 2**. Czas wykonywania tej operacji zależy od rozmiaru danych. Po zakończeniu wykonywania skryptu zamknij okno polecenia. Jeśli podczas walidacji i generowania sumy kontrolnej wystąpi błąd, zostanie wyświetlone powiadomienie i podany link do dzienników błędów.
 
     ![Dane wyjściowe sumy kontrolnej](media/data-box-disk-deploy-copy-data/data-box-disk-checksum-output.png)
+
+    > [!TIP]
+    > - Zresetuj narzędzie między dwoma uruchomieniami.
+    > - Użyj opcji 1, aby wykonać walidację plików dotyczących tylko dużego zestawu danych zawierającego małe pliki (~ KB/s). W takich przypadkach generowanie sumy kontrolnej może zająć bardzo dużo czasu i spowodować spadek wydajności.
 
 3. Jeśli używasz wielu dysków, uruchom to polecenie dla każdego dysku.
 

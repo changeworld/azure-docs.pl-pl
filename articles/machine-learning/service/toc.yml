@@ -12,8 +12,10 @@ items:
   expanded: true
 - name: Przewodniki Szybki start
   items:
-  - name: Rozpoczęcie pracy
+  - name: Wprowadzenie — portal
     href: quickstart-get-started.md
+  - name: Wprowadzenie — Python
+    href: quickstart-create-workspace-with-python.md
 - name: Samouczki
   items:
   - name: 'Szkolenie modeli: część 1'
@@ -42,8 +44,12 @@ items:
       href: how-to-choose-a-dev-environment.md
     - name: Konfigurowanie środowiska
       href: how-to-configure-environment.md
-  - name: Konfigurowanie środowisk szkoleniowych
-    href: how-to-set-up-training-targets.md
+    - name: VS Code Tools for AI
+      items:
+      - name: Rozpoczęcie pracy
+        href: how-to-vscode-tools.md
+      - name: Szkolenie i wdrażanie
+        href: how-to-vscode-train-deploy.md
   - name: Przygotowywanie danych
     href: how-to-data-prep.md
     items:
@@ -53,19 +59,23 @@ items:
       href: how-to-transform-data.md
     - name: Zapisywanie danych
       href: how-to-write-data.md
-  - name: Szkolenie i dostrajanie
+  - name: Uzyskiwanie dostępu do danych
+    href: how-to-access-data.md
+  - name: Szkolenie modeli
     items:
-    - name: Uzyskiwanie dostępu do danych
-      href: how-to-access-data.md
-    - name: Szkolenie modeli uczenia maszynowego
+    - name: Konfigurowanie środowisk szkoleniowych
+      href: how-to-set-up-training-targets.md
+    - name: Tworzenie narzędzi do szacowania
       href: how-to-train-ml-models.md
       items:
-      - name: Szkolenie modeli PyTorch
+      - name: PyTorch
         href: how-to-train-pytorch.md
-      - name: Szkolenie modeli TensorFlow
+      - name: TensorFlow
         href: how-to-train-tensorflow.md
     - name: Tworzenie i wdrażanie modeli ONNX
       href: how-to-build-deploy-onnx.md
+  - name: Dostrajanie modeli
+    items:
     - name: Dostrajanie hiperparametrów
       href: how-to-tune-hyperparameters.md
     - name: Śledzenie eksperymentów i metryk
@@ -77,21 +87,28 @@ items:
       href: how-to-configure-auto-train.md
     - name: Używanie miejsc docelowych obliczania zdalnego
       href: how-to-auto-train-remote.md
-  - name: Wdrażanie i monitorowanie
+  - name: Wdrażanie modeli
     items:
     - name: Gdzie należy wdrażać modele
       href: how-to-deploy-and-where.md
-      items:
-      - name: Wdrażanie w usłudze ACI
-        href: how-to-deploy-to-aci.md
-      - name: Wdrażanie w usłudze AKS
-        href: how-to-deploy-to-aks.md
-      - name: Wdrażanie w układach FPGA
-        href: how-to-deploy-fpga-web-service.md
-      - name: Wdrażanie w usłudze IoT Edge
-        href: how-to-deploy-to-iot.md
+    - name: Wdrażanie w usłudze ACI
+      href: how-to-deploy-to-aci.md
+    - name: Wdrażanie w usłudze AKS
+      href: how-to-deploy-to-aks.md
+    - name: Wdrażanie w układach FPGA
+      href: how-to-deploy-fpga-web-service.md
+    - name: Wdrażanie w usłudze IoT Edge
+      href: how-to-deploy-to-iot.md
+    - name: Rozwiązywanie problemów
+      href: how-to-troubleshoot-deployment.md
+    - name: Zabezpieczanie przy użyciu protokołu SSL
+      href: how-to-secure-web-service.md
+  - name: Monitorowanie modeli
+    items:
     - name: Zbieranie danych w środowisku produkcyjnym
       href: how-to-enable-data-collection.md
+    - name: Monitorowanie za pomocą usługi Application Insights
+      href: how-to-enable-app-insights.md
   - name: Zarządzanie przydziałami zasobów
     href: how-to-manage-quotas.md
   - name: Eksportowanie i usuwanie danych
@@ -104,8 +121,6 @@ items:
     href: reference-azure-machine-learning-cli.md
 - name: Zasoby
   items:
-  - name: Przewodnik dewelopera języka R
-    href: ../r-developers-guide.md
   - name: Harmonogram działania dla platformy Azure
     href: https://azure.microsoft.com/roadmap/
   - name: Cennik
@@ -114,6 +129,8 @@ items:
     href: https://azure.microsoft.com/regions/services/
   - name: Eksportowanie i usuwanie danych konta
     href: ../desktop-workbench/export-delete-experimentation-model-management-data-dsr.md
+  - name: Informacje o wersji
+    href: azure-machine-learning-release-notes.md
   - name: Znane problemy
     href: resource-known-issues.md
   - name: Uzyskiwanie pomocy technicznej
@@ -314,17 +331,13 @@ items:
           href: https://docs.microsoft.com/python/api/overview/azure-machine-learning/textanalytics
         - name: Tworzenie i wdrażanie modeli klasyfikacji tekstu
           href: ../desktop-workbench/how-to-build-deploy-text-classification-models.md
-    - name: Starsze informacje o wersji
-      href: azure-machine-learning-release-notes.md
     - name: Często zadawane pytania
       href: ../desktop-workbench/frequently-asked-questions.md
     - name: Stare problemy
       href: ../desktop-workbench/known-issues-and-troubleshooting-guide.md
-    - name: Pomoc techniczna
-      href: support-for-aml-services.md
-ms.openlocfilehash: 0e069ce7bb04a4aef2e631488ec807a1539c32e5
-ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
+ms.openlocfilehash: fb5ffe0b261d1c233765175170b5697050b58d20
+ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/25/2018
-ms.locfileid: "47162155"
+ms.lasthandoff: 10/03/2018
+ms.locfileid: "48248817"

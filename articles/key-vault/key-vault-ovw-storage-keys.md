@@ -8,19 +8,19 @@ ms.service: key-vault
 author: bryanla
 ms.author: bryanla
 manager: mbaldwin
-ms.date: 08/21/2017
-ms.openlocfilehash: 7545a035541a4e464a6c82acb9fa9de18cf8e86d
-ms.sourcegitcommit: f3bd5c17a3a189f144008faf1acb9fabc5bc9ab7
+ms.date: 10/03/2018
+ms.openlocfilehash: 38717fed9f3877dfd0aa9819571ef0f32befc117
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/10/2018
-ms.locfileid: "44304326"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785515"
 ---
-# <a name="azure-key-vault-storage-account-keys"></a>Klucze konta magazynu usługi Azure Key Vault
+# <a name="azure-key-vault-storage-account-keys"></a>Klucze konta magazynu w usłudze Azure Key Vault
 
-Przed Azure Key Vault Storage Account Keys deweloperów musiał zarządzać własne klucze konta magazynu platformy Azure (ASA) i Obróć je ręcznie lub za pomocą narzędzie automatyzacji. Teraz, Key Vault Storage Account Keys są implementowane jako [wpisy tajne usługi Key Vault](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates#BKMK_WorkingWithSecrets) uwierzytelniania za pomocą konta usługi Azure Storage.
+Przed kluczy konta magazynu usługi Azure Key Vault deweloperzy musieli zarządzać własne klucze konta magazynu platformy Azure (ASA) i Obróć je ręcznie lub za pomocą narzędzie automatyzacji. Teraz, Key Vault Storage Account Keys są implementowane jako [wpisy tajne usługi Key Vault](https://docs.microsoft.com/rest/api/keyvault/about-keys--secrets-and-certificates#BKMK_WorkingWithSecrets) uwierzytelniania za pomocą konta usługi Azure Storage.
 
-Kluczową funkcją konta magazynu platformy Azure (ASA) zarządza obrotu wpisu tajnego dla Ciebie. Usuwa również potrzebę bezpośredniego kontaktu z kluczem ASA, zapewniając dostęp do sygnatur Współdzielonego jako metodę.
+Kluczową funkcją konta magazynu platformy Azure (ASA) zarządza obrotu wpisu tajnego dla Ciebie. Usuwa również potrzebę bezpośredniego kontaktu z klawiszem ASA, zapewniając dostęp do sygnatur Współdzielonego jako metodę.
 
 Aby uzyskać bardziej ogólne informacje na temat kont usługi Azure Storage, zobacz [kontach magazynu Azure o](https://docs.microsoft.com/azure/storage/storage-create-storage-account).
 
@@ -91,32 +91,42 @@ accountSasCredential.UpdateSASToken(sasToken);
 
  ### <a name="developer-guidance"></a>Wskazówki dla deweloperów
 
-- Zezwalaj tylko na usłudze Key Vault, zarządzać kluczami ASA. Nie należy próbować zarządzać samodzielnie, będzie zakłócać procesów usługi Key Vault.
+- Zezwalaj tylko na usłudze Key Vault, zarządzać kluczami ASA. Nie podejmuj próby zarządzać samodzielnie, będzie zakłócać procesów usługi Key Vault.
 - Nie zezwalaj na ASA klucze mają być zarządzane przez więcej niż jeden obiekt usługi Key Vault.
 - Jeśli musisz ręcznie ponownie wygenerować klucze ASA, firma Microsoft zaleca regenerować je za pośrednictwem usługi Key Vault.
 
-## <a name="getting-started"></a>Wprowadzenie
+## <a name="authorize-key-vault-to-access-to-your-storage-account"></a>Autoryzuj Key Vault w celu uzyskania dostępu do konta magazynu
 
-### <a name="give-key-vault-access-to-your-storage-account"></a>Udzielić dostępu do magazynu kluczy do konta magazynu 
+Zanim usługi Key Vault można uzyskać dostęp i zarządzanie kluczami konta magazynu, należy autoryzować dostępu konta magazynu.  Podobnie jak wiele aplikacji usługi Key Vault integruje się z usługą Azure AD usługi zarządzania tożsamościami i dostępem. 
 
-Podobnie jak wiele aplikacji usługi Key Vault jest zarejestrowany z usługą Azure AD w celu dostępu do innych usług za pomocą uwierzytelniania OAuth. Podczas rejestracji [nazwy głównej usługi](/azure/active-directory/develop/app-objects-and-service-principals) obiekt zostanie utworzony, która jest używana do reprezentowania tożsamości aplikacji w czasie wykonywania. Nazwa główna usługi umożliwia również zezwolić tożsamości aplikacji dostęp do innego zasobu za pośrednictwem kontroli dostępu opartej na rolach (RBAC).
+Ponieważ usługa Key Vault jest aplikacją firmy Microsoft, jest wstępnie zarejestrowane w wszystkich dzierżaw usługi Azure AD w ramach aplikacji o identyfikatorze `cfa8b339-82a2-471a-a3c9-0fc0be7a4093`. I podobnie jak wszystkie aplikacje zarejestrowane w usłudze Azure AD [nazwy głównej usługi](/azure/active-directory/develop/app-objects-and-service-principals) obiekt zawiera właściwości tożsamości aplikacji. Następnie można podać jednostki usługi autoryzacji dostępu do innego zasobu, za pomocą kontroli dostępu opartej na rolach (RBAC).  
 
-Tożsamość aplikacji usługi Azure Key Vault wymaga uprawnień do *listy* i *ponownie wygenerować* klucze konta magazynu. Skonfiguruj te uprawnienia wykonując następujące czynności:
+Aplikacja usługi Azure Key Vault wymaga uprawnień do *listy* i *ponownie wygenerować* klucze konta magazynu. Te uprawnienia są włączone za pomocą wbudowanych [usługa Operator klucza konta magazynu](/azure/role-based-access-control/built-in-roles#storage-account-key-operator-service-role) rolę RBAC. Jednostki usługi Key Vault możesz przypisać do tej roli wykonując następujące czynności:
 
 ```powershell
-# Get the resource ID of the Azure Storage Account you want to manage.
-# Below, we are fetching a storage account using Azure Resource Manager
+# Get the resource ID of the Azure Storage Account you want Key Vault to manage
 $storage = Get-AzureRmStorageAccount -ResourceGroupName "mystorageResourceGroup" -StorageAccountName "mystorage"
 
-# Get Application ID of Azure Key Vault's service principal
-$servicePrincipal = Get-AzureRmADServicePrincipal -ServicePrincipalName cfa8b339-82a2-471a-a3c9-0fc0be7a4093
-
 # Assign Storage Key Operator role to Azure Key Vault Identity
-New-AzureRmRoleAssignment -ObjectId $servicePrincipal.Id -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storage.Id
+New-AzureRmRoleAssignment -ApplicationId “cfa8b339-82a2-471a-a3c9-0fc0be7a4093” -RoleDefinitionName 'Storage Account Key Operator Service Role' -Scope $storage.Id
 ```
 
-    >[!NOTE]
-    > For a classic account type, set the role parameter to *"Classic Storage Account Key Operator Service Role."*
+> [!NOTE]
+> Dla klasycznego konta typu, należy ustawić parametr roli na *"Klasyczne konto klucz Rola usługi Operator magazynu."*
+
+Po przypisaniu roli pomyślne dane wyjściowe powinny być podobne do następujących
+
+```console
+RoleAssignmentId   : /subscriptions/03f0blll-ce69-483a-a092-d06ea46dfb8z/resourceGroups/rgSandbox/providers/Microsoft.Storage/storageAccounts/sabltest/providers/Microsoft.Authorization/roleAssignments/189cblll-12fb-406e-8699-4eef8b2b9ecz
+Scope              : /subscriptions/03f0blll-ce69-483a-a092-d06ea46dfb8z/resourceGroups/rgSandbox/providers/Microsoft.Storage/storageAccounts/sabltest
+DisplayName        : Azure Key Vault
+SignInName         :
+RoleDefinitionName : Storage Account Key Operator Service Role
+RoleDefinitionId   : 81a9blll-bebf-436f-a333-f67b29880f1z
+ObjectId           : c730c8da-blll-4032-8ad5-945e9dc8262z
+ObjectType         : ServicePrincipal
+CanDelegate        : False
+```
 
 ## <a name="working-example"></a>Działający przykład
 
@@ -124,7 +134,7 @@ W poniższym przykładzie pokazano tworzenie magazynu kluczy zarządzanego konta
 
 ### <a name="prerequisite"></a>Wymagania wstępne
 
-Upewnij się, że zostały wykonane [Konfigurowanie uprawnień kontroli dostępu opartej na rolach](#setup-for-role-based-access-control-rbac-permissions).
+Przed rozpoczęciem upewnij się, że [autoryzować Key Vault w celu uzyskania dostępu do konta magazynu](#authorize-key-vault-to-access-to-your-storage-account).
 
 ### <a name="setup"></a>Konfigurowanie
 
@@ -199,7 +209,7 @@ $readSasToken = (Get-AzureKeyVaultSecret -VaultName $keyVaultName -SecretName "$
 $writeSasToken = (Get-AzureKeyVaultSecret -VaultName $keyVaultName -SecretName "$accountName-$writeSasName").SecretValueText
 ```
 
-### <a name="create-storage"></a>Utwórz magazyn
+### <a name="create-storage"></a>Tworzenie magazynu
 
 Należy zauważyć, że próba dostępu za pomocą *$readSasToken* zakończy się niepowodzeniem, ale, że można uzyskać dostęp za pomocą *$writeSasToken*.
 

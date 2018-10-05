@@ -5,26 +5,22 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: tutorial
-ms.date: 9/25/2018
+ms.date: 9/27/2018
 ms.author: victorh
 ms.custom: mvc
-ms.openlocfilehash: 766ad04251fbe404d43734115e41e23ae0a4be28
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 894389ec07fb8e371a269f895473fe82985de7c3
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46982053"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47405975"
 ---
 # <a name="tutorial-filter-inbound-traffic-with-azure-firewall-dnat-using-the-azure-portal"></a>Samouczek: filtrowanie ruchu przychodzącego za pomocą funkcji DNAT usługi Azure Firewall przy użyciu witryny Azure Portal
 
-Możesz skonfigurować funkcję translacji docelowych adresów sieciowych (DNAT) usługi Azure Firewall do wykonywania translacji i filtrowania ruchu przychodzącego do podsieci. W usłudze Azure Firewall nie istnieje pojęcie reguł ruchu przychodzącego i wychodzącego. Istnieją zasady aplikacji i zasady sieci, które są stosowane do wszelkiego ruchu przechodzącego przez zaporę. Najpierw stosowane są reguły sieci, a następnie reguły aplikacji, a reguły powodują zakończenie.
+Możesz skonfigurować funkcję translacji docelowych adresów sieciowych (DNAT) usługi Azure Firewall do wykonywania translacji i filtrowania ruchu przychodzącego do podsieci. Podczas konfigurowania funkcji DNAT akcja kolekcji reguł NAT jest ustawiana na wartość **Translacja docelowych adresów sieciowych (DNAT)**. Każda reguła w kolekcji reguł NAT umożliwia wykonanie translacji publicznego adresu IP i portu zapory na prywatny adres IP i port. Reguły DNAT niejawnie dodają odpowiednią regułę sieci zezwalającą na przetłumaczony ruch. Aby przesłonić to zachowanie, jawnie dodaj kolekcję reguł sieci z regułami odmowy zgodnymi z przetłumaczonym ruchem. Aby dowiedzieć się więcej na temat logiki przetwarzania reguł usługi Azure Firewall, zobacz [Azure Firewall rule processing logic (Logika przetwarzania reguł usługi Azure Firewall)](rule-processing.md).
 
->[!NOTE]
->Funkcja DNAT usługi Firewall jest obecnie dostępna tylko w programie Azure PowerShell i architekturze REST.
-
-Jeśli na przykład zostanie dopasowana reguła sieci, pakiet nie zostanie oceniony przez reguły aplikacji. Jeśli nie zostanie dopasowana reguła sieci i jeśli protokół pakietu to HTTP/HTTPS, pakiet zostanie oceniony przez reguły aplikacji. Jeśli nadal nie zostanie znalezione dopasowanie, pakiet zostanie oceniony względem [kolekcji reguł infrastruktury](infrastructure-fqdns.md). Jeśli wciąż nie zostanie znalezione dopasowanie, pakiet zostanie domyślnie odrzucony.
-
-Podczas konfigurowania funkcji DNAT akcja kolekcji reguł NAT jest ustawiana na wartość **Translacja docelowych adresów sieciowych (DNAT)**. Publiczny adres IP zapory i port są tłumaczone na prywatny adres IP i port. Następnie reguły są stosowane jak zwykle: najpierw reguły sieci, a potem reguły aplikacji. Możesz na przykład skonfigurować regułę sieci zezwalającą na ruch pulpitu zdalnego na porcie TCP 3389. Najpierw jest wykonywana translacja adresów, a następnie przy użyciu przetłumaczonych adresów są stosowane reguły sieci i reguły aplikacji.
+> [!NOTE]
+> Technologia DNAT nie działa w przypadku portów 80 i 22. Pracujemy nad jak najszybszym rozwiązaniem tego problemu. Do tego czasu można korzystać z dowolnego innego portu jako portu docelowego w regułach NAT. Port 80 lub 22 nadal może służyć jako port docelowy translacji. Na przykład można zamapować publiczny adres ip:81 na prywatny adres ip:80.
 
 Ten samouczek zawiera informacje na temat wykonywania następujących czynności:
 
@@ -33,7 +29,6 @@ Ten samouczek zawiera informacje na temat wykonywania następujących czynności
 > * Wdrażanie zapory
 > * Tworzenie trasy domyślnej
 > * Konfigurowanie reguły DNAT
-> * Konfigurowanie reguły sieci
 > * Testowanie zapory
 
 Jeśli nie masz subskrypcji platformy Azure, przed rozpoczęciem utwórz [bezpłatne konto](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
@@ -199,48 +194,18 @@ Na potrzeby podsieci **SN-Workload** skonfiguruj trasę domyślną ruchu wychodz
 
 ## <a name="configure-a-dnat-rule"></a>Konfigurowanie reguły DNAT
 
-```azurepowershell-interactive
- $rgName  = "RG-DNAT-Test"
- $firewallName = "FW-DNAT-test"
- $publicip = type the Firewall public ip
- $newAddress = type the private IP address for the Srv-Workload virtual machine 
- 
-# Get Firewall
-    $firewall = Get-AzureRmFirewall -ResourceGroupName $rgName -Name $firewallName
-  # Create NAT rule
-    $natRule = New-AzureRmFirewallNatRule -Name RL-01 -SourceAddress * -DestinationAddress $publicip -DestinationPort 3389 -Protocol TCP -TranslatedAddress $newAddress -TranslatedPort 3389
-  # Create NAT rule collection
-    $natRuleCollection = New-AzureRmFirewallNatRuleCollection -Name RC-DNAT-01 -Priority 200 -Rule $natRule
-  # Add NAT Rule collection to firewall:
-    $firewall.AddNatRuleCollection($natRuleCollection)
-  # Save:
-    $firewall | Set-AzureRmFirewall
-```
-## <a name="configure-a-network-rule"></a>Konfigurowanie reguły sieci
-
-1. Otwórz grupę zasobów**RG DNAT Test** i kliknij zaporę **FW-DNAT-test**.
-1. Na stronie **FW-DNAT-test** w obszarze **Ustawienia**, kliknij pozycję **Reguły**.
-2. Kliknij pozycję **Dodaj kolekcję reguł sieci**.
-
-Skonfiguruj reguły, używając poniższej tabeli, a następnie kliknij pozycję **Dodaj**:
-
-
-|Parametr  |Wartość  |
-|---------|---------|
-|Name (Nazwa)     |**RC-Net-01**|
-|Priorytet     |**200**|
-|Akcja     |**Zezwalaj**|
-
-W obszarze **Reguły**:
-
-|Parametr  |Ustawienie  |
-|---------|---------|
-|Name (Nazwa)     |**RL-RDP**|
-|Protokół     |**TCP**|
-|Adresy źródłowe     |*|
-|Adresy docelowe     |Prywatny adres IP maszyny wirtualnej **Srv-Workload**|
-|Porty docelowe|**3389**|
-
+1. Otwórz grupę zasobów**RG DNAT Test** i kliknij zaporę **FW-DNAT-test**. 
+1. Na stronie **FW-DNAT-test** w obszarze **Ustawienia**, kliknij pozycję **Reguły**. 
+2. Kliknij pozycję **Dodaj kolekcję reguł DNAT**. 
+3. W polu **Nazwa** wpisz **RC-DNAT-01**. 
+1. W polu **Priorytet** wpisz wartość **200**. 
+6. W obszarze **Reguły** w polu **Nazwa** wpisz **RL-01**. 
+7. W polu **Adresy źródłowe** wpisz znak *. 
+8. W polu **Adresy docelowe** wpisz publiczny adres IP zapory. 
+9. W polu **Porty docelowe** wpisz **3389**. 
+10. W polu **Przekształcony adres** wpisz prywatny adres IP maszyny wirtualnej Srv-Workload. 
+11. W polu **Przekształcony port** wpisz **3389**. 
+12. Kliknij pozycję **Add** (Dodaj). 
 
 ## <a name="test-the-firewall"></a>Testowanie zapory
 
@@ -262,7 +227,6 @@ W niniejszym samouczku zawarto informacje na temat wykonywania następujących c
 > * Wdrażanie zapory
 > * Tworzenie trasy domyślnej
 > * Konfigurowanie reguły DNAT
-> * Konfigurowanie reguły sieci
 > * Testowanie zapory
 
 Następnie możesz monitorować dzienniki usługi Azure Firewall.

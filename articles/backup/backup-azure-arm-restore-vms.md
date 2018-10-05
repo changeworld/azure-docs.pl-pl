@@ -9,12 +9,12 @@ ms.service: backup
 ms.topic: conceptual
 ms.date: 09/04/2017
 ms.author: geg
-ms.openlocfilehash: eb47b1d8d3f2859b2b5c0b79633b2d37e5a40756
-ms.sourcegitcommit: 5a9be113868c29ec9e81fd3549c54a71db3cec31
+ms.openlocfilehash: f7561ef4978e19439eafb6ef1a6ca1275c0f2bc7
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/11/2018
-ms.locfileid: "44380169"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804620"
 ---
 # <a name="use-the-azure-portal-to-restore-virtual-machines"></a>Przywracanie maszyn wirtualnych za pomocą witryny Azure portal
 Chroń swoje dane, tworząc migawki danych w określonych odstępach czasu. Te migawki są nazywane punktami odzyskiwania i są one przechowywane w magazynach usługi Recovery Services. Jeśli jest to konieczne naprawić lub ponownie utworzyć maszynę wirtualną (VM), można przywrócić maszynę Wirtualną z dowolnego z punktów odzyskiwania zapisanych. Przywracanie punktu odzyskiwania, możesz wykonywać następujące czynności:
@@ -37,6 +37,7 @@ Przywracanie maszyny Wirtualnej lub wszystkich dysków z maszyny Wirtualnej z ko
 * Wybierz typ przywracania, Utwórz nową maszynę Wirtualną lub Przywróć dyski i określ wymagane parametry. 
 
 ## <a name="select-a-restore-point-for-restore"></a>Wybierz punkt przywracania do przywracania
+
 1. Zaloguj się w [Portalu Azure](http://portal.azure.com/).
 
 1. W menu platformy Azure wybierz **Przeglądaj**. Na liście usług wpisz **usługi Recovery Services**. Na liście usług dostosowuje się do jakiej został wpisany. Po wyświetleniu **Magazyny usługi Recovery Services**, wybierz ją.
@@ -102,7 +103,7 @@ Po wybraniu punktu przywracania, należy wybrać konfigurację przywracania masz
 Portal zawiera **szybkie tworzenie** opcję dla przywróconej maszyny Wirtualnej. Aby dostosować konfigurację maszyny Wirtualnej lub nazwy zasobów utworzonych jako część tworzenia nowych wybór maszyny Wirtualnej, przy użyciu programu PowerShell lub portalu do przywrócenia kopii zapasowej dysków. Aby dołączyć je do dowolnie konfiguracji maszyny Wirtualnej, należy użyć poleceń programu PowerShell. Lub możesz użyć szablonu, który jest dostarczany z przywróconych dysków, aby dostosować przywróconej maszyny Wirtualnej. Aby uzyskać informacje o tym, jak przywrócić maszynę Wirtualną, która ma wiele kart sieciowych lub w ramach modułu równoważenia obciążenia, zobacz [przywrócić maszynę Wirtualną ze specjalnymi konfiguracjami sieci](#restore-vms-with-special-network-configurations). Jeśli maszyna wirtualna Windows używa [Centrum licencjonowania](../virtual-machines/windows/hybrid-use-benefit-licensing.md), Przywróć dyski i szablon programu PowerShell/określonych w tym artykule do utworzenia maszyny Wirtualnej. Upewnij się, że podajesz **typu licencji** jako "Windows_Server" podczas tworzenia maszyny Wirtualnej, aby móc korzystać z zalet Centrum do przywróconej maszyny wirtualnej. 
  
 ## <a name="create-a-new-vm-from-a-restore-point"></a>Utwórz nową maszynę Wirtualną z punktu przywracania
-1. Jeśli nie masz już istnieje, [wybierz punkt przywracania](#restore-a vm-with-special-network-configurations) przed rozpoczęciem tworzenia nowej maszyny Wirtualnej z punktu przywracania. Po wybraniu punktu przywracania **przywracania konfiguracji** bloku, wprowadź lub wybierz wartości dla każdego z następujących pól:
+1. Jeśli nie masz już istnieje, [wybierz punkt przywracania](#select-a-restore-point-for-restore) przed rozpoczęciem tworzenia nowej maszyny Wirtualnej z punktu przywracania. Po wybraniu punktu przywracania **przywracania konfiguracji** bloku, wprowadź lub wybierz wartości dla każdego z następujących pól:
 
     a. **Typ przywracania**. Tworzy maszynę wirtualną.
 
@@ -239,9 +240,9 @@ Aby w pełni ponownie utworzyć maszyny wirtualne po przywróceniu do dysku, wyk
 
    b. Tworzenie maszyny Wirtualnej, aby nawiązać połączenie [modułu równoważenia obciążenia dostępnego z Internetu](https://azure.microsoft.com/documentation/articles/load-balancer-internet-getstarted/).
 
-   c. Utwórz Maszynę wirtualną za pomocą [wiele kart sieciowych](https://azure.microsoft.com/documentation/articles/virtual-networks-multiple-nics/).
+   c. Utwórz Maszynę wirtualną za pomocą [wiele kart sieciowych](../virtual-machines/windows/multiple-nics.md).
 
-   d. Utwórz Maszynę wirtualną za pomocą [wielu zastrzeżone adresy IP](https://azure.microsoft.com/documentation/articles/virtual-networks-reserved-public-ip/).
+   d. Utwórz Maszynę wirtualną za pomocą [wielu zastrzeżone adresy IP](../virtual-network/virtual-network-multiple-ip-addresses-powershell.md).
 
 ## <a name="next-steps"></a>Kolejne kroki
 Teraz, aby można było przywrócić maszyny wirtualne, zobacz artykuł dotyczący rozwiązywania problemów dla informacji o typowych problemów z maszynami wirtualnymi. Ponadto zapoznaj się z artykuł na temat zarządzania zadaniami z maszynami wirtualnymi.

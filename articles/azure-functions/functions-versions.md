@@ -7,14 +7,14 @@ author: ggailey777
 manager: jeconnoc
 ms.service: azure-functions
 ms.topic: conceptual
-ms.date: 09/14/2018
+ms.date: 10/03/2018
 ms.author: glenga
-ms.openlocfilehash: d4a0d53c3438be9ea4e0229e4a456ed6f5960996
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 372cf445e518ccdb287ce23ade6a3d92ddc5bc2b
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48249064"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48784903"
 ---
 # <a name="azure-functions-runtime-versions-overview"></a>Wersje środowiska uruchomieniowego usługi Azure Functions — omówienie
 
@@ -63,6 +63,7 @@ Oprócz zmian w języków i powiązań istnieją pewne funkcje, które zostały 
 * Ustawienia aplikacji (`local.settings.json`) wymaga wartości dla właściwości `FUNCTIONS_WORKER_RUNTIME` mapujący do języka aplikacji `dotnet | node | java | python`.
     * Aby poprawić czas zużycia i uruchamiania, aplikacje mogą zawierać maksymalnie jeden język. Możesz opublikować wielu aplikacjom funkcji w różnych językach dla tego samego rozwiązania.
 * Domyślna wartość limitu czasu dla funkcji w planie usługi app service to 30 minut.  Można nadal ją ręcznie ustawić bez ograniczeń.
+* Ograniczenia współbieżności HTTP są implementowane przez domyślną dla funkcji planu zużycie (100 równoczesnych żądań na wystąpienie).  Te ustawienia można modyfikować za pomocą `host.json` pliku.
 * [Ze względu na .NET core ograniczenia](https://github.com/Azure/azure-functions-host/issues/3414), `.fsx` skrypty dla F # funkcje zostały usunięte. Skompilowane funkcje F # są nadal obsługiwane.
 * Format Wyzwalacze oparte na elementach webhook (np. usługi Event Grid) została zmieniona na `https://{app}/runtime/webhooks/{triggerName}`
 

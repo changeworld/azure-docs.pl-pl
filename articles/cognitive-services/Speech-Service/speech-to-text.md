@@ -9,12 +9,12 @@ ms.component: speech-service
 ms.topic: article
 ms.date: 05/07/2018
 ms.author: v-jerkin
-ms.openlocfilehash: ef2f349333592e05185c5502490828832cb6c24c
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 456b60ee44f3e47bc04da341fd0e3df86662d16b
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018353"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785447"
 ---
 # <a name="about-the-speech-to-text-api"></a>Zamiana mowy na tekst interfejsu API — informacje
 
@@ -34,9 +34,11 @@ ms.locfileid: "48018353"
 
 - Interpretacja języka naturalnego. Dzięki integracji z usługą [Language Understanding](https://docs.microsoft.com/azure/cognitive-services/luis/) (LUIS), użytkownik może dziedziczyć intencje i podmioty mowy. Użytkownicy nie muszą znać słownictwa aplikacji, ale można opisać mają własnymi słowami.
 
+- Współczynnik ufności jest zwracany odpowiedź od usługi, jeśli określisz szczegółowych danych wyjściowych na obiekt konfiguracji mowy (właściwość SpeechConfig.OutputFormat). Następnie możesz użyć jednej z metod Best() wynik lub pobrać go bezpośrednio wynik w JSON zwrócony przez usługę (podobnie do wyniku. Properties.GetProperty(PropertyId.SpeechServiceResponse_JsonResult)).
+
 ## <a name="api-capabilities"></a>Funkcje interfejsu API
 
-Wiele możliwości **zamiana mowy na tekst** interfejsu API — zwłaszcza w części dotyczącej dostosowywania — są dostępne za pośrednictwem interfejsu REST. Poniższa tabela zawiera podsumowanie możliwości każdej metody uzyskiwania dostępu do interfejsu API. Dla pełną listę możliwości i interfejsu API szczegółowych informacji, zapoznaj się [struktury Swagger](https://swagger/service/11ed9226-335e-4d08-a623-4547014ba2cc#/)
+Niektóre z możliwości **zamiana mowy na tekst** interfejsu API — zwłaszcza w części dotyczącej dostosowywania — są dostępne za pośrednictwem interfejsu REST. Poniższa tabela zawiera podsumowanie możliwości każdej metody uzyskiwania dostępu do interfejsu API. 
 
 | Przypadek użycia | REST | Zestawy SDK |
 |-----|-----|-----|----|

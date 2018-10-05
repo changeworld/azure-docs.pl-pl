@@ -26,7 +26,7 @@ Postępuj zgodnie z instrukcjami podanymi w [zawartości instalowania narzędzi 
 
 ## <a name="license"></a>Licencja
 
-Zapoznaj się [licencji](.github/LICENSE), [LICENSE-CODE](.github/LICENSE-CODE) i [ThirdPartyNotices](.github/ThirdPartyNotices) uzyskać wszystkie informacje o licencji.
+Zapoznaj się [licencji](.github/LICENSE), [LICENSE-CODE](.github/LICENSE-CODE) i [ThirdPartyNotices](.github/ThirdPartyNotices.md) uzyskać wszystkie informacje o licencji.
 
 ## <a name="code-of-conduct"></a>Kodeks postępowania
 

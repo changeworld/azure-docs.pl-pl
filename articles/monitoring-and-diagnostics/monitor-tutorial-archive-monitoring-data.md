@@ -9,16 +9,22 @@ ms.date: 09/25/2017
 ms.author: johnkem
 ms.custom: mvc
 ms.component: metrics
-ms.openlocfilehash: f6b7b9fe73f5e815e08bbf4f6493ee181a0c692b
-ms.sourcegitcommit: a06c4177068aafc8387ddcd54e3071099faf659d
+ms.openlocfilehash: be6f3efd74d013e9ddb02c44031dd6a402f00871
+ms.sourcegitcommit: b7e5bbbabc21df9fe93b4c18cc825920a0ab6fab
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 07/09/2018
-ms.locfileid: "37918275"
+ms.lasthandoff: 09/27/2018
+ms.locfileid: "47409494"
 ---
-# <a name="archive-azure-monitoring-data"></a>Archiwizowanie danych monitorowania platformy Azure
+# <a name="archive-azure-metric-and-log-data-using-azure-storage"></a>Archiwizowanie metryk platformy Azure i zapisywanie danych w dzienniku przy użyciu usługi Azure Storage
 
-Dane dzienników i metryk, tworzone w kilku warstwach środowiska platformy Azure, można zarchiwizować na koncie usługi Azure Storage. Pozwala to zachować historię danych monitorowania w niedrogim magazynie, który nie zapewnia możliwości wyszukiwania, po upływie okresu przechowywania tych danych w usłudze Log Analytics lub Azure Monitor. W tym samouczku przedstawiono kroki konfigurowania środowiska platformy Azure pod kątem archiwizowania danych na koncie magazynu.
+Dane dzienników i metryk, tworzone w kilku warstwach środowiska platformy Azure, można zarchiwizować na koncie usługi Azure Storage. Pozwala to zachować historię danych monitorowania w niedrogim magazynie, który nie zapewnia możliwości wyszukiwania, po upływie okresu przechowywania tych danych. 
+
+- Metryki platformy usługi Azure Monitor są przechowywane przez 93 dni. 
+- Dzienniki diagnostyczne zasobów są wyświetlane tylko wtedy, gdy są kierowane do usługi Log Analytics, w której mogą być przechowywane przez co najmniej 30 dni (ten okres można skonfigurować). 
+- Wpisy dziennika aktywności są przechowywane przez 90 dni.  
+
+W tym samouczku przedstawiono kroki konfigurowania środowiska platformy Azure pod kątem archiwizowania danych na koncie magazynu.
 
 > [!div class="checklist"]
 > * Tworzenie konta magazynu do przechowywania danych monitorowania

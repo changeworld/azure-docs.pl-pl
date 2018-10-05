@@ -12,19 +12,19 @@ ms.author: bonova
 ms.reviewer: carlrab
 manager: craigg
 ms.date: 10/01/2018
-ms.openlocfilehash: a09a19957c318416f3cb4de79305b181dbc3be81
-ms.sourcegitcommit: 7bc4a872c170e3416052c87287391bc7adbf84ff
+ms.openlocfilehash: 698fafac771c79bf014d6e9492c8ca22d1c31b47
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/02/2018
-ms.locfileid: "48018289"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48784982"
 ---
 # <a name="what-is-a-managed-instance"></a>Co to jest wystąpienie zarządzane?
 
 Wystąpienie usługi Azure SQL Database Managed jest nowy model wdrażania usługi Azure SQL Database, zapewniając prawie 100% utrzymywania zgodności z najnowszą programu SQL Server w środowisku lokalnym aparatu bazy danych (Enterprise Edition), zapewniających macierzystej [sieć wirtualną (VNet)](../virtual-network/virtual-networks-overview.md) implementacji, odnoszący się do typowe problemy dotyczące zabezpieczeń i [modelu biznesowego](https://azure.microsoft.com/pricing/details/sql-database/) korzystna dla klientów programu SQL Server w środowisku lokalnym. Wystąpienie zarządzane umożliwia istniejących klientów programu SQL Server do lift- and -shift ich aplikacji lokalnych do chmury przy minimalnych zmianach aplikacji i baz danych. W tym samym czasie, wystąpienie zarządzane zachowuje wszystkie możliwości PaaS (Aktualizacje automatyczne stosowanie poprawek i wersja, [automatyczne kopie zapasowe](sql-database-automated-backups.md), [wysokiej dostępności](sql-database-high-availability.md) ), która znacząco zmniejsza obciążenie zarządzania a całkowity koszt posiadania.
 
 > [!IMPORTANT]
-> Listę regionów, w których jest obecnie dostępne wystąpienie zarządzane, można znaleźć w temacie [Migrate your databases to a fully managed service with Azure SQL Database Managed Instance (Migrowanie baz danych do w pełni zarządzanej usługi za pomocą wystąpienia zarządzanego usługi Azure SQL Database)](https://azure.microsoft.com/blog/migrate-your-databases-to-a-fully-managed-service-with-azure-sql-database-managed-instance/).
+> Aby uzyskać listę regionów, w których jest obecnie dostępne wystąpienie zarządzane, zobacz [obsługiwane regiony](sql-database-managed-instance-resource-limits.md#supported-regions).
  
 Poniższy diagram przedstawia kluczowe funkcje wystąpienia zarządzanego:
 
@@ -41,7 +41,7 @@ Podjęcie decyzji, między pojedynczej bazy danych Azure SQL Database, wystąpie
 Wystąpienie usługi Azure SQL Database Managed łączy najlepsze funkcje, które są dostępne zarówno w usłudze Azure SQL Database i aparatu bazy danych programu SQL Server.
 
 > [!IMPORTANT]
-> Wystąpienie zarządzane jest uruchamiany z wszystkich funkcji najnowszą wersję programu SQL Server, w tym operacje online, plan automatyczne poprawki i inne ulepszenia wydajności enterprise. 
+> Wystąpienie zarządzane jest uruchamiany z wszystkich funkcji najnowszą wersję programu SQL Server, w tym operacje online, plan automatyczne poprawki i inne ulepszenia wydajności enterprise. Porównanie funkcji dostępnych została wyjaśniona w [porównanie funkcji: Azure SQL Database a baza danych programu SQL Server](sql-database-features.md).
 
 | **Korzyści PaaS** | **Ciągłość działalności biznesowej:** |
 | --- | --- |
@@ -49,22 +49,34 @@ Wystąpienie usługi Azure SQL Database Managed łączy najlepsze funkcje, któr
 |**Zabezpieczenia i zgodność** | **Zarządzanie**|
 |Środowisko izolowane ([Integracja z siecią wirtualną](sql-database-managed-instance-vnet-configuration.md), pojedynczej dzierżawy usługi, dedykowanych obliczeń i magazynowania) <br>[Przezroczyste szyfrowanie danych (TDE)](https://docs.microsoft.com/sql/relational-databases/security/encryption/transparent-data-encryption-azure-sql)<br>[Uwierzytelnianie usługi Azure AD](sql-database-aad-authentication.md), pojedynczy Obsługa logowania jednokrotnego <br>Zgodnego ze standardami zgodności takie same jak Azure SQL database <br>[Inspekcja SQL](sql-database-managed-instance-auditing.md) <br>[Wykrywanie zagrożeń](sql-database-managed-instance-threat-detection.md) |Interfejs API Azure Resource Manager do automatyzowania usługi aprowizacja i skalowanie <br>Funkcjonalność portalu platformy Azure dla usługi ręczna aprowizacja i skalowanie <br>Data Migration Service 
 
+Najważniejsze funkcje wystąpienie zarządzane są wyświetlane w poniższej tabeli:
+
+|Cecha | Opis|
+|---|---|
+| Wersja programu SQL Server / build | Aparat bazy danych programu SQL Server (Najnowsza wersja stabilna) |
+| Zarządzane automatycznych kopii zapasowych | Yes |
+| Wbudowane wystąpienia i bazy danych monitorowania i metryki | Yes |
+| Automatyczne stosowanie poprawek | Yes |
+| Najnowsze funkcje aparatu bazy danych | Yes | 
+| Liczba plików danych (wiersze) na bazę danych | Wiele | 
+| Liczba plików dziennika (dziennik) na bazę danych | 1 | 
+| Sieć wirtualna - wdrożenia usługi Azure Resource Manager | Yes |
+| Sieć wirtualna - klasycznego modelu wdrażania | Nie |
+| Portal pomocy technicznej | Yes|
+| Wbudowana integracja Service (SSIS) | Nie — SSIS jest częścią [PaaS fabryki danych platformy Azure](https://docs.microsoft.com/azure/data-factory/tutorial-deploy-ssis-packages-azure) |
+| Wbudowane Analysis Services (SSAS) | Nie — usługi SSAS jest oddzielona [PaaS](https://docs.microsoft.com/azure/analysis-services/analysis-services-overview) |
+| Wbudowana usługa raportowania (SSRS) | Nie — przy użyciu usługi Power BI lub IaaS usług SSRS |
+|||
+
 ## <a name="vcore-based-purchasing-model"></a>model zakupu w oparciu o rdzeń wirtualny
 
-[Modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) zapewnia elastyczność, kontrola, przejrzystości i prostą metodę tłumaczenia wymagań dotyczących obciążenia lokalne do chmury. Ten model umożliwia skalowanie zasobów obliczeniowych, pamięci i magazynu, w zależności od ich potrzeb obciążenia. Model rdzenia wirtualnego jest również kwalifikuje się do 30 procent oszczędności w przypadku [korzyści z używania hybrydowej platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
+[Modelu zakupu opartego na rdzeniach wirtualnych](sql-database-service-tiers-vcore.md) w wystąpieniu zarządzanym zapewnia elastyczność, kontrola, przejrzystości i prostą metodę tłumaczenia wymagań dotyczących obciążenia lokalne do chmury. Ten model umożliwia zmianę obliczeniowych, pamięci i magazynu, w zależności od potrzeb obciążenia. Model rdzenia wirtualnego jest również kwalifikuje się do 30 procent oszczędności w przypadku [korzyści z używania hybrydowej platformy Azure dla programu SQL Server](../virtual-machines/windows/hybrid-use-benefit-licensing.md).
 
-Rdzeń wirtualny reprezentuje logiczny Procesor CPU z opcją wyboru generacji sprzętu.
-- Logiczne procesory CPU 4. generacji wykorzystują procesory Intel E5-2673 v3 (Haswell) z zegarem 2,4 GHz.
-- Logiczne procesory CPU 5 generacji wykorzystują procesory Intel E5-2673 v4 (broadwell z zegarem) 2,3 GHz.
+Model rdzenia wirtualnego można wybrać generacji sprzętu.
+- **Generacja 4** procesorów logicznych są oparte na Intel E5-2673 v3 (Haswell) 2,4 GHz, procesory, dołączonych dysków SSD, fizyczne rdzenie, 7 GB pamięci RAM na rdzeń i rozmiarów wystąpień obliczeniowych od 8 do 24 rdzenie wirtualne.
+- **Velikost haldy 5** procesorów logicznych są oparte na Intel E5-2673 v4 (broadwell z zegarem) 2.3 — GHz, szybkie eNVM dyski SSD, funkcji hyper Threading rdzeń logiczny, a obliczenia rozmiarów, od 8 do 80 rdzeni.
 
-Poniższa tabela pomoże Ci zrozumieć, jak wybrać optymalną konfigurację wystąpień obliczeniowych, pamięci, magazynu i zasoby we/wy.
-
-||4. generacja|5. generacja|
-|----|------|-----|
-|Sprzęt|Intel E5-2673 v3 (Haswell) procesorów 2,4 GHz, dołączone dyski SSD — rdzeń wirtualny = 1 PP (fizycznych rdzeni)|Intel E5-2673 v4 (broadwell z zegarem) 2,3 GHz procesorów, szybkie eNVM dyski SSD, — rdzeń wirtualny = LP 1 (hyper wątek)|
-|Obliczenia rozmiarów|8, 16, 24 rdzenie wirtualne|8, 16, 24, 32, 40, 64, 80 rdzeni wirtualnych|
-|Memory (Pamięć)|7 GB na rdzeń wirtualny|5.5 GB na rdzeń wirtualny|
-||||
+Znajdź więcej informacji na temat różnic między generacji sprzętu w [limity zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md#hardware-generation-characteristics).
 
 ## <a name="managed-instance-service-tiers"></a>Zarządzane wystąpienie warstwy usług
 
@@ -83,32 +95,11 @@ Na poniższej liście opisano kluczowe cechy charakterystyczne dla warstwy usłu
 
 - Projektowanie pod kątem większość aplikacji biznesowych z wymaganiami dotyczącymi wydajności typowe 
 - Magazyn Azure w wersji Premium o wysokiej wydajności (8 TB) 
-- 100 baz danych dla każdego wystąpienia 
+- Wbudowane [wysokiej dostępności](sql-database-high-availability.md#standardgeneral-purpose-availability) oparte na niezawodnej usługi Azure Premium Storage i [usługi Azure Service Fabric](../service-fabric/service-fabric-overview.md)
 
-Poniższa lista zawiera opis kluczowych charakterystyk warstwy usług ogólnego przeznaczenia:
+Aby uzyskać więcej informacji, zobacz [Storate warstwy w warstwie przeznaczenie ogólne](https://medium.com/azure-sqldb-managed-instance/file-layout-in-general-purpose-azure-sql-managed-instance-cf21fff9c76c) i [magazynu najlepsze rozwiązania w zakresie wydajności i zagadnienia dotyczące usługi Azure SQL DB wystąpienia zarządzanego (ogólnego przeznaczenia)](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/).
 
-|Cecha | Opis|
-|---|---|
-| Liczba rdzeni wirtualnych * | 8, 16, 24 (gen 4)<br>8, 16, 24, 32, 40, 64, 80 (gen 5)|
-| Wersja programu SQL Server / build | Aparat bazy danych programu SQL Server (Najnowsza wersja stabilna) |
-| Minimalny rozmiar magazynu | 32 GB |
-| Maksymalny rozmiar magazynu | 8 TB |
-| Maksymalny rozmiar magazynu na bazę danych | Określony przez rozmiar maksymalnego rozmiaru magazynu dla każdego wystąpienia |
-| Oczekiwany magazynu, operacje We/Wy | 500-7500 IOPS na plik danych (w zależności od danych plików). Zobacz [magazynu w warstwie Premium](../virtual-machines/windows/premium-storage-performance.md#premium-storage-disk-sizes) |
-| Liczba plików danych (wiersze) na bazę danych | Wiele | 
-| Liczba plików dziennika (dziennik) na bazę danych | 1 | 
-| Zarządzane automatycznych kopii zapasowych | Yes |
-| WYSOKA DOSTĘPNOŚĆ | Dane przechowywane w usłudze Azure Storage i [usługi Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
-| Wbudowane wystąpienia i bazy danych monitorowania i metryki | Yes |
-| Automatyczne stosowanie poprawek | Yes |
-| Sieć wirtualna - wdrożenia usługi Azure Resource Manager | Yes |
-| Sieć wirtualna - klasycznego modelu wdrażania | Nie |
-| Portal pomocy technicznej | Yes|
-|||
-
-\* Rdzeń wirtualny reprezentuje logiczny Procesor CPU z opcją wyboru generacji sprzętu. Logiczne procesory CPU 4 generacji wykorzystują procesory Intel E5-2673 v3 (Haswell) 2,4 GHz, a logiczne procesory CPU 5 ogólnego są oparte na Intel E5-2673 v4 (broadwell z zegarem) 2,3 GHz. 
-
-Aby uzyskać więcej informacji, zobacz [dostępności Standard/ogólnego przeznaczenia i architektura](sql-database-high-availability.md#standardgeneral-purpose-availability) w usłudze Azure SQL Database i [magazynu najlepsze rozwiązania w zakresie wydajności i zagadnienia dotyczące usługi Azure SQL DB wystąpienia zarządzanego (Ogólne Cel)](https://blogs.msdn.microsoft.com/sqlcat/2018/07/20/storage-performance-best-practices-and-considerations-for-azure-sql-db-managed-instance-general-purpose/).
+Znajdź więcej informacji na temat różnic między warstwami usług w [limity zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md#service-tier-characteristics).
 
 ### <a name="business-critical-service-tier-preview"></a>Warstwy usług krytycznych Business (wersja zapoznawcza)
 
@@ -117,33 +108,14 @@ Warstwy usług krytycznych firm zaprojektowano pod kątem aplikacji za pomocą w
 Poniższa lista zawiera opis kluczowych charakterystyk krytyczne dla działania firmy warstwy usług: 
 -   Przeznaczona dla aplikacji biznesowych o najwyższej wydajności i wymaganiami wysokiej dostępności 
 -   Dołączono superszybkiego magazyn SSD (maksymalnie 1 TB na Gen 4 i maksymalnie 4 TB w Gen 5)
--   Obsługuje maksymalnie 100 baz danych na wystąpienie 
-- Wbudowane dodatkowe tylko do odczytu wystąpienie, które mogą służyć do raportowania i innych obciążeń, tylko do odczytu
+- Wbudowane [wysokiej dostępności](sql-database-high-availability.md#premiumbusiness-critical-availability) na podstawie [zawsze włączonych grup dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) i [usługi Azure Service Fabric](../service-fabric/service-fabric-overview.md).
+- Dodatkowe wbudowane [repliki bazy danych tylko do odczytu](sql-database-read-scale-out.md) mogą służyć do raportowania i innych obciążeń, tylko do odczytu
 - [Przetwarzanie OLTP danych w pamięci](sql-database-in-memory.md) które mogą być używane w przypadku obciążeń z wymogami wysokiej prefrmance  
-
-|Cecha | Opis|
-|---|---|
-| Liczba rdzeni wirtualnych * | 8, 16, 24, 32 (gen 4)<br>8, 16, 24, 32, 40, 64, 80 (gen 5)|
-| Wersja programu SQL Server / build | Program SQL Server najnowsza wersja (dostępne) |
-| Dodatkowe funkcje | [Przetwarzanie OLTP danych w pamięci](sql-database-in-memory.md)<br> 1 dodatkowe repliki tylko do odczytu ([odczytu skalowalnego w poziomie](sql-database-read-scale-out.md))
-| Minimalny rozmiar magazynu | 32 GB |
-| Maksymalny rozmiar magazynu | Gen 4: 1 TB (wszystkie rozmiary generacji — rdzeń wirtualny)<br> 5. generacji:<ul><li>1 TB, 8, 16 rdzeni wirtualnych</li><li>2 TB dla 24 rdzenie wirtualne</li><li>4 TB dla 32, 40, 64, 80 rdzeni wirtualnych</ul>|
-| Maksymalny rozmiar magazynu na bazę danych | Określony przez rozmiar maksymalnego rozmiaru magazynu dla każdego wystąpienia |
-| Liczba plików danych (wiersze) na bazę danych | Wiele | 
-| Liczba plików dziennika (dziennik) na bazę danych | 1 | 
-| Zarządzane automatycznych kopii zapasowych | Yes |
-| WYSOKA DOSTĘPNOŚĆ | Dane przechowywane na lokalnych dyskach SSD i użyj [zawsze włączonych grup dostępności](https://docs.microsoft.com/sql/database-engine/availability-groups/windows/always-on-availability-groups-sql-server) i [usługi Azure Service Fabric](../service-fabric/service-fabric-overview.md) |
-| Wbudowane wystąpienia i bazy danych monitorowania i metryki | Yes |
-| Automatyczne stosowanie poprawek | Yes |
-| Sieć wirtualna - wdrożenia usługi Azure Resource Manager | Yes |
-| Sieć wirtualna - klasycznego modelu wdrażania | Nie |
-| Portal pomocy technicznej | Yes|
-|||
-
-Aby uzyskać więcej informacji, zobacz [dostępność w warstwie Premium/krytyczne i architektura](sql-database-high-availability.md#premiumbusiness-critical-availability) w usłudze Azure SQL Database.
 
 > [!IMPORTANT]
 > **Krytyczne dla działania firmy** warstwy usługi jest w wersji zapoznawczej.
+
+Znajdź więcej informacji na temat różnic między warstwami usług w [limity zasobów wystąpienia zarządzanego](sql-database-managed-instance-resource-limits.md#service-tier-characteristics).
 
 ## <a name="advanced-security-and-compliance"></a>Zaawansowane zabezpieczenia i zgodność 
 

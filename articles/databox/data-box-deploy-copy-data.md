@@ -12,14 +12,14 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 09/25/2018
 ms.author: alkohli
-ms.openlocfilehash: 0204445464a9d61b4e25be1d71373ce8394b32f0
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 9bc84a9b08c4cfbdf7f24416c923e0dbd7076556
+ms.sourcegitcommit: 51a1476c85ca518a6d8b4cc35aed7a76b33e130f
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46957675"
+ms.lasthandoff: 09/25/2018
+ms.locfileid: "47161934"
 ---
 # <a name="tutorial-copy-data-to-azure-data-box"></a>Samouczek: kopiowanie danych na urządzenie Azure Data Box 
 
@@ -233,7 +233,7 @@ W celu zapewnienia integralności danych podczas kopiowania obliczana jest suma 
 
 Jeśli korzystasz z komputera-hosta z systemem Linux, użyj narzędzia do kopiowania podobnego do narzędzia Robocopy. W systemie Linux są dostępne na przykład narzędzia [rsync](https://rsync.samba.org/), [FreeFileSync](https://www.freefilesync.org/), [Unison](https://www.cis.upenn.edu/~bcpierce/unison/) lub [Ultracopier](https://ultracopier.first-world.info/).  
 
-Polecenie cp jest jedną z najlepszych opcji do kopiowania katalogów. Aby uzyskać więcej informacji dotyczących użycia, przejdź do [stron man narzędzia cp](http://man7.org/linux/man-pages/man1/cp.1.html).
+Polecenie `cp` jest jedną z najlepszych opcji do kopiowania katalogów. Aby uzyskać więcej informacji dotyczących użycia, przejdź do [stron man narzędzia cp](http://man7.org/linux/man-pages/man1/cp.1.html).
 
 W przypadku korzystania z opcji rsync na potrzeby kopiowania wielowątkowego należy przestrzegać następujących wytycznych:
 
@@ -273,7 +273,7 @@ Ostatnim krokiem jest przygotowanie urządzenia do wysłania. W tym kroku wszyst
    
     ![Przygotowanie do wysłania 1](media/data-box-deploy-copy-data/prepare-to-ship1.png)
 
-2. Jeśli nie włączono tworzenia sumy kontrolnej, zostanie wyświetlona opcja umożliwiająca włączenie tej funkcji. W celu zachowania integralności danych zaleca się wykonanie weryfikacji sumy kontrolnej. Wybranie pozycji **Włącz sumę kontrolną** spowoduje rozpoczęcie obliczania sumy kontrolnej. Ten proces może zająć trochę czasu w zależności od rozmiaru danych. Kliknij przycisk **Rozpocznij przygotowywanie**.
+2. Domyślnie sumy kontrolne są obliczane podczas przygotowania do wysłania. Obliczanie sum kontrolnych może trochę potrwać — w zależności od rozmiaru danych. Kliknij przycisk **Rozpocznij przygotowywanie**.
     1. Udziały urządzenia zostaną przeniesione w tryb offline, a urządzenie zostanie zablokowane na czas przygotowywania do wysłania.
         
         ![Przygotowanie do wysłania 1](media/data-box-deploy-copy-data/prepare-to-ship2.png) 

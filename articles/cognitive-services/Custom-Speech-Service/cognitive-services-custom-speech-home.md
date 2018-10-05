@@ -1,49 +1,50 @@
 ---
-title: Niestandardowe Przegląd Speech Service na platformie Azure | Dokumentacja firmy Microsoft
-description: Custom Speech Service jest oparta na chmurze usługi, która umożliwia użytkownikom dostosowywanie modele mowy na tekst zamiany mowy na tekst.
+title: Czym jest usługa Custom Speech Service?
+titlesuffix: Azure Cognitive Services
+description: Custom Speech Service to oparta na chmurze usługa, która umożliwia użytkownikom dostosowywanie modeli mowy na potrzeby zapisywania transkrypcji po zamianie mowy na tekst.
 services: cognitive-services
 author: PanosPeriorellis
-manager: onano
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: custom-speech
-ms.topic: article
+ms.topic: overview
 ms.date: 02/07/2017
 ms.author: panosper
 ROBOTS: NOINDEX
-ms.openlocfilehash: da88989753069f7ba8ca2c2e2806a648f3df4e3c
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
-ms.translationtype: MT
+ms.openlocfilehash: f90fc40a42806cfb002da2d9943eaa41736df4d7
+ms.sourcegitcommit: ad08b2db50d63c8f550575d2e7bb9a0852efb12f
+ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46948370"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47222747"
 ---
 # <a name="what-is-custom-speech-service"></a>Czym jest usługa Custom Speech Service?
 
-Usługa Custom Speech Service to usługa oparta na chmurze, która dostarcza użytkownikom możliwość dostosowania modele mowy na tekst zamiany mowy na tekst.
-Aby użyć Custom Speech Service, zobacz [Custom Speech portalu](https://cris.ai).
+Custom Speech Service to oparta na chmurze usługa, która daje użytkownikom możliwość dostosowywania modeli mowy na potrzeby zapisywania transkrypcji po zamianie mowy na tekst.
+Aby dowiedzieć się, jak używać usługi Custom Speech Service, zobacz [Portal usługi Custom Speech Service](https://cris.ai).
 
-Custom Speech Service umożliwia tworzenie modeli języków niestandardowych i modeli akustycznych dostosowane do aplikacji i użytkowników. Przez przekazanie określonych mowy i/lub dane tekstowe, aby usługa Custom Speech Service, możesz utworzyć niestandardowe modele, które mogą być używane w połączeniu z istniejących modeli mowy z najnowocześniejszych firmy Microsoft.
+Usługa Custom Speech Service umożliwia tworzenie niestandardowych modeli języków i modeli akustycznych dostosowanych do aplikacji i użytkowników. Przekazując własne dane mowy i/lub tekstu do usługi Custom Speech Service, możesz tworzyć niestandardowe modele, których można używać w połączeniu z gotowymi modelami mowy firmy Microsoft najwyższej klasy.
 
-Na przykład w przypadku dodawania interakcji głosowej, telefonu komórkowego, tabletu lub aplikacji na komputerze, można utworzyć modelu języka niestandardowego, który może być łączone z model akustyczny firmy Microsoft, aby utworzyć punkt końcowy rozpoznawania mowy na tekst, przeznaczone dla aplikacji. Jeśli aplikacja jest przeznaczony dla określonego środowiska lub populacji określonego użytkownika, można również tworzyć i wdrożyć niestandardowy model akustyczny z tą usługą.
+Na przykład w przypadku dodawania interakcji głosowej do aplikacji dla telefonów komórkowych, tabletów lub komputerów możesz utworzyć niestandardowy model języka, a następnie połączyć go z modelem akustycznym firmy Microsoft, aby utworzyć punkt końcowy zamiany mowy na tekst zaprojektowany specjalnie dla Twojej aplikacji. Jeśli aplikacja jest przeznaczona do użytku w określonym środowisku lub przez określone grono użytkowników, za pomocą tej usługi możesz również utworzyć i wdrożyć niestandardowy model akustyczny.
 
 
-## <a name="how-do-speech-recognition-systems-work"></a>Jak działają systemy rozpoznawania mowy
-Systemy rozpoznawania mowy składają się z kilku składników, które współpracują ze sobą. Są dwa najważniejsze składniki, model akustyczny i modelu językowego.
+## <a name="how-do-speech-recognition-systems-work"></a>Jak działają systemy rozpoznawania mowy?
+Systemy rozpoznawania mowy składają się z kilku składników, które współpracują ze sobą. Dwoma najważniejszymi składnikami są model akustyczny i model języka.
 
-Model akustyczny to Klasyfikator oznaczający krótkie fragmenty audio jako jeden z liczbą fonemów lub jednostek dźwięku w danym języku. Na przykład słowo "mowa" składa się z czterech fonemów "s p iy ch". Te klasyfikacje są dokonywane z szybkością ok. 100 na sekundę.
+Model akustyczny to klasyfikator oznaczający krótkie fragmenty audio jako jeden z kilku fonemów (jednostek dźwięku) w danym języku. Na przykład słowo „mowa” składa się z czterech fonemów: m, o, w, a. Te klasyfikacje są dokonywane z szybkością ok. 100 na sekundę.
 
 Model języka to rozkład prawdopodobieństwa dla sekwencji słów. Model języka pomaga systemowi wybierać między sekwencjami słów, które brzmią podobnie, na podstawie prawdopodobieństwa wystąpienia danych sekwencji. Na przykład sekwencje „rozpoznawanie mowy” i „ospo zna Wanię nowy” brzmią podobnie, ale pierwsza hipoteza jest znacznie bardziej prawdopodobna i dlatego model języka przypisze jej wyższą ocenę.
 
-Modele akustyczne i języka są statystyczne modeli z danych szkoleniowych. W rezultacie one działają najlepiej, gdy mowy, jakie napotykają, gdy są używane w aplikacji jest podobne do danych zaobserwowane podczas szkolenia. Modele akustyczne i językowe w aparacie Microsoft mowy na tekst przeszkoleni na ogromny zbiór mowy i tekst i zapewniają wydajność najbardziej typowych scenariuszy użycia, takie jak interakcji z Cortana w swojej inteligentnych stanu grafiki Telefon, tablet lub PC, wyszukiwania sieci web głosowego lub wiadomości SMS znajomego dyktowanie.
+Oba modele, akustyczny i języka, to modele statystyczne wyuczone na danych szkoleniowych. W rezultacie działają one najlepiej, gdy mowa, jaką napotykają podczas używania w aplikacji, jest zbliżona do danych zaobserwowanych podczas szkolenia. Modele akustyczne i języka w aparacie zamiany mowy na tekst firmy Microsoft zostały przeszkolone na ogromnym zbiorze danych mowy i tekstu, dzięki czemu gwarantują wydajność na najwyższym poziomie dla najbardziej typowych scenariuszy użycia, takich jak interakcja z Cortaną na smartfonie, tablecie lub komputerze, głosowe wyszukiwanie w Internecie lub dyktowanie wiadomości SMS do znajomego.
 
-## <a name="why-use-the-custom-speech-service"></a>Dlaczego warto używać Custom Speech Service?
-W trakcie światowej klasy aparatu Microsoft mowy na tekst go jest przeznaczona dla scenariuszy opisanych powyżej. Jednak jeśli oczekujesz, że będą kierowane zapytania głosowe do swojej aplikacji w celu zawierające konkretne słownictwo, np. nazwy produktów lub żargon, które rzadko występują w typowej mowie, jest prawdopodobne, że można uzyskać lepszą wydajność przez dostosowanie modelu języka.
+## <a name="why-use-the-custom-speech-service"></a>Dlaczego warto używać usługi Custom Speech Service?
+Aparat zamiany mowy na tekst firmy Microsoft, choć cechuje się najwyższą jakością, jest przeznaczony dla scenariuszy opisanych powyżej. Jeśli spodziewasz się w swojej aplikacji zapytań głosowych zawierających specyficzne słownictwo, na przykład nazwy produktów lub żargon rzadko występujące w codziennej mowie, lepszą wydajność możesz osiągnąć, dostosowując model języka.
 
 Jeśli na przykład tworzysz aplikację do głosowego przeszukiwania witryny MSDN, najprawdopodobniej terminy takie jak „obiektowe”, „przestrzeń nazw” lub „dot net” będą występować częściej niż w typowych aplikacjach głosowych. Dostosowanie modelu języka umożliwi systemowi nauczenie się tego.
 
-## <a name="next-steps"></a>Kolejne kroki
+## <a name="next-steps"></a>Następne kroki
 
-Aby uzyskać więcej informacji o sposobie używania Custom Speech Service, zobacz [Custom Speech portalu usługi] (https://cris.ai).
+Aby uzyskać więcej informacji o sposobie używania usługi Custom Speech Service, zobacz [Portal usługi Custom Speech Service] (https://cris.ai).
 
 * [Rozpoczęcie pracy](cognitive-services-custom-speech-get-started.md)
 * [Często zadawane pytania](cognitive-services-custom-speech-faq.md)

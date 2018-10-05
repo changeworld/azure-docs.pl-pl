@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: overview
-ms.date: 09/21/2018
+ms.date: 09/25/2018
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
-ms.openlocfilehash: a21b97f603fc28cdbba8983547ce958a34df0774
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 54d177d7542d7501a91a955be20af776b16657a2
+ms.sourcegitcommit: 5b8d9dc7c50a26d8f085a10c7281683ea2da9c10
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46968598"
+ms.lasthandoff: 09/26/2018
+ms.locfileid: "47182369"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Co to jest usługa Azure Virtual WAN?
 
@@ -43,6 +43,8 @@ Jeśli pracujesz z partnerem usługi Virtual WAN, proces wygląda następująco:
 Jeśli nie chcesz korzystać z preferowanego partnera, możesz skonfigurować połączenie ręcznie. Zobacz [Tworzenie połączenia typu lokacja-lokacja przy użyciu usługi Virtual WAN](virtual-wan-site-to-site-portal.md).
 
 ## <a name="p2s"></a>Połączenia typu punkt-lokacja (wersja zapoznawcza)
+
+Połączenie typu punkt-lokacja pozwala na bezpieczną komunikację między koncentratorem wirtualnym i komputerem klienckim. Połączenie typu punkt-lokacja jest ustanawiane przez uruchomienie z komputera klienckiego. To rozwiązanie jest przydatne dla osób pracujących zdalnie, które chcą łączyć się na przykład z domu lub sali konferencyjnej. Połączenie sieci VPN typu punkt-lokacja przydaje się również w przypadku niewielkiej liczby klientów, ponieważ pozwala zrezygnować z połączeń sieci VPN typu lokacja-lokacja.
 
 Aby utworzyć połączenie ręcznie, zobacz [Tworzenie połączenia typu punkt-lokacja przy użyciu usługi Virtual WAN](https://go.microsoft.com/fwlink/p/?linkid=2020051&clcid).
 

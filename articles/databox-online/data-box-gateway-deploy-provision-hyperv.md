@@ -12,15 +12,15 @@ ms.devlang: NA
 ms.topic: tutorial
 ms.tgt_pltfrm: NA
 ms.workload: NA
-ms.date: 09/24/2018
+ms.date: 09/26/2018
 ms.author: alkohli
 ms.custom: ''
-ms.openlocfilehash: bf744d2aaab168b8ce918f7b776d8855cdc5ad16
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: ad498dc8c5bea9516bef5a62495fc0d0cc8f7399
+ms.sourcegitcommit: 3150596c9d4a53d3650cc9254c107871ae0aab88
 ms.translationtype: HT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46975247"
+ms.lasthandoff: 09/28/2018
+ms.locfileid: "47419699"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-hyper-v-preview"></a>Samouczek: aprowizowanie usługi Azure Data Box Gateway w funkcji Hyper-V (wersja zapoznawcza)
 
@@ -87,7 +87,7 @@ Do utworzenia urządzenia wirtualnego potrzebne są następujące elementy:
 
     * Co najmniej 4 rdzenie.
     * Co najmniej 8 GB pamięci RAM.
-    * Jeden interfejs sieciowy połączony z siecią umożliwiającą kierowanie ruchu do Internetu. .
+    * Jeden interfejs sieciowy połączony z siecią umożliwiającą kierowanie ruchu do Internetu. 
     * Dysk systemu operacyjnego o rozmiarze 250 GB.
     * Dysk wirtualny o rozmiarze 2 TB do przechowywania danych systemu.
 
@@ -105,9 +105,6 @@ Wykonaj następujące czynności, aby aprowizować urządzenie w funkcji hypervi
    ![](./media/data-box-gateway-deploy-provision-hyperv/image2.png)
 4. Na stronie **Przed rozpoczęciem** w kreatorze nowej maszyny wirtualnej kliknij przycisk **Dalej**.
 5. Na stronie **Określanie nazwy i lokalizacji** wprowadź **nazwę** urządzenia wirtualnego. Kliknij przycisk **Dalej**.
-   
-   > [!IMPORTANT]
-   > W tej wersji w nazwie urządzenia wirtualnego można używać tylko wielkich liter.
 
    ![](./media/data-box-gateway-deploy-provision-hyperv/image3.png)
 6. Na stronie **Określanie generacji** wybierz pozycję **Generacja 2** jako typ obrazu urządzenia w formacie vhdx, a następnie kliknij przycisk **Dalej**.    
@@ -171,17 +168,10 @@ Wykonaj poniższe kroki, aby uruchomić urządzenie wirtualne i nawiązać z nim
 3. Przygotowanie urządzenia może potrwać około 10–15 minut. W konsoli zostanie wyświetlony komunikat o stanie, wskazujący postęp procesu. Gdy urządzenie będzie gotowe, przejdź do pozycji **Akcja**. Naciśnij klawisze `Ctrl + Alt + Delete`, aby zalogować się do urządzenia wirtualnego. Domyślna nazwa użytkownika to *EdgeUser*, a domyślne hasło to *Password1*.
 
    ![](./media/data-box-gateway-deploy-provision-hyperv/image21.png)
-4. Ze względów bezpieczeństwa hasło administratora urządzenia wygasa przy pierwszym logowaniu. Zostanie wyświetlony monit informujący o konieczności zmiany hasła.
-
-   Wprowadź hasło zawierające co najmniej 8 znaków. Hasło musi zawierać co najmniej 3 z następujących 4 elementów: wielkie litery, małe litery, cyfry i znaki specjalne. Wprowadź ponownie hasło w celu potwierdzenia. Otrzymasz powiadomienie, że hasło zostało zmienione.
    
-5. Po pomyślnej zmianie hasła urządzenie wirtualne może zostać uruchomione ponownie. Poczekaj na uruchomienie urządzenia.  Zostanie wyświetlona konsola programu Windows PowerShell urządzenia wraz z paskiem postępu.
-
-   ![](./media/data-box-gateway-deploy-provision-hyperv/image22.png)
-
-6. Kroki od 6 do 8 mają zastosowanie tylko w przypadku uruchamiania w środowisku bez protokołu DHCP. W przypadku środowiska protokołu DHCP należy pominąć te kroki i przejść do kroku 9. Jeśli urządzenie zostało uruchomione w środowisku bez protokołu DHCP, zostanie wyświetlony komunikat z taką informacją.
+6. Kroki od 5 do 7 mają zastosowanie tylko w przypadku uruchamiania w środowisku bez protokołu DHCP. W przypadku środowiska z protokołem DHCP pomiń te kroki. Jeśli urządzenie zostało uruchomione w środowisku bez protokołu DHCP, zostanie wyświetlony komunikat z taką informacją.
     
-7. Aby skonfigurować sieć, użyj polecenia `Get-HcsIpAddress` do wyświetlenia listy interfejsów sieciowych włączonych na urządzeniu wirtualnym. Jeśli urządzenie ma włączony jeden interfejs sieciowy, jego domyślną nazwą jest `DATA1`.
+7. Aby skonfigurować sieć, użyj polecenia `Get-HcsIpAddress` do wyświetlenia listy interfejsów sieciowych włączonych na urządzeniu wirtualnym. Jeśli urządzenie ma włączony jeden interfejs sieciowy, jego domyślną nazwą jest `Ethernet`.
 
 8. Skonfiguruj sieć za pomocą polecenia cmdlet `Set-HcsIpAddress`. Zobacz poniższy przykład:
 
@@ -192,7 +182,7 @@ Wykonaj poniższe kroki, aby uruchomić urządzenie wirtualne i nawiązać z nim
    ![](./media/data-box-gateway-deploy-provision-hyperv/image23.png)
       
 
-Jeśli urządzenie nie spełnia minimalnych wymagań dotyczących konfiguracji, w tekście transparentu zostanie wyświetlony błąd. Zmodyfikuj konfigurację urządzenia tak, aby zapewnić zasoby zgodne z wymaganiami minimalnymi. Następnie możesz ponownie uruchomić urządzenie i połączyć się z nim. Minimalne wymagania konfiguracji opisano w sekcji [Krok 1. Sprawdzanie, czy system hosta spełnia minimalne wymagania dotyczące urządzenia wirtualnego](#step-1-ensure-that-the-host-system-meets-minimum-virtual-device-requirements).
+Jeśli urządzenie nie spełnia minimalnych wymagań dotyczących konfiguracji, w tekście transparentu zostanie wyświetlony błąd. Zmodyfikuj konfigurację urządzenia tak, aby zapewnić zasoby zgodne z wymaganiami minimalnymi. Następnie możesz ponownie uruchomić urządzenie i połączyć się z nim. Minimalne wymagania konfiguracji opisano w sekcji [Sprawdzanie, czy system hosta spełnia minimalne wymagania dotyczące urządzenia wirtualnego](#check-the-host-system).
 
 <!--If you face any other error during the initial configuration using the local web UI, refer to the following workflows:
 

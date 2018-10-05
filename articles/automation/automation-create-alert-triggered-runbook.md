@@ -9,12 +9,12 @@ ms.author: gwallace
 ms.date: 09/18/2018
 ms.topic: conceptual
 manager: carmonm
-ms.openlocfilehash: ac117994140f96ec993e4fed739626f736ad7efc
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 98de7a84dc388f74c64d7c265d2ce8ed32995a5a
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46965283"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48784779"
 ---
 # <a name="use-an-alert-to-trigger-an-azure-automation-runbook"></a>Użyj alertów do wyzwalania elementu runbook usługi Azure Automation
 
@@ -24,7 +24,7 @@ Możesz użyć [usługi Azure Monitor](../azure-monitor/overview.md?toc=%2fazure
 
 Za pomocą elementów runbook usługi automation trzy typy alertów:
 * Klasyczne alertów dotyczących metryk
-* Alerty dziennika aktywności
+* Alerty dotyczące dziennika aktywności
 * Niemal w czasie rzeczywistym alertów dotyczących metryk
 
 Jeśli alert wywołuje element runbook, to rzeczywiste wywołanie jest wysłanie żądania HTTP POST do elementu webhook. Treść żądania POST zawiera sformatowane JSON obiekt, który ma użytecznych właściwości, które są powiązane z alertem. Poniższa lista zawiera łącza do schematu ładunku dla każdego typu alertu:
@@ -211,7 +211,7 @@ Aby utworzyć akcji powiadomienia do grupy akcji:
    ![Dodaj stronę grupy akcji](./media/automation-create-alert-triggered-runbook/add-action-group.png)
 1. Aby utworzyć grupę akcji, wybierz **OK**.
 
-Można użyć tej grupie akcji w [alertów dziennika aktywności](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json) i [alerty w czasie rzeczywistym w pobliżu](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md?toc=%2fazure%2fautomation%2ftoc.json#create-an-alert-rule-with-the-azure-portal) utworzony.
+Można użyć tej grupie akcji w [alertów dziennika aktywności](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json) i [alerty w czasie rzeczywistym w pobliżu](../monitoring-and-diagnostics/monitoring-overview-alerts.md?toc=%2fazure%2fautomation%2ftoc.json) utworzony.
 
 ## <a name="classic-alert"></a>Klasyczny alert
 
@@ -231,4 +231,4 @@ Można utworzyć klasycznego alertu:
 * Aby uzyskać więcej informacji na temat uruchamiania elementu runbook usługi Automation przy użyciu elementu webhook, zobacz [uruchamiania elementu runbook z poziomu elementu webhook](automation-webhooks.md).
 * Aby uzyskać szczegółowe informacje dotyczące różnych sposobów uruchamiania elementu runbook, zobacz [uruchamianie elementu runbook](automation-starting-a-runbook.md).
 * Aby dowiedzieć się, jak utworzyć alertu dziennika aktywności, zobacz [Tworzenie alertów dziennika aktywności](../monitoring-and-diagnostics/monitoring-activity-log-alerts.md?toc=%2fazure%2fautomation%2ftoc.json).
-* Aby dowiedzieć się, jak utworzyć alert dotyczący niemal w czasie rzeczywistym, zobacz [Tworzenie reguły alertu w witrynie Azure portal](../monitoring-and-diagnostics/monitor-alerts-unified-usage.md?toc=%2fazure%2fautomation%2ftoc.json#create-an-alert-rule-with-the-azure-portal).
+* Aby dowiedzieć się, jak utworzyć alert dotyczący niemal w czasie rzeczywistym, zobacz [Tworzenie reguły alertu w witrynie Azure portal](../monitoring-and-diagnostics/alert-metric.md?toc=/azure/azure-monitor/toc.json).

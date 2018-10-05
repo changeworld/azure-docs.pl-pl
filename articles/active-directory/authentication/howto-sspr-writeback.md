@@ -5,17 +5,17 @@ services: active-directory
 ms.service: active-directory
 ms.component: authentication
 ms.topic: conceptual
-ms.date: 07/11/2018
+ms.date: 10/04/2018
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: sahenry
-ms.openlocfilehash: 1ae74f7c43e763962224683954b28e5941136c08
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: 57446f068945d74351a77f21e16874d9e24ddcab
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46295822"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801934"
 ---
 # <a name="how-to-configure-password-writeback"></a>Instrukcje: Konfigurowanie funkcji zapisywania zwrotnego haseł
 
@@ -34,6 +34,12 @@ W następujących krokach założono, program Azure AD Connect została już sko
 8. Po ukończeniu konfiguracji wybierz pozycję **Zakończ**.
 
 Typowe zadania dotyczące rozwiązywania problemów związanych z zapisywaniem zwrotnym haseł, zobacz sekcję dotyczącą [Rozwiązywanie problemów z zapisywaniem zwrotnym haseł](active-directory-passwords-troubleshoot.md#troubleshoot-password-writeback) w naszym artykuł dotyczący rozwiązywania problemów.
+
+> [!WARNING]
+> Zapisywanie zwrotne haseł przestaną działać dla klientów, którzy korzystają z wersji Azure AD Connect 1.0.8641.0 i gdy starsze [Azure Access Control service (ACS) została wycofana w dniu 7 listopada 2018](../develop/active-directory-acs-migration.md). Usługa Azure AD Connect wersje 1.0.8641.0 i starsze nie będzie już umożliwiać funkcji zapisywania zwrotnego haseł w tym czasie, ponieważ są one zależne od usługi ACS do obsługi tej funkcji.
+>
+> Aby uniknąć przerw w działaniu usługi, uaktualnianie z poprzedniej wersji programu Azure AD Connect do nowszej wersji, zobacz artykuł [program Azure AD Connect: uaktualnianie z poprzedniej wersji do najnowszej wersji](../hybrid/how-to-upgrade-previous-version.md)
+>
 
 ## <a name="active-directory-permissions"></a>Uprawnienia usługi Active Directory
 
@@ -67,7 +73,7 @@ Aby skonfigurować odpowiednie uprawnienia do zapisywania zwrotnego haseł wyst�
 4. Z **uprawnienia** zaznacz **Dodaj**.
 5. Wybierz konto, które uprawnienia są stosowane do (z konfiguracji usługi Azure AD Connect).
 6. W **dotyczy** listy rozwijanej wybierz **potomne użytkownika** obiektów.
-7. W obszarze **uprawnienia**, zaznacz następujące pola:
+7. W obszarze **uprawnienia**, zaznacz pola dla następujących opcji:
     * **Resetowanie hasła**
     * **Zmień hasło**
     * **Zapis lockoutTime**

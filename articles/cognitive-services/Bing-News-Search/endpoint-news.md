@@ -1,22 +1,23 @@
 ---
-title: Punkty końcowe wyszukiwania wiadomości Bing | Dokumentacja firmy Microsoft
+title: Punkty końcowe funkcji wyszukiwania wiadomości Bing
+titlesuffix: Azure Cognitive Services
 description: Podsumowanie punktu końcowego interfejsu API wyszukiwania wiadomości.
 services: cognitive-services
 author: mikedodaro
-manager: rosh
+manager: cgronlun
 ms.service: cognitive-services
 ms.component: bing-news-search
-ms.topic: article
+ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: v-gedod
-ms.openlocfilehash: ab892e947566adf025499382b213a52ed3e96e35
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 0ed8b9048c04c4aff5214cea697810a0c573559e
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47433688"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48800549"
 ---
-# <a name="news-search-endpoints"></a>Punkty końcowe wyszukiwania wiadomości
+# <a name="bing-news-search-endpoints"></a>Punkty końcowe funkcji wyszukiwania wiadomości Bing
 **Interfejsu API wyszukiwania wiadomości** zwraca artykułów, strony sieci Web, obrazy, wideo, wiadomości i [jednostek](https://docs.microsoft.com/azure/cognitive-services/bing-entities-search/search-the-web). Jednostki zawierają podsumowanie informacji dotyczących osoby, miejsca lub tematu.
 ## <a name="endpoints"></a>Punkty końcowe
 Aby uzyskać wyniki wyszukiwania wiadomości przy użyciu interfejsu API usługi Bing, Wyślij `GET` żądania do jednego z następujących punktów końcowych. Nagłówki i parametry adresu URL dalsze Definiowanie specyfikacji.

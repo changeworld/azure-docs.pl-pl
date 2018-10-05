@@ -15,12 +15,12 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.author: markvi
 ms.reviewer: jairoc
-ms.openlocfilehash: 4365f12992c96ca45ff6b97b0f59202f1eeb4483
-ms.sourcegitcommit: f58fc4748053a50c34a56314cf99ec56f33fd616
+ms.openlocfilehash: b5fd5a9544e27092c8b65e18d59701421fc59ef5
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/04/2018
-ms.locfileid: "48268973"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48800863"
 ---
 # <a name="troubleshooting-hybrid-azure-active-directory-joined-down-level-devices"></a>Rozwiązywanie problemów z hybrydowej usługi Azure Active Directory urządzenia niskiego poziomu przyłączone do 
 
@@ -43,6 +43,10 @@ W tym artykule założono, że masz [urządzenia przyłączone do hybrydowej sko
 Ten artykuł zawiera w rozwiązywaniu problemów wskazówki dotyczące sposobu rozwiązania potencjalnych problemów.  
 
 **Co należy wiedzieć:** 
+
+- Jest dołączenie do hybrydowej usługi Azure AD dla niskiego poziomu Windows urządzeń działa nieco inaczej niż w systemie Windows 10. Wielu klientów nie należy pamiętać, że potrzebują usług AD FS (w przypadku domen federacyjnych) lub bezproblemowe logowanie Jednokrotne skonfigurowane (w przypadku domen zarządzanych).
+
+- W przypadku klientów z domeny federacyjne Jeśli punkt połączenia usługi (SCP) została skonfigurowana w taki sposób, że wskazuje nazwę domeny zarządzanej (na przykład contoso.onmicrosoft.com, zamiast contoso.com), następnie hybrydowych usługi Azure AD Join dla urządzeń Windows niższego poziomu będzie nie działają.
 
 - Maksymalną liczbę urządzeń na użytkownika aktualnie dotyczą również urządzeń przyłączonych do usługi Azure AD hybrydowego niskiego poziomu. 
 

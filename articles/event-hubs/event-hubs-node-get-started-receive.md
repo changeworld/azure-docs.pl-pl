@@ -9,12 +9,12 @@ ms.workload: core
 ms.topic: article
 ms.date: 09/18/2018
 ms.author: shvija
-ms.openlocfilehash: 4ec0433fe2bc1447344ea7b3b7ec296c7cbb583f
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 27052759ccc4664ea95ea19cb52bebeec6fec5ae
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46368739"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803362"
 ---
 # <a name="receive-events-from-azure-event-hubs-using-nodejs"></a>Odbieranie zdarzeń z usługi Azure Event Hubs przy użyciu środowiska Node.js
 
@@ -73,7 +73,6 @@ Zestaw SDK, które zostały sklonowane zawiera wiele przykładów ukazujących s
 ## <a name="review-the-sample-code"></a>Przejrzyj przykładowy kod 
 Poniżej przedstawiono przykładowy kod, aby odbierać zdarzenia z Centrum zdarzeń za pomocą środowiska node.js. Można ręcznie utworzyć plik sampleEph.js i uruchom go, aby odbierać zdarzenia do Centrum zdarzeń. 
 
-
   ```nodejs
   const { EventProcessorHost, delay } = require("@azure/event-processor-host");
 
@@ -124,6 +123,19 @@ Poniżej przedstawiono przykładowy kod, aby odbierać zdarzenia z Centrum zdarz
   });
       
   ```
+
+Pamiętaj, aby ustawić zmienne środowiskowe przed uruchomieniem skryptu. Możesz skonfigurować w wierszu polecenia, jak pokazano w poniższym przykładzie, lub użyj [pakietu dotenv](https://www.npmjs.com/package/dotenv#dotenv). 
+
+```
+// For windows
+set EVENTHUB_CONNECTION_STRING="<your-connection-string>"
+set EVENTHUB_NAME="<your-event-hub-name>"
+
+// For linux or macos
+export EVENTHUB_CONNECTION_STRING="<your-connection-string>"
+export EVENTHUB_NAME="<your-event-hub-name>"
+```
+
 Więcej przykładów można znaleźć [tutaj](https://github.com/Azure/azure-event-hubs-node/tree/master/processor/examples).
 
 

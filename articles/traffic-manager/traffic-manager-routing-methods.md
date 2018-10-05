@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/17/2018
 ms.author: kumud
-ms.openlocfilehash: ab5f6d10e4f9edc4d899e976291482bb3a795c07
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: be429e7d3ae847eec6dc4fd5ad6b9c3e5d76d5b5
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248928"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785413"
 ---
 # <a name="traffic-manager-routing-methods"></a>Metody routingu w usłudze Traffic Manager
 
@@ -39,7 +39,7 @@ Wszystkie profile usługi Traffic Manager obejmują monitorowanie kondycji punkt
 
 Często organizacja chce zapewniają niezawodność swoich usług, wdrażając co najmniej jedna usługa tworzenia kopii zapasowych w przypadku, gdy ich podstawowa usługa ulegnie awarii. Metody routingu ruchu "Priority" umożliwia klientom platformy Azure można łatwo zaimplementować ten wzorzec pracy awaryjnej.
 
-! [Usługa azure Traffic Manager "Priority" metody routingu ruchu] [1]
+![Usługa Azure Traffic Manager "Priority" metody routingu ruchu](media/traffic-manager-routing-methods/priority.png)
 
 Profil usługi Traffic Manager zawiera priorytetową listą punktów końcowych usługi. Domyślnie usługa Traffic Manager wysyła cały ruch do podstawowego punktu końcowego (najwyższy priorytet). Jeśli podstawowy punkt końcowy jest niedostępny, usługa Traffic Manager kieruje ruchem do drugiego punktu końcowego. Jeśli zarówno podstawowe i pomocnicze punktów końcowych, które nie są dostępne, ruch jest przesyłany do innego i tak dalej. Dostępność punktu końcowego jest oparta na skonfigurowany stan (włączone lub wyłączone) i monitorowania ciągłego punktu końcowego.
 
@@ -47,10 +47,10 @@ Profil usługi Traffic Manager zawiera priorytetową listą punktów końcowych 
 
 Za pomocą usługi Azure Resource Manager, możesz skonfigurować priorytet punktu końcowego jawnie przy użyciu właściwości "priority" dla każdego punktu końcowego. Ta właściwość jest wartością z zakresu od 1 do 1000. Niższe wartości reprezentują wyższy priorytet. Punkty końcowe nie mogą mieć wartości priorytetu. Ustawienie właściwości jest opcjonalne. Gdy argument jest pominięty, jest używany domyślny priorytet w kolejności punktu końcowego.
 
-##<a name = "weighted"></a>Metody routingu ruchu ważonego
+## <a name = "weighted"></a>Metody routingu ruchu ważonego
 "Ważona" metody routingu ruchu pozwala równomierne rozłożenie ruchu sieciowego lub użyć wstępnie zdefiniowanych wagi.
 
-! [Usługa azure Traffic Manager "Ważona" metody rozsyłania ruchu] [2]
+![Usługa Azure Traffic Manager "Ważona" metody rozsyłania ruchu](media/traffic-manager-routing-methods/weighted.png)
 
 W ważona metody routingu ruchu należy przypisać wagi do każdego punktu końcowego w konfiguracji profilu usługi Traffic Manager. Waga jest liczbą całkowitą z zakresu od 1 do 1000. Ten parametr jest opcjonalny. W przypadku pominięcia Menedżery Traffic Manager korzysta z domyślnego wagę "1". Wyższa waga, tym wyższy priorytet.
 
@@ -78,7 +78,7 @@ Efekty buforowania te DNS są wspólne dla wszystkich ruchu opartego na protokol
 
 Wdrażanie punktów końcowych w co najmniej dwóch lokalizacjach na całym świecie może zwiększyć szybkość reakcji wiele aplikacji routing ruchu do lokalizacji, która jest najbliżej, do Ciebie. Metody routingu ruchu "Wydajność" zapewnia tę funkcję.
 
-! [Usługa azure Traffic Manager "Wydajność" metody routingu ruchu] [3]
+![Usługa Azure Traffic Manager "Wydajność" metody routingu ruchu](media/traffic-manager-routing-methods/performance.png)
 
 "Najbliższy" punkt końcowy nie jest koniecznie najbliższego mierzony geograficznej odległości. Zamiast tego metody routingu ruchu "Wydajność" Określa najbliższego punktu końcowego, mierząc opóźnienia sieci. Usługa Traffic Manager obsługuje Internet opóźnienie tabeli, aby śledzić czas obustronnej konwersji między zakresów adresów IP i każdego centrum danych platformy Azure.
 

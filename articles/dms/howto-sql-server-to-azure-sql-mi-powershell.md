@@ -3,7 +3,7 @@ title: Użyj modułu usługi Azure Database Migration Service w systemie Microso
 description: Dowiedz się przeprowadzić migrację z programu SQL Server w środowisku lokalnym MI bazy danych SQL Azure przy użyciu programu Azure PowerShell.
 services: database-migration
 author: HJToland3
-ms.author: jtoland
+ms.author: rajpo
 manager: ''
 ms.reviewer: ''
 ms.service: database-migration
@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.custom: mvc
 ms.topic: article
 ms.date: 08/13/2018
-ms.openlocfilehash: 7bd7e7a4cb78cf8a9f818936c980b47a2e7865e7
-ms.sourcegitcommit: 0fcd6e1d03e1df505cf6cb9e6069dc674e1de0be
+ms.openlocfilehash: c8747b7b8125f097fab3752693f4f14440ed7ce7
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/14/2018
-ms.locfileid: "40099950"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804382"
 ---
 # <a name="migrate-sql-server-on-premises-to-azure-sql-db-using-azure-powershell"></a>Migrowanie lokalnego programu SQL Server do bazy danych SQL Azure przy użyciu programu Azure PowerShell
 W tym artykule, wykonywana jest migracja **Adventureworks2012** bazy danych przywróconej do lokalnego wystąpienia programu SQL Server 2005 lub nowszego do usługi Azure SQL Database przy użyciu programu Microsoft Azure PowerShell. Można migrować bazy danych z lokalnego wystąpienia programu SQL Server do usługi Azure SQL Database przy użyciu `AzureRM.DataMigration` modułu w programie Microsoft Azure PowerShell.
@@ -24,9 +24,9 @@ W tym artykule, wykonywana jest migracja **Adventureworks2012** bazy danych przy
 W tym artykule omówiono sposób wykonywania następujących zadań:
 > [!div class="checklist"]
 > * Utwórz grupę zasobów.
-> * Utwórz wystąpienie usługi Azure Database Migration Service.
+> * Tworzenie wystąpienia usługi Azure Database Migration Service.
 > * Utwórz projekt migracji w wystąpieniu usługi Azure Database Migration Service.
-> * Uruchom migrację.
+> * Uruchamianie migracji.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 Aby wykonać te kroki, potrzebne są:
@@ -78,7 +78,7 @@ $service = New-AzureRmDms -ResourceGroupName myResourceGroup `
   -VirtualSubnetId $vSubNet.Id`
 ```
 
-## <a name="create-a-migration-project"></a>Utwórz projekt migracji
+## <a name="create-a-migration-project"></a>Tworzenie projektu migracji
 Po utworzeniu wystąpienia usługi Azure Database Migration Service, Utwórz projekt migracji. Projekt usługi Azure Database Migration Service wymaga informacji o połączeniu dla zarówno wystąpień źródłowym i docelowym, a także wykaz baz danych, które chcesz przeprowadzić migrację w ramach projektu.
 
 ### <a name="create-a-database-connection-info-object-for-the-source-and-target-connections"></a>Utwórz obiekt informacje o połączeniu z bazą danych dla połączeń źródłowe i docelowe
@@ -175,7 +175,7 @@ Utwórz zmienną, która zawiera identyfikator URI sygnatury dostępu Współdzi
 $blobSasUri="https://mystorage.blob.core.windows.net/test?st=2018-07-13T18%3A10%3A33Z&se=2019-07-14T18%3A10%3A00Z&sp=rwdl&sv=2018-03-28&sr=c&sig=qKlSA512EVtest3xYjvUg139tYSDrasbftY%3D"
 ```
 
-### <a name="select-logins"></a>Wybierz identyfikatory logowania
+### <a name="select-logins"></a>Wybieranie identyfikatorów logowania
 Utwórz listę identyfikatorów logowania do migracji, jak pokazano w poniższym przykładzie: Uwaga: obecnie obsługuje DMS migracji tylko nazw logowania SQL. 
 
 ```powershell

@@ -9,12 +9,12 @@ ms.reviewer: jmartens
 ms.author: aashishb
 author: aashishb
 ms.date: 10/02/2018
-ms.openlocfilehash: 8a26491acc7215598e57ce6074fffe26a4374a96
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 885d867d0733ef923d327d8d6a36fc1588fd4961
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48251087"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801016"
 ---
 # <a name="secure-azure-machine-learning-web-services-with-ssl"></a>Zabezpieczania usług sieci web Azure Machine Learning przy użyciu protokołu SSL
 
@@ -81,7 +81,7 @@ Aby wdrożyć (lub ponownie wdrożyć) usługi z włączonym protokołem SSL, us
     aci_config = AciWebservice.deploy_configuration(ssl_enabled=True, ssl_cert_pem_file="cert.pem", ssl_key_pem_file="key.pem", ssl_cname="www.contoso.com")
     ```
 
-+ **Wdrażanie na tablicach programowalny gamma pola (układów FPGA)**
++ **Wdrażanie na Tablice bramek programowane (układów FPGA)**
 
   Odpowiedź `create_service` operacja zawiera adres IP usługi. Adres IP jest używany, gdy mapowanie nazwy DNS na adres IP usługi. Odpowiedź zawiera również __klucza podstawowego__ i __klucz pomocniczy__ służące do korzystania z usługi. Podaj wartości parametrów związanych z protokołu SSL, jak pokazano we fragmencie kodu:
 
@@ -119,7 +119,7 @@ Następnie należy zaktualizować serwer DNS, aby wskazać usługę sieci web.
 
   Aktualizowanie systemu DNS, na karcie "Konfiguracja" "Publiczny adres IP" dla klastra AKS, jak pokazano na ilustracji. Możesz znaleźć publiczny adres IP jako jeden z typów zasobów utworzonych w ramach grupy zasobów, która zawiera węzły agenta usługi AKS i innych zasobów sieciowych.
 
-  [ ![Usługa Azure Machine Learning: Zabezpieczanie usługi sieci web przy użyciu protokołu SSL](./media/how-to-secure-web-service/aks-public-ip-address.png) ] ((.media/how-to-secure-web-service/aks-public-ip-address.png#lightbox)
+  ![Usługa Azure Machine Learning: Zabezpieczanie usługi sieci web przy użyciu protokołu SSL](./media/how-to-secure-web-service/aks-public-ip-address.png)
 
 ## <a name="consume-authenticated-services"></a>Używanie usług uwierzytelnionego
 
@@ -131,7 +131,7 @@ Następnie należy zaktualizować serwer DNS, aby wskazać usługę sieci web.
 
   + [Sposób wdrażania usługi AKS](how-to-deploy-to-aks.md)
 
-+ **ACI i FPGA**:  
++ **Aby uzyskać FPGA**:  
 
   Poniższe przykłady pokazują, jak używać usługi FPGA uwierzytelniony w języku Python i C#.
   Zastąp `authkey` z kluczem podstawowym lub pomocniczym, który został zwrócony podczas wdrożono usługę.

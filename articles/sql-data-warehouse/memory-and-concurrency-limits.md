@@ -7,15 +7,15 @@ manager: craigg
 ms.service: sql-data-warehouse
 ms.topic: conceptual
 ms.component: manage
-ms.date: 07/10/2018
+ms.date: 10/04/2018
 ms.author: rortloff
 ms.reviewer: igorstan
-ms.openlocfilehash: e901d147d757a046d50927d6f2651b0a74657b1f
-ms.sourcegitcommit: f94f84b870035140722e70cab29562e7990d35a3
+ms.openlocfilehash: ab90b4431a0f8d3a4ee70869e053174f89f23dba
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 08/30/2018
-ms.locfileid: "43288193"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785219"
 ---
 # <a name="memory-and-concurrency-limits-for-azure-sql-data-warehouse"></a>Limity pamięci i współbieżności dla usługi Azure SQL Data Warehouse
 Wyświetl limity pamięci i współbieżności, przydzielone do różnych poziomów wydajności i klasy zasobów w usłudze Azure SQL Data Warehouse. Aby uzyskać więcej informacji i Zastosuj te możliwości do planu zarządzania obciążenia, zobacz [klasy zasobów do zarządzania obciążeniem](resource-classes-for-workload-management.md). 
@@ -27,10 +27,11 @@ W poniższej tabeli przedstawiono maksymalną pojemność magazynu danych na ró
 
 ### <a name="gen2"></a>Druga generacja
 
-Gen2 — zapewnia 2,5 x większa ilość pamięci na zapytanie niż Gen1. Ta dodatkowa pamięć pomaga Gen2 dostarczać jego wysoka wydajność.  Poziomy wydajności dla zakresu Gen2 od DW1000c do DW30000c. 
+Gen2 — zapewnia 2,5 x większa ilość pamięci na zapytanie niż Gen1. Ta dodatkowa pamięć pomaga Gen2 dostarczać jego wysoka wydajność.  Poziomy wydajności dla zakresu Gen2 od DW500c do DW30000c. 
 
 | Poziom wydajności | Węzły obliczeniowe | Dystrybucje na węzeł obliczeniowy | Ilość pamięci na magazyn danych (GB) |
 |:-----------------:|:-------------:|:------------------------------:|:------------------------------:|
+| DW500c            | 1             | 60                             |   300                          |
 | DW1000c           | 2             | 30                             |   600                          |
 | DW1500c           | 3             | 20                             |   900                          |
 | DW2000c           | 4             | 15                             |  1200                          |
@@ -75,6 +76,7 @@ W poniższej tabeli przedstawiono maksymalna liczba jednoczesnych kwerend oraz l
 
 | Poziom usług | Maksymalna liczba jednoczesnych kwerend | Dostępnych gniazd współbieżności |staticrc10 | staticrc20 | staticrc30 | staticrc40 | staticrc50 | staticrc60 | staticrc70 | staticrc80 |
 |:-------------:|:--------------------------:|:---------------------------:|:---------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|:----------:|
+| DW500c        | 20                         |   20                        | 1         | 2          | 4          | 8          | 16         | 16         | 16         |  16        |
 | DW1000c       | 32                         |   40                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW1500c       | 32                         |   60                        | 1         | 2          | 4          | 8          | 16         | 32         | 32         |  32        |
 | DW2000c       | 48                         |   80                        | 1         | 2          | 4          | 8          | 16         | 32         | 64         |  64        |
@@ -90,7 +92,7 @@ W poniższej tabeli przedstawiono maksymalna liczba jednoczesnych kwerend oraz l
 **Zasób dynamiczny klas**
 
 > [!NOTE]
-> Klasa zasobów smallrc na Gen2 dynamicznie dodaje pamięć zwiększa poziom usług, i obsługuje tylko 32 maksymalna liczba jednoczesnych kwerend.  Gniazd współbieżności i użycie pamięci przez smallrc rośnie wraz ze wzrostem poziomu usługi. 
+> Klasa zasobów smallrc na Gen2 dynamicznie dodaje pamięć zwiększa poziom usług, i obsługuje tylko 32 maksymalna liczba jednoczesnych kwerend DW1000c oraz 20 i DW500c.  Po wystąpieniu skalowania poza DW1500c gniazd współbieżności i użycie pamięci przez smallrc zwiększa się wraz ze wzrostem poziomu usługi. 
 >
 >
 
@@ -98,6 +100,7 @@ W poniższej tabeli przedstawiono maksymalna liczba jednoczesnych kwerend oraz l
 
 | Poziom usług | Maksymalna liczba jednoczesnych kwerend | Dostępnych gniazd współbieżności | Używane przez smallrc gniazd | Używane przez mediumrc gniazd | Używane przez largerc gniazd | Gniazda posługują się xlargerc |
 |:-------------:|:--------------------------:|:---------------------------:|:---------------------:|:----------------------:|:---------------------:|:----------------------:|
+| DW500c        | 20                         |   20                        | 1                     |  2                     |  4                    |  14                    |
 | DW1000c       | 32                         |   40                        | 1                     |  4                     |  8                    |  28                    |
 | DW1500c       | 32                         |   60                        | 1                     |  6                     |  13                   |  42                    |
 | DW2000c       | 32                         |   80                        | 2                     |  8                     |  17                   |  56                    |

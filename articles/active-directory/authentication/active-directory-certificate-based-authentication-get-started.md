@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: annaba
-ms.openlocfilehash: 2f6b9ee7a23341f27272a4614bed6be5ae422ce0
-ms.sourcegitcommit: cf606b01726df2c9c1789d851de326c873f4209a
+ms.openlocfilehash: ea65dcca3e5de06d1bc966b3e7cb6b608260a053
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46297278"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803971"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>Wprowadzenie do uwierzytelniania opartego na certyfikatach w usłudze Azure Active Directory
 
@@ -203,6 +203,6 @@ Profil programu EAS można konfigurować i umieszczone na urządzeniu w ramach u
 
 ## <a name="next-steps"></a>Kolejne kroki
 
-[Dodatkowe informacje dotyczące uwierzytelniania opartego na certyfikatach, na urządzeniach z systemem Android.](active-directory-certificate-based-authentication-android.md)
+[Dodatkowe informacje dotyczące uwierzytelniania opartego na urządzeniach z systemem Android.](active-directory-certificate-based-authentication-android.md)
 
-[Dodatkowe informacje dotyczące uwierzytelniania opartego na certyfikatach, na urządzeniach z systemem iOS.](active-directory-certificate-based-authentication-ios.md)
+[Dodatkowe informacje dotyczące uwierzytelniania opartego na urządzeniach z systemem iOS.](active-directory-certificate-based-authentication-ios.md)

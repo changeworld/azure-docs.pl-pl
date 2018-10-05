@@ -9,12 +9,12 @@ ms.service: search
 ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: heidist
-ms.openlocfilehash: d28b9177684cf7b9a3ddc83107806aaa6afde477
-ms.sourcegitcommit: 7c4fd6fe267f79e760dc9aa8b432caa03d34615d
+ms.openlocfilehash: 0e1a0d299fb794c3aa937cb62dba9a6ce12c0570
+ms.sourcegitcommit: 4edf9354a00bb63082c3b844b979165b64f46286
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/28/2018
-ms.locfileid: "47434036"
+ms.lasthandoff: 10/04/2018
+ms.locfileid: "48785311"
 ---
 # <a name="choose-a-pricing-tier-for-azure-search"></a>Wybierz warstwę cenową dla usługi Azure Search
 
@@ -41,19 +41,21 @@ The purpose of this article is to help you choose a tier. It supplements the [pr
 
 W usłudze Azure Search jest najważniejszym rozliczeń pojęciem *jednostek wyszukiwania* (SU). Ponieważ usługi Azure Search jest zależna od replik i partycji do funkcji, nie ma sensu do rozliczania za tylko jednej z nich. Zamiast tego są naliczane złożonego obu tych elementów. 
 
-Formulaically, SU jest wynikiem *repliki* i *partycje* używanych przez usługę: **`(R X P = SU)`**
+SU jest wynikiem *repliki* i *partycje* używanych przez usługę: **`(R X P = SU)`**
 
-Co najmniej do każdej usługi, który rozpoczyna się od 1 jednostka wyszukiwania (jedna replika pomnożona przez jedną partycję), ale w przypadku większych obciążeń bardziej realistyczny model może być repliki 3, 3 partycji usługi rozliczane jako 9 SUs. 
+Każda usługa rozpoczyna się od 1 jednostka wyszukiwania (jedna replika pomnożona przez jedną partycję) jako minimum. Maksymalna liczba dla dowolnej usługi to 36 jednostek wyszukiwania, które można osiągnąć na wiele sposobów: replik partycji 6 x 6 lub 3 partycji x 12 replik, kilka. 
+
+Jest to często używa się mniej niż łączna pojemność. Na przykład repliki 3, 3 partycji usługi rozliczane jako 9 SUs. 
 
 Stawka rozliczeniowa jest **godzinowe za SU**, z każdą warstwą o coraz wyższego współczynnika. Wyższe warstwy pochodzą z partycjami większych i szybszej mające wpływ na ogólną wyższa stawka godzinowa dla tej warstwy. Według stawek dla poszczególnych warstw można znaleźć na [— szczegóły cennika](https://azure.microsoft.com/pricing/details/search/). 
 
-Mimo że każda warstwa oferuje coraz większej pojemności, może przynieść *część* z łączna pojemność w tryb online, zawierający pozostałe w rezerwie. W zakresie rozliczeń, jest liczba partycji i replik przenieść online, obliczeniowe przy użyciu formuły SU, która określa, co faktycznie opłaty są naliczane.
+Większość klientów Przenieś tylko część całkowitą pojemność w trybie online, zawierający pozostałe w rezerwie. W zakresie rozliczeń, jest liczba partycji i replik przenieść online, obliczeniowe przy użyciu formuły SU, która określa, co faktycznie opłaty są naliczane za godzinę.
 
 ### <a name="tips-for-reducing-costs"></a>Porady dotyczące zmniejszania kosztów
 
-Nie można zamknąć usługę, aby zmniejszyć rachunek. Dedykowane zasoby na partycje i repliki są operacyjnej 24-7, przydzielone do usługi wyłącznego użytku przez okres istnienia usługi. Jedynym sposobem, aby zmniejszyć rachunek jest dzięki zmniejszeniu replik i partycji na niskim poziomie, która zapewnia akceptowalny poziom wydajności i [zgodności z umową SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/). 
+Nie można zamknąć usługę, aby zmniejszyć rachunek. Dedykowane zasoby są operacyjnej 24-7, przydzielone do usługi wyłącznego użytku przez okres istnienia usługi. Jedynym sposobem, aby zmniejszyć rachunek jest dzięki zmniejszeniu replik i partycji na niskim poziomie, która zapewnia akceptowalny poziom wydajności i [zgodności z umową SLA](https://azure.microsoft.com/support/legal/sla/search/v1_0/). 
 
-Inny poziom pozwala zmniejszyć koszty jest Wybieranie warstwy przy użyciu niższe stawki godzinowej. Stawki godzinowe S1 jest niższa od stawek S2 lub S3. Można aprowizować usługi mające na celu dolnym końcem swoich projekcje obciążenia. Jeśli wykraczają poza możliwości usługi, utworzyć drugi usługi większych warstwowego, ponowną kompilację indeksów w tej drugiej usługi, a następnie usuń pierwszy z nich. Dla serwerów lokalnych są często "kupić", aby można było obsłużyć przewidywany wzrost. Ale z usługą w chmurze, można wykonywać oszczędności najbardziej agresywnie, wiedząc, że zawsze możesz przełączyć do wyższej warstwy usługi, jeśli bieżący jest niewystarczająca.
+Jeden poziom pozwala zmniejszyć koszty jest Wybieranie warstwy przy użyciu niższe stawki godzinowej. Stawki godzinowe S1 jest niższa od stawek S2 lub S3. Można aprowizować usługi mające na celu dolnym końcem swoich projekcje obciążenia. Jeśli wykraczają poza możliwości usługi, utworzyć drugi usługi większych warstwowego, ponowną kompilację indeksów w tej drugiej usługi, a następnie usuń pierwszy z nich. Jeśli wykonano planowania pojemności serwerów lokalnych, wiesz, jest często "Kup", aby można było obsłużyć przewidywany wzrost. Ale z usługą w chmurze można próbować oszczędności więcej agresywnie, ponieważ nie ma ograniczenia określonych zakup. Zawsze możesz przełączyć do wyższej warstwy usługi, jeśli bieżący jest niewystarczająca.
 
 ### <a name="capacity-drill-down"></a>Pojemność Przechodzenie do szczegółów
 
@@ -92,7 +94,7 @@ Strony portalu i cen Przenieś fokus na rozmiar partycji i magazynu, ale dla pos
 **S3** i **wysoka gęstość S3** są wspierane przez infrastrukturę identyczne dużej pojemności, ale każdy jeden osiągnie maksymalny limit na różne sposoby. **S3** jest przeznaczony dla mniejszej liczby indeksów bardzo duże. W efekcie maksymalny limit jest powiązany z zasobów (2,4 TB dla każdej usługi). **Wysoka gęstość S3** jest przeznaczony dla dużej liczby indeksów bardzo mała. Na 1000 indeksów **wysoka gęstość S3** osiągnięty limit w formie ograniczenia indeksu. Jeśli jesteś **wysoka gęstość S3** klienta, który wymaga więcej niż 1000 indeksów, skontaktuj się z Microsoft Support informacji dotyczące dalszego postępowania.
 
 > [!NOTE]
-> Wcześniej limity dokumentów zostały jest brany pod uwagę, ale nie są już odpowiednie dla większości usług Azure Search zaprowizowane po stycznia 2018 r. Aby uzyskać więcej informacji o warunkach, dla których nadal mają zastosowanie limity dokumentów, zobacz [limitów usług: dokumentu limity](search-limits-quotas-capacity.md#document-limits).
+> Wcześniej limity dokumentów zostały jest brany pod uwagę, ale nie mają już zastosowania dla nowych usług. Aby uzyskać więcej informacji o warunkach, w których nadal mają zastosowanie limity dokumentów, zobacz [limitów usług: dokumentu limity](search-limits-quotas-capacity.md#document-limits).
 >
 
 ## <a name="evaluate-capacity"></a>Ocena wydajności

@@ -1,6 +1,6 @@
 ---
-title: Przygotowanie komputera-hosta Azure stosu Development Kit (ASDK) | Dokumentacja firmy Microsoft
-description: Zawiera opis sposobu przygotowania komputera-hosta Azure stosu Development Kit (ASDK) ASDK instalacji.
+title: Przygotuj komputer-host usługi Azure Stack Development Kit (ASDK) | Dokumentacja firmy Microsoft
+description: Zawiera opis sposobu przygotowania komputera hosta usługi Azure Stack Development Kit (ASDK) ASDK instalacji.
 services: azure-stack
 documentationcenter: ''
 author: jeffgilb
@@ -15,21 +15,21 @@ ms.topic: article
 ms.date: 03/22/2018
 ms.author: jeffgilb
 ms.reviewer: misainat
-ms.openlocfilehash: 5de25f574cb876701ffce74f1dca8c4bb9764157
-ms.sourcegitcommit: 48ab1b6526ce290316b9da4d18de00c77526a541
+ms.openlocfilehash: fc9681ee286c30825ac908f9f97ae092808c783a
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 03/23/2018
-ms.locfileid: "30165674"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802141"
 ---
 # <a name="prepare-the-asdk-host-computer"></a>Przygotuj komputer-host ASDK
-Przed zainstalowaniem ASDK na komputerze-hoście, należy przygotować środowisko ASDK dla instalacji. Gdy na komputerze deweloperskim zestaw hosta zostały przygotowane, uruchomi się z dysku twardego maszyny wirtualnej CloudBuilder.vhdx, aby rozpocząć wdrażanie ASDK.
+Przed zainstalowaniem ASDK na komputerze-hoście, należy przygotować środowisko ASDK instalacji. Gdy na komputerze deweloperskim zestaw hostów zostały przygotowane, uruchomi się z dysku twardego maszyny wirtualnej CloudBuilder.vhdx, aby rozpocząć wdrażanie ASDK.
 
-## <a name="prepare-the-development-kit-host-computer"></a>Przygotowanie komputera-hosta development kit
+## <a name="prepare-the-development-kit-host-computer"></a>Przygotowanie komputera hosta development kit
 Przed zainstalowaniem ASDK na komputerze-hoście, należy przygotować środowisko komputera hosta ASDK.
 1. Zaloguj się jako Administrator lokalny na komputerze hosta development kit.
 2. Upewnij się, że plik CloudBuilder.vhdx został przeniesiony do katalogu głównego dysku C:\ (C:\CloudBuilder.vhdx).
-3. Uruchom następujący skrypt, aby pobrać plik Instalatora development kit (asdk installer.ps1) z [repozytorium narzędzia Azure stosu GitHub](https://github.com/Azure/AzureStack-Tools) do **C:\AzureStack_Installer** folderu na użytkownika Development kit hosta komputera:
+3. Uruchom następujący skrypt, aby pobrać plik Instalatora programu rozwoju kit (asdk installer.ps1) z [repozytorium narzędzia usługi Azure Stack GitHub](https://github.com/Azure/AzureStack-Tools) do **C:\AzureStack_Installer** folderu na użytkownika Development kit hoście:
 
   ```powershell
   # Variables
@@ -43,30 +43,29 @@ Przed zainstalowaniem ASDK na komputerze-hoście, należy przygotować środowis
   Invoke-WebRequest $uri -OutFile ($LocalPath + '\' + 'asdk-installer.ps1')
   ```
 
-4. Z konsoli programu PowerShell z podwyższonym poziomem uprawnień uruchom **C:\AzureStack_Installer\asdk-installer.ps1** skrypt, a następnie kliknij przycisk **przygotować środowisko**.
+4. Z poziomu konsoli programu PowerShell z podwyższonym poziomem uprawnień uruchom **C:\AzureStack_Installer\asdk-installer.ps1** skrypt, a następnie kliknij przycisk **przygotowanie środowiska**.
 
     ![](media/asdk-prepare-host/1.PNG) 
 
-5. Na **vhdx wybierz Cloudbuilder** strony Instalatora, Znajdź i wybierz **cloudbuilder.vhdx** pliku, który pobrane i wyodrębnione w [poprzednie kroki](asdk-download.md). Na tej stronie można także opcjonalnie włączyć **dodać sterowniki** pole wyboru, aby dodać sterowniki do komputera hosta development kit. Kliknij przycisk **Dalej**.  
+5. Na **vhdx wybierz Cloudbuilder** strony Instalatora, Znajdź i wybierz **cloudbuilder.vhdx** pliku, który został pobrany i w [poprzednich kroków](asdk-download.md). Na tej stronie możesz również opcjonalnie włączyć **Dodaj sterowniki** pole wyboru, jeśli chcesz dodać sterowniki do komputera hosta development kit. Kliknij przycisk **Dalej**.  
 
     ![](media/asdk-prepare-host/2.PNG)
 
-6. Na **opcjonalne ustawienia** administrator lokalny Podaj informacje o koncie dla rozwoju zestawu hosta, a następnie kliknij przycisk **dalej**. Można również podać wartości opcjonalne następujące ustawienia:
-  - **ComputerName**: Ta opcja umożliwia ustawienie nazwy hosta development kit. Nazwa musi spełniać wymagania dotyczące w pełni kwalifikowaną nazwę domeny i musi być 15 znaków lub mniej długości. Wartość domyślna to losową nazwę komputera wygenerowany przez system Windows.
-  - **Strefa czasowa**: ustawia strefę czasową dla hosta development kit. Wartość domyślna to (UTC-8:00) czas pacyficzny (USA i Kanada).
-  - **Konfiguracji statycznych adresów IP**: ustawia danego wdrożenia, aby użyć statycznego adresu IP. W przeciwnym razie gdy Instalator wykonuje ponowny rozruch w cloudbuilder.vhx, interfejsów sieciowych są skonfigurowane przy użyciu protokołu DHCP.
+6. Na **opcjonalne ustawienia** Podaj administratora lokalnego konta informacje o komputerze deweloperskim zestaw hosta, a następnie kliknij przycisk **dalej**. Można również podać wartości następujące opcjonalne ustawienia:
+  - **Nazwa_komputera**: Ta opcja określa nazwę hosta development kit. Nazwa musi spełniać wymagania w pełni kwalifikowaną nazwę domeny i musi być co najwyżej 15 znaków lub mniej znaków. Wartość domyślna to losową nazwę komputera generowane przez Windows.
+  - **Konfiguracji statycznych adresów IP**: ustawia wdrożenia do użycia statycznego adresu IP. W przeciwnym razie gdy Instalator jest wykonywany ponowny rozruch cloudbuilder.vhx, interfejsy sieciowe są skonfigurowane za pomocą usługi DHCP.
 
     ![](media/asdk-prepare-host/3.PNG)
 
   > [!IMPORTANT]
-  > Jeśli nie zostaną podane poświadczenia administratora lokalnego, w tym kroku, należy bezpośrednio lub KVM dostęp do hosta po ponownym uruchomieniu komputera w ramach konfigurowania zestaw deweloperski.
+  > Jeśli nie zostaną podane poświadczenia administratora lokalnego, w tym kroku, należy bezpośrednio lub KVM dostęp do hosta po ponownym uruchomieniu komputera w ramach konfigurowania deweloperski.
 
-7. Jeśli w poprzednim kroku wybrano konfiguracji statycznych adresów IP, należy teraz:
-    - Wybierz kartę sieciową. Upewnij się, że możesz nawiązać połączenie karty przed kliknięciem przycisku **dalej**.
-    - Upewnij się, że **adres IP**, **bramy**, i **DNS** wartości są poprawne, a następnie kliknij przycisk **dalej**.
+7. Jeśli w poprzednim kroku wybrano opcję konfiguracji statycznych adresów IP, musisz mieć teraz z następujących czynności:
+    - Wybierz kartę sieciową. Upewnij się, możesz nawiązać połączenie karty przed kliknięciem przycisku **dalej**.
+    - Upewnij się, że **adresu IP**, **bramy**, i **DNS** wartości są poprawne, a następnie kliknij przycisk **dalej**.
 13. Kliknij przycisk **dalej** można uruchomić proces przygotowywania.
-14. Po przygotowaniu wskazuje **Ukończono**, kliknij przycisk **dalej**.
-15. Kliknij przycisk **ponowny rozruch teraz** uruchomić na komputerze deweloperskim zestaw hosta cloudbuilder.vhdx i [kontynuować proces wdrażania](asdk-install.md).
+14. Podczas przygotowywania wskazuje **Ukończono**, kliknij przycisk **dalej**.
+15. Kliknij przycisk **ponowny rozruch teraz** do rozruchu komputera hosta development kit w cloudbuilder.vhdx i [kontynuować proces wdrażania](asdk-install.md).
 
     ![](media/asdk-prepare-host/4.PNG)
 

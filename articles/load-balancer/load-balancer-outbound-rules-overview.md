@@ -11,14 +11,14 @@ ms.devlang: na
 ms.topic: article
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 10/3/2018
+ms.date: 10/4/2018
 ms.author: kumud
-ms.openlocfilehash: 50b567b298406b936a11ad5a8737ce4b1e21c0c7
-ms.sourcegitcommit: 609c85e433150e7c27abd3b373d56ee9cf95179a
+ms.openlocfilehash: 57bb3fea9ad8128520b5d186bd7a27483308e606
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 10/03/2018
-ms.locfileid: "48248728"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802801"
 ---
 # <a name="load-balancer-outbound-rules"></a>Reguły ruchu wychodzącego modułu równoważenia obciążenia
 
@@ -47,7 +47,7 @@ Podobnie jak wszystkie reguły modułu równoważenia obciążenia reguł dla ru
 
 Regułę dla ruchu wychodzącego konfiguruje NAT dla ruchu wychodzącego dla _wszystkie maszyny wirtualne identyfikowane przez pulę zaplecza_ mają być tłumaczone na _frontonu_.  I _parametry_ zapewniają dodatkowe bardziej szczegółową kontrolę nad algorytmu NAT ruchu wychodzącego.
 
-Wersja "2018-07-01" interfejsu API pozwala na definicję reguły ruchu wychodzącego ze strukturą w następujący sposób:
+Wersja "2018-08-01" interfejsu API pozwala na definicję reguły ruchu wychodzącego ze strukturą w następujący sposób:
 
 ```json
       "outboundRules": [

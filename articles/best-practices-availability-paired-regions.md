@@ -6,12 +6,12 @@ ms.service: multiple
 ms.topic: article
 ms.date: 07/03/2018
 ms.author: raynew
-ms.openlocfilehash: c500a1ecc817e4d95e39ca0ac985e1d90ffc8a78
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: 5678b8408eac303d9036d21612f60fafc325425d
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44721267"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801917"
 ---
 # <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Business ciągłości działania i odzyskiwania po awarii (BCDR): regiony sparowane platformy Azure
 
@@ -34,6 +34,7 @@ Rysunek 1 — pary regionalne platformy Azure
 | Kanada |Kanada Środkowa |Kanada Wschodnia |
 | Chiny |Chiny Północne |Chiny Wschodnie|
 | Europa |Europa Północna |Europa Zachodnia |
+| Francja |Francja Środkowa|Francja Południowa|
 | Niemcy |Niemcy Środkowe |Niemcy Północno-Wschodnie |
 | Indie |Indie Środkowe |Indie Południowe |
 | Indie |Indie Zachodnie (1) |Indie Południowe |
@@ -69,7 +70,7 @@ Rysunek 2 — hipotetyczny pary regionalne platformy Azure
 ## <a name="cross-region-activities"></a>Działania między regionami
 Określone na rysunku 2.
 
-![PaaS](./media/best-practices-availability-paired-regions/1Green.png) **usługi Azure Compute (PaaS)** — należy aprowizować dodatkowe zasoby obliczeniowe wcześniej, aby zapewnić zasoby są dostępne w innym regionie podczas awarii. Aby uzyskać więcej informacji, zobacz [wskazówek technicznych odporność platformy Azure](resiliency/resiliency-technical-guidance.md).
+![IaaS](./media/best-practices-availability-paired-regions/1Green.png) **obliczeń Azure (IaaS)** — należy aprowizować dodatkowe zasoby obliczeniowe wcześniej, aby zapewnić zasoby są dostępne w innym regionie podczas awarii. Aby uzyskać więcej informacji, zobacz [wskazówek technicznych odporność platformy Azure](resiliency/resiliency-technical-guidance.md).
 
 ![Magazyn](./media/best-practices-availability-paired-regions/2Green.png) **usługi Azure Storage** -magazyn geograficznie nadmiarowy (GRS) jest domyślnie skonfigurowana podczas tworzenia konta usługi Azure Storage. W przypadku magazynu GRS dane są automatycznie replikowane trzy razy w regionie podstawowym i trzy razy w sparowanym regionie. Aby uzyskać więcej informacji, zobacz [Opcje nadmiarowości magazynu Azure](storage/common/storage-redundancy.md).
 

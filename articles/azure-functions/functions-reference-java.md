@@ -11,12 +11,12 @@ ms.devlang: java
 ms.topic: conceptual
 ms.date: 09/14/2018
 ms.author: routlaw
-ms.openlocfilehash: f6c5eb4a3ace1fcca1bbbef321371d55a0ce8da9
-ms.sourcegitcommit: f10653b10c2ad745f446b54a31664b7d9f9253fe
+ms.openlocfilehash: 9e07cddb9d446ea24143d3a6dec5e310d3ed6f1c
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/18/2018
-ms.locfileid: "46123491"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48802121"
 ---
 # <a name="azure-functions-java-developer-guide"></a>Przewodnik dla deweloperów w usłudze Azure Functions Java
 
@@ -115,9 +115,15 @@ za pomocą odpowiednich `function.json`:
 
 ```
 
+## <a name="jdk-runtime-availability-and-support"></a>Zestaw JDK środowiska uruchomieniowego dostępność i pomoc techniczna 
+
+Pobieranie i używanie [Azul Zulu dla platformy Azure](https://assets.azul.com/files/Zulu-for-Azure-FAQ.pdf) JDK z [firmy Azul Systems](https://www.azul.com/downloads/azure-only/zulu/) potrzeby lokalnego programowania aplikacji funkcji w języku Java. JDK są dostępne dla Windows, Linux i macOS oraz [pomocy technicznej platformy Azure](https://support.microsoft.com/en-us/help/4026305/sql-contact-microsoft-azure-support) jest dostępna dla problemów napotykanych podczas programowania przy użyciu [plan pomocy technicznej kwalifikowaną](https://azure.microsoft.com/support/plans/).
+
 ## <a name="third-party-libraries"></a>Bibliotek innych firm 
 
 Usługa Azure Functions obsługuje korzystanie z bibliotek innych firm. Domyślnie wszystkie zależności są określone w projekcie `pom.xml` pliku zostaną automatycznie dołączone podczas `mvn package` cel. W przypadku bibliotek, które nie jest określony jako zależności w `pom.xml` pliku, umieść je w `lib` katalogu w katalogu głównym funkcji. Zależności są umieszczane w `lib` katalog zostanie dodany do modułu ładującego klasę systemu w czasie wykonywania.
+
+`com.microsoft.azure.functions:azure-functions-java-library` Zależności znajduje się na ścieżce klasy domyślnie i nie musi być objęte `lib` katalogu.
 
 ## <a name="data-type-support"></a>Obsługa typu danych
 

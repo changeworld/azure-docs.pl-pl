@@ -14,18 +14,18 @@ ms.topic: tutorial
 ms.date: 09/12/2018
 ms.author: mattbriggs
 ms.reviewer: shnatara
-ms.openlocfilehash: 3d3701c670236d67697f4109a59fa31900037a0d
-ms.sourcegitcommit: c29d7ef9065f960c3079660b139dd6a8348576ce
+ms.openlocfilehash: d402b2bcd5187cbb6ece78d7e981068c279c1f75
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/12/2018
-ms.locfileid: "44720942"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48804433"
 ---
 # <a name="deploy-a-service-fabric-cluster-in-azure-stack"></a>Wdrażanie klastra usługi Service Fabric w usłudze Azure Stack
 
 Użyj **klastra usługi Service Fabric** elementu w witrynie Azure Marketplace, aby wdrożyć klaster usługi Service Fabric zabezpieczone w usłudze Azure Stack. 
 
-Aby uzyskać więcej informacji na temat pracy z usługą Service Fabric, zobacz [Omówienie usługi Azure Service Frabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) i [scenariusze zabezpieczeń klastra usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security), w dokumentacji platformy Azure.
+Aby uzyskać więcej informacji na temat pracy z usługą Service Fabric, zobacz [Omówienie usługi Azure Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-overview) i [scenariusze zabezpieczeń klastra usługi Service Fabric](https://docs.microsoft.com/azure/service-fabric/service-fabric-cluster-security), w dokumentacji platformy Azure.
 
 ## <a name="prerequisites"></a>Wymagania wstępne
 

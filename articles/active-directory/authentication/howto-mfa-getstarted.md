@@ -10,12 +10,12 @@ ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: mtillman
 ms.reviewer: michmcla
-ms.openlocfilehash: e8d4286e282ebbe727941712f3f3c4d3ea749cb5
-ms.sourcegitcommit: ce526d13cd826b6f3e2d80558ea2e289d034d48f
+ms.openlocfilehash: 07e9126b73b0282f61567fe8d06f785bf9a04fef
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/19/2018
-ms.locfileid: "46366594"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48803481"
 ---
 # <a name="deploy-cloud-based-azure-multi-factor-authentication"></a>Wdrażanie oparte na chmurze usługi Azure Multi-Factor Authentication
 
@@ -30,9 +30,9 @@ Przed rozpoczęciem upewnij się, że masz następujące wymagania wstępne:
 
 **Obsługiwane przez zasady dostępu warunkowego** — metoda ta jest omówiona w tym artykule. Jest najbardziej elastyczny sposób Włącz weryfikację dwuetapową dla użytkowników. Włączanie przy użyciu tylko zasad dostępu warunkowego działa w przypadku usługi Azure MFA w chmurze i jest funkcją premium usługi Azure AD.
 
-Obsługiwane przez usługę Azure AD Identity Protection — ta metoda używa zasad ryzyka usługi Azure AD Identity Protection do weryfikacji dwuetapowej oparte tylko na ryzyko logowania dla wszystkich aplikacji w chmurze. Ta metoda wymaga licencji usługi Azure Active Directory P2. Więcej informacji na temat tej metody można znaleźć w [sposobu konfigurowania zasad ryzyka użytkownika](../identity-protection/howto-user-risk-policy.md).
+**Obsługiwane przez usługę Azure AD Identity Protection** — ta metoda używa zasad ryzyka usługi Azure AD Identity Protection, które wymuszają weryfikację dwuetapową, oparte tylko na ryzyko logowania dla wszystkich aplikacji w chmurze. Ta metoda wymaga licencji usługi Azure Active Directory P2. Więcej informacji na temat tej metody można znaleźć w [sposobu konfigurowania zasad ryzyka użytkownika](../identity-protection/howto-user-risk-policy.md).
 
-Włączone, zmieniając użytkownika stan — jest to tradycyjne metody do wymagania weryfikacji dwuetapowej. Działa z zarówno usługi Azure MFA w chmurze i serwera Azure MFA. Za pomocą tej metody wymaga od użytkowników weryfikacji dwuetapowej **za każdym razem, gdy** Zaloguj się i przesłania zasady dostępu warunkowego. Więcej informacji na temat tej metody można znaleźć w [jak, które wymuszają weryfikację dwuetapową dla użytkownika](howto-mfa-userstates.md).
+**Włączone przez zmianę stanu użytkownika** — jest to tradycyjne metody do wymagania weryfikacji dwuetapowej. Działa z zarówno usługi Azure MFA w chmurze i serwera Azure MFA. Za pomocą tej metody wymaga od użytkowników weryfikacji dwuetapowej **za każdym razem, gdy** Zaloguj się i przesłania zasady dostępu warunkowego. Więcej informacji na temat tej metody można znaleźć w [jak, które wymuszają weryfikację dwuetapową dla użytkownika](howto-mfa-userstates.md).
 
 > [!Note]
 > Więcej informacji na temat licencji i ceny można znaleźć na [usługi Azure AD](https://azure.microsoft.com/pricing/details/active-directory/

@@ -9,14 +9,14 @@ keywords: usługa Azure Functions, funkcje, przetwarzanie zdarzeń, elementy web
 ms.service: azure-functions
 ms.devlang: multiple
 ms.topic: reference
-ms.date: 05/24/2018
+ms.date: 09/24/2018
 ms.author: glenga
-ms.openlocfilehash: cc965073863375d76efb969ad66cf5750c9755bb
-ms.sourcegitcommit: 32d218f5bd74f1cd106f4248115985df631d0a8c
+ms.openlocfilehash: 694dd98caadb12571c58f9d615cf75325654c772
+ms.sourcegitcommit: 9eaf634d59f7369bec5a2e311806d4a149e9f425
 ms.translationtype: MT
 ms.contentlocale: pl-PL
-ms.lasthandoff: 09/24/2018
-ms.locfileid: "46969431"
+ms.lasthandoff: 10/05/2018
+ms.locfileid: "48801309"
 ---
 # <a name="azure-functions-triggers-and-bindings-concepts"></a>Pojęcia powiązania i Wyzwalacze usługi Azure Functions
 
@@ -168,7 +168,7 @@ Ta sekcja dotyczy tylko do funkcji 2.x. Rozszerzeń powiązania nie muszą być 
 
 Podczas tworzenia funkcji lub dodać powiązanie, zostanie wyświetlony monit, gdy rozszerzenie dla wyzwalaczem lub powiązaniem wymaga rejestracji. Odpowiadanie do wiersza polecenia, klikając **zainstalować** do zarejestrowania rozszerzenia. Instalacja może trwać do 10 minut, w ramach planu zużycie.
 
-Każdego rozszerzenia, należy zainstalować jeden raz dla danej funkcji aplikacji. 
+Każdego rozszerzenia, należy zainstalować jeden raz dla danej funkcji aplikacji. Dla obsługiwanych powiązań, które nie są dostępne w portalu lub zaktualizować zainstalowanego rozszerzenia można także [ręczne instalowanie lub aktualizowanie usługi Azure Functions powiązania rozszerzeń z portalu](install-update-binding-extensions-manual.md).  
 
 ### <a name="local-development-azure-functions-core-tools"></a>Lokalne programowanie podstawowych narzędzi usługi Azure Functions
 
